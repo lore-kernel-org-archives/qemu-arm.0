@@ -1,494 +1,390 @@
-Received: by 10.25.159.131 with SMTP id i125csp1462246lfe;
-        Mon, 5 Dec 2016 01:57:44 -0800 (PST)
-X-Received: by 10.55.4.134 with SMTP id 128mr48828739qke.281.1480931864611;
-        Mon, 05 Dec 2016 01:57:44 -0800 (PST)
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 10.25.159.131 with SMTP id i125csp1567172lfe;
+        Mon, 5 Dec 2016 06:08:15 -0800 (PST)
+X-Received: by 10.55.49.203 with SMTP id x194mr57350645qkx.93.1480946895585;
+        Mon, 05 Dec 2016 06:08:15 -0800 (PST)
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id h64si8517834qtd.325.2016.12.05.01.57.44
+        by mx.google.com with ESMTPS id k10si8962875qtb.97.2016.12.05.06.08.15
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 05 Dec 2016 01:57:44 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Mon, 05 Dec 2016 06:08:15 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:38759 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:40693 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1cDq1n-0005Z9-TO
-	for alex.bennee@linaro.org; Mon, 05 Dec 2016 04:57:43 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:36298)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1cDtwF-0003hc-0U
+	for alex.bennee@linaro.org; Mon, 05 Dec 2016 09:08:15 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:41164)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mar.krzeminski@gmail.com>) id 1cDq1e-0005UJ-Ej
-	for qemu-arm@nongnu.org; Mon, 05 Dec 2016 04:57:39 -0500
+	(envelope-from <clg@kaod.org>) id 1cDtvL-0003Pf-RY
+	for qemu-devel@nongnu.org; Mon, 05 Dec 2016 09:07:21 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mar.krzeminski@gmail.com>) id 1cDq1c-0000Qm-OD
-	for qemu-arm@nongnu.org; Mon, 05 Dec 2016 04:57:34 -0500
-Received: from mail-ua0-x243.google.com ([2607:f8b0:400c:c08::243]:34066)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <mar.krzeminski@gmail.com>)
-	id 1cDq1Y-0000Q8-Lo; Mon, 05 Dec 2016 04:57:28 -0500
-Received: by mail-ua0-x243.google.com with SMTP id b35so31162307uaa.1;
-	Mon, 05 Dec 2016 01:57:28 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=z/f5qnXYHvxqrrGcOT7J4+fRzygHAAzrNOC0nHzlQt0=;
-	b=huPQkgYhnnFXKXmSGSIStT1P3lqerohxWFucHAbsSNu3gbBbyQTfTyd/yF+cG2vQdW
-	SjkTZIaOyaHG8+W4322ny32iwLpv0GD7oT+i6PTRE+aroc2VoCUtOOFYm/HirMzgNhbW
-	ZIceA1vVX1pOeZyuMM4DBv9p2sOhjMuY36En6FnWJC9G3xOpG5z3dQqyCVo6FhrlgW7N
-	mTbbVJOMY37Ln0fjnlGqM425kv6DDRjkhEnVng/dNiZUFLiBHLtvLTJ+G6Hkql2gxT/n
-	TnQx6q2S2fc8N9AtTCNFpBRM/lJSaNKZsAC5GtNQ+Q9yRw12VwSdz5xS+ObTPJLUAxOJ
-	w0FQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=z/f5qnXYHvxqrrGcOT7J4+fRzygHAAzrNOC0nHzlQt0=;
-	b=Y7WvJqQAb/VXWtd9O7iqOkU07XQUSk8WpY0uWEJbUZtolizCdt+PDcbK6MvSzrvpVj
-	6tLc+C4XkHUAxzkYBcci3urXE+2nevUOBquTnWuV8zN/MabwG3+TxtQpY/WytWrf5Arl
-	e8PPNYtIvo3kl/r0PJzPmysYXbaiaUX+Dej+gfTip98ZWIlhInObxgDeNliJSJcF/0mS
-	z5QClXxG1Om9GUd9Z13lMzmHIuZcuAgmYMSjHmYbon9BPP6ZWR2kRUwqoa2wpxrGGO1m
-	2uaEiOZYy31Y2GzmYI05blxsNdgsubMo8XifxudGdhi+juxsqWTvIfVhQREOH3ClZJ2X
-	jIYg==
-X-Gm-Message-State: AKaTC01+ITmo5u0nS/QD9yALf1YVHAyhegBqzseAHgfPMTbrkhMv5Pcl65LMTJsqkf2nXh19JbvbE+AsE2UV6g==
-X-Received: by 10.176.83.100 with SMTP id y33mr41962904uay.130.1480931847918; 
-	Mon, 05 Dec 2016 01:57:27 -0800 (PST)
-MIME-Version: 1.0
-Received: by 10.31.4.81 with HTTP; Mon, 5 Dec 2016 01:57:27 -0800 (PST)
-In-Reply-To: <f28b693f-dade-b338-cc86-b5e85f8b1675@kaod.org>
+	(envelope-from <clg@kaod.org>) id 1cDtvH-0000gR-PU
+	for qemu-devel@nongnu.org; Mon, 05 Dec 2016 09:07:19 -0500
+Received: from 7.mo5.mail-out.ovh.net ([178.32.124.100]:50690)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <clg@kaod.org>) id 1cDtvH-0000gD-G8
+	for qemu-devel@nongnu.org; Mon, 05 Dec 2016 09:07:15 -0500
+Received: from player773.ha.ovh.net (b9.ovh.net [213.186.33.59])
+	by mo5.mail-out.ovh.net (Postfix) with ESMTP id 61A7C49DBF
+	for <qemu-devel@nongnu.org>; Mon,  5 Dec 2016 15:07:11 +0100 (CET)
+Received: from hermes.kaod.org (alter.tetaneutral.net [91.224.149.189])
+	(Authenticated sender: postmaster@kaod.org)
+	by player773.ha.ovh.net (Postfix) with ESMTPSA id 0FB8260007B;
+	Mon,  5 Dec 2016 15:07:01 +0100 (CET)
+To: "mar.krzeminski" <mar.krzeminski@gmail.com>,
+	Peter Maydell <peter.maydell@linaro.org>
 References: <1480434248-27138-1-git-send-email-clg@kaod.org>
-	<1480434248-27138-25-git-send-email-clg@kaod.org>
-	<4e2db842-7ff6-d7e7-c96c-26ce9c563c83@gmail.com>
-	<f28b693f-dade-b338-cc86-b5e85f8b1675@kaod.org>
-From: =?UTF-8?Q?Marcin_Krzemi=C5=84ski?= <mar.krzeminski@gmail.com>
-Date: Mon, 5 Dec 2016 10:57:27 +0100
-Message-ID: <CABc_YGCweFyD8+tZf32_AM6YYYcFWtZS3ejb2A_cUMi0LCsZ0A@mail.gmail.com>
-To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-Content-Type: multipart/alternative; boundary=94eb2c192480bb59210542e6509c
+	<1480434248-27138-18-git-send-email-clg@kaod.org>
+	<0fa6e0f2-2965-cbdc-3d22-5a4c74fc6772@gmail.com>
+From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
+Message-ID: <27bcad02-54fc-dbf9-f5f9-5b178ddb2ddd@kaod.org>
+Date: Mon, 5 Dec 2016 15:07:00 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
+	Thunderbird/45.4.0
+MIME-Version: 1.0
+In-Reply-To: <0fa6e0f2-2965-cbdc-3d22-5a4c74fc6772@gmail.com>
+Content-Type: text/plain; charset=utf-8
+X-Ovh-Tracer-Id: 8398931833247271856
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrfeelfedrgeekgddulecutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmd
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:400c:c08::243
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH for-2.9 24/30] aspeed: use first
- SPI flash as a boot ROM
-X-BeenThere: qemu-arm@nongnu.org
+	[fuzzy]
+X-Received-From: 178.32.124.100
+Subject: Re: [Qemu-devel] [PATCH for-2.9 17/30] aspeed/smc: handle SPI flash
+ Command mode
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Andrew Jeffery <andrew@aj.id.au>,
 	Marcin Krzeminski <marcin.krzeminski@nokia.com>,
-	Andrew Jeffery <andrew@aj.id.au>,
-	"qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
-	qemu-arm <qemu-arm@nongnu.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 20b12Q4+MY6b
+	qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+	Peter Crosthwaite <crosthwaite.peter@gmail.com>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: +qKyr4Cz4erm
 
---94eb2c192480bb59210542e6509c
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
+On 12/04/2016 05:31 PM, mar.krzeminski wrote:
+> Hi Cedric,
+>=20
+> Since there is no public datasheet user guide for SMC I would ask some =
+question
+> regarding HW itself because I got impression that you are implementing =
+in this
+> model a part functionality that is done by Bootrom.
+>=20
+> W dniu 29.11.2016 o 16:43, C=C3=A9dric Le Goater pisze:
+>> The Aspeed SMC controllers have a mode (Command mode) in which
+>> accesses to the flash content are no different than doing MMIOs. The
+>> controller generates all the necessary commands to load (or store)
+>> data in memory.
+>>
+>> However, accesses are restricted to the segment window assigned the
+>> the flash module by the controller. This window is defined by the
+>> Segment Address Register.
+>>
+>> Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
+>> Reviewed-by: Andrew Jeffery <andrew@aj.id.au>
+>> ---
+>>  hw/ssi/aspeed_smc.c | 174 +++++++++++++++++++++++++++++++++++++++++++=
++++++----
+>>  1 file changed, 162 insertions(+), 12 deletions(-)
+>>
+>> diff --git a/hw/ssi/aspeed_smc.c b/hw/ssi/aspeed_smc.c
+>> index 72a44150b0a1..eec087199a22 100644
+>> --- a/hw/ssi/aspeed_smc.c
+>> +++ b/hw/ssi/aspeed_smc.c
+>> @@ -69,6 +69,7 @@
+>>  #define R_CTRL0           (0x10 / 4)
+>>  #define   CTRL_CMD_SHIFT           16
+>>  #define   CTRL_CMD_MASK            0xff
+>> +#define   CTRL_AST2400_SPI_4BYTE   (1 << 13)
+>>  #define   CTRL_CE_STOP_ACTIVE      (1 << 2)
+>>  #define   CTRL_CMD_MODE_MASK       0x3
+>>  #define     CTRL_READMODE          0x0
+>> @@ -135,6 +136,16 @@
+>>  #define ASPEED_SOC_SPI_FLASH_BASE   0x30000000
+>>  #define ASPEED_SOC_SPI2_FLASH_BASE  0x38000000
+>> =20
+>> +/* Flash opcodes. */
+>> +#define SPI_OP_READ       0x03    /* Read data bytes (low frequency) =
+*/
+>> +#define SPI_OP_WRDI       0x04    /* Write disable */
+>> +#define SPI_OP_RDSR       0x05    /* Read status register */
+>> +#define SPI_OP_WREN       0x06    /* Write enable */
+> Are you sure that the controller is aware af all above commands (especi=
+ally WD/WE and RDS)?
 
-2016-12-05 10:36 GMT+01:00 C=C3=A9dric Le Goater <clg@kaod.org>:
+HW is aware of SPI_OP_READ which is the default command for the=20
+"normal" read mode. For other modes, fast and write, the command=20
+op is configured in the CEx Control Register.=20
 
-> Hello Marcin,
->
-> On 12/04/2016 06:00 PM, mar.krzeminski wrote:
-> > Hi Cedric,
-> >
-> > it looks like good idea for now to handle boot from flash.
-> > As I understand you are trying to omit bootrom code in Qemu model?
->
-> I suppose you mean handling a romd memory region under the m25p80
-> object ?
->
-It could be that I mess up everything because my understanding how the real
-HW
-work and boot is wrong. Please correct my assumptions:
-1. You are setting boot source to spi-nor (jumper, resistor whatever)
-2. There is a small bootrom in SoC (not u-boot) that set eg. reset vector,
-configure SMC
-and start execude code from flash.
-3. Memory mapped flash content is at address 0x1c000000.
+These ops are used in the model :
 
+ * SPI_OP_READ_FAST, for dummies
+ * SPI_OP_EN4B, might be useless if we expect software to send
+   this command before using this mode.
+ * SPI_OP_WREN, same comment.
 
->
-> > This could lead you to some hacks in device models (eg SMC).
->
-> I haven't had to, yet.
->
-> > W dniu 29.11.2016 o 16:44, C=C3=A9dric Le Goater pisze:
-> >> Fill a ROM region with the flash content to support U-Boot. This is a
-> >> little hacky but until we can boot from a MMIO region, it seems
-> >> difficult to do anything else.
-> >>
-> >> Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
-> >> Reviewed-by: Joel Stanley <joel@jms.id.au>
-> >> Reviewed-by: Andrew Jeffery <andrew@aj.id.au>
-> >> ---
-> >>  hw/arm/aspeed.c | 41 +++++++++++++++++++++++++++++++++++++++++
-> >>  1 file changed, 41 insertions(+)
-> >>
-> >> diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
-> >> index 40c13838fb2d..a92c2f1c362b 100644
-> >> --- a/hw/arm/aspeed.c
-> >> +++ b/hw/arm/aspeed.c
-> >> @@ -20,6 +20,8 @@
-> >>  #include "qemu/log.h"
-> >>  #include "sysemu/block-backend.h"
-> >>  #include "sysemu/blockdev.h"
-> >> +#include "hw/loader.h"
-> >> +#include "qemu/error-report.h"
-> >>
-> >>  static struct arm_boot_info aspeed_board_binfo =3D {
-> >>      .board_id =3D -1, /* device-tree-only board */
-> >> @@ -104,6 +106,28 @@ static const AspeedBoardConfig aspeed_boards[] =
-=3D {
-> >>      },
-> >>  };
-> >>
-> >> +#define FIRMWARE_ADDR 0x0
-> >> +
-> >> +static void write_boot_rom(DriveInfo *dinfo, hwaddr addr, size_t
-> rom_size,
-> >> +                           Error **errp)
-> >> +{
-> >> +    BlockBackend *blk =3D blk_by_legacy_dinfo(dinfo);
-> >> +    uint8_t *storage;
-> >> +
-> >> +    if (rom_size > blk_getlength(blk)) {
-> >> +        rom_size =3D blk_getlength(blk);
-> >> +    }
-> > I was not able to attach smaller file as m25p80 storage.
->
-> yes that's most probably because m25p80_realize() does :
->
->        if (blk_pread(s->blk, 0, s->storage, s->size) !=3D s->size) {
->             error_setg(errp, "failed to read the initial flash content");
->             return;
->         }
->
-> my bad. May be, we could relax a bit the test and allow smaller block
-> backends ?
->
+The rest I should remove as it is unused.
 
-I think not, if you have fs on flash (eg. UBI) and smaller image fs will
-not mount,
-or in worse case you can issue writes outside the file.
+>> +
+>> +/* Used for Macronix and Winbond flashes. */
+>> +#define SPI_OP_EN4B       0xb7    /* Enter 4-byte mode */
+>> +#define SPI_OP_EX4B       0xe9    /* Exit 4-byte mode */
+>> +
+> Same as above but I think 4byte address mode bit changes onlu nymber of=
+ bytes
+> that is sent after instruction.
+>
+>>  /*
+>>   * Default segments mapping addresses and size for each slave per
+>>   * controller. These can be changed when board is initialized with th=
+e
+>> @@ -357,6 +368,98 @@ static inline bool aspeed_smc_is_writable(const A=
+speedSMCFlash *fl)
+>>      return s->regs[s->r_conf] & (1 << (s->conf_enable_w0 + fl->id));
+>>  }
+>> =20
+>> +static inline int aspeed_smc_flash_cmd(const AspeedSMCFlash *fl)
+>> +{
+>> +    AspeedSMCState *s =3D fl->controller;
+>> +    int cmd =3D (s->regs[s->r_ctrl0 + fl->id] >> CTRL_CMD_SHIFT) & CT=
+RL_CMD_MASK;
+>> +
+>> +    /* This is the default value for read mode. In other modes, the
+>> +     * command should be defined */
+>> +    if (aspeed_smc_flash_mode(fl) =3D=3D CTRL_READMODE) {
+>> +        cmd =3D SPI_OP_READ;
+>> +    }
+>> +
+>> +    if (!cmd) {
+> cmd =3D=3D 0 =3D> NOP command for some flash (eg. mx66l1g45g).
 
->
->
-> >> +
-> >> +    storage =3D g_new0(uint8_t, rom_size);
-> >> +    if (blk_pread(blk, 0, storage, rom_size) < 0) {
-> >> +        error_setg(errp, "failed to read the initial flash content");
-> >> +        return;
-> >> +    }
-> >> +
-> >> +    rom_add_blob_fixed("aspeed.boot_rom", storage, rom_size, addr);
-> >> +    g_free(storage);
-> >> +}
-> >> +
-> >>  static void aspeed_board_init_flashes(AspeedSMCState *s, const char
-> *flashtype,
-> >>                                        Error **errp)
-> >>  {
-> >> @@ -135,6 +159,7 @@ static void aspeed_board_init(MachineState *machin=
-e,
-> >>  {
-> >>      AspeedBoardState *bmc;
-> >>      AspeedSoCClass *sc;
-> >> +    DriveInfo *drive0 =3D drive_get(IF_MTD, 0, 0);
-> >>
-> >>      bmc =3D g_new0(AspeedBoardState, 1);
-> >>      object_initialize(&bmc->soc, (sizeof(bmc->soc)), cfg->soc_name);
-> >> @@ -168,6 +193,22 @@ static void aspeed_board_init(MachineState
-> *machine,
-> >>      aspeed_board_init_flashes(&bmc->soc.fmc, cfg->fmc_model,
-> &error_abort);
-> >>      aspeed_board_init_flashes(&bmc->soc.spi[0], cfg->spi_model,
-> &error_abort);
-> >>
-> >> +    /* Install first FMC flash content as a boot rom. */
-> >> +    if (drive0) {
-> >> +        AspeedSMCFlash *fl =3D &bmc->soc.fmc.flashes[0];
-> >> +        MemoryRegion *boot_rom =3D g_new(MemoryRegion, 1);
-> >> +
-> >> +        /*
-> >> +         * create a ROM region using the default mapping window size =
-of
-> >> +         * the flash module.
-> >> +         */
-> >> +        memory_region_init_rom(boot_rom, OBJECT(bmc),
-> "aspeed.boot_rom",
-> >> +                               fl->size, &error_abort);
-> >> +        memory_region_add_subregion(get_system_memory(),
-> FIRMWARE_ADDR,
-> >> +                                    boot_rom);
-> >> +        write_boot_rom(drive0, FIRMWARE_ADDR, fl->size, &error_abort)=
-;
-> >
-> > Is it possible that fl->size will be bigger than segment size?
-> >
-> > I think max_size here should be segment size in smc.
->
-> I am not sure what you mean by "segment" ?
->
-> fl->size holds the default mapping window size on the AHB bus of the
-> flash chip CS0. The size can be changed by the guest using the segment
-> address registers but for CS0 this should be "autoconfigured" by HW.
->
+So I should use another default value, OxFF ?=20
 
-This is exactly what i meant, I was thinking that fl->size is the size of
-the whole flash,
-not the size of memory mapped part.
+>> +        qemu_log_mask(LOG_GUEST_ERROR, "%s: no command defined for mo=
+de %d\n",
+>> +                      __func__, aspeed_smc_flash_mode(fl));
+>> +    }
+>> +
+>> +    return cmd;
+>> +}
+>> +
+>> +static inline int aspeed_smc_flash_is_4byte(const AspeedSMCFlash *fl)
+>> +{
+>> +    AspeedSMCState *s =3D fl->controller;
+>> +
+>> +    if (s->ctrl->segments =3D=3D aspeed_segments_spi) {
+>> +        return s->regs[s->r_ctrl0] & CTRL_AST2400_SPI_4BYTE;
+>> +    } else {
+>> +        return s->regs[s->r_ce_ctrl] & (1 << (CTRL_EXTENDED0 + fl->id=
+));
+>> +    }
+>> +}
+>> +
+>> +static void aspeed_smc_flash_select(const AspeedSMCFlash *fl)
+>> +{
+>> +    AspeedSMCState *s =3D fl->controller;
+>> +
+>> +    s->regs[s->r_ctrl0 + fl->id] &=3D ~CTRL_CE_STOP_ACTIVE;
+>> +    qemu_set_irq(s->cs_lines[fl->id], aspeed_smc_is_ce_stop_active(fl=
+));
+>> +}
+>> +
+>> +static void aspeed_smc_flash_unselect(const AspeedSMCFlash *fl)
+>> +{
+>> +    AspeedSMCState *s =3D fl->controller;
+>> +
+>> +    s->regs[s->r_ctrl0 + fl->id] |=3D CTRL_CE_STOP_ACTIVE;
+>> +    qemu_set_irq(s->cs_lines[fl->id], aspeed_smc_is_ce_stop_active(fl=
+));
+>> +}
+>> +
+>> +static uint32_t aspeed_smc_check_segment_addr(AspeedSMCFlash *fl, uin=
+t32_t addr)
+>> +{
+>> +    AspeedSMCState *s =3D fl->controller;
+>> +    AspeedSegments seg;
+>> +
+>> +    aspeed_smc_reg_to_segment(s->regs[R_SEG_ADDR0 + fl->id], &seg);
+>> +    if ((addr & (seg.size - 1)) !=3D addr) {
+>> +        qemu_log_mask(LOG_GUEST_ERROR,
+>> +                      "%s: invalid address 0x%08x for CS%d segment : =
+"
+>> +                      "[ 0x%"HWADDR_PRIx" - 0x%"HWADDR_PRIx" ]\n",
+>> +                      s->ctrl->name, addr, fl->id, seg.addr,
+>> +                      seg.addr + seg.size);
+>> +    }
+>> +
+>> +    addr &=3D seg.size - 1;
+>> +    return addr;
+>> +}
+>> +
+>> +static void aspeed_smc_flash_setup_read(AspeedSMCFlash *fl, uint32_t =
+addr)
+>> +{
+>> +    AspeedSMCState *s =3D fl->controller;
+>> +    uint8_t cmd =3D aspeed_smc_flash_cmd(fl);
+>> +
+>> +    /*
+>> +     * To be checked: I am not sure the Aspeed SPI controller needs t=
+o
+>> +     * enable writes when running in READ/FREAD command mode
+>> +     */
+>> +
+>> +    /* access can not exceed CS segment */
+>> +    addr =3D aspeed_smc_check_segment_addr(fl, addr);
+>> +
+>> +    /* TODO: do we have to send 4BYTE each time ? */
+> I am not aware of any flash that needs that, this  command should be se=
+nd only once.
 
->
-> Here, we are just using the default from the specs but we could go a
-> little further in the model and setup the mapping window size of CS0
-> using the block backend size, and set up the segment registers accordingl=
-y.
-> There are some checks to be done. It might be a little complex.
->
+yes. That is what I think also. =20
 
-I do not think there is a reason for doing that yet :)
+it also means that a preliminary 4BYTE command should be=20
+sent before using that mode.=20
+
+> I also think that HW does not send this command (see above comment).
+>
+>> +    if (aspeed_smc_flash_is_4byte(fl)) {
+>> +        ssi_transfer(s->spi, SPI_OP_EN4B);
+>> +    }
+>> +
+>> +    ssi_transfer(s->spi, cmd);
+>> +
+>> +    if (aspeed_smc_flash_is_4byte(fl)) {
+>> +        ssi_transfer(s->spi, (addr >> 24) & 0xff);
+>> +    }
+>> +    ssi_transfer(s->spi, (addr >> 16) & 0xff);
+>> +    ssi_transfer(s->spi, (addr >> 8) & 0xff);
+>> +    ssi_transfer(s->spi, (addr & 0xff));
+>> +}
+>> +
+>>  static uint64_t aspeed_smc_flash_read(void *opaque, hwaddr addr, unsi=
+gned size)
+>>  {
+>>      AspeedSMCFlash *fl =3D opaque;
+>> @@ -364,19 +467,55 @@ static uint64_t aspeed_smc_flash_read(void *opaq=
+ue, hwaddr addr, unsigned size)
+>>      uint64_t ret =3D 0;
+>>      int i;
+>> =20
+>> -    if (aspeed_smc_is_usermode(fl)) {
+>> +    switch (aspeed_smc_flash_mode(fl)) {
+>> +    case CTRL_USERMODE:
+>>          for (i =3D 0; i < size; i++) {
+>>              ret |=3D ssi_transfer(s->spi, 0x0) << (8 * i);
+>>          }
+>> -    } else {
+>> -        qemu_log_mask(LOG_UNIMP, "%s: usermode not implemented\n",
+>> -                      __func__);
+>> -        ret =3D -1;
+>> +        break;
+>> +    case CTRL_READMODE:
+>> +    case CTRL_FREADMODE:
+> CTRL_FREADMODE should not sent dummy bytes?
+
+yes it should. this is in a following patch.
 
 Thanks,
-Marcin
 
->
+C.=20
+
+>=20
 > Thanks,
->
-> C.
->
->
-> > Thanks,
-> > Marcin
-> >> +    }
-> >> +
-> >>      aspeed_board_binfo.kernel_filename =3D machine->kernel_filename;
-> >>      aspeed_board_binfo.initrd_filename =3D machine->initrd_filename;
-> >>      aspeed_board_binfo.kernel_cmdline =3D machine->kernel_cmdline;
-> >
->
->
+> Marcin
+>> +        aspeed_smc_flash_select(fl);
+>> +        aspeed_smc_flash_setup_read(fl, addr);
+>> +
+>> +        for (i =3D 0; i < size; i++) {
+>> +            ret |=3D ssi_transfer(s->spi, 0x0) << (8 * i);
+>> +        }
+>> +
+>> +        aspeed_smc_flash_unselect(fl);
+>> +        break;
+>> +    default:
+>> +        qemu_log_mask(LOG_GUEST_ERROR, "%s: invalid flash mode %d\n",
+>> +                      __func__, aspeed_smc_flash_mode(fl));
+>>      }
+>> =20
+>>      return ret;
+>>  }
+>> =20
+>> +static void aspeed_smc_flash_setup_write(AspeedSMCFlash *fl, uint32_t=
+ addr)
+>> +{
+>> +    AspeedSMCState *s =3D fl->controller;
+>> +    uint8_t cmd =3D aspeed_smc_flash_cmd(fl);
+>> +
+>> +    /* Flash access can not exceed CS segment */
+>> +    addr =3D aspeed_smc_check_segment_addr(fl, addr);
+>> +
+>> +    /* TODO: do we have to send 4BYTE each time ? */
+>> +    if (aspeed_smc_flash_is_4byte(fl)) {
+>> +        ssi_transfer(s->spi, SPI_OP_EN4B);
+>> +    }
+>> +
+>> +    ssi_transfer(s->spi, SPI_OP_WREN);
+>> +    ssi_transfer(s->spi, cmd);
+>> +
+>> +    if (aspeed_smc_flash_is_4byte(fl)) {
+>> +        ssi_transfer(s->spi, (addr >> 24) & 0xff);
+>> +    }
+>> +    ssi_transfer(s->spi, (addr >> 16) & 0xff);
+>> +    ssi_transfer(s->spi, (addr >> 8) & 0xff);
+>> +    ssi_transfer(s->spi, (addr & 0xff));
+>> +}
+>> +
+>>  static void aspeed_smc_flash_write(void *opaque, hwaddr addr, uint64_=
+t data,
+>>                             unsigned size)
+>>  {
+>> @@ -390,14 +529,25 @@ static void aspeed_smc_flash_write(void *opaque,=
+ hwaddr addr, uint64_t data,
+>>          return;
+>>      }
+>> =20
+>> -    if (!aspeed_smc_is_usermode(fl)) {
+>> -        qemu_log_mask(LOG_UNIMP, "%s: usermode not implemented\n",
+>> -                      __func__);
+>> -        return;
+>> -    }
+>> +    switch (aspeed_smc_flash_mode(fl)) {
+>> +    case CTRL_USERMODE:
+>> +        for (i =3D 0; i < size; i++) {
+>> +            ssi_transfer(s->spi, (data >> (8 * i)) & 0xff);
+>> +        }
+>> +        break;
+>> +    case CTRL_WRITEMODE:
+>> +        aspeed_smc_flash_select(fl);
+>> +        aspeed_smc_flash_setup_write(fl, addr);
+>> +
+>> +        for (i =3D 0; i < size; i++) {
+>> +            ssi_transfer(s->spi, (data >> (8 * i)) & 0xff);
+>> +        }
+>> =20
+>> -    for (i =3D 0; i < size; i++) {
+>> -        ssi_transfer(s->spi, (data >> (8 * i)) & 0xff);
+>> +        aspeed_smc_flash_unselect(fl);
+>> +        break;
+>> +    default:
+>> +        qemu_log_mask(LOG_GUEST_ERROR, "%s: invalid flash mode %d\n",
+>> +                      __func__, aspeed_smc_flash_mode(fl));
+>>      }
+>>  }
+>> =20
+>=20
 
---94eb2c192480bb59210542e6509c
-Content-Type: text/html; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr"><br><div class=3D"gmail_extra"><div class=3D"gmail_quote">=
-2016-12-05 10:36 GMT+01:00 C=C3=A9dric Le Goater <span dir=3D"ltr">&lt;<a h=
-ref=3D"mailto:clg@kaod.org" target=3D"_blank">clg@kaod.org</a>&gt;</span>:<=
-br><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;bord=
-er-left-width:1px;border-left-color:rgb(204,204,204);border-left-style:soli=
-d;padding-left:1ex">Hello Marcin,<br>
-<span class=3D"gmail-"><br>
-On 12/04/2016 06:00 PM, mar.krzeminski wrote:<br>
-&gt; Hi Cedric,<br>
-&gt;<br>
-&gt; it looks like good idea for now to handle boot from flash.<br>
-&gt; As I understand you are trying to omit bootrom code in Qemu model?<br>
-<br>
-</span>I suppose you mean handling a romd memory region under the m25p80<br=
->
-object ?<br></blockquote><div>It could be that I mess up everything because=
- my understanding how the real HW</div><div>work and boot is wrong. Please =
-correct my assumptions:</div><div>1. You are setting boot source to spi-nor=
- (jumper, resistor whatever)</div><div>2. There is a small bootrom in SoC (=
-not u-boot) that set eg. reset vector, configure SMC</div><div>and start ex=
-ecude code from flash.</div><div>3. Memory mapped flash content is at addre=
-ss 0x1c000000.</div><div>=C2=A0</div><blockquote class=3D"gmail_quote" styl=
-e=3D"margin:0px 0px 0px 0.8ex;border-left-width:1px;border-left-color:rgb(2=
-04,204,204);border-left-style:solid;padding-left:1ex">
-<span class=3D"gmail-"><br>
-&gt; This could lead you to some hacks in device models (eg SMC).<br>
-<br>
-</span>I haven&#39;t had to, yet.<br>
-<div><div class=3D"gmail-h5"><br>
-&gt; W dniu 29.11.2016 o 16:44, C=C3=A9dric Le Goater pisze:<br>
-&gt;&gt; Fill a ROM region with the flash content to support U-Boot. This i=
-s a<br>
-&gt;&gt; little hacky but until we can boot from a MMIO region, it seems<br=
->
-&gt;&gt; difficult to do anything else.<br>
-&gt;&gt;<br>
-&gt;&gt; Signed-off-by: C=C3=A9dric Le Goater &lt;<a href=3D"mailto:clg@kao=
-d.org">clg@kaod.org</a>&gt;<br>
-&gt;&gt; Reviewed-by: Joel Stanley &lt;<a href=3D"mailto:joel@jms.id.au">jo=
-el@jms.id.au</a>&gt;<br>
-&gt;&gt; Reviewed-by: Andrew Jeffery &lt;<a href=3D"mailto:andrew@aj.id.au"=
->andrew@aj.id.au</a>&gt;<br>
-&gt;&gt; ---<br>
-&gt;&gt;=C2=A0 hw/arm/aspeed.c | 41 ++++++++++++++++++++++++++++++<wbr>++++=
-+++++++<br>
-&gt;&gt;=C2=A0 1 file changed, 41 insertions(+)<br>
-&gt;&gt;<br>
-&gt;&gt; diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c<br>
-&gt;&gt; index 40c13838fb2d..a92c2f1c362b 100644<br>
-&gt;&gt; --- a/hw/arm/aspeed.c<br>
-&gt;&gt; +++ b/hw/arm/aspeed.c<br>
-&gt;&gt; @@ -20,6 +20,8 @@<br>
-&gt;&gt;=C2=A0 #include &quot;qemu/log.h&quot;<br>
-&gt;&gt;=C2=A0 #include &quot;sysemu/block-backend.h&quot;<br>
-&gt;&gt;=C2=A0 #include &quot;sysemu/blockdev.h&quot;<br>
-&gt;&gt; +#include &quot;hw/loader.h&quot;<br>
-&gt;&gt; +#include &quot;qemu/error-report.h&quot;<br>
-&gt;&gt;<br>
-&gt;&gt;=C2=A0 static struct arm_boot_info aspeed_board_binfo =3D {<br>
-&gt;&gt;=C2=A0 =C2=A0 =C2=A0 .board_id =3D -1, /* device-tree-only board */=
-<br>
-&gt;&gt; @@ -104,6 +106,28 @@ static const AspeedBoardConfig aspeed_boards[=
-] =3D {<br>
-&gt;&gt;=C2=A0 =C2=A0 =C2=A0 },<br>
-&gt;&gt;=C2=A0 };<br>
-&gt;&gt;<br>
-&gt;&gt; +#define FIRMWARE_ADDR 0x0<br>
-&gt;&gt; +<br>
-&gt;&gt; +static void write_boot_rom(DriveInfo *dinfo, hwaddr addr, size_t =
-rom_size,<br>
-&gt;&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0Error **errp)<br>
-&gt;&gt; +{<br>
-&gt;&gt; +=C2=A0 =C2=A0 BlockBackend *blk =3D blk_by_legacy_dinfo(dinfo);<b=
-r>
-&gt;&gt; +=C2=A0 =C2=A0 uint8_t *storage;<br>
-&gt;&gt; +<br>
-&gt;&gt; +=C2=A0 =C2=A0 if (rom_size &gt; blk_getlength(blk)) {<br>
-&gt;&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 rom_size =3D blk_getlength(blk);<br>
-&gt;&gt; +=C2=A0 =C2=A0 }<br>
-&gt; I was not able to attach smaller file as m25p80 storage.<br>
-<br>
-</div></div>yes that&#39;s most probably because m25p80_realize() does :<br=
->
-<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0if (blk_pread(s-&gt;blk, 0, s-&gt;storage, s-&gt=
-;size) !=3D s-&gt;size) {<br>
-<span class=3D"gmail-">=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 error_setg=
-(errp, &quot;failed to read the initial flash content&quot;);<br>
-</span>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 return;<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 }<br>
-<br>
-my bad. May be, we could relax a bit the test and allow smaller block<br>
-backends ?<br></blockquote><div>=C2=A0</div><div>I think not, if you have f=
-s on flash (eg. UBI) and smaller image fs will not mount,</div><div>or in w=
-orse case you can issue writes outside the file.=C2=A0</div><blockquote cla=
-ss=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left-width:1px;=
-border-left-color:rgb(204,204,204);border-left-style:solid;padding-left:1ex=
-">
-<div><div class=3D"gmail-h5"><br>
-<br>
-&gt;&gt; +<br>
-&gt;&gt; +=C2=A0 =C2=A0 storage =3D g_new0(uint8_t, rom_size);<br>
-&gt;&gt; +=C2=A0 =C2=A0 if (blk_pread(blk, 0, storage, rom_size) &lt; 0) {<=
-br>
-&gt;&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 error_setg(errp, &quot;failed to read=
- the initial flash content&quot;);<br>
-&gt;&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 return;<br>
-&gt;&gt; +=C2=A0 =C2=A0 }<br>
-&gt;&gt; +<br>
-&gt;&gt; +=C2=A0 =C2=A0 rom_add_blob_fixed(&quot;aspeed.<wbr>boot_rom&quot;=
-, storage, rom_size, addr);<br>
-&gt;&gt; +=C2=A0 =C2=A0 g_free(storage);<br>
-&gt;&gt; +}<br>
-&gt;&gt; +<br>
-&gt;&gt;=C2=A0 static void aspeed_board_init_flashes(<wbr>AspeedSMCState *s=
-, const char *flashtype,<br>
-&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 E=
-rror **errp)<br>
-&gt;&gt;=C2=A0 {<br>
-&gt;&gt; @@ -135,6 +159,7 @@ static void aspeed_board_init(MachineState *ma=
-chine,<br>
-&gt;&gt;=C2=A0 {<br>
-&gt;&gt;=C2=A0 =C2=A0 =C2=A0 AspeedBoardState *bmc;<br>
-&gt;&gt;=C2=A0 =C2=A0 =C2=A0 AspeedSoCClass *sc;<br>
-&gt;&gt; +=C2=A0 =C2=A0 DriveInfo *drive0 =3D drive_get(IF_MTD, 0, 0);<br>
-&gt;&gt;<br>
-&gt;&gt;=C2=A0 =C2=A0 =C2=A0 bmc =3D g_new0(AspeedBoardState, 1);<br>
-&gt;&gt;=C2=A0 =C2=A0 =C2=A0 object_initialize(&amp;bmc-&gt;soc, (sizeof(bm=
-c-&gt;soc)), cfg-&gt;soc_name);<br>
-&gt;&gt; @@ -168,6 +193,22 @@ static void aspeed_board_init(MachineState *m=
-achine,<br>
-&gt;&gt;=C2=A0 =C2=A0 =C2=A0 aspeed_board_init_flashes(&amp;<wbr>bmc-&gt;so=
-c.fmc, cfg-&gt;fmc_model, &amp;error_abort);<br>
-&gt;&gt;=C2=A0 =C2=A0 =C2=A0 aspeed_board_init_flashes(&amp;<wbr>bmc-&gt;so=
-c.spi[0], cfg-&gt;spi_model, &amp;error_abort);<br>
-&gt;&gt;<br>
-&gt;&gt; +=C2=A0 =C2=A0 /* Install first FMC flash content as a boot rom. *=
-/<br>
-&gt;&gt; +=C2=A0 =C2=A0 if (drive0) {<br>
-&gt;&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 AspeedSMCFlash *fl =3D &amp;bmc-&gt;s=
-oc.fmc.flashes[0];<br>
-&gt;&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 MemoryRegion *boot_rom =3D g_new(Memo=
-ryRegion, 1);<br>
-&gt;&gt; +<br>
-&gt;&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 /*<br>
-&gt;&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0* create a ROM region using the=
- default mapping window size of<br>
-&gt;&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0* the flash module.<br>
-&gt;&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0*/<br>
-&gt;&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 memory_region_init_rom(boot_<wbr>rom,=
- OBJECT(bmc), &quot;aspeed.boot_rom&quot;,<br>
-&gt;&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0fl-&gt;size, &amp;error_abo=
-rt);<br>
-&gt;&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 memory_region_add_subregion(<wbr>get_=
-system_memory(), FIRMWARE_ADDR,<br>
-&gt;&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 boot_rom);<b=
-r>
-&gt;&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 write_boot_rom(drive0, FIRMWARE_ADDR,=
- fl-&gt;size, &amp;error_abort);<br>
-&gt;<br>
-&gt; Is it possible that fl-&gt;size will be bigger than segment size?<br>
-&gt;<br>
-&gt; I think max_size here should be segment size in smc.<br>
-<br>
-</div></div>I am not sure what you mean by &quot;segment&quot; ?<br>
-<br>
-fl-&gt;size holds the default mapping window size on the AHB bus of the<br>
-flash chip CS0. The size can be changed by the guest using the segment<br>
-address registers but for CS0 this should be &quot;autoconfigured&quot; by =
-HW.<br></blockquote><div><br></div><div>This is exactly what i meant, I was=
- thinking that fl-&gt;size is the size of the whole flash,</div><div>not th=
-e size of memory mapped part.</div><blockquote class=3D"gmail_quote" style=
-=3D"margin:0px 0px 0px 0.8ex;border-left-width:1px;border-left-color:rgb(20=
-4,204,204);border-left-style:solid;padding-left:1ex">
-<br>
-Here, we are just using the default from the specs but we could go a<br>
-little further in the model and setup the mapping window size of CS0<br>
-using the block backend size, and set up the segment registers accordingly.=
-<br>
-There are some checks to be done. It might be a little complex.<br></blockq=
-uote><div><br></div><div>I do not think there is a reason for doing that ye=
-t :)</div><div><br></div><div>Thanks,</div><div>Marcin</div><blockquote cla=
-ss=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left-width:1px;=
-border-left-color:rgb(204,204,204);border-left-style:solid;padding-left:1ex=
-">
-<br>
-Thanks,<br>
-<br>
-C.<br>
-<div class=3D"gmail-HOEnZb"><div class=3D"gmail-h5"><br>
-<br>
-&gt; Thanks,<br>
-&gt; Marcin<br>
-&gt;&gt; +=C2=A0 =C2=A0 }<br>
-&gt;&gt; +<br>
-&gt;&gt;=C2=A0 =C2=A0 =C2=A0 aspeed_board_binfo.kernel_<wbr>filename =3D ma=
-chine-&gt;kernel_filename;<br>
-&gt;&gt;=C2=A0 =C2=A0 =C2=A0 aspeed_board_binfo.initrd_<wbr>filename =3D ma=
-chine-&gt;initrd_filename;<br>
-&gt;&gt;=C2=A0 =C2=A0 =C2=A0 aspeed_board_binfo.kernel_<wbr>cmdline =3D mac=
-hine-&gt;kernel_cmdline;<br>
-&gt;<br>
-<br>
-</div></div></blockquote></div><br></div></div>
-
---94eb2c192480bb59210542e6509c--

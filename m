@@ -1,23 +1,23 @@
-Received: by 10.25.159.131 with SMTP id i125csp1771763lfe;
-        Mon, 5 Dec 2016 13:47:18 -0800 (PST)
-X-Received: by 10.55.180.135 with SMTP id d129mr48103104qkf.96.1480974438072;
-        Mon, 05 Dec 2016 13:47:18 -0800 (PST)
+Received: by 10.25.159.131 with SMTP id i125csp1771801lfe;
+        Mon, 5 Dec 2016 13:47:26 -0800 (PST)
+X-Received: by 10.55.134.66 with SMTP id i63mr50146516qkd.309.1480974446069;
+        Mon, 05 Dec 2016 13:47:26 -0800 (PST)
 Return-Path: <eric.auger@redhat.com>
 Received: from mx1.redhat.com (mx1.redhat.com. [209.132.183.28])
-        by mx.google.com with ESMTPS id q58si9900092qta.108.2016.12.05.13.47.17
+        by mx.google.com with ESMTPS id c190si9919549qkd.5.2016.12.05.13.47.25
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 05 Dec 2016 13:47:18 -0800 (PST)
+        Mon, 05 Dec 2016 13:47:26 -0800 (PST)
 Received-SPF: pass (google.com: domain of eric.auger@redhat.com designates 209.132.183.28 as permitted sender) client-ip=209.132.183.28;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of eric.auger@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=eric.auger@redhat.com
 Received: from int-mx10.intmail.prod.int.phx2.redhat.com (int-mx10.intmail.prod.int.phx2.redhat.com [10.5.11.23])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 1E28B61BB5;
-	Mon,  5 Dec 2016 21:47:17 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id 2C0908FCF4;
+	Mon,  5 Dec 2016 21:47:25 +0000 (UTC)
 Received: from localhost.localdomain.com (vpn1-4-120.ams2.redhat.com [10.36.4.120])
-	by int-mx10.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP id uB5LksKY019596;
-	Mon, 5 Dec 2016 16:47:12 -0500
+	by int-mx10.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP id uB5LksKa019596;
+	Mon, 5 Dec 2016 16:47:21 -0500
 From: Eric Auger <eric.auger@redhat.com>
 To: eric.auger.pro@gmail.com, eric.auger@redhat.com, kvm@vger.kernel.org,
         kvmarm@lists.cs.columbia.edu, qemu-devel@nongnu.org,
@@ -25,199 +25,209 @@ To: eric.auger.pro@gmail.com, eric.auger@redhat.com, kvm@vger.kernel.org,
         christoffer.dall@linaro.org
 Cc: andre.przywara@arm.com, peter.maydell@linaro.org, alex.bennee@linaro.org,
         pbonzini@redhat.com
-Subject: [kvm-unit-tests RFC 04/15] arm/arm64: ITS: BASER parsing and setup
-Date: Mon,  5 Dec 2016 22:46:35 +0100
-Message-Id: <1480974406-29345-5-git-send-email-eric.auger@redhat.com>
+Subject: [kvm-unit-tests RFC 06/15] arm/arm64: ITS: Set the LPI config and pending tables
+Date: Mon,  5 Dec 2016 22:46:37 +0100
+Message-Id: <1480974406-29345-7-git-send-email-eric.auger@redhat.com>
 In-Reply-To: <1480974406-29345-1-git-send-email-eric.auger@redhat.com>
 References: <1480974406-29345-1-git-send-email-eric.auger@redhat.com>
 X-Scanned-By: MIMEDefang 2.68 on 10.5.11.23
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.5.110.39]); Mon, 05 Dec 2016 21:47:17 +0000 (UTC)
-X-TUID: R0TtzWqvGbxT
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.5.110.26]); Mon, 05 Dec 2016 21:47:25 +0000 (UTC)
+X-TUID: LO3X2IRZzvBx
 
-Add helper routines to parse BASER registers and set them up
+Allocate the LPI configuration and per re-distributor pending table.
+Set redistributor's PROPBASER and PENDBASER. The LPIs are enabled
+by default in the config table.
 
 Signed-off-by: Eric Auger <eric.auger@redhat.com>
 ---
- lib/arm/asm/gic-v3-its.h | 72 +++++++++++++++++++++++++++++++++++++++++++
- lib/arm/gic-v3-its.c     | 79 ++++++++++++++++++++++++++++++++++++++++++++++++
- 2 files changed, 151 insertions(+)
+ lib/arm/asm/gic-v3-its.h | 20 +++++++++++++
+ lib/arm/asm/gic-v3.h     | 77 ++++++++++++++++++++++++++++++++++++++++++++++++
+ lib/arm/gic-v3-its.c     | 50 +++++++++++++++++++++++++++++++
+ 3 files changed, 147 insertions(+)
 
 diff --git a/lib/arm/asm/gic-v3-its.h b/lib/arm/asm/gic-v3-its.h
-index 2044565..2fdc042 100644
+index 2fdc042..6fd5d6d 100644
 --- a/lib/arm/asm/gic-v3-its.h
 +++ b/lib/arm/asm/gic-v3-its.h
-@@ -10,13 +10,85 @@
+@@ -13,6 +13,26 @@
+ #include <asm/setup.h>
+ #include <asm/io.h>
+ 
++#define GIC_BASER_CACHEABILITY(reg, inner_outer, type)                  \
++	(GIC_BASER_CACHE_##type << reg##_##inner_outer##_CACHEABILITY_SHIFT)
++
++#define GIC_BASER_SHAREABILITY(reg, type)                               \
++	(GIC_BASER_##type << reg##_SHAREABILITY_SHIFT)
++
++#define GICR_PROPBASER_SHAREABILITY_SHIFT               (10)
++#define GICR_PROPBASER_INNER_CACHEABILITY_SHIFT         (7)
++#define GICR_PROPBASER_OUTER_CACHEABILITY_SHIFT         (56)
++#define GICR_PROPBASER_SHAREABILITY_MASK                                \
++	GIC_BASER_SHAREABILITY(GICR_PROPBASER, SHAREABILITY_MASK)
++#define GICR_PROPBASER_INNER_CACHEABILITY_MASK                          \
++	GIC_BASER_CACHEABILITY(GICR_PROPBASER, INNER, MASK)
++#define GICR_PROPBASER_OUTER_CACHEABILITY_MASK                          \
++	GIC_BASER_CACHEABILITY(GICR_PROPBASER, OUTER, MASK)
++#define GICR_PROPBASER_CACHEABILITY_MASK GICR_PROPBASER_INNER_CACHEABILITY_MASK
++
++#define GICR_PROPBASER_InnerShareable                                   \
++	GIC_BASER_SHAREABILITY(GICR_PROPBASER, InnerShareable)
++
+ #define GITS_BASER                      0x0100
+ 
+ #define GITS_BASER_NR_REGS              8
+diff --git a/lib/arm/asm/gic-v3.h b/lib/arm/asm/gic-v3.h
+index 039b7c2..0bdb013 100644
+--- a/lib/arm/asm/gic-v3.h
++++ b/lib/arm/asm/gic-v3.h
+@@ -45,6 +45,81 @@
+ #define MPIDR_TO_SGI_AFFINITY(cluster_id, level) \
+ 	(MPIDR_AFFINITY_LEVEL(cluster_id, level) << ICC_SGI1R_AFFINITY_## level ## _SHIFT)
+ 
++#define GIC_BASER_CACHE_nCnB            0ULL
++#define GIC_BASER_CACHE_SameAsInner     0ULL
++#define GIC_BASER_CACHE_nC              1ULL
++#define GIC_BASER_CACHE_RaWt            2ULL
++#define GIC_BASER_CACHE_RaWb            3ULL
++#define GIC_BASER_CACHE_WaWt            4ULL
++#define GIC_BASER_CACHE_WaWb            5ULL
++#define GIC_BASER_CACHE_RaWaWt          6ULL
++#define GIC_BASER_CACHE_RaWaWb          7ULL
++#define GIC_BASER_CACHE_MASK            7ULL
++#define GIC_BASER_NonShareable          0ULL
++#define GIC_BASER_InnerShareable        1ULL
++#define GIC_BASER_OuterShareable        2ULL
++#define GIC_BASER_SHAREABILITY_MASK     3ULL
++
++#define GIC_BASER_CACHEABILITY(reg, inner_outer, type)                  \
++	(GIC_BASER_CACHE_##type << reg##_##inner_outer##_CACHEABILITY_SHIFT)
++
++#define GIC_BASER_SHAREABILITY(reg, type)                               \
++	(GIC_BASER_##type << reg##_SHAREABILITY_SHIFT)
++
++#define GICR_PROPBASER_SHAREABILITY_SHIFT               (10)
++#define GICR_PROPBASER_INNER_CACHEABILITY_SHIFT         (7)
++#define GICR_PROPBASER_OUTER_CACHEABILITY_SHIFT         (56)
++#define GICR_PROPBASER_SHAREABILITY_MASK                                \
++	GIC_BASER_SHAREABILITY(GICR_PROPBASER, SHAREABILITY_MASK)
++#define GICR_PROPBASER_INNER_CACHEABILITY_MASK                          \
++	GIC_BASER_CACHEABILITY(GICR_PROPBASER, INNER, MASK)
++#define GICR_PROPBASER_OUTER_CACHEABILITY_MASK                          \
++	GIC_BASER_CACHEABILITY(GICR_PROPBASER, OUTER, MASK)
++#define GICR_PROPBASER_CACHEABILITY_MASK GICR_PROPBASER_INNER_CACHEABILITY_MASK
++
++#define GICR_PROPBASER_InnerShareable                                   \
++	GIC_BASER_SHAREABILITY(GICR_PROPBASER, InnerShareable)
++
++#define GICR_PROPBASER_nCnB     GIC_BASER_CACHEABILITY(GICR_PROPBASER, INNER, nCnB)
++#define GICR_PROPBASER_nC       GIC_BASER_CACHEABILITY(GICR_PROPBASER, INNER, nC)
++#define GICR_PROPBASER_RaWt     GIC_BASER_CACHEABILITY(GICR_PROPBASER, INNER, RaWt)
++#define GICR_PROPBASER_RaWb     GIC_BASER_CACHEABILITY(GICR_PROPBASER, INNER, RaWt)
++#define GICR_PROPBASER_WaWt     GIC_BASER_CACHEABILITY(GICR_PROPBASER, INNER, WaWt)
++#define GICR_PROPBASER_WaWb     GIC_BASER_CACHEABILITY(GICR_PROPBASER, INNER, WaWb)
++#define GICR_PROPBASER_RaWaWt   GIC_BASER_CACHEABILITY(GICR_PROPBASER, INNER, RaWaWt)
++#define GICR_PROPBASER_RaWaWb   GIC_BASER_CACHEABILITY(GICR_PROPBASER, INNER, RaWaWb)
++
++#define GICR_PROPBASER_IDBITS_MASK                      (0x1f)
++
++#define GICR_PENDBASER_SHAREABILITY_SHIFT               (10)
++#define GICR_PENDBASER_INNER_CACHEABILITY_SHIFT         (7)
++#define GICR_PENDBASER_OUTER_CACHEABILITY_SHIFT         (56)
++#define GICR_PENDBASER_SHAREABILITY_MASK                                \
++	GIC_BASER_SHAREABILITY(GICR_PENDBASER, SHAREABILITY_MASK)
++#define GICR_PENDBASER_INNER_CACHEABILITY_MASK                          \
++	GIC_BASER_CACHEABILITY(GICR_PENDBASER, INNER, MASK)
++#define GICR_PENDBASER_OUTER_CACHEABILITY_MASK                          \
++	GIC_BASER_CACHEABILITY(GICR_PENDBASER, OUTER, MASK)
++#define GICR_PENDBASER_CACHEABILITY_MASK GICR_PENDBASER_INNER_CACHEABILITY_MASK
++
++#define GICR_PENDBASER_InnerShareable                                   \
++	GIC_BASER_SHAREABILITY(GICR_PENDBASER, InnerShareable)
++
++#define GICR_PENDBASER_nCnB     GIC_BASER_CACHEABILITY(GICR_PENDBASER, INNER, nCnB)
++#define GICR_PENDBASER_nC       GIC_BASER_CACHEABILITY(GICR_PENDBASER, INNER, nC)
++#define GICR_PENDBASER_RaWt     GIC_BASER_CACHEABILITY(GICR_PENDBASER, INNER, RaWt)
++#define GICR_PENDBASER_RaWb     GIC_BASER_CACHEABILITY(GICR_PENDBASER, INNER, RaWt)
++#define GICR_PENDBASER_WaWt     GIC_BASER_CACHEABILITY(GICR_PENDBASER, INNER, WaWt)
++#define GICR_PENDBASER_WaWb     GIC_BASER_CACHEABILITY(GICR_PENDBASER, INNER, WaWb)
++#define GICR_PENDBASER_RaWaWt   GIC_BASER_CACHEABILITY(GICR_PENDBASER, INNER, RaWaWt)
++#define GICR_PENDBASER_RaWaWb   GIC_BASER_CACHEABILITY(GICR_PENDBASER, INNER, RaWaWb)
++
++#define GICR_PENDBASER_PTZ                              BIT_ULL(62)
++
++#define LPI_PROP_GROUP1                 (1 << 1)
++#define LPI_PROP_ENABLED                (1 << 0)
++#define LPI_PROP_DEFAULT_PRIO   0xa0
++
+ #include <asm/arch_gicv3.h>
  
  #ifndef __ASSEMBLY__
- 
-+#include <asm/setup.h>
-+#include <asm/io.h>
-+
-+#define GITS_BASER                      0x0100
-+
-+#define GITS_BASER_NR_REGS              8
-+
-+#define GITS_BASER_VALID                        (1UL << 63)
-+#define GITS_BASER_INDIRECT                     (1ULL << 62)
-+
-+#define GITS_BASER_INNER_CACHEABILITY_SHIFT     (59)
-+#define GITS_BASER_OUTER_CACHEABILITY_SHIFT     (53)
-+#define GITS_BASER_INNER_CACHEABILITY_MASK                              \
-+	GIC_BASER_CACHEABILITY(GITS_BASER, INNER, MASK)
-+#define GITS_BASER_CACHEABILITY_MASK            GITS_BASER_INNER_CACHEABILITY_MASK
-+#define GITS_BASER_OUTER_CACHEABILITY_MASK                              \
-+	GIC_BASER_CACHEABILITY(GITS_BASER, OUTER, MASK)
-+#define GITS_BASER_SHAREABILITY_MASK                                    \
-+	GIC_BASER_SHAREABILITY(GITS_BASER, SHAREABILITY_MASK)
-+
-+#define GITS_BASER_nCnB         GIC_BASER_CACHEABILITY(GITS_BASER, INNER, nCnB)
-+#define GITS_BASER_nC           GIC_BASER_CACHEABILITY(GITS_BASER, INNER, nC)
-+#define GITS_BASER_RaWt         GIC_BASER_CACHEABILITY(GITS_BASER, INNER, RaWt)
-+#define GITS_BASER_RaWb         GIC_BASER_CACHEABILITY(GITS_BASER, INNER, RaWt)
-+#define GITS_BASER_WaWt         GIC_BASER_CACHEABILITY(GITS_BASER, INNER, WaWt)
-+#define GITS_BASER_WaWb         GIC_BASER_CACHEABILITY(GITS_BASER, INNER, WaWb)
-+#define GITS_BASER_RaWaWt       GIC_BASER_CACHEABILITY(GITS_BASER, INNER, RaWaWt)
-+#define GITS_BASER_RaWaWb       GIC_BASER_CACHEABILITY(GITS_BASER, INNER, RaWaWb)
-+
-+#define GITS_BASER_TYPE_SHIFT                   (56)
-+#define GITS_BASER_TYPE(r)              (((r) >> GITS_BASER_TYPE_SHIFT) & 7)
-+#define GITS_BASER_ENTRY_SIZE_SHIFT             (48)
-+#define GITS_BASER_ENTRY_SIZE(r)        ((((r) >> GITS_BASER_ENTRY_SIZE_SHIFT) & 0x1f) + 1)
-+#define GITS_BASER_SHAREABILITY_SHIFT   (10)
-+#define GITS_BASER_InnerShareable                                       \
-+	GIC_BASER_SHAREABILITY(GITS_BASER, InnerShareable)
-+#define GITS_BASER_PAGE_SIZE_SHIFT      (8)
-+#define GITS_BASER_PAGE_SIZE_4K         (0UL << GITS_BASER_PAGE_SIZE_SHIFT)
-+#define GITS_BASER_PAGE_SIZE_16K        (1UL << GITS_BASER_PAGE_SIZE_SHIFT)
-+#define GITS_BASER_PAGE_SIZE_64K        (2UL << GITS_BASER_PAGE_SIZE_SHIFT)
-+#define GITS_BASER_PAGE_SIZE_MASK       (3UL << GITS_BASER_PAGE_SIZE_SHIFT)
-+#define GITS_BASER_PAGES_MAX            256
-+#define GITS_BASER_PAGES_SHIFT          (0)
-+#define GITS_BASER_NR_PAGES(r)          (((r) & 0xff) + 1)
-+
-+#define GITS_BASER_TYPE_NONE            0
-+#define GITS_BASER_TYPE_DEVICE          1
-+#define GITS_BASER_TYPE_VCPU            2
-+#define GITS_BASER_TYPE_CPU             3
-+#define GITS_BASER_TYPE_COLLECTION      4
-+#define GITS_BASER_TYPE_RESERVED5       5
-+#define GITS_BASER_TYPE_RESERVED6       6
-+#define GITS_BASER_TYPE_RESERVED7       7
-+
-+struct its_baser {
-+	unsigned int index;
-+	int type;
-+	u64 cache;
-+	int shr;
-+	size_t psz;
-+	int nr_pages;
-+	bool indirect;
-+	phys_addr_t table_addr;
-+	bool valid;
-+	int esz;
-+};
-+
- struct its_data {
- 	void *base;
-+	struct its_baser baser[GITS_BASER_NR_REGS];
+@@ -57,6 +132,8 @@
+ struct gicv3_data {
+ 	void *dist_base;
+ 	void *redist_base[NR_CPUS];
++	void *lpi_prop;
++	void *lpi_pend[NR_CPUS];
+ 	unsigned int irq_nr;
+ 	unsigned int cpu_count;
  };
- 
- extern struct its_data its_data;
- 
- #define gicv3_its_base()		(its_data.base)
- 
-+extern int its_parse_baser(int i, struct its_baser *baser);
-+extern void its_setup_baser(int i, struct its_baser *baser);
-+
-+
- #endif /* !__ASSEMBLY__ */
- #endif /* _ASMARM_GIC_V3_ITS_H_ */
 diff --git a/lib/arm/gic-v3-its.c b/lib/arm/gic-v3-its.c
-index e382b80..225a72e 100644
+index 225a72e..5eb8e6a 100644
 --- a/lib/arm/gic-v3-its.c
 +++ b/lib/arm/gic-v3-its.c
-@@ -7,3 +7,82 @@
+@@ -86,3 +86,53 @@ void its_setup_baser(int i, struct its_baser *baser)
+ 	writeq(val, reg_addr);
+ }
  
- struct its_data its_data;
- 
-+static const char * const its_base_type_string[] = {
-+	[GITS_BASER_TYPE_DEVICE]        = "Devices",
-+	[GITS_BASER_TYPE_VCPU]          = "Virtual CPUs",
-+	[GITS_BASER_TYPE_CPU]           = "Physical CPUs",
-+	[GITS_BASER_TYPE_COLLECTION]    = "Interrupt Collections",
-+	[GITS_BASER_TYPE_RESERVED5]     = "Reserved (5)",
-+	[GITS_BASER_TYPE_RESERVED6]     = "Reserved (6)",
-+	[GITS_BASER_TYPE_RESERVED7]     = "Reserved (7)",
-+};
-+
-+int its_parse_baser(int i, struct its_baser *baser)
++/*
++ * alloc_lpi_tables: Allocate LPI config and pending tables
++ * Enable LPIs in the config table.
++ *
++ * prerequisites: gic_data.cpu_count must be set
++ */
++void alloc_lpi_tables(void)
 +{
-+	void *reg_addr = gicv3_its_base() + GITS_BASER + i * 8;
-+	u64 val = readq(reg_addr);
-+	int inner_cache;
++	u64 prop_val;
++	unsigned int cpu;
 +
-+	if (!val) {
-+		memset(baser, 0, sizeof(*baser));
-+		return -1;
++	if (!gicv3_data.cpu_count)
++		report_abort("%s cpu_count not set\n", __func__);
++
++	gicv3_data.lpi_prop =
++		(void *)phys_zalloc_aligned(SZ_64K, SZ_64K);
++
++	/* ID bits = 13, ie. up to 14b LPI INTID */
++	prop_val = ((u64)gicv3_data.lpi_prop |
++			GICR_PROPBASER_InnerShareable |
++			GICR_PROPBASER_WaWb |
++			(13 & GICR_PROPBASER_IDBITS_MASK));
++
++	/* All LPIs enabled */
++	memset(gicv3_data.lpi_prop,
++	      LPI_PROP_DEFAULT_PRIO | LPI_PROP_GROUP1 | 1,
++	      SZ_64K);
++
++	/*
++	 * Allocate pending tables for each redistributor
++	 * and set PROPBASER and PENDBASER
++	 */
++	for (cpu = 0; cpu < gicv3_data.cpu_count; cpu++) {
++		u64 pend_val;
++		void *ptr;
++
++		ptr = gicv3_data.redist_base[cpu];
++
++		writeq(prop_val, ptr + GICR_PROPBASER);
++
++		gicv3_data.lpi_pend[cpu] =
++			(void *)phys_zalloc_aligned(SZ_64K, SZ_64K);
++
++		pend_val = ((u64)gicv3_data.lpi_pend[cpu] |
++			GICR_PENDBASER_InnerShareable |
++			GICR_PENDBASER_WaWb);
++
++		writeq(pend_val, ptr + GICR_PENDBASER);
 +	}
-+
-+	baser->valid = val & GITS_BASER_VALID;
-+	baser->indirect = val & GITS_BASER_INDIRECT;
-+	baser->type = GITS_BASER_TYPE(val);
-+	baser->esz = GITS_BASER_ENTRY_SIZE(val);
-+	baser->nr_pages = GITS_BASER_NR_PAGES(val);
-+	baser->table_addr = (val >> 12) & 36;
-+	inner_cache = (val >> 59) & 0x7;
-+	baser->cache = inner_cache;
-+	switch (val & GITS_BASER_PAGE_SIZE_MASK) {
-+	case GITS_BASER_PAGE_SIZE_4K:
-+		baser->psz = SZ_4K;
-+		break;
-+	case GITS_BASER_PAGE_SIZE_16K:
-+		baser->psz = SZ_16K;
-+		break;
-+	case GITS_BASER_PAGE_SIZE_64K:
-+		baser->psz = SZ_64K;
-+		break;
-+	default:
-+		baser->psz = SZ_64K;
-+	}
-+	baser->shr = (val >> 10) & 0x3;
-+
-+	return 0;
 +}
-+
-+void its_setup_baser(int i, struct its_baser *baser)
-+{
-+	void *reg_addr = gicv3_its_base() + GITS_BASER + i * 8;
-+	u64 val = readq(reg_addr);
-+
-+	baser->table_addr =
-+		(u64)phys_zalloc(baser->psz * baser->nr_pages);
-+
-+	val = ((u64)baser->table_addr					|
-+		((u64)baser->type << GITS_BASER_TYPE_SHIFT)		|
-+		((u64)(baser->esz - 1) << GITS_BASER_ENTRY_SIZE_SHIFT)	|
-+		((baser->nr_pages - 1) << GITS_BASER_PAGES_SHIFT)	|
-+		baser->cache						|
-+		baser->shr						|
-+		GITS_BASER_VALID);
-+
-+	val |=  baser->indirect ? GITS_BASER_INDIRECT : 0x0;
-+	switch (baser->psz) {
-+	case SZ_4K:
-+		val |= GITS_BASER_PAGE_SIZE_4K;
-+		break;
-+	case SZ_16K:
-+		val |= GITS_BASER_PAGE_SIZE_16K;
-+		break;
-+	case SZ_64K:
-+		val |= GITS_BASER_PAGE_SIZE_64K;
-+		break;
-+	}
-+
-+	writeq(val, reg_addr);
-+}
-+
 -- 
 2.5.5

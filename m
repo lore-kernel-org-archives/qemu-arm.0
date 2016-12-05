@@ -1,70 +1,74 @@
-Received: by 10.25.159.131 with SMTP id i125csp1609859lfe;
-        Mon, 5 Dec 2016 07:36:06 -0800 (PST)
-X-Received: by 10.237.60.51 with SMTP id t48mr51085807qte.24.1480952165922;
-        Mon, 05 Dec 2016 07:36:05 -0800 (PST)
+Received: by 10.25.159.131 with SMTP id i125csp1722930lfe;
+        Mon, 5 Dec 2016 11:35:17 -0800 (PST)
+X-Received: by 10.55.69.68 with SMTP id s65mr50608010qka.314.1480966517354;
+        Mon, 05 Dec 2016 11:35:17 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id g39si9128223qtc.206.2016.12.05.07.36.05
+        by mx.google.com with ESMTPS id t73si9634991qki.337.2016.12.05.11.35.17
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 05 Dec 2016 07:36:05 -0800 (PST)
+        Mon, 05 Dec 2016 11:35:17 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:42498 helo=lists.gnu.org)
+       dkim=fail header.i=@dgtlrift-com.20150623.gappssmtp.com;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:44048 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1cDvJF-0005zT-5x
-	for alex.bennee@linaro.org; Mon, 05 Dec 2016 10:36:05 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:48274)
+	id 1cDz2i-0004iZ-NO
+	for alex.bennee@linaro.org; Mon, 05 Dec 2016 14:35:16 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:37745)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <jayadevk123@gmail.com>) id 1cDqye-0003q7-Ha
-	for qemu-arm@nongnu.org; Mon, 05 Dec 2016 05:58:33 -0500
+	(envelope-from <jhanley@dgtlrift.com>) id 1cDxQR-00010m-GW
+	for qemu-arm@nongnu.org; Mon, 05 Dec 2016 12:51:40 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <jayadevk123@gmail.com>) id 1cDqyd-0007s5-Bj
-	for qemu-arm@nongnu.org; Mon, 05 Dec 2016 05:58:32 -0500
-Received: from mail-wm0-x230.google.com ([2a00:1450:400c:c09::230]:36445)
+	(envelope-from <jhanley@dgtlrift.com>) id 1cDxQQ-0007U9-6y
+	for qemu-arm@nongnu.org; Mon, 05 Dec 2016 12:51:39 -0500
+Received: from mail-vk0-x243.google.com ([2607:f8b0:400c:c05::243]:35388)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <jayadevk123@gmail.com>)
-	id 1cDqyd-0007rZ-1M
-	for qemu-arm@nongnu.org; Mon, 05 Dec 2016 05:58:31 -0500
-Received: by mail-wm0-x230.google.com with SMTP id g23so91107855wme.1
-	for <qemu-arm@nongnu.org>; Mon, 05 Dec 2016 02:58:30 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=mime-version:from:date:message-id:subject:to;
-	bh=O6q/sA+Qtaw94DVDXAlMJ5wc0XEl47px7M2m3SKTClk=;
-	b=vS38vco9aUWrLpB84oLH3AFGyFYHk0SbxMjXmoSuB/Fl1TuyJeaYlSWLwwb/1usG73
-	gcUh7D8NA5JVfoKor5YeWI9MOwT3Sfea1oBzehE8VMVuqDTTVDEE1KPp3lJcGrDKSgyx
-	4s8+1WS9FsNRkbs45Nu2tpA2ktoHdfiFaUfLxGJFjwRcnN3zde14G2qvYxX3A89AF8eb
-	yl1zH0k9lAMyKf9kXGsZFr3kbH6dkz8NHNnxFVyz9bZY6b1vGN3GemCESJ9cFy09wiZa
-	y5WvO8bQe0HBX6kofuje/DfbsKd+CunFIHtJl3euzVWPx5eb0VEabhbalTZxSbqxQ+G7
-	32Wg==
+	(Exim 4.71) (envelope-from <jhanley@dgtlrift.com>)
+	id 1cDxQP-0007U2-Vi
+	for qemu-arm@nongnu.org; Mon, 05 Dec 2016 12:51:38 -0500
+Received: by mail-vk0-x243.google.com with SMTP id x186so16577445vkd.2
+	for <qemu-arm@nongnu.org>; Mon, 05 Dec 2016 09:51:37 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=dgtlrift-com.20150623.gappssmtp.com; s=20150623;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to; 
+	bh=OMmHRDc9HmAQ68PpUNBVyUWMxzcN35Ihs8P+97vLIf0=;
+	b=PoCoARkGj9Qy+Sk2bnxuDmIVhYppWENd+DIKHSBuW5hDEHUJW2+rM+gqhXRFQ7vSDD
+	ST1HdJWhZcqwxHnxYoz3krOawhHPpl02lLxIH5qFl/oXGvoPX2Zk+j5ngVxIZ1HT4HB7
+	BhFzZ0yfmA1kz4qW2j79n2aaY5cu5MOea0DNh/qJX6emJR2L0cdY0SGXMlz/YVmvyJyV
+	CQakLMvkJbkV/HxMxHyRU9Z85neVbkbv8THcqjk7avt1629anu14JrSNb7PNItXNKeBa
+	NxZVkLdaQg4Yz1Lxem5gUWwzr9nSbBvz3jj6LMzIp85/kLxmPCbJeeHxMsSP9z04vCu2
+	lXpw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:from:date:message-id:subject:to;
-	bh=O6q/sA+Qtaw94DVDXAlMJ5wc0XEl47px7M2m3SKTClk=;
-	b=lGqEFFHUJnePFsm05eGoZdztNvLVpnFiCLW8nJRyFCPEa5/t7R2x4UxZpZGuh3oH+L
-	Qh6Jz3li+4qQ5V0L2QTr85j4xA4T/DHPtdmG6B32A7S1Koe6eOn3UeU8jTNE8jUO9G72
-	LnrknMouE5BybbnvXvzS7Mr6Yr2d2kLyUCuCRh21QaItKl5TKYx7jKBK+NDJ0tdGiDf+
-	3C/7J9ld6kgpa9KVox1acg/pxnM2fogaX1/rJUXey8ykHepMvQIdHyyGQAwzBZ5pnTic
-	aC4L9IHWzf5jLJCVIatOcnNKmbh6i4s0FBqc6ltO7AXJVUoKCDf66eWUpleRdCuLTOaw
-	i1nQ==
-X-Gm-Message-State: AKaTC03Psqap9z76/yTW+lJTzTmtyTmeSkFsUk2CX6qOwlOZMPtYMk2RVES7p7p2wNKHZhY0coA56pOReVoxxg==
-X-Received: by 10.46.9.194 with SMTP id 185mr24901084ljj.3.1480935509433; Mon,
-	05 Dec 2016 02:58:29 -0800 (PST)
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to;
+	bh=OMmHRDc9HmAQ68PpUNBVyUWMxzcN35Ihs8P+97vLIf0=;
+	b=TBHIvGXtDhMWhsD130Wx6RheGm/Zqu5jooYJ2kxX9DNZiRKAVuZEbSHDpls5xYEEUd
+	yGTTmdtl6dcphKHb7vdpTy7Mnk3gygTEUS+Q1EF/94EJZqjv372kDyyEOlWfHBvck6K0
+	3U1YYlcZoiL0zC8Ejhkr8ifXNC4XNnQNk1WhQIJzMmF83+LwOJ8swUd5s+AO7CilulRR
+	zjYL1i50RdHqsBtvy/o0dxWxzGe4+YnjZ9d6tJ7aQYl0CCpxsLGfjyLkvJXOy3U5J6Hl
+	xNv2qlyHleJ6oU8KbwurI2Np8fC88NgU5L9hE+C4nfu5vJTmcR5Gh9Z6BO4SWb4CTozZ
+	6mDA==
+X-Gm-Message-State: AKaTC02j8v9r7aaJwEXQqKoWhtJ211ll/SpSxOQii5dJBhN0hNCP/4NCZEd3w+AeXr/jhC8gtxSBm1gOF6kezA==
+X-Received: by 10.31.7.200 with SMTP id 191mr22934059vkh.132.1480960296911;
+	Mon, 05 Dec 2016 09:51:36 -0800 (PST)
 MIME-Version: 1.0
-Received: by 10.25.21.95 with HTTP; Mon, 5 Dec 2016 02:58:28 -0800 (PST)
-From: Jayadev Kumaran <jayadevk123@gmail.com>
-Date: Mon, 5 Dec 2016 16:28:28 +0530
-Message-ID: <CAOG0femt3MC1ph_6BrCj+FZisRXrJw5g=h1iKeU+JDYzmBkwwg@mail.gmail.com>
+Received: by 10.103.129.151 with HTTP; Mon, 5 Dec 2016 09:51:36 -0800 (PST)
+In-Reply-To: <1dda2994-dc9d-d8f6-fb42-856f2b992484@redhat.com>
+References: <CAF++6AOJ_kiPyeCO3WO84d4UTrV9v=iK8CJx72ERJ5N_AKj64g@mail.gmail.com>
+	<1dda2994-dc9d-d8f6-fb42-856f2b992484@redhat.com>
+From: James Hanley <jhanley@dgtlrift.com>
+Date: Mon, 5 Dec 2016 12:51:36 -0500
+Message-ID: <CAF++6APMs+eshFxV=wxV9N9zmyyLtU8Gz0v0CAgCWkOnC88dpg@mail.gmail.com>
 To: qemu-arm@nongnu.org
-Content-Type: multipart/alternative; boundary=001a114b1788f9a1660542e72a56
+Content-Type: multipart/alternative; boundary=001a1143d3186cf0f80542ecf055
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2a00:1450:400c:c09::230
-X-Mailman-Approved-At: Mon, 05 Dec 2016 10:35:59 -0500
-Subject: [Qemu-arm] Unable to share host folder
+X-Received-From: 2607:f8b0:400c:c05::243
+X-Mailman-Approved-At: Mon, 05 Dec 2016 14:34:36 -0500
+Subject: Re: [Qemu-arm] [Qemu-discuss] Custom board with DTS/DTB
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -78,124 +82,156 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: lH/paprzCjfh
+X-TUID: iCgPPMaW9U/2
 
---001a114b1788f9a1660542e72a56
+--001a1143d3186cf0f80542ecf055
 Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
 
-Hello everyone,
+I'm moving my query to QEMU-Arm since it seems more applicable here.
+   1) It seems that the -dtb option is not what I thought it was, but would
+something like what I thought was the intent of the option be of value to
+QEMU, that is to define the board support package for the system using DTC
+to compile and pass into QEMU to define a generic board from the tree,
+rather then defining the hardware within the code base of QEMU?  I
+understand that there will always be some need for device support and
+deginition from within the codebase, but this was more to allow the user to
+define hardware board profiles without having to change source code.
+   2) Right now, I'm trying to run our embedded application (EmbOS RTOS
+with DLib with our application support all targeted for Cortex-M4 MPU) and
+it seems like QEMU (at least from variable names) wants to believe that
+under boot.c and loader.c that the passed in application (using --kernel
+option) is linux.  Is this proper behavior - or is there someway to pass
+the statically linked code-flash binary to execute? Our binary is note
+Linux, and is running EmbOS an RTOS. Note that this CM4 module executes
+from code flash.
 
-I'm very new to Qemu and currently running the emulator for arm64 platform.
-I'm trying to share/copy a folder from my host system onto Qemu , but
-haven't succeeded yet. I have tried quite a few ways
-
-1 Mount a host folder using 9p over virtio
-
-   Kernel configuration options were verfied to ensure 9p options are
-enabled.
-   Ran the emulator using :
-   *qemu-system-aarch64 -M virt -cpu cortex-a57 -kernel Image -initrd
-rootfs.img.gz -nographic -append "console=ttyAMA0 root=/dev/ram
-rootfstype=ramfs init=/bin/sh" -snapshot -fsdev
-local,**security_model=none,id=fsdev0,path=/mnt/shared
--device virtio-9p-pci,id=fs0,fsdev=fsdev0,mount_tag=hostshare*
-
-   And tried mounting using
-   *mount -t 9p -o trans=virtio,version=9p2000.L hostshare /tmp/share*
-
-   But  the console showed ;
-   9pnet_virtio : No channels available
-   mount: mounting hostshare on /tmp/share/ failed: No such file or
-directory
-
-   a) I verfied that /tmp/share is present .
-   b) Tried using -virtfs option with qemu-system-aarch64 , but it showed
-the same logs.
-
-2  Created a plain binary image using qemu-img ( raw format ). Formatted it
-as ext4. Mounted it on the host , copied the required folder into the mount
-point and then unmounted it . Now I tried inserting the image using;
-
-*qemu-system-aarch64 -M virt -cpu cortex-a57 -kernel Image -initrd
-rootfs.img.gz -nographic -append "console=ttyAMA0 root=/dev/ram
-rootfstype=ramfs init=/bin/sh" -snapshot -drive
-/home/user/Documents/image_file*
-Also using
+Thanks much,
+-Jim
 
 
-*qemu-system-aarch64 -M virt -cpu cortex-a57 -kernel Image -initrd
-rootfs.img.gz -nographic -append "console=ttyAMA0 root=/dev/ram
-rootfstype=ramfs init=/bin/sh" -snapshot -hdd
-/home/user/Documents/image_file*
-But on my guest , I couldn't locate any mount point for the image
+On Sat, Nov 19, 2016 at 2:48 AM, Thomas Huth <thuth@redhat.com> wrote:
 
-3 Sharing through host USB device
-Added the usb device using the usb_add monitor command . But the device
-wasn't detected/mounted in Qemu ( lsusb and mount didn't show any USB
-device )
+> On 17.11.2016 23:14, James Hanley wrote:
+> > I saw the presentation on =E2=80=9CCustom Hardware Modeling for FPGAs a=
+nd
+> > Embedded Linux Platforms with QEMU=E2=80=9D via
+> > http://free-electrons.com/pub/video/2010/elc/elc2010-
+> williams-iglesias-fpga-qemu.ogv
+> > and was trying to apply the concepts described against our custom board
+> > design, and defining the board using dts.  I haven't been able to reall=
+y
+> > get far and was looking for some guidance if this is the right directio=
+n.
+> > The mcu is a cortex-m4 (Atmel)
+> > The target firmware is running an RTOS (not Linux)
+> >
+> > QEMU emulator version 2.7.50 (v2.7.0-1890-g83c83f9-dirty)
+> > Copyright (c) 2003-2016 Fabrice Bellard and the QEMU Project developers
+> >
+> > It's my understanding that the dtb option passes a file that includes
+> > details of the machine that qemu can use to map out peripherals for it
+> > without having to compile the machine into qemu - is this a
+> > misunderstanding?
+>
+> As far as I know, the -dtb parameter only passes the device tree blob to
+> the kernel image. I think QEMU does not look at the contents of that file=
+.
+> So you've got to instantiate the corresponding devices manually with the
+> "-device" parameter of QEMU. Simply run QEMU with "-device ?" for a list
+> of supported devices.
+> However, I'm not familiar with ARM machines of QEMU, not sure whether
+> you can successfully populate a "none" machine that way. So you rather
+> might need to modify the source code by copying one of the existing
+> boards and adapting it to your needs.
+>
+> > When I attempt to connect to qemu from gdb the qemu instance segfaults.
+>
+> That should not happen. Can you get a backtrace to see where this happene=
+d?
+>
+>  Thomas
+>
+>
 
-4 Added the folder to initrd image ( rootfs.img.gz)
-In this method , emulator didn't start , supposedly due to exceeding size
-limit of 16M ( new image was found to be around 160M ).
-
-As I had mentioned in the beginning , I'm very new to this and couldn't
-actually figure the proper way to resolve these issues.. Any help would be
-appreciated.
-
-Regards,
-Jayadev
-
---001a114b1788f9a1660542e72a56
+--001a1143d3186cf0f80542ecf055
 Content-Type: text/html; charset=UTF-8
 Content-Transfer-Encoding: quoted-printable
 
-<div dir=3D"ltr"><div><div><div><div><div>Hello everyone,<br><br></div>I&#3=
-9;m very new to Qemu and currently running the emulator for arm64 platform.=
- I&#39;m trying to share/copy a folder from my host system onto Qemu , but =
-haven&#39;t succeeded yet. I have tried quite a few ways<br><br></div>1 Mou=
-nt a host folder using 9p over virtio<br><br></div>=C2=A0=C2=A0 Kernel conf=
-iguration options were verfied to ensure 9p options are enabled.<br></div>=
-=C2=A0=C2=A0 Ran the emulator using :<br>=C2=A0=C2=A0 <i><b>qemu-system-aar=
-ch64 -M virt -cpu cortex-a57 -kernel Image -initrd rootfs.img.gz -nographic=
- -append &quot;console=3DttyAMA0 root=3D/dev/ram rootfstype=3Dramfs init=3D=
-/bin/sh&quot; -snapshot -fsdev local,</b></i><span style=3D"font-family:ari=
-al,helvetica,sans-serif"><i><b>security_model=3Dnone,id=3Dfsdev0,path=3D/mn=
-t/shared -device virtio-9p-pci,id=3Dfs0,fsdev=3Dfsdev0,mount_tag=3Dhostshar=
-e</b></i><br>=C2=A0 <br></span></div><span style=3D"font-family:arial,helve=
-tica,sans-serif">=C2=A0=C2=A0 And tried mounting using <br>=C2=A0=C2=A0 </s=
-pan><i><b><span style=3D"font-family:arial,helvetica,sans-serif">mount -t 9=
-p -o trans=3Dvirtio,version=3D9p2000.L hostshare /tmp/share</span></b></i><=
-div><span style=3D"font-family:arial,helvetica,sans-serif">=C2=A0 <br></spa=
-n></div><div><span style=3D"font-family:arial,helvetica,sans-serif">=C2=A0=
-=C2=A0 But=C2=A0 the console showed ;<br>=C2=A0=C2=A0 </span>9pnet_virtio :=
- No channels available<br>=C2=A0=C2=A0 mount: mounting hostshare on /tmp/sh=
-are/ failed: No such file or directory<br>=C2=A0=C2=A0=C2=A0 <br></div><div=
->=C2=A0=C2=A0 a) I verfied that /tmp/share is present . <br></div><div>=C2=
-=A0=C2=A0 b) Tried using -virtfs option with qemu-system-aarch64 , but it s=
-howed the same logs.<br></div><div>=C2=A0=C2=A0 <br></div><div>2=C2=A0 Crea=
-ted a plain binary image using qemu-img ( raw format ). Formatted it as ext=
-4. Mounted it on the host , copied the required folder into the mount point=
- and then unmounted it . Now I tried inserting the image using;<br>=C2=A0<i=
-><b>qemu-system-aarch64 -M virt -cpu cortex-a57 -kernel Image -initrd=20
-rootfs.img.gz -nographic -append &quot;console=3DttyAMA0 root=3D/dev/ram=20
-rootfstype=3Dramfs init=3D/bin/sh&quot; -snapshot -drive /home/user/Documen=
-ts/image_file<br></b></i></div><div>Also using<i><b><br></b></i><i><b>qemu-=
-system-aarch64 -M virt -cpu cortex-a57 -kernel Image -initrd=20
-rootfs.img.gz -nographic -append &quot;console=3DttyAMA0 root=3D/dev/ram=20
-rootfstype=3Dramfs init=3D/bin/sh&quot; -snapshot -hdd /home/user/Documents=
-/image_file<br><br></b></i></div><div>But on my guest , I couldn&#39;t loca=
-te any mount point for the image<br><br>3 Sharing through host USB device <=
+<div dir=3D"ltr">I&#39;m moving my query to QEMU-Arm since it seems more ap=
+plicable here.<div>=C2=A0 =C2=A01) It seems that the -dtb option is not wha=
+t I thought it was, but would something like what I thought was the intent =
+of the option be of value to QEMU, that is to define the board support pack=
+age for the system using DTC to compile and pass into QEMU to define a gene=
+ric board from the tree, rather then defining the hardware within the code =
+base of QEMU?=C2=A0 I understand that there will always be some need for de=
+vice support and deginition from within the codebase, but this was more to =
+allow the user to define hardware board profiles without having to change s=
+ource code.</div><div>=C2=A0 =C2=A02) Right now, I&#39;m trying to run our =
+embedded application (EmbOS RTOS with DLib with our application support all=
+ targeted for Cortex-M4 MPU) and it seems like QEMU (at least from variable=
+ names) wants to believe that under boot.c and loader.c that the passed in =
+application (using --kernel option) is linux.=C2=A0 Is this proper behavior=
+ - or is there someway to pass the statically linked code-flash binary to e=
+xecute? Our binary is note Linux, and is running EmbOS an RTOS. Note that t=
+his CM4 module executes from code flash.</div><div><br></div><div>Thanks mu=
+ch,</div><div>-Jim</div><div>=C2=A0 =C2=A0</div><div><div class=3D"gmail_ex=
+tra"><br><div class=3D"gmail_quote">On Sat, Nov 19, 2016 at 2:48 AM, Thomas=
+ Huth <span dir=3D"ltr">&lt;<a href=3D"mailto:thuth@redhat.com" target=3D"_=
+blank">thuth@redhat.com</a>&gt;</span> wrote:<br><blockquote class=3D"gmail=
+_quote" style=3D"margin:0 0 0 .8ex;border-left:1px #ccc solid;padding-left:=
+1ex">On 17.11.2016 23:14, James Hanley wrote:<br>
+&gt; I saw the presentation on =E2=80=9CCustom Hardware Modeling for FPGAs =
+and<br>
+&gt; Embedded Linux Platforms with QEMU=E2=80=9D via<br>
+&gt; <a href=3D"http://free-electrons.com/pub/video/2010/elc/elc2010-willia=
+ms-iglesias-fpga-qemu.ogv" rel=3D"noreferrer" target=3D"_blank">http://free=
+-electrons.com/pub/<wbr>video/2010/elc/elc2010-<wbr>williams-iglesias-fpga-=
+qemu.<wbr>ogv</a><br>
+&gt; and was trying to apply the concepts described against our custom boar=
+d<br>
+&gt; design, and defining the board using dts.=C2=A0 I haven&#39;t been abl=
+e to really<br>
+&gt; get far and was looking for some guidance if this is the right directi=
+on.<br>
+&gt; The mcu is a cortex-m4 (Atmel)<br>
+&gt; The target firmware is running an RTOS (not Linux)<br>
+&gt;<br>
+&gt; QEMU emulator version 2.7.50 (v2.7.0-1890-g83c83f9-dirty)<br>
+&gt; Copyright (c) 2003-2016 Fabrice Bellard and the QEMU Project developer=
+s<br>
+&gt;<br>
+&gt; It&#39;s my understanding that the dtb option passes a file that inclu=
+des<br>
+&gt; details of the machine that qemu can use to map out peripherals for it=
+<br>
+&gt; without having to compile the machine into qemu - is this a<br>
+&gt; misunderstanding?<br>
+<br>
+As far as I know, the -dtb parameter only passes the device tree blob to<br=
+>
+the kernel image. I think QEMU does not look at the contents of that file.<=
 br>
-   Added the usb device using the usb_add monitor command . But the device =
-wasn&#39;t detected/mounted in Qemu ( lsusb and mount didn&#39;t show any U=
-SB=20
-device )</div><div><i><b><br></b></i>4   Added the folder  to initrd image =
-( rootfs.img.gz)<br>
-     In this method , emulator didn&#39;t start , supposedly due to=20
-exceeding size limit of 16M ( new image was found to be around 160M ).<br><=
-br></div><div>As I had mentioned in the beginning , I&#39;m very new to thi=
-s and couldn&#39;t actually figure the proper way to resolve these issues..=
- Any help would be appreciated.<br><br></div><div>Regards,<br></div><div>Ja=
-yadev<br></div></div>
+So you&#39;ve got to instantiate the corresponding devices manually with th=
+e<br>
+&quot;-device&quot; parameter of QEMU. Simply run QEMU with &quot;-device ?=
+&quot; for a list<br>
+of supported devices.<br>
+However, I&#39;m not familiar with ARM machines of QEMU, not sure whether<b=
+r>
+you can successfully populate a &quot;none&quot; machine that way. So you r=
+ather<br>
+might need to modify the source code by copying one of the existing<br>
+boards and adapting it to your needs.<br>
+<br>
+&gt; When I attempt to connect to qemu from gdb the qemu instance segfaults=
+.<br>
+<br>
+That should not happen. Can you get a backtrace to see where this happened?=
+<br>
+<span class=3D"HOEnZb"><font color=3D"#888888"><br>
+=C2=A0Thomas<br>
+<br>
+</font></span></blockquote></div><br></div></div></div>
 
---001a114b1788f9a1660542e72a56--
+--001a1143d3186cf0f80542ecf055--

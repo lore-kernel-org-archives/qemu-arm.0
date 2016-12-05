@@ -1,64 +1,104 @@
-Received: by 10.25.159.131 with SMTP id i125csp1681620lfe;
-        Mon, 5 Dec 2016 10:00:28 -0800 (PST)
-X-Received: by 10.159.55.168 with SMTP id q37mr45471210uaq.63.1480960828036;
-        Mon, 05 Dec 2016 10:00:28 -0800 (PST)
-Return-Path: <peter.maydell@linaro.org>
-Received: from mail-vk0-x22f.google.com (mail-vk0-x22f.google.com. [2607:f8b0:400c:c05::22f])
-        by mx.google.com with ESMTPS id p188si3775696vkp.59.2016.12.05.10.00.27
-        for <alex.bennee@linaro.org>
+Received: by 10.25.159.131 with SMTP id i125csp1771651lfe;
+        Mon, 5 Dec 2016 13:47:00 -0800 (PST)
+X-Received: by 10.55.47.69 with SMTP id v66mr49920886qkh.209.1480974420465;
+        Mon, 05 Dec 2016 13:47:00 -0800 (PST)
+Return-Path: <eric.auger@redhat.com>
+Received: from mx1.redhat.com (mx1.redhat.com. [209.132.183.28])
+        by mx.google.com with ESMTPS id h94si9910778qtd.16.2016.12.05.13.47.00
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 05 Dec 2016 10:00:28 -0800 (PST)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 2607:f8b0:400c:c05::22f as permitted sender) client-ip=2607:f8b0:400c:c05::22f;
+        Mon, 05 Dec 2016 13:47:00 -0800 (PST)
+Received-SPF: pass (google.com: domain of eric.auger@redhat.com designates 209.132.183.28 as permitted sender) client-ip=209.132.183.28;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 2607:f8b0:400c:c05::22f as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE dis=NONE) header.from=linaro.org
-Received: by mail-vk0-x22f.google.com with SMTP id p9so182898091vkd.3
-        for <alex.bennee@linaro.org>; Mon, 05 Dec 2016 10:00:27 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-         :cc;
-        bh=CrsC+GwLGxcepf61XsW04iyrGnqjNcb73mt2ILBNNhw=;
-        b=SqVh9GeNwKx2YNQVhOSuFreSxBOAbR/rNFvayEROe6JXGVlpBxSbwT7TtdVcLXbguf
-         Lf67aXG/EVchotDQGLIsfjFLDU43A79Gr8z21vXspnC5U1RHGuH7piKMiKDEZR8M7Vii
-         zMFQybOpcWAay5seKLxm7WW7ekHuRHLPZhmL8=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-         :message-id:subject:to:cc;
-        bh=CrsC+GwLGxcepf61XsW04iyrGnqjNcb73mt2ILBNNhw=;
-        b=A3pBag6fjCJ5BdDbV8Wi7dV8XzjAYog5MLWGXRXAFn1eelRyr+R9Vgs5oyO9D9pED4
-         478d+cfClbMaa339uiff8khHwannDUvSYczJ8wRIvhw0bu9O9/N1/yluOKCF4iUsGFf6
-         8Q1FBLWhCO28SEey3ljRg5MJR8oSU1KB1NefpsWmh0d0s/azzadRddd7K+DgBnoyGfJO
-         rJbH9EKY3rmTmU7fy9FW9hpoK8d8BsBJgUlN56tyWc7fdTAnnd34XK+oao6+1jGa+8hy
-         r4jLAhO1jwwO0fPSkKlWILVwm/Ru9uuqM6w5b9ReI4TV7/q7A3pwgcSdcHubephZduRP
-         0K+g==
-X-Gm-Message-State: AKaTC03KQYTy9tdTF/0IzjiFBTtrDifi8MYgHpm6ji0bgZR9wU7Crl9WkV0YP7zfemVznQr2tluxP7shjQqJcZv5vgw=
-X-Received: by 10.31.75.198 with SMTP id y189mr18342117vka.51.1480960827717;
- Mon, 05 Dec 2016 10:00:27 -0800 (PST)
-MIME-Version: 1.0
-Received: by 10.31.176.14 with HTTP; Mon, 5 Dec 2016 10:00:07 -0800 (PST)
-In-Reply-To: <0bde5bb4-091e-e250-b283-5f1faf8e4351@twiddle.net>
-References: <20161202173454.19179-1-alex.bennee@linaro.org>
- <8737i21vl8.fsf@linaro.org> <0bde5bb4-091e-e250-b283-5f1faf8e4351@twiddle.net>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 5 Dec 2016 18:00:07 +0000
-Message-ID: <CAFEAcA-Hx1kWZr1Li2=qdULMBdYyA9pa3cZ=hKPM9d-AqVvv4g@mail.gmail.com>
-Subject: Re: [Qemu-devel] [PATCH for-2.8] target-arm/translate-a64: fix gen_load_exclusive
-To: Richard Henderson <rth@twiddle.net>
-Cc: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
-	Stefan Hajnoczi <stefanha@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>, 
-	"Emilio G. Cota" <cota@braap.org>, QEMU Developers <qemu-devel@nongnu.org>, 
-	"open list:ARM" <qemu-arm@nongnu.org>
-Content-Type: text/plain; charset=UTF-8
-X-TUID: avEZ+3c0Yq5r
+       spf=pass (google.com: domain of eric.auger@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=eric.auger@redhat.com
+Received: from int-mx10.intmail.prod.int.phx2.redhat.com (int-mx10.intmail.prod.int.phx2.redhat.com [10.5.11.23])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 7301AC054910;
+	Mon,  5 Dec 2016 21:46:59 +0000 (UTC)
+Received: from localhost.localdomain.com (vpn1-4-120.ams2.redhat.com [10.36.4.120])
+	by int-mx10.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP id uB5LksKU019596;
+	Mon, 5 Dec 2016 16:46:55 -0500
+From: Eric Auger <eric.auger@redhat.com>
+To: eric.auger.pro@gmail.com, eric.auger@redhat.com, kvm@vger.kernel.org,
+        kvmarm@lists.cs.columbia.edu, qemu-devel@nongnu.org,
+        qemu-arm@nongnu.org, drjones@redhat.com, marc.zyngier@arm.com,
+        christoffer.dall@linaro.org
+Cc: andre.przywara@arm.com, peter.maydell@linaro.org, alex.bennee@linaro.org,
+        pbonzini@redhat.com
+Subject: [kvm-unit-tests RFC 00/15] arm/arm64: add ITS framework
+Date: Mon,  5 Dec 2016 22:46:31 +0100
+Message-Id: <1480974406-29345-1-git-send-email-eric.auger@redhat.com>
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.23
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.5.110.32]); Mon, 05 Dec 2016 21:46:59 +0000 (UTC)
+X-TUID: RvHSXtcIij7U
 
-On 5 December 2016 at 17:22, Richard Henderson <rth@twiddle.net> wrote:
-> Acked-by: Richard Henderson <rth@twiddle.net>
+This series proposes a framework to test the virtual ITS.
+This is based on Drew's v7 series [1]. The last patch tests
+several ITS commands (collection/device mapping, interrupt
+translation service entry creation and LPI trigger through INT
+command). At this point we don't use any external PCIe device
+to write into the GITS_TRANSLATER register.
 
-Thanks. I've put this into a one-patch pullrequest which I've just
-sent out and which will hopefully make -rc3.
+The bulk of the code derives from the ITS driver code so all
+the credit is due to Marc.
 
-thanks
--- PMM
+Many other ITS commands could be tested. Also existing MMIO
+accesses could be enhanced into standalone tests. Current focus
+was to make it functional.
+
+The code deserves more cleanup with respect to cacheability
+attributes in general.
+
+Tested on Cavium ThunderX [2].
+
+Best Regards
+
+Eric
+
+[1] [kvm-unit-tests PATCH v7 00/11] arm/arm64: add gic framework
+
+[2] sample command line:
+
+$QEMU -machine virt,accel=kvm -cpu host \
+ -device virtio-serial-device \
+ -device virtconsole,chardev=ctd -chardev testdev,id=ctd \
+ -display none -serial stdio \
+ -kernel arm/gic.flat \
+ -smp 8 -machine gic-version=3 -append 'its'
+
+Eric Auger (15):
+  libcflat: Add other size defines
+  arm/arm64: gicv3: Add some re-distributor defines
+  arm/arm64: ITS skeleton
+  arm/arm64: ITS: BASER parsing and setup
+  arm/arm64: GICv3: add cpu count
+  arm/arm64: ITS: Set the LPI config and pending tables
+  arm/arm64: ITS: Init the command queue
+  arm/arm64: ITS: enable LPIs at re-distributor level
+  arm/arm64: ITS: Parse the typer register
+  arm/arm64: ITS: its_enable_defaults
+  arm/arm64: ITS: create device
+  arm/arm64: ITS: create collection
+  arm/arm64: ITS: commands
+  arm/arm64: gic: Generalize ipi_enable()
+  arm/arm64: ITS test
+
+ arm/Makefile.common        |   1 +
+ arm/gic.c                  | 101 +++++++++++-
+ lib/arm/asm/gic-v3-its.h   | 238 +++++++++++++++++++++++++++
+ lib/arm/asm/gic-v3.h       |  84 ++++++++++
+ lib/arm/asm/gic.h          |   1 +
+ lib/arm/gic-v3-its-cmd.c   | 399 +++++++++++++++++++++++++++++++++++++++++++++
+ lib/arm/gic-v3-its.c       | 305 ++++++++++++++++++++++++++++++++++
+ lib/arm/gic-v3.c           |   2 +
+ lib/arm/gic.c              |  30 +++-
+ lib/arm64/asm/gic-v3-its.h |   1 +
+ lib/libcflat.h             |   3 +
+ 11 files changed, 1154 insertions(+), 11 deletions(-)
+ create mode 100644 lib/arm/asm/gic-v3-its.h
+ create mode 100644 lib/arm/gic-v3-its-cmd.c
+ create mode 100644 lib/arm/gic-v3-its.c
+ create mode 100644 lib/arm64/asm/gic-v3-its.h
+
+-- 
+2.5.5

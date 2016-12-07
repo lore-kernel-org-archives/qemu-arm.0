@@ -1,81 +1,76 @@
-Received: by 10.25.159.131 with SMTP id i125csp536728lfe;
-        Wed, 7 Dec 2016 13:03:40 -0800 (PST)
-X-Received: by 10.237.40.4 with SMTP id r4mr60260165qtd.103.1481144620436;
-        Wed, 07 Dec 2016 13:03:40 -0800 (PST)
+Received: by 10.25.159.131 with SMTP id i125csp548274lfe;
+        Wed, 7 Dec 2016 13:36:01 -0800 (PST)
+X-Received: by 10.200.36.125 with SMTP id d58mr60060005qtd.126.1481146561656;
+        Wed, 07 Dec 2016 13:36:01 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [208.118.235.17])
-        by mx.google.com with ESMTPS id f131si15412193qkb.34.2016.12.07.13.03.40
+        by mx.google.com with ESMTPS id x16si15472209qta.203.2016.12.07.13.36.01
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 07 Dec 2016 13:03:40 -0800 (PST)
+        Wed, 07 Dec 2016 13:36:01 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) client-ip=208.118.235.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:42102 helo=lists.gnu.org)
+       dkim=pass header.i=@dgtlrift-com.20150623.gappssmtp.com;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:42317 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1cEjNL-00085k-RV
-	for alex.bennee@linaro.org; Wed, 07 Dec 2016 16:03:39 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:49067)
+	id 1cEjsf-0003al-5y
+	for alex.bennee@linaro.org; Wed, 07 Dec 2016 16:36:01 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:56357)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <edgar.iglesias@gmail.com>) id 1cEjNA-00083T-RJ
-	for qemu-arm@nongnu.org; Wed, 07 Dec 2016 16:03:29 -0500
+	(envelope-from <jhanley@dgtlrift.com>) id 1cEjsa-0003aU-Cr
+	for qemu-arm@nongnu.org; Wed, 07 Dec 2016 16:35:57 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <edgar.iglesias@gmail.com>) id 1cEjN5-0001RW-UW
-	for qemu-arm@nongnu.org; Wed, 07 Dec 2016 16:03:28 -0500
-Received: from mail-wj0-f196.google.com ([209.85.210.196]:36315)
+	(envelope-from <jhanley@dgtlrift.com>) id 1cEjsX-0003uf-8h
+	for qemu-arm@nongnu.org; Wed, 07 Dec 2016 16:35:56 -0500
+Received: from mail-ua0-f195.google.com ([209.85.217.195]:35556)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <edgar.iglesias@gmail.com>)
-	id 1cEjN5-0001RH-O9; Wed, 07 Dec 2016 16:03:23 -0500
-Received: by mail-wj0-f196.google.com with SMTP id j10so24499174wjb.3;
-	Wed, 07 Dec 2016 13:03:23 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=date:from:to:cc:subject:message-id:references:mime-version
-	:content-disposition:in-reply-to:user-agent;
-	bh=noLY17S961xV++oNoAylnSPU/K/OuZqiXSkU+0nZKbs=;
-	b=paSWpoWoG6Fr65lifj3MfBcPrIqwDEBsIARdE4gC8m3lMdrB2jB4yN14xLTq0xoe2P
-	9pPlnWrN1eSAiv9DBB45BkoKNkMvRyYVnZ00pgM6AiQjrI3HFDoEWIYzpn1EWMFgY+2c
-	PEzSDMW9Bl4iaphdmnBORCWfOWpA11AZVddLYnQrMpEeF0R63kCWFN07lF1uYETiuR5x
-	qtkln9yebG4lF7PbSygKPc257oCfLqQWTpN3RHqCfOptjerQF//F7mJRvd+57vZkCQnO
-	vVo9tiU7HT/U5T+xUs3qsdfkc7iSQ7odEmKSyNJ/c1lThtxgW+bhU/9eDBwZyNqaZiGD
-	Sfdg==
+	(Exim 4.71) (envelope-from <jhanley@dgtlrift.com>)
+	id 1cEjsX-0003uZ-25
+	for qemu-arm@nongnu.org; Wed, 07 Dec 2016 16:35:53 -0500
+Received: by mail-ua0-f195.google.com with SMTP id 50so40753313uae.2
+	for <qemu-arm@nongnu.org>; Wed, 07 Dec 2016 13:35:52 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=dgtlrift-com.20150623.gappssmtp.com; s=20150623;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=9blUmASFDzqKsYbPq3T2TINQ/9BhbEyrx6qShvzo4r0=;
+	b=1oYAi6jQxybSSkYoUz3cFyzETCymyg3tP9IPRFmZql13mnGvig0j/sGP40/oWeL2jM
+	y+Mc9IW75UPKXegcX5Q+xtyXwq5Ff9xgbmnmEXet5bpXgasXRtrDD8sDWkLz1lw1sRr6
+	eKB9/lxuyoZsxginytVDFWVWnR9DTwfwFMYjjwCpAjhR6az1XGWysv9P8TPNtFiLVtOp
+	xjwdRgRYn1DjthX2rTUnvza3gX8B/1dTILmYeKpYHRVlU11a/gkW9YT+Q990wWodIwYr
+	BoLFZ/SJns76xvV1yufhw3x07eXgqIZEFTNG/H11xOsWI/uior6+4TqEpekMibPCaqcW
+	xSeQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20130820;
-	h=x-gm-message-state:date:from:to:cc:subject:message-id:references
-	:mime-version:content-disposition:in-reply-to:user-agent;
-	bh=noLY17S961xV++oNoAylnSPU/K/OuZqiXSkU+0nZKbs=;
-	b=PGnRGYZfjyBXm7hNXXrNle4o1L5EYcyDervKuLAdB3BB6h3Fs39uSnxIGvw4oNIJ/R
-	2zGNQG0piWIKxUJYk/BB9QYrS0x1uVgt+PPTUsAn8WtcFgdCLC7eDbhWNjo2mlTu+O9D
-	Xsy4N8orIhCanf9NRRvA7vX3Um7URnY62/UaNWMEry3w8or8y5SqMxOAsQMzgYFLSLJf
-	r0dB5LF5fyMR/i71bcZdnqRE4U23BWKSq7GcDUtfPwtYiOne+Fm5dgg1882cX9L0rgEn
-	LJ8vLuM2vB8VzPvoIk+4Ed8eiSm1hIefzcbPUmeuSxxktMac7fIgzaQ4fdzdU4r452Zf
-	nbYA==
-X-Gm-Message-State: AKaTC02k9XhQxJmAn7X0c/OvOVOLdCIx9tpM1umw+aBD/RgWiVgNjsx7XMig9VHusutVpw==
-X-Received: by 10.25.72.215 with SMTP id v206mr25290419lfa.12.1481144542577;
-	Wed, 07 Dec 2016 13:02:22 -0800 (PST)
-Received: from localhost (81-231-233-234-no56.tbcn.telia.com. [81.231.233.234])
-	by smtp.gmail.com with ESMTPSA id
-	b76sm4976387lfg.41.2016.12.07.13.02.21
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Wed, 07 Dec 2016 13:02:22 -0800 (PST)
-Date: Wed, 7 Dec 2016 22:02:21 +0100
-From: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Message-ID: <20161207210221.GF9606@toto>
-References: <1481046379-32632-1-git-send-email-peter.maydell@linaro.org>
-	<1481046379-32632-3-git-send-email-peter.maydell@linaro.org>
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=9blUmASFDzqKsYbPq3T2TINQ/9BhbEyrx6qShvzo4r0=;
+	b=gkzJNRLCHBdus1It55eddyHedgNRy9xc87woFT7n/mwzRDVzt/BnkRG6qCneOX/CLi
+	OJmkstQ+h3qBOlwAOQRAupdNT54kcCYRqWxV2s+Q32Pnc0gNiQOu0l1063cF9XtBYp2N
+	RnamAxXjpwmM8APspsbAbFvU82uGIDBVBBY9r4Fsit6f0ms/6ibLXBNsTyKafH9xhbOA
+	19YFBRWSc0OJiKeYx0fsCNMaWaAjSU+Cn6Qvud2aGKxrSwa3Hvx+wWHZmqHKij8zPsUt
+	udZZj9FTjVlABdqKsNTGqGTjyPQeQJR5X/HPHWg1M2nVzdoiV8p9QJgdxHvbwT2VlsmO
+	dO+g==
+X-Gm-Message-State: AKaTC01VVQTWYTK5+20PhGi409yu5jCsFHl5s/wwElU+EFb6MW9/pxREYZebCJZwkpmWwUJHfPKsd50FnQ7u6Q==
+X-Received: by 10.176.84.147 with SMTP id p19mr9012458uaa.76.1481146492393;
+	Wed, 07 Dec 2016 13:34:52 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <1481046379-32632-3-git-send-email-peter.maydell@linaro.org>
-User-Agent: Mutt/1.5.24 (2015-08-30)
+Received: by 10.103.129.151 with HTTP; Wed, 7 Dec 2016 13:34:51 -0800 (PST)
+In-Reply-To: <CAFEAcA9guoF-ija--JO1E0pfUG2d4HNSB343GiY9ojO837TAXQ@mail.gmail.com>
+References: <CAF++6AOJ_kiPyeCO3WO84d4UTrV9v=iK8CJx72ERJ5N_AKj64g@mail.gmail.com>
+	<1dda2994-dc9d-d8f6-fb42-856f2b992484@redhat.com>
+	<CAF++6APMs+eshFxV=wxV9N9zmyyLtU8Gz0v0CAgCWkOnC88dpg@mail.gmail.com>
+	<CAFEAcA9guoF-ija--JO1E0pfUG2d4HNSB343GiY9ojO837TAXQ@mail.gmail.com>
+From: James Hanley <jhanley@dgtlrift.com>
+Date: Wed, 7 Dec 2016 16:34:51 -0500
+Message-ID: <CAF++6APdGepcjuT5A_HT=LsGR_35DjDtu-+7-DtpTwcwesx4Bw@mail.gmail.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+Content-Type: multipart/alternative; boundary=f403045cce7a8a9ffd0543184ae2
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 209.85.210.196
-Subject: Re: [Qemu-arm] [PATCH 2/3] hw/intc/arm_gicv3: Remove incorrect
- usage of fieldoffset
+X-Received-From: 209.85.217.195
+Subject: Re: [Qemu-arm] [Qemu-discuss] Custom board with DTS/DTB
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -87,93 +82,144 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
+Cc: qemu-arm <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: +oo1YuiXCCWQ
+X-TUID: hwE6DCZ/DeOY
 
-On Tue, Dec 06, 2016 at 05:46:18PM +0000, Peter Maydell wrote:
-> In the ARMCPRegInfo definitions for the GICv3 CPU interface
-> registers, we were trying to use .fieldoffset to specify
-> the locations of data fields within the GICv3CPUState struct.
-> This is completely broken, because .fieldoffset is for offsets
-> into the CPUARMState struct. We didn't notice because we
-> were only using this for reads to BPR0, AP0R<n>, IGRPEN0
-> and CTLR_EL3, and Linux doesn't use these registers.
-> 
-> Replace the .fieldoffset uses with explicit read functions.
+--f403045cce7a8a9ffd0543184ae2
+Content-Type: text/plain; charset=UTF-8
 
-Reviewed-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
+Thanks - I'm using the -device option to load the binaries, but have run
+into another issue with setting the program counter.
 
+qemu-system-arm: -device loader,cpu-num=0,addr=0x00400000: cpu_num must be
+specified when setting a program counter
 
-> 
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> ---
->  hw/intc/arm_gicv3_cpuif.c | 13 ++++++-------
->  1 file changed, 6 insertions(+), 7 deletions(-)
-> 
-> diff --git a/hw/intc/arm_gicv3_cpuif.c b/hw/intc/arm_gicv3_cpuif.c
-> index bca30c4..35e8eb3 100644
-> --- a/hw/intc/arm_gicv3_cpuif.c
-> +++ b/hw/intc/arm_gicv3_cpuif.c
-> @@ -1118,35 +1118,35 @@ static const ARMCPRegInfo gicv3_cpuif_reginfo[] = {
->        .opc0 = 3, .opc1 = 0, .crn = 12, .crm = 8, .opc2 = 3,
->        .type = ARM_CP_IO | ARM_CP_NO_RAW,
->        .access = PL1_RW, .accessfn = gicv3_fiq_access,
-> -      .fieldoffset = offsetof(GICv3CPUState, icc_bpr[GICV3_G0]),
-> +      .readfn = icc_bpr_read,
->        .writefn = icc_bpr_write,
->      },
->      { .name = "ICC_AP0R0_EL1", .state = ARM_CP_STATE_BOTH,
->        .opc0 = 3, .opc1 = 0, .crn = 12, .crm = 8, .opc2 = 4,
->        .type = ARM_CP_IO | ARM_CP_NO_RAW,
->        .access = PL1_RW, .accessfn = gicv3_fiq_access,
-> -      .fieldoffset = offsetof(GICv3CPUState, icc_apr[GICV3_G0][0]),
-> +      .readfn = icc_ap_read,
->        .writefn = icc_ap_write,
->      },
->      { .name = "ICC_AP0R1_EL1", .state = ARM_CP_STATE_BOTH,
->        .opc0 = 3, .opc1 = 0, .crn = 12, .crm = 8, .opc2 = 5,
->        .type = ARM_CP_IO | ARM_CP_NO_RAW,
->        .access = PL1_RW, .accessfn = gicv3_fiq_access,
-> -      .fieldoffset = offsetof(GICv3CPUState, icc_apr[GICV3_G0][1]),
-> +      .readfn = icc_ap_read,
->        .writefn = icc_ap_write,
->      },
->      { .name = "ICC_AP0R2_EL1", .state = ARM_CP_STATE_BOTH,
->        .opc0 = 3, .opc1 = 0, .crn = 12, .crm = 8, .opc2 = 6,
->        .type = ARM_CP_IO | ARM_CP_NO_RAW,
->        .access = PL1_RW, .accessfn = gicv3_fiq_access,
-> -      .fieldoffset = offsetof(GICv3CPUState, icc_apr[GICV3_G0][2]),
-> +      .readfn = icc_ap_read,
->        .writefn = icc_ap_write,
->      },
->      { .name = "ICC_AP0R3_EL1", .state = ARM_CP_STATE_BOTH,
->        .opc0 = 3, .opc1 = 0, .crn = 12, .crm = 8, .opc2 = 7,
->        .type = ARM_CP_IO | ARM_CP_NO_RAW,
->        .access = PL1_RW, .accessfn = gicv3_fiq_access,
-> -      .fieldoffset = offsetof(GICv3CPUState, icc_apr[GICV3_G0][3]),
-> +      .readfn = icc_ap_read,
->        .writefn = icc_ap_write,
->      },
->      /* All the ICC_AP1R*_EL1 registers are banked */
-> @@ -1275,7 +1275,7 @@ static const ARMCPRegInfo gicv3_cpuif_reginfo[] = {
->        .opc0 = 3, .opc1 = 0, .crn = 12, .crm = 12, .opc2 = 6,
->        .type = ARM_CP_IO | ARM_CP_NO_RAW,
->        .access = PL1_RW, .accessfn = gicv3_fiq_access,
-> -      .fieldoffset = offsetof(GICv3CPUState, icc_igrpen[GICV3_G0]),
-> +      .readfn = icc_igrpen_read,
->        .writefn = icc_igrpen_write,
->      },
->      /* This register is banked */
-> @@ -1299,7 +1299,6 @@ static const ARMCPRegInfo gicv3_cpuif_reginfo[] = {
->        .opc0 = 3, .opc1 = 6, .crn = 12, .crm = 12, .opc2 = 4,
->        .type = ARM_CP_IO | ARM_CP_NO_RAW,
->        .access = PL3_RW,
-> -      .fieldoffset = offsetof(GICv3CPUState, icc_ctlr_el3),
->        .readfn = icc_ctlr_el3_read,
->        .writefn = icc_ctlr_el3_write,
->      },
-> -- 
-> 2.7.4
-> 
+I believe the error isn't precise since the token defined in the
+generic_loader_props is
+DEFINE_PROP_UINT32("cpu-num", GenericLoaderState, cpu_num, CPU_NONE),
+I'm just not sure why it's not capturing the cpu-num parameter.
+
+On Wed, Dec 7, 2016 at 4:25 AM, Peter Maydell <peter.maydell@linaro.org>
+wrote:
+
+> On 5 December 2016 at 17:51, James Hanley <jhanley@dgtlrift.com> wrote:
+> > I'm moving my query to QEMU-Arm since it seems more applicable here.
+> >    1) It seems that the -dtb option is not what I thought it was, but
+> would
+> > something like what I thought was the intent of the option be of value to
+> > QEMU, that is to define the board support package for the system using
+> DTC
+> > to compile and pass into QEMU to define a generic board from the tree,
+> > rather then defining the hardware within the code base of QEMU?  I
+> > understand that there will always be some need for device support and
+> > deginition from within the codebase, but this was more to allow the user
+> to
+> > define hardware board profiles without having to change source code.
+>
+> The problem is that DTC is not designed for that job. It describes
+> those aspects of the hardware that the kernel cares about, which
+> overlaps with but isn't the same as the information that you would
+> need to build a complete model of the hardware. So the idea has been
+> suggested before but I think it would in practice be pretty unreliable
+> (and for 99% of dtb files it would just not work anyway, because QEMU
+> doesn't
+> model the devices that the dtb describes).
+>
+> >    2) Right now, I'm trying to run our embedded application (EmbOS RTOS
+> with
+> > DLib with our application support all targeted for Cortex-M4 MPU) and it
+> > seems like QEMU (at least from variable names) wants to believe that
+> under
+> > boot.c and loader.c that the passed in application (using --kernel
+> option)
+> > is linux.
+>
+> M-profile is different and doesn't generally use boot.c -- the board
+> model code ends up calling armv7m_init() which treats kernel_filename
+> as a random ELF file. (A profile --kernel will also treat an ELF
+> file as an ELF file, it just has special casing to handle Linux kernels and
+> assumes a raw binary is a kernel.)
+>
+> If you're running one of the 2.8 rc candidates you can also use
+> -device loader to load an arbitrary file (see docs/generic-loader.txt).
+>
+> thanks
+> -- PMM
+>
+
+--f403045cce7a8a9ffd0543184ae2
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr">Thanks - I&#39;m using the -device option to load the bina=
+ries, but have run into another issue with setting the program counter.<div=
+><br></div><div><div>qemu-system-arm: -device loader,cpu-num=3D0,addr=3D0x0=
+0400000: cpu_num must be specified when setting a program counter</div></di=
+v><div><br></div><div>I believe the error isn&#39;t precise since the token=
+ defined in the generic_loader_props is</div><div>DEFINE_PROP_UINT32(&quot;=
+cpu-num&quot;, GenericLoaderState, cpu_num, CPU_NONE),</div><div>I&#39;m ju=
+st not sure why it&#39;s not capturing the cpu-num parameter.=C2=A0</div></=
+div><div class=3D"gmail_extra"><br><div class=3D"gmail_quote">On Wed, Dec 7=
+, 2016 at 4:25 AM, Peter Maydell <span dir=3D"ltr">&lt;<a href=3D"mailto:pe=
+ter.maydell@linaro.org" target=3D"_blank">peter.maydell@linaro.org</a>&gt;<=
+/span> wrote:<br><blockquote class=3D"gmail_quote" style=3D"margin:0 0 0 .8=
+ex;border-left:1px #ccc solid;padding-left:1ex"><span class=3D"">On 5 Decem=
+ber 2016 at 17:51, James Hanley &lt;<a href=3D"mailto:jhanley@dgtlrift.com"=
+>jhanley@dgtlrift.com</a>&gt; wrote:<br>
+&gt; I&#39;m moving my query to QEMU-Arm since it seems more applicable her=
+e.<br>
+&gt;=C2=A0 =C2=A0 1) It seems that the -dtb option is not what I thought it=
+ was, but would<br>
+&gt; something like what I thought was the intent of the option be of value=
+ to<br>
+&gt; QEMU, that is to define the board support package for the system using=
+ DTC<br>
+&gt; to compile and pass into QEMU to define a generic board from the tree,=
+<br>
+&gt; rather then defining the hardware within the code base of QEMU?=C2=A0 =
+I<br>
+&gt; understand that there will always be some need for device support and<=
+br>
+&gt; deginition from within the codebase, but this was more to allow the us=
+er to<br>
+&gt; define hardware board profiles without having to change source code.<b=
+r>
+<br>
+</span>The problem is that DTC is not designed for that job. It describes<b=
+r>
+those aspects of the hardware that the kernel cares about, which<br>
+overlaps with but isn&#39;t the same as the information that you would<br>
+need to build a complete model of the hardware. So the idea has been<br>
+suggested before but I think it would in practice be pretty unreliable<br>
+(and for 99% of dtb files it would just not work anyway, because QEMU doesn=
+&#39;t<br>
+model the devices that the dtb describes).<br>
+<span class=3D""><br>
+&gt;=C2=A0 =C2=A0 2) Right now, I&#39;m trying to run our embedded applicat=
+ion (EmbOS RTOS with<br>
+&gt; DLib with our application support all targeted for Cortex-M4 MPU) and =
+it<br>
+&gt; seems like QEMU (at least from variable names) wants to believe that u=
+nder<br>
+&gt; boot.c and loader.c that the passed in application (using --kernel opt=
+ion)<br>
+&gt; is linux.<br>
+<br>
+</span>M-profile is different and doesn&#39;t generally use boot.c -- the b=
+oard<br>
+model code ends up calling armv7m_init() which treats kernel_filename<br>
+as a random ELF file. (A profile --kernel will also treat an ELF<br>
+file as an ELF file, it just has special casing to handle Linux kernels and=
+<br>
+assumes a raw binary is a kernel.)<br>
+<br>
+If you&#39;re running one of the 2.8 rc candidates you can also use<br>
+-device loader to load an arbitrary file (see docs/generic-loader.txt).<br>
+<br>
+thanks<br>
+-- PMM<br>
+</blockquote></div><br></div>
+
+--f403045cce7a8a9ffd0543184ae2--

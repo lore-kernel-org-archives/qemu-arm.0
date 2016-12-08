@@ -1,102 +1,202 @@
-Received: by 10.25.159.131 with SMTP id i125csp158267lfe;
-        Tue, 6 Dec 2016 20:32:06 -0800 (PST)
-X-Received: by 10.237.38.37 with SMTP id z34mr66200777qtc.73.1481085126579;
-        Tue, 06 Dec 2016 20:32:06 -0800 (PST)
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [208.118.235.17])
-        by mx.google.com with ESMTPS id v90si13494400qte.313.2016.12.06.20.32.06
-        for <alex.bennee@linaro.org>
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 06 Dec 2016 20:32:06 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) client-ip=208.118.235.17;
+Received: by 10.25.159.131 with SMTP id i125csp971741lfe;
+        Thu, 8 Dec 2016 09:50:36 -0800 (PST)
+X-Received: by 10.55.4.19 with SMTP id 19mr65238715qke.18.1481219436416;
+        Thu, 08 Dec 2016 09:50:36 -0800 (PST)
+Return-Path: <drjones@redhat.com>
+Received: from mx1.redhat.com (mx1.redhat.com. [209.132.183.28])
+        by mx.google.com with ESMTPS id 19si17872163qtw.163.2016.12.08.09.50.36
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 08 Dec 2016 09:50:36 -0800 (PST)
+Received-SPF: pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) client-ip=209.132.183.28;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:36316 helo=lists.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1cETtl-0005Np-W2
-	for alex.bennee@linaro.org; Tue, 06 Dec 2016 23:32:06 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:58334)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <rth7680@gmail.com>) id 1cETtC-0005Lm-Eh
-	for qemu-devel@nongnu.org; Tue, 06 Dec 2016 23:31:31 -0500
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <rth7680@gmail.com>) id 1cETt7-0006aY-Is
-	for qemu-devel@nongnu.org; Tue, 06 Dec 2016 23:31:30 -0500
-Received: from mail-qt0-f195.google.com ([209.85.216.195]:34157)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <rth7680@gmail.com>)
-	id 1cETt7-0006aU-EO; Tue, 06 Dec 2016 23:31:25 -0500
-Received: by mail-qt0-f195.google.com with SMTP id l20so43033707qta.1;
-	Tue, 06 Dec 2016 20:31:25 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=sender:from:to:cc:subject:date:message-id;
-	bh=uJveMl67LwyIqYQ24AFrfXdYfTDCNzilBkzOXPf3wYQ=;
-	b=HVVoNYOTmO349a4x6pkHasAFiYe2paocbNFa2gBj6UlZmmbakKbp+TAgBtw4WAHO7d
-	i+cPRRUC+tjwAl99QT1pGpclAGgb2zb9peheonk4Q9/EzE3SUn+EbTKaNV9wMwODr0Kn
-	+mSTDD1ckbQwkc0CwCrF1NMz3Jf7aBcx00L6w2PdTjm7rAEJhRvJhbynJZPq2rCqgy81
-	XSYnFQIZYn/mV7hqUtFbhdyNxVmNwT3qmRhSMrpNXTgveCOBzz3Wo0hTQpY7gTzL/25L
-	CN22o9Zk6Ntl2hxlKUXBJASdWlf4YcTJ0b6qrsxFXi2kwj8i1ImqKefvLrxB+29Vfbm8
-	qoDQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id;
-	bh=uJveMl67LwyIqYQ24AFrfXdYfTDCNzilBkzOXPf3wYQ=;
-	b=FiqKAHNweXCDQiaIUhSqNWV2kRPw9ST7y64ibRvXO7LAIwpg+nG21O86Lb/spE6U33
-	d4dSc3NFSqoWp5R9CarRvlRwCFiFBUS0Xpda1k7zpxipGMjapvK+fqn20YfnVaW/CUb7
-	6W18VqAHtv0UR25ibA3U6ZeMaR7coOY5C+e5nlsP1Xd0w6+jpei1T7zdO2Jq4TqkbxrF
-	PE4BbybwWDMn0Bmq20knD6sfr8cDmxSUNHRjpLtlfA8TVxtn/EcgdWp6pOuywudiWU39
-	TvweGmNw5NxT6U8OBr+QzB+BEXfNFV0Xp+DNdNYaf9TF8OyfcwqKLaA9zeobK2BVvU0q
-	paag==
-X-Gm-Message-State: AKaTC01BvBGY9s9u8gecz6RxmIU06h4wYgSJGJy59hEHgOaa+eHrmhRSrXudz8bIEHPJQg==
-X-Received: by 10.200.38.200 with SMTP id 8mr57005222qtp.81.1481085024534;
-	Tue, 06 Dec 2016 20:30:24 -0800 (PST)
-Received: from bigtime.twiddle.net.com
-	([2602:47:d954:1500:5e51:4fff:fe40:9c64])
-	by smtp.gmail.com with ESMTPSA id
-	i41sm13911947qtc.18.2016.12.06.20.30.23
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Tue, 06 Dec 2016 20:30:23 -0800 (PST)
-From: Richard Henderson <rth@twiddle.net>
-To: qemu-devel@nongnu.org
-Date: Tue,  6 Dec 2016 20:30:18 -0800
-Message-Id: <1481085020-2614-1-git-send-email-rth@twiddle.net>
-X-Mailer: git-send-email 2.7.4
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.85.216.195
-Subject: [Qemu-devel] [PATCH 0/2] target-arm aarch64 big-endian fixes
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.21
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm@nongnu.org
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: f8AyOkBvYVc+
-
-I ran Alex's risu tests on an s390x host, and ran into two
-problems not related to the s390 backend.
+       spf=pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=drjones@redhat.com
+Received: from int-mx10.intmail.prod.int.phx2.redhat.com (int-mx10.intmail.prod.int.phx2.redhat.com [10.5.11.23])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 4662AC0528A4;
+	Thu,  8 Dec 2016 17:50:35 +0000 (UTC)
+Received: from kamzik.brq.redhat.com (kamzik.brq.redhat.com [10.34.1.143])
+	by int-mx10.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP id uB8HoWn1022068;
+	Thu, 8 Dec 2016 12:50:32 -0500
+From: Andrew Jones <drjones@redhat.com>
+To: kvm@vger.kernel.org, kvmarm@lists.cs.columbia.edu, qemu-devel@nongnu.org,
+        qemu-arm@nongnu.org
+Cc: peter.maydell@linaro.org, marc.zyngier@arm.com, andre.przywara@arm.com,
+        eric.auger@redhat.com, pbonzini@redhat.com, alex.bennee@linaro.org,
+        christoffer.dall@linaro.org
+Subject: [PATCH kvm-unit-tests v8 00/10] arm/arm64: add gic framework
+Date: Thu,  8 Dec 2016 18:50:20 +0100
+Message-Id: <20161208175030.12269-1-drjones@redhat.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.23
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.5.110.31]); Thu, 08 Dec 2016 17:50:35 +0000 (UTC)
+X-TUID: PN62OVNNoY0y
 
 
-r~
+v8:
+ - Main change is rebasing to Wei's sysreg framework, which is part
+   of his PMU series, which I've applied to arm/next. That rebase
+   leads to dropping the first two patches of the v7 series, expecting
+   get_mpidr() to return u64 (with future patches), a rework of the
+   delay routines (now based on sysreg framework), and changes to all
+   sysreg asms
+ - The delay routines also got their own files: delay.[ch]
+ - Another bigger change was to now keep gic_common_ops local to
+   lib/arm/gic.c, export the functions from the gic-v[23] instead
+ - Yet another bigger change was dropping the sender and irq cmdline
+   inputs, hard coding to '1' is sufficient and much less code
+ - Other minor changes listed in individual patches   
 
 
-Richard Henderson (2):
-  target-arm: Fix aarch64 disas_ldst_single_struct
-  target-arm: Fix aarch64 vec_reg_offset
+v7:
+ - biggest change is splitting lib/arm/gic.c into lib/arm/gic.c,
+   lib/arm/gic-v2.c, lib/arm/gic-v3.c
+ - second biggest change, which probably affects Alex, is that
+   gic_ipi_send(cpu, irq) changed to gic_ipi_send_single(irq, cpu),
+   note the swapping of cpu and irq!
+ - other changes thanks to Eric are noted in individual patches
+ - also rebased to latest master
 
- target-arm/translate-a64.c | 7 ++++---
- 1 file changed, 4 insertions(+), 3 deletions(-)
+v6:
+ - rebased to latest master
+ - several other changes thanks to Andre and Alex, changes in
+   individual patch change logs
+ - some code cleanups
+
+v5:
+ - fix arm32/gicv3 compile [drew]
+ - use modern register names [Andre]
+ - one Andre r-b
+
+v4:
+ - Eric's r-b's
+ - Andre's suggestion to only take defines we need
+ - several other changes listed in individual patches
+
+v3:
+ - Rebased on latest master
+ - Added Alex's r-b's
+
+v2:
+ Rebased on latest master + my "populate argv[0]" series (will
+ send a REPOST for that shortly. Additionally a few patches got
+ fixes/features;
+ 07/10 got same fix as kernel 7c9b973061 "irqchip/gic-v3: Configure
+       all interrupts as non-secure Group-1" in order to continue
+       working over TCG, as the gicv3 code for TCG removed a hack
+       it had there to make Linux happy.
+ 08/10 added more output for when things fail (if they fail)
+ 09/10 switched gicv3 broadcast implementation to using IRM. This
+       found a bug in a recent (but not tip) kernel, which I was
+       about to fix, but then I saw MarcZ beat me to it.
+ 10/10 actually check that the input irq is the received irq
+
+
+Import defines, and steal enough helper functions, from Linux to
+enable programming of the gic (v2 and v3). Then use the framework
+to add an initial test (an ipi test; self, target-list, broadcast).
+
+It's my hope that this framework will be a suitable base on which
+more tests may be easily added, particularly because we have
+vgic-new and tcg gicv3 emulation getting close to merge. (v3 UPDATE:
+vgic-new and tcg gicv3 are merged now)
+
+To run it, along with other tests, just do
+
+ ./configure [ --arch=[arm|arm64] --cross-prefix=$PREFIX ]
+ make
+ export QEMU=$PATH_TO_QEMU
+ ./run_tests.sh
+
+To run it separately do, e.g.
+
+$QEMU -machine virt,accel=tcg -cpu cortex-a57 \
+ -device virtio-serial-device \
+ -device virtconsole,chardev=ctd -chardev testdev,id=ctd \
+ -display none -serial stdio \
+ -kernel arm/gic.flat \
+ -smp 123 -machine gic-version=3 -append ipi
+      ^^ note, we can go nuts with nr-cpus on TCG :-)
+
+Or, a KVM example using a different "sender" cpu and irq (other than zero)
+
+$QEMU -machine virt,accel=kvm -cpu host \
+ -device virtio-serial-device \
+ -device virtconsole,chardev=ctd -chardev testdev,id=ctd \
+ -display none -serial stdio \
+ -kernel arm/gic.flat \
+ -smp 48 -machine gic-version=3 -append 'ipi sender=42 irq=1'
+
+
+Patches:
+01-04: fixes and functionality needed by the later gic patches
+05-06: enable gicv2 and gicv2 IPI test
+07-09: enable gicv3 and gicv3 IPI test
+   10: extend the IPI tests to use cpu1 and irq1 instead of zero
+
+Available here: https://github.com/rhdrjones/kvm-unit-tests/commits/arm/gic-v8
+and based on https://github.com/rhdrjones/kvm-unit-tests/commits/arm/next
+
+
+Andrew Jones (9):
+  arm/arm64: yield on cpu_relax
+  arm/arm64: smp: support more than 8 cpus
+  arm/arm64: add some delay routines
+  arm/arm64: irq enable/disable
+  arm/arm64: add initial gicv2 support
+  arm/arm64: gicv2: add an IPI test
+  arm/arm64: add initial gicv3 support
+  arm/arm64: gicv3: add an IPI test
+  arm/arm64: gic: don't just use zero
+
+Peter Xu (1):
+  libcflat: add IS_ALIGNED() macro, and page sizes
+
+ arm/Makefile.common        |  12 +-
+ arm/run                    |  19 +--
+ arm/unittests.cfg          |  14 +++
+ lib/arm/asm/arch_gicv3.h   |  65 ++++++++++
+ lib/arm/asm/barrier.h      |   5 +-
+ lib/arm/asm/delay.h        |  14 +++
+ lib/arm/asm/gic-v2.h       |  42 +++++++
+ lib/arm/asm/gic-v3.h       | 117 ++++++++++++++++++
+ lib/arm/asm/gic.h          |  65 ++++++++++
+ lib/arm/asm/processor.h    |  34 +++++-
+ lib/arm/asm/setup.h        |   4 +-
+ lib/arm64/asm/arch_gicv3.h |  64 ++++++++++
+ lib/arm64/asm/barrier.h    |   3 +-
+ lib/arm64/asm/delay.h      |   1 +
+ lib/arm64/asm/gic-v2.h     |   1 +
+ lib/arm64/asm/gic-v3.h     |   1 +
+ lib/arm64/asm/gic.h        |   1 +
+ lib/arm64/asm/processor.h  |  31 ++++-
+ lib/arm64/asm/sysreg.h     |  34 +++++-
+ lib/libcflat.h             |   6 +
+ arm/gic.c                  | 298 +++++++++++++++++++++++++++++++++++++++++++++
+ arm/selftest.c             |   7 +-
+ lib/arm/delay.c            |  29 +++++
+ lib/arm/gic-v2.c           |  57 +++++++++
+ lib/arm/gic-v3.c           | 145 ++++++++++++++++++++++
+ lib/arm/gic.c              | 147 ++++++++++++++++++++++
+ lib/arm/setup.c            |  10 ++
+ 27 files changed, 1202 insertions(+), 24 deletions(-)
+ create mode 100644 lib/arm/asm/arch_gicv3.h
+ create mode 100644 lib/arm/asm/delay.h
+ create mode 100644 lib/arm/asm/gic-v2.h
+ create mode 100644 lib/arm/asm/gic-v3.h
+ create mode 100644 lib/arm/asm/gic.h
+ create mode 100644 lib/arm64/asm/arch_gicv3.h
+ create mode 100644 lib/arm64/asm/delay.h
+ create mode 100644 lib/arm64/asm/gic-v2.h
+ create mode 100644 lib/arm64/asm/gic-v3.h
+ create mode 100644 lib/arm64/asm/gic.h
+ create mode 100644 arm/gic.c
+ create mode 100644 lib/arm/delay.c
+ create mode 100644 lib/arm/gic-v2.c
+ create mode 100644 lib/arm/gic-v3.c
+ create mode 100644 lib/arm/gic.c
 
 -- 
-2.7.4
-
+2.9.3

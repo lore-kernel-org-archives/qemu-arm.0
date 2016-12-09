@@ -1,47 +1,48 @@
-Received: by 10.25.159.131 with SMTP id i125csp374840lfe;
-        Fri, 9 Dec 2016 08:30:49 -0800 (PST)
-X-Received: by 10.55.0.65 with SMTP id 62mr59834171qka.106.1481301049019;
-        Fri, 09 Dec 2016 08:30:49 -0800 (PST)
+Received: by 10.25.159.131 with SMTP id i125csp374851lfe;
+        Fri, 9 Dec 2016 08:30:51 -0800 (PST)
+X-Received: by 10.200.39.178 with SMTP id w47mr77472283qtw.15.1481301051032;
+        Fri, 09 Dec 2016 08:30:51 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [208.118.235.17])
-        by mx.google.com with ESMTPS id p25si20468308qte.81.2016.12.09.08.30.48
+        by mx.google.com with ESMTPS id 83si20416906qkv.312.2016.12.09.08.30.50
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 09 Dec 2016 08:30:49 -0800 (PST)
+        Fri, 09 Dec 2016 08:30:51 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) client-ip=208.118.235.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:47552 helo=lists.gnu.org)
+Received: from localhost ([::1]:47554 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1cFO4O-0003co-AO
-	for alex.bennee@linaro.org; Fri, 09 Dec 2016 11:30:48 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:49717)
+	id 1cFO4Q-0003ih-AP
+	for alex.bennee@linaro.org; Fri, 09 Dec 2016 11:30:50 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:49691)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1cFO4H-0003TD-9P
-	for qemu-arm@nongnu.org; Fri, 09 Dec 2016 11:30:42 -0500
+	(envelope-from <pm215@archaic.org.uk>) id 1cFO4E-0003LF-OE
+	for qemu-arm@nongnu.org; Fri, 09 Dec 2016 11:30:43 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1cFO4B-0007Y7-B6
-	for qemu-arm@nongnu.org; Fri, 09 Dec 2016 11:30:41 -0500
+	(envelope-from <pm215@archaic.org.uk>) id 1cFO49-0007XM-Ic
+	for qemu-arm@nongnu.org; Fri, 09 Dec 2016 11:30:38 -0500
 Received: from orth.archaic.org.uk ([2001:8b0:1d0::2]:47666)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <pm215@archaic.org.uk>)
-	id 1cFO4A-0007Tx-VU; Fri, 09 Dec 2016 11:30:35 -0500
+	id 1cFO49-0007Tx-9P; Fri, 09 Dec 2016 11:30:33 -0500
 Received: from pm215 by orth.archaic.org.uk with local (Exim 4.84_2)
 	(envelope-from <pm215@archaic.org.uk>)
-	id 1cFO3x-0007zP-Gf; Fri, 09 Dec 2016 16:30:21 +0000
+	id 1cFO3x-0007za-Vq; Fri, 09 Dec 2016 16:30:21 +0000
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Date: Fri,  9 Dec 2016 16:30:17 +0000
-Message-Id: <1481301020-21777-2-git-send-email-peter.maydell@linaro.org>
+Date: Fri,  9 Dec 2016 16:30:18 +0000
+Message-Id: <1481301020-21777-3-git-send-email-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.7.4
 In-Reply-To: <1481301020-21777-1-git-send-email-peter.maydell@linaro.org>
 References: <1481301020-21777-1-git-send-email-peter.maydell@linaro.org>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 2001:8b0:1d0::2
-Subject: [Qemu-arm] [PATCH 1/4] hw/arm/virt: add 2.9 machine type
+Subject: [Qemu-arm] [PATCH 2/4] hw/arm/virt: Merge VirtBoardInfo and
+ VirtMachineState
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -57,68 +58,351 @@ Cc: Andrew Jones <drjones@redhat.com>,
 	Christoffer Dall <christoffer.dall@linaro.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: hRkSczzCmD2Y
+X-TUID: LpUhguUQOhD+
+
+One of the purposes of VirtBoardInfo was to hold various
+bits of state about the board. Now we have MachineState
+and the subclass VirtMachineState to do this. Fold the
+VirtBoardInfo into VirtMachineState rather than having
+some flags in one struct and some in another with no
+useful way to get between them.
+
+In the process we drop the code for looking up the
+memory map and irq map from the CPU model, because
+in practice we always use the same maps in all cases.
+
+For easier code review, this change removes the
+VirtBoardInfo type but leaves all the variables which
+used to be VirtBoardInfo* and are now VirtMachineState*
+with their now-confusing 'vbi' names.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- include/hw/compat.h |  3 +++
- hw/arm/virt.c       | 19 +++++++++++++++++--
- 2 files changed, 20 insertions(+), 2 deletions(-)
+ hw/arm/virt.c | 118 +++++++++++++++++++++++++---------------------------------
+ 1 file changed, 51 insertions(+), 67 deletions(-)
 
-diff --git a/include/hw/compat.h b/include/hw/compat.h
-index 0f06e11..f8b8354 100644
---- a/include/hw/compat.h
-+++ b/include/hw/compat.h
-@@ -1,6 +1,9 @@
- #ifndef HW_COMPAT_H
- #define HW_COMPAT_H
- 
-+#define HW_COMPAT_2_8 \
-+    /* empty */
-+
- #define HW_COMPAT_2_7 \
-     {\
-         .driver   = "virtio-pci",\
 diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index d04e4ac..11c53a5 100644
+index 11c53a5..fd4eed9 100644
 --- a/hw/arm/virt.c
 +++ b/hw/arm/virt.c
-@@ -1525,7 +1525,7 @@ static void machvirt_machine_init(void)
- }
- type_init(machvirt_machine_init);
+@@ -66,23 +66,8 @@
  
--static void virt_2_8_instance_init(Object *obj)
-+static void virt_2_9_instance_init(Object *obj)
+ static ARMPlatformBusSystemParams platform_bus_params;
+ 
+-typedef struct VirtBoardInfo {
+-    struct arm_boot_info bootinfo;
+-    const char *cpu_model;
+-    const MemMapEntry *memmap;
+-    const int *irqmap;
+-    int smp_cpus;
+-    void *fdt;
+-    int fdt_size;
+-    uint32_t clock_phandle;
+-    uint32_t gic_phandle;
+-    uint32_t msi_phandle;
+-    bool using_psci;
+-} VirtBoardInfo;
+-
+ typedef struct {
+     MachineClass parent;
+-    VirtBoardInfo *daughterboard;
+     bool disallow_affinity_adjustment;
+     bool no_its;
+     bool no_pmu;
+@@ -93,6 +78,16 @@ typedef struct {
+     bool secure;
+     bool highmem;
+     int32_t gic_version;
++    struct arm_boot_info bootinfo;
++    const MemMapEntry *memmap;
++    const int *irqmap;
++    int smp_cpus;
++    void *fdt;
++    int fdt_size;
++    uint32_t clock_phandle;
++    uint32_t gic_phandle;
++    uint32_t msi_phandle;
++    bool using_psci;
+ } VirtMachineState;
+ 
+ #define TYPE_VIRT_MACHINE   MACHINE_TYPE_NAME("virt")
+@@ -202,42 +197,27 @@ static const int a15irqmap[] = {
+     [VIRT_PLATFORM_BUS] = 112, /* ...to 112 + PLATFORM_BUS_NUM_IRQS -1 */
+ };
+ 
+-static VirtBoardInfo machines[] = {
+-    {
+-        .cpu_model = "cortex-a15",
+-        .memmap = a15memmap,
+-        .irqmap = a15irqmap,
+-    },
+-    {
+-        .cpu_model = "cortex-a53",
+-        .memmap = a15memmap,
+-        .irqmap = a15irqmap,
+-    },
+-    {
+-        .cpu_model = "cortex-a57",
+-        .memmap = a15memmap,
+-        .irqmap = a15irqmap,
+-    },
+-    {
+-        .cpu_model = "host",
+-        .memmap = a15memmap,
+-        .irqmap = a15irqmap,
+-    },
++static const char *valid_cpus[] = {
++    "cortex-a15",
++    "cortex-a53",
++    "cortex-a57",
++    "host",
++    NULL
+ };
+ 
+-static VirtBoardInfo *find_machine_info(const char *cpu)
++static bool cpuname_valid(const char *cpu)
  {
-     VirtMachineState *vms = VIRT_MACHINE(obj);
+     int i;
  
-@@ -1558,10 +1558,25 @@ static void virt_2_8_instance_init(Object *obj)
+-    for (i = 0; i < ARRAY_SIZE(machines); i++) {
+-        if (strcmp(cpu, machines[i].cpu_model) == 0) {
+-            return &machines[i];
++    for (i = 0; i < ARRAY_SIZE(valid_cpus); i++) {
++        if (strcmp(cpu, valid_cpus[i]) == 0) {
++            return true;
+         }
+     }
+-    return NULL;
++    return false;
+ }
+ 
+-static void create_fdt(VirtBoardInfo *vbi)
++static void create_fdt(VirtMachineState *vbi)
+ {
+     void *fdt = create_device_tree(&vbi->fdt_size);
+ 
+@@ -277,7 +257,7 @@ static void create_fdt(VirtBoardInfo *vbi)
+ 
+ }
+ 
+-static void fdt_add_psci_node(const VirtBoardInfo *vbi)
++static void fdt_add_psci_node(const VirtMachineState *vbi)
+ {
+     uint32_t cpu_suspend_fn;
+     uint32_t cpu_off_fn;
+@@ -327,7 +307,7 @@ static void fdt_add_psci_node(const VirtBoardInfo *vbi)
+     qemu_fdt_setprop_cell(fdt, "/psci", "migrate", migrate_fn);
+ }
+ 
+-static void fdt_add_timer_nodes(const VirtBoardInfo *vbi, int gictype)
++static void fdt_add_timer_nodes(const VirtMachineState *vbi, int gictype)
+ {
+     /* Note that on A15 h/w these interrupts are level-triggered,
+      * but for the GIC implementation provided by both QEMU and KVM
+@@ -361,7 +341,7 @@ static void fdt_add_timer_nodes(const VirtBoardInfo *vbi, int gictype)
+                        GIC_FDT_IRQ_TYPE_PPI, ARCH_TIMER_NS_EL2_IRQ, irqflags);
+ }
+ 
+-static void fdt_add_cpu_nodes(const VirtBoardInfo *vbi)
++static void fdt_add_cpu_nodes(const VirtMachineState *vbi)
+ {
+     int cpu;
+     int addr_cells = 1;
+@@ -424,7 +404,7 @@ static void fdt_add_cpu_nodes(const VirtBoardInfo *vbi)
+     }
+ }
+ 
+-static void fdt_add_its_gic_node(VirtBoardInfo *vbi)
++static void fdt_add_its_gic_node(VirtMachineState *vbi)
+ {
+     vbi->msi_phandle = qemu_fdt_alloc_phandle(vbi->fdt);
+     qemu_fdt_add_subnode(vbi->fdt, "/intc/its");
+@@ -437,7 +417,7 @@ static void fdt_add_its_gic_node(VirtBoardInfo *vbi)
+     qemu_fdt_setprop_cell(vbi->fdt, "/intc/its", "phandle", vbi->msi_phandle);
+ }
+ 
+-static void fdt_add_v2m_gic_node(VirtBoardInfo *vbi)
++static void fdt_add_v2m_gic_node(VirtMachineState *vbi)
+ {
+     vbi->msi_phandle = qemu_fdt_alloc_phandle(vbi->fdt);
+     qemu_fdt_add_subnode(vbi->fdt, "/intc/v2m");
+@@ -450,7 +430,7 @@ static void fdt_add_v2m_gic_node(VirtBoardInfo *vbi)
+     qemu_fdt_setprop_cell(vbi->fdt, "/intc/v2m", "phandle", vbi->msi_phandle);
+ }
+ 
+-static void fdt_add_gic_node(VirtBoardInfo *vbi, int type)
++static void fdt_add_gic_node(VirtMachineState *vbi, int type)
+ {
+     vbi->gic_phandle = qemu_fdt_alloc_phandle(vbi->fdt);
+     qemu_fdt_setprop_cell(vbi->fdt, "/", "interrupt-parent", vbi->gic_phandle);
+@@ -483,7 +463,7 @@ static void fdt_add_gic_node(VirtBoardInfo *vbi, int type)
+     qemu_fdt_setprop_cell(vbi->fdt, "/intc", "phandle", vbi->gic_phandle);
+ }
+ 
+-static void fdt_add_pmu_nodes(const VirtBoardInfo *vbi, int gictype)
++static void fdt_add_pmu_nodes(const VirtMachineState *vbi, int gictype)
+ {
+     CPUState *cpu;
+     ARMCPU *armcpu;
+@@ -514,7 +494,7 @@ static void fdt_add_pmu_nodes(const VirtBoardInfo *vbi, int gictype)
+     }
+ }
+ 
+-static void create_its(VirtBoardInfo *vbi, DeviceState *gicdev)
++static void create_its(VirtMachineState *vbi, DeviceState *gicdev)
+ {
+     const char *itsclass = its_class_name();
+     DeviceState *dev;
+@@ -534,7 +514,7 @@ static void create_its(VirtBoardInfo *vbi, DeviceState *gicdev)
+     fdt_add_its_gic_node(vbi);
+ }
+ 
+-static void create_v2m(VirtBoardInfo *vbi, qemu_irq *pic)
++static void create_v2m(VirtMachineState *vbi, qemu_irq *pic)
+ {
+     int i;
+     int irq = vbi->irqmap[VIRT_GIC_V2M];
+@@ -553,7 +533,7 @@ static void create_v2m(VirtBoardInfo *vbi, qemu_irq *pic)
+     fdt_add_v2m_gic_node(vbi);
+ }
+ 
+-static void create_gic(VirtBoardInfo *vbi, qemu_irq *pic, int type,
++static void create_gic(VirtMachineState *vbi, qemu_irq *pic, int type,
+                        bool secure, bool no_its)
+ {
+     /* We create a standalone GIC */
+@@ -625,7 +605,7 @@ static void create_gic(VirtBoardInfo *vbi, qemu_irq *pic, int type,
+     }
+ }
+ 
+-static void create_uart(const VirtBoardInfo *vbi, qemu_irq *pic, int uart,
++static void create_uart(const VirtMachineState *vbi, qemu_irq *pic, int uart,
+                         MemoryRegion *mem, CharDriverState *chr)
+ {
+     char *nodename;
+@@ -669,7 +649,7 @@ static void create_uart(const VirtBoardInfo *vbi, qemu_irq *pic, int uart,
+     g_free(nodename);
+ }
+ 
+-static void create_rtc(const VirtBoardInfo *vbi, qemu_irq *pic)
++static void create_rtc(const VirtMachineState *vbi, qemu_irq *pic)
+ {
+     char *nodename;
+     hwaddr base = vbi->memmap[VIRT_RTC].base;
+@@ -703,7 +683,7 @@ static Notifier virt_system_powerdown_notifier = {
+     .notify = virt_powerdown_req
+ };
+ 
+-static void create_gpio(const VirtBoardInfo *vbi, qemu_irq *pic)
++static void create_gpio(const VirtMachineState *vbi, qemu_irq *pic)
+ {
+     char *nodename;
+     DeviceState *pl061_dev;
+@@ -750,7 +730,7 @@ static void create_gpio(const VirtBoardInfo *vbi, qemu_irq *pic)
+     g_free(nodename);
+ }
+ 
+-static void create_virtio_devices(const VirtBoardInfo *vbi, qemu_irq *pic)
++static void create_virtio_devices(const VirtMachineState *vbi, qemu_irq *pic)
+ {
+     int i;
+     hwaddr size = vbi->memmap[VIRT_MMIO].size;
+@@ -870,7 +850,7 @@ static void create_one_flash(const char *name, hwaddr flashbase,
+     }
+ }
+ 
+-static void create_flash(const VirtBoardInfo *vbi,
++static void create_flash(const VirtMachineState *vbi,
+                          MemoryRegion *sysmem,
+                          MemoryRegion *secure_sysmem)
+ {
+@@ -925,7 +905,7 @@ static void create_flash(const VirtBoardInfo *vbi,
+     }
+ }
+ 
+-static void create_fw_cfg(const VirtBoardInfo *vbi, AddressSpace *as)
++static void create_fw_cfg(const VirtMachineState *vbi, AddressSpace *as)
+ {
+     hwaddr base = vbi->memmap[VIRT_FW_CFG].base;
+     hwaddr size = vbi->memmap[VIRT_FW_CFG].size;
+@@ -944,7 +924,8 @@ static void create_fw_cfg(const VirtBoardInfo *vbi, AddressSpace *as)
+     g_free(nodename);
+ }
+ 
+-static void create_pcie_irq_map(const VirtBoardInfo *vbi, uint32_t gic_phandle,
++static void create_pcie_irq_map(const VirtMachineState *vbi,
++                                uint32_t gic_phandle,
+                                 int first_irq, const char *nodename)
+ {
+     int devfn, pin;
+@@ -979,7 +960,7 @@ static void create_pcie_irq_map(const VirtBoardInfo *vbi, uint32_t gic_phandle,
+                            0x7           /* PCI irq */);
+ }
+ 
+-static void create_pcie(const VirtBoardInfo *vbi, qemu_irq *pic,
++static void create_pcie(const VirtMachineState *vbi, qemu_irq *pic,
+                         bool use_highmem)
+ {
+     hwaddr base_mmio = vbi->memmap[VIRT_PCIE_MMIO].base;
+@@ -1095,7 +1076,7 @@ static void create_pcie(const VirtBoardInfo *vbi, qemu_irq *pic,
+     g_free(nodename);
+ }
+ 
+-static void create_platform_bus(VirtBoardInfo *vbi, qemu_irq *pic)
++static void create_platform_bus(VirtMachineState *vbi, qemu_irq *pic)
+ {
+     DeviceState *dev;
+     SysBusDevice *s;
+@@ -1136,7 +1117,8 @@ static void create_platform_bus(VirtBoardInfo *vbi, qemu_irq *pic)
+                                 sysbus_mmio_get_region(s, 0));
+ }
+ 
+-static void create_secure_ram(VirtBoardInfo *vbi, MemoryRegion *secure_sysmem)
++static void create_secure_ram(VirtMachineState *vbi,
++                              MemoryRegion *secure_sysmem)
+ {
+     MemoryRegion *secram = g_new(MemoryRegion, 1);
+     char *nodename;
+@@ -1159,7 +1141,8 @@ static void create_secure_ram(VirtBoardInfo *vbi, MemoryRegion *secure_sysmem)
+ 
+ static void *machvirt_dtb(const struct arm_boot_info *binfo, int *fdt_size)
+ {
+-    const VirtBoardInfo *board = (const VirtBoardInfo *)binfo;
++    const VirtMachineState *board = container_of(binfo, VirtMachineState,
++                                                 bootinfo);
+ 
+     *fdt_size = board->fdt_size;
+     return board->fdt;
+@@ -1214,7 +1197,7 @@ static void machvirt_init(MachineState *machine)
+     int n, virt_max_cpus;
+     MemoryRegion *ram = g_new(MemoryRegion, 1);
+     const char *cpu_model = machine->cpu_model;
+-    VirtBoardInfo *vbi;
++    VirtMachineState *vbi = vms;
+     VirtGuestInfoState *guest_info_state = g_malloc0(sizeof *guest_info_state);
+     VirtGuestInfo *guest_info = &guest_info_state->info;
+     char **cpustr;
+@@ -1248,9 +1231,7 @@ static void machvirt_init(MachineState *machine)
+     /* Separate the actual CPU model name from any appended features */
+     cpustr = g_strsplit(cpu_model, ",", 2);
+ 
+-    vbi = find_machine_info(cpustr[0]);
+-
+-    if (!vbi) {
++    if (!cpuname_valid(cpustr[0])) {
+         error_report("mach-virt: CPU %s not supported", cpustr[0]);
+         exit(1);
+     }
+@@ -1556,6 +1537,9 @@ static void virt_2_9_instance_init(Object *obj)
+     object_property_set_description(obj, "gic-version",
+                                     "Set GIC version. "
                                      "Valid values are 2, 3 and host", NULL);
++
++    vms->memmap = a15memmap;
++    vms->irqmap = a15irqmap;
  }
  
-+static void virt_machine_2_9_options(MachineClass *mc)
-+{
-+}
-+DEFINE_VIRT_MACHINE_AS_LATEST(2, 9)
-+
-+#define VIRT_COMPAT_2_8 \
-+    HW_COMPAT_2_8
-+
-+static void virt_2_8_instance_init(Object *obj)
-+{
-+    virt_2_9_instance_init(obj);
-+}
-+
- static void virt_machine_2_8_options(MachineClass *mc)
- {
-+    virt_machine_2_9_options(mc);
-+    SET_MACHINE_COMPAT(mc, VIRT_COMPAT_2_8);
- }
--DEFINE_VIRT_MACHINE_AS_LATEST(2, 8)
-+DEFINE_VIRT_MACHINE(2, 8)
- 
- #define VIRT_COMPAT_2_7 \
-     HW_COMPAT_2_7
+ static void virt_machine_2_9_options(MachineClass *mc)
 -- 
 2.7.4
 

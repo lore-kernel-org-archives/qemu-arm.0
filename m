@@ -1,48 +1,47 @@
-Received: by 10.25.159.131 with SMTP id i125csp374814lfe;
-        Fri, 9 Dec 2016 08:30:45 -0800 (PST)
-X-Received: by 10.55.53.20 with SMTP id c20mr65570722qka.238.1481301045413;
-        Fri, 09 Dec 2016 08:30:45 -0800 (PST)
+Received: by 10.25.159.131 with SMTP id i125csp374840lfe;
+        Fri, 9 Dec 2016 08:30:49 -0800 (PST)
+X-Received: by 10.55.0.65 with SMTP id 62mr59834171qka.106.1481301049019;
+        Fri, 09 Dec 2016 08:30:49 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [208.118.235.17])
-        by mx.google.com with ESMTPS id p2si20453047qkb.257.2016.12.09.08.30.45
+        by mx.google.com with ESMTPS id p25si20468308qte.81.2016.12.09.08.30.48
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 09 Dec 2016 08:30:45 -0800 (PST)
+        Fri, 09 Dec 2016 08:30:49 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) client-ip=208.118.235.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:47551 helo=lists.gnu.org)
+Received: from localhost ([::1]:47552 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1cFO4K-0003Xy-Qr
-	for alex.bennee@linaro.org; Fri, 09 Dec 2016 11:30:44 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:49643)
+	id 1cFO4O-0003co-AO
+	for alex.bennee@linaro.org; Fri, 09 Dec 2016 11:30:48 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:49717)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1cFO49-00036n-N0
-	for qemu-arm@nongnu.org; Fri, 09 Dec 2016 11:30:39 -0500
+	(envelope-from <pm215@archaic.org.uk>) id 1cFO4H-0003TD-9P
+	for qemu-arm@nongnu.org; Fri, 09 Dec 2016 11:30:42 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1cFO48-0007X3-Mv
-	for qemu-arm@nongnu.org; Fri, 09 Dec 2016 11:30:33 -0500
+	(envelope-from <pm215@archaic.org.uk>) id 1cFO4B-0007Y7-B6
+	for qemu-arm@nongnu.org; Fri, 09 Dec 2016 11:30:41 -0500
 Received: from orth.archaic.org.uk ([2001:8b0:1d0::2]:47666)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <pm215@archaic.org.uk>)
-	id 1cFO48-0007Tx-Ft; Fri, 09 Dec 2016 11:30:32 -0500
+	id 1cFO4A-0007Tx-VU; Fri, 09 Dec 2016 11:30:35 -0500
 Received: from pm215 by orth.archaic.org.uk with local (Exim 4.84_2)
 	(envelope-from <pm215@archaic.org.uk>)
-	id 1cFO3y-0007zw-Un; Fri, 09 Dec 2016 16:30:22 +0000
+	id 1cFO3x-0007zP-Gf; Fri, 09 Dec 2016 16:30:21 +0000
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Date: Fri,  9 Dec 2016 16:30:20 +0000
-Message-Id: <1481301020-21777-5-git-send-email-peter.maydell@linaro.org>
+Date: Fri,  9 Dec 2016 16:30:17 +0000
+Message-Id: <1481301020-21777-2-git-send-email-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.7.4
 In-Reply-To: <1481301020-21777-1-git-send-email-peter.maydell@linaro.org>
 References: <1481301020-21777-1-git-send-email-peter.maydell@linaro.org>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 2001:8b0:1d0::2
-Subject: [Qemu-arm] [PATCH 4/4] hw/arm/virt: Don't incorrectly claim
- architectural timer to be edge-triggered
+Subject: [Qemu-arm] [PATCH 1/4] hw/arm/virt: add 2.9 machine type
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -58,90 +57,68 @@ Cc: Andrew Jones <drjones@redhat.com>,
 	Christoffer Dall <christoffer.dall@linaro.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: JcIVEjd0/WZZ
-
-The architectural timers in ARM CPUs all have level triggered interrupts
-(unless you're using KVM on a host kernel before 4.4, which misimplemented
-them as edge-triggered).
-
-We were incorrectly describing them in the device tree as edge triggered.
-This can cause problems for guest kernels in 4.8 before rc6:
- * pre-4.8 kernels ignore the values in the DT
- * 4.8 before rc6 write the DT values to the GIC config registers
- * newer than rc6 ignore the DT and insist that the timer interrupts
-   are level triggered regardless
-
-Fix the DT so we're describing reality. For backwards-compatibility
-purposes, only do this for the virt-2.9 machine onward.
+X-TUID: hRkSczzCmD2Y
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- hw/arm/virt.c | 34 ++++++++++++++++++++++++++++++----
- 1 file changed, 30 insertions(+), 4 deletions(-)
+ include/hw/compat.h |  3 +++
+ hw/arm/virt.c       | 19 +++++++++++++++++--
+ 2 files changed, 20 insertions(+), 2 deletions(-)
 
+diff --git a/include/hw/compat.h b/include/hw/compat.h
+index 0f06e11..f8b8354 100644
+--- a/include/hw/compat.h
++++ b/include/hw/compat.h
+@@ -1,6 +1,9 @@
+ #ifndef HW_COMPAT_H
+ #define HW_COMPAT_H
+ 
++#define HW_COMPAT_2_8 \
++    /* empty */
++
+ #define HW_COMPAT_2_7 \
+     {\
+         .driver   = "virtio-pci",\
 diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index 54498ea..2ca9527 100644
+index d04e4ac..11c53a5 100644
 --- a/hw/arm/virt.c
 +++ b/hw/arm/virt.c
-@@ -71,6 +71,7 @@ typedef struct {
-     bool disallow_affinity_adjustment;
-     bool no_its;
-     bool no_pmu;
-+    bool claim_edge_triggered_timers;
- } VirtMachineClass;
+@@ -1525,7 +1525,7 @@ static void machvirt_machine_init(void)
+ }
+ type_init(machvirt_machine_init);
  
- typedef struct {
-@@ -309,12 +310,31 @@ static void fdt_add_psci_node(const VirtMachineState *vms)
- 
- static void fdt_add_timer_nodes(const VirtMachineState *vms, int gictype)
+-static void virt_2_8_instance_init(Object *obj)
++static void virt_2_9_instance_init(Object *obj)
  {
--    /* Note that on A15 h/w these interrupts are level-triggered,
--     * but for the GIC implementation provided by both QEMU and KVM
--     * they are edge-triggered.
-+    /* On real hardware these interrupts are level-triggered.
-+     * On KVM they were edge-triggered before host kernel version 4.4,
-+     * and level-triggered afterwards.
-+     * On emulated QEMU they are level-triggered.
-+     *
-+     * Getting the DTB info about them wrong is awkward for some
-+     * guest kernels:
-+     *  pre-4.8 ignore the DT and leave the interrupt configured
-+     *   with whatever the GIC reset value (or the bootloader) left it at
-+     *  4.8 before rc6 honour the incorrect data by programming it back
-+     *   into the GIC, causing problems
-+     *  4.8rc6 and later ignore the DT and always write "level triggered"
-+     *   into the GIC
-+     *
-+     * For backwards-compatibility, virt-2.8 and earlier will continue
-+     * to say these are edge-triggered, but later machines will report
-+     * the correct information.
-      */
-     ARMCPU *armcpu;
--    uint32_t irqflags = GIC_FDT_IRQ_FLAGS_EDGE_LO_HI;
-+    VirtMachineClass *vmc = VIRT_MACHINE_GET_CLASS(vms);
-+    uint32_t irqflags = GIC_FDT_IRQ_FLAGS_LEVEL_HI;
+     VirtMachineState *vms = VIRT_MACHINE(obj);
+ 
+@@ -1558,10 +1558,25 @@ static void virt_2_8_instance_init(Object *obj)
+                                     "Valid values are 2, 3 and host", NULL);
+ }
+ 
++static void virt_machine_2_9_options(MachineClass *mc)
++{
++}
++DEFINE_VIRT_MACHINE_AS_LATEST(2, 9)
 +
-+    if (vmc->claim_edge_triggered_timers) {
-+        irqflags = GIC_FDT_IRQ_FLAGS_EDGE_LO_HI;
-+    }
- 
-     if (gictype == 2) {
-         irqflags = deposit32(irqflags, GIC_FDT_IRQ_PPI_CPU_START,
-@@ -1556,8 +1576,14 @@ static void virt_2_8_instance_init(Object *obj)
- 
++#define VIRT_COMPAT_2_8 \
++    HW_COMPAT_2_8
++
++static void virt_2_8_instance_init(Object *obj)
++{
++    virt_2_9_instance_init(obj);
++}
++
  static void virt_machine_2_8_options(MachineClass *mc)
  {
-+    VirtMachineClass *vmc = VIRT_MACHINE_CLASS(OBJECT_CLASS(mc));
-+
-     virt_machine_2_9_options(mc);
-     SET_MACHINE_COMPAT(mc, VIRT_COMPAT_2_8);
-+    /* For 2.8 and earlier we falsely claimed in the DT that
-+     * our timers were edge-triggered, not level-triggered.
-+     */
-+    vmc->claim_edge_triggered_timers = true;
++    virt_machine_2_9_options(mc);
++    SET_MACHINE_COMPAT(mc, VIRT_COMPAT_2_8);
  }
- DEFINE_VIRT_MACHINE(2, 8)
+-DEFINE_VIRT_MACHINE_AS_LATEST(2, 8)
++DEFINE_VIRT_MACHINE(2, 8)
  
+ #define VIRT_COMPAT_2_7 \
+     HW_COMPAT_2_7
 -- 
 2.7.4
 

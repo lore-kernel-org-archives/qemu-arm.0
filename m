@@ -1,111 +1,334 @@
-Received: by 10.25.159.131 with SMTP id i125csp257901lfe;
-        Fri, 9 Dec 2016 04:15:48 -0800 (PST)
-X-Received: by 10.55.71.150 with SMTP id u144mr65883906qka.300.1481285748149;
-        Fri, 09 Dec 2016 04:15:48 -0800 (PST)
-Return-Path: <drjones@redhat.com>
-Received: from mx1.redhat.com (mx1.redhat.com. [209.132.183.28])
-        by mx.google.com with ESMTPS id e92si19878831qtb.93.2016.12.09.04.15.47
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 09 Dec 2016 04:15:48 -0800 (PST)
-Received-SPF: pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) client-ip=209.132.183.28;
+Received: by 10.25.159.131 with SMTP id i125csp363003lfe;
+        Fri, 9 Dec 2016 08:07:11 -0800 (PST)
+X-Received: by 10.84.178.195 with SMTP id z61mr160924305plb.176.1481299631104;
+        Fri, 09 Dec 2016 08:07:11 -0800 (PST)
+Return-Path: <andre.przywara@arm.com>
+Received: from foss.arm.com (foss.arm.com. [217.140.101.70])
+        by mx.google.com with ESMTP id 1si34537265plu.329.2016.12.09.08.07.10;
+        Fri, 09 Dec 2016 08:07:11 -0800 (PST)
+Received-SPF: pass (google.com: domain of andre.przywara@arm.com designates 217.140.101.70 as permitted sender) client-ip=217.140.101.70;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=drjones@redhat.com
-Received: from int-mx14.intmail.prod.int.phx2.redhat.com (int-mx14.intmail.prod.int.phx2.redhat.com [10.5.11.27])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 2F8CD31B320;
-	Fri,  9 Dec 2016 12:15:47 +0000 (UTC)
-Received: from hawk.localdomain (ovpn-204-72.brq.redhat.com [10.40.204.72])
-	by int-mx14.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP id uB9CFg5Q029813
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=NO);
-	Fri, 9 Dec 2016 07:15:44 -0500
-Date: Fri, 9 Dec 2016 13:15:41 +0100
-From: Andrew Jones <drjones@redhat.com>
-To: Andre Przywara <andre.przywara@arm.com>
-Cc: kvm@vger.kernel.org, kvmarm@lists.cs.columbia.edu, qemu-devel@nongnu.org,
-        qemu-arm@nongnu.org, peter.maydell@linaro.org, marc.zyngier@arm.com,
-        eric.auger@redhat.com, pbonzini@redhat.com, alex.bennee@linaro.org,
-        christoffer.dall@linaro.org
-Subject: Re: [Qemu-devel] [PATCH kvm-unit-tests v8 03/10] arm/arm64: add some
- delay routines
-Message-ID: <20161209121541.i3advgnpbu5gvoft@hawk.localdomain>
+       spf=pass (google.com: domain of andre.przywara@arm.com designates 217.140.101.70 as permitted sender) smtp.mailfrom=andre.przywara@arm.com
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.72.51.249])
+	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id C439BAD7;
+	Fri,  9 Dec 2016 08:07:09 -0800 (PST)
+Received: from [192.168.67.35] (usa-sjc-imap-foss1.foss.arm.com [10.72.51.249])
+	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 9E6B33F445;
+	Fri,  9 Dec 2016 08:07:07 -0800 (PST)
+Subject: Re: [PATCH kvm-unit-tests v8 09/10] arm/arm64: gicv3: add an IPI test
+To: Andrew Jones <drjones@redhat.com>, kvm@vger.kernel.org,
+ kvmarm@lists.cs.columbia.edu, qemu-devel@nongnu.org, qemu-arm@nongnu.org
 References: <20161208175030.12269-1-drjones@redhat.com>
- <20161208175030.12269-4-drjones@redhat.com>
- <dfb48863-82a7-3bd2-d2dc-498570325970@arm.com>
+ <20161208175030.12269-10-drjones@redhat.com>
+Cc: peter.maydell@linaro.org, marc.zyngier@arm.com, eric.auger@redhat.com,
+ pbonzini@redhat.com, alex.bennee@linaro.org, christoffer.dall@linaro.org
+From: Andre Przywara <andre.przywara@arm.com>
+Message-ID: <2fc872dd-ee19-f2fb-7444-cf701871fbeb@arm.com>
+Date: Fri, 9 Dec 2016 16:08:00 +0000
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
+ Thunderbird/45.5.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <dfb48863-82a7-3bd2-d2dc-498570325970@arm.com>
-User-Agent: Mutt/1.6.0.1 (2016-04-01)
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.27
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.5.110.29]); Fri, 09 Dec 2016 12:15:47 +0000 (UTC)
-X-TUID: x4i69frNkn7f
+In-Reply-To: <20161208175030.12269-10-drjones@redhat.com>
+Content-Type: text/plain; charset=windows-1252
+Content-Transfer-Encoding: 7bit
+X-TUID: X3coCIVXidCP
 
-On Fri, Dec 09, 2016 at 11:41:06AM +0000, Andre Przywara wrote:
-> Hi,
+Hi,
+
+On 08/12/16 17:50, Andrew Jones wrote:
+> Signed-off-by: Andrew Jones <drjones@redhat.com>
 > 
-> On 08/12/16 17:50, Andrew Jones wrote:
-> > Allow a thread to wait some specified amount of time. Can
-> > specify in cycles, usecs, and msecs.
-> > 
-> > Signed-off-by: Andrew Jones <drjones@redhat.com>
-> > 
-> > ---
-> > v8: rewrote basing on new sysreg framework. Also decided delay
-> >     functions warrant their own files (delay.[ch])
-> > ---
-> >  arm/Makefile.common       |  1 +
-> >  lib/arm/asm/delay.h       | 14 ++++++++++++++
-> >  lib/arm/asm/processor.h   | 15 +++++++++++++++
-> >  lib/arm64/asm/delay.h     |  1 +
-> >  lib/arm64/asm/processor.h | 12 ++++++++++++
-> >  lib/arm/delay.c           | 29 +++++++++++++++++++++++++++++
-> >  6 files changed, 72 insertions(+)
-> >  create mode 100644 lib/arm/asm/delay.h
-> >  create mode 100644 lib/arm64/asm/delay.h
-> >  create mode 100644 lib/arm/delay.c
-> > 
-> > diff --git a/arm/Makefile.common b/arm/Makefile.common
-> > index b2c0fc8a2fdc..89fe3f69eb44 100644
-> > --- a/arm/Makefile.common
-> > +++ b/arm/Makefile.common
-> > @@ -48,6 +48,7 @@ cflatobjs += lib/arm/mmu.o
-> >  cflatobjs += lib/arm/bitops.o
-> >  cflatobjs += lib/arm/psci.o
-> >  cflatobjs += lib/arm/smp.o
-> > +cflatobjs += lib/arm/delay.o
-> >  
-> >  libeabi = lib/arm/libeabi.a
-> >  eabiobjs = lib/arm/eabi_compat.o
-> > diff --git a/lib/arm/asm/delay.h b/lib/arm/asm/delay.h
-> > new file mode 100644
-> > index 000000000000..2436b28c77ae
-> > --- /dev/null
-> > +++ b/lib/arm/asm/delay.h
-> > @@ -0,0 +1,14 @@
-> > +#ifndef _ASMARM_DELAY_H_
-> > +#define _ASMARM_DELAY_H_
-> > +/*
-> > + * Copyright (C) 2016, Red Hat Inc, Andrew Jones <drjones@redhat.com>
-> > + *
-> > + * This work is licensed under the terms of the GNU LGPL, version 2.
-> > + */
-> > +#include <libcflat.h>
-> > +
-> > +extern void delay(u64 cycles);
+> ---
+> v8:
+>  - keep the gic_common_ops concept completely local to
+>    lib/arm/gic.c by instead exposing the more useful
+>    concept of gic-specific functions
+>  - sysreg rebase changes
+>  - ordered ICC registers in spec-order (OCD kicked in...)
+> v7:
+>  - add common ipi_send_single/mask (replacing ipi_send).
+>    Note, the arg order irq,cpu got swapped. [Eric]
+>  - comment rewording [Eric]
+>  - make enable_defaults a common op [Eric]
+>  - gic_enable_defaults() will now invoke gic_init if
+>    necessary [drew]
+>  - split lib/arm/gic.c into gic-v2/3.c [Eric]
+> v6: move most gicv2/gicv3 wrappers to common code [Alex]
+> v5:
+>  - fix copy+paste error in gicv3_write_eoir [drew]
+>  - use modern register names [Andre]
+> v4:
+>  - heavily comment gicv3_ipi_send_tlist() [Eric]
+>  - changes needed for gicv2 iar/irqstat fix to other patch
+> v2:
+>  - use IRM for gicv3 broadcast
+> ---
+>  arm/unittests.cfg          |  6 ++++
+>  lib/arm/asm/arch_gicv3.h   | 21 ++++++++++++
+>  lib/arm/asm/gic-v2.h       |  6 ++++
+>  lib/arm/asm/gic-v3.h       | 12 +++++++
+>  lib/arm/asm/gic.h          | 19 +++++++++++
+>  lib/arm64/asm/arch_gicv3.h | 22 ++++++++++++
+>  arm/gic.c                  | 81 +++++++++++++++++++++++++++++++++++--------
+>  lib/arm/gic-v2.c           | 30 ++++++++++++++++
+>  lib/arm/gic-v3.c           | 84 +++++++++++++++++++++++++++++++++++++++++++++
+>  lib/arm/gic.c              | 85 ++++++++++++++++++++++++++++++++++++++++++++--
+>  10 files changed, 350 insertions(+), 16 deletions(-)
+
+....
+
+> diff --git a/lib/arm/gic-v2.c b/lib/arm/gic-v2.c
+> index e80eb8f29488..dc6a97c600ec 100644
+> --- a/lib/arm/gic-v2.c
+> +++ b/lib/arm/gic-v2.c
+> @@ -25,3 +25,33 @@ void gicv2_enable_defaults(void)
+>  	writel(GICC_INT_PRI_THRESHOLD, cpu_base + GICC_PMR);
+>  	writel(GICC_ENABLE, cpu_base + GICC_CTLR);
+>  }
+> +
+> +u32 gicv2_read_iar(void)
+> +{
+> +	return readl(gicv2_cpu_base() + GICC_IAR);
+> +}
+> +
+> +u32 gicv2_iar_irqnr(u32 iar)
+> +{
+> +	return iar & GICC_IAR_INT_ID_MASK;
+> +}
+> +
+> +void gicv2_write_eoir(u32 irqstat)
+> +{
+> +	writel(irqstat, gicv2_cpu_base() + GICC_EOIR);
+> +}
+> +
+> +void gicv2_ipi_send_single(int irq, int cpu)
+> +{
+> +	assert(cpu < 8);
+> +	assert(irq < 16);
+> +	writel(1 << (cpu + 16) | irq, gicv2_dist_base() + GICD_SGIR);
+> +}
+> +
+> +void gicv2_ipi_send_mask(int irq, const cpumask_t *dest)
+> +{
+> +	u8 tlist = (u8)cpumask_bits(dest)[0];
+> +
+> +	assert(irq < 16);
+> +	writel(tlist << 16 | irq, gicv2_dist_base() + GICD_SGIR);
+> +}
+> diff --git a/lib/arm/gic-v3.c b/lib/arm/gic-v3.c
+> index c46d16e11782..9682fc96b631 100644
+> --- a/lib/arm/gic-v3.c
+> +++ b/lib/arm/gic-v3.c
+> @@ -59,3 +59,87 @@ void gicv3_enable_defaults(void)
+>  	gicv3_write_pmr(GICC_INT_PRI_THRESHOLD);
+>  	gicv3_write_grpen1(1);
+>  }
+> +
+> +u32 gicv3_iar_irqnr(u32 iar)
+> +{
+> +	return iar;
+
+I am probably a bit paranoid here, but the spec says that the interrupt
+ID is in bits[23:0] only (at most).
+
+> +}
+> +
+> +void gicv3_ipi_send_mask(int irq, const cpumask_t *dest)
+> +{
+> +	u16 tlist;
+> +	int cpu;
+> +
+> +	assert(irq < 16);
+> +
+> +	/*
+> +	 * For each cpu in the mask collect its peers, which are also in
+> +	 * the mask, in order to form target lists.
+> +	 */
+> +	for_each_cpu(cpu, dest) {
+> +		u64 mpidr = cpus[cpu], sgi1r;
+> +		u64 cluster_id;
+> +
+> +		/*
+> +		 * GICv3 can send IPIs to up 16 peer cpus with a single
+> +		 * write to ICC_SGI1R_EL1 (using the target list). Peers
+> +		 * are cpus that have nearly identical MPIDRs, the only
+> +		 * difference being Aff0. The matching upper affinity
+> +		 * levels form the cluster ID.
+> +		 */
+> +		cluster_id = mpidr & ~0xffUL;
+> +		tlist = 0;
+> +
+> +		/*
+> +		 * Sort of open code for_each_cpu in order to have a
+> +		 * nested for_each_cpu loop.
+> +		 */
+> +		while (cpu < nr_cpus) {
+> +			if ((mpidr & 0xff) >= 16) {
+> +				printf("cpu%d MPIDR:aff0 is %d (>= 16)!\n",
+> +					cpu, (int)(mpidr & 0xff));
+> +				break;
+> +			}
+> +
+> +			tlist |= 1 << (mpidr & 0xf);
+> +
+> +			cpu = cpumask_next(cpu, dest);
+> +			if (cpu >= nr_cpus)
+> +				break;
+> +
+> +			mpidr = cpus[cpu];
+> +
+> +			if (cluster_id != (mpidr & ~0xffUL)) {
+> +				/*
+> +				 * The next cpu isn't in our cluster. Roll
+> +				 * back the cpu index allowing the outer
+> +				 * for_each_cpu to find it again with
+> +				 * cpumask_next
+> +				 */
+> +				--cpu;
+> +				break;
+> +			}
+> +		}
+> +
+> +		/* Send the IPIs for the target list of this cluster */
+> +		sgi1r = (MPIDR_TO_SGI_AFFINITY(cluster_id, 3)	|
+> +			 MPIDR_TO_SGI_AFFINITY(cluster_id, 2)	|
+> +			 irq << 24				|
+> +			 MPIDR_TO_SGI_AFFINITY(cluster_id, 1)	|
+> +			 tlist);
+> +
+> +		gicv3_write_sgi1r(sgi1r);
+> +	}
+> +
+> +	/* Force the above writes to ICC_SGI1R_EL1 to be executed */
+> +	isb();
+> +}
+
+Wow, this is really heavy stuff, especially for a Friday afternoon ;-)
+But I convinced myself that it's correct. The only issue is that it's
+sub-optimal if the MPIDRs of the VCPUs are not in order, say: 0x000,
+0x100, 0x001.
+In this case we do three register writes instead of the minimal two.
+But it's still correct, so it's actually a minor nit just to prove that
+I checked the algorithm ;-)
+
+So apart from the minor comment above:
+
+Reviewed-by: Andre Przywara <andre.przywara@arm.com>
+
+Cheers,
+Andre.
+
+> +
+> +void gicv3_ipi_send_single(int irq, int cpu)
+> +{
+> +	cpumask_t dest;
+> +
+> +	cpumask_clear(&dest);
+> +	cpumask_set_cpu(cpu, &dest);
+> +	gicv3_ipi_send_mask(irq, &dest);
+> +}
+> diff --git a/lib/arm/gic.c b/lib/arm/gic.c
+> index 4d3ddd9722b1..3ed539727f8c 100644
+> --- a/lib/arm/gic.c
+> +++ b/lib/arm/gic.c
+> @@ -10,6 +10,38 @@
+>  struct gicv2_data gicv2_data;
+>  struct gicv3_data gicv3_data;
+>  
+> +struct gic_common_ops {
+> +	int gic_version;
+> +	void (*enable_defaults)(void);
+> +	u32 (*read_iar)(void);
+> +	u32 (*iar_irqnr)(u32 iar);
+> +	void (*write_eoir)(u32 irqstat);
+> +	void (*ipi_send_single)(int irq, int cpu);
+> +	void (*ipi_send_mask)(int irq, const cpumask_t *dest);
+> +};
+> +
+> +static const struct gic_common_ops *gic_common_ops;
+> +
+> +static const struct gic_common_ops gicv2_common_ops = {
+> +	.gic_version = 2,
+> +	.enable_defaults = gicv2_enable_defaults,
+> +	.read_iar = gicv2_read_iar,
+> +	.iar_irqnr = gicv2_iar_irqnr,
+> +	.write_eoir = gicv2_write_eoir,
+> +	.ipi_send_single = gicv2_ipi_send_single,
+> +	.ipi_send_mask = gicv2_ipi_send_mask,
+> +};
+> +
+> +static const struct gic_common_ops gicv3_common_ops = {
+> +	.gic_version = 3,
+> +	.enable_defaults = gicv3_enable_defaults,
+> +	.read_iar = gicv3_read_iar,
+> +	.iar_irqnr = gicv3_iar_irqnr,
+> +	.write_eoir = gicv3_write_eoir,
+> +	.ipi_send_single = gicv3_ipi_send_single,
+> +	.ipi_send_mask = gicv3_ipi_send_mask,
+> +};
+> +
+>  /*
+>   * Documentation/devicetree/bindings/interrupt-controller/arm,gic.txt
+>   * Documentation/devicetree/bindings/interrupt-controller/arm,gic-v3.txt
+> @@ -58,9 +90,58 @@ int gicv3_init(void)
+>  
+>  int gic_init(void)
+>  {
+> -	if (gicv2_init())
+> +	if (gicv2_init()) {
+> +		gic_common_ops = &gicv2_common_ops;
+>  		return 2;
+> -	else if (gicv3_init())
+> +	} else if (gicv3_init()) {
+> +		gic_common_ops = &gicv3_common_ops;
+>  		return 3;
+> +	}
+>  	return 0;
+>  }
+> +
+> +void gic_enable_defaults(void)
+> +{
+> +	if (!gic_common_ops) {
+> +		int ret = gic_init();
+> +		assert(ret != 0);
+> +	} else
+> +		assert(gic_common_ops->enable_defaults);
+> +	gic_common_ops->enable_defaults();
+> +}
+> +
+> +int gic_version(void)
+> +{
+> +	assert(gic_common_ops);
+> +	return gic_common_ops->gic_version;
+> +}
+> +
+> +u32 gic_read_iar(void)
+> +{
+> +	assert(gic_common_ops && gic_common_ops->read_iar);
+> +	return gic_common_ops->read_iar();
+> +}
+> +
+> +u32 gic_iar_irqnr(u32 iar)
+> +{
+> +	assert(gic_common_ops && gic_common_ops->iar_irqnr);
+> +	return gic_common_ops->iar_irqnr(iar);
+> +}
+> +
+> +void gic_write_eoir(u32 irqstat)
+> +{
+> +	assert(gic_common_ops && gic_common_ops->write_eoir);
+> +	gic_common_ops->write_eoir(irqstat);
+> +}
+> +
+> +void gic_ipi_send_single(int irq, int cpu)
+> +{
+> +	assert(gic_common_ops && gic_common_ops->ipi_send_single);
+> +	gic_common_ops->ipi_send_single(irq, cpu);
+> +}
+> +
+> +void gic_ipi_send_mask(int irq, const cpumask_t *dest)
+> +{
+> +	assert(gic_common_ops && gic_common_ops->ipi_send_mask);
+> +	gic_common_ops->ipi_send_mask(irq, dest);
+> +}
 > 
-> Nit: Shouldn't this parameter be called "ticks"? Cycles might be a bit
-> misleading, especially since this prototype is the only documentation on
-> this. You might just want to fix this when applying the patches.
-
-Right or wrong the kernel uses 'cycles' for this function, named
-__timer_delay for arm and __delay for arm64. I guess I prefer
-consistency here.
-
-> 
-> That notwithstanding:
-> Reviewed-by: Andre Przywara <andre.przywara@arm.com>
-
-Thanks!
-
-drew

@@ -1,334 +1,113 @@
-Received: by 10.25.159.131 with SMTP id i125csp363003lfe;
-        Fri, 9 Dec 2016 08:07:11 -0800 (PST)
-X-Received: by 10.84.178.195 with SMTP id z61mr160924305plb.176.1481299631104;
-        Fri, 09 Dec 2016 08:07:11 -0800 (PST)
-Return-Path: <andre.przywara@arm.com>
-Received: from foss.arm.com (foss.arm.com. [217.140.101.70])
-        by mx.google.com with ESMTP id 1si34537265plu.329.2016.12.09.08.07.10;
-        Fri, 09 Dec 2016 08:07:11 -0800 (PST)
-Received-SPF: pass (google.com: domain of andre.przywara@arm.com designates 217.140.101.70 as permitted sender) client-ip=217.140.101.70;
+Received: by 10.25.159.131 with SMTP id i125csp374758lfe;
+        Fri, 9 Dec 2016 08:30:39 -0800 (PST)
+X-Received: by 10.55.0.65 with SMTP id 62mr59833407qka.106.1481301039765;
+        Fri, 09 Dec 2016 08:30:39 -0800 (PST)
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [208.118.235.17])
+        by mx.google.com with ESMTPS id d4si6060981qkg.123.2016.12.09.08.30.39
+        for <alex.bennee@linaro.org>
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Fri, 09 Dec 2016 08:30:39 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) client-ip=208.118.235.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of andre.przywara@arm.com designates 217.140.101.70 as permitted sender) smtp.mailfrom=andre.przywara@arm.com
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.72.51.249])
-	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id C439BAD7;
-	Fri,  9 Dec 2016 08:07:09 -0800 (PST)
-Received: from [192.168.67.35] (usa-sjc-imap-foss1.foss.arm.com [10.72.51.249])
-	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 9E6B33F445;
-	Fri,  9 Dec 2016 08:07:07 -0800 (PST)
-Subject: Re: [PATCH kvm-unit-tests v8 09/10] arm/arm64: gicv3: add an IPI test
-To: Andrew Jones <drjones@redhat.com>, kvm@vger.kernel.org,
- kvmarm@lists.cs.columbia.edu, qemu-devel@nongnu.org, qemu-arm@nongnu.org
-References: <20161208175030.12269-1-drjones@redhat.com>
- <20161208175030.12269-10-drjones@redhat.com>
-Cc: peter.maydell@linaro.org, marc.zyngier@arm.com, eric.auger@redhat.com,
- pbonzini@redhat.com, alex.bennee@linaro.org, christoffer.dall@linaro.org
-From: Andre Przywara <andre.przywara@arm.com>
-Message-ID: <2fc872dd-ee19-f2fb-7444-cf701871fbeb@arm.com>
-Date: Fri, 9 Dec 2016 16:08:00 +0000
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
- Thunderbird/45.5.1
-MIME-Version: 1.0
-In-Reply-To: <20161208175030.12269-10-drjones@redhat.com>
-Content-Type: text/plain; charset=windows-1252
-Content-Transfer-Encoding: 7bit
-X-TUID: X3coCIVXidCP
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:47549 helo=lists.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1cFO4F-0003Hv-5K
+	for alex.bennee@linaro.org; Fri, 09 Dec 2016 11:30:39 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:49662)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <pm215@archaic.org.uk>) id 1cFO4B-0003Ay-CY
+	for qemu-arm@nongnu.org; Fri, 09 Dec 2016 11:30:36 -0500
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+	(envelope-from <pm215@archaic.org.uk>) id 1cFO4A-0007Xi-Bu
+	for qemu-arm@nongnu.org; Fri, 09 Dec 2016 11:30:35 -0500
+Received: from orth.archaic.org.uk ([2001:8b0:1d0::2]:47666)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <pm215@archaic.org.uk>)
+	id 1cFO4A-0007Tx-5I; Fri, 09 Dec 2016 11:30:34 -0500
+Received: from pm215 by orth.archaic.org.uk with local (Exim 4.84_2)
+	(envelope-from <pm215@archaic.org.uk>)
+	id 1cFO3x-0007zE-0z; Fri, 09 Dec 2016 16:30:21 +0000
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Date: Fri,  9 Dec 2016 16:30:16 +0000
+Message-Id: <1481301020-21777-1-git-send-email-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.7.4
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 2001:8b0:1d0::2
+Subject: [Qemu-arm] [PATCH 0/4] hw/arm/virt: 2.9 machtype, fix timer dt info
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.21
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Andrew Jones <drjones@redhat.com>,
+	Christoffer Dall <christoffer.dall@linaro.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: UgHKg/iay9x7
 
-Hi,
+This patchset fixes an error in how we were reporting the
+architectural timers in the device tree for the virt board.
+Old KVM host kernels (before 4.4) implemented these timers
+as edge-triggered, which led us to decide to report them in
+the DT as edge triggered. However in newer kernels this
+was fixed and they're level triggered as they're architecturally
+supposed to be.
 
-On 08/12/16 17:50, Andrew Jones wrote:
-> Signed-off-by: Andrew Jones <drjones@redhat.com>
-> 
-> ---
-> v8:
->  - keep the gic_common_ops concept completely local to
->    lib/arm/gic.c by instead exposing the more useful
->    concept of gic-specific functions
->  - sysreg rebase changes
->  - ordered ICC registers in spec-order (OCD kicked in...)
-> v7:
->  - add common ipi_send_single/mask (replacing ipi_send).
->    Note, the arg order irq,cpu got swapped. [Eric]
->  - comment rewording [Eric]
->  - make enable_defaults a common op [Eric]
->  - gic_enable_defaults() will now invoke gic_init if
->    necessary [drew]
->  - split lib/arm/gic.c into gic-v2/3.c [Eric]
-> v6: move most gicv2/gicv3 wrappers to common code [Alex]
-> v5:
->  - fix copy+paste error in gicv3_write_eoir [drew]
->  - use modern register names [Andre]
-> v4:
->  - heavily comment gicv3_ipi_send_tlist() [Eric]
->  - changes needed for gicv2 iar/irqstat fix to other patch
-> v2:
->  - use IRM for gicv3 broadcast
-> ---
->  arm/unittests.cfg          |  6 ++++
->  lib/arm/asm/arch_gicv3.h   | 21 ++++++++++++
->  lib/arm/asm/gic-v2.h       |  6 ++++
->  lib/arm/asm/gic-v3.h       | 12 +++++++
->  lib/arm/asm/gic.h          | 19 +++++++++++
->  lib/arm64/asm/arch_gicv3.h | 22 ++++++++++++
->  arm/gic.c                  | 81 +++++++++++++++++++++++++++++++++++--------
->  lib/arm/gic-v2.c           | 30 ++++++++++++++++
->  lib/arm/gic-v3.c           | 84 +++++++++++++++++++++++++++++++++++++++++++++
->  lib/arm/gic.c              | 85 ++++++++++++++++++++++++++++++++++++++++++++--
->  10 files changed, 350 insertions(+), 16 deletions(-)
+Patch 4 fixes up the DT.
+Patch 1 adds the 2.9 machine type so we can make the DT
+ change only apply to new virt machine types
+Patches 2 and 3 are a cleanup, so that we can have
+ convenient access to the VirtMachineClass at the point
+ in the code where we want to look at it. We collapse the
+ VirtBoardInfo struct into the VirtMachineState, since
+ the former mostly exists because at the time there was
+ no VirtMachineState.
 
-....
+(Most of the diffstat is the result of s/vbi/vms/ on
+the file to update variable names.)
 
-> diff --git a/lib/arm/gic-v2.c b/lib/arm/gic-v2.c
-> index e80eb8f29488..dc6a97c600ec 100644
-> --- a/lib/arm/gic-v2.c
-> +++ b/lib/arm/gic-v2.c
-> @@ -25,3 +25,33 @@ void gicv2_enable_defaults(void)
->  	writel(GICC_INT_PRI_THRESHOLD, cpu_base + GICC_PMR);
->  	writel(GICC_ENABLE, cpu_base + GICC_CTLR);
->  }
-> +
-> +u32 gicv2_read_iar(void)
-> +{
-> +	return readl(gicv2_cpu_base() + GICC_IAR);
-> +}
-> +
-> +u32 gicv2_iar_irqnr(u32 iar)
-> +{
-> +	return iar & GICC_IAR_INT_ID_MASK;
-> +}
-> +
-> +void gicv2_write_eoir(u32 irqstat)
-> +{
-> +	writel(irqstat, gicv2_cpu_base() + GICC_EOIR);
-> +}
-> +
-> +void gicv2_ipi_send_single(int irq, int cpu)
-> +{
-> +	assert(cpu < 8);
-> +	assert(irq < 16);
-> +	writel(1 << (cpu + 16) | irq, gicv2_dist_base() + GICD_SGIR);
-> +}
-> +
-> +void gicv2_ipi_send_mask(int irq, const cpumask_t *dest)
-> +{
-> +	u8 tlist = (u8)cpumask_bits(dest)[0];
-> +
-> +	assert(irq < 16);
-> +	writel(tlist << 16 | irq, gicv2_dist_base() + GICD_SGIR);
-> +}
-> diff --git a/lib/arm/gic-v3.c b/lib/arm/gic-v3.c
-> index c46d16e11782..9682fc96b631 100644
-> --- a/lib/arm/gic-v3.c
-> +++ b/lib/arm/gic-v3.c
-> @@ -59,3 +59,87 @@ void gicv3_enable_defaults(void)
->  	gicv3_write_pmr(GICC_INT_PRI_THRESHOLD);
->  	gicv3_write_grpen1(1);
->  }
-> +
-> +u32 gicv3_iar_irqnr(u32 iar)
-> +{
-> +	return iar;
+Kernel behaviours as far as I know them:
+ * host v4.3 and earlier: implemented timers as weird
+   sort-of-edge-triggered semantics
+ * host v4.4 and later: timers are level triggered
+vs
+ * guest pre-4.8: ignore the values in the DT, trust
+   whatever the GIC's reset values are
+ * guest 4.8 before rc6: write the DT values to the
+   GIC config registers
+ * guest newer than rc6 ignore the DT, and always write
+   'level triggered' to the GIC
 
-I am probably a bit paranoid here, but the spec says that the interrupt
-ID is in bits[23:0] only (at most).
+This combination means that (assuming that post 4.8
+guest kernels work at all on pre 4.4 host kernels) I
+don't expect this to break anything. Testing would probably
+be a good idea, though: I plan to do some more combinations
+but kernel builds on my aarch64 system are slow so I
+thought I'd send out the patchset before I went home today...
 
-> +}
-> +
-> +void gicv3_ipi_send_mask(int irq, const cpumask_t *dest)
-> +{
-> +	u16 tlist;
-> +	int cpu;
-> +
-> +	assert(irq < 16);
-> +
-> +	/*
-> +	 * For each cpu in the mask collect its peers, which are also in
-> +	 * the mask, in order to form target lists.
-> +	 */
-> +	for_each_cpu(cpu, dest) {
-> +		u64 mpidr = cpus[cpu], sgi1r;
-> +		u64 cluster_id;
-> +
-> +		/*
-> +		 * GICv3 can send IPIs to up 16 peer cpus with a single
-> +		 * write to ICC_SGI1R_EL1 (using the target list). Peers
-> +		 * are cpus that have nearly identical MPIDRs, the only
-> +		 * difference being Aff0. The matching upper affinity
-> +		 * levels form the cluster ID.
-> +		 */
-> +		cluster_id = mpidr & ~0xffUL;
-> +		tlist = 0;
-> +
-> +		/*
-> +		 * Sort of open code for_each_cpu in order to have a
-> +		 * nested for_each_cpu loop.
-> +		 */
-> +		while (cpu < nr_cpus) {
-> +			if ((mpidr & 0xff) >= 16) {
-> +				printf("cpu%d MPIDR:aff0 is %d (>= 16)!\n",
-> +					cpu, (int)(mpidr & 0xff));
-> +				break;
-> +			}
-> +
-> +			tlist |= 1 << (mpidr & 0xf);
-> +
-> +			cpu = cpumask_next(cpu, dest);
-> +			if (cpu >= nr_cpus)
-> +				break;
-> +
-> +			mpidr = cpus[cpu];
-> +
-> +			if (cluster_id != (mpidr & ~0xffUL)) {
-> +				/*
-> +				 * The next cpu isn't in our cluster. Roll
-> +				 * back the cpu index allowing the outer
-> +				 * for_each_cpu to find it again with
-> +				 * cpumask_next
-> +				 */
-> +				--cpu;
-> +				break;
-> +			}
-> +		}
-> +
-> +		/* Send the IPIs for the target list of this cluster */
-> +		sgi1r = (MPIDR_TO_SGI_AFFINITY(cluster_id, 3)	|
-> +			 MPIDR_TO_SGI_AFFINITY(cluster_id, 2)	|
-> +			 irq << 24				|
-> +			 MPIDR_TO_SGI_AFFINITY(cluster_id, 1)	|
-> +			 tlist);
-> +
-> +		gicv3_write_sgi1r(sgi1r);
-> +	}
-> +
-> +	/* Force the above writes to ICC_SGI1R_EL1 to be executed */
-> +	isb();
-> +}
+Peter Maydell (4):
+  hw/arm/virt: add 2.9 machine type
+  hw/arm/virt: Merge VirtBoardInfo and VirtMachineState
+  hw/arm/virt: Rename 'vbi' variables to 'vms'
+  hw/arm/virt: Don't incorrectly claim architectural timer to be
+    edge-triggered
 
-Wow, this is really heavy stuff, especially for a Friday afternoon ;-)
-But I convinced myself that it's correct. The only issue is that it's
-sub-optimal if the MPIDRs of the VCPUs are not in order, say: 0x000,
-0x100, 0x001.
-In this case we do three register writes instead of the minimal two.
-But it's still correct, so it's actually a minor nit just to prove that
-I checked the algorithm ;-)
+ include/hw/compat.h |   3 +
+ hw/arm/virt.c       | 616 +++++++++++++++++++++++++++-------------------------
+ 2 files changed, 323 insertions(+), 296 deletions(-)
 
-So apart from the minor comment above:
+-- 
+2.7.4
 
-Reviewed-by: Andre Przywara <andre.przywara@arm.com>
-
-Cheers,
-Andre.
-
-> +
-> +void gicv3_ipi_send_single(int irq, int cpu)
-> +{
-> +	cpumask_t dest;
-> +
-> +	cpumask_clear(&dest);
-> +	cpumask_set_cpu(cpu, &dest);
-> +	gicv3_ipi_send_mask(irq, &dest);
-> +}
-> diff --git a/lib/arm/gic.c b/lib/arm/gic.c
-> index 4d3ddd9722b1..3ed539727f8c 100644
-> --- a/lib/arm/gic.c
-> +++ b/lib/arm/gic.c
-> @@ -10,6 +10,38 @@
->  struct gicv2_data gicv2_data;
->  struct gicv3_data gicv3_data;
->  
-> +struct gic_common_ops {
-> +	int gic_version;
-> +	void (*enable_defaults)(void);
-> +	u32 (*read_iar)(void);
-> +	u32 (*iar_irqnr)(u32 iar);
-> +	void (*write_eoir)(u32 irqstat);
-> +	void (*ipi_send_single)(int irq, int cpu);
-> +	void (*ipi_send_mask)(int irq, const cpumask_t *dest);
-> +};
-> +
-> +static const struct gic_common_ops *gic_common_ops;
-> +
-> +static const struct gic_common_ops gicv2_common_ops = {
-> +	.gic_version = 2,
-> +	.enable_defaults = gicv2_enable_defaults,
-> +	.read_iar = gicv2_read_iar,
-> +	.iar_irqnr = gicv2_iar_irqnr,
-> +	.write_eoir = gicv2_write_eoir,
-> +	.ipi_send_single = gicv2_ipi_send_single,
-> +	.ipi_send_mask = gicv2_ipi_send_mask,
-> +};
-> +
-> +static const struct gic_common_ops gicv3_common_ops = {
-> +	.gic_version = 3,
-> +	.enable_defaults = gicv3_enable_defaults,
-> +	.read_iar = gicv3_read_iar,
-> +	.iar_irqnr = gicv3_iar_irqnr,
-> +	.write_eoir = gicv3_write_eoir,
-> +	.ipi_send_single = gicv3_ipi_send_single,
-> +	.ipi_send_mask = gicv3_ipi_send_mask,
-> +};
-> +
->  /*
->   * Documentation/devicetree/bindings/interrupt-controller/arm,gic.txt
->   * Documentation/devicetree/bindings/interrupt-controller/arm,gic-v3.txt
-> @@ -58,9 +90,58 @@ int gicv3_init(void)
->  
->  int gic_init(void)
->  {
-> -	if (gicv2_init())
-> +	if (gicv2_init()) {
-> +		gic_common_ops = &gicv2_common_ops;
->  		return 2;
-> -	else if (gicv3_init())
-> +	} else if (gicv3_init()) {
-> +		gic_common_ops = &gicv3_common_ops;
->  		return 3;
-> +	}
->  	return 0;
->  }
-> +
-> +void gic_enable_defaults(void)
-> +{
-> +	if (!gic_common_ops) {
-> +		int ret = gic_init();
-> +		assert(ret != 0);
-> +	} else
-> +		assert(gic_common_ops->enable_defaults);
-> +	gic_common_ops->enable_defaults();
-> +}
-> +
-> +int gic_version(void)
-> +{
-> +	assert(gic_common_ops);
-> +	return gic_common_ops->gic_version;
-> +}
-> +
-> +u32 gic_read_iar(void)
-> +{
-> +	assert(gic_common_ops && gic_common_ops->read_iar);
-> +	return gic_common_ops->read_iar();
-> +}
-> +
-> +u32 gic_iar_irqnr(u32 iar)
-> +{
-> +	assert(gic_common_ops && gic_common_ops->iar_irqnr);
-> +	return gic_common_ops->iar_irqnr(iar);
-> +}
-> +
-> +void gic_write_eoir(u32 irqstat)
-> +{
-> +	assert(gic_common_ops && gic_common_ops->write_eoir);
-> +	gic_common_ops->write_eoir(irqstat);
-> +}
-> +
-> +void gic_ipi_send_single(int irq, int cpu)
-> +{
-> +	assert(gic_common_ops && gic_common_ops->ipi_send_single);
-> +	gic_common_ops->ipi_send_single(irq, cpu);
-> +}
-> +
-> +void gic_ipi_send_mask(int irq, const cpumask_t *dest)
-> +{
-> +	assert(gic_common_ops && gic_common_ops->ipi_send_mask);
-> +	gic_common_ops->ipi_send_mask(irq, dest);
-> +}
-> 

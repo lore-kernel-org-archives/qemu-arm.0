@@ -1,274 +1,205 @@
-Received: by 10.25.159.131 with SMTP id i125csp971906lfe;
-        Thu, 8 Dec 2016 09:51:03 -0800 (PST)
-X-Received: by 10.200.54.209 with SMTP id b17mr65325232qtc.183.1481219462930;
-        Thu, 08 Dec 2016 09:51:02 -0800 (PST)
-Return-Path: <drjones@redhat.com>
-Received: from mx1.redhat.com (mx1.redhat.com. [209.132.183.28])
-        by mx.google.com with ESMTPS id b18si7624802qkb.130.2016.12.08.09.51.02
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 08 Dec 2016 09:51:02 -0800 (PST)
-Received-SPF: pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) client-ip=209.132.183.28;
+Received: by 10.25.159.131 with SMTP id i125csp243143lfe;
+        Fri, 9 Dec 2016 03:40:48 -0800 (PST)
+X-Received: by 10.99.217.81 with SMTP id e17mr142144268pgj.127.1481283648818;
+        Fri, 09 Dec 2016 03:40:48 -0800 (PST)
+Return-Path: <andre.przywara@arm.com>
+Received: from foss.arm.com (foss.arm.com. [217.140.101.70])
+        by mx.google.com with ESMTP id 31si33510388plj.195.2016.12.09.03.40.48;
+        Fri, 09 Dec 2016 03:40:48 -0800 (PST)
+Received-SPF: pass (google.com: domain of andre.przywara@arm.com designates 217.140.101.70 as permitted sender) client-ip=217.140.101.70;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=drjones@redhat.com
-Received: from int-mx10.intmail.prod.int.phx2.redhat.com (int-mx10.intmail.prod.int.phx2.redhat.com [10.5.11.23])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id E725E285A5;
-	Thu,  8 Dec 2016 17:51:01 +0000 (UTC)
-Received: from kamzik.brq.redhat.com (kamzik.brq.redhat.com [10.34.1.143])
-	by int-mx10.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP id uB8HoWnB022068;
-	Thu, 8 Dec 2016 12:50:59 -0500
-From: Andrew Jones <drjones@redhat.com>
-To: kvm@vger.kernel.org, kvmarm@lists.cs.columbia.edu, qemu-devel@nongnu.org,
-        qemu-arm@nongnu.org
-Cc: peter.maydell@linaro.org, marc.zyngier@arm.com, andre.przywara@arm.com,
-        eric.auger@redhat.com, pbonzini@redhat.com, alex.bennee@linaro.org,
-        christoffer.dall@linaro.org
-Subject: [PATCH kvm-unit-tests v8 10/10] arm/arm64: gic: don't just use zero
-Date: Thu,  8 Dec 2016 18:50:30 +0100
-Message-Id: <20161208175030.12269-11-drjones@redhat.com>
-In-Reply-To: <20161208175030.12269-1-drjones@redhat.com>
+       spf=pass (google.com: domain of andre.przywara@arm.com designates 217.140.101.70 as permitted sender) smtp.mailfrom=andre.przywara@arm.com
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.72.51.249])
+	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 07EA2AD7;
+	Fri,  9 Dec 2016 03:40:48 -0800 (PST)
+Received: from [192.168.67.35] (usa-sjc-imap-foss1.foss.arm.com [10.72.51.249])
+	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 4A7593F477;
+	Fri,  9 Dec 2016 03:40:46 -0800 (PST)
+Subject: Re: [PATCH kvm-unit-tests v8 03/10] arm/arm64: add some delay
+ routines
+To: Andrew Jones <drjones@redhat.com>, kvm@vger.kernel.org,
+ kvmarm@lists.cs.columbia.edu, qemu-devel@nongnu.org, qemu-arm@nongnu.org
 References: <20161208175030.12269-1-drjones@redhat.com>
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.23
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.5.110.30]); Thu, 08 Dec 2016 17:51:02 +0000 (UTC)
-X-TUID: HjPkYX6L+44h
+ <20161208175030.12269-4-drjones@redhat.com>
+Cc: peter.maydell@linaro.org, marc.zyngier@arm.com, eric.auger@redhat.com,
+ pbonzini@redhat.com, alex.bennee@linaro.org, christoffer.dall@linaro.org
+From: Andre Przywara <andre.przywara@arm.com>
+Message-ID: <dfb48863-82a7-3bd2-d2dc-498570325970@arm.com>
+Date: Fri, 9 Dec 2016 11:41:06 +0000
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
+ Thunderbird/45.5.1
+MIME-Version: 1.0
+In-Reply-To: <20161208175030.12269-4-drjones@redhat.com>
+Content-Type: text/plain; charset=windows-1252
+Content-Transfer-Encoding: 7bit
+X-TUID: mX64D/FqgNnK
 
-Instead of using cpu0 and irq=0 for the IPI test, use something
-a bit more interesting. To make sure we can still run the test
-with the minimal number of cpus (2), we need to use sender=1. As
-the irq in the test (an SGI) can only be 0 to 15 and there's really
-no difference, then use irq=1. sender=1 is a bit limited for the
-long term, as we may want to test IPIs across host sockets with
-pinned vcpus. But we can improve on this later, possibly with the
-introduction of a command line parameter.
+Hi,
 
-Reviewed-by: Eric Auger <eric.auger@redhat.com>
-Signed-off-by: Andrew Jones <drjones@redhat.com>
+On 08/12/16 17:50, Andrew Jones wrote:
+> Allow a thread to wait some specified amount of time. Can
+> specify in cycles, usecs, and msecs.
+> 
+> Signed-off-by: Andrew Jones <drjones@redhat.com>
+> 
+> ---
+> v8: rewrote basing on new sysreg framework. Also decided delay
+>     functions warrant their own files (delay.[ch])
+> ---
+>  arm/Makefile.common       |  1 +
+>  lib/arm/asm/delay.h       | 14 ++++++++++++++
+>  lib/arm/asm/processor.h   | 15 +++++++++++++++
+>  lib/arm64/asm/delay.h     |  1 +
+>  lib/arm64/asm/processor.h | 12 ++++++++++++
+>  lib/arm/delay.c           | 29 +++++++++++++++++++++++++++++
+>  6 files changed, 72 insertions(+)
+>  create mode 100644 lib/arm/asm/delay.h
+>  create mode 100644 lib/arm64/asm/delay.h
+>  create mode 100644 lib/arm/delay.c
+> 
+> diff --git a/arm/Makefile.common b/arm/Makefile.common
+> index b2c0fc8a2fdc..89fe3f69eb44 100644
+> --- a/arm/Makefile.common
+> +++ b/arm/Makefile.common
+> @@ -48,6 +48,7 @@ cflatobjs += lib/arm/mmu.o
+>  cflatobjs += lib/arm/bitops.o
+>  cflatobjs += lib/arm/psci.o
+>  cflatobjs += lib/arm/smp.o
+> +cflatobjs += lib/arm/delay.o
+>  
+>  libeabi = lib/arm/libeabi.a
+>  eabiobjs = lib/arm/eabi_compat.o
+> diff --git a/lib/arm/asm/delay.h b/lib/arm/asm/delay.h
+> new file mode 100644
+> index 000000000000..2436b28c77ae
+> --- /dev/null
+> +++ b/lib/arm/asm/delay.h
+> @@ -0,0 +1,14 @@
+> +#ifndef _ASMARM_DELAY_H_
+> +#define _ASMARM_DELAY_H_
+> +/*
+> + * Copyright (C) 2016, Red Hat Inc, Andrew Jones <drjones@redhat.com>
+> + *
+> + * This work is licensed under the terms of the GNU LGPL, version 2.
+> + */
+> +#include <libcflat.h>
+> +
+> +extern void delay(u64 cycles);
 
----
-v8:
- - remove crufy command line parsing. No need for sender or irq
-   to be input right now.
-v7:
- - cleanup cmdline parsing and add complain on bad args [Eric]
-v6:
- - make sender/irq names more future-proof [drew]
- - sanity check inputs [drew]
- - introduce check_sender/irq and bad_sender/irq to more
-   cleanly do checks [drew]
- - default sender and irq to 1, instead of still zero [drew]
-v4: improve structure and make sure spurious checking is
-    done even when the sender isn't cpu0
-v2: actually check that the irq received was the irq sent,
-    and (for gicv2) that the sender is the expected one.
----
- arm/gic.c | 96 ++++++++++++++++++++++++++++++++++++++++++++++++---------------
- 1 file changed, 73 insertions(+), 23 deletions(-)
+Nit: Shouldn't this parameter be called "ticks"? Cycles might be a bit
+misleading, especially since this prototype is the only documentation on
+this. You might just want to fix this when applying the patches.
 
-diff --git a/arm/gic.c b/arm/gic.c
-index d0d3be0fa36e..3054d45f7387 100644
---- a/arm/gic.c
-+++ b/arm/gic.c
-@@ -19,6 +19,9 @@
- #include <asm/barrier.h>
- #include <asm/io.h>
- 
-+#define IPI_SENDER	1
-+#define IPI_IRQ		1
-+
- struct gic {
- 	struct {
- 		void (*send_self)(void);
-@@ -28,6 +31,7 @@ struct gic {
- 
- static struct gic *gic;
- static int acked[NR_CPUS], spurious[NR_CPUS];
-+static int bad_sender[NR_CPUS], bad_irq[NR_CPUS];
- static cpumask_t ready;
- 
- static void nr_cpu_check(int nr)
-@@ -43,10 +47,23 @@ static void wait_on_ready(void)
- 		cpu_relax();
- }
- 
-+static void stats_reset(void)
-+{
-+	int i;
-+
-+	for (i = 0; i < nr_cpus; ++i) {
-+		acked[i] = 0;
-+		bad_sender[i] = -1;
-+		bad_irq[i] = -1;
-+	}
-+	smp_wmb();
-+}
-+
- static void check_acked(cpumask_t *mask)
- {
- 	int missing = 0, extra = 0, unexpected = 0;
- 	int nr_pass, cpu, i;
-+	bool bad = false;
- 
- 	/* Wait up to 5s for all interrupts to be delivered */
- 	for (i = 0; i < 50; ++i) {
-@@ -56,9 +73,21 @@ static void check_acked(cpumask_t *mask)
- 			smp_rmb();
- 			nr_pass += cpumask_test_cpu(cpu, mask) ?
- 				acked[cpu] == 1 : acked[cpu] == 0;
-+
-+			if (bad_sender[cpu] != -1) {
-+				printf("cpu%d received IPI from wrong sender %d\n",
-+					cpu, bad_sender[cpu]);
-+				bad = true;
-+			}
-+
-+			if (bad_irq[cpu] != -1) {
-+				printf("cpu%d received wrong irq %d\n",
-+					cpu, bad_irq[cpu]);
-+				bad = true;
-+			}
- 		}
- 		if (nr_pass == nr_cpus) {
--			report("Completed in %d ms", true, ++i * 100);
-+			report("Completed in %d ms", !bad, ++i * 100);
- 			return;
- 		}
- 	}
-@@ -91,6 +120,22 @@ static void check_spurious(void)
- 	}
- }
- 
-+static void check_ipi_sender(u32 irqstat)
-+{
-+	if (gic_version() == 2) {
-+		int src = (irqstat >> 10) & 7;
-+
-+		if (src != IPI_SENDER)
-+			bad_sender[smp_processor_id()] = src;
-+	}
-+}
-+
-+static void check_irqnr(u32 irqnr)
-+{
-+	if (irqnr != IPI_IRQ)
-+		bad_irq[smp_processor_id()] = irqnr;
-+}
-+
- static void ipi_handler(struct pt_regs *regs __unused)
- {
- 	u32 irqstat = gic_read_iar();
-@@ -98,8 +143,10 @@ static void ipi_handler(struct pt_regs *regs __unused)
- 
- 	if (irqnr != GICC_INT_SPURIOUS) {
- 		gic_write_eoir(irqstat);
--		smp_rmb(); /* pairs with wmb in ipi_test functions */
-+		smp_rmb(); /* pairs with wmb in stats_reset */
- 		++acked[smp_processor_id()];
-+		check_ipi_sender(irqstat);
-+		check_irqnr(irqnr);
- 		smp_wmb(); /* pairs with rmb in check_acked */
- 	} else {
- 		++spurious[smp_processor_id()];
-@@ -109,22 +156,22 @@ static void ipi_handler(struct pt_regs *regs __unused)
- 
- static void gicv2_ipi_send_self(void)
- {
--	writel(2 << 24, gicv2_dist_base() + GICD_SGIR);
-+	writel(2 << 24 | IPI_IRQ, gicv2_dist_base() + GICD_SGIR);
- }
- 
- static void gicv2_ipi_send_broadcast(void)
- {
--	writel(1 << 24, gicv2_dist_base() + GICD_SGIR);
-+	writel(1 << 24 | IPI_IRQ, gicv2_dist_base() + GICD_SGIR);
- }
- 
- static void gicv3_ipi_send_self(void)
- {
--	gic_ipi_send_single(0, smp_processor_id());
-+	gic_ipi_send_single(IPI_IRQ, smp_processor_id());
- }
- 
- static void gicv3_ipi_send_broadcast(void)
- {
--	gicv3_write_sgi1r(1ULL << 40);
-+	gicv3_write_sgi1r(1ULL << 40 | IPI_IRQ << 24);
- 	isb();
- }
- 
-@@ -133,10 +180,9 @@ static void ipi_test_self(void)
- 	cpumask_t mask;
- 
- 	report_prefix_push("self");
--	memset(acked, 0, sizeof(acked));
--	smp_wmb();
-+	stats_reset();
- 	cpumask_clear(&mask);
--	cpumask_set_cpu(0, &mask);
-+	cpumask_set_cpu(smp_processor_id(), &mask);
- 	gic->ipi.send_self();
- 	check_acked(&mask);
- 	report_prefix_pop();
-@@ -148,20 +194,18 @@ static void ipi_test_smp(void)
- 	int i;
- 
- 	report_prefix_push("target-list");
--	memset(acked, 0, sizeof(acked));
--	smp_wmb();
-+	stats_reset();
- 	cpumask_copy(&mask, &cpu_present_mask);
--	for (i = 0; i < nr_cpus; i += 2)
-+	for (i = smp_processor_id() & 1; i < nr_cpus; i += 2)
- 		cpumask_clear_cpu(i, &mask);
--	gic_ipi_send_mask(0, &mask);
-+	gic_ipi_send_mask(IPI_IRQ, &mask);
- 	check_acked(&mask);
- 	report_prefix_pop();
- 
- 	report_prefix_push("broadcast");
--	memset(acked, 0, sizeof(acked));
--	smp_wmb();
-+	stats_reset();
- 	cpumask_copy(&mask, &cpu_present_mask);
--	cpumask_clear_cpu(0, &mask);
-+	cpumask_clear_cpu(smp_processor_id(), &mask);
- 	gic->ipi.send_broadcast();
- 	check_acked(&mask);
- 	report_prefix_pop();
-@@ -178,6 +222,16 @@ static void ipi_enable(void)
- 	local_irq_enable();
- }
- 
-+static void ipi_send(void)
-+{
-+	ipi_enable();
-+	wait_on_ready();
-+	ipi_test_self();
-+	ipi_test_smp();
-+	check_spurious();
-+	exit(report_summary());
-+}
-+
- static void ipi_recv(void)
- {
- 	ipi_enable();
-@@ -232,14 +286,10 @@ int main(int argc, char **argv)
- 		for_each_present_cpu(cpu) {
- 			if (cpu == 0)
- 				continue;
--			smp_boot_secondary(cpu, ipi_recv);
-+			smp_boot_secondary(cpu,
-+				cpu == IPI_SENDER ? ipi_send : ipi_recv);
- 		}
--		ipi_enable();
--		wait_on_ready();
--		ipi_test_self();
--		ipi_test_smp();
--		check_spurious();
--		report_prefix_pop();
-+		ipi_recv();
- 	} else {
- 		report_abort("Unknown subtest '%s'", argv[1]);
- 	}
--- 
-2.9.3
+That notwithstanding:
+Reviewed-by: Andre Przywara <andre.przywara@arm.com>
+
+Cheers,
+Andre.
+
+> +extern void udelay(unsigned long usecs);
+> +extern void mdelay(unsigned long msecs);
+> +
+> +#endif /* _ASMARM_DELAY_H_ */
+> diff --git a/lib/arm/asm/processor.h b/lib/arm/asm/processor.h
+> index 6b0d36b87817..857bdd96a3cc 100644
+> --- a/lib/arm/asm/processor.h
+> +++ b/lib/arm/asm/processor.h
+> @@ -7,6 +7,7 @@
+>   */
+>  #include <asm/ptrace.h>
+>  #include <asm/sysreg.h>
+> +#include <asm/barrier.h>
+>  
+>  enum vector {
+>  	EXCPTN_RST,
+> @@ -51,4 +52,18 @@ extern int mpidr_to_cpu(uint64_t mpidr);
+>  extern void start_usr(void (*func)(void *arg), void *arg, unsigned long sp_usr);
+>  extern bool is_user(void);
+>  
+> +#define CNTVCT		__ACCESS_CP15_64(1, c14)
+> +#define CNTFRQ		__ACCESS_CP15(c14, 0, c0, 0)
+> +
+> +static inline u64 get_cntvct(void)
+> +{
+> +	isb();
+> +	return read_sysreg(CNTVCT);
+> +}
+> +
+> +static inline u32 get_cntfrq(void)
+> +{
+> +	return read_sysreg(CNTFRQ);
+> +}
+> +
+>  #endif /* _ASMARM_PROCESSOR_H_ */
+> diff --git a/lib/arm64/asm/delay.h b/lib/arm64/asm/delay.h
+> new file mode 100644
+> index 000000000000..288e4b3fe610
+> --- /dev/null
+> +++ b/lib/arm64/asm/delay.h
+> @@ -0,0 +1 @@
+> +#include "../../arm/asm/delay.h"
+> diff --git a/lib/arm64/asm/processor.h b/lib/arm64/asm/processor.h
+> index 48abf2c9e358..0898d89f9761 100644
+> --- a/lib/arm64/asm/processor.h
+> +++ b/lib/arm64/asm/processor.h
+> @@ -20,6 +20,7 @@
+>  #include <asm/ptrace.h>
+>  #include <asm/esr.h>
+>  #include <asm/sysreg.h>
+> +#include <asm/barrier.h>
+>  
+>  enum vector {
+>  	EL1T_SYNC,
+> @@ -83,5 +84,16 @@ extern int mpidr_to_cpu(uint64_t mpidr);
+>  extern void start_usr(void (*func)(void *arg), void *arg, unsigned long sp_usr);
+>  extern bool is_user(void);
+>  
+> +static inline u64 get_cntvct(void)
+> +{
+> +	isb();
+> +	return read_sysreg(cntvct_el0);
+> +}
+> +
+> +static inline u32 get_cntfrq(void)
+> +{
+> +	return read_sysreg(cntfrq_el0);
+> +}
+> +
+>  #endif /* !__ASSEMBLY__ */
+>  #endif /* _ASMARM64_PROCESSOR_H_ */
+> diff --git a/lib/arm/delay.c b/lib/arm/delay.c
+> new file mode 100644
+> index 000000000000..fa65e2dc9e35
+> --- /dev/null
+> +++ b/lib/arm/delay.c
+> @@ -0,0 +1,29 @@
+> +/*
+> + * Delay loops
+> + *
+> + * Copyright (C) 2016, Red Hat Inc, Andrew Jones <drjones@redhat.com>
+> + *
+> + * This work is licensed under the terms of the GNU LGPL, version 2.
+> + */
+> +#include <libcflat.h>
+> +#include <asm/processor.h>
+> +#include <asm/barrier.h>
+> +
+> +void delay(u64 cycles)
+> +{
+> +	u64 start = get_cntvct();
+> +
+> +	while ((get_cntvct() - start) < cycles)
+> +		cpu_relax();
+> +}
+> +
+> +void udelay(unsigned long usec)
+> +{
+> +	delay((u64)usec * get_cntfrq() / 1000000);
+> +}
+> +
+> +void mdelay(unsigned long msecs)
+> +{
+> +	while (msecs--)
+> +		udelay(1000);
+> +}
+> 

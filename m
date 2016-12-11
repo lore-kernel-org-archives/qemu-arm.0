@@ -1,77 +1,71 @@
-Received: by 10.25.205.13 with SMTP id d13csp1258061lfg;
-        Sun, 11 Dec 2016 08:36:39 -0800 (PST)
-X-Received: by 10.200.57.55 with SMTP id s52mr52577025qtb.191.1481474199659;
-        Sun, 11 Dec 2016 08:36:39 -0800 (PST)
+Received: by 10.25.205.13 with SMTP id d13csp1362905lfg;
+        Sun, 11 Dec 2016 14:54:18 -0800 (PST)
+X-Received: by 10.55.120.195 with SMTP id t186mr76565455qkc.218.1481496857913;
+        Sun, 11 Dec 2016 14:54:17 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [208.118.235.17])
-        by mx.google.com with ESMTPS id e17si24620594qtf.243.2016.12.11.08.36.39
+        by mx.google.com with ESMTPS id 43si25118610qtv.54.2016.12.11.14.54.17
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sun, 11 Dec 2016 08:36:39 -0800 (PST)
+        Sun, 11 Dec 2016 14:54:17 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) client-ip=208.118.235.17;
 Authentication-Results: mx.google.com;
        dkim=fail header.i=@linaro.org;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:56224 helo=lists.gnu.org)
+Received: from localhost ([::1]:57426 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1cG76o-0005tV-4L
-	for alex.bennee@linaro.org; Sun, 11 Dec 2016 11:36:18 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:38887)
+	id 1cGD0b-0005Vn-E8
+	for alex.bennee@linaro.org; Sun, 11 Dec 2016 17:54:17 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:52061)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <christoffer.dall@linaro.org>) id 1cG76k-0005sy-5u
-	for qemu-arm@nongnu.org; Sun, 11 Dec 2016 11:36:15 -0500
+	(envelope-from <peter.maydell@linaro.org>) id 1cGD0V-0005Vd-OB
+	for qemu-arm@nongnu.org; Sun, 11 Dec 2016 17:54:12 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <christoffer.dall@linaro.org>) id 1cG76h-0005nL-0V
-	for qemu-arm@nongnu.org; Sun, 11 Dec 2016 11:36:14 -0500
-Received: from mail-wm0-f45.google.com ([74.125.82.45]:36451)
+	(envelope-from <peter.maydell@linaro.org>) id 1cGD0R-00048c-P7
+	for qemu-arm@nongnu.org; Sun, 11 Dec 2016 17:54:11 -0500
+Received: from mail-ua0-f169.google.com ([209.85.217.169]:36159)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <christoffer.dall@linaro.org>)
-	id 1cG76g-0005hT-Gy
-	for qemu-arm@nongnu.org; Sun, 11 Dec 2016 11:36:10 -0500
-Received: by mail-wm0-f45.google.com with SMTP id g23so30431075wme.1
-	for <qemu-arm@nongnu.org>; Sun, 11 Dec 2016 08:35:49 -0800 (PST)
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1cGD0R-0003wk-KU
+	for qemu-arm@nongnu.org; Sun, 11 Dec 2016 17:54:07 -0500
+Received: by mail-ua0-f169.google.com with SMTP id b35so66543574uaa.3
+	for <qemu-arm@nongnu.org>; Sun, 11 Dec 2016 14:53:46 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=date:from:to:cc:subject:message-id:references:mime-version
-	:content-disposition:in-reply-to:user-agent;
-	bh=vLwd+Sfp+e29W9yrKmVn4EqUZPkJk12t+7PE4I1ko2M=;
-	b=av4RFYUPImEDNxXCeJCjJ4jDf1upKn+i09ZBeMld3gMSAFNQ3F4xazdrhpz58XJ3lm
-	16PCJpsEGe5uDfLcmj1ywtF137Bd+p6ddRWOEwIkyzI5z+KhASYiah5i6TW8ufeRu300
-	1hUpantwQODWQwhM7JifEb4yXdwE4TbYY/hfI=
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=fSVrvSWvEyGQxEkbKwyA0HbqwEIiaE2IPTyaz3D1s18=;
+	b=b03i8y1o//hPVnperfdCKNY3EzwAAGqigpCEjfD/Z9I8nC6XHX8i6Y4UF423Ijk1+s
+	C9W5PGF/yVV9idYqCUQTX+pFD5knFnblS90CcCVYBjE8sIMDQ/mYeQ/x8RlJK5YZfN5s
+	33PfIi8ChUzxfF4/jWQqgorxg6WPGqV44rcwc=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20130820;
-	h=x-gm-message-state:date:from:to:cc:subject:message-id:references
-	:mime-version:content-disposition:in-reply-to:user-agent;
-	bh=vLwd+Sfp+e29W9yrKmVn4EqUZPkJk12t+7PE4I1ko2M=;
-	b=UpLeDj+DljdF0qc9HeS2oI3lh1M6Y/Bp+VEHaohTvBnDOiELolsl5Rkz+KBNZ2e1Ds
-	qptZgF0k8Wf19r2yrzVeVbXNq1eh1MenA7XERFFsZOPlyMDU4kc420f80g7ZY7AGJP/I
-	S+pm3omnr7JT9S+ax5e9MlYLJfaslkSEhLAWOgl0qYWsXILylxYxx8sXxkzBnrWTbbCU
-	669EED7fv8+NwJ7g03kjIaOzPXIS+ZHM9PDkoE3yJG42ObDwr4cOmYSYPYgkI1wn/Cbf
-	Kjq/pwtRmQHyomrwZRZ3mAdTsQp0OOlwKkyX40Je60tYG+MoOFPXju35NUD2esIJ9297
-	nfrg==
-X-Gm-Message-State: AKaTC02IK/MOz5KhVVC/ydzYBUm8ID7fB4OurZRWdI10aQIBTLOs8TrCpxSkXChZm6RR0r+K
-X-Received: by 10.25.138.11 with SMTP id m11mr31711479lfd.150.1481474088034;
-	Sun, 11 Dec 2016 08:34:48 -0800 (PST)
-Received: from localhost (x1-6-50-6a-03-de-ec-c2.cpe.webspeed.dk.
-	[2.108.209.202]) by smtp.gmail.com with ESMTPSA id
-	s63sm8354498lja.19.2016.12.11.08.34.46
-	(version=TLS1_2 cipher=AES128-SHA bits=128/128);
-	Sun, 11 Dec 2016 08:34:46 -0800 (PST)
-Date: Sun, 11 Dec 2016 17:35:02 +0100
-From: Christoffer Dall <christoffer.dall@linaro.org>
-To: Peter Maydell <peter.maydell@linaro.org>
-Message-ID: <20161211163502.GB6352@cbox>
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=fSVrvSWvEyGQxEkbKwyA0HbqwEIiaE2IPTyaz3D1s18=;
+	b=ak2ZbIKDDyrLVyC491cWDcv9zFKTwj4Hra0YUjKweuNSUN2WMyp/PB5VeZYpuie0PC
+	eSbfoP+UqRqeudYVFnoerZDk3YwMLJPUx4zw1lT+4k+jhK5apUyJDEGlaIEkHSnKTun5
+	W4U+oENjCstrC0HiFfx7Y/ShUCPjCKpvUKidSxHKLxkRNeGvRulRabMsgtJAzadGK1cC
+	lqoBFRDa5cbXO3E2HZQpEGKAJbG3bqKqPimUaNeTP1b1KiNW/IoMkouB2/2/E+GsHTML
+	A1gFQ8NqBYRGWODuHHaEYnMaVWrrdi2WKKuub3T3FPZe1P/ylXwG8f2eeoqM7JiKYAA1
+	GHGA==
+X-Gm-Message-State: AKaTC03lQnrk6JpI78iLroXqhu2gFyI0+2vPVgxCjeuUF8cgA4Zm1Tr4gg41avQIKEYMiPi/AmLM458PuJHttydo
+X-Received: by 10.176.2.110 with SMTP id 101mr73528859uas.8.1481496765611;
+	Sun, 11 Dec 2016 14:52:45 -0800 (PST)
+MIME-Version: 1.0
+Received: by 10.31.176.14 with HTTP; Sun, 11 Dec 2016 14:52:25 -0800 (PST)
+In-Reply-To: <20161211163502.GB6352@cbox>
 References: <1481301020-21777-1-git-send-email-peter.maydell@linaro.org>
 	<1481301020-21777-5-git-send-email-peter.maydell@linaro.org>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <1481301020-21777-5-git-send-email-peter.maydell@linaro.org>
-User-Agent: Mutt/1.5.21 (2010-09-15)
+	<20161211163502.GB6352@cbox>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Sun, 11 Dec 2016 22:52:25 +0000
+Message-ID: <CAFEAcA_zvNvJ7K5GgPyeJ5EWRxO1XL2=rc6dv_nT6_h3qF=m6A@mail.gmail.com>
+To: Christoffer Dall <christoffer.dall@linaro.org>
+Content-Type: text/plain; charset=UTF-8
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 74.125.82.45
+X-Received-From: 209.85.217.169
 Subject: Re: [Qemu-arm] [PATCH 4/4] hw/arm/virt: Don't incorrectly claim
  architectural timer to be edge-triggered
 X-BeenThere: qemu-arm@nongnu.org
@@ -86,115 +80,51 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Marc Zyngier <marc.zyngier@arm.com>, Andrew Jones <drjones@redhat.com>,
-	qemu-arm@nongnu.org, qemu-devel@nongnu.org
+	qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: kQW2qAFm4roE
+X-TUID: Ry8FNhpjHU1S
 
-On Fri, Dec 09, 2016 at 04:30:20PM +0000, Peter Maydell wrote:
-> The architectural timers in ARM CPUs all have level triggered interrupts
-> (unless you're using KVM on a host kernel before 4.4, which misimplemented
-> them as edge-triggered).
-> 
-> We were incorrectly describing them in the device tree as edge triggered.
-> This can cause problems for guest kernels in 4.8 before rc6:
->  * pre-4.8 kernels ignore the values in the DT
->  * 4.8 before rc6 write the DT values to the GIC config registers
->  * newer than rc6 ignore the DT and insist that the timer interrupts
->    are level triggered regardless
-> 
-> Fix the DT so we're describing reality. For backwards-compatibility
-> purposes, only do this for the virt-2.9 machine onward.
-> 
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> ---
->  hw/arm/virt.c | 34 ++++++++++++++++++++++++++++++----
->  1 file changed, 30 insertions(+), 4 deletions(-)
-> 
-> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-> index 54498ea..2ca9527 100644
-> --- a/hw/arm/virt.c
-> +++ b/hw/arm/virt.c
-> @@ -71,6 +71,7 @@ typedef struct {
->      bool disallow_affinity_adjustment;
->      bool no_its;
->      bool no_pmu;
-> +    bool claim_edge_triggered_timers;
->  } VirtMachineClass;
->  
->  typedef struct {
-> @@ -309,12 +310,31 @@ static void fdt_add_psci_node(const VirtMachineState *vms)
->  
->  static void fdt_add_timer_nodes(const VirtMachineState *vms, int gictype)
->  {
-> -    /* Note that on A15 h/w these interrupts are level-triggered,
-> -     * but for the GIC implementation provided by both QEMU and KVM
-> -     * they are edge-triggered.
-> +    /* On real hardware these interrupts are level-triggered.
-> +     * On KVM they were edge-triggered before host kernel version 4.4,
-> +     * and level-triggered afterwards.
-> +     * On emulated QEMU they are level-triggered.
-> +     *
-> +     * Getting the DTB info about them wrong is awkward for some
-> +     * guest kernels:
-> +     *  pre-4.8 ignore the DT and leave the interrupt configured
-> +     *   with whatever the GIC reset value (or the bootloader) left it at
-> +     *  4.8 before rc6 honour the incorrect data by programming it back
-> +     *   into the GIC, causing problems
-> +     *  4.8rc6 and later ignore the DT and always write "level triggered"
-> +     *   into the GIC
-> +     *
-> +     * For backwards-compatibility, virt-2.8 and earlier will continue
-> +     * to say these are edge-triggered, but later machines will report
-> +     * the correct information.
->       */
+On 11 December 2016 at 16:35, Christoffer Dall
+<christoffer.dall@linaro.org> wrote:
+> On Fri, Dec 09, 2016 at 04:30:20PM +0000, Peter Maydell wrote:
+>> +     * For backwards-compatibility, virt-2.8 and earlier will continue
+>> +     * to say these are edge-triggered, but later machines will report
+>> +     * the correct information.
+>>       */
+>
+> Is this really necessary?
 
-Is this really necessary?
+It's being conservative -- from the guest's point of view
+(any guest, not necessarily just Linux) "virt-2.8" should behave
+like the "virt" machine in the 2.8 QEMU release, including bugs,
+not providing newer devices, and so on.
 
-I don't think the KVM GIC implementation ever listened to the guest in
-terms of how to configure PPIs, but instead ignores writes to the config
-registers for these interrupts (which I think the GIC architecture
-allows).
+Andrew would be the expert on whether this is being unnecessarily
+conservative in this specific case.
 
-So this would only be a matter of how the guest kernel between v4.8-rc1
-and v4.8-rc6 expects the behavior to be.  Does the arch timer driver
-really do something different in how it deals with interrupts based on
-this DT value?
+>>  static void virt_machine_2_8_options(MachineClass *mc)
+>>  {
+>> +    VirtMachineClass *vmc = VIRT_MACHINE_CLASS(OBJECT_CLASS(mc));
+>> +
+>>      virt_machine_2_9_options(mc);
+>>      SET_MACHINE_COMPAT(mc, VIRT_COMPAT_2_8);
+>> +    /* For 2.8 and earlier we falsely claimed in the DT that
+>> +     * our timers were edge-triggered, not level-triggered.
+>> +     */
+>> +    vmc->claim_edge_triggered_timers = true;
+>>  }
+>>  DEFINE_VIRT_MACHINE(2, 8)
+>>
+> I don't understand this virt machine class version stuff.  In which case
+> is the claim_edge_triggered_timers set to true?  (ok, appears to be when
+> a 2.8 machine is created, but does that happen automatically or does the
+> user specifically have to ask for it?)
 
-Of course, I suppose we could also be running other guests (UEFI?) but
-again, if the KVM GIC doesn't care about how the guest tries to program
-it, can it make a difference?
+If you say "-M virt-2.8" (or -2.7 or earlier, etc), it's set
+to true. If you say "-M virt" or "-M virt-2.9" (or "-M virt-2.10"
+or whatever we call the next release) it stays at the default
+false.
 
->      ARMCPU *armcpu;
-> -    uint32_t irqflags = GIC_FDT_IRQ_FLAGS_EDGE_LO_HI;
-> +    VirtMachineClass *vmc = VIRT_MACHINE_GET_CLASS(vms);
-> +    uint32_t irqflags = GIC_FDT_IRQ_FLAGS_LEVEL_HI;
-> +
-> +    if (vmc->claim_edge_triggered_timers) {
-> +        irqflags = GIC_FDT_IRQ_FLAGS_EDGE_LO_HI;
-> +    }
->  
->      if (gictype == 2) {
->          irqflags = deposit32(irqflags, GIC_FDT_IRQ_PPI_CPU_START,
-> @@ -1556,8 +1576,14 @@ static void virt_2_8_instance_init(Object *obj)
->  
->  static void virt_machine_2_8_options(MachineClass *mc)
->  {
-> +    VirtMachineClass *vmc = VIRT_MACHINE_CLASS(OBJECT_CLASS(mc));
-> +
->      virt_machine_2_9_options(mc);
->      SET_MACHINE_COMPAT(mc, VIRT_COMPAT_2_8);
-> +    /* For 2.8 and earlier we falsely claimed in the DT that
-> +     * our timers were edge-triggered, not level-triggered.
-> +     */
-> +    vmc->claim_edge_triggered_timers = true;
->  }
->  DEFINE_VIRT_MACHINE(2, 8)
->  
-I don't understand this virt machine class version stuff.  In which case
-is the claim_edge_triggered_timers set to true?  (ok, appears to be when
-a 2.8 machine is created, but does that happen automatically or does the
-user specifically have to ask for it?)
-
-Thanks,
--Christoffer
+thanks
+-- PMM

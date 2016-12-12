@@ -1,140 +1,56 @@
-Received: by 10.25.159.131 with SMTP id i125csp400864lfe;
-        Fri, 9 Dec 2016 09:28:34 -0800 (PST)
-X-Received: by 10.200.39.230 with SMTP id x35mr70124837qtx.259.1481304514882;
-        Fri, 09 Dec 2016 09:28:34 -0800 (PST)
-Return-Path: <drjones@redhat.com>
-Received: from mx1.redhat.com (mx1.redhat.com. [209.132.183.28])
-        by mx.google.com with ESMTPS id e92si20567209qtb.93.2016.12.09.09.28.34
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 09 Dec 2016 09:28:34 -0800 (PST)
-Received-SPF: pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) client-ip=209.132.183.28;
+Received: by 10.25.205.13 with SMTP id d13csp1631690lfg;
+        Mon, 12 Dec 2016 05:10:27 -0800 (PST)
+X-Received: by 10.28.197.6 with SMTP id v6mr16594155wmf.130.1481548227071;
+        Mon, 12 Dec 2016 05:10:27 -0800 (PST)
+Return-Path: <Claudio.Fontana@huawei.com>
+Received: from lhrrgout.huawei.com (lhrrgout.huawei.com. [194.213.3.17])
+        by mx.google.com with ESMTPS id c137si28206407wmd.151.2016.12.12.05.10.26
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Mon, 12 Dec 2016 05:10:27 -0800 (PST)
+Received-SPF: pass (google.com: domain of claudio.fontana@huawei.com designates 194.213.3.17 as permitted sender) client-ip=194.213.3.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=drjones@redhat.com
-Received: from int-mx09.intmail.prod.int.phx2.redhat.com (int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id DC8C2C04B31F;
-	Fri,  9 Dec 2016 17:28:33 +0000 (UTC)
-Received: from hawk.localdomain (ovpn-204-72.brq.redhat.com [10.40.204.72])
-	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP id uB9HSSr6019878
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=NO);
-	Fri, 9 Dec 2016 12:28:30 -0500
-Date: Fri, 9 Dec 2016 18:28:27 +0100
-From: Andrew Jones <drjones@redhat.com>
-To: Andre Przywara <andre.przywara@arm.com>
-Cc: kvm@vger.kernel.org, kvmarm@lists.cs.columbia.edu, qemu-devel@nongnu.org,
-        qemu-arm@nongnu.org, peter.maydell@linaro.org, marc.zyngier@arm.com,
-        eric.auger@redhat.com, pbonzini@redhat.com, alex.bennee@linaro.org,
-        christoffer.dall@linaro.org
-Subject: Re: [PATCH kvm-unit-tests v8 09/10] arm/arm64: gicv3: add an IPI test
-Message-ID: <20161209172827.xmzcxxc7xxvlheia@hawk.localdomain>
-References: <20161208175030.12269-1-drjones@redhat.com>
- <20161208175030.12269-10-drjones@redhat.com>
- <2fc872dd-ee19-f2fb-7444-cf701871fbeb@arm.com>
+       spf=pass (google.com: domain of claudio.fontana@huawei.com designates 194.213.3.17 as permitted sender) smtp.mailfrom=Claudio.Fontana@huawei.com
+Received: from 172.18.7.190 (EHLO lhreml704-cah.china.huawei.com) ([172.18.7.190])
+	by lhrrg01-dlp.huawei.com (MOS 4.3.7-GA FastPath queued)
+	with ESMTP id DCK44116;
+	Mon, 12 Dec 2016 13:10:23 +0000 (GMT)
+Received: from [10.201.114.236] (10.201.114.236) by
+ lhreml704-cah.china.huawei.com (10.201.5.130) with Microsoft SMTP Server id
+ 14.3.301.0; Mon, 12 Dec 2016 13:10:20 +0000
+To: Peter Maydell <peter.maydell@linaro.org>,
+        =?UTF-8?Q?Alex_Benn=c3=a9e?=
+	<alex.bennee@linaro.org>,
+        Richard Henderson <rth@twiddle.net>
+CC: "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+        qemu-arm
+	<qemu-arm@nongnu.org>
+From: Claudio Fontana <claudio.fontana@huawei.com>
+Subject: TCG AArch64 target maintained status change
+Message-ID: <584EA1BC.7030801@huawei.com>
+Date: Mon, 12 Dec 2016 14:10:20 +0100
+User-Agent: Mozilla/5.0 (Windows NT 6.1; rv:38.0) Gecko/20100101
+ Thunderbird/38.5.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <2fc872dd-ee19-f2fb-7444-cf701871fbeb@arm.com>
-User-Agent: Mutt/1.6.0.1 (2016-04-01)
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.5.110.31]); Fri, 09 Dec 2016 17:28:34 +0000 (UTC)
-X-TUID: K3rIM3QiN16U
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.201.114.236]
+X-CFilter-Loop: Reflected
+X-Mirapoint-Virus-RAPID-Raw: score=unknown(0),
+	refid=str=0001.0A090204.584EA1C1.0234,ss=1,re=0.000,recu=0.000,reip=0.000,cl=1,cld=1,fgs=0,
+	ip=0.0.0.0,
+	so=2013-06-18 04:22:30,
+	dmn=2013-03-21 17:37:32
+X-Mirapoint-Loop-Id: 60dab79c019cbed83c6ab0920170dcd7
+X-TUID: 0x36xuAm0Usi
 
-On Fri, Dec 09, 2016 at 04:08:00PM +0000, Andre Przywara wrote:
-> On 08/12/16 17:50, Andrew Jones wrote:
-> > +u32 gicv3_iar_irqnr(u32 iar)
-> > +{
-> > +	return iar;
-> 
-> I am probably a bit paranoid here, but the spec says that the interrupt
-> ID is in bits[23:0] only (at most).
+Hello all,
 
-Indeed, I'll add '& ((1 << 24) - 1' here.
+the last bug report from Alex pointed me to the fact that I am unable to focus on TCG AArch64 maintenance, due to changed working conditions since some time now.
 
-> 
-> > +}
-> > +
-> > +void gicv3_ipi_send_mask(int irq, const cpumask_t *dest)
-> > +{
-> > +	u16 tlist;
-> > +	int cpu;
-> > +
-> > +	assert(irq < 16);
-> > +
-> > +	/*
-> > +	 * For each cpu in the mask collect its peers, which are also in
-> > +	 * the mask, in order to form target lists.
-> > +	 */
-> > +	for_each_cpu(cpu, dest) {
-> > +		u64 mpidr = cpus[cpu], sgi1r;
-> > +		u64 cluster_id;
-> > +
-> > +		/*
-> > +		 * GICv3 can send IPIs to up 16 peer cpus with a single
-> > +		 * write to ICC_SGI1R_EL1 (using the target list). Peers
-> > +		 * are cpus that have nearly identical MPIDRs, the only
-> > +		 * difference being Aff0. The matching upper affinity
-> > +		 * levels form the cluster ID.
-> > +		 */
-> > +		cluster_id = mpidr & ~0xffUL;
-> > +		tlist = 0;
-> > +
-> > +		/*
-> > +		 * Sort of open code for_each_cpu in order to have a
-> > +		 * nested for_each_cpu loop.
-> > +		 */
-> > +		while (cpu < nr_cpus) {
-> > +			if ((mpidr & 0xff) >= 16) {
-> > +				printf("cpu%d MPIDR:aff0 is %d (>= 16)!\n",
-> > +					cpu, (int)(mpidr & 0xff));
-> > +				break;
-> > +			}
-> > +
-> > +			tlist |= 1 << (mpidr & 0xf);
-> > +
-> > +			cpu = cpumask_next(cpu, dest);
-> > +			if (cpu >= nr_cpus)
-> > +				break;
-> > +
-> > +			mpidr = cpus[cpu];
-> > +
-> > +			if (cluster_id != (mpidr & ~0xffUL)) {
-> > +				/*
-> > +				 * The next cpu isn't in our cluster. Roll
-> > +				 * back the cpu index allowing the outer
-> > +				 * for_each_cpu to find it again with
-> > +				 * cpumask_next
-> > +				 */
-> > +				--cpu;
-> > +				break;
-> > +			}
-> > +		}
-> > +
-> > +		/* Send the IPIs for the target list of this cluster */
-> > +		sgi1r = (MPIDR_TO_SGI_AFFINITY(cluster_id, 3)	|
-> > +			 MPIDR_TO_SGI_AFFINITY(cluster_id, 2)	|
-> > +			 irq << 24				|
-> > +			 MPIDR_TO_SGI_AFFINITY(cluster_id, 1)	|
-> > +			 tlist);
-> > +
-> > +		gicv3_write_sgi1r(sgi1r);
-> > +	}
-> > +
-> > +	/* Force the above writes to ICC_SGI1R_EL1 to be executed */
-> > +	isb();
-> > +}
-> 
-> Wow, this is really heavy stuff, especially for a Friday afternoon ;-)
-> But I convinced myself that it's correct. The only issue is that it's
-> sub-optimal if the MPIDRs of the VCPUs are not in order, say: 0x000,
-> 0x100, 0x001.
-> In this case we do three register writes instead of the minimal two.
-> But it's still correct, so it's actually a minor nit just to prove that
-> I checked the algorithm ;-)
-> 
-> So apart from the minor comment above:
-> 
-> Reviewed-by: Andre Przywara <andre.przywara@arm.com>
+I think that in practice Richard has been taking care of this module anyway, so I think it is time to make it official.
+Should I send a patch to change Maintained to Orphaned for the MAINTAINERS file?
+Or maybe Peter, Richard you can directly appoint the replacement name in there?
 
-Thanks!
-drew
+Thanks,
+
+Claudio

@@ -1,156 +1,103 @@
-Received: by 10.25.205.13 with SMTP id d13csp2116816lfg;
-        Tue, 13 Dec 2016 02:36:45 -0800 (PST)
-X-Received: by 10.237.41.129 with SMTP id o1mr27672676qtd.10.1481625405321;
-        Tue, 13 Dec 2016 02:36:45 -0800 (PST)
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 10.25.205.13 with SMTP id d13csp2177605lfg;
+        Tue, 13 Dec 2016 04:45:54 -0800 (PST)
+X-Received: by 10.55.188.198 with SMTP id m189mr80784359qkf.248.1481633154153;
+        Tue, 13 Dec 2016 04:45:54 -0800 (PST)
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [208.118.235.17])
-        by mx.google.com with ESMTPS id 42si27860865qtq.288.2016.12.13.02.36.44
+        by mx.google.com with ESMTPS id h94si28083819qtd.16.2016.12.13.04.45.53
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 13 Dec 2016 02:36:45 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) client-ip=208.118.235.17;
+        Tue, 13 Dec 2016 04:45:54 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) client-ip=208.118.235.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dkim=fail header.i=@linaro.org;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:37052 helo=lists.gnu.org)
+Received: from localhost ([::1]:37909 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1cGkRu-0004eJ-AG
-	for alex.bennee@linaro.org; Tue, 13 Dec 2016 05:36:42 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:55874)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1cGmSt-0002Me-Jt
+	for alex.bennee@linaro.org; Tue, 13 Dec 2016 07:45:51 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:57240)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1cGkRo-0004aZ-V5
-	for qemu-arm@nongnu.org; Tue, 13 Dec 2016 05:36:38 -0500
+	(envelope-from <peter.maydell@linaro.org>) id 1cGmRB-0001Xq-Ra
+	for qemu-devel@nongnu.org; Tue, 13 Dec 2016 07:44:06 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1cGkRn-00088z-IT
-	for qemu-arm@nongnu.org; Tue, 13 Dec 2016 05:36:37 -0500
-Received: from orth.archaic.org.uk ([2001:8b0:1d0::2]:47702)
+	(envelope-from <peter.maydell@linaro.org>) id 1cGmR7-0007G6-IH
+	for qemu-devel@nongnu.org; Tue, 13 Dec 2016 07:44:05 -0500
+Received: from mail-vk0-f47.google.com ([209.85.213.47]:35907)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <pm215@archaic.org.uk>)
-	id 1cGkRn-00085R-7E; Tue, 13 Dec 2016 05:36:35 -0500
-Received: from pm215 by orth.archaic.org.uk with local (Exim 4.84_2)
-	(envelope-from <pm215@archaic.org.uk>)
-	id 1cGkRd-0002Fw-KP; Tue, 13 Dec 2016 10:36:25 +0000
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1cGmR7-0007Fx-DD
+	for qemu-devel@nongnu.org; Tue, 13 Dec 2016 07:44:01 -0500
+Received: by mail-vk0-f47.google.com with SMTP id p9so59101228vkd.3
+	for <qemu-devel@nongnu.org>; Tue, 13 Dec 2016 04:44:01 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=a+hE+7s0y/YCG7rop2cX7h1qk6mbSJI8KKoPs0vzjwc=;
+	b=Xc6w2M7KxKyDqJ2gwgtrq4b9Cyseo+vPkGgNrabqwcDT0Mi1qg7X77SMbPQKZm+egM
+	gaSw2oXVfjW5tMPOAVTOkd81giE3sGPdhjlIgHqPeKyQZUp2m0BtBSK0jka6Tb8oLmSi
+	GVJW23FMjh4zILjbqZTDxApEG/fhwMKmVub9w=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=a+hE+7s0y/YCG7rop2cX7h1qk6mbSJI8KKoPs0vzjwc=;
+	b=HI4epgouTGoyusQcSNehPF55+fOnIeFpR0rI/JtbL9HzBF8Q4w4M2vMdn8nzykdlkK
+	NL9LvT/FuYIh0NyBLRbxIzlsAjyFs9fBIpT3bSCn/2/nxYPPhiBr/D7xMrzlTBQ2GfWe
+	U44XNA5CEfpjFDGZ1mdCAaTZ96yid3YG7TfDoEl8JfcbQzmtv8LrhfT1Vryz0FyCu98N
+	0qZuayU+xTziWxDhdZh952q6MpI374me6+DCirUaCmMuFKfEXKj+0gYhAjOGWrBe+5Cu
+	0TOuY602OEBa/rPff5OCaCMzE0dwxNFMNyq8F6Sa2Et1hBIJUTbpHtZRoR9XjstOhYoT
+	n++A==
+X-Gm-Message-State: AKaTC03wgRUcSHcBbZ1HR5+y1YzkVQeveZxrObwNIZJOpC1/ZecO2X6s7x0bmC6YXCC8ckjk4QznoAt6T7Pju4d9
+X-Received: by 10.31.75.198 with SMTP id y189mr33703223vka.51.1481632980581;
+	Tue, 13 Dec 2016 04:43:00 -0800 (PST)
+MIME-Version: 1.0
+Received: by 10.31.176.14 with HTTP; Tue, 13 Dec 2016 04:42:40 -0800 (PST)
+In-Reply-To: <1481085020-2614-1-git-send-email-rth@twiddle.net>
+References: <1481085020-2614-1-git-send-email-rth@twiddle.net>
 From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Date: Tue, 13 Dec 2016 10:36:01 +0000
-Message-Id: <1481625384-15077-1-git-send-email-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.7.4
+Date: Tue, 13 Dec 2016 12:42:40 +0000
+Message-ID: <CAFEAcA-NNVttaOdBivqsZYDhK_hkfQwOjXH-ZDM31bZO4bFkew@mail.gmail.com>
+To: Richard Henderson <rth@twiddle.net>
+Content-Type: text/plain; charset=UTF-8
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2001:8b0:1d0::2
-Subject: [Qemu-arm] [PATCH 00/23] arm: Add virtualization to GICv3,
- and enable EL2 on 64-bit CPUs
-X-BeenThere: qemu-arm@nongnu.org
+	[fuzzy]
+X-Received-From: 209.85.213.47
+Subject: Re: [Qemu-devel] [PATCH 0/2] target-arm aarch64 big-endian fixes
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jones <drjones@redhat.com>,
-	Christoffer Dall <christoffer.dall@linaro.org>, patches@linaro.org
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: dRsWWFd2AUd2
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: K77KID8LbX0W
 
-This patchset adds support for the Virtualization extensions to QEMU's
-GICv3 emulation. This was the last missing piece that was stopping
-us from turning on the EL2 support in the CPU model, so the patchset
-also adds support for enabling it all on the virt board via the
-'-machine virtualization=on' option.
-
-The result works well enough to allow booting a KVM outer guest kernel
-and then running QEMU + an inner guest under KVM inside it. The outer
-guest KVM also passes the kvm-unit-tests GIC tests.
-
-Patches 1-7 have already appeared on list, and 1-5 + 7 have been
-reviewed. The rest are new.
-
-As per mailing list discussion, there is a new CPU property
-for enabling EL2 which defaults to 'true' (named 'has_el2' to
-parallel the existing 'has_el3'). There is also a board property
-on 'virt' which defaults to 'false' (named 'virtualization' to
-parallel the existing 'secure'). The only other 64-bit board
-is the ZynqMP -- this patchset makes it always set has_el2 to false,
-so no change in behaviour. (I imagine the Xilinx folk will want to
-enable it at some point.)
-
-There is no property on the GIC device object to enable virtualization,
-because this only affects the CPU interface, which in real hardware
-is part of the CPU itself and which in QEMU we enable and configure
-via a close coupling between the cpuif code and the CPU code.
-
-These patches include changes to the reported device tree info
-to (a) report the GICv3 maintenance IRQ binding and (b) report
-use of SMC as the PSCI conduit. I haven't tried to make the
-equivalent changes to the ACPI tables because Drew said on
-Monday that he had a cleanup to make in that area, which would
-change all that code anyway. I'm guessing there'll be a v2 of
-this series, so we can fix that dependency up properly then.
-
-The new state in the GICv3 for the virtualization should not
-cause a migration compat break because we put it in a subsection
-which is only sent if virtualization is enabled.
-
-Unfortunately to enable EL2 on the 32-bit CPU models we need
-to do this all over again for the GICv2 emulation :-)
-
-Git branch for this:
- https://git.linaro.org/people/peter.maydell/qemu-arm.git gicv3-virt
+On 7 December 2016 at 04:30, Richard Henderson <rth@twiddle.net> wrote:
+> I ran Alex's risu tests on an s390x host, and ran into two
+> problems not related to the s390 backend.
+>
+>
+> r~
+>
+>
+> Richard Henderson (2):
+>   target-arm: Fix aarch64 disas_ldst_single_struct
+>   target-arm: Fix aarch64 vec_reg_offset
+>
+>  target-arm/translate-a64.c | 7 ++++---
+>  1 file changed, 4 insertions(+), 3 deletions(-)
 
 
-thanks
+
+Applied to target-arm.next for 2.9, thanks.
+
 -- PMM
-
-Peter Maydell (23):
-  target-arm: Log AArch64 exception returns
-  hw/intc/arm_gicv3: Remove incorrect usage of fieldoffset
-  hw/intc/arm_gicv3: Don't signal Pending+Active interrupts to CPU
-  hw/arm/virt: add 2.9 machine type
-  hw/arm/virt: Merge VirtBoardInfo and VirtMachineState
-  hw/arm/virt: Rename 'vbi' variables to 'vms'
-  hw/arm/virt: Don't incorrectly claim architectural timer to be
-    edge-triggered
-  hw/intc/arm_gicv3: Add external IRQ lines for VIRQ and VFIQ
-  hw/intc/arm_gic: Add external IRQ lines for VIRQ and VFIQ
-  target-arm: Expose output GPIO line for VCPU maintenance interrupt
-  hw/arm/virt: Wire VIRQ, VFIQ, maintenance irq lines from GIC to CPU
-  target-arm: Add ARMCPU fields for GIC CPU i/f config
-  hw/intc/gicv3: Add defines for ICH system register fields
-  hw/intc/gicv3: Add data fields for virtualization support
-  hw/intc/arm_gicv3: Add accessors for ICH_ system registers
-  hw/intc/arm_gicv3: Implement ICV_ registers which are just accessors
-  hw/intc/arm_gicv3: Implement ICV_ HPPIR, DIR and RPR registers
-  hw/intc/arm_gicv3: Implement ICV_ registers EOIR and IAR
-  hw/intc/arm_gicv3: Implement gicv3_cpuif_virt_update()
-  hw/intc/arm_gicv3: Implement EL2 traps for CPU i/f regs
-  hw/arm/virt: Support using SMC for PSCI
-  target-arm: Enable EL2 feature bit on A53 and A57
-  hw/arm/virt: Add board property to enable EL2
-
- hw/intc/gicv3_internal.h           |   79 +++
- include/hw/arm/virt.h              |    2 +
- include/hw/compat.h                |    3 +
- include/hw/intc/arm_gic_common.h   |    2 +
- include/hw/intc/arm_gicv3_common.h |   21 +
- target-arm/cpu.h                   |    9 +
- hw/arm/virt.c                      |  696 +++++++++++--------
- hw/arm/xlnx-zynqmp.c               |    2 +
- hw/intc/arm_gic_common.c           |    6 +
- hw/intc/arm_gicv3.c                |    5 +
- hw/intc/arm_gicv3_common.c         |   31 +
- hw/intc/arm_gicv3_cpuif.c          | 1336 +++++++++++++++++++++++++++++++++++-
- target-arm/cpu.c                   |   15 +
- target-arm/cpu64.c                 |    8 +
- target-arm/op_helper.c             |    9 +
- hw/intc/trace-events               |   33 +
- 16 files changed, 1925 insertions(+), 332 deletions(-)
-
--- 
-2.7.4
-

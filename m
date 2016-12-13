@@ -1,55 +1,56 @@
-Received: by 10.25.205.13 with SMTP id d13csp2429069lfg;
-        Tue, 13 Dec 2016 13:54:17 -0800 (PST)
-X-Received: by 10.55.18.30 with SMTP id c30mr97028516qkh.213.1481666057213;
-        Tue, 13 Dec 2016 13:54:17 -0800 (PST)
+Received: by 10.25.205.13 with SMTP id d13csp2430827lfg;
+        Tue, 13 Dec 2016 13:59:17 -0800 (PST)
+X-Received: by 10.55.65.82 with SMTP id o79mr24840061qka.136.1481666357204;
+        Tue, 13 Dec 2016 13:59:17 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [208.118.235.17])
-        by mx.google.com with ESMTPS id x66si28604641qkd.227.2016.12.13.13.54.16
+        by mx.google.com with ESMTPS id f3si28651298qkc.200.2016.12.13.13.59.16
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 13 Dec 2016 13:54:17 -0800 (PST)
+        Tue, 13 Dec 2016 13:59:17 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) client-ip=208.118.235.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:46097 helo=lists.gnu.org)
+Received: from localhost ([::1]:46554 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1cGv1a-00046f-PF
-	for alex.bennee@linaro.org; Tue, 13 Dec 2016 16:54:14 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:53905)
+	id 1cGv6Q-0001uA-BF
+	for alex.bennee@linaro.org; Tue, 13 Dec 2016 16:59:14 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:53805)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <drjones@redhat.com>) id 1cGutQ-0002cf-Uf
-	for qemu-arm@nongnu.org; Tue, 13 Dec 2016 16:45:50 -0500
+	(envelope-from <drjones@redhat.com>) id 1cGutJ-0002UV-CD
+	for qemu-arm@nongnu.org; Tue, 13 Dec 2016 16:45:42 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <drjones@redhat.com>) id 1cGutP-0007cU-Pq
-	for qemu-arm@nongnu.org; Tue, 13 Dec 2016 16:45:48 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:54416)
+	(envelope-from <drjones@redhat.com>) id 1cGutI-0007Yp-85
+	for qemu-arm@nongnu.org; Tue, 13 Dec 2016 16:45:41 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:33470)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <drjones@redhat.com>)
-	id 1cGutP-0007by-Hf; Tue, 13 Dec 2016 16:45:47 -0500
+	id 1cGutH-0007YO-Vn; Tue, 13 Dec 2016 16:45:40 -0500
 Received: from int-mx09.intmail.prod.int.phx2.redhat.com
 	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 96F40C05AA4A;
-	Tue, 13 Dec 2016 21:45:46 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id 04D002C7312;
+	Tue, 13 Dec 2016 21:45:39 +0000 (UTC)
 Received: from kamzik.brq.redhat.com (kamzik.brq.redhat.com [10.34.1.143])
 	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id uBDLjOQW014685; Tue, 13 Dec 2016 16:45:44 -0500
+	id uBDLjOQS014685; Tue, 13 Dec 2016 16:45:37 -0500
 From: Andrew Jones <drjones@redhat.com>
 To: qemu-devel@nongnu.org, qemu-arm@nongnu.org
-Date: Tue, 13 Dec 2016 22:45:21 +0100
-Message-Id: <20161213214522.25548-11-drjones@redhat.com>
+Date: Tue, 13 Dec 2016 22:45:17 +0100
+Message-Id: <20161213214522.25548-7-drjones@redhat.com>
 In-Reply-To: <20161213214522.25548-1-drjones@redhat.com>
 References: <20161213214522.25548-1-drjones@redhat.com>
 X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.32]);
-	Tue, 13 Dec 2016 21:45:46 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.28]);
+	Tue, 13 Dec 2016 21:45:39 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 209.132.183.28
-Subject: [Qemu-arm] [PATCH 10/11] hw/arm/virt: remove VirtGuestInfo
+Subject: [Qemu-arm] [PATCH 06/11] hw/arm/virt: move VirtMachineState/Class
+ to virt.h
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -65,140 +66,144 @@ Cc: peter.maydell@linaro.org, imammedo@redhat.com, mst@redhat.com,
 	ehabkost@redhat.com, zhaoshenglong@huawei.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: p6gLUKcwVZ4b
+X-TUID: 4krseErEZnei
 
-by moving VirtGuestInfo.fw_cfg to VirtMachineState. This is the
-mach-virt equivalent of "pc: Move PcGuestInfo.fw_cfg to
-PCMachineState" and "pc: Eliminate PcGuestInfo struct" combined.
+In preparation to share more Virt machine state than just guest-info
+with other mach-virt source files, move the State and Class structures
+to virt.h
 
 Signed-off-by: Andrew Jones <drjones@redhat.com>
 ---
- hw/arm/virt-acpi-build.c |  7 +++----
- hw/arm/virt.c            | 18 +++++++-----------
- include/hw/arm/virt.h    |  6 +-----
- 3 files changed, 11 insertions(+), 20 deletions(-)
+ hw/arm/virt.c         | 51 +++++++--------------------------------------------
+ include/hw/arm/virt.h | 39 +++++++++++++++++++++++++++++++++++++++
+ 2 files changed, 46 insertions(+), 44 deletions(-)
 
-diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-index 137781646bec..0e6caf5f1083 100644
---- a/hw/arm/virt-acpi-build.c
-+++ b/hw/arm/virt-acpi-build.c
-@@ -826,11 +826,10 @@ static const VMStateDescription vmstate_virt_acpi_build = {
- 
- void virt_acpi_setup(VirtMachineState *vms)
- {
--    VirtGuestInfo *guest_info = &vms->acpi_guest_info;
-     AcpiBuildTables tables;
-     AcpiBuildState *build_state;
- 
--    if (!guest_info->fw_cfg) {
-+    if (!vms->fw_cfg) {
-         trace_virt_acpi_setup();
-         return;
-     }
-@@ -855,8 +854,8 @@ void virt_acpi_setup(VirtMachineState *vms)
-         acpi_add_rom_blob(build_state, tables.linker->cmd_blob,
-                           "etc/table-loader", 0);
- 
--    fw_cfg_add_file(guest_info->fw_cfg, ACPI_BUILD_TPMLOG_FILE,
--                    tables.tcpalog->data, acpi_data_len(tables.tcpalog));
-+    fw_cfg_add_file(vms->fw_cfg, ACPI_BUILD_TPMLOG_FILE, tables.tcpalog->data,
-+                    acpi_data_len(tables.tcpalog));
- 
-     build_state->rsdp_mr = acpi_add_rom_blob(build_state, tables.rsdp,
-                                               ACPI_BUILD_RSDP_FILE, 0);
 diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index 2cb2e5b4f52a..348e23ff663c 100644
+index b137d9bbb689..7860fade52f1 100644
 --- a/hw/arm/virt.c
 +++ b/hw/arm/virt.c
-@@ -914,15 +914,14 @@ static void create_flash(const VirtMachineState *vms,
-     }
- }
+@@ -58,50 +58,6 @@
+ #include "qapi/visitor.h"
+ #include "standard-headers/linux/input.h"
  
--static void create_fw_cfg(const VirtMachineState *vms, AddressSpace *as)
-+static void create_fw_cfg(VirtMachineState *vms, AddressSpace *as)
- {
-     hwaddr base = vms->memmap[VIRT_FW_CFG].base;
-     hwaddr size = vms->memmap[VIRT_FW_CFG].size;
--    FWCfgState *fw_cfg;
-     char *nodename;
+-/* Number of external interrupt lines to configure the GIC with */
+-#define NUM_IRQS 256
+-
+-#define PLATFORM_BUS_NUM_IRQS 64
+-
+-static ARMPlatformBusSystemParams platform_bus_params;
+-
+-typedef struct {
+-    MachineClass parent;
+-    bool disallow_affinity_adjustment;
+-    bool no_its;
+-    bool no_pmu;
+-    bool claim_edge_triggered_timers;
+-} VirtMachineClass;
+-
+-typedef struct {
+-    MachineState parent;
+-    VirtGuestInfo acpi_guest_info;
+-    Notifier machine_done;
+-    bool secure;
+-    bool highmem;
+-    bool virt;
+-    int32_t gic_version;
+-    struct arm_boot_info bootinfo;
+-    const MemMapEntry *memmap;
+-    const int *irqmap;
+-    int smp_cpus;
+-    void *fdt;
+-    int fdt_size;
+-    uint32_t clock_phandle;
+-    uint32_t gic_phandle;
+-    uint32_t msi_phandle;
+-    int psci_conduit;
+-} VirtMachineState;
+-
+-#define TYPE_VIRT_MACHINE   MACHINE_TYPE_NAME("virt")
+-#define VIRT_MACHINE(obj) \
+-    OBJECT_CHECK(VirtMachineState, (obj), TYPE_VIRT_MACHINE)
+-#define VIRT_MACHINE_GET_CLASS(obj) \
+-    OBJECT_GET_CLASS(VirtMachineClass, obj, TYPE_VIRT_MACHINE)
+-#define VIRT_MACHINE_CLASS(klass) \
+-    OBJECT_CLASS_CHECK(VirtMachineClass, klass, TYPE_VIRT_MACHINE)
+-
+-
+ #define DEFINE_VIRT_MACHINE_LATEST(major, minor, latest) \
+     static void virt_##major##_##minor##_class_init(ObjectClass *oc, \
+                                                     void *data) \
+@@ -131,6 +87,13 @@ typedef struct {
+     DEFINE_VIRT_MACHINE_LATEST(major, minor, false)
  
--    fw_cfg = fw_cfg_init_mem_wide(base + 8, base, 8, base + 16, as);
--    fw_cfg_add_i16(fw_cfg, FW_CFG_NB_CPUS, (uint16_t)vms->smp_cpus);
-+    vms->fw_cfg = fw_cfg_init_mem_wide(base + 8, base, 8, base + 16, as);
-+    fw_cfg_add_i16(vms->fw_cfg, FW_CFG_NB_CPUS, (uint16_t)vms->smp_cpus);
  
-     nodename = g_strdup_printf("/fw-cfg@%" PRIx64, base);
-     qemu_fdt_add_subnode(vms->fdt, nodename);
-@@ -1158,12 +1157,11 @@ static void *machvirt_dtb(const struct arm_boot_info *binfo, int *fdt_size)
- 
- static void virt_build_smbios(VirtMachineState *vms)
- {
--    FWCfgState *fw_cfg = vms->acpi_guest_info.fw_cfg;
-     uint8_t *smbios_tables, *smbios_anchor;
-     size_t smbios_tables_len, smbios_anchor_len;
-     const char *product = "QEMU Virtual Machine";
- 
--    if (!fw_cfg) {
-+    if (!vms->fw_cfg) {
-         return;
-     }
- 
-@@ -1178,9 +1176,9 @@ static void virt_build_smbios(VirtMachineState *vms)
-                       &smbios_anchor, &smbios_anchor_len);
- 
-     if (smbios_anchor) {
--        fw_cfg_add_file(fw_cfg, "etc/smbios/smbios-tables",
-+        fw_cfg_add_file(vms->fw_cfg, "etc/smbios/smbios-tables",
-                         smbios_tables, smbios_tables_len);
--        fw_cfg_add_file(fw_cfg, "etc/smbios/smbios-anchor",
-+        fw_cfg_add_file(vms->fw_cfg, "etc/smbios/smbios-anchor",
-                         smbios_anchor, smbios_anchor_len);
-     }
- }
-@@ -1205,7 +1203,6 @@ static void machvirt_init(MachineState *machine)
-     int n, virt_max_cpus;
-     MemoryRegion *ram = g_new(MemoryRegion, 1);
-     const char *cpu_model = machine->cpu_model;
--    VirtGuestInfo *guest_info = &vms->acpi_guest_info;
-     char **cpustr;
-     ObjectClass *oc;
-     const char *typename;
-@@ -1414,9 +1411,8 @@ static void machvirt_init(MachineState *machine)
-     create_virtio_devices(vms, pic);
- 
-     create_fw_cfg(vms, &address_space_memory);
--    rom_set_fw(fw_cfg_find());
-+    rom_set_fw(vms->fw_cfg);
- 
--    guest_info->fw_cfg = fw_cfg_find();
-     vms->machine_done.notify = virt_machine_done;
-     qemu_add_machine_init_done_notifier(&vms->machine_done);
- 
++/* Number of external interrupt lines to configure the GIC with */
++#define NUM_IRQS 256
++
++#define PLATFORM_BUS_NUM_IRQS 64
++
++static ARMPlatformBusSystemParams platform_bus_params;
++
+ /* RAM limit in GB. Since VIRT_MEM starts at the 1GB mark, this means
+  * RAM can go up to the 256GB mark, leaving 256GB of the physical
+  * address space unallocated and free for future use between 256G and 512G.
 diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
-index 52b35478223e..ece3260bfeb5 100644
+index c2c1f6837442..77d25dbddb62 100644
 --- a/include/hw/arm/virt.h
 +++ b/include/hw/arm/virt.h
-@@ -81,10 +81,6 @@ typedef struct MemMapEntry {
-     hwaddr size;
- } MemMapEntry;
+@@ -33,6 +33,8 @@
+ #include "qemu-common.h"
+ #include "exec/hwaddr.h"
+ #include "qemu/notify.h"
++#include "hw/boards.h"
++#include "hw/arm/arm.h"
  
--typedef struct VirtGuestInfo {
--    FWCfgState *fw_cfg;
--} VirtGuestInfo;
--
- typedef struct {
-     MachineClass parent;
-     bool disallow_affinity_adjustment;
-@@ -95,8 +91,8 @@ typedef struct {
+ #define NUM_GICV2M_SPIS       64
+ #define NUM_VIRTIO_TRANSPORTS 32
+@@ -89,6 +91,43 @@ typedef struct VirtGuestInfo {
+     bool no_its;
+ } VirtGuestInfo;
  
- typedef struct {
-     MachineState parent;
--    VirtGuestInfo acpi_guest_info;
-     Notifier machine_done;
-+    FWCfgState *fw_cfg;
-     bool secure;
-     bool highmem;
-     bool virt;
++typedef struct {
++    MachineClass parent;
++    bool disallow_affinity_adjustment;
++    bool no_its;
++    bool no_pmu;
++    bool claim_edge_triggered_timers;
++} VirtMachineClass;
++
++typedef struct {
++    MachineState parent;
++    VirtGuestInfo acpi_guest_info;
++    Notifier machine_done;
++    bool secure;
++    bool highmem;
++    bool virt;
++    int32_t gic_version;
++    struct arm_boot_info bootinfo;
++    const MemMapEntry *memmap;
++    const int *irqmap;
++    int smp_cpus;
++    void *fdt;
++    int fdt_size;
++    uint32_t clock_phandle;
++    uint32_t gic_phandle;
++    uint32_t msi_phandle;
++    int psci_conduit;
++} VirtMachineState;
++
++#define TYPE_VIRT_MACHINE   MACHINE_TYPE_NAME("virt")
++#define VIRT_MACHINE(obj) \
++    OBJECT_CHECK(VirtMachineState, (obj), TYPE_VIRT_MACHINE)
++#define VIRT_MACHINE_GET_CLASS(obj) \
++    OBJECT_GET_CLASS(VirtMachineClass, obj, TYPE_VIRT_MACHINE)
++#define VIRT_MACHINE_CLASS(klass) \
++    OBJECT_CLASS_CHECK(VirtMachineClass, klass, TYPE_VIRT_MACHINE)
++
++
+ void virt_acpi_setup(VirtGuestInfo *guest_info);
+ 
+ #endif /* QEMU_ARM_VIRT_H */
 -- 
 2.9.3
 

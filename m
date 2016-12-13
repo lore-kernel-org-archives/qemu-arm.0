@@ -1,121 +1,384 @@
-Received: by 10.25.205.13 with SMTP id d13csp1578011lfg;
-        Mon, 12 Dec 2016 03:22:32 -0800 (PST)
-X-Received: by 10.200.35.250 with SMTP id r55mr91684440qtr.161.1481541752458;
-        Mon, 12 Dec 2016 03:22:32 -0800 (PST)
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 10.25.205.13 with SMTP id d13csp2116858lfg;
+        Tue, 13 Dec 2016 02:36:49 -0800 (PST)
+X-Received: by 10.200.35.105 with SMTP id b38mr83318291qtb.28.1481625409747;
+        Tue, 13 Dec 2016 02:36:49 -0800 (PST)
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [208.118.235.17])
-        by mx.google.com with ESMTPS id l37si26098708qtl.48.2016.12.12.03.22.32
+        by mx.google.com with ESMTPS id z4si27856455qtd.6.2016.12.13.02.36.48
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 12 Dec 2016 03:22:32 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) client-ip=208.118.235.17;
+        Tue, 13 Dec 2016 02:36:49 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) client-ip=208.118.235.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:39467 helo=lists.gnu.org)
+Received: from localhost ([::1]:37053 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1cGOgh-0005U1-Sw
-	for alex.bennee@linaro.org; Mon, 12 Dec 2016 06:22:31 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:38118)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1cGkRy-0004le-Tz
+	for alex.bennee@linaro.org; Tue, 13 Dec 2016 05:36:46 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:55905)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1cGOcA-0004LF-9i
-	for qemu-devel@nongnu.org; Mon, 12 Dec 2016 06:17:51 -0500
+	(envelope-from <pm215@archaic.org.uk>) id 1cGkRq-0004cK-Uy
+	for qemu-arm@nongnu.org; Tue, 13 Dec 2016 05:36:40 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1cGOc5-0008Fz-GJ
-	for qemu-devel@nongnu.org; Mon, 12 Dec 2016 06:17:50 -0500
-Received: from mail-ua0-f181.google.com ([209.85.217.181]:33174)
+	(envelope-from <pm215@archaic.org.uk>) id 1cGkRp-00089s-EY
+	for qemu-arm@nongnu.org; Tue, 13 Dec 2016 05:36:39 -0500
+Received: from orth.archaic.org.uk ([2001:8b0:1d0::2]:47739)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1cGOc5-0008Fb-Bg
-	for qemu-devel@nongnu.org; Mon, 12 Dec 2016 06:17:45 -0500
-Received: by mail-ua0-f181.google.com with SMTP id 20so78258850uak.0
-	for <qemu-devel@nongnu.org>; Mon, 12 Dec 2016 03:17:45 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=WpHlcqPhuP/Mtfwey5jAwJSSDf32M2LARjqtdzZbyZ4=;
-	b=SWSA4CMqSAjlppJCvzvL9+l/ppVi1G0iyJ7cz6A6Wx/dEm33oVquQFd5xX4CoI9sYn
-	2o/Otb5mbSuxPAZbW7ldDkYups4s2P7/j3dVNKE8XnvR5B6YHzdIzJXFEoBhrUp1KgME
-	T0DX6ZKbfA2aaLUz1062twSTnKChYrSCzBWX4=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=WpHlcqPhuP/Mtfwey5jAwJSSDf32M2LARjqtdzZbyZ4=;
-	b=dVhej/5DqpR5BmF5vrP1tHQCLCSAaKpwk8E115bIgvuPS685+8BAKP5x+hfTHplGMT
-	/XlOrrjIGU90HITw1dfFvzygu0dJeRCju411J9Ku5N3BYsMy45Bx9xb9rtgjpvdEbPje
-	Y1kyV7vU30Ibcdo2aB28HvBYBt7cUMHdsE+kTSwHsUSYuaETn7KOeOEmO5m2yUmWGFGu
-	373yhJ91p9br6XlTp9PEezxh3flUcewz+zblGwFINeZ++TAs+c6oVMFykyUMPo2u32ol
-	6N8vqWF4aEW30wmtlb1gIOE7b2Six6/4yYlbpRzmVoKmY7SABHwaJSELqNzrmO3y879z
-	G28g==
-X-Gm-Message-State: AKaTC01qca6S8KJ80N8HiYTNPeEV+Ambh06kKwp94V36vtNubzinnocv/GkgH2btqFNDS0HRvQj2EScfDJF5+Y3p
-X-Received: by 10.176.3.137 with SMTP id 9mr61401634uau.120.1481541404745;
-	Mon, 12 Dec 2016 03:16:44 -0800 (PST)
-MIME-Version: 1.0
-Received: by 10.31.176.14 with HTTP; Mon, 12 Dec 2016 03:16:24 -0800 (PST)
-In-Reply-To: <20161212105650.3nguwm6yswqwlzqc@kamzik.brq.redhat.com>
-References: <1481301020-21777-1-git-send-email-peter.maydell@linaro.org>
-	<1481301020-21777-4-git-send-email-peter.maydell@linaro.org>
-	<20161212105650.3nguwm6yswqwlzqc@kamzik.brq.redhat.com>
+	(Exim 4.71) (envelope-from <pm215@archaic.org.uk>)
+	id 1cGkRp-00089K-1k; Tue, 13 Dec 2016 05:36:37 -0500
+Received: from pm215 by orth.archaic.org.uk with local (Exim 4.84_2)
+	(envelope-from <pm215@archaic.org.uk>)
+	id 1cGkRo-0002M3-0C; Tue, 13 Dec 2016 10:36:36 +0000
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 12 Dec 2016 11:16:24 +0000
-Message-ID: <CAFEAcA9DNr=DOrwpQBGgpXQZvmCXsNhVTk4mGALqkaP4McEY4A@mail.gmail.com>
-To: Andrew Jones <drjones@redhat.com>
-Content-Type: text/plain; charset=UTF-8
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Date: Tue, 13 Dec 2016 10:36:18 +0000
+Message-Id: <1481625384-15077-18-git-send-email-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.7.4
+In-Reply-To: <1481625384-15077-1-git-send-email-peter.maydell@linaro.org>
+References: <1481625384-15077-1-git-send-email-peter.maydell@linaro.org>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.85.217.181
-Subject: Re: [Qemu-devel] [PATCH 3/4] hw/arm/virt: Rename 'vbi' variables to
- 'vms'
-X-BeenThere: qemu-devel@nongnu.org
+X-Received-From: 2001:8b0:1d0::2
+Subject: [Qemu-arm] [PATCH 17/23] hw/intc/arm_gicv3: Implement ICV_ HPPIR,
+ DIR and RPR registers
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
-	Christoffer Dall <christoffer.dall@linaro.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: /mDLIgMppsVM
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Andrew Jones <drjones@redhat.com>,
+	Christoffer Dall <christoffer.dall@linaro.org>, patches@linaro.org
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: zX1P0IA6V9Iw
 
-On 12 December 2016 at 10:56, Andrew Jones <drjones@redhat.com> wrote:
-> On Fri, Dec 09, 2016 at 04:30:19PM +0000, Peter Maydell wrote:
->> Rename all the variables which used to be VirtBoardInfo*
->> and are now VirtMachineState* so their names are in line
->> with the type being used.
->>
->> Apart from the removal of the line 'VirtMachineState *vbi = vms;'
->> this commit is purely a search-and-replace of 'vbi' with 'vms'.
->>
->> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
->> ---
->>  hw/arm/virt.c | 489 +++++++++++++++++++++++++++++-----------------------------
->>  1 file changed, 244 insertions(+), 245 deletions(-)
->
-> We obviously need this patch, it's just a shame that git history
-> digging will become a bit harder after it's committed. While we
-> may be pretty confident we won't need another patch like it
-> (vms forever!), we could add another patch or two to help prepare.
-> I see that nearly half the uses of 'vbi' are for 'vbi->fdt'. We could
-> add local 'fdt = vbi->fdt' aliases in all functions that need
-> it. We can do the same with 'vbi->memmap/irqmap', which would
-> eliminate another 57. Finally machvirt_init could easly replace 9
-> 'vbi->bootinfo's with a bootinfo alias. That would only leave
-> about 60 lines (currently, and not including the new local variable
-> definitions) that would need to be changed on another renaming.
-> Of those 60, 45 can't be changed, as they're referencing just 'vbi'.
-> So we'd only leave 15 lines exposed to risk of additional renaming
-> churn.
+Implement the the ICV_ registers HPPIR, DIR and RPR.
 
-Well, we could, but to be honest I don't really see that much
-benefit from all the extra work...
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+ hw/intc/arm_gicv3_cpuif.c | 235 +++++++++++++++++++++++++++++++++++++++++++++-
+ hw/intc/trace-events      |   3 +
+ 2 files changed, 235 insertions(+), 3 deletions(-)
 
-thanks
--- PMM
+diff --git a/hw/intc/arm_gicv3_cpuif.c b/hw/intc/arm_gicv3_cpuif.c
+index 40a52ce..e069082 100644
+--- a/hw/intc/arm_gicv3_cpuif.c
++++ b/hw/intc/arm_gicv3_cpuif.c
+@@ -44,6 +44,21 @@ static inline int icv_min_vbpr(GICv3CPUState *cs)
+ }
+ 
+ /* Simple accessor functions for LR fields */
++static uint32_t ich_lr_vintid(uint64_t lr)
++{
++    return extract64(lr, ICH_LR_EL2_VINTID_SHIFT, ICH_LR_EL2_VINTID_LENGTH);
++}
++
++static uint32_t ich_lr_pintid(uint64_t lr)
++{
++    return extract64(lr, ICH_LR_EL2_PINTID_SHIFT, ICH_LR_EL2_PINTID_LENGTH);
++}
++
++static uint32_t ich_lr_prio(uint64_t lr)
++{
++    return extract64(lr, ICH_LR_EL2_PRIORITY_SHIFT, ICH_LR_EL2_PRIORITY_LENGTH);
++}
++
+ static int ich_lr_state(uint64_t lr)
+ {
+     return extract64(lr, ICH_LR_EL2_STATE_SHIFT, ICH_LR_EL2_STATE_LENGTH);
+@@ -115,6 +130,79 @@ static uint32_t icv_fullprio_mask(GICv3CPUState *cs)
+     return ~0U << (8 - cs->vpribits);
+ }
+ 
++static int ich_highest_active_virt_prio(GICv3CPUState *cs)
++{
++    /* Calculate the current running priority based on the set bits
++     * in the ICH Active Priority Registers.
++     */
++    int i;
++    int aprmax = 1 << (cs->vprebits - 5);
++
++    assert(aprmax <= ARRAY_SIZE(cs->ich_apr[0]));
++
++    for (i = 0; i < aprmax; i++) {
++        uint32_t apr = cs->ich_apr[GICV3_G0][i] |
++            cs->ich_apr[GICV3_G1NS][i];
++
++        if (!apr) {
++            continue;
++        }
++        return (i * 32 + ctz32(apr)) << (icv_min_vbpr(cs) + 1);
++    }
++    /* No current active interrupts: return idle priority */
++    return 0xff;
++}
++
++static int hppvi_index(GICv3CPUState *cs)
++{
++    /* Return the list register index of the highest priority pending
++     * virtual interrupt, as per the HighestPriorityVirtualInterrupt
++     * pseudocode. If no pending virtual interrupts, return -1.
++     */
++    int idx = -1;
++    int i;
++    /* Note that a list register entry with a priority of 0xff will
++     * never be reported by this function; this is the architecturally
++     * correct behaviour.
++     */
++    int prio = 0xff;
++
++    if (!(cs->ich_vmcr_el2 & (ICH_VMCR_EL2_VENG0 | ICH_VMCR_EL2_VENG1))) {
++        /* Both groups disabled, definitely nothing to do */
++        return idx;
++    }
++
++    for (i = 0; i < cs->num_list_regs; i++) {
++        uint64_t lr = cs->ich_lr_el2[i];
++        int thisprio;
++
++        if (ich_lr_state(lr) != ICH_LR_EL2_STATE_PENDING) {
++            /* Not Pending */
++            continue;
++        }
++
++        /* Ignore interrupts if relevant group enable not set */
++        if (lr & ICH_LR_EL2_GROUP) {
++            if (!(cs->ich_vmcr_el2 & ICH_VMCR_EL2_VENG1)) {
++                continue;
++            }
++        } else {
++            if (!(cs->ich_vmcr_el2 & ICH_VMCR_EL2_VENG0)) {
++                continue;
++            }
++        }
++
++        thisprio = ich_lr_prio(lr);
++
++        if (thisprio < prio) {
++            prio = thisprio;
++            idx = i;
++        }
++    }
++
++    return idx;
++}
++
+ static uint32_t eoi_maintenance_interrupt_state(GICv3CPUState *cs,
+                                                 uint32_t *misr)
+ {
+@@ -363,6 +451,35 @@ static void icv_ctlr_write(CPUARMState *env, const ARMCPRegInfo *ri,
+     gicv3_cpuif_virt_update(cs);
+ }
+ 
++static uint64_t icv_rpr_read(CPUARMState *env, const ARMCPRegInfo *ri)
++{
++    GICv3CPUState *cs = icc_cs_from_env(env);
++    int prio = ich_highest_active_virt_prio(cs);
++
++    trace_gicv3_icv_rpr_read(gicv3_redist_affid(cs), prio);
++    return prio;
++}
++
++static uint64_t icv_hppir_read(CPUARMState *env, const ARMCPRegInfo *ri)
++{
++    GICv3CPUState *cs = icc_cs_from_env(env);
++    int grp = ri->crm == 8 ? GICV3_G0 : GICV3_G1NS;
++    int idx = hppvi_index(cs);
++    uint64_t value = INTID_SPURIOUS;
++
++    if (idx >= 0) {
++        uint64_t lr = cs->ich_lr_el2[idx];
++        int thisgrp = (lr & ICH_LR_EL2_GROUP) ? GICV3_G1NS : GICV3_G0;
++
++        if (grp == thisgrp) {
++            value = ich_lr_vintid(lr);
++        }
++    }
++
++    trace_gicv3_icv_hppir_read(grp, gicv3_redist_affid(cs), value);
++    return value;
++}
++
+ static int icc_highest_active_prio(GICv3CPUState *cs)
+ {
+     /* Calculate the current running priority based on the set bits
+@@ -781,6 +898,97 @@ static void icc_deactivate_irq(GICv3CPUState *cs, int irq)
+     }
+ }
+ 
++static bool icv_eoi_split(CPUARMState *env, GICv3CPUState *cs)
++{
++    /* Return true if we should split priority drop and interrupt
++     * deactivation, ie whether the virtual EOIMode bit is set.
++     */
++    return cs->ich_vmcr_el2 & ICH_VMCR_EL2_VEOIM;
++}
++
++static int icv_find_active(GICv3CPUState *cs, int irq)
++{
++    /* Given an interrupt number for an active interrupt, return the index
++     * of the corresponding list register, or -1 if there is no match.
++     * Corresponds to FindActiveVirtualInterrupt pseudocode.
++     */
++    int i;
++
++    for (i = 0; i < cs->num_list_regs; i++) {
++        uint64_t lr = cs->ich_lr_el2[i];
++
++        if ((lr & ICH_LR_EL2_STATE_ACTIVE_BIT) && ich_lr_vintid(lr) == irq) {
++            return i;
++        }
++    }
++
++    return -1;
++}
++
++static void icv_deactivate_irq(GICv3CPUState *cs, int idx)
++{
++    /* Deactivate the interrupt in the specified list register index */
++    uint64_t lr = cs->ich_lr_el2[idx];
++
++    if (lr & ICH_LR_EL2_HW) {
++        /* Deactivate the associated physical interrupt */
++        int pirq = ich_lr_pintid(lr);
++
++        if (pirq < INTID_SECURE) {
++            icc_deactivate_irq(cs, pirq);
++        }
++    }
++
++    /* Clear the 'active' part of the state, so ActivePending->Pending
++     * and Active->Invalid.
++     */
++    lr &= ~ICH_LR_EL2_STATE_ACTIVE_BIT;
++    cs->ich_lr_el2[idx] = lr;
++}
++
++static void icv_increment_eoicount(GICv3CPUState *cs)
++{
++    /* Increment the EOICOUNT field in ICH_HCR_EL2 */
++    int eoicount = extract64(cs->ich_hcr_el2, ICH_HCR_EL2_EOICOUNT_SHIFT,
++                             ICH_HCR_EL2_EOICOUNT_LENGTH);
++
++    cs->ich_hcr_el2 = deposit64(cs->ich_hcr_el2, ICH_HCR_EL2_EOICOUNT_SHIFT,
++                                ICH_HCR_EL2_EOICOUNT_LENGTH, eoicount + 1);
++}
++
++static void icv_dir_write(CPUARMState *env, const ARMCPRegInfo *ri,
++                          uint64_t value)
++{
++    /* Deactivate interrupt */
++    GICv3CPUState *cs = icc_cs_from_env(env);
++    int idx;
++    int irq = value & 0xffffff;
++
++    trace_gicv3_icv_dir_write(gicv3_redist_affid(cs), value);
++
++    if (irq >= cs->gic->num_irq) {
++        /* Also catches special interrupt numbers and LPIs */
++        return;
++    }
++
++    if (!icv_eoi_split(env, cs)) {
++        return;
++    }
++
++    idx = icv_find_active(cs, irq);
++
++    if (idx < 0) {
++        /* No list register matching this, so increment the EOI count
++         * (might trigger a maintenance interrupt)
++         */
++        icv_increment_eoicount(cs);
++    } else {
++        icv_deactivate_irq(cs, idx);
++    }
++
++    gicv3_cpuif_virt_update(cs);
++}
++
+ static void icc_eoir_write(CPUARMState *env, const ARMCPRegInfo *ri,
+                            uint64_t value)
+ {
+@@ -831,8 +1039,13 @@ static void icc_eoir_write(CPUARMState *env, const ARMCPRegInfo *ri,
+ static uint64_t icc_hppir0_read(CPUARMState *env, const ARMCPRegInfo *ri)
+ {
+     GICv3CPUState *cs = icc_cs_from_env(env);
+-    uint64_t value = icc_hppir0_value(cs, env);
++    uint64_t value;
++
++    if (icv_access(env, HCR_FMO)) {
++        return icv_hppir_read(env, ri);
++    }
+ 
++    value = icc_hppir0_value(cs, env);
+     trace_gicv3_icc_hppir0_read(gicv3_redist_affid(cs), value);
+     return value;
+ }
+@@ -840,8 +1053,13 @@ static uint64_t icc_hppir0_read(CPUARMState *env, const ARMCPRegInfo *ri)
+ static uint64_t icc_hppir1_read(CPUARMState *env, const ARMCPRegInfo *ri)
+ {
+     GICv3CPUState *cs = icc_cs_from_env(env);
+-    uint64_t value = icc_hppir1_value(cs, env);
++    uint64_t value;
++
++    if (icv_access(env, HCR_IMO)) {
++        return icv_hppir_read(env, ri);
++    }
+ 
++    value = icc_hppir1_value(cs, env);
+     trace_gicv3_icc_hppir1_read(gicv3_redist_affid(cs), value);
+     return value;
+ }
+@@ -986,6 +1204,11 @@ static void icc_dir_write(CPUARMState *env, const ARMCPRegInfo *ri,
+     bool irq_is_secure, single_sec_state, irq_is_grp0;
+     bool route_fiq_to_el3, route_irq_to_el3, route_fiq_to_el2, route_irq_to_el2;
+ 
++    if (icv_access(env, HCR_FMO | HCR_IMO)) {
++        icv_dir_write(env, ri, value);
++        return;
++    }
++
+     trace_gicv3_icc_dir_write(gicv3_redist_affid(cs), value);
+ 
+     if (irq >= cs->gic->num_irq) {
+@@ -1057,7 +1280,13 @@ static void icc_dir_write(CPUARMState *env, const ARMCPRegInfo *ri,
+ static uint64_t icc_rpr_read(CPUARMState *env, const ARMCPRegInfo *ri)
+ {
+     GICv3CPUState *cs = icc_cs_from_env(env);
+-    int prio = icc_highest_active_prio(cs);
++    int prio;
++
++    if (icv_access(env, HCR_FMO | HCR_IMO)) {
++        return icv_rpr_read(env, ri);
++    }
++
++    prio = icc_highest_active_prio(cs);
+ 
+     if (arm_feature(env, ARM_FEATURE_EL3) &&
+         !arm_is_secure(env) && (env->cp15.scr_el3 & SCR_FIQ)) {
+diff --git a/hw/intc/trace-events b/hw/intc/trace-events
+index 19fe1d5..fc9ec57 100644
+--- a/hw/intc/trace-events
++++ b/hw/intc/trace-events
+@@ -133,6 +133,9 @@ gicv3_icv_igrpen_read(int grp, uint32_t cpu, uint64_t val) "GICv3 ICV_IGRPEN%d r
+ gicv3_icv_igrpen_write(int grp, uint32_t cpu, uint64_t val) "GICv3 ICV_IGRPEN%d write cpu %x value 0x%" PRIx64
+ gicv3_icv_ctlr_read(uint32_t cpu, uint64_t val) "GICv3 ICV_CTLR read cpu %x value 0x%" PRIx64
+ gicv3_icv_ctlr_write(uint32_t cpu, uint64_t val) "GICv3 ICV_CTLR write cpu %x value 0x%" PRIx64
++gicv3_icv_rpr_read(uint32_t cpu, uint64_t val) "GICv3 ICV_RPR read cpu %x value 0x%" PRIx64
++gicv3_icv_hppir_read(int grp, uint32_t cpu, uint64_t val) "GICv3 ICV_HPPIR%d read cpu %x value 0x%" PRIx64
++gicv3_icv_dir_write(uint32_t cpu, uint64_t val) "GICv3 ICV_DIR write cpu %x value 0x%" PRIx64
+ 
+ # hw/intc/arm_gicv3_dist.c
+ gicv3_dist_read(uint64_t offset, uint64_t data, unsigned size, bool secure) "GICv3 distributor read: offset 0x%" PRIx64 " data 0x%" PRIx64 " size %u secure %d"
+-- 
+2.7.4
+

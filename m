@@ -1,48 +1,47 @@
-Received: by 10.25.205.13 with SMTP id d13csp2116858lfg;
-        Tue, 13 Dec 2016 02:36:49 -0800 (PST)
-X-Received: by 10.200.35.105 with SMTP id b38mr83318291qtb.28.1481625409747;
-        Tue, 13 Dec 2016 02:36:49 -0800 (PST)
+Received: by 10.25.205.13 with SMTP id d13csp2116863lfg;
+        Tue, 13 Dec 2016 02:36:50 -0800 (PST)
+X-Received: by 10.200.50.202 with SMTP id a10mr92224919qtb.232.1481625410710;
+        Tue, 13 Dec 2016 02:36:50 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [208.118.235.17])
-        by mx.google.com with ESMTPS id z4si27856455qtd.6.2016.12.13.02.36.48
+        by mx.google.com with ESMTPS id o53si27867190qtc.303.2016.12.13.02.36.50
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 13 Dec 2016 02:36:49 -0800 (PST)
+        Tue, 13 Dec 2016 02:36:50 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) client-ip=208.118.235.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:37053 helo=lists.gnu.org)
+Received: from localhost ([::1]:37055 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1cGkRy-0004le-Tz
-	for alex.bennee@linaro.org; Tue, 13 Dec 2016 05:36:46 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:55905)
+	id 1cGkRz-0004p5-Ps
+	for alex.bennee@linaro.org; Tue, 13 Dec 2016 05:36:47 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:55975)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1cGkRq-0004cK-Uy
-	for qemu-arm@nongnu.org; Tue, 13 Dec 2016 05:36:40 -0500
+	(envelope-from <pm215@archaic.org.uk>) id 1cGkRt-0004ll-GK
+	for qemu-arm@nongnu.org; Tue, 13 Dec 2016 05:36:42 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1cGkRp-00089s-EY
-	for qemu-arm@nongnu.org; Tue, 13 Dec 2016 05:36:39 -0500
-Received: from orth.archaic.org.uk ([2001:8b0:1d0::2]:47739)
+	(envelope-from <pm215@archaic.org.uk>) id 1cGkRs-0008CA-CP
+	for qemu-arm@nongnu.org; Tue, 13 Dec 2016 05:36:41 -0500
+Received: from orth.archaic.org.uk ([2001:8b0:1d0::2]:47751)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <pm215@archaic.org.uk>)
-	id 1cGkRp-00089K-1k; Tue, 13 Dec 2016 05:36:37 -0500
+	id 1cGkRs-0008BI-3Y; Tue, 13 Dec 2016 05:36:40 -0500
 Received: from pm215 by orth.archaic.org.uk with local (Exim 4.84_2)
 	(envelope-from <pm215@archaic.org.uk>)
-	id 1cGkRo-0002M3-0C; Tue, 13 Dec 2016 10:36:36 +0000
+	id 1cGkRr-0002ON-2h; Tue, 13 Dec 2016 10:36:39 +0000
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Date: Tue, 13 Dec 2016 10:36:18 +0000
-Message-Id: <1481625384-15077-18-git-send-email-peter.maydell@linaro.org>
+Date: Tue, 13 Dec 2016 10:36:22 +0000
+Message-Id: <1481625384-15077-22-git-send-email-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.7.4
 In-Reply-To: <1481625384-15077-1-git-send-email-peter.maydell@linaro.org>
 References: <1481625384-15077-1-git-send-email-peter.maydell@linaro.org>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 2001:8b0:1d0::2
-Subject: [Qemu-arm] [PATCH 17/23] hw/intc/arm_gicv3: Implement ICV_ HPPIR,
- DIR and RPR registers
+Subject: [Qemu-arm] [PATCH 21/23] hw/arm/virt: Support using SMC for PSCI
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -58,327 +57,101 @@ Cc: Andrew Jones <drjones@redhat.com>,
 	Christoffer Dall <christoffer.dall@linaro.org>, patches@linaro.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: zX1P0IA6V9Iw
+X-TUID: znm+oPt3ZGno
 
-Implement the the ICV_ registers HPPIR, DIR and RPR.
+If we are giving the guest a CPU with EL2, it is likely to
+want to use the HVC instruction itself, for instance for
+providing PSCI to inner guest VMs. This makes using HVC
+as the PSCI conduit for the outer QEMU a bad idea. We will
+want to use SMC instead is this case: this makes sense
+because QEMU's PSCI implementation is effectively an
+emulation of functionality provided by EL3 firmware.
+
+Add code to support selecting the PSCI conduit to use,
+rather than hardcoding use of HVC.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- hw/intc/arm_gicv3_cpuif.c | 235 +++++++++++++++++++++++++++++++++++++++++++++-
- hw/intc/trace-events      |   3 +
- 2 files changed, 235 insertions(+), 3 deletions(-)
+ hw/arm/virt.c | 29 ++++++++++++++++++++++-------
+ 1 file changed, 22 insertions(+), 7 deletions(-)
 
-diff --git a/hw/intc/arm_gicv3_cpuif.c b/hw/intc/arm_gicv3_cpuif.c
-index 40a52ce..e069082 100644
---- a/hw/intc/arm_gicv3_cpuif.c
-+++ b/hw/intc/arm_gicv3_cpuif.c
-@@ -44,6 +44,21 @@ static inline int icv_min_vbpr(GICv3CPUState *cs)
- }
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index 7adb58b..cce8d2e 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -88,7 +88,7 @@ typedef struct {
+     uint32_t clock_phandle;
+     uint32_t gic_phandle;
+     uint32_t msi_phandle;
+-    bool using_psci;
++    int psci_conduit;
+ } VirtMachineState;
  
- /* Simple accessor functions for LR fields */
-+static uint32_t ich_lr_vintid(uint64_t lr)
-+{
-+    return extract64(lr, ICH_LR_EL2_VINTID_SHIFT, ICH_LR_EL2_VINTID_LENGTH);
-+}
-+
-+static uint32_t ich_lr_pintid(uint64_t lr)
-+{
-+    return extract64(lr, ICH_LR_EL2_PINTID_SHIFT, ICH_LR_EL2_PINTID_LENGTH);
-+}
-+
-+static uint32_t ich_lr_prio(uint64_t lr)
-+{
-+    return extract64(lr, ICH_LR_EL2_PRIORITY_SHIFT, ICH_LR_EL2_PRIORITY_LENGTH);
-+}
-+
- static int ich_lr_state(uint64_t lr)
- {
-     return extract64(lr, ICH_LR_EL2_STATE_SHIFT, ICH_LR_EL2_STATE_LENGTH);
-@@ -115,6 +130,79 @@ static uint32_t icv_fullprio_mask(GICv3CPUState *cs)
-     return ~0U << (8 - cs->vpribits);
- }
+ #define TYPE_VIRT_MACHINE   MACHINE_TYPE_NAME("virt")
+@@ -266,9 +266,19 @@ static void fdt_add_psci_node(const VirtMachineState *vms)
+     uint32_t migrate_fn;
+     void *fdt = vms->fdt;
+     ARMCPU *armcpu = ARM_CPU(qemu_get_cpu(0));
++    const char *psci_method;
  
-+static int ich_highest_active_virt_prio(GICv3CPUState *cs)
-+{
-+    /* Calculate the current running priority based on the set bits
-+     * in the ICH Active Priority Registers.
-+     */
-+    int i;
-+    int aprmax = 1 << (cs->vprebits - 5);
-+
-+    assert(aprmax <= ARRAY_SIZE(cs->ich_apr[0]));
-+
-+    for (i = 0; i < aprmax; i++) {
-+        uint32_t apr = cs->ich_apr[GICV3_G0][i] |
-+            cs->ich_apr[GICV3_G1NS][i];
-+
-+        if (!apr) {
-+            continue;
-+        }
-+        return (i * 32 + ctz32(apr)) << (icv_min_vbpr(cs) + 1);
-+    }
-+    /* No current active interrupts: return idle priority */
-+    return 0xff;
-+}
-+
-+static int hppvi_index(GICv3CPUState *cs)
-+{
-+    /* Return the list register index of the highest priority pending
-+     * virtual interrupt, as per the HighestPriorityVirtualInterrupt
-+     * pseudocode. If no pending virtual interrupts, return -1.
-+     */
-+    int idx = -1;
-+    int i;
-+    /* Note that a list register entry with a priority of 0xff will
-+     * never be reported by this function; this is the architecturally
-+     * correct behaviour.
-+     */
-+    int prio = 0xff;
-+
-+    if (!(cs->ich_vmcr_el2 & (ICH_VMCR_EL2_VENG0 | ICH_VMCR_EL2_VENG1))) {
-+        /* Both groups disabled, definitely nothing to do */
-+        return idx;
-+    }
-+
-+    for (i = 0; i < cs->num_list_regs; i++) {
-+        uint64_t lr = cs->ich_lr_el2[i];
-+        int thisprio;
-+
-+        if (ich_lr_state(lr) != ICH_LR_EL2_STATE_PENDING) {
-+            /* Not Pending */
-+            continue;
-+        }
-+
-+        /* Ignore interrupts if relevant group enable not set */
-+        if (lr & ICH_LR_EL2_GROUP) {
-+            if (!(cs->ich_vmcr_el2 & ICH_VMCR_EL2_VENG1)) {
-+                continue;
-+            }
-+        } else {
-+            if (!(cs->ich_vmcr_el2 & ICH_VMCR_EL2_VENG0)) {
-+                continue;
-+            }
-+        }
-+
-+        thisprio = ich_lr_prio(lr);
-+
-+        if (thisprio < prio) {
-+            prio = thisprio;
-+            idx = i;
-+        }
-+    }
-+
-+    return idx;
-+}
-+
- static uint32_t eoi_maintenance_interrupt_state(GICv3CPUState *cs,
-                                                 uint32_t *misr)
- {
-@@ -363,6 +451,35 @@ static void icv_ctlr_write(CPUARMState *env, const ARMCPRegInfo *ri,
-     gicv3_cpuif_virt_update(cs);
- }
- 
-+static uint64_t icv_rpr_read(CPUARMState *env, const ARMCPRegInfo *ri)
-+{
-+    GICv3CPUState *cs = icc_cs_from_env(env);
-+    int prio = ich_highest_active_virt_prio(cs);
-+
-+    trace_gicv3_icv_rpr_read(gicv3_redist_affid(cs), prio);
-+    return prio;
-+}
-+
-+static uint64_t icv_hppir_read(CPUARMState *env, const ARMCPRegInfo *ri)
-+{
-+    GICv3CPUState *cs = icc_cs_from_env(env);
-+    int grp = ri->crm == 8 ? GICV3_G0 : GICV3_G1NS;
-+    int idx = hppvi_index(cs);
-+    uint64_t value = INTID_SPURIOUS;
-+
-+    if (idx >= 0) {
-+        uint64_t lr = cs->ich_lr_el2[idx];
-+        int thisgrp = (lr & ICH_LR_EL2_GROUP) ? GICV3_G1NS : GICV3_G0;
-+
-+        if (grp == thisgrp) {
-+            value = ich_lr_vintid(lr);
-+        }
-+    }
-+
-+    trace_gicv3_icv_hppir_read(grp, gicv3_redist_affid(cs), value);
-+    return value;
-+}
-+
- static int icc_highest_active_prio(GICv3CPUState *cs)
- {
-     /* Calculate the current running priority based on the set bits
-@@ -781,6 +898,97 @@ static void icc_deactivate_irq(GICv3CPUState *cs, int irq)
+-    if (!vms->using_psci) {
++    switch (vms->psci_conduit) {
++    case QEMU_PSCI_CONDUIT_DISABLED:
+         return;
++    case QEMU_PSCI_CONDUIT_HVC:
++        psci_method = "hvc";
++        break;
++    case QEMU_PSCI_CONDUIT_SMC:
++        psci_method = "smc";
++        break;
++    default:
++        g_assert_not_reached();
      }
- }
  
-+static bool icv_eoi_split(CPUARMState *env, GICv3CPUState *cs)
-+{
-+    /* Return true if we should split priority drop and interrupt
-+     * deactivation, ie whether the virtual EOIMode bit is set.
-+     */
-+    return cs->ich_vmcr_el2 & ICH_VMCR_EL2_VEOIM;
-+}
-+
-+static int icv_find_active(GICv3CPUState *cs, int irq)
-+{
-+    /* Given an interrupt number for an active interrupt, return the index
-+     * of the corresponding list register, or -1 if there is no match.
-+     * Corresponds to FindActiveVirtualInterrupt pseudocode.
-+     */
-+    int i;
-+
-+    for (i = 0; i < cs->num_list_regs; i++) {
-+        uint64_t lr = cs->ich_lr_el2[i];
-+
-+        if ((lr & ICH_LR_EL2_STATE_ACTIVE_BIT) && ich_lr_vintid(lr) == irq) {
-+            return i;
-+        }
-+    }
-+
-+    return -1;
-+}
-+
-+static void icv_deactivate_irq(GICv3CPUState *cs, int idx)
-+{
-+    /* Deactivate the interrupt in the specified list register index */
-+    uint64_t lr = cs->ich_lr_el2[idx];
-+
-+    if (lr & ICH_LR_EL2_HW) {
-+        /* Deactivate the associated physical interrupt */
-+        int pirq = ich_lr_pintid(lr);
-+
-+        if (pirq < INTID_SECURE) {
-+            icc_deactivate_irq(cs, pirq);
-+        }
-+    }
-+
-+    /* Clear the 'active' part of the state, so ActivePending->Pending
-+     * and Active->Invalid.
-+     */
-+    lr &= ~ICH_LR_EL2_STATE_ACTIVE_BIT;
-+    cs->ich_lr_el2[idx] = lr;
-+}
-+
-+static void icv_increment_eoicount(GICv3CPUState *cs)
-+{
-+    /* Increment the EOICOUNT field in ICH_HCR_EL2 */
-+    int eoicount = extract64(cs->ich_hcr_el2, ICH_HCR_EL2_EOICOUNT_SHIFT,
-+                             ICH_HCR_EL2_EOICOUNT_LENGTH);
-+
-+    cs->ich_hcr_el2 = deposit64(cs->ich_hcr_el2, ICH_HCR_EL2_EOICOUNT_SHIFT,
-+                                ICH_HCR_EL2_EOICOUNT_LENGTH, eoicount + 1);
-+}
-+
-+static void icv_dir_write(CPUARMState *env, const ARMCPRegInfo *ri,
-+                          uint64_t value)
-+{
-+    /* Deactivate interrupt */
-+    GICv3CPUState *cs = icc_cs_from_env(env);
-+    int idx;
-+    int irq = value & 0xffffff;
-+
-+    trace_gicv3_icv_dir_write(gicv3_redist_affid(cs), value);
-+
-+    if (irq >= cs->gic->num_irq) {
-+        /* Also catches special interrupt numbers and LPIs */
-+        return;
-+    }
-+
-+    if (!icv_eoi_split(env, cs)) {
-+        return;
-+    }
-+
-+    idx = icv_find_active(cs, irq);
-+
-+    if (idx < 0) {
-+        /* No list register matching this, so increment the EOI count
-+         * (might trigger a maintenance interrupt)
-+         */
-+        icv_increment_eoicount(cs);
+     qemu_fdt_add_subnode(fdt, "/psci");
+@@ -300,7 +310,7 @@ static void fdt_add_psci_node(const VirtMachineState *vms)
+      * However, the device tree binding uses 'method' instead, so that is
+      * what we should use here.
+      */
+-    qemu_fdt_setprop_string(fdt, "/psci", "method", "hvc");
++    qemu_fdt_setprop_string(fdt, "/psci", "method", psci_method);
+ 
+     qemu_fdt_setprop_cell(fdt, "/psci", "cpu_suspend", cpu_suspend_fn);
+     qemu_fdt_setprop_cell(fdt, "/psci", "cpu_off", cpu_off_fn);
+@@ -402,7 +412,8 @@ static void fdt_add_cpu_nodes(const VirtMachineState *vms)
+         qemu_fdt_setprop_string(vms->fdt, nodename, "compatible",
+                                     armcpu->dtb_compatible);
+ 
+-        if (vms->using_psci && vms->smp_cpus > 1) {
++        if (vms->psci_conduit != QEMU_PSCI_CONDUIT_DISABLED
++            && vms->smp_cpus > 1) {
+             qemu_fdt_setprop_string(vms->fdt, nodename,
+                                         "enable-method", "psci");
+         }
+@@ -1270,7 +1281,11 @@ static void machvirt_init(MachineState *machine)
+      * let the boot ROM sort them out.
+      * The usual case is that we do use QEMU's PSCI implementation.
+      */
+-    vms->using_psci = !(vms->secure && firmware_loaded);
++    if (vms->secure && firmware_loaded) {
++        vms->psci_conduit = QEMU_PSCI_CONDUIT_DISABLED;
 +    } else {
-+        icv_deactivate_irq(cs, idx);
-+    }
-+
-+    gicv3_cpuif_virt_update(cs);
-+}
-+
- static void icc_eoir_write(CPUARMState *env, const ARMCPRegInfo *ri,
-                            uint64_t value)
- {
-@@ -831,8 +1039,13 @@ static void icc_eoir_write(CPUARMState *env, const ARMCPRegInfo *ri,
- static uint64_t icc_hppir0_read(CPUARMState *env, const ARMCPRegInfo *ri)
- {
-     GICv3CPUState *cs = icc_cs_from_env(env);
--    uint64_t value = icc_hppir0_value(cs, env);
-+    uint64_t value;
-+
-+    if (icv_access(env, HCR_FMO)) {
-+        return icv_hppir_read(env, ri);
++        vms->psci_conduit = QEMU_PSCI_CONDUIT_HVC;
 +    }
  
-+    value = icc_hppir0_value(cs, env);
-     trace_gicv3_icc_hppir0_read(gicv3_redist_affid(cs), value);
-     return value;
- }
-@@ -840,8 +1053,13 @@ static uint64_t icc_hppir0_read(CPUARMState *env, const ARMCPRegInfo *ri)
- static uint64_t icc_hppir1_read(CPUARMState *env, const ARMCPRegInfo *ri)
- {
-     GICv3CPUState *cs = icc_cs_from_env(env);
--    uint64_t value = icc_hppir1_value(cs, env);
-+    uint64_t value;
-+
-+    if (icv_access(env, HCR_IMO)) {
-+        return icv_hppir_read(env, ri);
-+    }
+     /* The maximum number of CPUs depends on the GIC version, or on how
+      * many redistributors we can fit into the memory map.
+@@ -1353,8 +1368,8 @@ static void machvirt_init(MachineState *machine)
+             object_property_set_bool(cpuobj, false, "has_el3", NULL);
+         }
  
-+    value = icc_hppir1_value(cs, env);
-     trace_gicv3_icc_hppir1_read(gicv3_redist_affid(cs), value);
-     return value;
- }
-@@ -986,6 +1204,11 @@ static void icc_dir_write(CPUARMState *env, const ARMCPRegInfo *ri,
-     bool irq_is_secure, single_sec_state, irq_is_grp0;
-     bool route_fiq_to_el3, route_irq_to_el3, route_fiq_to_el2, route_irq_to_el2;
+-        if (vms->using_psci) {
+-            object_property_set_int(cpuobj, QEMU_PSCI_CONDUIT_HVC,
++        if (vms->psci_conduit != QEMU_PSCI_CONDUIT_DISABLED) {
++            object_property_set_int(cpuobj, vms->psci_conduit,
+                                     "psci-conduit", NULL);
  
-+    if (icv_access(env, HCR_FMO | HCR_IMO)) {
-+        icv_dir_write(env, ri, value);
-+        return;
-+    }
-+
-     trace_gicv3_icc_dir_write(gicv3_redist_affid(cs), value);
- 
-     if (irq >= cs->gic->num_irq) {
-@@ -1057,7 +1280,13 @@ static void icc_dir_write(CPUARMState *env, const ARMCPRegInfo *ri,
- static uint64_t icc_rpr_read(CPUARMState *env, const ARMCPRegInfo *ri)
- {
-     GICv3CPUState *cs = icc_cs_from_env(env);
--    int prio = icc_highest_active_prio(cs);
-+    int prio;
-+
-+    if (icv_access(env, HCR_FMO | HCR_IMO)) {
-+        return icv_rpr_read(env, ri);
-+    }
-+
-+    prio = icc_highest_active_prio(cs);
- 
-     if (arm_feature(env, ARM_FEATURE_EL3) &&
-         !arm_is_secure(env) && (env->cp15.scr_el3 & SCR_FIQ)) {
-diff --git a/hw/intc/trace-events b/hw/intc/trace-events
-index 19fe1d5..fc9ec57 100644
---- a/hw/intc/trace-events
-+++ b/hw/intc/trace-events
-@@ -133,6 +133,9 @@ gicv3_icv_igrpen_read(int grp, uint32_t cpu, uint64_t val) "GICv3 ICV_IGRPEN%d r
- gicv3_icv_igrpen_write(int grp, uint32_t cpu, uint64_t val) "GICv3 ICV_IGRPEN%d write cpu %x value 0x%" PRIx64
- gicv3_icv_ctlr_read(uint32_t cpu, uint64_t val) "GICv3 ICV_CTLR read cpu %x value 0x%" PRIx64
- gicv3_icv_ctlr_write(uint32_t cpu, uint64_t val) "GICv3 ICV_CTLR write cpu %x value 0x%" PRIx64
-+gicv3_icv_rpr_read(uint32_t cpu, uint64_t val) "GICv3 ICV_RPR read cpu %x value 0x%" PRIx64
-+gicv3_icv_hppir_read(int grp, uint32_t cpu, uint64_t val) "GICv3 ICV_HPPIR%d read cpu %x value 0x%" PRIx64
-+gicv3_icv_dir_write(uint32_t cpu, uint64_t val) "GICv3 ICV_DIR write cpu %x value 0x%" PRIx64
- 
- # hw/intc/arm_gicv3_dist.c
- gicv3_dist_read(uint64_t offset, uint64_t data, unsigned size, bool secure) "GICv3 distributor read: offset 0x%" PRIx64 " data 0x%" PRIx64 " size %u secure %d"
+             /* Secondary CPUs start in PSCI powered-down state */
 -- 
 2.7.4
 

@@ -1,47 +1,48 @@
-Received: by 10.25.205.13 with SMTP id d13csp2117278lfg;
-        Tue, 13 Dec 2016 02:38:05 -0800 (PST)
-X-Received: by 10.200.38.39 with SMTP id u36mr92789808qtu.31.1481625485379;
-        Tue, 13 Dec 2016 02:38:05 -0800 (PST)
+Received: by 10.25.205.13 with SMTP id d13csp2118813lfg;
+        Tue, 13 Dec 2016 02:42:32 -0800 (PST)
+X-Received: by 10.200.41.100 with SMTP id z33mr80049230qtz.154.1481625752855;
+        Tue, 13 Dec 2016 02:42:32 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [208.118.235.17])
-        by mx.google.com with ESMTPS id o1si27842601qte.133.2016.12.13.02.38.04
+        by mx.google.com with ESMTPS id t73si27877296qki.337.2016.12.13.02.42.32
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 13 Dec 2016 02:38:05 -0800 (PST)
+        Tue, 13 Dec 2016 02:42:32 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) client-ip=208.118.235.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:37067 helo=lists.gnu.org)
+Received: from localhost ([::1]:37091 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1cGkTC-0005s7-F2
-	for alex.bennee@linaro.org; Tue, 13 Dec 2016 05:38:02 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:56521)
+	id 1cGkXV-0001X0-Vh
+	for alex.bennee@linaro.org; Tue, 13 Dec 2016 05:42:30 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:56561)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1cGkSv-0005gZ-IQ
-	for qemu-arm@nongnu.org; Tue, 13 Dec 2016 05:37:46 -0500
+	(envelope-from <pm215@archaic.org.uk>) id 1cGkSx-0005im-FL
+	for qemu-arm@nongnu.org; Tue, 13 Dec 2016 05:37:48 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1cGkSu-0000Ce-QP
-	for qemu-arm@nongnu.org; Tue, 13 Dec 2016 05:37:45 -0500
+	(envelope-from <pm215@archaic.org.uk>) id 1cGkSw-0000DX-G7
+	for qemu-arm@nongnu.org; Tue, 13 Dec 2016 05:37:47 -0500
 Received: from orth.archaic.org.uk ([2001:8b0:1d0::2]:47759)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <pm215@archaic.org.uk>)
-	id 1cGkSu-000087-Jy; Tue, 13 Dec 2016 05:37:44 -0500
+	id 1cGkSw-000087-8F; Tue, 13 Dec 2016 05:37:46 -0500
 Received: from pm215 by orth.archaic.org.uk with local (Exim 4.84_2)
 	(envelope-from <pm215@archaic.org.uk>)
-	id 1cGkRf-0002Gp-Uc; Tue, 13 Dec 2016 10:36:27 +0000
+	id 1cGkRe-0002GI-LE; Tue, 13 Dec 2016 10:36:26 +0000
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Date: Tue, 13 Dec 2016 10:36:05 +0000
-Message-Id: <1481625384-15077-5-git-send-email-peter.maydell@linaro.org>
+Date: Tue, 13 Dec 2016 10:36:03 +0000
+Message-Id: <1481625384-15077-3-git-send-email-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.7.4
 In-Reply-To: <1481625384-15077-1-git-send-email-peter.maydell@linaro.org>
 References: <1481625384-15077-1-git-send-email-peter.maydell@linaro.org>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 2001:8b0:1d0::2
-Subject: [Qemu-arm] [PATCH 04/23] hw/arm/virt: add 2.9 machine type
+Subject: [Qemu-arm] [PATCH 02/23] hw/intc/arm_gicv3: Remove incorrect usage
+ of fieldoffset
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -57,69 +58,86 @@ Cc: Andrew Jones <drjones@redhat.com>,
 	Christoffer Dall <christoffer.dall@linaro.org>, patches@linaro.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: N89/wvUy7AMi
+X-TUID: b5NFvR2q8W57
+
+In the ARMCPRegInfo definitions for the GICv3 CPU interface
+registers, we were trying to use .fieldoffset to specify
+the locations of data fields within the GICv3CPUState struct.
+This is completely broken, because .fieldoffset is for offsets
+into the CPUARMState struct. We didn't notice because we
+were only using this for reads to BPR0, AP0R<n>, IGRPEN0
+and CTLR_EL3, and Linux doesn't use these registers.
+
+Replace the .fieldoffset uses with explicit read functions.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-Reviewed-by: Andrew Jones <drjones@redhat.com>
+Reviewed-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
 ---
- include/hw/compat.h |  3 +++
- hw/arm/virt.c       | 19 +++++++++++++++++--
- 2 files changed, 20 insertions(+), 2 deletions(-)
+ hw/intc/arm_gicv3_cpuif.c | 13 ++++++-------
+ 1 file changed, 6 insertions(+), 7 deletions(-)
 
-diff --git a/include/hw/compat.h b/include/hw/compat.h
-index 0f06e11..f8b8354 100644
---- a/include/hw/compat.h
-+++ b/include/hw/compat.h
-@@ -1,6 +1,9 @@
- #ifndef HW_COMPAT_H
- #define HW_COMPAT_H
- 
-+#define HW_COMPAT_2_8 \
-+    /* empty */
-+
- #define HW_COMPAT_2_7 \
-     {\
-         .driver   = "virtio-pci",\
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index d04e4ac..11c53a5 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -1525,7 +1525,7 @@ static void machvirt_machine_init(void)
- }
- type_init(machvirt_machine_init);
- 
--static void virt_2_8_instance_init(Object *obj)
-+static void virt_2_9_instance_init(Object *obj)
- {
-     VirtMachineState *vms = VIRT_MACHINE(obj);
- 
-@@ -1558,10 +1558,25 @@ static void virt_2_8_instance_init(Object *obj)
-                                     "Valid values are 2, 3 and host", NULL);
- }
- 
-+static void virt_machine_2_9_options(MachineClass *mc)
-+{
-+}
-+DEFINE_VIRT_MACHINE_AS_LATEST(2, 9)
-+
-+#define VIRT_COMPAT_2_8 \
-+    HW_COMPAT_2_8
-+
-+static void virt_2_8_instance_init(Object *obj)
-+{
-+    virt_2_9_instance_init(obj);
-+}
-+
- static void virt_machine_2_8_options(MachineClass *mc)
- {
-+    virt_machine_2_9_options(mc);
-+    SET_MACHINE_COMPAT(mc, VIRT_COMPAT_2_8);
- }
--DEFINE_VIRT_MACHINE_AS_LATEST(2, 8)
-+DEFINE_VIRT_MACHINE(2, 8)
- 
- #define VIRT_COMPAT_2_7 \
-     HW_COMPAT_2_7
+diff --git a/hw/intc/arm_gicv3_cpuif.c b/hw/intc/arm_gicv3_cpuif.c
+index bca30c4..35e8eb3 100644
+--- a/hw/intc/arm_gicv3_cpuif.c
++++ b/hw/intc/arm_gicv3_cpuif.c
+@@ -1118,35 +1118,35 @@ static const ARMCPRegInfo gicv3_cpuif_reginfo[] = {
+       .opc0 = 3, .opc1 = 0, .crn = 12, .crm = 8, .opc2 = 3,
+       .type = ARM_CP_IO | ARM_CP_NO_RAW,
+       .access = PL1_RW, .accessfn = gicv3_fiq_access,
+-      .fieldoffset = offsetof(GICv3CPUState, icc_bpr[GICV3_G0]),
++      .readfn = icc_bpr_read,
+       .writefn = icc_bpr_write,
+     },
+     { .name = "ICC_AP0R0_EL1", .state = ARM_CP_STATE_BOTH,
+       .opc0 = 3, .opc1 = 0, .crn = 12, .crm = 8, .opc2 = 4,
+       .type = ARM_CP_IO | ARM_CP_NO_RAW,
+       .access = PL1_RW, .accessfn = gicv3_fiq_access,
+-      .fieldoffset = offsetof(GICv3CPUState, icc_apr[GICV3_G0][0]),
++      .readfn = icc_ap_read,
+       .writefn = icc_ap_write,
+     },
+     { .name = "ICC_AP0R1_EL1", .state = ARM_CP_STATE_BOTH,
+       .opc0 = 3, .opc1 = 0, .crn = 12, .crm = 8, .opc2 = 5,
+       .type = ARM_CP_IO | ARM_CP_NO_RAW,
+       .access = PL1_RW, .accessfn = gicv3_fiq_access,
+-      .fieldoffset = offsetof(GICv3CPUState, icc_apr[GICV3_G0][1]),
++      .readfn = icc_ap_read,
+       .writefn = icc_ap_write,
+     },
+     { .name = "ICC_AP0R2_EL1", .state = ARM_CP_STATE_BOTH,
+       .opc0 = 3, .opc1 = 0, .crn = 12, .crm = 8, .opc2 = 6,
+       .type = ARM_CP_IO | ARM_CP_NO_RAW,
+       .access = PL1_RW, .accessfn = gicv3_fiq_access,
+-      .fieldoffset = offsetof(GICv3CPUState, icc_apr[GICV3_G0][2]),
++      .readfn = icc_ap_read,
+       .writefn = icc_ap_write,
+     },
+     { .name = "ICC_AP0R3_EL1", .state = ARM_CP_STATE_BOTH,
+       .opc0 = 3, .opc1 = 0, .crn = 12, .crm = 8, .opc2 = 7,
+       .type = ARM_CP_IO | ARM_CP_NO_RAW,
+       .access = PL1_RW, .accessfn = gicv3_fiq_access,
+-      .fieldoffset = offsetof(GICv3CPUState, icc_apr[GICV3_G0][3]),
++      .readfn = icc_ap_read,
+       .writefn = icc_ap_write,
+     },
+     /* All the ICC_AP1R*_EL1 registers are banked */
+@@ -1275,7 +1275,7 @@ static const ARMCPRegInfo gicv3_cpuif_reginfo[] = {
+       .opc0 = 3, .opc1 = 0, .crn = 12, .crm = 12, .opc2 = 6,
+       .type = ARM_CP_IO | ARM_CP_NO_RAW,
+       .access = PL1_RW, .accessfn = gicv3_fiq_access,
+-      .fieldoffset = offsetof(GICv3CPUState, icc_igrpen[GICV3_G0]),
++      .readfn = icc_igrpen_read,
+       .writefn = icc_igrpen_write,
+     },
+     /* This register is banked */
+@@ -1299,7 +1299,6 @@ static const ARMCPRegInfo gicv3_cpuif_reginfo[] = {
+       .opc0 = 3, .opc1 = 6, .crn = 12, .crm = 12, .opc2 = 4,
+       .type = ARM_CP_IO | ARM_CP_NO_RAW,
+       .access = PL3_RW,
+-      .fieldoffset = offsetof(GICv3CPUState, icc_ctlr_el3),
+       .readfn = icc_ctlr_el3_read,
+       .writefn = icc_ctlr_el3_write,
+     },
 -- 
 2.7.4
 

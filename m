@@ -1,47 +1,48 @@
-Received: by 10.25.205.13 with SMTP id d13csp2116863lfg;
-        Tue, 13 Dec 2016 02:36:50 -0800 (PST)
-X-Received: by 10.200.50.202 with SMTP id a10mr92224919qtb.232.1481625410710;
-        Tue, 13 Dec 2016 02:36:50 -0800 (PST)
+Received: by 10.25.205.13 with SMTP id d13csp2116884lfg;
+        Tue, 13 Dec 2016 02:36:54 -0800 (PST)
+X-Received: by 10.200.49.165 with SMTP id h34mr80276049qte.43.1481625414756;
+        Tue, 13 Dec 2016 02:36:54 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [208.118.235.17])
-        by mx.google.com with ESMTPS id o53si27867190qtc.303.2016.12.13.02.36.50
+        by mx.google.com with ESMTPS id a28si27836773qtc.202.2016.12.13.02.36.54
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 13 Dec 2016 02:36:50 -0800 (PST)
+        Tue, 13 Dec 2016 02:36:54 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) client-ip=208.118.235.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:37055 helo=lists.gnu.org)
+Received: from localhost ([::1]:37056 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1cGkRz-0004p5-Ps
-	for alex.bennee@linaro.org; Tue, 13 Dec 2016 05:36:47 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:55975)
+	id 1cGkS4-0004qH-3y
+	for alex.bennee@linaro.org; Tue, 13 Dec 2016 05:36:52 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:55935)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1cGkRt-0004ll-GK
-	for qemu-arm@nongnu.org; Tue, 13 Dec 2016 05:36:42 -0500
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1cGkRs-0008CA-CP
+	(envelope-from <pm215@archaic.org.uk>) id 1cGkRs-0004gL-19
 	for qemu-arm@nongnu.org; Tue, 13 Dec 2016 05:36:41 -0500
-Received: from orth.archaic.org.uk ([2001:8b0:1d0::2]:47751)
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+	(envelope-from <pm215@archaic.org.uk>) id 1cGkRq-0008Al-Pv
+	for qemu-arm@nongnu.org; Tue, 13 Dec 2016 05:36:40 -0500
+Received: from orth.archaic.org.uk ([2001:8b0:1d0::2]:47702)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <pm215@archaic.org.uk>)
-	id 1cGkRs-0008BI-3Y; Tue, 13 Dec 2016 05:36:40 -0500
+	id 1cGkRq-00085R-Ir; Tue, 13 Dec 2016 05:36:38 -0500
 Received: from pm215 by orth.archaic.org.uk with local (Exim 4.84_2)
 	(envelope-from <pm215@archaic.org.uk>)
-	id 1cGkRr-0002ON-2h; Tue, 13 Dec 2016 10:36:39 +0000
+	id 1cGkRm-0002Ku-1z; Tue, 13 Dec 2016 10:36:34 +0000
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Date: Tue, 13 Dec 2016 10:36:22 +0000
-Message-Id: <1481625384-15077-22-git-send-email-peter.maydell@linaro.org>
+Date: Tue, 13 Dec 2016 10:36:15 +0000
+Message-Id: <1481625384-15077-15-git-send-email-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.7.4
 In-Reply-To: <1481625384-15077-1-git-send-email-peter.maydell@linaro.org>
 References: <1481625384-15077-1-git-send-email-peter.maydell@linaro.org>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 2001:8b0:1d0::2
-Subject: [Qemu-arm] [PATCH 21/23] hw/arm/virt: Support using SMC for PSCI
+Subject: [Qemu-arm] [PATCH 14/23] hw/intc/gicv3: Add data fields for
+ virtualization support
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -57,101 +58,134 @@ Cc: Andrew Jones <drjones@redhat.com>,
 	Christoffer Dall <christoffer.dall@linaro.org>, patches@linaro.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: znm+oPt3ZGno
+X-TUID: f3gVGxSAuJd/
 
-If we are giving the guest a CPU with EL2, it is likely to
-want to use the HVC instruction itself, for instance for
-providing PSCI to inner guest VMs. This makes using HVC
-as the PSCI conduit for the outer QEMU a bad idea. We will
-want to use SMC instead is this case: this makes sense
-because QEMU's PSCI implementation is effectively an
-emulation of functionality provided by EL3 firmware.
+As the first step in adding support for the virtualization
+extensions to the GICv3 emulation:
+ * add the necessary data fields to the state structures
+ * add the fields to the migration state, as a subsection
+   which is only present if virtualization is enabled
 
-Add code to support selecting the PSCI conduit to use,
-rather than hardcoding use of HVC.
+The use of a subsection means we retain migration
+compatibility as EL2 is not enabled on any CPUs currently.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- hw/arm/virt.c | 29 ++++++++++++++++++++++-------
- 1 file changed, 22 insertions(+), 7 deletions(-)
+ include/hw/intc/arm_gicv3_common.h | 18 ++++++++++++++++++
+ hw/intc/arm_gicv3_common.c         | 25 +++++++++++++++++++++++++
+ hw/intc/arm_gicv3_cpuif.c          | 13 +++++++++++++
+ 3 files changed, 56 insertions(+)
 
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index 7adb58b..cce8d2e 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -88,7 +88,7 @@ typedef struct {
-     uint32_t clock_phandle;
-     uint32_t gic_phandle;
-     uint32_t msi_phandle;
--    bool using_psci;
-+    int psci_conduit;
- } VirtMachineState;
+diff --git a/include/hw/intc/arm_gicv3_common.h b/include/hw/intc/arm_gicv3_common.h
+index beb2c77..665d3f8 100644
+--- a/include/hw/intc/arm_gicv3_common.h
++++ b/include/hw/intc/arm_gicv3_common.h
+@@ -38,6 +38,9 @@
+ /* Number of SGI target-list bits */
+ #define GICV3_TARGETLIST_BITS 16
  
- #define TYPE_VIRT_MACHINE   MACHINE_TYPE_NAME("virt")
-@@ -266,9 +266,19 @@ static void fdt_add_psci_node(const VirtMachineState *vms)
-     uint32_t migrate_fn;
-     void *fdt = vms->fdt;
-     ARMCPU *armcpu = ARM_CPU(qemu_get_cpu(0));
-+    const char *psci_method;
++/* Maximum number of list registers (architectural limit) */
++#define GICV3_LR_MAX 16
++
+ /* Minimum BPR for Secure, or when security not enabled */
+ #define GIC_MIN_BPR 0
+ /* Minimum BPR for Nonsecure when security is enabled */
+@@ -175,6 +178,21 @@ struct GICv3CPUState {
+     uint64_t icc_igrpen[3];
+     uint64_t icc_ctlr_el3;
  
--    if (!vms->using_psci) {
-+    switch (vms->psci_conduit) {
-+    case QEMU_PSCI_CONDUIT_DISABLED:
-         return;
-+    case QEMU_PSCI_CONDUIT_HVC:
-+        psci_method = "hvc";
-+        break;
-+    case QEMU_PSCI_CONDUIT_SMC:
-+        psci_method = "smc";
-+        break;
-+    default:
-+        g_assert_not_reached();
-     }
++    /* Virtualization control interface */
++    uint64_t ich_apr[3][4]; /* ich_apr[GICV3_G1][x] never used */
++    uint64_t ich_hcr_el2;
++    uint64_t ich_lr_el2[GICV3_LR_MAX];
++    uint64_t ich_vmcr_el2;
++
++    /* Properties of the CPU interface. These are initialized from
++     * the settings in the CPU proper.
++     * If the number of implemented list registers is 0 then the
++     * virtualization support is not implemented.
++     */
++    int num_list_regs;
++    int vpribits; /* number of virtual priority bits */
++    int vprebits; /* number of virtual preemption bits */
++
+     /* Current highest priority pending interrupt for this CPU.
+      * This is cached information that can be recalculated from the
+      * real state above; it doesn't need to be migrated.
+diff --git a/hw/intc/arm_gicv3_common.c b/hw/intc/arm_gicv3_common.c
+index 9bb8d01..a14aa5a 100644
+--- a/hw/intc/arm_gicv3_common.c
++++ b/hw/intc/arm_gicv3_common.c
+@@ -49,6 +49,27 @@ static int gicv3_post_load(void *opaque, int version_id)
+     return 0;
+ }
  
-     qemu_fdt_add_subnode(fdt, "/psci");
-@@ -300,7 +310,7 @@ static void fdt_add_psci_node(const VirtMachineState *vms)
-      * However, the device tree binding uses 'method' instead, so that is
-      * what we should use here.
-      */
--    qemu_fdt_setprop_string(fdt, "/psci", "method", "hvc");
-+    qemu_fdt_setprop_string(fdt, "/psci", "method", psci_method);
- 
-     qemu_fdt_setprop_cell(fdt, "/psci", "cpu_suspend", cpu_suspend_fn);
-     qemu_fdt_setprop_cell(fdt, "/psci", "cpu_off", cpu_off_fn);
-@@ -402,7 +412,8 @@ static void fdt_add_cpu_nodes(const VirtMachineState *vms)
-         qemu_fdt_setprop_string(vms->fdt, nodename, "compatible",
-                                     armcpu->dtb_compatible);
- 
--        if (vms->using_psci && vms->smp_cpus > 1) {
-+        if (vms->psci_conduit != QEMU_PSCI_CONDUIT_DISABLED
-+            && vms->smp_cpus > 1) {
-             qemu_fdt_setprop_string(vms->fdt, nodename,
-                                         "enable-method", "psci");
-         }
-@@ -1270,7 +1281,11 @@ static void machvirt_init(MachineState *machine)
-      * let the boot ROM sort them out.
-      * The usual case is that we do use QEMU's PSCI implementation.
-      */
--    vms->using_psci = !(vms->secure && firmware_loaded);
-+    if (vms->secure && firmware_loaded) {
-+        vms->psci_conduit = QEMU_PSCI_CONDUIT_DISABLED;
-+    } else {
-+        vms->psci_conduit = QEMU_PSCI_CONDUIT_HVC;
++static bool virt_state_needed(void *opaque)
++{
++    GICv3CPUState *cs = opaque;
++
++    return cs->num_list_regs != 0;
++}
++
++static const VMStateDescription vmstate_gicv3_cpu_virt = {
++    .name = "arm_gicv3_cpu/virt",
++    .version_id = 1,
++    .minimum_version_id = 1,
++    .needed = virt_state_needed,
++    .fields = (VMStateField[]) {
++        VMSTATE_UINT64_2DARRAY(ich_apr, GICv3CPUState, 3, 4),
++        VMSTATE_UINT64(ich_hcr_el2, GICv3CPUState),
++        VMSTATE_UINT64_ARRAY(ich_lr_el2, GICv3CPUState, GICV3_LR_MAX),
++        VMSTATE_UINT64(ich_vmcr_el2, GICv3CPUState),
++        VMSTATE_END_OF_LIST()
 +    }
++};
++
+ static const VMStateDescription vmstate_gicv3_cpu = {
+     .name = "arm_gicv3_cpu",
+     .version_id = 1,
+@@ -75,6 +96,10 @@ static const VMStateDescription vmstate_gicv3_cpu = {
+         VMSTATE_UINT64_ARRAY(icc_igrpen, GICv3CPUState, 3),
+         VMSTATE_UINT64(icc_ctlr_el3, GICv3CPUState),
+         VMSTATE_END_OF_LIST()
++    },
++    .subsections = (const VMStateDescription * []) {
++        &vmstate_gicv3_cpu_virt,
++        NULL
+     }
+ };
  
-     /* The maximum number of CPUs depends on the GIC version, or on how
-      * many redistributors we can fit into the memory map.
-@@ -1353,8 +1368,8 @@ static void machvirt_init(MachineState *machine)
-             object_property_set_bool(cpuobj, false, "has_el3", NULL);
-         }
+diff --git a/hw/intc/arm_gicv3_cpuif.c b/hw/intc/arm_gicv3_cpuif.c
+index 35e8eb3..d2f859c 100644
+--- a/hw/intc/arm_gicv3_cpuif.c
++++ b/hw/intc/arm_gicv3_cpuif.c
+@@ -36,6 +36,12 @@ static bool gicv3_use_ns_bank(CPUARMState *env)
+     return !arm_is_secure_below_el3(env);
+ }
  
--        if (vms->using_psci) {
--            object_property_set_int(cpuobj, QEMU_PSCI_CONDUIT_HVC,
-+        if (vms->psci_conduit != QEMU_PSCI_CONDUIT_DISABLED) {
-+            object_property_set_int(cpuobj, vms->psci_conduit,
-                                     "psci-conduit", NULL);
++/* The minimum BPR for the virtual interface is a configurable property */
++static inline int icv_min_vbpr(GICv3CPUState *cs)
++{
++    return 7 - cs->vprebits;
++}
++
+ static int icc_highest_active_prio(GICv3CPUState *cs)
+ {
+     /* Calculate the current running priority based on the set bits
+@@ -1081,6 +1087,13 @@ static void icc_reset(CPUARMState *env, const ARMCPRegInfo *ri)
+     cs->icc_ctlr_el3 = ICC_CTLR_EL3_NDS | ICC_CTLR_EL3_A3V |
+         (1 << ICC_CTLR_EL3_IDBITS_SHIFT) |
+         (7 << ICC_CTLR_EL3_PRIBITS_SHIFT);
++
++    memset(cs->ich_apr, 0, sizeof(cs->ich_apr));
++    cs->ich_hcr_el2 = 0;
++    memset(cs->ich_lr_el2, 0, sizeof(cs->ich_lr_el2));
++    cs->ich_vmcr_el2 = ICH_VMCR_EL2_VFIQEN |
++        (icv_min_vbpr(cs) << ICH_VMCR_EL2_VBPR1_SHIFT) |
++        (icv_min_vbpr(cs) << ICH_VMCR_EL2_VBPR0_SHIFT);
+ }
  
-             /* Secondary CPUs start in PSCI powered-down state */
+ static const ARMCPRegInfo gicv3_cpuif_reginfo[] = {
 -- 
 2.7.4
 

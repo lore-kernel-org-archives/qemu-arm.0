@@ -1,48 +1,68 @@
-Received: by 10.25.205.13 with SMTP id d13csp2127649lfg;
-        Tue, 13 Dec 2016 03:06:08 -0800 (PST)
-X-Received: by 10.55.87.4 with SMTP id l4mr95705105qkb.279.1481627168748;
-        Tue, 13 Dec 2016 03:06:08 -0800 (PST)
+Received: by 10.25.205.13 with SMTP id d13csp2171895lfg;
+        Tue, 13 Dec 2016 04:33:35 -0800 (PST)
+X-Received: by 10.237.59.6 with SMTP id p6mr92377990qte.217.1481632414936;
+        Tue, 13 Dec 2016 04:33:34 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [208.118.235.17])
-        by mx.google.com with ESMTPS id o33si27892198qkh.193.2016.12.13.03.06.08
+        by mx.google.com with ESMTPS id w30si28042067qta.180.2016.12.13.04.33.34
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 13 Dec 2016 03:06:08 -0800 (PST)
+        Tue, 13 Dec 2016 04:33:34 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) client-ip=208.118.235.17;
 Authentication-Results: mx.google.com;
+       dkim=fail header.i=@linaro.org;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:37244 helo=lists.gnu.org)
+Received: from localhost ([::1]:37826 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1cGkuM-0003lU-3P
-	for alex.bennee@linaro.org; Tue, 13 Dec 2016 06:06:06 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:56767)
+	id 1cGmGy-0003g4-8Z
+	for alex.bennee@linaro.org; Tue, 13 Dec 2016 07:33:32 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:54577)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1cGkTU-0006EO-GI
-	for qemu-arm@nongnu.org; Tue, 13 Dec 2016 05:38:21 -0500
+	(envelope-from <peter.maydell@linaro.org>) id 1cGmFf-0002sR-B5
+	for qemu-arm@nongnu.org; Tue, 13 Dec 2016 07:32:12 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1cGkTT-0000Nl-EL
-	for qemu-arm@nongnu.org; Tue, 13 Dec 2016 05:38:20 -0500
-Received: from orth.archaic.org.uk ([2001:8b0:1d0::2]:47778)
+	(envelope-from <peter.maydell@linaro.org>) id 1cGmFZ-0004Lq-Re
+	for qemu-arm@nongnu.org; Tue, 13 Dec 2016 07:32:11 -0500
+Received: from mail-vk0-f48.google.com ([209.85.213.48]:33496)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <pm215@archaic.org.uk>)
-	id 1cGkTT-0000NZ-6C; Tue, 13 Dec 2016 05:38:19 -0500
-Received: from pm215 by orth.archaic.org.uk with local (Exim 4.84_2)
-	(envelope-from <pm215@archaic.org.uk>)
-	id 1cGkRq-0002O5-Ha; Tue, 13 Dec 2016 10:36:38 +0000
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1cGmFZ-0004LU-NQ
+	for qemu-arm@nongnu.org; Tue, 13 Dec 2016 07:32:05 -0500
+Received: by mail-vk0-f48.google.com with SMTP id 137so58838522vkl.0
+	for <qemu-arm@nongnu.org>; Tue, 13 Dec 2016 04:32:05 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:from:date:message-id:subject:to:cc;
+	bh=BJJWs4nZmmrhRsmPgTvtLVpJocMMiCWo7txeX2J6dcU=;
+	b=EwhwHtw+HoDwg5w0FG/XIyQMwo0TkKi7IZnf+oHf7jxotvq4jkfsO99CcYZjXjOtZp
+	ZrGoYWAQpyLOKotx5+h2I9tqtTtuiLu+t3bd05gqswiW4bMC9xwIW/e5G5jIIySl7gK+
+	OGhVU97wElL65iB+QwZ6aZxR+2GvBIE7PDSYs=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:mime-version:from:date:message-id:subject:to:cc;
+	bh=BJJWs4nZmmrhRsmPgTvtLVpJocMMiCWo7txeX2J6dcU=;
+	b=i85vNl2Slw6F+pcDxgweEHtPrPjuvtSMWST9IuOdETK3HfQgMj8mjtqHoJjlTxG9Kg
+	7RTaRHozG/grPqki/sgNC0a2UhY9BPpKgnZgEpWsmZvRgcO9dMktVzaOAGVPtwWq23MS
+	JOh6fxAy7UAAu+J7f7JC+za8DRlnnVwyq92hiGPHRVFs90K21l6U9CqtnSnDa2o9iubF
+	++z3Mwkc3vukUVxbkOY9nHnlPJ4QxeAiF1cwWGA+tUSWdB+/o0d+oy98KwuGWleS9ImT
+	sRY9XokFPiaOVNC886/7FthNIzOgBmCkV1kuuLl0SvFXNup9aIJXmj571Dh44Zshc4EI
+	a9/g==
+X-Gm-Message-State: AKaTC01j41pDFCP+1imimU4nAMZPHHC+gBY4+cMn++jcq9YoYwwlmbuc4wpD4PQw9FjK8ckqRf96/NiEbMAwLjrR
+X-Received: by 10.176.83.12 with SMTP id x12mr80425558uax.131.1481632264933;
+	Tue, 13 Dec 2016 04:31:04 -0800 (PST)
+MIME-Version: 1.0
+Received: by 10.31.176.14 with HTTP; Tue, 13 Dec 2016 04:30:44 -0800 (PST)
 From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Date: Tue, 13 Dec 2016 10:36:21 +0000
-Message-Id: <1481625384-15077-21-git-send-email-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.7.4
-In-Reply-To: <1481625384-15077-1-git-send-email-peter.maydell@linaro.org>
-References: <1481625384-15077-1-git-send-email-peter.maydell@linaro.org>
+Date: Tue, 13 Dec 2016 12:30:44 +0000
+Message-ID: <CAFEAcA_D9wx=EZWE_ypAFPkQcYBhM+7NJaOt7rg=ed-0fExo8w@mail.gmail.com>
+To: Andrew Gacek <andrew.gacek@gmail.com>
+Content-Type: text/plain; charset=UTF-8
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2001:8b0:1d0::2
-Subject: [Qemu-arm] [PATCH 20/23] hw/intc/arm_gicv3: Implement EL2 traps for
- CPU i/f regs
+	[fuzzy]
+X-Received-From: 209.85.213.48
+Subject: Re: [Qemu-arm] [Qemu-devel] [Qemu-trivial] [PATCH] cadence_uart:
+ Check if receiver timeout counter is disabled
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -54,182 +74,33 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jones <drjones@redhat.com>,
-	Christoffer Dall <christoffer.dall@linaro.org>, patches@linaro.org
+Cc: Laurent Vivier <lvivier@redhat.com>, QEMU Trivial <qemu-trivial@nongnu.org>,
+	QEMU Developers <qemu-devel@nongnu.org>,
+	Alistair Francis <alistair.francis@xilinx.com>,
+	qemu-arm <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: TEErkwJxqE8W
+X-TUID: uaI04kZY/qfe
 
-Implement the architecturally required traps from NS EL1
-to EL2 for the CPU interface registers. These fall into
-several different groups:
- * group-0-only registers all trap if ICH_HRC_EL2.TALL0 is set
-   (exactly the registers covered by gicv3_fiq_access())
- * group-1-only registers all trap if ICH_HRC_EL2.TALL1 is set
-   (exactly the registers covered by gicv3_irq_access())
- * DIR traps if ICH_HCR_EL2.TC or ICH_HCR_EL2.TDIR are set
- * PMR, RPR, CTLR trap if ICH_HCR_EL2.TC is set
- * SGI0R, SGI1R, ASGI1R trap if ICH_HCR_EL2.TC is set or
-   if HCR_EL2.IMO or HCR_EL2.FMO are set
+On 8 December 2016 at 11:21, Andrew Gacek <andrew.gacek@gmail.com> wrote:
+> When register Rcvr_timeout_reg0 (R_RTOR in cadence_uart.c) is set to
+> 0, the receiver timeout counter should be disabled. See page 1801 of
+> "Zynq-7000 AP SoC Technical Reference Manual". This commit adds a
+> such a check before setting the receive timeout interrupt.
+>
+> Signed-off-by: Andrew Gacek <andrew.gacek@gmail.com>
+> Reviewed-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
+> ---
+>  hw/char/cadence_uart.c | 6 ++++--
+>  1 file changed, 4 insertions(+), 2 deletions(-)
 
-We split DIR and the SGI registers out into their own access
-functions, leaving the existing gicv3_irqfiq_access() just
-handling PMR, RPR and CTLR.
+Thanks; I've applied this to the target-arm.next queue for 2.9.
 
-This commit doesn't implement support for trapping on
-HSTR_EL2.T12 for the 32-bit registers, as we don't implement
-any of those per-coprocessor trap bits currently and
-probably will want to do those in some more centralized way.
+For future patches, if you send a revised version of a patch it's
+best to send it as a standalone new thread (with a subject that
+says "[PATCH v2]"), not as a reply to the thread that started with
+the original patch. Otherwise our automated scripts and tooling
+for handling patch emails tend not to notice it.
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
- hw/intc/arm_gicv3_cpuif.c | 70 ++++++++++++++++++++++++++++++++++++++++-------
- 1 file changed, 60 insertions(+), 10 deletions(-)
-
-diff --git a/hw/intc/arm_gicv3_cpuif.c b/hw/intc/arm_gicv3_cpuif.c
-index e05f6b3..a9ee7fd 100644
---- a/hw/intc/arm_gicv3_cpuif.c
-+++ b/hw/intc/arm_gicv3_cpuif.c
-@@ -1833,9 +1833,17 @@ static CPAccessResult gicv3_irqfiq_access(CPUARMState *env,
-                                           const ARMCPRegInfo *ri, bool isread)
- {
-     CPAccessResult r = CP_ACCESS_OK;
-+    GICv3CPUState *cs = icc_cs_from_env(env);
-+    int el = arm_current_el(env);
-+
-+    if ((cs->ich_hcr_el2 & ICH_HCR_EL2_TC) &&
-+        el == 1 && !arm_is_secure_below_el3(env)) {
-+        /* Takes priority over a possible EL3 trap */
-+        return CP_ACCESS_TRAP_EL2;
-+    }
- 
-     if ((env->cp15.scr_el3 & (SCR_FIQ | SCR_IRQ)) == (SCR_FIQ | SCR_IRQ)) {
--        switch (arm_current_el(env)) {
-+        switch (el) {
-         case 1:
-             if (arm_is_secure_below_el3(env) ||
-                 ((env->cp15.hcr_el2 & (HCR_IMO | HCR_FMO)) == 0)) {
-@@ -1861,13 +1869,47 @@ static CPAccessResult gicv3_irqfiq_access(CPUARMState *env,
-     return r;
- }
- 
-+static CPAccessResult gicv3_dir_access(CPUARMState *env,
-+                                       const ARMCPRegInfo *ri, bool isread)
-+{
-+    GICv3CPUState *cs = icc_cs_from_env(env);
-+
-+    if ((cs->ich_hcr_el2 & ICH_HCR_EL2_TDIR) &&
-+        arm_current_el(env) == 1 && !arm_is_secure_below_el3(env)) {
-+        /* Takes priority over a possible EL3 trap */
-+        return CP_ACCESS_TRAP_EL2;
-+    }
-+
-+    return gicv3_irqfiq_access(env, ri, isread);
-+}
-+
-+static CPAccessResult gicv3_sgi_access(CPUARMState *env,
-+                                       const ARMCPRegInfo *ri, bool isread)
-+{
-+    if ((env->cp15.hcr_el2 & (HCR_IMO | HCR_FMO)) &&
-+        arm_current_el(env) == 1 && !arm_is_secure_below_el3(env)) {
-+        /* Takes priority over a possible EL3 trap */
-+        return CP_ACCESS_TRAP_EL2;
-+    }
-+
-+    return gicv3_irqfiq_access(env, ri, isread);
-+}
-+
- static CPAccessResult gicv3_fiq_access(CPUARMState *env,
-                                        const ARMCPRegInfo *ri, bool isread)
- {
-     CPAccessResult r = CP_ACCESS_OK;
-+    GICv3CPUState *cs = icc_cs_from_env(env);
-+    int el = arm_current_el(env);
-+
-+    if ((cs->ich_hcr_el2 & ICH_HCR_EL2_TALL0) &&
-+        el == 1 && !arm_is_secure_below_el3(env)) {
-+        /* Takes priority over a possible EL3 trap */
-+        return CP_ACCESS_TRAP_EL2;
-+    }
- 
-     if (env->cp15.scr_el3 & SCR_FIQ) {
--        switch (arm_current_el(env)) {
-+        switch (el) {
-         case 1:
-             if (arm_is_secure_below_el3(env) ||
-                 ((env->cp15.hcr_el2 & HCR_FMO) == 0)) {
-@@ -1897,9 +1939,17 @@ static CPAccessResult gicv3_irq_access(CPUARMState *env,
-                                        const ARMCPRegInfo *ri, bool isread)
- {
-     CPAccessResult r = CP_ACCESS_OK;
-+    GICv3CPUState *cs = icc_cs_from_env(env);
-+    int el = arm_current_el(env);
-+
-+    if ((cs->ich_hcr_el2 & ICH_HCR_EL2_TALL1) &&
-+        el == 1 && !arm_is_secure_below_el3(env)) {
-+        /* Takes priority over a possible EL3 trap */
-+        return CP_ACCESS_TRAP_EL2;
-+    }
- 
-     if (env->cp15.scr_el3 & SCR_IRQ) {
--        switch (arm_current_el(env)) {
-+        switch (el) {
-         case 1:
-             if (arm_is_secure_below_el3(env) ||
-                 ((env->cp15.hcr_el2 & HCR_IMO) == 0)) {
-@@ -2055,7 +2105,7 @@ static const ARMCPRegInfo gicv3_cpuif_reginfo[] = {
-     { .name = "ICC_DIR_EL1", .state = ARM_CP_STATE_BOTH,
-       .opc0 = 3, .opc1 = 0, .crn = 12, .crm = 11, .opc2 = 1,
-       .type = ARM_CP_IO | ARM_CP_NO_RAW,
--      .access = PL1_W, .accessfn = gicv3_irqfiq_access,
-+      .access = PL1_W, .accessfn = gicv3_dir_access,
-       .writefn = icc_dir_write,
-     },
-     { .name = "ICC_RPR_EL1", .state = ARM_CP_STATE_BOTH,
-@@ -2067,37 +2117,37 @@ static const ARMCPRegInfo gicv3_cpuif_reginfo[] = {
-     { .name = "ICC_SGI1R_EL1", .state = ARM_CP_STATE_AA64,
-       .opc0 = 3, .opc1 = 0, .crn = 12, .crm = 11, .opc2 = 5,
-       .type = ARM_CP_IO | ARM_CP_NO_RAW,
--      .access = PL1_W, .accessfn = gicv3_irqfiq_access,
-+      .access = PL1_W, .accessfn = gicv3_sgi_access,
-       .writefn = icc_sgi1r_write,
-     },
-     { .name = "ICC_SGI1R",
-       .cp = 15, .opc1 = 0, .crm = 12,
-       .type = ARM_CP_64BIT | ARM_CP_IO | ARM_CP_NO_RAW,
--      .access = PL1_W, .accessfn = gicv3_irqfiq_access,
-+      .access = PL1_W, .accessfn = gicv3_sgi_access,
-       .writefn = icc_sgi1r_write,
-     },
-     { .name = "ICC_ASGI1R_EL1", .state = ARM_CP_STATE_AA64,
-       .opc0 = 3, .opc1 = 0, .crn = 12, .crm = 11, .opc2 = 6,
-       .type = ARM_CP_IO | ARM_CP_NO_RAW,
--      .access = PL1_W, .accessfn = gicv3_irqfiq_access,
-+      .access = PL1_W, .accessfn = gicv3_sgi_access,
-       .writefn = icc_asgi1r_write,
-     },
-     { .name = "ICC_ASGI1R",
-       .cp = 15, .opc1 = 1, .crm = 12,
-       .type = ARM_CP_64BIT | ARM_CP_IO | ARM_CP_NO_RAW,
--      .access = PL1_W, .accessfn = gicv3_irqfiq_access,
-+      .access = PL1_W, .accessfn = gicv3_sgi_access,
-       .writefn = icc_asgi1r_write,
-     },
-     { .name = "ICC_SGI0R_EL1", .state = ARM_CP_STATE_AA64,
-       .opc0 = 3, .opc1 = 0, .crn = 12, .crm = 11, .opc2 = 7,
-       .type = ARM_CP_IO | ARM_CP_NO_RAW,
--      .access = PL1_W, .accessfn = gicv3_irqfiq_access,
-+      .access = PL1_W, .accessfn = gicv3_sgi_access,
-       .writefn = icc_sgi0r_write,
-     },
-     { .name = "ICC_SGI0R",
-       .cp = 15, .opc1 = 2, .crm = 12,
-       .type = ARM_CP_64BIT | ARM_CP_IO | ARM_CP_NO_RAW,
--      .access = PL1_W, .accessfn = gicv3_irqfiq_access,
-+      .access = PL1_W, .accessfn = gicv3_sgi_access,
-       .writefn = icc_sgi0r_write,
-     },
-     { .name = "ICC_IAR1_EL1", .state = ARM_CP_STATE_BOTH,
--- 
-2.7.4
-
+thanks
+-- PMM

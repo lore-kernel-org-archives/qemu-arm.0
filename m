@@ -1,48 +1,48 @@
-Received: by 10.25.205.13 with SMTP id d13csp2119195lfg;
-        Tue, 13 Dec 2016 02:43:44 -0800 (PST)
-X-Received: by 10.200.53.138 with SMTP id k10mr94895761qtb.4.1481625824679;
-        Tue, 13 Dec 2016 02:43:44 -0800 (PST)
+Received: by 10.25.205.13 with SMTP id d13csp2119540lfg;
+        Tue, 13 Dec 2016 02:44:51 -0800 (PST)
+X-Received: by 10.55.163.81 with SMTP id m78mr27867648qke.180.1481625891028;
+        Tue, 13 Dec 2016 02:44:51 -0800 (PST)
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [208.118.235.17])
-        by mx.google.com with ESMTPS id w69si27849335qkw.146.2016.12.13.02.43.43
+        by mx.google.com with ESMTPS id z60si27872753qtd.311.2016.12.13.02.44.50
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 13 Dec 2016 02:43:44 -0800 (PST)
+        Tue, 13 Dec 2016 02:44:51 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) client-ip=208.118.235.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:37097 helo=lists.gnu.org)
+Received: from localhost ([::1]:37100 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1cGkYf-00020N-Lq
-	for alex.bennee@linaro.org; Tue, 13 Dec 2016 05:43:41 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:56113)
+	id 1cGkZk-0002ud-3O
+	for alex.bennee@linaro.org; Tue, 13 Dec 2016 05:44:48 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:56591)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1cGkRz-0004t6-RV
-	for qemu-devel@nongnu.org; Tue, 13 Dec 2016 05:36:53 -0500
+	(envelope-from <pm215@archaic.org.uk>) id 1cGkSz-0005kr-T2
+	for qemu-devel@nongnu.org; Tue, 13 Dec 2016 05:37:51 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1cGkRx-0008FU-JM
-	for qemu-devel@nongnu.org; Tue, 13 Dec 2016 05:36:47 -0500
-Received: from orth.archaic.org.uk ([2001:8b0:1d0::2]:47702)
+	(envelope-from <pm215@archaic.org.uk>) id 1cGkSy-0000Ed-BT
+	for qemu-devel@nongnu.org; Tue, 13 Dec 2016 05:37:49 -0500
+Received: from orth.archaic.org.uk ([2001:8b0:1d0::2]:47759)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <pm215@archaic.org.uk>)
-	id 1cGkRo-00085R-B3; Tue, 13 Dec 2016 05:36:36 -0500
+	id 1cGkSt-000087-Ln; Tue, 13 Dec 2016 05:37:43 -0500
 Received: from pm215 by orth.archaic.org.uk with local (Exim 4.84_2)
 	(envelope-from <pm215@archaic.org.uk>)
-	id 1cGkRm-0002L9-IO; Tue, 13 Dec 2016 10:36:34 +0000
+	id 1cGkRg-0002H3-Dg; Tue, 13 Dec 2016 10:36:28 +0000
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Date: Tue, 13 Dec 2016 10:36:16 +0000
-Message-Id: <1481625384-15077-16-git-send-email-peter.maydell@linaro.org>
+Date: Tue, 13 Dec 2016 10:36:06 +0000
+Message-Id: <1481625384-15077-6-git-send-email-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.7.4
 In-Reply-To: <1481625384-15077-1-git-send-email-peter.maydell@linaro.org>
 References: <1481625384-15077-1-git-send-email-peter.maydell@linaro.org>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 2001:8b0:1d0::2
-Subject: [Qemu-devel] [PATCH 15/23] hw/intc/arm_gicv3: Add accessors for
- ICH_ system registers
+Subject: [Qemu-devel] [PATCH 05/23] hw/arm/virt: Merge VirtBoardInfo and
+ VirtMachineState
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -59,553 +59,352 @@ Cc: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
 	Christoffer Dall <christoffer.dall@linaro.org>, patches@linaro.org
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: aTpVQw61gQu7
+X-TUID: zUZ1vUBfEVIQ
 
-The GICv3 virtualization interface includes system registers
-accessible only to the hypervisor which form the control
-interface for interrupt virtualization. Implement these
-registers.
+One of the purposes of VirtBoardInfo was to hold various
+bits of state about the board. Now we have MachineState
+and the subclass VirtMachineState to do this. Fold the
+VirtBoardInfo into VirtMachineState rather than having
+some flags in one struct and some in another with no
+useful way to get between them.
 
-The function gicv3_cpuif_virt_update() which determines
-whether it needs to signal vIRQ, vFIQ or a maintenance
-interrupt is introduced here as a stub function -- its
-implementation will be added in a subsequent commit.
+In the process we drop the code for looking up the
+memory map and irq map from the CPU model, because
+in practice we always use the same maps in all cases.
+
+For easier code review, this change removes the
+VirtBoardInfo type but leaves all the variables which
+used to be VirtBoardInfo* and are now VirtMachineState*
+with their now-confusing 'vbi' names.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+Reviewed-by: Andrew Jones <drjones@redhat.com>
 ---
- hw/intc/arm_gicv3_cpuif.c | 477 ++++++++++++++++++++++++++++++++++++++++++++++
- hw/intc/trace-events      |  16 ++
- 2 files changed, 493 insertions(+)
+ hw/arm/virt.c | 118 +++++++++++++++++++++++++---------------------------------
+ 1 file changed, 51 insertions(+), 67 deletions(-)
 
-diff --git a/hw/intc/arm_gicv3_cpuif.c b/hw/intc/arm_gicv3_cpuif.c
-index d2f859c..585c91c 100644
---- a/hw/intc/arm_gicv3_cpuif.c
-+++ b/hw/intc/arm_gicv3_cpuif.c
-@@ -42,6 +42,132 @@ static inline int icv_min_vbpr(GICv3CPUState *cs)
-     return 7 - cs->vprebits;
- }
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index 11c53a5..fd4eed9 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -66,23 +66,8 @@
  
-+/* Simple accessor functions for LR fields */
-+static int ich_lr_state(uint64_t lr)
-+{
-+    return extract64(lr, ICH_LR_EL2_STATE_SHIFT, ICH_LR_EL2_STATE_LENGTH);
-+}
-+
-+static int read_vbpr(GICv3CPUState *cs, int grp)
-+{
-+    /* Read VBPR value out of the VMCR field (caller must handle
-+     * VCBPR effects if required)
-+     */
-+    if (grp == GICV3_G0) {
-+        return extract64(cs->ich_vmcr_el2, ICH_VMCR_EL2_VBPR0_SHIFT,
-+                     ICH_VMCR_EL2_VBPR0_LENGTH);
-+    } else {
-+        return extract64(cs->ich_vmcr_el2, ICH_VMCR_EL2_VBPR1_SHIFT,
-+                         ICH_VMCR_EL2_VBPR1_LENGTH);
-+    }
-+}
-+
-+static void write_vbpr(GICv3CPUState *cs, int grp, int value)
-+{
-+    /* Write new VBPR1 value, handling the "writing a value less than
-+     * the minimum sets it to the minimum" semantics.
-+     */
-+    int min = icv_min_vbpr(cs);
-+
-+    if (grp != GICV3_G0) {
-+        min++;
-+    }
-+
-+    value = MAX(value, min);
-+
-+    if (grp == GICV3_G0) {
-+        cs->ich_vmcr_el2 = deposit64(cs->ich_vmcr_el2, ICH_VMCR_EL2_VBPR0_SHIFT,
-+                                     ICH_VMCR_EL2_VBPR0_LENGTH, value);
-+    } else {
-+        cs->ich_vmcr_el2 = deposit64(cs->ich_vmcr_el2, ICH_VMCR_EL2_VBPR1_SHIFT,
-+                                     ICH_VMCR_EL2_VBPR1_LENGTH, value);
-+    }
-+}
-+
-+static uint32_t eoi_maintenance_interrupt_state(GICv3CPUState *cs,
-+                                                uint32_t *misr)
-+{
-+    /* Return a set of bits indicating the EOI maintenance interrupt status
-+     * for each list register. The EOI maintenance interrupt status is
-+     * 1 if LR.State == 0 && LR.HW == 0 && LR.EOI == 1
-+     * (see the GICv3 spec for the ICH_EISR_EL2 register).
-+     * If misr is not NULL then we should also collect the information
-+     * about the MISR.EOI, MISR.NP and MISR.U bits.
-+     */
-+    uint32_t value = 0;
-+    int validcount = 0;
-+    bool seenpending = false;
-+    int i;
-+
-+    for (i = 0; i < cs->num_list_regs; i++) {
-+        uint64_t lr = cs->ich_lr_el2[i];
-+
-+        if ((lr & (ICH_LR_EL2_STATE_MASK | ICH_LR_EL2_HW | ICH_LR_EL2_EOI))
-+            == ICH_LR_EL2_EOI) {
-+            value |= (1 << i);
-+        }
-+        if ((lr & ICH_LR_EL2_STATE_MASK)) {
-+            validcount++;
-+        }
-+        if (ich_lr_state(lr) == ICH_LR_EL2_STATE_PENDING) {
-+            seenpending = true;
-+        }
-+    }
-+
-+    if (misr) {
-+        if (validcount < 2 && (cs->ich_hcr_el2 & ICH_HCR_EL2_UIE)) {
-+            *misr |= ICH_MISR_EL2_U;
-+        }
-+        if (!seenpending && (cs->ich_hcr_el2 & ICH_HCR_EL2_NPIE)) {
-+            *misr |= ICH_MISR_EL2_NP;
-+        }
-+        if (value) {
-+            *misr |= ICH_MISR_EL2_EOI;
-+        }
-+    }
-+    return value;
-+}
-+
-+static uint32_t maintenance_interrupt_state(GICv3CPUState *cs)
-+{
-+    /* Return a set of bits indicating the maintenance interrupt status
-+     * (as seen in the ICH_MISR_EL2 register).
-+     */
-+    uint32_t value = 0;
-+
-+    /* Scan list registers and fill in the U, NP and EOI bits */
-+    eoi_maintenance_interrupt_state(cs, &value);
-+
-+    if (cs->ich_hcr_el2 & (ICH_HCR_EL2_LRENPIE | ICH_HCR_EL2_EOICOUNT_MASK)) {
-+        value |= ICH_MISR_EL2_LRENP;
-+    }
-+
-+    if ((cs->ich_hcr_el2 & ICH_HCR_EL2_VGRP0EIE) &&
-+        (cs->ich_vmcr_el2 & ICH_VMCR_EL2_VENG0)) {
-+        value |= ICH_MISR_EL2_VGRP0E;
-+    }
-+
-+    if ((cs->ich_hcr_el2 & ICH_HCR_EL2_VGRP0DIE) &&
-+        !(cs->ich_vmcr_el2 & ICH_VMCR_EL2_VENG1)) {
-+        value |= ICH_MISR_EL2_VGRP0D;
-+    }
-+    if ((cs->ich_hcr_el2 & ICH_HCR_EL2_VGRP1EIE) &&
-+        (cs->ich_vmcr_el2 & ICH_VMCR_EL2_VENG1)) {
-+        value |= ICH_MISR_EL2_VGRP1E;
-+    }
-+
-+    if ((cs->ich_hcr_el2 & ICH_HCR_EL2_VGRP1DIE) &&
-+        !(cs->ich_vmcr_el2 & ICH_VMCR_EL2_VENG1)) {
-+        value |= ICH_MISR_EL2_VGRP1D;
-+    }
-+
-+    return value;
-+}
-+
-+static void gicv3_cpuif_virt_update(GICv3CPUState *cs)
-+{
-+}
-+
- static int icc_highest_active_prio(GICv3CPUState *cs)
- {
-     /* Calculate the current running priority based on the set bits
-@@ -1334,6 +1460,306 @@ static const ARMCPRegInfo gicv3_cpuif_reginfo[] = {
-     REGINFO_SENTINEL
+ static ARMPlatformBusSystemParams platform_bus_params;
+ 
+-typedef struct VirtBoardInfo {
+-    struct arm_boot_info bootinfo;
+-    const char *cpu_model;
+-    const MemMapEntry *memmap;
+-    const int *irqmap;
+-    int smp_cpus;
+-    void *fdt;
+-    int fdt_size;
+-    uint32_t clock_phandle;
+-    uint32_t gic_phandle;
+-    uint32_t msi_phandle;
+-    bool using_psci;
+-} VirtBoardInfo;
+-
+ typedef struct {
+     MachineClass parent;
+-    VirtBoardInfo *daughterboard;
+     bool disallow_affinity_adjustment;
+     bool no_its;
+     bool no_pmu;
+@@ -93,6 +78,16 @@ typedef struct {
+     bool secure;
+     bool highmem;
+     int32_t gic_version;
++    struct arm_boot_info bootinfo;
++    const MemMapEntry *memmap;
++    const int *irqmap;
++    int smp_cpus;
++    void *fdt;
++    int fdt_size;
++    uint32_t clock_phandle;
++    uint32_t gic_phandle;
++    uint32_t msi_phandle;
++    bool using_psci;
+ } VirtMachineState;
+ 
+ #define TYPE_VIRT_MACHINE   MACHINE_TYPE_NAME("virt")
+@@ -202,42 +197,27 @@ static const int a15irqmap[] = {
+     [VIRT_PLATFORM_BUS] = 112, /* ...to 112 + PLATFORM_BUS_NUM_IRQS -1 */
  };
  
-+static uint64_t ich_ap_read(CPUARMState *env, const ARMCPRegInfo *ri)
-+{
-+    GICv3CPUState *cs = icc_cs_from_env(env);
-+    int regno = ri->opc2 & 3;
-+    int grp = ri->crm & 1 ? GICV3_G0 : GICV3_G1NS;
-+    uint64_t value;
-+
-+    value = cs->ich_apr[grp][regno];
-+    trace_gicv3_ich_ap_read(ri->crm & 1, regno, gicv3_redist_affid(cs), value);
-+    return value;
-+}
-+
-+static void ich_ap_write(CPUARMState *env, const ARMCPRegInfo *ri,
-+                         uint64_t value)
-+{
-+    GICv3CPUState *cs = icc_cs_from_env(env);
-+    int regno = ri->opc2 & 3;
-+    int grp = ri->crm & 1 ? GICV3_G0 : GICV3_G1NS;
-+
-+    trace_gicv3_ich_ap_write(ri->crm & 1, regno, gicv3_redist_affid(cs), value);
-+
-+    cs->ich_apr[grp][regno] = value & 0xFFFFFFFFU;
-+    gicv3_cpuif_virt_update(cs);
-+}
-+
-+static uint64_t ich_hcr_read(CPUARMState *env, const ARMCPRegInfo *ri)
-+{
-+    GICv3CPUState *cs = icc_cs_from_env(env);
-+    uint64_t value = cs->ich_hcr_el2;
-+
-+    trace_gicv3_ich_hcr_read(gicv3_redist_affid(cs), value);
-+    return value;
-+}
-+
-+static void ich_hcr_write(CPUARMState *env, const ARMCPRegInfo *ri,
-+                          uint64_t value)
-+{
-+    GICv3CPUState *cs = icc_cs_from_env(env);
-+
-+    trace_gicv3_ich_hcr_write(gicv3_redist_affid(cs), value);
-+
-+    value &= ICH_HCR_EL2_EN | ICH_HCR_EL2_UIE | ICH_HCR_EL2_LRENPIE |
-+        ICH_HCR_EL2_NPIE | ICH_HCR_EL2_VGRP0EIE | ICH_HCR_EL2_VGRP0DIE |
-+        ICH_HCR_EL2_VGRP1EIE | ICH_HCR_EL2_VGRP1DIE | ICH_HCR_EL2_TC |
-+        ICH_HCR_EL2_TALL0 | ICH_HCR_EL2_TALL1 | ICH_HCR_EL2_TSEI |
-+        ICH_HCR_EL2_TDIR | ICH_HCR_EL2_EOICOUNT_MASK;
-+
-+    cs->ich_hcr_el2 = value;
-+    gicv3_cpuif_virt_update(cs);
-+}
-+
-+static uint64_t ich_vmcr_read(CPUARMState *env, const ARMCPRegInfo *ri)
-+{
-+    GICv3CPUState *cs = icc_cs_from_env(env);
-+    uint64_t value = cs->ich_vmcr_el2;
-+
-+    trace_gicv3_ich_vmcr_read(gicv3_redist_affid(cs), value);
-+    return value;
-+}
-+
-+static void ich_vmcr_write(CPUARMState *env, const ARMCPRegInfo *ri,
-+                         uint64_t value)
-+{
-+    GICv3CPUState *cs = icc_cs_from_env(env);
-+
-+    trace_gicv3_ich_vmcr_write(gicv3_redist_affid(cs), value);
-+
-+    value &= ICH_VMCR_EL2_VENG0 | ICH_VMCR_EL2_VENG1 | ICH_VMCR_EL2_VCBPR |
-+        ICH_VMCR_EL2_VEOIM | ICH_VMCR_EL2_VBPR1_MASK |
-+        ICH_VMCR_EL2_VBPR0_MASK | ICH_VMCR_EL2_VPMR_MASK;
-+    value |= ICH_VMCR_EL2_VFIQEN;
-+
-+    cs->ich_vmcr_el2 = value;
-+    /* Enforce "writing BPRs to less than minimum sets them to the minimum"
-+     * by reading and writing back the fields.
-+     */
-+    write_vbpr(cs, GICV3_G1, read_vbpr(cs, GICV3_G0));
-+    write_vbpr(cs, GICV3_G1, read_vbpr(cs, GICV3_G1));
-+
-+    gicv3_cpuif_virt_update(cs);
-+}
-+
-+static uint64_t ich_lr_read(CPUARMState *env, const ARMCPRegInfo *ri)
-+{
-+    GICv3CPUState *cs = icc_cs_from_env(env);
-+    int regno = ri->opc2 | ((ri->crm & 1) << 3);
-+    uint64_t value;
-+
-+    /* This read function handles all of:
-+     * 64-bit reads of the whole LR
-+     * 32-bit reads of the low half of the LR
-+     * 32-bit reads of the high half of the LR
-+     */
-+    if (ri->state == ARM_CP_STATE_AA32) {
-+        if (ri->crm >= 14) {
-+            value = extract64(cs->ich_lr_el2[regno], 32, 32);
-+            trace_gicv3_ich_lrc_read(regno, gicv3_redist_affid(cs), value);
-+        } else {
-+            value = extract64(cs->ich_lr_el2[regno], 0, 32);
-+            trace_gicv3_ich_lr32_read(regno, gicv3_redist_affid(cs), value);
-+        }
-+    } else {
-+        value = cs->ich_lr_el2[regno];
-+        trace_gicv3_ich_lr_read(regno, gicv3_redist_affid(cs), value);
-+    }
-+
-+    return value;
-+}
-+
-+static void ich_lr_write(CPUARMState *env, const ARMCPRegInfo *ri,
-+                         uint64_t value)
-+{
-+    GICv3CPUState *cs = icc_cs_from_env(env);
-+    int regno = ri->opc2 | ((ri->crm & 1) << 3);
-+
-+    /* This write function handles all of:
-+     * 64-bit writes to the whole LR
-+     * 32-bit writes to the low half of the LR
-+     * 32-bit writes to the high half of the LR
-+     */
-+    if (ri->state == ARM_CP_STATE_AA32) {
-+        if (ri->crm >= 14) {
-+            trace_gicv3_ich_lrc_write(regno, gicv3_redist_affid(cs), value);
-+            value = deposit64(cs->ich_lr_el2[regno], 32, 32, value);
-+        } else {
-+            trace_gicv3_ich_lr32_write(regno, gicv3_redist_affid(cs), value);
-+            value = deposit64(cs->ich_lr_el2[regno], 0, 32, value);
-+        }
-+    } else {
-+        trace_gicv3_ich_lr_write(regno, gicv3_redist_affid(cs), value);
-+    }
-+
-+    /* Enforce RES0 bits in priority field */
-+    if (cs->vpribits < 8) {
-+        value = deposit64(value, ICH_LR_EL2_PRIORITY_SHIFT,
-+                          8 - cs->vpribits, 0);
-+    }
-+
-+    cs->ich_lr_el2[regno] = value;
-+    gicv3_cpuif_virt_update(cs);
-+}
-+
-+static uint64_t ich_vtr_read(CPUARMState *env, const ARMCPRegInfo *ri)
-+{
-+    GICv3CPUState *cs = icc_cs_from_env(env);
-+    uint64_t value;
-+
-+    value = ((cs->num_list_regs - 1) << ICH_VTR_EL2_LISTREGS_SHIFT)
-+        | ICH_VTR_EL2_TDS | ICH_VTR_EL2_NV4 | ICH_VTR_EL2_A3V
-+        | (1 << ICH_VTR_EL2_IDBITS_SHIFT)
-+        | ((cs->vprebits - 1) << ICH_VTR_EL2_PREBITS_SHIFT)
-+        | ((cs->vpribits - 1) << ICH_VTR_EL2_PRIBITS_SHIFT);
-+
-+    trace_gicv3_ich_vtr_read(gicv3_redist_affid(cs), value);
-+    return value;
-+}
-+
-+static uint64_t ich_misr_read(CPUARMState *env, const ARMCPRegInfo *ri)
-+{
-+    GICv3CPUState *cs = icc_cs_from_env(env);
-+    uint64_t value = maintenance_interrupt_state(cs);
-+
-+    trace_gicv3_ich_misr_read(gicv3_redist_affid(cs), value);
-+    return value;
-+}
-+
-+static uint64_t ich_eisr_read(CPUARMState *env, const ARMCPRegInfo *ri)
-+{
-+    GICv3CPUState *cs = icc_cs_from_env(env);
-+    uint64_t value = eoi_maintenance_interrupt_state(cs, NULL);
-+
-+    trace_gicv3_ich_eisr_read(gicv3_redist_affid(cs), value);
-+    return value;
-+}
-+
-+static uint64_t ich_elrsr_read(CPUARMState *env, const ARMCPRegInfo *ri)
-+{
-+    GICv3CPUState *cs = icc_cs_from_env(env);
-+    uint64_t value = 0;
-+    int i;
-+
-+    for (i = 0; i < cs->num_list_regs; i++) {
-+        uint64_t lr = cs->ich_lr_el2[i];
-+
-+        if ((lr & ICH_LR_EL2_STATE_MASK) == 0 &&
-+            ((lr & ICH_LR_EL2_HW) == 1 || (lr & ICH_LR_EL2_EOI) == 0)) {
-+            value |= (1 << i);
-+        }
-+    }
-+
-+    trace_gicv3_ich_elrsr_read(gicv3_redist_affid(cs), value);
-+    return value;
-+}
-+
-+static const ARMCPRegInfo gicv3_cpuif_hcr_reginfo[] = {
-+    { .name = "ICH_AP0R0_EL2", .state = ARM_CP_STATE_BOTH,
-+      .opc0 = 3, .opc1 = 4, .crn = 12, .crm = 8, .opc2 = 0,
-+      .type = ARM_CP_IO | ARM_CP_NO_RAW,
-+      .access = PL2_RW,
-+      .readfn = ich_ap_read,
-+      .writefn = ich_ap_write,
-+    },
-+    { .name = "ICH_AP1R0_EL2", .state = ARM_CP_STATE_BOTH,
-+      .opc0 = 3, .opc1 = 4, .crn = 12, .crm = 9, .opc2 = 0,
-+      .type = ARM_CP_IO | ARM_CP_NO_RAW,
-+      .access = PL2_RW,
-+      .readfn = ich_ap_read,
-+      .writefn = ich_ap_write,
-+    },
-+    { .name = "ICH_HCR_EL2", .state = ARM_CP_STATE_BOTH,
-+      .opc0 = 3, .opc1 = 4, .crn = 12, .crm = 11, .opc2 = 0,
-+      .type = ARM_CP_IO | ARM_CP_NO_RAW,
-+      .access = PL2_RW,
-+      .readfn = ich_hcr_read,
-+      .writefn = ich_hcr_write,
-+    },
-+    { .name = "ICH_VTR_EL2", .state = ARM_CP_STATE_BOTH,
-+      .opc0 = 3, .opc1 = 4, .crn = 12, .crm = 11, .opc2 = 1,
-+      .type = ARM_CP_IO | ARM_CP_NO_RAW,
-+      .access = PL2_R,
-+      .readfn = ich_vtr_read,
-+    },
-+    { .name = "ICH_MISR_EL2", .state = ARM_CP_STATE_BOTH,
-+      .opc0 = 3, .opc1 = 4, .crn = 12, .crm = 11, .opc2 = 2,
-+      .type = ARM_CP_IO | ARM_CP_NO_RAW,
-+      .access = PL2_R,
-+      .readfn = ich_misr_read,
-+    },
-+    { .name = "ICH_EISR_EL2", .state = ARM_CP_STATE_BOTH,
-+      .opc0 = 3, .opc1 = 4, .crn = 12, .crm = 11, .opc2 = 3,
-+      .type = ARM_CP_IO | ARM_CP_NO_RAW,
-+      .access = PL2_R,
-+      .readfn = ich_eisr_read,
-+    },
-+    { .name = "ICH_ELRSR_EL2", .state = ARM_CP_STATE_BOTH,
-+      .opc0 = 3, .opc1 = 4, .crn = 12, .crm = 11, .opc2 = 5,
-+      .type = ARM_CP_IO | ARM_CP_NO_RAW,
-+      .access = PL2_R,
-+      .readfn = ich_elrsr_read,
-+    },
-+    { .name = "ICH_VMCR_EL2", .state = ARM_CP_STATE_BOTH,
-+      .opc0 = 3, .opc1 = 4, .crn = 12, .crm = 11, .opc2 = 7,
-+      .type = ARM_CP_IO | ARM_CP_NO_RAW,
-+      .access = PL2_RW,
-+      .readfn = ich_vmcr_read,
-+      .writefn = ich_vmcr_write,
-+    },
-+    REGINFO_SENTINEL
-+};
-+
-+static const ARMCPRegInfo gicv3_cpuif_ich_apxr1_reginfo[] = {
-+    { .name = "ICH_AP0R1_EL2", .state = ARM_CP_STATE_BOTH,
-+      .opc0 = 3, .opc1 = 4, .crn = 12, .crm = 8, .opc2 = 1,
-+      .type = ARM_CP_IO | ARM_CP_NO_RAW,
-+      .access = PL2_RW,
-+      .readfn = ich_ap_read,
-+      .writefn = ich_ap_write,
-+    },
-+    { .name = "ICH_AP1R1_EL2", .state = ARM_CP_STATE_BOTH,
-+      .opc0 = 3, .opc1 = 4, .crn = 12, .crm = 9, .opc2 = 1,
-+      .type = ARM_CP_IO | ARM_CP_NO_RAW,
-+      .access = PL2_RW,
-+      .readfn = ich_ap_read,
-+      .writefn = ich_ap_write,
-+    },
-+    REGINFO_SENTINEL
-+};
-+
-+static const ARMCPRegInfo gicv3_cpuif_ich_apxr23_reginfo[] = {
-+    { .name = "ICH_AP0R2_EL2", .state = ARM_CP_STATE_BOTH,
-+      .opc0 = 3, .opc1 = 4, .crn = 12, .crm = 8, .opc2 = 2,
-+      .type = ARM_CP_IO | ARM_CP_NO_RAW,
-+      .access = PL2_RW,
-+      .readfn = ich_ap_read,
-+      .writefn = ich_ap_write,
-+    },
-+    { .name = "ICH_AP0R3_EL2", .state = ARM_CP_STATE_BOTH,
-+      .opc0 = 3, .opc1 = 4, .crn = 12, .crm = 8, .opc2 = 3,
-+      .type = ARM_CP_IO | ARM_CP_NO_RAW,
-+      .access = PL2_RW,
-+      .readfn = ich_ap_read,
-+      .writefn = ich_ap_write,
-+    },
-+    { .name = "ICH_AP1R2_EL2", .state = ARM_CP_STATE_BOTH,
-+      .opc0 = 3, .opc1 = 4, .crn = 12, .crm = 9, .opc2 = 2,
-+      .type = ARM_CP_IO | ARM_CP_NO_RAW,
-+      .access = PL2_RW,
-+      .readfn = ich_ap_read,
-+      .writefn = ich_ap_write,
-+    },
-+    { .name = "ICH_AP1R3_EL2", .state = ARM_CP_STATE_BOTH,
-+      .opc0 = 3, .opc1 = 4, .crn = 12, .crm = 9, .opc2 = 3,
-+      .type = ARM_CP_IO | ARM_CP_NO_RAW,
-+      .access = PL2_RW,
-+      .readfn = ich_ap_read,
-+      .writefn = ich_ap_write,
-+    },
-+    REGINFO_SENTINEL
-+};
-+
- static void gicv3_cpuif_el_change_hook(ARMCPU *cpu, void *opaque)
+-static VirtBoardInfo machines[] = {
+-    {
+-        .cpu_model = "cortex-a15",
+-        .memmap = a15memmap,
+-        .irqmap = a15irqmap,
+-    },
+-    {
+-        .cpu_model = "cortex-a53",
+-        .memmap = a15memmap,
+-        .irqmap = a15irqmap,
+-    },
+-    {
+-        .cpu_model = "cortex-a57",
+-        .memmap = a15memmap,
+-        .irqmap = a15irqmap,
+-    },
+-    {
+-        .cpu_model = "host",
+-        .memmap = a15memmap,
+-        .irqmap = a15irqmap,
+-    },
++static const char *valid_cpus[] = {
++    "cortex-a15",
++    "cortex-a53",
++    "cortex-a57",
++    "host",
++    NULL
+ };
+ 
+-static VirtBoardInfo *find_machine_info(const char *cpu)
++static bool cpuname_valid(const char *cpu)
  {
-     GICv3CPUState *cs = opaque;
-@@ -1362,6 +1788,57 @@ void gicv3_init_cpuif(GICv3State *s)
-          * to need to register anyway.
-          */
-         define_arm_cp_regs(cpu, gicv3_cpuif_reginfo);
-+        if (arm_feature(&cpu->env, ARM_FEATURE_EL2)
-+            && cpu->gic_num_lrs) {
-+            int j;
-+
-+            cs->num_list_regs = cpu->gic_num_lrs;
-+            cs->vpribits = cpu->gic_vpribits;
-+            cs->vprebits = cpu->gic_vprebits;
-+
-+            /* Check against architectural constraints: getting these
-+             * wrong would be a bug in the CPU code defining these,
-+             * and the implementation relies on them holding.
-+             */
-+            g_assert(cs->vprebits <= cs->vpribits);
-+            g_assert(cs->vprebits >= 5 && cs->vprebits <= 7);
-+            g_assert(cs->vpribits >= 5 && cs->vpribits <= 8);
-+
-+            define_arm_cp_regs(cpu, gicv3_cpuif_hcr_reginfo);
-+
-+            for (j = 0; j < cs->num_list_regs; j++) {
-+                /* Note that the AArch64 LRs are 64-bit; the AArch32 LRs
-+                 * are split into two cp15 regs, LR (the low part, with the
-+                 * same encoding as the AArch64 LR) and LRC (the high part).
-+                 */
-+                ARMCPRegInfo lr_regset[] = {
-+                    { .name = "ICH_LRn_EL2", .state = ARM_CP_STATE_BOTH,
-+                      .opc0 = 3, .opc1 = 4, .crn = 12,
-+                      .crm = 12 + (j >> 3), .opc2 = j & 7,
-+                      .type = ARM_CP_IO | ARM_CP_NO_RAW,
-+                      .access = PL2_RW,
-+                      .readfn = ich_lr_read,
-+                      .writefn = ich_lr_write,
-+                    },
-+                    { .name = "ICH_LRCn_EL2", .state = ARM_CP_STATE_AA32,
-+                      .cp = 15, .opc1 = 4, .crn = 12,
-+                      .crm = 14 + (j >> 3), .opc2 = j & 7,
-+                      .type = ARM_CP_IO | ARM_CP_NO_RAW,
-+                      .access = PL2_RW,
-+                      .readfn = ich_lr_read,
-+                      .writefn = ich_lr_write,
-+                    },
-+                    REGINFO_SENTINEL
-+                };
-+                define_arm_cp_regs(cpu, lr_regset);
-+            }
-+            if (cs->vprebits >= 6) {
-+                define_arm_cp_regs(cpu, gicv3_cpuif_ich_apxr1_reginfo);
-+            }
-+            if (cs->vprebits == 7) {
-+                define_arm_cp_regs(cpu, gicv3_cpuif_ich_apxr23_reginfo);
-+            }
-+        }
-         arm_register_el_change_hook(cpu, gicv3_cpuif_el_change_hook, cs);
+     int i;
+ 
+-    for (i = 0; i < ARRAY_SIZE(machines); i++) {
+-        if (strcmp(cpu, machines[i].cpu_model) == 0) {
+-            return &machines[i];
++    for (i = 0; i < ARRAY_SIZE(valid_cpus); i++) {
++        if (strcmp(cpu, valid_cpus[i]) == 0) {
++            return true;
+         }
+     }
+-    return NULL;
++    return false;
+ }
+ 
+-static void create_fdt(VirtBoardInfo *vbi)
++static void create_fdt(VirtMachineState *vbi)
+ {
+     void *fdt = create_device_tree(&vbi->fdt_size);
+ 
+@@ -277,7 +257,7 @@ static void create_fdt(VirtBoardInfo *vbi)
+ 
+ }
+ 
+-static void fdt_add_psci_node(const VirtBoardInfo *vbi)
++static void fdt_add_psci_node(const VirtMachineState *vbi)
+ {
+     uint32_t cpu_suspend_fn;
+     uint32_t cpu_off_fn;
+@@ -327,7 +307,7 @@ static void fdt_add_psci_node(const VirtBoardInfo *vbi)
+     qemu_fdt_setprop_cell(fdt, "/psci", "migrate", migrate_fn);
+ }
+ 
+-static void fdt_add_timer_nodes(const VirtBoardInfo *vbi, int gictype)
++static void fdt_add_timer_nodes(const VirtMachineState *vbi, int gictype)
+ {
+     /* Note that on A15 h/w these interrupts are level-triggered,
+      * but for the GIC implementation provided by both QEMU and KVM
+@@ -361,7 +341,7 @@ static void fdt_add_timer_nodes(const VirtBoardInfo *vbi, int gictype)
+                        GIC_FDT_IRQ_TYPE_PPI, ARCH_TIMER_NS_EL2_IRQ, irqflags);
+ }
+ 
+-static void fdt_add_cpu_nodes(const VirtBoardInfo *vbi)
++static void fdt_add_cpu_nodes(const VirtMachineState *vbi)
+ {
+     int cpu;
+     int addr_cells = 1;
+@@ -424,7 +404,7 @@ static void fdt_add_cpu_nodes(const VirtBoardInfo *vbi)
      }
  }
-diff --git a/hw/intc/trace-events b/hw/intc/trace-events
-index 340f617..4ac1ea2 100644
---- a/hw/intc/trace-events
-+++ b/hw/intc/trace-events
-@@ -107,6 +107,22 @@ gicv3_icc_hppir0_read(uint32_t cpu, uint64_t val) "GICv3 ICC_HPPIR0 read cpu %x
- gicv3_icc_hppir1_read(uint32_t cpu, uint64_t val) "GICv3 ICC_HPPIR1 read cpu %x value 0x%" PRIx64
- gicv3_icc_dir_write(uint32_t cpu, uint64_t val) "GICv3 ICC_DIR write cpu %x value 0x%" PRIx64
- gicv3_icc_rpr_read(uint32_t cpu, uint64_t val) "GICv3 ICC_RPR read cpu %x value 0x%" PRIx64
-+gicv3_ich_ap_read(int grp, int regno, uint32_t cpu, uint64_t val) "GICv3 ICH_AP%dR%d read cpu %x value 0x%" PRIx64
-+gicv3_ich_ap_write(int grp, int regno, uint32_t cpu, uint64_t val) "GICv3 ICH_AP%dR%d write cpu %x value 0x%" PRIx64
-+gicv3_ich_hcr_read(uint32_t cpu, uint64_t val) "GICv3 ICH_HCR_EL2 read cpu %x value 0x%" PRIx64
-+gicv3_ich_hcr_write(uint32_t cpu, uint64_t val) "GICv3 ICH_HCR_EL2 write cpu %x value 0x%" PRIx64
-+gicv3_ich_vmcr_read(uint32_t cpu, uint64_t val) "GICv3 ICH_VMCR_EL2 read cpu %x value 0x%" PRIx64
-+gicv3_ich_vmcr_write(uint32_t cpu, uint64_t val) "GICv3 ICH_VMCR_EL2 write cpu %x value 0x%" PRIx64
-+gicv3_ich_lr_read(int regno, uint32_t cpu, uint64_t val) "GICv3 ICH_LR%d_EL2 read cpu %x value 0x%" PRIx64
-+gicv3_ich_lr32_read(int regno, uint32_t cpu, uint32_t val) "GICv3 ICH_LR%d read cpu %x value 0x%" PRIx32
-+gicv3_ich_lrc_read(int regno, uint32_t cpu, uint32_t val) "GICv3 ICH_LRC%d read cpu %x value 0x%" PRIx32
-+gicv3_ich_lr_write(int regno, uint32_t cpu, uint64_t val) "GICv3 ICH_LR%d_EL2 write cpu %x value 0x%" PRIx64
-+gicv3_ich_lr32_write(int regno, uint32_t cpu, uint32_t val) "GICv3 ICH_LR%d write cpu %x value 0x%" PRIx32
-+gicv3_ich_lrc_write(int regno, uint32_t cpu, uint32_t val) "GICv3 ICH_LRC%d write cpu %x value 0x%" PRIx32
-+gicv3_ich_vtr_read(uint32_t cpu, uint64_t val) "GICv3 ICH_VTR read cpu %x value 0x%" PRIx64
-+gicv3_ich_misr_read(uint32_t cpu, uint64_t val) "GICv3 ICH_MISR read cpu %x value 0x%" PRIx64
-+gicv3_ich_eisr_read(uint32_t cpu, uint64_t val) "GICv3 ICH_EISR read cpu %x value 0x%" PRIx64
-+gicv3_ich_elrsr_read(uint32_t cpu, uint64_t val) "GICv3 ICH_ELRSR read cpu %x value 0x%" PRIx64
  
- # hw/intc/arm_gicv3_dist.c
- gicv3_dist_read(uint64_t offset, uint64_t data, unsigned size, bool secure) "GICv3 distributor read: offset 0x%" PRIx64 " data 0x%" PRIx64 " size %u secure %d"
+-static void fdt_add_its_gic_node(VirtBoardInfo *vbi)
++static void fdt_add_its_gic_node(VirtMachineState *vbi)
+ {
+     vbi->msi_phandle = qemu_fdt_alloc_phandle(vbi->fdt);
+     qemu_fdt_add_subnode(vbi->fdt, "/intc/its");
+@@ -437,7 +417,7 @@ static void fdt_add_its_gic_node(VirtBoardInfo *vbi)
+     qemu_fdt_setprop_cell(vbi->fdt, "/intc/its", "phandle", vbi->msi_phandle);
+ }
+ 
+-static void fdt_add_v2m_gic_node(VirtBoardInfo *vbi)
++static void fdt_add_v2m_gic_node(VirtMachineState *vbi)
+ {
+     vbi->msi_phandle = qemu_fdt_alloc_phandle(vbi->fdt);
+     qemu_fdt_add_subnode(vbi->fdt, "/intc/v2m");
+@@ -450,7 +430,7 @@ static void fdt_add_v2m_gic_node(VirtBoardInfo *vbi)
+     qemu_fdt_setprop_cell(vbi->fdt, "/intc/v2m", "phandle", vbi->msi_phandle);
+ }
+ 
+-static void fdt_add_gic_node(VirtBoardInfo *vbi, int type)
++static void fdt_add_gic_node(VirtMachineState *vbi, int type)
+ {
+     vbi->gic_phandle = qemu_fdt_alloc_phandle(vbi->fdt);
+     qemu_fdt_setprop_cell(vbi->fdt, "/", "interrupt-parent", vbi->gic_phandle);
+@@ -483,7 +463,7 @@ static void fdt_add_gic_node(VirtBoardInfo *vbi, int type)
+     qemu_fdt_setprop_cell(vbi->fdt, "/intc", "phandle", vbi->gic_phandle);
+ }
+ 
+-static void fdt_add_pmu_nodes(const VirtBoardInfo *vbi, int gictype)
++static void fdt_add_pmu_nodes(const VirtMachineState *vbi, int gictype)
+ {
+     CPUState *cpu;
+     ARMCPU *armcpu;
+@@ -514,7 +494,7 @@ static void fdt_add_pmu_nodes(const VirtBoardInfo *vbi, int gictype)
+     }
+ }
+ 
+-static void create_its(VirtBoardInfo *vbi, DeviceState *gicdev)
++static void create_its(VirtMachineState *vbi, DeviceState *gicdev)
+ {
+     const char *itsclass = its_class_name();
+     DeviceState *dev;
+@@ -534,7 +514,7 @@ static void create_its(VirtBoardInfo *vbi, DeviceState *gicdev)
+     fdt_add_its_gic_node(vbi);
+ }
+ 
+-static void create_v2m(VirtBoardInfo *vbi, qemu_irq *pic)
++static void create_v2m(VirtMachineState *vbi, qemu_irq *pic)
+ {
+     int i;
+     int irq = vbi->irqmap[VIRT_GIC_V2M];
+@@ -553,7 +533,7 @@ static void create_v2m(VirtBoardInfo *vbi, qemu_irq *pic)
+     fdt_add_v2m_gic_node(vbi);
+ }
+ 
+-static void create_gic(VirtBoardInfo *vbi, qemu_irq *pic, int type,
++static void create_gic(VirtMachineState *vbi, qemu_irq *pic, int type,
+                        bool secure, bool no_its)
+ {
+     /* We create a standalone GIC */
+@@ -625,7 +605,7 @@ static void create_gic(VirtBoardInfo *vbi, qemu_irq *pic, int type,
+     }
+ }
+ 
+-static void create_uart(const VirtBoardInfo *vbi, qemu_irq *pic, int uart,
++static void create_uart(const VirtMachineState *vbi, qemu_irq *pic, int uart,
+                         MemoryRegion *mem, CharDriverState *chr)
+ {
+     char *nodename;
+@@ -669,7 +649,7 @@ static void create_uart(const VirtBoardInfo *vbi, qemu_irq *pic, int uart,
+     g_free(nodename);
+ }
+ 
+-static void create_rtc(const VirtBoardInfo *vbi, qemu_irq *pic)
++static void create_rtc(const VirtMachineState *vbi, qemu_irq *pic)
+ {
+     char *nodename;
+     hwaddr base = vbi->memmap[VIRT_RTC].base;
+@@ -703,7 +683,7 @@ static Notifier virt_system_powerdown_notifier = {
+     .notify = virt_powerdown_req
+ };
+ 
+-static void create_gpio(const VirtBoardInfo *vbi, qemu_irq *pic)
++static void create_gpio(const VirtMachineState *vbi, qemu_irq *pic)
+ {
+     char *nodename;
+     DeviceState *pl061_dev;
+@@ -750,7 +730,7 @@ static void create_gpio(const VirtBoardInfo *vbi, qemu_irq *pic)
+     g_free(nodename);
+ }
+ 
+-static void create_virtio_devices(const VirtBoardInfo *vbi, qemu_irq *pic)
++static void create_virtio_devices(const VirtMachineState *vbi, qemu_irq *pic)
+ {
+     int i;
+     hwaddr size = vbi->memmap[VIRT_MMIO].size;
+@@ -870,7 +850,7 @@ static void create_one_flash(const char *name, hwaddr flashbase,
+     }
+ }
+ 
+-static void create_flash(const VirtBoardInfo *vbi,
++static void create_flash(const VirtMachineState *vbi,
+                          MemoryRegion *sysmem,
+                          MemoryRegion *secure_sysmem)
+ {
+@@ -925,7 +905,7 @@ static void create_flash(const VirtBoardInfo *vbi,
+     }
+ }
+ 
+-static void create_fw_cfg(const VirtBoardInfo *vbi, AddressSpace *as)
++static void create_fw_cfg(const VirtMachineState *vbi, AddressSpace *as)
+ {
+     hwaddr base = vbi->memmap[VIRT_FW_CFG].base;
+     hwaddr size = vbi->memmap[VIRT_FW_CFG].size;
+@@ -944,7 +924,8 @@ static void create_fw_cfg(const VirtBoardInfo *vbi, AddressSpace *as)
+     g_free(nodename);
+ }
+ 
+-static void create_pcie_irq_map(const VirtBoardInfo *vbi, uint32_t gic_phandle,
++static void create_pcie_irq_map(const VirtMachineState *vbi,
++                                uint32_t gic_phandle,
+                                 int first_irq, const char *nodename)
+ {
+     int devfn, pin;
+@@ -979,7 +960,7 @@ static void create_pcie_irq_map(const VirtBoardInfo *vbi, uint32_t gic_phandle,
+                            0x7           /* PCI irq */);
+ }
+ 
+-static void create_pcie(const VirtBoardInfo *vbi, qemu_irq *pic,
++static void create_pcie(const VirtMachineState *vbi, qemu_irq *pic,
+                         bool use_highmem)
+ {
+     hwaddr base_mmio = vbi->memmap[VIRT_PCIE_MMIO].base;
+@@ -1095,7 +1076,7 @@ static void create_pcie(const VirtBoardInfo *vbi, qemu_irq *pic,
+     g_free(nodename);
+ }
+ 
+-static void create_platform_bus(VirtBoardInfo *vbi, qemu_irq *pic)
++static void create_platform_bus(VirtMachineState *vbi, qemu_irq *pic)
+ {
+     DeviceState *dev;
+     SysBusDevice *s;
+@@ -1136,7 +1117,8 @@ static void create_platform_bus(VirtBoardInfo *vbi, qemu_irq *pic)
+                                 sysbus_mmio_get_region(s, 0));
+ }
+ 
+-static void create_secure_ram(VirtBoardInfo *vbi, MemoryRegion *secure_sysmem)
++static void create_secure_ram(VirtMachineState *vbi,
++                              MemoryRegion *secure_sysmem)
+ {
+     MemoryRegion *secram = g_new(MemoryRegion, 1);
+     char *nodename;
+@@ -1159,7 +1141,8 @@ static void create_secure_ram(VirtBoardInfo *vbi, MemoryRegion *secure_sysmem)
+ 
+ static void *machvirt_dtb(const struct arm_boot_info *binfo, int *fdt_size)
+ {
+-    const VirtBoardInfo *board = (const VirtBoardInfo *)binfo;
++    const VirtMachineState *board = container_of(binfo, VirtMachineState,
++                                                 bootinfo);
+ 
+     *fdt_size = board->fdt_size;
+     return board->fdt;
+@@ -1214,7 +1197,7 @@ static void machvirt_init(MachineState *machine)
+     int n, virt_max_cpus;
+     MemoryRegion *ram = g_new(MemoryRegion, 1);
+     const char *cpu_model = machine->cpu_model;
+-    VirtBoardInfo *vbi;
++    VirtMachineState *vbi = vms;
+     VirtGuestInfoState *guest_info_state = g_malloc0(sizeof *guest_info_state);
+     VirtGuestInfo *guest_info = &guest_info_state->info;
+     char **cpustr;
+@@ -1248,9 +1231,7 @@ static void machvirt_init(MachineState *machine)
+     /* Separate the actual CPU model name from any appended features */
+     cpustr = g_strsplit(cpu_model, ",", 2);
+ 
+-    vbi = find_machine_info(cpustr[0]);
+-
+-    if (!vbi) {
++    if (!cpuname_valid(cpustr[0])) {
+         error_report("mach-virt: CPU %s not supported", cpustr[0]);
+         exit(1);
+     }
+@@ -1556,6 +1537,9 @@ static void virt_2_9_instance_init(Object *obj)
+     object_property_set_description(obj, "gic-version",
+                                     "Set GIC version. "
+                                     "Valid values are 2, 3 and host", NULL);
++
++    vms->memmap = a15memmap;
++    vms->irqmap = a15irqmap;
+ }
+ 
+ static void virt_machine_2_9_options(MachineClass *mc)
 -- 
 2.7.4
 

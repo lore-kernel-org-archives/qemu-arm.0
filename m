@@ -1,48 +1,48 @@
-Received: by 10.25.205.13 with SMTP id d13csp2122876lfg;
-        Tue, 13 Dec 2016 02:54:47 -0800 (PST)
-X-Received: by 10.200.47.140 with SMTP id l12mr92469683qta.51.1481626487257;
-        Tue, 13 Dec 2016 02:54:47 -0800 (PST)
+Received: by 10.25.205.13 with SMTP id d13csp2124043lfg;
+        Tue, 13 Dec 2016 02:58:21 -0800 (PST)
+X-Received: by 10.200.41.9 with SMTP id y9mr93385807qty.26.1481626701508;
+        Tue, 13 Dec 2016 02:58:21 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [208.118.235.17])
-        by mx.google.com with ESMTPS id n76si27848252qke.251.2016.12.13.02.54.46
+        by mx.google.com with ESMTPS id b17si17715839qkb.116.2016.12.13.02.58.20
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 13 Dec 2016 02:54:47 -0800 (PST)
+        Tue, 13 Dec 2016 02:58:21 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) client-ip=208.118.235.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:37168 helo=lists.gnu.org)
+Received: from localhost ([::1]:37190 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1cGkjM-00031v-G9
-	for alex.bennee@linaro.org; Tue, 13 Dec 2016 05:54:44 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:56481)
+	id 1cGkmo-00063u-Jd
+	for alex.bennee@linaro.org; Tue, 13 Dec 2016 05:58:18 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:56741)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1cGkSs-0005d3-Pa
-	for qemu-arm@nongnu.org; Tue, 13 Dec 2016 05:37:43 -0500
+	(envelope-from <pm215@archaic.org.uk>) id 1cGkTS-0006CJ-9W
+	for qemu-arm@nongnu.org; Tue, 13 Dec 2016 05:38:19 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1cGkSr-0000BA-Qn
-	for qemu-arm@nongnu.org; Tue, 13 Dec 2016 05:37:42 -0500
-Received: from orth.archaic.org.uk ([2001:8b0:1d0::2]:47759)
+	(envelope-from <pm215@archaic.org.uk>) id 1cGkTR-0000NC-6n
+	for qemu-arm@nongnu.org; Tue, 13 Dec 2016 05:38:18 -0500
+Received: from orth.archaic.org.uk ([2001:8b0:1d0::2]:47776)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <pm215@archaic.org.uk>)
-	id 1cGkSr-000087-Jl; Tue, 13 Dec 2016 05:37:41 -0500
+	id 1cGkTR-0000Mz-0I; Tue, 13 Dec 2016 05:38:17 -0500
 Received: from pm215 by orth.archaic.org.uk with local (Exim 4.84_2)
 	(envelope-from <pm215@archaic.org.uk>)
-	id 1cGkRi-0002Hy-Hw; Tue, 13 Dec 2016 10:36:30 +0000
+	id 1cGkRr-0002Og-K1; Tue, 13 Dec 2016 10:36:39 +0000
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Date: Tue, 13 Dec 2016 10:36:08 +0000
-Message-Id: <1481625384-15077-8-git-send-email-peter.maydell@linaro.org>
+Date: Tue, 13 Dec 2016 10:36:23 +0000
+Message-Id: <1481625384-15077-23-git-send-email-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.7.4
 In-Reply-To: <1481625384-15077-1-git-send-email-peter.maydell@linaro.org>
 References: <1481625384-15077-1-git-send-email-peter.maydell@linaro.org>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 2001:8b0:1d0::2
-Subject: [Qemu-arm] [PATCH 07/23] hw/arm/virt: Don't incorrectly claim
- architectural timer to be edge-triggered
+Subject: [Qemu-arm] [PATCH 22/23] target-arm: Enable EL2 feature bit on A53
+ and A57
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -58,91 +58,126 @@ Cc: Andrew Jones <drjones@redhat.com>,
 	Christoffer Dall <christoffer.dall@linaro.org>, patches@linaro.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: kjMOhHtg4a81
+X-TUID: WWKGtXrnnf2C
 
-The architectural timers in ARM CPUs all have level triggered interrupts
-(unless you're using KVM on a host kernel before 4.4, which misimplemented
-them as edge-triggered).
+Enable the ARM_FEATURE_EL2 bit on Cortex-A52 and
+Cortex-A57, since this is all now sufficiently implemented
+to work with the GICv3. We provide the usual CPU property
+to disable it for backwards compatibility with the older
+virt boards.
 
-We were incorrectly describing them in the device tree as edge triggered.
-This can cause problems for guest kernels in 4.8 before rc6:
- * pre-4.8 kernels ignore the values in the DT
- * 4.8 before rc6 write the DT values to the GIC config registers
- * newer than rc6 ignore the DT and insist that the timer interrupts
-   are level triggered regardless
-
-Fix the DT so we're describing reality. For backwards-compatibility
-purposes, only do this for the virt-2.9 machine onward.
+In this commit, we disable the EL2 feature on the
+virt and ZynpMP boards, so there is no overall effect.
+Another commit will expose a board-level property to
+allow the user to enable EL2.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-Reviewed-by: Andrew Jones <drjones@redhat.com>
 ---
- hw/arm/virt.c | 34 ++++++++++++++++++++++++++++++----
- 1 file changed, 30 insertions(+), 4 deletions(-)
+ target-arm/cpu.h     |  2 ++
+ hw/arm/virt.c        |  4 ++++
+ hw/arm/xlnx-zynqmp.c |  2 ++
+ target-arm/cpu.c     | 12 ++++++++++++
+ target-arm/cpu64.c   |  2 ++
+ 5 files changed, 22 insertions(+)
 
+diff --git a/target-arm/cpu.h b/target-arm/cpu.h
+index be42ffb..51165fa 100644
+--- a/target-arm/cpu.h
++++ b/target-arm/cpu.h
+@@ -574,6 +574,8 @@ struct ARMCPU {
+     bool start_powered_off;
+     /* CPU currently in PSCI powered-off state */
+     bool powered_off;
++    /* CPU has virtualization extension */
++    bool has_el2;
+     /* CPU has security extension */
+     bool has_el3;
+     /* CPU has PMU (Performance Monitor Unit) */
 diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index 54498ea..2ca9527 100644
+index cce8d2e..5bde68c 100644
 --- a/hw/arm/virt.c
 +++ b/hw/arm/virt.c
-@@ -71,6 +71,7 @@ typedef struct {
-     bool disallow_affinity_adjustment;
-     bool no_its;
-     bool no_pmu;
-+    bool claim_edge_triggered_timers;
- } VirtMachineClass;
+@@ -1368,6 +1368,10 @@ static void machvirt_init(MachineState *machine)
+             object_property_set_bool(cpuobj, false, "has_el3", NULL);
+         }
  
- typedef struct {
-@@ -309,12 +310,31 @@ static void fdt_add_psci_node(const VirtMachineState *vms)
- 
- static void fdt_add_timer_nodes(const VirtMachineState *vms, int gictype)
- {
--    /* Note that on A15 h/w these interrupts are level-triggered,
--     * but for the GIC implementation provided by both QEMU and KVM
--     * they are edge-triggered.
-+    /* On real hardware these interrupts are level-triggered.
-+     * On KVM they were edge-triggered before host kernel version 4.4,
-+     * and level-triggered afterwards.
-+     * On emulated QEMU they are level-triggered.
-+     *
-+     * Getting the DTB info about them wrong is awkward for some
-+     * guest kernels:
-+     *  pre-4.8 ignore the DT and leave the interrupt configured
-+     *   with whatever the GIC reset value (or the bootloader) left it at
-+     *  4.8 before rc6 honour the incorrect data by programming it back
-+     *   into the GIC, causing problems
-+     *  4.8rc6 and later ignore the DT and always write "level triggered"
-+     *   into the GIC
-+     *
-+     * For backwards-compatibility, virt-2.8 and earlier will continue
-+     * to say these are edge-triggered, but later machines will report
-+     * the correct information.
-      */
-     ARMCPU *armcpu;
--    uint32_t irqflags = GIC_FDT_IRQ_FLAGS_EDGE_LO_HI;
-+    VirtMachineClass *vmc = VIRT_MACHINE_GET_CLASS(vms);
-+    uint32_t irqflags = GIC_FDT_IRQ_FLAGS_LEVEL_HI;
++        if (object_property_find(cpuobj, "has_el2", NULL)) {
++            object_property_set_bool(cpuobj, false, "has_el2", NULL);
++        }
 +
-+    if (vmc->claim_edge_triggered_timers) {
-+        irqflags = GIC_FDT_IRQ_FLAGS_EDGE_LO_HI;
+         if (vms->psci_conduit != QEMU_PSCI_CONDUIT_DISABLED) {
+             object_property_set_int(cpuobj, vms->psci_conduit,
+                                     "psci-conduit", NULL);
+diff --git a/hw/arm/xlnx-zynqmp.c b/hw/arm/xlnx-zynqmp.c
+index 0d86ba3..bc4e66b 100644
+--- a/hw/arm/xlnx-zynqmp.c
++++ b/hw/arm/xlnx-zynqmp.c
+@@ -258,6 +258,8 @@ static void xlnx_zynqmp_realize(DeviceState *dev, Error **errp)
+ 
+         object_property_set_bool(OBJECT(&s->apu_cpu[i]),
+                                  s->secure, "has_el3", NULL);
++        object_property_set_bool(OBJECT(&s->apu_cpu[i]),
++                                 false, "has_el2", NULL);
+         object_property_set_int(OBJECT(&s->apu_cpu[i]), GIC_BASE_ADDR,
+                                 "reset-cbar", &error_abort);
+         object_property_set_bool(OBJECT(&s->apu_cpu[i]), true, "realized",
+diff --git a/target-arm/cpu.c b/target-arm/cpu.c
+index 5e0d21d..d721cd4 100644
+--- a/target-arm/cpu.c
++++ b/target-arm/cpu.c
+@@ -497,6 +497,9 @@ static Property arm_cpu_reset_hivecs_property =
+ static Property arm_cpu_rvbar_property =
+             DEFINE_PROP_UINT64("rvbar", ARMCPU, rvbar, 0);
+ 
++static Property arm_cpu_has_el2_property =
++            DEFINE_PROP_BOOL("has_el2", ARMCPU, has_el2, true);
++
+ static Property arm_cpu_has_el3_property =
+             DEFINE_PROP_BOOL("has_el3", ARMCPU, has_el3, true);
+ 
+@@ -547,6 +550,11 @@ static void arm_cpu_post_init(Object *obj)
+ #endif
+     }
+ 
++    if (arm_feature(&cpu->env, ARM_FEATURE_EL2)) {
++        qdev_property_add_static(DEVICE(obj), &arm_cpu_has_el2_property,
++                                 &error_abort);
 +    }
- 
-     if (gictype == 2) {
-         irqflags = deposit32(irqflags, GIC_FDT_IRQ_PPI_CPU_START,
-@@ -1556,8 +1576,14 @@ static void virt_2_8_instance_init(Object *obj)
- 
- static void virt_machine_2_8_options(MachineClass *mc)
- {
-+    VirtMachineClass *vmc = VIRT_MACHINE_CLASS(OBJECT_CLASS(mc));
 +
-     virt_machine_2_9_options(mc);
-     SET_MACHINE_COMPAT(mc, VIRT_COMPAT_2_8);
-+    /* For 2.8 and earlier we falsely claimed in the DT that
-+     * our timers were edge-triggered, not level-triggered.
-+     */
-+    vmc->claim_edge_triggered_timers = true;
- }
- DEFINE_VIRT_MACHINE(2, 8)
+     if (arm_feature(&cpu->env, ARM_FEATURE_PMU)) {
+         qdev_property_add_static(DEVICE(obj), &arm_cpu_has_pmu_property,
+                                  &error_abort);
+@@ -690,6 +698,10 @@ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
+         cpu->id_aa64pfr0 &= ~0xf000;
+     }
  
++    if (!cpu->has_el2) {
++        unset_feature(env, ARM_FEATURE_EL2);
++    }
++
+     if (!cpu->has_pmu || !kvm_enabled()) {
+         cpu->has_pmu = false;
+         unset_feature(env, ARM_FEATURE_PMU);
+diff --git a/target-arm/cpu64.c b/target-arm/cpu64.c
+index 73c7f31..670c07a 100644
+--- a/target-arm/cpu64.c
++++ b/target-arm/cpu64.c
+@@ -110,6 +110,7 @@ static void aarch64_a57_initfn(Object *obj)
+     set_feature(&cpu->env, ARM_FEATURE_V8_SHA256);
+     set_feature(&cpu->env, ARM_FEATURE_V8_PMULL);
+     set_feature(&cpu->env, ARM_FEATURE_CRC);
++    set_feature(&cpu->env, ARM_FEATURE_EL2);
+     set_feature(&cpu->env, ARM_FEATURE_EL3);
+     set_feature(&cpu->env, ARM_FEATURE_PMU);
+     cpu->kvm_target = QEMU_KVM_ARM_TARGET_CORTEX_A57;
+@@ -169,6 +170,7 @@ static void aarch64_a53_initfn(Object *obj)
+     set_feature(&cpu->env, ARM_FEATURE_V8_SHA256);
+     set_feature(&cpu->env, ARM_FEATURE_V8_PMULL);
+     set_feature(&cpu->env, ARM_FEATURE_CRC);
++    set_feature(&cpu->env, ARM_FEATURE_EL2);
+     set_feature(&cpu->env, ARM_FEATURE_EL3);
+     set_feature(&cpu->env, ARM_FEATURE_PMU);
+     cpu->kvm_target = QEMU_KVM_ARM_TARGET_CORTEX_A53;
 -- 
 2.7.4
 

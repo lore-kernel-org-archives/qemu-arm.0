@@ -1,131 +1,119 @@
-Received: by 10.25.205.13 with SMTP id d13csp2433954lfg;
-        Tue, 13 Dec 2016 14:07:09 -0800 (PST)
-X-Received: by 10.55.31.157 with SMTP id n29mr15498061qkh.221.1481666829062;
-        Tue, 13 Dec 2016 14:07:09 -0800 (PST)
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 10.25.205.13 with SMTP id d13csp115408lfg;
+        Wed, 14 Dec 2016 02:19:55 -0800 (PST)
+X-Received: by 10.55.161.87 with SMTP id k84mr15869966qke.234.1481710795151;
+        Wed, 14 Dec 2016 02:19:55 -0800 (PST)
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [208.118.235.17])
-        by mx.google.com with ESMTPS id o42si28709995qto.82.2016.12.13.14.07.08
+        by mx.google.com with ESMTPS id f129si29798361qkc.284.2016.12.14.02.19.54
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 13 Dec 2016 14:07:09 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) client-ip=208.118.235.17;
+        Wed, 14 Dec 2016 02:19:55 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) client-ip=208.118.235.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:47444 helo=lists.gnu.org)
+       dkim=fail header.i=@linaro.org;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:46604 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1cGvE2-0005QK-3F
-	for alex.bennee@linaro.org; Tue, 13 Dec 2016 17:07:06 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:54026)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1cH6fA-00084F-DW
+	for alex.bennee@linaro.org; Wed, 14 Dec 2016 05:19:52 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:43611)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <drjones@redhat.com>) id 1cGuta-0002lz-Rk
-	for qemu-devel@nongnu.org; Tue, 13 Dec 2016 16:46:00 -0500
+	(envelope-from <peter.maydell@linaro.org>) id 1cH6f2-0007uA-Rn
+	for qemu-arm@nongnu.org; Wed, 14 Dec 2016 05:19:46 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <drjones@redhat.com>) id 1cGutZ-0007ib-RQ
-	for qemu-devel@nongnu.org; Tue, 13 Dec 2016 16:45:58 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:54434)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <drjones@redhat.com>)
-	id 1cGutR-0007d4-Ea; Tue, 13 Dec 2016 16:45:49 -0500
-Received: from int-mx09.intmail.prod.int.phx2.redhat.com
-	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 7F773C0567B3;
-	Tue, 13 Dec 2016 21:45:48 +0000 (UTC)
-Received: from kamzik.brq.redhat.com (kamzik.brq.redhat.com [10.34.1.143])
-	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id uBDLjOQX014685; Tue, 13 Dec 2016 16:45:46 -0500
-From: Andrew Jones <drjones@redhat.com>
-To: qemu-devel@nongnu.org, qemu-arm@nongnu.org
-Date: Tue, 13 Dec 2016 22:45:22 +0100
-Message-Id: <20161213214522.25548-12-drjones@redhat.com>
-In-Reply-To: <20161213214522.25548-1-drjones@redhat.com>
-References: <20161213214522.25548-1-drjones@redhat.com>
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.32]);
-	Tue, 13 Dec 2016 21:45:48 +0000 (UTC)
+	(envelope-from <peter.maydell@linaro.org>) id 1cH6ew-0002GV-NW
+	for qemu-arm@nongnu.org; Wed, 14 Dec 2016 05:19:44 -0500
+Received: from mail-vk0-f43.google.com ([209.85.213.43]:36153)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1cH6ew-0002GH-Al
+	for qemu-arm@nongnu.org; Wed, 14 Dec 2016 05:19:38 -0500
+Received: by mail-vk0-f43.google.com with SMTP id p9so20753930vkd.3
+	for <qemu-arm@nongnu.org>; Wed, 14 Dec 2016 02:19:38 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=J+XXJK8T8AclS0lVxsE5L0dI7tnSZD2QEDoFt9triGw=;
+	b=ACoPjI0d4bcGZB+CxPTS0uVxBqN7mos/nLVzU5/RBMXYLghWb4mdqzQwioNRQvAADz
+	rYllUYR04GJRkAKs7ItNFM7Tl6wOSIiCE1+3pqLyIVX7woEX3AriJm9j4e2mT5udHRKR
+	N1laPFKaTvXx7ZfgLKydMTzYfCJHQRc64z1As=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=J+XXJK8T8AclS0lVxsE5L0dI7tnSZD2QEDoFt9triGw=;
+	b=OFtn/D5dfuXT/t51io13d1KAhil39YoGdvO8wcAsOy9FKBgZz1nAcH8oC4jThWCex/
+	ZFJre1fD+tatKnJLiSWkru7z4lQPE0UJfOEgXDTGbEA+0OUQiegQjAelqxSlGYMJJgP8
+	RKG3xpdPT1YI6vNxqayA1/DF9UuUSPBMOpgr0JrYNhrLMVdF3rYyxSuIZpTcnyIId4KN
+	8ykH3xc5AbWxX4kquS3+UkPY9gC+WRM7HmH0OmrP8Z1h7yI6bRC9sFT4qpC+sfHxWCHg
+	wmFNrFLJwtYCH34DFoIE0qaC/BLqKdRhPRBVJ2MpWl5JkqslWGmRrCOnN2lTMO+tN/5z
+	vZRA==
+X-Gm-Message-State: AKaTC01AyF6ztrYaBVDRmEJBsKH3DFsRQlREZb0f7NPtNemVlT0vTQO5JiM0uhO5x0Sz052hHpHkqpNI0J6BIrrU
+X-Received: by 10.31.8.8 with SMTP id 8mr43046437vki.173.1481710717499; Wed,
+	14 Dec 2016 02:18:37 -0800 (PST)
+MIME-Version: 1.0
+Received: by 10.31.176.14 with HTTP; Wed, 14 Dec 2016 02:18:17 -0800 (PST)
+In-Reply-To: <20161213211606.x4cssgt4knld4m4z@hawk.localdomain>
+References: <1481625384-15077-1-git-send-email-peter.maydell@linaro.org>
+	<20161213211606.x4cssgt4knld4m4z@hawk.localdomain>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Wed, 14 Dec 2016 10:18:17 +0000
+Message-ID: <CAFEAcA9xBBaXVya6KY9DG1cFuu4vBd6KyuJ+3soZtc2V=gOnNQ@mail.gmail.com>
+To: Andrew Jones <drjones@redhat.com>
+Content-Type: text/plain; charset=UTF-8
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: [Qemu-devel] [PATCH 11/11] hw/arm/virt-acpi-build: Don't
- incorrectly claim architectural timer to be edge-triggered
-X-BeenThere: qemu-devel@nongnu.org
+X-Received-From: 209.85.213.43
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH 00/23] arm: Add virtualization
+ to GICv3, and enable EL2 on 64-bit CPUs
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, imammedo@redhat.com, mst@redhat.com,
-	ehabkost@redhat.com, zhaoshenglong@huawei.com
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Xt+w5o6XWj8m
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
+	Christoffer Dall <christoffer.dall@linaro.org>,
+	"patches@linaro.org" <patches@linaro.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: bcnEaSpjZjDa
 
-This is the ACPI equivalent to "hw/arm/virt: Don't incorrectly claim
-architectural timer to be edge-triggered" which fixes the DT for
-machine types 2.9 and later.
+On 13 December 2016 at 21:16, Andrew Jones <drjones@redhat.com> wrote:
+> On Tue, Dec 13, 2016 at 10:36:01AM +0000, Peter Maydell wrote:
+>> This patchset adds support for the Virtualization extensions to QEMU's
+>> GICv3 emulation. This was the last missing piece that was stopping
+>> us from turning on the EL2 support in the CPU model, so the patchset
+>> also adds support for enabling it all on the virt board via the
+>> '-machine virtualization=on' option.
+>>
+>> The result works well enough to allow booting a KVM outer guest kernel
+>> and then running QEMU + an inner guest under KVM inside it. The outer
+>> guest KVM also passes the kvm-unit-tests GIC tests.
+>>
+>
+> I've started some testing with this. When I boot an outer (L1) kernel
+> with more than one cpu allocated I get
+>
+> [    3.441908] CPU: CPUs started in inconsistent modes
+> [    3.442787] ------------[ cut here ]------------
+> [    3.445434] WARNING: CPU: 0 PID: 1 at arch/arm64/kernel/smp.c:418 smp_cpus_done+0x80/0xa0
+> ...
+>
+> and KVM does not init. Booting with only one cpu I see we do start in EL2
+> and KVM does init. I'm booting the L1 kernel through UEFI (AAVMF). Also,
+> my L1 guest kernel is 4.9 based, but not pure upstream. I can try a more
+> pure 4.9 kernel with a defconfig later.
 
-Signed-off-by: Andrew Jones <drjones@redhat.com>
----
- hw/arm/virt-acpi-build.c | 18 ++++++++++++------
- 1 file changed, 12 insertions(+), 6 deletions(-)
+Yeah, I don't think I ever tried an SMP config in outer QEMU.
+This seems like it would be a problem with the boot.c code rather than
+the new GIC features, though... I'll have a look.
 
-diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-index 0e6caf5f1083..62cf4e7f6615 100644
---- a/hw/arm/virt-acpi-build.c
-+++ b/hw/arm/virt-acpi-build.c
-@@ -535,24 +535,30 @@ build_mcfg(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
- 
- /* GTDT */
- static void
--build_gtdt(GArray *table_data, BIOSLinker *linker)
-+build_gtdt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
- {
-+    VirtMachineClass *vmc = VIRT_MACHINE_GET_CLASS(vms);
-     int gtdt_start = table_data->len;
-     AcpiGenericTimerTable *gtdt;
-+    uint8_t irqflags = ACPI_LEVEL_SENSITIVE;
-+
-+    if (vmc->claim_edge_triggered_timers) {
-+        irqflags = ACPI_EDGE_SENSITIVE;
-+    }
- 
-     gtdt = acpi_data_push(table_data, sizeof *gtdt);
-     /* The interrupt values are the same with the device tree when adding 16 */
-     gtdt->secure_el1_interrupt = ARCH_TIMER_S_EL1_IRQ + 16;
--    gtdt->secure_el1_flags = ACPI_EDGE_SENSITIVE;
-+    gtdt->secure_el1_flags = irqflags;
- 
-     gtdt->non_secure_el1_interrupt = ARCH_TIMER_NS_EL1_IRQ + 16;
--    gtdt->non_secure_el1_flags = ACPI_EDGE_SENSITIVE | ACPI_GTDT_ALWAYS_ON;
-+    gtdt->non_secure_el1_flags = irqflags | ACPI_GTDT_ALWAYS_ON;
- 
-     gtdt->virtual_timer_interrupt = ARCH_TIMER_VIRT_IRQ + 16;
--    gtdt->virtual_timer_flags = ACPI_EDGE_SENSITIVE;
-+    gtdt->virtual_timer_flags = irqflags;
- 
-     gtdt->non_secure_el2_interrupt = ARCH_TIMER_NS_EL2_IRQ + 16;
--    gtdt->non_secure_el2_flags = ACPI_EDGE_SENSITIVE;
-+    gtdt->non_secure_el2_flags = irqflags;
- 
-     build_header(linker, table_data,
-                  (void *)(table_data->data + gtdt_start), "GTDT",
-@@ -735,7 +741,7 @@ void virt_acpi_build(VirtMachineState *vms, AcpiBuildTables *tables)
-     build_madt(tables_blob, tables->linker, vms);
- 
-     acpi_add_table(table_offsets, tables_blob);
--    build_gtdt(tables_blob, tables->linker);
-+    build_gtdt(tables_blob, tables->linker, vms);
- 
-     acpi_add_table(table_offsets, tables_blob);
-     build_mcfg(tables_blob, tables->linker, vms);
--- 
-2.9.3
-
+thanks
+-- PMM

@@ -1,70 +1,96 @@
-Received: by 10.25.205.13 with SMTP id d13csp350489lfg;
-        Wed, 14 Dec 2016 10:30:49 -0800 (PST)
-X-Received: by 10.200.50.35 with SMTP id x32mr100520434qta.78.1481740249427;
-        Wed, 14 Dec 2016 10:30:49 -0800 (PST)
+Received: by 10.103.86.15 with SMTP id k15csp411171vsb;
+        Wed, 14 Dec 2016 15:19:45 -0800 (PST)
+X-Received: by 10.200.42.106 with SMTP id l39mr86499569qtl.280.1481757585256;
+        Wed, 14 Dec 2016 15:19:45 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [208.118.235.17])
-        by mx.google.com with ESMTPS id q67si30467400qkf.11.2016.12.14.10.30.48
+        by mx.google.com with ESMTPS id 8si30671445qtg.308.2016.12.14.15.19.44
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 14 Dec 2016 10:30:49 -0800 (PST)
+        Wed, 14 Dec 2016 15:19:45 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) client-ip=208.118.235.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:49557 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:50805 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1cHEKE-0007Al-KT
-	for alex.bennee@linaro.org; Wed, 14 Dec 2016 13:30:46 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:55086)
+	id 1cHIpq-0007lT-Kh
+	for alex.bennee@linaro.org; Wed, 14 Dec 2016 18:19:42 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:53912)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1cHEKA-0007AS-02
-	for qemu-arm@nongnu.org; Wed, 14 Dec 2016 13:30:43 -0500
+	(envelope-from <alastair@au1.ibm.com>) id 1cHIpm-0007gZ-DP
+	for qemu-arm@nongnu.org; Wed, 14 Dec 2016 18:19:39 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1cHEK5-0007o6-If
-	for qemu-arm@nongnu.org; Wed, 14 Dec 2016 13:30:42 -0500
-Received: from mail-vk0-f42.google.com ([209.85.213.42]:35494)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1cHEK5-0007na-9u
-	for qemu-arm@nongnu.org; Wed, 14 Dec 2016 13:30:37 -0500
-Received: by mail-vk0-f42.google.com with SMTP id w194so40874506vkw.2
-	for <qemu-arm@nongnu.org>; Wed, 14 Dec 2016 10:30:37 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=MsxeUsjOaw98ag+Q/IKAaky43UTIO1JEe8mJnrYe4H4=;
-	b=OqrnXXLA+RjW30qSrhyrI5T9BQow9UQRhriV4ncLJwxDdI+8OXEy7SSjGInZH1eHtP
-	bNLEzY6iJQvRRTn4uwecnRC5/hzIdJ3plMaI17gpNauhXRNdjDutB/7h1OsdV5HIMhA/
-	88m6ARLnEn0JNFbq9YQVgFkciyOjYIJbsdcw4=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=MsxeUsjOaw98ag+Q/IKAaky43UTIO1JEe8mJnrYe4H4=;
-	b=ra1cNpvXGXnVB73+UL4+0/6/0xmRRsMIfpiYC5h03658bDsac5IHk4K2gKer1JNbWg
-	NB5tquKCk8vkXUYoYzFQlU4h3XslAuikzDLsGssa6Zj8CySrhZrv4d/x6GvP4FkgMMor
-	5547YsE2yIJTqZWhWKUOkiV1dnMfPhP++5+4e76+UF2eNIiTLuQAd2/tuyKh5K2TrSxv
-	ojXyzt40aEV5LFZOpHsNdFN6qlwTRThMFxquev3D2CEGXTH6/jKO96gCbe80WaRyIOkh
-	6kXuRmqkRt7XAZUgfMTMrDoCQYK0n00W2sC1mMaYNk3HLzO2vVwSntdx3NWUFHdgngfM
-	IVCA==
-X-Gm-Message-State: AKaTC02xJ1uDfK9vy2Kt0azGAL1UQg5GpiKsFVwh7ddkJexdL7nZ9DkV3pwOm2rfL+gZqtIfE1idwfM/eNn6zyol
-X-Received: by 10.31.79.132 with SMTP id d126mr45848812vkb.165.1481740171992; 
-	Wed, 14 Dec 2016 10:29:31 -0800 (PST)
-MIME-Version: 1.0
-Received: by 10.31.176.14 with HTTP; Wed, 14 Dec 2016 10:29:11 -0800 (PST)
-In-Reply-To: <20161202054617.6749-5-alastair@au1.ibm.com>
+	(envelope-from <alastair@au1.ibm.com>) id 1cHIph-0002ZQ-Gp
+	for qemu-arm@nongnu.org; Wed, 14 Dec 2016 18:19:38 -0500
+Received: from mx0a-001b2d01.pphosted.com ([148.163.156.1]:50258)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <alastair@au1.ibm.com>)
+	id 1cHIph-0002Yk-7G
+	for qemu-arm@nongnu.org; Wed, 14 Dec 2016 18:19:33 -0500
+Received: from pps.filterd (m0098404.ppops.net [127.0.0.1])
+	by mx0a-001b2d01.pphosted.com (8.16.0.17/8.16.0.17) with SMTP id
+	uBENIWpA036460
+	for <qemu-arm@nongnu.org>; Wed, 14 Dec 2016 18:19:30 -0500
+Received: from e23smtp07.au.ibm.com (e23smtp07.au.ibm.com [202.81.31.140])
+	by mx0a-001b2d01.pphosted.com with ESMTP id 27bdm8wd2y-1
+	(version=TLSv1.2 cipher=AES256-SHA bits=256 verify=NOT)
+	for <qemu-arm@nongnu.org>; Wed, 14 Dec 2016 18:19:30 -0500
+Received: from localhost
+	by e23smtp07.au.ibm.com with IBM ESMTP SMTP Gateway: Authorized Use
+	Only! Violators will be prosecuted
+	for <qemu-arm@nongnu.org> from <alastair@au1.ibm.com>;
+	Thu, 15 Dec 2016 09:19:28 +1000
+Received: from d23dlp03.au.ibm.com (202.81.31.214)
+	by e23smtp07.au.ibm.com (202.81.31.204) with IBM ESMTP SMTP Gateway:
+	Authorized Use Only! Violators will be prosecuted; 
+	Thu, 15 Dec 2016 09:19:25 +1000
+Received: from d23relay08.au.ibm.com (d23relay08.au.ibm.com [9.185.71.33])
+	by d23dlp03.au.ibm.com (Postfix) with ESMTP id 3A4543578052;
+	Thu, 15 Dec 2016 10:19:25 +1100 (EST)
+Received: from d23av04.au.ibm.com (d23av04.au.ibm.com [9.190.235.139])
+	by d23relay08.au.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
+	uBENJPuw52232430; Thu, 15 Dec 2016 10:19:25 +1100
+Received: from d23av04.au.ibm.com (localhost [127.0.0.1])
+	by d23av04.au.ibm.com (8.14.4/8.14.4/NCO v10.0 AVout) with ESMTP id
+	uBENJO5H011402; Thu, 15 Dec 2016 10:19:25 +1100
+Received: from ozlabs.au.ibm.com (ozlabs.au.ibm.com [9.192.253.14])
+	by d23av04.au.ibm.com (8.14.4/8.14.4/NCO v10.0 AVin) with ESMTP id
+	uBENJOVh011394; Thu, 15 Dec 2016 10:19:24 +1100
+Received: from adsilva.ozlabs.ibm.com (haven.au.ibm.com [9.192.254.114])
+	(using TLSv1.2 with cipher AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by ozlabs.au.ibm.com (Postfix) with ESMTPSA id 10341A0138;
+	Thu, 15 Dec 2016 10:19:24 +1100 (AEDT)
+From: "Alastair D'Silva" <alastair@au1.ibm.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 15 Dec 2016 10:19:23 +1100
+In-Reply-To: <CAFEAcA8__YWN9f2=GDeX5ddFnV_WWknpdrUeVud9-YLu9cE0Pw@mail.gmail.com>
 References: <20161202054617.6749-1-alastair@au1.ibm.com>
 	<20161202054617.6749-5-alastair@au1.ibm.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Wed, 14 Dec 2016 18:29:11 +0000
-Message-ID: <CAFEAcA8__YWN9f2=GDeX5ddFnV_WWknpdrUeVud9-YLu9cE0Pw@mail.gmail.com>
-To: "Alastair D'Silva" <alastair@au1.ibm.com>
-Content-Type: text/plain; charset=UTF-8
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.85.213.42
+	<CAFEAcA8__YWN9f2=GDeX5ddFnV_WWknpdrUeVud9-YLu9cE0Pw@mail.gmail.com>
+Organization: IBM Australia
+Content-Type: text/plain; charset="UTF-8"
+X-Mailer: Evolution 3.22.2 (3.22.2-1.fc25) 
+Mime-Version: 1.0
+X-TM-AS-MML: disable
+X-Content-Scanned: Fidelis XPS MAILER
+x-cbid: 16121423-0044-0000-0000-0000021216C1
+X-IBM-AV-DETECTION: SAVI=unused REMOTE=unused XFE=unused
+x-cbparentid: 16121423-0045-0000-0000-0000062E77D6
+Message-Id: <1481757563.17769.17.camel@au1.ibm.com>
+X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10432:, ,
+	definitions=2016-12-14_15:, , signatures=0
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+	spamscore=0 suspectscore=0
+	malwarescore=0 phishscore=0 adultscore=0 bulkscore=0 classifier=spam
+	adjust=0 reason=mlx scancount=1 engine=8.0.1-1612050000
+	definitions=main-1612140357
+Content-Transfer-Encoding: base64
+X-MIME-Autoconverted: from 8bit to base64 by mx0a-001b2d01.pphosted.com id
+	uBENIWpA036460
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [generic] [fuzzy]
+X-Received-From: 148.163.156.1
 Subject: Re: [Qemu-arm] [PATCH v3 4/7] qtest: Support named interrupts
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
@@ -77,220 +103,150 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jeffery <andrew@aj.id.au>, QEMU Developers <qemu-devel@nongnu.org>,
-	qemu-arm <qemu-arm@nongnu.org>, Joel Stanley <joel@jms.id.au>,
-	Alastair D'Silva <alastair@d-silva.org>,
-	=?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+Cc: Andrew Jeffery <andrew@aj.id.au>, qemu-arm <qemu-arm@nongnu.org>,
+	Joel Stanley <joel@jms.id.au>, QEMU Developers <qemu-devel@nongnu.org>,
+	=?ISO-8859-1?Q?C=E9dric?= Le Goater <clg@kaod.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: NcFT7oaHVzf8
+X-TUID: sAc6tU2q2JYc
 
-On 2 December 2016 at 05:46, Alastair D'Silva <alastair@au1.ibm.com> wrote:
-> From: Alastair D'Silva <alastair@d-silva.org>
->
-> The QTest framework cannot work with named interrupts. This patch
-> adds support for them, as well as the ability to manipulate them
-> from within a test.
->
-> Read actions are via callbacks, which allows for pulsed interrupts
-> to be read (the polled method used for the unnamed interrupts
-> cannot read pulsed interrupts as the value is reverted before the
-> test sees the changes).
->
-> Signed-off-by: Alastair D'Silva <alastair@d-silva.org>
-
-> --- a/qtest.c
-> +++ b/qtest.c
-> @@ -40,7 +40,6 @@ static DeviceState *irq_intercept_dev;
->  static FILE *qtest_log_fp;
->  static CharBackend qtest_chr;
->  static GString *inbuf;
-> -static int irq_levels[MAX_IRQ];
->  static qemu_timeval start_time;
->  static bool qtest_opened;
->
-> @@ -160,10 +159,16 @@ static bool qtest_opened;
->   *
->   *  IRQ raise NUM
->   *  IRQ lower NUM
-> + *  IRQ_NAMED NAME NUM LEVEL
-
-I think we should be consistent about the protocol here:
-unnamed IRQs get 'raise' and 'lower' messages, so we should
-do the same for named IRQs.
-
->   *
->   * where NUM is an IRQ number.  For the PC, interrupts can be intercepted
->   * simply with "irq_intercept_in ioapic" (note that IRQ0 comes out with
->   * NUM=0 even though it is remapped to GSI 2).
-> + *
-> + *  > irq_set NAME NUM LEVEL
-> + *  < OK
-> + *
-> + *  Set the named input IRQ to the level (0/1)
-
-I think adding support for raising and lowering device IRQs
-should be a separate patch, as it's a different feature.
-(I'm also not sure we should need it -- devices will be
-wired into the system, and qtest is testing the whole
-system from the point of view of the CPU. The CPU can't
-arbitrarily reach in and assert a device's outgoing
-interrupt line, so I'm not sure the tests should be able
-to do it either.)
-
-(Everything else below here is trivial fixes.)
-
->   */
->
->  static int hex2nib(char ch)
-> @@ -243,17 +248,31 @@ static void GCC_FMT_ATTR(2, 3) qtest_sendf(CharBackend *chr,
->      va_end(ap);
->  }
->
-> +typedef struct qtest_irq {
-> +    qemu_irq old_irq;
-> +    char *name;
-> +    bool last_level;
-> +} qtest_irq;
-> +
->  static void qtest_irq_handler(void *opaque, int n, int level)
->  {
-> -    qemu_irq old_irq = *(qemu_irq *)opaque;
-> -    qemu_set_irq(old_irq, level);
-> +    qtest_irq *data = (qtest_irq *)opaque;
-> +    level = !!level;
-> +
-> +    qemu_set_irq(data->old_irq, level);
->
-> -    if (irq_levels[n] != level) {
-> +    if (level != data->last_level) {
->          CharBackend *chr = &qtest_chr;
-> -        irq_levels[n] = level;
->          qtest_send_prefix(chr);
-> -        qtest_sendf(chr, "IRQ %s %d\n",
-> -                    level ? "raise" : "lower", n);
-> +
-> +        if (data->name) {
-> +            qtest_sendf(chr, "IRQ_NAMED %s %d %d\n",
-> +                    data->name, n, level);
-> +        } else {
-> +            qtest_sendf(chr, "IRQ %s %d\n", level ? "raise" : "lower", n);
-> +        }
-> +
-> +        data->last_level = level;
->      }
->  }
->
-> @@ -289,7 +308,7 @@ static void qtest_process_command(CharBackend *chr, gchar **words)
->          if (!dev) {
->              qtest_send_prefix(chr);
->              qtest_send(chr, "FAIL Unknown device\n");
-> -           return;
-> +            return;
->          }
->
->          if (irq_intercept_dev) {
-> @@ -299,33 +318,73 @@ static void qtest_process_command(CharBackend *chr, gchar **words)
->              } else {
->                  qtest_send(chr, "OK\n");
->              }
-> -           return;
-> +            return;
->          }
-
-Fixing whitespace issues is generally best done in a separate patch.
-
-
-> diff --git a/tests/libqtest.c b/tests/libqtest.c
-> index 6f69752..36b3960 100644
-> --- a/tests/libqtest.c
-> +++ b/tests/libqtest.c
-> @@ -21,12 +21,16 @@
->  #include <sys/wait.h>
->  #include <sys/un.h>
->
-> +#include <glib.h>
-> +
-
-osdep.h pulls in glib for you.
-
->  #include "qapi/qmp/json-parser.h"
->  #include "qapi/qmp/json-streamer.h"
->  #include "qapi/qmp/qjson.h"
->
-> +
-
-Stray whitespace change.
-
->  #define MAX_IRQ 256
->  #define SOCKET_TIMEOUT 50
-> +#define IRQ_KEY_LENGTH 64
->
->  QTestState *global_qtest;
-
-
-> @@ -346,6 +408,17 @@ redo:
->          g_strfreev(words);
->      }
->
-> +/* Defer processing of IRQ actions until all communications have been handled,
-> + * otherwise, interrupt handler that cause further communication can disrupt
-> + * the communication stream
-> + */
-
-Bad indent on this comment.
-
-> +    for (action_index = 0; action_index < action_count; action_index++) {
-> +        irq_action *action = actions[action_index];
-> +        action->cb(action->opaque, action->name, action->n,
-> +                action_raise[action_index]);
-> +        action->level = action_raise[action_index];
-> +    }
-> +
->      return words;
->  }
->
-
->  /**
-> + * irq_attach:
-> + * @name: the name of the gpio list containing the IRQ
-> + * @irq: The IRQ to attach to
-> + * @irq_cb: The callback to execute when the interrupt changes
-> + * @opaque: opaque info to pass to the callback
-> + *
-> + * Attach a callback to an intecepted interrupt
-> + */
-> +static inline void irq_attach(const char *name, int irq,
-> +        void (*irq_cb)(void *opaque, const char *name, int irq, bool level),
-> +        void *opaque)
-> +{
-> +    qtest_irq_attach(global_qtest, name, irq, irq_cb, opaque);
-> +}
-> +
-> +/**
-> + * qtest_irq_set
-
-Comment doesn't match function name (and missing ':').
-
-> + * Set an interrupt level
-> + * @id: the device to inject interrupts for
-> + * @gpiolist: the GPIO list containing the line to seh
-> + * @n: the line to set within the list
-> + * @level: the IRQ level
-> + */
-> +static inline void irq_set(const char *id, const char *gpiolist, int n,
-> +        bool level)
-> +{
-> +    qtest_irq_set(global_qtest, id, gpiolist, n, level);
-> +}
-> +
-> +
-> +/**
->   * outb:
->   * @addr: I/O port to write to.
->   * @value: Value being written.
-> --
-> 2.9.3
-
-thanks
--- PMM
+DQpPbiBXZWQsIDIwMTYtMTItMTQgYXQgMTg6MjkgKzAwMDAsIFBldGVyIE1heWRlbGwgd3Jv
+dGU6DQo+IE9uIDIgRGVjZW1iZXIgMjAxNiBhdCAwNTo0NiwgQWxhc3RhaXIgRCdTaWx2YSA8
+YWxhc3RhaXJAYXUxLmlibS5jb20+DQo+IHdyb3RlOg0KPiA+IEZyb206IEFsYXN0YWlyIEQn
+U2lsdmEgPGFsYXN0YWlyQGQtc2lsdmEub3JnPg0KPiA+IA0KPiA+IFRoZSBRVGVzdCBmcmFt
+ZXdvcmsgY2Fubm90IHdvcmsgd2l0aCBuYW1lZCBpbnRlcnJ1cHRzLiBUaGlzIHBhdGNoDQo+
+ID4gYWRkcyBzdXBwb3J0IGZvciB0aGVtLCBhcyB3ZWxsIGFzIHRoZSBhYmlsaXR5IHRvIG1h
+bmlwdWxhdGUgdGhlbQ0KPiA+IGZyb20gd2l0aGluIGEgdGVzdC4NCj4gPiANCj4gPiBSZWFk
+IGFjdGlvbnMgYXJlIHZpYSBjYWxsYmFja3MsIHdoaWNoIGFsbG93cyBmb3IgcHVsc2VkIGlu
+dGVycnVwdHMNCj4gPiB0byBiZSByZWFkICh0aGUgcG9sbGVkIG1ldGhvZCB1c2VkIGZvciB0
+aGUgdW5uYW1lZCBpbnRlcnJ1cHRzDQo+ID4gY2Fubm90IHJlYWQgcHVsc2VkIGludGVycnVw
+dHMgYXMgdGhlIHZhbHVlIGlzIHJldmVydGVkIGJlZm9yZSB0aGUNCj4gPiB0ZXN0IHNlZXMg
+dGhlIGNoYW5nZXMpLg0KPiA+IA0KPiA+IFNpZ25lZC1vZmYtYnk6IEFsYXN0YWlyIEQnU2ls
+dmEgPGFsYXN0YWlyQGQtc2lsdmEub3JnPg0KPiA+IC0tLSBhL3F0ZXN0LmMNCj4gPiArKysg
+Yi9xdGVzdC5jDQo+ID4gQEAgLTQwLDcgKzQwLDYgQEAgc3RhdGljIERldmljZVN0YXRlICpp
+cnFfaW50ZXJjZXB0X2RldjsNCj4gPiDCoHN0YXRpYyBGSUxFICpxdGVzdF9sb2dfZnA7DQo+
+ID4gwqBzdGF0aWMgQ2hhckJhY2tlbmQgcXRlc3RfY2hyOw0KPiA+IMKgc3RhdGljIEdTdHJp
+bmcgKmluYnVmOw0KPiA+IC1zdGF0aWMgaW50IGlycV9sZXZlbHNbTUFYX0lSUV07DQo+ID4g
+wqBzdGF0aWMgcWVtdV90aW1ldmFsIHN0YXJ0X3RpbWU7DQo+ID4gwqBzdGF0aWMgYm9vbCBx
+dGVzdF9vcGVuZWQ7DQo+ID4gDQo+ID4gQEAgLTE2MCwxMCArMTU5LDE2IEBAIHN0YXRpYyBi
+b29sIHF0ZXN0X29wZW5lZDsNCj4gPiDCoCAqDQo+ID4gwqAgKsKgwqBJUlEgcmFpc2UgTlVN
+DQo+ID4gwqAgKsKgwqBJUlEgbG93ZXIgTlVNDQo+ID4gKyAqwqDCoElSUV9OQU1FRCBOQU1F
+IE5VTSBMRVZFTA0KPiANCj4gSSB0aGluayB3ZSBzaG91bGQgYmUgY29uc2lzdGVudCBhYm91
+dCB0aGUgcHJvdG9jb2wgaGVyZToNCj4gdW5uYW1lZCBJUlFzIGdldCAncmFpc2UnIGFuZCAn
+bG93ZXInIG1lc3NhZ2VzLCBzbyB3ZSBzaG91bGQNCj4gZG8gdGhlIHNhbWUgZm9yIG5hbWVk
+IElSUXMuDQo+IA0KDQpPaw0KDQo+ID4gwqAgKg0KPiA+IMKgICogd2hlcmUgTlVNIGlzIGFu
+IElSUSBudW1iZXIuwqDCoEZvciB0aGUgUEMsIGludGVycnVwdHMgY2FuIGJlDQo+ID4gaW50
+ZXJjZXB0ZWQNCj4gPiDCoCAqIHNpbXBseSB3aXRoICJpcnFfaW50ZXJjZXB0X2luIGlvYXBp
+YyIgKG5vdGUgdGhhdCBJUlEwIGNvbWVzIG91dA0KPiA+IHdpdGgNCj4gPiDCoCAqIE5VTT0w
+IGV2ZW4gdGhvdWdoIGl0IGlzIHJlbWFwcGVkIHRvIEdTSSAyKS4NCj4gPiArICoNCj4gPiAr
+ICrCoMKgPiBpcnFfc2V0IE5BTUUgTlVNIExFVkVMDQo+ID4gKyAqwqDCoDwgT0sNCj4gPiAr
+ICoNCj4gPiArICrCoMKgU2V0IHRoZSBuYW1lZCBpbnB1dCBJUlEgdG8gdGhlIGxldmVsICgw
+LzEpDQo+IA0KPiBJIHRoaW5rIGFkZGluZyBzdXBwb3J0IGZvciByYWlzaW5nIGFuZCBsb3dl
+cmluZyBkZXZpY2UgSVJRcw0KPiBzaG91bGQgYmUgYSBzZXBhcmF0ZSBwYXRjaCwgYXMgaXQn
+cyBhIGRpZmZlcmVudCBmZWF0dXJlLg0KPiAoSSdtIGFsc28gbm90IHN1cmUgd2Ugc2hvdWxk
+IG5lZWQgaXQgLS0gZGV2aWNlcyB3aWxsIGJlDQo+IHdpcmVkIGludG8gdGhlIHN5c3RlbSwg
+YW5kIHF0ZXN0IGlzIHRlc3RpbmcgdGhlIHdob2xlDQo+IHN5c3RlbSBmcm9tIHRoZSBwb2lu
+dCBvZiB2aWV3IG9mIHRoZSBDUFUuIFRoZSBDUFUgY2FuJ3QNCj4gYXJiaXRyYXJpbHkgcmVh
+Y2ggaW4gYW5kIGFzc2VydCBhIGRldmljZSdzIG91dGdvaW5nDQo+IGludGVycnVwdCBsaW5l
+LCBzbyBJJ20gbm90IHN1cmUgdGhlIHRlc3RzIHNob3VsZCBiZSBhYmxlDQo+IHRvIGRvIGl0
+IGVpdGhlci4pDQo+IA0KDQpVbmZvcnR1bmF0ZWx5LCBmcm9tIHdoYXQgSSBjYW4gc2VlLCB0
+aGUgY29uY2VwdHMgb2YgR1BJTyBsaW5lcyAmIElSUXMNCmFyZSBhIGJpdCBtaXhlZCB1cCBp
+biBRZW11LiBUaGUgdXNlIGNhc2UgSSBoYXZlIGlzIHRoYXQgYW4gaW5wdXQgbGluZQ0KdG8g
+dGhlIGNoaXAgKG5vdCBhbiBvdXRwdXQpIG5lZWRzIHRvIGJlIGFzc2VydGVkIGR1cmluZyB0
+aGUgdGVzdCB0bw0KY2hhbmdlIGl0J3MgYmVoYXZpb3VyLg0KDQo+IChFdmVyeXRoaW5nIGVs
+c2UgYmVsb3cgaGVyZSBpcyB0cml2aWFsIGZpeGVzLikNCj4gDQo+ID4gwqAgKi8NCj4gPiAN
+Cj4gPiDCoHN0YXRpYyBpbnQgaGV4Mm5pYihjaGFyIGNoKQ0KPiA+IEBAIC0yNDMsMTcgKzI0
+OCwzMSBAQCBzdGF0aWMgdm9pZCBHQ0NfRk1UX0FUVFIoMiwgMykNCj4gPiBxdGVzdF9zZW5k
+ZihDaGFyQmFja2VuZCAqY2hyLA0KPiA+IMKgwqDCoMKgwqB2YV9lbmQoYXApOw0KPiA+IMKg
+fQ0KPiA+IA0KPiA+ICt0eXBlZGVmIHN0cnVjdCBxdGVzdF9pcnEgew0KPiA+ICvCoMKgwqDC
+oHFlbXVfaXJxIG9sZF9pcnE7DQo+ID4gK8KgwqDCoMKgY2hhciAqbmFtZTsNCj4gPiArwqDC
+oMKgwqBib29sIGxhc3RfbGV2ZWw7DQo+ID4gK30gcXRlc3RfaXJxOw0KPiA+ICsNCj4gPiDC
+oHN0YXRpYyB2b2lkIHF0ZXN0X2lycV9oYW5kbGVyKHZvaWQgKm9wYXF1ZSwgaW50IG4sIGlu
+dCBsZXZlbCkNCj4gPiDCoHsNCj4gPiAtwqDCoMKgwqBxZW11X2lycSBvbGRfaXJxID0gKihx
+ZW11X2lycSAqKW9wYXF1ZTsNCj4gPiAtwqDCoMKgwqBxZW11X3NldF9pcnEob2xkX2lycSwg
+bGV2ZWwpOw0KPiA+ICvCoMKgwqDCoHF0ZXN0X2lycSAqZGF0YSA9IChxdGVzdF9pcnEgKilv
+cGFxdWU7DQo+ID4gK8KgwqDCoMKgbGV2ZWwgPSAhIWxldmVsOw0KPiA+ICsNCj4gPiArwqDC
+oMKgwqBxZW11X3NldF9pcnEoZGF0YS0+b2xkX2lycSwgbGV2ZWwpOw0KPiA+IA0KPiA+IC3C
+oMKgwqDCoGlmIChpcnFfbGV2ZWxzW25dICE9IGxldmVsKSB7DQo+ID4gK8KgwqDCoMKgaWYg
+KGxldmVsICE9IGRhdGEtPmxhc3RfbGV2ZWwpIHsNCj4gPiDCoMKgwqDCoMKgwqDCoMKgwqBD
+aGFyQmFja2VuZCAqY2hyID0gJnF0ZXN0X2NocjsNCj4gPiAtwqDCoMKgwqDCoMKgwqDCoGly
+cV9sZXZlbHNbbl0gPSBsZXZlbDsNCj4gPiDCoMKgwqDCoMKgwqDCoMKgwqBxdGVzdF9zZW5k
+X3ByZWZpeChjaHIpOw0KPiA+IC3CoMKgwqDCoMKgwqDCoMKgcXRlc3Rfc2VuZGYoY2hyLCAi
+SVJRICVzICVkXG4iLA0KPiA+IC3CoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
+wqDCoMKgbGV2ZWwgPyAicmFpc2UiIDogImxvd2VyIiwgbik7DQo+ID4gKw0KPiA+ICvCoMKg
+wqDCoMKgwqDCoMKgaWYgKGRhdGEtPm5hbWUpIHsNCj4gPiArwqDCoMKgwqDCoMKgwqDCoMKg
+wqDCoMKgcXRlc3Rfc2VuZGYoY2hyLCAiSVJRX05BTUVEICVzICVkICVkXG4iLA0KPiA+ICvC
+oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgZGF0YS0+bmFtZSwgbiwg
+bGV2ZWwpOw0KPiA+ICvCoMKgwqDCoMKgwqDCoMKgfSBlbHNlIHsNCj4gPiArwqDCoMKgwqDC
+oMKgwqDCoMKgwqDCoMKgcXRlc3Rfc2VuZGYoY2hyLCAiSVJRICVzICVkXG4iLCBsZXZlbCA/
+ICJyYWlzZSIgOg0KPiA+ICJsb3dlciIsIG4pOw0KPiA+ICvCoMKgwqDCoMKgwqDCoMKgfQ0K
+PiA+ICsNCj4gPiArwqDCoMKgwqDCoMKgwqDCoGRhdGEtPmxhc3RfbGV2ZWwgPSBsZXZlbDsN
+Cj4gPiDCoMKgwqDCoMKgfQ0KPiA+IMKgfQ0KPiA+IA0KPiA+IEBAIC0yODksNyArMzA4LDcg
+QEAgc3RhdGljIHZvaWQgcXRlc3RfcHJvY2Vzc19jb21tYW5kKENoYXJCYWNrZW5kDQo+ID4g
+KmNociwgZ2NoYXIgKip3b3JkcykNCj4gPiDCoMKgwqDCoMKgwqDCoMKgwqBpZiAoIWRldikg
+ew0KPiA+IMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgcXRlc3Rfc2VuZF9wcmVmaXgoY2hy
+KTsNCj4gPiDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoHF0ZXN0X3NlbmQoY2hyLCAiRkFJ
+TCBVbmtub3duIGRldmljZVxuIik7DQo+ID4gLcKgwqDCoMKgwqDCoMKgwqDCoMKgwqByZXR1
+cm47DQo+ID4gK8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoHJldHVybjsNCj4gPiDCoMKgwqDC
+oMKgwqDCoMKgwqB9DQo+ID4gDQo+ID4gwqDCoMKgwqDCoMKgwqDCoMKgaWYgKGlycV9pbnRl
+cmNlcHRfZGV2KSB7DQo+ID4gQEAgLTI5OSwzMyArMzE4LDczIEBAIHN0YXRpYyB2b2lkIHF0
+ZXN0X3Byb2Nlc3NfY29tbWFuZChDaGFyQmFja2VuZA0KPiA+ICpjaHIsIGdjaGFyICoqd29y
+ZHMpDQo+ID4gwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqB9IGVsc2Ugew0KPiA+IMKgwqDC
+oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqBxdGVzdF9zZW5kKGNociwgIk9LXG4iKTsN
+Cj4gPiDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoH0NCj4gPiAtwqDCoMKgwqDCoMKgwqDC
+oMKgwqDCoHJldHVybjsNCj4gPiArwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgcmV0dXJuOw0K
+PiA+IMKgwqDCoMKgwqDCoMKgwqDCoH0NCj4gDQo+IEZpeGluZyB3aGl0ZXNwYWNlIGlzc3Vl
+cyBpcyBnZW5lcmFsbHkgYmVzdCBkb25lIGluIGEgc2VwYXJhdGUgcGF0Y2guDQo+IA0KDQpP
+aw0KDQo+IA0KPiA+IGRpZmYgLS1naXQgYS90ZXN0cy9saWJxdGVzdC5jIGIvdGVzdHMvbGli
+cXRlc3QuYw0KPiA+IGluZGV4IDZmNjk3NTIuLjM2YjM5NjAgMTAwNjQ0DQo+ID4gLS0tIGEv
+dGVzdHMvbGlicXRlc3QuYw0KPiA+ICsrKyBiL3Rlc3RzL2xpYnF0ZXN0LmMNCj4gPiBAQCAt
+MjEsMTIgKzIxLDE2IEBADQo+ID4gwqAjaW5jbHVkZSA8c3lzL3dhaXQuaD4NCj4gPiDCoCNp
+bmNsdWRlIDxzeXMvdW4uaD4NCj4gPiANCj4gPiArI2luY2x1ZGUgPGdsaWIuaD4NCj4gPiAr
+DQo+IA0KPiBvc2RlcC5oIHB1bGxzIGluIGdsaWIgZm9yIHlvdS4NCj4gDQoNCk9rDQoNCj4g
+PiDCoCNpbmNsdWRlICJxYXBpL3FtcC9qc29uLXBhcnNlci5oIg0KPiA+IMKgI2luY2x1ZGUg
+InFhcGkvcW1wL2pzb24tc3RyZWFtZXIuaCINCj4gPiDCoCNpbmNsdWRlICJxYXBpL3FtcC9x
+anNvbi5oIg0KPiA+IA0KPiA+ICsNCj4gDQo+IFN0cmF5IHdoaXRlc3BhY2UgY2hhbmdlLg0K
+DQpPaw0KDQo+IA0KPiA+IMKgI2RlZmluZSBNQVhfSVJRIDI1Ng0KPiA+IMKgI2RlZmluZSBT
+T0NLRVRfVElNRU9VVCA1MA0KPiA+ICsjZGVmaW5lIElSUV9LRVlfTEVOR1RIIDY0DQo+ID4g
+DQo+ID4gwqBRVGVzdFN0YXRlICpnbG9iYWxfcXRlc3Q7DQo+IA0KPiANCj4gPiBAQCAtMzQ2
+LDYgKzQwOCwxNyBAQCByZWRvOg0KPiA+IMKgwqDCoMKgwqDCoMKgwqDCoGdfc3RyZnJlZXYo
+d29yZHMpOw0KPiA+IMKgwqDCoMKgwqB9DQo+ID4gDQo+ID4gKy8qIERlZmVyIHByb2Nlc3Np
+bmcgb2YgSVJRIGFjdGlvbnMgdW50aWwgYWxsIGNvbW11bmljYXRpb25zIGhhdmUNCj4gPiBi
+ZWVuIGhhbmRsZWQsDQo+ID4gKyAqIG90aGVyd2lzZSwgaW50ZXJydXB0IGhhbmRsZXIgdGhh
+dCBjYXVzZSBmdXJ0aGVyIGNvbW11bmljYXRpb24NCj4gPiBjYW4gZGlzcnVwdA0KPiA+ICsg
+KiB0aGUgY29tbXVuaWNhdGlvbiBzdHJlYW0NCj4gPiArICovDQo+IA0KPiBCYWQgaW5kZW50
+IG9uIHRoaXMgY29tbWVudC4NCg0KT2sNCg0KPiANCj4gPiArwqDCoMKgwqBmb3IgKGFjdGlv
+bl9pbmRleCA9IDA7IGFjdGlvbl9pbmRleCA8IGFjdGlvbl9jb3VudDsNCj4gPiBhY3Rpb25f
+aW5kZXgrKykgew0KPiA+ICvCoMKgwqDCoMKgwqDCoMKgaXJxX2FjdGlvbiAqYWN0aW9uID0g
+YWN0aW9uc1thY3Rpb25faW5kZXhdOw0KPiA+ICvCoMKgwqDCoMKgwqDCoMKgYWN0aW9uLT5j
+YihhY3Rpb24tPm9wYXF1ZSwgYWN0aW9uLT5uYW1lLCBhY3Rpb24tPm4sDQo+ID4gK8KgwqDC
+oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgYWN0aW9uX3JhaXNlW2FjdGlvbl9pbmRleF0p
+Ow0KPiA+ICvCoMKgwqDCoMKgwqDCoMKgYWN0aW9uLT5sZXZlbCA9IGFjdGlvbl9yYWlzZVth
+Y3Rpb25faW5kZXhdOw0KPiA+ICvCoMKgwqDCoH0NCj4gPiArDQo+ID4gwqDCoMKgwqDCoHJl
+dHVybiB3b3JkczsNCj4gPiDCoH0NCj4gPiANCj4gPiDCoC8qKg0KPiA+ICsgKiBpcnFfYXR0
+YWNoOg0KPiA+ICsgKiBAbmFtZTogdGhlIG5hbWUgb2YgdGhlIGdwaW8gbGlzdCBjb250YWlu
+aW5nIHRoZSBJUlENCj4gPiArICogQGlycTogVGhlIElSUSB0byBhdHRhY2ggdG8NCj4gPiAr
+ICogQGlycV9jYjogVGhlIGNhbGxiYWNrIHRvIGV4ZWN1dGUgd2hlbiB0aGUgaW50ZXJydXB0
+IGNoYW5nZXMNCj4gPiArICogQG9wYXF1ZTogb3BhcXVlIGluZm8gdG8gcGFzcyB0byB0aGUg
+Y2FsbGJhY2sNCj4gPiArICoNCj4gPiArICogQXR0YWNoIGEgY2FsbGJhY2sgdG8gYW4gaW50
+ZWNlcHRlZCBpbnRlcnJ1cHQNCj4gPiArICovDQo+ID4gK3N0YXRpYyBpbmxpbmUgdm9pZCBp
+cnFfYXR0YWNoKGNvbnN0IGNoYXIgKm5hbWUsIGludCBpcnEsDQo+ID4gK8KgwqDCoMKgwqDC
+oMKgwqB2b2lkICgqaXJxX2NiKSh2b2lkICpvcGFxdWUsIGNvbnN0IGNoYXIgKm5hbWUsIGlu
+dCBpcnEsDQo+ID4gYm9vbCBsZXZlbCksDQo+ID4gK8KgwqDCoMKgwqDCoMKgwqB2b2lkICpv
+cGFxdWUpDQo+ID4gK3sNCj4gPiArwqDCoMKgwqBxdGVzdF9pcnFfYXR0YWNoKGdsb2JhbF9x
+dGVzdCwgbmFtZSwgaXJxLCBpcnFfY2IsIG9wYXF1ZSk7DQo+ID4gK30NCj4gPiArDQo+ID4g
+Ky8qKg0KPiA+ICsgKiBxdGVzdF9pcnFfc2V0DQo+IA0KPiBDb21tZW50IGRvZXNuJ3QgbWF0
+Y2ggZnVuY3Rpb24gbmFtZSAoYW5kIG1pc3NpbmcgJzonKS4NCj4gDQoNCk9rDQoNCj4gPiAr
+ICogU2V0IGFuIGludGVycnVwdCBsZXZlbA0KPiA+ICsgKiBAaWQ6IHRoZSBkZXZpY2UgdG8g
+aW5qZWN0IGludGVycnVwdHMgZm9yDQo+ID4gKyAqIEBncGlvbGlzdDogdGhlIEdQSU8gbGlz
+dCBjb250YWluaW5nIHRoZSBsaW5lIHRvIHNlaA0KPiA+ICsgKiBAbjogdGhlIGxpbmUgdG8g
+c2V0IHdpdGhpbiB0aGUgbGlzdA0KPiA+ICsgKiBAbGV2ZWw6IHRoZSBJUlEgbGV2ZWwNCj4g
+PiArICovDQo+ID4gK3N0YXRpYyBpbmxpbmUgdm9pZCBpcnFfc2V0KGNvbnN0IGNoYXIgKmlk
+LCBjb25zdCBjaGFyICpncGlvbGlzdCwNCj4gPiBpbnQgbiwNCj4gPiArwqDCoMKgwqDCoMKg
+wqDCoGJvb2wgbGV2ZWwpDQo+ID4gK3sNCj4gPiArwqDCoMKgwqBxdGVzdF9pcnFfc2V0KGds
+b2JhbF9xdGVzdCwgaWQsIGdwaW9saXN0LCBuLCBsZXZlbCk7DQo+ID4gK30NCj4gPiArDQo+
+ID4gKw0KPiA+ICsvKioNCj4gPiDCoCAqIG91dGI6DQo+ID4gwqAgKiBAYWRkcjogSS9PIHBv
+cnQgdG8gd3JpdGUgdG8uDQo+ID4gwqAgKiBAdmFsdWU6IFZhbHVlIGJlaW5nIHdyaXR0ZW4u
+DQo+ID4gLS0NCj4gPiAyLjkuMw0KPiANCj4gdGhhbmtzDQo+IC0tIFBNTQ0KPiANCg0KLS0g
+DQpBbGFzdGFpciBEJ1NpbHZhDQpPcGVuIFNvdXJjZSBEZXZlbG9wZXINCkxpbnV4IFRlY2hu
+b2xvZ3kgQ2VudHJlLCBJQk0gQXVzdHJhbGlhDQptb2I6IDA0MjMgNzYyIDgxOQ0KDQo=

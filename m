@@ -1,81 +1,74 @@
-Received: by 10.25.205.13 with SMTP id d13csp2279489lfg;
-        Tue, 13 Dec 2016 08:14:22 -0800 (PST)
-X-Received: by 10.200.37.52 with SMTP id 49mr81622802qtm.240.1481645662766;
-        Tue, 13 Dec 2016 08:14:22 -0800 (PST)
+Received: by 10.25.205.13 with SMTP id d13csp313694lfg;
+        Wed, 14 Dec 2016 09:11:33 -0800 (PST)
+X-Received: by 10.55.67.74 with SMTP id q71mr9198765qka.292.1481735493842;
+        Wed, 14 Dec 2016 09:11:33 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [208.118.235.17])
-        by mx.google.com with ESMTPS id l40si28327075qtf.193.2016.12.13.08.14.22
+        by mx.google.com with ESMTPS id k32si30371060qtc.136.2016.12.14.09.11.33
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 13 Dec 2016 08:14:22 -0800 (PST)
+        Wed, 14 Dec 2016 09:11:33 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) client-ip=208.118.235.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com;
+       dkim=fail header.i=@linaro.org;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:39218 helo=lists.gnu.org)
+       dmarc=fail (p=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:49052 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1cGpid-0005Aw-W1
-	for alex.bennee@linaro.org; Tue, 13 Dec 2016 11:14:20 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:57287)
+	id 1cHD5W-000384-TE
+	for alex.bennee@linaro.org; Wed, 14 Dec 2016 12:11:30 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:34420)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <edgar.iglesias@gmail.com>) id 1cGphL-0004Jb-Fp
-	for qemu-arm@nongnu.org; Tue, 13 Dec 2016 11:13:00 -0500
+	(envelope-from <peter.maydell@linaro.org>) id 1cHD5R-0002tH-2B
+	for qemu-arm@nongnu.org; Wed, 14 Dec 2016 12:11:26 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <edgar.iglesias@gmail.com>) id 1cGphI-0007bP-49
-	for qemu-arm@nongnu.org; Tue, 13 Dec 2016 11:12:59 -0500
-Received: from mail-lf0-f67.google.com ([209.85.215.67]:34339)
+	(envelope-from <peter.maydell@linaro.org>) id 1cHD5N-0001OX-22
+	for qemu-arm@nongnu.org; Wed, 14 Dec 2016 12:11:25 -0500
+Received: from mail-vk0-f46.google.com ([209.85.213.46]:34549)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <edgar.iglesias@gmail.com>)
-	id 1cGphH-0007at-Os; Tue, 13 Dec 2016 11:12:56 -0500
-Received: by mail-lf0-f67.google.com with SMTP id 96so394865lfs.1;
-	Tue, 13 Dec 2016 08:12:55 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=date:from:to:cc:subject:message-id:references:mime-version
-	:content-disposition:in-reply-to:user-agent;
-	bh=PmJomLpA01K6sUfiLE9/UrOh13ow3+GerXCJPSYBkGg=;
-	b=hjq8t9tpOi5iaoFbK+9zN2n6Hh9HJrM1pDAJTnFd4HKpwSpwmsfePXFE8xedo8koUI
-	XSXJFQ67vh5lnbWT68Hrflh55VwP2hlsAn5jcIeBZSFsZvX0mY6d1aSmgl6T68yFTrO1
-	kc8kknYepBDxfoE3sN/1ZmJus149vpBn4SDf1BJXk4Z0idX/iNvwQkiZc68Zg2nv8WcU
-	KW+u62Idi1PCg148r9hM47L3HiWpSGecsvF5hSPwyMYiDFbiZs2/D87hNXsE+BUHmt/Q
-	2Yv0MJzLg+nBIjUU8uWaQExGqaBs7UwPwX6V0SGPWDBLgcYodhDb8AbUn7HdpnnJN9fF
-	2YeQ==
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1cHD5M-0001O0-LD
+	for qemu-arm@nongnu.org; Wed, 14 Dec 2016 12:11:20 -0500
+Received: by mail-vk0-f46.google.com with SMTP id x186so37554871vkd.1
+	for <qemu-arm@nongnu.org>; Wed, 14 Dec 2016 09:11:20 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc:content-transfer-encoding;
+	bh=j0XfZNaIwKfm5A3os5kkzcKFkwSq0ealV3zbqtaHITk=;
+	b=Oz56L7olvcPnhfmu44uPphaio7W9yazXx5wojND5tRn6SZHowHMf9Ng+jeZDyFlyV/
+	52paF0HlBq5nabvN8eDEBf0uex3IJaOJZ78+miUTkanH1AMQIEzlKf3qbOJjM8SZgEkz
+	6oACx7jQZqmV50XVSvwhUVKmlZL0wKeJB4cgM=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:date:from:to:cc:subject:message-id:references
-	:mime-version:content-disposition:in-reply-to:user-agent;
-	bh=PmJomLpA01K6sUfiLE9/UrOh13ow3+GerXCJPSYBkGg=;
-	b=hph7Oxp1Om1PgAytLrFxbt0Jf/EtzhgTzkCI2bpOKWMPwXZru32h+pykQhM5qQfaKk
-	sZKKQ0RDX6bmdnGRZGHfREpeysTps2wIqyGPER/9o5a63ZX/iRZLNTDRB7R3GYMxE3Ds
-	Qi7QoGwQK9qEdPRDUNKICgLvXRIStXz2LBRlu/04IcNclZWlLQDFOuywKKq06/ghcw/J
-	QHV65zurg9Hb2FtczhVEYfiE7ecDCGIAEEalcNBHmIROAWASVv8gYCriPQqi8FVG9XMh
-	0IrhEFfmcAJqfmEfjLZBHgpuOSg0KVvINAVQ/AffwW6p8O/bSLwKRsvW+uQRCyNzLdUc
-	VnQw==
-X-Gm-Message-State: AKaTC010zMeQuLLZkOvK+1fVGm5wpAQO12ndOZ+l4hDEH3+9wcIdpKYRLMjH02bxEvu4bw==
-X-Received: by 10.25.215.102 with SMTP id o99mr26128279lfg.57.1481645514238;
-	Tue, 13 Dec 2016 08:11:54 -0800 (PST)
-Received: from localhost (81-231-233-234-no56.tbcn.telia.com. [81.231.233.234])
-	by smtp.gmail.com with ESMTPSA id
-	f25sm9888864lji.47.2016.12.13.08.11.53
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Tue, 13 Dec 2016 08:11:53 -0800 (PST)
-Date: Tue, 13 Dec 2016 17:11:52 +0100
-From: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Message-ID: <20161213161152.GN9606@toto>
-References: <1481625384-15077-1-git-send-email-peter.maydell@linaro.org>
-	<1481625384-15077-23-git-send-email-peter.maydell@linaro.org>
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc:content-transfer-encoding;
+	bh=j0XfZNaIwKfm5A3os5kkzcKFkwSq0ealV3zbqtaHITk=;
+	b=BkQiD/Reub6Et14LMKZRUE8l4qXG7j4ZKkrHrMPmJ/mSrBk9923W7HvEejogk8baYp
+	31Vgf2sidxFLEV1lVXQqFfqfNPG8zwbySqJ7kibRLAKFLMvZj1A+o2UZTITk0mPOVzhG
+	VEkQ2CFrJpNOIwpKphJcekU/CLqMKP+6GLEZ/3yHMOIO9opxdN5H5D/WQhuEfuu633z/
+	NSb3ljDgAHVvgYw5Crt0qOHnEproqX0lIp/JU6Piq9udJdeq6f86mbIuiw/7uIOTaRPV
+	6h9qyE8mtVFktogby4byX/F3TNcANhWnQcmxU1r06U/Cf9X/qTSkwL1hF8xUfK0mPcEV
+	3Kvg==
+X-Gm-Message-State: AKaTC01mgBnAz40Ob0oYxbi+vEoYTx25GzmnC4bgwv/L7Ug22EEZ7x7wqNu6jFDiT92mLpbCqt0hpRZB/NimDMld
+X-Received: by 10.31.16.36 with SMTP id g36mr39647419vki.170.1481735420027;
+	Wed, 14 Dec 2016 09:10:20 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <1481625384-15077-23-git-send-email-peter.maydell@linaro.org>
-User-Agent: Mutt/1.5.24 (2015-08-30)
+Received: by 10.31.176.14 with HTTP; Wed, 14 Dec 2016 09:09:59 -0800 (PST)
+In-Reply-To: <1480434248-27138-15-git-send-email-clg@kaod.org>
+References: <1480434248-27138-1-git-send-email-clg@kaod.org>
+	<1480434248-27138-15-git-send-email-clg@kaod.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Wed, 14 Dec 2016 17:09:59 +0000
+Message-ID: <CAFEAcA-E9Uq5YjSOGu9uNwbhAefqbs-0V7sVbCeeeg85NtSugQ@mail.gmail.com>
+To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 209.85.215.67
-Subject: Re: [Qemu-arm] [PATCH 22/23] target-arm: Enable EL2 feature bit on
- A53 and A57
+X-Received-From: 209.85.213.46
+Subject: Re: [Qemu-arm] [PATCH for-2.9 14/30] aspeed/smc: rework the
+ prototype of the AspeedSMCFlash helper routines
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -87,136 +80,109 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jones <drjones@redhat.com>, qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org, Christoffer Dall <christoffer.dall@linaro.org>,
-	patches@linaro.org
+Cc: Andrew Jeffery <andrew@aj.id.au>, qemu-arm <qemu-arm@nongnu.org>,
+	QEMU Developers <qemu-devel@nongnu.org>,
+	Marcin Krzeminski <marcin.krzeminski@nokia.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 0iVPBSvj0TW6
+X-TUID: DrJi4JeGjmlS
 
-On Tue, Dec 13, 2016 at 10:36:23AM +0000, Peter Maydell wrote:
-> Enable the ARM_FEATURE_EL2 bit on Cortex-A52 and
-> Cortex-A57, since this is all now sufficiently implemented
-> to work with the GICv3. We provide the usual CPU property
-> to disable it for backwards compatibility with the older
-> virt boards.
-> 
-> In this commit, we disable the EL2 feature on the
-> virt and ZynpMP boards, so there is no overall effect.
-> Another commit will expose a board-level property to
-> allow the user to enable EL2.
+On 29 November 2016 at 15:43, C=C3=A9dric Le Goater <clg@kaod.org> wrote:
+> Change the routines prototype to use a 'AspeedSMCFlash *' instead of
+> 'AspeedSMCState *'. The result will help in making future changes
+> clearer.
+>
+> Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
+> Reviewed-by: Joel Stanley <joel@jms.id.au>
+> Reviewed-by: Andrew Jeffery <andrew@aj.id.au>
 
-Reviewed-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
+This patch breaks 'make check' because the palmetto-bmc
+model now segfaults on startup:
 
+gdb --args ./build/x86/arm-softmmu/qemu-system-arm -M palmetto-bmc
+GNU gdb (Ubuntu 7.11.1-0ubuntu1~16.04) 7.11.1
+[...]
+(gdb) r
+Starting program:
+/home/petmay01/linaro/qemu-from-laptop/qemu/build/x86/arm-softmmu/qemu-syst=
+em-arm
+-M palmetto-bmc
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
+[New Thread 0x7fffd1270700 (LWP 30296)]
+[New Thread 0x7fffcfb97700 (LWP 30297)]
+[New Thread 0x7fffcf396700 (LWP 30298)]
+[New Thread 0x7fffceb95700 (LWP 30299)]
+[New Thread 0x7fffbf709700 (LWP 30300)]
 
-> 
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> ---
->  target-arm/cpu.h     |  2 ++
->  hw/arm/virt.c        |  4 ++++
->  hw/arm/xlnx-zynqmp.c |  2 ++
->  target-arm/cpu.c     | 12 ++++++++++++
->  target-arm/cpu64.c   |  2 ++
->  5 files changed, 22 insertions(+)
-> 
-> diff --git a/target-arm/cpu.h b/target-arm/cpu.h
-> index be42ffb..51165fa 100644
-> --- a/target-arm/cpu.h
-> +++ b/target-arm/cpu.h
-> @@ -574,6 +574,8 @@ struct ARMCPU {
->      bool start_powered_off;
->      /* CPU currently in PSCI powered-off state */
->      bool powered_off;
-> +    /* CPU has virtualization extension */
-> +    bool has_el2;
->      /* CPU has security extension */
->      bool has_el3;
->      /* CPU has PMU (Performance Monitor Unit) */
-> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-> index cce8d2e..5bde68c 100644
-> --- a/hw/arm/virt.c
-> +++ b/hw/arm/virt.c
-> @@ -1368,6 +1368,10 @@ static void machvirt_init(MachineState *machine)
->              object_property_set_bool(cpuobj, false, "has_el3", NULL);
->          }
->  
-> +        if (object_property_find(cpuobj, "has_el2", NULL)) {
-> +            object_property_set_bool(cpuobj, false, "has_el2", NULL);
-> +        }
-> +
->          if (vms->psci_conduit != QEMU_PSCI_CONDUIT_DISABLED) {
->              object_property_set_int(cpuobj, vms->psci_conduit,
->                                      "psci-conduit", NULL);
-> diff --git a/hw/arm/xlnx-zynqmp.c b/hw/arm/xlnx-zynqmp.c
-> index 0d86ba3..bc4e66b 100644
-> --- a/hw/arm/xlnx-zynqmp.c
-> +++ b/hw/arm/xlnx-zynqmp.c
-> @@ -258,6 +258,8 @@ static void xlnx_zynqmp_realize(DeviceState *dev, Error **errp)
->  
->          object_property_set_bool(OBJECT(&s->apu_cpu[i]),
->                                   s->secure, "has_el3", NULL);
-> +        object_property_set_bool(OBJECT(&s->apu_cpu[i]),
-> +                                 false, "has_el2", NULL);
->          object_property_set_int(OBJECT(&s->apu_cpu[i]), GIC_BASE_ADDR,
->                                  "reset-cbar", &error_abort);
->          object_property_set_bool(OBJECT(&s->apu_cpu[i]), true, "realized",
-> diff --git a/target-arm/cpu.c b/target-arm/cpu.c
-> index 5e0d21d..d721cd4 100644
-> --- a/target-arm/cpu.c
-> +++ b/target-arm/cpu.c
-> @@ -497,6 +497,9 @@ static Property arm_cpu_reset_hivecs_property =
->  static Property arm_cpu_rvbar_property =
->              DEFINE_PROP_UINT64("rvbar", ARMCPU, rvbar, 0);
->  
-> +static Property arm_cpu_has_el2_property =
-> +            DEFINE_PROP_BOOL("has_el2", ARMCPU, has_el2, true);
-> +
->  static Property arm_cpu_has_el3_property =
->              DEFINE_PROP_BOOL("has_el3", ARMCPU, has_el3, true);
->  
-> @@ -547,6 +550,11 @@ static void arm_cpu_post_init(Object *obj)
->  #endif
->      }
->  
-> +    if (arm_feature(&cpu->env, ARM_FEATURE_EL2)) {
-> +        qdev_property_add_static(DEVICE(obj), &arm_cpu_has_el2_property,
-> +                                 &error_abort);
-> +    }
-> +
->      if (arm_feature(&cpu->env, ARM_FEATURE_PMU)) {
->          qdev_property_add_static(DEVICE(obj), &arm_cpu_has_pmu_property,
->                                   &error_abort);
-> @@ -690,6 +698,10 @@ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
->          cpu->id_aa64pfr0 &= ~0xf000;
->      }
->  
-> +    if (!cpu->has_el2) {
-> +        unset_feature(env, ARM_FEATURE_EL2);
-> +    }
-> +
->      if (!cpu->has_pmu || !kvm_enabled()) {
->          cpu->has_pmu = false;
->          unset_feature(env, ARM_FEATURE_PMU);
-> diff --git a/target-arm/cpu64.c b/target-arm/cpu64.c
-> index 73c7f31..670c07a 100644
-> --- a/target-arm/cpu64.c
-> +++ b/target-arm/cpu64.c
-> @@ -110,6 +110,7 @@ static void aarch64_a57_initfn(Object *obj)
->      set_feature(&cpu->env, ARM_FEATURE_V8_SHA256);
->      set_feature(&cpu->env, ARM_FEATURE_V8_PMULL);
->      set_feature(&cpu->env, ARM_FEATURE_CRC);
-> +    set_feature(&cpu->env, ARM_FEATURE_EL2);
->      set_feature(&cpu->env, ARM_FEATURE_EL3);
->      set_feature(&cpu->env, ARM_FEATURE_PMU);
->      cpu->kvm_target = QEMU_KVM_ARM_TARGET_CORTEX_A57;
-> @@ -169,6 +170,7 @@ static void aarch64_a53_initfn(Object *obj)
->      set_feature(&cpu->env, ARM_FEATURE_V8_SHA256);
->      set_feature(&cpu->env, ARM_FEATURE_V8_PMULL);
->      set_feature(&cpu->env, ARM_FEATURE_CRC);
-> +    set_feature(&cpu->env, ARM_FEATURE_EL2);
->      set_feature(&cpu->env, ARM_FEATURE_EL3);
->      set_feature(&cpu->env, ARM_FEATURE_PMU);
->      cpu->kvm_target = QEMU_KVM_ARM_TARGET_CORTEX_A53;
-> -- 
-> 2.7.4
-> 
+Thread 1 "qemu-system-arm" received signal SIGSEGV, Segmentation fault.
+0x0000555555b2fce8 in aspeed_smc_flash_update_cs (fl=3D0x0)
+    at /home/petmay01/linaro/qemu-from-laptop/qemu/hw/ssi/aspeed_smc.c:413
+413         AspeedSMCState *s =3D fl->controller;
+(gdb) bt
+#0  0x0000555555b2fce8 in aspeed_smc_flash_update_cs (fl=3D0x0)
+    at /home/petmay01/linaro/qemu-from-laptop/qemu/hw/ssi/aspeed_smc.c:413
+#1  0x0000555555b2fd6a in aspeed_smc_update_cs (s=3D0x7fffcc3924c0)
+    at /home/petmay01/linaro/qemu-from-laptop/qemu/hw/ssi/aspeed_smc.c:422
+#2  0x0000555555b2febc in aspeed_smc_reset (d=3D0x7fffcc3924c0)
+    at /home/petmay01/linaro/qemu-from-laptop/qemu/hw/ssi/aspeed_smc.c:447
+#3  0x0000555555b304a6 in aspeed_smc_realize (dev=3D0x7fffcc3924c0,
+errp=3D0x7fffffffdcf0) at
+/home/petmay01/linaro/qemu-from-laptop/qemu/hw/ssi/aspeed_smc.c:556
+#4  0x0000555555a19329 in device_set_realized (obj=3D0x7fffcc3924c0,
+value=3Dtrue, errp=3D0x7fffffffde98) at
+/home/petmay01/linaro/qemu-from-laptop/qemu/hw/core/qdev.c:918
+#5  0x0000555555c17e50 in property_set_bool (obj=3D0x7fffcc3924c0, v=3D
+    0x555556ea9d90, name=3D0x555555d639e7 "realized",
+opaque=3D0x5555569cafb0, errp=3D0x7fffffffde98) at
+/home/petmay01/linaro/qemu-from-laptop/qemu/qom/object.c:1854
+#6  0x0000555555c1635b in object_property_set (obj=3D0x7fffcc3924c0, v=3D
+    0x555556ea9d90, name=3D0x555555d639e7 "realized", errp=3D0x7fffffffde98=
+)
+    at /home/petmay01/linaro/qemu-from-laptop/qemu/qom/object.c:1088
+#7  0x0000555555c19183 in object_property_set_qobject
+(obj=3D0x7fffcc3924c0, value=3D0x555556ea9c80, name=3D0x555555d639e7
+"realized", errp=3D0x7fffffffde98)
+    at /home/petmay01/linaro/qemu-from-laptop/qemu/qom/qom-qobject.c:27
+#8  0x0000555555c165fe in object_property_set_bool
+(obj=3D0x7fffcc3924c0, value=3Dtrue, name=3D0x555555d639e7 "realized",
+errp=3D0x7fffffffde98)
+    at /home/petmay01/linaro/qemu-from-laptop/qemu/qom/object.c:1157
+#9  0x00005555558da673 in aspeed_soc_realize (dev=3D0x7fffcc371010,
+errp=3D0x7fffffffdf20) at
+/home/petmay01/linaro/qemu-from-laptop/qemu/hw/arm/aspeed_soc.c:256
+#10 0x0000555555a19329 in device_set_realized (obj=3D0x7fffcc371010,
+value=3Dtrue, errp=3D0x555556849518 <error_abort>)
+    at /home/petmay01/linaro/qemu-from-laptop/qemu/hw/core/qdev.c:918
+#11 0x0000555555c17e50 in property_set_bool (obj=3D0x7fffcc371010, v=3D
+    0x5555569cc5b0, name=3D0x555555d63b5c "realized",
+opaque=3D0x5555569be320, errp=3D0x555556849518 <error_abort>)
+    at /home/petmay01/linaro/qemu-from-laptop/qemu/qom/object.c:1854
+#12 0x0000555555c1635b in object_property_set (obj=3D0x7fffcc371010, v=3D
+    0x5555569cc5b0, name=3D0x555555d63b5c "realized",
+errp=3D0x555556849518 <error_abort>) at
+/home/petmay01/linaro/qemu-from-laptop/qemu/qom/object.c:1088
+#13 0x0000555555c19183 in object_property_set_qobject
+(obj=3D0x7fffcc371010, value=3D0x5555569cc3a0, name=3D0x555555d63b5c
+"realized", errp=3D0x555556849518 <error_abort>)
+    at /home/petmay01/linaro/qemu-from-laptop/qemu/qom/qom-qobject.c:27
+#14 0x0000555555c165fe in object_property_set_bool
+(obj=3D0x7fffcc371010, value=3Dtrue, name=3D0x555555d63b5c "realized",
+errp=3D0x555556849518 <error_abort>)
+    at /home/petmay01/linaro/qemu-from-laptop/qemu/qom/object.c:1157
+#15 0x00005555558dadfe in aspeed_board_init (machine=3D0x55555693d8a0,
+cfg=3D0x555556184fe0 <aspeed_boards>)
+    at /home/petmay01/linaro/qemu-from-laptop/qemu/hw/arm/aspeed.c:152
+#16 0x00005555558daf9c in palmetto_bmc_init (machine=3D0x55555693d8a0)
+    at /home/petmay01/linaro/qemu-from-laptop/qemu/hw/arm/aspeed.c:182
+#17 0x000055555596af75 in main (argc=3D3, argv=3D0x7fffffffe4c8,
+envp=3D0x7fffffffe4e8)
+    at /home/petmay01/linaro/qemu-from-laptop/qemu/vl.c:4548
+
+Calling reset from realize is probably a bad idea (reset gets
+called later anyway), and calling qemu_set_irq() from reset
+isn't recommended either. These may or may not be the cause
+of the crash though.
+
+thanks
+-- PMM

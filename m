@@ -1,61 +1,56 @@
-Received: by 10.103.86.15 with SMTP id k15csp713885vsb;
-        Thu, 15 Dec 2016 05:38:56 -0800 (PST)
-X-Received: by 10.55.159.86 with SMTP id i83mr1213762qke.317.1481809136449;
-        Thu, 15 Dec 2016 05:38:56 -0800 (PST)
+Received: by 10.25.205.13 with SMTP id d13csp113272lfg;
+        Thu, 15 Dec 2016 06:10:33 -0800 (PST)
+X-Received: by 10.55.201.154 with SMTP id m26mr1535650qkl.59.1481811033710;
+        Thu, 15 Dec 2016 06:10:33 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [208.118.235.17])
-        by mx.google.com with ESMTPS id v125si1082106qkd.86.2016.12.15.05.38.55
+        by mx.google.com with ESMTPS id v199si1102219qkb.327.2016.12.15.06.10.33
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 15 Dec 2016 05:38:56 -0800 (PST)
+        Thu, 15 Dec 2016 06:10:33 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) client-ip=208.118.235.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:54645 helo=lists.gnu.org)
+Received: from localhost ([::1]:54828 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1cHWFJ-0002wi-Et
-	for alex.bennee@linaro.org; Thu, 15 Dec 2016 08:38:53 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:38583)
+	id 1cHWju-0000f7-U9
+	for alex.bennee@linaro.org; Thu, 15 Dec 2016 09:10:30 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:51763)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <clg@kaod.org>) id 1cHWFB-0002mF-VZ
-	for qemu-arm@nongnu.org; Thu, 15 Dec 2016 08:38:47 -0500
+	(envelope-from <clg@kaod.org>) id 1cHWjD-0006ZU-2s
+	for qemu-arm@nongnu.org; Thu, 15 Dec 2016 09:09:51 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <clg@kaod.org>) id 1cHWF8-0006mr-R1
-	for qemu-arm@nongnu.org; Thu, 15 Dec 2016 08:38:45 -0500
-Received: from 8.mo6.mail-out.ovh.net ([178.33.42.204]:60996)
+	(envelope-from <clg@kaod.org>) id 1cHWj7-00075j-Tl
+	for qemu-arm@nongnu.org; Thu, 15 Dec 2016 09:09:47 -0500
+Received: from 8.mo6.mail-out.ovh.net ([178.33.42.204]:58169)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <clg@kaod.org>) id 1cHWF8-0006mb-Hg
-	for qemu-arm@nongnu.org; Thu, 15 Dec 2016 08:38:42 -0500
+	(Exim 4.71) (envelope-from <clg@kaod.org>) id 1cHWj7-00074W-O8
+	for qemu-arm@nongnu.org; Thu, 15 Dec 2016 09:09:41 -0500
 Received: from player786.ha.ovh.net (b7.ovh.net [213.186.33.57])
-	by mo6.mail-out.ovh.net (Postfix) with ESMTP id 1355D68A8A
-	for <qemu-arm@nongnu.org>; Thu, 15 Dec 2016 14:38:40 +0100 (CET)
-Received: from hermes.kaod.org (deibp9eh1--blueice2n7.emea.ibm.com
-	[195.212.29.169]) (Authenticated sender: postmaster@kaod.org)
-	by player786.ha.ovh.net (Postfix) with ESMTPSA id C9F6E80098;
-	Thu, 15 Dec 2016 14:38:33 +0100 (CET)
+	by mo6.mail-out.ovh.net (Postfix) with ESMTP id 1A4FB68A14
+	for <qemu-arm@nongnu.org>; Thu, 15 Dec 2016 15:09:39 +0100 (CET)
+Received: from hermes.lab.toulouse-stg.fr.ibm.com
+	(deibp9eh1--blueice2n7.emea.ibm.com [195.212.29.169])
+	(Authenticated sender: clg@kaod.org)
+	by player786.ha.ovh.net (Postfix) with ESMTPSA id B62BE80079;
+	Thu, 15 Dec 2016 15:09:34 +0100 (CET)
+From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
 To: Peter Maydell <peter.maydell@linaro.org>
-References: <1480434248-27138-1-git-send-email-clg@kaod.org>
-	<1480434248-27138-15-git-send-email-clg@kaod.org>
-	<CAFEAcA-E9Uq5YjSOGu9uNwbhAefqbs-0V7sVbCeeeg85NtSugQ@mail.gmail.com>
-From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-Message-ID: <548479f7-eb04-c769-d64b-102ebd360111@kaod.org>
-Date: Thu, 15 Dec 2016 14:38:32 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
-	Thunderbird/45.5.1
+Date: Thu, 15 Dec 2016 15:09:30 +0100
+Message-Id: <1481810970-9692-1-git-send-email-clg@kaod.org>
+X-Mailer: git-send-email 2.7.4
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA-E9Uq5YjSOGu9uNwbhAefqbs-0V7sVbCeeeg85NtSugQ@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8
-X-Ovh-Tracer-Id: 11304035065194384210
+Content-Type: text/plain; charset=UTF-8
+X-Ovh-Tracer-Id: 11827297049100520209
 X-VR-SPAMSTATE: OK
 X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrfeelfedrieekgddvudcutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmd
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrfeelfedrieekgddvgecutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmd
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 178.33.42.204
-Subject: Re: [Qemu-arm] [PATCH for-2.9 14/30] aspeed/smc: rework the
- prototype of the AspeedSMCFlash helper routines
+Subject: [Qemu-arm] [PATCH v3] target-arm: Add VBAR support to ARM1176 CPUs
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -67,120 +62,126 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jeffery <andrew@aj.id.au>, qemu-arm <qemu-arm@nongnu.org>,
-	QEMU Developers <qemu-devel@nongnu.org>,
-	Marcin Krzeminski <marcin.krzeminski@nokia.com>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org,
+	=?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: c8xCxHwcFCYm
+X-TUID: RUQVJTe7nS2s
 
-On 12/14/2016 06:09 PM, Peter Maydell wrote:
-> On 29 November 2016 at 15:43, C=C3=A9dric Le Goater <clg@kaod.org> wrot=
-e:
->> Change the routines prototype to use a 'AspeedSMCFlash *' instead of
->> 'AspeedSMCState *'. The result will help in making future changes
->> clearer.
->>
->> Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
->> Reviewed-by: Joel Stanley <joel@jms.id.au>
->> Reviewed-by: Andrew Jeffery <andrew@aj.id.au>
->=20
-> This patch breaks 'make check' because the palmetto-bmc
-> model now segfaults on startup:
->=20
-> gdb --args ./build/x86/arm-softmmu/qemu-system-arm -M palmetto-bmc
-> GNU gdb (Ubuntu 7.11.1-0ubuntu1~16.04) 7.11.1
-> [...]
-> (gdb) r
-> Starting program:
-> /home/petmay01/linaro/qemu-from-laptop/qemu/build/x86/arm-softmmu/qemu-=
-system-arm
-> -M palmetto-bmc
-> [Thread debugging using libthread_db enabled]
-> Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.=
-1".
-> [New Thread 0x7fffd1270700 (LWP 30296)]
-> [New Thread 0x7fffcfb97700 (LWP 30297)]
-> [New Thread 0x7fffcf396700 (LWP 30298)]
-> [New Thread 0x7fffceb95700 (LWP 30299)]
-> [New Thread 0x7fffbf709700 (LWP 30300)]
->=20
-> Thread 1 "qemu-system-arm" received signal SIGSEGV, Segmentation fault.
-> 0x0000555555b2fce8 in aspeed_smc_flash_update_cs (fl=3D0x0)
->     at /home/petmay01/linaro/qemu-from-laptop/qemu/hw/ssi/aspeed_smc.c:=
-413
-> 413         AspeedSMCState *s =3D fl->controller;
-> (gdb) bt
-> #0  0x0000555555b2fce8 in aspeed_smc_flash_update_cs (fl=3D0x0)
->     at /home/petmay01/linaro/qemu-from-laptop/qemu/hw/ssi/aspeed_smc.c:=
-413
-> #1  0x0000555555b2fd6a in aspeed_smc_update_cs (s=3D0x7fffcc3924c0)
->     at /home/petmay01/linaro/qemu-from-laptop/qemu/hw/ssi/aspeed_smc.c:=
-422
-> #2  0x0000555555b2febc in aspeed_smc_reset (d=3D0x7fffcc3924c0)
->     at /home/petmay01/linaro/qemu-from-laptop/qemu/hw/ssi/aspeed_smc.c:=
-447
-> #3  0x0000555555b304a6 in aspeed_smc_realize (dev=3D0x7fffcc3924c0,
-> errp=3D0x7fffffffdcf0) at
-> /home/petmay01/linaro/qemu-from-laptop/qemu/hw/ssi/aspeed_smc.c:556
-> #4  0x0000555555a19329 in device_set_realized (obj=3D0x7fffcc3924c0,
-> value=3Dtrue, errp=3D0x7fffffffde98) at
-> /home/petmay01/linaro/qemu-from-laptop/qemu/hw/core/qdev.c:918
-> #5  0x0000555555c17e50 in property_set_bool (obj=3D0x7fffcc3924c0, v=3D
->     0x555556ea9d90, name=3D0x555555d639e7 "realized",
-> opaque=3D0x5555569cafb0, errp=3D0x7fffffffde98) at
-> /home/petmay01/linaro/qemu-from-laptop/qemu/qom/object.c:1854
-> #6  0x0000555555c1635b in object_property_set (obj=3D0x7fffcc3924c0, v=3D
->     0x555556ea9d90, name=3D0x555555d639e7 "realized", errp=3D0x7fffffff=
-de98)
->     at /home/petmay01/linaro/qemu-from-laptop/qemu/qom/object.c:1088
-> #7  0x0000555555c19183 in object_property_set_qobject
-> (obj=3D0x7fffcc3924c0, value=3D0x555556ea9c80, name=3D0x555555d639e7
-> "realized", errp=3D0x7fffffffde98)
->     at /home/petmay01/linaro/qemu-from-laptop/qemu/qom/qom-qobject.c:27
-> #8  0x0000555555c165fe in object_property_set_bool
-> (obj=3D0x7fffcc3924c0, value=3Dtrue, name=3D0x555555d639e7 "realized",
-> errp=3D0x7fffffffde98)
->     at /home/petmay01/linaro/qemu-from-laptop/qemu/qom/object.c:1157
-> #9  0x00005555558da673 in aspeed_soc_realize (dev=3D0x7fffcc371010,
-> errp=3D0x7fffffffdf20) at
-> /home/petmay01/linaro/qemu-from-laptop/qemu/hw/arm/aspeed_soc.c:256
-> #10 0x0000555555a19329 in device_set_realized (obj=3D0x7fffcc371010,
-> value=3Dtrue, errp=3D0x555556849518 <error_abort>)
->     at /home/petmay01/linaro/qemu-from-laptop/qemu/hw/core/qdev.c:918
-> #11 0x0000555555c17e50 in property_set_bool (obj=3D0x7fffcc371010, v=3D
->     0x5555569cc5b0, name=3D0x555555d63b5c "realized",
-> opaque=3D0x5555569be320, errp=3D0x555556849518 <error_abort>)
->     at /home/petmay01/linaro/qemu-from-laptop/qemu/qom/object.c:1854
-> #12 0x0000555555c1635b in object_property_set (obj=3D0x7fffcc371010, v=3D
->     0x5555569cc5b0, name=3D0x555555d63b5c "realized",
-> errp=3D0x555556849518 <error_abort>) at
-> /home/petmay01/linaro/qemu-from-laptop/qemu/qom/object.c:1088
-> #13 0x0000555555c19183 in object_property_set_qobject
-> (obj=3D0x7fffcc371010, value=3D0x5555569cc3a0, name=3D0x555555d63b5c
-> "realized", errp=3D0x555556849518 <error_abort>)
->     at /home/petmay01/linaro/qemu-from-laptop/qemu/qom/qom-qobject.c:27
-> #14 0x0000555555c165fe in object_property_set_bool
-> (obj=3D0x7fffcc371010, value=3Dtrue, name=3D0x555555d63b5c "realized",
-> errp=3D0x555556849518 <error_abort>)
->     at /home/petmay01/linaro/qemu-from-laptop/qemu/qom/object.c:1157
-> #15 0x00005555558dadfe in aspeed_board_init (machine=3D0x55555693d8a0,
-> cfg=3D0x555556184fe0 <aspeed_boards>)
->     at /home/petmay01/linaro/qemu-from-laptop/qemu/hw/arm/aspeed.c:152
-> #16 0x00005555558daf9c in palmetto_bmc_init (machine=3D0x55555693d8a0)
->     at /home/petmay01/linaro/qemu-from-laptop/qemu/hw/arm/aspeed.c:182
-> #17 0x000055555596af75 in main (argc=3D3, argv=3D0x7fffffffe4c8,
-> envp=3D0x7fffffffe4e8)
->     at /home/petmay01/linaro/qemu-from-laptop/qemu/vl.c:4548
->=20
-> Calling reset from realize is probably a bad idea (reset gets
-> called later anyway), and calling qemu_set_irq() from reset
-> isn't recommended either. These may or may not be the cause
-> of the crash though.
+ARM1176 CPUs have TrustZone support and can use the Vector Base
+Address Register, but currently, qemu only adds VBAR support to ARMv7
+CPUs. Fix this by adding a new feature ARM_FEATURE_VBAR which can used
+for ARMv7 and ARM1176 CPUs.
 
-It it a bad split with the following patch so I will merge them in=20
-the next version and try to cleanup up the qemu_set_irq().
+The VBAR feature is always set for ARMv7 because some legacy boards
+require it even if this is not architecturally correct.
 
-Thanks,
+Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
+---
 
-C.
+ Hopefully, this is correct this time ...
+
+ Thanks,
+
+ C.
+
+ Changes since v2 :
+ - simplified the logic leading to the definition of VBAR
+
+ Changes since v1 :
+ - disable VBAR for non EL3 1176 CPU configs=20
+ - always enable VBAR for v7 CPUs
+
+ target-arm/cpu.c    |  9 +++++++++
+ target-arm/cpu.h    |  1 +
+ target-arm/helper.c | 19 +++++++++++++------
+ 3 files changed, 23 insertions(+), 6 deletions(-)
+
+diff --git a/target-arm/cpu.c b/target-arm/cpu.c
+index 99f0dbebb9f6..f5dc7ea9544c 100644
+--- a/target-arm/cpu.c
++++ b/target-arm/cpu.c
+@@ -597,6 +597,11 @@ static void arm_cpu_realizefn(DeviceState *dev, Erro=
+r **errp)
+         } else {
+             set_feature(env, ARM_FEATURE_V6);
+         }
++
++        /* Always define VBAR for V7 CPUs even if it doesn't exist in
++         * non-EL3 configs. This is needed by some legacy boards.
++         */
++        set_feature(env, ARM_FEATURE_VBAR);
+     }
+     if (arm_feature(env, ARM_FEATURE_V6K)) {
+         set_feature(env, ARM_FEATURE_V6);
+@@ -721,6 +726,10 @@ static void arm_cpu_realizefn(DeviceState *dev, Erro=
+r **errp)
+         }
+     }
+=20
++    if (arm_feature(env, ARM_FEATURE_EL3)) {
++        set_feature(env, ARM_FEATURE_VBAR);
++    }
++
+     register_cp_regs_for_features(cpu);
+     arm_cpu_register_gdb_regs_for_features(cpu);
+=20
+diff --git a/target-arm/cpu.h b/target-arm/cpu.h
+index ca5c849ed65e..ab119e62ab0f 100644
+--- a/target-arm/cpu.h
++++ b/target-arm/cpu.h
+@@ -1125,6 +1125,7 @@ enum arm_features {
+     ARM_FEATURE_V8_PMULL, /* implements PMULL part of v8 Crypto Extensio=
+ns */
+     ARM_FEATURE_THUMB_DSP, /* DSP insns supported in the Thumb encodings=
+ */
+     ARM_FEATURE_PMU, /* has PMU support */
++    ARM_FEATURE_VBAR, /* has cp15 VBAR */
+ };
+=20
+ static inline int arm_feature(CPUARMState *env, int feature)
+diff --git a/target-arm/helper.c b/target-arm/helper.c
+index b5b65caadf8a..8dcabbf57654 100644
+--- a/target-arm/helper.c
++++ b/target-arm/helper.c
+@@ -1252,12 +1252,6 @@ static const ARMCPRegInfo v7_cp_reginfo[] =3D {
+       .access =3D PL1_RW, .accessfn =3D access_tpm, .type =3D ARM_CP_ALI=
+AS,
+       .fieldoffset =3D offsetof(CPUARMState, cp15.c9_pminten),
+       .writefn =3D pmintenclr_write },
+-    { .name =3D "VBAR", .state =3D ARM_CP_STATE_BOTH,
+-      .opc0 =3D 3, .crn =3D 12, .crm =3D 0, .opc1 =3D 0, .opc2 =3D 0,
+-      .access =3D PL1_RW, .writefn =3D vbar_write,
+-      .bank_fieldoffsets =3D { offsetof(CPUARMState, cp15.vbar_s),
+-                             offsetof(CPUARMState, cp15.vbar_ns) },
+-      .resetvalue =3D 0 },
+     { .name =3D "CCSIDR", .state =3D ARM_CP_STATE_BOTH,
+       .opc0 =3D 3, .crn =3D 0, .crm =3D 0, .opc1 =3D 1, .opc2 =3D 0,
+       .access =3D PL1_R, .readfn =3D ccsidr_read, .type =3D ARM_CP_NO_RA=
+W },
+@@ -5094,6 +5088,19 @@ void register_cp_regs_for_features(ARMCPU *cpu)
+         }
+     }
+=20
++    if (arm_feature(env, ARM_FEATURE_VBAR)) {
++        ARMCPRegInfo vbar_cp_reginfo[] =3D {
++            { .name =3D "VBAR", .state =3D ARM_CP_STATE_BOTH,
++              .opc0 =3D 3, .crn =3D 12, .crm =3D 0, .opc1 =3D 0, .opc2 =3D=
+ 0,
++              .access =3D PL1_RW, .writefn =3D vbar_write,
++              .bank_fieldoffsets =3D { offsetof(CPUARMState, cp15.vbar_s=
+),
++                                     offsetof(CPUARMState, cp15.vbar_ns)=
+ },
++              .resetvalue =3D 0 },
++            REGINFO_SENTINEL
++        };
++        define_arm_cp_regs(cpu, vbar_cp_reginfo);
++    }
++
+     /* Generic registers whose values depend on the implementation */
+     {
+         ARMCPRegInfo sctlr =3D {
+--=20
+2.7.4
+

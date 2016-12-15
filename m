@@ -1,202 +1,186 @@
-Received: by 10.103.86.15 with SMTP id k15csp537630vsb;
-        Wed, 14 Dec 2016 21:58:21 -0800 (PST)
-X-Received: by 10.55.200.147 with SMTP id t19mr449059qkl.165.1481781501140;
-        Wed, 14 Dec 2016 21:58:21 -0800 (PST)
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 10.103.86.15 with SMTP id k15csp713885vsb;
+        Thu, 15 Dec 2016 05:38:56 -0800 (PST)
+X-Received: by 10.55.159.86 with SMTP id i83mr1213762qke.317.1481809136449;
+        Thu, 15 Dec 2016 05:38:56 -0800 (PST)
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [208.118.235.17])
-        by mx.google.com with ESMTPS id b9si257119qkj.81.2016.12.14.21.58.20
+        by mx.google.com with ESMTPS id v125si1082106qkd.86.2016.12.15.05.38.55
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 14 Dec 2016 21:58:21 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) client-ip=208.118.235.17;
+        Thu, 15 Dec 2016 05:38:56 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) client-ip=208.118.235.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:52502 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:54645 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1cHP3a-0002xh-IN
-	for alex.bennee@linaro.org; Thu, 15 Dec 2016 00:58:18 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:49627)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1cHWFJ-0002wi-Et
+	for alex.bennee@linaro.org; Thu, 15 Dec 2016 08:38:53 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:38583)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alastair@au1.ibm.com>) id 1cHOul-0006wB-Lh
-	for qemu-devel@nongnu.org; Thu, 15 Dec 2016 00:49:15 -0500
+	(envelope-from <clg@kaod.org>) id 1cHWFB-0002mF-VZ
+	for qemu-arm@nongnu.org; Thu, 15 Dec 2016 08:38:47 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <alastair@au1.ibm.com>) id 1cHOuh-0003GS-9z
-	for qemu-devel@nongnu.org; Thu, 15 Dec 2016 00:49:11 -0500
-Received: from mx0b-001b2d01.pphosted.com ([148.163.158.5]:47562
-	helo=mx0a-001b2d01.pphosted.com)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <alastair@au1.ibm.com>)
-	id 1cHOuh-0003GE-3I
-	for qemu-devel@nongnu.org; Thu, 15 Dec 2016 00:49:07 -0500
-Received: from pps.filterd (m0098413.ppops.net [127.0.0.1])
-	by mx0b-001b2d01.pphosted.com (8.16.0.17/8.16.0.17) with SMTP id
-	uBF5mtlt072856
-	for <qemu-devel@nongnu.org>; Thu, 15 Dec 2016 00:49:06 -0500
-Received: from e23smtp09.au.ibm.com (e23smtp09.au.ibm.com [202.81.31.142])
-	by mx0b-001b2d01.pphosted.com with ESMTP id 27bn7erhur-1
-	(version=TLSv1.2 cipher=AES256-SHA bits=256 verify=NOT)
-	for <qemu-devel@nongnu.org>; Thu, 15 Dec 2016 00:49:06 -0500
-Received: from localhost
-	by e23smtp09.au.ibm.com with IBM ESMTP SMTP Gateway: Authorized Use
-	Only! Violators will be prosecuted
-	for <qemu-devel@nongnu.org> from <alastair@au1.ibm.com>;
-	Thu, 15 Dec 2016 15:49:03 +1000
-Received: from d23dlp02.au.ibm.com (202.81.31.213)
-	by e23smtp09.au.ibm.com (202.81.31.206) with IBM ESMTP SMTP Gateway:
-	Authorized Use Only! Violators will be prosecuted; 
-	Thu, 15 Dec 2016 15:49:00 +1000
-Received: from d23relay10.au.ibm.com (d23relay10.au.ibm.com [9.190.26.77])
-	by d23dlp02.au.ibm.com (Postfix) with ESMTP id 56C392BB006A;
-	Thu, 15 Dec 2016 16:48:59 +1100 (EST)
-Received: from d23av01.au.ibm.com (d23av01.au.ibm.com [9.190.234.96])
-	by d23relay10.au.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
-	uBF5mxOc60817634; Thu, 15 Dec 2016 16:48:59 +1100
-Received: from d23av01.au.ibm.com (localhost [127.0.0.1])
-	by d23av01.au.ibm.com (8.14.4/8.14.4/NCO v10.0 AVout) with ESMTP id
-	uBF5mwBS029677; Thu, 15 Dec 2016 16:48:59 +1100
-Received: from ozlabs.au.ibm.com (ozlabs.au.ibm.com [9.192.253.14])
-	by d23av01.au.ibm.com (8.14.4/8.14.4/NCO v10.0 AVin) with ESMTP id
-	uBF5mw3d029672; Thu, 15 Dec 2016 16:48:58 +1100
-Received: from adsilva.ozlabs.ibm.com (haven.au.ibm.com [9.192.254.114])
-	(using TLSv1.2 with cipher DHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by ozlabs.au.ibm.com (Postfix) with ESMTPSA id D346BA039D;
-	Thu, 15 Dec 2016 16:48:57 +1100 (AEDT)
-From: "Alastair D'Silva" <alastair@au1.ibm.com>
-To: qemu-arm@nongnu.org
-Date: Thu, 15 Dec 2016 16:48:12 +1100
-X-Mailer: git-send-email 2.9.3
-In-Reply-To: <20161215054812.12602-1-alastair@au1.ibm.com>
-References: <20161215054812.12602-1-alastair@au1.ibm.com>
-X-TM-AS-MML: disable
-X-Content-Scanned: Fidelis XPS MAILER
-x-cbid: 16121505-0052-0000-0000-000001FE4239
-X-IBM-AV-DETECTION: SAVI=unused REMOTE=unused XFE=unused
-x-cbparentid: 16121505-0053-0000-0000-0000076E124D
-Message-Id: <20161215054812.12602-9-alastair@au1.ibm.com>
-X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10432:, ,
-	definitions=2016-12-15_03:, , signatures=0
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
-	spamscore=0 suspectscore=1
-	malwarescore=0 phishscore=0 adultscore=0 bulkscore=0 classifier=spam
-	adjust=0 reason=mlx scancount=1 engine=8.0.1-1612050000
-	definitions=main-1612150093
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [generic] [fuzzy]
-X-Received-From: 148.163.158.5
-Subject: [Qemu-devel] [PATCH v4 8/8] arm: Add an RX8900 RTC to the ASpeed
- board
-X-BeenThere: qemu-devel@nongnu.org
+	(envelope-from <clg@kaod.org>) id 1cHWF8-0006mr-R1
+	for qemu-arm@nongnu.org; Thu, 15 Dec 2016 08:38:45 -0500
+Received: from 8.mo6.mail-out.ovh.net ([178.33.42.204]:60996)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <clg@kaod.org>) id 1cHWF8-0006mb-Hg
+	for qemu-arm@nongnu.org; Thu, 15 Dec 2016 08:38:42 -0500
+Received: from player786.ha.ovh.net (b7.ovh.net [213.186.33.57])
+	by mo6.mail-out.ovh.net (Postfix) with ESMTP id 1355D68A8A
+	for <qemu-arm@nongnu.org>; Thu, 15 Dec 2016 14:38:40 +0100 (CET)
+Received: from hermes.kaod.org (deibp9eh1--blueice2n7.emea.ibm.com
+	[195.212.29.169]) (Authenticated sender: postmaster@kaod.org)
+	by player786.ha.ovh.net (Postfix) with ESMTPSA id C9F6E80098;
+	Thu, 15 Dec 2016 14:38:33 +0100 (CET)
+To: Peter Maydell <peter.maydell@linaro.org>
+References: <1480434248-27138-1-git-send-email-clg@kaod.org>
+	<1480434248-27138-15-git-send-email-clg@kaod.org>
+	<CAFEAcA-E9Uq5YjSOGu9uNwbhAefqbs-0V7sVbCeeeg85NtSugQ@mail.gmail.com>
+From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
+Message-ID: <548479f7-eb04-c769-d64b-102ebd360111@kaod.org>
+Date: Thu, 15 Dec 2016 14:38:32 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
+	Thunderbird/45.5.1
+MIME-Version: 1.0
+In-Reply-To: <CAFEAcA-E9Uq5YjSOGu9uNwbhAefqbs-0V7sVbCeeeg85NtSugQ@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8
+X-Ovh-Tracer-Id: 11304035065194384210
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrfeelfedrieekgddvudcutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmd
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 178.33.42.204
+Subject: Re: [Qemu-arm] [PATCH for-2.9 14/30] aspeed/smc: rework the
+ prototype of the AspeedSMCFlash helper routines
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jeffery <andrew@aj.id.au>,
-	qemu-devel@nongnu.org, Chris Smart <chris@distroguy.com>,
-	Joel Stanley <joel@jms.id.au>, Alastair D'Silva <alastair@d-silva.org>,
-	=?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: c98S1tV0nzL7
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Andrew Jeffery <andrew@aj.id.au>, qemu-arm <qemu-arm@nongnu.org>,
+	QEMU Developers <qemu-devel@nongnu.org>,
+	Marcin Krzeminski <marcin.krzeminski@nokia.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: c8xCxHwcFCYm
 
-From: Alastair D'Silva <alastair@d-silva.org>
+On 12/14/2016 06:09 PM, Peter Maydell wrote:
+> On 29 November 2016 at 15:43, C=C3=A9dric Le Goater <clg@kaod.org> wrot=
+e:
+>> Change the routines prototype to use a 'AspeedSMCFlash *' instead of
+>> 'AspeedSMCState *'. The result will help in making future changes
+>> clearer.
+>>
+>> Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
+>> Reviewed-by: Joel Stanley <joel@jms.id.au>
+>> Reviewed-by: Andrew Jeffery <andrew@aj.id.au>
+>=20
+> This patch breaks 'make check' because the palmetto-bmc
+> model now segfaults on startup:
+>=20
+> gdb --args ./build/x86/arm-softmmu/qemu-system-arm -M palmetto-bmc
+> GNU gdb (Ubuntu 7.11.1-0ubuntu1~16.04) 7.11.1
+> [...]
+> (gdb) r
+> Starting program:
+> /home/petmay01/linaro/qemu-from-laptop/qemu/build/x86/arm-softmmu/qemu-=
+system-arm
+> -M palmetto-bmc
+> [Thread debugging using libthread_db enabled]
+> Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.=
+1".
+> [New Thread 0x7fffd1270700 (LWP 30296)]
+> [New Thread 0x7fffcfb97700 (LWP 30297)]
+> [New Thread 0x7fffcf396700 (LWP 30298)]
+> [New Thread 0x7fffceb95700 (LWP 30299)]
+> [New Thread 0x7fffbf709700 (LWP 30300)]
+>=20
+> Thread 1 "qemu-system-arm" received signal SIGSEGV, Segmentation fault.
+> 0x0000555555b2fce8 in aspeed_smc_flash_update_cs (fl=3D0x0)
+>     at /home/petmay01/linaro/qemu-from-laptop/qemu/hw/ssi/aspeed_smc.c:=
+413
+> 413         AspeedSMCState *s =3D fl->controller;
+> (gdb) bt
+> #0  0x0000555555b2fce8 in aspeed_smc_flash_update_cs (fl=3D0x0)
+>     at /home/petmay01/linaro/qemu-from-laptop/qemu/hw/ssi/aspeed_smc.c:=
+413
+> #1  0x0000555555b2fd6a in aspeed_smc_update_cs (s=3D0x7fffcc3924c0)
+>     at /home/petmay01/linaro/qemu-from-laptop/qemu/hw/ssi/aspeed_smc.c:=
+422
+> #2  0x0000555555b2febc in aspeed_smc_reset (d=3D0x7fffcc3924c0)
+>     at /home/petmay01/linaro/qemu-from-laptop/qemu/hw/ssi/aspeed_smc.c:=
+447
+> #3  0x0000555555b304a6 in aspeed_smc_realize (dev=3D0x7fffcc3924c0,
+> errp=3D0x7fffffffdcf0) at
+> /home/petmay01/linaro/qemu-from-laptop/qemu/hw/ssi/aspeed_smc.c:556
+> #4  0x0000555555a19329 in device_set_realized (obj=3D0x7fffcc3924c0,
+> value=3Dtrue, errp=3D0x7fffffffde98) at
+> /home/petmay01/linaro/qemu-from-laptop/qemu/hw/core/qdev.c:918
+> #5  0x0000555555c17e50 in property_set_bool (obj=3D0x7fffcc3924c0, v=3D
+>     0x555556ea9d90, name=3D0x555555d639e7 "realized",
+> opaque=3D0x5555569cafb0, errp=3D0x7fffffffde98) at
+> /home/petmay01/linaro/qemu-from-laptop/qemu/qom/object.c:1854
+> #6  0x0000555555c1635b in object_property_set (obj=3D0x7fffcc3924c0, v=3D
+>     0x555556ea9d90, name=3D0x555555d639e7 "realized", errp=3D0x7fffffff=
+de98)
+>     at /home/petmay01/linaro/qemu-from-laptop/qemu/qom/object.c:1088
+> #7  0x0000555555c19183 in object_property_set_qobject
+> (obj=3D0x7fffcc3924c0, value=3D0x555556ea9c80, name=3D0x555555d639e7
+> "realized", errp=3D0x7fffffffde98)
+>     at /home/petmay01/linaro/qemu-from-laptop/qemu/qom/qom-qobject.c:27
+> #8  0x0000555555c165fe in object_property_set_bool
+> (obj=3D0x7fffcc3924c0, value=3Dtrue, name=3D0x555555d639e7 "realized",
+> errp=3D0x7fffffffde98)
+>     at /home/petmay01/linaro/qemu-from-laptop/qemu/qom/object.c:1157
+> #9  0x00005555558da673 in aspeed_soc_realize (dev=3D0x7fffcc371010,
+> errp=3D0x7fffffffdf20) at
+> /home/petmay01/linaro/qemu-from-laptop/qemu/hw/arm/aspeed_soc.c:256
+> #10 0x0000555555a19329 in device_set_realized (obj=3D0x7fffcc371010,
+> value=3Dtrue, errp=3D0x555556849518 <error_abort>)
+>     at /home/petmay01/linaro/qemu-from-laptop/qemu/hw/core/qdev.c:918
+> #11 0x0000555555c17e50 in property_set_bool (obj=3D0x7fffcc371010, v=3D
+>     0x5555569cc5b0, name=3D0x555555d63b5c "realized",
+> opaque=3D0x5555569be320, errp=3D0x555556849518 <error_abort>)
+>     at /home/petmay01/linaro/qemu-from-laptop/qemu/qom/object.c:1854
+> #12 0x0000555555c1635b in object_property_set (obj=3D0x7fffcc371010, v=3D
+>     0x5555569cc5b0, name=3D0x555555d63b5c "realized",
+> errp=3D0x555556849518 <error_abort>) at
+> /home/petmay01/linaro/qemu-from-laptop/qemu/qom/object.c:1088
+> #13 0x0000555555c19183 in object_property_set_qobject
+> (obj=3D0x7fffcc371010, value=3D0x5555569cc3a0, name=3D0x555555d63b5c
+> "realized", errp=3D0x555556849518 <error_abort>)
+>     at /home/petmay01/linaro/qemu-from-laptop/qemu/qom/qom-qobject.c:27
+> #14 0x0000555555c165fe in object_property_set_bool
+> (obj=3D0x7fffcc371010, value=3Dtrue, name=3D0x555555d63b5c "realized",
+> errp=3D0x555556849518 <error_abort>)
+>     at /home/petmay01/linaro/qemu-from-laptop/qemu/qom/object.c:1157
+> #15 0x00005555558dadfe in aspeed_board_init (machine=3D0x55555693d8a0,
+> cfg=3D0x555556184fe0 <aspeed_boards>)
+>     at /home/petmay01/linaro/qemu-from-laptop/qemu/hw/arm/aspeed.c:152
+> #16 0x00005555558daf9c in palmetto_bmc_init (machine=3D0x55555693d8a0)
+>     at /home/petmay01/linaro/qemu-from-laptop/qemu/hw/arm/aspeed.c:182
+> #17 0x000055555596af75 in main (argc=3D3, argv=3D0x7fffffffe4c8,
+> envp=3D0x7fffffffe4e8)
+>     at /home/petmay01/linaro/qemu-from-laptop/qemu/vl.c:4548
+>=20
+> Calling reset from realize is probably a bad idea (reset gets
+> called later anyway), and calling qemu_set_irq() from reset
+> isn't recommended either. These may or may not be the cause
+> of the crash though.
 
-Connect an RX8900 RTC to i2c12 of the AST2500 SOC at address 0x32
+It it a bad split with the following patch so I will merge them in=20
+the next version and try to cleanup up the qemu_set_irq().
 
-Signed-off-by: Alastair D'Silva <alastair@d-silva.org>
-Signed-off-by: Chris Smart <chris@distroguy.com>
----
- hw/arm/aspeed.c | 29 +++++++++++++++++++++++++++++
- 1 file changed, 29 insertions(+)
+Thanks,
 
-diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
-index 40c1383..ef63fd0 100644
---- a/hw/arm/aspeed.c
-+++ b/hw/arm/aspeed.c
-@@ -26,6 +26,12 @@ static struct arm_boot_info aspeed_board_binfo = {
-     .nb_cpus = 1,
- };
- 
-+typedef struct AspeedI2CDevice {
-+    const char *type;
-+    uint8_t address;
-+    int bus;
-+} AspeedI2CDevice;
-+
- typedef struct AspeedBoardState {
-     AspeedSoCState soc;
-     MemoryRegion ram;
-@@ -37,6 +43,7 @@ typedef struct AspeedBoardConfig {
-     const char *fmc_model;
-     const char *spi_model;
-     uint32_t num_cs;
-+    const AspeedI2CDevice *i2c_devices;
- } AspeedBoardConfig;
- 
- enum {
-@@ -80,6 +87,11 @@ enum {
-         SCU_AST2500_HW_STRAP_ACPI_ENABLE |                              \
-         SCU_HW_STRAP_SPI_MODE(SCU_HW_STRAP_SPI_MASTER))
- 
-+
-+static const AspeedI2CDevice ast2500_i2c_devices[] = {
-+        {"rx8900", 0x32, 11}
-+};
-+
- static const AspeedBoardConfig aspeed_boards[] = {
-     [PALMETTO_BMC] = {
-         .soc_name  = "ast2400-a1",
-@@ -94,6 +106,7 @@ static const AspeedBoardConfig aspeed_boards[] = {
-         .fmc_model = "n25q256a",
-         .spi_model = "mx25l25635e",
-         .num_cs    = 1,
-+        .i2c_devices = ast2500_i2c_devices,
-     },
-     [ROMULUS_BMC]  = {
-         .soc_name  = "ast2500-a1",
-@@ -104,6 +117,7 @@ static const AspeedBoardConfig aspeed_boards[] = {
-     },
- };
- 
-+
- static void aspeed_board_init_flashes(AspeedSMCState *s, const char *flashtype,
-                                       Error **errp)
- {
-@@ -130,6 +144,19 @@ static void aspeed_board_init_flashes(AspeedSMCState *s, const char *flashtype,
-     }
- }
- 
-+static void aspeed_i2c_init(AspeedBoardState *bmc,
-+        const AspeedBoardConfig *cfg)
-+{
-+    AspeedSoCState *soc = &bmc->soc;
-+    const AspeedI2CDevice *dev;
-+
-+    for (dev = cfg->i2c_devices; dev != NULL && dev->type != NULL; dev++) {
-+        I2CBus *i2c_bus = aspeed_i2c_get_bus((DeviceState *)&soc->i2c,
-+                                             dev->bus);
-+        (void)i2c_create_slave(i2c_bus, dev->type, dev->address);
-+    }
-+}
-+
- static void aspeed_board_init(MachineState *machine,
-                               const AspeedBoardConfig *cfg)
- {
-@@ -174,6 +201,8 @@ static void aspeed_board_init(MachineState *machine,
-     aspeed_board_binfo.ram_size = ram_size;
-     aspeed_board_binfo.loader_start = sc->info->sdram_base;
- 
-+    aspeed_i2c_init(bmc, cfg);
-+
-     arm_load_kernel(ARM_CPU(first_cpu), &aspeed_board_binfo);
- }
- 
--- 
-2.9.3
-
+C.

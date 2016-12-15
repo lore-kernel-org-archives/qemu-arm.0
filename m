@@ -1,98 +1,91 @@
-Received: by 10.25.205.13 with SMTP id d13csp518612lfg;
-        Wed, 14 Dec 2016 17:51:05 -0800 (PST)
-X-Received: by 10.200.54.209 with SMTP id b17mr88106590qtc.183.1481766665825;
-        Wed, 14 Dec 2016 17:51:05 -0800 (PST)
+Received: by 10.103.86.15 with SMTP id k15csp535281vsb;
+        Wed, 14 Dec 2016 21:49:20 -0800 (PST)
+X-Received: by 10.55.131.134 with SMTP id f128mr439924qkd.97.1481780960302;
+        Wed, 14 Dec 2016 21:49:20 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [208.118.235.17])
-        by mx.google.com with ESMTPS id u3si30923877qkc.216.2016.12.14.17.51.05
+        by mx.google.com with ESMTPS id c62si211460qkj.331.2016.12.14.21.49.19
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 14 Dec 2016 17:51:05 -0800 (PST)
+        Wed, 14 Dec 2016 21:49:20 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) client-ip=208.118.235.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:51498 helo=lists.gnu.org)
+Received: from localhost ([::1]:52453 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1cHLCJ-0001PO-2b
-	for alex.bennee@linaro.org; Wed, 14 Dec 2016 20:51:03 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:44125)
+	id 1cHOur-00075A-IS
+	for alex.bennee@linaro.org; Thu, 15 Dec 2016 00:49:17 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:49588)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alastair@au1.ibm.com>) id 1cHKEK-0002WD-LF
-	for qemu-arm@nongnu.org; Wed, 14 Dec 2016 19:49:06 -0500
+	(envelope-from <alastair@au1.ibm.com>) id 1cHOuj-0006rh-S2
+	for qemu-arm@nongnu.org; Thu, 15 Dec 2016 00:49:13 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <alastair@au1.ibm.com>) id 1cHKEH-0002if-Hz
-	for qemu-arm@nongnu.org; Wed, 14 Dec 2016 19:49:04 -0500
-Received: from mx0b-001b2d01.pphosted.com ([148.163.158.5]:48101
+	(envelope-from <alastair@au1.ibm.com>) id 1cHOug-0003FI-7H
+	for qemu-arm@nongnu.org; Thu, 15 Dec 2016 00:49:09 -0500
+Received: from mx0b-001b2d01.pphosted.com ([148.163.158.5]:40250
 	helo=mx0a-001b2d01.pphosted.com)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <alastair@au1.ibm.com>)
-	id 1cHKEH-0002iH-C9
-	for qemu-arm@nongnu.org; Wed, 14 Dec 2016 19:49:01 -0500
-Received: from pps.filterd (m0098414.ppops.net [127.0.0.1])
-	by mx0b-001b2d01.pphosted.com (8.16.0.17/8.16.0.17) with SMTP id
-	uBF0moxP144920
-	for <qemu-arm@nongnu.org>; Wed, 14 Dec 2016 19:49:00 -0500
-Received: from e23smtp09.au.ibm.com (e23smtp09.au.ibm.com [202.81.31.142])
-	by mx0b-001b2d01.pphosted.com with ESMTP id 27bdm3s40p-1
+	id 1cHOuf-0003Ed-W3
+	for qemu-arm@nongnu.org; Thu, 15 Dec 2016 00:49:06 -0500
+Received: from pps.filterd (m0098421.ppops.net [127.0.0.1])
+	by mx0a-001b2d01.pphosted.com (8.16.0.17/8.16.0.17) with SMTP id
+	uBF5mgOT142475
+	for <qemu-arm@nongnu.org>; Thu, 15 Dec 2016 00:49:05 -0500
+Received: from e23smtp03.au.ibm.com (e23smtp03.au.ibm.com [202.81.31.145])
+	by mx0a-001b2d01.pphosted.com with ESMTP id 27bdm41tdw-1
 	(version=TLSv1.2 cipher=AES256-SHA bits=256 verify=NOT)
-	for <qemu-arm@nongnu.org>; Wed, 14 Dec 2016 19:49:00 -0500
+	for <qemu-arm@nongnu.org>; Thu, 15 Dec 2016 00:49:04 -0500
 Received: from localhost
-	by e23smtp09.au.ibm.com with IBM ESMTP SMTP Gateway: Authorized Use
+	by e23smtp03.au.ibm.com with IBM ESMTP SMTP Gateway: Authorized Use
 	Only! Violators will be prosecuted
 	for <qemu-arm@nongnu.org> from <alastair@au1.ibm.com>;
-	Thu, 15 Dec 2016 10:48:57 +1000
+	Thu, 15 Dec 2016 15:49:01 +1000
 Received: from d23dlp01.au.ibm.com (202.81.31.203)
-	by e23smtp09.au.ibm.com (202.81.31.206) with IBM ESMTP SMTP Gateway:
+	by e23smtp03.au.ibm.com (202.81.31.209) with IBM ESMTP SMTP Gateway:
 	Authorized Use Only! Violators will be prosecuted; 
-	Thu, 15 Dec 2016 10:48:54 +1000
-Received: from d23relay10.au.ibm.com (d23relay10.au.ibm.com [9.190.26.77])
-	by d23dlp01.au.ibm.com (Postfix) with ESMTP id 47DE92CE8059;
-	Thu, 15 Dec 2016 11:48:54 +1100 (EST)
-Received: from d23av04.au.ibm.com (d23av04.au.ibm.com [9.190.235.139])
-	by d23relay10.au.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
-	uBF0msdh1179912; Thu, 15 Dec 2016 11:48:54 +1100
-Received: from d23av04.au.ibm.com (localhost [127.0.0.1])
-	by d23av04.au.ibm.com (8.14.4/8.14.4/NCO v10.0 AVout) with ESMTP id
-	uBF0mrJC031659; Thu, 15 Dec 2016 11:48:54 +1100
+	Thu, 15 Dec 2016 15:49:00 +1000
+Received: from d23relay09.au.ibm.com (d23relay09.au.ibm.com [9.185.63.181])
+	by d23dlp01.au.ibm.com (Postfix) with ESMTP id 4BA492CE8056;
+	Thu, 15 Dec 2016 16:48:59 +1100 (EST)
+Received: from d23av03.au.ibm.com (d23av03.au.ibm.com [9.190.234.97])
+	by d23relay09.au.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
+	uBF5mxsn53936272; Thu, 15 Dec 2016 16:48:59 +1100
+Received: from d23av03.au.ibm.com (localhost [127.0.0.1])
+	by d23av03.au.ibm.com (8.14.4/8.14.4/NCO v10.0 AVout) with ESMTP id
+	uBF5mwg7013575; Thu, 15 Dec 2016 16:48:59 +1100
 Received: from ozlabs.au.ibm.com (ozlabs.au.ibm.com [9.192.253.14])
-	by d23av04.au.ibm.com (8.14.4/8.14.4/NCO v10.0 AVin) with ESMTP id
-	uBF0mrU6031655; Thu, 15 Dec 2016 11:48:53 +1100
+	by d23av03.au.ibm.com (8.14.4/8.14.4/NCO v10.0 AVin) with ESMTP id
+	uBF5mwk4013570; Thu, 15 Dec 2016 16:48:58 +1100
 Received: from adsilva.ozlabs.ibm.com (haven.au.ibm.com [9.192.254.114])
-	(using TLSv1.2 with cipher AES256-GCM-SHA384 (256/256 bits))
+	(using TLSv1.2 with cipher DHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by ozlabs.au.ibm.com (Postfix) with ESMTPSA id CBFCCA0225;
-	Thu, 15 Dec 2016 11:48:52 +1100 (AEDT)
+	by ozlabs.au.ibm.com (Postfix) with ESMTPSA id C5754A039C;
+	Thu, 15 Dec 2016 16:48:57 +1100 (AEDT)
 From: "Alastair D'Silva" <alastair@au1.ibm.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 15 Dec 2016 11:48:52 +1100
-In-Reply-To: <CAFEAcA_wG+5_i76Tyw1pbih4P1wV7tsO1xV9FpzRRiWYD6Q_MA@mail.gmail.com>
-References: <20161202054617.6749-1-alastair@au1.ibm.com>
-	<20161202054617.6749-6-alastair@au1.ibm.com>
-	<CAFEAcA_wG+5_i76Tyw1pbih4P1wV7tsO1xV9FpzRRiWYD6Q_MA@mail.gmail.com>
-Organization: IBM Australia
-Content-Type: text/plain; charset="UTF-8"
-X-Mailer: Evolution 3.22.2 (3.22.2-1.fc25) 
-Mime-Version: 1.0
+To: qemu-arm@nongnu.org
+Date: Thu, 15 Dec 2016 16:48:11 +1100
+X-Mailer: git-send-email 2.9.3
+In-Reply-To: <20161215054812.12602-1-alastair@au1.ibm.com>
+References: <20161215054812.12602-1-alastair@au1.ibm.com>
 X-TM-AS-MML: disable
 X-Content-Scanned: Fidelis XPS MAILER
-x-cbid: 16121500-0052-0000-0000-000001FE1DE7
+x-cbid: 16121505-0008-0000-0000-000000F1BDDB
 X-IBM-AV-DETECTION: SAVI=unused REMOTE=unused XFE=unused
-x-cbparentid: 16121500-0053-0000-0000-0000076D9567
-Message-Id: <1481762932.17769.19.camel@au1.ibm.com>
+x-cbparentid: 16121505-0009-0000-0000-000008B45353
+Message-Id: <20161215054812.12602-8-alastair@au1.ibm.com>
 X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10432:, ,
-	definitions=2016-12-14_15:, , signatures=0
+	definitions=2016-12-15_03:, , signatures=0
 X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
-	spamscore=0 suspectscore=0
+	spamscore=0 suspectscore=3
 	malwarescore=0 phishscore=0 adultscore=0 bulkscore=0 classifier=spam
 	adjust=0 reason=mlx scancount=1 engine=8.0.1-1612050000
-	definitions=main-1612150009
-Content-Transfer-Encoding: base64
-X-MIME-Autoconverted: from 8bit to base64 by mx0b-001b2d01.pphosted.com id
-	uBF0moxP144920
+	definitions=main-1612150093
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [generic] [fuzzy]
 X-Received-From: 148.163.158.5
-Subject: Re: [Qemu-arm] [PATCH v3 5/7] hw/timer: Add Epson RX8900 RTC support
+Subject: [Qemu-arm] [PATCH v4 7/8] tests: Test all implemented RX8900
+ functionality
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -104,223 +97,931 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jeffery <andrew@aj.id.au>, QEMU Developers <qemu-devel@nongnu.org>,
-	Chris Smart <chris@distroguy.com>,
-	qemu-arm <qemu-arm@nongnu.org>, Joel Stanley <joel@jms.id.au>,
-	=?ISO-8859-1?Q?C=E9dric?= Le Goater <clg@kaod.org>
+Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jeffery <andrew@aj.id.au>,
+	qemu-devel@nongnu.org, Joel Stanley <joel@jms.id.au>,
+	Alastair D'Silva <alastair@d-silva.org>,
+	=?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Ii/i+bOUqcfP
+X-TUID: dFx7WCw8TYw3
 
-DQpPbiBXZWQsIDIwMTYtMTItMTQgYXQgMTg6MDIgKzAwMDAsIFBldGVyIE1heWRlbGwgd3Jv
-dGU6DQo+IE9uIDIgRGVjZW1iZXIgMjAxNiBhdCAwNTo0NiwgQWxhc3RhaXIgRCdTaWx2YSA8
-YWxhc3RhaXJAYXUxLmlibS5jb20+DQo+IHdyb3RlOg0KPiA+IEZyb206IEFsYXN0YWlyIEQn
-U2lsdmEgPGFsYXN0YWlyQGQtc2lsdmEub3JnPg0KPiA+IA0KPiA+IFRoaXMgcGF0Y2ggYWRk
-cyBzdXBwb3J0IGZvciB0aGUgRXBzb24gUlg4OTAwIEkyQyBSVEMuDQo+ID4gDQo+ID4gVGhl
-IGZvbGxvd2luZyBjaGlwIGZlYXR1cmVzIGFyZSBpbXBsZW1lbnRlZDoNCj4gPiDCoC0gUlRD
-ICh3YWxsY2xvY2sgYmFzZWQsIHB0aW1lciAxMHggb3ZlcnNhbXBsaW5nIHRvIHBpY2sgdXAN
-Cj4gPiDCoMKgwqDCoMKgwqDCoMKgd2FsbGNsb2NrIHRyYW5zaXRpb25zKQ0KPiA+IMKgLSBU
-aW1lIHVwZGF0ZSBpbnRlcnJ1cHQgKHBlciBzZWNvbmQvbWludXRlLCB3YWxsY2xvY2sgYmFz
-ZWQpDQo+ID4gwqAtIEFsYXJtcyAod2FsbGNsb2NrIGJhc2VkKQ0KPiA+IMKgLSBUZW1wZXJh
-dHVyZSAoc2V0IHZpYSBhIHByb3BlcnR5KQ0KPiA+IMKgLSBDb3VudGRvd24gdGltZXIgKGVt
-dWxhdGVkIGNsb2NrIHZpYSBwdGltZXIpDQo+ID4gwqAtIEZPVVQgdmlhIEdQSU8gKGVtdWxh
-dGVkIGNsb2NrIHZpYSBwdGltZXIpDQo+ID4gDQo+ID4gVGhlIGZvbGxvd2luZyBjaGlwIGZl
-YXR1cmVzIGFyZSB1bmltcGxlbWVudGVkOg0KPiA+IMKgLSBMb3cgdm9sdGFnZSBkZXRlY3Rp
-b24NCj4gPiDCoC0gaTJjIHRpbWVvdXQNCj4gPiANCj4gPiBUaGUgaW1wbGVtZW50YXRpb24g
-ZXhwb3J0cyB0aGUgZm9sbG93aW5nIG5hbWVkIEdQSU9zOg0KPiA+IHJ4ODkwMC1pbnRlcnJ1
-cHQtb3V0DQo+ID4gcng4OTAwLWZvdXQtZW5hYmxlDQo+ID4gcng4OTAwLWZvdXQNCj4gPiAN
-Cj4gPiBTaWduZWQtb2ZmLWJ5OiBBbGFzdGFpciBEJ1NpbHZhIDxhbGFzdGFpckBkLXNpbHZh
-Lm9yZz4NCj4gPiBTaWduZWQtb2ZmLWJ5OiBDaHJpcyBTbWFydCA8Y2hyaXNAZGlzdHJvZ3V5
-LmNvbT4NCj4gPiAtLS0NCj4gPiDCoGRlZmF1bHQtY29uZmlncy9hcm0tc29mdG1tdS5tYWsg
-fMKgwqDCoDEgKw0KPiA+IMKgaHcvaTJjL2NvcmUuY8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgfMKgwqDCoDQgKy0NCj4gPiDCoGh3L3RpbWVyL01ha2VmaWxlLm9i
-anPCoMKgwqDCoMKgwqDCoMKgwqDCoHzCoMKgwqAyICsNCj4gPiDCoGh3L3RpbWVyL3J4ODkw
-MC5jwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgfCA5MTINCj4gPiArKysrKysrKysr
-KysrKysrKysrKysrKysrKysrKysrKysrKysrKysrDQo+ID4gwqBody90aW1lci9yeDg5MDBf
-cmVncy5owqDCoMKgwqDCoMKgwqDCoMKgwqB8IDE0MSArKysrKysrDQo+ID4gwqBody90aW1l
-ci90cmFjZS1ldmVudHPCoMKgwqDCoMKgwqDCoMKgwqDCoMKgfMKgwqAzMSArKw0KPiA+IMKg
-NiBmaWxlcyBjaGFuZ2VkLCAxMDg5IGluc2VydGlvbnMoKyksIDIgZGVsZXRpb25zKC0pDQo+
-ID4gwqBjcmVhdGUgbW9kZSAxMDA2NDQgaHcvdGltZXIvcng4OTAwLmMNCj4gPiDCoGNyZWF0
-ZSBtb2RlIDEwMDY0NCBody90aW1lci9yeDg5MDBfcmVncy5oDQo+ID4gDQo+ID4gZGlmZiAt
-LWdpdCBhL2RlZmF1bHQtY29uZmlncy9hcm0tc29mdG1tdS5tYWsgYi9kZWZhdWx0LWNvbmZp
-Z3MvYXJtLQ0KPiA+IHNvZnRtbXUubWFrDQo+ID4gaW5kZXggNmRlM2UxNi4uYWRiNjAwZSAx
-MDA2NDQNCj4gPiAtLS0gYS9kZWZhdWx0LWNvbmZpZ3MvYXJtLXNvZnRtbXUubWFrDQo+ID4g
-KysrIGIvZGVmYXVsdC1jb25maWdzL2FybS1zb2Z0bW11Lm1haw0KPiA+IEBAIC0yOSw2ICsy
-OSw3IEBAIENPTkZJR19TTUM5MUMxMTE9eQ0KPiA+IMKgQ09ORklHX0FMTFdJTk5FUl9FTUFD
-PXkNCj4gPiDCoENPTkZJR19JTVhfRkVDPXkNCj4gPiDCoENPTkZJR19EUzEzMzg9eQ0KPiA+
-ICtDT05GSUdfUlg4OTAwPXkNCj4gPiDCoENPTkZJR19QRkxBU0hfQ0ZJMDE9eQ0KPiA+IMKg
-Q09ORklHX1BGTEFTSF9DRkkwMj15DQo+ID4gwqBDT05GSUdfTUlDUk9EUklWRT15DQo+ID4g
-ZGlmZiAtLWdpdCBhL2h3L2kyYy9jb3JlLmMgYi9ody9pMmMvY29yZS5jDQo+ID4gaW5kZXgg
-YWUzY2E5NC4uZTQwNzgxZSAxMDA2NDQNCj4gPiAtLS0gYS9ody9pMmMvY29yZS5jDQo+ID4g
-KysrIGIvaHcvaTJjL2NvcmUuYw0KPiA+IEBAIC0yNjIsOSArMjYyLDkgQEAgc3RhdGljIGlu
-dCBpMmNfc2xhdmVfcWRldl9pbml0KERldmljZVN0YXRlDQo+ID4gKmRldikNCj4gPiANCj4g
-PiDCoMKgwqDCoMKgaWYgKHNjLT5pbml0KSB7DQo+ID4gwqDCoMKgwqDCoMKgwqDCoMKgcmV0
-dXJuIHNjLT5pbml0KHMpOw0KPiA+IC3CoMKgwqDCoH0gZWxzZSB7DQo+ID4gLcKgwqDCoMKg
-wqDCoMKgwqByZXR1cm4gMDsNCj4gPiDCoMKgwqDCoMKgfQ0KPiA+ICsNCj4gPiArwqDCoMKg
-wqByZXR1cm4gMDsNCj4gPiDCoH0NCj4gPiANCj4gDQo+IFRoaXMgY2hhbmdlIHNob3VsZG4n
-dCBiZSBpbiB0aGlzIHBhdGNoLg0KDQpPaw0KDQo+IA0KPiA+IMKgRGV2aWNlU3RhdGUgKmky
-Y19jcmVhdGVfc2xhdmUoSTJDQnVzICpidXMsIGNvbnN0IGNoYXIgKm5hbWUsDQo+ID4gdWlu
-dDhfdCBhZGRyKQ0KPiA+IGRpZmYgLS1naXQgYS9ody90aW1lci9NYWtlZmlsZS5vYmpzIGIv
-aHcvdGltZXIvTWFrZWZpbGUub2Jqcw0KPiA+IGluZGV4IDdiYThjMjMuLmZhMDI4YWMgMTAw
-NjQ0DQo+ID4gLS0tIGEvaHcvdGltZXIvTWFrZWZpbGUub2Jqcw0KPiA+ICsrKyBiL2h3L3Rp
-bWVyL01ha2VmaWxlLm9ianMNCj4gPiBAQCAtMyw2ICszLDcgQEAgY29tbW9uLW9iai0kKENP
-TkZJR19BUk1fTVBUSU1FUikgKz0gYXJtX21wdGltZXIubw0KPiA+IMKgY29tbW9uLW9iai0k
-KENPTkZJR19BOV9HVElNRVIpICs9IGE5Z3RpbWVyLm8NCj4gPiDCoGNvbW1vbi1vYmotJChD
-T05GSUdfQ0FERU5DRSkgKz0gY2FkZW5jZV90dGMubw0KPiA+IMKgY29tbW9uLW9iai0kKENP
-TkZJR19EUzEzMzgpICs9IGRzMTMzOC5vDQo+ID4gK2NvbW1vbi1vYmotJChDT05GSUdfUlg4
-OTAwKSArPSByeDg5MDAubw0KPiA+IMKgY29tbW9uLW9iai0kKENPTkZJR19IUEVUKSArPSBo
-cGV0Lm8NCj4gPiDCoGNvbW1vbi1vYmotJChDT05GSUdfSTgyNTQpICs9IGk4MjU0X2NvbW1v
-bi5vIGk4MjU0Lm8NCj4gPiDCoGNvbW1vbi1vYmotJChDT05GSUdfTTQ4VDU5KSArPSBtNDh0
-NTkubw0KPiA+IEBAIC0xNyw2ICsxOCw3IEBAIGNvbW1vbi1vYmotJChDT05GSUdfSU1YKSAr
-PSBpbXhfZXBpdC5vDQo+ID4gwqBjb21tb24tb2JqLSQoQ09ORklHX0lNWCkgKz0gaW14X2dw
-dC5vDQo+ID4gwqBjb21tb24tb2JqLSQoQ09ORklHX0xNMzIpICs9IGxtMzJfdGltZXIubw0K
-PiA+IMKgY29tbW9uLW9iai0kKENPTkZJR19NSUxLWU1JU1QpICs9IG1pbGt5bWlzdC1zeXNj
-dGwubw0KPiA+ICtjb21tb24tb2JqLSQoQ09ORklHX1JYODkwMCkgKz0gcng4OTAwLm8NCj4g
-PiANCj4gPiDCoG9iai0kKENPTkZJR19FWFlOT1M0KSArPSBleHlub3M0MjEwX21jdC5vDQo+
-ID4gwqBvYmotJChDT05GSUdfRVhZTk9TNCkgKz0gZXh5bm9zNDIxMF9wd20ubw0KPiA+ICsv
-KioNCj4gPiArICogR2V0IHRoZSBkZXZpY2UgdGVtcGVyYXR1cmUgaW4gQ2VsY2l1cyBhcyBh
-IHByb3BlcnR5DQo+IA0KPiBJdCdzIHNwZWx0ICJDZWxzaXVzIiAtLSBwbGVhc2UgZml4IHRo
-cm91Z2ggdGhlIHdob2xlIGZpbGUuDQo+IA0KDQpXaG9vcHMsIHRoYW5rcyBmb3IgdGhhdCA6
-KQ0KDQo+ID4gKyAqIEBwYXJhbSBvYmogdGhlIGRldmljZQ0KPiA+ICsgKiBAcGFyYW0gdg0K
-PiA+ICsgKiBAcGFyYW0gbmFtZSB0aGUgcHJvcGVydHkgbmFtZQ0KPiA+ICsgKiBAcGFyYW0g
-b3BhcXVlDQo+ID4gKyAqIEBwYXJhbSBlcnJwIGFuIGVycm9yIG9iamVjdCB0byBwb3B1bGF0
-ZSBvbiBmYWlsdXJlDQo+ID4gKyAqLw0KPiA+ICtzdGF0aWMgdm9pZCByeDg5MDBfZ2V0X3Rl
-bXBlcmF0dXJlKE9iamVjdCAqb2JqLCBWaXNpdG9yICp2LCBjb25zdA0KPiA+IGNoYXIgKm5h
-bWUsDQo+ID4gK8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqB2b2lkICpvcGFxdWUsIEVycm9yICoqZXJycCkN
-Cj4gPiArew0KPiA+ICvCoMKgwqDCoFJYODkwMFN0YXRlICpzID0gUlg4OTAwKG9iaik7DQo+
-ID4gK8KgwqDCoMKgZG91YmxlIHZhbHVlID0gKHMtPm52cmFtW1RFTVBFUkFUVVJFXSAqIDIu
-MGYgLSAxODcuMWYpIC8NCj4gPiAzLjIxOGY7DQo+IA0KPiBXaHkgdXNlICdkb3VibGUnIGZv
-ciB0aGUgdmFyaWFibGUgd2hlbiB5b3UncmUgZG9pbmcgYWxsIHlvdXINCj4gYXJpdGhtZXRp
-YyBhdCAnZmxvYXQnIHByZWNpc2lvbiBiZWNhdXNlIG9mIHRob3NlICdmJyBzdWZmaXhlcz8N
-Cj4gVW5sZXNzIHRoZXJlJ3MgYSBnb29kIHJlYXNvbiBJJ2Qgc3VnZ2VzdCBkcm9wcGluZyB0
-aGUgJ2YncyBhbmQNCj4ganVzdCBkb2luZyBhbGwgdGhlIGFyaXRobWV0aWMgYXQgZG91Ymxl
-IHByZWNpc2lvbi4NCg0KT2sNCg0KPiA+ICtzdGF0aWMgdm9pZCByeDg5MDBfc2V0X3RlbXBl
-cmF0dXJlKE9iamVjdCAqb2JqLCBWaXNpdG9yICp2LCBjb25zdA0KPiA+IGNoYXIgKm5hbWUs
-DQo+ID4gK8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqB2b2lkICpvcGFxdWUsIEVycm9yICoqZXJycCkNCj4g
-PiArew0KPiA+ICvCoMKgwqDCoFJYODkwMFN0YXRlICpzID0gUlg4OTAwKG9iaik7DQo+ID4g
-K8KgwqDCoMKgRXJyb3IgKmxvY2FsX2VyciA9IE5VTEw7DQo+ID4gK8KgwqDCoMKgZG91Ymxl
-IHRlbXA7IC8qIGRlZ3JlZXMgQ2VsY2l1cyAqLw0KPiA+ICvCoMKgwqDCoHZpc2l0X3R5cGVf
-bnVtYmVyKHYsIG5hbWUsICZ0ZW1wLCAmbG9jYWxfZXJyKTsNCj4gPiArwqDCoMKgwqBpZiAo
-bG9jYWxfZXJyKSB7DQo+ID4gK8KgwqDCoMKgwqDCoMKgwqBlcnJvcl9wcm9wYWdhdGUoZXJy
-cCwgbG9jYWxfZXJyKTsNCj4gPiArwqDCoMKgwqDCoMKgwqDCoHJldHVybjsNCj4gPiArwqDC
-oMKgwqB9DQo+ID4gK8KgwqDCoMKgaWYgKHRlbXAgPj0gMTAwIHx8IHRlbXAgPCAtNTgpIHsN
-Cj4gPiArwqDCoMKgwqDCoMKgwqDCoGVycm9yX3NldGcoZXJycCwgInZhbHVlICVmwrBDIGlz
-IG91dCBvZiByYW5nZSIsIHRlbXApOw0KPiANCj4gTm90IHN1cmUgdGhhdCBVVEYtOCBjaGFy
-YWN0ZXJzIGRpcmVjdGx5IGluIGVycm9yIHN0cmluZ3MNCj4gaXMgYSBncmVhdCBpZGVhLiBJ
-J2Qgc3RpY2sgdG8gQVNDSUkuDQoNCkl0IGlzIHZhbGlkIDggYml0IEFTQ0lJLCBidXQgaXMg
-Y29kZS1wYWdlIGRlcGVuZGVudCwgT2ssIEknbGwgcmVtb3ZlDQppdC4NCg0KPiA+ICvCoMKg
-wqDCoMKgwqDCoMKgcmV0dXJuOw0KPiA+ICvCoMKgwqDCoH0NCj4gPiArDQo+ID4gK8KgwqDC
-oMKgcy0+bnZyYW1bVEVNUEVSQVRVUkVdID0gZW5jb2RlX3RlbXBlcmF0dXJlKHRlbXApOw0K
-PiA+ICsNCj4gPiArwqDCoMKgwqB0cmFjZV9yeDg5MDBfc2V0X3RlbXBlcmF0dXJlKHMtPm52
-cmFtW1RFTVBFUkFUVVJFXSwgdGVtcCk7DQo+ID4gK30NCj4gPiArDQo+ID4gKy8qKg0KPiA+
-ICsgKiBHZXQgdGhlIGRldmljZSBzdXBwbHkgdm9sdGFnZSBhcyBhIHByb3BlcnR5DQo+ID4g
-KyAqIEBwYXJhbSBvYmogdGhlIGRldmljZQ0KPiA+ICsgKiBAcGFyYW0gdg0KPiA+ICsgKiBA
-cGFyYW0gbmFtZSB0aGUgcHJvcGVydHkgbmFtZQ0KPiA+ICsgKiBAcGFyYW0gb3BhcXVlDQo+
-ID4gKyAqIEBwYXJhbSBlcnJwIGFuIGVycm9yIG9iamVjdCB0byBwb3B1bGF0ZSBvbiBmYWls
-dXJlDQo+ID4gKyAqLw0KPiA+ICtzdGF0aWMgdm9pZCByeDg5MDBfZ2V0X3ZvbHRhZ2UoT2Jq
-ZWN0ICpvYmosIFZpc2l0b3IgKnYsIGNvbnN0IGNoYXINCj4gPiAqbmFtZSwNCj4gPiArwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoHZvaWQgKm9wYXF1ZSwgRXJyb3IgKiplcnJwKQ0KPiA+ICt7DQo+ID4g
-K8KgwqDCoMKgUlg4OTAwU3RhdGUgKnMgPSBSWDg5MDAob2JqKTsNCj4gPiArDQo+ID4gK8Kg
-wqDCoMKgdmlzaXRfdHlwZV9udW1iZXIodiwgbmFtZSwgJnMtPnN1cHBseV92b2x0YWdlLCBl
-cnJwKTsNCj4gPiArfQ0KPiA+ICsNCj4gPiArLyoqDQo+ID4gKyAqIFNldCB0aGUgZGV2aWNl
-IHN1cHBseSB2b2x0YWdlIGFzIGEgcHJvcGVydHkNCj4gPiArICogQHBhcmFtIG9iaiB0aGUg
-ZGV2aWNlDQo+ID4gKyAqIEBwYXJhbSB2DQo+ID4gKyAqIEBwYXJhbSBuYW1lIHRoZSBwcm9w
-ZXJ0eSBuYW1lDQo+ID4gKyAqIEBwYXJhbSBvcGFxdWUNCj4gPiArICogQHBhcmFtIGVycnAg
-YW4gZXJyb3Igb2JqZWN0IHRvIHBvcHVsYXRlIG9uIGZhaWx1cmUNCj4gPiArICovDQo+ID4g
-K3N0YXRpYyB2b2lkIHJ4ODkwMF9zZXRfdm9sdGFnZShPYmplY3QgKm9iaiwgVmlzaXRvciAq
-diwgY29uc3QgY2hhcg0KPiA+ICpuYW1lLA0KPiA+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgdm9pZCAq
-b3BhcXVlLCBFcnJvciAqKmVycnApDQo+ID4gK3sNCj4gPiArwqDCoMKgwqBSWDg5MDBTdGF0
-ZSAqcyA9IFJYODkwMChvYmopOw0KPiA+ICvCoMKgwqDCoEVycm9yICpsb2NhbF9lcnIgPSBO
-VUxMOw0KPiA+ICvCoMKgwqDCoGRvdWJsZSB0ZW1wOw0KPiA+ICvCoMKgwqDCoHZpc2l0X3R5
-cGVfbnVtYmVyKHYsIG5hbWUsICZ0ZW1wLCAmbG9jYWxfZXJyKTsNCj4gPiArwqDCoMKgwqBp
-ZiAobG9jYWxfZXJyKSB7DQo+ID4gK8KgwqDCoMKgwqDCoMKgwqBlcnJvcl9wcm9wYWdhdGUo
-ZXJycCwgbG9jYWxfZXJyKTsNCj4gPiArwqDCoMKgwqDCoMKgwqDCoHJldHVybjsNCj4gPiAr
-wqDCoMKgwqB9DQo+ID4gKw0KPiA+ICvCoMKgwqDCoHMtPnN1cHBseV92b2x0YWdlID0gdGVt
-cDsNCj4gPiArwqDCoMKgwqB0cmFjZV9yeDg5MDBfc2V0X3ZvbHRhZ2Uocy0+c3VwcGx5X3Zv
-bHRhZ2UpOw0KPiA+ICsNCj4gPiArwqDCoMKgwqBjaGVja192b2x0YWdlKHMpOw0KPiA+ICt9
-DQo+ID4gKw0KPiA+ICsNCj4gPiArLyoqDQo+ID4gKyAqIENvbmZpZ3VyZSBkZXZpY2UgcHJv
-cGVydGllcw0KPiA+ICsgKiBAcGFyYW0gb2JqIHRoZSBkZXZpY2UNCj4gPiArICovDQo+ID4g
-K3N0YXRpYyB2b2lkIHJ4ODkwMF9pbml0Zm4oT2JqZWN0ICpvYmopDQo+ID4gK3sNCj4gPiAr
-wqDCoMKgwqBvYmplY3RfcHJvcGVydHlfYWRkKG9iaiwgInRlbXBlcmF0dXJlIiwgIm51bWJl
-ciIsDQo+ID4gK8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoHJ4ODkwMF9nZXRfdGVtcGVyYXR1cmUsDQo+ID4gK8KgwqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoHJ4ODkwMF9zZXRfdGVtcGVyYXR1cmUsIE5V
-TEwsIE5VTEwsIE5VTEwpOw0KPiA+ICsNCj4gPiArwqDCoMKgwqBvYmplY3RfcHJvcGVydHlf
-YWRkKG9iaiwgInZvbHRhZ2UiLCAibnVtYmVyIiwNCj4gPiArwqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgcng4OTAwX2dldF92b2x0YWdlLA0KPiA+
-ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqByeDg5
-MDBfc2V0X3ZvbHRhZ2UsIE5VTEwsIE5VTEwsIE5VTEwpOw0KPiA+ICt9DQo+ID4gKw0KPiA+
-ICsvKioNCj4gPiArICogUmVzZXQgdGhlIGRldmljZQ0KPiA+ICsgKiBAcGFyYW0gZGV2IHRo
-ZSBSWDg5MDAgZGV2aWNlIHRvIHJlc2V0DQo+ID4gKyAqLw0KPiA+ICtzdGF0aWMgdm9pZCBy
-eDg5MDBfcmVzZXQoRGV2aWNlU3RhdGUgKmRldikNCj4gPiArew0KPiA+ICvCoMKgwqDCoFJY
-ODkwMFN0YXRlICpzID0gUlg4OTAwKGRldik7DQo+ID4gKw0KPiA+ICvCoMKgwqDCoHRyYWNl
-X3J4ODkwMF9yZXNldCgpOw0KPiA+ICsNCj4gPiArwqDCoMKgwqAvKiBUaGUgY2xvY2sgaXMg
-cnVubmluZyBhbmQgc3luY2hyb25pemVkIHdpdGggdGhlIGhvc3QgKi8NCj4gPiArwqDCoMKg
-wqBzLT5vZmZzZXQgPSAwOw0KPiA+ICvCoMKgwqDCoHMtPndlZWtkYXkgPSA3OyAvKiBTZXQg
-dG8gYW4gaW52YWxpZCB2YWx1ZSAqLw0KPiA+ICsNCj4gPiArwqDCoMKgwqBzLT5udnJhbVtF
-WFRFTlNJT05fUkVHSVNURVJdID0gRVhUX01BU0tfVFNFTDE7DQo+ID4gK8KgwqDCoMKgcy0+
-bnZyYW1bQ09OVFJPTF9SRUdJU1RFUl0gPSBDVFJMX01BU0tfQ1NFTDA7DQo+ID4gK8KgwqDC
-oMKgcy0+bnZyYW1bRkxBR19SRUdJU1RFUl0gJj0gRkxBR19NQVNLX1ZERVQgfCBGTEFHX01B
-U0tfVkxGOw0KPiA+ICsNCj4gPiArwqDCoMKgwqBzLT5udnJhbV9vZmZzZXQgPSAwOw0KPiA+
-ICsNCj4gPiArwqDCoMKgwqB0cmFjZV9yeDg5MDBfcmVncHRyX3VwZGF0ZShzLT5udnJhbV9v
-ZmZzZXQpOw0KPiA+ICsNCj4gPiArwqDCoMKgwqBzLT5hZGRyX2J5dGUgPSBmYWxzZTsNCj4g
-PiArfQ0KPiA+ICsNCj4gPiArLyoqDQo+ID4gKyAqIFJlYWxpemUgYW4gUlg4OTAwIGRldmlj
-ZSBpbnN0YW5jZQ0KPiA+ICsgKiBTZXQgdXAgdGltZXJzDQo+ID4gKyAqIENvbmZpZ3VyZSBH
-UElPIGxpbmVzDQo+ID4gKyAqIEBwYXJhbSBkZXYgdGhlIGRldmljZSBpbnN0YW5jZSB0byBy
-ZWFsaXplDQo+ID4gKyAqIEBwYXJhbSBlcnJwIGFuIGVycm9yIG9iamVjdCB0byBwb3B1bGF0
-ZSBvbiBlcnJvcg0KPiA+ICsgKi8NCj4gPiArc3RhdGljIHZvaWQgcng4OTAwX3JlYWxpemUo
-RGV2aWNlU3RhdGUgKmRldiwgRXJyb3IgKiplcnJwKQ0KPiA+ICt7DQo+ID4gK8KgwqDCoMKg
-Ulg4OTAwU3RhdGUgKnMgPSBSWDg5MDAoZGV2KTsNCj4gPiArwqDCoMKgwqBJMkNTbGF2ZSAq
-aTJjID0gSTJDX1NMQVZFKGRldik7DQo+ID4gK8KgwqDCoMKgUUVNVUJIICpiaDsNCj4gPiAr
-wqDCoMKgwqBjaGFyIG5hbWVbNjRdOw0KPiA+ICsNCj4gPiArwqDCoMKgwqBzLT5mb3V0X3N0
-YXRlID0gZmFsc2U7DQo+ID4gKw0KPiA+ICvCoMKgwqDCoG1lbXNldChzLT5udnJhbSwgMCwg
-Ulg4OTAwX05WUkFNX1NJWkUpOw0KPiANCj4gVGhpcyBsb29rcyBsaWtlIHNvbWV0aGluZyB5
-b3Ugc2hvdWxkIGJlIGRvaW5nIGluIHJlc2V0Lg0KPiANCj4gPiArwqDCoMKgwqAvKiBTZXQg
-dGhlIGluaXRpYWwgc3RhdGUgdG8gMjUgZGVncmVlcyBDZWxjaXVzICovDQo+ID4gK8KgwqDC
-oMKgcy0+bnZyYW1bVEVNUEVSQVRVUkVdID0gZW5jb2RlX3RlbXBlcmF0dXJlKDI1LjBmKTsN
-Cj4gDQo+IC4uLmFuZCB0aGlzLg0KPiANCkkgcmV1c2UgdGhlIHJlc2V0IGNvZGUgZm9yIHRo
-ZSBzb2Z0LXJlc2V0LCB3aGljaCBwcmV2ZW50cyBtZSBmcm9tIGRvaW5nDQp0aGVzZSBvcGVy
-YXRpb25zIHRoZXJlLg0KDQo+ID4gKw0KPiA+ICvCoMKgwqDCoC8qIFNldCB1cCB0aW1lcnMg
-Ki8NCj4gPiArwqDCoMKgwqBiaCA9IHFlbXVfYmhfbmV3KHJ4ODkwMF90aW1lcl90aWNrLCBz
-KTsNCj4gPiArwqDCoMKgwqBzLT5zZWNfdGltZXIgPSBwdGltZXJfaW5pdChiaCwgUFRJTUVS
-X1BPTElDWV9ERUZBVUxUKTsNCj4gPiArwqDCoMKgwqAvKiB3ZSB0cmlnZ2VyIHRoZSB0aW1l
-ciBhdCAxMEh6IGFuZCBjaGVjayBmb3Igcm9sbG92ZXIsIGFzIHRoZQ0KPiA+IHFlbXUNCj4g
-PiArwqDCoMKgwqDCoCogY2xvY2sgZG9lcyBub3QgYWR2YW5jZSBpbiByZWFsdGltZSBpbiB0
-aGUgdGVzdCBlbnZpcm9ubWVudCwNCj4gPiArwqDCoMKgwqDCoCogbGVhZGluZyB0byB1bnN0
-YWJsZSB0ZXN0IHJlc3VsdHMNCj4gPiArwqDCoMKgwqDCoCovDQo+ID4gK8KgwqDCoMKgcHRp
-bWVyX3NldF9mcmVxKHMtPnNlY190aW1lciwgMTApOw0KPiA+ICvCoMKgwqDCoHB0aW1lcl9z
-ZXRfbGltaXQocy0+c2VjX3RpbWVyLCAxLCAxKTsNCj4gPiArDQo+ID4gK8KgwqDCoMKgYmgg
-PSBxZW11X2JoX25ldyhyeDg5MDBfZm91dF90aWNrLCBzKTsNCj4gPiArwqDCoMKgwqBzLT5m
-b3V0X3RpbWVyID0gcHRpbWVyX2luaXQoYmgsIFBUSU1FUl9QT0xJQ1lfREVGQVVMVCk7DQo+
-ID4gK8KgwqDCoMKgLyogZnJlcXVlbmN5IGRvdWJsZWQgdG8gZ2VuZXJhdGUgNTAlIGR1dHkg
-Y3ljbGUgc3F1YXJlIHdhdmUgKi8NCj4gPiArwqDCoMKgwqBwdGltZXJfc2V0X2ZyZXEocy0+
-Zm91dF90aW1lciwgMzI3NjggKiAyKTsNCj4gPiArwqDCoMKgwqBwdGltZXJfc2V0X2xpbWl0
-KHMtPmZvdXRfdGltZXIsIDEsIDEpOw0KPiA+ICsNCj4gPiArwqDCoMKgwqBiaCA9IHFlbXVf
-YmhfbmV3KHJ4ODkwMF9jb3VudGRvd25fdGljaywgcyk7DQo+ID4gK8KgwqDCoMKgcy0+Y291
-bnRkb3duX3RpbWVyID0gcHRpbWVyX2luaXQoYmgsIFBUSU1FUl9QT0xJQ1lfREVGQVVMVCk7
-DQo+ID4gK8KgwqDCoMKgcHRpbWVyX3NldF9mcmVxKHMtPmNvdW50ZG93bl90aW1lciwgQ09V
-TlRET1dOX1RJTUVSX0ZSRVEpOw0KPiA+ICvCoMKgwqDCoHB0aW1lcl9zZXRfbGltaXQocy0+
-Y291bnRkb3duX3RpbWVyLCBDT1VOVERPV05fVElNRVJfRlJFUSwgMSk7DQo+ID4gKw0KPiA+
-ICsNCj4gPiArwqDCoMKgwqAvKiBzZXQgdXAgR1BJTyAqLw0KPiA+ICvCoMKgwqDCoHNucHJp
-bnRmKG5hbWUsIHNpemVvZihuYW1lKSwgInJ4ODkwMC1pbnRlcnJ1cHQtb3V0Iik7DQo+ID4g
-K8KgwqDCoMKgcWRldl9pbml0X2dwaW9fb3V0X25hbWVkKCZpMmMtPnFkZXYsICZzLT5pbnRl
-cnJ1cHRfcGluLCBuYW1lLA0KPiA+IDEpOw0KPiA+ICvCoMKgwqDCoHRyYWNlX3J4ODkwMF9w
-aW5fbmFtZSgiSW50ZXJydXB0IiwgbmFtZSk7DQo+ID4gKw0KPiA+ICvCoMKgwqDCoHNucHJp
-bnRmKG5hbWUsIHNpemVvZihuYW1lKSwgInJ4ODkwMC1mb3V0LWVuYWJsZSIpOw0KPiA+ICvC
-oMKgwqDCoHFkZXZfaW5pdF9ncGlvX2luX25hbWVkKCZpMmMtPnFkZXYsDQo+ID4gcng4OTAw
-X2ZvdXRfZW5hYmxlX2hhbmRsZXIsIG5hbWUsIDEpOw0KPiA+ICvCoMKgwqDCoHRyYWNlX3J4
-ODkwMF9waW5fbmFtZSgiRm91dC1lbmFibGUiLCBuYW1lKTsNCj4gPiArDQo+ID4gK8KgwqDC
-oMKgc25wcmludGYobmFtZSwgc2l6ZW9mKG5hbWUpLCAicng4OTAwLWZvdXQiKTsNCj4gPiAr
-wqDCoMKgwqBxZGV2X2luaXRfZ3Bpb19vdXRfbmFtZWQoJmkyYy0+cWRldiwgJnMtPmZvdXRf
-cGluLCBuYW1lLCAxKTsNCj4gPiArwqDCoMKgwqB0cmFjZV9yeDg5MDBfcGluX25hbWUoIkZv
-dXQiLCBuYW1lKTsNCj4gPiArDQo+ID4gK8KgwqDCoMKgLyogU2V0IHVwIGRlZmF1bHQgdm9s
-dGFnZSAqLw0KPiA+ICvCoMKgwqDCoHMtPnN1cHBseV92b2x0YWdlID0gMy4zZjsNCj4gPiAr
-wqDCoMKgwqB0cmFjZV9yeDg5MDBfc2V0X3ZvbHRhZ2Uocy0+c3VwcGx5X3ZvbHRhZ2UpOw0K
-PiA+ICt9DQo+ID4gK3J4ODkwMF9nZXRfdGVtcGVyYXR1cmUodWludDhfdCByYXcsIGRvdWJs
-ZSB2YWwpICIweCV4ID0gJWbCsEMiDQo+ID4gK3J4ODkwMF9zZXRfdGVtcGVyYXR1cmUodWlu
-dDhfdCByYXcsIGRvdWJsZSB2YWwpICIweCV4ID0gJWbCsEMiDQo+IA0KPiBTdGljayB0byBB
-U0NJSSBoZXJlIHRvby4NCj4gDQoNCk9rDQo+IHRoYW5rcw0KPiAtLSBQTU0NCj4gDQoNCg==
+From: Alastair D'Silva <alastair@d-silva.org>
+
+Signed-off-by: Alastair D'Silva <alastair@d-silva.org>
+---
+ tests/Makefile.include |   2 +
+ tests/rx8900-test.c    | 882 +++++++++++++++++++++++++++++++++++++++++++++++++
+ 2 files changed, 884 insertions(+)
+ create mode 100644 tests/rx8900-test.c
+
+diff --git a/tests/Makefile.include b/tests/Makefile.include
+index e98d3b6..e52e355 100644
+--- a/tests/Makefile.include
++++ b/tests/Makefile.include
+@@ -300,6 +300,7 @@ check-qtest-sparc64-y = tests/endianness-test$(EXESUF)
+ 
+ check-qtest-arm-y = tests/tmp105-test$(EXESUF)
+ check-qtest-arm-y += tests/ds1338-test$(EXESUF)
++check-qtest-arm-y += tests/rx8900-test$(EXESUF)
+ check-qtest-arm-y += tests/m25p80-test$(EXESUF)
+ gcov-files-arm-y += hw/misc/tmp105.c
+ check-qtest-arm-y += tests/virtio-blk-test$(EXESUF)
+@@ -637,6 +638,7 @@ tests/bios-tables-test$(EXESUF): tests/bios-tables-test.o \
+ tests/pxe-test$(EXESUF): tests/pxe-test.o tests/boot-sector.o $(libqos-obj-y)
+ tests/tmp105-test$(EXESUF): tests/tmp105-test.o $(libqos-omap-obj-y)
+ tests/ds1338-test$(EXESUF): tests/ds1338-test.o $(libqos-imx-obj-y)
++tests/rx8900-test$(EXESUF): tests/rx8900-test.o $(libqos-imx-obj-y)
+ tests/m25p80-test$(EXESUF): tests/m25p80-test.o
+ tests/i440fx-test$(EXESUF): tests/i440fx-test.o $(libqos-pc-obj-y)
+ tests/q35-test$(EXESUF): tests/q35-test.o $(libqos-pc-obj-y)
+diff --git a/tests/rx8900-test.c b/tests/rx8900-test.c
+new file mode 100644
+index 0000000..1769659
+--- /dev/null
++++ b/tests/rx8900-test.c
+@@ -0,0 +1,882 @@
++/*
++ * QTest testcase for the Epson RX8900SA/CE RTC
++ *
++ * Copyright (c) 2016 IBM Corporation
++ * Authors:
++ *  Alastair D'Silva <alastair@d-silva.org>
++ *
++ * This code is licensed under the GPL version 2 or later.  See
++ * the COPYING file in the top-level directory.
++ */
++
++#include "qemu/osdep.h"
++#include "hw/timer/rx8900_regs.h"
++#include "libqtest.h"
++#include "libqos/i2c.h"
++#include "qemu/timer.h"
++
++#define IMX25_I2C_0_BASE 0x43F80000
++#define RX8900_TEST_ID "rx8900-test"
++#define RX8900_ADDR 0x32
++#define RX8900_INTERRUPT_OUT "rx8900-interrupt-out"
++#define RX8900_FOUT_ENABLE "rx8900-fout-enable"
++#define RX8900_FOUT "rx8900-fout"
++
++static I2CAdapter *i2c;
++static uint8_t addr;
++
++static inline uint8_t bcd2bin(uint8_t x)
++{
++    return (x & 0x0f) + (x >> 4) * 10;
++}
++
++static inline uint8_t bin2bcd(uint8_t x)
++{
++    return (x / 10 << 4) | (x % 10);
++}
++
++static void qmp_rx8900_set_temperature(const char *id, double value)
++{
++    QDict *response;
++
++    response = qmp("{ 'execute': 'qom-set', 'arguments': { 'path': %s, "
++                   "'property': 'temperature', 'value': %f } }", id, value);
++    g_assert(qdict_haskey(response, "return"));
++    QDECREF(response);
++}
++
++static void qmp_rx8900_set_voltage(const char *id, double value)
++{
++    QDict *response;
++
++    response = qmp("{ 'execute': 'qom-set', 'arguments': { 'path': %s, "
++                   "'property': 'voltage', 'value': %f } }", id, value);
++    g_assert(qdict_haskey(response, "return"));
++    QDECREF(response);
++}
++
++/**
++ * Read an RX8900 register
++ * @param reg the address of the register
++ * @return the value of the register
++ */
++static uint8_t read_register(RX8900Addresses reg)
++{
++    uint8_t val;
++    uint8_t reg_address = (uint8_t)reg;
++
++    i2c_send(i2c, addr, &reg_address, 1);
++    i2c_recv(i2c, addr, &val, 1);
++
++    return val;
++}
++
++/**
++ * Write to an RX8900 register
++ * @param reg the address of the register
++ * @param val the value to write
++ */
++static uint8_t write_register(RX8900Addresses reg, uint8_t val)
++{
++    uint8_t buf[2];
++
++    buf[0] = reg;
++    buf[1] = val;
++
++    i2c_send(i2c, addr, buf, 2);
++
++    return val;
++}
++
++/**
++ * Set bits in a register
++ * @param reg the address of the register
++ * @param mask a mask of the bits to set
++ */
++static void set_bits_in_register(RX8900Addresses reg, uint8_t mask)
++{
++    uint8_t value = read_register(reg);
++    value |= mask;
++    write_register(reg, value);
++}
++
++/**
++ * Clear bits in a register
++ * @param reg the address of the register
++ * @param mask a mask of the bits to set
++ */
++static void clear_bits_in_register(RX8900Addresses reg, uint8_t mask)
++{
++    uint8_t value = read_register(reg);
++    value &= ~mask;
++    write_register(reg, value);
++}
++
++/**
++ * Read a number of sequential RX8900 registers
++ * @param reg the address of the first register
++ * @param buf (out) an output buffer to stash the register values
++ * @param count the number of registers to read
++ */
++static void read_registers(RX8900Addresses reg, uint8_t *buf, uint8_t count)
++{
++    uint8_t reg_address = (uint8_t)reg;
++
++    i2c_send(i2c, addr, &reg_address, 1);
++    i2c_recv(i2c, addr, buf, count);
++}
++
++/**
++ * Write to a sequential number of RX8900 registers
++ * @param reg the address of the first register
++ * @param buffer a buffer of values to write
++ * @param count the sumber of registers to write
++ */
++static void write_registers(RX8900Addresses reg, uint8_t *buffer, uint8_t count)
++{
++    uint8_t buf[RX8900_NVRAM_SIZE + 1];
++
++    buf[0] = (uint8_t)reg;
++    memcpy(buf + 1, buffer, count);
++
++    i2c_send(i2c, addr, buf, count + 1);
++}
++
++/**
++ * Set the time on the RX8900
++ * @param secs the seconds to set
++ * @param mins the minutes to set
++ * @param hours the hours to set
++ * @param weekday the day of the week to set (0 = Sunday)
++ * @param day the day of the month to set
++ * @param month the month to set
++ * @param year the year to set
++ */
++static void set_time(uint8_t secs, uint8_t mins, uint8_t hours,
++        uint8_t weekday, uint8_t day, uint8_t month, uint8_t year)
++{
++    uint8_t buf[7];
++
++    buf[0] = bin2bcd(secs);
++    buf[1] = bin2bcd(mins);
++    buf[2] = bin2bcd(hours);
++    buf[3] = BIT(weekday);
++    buf[4] = bin2bcd(day);
++    buf[5] = bin2bcd(month);
++    buf[6] = bin2bcd(year);
++
++    write_registers(SECONDS, buf, 7);
++}
++
++
++/**
++ * Check basic communication
++ */
++static void send_and_receive(void)
++{
++    uint8_t buf[7];
++    time_t now = time(NULL);
++    struct tm *tm_ptr;
++
++    /* retrieve the date */
++    read_registers(SECONDS, buf, 7);
++
++    tm_ptr = gmtime(&now);
++
++    /* check retrieved time against local time */
++    g_assert_cmpuint(bcd2bin(buf[0]), == , tm_ptr->tm_sec);
++    g_assert_cmpuint(bcd2bin(buf[1]), == , tm_ptr->tm_min);
++    g_assert_cmpuint(bcd2bin(buf[2]), == , tm_ptr->tm_hour);
++    g_assert_cmpuint(bcd2bin(buf[4]), == , tm_ptr->tm_mday);
++    g_assert_cmpuint(bcd2bin(buf[5]), == , 1 + tm_ptr->tm_mon);
++    g_assert_cmpuint(2000 + bcd2bin(buf[6]), == , 1900 + tm_ptr->tm_year);
++}
++
++/**
++ * Check that the temperature can be altered via properties
++ */
++static void check_temperature(void)
++{
++   /* Check the initial temperature is 25C */
++    uint8_t temperature;
++
++    temperature = read_register(TEMPERATURE);
++    g_assert_cmpuint(temperature, == , 133);
++
++    /* Set the temperature to 40C and check the temperature again */
++    qmp_rx8900_set_temperature(RX8900_TEST_ID, 40.0f);
++    temperature = read_register(TEMPERATURE);
++    g_assert_cmpuint(temperature, == , 157);
++}
++
++/**
++ * Check that the time rolls over correctly
++ */
++static void check_rollover(void)
++{
++    uint8_t buf[7];
++
++
++    set_time(59, 59, 23, 1, 29, 2, 16);
++
++    /* Wait for the clock to rollover */
++    sleep(2);
++
++    memset(buf, 0, sizeof(buf));
++
++    /* Check that the clock rolled over */
++    /* Read from registers starting at 0x00 */
++    buf[0] = 0x00;
++
++    read_registers(SECONDS, buf, 7);
++
++    /* Ignore seconds as there may be some noise,
++     * we expect 00:00:xx Tuesday 1/3/2016
++     */
++    g_assert_cmpuint(bcd2bin(buf[1]), == , 0);
++    g_assert_cmpuint(bcd2bin(buf[2]), == , 0);
++    g_assert_cmpuint(bcd2bin(buf[3]), == , 0x04);
++    g_assert_cmpuint(bcd2bin(buf[4]), == , 1);
++    g_assert_cmpuint(bcd2bin(buf[5]), == , 3);
++    g_assert_cmpuint(bcd2bin(buf[6]), == , 16);
++}
++
++uint32_t interrupt_counts[RX8900_INTERRUPT_SOURCES];
++
++/**
++ * Reset the interrupt counts
++ */
++static void count_reset(void)
++{
++    for (int source = 0; source < RX8900_INTERRUPT_SOURCES; source++) {
++        interrupt_counts[source] = 0;
++    }
++}
++
++/**
++ * Handle an RX8900 interrupt (update the counts for that interrupt type)
++ */
++static void handle_interrupt(void *opaque, const char *name, int irq,
++        bool level)
++{
++    if (!level) {
++        return;
++    }
++
++    uint8_t flags = read_register(FLAG_REGISTER);
++
++    for (int flag = 0; flag < 8; flag++) {
++        if (flags & BIT(flag)) {
++            interrupt_counts[flag]++;
++        }
++    }
++
++    write_register(FLAG_REGISTER, 0x00);
++}
++
++uint32_t fout_counts;
++
++/**
++ * Handle an Fout state change
++ */
++static void handle_fout(void *opaque, const char *name, int irq, bool level)
++{
++    if (!level) {
++        return;
++    }
++
++    fout_counts++;
++}
++
++/**
++ * Reset the fout count
++ */
++static void fout_count_reset(void)
++{
++    fout_counts = 0;
++}
++
++
++/**
++ * Sleep for some real time while counting interrupts
++ * @param delay the delay in microseconds
++ * @param loop the loop time in microseconds
++ */
++static void wait_for(uint64_t delay, uint64_t loop)
++{
++    struct timeval end, now;
++
++    gettimeofday(&end, NULL);
++    delay += end.tv_usec;
++    end.tv_sec += delay / 1000000;
++    end.tv_usec = delay % 1000000;
++
++    while (gettimeofday(&now, NULL),
++            now.tv_sec < end.tv_sec || now.tv_usec < end.tv_usec) {
++        clock_step(loop * 1000);
++        usleep(loop);
++    }
++}
++
++/**
++ * Sleep for some emulated time while counting interrupts
++ * @param delay the delay in nanoseconds
++ * @param loop the loop time in nanoseconds
++ */
++static void wait_cycles(uint64_t delay, uint64_t loop)
++{
++    uint64_t counter;
++
++    for (counter = 0; counter < delay; counter += loop) {
++        clock_step(loop);
++    }
++}
++
++
++/**
++ * Check that when the update timer interrupt is disabled, that no interrupts
++ * occur
++ */
++static void check_update_interrupt_disabled(void)
++{
++    /* Disable the update interrupt */
++    clear_bits_in_register(CONTROL_REGISTER, CTRL_MASK_UIE);
++
++    /* Wait for the clock to rollover, this will cover both seconds & minutes
++     */
++    set_time(59, 59, 23, 1, 29, 2, 16);
++
++    count_reset();
++    wait_for(2 * 1000000, 1000);
++
++    g_assert_cmpuint(interrupt_counts[FLAG_REG_UF], ==, 0);
++    g_assert_cmpuint(interrupt_counts[FLAG_REG_AF], ==, 0);
++}
++
++
++/**
++ * Check that when the update timer interrupt is enabled and configured for
++ * per second updates, that we get the appropriate number of interrupts
++ */
++static void check_update_interrupt_seconds(void)
++{
++    set_time(59, 59, 23, 1, 29, 2, 16);
++
++    /* Enable the update interrupt for per second updates */
++    clear_bits_in_register(EXTENSION_REGISTER, EXT_MASK_USEL);
++    set_bits_in_register(CONTROL_REGISTER, CTRL_MASK_UIE);
++
++    count_reset();
++    wait_for(5.1f * 1000000ULL, 1000);
++
++    /* Disable the update interrupt */
++    clear_bits_in_register(CONTROL_REGISTER, CTRL_MASK_UIE);
++
++    g_assert_cmpuint(interrupt_counts[FLAG_REG_UF], >=, 5);
++    g_assert_cmpuint(interrupt_counts[FLAG_REG_UF], <=, 6);
++    g_assert_cmpuint(interrupt_counts[FLAG_REG_AF], ==, 0);
++}
++
++/**
++ * Check that when the update timer interrupt is enabled and configured for
++ * per minute updates, that we get the appropriate number of interrupts
++ */
++static void check_update_interrupt_minutes(void)
++{
++    set_time(59, 59, 23, 1, 29, 2, 16);
++
++    /* Enable the update interrupt for per minute updates */
++    set_bits_in_register(EXTENSION_REGISTER, EXT_MASK_USEL);
++    set_bits_in_register(CONTROL_REGISTER, CTRL_MASK_UIE);
++
++    count_reset();
++    wait_for(5 * 1000000ULL, 1000);
++
++    /* Disable the update interrupt */
++    clear_bits_in_register(CONTROL_REGISTER, CTRL_MASK_UIE);
++
++    g_assert_cmpuint(interrupt_counts[FLAG_REG_UF], ==, 1);
++    g_assert_cmpuint(interrupt_counts[FLAG_REG_AF], ==, 0);
++}
++
++
++/**
++ * Check that when the alarm timer interrupt is disabled, that no interrupts
++ * occur
++ */
++static void check_alarm_interrupt_disabled(void)
++{
++    /* Disable the alarm interrupt */
++    clear_bits_in_register(CONTROL_REGISTER, CTRL_MASK_AIE);
++
++    /* Set an alarm for midnight */
++    uint8_t buf[3];
++
++    buf[0] = bin2bcd(0); /* minutes */
++    buf[1] = bin2bcd(0); /* hours */
++    buf[2] = bin2bcd(1); /* day */
++
++    write_registers(ALARM_MINUTE, buf, 3);
++
++    /* Wait for the clock to rollover */
++    set_time(59, 59, 23, 1, 29, 2, 16);
++
++    count_reset();
++    wait_for(2 * 1000000, 1000);
++
++    g_assert_cmpuint(interrupt_counts[FLAG_REG_UF], ==, 0);
++    g_assert_cmpuint(interrupt_counts[FLAG_REG_AF], ==, 0);
++}
++
++/**
++ * Check that when the alarm timer interrupt is enabled, that an interrupt
++ * occurs
++ */
++static void check_alarm_interrupt_day_of_month(void)
++{
++
++    /* Set an alarm for midnight */
++    uint8_t buf[3];
++
++    buf[0] = bin2bcd(0); /* minutes */
++    buf[1] = bin2bcd(0); /* hours */
++    buf[2] = bin2bcd(1); /* day */
++
++    write_registers(ALARM_MINUTE, buf, 3);
++
++    /* Set alarm to day of month mode */
++    set_bits_in_register(EXTENSION_REGISTER, EXT_MASK_WADA);
++
++    /* Enable the alarm interrupt */
++    set_bits_in_register(CONTROL_REGISTER, CTRL_MASK_AIE);
++
++    /* Wait for the clock to rollover */
++    set_time(59, 59, 23, 1, 29, 2, 16);
++
++    count_reset();
++    wait_for(2 * 1000000, 1000);
++
++    /* Disable the alarm interrupt */
++    clear_bits_in_register(CONTROL_REGISTER, CTRL_MASK_AIE);
++
++    g_assert_cmpuint(interrupt_counts[FLAG_REG_UF], ==, 0);
++    g_assert_cmpuint(interrupt_counts[FLAG_REG_AF], ==, 1);
++}
++
++/**
++ * Check that when the alarm timer interrupt is enabled, that an interrupt
++ * does not occur
++ */
++static void check_alarm_interrupt_day_of_month_negative(void)
++{
++
++    /* Set an alarm for midnight */
++    uint8_t buf[3];
++
++    buf[0] = bin2bcd(0); /* minutes */
++    buf[1] = bin2bcd(0); /* hours */
++    buf[2] = bin2bcd(2); /* day */
++
++    write_registers(ALARM_MINUTE, buf, 3);
++
++    /* Set alarm to day of month mode */
++    set_bits_in_register(EXTENSION_REGISTER, EXT_MASK_WADA);
++
++    /* Enable the alarm interrupt */
++    set_bits_in_register(CONTROL_REGISTER, CTRL_MASK_AIE);
++
++    /* Wait for the clock to rollover */
++    set_time(59, 59, 23, 1, 29, 2, 16);
++
++    count_reset();
++    wait_for(2 * 1000000, 1000);
++
++    /* Disable the alarm interrupt */
++    clear_bits_in_register(CONTROL_REGISTER, CTRL_MASK_AIE);
++
++    g_assert_cmpuint(interrupt_counts[FLAG_REG_UF], ==, 0);
++    g_assert_cmpuint(interrupt_counts[FLAG_REG_AF], ==, 0);
++}
++
++/**
++ * Check that when the alarm timer interrupt is enabled, that an interrupt
++ * occurs
++ */
++static void check_alarm_interrupt_day_of_week(void)
++{
++
++    /* Set an alarm for midnight */
++    uint8_t buf[3];
++
++    buf[0] = bin2bcd(0); /* minutes */
++    buf[1] = bin2bcd(0); /* hours */
++    buf[2] = 0x01 << 2; /* day */
++
++    write_registers(ALARM_MINUTE, buf, 3);
++
++    /* Set alarm to day of week mode */
++    clear_bits_in_register(EXTENSION_REGISTER, EXT_MASK_WADA);
++
++    /* Enable the alarm interrupt */
++    set_bits_in_register(CONTROL_REGISTER, CTRL_MASK_AIE);
++
++    /* Wait for the clock to rollover */
++    set_time(59, 59, 23, 1, 29, 2, 16);
++
++    count_reset();
++    wait_for(2 * 1000000, 1000);
++
++    /* Disable the alarm interrupt */
++    clear_bits_in_register(CONTROL_REGISTER, CTRL_MASK_AIE);
++
++    g_assert_cmpuint(interrupt_counts[FLAG_REG_UF], ==, 0);
++    g_assert_cmpuint(interrupt_counts[FLAG_REG_AF], ==, 1);
++}
++
++/**
++ * Check that when the alarm timer interrupt is enabled, that an interrupt
++ * does not occur
++ */
++static void check_alarm_interrupt_day_of_week_negative(void)
++{
++
++    /* Set an alarm for midnight */
++    uint8_t buf[3];
++
++    buf[0] = bin2bcd(0); /* minutes */
++    buf[1] = bin2bcd(0); /* hours */
++    buf[2] = 0x01 << 2; /* day */
++
++    write_registers(ALARM_MINUTE, buf, 3);
++
++    /* Set alarm to day of week mode */
++    clear_bits_in_register(EXTENSION_REGISTER, EXT_MASK_WADA);
++
++    /* Enable the alarm interrupt */
++    set_bits_in_register(CONTROL_REGISTER, CTRL_MASK_AIE);
++
++    /* Wait for the clock to rollover */
++    set_time(59, 59, 23, 3, 29, 2, 16);
++
++    count_reset();
++    wait_for(2 * 1000000, 1000);
++
++    /* Disable the alarm interrupt */
++    clear_bits_in_register(CONTROL_REGISTER, CTRL_MASK_AIE);
++
++    g_assert_cmpuint(interrupt_counts[FLAG_REG_UF], ==, 0);
++    g_assert_cmpuint(interrupt_counts[FLAG_REG_AF], ==, 0);
++}
++
++/**
++ * Check that the reset function
++ */
++static void check_reset(void)
++{
++    set_bits_in_register(FLAG_REGISTER, FLAG_MASK_UF);
++    set_bits_in_register(CONTROL_REGISTER, CTRL_MASK_RESET);
++
++    g_assert_cmpuint(read_register(FLAG_REGISTER), ==,
++            0x00);
++}
++
++/**
++ * Check that Fout operates at 1Hz
++ */
++static void check_fout_1hz(void)
++{
++    uint8_t ext_reg = read_register(EXTENSION_REGISTER);
++    ext_reg |= EXT_MASK_FSEL1;
++    ext_reg &= ~EXT_MASK_FSEL0;
++    write_register(EXTENSION_REGISTER, ext_reg);
++
++    /* Enable Fout */
++    irq_set(RX8900_TEST_ID, RX8900_FOUT_ENABLE, 0, true);
++
++    fout_count_reset();
++    wait_cycles(2 * 1000000000ULL, 1000000);
++
++    /* disable Fout */
++    irq_set(RX8900_TEST_ID, RX8900_FOUT_ENABLE, 0, false);
++
++    g_assert_cmpuint(fout_counts, ==, 2);
++}
++
++/**
++ * Check that Fout operates at 1024Hz
++ */
++static void check_fout_1024hz(void)
++{
++    uint8_t ext_reg = read_register(EXTENSION_REGISTER);
++    ext_reg |= EXT_MASK_FSEL0;
++    ext_reg &= ~EXT_MASK_FSEL1;
++    write_register(EXTENSION_REGISTER, ext_reg);
++
++    /* Enable Fout */
++    irq_set(RX8900_TEST_ID, RX8900_FOUT_ENABLE, 0, true);
++
++    fout_count_reset();
++    wait_cycles(2 * 1000000000ULL, 100000);
++
++    /* disable Fout */
++    irq_set(RX8900_TEST_ID, RX8900_FOUT_ENABLE, 0, false);
++
++    g_assert_cmpuint(fout_counts, ==, 1024 * 2);
++}
++
++/**
++ * Check that Fout operates at 32768Hz
++ */
++static void check_fout_32768hz(void)
++{
++    uint8_t ext_reg = read_register(EXTENSION_REGISTER);
++    ext_reg &= ~EXT_MASK_FSEL0;
++    ext_reg &= ~EXT_MASK_FSEL1;
++    write_register(EXTENSION_REGISTER, ext_reg);
++
++    /* Enable Fout */
++    irq_set(RX8900_TEST_ID, RX8900_FOUT_ENABLE, 0, true);
++
++    fout_count_reset();
++    wait_cycles(2 * 1000000000ULL, 15000);
++
++    /* disable Fout */
++    irq_set(RX8900_TEST_ID, RX8900_FOUT_ENABLE, 0, false);
++
++    /* There appears to be some rounding errors in the timer,
++     * we'll tolerate it for now
++     */
++    g_assert_cmpuint(fout_counts, >=, 32768 * 2);
++    g_assert_cmpuint(fout_counts, <=, 65540);
++}
++
++/**
++ * Check the countdown timer operates at 1 Hz
++ */
++static void check_countdown_1hz(void)
++{
++    uint8_t ext_reg;
++
++    write_register(TIMER_COUNTER_0, 5);
++    write_register(TIMER_COUNTER_1, 0);
++
++    ext_reg = read_register(EXTENSION_REGISTER);
++    ext_reg &= ~EXT_MASK_TSEL1;
++    ext_reg |= EXT_MASK_TSEL0;
++    ext_reg |= EXT_MASK_TE;
++    write_register(EXTENSION_REGISTER, ext_reg);
++    set_bits_in_register(CONTROL_REGISTER, CTRL_MASK_TIE);
++
++    count_reset();
++    wait_cycles(5 * 1000000000ULL, 1000000);
++
++    g_assert_cmpuint(interrupt_counts[FLAG_REG_TF], ==, 0);
++
++    wait_cycles(1 * 1000000000ULL, 1000000);
++
++    g_assert_cmpuint(interrupt_counts[FLAG_REG_TF], ==, 1);
++}
++
++/**
++ * Check the countdown timer operates at 64 Hz
++ */
++static void check_countdown_64hz(void)
++{
++    uint8_t ext_reg;
++
++    write_register(TIMER_COUNTER_0, 0x40);
++    write_register(TIMER_COUNTER_1, 0x01); /* 5 * 64 */
++
++    ext_reg = read_register(EXTENSION_REGISTER);
++    ext_reg &= ~EXT_MASK_TSEL0;
++    ext_reg &= ~EXT_MASK_TSEL1;
++    ext_reg |= EXT_MASK_TE;
++    write_register(EXTENSION_REGISTER, ext_reg);
++    set_bits_in_register(CONTROL_REGISTER, CTRL_MASK_TIE);
++
++    count_reset();
++    wait_cycles(5 * 1000000000ULL, 1000000);
++
++    g_assert_cmpuint(interrupt_counts[FLAG_REG_TF], ==, 0);
++
++    wait_cycles(1 * 1000000000ULL, 1000000);
++
++    g_assert_cmpuint(interrupt_counts[FLAG_REG_TF], ==, 1);
++}
++
++/**
++ * Check the countdown timer operates at 4096 Hz
++ */
++static void check_countdown_4096hz(void)
++{
++    uint8_t ext_reg;
++
++    write_register(TIMER_COUNTER_0, 0xFF);
++    write_register(TIMER_COUNTER_1, 0x0F); /* 4095 */
++    ext_reg = read_register(EXTENSION_REGISTER);
++    ext_reg |= EXT_MASK_TSEL0;
++    ext_reg |= EXT_MASK_TSEL1;
++    ext_reg |= EXT_MASK_TE;
++    write_register(EXTENSION_REGISTER, ext_reg);
++    set_bits_in_register(CONTROL_REGISTER, CTRL_MASK_TIE);
++
++    count_reset();
++    wait_cycles(999755859ULL, 10000);
++
++    g_assert_cmpuint(interrupt_counts[FLAG_REG_TF], ==, 0);
++
++    wait_cycles(244141ULL, 10000);
++
++    g_assert_cmpuint(interrupt_counts[FLAG_REG_TF], ==, 1);
++}
++
++/**
++ * Check the countdown timer operates at 1 minute
++ */
++static void check_countdown_1m(void)
++{
++    uint8_t ext_reg;
++
++    write_register(TIMER_COUNTER_0, 0x01);
++    write_register(TIMER_COUNTER_1, 0x00);
++    ext_reg = read_register(EXTENSION_REGISTER);
++    ext_reg &= ~EXT_MASK_TSEL0;
++    ext_reg |= EXT_MASK_TSEL1;
++    ext_reg |= EXT_MASK_TE;
++    write_register(EXTENSION_REGISTER, ext_reg);
++    set_bits_in_register(CONTROL_REGISTER, CTRL_MASK_TIE);
++
++    count_reset();
++    wait_cycles(59 * 1000000000ULL, 100000);
++
++    g_assert_cmpuint(interrupt_counts[FLAG_REG_TF], ==, 0);
++
++    wait_cycles(1000000001LL, 100000);
++
++    g_assert_cmpuint(interrupt_counts[FLAG_REG_TF], ==, 1);
++}
++
++/**
++ * Check that the voltage can be altered via properties
++ */
++static void check_voltage(void)
++{
++    uint8_t flags = read_register(FLAG_REGISTER) &
++            (FLAG_MASK_VDET | FLAG_MASK_VLF);
++
++    /* start from a good state */
++    g_assert_cmpuint(flags, == , 0x00);
++
++    /* 1.9V triggers VDET but not VLF */
++    qmp_rx8900_set_voltage(RX8900_TEST_ID, 1.9f);
++
++    flags = read_register(FLAG_REGISTER) & (FLAG_MASK_VDET | FLAG_MASK_VLF);
++    g_assert_cmpuint(flags, == , FLAG_MASK_VDET);
++
++    /* Clearing the flag should reassert it as the voltage is still low */
++    write_register(FLAG_REGISTER, 0x00);
++
++    flags = read_register(FLAG_REGISTER) & (FLAG_MASK_VDET | FLAG_MASK_VLF);
++    g_assert_cmpuint(flags, == , FLAG_MASK_VDET);
++
++    /* Set the voltage to a good level, the low voltage flag should persist */
++    qmp_rx8900_set_voltage(RX8900_TEST_ID, 3.3f);
++
++    flags = read_register(FLAG_REGISTER) & (FLAG_MASK_VDET | FLAG_MASK_VLF);
++    g_assert_cmpuint(flags, == , FLAG_MASK_VDET);
++
++    /* We should be able to clear the flag with a good voltage */
++    write_register(FLAG_REGISTER, 0x00);
++
++    flags = read_register(FLAG_REGISTER) & (FLAG_MASK_VDET | FLAG_MASK_VLF);
++    g_assert_cmpuint(flags, == , 0x00);
++
++
++    /* 1.5V should trigger both VDET & VLF */
++    qmp_rx8900_set_voltage(RX8900_TEST_ID, 1.5f);
++    flags = read_register(FLAG_REGISTER) & (FLAG_MASK_VDET | FLAG_MASK_VLF);
++    g_assert_cmpuint(flags, == , FLAG_MASK_VDET | FLAG_MASK_VLF);
++
++
++    /* Clearing the flag should reassert it as the voltage is still low */
++    write_register(FLAG_REGISTER, 0x00);
++
++    flags = read_register(FLAG_REGISTER) & (FLAG_MASK_VDET | FLAG_MASK_VLF);
++    g_assert_cmpuint(flags, == , FLAG_MASK_VDET | FLAG_MASK_VLF);
++
++    /* Set the voltage to a good level, the low voltage flag should persist */
++    qmp_rx8900_set_voltage(RX8900_TEST_ID, 3.3f);
++
++    flags = read_register(FLAG_REGISTER) & (FLAG_MASK_VDET | FLAG_MASK_VLF);
++    g_assert_cmpuint(flags, == , FLAG_MASK_VDET | FLAG_MASK_VLF);
++
++    /* We should be able to clear the flag with a good voltage */
++    write_register(FLAG_REGISTER, 0x00);
++
++    flags = read_register(FLAG_REGISTER) & (FLAG_MASK_VDET | FLAG_MASK_VLF);
++    g_assert_cmpuint(flags, == , 0);
++}
++
++
++
++int main(int argc, char **argv)
++{
++    QTestState *s = NULL;
++    int ret;
++    char args[255];
++    snprintf(args, sizeof(args), "-display none -machine imx25-pdk "
++            "-device rx8900,bus=i2c-bus.0,address=0x%x,id=%s"
++#ifdef RX8900_TRACE
++            " -trace events=/tmp/events"
++#endif
++            ,
++            RX8900_ADDR, RX8900_TEST_ID);
++
++    g_test_init(&argc, &argv, NULL);
++
++    s = qtest_start(args);
++    i2c = imx_i2c_create(IMX25_I2C_0_BASE);
++    addr = RX8900_ADDR;
++
++    irq_intercept_out(RX8900_TEST_ID);
++    irq_attach(RX8900_INTERRUPT_OUT, 0, handle_interrupt, NULL);
++    irq_attach(RX8900_FOUT, 0, handle_fout, NULL);
++
++    qtest_add_func("/rx8900/reset", check_reset);
++    qtest_add_func("/rx8900/tx-rx", send_and_receive);
++    qtest_add_func("/rx8900/temperature", check_temperature);
++    qtest_add_func("/rx8900/rollover", check_rollover);
++    qtest_add_func("/rx8900/update-interrupt-disabled",
++            check_update_interrupt_disabled);
++    qtest_add_func("/rx8900/update-interrupt-seconds",
++            check_update_interrupt_seconds);
++    qtest_add_func("/rx8900/update-interrupt-minutes",
++            check_update_interrupt_minutes);
++    qtest_add_func("/rx8900/alarm-interrupt-disabled",
++            check_alarm_interrupt_disabled);
++    qtest_add_func("/rx8900/alarm-interrupt-month",
++            check_alarm_interrupt_day_of_month);
++    qtest_add_func("/rx8900/alarm-interrupt-month-negative",
++            check_alarm_interrupt_day_of_month_negative);
++    qtest_add_func("/rx8900/alarm-interrupt-week",
++            check_alarm_interrupt_day_of_week);
++    qtest_add_func("/rx8900/alarm-interrupt-week-negative",
++            check_alarm_interrupt_day_of_week_negative);
++    qtest_add_func("/rx8900/fout_1hz", check_fout_1hz);
++    qtest_add_func("/rx8900/fout_1024hz", check_fout_1024hz);
++    qtest_add_func("/rx8900/fout_32768hz", check_fout_32768hz);
++    qtest_add_func("/rx8900/countdown_1hz", check_countdown_1hz);
++    qtest_add_func("/rx8900/countdown_64hz", check_countdown_64hz);
++    qtest_add_func("/rx8900/countdown_4096hz", check_countdown_4096hz);
++    qtest_add_func("/rx8900/countdown_1m", check_countdown_1m);
++    qtest_add_func("/rx8900/low_voltage", check_voltage);
++
++    ret = g_test_run();
++
++    if (s) {
++        qtest_quit(s);
++    }
++    g_free(i2c);
++
++    return ret;
++}
+-- 
+2.9.3
+

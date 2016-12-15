@@ -1,74 +1,59 @@
-Received: by 10.25.205.13 with SMTP id d13csp270734lfg;
-        Wed, 14 Dec 2016 07:44:39 -0800 (PST)
-X-Received: by 10.200.36.171 with SMTP id s40mr84574770qts.142.1481730279802;
-        Wed, 14 Dec 2016 07:44:39 -0800 (PST)
+Received: by 10.103.86.15 with SMTP id k15csp614302vsb;
+        Thu, 15 Dec 2016 01:53:16 -0800 (PST)
+X-Received: by 10.55.118.65 with SMTP id r62mr392648qkc.21.1481795596739;
+        Thu, 15 Dec 2016 01:53:16 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [208.118.235.17])
-        by mx.google.com with ESMTPS id h67si30310130qka.304.2016.12.14.07.44.39
+        by mx.google.com with ESMTPS id a8si666442qtc.0.2016.12.15.01.53.16
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 14 Dec 2016 07:44:39 -0800 (PST)
+        Thu, 15 Dec 2016 01:53:16 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) client-ip=208.118.235.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:48445 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:53313 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1cHBjR-00053L-4B
-	for alex.bennee@linaro.org; Wed, 14 Dec 2016 10:44:37 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:38797)
+	id 1cHSiw-0006Kv-6T
+	for alex.bennee@linaro.org; Thu, 15 Dec 2016 04:53:14 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:38727)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1cHBjI-0004ps-Kk
-	for qemu-arm@nongnu.org; Wed, 14 Dec 2016 10:44:29 -0500
+	(envelope-from <imammedo@redhat.com>) id 1cHSir-0006BA-EQ
+	for qemu-arm@nongnu.org; Thu, 15 Dec 2016 04:53:10 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1cHBjF-0006Qc-GF
-	for qemu-arm@nongnu.org; Wed, 14 Dec 2016 10:44:28 -0500
-Received: from mail-vk0-f54.google.com ([209.85.213.54]:35633)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1cHBjF-0006Op-1N
-	for qemu-arm@nongnu.org; Wed, 14 Dec 2016 10:44:25 -0500
-Received: by mail-vk0-f54.google.com with SMTP id w194so33236048vkw.2
-	for <qemu-arm@nongnu.org>; Wed, 14 Dec 2016 07:44:24 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc:content-transfer-encoding;
-	bh=5sGhnSnRGGoNbQV4M+Ma8DYsbyXyF86CbEWxRqkzNPY=;
-	b=G/ZOQFWmO2fMopHQYj/S3mlaTQ3qKtZ88y2MCxbRmFxIWrAZhQKo48DVoRCBzhV9iT
-	u/AOyTs/9bQrB+YGTM+PB3fD9j+/E25s8wrp8rE7obab2cAoRsIBwYzy7r/lRMwUj3wq
-	Mq/jiI1KLcQqUGIIcEY6CwS4NBH5nkFEpuH7w=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc:content-transfer-encoding;
-	bh=5sGhnSnRGGoNbQV4M+Ma8DYsbyXyF86CbEWxRqkzNPY=;
-	b=RF14NV40pmmjYB+pSYhH52gWRsHb+Q1lR1evtgRW8H6pPAABsqyvMR17hSVpEEqaam
-	6RVgdFDwr5fdrGCMITzD4Ho6EiEilZxK6n1jyYtk3dF90/uTBefsakKU1PYdUFNRz12X
-	2grFC/KL0YGby2n0ec97fyuQ2MKkIBtViRwvrXZ00L7jE78+JO6aG8yNfAwlSchyL/mb
-	Hz74xz2Rq1NyU4Nt0Vpw8lA2UNP7UViLWUTGEpVdy3XbowBDkVd8nSJGk5rlNio/Qm+I
-	2QgocjJLfQZvBuEBhvu6G+kAqy0zHeNcnrYw3Ezi6FVOUAa8DOCXf++l2mZrhzDopt7Y
-	3+Jw==
-X-Gm-Message-State: AKaTC03A0MunhGMfnz4WT97FUhla5xjSO6hZ5ci3tzj3d67RCOpIk4e03d3hRyoQaJcjx16dU1bYANJjvAoFlkmJ
-X-Received: by 10.31.75.198 with SMTP id y189mr38777893vka.51.1481730204245;
-	Wed, 14 Dec 2016 07:43:24 -0800 (PST)
+	(envelope-from <imammedo@redhat.com>) id 1cHSim-0000td-It
+	for qemu-arm@nongnu.org; Thu, 15 Dec 2016 04:53:09 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:48970)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <imammedo@redhat.com>)
+	id 1cHSim-0000tH-A2; Thu, 15 Dec 2016 04:53:04 -0500
+Received: from int-mx14.intmail.prod.int.phx2.redhat.com
+	(int-mx14.intmail.prod.int.phx2.redhat.com [10.5.11.27])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 40B77338860;
+	Thu, 15 Dec 2016 09:53:03 +0000 (UTC)
+Received: from nial.brq.redhat.com (dhcp-1-118.brq.redhat.com [10.34.1.118])
+	by int-mx14.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id uBF9r0YQ020251; Thu, 15 Dec 2016 04:53:01 -0500
+Date: Thu, 15 Dec 2016 10:53:00 +0100
+From: Igor Mammedov <imammedo@redhat.com>
+To: Andrew Jones <drjones@redhat.com>
+Message-ID: <20161215105300.08136939@nial.brq.redhat.com>
+In-Reply-To: <20161213214522.25548-2-drjones@redhat.com>
+References: <20161213214522.25548-1-drjones@redhat.com>
+	<20161213214522.25548-2-drjones@redhat.com>
 MIME-Version: 1.0
-Received: by 10.31.176.14 with HTTP; Wed, 14 Dec 2016 07:43:03 -0800 (PST)
-In-Reply-To: <1480434248-27138-2-git-send-email-clg@kaod.org>
-References: <1480434248-27138-1-git-send-email-clg@kaod.org>
-	<1480434248-27138-2-git-send-email-clg@kaod.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Wed, 14 Dec 2016 15:43:03 +0000
-Message-ID: <CAFEAcA-B3iMZ7rX3XEJvMJ-HdL3t9yAfLNR8P02NYybzUt_DEg@mail.gmail.com>
-To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.27
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.29]);
+	Thu, 15 Dec 2016 09:53:03 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 209.85.213.54
-Subject: Re: [Qemu-arm] [PATCH for-2.9 01/30] target-arm: Add VBAR support
- to ARM1176 CPUs
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-arm] [PATCH 01/11] hw/arm/virt: parameter passing cleanups
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -80,153 +65,104 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jeffery <andrew@aj.id.au>, qemu-arm <qemu-arm@nongnu.org>,
-	QEMU Developers <qemu-devel@nongnu.org>,
-	Marcin Krzeminski <marcin.krzeminski@nokia.com>
+Cc: peter.maydell@linaro.org, ehabkost@redhat.com, mst@redhat.com,
+	qemu-devel@nongnu.org, qemu-arm@nongnu.org, zhaoshenglong@huawei.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: prkQHluEYe2G
+X-TUID: LPf+8RSi5dvz
 
-On 29 November 2016 at 15:43, C=C3=A9dric Le Goater <clg@kaod.org> wrote:
-> ARM1176 CPUs support the Vector Base Address Register but currently,
-> qemu only supports VBAR on ARMv7 CPUs. Fix this by adding a new
-> feature ARM_FEATURE_VBAR which can used for ARMv7 and ARM1176 CPUs.
->
-> The VBAR feature is always set for ARMv7 because some legacy boards
-> require it even if this is not architecturally correct. However, to
-> support arm1176 CPUs without TrustZone, which doesn't exist in real
-> hardware but which is used in old qemu boards, we need to disable the
-> feature when 'has_el3' is not set.
->
-> Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
+On Tue, 13 Dec 2016 22:45:12 +0100
+Andrew Jones <drjones@redhat.com> wrote:
+
+> Some simple cleanups made possible by "hw/arm/virt: Merge
+> VirtBoardInfo and VirtMachineState"
+> 
+> Signed-off-by: Andrew Jones <drjones@redhat.com>
+Reviewed-by: Igor Mammedov <imammedo@redhat.com>
+
 > ---
->  target-arm/cpu.c    |  6 ++++++
->  target-arm/cpu.h    |  1 +
->  target-arm/helper.c | 24 ++++++++++++++++++------
->  3 files changed, 25 insertions(+), 6 deletions(-)
->
-> diff --git a/target-arm/cpu.c b/target-arm/cpu.c
-> index 99f0dbebb9f6..1007e504248a 100644
-> --- a/target-arm/cpu.c
-> +++ b/target-arm/cpu.c
-> @@ -685,6 +685,11 @@ static void arm_cpu_realizefn(DeviceState *dev, Erro=
-r **errp)
->           */
->          cpu->id_pfr1 &=3D ~0xf0;
->          cpu->id_aa64pfr0 &=3D ~0xf000;
-> +
-> +        /* Also disable VBAR support for boards using a arm1176 CPU
-> +         * without EL3.
-> +         */
-> +        unset_feature(env, ARM_FEATURE_VBAR);
+>  hw/arm/virt.c | 19 +++++++++----------
+>  1 file changed, 9 insertions(+), 10 deletions(-)
+> 
+> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+> index 7eec50a82494..d451bc4f6b9b 100644
+> --- a/hw/arm/virt.c
+> +++ b/hw/arm/virt.c
+> @@ -570,10 +570,10 @@ static void create_v2m(VirtMachineState *vms, qemu_irq *pic)
+>      fdt_add_v2m_gic_node(vms);
+>  }
+>  
+> -static void create_gic(VirtMachineState *vms, qemu_irq *pic, int type,
+> -                       bool secure, bool no_its)
+> +static void create_gic(VirtMachineState *vms, qemu_irq *pic, int type)
+>  {
+>      /* We create a standalone GIC */
+> +    VirtMachineClass *vmc = VIRT_MACHINE_GET_CLASS(vms);
+>      DeviceState *gicdev;
+>      SysBusDevice *gicbusdev;
+>      const char *gictype;
+> @@ -589,7 +589,7 @@ static void create_gic(VirtMachineState *vms, qemu_irq *pic, int type,
+>       */
+>      qdev_prop_set_uint32(gicdev, "num-irq", NUM_IRQS + 32);
+>      if (!kvm_irqchip_in_kernel()) {
+> -        qdev_prop_set_bit(gicdev, "has-security-extensions", secure);
+> +        qdev_prop_set_bit(gicdev, "has-security-extensions", vms->secure);
 >      }
->
->      if (!cpu->has_pmu || !kvm_enabled()) {
-> @@ -911,6 +916,7 @@ static void arm1176_initfn(Object *obj)
->
->      cpu->dtb_compatible =3D "arm,arm1176";
->      set_feature(&cpu->env, ARM_FEATURE_V6K);
-> +    set_feature(&cpu->env, ARM_FEATURE_VBAR);
->      set_feature(&cpu->env, ARM_FEATURE_VFP);
->      set_feature(&cpu->env, ARM_FEATURE_VAPA);
->      set_feature(&cpu->env, ARM_FEATURE_DUMMY_C15_REGS);
-> diff --git a/target-arm/cpu.h b/target-arm/cpu.h
-> index ca5c849ed65e..ab119e62ab0f 100644
-> --- a/target-arm/cpu.h
-> +++ b/target-arm/cpu.h
-> @@ -1125,6 +1125,7 @@ enum arm_features {
->      ARM_FEATURE_V8_PMULL, /* implements PMULL part of v8 Crypto Extensio=
-ns */
->      ARM_FEATURE_THUMB_DSP, /* DSP insns supported in the Thumb encodings=
- */
->      ARM_FEATURE_PMU, /* has PMU support */
-> +    ARM_FEATURE_VBAR, /* has cp15 VBAR */
->  };
->
->  static inline int arm_feature(CPUARMState *env, int feature)
-> diff --git a/target-arm/helper.c b/target-arm/helper.c
-> index b5b65caadf8a..d417c8ba802f 100644
-> --- a/target-arm/helper.c
-> +++ b/target-arm/helper.c
-> @@ -1252,12 +1252,6 @@ static const ARMCPRegInfo v7_cp_reginfo[] =3D {
->        .access =3D PL1_RW, .accessfn =3D access_tpm, .type =3D ARM_CP_ALI=
-AS,
->        .fieldoffset =3D offsetof(CPUARMState, cp15.c9_pminten),
->        .writefn =3D pmintenclr_write },
-> -    { .name =3D "VBAR", .state =3D ARM_CP_STATE_BOTH,
-> -      .opc0 =3D 3, .crn =3D 12, .crm =3D 0, .opc1 =3D 0, .opc2 =3D 0,
-> -      .access =3D PL1_RW, .writefn =3D vbar_write,
-> -      .bank_fieldoffsets =3D { offsetof(CPUARMState, cp15.vbar_s),
-> -                             offsetof(CPUARMState, cp15.vbar_ns) },
-> -      .resetvalue =3D 0 },
->      { .name =3D "CCSIDR", .state =3D ARM_CP_STATE_BOTH,
->        .opc0 =3D 3, .crn =3D 0, .crm =3D 0, .opc1 =3D 1, .opc2 =3D 0,
->        .access =3D PL1_R, .readfn =3D ccsidr_read, .type =3D ARM_CP_NO_RA=
-W },
-> @@ -1412,6 +1406,16 @@ static const ARMCPRegInfo v6k_cp_reginfo[] =3D {
->      REGINFO_SENTINEL
->  };
->
-> +static const ARMCPRegInfo vbar_cp_reginfo[] =3D {
-> +    { .name =3D "VBAR", .state =3D ARM_CP_STATE_BOTH,
-> +      .opc0 =3D 3, .crn =3D 12, .crm =3D 0, .opc1 =3D 0, .opc2 =3D 0,
-> +      .access =3D PL1_RW, .writefn =3D vbar_write,
-> +      .bank_fieldoffsets =3D { offsetof(CPUARMState, cp15.vbar_s),
-> +                             offsetof(CPUARMState, cp15.vbar_ns) },
-> +      .resetvalue =3D 0 },
-> +    REGINFO_SENTINEL
-> +};
-> +
->  #ifndef CONFIG_USER_ONLY
->
->  static CPAccessResult gt_cntfrq_access(CPUARMState *env, const ARMCPRegI=
-nfo *ri,
-> @@ -4506,6 +4510,9 @@ void register_cp_regs_for_features(ARMCPU *cpu)
->      if (arm_feature(env, ARM_FEATURE_V6K)) {
->          define_arm_cp_regs(cpu, v6k_cp_reginfo);
->      }
-> +    if (arm_feature(env, ARM_FEATURE_VBAR)) {
-> +        define_arm_cp_regs(cpu, vbar_cp_reginfo);
-> +    }
->      if (arm_feature(env, ARM_FEATURE_V7MP) &&
->          !arm_feature(env, ARM_FEATURE_MPU)) {
->          define_arm_cp_regs(cpu, v7mp_cp_reginfo);
-> @@ -4543,6 +4550,11 @@ void register_cp_regs_for_features(ARMCPU *cpu)
->          };
->          define_one_arm_cp_reg(cpu, &clidr);
->          define_arm_cp_regs(cpu, v7_cp_reginfo);
-> +
-> +        /* Always define VBAR even if it doesn't exist in non-EL3
-> +         * configs. This is needed by some legacy boards.
-> +         */
-> +        define_arm_cp_regs(cpu, vbar_cp_reginfo);
->          define_debug_regs(cpu);
->      } else {
->          define_arm_cp_regs(cpu, not_v7_cp_reginfo);
-> --
-> 2.7.4
+>      qdev_init_nofail(gicdev);
+>      gicbusdev = SYS_BUS_DEVICE(gicdev);
+> @@ -643,7 +643,7 @@ static void create_gic(VirtMachineState *vms, qemu_irq *pic, int type,
+>  
+>      fdt_add_gic_node(vms, type);
+>  
+> -    if (type == 3 && !no_its) {
+> +    if (type == 3 && !vmc->no_its) {
+>          create_its(vms, gicdev);
+>      } else if (type == 2) {
+>          create_v2m(vms, pic);
+> @@ -1005,8 +1005,7 @@ static void create_pcie_irq_map(const VirtMachineState *vms,
+>                             0x7           /* PCI irq */);
+>  }
+>  
+> -static void create_pcie(const VirtMachineState *vms, qemu_irq *pic,
+> -                        bool use_highmem)
+> +static void create_pcie(const VirtMachineState *vms, qemu_irq *pic)
+>  {
+>      hwaddr base_mmio = vms->memmap[VIRT_PCIE_MMIO].base;
+>      hwaddr size_mmio = vms->memmap[VIRT_PCIE_MMIO].size;
+> @@ -1049,7 +1048,7 @@ static void create_pcie(const VirtMachineState *vms, qemu_irq *pic,
+>                               mmio_reg, base_mmio, size_mmio);
+>      memory_region_add_subregion(get_system_memory(), base_mmio, mmio_alias);
+>  
+> -    if (use_highmem) {
+> +    if (vms->highmem) {
+>          /* Map high MMIO space */
+>          MemoryRegion *high_mmio_alias = g_new0(MemoryRegion, 1);
+>  
+> @@ -1098,7 +1097,7 @@ static void create_pcie(const VirtMachineState *vms, qemu_irq *pic,
+>      qemu_fdt_setprop_sized_cells(vms->fdt, nodename, "reg",
+>                                   2, base_ecam, 2, size_ecam);
+>  
+> -    if (use_highmem) {
+> +    if (vms->highmem) {
+>          qemu_fdt_setprop_sized_cells(vms->fdt, nodename, "ranges",
+>                                       1, FDT_PCI_RANGE_IOPORT, 2, 0,
+>                                       2, base_pio, 2, size_pio,
+> @@ -1428,7 +1427,7 @@ static void machvirt_init(MachineState *machine)
+>  
+>      create_flash(vms, sysmem, secure_sysmem ? secure_sysmem : sysmem);
+>  
+> -    create_gic(vms, pic, gic_version, vms->secure, vmc->no_its);
+> +    create_gic(vms, pic, gic_version);
+>  
+>      fdt_add_pmu_nodes(vms, gic_version);
+>  
+> @@ -1441,7 +1440,7 @@ static void machvirt_init(MachineState *machine)
+>  
+>      create_rtc(vms, pic);
+>  
+> -    create_pcie(vms, pic, vms->highmem);
+> +    create_pcie(vms, pic);
+>  
+>      create_gpio(vms, pic);
+>  
 
-This all seems overcomplicated to me. The aim is to define VBAR for:
- * CPUs with TrustZone/EL3
- * ARMv7 CPUs (even if no EL3, for legacy reasons)
-right?
-
-We do that by changing arm_cpu_realizefn():
- * add set_feature(arm, ARM_FEATURE_VBAR) to the things we enable
-   when the ARM_FEATURE_V7 bit is set (with a comment about why)
- * add
-    if (arm_feature(env, ARM_FEATURE_EL3)) {
-       set_feature(env, ARM_FEATURE_VBAR));
-    }
-   in the appropriate place
-and then register_cp_regs_for_features() just does
-   if (arm_feature(env, ARM_FEATURE_VBAR)) {
-       define_arm_cp_regs(cpu, vbar_cp_reginfo);
-   }
-
-You don't need to explicitly set the VBAR feature in the 1176
-initfn, or unset set feature bits, or register vbar_cp_reginfo
-in two separate places.
-
-thanks
--- PMM

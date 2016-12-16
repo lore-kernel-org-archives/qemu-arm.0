@@ -1,70 +1,80 @@
-Received: by 10.103.86.15 with SMTP id k15csp1326271vsb;
-        Fri, 16 Dec 2016 05:09:43 -0800 (PST)
-X-Received: by 10.55.118.65 with SMTP id r62mr2947769qkc.21.1481893783435;
-        Fri, 16 Dec 2016 05:09:43 -0800 (PST)
+Received: by 10.25.205.13 with SMTP id d13csp691650lfg;
+        Fri, 16 Dec 2016 05:38:06 -0800 (PST)
+X-Received: by 10.237.53.119 with SMTP id b52mr3035663qte.74.1481895486325;
+        Fri, 16 Dec 2016 05:38:06 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id o45si3100013qtc.298.2016.12.16.05.09.43
+        by mx.google.com with ESMTPS id b55si3163229qta.277.2016.12.16.05.38.05
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 16 Dec 2016 05:09:43 -0800 (PST)
+        Fri, 16 Dec 2016 05:38:06 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:60433 helo=lists.gnu.org)
+       dkim=pass header.i=@dgtlrift-com.20150623.gappssmtp.com;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:60572 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1cHsGb-0003c7-32
-	for alex.bennee@linaro.org; Fri, 16 Dec 2016 08:09:41 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:34890)
+	id 1cHsi3-0002kB-Je
+	for alex.bennee@linaro.org; Fri, 16 Dec 2016 08:38:03 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:54978)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <jiahuanzhang90@gmail.com>) id 1cHrVO-0006iT-M7
-	for qemu-arm@nongnu.org; Fri, 16 Dec 2016 07:20:55 -0500
+	(envelope-from <jhanley@dgtlrift.com>) id 1cHshy-0002gb-7O
+	for qemu-arm@nongnu.org; Fri, 16 Dec 2016 08:37:59 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <jiahuanzhang90@gmail.com>) id 1cHrVN-0000bJ-Uz
-	for qemu-arm@nongnu.org; Fri, 16 Dec 2016 07:20:54 -0500
-Received: from mail-qk0-x22c.google.com ([2607:f8b0:400d:c09::22c]:35598)
+	(envelope-from <jhanley@dgtlrift.com>) id 1cHsht-0005by-8j
+	for qemu-arm@nongnu.org; Fri, 16 Dec 2016 08:37:58 -0500
+Received: from mail-yb0-x242.google.com ([2607:f8b0:4002:c09::242]:33701)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <jiahuanzhang90@gmail.com>)
-	id 1cHrVN-0000b6-QB
-	for qemu-arm@nongnu.org; Fri, 16 Dec 2016 07:20:53 -0500
-Received: by mail-qk0-x22c.google.com with SMTP id n204so88600736qke.2
-	for <qemu-arm@nongnu.org>; Fri, 16 Dec 2016 04:20:53 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=mime-version:from:date:message-id:subject:to;
-	bh=CsublKzDv5va4ltDb9HsZON0599cERmC4hkQCSSIPcI=;
-	b=isnOD+htDYEncq4PeeTsrmpK7RonIlv9m4qzzm4dk+T+1+y7lpmID7xyK1vhnlmQeh
-	0Y3/mY9xyvnaztAApnQ83Lcc3mA2AvGFRhGkHVepjj4a/152PU1pmJKannkuPBI/5oN7
-	bu+aLHhBw7bffxXh++ICPu6E37TEvaBEMpaSuTIT1LI4jKYbCFbUXRqFYpcANMeFMo82
-	Ud5845cyD7y45Nx/c9OWwl0KMLgpTwXlkV5kN48De0qN5sTAlr+jVPI1kvdK0WF1Qhz3
-	GaAYiWQ+Ep5RkAigNvhQrLFMMf0MfQ65PABA7oSoTNKCEjjXC5C9KCCnjGC0QeYqYHqu
-	nTrA==
+	(Exim 4.71) (envelope-from <jhanley@dgtlrift.com>)
+	id 1cHsht-0005al-30
+	for qemu-arm@nongnu.org; Fri, 16 Dec 2016 08:37:53 -0500
+Received: by mail-yb0-x242.google.com with SMTP id v78so4881332ybe.0
+	for <qemu-arm@nongnu.org>; Fri, 16 Dec 2016 05:37:51 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=dgtlrift-com.20150623.gappssmtp.com; s=20150623;
+	h=mime-version:subject:from:in-reply-to:date:cc
+	:content-transfer-encoding:message-id:references:to;
+	bh=zveVIvuvk2L9LK0yZomf+J5+SxGx1h9+CwU5zIcULOs=;
+	b=HYcOLbc5rSfVnqWriWqC7bZZBB3rTJSMlO40DtkL+c7nnkC+vTDRFs7xpHTGCx2F/N
+	ty0R4OxJL56je10/9qpk/SLk5mD5kKh4sdFAfbZS/ZQedQr3+YEWyjlpjpfMZG+vKJ0r
+	pm++Yv1KRM/KPEAKALigEHim+GNSkrcFpJC8YN8v+e3CajhWeaY/aPD76adOHL9SvBZQ
+	ET3dRmIK9eeWsh3TYZJEvrjGISNLU6VLMjVjBfBJzZoKI4H55U+NExjfb2VjYikHyqaN
+	Fic//huB3bpixQ1Jz69m6jkSgMiKlECOeLp1atsbbOjzzSKTeDpy/xuU90V6c4QhQKxH
+	CpvQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:from:date:message-id:subject:to;
-	bh=CsublKzDv5va4ltDb9HsZON0599cERmC4hkQCSSIPcI=;
-	b=LuiSg43Aae28wT9TfOARCGOiJHIBZ+V3rO6cwR1rKbWVIQcMiXB6UPbkQcJ3Yhw/fA
-	8ABzntE5W8V1AP8p+0IMdglawKBHvdNZbKK+pkAmC4aJuveeEOXSnZ9EUEnYkMIQMb8J
-	BYjrVOMfmIQMOp6nY+aYQ6lQokfqzYICMcfj/7nKkalEXewuIl9P0F4DU29AfUILFKfQ
-	58FYexAfbsdMrPMmeVtCYzF+t8ov/hCDfVoBm7ugNZrt/uV/gjPAFrKnpWlgfnJpUdR7
-	wAKk7JStDjrPM8aL0wZ86RFKvtfDGWNrL4L6quLXk/tPBuOPJd/N9tDU+B8SOcd1XXou
-	kneQ==
-X-Gm-Message-State: AIkVDXJPZI5pL+lvstpVCn9BPnPIOtXVxWA8FnWpI++/nVv4qZF58cw1UrZ/BbtTpFDDschKvvpGCAKgH5no9A==
-X-Received: by 10.55.197.6 with SMTP id p6mr2601175qki.239.1481890853202; Fri,
-	16 Dec 2016 04:20:53 -0800 (PST)
-MIME-Version: 1.0
-Received: by 10.140.101.139 with HTTP; Fri, 16 Dec 2016 04:20:52 -0800 (PST)
-From: Jiahuan Zhang <jiahuanzhang90@gmail.com>
-Date: Fri, 16 Dec 2016 13:20:52 +0100
-Message-ID: <CAJy91CZtQuBMs_r19miomuZE76ktyY=3cADSBotqhUstpZZ4aA@mail.gmail.com>
-To: qemu-arm@nongnu.org
-Content-Type: multipart/alternative; boundary=001a1149a18ce6b0480543c599fe
+	h=x-gm-message-state:mime-version:subject:from:in-reply-to:date:cc
+	:content-transfer-encoding:message-id:references:to;
+	bh=zveVIvuvk2L9LK0yZomf+J5+SxGx1h9+CwU5zIcULOs=;
+	b=Mguizc1ndmj0ZfXibaNd6AP1LZPPueYhRZEMYW8JS0wFktQAwmxWd4+XZVqN1Jpz/R
+	abADxr5wGNeF+8CwmlMaEsqUT6Q0rlH83/teN5DHnuSjc7TdqmXNmyoRjFHKgyOcC7lp
+	66EsPKhreyAvmwO7/v7LSZ1mp0hQqXbQrqDqYYW3xMzi75E4qnBuIEO4xDaluTpZja/1
+	k5g4ISia39SR7nWOP7d/a7VxBW2Sta6QYlZwT6OQcNfNJHOgH8PxvzuU+vijPtciulTN
+	Rhxev6qcqhmVCmnG3EcrQeJAr2OG7a+eX9hr8Z+ng5ZUFxycfcdSzQe9hpKm9tvUSzBS
+	IokQ==
+X-Gm-Message-State: AIkVDXLN4dxtb8TmNauupiaOZRnURPCorTUNCMaH7hRdAT8ZRvMikZKfrCoG/503tLN3Ww==
+X-Received: by 10.37.47.85 with SMTP id v82mr2316577ybv.96.1481895470741;
+	Fri, 16 Dec 2016 05:37:50 -0800 (PST)
+Received: from [10.1.216.219] ([148.80.255.216])
+	by smtp.gmail.com with ESMTPSA id
+	c203sm2255219ywa.42.2016.12.16.05.37.50
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Fri, 16 Dec 2016 05:37:50 -0800 (PST)
+Content-Type: text/plain;
+	charset=us-ascii
+Mime-Version: 1.0 (1.0)
+From: James Hanley <jhanley@dgtlrift.com>
+X-Mailer: iPhone Mail (14C92)
+In-Reply-To: <CAJy91CZtQuBMs_r19miomuZE76ktyY=3cADSBotqhUstpZZ4aA@mail.gmail.com>
+Date: Fri, 16 Dec 2016 08:37:50 -0500
+Content-Transfer-Encoding: quoted-printable
+Message-Id: <CDC758AB-D8BE-451B-A55D-648417211588@dgtlrift.com>
+References: <CAJy91CZtQuBMs_r19miomuZE76ktyY=3cADSBotqhUstpZZ4aA@mail.gmail.com>
+To: Jiahuan Zhang <jiahuanzhang90@gmail.com>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:400d:c09::22c
-X-Mailman-Approved-At: Fri, 16 Dec 2016 08:06:18 -0500
-Subject: [Qemu-arm] Emulation AT91sam9261
+X-Received-From: 2607:f8b0:4002:c09::242
+Subject: Re: [Qemu-arm] Emulation AT91sam9261
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -76,46 +86,38 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: qemu-arm@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: QmT36aQVOLki
+X-TUID: OKHFxVDqGOJX
 
---001a1149a18ce6b0480543c599fe
-Content-Type: text/plain; charset=UTF-8
+I'm working on emulation of the ATSAM4C series - the peripherals should be t=
+he same, but the ram bus will obviously be different, but I'm a long way fro=
+m this being prime time.
 
-Dear All,
+You could try pinging an FAE at Atmel/Microchip to see if they can assist yo=
+u.
 
-This is my first email to you.
+-Jim
 
-I am a student doing an internship about emulating a board based on the
-microprocessor AT91SAM9261. I chose QEMU to be the software emulator since
-it develops quickly, emulates fast, and is open.
-
-The emulation is very hard since no existing device emulation in QEMU can
-be reused to emulate atmel boards. Only the processor, ARM926EJ-S, is
-available.
-
-I am looking for people also working on the emulation of atmel boards. I
-need the company badly. We can discuss and you can undersand my specific
-problems.
-
-Best regards,
-Jiahuan
-
---001a1149a18ce6b0480543c599fe
-Content-Type: text/html; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr"><div>Dear All,</div><div><br></div><div>This is my first e=
-mail to you.</div><div><br></div><div>I am a=C2=A0student doing an internsh=
-ip about emulating a board based on the microprocessor AT91SAM9261. I chose=
- QEMU to be the software emulator since it develops quickly, emulates fast,=
- and is open.</div><div><br></div><div>The emulation is very hard since no =
-existing device emulation in QEMU can be reused=C2=A0to emulate=C2=A0atmel =
-boards. Only the processor, ARM926EJ-S,=C2=A0is available.=C2=A0</div><div>=
-<br></div><div>I am looking for people also working on the emulation of atm=
-el boards. I need the company badly. We can discuss and you can undersand m=
-y specific problems.</div><div><br></div><div>Best regards,</div><div>Jiahu=
-an</div></div>
-
---001a1149a18ce6b0480543c599fe--
+> On Dec 16, 2016, at 7:20 AM, Jiahuan Zhang <jiahuanzhang90@gmail.com> wrot=
+e:
+>=20
+> Dear All,
+>=20
+> This is my first email to you.
+>=20
+> I am a student doing an internship about emulating a board based on the mi=
+croprocessor AT91SAM9261. I chose QEMU to be the software emulator since it d=
+evelops quickly, emulates fast, and is open.
+>=20
+> The emulation is very hard since no existing device emulation in QEMU can b=
+e reused to emulate atmel boards. Only the processor, ARM926EJ-S, is availab=
+le.=20
+>=20
+> I am looking for people also working on the emulation of atmel boards. I n=
+eed the company badly. We can discuss and you can undersand my specific prob=
+lems.
+>=20
+> Best regards,
+> Jiahuan

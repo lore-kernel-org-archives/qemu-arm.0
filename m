@@ -1,59 +1,63 @@
-Received: by 10.25.205.13 with SMTP id d13csp804803lfg;
-        Fri, 16 Dec 2016 09:24:42 -0800 (PST)
-X-Received: by 10.55.12.19 with SMTP id 19mr4368001qkm.100.1481909082725;
-        Fri, 16 Dec 2016 09:24:42 -0800 (PST)
+Received: by 10.103.86.15 with SMTP id k15csp1549248vsb;
+        Fri, 16 Dec 2016 12:17:28 -0800 (PST)
+X-Received: by 10.200.41.100 with SMTP id z33mr4312983qtz.154.1481919448295;
+        Fri, 16 Dec 2016 12:17:28 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id 40si3661543qtm.258.2016.12.16.09.24.42
+        by mx.google.com with ESMTPS id 23si4068877qkd.84.2016.12.16.12.17.27
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 16 Dec 2016 09:24:42 -0800 (PST)
+        Fri, 16 Dec 2016 12:17:28 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:33484 helo=lists.gnu.org)
+Received: from localhost ([::1]:34158 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1cHwFM-0003GX-5w
-	for alex.bennee@linaro.org; Fri, 16 Dec 2016 12:24:40 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:39593)
+	id 1cHywX-0006nA-Sg
+	for alex.bennee@linaro.org; Fri, 16 Dec 2016 15:17:25 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:53390)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <clg@kaod.org>) id 1cHwFF-0003B2-RX
-	for qemu-arm@nongnu.org; Fri, 16 Dec 2016 12:24:34 -0500
+	(envelope-from <jcd@tribudubois.net>) id 1cHywR-0006iT-5x
+	for qemu-arm@nongnu.org; Fri, 16 Dec 2016 15:17:20 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <clg@kaod.org>) id 1cHwFA-0004rl-R5
-	for qemu-arm@nongnu.org; Fri, 16 Dec 2016 12:24:33 -0500
-Received: from 11.mo5.mail-out.ovh.net ([46.105.47.167]:34501)
+	(envelope-from <jcd@tribudubois.net>) id 1cHywM-0005GW-6v
+	for qemu-arm@nongnu.org; Fri, 16 Dec 2016 15:17:19 -0500
+Received: from relay3-d.mail.gandi.net ([217.70.183.195]:43642)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <clg@kaod.org>) id 1cHwFA-0004pP-KC
-	for qemu-arm@nongnu.org; Fri, 16 Dec 2016 12:24:28 -0500
-Received: from player760.ha.ovh.net (b9.ovh.net [213.186.33.59])
-	by mo5.mail-out.ovh.net (Postfix) with ESMTP id 0020B57100
-	for <qemu-arm@nongnu.org>; Fri, 16 Dec 2016 18:24:17 +0100 (CET)
-Received: from hermes.kaod.org (LFbn-1-2234-107.w90-76.abo.wanadoo.fr
-	[90.76.55.107]) (Authenticated sender: postmaster@kaod.org)
-	by player760.ha.ovh.net (Postfix) with ESMTPSA id 624392D1;
-	Fri, 16 Dec 2016 18:24:09 +0100 (CET)
-To: Peter Maydell <peter.maydell@linaro.org>
-References: <1480441323-31417-1-git-send-email-clg@kaod.org>
-	<CAFEAcA9SVh-pUS+mnPWBYgWR9is49ysh9O_y35K-x2iyDwhfNg@mail.gmail.com>
-From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-Message-ID: <f7bba440-f985-3fc4-cc93-f12dac768426@kaod.org>
-Date: Fri, 16 Dec 2016 18:24:08 +0100
+	(Exim 4.71) (envelope-from <jcd@tribudubois.net>)
+	id 1cHywL-0005EZ-WC; Fri, 16 Dec 2016 15:17:14 -0500
+Received: from mfilter45-d.gandi.net (mfilter45-d.gandi.net [217.70.178.176])
+	by relay3-d.mail.gandi.net (Postfix) with ESMTP id CD473A80BE;
+	Fri, 16 Dec 2016 21:17:10 +0100 (CET)
+X-Virus-Scanned: Debian amavisd-new at mfilter45-d.gandi.net
+Received: from relay3-d.mail.gandi.net ([IPv6:::ffff:217.70.183.195])
+	by mfilter45-d.gandi.net (mfilter45-d.gandi.net [::ffff:10.0.15.180])
+	(amavisd-new, port 10024)
+	with ESMTP id FjWuoHz3oM8H; Fri, 16 Dec 2016 21:17:09 +0100 (CET)
+X-Originating-IP: 78.235.240.156
+Received: from [192.168.1.155] (smm49-1-78-235-240-156.fbx.proxad.net
+	[78.235.240.156]) (Authenticated sender: jcd@tribudubois.net)
+	by relay3-d.mail.gandi.net (Postfix) with ESMTPSA id 90820A80D8;
+	Fri, 16 Dec 2016 21:17:04 +0100 (CET)
+To: Peter Maydell <peter.maydell@linaro.org>,
+	Alastair D'Silva <alastair@au1.ibm.com>
+References: <20161215054812.12602-1-alastair@au1.ibm.com>
+	<20161215054812.12602-2-alastair@au1.ibm.com>
+	<CAFEAcA9RpMAHTrPb2GNQYh+P-svcpHB90h0qcs27CUBDyY1=Ng@mail.gmail.com>
+From: Jean-Christophe DUBOIS <jcd@tribudubois.net>
+Message-ID: <f85d31c0-8cc2-611d-0058-2db4d0d8e943@tribudubois.net>
+Date: Fri, 16 Dec 2016 21:17:03 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
 	Thunderbird/45.5.1
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA9SVh-pUS+mnPWBYgWR9is49ysh9O_y35K-x2iyDwhfNg@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8
-X-Ovh-Tracer-Id: 2540311665433479957
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrfeelfedrjedugddutddtucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddm
-Content-Transfer-Encoding: quoted-printable
+In-Reply-To: <CAFEAcA9RpMAHTrPb2GNQYh+P-svcpHB90h0qcs27CUBDyY1=Ng@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 46.105.47.167
-Subject: Re: [Qemu-arm] [RFC PATCH 0/4] FTGMAC100 model for the Aspeed SoCs
+X-Received-From: 217.70.183.195
+Subject: Re: [Qemu-arm] [PATCH v4 1/8] arm: Uniquely name imx25 I2C buses.
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -65,44 +69,71 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Jan Kiszka <jan.kiszka@siemens.com>, Jason Wang <jasowang@redhat.com>,
-	QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
-	Dmitry Fleytman <dmitry@daynix.com>,
-	Samuel Thibault <samuel.thibault@ens-lyon.org>
+Cc: Andrew Jeffery <andrew@aj.id.au>, QEMU Developers <qemu-devel@nongnu.org>,
+	qemu-arm <qemu-arm@nongnu.org>, Joel Stanley <joel@jms.id.au>,
+	Alastair D'Silva <alastair@d-silva.org>,
+	=?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: O9Kwnm57nCmM
+X-TUID: WIJjmP/aypUs
 
-On 12/16/2016 05:48 PM, Peter Maydell wrote:
-> On 29 November 2016 at 17:41, C=C3=A9dric Le Goater <clg@kaod.org> wrot=
-e:
->> The Aspeed SoCs AST2400 and AST2500 have two FTGMAC100 ethernet
->> controllers. This serie proposes a model for this device and a way to
->> customize the bit definitions which are slightly different from the
->> Faraday definitions.
+Le 16/12/2016 à 14:03, Peter Maydell a écrit :
+> On 15 December 2016 at 05:48, Alastair D'Silva <alastair@au1.ibm.com> wrote:
+>> From: Alastair D'Silva <alastair@d-silva.org>
 >>
->> The last patch adds a fake NC-SI (Network Controller Sideband
->> Interface) backend to pretend a NIC is being managed.
->=20
-> Could you explain in a bit more detail why the patchset is
-> marked "RFC" and what parts you want comments on?  (An RFC
-> patchset that doesn't say this kind of thing in the cover letter
-> is dangerously close to being a "please ignore me" request :-))
+>> The imx25 chip provides 3 i2c buses, but they have all been named
+>> "i2c", which makes it difficult to predict which bus a device will
+>> be connected to when specified on the command line.
+>>
+>> This patch addresses the issue by naming the buses uniquely:
+>>    i2c-bus.0 i2c-bus.1 i2c-bus.2
+>>
+>> Signed-off-by: Alastair D'Silva <alastair@d-silva.org>
+>> ---
+>>   hw/arm/imx25_pdk.c | 2 +-
+>>   hw/i2c/imx_i2c.c   | 2 +-
+>>   2 files changed, 2 insertions(+), 2 deletions(-)
+>>
+>> diff --git a/hw/arm/imx25_pdk.c b/hw/arm/imx25_pdk.c
+>> index 025b608..44e741f 100644
+>> --- a/hw/arm/imx25_pdk.c
+>> +++ b/hw/arm/imx25_pdk.c
+>> @@ -139,7 +139,7 @@ static void imx25_pdk_init(MachineState *machine)
+>>            * of simple qtest. See "make check" for details.
+>>            */
+>>           i2c_create_slave((I2CBus *)qdev_get_child_bus(DEVICE(&s->soc.i2c[0]),
+>> -                                                      "i2c"),
+>> +                                                      "i2c-bus.0"),
+>>                            "ds1338", 0x68);
+>>       }
+>>   }
+>> diff --git a/hw/i2c/imx_i2c.c b/hw/i2c/imx_i2c.c
+>> index 37e5a62..6c81b98 100644
+>> --- a/hw/i2c/imx_i2c.c
+>> +++ b/hw/i2c/imx_i2c.c
+>> @@ -310,7 +310,7 @@ static void imx_i2c_realize(DeviceState *dev, Error **errp)
+>>                             IMX_I2C_MEM_SIZE);
+>>       sysbus_init_mmio(SYS_BUS_DEVICE(dev), &s->iomem);
+>>       sysbus_init_irq(SYS_BUS_DEVICE(dev), &s->irq);
+>> -    s->bus = i2c_init_bus(DEVICE(dev), "i2c");
+>> +    s->bus = i2c_init_bus(DEVICE(dev), NULL);
+>>   }
+>>
+>>   static void imx_i2c_class_init(ObjectClass *klass, void *data)
+> This change looks OK to me, but it is an incompatible change to the
+> command line (albeit only one where you couldn't have reliably
+> used the command line to start with), so I'm just cc'ing
+> Jean-Christophe Dubois, who's been active with the iMX code in the
+> past, for a second opinion.
 
-This is true. I didn't take the time to do so ...
+This change seems fine to me too.
 
-Well, first, this is not an area I am familiar with, so this=20
-might look more like a draft for experts and the review should=20
-take that into account :)=20
+JC
 
-Also, I am not entirely satisfied with how the model looks for=20
-the first descriptor to transmit. May be I am trying to fit=20
-too well the driver.
+>
+> We should flag this up in 2.9's Changelog as well.
+>
+> thanks
+> -- PMM
+>
 
-And, the NC-SI is just a fake one to exercise the linux driver=20
-(we did find bugs with it) but I am wondering how far we should=20
-push the model. It's a rather complex interface.
-
-Thanks,
-
-C.=20

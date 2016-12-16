@@ -1,63 +1,62 @@
-Received: by 10.103.86.15 with SMTP id k15csp1549248vsb;
-        Fri, 16 Dec 2016 12:17:28 -0800 (PST)
-X-Received: by 10.200.41.100 with SMTP id z33mr4312983qtz.154.1481919448295;
-        Fri, 16 Dec 2016 12:17:28 -0800 (PST)
+Received: by 10.103.86.15 with SMTP id k15csp17147vsb;
+        Fri, 16 Dec 2016 13:42:59 -0800 (PST)
+X-Received: by 10.55.217.209 with SMTP id q78mr4874014qkl.287.1481924579158;
+        Fri, 16 Dec 2016 13:42:59 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id 23si4068877qkd.84.2016.12.16.12.17.27
+        by mx.google.com with ESMTPS id n29si4237559qtb.40.2016.12.16.13.42.58
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 16 Dec 2016 12:17:28 -0800 (PST)
+        Fri, 16 Dec 2016 13:42:59 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:34158 helo=lists.gnu.org)
+Received: from localhost ([::1]:34447 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1cHywX-0006nA-Sg
-	for alex.bennee@linaro.org; Fri, 16 Dec 2016 15:17:25 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:53390)
+	id 1cI0HI-0001dY-Kl
+	for alex.bennee@linaro.org; Fri, 16 Dec 2016 16:42:56 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:45454)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <jcd@tribudubois.net>) id 1cHywR-0006iT-5x
-	for qemu-arm@nongnu.org; Fri, 16 Dec 2016 15:17:20 -0500
+	(envelope-from <drjones@redhat.com>) id 1cI0HE-0001Zq-F4
+	for qemu-arm@nongnu.org; Fri, 16 Dec 2016 16:42:53 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <jcd@tribudubois.net>) id 1cHywM-0005GW-6v
-	for qemu-arm@nongnu.org; Fri, 16 Dec 2016 15:17:19 -0500
-Received: from relay3-d.mail.gandi.net ([217.70.183.195]:43642)
+	(envelope-from <drjones@redhat.com>) id 1cI0HB-0005Cw-9K
+	for qemu-arm@nongnu.org; Fri, 16 Dec 2016 16:42:52 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:38540)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <jcd@tribudubois.net>)
-	id 1cHywL-0005EZ-WC; Fri, 16 Dec 2016 15:17:14 -0500
-Received: from mfilter45-d.gandi.net (mfilter45-d.gandi.net [217.70.178.176])
-	by relay3-d.mail.gandi.net (Postfix) with ESMTP id CD473A80BE;
-	Fri, 16 Dec 2016 21:17:10 +0100 (CET)
-X-Virus-Scanned: Debian amavisd-new at mfilter45-d.gandi.net
-Received: from relay3-d.mail.gandi.net ([IPv6:::ffff:217.70.183.195])
-	by mfilter45-d.gandi.net (mfilter45-d.gandi.net [::ffff:10.0.15.180])
-	(amavisd-new, port 10024)
-	with ESMTP id FjWuoHz3oM8H; Fri, 16 Dec 2016 21:17:09 +0100 (CET)
-X-Originating-IP: 78.235.240.156
-Received: from [192.168.1.155] (smm49-1-78-235-240-156.fbx.proxad.net
-	[78.235.240.156]) (Authenticated sender: jcd@tribudubois.net)
-	by relay3-d.mail.gandi.net (Postfix) with ESMTPSA id 90820A80D8;
-	Fri, 16 Dec 2016 21:17:04 +0100 (CET)
-To: Peter Maydell <peter.maydell@linaro.org>,
-	Alastair D'Silva <alastair@au1.ibm.com>
-References: <20161215054812.12602-1-alastair@au1.ibm.com>
-	<20161215054812.12602-2-alastair@au1.ibm.com>
-	<CAFEAcA9RpMAHTrPb2GNQYh+P-svcpHB90h0qcs27CUBDyY1=Ng@mail.gmail.com>
-From: Jean-Christophe DUBOIS <jcd@tribudubois.net>
-Message-ID: <f85d31c0-8cc2-611d-0058-2db4d0d8e943@tribudubois.net>
-Date: Fri, 16 Dec 2016 21:17:03 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
-	Thunderbird/45.5.1
+	(Exim 4.71) (envelope-from <drjones@redhat.com>)
+	id 1cI0HB-0005AV-3M; Fri, 16 Dec 2016 16:42:49 -0500
+Received: from int-mx14.intmail.prod.int.phx2.redhat.com
+	(int-mx14.intmail.prod.int.phx2.redhat.com [10.5.11.27])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 3314A67BB7;
+	Fri, 16 Dec 2016 21:42:47 +0000 (UTC)
+Received: from kamzik.brq.redhat.com (kamzik.brq.redhat.com [10.34.1.143])
+	by int-mx14.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id uBGLghXX017665
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
+	verify=NO); Fri, 16 Dec 2016 16:42:45 -0500
+Date: Fri, 16 Dec 2016 22:42:43 +0100
+From: Andrew Jones <drjones@redhat.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+Message-ID: <20161216214243.gwoxt5yz7qyqbvhi@kamzik.brq.redhat.com>
+References: <1481625384-15077-1-git-send-email-peter.maydell@linaro.org>
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA9RpMAHTrPb2GNQYh+P-svcpHB90h0qcs27CUBDyY1=Ng@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <1481625384-15077-1-git-send-email-peter.maydell@linaro.org>
+User-Agent: Mutt/1.6.0.1 (2016-04-01)
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.27
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.28]);
+	Fri, 16 Dec 2016 21:42:47 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 217.70.183.195
-Subject: Re: [Qemu-arm] [PATCH v4 1/8] arm: Uniquely name imx25 I2C buses.
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-arm] [PATCH 00/23] arm: Add virtualization to GICv3,
+ and enable EL2 on 64-bit CPUs
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -69,71 +68,39 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jeffery <andrew@aj.id.au>, QEMU Developers <qemu-devel@nongnu.org>,
-	qemu-arm <qemu-arm@nongnu.org>, Joel Stanley <joel@jms.id.au>,
-	Alastair D'Silva <alastair@d-silva.org>,
-	=?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org,
+	Christoffer Dall <christoffer.dall@linaro.org>, patches@linaro.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: WIJjmP/aypUs
+X-TUID: csgnhN/6tX1L
 
-Le 16/12/2016 à 14:03, Peter Maydell a écrit :
-> On 15 December 2016 at 05:48, Alastair D'Silva <alastair@au1.ibm.com> wrote:
->> From: Alastair D'Silva <alastair@d-silva.org>
->>
->> The imx25 chip provides 3 i2c buses, but they have all been named
->> "i2c", which makes it difficult to predict which bus a device will
->> be connected to when specified on the command line.
->>
->> This patch addresses the issue by naming the buses uniquely:
->>    i2c-bus.0 i2c-bus.1 i2c-bus.2
->>
->> Signed-off-by: Alastair D'Silva <alastair@d-silva.org>
->> ---
->>   hw/arm/imx25_pdk.c | 2 +-
->>   hw/i2c/imx_i2c.c   | 2 +-
->>   2 files changed, 2 insertions(+), 2 deletions(-)
->>
->> diff --git a/hw/arm/imx25_pdk.c b/hw/arm/imx25_pdk.c
->> index 025b608..44e741f 100644
->> --- a/hw/arm/imx25_pdk.c
->> +++ b/hw/arm/imx25_pdk.c
->> @@ -139,7 +139,7 @@ static void imx25_pdk_init(MachineState *machine)
->>            * of simple qtest. See "make check" for details.
->>            */
->>           i2c_create_slave((I2CBus *)qdev_get_child_bus(DEVICE(&s->soc.i2c[0]),
->> -                                                      "i2c"),
->> +                                                      "i2c-bus.0"),
->>                            "ds1338", 0x68);
->>       }
->>   }
->> diff --git a/hw/i2c/imx_i2c.c b/hw/i2c/imx_i2c.c
->> index 37e5a62..6c81b98 100644
->> --- a/hw/i2c/imx_i2c.c
->> +++ b/hw/i2c/imx_i2c.c
->> @@ -310,7 +310,7 @@ static void imx_i2c_realize(DeviceState *dev, Error **errp)
->>                             IMX_I2C_MEM_SIZE);
->>       sysbus_init_mmio(SYS_BUS_DEVICE(dev), &s->iomem);
->>       sysbus_init_irq(SYS_BUS_DEVICE(dev), &s->irq);
->> -    s->bus = i2c_init_bus(DEVICE(dev), "i2c");
->> +    s->bus = i2c_init_bus(DEVICE(dev), NULL);
->>   }
->>
->>   static void imx_i2c_class_init(ObjectClass *klass, void *data)
-> This change looks OK to me, but it is an incompatible change to the
-> command line (albeit only one where you couldn't have reliably
-> used the command line to start with), so I'm just cc'ing
-> Jean-Christophe Dubois, who's been active with the iMX code in the
-> past, for a second opinion.
+On Tue, Dec 13, 2016 at 10:36:01AM +0000, Peter Maydell wrote:
+> This patchset adds support for the Virtualization extensions to QEMU's
+> GICv3 emulation. This was the last missing piece that was stopping
+> us from turning on the EL2 support in the CPU model, so the patchset
+> also adds support for enabling it all on the virt board via the
+> '-machine virtualization=on' option.
+> 
+> The result works well enough to allow booting a KVM outer guest kernel
+> and then running QEMU + an inner guest under KVM inside it. The outer
+> guest KVM also passes the kvm-unit-tests GIC tests.
 
-This change seems fine to me too.
+After seeing that multiple cpus didn't work with Linux, I modified
+my EL2 supporting kvm-unit-tests branch to also output what level
+each cpu starts in. I see the same issue - only cpu0 starts in El2.
+Here's the new kvm-unit-tests branch
 
-JC
+ https://github.com/rhdrjones/kvm-unit-tests/commits/arm64/hyp-test
 
->
-> We should flag this up in 2.9's Changelog as well.
->
-> thanks
-> -- PMM
->
+ $ ./configure --arch=arm64 --cross-prefix=aarch64-linux-gnu-
+ $ make
 
+ $ arm/run arm/hyp-mode.flat -smp 4 -machine virtualization=on
+ INFO: cpu1 did not start in HYP
+ INFO: cpu2 did not start in HYP
+ INFO: cpu3 did not start in HYP
+ INFO: cpu0 started in HYP
+ FAIL: HYP start
+
+Thanks,
+drew

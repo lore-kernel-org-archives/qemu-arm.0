@@ -1,71 +1,49 @@
-Received: by 10.25.205.13 with SMTP id d13csp704086lfg;
-        Fri, 16 Dec 2016 06:05:05 -0800 (PST)
-X-Received: by 10.200.50.35 with SMTP id x32mr3063453qta.78.1481897105360;
-        Fri, 16 Dec 2016 06:05:05 -0800 (PST)
+Received: by 10.25.205.13 with SMTP id d13csp705891lfg;
+        Fri, 16 Dec 2016 06:08:03 -0800 (PST)
+X-Received: by 10.200.40.175 with SMTP id i44mr2659539qti.258.1481897283242;
+        Fri, 16 Dec 2016 06:08:03 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id d20si3220347qtd.301.2016.12.16.06.05.04
+        by mx.google.com with ESMTPS id c6si3246466qka.141.2016.12.16.06.08.02
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 16 Dec 2016 06:05:05 -0800 (PST)
+        Fri, 16 Dec 2016 06:08:03 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:60729 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:60746 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1cHt8A-00052L-Tp
-	for alex.bennee@linaro.org; Fri, 16 Dec 2016 09:05:02 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:34177)
+	id 1cHtB2-00070b-KI
+	for alex.bennee@linaro.org; Fri, 16 Dec 2016 09:08:00 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:34828)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1cHt85-0004jY-GL
-	for qemu-arm@nongnu.org; Fri, 16 Dec 2016 09:04:58 -0500
+	(envelope-from <no-reply@patchew.org>) id 1cHtAE-0002Vn-BR
+	for qemu-arm@nongnu.org; Fri, 16 Dec 2016 09:07:12 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1cHt80-00058Q-JB
-	for qemu-arm@nongnu.org; Fri, 16 Dec 2016 09:04:57 -0500
-Received: from mail-ua0-x22b.google.com ([2607:f8b0:400c:c08::22b]:33066)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1cHt80-000589-CD
-	for qemu-arm@nongnu.org; Fri, 16 Dec 2016 09:04:52 -0500
-Received: by mail-ua0-x22b.google.com with SMTP id b35so11138034uaa.0
-	for <qemu-arm@nongnu.org>; Fri, 16 Dec 2016 06:04:52 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=oAytSisM9yM/Gg4/I6y/HoWGqKr2Y72A1fKO3912c+U=;
-	b=VMYhWgDkl8M7sirOVbDS87L7JbHT/3L/Xap9Io6VtrFnYTkUMeylNWvZdqjnSfPKTa
-	HhWXP46UAiCd+f/z7rFtK9ZN0YSCXcqFdTYjwNVe0HEt/El0mFpPEelvTtxdfnmzrcFi
-	oiM5tfvQ75uJlu39ofGnV3XHV9AorDJQZp6dU=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=oAytSisM9yM/Gg4/I6y/HoWGqKr2Y72A1fKO3912c+U=;
-	b=TOBSQ7CjmEZnxY+WhL7Dv59ApW+FjKnqiuw7HGgBYGAcnlo6jZwq5EkGLfb3qY91Fh
-	ZHyhHPs3xdWEMnq/tvJlSbQCt6BMfuRrGBHvhitlMsOuuBCidw50BVeVf7dUUboenPb5
-	RuE/X38e+dRJ82OkbXV75D0L7QM1CmMOudY+5Qz/4scJPBVGCq6kq7FzMz6bMmhDEQcq
-	yny++FWxzQXkeMgc0uD0UQVoID+D9ne/mqkZ0lTPVo3kP22h8vl8hqFaMJm364NFvE+s
-	wduiKe2LjLlFG7CcDI8I9hn270yYtse3X4CpkSx+n7CIGZkI6rU6vhAHX1Vp3Rtd4JTr
-	yksA==
-X-Gm-Message-State: AIkVDXIJ/b+dgL8gPLF9HpvJsQBHjs4bmRiib1Ki3KchI/9fFXZSHRSmkbdyr8UtwJKZS60CCvwyS0aJzQdTeMDk
-X-Received: by 10.176.2.110 with SMTP id 101mr2832015uas.8.1481897091604; Fri,
-	16 Dec 2016 06:04:51 -0800 (PST)
+	(envelope-from <no-reply@patchew.org>) id 1cHtAB-00068f-2m
+	for qemu-arm@nongnu.org; Fri, 16 Dec 2016 09:07:10 -0500
+Resent-Date: Fri, 16 Dec 2016 09:07:10 -0500
+Resent-Message-Id: <E1cHtAB-00068f-2m@eggs.gnu.org>
+Received: from sender163-mail.zoho.com ([74.201.84.163]:21379)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <no-reply@patchew.org>)
+	id 1cHtAA-00068C-Pe; Fri, 16 Dec 2016 09:07:07 -0500
+Received: from [172.17.0.2] (23.253.156.214 [23.253.156.214]) by
+	mx.zohomail.com with SMTPS id 1481897221134744.2869334577197;
+	Fri, 16 Dec 2016 06:07:01 -0800 (PST)
+In-Reply-To: <1481894559-13974-1-git-send-email-marcin.krzeminski@nokia.com>
+Message-ID: <148189721994.31.4382817436141231579@790289a7ca88>
 MIME-Version: 1.0
-Received: by 10.31.176.14 with HTTP; Fri, 16 Dec 2016 06:04:31 -0800 (PST)
-In-Reply-To: <1481130374-5147-3-git-send-email-vijay.kilari@gmail.com>
-References: <1481130374-5147-1-git-send-email-vijay.kilari@gmail.com>
-	<1481130374-5147-3-git-send-email-vijay.kilari@gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 16 Dec 2016 14:04:31 +0000
-Message-ID: <CAFEAcA_hfxvW9do3xTP4KoEKMWk4NOUKJZFMiTVbJV3hY48HGA@mail.gmail.com>
-To: Vijay Kilari <vijay.kilari@gmail.com>
-Content-Type: text/plain; charset=UTF-8
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:400c:c08::22b
-Subject: Re: [Qemu-arm] [PATCH v5 2/3] utils: Add helper to read arm
- MIDR_EL1 register
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Resent-From: 
+From: no-reply@patchew.org
+To: marcin.krzeminski@nokia.com
+Date: Fri, 16 Dec 2016 06:07:01 -0800 (PST)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
+X-Received-From: 74.201.84.163
+Subject: Re: [Qemu-arm] [Qemu-devel] [RFC 0/3] MultiCPU changes
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -77,133 +55,52 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Paolo Bonzini <pbonzini@redhat.com>, qemu-arm <qemu-arm@nongnu.org>,
-	Vijaya Kumar K <Vijaya.Kumar@cavium.com>,
-	QEMU Developers <qemu-devel@nongnu.org>,
-	Richard Henderson <rth@twiddle.net>
+Reply-To: qemu-devel@nongnu.org
+Cc: peter.maydell@linaro.org, rfsw-patches@mlist.nokia.com, famz@redhat.com,
+	qemu-devel@nongnu.org, qemu-arm@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Xw4sCnpFKcj3
+X-TUID: GXyx/WisrV1+
 
-On 7 December 2016 at 17:06,  <vijay.kilari@gmail.com> wrote:
-> From: Vijaya Kumar K <Vijaya.Kumar@cavium.com>
->
-> Add helper API to read MIDR_EL1 registers to fetch
-> cpu identification information. This helps in
-> adding errata's and architecture specific features.
->
-> This is implemented only for arm architecture.
->
-> Signed-off-by: Vijaya Kumar K <Vijaya.Kumar@cavium.com>
-> ---
->  include/qemu/aarch64-cpuid.h | 38 ++++++++++++++++++++++++++++++++
->  util/Makefile.objs           |  1 +
->  util/aarch64-cpuid.c         | 52 ++++++++++++++++++++++++++++++++++++++++++++
->  3 files changed, 91 insertions(+)
->
-> diff --git a/include/qemu/aarch64-cpuid.h b/include/qemu/aarch64-cpuid.h
-> new file mode 100644
-> index 0000000..fb88ed8
-> --- /dev/null
-> +++ b/include/qemu/aarch64-cpuid.h
-> @@ -0,0 +1,38 @@
-> +#ifndef QEMU_AARCH64_CPUID_H
-> +#define QEMU_AARCH64_CPUID_H
-> +
-> +#if defined(__aarch64__) && defined(CONFIG_LINUX)
-> +#define MIDR_IMPLEMENTER_SHIFT  24
-> +#define MIDR_IMPLEMENTER_MASK   (0xffULL << MIDR_IMPLEMENTER_SHIFT)
-> +#define MIDR_ARCHITECTURE_SHIFT 16
-> +#define MIDR_ARCHITECTURE_MASK  (0xf << MIDR_ARCHITECTURE_SHIFT)
-> +#define MIDR_PARTNUM_SHIFT      4
-> +#define MIDR_PARTNUM_MASK       (0xfff << MIDR_PARTNUM_SHIFT)
-> +
-> +#define MIDR_CPU_PART(imp, partnum) \
-> +        (((imp)                 << MIDR_IMPLEMENTER_SHIFT)  | \
-> +        (0xf                    << MIDR_ARCHITECTURE_SHIFT) | \
-> +        ((partnum)              << MIDR_PARTNUM_SHIFT))
-> +
-> +#define ARM_CPU_IMP_CAVIUM        0x43
-> +#define CAVIUM_CPU_PART_THUNDERX  0x0A1
-> +
-> +#define MIDR_THUNDERX_PASS2  \
-> +               MIDR_CPU_PART(ARM_CPU_IMP_CAVIUM, CAVIUM_CPU_PART_THUNDERX)
-> +#define CPU_MODEL_MASK  (MIDR_IMPLEMENTER_MASK | MIDR_ARCHITECTURE_MASK | \
-> +                         MIDR_PARTNUM_MASK)
-> +
-> +uint64_t get_aarch64_cpu_id(void);
-> +bool is_thunderx_pass2_cpu(void);
-> +#else
-> +static inline uint64_t get_aarch64_cpu_id(void)
-> +{
-> +    return 0;
-> +}
-> +
-> +static inline bool is_thunderx_pass2_cpu(void)
-> +{
-> +    return false;
-> +}
-> +#endif
-> +#endif
-> diff --git a/util/Makefile.objs b/util/Makefile.objs
-> index ad0f9c7..a9585c9 100644
-> --- a/util/Makefile.objs
-> +++ b/util/Makefile.objs
-> @@ -36,3 +36,4 @@ util-obj-y += log.o
->  util-obj-y += qdist.o
->  util-obj-y += qht.o
->  util-obj-y += range.o
-> +util-obj-$(CONFIG_LINUX) += aarch64-cpuid.o
-> diff --git a/util/aarch64-cpuid.c b/util/aarch64-cpuid.c
-> new file mode 100644
-> index 0000000..575f52e
-> --- /dev/null
-> +++ b/util/aarch64-cpuid.c
-> @@ -0,0 +1,52 @@
-> +/*
-> + * Dealing with arm cpu identification information.
-> + *
-> + * Copyright (C) 2016 Cavium, Inc.
-> + *
-> + * Authors:
-> + *  Vijaya Kumar K <Vijaya.Kumar@cavium.com>
-> + *
-> + * This work is licensed under the terms of the GNU LGPL, version 2.1
-> + * or later.  See the COPYING.LIB file in the top-level directory.
-> + */
-> +
-> +#include "qemu/osdep.h"
-> +#include "qemu/cutils.h"
-> +#include "qemu/aarch64-cpuid.h"
-> +
-> +#if defined(__aarch64__)
-> +static uint64_t qemu_read_aarch64_midr_el1(void)
-> +{
-> +    const char *file = "/sys/devices/system/cpu/cpu0/regs/identification/midr_el1";
+SGksCgpZb3VyIHNlcmllcyBzZWVtcyB0byBoYXZlIHNvbWUgY29kaW5nIHN0eWxlIHByb2JsZW1z
+LiBTZWUgb3V0cHV0IGJlbG93IGZvcgptb3JlIGluZm9ybWF0aW9uOgoKVHlwZTogc2VyaWVzClN1
+YmplY3Q6IFtRZW11LWRldmVsXSBbUkZDIDAvM10gTXVsdGlDUFUgY2hhbmdlcwpNZXNzYWdlLWlk
+OiAxNDgxODk0NTU5LTEzOTc0LTEtZ2l0LXNlbmQtZW1haWwtbWFyY2luLmtyemVtaW5za2lAbm9r
+aWEuY29tCgo9PT0gVEVTVCBTQ1JJUFQgQkVHSU4gPT09CiMhL2Jpbi9iYXNoCgpCQVNFPWJhc2UK
+bj0xCnRvdGFsPSQoZ2l0IGxvZyAtLW9uZWxpbmUgJEJBU0UuLiB8IHdjIC1sKQpmYWlsZWQ9MAoK
+IyBVc2VmdWwgZ2l0IG9wdGlvbnMKZ2l0IGNvbmZpZyAtLWxvY2FsIGRpZmYucmVuYW1lbGltaXQg
+MApnaXQgY29uZmlnIC0tbG9jYWwgZGlmZi5yZW5hbWVzIFRydWUKCmNvbW1pdHM9IiQoZ2l0IGxv
+ZyAtLWZvcm1hdD0lSCAtLXJldmVyc2UgJEJBU0UuLikiCmZvciBjIGluICRjb21taXRzOyBkbwog
+ICAgZWNobyAiQ2hlY2tpbmcgUEFUQ0ggJG4vJHRvdGFsOiAkKGdpdCBsb2cgLW4gMSAtLWZvcm1h
+dD0lcyAkYykuLi4iCiAgICBpZiAhIGdpdCBzaG93ICRjIC0tZm9ybWF0PWVtYWlsIHwgLi9zY3Jp
+cHRzL2NoZWNrcGF0Y2gucGwgLS1tYWlsYmFjayAtOyB0aGVuCiAgICAgICAgZmFpbGVkPTEKICAg
+ICAgICBlY2hvCiAgICBmaQogICAgbj0kKChuKzEpKQpkb25lCgpleGl0ICRmYWlsZWQKPT09IFRF
+U1QgU0NSSVBUIEVORCA9PT0KClVwZGF0aW5nIDNjOGNmNWE5YzIxZmY4NzgyMTY0ZDFkZWY3ZjQ0
+YmQ4ODg3MTMzODQKRnJvbSBodHRwczovL2dpdGh1Yi5jb20vcGF0Y2hldy1wcm9qZWN0L3FlbXUK
+ICogW25ldyB0YWddICAgICAgICAgcGF0Y2hldy8xNDgxODk0NTU5LTEzOTc0LTEtZ2l0LXNlbmQt
+ZW1haWwtbWFyY2luLmtyemVtaW5za2lAbm9raWEuY29tIC0+IHBhdGNoZXcvMTQ4MTg5NDU1OS0x
+Mzk3NC0xLWdpdC1zZW5kLWVtYWlsLW1hcmNpbi5rcnplbWluc2tpQG5va2lhLmNvbQpTd2l0Y2hl
+ZCB0byBhIG5ldyBicmFuY2ggJ3Rlc3QnCmE0ODNkYTggZXhlYzogQWxsb3cgdG8gY2hhbmdlIEFk
+ZHJlc3MgU3BhY2UgZnJvbSBib2FyZCBsZXZlbAoyODg5NTI4IEFSTTogYm9vdDogQWRkIG9wdGlv
+biB0byBza2lwIEZEVCBtZW1vcnkgbm9kZSB1cGRhdGUKN2E0YWE1YSBudmljOiBBZGQgQ1BVIG51
+bWViciBwcm9wZXJ0eQoKPT09IE9VVFBVVCBCRUdJTiA9PT0KQ2hlY2tpbmcgUEFUQ0ggMS8zOiBu
+dmljOiBBZGQgQ1BVIG51bWViciBwcm9wZXJ0eS4uLgpFUlJPUjogY29kZSBpbmRlbnQgc2hvdWxk
+IG5ldmVyIHVzZSB0YWJzCiM4MjogRklMRTogaHcvaW50Yy9hcm12N21fbnZpYy5jOjQ3NzoKK15J
+Vk1TVEFURV9VSU5UMzIoY3B1X2lkLCBudmljX3N0YXRlKSwkCgp0b3RhbDogMSBlcnJvcnMsIDAg
+d2FybmluZ3MsIDg3IGxpbmVzIGNoZWNrZWQKCllvdXIgcGF0Y2ggaGFzIHN0eWxlIHByb2JsZW1z
+LCBwbGVhc2UgcmV2aWV3LiAgSWYgYW55IG9mIHRoZXNlIGVycm9ycwphcmUgZmFsc2UgcG9zaXRp
+dmVzIHJlcG9ydCB0aGVtIHRvIHRoZSBtYWludGFpbmVyLCBzZWUKQ0hFQ0tQQVRDSCBpbiBNQUlO
+VEFJTkVSUy4KCkNoZWNraW5nIFBBVENIIDIvMzogQVJNOiBib290OiBBZGQgb3B0aW9uIHRvIHNr
+aXAgRkRUIG1lbW9yeSBub2RlIHVwZGF0ZS4uLgpXQVJOSU5HOiBsaW5lIG92ZXIgODAgY2hhcmFj
+dGVycwojNDQ6IEZJTEU6IGh3L2FybS9ib290LmM6NTAwOgorICAgICAgICAgICAgICAgIHFlbXVf
+ZmR0X3NldHByb3Bfc3RyaW5nKGZkdCwgIi9tZW1vcnkiLCAiZGV2aWNlX3R5cGUiLCAibWVtb3J5
+Iik7Cgp0b3RhbDogMCBlcnJvcnMsIDEgd2FybmluZ3MsIDQ4IGxpbmVzIGNoZWNrZWQKCllvdXIg
+cGF0Y2ggaGFzIHN0eWxlIHByb2JsZW1zLCBwbGVhc2UgcmV2aWV3LiAgSWYgYW55IG9mIHRoZXNl
+IGVycm9ycwphcmUgZmFsc2UgcG9zaXRpdmVzIHJlcG9ydCB0aGVtIHRvIHRoZSBtYWludGFpbmVy
+LCBzZWUKQ0hFQ0tQQVRDSCBpbiBNQUlOVEFJTkVSUy4KQ2hlY2tpbmcgUEFUQ0ggMy8zOiBleGVj
+OiBBbGxvdyB0byBjaGFuZ2UgQWRkcmVzcyBTcGFjZSBmcm9tIGJvYXJkIGxldmVsLi4uCj09PSBP
+VVRQVVQgRU5EID09PQoKVGVzdCBjb21tYW5kIGV4aXRlZCB3aXRoIGNvZGU6IDEKCgotLS0KRW1h
+aWwgZ2VuZXJhdGVkIGF1dG9tYXRpY2FsbHkgYnkgUGF0Y2hldyBbaHR0cDovL3BhdGNoZXcub3Jn
+L10uClBsZWFzZSBzZW5kIHlvdXIgZmVlZGJhY2sgdG8gcGF0Y2hldy1kZXZlbEBmcmVlbGlzdHMu
+b3Jn
 
-If CPU0 happens to be offline (eg hot-unplugged) then this file
-won't exist, and we'll fail to identify any MIDR value.
-
-The API as designed here also doesn't seem to consider
-the idea of big.LITTLE systems -- if there are multiple
-CPUs with different MIDRs, which one should we return here?
-
-> +    char *buf;
-> +    uint64_t midr = 0;
-> +
-> +    if (!g_file_get_contents(file, &buf, 0, NULL)) {
-> +        goto out;
-> +    }
-> +
-> +    if (qemu_strtoull(buf, NULL, 0, &midr) < 0) {
-> +        midr = 0;
-> +        goto out;
-> +    }
-> +
-> +out:
-> +    g_free(buf);
-> +
-> +    return midr;
-
-thanks
--- PMM

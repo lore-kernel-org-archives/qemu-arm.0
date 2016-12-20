@@ -1,199 +1,219 @@
-Received: by 10.103.86.15 with SMTP id k15csp831297vsb;
-        Sun, 18 Dec 2016 12:46:30 -0800 (PST)
-X-Received: by 10.36.158.193 with SMTP id p184mr13289640itd.8.1482093990131;
-        Sun, 18 Dec 2016 12:46:30 -0800 (PST)
-Return-Path: <ehabkost@redhat.com>
-Received: from mx1.redhat.com (mx1.redhat.com. [209.132.183.28])
-        by mx.google.com with ESMTPS id 141si8361581itm.68.2016.12.18.12.46.29
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 18 Dec 2016 12:46:30 -0800 (PST)
-Received-SPF: pass (google.com: domain of ehabkost@redhat.com designates 209.132.183.28 as permitted sender) client-ip=209.132.183.28;
+Received: by 10.103.86.17 with SMTP id k17csp457503vsb;
+        Tue, 20 Dec 2016 14:48:16 -0800 (PST)
+X-Received: by 10.55.182.4 with SMTP id g4mr1759372qkf.19.1482274096158;
+        Tue, 20 Dec 2016 14:48:16 -0800 (PST)
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
+        by mx.google.com with ESMTPS id z59si13461210qtc.77.2016.12.20.14.48.15
+        for <alex.bennee@linaro.org>
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Tue, 20 Dec 2016 14:48:16 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of ehabkost@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=ehabkost@redhat.com
-Received: from int-mx14.intmail.prod.int.phx2.redhat.com (int-mx14.intmail.prod.int.phx2.redhat.com [10.5.11.27])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 2821785540;
-	Sun, 18 Dec 2016 20:46:28 +0000 (UTC)
-Received: from localhost (ovpn-116-10.gru2.redhat.com [10.97.116.10])
-	by int-mx14.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP id uBIKkOgr007735;
-	Sun, 18 Dec 2016 15:46:25 -0500
-Date: Sun, 18 Dec 2016 18:46:24 -0200
-From: Eduardo Habkost <ehabkost@redhat.com>
-To: Alex =?iso-8859-1?Q?Benn=E9e?= <alex.bennee@linaro.org>
-Cc: rth@twiddle.net, qemu-devel@nongnu.org,
-        Peter Maydell <peter.maydell@linaro.org>,
-        "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
-        Paolo Bonzini <pbonzini@redhat.com>, Michael Walle <michael@walle.cc>,
-        Laurent Vivier <laurent@vivier.eu>,
-        Aurelien Jarno <aurelien@aurel32.net>,
-        Yongbok Kim <yongbok.kim@imgtec.com>,
-        Anthony Green <green@moxielogic.com>, Jia Liu <proljc@gmail.com>,
-        David Gibson <david@gibson.dropbear.id.au>,
-        Alexander Graf <agraf@suse.de>,
-        Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
-        Artyom Tarasenko <atar4qemu@gmail.com>,
-        Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
-        "open list:ARM" <qemu-arm@nongnu.org>,
-        "open list:PowerPC" <qemu-ppc@nongnu.org>
-Subject: Re: [PATCH v2 1/2] qom/cpu: move tlb_flush to cpu_common_reset
-Message-ID: <20161218204624.GA3808@thinpad.lan.raisama.net>
-References: <20161215123656.27985-1-alex.bennee@linaro.org>
- <20161215123656.27985-2-alex.bennee@linaro.org>
+       dkim=fail header.i=@gmail.com;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:53817 helo=lists.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1cJTCf-0000L7-RB
+	for alex.bennee@linaro.org; Tue, 20 Dec 2016 17:48:13 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:54978)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <alistair23@gmail.com>) id 1cJT8m-0004ne-C5
+	for qemu-arm@nongnu.org; Tue, 20 Dec 2016 17:44:14 -0500
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+	(envelope-from <alistair23@gmail.com>) id 1cJT8l-000466-75
+	for qemu-arm@nongnu.org; Tue, 20 Dec 2016 17:44:12 -0500
+Received: from mail-oi0-x241.google.com ([2607:f8b0:4003:c06::241]:33053)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <alistair23@gmail.com>)
+	id 1cJT8i-000431-Am; Tue, 20 Dec 2016 17:44:08 -0500
+Received: by mail-oi0-x241.google.com with SMTP id f201so25994504oib.0;
+	Tue, 20 Dec 2016 14:44:06 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=mime-version:sender:in-reply-to:references:from:date:message-id
+	:subject:to:cc;
+	bh=H/Lck/4i82chWB3We+nQSRxXQrJ1T/U6DLiz1VjOZNo=;
+	b=U5t7K3NbeRQC9RsloNHXbkD6cpilPyL5fhusCbZC6JaCMpLJOgpXEJHcscYruda769
+	c43LORDey0iYgzDQBQ7e9Ya4QFQVtSzMSp9uGlnVGVXMAuzaWnc36azrZPH/dMd+BEeN
+	e/zYjbF+7OzfUwHB4fIPDkAIUENHV1nhAovaOIWZBzX6iKUfpF9Gp59aUtLD+zx2ueT5
+	9NNbpz012M4ICQzuED7chglEGzKhFnIpIZCeFT+7bFgHzqANl7QH5mdS1Uqrrb5IGlle
+	ALeGAMcsLIZ+ZSYpLtfiLCDf0YKG79iGTS6Hxsm4lrghm14rw8g7I2cGShtsmj2kjpRx
+	rPYg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:sender:in-reply-to:references:from
+	:date:message-id:subject:to:cc;
+	bh=H/Lck/4i82chWB3We+nQSRxXQrJ1T/U6DLiz1VjOZNo=;
+	b=kZ6mf2xqKbNJDvKE4jgYA0MkGek9UXmNG2yvt7SHKVMCmXXLuIuJ0VUqLhuB5RR/Cp
+	fVEUZH3halFyYiyg9a/46LO5ECsiZ4QDw20grddEHGXNIJzRWk4vUiLhFTnWDC+a/cDH
+	4ioQFVBLW/XeBuCSejYTyUvYD3lWBVkGArJa1L6tLAYMMXS9puKwzoK6+Lc8h4gQEp3b
+	79sGcEgJT1ZMP5e9A3ZcvUMDcV+vTMd2eG8iqgSOZ0SEVJdmvElwQ6ftsAwzYgKLBgcq
+	2Hfm08NrHX2vbZpoBQsYedACnXbIEv9dqF1Al7WUyVVF0ijNSQlkx4VW5/pBbkLauAIP
+	RyVQ==
+X-Gm-Message-State: AIkVDXLyB524wcvakuLfQFS3xitBDGHRbFdW1+huY8Oq5bW5MYqQi/gtl4iGBuvyM4VYGHVhykWEDXXCQEp2UQ==
+X-Received: by 10.202.84.65 with SMTP id i62mr935803oib.68.1482273845774; Tue,
+	20 Dec 2016 14:44:05 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <20161215123656.27985-2-alex.bennee@linaro.org>
-X-Fnord: you can see the fnord
-User-Agent: Mutt/1.7.1 (2016-10-04)
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.27
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.5.110.28]); Sun, 18 Dec 2016 20:46:29 +0000 (UTC)
-X-TUID: /dS9EO39IEHZ
+Received: by 10.182.96.6 with HTTP; Tue, 20 Dec 2016 14:43:35 -0800 (PST)
+In-Reply-To: <CAKmqyKOY4ZZrRDcp29QWszAJw-pTrasFUq94Xbm5YqrxFgfCaw@mail.gmail.com>
+References: <cover.1478566669.git.alistair.francis@xilinx.com>
+	<71bc12badf4f3125765146c21b4976b1d07dce46.1478566669.git.alistair.francis@xilinx.com>
+	<CAFEAcA9vrhPyHbpWqxjS167f_aG-NRf7EVms=dg6ULah_fwmgw@mail.gmail.com>
+	<CAKmqyKOY4ZZrRDcp29QWszAJw-pTrasFUq94Xbm5YqrxFgfCaw@mail.gmail.com>
+From: Alistair Francis <alistair.francis@xilinx.com>
+Date: Tue, 20 Dec 2016 14:43:35 -0800
+X-Google-Sender-Auth: I6EJJnrUl1XBRE03nWiNlBjdRQo
+Message-ID: <CAKmqyKMPV8JsTRf4qDV0JisbeqV2YSN4Qx7EgDREmwmq8jns_Q@mail.gmail.com>
+To: Alistair Francis <alistair.francis@xilinx.com>
+Content-Type: text/plain; charset=UTF-8
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 2607:f8b0:4003:c06::241
+Subject: Re: [Qemu-arm] [PATCH v2 1/2] arm_generic_timer: Add the ARM
+ Generic Timer
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.21
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm <qemu-arm@nongnu.org>,
+	QEMU Developers <qemu-devel@nongnu.org>,
+	=?UTF-8?B?S09OUkFEIEZyw6lkw6lyaWM=?= <fred.konrad@greensocs.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 7pNq46kDGOrV
 
-On Thu, Dec 15, 2016 at 12:36:55PM +0000, Alex Bennée wrote:
-> It is a common thing amongst the various cpu reset functions want to
-> flush the SoftMMU's TLB entries. This is done either by calling
-> tlb_flush directly or by way of a general memset of the CPU
-> structure (sometimes both).
-> 
-> This moves the tlb_flush call to the common reset function and
-> additionally ensures it is only done for the CONFIG_SOFTMMU case and
-> when tcg is enabled.
-> 
-> In some target cases we add an empty end_of_reset_fields structure to the
-> target vCPU structure so have a clear end point for any memset which
-> is resetting value in the structure before CPU_COMMON (where the TLB
-> structures are).
-> 
-> While this is a nice clean-up in general it is also a precursor for
-> changes coming to cputlb for MTTCG where the clearing of entries
-> can't be done arbitrarily across vCPUs. Currently the cpu_reset
-> function is usually called from the context of another vCPU as the
-> architectural power up sequence is run. By using the cputlb API
-> functions we can ensure the right behaviour in the future.
-> 
-> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-> Reviewed-by: Richard Henderson <rth@twiddle.net>
-> ---
->  qom/cpu.c                   | 10 ++++++++--
->  target-arm/cpu.c            |  5 ++---
->  target-arm/cpu.h            |  5 ++++-
->  target-cris/cpu.c           |  3 +--
->  target-cris/cpu.h           |  9 ++++++---
->  target-i386/cpu.c           |  2 --
->  target-i386/cpu.h           |  6 ++++--
->  target-lm32/cpu.c           |  3 +--
->  target-lm32/cpu.h           |  3 +++
->  target-m68k/cpu.c           |  3 +--
->  target-m68k/cpu.h           |  3 +++
->  target-microblaze/cpu.c     |  3 +--
->  target-microblaze/cpu.h     |  3 +++
->  target-mips/cpu.c           |  3 +--
->  target-mips/cpu.h           |  3 +++
->  target-moxie/cpu.c          |  4 +---
->  target-moxie/cpu.h          |  3 +++
->  target-openrisc/cpu.c       |  9 +--------
->  target-openrisc/cpu.h       |  3 +++
->  target-ppc/translate_init.c |  3 ---
->  target-s390x/cpu.c          |  7 ++-----
->  target-s390x/cpu.h          |  5 +++--
->  target-sh4/cpu.c            |  3 +--
->  target-sh4/cpu.h            |  3 +++
->  target-sparc/cpu.c          |  3 +--
->  target-sparc/cpu.h          |  3 +++
->  target-tilegx/cpu.c         |  3 +--
->  target-tilegx/cpu.h         |  3 +++
->  target-tricore/cpu.c        |  2 --
->  29 files changed, 66 insertions(+), 52 deletions(-)
-> 
-> diff --git a/qom/cpu.c b/qom/cpu.c
-> index 03d9190f8c..61ee0cb88c 100644
-> --- a/qom/cpu.c
-> +++ b/qom/cpu.c
-> @@ -270,8 +270,14 @@ static void cpu_common_reset(CPUState *cpu)
->      cpu->exception_index = -1;
->      cpu->crash_occurred = false;
->  
-> -    for (i = 0; i < TB_JMP_CACHE_SIZE; ++i) {
-> -        atomic_set(&cpu->tb_jmp_cache[i], NULL);
-> +    if (tcg_enabled()) {
-> +        for (i = 0; i < TB_JMP_CACHE_SIZE; ++i) {
-> +            atomic_set(&cpu->tb_jmp_cache[i], NULL);
-> +        }
-> +
-> +#ifdef CONFIG_SOFTMMU
-> +        tlb_flush(cpu, 0);
-> +#endif
+On Fri, Dec 16, 2016 at 1:03 PM, Alistair Francis
+<alistair.francis@xilinx.com> wrote:
+> On Tue, Dec 13, 2016 at 5:11 AM, Peter Maydell <peter.maydell@linaro.org> wrote:
+>> On 8 November 2016 at 00:58, Alistair Francis
+>> <alistair.francis@xilinx.com> wrote:
+>>> Add the ARM generic timer. This allows the guest to poll the timer for
+>>> values and also supports secure writes only.
+>>>
+>>> Signed-off-by: Alistair Francis <alistair.francis@xilinx.com>
+>>> ---
+>>> V2:
+>>>  - Fix couter/counter typo
+>>>
+>>>  hw/timer/Makefile.objs               |   1 +
+>>>  hw/timer/arm_generic_timer.c         | 216 +++++++++++++++++++++++++++++++++++
+>>>  include/hw/timer/arm_generic_timer.h |  60 ++++++++++
+>>>  3 files changed, 277 insertions(+)
+>>>  create mode 100644 hw/timer/arm_generic_timer.c
+>>>  create mode 100644 include/hw/timer/arm_generic_timer.h
+>>
+>> I can't quite seem to make this line up with the spec in the v8
+>> ARM ARM (chapter 11 "System Level Implementation of the Generic
+>> Timer"). The generic timer documented there looks quite like this,
+>> but has extra ID registers at 0xFD0..0xFFC which this code doesn't
+>> implement, and also has the "CNTReadBase" memory map (which
+>> exposes just the count value and ID registers) as well as the
+>> "CNTControlBase" map that looks like what you have here.
+>> (The register names here differ from the conventions in the
+>> ARM ARM too.)
+>
+> Of course they don't line up :(
+>
+> I wrote it based off the Xilinx documentation, I (wrongly) assumed
+> that we would follow the normal convention but apparently not.
+>
+>>
+>> Is this code trying to implement that Generic Timer, or something
+>> else with a similar name?
+>
+> I'm not sure now which one it is.
+>
+> I will dig into this and hopefully can respin this based on what is in
+> the ARM ARM.
 
-The patch is changing 3 things at the same time:
+It turns out it is pretty close.
 
-1) Moving the tb_jmp_cache reset inside if (tcg_enabled())
-2) Moving the tlb_flush() call to cpu_common_reset()
-3) Moving the tlb_flush() call inside if (tcg_enabled())
+I have fixed up the names to be more like the ARM ARM. I have added
+some comments about the implementation specific registers and I have
+added the read base registers as well.
 
-Are we 100% sure there's no non-TCG looking looking at tlb_*
-fields or calling tlb_*() functions anywhere? Isn't it better to
-add the tcg_enabled() check in a separate patch?
+Sending out a V3.
 
+Thanks,
 
->      }
->  }
->  
-[...]
-> diff --git a/target-i386/cpu.c b/target-i386/cpu.c
-> index de1f30eeda..810893952a 100644
-> --- a/target-i386/cpu.c
-> +++ b/target-i386/cpu.c
-> @@ -2815,8 +2815,6 @@ static void x86_cpu_reset(CPUState *s)
->  
->      memset(env, 0, offsetof(CPUX86State, end_reset_fields));
->  
-> -    tlb_flush(s, 1);
-> -
->      env->old_exception = -1;
->  
->      /* init to reset state */
-> diff --git a/target-i386/cpu.h b/target-i386/cpu.h
-> index c605724022..95ed91d8d1 100644
-> --- a/target-i386/cpu.h
-> +++ b/target-i386/cpu.h
-> @@ -1119,10 +1119,12 @@ typedef struct CPUX86State {
->      uint8_t nmi_injected;
->      uint8_t nmi_pending;
->  
-> +    /* Fields up to this point are cleared by a CPU reset */
-> +    struct {} end_reset_fields;
-> +
->      CPU_COMMON
->  
-> -    /* Fields from here on are preserved across CPU reset. */
-> -    struct {} end_reset_fields;
-> +    /* Fields after CPU_COMMON are preserved across CPU reset. */
->  
->      /* processor features (e.g. for CPUID insn) */
->      /* Minimum level/xlevel/xlevel2, based on CPU model + features */
+Alistair
 
-Do you have plans to move the tlb_* fields from CPUArchState to
-CPUState and remove CPU_COMMON completely?
-
-
-> diff --git a/target-lm32/cpu.c b/target-lm32/cpu.c
-> index 8d939a7779..2b8c36b6d0 100644
-> --- a/target-lm32/cpu.c
-> +++ b/target-lm32/cpu.c
-> @@ -128,10 +128,9 @@ static void lm32_cpu_reset(CPUState *s)
->      lcc->parent_reset(s);
->  
->      /* reset cpu state */
-> -    memset(env, 0, offsetof(CPULM32State, eba));
-> +    memset(env, 0, offsetof(CPULM32State, end_reset_fields));
->  
->      lm32_cpu_init_cfg_reg(cpu);
-> -    tlb_flush(s, 1);
->  }
->  
-[...]
-
--- 
-Eduardo
+>
+>>
+>>> diff --git a/hw/timer/Makefile.objs b/hw/timer/Makefile.objs
+>>> index 7ba8c23..f88c468 100644
+>>> --- a/hw/timer/Makefile.objs
+>>> +++ b/hw/timer/Makefile.objs
+>>> @@ -17,6 +17,7 @@ common-obj-$(CONFIG_IMX) += imx_epit.o
+>>>  common-obj-$(CONFIG_IMX) += imx_gpt.o
+>>>  common-obj-$(CONFIG_LM32) += lm32_timer.o
+>>>  common-obj-$(CONFIG_MILKYMIST) += milkymist-sysctl.o
+>>> +common-obj-$(CONFIG_XLNX_ZYNQMP) += arm_generic_timer.o
+>>
+>> If this is really generic I think it ought to have its own
+>> CONFIG_foo rather than using the XLNX_ZYNQMP symbol.
+>
+> Yes, Fred pointed that out as well. I will fix that up in the next version.
+>
+>>
+>>>
+>>>  obj-$(CONFIG_EXYNOS4) += exynos4210_mct.o
+>>>  obj-$(CONFIG_EXYNOS4) += exynos4210_pwm.o
+>>
+>>> +static uint64_t counter_low_value_postr(RegisterInfo *reg, uint64_t val64)
+>>> +{
+>>> +    ARMGenTimer *s = ARM_GEN_TIMER(reg->opaque);
+>>> +    uint64_t current_ticks, total_ticks;
+>>> +    uint32_t low_ticks;
+>>> +
+>>> +    if (s->enabled) {
+>>> +        current_ticks = muldiv64(qemu_clock_get_us(QEMU_CLOCK_VIRTUAL),
+>>> +                                 NANOSECONDS_PER_SECOND, 1000000);
+>>> +        total_ticks = current_ticks - s->tick_offset;
+>>> +        low_ticks = (uint32_t) total_ticks;
+>>> +    } else {
+>>> +        /* Timer is disabled, return the time when it was disabled */
+>>> +        low_ticks = (uint32_t) s->tick_offset;
+>>> +    }
+>>> +
+>>> +    return low_ticks;
+>>> +}
+>>> +
+>>> +static uint64_t counter_high_value_postr(RegisterInfo *reg, uint64_t val64)
+>>> +{
+>>> +    ARMGenTimer *s = ARM_GEN_TIMER(reg->opaque);
+>>> +    uint64_t current_ticks, total_ticks;
+>>> +    uint32_t high_ticks;
+>>> +
+>>> +    if (s->enabled) {
+>>> +        current_ticks = muldiv64(qemu_clock_get_us(QEMU_CLOCK_VIRTUAL),
+>>> +                                 NANOSECONDS_PER_SECOND, 1000000);
+>>> +        total_ticks = current_ticks - s->tick_offset;
+>>> +        high_ticks = (uint32_t) (total_ticks >> 32);
+>>> +    } else {
+>>> +        /* Timer is disabled, return the time when it was disabled */
+>>> +        high_ticks = (uint32_t) (s->tick_offset >> 32);
+>>> +    }
+>>> +
+>>> +    return high_ticks;
+>>
+>> These two functions are very similar and would benefit from
+>> being refactored to call a utility function that just returned
+>> the 64-bit count.
+>
+> Good point.
+>
+> Thanks,
+>
+> Alistair
+>
+>>
+>> thanks
+>> -- PMM

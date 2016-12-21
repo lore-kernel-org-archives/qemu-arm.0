@@ -1,50 +1,62 @@
-Received: by 10.103.86.17 with SMTP id k17csp461661vsb;
-        Tue, 20 Dec 2016 15:01:47 -0800 (PST)
-X-Received: by 10.200.38.239 with SMTP id 44mr1865871qtp.91.1482274907099;
-        Tue, 20 Dec 2016 15:01:47 -0800 (PST)
+Received: by 10.25.205.13 with SMTP id d13csp3229851lfg;
+        Wed, 21 Dec 2016 07:23:54 -0800 (PST)
+X-Received: by 10.55.101.151 with SMTP id z145mr5088375qkb.35.1482333834221;
+        Wed, 21 Dec 2016 07:23:54 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id s26si13509853qtc.51.2016.12.20.15.01.46
+        by mx.google.com with ESMTPS id j33si15231865qtb.178.2016.12.21.07.23.53
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 20 Dec 2016 15:01:47 -0800 (PST)
+        Wed, 21 Dec 2016 07:23:54 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:53868 helo=lists.gnu.org)
+Received: from localhost ([::1]:57526 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1cJTPk-0006GX-IU
-	for alex.bennee@linaro.org; Tue, 20 Dec 2016 18:01:44 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:33514)
+	id 1cJikB-0001hO-LP
+	for alex.bennee@linaro.org; Wed, 21 Dec 2016 10:23:51 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:37172)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <no-reply@patchew.org>) id 1cJTPg-0006G6-Cg
-	for qemu-arm@nongnu.org; Tue, 20 Dec 2016 18:01:41 -0500
+	(envelope-from <ehabkost@redhat.com>) id 1cJiix-0007j6-BA
+	for qemu-arm@nongnu.org; Wed, 21 Dec 2016 10:22:36 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <no-reply@patchew.org>) id 1cJTPd-0003nJ-9k
-	for qemu-arm@nongnu.org; Tue, 20 Dec 2016 18:01:40 -0500
-Resent-Date: Tue, 20 Dec 2016 18:01:40 -0500
-Resent-Message-Id: <E1cJTPd-0003nJ-9k@eggs.gnu.org>
-Received: from sender163-mail.zoho.com ([74.201.84.163]:21311)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <no-reply@patchew.org>)
-	id 1cJTPd-0003lh-1u; Tue, 20 Dec 2016 18:01:37 -0500
-Received: from [172.17.0.2] (23.253.156.214 [23.253.156.214]) by
-	mx.zohomail.com with SMTPS id 1482274877993986.1770327696007;
-	Tue, 20 Dec 2016 15:01:17 -0800 (PST)
-In-Reply-To: <20161201170624.26496-1-lersek@redhat.com>
-Message-ID: <148227487620.73.10055858460424473693@790289a7ca88>
+	(envelope-from <ehabkost@redhat.com>) id 1cJiis-0001yN-VL
+	for qemu-arm@nongnu.org; Wed, 21 Dec 2016 10:22:35 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:37722)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <ehabkost@redhat.com>)
+	id 1cJiis-0001wu-Q9; Wed, 21 Dec 2016 10:22:30 -0500
+Received: from int-mx09.intmail.prod.int.phx2.redhat.com
+	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 6EE8A34156B;
+	Wed, 21 Dec 2016 15:22:29 +0000 (UTC)
+Received: from localhost (ovpn-116-3.gru2.redhat.com [10.97.116.3])
+	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id uBLFMSra018747; Wed, 21 Dec 2016 10:22:28 -0500
+Date: Wed, 21 Dec 2016 13:22:26 -0200
+From: Eduardo Habkost <ehabkost@redhat.com>
+To: qemu-devel@nongnu.org
+Message-ID: <20161221152226.GH3808@thinpad.lan.raisama.net>
+References: <20161201170624.26496-1-lersek@redhat.com>
+	<148227487620.73.10055858460424473693@790289a7ca88>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Resent-From: 
-From: no-reply@patchew.org
-To: lersek@redhat.com
-Date: Tue, 20 Dec 2016 15:01:17 -0800 (PST)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
-X-Received-From: 74.201.84.163
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v4 0/7] q35: add negotiable
- broadcast SMI
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <148227487620.73.10055858460424473693@790289a7ca88>
+X-Fnord: you can see the fnord
+User-Agent: Mutt/1.7.1 (2016-10-04)
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.29]);
+	Wed, 21 Dec 2016 15:22:29 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.132.183.28
+Subject: [Qemu-arm] checkpatch.pl false positive (was Re: [Qemu-devel]
+ [PATCH v4 0/7] q35: add negotiable broadcast SMI)
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -56,118 +68,40 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: qemu-devel@nongnu.org
-Cc: peter.maydell@linaro.org, famz@redhat.com, ehabkost@redhat.com,
-	mst@redhat.com, somlo@cmu.edu, qemu-devel@nongnu.org,
+Cc: peter.maydell@linaro.org, famz@redhat.com, mst@redhat.com,
+	Eric Blake <eblake@redhat.com>, somlo@cmu.edu,
+	qemu-devel@nongnu.org, Markus Armbruster <armbru@redhat.com>,
 	michael@walle.cc, qemu-arm@nongnu.org, kraxel@redhat.com,
-	zhaoshenglong@huawei.com, pbonzini@redhat.com, imammedo@redhat.com
+	zhaoshenglong@huawei.com, pbonzini@redhat.com, lersek@redhat.com,
+	imammedo@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: +ABSSW2gAPJb
+X-TUID: qogJXayWGgOi
 
-SGksCgpZb3VyIHNlcmllcyBzZWVtcyB0byBoYXZlIHNvbWUgY29kaW5nIHN0eWxlIHByb2JsZW1z
-LiBTZWUgb3V0cHV0IGJlbG93IGZvcgptb3JlIGluZm9ybWF0aW9uOgoKU3ViamVjdDogW1FlbXUt
-ZGV2ZWxdIFtQQVRDSCB2NCAwLzddIHEzNTogYWRkIG5lZ290aWFibGUgYnJvYWRjYXN0IFNNSQpN
-ZXNzYWdlLWlkOiAyMDE2MTIwMTE3MDYyNC4yNjQ5Ni0xLWxlcnNla0ByZWRoYXQuY29tClR5cGU6
-IHNlcmllcwoKPT09IFRFU1QgU0NSSVBUIEJFR0lOID09PQojIS9iaW4vYmFzaAoKQkFTRT1iYXNl
-Cm49MQp0b3RhbD0kKGdpdCBsb2cgLS1vbmVsaW5lICRCQVNFLi4gfCB3YyAtbCkKZmFpbGVkPTAK
-CiMgVXNlZnVsIGdpdCBvcHRpb25zCmdpdCBjb25maWcgLS1sb2NhbCBkaWZmLnJlbmFtZWxpbWl0
-IDAKZ2l0IGNvbmZpZyAtLWxvY2FsIGRpZmYucmVuYW1lcyBUcnVlCgpjb21taXRzPSIkKGdpdCBs
-b2cgLS1mb3JtYXQ9JUggLS1yZXZlcnNlICRCQVNFLi4pIgpmb3IgYyBpbiAkY29tbWl0czsgZG8K
-ICAgIGVjaG8gIkNoZWNraW5nIFBBVENIICRuLyR0b3RhbDogJChnaXQgbG9nIC1uIDEgLS1mb3Jt
-YXQ9JXMgJGMpLi4uIgogICAgaWYgISBnaXQgc2hvdyAkYyAtLWZvcm1hdD1lbWFpbCB8IC4vc2Ny
-aXB0cy9jaGVja3BhdGNoLnBsIC0tbWFpbGJhY2sgLTsgdGhlbgogICAgICAgIGZhaWxlZD0xCiAg
-ICAgICAgZWNobwogICAgZmkKICAgIG49JCgobisxKSkKZG9uZQoKZXhpdCAkZmFpbGVkCj09PSBU
-RVNUIFNDUklQVCBFTkQgPT09CgpVcGRhdGluZyAzYzhjZjVhOWMyMWZmODc4MjE2NGQxZGVmN2Y0
-NGJkODg4NzEzMzg0CkZyb20gaHR0cHM6Ly9naXRodWIuY29tL3BhdGNoZXctcHJvamVjdC9xZW11
-CiAtIFt0YWcgdXBkYXRlXSAgICAgIHBhdGNoZXcvMTQ4MDkyNjkwNC0xNzU5Ni0xLWdpdC1zZW5k
-LWVtYWlsLXpoYW5nLnpoYW5naGFpbGlhbmdAaHVhd2VpLmNvbSAtPiBwYXRjaGV3LzE0ODA5MjY5
-MDQtMTc1OTYtMS1naXQtc2VuZC1lbWFpbC16aGFuZy56aGFuZ2hhaWxpYW5nQGh1YXdlaS5jb20K
-IC0gW3RhZyB1cGRhdGVdICAgICAgcGF0Y2hldy8xNDgxNjI1Mzg0LTE1MDc3LTEtZ2l0LXNlbmQt
-ZW1haWwtcGV0ZXIubWF5ZGVsbEBsaW5hcm8ub3JnIC0+IHBhdGNoZXcvMTQ4MTYyNTM4NC0xNTA3
-Ny0xLWdpdC1zZW5kLWVtYWlsLXBldGVyLm1heWRlbGxAbGluYXJvLm9yZwogLSBbdGFnIHVwZGF0
-ZV0gICAgICBwYXRjaGV3LzE0ODE4NTY0MDMtMjM1OTktMS1naXQtc2VuZC1lbWFpbC16aGFuZ2No
-ZW4uZm5zdEBjbi5mdWppdHN1LmNvbSAtPiBwYXRjaGV3LzE0ODE4NTY0MDMtMjM1OTktMS1naXQt
-c2VuZC1lbWFpbC16aGFuZ2NoZW4uZm5zdEBjbi5mdWppdHN1LmNvbQogKiBbbmV3IHRhZ10gICAg
-ICAgICBwYXRjaGV3LzE0ODIxMzc0ODYtOTg0My0xLWdpdC1zZW5kLWVtYWlsLWRvdWx5LmZuc3RA
-Y24uZnVqaXRzdS5jb20gLT4gcGF0Y2hldy8xNDgyMTM3NDg2LTk4NDMtMS1naXQtc2VuZC1lbWFp
-bC1kb3VseS5mbnN0QGNuLmZ1aml0c3UuY29tCiAqIFtuZXcgdGFnXSAgICAgICAgIHBhdGNoZXcv
-MTQ4MjE0MDUwNy0yMzYwNy0xLWdpdC1zZW5kLWVtYWlsLXZsYWQubHVuZ3VAd2luZHJpdmVyLmNv
-bSAtPiBwYXRjaGV3LzE0ODIxNDA1MDctMjM2MDctMS1naXQtc2VuZC1lbWFpbC12bGFkLmx1bmd1
-QHdpbmRyaXZlci5jb20KICogW25ldyB0YWddICAgICAgICAgcGF0Y2hldy8xNDgyMTQ1NTU0LTg4
-ODIzLTEtZ2l0LXNlbmQtZW1haWwtd2VpLncud2FuZ0BpbnRlbC5jb20gLT4gcGF0Y2hldy8xNDgy
-MTQ1NTU0LTg4ODIzLTEtZ2l0LXNlbmQtZW1haWwtd2VpLncud2FuZ0BpbnRlbC5jb20KICogW25l
-dyB0YWddICAgICAgICAgcGF0Y2hldy8xNDgyMTU2NjIzLTkxMTEtMS1naXQtc2VuZC1lbWFpbC1w
-ZXRlcnhAcmVkaGF0LmNvbSAtPiBwYXRjaGV3LzE0ODIxNTY2MjMtOTExMS0xLWdpdC1zZW5kLWVt
-YWlsLXBldGVyeEByZWRoYXQuY29tCiAqIFtuZXcgdGFnXSAgICAgICAgIHBhdGNoZXcvMTQ4MjE1
-NzY4NjkwLjEzOTczLjkwNDI0OTY2OTExNDAwMDAxNjMuc3RnaXRAYmFoaWEgLT4gcGF0Y2hldy8x
-NDgyMTU3Njg2OTAuMTM5NzMuOTA0MjQ5NjY5MTE0MDAwMDE2My5zdGdpdEBiYWhpYQogKiBbbmV3
-IHRhZ10gICAgICAgICBwYXRjaGV3LzE0ODIxNTg0ODYtMTg1OTctMS1naXQtc2VuZC1lbWFpbC1w
-ZXRlcnhAcmVkaGF0LmNvbSAtPiBwYXRjaGV3LzE0ODIxNTg0ODYtMTg1OTctMS1naXQtc2VuZC1l
-bWFpbC1wZXRlcnhAcmVkaGF0LmNvbQogKiBbbmV3IHRhZ10gICAgICAgICBwYXRjaGV3LzE0ODIx
-ODcxMDYtODUwNjUtMS1naXQtc2VuZC1lbWFpbC1zb2NoaW4uamlhbmdAaHVhd2VpLmNvbSAtPiBw
-YXRjaGV3LzE0ODIxODcxMDYtODUwNjUtMS1naXQtc2VuZC1lbWFpbC1zb2NoaW4uamlhbmdAaHVh
-d2VpLmNvbQogKiBbbmV3IHRhZ10gICAgICAgICBwYXRjaGV3LzE0ODIyNTU3OTMtMTkwNTctMS1n
-aXQtc2VuZC1lbWFpbC1laGFia29zdEByZWRoYXQuY29tIC0+IHBhdGNoZXcvMTQ4MjI1NTc5My0x
-OTA1Ny0xLWdpdC1zZW5kLWVtYWlsLWVoYWJrb3N0QHJlZGhhdC5jb20KICogW25ldyB0YWddICAg
-ICAgICAgcGF0Y2hldy8xNDgyMjY4MzAwLTEwMDgyLTEtZ2l0LXNlbmQtZW1haWwtYW5kcmV3LnNt
-aXJub3ZAZ21haWwuY29tIC0+IHBhdGNoZXcvMTQ4MjI2ODMwMC0xMDA4Mi0xLWdpdC1zZW5kLWVt
-YWlsLWFuZHJldy5zbWlybm92QGdtYWlsLmNvbQogKiBbbmV3IHRhZ10gICAgICAgICBwYXRjaGV3
-LzE0ODIyNjg1OTgtMjc0MjItMS1naXQtc2VuZC1lbWFpbC10aHV0aEByZWRoYXQuY29tIC0+IHBh
-dGNoZXcvMTQ4MjI2ODU5OC0yNzQyMi0xLWdpdC1zZW5kLWVtYWlsLXRodXRoQHJlZGhhdC5jb20K
-ICogW25ldyB0YWddICAgICAgICAgcGF0Y2hldy8xNDgyMjY5MTY0LTE0NjQyLTEtZ2l0LXNlbmQt
-ZW1haWwtbWlueWFyZEBhY20ub3JnIC0+IHBhdGNoZXcvMTQ4MjI2OTE2NC0xNDY0Mi0xLWdpdC1z
-ZW5kLWVtYWlsLW1pbnlhcmRAYWNtLm9yZwogKiBbbmV3IHRhZ10gICAgICAgICBwYXRjaGV3LzIw
-MTYxMjAxMTcwNjI0LjI2NDk2LTEtbGVyc2VrQHJlZGhhdC5jb20gLT4gcGF0Y2hldy8yMDE2MTIw
-MTE3MDYyNC4yNjQ5Ni0xLWxlcnNla0ByZWRoYXQuY29tCiAtIFt0YWcgdXBkYXRlXSAgICAgIHBh
-dGNoZXcvMjAxNjEyMTIyMjQzMjUuMjA3OTAtMS1tYXJjYW5kcmUubHVyZWF1QHJlZGhhdC5jb20g
-LT4gcGF0Y2hldy8yMDE2MTIxMjIyNDMyNS4yMDc5MC0xLW1hcmNhbmRyZS5sdXJlYXVAcmVkaGF0
-LmNvbQogLSBbdGFnIHVwZGF0ZV0gICAgICBwYXRjaGV3LzIwMTYxMjE0MDcwMTU2LjIzMzY4LTEt
-cHBhbmRpdEByZWRoYXQuY29tIC0+IHBhdGNoZXcvMjAxNjEyMTQwNzAxNTYuMjMzNjgtMS1wcGFu
-ZGl0QHJlZGhhdC5jb20KICogW25ldyB0YWddICAgICAgICAgcGF0Y2hldy8yMDE2MTIxOTIwNTA1
-NC40Njc3LTEta2lya3NlcmFwaEBnbWFpbC5jb20gLT4gcGF0Y2hldy8yMDE2MTIxOTIwNTA1NC40
-Njc3LTEta2lya3NlcmFwaEBnbWFpbC5jb20KICogW25ldyB0YWddICAgICAgICAgcGF0Y2hldy8y
-MDE2MTIyMDE2MzEzOS4xMjAxNi0xLWZhbXpAcmVkaGF0LmNvbSAtPiBwYXRjaGV3LzIwMTYxMjIw
-MTYzMTM5LjEyMDE2LTEtZmFtekByZWRoYXQuY29tCiAqIFtuZXcgdGFnXSAgICAgICAgIHBhdGNo
-ZXcvYjA2MTllNDAtZGFjYS05YjI4LTJjNzgtMWUyNzA5ZDlmMGFkQHR1eGZhbWlseS5vcmcgLT4g
-cGF0Y2hldy9iMDYxOWU0MC1kYWNhLTliMjgtMmM3OC0xZTI3MDlkOWYwYWRAdHV4ZmFtaWx5Lm9y
-ZwogKiBbbmV3IHRhZ10gICAgICAgICBwYXRjaGV3L2NvdmVyLjE0ODIxNDMyMTUuZ2l0LnZwYWxh
-dGluQGNocm9taXVtLm9yZyAtPiBwYXRjaGV3L2NvdmVyLjE0ODIxNDMyMTUuZ2l0LnZwYWxhdGlu
-QGNocm9taXVtLm9yZwogKiBbbmV3IHRhZ10gICAgICAgICBwYXRjaGV3L2NvdmVyLjE0ODIxNjQ2
-MjIuZ2l0LnZwYWxhdGluQGNocm9taXVtLm9yZyAtPiBwYXRjaGV3L2NvdmVyLjE0ODIxNjQ2MjIu
-Z2l0LnZwYWxhdGluQGNocm9taXVtLm9yZwogKiBbbmV3IHRhZ10gICAgICAgICBwYXRjaGV3L2Nv
-dmVyLjE0ODIxODcwNTIuZ2l0LmJlbkBza3lwb3J0c3lzdGVtcy5jb20gLT4gcGF0Y2hldy9jb3Zl
-ci4xNDgyMTg3MDUyLmdpdC5iZW5Ac2t5cG9ydHN5c3RlbXMuY29tClN3aXRjaGVkIHRvIGEgbmV3
-IGJyYW5jaCAndGVzdCcKMmQyMzI2YiBody9pMzg2L3BjX3EzNTogYWR2ZXJ0aXNlIGJyb2FkY2Fz
-dCBTTUkgaWYgVkNQVSBob3RwbHVnIGlzIHR1cm5lZCBvZmYKMzQ0M2E2OCBody9pc2EvbHBjX2lj
-aDk6IGFkZCBicm9hZGNhc3QgU01JIGZlYXR1cmUKMzg2MzY0MiBody9pc2EvbHBjX2ljaDk6IGFk
-ZCBTTUkgZmVhdHVyZSBuZWdvdGlhdGlvbiB2aWEgZndfY2ZnCjEyYjJlZmQgaHcvaTM4Ni9wYzog
-aW50cm9kdWNlIDIuOSBtYWNoaW5lIHR5cGVzIHdpdGggMHgyMCBmd19jZmcgZmlsZSBzbG90cwo1
-Mzg3NDIwIGZ3LWNmZzogZXhwb3NlICJmaWxlX3Nsb3RzIiBwYXJhbWV0ZXIgaW4gZndfY2ZnX2lu
-aXRfaW9fZG1hKCkKYzU1MGIyYyBmdy1jZmc6IHR1cm4gRldfQ0ZHX0ZJTEVfU0xPVFMgaW50byBh
-IGRldmljZSBwcm9wZXJ0eQoxZjQwYzg0IGZ3LWNmZzogc3VwcG9ydCB3cml0ZWFibGUgYmxvYnMK
-Cj09PSBPVVRQVVQgQkVHSU4gPT09CkNoZWNraW5nIFBBVENIIDEvNzogZnctY2ZnOiBzdXBwb3J0
-IHdyaXRlYWJsZSBibG9icy4uLgpDaGVja2luZyBQQVRDSCAyLzc6IGZ3LWNmZzogdHVybiBGV19D
-RkdfRklMRV9TTE9UUyBpbnRvIGEgZGV2aWNlIHByb3BlcnR5Li4uCkNoZWNraW5nIFBBVENIIDMv
-NzogZnctY2ZnOiBleHBvc2UgImZpbGVfc2xvdHMiIHBhcmFtZXRlciBpbiBmd19jZmdfaW5pdF9p
-b19kbWEoKS4uLgpDaGVja2luZyBQQVRDSCA0Lzc6IGh3L2kzODYvcGM6IGludHJvZHVjZSAyLjkg
-bWFjaGluZSB0eXBlcyB3aXRoIDB4MjAgZndfY2ZnIGZpbGUgc2xvdHMuLi4KRVJST1I6IE1hY3Jv
-cyB3aXRoIG11bHRpcGxlIHN0YXRlbWVudHMgc2hvdWxkIGJlIGVuY2xvc2VkIGluIGEgZG8gLSB3
-aGlsZSBsb29wCiMxMjY6IEZJTEU6IGluY2x1ZGUvaHcvY29tcGF0Lmg6NDoKKyNkZWZpbmUgSFdf
-Q09NUEFUXzJfOCBcCisgICAge1wKKyAgICAgICAgLmRyaXZlciAgID0gImZ3X2NmZ19tZW0iLFwK
-KyAgICAgICAgLnByb3BlcnR5ID0gImZpbGVfc2xvdHMiLFwKKyAgICAgICAgLnZhbHVlICAgID0g
-c3RyaW5naWZ5KDB4MTApLFwKKyAgICB9LHtcCisgICAgICAgIC5kcml2ZXIgICA9ICJmd19jZmdf
-aW8iLFwKKyAgICAgICAgLnByb3BlcnR5ID0gImZpbGVfc2xvdHMiLFwKKyAgICAgICAgLnZhbHVl
-ICAgID0gc3RyaW5naWZ5KDB4MTApLFwKKyAgICB9LAoKdG90YWw6IDEgZXJyb3JzLCAwIHdhcm5p
-bmdzLCAxMTkgbGluZXMgY2hlY2tlZAoKWW91ciBwYXRjaCBoYXMgc3R5bGUgcHJvYmxlbXMsIHBs
-ZWFzZSByZXZpZXcuICBJZiBhbnkgb2YgdGhlc2UgZXJyb3JzCmFyZSBmYWxzZSBwb3NpdGl2ZXMg
-cmVwb3J0IHRoZW0gdG8gdGhlIG1haW50YWluZXIsIHNlZQpDSEVDS1BBVENIIGluIE1BSU5UQUlO
-RVJTLgoKQ2hlY2tpbmcgUEFUQ0ggNS83OiBody9pc2EvbHBjX2ljaDk6IGFkZCBTTUkgZmVhdHVy
-ZSBuZWdvdGlhdGlvbiB2aWEgZndfY2ZnLi4uCkNoZWNraW5nIFBBVENIIDYvNzogaHcvaXNhL2xw
-Y19pY2g5OiBhZGQgYnJvYWRjYXN0IFNNSSBmZWF0dXJlLi4uCkNoZWNraW5nIFBBVENIIDcvNzog
-aHcvaTM4Ni9wY19xMzU6IGFkdmVydGlzZSBicm9hZGNhc3QgU01JIGlmIFZDUFUgaG90cGx1ZyBp
-cyB0dXJuZWQgb2ZmLi4uCj09PSBPVVRQVVQgRU5EID09PQoKVGVzdCBjb21tYW5kIGV4aXRlZCB3
-aXRoIGNvZGU6IDEKCgotLS0KRW1haWwgZ2VuZXJhdGVkIGF1dG9tYXRpY2FsbHkgYnkgUGF0Y2hl
-dyBbaHR0cDovL3BhdGNoZXcub3JnL10uClBsZWFzZSBzZW5kIHlvdXIgZmVlZGJhY2sgdG8gcGF0
-Y2hldy1kZXZlbEBmcmVlbGlzdHMub3Jn
+On Tue, Dec 20, 2016 at 03:01:17PM -0800, no-reply@patchew.org wrote:
+[...]
+> Checking PATCH 4/7: hw/i386/pc: introduce 2.9 machine types with 0x20 fw_cfg file slots...
+> ERROR: Macros with multiple statements should be enclosed in a do - while loop
+> #126: FILE: include/hw/compat.h:4:
+> +#define HW_COMPAT_2_8 \
+> +    {\
+> +        .driver   = "fw_cfg_mem",\
+> +        .property = "file_slots",\
+> +        .value    = stringify(0x10),\
+> +    },{\
+> +        .driver   = "fw_cfg_io",\
+> +        .property = "file_slots",\
+> +        .value    = stringify(0x10),\
+> +    },
+> 
+> total: 1 errors, 0 warnings, 119 lines checked
+> 
+> Your patch has style problems, please review.  If any of these errors
+> are false positives report them to the maintainer, see
+> CHECKPATCH in MAINTAINERS.
 
+It is a false positive, but how exactly can we fix it? Should it
+become a warning instead of an error?
+
+-- 
+Eduardo

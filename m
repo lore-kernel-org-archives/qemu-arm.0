@@ -1,66 +1,42 @@
-Received: by 10.25.205.13 with SMTP id d13csp3315951lfg;
-        Wed, 21 Dec 2016 10:21:08 -0800 (PST)
-X-Received: by 10.200.40.175 with SMTP id i44mr5828158qti.258.1482344468314;
-        Wed, 21 Dec 2016 10:21:08 -0800 (PST)
+Received: by 10.25.205.13 with SMTP id d13csp3745127lfg;
+        Thu, 22 Dec 2016 06:03:45 -0800 (PST)
+X-Received: by 10.200.43.167 with SMTP id m36mr9657903qtm.117.1482415425607;
+        Thu, 22 Dec 2016 06:03:45 -0800 (PST)
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id q46si15590344qtf.194.2016.12.21.10.21.07
+        by mx.google.com with ESMTPS id w33si17501509qte.320.2016.12.22.06.03.45
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 21 Dec 2016 10:21:08 -0800 (PST)
+        Thu, 22 Dec 2016 06:03:45 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:58442 helo=lists.gnu.org)
+Received: from localhost ([::1]:34391 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1cJlVh-0006Jq-I8
-	for alex.bennee@linaro.org; Wed, 21 Dec 2016 13:21:05 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:52649)
+	id 1cK3yD-0000YA-6H
+	for alex.bennee@linaro.org; Thu, 22 Dec 2016 09:03:45 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:47636)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <ehabkost@redhat.com>) id 1cJlUD-0005dt-Id
-	for qemu-devel@nongnu.org; Wed, 21 Dec 2016 13:19:34 -0500
+	(envelope-from <david.engraf@sysgo.com>) id 1cK3xY-0000Wm-V4
+	for qemu-devel@nongnu.org; Thu, 22 Dec 2016 09:03:05 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <ehabkost@redhat.com>) id 1cJlUC-0006lv-Hd
-	for qemu-devel@nongnu.org; Wed, 21 Dec 2016 13:19:33 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:40308)
+	(envelope-from <david.engraf@sysgo.com>) id 1cK3xY-0005LJ-70
+	for qemu-devel@nongnu.org; Thu, 22 Dec 2016 09:03:04 -0500
+Received: from mail.sysgo.com ([176.9.12.79]:44114)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <ehabkost@redhat.com>)
-	id 1cJlU5-0006ia-UQ; Wed, 21 Dec 2016 13:19:26 -0500
-Received: from int-mx11.intmail.prod.int.phx2.redhat.com
-	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 57B643D951;
-	Wed, 21 Dec 2016 18:19:23 +0000 (UTC)
-Received: from localhost (ovpn-116-3.gru2.redhat.com [10.97.116.3])
-	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id uBLIJLF5004773; Wed, 21 Dec 2016 13:19:22 -0500
-Date: Wed, 21 Dec 2016 16:19:21 -0200
-From: Eduardo Habkost <ehabkost@redhat.com>
-To: Paolo Bonzini <pbonzini@redhat.com>
-Message-ID: <20161221181921.GJ3808@thinpad.lan.raisama.net>
-References: <20161201170624.26496-1-lersek@redhat.com>
-	<148227487620.73.10055858460424473693@790289a7ca88>
-	<20161221152226.GH3808@thinpad.lan.raisama.net>
-	<70b42a58-381d-7011-7eef-2120af178f91@redhat.com>
-	<20161221180155.GI3808@thinpad.lan.raisama.net>
-	<e45bb195-578f-6afc-8617-f75e7775193e@redhat.com>
+	(Exim 4.71) (envelope-from <david.engraf@sysgo.com>)
+	id 1cK3xR-0005Ff-26; Thu, 22 Dec 2016 09:02:57 -0500
+From: David Engraf <david.engraf@sysgo.com>
+To: peter.maydell@linaro.org, qemu-arm@nongnu.org
+Message-ID: <d15e8de4-f7d8-1c28-7e5e-31d0aa10819d@sysgo.com>
+Date: Thu, 22 Dec 2016 15:02:54 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <e45bb195-578f-6afc-8617-f75e7775193e@redhat.com>
-X-Fnord: you can see the fnord
-User-Agent: Mutt/1.7.1 (2016-10-04)
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.30]);
-	Wed, 21 Dec 2016 18:19:24 +0000 (UTC)
+Content-Type: multipart/mixed; boundary="------------8875C6CC09A0B51199EFB81B"
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-devel] checkpatch.pl false positive (was Re: [PATCH v4
- 0/7] q35: add negotiable broadcast SMI)
+X-Received-From: 176.9.12.79
+Subject: [Qemu-devel] [PATCH] vexpress fix flash device-width
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -72,82 +48,49 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
 	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, famz@redhat.com, mst@redhat.com, somlo@cmu.edu,
-	qemu-devel@nongnu.org, Markus Armbruster <armbru@redhat.com>,
-	michael@walle.cc, qemu-arm@nongnu.org, kraxel@redhat.com,
-	zhaoshenglong@huawei.com, imammedo@redhat.com, lersek@redhat.com
+Cc: qemu-devel@nongnu.org
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: KH/lf2xwLO1M
+X-TUID: W1d1Je61Nqeh
 
-On Wed, Dec 21, 2016 at 07:08:29PM +0100, Paolo Bonzini wrote:
-> 
-> 
-> On 21/12/2016 19:01, Eduardo Habkost wrote:
-> > The following code replaces the whole "{ .driver = ... }" block
-> > with "1":
-> > 
-> > 	# Flatten any parentheses and braces
-> > 	while ($dstat =~ s/\([^\(\)]*\)/1/ ||
-> > 	       $dstat =~ s/\{[^\{\}]*\}/1/ ||
-> > 	       $dstat =~ s/\[[^\{\}]*\]/1/)
-> > 	{
-> > 	}
-> 
-> Maybe change it like
-> 
-> - 	       $dstat =~ s/\{[^\{\}]*\}/1/ ||
-> + 	       $dstat =~ s/\{[^\{\}]*;[^\{\}]*\}/1;/ ||
-> 
-> so that it requires a statement?
+This is a multi-part message in MIME format.
+--------------8875C6CC09A0B51199EFB81B
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 7bit
 
-I am not sure the point of this line is to detect multi-statement
-blocks, but to replace other types of expressions containing {}
-that could incorrectly match $exceptions, like:
+The current implementation uses width = 4 and device-width = 2 for the 
+flash configuration. When using u-boot or Linux, the flash is detected 
+as 32 x 16 bit, thus the sector size is doubled to 512 KB. When u-boot 
+sends a sector erase, only the first 256 KB are erased because the QEMU 
+flash implementation uses the configured sector size of 256 KB and 
+ignores the width and device-width ratio.
 
-#define FOO { \
-   Foo f = { .somefield = 1 }; \
-   some_statement(); \
-   another_statement();
-  }
+This patch will change device-width to 4, thus the width and 
+device-width are equal and u-boot detects the flash as 32 x 32 bit with 
+the correct sector size of 256 KB.
 
-In this case, $dstat would become:
-"{ Foo f = 1; some_statement(); another_statement(); }"
+- David
 
 
->                                   It would have a false positive on
-> strings containing a semicolon, but that's not a big deal (or could be
-> fixed by similarly turning strings into just "").
+--------------8875C6CC09A0B51199EFB81B
+Content-Type: text/x-patch;
+ name="vexpress.patch"
+Content-Transfer-Encoding: 7bit
+Content-Disposition: attachment;
+ filename="vexpress.patch"
 
-String contents are already replaced with "XXX" by some other
-code. These are the contents of $dstat:
+diff --git a/hw/arm/vexpress.c b/hw/arm/vexpress.c
+index 58760f4..85ec347 100644
+--- a/hw/arm/vexpress.c
++++ b/hw/arm/vexpress.c
+@@ -526,7 +526,7 @@ static pflash_t *ve_pflash_cfi01_register(hwaddr base, const char *name,
+                          VEXPRESS_FLASH_SIZE / VEXPRESS_FLASH_SECT_SIZE);
+     qdev_prop_set_uint64(dev, "sector-length", VEXPRESS_FLASH_SECT_SIZE);
+     qdev_prop_set_uint8(dev, "width", 4);
+-    qdev_prop_set_uint8(dev, "device-width", 2);
++    qdev_prop_set_uint8(dev, "device-width", 4);
+     qdev_prop_set_bit(dev, "big-endian", false);
+     qdev_prop_set_uint16(dev, "id0", 0x89);
+     qdev_prop_set_uint16(dev, "id1", 0x18);
 
- '{        .driver   = "XXXXXXXXXX",        .property = "XXXXXXXXXX",        .value    = stringify1,    }'
-
-> 
-> Paolo
-> 
-> > The following change fixes the bug, but I don't know if it has
-> > unwanted side-effects:
-> > 
-> > diff --git a/scripts/checkpatch.pl b/scripts/checkpatch.pl
-> > index f084542..0aab3ac 100755
-> > --- a/scripts/checkpatch.pl
-> > +++ b/scripts/checkpatch.pl
-> > @@ -2200,6 +2200,10 @@ sub process {
-> >                         $dstat =~ s/^\s*//s;
-> >                         $dstat =~ s/\s*$//s;
-> >  
-> > +                       # remove braces that cover the whole block, if any:
-> > +                       $dstat =~ s/^\{//;
-> > +                       $dstat =~ s/\}$//;
-> > +
-> >                         # Flatten any parentheses and braces
-> >                         while ($dstat =~ s/\([^\(\)]*\)/1/ ||
-> >                                $dstat =~ s/\{[^\{\}]*\}/1/ ||
-> 
-> 
-> Paolo
-
--- 
-Eduardo
+--------------8875C6CC09A0B51199EFB81B--

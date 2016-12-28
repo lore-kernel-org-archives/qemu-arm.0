@@ -1,216 +1,96 @@
-Received: by 10.25.205.13 with SMTP id d13csp5946931lfg;
-        Tue, 27 Dec 2016 07:54:41 -0800 (PST)
-X-Received: by 10.200.43.120 with SMTP id 53mr28959350qtv.253.1482854081541;
-        Tue, 27 Dec 2016 07:54:41 -0800 (PST)
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 10.25.205.13 with SMTP id d13csp6353981lfg;
+        Wed, 28 Dec 2016 05:14:24 -0800 (PST)
+X-Received: by 10.233.216.71 with SMTP id u68mr38770587qkf.161.1482930864789;
+        Wed, 28 Dec 2016 05:14:24 -0800 (PST)
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id m35si28074188qtc.260.2016.12.27.07.54.40
+        by mx.google.com with ESMTPS id p123si20193005qkd.132.2016.12.28.05.14.24
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 27 Dec 2016 07:54:41 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Wed, 28 Dec 2016 05:14:24 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:54674 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:59199 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1cLu5G-0003UB-UG
-	for alex.bennee@linaro.org; Tue, 27 Dec 2016 10:54:38 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:37593)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1cME3i-0000du-2Z
+	for alex.bennee@linaro.org; Wed, 28 Dec 2016 08:14:22 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:42054)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <vilanova@ac.upc.edu>) id 1cLtot-0006fa-Lm
-	for qemu-devel@nongnu.org; Tue, 27 Dec 2016 10:37:44 -0500
+	(envelope-from <drjones@redhat.com>) id 1cME3b-0000bH-Uo
+	for qemu-arm@nongnu.org; Wed, 28 Dec 2016 08:14:16 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <vilanova@ac.upc.edu>) id 1cLtoq-0007D9-GU
-	for qemu-devel@nongnu.org; Tue, 27 Dec 2016 10:37:43 -0500
-Received: from roura.ac.upc.es ([147.83.33.10]:44908)
-	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <vilanova@ac.upc.edu>)
-	id 1cLtoq-0007Cq-4H; Tue, 27 Dec 2016 10:37:40 -0500
-Received: from gw-3.ac.upc.es (gw-3.ac.upc.es [147.83.30.9])
-	by roura.ac.upc.es (8.13.8/8.13.8) with ESMTP id uBRFbY5J015107;
-	Tue, 27 Dec 2016 16:37:34 +0100
-Received: from localhost (unknown [84.88.51.85])
-	by gw-3.ac.upc.es (Postfix) with ESMTPSA id A3413584;
-	Tue, 27 Dec 2016 16:37:33 +0100 (CET)
-From: =?utf-8?b?TGx1w61z?= Vilanova <vilanova@ac.upc.edu>
-To: qemu-devel@nongnu.org
-Date: Tue, 27 Dec 2016 16:37:33 +0100
-Message-Id: <148285305333.12721.6172513192149853271.stgit@fimbulvetr.bsc.es>
-X-Mailer: git-send-email 2.11.0
-In-Reply-To: <148285303159.12721.5833400768046299304.stgit@fimbulvetr.bsc.es>
-References: <148285303159.12721.5833400768046299304.stgit@fimbulvetr.bsc.es>
-User-Agent: StGit/0.17.1-dirty
+	(envelope-from <drjones@redhat.com>) id 1cME3Y-0004wQ-Pr
+	for qemu-arm@nongnu.org; Wed, 28 Dec 2016 08:14:15 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:49512)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <drjones@redhat.com>)
+	id 1cME3Y-0004wJ-KN; Wed, 28 Dec 2016 08:14:12 -0500
+Received: from int-mx11.intmail.prod.int.phx2.redhat.com
+	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id A77F661B85;
+	Wed, 28 Dec 2016 13:14:11 +0000 (UTC)
+Received: from kamzik.brq.redhat.com (kamzik.brq.redhat.com [10.34.1.143])
+	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id uBSDE8B6017782
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
+	verify=NO); Wed, 28 Dec 2016 08:14:10 -0500
+Date: Wed, 28 Dec 2016 14:14:07 +0100
+From: Andrew Jones <drjones@redhat.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+Message-ID: <20161228131407.mytiexge3cbwrth4@kamzik.brq.redhat.com>
+References: <1481625384-15077-1-git-send-email-peter.maydell@linaro.org>
+	<1481625384-15077-22-git-send-email-peter.maydell@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: quoted-printable
-X-MIME-Autoconverted: from 8bit to quoted-printable by roura.ac.upc.es id
-	uBRFbY5J015107
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6.x [fuzzy]
-X-Received-From: 147.83.33.10
-Subject: [Qemu-devel] [PATCH v3 4/6] target: [tcg] Redefine DISAS_* onto the
- generic translation framework (DJ_*)
-X-BeenThere: qemu-devel@nongnu.org
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <1481625384-15077-22-git-send-email-peter.maydell@linaro.org>
+User-Agent: Mutt/1.6.0.1 (2016-04-01)
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.39]);
+	Wed, 28 Dec 2016 13:14:11 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH 21/23] hw/arm/virt: Support
+ using SMC for PSCI
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
-	Peter Crosthwaite <crosthwaite.peter@gmail.com>,
-	Laurent Vivier <laurent@vivier.eu>, Alexander Graf <agraf@suse.de>,
-	"open list:ARM" <qemu-arm@nongnu.org>,
-	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
-	Paolo Bonzini <pbonzini@redhat.com>, Guan Xuetao <gxt@mprc.pku.edu.cn>,
-	Richard Henderson <rth@twiddle.net>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: BNjGvtiFuWo2
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org,
+	Christoffer Dall <christoffer.dall@linaro.org>, patches@linaro.org
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: BMIOhdRDeXDB
 
-Temporarily redefine DISAS_* values based on DJ_TARGET. They should
-disappear as targets get ported to the generic framework.
+On Tue, Dec 13, 2016 at 10:36:22AM +0000, Peter Maydell wrote:
+> If we are giving the guest a CPU with EL2, it is likely to
+> want to use the HVC instruction itself, for instance for
+> providing PSCI to inner guest VMs. This makes using HVC
+> as the PSCI conduit for the outer QEMU a bad idea. We will
+> want to use SMC instead is this case: this makes sense
+> because QEMU's PSCI implementation is effectively an
+> emulation of functionality provided by EL3 firmware.
+> 
+> Add code to support selecting the PSCI conduit to use,
+> rather than hardcoding use of HVC.
+> 
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> ---
+>  hw/arm/virt.c | 29 ++++++++++++++++++++++-------
+>  1 file changed, 22 insertions(+), 7 deletions(-)
+>
 
-Signed-off-by: Llu=C3=ADs Vilanova <vilanova@ac.upc.edu>
----
- include/exec/exec-all.h      |   11 +++++++----
- target-arm/translate.h       |   15 ++++++++-------
- target-cris/translate.c      |    3 ++-
- target-m68k/translate.c      |    3 ++-
- target-s390x/translate.c     |    3 ++-
- target-unicore32/translate.c |    3 ++-
- 6 files changed, 23 insertions(+), 15 deletions(-)
-
-diff --git a/include/exec/exec-all.h b/include/exec/exec-all.h
-index 0e45e1aedc..75296570b3 100644
---- a/include/exec/exec-all.h
-+++ b/include/exec/exec-all.h
-@@ -36,10 +36,13 @@ typedef ram_addr_t tb_page_addr_t;
- #endif
-=20
- /* is_jmp field values */
--#define DISAS_NEXT    0 /* next instruction can be analyzed */
--#define DISAS_JUMP    1 /* only pc was modified dynamically */
--#define DISAS_UPDATE  2 /* cpu state was modified dynamically */
--#define DISAS_TB_JUMP 3 /* only pc was modified statically */
-+/* TODO: delete after all targets are transitioned to generic translatio=
-n */
-+#include "exec/translate-all_template.h"
-+#define DISAS_NEXT    DJ_NEXT           /* next instruction can be analy=
-zed */
-+#define DISAS_JUMP    (DJ_TARGET+0)     /* only pc was modified dynamica=
-lly */
-+#define DISAS_UPDATE  (DJ_TARGET+1)     /* cpu state was modified dynami=
-cally */
-+#define DISAS_TB_JUMP (DJ_TARGET+2)     /* only pc was modified statical=
-ly */
-+#define DISAS_TARGET  (DJ_TARGET+3)     /* base for target-specific valu=
-es */
-=20
- #include "qemu/log.h"
-=20
-diff --git a/target-arm/translate.h b/target-arm/translate.h
-index 285e96f087..dbe98b7013 100644
---- a/target-arm/translate.h
-+++ b/target-arm/translate.h
-@@ -105,21 +105,22 @@ static inline int default_exception_el(DisasContext=
- *s)
- }
-=20
- /* target-specific extra values for is_jmp */
-+/* TODO: rename as DJ_* when transitioning this target to generic transl=
-ation */
- /* These instructions trap after executing, so the A32/T32 decoder must
-  * defer them until after the conditional execution state has been updat=
-ed.
-  * WFI also needs special handling when single-stepping.
-  */
--#define DISAS_WFI 4
--#define DISAS_SWI 5
-+#define DISAS_WFI DISAS_TARGET + 0
-+#define DISAS_SWI DISAS_TARGET + 1
- /* For instructions which unconditionally cause an exception we can skip
-  * emitting unreachable code at the end of the TB in the A64 decoder
-  */
--#define DISAS_EXC 6
-+#define DISAS_EXC DISAS_TARGET + 2
- /* WFE */
--#define DISAS_WFE 7
--#define DISAS_HVC 8
--#define DISAS_SMC 9
--#define DISAS_YIELD 10
-+#define DISAS_WFE DISAS_TARGET + 3
-+#define DISAS_HVC DISAS_TARGET + 4
-+#define DISAS_SMC DISAS_TARGET + 5
-+#define DISAS_YIELD DISAS_TARGET + 6
-=20
- #ifdef TARGET_AARCH64
- void a64_translate_init(void);
-diff --git a/target-cris/translate.c b/target-cris/translate.c
-index ebcf7863bf..f8512181e0 100644
---- a/target-cris/translate.c
-+++ b/target-cris/translate.c
-@@ -50,7 +50,8 @@
- #define BUG() (gen_BUG(dc, __FILE__, __LINE__))
- #define BUG_ON(x) ({if (x) BUG();})
-=20
--#define DISAS_SWI 5
-+/* TODO: rename as DJ_* when transitioning this target to generic transl=
-ation */
-+#define DISAS_SWI DISAS_TARGET + 0
-=20
- /* Used by the decoder.  */
- #define EXTRACT_FIELD(src, start, end) \
-diff --git a/target-m68k/translate.c b/target-m68k/translate.c
-index 6da6f2b51b..a235fbbaa8 100644
---- a/target-m68k/translate.c
-+++ b/target-m68k/translate.c
-@@ -143,7 +143,8 @@ typedef struct DisasContext {
-     int done_mac;
- } DisasContext;
-=20
--#define DISAS_JUMP_NEXT 4
-+/* TODO: rename as DJ_* when transitioning this target to generic transl=
-ation */
-+#define DISAS_JUMP_NEXT DISAS_TARGET + 0
-=20
- #if defined(CONFIG_USER_ONLY)
- #define IS_USER(s) 1
-diff --git a/target-s390x/translate.c b/target-s390x/translate.c
-index a3992dae5a..afc77c9390 100644
---- a/target-s390x/translate.c
-+++ b/target-s390x/translate.c
-@@ -74,7 +74,8 @@ typedef struct {
-     } u;
- } DisasCompare;
-=20
--#define DISAS_EXCP 4
-+/* TODO: rename as DJ_* when transitioning this target to generic transl=
-ation */
-+#define DISAS_EXCP DISAS_TARGET + 0
-=20
- #ifdef DEBUG_INLINE_BRANCHES
- static uint64_t inline_branch_hit[CC_OP_MAX];
-diff --git a/target-unicore32/translate.c b/target-unicore32/translate.c
-index 39eaa76b50..8edabf0967 100644
---- a/target-unicore32/translate.c
-+++ b/target-unicore32/translate.c
-@@ -45,9 +45,10 @@ typedef struct DisasContext {
- #define IS_USER(s)      1
- #endif
-=20
-+/* TODO: rename as DJ_* when transitioning this target to generic transl=
-ation */
- /* These instructions trap after executing, so defer them until after th=
-e
-    conditional executions state has been updated.  */
--#define DISAS_SYSCALL 5
-+#define DISAS_SYSCALL DISAS_TARGET + 0
-=20
- static TCGv_env cpu_env;
- static TCGv_i32 cpu_R[32];
-
+Reviewed-by: Andrew Jones <drjones@redhat.com> 

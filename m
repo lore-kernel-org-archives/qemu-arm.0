@@ -1,66 +1,40 @@
-Received: by 10.25.205.13 with SMTP id d13csp8493479lfg;
-        Mon, 2 Jan 2017 09:33:53 -0800 (PST)
-X-Received: by 10.55.221.151 with SMTP id u23mr57427911qku.315.1483378433023;
-        Mon, 02 Jan 2017 09:33:53 -0800 (PST)
+Received: by 10.25.205.13 with SMTP id d13csp8502104lfg;
+        Mon, 2 Jan 2017 10:03:04 -0800 (PST)
+X-Received: by 10.200.45.211 with SMTP id q19mr45055870qta.115.1483380184239;
+        Mon, 02 Jan 2017 10:03:04 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id 21si31221704qkj.43.2017.01.02.09.33.52
+        by mx.google.com with ESMTPS id m30si30143197qkh.10.2017.01.02.10.03.03
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 02 Jan 2017 09:33:53 -0800 (PST)
+        Mon, 02 Jan 2017 10:03:04 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:58271 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:58372 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1cO6UY-0001zl-9X
-	for alex.bennee@linaro.org; Mon, 02 Jan 2017 12:33:50 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:35768)
+	id 1cO6wn-0007gk-Jo
+	for alex.bennee@linaro.org; Mon, 02 Jan 2017 13:03:01 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:42750)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mar.krzeminski@gmail.com>) id 1cO6UT-0001zT-Cq
-	for qemu-arm@nongnu.org; Mon, 02 Jan 2017 12:33:47 -0500
+	(envelope-from <clg@kaod.org>) id 1cO6wh-0007eY-7N
+	for qemu-arm@nongnu.org; Mon, 02 Jan 2017 13:02:57 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mar.krzeminski@gmail.com>) id 1cO6UP-0006P7-Ab
-	for qemu-arm@nongnu.org; Mon, 02 Jan 2017 12:33:45 -0500
-Received: from mail-lf0-x243.google.com ([2a00:1450:4010:c07::243]:35982)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <mar.krzeminski@gmail.com>)
-	id 1cO6UO-0006Oz-Us; Mon, 02 Jan 2017 12:33:41 -0500
-Received: by mail-lf0-x243.google.com with SMTP id t196so23916085lff.3;
-	Mon, 02 Jan 2017 09:33:39 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=subject:to:references:cc:from:message-id:date:user-agent
-	:mime-version:in-reply-to:content-transfer-encoding;
-	bh=F295ki3/urfLjQxeqlSCR4w/oVFHn7yuvSCSyQ9m8kk=;
-	b=hoeJ3L5R6tw7B3AyozWaz7YO8wmwEuRSkDzhqkIucKdg9c9zmJeNkZ6p82aXvaq9ME
-	uxMM5oincKUdKpWdm9AStQxDWELpUt10M51NrClVNwm05fopUt2ZYt6cWNjLqbCbBZ4h
-	/mGzjM4ap+zL7pSYS3LHBz9bhv3FW80bv/T5pGBOoeKN7iZqxZvtenr002otd6drOdKJ
-	WSWmwDDW9eQ5pnWgGgX0lWxiNuI8iIIPrYx8+Bf85qfvwEy7ACK5RQdkpCfqcDA2Y0HX
-	1mFWNOM5tFNu9bgUCAKYMB29vGhLD7M3qK9NS2jUM3eCv8uq8Gvej930lfZaPJ4nVdfl
-	o1tw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:subject:to:references:cc:from:message-id:date
-	:user-agent:mime-version:in-reply-to:content-transfer-encoding;
-	bh=F295ki3/urfLjQxeqlSCR4w/oVFHn7yuvSCSyQ9m8kk=;
-	b=p+KETGFs/TESZAyET5nxoG/MS6mBzrYaz57KMJ69QzeBfYqSlZ2BjKtfAwOPuVGIcA
-	8O4uEBtoqFizehVoI3BciGNsjL2JugWPWtV4Q5X7JON/lyWmId+zt2Ysv/0q0QCqd60R
-	JfkQFK6y3T6hVeWqAKpHDiH7oUwUidUbC4QvuZJpIW2JWky+mupQ/Y7qGtQRVgC0ACNe
-	2tVCu2d1owkThuauPXrmbj6UUjs9NkOlJ4fbpQqrpULsXuRr2HRRCQEj0CbBhzRILNg3
-	Rbz/sSQCerAx9cm7g5KHGLiYsV63/NITGCDnNPYZOqayp/T3jNC6ymplO7SN5PKrEjEY
-	Twng==
-X-Gm-Message-State: AIkVDXI/mujDE8F1nFzXg3kVDAOVqMeyJIgA18mOmFHyPcfJBZhJIQOGzsjYZ29uvangiQ==
-X-Received: by 10.46.13.9 with SMTP id 9mr21228703ljn.37.1483378417756;
-	Mon, 02 Jan 2017 09:33:37 -0800 (PST)
-Received: from [192.168.1.50] (staticline-31-183-20-7.toya.net.pl.
-	[31.183.20.7])
-	by smtp.gmail.com with ESMTPSA id e6sm8902947lji.34.2017.01.02.09.33.36
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Mon, 02 Jan 2017 09:33:36 -0800 (PST)
-To: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
+	(envelope-from <clg@kaod.org>) id 1cO6we-0008Px-2Y
+	for qemu-arm@nongnu.org; Mon, 02 Jan 2017 13:02:55 -0500
+Received: from 12.mo5.mail-out.ovh.net ([46.105.39.65]:40466)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <clg@kaod.org>) id 1cO6wd-0008PX-Os
+	for qemu-arm@nongnu.org; Mon, 02 Jan 2017 13:02:52 -0500
+Received: from player760.ha.ovh.net (b9.ovh.net [213.186.33.59])
+	by mo5.mail-out.ovh.net (Postfix) with ESMTP id DB8C65D493
+	for <qemu-arm@nongnu.org>; Mon,  2 Jan 2017 19:02:49 +0100 (CET)
+Received: from hermes.kaod.org (LFbn-1-2234-107.w90-76.abo.wanadoo.fr
+	[90.76.55.107]) (Authenticated sender: postmaster@kaod.org)
+	by player760.ha.ovh.net (Postfix) with ESMTPSA id 51AA6302;
+	Mon,  2 Jan 2017 19:02:43 +0100 (CET)
+To: "mar.krzeminski" <mar.krzeminski@gmail.com>,
 	Peter Maydell <peter.maydell@linaro.org>
 References: <1480434248-27138-1-git-send-email-clg@kaod.org>
 	<1480434248-27138-18-git-send-email-clg@kaod.org>
@@ -68,17 +42,23 @@ References: <1480434248-27138-1-git-send-email-clg@kaod.org>
 	<27bcad02-54fc-dbf9-f5f9-5b178ddb2ddd@kaod.org>
 	<212a15c5-565c-434a-1387-250fa8f8f559@gmail.com>
 	<9a5a321f-0d5e-d798-07c2-ad30c29d6a1d@kaod.org>
-From: "mar.krzeminski" <mar.krzeminski@gmail.com>
-Message-ID: <c6b1e60f-e0e9-f9a0-0e36-c82443191a6d@gmail.com>
-Date: Mon, 2 Jan 2017 18:33:35 +0100
+	<c6b1e60f-e0e9-f9a0-0e36-c82443191a6d@gmail.com>
+From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
+Message-ID: <d4b65172-e4f6-a379-11c7-0565479c2bdb@kaod.org>
+Date: Mon, 2 Jan 2017 19:02:42 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
 	Thunderbird/45.5.1
 MIME-Version: 1.0
-In-Reply-To: <9a5a321f-0d5e-d798-07c2-ad30c29d6a1d@kaod.org>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 8bit
+In-Reply-To: <c6b1e60f-e0e9-f9a0-0e36-c82443191a6d@gmail.com>
+Content-Type: text/plain; charset=utf-8
+X-Ovh-Tracer-Id: 10793157984817417136
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrfeelgedruddugdekhecutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmd
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2a00:1450:4010:c07::243
+	[fuzzy]
+X-Received-From: 46.105.39.65
 Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH for-2.9 17/30] aspeed/smc:
  handle SPI flash Command mode
 X-BeenThere: qemu-arm@nongnu.org
@@ -93,326 +73,384 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Andrew Jeffery <andrew@aj.id.au>, qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org, mar.krzeminski@gmail.com
+	qemu-devel@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Uy00jkWSTZdj
+X-TUID: SG+c1lmPlLd7
 
-Hello Cedric,
-
-W dniu 02.01.2017 o 16:56, Cédric Le Goater pisze:
-> Hello Marcin,
->
-> On 12/05/2016 04:33 PM, mar.krzeminski wrote:
+On 01/02/2017 06:33 PM, mar.krzeminski wrote:
+> Hello Cedric,
+>=20
+> W dniu 02.01.2017 o 16:56, C=C3=A9dric Le Goater pisze:
+>> Hello Marcin,
 >>
->> W dniu 05.12.2016 o 15:07, Cédric Le Goater pisze:
->>> On 12/04/2016 05:31 PM, mar.krzeminski wrote:
->>>> Hi Cedric,
+>> On 12/05/2016 04:33 PM, mar.krzeminski wrote:
+>>>
+>>> W dniu 05.12.2016 o 15:07, C=C3=A9dric Le Goater pisze:
+>>>> On 12/04/2016 05:31 PM, mar.krzeminski wrote:
+>>>>> Hi Cedric,
+>>>>>
+>>>>> Since there is no public datasheet user guide for SMC I would ask s=
+ome question
+>>>>> regarding HW itself because I got impression that you are implement=
+ing in this
+>>>>> model a part functionality that is done by Bootrom.
+>>>>>
+>>>>> W dniu 29.11.2016 o 16:43, C=C3=A9dric Le Goater pisze:
+>>>>>> The Aspeed SMC controllers have a mode (Command mode) in which
+>>>>>> accesses to the flash content are no different than doing MMIOs. T=
+he
+>>>>>> controller generates all the necessary commands to load (or store)
+>>>>>> data in memory.
+>>>>>>
+>>>>>> However, accesses are restricted to the segment window assigned th=
+e
+>>>>>> the flash module by the controller. This window is defined by the
+>>>>>> Segment Address Register.
+>>>>>>
+>>>>>> Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
+>>>>>> Reviewed-by: Andrew Jeffery <andrew@aj.id.au>
+>>>>>> ---
+>>>>>>   hw/ssi/aspeed_smc.c | 174 ++++++++++++++++++++++++++++++++++++++=
+++++++++++----
+>>>>>>   1 file changed, 162 insertions(+), 12 deletions(-)
+>>>>>>
+>>>>>> diff --git a/hw/ssi/aspeed_smc.c b/hw/ssi/aspeed_smc.c
+>>>>>> index 72a44150b0a1..eec087199a22 100644
+>>>>>> --- a/hw/ssi/aspeed_smc.c
+>>>>>> +++ b/hw/ssi/aspeed_smc.c
+>>>>>> @@ -69,6 +69,7 @@
+>>>>>>   #define R_CTRL0           (0x10 / 4)
+>>>>>>   #define   CTRL_CMD_SHIFT           16
+>>>>>>   #define   CTRL_CMD_MASK            0xff
+>>>>>> +#define   CTRL_AST2400_SPI_4BYTE   (1 << 13)
+>>>>>>   #define   CTRL_CE_STOP_ACTIVE      (1 << 2)
+>>>>>>   #define   CTRL_CMD_MODE_MASK       0x3
+>>>>>>   #define     CTRL_READMODE          0x0
+>>>>>> @@ -135,6 +136,16 @@
+>>>>>>   #define ASPEED_SOC_SPI_FLASH_BASE   0x30000000
+>>>>>>   #define ASPEED_SOC_SPI2_FLASH_BASE  0x38000000
+>>>>>>   +/* Flash opcodes. */
+>>>>>> +#define SPI_OP_READ       0x03    /* Read data bytes (low frequen=
+cy) */
+>>>>>> +#define SPI_OP_WRDI       0x04    /* Write disable */
+>>>>>> +#define SPI_OP_RDSR       0x05    /* Read status register */
+>>>>>> +#define SPI_OP_WREN       0x06    /* Write enable */
+>>>>> Are you sure that the controller is aware af all above commands (es=
+pecially WD/WE and RDS)?
+>>>> HW is aware of SPI_OP_READ which is the default command for the
+>>>> "normal" read mode. For other modes, fast and write, the command
+>>>> op is configured in the CEx Control Register.
 >>>>
->>>> Since there is no public datasheet user guide for SMC I would ask some question
->>>> regarding HW itself because I got impression that you are implementing in this
->>>> model a part functionality that is done by Bootrom.
+>>>> These ops are used in the model :
 >>>>
->>>> W dniu 29.11.2016 o 16:43, Cédric Le Goater pisze:
->>>>> The Aspeed SMC controllers have a mode (Command mode) in which
->>>>> accesses to the flash content are no different than doing MMIOs. The
->>>>> controller generates all the necessary commands to load (or store)
->>>>> data in memory.
->>>>>
->>>>> However, accesses are restricted to the segment window assigned the
->>>>> the flash module by the controller. This window is defined by the
->>>>> Segment Address Register.
->>>>>
->>>>> Signed-off-by: Cédric Le Goater <clg@kaod.org>
->>>>> Reviewed-by: Andrew Jeffery <andrew@aj.id.au>
->>>>> ---
->>>>>   hw/ssi/aspeed_smc.c | 174 ++++++++++++++++++++++++++++++++++++++++++++++++----
->>>>>   1 file changed, 162 insertions(+), 12 deletions(-)
->>>>>
->>>>> diff --git a/hw/ssi/aspeed_smc.c b/hw/ssi/aspeed_smc.c
->>>>> index 72a44150b0a1..eec087199a22 100644
->>>>> --- a/hw/ssi/aspeed_smc.c
->>>>> +++ b/hw/ssi/aspeed_smc.c
->>>>> @@ -69,6 +69,7 @@
->>>>>   #define R_CTRL0           (0x10 / 4)
->>>>>   #define   CTRL_CMD_SHIFT           16
->>>>>   #define   CTRL_CMD_MASK            0xff
->>>>> +#define   CTRL_AST2400_SPI_4BYTE   (1 << 13)
->>>>>   #define   CTRL_CE_STOP_ACTIVE      (1 << 2)
->>>>>   #define   CTRL_CMD_MODE_MASK       0x3
->>>>>   #define     CTRL_READMODE          0x0
->>>>> @@ -135,6 +136,16 @@
->>>>>   #define ASPEED_SOC_SPI_FLASH_BASE   0x30000000
->>>>>   #define ASPEED_SOC_SPI2_FLASH_BASE  0x38000000
->>>>>   
->>>>> +/* Flash opcodes. */
->>>>> +#define SPI_OP_READ       0x03    /* Read data bytes (low frequency) */
->>>>> +#define SPI_OP_WRDI       0x04    /* Write disable */
->>>>> +#define SPI_OP_RDSR       0x05    /* Read status register */
->>>>> +#define SPI_OP_WREN       0x06    /* Write enable */
->>>> Are you sure that the controller is aware af all above commands (especially WD/WE and RDS)?
->>> HW is aware of SPI_OP_READ which is the default command for the
->>> "normal" read mode. For other modes, fast and write, the command
->>> op is configured in the CEx Control Register.
->>>
->>> These ops are used in the model :
->>>
->>>   * SPI_OP_READ_FAST, for dummies
->>>   * SPI_OP_EN4B, might be useless if we expect software to send
->>>     this command before using this mode.
->>>   * SPI_OP_WREN, same comment.
->>>
->>> The rest I should remove as it is unused.
->> I think only SPI_OP_READ should stay in the model, rest goes to guest.
-> Well, we will need at least one 'EN4B' command to be sent for the qemu
-> flash model to work. If the underlying m25p80 object does not know
-> about the address width, the expected number of bytes will be wrong and
-> the result bogus.
-Hmm, most of the flash I know by default use 3byte address mode.
-What flash are you connecting to model. Do you have same on HW?
->
-> Same remark for the WREN, if the m25p80 object is not write enabled,
-> modifying the flash content won't work.
-Same as above.
+>>>>   * SPI_OP_READ_FAST, for dummies
+>>>>   * SPI_OP_EN4B, might be useless if we expect software to send
+>>>>     this command before using this mode.
+>>>>   * SPI_OP_WREN, same comment.
+>>>>
+>>>> The rest I should remove as it is unused.
+>>> I think only SPI_OP_READ should stay in the model, rest goes to guest=
+.
+>> Well, we will need at least one 'EN4B' command to be sent for the qemu
+>> flash model to work. If the underlying m25p80 object does not know
+>> about the address width, the expected number of bytes will be wrong an=
+d
+>> the result bogus.
+> Hmm, most of the flash I know by default use 3byte address mode.
+> What flash are you connecting to model.
+
+chips like n25q256a, mx25l25635e, w25q256. all are > 32MB.
+
+> Do you have same on HW?
+
+No but it is difficult to know what the controller is doing=20
+in that mode without spying on the bus.=20
+
+Anyhow, after some experiments, I think you are right and=20
+I should  get rid of these command OP in the next version.=20
+
+What about the dummy cycles ? the linux driver now has=20
+support for it and it would be nice to get some support
+in qemu also.
 
 Thanks,
-Marcin
->
-> Thanks,
->
-> C.
->
->>>>> +
->>>>> +/* Used for Macronix and Winbond flashes. */
->>>>> +#define SPI_OP_EN4B       0xb7    /* Enter 4-byte mode */
->>>>> +#define SPI_OP_EX4B       0xe9    /* Exit 4-byte mode */
->>>>> +
->>>> Same as above but I think 4byte address mode bit changes onlu nymber of bytes
->>>> that is sent after instruction.
->>>>
->>>>>   /*
->>>>>    * Default segments mapping addresses and size for each slave per
->>>>>    * controller. These can be changed when board is initialized with the
->>>>> @@ -357,6 +368,98 @@ static inline bool aspeed_smc_is_writable(const AspeedSMCFlash *fl)
->>>>>       return s->regs[s->r_conf] & (1 << (s->conf_enable_w0 + fl->id));
->>>>>   }
->>>>>   
->>>>> +static inline int aspeed_smc_flash_cmd(const AspeedSMCFlash *fl)
->>>>> +{
->>>>> +    AspeedSMCState *s = fl->controller;
->>>>> +    int cmd = (s->regs[s->r_ctrl0 + fl->id] >> CTRL_CMD_SHIFT) & CTRL_CMD_MASK;
->>>>> +
->>>>> +    /* This is the default value for read mode. In other modes, the
->>>>> +     * command should be defined */
->>>>> +    if (aspeed_smc_flash_mode(fl) == CTRL_READMODE) {
->>>>> +        cmd = SPI_OP_READ;
->>>>> +    }
->>>>> +
->>>>> +    if (!cmd) {
->>>> cmd == 0 => NOP command for some flash (eg. mx66l1g45g).
->>> So I should use another default value, OxFF ?
->> I believe this check is not needed at all because m25p80c will tell if it has
->> unsupported instruction and HW should accept all register values, isn't it?
->>>>> +        qemu_log_mask(LOG_GUEST_ERROR, "%s: no command defined for mode %d\n",
->>>>> +                      __func__, aspeed_smc_flash_mode(fl));
->>>>> +    }
->>>>> +
->>>>> +    return cmd;
->>>>> +}
->>>>> +
->>>>> +static inline int aspeed_smc_flash_is_4byte(const AspeedSMCFlash *fl)
->>>>> +{
->>>>> +    AspeedSMCState *s = fl->controller;
->>>>> +
->>>>> +    if (s->ctrl->segments == aspeed_segments_spi) {
->>>>> +        return s->regs[s->r_ctrl0] & CTRL_AST2400_SPI_4BYTE;
->>>>> +    } else {
->>>>> +        return s->regs[s->r_ce_ctrl] & (1 << (CTRL_EXTENDED0 + fl->id));
->>>>> +    }
->>>>> +}
->>>>> +
->>>>> +static void aspeed_smc_flash_select(const AspeedSMCFlash *fl)
->>>>> +{
->>>>> +    AspeedSMCState *s = fl->controller;
->>>>> +
->>>>> +    s->regs[s->r_ctrl0 + fl->id] &= ~CTRL_CE_STOP_ACTIVE;
->>>>> +    qemu_set_irq(s->cs_lines[fl->id], aspeed_smc_is_ce_stop_active(fl));
->>>>> +}
->>>>> +
->>>>> +static void aspeed_smc_flash_unselect(const AspeedSMCFlash *fl)
->>>>> +{
->>>>> +    AspeedSMCState *s = fl->controller;
->>>>> +
->>>>> +    s->regs[s->r_ctrl0 + fl->id] |= CTRL_CE_STOP_ACTIVE;
->>>>> +    qemu_set_irq(s->cs_lines[fl->id], aspeed_smc_is_ce_stop_active(fl));
->>>>> +}
->>>>> +
->>>>> +static uint32_t aspeed_smc_check_segment_addr(AspeedSMCFlash *fl, uint32_t addr)
->>>>> +{
->>>>> +    AspeedSMCState *s = fl->controller;
->>>>> +    AspeedSegments seg;
->>>>> +
->>>>> +    aspeed_smc_reg_to_segment(s->regs[R_SEG_ADDR0 + fl->id], &seg);
->>>>> +    if ((addr & (seg.size - 1)) != addr) {
->>>>> +        qemu_log_mask(LOG_GUEST_ERROR,
->>>>> +                      "%s: invalid address 0x%08x for CS%d segment : "
->>>>> +                      "[ 0x%"HWADDR_PRIx" - 0x%"HWADDR_PRIx" ]\n",
->>>>> +                      s->ctrl->name, addr, fl->id, seg.addr,
->>>>> +                      seg.addr + seg.size);
->>>>> +    }
->>>>> +
->>>>> +    addr &= seg.size - 1;
->>>>> +    return addr;
->>>>> +}
->>>>> +
->>>>> +static void aspeed_smc_flash_setup_read(AspeedSMCFlash *fl, uint32_t addr)
->>>>> +{
->>>>> +    AspeedSMCState *s = fl->controller;
->>>>> +    uint8_t cmd = aspeed_smc_flash_cmd(fl);
->>>>> +
->>>>> +    /*
->>>>> +     * To be checked: I am not sure the Aspeed SPI controller needs to
->>>>> +     * enable writes when running in READ/FREAD command mode
->>>>> +     */
->>>>> +
->>>>> +    /* access can not exceed CS segment */
->>>>> +    addr = aspeed_smc_check_segment_addr(fl, addr);
->>>>> +
->>>>> +    /* TODO: do we have to send 4BYTE each time ? */
->>>> I am not aware of any flash that needs that, this  command should be send only once.
->>> yes. That is what I think also.
->>>
->>> it also means that a preliminary 4BYTE command should be
->>> sent before using that mode.
->> Generally there are two ways to access more than 16MiB in flash:
->> - 4byte address mode: all commands change to accept 4byte address, not supported by all flash devices.
->> - 4byte opcodes: different opcode is used to signal 4-byte long address (eg. 0x3 three bytes, 0x13 four).
->> Also not all flash support that. If the HW does not use any of those, ones should be removed from this model.
+
+C. =20
+
 >>
->>>> I also think that HW does not send this command (see above comment).
->>>>
->>>>> +    if (aspeed_smc_flash_is_4byte(fl)) {
->>>>> +        ssi_transfer(s->spi, SPI_OP_EN4B);
->>>>> +    }
->>>>> +
->>>>> +    ssi_transfer(s->spi, cmd);
->>>>> +
->>>>> +    if (aspeed_smc_flash_is_4byte(fl)) {
->>>>> +        ssi_transfer(s->spi, (addr >> 24) & 0xff);
->>>>> +    }
->>>>> +    ssi_transfer(s->spi, (addr >> 16) & 0xff);
->>>>> +    ssi_transfer(s->spi, (addr >> 8) & 0xff);
->>>>> +    ssi_transfer(s->spi, (addr & 0xff));
->>>>> +}
->>>>> +
->>>>>   static uint64_t aspeed_smc_flash_read(void *opaque, hwaddr addr, unsigned size)
->>>>>   {
->>>>>       AspeedSMCFlash *fl = opaque;
->>>>> @@ -364,19 +467,55 @@ static uint64_t aspeed_smc_flash_read(void *opaque, hwaddr addr, unsigned size)
->>>>>       uint64_t ret = 0;
->>>>>       int i;
->>>>>   
->>>>> -    if (aspeed_smc_is_usermode(fl)) {
->>>>> +    switch (aspeed_smc_flash_mode(fl)) {
->>>>> +    case CTRL_USERMODE:
->>>>>           for (i = 0; i < size; i++) {
->>>>>               ret |= ssi_transfer(s->spi, 0x0) << (8 * i);
->>>>>           }
->>>>> -    } else {
->>>>> -        qemu_log_mask(LOG_UNIMP, "%s: usermode not implemented\n",
->>>>> -                      __func__);
->>>>> -        ret = -1;
->>>>> +        break;
->>>>> +    case CTRL_READMODE:
->>>>> +    case CTRL_FREADMODE:
->>>> CTRL_FREADMODE should not sent dummy bytes?
->>> yes it should. this is in a following patch.
->> Yes, I noticed that after sending this email :)
+>> Same remark for the WREN, if the m25p80 object is not write enabled,
+>> modifying the flash content won't work.
+> Same as above.
+>=20
+> Thanks,
+> Marcin
 >>
 >> Thanks,
->> Marcin
+>>
+>> C.
+>>
+>>>>>> +
+>>>>>> +/* Used for Macronix and Winbond flashes. */
+>>>>>> +#define SPI_OP_EN4B       0xb7    /* Enter 4-byte mode */
+>>>>>> +#define SPI_OP_EX4B       0xe9    /* Exit 4-byte mode */
+>>>>>> +
+>>>>> Same as above but I think 4byte address mode bit changes onlu nymbe=
+r of bytes
+>>>>> that is sent after instruction.
+>>>>>
+>>>>>>   /*
+>>>>>>    * Default segments mapping addresses and size for each slave pe=
+r
+>>>>>>    * controller. These can be changed when board is initialized wi=
+th the
+>>>>>> @@ -357,6 +368,98 @@ static inline bool aspeed_smc_is_writable(con=
+st AspeedSMCFlash *fl)
+>>>>>>       return s->regs[s->r_conf] & (1 << (s->conf_enable_w0 + fl->i=
+d));
+>>>>>>   }
+>>>>>>   +static inline int aspeed_smc_flash_cmd(const AspeedSMCFlash *fl=
+)
+>>>>>> +{
+>>>>>> +    AspeedSMCState *s =3D fl->controller;
+>>>>>> +    int cmd =3D (s->regs[s->r_ctrl0 + fl->id] >> CTRL_CMD_SHIFT) =
+& CTRL_CMD_MASK;
+>>>>>> +
+>>>>>> +    /* This is the default value for read mode. In other modes, t=
+he
+>>>>>> +     * command should be defined */
+>>>>>> +    if (aspeed_smc_flash_mode(fl) =3D=3D CTRL_READMODE) {
+>>>>>> +        cmd =3D SPI_OP_READ;
+>>>>>> +    }
+>>>>>> +
+>>>>>> +    if (!cmd) {
+>>>>> cmd =3D=3D 0 =3D> NOP command for some flash (eg. mx66l1g45g).
+>>>> So I should use another default value, OxFF ?
+>>> I believe this check is not needed at all because m25p80c will tell i=
+f it has
+>>> unsupported instruction and HW should accept all register values, isn=
+'t it?
+>>>>>> +        qemu_log_mask(LOG_GUEST_ERROR, "%s: no command defined fo=
+r mode %d\n",
+>>>>>> +                      __func__, aspeed_smc_flash_mode(fl));
+>>>>>> +    }
+>>>>>> +
+>>>>>> +    return cmd;
+>>>>>> +}
+>>>>>> +
+>>>>>> +static inline int aspeed_smc_flash_is_4byte(const AspeedSMCFlash =
+*fl)
+>>>>>> +{
+>>>>>> +    AspeedSMCState *s =3D fl->controller;
+>>>>>> +
+>>>>>> +    if (s->ctrl->segments =3D=3D aspeed_segments_spi) {
+>>>>>> +        return s->regs[s->r_ctrl0] & CTRL_AST2400_SPI_4BYTE;
+>>>>>> +    } else {
+>>>>>> +        return s->regs[s->r_ce_ctrl] & (1 << (CTRL_EXTENDED0 + fl=
+->id));
+>>>>>> +    }
+>>>>>> +}
+>>>>>> +
+>>>>>> +static void aspeed_smc_flash_select(const AspeedSMCFlash *fl)
+>>>>>> +{
+>>>>>> +    AspeedSMCState *s =3D fl->controller;
+>>>>>> +
+>>>>>> +    s->regs[s->r_ctrl0 + fl->id] &=3D ~CTRL_CE_STOP_ACTIVE;
+>>>>>> +    qemu_set_irq(s->cs_lines[fl->id], aspeed_smc_is_ce_stop_activ=
+e(fl));
+>>>>>> +}
+>>>>>> +
+>>>>>> +static void aspeed_smc_flash_unselect(const AspeedSMCFlash *fl)
+>>>>>> +{
+>>>>>> +    AspeedSMCState *s =3D fl->controller;
+>>>>>> +
+>>>>>> +    s->regs[s->r_ctrl0 + fl->id] |=3D CTRL_CE_STOP_ACTIVE;
+>>>>>> +    qemu_set_irq(s->cs_lines[fl->id], aspeed_smc_is_ce_stop_activ=
+e(fl));
+>>>>>> +}
+>>>>>> +
+>>>>>> +static uint32_t aspeed_smc_check_segment_addr(AspeedSMCFlash *fl,=
+ uint32_t addr)
+>>>>>> +{
+>>>>>> +    AspeedSMCState *s =3D fl->controller;
+>>>>>> +    AspeedSegments seg;
+>>>>>> +
+>>>>>> +    aspeed_smc_reg_to_segment(s->regs[R_SEG_ADDR0 + fl->id], &seg=
+);
+>>>>>> +    if ((addr & (seg.size - 1)) !=3D addr) {
+>>>>>> +        qemu_log_mask(LOG_GUEST_ERROR,
+>>>>>> +                      "%s: invalid address 0x%08x for CS%d segmen=
+t : "
+>>>>>> +                      "[ 0x%"HWADDR_PRIx" - 0x%"HWADDR_PRIx" ]\n"=
+,
+>>>>>> +                      s->ctrl->name, addr, fl->id, seg.addr,
+>>>>>> +                      seg.addr + seg.size);
+>>>>>> +    }
+>>>>>> +
+>>>>>> +    addr &=3D seg.size - 1;
+>>>>>> +    return addr;
+>>>>>> +}
+>>>>>> +
+>>>>>> +static void aspeed_smc_flash_setup_read(AspeedSMCFlash *fl, uint3=
+2_t addr)
+>>>>>> +{
+>>>>>> +    AspeedSMCState *s =3D fl->controller;
+>>>>>> +    uint8_t cmd =3D aspeed_smc_flash_cmd(fl);
+>>>>>> +
+>>>>>> +    /*
+>>>>>> +     * To be checked: I am not sure the Aspeed SPI controller nee=
+ds to
+>>>>>> +     * enable writes when running in READ/FREAD command mode
+>>>>>> +     */
+>>>>>> +
+>>>>>> +    /* access can not exceed CS segment */
+>>>>>> +    addr =3D aspeed_smc_check_segment_addr(fl, addr);
+>>>>>> +
+>>>>>> +    /* TODO: do we have to send 4BYTE each time ? */
+>>>>> I am not aware of any flash that needs that, this  command should b=
+e send only once.
+>>>> yes. That is what I think also.
+>>>>
+>>>> it also means that a preliminary 4BYTE command should be
+>>>> sent before using that mode.
+>>> Generally there are two ways to access more than 16MiB in flash:
+>>> - 4byte address mode: all commands change to accept 4byte address, no=
+t supported by all flash devices.
+>>> - 4byte opcodes: different opcode is used to signal 4-byte long addre=
+ss (eg. 0x3 three bytes, 0x13 four).
+>>> Also not all flash support that. If the HW does not use any of those,=
+ ones should be removed from this model.
+>>>
+>>>>> I also think that HW does not send this command (see above comment)=
+.
+>>>>>
+>>>>>> +    if (aspeed_smc_flash_is_4byte(fl)) {
+>>>>>> +        ssi_transfer(s->spi, SPI_OP_EN4B);
+>>>>>> +    }
+>>>>>> +
+>>>>>> +    ssi_transfer(s->spi, cmd);
+>>>>>> +
+>>>>>> +    if (aspeed_smc_flash_is_4byte(fl)) {
+>>>>>> +        ssi_transfer(s->spi, (addr >> 24) & 0xff);
+>>>>>> +    }
+>>>>>> +    ssi_transfer(s->spi, (addr >> 16) & 0xff);
+>>>>>> +    ssi_transfer(s->spi, (addr >> 8) & 0xff);
+>>>>>> +    ssi_transfer(s->spi, (addr & 0xff));
+>>>>>> +}
+>>>>>> +
+>>>>>>   static uint64_t aspeed_smc_flash_read(void *opaque, hwaddr addr,=
+ unsigned size)
+>>>>>>   {
+>>>>>>       AspeedSMCFlash *fl =3D opaque;
+>>>>>> @@ -364,19 +467,55 @@ static uint64_t aspeed_smc_flash_read(void *=
+opaque, hwaddr addr, unsigned size)
+>>>>>>       uint64_t ret =3D 0;
+>>>>>>       int i;
+>>>>>>   -    if (aspeed_smc_is_usermode(fl)) {
+>>>>>> +    switch (aspeed_smc_flash_mode(fl)) {
+>>>>>> +    case CTRL_USERMODE:
+>>>>>>           for (i =3D 0; i < size; i++) {
+>>>>>>               ret |=3D ssi_transfer(s->spi, 0x0) << (8 * i);
+>>>>>>           }
+>>>>>> -    } else {
+>>>>>> -        qemu_log_mask(LOG_UNIMP, "%s: usermode not implemented\n"=
+,
+>>>>>> -                      __func__);
+>>>>>> -        ret =3D -1;
+>>>>>> +        break;
+>>>>>> +    case CTRL_READMODE:
+>>>>>> +    case CTRL_FREADMODE:
+>>>>> CTRL_FREADMODE should not sent dummy bytes?
+>>>> yes it should. this is in a following patch.
+>>> Yes, I noticed that after sending this email :)
+>>>
 >>> Thanks,
->>>
->>> C.
->>>
+>>> Marcin
 >>>> Thanks,
->>>> Marcin
->>>>> +        aspeed_smc_flash_select(fl);
->>>>> +        aspeed_smc_flash_setup_read(fl, addr);
->>>>> +
->>>>> +        for (i = 0; i < size; i++) {
->>>>> +            ret |= ssi_transfer(s->spi, 0x0) << (8 * i);
->>>>> +        }
->>>>> +
->>>>> +        aspeed_smc_flash_unselect(fl);
->>>>> +        break;
->>>>> +    default:
->>>>> +        qemu_log_mask(LOG_GUEST_ERROR, "%s: invalid flash mode %d\n",
->>>>> +                      __func__, aspeed_smc_flash_mode(fl));
->>>>>       }
->>>>>   
->>>>>       return ret;
->>>>>   }
->>>>>   
->>>>> +static void aspeed_smc_flash_setup_write(AspeedSMCFlash *fl, uint32_t addr)
->>>>> +{
->>>>> +    AspeedSMCState *s = fl->controller;
->>>>> +    uint8_t cmd = aspeed_smc_flash_cmd(fl);
->>>>> +
->>>>> +    /* Flash access can not exceed CS segment */
->>>>> +    addr = aspeed_smc_check_segment_addr(fl, addr);
->>>>> +
->>>>> +    /* TODO: do we have to send 4BYTE each time ? */
->>>>> +    if (aspeed_smc_flash_is_4byte(fl)) {
->>>>> +        ssi_transfer(s->spi, SPI_OP_EN4B);
->>>>> +    }
->>>>> +
->>>>> +    ssi_transfer(s->spi, SPI_OP_WREN);
->>>>> +    ssi_transfer(s->spi, cmd);
->>>>> +
->>>>> +    if (aspeed_smc_flash_is_4byte(fl)) {
->>>>> +        ssi_transfer(s->spi, (addr >> 24) & 0xff);
->>>>> +    }
->>>>> +    ssi_transfer(s->spi, (addr >> 16) & 0xff);
->>>>> +    ssi_transfer(s->spi, (addr >> 8) & 0xff);
->>>>> +    ssi_transfer(s->spi, (addr & 0xff));
->>>>> +}
->>>>> +
->>>>>   static void aspeed_smc_flash_write(void *opaque, hwaddr addr, uint64_t data,
->>>>>                              unsigned size)
->>>>>   {
->>>>> @@ -390,14 +529,25 @@ static void aspeed_smc_flash_write(void *opaque, hwaddr addr, uint64_t data,
->>>>>           return;
->>>>>       }
->>>>>   
->>>>> -    if (!aspeed_smc_is_usermode(fl)) {
->>>>> -        qemu_log_mask(LOG_UNIMP, "%s: usermode not implemented\n",
->>>>> -                      __func__);
->>>>> -        return;
->>>>> -    }
->>>>> +    switch (aspeed_smc_flash_mode(fl)) {
->>>>> +    case CTRL_USERMODE:
->>>>> +        for (i = 0; i < size; i++) {
->>>>> +            ssi_transfer(s->spi, (data >> (8 * i)) & 0xff);
->>>>> +        }
->>>>> +        break;
->>>>> +    case CTRL_WRITEMODE:
->>>>> +        aspeed_smc_flash_select(fl);
->>>>> +        aspeed_smc_flash_setup_write(fl, addr);
->>>>> +
->>>>> +        for (i = 0; i < size; i++) {
->>>>> +            ssi_transfer(s->spi, (data >> (8 * i)) & 0xff);
->>>>> +        }
->>>>>   
->>>>> -    for (i = 0; i < size; i++) {
->>>>> -        ssi_transfer(s->spi, (data >> (8 * i)) & 0xff);
->>>>> +        aspeed_smc_flash_unselect(fl);
->>>>> +        break;
->>>>> +    default:
->>>>> +        qemu_log_mask(LOG_GUEST_ERROR, "%s: invalid flash mode %d\n",
->>>>> +                      __func__, aspeed_smc_flash_mode(fl));
->>>>>       }
->>>>>   }
->>>>>   
->
+>>>>
+>>>> C.
+>>>>
+>>>>> Thanks,
+>>>>> Marcin
+>>>>>> +        aspeed_smc_flash_select(fl);
+>>>>>> +        aspeed_smc_flash_setup_read(fl, addr);
+>>>>>> +
+>>>>>> +        for (i =3D 0; i < size; i++) {
+>>>>>> +            ret |=3D ssi_transfer(s->spi, 0x0) << (8 * i);
+>>>>>> +        }
+>>>>>> +
+>>>>>> +        aspeed_smc_flash_unselect(fl);
+>>>>>> +        break;
+>>>>>> +    default:
+>>>>>> +        qemu_log_mask(LOG_GUEST_ERROR, "%s: invalid flash mode %d=
+\n",
+>>>>>> +                      __func__, aspeed_smc_flash_mode(fl));
+>>>>>>       }
+>>>>>>         return ret;
+>>>>>>   }
+>>>>>>   +static void aspeed_smc_flash_setup_write(AspeedSMCFlash *fl, ui=
+nt32_t addr)
+>>>>>> +{
+>>>>>> +    AspeedSMCState *s =3D fl->controller;
+>>>>>> +    uint8_t cmd =3D aspeed_smc_flash_cmd(fl);
+>>>>>> +
+>>>>>> +    /* Flash access can not exceed CS segment */
+>>>>>> +    addr =3D aspeed_smc_check_segment_addr(fl, addr);
+>>>>>> +
+>>>>>> +    /* TODO: do we have to send 4BYTE each time ? */
+>>>>>> +    if (aspeed_smc_flash_is_4byte(fl)) {
+>>>>>> +        ssi_transfer(s->spi, SPI_OP_EN4B);
+>>>>>> +    }
+>>>>>> +
+>>>>>> +    ssi_transfer(s->spi, SPI_OP_WREN);
+>>>>>> +    ssi_transfer(s->spi, cmd);
+>>>>>> +
+>>>>>> +    if (aspeed_smc_flash_is_4byte(fl)) {
+>>>>>> +        ssi_transfer(s->spi, (addr >> 24) & 0xff);
+>>>>>> +    }
+>>>>>> +    ssi_transfer(s->spi, (addr >> 16) & 0xff);
+>>>>>> +    ssi_transfer(s->spi, (addr >> 8) & 0xff);
+>>>>>> +    ssi_transfer(s->spi, (addr & 0xff));
+>>>>>> +}
+>>>>>> +
+>>>>>>   static void aspeed_smc_flash_write(void *opaque, hwaddr addr, ui=
+nt64_t data,
+>>>>>>                              unsigned size)
+>>>>>>   {
+>>>>>> @@ -390,14 +529,25 @@ static void aspeed_smc_flash_write(void *opa=
+que, hwaddr addr, uint64_t data,
+>>>>>>           return;
+>>>>>>       }
+>>>>>>   -    if (!aspeed_smc_is_usermode(fl)) {
+>>>>>> -        qemu_log_mask(LOG_UNIMP, "%s: usermode not implemented\n"=
+,
+>>>>>> -                      __func__);
+>>>>>> -        return;
+>>>>>> -    }
+>>>>>> +    switch (aspeed_smc_flash_mode(fl)) {
+>>>>>> +    case CTRL_USERMODE:
+>>>>>> +        for (i =3D 0; i < size; i++) {
+>>>>>> +            ssi_transfer(s->spi, (data >> (8 * i)) & 0xff);
+>>>>>> +        }
+>>>>>> +        break;
+>>>>>> +    case CTRL_WRITEMODE:
+>>>>>> +        aspeed_smc_flash_select(fl);
+>>>>>> +        aspeed_smc_flash_setup_write(fl, addr);
+>>>>>> +
+>>>>>> +        for (i =3D 0; i < size; i++) {
+>>>>>> +            ssi_transfer(s->spi, (data >> (8 * i)) & 0xff);
+>>>>>> +        }
+>>>>>>   -    for (i =3D 0; i < size; i++) {
+>>>>>> -        ssi_transfer(s->spi, (data >> (8 * i)) & 0xff);
+>>>>>> +        aspeed_smc_flash_unselect(fl);
+>>>>>> +        break;
+>>>>>> +    default:
+>>>>>> +        qemu_log_mask(LOG_GUEST_ERROR, "%s: invalid flash mode %d=
+\n",
+>>>>>> +                      __func__, aspeed_smc_flash_mode(fl));
+>>>>>>       }
+>>>>>>   }
+>>>>>>  =20
+>>
+>=20
 

@@ -1,68 +1,69 @@
-Received: by 10.25.205.13 with SMTP id d13csp8755229lfg;
-        Tue, 3 Jan 2017 02:50:51 -0800 (PST)
-X-Received: by 10.55.119.2 with SMTP id s2mr59690265qkc.1.1483440647365;
-        Tue, 03 Jan 2017 02:50:47 -0800 (PST)
+Received: by 10.25.205.13 with SMTP id d13csp8775985lfg;
+        Tue, 3 Jan 2017 03:52:27 -0800 (PST)
+X-Received: by 10.55.72.86 with SMTP id v83mr58421102qka.262.1483444347088;
+        Tue, 03 Jan 2017 03:52:27 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id 37si42485886qto.161.2017.01.03.02.50.46
+        by mx.google.com with ESMTPS id x93si25541553qte.247.2017.01.03.03.52.26
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 03 Jan 2017 02:50:47 -0800 (PST)
+        Tue, 03 Jan 2017 03:52:27 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:33040 helo=lists.gnu.org)
+       dkim=fail header.i=@gmail.com;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:33231 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1cOMg0-0001Cx-HQ
-	for alex.bennee@linaro.org; Tue, 03 Jan 2017 05:50:44 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:33305)
+	id 1cONdg-0005Iq-GZ
+	for alex.bennee@linaro.org; Tue, 03 Jan 2017 06:52:24 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:44756)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <clg@kaod.org>) id 1cOMfw-0001Cg-CZ
-	for qemu-arm@nongnu.org; Tue, 03 Jan 2017 05:50:42 -0500
+	(envelope-from <jiahuanzhang90@gmail.com>) id 1cONdc-0005IX-I0
+	for qemu-arm@nongnu.org; Tue, 03 Jan 2017 06:52:21 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <clg@kaod.org>) id 1cOMft-0000BH-4W
-	for qemu-arm@nongnu.org; Tue, 03 Jan 2017 05:50:40 -0500
-Received: from 15.mo1.mail-out.ovh.net ([188.165.38.232]:57113)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <clg@kaod.org>) id 1cOMfs-0000B5-My
-	for qemu-arm@nongnu.org; Tue, 03 Jan 2017 05:50:36 -0500
-Received: from player691.ha.ovh.net (b9.ovh.net [213.186.33.59])
-	by mo1.mail-out.ovh.net (Postfix) with ESMTP id 6046A3501B
-	for <qemu-arm@nongnu.org>; Tue,  3 Jan 2017 11:50:33 +0100 (CET)
-Received: from hermes.kaod.org (deibp9eh1--blueice2n7.emea.ibm.com
-	[195.212.29.169]) (Authenticated sender: postmaster@kaod.org)
-	by player691.ha.ovh.net (Postfix) with ESMTPSA id CFCDE260090;
-	Tue,  3 Jan 2017 11:50:25 +0100 (CET)
-To: "mar.krzeminski" <mar.krzeminski@gmail.com>,
-	Peter Maydell <peter.maydell@linaro.org>
-References: <1480434248-27138-1-git-send-email-clg@kaod.org>
-	<1480434248-27138-18-git-send-email-clg@kaod.org>
-	<0fa6e0f2-2965-cbdc-3d22-5a4c74fc6772@gmail.com>
-	<27bcad02-54fc-dbf9-f5f9-5b178ddb2ddd@kaod.org>
-	<212a15c5-565c-434a-1387-250fa8f8f559@gmail.com>
-	<9a5a321f-0d5e-d798-07c2-ad30c29d6a1d@kaod.org>
-	<c6b1e60f-e0e9-f9a0-0e36-c82443191a6d@gmail.com>
-	<d4b65172-e4f6-a379-11c7-0565479c2bdb@kaod.org>
-	<57a42c1f-132b-f6c9-bb16-de161e4ec33a@gmail.com>
-From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-Message-ID: <3a19ced5-7f26-af0a-0716-b7e28a70704c@kaod.org>
-Date: Tue, 3 Jan 2017 11:50:24 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
-	Thunderbird/45.5.1
+	(envelope-from <jiahuanzhang90@gmail.com>) id 1cONdb-0004g6-AR
+	for qemu-arm@nongnu.org; Tue, 03 Jan 2017 06:52:20 -0500
+Received: from mail-qk0-x243.google.com ([2607:f8b0:400d:c09::243]:34962)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <jiahuanzhang90@gmail.com>)
+	id 1cONdb-0004g0-5h
+	for qemu-arm@nongnu.org; Tue, 03 Jan 2017 06:52:19 -0500
+Received: by mail-qk0-x243.google.com with SMTP id u25so49540864qki.2
+	for <qemu-arm@nongnu.org>; Tue, 03 Jan 2017 03:52:17 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=mime-version:from:date:message-id:subject:to;
+	bh=jO/sE3sU0Gbv7HREV2ZMRTnS4r0EBMUhkzvsfM5fFKU=;
+	b=eSgaHMaUrvuTGlFIr4paZdmsx1W8eh8OKXR2ZpOGcyOIcs6L+AaPni64p6LGBCfZUe
+	qYLCT4tWDzEh36BjinZ/HNKwGglvyPuoQGkSvv1BTX3Qg+6dn/clp1USF51boq7yz7xn
+	+ocY+LPcOxdV4R8cnbCTMhBjeGZ2V/nIAHraQ8Ouu4DUlc5ZX68CtcN6+HrOpNEAoDa2
+	dChYZXSQakpVGCRq1izlptWBQKqXL6sCgzR44XlWFZzclVdeOau6fw+rvowal0ervHgg
+	gcBKZU/STCTSuJpX70ES2KaqEkuAZ3lWyFQoX1QiYSCpj2ghyOTs5lNNFJ6YaNAxIBBS
+	VmZw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:from:date:message-id:subject:to;
+	bh=jO/sE3sU0Gbv7HREV2ZMRTnS4r0EBMUhkzvsfM5fFKU=;
+	b=YEfsW8RzO4LyCJlxMJa2pdhl/cENH7VHdmXXni6ocExhoMDqRjLc2IdgDp0SU2ddxt
+	04c2eg0o1lV0e5jN1sEfEAIY/4LuguDsCEGI/eFChWO16mLBJUAZmvZXitsSPdX07r5T
+	ekUTJcT4px5oPOooI0ZjJRQPQo8RQibuHh6UhcN1cGokhz44KW+EFMwcvH8L7lhFrtqj
+	Ml4/BwL1rJRyYGhCBdi/gQsmvjZE4yG270duVKhI9b9unyiIfJt/XcgtW+Go1MJbYMwf
+	r4YxF90Ie9LWge0UclnWLSzRppJAcmEOnQQ52A81eZVv4jShPlfe9f/x0NdLnBCx5MgI
+	LTBQ==
+X-Gm-Message-State: AIkVDXLmteCeSM8DsJPyH/Yal3jMUkBBBHWmaRzlw6MpZalFHB5+/NJw4kEtPghsvjIZ0ZgwDf6waVzjutg0hg==
+X-Received: by 10.55.97.204 with SMTP id v195mr57743784qkb.158.1483444336818; 
+	Tue, 03 Jan 2017 03:52:16 -0800 (PST)
 MIME-Version: 1.0
-In-Reply-To: <57a42c1f-132b-f6c9-bb16-de161e4ec33a@gmail.com>
-Content-Type: text/plain; charset=utf-8
-X-Ovh-Tracer-Id: 9365516900496280496
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrfeelgedrudefgddvtdcutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmd
-Content-Transfer-Encoding: quoted-printable
+Received: by 10.140.101.139 with HTTP; Tue, 3 Jan 2017 03:52:16 -0800 (PST)
+From: Jiahuan Zhang <jiahuanzhang90@gmail.com>
+Date: Tue, 3 Jan 2017 12:52:16 +0100
+Message-ID: <CAJy91Cax4FC4dNPnF8j0NCZGVkNUh33VPThm8XC9L8oTQkM3dA@mail.gmail.com>
+To: qemu-arm@nongnu.org
+Content-Type: multipart/alternative; boundary=94eb2c05c7cabd7fdc05452f4c0b
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 188.165.38.232
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH for-2.9 17/30] aspeed/smc:
- handle SPI flash Command mode
+X-Received-From: 2607:f8b0:400d:c09::243
+Subject: [Qemu-arm] bare-metal atmel board dbugging
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -74,416 +75,183 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jeffery <andrew@aj.id.au>, qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: CBgrHLQJXo/H
+X-TUID: Xg8WrxgXUDi3
 
-On 01/02/2017 07:21 PM, mar.krzeminski wrote:
->=20
->=20
-> W dniu 02.01.2017 o 19:02, C=C3=A9dric Le Goater pisze:
->> On 01/02/2017 06:33 PM, mar.krzeminski wrote:
->>> Hello Cedric,
->>>
->>> W dniu 02.01.2017 o 16:56, C=C3=A9dric Le Goater pisze:
->>>> Hello Marcin,
->>>>
->>>> On 12/05/2016 04:33 PM, mar.krzeminski wrote:
->>>>> W dniu 05.12.2016 o 15:07, C=C3=A9dric Le Goater pisze:
->>>>>> On 12/04/2016 05:31 PM, mar.krzeminski wrote:
->>>>>>> Hi Cedric,
->>>>>>>
->>>>>>> Since there is no public datasheet user guide for SMC I would ask=
- some question
->>>>>>> regarding HW itself because I got impression that you are impleme=
-nting in this
->>>>>>> model a part functionality that is done by Bootrom.
->>>>>>>
->>>>>>> W dniu 29.11.2016 o 16:43, C=C3=A9dric Le Goater pisze:
->>>>>>>> The Aspeed SMC controllers have a mode (Command mode) in which
->>>>>>>> accesses to the flash content are no different than doing MMIOs.=
- The
->>>>>>>> controller generates all the necessary commands to load (or stor=
-e)
->>>>>>>> data in memory.
->>>>>>>>
->>>>>>>> However, accesses are restricted to the segment window assigned =
-the
->>>>>>>> the flash module by the controller. This window is defined by th=
-e
->>>>>>>> Segment Address Register.
->>>>>>>>
->>>>>>>> Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
->>>>>>>> Reviewed-by: Andrew Jeffery <andrew@aj.id.au>
->>>>>>>> ---
->>>>>>>>    hw/ssi/aspeed_smc.c | 174 +++++++++++++++++++++++++++++++++++=
-+++++++++++++----
->>>>>>>>    1 file changed, 162 insertions(+), 12 deletions(-)
->>>>>>>>
->>>>>>>> diff --git a/hw/ssi/aspeed_smc.c b/hw/ssi/aspeed_smc.c
->>>>>>>> index 72a44150b0a1..eec087199a22 100644
->>>>>>>> --- a/hw/ssi/aspeed_smc.c
->>>>>>>> +++ b/hw/ssi/aspeed_smc.c
->>>>>>>> @@ -69,6 +69,7 @@
->>>>>>>>    #define R_CTRL0           (0x10 / 4)
->>>>>>>>    #define   CTRL_CMD_SHIFT           16
->>>>>>>>    #define   CTRL_CMD_MASK            0xff
->>>>>>>> +#define   CTRL_AST2400_SPI_4BYTE   (1 << 13)
->>>>>>>>    #define   CTRL_CE_STOP_ACTIVE      (1 << 2)
->>>>>>>>    #define   CTRL_CMD_MODE_MASK       0x3
->>>>>>>>    #define     CTRL_READMODE          0x0
->>>>>>>> @@ -135,6 +136,16 @@
->>>>>>>>    #define ASPEED_SOC_SPI_FLASH_BASE   0x30000000
->>>>>>>>    #define ASPEED_SOC_SPI2_FLASH_BASE  0x38000000
->>>>>>>>    +/* Flash opcodes. */
->>>>>>>> +#define SPI_OP_READ       0x03    /* Read data bytes (low frequ=
-ency) */
->>>>>>>> +#define SPI_OP_WRDI       0x04    /* Write disable */
->>>>>>>> +#define SPI_OP_RDSR       0x05    /* Read status register */
->>>>>>>> +#define SPI_OP_WREN       0x06    /* Write enable */
->>>>>>> Are you sure that the controller is aware af all above commands (=
-especially WD/WE and RDS)?
->>>>>> HW is aware of SPI_OP_READ which is the default command for the
->>>>>> "normal" read mode. For other modes, fast and write, the command
->>>>>> op is configured in the CEx Control Register.
->>>>>>
->>>>>> These ops are used in the model :
->>>>>>
->>>>>>    * SPI_OP_READ_FAST, for dummies
->>>>>>    * SPI_OP_EN4B, might be useless if we expect software to send
->>>>>>      this command before using this mode.
->>>>>>    * SPI_OP_WREN, same comment.
->>>>>>
->>>>>> The rest I should remove as it is unused.
->>>>> I think only SPI_OP_READ should stay in the model, rest goes to gue=
-st.
->>>> Well, we will need at least one 'EN4B' command to be sent for the qe=
-mu
->>>> flash model to work. If the underlying m25p80 object does not know
->>>> about the address width, the expected number of bytes will be wrong =
-and
->>>> the result bogus.
->>> Hmm, most of the flash I know by default use 3byte address mode.
->>> What flash are you connecting to model.
->> chips like n25q256a, mx25l25635e, w25q256. all are > 32MB.
->>
->>> Do you have same on HW?
->> No but it is difficult to know what the controller is doing
->> in that mode without spying on the bus.
->=20
-> Maybe aspeed support can help?
-> Or some clue in the doc.
+--94eb2c05c7cabd7fdc05452f4c0b
+Content-Type: text/plain; charset=UTF-8
 
-I will try to ping the aspeed engineers to have some hints on how=20
-this is implemented.
+Hi everyone,
 
-> More generally have you tested this feature in real HW?
+I am emulating the atmel at91sam9261 board in QEMU, and testing and
+debugging the emulated hardware by the atmel software package for this
+board.
 
-yes. we use it to read the flash contents. This is the pflash tool
-in the open-power firmware. It is under github.
+However, I always get this problem. See the info attached below. No matter
+how large I set the ram size, it will always "
 
->> Anyhow, after some experiments, I think you are right and
->> I should  get rid of these command OP in the next version.
-> MHO it is possible that controller send WREN command,
-> but I would be really surprised if it send EN4B.
+qemu: fatal: Trying to execute code outside RAM or ROM
 
-yes. we should be fine.
+" at the last address of the ram size.
 
->>
->> What about the dummy cycles ? the linux driver now has
->> support for it and it would be nice to get some support
->> in qemu also.
-> Target is still 2.9, but I am quite loaded now. From the other hand,
-> in current Qemu you can have it working with easy update in the
-> feature. Just send byte every dummy clock.
+Does anyone have any suggestion to solve it?
 
-yes. I was just asking. No hurries on our side.
+Best regards,
 
-Thanks,
-
-C.=20
+Jiahuan
 
 
-> Thanks,
-> Marcin
->>
->> Thanks,
->>
->> C.
->>
->>>> Same remark for the WREN, if the m25p80 object is not write enabled,
->>>> modifying the flash content won't work.
->>> Same as above.
->>>
->>> Thanks,
->>> Marcin
->>>> Thanks,
->>>>
->>>> C.
->>>>
->>>>>>>> +
->>>>>>>> +/* Used for Macronix and Winbond flashes. */
->>>>>>>> +#define SPI_OP_EN4B       0xb7    /* Enter 4-byte mode */
->>>>>>>> +#define SPI_OP_EX4B       0xe9    /* Exit 4-byte mode */
->>>>>>>> +
->>>>>>> Same as above but I think 4byte address mode bit changes onlu nym=
-ber of bytes
->>>>>>> that is sent after instruction.
->>>>>>>
->>>>>>>>    /*
->>>>>>>>     * Default segments mapping addresses and size for each slave=
- per
->>>>>>>>     * controller. These can be changed when board is initialized=
- with the
->>>>>>>> @@ -357,6 +368,98 @@ static inline bool aspeed_smc_is_writable(c=
-onst AspeedSMCFlash *fl)
->>>>>>>>        return s->regs[s->r_conf] & (1 << (s->conf_enable_w0 + fl=
-->id));
->>>>>>>>    }
->>>>>>>>    +static inline int aspeed_smc_flash_cmd(const AspeedSMCFlash =
-*fl)
->>>>>>>> +{
->>>>>>>> +    AspeedSMCState *s =3D fl->controller;
->>>>>>>> +    int cmd =3D (s->regs[s->r_ctrl0 + fl->id] >> CTRL_CMD_SHIFT=
-) & CTRL_CMD_MASK;
->>>>>>>> +
->>>>>>>> +    /* This is the default value for read mode. In other modes,=
- the
->>>>>>>> +     * command should be defined */
->>>>>>>> +    if (aspeed_smc_flash_mode(fl) =3D=3D CTRL_READMODE) {
->>>>>>>> +        cmd =3D SPI_OP_READ;
->>>>>>>> +    }
->>>>>>>> +
->>>>>>>> +    if (!cmd) {
->>>>>>> cmd =3D=3D 0 =3D> NOP command for some flash (eg. mx66l1g45g).
->>>>>> So I should use another default value, OxFF ?
->>>>> I believe this check is not needed at all because m25p80c will tell=
- if it has
->>>>> unsupported instruction and HW should accept all register values, i=
-sn't it?
->>>>>>>> +        qemu_log_mask(LOG_GUEST_ERROR, "%s: no command defined =
-for mode %d\n",
->>>>>>>> +                      __func__, aspeed_smc_flash_mode(fl));
->>>>>>>> +    }
->>>>>>>> +
->>>>>>>> +    return cmd;
->>>>>>>> +}
->>>>>>>> +
->>>>>>>> +static inline int aspeed_smc_flash_is_4byte(const AspeedSMCFlas=
-h *fl)
->>>>>>>> +{
->>>>>>>> +    AspeedSMCState *s =3D fl->controller;
->>>>>>>> +
->>>>>>>> +    if (s->ctrl->segments =3D=3D aspeed_segments_spi) {
->>>>>>>> +        return s->regs[s->r_ctrl0] & CTRL_AST2400_SPI_4BYTE;
->>>>>>>> +    } else {
->>>>>>>> +        return s->regs[s->r_ce_ctrl] & (1 << (CTRL_EXTENDED0 + =
-fl->id));
->>>>>>>> +    }
->>>>>>>> +}
->>>>>>>> +
->>>>>>>> +static void aspeed_smc_flash_select(const AspeedSMCFlash *fl)
->>>>>>>> +{
->>>>>>>> +    AspeedSMCState *s =3D fl->controller;
->>>>>>>> +
->>>>>>>> +    s->regs[s->r_ctrl0 + fl->id] &=3D ~CTRL_CE_STOP_ACTIVE;
->>>>>>>> +    qemu_set_irq(s->cs_lines[fl->id], aspeed_smc_is_ce_stop_act=
-ive(fl));
->>>>>>>> +}
->>>>>>>> +
->>>>>>>> +static void aspeed_smc_flash_unselect(const AspeedSMCFlash *fl)
->>>>>>>> +{
->>>>>>>> +    AspeedSMCState *s =3D fl->controller;
->>>>>>>> +
->>>>>>>> +    s->regs[s->r_ctrl0 + fl->id] |=3D CTRL_CE_STOP_ACTIVE;
->>>>>>>> +    qemu_set_irq(s->cs_lines[fl->id], aspeed_smc_is_ce_stop_act=
-ive(fl));
->>>>>>>> +}
->>>>>>>> +
->>>>>>>> +static uint32_t aspeed_smc_check_segment_addr(AspeedSMCFlash *f=
-l, uint32_t addr)
->>>>>>>> +{
->>>>>>>> +    AspeedSMCState *s =3D fl->controller;
->>>>>>>> +    AspeedSegments seg;
->>>>>>>> +
->>>>>>>> +    aspeed_smc_reg_to_segment(s->regs[R_SEG_ADDR0 + fl->id], &s=
-eg);
->>>>>>>> +    if ((addr & (seg.size - 1)) !=3D addr) {
->>>>>>>> +        qemu_log_mask(LOG_GUEST_ERROR,
->>>>>>>> +                      "%s: invalid address 0x%08x for CS%d segm=
-ent : "
->>>>>>>> +                      "[ 0x%"HWADDR_PRIx" - 0x%"HWADDR_PRIx" ]\=
-n",
->>>>>>>> +                      s->ctrl->name, addr, fl->id, seg.addr,
->>>>>>>> +                      seg.addr + seg.size);
->>>>>>>> +    }
->>>>>>>> +
->>>>>>>> +    addr &=3D seg.size - 1;
->>>>>>>> +    return addr;
->>>>>>>> +}
->>>>>>>> +
->>>>>>>> +static void aspeed_smc_flash_setup_read(AspeedSMCFlash *fl, uin=
-t32_t addr)
->>>>>>>> +{
->>>>>>>> +    AspeedSMCState *s =3D fl->controller;
->>>>>>>> +    uint8_t cmd =3D aspeed_smc_flash_cmd(fl);
->>>>>>>> +
->>>>>>>> +    /*
->>>>>>>> +     * To be checked: I am not sure the Aspeed SPI controller n=
-eeds to
->>>>>>>> +     * enable writes when running in READ/FREAD command mode
->>>>>>>> +     */
->>>>>>>> +
->>>>>>>> +    /* access can not exceed CS segment */
->>>>>>>> +    addr =3D aspeed_smc_check_segment_addr(fl, addr);
->>>>>>>> +
->>>>>>>> +    /* TODO: do we have to send 4BYTE each time ? */
->>>>>>> I am not aware of any flash that needs that, this  command should=
- be send only once.
->>>>>> yes. That is what I think also.
->>>>>>
->>>>>> it also means that a preliminary 4BYTE command should be
->>>>>> sent before using that mode.
->>>>> Generally there are two ways to access more than 16MiB in flash:
->>>>> - 4byte address mode: all commands change to accept 4byte address, =
-not supported by all flash devices.
->>>>> - 4byte opcodes: different opcode is used to signal 4-byte long add=
-ress (eg. 0x3 three bytes, 0x13 four).
->>>>> Also not all flash support that. If the HW does not use any of thos=
-e, ones should be removed from this model.
->>>>>
->>>>>>> I also think that HW does not send this command (see above commen=
-t).
->>>>>>>
->>>>>>>> +    if (aspeed_smc_flash_is_4byte(fl)) {
->>>>>>>> +        ssi_transfer(s->spi, SPI_OP_EN4B);
->>>>>>>> +    }
->>>>>>>> +
->>>>>>>> +    ssi_transfer(s->spi, cmd);
->>>>>>>> +
->>>>>>>> +    if (aspeed_smc_flash_is_4byte(fl)) {
->>>>>>>> +        ssi_transfer(s->spi, (addr >> 24) & 0xff);
->>>>>>>> +    }
->>>>>>>> +    ssi_transfer(s->spi, (addr >> 16) & 0xff);
->>>>>>>> +    ssi_transfer(s->spi, (addr >> 8) & 0xff);
->>>>>>>> +    ssi_transfer(s->spi, (addr & 0xff));
->>>>>>>> +}
->>>>>>>> +
->>>>>>>>    static uint64_t aspeed_smc_flash_read(void *opaque, hwaddr ad=
-dr, unsigned size)
->>>>>>>>    {
->>>>>>>>        AspeedSMCFlash *fl =3D opaque;
->>>>>>>> @@ -364,19 +467,55 @@ static uint64_t aspeed_smc_flash_read(void=
- *opaque, hwaddr addr, unsigned size)
->>>>>>>>        uint64_t ret =3D 0;
->>>>>>>>        int i;
->>>>>>>>    -    if (aspeed_smc_is_usermode(fl)) {
->>>>>>>> +    switch (aspeed_smc_flash_mode(fl)) {
->>>>>>>> +    case CTRL_USERMODE:
->>>>>>>>            for (i =3D 0; i < size; i++) {
->>>>>>>>                ret |=3D ssi_transfer(s->spi, 0x0) << (8 * i);
->>>>>>>>            }
->>>>>>>> -    } else {
->>>>>>>> -        qemu_log_mask(LOG_UNIMP, "%s: usermode not implemented\=
-n",
->>>>>>>> -                      __func__);
->>>>>>>> -        ret =3D -1;
->>>>>>>> +        break;
->>>>>>>> +    case CTRL_READMODE:
->>>>>>>> +    case CTRL_FREADMODE:
->>>>>>> CTRL_FREADMODE should not sent dummy bytes?
->>>>>> yes it should. this is in a following patch.
->>>>> Yes, I noticed that after sending this email :)
->>>>>
->>>>> Thanks,
->>>>> Marcin
->>>>>> Thanks,
->>>>>>
->>>>>> C.
->>>>>>
->>>>>>> Thanks,
->>>>>>> Marcin
->>>>>>>> +        aspeed_smc_flash_select(fl);
->>>>>>>> +        aspeed_smc_flash_setup_read(fl, addr);
->>>>>>>> +
->>>>>>>> +        for (i =3D 0; i < size; i++) {
->>>>>>>> +            ret |=3D ssi_transfer(s->spi, 0x0) << (8 * i);
->>>>>>>> +        }
->>>>>>>> +
->>>>>>>> +        aspeed_smc_flash_unselect(fl);
->>>>>>>> +        break;
->>>>>>>> +    default:
->>>>>>>> +        qemu_log_mask(LOG_GUEST_ERROR, "%s: invalid flash mode =
-%d\n",
->>>>>>>> +                      __func__, aspeed_smc_flash_mode(fl));
->>>>>>>>        }
->>>>>>>>          return ret;
->>>>>>>>    }
->>>>>>>>    +static void aspeed_smc_flash_setup_write(AspeedSMCFlash *fl,=
- uint32_t addr)
->>>>>>>> +{
->>>>>>>> +    AspeedSMCState *s =3D fl->controller;
->>>>>>>> +    uint8_t cmd =3D aspeed_smc_flash_cmd(fl);
->>>>>>>> +
->>>>>>>> +    /* Flash access can not exceed CS segment */
->>>>>>>> +    addr =3D aspeed_smc_check_segment_addr(fl, addr);
->>>>>>>> +
->>>>>>>> +    /* TODO: do we have to send 4BYTE each time ? */
->>>>>>>> +    if (aspeed_smc_flash_is_4byte(fl)) {
->>>>>>>> +        ssi_transfer(s->spi, SPI_OP_EN4B);
->>>>>>>> +    }
->>>>>>>> +
->>>>>>>> +    ssi_transfer(s->spi, SPI_OP_WREN);
->>>>>>>> +    ssi_transfer(s->spi, cmd);
->>>>>>>> +
->>>>>>>> +    if (aspeed_smc_flash_is_4byte(fl)) {
->>>>>>>> +        ssi_transfer(s->spi, (addr >> 24) & 0xff);
->>>>>>>> +    }
->>>>>>>> +    ssi_transfer(s->spi, (addr >> 16) & 0xff);
->>>>>>>> +    ssi_transfer(s->spi, (addr >> 8) & 0xff);
->>>>>>>> +    ssi_transfer(s->spi, (addr & 0xff));
->>>>>>>> +}
->>>>>>>> +
->>>>>>>>    static void aspeed_smc_flash_write(void *opaque, hwaddr addr,=
- uint64_t data,
->>>>>>>>                               unsigned size)
->>>>>>>>    {
->>>>>>>> @@ -390,14 +529,25 @@ static void aspeed_smc_flash_write(void *o=
-paque, hwaddr addr, uint64_t data,
->>>>>>>>            return;
->>>>>>>>        }
->>>>>>>>    -    if (!aspeed_smc_is_usermode(fl)) {
->>>>>>>> -        qemu_log_mask(LOG_UNIMP, "%s: usermode not implemented\=
-n",
->>>>>>>> -                      __func__);
->>>>>>>> -        return;
->>>>>>>> -    }
->>>>>>>> +    switch (aspeed_smc_flash_mode(fl)) {
->>>>>>>> +    case CTRL_USERMODE:
->>>>>>>> +        for (i =3D 0; i < size; i++) {
->>>>>>>> +            ssi_transfer(s->spi, (data >> (8 * i)) & 0xff);
->>>>>>>> +        }
->>>>>>>> +        break;
->>>>>>>> +    case CTRL_WRITEMODE:
->>>>>>>> +        aspeed_smc_flash_select(fl);
->>>>>>>> +        aspeed_smc_flash_setup_write(fl, addr);
->>>>>>>> +
->>>>>>>> +        for (i =3D 0; i < size; i++) {
->>>>>>>> +            ssi_transfer(s->spi, (data >> (8 * i)) & 0xff);
->>>>>>>> +        }
->>>>>>>>    -    for (i =3D 0; i < size; i++) {
->>>>>>>> -        ssi_transfer(s->spi, (data >> (8 * i)) & 0xff);
->>>>>>>> +        aspeed_smc_flash_unselect(fl);
->>>>>>>> +        break;
->>>>>>>> +    default:
->>>>>>>> +        qemu_log_mask(LOG_GUEST_ERROR, "%s: invalid flash mode =
-%d\n",
->>>>>>>> +                      __func__, aspeed_smc_flash_mode(fl));
->>>>>>>>        }
->>>>>>>>    }
->>>>>>>>   =20
->>
->=20
+ MINGW64 ~/test/basic-rtt-project-at91sam9261-ek/basic-rtt-project/bin
 
+
+
+$ ~/test/qemu/build/arm-softmmu/qemu-system-arm -M at91sam9261 -kernel
+basic-rtt-project-at91sam9261-ek-at91sam9261-sram.bin -serial stdio
+-nographic -s -S
+
+
+QEMU 2.6.2 monitor - type 'help' for more information
+
+
+(qemu)
+
+
+qemu: fatal: Trying to execute code outside RAM or ROM at 0x08000000
+
+
+R00=00000000 R01=00000000 R02=00000100 R03=00000000
+
+
+R04=00000000 R05=00000000 R06=00000000 R07=00000000
+
+
+R08=00000000 R09=00000000 R10=00000000 R11=00000000
+
+
+R12=00000000 R13=00000000 R14=00000000 R15=08000000
+
+
+PSR=400001d3 -Z-- A svc32
+
+
+s00=00000000 s01=00000000 d00=0000000000000000
+
+
+s02=00000000 s03=00000000 d01=0000000000000000
+
+
+s04=00000000 s05=00000000 d02=0000000000000000
+
+
+s06=00000000 s07=00000000 d03=0000000000000000
+
+
+s08=00000000 s09=00000000 d04=0000000000000000
+
+
+s10=00000000 s11=00000000 d05=0000000000000000
+
+
+s12=00000000 s13=00000000 d06=0000000000000000
+
+
+s14=00000000 s15=00000000 d07=0000000000000000
+
+
+s16=00000000 s17=00000000 d08=0000000000000000
+
+
+s18=00000000 s19=00000000 d09=0000000000000000
+
+
+s20=00000000 s21=00000000 d10=0000000000000000
+
+
+s22=00000000 s23=00000000 d11=0000000000000000
+
+
+s24=00000000 s25=00000000 d12=0000000000000000
+
+
+s26=00000000 s27=00000000 d13=0000000000000000
+
+
+s28=00000000 s29=00000000 d14=0000000000000000
+
+
+s30=00000000 s31=00000000 d15=0000000000000000
+
+
+FPSCR: 00000000
+
+
+This application has requested the Runtime to terminate it in an unusual
+way.
+
+
+Please contact the application's support team for more information.
+
+--94eb2c05c7cabd7fdc05452f4c0b
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div>Hi everyone,</div><div><br></div><div>I am emulating =
+the atmel at91sam9261 board in QEMU, and=C2=A0testing and debugging=C2=A0th=
+e emulated hardware by=C2=A0the atmel software package=C2=A0for this board.=
+</div><div><br></div><div>However, I=C2=A0always get this problem. See the =
+info attached below. No matter how large I set the ram size, it will always=
+ &quot;<font size=3D"1"><p>qemu: fatal: Trying to execute code outside RAM =
+or ROM </p></font><p><span><span>&quot; at the last address of the ram size=
+.</span></span></p><p><span><span>Does anyone have any suggestion to solve =
+it?</span></span></p><p><span><span>Best regards,</span></span></p><p><span=
+><span>Jiahuan</span></span></p><p><span><span><br></span></span></p><span>=
+<span><p><font color=3D"#00bf00" size=3D"1"><font color=3D"#00bf00" size=3D=
+"1">=C2=A0</font></font><font color=3D"#bf00bf" size=3D"1"><font color=3D"#=
+bf00bf" size=3D"1">MINGW64</font></font><font size=3D"1"> </font><font colo=
+r=3D"#bfbf00" size=3D"1"><font color=3D"#bfbf00" size=3D"1">~/test/basic-rt=
+t-project-at91sam9261-ek/basic-rtt-project/bin</font></font></p><p><font co=
+lor=3D"#bfbf00" size=3D"1"><font color=3D"#bfbf00" size=3D"1"><br></font></=
+font></p><font size=3D"1"><p><br></p><p>$ ~/test/qemu/build/arm-softmmu/qem=
+u-system-arm -M at91sam9261 -kernel basic-rtt-project-at91sam9261-ek-at91sa=
+m9261-sram.bin -serial stdio -nographic -s -S</p><p>
+<br></p><p>QEMU 2.6.2 monitor - type &#39;help&#39; for more information</p=
+><p>
+<br></p><p>(qemu) </p><p>
+<br></p><p>qemu: fatal: Trying to execute code outside RAM or ROM at 0x0800=
+0000</p><p>
+
+<br></p><p>R00=3D00000000 R01=3D00000000 R02=3D00000100 R03=3D00000000</p><=
+p>
+<br></p><p>R04=3D00000000 R05=3D00000000 R06=3D00000000 R07=3D00000000</p><=
+p>
+<br></p><p>R08=3D00000000 R09=3D00000000 R10=3D00000000 R11=3D00000000</p><=
+p>
+<br></p><p>R12=3D00000000 R13=3D00000000 R14=3D00000000 R15=3D08000000</p><=
+p>
+<br></p><p>PSR=3D400001d3 -Z-- A svc32</p><p>
+<br></p><p>s00=3D00000000 s01=3D00000000 d00=3D0000000000000000</p><p>
+<br></p><p>s02=3D00000000 s03=3D00000000 d01=3D0000000000000000</p><p>
+<br></p><p>s04=3D00000000 s05=3D00000000 d02=3D0000000000000000</p><p>
+<br></p><p>s06=3D00000000 s07=3D00000000 d03=3D0000000000000000</p><p>
+<br></p><p>s08=3D00000000 s09=3D00000000 d04=3D0000000000000000</p><p>
+<br></p><p>s10=3D00000000 s11=3D00000000 d05=3D0000000000000000</p><p>
+<br></p><p>s12=3D00000000 s13=3D00000000 d06=3D0000000000000000</p><p>
+<br></p><p>s14=3D00000000 s15=3D00000000 d07=3D0000000000000000</p><p>
+<br></p><p>s16=3D00000000 s17=3D00000000 d08=3D0000000000000000</p><p>
+<br></p><p>s18=3D00000000 s19=3D00000000 d09=3D0000000000000000</p><p>
+<br></p><p>s20=3D00000000 s21=3D00000000 d10=3D0000000000000000</p><p>
+<br></p><p>s22=3D00000000 s23=3D00000000 d11=3D0000000000000000</p><p>
+<br></p><p>s24=3D00000000 s25=3D00000000 d12=3D0000000000000000</p><p>
+<br></p><p>s26=3D00000000 s27=3D00000000 d13=3D0000000000000000</p><p>
+<br></p><p>s28=3D00000000 s29=3D00000000 d14=3D0000000000000000</p><p>
+<br></p><p>s30=3D00000000 s31=3D00000000 d15=3D0000000000000000</p><p>
+<br></p><p>FPSCR: 00000000</p><p>
+
+<br></p><p>This application has requested the Runtime to terminate it in an=
+ unusual way.</p><p>
+<br></p><p>Please contact the application&#39;s support team for more infor=
+mation.</p></font><p><br></p></span><p><span><span><br></span></span></p></=
+span><p><br></p><p><span><span><br></span></span></p></div></div>
+
+--94eb2c05c7cabd7fdc05452f4c0b--

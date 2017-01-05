@@ -1,90 +1,50 @@
-Received: by 10.25.205.13 with SMTP id d13csp9582484lfg;
-        Wed, 4 Jan 2017 20:43:45 -0800 (PST)
-X-Received: by 10.200.35.181 with SMTP id q50mr2802559qtq.66.1483591424904;
-        Wed, 04 Jan 2017 20:43:44 -0800 (PST)
+Received: by 10.25.205.13 with SMTP id d13csp9583417lfg;
+        Wed, 4 Jan 2017 20:47:46 -0800 (PST)
+X-Received: by 10.237.35.181 with SMTP id j50mr72038491qtc.138.1483591666699;
+        Wed, 04 Jan 2017 20:47:46 -0800 (PST)
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id f124si24315491qkb.300.2017.01.04.20.43.44
+        by mx.google.com with ESMTPS id h5si46820492qth.306.2017.01.04.20.47.46
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 04 Jan 2017 20:43:44 -0800 (PST)
+        Wed, 04 Jan 2017 20:47:46 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:43659 helo=lists.gnu.org)
+Received: from localhost ([::1]:43686 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1cOztu-0000Gb-5f
-	for alex.bennee@linaro.org; Wed, 04 Jan 2017 23:43:42 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:35667)
+	id 1cOzxn-0002xF-8D
+	for alex.bennee@linaro.org; Wed, 04 Jan 2017 23:47:43 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:37673)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alastair@au1.ibm.com>) id 1cOzmH-0001gY-K5
-	for qemu-devel@nongnu.org; Wed, 04 Jan 2017 23:35:51 -0500
+	(envelope-from <no-reply@patchew.org>) id 1cOzwp-0002vV-4l
+	for qemu-devel@nongnu.org; Wed, 04 Jan 2017 23:46:44 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <alastair@au1.ibm.com>) id 1cOzmF-0001RS-Nb
-	for qemu-devel@nongnu.org; Wed, 04 Jan 2017 23:35:49 -0500
-Received: from mx0a-001b2d01.pphosted.com ([148.163.156.1]:48855)
+	(envelope-from <no-reply@patchew.org>) id 1cOzwn-0006uw-Tr
+	for qemu-devel@nongnu.org; Wed, 04 Jan 2017 23:46:43 -0500
+Resent-Date: Wed, 04 Jan 2017 23:46:43 -0500
+Resent-Message-Id: <E1cOzwn-0006uw-Tr@eggs.gnu.org>
+Received: from sender-of-o52.zoho.com ([135.84.80.217]:21318)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <alastair@au1.ibm.com>)
-	id 1cOzmF-0001Qf-EM
-	for qemu-devel@nongnu.org; Wed, 04 Jan 2017 23:35:47 -0500
-Received: from pps.filterd (m0098409.ppops.net [127.0.0.1])
-	by mx0a-001b2d01.pphosted.com (8.16.0.17/8.16.0.17) with SMTP id
-	v054XnCL043711
-	for <qemu-devel@nongnu.org>; Wed, 4 Jan 2017 23:35:46 -0500
-Received: from e23smtp04.au.ibm.com (e23smtp04.au.ibm.com [202.81.31.146])
-	by mx0a-001b2d01.pphosted.com with ESMTP id 27s6qcjjub-1
-	(version=TLSv1.2 cipher=AES256-SHA bits=256 verify=NOT)
-	for <qemu-devel@nongnu.org>; Wed, 04 Jan 2017 23:35:46 -0500
-Received: from localhost
-	by e23smtp04.au.ibm.com with IBM ESMTP SMTP Gateway: Authorized Use
-	Only! Violators will be prosecuted
-	for <qemu-devel@nongnu.org> from <alastair@au1.ibm.com>;
-	Thu, 5 Jan 2017 14:35:43 +1000
-Received: from d23dlp02.au.ibm.com (202.81.31.213)
-	by e23smtp04.au.ibm.com (202.81.31.210) with IBM ESMTP SMTP Gateway:
-	Authorized Use Only! Violators will be prosecuted; 
-	Thu, 5 Jan 2017 14:35:40 +1000
-Received: from d23relay09.au.ibm.com (d23relay09.au.ibm.com [9.185.63.181])
-	by d23dlp02.au.ibm.com (Postfix) with ESMTP id 7BF002BB0055;
-	Thu,  5 Jan 2017 15:35:39 +1100 (EST)
-Received: from d23av05.au.ibm.com (d23av05.au.ibm.com [9.190.234.119])
-	by d23relay09.au.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
-	v054Zds56947132; Thu, 5 Jan 2017 15:35:39 +1100
-Received: from d23av05.au.ibm.com (localhost [127.0.0.1])
-	by d23av05.au.ibm.com (8.14.4/8.14.4/NCO v10.0 AVout) with ESMTP id
-	v054ZcRW008972; Thu, 5 Jan 2017 15:35:39 +1100
-Received: from ozlabs.au.ibm.com (ozlabs.au.ibm.com [9.192.253.14])
-	by d23av05.au.ibm.com (8.14.4/8.14.4/NCO v10.0 AVin) with ESMTP id
-	v054Zc9J008969; Thu, 5 Jan 2017 15:35:38 +1100
-Received: from adsilva.ozlabs.ibm.com (haven.au.ibm.com [9.192.254.114])
-	(using TLSv1.2 with cipher DHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by ozlabs.au.ibm.com (Postfix) with ESMTPSA id B32D8A01AB;
-	Thu,  5 Jan 2017 15:35:37 +1100 (AEDT)
-From: "Alastair D'Silva" <alastair@au1.ibm.com>
-To: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
-Date: Thu,  5 Jan 2017 15:34:30 +1100
-X-Mailer: git-send-email 2.9.3
+	(Exim 4.71) (envelope-from <no-reply@patchew.org>)
+	id 1cOzwj-0006tR-39; Wed, 04 Jan 2017 23:46:37 -0500
+Received: from [172.17.0.2] (23.253.156.214 [23.253.156.214]) by
+	mx.zohomail.com with SMTPS id 1483591578881746.3029347888012;
+	Wed, 4 Jan 2017 20:46:18 -0800 (PST)
 In-Reply-To: <20170105043430.3176-1-alastair@au1.ibm.com>
-References: <20170105043430.3176-1-alastair@au1.ibm.com>
-X-TM-AS-MML: disable
-X-Content-Scanned: Fidelis XPS MAILER
-x-cbid: 17010504-0012-0000-0000-0000020048DC
-X-IBM-AV-DETECTION: SAVI=unused REMOTE=unused XFE=unused
-x-cbparentid: 17010504-0013-0000-0000-000006C16FC6
-Message-Id: <20170105043430.3176-8-alastair@au1.ibm.com>
-X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10432:, ,
-	definitions=2017-01-05_02:, , signatures=0
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
-	spamscore=0 suspectscore=0
-	malwarescore=0 phishscore=0 adultscore=0 bulkscore=0 classifier=spam
-	adjust=0 reason=mlx scancount=1 engine=8.0.1-1612050000
-	definitions=main-1701050074
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [generic] [fuzzy]
-X-Received-From: 148.163.156.1
-Subject: [Qemu-devel] [PATCH v5 7/7] arm: Add an RX8900 RTC to the ASpeed
- board
+Message-ID: <148359157802.163.13107420866879330880@790289a7ca88>
+MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Resent-From: 
+From: no-reply@patchew.org
+To: alastair@au1.ibm.com
+Date: Wed, 4 Jan 2017 20:46:18 -0800 (PST)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
+X-Received-From: 135.84.80.217
+Subject: Re: [Qemu-devel] [PATCH v5 0/7] Add support for the Epson RX8900
+ RTC to the aspeed board
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -96,106 +56,54 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
 	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jeffery <andrew@aj.id.au>,
-	Chris Smart <chris@distroguy.com>,
-	=?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
-	Alastair D'Silva <alastair@d-silva.org>, Joel Stanley <joel@jms.id.au>
+Reply-To: qemu-devel@nongnu.org
+Cc: peter.maydell@linaro.org, famz@redhat.com, andrew@aj.id.au,
+	qemu-devel@nongnu.org, qemu-arm@nongnu.org, clg@kaod.org,
+	alastair@d-silva.org, joel@jms.id.au
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: FjBOTdj6C0AF
+X-TUID: c/Gup3Mm61sg
 
-From: Alastair D'Silva <alastair@d-silva.org>
-
-Connect an RX8900 RTC to i2c12 of the AST2500 SOC at address 0x32
-
-Signed-off-by: Alastair D'Silva <alastair@d-silva.org>
-Signed-off-by: Chris Smart <chris@distroguy.com>
----
- hw/arm/aspeed.c | 29 +++++++++++++++++++++++++++++
- 1 file changed, 29 insertions(+)
-
-diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
-index 40c1383..ef63fd0 100644
---- a/hw/arm/aspeed.c
-+++ b/hw/arm/aspeed.c
-@@ -26,6 +26,12 @@ static struct arm_boot_info aspeed_board_binfo = {
-     .nb_cpus = 1,
- };
- 
-+typedef struct AspeedI2CDevice {
-+    const char *type;
-+    uint8_t address;
-+    int bus;
-+} AspeedI2CDevice;
-+
- typedef struct AspeedBoardState {
-     AspeedSoCState soc;
-     MemoryRegion ram;
-@@ -37,6 +43,7 @@ typedef struct AspeedBoardConfig {
-     const char *fmc_model;
-     const char *spi_model;
-     uint32_t num_cs;
-+    const AspeedI2CDevice *i2c_devices;
- } AspeedBoardConfig;
- 
- enum {
-@@ -80,6 +87,11 @@ enum {
-         SCU_AST2500_HW_STRAP_ACPI_ENABLE |                              \
-         SCU_HW_STRAP_SPI_MODE(SCU_HW_STRAP_SPI_MASTER))
- 
-+
-+static const AspeedI2CDevice ast2500_i2c_devices[] = {
-+        {"rx8900", 0x32, 11}
-+};
-+
- static const AspeedBoardConfig aspeed_boards[] = {
-     [PALMETTO_BMC] = {
-         .soc_name  = "ast2400-a1",
-@@ -94,6 +106,7 @@ static const AspeedBoardConfig aspeed_boards[] = {
-         .fmc_model = "n25q256a",
-         .spi_model = "mx25l25635e",
-         .num_cs    = 1,
-+        .i2c_devices = ast2500_i2c_devices,
-     },
-     [ROMULUS_BMC]  = {
-         .soc_name  = "ast2500-a1",
-@@ -104,6 +117,7 @@ static const AspeedBoardConfig aspeed_boards[] = {
-     },
- };
- 
-+
- static void aspeed_board_init_flashes(AspeedSMCState *s, const char *flashtype,
-                                       Error **errp)
- {
-@@ -130,6 +144,19 @@ static void aspeed_board_init_flashes(AspeedSMCState *s, const char *flashtype,
-     }
- }
- 
-+static void aspeed_i2c_init(AspeedBoardState *bmc,
-+        const AspeedBoardConfig *cfg)
-+{
-+    AspeedSoCState *soc = &bmc->soc;
-+    const AspeedI2CDevice *dev;
-+
-+    for (dev = cfg->i2c_devices; dev != NULL && dev->type != NULL; dev++) {
-+        I2CBus *i2c_bus = aspeed_i2c_get_bus((DeviceState *)&soc->i2c,
-+                                             dev->bus);
-+        (void)i2c_create_slave(i2c_bus, dev->type, dev->address);
-+    }
-+}
-+
- static void aspeed_board_init(MachineState *machine,
-                               const AspeedBoardConfig *cfg)
- {
-@@ -174,6 +201,8 @@ static void aspeed_board_init(MachineState *machine,
-     aspeed_board_binfo.ram_size = ram_size;
-     aspeed_board_binfo.loader_start = sc->info->sdram_base;
- 
-+    aspeed_i2c_init(bmc, cfg);
-+
-     arm_load_kernel(ARM_CPU(first_cpu), &aspeed_board_binfo);
- }
- 
--- 
-2.9.3
+SGksCgpZb3VyIHNlcmllcyBzZWVtcyB0byBoYXZlIHNvbWUgY29kaW5nIHN0eWxlIHByb2JsZW1z
+LiBTZWUgb3V0cHV0IGJlbG93IGZvcgptb3JlIGluZm9ybWF0aW9uOgoKVHlwZTogc2VyaWVzClN1
+YmplY3Q6IFtRZW11LWRldmVsXSBbUEFUQ0ggdjUgMC83XSBBZGQgc3VwcG9ydCBmb3IgdGhlIEVw
+c29uIFJYODkwMCBSVEMgdG8gdGhlIGFzcGVlZCBib2FyZApNZXNzYWdlLWlkOiAyMDE3MDEwNTA0
+MzQzMC4zMTc2LTEtYWxhc3RhaXJAYXUxLmlibS5jb20KCj09PSBURVNUIFNDUklQVCBCRUdJTiA9
+PT0KIyEvYmluL2Jhc2gKCkJBU0U9YmFzZQpuPTEKdG90YWw9JChnaXQgbG9nIC0tb25lbGluZSAk
+QkFTRS4uIHwgd2MgLWwpCmZhaWxlZD0wCgojIFVzZWZ1bCBnaXQgb3B0aW9ucwpnaXQgY29uZmln
+IC0tbG9jYWwgZGlmZi5yZW5hbWVsaW1pdCAwCmdpdCBjb25maWcgLS1sb2NhbCBkaWZmLnJlbmFt
+ZXMgVHJ1ZQoKY29tbWl0cz0iJChnaXQgbG9nIC0tZm9ybWF0PSVIIC0tcmV2ZXJzZSAkQkFTRS4u
+KSIKZm9yIGMgaW4gJGNvbW1pdHM7IGRvCiAgICBlY2hvICJDaGVja2luZyBQQVRDSCAkbi8kdG90
+YWw6ICQoZ2l0IGxvZyAtbiAxIC0tZm9ybWF0PSVzICRjKS4uLiIKICAgIGlmICEgZ2l0IHNob3cg
+JGMgLS1mb3JtYXQ9ZW1haWwgfCAuL3NjcmlwdHMvY2hlY2twYXRjaC5wbCAtLW1haWxiYWNrIC07
+IHRoZW4KICAgICAgICBmYWlsZWQ9MQogICAgICAgIGVjaG8KICAgIGZpCiAgICBuPSQoKG4rMSkp
+CmRvbmUKCmV4aXQgJGZhaWxlZAo9PT0gVEVTVCBTQ1JJUFQgRU5EID09PQoKVXBkYXRpbmcgM2M4
+Y2Y1YTljMjFmZjg3ODIxNjRkMWRlZjdmNDRiZDg4ODcxMzM4NApGcm9tIGh0dHBzOi8vZ2l0aHVi
+LmNvbS9wYXRjaGV3LXByb2plY3QvcWVtdQogKiBbbmV3IHRhZ10gICAgICAgICBwYXRjaGV3LzIw
+MTcwMTA1MDQzNDMwLjMxNzYtMS1hbGFzdGFpckBhdTEuaWJtLmNvbSAtPiBwYXRjaGV3LzIwMTcw
+MTA1MDQzNDMwLjMxNzYtMS1hbGFzdGFpckBhdTEuaWJtLmNvbQpTd2l0Y2hlZCB0byBhIG5ldyBi
+cmFuY2ggJ3Rlc3QnCmFmYTIzOWIgYXJtOiBBZGQgYW4gUlg4OTAwIFJUQyB0byB0aGUgQVNwZWVk
+IGJvYXJkCjE1OWI5ZWMgdGVzdHM6IFRlc3QgYWxsIGltcGxlbWVudGVkIFJYODkwMCBmdW5jdGlv
+bmFsaXR5CjZmMjk3NTQgaHcvdGltZXI6IEFkZCBFcHNvbiBSWDg5MDAgUlRDIHN1cHBvcnQKZTQy
+YWRjNCBxdGVzdDogRml4IHdoaXRlc3BhY2UKMmM2NDNlMyBxdGVzdDogU3VwcG9ydCBzZXR0aW5n
+IG5hbWVkIEdQSU9zCmYzMjUxNjIgcXRlc3Q6IFN1cHBvcnQgbmFtZWQgaW50ZXJydXB0cwo4NzBl
+MTU5IGFybTogVW5pcXVlbHkgbmFtZSBpbXgyNSBJMkMgYnVzZXMuCgo9PT0gT1VUUFVUIEJFR0lO
+ID09PQpDaGVja2luZyBQQVRDSCAxLzc6IGFybTogVW5pcXVlbHkgbmFtZSBpbXgyNSBJMkMgYnVz
+ZXMuLi4uCkNoZWNraW5nIFBBVENIIDIvNzogcXRlc3Q6IFN1cHBvcnQgbmFtZWQgaW50ZXJydXB0
+cy4uLgpDaGVja2luZyBQQVRDSCAzLzc6IHF0ZXN0OiBTdXBwb3J0IHNldHRpbmcgbmFtZWQgR1BJ
+T3MuLi4KQ2hlY2tpbmcgUEFUQ0ggNC83OiBxdGVzdDogRml4IHdoaXRlc3BhY2UuLi4KQ2hlY2tp
+bmcgUEFUQ0ggNS83OiBody90aW1lcjogQWRkIEVwc29uIFJYODkwMCBSVEMgc3VwcG9ydC4uLgpD
+aGVja2luZyBQQVRDSCA2Lzc6IHRlc3RzOiBUZXN0IGFsbCBpbXBsZW1lbnRlZCBSWDg5MDAgZnVu
+Y3Rpb25hbGl0eS4uLgpFUlJPUjogc3BhY2VzIHJlcXVpcmVkIGFyb3VuZCB0aGF0ICc8JyAoY3R4
+Old4QikKIzM0NzogRklMRTogdGVzdHMvcng4OTAwLXRlc3QuYzozMTM6CisgICAgd2hpbGUgKGdl
+dHRpbWVvZmRheSgmbm93LCBOVUxMKSwgdGltZXJjbXAoJm5vdywgJmVuZCwgPCkpIHsKICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBeCgp0
+b3RhbDogMSBlcnJvcnMsIDAgd2FybmluZ3MsIDg5NCBsaW5lcyBjaGVja2VkCgpZb3VyIHBhdGNo
+IGhhcyBzdHlsZSBwcm9ibGVtcywgcGxlYXNlIHJldmlldy4gIElmIGFueSBvZiB0aGVzZSBlcnJv
+cnMKYXJlIGZhbHNlIHBvc2l0aXZlcyByZXBvcnQgdGhlbSB0byB0aGUgbWFpbnRhaW5lciwgc2Vl
+CkNIRUNLUEFUQ0ggaW4gTUFJTlRBSU5FUlMuCgpDaGVja2luZyBQQVRDSCA3Lzc6IGFybTogQWRk
+IGFuIFJYODkwMCBSVEMgdG8gdGhlIEFTcGVlZCBib2FyZC4uLgo9PT0gT1VUUFVUIEVORCA9PT0K
+ClRlc3QgY29tbWFuZCBleGl0ZWQgd2l0aCBjb2RlOiAxCgoKLS0tCkVtYWlsIGdlbmVyYXRlZCBh
+dXRvbWF0aWNhbGx5IGJ5IFBhdGNoZXcgW2h0dHA6Ly9wYXRjaGV3Lm9yZy9dLgpQbGVhc2Ugc2Vu
+ZCB5b3VyIGZlZWRiYWNrIHRvIHBhdGNoZXctZGV2ZWxAZnJlZWxpc3RzLm9yZw==
 

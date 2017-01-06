@@ -1,70 +1,74 @@
-Received: by 10.25.205.13 with SMTP id d13csp10346339lfg;
-        Fri, 6 Jan 2017 07:21:22 -0800 (PST)
-X-Received: by 10.237.56.163 with SMTP id k32mr12227105qte.232.1483716082396;
-        Fri, 06 Jan 2017 07:21:22 -0800 (PST)
+Received: by 10.25.205.13 with SMTP id d13csp10383513lfg;
+        Fri, 6 Jan 2017 08:51:30 -0800 (PST)
+X-Received: by 10.200.37.7 with SMTP id 7mr80782451qtm.102.1483721490602;
+        Fri, 06 Jan 2017 08:51:30 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id m6si50294953qte.14.2017.01.06.07.21.21
+        by mx.google.com with ESMTPS id u58si50527042qtu.155.2017.01.06.08.51.30
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 06 Jan 2017 07:21:22 -0800 (PST)
+        Fri, 06 Jan 2017 08:51:30 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org;
+       dkim=fail header.i=@gmail.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:53310 helo=lists.gnu.org)
+       dmarc=fail (p=NONE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:53756 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1cPWKV-0005vv-PO
-	for alex.bennee@linaro.org; Fri, 06 Jan 2017 10:21:19 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:39217)
+	id 1cPXjk-0005XZ-2O
+	for alex.bennee@linaro.org; Fri, 06 Jan 2017 11:51:28 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:52326)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1cPWKN-0005tV-6l
-	for qemu-arm@nongnu.org; Fri, 06 Jan 2017 10:21:12 -0500
+	(envelope-from <kirkseraph@gmail.com>) id 1cPXGs-0002qv-EN
+	for qemu-arm@nongnu.org; Fri, 06 Jan 2017 11:21:40 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1cPWKL-0004It-EL
-	for qemu-arm@nongnu.org; Fri, 06 Jan 2017 10:21:10 -0500
-Received: from mail-ua0-x22f.google.com ([2607:f8b0:400c:c08::22f]:35564)
+	(envelope-from <kirkseraph@gmail.com>) id 1cPXGr-0001Kp-AS
+	for qemu-arm@nongnu.org; Fri, 06 Jan 2017 11:21:38 -0500
+Received: from mail-wm0-x243.google.com ([2a00:1450:400c:c09::243]:36049)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1cPWKL-0004Id-4v
-	for qemu-arm@nongnu.org; Fri, 06 Jan 2017 10:21:09 -0500
-Received: by mail-ua0-x22f.google.com with SMTP id y9so78184304uae.2
-	for <qemu-arm@nongnu.org>; Fri, 06 Jan 2017 07:21:09 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=bfLnrMJEzm5bqUHDPvaEHQDNxDo+KSrKr20HL49TYQI=;
-	b=fXuJrDZCjJp1DaI6hlp3u2+MUXHsaXdOqlGwPXA4VTlYbIebm/yVEUKAblmYmaKGO1
-	6Qx0+y2A7q6ZZ3Yy5F/2WdNUj9mKNIst/+5N+G90AO/QICaZCIwpRyZOnmp9pYXV6Sg5
-	UDznatvdnjjtqbbO5Qn5i1ZC9OR6idLf2Nl1Q=
+	(Exim 4.71) (envelope-from <kirkseraph@gmail.com>)
+	id 1cPXGm-0001J6-Gs; Fri, 06 Jan 2017 11:21:32 -0500
+Received: by mail-wm0-x243.google.com with SMTP id m203so6078506wma.3;
+	Fri, 06 Jan 2017 08:21:32 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=from:to:cc:subject:date:message-id;
+	bh=YXJdGYwJ79ICvURcKeh8lI/ta527hCTRYtErAwdjJ+w=;
+	b=lat7/pkB+9VWI/rQdUSCw4xzxPNbmEasD472okjQ+ehFkbGjvaiKrwH+5+qF/ws1zK
+	WX2xobOsBDuXFf+uX3rXlVWEHyML79DX1jk4QZqzlul5k8grH+VR8q85QsZMQYhx4w+F
+	LIxPyUf4ZAWlXDm4eIQqB4ka0iZKuxK/ZLImts4NH0Rsqi0MzvqH7QUs6DGlckxGo3Ex
+	/EsXRPodo0OrAgAY7i0w3e5doP94wZ6LFlh4K7r6YB0iApa5B5aBuyELAPkMjSZ9PVPC
+	s78huA87rOgAbqbxMaIvgMLHqz+c4kdxnjq4rCPHMXNu+HH9izp9jhASo7dcR2Cy9Neg
+	p2Hw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=bfLnrMJEzm5bqUHDPvaEHQDNxDo+KSrKr20HL49TYQI=;
-	b=Pd5E8D5Fp5f1LfPkNN5GP4TJDcWpDc8B3h7lFVBqF0zO5UrFyALSeV/ydNvt+2E5Nr
-	Vu2ozkkiRga2u/g0c17U3iAw7VWpKKOL+ooONtW8ITby74novSFvFVoSg0cnC73YPSnQ
-	wtAC1yxBAhC6Hk96kktVtOx9SqoPxuBw1pGkC5LT4Exp6S7OxhncxBfJ39I39Oae/lSB
-	1prehAdK7PQn6QkxADI2/LtNjxRP8hk6jCXhg7t/FdUgZwmaN3b48oDB9ukB9zDV6/dN
-	0xCsDUR4QDXHj+wmbDpl8p/9evfZ5iwYDpBfVaf+nT2v+XLqyxucfqLvldJ69A+iXiup
-	reGQ==
-X-Gm-Message-State: AIkVDXICtHk4WxWNBqnkKZoN1yFog3ZGY6aQDx0Wxf/d6Nc3Uh8Ee5P0xLdUTUyKbt3IWH+F1BtftSCZdvK2XJnB
-X-Received: by 10.176.3.137 with SMTP id 9mr50280365uau.120.1483716068534;
-	Fri, 06 Jan 2017 07:21:08 -0800 (PST)
-MIME-Version: 1.0
-Received: by 10.31.176.14 with HTTP; Fri, 6 Jan 2017 07:20:48 -0800 (PST)
-In-Reply-To: <20170106143527.sdto622nm6hflp5b@roojbos.sk>
-References: <20170106143527.sdto622nm6hflp5b@roojbos.sk>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 6 Jan 2017 15:20:48 +0000
-Message-ID: <CAFEAcA_Cjm02WMGCDmsi+0Bv7cnYg9=ePFmBg_1RGJ8Xufr94w@mail.gmail.com>
-To: Seraphime Kirkovski <kirkseraph@gmail.com>
-Content-Type: text/plain; charset=UTF-8
+	h=x-gm-message-state:from:to:cc:subject:date:message-id;
+	bh=YXJdGYwJ79ICvURcKeh8lI/ta527hCTRYtErAwdjJ+w=;
+	b=ZGyR+XX5O/GGvkUw1x0YJbPuFvPrDKQ2a8zKN5RK6zVOPy6xyrBSr8K2ObALBPzhte
+	qyFDjX+5BN4gzeLjk64Z2yjhx2EBPj6+uBJIYzkp59S4QYU3Vre9JAzqjSxrkGkhn1Lq
+	c3g2aARIQFtCFJM3s7ztU0i0iN+glpYSca8DTIUgoX7lf/DQi6iLkIHTu9IioNvMEo3O
+	jDV9ka9MdByhzeRq/OMaha0u9GxGhXcZmjO/wKorH1Ux/4pPZZUcJzmT/cx4Yk5ycnKu
+	vPyjWjdsWXxF4Gi1r4ZqLahdNftnXP2vLihE1UNR/qgqoCwQugWMcQjUthSKIXNUrpET
+	YAiA==
+X-Gm-Message-State: AIkVDXI4qdbShzPSOLOYnCmR5KZa016j2+B7cwNbe+ZVBG1MSvcscsv1AQQMiFbABcYZZA==
+X-Received: by 10.223.161.145 with SMTP id u17mr1655025wru.89.1483719691215;
+	Fri, 06 Jan 2017 08:21:31 -0800 (PST)
+Received: from localhost (cha92-19-78-239-153-115.fbx.proxad.net.
+	[78.239.153.115]) by smtp.gmail.com with ESMTPSA id
+	f10sm109349832wjl.28.2017.01.06.08.21.29
+	(version=TLS1 cipher=AES128-SHA bits=128/128);
+	Fri, 06 Jan 2017 08:21:30 -0800 (PST)
+Received: by localhost (sSMTP sendmail emulation);
+	Fri, 06 Jan 2017 17:21:28 +0100
+From: Seraphime Kirkovski <kirkseraph@gmail.com>
+To: QEMU Developers <qemu-devel@nongnu.org>
+Date: Fri,  6 Jan 2017 17:21:16 +0100
+Message-Id: <20170106162116.12859-1-kirkseraph@gmail.com>
+X-Mailer: git-send-email 2.11.0
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:400c:c08::22f
-Subject: Re: [Qemu-arm] [Qemu-devel] [RESEND PATCH] target-arm/abi32: check
- for segfault in do_kernel_trap
+X-Received-From: 2a00:1450:400c:c09::243
+Subject: [Qemu-arm] [Qemu-devel] [PATCHv2] target-arm/abi32: check for
+ segfault in do_kernel_trap
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -76,21 +80,135 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Riku Voipio <riku.voipio@iki.fi>, QEMU Developers <qemu-devel@nongnu.org>,
-	qemu-arm <qemu-arm@nongnu.org>
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm <qemu-arm@nongnu.org>,
+	Seraphime Kirkovski <kirkseraph@gmail.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: IE+/S1OR7zno
+X-TUID: V9TGfT8z1ZwT
 
-On 6 January 2017 at 14:35, Seraphime Kirkovski <kirkseraph@gmail.com> wrote:
-> In terms of implementation, I find it would be better to extract the
-> __kernel_cmpxchg code in a separate function. On the one hand, this
-> would avoid code duplication or strange gotos and make do_kernel_trap
-> more readable. On the other hand, this would clutter a bit git history.
-> If it is acceptable, I will send a patch with those changes. If not,
-> will try to find a cleaner solution without creating new functions.
+Currently, the cmpxchg implementation tests whether the destination address
+is readable:
+  - if it is, we read the value and continue with the comparison
+  - if isn't, i.e. access to addr would segfault, we assume that src != dest
+    rather than queuing a SIGSEGV.
 
-Refactoring the code sounds like a good idea to me -- go ahead.
+The same problem exists in the case where src == dest: the code doesn't
+check whether put_user_u32 succeeds.
 
-thanks
--- PMM
+This fixes both problems by sending a SIGSEGV when the destination address
+is inaccessible.
+
+Signed-off-by: Seraphime Kirkovski <kirkseraph@gmail.com>
+---
+
+This accounts for Peter Maydell's remarks.
+The refactoring here extracts the cmpxchg code from do_kernel_trap in its own
+function.
+
+ linux-user/main.c | 72 ++++++++++++++++++++++++++++++++++++-------------------
+ 1 file changed, 47 insertions(+), 25 deletions(-)
+
+diff --git a/linux-user/main.c b/linux-user/main.c
+index c1d5eb4d6f..ed38ebe0c1 100644
+--- a/linux-user/main.c
++++ b/linux-user/main.c
+@@ -441,7 +441,7 @@ static void arm_kernel_cmpxchg64_helper(CPUARMState *env)
+     uint32_t addr, cpsr;
+     target_siginfo_t info;
+ 
+-    /* Based on the 32 bit code in do_kernel_trap */
++    /* Based on the 32 bit code in arm_kernel_cmpxchg_helper */
+ 
+     /* XXX: This only works between threads, not between processes.
+        It's probably possible to implement this with native host
+@@ -496,41 +496,63 @@ segv:
+     queue_signal(env, info.si_signo, QEMU_SI_FAULT, &info);
+ }
+ 
++/*
++ * 32bit cmpxchg kernel user helper.
++ * See the note above arm_kernel_cmpxchg64_helper.
++ */
++static void arm_kernel_cmpxchg_helper(CPUARMState *env)
++{
++    uint32_t addr;
++    uint32_t cpsr;
++    uint32_t val;
++    target_siginfo_t info;
++
++    /* XXX: This only works between threads, not between processes.
++       It's probably possible to implement this with native host
++       operations. However things like ldrex/strex are much harder so
++       there's not much point trying.  */
++    start_exclusive();
++    cpsr = cpsr_read(env);
++    addr = env->regs[2];
++    if (get_user_u32(val, addr))
++        goto segv;
++    if (val == env->regs[0]) {
++        val = env->regs[1];
++        if (put_user_u32(val, addr))
++            goto segv;
++        env->regs[0] = 0;
++        cpsr |= CPSR_C;
++    } else {
++        env->regs[0] = -1;
++        cpsr &= ~CPSR_C;
++    }
++    cpsr_write(env, cpsr, CPSR_C, CPSRWriteByInstr);
++    end_exclusive();
++    return;
++
++segv:
++    end_exclusive();
++    env->exception.vaddress = addr;
++    info.si_signo = TARGET_SIGSEGV;
++    info.si_errno = 0;
++    /* XXX: check env->error_code */
++    info.si_code = TARGET_SEGV_MAPERR;
++    info._sifields._sigfault._addr = env->exception.vaddress;
++    queue_signal(env, info.si_signo, QEMU_SI_FAULT, &info);
++}
++
+ /* Handle a jump to the kernel code page.  */
+ static int
+ do_kernel_trap(CPUARMState *env)
+ {
+     uint32_t addr;
+-    uint32_t cpsr;
+-    uint32_t val;
+ 
+     switch (env->regs[15]) {
+     case 0xffff0fa0: /* __kernel_memory_barrier */
+         /* ??? No-op. Will need to do better for SMP.  */
+         break;
+     case 0xffff0fc0: /* __kernel_cmpxchg */
+-         /* XXX: This only works between threads, not between processes.
+-            It's probably possible to implement this with native host
+-            operations. However things like ldrex/strex are much harder so
+-            there's not much point trying.  */
+-        start_exclusive();
+-        cpsr = cpsr_read(env);
+-        addr = env->regs[2];
+-        /* FIXME: This should SEGV if the access fails.  */
+-        if (get_user_u32(val, addr))
+-            val = ~env->regs[0];
+-        if (val == env->regs[0]) {
+-            val = env->regs[1];
+-            /* FIXME: Check for segfaults.  */
+-            put_user_u32(val, addr);
+-            env->regs[0] = 0;
+-            cpsr |= CPSR_C;
+-        } else {
+-            env->regs[0] = -1;
+-            cpsr &= ~CPSR_C;
+-        }
+-        cpsr_write(env, cpsr, CPSR_C, CPSRWriteByInstr);
+-        end_exclusive();
++        arm_kernel_cmpxchg_helper(env);
+         break;
+     case 0xffff0fe0: /* __kernel_get_tls */
+         env->regs[0] = cpu_get_tls(env);
+-- 
+2.11.0
+

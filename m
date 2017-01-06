@@ -1,71 +1,71 @@
-Received: by 10.25.205.13 with SMTP id d13csp10258490lfg;
-        Fri, 6 Jan 2017 03:57:37 -0800 (PST)
-X-Received: by 10.237.36.166 with SMTP id t35mr59540570qtc.172.1483703857567;
-        Fri, 06 Jan 2017 03:57:37 -0800 (PST)
+Received: by 10.25.205.13 with SMTP id d13csp10260550lfg;
+        Fri, 6 Jan 2017 04:01:38 -0800 (PST)
+X-Received: by 10.200.52.105 with SMTP id v38mr7659602qtb.227.1483704098249;
+        Fri, 06 Jan 2017 04:01:38 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id c145si2740936qkb.105.2017.01.06.03.57.36
+        by mx.google.com with ESMTPS id k23si3565231qtb.147.2017.01.06.04.01.37
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 06 Jan 2017 03:57:37 -0800 (PST)
+        Fri, 06 Jan 2017 04:01:38 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        dkim=fail header.i=@linaro.org;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:52039 helo=lists.gnu.org)
+Received: from localhost ([::1]:52072 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1cPT9K-0007jy-LR
-	for alex.bennee@linaro.org; Fri, 06 Jan 2017 06:57:34 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:51894)
+	id 1cPTDD-00015p-Kw
+	for alex.bennee@linaro.org; Fri, 06 Jan 2017 07:01:35 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:53338)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1cPT9E-0007jc-Mm
-	for qemu-arm@nongnu.org; Fri, 06 Jan 2017 06:57:30 -0500
+	(envelope-from <peter.maydell@linaro.org>) id 1cPTD8-0000yE-B7
+	for qemu-arm@nongnu.org; Fri, 06 Jan 2017 07:01:31 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1cPT9C-0001HR-Mg
-	for qemu-arm@nongnu.org; Fri, 06 Jan 2017 06:57:28 -0500
-Received: from mail-ua0-x22e.google.com ([2607:f8b0:400c:c08::22e]:33348)
+	(envelope-from <peter.maydell@linaro.org>) id 1cPTD7-00036i-IP
+	for qemu-arm@nongnu.org; Fri, 06 Jan 2017 07:01:30 -0500
+Received: from mail-ua0-x22c.google.com ([2607:f8b0:400c:c08::22c]:36511)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1cPT9C-0001Fz-Gb
-	for qemu-arm@nongnu.org; Fri, 06 Jan 2017 06:57:26 -0500
-Received: by mail-ua0-x22e.google.com with SMTP id i68so299947801uad.0
-	for <qemu-arm@nongnu.org>; Fri, 06 Jan 2017 03:57:26 -0800 (PST)
+	id 1cPTD7-00036d-FE
+	for qemu-arm@nongnu.org; Fri, 06 Jan 2017 07:01:29 -0500
+Received: by mail-ua0-x22c.google.com with SMTP id 88so398879320uaq.3
+	for <qemu-arm@nongnu.org>; Fri, 06 Jan 2017 04:01:29 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
 	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=VUPgh7JHDLUjq3BdOflSHlF7e73lWLOOnwgP4iL4ftE=;
-	b=XlF6IMbYDU7Akkxk7nPn2JepZMZXYtEyxbrrq8sQyr1/+r8L940nn9O+cvuajsPHtB
-	5O1wR4fT1Z/Rc78V1a29OSVFhYl+2iLZlFdoSCBxcpkLhYffBOJ+KOz0cdCHcpJIwEpF
-	n6ruJREc+hyWadQr+2JskDrvq67b+KvZxr9H8=
+	:cc; bh=oFkopreh+/i/DG7Z5uELdztnWHYJLH0ww2yC4nrLxP4=;
+	b=XsN5RcgIKCo0gT1Q0MWKhnhvjS75VEE7L3i+LlX2bbuTlYRn1v0JxR2pwH+Cd9ocw9
+	1FSpAhP5TRlPQI0VL3MpVG9W1ilshnXxZgJ8c0RvoS2SWpuXooiO3bG6zX/1auGoEGUc
+	KQV7gvMX8iGaH9hgszwXmKbSiSvgDXv1u9mD4=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
 	:message-id:subject:to:cc;
-	bh=VUPgh7JHDLUjq3BdOflSHlF7e73lWLOOnwgP4iL4ftE=;
-	b=WKhWbIb7o8I4sjXnkOfL3ilrAibRtR9yrwFHtQF5quPpl6cnOrbfhHKurhq0Gga/wH
-	PmKuMQjDrDK5AbaYQu/1GyURDUy2Pt9zBCCYrYoLxJHkfOHa6l791+/t5KP8RpxxlNJ/
-	sC1fegi8XtNDHibiip2TifgGeXcAo3JBscJroSU2G53BquEt9/LzzBa0R2Ob6PcBxUMl
-	2teaIEQD0kgmRt3U5TsPiRKBV6w17bXb2uq0sU62poCcek1KThpv1Wbn8/QOyCnkuvwH
-	oQVzb/DXMMos3D0+NxbWlbN1Ufq3WXGvxDjdYQ3QiNFd4mifGhxPJkX2yOaFrkt+3RA1
-	yhjg==
-X-Gm-Message-State: AIkVDXJfDIhkHU2ycZ63uaKzsymGa9986Ffu4xQVm9YNEfJG3aw3Bs1njaP7H322slOpa/FJgSevuNwa4x7J96Vr
-X-Received: by 10.176.91.222 with SMTP id z30mr58101737uae.140.1483703845610; 
-	Fri, 06 Jan 2017 03:57:25 -0800 (PST)
+	bh=oFkopreh+/i/DG7Z5uELdztnWHYJLH0ww2yC4nrLxP4=;
+	b=foAVxIy2RVmp120zacUZIZpglJgQddlD1Y2LVj5J8mokoJjpmP8w42OzLMpPBtUvOO
+	C21nTLHShTu9fubcRA5vtOcEAZc6XptseTri0EB6wkaxLHZ8pf5/O4jR/HzxBQtBDzKI
+	agMxT3WoSdSb9v0relu4mqs4cBJ6UgbZHBz9tzsKBKWD9dSwbi3NNfSd031UOwxuOzQE
+	TUi5DLMfLRJiWA9i0YzKz87GqR2fglECcFGE9iBDFUjW51z1NAsW3+G6QfgHu9ucdihn
+	X9BKzdLGxHx1XURKqH9Y+neiVfTg8VLqFgoYKOA0dkf08s2RrwLX2qrBdayaXrg1KvAJ
+	dEsw==
+X-Gm-Message-State: AIkVDXIhGVp5FHZpdwegbj7eTJX4Yr8+R/Thhnq1lm5x+rzXlt8nSc/1ELXELVcsvP3KPh7JJxU3XU3khGCN4eWB
+X-Received: by 10.176.91.222 with SMTP id z30mr58114519uae.140.1483704088865; 
+	Fri, 06 Jan 2017 04:01:28 -0800 (PST)
 MIME-Version: 1.0
-Received: by 10.31.176.14 with HTTP; Fri, 6 Jan 2017 03:57:05 -0800 (PST)
-In-Reply-To: <b985247bfcb7375de984e801c4145fde931360bb.1482265908.git.alistair.francis@xilinx.com>
+Received: by 10.31.176.14 with HTTP; Fri, 6 Jan 2017 04:01:08 -0800 (PST)
+In-Reply-To: <b9c61e0c893b6215531ea210e566c9057d28c792.1482265908.git.alistair.francis@xilinx.com>
 References: <cover.1482265908.git.alistair.francis@xilinx.com>
-	<b985247bfcb7375de984e801c4145fde931360bb.1482265908.git.alistair.francis@xilinx.com>
+	<b9c61e0c893b6215531ea210e566c9057d28c792.1482265908.git.alistair.francis@xilinx.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 6 Jan 2017 11:57:05 +0000
-Message-ID: <CAFEAcA88=_J3==CJ3fy+jurM9APvRErYFhopuz-bJeML5mPSvw@mail.gmail.com>
+Date: Fri, 6 Jan 2017 12:01:08 +0000
+Message-ID: <CAFEAcA-p0MYiiDO-h88fKkueNDzx28wH2Ef6bPFV+MZ65GH_bg@mail.gmail.com>
 To: Alistair Francis <alistair.francis@xilinx.com>
 Content-Type: text/plain; charset=UTF-8
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:400c:c08::22e
-Subject: Re: [Qemu-arm] [PATCH v3 1/3] arm_generic_timer: Add the ARM
- Generic Timer
+X-Received-From: 2607:f8b0:400c:c08::22c
+Subject: Re: [Qemu-arm] [PATCH v3 2/3] arm_generic_timer: Add support for
+ the ReadBase memory map
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -82,368 +82,80 @@ Cc: Alistair Francis <alistair23@gmail.com>, qemu-arm <qemu-arm@nongnu.org>,
 	=?UTF-8?B?S09OUkFEIEZyw6lkw6lyaWM=?= <fred.konrad@greensocs.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 9owjryCU4+0B
+X-TUID: tNKSjGtZQh/M
 
 On 20 December 2016 at 22:42, Alistair Francis
 <alistair.francis@xilinx.com> wrote:
-> Add the ARM generic timer. This allows the guest to poll the timer for
-> values and also supports secure writes only.
+> Add support for the read only regions in the ReadBase memory map.
 >
 > Signed-off-by: Alistair Francis <alistair.francis@xilinx.com>
 > ---
-> V3:
->  - Use ARM ARM names
->  - Indicate that we don't support all of the registers
->  - Fixup the Makefile CONFIG
-> V2:
->  - Fix couter/counter typo
 >
->  hw/timer/Makefile.objs               |   1 +
->  hw/timer/arm_generic_timer.c         | 205 +++++++++++++++++++++++++++++++++++
->  include/hw/timer/arm_generic_timer.h |  62 +++++++++++
->  3 files changed, 268 insertions(+)
->  create mode 100644 hw/timer/arm_generic_timer.c
->  create mode 100644 include/hw/timer/arm_generic_timer.h
+>  hw/timer/arm_generic_timer.c         | 27 +++++++++++++++++++++++++++
+>  include/hw/timer/arm_generic_timer.h | 12 ++++++++++++
+>  2 files changed, 39 insertions(+)
 >
-> diff --git a/hw/timer/Makefile.objs b/hw/timer/Makefile.objs
-> index 7ba8c23..bb203e2 100644
-> --- a/hw/timer/Makefile.objs
-> +++ b/hw/timer/Makefile.objs
-> @@ -17,6 +17,7 @@ common-obj-$(CONFIG_IMX) += imx_epit.o
->  common-obj-$(CONFIG_IMX) += imx_gpt.o
->  common-obj-$(CONFIG_LM32) += lm32_timer.o
->  common-obj-$(CONFIG_MILKYMIST) += milkymist-sysctl.o
-> +common-obj-$(CONFIG_ARM_TIMER) += arm_generic_timer.o
->
->  obj-$(CONFIG_EXYNOS4) += exynos4210_mct.o
->  obj-$(CONFIG_EXYNOS4) += exynos4210_pwm.o
 > diff --git a/hw/timer/arm_generic_timer.c b/hw/timer/arm_generic_timer.c
-> new file mode 100644
-> index 0000000..da434a7
-> --- /dev/null
+> index da434a7..5392657 100644
+> --- a/hw/timer/arm_generic_timer.c
 > +++ b/hw/timer/arm_generic_timer.c
-> @@ -0,0 +1,205 @@
-> +/*
-> + * QEMU model of the ARM Generic Timer
-> + *
-> + * Copyright (c) 2016 Xilinx Inc.
-> + * Written by Alistair Francis <alistair.francis@xilinx.com>
-> + *
-> + * Permission is hereby granted, free of charge, to any person obtaining a copy
-> + * of this software and associated documentation files (the "Software"), to deal
-> + * in the Software without restriction, including without limitation the rights
-> + * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-> + * copies of the Software, and to permit persons to whom the Software is
-> + * furnished to do so, subject to the following conditions:
-> + *
-> + * The above copyright notice and this permission notice shall be included in
-> + * all copies or substantial portions of the Software.
-> + *
-> + * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-> + * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-> + * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
-> + * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-> + * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-> + * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-> + * THE SOFTWARE.
-> + */
-> +
-> +#include "qemu/osdep.h"
-> +#include "hw/timer/arm_generic_timer.h"
-> +#include "qemu/timer.h"
-> +#include "qemu/log.h"
-> +
-> +#ifndef ARM_GEN_TIMER_ERR_DEBUG
-> +#define ARM_GEN_TIMER_ERR_DEBUG 0
-> +#endif
-> +
-> +static void counter_control_postw(RegisterInfo *reg, uint64_t val64)
-> +{
-> +    ARMGenTimer *s = ARM_GEN_TIMER(reg->opaque);
-> +    bool new_status = extract32(s->regs[R_CNTCR],
-> +                                R_CNTCR_EN_SHIFT,
-> +                                R_CNTCR_EN_LENGTH);
-> +    uint64_t current_ticks;
-> +
-> +    current_ticks = muldiv64(qemu_clock_get_us(QEMU_CLOCK_VIRTUAL),
-> +                             NANOSECONDS_PER_SECOND, 1000000);
-> +
-> +    if ((s->enabled && !new_status) ||
-> +        (!s->enabled && new_status)) {
-
-Since s->enabled and new_status are both bool, you can
-write this as "if (s->enabled != new_status)".
-(If they were ints you could use xor.)
-
-> +        /* The timer is being disabled or enabled */
-> +        s->tick_offset = current_ticks - s->tick_offset;
-> +    }
-> +
-> +    s->enabled = new_status;
-> +}
-> +
-> +static uint64_t counter_value_postr(RegisterInfo *reg)
-> +{
-> +    ARMGenTimer *s = ARM_GEN_TIMER(reg->opaque);
-> +    uint64_t current_ticks, total_ticks;
-> +
-> +    if (s->enabled) {
-> +        current_ticks = muldiv64(qemu_clock_get_us(QEMU_CLOCK_VIRTUAL),
-> +                                 NANOSECONDS_PER_SECOND, 1000000);
-> +        total_ticks = current_ticks - s->tick_offset;
-> +    } else {
-> +        /* Timer is disabled, return the time when it was disabled */
-> +        total_ticks = s->tick_offset;
-> +    }
-> +
-> +    return total_ticks;
-> +}
-> +
-> +static uint64_t counter_low_value_postr(RegisterInfo *reg, uint64_t val64)
-> +{
-> +    return (uint32_t) counter_value_postr(reg);
-> +}
-> +
-> +static uint64_t counter_high_value_postr(RegisterInfo *reg, uint64_t val64)
-> +{
-> +    return (uint32_t) (counter_value_postr(reg) >> 32);
-> +}
-
-The spec says that a write to the CNTCV should cause changes
-to each CPU's CNTPCT/CNTPCT_EL0 register -- how do we plan to implement this?
-
-(v8 ARM ARM section D6.1 is the clearest description of the
-relationship between the system counter and the per-CPU timers.)
-
-> +
-> +static RegisterAccessInfo arm_gen_timer_regs_info[] = {
-> +    {   .name = "CNTCR",
-> +        .addr = A_CNTCR,
-> +        .rsvd = 0xfffffffc,
-
-Spec says bits [17:8] are FCREQ field ?
-
-> +        .post_write = counter_control_postw,
-> +    },{ .name = "CNTSR",
-> +        .addr = A_CNTSR,
-> +        .rsvd = 0xfffffffd, .ro = 0x2,
-
-Spec says bits [31:8] are FCACK ?
-
-> +    },{ .name = "CNTCV_LOWER",
-> +        .addr = A_CNTCV_LOWER,
+> @@ -100,6 +100,17 @@ static RegisterAccessInfo arm_gen_timer_regs_info[] = {
+>      /* We don't model the CounterID registers either */
+>  };
+>
+> +static RegisterAccessInfo arm_gen_timer_read_regs_info[] = {
+> +    {   .name = "CNTCV_READ_LOWER",
+> +        .addr = A_CNTCV_READ_LOWER, .ro = 0xFFFF,
 > +        .post_read = counter_low_value_postr,
-> +    },{ .name = "CNTCV_UPPER",
-> +        .addr = A_CNTCV_UPPER,
+> +    },{ .name = "CNTCV_READ_UPPER",
+> +        .addr = A_CNTCV_READ_UPPER, .ro = 0xFFFF,
 > +        .post_read = counter_high_value_postr,
-
-Spec says that you should also be able to access the whole
-64-bit counter value with a 64-bit access -- is this reginfo
-sufficient to make that work?
-
-> +    },{ .name = "CNTFID0",
-> +        .addr = A_CNTFID0,
 > +    }
-> +    /* We don't model CNTFIDn */
-> +    /* We don't model the CounterID registers either */
+
+Needs to support 64-bit reads too.
+
+> +    /* We don't model the CounterID registers */
+
+(same query about ID regs as in patch 1)
+
 > +};
 > +
-> +static void arm_gen_timer_reset(DeviceState *dev)
-> +{
-> +    ARMGenTimer *s = ARM_GEN_TIMER(dev);
-> +    unsigned int i;
+>  static void arm_gen_timer_reset(DeviceState *dev)
+>  {
+>      ARMGenTimer *s = ARM_GEN_TIMER(dev);
+> @@ -166,6 +177,7 @@ static void arm_gen_timer_init(Object *obj)
+>      SysBusDevice *sbd = SYS_BUS_DEVICE(obj);
+>      RegisterInfoArray *reg_array;
+>
+> +    /* Create the ControlBase memory region */
+>      memory_region_init_io(&s->iomem, obj, &arm_gen_timer_ops, s,
+>                            TYPE_ARM_GEN_TIMER, R_ARM_GEN_TIMER_MAX * 4);
+>      reg_array =
+> @@ -179,6 +191,21 @@ static void arm_gen_timer_init(Object *obj)
+>                                  A_CNTCR,
+>                                  &reg_array->mem);
+>      sysbus_init_mmio(sbd, &s->iomem);
 > +
-> +    for (i = 0; i < ARRAY_SIZE(s->regs_info); ++i) {
-> +        register_reset(&s->regs_info[i]);
-> +    }
-> +
-> +    s->tick_offset = 0;
-> +    s->enabled = false;
-> +}
-> +
-> +static MemTxResult arm_gen_timer_read(void *opaque,  hwaddr addr,
-> +                                      uint64_t *data, unsigned size,
-> +                                      MemTxAttrs attrs)
-> +{
-> +    /* Reads are always supported, just blindly pass them through */
-> +    *data = register_read_memory(opaque, addr, size);
-> +
-> +    return MEMTX_OK;
-> +}
-> +
-> +static MemTxResult arm_gen_timer_write(void *opaque, hwaddr addr,
-> +                                       uint64_t data, unsigned size,
-> +                                       MemTxAttrs attrs)
-> +{
-> +    /* Block insecure writes */
-> +    if (!attrs.secure) {
-> +        qemu_log_mask(LOG_GUEST_ERROR,
-> +                      "Non secure writes to the system timestamp generator " \
-> +                      "are invalid\n");
-> +        return MEMTX_ERROR;
-> +    }
+> +    /* Create the ReadBase memory region */
+> +    memory_region_init_io(&s->iomem_read, obj, &arm_gen_timer_ops, s,
+> +                          TYPE_ARM_GEN_TIMER "-read", R_ARM_GEN_TIMER_READ_MAX * 4);
 
-This means you can't use this device in a system which
-doesn't implement TrustZone. I think this would be better
-handled by just having the board map the memory region
-in to only the Secure address space if it is a TZ-aware board.
+checkpatch.pl complains that this line needs wrapping.
 
-This also gets handling of NS reads correct (your code
-allows them).
-
-> +
-> +    register_write_memory(opaque, addr, data, size);
-> +
-> +    return MEMTX_OK;
-> +}
-> +
-> +static const MemoryRegionOps arm_gen_timer_ops = {
-> +    .read_with_attrs = arm_gen_timer_read,
-> +    .write_with_attrs = arm_gen_timer_write,
-> +    .endianness = DEVICE_LITTLE_ENDIAN,
-> +    .valid = {
-> +        .min_access_size = 4,
-> +        .max_access_size = 4,
-
-64-bit access is needed for the CNTCV.
-
-> +    },
-> +};
-> +
-> +static const VMStateDescription vmstate_arm_gen_timer = {
-> +    .name = TYPE_ARM_GEN_TIMER,
-> +    .version_id = 1,
-> +    .minimum_version_id = 1,
-> +    .fields = (VMStateField[]) {
-> +        VMSTATE_UINT32_ARRAY(regs, ARMGenTimer, R_ARM_GEN_TIMER_MAX),
-> +        VMSTATE_END_OF_LIST(),
-> +    }
-> +};
-> +
-> +static void arm_gen_timer_init(Object *obj)
-> +{
-> +    ARMGenTimer *s = ARM_GEN_TIMER(obj);
-> +    SysBusDevice *sbd = SYS_BUS_DEVICE(obj);
-> +    RegisterInfoArray *reg_array;
-> +
-> +    memory_region_init_io(&s->iomem, obj, &arm_gen_timer_ops, s,
-> +                          TYPE_ARM_GEN_TIMER, R_ARM_GEN_TIMER_MAX * 4);
 > +    reg_array =
-> +        register_init_block32(DEVICE(obj), arm_gen_timer_regs_info,
-> +                              ARRAY_SIZE(arm_gen_timer_regs_info),
-> +                              s->regs_info, s->regs,
+> +        register_init_block32(DEVICE(obj), arm_gen_timer_read_regs_info,
+> +                              ARRAY_SIZE(arm_gen_timer_read_regs_info),
+> +                              s->regs_read_info, s->regs_read,
 > +                              &arm_gen_timer_ops,
 > +                              ARM_GEN_TIMER_ERR_DEBUG,
-> +                              R_ARM_GEN_TIMER_MAX * 4);
-> +    memory_region_add_subregion(&s->iomem,
-> +                                A_CNTCR,
+> +                              R_ARM_GEN_TIMER_READ_MAX * 4);
+> +    memory_region_add_subregion(&s->iomem_read,
+> +                                R_CNTCV_READ_LOWER,
 > +                                &reg_array->mem);
-> +    sysbus_init_mmio(sbd, &s->iomem);
-> +}
-> +
-> +static void arm_gen_timer_class_init(ObjectClass *klass, void *data)
-> +{
-> +    DeviceClass *dc = DEVICE_CLASS(klass);
-> +
-> +    dc->reset = arm_gen_timer_reset;
-> +    dc->vmsd = &vmstate_arm_gen_timer;
-> +}
-> +
-> +static const TypeInfo arm_gen_timer_info = {
-> +    .name          = TYPE_ARM_GEN_TIMER,
-> +    .parent        = TYPE_SYS_BUS_DEVICE,
-> +    .instance_size = sizeof(ARMGenTimer),
-> +    .class_init    = arm_gen_timer_class_init,
-> +    .instance_init = arm_gen_timer_init,
-> +};
-> +
-> +static void arm_gen_timer_register_types(void)
-> +{
-> +    type_register_static(&arm_gen_timer_info);
-> +}
-> +
-> +type_init(arm_gen_timer_register_types)
-> diff --git a/include/hw/timer/arm_generic_timer.h b/include/hw/timer/arm_generic_timer.h
-> new file mode 100644
-> index 0000000..ae4319c
-> --- /dev/null
-> +++ b/include/hw/timer/arm_generic_timer.h
-> @@ -0,0 +1,62 @@
-> +/*
-> + * QEMU model of the ARM Generic Timer
-> + *
-> + * Copyright (c) 2016 Xilinx Inc.
-> + * Written by Alistair Francis <alistair.francis@xilinx.com>
-> + *
-> + * Permission is hereby granted, free of charge, to any person obtaining a copy
-> + * of this software and associated documentation files (the "Software"), to deal
-> + * in the Software without restriction, including without limitation the rights
-> + * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-> + * copies of the Software, and to permit persons to whom the Software is
-> + * furnished to do so, subject to the following conditions:
-> + *
-> + * The above copyright notice and this permission notice shall be included in
-> + * all copies or substantial portions of the Software.
-> + *
-> + * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-> + * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-> + * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
-> + * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-> + * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-> + * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-> + * THE SOFTWARE.
-> + */
-> +
-> +#ifndef ARM_GEN_TIMER_H
-> +#define ARM_GEN_TIMER_H
-> +
-> +#include "hw/sysbus.h"
-> +#include "hw/register.h"
-> +
-> +#define TYPE_ARM_GEN_TIMER "arm.generic-timer"
-> +#define ARM_GEN_TIMER(obj) \
-> +            OBJECT_CHECK(ARMGenTimer, (obj), TYPE_ARM_GEN_TIMER)
-> +
-> +REG32(CNTCR, 0x00)
-> +    FIELD(CNTCR, EN, 0, 1)
-> +    FIELD(CNTCR, HDBG, 1, 1)
-> +REG32(CNTSR, 0x04)
-> +    FIELD(CNTSR, DBGH, 1, 1)
-> +REG32(CNTCV_LOWER, 0x08)
-> +REG32(CNTCV_UPPER, 0x0C)
-> +REG32(CNTFID0, 0x20)
-> +/* We don't model CNTFIDn */
-> +/* We don't model the CounterID registers either */
+> +    sysbus_init_mmio(sbd, &s->iomem_read);
+>  }
 
-Does the Xilinx h/w not implement them at all?
-(ie do we need a property for "device has the ID regs" if we add them
-later?)
-
-The spec says it's mandatory to have at least the entry for
-the counter base frequency plus end-of-table marker.
-I would expect EL3 firmware to want to read this table in order
-to write the correct values to CNTFRQ_EL0 for each CPU.
-
-> +
-> +#define R_ARM_GEN_TIMER_MAX (R_CNTFID0 + 1)
-> +
-> +typedef struct ARMGenTimer {
-> +    /* <private> */
-> +    SysBusDevice parent_obj;
-> +    MemoryRegion iomem;
-> +
-> +    /* <public> */
-> +    bool enabled;
-> +    uint64_t tick_offset;
-> +
-> +    uint32_t regs[R_ARM_GEN_TIMER_MAX];
-> +    RegisterInfo regs_info[R_ARM_GEN_TIMER_MAX];
-> +} ARMGenTimer;
-> +
-> +#endif
-> --
-> 2.7.4
->
+Otherwise this looks good.
 
 thanks
 -- PMM

@@ -1,48 +1,68 @@
-Received: by 10.25.205.13 with SMTP id d13csp10411346lfg;
-        Fri, 6 Jan 2017 09:27:45 -0800 (PST)
-X-Received: by 10.200.37.101 with SMTP id 34mr70954486qtn.273.1483723665521;
-        Fri, 06 Jan 2017 09:27:45 -0800 (PST)
+Received: by 10.25.205.13 with SMTP id d13csp10415003lfg;
+        Fri, 6 Jan 2017 09:34:36 -0800 (PST)
+X-Received: by 10.55.161.212 with SMTP id k203mr12310702qke.234.1483724076141;
+        Fri, 06 Jan 2017 09:34:36 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id 60si50554375qtf.164.2017.01.06.09.27.44
+        by mx.google.com with ESMTPS id m86si40874423qkl.237.2017.01.06.09.34.35
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 06 Jan 2017 09:27:45 -0800 (PST)
+        Fri, 06 Jan 2017 09:34:36 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:54093 helo=lists.gnu.org)
+       dkim=fail header.i=@linaro.org;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:54150 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1cPYIo-0006Pk-O7
-	for alex.bennee@linaro.org; Fri, 06 Jan 2017 12:27:42 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:40560)
+	id 1cPYPR-0003M9-JY
+	for alex.bennee@linaro.org; Fri, 06 Jan 2017 12:34:33 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:42443)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <no-reply@patchew.org>) id 1cPYID-0005rp-N9
-	for qemu-arm@nongnu.org; Fri, 06 Jan 2017 12:27:06 -0500
+	(envelope-from <peter.maydell@linaro.org>) id 1cPYPI-0003LA-Fi
+	for qemu-arm@nongnu.org; Fri, 06 Jan 2017 12:34:25 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <no-reply@patchew.org>) id 1cPYI9-0004OY-JT
-	for qemu-arm@nongnu.org; Fri, 06 Jan 2017 12:27:05 -0500
-Resent-Date: Fri, 06 Jan 2017 12:27:05 -0500
-Resent-Message-Id: <E1cPYI9-0004OY-JT@eggs.gnu.org>
-Received: from sender163-mail.zoho.com ([74.201.84.163]:21442)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <no-reply@patchew.org>)
-	id 1cPYI9-0004O2-At; Fri, 06 Jan 2017 12:27:01 -0500
-Received: from [172.17.0.2] (23.253.156.214 [23.253.156.214]) by
-	mx.zohomail.com with SMTPS id 1483723613803160.16972028348812;
-	Fri, 6 Jan 2017 09:26:53 -0800 (PST)
-In-Reply-To: <20170106162116.12859-1-kirkseraph@gmail.com>
-Message-ID: <148372361252.199.14478591434551054669@790289a7ca88>
+	(envelope-from <peter.maydell@linaro.org>) id 1cPYPH-0007Fv-Me
+	for qemu-arm@nongnu.org; Fri, 06 Jan 2017 12:34:24 -0500
+Received: from mail-ua0-x233.google.com ([2607:f8b0:400c:c08::233]:34576)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1cPYPH-0007Fh-Gs
+	for qemu-arm@nongnu.org; Fri, 06 Jan 2017 12:34:23 -0500
+Received: by mail-ua0-x233.google.com with SMTP id 34so372284985uac.1
+	for <qemu-arm@nongnu.org>; Fri, 06 Jan 2017 09:34:21 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=KbrjxYa/baeNRl/aQSfrE8zotqkoYhYQ/KC2qnTuK9M=;
+	b=bdtt6/+yTLZ+OZl3fvSZ5RI8f2a06Nm4YUHPjFqJzfU1xJft2RzpHwn/mFw4vMhq33
+	AI+k5uBi1wbStMTrkiPcNbej5cH1IzRtB8ROhb7R55qy0YXUNh9p/ji1Sn9R0fLAQT9K
+	3uomK6akTWmC94dY9GVAGIfXgPWK3AMcrs2wo=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=KbrjxYa/baeNRl/aQSfrE8zotqkoYhYQ/KC2qnTuK9M=;
+	b=rnzCCmmFzTnqO/ZpAPQeXdL5FBwciThw0ZFAXH9h1eXzCF4rrq1DEzhFlVQccI7oGc
+	3PVuC8IskV5jnan8TRrxRcZyPMqImegrf1upYmu9VYwJNh5Wgzfg+Q92ZwUpd2ScjMq7
+	t6DnFMqt9JiDOfyrF3zJMZviyEicNSjgEiPfS6XcU8iHe+88U98OA3sdfpLS7cxjaa1R
+	KIbhGfYnByNyHW0MbHLsudS2HpYNwUZ8v5JuET78ec2kbV0j99zcL9EuMMC91Dfo+wUN
+	s664i+rTJccUuVwULWCgTE1OfyWQOBuLf/dl3qGAggnfLHgBuKj+V/lRm6z82vRhLW/M
+	fvaA==
+X-Gm-Message-State: AIkVDXLiBOzBkzjYd3Gazk2jN8WsY6lSE1Yu/zB7d2GPW3iaYlwc/avtNJKWv994hRVKG50ejpwXxE/aaGKJrPZp
+X-Received: by 10.176.3.137 with SMTP id 9mr50653713uau.120.1483724061380;
+	Fri, 06 Jan 2017 09:34:21 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Resent-From: 
-From: no-reply@patchew.org
-To: kirkseraph@gmail.com
-Date: Fri, 6 Jan 2017 09:26:53 -0800 (PST)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
-X-Received-From: 74.201.84.163
+Received: by 10.31.176.14 with HTTP; Fri, 6 Jan 2017 09:34:00 -0800 (PST)
+In-Reply-To: <20170106162116.12859-1-kirkseraph@gmail.com>
+References: <20170106162116.12859-1-kirkseraph@gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 6 Jan 2017 17:34:00 +0000
+Message-ID: <CAFEAcA_S-83pQVS-LJMWDzVu0Zk3+kpYZ2uZahkpDaeNAgaHCA@mail.gmail.com>
+To: Seraphime Kirkovski <kirkseraph@gmail.com>
+Content-Type: text/plain; charset=UTF-8
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 2607:f8b0:400c:c08::233
 Subject: Re: [Qemu-arm] [Qemu-devel] [PATCHv2] target-arm/abi32: check for
  segfault in do_kernel_trap
 X-BeenThere: qemu-arm@nongnu.org
@@ -56,44 +76,36 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: qemu-devel@nongnu.org
-Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org, famz@redhat.com,
-	qemu-devel@nongnu.org, kirkseraph@gmail.com
+Cc: Riku Voipio <riku.voipio@iki.fi>, qemu-arm <qemu-arm@nongnu.org>,
+	QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: gx68OreBFQG3
+X-TUID: OcSAQVUD/Vmw
 
-SGksCgpZb3VyIHNlcmllcyBzZWVtcyB0byBoYXZlIHNvbWUgY29kaW5nIHN0eWxlIHByb2JsZW1z
-LiBTZWUgb3V0cHV0IGJlbG93IGZvcgptb3JlIGluZm9ybWF0aW9uOgoKU3ViamVjdDogW1FlbXUt
-ZGV2ZWxdIFtQQVRDSHYyXSB0YXJnZXQtYXJtL2FiaTMyOiBjaGVjayBmb3Igc2VnZmF1bHQgaW4g
-ZG9fa2VybmVsX3RyYXAKTWVzc2FnZS1pZDogMjAxNzAxMDYxNjIxMTYuMTI4NTktMS1raXJrc2Vy
-YXBoQGdtYWlsLmNvbQpUeXBlOiBzZXJpZXMKCj09PSBURVNUIFNDUklQVCBCRUdJTiA9PT0KIyEv
-YmluL2Jhc2gKCkJBU0U9YmFzZQpuPTEKdG90YWw9JChnaXQgbG9nIC0tb25lbGluZSAkQkFTRS4u
-IHwgd2MgLWwpCmZhaWxlZD0wCgojIFVzZWZ1bCBnaXQgb3B0aW9ucwpnaXQgY29uZmlnIC0tbG9j
-YWwgZGlmZi5yZW5hbWVsaW1pdCAwCmdpdCBjb25maWcgLS1sb2NhbCBkaWZmLnJlbmFtZXMgVHJ1
-ZQoKY29tbWl0cz0iJChnaXQgbG9nIC0tZm9ybWF0PSVIIC0tcmV2ZXJzZSAkQkFTRS4uKSIKZm9y
-IGMgaW4gJGNvbW1pdHM7IGRvCiAgICBlY2hvICJDaGVja2luZyBQQVRDSCAkbi8kdG90YWw6ICQo
-Z2l0IGxvZyAtbiAxIC0tZm9ybWF0PSVzICRjKS4uLiIKICAgIGlmICEgZ2l0IHNob3cgJGMgLS1m
-b3JtYXQ9ZW1haWwgfCAuL3NjcmlwdHMvY2hlY2twYXRjaC5wbCAtLW1haWxiYWNrIC07IHRoZW4K
-ICAgICAgICBmYWlsZWQ9MQogICAgICAgIGVjaG8KICAgIGZpCiAgICBuPSQoKG4rMSkpCmRvbmUK
-CmV4aXQgJGZhaWxlZAo9PT0gVEVTVCBTQ1JJUFQgRU5EID09PQoKVXBkYXRpbmcgM2M4Y2Y1YTlj
-MjFmZjg3ODIxNjRkMWRlZjdmNDRiZDg4ODcxMzM4NApGcm9tIGh0dHBzOi8vZ2l0aHViLmNvbS9w
-YXRjaGV3LXByb2plY3QvcWVtdQogKiBbbmV3IHRhZ10gICAgICAgICBwYXRjaGV3LzIwMTcwMTA2
-MTYyMTE2LjEyODU5LTEta2lya3NlcmFwaEBnbWFpbC5jb20gLT4gcGF0Y2hldy8yMDE3MDEwNjE2
-MjExNi4xMjg1OS0xLWtpcmtzZXJhcGhAZ21haWwuY29tClN3aXRjaGVkIHRvIGEgbmV3IGJyYW5j
-aCAndGVzdCcKOGVhMzA2MiB0YXJnZXQtYXJtL2FiaTMyOiBjaGVjayBmb3Igc2VnZmF1bHQgaW4g
-ZG9fa2VybmVsX3RyYXAKCj09PSBPVVRQVVQgQkVHSU4gPT09CkNoZWNraW5nIFBBVENIIDEvMTog
-dGFyZ2V0LWFybS9hYmkzMjogY2hlY2sgZm9yIHNlZ2ZhdWx0IGluIGRvX2tlcm5lbF90cmFwLi4u
-CkVSUk9SOiBicmFjZXMge30gYXJlIG5lY2Vzc2FyeSBmb3IgYWxsIGFybXMgb2YgdGhpcyBzdGF0
-ZW1lbnQKIzU2OiBGSUxFOiBsaW51eC11c2VyL21haW4uYzo1MTc6CisgICAgaWYgKGdldF91c2Vy
-X3UzMih2YWwsIGFkZHIpKQpbLi4uXQoKRVJST1I6IGJyYWNlcyB7fSBhcmUgbmVjZXNzYXJ5IGZv
-ciBhbGwgYXJtcyBvZiB0aGlzIHN0YXRlbWVudAojNjA6IEZJTEU6IGxpbnV4LXVzZXIvbWFpbi5j
-OjUyMToKKyAgICAgICAgaWYgKHB1dF91c2VyX3UzMih2YWwsIGFkZHIpKQpbLi4uXQoKdG90YWw6
-IDIgZXJyb3JzLCAwIHdhcm5pbmdzLCA5NSBsaW5lcyBjaGVja2VkCgpZb3VyIHBhdGNoIGhhcyBz
-dHlsZSBwcm9ibGVtcywgcGxlYXNlIHJldmlldy4gIElmIGFueSBvZiB0aGVzZSBlcnJvcnMKYXJl
-IGZhbHNlIHBvc2l0aXZlcyByZXBvcnQgdGhlbSB0byB0aGUgbWFpbnRhaW5lciwgc2VlCkNIRUNL
-UEFUQ0ggaW4gTUFJTlRBSU5FUlMuCgo9PT0gT1VUUFVUIEVORCA9PT0KClRlc3QgY29tbWFuZCBl
-eGl0ZWQgd2l0aCBjb2RlOiAxCgoKLS0tCkVtYWlsIGdlbmVyYXRlZCBhdXRvbWF0aWNhbGx5IGJ5
-IFBhdGNoZXcgW2h0dHA6Ly9wYXRjaGV3Lm9yZy9dLgpQbGVhc2Ugc2VuZCB5b3VyIGZlZWRiYWNr
-IHRvIHBhdGNoZXctZGV2ZWxAZnJlZWxpc3RzLm9yZw==
+On 6 January 2017 at 16:21, Seraphime Kirkovski <kirkseraph@gmail.com> wrote:
+> Currently, the cmpxchg implementation tests whether the destination address
+> is readable:
+>   - if it is, we read the value and continue with the comparison
+>   - if isn't, i.e. access to addr would segfault, we assume that src != dest
+>     rather than queuing a SIGSEGV.
+>
+> The same problem exists in the case where src == dest: the code doesn't
+> check whether put_user_u32 succeeds.
+>
+> This fixes both problems by sending a SIGSEGV when the destination address
+> is inaccessible.
+>
+> Signed-off-by: Seraphime Kirkovski <kirkseraph@gmail.com>
+> ---
+>
+> This accounts for Peter Maydell's remarks.
+> The refactoring here extracts the cmpxchg code from do_kernel_trap in its own
+> function.
 
+As the patchew robot notes, our coding style wants braces on all
+if() statements, even one-line ones. Other than that,
+
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+
+thanks
+-- PMM

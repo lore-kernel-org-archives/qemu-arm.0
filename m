@@ -1,199 +1,156 @@
-Received: by 10.25.205.13 with SMTP id d13csp10448600lfg;
-        Fri, 6 Jan 2017 10:57:13 -0800 (PST)
-X-Received: by 10.200.46.36 with SMTP id r33mr4738337qta.92.1483729033428;
-        Fri, 06 Jan 2017 10:57:13 -0800 (PST)
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 10.25.205.13 with SMTP id d13csp10715142lfg;
+        Sat, 7 Jan 2017 04:11:32 -0800 (PST)
+X-Received: by 10.200.54.137 with SMTP id a9mr16680154qtc.185.1483791092369;
+        Sat, 07 Jan 2017 04:11:32 -0800 (PST)
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id h188si2922829qke.106.2017.01.06.10.57.12
+        by mx.google.com with ESMTPS id a5si44239568qka.116.2017.01.07.04.11.31
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 06 Jan 2017 10:57:13 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Sat, 07 Jan 2017 04:11:32 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:54536 helo=lists.gnu.org)
+       dkim=fail header.i=@dgtlrift-com.20150623.gappssmtp.com;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:57342 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1cPZhO-0001Yo-NN
-	for alex.bennee@linaro.org; Fri, 06 Jan 2017 13:57:10 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:33084)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1cPpqL-00033E-LT
+	for alex.bennee@linaro.org; Sat, 07 Jan 2017 07:11:29 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:34199)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mar.krzeminski@gmail.com>) id 1cPZaT-0004du-Mh
-	for qemu-devel@nongnu.org; Fri, 06 Jan 2017 13:50:03 -0500
+	(envelope-from <jhanley@dgtlrift.com>) id 1cPpqD-000334-4m
+	for qemu-arm@nongnu.org; Sat, 07 Jan 2017 07:11:21 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mar.krzeminski@gmail.com>) id 1cPZaS-0006cZ-On
-	for qemu-devel@nongnu.org; Fri, 06 Jan 2017 13:50:01 -0500
-Received: from mail-lf0-x242.google.com ([2a00:1450:4010:c07::242]:35966)
+	(envelope-from <jhanley@dgtlrift.com>) id 1cPpqA-0007Gq-15
+	for qemu-arm@nongnu.org; Sat, 07 Jan 2017 07:11:21 -0500
+Received: from mail-yw0-x22e.google.com ([2607:f8b0:4002:c05::22e]:35150)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <mar.krzeminski@gmail.com>)
-	id 1cPZaS-0006cG-HO; Fri, 06 Jan 2017 13:50:00 -0500
-Received: by mail-lf0-x242.google.com with SMTP id j75so6697802lfe.3;
-	Fri, 06 Jan 2017 10:50:00 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=from:to:cc:subject:date:message-id:in-reply-to:references;
-	bh=DsXI8JZ52h/GDaA/3NJI7uSk6apHIGubEL03CIQe3Mo=;
-	b=TzFpQnT7SyMk2BqeYSRwFkEnk4tA6Q3VRlKhWVmb2VHd9Au0QSofz27V6PBKrqhlyu
-	vJeXRgzzzwyUz6W7K1OUodoq8zj7HcX3r7msWlb9D0vfFB1RDcANx1BcqPCOnmT0wN3n
-	ubDzeeVPoD27wy0LtRi8I7RVfWS0vtJ3Um1NoUvCxRm3nWJYu9ODJU1gcYSMZdqxpE9J
-	Xgxa9wzckJwyGim4tF4iEzP9QkBtbvIelyiezoNAPb4d3TDcmXDP3Aj3w6vvV2tknbya
-	kEEGUIoez/VAHQdiS6f2MkH3m36iIuZBdtwmvtq9P3NRzZWo5FrKncahkoZ+pvwcdr3v
-	frKA==
+	(Exim 4.71) (envelope-from <jhanley@dgtlrift.com>)
+	id 1cPpq9-0007Gc-S8
+	for qemu-arm@nongnu.org; Sat, 07 Jan 2017 07:11:17 -0500
+Received: by mail-yw0-x22e.google.com with SMTP id v81so289117927ywb.2
+	for <qemu-arm@nongnu.org>; Sat, 07 Jan 2017 04:11:15 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=dgtlrift-com.20150623.gappssmtp.com; s=20150623;
+	h=from:content-transfer-encoding:mime-version:date:subject:message-id
+	:references:in-reply-to:to;
+	bh=uO+Nm5UcAPjbNYC8spYePJ0TVyMCTIY5+RghsuP6qro=;
+	b=nlUAJ3Yu6PzYd9i0ps0OpTavNRkn64gRur7tN5/uXZvODDAADW1AipBVWluIyCXC5M
+	keT50UyqM2cLORwRK3/KCep8uCIxzdUFbJDdHZsBBK6STOe7my3RI5lO/h9OBCWsDWMU
+	7GKimXcT6oSFsMb2StmsdO/VIFf3/vCb++6GwuqI8Z8T+Zi5rr+A9w5ibEt7N8bqT05j
+	rEcdJC6/sHSjvzS3OP3qegnLd88YnPGf1HSzyxDmoq6W8/jXQkBSQcZAvx1F20Cb1t9h
+	dF0x4luqS/4IvonlYzQ8YZoyO9phg17x5Ngt1+v9wuyhi7dCuX39rjsTLcZcY8C0o1Ti
+	LdHA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
-	:references;
-	bh=DsXI8JZ52h/GDaA/3NJI7uSk6apHIGubEL03CIQe3Mo=;
-	b=AROCGJ+dFFecTtWLgWlY2sLCOeD5eDOwDZUDzTkiaP6EL7wdgS9FYQ3tqU8BzCOZ/p
-	55ob1lRxyyXFrtl7hNDxPSUBNa47hB2ycfnfoLaJgGiaWJRkZyMo96dedsOMOFoH93DY
-	KrNk7MKyrDcdiqwunG2UW6KOLdaIluMlYOehGFwUx1qb1ee9OE7sjB7pJtd1sDru7jkh
-	sujjSIF2tSRBvoaEfPSwOybQtFR6pT3TV2KEp8UJ2Uv3OqI1eqs0NDiBzUlr+NrLz3+2
-	iz5IHbKc1FJBfx1J0drfuTxQVwnO7XsPe6C22aMdApjes3uZe/fpjMQGsouBD04HnFgI
-	ANdQ==
-X-Gm-Message-State: AIkVDXLOMHlV8beNrGcpDi8FIhObbR0XNqtJgONiXEKlxSrCAU8Tl5u83Jd3RwHG/y1bqw==
-X-Received: by 10.46.0.167 with SMTP id e39mr975369lji.49.1483728599178;
-	Fri, 06 Jan 2017 10:49:59 -0800 (PST)
-Received: from localhost.localdomain (89-78-94-50.dynamic.chello.pl.
-	[89.78.94.50]) by smtp.gmail.com with ESMTPSA id
-	f42sm19448777lji.2.2017.01.06.10.49.58
+	h=x-gm-message-state:from:content-transfer-encoding:mime-version:date
+	:subject:message-id:references:in-reply-to:to;
+	bh=uO+Nm5UcAPjbNYC8spYePJ0TVyMCTIY5+RghsuP6qro=;
+	b=j5oMd7os3EvK7SB+b3a+DiqfktUW02tb1IOLneXmZC5u5ZYx8cXe8mZqh25YIpRz5v
+	ZvoXn9BZvHGEr7SD9yMkmeJIN4Bq6Yqgmvn7kgtkkPQd87wPrxpjn/WpIWIotCGi2ZGB
+	De42FqmMD8PVJ+OKjc1tMdgNXaIgbIpnIhi9W5tlRwNwV+8BJQxfaahi7/ybktt6Dyko
+	BnNBtu57gzm09NrBWr9EJXjFuVBJFuTOGLUJLAoHwVQ1200ybFnLXWln4XOJt5GqtKr7
+	FGvdarffVZs/JmAgfeoJ+0zrLp1RR7SmB8mucuGsGJcXpDvCL+Y89TB/IgQRtszRujf6
+	CyvQ==
+X-Gm-Message-State: AIkVDXKzzU/YILIbxMBRM0dam65zEKZWumOAHmXIuUlttGwLgHkumCvBwBVT1AIGJ+Q2LA==
+X-Received: by 10.129.75.147 with SMTP id y141mr7553503ywa.86.1483791074627;
+	Sat, 07 Jan 2017 04:11:14 -0800 (PST)
+Received: from [192.168.0.26] (c-24-30-11-35.hsd1.ga.comcast.net.
+	[24.30.11.35]) by smtp.gmail.com with ESMTPSA id
+	c126sm34656531ywf.45.2017.01.07.04.11.13
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Fri, 06 Jan 2017 10:49:58 -0800 (PST)
-From: Marcin Krzeminski <mar.krzeminski@gmail.com>
-To: qemu-devel@nongnu.org,
-	edgar.iglesias@xilinx.com
-Date: Fri,  6 Jan 2017 19:49:47 +0100
-Message-Id: <20170106184948.3422-3-mar.krzeminski@gmail.com>
-X-Mailer: git-send-email 2.9.3
-In-Reply-To: <20170106184948.3422-1-mar.krzeminski@gmail.com>
-References: <20170106184948.3422-1-mar.krzeminski@gmail.com>
+	Sat, 07 Jan 2017 04:11:13 -0800 (PST)
+From: James Hanley <jhanley@dgtlrift.com>
+Content-Type: multipart/alternative;
+	boundary=Apple-Mail-17C9267D-A34C-49C4-80F4-AE156F729772
+Content-Transfer-Encoding: 7bit
+Mime-Version: 1.0 (1.0)
+Date: Sat, 7 Jan 2017 07:11:13 -0500
+Message-Id: <61B406A8-CB0A-4E6E-850D-9FC89C377469@dgtlrift.com>
+References: <CAF++6AO9P+VHj2mDwa0-13XSigzjfuQdhEHy1HX2e=tGu-28NA@mail.gmail.com>
+	<CAF++6AMbT02x+tZ6kHwaguc3b=XPP4Dj0ywWETT4QxrGUQVw-Q@mail.gmail.com>
+In-Reply-To: <CAF++6AMbT02x+tZ6kHwaguc3b=XPP4Dj0ywWETT4QxrGUQVw-Q@mail.gmail.com>
+To: qemu-arm <qemu-arm@nongnu.org>, qemu-discuss@nongnu.org
+X-Mailer: iPhone Mail (14C92)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2a00:1450:4010:c07::242
-Subject: [Qemu-devel] [PATCH v2 2/3] block: m25p80: Introduce die erase
- command
-X-BeenThere: qemu-devel@nongnu.org
+X-Received-From: 2607:f8b0:4002:c05::22e
+Subject: Re: [Qemu-arm] ATSAM4sd16c MCU chip NVIC issue
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org, clg@kaod.org
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 6w1O6pIGNXUf
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: p50em1nAfFJE
 
-Modern big flash nor devices consist from more than one die.
-Some of them do not support chip erase and instead have die
-erase command that can erase one die only. This commit adds
-possibility to define number of dies in the chip and adds
-support for die erase command. Nor flash model is not strict
-thus option to disable chip eras was not added.
 
-Signed-off-by: Marcin Krzeminski <mar.krzeminski@gmail.com>
----
- hw/block/m25p80.c | 42 +++++++++++++++++++++++++++++++++++++++++-
- 1 file changed, 41 insertions(+), 1 deletion(-)
+--Apple-Mail-17C9267D-A34C-49C4-80F4-AE156F729772
+Content-Type: text/plain;
+	charset=us-ascii
+Content-Transfer-Encoding: quoted-printable
 
-diff --git a/hw/block/m25p80.c b/hw/block/m25p80.c
-index 6dff81b..b065ddc 100644
---- a/hw/block/m25p80.c
-+++ b/hw/block/m25p80.c
-@@ -73,6 +73,12 @@ typedef struct FlashPartInfo {
-     uint32_t n_sectors;
-     uint32_t page_size;
-     uint16_t flags;
-+    /*
-+     * Big sized spi nor are often stacked devices, thus sometime
-+     * replace chip erase with die erase.
-+     * This field inform how many die is in the chip.
-+     */
-+    uint8_t die_cnt;
- } FlashPartInfo;
- 
- /* adapted from linux */
-@@ -90,7 +96,8 @@ typedef struct FlashPartInfo {
-     .sector_size = (_sector_size),\
-     .n_sectors = (_n_sectors),\
-     .page_size = 256,\
--    .flags = (_flags),
-+    .flags = (_flags),\
-+    .die_cnt = 0
- 
- #define INFO6(_part_name, _jedec_id, _ext_id, _sector_size, _n_sectors, _flags)\
-     .part_name = _part_name,\
-@@ -107,6 +114,24 @@ typedef struct FlashPartInfo {
-     .n_sectors = (_n_sectors),\
-     .page_size = 256,\
-     .flags = (_flags),\
-+    .die_cnt = 0
-+
-+#define INFO_STACKED(_part_name, _jedec_id, _ext_id, _sector_size, _n_sectors,\
-+                    _flags, _die_cnt)\
-+    .part_name = _part_name,\
-+    .id = {\
-+        ((_jedec_id) >> 16) & 0xff,\
-+        ((_jedec_id) >> 8) & 0xff,\
-+        (_jedec_id) & 0xff,\
-+        ((_ext_id) >> 8) & 0xff,\
-+        (_ext_id) & 0xff,\
-+          },\
-+    .id_len = (!(_jedec_id) ? 0 : (3 + ((_ext_id) ? 2 : 0))),\
-+    .sector_size = (_sector_size),\
-+    .n_sectors = (_n_sectors),\
-+    .page_size = 256,\
-+    .flags = (_flags),\
-+    .die_cnt = _die_cnt
- 
- #define JEDEC_NUMONYX 0x20
- #define JEDEC_WINBOND 0xEF
-@@ -359,6 +384,8 @@ typedef enum {
- 
-     REVCR = 0x65,
-     WEVCR = 0x61,
-+
-+    DIE_ERASE = 0xC4,
- } FlashCMD;
- 
- typedef enum {
-@@ -514,6 +541,17 @@ static void flash_erase(Flash *s, int offset, FlashCMD cmd)
-     case BULK_ERASE:
-         len = s->size;
-         break;
-+    case DIE_ERASE:
-+        if (s->pi->die_cnt) {
-+            len = s->size / s->pi->die_cnt;
-+            offset = offset & (~(len - 1));
-+            printf("Die erase len = 0x%X offset = 0x%X!\n", len, offset);
-+        } else {
-+            qemu_log_mask(LOG_GUEST_ERROR, "M25P80: die erase is not supported"
-+                          " by device\n");
-+            return;
-+        }
-+        break;
-     default:
-         abort();
-     }
-@@ -635,6 +673,7 @@ static void complete_collecting_data(Flash *s)
-     case ERASE4_32K:
-     case ERASE_SECTOR:
-     case ERASE4_SECTOR:
-+    case DIE_ERASE:
-         flash_erase(s, s->cur_addr, s->cmd_in_progress);
-         break;
-     case WRSR:
-@@ -881,6 +920,7 @@ static void decode_new_cmd(Flash *s, uint32_t value)
-     case PP:
-     case PP4:
-     case PP4_4:
-+    case DIE_ERASE:
-         s->needed_bytes = get_addr_length(s);
-         s->pos = 0;
-         s->len = 0;
--- 
-2.9.3
+I realize now that I posted this thread to the wrong list.
 
+-Jim
+
+> On Jan 6, 2017, at 9:52 AM, James Hanley <jhanley@dgtlrift.com> wrote:
+>=20
+> I see now that there an RFC for multi-core support and a patch for refacto=
+ring armv7m_nvic - should I wait for those to be integrated? When will that b=
+e included into the mainline?
+>=20
+>> On Thu, Jan 5, 2017 at 4:18 PM, James Hanley <jhanley@dgtlrift.com> wrote=
+:
+>> I'm trying to create a Atmel ATSAM4sd16c chip support (part of the ATSAM4=
+ family) but I'm running into an issue with the NVIC code.  I modeled it aft=
+er the STMicro implementation and created a Machine based around one of our b=
+oards, but I am running into an issue where although the call to armv7m_init=
+() seems to set up the NVIC correctly and map it to 0xe000e000 and jump into=
+ the nvic_readl(), but never jumps to the vector in the firmware (kernel).  =
+=20
+>>=20
+>> Is there any documentation (other then code tracing) for how the interfac=
+e for armv7m_nvic.c should be used?
+>>=20
+>> Thanks much,
+>> -Jim
+>=20
+
+--Apple-Mail-17C9267D-A34C-49C4-80F4-AE156F729772
+Content-Type: text/html;
+	charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+<html><head><meta http-equiv=3D"content-type" content=3D"text/html; charset=3D=
+utf-8"></head><body dir=3D"auto"><div>I realize now that I posted this threa=
+d to the wrong list.<br><br>-Jim</div><div><br>On Jan 6, 2017, at 9:52 AM, J=
+ames Hanley &lt;<a href=3D"mailto:jhanley@dgtlrift.com">jhanley@dgtlrift.com=
+</a>&gt; wrote:<br><br></div><blockquote type=3D"cite"><div><div dir=3D"ltr"=
+>I see now that there an RFC for multi-core support and a patch for refactor=
+ing armv7m_nvic - should I wait for those to be integrated? When will that b=
+e included into the mainline?</div><div class=3D"gmail_extra"><br><div class=
+=3D"gmail_quote">On Thu, Jan 5, 2017 at 4:18 PM, James Hanley <span dir=3D"l=
+tr">&lt;<a href=3D"mailto:jhanley@dgtlrift.com" target=3D"_blank">jhanley@dg=
+tlrift.com</a>&gt;</span> wrote:<br><blockquote class=3D"gmail_quote" style=3D=
+"margin:0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex"><div dir=3D"=
+ltr">I'm trying to create a Atmel ATSAM4sd16c chip support (part of the ATSA=
+M4 family) but I'm running into an issue with the NVIC code.&nbsp; I modeled=
+ it after the STMicro implementation and created a Machine based around one o=
+f our boards, but I am running into an issue where although the call to armv=
+7m_init() seems to set up the NVIC correctly and map it to 0xe000e000 and ju=
+mp into the nvic_readl(), but never jumps to the vector in the firmware (ker=
+nel). &nbsp;&nbsp;<div><br></div><div>Is there any documentation (other then=
+ code tracing) for how the interface for armv7m_nvic.c should be used?</div>=
+<div><br></div><div>Thanks much,</div><div>-Jim</div></div>
+</blockquote></div><br></div>
+</div></blockquote></body></html>=
+
+--Apple-Mail-17C9267D-A34C-49C4-80F4-AE156F729772--

@@ -1,74 +1,61 @@
-Received: by 10.25.205.13 with SMTP id d13csp10722121lfg;
-        Sat, 7 Jan 2017 04:35:59 -0800 (PST)
-X-Received: by 10.200.56.4 with SMTP id q4mr5322557qtb.73.1483792559248;
-        Sat, 07 Jan 2017 04:35:59 -0800 (PST)
+Received: by 10.25.205.13 with SMTP id d13csp10868913lfg;
+        Sat, 7 Jan 2017 11:57:23 -0800 (PST)
+X-Received: by 10.237.34.167 with SMTP id p36mr74677902qtc.286.1483819043166;
+        Sat, 07 Jan 2017 11:57:23 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id w77si42677605qkb.124.2017.01.07.04.35.58
+        by mx.google.com with ESMTPS id o22si1819250qta.238.2017.01.07.11.57.22
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sat, 07 Jan 2017 04:35:59 -0800 (PST)
+        Sat, 07 Jan 2017 11:57:23 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:57408 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:58964 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1cPqE0-0007im-ME
-	for alex.bennee@linaro.org; Sat, 07 Jan 2017 07:35:56 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:36937)
+	id 1cPx7A-0007u0-Pl
+	for alex.bennee@linaro.org; Sat, 07 Jan 2017 14:57:20 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:33787)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <kirkseraph@gmail.com>) id 1cPqDs-0007gk-TO
-	for qemu-arm@nongnu.org; Sat, 07 Jan 2017 07:35:49 -0500
+	(envelope-from <clg@kaod.org>) id 1cPx77-0007tr-41
+	for qemu-arm@nongnu.org; Sat, 07 Jan 2017 14:57:18 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <kirkseraph@gmail.com>) id 1cPqDr-00057q-RV
-	for qemu-arm@nongnu.org; Sat, 07 Jan 2017 07:35:48 -0500
-Received: from mail-wj0-x241.google.com ([2a00:1450:400c:c01::241]:35655)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <kirkseraph@gmail.com>)
-	id 1cPqDm-00056U-Bj; Sat, 07 Jan 2017 07:35:42 -0500
-Received: by mail-wj0-x241.google.com with SMTP id ey1so2371132wjd.2;
-	Sat, 07 Jan 2017 04:35:42 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=from:to:cc:subject:date:message-id;
-	bh=N+tKLpCEFmyKwgZAIciXeH477JkVD8y2p8eTHoY5ZRI=;
-	b=l5EL1xea15DE/gm8tVHrUviwV0aW4fu+fd7M9/JedBZu3cUGos/w0+pd3uh1ZYLuXX
-	fVPtIRqnAvURQ23s/QozxQVR634XEJP7bnUnXVSkggiBjtaaQenJjK2ipeGnlP5JUrYK
-	z6GBmksHlHviD/oWClYooIwPj8B/ny2YeyYha9Fq9uRVmV4LUM8Ug/DUBhoA7eOVH2Aq
-	te3dfvzJK3XcO2npZBNITEdUl57q0RLw/kdeiij2rJ7GyYRtRM2FRdV0kAfRs/Uvka2y
-	Edf3PUScX4Ukd00nIR9Etpn/p8FwZqWGwHTvttwrypFOeCxya0arCWXVGe44CPRRSF0y
-	HXUg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:from:to:cc:subject:date:message-id;
-	bh=N+tKLpCEFmyKwgZAIciXeH477JkVD8y2p8eTHoY5ZRI=;
-	b=htaP4FzG5jgg4iU0SP3Vd6qvoWmQhJPC9IIupn9FkfMEi2zcNpJEaRj+70j6O6eqys
-	AaHsED1PeVCoNPxyspKXedTnOIdsbCcZIgfSvjAtWtnc3zFKRA9alALrtPEE/+KiUPuw
-	bG6sLlcWHu5F3BXhq/jmUBFvnTxCBqjtSzzYMf7+ANh5OFPIZhi8qrd3qEacK4TAj1Se
-	tXddsL/LneOgGrBB1y/fRORbhwCkbz4lm4/xLVhF8dQFVIkgDYTQ8DEg5joRrgV5VveS
-	0jgOzqwTD7S1MVHPVH9BvpQiisvNc+2Qp7yjQI8+evjnGxUFfqJwvLWIpkX7nHtJMMQs
-	8VPw==
-X-Gm-Message-State: AIkVDXKkOo7a6ctLO0z9aTvdafBu6X43nUJi1LL7GTMFlfL5mNhX+qb+0iIZ8MYW9YQM0Q==
-X-Received: by 10.194.67.67 with SMTP id l3mr69095471wjt.151.1483792541156;
-	Sat, 07 Jan 2017 04:35:41 -0800 (PST)
-Received: from localhost (cha92-19-78-239-153-115.fbx.proxad.net.
-	[78.239.153.115])
-	by smtp.gmail.com with ESMTPSA id u18sm8266226wmd.1.2017.01.07.04.35.39
-	(version=TLS1 cipher=AES128-SHA bits=128/128);
-	Sat, 07 Jan 2017 04:35:40 -0800 (PST)
-Received: by localhost (sSMTP sendmail emulation);
-	Sat, 07 Jan 2017 13:35:38 +0100
-From: Seraphime Kirkovski <kirkseraph@gmail.com>
-To: qemu-devel@nongnu.org
-Date: Sat,  7 Jan 2017 13:35:31 +0100
-Message-Id: <20170107123531.5994-1-kirkseraph@gmail.com>
-X-Mailer: git-send-email 2.11.0
+	(envelope-from <clg@kaod.org>) id 1cPx72-0004K2-7j
+	for qemu-arm@nongnu.org; Sat, 07 Jan 2017 14:57:17 -0500
+Received: from 10.mo53.mail-out.ovh.net ([87.98.189.210]:56818)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <clg@kaod.org>) id 1cPx72-0004IK-1v
+	for qemu-arm@nongnu.org; Sat, 07 Jan 2017 14:57:12 -0500
+Received: from player158.ha.ovh.net (b7.ovh.net [213.186.33.57])
+	by mo53.mail-out.ovh.net (Postfix) with ESMTP id 510B16606
+	for <qemu-arm@nongnu.org>; Sat,  7 Jan 2017 20:57:08 +0100 (CET)
+Received: from zorba.kaod.org (LFbn-1-2234-107.w90-76.abo.wanadoo.fr
+	[90.76.55.107]) (Authenticated sender: postmaster@kaod.org)
+	by player158.ha.ovh.net (Postfix) with ESMTPSA id 10C5862006D;
+	Sat,  7 Jan 2017 20:57:01 +0100 (CET)
+To: Marcin Krzeminski <mar.krzeminski@gmail.com>, qemu-devel@nongnu.org,
+	edgar.iglesias@xilinx.com
+References: <20170106184948.3422-1-mar.krzeminski@gmail.com>
+	<20170106184948.3422-3-mar.krzeminski@gmail.com>
+From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
+Message-ID: <ab63d2bc-cbfd-7d3a-ca80-efc1e99a20bd@kaod.org>
+Date: Sat, 7 Jan 2017 20:57:00 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
+	Thunderbird/45.5.1
+MIME-Version: 1.0
+In-Reply-To: <20170106184948.3422-3-mar.krzeminski@gmail.com>
+Content-Type: text/plain; charset=windows-1252
+Content-Transfer-Encoding: 7bit
+X-Ovh-Tracer-Id: 5193494798958103472
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrfeelgedrvddvgddufeduucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddm
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2a00:1450:400c:c01::241
-Subject: [Qemu-arm] [PATCH] target-arm/abi32: check for segfault in
- do_kernel_trap
+	[fuzzy]
+X-Received-From: 87.98.189.210
+Subject: Re: [Qemu-arm] [PATCH v2 2/3] block: m25p80: Introduce die erase
+ command
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -80,140 +67,126 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, riku.voipio@iki.fi, qemu-arm@nongnu.org,
-	Seraphime Kirkovski <kirkseraph@gmail.com>
+Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: sJve2TcdJKs5
+X-TUID: zjbJtzqKiphE
 
-Currently, the cmpxchg implementation tests whether the destination address
-is readable:
-  - if it is, we read the value and continue with the comparison
-  - if isn't, i.e. access to addr would segfault, we assume that src != dest
-    rather than queuing a SIGSEGV.
+On 01/06/2017 07:49 PM, Marcin Krzeminski wrote:
+> Modern big flash nor devices consist from more than one die.
+> Some of them do not support chip erase and instead have die
+> erase command that can erase one die only. This commit adds
+> possibility to define number of dies in the chip and adds
+> support for die erase command. Nor flash model is not strict
+> thus option to disable chip eras was not added.
+> 
+> Signed-off-by: Marcin Krzeminski <mar.krzeminski@gmail.com>
+> ---
+>  hw/block/m25p80.c | 42 +++++++++++++++++++++++++++++++++++++++++-
+>  1 file changed, 41 insertions(+), 1 deletion(-)
+> 
+> diff --git a/hw/block/m25p80.c b/hw/block/m25p80.c
+> index 6dff81b..b065ddc 100644
+> --- a/hw/block/m25p80.c
+> +++ b/hw/block/m25p80.c
+> @@ -73,6 +73,12 @@ typedef struct FlashPartInfo {
+>      uint32_t n_sectors;
+>      uint32_t page_size;
+>      uint16_t flags;
+> +    /*
+> +     * Big sized spi nor are often stacked devices, thus sometime
+> +     * replace chip erase with die erase.
+> +     * This field inform how many die is in the chip.
+> +     */
+> +    uint8_t die_cnt;
+>  } FlashPartInfo;
+>  
+>  /* adapted from linux */
+> @@ -90,7 +96,8 @@ typedef struct FlashPartInfo {
+>      .sector_size = (_sector_size),\
+>      .n_sectors = (_n_sectors),\
+>      .page_size = 256,\
+> -    .flags = (_flags),
+> +    .flags = (_flags),\
+> +    .die_cnt = 0
+>  
+>  #define INFO6(_part_name, _jedec_id, _ext_id, _sector_size, _n_sectors, _flags)\
+>      .part_name = _part_name,\
+> @@ -107,6 +114,24 @@ typedef struct FlashPartInfo {
+>      .n_sectors = (_n_sectors),\
+>      .page_size = 256,\
+>      .flags = (_flags),\
+> +    .die_cnt = 0
+> +
+> +#define INFO_STACKED(_part_name, _jedec_id, _ext_id, _sector_size, _n_sectors,\
+> +                    _flags, _die_cnt)\
+> +    .part_name = _part_name,\
+> +    .id = {\
+> +        ((_jedec_id) >> 16) & 0xff,\
+> +        ((_jedec_id) >> 8) & 0xff,\
+> +        (_jedec_id) & 0xff,\
+> +        ((_ext_id) >> 8) & 0xff,\
+> +        (_ext_id) & 0xff,\
+> +          },\
+> +    .id_len = (!(_jedec_id) ? 0 : (3 + ((_ext_id) ? 2 : 0))),\
+> +    .sector_size = (_sector_size),\
+> +    .n_sectors = (_n_sectors),\
+> +    .page_size = 256,\
+> +    .flags = (_flags),\
+> +    .die_cnt = _die_cnt
+>  
+>  #define JEDEC_NUMONYX 0x20
+>  #define JEDEC_WINBOND 0xEF
+> @@ -359,6 +384,8 @@ typedef enum {
+>  
+>      REVCR = 0x65,
+>      WEVCR = 0x61,
+> +
+> +    DIE_ERASE = 0xC4,
+>  } FlashCMD;
+>  
+>  typedef enum {
+> @@ -514,6 +541,17 @@ static void flash_erase(Flash *s, int offset, FlashCMD cmd)
+>      case BULK_ERASE:
+>          len = s->size;
+>          break;
+> +    case DIE_ERASE:
+> +        if (s->pi->die_cnt) {
+> +            len = s->size / s->pi->die_cnt;
+> +            offset = offset & (~(len - 1));
+> +            printf("Die erase len = 0x%X offset = 0x%X!\n", len, offset);
 
-The same problem exists in the case where src == dest: the code doesn't
-check whether put_user_u32 succeeds.
+do we need this printf ? 
 
-This fixes both problems by sending a SIGSEGV when the destination address
-is inaccessible.
+Thanks,
 
-Signed-off-by: Seraphime Kirkovski <kirkseraph@gmail.com>
----
+C. 
 
-> As the patchew robot notes, our coding style wants braces on all
-> if() statements, even one-line ones. Other than that,
->
->  Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
-
-This fixes the missing brackets.
-
- linux-user/main.c | 74 ++++++++++++++++++++++++++++++++++++-------------------
- 1 file changed, 49 insertions(+), 25 deletions(-)
-
-diff --git a/linux-user/main.c b/linux-user/main.c
-index c1d5eb4d6f..1a32f2da7d 100644
---- a/linux-user/main.c
-+++ b/linux-user/main.c
-@@ -441,7 +441,7 @@ static void arm_kernel_cmpxchg64_helper(CPUARMState *env)
-     uint32_t addr, cpsr;
-     target_siginfo_t info;
  
--    /* Based on the 32 bit code in do_kernel_trap */
-+    /* Based on the 32 bit code in arm_kernel_cmpxchg_helper */
- 
-     /* XXX: This only works between threads, not between processes.
-        It's probably possible to implement this with native host
-@@ -496,41 +496,65 @@ segv:
-     queue_signal(env, info.si_signo, QEMU_SI_FAULT, &info);
- }
- 
-+/*
-+ * 32bit cmpxchg kernel user helper.
-+ * See the note above arm_kernel_cmpxchg64_helper.
-+ */
-+static void arm_kernel_cmpxchg_helper(CPUARMState *env)
-+{
-+    uint32_t addr;
-+    uint32_t cpsr;
-+    uint32_t val;
-+    target_siginfo_t info;
-+
-+    /* XXX: This only works between threads, not between processes.
-+       It's probably possible to implement this with native host
-+       operations. However things like ldrex/strex are much harder so
-+       there's not much point trying.  */
-+    start_exclusive();
-+    cpsr = cpsr_read(env);
-+    addr = env->regs[2];
-+    if (get_user_u32(val, addr)) {
-+        goto segv;
-+    }
-+    if (val == env->regs[0]) {
-+        val = env->regs[1];
-+        if (put_user_u32(val, addr)) {
-+            goto segv;
-+        }
-+        env->regs[0] = 0;
-+        cpsr |= CPSR_C;
-+    } else {
-+        env->regs[0] = -1;
-+        cpsr &= ~CPSR_C;
-+    }
-+    cpsr_write(env, cpsr, CPSR_C, CPSRWriteByInstr);
-+    end_exclusive();
-+    return;
-+
-+segv:
-+    end_exclusive();
-+    env->exception.vaddress = addr;
-+    info.si_signo = TARGET_SIGSEGV;
-+    info.si_errno = 0;
-+    /* XXX: check env->error_code */
-+    info.si_code = TARGET_SEGV_MAPERR;
-+    info._sifields._sigfault._addr = env->exception.vaddress;
-+    queue_signal(env, info.si_signo, QEMU_SI_FAULT, &info);
-+}
-+
- /* Handle a jump to the kernel code page.  */
- static int
- do_kernel_trap(CPUARMState *env)
- {
-     uint32_t addr;
--    uint32_t cpsr;
--    uint32_t val;
- 
-     switch (env->regs[15]) {
-     case 0xffff0fa0: /* __kernel_memory_barrier */
-         /* ??? No-op. Will need to do better for SMP.  */
-         break;
-     case 0xffff0fc0: /* __kernel_cmpxchg */
--         /* XXX: This only works between threads, not between processes.
--            It's probably possible to implement this with native host
--            operations. However things like ldrex/strex are much harder so
--            there's not much point trying.  */
--        start_exclusive();
--        cpsr = cpsr_read(env);
--        addr = env->regs[2];
--        /* FIXME: This should SEGV if the access fails.  */
--        if (get_user_u32(val, addr))
--            val = ~env->regs[0];
--        if (val == env->regs[0]) {
--            val = env->regs[1];
--            /* FIXME: Check for segfaults.  */
--            put_user_u32(val, addr);
--            env->regs[0] = 0;
--            cpsr |= CPSR_C;
--        } else {
--            env->regs[0] = -1;
--            cpsr &= ~CPSR_C;
--        }
--        cpsr_write(env, cpsr, CPSR_C, CPSRWriteByInstr);
--        end_exclusive();
-+        arm_kernel_cmpxchg_helper(env);
-         break;
-     case 0xffff0fe0: /* __kernel_get_tls */
-         env->regs[0] = cpu_get_tls(env);
--- 
-2.11.0
+> +        } else {
+> +            qemu_log_mask(LOG_GUEST_ERROR, "M25P80: die erase is not supported"
+> +                          " by device\n");
+> +            return;
+> +        }
+> +        break;
+>      default:
+>          abort();
+>      }
+> @@ -635,6 +673,7 @@ static void complete_collecting_data(Flash *s)
+>      case ERASE4_32K:
+>      case ERASE_SECTOR:
+>      case ERASE4_SECTOR:
+> +    case DIE_ERASE:
+>          flash_erase(s, s->cur_addr, s->cmd_in_progress);
+>          break;
+>      case WRSR:
+> @@ -881,6 +920,7 @@ static void decode_new_cmd(Flash *s, uint32_t value)
+>      case PP:
+>      case PP4:
+>      case PP4_4:
+> +    case DIE_ERASE:
+>          s->needed_bytes = get_addr_length(s);
+>          s->pos = 0;
+>          s->len = 0;
+> 
 

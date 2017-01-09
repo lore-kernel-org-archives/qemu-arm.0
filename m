@@ -1,46 +1,48 @@
-Received: by 10.25.205.13 with SMTP id d13csp11568588lfg;
-        Mon, 9 Jan 2017 08:19:01 -0800 (PST)
-X-Received: by 10.237.62.68 with SMTP id m4mr22062201qtf.171.1483978741696;
-        Mon, 09 Jan 2017 08:19:01 -0800 (PST)
+Received: by 10.25.205.13 with SMTP id d13csp11568812lfg;
+        Mon, 9 Jan 2017 08:19:29 -0800 (PST)
+X-Received: by 10.237.34.167 with SMTP id p36mr81044421qtc.286.1483978769554;
+        Mon, 09 Jan 2017 08:19:29 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id h67si45614459qkh.135.2017.01.09.08.19.01
+        by mx.google.com with ESMTPS id v189si25347009qkd.214.2017.01.09.08.19.28
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 09 Jan 2017 08:19:01 -0800 (PST)
+        Mon, 09 Jan 2017 08:19:29 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:40907 helo=lists.gnu.org)
+Received: from localhost ([::1]:40911 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1cQcex-0003F5-3O
-	for alex.bennee@linaro.org; Mon, 09 Jan 2017 11:18:59 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:40348)
+	id 1cQcfO-0003dG-Qa
+	for alex.bennee@linaro.org; Mon, 09 Jan 2017 11:19:26 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:40736)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1cQcS9-0007xK-Qp
-	for qemu-arm@nongnu.org; Mon, 09 Jan 2017 11:05:51 -0500
+	(envelope-from <pm215@archaic.org.uk>) id 1cQcTb-0001As-AQ
+	for qemu-arm@nongnu.org; Mon, 09 Jan 2017 11:07:16 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1cQcS8-0003o9-NP
-	for qemu-arm@nongnu.org; Mon, 09 Jan 2017 11:05:45 -0500
-Received: from orth.archaic.org.uk ([2001:8b0:1d0::2]:48036)
+	(envelope-from <pm215@archaic.org.uk>) id 1cQcTZ-0004Mi-Uh
+	for qemu-arm@nongnu.org; Mon, 09 Jan 2017 11:07:15 -0500
+Received: from orth.archaic.org.uk ([2001:8b0:1d0::2]:48061)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <pm215@archaic.org.uk>)
-	id 1cQcS8-0003hC-3K; Mon, 09 Jan 2017 11:05:44 -0500
+	id 1cQcTZ-0004MK-LS; Mon, 09 Jan 2017 11:07:13 -0500
 Received: from pm215 by orth.archaic.org.uk with local (Exim 4.84_2)
 	(envelope-from <pm215@archaic.org.uk>)
-	id 1cQcRp-0001iA-CW; Mon, 09 Jan 2017 16:05:25 +0000
+	id 1cQcRv-0001mW-ID; Mon, 09 Jan 2017 16:05:31 +0000
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Date: Mon,  9 Jan 2017 16:05:06 +0000
-Message-Id: <1483977924-14522-1-git-send-email-peter.maydell@linaro.org>
+Date: Mon,  9 Jan 2017 16:05:19 +0000
+Message-Id: <1483977924-14522-14-git-send-email-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.7.4
+In-Reply-To: <1483977924-14522-1-git-send-email-peter.maydell@linaro.org>
+References: <1483977924-14522-1-git-send-email-peter.maydell@linaro.org>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 2001:8b0:1d0::2
-Subject: [Qemu-arm] [PATCH v2 00/18] arm: Add virtualization to GICv3,
- and enable EL2 on 64-bit CPUs
+Subject: [Qemu-arm] [PATCH v2 13/18] hw/intc/arm_gicv3: Implement EL2 traps
+ for CPU i/f regs
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -58,73 +60,178 @@ Cc: "Edgar E . Iglesias" <edgar.iglesias@xilinx.com>,
 	Christoffer Dall <christoffer.dall@linaro.org>, patches@linaro.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: IVFyc6m0a5PF
+X-TUID: O/lFy/OhhF4W
 
-This patchset adds support for the Virtualization extensions to QEMU's
-GICv3 emulation. This was the last missing piece that was stopping
-us from turning on the EL2 support in the CPU model, so the patchset
-also adds support for enabling it all on the virt board via the
-'-machine virtualization=on' option.
+Implement the architecturally required traps from NS EL1
+to EL2 for the CPU interface registers. These fall into
+several different groups:
+ * group-0-only registers all trap if ICH_HRC_EL2.TALL0 is set
+   (exactly the registers covered by gicv3_fiq_access())
+ * group-1-only registers all trap if ICH_HRC_EL2.TALL1 is set
+   (exactly the registers covered by gicv3_irq_access())
+ * DIR traps if ICH_HCR_EL2.TC or ICH_HCR_EL2.TDIR are set
+ * PMR, RPR, CTLR trap if ICH_HCR_EL2.TC is set
+ * SGI0R, SGI1R, ASGI1R trap if ICH_HCR_EL2.TC is set or
+   if HCR_EL2.IMO or HCR_EL2.FMO are set
 
-The result works well enough to allow booting a KVM outer guest kernel
-and then running QEMU + an inner guest under KVM inside it. The outer
-guest KVM also passes the kvm-unit-tests GIC tests.
+We split DIR and the SGI registers out into their own access
+functions, leaving the existing gicv3_irqfiq_access() just
+handling PMR, RPR and CTLR.
 
-Changes v1->v2:
- * rebased on master; some of the earlier patches in v1
-   have now gone into master, as has Drew's ACPI cleanup set
- * new patch "psci.c: If EL2 implemented, start CPUs in EL2"
-   fixes the problems with SMP configs not starting properly
- * includes Drew's changes to report SMC vs HVC in ACPI
-   (slightly tweaked by me)
+This commit doesn't implement support for trapping on
+HSTR_EL2.T12 for the 32-bit registers, as we don't implement
+any of those per-coprocessor trap bits currently and
+probably will want to do those in some more centralized way.
 
-Patches 1, 4-13, 15, 16 still need review.
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+ hw/intc/arm_gicv3_cpuif.c | 70 ++++++++++++++++++++++++++++++++++++++++-------
+ 1 file changed, 60 insertions(+), 10 deletions(-)
 
-Git branch for this:
- https://git.linaro.org/people/peter.maydell/qemu-arm.git gicv3-virt
-
-thanks
--- PMM
-
-Andrew Jones (1):
-  hw/arm/virt-acpi-build: use SMC if booting in EL2
-
-Peter Maydell (17):
-  hw/intc/arm_gicv3: Add external IRQ lines for VIRQ and VFIQ
-  hw/intc/arm_gic: Add external IRQ lines for VIRQ and VFIQ
-  target-arm: Expose output GPIO line for VCPU maintenance interrupt
-  hw/arm/virt: Wire VIRQ, VFIQ, maintenance irq lines from GIC to CPU
-  target-arm: Add ARMCPU fields for GIC CPU i/f config
-  hw/intc/gicv3: Add defines for ICH system register fields
-  hw/intc/gicv3: Add data fields for virtualization support
-  hw/intc/arm_gicv3: Add accessors for ICH_ system registers
-  hw/intc/arm_gicv3: Implement ICV_ registers which are just accessors
-  hw/intc/arm_gicv3: Implement ICV_ HPPIR, DIR and RPR registers
-  hw/intc/arm_gicv3: Implement ICV_ registers EOIR and IAR
-  hw/intc/arm_gicv3: Implement gicv3_cpuif_virt_update()
-  hw/intc/arm_gicv3: Implement EL2 traps for CPU i/f regs
-  hw/arm/virt: Support using SMC for PSCI
-  target/arm/psci.c: If EL2 implemented, start CPUs in EL2
-  target-arm: Enable EL2 feature bit on A53 and A57
-  hw/arm/virt: Add board property to enable EL2
-
- hw/intc/gicv3_internal.h           |   79 +++
- include/hw/arm/virt.h              |    5 +-
- include/hw/intc/arm_gic_common.h   |    2 +
- include/hw/intc/arm_gicv3_common.h |   21 +
- target/arm/cpu.h                   |    9 +
- hw/arm/virt-acpi-build.c           |   29 +-
- hw/arm/virt.c                      |   87 ++-
- hw/arm/xlnx-zynqmp.c               |    2 +
- hw/intc/arm_gic_common.c           |    6 +
- hw/intc/arm_gicv3_common.c         |   31 +
- hw/intc/arm_gicv3_cpuif.c          | 1351 +++++++++++++++++++++++++++++++++++-
- target/arm/cpu.c                   |   15 +
- target/arm/cpu64.c                 |    8 +
- target/arm/psci.c                  |   25 +-
- hw/intc/trace-events               |   33 +
- 15 files changed, 1642 insertions(+), 61 deletions(-)
-
+diff --git a/hw/intc/arm_gicv3_cpuif.c b/hw/intc/arm_gicv3_cpuif.c
+index e05f6b3..a9ee7fd 100644
+--- a/hw/intc/arm_gicv3_cpuif.c
++++ b/hw/intc/arm_gicv3_cpuif.c
+@@ -1833,9 +1833,17 @@ static CPAccessResult gicv3_irqfiq_access(CPUARMState *env,
+                                           const ARMCPRegInfo *ri, bool isread)
+ {
+     CPAccessResult r = CP_ACCESS_OK;
++    GICv3CPUState *cs = icc_cs_from_env(env);
++    int el = arm_current_el(env);
++
++    if ((cs->ich_hcr_el2 & ICH_HCR_EL2_TC) &&
++        el == 1 && !arm_is_secure_below_el3(env)) {
++        /* Takes priority over a possible EL3 trap */
++        return CP_ACCESS_TRAP_EL2;
++    }
+ 
+     if ((env->cp15.scr_el3 & (SCR_FIQ | SCR_IRQ)) == (SCR_FIQ | SCR_IRQ)) {
+-        switch (arm_current_el(env)) {
++        switch (el) {
+         case 1:
+             if (arm_is_secure_below_el3(env) ||
+                 ((env->cp15.hcr_el2 & (HCR_IMO | HCR_FMO)) == 0)) {
+@@ -1861,13 +1869,47 @@ static CPAccessResult gicv3_irqfiq_access(CPUARMState *env,
+     return r;
+ }
+ 
++static CPAccessResult gicv3_dir_access(CPUARMState *env,
++                                       const ARMCPRegInfo *ri, bool isread)
++{
++    GICv3CPUState *cs = icc_cs_from_env(env);
++
++    if ((cs->ich_hcr_el2 & ICH_HCR_EL2_TDIR) &&
++        arm_current_el(env) == 1 && !arm_is_secure_below_el3(env)) {
++        /* Takes priority over a possible EL3 trap */
++        return CP_ACCESS_TRAP_EL2;
++    }
++
++    return gicv3_irqfiq_access(env, ri, isread);
++}
++
++static CPAccessResult gicv3_sgi_access(CPUARMState *env,
++                                       const ARMCPRegInfo *ri, bool isread)
++{
++    if ((env->cp15.hcr_el2 & (HCR_IMO | HCR_FMO)) &&
++        arm_current_el(env) == 1 && !arm_is_secure_below_el3(env)) {
++        /* Takes priority over a possible EL3 trap */
++        return CP_ACCESS_TRAP_EL2;
++    }
++
++    return gicv3_irqfiq_access(env, ri, isread);
++}
++
+ static CPAccessResult gicv3_fiq_access(CPUARMState *env,
+                                        const ARMCPRegInfo *ri, bool isread)
+ {
+     CPAccessResult r = CP_ACCESS_OK;
++    GICv3CPUState *cs = icc_cs_from_env(env);
++    int el = arm_current_el(env);
++
++    if ((cs->ich_hcr_el2 & ICH_HCR_EL2_TALL0) &&
++        el == 1 && !arm_is_secure_below_el3(env)) {
++        /* Takes priority over a possible EL3 trap */
++        return CP_ACCESS_TRAP_EL2;
++    }
+ 
+     if (env->cp15.scr_el3 & SCR_FIQ) {
+-        switch (arm_current_el(env)) {
++        switch (el) {
+         case 1:
+             if (arm_is_secure_below_el3(env) ||
+                 ((env->cp15.hcr_el2 & HCR_FMO) == 0)) {
+@@ -1897,9 +1939,17 @@ static CPAccessResult gicv3_irq_access(CPUARMState *env,
+                                        const ARMCPRegInfo *ri, bool isread)
+ {
+     CPAccessResult r = CP_ACCESS_OK;
++    GICv3CPUState *cs = icc_cs_from_env(env);
++    int el = arm_current_el(env);
++
++    if ((cs->ich_hcr_el2 & ICH_HCR_EL2_TALL1) &&
++        el == 1 && !arm_is_secure_below_el3(env)) {
++        /* Takes priority over a possible EL3 trap */
++        return CP_ACCESS_TRAP_EL2;
++    }
+ 
+     if (env->cp15.scr_el3 & SCR_IRQ) {
+-        switch (arm_current_el(env)) {
++        switch (el) {
+         case 1:
+             if (arm_is_secure_below_el3(env) ||
+                 ((env->cp15.hcr_el2 & HCR_IMO) == 0)) {
+@@ -2055,7 +2105,7 @@ static const ARMCPRegInfo gicv3_cpuif_reginfo[] = {
+     { .name = "ICC_DIR_EL1", .state = ARM_CP_STATE_BOTH,
+       .opc0 = 3, .opc1 = 0, .crn = 12, .crm = 11, .opc2 = 1,
+       .type = ARM_CP_IO | ARM_CP_NO_RAW,
+-      .access = PL1_W, .accessfn = gicv3_irqfiq_access,
++      .access = PL1_W, .accessfn = gicv3_dir_access,
+       .writefn = icc_dir_write,
+     },
+     { .name = "ICC_RPR_EL1", .state = ARM_CP_STATE_BOTH,
+@@ -2067,37 +2117,37 @@ static const ARMCPRegInfo gicv3_cpuif_reginfo[] = {
+     { .name = "ICC_SGI1R_EL1", .state = ARM_CP_STATE_AA64,
+       .opc0 = 3, .opc1 = 0, .crn = 12, .crm = 11, .opc2 = 5,
+       .type = ARM_CP_IO | ARM_CP_NO_RAW,
+-      .access = PL1_W, .accessfn = gicv3_irqfiq_access,
++      .access = PL1_W, .accessfn = gicv3_sgi_access,
+       .writefn = icc_sgi1r_write,
+     },
+     { .name = "ICC_SGI1R",
+       .cp = 15, .opc1 = 0, .crm = 12,
+       .type = ARM_CP_64BIT | ARM_CP_IO | ARM_CP_NO_RAW,
+-      .access = PL1_W, .accessfn = gicv3_irqfiq_access,
++      .access = PL1_W, .accessfn = gicv3_sgi_access,
+       .writefn = icc_sgi1r_write,
+     },
+     { .name = "ICC_ASGI1R_EL1", .state = ARM_CP_STATE_AA64,
+       .opc0 = 3, .opc1 = 0, .crn = 12, .crm = 11, .opc2 = 6,
+       .type = ARM_CP_IO | ARM_CP_NO_RAW,
+-      .access = PL1_W, .accessfn = gicv3_irqfiq_access,
++      .access = PL1_W, .accessfn = gicv3_sgi_access,
+       .writefn = icc_asgi1r_write,
+     },
+     { .name = "ICC_ASGI1R",
+       .cp = 15, .opc1 = 1, .crm = 12,
+       .type = ARM_CP_64BIT | ARM_CP_IO | ARM_CP_NO_RAW,
+-      .access = PL1_W, .accessfn = gicv3_irqfiq_access,
++      .access = PL1_W, .accessfn = gicv3_sgi_access,
+       .writefn = icc_asgi1r_write,
+     },
+     { .name = "ICC_SGI0R_EL1", .state = ARM_CP_STATE_AA64,
+       .opc0 = 3, .opc1 = 0, .crn = 12, .crm = 11, .opc2 = 7,
+       .type = ARM_CP_IO | ARM_CP_NO_RAW,
+-      .access = PL1_W, .accessfn = gicv3_irqfiq_access,
++      .access = PL1_W, .accessfn = gicv3_sgi_access,
+       .writefn = icc_sgi0r_write,
+     },
+     { .name = "ICC_SGI0R",
+       .cp = 15, .opc1 = 2, .crm = 12,
+       .type = ARM_CP_64BIT | ARM_CP_IO | ARM_CP_NO_RAW,
+-      .access = PL1_W, .accessfn = gicv3_irqfiq_access,
++      .access = PL1_W, .accessfn = gicv3_sgi_access,
+       .writefn = icc_sgi0r_write,
+     },
+     { .name = "ICC_IAR1_EL1", .state = ARM_CP_STATE_BOTH,
 -- 
 2.7.4
 

@@ -1,48 +1,48 @@
-Received: by 10.25.205.13 with SMTP id d13csp11562828lfg;
-        Mon, 9 Jan 2017 08:05:57 -0800 (PST)
-X-Received: by 10.237.59.230 with SMTP id s35mr91094926qte.151.1483977957773;
-        Mon, 09 Jan 2017 08:05:57 -0800 (PST)
+Received: by 10.25.205.13 with SMTP id d13csp11562915lfg;
+        Mon, 9 Jan 2017 08:06:10 -0800 (PST)
+X-Received: by 10.237.38.133 with SMTP id q5mr6621047qtd.21.1483977970052;
+        Mon, 09 Jan 2017 08:06:10 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id k95si46839206qkh.19.2017.01.09.08.05.57
+        by mx.google.com with ESMTPS id 20si419506qki.280.2017.01.09.08.06.09
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 09 Jan 2017 08:05:57 -0800 (PST)
+        Mon, 09 Jan 2017 08:06:10 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:40831 helo=lists.gnu.org)
+Received: from localhost ([::1]:40834 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1cQcSJ-0007zp-53
-	for alex.bennee@linaro.org; Mon, 09 Jan 2017 11:05:55 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:40102)
+	id 1cQcSV-0008Bg-60
+	for alex.bennee@linaro.org; Mon, 09 Jan 2017 11:06:07 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:40157)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1cQcS1-0007my-Gq
-	for qemu-arm@nongnu.org; Mon, 09 Jan 2017 11:05:38 -0500
+	(envelope-from <pm215@archaic.org.uk>) id 1cQcS3-0007oy-CD
+	for qemu-arm@nongnu.org; Mon, 09 Jan 2017 11:05:40 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1cQcS0-0003i7-5n
-	for qemu-arm@nongnu.org; Mon, 09 Jan 2017 11:05:37 -0500
+	(envelope-from <pm215@archaic.org.uk>) id 1cQcRy-0003hX-TE
+	for qemu-arm@nongnu.org; Mon, 09 Jan 2017 11:05:39 -0500
 Received: from orth.archaic.org.uk ([2001:8b0:1d0::2]:48036)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <pm215@archaic.org.uk>)
-	id 1cQcRz-0003hC-GT; Mon, 09 Jan 2017 11:05:36 -0500
+	id 1cQcRy-0003hC-L3; Mon, 09 Jan 2017 11:05:34 -0500
 Received: from pm215 by orth.archaic.org.uk with local (Exim 4.84_2)
 	(envelope-from <pm215@archaic.org.uk>)
-	id 1cQcRy-0001p5-6G; Mon, 09 Jan 2017 16:05:34 +0000
+	id 1cQcRx-0001oq-NP; Mon, 09 Jan 2017 16:05:33 +0000
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Date: Mon,  9 Jan 2017 16:05:24 +0000
-Message-Id: <1483977924-14522-19-git-send-email-peter.maydell@linaro.org>
+Date: Mon,  9 Jan 2017 16:05:23 +0000
+Message-Id: <1483977924-14522-18-git-send-email-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.7.4
 In-Reply-To: <1483977924-14522-1-git-send-email-peter.maydell@linaro.org>
 References: <1483977924-14522-1-git-send-email-peter.maydell@linaro.org>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 2001:8b0:1d0::2
-Subject: [Qemu-arm] [PATCH v2 18/18] hw/arm/virt: Add board property to
- enable EL2
+Subject: [Qemu-arm] [PATCH v2 17/18] target-arm: Enable EL2 feature bit on
+ A53 and A57
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -60,142 +60,129 @@ Cc: "Edgar E . Iglesias" <edgar.iglesias@xilinx.com>,
 	Christoffer Dall <christoffer.dall@linaro.org>, patches@linaro.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: w+0n7IPsEnhZ
+X-TUID: uWXbXxPwXjsp
 
-Add a board level property to the virt board which will
-enable EL2 on the CPU if the user asks for it. The
-default is not to provide EL2. If EL2 is enabled then
-we will use SMC as our PSCI conduit, and report the
-virtualization support in the GICv3 device tree node
-and the ACPI tables.
+Enable the ARM_FEATURE_EL2 bit on Cortex-A52 and
+Cortex-A57, since this is all now sufficiently implemented
+to work with the GICv3. We provide the usual CPU property
+to disable it for backwards compatibility with the older
+virt boards.
+
+In this commit, we disable the EL2 feature on the
+virt and ZynpMP boards, so there is no overall effect.
+Another commit will expose a board-level property to
+allow the user to enable EL2.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 Reviewed-by: Andrew Jones <drjones@redhat.com>
+Reviewed-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
+Reviewed-by: Alistair Francis <alistair.francis@xilinx.com>
 ---
- include/hw/arm/virt.h    |  1 +
- hw/arm/virt-acpi-build.c |  3 +++
- hw/arm/virt.c            | 44 ++++++++++++++++++++++++++++++++++++++++++--
- 3 files changed, 46 insertions(+), 2 deletions(-)
+ target/arm/cpu.h     |  2 ++
+ hw/arm/virt.c        |  4 ++++
+ hw/arm/xlnx-zynqmp.c |  2 ++
+ target/arm/cpu.c     | 12 ++++++++++++
+ target/arm/cpu64.c   |  2 ++
+ 5 files changed, 22 insertions(+)
 
-diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
-index 53507e6..58ce74e 100644
---- a/include/hw/arm/virt.h
-+++ b/include/hw/arm/virt.h
-@@ -93,6 +93,7 @@ typedef struct {
-     FWCfgState *fw_cfg;
-     bool secure;
-     bool highmem;
-+    bool virt;
-     int32_t gic_version;
-     struct arm_boot_info bootinfo;
-     const MemMapEntry *memmap;
-diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-index ec7f83b..32b660d 100644
---- a/hw/arm/virt-acpi-build.c
-+++ b/hw/arm/virt-acpi-build.c
-@@ -607,6 +607,9 @@ build_madt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
-         if (arm_feature(&armcpu->env, ARM_FEATURE_PMU)) {
-             gicc->performance_interrupt = cpu_to_le32(PPI(VIRTUAL_PMU_IRQ));
-         }
-+        if (vms->virt && vms->gic_version == 3) {
-+            gicc->vgic_interrupt = cpu_to_le32(PPI(ARCH_GICV3_MAINT_IRQ));
-+        }
-     }
- 
-     if (vms->gic_version == 3) {
+diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+index 28c5d8f..c5b835f 100644
+--- a/target/arm/cpu.h
++++ b/target/arm/cpu.h
+@@ -574,6 +574,8 @@ struct ARMCPU {
+     bool start_powered_off;
+     /* CPU currently in PSCI powered-off state */
+     bool powered_off;
++    /* CPU has virtualization extension */
++    bool has_el2;
+     /* CPU has security extension */
+     bool has_el3;
+     /* CPU has PMU (Performance Monitor Unit) */
 diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index 46f19cd..709da40 100644
+index 1fdc791..46f19cd 100644
 --- a/hw/arm/virt.c
 +++ b/hw/arm/virt.c
-@@ -444,6 +444,11 @@ static void fdt_add_gic_node(VirtMachineState *vms)
-                                      2, vms->memmap[VIRT_GIC_DIST].size,
-                                      2, vms->memmap[VIRT_GIC_REDIST].base,
-                                      2, vms->memmap[VIRT_GIC_REDIST].size);
-+        if (vms->virt) {
-+            qemu_fdt_setprop_cells(vms->fdt, "/intc", "interrupts",
-+                                   GIC_FDT_IRQ_TYPE_PPI, ARCH_GICV3_MAINT_IRQ,
-+                                   GIC_FDT_IRQ_FLAGS_LEVEL_HI);
-+        }
-     } else {
-         /* 'cortex-a15-gic' means 'GIC v2' */
-         qemu_fdt_setprop_string(vms->fdt, "/intc", "compatible",
-@@ -1240,10 +1245,15 @@ static void machvirt_init(MachineState *machine)
-      * so it doesn't get in the way. Instead of starting secondary
-      * CPUs in PSCI powerdown state we will start them all running and
-      * let the boot ROM sort them out.
--     * The usual case is that we do use QEMU's PSCI implementation.
-+     * The usual case is that we do use QEMU's PSCI implementation;
-+     * if the guest has EL2 then we will use SMC as the conduit,
-+     * and otherwise we will use HVC (for backwards compatibility and
-+     * because if we're using KVM then we must use HVC).
-      */
-     if (vms->secure && firmware_loaded) {
-         vms->psci_conduit = QEMU_PSCI_CONDUIT_DISABLED;
-+    } else if (vms->virt) {
-+        vms->psci_conduit = QEMU_PSCI_CONDUIT_SMC;
-     } else {
-         vms->psci_conduit = QEMU_PSCI_CONDUIT_HVC;
-     }
-@@ -1273,6 +1283,12 @@ static void machvirt_init(MachineState *machine)
-         exit(1);
-     }
- 
-+    if (vms->virt && kvm_enabled()) {
-+        error_report("mach-virt: KVM does not support providing "
-+                     "Virtualization extensions to the guest CPU");
-+        exit(1);
-+    }
-+
-     if (vms->secure) {
-         if (kvm_enabled()) {
-             error_report("mach-virt: KVM does not support Security extensions");
-@@ -1329,7 +1345,7 @@ static void machvirt_init(MachineState *machine)
+@@ -1329,6 +1329,10 @@ static void machvirt_init(MachineState *machine)
              object_property_set_bool(cpuobj, false, "has_el3", NULL);
          }
  
--        if (object_property_find(cpuobj, "has_el2", NULL)) {
-+        if (!vms->virt && object_property_find(cpuobj, "has_el2", NULL)) {
-             object_property_set_bool(cpuobj, false, "has_el2", NULL);
-         }
++        if (object_property_find(cpuobj, "has_el2", NULL)) {
++            object_property_set_bool(cpuobj, false, "has_el2", NULL);
++        }
++
+         if (vms->psci_conduit != QEMU_PSCI_CONDUIT_DISABLED) {
+             object_property_set_int(cpuobj, vms->psci_conduit,
+                                     "psci-conduit", NULL);
+diff --git a/hw/arm/xlnx-zynqmp.c b/hw/arm/xlnx-zynqmp.c
+index 0d86ba3..bc4e66b 100644
+--- a/hw/arm/xlnx-zynqmp.c
++++ b/hw/arm/xlnx-zynqmp.c
+@@ -258,6 +258,8 @@ static void xlnx_zynqmp_realize(DeviceState *dev, Error **errp)
  
-@@ -1435,6 +1451,20 @@ static void virt_set_secure(Object *obj, bool value, Error **errp)
-     vms->secure = value;
- }
+         object_property_set_bool(OBJECT(&s->apu_cpu[i]),
+                                  s->secure, "has_el3", NULL);
++        object_property_set_bool(OBJECT(&s->apu_cpu[i]),
++                                 false, "has_el2", NULL);
+         object_property_set_int(OBJECT(&s->apu_cpu[i]), GIC_BASE_ADDR,
+                                 "reset-cbar", &error_abort);
+         object_property_set_bool(OBJECT(&s->apu_cpu[i]), true, "realized",
+diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+index 8932086..2c9073d 100644
+--- a/target/arm/cpu.c
++++ b/target/arm/cpu.c
+@@ -497,6 +497,9 @@ static Property arm_cpu_reset_hivecs_property =
+ static Property arm_cpu_rvbar_property =
+             DEFINE_PROP_UINT64("rvbar", ARMCPU, rvbar, 0);
  
-+static bool virt_get_virt(Object *obj, Error **errp)
-+{
-+    VirtMachineState *vms = VIRT_MACHINE(obj);
++static Property arm_cpu_has_el2_property =
++            DEFINE_PROP_BOOL("has_el2", ARMCPU, has_el2, true);
 +
-+    return vms->virt;
-+}
-+
-+static void virt_set_virt(Object *obj, bool value, Error **errp)
-+{
-+    VirtMachineState *vms = VIRT_MACHINE(obj);
-+
-+    vms->virt = value;
-+}
-+
- static bool virt_get_highmem(Object *obj, Error **errp)
- {
-     VirtMachineState *vms = VIRT_MACHINE(obj);
-@@ -1522,6 +1552,16 @@ static void virt_2_9_instance_init(Object *obj)
-                                     "Security Extensions (TrustZone)",
-                                     NULL);
+ static Property arm_cpu_has_el3_property =
+             DEFINE_PROP_BOOL("has_el3", ARMCPU, has_el3, true);
  
-+    /* EL2 is also disabled by default, for similar reasons */
-+    vms->virt = false;
-+    object_property_add_bool(obj, "virtualization", virt_get_virt,
-+                             virt_set_virt, NULL);
-+    object_property_set_description(obj, "virtualization",
-+                                    "Set on/off to enable/disable emulating a "
-+                                    "guest CPU which implements the ARM "
-+                                    "Virtualization Extensions",
-+                                    NULL);
+@@ -547,6 +550,11 @@ static void arm_cpu_post_init(Object *obj)
+ #endif
+     }
+ 
++    if (arm_feature(&cpu->env, ARM_FEATURE_EL2)) {
++        qdev_property_add_static(DEVICE(obj), &arm_cpu_has_el2_property,
++                                 &error_abort);
++    }
 +
-     /* High memory is enabled by default */
-     vms->highmem = true;
-     object_property_add_bool(obj, "highmem", virt_get_highmem,
+     if (arm_feature(&cpu->env, ARM_FEATURE_PMU)) {
+         qdev_property_add_static(DEVICE(obj), &arm_cpu_has_pmu_property,
+                                  &error_abort);
+@@ -695,6 +703,10 @@ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
+         cpu->id_aa64pfr0 &= ~0xf000;
+     }
+ 
++    if (!cpu->has_el2) {
++        unset_feature(env, ARM_FEATURE_EL2);
++    }
++
+     if (!cpu->has_pmu || !kvm_enabled()) {
+         cpu->has_pmu = false;
+         unset_feature(env, ARM_FEATURE_PMU);
+diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
+index 73c7f31..670c07a 100644
+--- a/target/arm/cpu64.c
++++ b/target/arm/cpu64.c
+@@ -110,6 +110,7 @@ static void aarch64_a57_initfn(Object *obj)
+     set_feature(&cpu->env, ARM_FEATURE_V8_SHA256);
+     set_feature(&cpu->env, ARM_FEATURE_V8_PMULL);
+     set_feature(&cpu->env, ARM_FEATURE_CRC);
++    set_feature(&cpu->env, ARM_FEATURE_EL2);
+     set_feature(&cpu->env, ARM_FEATURE_EL3);
+     set_feature(&cpu->env, ARM_FEATURE_PMU);
+     cpu->kvm_target = QEMU_KVM_ARM_TARGET_CORTEX_A57;
+@@ -169,6 +170,7 @@ static void aarch64_a53_initfn(Object *obj)
+     set_feature(&cpu->env, ARM_FEATURE_V8_SHA256);
+     set_feature(&cpu->env, ARM_FEATURE_V8_PMULL);
+     set_feature(&cpu->env, ARM_FEATURE_CRC);
++    set_feature(&cpu->env, ARM_FEATURE_EL2);
+     set_feature(&cpu->env, ARM_FEATURE_EL3);
+     set_feature(&cpu->env, ARM_FEATURE_PMU);
+     cpu->kvm_target = QEMU_KVM_ARM_TARGET_CORTEX_A53;
 -- 
 2.7.4
 

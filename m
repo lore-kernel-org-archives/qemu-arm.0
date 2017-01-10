@@ -1,317 +1,232 @@
-Received: by 10.25.205.13 with SMTP id d13csp318002lfg;
-        Tue, 10 Jan 2017 08:45:37 -0800 (PST)
-X-Received: by 10.55.43.158 with SMTP id r30mr4323115qkr.28.1484066737431;
-        Tue, 10 Jan 2017 08:45:37 -0800 (PST)
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 10.25.205.13 with SMTP id d13csp320769lfg;
+        Tue, 10 Jan 2017 08:52:59 -0800 (PST)
+X-Received: by 10.200.40.177 with SMTP id i46mr904011qti.279.1484067179340;
+        Tue, 10 Jan 2017 08:52:59 -0800 (PST)
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id h129si1713872qkf.78.2017.01.10.08.45.37
+        by mx.google.com with ESMTPS id u67si1702785qkh.315.2017.01.10.08.52.59
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 10 Jan 2017 08:45:37 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Tue, 10 Jan 2017 08:52:59 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        dkim=fail header.i=@xilinx.onmicrosoft.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:48413 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:48447 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1cQzYG-0005Bl-Tw
-	for alex.bennee@linaro.org; Tue, 10 Jan 2017 11:45:36 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:56060)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1cQzfO-0002kr-RB
+	for alex.bennee@linaro.org; Tue, 10 Jan 2017 11:52:58 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:56643)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <edgari@xilinx.com>) id 1cQzY7-00059s-VW
-	for qemu-arm@nongnu.org; Tue, 10 Jan 2017 11:45:29 -0500
+	(envelope-from <edgari@xilinx.com>) id 1cQzcI-0000cj-5q
+	for qemu-devel@nongnu.org; Tue, 10 Jan 2017 11:49:47 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <edgari@xilinx.com>) id 1cQzY3-0000qc-1B
-	for qemu-arm@nongnu.org; Tue, 10 Jan 2017 11:45:28 -0500
-Received: from mail-sn1nam01on0053.outbound.protection.outlook.com
-	([104.47.32.53]:31968
-	helo=NAM01-SN1-obe.outbound.protection.outlook.com)
+	(envelope-from <edgari@xilinx.com>) id 1cQzcD-0001kY-AH
+	for qemu-devel@nongnu.org; Tue, 10 Jan 2017 11:49:46 -0500
+Received: from mail-by2nam03on0056.outbound.protection.outlook.com
+	([104.47.42.56]:7040
+	helo=NAM03-BY2-obe.outbound.protection.outlook.com)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <edgari@xilinx.com>)
-	id 1cQzY2-0000pe-MF; Tue, 10 Jan 2017 11:45:22 -0500
+	id 1cQzcC-0001jK-Uo; Tue, 10 Jan 2017 11:49:41 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=xilinx.onmicrosoft.com; s=selector1-xilinx-com;
 	h=From:Date:Subject:Message-ID:Content-Type:MIME-Version;
-	bh=YUcUl5ig4Tqr4W3G84XuEYhcGjlH+htDdVgu1eTt4ZI=;
-	b=TNebiL0ryCJthobyJhyZssWf+/mCH3t7ifcKq++q9ZRZmSftfFqjDlwm8KlvxpBp1tLu0r1GcSE+sXeuhm3MaPFVWpcICyaD5bJokVn9w/bBQthBJlC64O6/gcc3MIlmuaPb8+YPb7EyQbM8qdZu4NT1tjElnQaF4x1QSzkRntw=
-Received: from BN6PR02CA0054.namprd02.prod.outlook.com (10.175.94.144) by
-	BY2PR0201MB0757.namprd02.prod.outlook.com (10.160.124.27) with
-	Microsoft SMTP Server (version=TLS1_2,
+	bh=m72f+UblEyzj3tmO7LVgbSocTlDH3A1GWpBtFLisloQ=;
+	b=gRIoUoc5ahlxYrRo5InOfp5GLX6BHsPWkucPOJ/8m/bNrPrpHRm9DYCx2+2ZllFPLUaWTgnTK1L12/FWQaZEzL/OLYvFBPyjHrEsa1hjAdX4wuNjgzlYdKY3vA3J1zy6BqJxmTa/0uWmCdAFKTm85W0osJAyytN8nGgkYLdhLIs=
+Received: from MWHPR02CA0020.namprd02.prod.outlook.com (10.168.209.158) by
+	DM2PR02MB1388.namprd02.prod.outlook.com (10.161.143.145) with Microsoft
+	SMTP Server (version=TLS1_2,
 	cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384_P384) id
-	15.1.829.7; Tue, 10 Jan 2017 16:45:17 +0000
-Received: from CY1NAM02FT013.eop-nam02.prod.protection.outlook.com
-	(2a01:111:f400:7e45::207) by BN6PR02CA0054.outlook.office365.com
-	(2603:10b6:404:f9::16) with Microsoft SMTP Server (version=TLS1_2,
+	15.1.829.7; Tue, 10 Jan 2017 16:49:38 +0000
+Received: from CY1NAM02FT061.eop-nam02.prod.protection.outlook.com
+	(2a01:111:f400:7e45::203) by MWHPR02CA0020.outlook.office365.com
+	(2603:10b6:300:4b::30) with Microsoft SMTP Server (version=TLS1_2,
 	cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384_P384) id 15.1.829.7 via
-	Frontend Transport; Tue, 10 Jan 2017 16:45:17 +0000
-Authentication-Results: spf=pass (sender IP is 149.199.60.100)
+	Frontend Transport; Tue, 10 Jan 2017 16:49:37 +0000
+Authentication-Results: spf=pass (sender IP is 149.199.60.83)
 	smtp.mailfrom=xilinx.com; linaro.org; dkim=none (message not signed)
 	header.d=none;linaro.org; dmarc=bestguesspass action=none
 	header.from=xilinx.com;
 Received-SPF: Pass (protection.outlook.com: domain of xilinx.com designates
-	149.199.60.100 as permitted sender) receiver=protection.outlook.com;
-	client-ip=149.199.60.100; helo=xsj-pvapsmtpgw02;
-Received: from xsj-pvapsmtpgw02 (149.199.60.100) by
-	CY1NAM02FT013.mail.protection.outlook.com (10.152.75.162) with
-	Microsoft SMTP Server (version=TLS1_0,
+	149.199.60.83 as permitted sender) receiver=protection.outlook.com;
+	client-ip=149.199.60.83; helo=xsj-pvapsmtpgw01;
+Received: from xsj-pvapsmtpgw01 (149.199.60.83) by
+	CY1NAM02FT061.mail.protection.outlook.com (10.152.75.30) with Microsoft
+	SMTP Server (version=TLS1_0,
 	cipher=TLS_RSA_WITH_AES_256_CBC_SHA) id 15.1.803.8
-	via Frontend Transport; Tue, 10 Jan 2017 16:45:15 +0000
-Received: from unknown-38-66.xilinx.com ([149.199.38.66]:57255
-	helo=xsj-pvapsmtp01) by xsj-pvapsmtpgw02 with esmtp (Exim 4.63)
+	via Frontend Transport; Tue, 10 Jan 2017 16:49:36 +0000
+Received: from unknown-38-66.xilinx.com ([149.199.38.66] helo=xsj-pvapsmtp01)
+	by xsj-pvapsmtpgw01 with esmtp (Exim 4.63)
 	(envelope-from <edgar.iglesias@xilinx.com>)
-	id 1cQzXv-0007Gu-4J; Tue, 10 Jan 2017 08:45:15 -0800
+	id 1cQzc8-0008Lz-4B; Tue, 10 Jan 2017 08:49:36 -0800
 Received: from [127.0.0.1] (helo=localhost)
 	by xsj-pvapsmtp01 with smtp (Exim 4.63)
 	(envelope-from <edgar.iglesias@xilinx.com>)
-	id 1cQzXv-0005Xk-0x; Tue, 10 Jan 2017 08:45:15 -0800
+	id 1cQzc7-0006oi-WE; Tue, 10 Jan 2017 08:49:36 -0800
+Received: from xsj-pvapsmtp01 (mailman.xilinx.com [149.199.38.66])
+	by xsj-smtp-dlp1.xlnx.xilinx.com (8.13.8/8.13.1) with ESMTP id
+	v0AGnWOO031859; Tue, 10 Jan 2017 08:49:32 -0800
 Received: from [172.19.5.101] (helo=localhost)
 	by xsj-pvapsmtp01 with esmtp (Exim 4.63)
 	(envelope-from <edgar.iglesias@xilinx.com>)
-	id 1cQzXt-0005X3-L8; Tue, 10 Jan 2017 08:45:14 -0800
-Date: Tue, 10 Jan 2017 17:45:12 +0100
+	id 1cQzc4-0006na-4v; Tue, 10 Jan 2017 08:49:32 -0800
+Date: Tue, 10 Jan 2017 17:49:31 +0100
 From: "Edgar E. Iglesias" <edgar.iglesias@xilinx.com>
 To: Peter Maydell <peter.maydell@linaro.org>
-Message-ID: <20170110164512.GU14990@toto>
+Message-ID: <20170110164931.GV14990@toto>
 References: <1483977924-14522-1-git-send-email-peter.maydell@linaro.org>
-	<1483977924-14522-19-git-send-email-peter.maydell@linaro.org>
+	<1483977924-14522-3-git-send-email-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Disposition: inline
-In-Reply-To: <1483977924-14522-19-git-send-email-peter.maydell@linaro.org>
+In-Reply-To: <1483977924-14522-3-git-send-email-peter.maydell@linaro.org>
 User-Agent: Mutt/1.5.24 (2015-08-30)
+X-RCIS-Action: ALLOW
 X-TM-AS-Product-Ver: IMSS-7.1.0.1224-8.0.0.1202-22814.005
 X-TM-AS-User-Approved-Sender: Yes;Yes
 X-EOPAttributedMessage: 0
 X-MS-Office365-Filtering-HT: Tenant
-X-Forefront-Antispam-Report: CIP:149.199.60.100; IPV:NLI; CTRY:US; EFV:NLI;
+X-Forefront-Antispam-Report: CIP:149.199.60.83; IPV:NLI; CTRY:US; EFV:NLI;
 	SFV:NSPM;
-	SFS:(10009020)(6009001)(7916002)(39860400002)(39450400003)(39410400002)(39850400002)(39840400002)(2980300002)(438002)(199003)(189002)(24454002)(189998001)(4001350100001)(2906002)(8676002)(97756001)(47776003)(107886002)(46406003)(83506001)(33656002)(356003)(110136003)(33716001)(92566002)(2950100002)(54356999)(6916009)(305945005)(4326007)(76506005)(50466002)(626004)(57986006)(63266004)(50986999)(76176999)(106466001)(5660300001)(81166006)(8936002)(36386004)(54906002)(229853002)(38730400001)(23726003)(77096006)(4001430100002)(81156014)(9786002)(1076002)(9686003)(18370500001)(107986001)(5001870100001);
-	DIR:OUT; SFP:1101; SCL:1; SRVR:BY2PR0201MB0757;
-	H:xsj-pvapsmtpgw02; FPR:; SPF:Pass;
-	PTR:xapps1.xilinx.com,unknown-60-100.xilinx.com; A:1; MX:1;
-	LANG:en; 
-X-Microsoft-Exchange-Diagnostics: 1; CY1NAM02FT013;
-	1:AckdofdU7D32FVX3ygNI8LqLTXRYGn6+/o8YPjZUgobQmtZd02HDdtqH4Jh5tTOQDlYUxFR0dzOZCGIj13fCgNEZVOZdlGzFEmnj5SBQ1NyZl+UzsgqN76oHCpeuQGejo7USwJkioW9idi/bkZvQVYrseBlCzr6IaCILq1iMlcKTAZEi2W4GkPxbP1thH1N4NY3yyNXMETjtwesxy6NAX0AtcWvlHkmDyWcxk7AioEgdv5Z39qc705sE1LOASWNuhW0SmdllgVcLjlRgABBuFzajRzSQtgm1fqYp8fcfMq6LuOoY164LPcYEMSrYJl/hUDmkLMI5T0EstY8aKLeGuxO4caxTAkMU/vd2VYcUFrn9PUGxYPc+yKyHr2w6h9d+Y7Rum6MdDucJhPz9W8hYxFvG3dnXs2/OeFL86u7jWKqVIn7kl534BOC1kmtua259TIoAZfrOhrt4FsNn0gFRKZHgiQi1Su6sitdIz5ShGBdHMzwqn02UyY0wtwAk4fusFkQJSsbDiR8scBi9xXV0LjRfeBcwpqR9+ptCuhj1MZU=
-X-MS-Office365-Filtering-Correlation-Id: 503ace31-e67d-40a0-166e-08d439780e6f
+	SFS:(10009020)(979002)(6009001)(7916002)(39410400002)(39860400002)(39450400003)(39850400002)(39840400002)(2980300002)(438002)(189002)(199003)(24454002)(5660300001)(4001350100001)(2906002)(107886002)(33656002)(81166006)(81156014)(92566002)(8936002)(626004)(2950100002)(356003)(110136003)(46406003)(6916009)(106466001)(54906002)(83506001)(8676002)(63266004)(36386004)(57986006)(76506005)(305945005)(50466002)(54356999)(77096006)(23726003)(38730400001)(9786002)(189998001)(97756001)(229853002)(1076002)(4326007)(4001430100002)(47776003)(33716001)(9686003)(50986999)(76176999)(18370500001)(107986001)(969003)(989001)(999001)(1009001)(1019001);
+	DIR:OUT; SFP:1101; SCL:1; SRVR:DM2PR02MB1388; H:xsj-pvapsmtpgw01;
+	FPR:; SPF:Pass; PTR:unknown-60-83.xilinx.com; MX:1; A:1; LANG:en;
+X-Microsoft-Exchange-Diagnostics: 1; CY1NAM02FT061;
+	1:z2fkkoLEDgwvWEa7LQKxpdOVaB/f/j0LFnuHED8O5er4D34FukME8YQ2Hclr91YM2XYIH0cPH1nOCotskyJMPdIsLam7DLsIGBQo4C7mm9jU6SXf0diWdWVbUFDFJX2ZxQzZ1+DBOwt2I8p1Ji3+7r1XqSTa9wAVkeQoF+rmcCqcXqZiabByVoVH57mAvgANZjwn1mri9tTTGKP1SZIx4u67UoXaB+Tx+uTNGCcQDed0yJm6fWHZKSR0xwnl13Dj20sWGx2s6bCH7O+5R/6M798UsWTmXFGTA77m41dQil4M+9Y8Z32jLVpdsMb4gBYlLRBlSb4sBPp8z3eEDCU2VzxbN9VmCz0o4rSFr5w0yRjxJVzu1ei+w15Y0eYg7eVDtdyKQ7fLu15wSzo3eQaRHaosqmJJvCK8i3GT9V570pmW7SHHIQ4TbPKqmuEPGPrmUm0xZ+u/WaxuFJ7+HIR4hPUdYc+vbm8ZQp/WD2W4AMTmn/XGVyj7FcB77NIYNYlCXFDr1cUCvgbTTNjUWywUqvTGobq1g/iK/U6qCk9QW8Q=
+X-MS-Office365-Filtering-Correlation-Id: 6445eab3-a3bc-46bc-7605-08d43978a9a0
 X-Microsoft-Antispam: UriScan:; BCL:0; PCL:0; RULEID:(22001)(8251501002);
-	SRVR:BY2PR0201MB0757; 
-X-Microsoft-Exchange-Diagnostics: 1; BY2PR0201MB0757;
-	3:awUX6Z/AMQHuG3ZpkdBtTicvAngfjvXNzm9jf5Qt+YY6vH8T2e7w457qt8JaEuISBj0nnyAPUuIQtrBHhO4sAvuZr9fppN3LhRGy3i2hybwQCvvdiHbo6Wnt6gXSAx4gekC6I5TTJ1d5gPQFb1zbRh8tzowVlLzvQgSVxWmAQ1tdj570/V8CVgIN5i3RRWk6O9pr3klBlbIpb0X+Cl/VcfS1C01DxPJgsxix4gz/sNRdm5zLzhp8YEROeGRT+O/f1obey+0AiCWaTE6LXqtOR4RjCEnX5fUyL4+PHUR2G7Xyw+bO82Td+qd2W/XZgRW+Yh+qqMgChDuDxzBIzBKcPw53IoQjU6m4QvXrd3ZbgrF/hUUo9Y001mRLdTS7cMwT3bMy8EFawT9GJBoTFusmNQ==;
-	25:nT1vHSIC62O9ByoRTvlKz7sZmhb0qHpX9aLzq/VNjU1tC2lIXaBmT7A42GIovr70c7+DgdgmG18TklVvsMHktYEUaZq3CvqETFcgKGENRmVSy1wYLf3qfRUqo9i3OShSu91o0wsQkrcYt/h/C/U6TqbHMkwDzRBTNEDX59uIbK53tRSml6GVIsdO9L67aFjJqXv0ogjaRnPHzKr5yGDfu6e2ro7ENDNaRhZ6GW3EROu4oOFJtUlYgZRkz+lQmEAd8WN14OtxIfzrZONw7VIR0oqfVf1X71rz/HCOT0af+iBjejJS0mJuoA6umuKLsfqUENhU7oS49ZsTLjCZuVDWEQooWQ42W725pZvNPKU1w1iCfG3aSxqn5DjQxg+HEzYcZqHRBTb6Z+ZTZ/fZEinEvbzSGMbiUN8997oG4ViA5mxFZfRQtxNFgjGf58d5ITCNfFraL15x4OnzIibBP4idPw==
-X-Microsoft-Exchange-Diagnostics: 1; BY2PR0201MB0757;
-	31:vzp8HOI3LycDA98lOp4BqgPQEzgERzOSWAUStpP0JxSFuCZxS3nyboC8t2zc5//GEbbR9EQ+aDkjvLxTHSE0o+Y7uU8ynnjn86vQg5s5unWBJzr18OaeGsZm9idu/vLJeHHlpC2KyRW3XXmkvxLlYvyx5ZtNtZA8se0WwQXQB1q/TGmpBd1Zqn8IK4VYTs+KztiHpLV2LBefzxLxqdf/e6PZ3h5WyOdUpWJpYX9OAypdbSZL8iDdrPeuPA3pBQW15PWYBbFdAlfFcnyZU2fo9BucKGONrNIVxW6U8hvHRDU=;
-	20:QfMz2vpyM0E9t4AOORys3GjKCyjBOxes0DF3kM7t8N+8AsnxXuxz0jcmTkroHiKJa986PNFDhLbZjht5MF5dTt+11+dQBNq5sphZkAMRtVcymiBohB01QDppZ7MghLOUgidmFHGOelyiO2O96FiA1NeHyOf0Lw+VmvBHbWv+02RS59hpD5hp6Tlxi+1FlApk5dK2tuw56VpYyxdVbwI4MGxZUfjy6Dz65ppHbhrpO9wj/ARx/RUpOiqNBZ3kJaPvs2QVGWzU0JrLInjyNlf/b6rHNCXhyTtDkM+JAuFJ153aRSEb6jT4AmAvkvk53FbUqezSk/cObZPTVfHvo96mCrT9lnQsFlxuS2z9zgeSfUZYWpGQ8RUqHm5oA2rMXDBDFIk75iZRWxRfu/ux8vC/pNYZ9JdkjDZoZsGccs2aunRGCfdVMsSpzViZ7RNaywQgbNF6YhQM/rkyO9UkuHNvoCggGzhQYFTLNHnPkLX5S/n09w0Fb5Kc/n1Fjv9qfeS9
-X-Microsoft-Antispam-PRVS: <BY2PR0201MB0757CE788E9B4766F21B3B4FAB670@BY2PR0201MB0757.namprd02.prod.outlook.com>
+	SRVR:DM2PR02MB1388; 
+X-Microsoft-Exchange-Diagnostics: 1; DM2PR02MB1388;
+	3:GagW2tf2PTQktHcbtazd27VN7NJgajqBEflwns/lDzwOkYlKo7j2u47kx5cPJ/0aOLcytf+Q3NKRyyEVNR0aSpbSliXkWBYuoejTp0uHrtNcSPaVcnGqgA/Vu2fQqCbhIl9DMuwSk4gYVzFyv2zpQLbF/4tJmeWslhg+YIzyb7fX4QGzgbig7bc3Um1Xtsr6QiODUFkwjg2aPbMLJQ0oNhe7QvFb7i7dNe819olkkF1f487UejNz7NDCnvRqaGayf6y/GYrDPqGzSieHIe6jw3rdt0G9Gj91fo6oe3eBeFZmfP9lyv3VPtQWuYnYidRwTGiMdIy0DZKNo+HAH9feAHrfgrwTDE2azEXTlDTgYd9hXlYqbzMhBNBfKX+fW+OUUJzWgBjvveNA8CRdY4f1vQ==
+X-Microsoft-Exchange-Diagnostics: 1; DM2PR02MB1388;
+	25:KmgKt+04qO8jH0yCMz9TnQ02lCV614YVechmsltR41BPpTCHE0dYrrKPjuelmZzcVrqRnFUh0HPTLzexktVWLfBIoRUNzJ/Nk3U5bX6kuF74UEHfAdxiHX5IQYwfI1ucVyWNVPB41/XeE7mnWuW7+H2ARyLskgwnJEIIHLCgQGamuBLwOsuWSbvI/KbrIwz8vwL/zZkj4aqbUCEZoFB/wDOOZ84GRITJNweiwnqZUfbRtG2BA9MXvNqiHcJics6ScFsj6rsVfnbPZk6xPUMgauYIxL8Ja6GNXXtm0C+n3eEfwCI4AyfgEsY7K1diNkEpy2fs0uL/uOnZviooWXtwnEAEVMfwCOp6V33xWhT3w3E1BsT5U0yXZqnv1vAKOdg9xXtn38sgpm3QlqZFxiVxT9QIJthIcisyNPqzbVdqKiWnnYtWnFKvq8t4QjNwI7Uq3fkuztWXrTA4gl2n3z7kQaJCy9gC17ZZ9V6m4JWtfJ7+QAUq42VGLYpjsAC/Cbq0PruvyeTOjjZLV01IgyMz9qh6a4roNTVxqhmdMiy6687jvbnd55gPBRwChgCBc994aBJdfK4vN5tHFNpNU6OG7C37IUa1GEXoeyou0vLw3CZetFm0Ij/ovN/pQ4tfhcAKRRXezRZ4wdBt01gCWVaiKHBXoFewZrmNxxydzo6o6KhPUymbW0exMKkqUpSYzNf383Rc0rMndFZjjJjC/v+siEkzE7oTM1QdULqEDP7PhOOncP7DCRd3ZhaIvdS+8IMIEhgTOLuos05ZKIWI2NPdslBwHCwkpdrEucfklZlQZMMByoc7G6kA77A/v5ycIevSb5OqQgCaXNk63RUqdDpYzA==
+X-Microsoft-Exchange-Diagnostics: 1; DM2PR02MB1388;
+	31:nkGHlpjdN2gjjNJ23RFtPbyQjmoseTrsysY2pfcVLJMG4CtEsr5iaM9vSupEYeog90VhSYhWw5N6gSjEwlhK0aw+pVZLynRs2IIR18pzKNy1TBRGPkpIPAwIWrG2DPEQtFs1FBAtdA3la5HP7H6CNrbBRImvkdxMwseeGAQBSnO+JiLF8e9aHE2LHACfENod/mzOZsPFWoqrdmf9clwVGN6KCJGbPBWnQRpdTYlFbF53sFi6doVfvDRUuLaYh3u7cqUmN/pi2pnoL7RwFcwwZw==;
+	20:Pz+2CHBw90y27genv66dYmNSHhQOFGPj8O6rrXCXl6qif3bKv/hNapG7/iYzhCUDdNX1mOkXjjIu+NSHAFdSLBQYgBm+eGQTxQS+IhNTr2LXsb+E9RoJUkB1sZTMketoTQFm97l2LXG/2412BpM8rmENUpzzmpuqBh1gNDA1BFJlLF5K+AFXvus1wTiSY7TaRruH7zEJFFCefAvIsobwTx5HG1PMNqxCx/BR/VYLESU7C4qcAjs1hB0afcbwfxlF4PgwULBIqHRD8/Flk6VGh7k4QSQLqwEA71MW11m22AyH4oWk0kuvK2orsM5mUfGNhyOusdg6IeiwNNEA3lFrkqJxdGl+/0DCipQjFAo96CQzGzFdm/XqUyQIeNed5P7T7YYyDjEanYGy9AIQ0s+4it7BFKvDpppNwRruK3ZFJ1EvVOc7WqAZdZg1T2gzIzMgBXi6npqyfpvAsQORAUbOyC2xna7f6NrEwVuONdckDS0z09r3tTK1X/78afIcoWkt
+X-Microsoft-Antispam-PRVS: <DM2PR02MB1388E898AE0C0DCAFAB1E4CCAB670@DM2PR02MB1388.namprd02.prod.outlook.com>
 X-Exchange-Antispam-Report-Test: UriScan:(192374486261705)(192813158149592);
 X-Exchange-Antispam-Report-CFA-Test: BCL:0; PCL:0;
 	RULEID:(6040375)(601004)(2401047)(13015025)(13017025)(13023025)(13024025)(13018025)(5005006)(8121501046)(3002001)(10201501046)(6055026)(6041248)(20161123560025)(20161123558021)(20161123555025)(20161123562025)(20161123564025)(6072148);
-	SRVR:BY2PR0201MB0757; BCL:0; PCL:0; RULEID:;
-	SRVR:BY2PR0201MB0757; 
-X-Microsoft-Exchange-Diagnostics: 1; BY2PR0201MB0757;
-	4:ipN2/Q6+AdhtYKWULgI2oQoTsrp1AS8uzMRvqT2pUt9szRla7E7h1VtH+4Q+TLSA2FsTqukfzM7v6UYkQ/K/GbV7aIwcIu5yGyETYfROWGf8eOzSLqWBelIQBLD++cZkqXk9hF1RdfmPt7IQBV9umahvU9Y12/Ntgqa+EK7x/x6KOv4gK3jOouCwDZOZ9f7n/24rYPoDwPt2+TWPE/KTDla9p1v8C4AhqSR8BKdWQpVNBwHPFbjL6/S8iBTLVcxAPclqpwpG5Ug3MAXfj5oZjadYkevTBcHwXw97JT7hsWEY9SlokyyaIGTDJ636dMuWbx2U9jBZXtGInI+X5bOUViNIiOZF+yCE8FRRlt/wAikS4a3XCb9r1QMjfwb/4SydwAyVK0dXyBU2QgTfSAsQZjFCHUE9x+U7MmkUjgz9EvsiIsV9DVo8VIouSDRQh506g/fjHPchMCnoVKdcQjWuM7ppHSbHcYdToNZEkSOaV6fhJBVtge4dQcHcSeW+uO+X5adg3h6cnrIvKc1WBIMuR8TB1ZE4y67DdAgBCrAARhFXJFgxCMtcLgTb04BGuYYehYHV/Y0qSOHKJ75BJj4dGl63hKuTmA0ogit8ztP8FSiRYpTi2Je1EtIERVlw1wLxPuya0v4zJbNlUV9D1rZY1h9AEgLAn+tUEgQMkFNOSRxPS0s18VEYSHOHjODoX0mZbMJqSUgqE90sA07y1aTy5h/gRa/xG0IdNIsG+B8445IPyJraQCfagEh5ALOI4tPzHY4BtRE8Tpjb/2YkcUlFIlWXHimVe1AOGEeLGX94yUk=
+	SRVR:DM2PR02MB1388; BCL:0; PCL:0; RULEID:; SRVR:DM2PR02MB1388; 
+X-Microsoft-Exchange-Diagnostics: 1; DM2PR02MB1388;
+	4:Ag20AdKSE7ARAjghxrP93jAGKwc13m9TBNt71SMmTQaJiP8Aktpxt2+xnuKzm84y/+cxAG2oJ4fTQhL0aZ7GouxZeUqPhu9K4BcXrz9VjtXPdvjkO0aIh+zfN1l/4j6w0LL8Fl7YkJsl8JJ5aDKYAoQB6wA2o6DddDBrsIdIb+MUW82CKSoFgFfbQwBf5AQXXM21dCrJ6G/o+Z6UXxhXh51J9n1Welx+7LgMl2Td6bWbM5HjA7IoeOy05tgYYw1PWhxM3+SEIp1XVdzYIJtqf3kaZgJxcxUtIbvwSL7teMv9q85gEr1Ngq2JAsSCgUD6XMvOTYnOr784ekKQv2ZLGz/fvx/ICVIs9aU8KdBI7KtLKYVsiQBI2ofM53xNmQ0OolWgQNoK+0j92ByeGQYOLRFEdHIPCv2OKzWFJ28CYNVLYzOtGrhHIuXrOyKIs34wz2bunnKE5mWtUUS0mbJU10ATBSH+iQYCWKqQFZbXIuvEzJJsjGH3F+7wZOv5FXo9iUkEZtjLx8KrDGs5nx+5/wBXLYfwIQjBxas1Kde/gGPOsNzjL93Vfclfk1pxnpOEHnWfbxgRlGH1x8uz7me/6ezxirqBDDOHRpVFqYG5///Jyk4PMCOdYFw3HLn0N6qe3BywFeu3NjmO+utEFfb207Gc9wPmi1/ELvo6vZePVXc/4JqfA6nZYGuCvcONNizej8qiq1NQI4HRJ0Ac84wj4kawAf94/gCKy+xrNqw/i8l3oEUuG0+Bskmy+Tb7xS+W68JdvC66y7sNCiSABc8DDfyWYwapzUUIN+B5rYhSj/4=
 X-Forefront-PRVS: 01834E39B7
-X-Microsoft-Exchange-Diagnostics: =?us-ascii?Q?1; BY2PR0201MB0757;
-	23:0fjmmbxE6jLLzmk/gYmDDR3JhvnPp5nFAyKne9T?=
-	=?us-ascii?Q?g9ZTmNyTlSa9kWyFhMbjHGK8AW9S7cccrDZq5uCpwArcO7YxnfxVpMOzoxZH?=
-	=?us-ascii?Q?AIEJxZkipU1i3Z49KePy9NJTo+qVqkq8KGyA8+KVcBTzQbvI+Mgl/Mb28qxN?=
-	=?us-ascii?Q?BF5tnmr7caqjnxqijBrmVxO3fMgx3fZyk3pYgVH86RhfOjG2QGqsHe+2du9l?=
-	=?us-ascii?Q?my8GHlEe8swaAL2ANS/RrlRCsEgj52ahW3uVBt2t3JXNFwZWoW+bBi/bvOzG?=
-	=?us-ascii?Q?f4Dqo8/kSp9raxwKfVqym2e5BP6FXlb2i2HTlN+FSsw3fHcniFF264f1tqRI?=
-	=?us-ascii?Q?CbKCOEjHq5c3gcfOFwkxtm5+wrAbIKGAWVG5rYAV1EtDXMsht05iS/SC9mvv?=
-	=?us-ascii?Q?WT0zp+Pb2Z1dk0hWBVdpmV8wyeCOVxKIHT4AnuMda+xWN0DPZa0aLmNKv/eA?=
-	=?us-ascii?Q?IOcnQFwei8rshKDXoKfY/nNS5JWwzeCUz6CELiObeCiYx0R6/xT6qMMWdXln?=
-	=?us-ascii?Q?i8oPQByNAQGF+RA4eTxsvpINKCKdBPFjSBEJybQOIUGUldfDZ9tLNyIskY9a?=
-	=?us-ascii?Q?ldW5eL8xOMzl7menKw215KPrU1u/+GkbCGRc4aCDsY327nUBzcCR3CWb7OcN?=
-	=?us-ascii?Q?2yMH2JXA5C6Vt/V9yBlQdTRPoC/FvMWZV5VARF46nZQC9fwG/HPY9R/Mp3Va?=
-	=?us-ascii?Q?X/5XxPZDNGZqcdJ730OI57cubGV7Ou7sjrCEPF8mNinfu/xtRGU3oAH+i1y5?=
-	=?us-ascii?Q?r3ZG1++ZEf7cjuJcs+1U7g3C4Bj7PxhugVlrSeOSxNqo10M0aJQ+1w0aMMSn?=
-	=?us-ascii?Q?4z/VtFLb7oqpaCFb/JZnTR0sRkbWs8ahvsLx+YVCpdv9bfO2ZcZlmMzRlSXY?=
-	=?us-ascii?Q?oA5BiYJm43waPtyJhNEMl0jaWvfkAS2c/xIC7r4oL+RuvF/rGxHjbQS6RZ0Z?=
-	=?us-ascii?Q?ciHnjUChhXEM2AaOEi+xtEkYRyRO5j6YucWXbgmMpVsMVCEPry43zvz+j0qe?=
-	=?us-ascii?Q?5kzAFJ20j0j4kxDmt1hUvmgYljehNYqOm9xEiLwJs/slveKkowkUPvQvNoNs?=
-	=?us-ascii?Q?X8XipfuY+VXn0M35B9fwQdK8NN/lFX/8HWr0OURCdcrbzawKCFV2XtHXoQJN?=
-	=?us-ascii?Q?sC3kWtVQORS3ROophLZJ4NusmapxuYj4RZP8o3cLp3JrhM7VgFkJxpDZzacO?=
-	=?us-ascii?Q?hsrLtCbDR5KLWBo2OWGZcTTnsY6G0fB6iUXK6SW0sFvjhmo5RIYy+mmTfmcv?=
-	=?us-ascii?Q?jVKz7+B9sa+TdH4TXI+pn//6ORH8OtIHKtybTLXAUavFScp6Ebpy4lIdB+Xj?=
-	=?us-ascii?Q?fauOSXJ6LNkcbL3uxsyO9VmYkDrdFTTPGxEwJ+fN0VKR72GpuKkKyezA93kJ?=
-	=?us-ascii?Q?CJtrNs2F59+Yj1p/yiAo8WKrCh+I=3D?=
-X-Microsoft-Exchange-Diagnostics: 1; BY2PR0201MB0757;
-	6:y05lZVbuaGVX93E9LIInYamTzRBxJSMI1y5SM9nL28BKtdKl0xZCBVMeD+89ySSdsK/YcJI8feHSUBTV/AHeOeqKqUTJ9pSqBsdbSkPnEP/vbeuxDPSqnWvttCLTVum3CACskeQVaNDX4kOQpYO1lGNl0i8EnXGOXHkXqELukdMUVXjQAR5V9W5DpHGLqevkkaTZGydQQ9knHCiorTO5fxb54yy+c+hNKthM/9hlTinPQd4FTsKiWHeFGEfxuODGQe2w3+GY1YwtmR0j2yKiMVKJtgitttERDyzqAmSQGMmTxojUdkKVaxeVmYsODqw6gkejptAbgWAbJsECt2WhfrGDHRck1rHkR2THKmaKQhg3DTjnEWvqune9OlyOAciFclZFV/76AE2/wjAYb1wehwmZ6sZ8cOo0pP2lOy4/B41t0uKQZcHkxwbY8iRFOosyuHaJK1GtA+FZZmXSPlv3xQ==;
-	5:fpCRkfum7IJFzysIMOAanHdOcyu2y16BVx45a/5DvatImGSw8oUUQCidByQ82AqA2inFiTc67MUDt2CclhxtniXYh8AlcGXxO48FZQLp9snO+fzabmPIPTX48cpsOmZhEwiILhmF6EHp1TkU88UPULIk/TDlW6OR1fO6cU/tqKY=;
-	24:3vebQfjMRepf5OXhsBjqT/mCRPqpUy60gTDN2U1nWSoP9qdWLeAOF0q4zxrGxSu2Dwwk5n8Q8c79qilc1pByZ9M05j1XepYc/NfGsjTGTH0=
+X-Microsoft-Exchange-Diagnostics: =?us-ascii?Q?1; DM2PR02MB1388;
+	23:35ZGn0K9ua2UwGnr6JNtQWWFajKqP7gUxrAYaYQp4?=
+	=?us-ascii?Q?NB63m9iqpwVE5A5zCR4NDnHZK2evEGNOmDrb8JCykDoCh/JaPDV5EWUFCmfh?=
+	=?us-ascii?Q?uZRcdOZJMLcBKazVLvq7J7pQ2yI7Ik2EtYlwk7v/zsH8gtOvMJteJ9B3NqXM?=
+	=?us-ascii?Q?3x4qjvi4fJDHEZ/hNXdBS932V6IZAhY4/iGM4iqtMWytDDt4H2Yjh5YZyDTY?=
+	=?us-ascii?Q?evLJUCtuKPgay6q2mSaAMAgsV911xzOlay+Q+hWieqVWuShM/88wYy0fKN86?=
+	=?us-ascii?Q?2q+svW7eiWY1xaYOJJhaF187jU+QuDulkfbh1UJ4tl1WlGP1Sy7SWa6zWBLr?=
+	=?us-ascii?Q?62JmckTAoRLqgqY4e0WzHV181VfKXt8VOJn6+iL5vHJCH1g5PpSopQf1muWm?=
+	=?us-ascii?Q?WhpiQpDd7QMxzAsRYze/lcJL0ib4AyBdOMmdBR5gPfjXkLWYst45hWx4i3IC?=
+	=?us-ascii?Q?Vl42nKcCdrUN6aZk/mRE2irK2o4m6fHmeTdeoUIjEs9ZwPvNsHse367we4kp?=
+	=?us-ascii?Q?yW2RCt8p1jlHmZDtUy4Co7CQo33g2fJ65+5fc/5wnl2Q4X3EK/ETM8bNmPVB?=
+	=?us-ascii?Q?orleGexAhUNLEuEkVDvtb11AbzpKVD9M0S57gnqECin/oVcLmJFbMNNXxE8L?=
+	=?us-ascii?Q?/O+fNb9/pt4AsVWwWYKk+8fj2jywFl6ZoibJswlJcNovweTD/JY+Fs3K4Hxz?=
+	=?us-ascii?Q?h8WScbBBrQmq8Rd1l0D04eLpnaas7iiJ3r6aUcqrM1PoZq1vuzizZOOkYuej?=
+	=?us-ascii?Q?F9HxwY/KtvfgRqjtxmMDfhVoe9MqH5OIwCPHPP3kSTLM5rbDDNDpMOimyrrk?=
+	=?us-ascii?Q?/0Wr8EH9gZsBbcsLSX+LzoHjlU92lOOn/Z6hv8Ait6OCgD4SNYjXWiG47Dwr?=
+	=?us-ascii?Q?6KF2QsyS2ATl9YzdiayfL2qqVBAqG/QRZasDTZR/GbpBICdkDdK39GU+K2vD?=
+	=?us-ascii?Q?QD5dTGI/j5lBdIusk92qkElvlh7A6f96kmBeo5ENPfDQv8hR/ZSXctHY1yb0?=
+	=?us-ascii?Q?NHhnVgO+jUJes1e+9MCGkVV1AgpQV5sc74kpO1OOnZMyfYigcbdeflMBfCb6?=
+	=?us-ascii?Q?gzzL8zQ9gHepeo1wx5ozq14ogqw96e1XqE+tI9sT1LsE+862Bn+7+V/HRAIT?=
+	=?us-ascii?Q?LYhdMb5oJYjDYhuSKip/Q39U5tOda9tO4v0LGc96F37SKMBIAwh9P1/FDlyN?=
+	=?us-ascii?Q?dKjifEL300+Tlu4gQttmt35E/mmO5XebW7+na4Cq97sC4ayhlAwU9ZYcPQEO?=
+	=?us-ascii?Q?V8jHDLNqwTgFYxem6uthQsvD+R9B22b0cUmnKEUwdYUaxCreUvpHTjmheLvE?=
+	=?us-ascii?Q?Q4YmQoWk93sB2Qz+dbqD6ws+NJ2PobIP9Co0+6kvIbPYRdmWAMihwKCQrykt?=
+	=?us-ascii?Q?IK2L3HVwArj+xgywYw2Nnel6/eL8nZmkkQvYohKoDzCE5j6q2M0M536Ta55/?=
+	=?us-ascii?Q?YZwke9oP63/eGX8oY5aZuthGfrbDNU=3D?=
+X-Microsoft-Exchange-Diagnostics: 1; DM2PR02MB1388;
+	6:CUQ8QE0WxptJx5VWL0H6Lt40mvBRUIZDkGXynAUbKIAW3cc5/JoRdfLlWr/V6pyw12CYM/8CCK8agtaWzGU1/TDoJM0/Ei7kWMH1QfTwsH5qS8G3W8sTqy+9Uv1+18XhDpACpge0MyzpXDk4ZLNeofON+BUlUvgQaxI11jyKyddvmUoZpRRQpQfdvS15cHKwf0EuUoNZXHw54x7g2xman1dpb5kvzrIlArxqAw1lttGHrcVTEhW7mWKEUp9RWuZhrDlgW3IE8hbu3YGraKkhBgzSIGSsZQR05nxtyzsjdfL8yt0cjVk7wW940BIHGzSHT2dHBVB5NWCMxO5mFLduiZ02Cml7SU1qkrf3MZ1EJdU21oNm/HCxTjvjkJhre+UbsIxLdk2sIYxm1md/zGanzIXa4ddxafxsKtQJcwIZAsE4I0eZYl/gDBpimXxb+Ea2PRC+QWInO5u1weDryQIHNA==;
+	5:Se+GbRMnYC7aZA+FgcQrV8qjXkrpsoU+BlKOpyKbUFs4Jepfhf69sUkMimqR5otB2c3wD5WYL9TU02tGfavZ77LBhe2y9KbCPsQOTAWAXyTUALAKcU0Ybk1kUMuWG4Wfv0yf5GLggVBxmLmFhLX4jeHa3xvrL43T3Rfz4huqQBc=;
+	24:XZqRyUug45RP6It06M3JbRwufSp1eP3tPevON79Fe0o0ugGFtiF4NG6di6Y8iQM0SbVcGsMpmNAiQHN2EigEGNMFx/Fsbd464hJPljtO6Hg=
 SpamDiagnosticOutput: 1:99
 SpamDiagnosticMetadata: NSPM
-X-Microsoft-Exchange-Diagnostics: 1; BY2PR0201MB0757;
-	7:B8FmwUNrGAZqM+n4kxiGp3baFdPo9Ya2z3bOFESDe8OilXRUs+inZVoBV11IZF7GxJatNJC+0mRehYJEpSgMgLWeiEZZfYPQjURLUDL8xjnuR7iDYuzDU8XVzWCk1JuP94Dkmv5E92LYYfRu/OYDtHnwNAAO36WKEYBfNv4tIqId4nQuaXiC5bgwDt+SkbI1mwOWzCZafVm5jUcKmTgvbgKd6rCfjfqSsOgfB1M1QFiK6vrM7Y5V86JapUEXw3BMnOSJ+s3gvQXosjGdxoC7PBvQRYJ1PzUMJk3IfdBkjL4kv8Alms4AMsFTULw/paNyVnMRShXpiRnCXZaKyP4xrTcfr+E6iuT1dQMOHnsypDUo6E0fZemkKNEWrMfC2NDG7MQS/h8gv+MAJcrSRGyfXWcyoPrXtJ7V1i0+lhuImmJsAUx0y4X/VNGhnnT4CF+F56BvjdS/pCEYSWpWzoKDWg==
+X-Microsoft-Exchange-Diagnostics: 1; DM2PR02MB1388;
+	7:jv7hJgdRNEk5w3cdNFpH8Xqu55FhiF+DGniSCiKCyLWHTDu0vn29C6wLh16Wxbgpht1K4i/JjT6BqDgJ6BQZL/MX99gAQbFFh2TKdMChNQvClvhRGKcWfyX3ME3uEu26bnmgQVuQ4tK/Dy9fnlXDZeFVat3eE2uDKge2MpYFOWt5D4uzFrVkrHaPpuHmxHBbyQmQEcqFZp8NkN6cJ/G3QWyrC+aJn5SkZAPd/stiyvrs8IcdTw+A5Mobky92TT7UheFyCz3ITFvBOw1SBXpRSAVKUFCugYftHjKS100vWC11ACvFLVs1W2/3VdOSjFZOblxEdvHUrbH1Pi/VWcqYAxfoXFvwKXfFG+JE5pAY3geGRyuJz0/iXkMiWn7vdx52XT3QvdclR30pSoXDqjkw/5VjuQSO2QNGY1PCgEWbeU0TK/Nwq2RTf1ygRqn5wq6y75FAFD44dL9yH2GXiVQdxg==
 X-OriginatorOrg: xilinx.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 10 Jan 2017 16:45:15.8508 (UTC)
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 10 Jan 2017 16:49:36.5494 (UTC)
 X-MS-Exchange-CrossTenant-Id: 657af505-d5df-48d0-8300-c31994686c5c
 X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=657af505-d5df-48d0-8300-c31994686c5c;
-	Ip=[149.199.60.100]; Helo=[xsj-pvapsmtpgw02]
+	Ip=[149.199.60.83]; Helo=[xsj-pvapsmtpgw01]
 X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: BY2PR0201MB0757
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM2PR02MB1388
 X-detected-operating-system: by eggs.gnu.org: Windows 7 or 8 [fuzzy]
-X-Received-From: 104.47.32.53
-Subject: Re: [Qemu-arm] [PATCH v2 18/18] hw/arm/virt: Add board property to
- enable EL2
-X-BeenThere: qemu-arm@nongnu.org
+X-Received-From: 104.47.42.56
+Subject: Re: [Qemu-devel] [PATCH v2 02/18] hw/intc/arm_gic: Add external IRQ
+ lines for VIRQ and VFIQ
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Andrew Jones <drjones@redhat.com>, patches@linaro.org,
 	qemu-devel@nongnu.org, Alistair Francis <alistair.francis@xilinx.com>,
 	qemu-arm@nongnu.org, Christoffer Dall <christoffer.dall@linaro.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 7JbZMn3Rmbu9
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: hE9T4KgPLvlw
 
-On Mon, Jan 09, 2017 at 04:05:24PM +0000, Peter Maydell wrote:
-> Add a board level property to the virt board which will
-> enable EL2 on the CPU if the user asks for it. The
-> default is not to provide EL2. If EL2 is enabled then
-> we will use SMC as our PSCI conduit, and report the
-> virtualization support in the GICv3 device tree node
-> and the ACPI tables.
+On Mon, Jan 09, 2017 at 04:05:08PM +0000, Peter Maydell wrote:
+> Augment the GIC's QOM device interface by adding two
+> new sets of sysbus IRQ lines, to signal VIRQ and VFIQ to
+> each CPU.
+> 
+> We never use these, but it's helpful to keep the v2-and-earlier
+> GIC's external interface in line with that of the GICv3 to
+> avoid board code having to add extra code conditional on which
+> version of the GIC is in use.
 > 
 > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> Reviewed-by: Andrew Jones <drjones@redhat.com>
+> Reviewed-by: Alistair Francis <alistair.francis@xilinx.com>
 
 Reviewed-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
 
 
 > ---
->  include/hw/arm/virt.h    |  1 +
->  hw/arm/virt-acpi-build.c |  3 +++
->  hw/arm/virt.c            | 44 ++++++++++++++++++++++++++++++++++++++++++--
->  3 files changed, 46 insertions(+), 2 deletions(-)
+>  include/hw/intc/arm_gic_common.h | 2 ++
+>  hw/intc/arm_gic_common.c         | 6 ++++++
+>  2 files changed, 8 insertions(+)
 > 
-> diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
-> index 53507e6..58ce74e 100644
-> --- a/include/hw/arm/virt.h
-> +++ b/include/hw/arm/virt.h
-> @@ -93,6 +93,7 @@ typedef struct {
->      FWCfgState *fw_cfg;
->      bool secure;
->      bool highmem;
-> +    bool virt;
->      int32_t gic_version;
->      struct arm_boot_info bootinfo;
->      const MemMapEntry *memmap;
-> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-> index ec7f83b..32b660d 100644
-> --- a/hw/arm/virt-acpi-build.c
-> +++ b/hw/arm/virt-acpi-build.c
-> @@ -607,6 +607,9 @@ build_madt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
->          if (arm_feature(&armcpu->env, ARM_FEATURE_PMU)) {
->              gicc->performance_interrupt = cpu_to_le32(PPI(VIRTUAL_PMU_IRQ));
->          }
-> +        if (vms->virt && vms->gic_version == 3) {
-> +            gicc->vgic_interrupt = cpu_to_le32(PPI(ARCH_GICV3_MAINT_IRQ));
-> +        }
->      }
+> diff --git a/include/hw/intc/arm_gic_common.h b/include/hw/intc/arm_gic_common.h
+> index f4c349a..af3ca18 100644
+> --- a/include/hw/intc/arm_gic_common.h
+> +++ b/include/hw/intc/arm_gic_common.h
+> @@ -55,6 +55,8 @@ typedef struct GICState {
 >  
->      if (vms->gic_version == 3) {
-> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-> index 46f19cd..709da40 100644
-> --- a/hw/arm/virt.c
-> +++ b/hw/arm/virt.c
-> @@ -444,6 +444,11 @@ static void fdt_add_gic_node(VirtMachineState *vms)
->                                       2, vms->memmap[VIRT_GIC_DIST].size,
->                                       2, vms->memmap[VIRT_GIC_REDIST].base,
->                                       2, vms->memmap[VIRT_GIC_REDIST].size);
-> +        if (vms->virt) {
-> +            qemu_fdt_setprop_cells(vms->fdt, "/intc", "interrupts",
-> +                                   GIC_FDT_IRQ_TYPE_PPI, ARCH_GICV3_MAINT_IRQ,
-> +                                   GIC_FDT_IRQ_FLAGS_LEVEL_HI);
-> +        }
->      } else {
->          /* 'cortex-a15-gic' means 'GIC v2' */
->          qemu_fdt_setprop_string(vms->fdt, "/intc", "compatible",
-> @@ -1240,10 +1245,15 @@ static void machvirt_init(MachineState *machine)
->       * so it doesn't get in the way. Instead of starting secondary
->       * CPUs in PSCI powerdown state we will start them all running and
->       * let the boot ROM sort them out.
-> -     * The usual case is that we do use QEMU's PSCI implementation.
-> +     * The usual case is that we do use QEMU's PSCI implementation;
-> +     * if the guest has EL2 then we will use SMC as the conduit,
-> +     * and otherwise we will use HVC (for backwards compatibility and
-> +     * because if we're using KVM then we must use HVC).
+>      qemu_irq parent_irq[GIC_NCPU];
+>      qemu_irq parent_fiq[GIC_NCPU];
+> +    qemu_irq parent_virq[GIC_NCPU];
+> +    qemu_irq parent_vfiq[GIC_NCPU];
+>      /* GICD_CTLR; for a GIC with the security extensions the NS banked version
+>       * of this register is just an alias of bit 1 of the S banked version.
 >       */
->      if (vms->secure && firmware_loaded) {
->          vms->psci_conduit = QEMU_PSCI_CONDUIT_DISABLED;
-> +    } else if (vms->virt) {
-> +        vms->psci_conduit = QEMU_PSCI_CONDUIT_SMC;
->      } else {
->          vms->psci_conduit = QEMU_PSCI_CONDUIT_HVC;
+> diff --git a/hw/intc/arm_gic_common.c b/hw/intc/arm_gic_common.c
+> index 0a1f56a..4a8df44 100644
+> --- a/hw/intc/arm_gic_common.c
+> +++ b/hw/intc/arm_gic_common.c
+> @@ -110,6 +110,12 @@ void gic_init_irqs_and_mmio(GICState *s, qemu_irq_handler handler,
+>      for (i = 0; i < s->num_cpu; i++) {
+>          sysbus_init_irq(sbd, &s->parent_fiq[i]);
 >      }
-> @@ -1273,6 +1283,12 @@ static void machvirt_init(MachineState *machine)
->          exit(1);
->      }
->  
-> +    if (vms->virt && kvm_enabled()) {
-> +        error_report("mach-virt: KVM does not support providing "
-> +                     "Virtualization extensions to the guest CPU");
-> +        exit(1);
+> +    for (i = 0; i < s->num_cpu; i++) {
+> +        sysbus_init_irq(sbd, &s->parent_virq[i]);
 > +    }
-> +
->      if (vms->secure) {
->          if (kvm_enabled()) {
->              error_report("mach-virt: KVM does not support Security extensions");
-> @@ -1329,7 +1345,7 @@ static void machvirt_init(MachineState *machine)
->              object_property_set_bool(cpuobj, false, "has_el3", NULL);
->          }
+> +    for (i = 0; i < s->num_cpu; i++) {
+> +        sysbus_init_irq(sbd, &s->parent_vfiq[i]);
+> +    }
 >  
-> -        if (object_property_find(cpuobj, "has_el2", NULL)) {
-> +        if (!vms->virt && object_property_find(cpuobj, "has_el2", NULL)) {
->              object_property_set_bool(cpuobj, false, "has_el2", NULL);
->          }
->  
-> @@ -1435,6 +1451,20 @@ static void virt_set_secure(Object *obj, bool value, Error **errp)
->      vms->secure = value;
->  }
->  
-> +static bool virt_get_virt(Object *obj, Error **errp)
-> +{
-> +    VirtMachineState *vms = VIRT_MACHINE(obj);
-> +
-> +    return vms->virt;
-> +}
-> +
-> +static void virt_set_virt(Object *obj, bool value, Error **errp)
-> +{
-> +    VirtMachineState *vms = VIRT_MACHINE(obj);
-> +
-> +    vms->virt = value;
-> +}
-> +
->  static bool virt_get_highmem(Object *obj, Error **errp)
->  {
->      VirtMachineState *vms = VIRT_MACHINE(obj);
-> @@ -1522,6 +1552,16 @@ static void virt_2_9_instance_init(Object *obj)
->                                      "Security Extensions (TrustZone)",
->                                      NULL);
->  
-> +    /* EL2 is also disabled by default, for similar reasons */
-> +    vms->virt = false;
-> +    object_property_add_bool(obj, "virtualization", virt_get_virt,
-> +                             virt_set_virt, NULL);
-> +    object_property_set_description(obj, "virtualization",
-> +                                    "Set on/off to enable/disable emulating a "
-> +                                    "guest CPU which implements the ARM "
-> +                                    "Virtualization Extensions",
-> +                                    NULL);
-> +
->      /* High memory is enabled by default */
->      vms->highmem = true;
->      object_property_add_bool(obj, "highmem", virt_get_highmem,
+>      /* Distributor */
+>      memory_region_init_io(&s->iomem, OBJECT(s), ops, s, "gic_dist", 0x1000);
 > -- 
 > 2.7.4
 > 

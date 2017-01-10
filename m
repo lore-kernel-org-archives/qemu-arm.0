@@ -1,48 +1,75 @@
-Received: by 10.25.205.13 with SMTP id d13csp11574423lfg;
-        Mon, 9 Jan 2017 08:33:16 -0800 (PST)
-X-Received: by 10.55.64.71 with SMTP id n68mr16785797qka.178.1483979596847;
-        Mon, 09 Jan 2017 08:33:16 -0800 (PST)
+Received: by 10.25.205.13 with SMTP id d13csp11759352lfg;
+        Mon, 9 Jan 2017 17:42:26 -0800 (PST)
+X-Received: by 10.55.75.143 with SMTP id y137mr546497qka.39.1484012546605;
+        Mon, 09 Jan 2017 17:42:26 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id m57si44221457qtb.34.2017.01.09.08.33.16
+        by mx.google.com with ESMTPS id q3si239304qkd.22.2017.01.09.17.42.25
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 09 Jan 2017 08:33:16 -0800 (PST)
+        Mon, 09 Jan 2017 17:42:26 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:40991 helo=lists.gnu.org)
+       dkim=fail header.i=@gmail.com;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:44086 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1cQcsk-0007fC-3g
-	for alex.bennee@linaro.org; Mon, 09 Jan 2017 11:33:14 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:40730)
+	id 1cQlSB-0004MU-NZ
+	for alex.bennee@linaro.org; Mon, 09 Jan 2017 20:42:23 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:51298)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1cQcTa-0001A6-Dh
-	for qemu-arm@nongnu.org; Mon, 09 Jan 2017 11:07:16 -0500
+	(envelope-from <alistair23@gmail.com>) id 1cQlS4-0004Ku-No
+	for qemu-arm@nongnu.org; Mon, 09 Jan 2017 20:42:18 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1cQcTV-0004Ku-T5
-	for qemu-arm@nongnu.org; Mon, 09 Jan 2017 11:07:14 -0500
-Received: from orth.archaic.org.uk ([2001:8b0:1d0::2]:48058)
+	(envelope-from <alistair23@gmail.com>) id 1cQlS2-00005z-Ul
+	for qemu-arm@nongnu.org; Mon, 09 Jan 2017 20:42:16 -0500
+Received: from mail-oi0-x242.google.com ([2607:f8b0:4003:c06::242]:35067)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <pm215@archaic.org.uk>)
-	id 1cQcTV-0004K0-Hk; Mon, 09 Jan 2017 11:07:09 -0500
-Received: from pm215 by orth.archaic.org.uk with local (Exim 4.84_2)
-	(envelope-from <pm215@archaic.org.uk>)
-	id 1cQcRt-0001l6-Tm; Mon, 09 Jan 2017 16:05:29 +0000
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Date: Mon,  9 Jan 2017 16:05:16 +0000
-Message-Id: <1483977924-14522-11-git-send-email-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.7.4
-In-Reply-To: <1483977924-14522-1-git-send-email-peter.maydell@linaro.org>
-References: <1483977924-14522-1-git-send-email-peter.maydell@linaro.org>
+	(Exim 4.71) (envelope-from <alistair23@gmail.com>)
+	id 1cQlRy-00004u-Qg; Mon, 09 Jan 2017 20:42:10 -0500
+Received: by mail-oi0-x242.google.com with SMTP id x84so16067595oix.2;
+	Mon, 09 Jan 2017 17:42:09 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=mime-version:sender:in-reply-to:references:from:date:message-id
+	:subject:to:cc;
+	bh=Mx3b1LsXX8xYmiCBalH918+pCWOEXgupJcaOKQFLEMg=;
+	b=piG1nYC2OJzvA70bK7CX/f9KRUflH0Vc6QNLJVKU2Z3TSQPKXEfGYscioLhTpkKNij
+	nrUyqcmBYfPbYV+B4QmpKzEvTAa1tduHszFBJlftaESFEtaIYPd1Ekr1OQW/IuVasX3r
+	N79ePFhwA8JNNDBvMTVkWIRpQdh4J/OIPZ1zL0eKIWoJya1jNAw5O02MZ5pPJHiH7Bso
+	Nru3xGYypQv+DfUb61dg4CNdE4SQ9DkRR+nLKx1Rj5wIS0zEgNbr9b9Jqf/8O0jdLOme
+	uSjlxjULoLtHZYyiewuSGpoDFjgTN5QhwgFIeLAgpq/8rufmz77GZBmqa4bj8zrvKZs+
+	ijMw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:sender:in-reply-to:references:from
+	:date:message-id:subject:to:cc;
+	bh=Mx3b1LsXX8xYmiCBalH918+pCWOEXgupJcaOKQFLEMg=;
+	b=fpUpM4J8XfwDA1Tf5kTTGv7Xu3LNF/g/zQC4vPA01E1jqNCvW1SZWf/MsZZoCd/nvo
+	N2dK3aw/+KsZKWp/SiuVNoZhdwP06UFXaO0n0rL42PeFuj7yR3FBgsR6bromfIM9qyGo
+	rcSmPJVx6nj7NCEbd3B+DJ1EDnmZkfba9axBPVs++LTkw5OTfRXx/01MS4UGkYN+DVop
+	dl/1PPjes8R36D7PTjc1mlUscj6KTBMQffw2txBQGkXmlIRTZD9TUrpoKmLjsdZ4jOGg
+	OzHhK/vmYiREpKKa1nRl1lLXm7VLLa4WDOzYtegcHplwdOZLspEe1vNw7NQ/140kQyEF
+	Q8SQ==
+X-Gm-Message-State: AIkVDXIYNW+eALuNcUzTmMozi2B6VYDEauF3gUxU+j307WLcmLau8bihFnfKsplMQG+LdVT9WK4Up6efZ7W7UA==
+X-Received: by 10.202.88.138 with SMTP id m132mr340912oib.12.1484012528458;
+	Mon, 09 Jan 2017 17:42:08 -0800 (PST)
+MIME-Version: 1.0
+Received: by 10.182.96.6 with HTTP; Mon, 9 Jan 2017 17:41:38 -0800 (PST)
+In-Reply-To: <CAFEAcA88=_J3==CJ3fy+jurM9APvRErYFhopuz-bJeML5mPSvw@mail.gmail.com>
+References: <cover.1482265908.git.alistair.francis@xilinx.com>
+	<b985247bfcb7375de984e801c4145fde931360bb.1482265908.git.alistair.francis@xilinx.com>
+	<CAFEAcA88=_J3==CJ3fy+jurM9APvRErYFhopuz-bJeML5mPSvw@mail.gmail.com>
+From: Alistair Francis <alistair.francis@xilinx.com>
+Date: Mon, 9 Jan 2017 17:41:38 -0800
+X-Google-Sender-Auth: -vyeg-fltHc5QLpt4oQGEo0zqXI
+Message-ID: <CAKmqyKM74PWeQZZcM_TKwdCfvOz+RAWa3Y2V7favwCiPT0U4rw@mail.gmail.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+Content-Type: text/plain; charset=UTF-8
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2001:8b0:1d0::2
-Subject: [Qemu-arm] [PATCH v2 10/18] hw/intc/arm_gicv3: Implement ICV_ HPPIR,
- DIR and RPR registers
+X-Received-From: 2607:f8b0:4003:c06::242
+Subject: Re: [Qemu-arm] [PATCH v3 1/3] arm_generic_timer: Add the ARM
+ Generic Timer
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -54,333 +81,415 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: "Edgar E . Iglesias" <edgar.iglesias@xilinx.com>,
-	Andrew Jones <drjones@redhat.com>,
-	Alistair Francis <alistair.francis@xilinx.com>,
-	Christoffer Dall <christoffer.dall@linaro.org>, patches@linaro.org
+Cc: =?UTF-8?B?S09OUkFEIEZyw6lkw6lyaWM=?= <fred.konrad@greensocs.com>,
+	qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
+	Alistair Francis <alistair.francis@xilinx.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: fjmY22YKa5nk
+X-TUID: 8GMwn9GeTp00
 
-Implement the the ICV_ registers HPPIR, DIR and RPR.
+On Fri, Jan 6, 2017 at 3:57 AM, Peter Maydell <peter.maydell@linaro.org> wrote:
+> On 20 December 2016 at 22:42, Alistair Francis
+> <alistair.francis@xilinx.com> wrote:
+>> Add the ARM generic timer. This allows the guest to poll the timer for
+>> values and also supports secure writes only.
+>>
+>> Signed-off-by: Alistair Francis <alistair.francis@xilinx.com>
+>> ---
+>> V3:
+>>  - Use ARM ARM names
+>>  - Indicate that we don't support all of the registers
+>>  - Fixup the Makefile CONFIG
+>> V2:
+>>  - Fix couter/counter typo
+>>
+>>  hw/timer/Makefile.objs               |   1 +
+>>  hw/timer/arm_generic_timer.c         | 205 +++++++++++++++++++++++++++++++++++
+>>  include/hw/timer/arm_generic_timer.h |  62 +++++++++++
+>>  3 files changed, 268 insertions(+)
+>>  create mode 100644 hw/timer/arm_generic_timer.c
+>>  create mode 100644 include/hw/timer/arm_generic_timer.h
+>>
+>> diff --git a/hw/timer/Makefile.objs b/hw/timer/Makefile.objs
+>> index 7ba8c23..bb203e2 100644
+>> --- a/hw/timer/Makefile.objs
+>> +++ b/hw/timer/Makefile.objs
+>> @@ -17,6 +17,7 @@ common-obj-$(CONFIG_IMX) += imx_epit.o
+>>  common-obj-$(CONFIG_IMX) += imx_gpt.o
+>>  common-obj-$(CONFIG_LM32) += lm32_timer.o
+>>  common-obj-$(CONFIG_MILKYMIST) += milkymist-sysctl.o
+>> +common-obj-$(CONFIG_ARM_TIMER) += arm_generic_timer.o
+>>
+>>  obj-$(CONFIG_EXYNOS4) += exynos4210_mct.o
+>>  obj-$(CONFIG_EXYNOS4) += exynos4210_pwm.o
+>> diff --git a/hw/timer/arm_generic_timer.c b/hw/timer/arm_generic_timer.c
+>> new file mode 100644
+>> index 0000000..da434a7
+>> --- /dev/null
+>> +++ b/hw/timer/arm_generic_timer.c
+>> @@ -0,0 +1,205 @@
+>> +/*
+>> + * QEMU model of the ARM Generic Timer
+>> + *
+>> + * Copyright (c) 2016 Xilinx Inc.
+>> + * Written by Alistair Francis <alistair.francis@xilinx.com>
+>> + *
+>> + * Permission is hereby granted, free of charge, to any person obtaining a copy
+>> + * of this software and associated documentation files (the "Software"), to deal
+>> + * in the Software without restriction, including without limitation the rights
+>> + * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+>> + * copies of the Software, and to permit persons to whom the Software is
+>> + * furnished to do so, subject to the following conditions:
+>> + *
+>> + * The above copyright notice and this permission notice shall be included in
+>> + * all copies or substantial portions of the Software.
+>> + *
+>> + * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+>> + * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+>> + * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+>> + * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+>> + * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+>> + * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+>> + * THE SOFTWARE.
+>> + */
+>> +
+>> +#include "qemu/osdep.h"
+>> +#include "hw/timer/arm_generic_timer.h"
+>> +#include "qemu/timer.h"
+>> +#include "qemu/log.h"
+>> +
+>> +#ifndef ARM_GEN_TIMER_ERR_DEBUG
+>> +#define ARM_GEN_TIMER_ERR_DEBUG 0
+>> +#endif
+>> +
+>> +static void counter_control_postw(RegisterInfo *reg, uint64_t val64)
+>> +{
+>> +    ARMGenTimer *s = ARM_GEN_TIMER(reg->opaque);
+>> +    bool new_status = extract32(s->regs[R_CNTCR],
+>> +                                R_CNTCR_EN_SHIFT,
+>> +                                R_CNTCR_EN_LENGTH);
+>> +    uint64_t current_ticks;
+>> +
+>> +    current_ticks = muldiv64(qemu_clock_get_us(QEMU_CLOCK_VIRTUAL),
+>> +                             NANOSECONDS_PER_SECOND, 1000000);
+>> +
+>> +    if ((s->enabled && !new_status) ||
+>> +        (!s->enabled && new_status)) {
+>
+> Since s->enabled and new_status are both bool, you can
+> write this as "if (s->enabled != new_status)".
+> (If they were ints you could use xor.)
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
- hw/intc/arm_gicv3_cpuif.c | 235 +++++++++++++++++++++++++++++++++++++++++++++-
- hw/intc/trace-events      |   3 +
- 2 files changed, 235 insertions(+), 3 deletions(-)
+I should have realised that, thanks.
 
-diff --git a/hw/intc/arm_gicv3_cpuif.c b/hw/intc/arm_gicv3_cpuif.c
-index 40a52ce..e069082 100644
---- a/hw/intc/arm_gicv3_cpuif.c
-+++ b/hw/intc/arm_gicv3_cpuif.c
-@@ -44,6 +44,21 @@ static inline int icv_min_vbpr(GICv3CPUState *cs)
- }
- 
- /* Simple accessor functions for LR fields */
-+static uint32_t ich_lr_vintid(uint64_t lr)
-+{
-+    return extract64(lr, ICH_LR_EL2_VINTID_SHIFT, ICH_LR_EL2_VINTID_LENGTH);
-+}
-+
-+static uint32_t ich_lr_pintid(uint64_t lr)
-+{
-+    return extract64(lr, ICH_LR_EL2_PINTID_SHIFT, ICH_LR_EL2_PINTID_LENGTH);
-+}
-+
-+static uint32_t ich_lr_prio(uint64_t lr)
-+{
-+    return extract64(lr, ICH_LR_EL2_PRIORITY_SHIFT, ICH_LR_EL2_PRIORITY_LENGTH);
-+}
-+
- static int ich_lr_state(uint64_t lr)
- {
-     return extract64(lr, ICH_LR_EL2_STATE_SHIFT, ICH_LR_EL2_STATE_LENGTH);
-@@ -115,6 +130,79 @@ static uint32_t icv_fullprio_mask(GICv3CPUState *cs)
-     return ~0U << (8 - cs->vpribits);
- }
- 
-+static int ich_highest_active_virt_prio(GICv3CPUState *cs)
-+{
-+    /* Calculate the current running priority based on the set bits
-+     * in the ICH Active Priority Registers.
-+     */
-+    int i;
-+    int aprmax = 1 << (cs->vprebits - 5);
-+
-+    assert(aprmax <= ARRAY_SIZE(cs->ich_apr[0]));
-+
-+    for (i = 0; i < aprmax; i++) {
-+        uint32_t apr = cs->ich_apr[GICV3_G0][i] |
-+            cs->ich_apr[GICV3_G1NS][i];
-+
-+        if (!apr) {
-+            continue;
-+        }
-+        return (i * 32 + ctz32(apr)) << (icv_min_vbpr(cs) + 1);
-+    }
-+    /* No current active interrupts: return idle priority */
-+    return 0xff;
-+}
-+
-+static int hppvi_index(GICv3CPUState *cs)
-+{
-+    /* Return the list register index of the highest priority pending
-+     * virtual interrupt, as per the HighestPriorityVirtualInterrupt
-+     * pseudocode. If no pending virtual interrupts, return -1.
-+     */
-+    int idx = -1;
-+    int i;
-+    /* Note that a list register entry with a priority of 0xff will
-+     * never be reported by this function; this is the architecturally
-+     * correct behaviour.
-+     */
-+    int prio = 0xff;
-+
-+    if (!(cs->ich_vmcr_el2 & (ICH_VMCR_EL2_VENG0 | ICH_VMCR_EL2_VENG1))) {
-+        /* Both groups disabled, definitely nothing to do */
-+        return idx;
-+    }
-+
-+    for (i = 0; i < cs->num_list_regs; i++) {
-+        uint64_t lr = cs->ich_lr_el2[i];
-+        int thisprio;
-+
-+        if (ich_lr_state(lr) != ICH_LR_EL2_STATE_PENDING) {
-+            /* Not Pending */
-+            continue;
-+        }
-+
-+        /* Ignore interrupts if relevant group enable not set */
-+        if (lr & ICH_LR_EL2_GROUP) {
-+            if (!(cs->ich_vmcr_el2 & ICH_VMCR_EL2_VENG1)) {
-+                continue;
-+            }
-+        } else {
-+            if (!(cs->ich_vmcr_el2 & ICH_VMCR_EL2_VENG0)) {
-+                continue;
-+            }
-+        }
-+
-+        thisprio = ich_lr_prio(lr);
-+
-+        if (thisprio < prio) {
-+            prio = thisprio;
-+            idx = i;
-+        }
-+    }
-+
-+    return idx;
-+}
-+
- static uint32_t eoi_maintenance_interrupt_state(GICv3CPUState *cs,
-                                                 uint32_t *misr)
- {
-@@ -363,6 +451,35 @@ static void icv_ctlr_write(CPUARMState *env, const ARMCPRegInfo *ri,
-     gicv3_cpuif_virt_update(cs);
- }
- 
-+static uint64_t icv_rpr_read(CPUARMState *env, const ARMCPRegInfo *ri)
-+{
-+    GICv3CPUState *cs = icc_cs_from_env(env);
-+    int prio = ich_highest_active_virt_prio(cs);
-+
-+    trace_gicv3_icv_rpr_read(gicv3_redist_affid(cs), prio);
-+    return prio;
-+}
-+
-+static uint64_t icv_hppir_read(CPUARMState *env, const ARMCPRegInfo *ri)
-+{
-+    GICv3CPUState *cs = icc_cs_from_env(env);
-+    int grp = ri->crm == 8 ? GICV3_G0 : GICV3_G1NS;
-+    int idx = hppvi_index(cs);
-+    uint64_t value = INTID_SPURIOUS;
-+
-+    if (idx >= 0) {
-+        uint64_t lr = cs->ich_lr_el2[idx];
-+        int thisgrp = (lr & ICH_LR_EL2_GROUP) ? GICV3_G1NS : GICV3_G0;
-+
-+        if (grp == thisgrp) {
-+            value = ich_lr_vintid(lr);
-+        }
-+    }
-+
-+    trace_gicv3_icv_hppir_read(grp, gicv3_redist_affid(cs), value);
-+    return value;
-+}
-+
- static int icc_highest_active_prio(GICv3CPUState *cs)
- {
-     /* Calculate the current running priority based on the set bits
-@@ -781,6 +898,97 @@ static void icc_deactivate_irq(GICv3CPUState *cs, int irq)
-     }
- }
- 
-+static bool icv_eoi_split(CPUARMState *env, GICv3CPUState *cs)
-+{
-+    /* Return true if we should split priority drop and interrupt
-+     * deactivation, ie whether the virtual EOIMode bit is set.
-+     */
-+    return cs->ich_vmcr_el2 & ICH_VMCR_EL2_VEOIM;
-+}
-+
-+static int icv_find_active(GICv3CPUState *cs, int irq)
-+{
-+    /* Given an interrupt number for an active interrupt, return the index
-+     * of the corresponding list register, or -1 if there is no match.
-+     * Corresponds to FindActiveVirtualInterrupt pseudocode.
-+     */
-+    int i;
-+
-+    for (i = 0; i < cs->num_list_regs; i++) {
-+        uint64_t lr = cs->ich_lr_el2[i];
-+
-+        if ((lr & ICH_LR_EL2_STATE_ACTIVE_BIT) && ich_lr_vintid(lr) == irq) {
-+            return i;
-+        }
-+    }
-+
-+    return -1;
-+}
-+
-+static void icv_deactivate_irq(GICv3CPUState *cs, int idx)
-+{
-+    /* Deactivate the interrupt in the specified list register index */
-+    uint64_t lr = cs->ich_lr_el2[idx];
-+
-+    if (lr & ICH_LR_EL2_HW) {
-+        /* Deactivate the associated physical interrupt */
-+        int pirq = ich_lr_pintid(lr);
-+
-+        if (pirq < INTID_SECURE) {
-+            icc_deactivate_irq(cs, pirq);
-+        }
-+    }
-+
-+    /* Clear the 'active' part of the state, so ActivePending->Pending
-+     * and Active->Invalid.
-+     */
-+    lr &= ~ICH_LR_EL2_STATE_ACTIVE_BIT;
-+    cs->ich_lr_el2[idx] = lr;
-+}
-+
-+static void icv_increment_eoicount(GICv3CPUState *cs)
-+{
-+    /* Increment the EOICOUNT field in ICH_HCR_EL2 */
-+    int eoicount = extract64(cs->ich_hcr_el2, ICH_HCR_EL2_EOICOUNT_SHIFT,
-+                             ICH_HCR_EL2_EOICOUNT_LENGTH);
-+
-+    cs->ich_hcr_el2 = deposit64(cs->ich_hcr_el2, ICH_HCR_EL2_EOICOUNT_SHIFT,
-+                                ICH_HCR_EL2_EOICOUNT_LENGTH, eoicount + 1);
-+}
-+
-+static void icv_dir_write(CPUARMState *env, const ARMCPRegInfo *ri,
-+                          uint64_t value)
-+{
-+    /* Deactivate interrupt */
-+    GICv3CPUState *cs = icc_cs_from_env(env);
-+    int idx;
-+    int irq = value & 0xffffff;
-+
-+    trace_gicv3_icv_dir_write(gicv3_redist_affid(cs), value);
-+
-+    if (irq >= cs->gic->num_irq) {
-+        /* Also catches special interrupt numbers and LPIs */
-+        return;
-+    }
-+
-+    if (!icv_eoi_split(env, cs)) {
-+        return;
-+    }
-+
-+    idx = icv_find_active(cs, irq);
-+
-+    if (idx < 0) {
-+        /* No list register matching this, so increment the EOI count
-+         * (might trigger a maintenance interrupt)
-+         */
-+        icv_increment_eoicount(cs);
-+    } else {
-+        icv_deactivate_irq(cs, idx);
-+    }
-+
-+    gicv3_cpuif_virt_update(cs);
-+}
-+
- static void icc_eoir_write(CPUARMState *env, const ARMCPRegInfo *ri,
-                            uint64_t value)
- {
-@@ -831,8 +1039,13 @@ static void icc_eoir_write(CPUARMState *env, const ARMCPRegInfo *ri,
- static uint64_t icc_hppir0_read(CPUARMState *env, const ARMCPRegInfo *ri)
- {
-     GICv3CPUState *cs = icc_cs_from_env(env);
--    uint64_t value = icc_hppir0_value(cs, env);
-+    uint64_t value;
-+
-+    if (icv_access(env, HCR_FMO)) {
-+        return icv_hppir_read(env, ri);
-+    }
- 
-+    value = icc_hppir0_value(cs, env);
-     trace_gicv3_icc_hppir0_read(gicv3_redist_affid(cs), value);
-     return value;
- }
-@@ -840,8 +1053,13 @@ static uint64_t icc_hppir0_read(CPUARMState *env, const ARMCPRegInfo *ri)
- static uint64_t icc_hppir1_read(CPUARMState *env, const ARMCPRegInfo *ri)
- {
-     GICv3CPUState *cs = icc_cs_from_env(env);
--    uint64_t value = icc_hppir1_value(cs, env);
-+    uint64_t value;
-+
-+    if (icv_access(env, HCR_IMO)) {
-+        return icv_hppir_read(env, ri);
-+    }
- 
-+    value = icc_hppir1_value(cs, env);
-     trace_gicv3_icc_hppir1_read(gicv3_redist_affid(cs), value);
-     return value;
- }
-@@ -986,6 +1204,11 @@ static void icc_dir_write(CPUARMState *env, const ARMCPRegInfo *ri,
-     bool irq_is_secure, single_sec_state, irq_is_grp0;
-     bool route_fiq_to_el3, route_irq_to_el3, route_fiq_to_el2, route_irq_to_el2;
- 
-+    if (icv_access(env, HCR_FMO | HCR_IMO)) {
-+        icv_dir_write(env, ri, value);
-+        return;
-+    }
-+
-     trace_gicv3_icc_dir_write(gicv3_redist_affid(cs), value);
- 
-     if (irq >= cs->gic->num_irq) {
-@@ -1057,7 +1280,13 @@ static void icc_dir_write(CPUARMState *env, const ARMCPRegInfo *ri,
- static uint64_t icc_rpr_read(CPUARMState *env, const ARMCPRegInfo *ri)
- {
-     GICv3CPUState *cs = icc_cs_from_env(env);
--    int prio = icc_highest_active_prio(cs);
-+    int prio;
-+
-+    if (icv_access(env, HCR_FMO | HCR_IMO)) {
-+        return icv_rpr_read(env, ri);
-+    }
-+
-+    prio = icc_highest_active_prio(cs);
- 
-     if (arm_feature(env, ARM_FEATURE_EL3) &&
-         !arm_is_secure(env) && (env->cp15.scr_el3 & SCR_FIQ)) {
-diff --git a/hw/intc/trace-events b/hw/intc/trace-events
-index 19fe1d5..fc9ec57 100644
---- a/hw/intc/trace-events
-+++ b/hw/intc/trace-events
-@@ -133,6 +133,9 @@ gicv3_icv_igrpen_read(int grp, uint32_t cpu, uint64_t val) "GICv3 ICV_IGRPEN%d r
- gicv3_icv_igrpen_write(int grp, uint32_t cpu, uint64_t val) "GICv3 ICV_IGRPEN%d write cpu %x value 0x%" PRIx64
- gicv3_icv_ctlr_read(uint32_t cpu, uint64_t val) "GICv3 ICV_CTLR read cpu %x value 0x%" PRIx64
- gicv3_icv_ctlr_write(uint32_t cpu, uint64_t val) "GICv3 ICV_CTLR write cpu %x value 0x%" PRIx64
-+gicv3_icv_rpr_read(uint32_t cpu, uint64_t val) "GICv3 ICV_RPR read cpu %x value 0x%" PRIx64
-+gicv3_icv_hppir_read(int grp, uint32_t cpu, uint64_t val) "GICv3 ICV_HPPIR%d read cpu %x value 0x%" PRIx64
-+gicv3_icv_dir_write(uint32_t cpu, uint64_t val) "GICv3 ICV_DIR write cpu %x value 0x%" PRIx64
- 
- # hw/intc/arm_gicv3_dist.c
- gicv3_dist_read(uint64_t offset, uint64_t data, unsigned size, bool secure) "GICv3 distributor read: offset 0x%" PRIx64 " data 0x%" PRIx64 " size %u secure %d"
--- 
-2.7.4
+>
+>> +        /* The timer is being disabled or enabled */
+>> +        s->tick_offset = current_ticks - s->tick_offset;
+>> +    }
+>> +
+>> +    s->enabled = new_status;
+>> +}
+>> +
+>> +static uint64_t counter_value_postr(RegisterInfo *reg)
+>> +{
+>> +    ARMGenTimer *s = ARM_GEN_TIMER(reg->opaque);
+>> +    uint64_t current_ticks, total_ticks;
+>> +
+>> +    if (s->enabled) {
+>> +        current_ticks = muldiv64(qemu_clock_get_us(QEMU_CLOCK_VIRTUAL),
+>> +                                 NANOSECONDS_PER_SECOND, 1000000);
+>> +        total_ticks = current_ticks - s->tick_offset;
+>> +    } else {
+>> +        /* Timer is disabled, return the time when it was disabled */
+>> +        total_ticks = s->tick_offset;
+>> +    }
+>> +
+>> +    return total_ticks;
+>> +}
+>> +
+>> +static uint64_t counter_low_value_postr(RegisterInfo *reg, uint64_t val64)
+>> +{
+>> +    return (uint32_t) counter_value_postr(reg);
+>> +}
+>> +
+>> +static uint64_t counter_high_value_postr(RegisterInfo *reg, uint64_t val64)
+>> +{
+>> +    return (uint32_t) (counter_value_postr(reg) >> 32);
+>> +}
+>
+> The spec says that a write to the CNTCV should cause changes
+> to each CPU's CNTPCT/CNTPCT_EL0 register -- how do we plan to implement this?
 
+Hmm... This I don't know. What do you think?
+
+>
+> (v8 ARM ARM section D6.1 is the clearest description of the
+> relationship between the system counter and the per-CPU timers.)
+>
+>> +
+>> +static RegisterAccessInfo arm_gen_timer_regs_info[] = {
+>> +    {   .name = "CNTCR",
+>> +        .addr = A_CNTCR,
+>> +        .rsvd = 0xfffffffc,
+>
+> Spec says bits [17:8] are FCREQ field ?
+
+Yeah, you are right. That was left over from the Xilinx spec.
+
+>
+>> +        .post_write = counter_control_postw,
+>> +    },{ .name = "CNTSR",
+>> +        .addr = A_CNTSR,
+>> +        .rsvd = 0xfffffffd, .ro = 0x2,
+>
+> Spec says bits [31:8] are FCACK ?
+
+Same
+
+>
+>> +    },{ .name = "CNTCV_LOWER",
+>> +        .addr = A_CNTCV_LOWER,
+>> +        .post_read = counter_low_value_postr,
+>> +    },{ .name = "CNTCV_UPPER",
+>> +        .addr = A_CNTCV_UPPER,
+>> +        .post_read = counter_high_value_postr,
+>
+> Spec says that you should also be able to access the whole
+> 64-bit counter value with a 64-bit access -- is this reginfo
+> sufficient to make that work?
+
+How do you know, all I see if that it is a 64-bit register. All the
+documentation about accesses specifies only 32-bit accesses.
+
+I have to make some changes to support 64-bit but it should be pretty
+easy to do.
+
+>
+>> +    },{ .name = "CNTFID0",
+>> +        .addr = A_CNTFID0,
+>> +    }
+>> +    /* We don't model CNTFIDn */
+>> +    /* We don't model the CounterID registers either */
+>> +};
+>> +
+>> +static void arm_gen_timer_reset(DeviceState *dev)
+>> +{
+>> +    ARMGenTimer *s = ARM_GEN_TIMER(dev);
+>> +    unsigned int i;
+>> +
+>> +    for (i = 0; i < ARRAY_SIZE(s->regs_info); ++i) {
+>> +        register_reset(&s->regs_info[i]);
+>> +    }
+>> +
+>> +    s->tick_offset = 0;
+>> +    s->enabled = false;
+>> +}
+>> +
+>> +static MemTxResult arm_gen_timer_read(void *opaque,  hwaddr addr,
+>> +                                      uint64_t *data, unsigned size,
+>> +                                      MemTxAttrs attrs)
+>> +{
+>> +    /* Reads are always supported, just blindly pass them through */
+>> +    *data = register_read_memory(opaque, addr, size);
+>> +
+>> +    return MEMTX_OK;
+>> +}
+>> +
+>> +static MemTxResult arm_gen_timer_write(void *opaque, hwaddr addr,
+>> +                                       uint64_t data, unsigned size,
+>> +                                       MemTxAttrs attrs)
+>> +{
+>> +    /* Block insecure writes */
+>> +    if (!attrs.secure) {
+>> +        qemu_log_mask(LOG_GUEST_ERROR,
+>> +                      "Non secure writes to the system timestamp generator " \
+>> +                      "are invalid\n");
+>> +        return MEMTX_ERROR;
+>> +    }
+>
+> This means you can't use this device in a system which
+> doesn't implement TrustZone. I think this would be better
+> handled by just having the board map the memory region
+> in to only the Secure address space if it is a TZ-aware board.
+
+How can I map something into the secure address space? Is there an
+example of this? The only think I can find is in the arm/virt.c
+machine with the secure_sysmem MemoryRegion.
+
+>
+> This also gets handling of NS reads correct (your code
+> allows them).
+>
+>> +
+>> +    register_write_memory(opaque, addr, data, size);
+>> +
+>> +    return MEMTX_OK;
+>> +}
+>> +
+>> +static const MemoryRegionOps arm_gen_timer_ops = {
+>> +    .read_with_attrs = arm_gen_timer_read,
+>> +    .write_with_attrs = arm_gen_timer_write,
+>> +    .endianness = DEVICE_LITTLE_ENDIAN,
+>> +    .valid = {
+>> +        .min_access_size = 4,
+>> +        .max_access_size = 4,
+>
+> 64-bit access is needed for the CNTCV.
+
+Ok, will fix.
+
+>
+>> +    },
+>> +};
+>> +
+>> +static const VMStateDescription vmstate_arm_gen_timer = {
+>> +    .name = TYPE_ARM_GEN_TIMER,
+>> +    .version_id = 1,
+>> +    .minimum_version_id = 1,
+>> +    .fields = (VMStateField[]) {
+>> +        VMSTATE_UINT32_ARRAY(regs, ARMGenTimer, R_ARM_GEN_TIMER_MAX),
+>> +        VMSTATE_END_OF_LIST(),
+>> +    }
+>> +};
+>> +
+>> +static void arm_gen_timer_init(Object *obj)
+>> +{
+>> +    ARMGenTimer *s = ARM_GEN_TIMER(obj);
+>> +    SysBusDevice *sbd = SYS_BUS_DEVICE(obj);
+>> +    RegisterInfoArray *reg_array;
+>> +
+>> +    memory_region_init_io(&s->iomem, obj, &arm_gen_timer_ops, s,
+>> +                          TYPE_ARM_GEN_TIMER, R_ARM_GEN_TIMER_MAX * 4);
+>> +    reg_array =
+>> +        register_init_block32(DEVICE(obj), arm_gen_timer_regs_info,
+>> +                              ARRAY_SIZE(arm_gen_timer_regs_info),
+>> +                              s->regs_info, s->regs,
+>> +                              &arm_gen_timer_ops,
+>> +                              ARM_GEN_TIMER_ERR_DEBUG,
+>> +                              R_ARM_GEN_TIMER_MAX * 4);
+>> +    memory_region_add_subregion(&s->iomem,
+>> +                                A_CNTCR,
+>> +                                &reg_array->mem);
+>> +    sysbus_init_mmio(sbd, &s->iomem);
+>> +}
+>> +
+>> +static void arm_gen_timer_class_init(ObjectClass *klass, void *data)
+>> +{
+>> +    DeviceClass *dc = DEVICE_CLASS(klass);
+>> +
+>> +    dc->reset = arm_gen_timer_reset;
+>> +    dc->vmsd = &vmstate_arm_gen_timer;
+>> +}
+>> +
+>> +static const TypeInfo arm_gen_timer_info = {
+>> +    .name          = TYPE_ARM_GEN_TIMER,
+>> +    .parent        = TYPE_SYS_BUS_DEVICE,
+>> +    .instance_size = sizeof(ARMGenTimer),
+>> +    .class_init    = arm_gen_timer_class_init,
+>> +    .instance_init = arm_gen_timer_init,
+>> +};
+>> +
+>> +static void arm_gen_timer_register_types(void)
+>> +{
+>> +    type_register_static(&arm_gen_timer_info);
+>> +}
+>> +
+>> +type_init(arm_gen_timer_register_types)
+>> diff --git a/include/hw/timer/arm_generic_timer.h b/include/hw/timer/arm_generic_timer.h
+>> new file mode 100644
+>> index 0000000..ae4319c
+>> --- /dev/null
+>> +++ b/include/hw/timer/arm_generic_timer.h
+>> @@ -0,0 +1,62 @@
+>> +/*
+>> + * QEMU model of the ARM Generic Timer
+>> + *
+>> + * Copyright (c) 2016 Xilinx Inc.
+>> + * Written by Alistair Francis <alistair.francis@xilinx.com>
+>> + *
+>> + * Permission is hereby granted, free of charge, to any person obtaining a copy
+>> + * of this software and associated documentation files (the "Software"), to deal
+>> + * in the Software without restriction, including without limitation the rights
+>> + * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+>> + * copies of the Software, and to permit persons to whom the Software is
+>> + * furnished to do so, subject to the following conditions:
+>> + *
+>> + * The above copyright notice and this permission notice shall be included in
+>> + * all copies or substantial portions of the Software.
+>> + *
+>> + * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+>> + * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+>> + * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+>> + * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+>> + * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+>> + * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+>> + * THE SOFTWARE.
+>> + */
+>> +
+>> +#ifndef ARM_GEN_TIMER_H
+>> +#define ARM_GEN_TIMER_H
+>> +
+>> +#include "hw/sysbus.h"
+>> +#include "hw/register.h"
+>> +
+>> +#define TYPE_ARM_GEN_TIMER "arm.generic-timer"
+>> +#define ARM_GEN_TIMER(obj) \
+>> +            OBJECT_CHECK(ARMGenTimer, (obj), TYPE_ARM_GEN_TIMER)
+>> +
+>> +REG32(CNTCR, 0x00)
+>> +    FIELD(CNTCR, EN, 0, 1)
+>> +    FIELD(CNTCR, HDBG, 1, 1)
+>> +REG32(CNTSR, 0x04)
+>> +    FIELD(CNTSR, DBGH, 1, 1)
+>> +REG32(CNTCV_LOWER, 0x08)
+>> +REG32(CNTCV_UPPER, 0x0C)
+>> +REG32(CNTFID0, 0x20)
+>> +/* We don't model CNTFIDn */
+>> +/* We don't model the CounterID registers either */
+>
+> Does the Xilinx h/w not implement them at all?
+> (ie do we need a property for "device has the ID regs" if we add them
+> later?)
+
+There is nothing in the register spec describing registers being here.
+
+The last register I see is called: (IOU_SCNTRS)
+base_frequency_ID_register at address 0xFF260020.
+
+>
+> The spec says it's mandatory to have at least the entry for
+> the counter base frequency plus end-of-table marker.
+> I would expect EL3 firmware to want to read this table in order
+> to write the correct values to CNTFRQ_EL0 for each CPU.
+
+I don't see anything like that in section I3.5.21 in the ARM ARM,
+where are you looking?
+
+Thanks,
+
+Alistair
+
+>
+>> +
+>> +#define R_ARM_GEN_TIMER_MAX (R_CNTFID0 + 1)
+>> +
+>> +typedef struct ARMGenTimer {
+>> +    /* <private> */
+>> +    SysBusDevice parent_obj;
+>> +    MemoryRegion iomem;
+>> +
+>> +    /* <public> */
+>> +    bool enabled;
+>> +    uint64_t tick_offset;
+>> +
+>> +    uint32_t regs[R_ARM_GEN_TIMER_MAX];
+>> +    RegisterInfo regs_info[R_ARM_GEN_TIMER_MAX];
+>> +} ARMGenTimer;
+>> +
+>> +#endif
+>> --
+>> 2.7.4
+>>
+>
+> thanks
+> -- PMM

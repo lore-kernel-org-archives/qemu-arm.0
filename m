@@ -1,81 +1,56 @@
-Received: by 10.25.205.13 with SMTP id d13csp551223lfg;
-        Tue, 10 Jan 2017 19:39:11 -0800 (PST)
-X-Received: by 10.200.50.209 with SMTP id a17mr6584526qtb.288.1484105951605;
-        Tue, 10 Jan 2017 19:39:11 -0800 (PST)
+Received: by 10.25.205.13 with SMTP id d13csp859668lfg;
+        Wed, 11 Jan 2017 10:08:28 -0800 (PST)
+X-Received: by 10.55.134.66 with SMTP id i63mr8880133qkd.309.1484158108741;
+        Wed, 11 Jan 2017 10:08:28 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id b24si2838304qtb.143.2017.01.10.19.39.11
+        by mx.google.com with ESMTPS id u45si4313434qtc.5.2017.01.11.10.08.28
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 10 Jan 2017 19:39:11 -0800 (PST)
+        Wed, 11 Jan 2017 10:08:28 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:51110 helo=lists.gnu.org)
+Received: from localhost ([::1]:55901 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1cR9kl-0008G4-2t
-	for alex.bennee@linaro.org; Tue, 10 Jan 2017 22:39:11 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:38215)
+	id 1cRNK0-0006Y0-3J
+	for alex.bennee@linaro.org; Wed, 11 Jan 2017 13:08:28 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:42515)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <rth7680@gmail.com>) id 1cR8bE-0004In-CT
-	for qemu-arm@nongnu.org; Tue, 10 Jan 2017 21:25:17 -0500
+	(envelope-from <lersek@redhat.com>) id 1cRMnq-0005Eb-QF
+	for qemu-arm@nongnu.org; Wed, 11 Jan 2017 12:35:18 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <rth7680@gmail.com>) id 1cR8bD-0008Br-KN
-	for qemu-arm@nongnu.org; Tue, 10 Jan 2017 21:25:16 -0500
-Received: from mail-pf0-x244.google.com ([2607:f8b0:400e:c00::244]:34890)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <rth7680@gmail.com>)
-	id 1cR8bB-00088q-Cb; Tue, 10 Jan 2017 21:25:13 -0500
-Received: by mail-pf0-x244.google.com with SMTP id f144so12550360pfa.2;
-	Tue, 10 Jan 2017 18:25:13 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=sender:subject:to:references:cc:from:message-id:date:user-agent
-	:mime-version:in-reply-to:content-transfer-encoding;
-	bh=vZpJFxElSN6Rts1qJiv5Qamf9N4eZRFtRGPlSn6lfBI=;
-	b=jnAcIQfY3vIWw4hBANgq10Xm4wFi6GBKTA0upy658UUleNkbCGtmuCGdhvqk07jcpn
-	NSjjQxJRN12vPMBUoFQwG/peJS1/50wSa/A/Facxblw6mVEeVQFgAinGCELIXZsVIy49
-	BBeNgfrxm3Bruu/dNiHlScY+2LmiIoEvuP/vcI4CEyV1bxu4NMHYjYBoAmbVD97Q33Ip
-	er6uy5H4I7HZ9s6KqBw/CEempSo4t3OzRRIB65LVEdMPLI/jaBMfDiXMNOyunueQC7/w
-	pDC4Q0vyy456Q1VzJaMxPGXfvWmkgd7Plvtc06VEWDPRvFcHfYvU1SPsqWxYPNvKg12Y
-	Wifw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:sender:subject:to:references:cc:from:message-id
-	:date:user-agent:mime-version:in-reply-to:content-transfer-encoding;
-	bh=vZpJFxElSN6Rts1qJiv5Qamf9N4eZRFtRGPlSn6lfBI=;
-	b=BGNHwjUAPUKGrn7SFAUkjzBMAlMUQ7Ub1H3eym16yhTt+8Z0/ffmjpRyErjfjSBILC
-	bmZg9044OuPVt13Iofa/Jd8mHaXdJBbNgDHgIpzrl9IgJQWZjLNZJJfxhNwvCaNJzpKk
-	Uo+Jwj3bS1B37py8fzSe5kHt/n7ERGwJU1ctJrkNxaUcExELfCnI0RcGPOShyM3SziMO
-	KJ50dKiyNriVbKgsxXdwwVmrcgtbykdg+je3O259wyj+d9SrScZ1RIq9MmJslApiW7kY
-	liFJRI8O/xcIEHzZfmTbUdV+I1qg9J544JA9kSr4NcI++dT0NmQvCrfefkXHG248MSCq
-	R5Xg==
-X-Gm-Message-State: AIkVDXIM6lUn1Dp021cUFb2t4aTNlb3emjKu+YhN7EAAuGD0a/9O7k6IVOK/xxKrbYce6g==
-X-Received: by 10.98.70.194 with SMTP id o63mr7509986pfi.49.1484101512323;
-	Tue, 10 Jan 2017 18:25:12 -0800 (PST)
-Received: from bigtime.twiddle.net ([2602:47:d954:1500:5e51:4fff:fe40:9c64])
-	by smtp.googlemail.com with ESMTPSA id
-	f65sm8733504pfk.5.2017.01.10.18.25.11
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Tue, 10 Jan 2017 18:25:11 -0800 (PST)
-To: =?UTF-8?Q?Llu=c3=ads_Vilanova?= <vilanova@ac.upc.edu>,
-	qemu-devel@nongnu.org
-References: <148294246378.10801.8881527920302104439.stgit@fimbulvetr.bsc.es>
-	<148294246924.10801.16850780392122412532.stgit@fimbulvetr.bsc.es>
-From: Richard Henderson <rth@twiddle.net>
-Message-ID: <9fc6043f-fdb5-0212-a76d-c3383dcd76ff@twiddle.net>
-Date: Tue, 10 Jan 2017 18:25:09 -0800
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
-	Thunderbird/45.5.1
-MIME-Version: 1.0
-In-Reply-To: <148294246924.10801.16850780392122412532.stgit@fimbulvetr.bsc.es>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 8bit
+	(envelope-from <lersek@redhat.com>) id 1cRMnn-0007nV-Ns
+	for qemu-arm@nongnu.org; Wed, 11 Jan 2017 12:35:14 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:52558)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <lersek@redhat.com>)
+	id 1cRMnn-0007mx-Ep; Wed, 11 Jan 2017 12:35:11 -0500
+Received: from int-mx13.intmail.prod.int.phx2.redhat.com
+	(int-mx13.intmail.prod.int.phx2.redhat.com [10.5.11.26])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 8658E6DD86;
+	Wed, 11 Jan 2017 17:35:11 +0000 (UTC)
+Received: from lacos-laptop-7.usersys.redhat.com (ovpn-116-80.phx2.redhat.com
+	[10.3.116.80])
+	by int-mx13.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id v0BHZ1rW004547; Wed, 11 Jan 2017 12:35:06 -0500
+From: Laszlo Ersek <lersek@redhat.com>
+To: qemu devel list <qemu-devel@nongnu.org>
+Date: Wed, 11 Jan 2017 18:34:54 +0100
+Message-Id: <20170111173457.30455-2-lersek@redhat.com>
+In-Reply-To: <20170111173457.30455-1-lersek@redhat.com>
+References: <20170111173457.30455-1-lersek@redhat.com>
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.26
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.28]);
+	Wed, 11 Jan 2017 17:35:11 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:400e:c00::244
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v5 1/6] Pass generic CPUState to
- gen_intermediate_code()
+	[fuzzy]
+X-Received-From: 209.132.183.28
+Subject: [Qemu-arm] [PATCH v5 wave 1 1/4] fw-cfg: support writeable blobs
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -88,32 +63,450 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>,
-	Eduardo Habkost <ehabkost@redhat.com>,
-	Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
-	Anthony Green <green@moxielogic.com>,
-	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
-	Laurent Vivier <laurent@vivier.eu>, Alexander Graf <agraf@suse.de>,
-	Max Filippov <jcmvbkbc@gmail.com>, Michael Walle <michael@walle.cc>,
-	"open list:ARM" <qemu-arm@nongnu.org>,
-	"open list:PowerPC" <qemu-ppc@nongnu.org>,
-	Aurelien Jarno <aurelien@aurel32.net>,
-	David Gibson <david@gibson.dropbear.id.au>,
-	Paolo Bonzini <pbonzini@redhat.com>, Yongbok Kim <yongbok.kim@imgtec.com>,
-	Guan Xuetao <gxt@mprc.pku.edu.cn>, Artyom Tarasenko <atar4qemu@gmail.com>,
-	Jia Liu <proljc@gmail.com>
+	"Michael S. Tsirkin" <mst@redhat.com>, "Gabriel L. Somlo" <somlo@cmu.edu>,
+	Shannon Zhao <zhaoshenglong@huawei.com>,
+	Michael Walle <michael@walle.cc>, qemu-arm@nongnu.org,
+	Gerd Hoffmann <kraxel@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+	Igor Mammedov <imammedo@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 9fyxrhP5SEji
+X-TUID: qpi+dgdDylS3
 
-On 12/28/2016 08:27 AM, Lluís Vilanova wrote:
-> Needed to implement a target-agnostic gen_intermediate_code() in the
-> future.
->
-> Signed-off-by: Lluís Vilanova <vilanova@ac.upc.edu>
-> Reviewed-by: David Gibson <david@gibson.dropbear.id.au>
-> ---
+From: "Michael S. Tsirkin" <mst@redhat.com>
 
-Reviewed-by: Richard Henderson <rth@twiddle.net>
+Useful to send guest data back to QEMU.
+
+Changes from Laszlo Ersek <lersek@redhat.com>:
+- rebase the patch from Michael Tsirkin's original postings at [1] and [2]
+  to the following patches:
+  - loader: Allow a custom AddressSpace when loading ROMs
+  - loader: Add AddressSpace loading support to uImages
+  - loader: fix handling of custom address spaces when adding ROM blobs
+- reject such writes immediately that would exceed the end of the array,
+  rather than performing a partial write before setting the error bit: see
+  the (len != dma.length) condition
+- document the write interface
+
+[1] http://lists.nongnu.org/archive/html/qemu-devel/2016-02/msg04968.html
+[2] http://lists.nongnu.org/archive/html/qemu-devel/2016-03/msg02735.html
+
+Cc: "Gabriel L. Somlo" <somlo@cmu.edu>
+Cc: "Michael S. Tsirkin" <mst@redhat.com>
+Cc: Gerd Hoffmann <kraxel@redhat.com>
+Cc: Igor Mammedov <imammedo@redhat.com>
+Cc: Michael Walle <michael@walle.cc>
+Cc: Paolo Bonzini <pbonzini@redhat.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>
+Cc: Shannon Zhao <zhaoshenglong@huawei.com>
+Cc: qemu-arm@nongnu.org
+Signed-off-by: Michael S. Tsirkin <mst@redhat.com>
+Signed-off-by: Laszlo Ersek <lersek@redhat.com>
+Reviewed-by: Marcel Apfelbaum <marcel@redhat.com>
+---
+
+Notes:
+    v5:
+    - no changes, just picked up Marcel's R-b
+
+ docs/specs/fw_cfg.txt     | 32 +++++++++++++++++++++++++-------
+ hw/lm32/lm32_hwsetup.h    |  2 +-
+ include/hw/loader.h       |  7 ++++---
+ include/hw/nvram/fw_cfg.h |  3 ++-
+ hw/arm/virt-acpi-build.c  |  2 +-
+ hw/core/loader.c          | 18 +++++++++++-------
+ hw/i386/acpi-build.c      |  4 ++--
+ hw/nvram/fw_cfg.c         | 37 +++++++++++++++++++++++++++++--------
+ 8 files changed, 75 insertions(+), 30 deletions(-)
+
+diff --git a/docs/specs/fw_cfg.txt b/docs/specs/fw_cfg.txt
+index 7a5f8c7824ce..a19e2adbe1c6 100644
+--- a/docs/specs/fw_cfg.txt
++++ b/docs/specs/fw_cfg.txt
+@@ -33,6 +33,10 @@ the selector value is between 0x4000-0x7fff or 0xc000-0xffff.
+ NOTE: As of QEMU v2.4, writes to the fw_cfg data register are no
+       longer supported, and will be ignored (treated as no-ops)!
+ 
++NOTE: As of QEMU v2.9, writes are reinstated, but only through the DMA
++      interface (see below). Furthermore, writeability of any specific item is
++      governed independently of Bit14 in the selector key value.
++
+ Bit15 of the selector register indicates whether the configuration
+ setting is architecture specific. A value of 0 means the item is a
+ generic configuration item. A value of 1 means the item is specific
+@@ -43,7 +47,7 @@ value between 0x8000-0xffff.
+ 
+ == Data Register ==
+ 
+-* Read/Write (writes ignored as of QEMU v2.4)
++* Read/Write (writes ignored as of QEMU v2.4, but see the DMA interface)
+ * Location: platform dependent (IOport [*] or MMIO)
+ * Width: 8-bit (if IOport), 8/16/32/64-bit (if MMIO)
+ * Endianness: string-preserving
+@@ -134,8 +138,8 @@ struct FWCfgFile {		/* an individual file entry, 64 bytes total */
+ 
+ === All Other Data Items ===
+ 
+-Please consult the QEMU source for the most up-to-date and authoritative
+-list of selector keys and their respective items' purpose and format.
++Please consult the QEMU source for the most up-to-date and authoritative list
++of selector keys and their respective items' purpose, format and writeability.
+ 
+ === Ranges ===
+ 
+@@ -144,9 +148,11 @@ items, and up to 0x4000 architecturally specific ones.
+ 
+ Selector Reg.    Range Usage
+ ---------------  -----------
+-0x0000 - 0x3fff  Generic (0x0000 - 0x3fff, RO)
++0x0000 - 0x3fff  Generic (0x0000 - 0x3fff, generally RO, possibly RW through
++                          the DMA interface in QEMU v2.9+)
+ 0x4000 - 0x7fff  Generic (0x0000 - 0x3fff, RW, ignored in QEMU v2.4+)
+-0x8000 - 0xbfff  Arch. Specific (0x0000 - 0x3fff, RO)
++0x8000 - 0xbfff  Arch. Specific (0x0000 - 0x3fff, generally RO, possibly RW
++                                 through the DMA interface in QEMU v2.9+)
+ 0xc000 - 0xffff  Arch. Specific (0x0000 - 0x3fff, RW, ignored in v2.4+)
+ 
+ In practice, the number of allowed firmware configuration items is given
+@@ -182,6 +188,7 @@ The "control" field has the following bits:
+  - Bit 1: Read
+  - Bit 2: Skip
+  - Bit 3: Select. The upper 16 bits are the selected index.
++ - Bit 4: Write
+ 
+ When an operation is triggered, if the "control" field has bit 3 set, the
+ upper 16 bits are interpreted as an index of a firmware configuration item.
+@@ -191,8 +198,17 @@ If the "control" field has bit 1 set, a read operation will be performed.
+ "length" bytes for the current selector and offset will be copied into the
+ physical RAM address specified by the "address" field.
+ 
+-If the "control" field has bit 2 set (and not bit 1), a skip operation will be
+-performed. The offset for the current selector will be advanced "length" bytes.
++If the "control" field has bit 4 set (and not bit 1), a write operation will be
++performed. "length" bytes will be copied from the physical RAM address
++specified by the "address" field to the current selector and offset. QEMU
++prevents starting or finishing the write beyond the end of the item associated
++with the current selector (i.e., the item cannot be resized). Truncated writes
++are dropped entirely. Writes to read-only items are also rejected. All of these
++write errors set bit 0 (the error bit) in the "control" field.
++
++If the "control" field has bit 2 set (and neither bit 1 nor bit 4), a skip
++operation will be performed. The offset for the current selector will be
++advanced "length" bytes.
+ 
+ To check the result, read the "control" field:
+    error bit set        ->  something went wrong.
+@@ -234,3 +250,5 @@ Prefix "opt/org.qemu/" is reserved for QEMU itself.
+ 
+ Use of names not beginning with "opt/" is potentially dangerous and
+ entirely unsupported.  QEMU will warn if you try.
++
++All externally provided fw_cfg items are read-only to the guest.
+diff --git a/hw/lm32/lm32_hwsetup.h b/hw/lm32/lm32_hwsetup.h
+index 23e18784dffd..a01f6bc5dfeb 100644
+--- a/hw/lm32/lm32_hwsetup.h
++++ b/hw/lm32/lm32_hwsetup.h
+@@ -75,7 +75,7 @@ static inline void hwsetup_create_rom(HWSetup *hw,
+         hwaddr base)
+ {
+     rom_add_blob("hwsetup", hw->data, TARGET_PAGE_SIZE,
+-                 TARGET_PAGE_SIZE, base, NULL, NULL, NULL, NULL);
++                 TARGET_PAGE_SIZE, base, NULL, NULL, NULL, NULL, true);
+ }
+ 
+ static inline void hwsetup_add_u8(HWSetup *hw, uint8_t u)
+diff --git a/include/hw/loader.h b/include/hw/loader.h
+index 0c864cfd6046..0dbd8d6bf37a 100644
+--- a/include/hw/loader.h
++++ b/include/hw/loader.h
+@@ -180,7 +180,8 @@ MemoryRegion *rom_add_blob(const char *name, const void *blob, size_t len,
+                            size_t max_len, hwaddr addr,
+                            const char *fw_file_name,
+                            FWCfgReadCallback fw_callback,
+-                           void *callback_opaque, AddressSpace *as);
++                           void *callback_opaque, AddressSpace *as,
++                           bool read_only);
+ int rom_add_elf_program(const char *name, void *data, size_t datasize,
+                         size_t romsize, hwaddr addr, AddressSpace *as);
+ int rom_check_and_register_reset(void);
+@@ -194,7 +195,7 @@ void hmp_info_roms(Monitor *mon, const QDict *qdict);
+ #define rom_add_file_fixed(_f, _a, _i)          \
+     rom_add_file(_f, NULL, _a, _i, false, NULL, NULL)
+ #define rom_add_blob_fixed(_f, _b, _l, _a)      \
+-    rom_add_blob(_f, _b, _l, _l, _a, NULL, NULL, NULL, NULL)
++    rom_add_blob(_f, _b, _l, _l, _a, NULL, NULL, NULL, NULL, true)
+ #define rom_add_file_mr(_f, _mr, _i)            \
+     rom_add_file(_f, NULL, 0, _i, false, _mr, NULL)
+ #define rom_add_file_as(_f, _as, _i)            \
+@@ -202,7 +203,7 @@ void hmp_info_roms(Monitor *mon, const QDict *qdict);
+ #define rom_add_file_fixed_as(_f, _a, _i, _as)          \
+     rom_add_file(_f, NULL, _a, _i, false, NULL, _as)
+ #define rom_add_blob_fixed_as(_f, _b, _l, _a, _as)      \
+-    rom_add_blob(_f, _b, _l, _l, _a, NULL, NULL, NULL, _as)
++    rom_add_blob(_f, _b, _l, _l, _a, NULL, NULL, NULL, _as, true)
+ 
+ #define PC_ROM_MIN_VGA     0xc0000
+ #define PC_ROM_MIN_OPTION  0xc8000
+diff --git a/include/hw/nvram/fw_cfg.h b/include/hw/nvram/fw_cfg.h
+index 5c27a1f0d50b..b980cbaebf43 100644
+--- a/include/hw/nvram/fw_cfg.h
++++ b/include/hw/nvram/fw_cfg.h
+@@ -136,6 +136,7 @@ void fw_cfg_add_file(FWCfgState *s, const char *filename, void *data,
+  * @callback_opaque: argument to be passed into callback function
+  * @data: pointer to start of item data
+  * @len: size of item data
++ * @read_only: is file read only
+  *
+  * Add a new NAMED fw_cfg item as a raw "blob" of the given size. The data
+  * referenced by the starting pointer is only linked, NOT copied, into the
+@@ -151,7 +152,7 @@ void fw_cfg_add_file(FWCfgState *s, const char *filename, void *data,
+  */
+ void fw_cfg_add_file_callback(FWCfgState *s, const char *filename,
+                               FWCfgReadCallback callback, void *callback_opaque,
+-                              void *data, size_t len);
++                              void *data, size_t len, bool read_only);
+ 
+ /**
+  * fw_cfg_modify_file:
+diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+index 085a61117378..205d6268e217 100644
+--- a/hw/arm/virt-acpi-build.c
++++ b/hw/arm/virt-acpi-build.c
+@@ -818,7 +818,7 @@ static MemoryRegion *acpi_add_rom_blob(AcpiBuildState *build_state,
+                                        uint64_t max_size)
+ {
+     return rom_add_blob(name, blob->data, acpi_data_len(blob), max_size, -1,
+-                        name, virt_acpi_build_update, build_state, NULL);
++                        name, virt_acpi_build_update, build_state, NULL, true);
+ }
+ 
+ static const VMStateDescription vmstate_virt_acpi_build = {
+diff --git a/hw/core/loader.c b/hw/core/loader.c
+index 45742494e6fd..ee5abd6eb7f4 100644
+--- a/hw/core/loader.c
++++ b/hw/core/loader.c
+@@ -853,7 +853,7 @@ static void fw_cfg_resized(const char *id, uint64_t length, void *host)
+     }
+ }
+ 
+-static void *rom_set_mr(Rom *rom, Object *owner, const char *name)
++static void *rom_set_mr(Rom *rom, Object *owner, const char *name, bool ro)
+ {
+     void *data;
+ 
+@@ -862,7 +862,7 @@ static void *rom_set_mr(Rom *rom, Object *owner, const char *name)
+                                       rom->datasize, rom->romsize,
+                                       fw_cfg_resized,
+                                       &error_fatal);
+-    memory_region_set_readonly(rom->mr, true);
++    memory_region_set_readonly(rom->mr, ro);
+     vmstate_register_ram_global(rom->mr);
+ 
+     data = memory_region_get_ram_ptr(rom->mr);
+@@ -942,7 +942,7 @@ int rom_add_file(const char *file, const char *fw_dir,
+         snprintf(devpath, sizeof(devpath), "/rom@%s", fw_file_name);
+ 
+         if ((!option_rom || mc->option_rom_has_mr) && mc->rom_file_has_mr) {
+-            data = rom_set_mr(rom, OBJECT(fw_cfg), devpath);
++            data = rom_set_mr(rom, OBJECT(fw_cfg), devpath, true);
+         } else {
+             data = rom->data;
+         }
+@@ -979,7 +979,7 @@ err:
+ MemoryRegion *rom_add_blob(const char *name, const void *blob, size_t len,
+                    size_t max_len, hwaddr addr, const char *fw_file_name,
+                    FWCfgReadCallback fw_callback, void *callback_opaque,
+-                   AddressSpace *as)
++                   AddressSpace *as, bool read_only)
+ {
+     MachineClass *mc = MACHINE_GET_CLASS(qdev_get_machine());
+     Rom *rom;
+@@ -998,10 +998,14 @@ MemoryRegion *rom_add_blob(const char *name, const void *blob, size_t len,
+         char devpath[100];
+         void *data;
+ 
+-        snprintf(devpath, sizeof(devpath), "/rom@%s", fw_file_name);
++        if (read_only) {
++            snprintf(devpath, sizeof(devpath), "/rom@%s", fw_file_name);
++        } else {
++            snprintf(devpath, sizeof(devpath), "/ram@%s", fw_file_name);
++        }
+ 
+         if (mc->rom_file_has_mr) {
+-            data = rom_set_mr(rom, OBJECT(fw_cfg), devpath);
++            data = rom_set_mr(rom, OBJECT(fw_cfg), devpath, read_only);
+             mr = rom->mr;
+         } else {
+             data = rom->data;
+@@ -1009,7 +1013,7 @@ MemoryRegion *rom_add_blob(const char *name, const void *blob, size_t len,
+ 
+         fw_cfg_add_file_callback(fw_cfg, fw_file_name,
+                                  fw_callback, callback_opaque,
+-                                 data, rom->datasize);
++                                 data, rom->datasize, read_only);
+     }
+     return mr;
+ }
+diff --git a/hw/i386/acpi-build.c b/hw/i386/acpi-build.c
+index 42ecf619d523..20d70fa114a7 100644
+--- a/hw/i386/acpi-build.c
++++ b/hw/i386/acpi-build.c
+@@ -2936,7 +2936,7 @@ static MemoryRegion *acpi_add_rom_blob(AcpiBuildState *build_state,
+                                        uint64_t max_size)
+ {
+     return rom_add_blob(name, blob->data, acpi_data_len(blob), max_size, -1,
+-                        name, acpi_build_update, build_state, NULL);
++                        name, acpi_build_update, build_state, NULL, true);
+ }
+ 
+ static const VMStateDescription vmstate_acpi_build = {
+@@ -3002,7 +3002,7 @@ void acpi_setup(void)
+         build_state->rsdp = g_memdup(tables.rsdp->data, rsdp_size);
+         fw_cfg_add_file_callback(pcms->fw_cfg, ACPI_BUILD_RSDP_FILE,
+                                  acpi_build_update, build_state,
+-                                 build_state->rsdp, rsdp_size);
++                                 build_state->rsdp, rsdp_size, true);
+         build_state->rsdp_mr = NULL;
+     } else {
+         build_state->rsdp = NULL;
+diff --git a/hw/nvram/fw_cfg.c b/hw/nvram/fw_cfg.c
+index 3ebecb22606a..e0145c11a19b 100644
+--- a/hw/nvram/fw_cfg.c
++++ b/hw/nvram/fw_cfg.c
+@@ -54,11 +54,13 @@
+ #define FW_CFG_DMA_CTL_READ    0x02
+ #define FW_CFG_DMA_CTL_SKIP    0x04
+ #define FW_CFG_DMA_CTL_SELECT  0x08
++#define FW_CFG_DMA_CTL_WRITE   0x10
+ 
+ #define FW_CFG_DMA_SIGNATURE 0x51454d5520434647ULL /* "QEMU CFG" */
+ 
+ typedef struct FWCfgEntry {
+     uint32_t len;
++    bool allow_write;
+     uint8_t *data;
+     void *callback_opaque;
+     FWCfgReadCallback read_callback;
+@@ -326,7 +328,7 @@ static void fw_cfg_dma_transfer(FWCfgState *s)
+     FWCfgDmaAccess dma;
+     int arch;
+     FWCfgEntry *e;
+-    int read;
++    int read = 0, write = 0;
+     dma_addr_t dma_addr;
+ 
+     /* Reset the address before the next access */
+@@ -353,8 +355,13 @@ static void fw_cfg_dma_transfer(FWCfgState *s)
+ 
+     if (dma.control & FW_CFG_DMA_CTL_READ) {
+         read = 1;
++        write = 0;
++    } else if (dma.control & FW_CFG_DMA_CTL_WRITE) {
++        read = 0;
++        write = 1;
+     } else if (dma.control & FW_CFG_DMA_CTL_SKIP) {
+         read = 0;
++        write = 0;
+     } else {
+         dma.length = 0;
+     }
+@@ -374,7 +381,9 @@ static void fw_cfg_dma_transfer(FWCfgState *s)
+                     dma.control |= FW_CFG_DMA_CTL_ERROR;
+                 }
+             }
+-
++            if (write) {
++                dma.control |= FW_CFG_DMA_CTL_ERROR;
++            }
+         } else {
+             if (dma.length <= (e->len - s->cur_offset)) {
+                 len = dma.length;
+@@ -391,6 +400,14 @@ static void fw_cfg_dma_transfer(FWCfgState *s)
+                     dma.control |= FW_CFG_DMA_CTL_ERROR;
+                 }
+             }
++            if (write) {
++                if (!e->allow_write ||
++                    len != dma.length ||
++                    dma_memory_read(s->dma_as, dma.address,
++                                    &e->data[s->cur_offset], len)) {
++                    dma.control |= FW_CFG_DMA_CTL_ERROR;
++                }
++            }
+ 
+             s->cur_offset += len;
+         }
+@@ -586,7 +603,8 @@ static const VMStateDescription vmstate_fw_cfg = {
+ static void fw_cfg_add_bytes_read_callback(FWCfgState *s, uint16_t key,
+                                            FWCfgReadCallback callback,
+                                            void *callback_opaque,
+-                                           void *data, size_t len)
++                                           void *data, size_t len,
++                                           bool read_only)
+ {
+     int arch = !!(key & FW_CFG_ARCH_LOCAL);
+ 
+@@ -599,6 +617,7 @@ static void fw_cfg_add_bytes_read_callback(FWCfgState *s, uint16_t key,
+     s->entries[arch][key].len = (uint32_t)len;
+     s->entries[arch][key].read_callback = callback;
+     s->entries[arch][key].callback_opaque = callback_opaque;
++    s->entries[arch][key].allow_write = !read_only;
+ }
+ 
+ static void *fw_cfg_modify_bytes_read(FWCfgState *s, uint16_t key,
+@@ -616,13 +635,14 @@ static void *fw_cfg_modify_bytes_read(FWCfgState *s, uint16_t key,
+     s->entries[arch][key].data = data;
+     s->entries[arch][key].len = len;
+     s->entries[arch][key].callback_opaque = NULL;
++    s->entries[arch][key].allow_write = false;
+ 
+     return ptr;
+ }
+ 
+ void fw_cfg_add_bytes(FWCfgState *s, uint16_t key, void *data, size_t len)
+ {
+-    fw_cfg_add_bytes_read_callback(s, key, NULL, NULL, data, len);
++    fw_cfg_add_bytes_read_callback(s, key, NULL, NULL, data, len, true);
+ }
+ 
+ void fw_cfg_add_string(FWCfgState *s, uint16_t key, const char *value)
+@@ -749,7 +769,7 @@ static int get_fw_cfg_order(FWCfgState *s, const char *name)
+ 
+ void fw_cfg_add_file_callback(FWCfgState *s,  const char *filename,
+                               FWCfgReadCallback callback, void *callback_opaque,
+-                              void *data, size_t len)
++                              void *data, size_t len, bool read_only)
+ {
+     int i, index, count;
+     size_t dsize;
+@@ -811,7 +831,8 @@ void fw_cfg_add_file_callback(FWCfgState *s,  const char *filename,
+     }
+ 
+     fw_cfg_add_bytes_read_callback(s, FW_CFG_FILE_FIRST + index,
+-                                   callback, callback_opaque, data, len);
++                                   callback, callback_opaque, data, len,
++                                   read_only);
+ 
+     s->files->f[index].size   = cpu_to_be32(len);
+     s->files->f[index].select = cpu_to_be16(FW_CFG_FILE_FIRST + index);
+@@ -824,7 +845,7 @@ void fw_cfg_add_file_callback(FWCfgState *s,  const char *filename,
+ void fw_cfg_add_file(FWCfgState *s,  const char *filename,
+                      void *data, size_t len)
+ {
+-    fw_cfg_add_file_callback(s, filename, NULL, NULL, data, len);
++    fw_cfg_add_file_callback(s, filename, NULL, NULL, data, len, true);
+ }
+ 
+ void *fw_cfg_modify_file(FWCfgState *s, const char *filename,
+@@ -847,7 +868,7 @@ void *fw_cfg_modify_file(FWCfgState *s, const char *filename,
+         }
+     }
+     /* add new one */
+-    fw_cfg_add_file_callback(s, filename, NULL, NULL, data, len);
++    fw_cfg_add_file_callback(s, filename, NULL, NULL, data, len, true);
+     return NULL;
+ }
+ 
+-- 
+2.9.3
 
 
-r~

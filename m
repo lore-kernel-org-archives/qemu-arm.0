@@ -1,98 +1,72 @@
-Received: by 2002:a5d:4c4c:0:0:0:0:0 with SMTP id n12-v6csp3392368wrt;
-        Mon, 8 Oct 2018 05:30:52 -0700 (PDT)
-X-Google-Smtp-Source: ACcGV626fQRlWxZ4sAHNdfJ5UHRyxxD9SnSwtJYg43opy4wi++1kTf+xDTcHWyW62rXbb9urIB9h
-X-Received: by 2002:a37:90c5:: with SMTP id s188-v6mr11072486qkd.104.1539001852571;
-        Mon, 08 Oct 2018 05:30:52 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1539001852; cv=none;
-        d=google.com; s=arc-20160816;
-        b=0FtFmnQWLKmaArpaNbx7BMNlB22QZc5ITSnvFrZfTyIW8USk882TbnGnjT1iU2mtmx
-         asGB5zKibpJM3GxbiJxrFtuupmzVBuJ7F4CUPZO7qujnHCFfpn8xjz67kt2ZbPGoEj1n
-         DW32bJ/zJ6b0EnaeM1FgvGJXgh+CLmybmKB7hulo1sApmOeOxh7ImUvxHuAcf6dzvPMj
-         nq686MIw20nXQsd8LwMwEVOPXS8b5Gt+Wafp1TXJA63keYW4nUfDyNPBZYH5INigB/21
-         MBgFeulzFsBvfH3TP84lR5lXoMJHJvdcmdpP/ydnYcR2gq0ZYYPLf3V9KS6p5eXUo5lh
-         pSXQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
-         :references:in-reply-to:mime-version:dkim-signature;
-        bh=7ZP5PHp62dg1qKa8n5pITfSIlHVzEM/8IV9tsr+XW/Y=;
-        b=hwGuszIV/A9hGMGC313kwCHopNEbxNvZ5SJQ1dTY8pYHAsWJXUW2ztSiaA7nFzP5kP
-         1AnyIuu0NfaxqH4ALS4qNqxxwl1SOqiTowvNLJXaS9hv2lT0RI3qL0A5KuOPf80i4TMA
-         W+nT77x0VtMYrl9f3Ft0HtaFM4j2YAF7QDnRxyDuSoXGSNzFRZCxM5qkkerbmMSdmYB9
-         faEEyruytdI3lWdEqPYtXZZ2o7LcFBXofTaihn0OguuWVpooUkODOQCtWVX/YZeOeUMR
-         6ASBULtZIGSGMOjVeurrEZvzfLMdduycwolMUxuxS38VcFiJokpIYQ+FHkpD2nIHI1/d
-         i8Ag==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=KXsBg626;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: by 10.25.205.13 with SMTP id d13csp1271507lfg;
+        Thu, 12 Jan 2017 06:19:25 -0800 (PST)
+X-Received: by 10.200.48.172 with SMTP id v41mr12331018qta.54.1484230765196;
+        Thu, 12 Jan 2017 06:19:25 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id r13-v6si9509908qtt.38.2018.10.08.05.30.52
+        by mx.google.com with ESMTPS id y6si6186902qkg.9.2017.01.12.06.19.25
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 08 Oct 2018 05:30:52 -0700 (PDT)
+        Thu, 12 Jan 2017 06:19:25 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=KXsBg626;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@linaro.org;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:45949 helo=lists.gnu.org)
+Received: from localhost ([::1]:34286 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1g9UgV-0003gd-U7
-	for alex.bennee@linaro.org; Mon, 08 Oct 2018 08:30:51 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:59496)
+	id 1cRgDs-0007SH-I6
+	for alex.bennee@linaro.org; Thu, 12 Jan 2017 09:19:24 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:40656)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1g9UgM-0003g8-SE
-	for qemu-arm@nongnu.org; Mon, 08 Oct 2018 08:30:43 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1cRg9D-0003YR-52
+	for qemu-arm@nongnu.org; Thu, 12 Jan 2017 09:14:36 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1g9UgL-00078a-RF
-	for qemu-arm@nongnu.org; Mon, 08 Oct 2018 08:30:42 -0400
-Received: from mail-ot1-x343.google.com ([2607:f8b0:4864:20::343]:33729)
+	(envelope-from <peter.maydell@linaro.org>) id 1cRg9B-0008IX-BQ
+	for qemu-arm@nongnu.org; Thu, 12 Jan 2017 09:14:35 -0500
+Received: from mail-ua0-x22a.google.com ([2607:f8b0:400c:c08::22a]:34187)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1g9UgL-00077K-Cq
-	for qemu-arm@nongnu.org; Mon, 08 Oct 2018 08:30:41 -0400
-Received: by mail-ot1-x343.google.com with SMTP id q50so15271307otd.0
-	for <qemu-arm@nongnu.org>; Mon, 08 Oct 2018 05:30:41 -0700 (PDT)
+	id 1cRg9B-0008I2-5O
+	for qemu-arm@nongnu.org; Thu, 12 Jan 2017 09:14:33 -0500
+Received: by mail-ua0-x22a.google.com with SMTP id 35so14913549uak.1
+	for <qemu-arm@nongnu.org>; Thu, 12 Jan 2017 06:14:33 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
 	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=7ZP5PHp62dg1qKa8n5pITfSIlHVzEM/8IV9tsr+XW/Y=;
-	b=KXsBg626eeLUkME8McMOhcnHWPZAZfFoSbs94xCnlnnTQOaesTXe6Rmr36ustFUZWx
-	hqkq+lL5IDP+EHpOI9C78PSWDPGrGqGWIRrOthOodNDbLyTeyM7lPx4efDwjp07ZeP7V
-	WDObjiqhwETFyQB45qOZH17/EwIoVY/umNyJk=
+	:cc; bh=fJkZ+n82Dql22BKEUv65aMEXXhBqcGb5vCQsqut89Hc=;
+	b=FzFHqtcU82yzoXIbExc0bJ3ern13+WajbhVfSf+sJcLQrCfJQm0AxyuOYbTEQinqdT
+	H6YGJvAG4wb0HL9ValwfDzpHq1F8CqO8tDbzLkPMV0Bj52MDFlOxvqYv+P5mTA6kGMhu
+	IXtWL9cxr90XSROZkoowoLMUbyOU1Q9pbF8Mw=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
 	:message-id:subject:to:cc;
-	bh=7ZP5PHp62dg1qKa8n5pITfSIlHVzEM/8IV9tsr+XW/Y=;
-	b=WHf1kuw7rByF/XayjDNZ+d1iWSzU8dsSjdd2YIkQuTY6JD1ybLxa/F8Dxm1Tj7Q8OA
-	08AGi6z4lRv+On0N19wPq3gd1loITlU1iU7iDpL68AhhzFfMoj9iEDstQkJNJiucCZ1X
-	ytOEUY5gvlhCPfsxTLRp2ZR0jrJkpZgmqa4zsHec9ovxFXohDP5xO+IpboBzlASLfaH2
-	ZOh9o9Fu45vCX0WHXkvRpaA75wNw756/nMdRvOmYMChs9Kmg7As/rzUSQhL/u2JvB1Jg
-	BfrxmjkJVjT4Cv6r6yeksVE6s42G4JOw3jNu3dnjjc6W/FbrzhxCNfttQiQut4vMIMWX
-	OcCQ==
-X-Gm-Message-State: ABuFfohsmHQ5o+FUvrtRgJJGUFp4hsKGhS8pltvZAMwcrxA+tnRAYUeS
-	YCB48NUO9WXDMIjJZhbsbu1Nlyc/Nv+h7xzjigu1ezdYXNI=
-X-Received: by 2002:a9d:2377:: with SMTP id k52mr13911901otd.238.1539001840598;
-	Mon, 08 Oct 2018 05:30:40 -0700 (PDT)
+	bh=fJkZ+n82Dql22BKEUv65aMEXXhBqcGb5vCQsqut89Hc=;
+	b=DHgpo/z4WSSuhvG1mSQHZaMrf9D/4j4qo5cyBznA/AJXal13x+XTScShPUziq/LkC1
+	LTVhgyg5MxjbjdZL46TCoTWy6L94QGtS6WUF6YeT5iMCuhgX+sQq31ntFV4qcBuGo4xJ
+	jCORjoLfraP4TsQ6tkKwYtFaMESGMOWS+DtOYgdvA91Rkw3/ey8tOLFWkIlr4R790f0U
+	7bCQeLW9Xij3Tj9fcicLj46UR0YT9mXFyrvlvYlBiaNAqgRSFyZd8KymgQZMFR8ssrBC
+	3yfKu+OMHwgAnsMS47YVm/tV+IAgXM2nq4D8I7lPUvOcc7nyrvRBlAL1Qp9uerbWzyF/
+	vJIA==
+X-Gm-Message-State: AIkVDXICkST+EKDKg3BnyTCZB00lPnUIj+x1+IfG2ZngGJUeyB452gNnwnpLDy49lWe8w22zkui4b2kSr82z3Ggm
+X-Received: by 10.176.3.196 with SMTP id 62mr6589287uau.120.1484230472496;
+	Thu, 12 Jan 2017 06:14:32 -0800 (PST)
 MIME-Version: 1.0
-Received: by 2002:a9d:20e3:0:0:0:0:0 with HTTP;
-	Mon, 8 Oct 2018 05:30:20 -0700 (PDT)
-In-Reply-To: <1538579266-8389-7-git-send-email-edgar.iglesias@gmail.com>
-References: <1538579266-8389-1-git-send-email-edgar.iglesias@gmail.com>
-	<1538579266-8389-7-git-send-email-edgar.iglesias@gmail.com>
+Received: by 10.31.176.14 with HTTP; Thu, 12 Jan 2017 06:14:12 -0800 (PST)
+In-Reply-To: <CAFEAcA_53j-DGqW7WMzWaofUK9zFmeORUSFNAdHUPFKTZyqZ+Q@mail.gmail.com>
+References: <1449101933-24928-1-git-send-email-mdavidsaver@gmail.com>
+	<1449101933-24928-2-git-send-email-mdavidsaver@gmail.com>
+	<CAFEAcA_53j-DGqW7WMzWaofUK9zFmeORUSFNAdHUPFKTZyqZ+Q@mail.gmail.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 8 Oct 2018 13:30:20 +0100
-Message-ID: <CAFEAcA9_EOFV=5i-4S1GWVgewAa89hJDTegnf9Ot3w7rfkZWYA@mail.gmail.com>
-To: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
-Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:4864:20::343
-Subject: Re: [Qemu-arm] [PATCH v1 06/12] net: cadence_gem: Add support for
- selecting the DMA MemoryRegion
+Date: Thu, 12 Jan 2017 14:14:12 +0000
+Message-ID: <CAFEAcA9u2MPh7tKoaMwfeMf04VOWnR-ScJhBvnpBNO-7-kkywg@mail.gmail.com>
+To: Michael Davidsaver <mdavidsaver@gmail.com>
+Content-Type: text/plain; charset=UTF-8
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 2607:f8b0:400c:c08::22a
+Subject: Re: [Qemu-arm] [PATCH v2 01/26] armv7m: MRS/MSR handle unprivileged
+ access
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -104,57 +78,28 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: figlesia@xilinx.com, Edgar Iglesias <edgar.iglesias@xilinx.com>,
-	Stefano Stabellini <sstabellini@kernel.org>,
-	Sai Pavan Boddu <sai.pavan.boddu@xilinx.com>,
-	Francisco Iglesias <frasse.iglesias@gmail.com>,
-	Alistair Francis <alistair@alistair23.me>,
-	Richard Henderson <richard.henderson@linaro.org>,
-	QEMU Developers <qemu-devel@nongnu.org>,
-	KONRAD Frederic <frederic.konrad@adacore.com>,
-	qemu-arm <qemu-arm@nongnu.org>
+Cc: Peter Crosthwaite <crosthwaitepeter@gmail.com>,
+	qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Pz/AEskxNrlS
+X-TUID: /swaSDzncq4n
 
-On 3 October 2018 at 16:07, Edgar E. Iglesias <edgar.iglesias@gmail.com> wrote:
-> From: "Edgar E. Iglesias" <edgar.iglesias@xilinx.com>
+On 17 December 2015 at 13:10, Peter Maydell <peter.maydell@linaro.org> wrote:
+> On 3 December 2015 at 00:18, Michael Davidsaver <mdavidsaver@gmail.com> wrote:
+>> The MRS and MSR instruction handling isn't checking
+>> the current permission level.
+>>
+>> Prevent privlaged from changing writing EPSR fields.
+>> Access to unknown/undefined special registers not
+>> fatal (read 0, write ignored) w/ guest error message.
 >
-> Add support for selecting the Memory Region that the GEM
-> will do DMA to.
->
-> Signed-off-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
-> ---
->  hw/net/cadence_gem.c         | 63 ++++++++++++++++++++++++++++----------------
->  include/hw/net/cadence_gem.h |  2 ++
->  2 files changed, 43 insertions(+), 22 deletions(-)
->
-> diff --git a/hw/net/cadence_gem.c b/hw/net/cadence_gem.c
-> index 759c1d7..ab02515 100644
-> --- a/hw/net/cadence_gem.c
-> +++ b/hw/net/cadence_gem.c
-> @@ -28,6 +28,7 @@
->  #include "hw/net/cadence_gem.h"
->  #include "qapi/error.h"
->  #include "qemu/log.h"
-> +#include "sysemu/dma.h"
->  #include "net/checksum.h"
->
->  #ifdef CADENCE_GEM_ERR_DEBUG
-> @@ -835,9 +836,9 @@ static void gem_get_rx_desc(CadenceGEMState *s, int q)
->  {
->      DB_PRINT("read descriptor 0x%x\n", (unsigned)s->rx_desc_addr[q]);
->      /* read current descriptor */
-> -    cpu_physical_memory_read(s->rx_desc_addr[q],
-> -                             (uint8_t *)s->rx_desc[q],
-> -                             sizeof(uint32_t) * gem_get_desc_len(s, true));
-> +    address_space_read(s->dma_as, s->rx_desc_addr[q], MEMTXATTRS_UNSPECIFIED,
-> +                       (uint8_t *)s->rx_desc[q],
-> +                       sizeof(uint32_t) * gem_get_desc_len(s, true));
+> This patch and all the others in this series seem to be
+> missing your Signed-off-by: line.
 
-At some point you might want to add support for handling "descriptor
-read/write failed", incidentally: address_space_read/write return a
-MemTxResult which you can check for != MEMTX_OK.
+Michael has confirmed to me that this was just an oversight.
+Cleanup of the NVIC has finally reached the top of my todo
+list, so I'm planning to take this patchset and finish
+the process of fixing it up to go into master.
 
 thanks
 -- PMM

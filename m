@@ -1,80 +1,72 @@
-Received: by 10.25.205.13 with SMTP id d13csp1450408lfg;
-        Thu, 12 Jan 2017 13:42:03 -0800 (PST)
-X-Received: by 10.55.42.41 with SMTP id q41mr17060154qkh.169.1484257323832;
-        Thu, 12 Jan 2017 13:42:03 -0800 (PST)
+Received: by 10.25.205.13 with SMTP id d13csp1453074lfg;
+        Thu, 12 Jan 2017 13:51:02 -0800 (PST)
+X-Received: by 10.233.232.202 with SMTP id a193mr15257263qkg.113.1484257862605;
+        Thu, 12 Jan 2017 13:51:02 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id l5si7017059qtf.58.2017.01.12.13.42.03
+        by mx.google.com with ESMTPS id v7si7041003qta.64.2017.01.12.13.51.02
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 12 Jan 2017 13:42:03 -0800 (PST)
+        Thu, 12 Jan 2017 13:51:02 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com;
+       dkim=fail header.i=@linaro.org;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:36827 helo=lists.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:36855 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1cRn8F-0001oC-C1
-	for alex.bennee@linaro.org; Thu, 12 Jan 2017 16:42:03 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:36366)
+	id 1cRnGw-0005vO-2Q
+	for alex.bennee@linaro.org; Thu, 12 Jan 2017 16:51:02 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:38411)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <edgar.iglesias@gmail.com>) id 1cRn8B-0001m5-UC
-	for qemu-arm@nongnu.org; Thu, 12 Jan 2017 16:42:00 -0500
+	(envelope-from <peter.maydell@linaro.org>) id 1cRnGs-0005vE-3U
+	for qemu-arm@nongnu.org; Thu, 12 Jan 2017 16:50:59 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <edgar.iglesias@gmail.com>) id 1cRn88-0002UE-0S
-	for qemu-arm@nongnu.org; Thu, 12 Jan 2017 16:41:59 -0500
-Received: from mail-lf0-x241.google.com ([2a00:1450:4010:c07::241]:36025)
+	(envelope-from <peter.maydell@linaro.org>) id 1cRnGr-0007IG-Aj
+	for qemu-arm@nongnu.org; Thu, 12 Jan 2017 16:50:58 -0500
+Received: from mail-ua0-x22a.google.com ([2607:f8b0:400c:c08::22a]:35958)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <edgar.iglesias@gmail.com>)
-	id 1cRn87-0002U2-PS; Thu, 12 Jan 2017 16:41:55 -0500
-Received: by mail-lf0-x241.google.com with SMTP id h65so3540563lfi.3;
-	Thu, 12 Jan 2017 13:41:55 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=date:from:to:cc:subject:message-id:references:mime-version
-	:content-disposition:in-reply-to:user-agent;
-	bh=age80aTZeueuDqmHD5jiH6B2s4d2QqpfAOKLvFKgmZ0=;
-	b=PXmlAht3lAjXYrQ5WMvsQA3RgefDwXNPCTKlDo7ZvYLJvL2dmgzQ/q4IQNqbsmkkn+
-	xNSQ0yAOxqpf1f5kWUHjcpddJAOXloiE9WdFnpbj3g9mObxjdGQsko7dlDKBvDbc+Hml
-	SQFwCV2uqqxQQVXF548zg7KK0JWxx23pyHspAP2rn8sjq/jT465+PBdoQRHm6m/kZsUC
-	0sHJkPhDKOUJ1dtvdFbbkukCJ+FOIEMqJYPkjU2/I3FL7srmt9tBVtvt9utucem+0t9O
-	tLQmmIdm9mM/mn36H9hz6vlpBrbV80b0XZwc9r8V6LAtAi2+Ot6LXTLIyiqzaGPxNiKP
-	EPkg==
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1cRnGq-0007GO-RH
+	for qemu-arm@nongnu.org; Thu, 12 Jan 2017 16:50:57 -0500
+Received: by mail-ua0-x22a.google.com with SMTP id 96so24206685uaq.3
+	for <qemu-arm@nongnu.org>; Thu, 12 Jan 2017 13:50:56 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=qvoA8A/UUniHC7svL7euyAaOZCRxYI7PigYGdav/6Bk=;
+	b=BERaYRCqDuBnM6hJ8KLv8KQ5Le29FDSMLrnIAlgFShX33cNUdloc6/ROo1jhTDkf/6
+	sHex5VQeVehC3ZyrrdLqJ0u4bjMmVmTSggEmY7Keqx4AYpBbuSzasEnA4rlGz+oDEqIS
+	1TukWutt+FHg0mRE/XRL2yHAuXPpMVev88C8g=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:date:from:to:cc:subject:message-id:references
-	:mime-version:content-disposition:in-reply-to:user-agent;
-	bh=age80aTZeueuDqmHD5jiH6B2s4d2QqpfAOKLvFKgmZ0=;
-	b=c7ssiGjjtEdYECzSEHq/TlfwqhW4DznP/Nt3t1iHmPXc0RmDFo7lfGnYdjSRodIxGo
-	AG1KH3KWaonrs2va/Fl8wbdEMq3kb1gZz3p+2jF2DWeIbdEDQWHeIi2mGYw54nNkwpDM
-	8E21WCxyFC+4jhsNHVCaTqerLrINLdN2Lk+OwgGs651KRSb71WXma8MEoKbSTBeZMnIh
-	gYetEcLA5jcM/2J7UHLkXMO/Ox2E920J6BoBKME1VMb8g4Ra+hkDkURYYppTUYvniJd4
-	ZAiMyqv12wnFlMoXWqB+i5A1c8c/RsTS48zbaoMV64aRwIgKmqkfQ+g7F2fhcGWfCTFK
-	7sPg==
-X-Gm-Message-State: AIkVDXLtxD3ubdWJcc2QdgHQsmMyV32aYMZ5A+yRpaucokASgFBgPv/FpPnEfP6qKpJpBQ==
-X-Received: by 10.46.8.10 with SMTP id 10mr1801291lji.21.1484257314130;
-	Thu, 12 Jan 2017 13:41:54 -0800 (PST)
-Received: from localhost (81-231-233-234-no56.tbcn.telia.com. [81.231.233.234])
-	by smtp.gmail.com with ESMTPSA id
-	h15sm2917205ljb.46.2017.01.12.13.41.53
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Thu, 12 Jan 2017 13:41:53 -0800 (PST)
-Date: Thu, 12 Jan 2017 22:41:52 +0100
-From: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Message-ID: <20170112214152.GB9606@toto>
-References: <1484073849-32666-1-git-send-email-peter.maydell@linaro.org>
-	<1484073849-32666-3-git-send-email-peter.maydell@linaro.org>
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=qvoA8A/UUniHC7svL7euyAaOZCRxYI7PigYGdav/6Bk=;
+	b=S+1gnmGmRGUG3pOyzdAaC8ieLRxJ3oHP6n1JGxZhTX/hMHl8fO6N9kN6504eQm1qm4
+	2pAAYid+Z/k+lFsocBddGjr+uqh1DOkvzaRPyHotPzHt5PMJ0yF/m9TZWQDAjY+qJom5
+	XP2kdOBIiOxxWpO1RCykkarvH3VwHyjM3bXpSawk1PXg00zFV34YyjRPyJIVFDrdZjZD
+	xmYVCKn3vh+sC514eRfMIV2zeegoKAzFH3XZEOx8Fe2VUnMQ5OmkorArnFIMavnaTxZn
+	uxK5HbMdjVOZHw6Fcykm/DLYdY4jOSmIRz9O3wsJwGhzOdldyaqxg6SWwsIGZaHjTDSF
+	HkXA==
+X-Gm-Message-State: AIkVDXKZtul9acHGM4ZYxkd3QX4N6/pDSErsyrIfwgBJug7bXg0wZR+Cr+erWJzXQilZyRP2brz1UyGwNty+V6ht
+X-Received: by 10.159.48.203 with SMTP id k11mr8726229uab.42.1484257855918;
+	Thu, 12 Jan 2017 13:50:55 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <1484073849-32666-3-git-send-email-peter.maydell@linaro.org>
-User-Agent: Mutt/1.5.24 (2015-08-30)
+Received: by 10.31.176.14 with HTTP; Thu, 12 Jan 2017 13:50:35 -0800 (PST)
+In-Reply-To: <20170112204109.GY9606@toto>
+References: <1484073849-32666-1-git-send-email-peter.maydell@linaro.org>
+	<1484073849-32666-2-git-send-email-peter.maydell@linaro.org>
+	<20170112204109.GY9606@toto>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 12 Jan 2017 21:50:35 +0000
+Message-ID: <CAFEAcA9RZTXZPeYwPvwgEG3cWA+h_ev4LesxCdO+YkncdsfLiw@mail.gmail.com>
+To: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
+Content-Type: text/plain; charset=UTF-8
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2a00:1450:4010:c07::241
-Subject: Re: [Qemu-arm] [PATCH 2/3] target/arm: Handle VIRQ and VFIQ in
- arm_cpu_do_interrupt_aarch32()
+X-Received-From: 2607:f8b0:400c:c08::22a
+Subject: Re: [Qemu-arm] [PATCH 1/3] target/arm: A32,
+ T32: Create Instruction Syndromes for Data Aborts
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -86,54 +78,39 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, patches@linaro.org
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
+	"patches@linaro.org" <patches@linaro.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: XPqKUGJ0i6bo
+X-TUID: KRwDUx5Top34
 
-On Tue, Jan 10, 2017 at 06:44:08PM +0000, Peter Maydell wrote:
-> To run a VM in 32-bit EL1 our AArch32 interrupt handling code
-> needs to be able to cope with VIRQ and VFIQ exceptions.
-> These behave like IRQ and FIQ except that we don't need to try
-> to route them to Monitor mode.
-> 
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+On 12 January 2017 at 20:41, Edgar E. Iglesias <edgar.iglesias@gmail.com> wrote:
+> On Tue, Jan 10, 2017 at 06:44:07PM +0000, Peter Maydell wrote:
+>> Add support for generating the ISS (Instruction Specific Syndrome)
+>> for Data Abort exceptions taken from AArch32. These syndromes are
+>> used by hypervisors for example to trap and emulate memory accesses.
+>>
+>> This is the equivalent for AArch32 guests of the work done for AArch64
+>> guests in commit aaa1f954d4cab243.
+>
+> Hi,
+>
+> I haven't checked the the details but I think the structure looks good.
+> The patch is a large and has a few things that I think could be broken
+> out into separate patches (or dropped).
+>
+> For example these kind of refactoring could be a separate patch:
+>> +                bool pbit = insn & (1 << 24);
+> ...
+>> -                if (insn & (1 << 24))
+>> +                if (pbit) {
 
-We could possibly avoid some duplication with EXCP_IRQ and _FIQ
-but either way works:
+That one should be the only refactoring, but yeah I can split it out.
 
-Reviewed-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
+>
+> There's also a few whitespace changes that could be broken out or dropped..
 
+Oops; I'll get rid of those.
 
-> ---
->  target/arm/helper.c | 14 ++++++++++++++
->  1 file changed, 14 insertions(+)
-> 
-> diff --git a/target/arm/helper.c b/target/arm/helper.c
-> index 8dcabbf..dc90986 100644
-> --- a/target/arm/helper.c
-> +++ b/target/arm/helper.c
-> @@ -6403,6 +6403,20 @@ static void arm_cpu_do_interrupt_aarch32(CPUState *cs)
->          }
->          offset = 4;
->          break;
-> +    case EXCP_VIRQ:
-> +        new_mode = ARM_CPU_MODE_IRQ;
-> +        addr = 0x18;
-> +        /* Disable IRQ and imprecise data aborts.  */
-> +        mask = CPSR_A | CPSR_I;
-> +        offset = 4;
-> +        break;
-> +    case EXCP_VFIQ:
-> +        new_mode = ARM_CPU_MODE_FIQ;
-> +        addr = 0x1c;
-> +        /* Disable FIQ, IRQ and imprecise data aborts.  */
-> +        mask = CPSR_A | CPSR_I | CPSR_F;
-> +        offset = 4;
-> +        break;
->      case EXCP_SMC:
->          new_mode = ARM_CPU_MODE_MON;
->          addr = 0x08;
-> -- 
-> 2.7.4
-> 
+thanks
+-- PMM

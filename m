@@ -1,55 +1,80 @@
-Received: by 10.25.205.13 with SMTP id d13csp1379222lfg;
-        Thu, 12 Jan 2017 10:28:46 -0800 (PST)
-X-Received: by 10.237.43.36 with SMTP id p33mr13081395qtd.199.1484245726587;
-        Thu, 12 Jan 2017 10:28:46 -0800 (PST)
+Received: by 10.25.205.13 with SMTP id d13csp1429761lfg;
+        Thu, 12 Jan 2017 12:41:36 -0800 (PST)
+X-Received: by 10.55.174.135 with SMTP id x129mr16416973qke.133.1484253696811;
+        Thu, 12 Jan 2017 12:41:36 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id l37si6681938qtl.48.2017.01.12.10.28.46
+        by mx.google.com with ESMTPS id r33si6885279qtc.332.2017.01.12.12.41.36
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 12 Jan 2017 10:28:46 -0800 (PST)
+        Thu, 12 Jan 2017 12:41:36 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:35989 helo=lists.gnu.org)
+       dkim=fail header.i=@gmail.com;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:36616 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1cRk7C-0005fb-2D
-	for alex.bennee@linaro.org; Thu, 12 Jan 2017 13:28:46 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:47895)
+	id 1cRmBk-0004vQ-5d
+	for alex.bennee@linaro.org; Thu, 12 Jan 2017 15:41:36 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:51904)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <lersek@redhat.com>) id 1cRk36-0000ta-Bs
-	for qemu-arm@nongnu.org; Thu, 12 Jan 2017 13:24:33 -0500
+	(envelope-from <edgar.iglesias@gmail.com>) id 1cRmBR-0004lq-Fz
+	for qemu-arm@nongnu.org; Thu, 12 Jan 2017 15:41:20 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <lersek@redhat.com>) id 1cRk33-0002Jc-5t
-	for qemu-arm@nongnu.org; Thu, 12 Jan 2017 13:24:32 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:43916)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <lersek@redhat.com>)
-	id 1cRk32-0002He-Vy; Thu, 12 Jan 2017 13:24:29 -0500
-Received: from smtp.corp.redhat.com (int-mx16.intmail.prod.int.phx2.redhat.com
-	[10.5.11.28])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 1EFCAC04D2F1;
-	Thu, 12 Jan 2017 18:24:27 +0000 (UTC)
-Received: from lacos-laptop-7.usersys.redhat.com (ovpn-116-42.phx2.redhat.com
-	[10.3.116.42])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id EB1D01585E;
-	Thu, 12 Jan 2017 18:24:22 +0000 (UTC)
-From: Laszlo Ersek <lersek@redhat.com>
-To: qemu devel list <qemu-devel@nongnu.org>
-Date: Thu, 12 Jan 2017 19:24:13 +0100
-Message-Id: <20170112182417.9548-1-lersek@redhat.com>
-X-Scanned-By: MIMEDefang 2.74 on 10.5.11.28
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.31]);
-	Thu, 12 Jan 2017 18:24:27 +0000 (UTC)
+	(envelope-from <edgar.iglesias@gmail.com>) id 1cRmBN-00063r-DX
+	for qemu-arm@nongnu.org; Thu, 12 Jan 2017 15:41:17 -0500
+Received: from mail-lf0-x243.google.com ([2a00:1450:4010:c07::243]:36247)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <edgar.iglesias@gmail.com>)
+	id 1cRmBM-00062A-UX; Thu, 12 Jan 2017 15:41:13 -0500
+Received: by mail-lf0-x243.google.com with SMTP id h65so3410560lfi.3;
+	Thu, 12 Jan 2017 12:41:12 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=date:from:to:cc:subject:message-id:references:mime-version
+	:content-disposition:in-reply-to:user-agent;
+	bh=lxEqakRiMBllItXuFgUgMYncmSwbXhHCsseDAEw21CU=;
+	b=qEju1Exk/FUOcpv9oU4d3ZIKNGRTVEDQ9NDXO4xZXXAR7EoTwOnhW0Cl7p58gIVTp9
+	edi2QZU8p2FNZVhyFUcXGuDgfDtDbcvfLH5reYD7AW7ZrZfs5mQsylit25IRa23G8fMZ
+	gwyBCI/N94f8KnQJoCToSturIWfXekSJAju2nNZCrUI4BxFkX2JHWCwUr8WUUb39nwNR
+	xPP3o0QZ6w6ZAWXN8npYw09BuuKKVBigcsFvyqVJJesfdo4f5aJUqn6uaVu2xPFRlmsO
+	H1SK6M6fwiD5F8k7PEbHzyp8AYFq2IEund9wYcPU+t9pJcY/dLxQFPrfIqmC57tcrPfO
+	ggNQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+	:mime-version:content-disposition:in-reply-to:user-agent;
+	bh=lxEqakRiMBllItXuFgUgMYncmSwbXhHCsseDAEw21CU=;
+	b=WzKUtuq03NeHOBYTHDugYoTGqdi9twd/c42K1hiJMkZr9GZRUVznKeZgilNubS0NRP
+	+HO69JNzsxQLHzT3z4ywovqTHzEeA6ZWruTfbpBWqkTeemQiA2KmVgNF46q8CAcTQ5v1
+	RNtMoQujDUgMHUuhxjqY3rB6acitLCkGTJsazndWUX5xghXFgvvMKNiWFqdD3RfOiL2J
+	aA1PODfUcPtmMDSuGHQ8zFMJXElYUef9rJCS7hb0xiRqz2W+U6mRg2HOvF49BonTtKrc
+	WrofIXY5kgPCzVLSSc74yo1gx/r11fck+2uf0dl1UcPcOskM3nkOo+OdHIup0ej03hxu
+	/YCA==
+X-Gm-Message-State: AIkVDXLUb+hNhOFIQOdzApRYmqANqwLMdbwOq/oVoLAmIHmvokoEumIROUHAHmxjth8tOQ==
+X-Received: by 10.25.79.66 with SMTP id a2mr6501662lfk.58.1484253670977;
+	Thu, 12 Jan 2017 12:41:10 -0800 (PST)
+Received: from localhost (81-231-233-234-no56.tbcn.telia.com. [81.231.233.234])
+	by smtp.gmail.com with ESMTPSA id
+	j11sm2446493lfd.23.2017.01.12.12.41.09
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Thu, 12 Jan 2017 12:41:09 -0800 (PST)
+Date: Thu, 12 Jan 2017 21:41:09 +0100
+From: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+Message-ID: <20170112204109.GY9606@toto>
+References: <1484073849-32666-1-git-send-email-peter.maydell@linaro.org>
+	<1484073849-32666-2-git-send-email-peter.maydell@linaro.org>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <1484073849-32666-2-git-send-email-peter.maydell@linaro.org>
+User-Agent: Mutt/1.5.24 (2015-08-30)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: [Qemu-arm] [PATCH v6 wave 1 0/4] fw-cfg: support writeable blobs
- and more files
+X-Received-From: 2a00:1450:4010:c07::243
+Subject: Re: [Qemu-arm] [PATCH 1/3] target/arm: A32,
+ T32: Create Instruction Syndromes for Data Aborts
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -61,77 +86,508 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
-	Stefano Stabellini <sstabellini@kernel.org>,
-	Eduardo Habkost <ehabkost@redhat.com>,
-	"Michael S. Tsirkin" <mst@redhat.com>, "Gabriel L. Somlo" <somlo@cmu.edu>,
-	Shannon Zhao <zhaoshenglong@huawei.com>,
-	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
-	Alexander Graf <agraf@suse.de>, Michael Walle <michael@walle.cc>,
-	qemu-arm@nongnu.org, Gerd Hoffmann <kraxel@redhat.com>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	Anthony Perard <anthony.perard@citrix.com>,
-	Igor Mammedov <imammedo@redhat.com>,
-	Artyom Tarasenko <atar4qemu@gmail.com>,
-	David Gibson <david@gibson.dropbear.id.au>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, patches@linaro.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: kul8CRbQHHVT
+X-TUID: XB7cfHo8dLRz
 
-Previous version (v5):
-http://lists.nongnu.org/archive/html/qemu-devel/2017-01/msg01897.html
+On Tue, Jan 10, 2017 at 06:44:07PM +0000, Peter Maydell wrote:
+> Add support for generating the ISS (Instruction Specific Syndrome)
+> for Data Abort exceptions taken from AArch32. These syndromes are
+> used by hypervisors for example to trap and emulate memory accesses.
+> 
+> This is the equivalent for AArch32 guests of the work done for AArch64
+> guests in commit aaa1f954d4cab243.
 
-Changes in v6 (see the individual patches for details):
-- pick up feedback tags
-- rename the "file_slots" property to "x-file-slots" [Eduardo, Michael]
+Hi,
 
-Cc: "Gabriel L. Somlo" <somlo@cmu.edu>
-Cc: "Michael S. Tsirkin" <mst@redhat.com>
-Cc: Alexander Graf <agraf@suse.de>
-Cc: Anthony Perard <anthony.perard@citrix.com>
-Cc: Artyom Tarasenko <atar4qemu@gmail.com>
-Cc: David Gibson <david@gibson.dropbear.id.au>
-Cc: Eduardo Habkost <ehabkost@redhat.com>
-Cc: Gabriel Somlo <somlo@cmu.edu>
-Cc: Gerd Hoffmann <kraxel@redhat.com>
-Cc: Igor Mammedov <imammedo@redhat.com>
-Cc: Laszlo Ersek <lersek@redhat.com>
-Cc: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
-Cc: Michael Walle <michael@walle.cc>
-Cc: Paolo Bonzini <pbonzini@redhat.com>
-Cc: Peter Maydell <peter.maydell@linaro.org>
-Cc: Shannon Zhao <zhaoshenglong@huawei.com>
-Cc: Stefano Stabellini <sstabellini@kernel.org>
-Cc: qemu-arm@nongnu.org
+I haven't checked the the details but I think the structure looks good.
+The patch is a large and has a few things that I think could be broken
+out into separate patches (or dropped).
 
-Thanks!
-Laszlo
+For example these kind of refactoring could be a separate patch:
+> +                bool pbit = insn & (1 << 24);
+...
+> -                if (insn & (1 << 24))
+> +                if (pbit) {
 
-Eduardo Habkost (1):
-  pc: Add 2.9 machine-types
 
-Laszlo Ersek (2):
-  fw-cfg: turn FW_CFG_FILE_SLOTS into a device property
-  fw-cfg: bump "x-file-slots" to 0x20 for 2.9+ machine types
+There's also a few whitespace changes that could be broken out or dropped..
 
-Michael S. Tsirkin (1):
-  fw-cfg: support writeable blobs
+Cheers,
+Edgar
 
- docs/specs/fw_cfg.txt          |  36 ++++++++++----
- hw/lm32/lm32_hwsetup.h         |   2 +-
- include/hw/compat.h            |  10 +++-
- include/hw/i386/pc.h           |   2 +
- include/hw/loader.h            |   7 +--
- include/hw/nvram/fw_cfg.h      |   3 +-
- include/hw/nvram/fw_cfg_keys.h |   3 +-
- hw/arm/virt-acpi-build.c       |   2 +-
- hw/core/loader.c               |  18 ++++---
- hw/i386/acpi-build.c           |   4 +-
- hw/i386/pc_piix.c              |  15 ++++--
- hw/i386/pc_q35.c               |  13 ++++-
- hw/nvram/fw_cfg.c              | 110 +++++++++++++++++++++++++++++++++++------
- 13 files changed, 177 insertions(+), 48 deletions(-)
 
--- 
-2.9.3
-
+> 
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> ---
+>  target/arm/translate.c | 213 ++++++++++++++++++++++++++++++++++++-------------
+>  1 file changed, 157 insertions(+), 56 deletions(-)
+> 
+> diff --git a/target/arm/translate.c b/target/arm/translate.c
+> index 0ad9070..1e1d78e 100644
+> --- a/target/arm/translate.c
+> +++ b/target/arm/translate.c
+> @@ -102,6 +102,63 @@ void arm_translate_init(void)
+>      a64_translate_init();
+>  }
+>  
+> +static void disas_set_insn_syndrome(DisasContext *s, uint32_t syn)
+> +{
+> +    /* We don't need to save all of the syndrome so we mask and shift
+> +     * out uneeded bits to help the sleb128 encoder do a better job.
+> +     */
+> +    syn &= ARM_INSN_START_WORD2_MASK;
+> +    syn >>= ARM_INSN_START_WORD2_SHIFT;
+> +
+> +    /* We check and clear insn_start_idx to catch multiple updates.  */
+> +    assert(s->insn_start_idx != 0);
+> +    tcg_set_insn_param(s->insn_start_idx, 2, syn);
+> +    s->insn_start_idx = 0;
+> +}
+> +
+> +/* Flags for the disas_set_da_iss info argument:
+> + * lower bits hold the Rt register number, higher bits are flags.
+> + */
+> +typedef enum ISSInfo {
+> +    ISSNone = 0,
+> +    ISSRegMask = 0x1f,
+> +    ISSInvalid = (1 << 5),
+> +    ISSIsAcqRel = (1 << 6),
+> +    ISSIsWrite = (1 << 7),
+> +    ISSIs16Bit = (1 << 8),
+> +} ISSInfo;
+> +
+> +/* Save the syndrome information for a Data Abort */
+> +static void disas_set_da_iss(DisasContext *s, TCGMemOp memop, ISSInfo issinfo)
+> +{
+> +    uint32_t syn;
+> +    int sas = memop & MO_SIZE;
+> +    bool sse = memop & MO_SIGN;
+> +    bool is_acqrel = issinfo & ISSIsAcqRel;
+> +    bool is_write = issinfo & ISSIsWrite;
+> +    bool is_16bit = issinfo & ISSIs16Bit;
+> +    int srt = issinfo & ISSRegMask;
+> +
+> +    if (issinfo & ISSInvalid) {
+> +        /* Some callsites want to conditionally provide ISS info,
+> +         * eg "only if this was not a writeback"
+> +         */
+> +        return;
+> +    }
+> +
+> +    if (srt == 15) {
+> +        /* For AArch32, insns where the src/dest is R15 never generate
+> +         * ISS information. Catching that here saves checking at all
+> +         * the call sites.
+> +         */
+> +        return;
+> +    }
+> +
+> +    syn = syn_data_abort_with_iss(0, sas, sse, srt, 0, is_acqrel,
+> +                                  0, 0, 0, is_write, 0, is_16bit);
+> +    disas_set_insn_syndrome(s, syn);
+> +}
+> +
+>  static inline ARMMMUIdx get_a32_user_mem_index(DisasContext *s)
+>  {
+>      /* Return the mmu_idx to use for A32/T32 "unprivileged load/store"
+> @@ -956,13 +1013,30 @@ static inline void gen_aa32_ld##SUFF(DisasContext *s, TCGv_i32 val,      \
+>                                       TCGv_i32 a32, int index)            \
+>  {                                                                        \
+>      gen_aa32_ld_i32(s, val, a32, index, OPC | s->be_data);               \
+> +}                                                                        \
+> +static inline void gen_aa32_ld##SUFF##_iss(DisasContext *s,              \
+> +                                           TCGv_i32 val,                 \
+> +                                           TCGv_i32 a32, int index,      \
+> +                                           ISSInfo issinfo)              \
+> +{                                                                        \
+> +    gen_aa32_ld_i32(s, val, a32, index, OPC | s->be_data);               \
+> +    disas_set_da_iss(s, OPC, issinfo);                                   \
+>  }
+>  
+> +
+>  #define DO_GEN_ST(SUFF, OPC)                                             \
+>  static inline void gen_aa32_st##SUFF(DisasContext *s, TCGv_i32 val,      \
+>                                       TCGv_i32 a32, int index)            \
+>  {                                                                        \
+>      gen_aa32_st_i32(s, val, a32, index, OPC | s->be_data);               \
+> +}                                                                        \
+> +static inline void gen_aa32_st##SUFF##_iss(DisasContext *s,              \
+> +                                           TCGv_i32 val,                 \
+> +                                           TCGv_i32 a32, int index,      \
+> +                                           ISSInfo issinfo)              \
+> +{                                                                        \
+> +    gen_aa32_st_i32(s, val, a32, index, OPC | s->be_data);               \
+> +    disas_set_da_iss(s, OPC, issinfo | ISSIsWrite);                      \
+>  }
+>  
+>  static inline void gen_aa32_frob64(DisasContext *s, TCGv_i64 val)
+> @@ -8705,16 +8779,19 @@ static void disas_arm_insn(DisasContext *s, unsigned int insn)
+>                                  tmp = tcg_temp_new_i32();
+>                                  switch (op1) {
+>                                  case 0: /* lda */
+> -                                    gen_aa32_ld32u(s, tmp, addr,
+> -                                                   get_mem_index(s));
+> +                                    gen_aa32_ld32u_iss(s, tmp, addr,
+> +                                                       get_mem_index(s),
+> +                                                       rd | ISSIsAcqRel);
+>                                      break;
+>                                  case 2: /* ldab */
+> -                                    gen_aa32_ld8u(s, tmp, addr,
+> -                                                  get_mem_index(s));
+> +                                    gen_aa32_ld8u_iss(s, tmp, addr,
+> +                                                      get_mem_index(s),
+> +                                                      rd | ISSIsAcqRel);
+>                                      break;
+>                                  case 3: /* ldah */
+> -                                    gen_aa32_ld16u(s, tmp, addr,
+> -                                                   get_mem_index(s));
+> +                                    gen_aa32_ld16u_iss(s, tmp, addr,
+> +                                                       get_mem_index(s),
+> +                                                       rd | ISSIsAcqRel);
+>                                      break;
+>                                  default:
+>                                      abort();
+> @@ -8725,16 +8802,19 @@ static void disas_arm_insn(DisasContext *s, unsigned int insn)
+>                                  tmp = load_reg(s, rm);
+>                                  switch (op1) {
+>                                  case 0: /* stl */
+> -                                    gen_aa32_st32(s, tmp, addr,
+> -                                                  get_mem_index(s));
+> +                                    gen_aa32_st32_iss(s, tmp, addr,
+> +                                                      get_mem_index(s),
+> +                                                      rm | ISSIsAcqRel);
+>                                      break;
+>                                  case 2: /* stlb */
+> -                                    gen_aa32_st8(s, tmp, addr,
+> -                                                 get_mem_index(s));
+> +                                    gen_aa32_st8_iss(s, tmp, addr,
+> +                                                     get_mem_index(s),
+> +                                                     rm | ISSIsAcqRel);
+>                                      break;
+>                                  case 3: /* stlh */
+> -                                    gen_aa32_st16(s, tmp, addr,
+> -                                                  get_mem_index(s));
+> +                                    gen_aa32_st16_iss(s, tmp, addr,
+> +                                                      get_mem_index(s),
+> +                                                      rm | ISSIsAcqRel);
+>                                      break;
+>                                  default:
+>                                      abort();
+> @@ -8805,11 +8885,18 @@ static void disas_arm_insn(DisasContext *s, unsigned int insn)
+>              } else {
+>                  int address_offset;
+>                  bool load = insn & (1 << 20);
+> +                bool wbit = insn & (1 << 21);
+> +                bool pbit = insn & (1 << 24);
+>                  bool doubleword = false;
+> +                ISSInfo issinfo;
+> +
+>                  /* Misc load/store */
+>                  rn = (insn >> 16) & 0xf;
+>                  rd = (insn >> 12) & 0xf;
+>  
+> +                /* ISS not valid if writeback */
+> +                issinfo = (pbit & !wbit) ? rd : ISSInvalid;
+> +
+>                  if (!load && (sh & 2)) {
+>                      /* doubleword */
+>                      ARCH(5TE);
+> @@ -8822,8 +8909,9 @@ static void disas_arm_insn(DisasContext *s, unsigned int insn)
+>                  }
+>  
+>                  addr = load_reg(s, rn);
+> -                if (insn & (1 << 24))
+> +                if (pbit) {
+>                      gen_add_datah_offset(s, insn, 0, addr);
+> +                }
+>                  address_offset = 0;
+>  
+>                  if (doubleword) {
+> @@ -8852,30 +8940,33 @@ static void disas_arm_insn(DisasContext *s, unsigned int insn)
+>                      tmp = tcg_temp_new_i32();
+>                      switch (sh) {
+>                      case 1:
+> -                        gen_aa32_ld16u(s, tmp, addr, get_mem_index(s));
+> +                        gen_aa32_ld16u_iss(s, tmp, addr, get_mem_index(s),
+> +                                           issinfo);
+>                          break;
+>                      case 2:
+> -                        gen_aa32_ld8s(s, tmp, addr, get_mem_index(s));
+> +                        gen_aa32_ld8s_iss(s, tmp, addr, get_mem_index(s),
+> +                                          issinfo);
+>                          break;
+>                      default:
+>                      case 3:
+> -                        gen_aa32_ld16s(s, tmp, addr, get_mem_index(s));
+> +                        gen_aa32_ld16s_iss(s, tmp, addr, get_mem_index(s),
+> +                                           issinfo);
+>                          break;
+>                      }
+>                  } else {
+>                      /* store */
+>                      tmp = load_reg(s, rd);
+> -                    gen_aa32_st16(s, tmp, addr, get_mem_index(s));
+> +                    gen_aa32_st16_iss(s, tmp, addr, get_mem_index(s), issinfo);
+>                      tcg_temp_free_i32(tmp);
+>                  }
+>                  /* Perform base writeback before the loaded value to
+>                     ensure correct behavior with overlapping index registers.
+>                     ldrd with base writeback is undefined if the
+>                     destination and index registers overlap.  */
+> -                if (!(insn & (1 << 24))) {
+> +                if (!pbit) {
+>                      gen_add_datah_offset(s, insn, address_offset, addr);
+>                      store_reg(s, rn, addr);
+> -                } else if (insn & (1 << 21)) {
+> +                } else if (wbit) {
+>                      if (address_offset)
+>                          tcg_gen_addi_i32(addr, addr, address_offset);
+>                      store_reg(s, rn, addr);
+> @@ -9218,17 +9309,17 @@ static void disas_arm_insn(DisasContext *s, unsigned int insn)
+>                  /* load */
+>                  tmp = tcg_temp_new_i32();
+>                  if (insn & (1 << 22)) {
+> -                    gen_aa32_ld8u(s, tmp, tmp2, i);
+> +                    gen_aa32_ld8u_iss(s, tmp, tmp2, i, rd);
+>                  } else {
+> -                    gen_aa32_ld32u(s, tmp, tmp2, i);
+> +                    gen_aa32_ld32u_iss(s, tmp, tmp2, i, rd);
+>                  }
+>              } else {
+>                  /* store */
+>                  tmp = load_reg(s, rd);
+>                  if (insn & (1 << 22)) {
+> -                    gen_aa32_st8(s, tmp, tmp2, i);
+> +                    gen_aa32_st8_iss(s, tmp, tmp2, i, rd);
+>                  } else {
+> -                    gen_aa32_st32(s, tmp, tmp2, i);
+> +                    gen_aa32_st32_iss(s, tmp, tmp2, i, rd);
+>                  }
+>                  tcg_temp_free_i32(tmp);
+>              }
+> @@ -9689,13 +9780,16 @@ static int disas_thumb2_insn(CPUARMState *env, DisasContext *s, uint16_t insn_hw
+>                          tmp = tcg_temp_new_i32();
+>                          switch (op) {
+>                          case 0: /* ldab */
+> -                            gen_aa32_ld8u(s, tmp, addr, get_mem_index(s));
+> +                            gen_aa32_ld8u_iss(s, tmp, addr, get_mem_index(s),
+> +                                              rs | ISSIsAcqRel);
+>                              break;
+>                          case 1: /* ldah */
+> -                            gen_aa32_ld16u(s, tmp, addr, get_mem_index(s));
+> +                            gen_aa32_ld16u_iss(s, tmp, addr, get_mem_index(s),
+> +                                               rs | ISSIsAcqRel);
+>                              break;
+>                          case 2: /* lda */
+> -                            gen_aa32_ld32u(s, tmp, addr, get_mem_index(s));
+> +                            gen_aa32_ld32u_iss(s, tmp, addr, get_mem_index(s),
+> +                                               rs | ISSIsAcqRel);
+>                              break;
+>                          default:
+>                              abort();
+> @@ -9705,13 +9799,16 @@ static int disas_thumb2_insn(CPUARMState *env, DisasContext *s, uint16_t insn_hw
+>                          tmp = load_reg(s, rs);
+>                          switch (op) {
+>                          case 0: /* stlb */
+> -                            gen_aa32_st8(s, tmp, addr, get_mem_index(s));
+> +                            gen_aa32_st8_iss(s, tmp, addr, get_mem_index(s),
+> +                                             rs | ISSIsAcqRel);
+>                              break;
+>                          case 1: /* stlh */
+> -                            gen_aa32_st16(s, tmp, addr, get_mem_index(s));
+> +                            gen_aa32_st16_iss(s, tmp, addr, get_mem_index(s),
+> +                                              rs | ISSIsAcqRel);
+>                              break;
+>                          case 2: /* stl */
+> -                            gen_aa32_st32(s, tmp, addr, get_mem_index(s));
+> +                            gen_aa32_st32_iss(s, tmp, addr, get_mem_index(s),
+> +                                              rs | ISSIsAcqRel);
+>                              break;
+>                          default:
+>                              abort();
+> @@ -10647,12 +10744,15 @@ static int disas_thumb2_insn(CPUARMState *env, DisasContext *s, uint16_t insn_hw
+>          int postinc = 0;
+>          int writeback = 0;
+>          int memidx;
+> +        ISSInfo issinfo;
+> +
+>          if ((insn & 0x01100000) == 0x01000000) {
+>              if (disas_neon_ls_insn(s, insn)) {
+>                  goto illegal_op;
+>              }
+>              break;
+>          }
+> +
+>          op = ((insn >> 21) & 3) | ((insn >> 22) & 4);
+>          if (rs == 15) {
+>              if (!(insn & (1 << 20))) {
+> @@ -10750,24 +10850,27 @@ static int disas_thumb2_insn(CPUARMState *env, DisasContext *s, uint16_t insn_hw
+>                  }
+>              }
+>          }
+> +
+> +        issinfo = writeback ? ISSInvalid : rs;
+> +
+>          if (insn & (1 << 20)) {
+>              /* Load.  */
+>              tmp = tcg_temp_new_i32();
+>              switch (op) {
+>              case 0:
+> -                gen_aa32_ld8u(s, tmp, addr, memidx);
+> +                gen_aa32_ld8u_iss(s, tmp, addr, memidx, issinfo);
+>                  break;
+>              case 4:
+> -                gen_aa32_ld8s(s, tmp, addr, memidx);
+> +                gen_aa32_ld8s_iss(s, tmp, addr, memidx, issinfo);
+>                  break;
+>              case 1:
+> -                gen_aa32_ld16u(s, tmp, addr, memidx);
+> +                gen_aa32_ld16u_iss(s, tmp, addr, memidx, issinfo);
+>                  break;
+>              case 5:
+> -                gen_aa32_ld16s(s, tmp, addr, memidx);
+> +                gen_aa32_ld16s_iss(s, tmp, addr, memidx, issinfo);
+>                  break;
+>              case 2:
+> -                gen_aa32_ld32u(s, tmp, addr, memidx);
+> +                gen_aa32_ld32u_iss(s, tmp, addr, memidx, issinfo);
+>                  break;
+>              default:
+>                  tcg_temp_free_i32(tmp);
+> @@ -10784,13 +10887,13 @@ static int disas_thumb2_insn(CPUARMState *env, DisasContext *s, uint16_t insn_hw
+>              tmp = load_reg(s, rs);
+>              switch (op) {
+>              case 0:
+> -                gen_aa32_st8(s, tmp, addr, memidx);
+> +                gen_aa32_st8_iss(s, tmp, addr, memidx, issinfo);
+>                  break;
+>              case 1:
+> -                gen_aa32_st16(s, tmp, addr, memidx);
+> +                gen_aa32_st16_iss(s, tmp, addr, memidx, issinfo);
+>                  break;
+>              case 2:
+> -                gen_aa32_st32(s, tmp, addr, memidx);
+> +                gen_aa32_st32_iss(s, tmp, addr, memidx, issinfo);
+>                  break;
+>              default:
+>                  tcg_temp_free_i32(tmp);
+> @@ -10927,7 +11030,8 @@ static void disas_thumb_insn(CPUARMState *env, DisasContext *s)
+>              addr = tcg_temp_new_i32();
+>              tcg_gen_movi_i32(addr, val);
+>              tmp = tcg_temp_new_i32();
+> -            gen_aa32_ld32u(s, tmp, addr, get_mem_index(s));
+> +            gen_aa32_ld32u_iss(s, tmp, addr, get_mem_index(s),
+> +                               rd | ISSIs16Bit);
+>              tcg_temp_free_i32(addr);
+>              store_reg(s, rd, tmp);
+>              break;
+> @@ -11127,31 +11231,30 @@ static void disas_thumb_insn(CPUARMState *env, DisasContext *s)
+>          } else {
+>              tmp = tcg_temp_new_i32();
+>          }
+> -
+>          switch (op) {
+>          case 0: /* str */
+> -            gen_aa32_st32(s, tmp, addr, get_mem_index(s));
+> +            gen_aa32_st32_iss(s, tmp, addr, get_mem_index(s), rd | ISSIs16Bit);
+>              break;
+>          case 1: /* strh */
+> -            gen_aa32_st16(s, tmp, addr, get_mem_index(s));
+> +            gen_aa32_st16_iss(s, tmp, addr, get_mem_index(s), rd | ISSIs16Bit);
+>              break;
+>          case 2: /* strb */
+> -            gen_aa32_st8(s, tmp, addr, get_mem_index(s));
+> +            gen_aa32_st8_iss(s, tmp, addr, get_mem_index(s), rd | ISSIs16Bit);
+>              break;
+>          case 3: /* ldrsb */
+> -            gen_aa32_ld8s(s, tmp, addr, get_mem_index(s));
+> +            gen_aa32_ld8s_iss(s, tmp, addr, get_mem_index(s), rd | ISSIs16Bit);
+>              break;
+>          case 4: /* ldr */
+> -            gen_aa32_ld32u(s, tmp, addr, get_mem_index(s));
+> +            gen_aa32_ld32u_iss(s, tmp, addr, get_mem_index(s), rd | ISSIs16Bit);
+>              break;
+>          case 5: /* ldrh */
+> -            gen_aa32_ld16u(s, tmp, addr, get_mem_index(s));
+> +            gen_aa32_ld16u_iss(s, tmp, addr, get_mem_index(s), rd | ISSIs16Bit);
+>              break;
+>          case 6: /* ldrb */
+> -            gen_aa32_ld8u(s, tmp, addr, get_mem_index(s));
+> +            gen_aa32_ld8u_iss(s, tmp, addr, get_mem_index(s), rd | ISSIs16Bit);
+>              break;
+>          case 7: /* ldrsh */
+> -            gen_aa32_ld16s(s, tmp, addr, get_mem_index(s));
+> +            gen_aa32_ld16s_iss(s, tmp, addr, get_mem_index(s), rd | ISSIs16Bit);
+>              break;
+>          }
+>          if (op >= 3) { /* load */
+> @@ -11191,16 +11294,15 @@ static void disas_thumb_insn(CPUARMState *env, DisasContext *s)
+>          addr = load_reg(s, rn);
+>          val = (insn >> 6) & 0x1f;
+>          tcg_gen_addi_i32(addr, addr, val);
+> -
+>          if (insn & (1 << 11)) {
+>              /* load */
+>              tmp = tcg_temp_new_i32();
+> -            gen_aa32_ld8u(s, tmp, addr, get_mem_index(s));
+> +            gen_aa32_ld8u_iss(s, tmp, addr, get_mem_index(s), rd | ISSIs16Bit);
+>              store_reg(s, rd, tmp);
+>          } else {
+>              /* store */
+>              tmp = load_reg(s, rd);
+> -            gen_aa32_st8(s, tmp, addr, get_mem_index(s));
+> +            gen_aa32_st8_iss(s, tmp, addr, get_mem_index(s), rd | ISSIs16Bit);
+>              tcg_temp_free_i32(tmp);
+>          }
+>          tcg_temp_free_i32(addr);
+> @@ -11213,16 +11315,15 @@ static void disas_thumb_insn(CPUARMState *env, DisasContext *s)
+>          addr = load_reg(s, rn);
+>          val = (insn >> 5) & 0x3e;
+>          tcg_gen_addi_i32(addr, addr, val);
+> -
+>          if (insn & (1 << 11)) {
+>              /* load */
+>              tmp = tcg_temp_new_i32();
+> -            gen_aa32_ld16u(s, tmp, addr, get_mem_index(s));
+> +            gen_aa32_ld16u_iss(s, tmp, addr, get_mem_index(s), rd | ISSIs16Bit);
+>              store_reg(s, rd, tmp);
+>          } else {
+>              /* store */
+>              tmp = load_reg(s, rd);
+> -            gen_aa32_st16(s, tmp, addr, get_mem_index(s));
+> +            gen_aa32_st16_iss(s, tmp, addr, get_mem_index(s), rd | ISSIs16Bit);
+>              tcg_temp_free_i32(tmp);
+>          }
+>          tcg_temp_free_i32(addr);
+> @@ -11234,16 +11335,15 @@ static void disas_thumb_insn(CPUARMState *env, DisasContext *s)
+>          addr = load_reg(s, 13);
+>          val = (insn & 0xff) * 4;
+>          tcg_gen_addi_i32(addr, addr, val);
+> -
+>          if (insn & (1 << 11)) {
+>              /* load */
+>              tmp = tcg_temp_new_i32();
+> -            gen_aa32_ld32u(s, tmp, addr, get_mem_index(s));
+> +            gen_aa32_ld32u_iss(s, tmp, addr, get_mem_index(s), rd | ISSIs16Bit);
+>              store_reg(s, rd, tmp);
+>          } else {
+>              /* store */
+>              tmp = load_reg(s, rd);
+> -            gen_aa32_st32(s, tmp, addr, get_mem_index(s));
+> +            gen_aa32_st32_iss(s, tmp, addr, get_mem_index(s), rd | ISSIs16Bit);
+>              tcg_temp_free_i32(tmp);
+>          }
+>          tcg_temp_free_i32(addr);
+> @@ -11725,6 +11825,7 @@ void gen_intermediate_code(CPUARMState *env, TranslationBlock *tb)
+>          store_cpu_field(tmp, condexec_bits);
+>        }
+>      do {
+> +        dc->insn_start_idx = tcg_op_buf_count();
+>          tcg_gen_insn_start(dc->pc,
+>                             (dc->condexec_cond << 4) | (dc->condexec_mask >> 1),
+>                             0);
+> -- 
+> 2.7.4
+> 

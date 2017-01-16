@@ -1,70 +1,60 @@
-Received: by 10.25.205.13 with SMTP id d13csp107116lfg;
-        Mon, 16 Jan 2017 08:49:27 -0800 (PST)
-X-Received: by 10.200.48.172 with SMTP id v41mr28707676qta.54.1484585367066;
-        Mon, 16 Jan 2017 08:49:27 -0800 (PST)
+Received: by 10.25.205.13 with SMTP id d13csp130637lfg;
+        Mon, 16 Jan 2017 09:51:48 -0800 (PST)
+X-Received: by 10.200.46.162 with SMTP id h31mr15825628qta.164.1484589108365;
+        Mon, 16 Jan 2017 09:51:48 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id l47si10825767qtc.113.2017.01.16.08.49.26
+        by mx.google.com with ESMTPS id m30si10519159qtg.253.2017.01.16.09.51.47
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 16 Jan 2017 08:49:27 -0800 (PST)
+        Mon, 16 Jan 2017 09:51:48 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:58111 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:58580 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1cTATE-0005Q7-Id
-	for alex.bennee@linaro.org; Mon, 16 Jan 2017 11:49:24 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:55883)
+	id 1cTBRZ-00066H-S0
+	for alex.bennee@linaro.org; Mon, 16 Jan 2017 12:51:45 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:33157)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1cTAT8-0005Pe-Pj
-	for qemu-arm@nongnu.org; Mon, 16 Jan 2017 11:49:19 -0500
+	(envelope-from <clg@kaod.org>) id 1cTArM-0005se-9R
+	for qemu-arm@nongnu.org; Mon, 16 Jan 2017 12:14:21 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1cTAT8-0005bh-5w
-	for qemu-arm@nongnu.org; Mon, 16 Jan 2017 11:49:18 -0500
-Received: from mail-vk0-x235.google.com ([2607:f8b0:400c:c05::235]:35224)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1cTAT8-0005bT-1o
-	for qemu-arm@nongnu.org; Mon, 16 Jan 2017 11:49:18 -0500
-Received: by mail-vk0-x235.google.com with SMTP id x75so76624299vke.2
-	for <qemu-arm@nongnu.org>; Mon, 16 Jan 2017 08:49:17 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=sWAFOCk1v4dTdf2SB84fJclnFjVqEux+1HnoRYULc2s=;
-	b=bosoHAByVCULEPeN0g9EnUl2rONRFIA6PLPrvF9BMek+HYL1uxRw+fpb1kflUJN5HC
-	A6a7k15mnzh5EMxNShvlC/ur8hGPIfyr+NhQAdeTxb6m9M9vGrE6/kjmnVYn0xsuV2NY
-	w0E5NB5nPGzgBdLFzXIWbpfl4yrM2sz/EnrCw=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=sWAFOCk1v4dTdf2SB84fJclnFjVqEux+1HnoRYULc2s=;
-	b=DptErmq/DXmxzeWoq6a6KnEzTY2vIonDUNnx4ib3Cbg2H+sCi9R+p+AQQrxS/kFRF5
-	MpYs1G4u/v0g5fnkG0eGNDcXoJaCxnzbESg+LuXW6WbM7FWILFLiKA8ndN1TAQqKb60A
-	vkNEiMaDThIDL23uhVTEKz1+iHefRen6on7p2KjwYcGH10yE9HqkUC3gopIC+pdhmpBY
-	djrVkZMrq5K6heJgNgsaAJ2Pj3vOry+qMOd2ZzyT8YTa2Xd19VKdjVF55YG6kn6qbB7P
-	/xUw2Xqy6q00rplJOmN4U1X2VeV7a1x4F7i3o6Y3CZLcQiEpQXrrveHyHeWPWemeBBQ4
-	CGGQ==
-X-Gm-Message-State: AIkVDXLQk2tFtinG1tx5jPy2V/5dVdqpvtBk3RviT8qb2VhqnHan4KPtV6xGiVm4sB2PvFIi2UZNRyVl+nb5F2m3
-X-Received: by 10.31.7.204 with SMTP id 195mr16677225vkh.175.1484585357205;
-	Mon, 16 Jan 2017 08:49:17 -0800 (PST)
+	(envelope-from <clg@kaod.org>) id 1cTArH-000501-Bn
+	for qemu-arm@nongnu.org; Mon, 16 Jan 2017 12:14:20 -0500
+Received: from 3.mo5.mail-out.ovh.net ([46.105.40.108]:38117)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <clg@kaod.org>) id 1cTArH-0004zt-4s
+	for qemu-arm@nongnu.org; Mon, 16 Jan 2017 12:14:15 -0500
+Received: from player760.ha.ovh.net (b9.ovh.net [213.186.33.59])
+	by mo5.mail-out.ovh.net (Postfix) with ESMTP id C59A86CC1E
+	for <qemu-arm@nongnu.org>; Mon, 16 Jan 2017 18:14:13 +0100 (CET)
+Received: from zorba.kaod.org (LFbn-1-10647-27.w90-89.abo.wanadoo.fr
+	[90.89.233.27]) (Authenticated sender: postmaster@kaod.org)
+	by player760.ha.ovh.net (Postfix) with ESMTPSA id 91864396;
+	Mon, 16 Jan 2017 18:14:04 +0100 (CET)
+To: Peter Maydell <peter.maydell@linaro.org>
+References: <1480434248-27138-1-git-send-email-clg@kaod.org>
+	<1480434248-27138-28-git-send-email-clg@kaod.org>
+From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
+Message-ID: <16bf90e2-8538-ac01-bd62-1333f80854ee@kaod.org>
+Date: Mon, 16 Jan 2017 18:14:04 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
+	Thunderbird/45.6.0
 MIME-Version: 1.0
-Received: by 10.31.176.14 with HTTP; Mon, 16 Jan 2017 08:48:56 -0800 (PST)
-In-Reply-To: <20170108083854.5006-1-mar.krzeminski@gmail.com>
-References: <20170108083854.5006-1-mar.krzeminski@gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 16 Jan 2017 16:48:56 +0000
-Message-ID: <CAFEAcA_QZ2k=V5MC_=ny++8VebFyq9dFDJsohOGVjjuChVrEyQ@mail.gmail.com>
-To: Marcin Krzeminski <mar.krzeminski@gmail.com>
-Content-Type: text/plain; charset=UTF-8
+In-Reply-To: <1480434248-27138-28-git-send-email-clg@kaod.org>
+Content-Type: text/plain; charset=utf-8
+X-Ovh-Tracer-Id: 18403115455994694611
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrfeelgedrfeehgddvvdduucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuoehnohhnvgeqnecuuegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmd
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:400c:c05::235
-Subject: Re: [Qemu-arm] [PATCH v3 0/3] block: m25p80: Improve mt25qu01g chip
- model
+	[fuzzy]
+X-Received-From: 46.105.40.108
+Subject: Re: [Qemu-arm] [PATCH for-2.9 27/30] wdt: Add Aspeed watchdog
+ device model
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -76,26 +66,32 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Edgar Iglesias <edgar.iglesias@xilinx.com>, qemu-arm <qemu-arm@nongnu.org>,
-	QEMU Developers <qemu-devel@nongnu.org>,
-	=?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+Cc: Andrew Jeffery <andrew@aj.id.au>,
+	Marcin Krzeminski <marcin.krzeminski@nokia.com>,
+	qemu-devel@nongnu.org, qemu-arm@nongnu.org, Joel Stanley <joel@jms.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: xTx/sr+XTS73
+X-TUID: jARJMWOFIuRs
 
-On 8 January 2017 at 08:38, Marcin Krzeminski <mar.krzeminski@gmail.com> wrote:
-> This series introduce some improvememnt targeting mt25qu01g and adds
-> support for n25q00 device.
->
-> v3:
-> * Removed debug printf
-> v2:
-> * Rework die erase command functionality. Since the number of dies
-> is constant per chip, new field to flash description structure has
-> been added (instead of dynamic code from v1).
-> * Add definition for n25q00.
+On 11/29/2016 04:44 PM, C=C3=A9dric Le Goater wrote:
+> From: Joel Stanley <joel@jms.id.au>
+>=20
+> The Aspeed SoC includes a set of watchdog timers using 32-bit
+> decrement counters, which can be based either on the APB clock or
+> a 1 MHz clock.
+>=20
+> The watchdog timer is designed to prevent system deadlock and, in
+> general, it should be restarted before timeout. When a timeout occurs,
+> different types of signals can be generated, ARM reset, SOC reset,
+> System reset, CPU Interrupt, external signal or boot from alternate
+> block. The current model only performs the system reset function as
+> this is used by U-Boot and Linux.
+>=20
 
-Thanks, applied to target-arm.next (with some tweaks to the patch 2
-commit message).
+Shall I resend the 3/4 patches related to the watchdog in a separate
+patchset ?=20
 
--- PMM
+Thanks,
+
+C.=20
+

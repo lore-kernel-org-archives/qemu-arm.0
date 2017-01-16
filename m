@@ -1,268 +1,211 @@
-Received: by 10.25.205.13 with SMTP id d13csp1291909lfg;
-        Mon, 16 Jan 2017 01:36:06 -0800 (PST)
-X-Received: by 10.55.71.13 with SMTP id u13mr28163818qka.300.1484559366756;
-        Mon, 16 Jan 2017 01:36:06 -0800 (PST)
-Return-Path: <kvmarm-bounces@lists.cs.columbia.edu>
-Received: from mm01.cs.columbia.edu (mm01.cs.columbia.edu. [128.59.11.253])
-        by mx.google.com with ESMTP id k65si5850815qkf.77.2017.01.16.01.36.06;
-        Mon, 16 Jan 2017 01:36:06 -0800 (PST)
-Received-SPF: pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) client-ip=128.59.11.253;
+Received: by 10.25.205.13 with SMTP id d13csp1293935lfg;
+        Mon, 16 Jan 2017 01:42:52 -0800 (PST)
+X-Received: by 10.55.78.147 with SMTP id c141mr29244690qkb.55.1484559772604;
+        Mon, 16 Jan 2017 01:42:52 -0800 (PST)
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
+        by mx.google.com with ESMTPS id a135si13889243qkc.39.2017.01.16.01.42.52
+        for <alex.bennee@linaro.org>
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Mon, 16 Jan 2017 01:42:52 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu
-Received: from localhost (localhost [127.0.0.1])
-	by mm01.cs.columbia.edu (Postfix) with ESMTP id 5596640064;
-	Mon, 16 Jan 2017 04:34:15 -0500 (EST)
-X-Virus-Scanned: at lists.cs.columbia.edu
-X-Spam-Flag: NO
-X-Spam-Score: -1.501
-X-Spam-Level: 
-X-Spam-Status: No, score=-1.501 required=6.1 tests=[BAYES_00=-1.9,
-	DNS_FROM_AHBL_RHSBL=2.699, RCVD_IN_DNSWL_MED=-2.3] autolearn=no
-Received: from mm01.cs.columbia.edu ([127.0.0.1])
-	by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id MO6q8SUyXYAS; Mon, 16 Jan 2017 04:34:07 -0500 (EST)
-Received: from mm01.cs.columbia.edu (localhost [127.0.0.1])
-	by mm01.cs.columbia.edu (Postfix) with ESMTP id 2BBEA40419;
-	Mon, 16 Jan 2017 04:34:07 -0500 (EST)
-Received: from localhost (localhost [127.0.0.1])
- by mm01.cs.columbia.edu (Postfix) with ESMTP id 8BBE240064
- for <kvmarm@lists.cs.columbia.edu>; Mon, 16 Jan 2017 04:34:06 -0500 (EST)
-X-Virus-Scanned: at lists.cs.columbia.edu
-Received: from mm01.cs.columbia.edu ([127.0.0.1])
- by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id kaXgrXELCs7P for <kvmarm@lists.cs.columbia.edu>;
- Mon, 16 Jan 2017 04:34:02 -0500 (EST)
-Received: from szxga02-in.huawei.com (szxga02-in.huawei.com [119.145.14.65])
- by mm01.cs.columbia.edu (Postfix) with ESMTPS id 4243C4075C
- for <kvmarm@lists.cs.columbia.edu>; Mon, 16 Jan 2017 04:33:50 -0500 (EST)
-Received: from 172.24.1.36 (EHLO SZXEML424-HUB.china.huawei.com)
- ([172.24.1.36])
- by szxrg02-dlp.huawei.com (MOS 4.3.7-GA FastPath queued)
- with ESMTP id DTK49613; Mon, 16 Jan 2017 17:34:57 +0800 (CST)
-Received: from HGHY1Z002260041.china.huawei.com (10.177.16.142) by
- SZXEML424-HUB.china.huawei.com (10.82.67.153) with Microsoft SMTP Server id
- 14.3.235.1; Mon, 16 Jan 2017 17:34:48 +0800
-From: Shannon Zhao <zhaoshenglong@huawei.com>
-To: <kvmarm@lists.cs.columbia.edu>
-Subject: [PATCH RFC 3/7] ARM64: KVM: Reset ID registers when creating the VCPUs
-Date: Mon, 16 Jan 2017 17:33:30 +0800
-Message-ID: <1484559214-2248-4-git-send-email-zhaoshenglong@huawei.com>
-X-Mailer: git-send-email 1.9.0.msysgit.0
-In-Reply-To: <1484559214-2248-1-git-send-email-zhaoshenglong@huawei.com>
-References: <1484559214-2248-1-git-send-email-zhaoshenglong@huawei.com>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:55376 helo=lists.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1cT3oS-000633-4R
+	for alex.bennee@linaro.org; Mon, 16 Jan 2017 04:42:52 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:53151)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <no-reply@patchew.org>) id 1cT3oJ-00061E-I9
+	for qemu-arm@nongnu.org; Mon, 16 Jan 2017 04:42:45 -0500
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+	(envelope-from <no-reply@patchew.org>) id 1cT3oF-0006gR-II
+	for qemu-arm@nongnu.org; Mon, 16 Jan 2017 04:42:43 -0500
+Resent-Date: Mon, 16 Jan 2017 04:42:43 -0500
+Resent-Message-Id: <E1cT3oF-0006gR-II@eggs.gnu.org>
+Received: from sender163-mail.zoho.com ([74.201.84.163]:21319)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <no-reply@patchew.org>)
+	id 1cT3oF-0006ce-95; Mon, 16 Jan 2017 04:42:39 -0500
+Received: from [172.17.0.2] (23.253.156.214 [23.253.156.214]) by
+	mx.zohomail.com with SMTPS id 1484559749133501.45047307114737;
+	Mon, 16 Jan 2017 01:42:29 -0800 (PST)
+In-Reply-To: <1484558821-15512-1-git-send-email-zhaoshenglong@huawei.com>
+Message-ID: <148455974738.214.1147183737428542202@790289a7ca88>
 MIME-Version: 1.0
-X-Originating-IP: [10.177.16.142]
-X-CFilter-Loop: Reflected
-X-Mirapoint-Virus-RAPID-Raw: score=unknown(0),
- refid=str=0001.0A090206.587C93C3.00E5, ss=1, re=0.000, recu=0.000, reip=0.000,
- cl=1, cld=1, fgs=0, ip=0.0.0.0,
- so=2013-06-18 04:22:30, dmn=2013-03-21 17:37:32
-X-Mirapoint-Loop-Id: 2b2e1d83c3819575e7aec469a8ea0015
-Cc: marc.zyngier@arm.com, qemu-arm@nongnu.org, wu.wubin@huawei.com
-X-BeenThere: kvmarm@lists.cs.columbia.edu
-X-Mailman-Version: 2.1.14
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Resent-From: 
+From: no-reply@patchew.org
+To: zhaoshenglong@huawei.com
+Date: Mon, 16 Jan 2017 01:42:29 -0800 (PST)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
+X-Received-From: 74.201.84.163
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH RFC 0/6] target-arm: KVM64:
+ Cross type vCPU support
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: Where KVM/ARM decisions are made <kvmarm.lists.cs.columbia.edu>
-List-Unsubscribe: <https://lists.cs.columbia.edu/mailman/options/kvmarm>,
- <mailto:kvmarm-request@lists.cs.columbia.edu?subject=unsubscribe>
-List-Archive: <https://lists.cs.columbia.edu/pipermail/kvmarm>
-List-Post: <mailto:kvmarm@lists.cs.columbia.edu>
-List-Help: <mailto:kvmarm-request@lists.cs.columbia.edu?subject=help>
-List-Subscribe: <https://lists.cs.columbia.edu/mailman/listinfo/kvmarm>,
- <mailto:kvmarm-request@lists.cs.columbia.edu?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Errors-To: kvmarm-bounces@lists.cs.columbia.edu
-Sender: kvmarm-bounces@lists.cs.columbia.edu
-X-TUID: 0emFnw0LbXBi
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: qemu-devel@nongnu.org
+Cc: peter.maydell@linaro.org, drjones@redhat.com, famz@redhat.com,
+	qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+	christoffer.dall@linaro.org, zhaoshenglong@huawei.com,
+	kvmarm@lists.cs.columbia.edu, wu.wubin@huawei.com
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: jyKNBp3c+zvh
 
-From: Shannon Zhao <shannon.zhao@linaro.org>
+SGksCgpZb3VyIHNlcmllcyBzZWVtcyB0byBoYXZlIHNvbWUgY29kaW5nIHN0eWxlIHByb2JsZW1z
+LiBTZWUgb3V0cHV0IGJlbG93IGZvcgptb3JlIGluZm9ybWF0aW9uOgoKVHlwZTogc2VyaWVzCk1l
+c3NhZ2UtaWQ6IDE0ODQ1NTg4MjEtMTU1MTItMS1naXQtc2VuZC1lbWFpbC16aGFvc2hlbmdsb25n
+QGh1YXdlaS5jb20KU3ViamVjdDogW1FlbXUtZGV2ZWxdIFtQQVRDSCBSRkMgMC82XSB0YXJnZXQt
+YXJtOiBLVk02NDogQ3Jvc3MgdHlwZSB2Q1BVIHN1cHBvcnQKCj09PSBURVNUIFNDUklQVCBCRUdJ
+TiA9PT0KIyEvYmluL2Jhc2gKCkJBU0U9YmFzZQpuPTEKdG90YWw9JChnaXQgbG9nIC0tb25lbGlu
+ZSAkQkFTRS4uIHwgd2MgLWwpCmZhaWxlZD0wCgojIFVzZWZ1bCBnaXQgb3B0aW9ucwpnaXQgY29u
+ZmlnIC0tbG9jYWwgZGlmZi5yZW5hbWVsaW1pdCAwCmdpdCBjb25maWcgLS1sb2NhbCBkaWZmLnJl
+bmFtZXMgVHJ1ZQoKY29tbWl0cz0iJChnaXQgbG9nIC0tZm9ybWF0PSVIIC0tcmV2ZXJzZSAkQkFT
+RS4uKSIKZm9yIGMgaW4gJGNvbW1pdHM7IGRvCiAgICBlY2hvICJDaGVja2luZyBQQVRDSCAkbi8k
+dG90YWw6ICQoZ2l0IGxvZyAtbiAxIC0tZm9ybWF0PSVzICRjKS4uLiIKICAgIGlmICEgZ2l0IHNo
+b3cgJGMgLS1mb3JtYXQ9ZW1haWwgfCAuL3NjcmlwdHMvY2hlY2twYXRjaC5wbCAtLW1haWxiYWNr
+IC07IHRoZW4KICAgICAgICBmYWlsZWQ9MQogICAgICAgIGVjaG8KICAgIGZpCiAgICBuPSQoKG4r
+MSkpCmRvbmUKCmV4aXQgJGZhaWxlZAo9PT0gVEVTVCBTQ1JJUFQgRU5EID09PQoKVXBkYXRpbmcg
+M2M4Y2Y1YTljMjFmZjg3ODIxNjRkMWRlZjdmNDRiZDg4ODcxMzM4NApGcm9tIGh0dHBzOi8vZ2l0
+aHViLmNvbS9wYXRjaGV3LXByb2plY3QvcWVtdQogKiBbbmV3IHRhZ10gICAgICAgICBwYXRjaGV3
+LzE0ODQ1NTg4MjEtMTU1MTItMS1naXQtc2VuZC1lbWFpbC16aGFvc2hlbmdsb25nQGh1YXdlaS5j
+b20gLT4gcGF0Y2hldy8xNDg0NTU4ODIxLTE1NTEyLTEtZ2l0LXNlbmQtZW1haWwtemhhb3NoZW5n
+bG9uZ0BodWF3ZWkuY29tClN3aXRjaGVkIHRvIGEgbmV3IGJyYW5jaCAndGVzdCcKYWQ1ZTg3YiB0
+YXJnZXQtYXJtOiBjcHU2NDogQWRkIHN1cHBvcnQgZm9yIENvcnRleC1BNzIKZDRmNmM4NiBhcm06
+IHZpcnQ6IEVuYWJsZSBnZW5lcmljIHR5cGUgQ1BVIGluIHZpcnQgbWFjaGluZQpkYjI0MjZlIHRh
+cmdldDogYXJtOiBBZGQgYSBnZW5lcmljIHR5cGUgY3B1CjA0MmRmZjggYXJtOiBrdm02NDogQ2hl
+Y2sgaWYga3ZtIHN1cHBvcnRzIGNyb3NzIHR5cGUgdkNQVQpkOGI4ZGIxIHRhcmdldDogYXJtOiBB
+ZGQgdGhlIHFlbXUgdGFyZ2V0IGZvciBLVk1fQVJNX1RBUkdFVF9HRU5FUklDX1Y4CjcxZWIwN2Qg
+aGVhZGVyczogdXBkYXRlIGxpbnV4IGhlYWRlcnMKCj09PSBPVVRQVVQgQkVHSU4gPT09CkNoZWNr
+aW5nIFBBVENIIDEvNjogaGVhZGVyczogdXBkYXRlIGxpbnV4IGhlYWRlcnMuLi4KQ2hlY2tpbmcg
+UEFUQ0ggMi82OiB0YXJnZXQ6IGFybTogQWRkIHRoZSBxZW11IHRhcmdldCBmb3IgS1ZNX0FSTV9U
+QVJHRVRfR0VORVJJQ19WOC4uLgpDaGVja2luZyBQQVRDSCAzLzY6IGFybToga3ZtNjQ6IENoZWNr
+IGlmIGt2bSBzdXBwb3J0cyBjcm9zcyB0eXBlIHZDUFUuLi4KRVJST1I6IE1hY3JvcyB3aXRoIGNv
+bXBsZXggdmFsdWVzIHNob3VsZCBiZSBlbmNsb3NlZCBpbiBwYXJlbnRoZXNpcwojMjE6IEZJTEU6
+IHRhcmdldC9hcm0va3ZtNjQuYzo0ODQ6CisjZGVmaW5lIEFSTV9DUFVfSURfTUlEUiAgICAgICAg
+MywgMCwgMCwgMCwgMAoKRVJST1I6IE1hY3JvcyB3aXRoIGNvbXBsZXggdmFsdWVzIHNob3VsZCBi
+ZSBlbmNsb3NlZCBpbiBwYXJlbnRoZXNpcwojMjQ6IEZJTEU6IHRhcmdldC9hcm0va3ZtNjQuYzo0
+ODc6CisjZGVmaW5lIEFSTV9DUFVfSURfUkVWSURSICAgICAgMywgMCwgMCwgMCwgNgoKRVJST1I6
+IE1hY3JvcyB3aXRoIGNvbXBsZXggdmFsdWVzIHNob3VsZCBiZSBlbmNsb3NlZCBpbiBwYXJlbnRo
+ZXNpcwojMjU6IEZJTEU6IHRhcmdldC9hcm0va3ZtNjQuYzo0ODg6CisjZGVmaW5lIEFSTV9DUFVf
+SURfQUlEUiAgICAgICAgMywgMSwgMCwgMCwgNwoKRVJST1I6IE1hY3JvcyB3aXRoIGNvbXBsZXgg
+dmFsdWVzIHNob3VsZCBiZSBlbmNsb3NlZCBpbiBwYXJlbnRoZXNpcwojMjg6IEZJTEU6IHRhcmdl
+dC9hcm0va3ZtNjQuYzo0OTE6CisjZGVmaW5lIEFSTV9DUFVfSURfQ0NTSURSICAgICAgMywgMSwg
+MCwgMCwgMAoKRVJST1I6IE1hY3JvcyB3aXRoIGNvbXBsZXggdmFsdWVzIHNob3VsZCBiZSBlbmNs
+b3NlZCBpbiBwYXJlbnRoZXNpcwojMjk6IEZJTEU6IHRhcmdldC9hcm0va3ZtNjQuYzo0OTI6Cisj
+ZGVmaW5lIEFSTV9DUFVfSURfQ0xJRFIgICAgICAgMywgMSwgMCwgMCwgMQoKRVJST1I6IE1hY3Jv
+cyB3aXRoIGNvbXBsZXggdmFsdWVzIHNob3VsZCBiZSBlbmNsb3NlZCBpbiBwYXJlbnRoZXNpcwoj
+MzA6IEZJTEU6IHRhcmdldC9hcm0va3ZtNjQuYzo0OTM6CisjZGVmaW5lIEFSTV9DUFVfSURfQ1NT
+RUxSICAgICAgMywgMiwgMCwgMCwgMAoKRVJST1I6IE1hY3JvcyB3aXRoIGNvbXBsZXggdmFsdWVz
+IHNob3VsZCBiZSBlbmNsb3NlZCBpbiBwYXJlbnRoZXNpcwojMzE6IEZJTEU6IHRhcmdldC9hcm0v
+a3ZtNjQuYzo0OTQ6CisjZGVmaW5lIEFSTV9DUFVfSURfQ1RSICAgICAgICAgMywgMywgMCwgMCwg
+MQoKRVJST1I6IE1hY3JvcyB3aXRoIGNvbXBsZXggdmFsdWVzIHNob3VsZCBiZSBlbmNsb3NlZCBp
+biBwYXJlbnRoZXNpcwojMzQ6IEZJTEU6IHRhcmdldC9hcm0va3ZtNjQuYzo0OTc6CisjZGVmaW5l
+IEFSTV9DUFVfSURfUEZSMCAgICAgICAgMywgMCwgMCwgMSwgMAoKRVJST1I6IE1hY3JvcyB3aXRo
+IGNvbXBsZXggdmFsdWVzIHNob3VsZCBiZSBlbmNsb3NlZCBpbiBwYXJlbnRoZXNpcwojMzU6IEZJ
+TEU6IHRhcmdldC9hcm0va3ZtNjQuYzo0OTg6CisjZGVmaW5lIEFSTV9DUFVfSURfUEZSMSAgICAg
+ICAgMywgMCwgMCwgMSwgMQoKRVJST1I6IE1hY3JvcyB3aXRoIGNvbXBsZXggdmFsdWVzIHNob3Vs
+ZCBiZSBlbmNsb3NlZCBpbiBwYXJlbnRoZXNpcwojMzY6IEZJTEU6IHRhcmdldC9hcm0va3ZtNjQu
+Yzo0OTk6CisjZGVmaW5lIEFSTV9DUFVfSURfREZSMCAgICAgICAgMywgMCwgMCwgMSwgMgoKRVJS
+T1I6IE1hY3JvcyB3aXRoIGNvbXBsZXggdmFsdWVzIHNob3VsZCBiZSBlbmNsb3NlZCBpbiBwYXJl
+bnRoZXNpcwojMzc6IEZJTEU6IHRhcmdldC9hcm0va3ZtNjQuYzo1MDA6CisjZGVmaW5lIEFSTV9D
+UFVfSURfQUZSMCAgICAgICAgMywgMCwgMCwgMSwgMwoKRVJST1I6IE1hY3JvcyB3aXRoIGNvbXBs
+ZXggdmFsdWVzIHNob3VsZCBiZSBlbmNsb3NlZCBpbiBwYXJlbnRoZXNpcwojMzg6IEZJTEU6IHRh
+cmdldC9hcm0va3ZtNjQuYzo1MDE6CisjZGVmaW5lIEFSTV9DUFVfSURfTU1GUjAgICAgICAgMywg
+MCwgMCwgMSwgNAoKRVJST1I6IE1hY3JvcyB3aXRoIGNvbXBsZXggdmFsdWVzIHNob3VsZCBiZSBl
+bmNsb3NlZCBpbiBwYXJlbnRoZXNpcwojMzk6IEZJTEU6IHRhcmdldC9hcm0va3ZtNjQuYzo1MDI6
+CisjZGVmaW5lIEFSTV9DUFVfSURfTU1GUjEgICAgICAgMywgMCwgMCwgMSwgNQoKRVJST1I6IE1h
+Y3JvcyB3aXRoIGNvbXBsZXggdmFsdWVzIHNob3VsZCBiZSBlbmNsb3NlZCBpbiBwYXJlbnRoZXNp
+cwojNDA6IEZJTEU6IHRhcmdldC9hcm0va3ZtNjQuYzo1MDM6CisjZGVmaW5lIEFSTV9DUFVfSURf
+TU1GUjIgICAgICAgMywgMCwgMCwgMSwgNgoKRVJST1I6IE1hY3JvcyB3aXRoIGNvbXBsZXggdmFs
+dWVzIHNob3VsZCBiZSBlbmNsb3NlZCBpbiBwYXJlbnRoZXNpcwojNDE6IEZJTEU6IHRhcmdldC9h
+cm0va3ZtNjQuYzo1MDQ6CisjZGVmaW5lIEFSTV9DUFVfSURfTU1GUjMgICAgICAgMywgMCwgMCwg
+MSwgNwoKRVJST1I6IE1hY3JvcyB3aXRoIGNvbXBsZXggdmFsdWVzIHNob3VsZCBiZSBlbmNsb3Nl
+ZCBpbiBwYXJlbnRoZXNpcwojNDI6IEZJTEU6IHRhcmdldC9hcm0va3ZtNjQuYzo1MDU6CisjZGVm
+aW5lIEFSTV9DUFVfSURfSVNBUjAgICAgICAgMywgMCwgMCwgMiwgMAoKRVJST1I6IE1hY3JvcyB3
+aXRoIGNvbXBsZXggdmFsdWVzIHNob3VsZCBiZSBlbmNsb3NlZCBpbiBwYXJlbnRoZXNpcwojNDM6
+IEZJTEU6IHRhcmdldC9hcm0va3ZtNjQuYzo1MDY6CisjZGVmaW5lIEFSTV9DUFVfSURfSVNBUjEg
+ICAgICAgMywgMCwgMCwgMiwgMQoKRVJST1I6IE1hY3JvcyB3aXRoIGNvbXBsZXggdmFsdWVzIHNo
+b3VsZCBiZSBlbmNsb3NlZCBpbiBwYXJlbnRoZXNpcwojNDQ6IEZJTEU6IHRhcmdldC9hcm0va3Zt
+NjQuYzo1MDc6CisjZGVmaW5lIEFSTV9DUFVfSURfSVNBUjIgICAgICAgMywgMCwgMCwgMiwgMgoK
+RVJST1I6IE1hY3JvcyB3aXRoIGNvbXBsZXggdmFsdWVzIHNob3VsZCBiZSBlbmNsb3NlZCBpbiBw
+YXJlbnRoZXNpcwojNDU6IEZJTEU6IHRhcmdldC9hcm0va3ZtNjQuYzo1MDg6CisjZGVmaW5lIEFS
+TV9DUFVfSURfSVNBUjMgICAgICAgMywgMCwgMCwgMiwgMwoKRVJST1I6IE1hY3JvcyB3aXRoIGNv
+bXBsZXggdmFsdWVzIHNob3VsZCBiZSBlbmNsb3NlZCBpbiBwYXJlbnRoZXNpcwojNDY6IEZJTEU6
+IHRhcmdldC9hcm0va3ZtNjQuYzo1MDk6CisjZGVmaW5lIEFSTV9DUFVfSURfSVNBUjQgICAgICAg
+MywgMCwgMCwgMiwgNAoKRVJST1I6IE1hY3JvcyB3aXRoIGNvbXBsZXggdmFsdWVzIHNob3VsZCBi
+ZSBlbmNsb3NlZCBpbiBwYXJlbnRoZXNpcwojNDc6IEZJTEU6IHRhcmdldC9hcm0va3ZtNjQuYzo1
+MTA6CisjZGVmaW5lIEFSTV9DUFVfSURfSVNBUjUgICAgICAgMywgMCwgMCwgMiwgNQoKRVJST1I6
+IE1hY3JvcyB3aXRoIGNvbXBsZXggdmFsdWVzIHNob3VsZCBiZSBlbmNsb3NlZCBpbiBwYXJlbnRo
+ZXNpcwojNDg6IEZJTEU6IHRhcmdldC9hcm0va3ZtNjQuYzo1MTE6CisjZGVmaW5lIEFSTV9DUFVf
+SURfTU1GUjQgICAgICAgMywgMCwgMCwgMiwgNgoKRVJST1I6IE1hY3JvcyB3aXRoIGNvbXBsZXgg
+dmFsdWVzIHNob3VsZCBiZSBlbmNsb3NlZCBpbiBwYXJlbnRoZXNpcwojNDk6IEZJTEU6IHRhcmdl
+dC9hcm0va3ZtNjQuYzo1MTI6CisjZGVmaW5lIEFSTV9DUFVfSURfTVZGUjAgICAgICAgMywgMCwg
+MCwgMywgMAoKRVJST1I6IE1hY3JvcyB3aXRoIGNvbXBsZXggdmFsdWVzIHNob3VsZCBiZSBlbmNs
+b3NlZCBpbiBwYXJlbnRoZXNpcwojNTA6IEZJTEU6IHRhcmdldC9hcm0va3ZtNjQuYzo1MTM6Cisj
+ZGVmaW5lIEFSTV9DUFVfSURfTVZGUjEgICAgICAgMywgMCwgMCwgMywgMQoKRVJST1I6IE1hY3Jv
+cyB3aXRoIGNvbXBsZXggdmFsdWVzIHNob3VsZCBiZSBlbmNsb3NlZCBpbiBwYXJlbnRoZXNpcwoj
+NTE6IEZJTEU6IHRhcmdldC9hcm0va3ZtNjQuYzo1MTQ6CisjZGVmaW5lIEFSTV9DUFVfSURfTVZG
+UjIgICAgICAgMywgMCwgMCwgMywgMgoKRVJST1I6IE1hY3JvcyB3aXRoIGNvbXBsZXggdmFsdWVz
+IHNob3VsZCBiZSBlbmNsb3NlZCBpbiBwYXJlbnRoZXNpcwojNTI6IEZJTEU6IHRhcmdldC9hcm0v
+a3ZtNjQuYzo1MTU6CisjZGVmaW5lIEFSTV9DUFVfSURfQUE2NFBGUjAgICAgMywgMCwgMCwgNCwg
+MAoKRVJST1I6IE1hY3JvcyB3aXRoIGNvbXBsZXggdmFsdWVzIHNob3VsZCBiZSBlbmNsb3NlZCBp
+biBwYXJlbnRoZXNpcwojNTM6IEZJTEU6IHRhcmdldC9hcm0va3ZtNjQuYzo1MTY6CisjZGVmaW5l
+IEFSTV9DUFVfSURfQUE2NFBGUjEgICAgMywgMCwgMCwgNCwgMQoKRVJST1I6IE1hY3JvcyB3aXRo
+IGNvbXBsZXggdmFsdWVzIHNob3VsZCBiZSBlbmNsb3NlZCBpbiBwYXJlbnRoZXNpcwojNTQ6IEZJ
+TEU6IHRhcmdldC9hcm0va3ZtNjQuYzo1MTc6CisjZGVmaW5lIEFSTV9DUFVfSURfQUE2NERGUjAg
+ICAgMywgMCwgMCwgNSwgMAoKRVJST1I6IE1hY3JvcyB3aXRoIGNvbXBsZXggdmFsdWVzIHNob3Vs
+ZCBiZSBlbmNsb3NlZCBpbiBwYXJlbnRoZXNpcwojNTU6IEZJTEU6IHRhcmdldC9hcm0va3ZtNjQu
+Yzo1MTg6CisjZGVmaW5lIEFSTV9DUFVfSURfQUE2NERGUjEgICAgMywgMCwgMCwgNSwgMQoKRVJS
+T1I6IE1hY3JvcyB3aXRoIGNvbXBsZXggdmFsdWVzIHNob3VsZCBiZSBlbmNsb3NlZCBpbiBwYXJl
+bnRoZXNpcwojNTY6IEZJTEU6IHRhcmdldC9hcm0va3ZtNjQuYzo1MTk6CisjZGVmaW5lIEFSTV9D
+UFVfSURfQUE2NEFGUjAgICAgMywgMCwgMCwgNSwgNAoKRVJST1I6IE1hY3JvcyB3aXRoIGNvbXBs
+ZXggdmFsdWVzIHNob3VsZCBiZSBlbmNsb3NlZCBpbiBwYXJlbnRoZXNpcwojNTc6IEZJTEU6IHRh
+cmdldC9hcm0va3ZtNjQuYzo1MjA6CisjZGVmaW5lIEFSTV9DUFVfSURfQUE2NEFGUjEgICAgMywg
+MCwgMCwgNSwgNQoKRVJST1I6IE1hY3JvcyB3aXRoIGNvbXBsZXggdmFsdWVzIHNob3VsZCBiZSBl
+bmNsb3NlZCBpbiBwYXJlbnRoZXNpcwojNTg6IEZJTEU6IHRhcmdldC9hcm0va3ZtNjQuYzo1MjE6
+CisjZGVmaW5lIEFSTV9DUFVfSURfQUE2NElTQVIwICAgMywgMCwgMCwgNiwgMAoKRVJST1I6IE1h
+Y3JvcyB3aXRoIGNvbXBsZXggdmFsdWVzIHNob3VsZCBiZSBlbmNsb3NlZCBpbiBwYXJlbnRoZXNp
+cwojNTk6IEZJTEU6IHRhcmdldC9hcm0va3ZtNjQuYzo1MjI6CisjZGVmaW5lIEFSTV9DUFVfSURf
+QUE2NElTQVIxICAgMywgMCwgMCwgNiwgMQoKRVJST1I6IE1hY3JvcyB3aXRoIGNvbXBsZXggdmFs
+dWVzIHNob3VsZCBiZSBlbmNsb3NlZCBpbiBwYXJlbnRoZXNpcwojNjA6IEZJTEU6IHRhcmdldC9h
+cm0va3ZtNjQuYzo1MjM6CisjZGVmaW5lIEFSTV9DUFVfSURfQUE2NE1NRlIwICAgMywgMCwgMCwg
+NywgMAoKRVJST1I6IE1hY3JvcyB3aXRoIGNvbXBsZXggdmFsdWVzIHNob3VsZCBiZSBlbmNsb3Nl
+ZCBpbiBwYXJlbnRoZXNpcwojNjE6IEZJTEU6IHRhcmdldC9hcm0va3ZtNjQuYzo1MjQ6CisjZGVm
+aW5lIEFSTV9DUFVfSURfQUE2NE1NRlIxICAgMywgMCwgMCwgNywgMQoKRVJST1I6IHNwYWNlIHJl
+cXVpcmVkIGJlZm9yZSB0aGUgb3BlbiBwYXJlbnRoZXNpcyAnKCcKIzE1MDogRklMRTogdGFyZ2V0
+L2FybS9rdm02NC5jOjYxMzoKKyAgICAgICAgaWYoaWRfcmVnaXRzZXJzW2ldLmlkICE9IDApIHsK
+CldBUk5JTkc6IGxpbmUgb3ZlciA4MCBjaGFyYWN0ZXJzCiMxOTQ6IEZJTEU6IHRhcmdldC9hcm0v
+a3ZtNjQuYzo2Nzk6CisgICAgICAgICAgICBmcHJpbnRmKHN0ZGVyciwgImhldGVyb2dlbmVvdXMg
+c3lzdGVtIGNhbid0IHN1cHBvcnQgaG9zdCBndWVzdCBDUFUgdHlwZVxuIik7Cgp0b3RhbDogMzYg
+ZXJyb3JzLCAxIHdhcm5pbmdzLCAyMDcgbGluZXMgY2hlY2tlZAoKWW91ciBwYXRjaCBoYXMgc3R5
+bGUgcHJvYmxlbXMsIHBsZWFzZSByZXZpZXcuICBJZiBhbnkgb2YgdGhlc2UgZXJyb3JzCmFyZSBm
+YWxzZSBwb3NpdGl2ZXMgcmVwb3J0IHRoZW0gdG8gdGhlIG1haW50YWluZXIsIHNlZQpDSEVDS1BB
+VENIIGluIE1BSU5UQUlORVJTLgoKQ2hlY2tpbmcgUEFUQ0ggNC82OiB0YXJnZXQ6IGFybTogQWRk
+IGEgZ2VuZXJpYyB0eXBlIGNwdS4uLgpXQVJOSU5HOiBsaW5lIG92ZXIgODAgY2hhcmFjdGVycwoj
+NjM6IEZJTEU6IHRhcmdldC9hcm0vY3B1NjQuYzoyNTA6CisgICAgY3B1LT5pZF9hYTY0bW1mcjAg
+PSAweDBmMDAxMTAxOyAvKiBvbmx5IHN1cHBvcnQgNGsgcGFnZSwgMzYgYml0IHBoeXNpY2FsIGFk
+ZHIgKi8KCnRvdGFsOiAwIGVycm9ycywgMSB3YXJuaW5ncywgNjYgbGluZXMgY2hlY2tlZAoKWW91
+ciBwYXRjaCBoYXMgc3R5bGUgcHJvYmxlbXMsIHBsZWFzZSByZXZpZXcuICBJZiBhbnkgb2YgdGhl
+c2UgZXJyb3JzCmFyZSBmYWxzZSBwb3NpdGl2ZXMgcmVwb3J0IHRoZW0gdG8gdGhlIG1haW50YWlu
+ZXIsIHNlZQpDSEVDS1BBVENIIGluIE1BSU5UQUlORVJTLgpDaGVja2luZyBQQVRDSCA1LzY6IGFy
+bTogdmlydDogRW5hYmxlIGdlbmVyaWMgdHlwZSBDUFUgaW4gdmlydCBtYWNoaW5lLi4uCkNoZWNr
+aW5nIFBBVENIIDYvNjogdGFyZ2V0LWFybTogY3B1NjQ6IEFkZCBzdXBwb3J0IGZvciBDb3J0ZXgt
+QTcyLi4uCj09PSBPVVRQVVQgRU5EID09PQoKVGVzdCBjb21tYW5kIGV4aXRlZCB3aXRoIGNvZGU6
+IDEKCgotLS0KRW1haWwgZ2VuZXJhdGVkIGF1dG9tYXRpY2FsbHkgYnkgUGF0Y2hldyBbaHR0cDov
+L3BhdGNoZXcub3JnL10uClBsZWFzZSBzZW5kIHlvdXIgZmVlZGJhY2sgdG8gcGF0Y2hldy1kZXZl
+bEBmcmVlbGlzdHMub3Jn
 
-Reset ID registers when creating the VCPUs and store the values per
-VCPU. Also modify the get_invariant_sys_reg and set_invariant_sys_reg
-to get/set the ID register from vcpu context.
-
-Signed-off-by: Shannon Zhao <shannon.zhao@linaro.org>
----
- arch/arm64/include/asm/kvm_coproc.h |  1 +
- arch/arm64/kvm/guest.c              |  1 +
- arch/arm64/kvm/sys_regs.c           | 58 ++++++++++++++++++-------------------
- 3 files changed, 31 insertions(+), 29 deletions(-)
-
-diff --git a/arch/arm64/include/asm/kvm_coproc.h b/arch/arm64/include/asm/kvm_coproc.h
-index 0b52377..0801b66 100644
---- a/arch/arm64/include/asm/kvm_coproc.h
-+++ b/arch/arm64/include/asm/kvm_coproc.h
-@@ -24,6 +24,7 @@
- #include <linux/kvm_host.h>
- 
- void kvm_reset_sys_regs(struct kvm_vcpu *vcpu);
-+void kvm_reset_id_sys_regs(struct kvm_vcpu *vcpu);
- 
- struct kvm_sys_reg_table {
- 	const struct sys_reg_desc *table;
-diff --git a/arch/arm64/kvm/guest.c b/arch/arm64/kvm/guest.c
-index b37446a..92abe2b 100644
---- a/arch/arm64/kvm/guest.c
-+++ b/arch/arm64/kvm/guest.c
-@@ -48,6 +48,7 @@ struct kvm_stats_debugfs_item debugfs_entries[] = {
- 
- int kvm_arch_vcpu_setup(struct kvm_vcpu *vcpu)
- {
-+	kvm_reset_id_sys_regs(vcpu);
- 	return 0;
- }
- 
-diff --git a/arch/arm64/kvm/sys_regs.c b/arch/arm64/kvm/sys_regs.c
-index bf71eb4..7c5fa03 100644
---- a/arch/arm64/kvm/sys_regs.c
-+++ b/arch/arm64/kvm/sys_regs.c
-@@ -1440,11 +1440,11 @@ static const struct sys_reg_desc cp15_64_regs[] = {
-  * the guest, or a future kvm may trap them.
-  */
- 
--#define FUNCTION_INVARIANT(reg)						\
--	static void get_##reg(struct kvm_vcpu *v,			\
--			      const struct sys_reg_desc *r)		\
-+#define FUNCTION_INVARIANT(register)					\
-+	static void get_##register(struct kvm_vcpu *v,			\
-+				   const struct sys_reg_desc *r)	\
- 	{								\
--		((struct sys_reg_desc *)r)->val = read_sysreg(reg);	\
-+		vcpu_id_sys_reg(v, r->reg) = read_sysreg(register);	\
- 	}
- 
- FUNCTION_INVARIANT(midr_el1)
-@@ -1480,7 +1480,6 @@ FUNCTION_INVARIANT(id_aa64mmfr1_el1)
- FUNCTION_INVARIANT(clidr_el1)
- FUNCTION_INVARIANT(aidr_el1)
- 
--/* ->val is filled in by kvm_sys_reg_table_init() */
- static struct sys_reg_desc invariant_sys_regs[] = {
- 	{ Op0(0b11), Op1(0b000), CRn(0b0000), CRm(0b0000), Op2(0b000),
- 	  NULL, get_midr_el1, MIDR_EL1 },
-@@ -1952,43 +1951,43 @@ static int reg_to_user(void __user *uaddr, const u64 *val, u64 id)
- 	return 0;
- }
- 
--static int get_invariant_sys_reg(u64 id, void __user *uaddr)
-+static int get_invariant_sys_reg(struct kvm_vcpu *vcpu,
-+				 const struct kvm_one_reg *reg)
- {
- 	struct sys_reg_params params;
- 	const struct sys_reg_desc *r;
-+	void __user *uaddr = (void __user *)(unsigned long)reg->addr;
- 
--	if (!index_to_params(id, &params))
-+	if (!index_to_params(reg->id, &params))
- 		return -ENOENT;
- 
- 	r = find_reg(&params, invariant_sys_regs, ARRAY_SIZE(invariant_sys_regs));
- 	if (!r)
- 		return -ENOENT;
- 
--	return reg_to_user(uaddr, &r->val, id);
-+	if (r->get_user)
-+		return (r->get_user)(vcpu, r, reg, uaddr);
-+
-+	return reg_to_user(uaddr, &vcpu_id_sys_reg(vcpu, r->reg), reg->id);
- }
- 
--static int set_invariant_sys_reg(u64 id, void __user *uaddr)
-+static int set_invariant_sys_reg(struct kvm_vcpu *vcpu,
-+				 const struct kvm_one_reg *reg)
- {
- 	struct sys_reg_params params;
- 	const struct sys_reg_desc *r;
--	int err;
--	u64 val = 0; /* Make sure high bits are 0 for 32-bit regs */
-+	void __user *uaddr = (void __user *)(unsigned long)reg->addr;
- 
--	if (!index_to_params(id, &params))
-+	if (!index_to_params(reg->id, &params))
- 		return -ENOENT;
- 	r = find_reg(&params, invariant_sys_regs, ARRAY_SIZE(invariant_sys_regs));
- 	if (!r)
- 		return -ENOENT;
- 
--	err = reg_from_user(&val, uaddr, id);
--	if (err)
--		return err;
--
--	/* This is what we mean by invariant: you can't change it. */
--	if (r->val != val)
--		return -EINVAL;
-+	if (r->set_user)
-+		return (r->set_user)(vcpu, r, reg, uaddr);
- 
--	return 0;
-+	return reg_from_user(&vcpu_id_sys_reg(vcpu, r->reg), uaddr, reg->id);
- }
- 
- static bool is_valid_cache(u32 val)
-@@ -2086,7 +2085,7 @@ int kvm_arm_sys_reg_get_reg(struct kvm_vcpu *vcpu, const struct kvm_one_reg *reg
- 
- 	r = index_to_sys_reg_desc(vcpu, reg->id);
- 	if (!r)
--		return get_invariant_sys_reg(reg->id, uaddr);
-+		return get_invariant_sys_reg(vcpu, reg);
- 
- 	if (r->get_user)
- 		return (r->get_user)(vcpu, r, reg, uaddr);
-@@ -2107,7 +2106,7 @@ int kvm_arm_sys_reg_set_reg(struct kvm_vcpu *vcpu, const struct kvm_one_reg *reg
- 
- 	r = index_to_sys_reg_desc(vcpu, reg->id);
- 	if (!r)
--		return set_invariant_sys_reg(reg->id, uaddr);
-+		return set_invariant_sys_reg(vcpu, reg);
- 
- 	if (r->set_user)
- 		return (r->set_user)(vcpu, r, reg, uaddr);
-@@ -2252,7 +2251,6 @@ static int check_sysreg_table(const struct sys_reg_desc *table, unsigned int n)
- void kvm_sys_reg_table_init(void)
- {
- 	unsigned int i;
--	struct sys_reg_desc clidr;
- 
- 	/* Make sure tables are unique and in order. */
- 	BUG_ON(check_sysreg_table(sys_reg_descs, ARRAY_SIZE(sys_reg_descs)));
-@@ -2262,10 +2260,6 @@ void kvm_sys_reg_table_init(void)
- 	BUG_ON(check_sysreg_table(cp15_64_regs, ARRAY_SIZE(cp15_64_regs)));
- 	BUG_ON(check_sysreg_table(invariant_sys_regs, ARRAY_SIZE(invariant_sys_regs)));
- 
--	/* We abuse the reset function to overwrite the table itself. */
--	for (i = 0; i < ARRAY_SIZE(invariant_sys_regs); i++)
--		invariant_sys_regs[i].reset(NULL, &invariant_sys_regs[i]);
--
- 	/*
- 	 * CLIDR format is awkward, so clean it up.  See ARM B4.1.20:
- 	 *
-@@ -2276,8 +2270,7 @@ void kvm_sys_reg_table_init(void)
- 	 *   value of 0b000, the values of Ctype4 to Ctype7 must be
- 	 *   ignored.
- 	 */
--	get_clidr_el1(NULL, &clidr); /* Ugly... */
--	cache_levels = clidr.val;
-+	cache_levels = read_sysreg(clidr_el1);
- 	for (i = 0; i < 7; i++)
- 		if (((cache_levels >> (i*3)) & 7) == 0)
- 			break;
-@@ -2310,3 +2303,10 @@ void kvm_reset_sys_regs(struct kvm_vcpu *vcpu)
- 		if (vcpu_sys_reg(vcpu, num) == 0x4242424242424242)
- 			panic("Didn't reset vcpu_sys_reg(%zi)", num);
- }
-+
-+void kvm_reset_id_sys_regs(struct kvm_vcpu *vcpu)
-+{
-+	unsigned int i;
-+	for (i = 0; i < ARRAY_SIZE(invariant_sys_regs); i++)
-+		invariant_sys_regs[i].reset(vcpu, &invariant_sys_regs[i]);
-+}
--- 
-2.0.4
-
-
-_______________________________________________
-kvmarm mailing list
-kvmarm@lists.cs.columbia.edu
-https://lists.cs.columbia.edu/mailman/listinfo/kvmarm

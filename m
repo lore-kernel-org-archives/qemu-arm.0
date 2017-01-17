@@ -1,70 +1,70 @@
-Received: by 10.25.205.13 with SMTP id d13csp437682lfg;
-        Tue, 17 Jan 2017 03:01:42 -0800 (PST)
-X-Received: by 10.237.59.213 with SMTP id s21mr23660265qte.146.1484650902250;
-        Tue, 17 Jan 2017 03:01:42 -0800 (PST)
+Received: by 10.25.205.13 with SMTP id d13csp452604lfg;
+        Tue, 17 Jan 2017 03:44:25 -0800 (PST)
+X-Received: by 10.55.161.212 with SMTP id k203mr37951722qke.234.1484653465794;
+        Tue, 17 Jan 2017 03:44:25 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id r66si16284943qkl.175.2017.01.17.03.01.41
+        by mx.google.com with ESMTPS id f47si16363348qtc.221.2017.01.17.03.44.25
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 17 Jan 2017 03:01:42 -0800 (PST)
+        Tue, 17 Jan 2017 03:44:25 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com;
+       dkim=fail header.i=@linaro.org;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:34359 helo=lists.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:34617 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1cTRWF-0005kc-Pt
-	for alex.bennee@linaro.org; Tue, 17 Jan 2017 06:01:39 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:46691)
+	id 1cTSBb-0007hS-D8
+	for alex.bennee@linaro.org; Tue, 17 Jan 2017 06:44:23 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:55306)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <jiahuanzhang90@gmail.com>) id 1cTRW5-0005jy-6r
-	for qemu-arm@nongnu.org; Tue, 17 Jan 2017 06:01:35 -0500
+	(envelope-from <peter.maydell@linaro.org>) id 1cTSBU-0007h3-71
+	for qemu-arm@nongnu.org; Tue, 17 Jan 2017 06:44:17 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <jiahuanzhang90@gmail.com>) id 1cTRVz-0005Kq-0F
-	for qemu-arm@nongnu.org; Tue, 17 Jan 2017 06:01:29 -0500
-Received: from mail-qt0-x235.google.com ([2607:f8b0:400d:c0d::235]:34804)
+	(envelope-from <peter.maydell@linaro.org>) id 1cTSBT-0003KO-1v
+	for qemu-arm@nongnu.org; Tue, 17 Jan 2017 06:44:16 -0500
+Received: from mail-vk0-x230.google.com ([2607:f8b0:400c:c05::230]:36072)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <jiahuanzhang90@gmail.com>)
-	id 1cTRVy-0005KB-SI
-	for qemu-arm@nongnu.org; Tue, 17 Jan 2017 06:01:22 -0500
-Received: by mail-qt0-x235.google.com with SMTP id l7so150526004qtd.1
-	for <qemu-arm@nongnu.org>; Tue, 17 Jan 2017 03:01:21 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=mime-version:from:date:message-id:subject:to;
-	bh=yCcMIZsdn2Tq0tRgv/fESRaECJ8EVYekAobvC3kX2OA=;
-	b=g9+ItSCO5ogckZOKGSJkQA8MzfIvqmY2cUbPRlgnTmBDkRu5Epij+z464uLNSfUNa9
-	ofEyosqfDUYZtNyCA5W7dczW3OJFh43l/rpRGSMR1RNoUUMVWVO5LIB+4PUAk7XM/2xK
-	n6Ix15XAcVT4nggc3K5sg4EuH8C190s6L3+sdbJktzoaV2DnnKX3pbQUvBIQzLFuQx9o
-	8V0FU6lU/G75Kn4owzFNiexYiTeuaJAJtvRc4PgME6JkVGf0j6EmFy4fpG3wzSdENYd+
-	HVTOEQPHFYOI8hLcRgePIArqQKBBWazdD/64dcFvuqygVxxKNkGWxzbjJ4EyJpFnM7+x
-	Wsgw==
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1cTSBS-0003KB-Tm
+	for qemu-arm@nongnu.org; Tue, 17 Jan 2017 06:44:14 -0500
+Received: by mail-vk0-x230.google.com with SMTP id t8so90383050vke.3
+	for <qemu-arm@nongnu.org>; Tue, 17 Jan 2017 03:44:14 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=Mi5ghCKXBTxQnY/vKip0j8s+T5t9GZ2it6rLXPNziQ0=;
+	b=Uox4n55VETFIudwVhc/+Fwx5PYGvBV1PapNPsrIQI/Isf4CxVwJVFETWCtEpiPEvPj
+	TUe9SjtohuZ5NDpezV9XUx7Ijr2Ywi8PYf899vJf5BfLTq5rkFtwQ0c80MiBLHGiF+6X
+	pDz4DgYCTkQRReU+KXZgedMEsM1cyx47DHvaY=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:from:date:message-id:subject:to;
-	bh=yCcMIZsdn2Tq0tRgv/fESRaECJ8EVYekAobvC3kX2OA=;
-	b=oXmVxmRkolZj/ckGGFHRIdrIE+KNCcECKVh5AjrDXe82aND6s73leuOako2I+QMR3a
-	D6wzpyVInhbGKans2K6QAFBLsH2Ze15n72JJO1ukR1Lsd3CRbqmC61tu3RbXSdlb8nyj
-	qAYvVb99l4ZtB/dU4xJonmNavl2NnXyienYGAnKPtBYF4MJxFsOT3w5mDs9Y3ktqVhDr
-	aHEXr4FXs2f4/wm3dWyQH2KyEAzEku9byYHHiVTIWU8FGZwcJZd43RMPPftKTp5cY+tk
-	v08+ommG/OeCGLzYbibUevEZC9Al1yMLYIKsvEPH+l4eiSJBpoP9+ULjBS+Ar+9T0GwC
-	lXDA==
-X-Gm-Message-State: AIkVDXKmSjiwofJqfx27+CeivTlH4R66vmXBB8r3W0edApEkEj0NalZqHAOdxEt8nHefbda24LCgjkAgd4KfdA==
-X-Received: by 10.200.56.4 with SMTP id q4mr36631187qtb.73.1484650880485; Tue,
-	17 Jan 2017 03:01:20 -0800 (PST)
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=Mi5ghCKXBTxQnY/vKip0j8s+T5t9GZ2it6rLXPNziQ0=;
+	b=K03IjFA0udVeZqMiYKUxIwWS0ZKSf0jj46zP9rtRvaDJzzrmuRc8S/hecVggJGF1Lw
+	nTXdpwsk+ZgR+oQGK8wie1jH9s1rS06lcFSlXE6+T57uV3I8kC6uJUnWT5VFItUTujLG
+	IFEOIiksellFFnwBhACT8v93kw2+oHmqBuyBEMrJogry56Mypcw4YQFi81qwUz5oMfk2
+	6mBJ3lcCbHfCqG0AVP1vXsyjZBKDgDjmjQld3bBTdpnQ8hM/1k01DgVp2EKkzv/fyEIs
+	rmFNbW19yK5Df4x6qAY828992chpOEpA1/ueb+P+NDY4NRNTdIaZdz/BSKle0a/wacD4
+	yfig==
+X-Gm-Message-State: AIkVDXIiTGROKAYEUA13HAC8wHePk+6EUQCXWL8EPB7eYVmKR5lv2/MB2oXmif3UmVJc1oFZxoanqCRKze8VTKJK
+X-Received: by 10.31.73.198 with SMTP id w189mr15193715vka.170.1484653454260; 
+	Tue, 17 Jan 2017 03:44:14 -0800 (PST)
 MIME-Version: 1.0
-Received: by 10.140.101.135 with HTTP; Tue, 17 Jan 2017 03:01:20 -0800 (PST)
-From: Jiahuan Zhang <jiahuanzhang90@gmail.com>
-Date: Tue, 17 Jan 2017 12:01:20 +0100
-Message-ID: <CAJy91CYBdTWh=jMzjmMfM-4Mg-MHJzzdjB717R8TRovOX_A3hQ@mail.gmail.com>
-To: qemu-arm@nongnu.org
-Content-Type: multipart/alternative; boundary=001a114339a658ce940546483899
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:400d:c0d::235
-Subject: [Qemu-arm] How to use pipe for interaction between Guest and Host
+Received: by 10.31.176.14 with HTTP; Tue, 17 Jan 2017 03:43:53 -0800 (PST)
+In-Reply-To: <1484619334-10488-1-git-send-email-zhaoshenglong@huawei.com>
+References: <1484619334-10488-1-git-send-email-zhaoshenglong@huawei.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 17 Jan 2017 11:43:53 +0000
+Message-ID: <CAFEAcA-2iqU3Ni_yabu93e1tvJ0YNiyANhf2Vb5FtDT1MtF_nA@mail.gmail.com>
+To: Shannon Zhao <zhaoshenglong@huawei.com>
+Content-Type: text/plain; charset=UTF-8
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 2607:f8b0:400c:c05::230
+Subject: Re: [Qemu-arm] [PATCH v2] arm: virt: Fix the segmentation fault
+ when specifying an unsupported CPU
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -76,60 +76,38 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
+	wu.wubin@huawei.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: PpDZVfBS4bJl
+X-TUID: v7WSn5yamuEh
 
---001a114339a658ce940546483899
-Content-Type: text/plain; charset=UTF-8
+On 17 January 2017 at 02:15, Shannon Zhao <zhaoshenglong@huawei.com> wrote:
+> From: Shannon Zhao <shannon.zhao@linaro.org>
+>
+> For example, using -cpu generic will cause qemu segmentation fault.
+>
+> Signed-off-by: Shannon Zhao <shannon.zhao@linaro.org>
+> ---
+> V2: Just remove the member NULL instead of checking twice
+> ---
+>  hw/arm/virt.c | 1 -
+>  1 file changed, 1 deletion(-)
+>
+> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+> index 7a03f84..95ac585 100644
+> --- a/hw/arm/virt.c
+> +++ b/hw/arm/virt.c
+> @@ -167,7 +167,6 @@ static const char *valid_cpus[] = {
+>      "cortex-a53",
+>      "cortex-a57",
+>      "host",
+> -    NULL
+>  };
+>
+>  static bool cpuname_valid(const char *cpu)
 
-Dear everybody,
+Applied to target-arm.next (with some expansion of the commit
+message), thanks.
 
-I wonder how to realize the interaction between qemu guest and the
-host. there is
-
-"-chardev pipe ,id=id ,path=path"
-
-Create a two-way connection to the guest. The behaviour differs slightly
-between Windows hosts and other hosts:
-
-On Windows, a single duplex pipe will be created at \\.pipe\path.
-
-On other hosts, 2 pipes will be created called path.in and path.out. Data
-written to path.in will be received by the guest. Data written by the guest
-can be read from path.out. QEMU will not create these fifos, and requires
-them to be present.
-in qemu user documentation. Are there any pipe implementation emaples?
-
-I am using qemu in windows. I cannot understand the directory \\.pipe\path.
-
-Any friends can help? Thank you in advance.
-
-Best regards,
-Jiahuan
-
---001a114339a658ce940546483899
-Content-Type: text/html; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr"><div>Dear everybody,</div><div><br></div><div>I wonder how=
- to=C2=A0realize the interaction between qemu guest and the host.=C2=A0ther=
-e is=C2=A0</div><div><br></div><div><font face=3D"Courier New">&quot;-chard=
-ev pipe ,id=3D<var>id</var> ,path=3Dpath&quot;</font></div><div><font face=
-=3D"Courier New"><p>Create a two-way connection to the guest. The behaviour=
- differs slightly between Windows hosts and other hosts: </p><p>On Windows,=
- a single duplex pipe will be created at <samp>\\.pipe\<samp>path</samp></s=
-amp>. </p><p>On other hosts, 2 pipes will be created called <samp><samp>pat=
-h</samp>.in</samp> and <samp><samp>path</samp>.out</samp>. Data written to =
-<samp><samp>path</samp>.in</samp> will be received by the guest. Data writt=
-en by the guest can be read from <samp><samp>path</samp>.out</samp>. QEMU w=
-ill not create these fifos, and requires them to be present. <span></span><=
-/p></font></div><div><font face=3D"Courier New"><font face=3D"arial,helveti=
-ca,sans-serif"><span><span>in=C2=A0qemu user=C2=A0documentation.=C2=A0Are t=
-here any pipe implementation=C2=A0emaples? </span></span></font></font></di=
-v><div><br></div><div>I am using qemu in windows. I cannot understand the d=
-irectory \\.pipe\<samp>path</samp>. </div><div><span><br></span></div><div>=
-Any friends can help? Thank you in advance.</div><div><br></div><div>Best r=
-egards,</div><div>Jiahuan</div><div><br></div></div>
-
---001a114339a658ce940546483899--
+-- PMM

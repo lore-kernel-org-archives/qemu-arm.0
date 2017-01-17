@@ -1,99 +1,135 @@
-Received: by 10.25.205.13 with SMTP id d13csp294221lfg;
-        Mon, 16 Jan 2017 18:20:30 -0800 (PST)
-X-Received: by 10.55.122.194 with SMTP id v185mr21635503qkc.99.1484619630859;
-        Mon, 16 Jan 2017 18:20:30 -0800 (PST)
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 10.25.205.13 with SMTP id d13csp437682lfg;
+        Tue, 17 Jan 2017 03:01:42 -0800 (PST)
+X-Received: by 10.237.59.213 with SMTP id s21mr23660265qte.146.1484650902250;
+        Tue, 17 Jan 2017 03:01:42 -0800 (PST)
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id d189si7132768qkf.177.2017.01.16.18.20.30
+        by mx.google.com with ESMTPS id r66si16284943qkl.175.2017.01.17.03.01.41
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 16 Jan 2017 18:20:30 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Tue, 17 Jan 2017 03:01:42 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:60850 helo=lists.gnu.org)
+       dkim=fail header.i=@gmail.com;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:34359 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1cTJNs-0001IN-DX
-	for alex.bennee@linaro.org; Mon, 16 Jan 2017 21:20:28 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:45280)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1cTRWF-0005kc-Pt
+	for alex.bennee@linaro.org; Tue, 17 Jan 2017 06:01:39 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:46691)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <zhaoshenglong@huawei.com>) id 1cTJMs-00010O-Ob
-	for qemu-devel@nongnu.org; Mon, 16 Jan 2017 21:19:27 -0500
+	(envelope-from <jiahuanzhang90@gmail.com>) id 1cTRW5-0005jy-6r
+	for qemu-arm@nongnu.org; Tue, 17 Jan 2017 06:01:35 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <zhaoshenglong@huawei.com>) id 1cTJMp-0003wI-Js
-	for qemu-devel@nongnu.org; Mon, 16 Jan 2017 21:19:26 -0500
-Received: from szxga02-in.huawei.com ([119.145.14.65]:17396)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_ARCFOUR_SHA1:16) (Exim 4.71)
-	(envelope-from <zhaoshenglong@huawei.com>)
-	id 1cTJMp-0003vy-8s; Mon, 16 Jan 2017 21:19:23 -0500
-Received: from 172.24.1.137 (EHLO SZXEML429-HUB.china.huawei.com)
-	([172.24.1.137])
-	by szxrg02-dlp.huawei.com (MOS 4.3.7-GA FastPath queued)
-	with ESMTP id DTM05196; Tue, 17 Jan 2017 10:16:01 +0800 (CST)
-Received: from HGHY1Z002260041.china.huawei.com (10.177.16.142) by
-	SZXEML429-HUB.china.huawei.com (10.82.67.184) with Microsoft SMTP
-	Server id 14.3.235.1; Tue, 17 Jan 2017 10:15:52 +0800
-From: Shannon Zhao <zhaoshenglong@huawei.com>
-To: <qemu-arm@nongnu.org>
-Date: Tue, 17 Jan 2017 10:15:34 +0800
-Message-ID: <1484619334-10488-1-git-send-email-zhaoshenglong@huawei.com>
-X-Mailer: git-send-email 1.9.0.msysgit.0
+	(envelope-from <jiahuanzhang90@gmail.com>) id 1cTRVz-0005Kq-0F
+	for qemu-arm@nongnu.org; Tue, 17 Jan 2017 06:01:29 -0500
+Received: from mail-qt0-x235.google.com ([2607:f8b0:400d:c0d::235]:34804)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <jiahuanzhang90@gmail.com>)
+	id 1cTRVy-0005KB-SI
+	for qemu-arm@nongnu.org; Tue, 17 Jan 2017 06:01:22 -0500
+Received: by mail-qt0-x235.google.com with SMTP id l7so150526004qtd.1
+	for <qemu-arm@nongnu.org>; Tue, 17 Jan 2017 03:01:21 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=mime-version:from:date:message-id:subject:to;
+	bh=yCcMIZsdn2Tq0tRgv/fESRaECJ8EVYekAobvC3kX2OA=;
+	b=g9+ItSCO5ogckZOKGSJkQA8MzfIvqmY2cUbPRlgnTmBDkRu5Epij+z464uLNSfUNa9
+	ofEyosqfDUYZtNyCA5W7dczW3OJFh43l/rpRGSMR1RNoUUMVWVO5LIB+4PUAk7XM/2xK
+	n6Ix15XAcVT4nggc3K5sg4EuH8C190s6L3+sdbJktzoaV2DnnKX3pbQUvBIQzLFuQx9o
+	8V0FU6lU/G75Kn4owzFNiexYiTeuaJAJtvRc4PgME6JkVGf0j6EmFy4fpG3wzSdENYd+
+	HVTOEQPHFYOI8hLcRgePIArqQKBBWazdD/64dcFvuqygVxxKNkGWxzbjJ4EyJpFnM7+x
+	Wsgw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:from:date:message-id:subject:to;
+	bh=yCcMIZsdn2Tq0tRgv/fESRaECJ8EVYekAobvC3kX2OA=;
+	b=oXmVxmRkolZj/ckGGFHRIdrIE+KNCcECKVh5AjrDXe82aND6s73leuOako2I+QMR3a
+	D6wzpyVInhbGKans2K6QAFBLsH2Ze15n72JJO1ukR1Lsd3CRbqmC61tu3RbXSdlb8nyj
+	qAYvVb99l4ZtB/dU4xJonmNavl2NnXyienYGAnKPtBYF4MJxFsOT3w5mDs9Y3ktqVhDr
+	aHEXr4FXs2f4/wm3dWyQH2KyEAzEku9byYHHiVTIWU8FGZwcJZd43RMPPftKTp5cY+tk
+	v08+ommG/OeCGLzYbibUevEZC9Al1yMLYIKsvEPH+l4eiSJBpoP9+ULjBS+Ar+9T0GwC
+	lXDA==
+X-Gm-Message-State: AIkVDXKmSjiwofJqfx27+CeivTlH4R66vmXBB8r3W0edApEkEj0NalZqHAOdxEt8nHefbda24LCgjkAgd4KfdA==
+X-Received: by 10.200.56.4 with SMTP id q4mr36631187qtb.73.1484650880485; Tue,
+	17 Jan 2017 03:01:20 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Originating-IP: [10.177.16.142]
-X-CFilter-Loop: Reflected
-X-Mirapoint-Virus-RAPID-Raw: score=unknown(0),
-	refid=str=0001.0A020204.587D7E62.0031, ss=1, re=0.000, recu=0.000,
-	reip=0.000, cl=1, cld=1, fgs=0, ip=0.0.0.0,
-	so=2013-06-18 04:22:30, dmn=2013-03-21 17:37:32
-X-Mirapoint-Loop-Id: 7cbfbceb6b517b1ca2fad7babfcac1ba
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
-	[fuzzy]
-X-Received-From: 119.145.14.65
-Subject: [Qemu-devel] [PATCH v2] arm: virt: Fix the segmentation fault when
- specifying an unsupported CPU
-X-BeenThere: qemu-devel@nongnu.org
+Received: by 10.140.101.135 with HTTP; Tue, 17 Jan 2017 03:01:20 -0800 (PST)
+From: Jiahuan Zhang <jiahuanzhang90@gmail.com>
+Date: Tue, 17 Jan 2017 12:01:20 +0100
+Message-ID: <CAJy91CYBdTWh=jMzjmMfM-4Mg-MHJzzdjB717R8TRovOX_A3hQ@mail.gmail.com>
+To: qemu-arm@nongnu.org
+Content-Type: multipart/alternative; boundary=001a114339a658ce940546483899
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:400d:c0d::235
+Subject: [Qemu-arm] How to use pipe for interaction between Guest and Host
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, qemu-devel@nongnu.org, wu.wubin@huawei.com,
-	zhaoshenglong@huawei.com
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 6xLYeXzDLa5i
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: PpDZVfBS4bJl
 
-From: Shannon Zhao <shannon.zhao@linaro.org>
+--001a114339a658ce940546483899
+Content-Type: text/plain; charset=UTF-8
 
-For example, using -cpu generic will cause qemu segmentation fault.
+Dear everybody,
 
-Signed-off-by: Shannon Zhao <shannon.zhao@linaro.org>
----
-V2: Just remove the member NULL instead of checking twice
----
- hw/arm/virt.c | 1 -
- 1 file changed, 1 deletion(-)
+I wonder how to realize the interaction between qemu guest and the
+host. there is
 
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index 7a03f84..95ac585 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -167,7 +167,6 @@ static const char *valid_cpus[] = {
-     "cortex-a53",
-     "cortex-a57",
-     "host",
--    NULL
- };
- 
- static bool cpuname_valid(const char *cpu)
--- 
-2.0.4
+"-chardev pipe ,id=id ,path=path"
 
+Create a two-way connection to the guest. The behaviour differs slightly
+between Windows hosts and other hosts:
 
+On Windows, a single duplex pipe will be created at \\.pipe\path.
+
+On other hosts, 2 pipes will be created called path.in and path.out. Data
+written to path.in will be received by the guest. Data written by the guest
+can be read from path.out. QEMU will not create these fifos, and requires
+them to be present.
+in qemu user documentation. Are there any pipe implementation emaples?
+
+I am using qemu in windows. I cannot understand the directory \\.pipe\path.
+
+Any friends can help? Thank you in advance.
+
+Best regards,
+Jiahuan
+
+--001a114339a658ce940546483899
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div>Dear everybody,</div><div><br></div><div>I wonder how=
+ to=C2=A0realize the interaction between qemu guest and the host.=C2=A0ther=
+e is=C2=A0</div><div><br></div><div><font face=3D"Courier New">&quot;-chard=
+ev pipe ,id=3D<var>id</var> ,path=3Dpath&quot;</font></div><div><font face=
+=3D"Courier New"><p>Create a two-way connection to the guest. The behaviour=
+ differs slightly between Windows hosts and other hosts: </p><p>On Windows,=
+ a single duplex pipe will be created at <samp>\\.pipe\<samp>path</samp></s=
+amp>. </p><p>On other hosts, 2 pipes will be created called <samp><samp>pat=
+h</samp>.in</samp> and <samp><samp>path</samp>.out</samp>. Data written to =
+<samp><samp>path</samp>.in</samp> will be received by the guest. Data writt=
+en by the guest can be read from <samp><samp>path</samp>.out</samp>. QEMU w=
+ill not create these fifos, and requires them to be present. <span></span><=
+/p></font></div><div><font face=3D"Courier New"><font face=3D"arial,helveti=
+ca,sans-serif"><span><span>in=C2=A0qemu user=C2=A0documentation.=C2=A0Are t=
+here any pipe implementation=C2=A0emaples? </span></span></font></font></di=
+v><div><br></div><div>I am using qemu in windows. I cannot understand the d=
+irectory \\.pipe\<samp>path</samp>. </div><div><span><br></span></div><div>=
+Any friends can help? Thank you in advance.</div><div><br></div><div>Best r=
+egards,</div><div>Jiahuan</div><div><br></div></div>
+
+--001a114339a658ce940546483899--

@@ -1,74 +1,70 @@
-Received: by 10.25.205.13 with SMTP id d13csp719319lfg;
-        Tue, 17 Jan 2017 14:17:00 -0800 (PST)
-X-Received: by 10.200.48.235 with SMTP id w40mr37842401qta.72.1484691420734;
-        Tue, 17 Jan 2017 14:17:00 -0800 (PST)
+Received: by 10.25.205.13 with SMTP id d13csp753505lfg;
+        Tue, 17 Jan 2017 15:50:11 -0800 (PST)
+X-Received: by 10.55.106.193 with SMTP id f184mr350266qkc.36.1484697011511;
+        Tue, 17 Jan 2017 15:50:11 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id q7si17630898qtb.60.2017.01.17.14.17.00
+        by mx.google.com with ESMTPS id x134si17418337qka.1.2017.01.17.15.50.10
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 17 Jan 2017 14:17:00 -0800 (PST)
+        Tue, 17 Jan 2017 15:50:11 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:37994 helo=lists.gnu.org)
+       dkim=pass header.i=@gmail.com;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:38375 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1cTc3m-0001KR-42
-	for alex.bennee@linaro.org; Tue, 17 Jan 2017 17:16:58 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:34796)
+	id 1cTdVw-0002hp-Pm
+	for alex.bennee@linaro.org; Tue, 17 Jan 2017 18:50:08 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:43926)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alistair23@gmail.com>) id 1cTc26-0000Cj-MJ
-	for qemu-arm@nongnu.org; Tue, 17 Jan 2017 17:15:15 -0500
+	(envelope-from <viniciusfre@gmail.com>) id 1cTdH9-0007Om-Ir
+	for qemu-arm@nongnu.org; Tue, 17 Jan 2017 18:34:52 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <alistair23@gmail.com>) id 1cTc25-0004Tr-JF
-	for qemu-arm@nongnu.org; Tue, 17 Jan 2017 17:15:14 -0500
-Received: from mail-wm0-x243.google.com ([2a00:1450:400c:c09::243]:34972)
+	(envelope-from <viniciusfre@gmail.com>) id 1cTdH8-0001TW-SR
+	for qemu-arm@nongnu.org; Tue, 17 Jan 2017 18:34:51 -0500
+Received: from mail-ua0-x231.google.com ([2607:f8b0:400c:c08::231]:33547)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <alistair23@gmail.com>)
-	id 1cTc25-0004T1-De; Tue, 17 Jan 2017 17:15:13 -0500
-Received: by mail-wm0-x243.google.com with SMTP id d140so25461113wmd.2;
-	Tue, 17 Jan 2017 14:15:13 -0800 (PST)
+	(Exim 4.71) (envelope-from <viniciusfre@gmail.com>)
+	id 1cTdH8-0001Rj-NM
+	for qemu-arm@nongnu.org; Tue, 17 Jan 2017 18:34:50 -0500
+Received: by mail-ua0-x231.google.com with SMTP id i68so114884625uad.0
+	for <qemu-arm@nongnu.org>; Tue, 17 Jan 2017 15:34:49 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=mime-version:sender:in-reply-to:references:from:date:message-id
-	:subject:to:cc;
-	bh=07z5NmRfn3kLDS5T92eFJZM1TjmbKXEpvDokgy5GTNY=;
-	b=RXg4nEGeY5wwu9oZdxjeUAA7SsUfynLaJHZ5+OQFZMdL08naKjEkiO9LjjzXz1MMp3
-	R62rd0zREydCXmJoTQizSGpa2AI1qXROJNrldBhRU2+gcvVD86MbuRWuhOb2S58biRse
-	DR/7UKzGGjUKmKY9hQ0TSwj/Sm4wuefH+K9GVmBK8BC/HbSectsVpIat7MN9+WhIhrsC
-	UaexePP0LTHStzMnKIUWSWhao0mn9xL0r7NlqzSk8d7vqGB/9F/WCth3CWVYgJMefRcL
-	BPPV4YwWky8pE+Is8xbo6ePjXOTVneW73ewqc3xlOHiGfyfkYCkyCBMQ56gKzaPA4V0k
-	RD4A==
+	h=mime-version:from:date:message-id:subject:to;
+	bh=NM1zRAtLHqdstjUnjiIOzBIM8eXBj+yQ1wS3aFX6P6w=;
+	b=qmXkCUnS9MJvUtu6xDEZuvtFeRcpdzc01gq2tTgkm7fa+pAOqWHQezmTZiyLPwU48o
+	Z7Ak5/SpwqYpUZ8MiEbKMQJGqrHRglZLfpNDYtDcZ575MSHZ+0cBMp22jDlzcA4IjxQD
+	nxVtzCyRao3RCzLwBsmjYFu2QToCsdhbdPw5jQY3odNzFNfzWYfMvVueFUp+p+aZcoTz
+	2P+IlFo62SMxAr1L4T96KDGaI0b7VRJ6rtVmdeAM2yeR7fVvbTuD0jhOlpzXw/WLuFlF
+	iZKuc9Bf4EE7/vW2h1/J8eOQUdFMQoVRKVuo3S5RKcJDINv5yDV57APc6GkfYBJmpwnr
+	hPuA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:sender:in-reply-to:references:from
-	:date:message-id:subject:to:cc;
-	bh=07z5NmRfn3kLDS5T92eFJZM1TjmbKXEpvDokgy5GTNY=;
-	b=Ufg0dksSySwd5itnrKd6quNCh9dyAO6F+subboZq01+9ZgG/Dou/CUsiICneLIqLdC
-	XZ3i+sOE1Gnaj/HvcamTIYfodr4E46bjd14UiLezmGziW3jrUalMs1bH/LhTNeb8bA9R
-	p9wW1RoHSUwGqvFIuGq8DHx8gPnZykOFGilSHhD6d1sO76aAEbgTplzNW1cMrLJkTm7Y
-	HFv0LEEK5XUEquy/KePJ7Tz43epku1IiP0NCVtUcEtiLKmg9y4zBMMJEAdvWs4CEg+50
-	xbrnDn1TCoYA6bqFz082gFpVaf6g3uBUfeQPYJzziF2GJzrYo/nq6czuKWSsngBYia3G
-	B3KQ==
-X-Gm-Message-State: AIkVDXJzW63D5JVCP5ZYCI+mEVHFTuJGaDcfyUI/WEWW2gAhJAqLa5aK0P8VM+EuSJkqn46FfG0HkaWi1BxB7Q==
-X-Received: by 10.28.161.129 with SMTP id k123mr350595wme.66.1484691312373;
-	Tue, 17 Jan 2017 14:15:12 -0800 (PST)
+	h=x-gm-message-state:mime-version:from:date:message-id:subject:to;
+	bh=NM1zRAtLHqdstjUnjiIOzBIM8eXBj+yQ1wS3aFX6P6w=;
+	b=LzVM+4b2lLxHoQ1o8l0N6dlcZzmvv0vOEVPzOu/yoy8TZ6zfUdv+Rc2Y+DWpUynB1m
+	rgFFLKI3CsJQ6FllGgceFuWGYoKwTR1f/2/1jEr/I4XZhqXoI3+osovZ5nPl4aqYraEi
+	uf7jW7sahz910SZVH/IEHBybZYgPPae8zmLGKdIAPxBfTh2wICxheTXXkxrVhtOY1Pjo
+	krOp2IRBbFdltDlcbSDOk7U4xEVd4KW8acRfYxmcSQQggKwkE6ZJZ+ajNprSPIPhMgEP
+	tnr7DKCLoiYkfNyc+GcMaP5DpnvQXnEPmdp1Aqired2tbLvkbRIoykHOuXln5nzDwus1
+	PRLQ==
+X-Gm-Message-State: AIkVDXJEqn71251lx4sY1Au4/cjg/9Gqz3wi0WaLvQ2hw4L1G3OT5njDWMihRIN1/V4BEE1yo5jxZXfD38Xg+A==
+X-Received: by 10.159.41.5 with SMTP id t5mr141192uat.142.1484696088637; Tue,
+	17 Jan 2017 15:34:48 -0800 (PST)
 MIME-Version: 1.0
-Received: by 10.80.154.68 with HTTP; Tue, 17 Jan 2017 14:14:41 -0800 (PST)
-In-Reply-To: <1483977924-14522-16-git-send-email-peter.maydell@linaro.org>
-References: <1483977924-14522-1-git-send-email-peter.maydell@linaro.org>
-	<1483977924-14522-16-git-send-email-peter.maydell@linaro.org>
-From: Alistair Francis <alistair.francis@xilinx.com>
-Date: Tue, 17 Jan 2017 14:14:41 -0800
-X-Google-Sender-Auth: SxXrcnfBTT490jGZHCspLdDeWmY
-Message-ID: <CAKmqyKPSVFrgS69KwmJ9TfCM2o8LDDNjsuSn6bzvyDu2Vn7zcA@mail.gmail.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Content-Type: text/plain; charset=UTF-8
+Received: by 10.159.36.163 with HTTP; Tue, 17 Jan 2017 15:34:48 -0800 (PST)
+From: Vinicius Maciel <viniciusfre@gmail.com>
+Date: Tue, 17 Jan 2017 20:34:48 -0300
+Message-ID: <CAEz5UgE5aoLFGaTaJXM0br3+oU0ohcJ9H=OsW5RuUMqo87jsCA@mail.gmail.com>
+To: qemu-arm@nongnu.org, shannon.zhao@linaro.org
+Content-Type: multipart/alternative; boundary=001a114bc200f67696054652be58
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2a00:1450:400c:c09::243
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v2 15/18]
- hw/arm/virt-acpi-build: use SMC if booting in EL2
+X-Received-From: 2607:f8b0:400c:c08::231
+X-Mailman-Approved-At: Tue, 17 Jan 2017 18:50:03 -0500
+Subject: [Qemu-arm]  ARM64: KVM: Cross type vCPU support
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -80,85 +76,30 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: "Edgar E . Iglesias" <edgar.iglesias@xilinx.com>,
-	Andrew Jones <drjones@redhat.com>, Patch Tracking <patches@linaro.org>,
-	"qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
-	Alistair Francis <alistair.francis@xilinx.com>,
-	qemu-arm <qemu-arm@nongnu.org>,
-	Christoffer Dall <christoffer.dall@linaro.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ee/zOZCbuB3o
+X-TUID: i+RVpUvgwRif
 
-On Mon, Jan 9, 2017 at 8:05 AM, Peter Maydell <peter.maydell@linaro.org> wrote:
-> From: Andrew Jones <drjones@redhat.com>
->
-> Signed-off-by: Andrew Jones <drjones@redhat.com>
-> [PMM: look at vms->psci_conduit rather than vms->virt
->  to decide whether to use HVC or SMC, and report no
->  PSCI support at all for the 'PSCI disabled' case]
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+--001a114bc200f67696054652be58
+Content-Type: text/plain; charset=UTF-8
 
-Acked-by: Alistair Francis <alistair.francis@xilinx.com>
+Hello,
+
+With this new feature, am I able to run KVM ARMv8/ARMv7-A host with a
+ARMv7m guest? For example, could a Raspberry Pi 3 emulate a stm32
+microcontroller using KVM Cross type?
 
 Thanks,
+Vinicius
 
-Alistair
+--001a114bc200f67696054652be58
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
 
-> ---
->  hw/arm/virt-acpi-build.c | 26 ++++++++++++++++++++------
->  1 file changed, 20 insertions(+), 6 deletions(-)
->
-> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-> index 085a611..ec7f83b 100644
-> --- a/hw/arm/virt-acpi-build.c
-> +++ b/hw/arm/virt-acpi-build.c
-> @@ -643,16 +643,30 @@ build_madt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
->  }
->
->  /* FADT */
-> -static void
-> -build_fadt(GArray *table_data, BIOSLinker *linker, unsigned dsdt_tbl_offset)
-> +static void build_fadt(GArray *table_data, BIOSLinker *linker,
-> +                       VirtMachineState *vms, unsigned dsdt_tbl_offset)
->  {
->      AcpiFadtDescriptorRev5_1 *fadt = acpi_data_push(table_data, sizeof(*fadt));
->      unsigned dsdt_entry_offset = (char *)&fadt->dsdt - table_data->data;
-> +    uint16_t bootflags;
-> +
-> +    switch (vms->psci_conduit) {
-> +    case QEMU_PSCI_CONDUIT_DISABLED:
-> +        bootflags = 0;
-> +        break;
-> +    case QEMU_PSCI_CONDUIT_HVC:
-> +        bootflags = ACPI_FADT_ARM_PSCI_COMPLIANT | ACPI_FADT_ARM_PSCI_USE_HVC;
-> +        break;
-> +    case QEMU_PSCI_CONDUIT_SMC:
-> +        bootflags = ACPI_FADT_ARM_PSCI_COMPLIANT;
-> +        break;
-> +    default:
-> +        g_assert_not_reached();
-> +    }
->
-> -    /* Hardware Reduced = 1 and use PSCI 0.2+ and with HVC */
-> +    /* Hardware Reduced = 1 and use PSCI 0.2+ */
->      fadt->flags = cpu_to_le32(1 << ACPI_FADT_F_HW_REDUCED_ACPI);
-> -    fadt->arm_boot_flags = cpu_to_le16(ACPI_FADT_ARM_PSCI_COMPLIANT |
-> -                                       ACPI_FADT_ARM_PSCI_USE_HVC);
-> +    fadt->arm_boot_flags = cpu_to_le16(bootflags);
->
->      /* ACPI v5.1 (fadt->revision.fadt->minor_revision) */
->      fadt->minor_revision = 0x1;
-> @@ -738,7 +752,7 @@ void virt_acpi_build(VirtMachineState *vms, AcpiBuildTables *tables)
->
->      /* FADT MADT GTDT MCFG SPCR pointed to by RSDT */
->      acpi_add_table(table_offsets, tables_blob);
-> -    build_fadt(tables_blob, tables->linker, dsdt);
-> +    build_fadt(tables_blob, tables->linker, vms, dsdt);
->
->      acpi_add_table(table_offsets, tables_blob);
->      build_madt(tables_blob, tables->linker, vms);
-> --
-> 2.7.4
->
->
+<div dir=3D"ltr"><div><br></div><div>Hello,<br></div><div><br></div>With th=
+is new feature, am I able to run KVM ARMv8/ARMv7-A host with a ARMv7m guest=
+?=C2=A0For example, could a Raspberry Pi 3 emulate a stm32 microcontroller =
+using KVM Cross type?<div><br></div><div>Thanks,<br></div><div>Vinicius</di=
+v></div>
+
+--001a114bc200f67696054652be58--

@@ -1,110 +1,99 @@
-Received: by 10.25.205.13 with SMTP id d13csp277563lfg;
-        Mon, 16 Jan 2017 17:22:02 -0800 (PST)
-X-Received: by 10.55.69.68 with SMTP id s65mr36762066qka.72.1484616122146;
-        Mon, 16 Jan 2017 17:22:02 -0800 (PST)
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 10.25.205.13 with SMTP id d13csp294221lfg;
+        Mon, 16 Jan 2017 18:20:30 -0800 (PST)
+X-Received: by 10.55.122.194 with SMTP id v185mr21635503qkc.99.1484619630859;
+        Mon, 16 Jan 2017 18:20:30 -0800 (PST)
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id f37si15405989qte.335.2017.01.16.17.22.01
+        by mx.google.com with ESMTPS id d189si7132768qkf.177.2017.01.16.18.20.30
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 16 Jan 2017 17:22:02 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Mon, 16 Jan 2017 18:20:30 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:60720 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:60850 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1cTITH-0007yQ-FE
-	for alex.bennee@linaro.org; Mon, 16 Jan 2017 20:21:59 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:39272)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1cTJNs-0001IN-DX
+	for alex.bennee@linaro.org; Mon, 16 Jan 2017 21:20:28 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:45280)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <zhaoshenglong@huawei.com>) id 1cTITC-0007yJ-Mg
-	for qemu-arm@nongnu.org; Mon, 16 Jan 2017 20:21:55 -0500
+	(envelope-from <zhaoshenglong@huawei.com>) id 1cTJMs-00010O-Ob
+	for qemu-devel@nongnu.org; Mon, 16 Jan 2017 21:19:27 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <zhaoshenglong@huawei.com>) id 1cTIT8-0005px-P7
-	for qemu-arm@nongnu.org; Mon, 16 Jan 2017 20:21:54 -0500
-Received: from szxga03-in.huawei.com ([119.145.14.66]:26891)
+	(envelope-from <zhaoshenglong@huawei.com>) id 1cTJMp-0003wI-Js
+	for qemu-devel@nongnu.org; Mon, 16 Jan 2017 21:19:26 -0500
+Received: from szxga02-in.huawei.com ([119.145.14.65]:17396)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_ARCFOUR_SHA1:16) (Exim 4.71)
 	(envelope-from <zhaoshenglong@huawei.com>)
-	id 1cTIT8-0005p5-Df; Mon, 16 Jan 2017 20:21:50 -0500
-Received: from 172.24.1.60 (EHLO SZXEML424-HUB.china.huawei.com)
-	([172.24.1.60])
-	by szxrg03-dlp.huawei.com (MOS 4.4.3-GA FastPath queued)
-	with ESMTP id COE00999; Tue, 17 Jan 2017 09:21:42 +0800 (CST)
-Received: from [127.0.0.1] (10.177.16.142) by SZXEML424-HUB.china.huawei.com
-	(10.82.67.153) with Microsoft SMTP Server id 14.3.235.1;
-	Tue, 17 Jan 2017 09:21:30 +0800
-Message-ID: <587D7196.8080209@huawei.com>
-Date: Tue, 17 Jan 2017 09:21:26 +0800
+	id 1cTJMp-0003vy-8s; Mon, 16 Jan 2017 21:19:23 -0500
+Received: from 172.24.1.137 (EHLO SZXEML429-HUB.china.huawei.com)
+	([172.24.1.137])
+	by szxrg02-dlp.huawei.com (MOS 4.3.7-GA FastPath queued)
+	with ESMTP id DTM05196; Tue, 17 Jan 2017 10:16:01 +0800 (CST)
+Received: from HGHY1Z002260041.china.huawei.com (10.177.16.142) by
+	SZXEML429-HUB.china.huawei.com (10.82.67.184) with Microsoft SMTP
+	Server id 14.3.235.1; Tue, 17 Jan 2017 10:15:52 +0800
 From: Shannon Zhao <zhaoshenglong@huawei.com>
-User-Agent: Mozilla/5.0 (Windows NT 6.1;
-	rv:24.0) Gecko/20100101 Thunderbird/24.4.0
+To: <qemu-arm@nongnu.org>
+Date: Tue, 17 Jan 2017 10:15:34 +0800
+Message-ID: <1484619334-10488-1-git-send-email-zhaoshenglong@huawei.com>
+X-Mailer: git-send-email 1.9.0.msysgit.0
 MIME-Version: 1.0
-To: Peter Maydell <peter.maydell@linaro.org>
-References: <1484477462-14088-1-git-send-email-zhaoshenglong@huawei.com>
-	<CAFEAcA_pKX-v6q2uE-5+mWXYyEfooYCUFu4kVEL1N_DS5yjA2A@mail.gmail.com>
-In-Reply-To: <CAFEAcA_pKX-v6q2uE-5+mWXYyEfooYCUFu4kVEL1N_DS5yjA2A@mail.gmail.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain
 X-Originating-IP: [10.177.16.142]
 X-CFilter-Loop: Reflected
+X-Mirapoint-Virus-RAPID-Raw: score=unknown(0),
+	refid=str=0001.0A020204.587D7E62.0031, ss=1, re=0.000, recu=0.000,
+	reip=0.000, cl=1, cld=1, fgs=0, ip=0.0.0.0,
+	so=2013-06-18 04:22:30, dmn=2013-03-21 17:37:32
+X-Mirapoint-Loop-Id: 7cbfbceb6b517b1ca2fad7babfcac1ba
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
 	[fuzzy]
-X-Received-From: 119.145.14.66
-Subject: Re: [Qemu-arm] [PATCH] arm: virt: Fix the segmentation fault when
+X-Received-From: 119.145.14.65
+Subject: [Qemu-devel] [PATCH v2] arm: virt: Fix the segmentation fault when
  specifying an unsupported CPU
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
-	wu.wubin@huawei.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: fjQR50ISZmHr
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: peter.maydell@linaro.org, qemu-devel@nongnu.org, wu.wubin@huawei.com,
+	zhaoshenglong@huawei.com
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 6xLYeXzDLa5i
 
+From: Shannon Zhao <shannon.zhao@linaro.org>
 
+For example, using -cpu generic will cause qemu segmentation fault.
 
-On 2017/1/17 1:27, Peter Maydell wrote:
-> On 15 January 2017 at 10:51, Shannon Zhao <zhaoshenglong@huawei.com> wrote:
->> From: Shannon Zhao <shannon.zhao@linaro.org>
->>
->> For example, using -cpu generic will cause qemu segmentation fault.
->>
->> Signed-off-by: Shannon Zhao <shannon.zhao@linaro.org>
->> ---
->>  hw/arm/virt.c | 2 +-
->>  1 file changed, 1 insertion(+), 1 deletion(-)
->>
->> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
->> index 7a03f84..4b301c2 100644
->> --- a/hw/arm/virt.c
->> +++ b/hw/arm/virt.c
->> @@ -175,7 +175,7 @@ static bool cpuname_valid(const char *cpu)
->>      int i;
->>
->>      for (i = 0; i < ARRAY_SIZE(valid_cpus); i++) {
->> -        if (strcmp(cpu, valid_cpus[i]) == 0) {
->> +        if (valid_cpus[i] != NULL && strcmp(cpu, valid_cpus[i]) == 0) {
->>              return true;
->>          }
->>      }
-> 
-> A better fix is to just remove the NULL entry from the
-> valid_cpus[] array. We already have one "stop when we
-> run out of entries" condition (the ARRAY_SIZE check),
-> we don't need two...
-> 
-Right. Will send the update one.
+Signed-off-by: Shannon Zhao <shannon.zhao@linaro.org>
+---
+V2: Just remove the member NULL instead of checking twice
+---
+ hw/arm/virt.c | 1 -
+ 1 file changed, 1 deletion(-)
 
-Thanks,
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index 7a03f84..95ac585 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -167,7 +167,6 @@ static const char *valid_cpus[] = {
+     "cortex-a53",
+     "cortex-a57",
+     "host",
+-    NULL
+ };
+ 
+ static bool cpuname_valid(const char *cpu)
 -- 
-Shannon
+2.0.4
+
 

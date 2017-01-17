@@ -1,63 +1,74 @@
-Received: by 10.25.205.13 with SMTP id d13csp533196lfg;
-        Tue, 17 Jan 2017 06:54:46 -0800 (PST)
-X-Received: by 10.233.235.66 with SMTP id b63mr38621833qkg.144.1484664885943;
-        Tue, 17 Jan 2017 06:54:45 -0800 (PST)
+Received: by 10.25.205.13 with SMTP id d13csp709281lfg;
+        Tue, 17 Jan 2017 13:51:23 -0800 (PST)
+X-Received: by 10.55.99.81 with SMTP id x78mr42434131qkb.62.1484689883884;
+        Tue, 17 Jan 2017 13:51:23 -0800 (PST)
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id x4si8921132qtx.329.2017.01.17.06.54.45
+        by mx.google.com with ESMTPS id f72si12795178qka.229.2017.01.17.13.51.23
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 17 Jan 2017 06:54:45 -0800 (PST)
+        Tue, 17 Jan 2017 13:51:23 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
+       dkim=fail header.i=@gmail.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:35927 helo=lists.gnu.org)
+Received: from localhost ([::1]:37847 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1cTV9n-0001KY-6F
-	for alex.bennee@linaro.org; Tue, 17 Jan 2017 09:54:43 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:50397)
+	id 1cTbez-00080G-9O
+	for alex.bennee@linaro.org; Tue, 17 Jan 2017 16:51:21 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:52266)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <drjones@redhat.com>) id 1cTV5J-0006sW-RR
-	for qemu-devel@nongnu.org; Tue, 17 Jan 2017 09:50:06 -0500
+	(envelope-from <alistair23@gmail.com>) id 1cTbdq-0007wN-Mj
+	for qemu-devel@nongnu.org; Tue, 17 Jan 2017 16:50:11 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <drjones@redhat.com>) id 1cTV5F-0004tD-5O
-	for qemu-devel@nongnu.org; Tue, 17 Jan 2017 09:50:05 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:12060)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <drjones@redhat.com>)
-	id 1cTV5C-0004ri-FA; Tue, 17 Jan 2017 09:49:58 -0500
-Received: from int-mx13.intmail.prod.int.phx2.redhat.com
-	(int-mx13.intmail.prod.int.phx2.redhat.com [10.5.11.26])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 670A39E635;
-	Tue, 17 Jan 2017 14:49:58 +0000 (UTC)
-Received: from kamzik.brq.redhat.com (kamzik.brq.redhat.com [10.34.1.143])
-	by int-mx13.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id v0HEnskN002859
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=NO); Tue, 17 Jan 2017 09:49:56 -0500
-Date: Tue, 17 Jan 2017 15:49:54 +0100
-From: Andrew Jones <drjones@redhat.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Message-ID: <20170117144954.rgw53vmavygrctlo@kamzik.brq.redhat.com>
-References: <1483977924-14522-1-git-send-email-peter.maydell@linaro.org>
-	<CAFEAcA9N_YXFCPo8ja-Nan3roL=gdNpFQHoLk_aw6tDixwoT3w@mail.gmail.com>
+	(envelope-from <alistair23@gmail.com>) id 1cTbdq-0005rG-2A
+	for qemu-devel@nongnu.org; Tue, 17 Jan 2017 16:50:10 -0500
+Received: from mail-ot0-x244.google.com ([2607:f8b0:4003:c0f::244]:35920)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <alistair23@gmail.com>)
+	id 1cTbdn-0005lb-QZ; Tue, 17 Jan 2017 16:50:07 -0500
+Received: by mail-ot0-x244.google.com with SMTP id 36so10372599otx.3;
+	Tue, 17 Jan 2017 13:50:06 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=mime-version:sender:in-reply-to:references:from:date:message-id
+	:subject:to:cc;
+	bh=a/NfgMTM/12R7U96+rLNSbp0kvQipNAkASSfgXAbGhw=;
+	b=iFLhHbeva0nuL54RQT3Z8W/qSJq1bUalzXbPWi7S4KdC3EyVyJqJlkAR6x2HvzCK4G
+	7SPXTb5zqcOi0nqTPNvoz9YDV/t95YSgqfuIjMjzawT4DV2Qyd2uY5hxR/2FI3owkyV7
+	FEy/iyyKIcG9pfZ/W7LsMaJikZxGoJovRSufS0YQmMPvxgt0lpTtYpJpUnoPRKT11AkU
+	pBpfLXIJuFN6K4exlfyLyeHyfLUVoyTqsDoJPY6yY0j/nHScl6DViAlRHqY+p9/YlLpz
+	B+j6Ln3YzTmCn1mgw5XeacUcqOgbCqNfHk9gf9VsiAg/C46CErgZm0zQWS6fJ/xKlyDB
+	X0nQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:sender:in-reply-to:references:from
+	:date:message-id:subject:to:cc;
+	bh=a/NfgMTM/12R7U96+rLNSbp0kvQipNAkASSfgXAbGhw=;
+	b=Mj9AijQ2BW72ds+osYNzB83Aed43YAeWGP4gyYC0hTt02UD8c7yyLim8L18eb+KLi3
+	4L92JikQIXda52zcCDEgXvRCo+uA88QI3Y8hh6bh9JHVFf6ZYmXn518mcCQbWcC3uwZ6
+	+2zKbS64xauXLrl2x9SHfjq67xNdFhR+VTpdyB7JUl38aP+aVoR2iFuQjw/6X9JU6ToW
+	vJ5wo3IMbOXJiM4LygjnkjmdAr8OLkoiyrXKUHKM+ZE4BSDskBzltsNLsw1xdXp8W9iz
+	C7O3dVUaNnKY4wBvwLO9vcrleTaTAUXp+cGHRWiRHJNSyGhDb6mrl0fE4O2w7iRZmQm6
+	y+UA==
+X-Gm-Message-State: AIkVDXJ8JwG4yVL0+kr8KNqbcq5s/kK8Zp1pxm5ZO6kMaFydNjk8kbkgxcJ4iJ/ttggrfeEaadTeNoQTsted/Q==
+X-Received: by 10.157.19.117 with SMTP id q50mr21711123otq.54.1484689805605;
+	Tue, 17 Jan 2017 13:50:05 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <CAFEAcA9N_YXFCPo8ja-Nan3roL=gdNpFQHoLk_aw6tDixwoT3w@mail.gmail.com>
-User-Agent: Mutt/1.6.0.1 (2016-04-01)
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.26
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.39]);
-	Tue, 17 Jan 2017 14:49:58 +0000 (UTC)
+Received: by 10.182.98.133 with HTTP; Tue, 17 Jan 2017 13:49:35 -0800 (PST)
+In-Reply-To: <1483977924-14522-2-git-send-email-peter.maydell@linaro.org>
+References: <1483977924-14522-1-git-send-email-peter.maydell@linaro.org>
+	<1483977924-14522-2-git-send-email-peter.maydell@linaro.org>
+From: Alistair Francis <alistair.francis@xilinx.com>
+Date: Tue, 17 Jan 2017 13:49:35 -0800
+X-Google-Sender-Auth: 8HETLH1l3KSbtkrPBngrzj_If6I
+Message-ID: <CAKmqyKMBpvETvPGEG+amBBaubA7GDban8fc+iDMexVNdm6BC5g@mail.gmail.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+Content-Type: text/plain; charset=UTF-8
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-devel] [Qemu-arm] [PATCH v2 00/18] arm: Add
- virtualization to GICv3, and enable EL2 on 64-bit CPUs
+X-Received-From: 2607:f8b0:4003:c0f::244
+Subject: Re: [Qemu-devel] [PATCH v2 01/18] hw/intc/arm_gicv3: Add external
+ IRQ lines for VIRQ and VFIQ
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -70,37 +81,64 @@ List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
 	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: "Edgar E . Iglesias" <edgar.iglesias@xilinx.com>,
-	"patches@linaro.org" <patches@linaro.org>,
-	QEMU Developers <qemu-devel@nongnu.org>,
+	Andrew Jones <drjones@redhat.com>, Patch Tracking <patches@linaro.org>,
+	"qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
 	Alistair Francis <alistair.francis@xilinx.com>,
 	qemu-arm <qemu-arm@nongnu.org>,
 	Christoffer Dall <christoffer.dall@linaro.org>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: UYlaNc+p61b9
+X-TUID: KZ+6pZqXFVU1
 
-On Tue, Jan 17, 2017 at 02:07:31PM +0000, Peter Maydell wrote:
-> On 9 January 2017 at 16:05, Peter Maydell <peter.maydell@linaro.org> wrote:
-> > This patchset adds support for the Virtualization extensions to QEMU's
-> > GICv3 emulation. This was the last missing piece that was stopping
-> > us from turning on the EL2 support in the CPU model, so the patchset
-> > also adds support for enabling it all on the virt board via the
-> > '-machine virtualization=on' option.
-> 
-> > Patches 1, 4-13, 15, 16 still need review.
-> 
-> So is anybody interested in reviewing the complicated
-> bits in the middle of this patchset (5-13) or shall I
-> just throw it into target-arm.next? :-)
+On Mon, Jan 9, 2017 at 8:05 AM, Peter Maydell <peter.maydell@linaro.org> wrote:
+> Augment the GICv3's QOM device interface by adding two
+> new sets of sysbus IRQ lines, to signal VIRQ and VFIQ to
+> each CPU.
+>
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 
-Unfortunately I don't have time right now to give them the justice
-they deserve. FWIW, I've done light testing and light reviewing and
-I don't have any complaints.
+Reviewed-by: Alistair Francis <alistair.francis@xilinx.com>
 
 Thanks,
-drew
 
-> 
-> thanks
-> -- PMM
-> 
+Alistair
+
+> ---
+>  include/hw/intc/arm_gicv3_common.h | 2 ++
+>  hw/intc/arm_gicv3_common.c         | 6 ++++++
+>  2 files changed, 8 insertions(+)
+>
+> diff --git a/include/hw/intc/arm_gicv3_common.h b/include/hw/intc/arm_gicv3_common.h
+> index 341a311..beb2c77 100644
+> --- a/include/hw/intc/arm_gicv3_common.h
+> +++ b/include/hw/intc/arm_gicv3_common.h
+> @@ -145,6 +145,8 @@ struct GICv3CPUState {
+>      CPUState *cpu;
+>      qemu_irq parent_irq;
+>      qemu_irq parent_fiq;
+> +    qemu_irq parent_virq;
+> +    qemu_irq parent_vfiq;
+>
+>      /* Redistributor */
+>      uint32_t level;                  /* Current IRQ level */
+> diff --git a/hw/intc/arm_gicv3_common.c b/hw/intc/arm_gicv3_common.c
+> index 0aa9b9c..0ee67a4 100644
+> --- a/hw/intc/arm_gicv3_common.c
+> +++ b/hw/intc/arm_gicv3_common.c
+> @@ -126,6 +126,12 @@ void gicv3_init_irqs_and_mmio(GICv3State *s, qemu_irq_handler handler,
+>      for (i = 0; i < s->num_cpu; i++) {
+>          sysbus_init_irq(sbd, &s->cpu[i].parent_fiq);
+>      }
+> +    for (i = 0; i < s->num_cpu; i++) {
+> +        sysbus_init_irq(sbd, &s->cpu[i].parent_virq);
+> +    }
+> +    for (i = 0; i < s->num_cpu; i++) {
+> +        sysbus_init_irq(sbd, &s->cpu[i].parent_vfiq);
+> +    }
+>
+>      memory_region_init_io(&s->iomem_dist, OBJECT(s), ops, s,
+>                            "gicv3_dist", 0x10000);
+> --
+> 2.7.4
+>
+>

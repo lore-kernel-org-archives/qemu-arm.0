@@ -1,71 +1,70 @@
-Received: by 10.25.205.13 with SMTP id d13csp507144lfg;
-        Tue, 17 Jan 2017 05:52:44 -0800 (PST)
-X-Received: by 10.55.198.129 with SMTP id s1mr38021347qkl.268.1484661164181;
-        Tue, 17 Jan 2017 05:52:44 -0800 (PST)
+Received: by 10.25.205.13 with SMTP id d13csp514329lfg;
+        Tue, 17 Jan 2017 06:08:57 -0800 (PST)
+X-Received: by 10.237.60.218 with SMTP id e26mr17886782qtf.271.1484662137522;
+        Tue, 17 Jan 2017 06:08:57 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id o16si16619600qto.270.2017.01.17.05.52.43
+        by mx.google.com with ESMTPS id x34si11894811qte.67.2017.01.17.06.08.56
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 17 Jan 2017 05:52:44 -0800 (PST)
+        Tue, 17 Jan 2017 06:08:57 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        dkim=fail header.i=@linaro.org;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:35549 helo=lists.gnu.org)
+Received: from localhost ([::1]:35683 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1cTUBl-0006ZN-HM
-	for alex.bennee@linaro.org; Tue, 17 Jan 2017 08:52:41 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:33348)
+	id 1cTURT-0005k2-1k
+	for alex.bennee@linaro.org; Tue, 17 Jan 2017 09:08:55 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:38027)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1cTU8e-0004Eg-VX
-	for qemu-arm@nongnu.org; Tue, 17 Jan 2017 08:49:29 -0500
+	(envelope-from <peter.maydell@linaro.org>) id 1cTUQT-0005Fm-Mh
+	for qemu-arm@nongnu.org; Tue, 17 Jan 2017 09:07:54 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1cTU8e-0003bT-Bt
-	for qemu-arm@nongnu.org; Tue, 17 Jan 2017 08:49:29 -0500
-Received: from mail-vk0-x22c.google.com ([2607:f8b0:400c:c05::22c]:33675)
+	(envelope-from <peter.maydell@linaro.org>) id 1cTUQT-0004Ze-07
+	for qemu-arm@nongnu.org; Tue, 17 Jan 2017 09:07:53 -0500
+Received: from mail-ua0-x234.google.com ([2607:f8b0:400c:c08::234]:35257)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1cTU8e-0003ai-8D
-	for qemu-arm@nongnu.org; Tue, 17 Jan 2017 08:49:28 -0500
-Received: by mail-vk0-x22c.google.com with SMTP id k127so46798891vke.0
-	for <qemu-arm@nongnu.org>; Tue, 17 Jan 2017 05:49:28 -0800 (PST)
+	id 1cTUQS-0004Ym-Jg
+	for qemu-arm@nongnu.org; Tue, 17 Jan 2017 09:07:52 -0500
+Received: by mail-ua0-x234.google.com with SMTP id y9so103737986uae.2
+	for <qemu-arm@nongnu.org>; Tue, 17 Jan 2017 06:07:52 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
 	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=qmuku8cyui285obZM/cpZuHNqrZcO+6wfag5wi815sE=;
-	b=eOu/UPw8SZHnBPK7yCD8H4xNYpWO748WBQLdZ2sLowrkLfM2tEC31Zw79ZgKb/BRuN
-	aeQAK0envvE1+ViDwfQtS5r7/hEFtM5rhwhQ6+cF2rVhy9NodMIqShNHUe9E5QZ1n0+d
-	WknSzcLB81FUJO5D1a76MBBrnP/V4/aHLzBVo=
+	:cc; bh=698ewiiT6UlDtsntnBkD5BUp9kSgU481SDp+3G7AEyY=;
+	b=Ad19FxvcvyjhuxurE/zaBRmupEXLlXtSO9DEJl4GHYKSYC8Yqg6qbracErh5yYbgZi
+	jh9Zdq95rw3/NBVxoKtW4moCqny41an1IMA1ziJdnFAFIw6Du8jUNPD7XWIPq5UgSXOi
+	TUBySfsuMHOz6HVmtbFycEi+vShig2y+UzsbA=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
 	:message-id:subject:to:cc;
-	bh=qmuku8cyui285obZM/cpZuHNqrZcO+6wfag5wi815sE=;
-	b=MJIZ8itDIpmXgY+n815IZAZg25jH7FCLRpK8OxBnxY/Mb12y0SUNq+/J3jNF+8o6uy
-	WXq5/ReKht/q6+X9sab241TMM/4Q/HC8w7zb/6LvGHAnzfCtkpgUeU3c9x00N1tK2Lz/
-	D4Uq4lrCuLXCEiFW8sS5V+HTxUUmM50c0tQbRbqv6JzN8SjDLnfGneHPfA2wIcfKfqqx
-	2FpDFaZ0f7VPZ6wSxdrR8JvtliCw22xpn8mT1PNXAdV2Oi6H/eD465Om45x99uVTTYxT
-	xEQFYpBbEtvBs8pIyzqNCClyixzkWryghUrzwgaNc18Il512+FrIeUYlvNVqt109eQqC
-	rKGw==
-X-Gm-Message-State: AIkVDXKGTV8lJabcLNk5WIgdo/aoVuXlb/MX2ORkKPCQta/o8HVy7GgJ4fnXD2RN7XM2oMq/w4so0B7MyTpCWIAv
-X-Received: by 10.31.28.193 with SMTP id c184mr17826431vkc.173.1484660967553; 
-	Tue, 17 Jan 2017 05:49:27 -0800 (PST)
+	bh=698ewiiT6UlDtsntnBkD5BUp9kSgU481SDp+3G7AEyY=;
+	b=CR8/2udGu0d24y5lQ8Lxowq8GGX1GHolcVolqhpWJhDfZlrwaWNFBD+Mcf9k+xzPxD
+	kZUwfNc4VkRI5bSKHsknIxK7FaDBRwzyLrBLoheQvo9kvxOv5Gouc3Th2Zc/98f8g04C
+	f4WlPgz07qUF+CAgVvrKw4Iqy0MWsGumJtjkQiN1loAMRMHHg+Oxq0PvP9b/72Nhu7G0
+	okknDyM9z9l1jbuermh/ZZblddbupDo02TFIHkkbSXa0Jk5nuZsxn1PXZWWiS/jG3Lv4
+	H2sHcIbKL5vnZ8Qmmh8AXoPMKob5Pb2HAeAFDa+hTH++/T8Jg3KbCsunuFzvcXoHlsLn
+	h4mw==
+X-Gm-Message-State: AIkVDXK9ceAR7BTieGSf/MmAiiXJP/LCTIuRSr2ufUgGi8sHT/nxWmhfmnIL03q8HWC5ivIosckIToGLCWwwRPBl
+X-Received: by 10.176.2.14 with SMTP id 14mr20964649uas.8.1484662072093; Tue,
+	17 Jan 2017 06:07:52 -0800 (PST)
 MIME-Version: 1.0
-Received: by 10.31.176.14 with HTTP; Tue, 17 Jan 2017 05:49:07 -0800 (PST)
-In-Reply-To: <1484204658-28058-5-git-send-email-wei@redhat.com>
-References: <1484204658-28058-1-git-send-email-wei@redhat.com>
-	<1484204658-28058-5-git-send-email-wei@redhat.com>
+Received: by 10.31.176.14 with HTTP; Tue, 17 Jan 2017 06:07:31 -0800 (PST)
+In-Reply-To: <1483977924-14522-1-git-send-email-peter.maydell@linaro.org>
+References: <1483977924-14522-1-git-send-email-peter.maydell@linaro.org>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 17 Jan 2017 13:49:07 +0000
-Message-ID: <CAFEAcA8Scivg0rd9+vUpXAuT-NDAwsD92pn9X9jxm5rNw49Jpw@mail.gmail.com>
-To: Wei Huang <wei@redhat.com>
+Date: Tue, 17 Jan 2017 14:07:31 +0000
+Message-ID: <CAFEAcA9N_YXFCPo8ja-Nan3roL=gdNpFQHoLk_aw6tDixwoT3w@mail.gmail.com>
+To: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
 Content-Type: text/plain; charset=UTF-8
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:400c:c05::22c
-Subject: Re: [Qemu-arm] [PATCH V1 4/4] target-arm: Hook up TCG vPMU with CPU
- pmu option
+X-Received-From: 2607:f8b0:400c:c08::234
+Subject: Re: [Qemu-arm] [PATCH v2 00/18] arm: Add virtualization to GICv3,
+ and enable EL2 on 64-bit CPUs
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -77,40 +76,27 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
+Cc: "Edgar E . Iglesias" <edgar.iglesias@xilinx.com>,
+	Andrew Jones <drjones@redhat.com>,
+	"patches@linaro.org" <patches@linaro.org>,
+	Christoffer Dall <christoffer.dall@linaro.org>,
+	Alistair Francis <alistair.francis@xilinx.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 6IlUEfdap21W
+X-TUID: InZTNkyxMrEk
 
-On 12 January 2017 at 07:04, Wei Huang <wei@redhat.com> wrote:
-> Remove the checking of kvm_enabled(). With this, .pmu option can also
-> control vPMU under TCG mode.
->
-> Signed-off-by: Wei Huang <wei@redhat.com>
-> ---
->  target/arm/cpu.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
->
-> diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-> index f5cb30a..2f87a4b 100644
-> --- a/target/arm/cpu.c
-> +++ b/target/arm/cpu.c
-> @@ -692,7 +692,7 @@ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
->          cpu->id_aa64pfr0 &= ~0xf000;
->      }
->
-> -    if (!cpu->has_pmu || !kvm_enabled()) {
-> +    if (!cpu->has_pmu) {
->          cpu->has_pmu = false;
->          unset_feature(env, ARM_FEATURE_PMU);
->      }
+On 9 January 2017 at 16:05, Peter Maydell <peter.maydell@linaro.org> wrote:
+> This patchset adds support for the Virtualization extensions to QEMU's
+> GICv3 emulation. This was the last missing piece that was stopping
+> us from turning on the EL2 support in the CPU model, so the patchset
+> also adds support for enabling it all on the virt board via the
+> '-machine virtualization=on' option.
 
-I notice that the ARM_FEATURE_PMU bit doesn't seem to control whether
-we actually provide the TCG PMU registers, so this patch is OK but
-doesn't actually change the behaviour of the emulated cpu AFAICT.
+> Patches 1, 4-13, 15, 16 still need review.
 
-Don't we now need to remove the hack where we mask out the PMUVer field
-of ID_AA64DFR1_EL1 ?
+So is anybody interested in reviewing the complicated
+bits in the middle of this patchset (5-13) or shall I
+just throw it into target-arm.next? :-)
 
 thanks
 -- PMM

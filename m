@@ -1,70 +1,63 @@
-Received: by 10.25.205.13 with SMTP id d13csp514329lfg;
-        Tue, 17 Jan 2017 06:08:57 -0800 (PST)
-X-Received: by 10.237.60.218 with SMTP id e26mr17886782qtf.271.1484662137522;
-        Tue, 17 Jan 2017 06:08:57 -0800 (PST)
+Received: by 10.25.205.13 with SMTP id d13csp531244lfg;
+        Tue, 17 Jan 2017 06:49:54 -0800 (PST)
+X-Received: by 10.233.223.129 with SMTP id t123mr17020787qkf.191.1484664594117;
+        Tue, 17 Jan 2017 06:49:54 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id x34si11894811qte.67.2017.01.17.06.08.56
+        by mx.google.com with ESMTPS id o19si16728635qtb.315.2017.01.17.06.49.53
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 17 Jan 2017 06:08:57 -0800 (PST)
+        Tue, 17 Jan 2017 06:49:54 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:35683 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:35899 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1cTURT-0005k2-1k
-	for alex.bennee@linaro.org; Tue, 17 Jan 2017 09:08:55 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:38027)
+	id 1cTV55-0006fn-D7
+	for alex.bennee@linaro.org; Tue, 17 Jan 2017 09:49:51 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:49619)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1cTUQT-0005Fm-Mh
-	for qemu-arm@nongnu.org; Tue, 17 Jan 2017 09:07:54 -0500
+	(envelope-from <drjones@redhat.com>) id 1cTV2h-00059y-QV
+	for qemu-arm@nongnu.org; Tue, 17 Jan 2017 09:47:25 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1cTUQT-0004Ze-07
-	for qemu-arm@nongnu.org; Tue, 17 Jan 2017 09:07:53 -0500
-Received: from mail-ua0-x234.google.com ([2607:f8b0:400c:c08::234]:35257)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1cTUQS-0004Ym-Jg
-	for qemu-arm@nongnu.org; Tue, 17 Jan 2017 09:07:52 -0500
-Received: by mail-ua0-x234.google.com with SMTP id y9so103737986uae.2
-	for <qemu-arm@nongnu.org>; Tue, 17 Jan 2017 06:07:52 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=698ewiiT6UlDtsntnBkD5BUp9kSgU481SDp+3G7AEyY=;
-	b=Ad19FxvcvyjhuxurE/zaBRmupEXLlXtSO9DEJl4GHYKSYC8Yqg6qbracErh5yYbgZi
-	jh9Zdq95rw3/NBVxoKtW4moCqny41an1IMA1ziJdnFAFIw6Du8jUNPD7XWIPq5UgSXOi
-	TUBySfsuMHOz6HVmtbFycEi+vShig2y+UzsbA=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=698ewiiT6UlDtsntnBkD5BUp9kSgU481SDp+3G7AEyY=;
-	b=CR8/2udGu0d24y5lQ8Lxowq8GGX1GHolcVolqhpWJhDfZlrwaWNFBD+Mcf9k+xzPxD
-	kZUwfNc4VkRI5bSKHsknIxK7FaDBRwzyLrBLoheQvo9kvxOv5Gouc3Th2Zc/98f8g04C
-	f4WlPgz07qUF+CAgVvrKw4Iqy0MWsGumJtjkQiN1loAMRMHHg+Oxq0PvP9b/72Nhu7G0
-	okknDyM9z9l1jbuermh/ZZblddbupDo02TFIHkkbSXa0Jk5nuZsxn1PXZWWiS/jG3Lv4
-	H2sHcIbKL5vnZ8Qmmh8AXoPMKob5Pb2HAeAFDa+hTH++/T8Jg3KbCsunuFzvcXoHlsLn
-	h4mw==
-X-Gm-Message-State: AIkVDXK9ceAR7BTieGSf/MmAiiXJP/LCTIuRSr2ufUgGi8sHT/nxWmhfmnIL03q8HWC5ivIosckIToGLCWwwRPBl
-X-Received: by 10.176.2.14 with SMTP id 14mr20964649uas.8.1484662072093; Tue,
-	17 Jan 2017 06:07:52 -0800 (PST)
-MIME-Version: 1.0
-Received: by 10.31.176.14 with HTTP; Tue, 17 Jan 2017 06:07:31 -0800 (PST)
-In-Reply-To: <1483977924-14522-1-git-send-email-peter.maydell@linaro.org>
+	(envelope-from <drjones@redhat.com>) id 1cTV2d-0003Iz-5v
+	for qemu-arm@nongnu.org; Tue, 17 Jan 2017 09:47:23 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:54272)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <drjones@redhat.com>)
+	id 1cTV2c-0003Im-TY; Tue, 17 Jan 2017 09:47:19 -0500
+Received: from int-mx11.intmail.prod.int.phx2.redhat.com
+	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id E877B1555C;
+	Tue, 17 Jan 2017 14:47:18 +0000 (UTC)
+Received: from kamzik.brq.redhat.com (kamzik.brq.redhat.com [10.34.1.143])
+	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id v0HElFPd006884
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
+	verify=NO); Tue, 17 Jan 2017 09:47:17 -0500
+Date: Tue, 17 Jan 2017 15:47:14 +0100
+From: Andrew Jones <drjones@redhat.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+Message-ID: <20170117144714.jejlwes3pkd4foh2@kamzik.brq.redhat.com>
 References: <1483977924-14522-1-git-send-email-peter.maydell@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 17 Jan 2017 14:07:31 +0000
-Message-ID: <CAFEAcA9N_YXFCPo8ja-Nan3roL=gdNpFQHoLk_aw6tDixwoT3w@mail.gmail.com>
-To: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
-Content-Type: text/plain; charset=UTF-8
+	<1483977924-14522-17-git-send-email-peter.maydell@linaro.org>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <1483977924-14522-17-git-send-email-peter.maydell@linaro.org>
+User-Agent: Mutt/1.6.0.1 (2016-04-01)
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.29]);
+	Tue, 17 Jan 2017 14:47:19 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:400c:c08::234
-Subject: Re: [Qemu-arm] [PATCH v2 00/18] arm: Add virtualization to GICv3,
- and enable EL2 on 64-bit CPUs
+	[fuzzy]
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v2 16/18] target/arm/psci.c: If
+ EL2 implemented, start CPUs in EL2
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -76,27 +69,73 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: "Edgar E . Iglesias" <edgar.iglesias@xilinx.com>,
-	Andrew Jones <drjones@redhat.com>,
-	"patches@linaro.org" <patches@linaro.org>,
-	Christoffer Dall <christoffer.dall@linaro.org>,
-	Alistair Francis <alistair.francis@xilinx.com>
+Cc: "Edgar E . Iglesias" <edgar.iglesias@xilinx.com>, patches@linaro.org,
+	qemu-devel@nongnu.org, Alistair Francis <alistair.francis@xilinx.com>,
+	qemu-arm@nongnu.org, Christoffer Dall <christoffer.dall@linaro.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: InZTNkyxMrEk
+X-TUID: LFPJx4Hb2EdJ
 
-On 9 January 2017 at 16:05, Peter Maydell <peter.maydell@linaro.org> wrote:
-> This patchset adds support for the Virtualization extensions to QEMU's
-> GICv3 emulation. This was the last missing piece that was stopping
-> us from turning on the EL2 support in the CPU model, so the patchset
-> also adds support for enabling it all on the virt board via the
-> '-machine virtualization=on' option.
+On Mon, Jan 09, 2017 at 04:05:22PM +0000, Peter Maydell wrote:
+> The PSCI spec states that a CPU_ON call should cause the new
+> CPU to be started in the highest implemented Non-secure
+> exception level. We were incorrectly starting it at the
+> exception level of the caller, which happens to be correct
+> if EL2 is not implemented. Implement the correct logic
+> as described in the PSCI 1.0 spec section 6.4:
+>  * if EL2 exists and SCR_EL3.HCE is set: start in EL2
+>  * otherwise start in EL1
+> 
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> ---
+>  target/arm/psci.c | 25 ++++++++++++++++++-------
+>  1 file changed, 18 insertions(+), 7 deletions(-)
 
-> Patches 1, 4-13, 15, 16 still need review.
+Reviewed-by: Andrew Jones <drjones@redhat.com>
+Tested-by: Andrew Jones <drjones@redhat.com>
 
-So is anybody interested in reviewing the complicated
-bits in the middle of this patchset (5-13) or shall I
-just throw it into target-arm.next? :-)
-
-thanks
--- PMM
+> 
+> diff --git a/target/arm/psci.c b/target/arm/psci.c
+> index 14316eb..64bf82e 100644
+> --- a/target/arm/psci.c
+> +++ b/target/arm/psci.c
+> @@ -148,17 +148,28 @@ void arm_handle_psci_call(ARMCPU *cpu)
+>      case QEMU_PSCI_0_1_FN_CPU_ON:
+>      case QEMU_PSCI_0_2_FN_CPU_ON:
+>      case QEMU_PSCI_0_2_FN64_CPU_ON:
+> +    {
+> +        /* The PSCI spec mandates that newly brought up CPUs start
+> +         * in the highest exception level which exists and is enabled
+> +         * on the calling CPU. Since the QEMU PSCI implementation is
+> +         * acting as a "fake EL3" or "fake EL2" firmware, this for us
+> +         * means that we want to start at the highest NS exception level
+> +         * that we are providing to the guest.
+> +         * The execution mode should be that which is currently in use
+> +         * by the same exception level on the calling CPU.
+> +         * The CPU should be started with the context_id value
+> +         * in x0 (if AArch64) or r0 (if AArch32).
+> +         */
+> +        int target_el = arm_feature(env, ARM_FEATURE_EL2) ? 2 : 1;
+> +        bool target_aarch64 = arm_el_is_aa64(env, target_el);
+> +
+>          mpidr = param[1];
+>          entry = param[2];
+>          context_id = param[3];
+> -        /*
+> -         * The PSCI spec mandates that newly brought up CPUs enter the
+> -         * exception level of the caller in the same execution mode as
+> -         * the caller, with context_id in x0/r0, respectively.
+> -         */
+> -        ret = arm_set_cpu_on(mpidr, entry, context_id, arm_current_el(env),
+> -                             is_a64(env));
+> +        ret = arm_set_cpu_on(mpidr, entry, context_id,
+> +                             target_el, target_aarch64);
+>          break;
+> +    }
+>      case QEMU_PSCI_0_1_FN_CPU_OFF:
+>      case QEMU_PSCI_0_2_FN_CPU_OFF:
+>          goto cpu_off;
+> -- 
+> 2.7.4
+> 
+> 

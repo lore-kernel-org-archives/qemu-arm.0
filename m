@@ -1,388 +1,227 @@
-Received: by 10.25.190.12 with SMTP id o12csp387485lff;
-        Wed, 18 Jan 2017 09:15:29 -0800 (PST)
-X-Received: by 10.200.48.14 with SMTP id f14mr3696991qte.236.1484759729329;
-        Wed, 18 Jan 2017 09:15:29 -0800 (PST)
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id r65si662125qtd.130.2017.01.18.09.15.28
-        for <alex.bennee@linaro.org>
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 18 Jan 2017 09:15:29 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
-Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:42763 helo=lists.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1cTtpW-0002aD-It
-	for alex.bennee@linaro.org; Wed, 18 Jan 2017 12:15:26 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:51681)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <clg@kaod.org>) id 1cTtWs-0003i6-5p
-	for qemu-devel@nongnu.org; Wed, 18 Jan 2017 11:56:14 -0500
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <clg@kaod.org>) id 1cTtWo-00085u-9B
-	for qemu-devel@nongnu.org; Wed, 18 Jan 2017 11:56:10 -0500
-Received: from 10.mo1.mail-out.ovh.net ([178.32.96.102]:56986)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <clg@kaod.org>) id 1cTtWo-000852-08
-	for qemu-devel@nongnu.org; Wed, 18 Jan 2017 11:56:06 -0500
-Received: from player169.ha.ovh.net (b9.ovh.net [213.186.33.59])
-	by mo1.mail-out.ovh.net (Postfix) with ESMTP id 409D93CB75
-	for <qemu-devel@nongnu.org>; Wed, 18 Jan 2017 17:56:04 +0100 (CET)
-Received: from zorba.kaod.org.com (LFbn-1-10647-27.w90-89.abo.wanadoo.fr
-	[90.89.233.27]) (Authenticated sender: clg@kaod.org)
-	by player169.ha.ovh.net (Postfix) with ESMTPSA id 2B9F858009D;
-	Wed, 18 Jan 2017 17:55:55 +0100 (CET)
-From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
-To: Peter Maydell <peter.maydell@linaro.org>
-Date: Wed, 18 Jan 2017 17:55:30 +0100
-Message-Id: <1484758531-15093-2-git-send-email-clg@kaod.org>
-X-Mailer: git-send-email 2.7.4
-In-Reply-To: <1484758531-15093-1-git-send-email-clg@kaod.org>
-References: <1484758531-15093-1-git-send-email-clg@kaod.org>
+Return-Path: <alex.bennee@linaro.org>
+Received: from zen.linaro.local ([81.128.185.34])
+        by smtp.gmail.com with ESMTPSA id c202sm54445161wmd.10.2017.01.19.09.05.18
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 19 Jan 2017 09:05:24 -0800 (PST)
+Received: from zen.linaroharston (localhost [127.0.0.1])
+	by zen.linaro.local (Postfix) with ESMTP id 26A533E2A37;
+	Thu, 19 Jan 2017 17:05:09 +0000 (GMT)
+From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: mttcg@listserver.greensocs.com,
+	qemu-devel@nongnu.org,
+	fred.konrad@greensocs.com,
+	a.rigo@virtualopensystems.com,
+	cota@braap.org,
+	bobby.prani@gmail.com,
+	nikunj@linux.vnet.ibm.com
+Cc: mark.burton@greensocs.com,
+	pbonzini@redhat.com,
+	jan.kiszka@siemens.com,
+	serge.fdrv@gmail.com,
+	rth@twiddle.net,
+	peter.maydell@linaro.org,
+	claudio.fontana@huawei.com,
+	bamvor.zhangjian@linaro.org,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	qemu-arm@nongnu.org (open list:ARM)
+Subject: [PATCH v7 19/27] target-arm/powerctl: defer cpu reset work to CPU context
+Date: Thu, 19 Jan 2017 17:04:59 +0000
+Message-Id: <20170119170507.16185-20-alex.bennee@linaro.org>
+X-Mailer: git-send-email 2.11.0
+In-Reply-To: <20170119170507.16185-1-alex.bennee@linaro.org>
+References: <20170119170507.16185-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
-X-Ovh-Tracer-Id: 11395232959020305169
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrfeelgedrfeelgdelgecutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmd
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 178.32.96.102
-Subject: [Qemu-devel] [PATCH 1/2] wdt: Add Aspeed watchdog device model
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.21
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jeffery <andrew@aj.id.au>,
-	=?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
-	qemu-arm@nongnu.org, qemu-devel@nongnu.org, Joel Stanley <joel@jms.id.au>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: bG0zWJ/xCkyy
+Content-Transfer-Encoding: 8bit
+X-TUID: E5RH+BBg1uVc
 
-From: Joel Stanley <joel@jms.id.au>
+When switching a new vCPU on we want to complete a bunch of the setup
+work before we start scheduling the vCPU thread. To do this cleanly we
+defer vCPU setup to async work which will run the vCPUs execution
+context as the thread is woken up. The scheduling of the work will kick
+the vCPU awake.
 
-The Aspeed SoC includes a set of watchdog timers using 32-bit
-decrement counters, which can be based either on the APB clock or
-a 1 MHz clock.
+This avoids potential races in MTTCG system emulation.
 
-The watchdog timer is designed to prevent system deadlock and, in
-general, it should be restarted before timeout. When a timeout occurs,
-different types of signals can be generated, ARM reset, SOC reset,
-System reset, CPU Interrupt, external signal or boot from alternate
-block. The current model only performs the system reset function as
-this is used by U-Boot and Linux.
+Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+Reviewed-by: Richard Henderson <rth@twiddle.net>
 
-Signed-off-by: Joel Stanley <joel@jms.id.au>
-[clg: - fixed compile breakage
-      - fixed io region size
-      - added watchdog_perform_action() on timer expiry
-      - wrote a commit log     =20
-      - merged fixes from Andrew Jeffery to scale the reload value ]     =
-=20
-Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
 ---
- hw/watchdog/Makefile.objs        |   1 +
- hw/watchdog/wdt_aspeed.c         | 214 +++++++++++++++++++++++++++++++++=
-++++++
- include/hw/watchdog/wdt_aspeed.h |  37 +++++++
- 3 files changed, 252 insertions(+)
- create mode 100644 hw/watchdog/wdt_aspeed.c
- create mode 100644 include/hw/watchdog/wdt_aspeed.h
+v7
+  - add const to static mode_for_el[] array
+  - fix checkpatch long lines
+---
+ target/arm/arm-powerctl.c | 146 ++++++++++++++++++++++++++++------------------
+ 1 file changed, 88 insertions(+), 58 deletions(-)
 
-diff --git a/hw/watchdog/Makefile.objs b/hw/watchdog/Makefile.objs
-index 72e3ffd93c59..9589bed63a3d 100644
---- a/hw/watchdog/Makefile.objs
-+++ b/hw/watchdog/Makefile.objs
-@@ -2,3 +2,4 @@ common-obj-y +=3D watchdog.o
- common-obj-$(CONFIG_WDT_IB6300ESB) +=3D wdt_i6300esb.o
- common-obj-$(CONFIG_WDT_IB700) +=3D wdt_ib700.o
- common-obj-$(CONFIG_WDT_DIAG288) +=3D wdt_diag288.o
-+common-obj-$(CONFIG_ASPEED_SOC) +=3D wdt_aspeed.o
-diff --git a/hw/watchdog/wdt_aspeed.c b/hw/watchdog/wdt_aspeed.c
-new file mode 100644
-index 000000000000..96e62c54dc04
---- /dev/null
-+++ b/hw/watchdog/wdt_aspeed.c
-@@ -0,0 +1,214 @@
-+/*
-+ * ASPEED Watchdog Controller
-+ *
-+ * Copyright (C) 2016-2017 IBM Corp.
-+ *
-+ * This code is licensed under the GPL version 2 or later. See the
-+ * COPYING file in the top-level directory.
-+ */
+diff --git a/target/arm/arm-powerctl.c b/target/arm/arm-powerctl.c
+index fbb7a15daa..082788e3a4 100644
+--- a/target/arm/arm-powerctl.c
++++ b/target/arm/arm-powerctl.c
+@@ -48,11 +48,87 @@ CPUState *arm_get_cpu_by_id(uint64_t id)
+     return NULL;
+ }
+ 
++struct cpu_on_info {
++    uint64_t entry;
++    uint64_t context_id;
++    uint32_t target_el;
++    bool target_aa64;
++};
 +
-+#include "qemu/osdep.h"
-+#include "qemu/log.h"
-+#include "sysemu/watchdog.h"
-+#include "hw/sysbus.h"
-+#include "qemu/timer.h"
-+#include "hw/watchdog/wdt_aspeed.h"
 +
-+#define WDT_IO_REGION_SIZE      0x20
-+
-+#define WDT_STATUS              0x00
-+#define WDT_RELOAD_VALUE        0x04
-+#define WDT_RESTART             0x08
-+#define WDT_CTRL                0x0C
-+#define WDT_TIMEOUT_STATUS      0x10
-+#define WDT_TIMEOUT_CLEAR       0x14
-+#define WDT_RESET_WDITH         0x18
-+
-+#define WDT_RESTART_MAGIC       0x4755
-+
-+static uint64_t aspeed_wdt_read(void *opaque, hwaddr offset, unsigned si=
-ze)
++static void arm_set_cpu_on_async_work(CPUState *target_cpu_state,
++                                      run_on_cpu_data data)
 +{
-+    AspeedWDTState *s =3D ASPEED_WDT(opaque);
++    ARMCPU *target_cpu = ARM_CPU(target_cpu_state);
++    struct cpu_on_info *info = (struct cpu_on_info *) data.host_ptr;
 +
-+    switch (offset) {
-+    case WDT_STATUS:
-+        return s->reg_status;
-+    case WDT_RELOAD_VALUE:
-+        return s->reg_reload_value;
-+    case WDT_RESTART:
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+                      "%s: read from write-only reg at offset 0x%"
-+                      HWADDR_PRIx "\n", __func__, offset);
-+        return 0;
-+    case WDT_CTRL:
-+        return s->reg_ctrl;
-+    case WDT_TIMEOUT_STATUS:
-+    case WDT_TIMEOUT_CLEAR:
-+    case WDT_RESET_WDITH:
-+        qemu_log_mask(LOG_UNIMP,
-+                      "%s: uninmplemented read at offset 0x%" HWADDR_PRI=
-x "\n",
-+                      __func__, offset);
-+        return 0;
-+    default:
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+                      "%s: Out-of-bounds read at offset 0x%" HWADDR_PRIx=
- "\n",
-+                      __func__, offset);
-+        return 0;
-+    }
++    /* Initialize the cpu we are turning on */
++    cpu_reset(target_cpu_state);
++    target_cpu->powered_off = false;
++    target_cpu_state->halted = 0;
 +
-+}
-+
-+#define PCLK_HZ 24000000
-+
-+static void aspeed_wdt_write(void *opaque, hwaddr offset, uint64_t data,
-+                             unsigned size)
-+{
-+    AspeedWDTState *s =3D ASPEED_WDT(opaque);
-+    bool en =3D data & BIT(0);
-+    bool pclk =3D !(data & BIT(4));
-+
-+    switch (offset) {
-+    case WDT_STATUS:
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+                      "%s: write to read-only reg at offset 0x%"
-+                      HWADDR_PRIx "\n", __func__, offset);
-+        break;
-+    case WDT_RELOAD_VALUE:
-+        s->reg_reload_value =3D data;
-+        break;
-+    case WDT_RESTART:
-+        if ((data & 0xFFFF) =3D=3D 0x4755) {
-+            uint32_t reload;
-+
-+            s->reg_status =3D s->reg_reload_value;
-+
-+            if (pclk) {
-+                reload =3D muldiv64(s->reg_reload_value, NANOSECONDS_PER=
-_SECOND,
-+                                  PCLK_HZ) ;
-+            } else {
-+                reload =3D s->reg_reload_value * 1000;
-+            }
-+
-+            if (s->enabled) {
-+                timer_mod(s->timer,
-+                          qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL) + reload=
-);
-+            }
++    if (info->target_aa64) {
++        if ((info->target_el < 3) && arm_feature(&target_cpu->env,
++                                                 ARM_FEATURE_EL3)) {
++            /*
++             * As target mode is AArch64, we need to set lower
++             * exception level (the requested level 2) to AArch64
++             */
++            target_cpu->env.cp15.scr_el3 |= SCR_RW;
 +        }
-+        break;
-+    case WDT_CTRL:
-+        if (en && !s->enabled) {
-+            uint32_t reload;
 +
-+            if (pclk) {
-+                reload =3D muldiv64(s->reg_reload_value, NANOSECONDS_PER=
-_SECOND,
-+                                  PCLK_HZ);
-+            } else {
-+                reload =3D s->reg_reload_value * 1000;
-+            }
-+
-+            s->enabled =3D true;
-+            timer_mod(s->timer, qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL) + =
-reload);
-+        } else if (!en && s->enabled) {
-+            s->enabled =3D false;
-+            timer_del(s->timer);
++        if ((info->target_el < 2) && arm_feature(&target_cpu->env,
++                                                 ARM_FEATURE_EL2)) {
++            /*
++             * As target mode is AArch64, we need to set lower
++             * exception level (the requested level 1) to AArch64
++             */
++            target_cpu->env.cp15.hcr_el2 |= HCR_RW;
 +        }
-+        break;
-+    case WDT_TIMEOUT_STATUS:
-+    case WDT_TIMEOUT_CLEAR:
-+    case WDT_RESET_WDITH:
-+        qemu_log_mask(LOG_UNIMP,
-+                      "%s: uninmplemented write at offset 0x%" HWADDR_PR=
-Ix "\n",
-+                      __func__, offset);
-+        break;
-+    default:
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+                      "%s: Out-of-bounds write at offset 0x%" HWADDR_PRI=
-x "\n",
-+                      __func__, offset);
++
++        target_cpu->env.pstate = aarch64_pstate_mode(info->target_el, true);
++    } else {
++        /* We are requested to boot in AArch32 mode */
++        static const uint32_t mode_for_el[] = { 0,
++                                                ARM_CPU_MODE_SVC,
++                                                ARM_CPU_MODE_HYP,
++                                                ARM_CPU_MODE_SVC };
++
++        cpsr_write(&target_cpu->env, mode_for_el[info->target_el], CPSR_M,
++                   CPSRWriteRaw);
 +    }
-+    return;
-+}
 +
-+static WatchdogTimerModel model =3D {
-+    .wdt_name =3D TYPE_ASPEED_WDT,
-+    .wdt_description =3D "aspeed watchdog device",
-+};
-+
-+static const VMStateDescription vmstate_aspeed_wdt =3D {
-+    .name =3D "vmstate_aspeed_wdt",
-+    .version_id =3D 0,
-+    .minimum_version_id =3D 0,
-+    .fields =3D (VMStateField[]) {
-+        VMSTATE_TIMER_PTR(timer, AspeedWDTState),
-+        VMSTATE_BOOL(enabled, AspeedWDTState),
-+        VMSTATE_END_OF_LIST()
++    if (info->target_el == 3) {
++        /* Processor is in secure mode */
++        target_cpu->env.cp15.scr_el3 &= ~SCR_NS;
++    } else {
++        /* Processor is not in secure mode */
++        target_cpu->env.cp15.scr_el3 |= SCR_NS;
 +    }
-+};
 +
-+static const MemoryRegionOps aspeed_wdt_ops =3D {
-+    .read =3D aspeed_wdt_read,
-+    .write =3D aspeed_wdt_write,
-+    .endianness =3D DEVICE_LITTLE_ENDIAN,
-+    .valid.min_access_size =3D 4,
-+    .valid.max_access_size =3D 4,
-+    .valid.unaligned =3D false,
-+};
++    /* We check if the started CPU is now at the correct level */
++    assert(info->target_el == arm_current_el(&target_cpu->env));
 +
-+static void aspeed_wdt_reset(DeviceState *dev)
-+{
-+    AspeedWDTState *s =3D ASPEED_WDT(dev);
++    if (info->target_aa64) {
++        target_cpu->env.xregs[0] = info->context_id;
++        target_cpu->env.thumb = false;
++    } else {
++        target_cpu->env.regs[0] = info->context_id;
++        target_cpu->env.thumb = info->entry & 1;
++        info->entry &= 0xfffffffe;
++    }
 +
-+    s->reg_status =3D 0x3EF1480;
-+    s->reg_reload_value =3D 0x03EF1480;
-+    s->reg_restart =3D 0;
-+    s->reg_ctrl =3D 0;
-+
-+    s->enabled =3D false;
-+    timer_del(s->timer);
++    /* Start the new CPU at the requested address */
++    cpu_set_pc(target_cpu_state, info->entry);
++    g_free(info);
 +}
 +
-+static void aspeed_wdt_timer_expired(void *dev)
-+{
-+    AspeedWDTState *s =3D ASPEED_WDT(dev);
+ int arm_set_cpu_on(uint64_t cpuid, uint64_t entry, uint64_t context_id,
+                    uint32_t target_el, bool target_aa64)
+ {
+     CPUState *target_cpu_state;
+     ARMCPU *target_cpu;
++    struct cpu_on_info *info;
+ 
+     DPRINTF("cpu %" PRId64 " (EL %d, %s) @ 0x%" PRIx64 " with R0 = 0x%" PRIx64
+             "\n", cpuid, target_el, target_aa64 ? "aarch64" : "aarch32", entry,
+@@ -109,64 +185,18 @@ int arm_set_cpu_on(uint64_t cpuid, uint64_t entry, uint64_t context_id,
+         return QEMU_ARM_POWERCTL_INVALID_PARAM;
+     }
+ 
+-    /* Initialize the cpu we are turning on */
+-    cpu_reset(target_cpu_state);
+-    target_cpu->powered_off = false;
+-    target_cpu_state->halted = 0;
+-
+-    if (target_aa64) {
+-        if ((target_el < 3) && arm_feature(&target_cpu->env, ARM_FEATURE_EL3)) {
+-            /*
+-             * As target mode is AArch64, we need to set lower
+-             * exception level (the requested level 2) to AArch64
+-             */
+-            target_cpu->env.cp15.scr_el3 |= SCR_RW;
+-        }
+-
+-        if ((target_el < 2) && arm_feature(&target_cpu->env, ARM_FEATURE_EL2)) {
+-            /*
+-             * As target mode is AArch64, we need to set lower
+-             * exception level (the requested level 1) to AArch64
+-             */
+-            target_cpu->env.cp15.hcr_el2 |= HCR_RW;
+-        }
+-
+-        target_cpu->env.pstate = aarch64_pstate_mode(target_el, true);
+-    } else {
+-        /* We are requested to boot in AArch32 mode */
+-        static uint32_t mode_for_el[] = { 0,
+-                                          ARM_CPU_MODE_SVC,
+-                                          ARM_CPU_MODE_HYP,
+-                                          ARM_CPU_MODE_SVC };
+-
+-        cpsr_write(&target_cpu->env, mode_for_el[target_el], CPSR_M,
+-                   CPSRWriteRaw);
+-    }
+-
+-    if (target_el == 3) {
+-        /* Processor is in secure mode */
+-        target_cpu->env.cp15.scr_el3 &= ~SCR_NS;
+-    } else {
+-        /* Processor is not in secure mode */
+-        target_cpu->env.cp15.scr_el3 |= SCR_NS;
+-    }
+-
+-    /* We check if the started CPU is now at the correct level */
+-    assert(target_el == arm_current_el(&target_cpu->env));
+-
+-    if (target_aa64) {
+-        target_cpu->env.xregs[0] = context_id;
+-        target_cpu->env.thumb = false;
+-    } else {
+-        target_cpu->env.regs[0] = context_id;
+-        target_cpu->env.thumb = entry & 1;
+-        entry &= 0xfffffffe;
+-    }
+-
+-    /* Start the new CPU at the requested address */
+-    cpu_set_pc(target_cpu_state, entry);
+-
+-    qemu_cpu_kick(target_cpu_state);
++    /* To avoid racing with a CPU we are just kicking off we do the
++     * final bit of preparation for the work in the target CPUs
++     * context.
++     */
++    info = g_new(struct cpu_on_info, 1);
++    info->entry = entry;
++    info->context_id = context_id;
++    info->target_el = target_el;
++    info->target_aa64 = target_aa64;
 +
-+    qemu_log_mask(CPU_LOG_RESET, "Watchdog timer expired.\n");
-+    watchdog_perform_action();
-+    timer_del(s->timer);
-+}
-+
-+static void aspeed_wdt_realize(DeviceState *dev, Error **errp)
-+{
-+    SysBusDevice *sbd =3D SYS_BUS_DEVICE(dev);
-+    AspeedWDTState *s =3D ASPEED_WDT(dev);
-+
-+    s->timer =3D timer_new_ns(QEMU_CLOCK_VIRTUAL, aspeed_wdt_timer_expir=
-ed,
-+                            dev);
-+
-+    memory_region_init_io(&s->iomem, OBJECT(s), &aspeed_wdt_ops, s,
-+                          TYPE_ASPEED_WDT, WDT_IO_REGION_SIZE);
-+    sysbus_init_mmio(sbd, &s->iomem);
-+}
-+
-+static void aspeed_wdt_class_init(ObjectClass *klass, void *data)
-+{
-+    DeviceClass *dc =3D DEVICE_CLASS(klass);
-+
-+    dc->realize =3D aspeed_wdt_realize;
-+    dc->reset =3D aspeed_wdt_reset;
-+    set_bit(DEVICE_CATEGORY_MISC, dc->categories);
-+    dc->vmsd =3D &vmstate_aspeed_wdt;
-+}
-+
-+static const TypeInfo aspeed_wdt_info =3D {
-+    .parent =3D TYPE_SYS_BUS_DEVICE,
-+    .name  =3D TYPE_ASPEED_WDT,
-+    .instance_size  =3D sizeof(AspeedWDTState),
-+    .class_init =3D aspeed_wdt_class_init,
-+};
-+
-+static void wdt_aspeed_register_types(void)
-+{
-+    watchdog_add_model(&model);
-+    type_register_static(&aspeed_wdt_info);
-+}
-+
-+type_init(wdt_aspeed_register_types)
-diff --git a/include/hw/watchdog/wdt_aspeed.h b/include/hw/watchdog/wdt_a=
-speed.h
-new file mode 100644
-index 000000000000..a11b687b6aff
---- /dev/null
-+++ b/include/hw/watchdog/wdt_aspeed.h
-@@ -0,0 +1,37 @@
-+/*
-+ * ASPEED Watchdog Controller
-+ *
-+ * Copyright (C) 2016-2017 IBM Corp.
-+ *
-+ * This code is licensed under the GPL version 2 or later. See the
-+ * COPYING file in the top-level directory.
-+ */
-+#ifndef ASPEED_WDT_H
-+#define ASPEED_WDT_H
-+
-+#include "hw/sysbus.h"
-+
-+#define TYPE_ASPEED_WDT "aspeed.wdt"
-+#define ASPEED_WDT(obj) \
-+    OBJECT_CHECK(AspeedWDTState, (obj), TYPE_ASPEED_WDT)
-+#define ASPEED_WDT_CLASS(klass) \
-+    OBJECT_CLASS_CHECK(AspeedWDTClass, (klass), TYPE_ASPEED_WDT)
-+#define ASPEED_WDT_GET_CLASS(obj) \
-+    OBJECT_GET_CLASS(AspeedWDTClass, (obj), TYPE_ASPEED_WDT)
-+
-+typedef struct AspeedWDTState {
-+    /*< private >*/
-+    SysBusDevice parent_obj;
-+    QEMUTimer *timer;
-+    bool enabled;
-+
-+    /*< public >*/
-+    MemoryRegion iomem;
-+
-+    uint32_t reg_status;
-+    uint32_t reg_reload_value;
-+    uint32_t reg_restart;
-+    uint32_t reg_ctrl;
-+} AspeedWDTState;
-+
-+#endif  /* ASPEED_WDT_H */
---=20
-2.7.4
-
++    async_run_on_cpu(target_cpu_state, arm_set_cpu_on_async_work,
++                     RUN_ON_CPU_HOST_PTR(info));
+ 
+     /* We are good to go */
+     return QEMU_ARM_POWERCTL_RET_SUCCESS;
+-- 
+2.11.0

@@ -1,73 +1,50 @@
-Received: by 10.25.77.65 with SMTP id a62csp132769lfb;
-        Fri, 20 Jan 2017 11:05:06 -0800 (PST)
-X-Received: by 10.237.35.84 with SMTP id i20mr14059523qtc.247.1484939106730;
-        Fri, 20 Jan 2017 11:05:06 -0800 (PST)
+Received: by 10.25.77.65 with SMTP id a62csp136908lfb;
+        Fri, 20 Jan 2017 11:15:20 -0800 (PST)
+X-Received: by 10.55.192.196 with SMTP id v65mr13769434qkv.40.1484939720255;
+        Fri, 20 Jan 2017 11:15:20 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id b27si5487192qkh.32.2017.01.20.11.05.06
+        by mx.google.com with ESMTPS id b50si5489492qte.235.2017.01.20.11.15.19
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 20 Jan 2017 11:05:06 -0800 (PST)
+        Fri, 20 Jan 2017 11:15:20 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:56845 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:56899 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1cUeUi-0007x5-5x
-	for alex.bennee@linaro.org; Fri, 20 Jan 2017 14:05:04 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:51230)
+	id 1cUeeb-0002Ed-IL
+	for alex.bennee@linaro.org; Fri, 20 Jan 2017 14:15:17 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:53181)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alistair23@gmail.com>) id 1cUeUa-0007vN-Ny
-	for qemu-arm@nongnu.org; Fri, 20 Jan 2017 14:04:58 -0500
+	(envelope-from <no-reply@patchew.org>) id 1cUeeV-0002ET-J6
+	for qemu-arm@nongnu.org; Fri, 20 Jan 2017 14:15:15 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <alistair23@gmail.com>) id 1cUeUV-0004ID-KP
-	for qemu-arm@nongnu.org; Fri, 20 Jan 2017 14:04:56 -0500
-Received: from mail-ot0-x243.google.com ([2607:f8b0:4003:c0f::243]:36716)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <alistair23@gmail.com>)
-	id 1cUeUV-0004HQ-F7; Fri, 20 Jan 2017 14:04:51 -0500
-Received: by mail-ot0-x243.google.com with SMTP id 36so8466385otx.3;
-	Fri, 20 Jan 2017 11:04:49 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=7Q87FZZeBcS55iG39o9LaoHZ23OyHqgiaD6HbArEklE=;
-	b=lP9ggbUcf4OrOuQ2xG7sdUs1Yq4+zpm+qG9KmPIYP0YvbJ32Xd5eXxd3KupWGwi1Ca
-	/QboGFoxsp0LshoOaLkf705M8TIVqGUiE+o5VR5+aJAmkB58c2vZqDKLIIy+UVHoHfXz
-	zFaz6NUL04WJHwtULaEz7JI3AaPpA7q4BQBirksOsRPqdQpNHdgrj/3gP850lfW9E51E
-	kMEmdjFSAhu+XQf1B+/vbK1IszSROkC6GckJ2H15L/MyaEIWJQUHlJw2dXXGdGHExYLV
-	hJ+cY89KxLrNth+Pqmlmo0C8pAYb4aFvdLE7vXIW/vMjGKatulgRegQdbjdQQW3ADLBU
-	cqVw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=7Q87FZZeBcS55iG39o9LaoHZ23OyHqgiaD6HbArEklE=;
-	b=G04oKVV9hCsomdZrzul5xmhZBLaJxdUzT73+hIOj/YPAN43eBrni/6LEiHKl1iGbHP
-	kqDhwwv+qKdlzFXcblKScTpp9UwUUEPu0HSg6ywVtpniKwiXRCWKq44e0jjgO6bgIuqU
-	Kv20776nN0sEClzqGZjZdHlrslsONVPUMat1u/tSP/7KO/dyTT6DME1jlF29B3CkdzoB
-	/t9H91sttIsgYe9F9h2yIE+mogx2W41uyni8sRVE2OIUc2wHqXuSpCxYAurQzN9gnZpc
-	a2hUzn3F2yyeEY1Rn0//CSIn90daRi6Dp92ZvaP3JsJJARik8g7BNcSzGFOck0zuvujC
-	QldA==
-X-Gm-Message-State: AIkVDXKOYkSZAMYOYreHntL/+Bk2xMX6aBvqz6khTELd6JdSLBcLgyZ6y3C5994AttthHex/s6vkNMJg9cdU2g==
-X-Received: by 10.157.11.14 with SMTP id a14mr9010042ota.121.1484939089167;
-	Fri, 20 Jan 2017 11:04:49 -0800 (PST)
+	(envelope-from <no-reply@patchew.org>) id 1cUeeM-0001Lk-OO
+	for qemu-arm@nongnu.org; Fri, 20 Jan 2017 14:15:11 -0500
+Resent-Date: Fri, 20 Jan 2017 14:15:11 -0500
+Resent-Message-Id: <E1cUeeM-0001Lk-OO@eggs.gnu.org>
+Received: from sender163-mail.zoho.com ([74.201.84.163]:21374)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <no-reply@patchew.org>)
+	id 1cUeeM-0001L8-Fv; Fri, 20 Jan 2017 14:15:02 -0500
+Received: from [172.17.0.2] (23.253.156.214 [23.253.156.214]) by
+	mx.zohomail.com with SMTPS id 1484939694956908.4765531137635;
+	Fri, 20 Jan 2017 11:14:54 -0800 (PST)
+Message-ID: <148493969359.28.10118375645387403835@b042e9bf0dd0>
+In-Reply-To: <1484937883-1068-1-git-send-email-peter.maydell@linaro.org>
 MIME-Version: 1.0
-Received: by 10.182.98.133 with HTTP; Fri, 20 Jan 2017 11:04:18 -0800 (PST)
-In-Reply-To: <1484937883-1068-5-git-send-email-peter.maydell@linaro.org>
-References: <1484937883-1068-1-git-send-email-peter.maydell@linaro.org>
-	<1484937883-1068-5-git-send-email-peter.maydell@linaro.org>
-From: Alistair Francis <alistair23@gmail.com>
-Date: Fri, 20 Jan 2017 11:04:18 -0800
-Message-ID: <CAKmqyKOwzNj827103eSYZp6wAbsn4Ymvit-ZSOV9J7dLRgvO1A@mail.gmail.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Content-Type: text/plain; charset=UTF-8
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:4003:c0f::243
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH 4/6] hw/registerfields.h: Pull
- FIELD etc macros out of hw/register.h
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Resent-From: 
+From: no-reply@patchew.org
+To: peter.maydell@linaro.org
+Date: Fri, 20 Jan 2017 11:14:54 -0800 (PST)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
+X-Received-From: 74.201.84.163
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH 0/6] ARMv7M: some simple
+ bugfixes and cleanups
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -79,171 +56,65 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Liviu Ionescu <ilg@livius.net>, Michael Davidsaver <mdavidsaver@gmail.com>,
-	qemu-arm <qemu-arm@nongnu.org>,
-	"qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
-	Patch Tracking <patches@linaro.org>
+Reply-To: qemu-devel@nongnu.org
+Cc: famz@redhat.com, patches@linaro.org, ilg@livius.net, mdavidsaver@gmail.com,
+	qemu-devel@nongnu.org, qemu-arm@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: i5hVyGUmKJ5h
+X-TUID: svlH8xmfrBpf
 
-On Fri, Jan 20, 2017 at 10:44 AM, Peter Maydell
-<peter.maydell@linaro.org> wrote:
-> hw/register.h provides macros like FIELD which make it easy to define
-> shift, mask and length constants for the fields within a register.
-> Unfortunately register.h also includes a lot of other things, some
-> of which will only compile in the softmmu build.
->
-> Pull the FIELD macro and friends out into a separate header file,
-> so they can be used in places like target/arm files which also
-> get built in the user-only configs.
->
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+SGksCgpZb3VyIHNlcmllcyBzZWVtcyB0byBoYXZlIHNvbWUgY29kaW5nIHN0eWxlIHByb2JsZW1z
+LiBTZWUgb3V0cHV0IGJlbG93IGZvcgptb3JlIGluZm9ybWF0aW9uOgoKU3ViamVjdDogW1FlbXUt
+ZGV2ZWxdIFtQQVRDSCAwLzZdIEFSTXY3TTogc29tZSBzaW1wbGUgYnVnZml4ZXMgYW5kIGNsZWFu
+dXBzCk1lc3NhZ2UtaWQ6IDE0ODQ5Mzc4ODMtMTA2OC0xLWdpdC1zZW5kLWVtYWlsLXBldGVyLm1h
+eWRlbGxAbGluYXJvLm9yZwpUeXBlOiBzZXJpZXMKCj09PSBURVNUIFNDUklQVCBCRUdJTiA9PT0K
+IyEvYmluL2Jhc2gKCkJBU0U9YmFzZQpuPTEKdG90YWw9JChnaXQgbG9nIC0tb25lbGluZSAkQkFT
+RS4uIHwgd2MgLWwpCmZhaWxlZD0wCgojIFVzZWZ1bCBnaXQgb3B0aW9ucwpnaXQgY29uZmlnIC0t
+bG9jYWwgZGlmZi5yZW5hbWVsaW1pdCAwCmdpdCBjb25maWcgLS1sb2NhbCBkaWZmLnJlbmFtZXMg
+VHJ1ZQoKY29tbWl0cz0iJChnaXQgbG9nIC0tZm9ybWF0PSVIIC0tcmV2ZXJzZSAkQkFTRS4uKSIK
+Zm9yIGMgaW4gJGNvbW1pdHM7IGRvCiAgICBlY2hvICJDaGVja2luZyBQQVRDSCAkbi8kdG90YWw6
+ICQoZ2l0IGxvZyAtbiAxIC0tZm9ybWF0PSVzICRjKS4uLiIKICAgIGlmICEgZ2l0IHNob3cgJGMg
+LS1mb3JtYXQ9ZW1haWwgfCAuL3NjcmlwdHMvY2hlY2twYXRjaC5wbCAtLW1haWxiYWNrIC07IHRo
+ZW4KICAgICAgICBmYWlsZWQ9MQogICAgICAgIGVjaG8KICAgIGZpCiAgICBuPSQoKG4rMSkpCmRv
+bmUKCmV4aXQgJGZhaWxlZAo9PT0gVEVTVCBTQ1JJUFQgRU5EID09PQoKVXBkYXRpbmcgM2M4Y2Y1
+YTljMjFmZjg3ODIxNjRkMWRlZjdmNDRiZDg4ODcxMzM4NApTd2l0Y2hlZCB0byBhIG5ldyBicmFu
+Y2ggJ3Rlc3QnCjY2MzAyZjcgYXJtdjdtOiBDbGVhciBGQVVMVE1BU0sgb24gcmV0dXJuIGZyb20g
+bm9uLU5NSSBleGNlcHRpb25zCjE3MmJjZGYgYXJtdjdtOiBGaXggcmVhZHMgb2YgQ09OVFJPTCBy
+ZWdpc3RlciBiaXQgMQo4ZGIyZDZhIGh3L3JlZ2lzdGVyZmllbGRzLmg6IFB1bGwgRklFTEQgZXRj
+IG1hY3JvcyBvdXQgb2YgaHcvcmVnaXN0ZXIuaAo2MTVkYzZhIGFybXY3bTogRXhwbGljaXQgZXJy
+b3IgZm9yIGJhZCB2ZWN0b3IgdGFibGUKYzIwMzU0ZSBhcm12N206IFJlcGxhY2UgYXJtdjdtLmhh
+Y2sgd2l0aCB1bmFzc2lnbmVkX2FjY2VzcyBoYW5kbGVyCjhmNTBmZTIgYXJtdjdtOiBNUlMvTVNS
+OiBoYW5kbGUgdW5wcml2aWxlZ2VkIGFjY2VzcwoKPT09IE9VVFBVVCBCRUdJTiA9PT0KQ2hlY2tp
+bmcgUEFUQ0ggMS82OiBhcm12N206IE1SUy9NU1I6IGhhbmRsZSB1bnByaXZpbGVnZWQgYWNjZXNz
+Li4uCkNoZWNraW5nIFBBVENIIDIvNjogYXJtdjdtOiBSZXBsYWNlIGFybXY3bS5oYWNrIHdpdGgg
+dW5hc3NpZ25lZF9hY2Nlc3MgaGFuZGxlci4uLgpDaGVja2luZyBQQVRDSCAzLzY6IGFybXY3bTog
+RXhwbGljaXQgZXJyb3IgZm9yIGJhZCB2ZWN0b3IgdGFibGUuLi4KQ2hlY2tpbmcgUEFUQ0ggNC82
+OiBody9yZWdpc3RlcmZpZWxkcy5oOiBQdWxsIEZJRUxEIGV0YyBtYWNyb3Mgb3V0IG9mIGh3L3Jl
+Z2lzdGVyLmguLi4KRVJST1I6IE1hY3JvcyB3aXRoIG11bHRpcGxlIHN0YXRlbWVudHMgc2hvdWxk
+IGJlIGVuY2xvc2VkIGluIGEgZG8gLSB3aGlsZSBsb29wCiMxMDY6IEZJTEU6IGluY2x1ZGUvaHcv
+cmVnaXN0ZXJmaWVsZHMuaDoxOToKKyNkZWZpbmUgUkVHMzIocmVnLCBhZGRyKSAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgXAorICAgIGVudW0geyBBXyAj
+IyByZWcgPSAoYWRkcikgfTsgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICBcCisgICAgZW51bSB7IFJfICMjIHJlZyA9IChhZGRyKSAvIDQgfTsKCkVSUk9SOiB0cmFpbGlu
+ZyB3aGl0ZXNwYWNlCiMxMTI6IEZJTEU6IGluY2x1ZGUvaHcvcmVnaXN0ZXJmaWVsZHMuaDoyNToK
+Ky8qIFRoaXMgbWFjcm8gd2lsbCBkZWZpbmUgRk9PX0JBUl9NQVNLLCBGT09fQkFSX1NISUZUIGFu
+ZCBGT09fQkFSX0xFTkdUSCAkCgpFUlJPUjogTWFjcm9zIHdpdGggbXVsdGlwbGUgc3RhdGVtZW50
+cyBzaG91bGQgYmUgZW5jbG9zZWQgaW4gYSBkbyAtIHdoaWxlIGxvb3AKIzExNTogRklMRTogaW5j
+bHVkZS9ody9yZWdpc3RlcmZpZWxkcy5oOjI4OgorI2RlZmluZSBGSUVMRChyZWcsIGZpZWxkLCBz
+aGlmdCwgbGVuZ3RoKSAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBcCisgICAgZW51
+bSB7IFJfICMjIHJlZyAjIyBfICMjIGZpZWxkICMjIF9TSElGVCA9IChzaGlmdCl9OyAgICAgICAg
+ICAgICAgICAgIFwKKyAgICBlbnVtIHsgUl8gIyMgcmVnICMjIF8gIyMgZmllbGQgIyMgX0xFTkdU
+SCA9IChsZW5ndGgpfTsgICAgICAgICAgICAgICAgXAorICAgIGVudW0geyBSXyAjIyByZWcgIyMg
+XyAjIyBmaWVsZCAjIyBfTUFTSyA9ICAgICAgICAgICAgICAgICAgICAgICAgICAgICBcCisgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgTUFLRV82NEJJVF9NQVNLKHNoaWZ0
+LCBsZW5ndGgpfTsKCnRvdGFsOiAzIGVycm9ycywgMCB3YXJuaW5ncywgMTE3IGxpbmVzIGNoZWNr
+ZWQKCllvdXIgcGF0Y2ggaGFzIHN0eWxlIHByb2JsZW1zLCBwbGVhc2UgcmV2aWV3LiAgSWYgYW55
+IG9mIHRoZXNlIGVycm9ycwphcmUgZmFsc2UgcG9zaXRpdmVzIHJlcG9ydCB0aGVtIHRvIHRoZSBt
+YWludGFpbmVyLCBzZWUKQ0hFQ0tQQVRDSCBpbiBNQUlOVEFJTkVSUy4KCkNoZWNraW5nIFBBVENI
+IDUvNjogYXJtdjdtOiBGaXggcmVhZHMgb2YgQ09OVFJPTCByZWdpc3RlciBiaXQgMS4uLgpDaGVj
+a2luZyBQQVRDSCA2LzY6IGFybXY3bTogQ2xlYXIgRkFVTFRNQVNLIG9uIHJldHVybiBmcm9tIG5v
+bi1OTUkgZXhjZXB0aW9ucy4uLgo9PT0gT1VUUFVUIEVORCA9PT0KClRlc3QgY29tbWFuZCBleGl0
+ZWQgd2l0aCBjb2RlOiAxCgoKLS0tCkVtYWlsIGdlbmVyYXRlZCBhdXRvbWF0aWNhbGx5IGJ5IFBh
+dGNoZXcgW2h0dHA6Ly9wYXRjaGV3Lm9yZy9dLgpQbGVhc2Ugc2VuZCB5b3VyIGZlZWRiYWNrIHRv
+IHBhdGNoZXctZGV2ZWxAZnJlZWxpc3RzLm9yZw==
 
-Looks good to me, I'm glad this is being used by others :)
-
-Reviewed-by: Alistair Francis <alistair.francis@xilinx.com>
-
-Thanks,
-
-Alistair
-
-> ---
->  include/hw/register.h       | 47 +----------------------------------
->  include/hw/registerfields.h | 60 +++++++++++++++++++++++++++++++++++++++++++++
->  2 files changed, 61 insertions(+), 46 deletions(-)
->  create mode 100644 include/hw/registerfields.h
->
-> diff --git a/include/hw/register.h b/include/hw/register.h
-> index 8c12233..8bff5fb 100644
-> --- a/include/hw/register.h
-> +++ b/include/hw/register.h
-> @@ -13,6 +13,7 @@
->
->  #include "hw/qdev-core.h"
->  #include "exec/memory.h"
-> +#include "hw/registerfields.h"
->
->  typedef struct RegisterInfo RegisterInfo;
->  typedef struct RegisterAccessInfo RegisterAccessInfo;
-> @@ -206,50 +207,4 @@ RegisterInfoArray *register_init_block32(DeviceState *owner,
->
->  void register_finalize_block(RegisterInfoArray *r_array);
->
-> -/* Define constants for a 32 bit register */
-> -
-> -/* This macro will define A_FOO, for the byte address of a register
-> - * as well as R_FOO for the uint32_t[] register number (A_FOO / 4).
-> - */
-> -#define REG32(reg, addr)                                                  \
-> -    enum { A_ ## reg = (addr) };                                          \
-> -    enum { R_ ## reg = (addr) / 4 };
-> -
-> -/* Define SHIFT, LENGTH and MASK constants for a field within a register */
-> -
-> -/* This macro will define FOO_BAR_MASK, FOO_BAR_SHIFT and FOO_BAR_LENGTH
-> - * constants for field BAR in register FOO.
-> - */
-> -#define FIELD(reg, field, shift, length)                                  \
-> -    enum { R_ ## reg ## _ ## field ## _SHIFT = (shift)};                  \
-> -    enum { R_ ## reg ## _ ## field ## _LENGTH = (length)};                \
-> -    enum { R_ ## reg ## _ ## field ## _MASK =                             \
-> -                                        MAKE_64BIT_MASK(shift, length)};
-> -
-> -/* Extract a field from a register */
-> -#define FIELD_EX32(storage, reg, field)                                   \
-> -    extract32((storage), R_ ## reg ## _ ## field ## _SHIFT,               \
-> -              R_ ## reg ## _ ## field ## _LENGTH)
-> -
-> -/* Extract a field from an array of registers */
-> -#define ARRAY_FIELD_EX32(regs, reg, field)                                \
-> -    FIELD_EX32((regs)[R_ ## reg], reg, field)
-> -
-> -/* Deposit a register field.
-> - * Assigning values larger then the target field will result in
-> - * compilation warnings.
-> - */
-> -#define FIELD_DP32(storage, reg, field, val) ({                           \
-> -    struct {                                                              \
-> -        unsigned int v:R_ ## reg ## _ ## field ## _LENGTH;                \
-> -    } v = { .v = val };                                                   \
-> -    uint32_t d;                                                           \
-> -    d = deposit32((storage), R_ ## reg ## _ ## field ## _SHIFT,           \
-> -                  R_ ## reg ## _ ## field ## _LENGTH, v.v);               \
-> -    d; })
-> -
-> -/* Deposit a field to array of registers.  */
-> -#define ARRAY_FIELD_DP32(regs, reg, field, val)                           \
-> -    (regs)[R_ ## reg] = FIELD_DP32((regs)[R_ ## reg], reg, field, val);
-> -
->  #endif
-> diff --git a/include/hw/registerfields.h b/include/hw/registerfields.h
-> new file mode 100644
-> index 0000000..af101d5
-> --- /dev/null
-> +++ b/include/hw/registerfields.h
-> @@ -0,0 +1,60 @@
-> +/*
-> + * Register Definition API: field macros
-> + *
-> + * Copyright (c) 2016 Xilinx Inc.
-> + * Copyright (c) 2013 Peter Crosthwaite <peter.crosthwaite@xilinx.com>
-> + *
-> + * This work is licensed under the terms of the GNU GPL, version 2.  See
-> + * the COPYING file in the top-level directory.
-> + */
-> +
-> +#ifndef REGISTERFIELDS_H
-> +#define REGISTERFIELDS_H
-> +
-> +/* Define constants for a 32 bit register */
-> +
-> +/* This macro will define A_FOO, for the byte address of a register
-> + * as well as R_FOO for the uint32_t[] register number (A_FOO / 4).
-> + */
-> +#define REG32(reg, addr)                                                  \
-> +    enum { A_ ## reg = (addr) };                                          \
-> +    enum { R_ ## reg = (addr) / 4 };
-> +
-> +/* Define SHIFT, LENGTH and MASK constants for a field within a register */
-> +
-> +/* This macro will define FOO_BAR_MASK, FOO_BAR_SHIFT and FOO_BAR_LENGTH
-> + * constants for field BAR in register FOO.
-> + */
-> +#define FIELD(reg, field, shift, length)                                  \
-> +    enum { R_ ## reg ## _ ## field ## _SHIFT = (shift)};                  \
-> +    enum { R_ ## reg ## _ ## field ## _LENGTH = (length)};                \
-> +    enum { R_ ## reg ## _ ## field ## _MASK =                             \
-> +                                        MAKE_64BIT_MASK(shift, length)};
-> +
-> +/* Extract a field from a register */
-> +#define FIELD_EX32(storage, reg, field)                                   \
-> +    extract32((storage), R_ ## reg ## _ ## field ## _SHIFT,               \
-> +              R_ ## reg ## _ ## field ## _LENGTH)
-> +
-> +/* Extract a field from an array of registers */
-> +#define ARRAY_FIELD_EX32(regs, reg, field)                                \
-> +    FIELD_EX32((regs)[R_ ## reg], reg, field)
-> +
-> +/* Deposit a register field.
-> + * Assigning values larger then the target field will result in
-> + * compilation warnings.
-> + */
-> +#define FIELD_DP32(storage, reg, field, val) ({                           \
-> +    struct {                                                              \
-> +        unsigned int v:R_ ## reg ## _ ## field ## _LENGTH;                \
-> +    } v = { .v = val };                                                   \
-> +    uint32_t d;                                                           \
-> +    d = deposit32((storage), R_ ## reg ## _ ## field ## _SHIFT,           \
-> +                  R_ ## reg ## _ ## field ## _LENGTH, v.v);               \
-> +    d; })
-> +
-> +/* Deposit a field to array of registers.  */
-> +#define ARRAY_FIELD_DP32(regs, reg, field, val)                           \
-> +    (regs)[R_ ## reg] = FIELD_DP32((regs)[R_ ## reg], reg, field, val);
-> +
-> +#endif
-> --
-> 2.7.4
->
->

@@ -1,47 +1,45 @@
-Received: by 10.25.77.65 with SMTP id a62csp125319lfb;
-        Fri, 20 Jan 2017 10:45:16 -0800 (PST)
-X-Received: by 10.55.93.195 with SMTP id r186mr14047726qkb.109.1484937916191;
-        Fri, 20 Jan 2017 10:45:16 -0800 (PST)
+Received: by 10.25.77.65 with SMTP id a62csp125374lfb;
+        Fri, 20 Jan 2017 10:45:23 -0800 (PST)
+X-Received: by 10.55.23.194 with SMTP id 63mr14363319qkx.125.1484937923309;
+        Fri, 20 Jan 2017 10:45:23 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id m189si5424753qkf.251.2017.01.20.10.45.15
+        by mx.google.com with ESMTPS id u16si5439177qka.100.2017.01.20.10.45.22
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 20 Jan 2017 10:45:16 -0800 (PST)
+        Fri, 20 Jan 2017 10:45:23 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:56745 helo=lists.gnu.org)
+Received: from localhost ([::1]:56746 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1cUeBV-0003Js-HE
-	for alex.bennee@linaro.org; Fri, 20 Jan 2017 13:45:13 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:46659)
+	id 1cUeBc-0003Lh-Hc
+	for alex.bennee@linaro.org; Fri, 20 Jan 2017 13:45:20 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:46697)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1cUeBF-00035B-B4
-	for qemu-arm@nongnu.org; Fri, 20 Jan 2017 13:44:58 -0500
+	(envelope-from <pm215@archaic.org.uk>) id 1cUeBG-00036p-Ra
+	for qemu-arm@nongnu.org; Fri, 20 Jan 2017 13:44:59 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1cUeBE-0002X2-8t
-	for qemu-arm@nongnu.org; Fri, 20 Jan 2017 13:44:57 -0500
+	(envelope-from <pm215@archaic.org.uk>) id 1cUeBF-0002YN-TY
+	for qemu-arm@nongnu.org; Fri, 20 Jan 2017 13:44:58 -0500
 Received: from orth.archaic.org.uk ([2001:8b0:1d0::2]:48217)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <pm215@archaic.org.uk>)
-	id 1cUeBE-0002QO-1h; Fri, 20 Jan 2017 13:44:56 -0500
+	id 1cUeBF-0002QO-Nk; Fri, 20 Jan 2017 13:44:57 -0500
 Received: from pm215 by orth.archaic.org.uk with local (Exim 4.84_2)
 	(envelope-from <pm215@archaic.org.uk>)
-	id 1cUeB3-00047B-EN; Fri, 20 Jan 2017 18:44:45 +0000
+	id 1cUeB2-00046W-1v; Fri, 20 Jan 2017 18:44:44 +0000
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Date: Fri, 20 Jan 2017 18:44:40 +0000
-Message-Id: <1484937883-1068-4-git-send-email-peter.maydell@linaro.org>
+Date: Fri, 20 Jan 2017 18:44:37 +0000
+Message-Id: <1484937883-1068-1-git-send-email-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.7.4
-In-Reply-To: <1484937883-1068-1-git-send-email-peter.maydell@linaro.org>
-References: <1484937883-1068-1-git-send-email-peter.maydell@linaro.org>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 2001:8b0:1d0::2
-Subject: [Qemu-arm] [PATCH 3/6] armv7m: Explicit error for bad vector table
+Subject: [Qemu-arm] [PATCH 0/6] ARMv7M: some simple bugfixes and cleanups
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -57,72 +55,48 @@ Cc: Liviu Ionescu <ilg@livius.net>, Michael Davidsaver <mdavidsaver@gmail.com>,
 	patches@linaro.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: QLHlXLlP4EzR
+X-TUID: gilWKZqDRmUb
 
-From: Michael Davidsaver <mdavidsaver@gmail.com>
+This set of six patches is some simple bug fixes which
+I've pulled out of Michael Davidsaver's old NVIC rewrite
+patchset, as an initial start on getting it upstream.
+None of them are particularly exciting, but they're
+self-contained so they might as well go through code
+review and get into master ahead of the main rewrite.
 
-Give an explicit error and abort when a load
-from the vector table fails. Architecturally this
-should HardFault (which will then immediately
-fail to load the HardFault vector and go into Lockup).
-Since we don't model Lockup, just report this guest
-error via cpu_abort(). This is more helpful than the
-previous behaviour of reading a zero, which is the
-address of the reset stack pointer and not a sensible
-location to jump to.
+NB the patch which pulls the FIELD macros out of register.h;
+they're too useful to be only accessible in softmmu builds.
 
-Signed-off-by: Michael Davidsaver <mdavidsaver@gmail.com>
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
-[PMM: expanded commit message]
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
- target/arm/helper.c | 26 +++++++++++++++++++++++++-
- 1 file changed, 25 insertions(+), 1 deletion(-)
+I've CC'd Michael as the original author and Liviu
+as somebody interested in v7M; if either of you would
+prefer not to be cc'd let me know and I'll leave you off
+subsequent respins and later NVIC related patchset emails.
 
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index ad23de3..8edb08c 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -6014,6 +6014,30 @@ static void arm_log_exception(int idx)
-     }
- }
- 
-+static uint32_t arm_v7m_load_vector(ARMCPU *cpu)
-+
-+{
-+    CPUState *cs = CPU(cpu);
-+    CPUARMState *env = &cpu->env;
-+    MemTxResult result;
-+    hwaddr vec = env->v7m.vecbase + env->v7m.exception * 4;
-+    uint32_t addr;
-+
-+    addr = address_space_ldl(cs->as, vec,
-+                             MEMTXATTRS_UNSPECIFIED, &result);
-+    if (result != MEMTX_OK) {
-+        /* Architecturally this should cause a HardFault setting HSFR.VECTTBL,
-+         * which would then be immediately followed by our failing to load
-+         * the entry vector for that HardFault, which is a Lockup case.
-+         * Since we don't model Lockup, we just report this guest error
-+         * via cpu_abort().
-+         */
-+        cpu_abort(cs, "Failed to read from exception vector table "
-+                  "entry %08x\n", (unsigned)vec);
-+    }
-+    return addr;
-+}
-+
- void arm_v7m_cpu_do_interrupt(CPUState *cs)
- {
-     ARMCPU *cpu = ARM_CPU(cs);
-@@ -6095,7 +6119,7 @@ void arm_v7m_cpu_do_interrupt(CPUState *cs)
-     /* Clear IT bits */
-     env->condexec_bits = 0;
-     env->regs[14] = lr;
--    addr = ldl_phys(cs->as, env->v7m.vecbase + env->v7m.exception * 4);
-+    addr = arm_v7m_load_vector(cpu);
-     env->regs[15] = addr & 0xfffffffe;
-     env->thumb = addr & 1;
- }
+thanks
+-- PMM
+
+Michael Davidsaver (5):
+  armv7m: MRS/MSR: handle unprivileged access
+  armv7m: Replace armv7m.hack with unassigned_access handler
+  armv7m: Explicit error for bad vector table
+  armv7m: Fix reads of CONTROL register bit 1
+  armv7m: Clear FAULTMASK on return from non-NMI exceptions
+
+Peter Maydell (1):
+  hw/registerfields.h: Pull FIELD etc macros out of hw/register.h
+
+ include/hw/register.h       |  47 +-------------
+ include/hw/registerfields.h |  60 ++++++++++++++++++
+ target/arm/cpu.h            |   1 -
+ target/arm/internals.h      |   7 +++
+ hw/arm/armv7m.c             |   8 ---
+ target/arm/cpu.c            |  28 +++++++++
+ target/arm/helper.c         | 147 +++++++++++++++++++++++++++-----------------
+ target/arm/machine.c        |   6 +-
+ target/arm/translate.c      |  12 ++--
+ 9 files changed, 195 insertions(+), 121 deletions(-)
+ create mode 100644 include/hw/registerfields.h
+
 -- 
 2.7.4
 

@@ -1,103 +1,100 @@
-Received: by 10.25.190.12 with SMTP id o12csp564595lff;
-        Thu, 19 Jan 2017 16:08:46 -0800 (PST)
-X-Received: by 10.129.83.194 with SMTP id h185mr8880092ywb.221.1484870926663;
-        Thu, 19 Jan 2017 16:08:46 -0800 (PST)
-Return-Path: <bobby.prani@gmail.com>
-Received: from mail-yb0-x244.google.com (mail-yb0-x244.google.com. [2607:f8b0:4002:c09::244])
-        by mx.google.com with ESMTPS id i188si1479585ybi.78.2017.01.19.16.08.46
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 19 Jan 2017 16:08:46 -0800 (PST)
-Received-SPF: pass (google.com: domain of bobby.prani@gmail.com designates 2607:f8b0:4002:c09::244 as permitted sender) client-ip=2607:f8b0:4002:c09::244;
+Received: by 10.25.190.12 with SMTP id o12csp611110lff;
+        Thu, 19 Jan 2017 18:51:42 -0800 (PST)
+X-Received: by 10.55.23.78 with SMTP id i75mr10256999qkh.212.1484880701990;
+        Thu, 19 Jan 2017 18:51:41 -0800 (PST)
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
+        by mx.google.com with ESMTPS id s23si3969601qka.23.2017.01.19.18.51.41
+        for <alex.bennee@linaro.org>
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Thu, 19 Jan 2017 18:51:41 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of bobby.prani@gmail.com designates 2607:f8b0:4002:c09::244 as permitted sender) smtp.mailfrom=bobby.prani@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-yb0-x244.google.com with SMTP id p3so5141660yba.2;
-        Thu, 19 Jan 2017 16:08:46 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=references:user-agent:from:to:cc:subject:in-reply-to:date
-         :message-id:mime-version:content-transfer-encoding;
-        bh=sp4SZi4pNWuGj1yk6V1zoUlHf7/oq+5+Pw3Dz3U2nqo=;
-        b=gniszzyCJj2OxlrJh1bOKWgyqXnRkkrql2vo21TpAL7smJ0UgfcPMCA6xX2a7dcDml
-         NY0+ZedDHL6dk/CQ24F8xEPoAMDq7mr6hTAOBI+MFBWzMyQrmTyoN7gXq36Pz9K3Dz8j
-         PQdb2LHcrSWqsc5FgNvaRd053zvMFN4XQ90gbM/aOLzHUtAwY8JrUpPYx9QDT3iE9rcV
-         ZdnxlLZ5N2xUyAd3kYbfxZoWlRRy5aJUGPloXYw2U1dqJmS9MmKQR26jUycWaL7dviE7
-         om8aAnO/bZbqJhSnWjFdgM3nwoAXm9tdjq5OgyChnGd1zU9SpxEuo1igSK1Nw8aBGgjp
-         Rfpg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:references:user-agent:from:to:cc:subject
-         :in-reply-to:date:message-id:mime-version:content-transfer-encoding;
-        bh=sp4SZi4pNWuGj1yk6V1zoUlHf7/oq+5+Pw3Dz3U2nqo=;
-        b=uc1stezO2iW9JoMXAhK1ClZl2JXbWiRH/6nE/q67GkREK2kQuDCDz5ShJsLL3K4xcb
-         xWUG5tCTlYZnuXEYA4K/dKsAmmSU3psClMJptSvgCyn9TGQUzxjF0geOHr8aWjvD68Ip
-         6nkpw2HqC7q13Jhje5075Hbywmb6GIBrZYlUWC9br9z2lKrNF+JUylGqCyHMc052FVCm
-         Gc0QZCl5eQXAYyeSwL+GLcLQZsyF6d3FEr8Mi+dH9SLfO8EtMA+7tX8Z6MUnV1yaJnKR
-         E5uEVZUtPraqB8U5J+2eRaQ1qS6vWSnc9WURIB6CSO82+Xbfp+C+euvi/8YOghyMxAmJ
-         Whow==
-X-Gm-Message-State: AIkVDXJ4kzHYgS6wHQ3icEJO7E/ASG5DcQKHu9chaLknWFjd3PXJnULxV6GYHXpsWuinHA==
-X-Received: by 10.37.110.11 with SMTP id j11mr8814662ybc.40.1484870926213;
-        Thu, 19 Jan 2017 16:08:46 -0800 (PST)
-Return-Path: <bobby.prani@gmail.com>
-Received: from evgadesktop (c-73-207-178-95.hsd1.ga.comcast.net. [73.207.178.95])
-        by smtp.gmail.com with ESMTPSA id d68sm2506402ywh.7.2017.01.19.16.08.45
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 19 Jan 2017 16:08:45 -0800 (PST)
-References: <20170119170507.16185-1-alex.bennee@linaro.org> <20170119170507.16185-27-alex.bennee@linaro.org>
-User-agent: mu4e 0.9.17; emacs 25.1.1
-From: Pranith Kumar <bobby.prani@gmail.com>
-To: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
-Cc: mttcg@listserver.greensocs.com, qemu-devel@nongnu.org, fred.konrad@greensocs.com, a.rigo@virtualopensystems.com, cota@braap.org, nikunj@linux.vnet.ibm.com, mark.burton@greensocs.com, pbonzini@redhat.com, jan.kiszka@siemens.com, serge.fdrv@gmail.com, rth@twiddle.net, peter.maydell@linaro.org, claudio.fontana@huawei.com, bamvor.zhangjian@linaro.org, "open list\:ARM" <qemu-arm@nongnu.org>
-Subject: Re: [PATCH v7 26/27] tcg: enable MTTCG by default for ARM on x86 hosts
-In-reply-to: <20170119170507.16185-27-alex.bennee@linaro.org>
-Date: Thu, 19 Jan 2017 19:08:44 -0500
-Message-ID: <87a8amr3sj.fsf@gmail.com>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:52181 helo=lists.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1cUPIh-0006Rd-Hy
+	for alex.bennee@linaro.org; Thu, 19 Jan 2017 21:51:39 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:36579)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <zhaoshenglong@huawei.com>) id 1cUPIe-0006RK-VG
+	for qemu-arm@nongnu.org; Thu, 19 Jan 2017 21:51:37 -0500
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+	(envelope-from <zhaoshenglong@huawei.com>) id 1cUPIW-0003XP-J7
+	for qemu-arm@nongnu.org; Thu, 19 Jan 2017 21:51:32 -0500
+Received: from szxga02-in.huawei.com ([119.145.14.65]:31304)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_ARCFOUR_SHA1:16) (Exim 4.71)
+	(envelope-from <zhaoshenglong@huawei.com>)
+	id 1cUPIV-0003Te-VL; Thu, 19 Jan 2017 21:51:28 -0500
+Received: from 172.24.1.47 (EHLO szxeml432-hub.china.huawei.com)
+	([172.24.1.47])
+	by szxrg02-dlp.huawei.com (MOS 4.3.7-GA FastPath queued)
+	with ESMTP id DTP56722; Fri, 20 Jan 2017 10:51:09 +0800 (CST)
+Received: from HGHY1Z002260041.china.huawei.com (10.177.16.142) by
+	szxeml432-hub.china.huawei.com (10.82.67.209) with Microsoft SMTP
+	Server id 14.3.235.1; Fri, 20 Jan 2017 10:51:01 +0800
+From: Shannon Zhao <zhaoshenglong@huawei.com>
+To: <qemu-devel@nongnu.org>, <mst@redhat.com>, <pbonzini@redhat.com>
+Date: Fri, 20 Jan 2017 10:50:49 +0800
+Message-ID: <1484880649-12600-1-git-send-email-zhaoshenglong@huawei.com>
+X-Mailer: git-send-email 1.9.0.msysgit.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8bit
-X-TUID: R2VzWvEeiHar
+Content-Type: text/plain
+X-Originating-IP: [10.177.16.142]
+X-CFilter-Loop: Reflected
+X-Mirapoint-Virus-RAPID-Raw: score=unknown(0),
+	refid=str=0001.0A020204.58817B1E.00FF, ss=1, re=0.000, recu=0.000,
+	reip=0.000, cl=1, cld=1, fgs=0, ip=0.0.0.0,
+	so=2013-06-18 04:22:30, dmn=2013-03-21 17:37:32
+X-Mirapoint-Loop-Id: faff97aab1e3dda14f4e650385b46d8f
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
+	[fuzzy]
+X-Received-From: 119.145.14.65
+Subject: [Qemu-arm] [PATCH] virtio: Fix no interrupt when not creating msi
+ controller
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.21
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org, shannon.zhao@linaro.org,
+	christoffer.dall@linaro.org
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: na10jctYkdo5
 
+From: Shannon Zhao <shannon.zhao@linaro.org>
 
-Alex Bennée writes:
+For ARM virt machine, if we use virt-2.7 which will not create ITS node,
+the virtio-net can not recieve interrupts so it can't get ip address
+through dhcp.
+This fixes commit 83d768b(virtio: set ISR on dataplane notifications).
 
-> This enables the multi-threaded system emulation by default for ARMv7
-> and ARMv8 guests using the x86_64 TCG backend. This is because on the
-> guest side:
->
->   - The ARM translate.c/translate-64.c have been converted to
->     - use MTTCG safe atomic primitives
->     - emit the appropriate barrier ops
->   - The ARM machine has been updated to
->     - hold the BQL when modifying shared cross-vCPU state
->     - defer cpu_reset to async safe work
->
-> All the host backends support the barrier and atomic primitives but
-> need to provide same-or-better support for normal load/store
-> operations.
->
-> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+Signed-off-by: Shannon Zhao <shannon.zhao@linaro.org>
+---
+ hw/virtio/virtio.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-<snip>
-
->
-> +/* This defines the natural memory order supported by this
-> + * architecture before guarantees made by various barrier
-> + * instructions.
-> + *
-> + * The x86 has a pretty strong memory ordering which only really
-> + * allows for some stores to be re-ordered after loads.
-> + */
-> +#include "tcg-mo.h"
-> +
-> +static inline int get_tcg_target_mo(void)
-> +{
-> +    return TCG_MO_ALL & ~TCG_MO_LD_ST;
-> +}
-> +
-
-Shouldn't this be TCG_MO_ALL & ~TCG_MO_ST_LD?
-
-Thanks,
+diff --git a/hw/virtio/virtio.c b/hw/virtio/virtio.c
+index aa4f38f..709b718 100644
+--- a/hw/virtio/virtio.c
++++ b/hw/virtio/virtio.c
+@@ -2082,6 +2082,7 @@ static void virtio_queue_guest_notifier_read(EventNotifier *n)
+ {
+     VirtQueue *vq = container_of(n, VirtQueue, guest_notifier);
+     if (event_notifier_test_and_clear(n)) {
++        virtio_set_isr(vq->vdev, 0x1);
+         virtio_notify_vector(vq->vdev, vq->vector);
+     }
+ }
 -- 
-Pranith
+2.0.4
+
+

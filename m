@@ -1,80 +1,218 @@
-Received: by 10.25.77.65 with SMTP id a62csp1848499lfb;
-        Tue, 24 Jan 2017 08:53:44 -0800 (PST)
-X-Received: by 10.176.23.89 with SMTP id k25mr15485969uaf.49.1485276824769;
-        Tue, 24 Jan 2017 08:53:44 -0800 (PST)
-Return-Path: <peter.maydell@linaro.org>
-Received: from mail-ua0-x22a.google.com (mail-ua0-x22a.google.com. [2607:f8b0:400c:c08::22a])
-        by mx.google.com with ESMTPS id l19si5367994uaa.179.2017.01.24.08.53.44
-        for <alex.bennee@linaro.org>
+Return-Path: <alex.bennee@linaro.org>
+Received: from zen.linaro.local ([81.128.185.34])
+        by smtp.gmail.com with ESMTPSA id t123sm3084458wmt.8.2017.01.24.08.58.01
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 24 Jan 2017 08:53:44 -0800 (PST)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 2607:f8b0:400c:c08::22a as permitted sender) client-ip=2607:f8b0:400c:c08::22a;
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 2607:f8b0:400c:c08::22a as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: by mail-ua0-x22a.google.com with SMTP id i68so138195737uad.0
-        for <alex.bennee@linaro.org>; Tue, 24 Jan 2017 08:53:44 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-         :cc:content-transfer-encoding;
-        bh=xdxA9qZGyFaQrjIRv9T/J931oVhirC1SzlZs8J0nBOE=;
-        b=WVu/Jnm9JvEiYdbsxIgMGGuPFEUB6OgZWRxfa+yKgwF+UquQ4xE2X9cz6d9n9Skj5o
-         kW9esHy3NaE00hR1OIuj83QNiPDKNavqcCHofVfRo2SQsdx/AOcErBPoeRK2h1r4qYDY
-         1bJvhwnw5OmbeqOrl8s8rs31Hd00236quZ6no=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-         :message-id:subject:to:cc:content-transfer-encoding;
-        bh=xdxA9qZGyFaQrjIRv9T/J931oVhirC1SzlZs8J0nBOE=;
-        b=omxjPPGeYp/sCY9yItAeZpiG9b4ydZSE/JrKuBtZf/PLFT4J599XN/hfVfKlzBw5gE
-         6ND70iN/DZCT4hYeKcbrl8v5ijdewVvFvso2YZWUwkR3grz3s40V/jzTvvew4JggdMjU
-         OaRXIEkgEOvqrUq3BNq6m77jBN/TrhJxoi/grEo+1Q2+KIVsujVJ5ZEFBftJ6MAxMaPf
-         683bLY6rYquRckfyXrhQdLdQJJShJ6pwjzugaEhO3nNXVQM53iEUbheX8yiYH2SbgXTi
-         fiXkHw5MYBAa6OyD/s+FUzPIFaVuWw56MagghPx7ZXatWUmxx8KsMrtAAL5h9dYPqwPT
-         jrtg==
-X-Gm-Message-State: AIkVDXLh7JlbbCHzRNpgYiwHR6i7cgyoAFB4EaXheCiedGd2hZzleEdBUgJM1XiBXxBoUlUT0pQS+eykYpeNpq/U35w=
-X-Received: by 10.159.56.146 with SMTP id t18mr18835143uaf.137.1485276824408;
- Tue, 24 Jan 2017 08:53:44 -0800 (PST)
+        Tue, 24 Jan 2017 08:58:01 -0800 (PST)
+Received: from zen (localhost [127.0.0.1])
+	by zen.linaro.local (Postfix) with ESMTPS id E1FC33E0133;
+	Tue, 24 Jan 2017 16:58:00 +0000 (GMT)
+References: <1484937883-1068-1-git-send-email-peter.maydell@linaro.org> <1484937883-1068-6-git-send-email-peter.maydell@linaro.org>
+User-agent: mu4e 0.9.19; emacs 25.1.91.4
+From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, Liviu Ionescu <ilg@livius.net>, Michael Davidsaver <mdavidsaver@gmail.com>, patches@linaro.org
+Subject: Re: [Qemu-arm] [PATCH 5/6] armv7m: Fix reads of CONTROL register bit 1
+In-reply-to: <1484937883-1068-6-git-send-email-peter.maydell@linaro.org>
+Date: Tue, 24 Jan 2017 16:58:00 +0000
+Message-ID: <87r33s9yzr.fsf@linaro.org>
 MIME-Version: 1.0
-Received: by 10.31.176.14 with HTTP; Tue, 24 Jan 2017 08:53:23 -0800 (PST)
-In-Reply-To: <87vat4a081.fsf@linaro.org>
-References: <1484937883-1068-1-git-send-email-peter.maydell@linaro.org>
- <1484937883-1068-3-git-send-email-peter.maydell@linaro.org> <87vat4a081.fsf@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 24 Jan 2017 16:53:23 +0000
-Message-ID: <CAFEAcA_dtWKoNh0Ms5gsQNLmRc3Yu8pPgabWBnapOpC9Oh-+1g@mail.gmail.com>
-Subject: Re: [Qemu-arm] [PATCH 2/6] armv7m: Replace armv7m.hack with
- unassigned_access handler
-To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>, 
-	Liviu Ionescu <ilg@livius.net>, Michael Davidsaver <mdavidsaver@gmail.com>, 
-	"patches@linaro.org" <patches@linaro.org>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-X-TUID: 9clFGIq7HaRJ
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-TUID: R8fY52JF2Yo6
 
-On 24 January 2017 at 16:31, Alex Benn=C3=A9e <alex.bennee@linaro.org> wrot=
-e:
+
+Peter Maydell <peter.maydell@linaro.org> writes:
+
+> From: Michael Davidsaver <mdavidsaver@gmail.com>
 >
-> Peter Maydell <peter.maydell@linaro.org> writes:
->> -    /* Hack to map an additional page of ram at the top of the address
->> -       space.  This stops qemu complaining about executing code outside=
- RAM
->> -       when returning from an exception.  */
->> -    memory_region_init_ram(hack, NULL, "armv7m.hack", 0x1000, &error_fa=
-tal);
->> -    vmstate_register_ram_global(hack);
->> -    memory_region_add_subregion(system_memory, 0xfffff000, hack);
->> -
+> The v7m CONTROL register bit 1 is SPSEL, which indicates
+> the stack being used. We were storing this information
+> not in v7m.control but in the separate v7m.other_sp
+> structure field. Unfortunately, the code handling reads
+> of the CONTROL register didn't take account of this, and
+> so if SPSEL was updated by an exception entry or exit then
+> a subsequent guest read of CONTROL would get the wrong value.
 >
-> What stops a model inadvertently registering a block of memory on-top?
-> Should we check the memory region really is unassigned?
+> Using a separate structure field doesn't really gain us
+> anything in efficiency, so drop this unnecessary complexity
+> in favour of simply storing all the bits in v7m.control.
+>
+> This is a migration compatibility break for M profile
+> CPUs only.
+>
+> Signed-off-by: Michael Davidsaver <mdavidsaver@gmail.com>
+> [PMM: rewrote commit message;
+>  use deposit32(); use FIELD to define constants for
+>  masking and shifting of CONTROL register fields
+> ]
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> ---
+>  target/arm/cpu.h       |  1 -
+>  target/arm/internals.h |  7 +++++++
+>  target/arm/helper.c    | 35 +++++++++++++++++++++++------------
+>  target/arm/machine.c   |  6 ++----
+>  4 files changed, 32 insertions(+), 17 deletions(-)
+>
+> diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+> index 151a5d7..521c11b 100644
+> --- a/target/arm/cpu.h
+> +++ b/target/arm/cpu.h
+> @@ -405,7 +405,6 @@ typedef struct CPUARMState {
+>          uint32_t vecbase;
+>          uint32_t basepri;
+>          uint32_t control;
+> -        int current_sp;
+>          int exception;
+>      } v7m;
+>
+> diff --git a/target/arm/internals.h b/target/arm/internals.h
+> index 3cae5ff..2e65bc1 100644
+> --- a/target/arm/internals.h
+> +++ b/target/arm/internals.h
+> @@ -25,6 +25,8 @@
+>  #ifndef TARGET_ARM_INTERNALS_H
+>  #define TARGET_ARM_INTERNALS_H
+>
+> +#include "hw/registerfields.h"
+> +
+>  /* register banks for CPU modes */
+>  #define BANK_USRSYS 0
+>  #define BANK_SVC    1
+> @@ -75,6 +77,11 @@ static const char * const excnames[] = {
+>   */
+>  #define GTIMER_SCALE 16
+>
+> +/* Bit definitions for the v7M CONTROL register */
+> +FIELD(V7M_CONTROL, NPRIV, 0, 1)
+> +FIELD(V7M_CONTROL, SPSEL, 1, 1)
+> +FIELD(V7M_CONTROL, FPCA, 2, 1)
+> +
+>  /*
+>   * For AArch64, map a given EL to an index in the banked_spsr array.
+>   * Note that this mapping and the AArch32 mapping defined in bank_number()
+> diff --git a/target/arm/helper.c b/target/arm/helper.c
+> index 8edb08c..dc383d1 100644
+> --- a/target/arm/helper.c
+> +++ b/target/arm/helper.c
+> @@ -5947,14 +5947,19 @@ static uint32_t v7m_pop(CPUARMState *env)
+>  }
+>
+>  /* Switch to V7M main or process stack pointer.  */
+> -static void switch_v7m_sp(CPUARMState *env, int process)
+> +static void switch_v7m_sp(CPUARMState *env, bool new_spsel)
+>  {
+>      uint32_t tmp;
+> -    if (env->v7m.current_sp != process) {
+> +    bool old_spsel = env->v7m.control & R_V7M_CONTROL_SPSEL_MASK;
+> +
+> +    if (old_spsel != new_spsel) {
+>          tmp = env->v7m.other_sp;
+>          env->v7m.other_sp = env->regs[13];
+>          env->regs[13] = tmp;
+> -        env->v7m.current_sp = process;
+> +
+> +        env->v7m.control = deposit32(env->v7m.control,
+> +                                     R_V7M_CONTROL_SPSEL_SHIFT,
+> +                                     R_V7M_CONTROL_SPSEL_LENGTH,
+> new_spsel);
 
-It would just be a board code bug, and a pretty implausible one
-I think (at least no less plausible than any other typoing of
-a device or memory address, 99% of which are uncheckable).
+I was thrown by the use of deposit32 here without the extract32. However
+I see we are dealing with a bit here - shame there isn't set_bit32()
+method.
 
-thanks
--- PMM
+>      }
+>  }
+>
+> @@ -6049,8 +6054,9 @@ void arm_v7m_cpu_do_interrupt(CPUState *cs)
+>      arm_log_exception(cs->exception_index);
+>
+>      lr = 0xfffffff1;
+> -    if (env->v7m.current_sp)
+> +    if (env->v7m.control & R_V7M_CONTROL_SPSEL_MASK) {
+>          lr |= 4;
+> +    }
+>      if (env->v7m.exception == 0)
+>          lr |= 8;
+>
+> @@ -8294,9 +8300,11 @@ uint32_t HELPER(v7m_mrs)(CPUARMState *env, uint32_t reg)
+>
+>      switch (reg) {
+>      case 8: /* MSP */
+> -        return env->v7m.current_sp ? env->v7m.other_sp : env->regs[13];
+> +        return (env->v7m.control & R_V7M_CONTROL_SPSEL_MASK) ?
+> +            env->v7m.other_sp : env->regs[13];
+>      case 9: /* PSP */
+> -        return env->v7m.current_sp ? env->regs[13] : env->v7m.other_sp;
+> +        return (env->v7m.control & R_V7M_CONTROL_SPSEL_MASK) ?
+> +            env->regs[13] : env->v7m.other_sp;
+>      case 16: /* PRIMASK */
+>          return (env->daif & PSTATE_I) != 0;
+>      case 17: /* BASEPRI */
+> @@ -8326,16 +8334,18 @@ void HELPER(v7m_msr)(CPUARMState *env, uint32_t reg, uint32_t val)
+>          }
+>          break;
+>      case 8: /* MSP */
+> -        if (env->v7m.current_sp)
+> +        if (env->v7m.control & R_V7M_CONTROL_SPSEL_MASK) {
+>              env->v7m.other_sp = val;
+> -        else
+> +        } else {
+>              env->regs[13] = val;
+> +        }
+>          break;
+>      case 9: /* PSP */
+> -        if (env->v7m.current_sp)
+> +        if (env->v7m.control & R_V7M_CONTROL_SPSEL_MASK) {
+>              env->regs[13] = val;
+> -        else
+> +        } else {
+>              env->v7m.other_sp = val;
+> +        }
+>          break;
+>      case 16: /* PRIMASK */
+>          if (val & 1) {
+> @@ -8360,8 +8370,9 @@ void HELPER(v7m_msr)(CPUARMState *env, uint32_t reg, uint32_t val)
+>          }
+>          break;
+>      case 20: /* CONTROL */
+> -        env->v7m.control = val & 3;
+> -        switch_v7m_sp(env, (val & 2) != 0);
+> +        switch_v7m_sp(env, (val & R_V7M_CONTROL_SPSEL_MASK) != 0);
+> +        env->v7m.control = val & (R_V7M_CONTROL_SPSEL_MASK |
+> +                                  R_V7M_CONTROL_NPRIV_MASK);
+>          break;
+>      default:
+>          qemu_log_mask(LOG_GUEST_ERROR, "Attempt to write unknown special"
+> diff --git a/target/arm/machine.c b/target/arm/machine.c
+> index d90943b..8ed24bf 100644
+> --- a/target/arm/machine.c
+> +++ b/target/arm/machine.c
+> @@ -96,15 +96,13 @@ static bool m_needed(void *opaque)
+>
+>  static const VMStateDescription vmstate_m = {
+>      .name = "cpu/m",
+> -    .version_id = 1,
+> -    .minimum_version_id = 1,
+> +    .version_id = 2,
+> +    .minimum_version_id = 2,
+>      .needed = m_needed,
+>      .fields = (VMStateField[]) {
+> -        VMSTATE_UINT32(env.v7m.other_sp, ARMCPU),
+>          VMSTATE_UINT32(env.v7m.vecbase, ARMCPU),
+>          VMSTATE_UINT32(env.v7m.basepri, ARMCPU),
+>          VMSTATE_UINT32(env.v7m.control, ARMCPU),
+> -        VMSTATE_INT32(env.v7m.current_sp, ARMCPU),
+>          VMSTATE_INT32(env.v7m.exception, ARMCPU),
+>          VMSTATE_END_OF_LIST()
+>      }
+
+Not that it matters for this but is there a way to add another level of
+indirection to the reading and writing of these fields to keep the same
+migration format?
+
+Anyway:
+
+Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
+
+--
+Alex Bennée

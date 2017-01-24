@@ -1,10 +1,10 @@
-Received: by 10.25.77.65 with SMTP id a62csp1918322lfb;
+Received: by 10.25.77.65 with SMTP id a62csp1918324lfb;
         Tue, 24 Jan 2017 11:16:26 -0800 (PST)
-X-Received: by 10.99.159.2 with SMTP id g2mr12813163pge.178.1485285386358;
+X-Received: by 10.98.65.15 with SMTP id o15mr38601786pfa.42.1485285386641;
         Tue, 24 Jan 2017 11:16:26 -0800 (PST)
 Return-Path: <pm215@archaic.org.uk>
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
-        by mx.google.com with ESMTPS id k187si20293811pga.230.2017.01.24.11.16.25
+        by mx.google.com with ESMTPS id x5si20328203pgf.20.2017.01.24.11.16.25
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
         Tue, 24 Jan 2017 11:16:26 -0800 (PST)
 Received-SPF: pass (google.com: best guess record for domain of pm215@archaic.org.uk designates 2001:8b0:1d0::2 as permitted sender) client-ip=2001:8b0:1d0::2;
@@ -13,110 +13,55 @@ Authentication-Results: mx.google.com;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from pm215 by orth.archaic.org.uk with local (Exim 4.84_2)
 	(envelope-from <pm215@archaic.org.uk>)
-	id 1cW6Zq-0000O2-2L; Tue, 24 Jan 2017 19:16:22 +0000
+	id 1cW6Zp-0000Ng-4f; Tue, 24 Jan 2017 19:16:21 +0000
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
 Cc: patches@linaro.org,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
 	Liviu Ionescu <ilg@livius.net>
-Subject: [PATCH 02/10] armv7m_nvic: keep a pointer to the CPU
-Date: Tue, 24 Jan 2017 19:16:12 +0000
-Message-Id: <1485285380-10565-3-git-send-email-peter.maydell@linaro.org>
+Subject: [PATCH 00/10] More M profile bugfixes
+Date: Tue, 24 Jan 2017 19:16:10 +0000
+Message-Id: <1485285380-10565-1-git-send-email-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.7.4
-In-Reply-To: <1485285380-10565-1-git-send-email-peter.maydell@linaro.org>
-References: <1485285380-10565-1-git-send-email-peter.maydell@linaro.org>
-X-TUID: b/9gCdyzySeD
+X-TUID: R2bGrkyxBRqq
 
-From: Michael Davidsaver <mdavidsaver@gmail.com>
+More easy bugfixes pulled out from (or inspired by,
+or noticed during the course of working on) Michael's
+NVIC patchset.
 
-Many NVIC operations access the CPU state, so store a pointer in
-struct nvic_state rather than fetching it via qemu_get_cpu() every
-time we need it.
+These patches expect to sit on top of my previous set.
+You can find a git tree with the whole stack here:
+ https://git.linaro.org/people/peter.maydell/qemu-arm.git m-profile-fixes
 
-As with the arm_gicv3_common code, we currently just call
-qemu_get_cpu() in the NVIC's realize method, but in future we might
-want to use a QOM property to pass the CPU to the NVIC.
+(I think the next part of this is going to be actually
+digging into the NVIC rewrite proper.)
 
-This imposes an ordering requirement that the CPU is
-realized before the NVIC, but that is always true since
-both are dealt with in armv7m_init().
+thanks
+-- PMM
 
-Signed-off-by: Michael Davidsaver <mdavidsaver@gmail.com>
-[PMM: Use qemu_get_cpu(0) rather than first_cpu; expand
- commit message]
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
- hw/intc/armv7m_nvic.c | 11 +++++------
- 1 file changed, 5 insertions(+), 6 deletions(-)
+Michael Davidsaver (6):
+  armv7m_nvic: keep a pointer to the CPU
+  armv7m: implement CCR, CFSR, HFSR, DFSR, BFAR, and MMFAR
+  armv7m: honour CCR.STACKALIGN on exception entry
+  armv7m: set CFSR.UNDEFINSTR on undefined instructions
+  armv7m: Honour CCR.USERSETMPEND
+  armv7m: FAULTMASK should be 0 on reset
 
-diff --git a/hw/intc/armv7m_nvic.c b/hw/intc/armv7m_nvic.c
-index 06d8db6..81dcb83 100644
---- a/hw/intc/armv7m_nvic.c
-+++ b/hw/intc/armv7m_nvic.c
-@@ -23,6 +23,7 @@
- 
- typedef struct {
-     GICState gic;
-+    ARMCPU *cpu;
-     struct {
-         uint32_t control;
-         uint32_t reload;
-@@ -155,7 +156,7 @@ void armv7m_nvic_complete_irq(void *opaque, int irq)
- 
- static uint32_t nvic_readl(nvic_state *s, uint32_t offset)
- {
--    ARMCPU *cpu;
-+    ARMCPU *cpu = s->cpu;
-     uint32_t val;
-     int irq;
- 
-@@ -187,11 +188,9 @@ static uint32_t nvic_readl(nvic_state *s, uint32_t offset)
-     case 0x1c: /* SysTick Calibration Value.  */
-         return 10000;
-     case 0xd00: /* CPUID Base.  */
--        cpu = ARM_CPU(qemu_get_cpu(0));
-         return cpu->midr;
-     case 0xd04: /* Interrupt Control State.  */
-         /* VECTACTIVE */
--        cpu = ARM_CPU(qemu_get_cpu(0));
-         val = cpu->env.v7m.exception;
-         if (val == 1023) {
-             val = 0;
-@@ -222,7 +221,6 @@ static uint32_t nvic_readl(nvic_state *s, uint32_t offset)
-             val |= (1 << 31);
-         return val;
-     case 0xd08: /* Vector Table Offset.  */
--        cpu = ARM_CPU(qemu_get_cpu(0));
-         return cpu->env.v7m.vecbase;
-     case 0xd0c: /* Application Interrupt/Reset Control.  */
-         return 0xfa050000;
-@@ -296,7 +294,7 @@ static uint32_t nvic_readl(nvic_state *s, uint32_t offset)
- 
- static void nvic_writel(nvic_state *s, uint32_t offset, uint32_t value)
- {
--    ARMCPU *cpu;
-+    ARMCPU *cpu = s->cpu;
-     uint32_t oldval;
-     switch (offset) {
-     case 0x10: /* SysTick Control and Status.  */
-@@ -349,7 +347,6 @@ static void nvic_writel(nvic_state *s, uint32_t offset, uint32_t value)
-         }
-         break;
-     case 0xd08: /* Vector Table Offset.  */
--        cpu = ARM_CPU(qemu_get_cpu(0));
-         cpu->env.v7m.vecbase = value & 0xffffff80;
-         break;
-     case 0xd0c: /* Application Interrupt/Reset Control.  */
-@@ -495,6 +492,8 @@ static void armv7m_nvic_realize(DeviceState *dev, Error **errp)
-     NVICClass *nc = NVIC_GET_CLASS(s);
-     Error *local_err = NULL;
- 
-+    s->cpu = ARM_CPU(qemu_get_cpu(0));
-+    assert(s->cpu);
-     /* The NVIC always has only one CPU */
-     s->gic.num_cpu = 1;
-     /* Tell the common code we're an NVIC */
+Peter Maydell (4):
+  target/arm: Drop IS_M() macro
+  armv7m: add state for v7M CCR, CFSR, HFSR, DFSR, MMFAR, BFAR
+  armv7m: Report no-coprocessor faults correctly
+  armv7m: R14 should reset to 0xffffffff
+
+ target/arm/cpu.h       | 61 +++++++++++++++++++++++++++++++++++++++++++++-----
+ hw/intc/armv7m_nvic.c  | 58 +++++++++++++++++++++++++++++++++--------------
+ linux-user/main.c      |  1 +
+ target/arm/cpu.c       | 22 +++++++++++++-----
+ target/arm/helper.c    | 13 ++++++-----
+ target/arm/machine.c   | 10 +++++++--
+ target/arm/translate.c |  8 +++++++
+ 7 files changed, 138 insertions(+), 35 deletions(-)
+
 -- 
 2.7.4

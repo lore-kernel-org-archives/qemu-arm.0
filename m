@@ -1,175 +1,87 @@
-Received: by 10.25.77.65 with SMTP id a62csp1103146lfb;
-        Mon, 23 Jan 2017 01:49:29 -0800 (PST)
-X-Received: by 10.55.212.22 with SMTP id l22mr22812368qki.48.1485164969157;
-        Mon, 23 Jan 2017 01:49:29 -0800 (PST)
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 10.25.77.65 with SMTP id a62csp1700199lfb;
+        Tue, 24 Jan 2017 03:36:17 -0800 (PST)
+X-Received: by 10.55.76.204 with SMTP id z195mr25048113qka.128.1485257777839;
+        Tue, 24 Jan 2017 03:36:17 -0800 (PST)
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id 1si10431482qkg.94.2017.01.23.01.49.28
+        by mx.google.com with ESMTPS id p39si12951325qtp.30.2017.01.24.03.36.17
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 23 Jan 2017 01:49:29 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Tue, 24 Jan 2017 03:36:17 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:40399 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:47952 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1cVbFe-0006kQ-Ge
-	for alex.bennee@linaro.org; Mon, 23 Jan 2017 04:49:26 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:37910)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1cVzOZ-0007Tn-6t
+	for alex.bennee@linaro.org; Tue, 24 Jan 2017 06:36:15 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:33397)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1cVbF7-0006Qu-U5
-	for qemu-arm@nongnu.org; Mon, 23 Jan 2017 04:48:55 -0500
+	(envelope-from <pm215@archaic.org.uk>) id 1cVyw2-0006PT-CH
+	for qemu-devel@nongnu.org; Tue, 24 Jan 2017 06:06:47 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1cVbF4-0003rj-RH
-	for qemu-arm@nongnu.org; Mon, 23 Jan 2017 04:48:53 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:38978)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <armbru@redhat.com>)
-	id 1cVbF4-0003rM-JR; Mon, 23 Jan 2017 04:48:50 -0500
-Received: from int-mx13.intmail.prod.int.phx2.redhat.com
-	(int-mx13.intmail.prod.int.phx2.redhat.com [10.5.11.26])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 1E1A961BB3;
-	Mon, 23 Jan 2017 09:48:49 +0000 (UTC)
-Received: from blackfin.pond.sub.org (ovpn-117-93.ams2.redhat.com
-	[10.36.117.93])
-	by int-mx13.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id v0N9miVh004347
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=NO); Mon, 23 Jan 2017 04:48:46 -0500
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
-	id 555AD1138648; Mon, 23 Jan 2017 10:48:43 +0100 (CET)
-From: Markus Armbruster <armbru@redhat.com>
-To: qemu-devel@nongnu.org
-Date: Mon, 23 Jan 2017 10:48:40 +0100
-Message-Id: <1485164923-17736-4-git-send-email-armbru@redhat.com>
-In-Reply-To: <1485164923-17736-1-git-send-email-armbru@redhat.com>
-References: <1485164923-17736-1-git-send-email-armbru@redhat.com>
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.26
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.39]);
-	Mon, 23 Jan 2017 09:48:50 +0000 (UTC)
+	(envelope-from <pm215@archaic.org.uk>) id 1cVyw1-0001SL-KM
+	for qemu-devel@nongnu.org; Tue, 24 Jan 2017 06:06:46 -0500
+Received: from orth.archaic.org.uk ([2001:8b0:1d0::2]:48257)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <pm215@archaic.org.uk>)
+	id 1cVyvz-0001QP-6a; Tue, 24 Jan 2017 06:06:43 -0500
+Received: from pm215 by orth.archaic.org.uk with local (Exim 4.84_2)
+	(envelope-from <pm215@archaic.org.uk>)
+	id 1cVyvq-00008D-Fp; Tue, 24 Jan 2017 11:06:34 +0000
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Date: Tue, 24 Jan 2017 11:06:33 +0000
+Message-Id: <1485255993-6322-1-git-send-email-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.7.4
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: [Qemu-arm] [PATCH 3/6] hw: Default -drive to if=none instead of ide
- when ide cannot work
-X-BeenThere: qemu-arm@nongnu.org
+X-Received-From: 2001:8b0:1d0::2
+Subject: [Qemu-devel] [PATCH] arm_gicv3: Fix broken logic in ELRSR
+ calculation
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: kwolf@redhat.com, Peter Maydell <peter.maydell@linaro.org>,
-	Stefano Stabellini <sstabellini@kernel.org>,
-	Jia Liu <proljc@gmail.com>, qemu-block@nongnu.org,
-	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
-	Anthony Green <green@moxielogic.com>, Magnus Damm <magnus.damm@gmail.com>,
-	Laurent Vivier <laurent@vivier.eu>, Fabien Chouteau <chouteau@adacore.com>,
-	Alexander Graf <agraf@suse.de>, Max Filippov <jcmvbkbc@gmail.com>,
-	Michael Walle <michael@walle.cc>, qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
-	Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
-	Anthony Perard <anthony.perard@citrix.com>,
-	Guan Xuetao <gxt@mprc.pku.edu.cn>, xen-devel@lists.xensource.com,
-	Artyom Tarasenko <atar4qemu@gmail.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: bWuzCErBot9w
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: patches@linaro.org
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: tXxJqjWdjMBo
 
-Block backends defined with -drive if=ide are meant to be picked up by
-machine initialization code: a suitable frontend gets created and
-wired up automatically.
+Fix a broken expression in the calculation of ELRSR
+register bits: instead of "(lr & ICH_LR_EL2_HW) == 1"
+we want to check for != 0, because the HW bit is not
+bit 0 so a test for == 1 is always false.
 
-if=ide drives not picked up that way can still be used with -device as
-if they had if=none, but that's unclean and best avoided.  Unused ones
-produce an "Orphaned drive without device" warning.
+Fixes: https://bugs.launchpad.net/bugs/1658506
 
--drive parameter "if" is optional, and the default depends on the
-machine type.  If a machine type doesn't specify a default, the
-default is "ide".
-
-Many machine types implicitly default to if=ide that way, even though
-they don't actually have an IDE controller.  This makes no sense.
-
-Change the implicit default to if=none.  Affected machines:
-
-* all targets: none
-* aarch64/arm: akita ast2500 canon cheetah collie connex imx25
-  integratorcp kzm lm3s6965evb lm3s811evb mainstone musicpal n800 n810
-  netduino2 nuri palmetto realview romulus sabrelite smdkc210 sx1 sx1
-  verdex z2
-* cris: axis-dev88
-* i386/x86_64: xenpv
-* lm32: lm32-evr lm32-uclinux milkymist
-* m68k: an5206 dummy mcf5208evb
-* microblaze/microblazeel: petalogix-ml605 petalogix-s3adsp1800
-* mips/mips64/mips64el/mipsel: mipssim
-* moxie: moxiesim
-* or32: or32-sim
-* ppc/ppc64/ppcemb: bamboo ref405ep taihu virtex-ml507
-* ppc/ppc64: mpc8544ds ppce500
-* sh4/sh4eb: shix
-* sparc: leon3_generic
-* sparc64: niagara
-* tricore: tricore_testboard
-* unicore32: puv3
-* xtensa/xtensaeb: kc705 lx200 lx60 ml605 sim
-
-None of these machines have an IDE controller, let alone code to
-honor if=ide.
-
-Cc: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-arm@nongnu.org
-Cc: Edgar E. Iglesias <edgar.iglesias@gmail.com>
-Cc: Stefano Stabellini <sstabellini@kernel.org>
-Cc: Anthony Perard <anthony.perard@citrix.com>
-Cc: xen-devel@lists.xensource.com
-Cc: Michael Walle <michael@walle.cc>
-Cc: Laurent Vivier <laurent@vivier.eu>
-Cc: Anthony Green <green@moxielogic.com>
-Cc: Jia Liu <proljc@gmail.com>
-Cc: Alexander Graf <agraf@suse.de>
-Cc: qemu-ppc@nongnu.org
-Cc: Magnus Damm <magnus.damm@gmail.com>
-Cc: Fabien Chouteau <chouteau@adacore.com>
-Cc: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
-Cc: Artyom Tarasenko <atar4qemu@gmail.com>
-Cc: Bastian Koppelmann <kbastian@mail.uni-paderborn.de>
-Cc: Guan Xuetao <gxt@mprc.pku.edu.cn>
-Cc: Max Filippov <jcmvbkbc@gmail.com>
-Signed-off-by: Markus Armbruster <armbru@redhat.com>
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- include/sysemu/blockdev.h | 9 ++++-----
- 1 file changed, 4 insertions(+), 5 deletions(-)
+ hw/intc/arm_gicv3_cpuif.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/include/sysemu/blockdev.h b/include/sysemu/blockdev.h
-index 16432f3..351a039 100644
---- a/include/sysemu/blockdev.h
-+++ b/include/sysemu/blockdev.h
-@@ -19,12 +19,11 @@ void blockdev_auto_del(BlockBackend *blk);
- typedef enum {
-     IF_DEFAULT = -1,            /* for use with drive_add() only */
-     /*
--     * IF_IDE must be zero, because we want MachineClass member
--     * block_default_type to default-initialize to IF_IDE
-+     * IF_NONE must be zero, because we want MachineClass member
-+     * block_default_type to default-initialize to IF_NONE
-      */
--    IF_IDE = 0,
--    IF_NONE,
--    IF_SCSI, IF_FLOPPY, IF_PFLASH, IF_MTD, IF_SD, IF_VIRTIO, IF_XEN,
-+    IF_NONE = 0,
-+    IF_IDE, IF_SCSI, IF_FLOPPY, IF_PFLASH, IF_MTD, IF_SD, IF_VIRTIO, IF_XEN,
-     IF_COUNT
- } BlockInterfaceType;
+diff --git a/hw/intc/arm_gicv3_cpuif.c b/hw/intc/arm_gicv3_cpuif.c
+index a9ee7fd..c25ee03 100644
+--- a/hw/intc/arm_gicv3_cpuif.c
++++ b/hw/intc/arm_gicv3_cpuif.c
+@@ -2430,7 +2430,7 @@ static uint64_t ich_elrsr_read(CPUARMState *env, const ARMCPRegInfo *ri)
+         uint64_t lr = cs->ich_lr_el2[i];
  
+         if ((lr & ICH_LR_EL2_STATE_MASK) == 0 &&
+-            ((lr & ICH_LR_EL2_HW) == 1 || (lr & ICH_LR_EL2_EOI) == 0)) {
++            ((lr & ICH_LR_EL2_HW) != 0 || (lr & ICH_LR_EL2_EOI) == 0)) {
+             value |= (1 << i);
+         }
+     }
 -- 
 2.7.4
 

@@ -1,189 +1,162 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaro.local ([81.128.185.34])
-        by smtp.gmail.com with ESMTPSA id c202sm27033701wmd.10.2017.01.24.08.25.48
+        by smtp.gmail.com with ESMTPSA id w126sm34879990wmw.0.2017.01.24.08.31.27
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 24 Jan 2017 08:25:48 -0800 (PST)
+        Tue, 24 Jan 2017 08:31:27 -0800 (PST)
 Received: from zen (localhost [127.0.0.1])
-	by zen.linaro.local (Postfix) with ESMTPS id D4B333E0133;
-	Tue, 24 Jan 2017 16:25:47 +0000 (GMT)
-References: <1484937883-1068-1-git-send-email-peter.maydell@linaro.org> <1484937883-1068-2-git-send-email-peter.maydell@linaro.org>
+	by zen.linaro.local (Postfix) with ESMTPS id A0E563E0133;
+	Tue, 24 Jan 2017 16:31:26 +0000 (GMT)
+References: <1484937883-1068-1-git-send-email-peter.maydell@linaro.org> <1484937883-1068-3-git-send-email-peter.maydell@linaro.org>
 User-agent: mu4e 0.9.19; emacs 25.1.91.4
 From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: Peter Maydell <peter.maydell@linaro.org>
 Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, Liviu Ionescu <ilg@livius.net>, Michael Davidsaver <mdavidsaver@gmail.com>, patches@linaro.org
-Subject: Re: [Qemu-arm] [PATCH 1/6] armv7m: MRS/MSR: handle unprivileged access
-In-reply-to: <1484937883-1068-2-git-send-email-peter.maydell@linaro.org>
-Date: Tue, 24 Jan 2017 16:25:47 +0000
-Message-ID: <87wpdka0hg.fsf@linaro.org>
+Subject: Re: [Qemu-arm] [PATCH 2/6] armv7m: Replace armv7m.hack with unassigned_access handler
+In-reply-to: <1484937883-1068-3-git-send-email-peter.maydell@linaro.org>
+Date: Tue, 24 Jan 2017 16:31:26 +0000
+Message-ID: <87vat4a081.fsf@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 8bit
-X-TUID: oafmqA4COnHP
+X-TUID: KYKQRn6uTHIK
 
 
 Peter Maydell <peter.maydell@linaro.org> writes:
 
 > From: Michael Davidsaver <mdavidsaver@gmail.com>
 >
-> The MRS and MSR instruction handling has a number of flaws:
->  * unprivileged accesses should only be able to read
->    CONTROL and the xPSR subfields, and only write APSR
->    (others RAZ/WI)
->  * privileged access should not be able to write xPSR
->    subfields other than APSR
->  * accesses to unimplemented registers should log as
->    guest errors, not abort QEMU
+> For v7m we need to catch attempts to execute from special
+> addresses at 0xfffffff0 and above. Previously we did this
+> with the aid of a hacky special purpose lump of memory
+> in the address space and a check in translate.c for whether
+> we were translating code at those addresses.
+>
+> We can implement this more cleanly using a CPU
+> unassigned access handler which throws the exception
+> if the unassigned access is for one of the special addresses.
 >
 > Signed-off-by: Michael Davidsaver <mdavidsaver@gmail.com>
-> Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
-> [PMM: rewrote commit message]
+> [PMM:
+>  * drop the deletion of the "don't interrupt if PC is magic"
+>    code in arm_v7m_cpu_exec_interrupt() -- this is still
+>    required
+>  * don't generate an exception for unassigned accesses
+>    which aren't to the magic address -- although doing
+>    this is in theory correct in practice it will break
+>    currently working guests which rely on the RAZ/WI
+>    behaviour when they touch devices which we haven't
+>    modelled.
+>  * trigger EXCP_EXCEPTION_EXIT on is_exec, not !is_write
+> ]
 > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 > ---
->  target/arm/helper.c | 79 +++++++++++++++++++++++++----------------------------
->  1 file changed, 37 insertions(+), 42 deletions(-)
+>  hw/arm/armv7m.c        |  8 --------
+>  target/arm/cpu.c       | 28 ++++++++++++++++++++++++++++
+>  target/arm/translate.c | 12 ++++++------
+>  3 files changed, 34 insertions(+), 14 deletions(-)
 >
-> diff --git a/target/arm/helper.c b/target/arm/helper.c
-> index 7111c8c..ad23de3 100644
-> --- a/target/arm/helper.c
-> +++ b/target/arm/helper.c
-> @@ -8243,23 +8243,32 @@ hwaddr arm_cpu_get_phys_page_attrs_debug(CPUState *cs, vaddr addr,
+> diff --git a/hw/arm/armv7m.c b/hw/arm/armv7m.c
+> index 49d3078..0c9ca7b 100644
+> --- a/hw/arm/armv7m.c
+> +++ b/hw/arm/armv7m.c
+> @@ -180,7 +180,6 @@ DeviceState *armv7m_init(MemoryRegion *system_memory, int mem_size, int num_irq,
+>      uint64_t entry;
+>      uint64_t lowaddr;
+>      int big_endian;
+> -    MemoryRegion *hack = g_new(MemoryRegion, 1);
 >
->  uint32_t HELPER(v7m_mrs)(CPUARMState *env, uint32_t reg)
->  {
-> -    ARMCPU *cpu = arm_env_get_cpu(env);
-> +    uint32_t mask;
-> +    unsigned el = arm_current_el(env);
-> +
-> +    /* First handle registers which unprivileged can read */
-> +
-> +    switch (reg) {
-> +    case 0 ... 7: /* xPSR sub-fields */
-
-This reads a little confusingly compared to the pseudo-code in the ARM
-ARM. Would it be clearer if we just went:
-
-  switch(extract32(reg, 3, 5)) {
-    case 0: /* xPSR */
-    ...
-    case 1: /* SP */
-    ...
-    case 2: /* Priority Mask or CONTROL.. */
-    ...
-  }
-
-?
-
-> +        mask = 0;
-> +        if ((reg & 1) && el) {
-> +            mask |= 0x000001ff; /* IPSR (unpriv. reads as zero) */
-
-As B5.2.2 doesn't imply any particular access limit perhaps the comment
-should read /* ISPR (reads as zero when not in exception) */
-
-> +        }
-> +        if (!(reg & 4)) {
-> +            mask |= 0xf8000000; /* APSR */
-> +        }
-> +        /* EPSR reads as zero */
-> +        return xpsr_read(env) & mask;
-> +        break;
-> +    case 20: /* CONTROL */
-> +        return env->v7m.control;
-
-I'm fairly sure this was meant to be 0x20 and either way the result is
-gated by current privilege.
-
-> +    }
-> +
-> +    if (el == 0) {
-> +        return 0; /* unprivileged reads others as zero */
-> +    }
->
->      switch (reg) {
-> -    case 0: /* APSR */
-> -        return xpsr_read(env) & 0xf8000000;
-> -    case 1: /* IAPSR */
-> -        return xpsr_read(env) & 0xf80001ff;
-> -    case 2: /* EAPSR */
-> -        return xpsr_read(env) & 0xff00fc00;
-> -    case 3: /* xPSR */
-> -        return xpsr_read(env) & 0xff00fdff;
-> -    case 5: /* IPSR */
-> -        return xpsr_read(env) & 0x000001ff;
-> -    case 6: /* EPSR */
-> -        return xpsr_read(env) & 0x0700fc00;
-> -    case 7: /* IEPSR */
-> -        return xpsr_read(env) & 0x0700edff;
->      case 8: /* MSP */
->          return env->v7m.current_sp ? env->v7m.other_sp : env->regs[13];
->      case 9: /* PSP */
-> @@ -8271,40 +8280,26 @@ uint32_t HELPER(v7m_mrs)(CPUARMState *env, uint32_t reg)
->          return env->v7m.basepri;
->      case 19: /* FAULTMASK */
->          return (env->daif & PSTATE_F) != 0;
-> -    case 20: /* CONTROL */
-> -        return env->v7m.control;
->      default:
-> -        /* ??? For debugging only.  */
-> -        cpu_abort(CPU(cpu), "Unimplemented system register read (%d)\n", reg);
-> +        qemu_log_mask(LOG_GUEST_ERROR, "Attempt to read unknown special"
-> +                                       " register %d\n", reg);
->          return 0;
+>      if (cpu_model == NULL) {
+>  	cpu_model = "cortex-m3";
+> @@ -225,13 +224,6 @@ DeviceState *armv7m_init(MemoryRegion *system_memory, int mem_size, int num_irq,
+>          }
 >      }
+>
+> -    /* Hack to map an additional page of ram at the top of the address
+> -       space.  This stops qemu complaining about executing code outside RAM
+> -       when returning from an exception.  */
+> -    memory_region_init_ram(hack, NULL, "armv7m.hack", 0x1000, &error_fatal);
+> -    vmstate_register_ram_global(hack);
+> -    memory_region_add_subregion(system_memory, 0xfffff000, hack);
+> -
+
+What stops a model inadvertently registering a block of memory on-top?
+Should we check the memory region really is unassigned?
+
+>      qemu_register_reset(armv7m_reset, cpu);
+>      return nvic;
+>  }
+> diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+> index 3f2cdb6..47759c9 100644
+> --- a/target/arm/cpu.c
+> +++ b/target/arm/cpu.c
+> @@ -292,6 +292,33 @@ bool arm_cpu_exec_interrupt(CPUState *cs, int interrupt_request)
 >  }
 >
->  void HELPER(v7m_msr)(CPUARMState *env, uint32_t reg, uint32_t val)
->  {
-> -    ARMCPU *cpu = arm_env_get_cpu(env);
-> +    if (arm_current_el(env) == 0 && reg > 7) {
-> +        /* only xPSR sub-fields may be written by unprivileged */
-> +        return;
+>  #if !defined(CONFIG_USER_ONLY) || !defined(TARGET_AARCH64)
+> +static void arm_v7m_unassigned_access(CPUState *cpu, hwaddr addr,
+> +                                      bool is_write, bool is_exec, int opaque,
+> +                                      unsigned size)
+> +{
+> +    ARMCPU *arm = ARM_CPU(cpu);
+> +    CPUARMState *env = &arm->env;
+> +
+> +    /* ARMv7-M interrupt return works by loading a magic value into the PC.
+> +     * On real hardware the load causes the return to occur.  The qemu
+> +     * implementation performs the jump normally, then does the exception
+> +     * return by throwing a special exception when when the CPU tries to
+> +     * execute code at the magic address.
+> +     */
+> +    if (env->v7m.exception != 0 && addr >= 0xfffffff0 && is_exec) {
+> +        cpu->exception_index = EXCP_EXCEPTION_EXIT;
+> +        cpu_loop_exit(cpu);
 > +    }
+> +
+> +    /* In real hardware an attempt to access parts of the address space
+> +     * with nothing there will usually cause an external abort.
+> +     * However our QEMU board models are often missing device models where
+> +     * the guest can boot anyway with the default read-as-zero/writes-ignored
+> +     * behaviour that you get without a QEMU unassigned_access hook.
+> +     * So just return here to retain that default behaviour.
+> +     */
+> +}
+> +
+>  static bool arm_v7m_cpu_exec_interrupt(CPUState *cs, int interrupt_request)
+>  {
+>      CPUClass *cc = CPU_GET_CLASS(cs);
+> @@ -1016,6 +1043,7 @@ static void arm_v7m_class_init(ObjectClass *oc, void *data)
+>      cc->do_interrupt = arm_v7m_cpu_do_interrupt;
+>  #endif
 >
->      switch (reg) {
-> -    case 0: /* APSR */
-> -        xpsr_write(env, val, 0xf8000000);
-> -        break;
-> -    case 1: /* IAPSR */
-> -        xpsr_write(env, val, 0xf8000000);
-> -        break;
-> -    case 2: /* EAPSR */
-> -        xpsr_write(env, val, 0xfe00fc00);
-> -        break;
-> -    case 3: /* xPSR */
-> -        xpsr_write(env, val, 0xfe00fc00);
-> -        break;
-> -    case 5: /* IPSR */
-> -        /* IPSR bits are readonly.  */
-> -        break;
-> -    case 6: /* EPSR */
-> -        xpsr_write(env, val, 0x0600fc00);
-> -        break;
-> -    case 7: /* IEPSR */
-> -        xpsr_write(env, val, 0x0600fc00);
-> +    case 0 ... 7: /* xPSR sub-fields */
-> +        /* only APSR is actually writable */
-> +        if (reg & 4) {
-> +            xpsr_write(env, val, 0xf8000000); /* APSR */
-> +        }
-
-I assuming insn<10> selects a different helper....
-
->          break;
->      case 8: /* MSP */
->          if (env->v7m.current_sp)
-> @@ -8345,8 +8340,8 @@ void HELPER(v7m_msr)(CPUARMState *env, uint32_t reg, uint32_t val)
->          switch_v7m_sp(env, (val & 2) != 0);
->          break;
->      default:
-> -        /* ??? For debugging only.  */
-> -        cpu_abort(CPU(cpu), "Unimplemented system register write (%d)\n", reg);
-> +        qemu_log_mask(LOG_GUEST_ERROR, "Attempt to write unknown special"
-> +                                       " register %d\n", reg);
->          return;
->      }
+> +    cc->do_unassigned_access = arm_v7m_unassigned_access;
+>      cc->cpu_exec_interrupt = arm_v7m_cpu_exec_interrupt;
 >  }
+>
+> diff --git a/target/arm/translate.c b/target/arm/translate.c
+> index c9186b6..a7c2abe 100644
+> --- a/target/arm/translate.c
+> +++ b/target/arm/translate.c
+> @@ -11719,12 +11719,12 @@ void gen_intermediate_code(CPUARMState *env, TranslationBlock *tb)
+>              break;
+>          }
+>  #else
+> -        if (dc->pc >= 0xfffffff0 && arm_dc_feature(dc, ARM_FEATURE_M)) {
+> -            /* We always get here via a jump, so know we are not in a
+> -               conditional execution block.  */
+> -            gen_exception_internal(EXCP_EXCEPTION_EXIT);
+> -            dc->is_jmp = DISAS_EXC;
+> -            break;
+> +        if (arm_dc_feature(dc, ARM_FEATURE_M)) {
+> +            /* Branches to the magic exception-return addresses should
+> +             * already have been caught via the arm_v7m_unassigned_access hook,
+> +             * and never get here.
+> +             */
+> +            assert(dc->pc < 0xfffffff0);
+>          }
+>  #endif
 
+Otherwise:
+
+Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
 
 --
 Alex Bennée

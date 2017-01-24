@@ -1,132 +1,82 @@
-Received: by 10.25.77.65 with SMTP id a62csp1918369lfb;
-        Tue, 24 Jan 2017 11:16:32 -0800 (PST)
-X-Received: by 10.99.66.198 with SMTP id p189mr41787037pga.30.1485285392510;
-        Tue, 24 Jan 2017 11:16:32 -0800 (PST)
-Return-Path: <pm215@archaic.org.uk>
-Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
-        by mx.google.com with ESMTPS id a204si20326667pfa.101.2017.01.24.11.16.31
+Received: by 10.25.77.65 with SMTP id a62csp1925109lfb;
+        Tue, 24 Jan 2017 11:33:59 -0800 (PST)
+X-Received: by 10.237.55.97 with SMTP id i88mr31734092qtb.143.1485286439102;
+        Tue, 24 Jan 2017 11:33:59 -0800 (PST)
+Return-Path: <rth7680@gmail.com>
+Received: from mail-qt0-x243.google.com (mail-qt0-x243.google.com. [2607:f8b0:400d:c0d::243])
+        by mx.google.com with ESMTPS id w29si13844636qtc.100.2017.01.24.11.33.58
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 24 Jan 2017 11:16:32 -0800 (PST)
-Received-SPF: pass (google.com: best guess record for domain of pm215@archaic.org.uk designates 2001:8b0:1d0::2 as permitted sender) client-ip=2001:8b0:1d0::2;
+        Tue, 24 Jan 2017 11:33:59 -0800 (PST)
+Received-SPF: pass (google.com: domain of rth7680@gmail.com designates 2607:f8b0:400d:c0d::243 as permitted sender) client-ip=2607:f8b0:400d:c0d::243;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: best guess record for domain of pm215@archaic.org.uk designates 2001:8b0:1d0::2 as permitted sender) smtp.mailfrom=pm215@archaic.org.uk;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from pm215 by orth.archaic.org.uk with local (Exim 4.84_2)
-	(envelope-from <pm215@archaic.org.uk>)
-	id 1cW6Zq-0000OZ-WE; Tue, 24 Jan 2017 19:16:23 +0000
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Cc: patches@linaro.org,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Liviu Ionescu <ilg@livius.net>
-Subject: [PATCH 04/10] armv7m: implement CCR, CFSR, HFSR, DFSR, BFAR, and MMFAR
-Date: Tue, 24 Jan 2017 19:16:14 +0000
-Message-Id: <1485285380-10565-5-git-send-email-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.7.4
-In-Reply-To: <1485285380-10565-1-git-send-email-peter.maydell@linaro.org>
+       dkim=pass header.i=@gmail.com;
+       spf=pass (google.com: domain of rth7680@gmail.com designates 2607:f8b0:400d:c0d::243 as permitted sender) smtp.mailfrom=rth7680@gmail.com
+Received: by mail-qt0-x243.google.com with SMTP id n13so27596239qtc.0;
+        Tue, 24 Jan 2017 11:33:58 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=sender:subject:to:references:cc:from:message-id:date:user-agent
+         :mime-version:in-reply-to:content-transfer-encoding;
+        bh=bX24UBFLMWzc3OTrIP8YezKiAjHGl2zrGrj5BJ05pIM=;
+        b=m2OVIHyjez2HPCmCcvmw5AMNf9iB6ONxr0oeyXQL1Cj3/aYkDvwK8GXSJ9UmrYqBYQ
+         J3ePhKxytVi1fHy5LveVrzZHcZdJzONZfTpS0sn4TUACDnf3E3k/k4W0LnyfdUlYS4Jw
+         x9Nz72Nzyju1Bf++PxqGrNtETSGiD5rXOoHrqGfW4AOpklDZgYZ9Au7UVoxttzYh+Lds
+         305fNfFtGVaNkmBZmRQk5phXvV73Kwu/I9SmOcDUvN3ggzAq7Kp1VFuWbEYaF4xVIROv
+         JAt9bzKV3yMrOFYr0S4phEqau88wA6mfB247Yd6IAiGvPlMNUY9d3mAbVE6hvEC68nZE
+         ngoQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:sender:subject:to:references:cc:from:message-id
+         :date:user-agent:mime-version:in-reply-to:content-transfer-encoding;
+        bh=bX24UBFLMWzc3OTrIP8YezKiAjHGl2zrGrj5BJ05pIM=;
+        b=OjipoMckiG+Xbrhv9wme9xVHw/8NpfhO2MgNWkghXCpR+vgzrMFDa+l9tpu2Bq1EjF
+         9pcbLOg2qECAkDkGxB3nrlrepOQnCHat5Fz9e8Bwoca/fcKZo2T6AmpQ7ktip9L1ohbc
+         hbaNfY/T6zY5l1mEP7imQzkghwoavEanIXpVksv67IRCwNnUufdn0I0g0qOGxGvas/fh
+         8MCGempCXE5wO2Lb9Z9omjdVidGOOIzry/XJ0UNGPmQZle2caePrfoVyQpdv2XBrZeET
+         wu78PzKriPveLnwt9MRPm7EjVp+cR6fTHMtyLGvnfV3kAfqYKIDwsoLg7IeGiSCBo1FL
+         odqA==
+X-Gm-Message-State: AIkVDXIC1s0deFN/hVr5rxQimVTaj5RTfgLpV14jcUPEJw2mw8UXj3oppuOW+v/X8E7DtA==
+X-Received: by 10.237.59.28 with SMTP id p28mr29597286qte.222.1485286438706;
+        Tue, 24 Jan 2017 11:33:58 -0800 (PST)
+Return-Path: <rth7680@gmail.com>
+Received: from anchor.twiddle.net ([2602:47:d954:1500:221:9bff:feff:8add])
+        by smtp.googlemail.com with ESMTPSA id e3sm16848371qtg.7.2017.01.24.11.33.57
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 24 Jan 2017 11:33:57 -0800 (PST)
+Sender: Richard Henderson <rth7680@gmail.com>
+Subject: Re: [Qemu-devel] [PATCH 05/10] armv7m: honour CCR.STACKALIGN on
+ exception entry
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
 References: <1485285380-10565-1-git-send-email-peter.maydell@linaro.org>
-X-TUID: ooehHUAvQ86s
+ <1485285380-10565-6-git-send-email-peter.maydell@linaro.org>
+Cc: Liviu Ionescu <ilg@livius.net>, =?UTF-8?Q?Alex_Benn=c3=a9e?=
+ <alex.bennee@linaro.org>, patches@linaro.org
+From: Richard Henderson <rth@twiddle.net>
+Message-ID: <649a4b6e-2c7f-cf2c-5fb2-9213aaffd34a@twiddle.net>
+Date: Tue, 24 Jan 2017 11:33:55 -0800
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
+ Thunderbird/45.6.0
+MIME-Version: 1.0
+In-Reply-To: <1485285380-10565-6-git-send-email-peter.maydell@linaro.org>
+Content-Type: text/plain; charset=windows-1252
+Content-Transfer-Encoding: 7bit
+X-TUID: FCTzqEE9xGiQ
 
-From: Michael Davidsaver <mdavidsaver@gmail.com>
+On 01/24/2017 11:16 AM, Peter Maydell wrote:
+> The CCR.STACKALIGN bit controls whether the CPU is supposed to force
+> 8-alignment of the stack pointer on entry to the exception handler.
 
-Implement the v7M system registers CCR, CFSR, HFSR, DFSR, BFAR and
-MMFAR.  For the moment these simply read as written (with some basic
-handling of RAZ/WI bits and W1C semantics).
+8...
 
-Signed-off-by: Michael Davidsaver <mdavidsaver@gmail.com>
-[PMM: drop warning about setting unimplemented CCR bits;
- tweak commit message; add DFSR]
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
- hw/intc/armv7m_nvic.c | 42 ++++++++++++++++++++++++++++++++----------
- 1 file changed, 32 insertions(+), 10 deletions(-)
+> +    /* Align stack pointer if the guest wants that */
+> +    if ((env->regs[13] & 4) && (env->v7m.ccr & R_V7M_CCR_STKALIGN_MASK)) {
 
-diff --git a/hw/intc/armv7m_nvic.c b/hw/intc/armv7m_nvic.c
-index 81dcb83..60e72d7 100644
---- a/hw/intc/armv7m_nvic.c
-+++ b/hw/intc/armv7m_nvic.c
-@@ -228,8 +228,7 @@ static uint32_t nvic_readl(nvic_state *s, uint32_t offset)
-         /* TODO: Implement SLEEPONEXIT.  */
-         return 0;
-     case 0xd14: /* Configuration Control.  */
--        /* TODO: Implement Configuration Control bits.  */
--        return 0;
-+        return cpu->env.v7m.ccr;
-     case 0xd24: /* System Handler Status.  */
-         val = 0;
-         if (s->gic.irq_state[ARMV7M_EXCP_MEM].active) val |= (1 << 0);
-@@ -248,16 +247,19 @@ static uint32_t nvic_readl(nvic_state *s, uint32_t offset)
-         if (s->gic.irq_state[ARMV7M_EXCP_USAGE].enabled) val |= (1 << 18);
-         return val;
-     case 0xd28: /* Configurable Fault Status.  */
--        /* TODO: Implement Fault Status.  */
--        qemu_log_mask(LOG_UNIMP, "Configurable Fault Status unimplemented\n");
--        return 0;
-+        return cpu->env.v7m.cfsr;
-     case 0xd2c: /* Hard Fault Status.  */
-+        return cpu->env.v7m.hfsr;
-     case 0xd30: /* Debug Fault Status.  */
--    case 0xd34: /* Mem Manage Address.  */
-+        return cpu->env.v7m.dfsr;
-+    case 0xd34: /* MMFAR MemManage Fault Address */
-+        return cpu->env.v7m.mmfar;
-     case 0xd38: /* Bus Fault Address.  */
-+        return cpu->env.v7m.bfar;
-     case 0xd3c: /* Aux Fault Status.  */
-         /* TODO: Implement fault status registers.  */
--        qemu_log_mask(LOG_UNIMP, "Fault status registers unimplemented\n");
-+        qemu_log_mask(LOG_UNIMP,
-+                      "Aux Fault status registers unimplemented\n");
-         return 0;
-     case 0xd40: /* PFR0.  */
-         return 0x00000030;
-@@ -366,9 +368,19 @@ static void nvic_writel(nvic_state *s, uint32_t offset, uint32_t value)
-         }
-         break;
-     case 0xd10: /* System Control.  */
--    case 0xd14: /* Configuration Control.  */
-         /* TODO: Implement control registers.  */
--        qemu_log_mask(LOG_UNIMP, "NVIC: SCR and CCR unimplemented\n");
-+        qemu_log_mask(LOG_UNIMP, "NVIC: SCR unimplemented\n");
-+        break;
-+    case 0xd14: /* Configuration Control.  */
-+        /* Enforce RAZ/WI on reserved and must-RAZ/WI bits */
-+        value &= (R_V7M_CCR_STKALIGN_MASK |
-+                  R_V7M_CCR_BFHFNMIGN_MASK |
-+                  R_V7M_CCR_DIV_0_TRP_MASK |
-+                  R_V7M_CCR_UNALIGN_TRP_MASK |
-+                  R_V7M_CCR_USERSETMPEND_MASK |
-+                  R_V7M_CCR_NONBASETHRDENA_MASK);
-+
-+        cpu->env.v7m.ccr = value;
-         break;
-     case 0xd24: /* System Handler Control.  */
-         /* TODO: Real hardware allows you to set/clear the active bits
-@@ -378,13 +390,23 @@ static void nvic_writel(nvic_state *s, uint32_t offset, uint32_t value)
-         s->gic.irq_state[ARMV7M_EXCP_USAGE].enabled = (value & (1 << 18)) != 0;
-         break;
-     case 0xd28: /* Configurable Fault Status.  */
-+        cpu->env.v7m.cfsr &= ~value; /* W1C */
-+        break;
-     case 0xd2c: /* Hard Fault Status.  */
-+        cpu->env.v7m.hfsr &= ~value; /* W1C */
-+        break;
-     case 0xd30: /* Debug Fault Status.  */
-+        cpu->env.v7m.dfsr &= ~value; /* W1C */
-+        break;
-     case 0xd34: /* Mem Manage Address.  */
-+        cpu->env.v7m.mmfar = value;
-+        return;
-     case 0xd38: /* Bus Fault Address.  */
-+        cpu->env.v7m.bfar = value;
-+        return;
-     case 0xd3c: /* Aux Fault Status.  */
-         qemu_log_mask(LOG_UNIMP,
--                      "NVIC: fault status registers unimplemented\n");
-+                      "NVIC: Aux fault status registers unimplemented\n");
-         break;
-     case 0xf00: /* Software Triggered Interrupt Register */
-         if ((value & 0x1ff) < s->num_irq) {
--- 
-2.7.4
+4...
+
+>          env->regs[13] -= 4;
+
+Not alignment.  "&= -4"?
+
+
+r~

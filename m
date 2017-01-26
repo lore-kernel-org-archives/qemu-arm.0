@@ -1,68 +1,64 @@
-Received: by 10.25.77.65 with SMTP id a62csp261935lfb;
-        Thu, 26 Jan 2017 07:27:18 -0800 (PST)
-X-Received: by 10.55.158.129 with SMTP id h123mr3240697qke.53.1485444438042;
-        Thu, 26 Jan 2017 07:27:18 -0800 (PST)
+Received: by 10.25.77.65 with SMTP id a62csp276549lfb;
+        Thu, 26 Jan 2017 08:00:58 -0800 (PST)
+X-Received: by 10.55.110.6 with SMTP id j6mr3454742qkc.151.1485446458709;
+        Thu, 26 Jan 2017 08:00:58 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id 55si1348585qts.215.2017.01.26.07.27.17
+        by mx.google.com with ESMTPS id a88si1418287qka.133.2017.01.26.08.00.57
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 26 Jan 2017 07:27:18 -0800 (PST)
+        Thu, 26 Jan 2017 08:00:58 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:39321 helo=lists.gnu.org)
+Received: from localhost ([::1]:39506 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1cWlxD-0005er-6U
-	for alex.bennee@linaro.org; Thu, 26 Jan 2017 10:27:15 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:33513)
+	id 1cWmTn-0007yn-L3
+	for alex.bennee@linaro.org; Thu, 26 Jan 2017 11:00:55 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:44254)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1cWluf-0003P8-CJ
-	for qemu-arm@nongnu.org; Thu, 26 Jan 2017 10:24:39 -0500
+	(envelope-from <thuth@redhat.com>) id 1cWmTS-0007oL-BP
+	for qemu-arm@nongnu.org; Thu, 26 Jan 2017 11:00:44 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1cWlud-0001KT-E4
-	for qemu-arm@nongnu.org; Thu, 26 Jan 2017 10:24:37 -0500
-Received: from mout.kundenserver.de ([217.72.192.74]:64223)
-	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>)
-	id 1cWluC-00011e-0l; Thu, 26 Jan 2017 10:24:29 -0500
-Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
-	(mreue101 [212.227.15.183]) with ESMTPSA (Nemesis) id
-	0MFtRO-1ckXFf1rl8-00EsBR; Thu, 26 Jan 2017 16:22:17 +0100
+	(envelope-from <thuth@redhat.com>) id 1cWmTM-0005jg-HM
+	for qemu-arm@nongnu.org; Thu, 26 Jan 2017 11:00:34 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:57662)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <thuth@redhat.com>)
+	id 1cWmTM-0005jN-6r; Thu, 26 Jan 2017 11:00:28 -0500
+Received: from int-mx09.intmail.prod.int.phx2.redhat.com
+	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id F21ADC0A57A7;
+	Thu, 26 Jan 2017 16:00:26 +0000 (UTC)
+Received: from [10.36.116.37] (ovpn-116-37.ams2.redhat.com [10.36.116.37])
+	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id v0QG0IP5027556
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=NO);
+	Thu, 26 Jan 2017 11:00:20 -0500
 To: Markus Armbruster <armbru@redhat.com>, qemu-devel@nongnu.org
 References: <1485443388-27253-1-git-send-email-armbru@redhat.com>
 	<1485443388-27253-4-git-send-email-armbru@redhat.com>
-From: Laurent Vivier <laurent@vivier.eu>
-Message-ID: <a931c7d6-e4e7-6d81-4828-e4258caf9d89@vivier.eu>
-Date: Thu, 26 Jan 2017 16:22:05 +0100
+From: Thomas Huth <thuth@redhat.com>
+Message-ID: <2b18b666-4ea7-e1a5-5359-7fd34341e9ec@redhat.com>
+Date: Thu, 26 Jan 2017 17:00:18 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
 	Thunderbird/45.6.0
 MIME-Version: 1.0
 In-Reply-To: <1485443388-27253-4-git-send-email-armbru@redhat.com>
 Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K0:3YX7Xac8ldRIbMrknLGBM5b3anCsvTPh1yASHTLHJXYCGNmhEzy
-	n+6Pici1qgVslq4l193AFCzIIky8DbH2XrYT5QZN/a20qwQ32+f+01p408/AkjtoQu8HxwJ
-	vy+o1smKA5uJnUa/KI3KUwmehhCc3SGAxjVgsLCpSx5cCCcTQw7wpI4NR9d4Q2Q2FsninYk
-	FFRQm0XJ0JwdGt9O2v9Cw==
-X-UI-Out-Filterresults: notjunk:1;V01:K0:ZYSEh8K8tIg=:lJQam8W/GFyvI8siee1Lhn
-	btchdKGggKpboniOm9AUGNxI23G/2EtEmmLGIexABxEKY14AitmpCt/0/arNawod4iy9BTsZO
-	wFkRRJ/E0Vbk1oGaI4peWe8F3ySqH9joX9hU1bI+A3Mb4kK7N1QcnhqJ2d2Hnk7Z1suFb/lTc
-	cPyvEV8w+NSq5X83b2bi/HmZWyXkqZWcffN5NBPf6dPmKqrk8WYA+rLnX1aB78BDB2OCifjgJ
-	9zN6+uGDcodXFF4JE++O+Sow6MDIHs/m9m0bRjY5pimDnG9agnr0CdF7exgSqRYrF7ASE3afO
-	xEV/X3RPbAEhSRQ+dtN3IMcNUWsiIaA9ogfjtLJcFQKcnGJzc5ww3T4swP/peUmLag6KoApyy
-	qhuD/dcLYQTDOpQcOJWlzADnNlw/G8ckY/CMQnctlw27//RtgXI1K+M36JFbD3SF0BNl5b4rP
-	Qv0Syy964NhJLDNo6cCwTwRRHdAyFwHGGmEpZAajX2pTo8Wu3kd0+K2FGxP33nRyaTqBFqheD
-	dTYjM4dNzvxK8MgpbsBamV793NaqAwRFCrg+0q/C6cl/eQ2O4VEX+CFCPFy3eH1YR6JH8KT/p
-	T5Xjuc4XVNxVmprE/eg0deMz7ifwwzNHVMf5yYN4rKMkvuZAaPq2iGLohaVCJTimAJwWB92GL
-	RxG7AKdlbhPmzLG+udrjwSxOQIAX1KJG4cEbqOkNl2hcMdNRRZNmxw/Z5HPwKdRide3d9MM+s
-	r2G4UCMfRAcDhI7U
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.31]);
+	Thu, 26 Jan 2017 16:00:27 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 217.72.192.74
-Subject: Re: [Qemu-arm] [PATCH v2 3/8] hw: Default -drive to if=none instead
- of ide when ide cannot work
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v2 3/8] hw: Default -drive to
+ if=none instead of ide when ide cannot work
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -77,21 +73,21 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: kwolf@redhat.com, Peter Maydell <peter.maydell@linaro.org>,
 	Stefano Stabellini <sstabellini@kernel.org>,
 	Jia Liu <proljc@gmail.com>, qemu-block@nongnu.org,
-	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
-	Anthony Green <green@moxielogic.com>, Magnus Damm <magnus.damm@gmail.com>,
-	Alexander Graf <agraf@suse.de>,
-	Fabien Chouteau <chouteau@adacore.com>, mreitz@redhat.com,
-	Max Filippov <jcmvbkbc@gmail.com>,
-	Michael Walle <michael@walle.cc>, qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
 	Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
+	Anthony Green <green@moxielogic.com>,
+	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+	Alexander Graf <agraf@suse.de>, Fabien Chouteau <chouteau@adacore.com>,
+	Laurent Vivier <laurent@vivier.eu>, Max Filippov <jcmvbkbc@gmail.com>,
+	Michael Walle <michael@walle.cc>, qemu-arm@nongnu.org,
+	qemu-ppc@nongnu.org, xen-devel@lists.xensource.com,
 	Anthony Perard <anthony.perard@citrix.com>,
-	Guan Xuetao <gxt@mprc.pku.edu.cn>, xen-devel@lists.xensource.com,
+	Guan Xuetao <gxt@mprc.pku.edu.cn>, mreitz@redhat.com,
 	Artyom Tarasenko <atar4qemu@gmail.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: wpmW+Q1JtNp/
+X-TUID: uBSw1TKudxNT
 
-Le 26/01/2017 à 16:09, Markus Armbruster a écrit :
+On 26.01.2017 16:09, Markus Armbruster wrote:
 > Block backends defined with -drive if=ide are meant to be picked up by
 > machine initialization code: a suitable frontend gets created and
 > wired up automatically.
@@ -181,5 +177,8 @@ Le 26/01/2017 à 16:09, Markus Armbruster a écrit :
 >  } BlockInterfaceType;
 >  
 > 
-Reviewed-by: Laurent Vivier <laurent@vivier.eu>
+
+Makes sense.
+
+Reviewed-by: Thomas Huth <thuth@redhat.com>
 

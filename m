@@ -1,66 +1,55 @@
-Received: by 10.25.77.65 with SMTP id a62csp211652lfb;
-        Thu, 26 Jan 2017 05:34:35 -0800 (PST)
-X-Received: by 10.55.18.165 with SMTP id 37mr2775727qks.22.1485437675448;
-        Thu, 26 Jan 2017 05:34:35 -0800 (PST)
+Received: by 10.25.77.65 with SMTP id a62csp322260lfb;
+        Thu, 26 Jan 2017 09:38:05 -0800 (PST)
+X-Received: by 10.55.66.68 with SMTP id p65mr3822838qka.187.1485452285734;
+        Thu, 26 Jan 2017 09:38:05 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id p4si1145805qtf.42.2017.01.26.05.34.34
+        by mx.google.com with ESMTPS id g41si1613426qtb.257.2017.01.26.09.38.05
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 26 Jan 2017 05:34:35 -0800 (PST)
+        Thu, 26 Jan 2017 09:38:05 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:38657 helo=lists.gnu.org)
+Received: from localhost ([::1]:40210 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1cWkC8-00074I-Qu
-	for alex.bennee@linaro.org; Thu, 26 Jan 2017 08:34:32 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:34457)
+	id 1cWnzn-0005ho-2C
+	for alex.bennee@linaro.org; Thu, 26 Jan 2017 12:38:03 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:45588)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1cWkC2-00072d-Py
-	for qemu-arm@nongnu.org; Thu, 26 Jan 2017 08:34:27 -0500
+	(envelope-from <clg@kaod.org>) id 1cWnzh-0005hg-CD
+	for qemu-arm@nongnu.org; Thu, 26 Jan 2017 12:38:00 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1cWkBz-0001EA-Jg
-	for qemu-arm@nongnu.org; Thu, 26 Jan 2017 08:34:26 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:57590)
+	(envelope-from <clg@kaod.org>) id 1cWnzc-0003fI-Rg
+	for qemu-arm@nongnu.org; Thu, 26 Jan 2017 12:37:57 -0500
+Received: from 10.mo5.mail-out.ovh.net ([46.105.52.148]:36741)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <eric.auger@redhat.com>)
-	id 1cWkBz-0001Cf-EY; Thu, 26 Jan 2017 08:34:23 -0500
-Received: from smtp.corp.redhat.com (int-mx16.intmail.prod.int.phx2.redhat.com
-	[10.5.11.28])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 364F9C04BD23;
-	Thu, 26 Jan 2017 13:34:20 +0000 (UTC)
-Received: from localhost.localdomain (ovpn-116-36.ams2.redhat.com
-	[10.36.116.36])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 25BFE1888AF;
-	Thu, 26 Jan 2017 13:34:18 +0000 (UTC)
+	(Exim 4.71) (envelope-from <clg@kaod.org>) id 1cWnzc-0003dt-LW
+	for qemu-arm@nongnu.org; Thu, 26 Jan 2017 12:37:52 -0500
+Received: from player773.ha.ovh.net (b9.ovh.net [213.186.33.59])
+	by mo5.mail-out.ovh.net (Postfix) with ESMTP id B85DD952A2
+	for <qemu-arm@nongnu.org>; Thu, 26 Jan 2017 18:37:48 +0100 (CET)
+Received: from zorba.kaod.org.com (LFbn-1-10647-27.w90-89.abo.wanadoo.fr
+	[90.89.233.27]) (Authenticated sender: clg@kaod.org)
+	by player773.ha.ovh.net (Postfix) with ESMTPSA id AC1BC600084;
+	Thu, 26 Jan 2017 18:37:40 +0100 (CET)
+From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
 To: Peter Maydell <peter.maydell@linaro.org>
-References: <1476117341-32690-1-git-send-email-drjones@redhat.com>
-	<1476117341-32690-3-git-send-email-drjones@redhat.com>
-	<CAFEAcA92X+oCMji_bnWkjRWvqQ+CyqrR0ogy-SKOGW7TRYsZ3g@mail.gmail.com>
-	<6442c7ab-a539-c1e2-bb54-23d4643bba65@redhat.com>
-	<CAFEAcA-R3CBd4_g=83Gq2U0LK6qf0k-sxb3Kiu3GSv9AXqZH2A@mail.gmail.com>
-From: Auger Eric <eric.auger@redhat.com>
-Message-ID: <ddd1f11a-3816-11fb-100b-356e7dbeb5e7@redhat.com>
-Date: Thu, 26 Jan 2017 14:34:16 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
-	Thunderbird/45.4.0
+Date: Thu, 26 Jan 2017 18:37:29 +0100
+Message-Id: <1485452251-1593-1-git-send-email-clg@kaod.org>
+X-Mailer: git-send-email 2.7.4
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA-R3CBd4_g=83Gq2U0LK6qf0k-sxb3Kiu3GSv9AXqZH2A@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.74 on 10.5.11.28
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.31]);
-	Thu, 26 Jan 2017 13:34:20 +0000 (UTC)
+Content-Type: text/plain; charset=UTF-8
+X-Ovh-Tracer-Id: 3741365392477031185
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrfeelgedrheehgddutdefucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddm
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH 2/2] hw/arm/virt: no ITS on
- older machine types
+X-Received-From: 46.105.52.148
+Subject: [Qemu-arm] [PATCH v2 0/2] Aspeed watchdog controller model
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -72,40 +61,42 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jones <drjones@redhat.com>, qemu-arm <qemu-arm@nongnu.org>,
-	QEMU Developers <qemu-devel@nongnu.org>
+Cc: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org, Joel Stanley <joel@jms.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: MmZHUawOdneh
+X-TUID: GeJwWB+rTrnb
 
-Hi Peter,
+Hello,
 
-On 26/01/2017 11:41, Peter Maydell wrote:
-> On 26 January 2017 at 07:58, Auger Eric <eric.auger@redhat.com> wrote:
->> On 20/01/2017 16:52, Peter Maydell wrote:
->>> So this patch added a no_its flag which gets set for virt-2.7
->>> and earlier, but there's no user-facing way to say "I'd like
->>> a virt-2.8 board with no ITS", right? That's a bit unfortunate
->>> because the ITS can't be migrated, which means there's no way
->>> to ask for a post-2.7 virt board which can be migrated...
->>
->> Sorry for the delay.
->>
->> For 2.9 machine I can add a new property that would allow the user to
->> deselect the ITS. Would that make sense?
-> 
-> Maybe, but Christoffer pointed out to me that we can't do
-> migration of the GICv3 yet anyway, so I was getting a bit
-> ahead of myself -- non-migratable ITS doesn't break something
-> that worked previously. So perhaps we're OK the way we are?
-Yes indeed GICv3 migration is not yet upstreamed although under way. For
-2.9 your concern still is relevant if ITS migration functionality does
-not get supported in 2.9 along with GICv3 one. I will pay attention to this.
+The Aspeed SoC includes a set of watchdog timers using 32-bit
+decrement counters. This patchset provides a model for this controller
+and adds the first watchdog to the Aspeed SoC model. A second watchdog
+exists and is used on real HW to boot from a second flash module
+containing a golden image of the firmware. This is not supported yet
+in qemu.
 
-Thanks
+The main benefit today of this model is to enables reboot/reset of a
+guest from U-Boot and Linux.
 
-Eric
-> 
-> thanks
-> -- PMM
-> 
+Thanks,
+
+C.
+
+C=C3=A9dric Le Goater (2):
+  wdt: Add Aspeed watchdog device model
+  aspeed: add a watchdog controller
+
+ hw/arm/aspeed_soc.c              |  13 +++
+ hw/watchdog/Makefile.objs        |   1 +
+ hw/watchdog/wdt_aspeed.c         | 225 +++++++++++++++++++++++++++++++++=
+++++++
+ include/hw/arm/aspeed_soc.h      |   2 +
+ include/hw/watchdog/wdt_aspeed.h |  32 ++++++
+ 5 files changed, 273 insertions(+)
+ create mode 100644 hw/watchdog/wdt_aspeed.c
+ create mode 100644 include/hw/watchdog/wdt_aspeed.h
+
+--=20
+2.7.4
+

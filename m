@@ -1,67 +1,64 @@
-Received: by 10.25.77.65 with SMTP id a62csp1821401lfb;
-        Tue, 24 Jan 2017 07:55:26 -0800 (PST)
-X-Received: by 10.55.7.14 with SMTP id 14mr29309819qkh.224.1485273326540;
-        Tue, 24 Jan 2017 07:55:26 -0800 (PST)
+Received: by 10.25.77.65 with SMTP id a62csp84931lfb;
+        Wed, 25 Jan 2017 23:58:49 -0800 (PST)
+X-Received: by 10.55.48.140 with SMTP id w134mr1318067qkw.253.1485417529079;
+        Wed, 25 Jan 2017 23:58:49 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id 63si13424006qtc.303.2017.01.24.07.55.25
+        by mx.google.com with ESMTPS id p44si583231qtf.55.2017.01.25.23.58.48
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 24 Jan 2017 07:55:26 -0800 (PST)
+        Wed, 25 Jan 2017 23:58:49 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:50894 helo=lists.gnu.org)
+Received: from localhost ([::1]:36637 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1cW3RL-0005QA-Pi
-	for alex.bennee@linaro.org; Tue, 24 Jan 2017 10:55:23 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:33874)
+	id 1cWexC-0003ca-Dt
+	for alex.bennee@linaro.org; Thu, 26 Jan 2017 02:58:46 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:46181)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mst@redhat.com>) id 1cW3RF-0005Pa-84
-	for qemu-arm@nongnu.org; Tue, 24 Jan 2017 10:55:18 -0500
+	(envelope-from <eric.auger@redhat.com>) id 1cWex7-0003cR-06
+	for qemu-arm@nongnu.org; Thu, 26 Jan 2017 02:58:41 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mst@redhat.com>) id 1cW3RC-0001SF-7l
-	for qemu-arm@nongnu.org; Tue, 24 Jan 2017 10:55:17 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:39528)
+	(envelope-from <eric.auger@redhat.com>) id 1cWex2-0001Wt-55
+	for qemu-arm@nongnu.org; Thu, 26 Jan 2017 02:58:41 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:55270)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <mst@redhat.com>)
-	id 1cW3RC-0001Rl-2s; Tue, 24 Jan 2017 10:55:14 -0500
-Received: from int-mx14.intmail.prod.int.phx2.redhat.com
-	(int-mx14.intmail.prod.int.phx2.redhat.com [10.5.11.27])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(Exim 4.71) (envelope-from <eric.auger@redhat.com>)
+	id 1cWex1-0001Uy-VX; Thu, 26 Jan 2017 02:58:36 -0500
+Received: from smtp.corp.redhat.com (int-mx16.intmail.prod.int.phx2.redhat.com
+	[10.5.11.28])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 2AE7B5144F;
-	Tue, 24 Jan 2017 15:55:14 +0000 (UTC)
-Received: from redhat.com (ovpn-117-58.rdu2.redhat.com [10.10.117.58])
-	by int-mx14.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with SMTP
-	id v0OFtDU1017467; Tue, 24 Jan 2017 10:55:13 -0500
-Date: Tue, 24 Jan 2017 17:55:12 +0200
-From: "Michael S. Tsirkin" <mst@redhat.com>
-To: Paolo Bonzini <pbonzini@redhat.com>
-Message-ID: <20170124175419-mutt-send-email-mst@kernel.org>
-References: <1485132904-17632-1-git-send-email-zhaoshenglong@huawei.com>
-	<20170123180247-mutt-send-email-mst@kernel.org>
-	<49fcc1e0-f439-9212-25f1-9b8dce6462cc@redhat.com>
-	<20170123190257-mutt-send-email-mst@kernel.org>
-	<5760ee8c-f567-0dfd-456f-65f8957b22e2@redhat.com>
-	<20170124164204-mutt-send-email-mst@kernel.org>
-	<9a61e616-9bf8-b4ff-43b9-68f1c908b910@redhat.com>
-	<20170124170514-mutt-send-email-mst@kernel.org>
-	<f5af901b-d355-94e7-fdf1-ad1b88223bd7@redhat.com>
+	by mx1.redhat.com (Postfix) with ESMTPS id CDEB14E328;
+	Thu, 26 Jan 2017 07:58:34 +0000 (UTC)
+Received: from localhost.localdomain (ovpn-116-36.ams2.redhat.com
+	[10.36.116.36])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id B8EB517E8FA;
+	Thu, 26 Jan 2017 07:58:33 +0000 (UTC)
+To: Peter Maydell <peter.maydell@linaro.org>, Andrew Jones <drjones@redhat.com>
+References: <1476117341-32690-1-git-send-email-drjones@redhat.com>
+	<1476117341-32690-3-git-send-email-drjones@redhat.com>
+	<CAFEAcA92X+oCMji_bnWkjRWvqQ+CyqrR0ogy-SKOGW7TRYsZ3g@mail.gmail.com>
+From: Auger Eric <eric.auger@redhat.com>
+Message-ID: <6442c7ab-a539-c1e2-bb54-23d4643bba65@redhat.com>
+Date: Thu, 26 Jan 2017 08:58:31 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
+	Thunderbird/45.4.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <f5af901b-d355-94e7-fdf1-ad1b88223bd7@redhat.com>
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.27
+In-Reply-To: <CAFEAcA92X+oCMji_bnWkjRWvqQ+CyqrR0ogy-SKOGW7TRYsZ3g@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.74 on 10.5.11.28
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.39]);
-	Tue, 24 Jan 2017 15:55:14 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.38]);
+	Thu, 26 Jan 2017 07:58:34 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [PATCH V2] virtio: Fix no interrupt when not
- creating msi controller
+Subject: Re: [Qemu-arm] [PATCH 2/2] hw/arm/virt: no ITS on older machine
+ types
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -73,38 +70,45 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org, qemu-devel@nongnu.org,
-	christoffer.dall@linaro.org, Shannon Zhao <zhaoshenglong@huawei.com>
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: q5nWKSu1t3iN
+X-TUID: 6YXovqcE8b9r
 
-On Tue, Jan 24, 2017 at 04:50:44PM +0100, Paolo Bonzini wrote:
-> 
-> 
-> On 24/01/2017 16:05, Michael S. Tsirkin wrote:
-> >>
-> >> So we have four cases:
-> >>
-> >> - assign with emulated irqfd + ISR
-> >> - assign with emulated irqfd
-> >> - assign with irqfd
-> >> - deassign
-> >>
-> >> Currently we don't distinguish the first two, so (which I don't like)
-> >> Shannon's patch ends up setting ISR twice.
-> > 
-> > I don't see this yet - where is it set twice?
-> 
-> Once in virtio_notify_irqfd, once in virtio_queue_guest_notifier_read.
-> 
-> Unfortunately, for virtio-blk + MSI + KVM + old Windows drivers we need
-> the one in virtio_notify_irqfd.  For virtio-net + vhost + INTx we need
-> the one in virtio_queue_guest_notifier_read.
+Hi Peter,
 
-Well in MSI mode virtio_queue_guest_notifier_read so we only do this
-once, right? I need to check INTx mode - does virtio_notify_irqfd
-get called then?
+On 20/01/2017 16:52, Peter Maydell wrote:
+> On 10 October 2016 at 17:35, Andrew Jones <drjones@redhat.com> wrote:
+>> We should avoid exposing new hardware (through DT and ACPI) on older
+>> machine types. This patch keeps 2.7 and older from changing, despite
+>> the introduction of ITS support for 2.8.
+>>
+>> Signed-off-by: Andrew Jones <drjones@redhat.com>
+>> ---
+>>
+>> As Eduardo pointed out long ago for a different reason, we should
+>> probably replace VirtGuestInfo with direct use of VirtMachineClass,
+>> like x86 has done to replace PcGuestInfo with direct use of
+>> PCMachineClass. I'll work on that, but wanted to get this ITS
+>> fixup in sooner than later, so I'm posting this patch now, which
+>> requires 'no_its' to be duplicated.
+> 
+> So this patch added a no_its flag which gets set for virt-2.7
+> and earlier, but there's no user-facing way to say "I'd like
+> a virt-2.8 board with no ITS", right? That's a bit unfortunate
+> because the ITS can't be migrated, which means there's no way
+> to ask for a post-2.7 virt board which can be migrated...
 
--- 
-MST
+Sorry for the delay.
+
+For 2.9 machine I can add a new property that would allow the user to
+deselect the ITS. Would that make sense?
+
+Thanks
+
+Eric
+
+
+> thanks
+> -- PMM
+> 

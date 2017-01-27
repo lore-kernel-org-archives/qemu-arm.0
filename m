@@ -1,60 +1,171 @@
-Return-Path: <alex.bennee@linaro.org>
-Received: from zen.linaro.local ([81.128.185.34])
-        by smtp.gmail.com with ESMTPSA id y65sm4813305wmb.5.2017.01.27.09.07.34
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 27 Jan 2017 09:07:34 -0800 (PST)
-Received: from zen (localhost [127.0.0.1])
-	by zen.linaro.local (Postfix) with ESMTPS id A9E2A3E008E;
-	Fri, 27 Jan 2017 17:07:33 +0000 (GMT)
-References: <20170127103505.18606-1-alex.bennee@linaro.org> <20170127103505.18606-26-alex.bennee@linaro.org> <CAJhHMCDAf8UqjO6m5RM3Hasdsf4_1FPnqibtRwYkips48tQCvw@mail.gmail.com>
-User-agent: mu4e 0.9.19; emacs 25.1.91.4
-From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: Pranith Kumar <bobby.prani+qemu@gmail.com>
-Cc: Peter Maydell <peter.maydell@linaro.org>, "open list\:ARM" <qemu-arm@nongnu.org>, "open list\:All patches CC here" <qemu-devel@nongnu.org>, Richard Henderson <rth@twiddle.net>
-Subject: Re: [Qemu-arm] [PATCH v8 25/25] tcg: enable MTTCG by default for ARM on x86 hosts
-In-reply-to: <CAJhHMCDAf8UqjO6m5RM3Hasdsf4_1FPnqibtRwYkips48tQCvw@mail.gmail.com>
-Date: Fri, 27 Jan 2017 17:07:33 +0000
-Message-ID: <87k29g8m96.fsf@linaro.org>
+Received: by 10.25.77.65 with SMTP id a62csp369116lfb;
+        Fri, 27 Jan 2017 10:31:51 -0800 (PST)
+X-Received: by 10.200.58.101 with SMTP id w92mr8982182qte.160.1485541911659;
+        Fri, 27 Jan 2017 10:31:51 -0800 (PST)
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
+        by mx.google.com with ESMTPS id p102si4093447qkp.108.2017.01.27.10.31.50
+        for <alex.bennee@linaro.org>
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Fri, 27 Jan 2017 10:31:51 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+Authentication-Results: mx.google.com;
+       dkim=fail header.i=@gmail.com;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:47315 helo=lists.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1cXBJM-0003X2-TI
+	for alex.bennee@linaro.org; Fri, 27 Jan 2017 13:31:48 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:43202)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <alistair23@gmail.com>) id 1cXBJD-0003U7-Ds
+	for qemu-arm@nongnu.org; Fri, 27 Jan 2017 13:31:40 -0500
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+	(envelope-from <alistair23@gmail.com>) id 1cXBJC-0005Ii-E3
+	for qemu-arm@nongnu.org; Fri, 27 Jan 2017 13:31:39 -0500
+Received: from mail-ot0-x243.google.com ([2607:f8b0:4003:c0f::243]:33095)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <alistair23@gmail.com>)
+	id 1cXBJ8-0005HX-1H; Fri, 27 Jan 2017 13:31:34 -0500
+Received: by mail-ot0-x243.google.com with SMTP id f9so31889353otd.0;
+	Fri, 27 Jan 2017 10:31:33 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=mime-version:sender:in-reply-to:references:from:date:message-id
+	:subject:to:cc;
+	bh=OfFyIUD/k/1kyqiuj9ZrbixJseNgZKbGbmo8djQC2CM=;
+	b=ZP1LJokfKHIN1VU6NlMAwX3Q5EfhQDeKveYseThr8rcyLGOKu0lCnpfystXXohQyY3
+	Pcsg+xeMzs81VMxk/UeWuEuh/hROSouhdq33laESCaw3sFv78fK2M9uT8LHTs3uX2ahl
+	T7QyOkcOPWcpS6tokcdy68LjNk6ev/uTeCnwZl2CHVksdCNrVK4erfLDOGAIo7qUs2DP
+	vj1kmi5dzwe0CHKqL1H6z8BTW1+yeISEAs4xYhPl8yTpCXTZV0FeD24g+nj9xDEPGuKJ
+	cACczuJtI9Esf2v4s8Dk9FYFF9WfJVIMQgzirSPfIhHFFcWPH7dmeXjG6CW4BDWTcmsb
+	Dpww==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:sender:in-reply-to:references:from
+	:date:message-id:subject:to:cc;
+	bh=OfFyIUD/k/1kyqiuj9ZrbixJseNgZKbGbmo8djQC2CM=;
+	b=d1ac0JCx4Gz05v6dIhXn9TfsMdv1tKEBncXx2mzYvurv7Dt1RMgKawB02WvDhpB2if
+	e6kZZ6361dyAp5TqHFL3fSI/8xR1tIKLmEDjqeZDNy2DzNVHz2IVbfWdxNHjhhUQoI9R
+	i7elVrC9x4nwJtfeeiUr14/cqh8SaJU/K1tNteBlacuFYzK7JusuBoIj2SSAQ8AkuRMf
+	ZHmL7RE10G1OuRJi+JOPLRA31X9VSPGxNgiryNzvwA9hGRNr409ORtup4KmBc7piJGle
+	w6oPrN1iyM2JETEJojjR4vL/1bIYh0yzYsntIDVka0mrlCJ5CvJbOEHtYFW28DtSEB6m
+	hLfg==
+X-Gm-Message-State: AIkVDXKn6b5arDAXDtJb/fHRFYitE8//sIhaqCNV285o0YYWWHVyL458ZmJxuzQj8/w8FNZc+iBWXtajnz9oHw==
+X-Received: by 10.157.10.42 with SMTP id 39mr4862105otg.276.1485541893261;
+	Fri, 27 Jan 2017 10:31:33 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8bit
-X-TUID: mkC3Bglnbxbw
+Received: by 10.182.98.133 with HTTP; Fri, 27 Jan 2017 10:31:02 -0800 (PST)
+In-Reply-To: <a3509663-3b80-3eab-73ac-f31027d68c87@redhat.com>
+References: <1485443388-27253-1-git-send-email-armbru@redhat.com>
+	<1485443388-27253-5-git-send-email-armbru@redhat.com>
+	<a3509663-3b80-3eab-73ac-f31027d68c87@redhat.com>
+From: Alistair Francis <alistair.francis@xilinx.com>
+Date: Fri, 27 Jan 2017 10:31:02 -0800
+X-Google-Sender-Auth: HgC7GAxPQuKGHXZAzvAMPaADfrs
+Message-ID: <CAKmqyKO5AVnTe0tSQzx_j6wa46spbYD_HVbmqJJxeEQsJRbFWg@mail.gmail.com>
+To: Thomas Huth <thuth@redhat.com>
+Content-Type: text/plain; charset=UTF-8
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 2607:f8b0:4003:c0f::243
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v2 4/8] hw: Default -drive to
+ if=none instead of scsi when scsi cannot work
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.21
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Kevin Wolf <kwolf@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
+	qemu-block@nongnu.org,
+	"qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
+	Markus Armbruster <armbru@redhat.com>,
+	Alistair Francis <alistair.francis@xilinx.com>,
+	qemu-arm <qemu-arm@nongnu.org>, Max Reitz <mreitz@redhat.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: kQd9Ecbohxax
 
-
-Pranith Kumar <bobby.prani+qemu@gmail.com> writes:
-
-> On Fri, Jan 27, 2017 at 5:35 AM, Alex Bennée <alex.bennee@linaro.org> wrote:
->
->> diff --git a/tcg/i386/tcg-target.h b/tcg/i386/tcg-target.h
->> index 21d96ec35c..536190f647 100644
->> --- a/tcg/i386/tcg-target.h
->> +++ b/tcg/i386/tcg-target.h
->> @@ -165,4 +165,20 @@ static inline void flush_icache_range(uintptr_t start, uintptr_t stop)
->>  {
+On Thu, Jan 26, 2017 at 9:59 AM, Thomas Huth <thuth@redhat.com> wrote:
+> On 26.01.2017 16:09, Markus Armbruster wrote:
+>> Block backends defined with -drive if=scsi are meant to be picked up
+>> by machine initialization code: a suitable frontend gets created and
+>> wired up automatically.
+>>
+>> if=scsi drives not picked up that way can still be used with -device
+>> as if they had if=none, but that's unclean and best avoided.  Unused
+>> ones produce an "Orphaned drive without device" warning.
+>>
+>> A few machine types default to if=scsi, even though they don't
+>> actually have a SCSI HBA.  This makes no sense.  Change their default
+>> to if=none.  Affected machines:
+>>
+>> * aarch64/arm: realview-pbx-a9 vexpress-a9 vexpress-a15 xilinx-zynq-a9
+>>
+>> Cc: Peter Maydell <peter.maydell@linaro.org>
+>> Cc: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
+>> Cc: Alistair Francis <alistair.francis@xilinx.com>
+>> Cc: qemu-arm@nongnu.org
+>> Signed-off-by: Markus Armbruster <armbru@redhat.com>
+>> ---
+>>  hw/arm/realview.c    | 1 -
+>>  hw/arm/vexpress.c    | 1 -
+>>  hw/arm/xilinx_zynq.c | 1 -
+>>  3 files changed, 3 deletions(-)
+>>
+>> diff --git a/hw/arm/realview.c b/hw/arm/realview.c
+>> index 8eafcca..8c11c7a 100644
+>> --- a/hw/arm/realview.c
+>> +++ b/hw/arm/realview.c
+>> @@ -443,7 +443,6 @@ static void realview_pbx_a9_class_init(ObjectClass *oc, void *data)
+>>
+>>      mc->desc = "ARM RealView Platform Baseboard Explore for Cortex-A9";
+>>      mc->init = realview_pbx_a9_init;
+>> -    mc->block_default_type = IF_SCSI;
+>>      mc->max_cpus = 4;
 >>  }
 >>
->> +/* This defines the natural memory order supported by this
->> + * architecture before guarantees made by various barrier
->> + * instructions.
->> + *
->> + * The x86 has a pretty strong memory ordering which only really
->> + * allows for some stores to be re-ordered after loads.
->> + */
->> +#include "tcg-mo.h"
->> +
->> +static inline int get_tcg_target_mo(void)
->> +{
->> +    return TCG_MO_ALL & ~TCG_MO_LD_ST;
->> +}
->> +
+>> diff --git a/hw/arm/vexpress.c b/hw/arm/vexpress.c
+>> index 58760f4..5756470 100644
+>> --- a/hw/arm/vexpress.c
+>> +++ b/hw/arm/vexpress.c
+>> @@ -751,7 +751,6 @@ static void vexpress_class_init(ObjectClass *oc, void *data)
+>>
+>>      mc->desc = "ARM Versatile Express";
+>>      mc->init = vexpress_common_init;
+>> -    mc->block_default_type = IF_SCSI;
+>>      mc->max_cpus = 4;
+>>  }
+>>
+>> diff --git a/hw/arm/xilinx_zynq.c b/hw/arm/xilinx_zynq.c
+>> index 7dac20d..3985356 100644
+>> --- a/hw/arm/xilinx_zynq.c
+>> +++ b/hw/arm/xilinx_zynq.c
+>> @@ -323,7 +323,6 @@ static void zynq_machine_init(MachineClass *mc)
+>>  {
+>>      mc->desc = "Xilinx Zynq Platform Baseboard for Cortex-A9";
+>>      mc->init = zynq_init;
+>> -    mc->block_default_type = IF_SCSI;
+>>      mc->max_cpus = 1;
+>>      mc->no_sdcard = 1;
+>>  }
 >
-> s/TCG_MO_LD_ST/TCG_MO_ST_LD/?
+> Right, that looks like old copy-n-paste bugs from other machine types.
+>
+> Reviewed-by: Thomas Huth <thuth@redhat.com>
 
-Doh - sorry I missed that. Will fix this time ;-)
+Yeah, I agree. This looks good to me.
+
+Reviewed-by: Alistair Francis <alistair.francis@xilinx.com>
+
+Thanks,
+
+Alistair
 
 >
-> Thanks,
-
-
---
-Alex Bennée
+>

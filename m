@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaro.local ([81.128.185.34])
-        by smtp.gmail.com with ESMTPSA id e6sm7183648wrc.30.2017.01.27.02.43.33
+        by smtp.gmail.com with ESMTPSA id p49sm7164475wrb.10.2017.01.27.02.43.33
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
         Fri, 27 Jan 2017 02:43:33 -0800 (PST)
 Received: from zen.linaroharston (localhost [127.0.0.1])
-	by zen.linaro.local (Postfix) with ESMTP id 38BDC3E376F;
+	by zen.linaro.local (Postfix) with ESMTP id 27FCF3E376D;
 	Fri, 27 Jan 2017 10:35:07 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: 
@@ -12,64 +12,109 @@ Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
 	Peter Maydell <peter.maydell@linaro.org>,
 	qemu-arm@nongnu.org (open list:ARM),
 	qemu-devel@nongnu.org (open list:All patches CC here)
-Subject: [PATCH v8 22/25] target-arm/cpu.h: make ARM_CP defined consistent
-Date: Fri, 27 Jan 2017 10:35:02 +0000
-Message-Id: <20170127103505.18606-23-alex.bennee@linaro.org>
+Subject: [PATCH v8 21/25] target-arm: don't generate WFE/YIELD calls for MTTCG
+Date: Fri, 27 Jan 2017 10:35:01 +0000
+Message-Id: <20170127103505.18606-22-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.11.0
 In-Reply-To: <20170127103505.18606-1-alex.bennee@linaro.org>
 References: <20170127103505.18606-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: yBo084cAE2AG
+X-TUID: Deg7PV8dkYVy
 
-This is a purely mechanical change to make the ARM_CP flags neatly
-align and use a consistent format so it is easier to see which bit
-each flag is.
+The WFE and YIELD instructions are really only hints and in TCG's case
+they were useful to move the scheduling on from one vCPU to the next. In
+the parallel context (MTTCG) this just causes an unnecessary cpu_exit
+and contention of the BQL.
 
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+Reviewed-by: Richard Henderson <rth@twiddle.net>
 ---
- target/arm/cpu.h | 28 ++++++++++++++--------------
- 1 file changed, 14 insertions(+), 14 deletions(-)
+ target/arm/op_helper.c     |  7 +++++++
+ target/arm/translate-a64.c |  8 ++++++--
+ target/arm/translate.c     | 20 ++++++++++++++++----
+ 3 files changed, 29 insertions(+), 6 deletions(-)
 
-diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index 274ef17562..f56a96c675 100644
---- a/target/arm/cpu.h
-+++ b/target/arm/cpu.h
-@@ -1398,20 +1398,20 @@ static inline uint64_t cpreg_to_kvm_id(uint32_t cpregid)
-  * need to be surrounded by gen_io_start()/gen_io_end(). In particular,
-  * registers which implement clocks or timers require this.
-  */
--#define ARM_CP_SPECIAL 1
--#define ARM_CP_CONST 2
--#define ARM_CP_64BIT 4
--#define ARM_CP_SUPPRESS_TB_END 8
--#define ARM_CP_OVERRIDE 16
--#define ARM_CP_ALIAS 32
--#define ARM_CP_IO 64
--#define ARM_CP_NO_RAW 128
--#define ARM_CP_NOP (ARM_CP_SPECIAL | (1 << 8))
--#define ARM_CP_WFI (ARM_CP_SPECIAL | (2 << 8))
--#define ARM_CP_NZCV (ARM_CP_SPECIAL | (3 << 8))
--#define ARM_CP_CURRENTEL (ARM_CP_SPECIAL | (4 << 8))
--#define ARM_CP_DC_ZVA (ARM_CP_SPECIAL | (5 << 8))
--#define ARM_LAST_SPECIAL ARM_CP_DC_ZVA
-+#define ARM_CP_SPECIAL         (1 << 0)
-+#define ARM_CP_CONST           (1 << 1)
-+#define ARM_CP_64BIT           (1 << 2)
-+#define ARM_CP_SUPPRESS_TB_END (1 << 3)
-+#define ARM_CP_OVERRIDE        (1 << 4)
-+#define ARM_CP_ALIAS           (1 << 5)
-+#define ARM_CP_IO              (1 << 6)
-+#define ARM_CP_NO_RAW          (1 << 7)
-+#define ARM_CP_NOP             (ARM_CP_SPECIAL | (1 << 8))
-+#define ARM_CP_WFI             (ARM_CP_SPECIAL | (2 << 8))
-+#define ARM_CP_NZCV            (ARM_CP_SPECIAL | (3 << 8))
-+#define ARM_CP_CURRENTEL       (ARM_CP_SPECIAL | (4 << 8))
-+#define ARM_CP_DC_ZVA          (ARM_CP_SPECIAL | (5 << 8))
-+#define ARM_LAST_SPECIAL       ARM_CP_DC_ZVA
- /* Used only as a terminator for ARMCPRegInfo lists */
- #define ARM_CP_SENTINEL 0xffff
- /* Mask of only the flag bits in a type field */
+diff --git a/target/arm/op_helper.c b/target/arm/op_helper.c
+index e1a883c595..abfa7cdd39 100644
+--- a/target/arm/op_helper.c
++++ b/target/arm/op_helper.c
+@@ -436,6 +436,13 @@ void HELPER(yield)(CPUARMState *env)
+     ARMCPU *cpu = arm_env_get_cpu(env);
+     CPUState *cs = CPU(cpu);
+ 
++    /* When running in MTTCG we don't generate jumps to the yield and
++     * WFE helpers as it won't affect the scheduling of other vCPUs.
++     * If we wanted to more completely model WFE/SEV so we don't busy
++     * spin unnecessarily we would need to do something more involved.
++     */
++    g_assert(!parallel_cpus);
++
+     /* This is a non-trappable hint instruction that generally indicates
+      * that the guest is currently busy-looping. Yield control back to the
+      * top level loop so that a more deserving VCPU has a chance to run.
+diff --git a/target/arm/translate-a64.c b/target/arm/translate-a64.c
+index 88a4df6959..05162f335e 100644
+--- a/target/arm/translate-a64.c
++++ b/target/arm/translate-a64.c
+@@ -1342,10 +1342,14 @@ static void handle_hint(DisasContext *s, uint32_t insn,
+         s->is_jmp = DISAS_WFI;
+         return;
+     case 1: /* YIELD */
+-        s->is_jmp = DISAS_YIELD;
++        if (!parallel_cpus) {
++            s->is_jmp = DISAS_YIELD;
++        }
+         return;
+     case 2: /* WFE */
+-        s->is_jmp = DISAS_WFE;
++        if (!parallel_cpus) {
++            s->is_jmp = DISAS_WFE;
++        }
+         return;
+     case 4: /* SEV */
+     case 5: /* SEVL */
+diff --git a/target/arm/translate.c b/target/arm/translate.c
+index dc67887918..444a24c2b6 100644
+--- a/target/arm/translate.c
++++ b/target/arm/translate.c
+@@ -4343,20 +4343,32 @@ static void gen_exception_return(DisasContext *s, TCGv_i32 pc)
+     gen_rfe(s, pc, load_cpu_field(spsr));
+ }
+ 
++/*
++ * For WFI we will halt the vCPU until an IRQ. For WFE and YIELD we
++ * only call the helper when running single threaded TCG code to ensure
++ * the next round-robin scheduled vCPU gets a crack. In MTTCG mode we
++ * just skip this instruction. Currently the SEV/SEVL instructions
++ * which are *one* of many ways to wake the CPU from WFE are not
++ * implemented so we can't sleep like WFI does.
++ */
+ static void gen_nop_hint(DisasContext *s, int val)
+ {
+     switch (val) {
+     case 1: /* yield */
+-        gen_set_pc_im(s, s->pc);
+-        s->is_jmp = DISAS_YIELD;
++        if (!parallel_cpus) {
++            gen_set_pc_im(s, s->pc);
++            s->is_jmp = DISAS_YIELD;
++        }
+         break;
+     case 3: /* wfi */
+         gen_set_pc_im(s, s->pc);
+         s->is_jmp = DISAS_WFI;
+         break;
+     case 2: /* wfe */
+-        gen_set_pc_im(s, s->pc);
+-        s->is_jmp = DISAS_WFE;
++        if (!parallel_cpus) {
++            gen_set_pc_im(s, s->pc);
++            s->is_jmp = DISAS_WFE;
++        }
+         break;
+     case 4: /* sev */
+     case 5: /* sevl */
 -- 
 2.11.0

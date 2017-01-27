@@ -1,124 +1,132 @@
-Received: by 10.25.77.65 with SMTP id a62csp235118lfb;
-        Fri, 27 Jan 2017 05:28:17 -0800 (PST)
-X-Received: by 10.159.35.137 with SMTP id 9mr4514248uao.110.1485523697601;
-        Fri, 27 Jan 2017 05:28:17 -0800 (PST)
-Return-Path: <peter.maydell@linaro.org>
-Received: from mail-vk0-x229.google.com (mail-vk0-x229.google.com. [2607:f8b0:400c:c05::229])
-        by mx.google.com with ESMTPS id t17si1423010uab.174.2017.01.27.05.28.17
-        for <alex.bennee@linaro.org>
+Return-Path: <alex.bennee@linaro.org>
+Received: from zen.linaro.local ([81.128.185.34])
+        by smtp.gmail.com with ESMTPSA id b87sm4010334wmi.0.2017.01.27.05.43.05
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 27 Jan 2017 05:28:17 -0800 (PST)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 2607:f8b0:400c:c05::229 as permitted sender) client-ip=2607:f8b0:400c:c05::229;
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 2607:f8b0:400c:c05::229 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: by mail-vk0-x229.google.com with SMTP id r136so175258086vke.1
-        for <alex.bennee@linaro.org>; Fri, 27 Jan 2017 05:28:17 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-         :cc:content-transfer-encoding;
-        bh=hvJG/VQ+EYuy3vM6zulTRWm0XziEPum8RZ1U8Ch6iDw=;
-        b=BfH0tBdnxPkZwvob31oVD24URTHj0RHt5//BF/Hls6IJuFm6T386qLZLW395Ba/jIX
-         5VBvdtcjisg29iGVzeN72vnKBCQjxOPw7DAw+C0uQ7uJLysLEUY7lvXHFOWAKaTy7/Yv
-         KnE/B0WTSmbGNMVpAuvqbJlSBCLcYsxXrTCwk=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-         :message-id:subject:to:cc:content-transfer-encoding;
-        bh=hvJG/VQ+EYuy3vM6zulTRWm0XziEPum8RZ1U8Ch6iDw=;
-        b=DVMAGdeO9MHnS5MWDxMSCR+Ugz0Xfh+vIl073Nbc2S+tRkSRTwpqG+bntOI0VohpYp
-         G6q+5W57nI3THvUPPKmlkttuNdAoIW/JVSMvL09AkzfGifhxPrI5LtZpjRwulia5xDyI
-         gmmv700xwBjn80GjeRHMKE+n6Hz6dK0My0xyN/8cN7VTmvMQM2xe/h0DSFXFScQSQ+O2
-         XS+eUVe4htEtheIEGKrpEulod3V4JpBwuF96Wcnvg1oqDtfuOurx7RsxKk+yrrwVas5A
-         MFm2LCXi4se87/m0Z5UBzAK07H+y3+7RICE7WNm3UhCb9FOnKXuADHVh5skzZm0gWIUk
-         abxQ==
-X-Gm-Message-State: AIkVDXKhGWMlLhdIKtisMeHhUtam3hGZEjyN1kmkT8OX6byutijqvpyh3YJa/ZnrKcHtSoMrN2WeNk6EGZwlek6L0mY=
-X-Received: by 10.31.165.82 with SMTP id o79mr4069800vke.95.1485523697212;
- Fri, 27 Jan 2017 05:28:17 -0800 (PST)
+        Fri, 27 Jan 2017 05:43:05 -0800 (PST)
+Received: from zen (localhost [127.0.0.1])
+	by zen.linaro.local (Postfix) with ESMTPS id 46C753E008E;
+	Fri, 27 Jan 2017 13:43:05 +0000 (GMT)
+References: <1485285380-10565-1-git-send-email-peter.maydell@linaro.org> <1485285380-10565-5-git-send-email-peter.maydell@linaro.org>
+User-agent: mu4e 0.9.19; emacs 25.1.91.4
+From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, patches@linaro.org, Liviu Ionescu <ilg@livius.net>
+Subject: Re: [PATCH 04/10] armv7m: implement CCR, CFSR, HFSR, DFSR, BFAR, and MMFAR
+In-reply-to: <1485285380-10565-5-git-send-email-peter.maydell@linaro.org>
+Date: Fri, 27 Jan 2017 13:43:05 +0000
+Message-ID: <877f5gaaae.fsf@linaro.org>
 MIME-Version: 1.0
-Received: by 10.31.205.2 with HTTP; Fri, 27 Jan 2017 05:27:56 -0800 (PST)
-In-Reply-To: <20170127103505.18606-17-alex.bennee@linaro.org>
-References: <20170127103505.18606-1-alex.bennee@linaro.org> <20170127103505.18606-17-alex.bennee@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 27 Jan 2017 13:27:56 +0000
-Message-ID: <CAFEAcA82McdB15znd7LK-OGkioHreht2Nk6h5t-As0JiYXHoRg@mail.gmail.com>
-Subject: Re: [PATCH v8 16/25] cputlb and arm/sparc targets: convert mmuidx
- flushes from varg to bitmap
-To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
-Cc: Paolo Bonzini <pbonzini@redhat.com>, Peter Crosthwaite <crosthwaite.peter@gmail.com>, 
-	Richard Henderson <rth@twiddle.net>, Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, 
-	Artyom Tarasenko <atar4qemu@gmail.com>, "open list:Overall" <qemu-devel@nongnu.org>, 
-	"open list:ARM" <qemu-arm@nongnu.org>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-X-TUID: /hMAJU04Vfsr
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-TUID: 2jqo9u4KKVyB
 
-On 27 January 2017 at 10:34, Alex Benn=C3=A9e <alex.bennee@linaro.org> wrot=
-e:
-> While the vargs approach was flexible the original MTTCG ended up
-> having munge the bits to a bitmap so the data could be used in
-> deferred work helpers. Instead of hiding that in cputlb we push the
-> change to the API to make it take a bitmap of MMU indexes instead.
+
+Peter Maydell <peter.maydell@linaro.org> writes:
+
+> From: Michael Davidsaver <mdavidsaver@gmail.com>
 >
-> This change is fairly mechanical but as storing the actual index is
-> useful for cases like the current running context. As a result the
-> constants are renamed to ARMMMUBit_foo and a couple of helper
-> functions added to convert between a single bit and a scalar index.
+> Implement the v7M system registers CCR, CFSR, HFSR, DFSR, BFAR and
+> MMFAR.  For the moment these simply read as written (with some basic
+> handling of RAZ/WI bits and W1C semantics).
 >
-> Signed-off-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
+> Signed-off-by: Michael Davidsaver <mdavidsaver@gmail.com>
+> [PMM: drop warning about setting unimplemented CCR bits;
+>  tweak commit message; add DFSR]
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 
-So, as discussed on IRC, I don't think this is really the right
-way to go. An MMU index is an index, ie it refers to a particular
-TLB. Almost all the time you don't want to think of it as a bit
-value. The only place that does care about that is places in
-the TLB code which want to say "do some operation on multiple
-TLBs at once", which is basically just the tlb_flush_by_mmuidx()
-function. So that function should have an API that lets you
-specify multiple TLBs (either the one it has now, or maybe one
-where you pass it in a uint32_t with bits set).
+Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
 
-That avoids either all or almost all of this churn.
+> ---
+>  hw/intc/armv7m_nvic.c | 42 ++++++++++++++++++++++++++++++++----------
+>  1 file changed, 32 insertions(+), 10 deletions(-)
+>
+> diff --git a/hw/intc/armv7m_nvic.c b/hw/intc/armv7m_nvic.c
+> index 81dcb83..60e72d7 100644
+> --- a/hw/intc/armv7m_nvic.c
+> +++ b/hw/intc/armv7m_nvic.c
+> @@ -228,8 +228,7 @@ static uint32_t nvic_readl(nvic_state *s, uint32_t offset)
+>          /* TODO: Implement SLEEPONEXIT.  */
+>          return 0;
+>      case 0xd14: /* Configuration Control.  */
+> -        /* TODO: Implement Configuration Control bits.  */
+> -        return 0;
+> +        return cpu->env.v7m.ccr;
+>      case 0xd24: /* System Handler Status.  */
+>          val = 0;
+>          if (s->gic.irq_state[ARMV7M_EXCP_MEM].active) val |= (1 << 0);
+> @@ -248,16 +247,19 @@ static uint32_t nvic_readl(nvic_state *s, uint32_t offset)
+>          if (s->gic.irq_state[ARMV7M_EXCP_USAGE].enabled) val |= (1 << 18);
+>          return val;
+>      case 0xd28: /* Configurable Fault Status.  */
+> -        /* TODO: Implement Fault Status.  */
+> -        qemu_log_mask(LOG_UNIMP, "Configurable Fault Status unimplemented\n");
+> -        return 0;
+> +        return cpu->env.v7m.cfsr;
+>      case 0xd2c: /* Hard Fault Status.  */
+> +        return cpu->env.v7m.hfsr;
+>      case 0xd30: /* Debug Fault Status.  */
+> -    case 0xd34: /* Mem Manage Address.  */
+> +        return cpu->env.v7m.dfsr;
+> +    case 0xd34: /* MMFAR MemManage Fault Address */
+> +        return cpu->env.v7m.mmfar;
+>      case 0xd38: /* Bus Fault Address.  */
+> +        return cpu->env.v7m.bfar;
+>      case 0xd3c: /* Aux Fault Status.  */
+>          /* TODO: Implement fault status registers.  */
+> -        qemu_log_mask(LOG_UNIMP, "Fault status registers unimplemented\n");
+> +        qemu_log_mask(LOG_UNIMP,
+> +                      "Aux Fault status registers unimplemented\n");
+>          return 0;
+>      case 0xd40: /* PFR0.  */
+>          return 0x00000030;
+> @@ -366,9 +368,19 @@ static void nvic_writel(nvic_state *s, uint32_t offset, uint32_t value)
+>          }
+>          break;
+>      case 0xd10: /* System Control.  */
+> -    case 0xd14: /* Configuration Control.  */
+>          /* TODO: Implement control registers.  */
+> -        qemu_log_mask(LOG_UNIMP, "NVIC: SCR and CCR unimplemented\n");
+> +        qemu_log_mask(LOG_UNIMP, "NVIC: SCR unimplemented\n");
+> +        break;
+> +    case 0xd14: /* Configuration Control.  */
+> +        /* Enforce RAZ/WI on reserved and must-RAZ/WI bits */
+> +        value &= (R_V7M_CCR_STKALIGN_MASK |
+> +                  R_V7M_CCR_BFHFNMIGN_MASK |
+> +                  R_V7M_CCR_DIV_0_TRP_MASK |
+> +                  R_V7M_CCR_UNALIGN_TRP_MASK |
+> +                  R_V7M_CCR_USERSETMPEND_MASK |
+> +                  R_V7M_CCR_NONBASETHRDENA_MASK);
+> +
+> +        cpu->env.v7m.ccr = value;
+>          break;
+>      case 0xd24: /* System Handler Control.  */
+>          /* TODO: Real hardware allows you to set/clear the active bits
+> @@ -378,13 +390,23 @@ static void nvic_writel(nvic_state *s, uint32_t offset, uint32_t value)
+>          s->gic.irq_state[ARMV7M_EXCP_USAGE].enabled = (value & (1 << 18)) != 0;
+>          break;
+>      case 0xd28: /* Configurable Fault Status.  */
+> +        cpu->env.v7m.cfsr &= ~value; /* W1C */
+> +        break;
+>      case 0xd2c: /* Hard Fault Status.  */
+> +        cpu->env.v7m.hfsr &= ~value; /* W1C */
+> +        break;
+>      case 0xd30: /* Debug Fault Status.  */
+> +        cpu->env.v7m.dfsr &= ~value; /* W1C */
+> +        break;
+>      case 0xd34: /* Mem Manage Address.  */
+> +        cpu->env.v7m.mmfar = value;
+> +        return;
+>      case 0xd38: /* Bus Fault Address.  */
+> +        cpu->env.v7m.bfar = value;
+> +        return;
+>      case 0xd3c: /* Aux Fault Status.  */
+>          qemu_log_mask(LOG_UNIMP,
+> -                      "NVIC: fault status registers unimplemented\n");
+> +                      "NVIC: Aux fault status registers unimplemented\n");
+>          break;
+>      case 0xf00: /* Software Triggered Interrupt Register */
+>          if ((value & 0x1ff) < s->num_irq) {
 
-> --- a/target/arm/cpu.h
-> +++ b/target/arm/cpu.h
-> @@ -1954,27 +1954,40 @@ static inline bool arm_excp_unmasked(CPUState *cs=
-, unsigned int excp_idx,
->   * of the AT/ATS operations.
->   * The values used are carefully arranged to make mmu_idx =3D> EL lookup=
- easy.
->   */
-> -typedef enum ARMMMUIdx {
-> -    ARMMMUIdx_S12NSE0 =3D 0,
-> -    ARMMMUIdx_S12NSE1 =3D 1,
-> -    ARMMMUIdx_S1E2 =3D 2,
-> -    ARMMMUIdx_S1E3 =3D 3,
-> -    ARMMMUIdx_S1SE0 =3D 4,
-> -    ARMMMUIdx_S1SE1 =3D 5,
-> -    ARMMMUIdx_S2NS =3D 6,
-> +typedef enum ARMMMUBitMap {
-> +    ARMMMUBit_S12NSE0 =3D 1 << 0,
-> +    ARMMMUBit_S12NSE1 =3D 1 << 1,
-> +    ARMMMUBit_S1E2 =3D 1 << 2,
-> +    ARMMMUBit_S1E3 =3D 1 << 3,
-> +    ARMMMUBit_S1SE0 =3D 1 << 4,
-> +    ARMMMUBit_S1SE1 =3D 1 << 5,
-> +    ARMMMUBit_S2NS =3D 1 << 6,
->      /* Indexes below here don't have TLBs and are used only for AT syste=
-m
->       * instructions or for the first stage of an S12 page table walk.
->       */
-> -    ARMMMUIdx_S1NSE0 =3D 7,
-> -    ARMMMUIdx_S1NSE1 =3D 8,
-> -} ARMMMUIdx;
-> +    ARMMMUBit_S1NSE0 =3D 1 << 7,
-> +    ARMMMUBit_S1NSE1 =3D 1 << 8,
-> +} ARMMMUBitMap;
 
-In particular I'd be very wary of changing these values, because
-as the comment says things are arranged carefully to make some
-operations easy.
-
-thanks
--- PMM
+--
+Alex Bennée

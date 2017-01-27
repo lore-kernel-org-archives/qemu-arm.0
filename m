@@ -1,59 +1,232 @@
-Return-Path: <alex.bennee@linaro.org>
-Received: from zen.linaro.local ([81.128.185.34])
-        by smtp.gmail.com with ESMTPSA id h3sm8081600wrb.31.2017.01.27.05.58.01
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 27 Jan 2017 05:58:01 -0800 (PST)
-Received: from zen (localhost [127.0.0.1])
-	by zen.linaro.local (Postfix) with ESMTPS id 8CA173E0342;
-	Fri, 27 Jan 2017 13:58:01 +0000 (GMT)
-References: <1485285380-10565-1-git-send-email-peter.maydell@linaro.org> <1485285380-10565-11-git-send-email-peter.maydell@linaro.org>
-User-agent: mu4e 0.9.19; emacs 25.1.91.4
-From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, patches@linaro.org, Liviu Ionescu <ilg@livius.net>
-Subject: Re: [PATCH 10/10] armv7m: R14 should reset to 0xffffffff
-In-reply-to: <1485285380-10565-11-git-send-email-peter.maydell@linaro.org>
-Date: Fri, 27 Jan 2017 13:58:01 +0000
-Message-ID: <87ziic8v12.fsf@linaro.org>
+Received: by 10.25.77.65 with SMTP id a62csp315552lfb;
+        Fri, 27 Jan 2017 08:27:33 -0800 (PST)
+X-Received: by 10.55.4.138 with SMTP id 132mr8906511qke.190.1485534453587;
+        Fri, 27 Jan 2017 08:27:33 -0800 (PST)
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
+        by mx.google.com with ESMTPS id n75si3856796qkl.191.2017.01.27.08.27.32
+        for <alex.bennee@linaro.org>
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Fri, 27 Jan 2017 08:27:33 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+Authentication-Results: mx.google.com;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:46608 helo=lists.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1cX9N4-0004DL-UV
+	for alex.bennee@linaro.org; Fri, 27 Jan 2017 11:27:30 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:44837)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <SRS0=IsLg=ZJ=redhat.com=mst@kernel.org>)
+	id 1cX9Mv-0004Bg-9Y
+	for qemu-arm@nongnu.org; Fri, 27 Jan 2017 11:27:22 -0500
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+	(envelope-from <SRS0=IsLg=ZJ=redhat.com=mst@kernel.org>)
+	id 1cX9Ms-0007P8-BM
+	for qemu-arm@nongnu.org; Fri, 27 Jan 2017 11:27:21 -0500
+Received: from mail.kernel.org ([198.145.29.136]:44312)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <SRS0=IsLg=ZJ=redhat.com=mst@kernel.org>)
+	id 1cX9Ms-0007Oi-11; Fri, 27 Jan 2017 11:27:18 -0500
+Received: from mail.kernel.org (localhost [127.0.0.1])
+	by mail.kernel.org (Postfix) with ESMTP id E6F1A20498;
+	Fri, 27 Jan 2017 16:27:15 +0000 (UTC)
+Received: from redhat.com (pool-96-237-166-50.bstnma.fios.verizon.net
+	[96.237.166.50])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mail.kernel.org (Postfix) with ESMTPSA id 58FFF20495;
+	Fri, 27 Jan 2017 16:27:14 +0000 (UTC)
+Date: Fri, 27 Jan 2017 18:27:13 +0200
+From: "Michael S. Tsirkin" <mst@redhat.com>
+To: qemu-devel@nongnu.org
+Message-ID: <1485534415-20887-2-git-send-email-mst@redhat.com>
+References: <1485534415-20887-1-git-send-email-mst@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8bit
-X-TUID: SaCW1RuF3E3Q
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <1485534415-20887-1-git-send-email-mst@redhat.com>
+X-Mailer: git-send-email 2.8.0.287.g0deeb61
+X-Mutt-Fcc: =sent
+X-Virus-Scanned: ClamAV using ClamSMTP
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
+X-Received-From: 198.145.29.136
+Subject: [Qemu-arm] [PATCH 2/3] arm: add trailing ; after MISMATCH_CHECK
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.21
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: KCP5MR/wMZQ3
 
+Macro calls without a trailing ; look weird in C, this works as a side
+effect of how QEMU_BUILD_BUG_ON is implemented. Fix this up.
 
-Peter Maydell <peter.maydell@linaro.org> writes:
+Signed-off-by: Michael S. Tsirkin <mst@redhat.com>
+---
+ target/arm/kvm-consts.h | 96 ++++++++++++++++++++++++-------------------------
+ 1 file changed, 48 insertions(+), 48 deletions(-)
 
-> For M profile (unlike A profile) the reset value of R14 is specified
-> as 0xffffffff.  (The rationale is that this is an illegal exception
-> return value, so if guest code tries to return to it it will result
-> in a helpful exception.)
->
-> Registers r0 to r12 and the flags are architecturally UNKNOWN on
-> reset, so we leave those at zero.
->
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+diff --git a/target/arm/kvm-consts.h b/target/arm/kvm-consts.h
+index 06b6c92..ddef815 100644
+--- a/target/arm/kvm-consts.h
++++ b/target/arm/kvm-consts.h
+@@ -33,12 +33,12 @@
+ #define CP_REG_ARM             0x4000000000000000ULL
+ #define CP_REG_ARCH_MASK       0xff00000000000000ULL
+ 
+-MISMATCH_CHECK(CP_REG_SIZE_SHIFT, KVM_REG_SIZE_SHIFT)
+-MISMATCH_CHECK(CP_REG_SIZE_MASK, KVM_REG_SIZE_MASK)
+-MISMATCH_CHECK(CP_REG_SIZE_U32, KVM_REG_SIZE_U32)
+-MISMATCH_CHECK(CP_REG_SIZE_U64, KVM_REG_SIZE_U64)
+-MISMATCH_CHECK(CP_REG_ARM, KVM_REG_ARM)
+-MISMATCH_CHECK(CP_REG_ARCH_MASK, KVM_REG_ARCH_MASK)
++MISMATCH_CHECK(CP_REG_SIZE_SHIFT, KVM_REG_SIZE_SHIFT);
++MISMATCH_CHECK(CP_REG_SIZE_MASK, KVM_REG_SIZE_MASK);
++MISMATCH_CHECK(CP_REG_SIZE_U32, KVM_REG_SIZE_U32);
++MISMATCH_CHECK(CP_REG_SIZE_U64, KVM_REG_SIZE_U64);
++MISMATCH_CHECK(CP_REG_ARM, KVM_REG_ARM);
++MISMATCH_CHECK(CP_REG_ARCH_MASK, KVM_REG_ARCH_MASK);
+ 
+ #define QEMU_PSCI_0_1_FN_BASE 0x95c1ba5e
+ #define QEMU_PSCI_0_1_FN(n) (QEMU_PSCI_0_1_FN_BASE + (n))
+@@ -47,10 +47,10 @@ MISMATCH_CHECK(CP_REG_ARCH_MASK, KVM_REG_ARCH_MASK)
+ #define QEMU_PSCI_0_1_FN_CPU_ON QEMU_PSCI_0_1_FN(2)
+ #define QEMU_PSCI_0_1_FN_MIGRATE QEMU_PSCI_0_1_FN(3)
+ 
+-MISMATCH_CHECK(QEMU_PSCI_0_1_FN_CPU_SUSPEND, KVM_PSCI_FN_CPU_SUSPEND)
+-MISMATCH_CHECK(QEMU_PSCI_0_1_FN_CPU_OFF, KVM_PSCI_FN_CPU_OFF)
+-MISMATCH_CHECK(QEMU_PSCI_0_1_FN_CPU_ON, KVM_PSCI_FN_CPU_ON)
+-MISMATCH_CHECK(QEMU_PSCI_0_1_FN_MIGRATE, KVM_PSCI_FN_MIGRATE)
++MISMATCH_CHECK(QEMU_PSCI_0_1_FN_CPU_SUSPEND, KVM_PSCI_FN_CPU_SUSPEND);
++MISMATCH_CHECK(QEMU_PSCI_0_1_FN_CPU_OFF, KVM_PSCI_FN_CPU_OFF);
++MISMATCH_CHECK(QEMU_PSCI_0_1_FN_CPU_ON, KVM_PSCI_FN_CPU_ON);
++MISMATCH_CHECK(QEMU_PSCI_0_1_FN_MIGRATE, KVM_PSCI_FN_MIGRATE);
+ 
+ #define QEMU_PSCI_0_2_FN_BASE 0x84000000
+ #define QEMU_PSCI_0_2_FN(n) (QEMU_PSCI_0_2_FN_BASE + (n))
+@@ -77,13 +77,13 @@ MISMATCH_CHECK(QEMU_PSCI_0_1_FN_MIGRATE, KVM_PSCI_FN_MIGRATE)
+ #define QEMU_PSCI_0_2_FN64_AFFINITY_INFO QEMU_PSCI_0_2_FN64(4)
+ #define QEMU_PSCI_0_2_FN64_MIGRATE QEMU_PSCI_0_2_FN64(5)
+ 
+-MISMATCH_CHECK(QEMU_PSCI_0_2_FN_CPU_SUSPEND, PSCI_0_2_FN_CPU_SUSPEND)
+-MISMATCH_CHECK(QEMU_PSCI_0_2_FN_CPU_OFF, PSCI_0_2_FN_CPU_OFF)
+-MISMATCH_CHECK(QEMU_PSCI_0_2_FN_CPU_ON, PSCI_0_2_FN_CPU_ON)
+-MISMATCH_CHECK(QEMU_PSCI_0_2_FN_MIGRATE, PSCI_0_2_FN_MIGRATE)
+-MISMATCH_CHECK(QEMU_PSCI_0_2_FN64_CPU_SUSPEND, PSCI_0_2_FN64_CPU_SUSPEND)
+-MISMATCH_CHECK(QEMU_PSCI_0_2_FN64_CPU_ON, PSCI_0_2_FN64_CPU_ON)
+-MISMATCH_CHECK(QEMU_PSCI_0_2_FN64_MIGRATE, PSCI_0_2_FN64_MIGRATE)
++MISMATCH_CHECK(QEMU_PSCI_0_2_FN_CPU_SUSPEND, PSCI_0_2_FN_CPU_SUSPEND);
++MISMATCH_CHECK(QEMU_PSCI_0_2_FN_CPU_OFF, PSCI_0_2_FN_CPU_OFF);
++MISMATCH_CHECK(QEMU_PSCI_0_2_FN_CPU_ON, PSCI_0_2_FN_CPU_ON);
++MISMATCH_CHECK(QEMU_PSCI_0_2_FN_MIGRATE, PSCI_0_2_FN_MIGRATE);
++MISMATCH_CHECK(QEMU_PSCI_0_2_FN64_CPU_SUSPEND, PSCI_0_2_FN64_CPU_SUSPEND);
++MISMATCH_CHECK(QEMU_PSCI_0_2_FN64_CPU_ON, PSCI_0_2_FN64_CPU_ON);
++MISMATCH_CHECK(QEMU_PSCI_0_2_FN64_MIGRATE, PSCI_0_2_FN64_MIGRATE);
+ 
+ /* PSCI v0.2 return values used by TCG emulation of PSCI */
+ 
+@@ -93,7 +93,7 @@ MISMATCH_CHECK(QEMU_PSCI_0_2_FN64_MIGRATE, PSCI_0_2_FN64_MIGRATE)
+ /* We implement version 0.2 only */
+ #define QEMU_PSCI_0_2_RET_VERSION_0_2                       2
+ 
+-MISMATCH_CHECK(QEMU_PSCI_0_2_RET_TOS_MIGRATION_NOT_REQUIRED, PSCI_0_2_TOS_MP)
++MISMATCH_CHECK(QEMU_PSCI_0_2_RET_TOS_MIGRATION_NOT_REQUIRED, PSCI_0_2_TOS_MP);
+ MISMATCH_CHECK(QEMU_PSCI_0_2_RET_VERSION_0_2,
+                (PSCI_VERSION_MAJOR(0) | PSCI_VERSION_MINOR(2)))
+ 
+@@ -108,15 +108,15 @@ MISMATCH_CHECK(QEMU_PSCI_0_2_RET_VERSION_0_2,
+ #define QEMU_PSCI_RET_NOT_PRESENT                 -7
+ #define QEMU_PSCI_RET_DISABLED                    -8
+ 
+-MISMATCH_CHECK(QEMU_PSCI_RET_SUCCESS, PSCI_RET_SUCCESS)
+-MISMATCH_CHECK(QEMU_PSCI_RET_NOT_SUPPORTED, PSCI_RET_NOT_SUPPORTED)
+-MISMATCH_CHECK(QEMU_PSCI_RET_INVALID_PARAMS, PSCI_RET_INVALID_PARAMS)
+-MISMATCH_CHECK(QEMU_PSCI_RET_DENIED, PSCI_RET_DENIED)
+-MISMATCH_CHECK(QEMU_PSCI_RET_ALREADY_ON, PSCI_RET_ALREADY_ON)
+-MISMATCH_CHECK(QEMU_PSCI_RET_ON_PENDING, PSCI_RET_ON_PENDING)
+-MISMATCH_CHECK(QEMU_PSCI_RET_INTERNAL_FAILURE, PSCI_RET_INTERNAL_FAILURE)
+-MISMATCH_CHECK(QEMU_PSCI_RET_NOT_PRESENT, PSCI_RET_NOT_PRESENT)
+-MISMATCH_CHECK(QEMU_PSCI_RET_DISABLED, PSCI_RET_DISABLED)
++MISMATCH_CHECK(QEMU_PSCI_RET_SUCCESS, PSCI_RET_SUCCESS);
++MISMATCH_CHECK(QEMU_PSCI_RET_NOT_SUPPORTED, PSCI_RET_NOT_SUPPORTED);
++MISMATCH_CHECK(QEMU_PSCI_RET_INVALID_PARAMS, PSCI_RET_INVALID_PARAMS);
++MISMATCH_CHECK(QEMU_PSCI_RET_DENIED, PSCI_RET_DENIED);
++MISMATCH_CHECK(QEMU_PSCI_RET_ALREADY_ON, PSCI_RET_ALREADY_ON);
++MISMATCH_CHECK(QEMU_PSCI_RET_ON_PENDING, PSCI_RET_ON_PENDING);
++MISMATCH_CHECK(QEMU_PSCI_RET_INTERNAL_FAILURE, PSCI_RET_INTERNAL_FAILURE);
++MISMATCH_CHECK(QEMU_PSCI_RET_NOT_PRESENT, PSCI_RET_NOT_PRESENT);
++MISMATCH_CHECK(QEMU_PSCI_RET_DISABLED, PSCI_RET_DISABLED);
+ 
+ /* Note that KVM uses overlapping values for AArch32 and AArch64
+  * target CPU numbers. AArch32 targets:
+@@ -137,14 +137,14 @@ MISMATCH_CHECK(QEMU_PSCI_RET_DISABLED, PSCI_RET_DISABLED)
+ #define QEMU_KVM_ARM_TARGET_NONE UINT_MAX
+ 
+ #ifdef TARGET_AARCH64
+-MISMATCH_CHECK(QEMU_KVM_ARM_TARGET_AEM_V8, KVM_ARM_TARGET_AEM_V8)
+-MISMATCH_CHECK(QEMU_KVM_ARM_TARGET_FOUNDATION_V8, KVM_ARM_TARGET_FOUNDATION_V8)
+-MISMATCH_CHECK(QEMU_KVM_ARM_TARGET_CORTEX_A57, KVM_ARM_TARGET_CORTEX_A57)
+-MISMATCH_CHECK(QEMU_KVM_ARM_TARGET_XGENE_POTENZA, KVM_ARM_TARGET_XGENE_POTENZA)
+-MISMATCH_CHECK(QEMU_KVM_ARM_TARGET_CORTEX_A53, KVM_ARM_TARGET_CORTEX_A53)
++MISMATCH_CHECK(QEMU_KVM_ARM_TARGET_AEM_V8, KVM_ARM_TARGET_AEM_V8);
++MISMATCH_CHECK(QEMU_KVM_ARM_TARGET_FOUNDATION_V8, KVM_ARM_TARGET_FOUNDATION_V8);
++MISMATCH_CHECK(QEMU_KVM_ARM_TARGET_CORTEX_A57, KVM_ARM_TARGET_CORTEX_A57);
++MISMATCH_CHECK(QEMU_KVM_ARM_TARGET_XGENE_POTENZA, KVM_ARM_TARGET_XGENE_POTENZA);
++MISMATCH_CHECK(QEMU_KVM_ARM_TARGET_CORTEX_A53, KVM_ARM_TARGET_CORTEX_A53);
+ #else
+-MISMATCH_CHECK(QEMU_KVM_ARM_TARGET_CORTEX_A15, KVM_ARM_TARGET_CORTEX_A15)
+-MISMATCH_CHECK(QEMU_KVM_ARM_TARGET_CORTEX_A7, KVM_ARM_TARGET_CORTEX_A7)
++MISMATCH_CHECK(QEMU_KVM_ARM_TARGET_CORTEX_A15, KVM_ARM_TARGET_CORTEX_A15);
++MISMATCH_CHECK(QEMU_KVM_ARM_TARGET_CORTEX_A7, KVM_ARM_TARGET_CORTEX_A7);
+ #endif
+ 
+ #define CP_REG_ARM64                   0x6000000000000000ULL
+@@ -166,20 +166,20 @@ MISMATCH_CHECK(QEMU_KVM_ARM_TARGET_CORTEX_A7, KVM_ARM_TARGET_CORTEX_A7)
+ #define CP_REG_ARM64_SYSREG_CP (CP_REG_ARM64_SYSREG >> CP_REG_ARM_COPROC_SHIFT)
+ 
+ #ifdef TARGET_AARCH64
+-MISMATCH_CHECK(CP_REG_ARM64, KVM_REG_ARM64)
+-MISMATCH_CHECK(CP_REG_ARM_COPROC_MASK, KVM_REG_ARM_COPROC_MASK)
+-MISMATCH_CHECK(CP_REG_ARM_COPROC_SHIFT, KVM_REG_ARM_COPROC_SHIFT)
+-MISMATCH_CHECK(CP_REG_ARM64_SYSREG, KVM_REG_ARM64_SYSREG)
+-MISMATCH_CHECK(CP_REG_ARM64_SYSREG_OP0_MASK, KVM_REG_ARM64_SYSREG_OP0_MASK)
+-MISMATCH_CHECK(CP_REG_ARM64_SYSREG_OP0_SHIFT, KVM_REG_ARM64_SYSREG_OP0_SHIFT)
+-MISMATCH_CHECK(CP_REG_ARM64_SYSREG_OP1_MASK, KVM_REG_ARM64_SYSREG_OP1_MASK)
+-MISMATCH_CHECK(CP_REG_ARM64_SYSREG_OP1_SHIFT, KVM_REG_ARM64_SYSREG_OP1_SHIFT)
+-MISMATCH_CHECK(CP_REG_ARM64_SYSREG_CRN_MASK, KVM_REG_ARM64_SYSREG_CRN_MASK)
+-MISMATCH_CHECK(CP_REG_ARM64_SYSREG_CRN_SHIFT, KVM_REG_ARM64_SYSREG_CRN_SHIFT)
+-MISMATCH_CHECK(CP_REG_ARM64_SYSREG_CRM_MASK, KVM_REG_ARM64_SYSREG_CRM_MASK)
+-MISMATCH_CHECK(CP_REG_ARM64_SYSREG_CRM_SHIFT, KVM_REG_ARM64_SYSREG_CRM_SHIFT)
+-MISMATCH_CHECK(CP_REG_ARM64_SYSREG_OP2_MASK, KVM_REG_ARM64_SYSREG_OP2_MASK)
+-MISMATCH_CHECK(CP_REG_ARM64_SYSREG_OP2_SHIFT, KVM_REG_ARM64_SYSREG_OP2_SHIFT)
++MISMATCH_CHECK(CP_REG_ARM64, KVM_REG_ARM64);
++MISMATCH_CHECK(CP_REG_ARM_COPROC_MASK, KVM_REG_ARM_COPROC_MASK);
++MISMATCH_CHECK(CP_REG_ARM_COPROC_SHIFT, KVM_REG_ARM_COPROC_SHIFT);
++MISMATCH_CHECK(CP_REG_ARM64_SYSREG, KVM_REG_ARM64_SYSREG);
++MISMATCH_CHECK(CP_REG_ARM64_SYSREG_OP0_MASK, KVM_REG_ARM64_SYSREG_OP0_MASK);
++MISMATCH_CHECK(CP_REG_ARM64_SYSREG_OP0_SHIFT, KVM_REG_ARM64_SYSREG_OP0_SHIFT);
++MISMATCH_CHECK(CP_REG_ARM64_SYSREG_OP1_MASK, KVM_REG_ARM64_SYSREG_OP1_MASK);
++MISMATCH_CHECK(CP_REG_ARM64_SYSREG_OP1_SHIFT, KVM_REG_ARM64_SYSREG_OP1_SHIFT);
++MISMATCH_CHECK(CP_REG_ARM64_SYSREG_CRN_MASK, KVM_REG_ARM64_SYSREG_CRN_MASK);
++MISMATCH_CHECK(CP_REG_ARM64_SYSREG_CRN_SHIFT, KVM_REG_ARM64_SYSREG_CRN_SHIFT);
++MISMATCH_CHECK(CP_REG_ARM64_SYSREG_CRM_MASK, KVM_REG_ARM64_SYSREG_CRM_MASK);
++MISMATCH_CHECK(CP_REG_ARM64_SYSREG_CRM_SHIFT, KVM_REG_ARM64_SYSREG_CRM_SHIFT);
++MISMATCH_CHECK(CP_REG_ARM64_SYSREG_OP2_MASK, KVM_REG_ARM64_SYSREG_OP2_MASK);
++MISMATCH_CHECK(CP_REG_ARM64_SYSREG_OP2_SHIFT, KVM_REG_ARM64_SYSREG_OP2_SHIFT);
+ #endif
+ 
+ #undef MISMATCH_CHECK
+-- 
+MST
 
-Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
-
-> ---
->  target/arm/cpu.c | 3 +++
->  1 file changed, 3 insertions(+)
->
-> diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-> index 0814f73..e9f10f7 100644
-> --- a/target/arm/cpu.c
-> +++ b/target/arm/cpu.c
-> @@ -196,6 +196,9 @@ static void arm_cpu_reset(CPUState *s)
->           */
->          env->v7m.ccr = R_V7M_CCR_STKALIGN_MASK;
->
-> +        /* Unlike A/R profile, M profile defines the reset LR value */
-> +        env->regs[14] = 0xffffffff;
-> +
->          /* Load the initial SP and PC from the vector table at address 0 */
->          rom = rom_ptr(0);
->          if (rom) {
-
-
---
-Alex Bennée

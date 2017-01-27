@@ -1,143 +1,170 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaro.local ([81.128.185.34])
-        by smtp.gmail.com with ESMTPSA id u47sm7256064wrb.15.2017.01.27.02.48.33
+        by smtp.gmail.com with ESMTPSA id v67sm7633762wrc.45.2017.01.27.04.28.16
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 27 Jan 2017 02:48:33 -0800 (PST)
-Received: from zen.linaroharston (localhost [127.0.0.1])
-	by zen.linaro.local (Postfix) with ESMTP id 6C7083E377D;
-	Fri, 27 Jan 2017 10:39:24 +0000 (GMT)
-From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: mttcg@listserver.greensocs.com,
-	qemu-devel@nongnu.org,
-	fred.konrad@greensocs.com,
-	a.rigo@virtualopensystems.com,
-	cota@braap.org,
-	bobby.prani@gmail.com,
-	nikunj@linux.vnet.ibm.com
-Cc: mark.burton@greensocs.com,
-	pbonzini@redhat.com,
-	jan.kiszka@siemens.com,
-	serge.fdrv@gmail.com,
-	rth@twiddle.net,
-	peter.maydell@linaro.org,
-	claudio.fontana@huawei.com,
-	bamvor.zhangjian@linaro.org,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	qemu-arm@nongnu.org (open list:ARM)
-Subject: [PATCH v8 25/25] tcg: enable MTTCG by default for ARM on x86 hosts
-Date: Fri, 27 Jan 2017 10:39:22 +0000
-Message-Id: <20170127103922.19658-26-alex.bennee@linaro.org>
-X-Mailer: git-send-email 2.11.0
-In-Reply-To: <20170127103922.19658-1-alex.bennee@linaro.org>
-References: <20170127103922.19658-1-alex.bennee@linaro.org>
+        Fri, 27 Jan 2017 04:28:16 -0800 (PST)
+Received: from zen (localhost [127.0.0.1])
+	by zen.linaro.local (Postfix) with ESMTPS id 317103E0342;
+	Fri, 27 Jan 2017 12:28:16 +0000 (GMT)
+References: <1485285380-10565-1-git-send-email-peter.maydell@linaro.org> <1485285380-10565-4-git-send-email-peter.maydell@linaro.org>
+User-agent: mu4e 0.9.19; emacs 25.1.91.4
+From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, patches@linaro.org, Liviu Ionescu <ilg@livius.net>
+Subject: Re: [PATCH 03/10] armv7m: add state for v7M CCR, CFSR, HFSR, DFSR, MMFAR, BFAR
+In-reply-to: <1485285380-10565-4-git-send-email-peter.maydell@linaro.org>
+Date: Fri, 27 Jan 2017 12:28:16 +0000
+Message-ID: <87bmusadr3.fsf@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 8bit
-X-TUID: +siqqmKJ5g9y
+X-TUID: DBlEBn3Pkd+1
 
-This enables the multi-threaded system emulation by default for ARMv7
-and ARMv8 guests using the x86_64 TCG backend. This is because on the
-guest side:
 
-  - The ARM translate.c/translate-64.c have been converted to
-    - use MTTCG safe atomic primitives
-    - emit the appropriate barrier ops
-  - The ARM machine has been updated to
-    - hold the BQL when modifying shared cross-vCPU state
-    - defer cpu_reset to async safe work
+Peter Maydell <peter.maydell@linaro.org> writes:
 
-All the host backends support the barrier and atomic primitives but
-need to provide same-or-better support for normal load/store
-operations.
+> Add the structure fields, VMState fields, reset code and macros for
+> the v7M system control registers CCR, CFSR, HFSR, DFSR, MMFAR and
+> BFAR.
+>
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> ---
+>  target/arm/cpu.h     | 54 ++++++++++++++++++++++++++++++++++++++++++++++++++++
+>  target/arm/cpu.c     |  7 +++++++
+>  target/arm/machine.c | 10 ++++++++--
+>  3 files changed, 69 insertions(+), 2 deletions(-)
+>
+> diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+> index b2cc329..4b062d2 100644
+> --- a/target/arm/cpu.h
+> +++ b/target/arm/cpu.h
+> @@ -21,6 +21,7 @@
+>  #define ARM_CPU_H
+>
+>  #include "kvm-consts.h"
+> +#include "hw/registerfields.h"
+>
+>  #if defined(TARGET_AARCH64)
+>    /* AArch64 definitions */
+> @@ -405,6 +406,12 @@ typedef struct CPUARMState {
+>          uint32_t vecbase;
+>          uint32_t basepri;
+>          uint32_t control;
+> +        uint32_t ccr; /* Configuration and Control */
+> +        uint32_t cfsr; /* Configurable Fault Status */
+> +        uint32_t hfsr; /* HardFault Status */
+> +        uint32_t dfsr; /* Debug Fault Status Register */
+> +        uint32_t mmfar; /* MemManage Fault Address */
+> +        uint32_t bfar; /* BusFault Address */
 
-Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+Given the CPUARMState needs to be accessed via env do we need to start
+getting concerned about its size?
 
----
-v7
-  - drop configure check for backend
-  - declare backend memory order for x86
-  - declare guest memory order for ARM
-  - add configure snippet to set TARGET_SUPPORTS_MTTCG
----
- configure             |  6 ++++++
- target/arm/cpu.h      |  3 +++
- tcg/i386/tcg-target.h | 16 ++++++++++++++++
- 3 files changed, 25 insertions(+)
+>          int exception;
+>      } v7m;
+>
+> @@ -1086,6 +1093,53 @@ enum arm_cpu_mode {
+>  #define ARM_IWMMXT_wCGR2	10
+>  #define ARM_IWMMXT_wCGR3	11
+>
+> +/* V7M CCR bits */
+> +FIELD(V7M_CCR, NONBASETHRDENA, 0, 1)
+> +FIELD(V7M_CCR, USERSETMPEND, 1, 1)
+> +FIELD(V7M_CCR, UNALIGN_TRP, 3, 1)
+> +FIELD(V7M_CCR, DIV_0_TRP, 4, 1)
+> +FIELD(V7M_CCR, BFHFNMIGN, 8, 1)
+> +FIELD(V7M_CCR, STKALIGN, 9, 1)
+> +FIELD(V7M_CCR, DC, 16, 1)
+> +FIELD(V7M_CCR, IC, 17, 1)
+> +
+> +/* V7M CFSR bits for MMFSR */
+> +FIELD(V7M_CFSR, IACCVIOL, 0, 1)
+> +FIELD(V7M_CFSR, DACCVIOL, 1, 1)
+> +FIELD(V7M_CFSR, MUNSTKERR, 3, 1)
+> +FIELD(V7M_CFSR, MSTKERR, 4, 1)
+> +FIELD(V7M_CFSR, MLSPERR, 5, 1)
+> +FIELD(V7M_CFSR, MMARVALID, 7, 1)
+> +
+> +/* V7M CFSR bits for BFSR */
+> +FIELD(V7M_CFSR, IBUSERR, 8 + 0, 1)
+> +FIELD(V7M_CFSR, PRECISERR, 8 + 1, 1)
+> +FIELD(V7M_CFSR, IMPRECISERR, 8 + 2, 1)
+> +FIELD(V7M_CFSR, UNSTKERR, 8 + 3, 1)
+> +FIELD(V7M_CFSR, STKERR, 8 + 4, 1)
+> +FIELD(V7M_CFSR, LSPERR, 8 + 5, 1)
+> +FIELD(V7M_CFSR, BFARVALID, 8 + 7, 1)
+> +
+> +/* V7M CFSR bits for UFSR */
+> +FIELD(V7M_CFSR, UNDEFINSTR, 16 + 0, 1)
+> +FIELD(V7M_CFSR, INVSTATE, 16 + 1, 1)
+> +FIELD(V7M_CFSR, INVPC, 16 + 2, 1)
+> +FIELD(V7M_CFSR, NOCP, 16 + 3, 1)
+> +FIELD(V7M_CFSR, UNALIGNED, 16 + 8, 1)
+> +FIELD(V7M_CFSR, DIVBYZERO, 16 + 9, 1)
+> +
+> +/* V7M HFSR bits */
+> +FIELD(V7M_HFSR, VECTTBL, 1, 1)
+> +FIELD(V7M_HFSR, FORCED, 30, 1)
+> +FIELD(V7M_HFSR, DEBUGEVT, 31, 1)
+> +
+> +/* V7M DFSR bits */
+> +FIELD(V7M_DFSR, HALTED, 0, 1)
+> +FIELD(V7M_DFSR, BKPT, 1, 1)
+> +FIELD(V7M_DFSR, DWTTRAP, 2, 1)
+> +FIELD(V7M_DFSR, VCATCH, 3, 1)
+> +FIELD(V7M_DFSR, EXTERNAL, 4, 1)
+> +
+>  /* If adding a feature bit which corresponds to a Linux ELF
+>   * HWCAP bit, remember to update the feature-bit-to-hwcap
+>   * mapping in linux-user/elfload.c:get_elf_hwcap().
+> diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+> index 6395d5a..c804f59 100644
+> --- a/target/arm/cpu.c
+> +++ b/target/arm/cpu.c
+> @@ -188,6 +188,13 @@ static void arm_cpu_reset(CPUState *s)
+>          uint8_t *rom;
+>
+>          env->daif &= ~PSTATE_I;
+> +
+> +        /* The reset value of this bit is IMPDEF, but ARM recommends
+> +         * that it resets to 1, so QEMU always does that rather than making
+> +         * it dependent on CPU model.
+> +         */
+> +        env->v7m.ccr = R_V7M_CCR_STKALIGN_MASK;
+> +
+>          rom = rom_ptr(0);
+>          if (rom) {
+>              /* Address zero is covered by ROM which hasn't yet been
+> diff --git a/target/arm/machine.c b/target/arm/machine.c
+> index 8ed24bf..49e09a8 100644
+> --- a/target/arm/machine.c
+> +++ b/target/arm/machine.c
+> @@ -96,13 +96,19 @@ static bool m_needed(void *opaque)
+>
+>  static const VMStateDescription vmstate_m = {
+>      .name = "cpu/m",
+> -    .version_id = 2,
+> -    .minimum_version_id = 2,
+> +    .version_id = 3,
+> +    .minimum_version_id = 3,
+>      .needed = m_needed,
+>      .fields = (VMStateField[]) {
+>          VMSTATE_UINT32(env.v7m.vecbase, ARMCPU),
+>          VMSTATE_UINT32(env.v7m.basepri, ARMCPU),
+>          VMSTATE_UINT32(env.v7m.control, ARMCPU),
+> +        VMSTATE_UINT32(env.v7m.ccr, ARMCPU),
+> +        VMSTATE_UINT32(env.v7m.cfsr, ARMCPU),
+> +        VMSTATE_UINT32(env.v7m.hfsr, ARMCPU),
+> +        VMSTATE_UINT32(env.v7m.dfsr, ARMCPU),
+> +        VMSTATE_UINT32(env.v7m.mmfar, ARMCPU),
+> +        VMSTATE_UINT32(env.v7m.bfar, ARMCPU),
+>          VMSTATE_INT32(env.v7m.exception, ARMCPU),
+>          VMSTATE_END_OF_LIST()
+>      }
 
-diff --git a/configure b/configure
-index 86fd833feb..9f2a665f5b 100755
---- a/configure
-+++ b/configure
-@@ -5879,6 +5879,7 @@ mkdir -p $target_dir
- echo "# Automatically generated by configure - do not modify" > $config_target_mak
- 
- bflt="no"
-+mttcg="no"
- interp_prefix1=$(echo "$interp_prefix" | sed "s/%M/$target_name/g")
- gdb_xml_files=""
- 
-@@ -5897,11 +5898,13 @@ case "$target_name" in
-   arm|armeb)
-     TARGET_ARCH=arm
-     bflt="yes"
-+    mttcg="yes"
-     gdb_xml_files="arm-core.xml arm-vfp.xml arm-vfp3.xml arm-neon.xml"
-   ;;
-   aarch64)
-     TARGET_BASE_ARCH=arm
-     bflt="yes"
-+    mttcg="yes"
-     gdb_xml_files="aarch64-core.xml aarch64-fpu.xml arm-core.xml arm-vfp.xml arm-vfp3.xml arm-neon.xml"
-   ;;
-   cris)
-@@ -6066,6 +6069,9 @@ if test "$target_bigendian" = "yes" ; then
- fi
- if test "$target_softmmu" = "yes" ; then
-   echo "CONFIG_SOFTMMU=y" >> $config_target_mak
-+  if test "$mttcg" = "yes" ; then
-+    echo "TARGET_SUPPORTS_MTTCG=y" >> $config_target_mak
-+  fi
- fi
- if test "$target_user_only" = "yes" ; then
-   echo "CONFIG_USER_ONLY=y" >> $config_target_mak
-diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index 1b0670ae11..47a42ec6d6 100644
---- a/target/arm/cpu.h
-+++ b/target/arm/cpu.h
-@@ -29,6 +29,9 @@
- #  define TARGET_LONG_BITS 32
- #endif
- 
-+/* ARM processors have a weak memory model */
-+#define TCG_DEFAULT_MO      (0)
-+
- #define CPUArchState struct CPUARMState
- 
- #include "qemu-common.h"
-diff --git a/tcg/i386/tcg-target.h b/tcg/i386/tcg-target.h
-index 21d96ec35c..536190f647 100644
---- a/tcg/i386/tcg-target.h
-+++ b/tcg/i386/tcg-target.h
-@@ -165,4 +165,20 @@ static inline void flush_icache_range(uintptr_t start, uintptr_t stop)
- {
- }
- 
-+/* This defines the natural memory order supported by this
-+ * architecture before guarantees made by various barrier
-+ * instructions.
-+ *
-+ * The x86 has a pretty strong memory ordering which only really
-+ * allows for some stores to be re-ordered after loads.
-+ */
-+#include "tcg-mo.h"
-+
-+static inline int get_tcg_target_mo(void)
-+{
-+    return TCG_MO_ALL & ~TCG_MO_LD_ST;
-+}
-+
-+#define TCG_TARGET_DEFAULT_MO get_tcg_target_mo()
-+
- #endif
--- 
-2.11.0
+Otherwise:
+
+Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
+
+--
+Alex Bennée

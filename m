@@ -1,106 +1,77 @@
-Received: by 10.25.77.65 with SMTP id a62csp229197lfb;
-        Fri, 27 Jan 2017 05:14:29 -0800 (PST)
-X-Received: by 10.159.41.199 with SMTP id s65mr4615948uas.87.1485522868940;
-        Fri, 27 Jan 2017 05:14:28 -0800 (PST)
+Received: by 10.25.77.65 with SMTP id a62csp230012lfb;
+        Fri, 27 Jan 2017 05:16:25 -0800 (PST)
+X-Received: by 10.31.139.205 with SMTP id n196mr3274900vkd.63.1485522985469;
+        Fri, 27 Jan 2017 05:16:25 -0800 (PST)
 Return-Path: <peter.maydell@linaro.org>
-Received: from mail-vk0-x22e.google.com (mail-vk0-x22e.google.com. [2607:f8b0:400c:c05::22e])
-        by mx.google.com with ESMTPS id j64si1413150vkg.223.2017.01.27.05.14.28
+Received: from mail-ua0-x229.google.com (mail-ua0-x229.google.com. [2607:f8b0:400c:c08::229])
+        by mx.google.com with ESMTPS id 62si1411174uay.237.2017.01.27.05.16.25
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 27 Jan 2017 05:14:28 -0800 (PST)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 2607:f8b0:400c:c05::22e as permitted sender) client-ip=2607:f8b0:400c:c05::22e;
+        Fri, 27 Jan 2017 05:16:25 -0800 (PST)
+Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 2607:f8b0:400c:c08::229 as permitted sender) client-ip=2607:f8b0:400c:c08::229;
 Authentication-Results: mx.google.com;
        dkim=pass header.i=@linaro.org;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 2607:f8b0:400c:c05::22e as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 2607:f8b0:400c:c08::229 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: by mail-vk0-x22e.google.com with SMTP id r136so175036076vke.1
-        for <alex.bennee@linaro.org>; Fri, 27 Jan 2017 05:14:28 -0800 (PST)
+Received: by mail-ua0-x229.google.com with SMTP id y9so205812637uae.2
+        for <alex.bennee@linaro.org>; Fri, 27 Jan 2017 05:16:25 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
         h=mime-version:in-reply-to:references:from:date:message-id:subject:to
          :cc:content-transfer-encoding;
-        bh=IXcx76vd6K4pviz+9rNZOrKldEFsByGY2kVOUozNCA4=;
-        b=ImGmH7mYuITJVI1cFFBIls7wOymNYnfMfrpxcsAMzUJVeqWW+xF1TpzKW7KI+/IOtm
-         H8lM/vQWij6ywzpW6FbGz0kMWbzxvf3E+1W42KYG1a428FIWfTDgrEsJTwVG026UX0iE
-         49WZvAfFut0qeqShfFgBI+dmgwr5RQiLHH8xQ=
+        bh=6/MqTAzLx7ngf81lLrbSzBSVs9O7v5HMp3DbBUe7koU=;
+        b=QnQnHEVfbFzqkNcDmTFsX9s5vuthQcwIcFgFg9KtlUdj2QA8MW+TS+xwVoDIAYQsPI
+         xvniA8wUT24Nm6Zn5iAjdNv7gRWz5oNQKGuKuztaEyLBqwsRDxsGvM5HzIrdIkuSdQU1
+         u8nGiQmJsDIQ/5eGTL+6IdMcEgaG3F0SlrOf8=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:mime-version:in-reply-to:references:from:date
          :message-id:subject:to:cc:content-transfer-encoding;
-        bh=IXcx76vd6K4pviz+9rNZOrKldEFsByGY2kVOUozNCA4=;
-        b=PQdSOHlN8+wtlcQAgnB+F5G1sAne2J6csvRZP0hrvINJEv0lWWDizDQKNAMq+tlZWx
-         DtxHAiB281rg2T185SzlYUAngxbkrCiksxIxpJ6H2rd9ZFhuK3rz4IYur5MF5znfS9mF
-         tmJ5mivMpDQTzZ17anesU81MdYQrjGApz3qUNJi38OjN4GgY/o1mq4vOUVMYseZjlPj+
-         ETb798EGMcuVkN/0I8M0u9Qz6dYzAMZjoSMoOn78kkMp6qrIO4t1A072v6DM21ISWU3p
-         BshzygGhVEVOWUfU7MSt6An6PbIjqXVIx3jZRbIYYOZV2lEAZv7KBsSmZaMhp3o1BjpX
-         epLA==
-X-Gm-Message-State: AIkVDXK/wD+Y/HKx3BoPz1gz0TE3B/3BCswJqLrFMATrXxmojpc+ha/FbvNmm0DdVB82AKHBG8Z6PjPXHMD0BSbyhTU=
-X-Received: by 10.31.216.5 with SMTP id p5mr3329740vkg.170.1485522868394; Fri,
- 27 Jan 2017 05:14:28 -0800 (PST)
+        bh=6/MqTAzLx7ngf81lLrbSzBSVs9O7v5HMp3DbBUe7koU=;
+        b=lTMgewa5YHGRn2VvLgcsxMdNw+zB/U1muXsoCeXGgmHPDQeOOxT0KjCKGHAfQhEo6o
+         rgVJxvya3kwIohkHl1zwPW1xFo9MyBpBu3fqQn1HHi0lej5KI7kcAwfnGZvSCB2lq//n
+         0tNNbkLIX+n3+WWtixuNZlz91w9oGOiVQHBCyxjE/cPPGyNYiXomV3xPaATqEgxen+42
+         aR2fEsP08icdVGXHu8UziIcIAzEZ5/Pu4SDmYdtAHWD5OzP09sAGbPeyrRAbMMahtg5V
+         M1BRiV32Rc0Wlc9Igmo41O5NEHGFPAG4qWBKeejxVutGVjqPBllk7qpVj0kVVCjd8W6M
+         F11g==
+X-Gm-Message-State: AIkVDXJQq2xpM6C4nVM6jYjvmOx8XmAsWWdYVjzan179IN617NcNHJZpadDd5klsdhW+L9yHHw4bhtXixjYFqR0xaos=
+X-Received: by 10.176.67.1 with SMTP id k1mr4297184uak.125.1485522985150; Fri,
+ 27 Jan 2017 05:16:25 -0800 (PST)
 MIME-Version: 1.0
-Received: by 10.31.205.2 with HTTP; Fri, 27 Jan 2017 05:14:08 -0800 (PST)
-In-Reply-To: <87bmusadr3.fsf@linaro.org>
+Received: by 10.31.205.2 with HTTP; Fri, 27 Jan 2017 05:16:04 -0800 (PST)
+In-Reply-To: <878tpwad5s.fsf@linaro.org>
 References: <1485285380-10565-1-git-send-email-peter.maydell@linaro.org>
- <1485285380-10565-4-git-send-email-peter.maydell@linaro.org> <87bmusadr3.fsf@linaro.org>
+ <1485285380-10565-3-git-send-email-peter.maydell@linaro.org> <878tpwad5s.fsf@linaro.org>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 27 Jan 2017 13:14:08 +0000
-Message-ID: <CAFEAcA9huvBSMMpShBRMkbfhW_4pdyCJs=t2CUA18Gx_BAQj8g@mail.gmail.com>
-Subject: Re: [PATCH 03/10] armv7m: add state for v7M CCR, CFSR, HFSR, DFSR,
- MMFAR, BFAR
+Date: Fri, 27 Jan 2017 13:16:04 +0000
+Message-ID: <CAFEAcA_hYyh_v7feko06Mq28DWTEGixNoeYMXdhKg28689zQSA@mail.gmail.com>
+Subject: Re: [PATCH 02/10] armv7m_nvic: keep a pointer to the CPU
 To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
 Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>, 
 	"patches@linaro.org" <patches@linaro.org>, Liviu Ionescu <ilg@livius.net>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: quoted-printable
-X-TUID: q/+B8/xydIzD
+X-TUID: zXf6CjZr88QV
 
-On 27 January 2017 at 12:28, Alex Benn=C3=A9e <alex.bennee@linaro.org> wrot=
+On 27 January 2017 at 12:41, Alex Benn=C3=A9e <alex.bennee@linaro.org> wrot=
 e:
+>> @@ -349,7 +347,6 @@ static void nvic_writel(nvic_state *s, uint32_t offs=
+et, uint32_t value)
+>>          }
+>>          break;
+>>      case 0xd08: /* Vector Table Offset.  */
+>> -        cpu =3D ARM_CPU(qemu_get_cpu(0));
+>>          cpu->env.v7m.vecbase =3D value & 0xffffff80;
 >
-> Peter Maydell <peter.maydell@linaro.org> writes:
+> Given it is only used once here you could just indirect it:
 >
->> Add the structure fields, VMState fields, reset code and macros for
->> the v7M system control registers CCR, CFSR, HFSR, DFSR, MMFAR and
->> BFAR.
->>
->> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
->> ---
->>  target/arm/cpu.h     | 54 +++++++++++++++++++++++++++++++++++++++++++++=
-+++++++
->>  target/arm/cpu.c     |  7 +++++++
->>  target/arm/machine.c | 10 ++++++++--
->>  3 files changed, 69 insertions(+), 2 deletions(-)
->>
->> diff --git a/target/arm/cpu.h b/target/arm/cpu.h
->> index b2cc329..4b062d2 100644
->> --- a/target/arm/cpu.h
->> +++ b/target/arm/cpu.h
->> @@ -21,6 +21,7 @@
->>  #define ARM_CPU_H
->>
->>  #include "kvm-consts.h"
->> +#include "hw/registerfields.h"
->>
->>  #if defined(TARGET_AARCH64)
->>    /* AArch64 definitions */
->> @@ -405,6 +406,12 @@ typedef struct CPUARMState {
->>          uint32_t vecbase;
->>          uint32_t basepri;
->>          uint32_t control;
->> +        uint32_t ccr; /* Configuration and Control */
->> +        uint32_t cfsr; /* Configurable Fault Status */
->> +        uint32_t hfsr; /* HardFault Status */
->> +        uint32_t dfsr; /* Debug Fault Status Register */
->> +        uint32_t mmfar; /* MemManage Fault Address */
->> +        uint32_t bfar; /* BusFault Address */
->
-> Given the CPUARMState needs to be accessed via env do we need to start
-> getting concerned about its size?
+>            s->cpu->env.v7m.vecbase =3D value & 0xffffff80;
 
-We only care that accesses to the front of it are within easy
-reach (specifically, accesses to fields via frequently used
-TCG globals); it doesn't matter if more things are added at
-the end.
+Two reasons not to do that:
+(1) it makes this patch easier to review if all it's
+doing is deleting lines that set cpu
+(2) future patches improving the NVIC support are going
+to add more cases that want to use the cpu pointer
 
 thanks
 -- PMM

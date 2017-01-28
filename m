@@ -1,17 +1,17 @@
-Received: by 10.25.77.65 with SMTP id a62csp683206lfb;
-        Sat, 28 Jan 2017 05:32:58 -0800 (PST)
-X-Received: by 10.55.162.138 with SMTP id l132mr12830644qke.204.1485610377899;
-        Sat, 28 Jan 2017 05:32:57 -0800 (PST)
+Received: by 10.25.77.65 with SMTP id a62csp711363lfb;
+        Sat, 28 Jan 2017 06:55:59 -0800 (PST)
+X-Received: by 10.200.43.201 with SMTP id n9mr13395104qtn.243.1485615359584;
+        Sat, 28 Jan 2017 06:55:59 -0800 (PST)
 Return-Path: <kvmarm-bounces@lists.cs.columbia.edu>
 Received: from mm01.cs.columbia.edu (mm01.cs.columbia.edu. [128.59.11.253])
-        by mx.google.com with ESMTP id a28si5744148qta.159.2017.01.28.05.32.57;
-        Sat, 28 Jan 2017 05:32:57 -0800 (PST)
+        by mx.google.com with ESMTP id 53si5856284qtx.279.2017.01.28.06.55.59;
+        Sat, 28 Jan 2017 06:55:59 -0800 (PST)
 Received-SPF: pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) client-ip=128.59.11.253;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu
 Received: from localhost (localhost [127.0.0.1])
-	by mm01.cs.columbia.edu (Postfix) with ESMTP id 1B95D401A1;
-	Sat, 28 Jan 2017 08:32:43 -0500 (EST)
+	by mm01.cs.columbia.edu (Postfix) with ESMTP id C55504018B;
+	Sat, 28 Jan 2017 09:55:44 -0500 (EST)
 X-Virus-Scanned: at lists.cs.columbia.edu
 X-Spam-Flag: NO
 X-Spam-Score: -4.202
@@ -21,47 +21,46 @@ X-Spam-Status: No, score=-4.202 required=6.1 tests=[BAYES_00=-1.9,
 	autolearn=unavailable
 Received: from mm01.cs.columbia.edu ([127.0.0.1])
 	by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id GfI3iBMrgH5p; Sat, 28 Jan 2017 08:32:42 -0500 (EST)
+	with ESMTP id MgRKkX-K4oTV; Sat, 28 Jan 2017 09:55:43 -0500 (EST)
 Received: from mm01.cs.columbia.edu (localhost [127.0.0.1])
-	by mm01.cs.columbia.edu (Postfix) with ESMTP id 1579240966;
-	Sat, 28 Jan 2017 08:32:42 -0500 (EST)
+	by mm01.cs.columbia.edu (Postfix) with ESMTP id D947F401A1;
+	Sat, 28 Jan 2017 09:55:43 -0500 (EST)
 Received: from localhost (localhost [127.0.0.1])
- by mm01.cs.columbia.edu (Postfix) with ESMTP id 955AB401A1
- for <kvmarm@lists.cs.columbia.edu>; Sat, 28 Jan 2017 08:32:41 -0500 (EST)
+ by mm01.cs.columbia.edu (Postfix) with ESMTP id 4C6CD4018B
+ for <kvmarm@lists.cs.columbia.edu>; Sat, 28 Jan 2017 09:55:43 -0500 (EST)
 X-Virus-Scanned: at lists.cs.columbia.edu
 Received: from mm01.cs.columbia.edu ([127.0.0.1])
  by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ivqs3zWO4Dc7 for <kvmarm@lists.cs.columbia.edu>;
- Sat, 28 Jan 2017 08:32:40 -0500 (EST)
+ with ESMTP id mc6UXj12WgSd for <kvmarm@lists.cs.columbia.edu>;
+ Sat, 28 Jan 2017 09:55:42 -0500 (EST)
 Received: from mx1.redhat.com (mx1.redhat.com [209.132.183.28])
- by mm01.cs.columbia.edu (Postfix) with ESMTPS id 5DFDE4019A
- for <kvmarm@lists.cs.columbia.edu>; Sat, 28 Jan 2017 08:32:40 -0500 (EST)
-Received: from int-mx14.intmail.prod.int.phx2.redhat.com
- (int-mx14.intmail.prod.int.phx2.redhat.com [10.5.11.27])
+ by mm01.cs.columbia.edu (Postfix) with ESMTPS id 2B49440187
+ for <kvmarm@lists.cs.columbia.edu>; Sat, 28 Jan 2017 09:55:41 -0500 (EST)
+Received: from int-mx10.intmail.prod.int.phx2.redhat.com
+ (int-mx10.intmail.prod.int.phx2.redhat.com [10.5.11.23])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id 2E1B83B703;
- Sat, 28 Jan 2017 13:32:54 +0000 (UTC)
+ by mx1.redhat.com (Postfix) with ESMTPS id 95B97811A7;
+ Sat, 28 Jan 2017 14:55:56 +0000 (UTC)
 Received: from hawk.localdomain (vpn1-5-52.ams2.redhat.com [10.36.5.52])
- by int-mx14.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP id
- v0SDWme9001064
+ by int-mx10.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP id
+ v0SEtp37029283
  (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=NO);
- Sat, 28 Jan 2017 08:32:51 -0500
-Date: Sat, 28 Jan 2017 14:32:47 +0100
+ Sat, 28 Jan 2017 09:55:54 -0500
+Date: Sat, 28 Jan 2017 15:55:51 +0100
 From: Andrew Jones <drjones@redhat.com>
 To: Shannon Zhao <zhaoshenglong@huawei.com>
-Subject: Re: [PATCH RFC 3/7] ARM64: KVM: Reset ID registers when creating the
- VCPUs
-Message-ID: <20170128133247.y6b62ifgxuz63sir@hawk.localdomain>
+Subject: Re: [PATCH RFC 6/7] ARM64: KVM: Support heterogeneous system
+Message-ID: <20170128145551.sknp447ieue56xgo@hawk.localdomain>
 References: <1484559214-2248-1-git-send-email-zhaoshenglong@huawei.com>
- <1484559214-2248-4-git-send-email-zhaoshenglong@huawei.com>
+ <1484559214-2248-7-git-send-email-zhaoshenglong@huawei.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <1484559214-2248-4-git-send-email-zhaoshenglong@huawei.com>
+In-Reply-To: <1484559214-2248-7-git-send-email-zhaoshenglong@huawei.com>
 User-Agent: Mutt/1.6.0.1 (2016-04-01)
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.27
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.23
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
- (mx1.redhat.com [10.5.110.30]); Sat, 28 Jan 2017 13:32:54 +0000 (UTC)
+ (mx1.redhat.com [10.5.110.27]); Sat, 28 Jan 2017 14:55:56 +0000 (UTC)
 Cc: marc.zyngier@arm.com, qemu-arm@nongnu.org, wu.wubin@huawei.com,
  kvmarm@lists.cs.columbia.edu
 X-BeenThere: kvmarm@lists.cs.columbia.edu
@@ -79,223 +78,134 @@ Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: kvmarm-bounces@lists.cs.columbia.edu
 Sender: kvmarm-bounces@lists.cs.columbia.edu
-X-TUID: E2pnaS+mW0BQ
+X-TUID: 43WgazFKbKoE
 
-On Mon, Jan 16, 2017 at 05:33:30PM +0800, Shannon Zhao wrote:
+On Mon, Jan 16, 2017 at 05:33:33PM +0800, Shannon Zhao wrote:
 > From: Shannon Zhao <shannon.zhao@linaro.org>
 > 
-> Reset ID registers when creating the VCPUs and store the values per
-> VCPU. Also modify the get_invariant_sys_reg and set_invariant_sys_reg
-> to get/set the ID register from vcpu context.
-
-The patch does more than that. It also prepares the table to be
-used with get/set_one_reg. The name 'invariant' is less and less
-fitting, and should probably be changed before this patch
-to 'id', or we should just integrate these ID registers into
-the sys_reg table. I still haven't seen the motivation for
-not doing that yet.
-
+> When initializing KVM, check whether physical hardware is a
+> heterogeneous system through the MIDR values. If so, force userspace to
+> set the KVM_ARM_VCPU_CROSS feature bit. Otherwise, it should fail to
+> initialize VCPUs.
 > 
 > Signed-off-by: Shannon Zhao <shannon.zhao@linaro.org>
 > ---
->  arch/arm64/include/asm/kvm_coproc.h |  1 +
->  arch/arm64/kvm/guest.c              |  1 +
->  arch/arm64/kvm/sys_regs.c           | 58 ++++++++++++++++++-------------------
->  3 files changed, 31 insertions(+), 29 deletions(-)
+>  arch/arm/kvm/arm.c       | 26 ++++++++++++++++++++++++++
+>  include/uapi/linux/kvm.h |  1 +
+>  2 files changed, 27 insertions(+)
 > 
-> diff --git a/arch/arm64/include/asm/kvm_coproc.h b/arch/arm64/include/asm/kvm_coproc.h
-> index 0b52377..0801b66 100644
-> --- a/arch/arm64/include/asm/kvm_coproc.h
-> +++ b/arch/arm64/include/asm/kvm_coproc.h
-> @@ -24,6 +24,7 @@
->  #include <linux/kvm_host.h>
+> diff --git a/arch/arm/kvm/arm.c b/arch/arm/kvm/arm.c
+> index bdceb19..21ec070 100644
+> --- a/arch/arm/kvm/arm.c
+> +++ b/arch/arm/kvm/arm.c
+> @@ -46,6 +46,7 @@
+>  #include <asm/kvm_coproc.h>
+>  #include <asm/kvm_psci.h>
+>  #include <asm/sections.h>
+> +#include <asm/cputype.h>
 >  
->  void kvm_reset_sys_regs(struct kvm_vcpu *vcpu);
-> +void kvm_reset_id_sys_regs(struct kvm_vcpu *vcpu);
+>  #ifdef REQUIRES_VIRT
+>  __asm__(".arch_extension	virt");
+> @@ -65,6 +66,7 @@ static unsigned int kvm_vmid_bits __read_mostly;
+>  static DEFINE_SPINLOCK(kvm_vmid_lock);
 >  
->  struct kvm_sys_reg_table {
->  	const struct sys_reg_desc *table;
-> diff --git a/arch/arm64/kvm/guest.c b/arch/arm64/kvm/guest.c
-> index b37446a..92abe2b 100644
-> --- a/arch/arm64/kvm/guest.c
-> +++ b/arch/arm64/kvm/guest.c
-> @@ -48,6 +48,7 @@ struct kvm_stats_debugfs_item debugfs_entries[] = {
+>  static bool vgic_present;
+> +static bool heterogeneous_system;
 >  
->  int kvm_arch_vcpu_setup(struct kvm_vcpu *vcpu)
->  {
-> +	kvm_reset_id_sys_regs(vcpu);
+>  static DEFINE_PER_CPU(unsigned char, kvm_arm_hardware_enabled);
+>  
+> @@ -210,6 +212,9 @@ int kvm_vm_ioctl_check_extension(struct kvm *kvm, long ext)
+>  	case KVM_CAP_ARM_CROSS_VCPU:
+>  		r = 1;
+>  		break;
+> +	case KVM_CAP_ARM_HETEROGENEOUS:
+> +		r = heterogeneous_system;
+> +		break;
 
-This call should go in kvm_reset_vcpu
+What's this for? When/why would usespace check it?
 
->  	return 0;
+>  	case KVM_CAP_COALESCED_MMIO:
+>  		r = KVM_COALESCED_MMIO_PAGE_OFFSET;
+>  		break;
+> @@ -812,6 +817,12 @@ static int kvm_vcpu_set_target(struct kvm_vcpu *vcpu,
+>  	int phys_target = kvm_target_cpu();
+>  	bool cross_vcpu = kvm_vcpu_has_feature_cross_cpu(init);
+>  
+> +	if (heterogeneous_system && !cross_vcpu) {
+> +		kvm_err("%s:Host is a heterogeneous system, set KVM_ARM_VCPU_CROSS bit\n",
+> +			__func__);
+> +		return -EINVAL;
+> +	}
+
+Instead of forcing userspace to set a bit, why not just confirm the
+target selected will work? E.g. if only generic works on a heterogeneous
+system then just 
+
+ if (heterogeneous_system && init->target != GENERIC)
+    return -EINVAL
+
+should work
+
+> +
+>  	if (!cross_vcpu && init->target != phys_target)
+>  		return -EINVAL;
+>  
+> @@ -1397,6 +1408,11 @@ static void check_kvm_target_cpu(void *ret)
+>  	*(int *)ret = kvm_target_cpu();
 >  }
 >  
-> diff --git a/arch/arm64/kvm/sys_regs.c b/arch/arm64/kvm/sys_regs.c
-> index bf71eb4..7c5fa03 100644
-> --- a/arch/arm64/kvm/sys_regs.c
-> +++ b/arch/arm64/kvm/sys_regs.c
-> @@ -1440,11 +1440,11 @@ static const struct sys_reg_desc cp15_64_regs[] = {
->   * the guest, or a future kvm may trap them.
->   */
+> +static void get_physical_cpu_midr(void *midr)
+> +{
+> +	*(u32 *)midr = read_cpuid_id();
+> +}
+> +
+>  struct kvm_vcpu *kvm_mpidr_to_vcpu(struct kvm *kvm, unsigned long mpidr)
+>  {
+>  	struct kvm_vcpu *vcpu;
+> @@ -1417,6 +1433,7 @@ int kvm_arch_init(void *opaque)
+>  {
+>  	int err;
+>  	int ret, cpu;
+> +	u32 current_midr, midr;
 >  
-> -#define FUNCTION_INVARIANT(reg)						\
-> -	static void get_##reg(struct kvm_vcpu *v,			\
-> -			      const struct sys_reg_desc *r)		\
-> +#define FUNCTION_INVARIANT(register)					\
-> +	static void get_##register(struct kvm_vcpu *v,			\
-> +				   const struct sys_reg_desc *r)	\
->  	{								\
-> -		((struct sys_reg_desc *)r)->val = read_sysreg(reg);	\
-> +		vcpu_id_sys_reg(v, r->reg) = read_sysreg(register);	\
+>  	if (!is_hyp_mode_available()) {
+>  		kvm_err("HYP mode not available\n");
+> @@ -1431,6 +1448,15 @@ int kvm_arch_init(void *opaque)
+>  		}
 >  	}
 >  
->  FUNCTION_INVARIANT(midr_el1)
-> @@ -1480,7 +1480,6 @@ FUNCTION_INVARIANT(id_aa64mmfr1_el1)
->  FUNCTION_INVARIANT(clidr_el1)
->  FUNCTION_INVARIANT(aidr_el1)
->  
-> -/* ->val is filled in by kvm_sys_reg_table_init() */
->  static struct sys_reg_desc invariant_sys_regs[] = {
->  	{ Op0(0b11), Op1(0b000), CRn(0b0000), CRm(0b0000), Op2(0b000),
->  	  NULL, get_midr_el1, MIDR_EL1 },
-> @@ -1952,43 +1951,43 @@ static int reg_to_user(void __user *uaddr, const u64 *val, u64 id)
->  	return 0;
->  }
->  
-> -static int get_invariant_sys_reg(u64 id, void __user *uaddr)
-> +static int get_invariant_sys_reg(struct kvm_vcpu *vcpu,
-> +				 const struct kvm_one_reg *reg)
->  {
->  	struct sys_reg_params params;
->  	const struct sys_reg_desc *r;
-> +	void __user *uaddr = (void __user *)(unsigned long)reg->addr;
->  
-> -	if (!index_to_params(id, &params))
-> +	if (!index_to_params(reg->id, &params))
->  		return -ENOENT;
->  
->  	r = find_reg(&params, invariant_sys_regs, ARRAY_SIZE(invariant_sys_regs));
->  	if (!r)
->  		return -ENOENT;
->  
-> -	return reg_to_user(uaddr, &r->val, id);
-> +	if (r->get_user)
-> +		return (r->get_user)(vcpu, r, reg, uaddr);
+> +	current_midr = read_cpuid_id();
+> +	for_each_online_cpu(cpu) {
+> +		smp_call_function_single(cpu, get_physical_cpu_midr, &midr, 1);
+> +		if (current_midr != midr) {
+> +			heterogeneous_system = true;
+> +			break;
+> +		}
+> +	}
+
+Is there no core kernel API that provides this?
+
 > +
-> +	return reg_to_user(uaddr, &vcpu_id_sys_reg(vcpu, r->reg), reg->id);
->  }
+>  	err = init_common_resources();
+>  	if (err)
+>  		return err;
+> diff --git a/include/uapi/linux/kvm.h b/include/uapi/linux/kvm.h
+> index 46115a2..cc2b63d 100644
+> --- a/include/uapi/linux/kvm.h
+> +++ b/include/uapi/linux/kvm.h
+> @@ -872,6 +872,7 @@ struct kvm_ppc_smmu_info {
+>  #define KVM_CAP_MSI_DEVID 131
+>  #define KVM_CAP_PPC_HTM 132
+>  #define KVM_CAP_ARM_CROSS_VCPU 133
+> +#define KVM_CAP_ARM_HETEROGENEOUS 134
 >  
-> -static int set_invariant_sys_reg(u64 id, void __user *uaddr)
-> +static int set_invariant_sys_reg(struct kvm_vcpu *vcpu,
-> +				 const struct kvm_one_reg *reg)
->  {
->  	struct sys_reg_params params;
->  	const struct sys_reg_desc *r;
-> -	int err;
-> -	u64 val = 0; /* Make sure high bits are 0 for 32-bit regs */
-> +	void __user *uaddr = (void __user *)(unsigned long)reg->addr;
+>  #ifdef KVM_CAP_IRQ_ROUTING
 >  
-> -	if (!index_to_params(id, &params))
-> +	if (!index_to_params(reg->id, &params))
->  		return -ENOENT;
->  	r = find_reg(&params, invariant_sys_regs, ARRAY_SIZE(invariant_sys_regs));
->  	if (!r)
->  		return -ENOENT;
->  
-> -	err = reg_from_user(&val, uaddr, id);
-> -	if (err)
-> -		return err;
-> -
-> -	/* This is what we mean by invariant: you can't change it. */
-> -	if (r->val != val)
-> -		return -EINVAL;
-> +	if (r->set_user)
-> +		return (r->set_user)(vcpu, r, reg, uaddr);
->  
-> -	return 0;
-> +	return reg_from_user(&vcpu_id_sys_reg(vcpu, r->reg), uaddr, reg->id);
->  }
->  
->  static bool is_valid_cache(u32 val)
-> @@ -2086,7 +2085,7 @@ int kvm_arm_sys_reg_get_reg(struct kvm_vcpu *vcpu, const struct kvm_one_reg *reg
->  
->  	r = index_to_sys_reg_desc(vcpu, reg->id);
->  	if (!r)
-> -		return get_invariant_sys_reg(reg->id, uaddr);
-> +		return get_invariant_sys_reg(vcpu, reg);
->  
->  	if (r->get_user)
->  		return (r->get_user)(vcpu, r, reg, uaddr);
-> @@ -2107,7 +2106,7 @@ int kvm_arm_sys_reg_set_reg(struct kvm_vcpu *vcpu, const struct kvm_one_reg *reg
->  
->  	r = index_to_sys_reg_desc(vcpu, reg->id);
->  	if (!r)
-> -		return set_invariant_sys_reg(reg->id, uaddr);
-> +		return set_invariant_sys_reg(vcpu, reg);
->  
->  	if (r->set_user)
->  		return (r->set_user)(vcpu, r, reg, uaddr);
-> @@ -2252,7 +2251,6 @@ static int check_sysreg_table(const struct sys_reg_desc *table, unsigned int n)
->  void kvm_sys_reg_table_init(void)
->  {
->  	unsigned int i;
-> -	struct sys_reg_desc clidr;
->  
->  	/* Make sure tables are unique and in order. */
->  	BUG_ON(check_sysreg_table(sys_reg_descs, ARRAY_SIZE(sys_reg_descs)));
-> @@ -2262,10 +2260,6 @@ void kvm_sys_reg_table_init(void)
->  	BUG_ON(check_sysreg_table(cp15_64_regs, ARRAY_SIZE(cp15_64_regs)));
->  	BUG_ON(check_sysreg_table(invariant_sys_regs, ARRAY_SIZE(invariant_sys_regs)));
->  
-> -	/* We abuse the reset function to overwrite the table itself. */
-> -	for (i = 0; i < ARRAY_SIZE(invariant_sys_regs); i++)
-> -		invariant_sys_regs[i].reset(NULL, &invariant_sys_regs[i]);
-> -
->  	/*
->  	 * CLIDR format is awkward, so clean it up.  See ARM B4.1.20:
->  	 *
-> @@ -2276,8 +2270,7 @@ void kvm_sys_reg_table_init(void)
->  	 *   value of 0b000, the values of Ctype4 to Ctype7 must be
->  	 *   ignored.
->  	 */
-> -	get_clidr_el1(NULL, &clidr); /* Ugly... */
-> -	cache_levels = clidr.val;
-> +	cache_levels = read_sysreg(clidr_el1);
-
-Hmm... I think this ugly code was here to ensure cache_levels was
-derived from the guest view of clidr_el1. With this series that
-may no longer be the case, unless we can and do enforce it. We need
-Marc to advise here.
-
->  	for (i = 0; i < 7; i++)
->  		if (((cache_levels >> (i*3)) & 7) == 0)
->  			break;
-> @@ -2310,3 +2303,10 @@ void kvm_reset_sys_regs(struct kvm_vcpu *vcpu)
->  		if (vcpu_sys_reg(vcpu, num) == 0x4242424242424242)
->  			panic("Didn't reset vcpu_sys_reg(%zi)", num);
->  }
-> +
-> +void kvm_reset_id_sys_regs(struct kvm_vcpu *vcpu)
-> +{
-> +	unsigned int i;
-> +	for (i = 0; i < ARRAY_SIZE(invariant_sys_regs); i++)
-> +		invariant_sys_regs[i].reset(vcpu, &invariant_sys_regs[i]);
-
-This function should be dropped and the calls to it replaced with
-
-reset_sys_reg_descs(vcpu, invariant_sys_regs, ARRAY_SIZE(invariant_sys_regs))
-
-or whatever the table gets renamed to, now that it's not invariant. Or
-all this just goes away if we move the registers into the sys_reg
-table...
-
-> +}
 > -- 
 > 2.0.4
 > 
 >
 
-Thanks,
 drew 
 _______________________________________________
 kvmarm mailing list

@@ -1,129 +1,297 @@
-Received: by 10.25.77.65 with SMTP id a62csp883659lfb;
-        Sat, 28 Jan 2017 18:40:46 -0800 (PST)
-X-Received: by 10.55.16.67 with SMTP id a64mr15720107qkh.226.1485657646025;
-        Sat, 28 Jan 2017 18:40:46 -0800 (PST)
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id e1si6827711qkc.172.2017.01.28.18.40.45
-        for <alex.bennee@linaro.org>
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sat, 28 Jan 2017 18:40:46 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+Received: by 10.25.77.65 with SMTP id a62csp1014424lfb;
+        Sun, 29 Jan 2017 03:53:17 -0800 (PST)
+X-Received: by 10.55.203.74 with SMTP id d71mr15971386qkj.269.1485690797328;
+        Sun, 29 Jan 2017 03:53:17 -0800 (PST)
+Return-Path: <kvmarm-bounces@lists.cs.columbia.edu>
+Received: from mm01.cs.columbia.edu (mm01.cs.columbia.edu. [128.59.11.253])
+        by mx.google.com with ESMTP id l198si7472207qke.24.2017.01.29.03.53.16;
+        Sun, 29 Jan 2017 03:53:17 -0800 (PST)
+Received-SPF: pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) client-ip=128.59.11.253;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@aosc.xyz;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:53902 helo=lists.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1cXfQ3-000449-Fr
-	for alex.bennee@linaro.org; Sat, 28 Jan 2017 21:40:43 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:45815)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <icenowy@aosc.xyz>) id 1cXdre-0003jQ-08
-	for qemu-arm@nongnu.org; Sat, 28 Jan 2017 20:01:07 -0500
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <icenowy@aosc.xyz>) id 1cXdrZ-0004i9-4g
-	for qemu-arm@nongnu.org; Sat, 28 Jan 2017 20:01:06 -0500
-Received: from forward6h.cmail.yandex.net ([87.250.230.217]:38252)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <icenowy@aosc.xyz>) id 1cXdrY-0004hw-TG
-	for qemu-arm@nongnu.org; Sat, 28 Jan 2017 20:01:01 -0500
-Received: from smtp2h.mail.yandex.net (smtp2h.mail.yandex.net [84.201.187.145])
-	by forward6h.cmail.yandex.net (Yandex) with ESMTP id E44162192C;
-	Sun, 29 Jan 2017 04:00:56 +0300 (MSK)
-Received: from smtp2h.mail.yandex.net (localhost.localdomain [127.0.0.1])
-	by smtp2h.mail.yandex.net (Yandex) with ESMTP id 4F5BC7810E8;
-	Sun, 29 Jan 2017 04:00:53 +0300 (MSK)
-Received: by smtp2h.mail.yandex.net (nwsmtp/Yandex) with ESMTPSA id
-	8alEJCSfiJ-0og4sqdm; Sun, 29 Jan 2017 04:00:52 +0300
-	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
-	(Client certificate not present)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=aosc.xyz; s=mail;
-	t=1485651653; bh=vyIiMcR68unIRldkckZcDXF1gZpr0pEmRiD7LuMge+Q=;
-	h=From:To:Cc:Subject:Date:Message-Id:In-Reply-To:References;
-	b=os8Kzv0de51rE8+cuu1n+fLDUELeLWJ9fCbnpt9gyK/5ehbOOQMZ+rgOW71aVt8Yp
-	CWs5IE0WiyJ4vXSq8hNVBZooeP7YbRL57NKu1yQ+UPxBAe33nKNWX+2apZZZ4Sfpu1
-	0BG19dlMfXNxGIKjpjTE3iTokDx6Sfw/M1KVKHgE=
-Authentication-Results: smtp2h.mail.yandex.net; dkim=pass header.i=@aosc.xyz
-X-Yandex-ForeignMX: US
-X-Yandex-Suid-Status: 1 0,1 0,1 0,1 0,1 1130000036118848
-From: Icenowy Zheng <icenowy@aosc.xyz>
-To: Beniamino Galvani <b.galvani@gmail.com>,
-	Peter Maydell <peter.maydell@linaro.org>, Gerd Hoffmann <kraxel@redhat.com>
-Date: Sun, 29 Jan 2017 09:00:13 +0800
-Message-Id: <20170129010013.29637-2-icenowy@aosc.xyz>
-X-Mailer: git-send-email 2.11.0
-In-Reply-To: <20170129010013.29637-1-icenowy@aosc.xyz>
-References: <20170129010013.29637-1-icenowy@aosc.xyz>
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 87.250.230.217
-X-Mailman-Approved-At: Sat, 28 Jan 2017 21:40:35 -0500
-Subject: [Qemu-arm] [PATCH 2/2] arm: allwinner-a10: Add OHCI/EHCI
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.21
+       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu
+Received: from localhost (localhost [127.0.0.1])
+	by mm01.cs.columbia.edu (Postfix) with ESMTP id D82FD40905;
+	Sun, 29 Jan 2017 06:53:00 -0500 (EST)
+X-Virus-Scanned: at lists.cs.columbia.edu
+X-Spam-Flag: NO
+X-Spam-Score: -4.202
+X-Spam-Level: 
+X-Spam-Status: No, score=-4.202 required=6.1 tests=[BAYES_00=-1.9,
+	DNS_FROM_AHBL_RHSBL=2.699, RCVD_IN_DNSWL_HI=-5, SPF_HELO_PASS=-0.001]
+	autolearn=unavailable
+Received: from mm01.cs.columbia.edu ([127.0.0.1])
+	by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id bheBfVBOCRQX; Sun, 29 Jan 2017 06:52:59 -0500 (EST)
+Received: from mm01.cs.columbia.edu (localhost [127.0.0.1])
+	by mm01.cs.columbia.edu (Postfix) with ESMTP id AE507405DA;
+	Sun, 29 Jan 2017 06:52:59 -0500 (EST)
+Received: from localhost (localhost [127.0.0.1])
+ by mm01.cs.columbia.edu (Postfix) with ESMTP id 33E9C405DA
+ for <kvmarm@lists.cs.columbia.edu>; Sun, 29 Jan 2017 06:52:58 -0500 (EST)
+X-Virus-Scanned: at lists.cs.columbia.edu
+Received: from mm01.cs.columbia.edu ([127.0.0.1])
+ by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id aKyrO6-sistV for <kvmarm@lists.cs.columbia.edu>;
+ Sun, 29 Jan 2017 06:52:57 -0500 (EST)
+Received: from mx1.redhat.com (mx1.redhat.com [209.132.183.28])
+ by mm01.cs.columbia.edu (Postfix) with ESMTPS id DD96440187
+ for <kvmarm@lists.cs.columbia.edu>; Sun, 29 Jan 2017 06:52:56 -0500 (EST)
+Received: from smtp.corp.redhat.com (int-mx16.intmail.prod.int.phx2.redhat.com
+ [10.5.11.28])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mx1.redhat.com (Postfix) with ESMTPS id 10F314E4F3;
+ Sun, 29 Jan 2017 11:53:13 +0000 (UTC)
+Received: from hawk.localdomain (vpn1-4-142.ams2.redhat.com [10.36.4.142])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 1FF45B3249;
+ Sun, 29 Jan 2017 11:53:08 +0000 (UTC)
+Date: Sun, 29 Jan 2017 12:53:06 +0100
+From: Andrew Jones <drjones@redhat.com>
+To: Shannon Zhao <zhaoshenglong@huawei.com>
+Subject: Re: [Qemu-devel] [PATCH RFC 3/6] arm: kvm64: Check if kvm supports
+ cross type vCPU
+Message-ID: <20170129115306.iuhvofl3y65x7sjw@hawk.localdomain>
+References: <1484558821-15512-1-git-send-email-zhaoshenglong@huawei.com>
+ <1484558821-15512-4-git-send-email-zhaoshenglong@huawei.com>
+MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <1484558821-15512-4-git-send-email-zhaoshenglong@huawei.com>
+User-Agent: Mutt/1.6.0.1 (2016-04-01)
+X-Scanned-By: MIMEDefang 2.74 on 10.5.11.28
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+ (mx1.redhat.com [10.5.110.38]); Sun, 29 Jan 2017 11:53:13 +0000 (UTC)
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, kvmarm@lists.cs.columbia.edu,
+ wu.wubin@huawei.com
+X-BeenThere: kvmarm@lists.cs.columbia.edu
+X-Mailman-Version: 2.1.14
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm@nongnu.org, Icenowy Zheng <icenowy@aosc.xyz>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 5d8skTifqdnX
+List-Id: Where KVM/ARM decisions are made <kvmarm.lists.cs.columbia.edu>
+List-Unsubscribe: <https://lists.cs.columbia.edu/mailman/options/kvmarm>,
+ <mailto:kvmarm-request@lists.cs.columbia.edu?subject=unsubscribe>
+List-Archive: <https://lists.cs.columbia.edu/pipermail/kvmarm>
+List-Post: <mailto:kvmarm@lists.cs.columbia.edu>
+List-Help: <mailto:kvmarm-request@lists.cs.columbia.edu?subject=help>
+List-Subscribe: <https://lists.cs.columbia.edu/mailman/listinfo/kvmarm>,
+ <mailto:kvmarm-request@lists.cs.columbia.edu?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Errors-To: kvmarm-bounces@lists.cs.columbia.edu
+Sender: kvmarm-bounces@lists.cs.columbia.edu
+X-TUID: SRn7HqPS81no
 
-Add the Allwinner OHCI/EHCI controller modules to the SoC.
+On Mon, Jan 16, 2017 at 05:26:58PM +0800, Shannon Zhao wrote:
+> From: Shannon Zhao <shannon.zhao@linaro.org>
+> 
+> If user requests a specific type vCPU which is not same with the
+> physical ones and if kvm supports cross type vCPU, we set the
+> KVM_ARM_VCPU_CROSS bit and set the CPU ID registers.
+> 
+> Signed-off-by: Shannon Zhao <shannon.zhao@linaro.org>
+> ---
+>  target/arm/kvm64.c | 182 +++++++++++++++++++++++++++++++++++++++++++++++++++++
+>  1 file changed, 182 insertions(+)
+> 
+> diff --git a/target/arm/kvm64.c b/target/arm/kvm64.c
+> index 6111109..70442ea 100644
+> --- a/target/arm/kvm64.c
+> +++ b/target/arm/kvm64.c
+> @@ -481,7 +481,151 @@ bool kvm_arm_get_host_cpu_features(ARMHostCPUClass *ahcc)
+>      return true;
+>  }
+>  
+> +#define ARM_CPU_ID_MIDR        3, 0, 0, 0, 0
+>  #define ARM_CPU_ID_MPIDR       3, 0, 0, 0, 5
+> +/* ID group 1 registers */
+> +#define ARM_CPU_ID_REVIDR      3, 0, 0, 0, 6
+> +#define ARM_CPU_ID_AIDR        3, 1, 0, 0, 7
+> +
+> +/* ID group 2 registers */
+> +#define ARM_CPU_ID_CCSIDR      3, 1, 0, 0, 0
+> +#define ARM_CPU_ID_CLIDR       3, 1, 0, 0, 1
+> +#define ARM_CPU_ID_CSSELR      3, 2, 0, 0, 0
+> +#define ARM_CPU_ID_CTR         3, 3, 0, 0, 1
+> +
+> +/* ID group 3 registers */
+> +#define ARM_CPU_ID_PFR0        3, 0, 0, 1, 0
+> +#define ARM_CPU_ID_PFR1        3, 0, 0, 1, 1
+> +#define ARM_CPU_ID_DFR0        3, 0, 0, 1, 2
+> +#define ARM_CPU_ID_AFR0        3, 0, 0, 1, 3
+> +#define ARM_CPU_ID_MMFR0       3, 0, 0, 1, 4
+> +#define ARM_CPU_ID_MMFR1       3, 0, 0, 1, 5
+> +#define ARM_CPU_ID_MMFR2       3, 0, 0, 1, 6
+> +#define ARM_CPU_ID_MMFR3       3, 0, 0, 1, 7
+> +#define ARM_CPU_ID_ISAR0       3, 0, 0, 2, 0
+> +#define ARM_CPU_ID_ISAR1       3, 0, 0, 2, 1
+> +#define ARM_CPU_ID_ISAR2       3, 0, 0, 2, 2
+> +#define ARM_CPU_ID_ISAR3       3, 0, 0, 2, 3
+> +#define ARM_CPU_ID_ISAR4       3, 0, 0, 2, 4
+> +#define ARM_CPU_ID_ISAR5       3, 0, 0, 2, 5
+> +#define ARM_CPU_ID_MMFR4       3, 0, 0, 2, 6
+> +#define ARM_CPU_ID_MVFR0       3, 0, 0, 3, 0
+> +#define ARM_CPU_ID_MVFR1       3, 0, 0, 3, 1
+> +#define ARM_CPU_ID_MVFR2       3, 0, 0, 3, 2
+> +#define ARM_CPU_ID_AA64PFR0    3, 0, 0, 4, 0
+> +#define ARM_CPU_ID_AA64PFR1    3, 0, 0, 4, 1
+> +#define ARM_CPU_ID_AA64DFR0    3, 0, 0, 5, 0
+> +#define ARM_CPU_ID_AA64DFR1    3, 0, 0, 5, 1
+> +#define ARM_CPU_ID_AA64AFR0    3, 0, 0, 5, 4
+> +#define ARM_CPU_ID_AA64AFR1    3, 0, 0, 5, 5
+> +#define ARM_CPU_ID_AA64ISAR0   3, 0, 0, 6, 0
+> +#define ARM_CPU_ID_AA64ISAR1   3, 0, 0, 6, 1
+> +#define ARM_CPU_ID_AA64MMFR0   3, 0, 0, 7, 0
+> +#define ARM_CPU_ID_AA64MMFR1   3, 0, 0, 7, 1
+> +#define ARM_CPU_ID_MAX         36
 
-Signed-off-by: Icenowy Zheng <icenowy@aosc.xyz>
----
- hw/arm/allwinner-a10.c         | 6 ++++++
- include/hw/arm/allwinner-a10.h | 5 +++++
- 2 files changed, 11 insertions(+)
+We don't need ARM_CPU_ID_MAX, I'll show you why below
 
-diff --git a/hw/arm/allwinner-a10.c b/hw/arm/allwinner-a10.c
-index ca15d1c8cc..e3417ca2cf 100644
---- a/hw/arm/allwinner-a10.c
-+++ b/hw/arm/allwinner-a10.c
-@@ -46,6 +46,12 @@ static void aw_a10_init(Object *obj)
- 
-     object_initialize(&s->sata, sizeof(s->sata), TYPE_ALLWINNER_AHCI);
-     qdev_set_parent_bus(DEVICE(&s->sata), sysbus_get_default());
-+
-+    sysbus_create_simple(TYPE_ALLWINNER_EHCI, AW_A10_EHCI0_BASE, s->irq[39]);
-+    sysbus_create_simple(TYPE_ALLWINNER_EHCI, AW_A10_EHCI1_BASE, s->irq[40]);
-+
-+    sysbus_create_simple("sysbus-ohci", AW_A10_OHCI0_BASE, s->irq[64]);
-+    sysbus_create_simple("sysbus-ohci", AW_A10_OHCI1_BASE, s->irq[65]);
- }
- 
- static void aw_a10_realize(DeviceState *dev, Error **errp)
-diff --git a/include/hw/arm/allwinner-a10.h b/include/hw/arm/allwinner-a10.h
-index 6b32a99e21..1ea5f18b51 100644
---- a/include/hw/arm/allwinner-a10.h
-+++ b/include/hw/arm/allwinner-a10.h
-@@ -9,6 +9,7 @@
- #include "hw/net/allwinner_emac.h"
- #include "hw/ide/pci.h"
- #include "hw/ide/ahci.h"
-+#include "hw/usb/hcd-ehci.h"
- 
- #include "sysemu/sysemu.h"
- #include "exec/address-spaces.h"
-@@ -19,6 +20,10 @@
- #define AW_A10_UART0_REG_BASE   0x01c28000
- #define AW_A10_EMAC_BASE        0x01c0b000
- #define AW_A10_SATA_BASE        0x01c18000
-+#define AW_A10_EHCI0_BASE	0x01c14000
-+#define AW_A10_EHCI1_BASE	0x01c1c000
-+#define AW_A10_OHCI0_BASE	0x01c14400
-+#define AW_A10_OHCI1_BASE	0x01c1c400
- 
- #define AW_A10_SDRAM_BASE       0x40000000
- 
--- 
-2.11.0
+> +
+> +static int kvm_arm_set_id_registers(CPUState *cs)
+> +{
+> +    int ret = 0;
+> +    uint32_t i;
+> +    ARMCPU *cpu = ARM_CPU(cs);
+> +    struct kvm_one_reg id_regitsers[ARM_CPU_ID_MAX];
+> +
+> +    memset(id_regitsers, 0, ARM_CPU_ID_MAX * sizeof(struct kvm_one_reg));
+> +
+> +    id_regitsers[0].id = ARM64_SYS_REG(ARM_CPU_ID_MIDR);
+> +    id_regitsers[0].addr = (uintptr_t)&cpu->midr;
+> +
+> +    id_regitsers[1].id = ARM64_SYS_REG(ARM_CPU_ID_REVIDR);
+> +    id_regitsers[1].addr = (uintptr_t)&cpu->revidr;
+> +
 
+We can condense this nicely with list initialization
+
+ struct kvm_one_reg id_regitsers[] = {
+   { ARM64_SYS_REG(ARM_CPU_ID_MIDR), (uintptr_t)&cpu->midr },
+   { ARM64_SYS_REG(ARM_CPU_ID_REVIDR), (uintptr_t)&cpu->revidr },
+   ...
+   { 0, 0 }
+ };
+
+...
+> +
+> +    for (i = 0; i < ARM_CPU_ID_MAX; i++) {
+> +        if(id_regitsers[i].id != 0) {
+
+Not sure why this check was here before, as there shouldn't have been
+any zero ids in the list, but now we need the test, just not here.
+The for loop should be written as
+
+ for (i = 0; id_regitsers[i].id; i++) {
+
+> +            ret = kvm_set_one_reg(cs, id_regitsers[i].id,
+> +                                  (void *)id_regitsers[i].addr);
+> +            if (ret) {
+> +                fprintf(stderr, "set ID register 0x%llx failed\n",
+> +                        id_regitsers[i].id);
+> +                return ret;
+> +            }
+> +        } else {
+> +            break;
+> +        }
+> +    }
+> +
+> +    /* TODO: Set CCSIDR */
+> +    return ret;
+> +}
+>  
+>  int kvm_arch_init_vcpu(CPUState *cs)
+>  {
+> @@ -489,6 +633,8 @@ int kvm_arch_init_vcpu(CPUState *cs)
+>      uint64_t mpidr;
+>      ARMCPU *cpu = ARM_CPU(cs);
+>      CPUARMState *env = &cpu->env;
+> +    bool heterogeneous = false, cross = false;
+> +    struct kvm_vcpu_init init;
+>  
+>      if (cpu->kvm_target == QEMU_KVM_ARM_TARGET_NONE ||
+>          !object_dynamic_cast(OBJECT(cpu), TYPE_AARCH64_CPU)) {
+> @@ -518,12 +664,48 @@ int kvm_arch_init_vcpu(CPUState *cs)
+>          unset_feature(&env->features, ARM_FEATURE_PMU);
+>      }
+>  
+> +    /*
+> +     * Check if host is a heterogeneous system. It doesn't support -cpu host on
+> +     * heterogeneous system. If user requests a specific type VCPU, it should
+> +     * set the KVM_ARM_VCPU_CROSS bit to tell KVM that userspace want a specific
+> +     * vCPU. If KVM supports cross type vCPU, then set the ID registers.
+> +     */
+> +    if (kvm_check_extension(cs->kvm_state, KVM_CAP_ARM_HETEROGENEOUS)) {
+> +        heterogeneous = true;
+> +    }
+
+I don't think it should be necessary for qemu to check this. It should
+just fail to create vcpus if it chooses the wrong type. Anyway, there
+should be other ways for qemu to determine it's running on a
+heterogeneous system without extending kvm's api.
+
+> +
+> +    if (strcmp(object_get_typename(OBJECT(cpu)), TYPE_ARM_HOST_CPU) == 0) {
+> +        if (heterogeneous) {
+> +            fprintf(stderr, "heterogeneous system can't support host guest CPU type\n");
+> +            return -EINVAL;
+> +        }
+
+IMO, we should leave this to higher levels. E.g. libvirt can determine if
+a host is heterogeneous and then output errors when a user tries to
+configure a guest to use cpu host. At the QEMU level an ioctl EINVAL on
+vcpu create should be sufficient.
+
+> +    } else if (kvm_check_extension(cs->kvm_state, KVM_CAP_ARM_CROSS_VCPU)) {
+> +        init.features[0] = 1 << KVM_ARM_VCPU_CROSS;
+
+As I stated in the kvm series, I don't think this feature bit should be
+necessary.
+
+> +        if (kvm_vm_ioctl(cs->kvm_state, KVM_ARM_PREFERRED_TARGET, &init) < 0) {
+> +            return -EINVAL;
+> +        }
+> +
+> +        if (init.target != (cpu->midr & 0xFF00FFF0) || heterogeneous) {
+> +            cpu->kvm_target = QEMU_KVM_ARM_TARGET_GENERIC_V8;
+
+Why force the target to be generic when we're cross? Not being possible
+to do anything else, and that that's what we agreed on in Toronto is a
+fair answer :-) I just don't recall right now what we said.
+
+> +            cpu->kvm_init_features[0] |= 1 << KVM_ARM_VCPU_CROSS;
+> +            cross = true;
+> +       }
+> +    }
+> +
+>      /* Do KVM_ARM_VCPU_INIT ioctl */
+>      ret = kvm_arm_vcpu_init(cs);
+>      if (ret) {
+>          return ret;
+>      }
+>  
+> +    if (cross) {
+> +        ret = kvm_arm_set_id_registers(cs);
+> +        if (ret) {
+> +            fprintf(stderr, "set vcpu ID registers failed\n");
+
+You already have an fprintf(stderr, at the point of failure. We probably
+don't need two, with this one having less information. I'd just return
+ret here quietly.
+
+> +            return ret;
+> +        }
+> +    }
+> +
+>      /*
+>       * When KVM is in use, PSCI is emulated in-kernel and not by qemu.
+>       * Currently KVM has its own idea about MPIDR assignment, so we
+> -- 
+> 2.0.4
+> 
+> 
+>
+
+Thanks,
+drew 
+_______________________________________________
+kvmarm mailing list
+kvmarm@lists.cs.columbia.edu
+https://lists.cs.columbia.edu/mailman/listinfo/kvmarm

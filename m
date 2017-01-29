@@ -1,67 +1,82 @@
-Received: by 10.25.77.65 with SMTP id a62csp1015959lfb;
-        Sun, 29 Jan 2017 04:00:05 -0800 (PST)
-X-Received: by 10.200.37.85 with SMTP id 21mr17003751qtn.238.1485691204969;
-        Sun, 29 Jan 2017 04:00:04 -0800 (PST)
+Received: by 10.25.77.65 with SMTP id a62csp1158796lfb;
+        Sun, 29 Jan 2017 12:42:38 -0800 (PST)
+X-Received: by 10.55.147.198 with SMTP id v189mr17948480qkd.194.1485722558287;
+        Sun, 29 Jan 2017 12:42:38 -0800 (PST)
 Return-Path: <kvmarm-bounces@lists.cs.columbia.edu>
 Received: from mm01.cs.columbia.edu (mm01.cs.columbia.edu. [128.59.11.253])
-        by mx.google.com with ESMTP id 83si7458470qks.109.2017.01.29.04.00.04;
-        Sun, 29 Jan 2017 04:00:04 -0800 (PST)
+        by mx.google.com with ESMTP id 96si8151366qtc.34.2017.01.29.12.42.38;
+        Sun, 29 Jan 2017 12:42:38 -0800 (PST)
 Received-SPF: pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) client-ip=128.59.11.253;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu
+       dkim=neutral (body hash did not verify) header.i=@linaro.org;
+       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost (localhost [127.0.0.1])
-	by mm01.cs.columbia.edu (Postfix) with ESMTP id AB7FE40430;
-	Sun, 29 Jan 2017 06:59:48 -0500 (EST)
+	by mm01.cs.columbia.edu (Postfix) with ESMTP id 52AD440A7B;
+	Sun, 29 Jan 2017 15:42:21 -0500 (EST)
 X-Virus-Scanned: at lists.cs.columbia.edu
 X-Spam-Flag: NO
-X-Spam-Score: -4.202
+X-Spam-Score: 0.909
 X-Spam-Level: 
-X-Spam-Status: No, score=-4.202 required=6.1 tests=[BAYES_00=-1.9,
-	DNS_FROM_AHBL_RHSBL=2.699, RCVD_IN_DNSWL_HI=-5, SPF_HELO_PASS=-0.001]
-	autolearn=unavailable
+X-Spam-Status: No, score=0.909 required=6.1 tests=[BAYES_00=-1.9,
+	DKIM_SIGNED=0.1, DNS_FROM_AHBL_RHSBL=2.699,
+	RCVD_IN_DNSWL_NONE=-0.0001, T_DKIM_INVALID=0.01] autolearn=no
+Authentication-Results: mm01.cs.columbia.edu (amavisd-new); dkim=softfail
+	(fail, message has been altered) header.i=@linaro.org
 Received: from mm01.cs.columbia.edu ([127.0.0.1])
 	by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Cf9R9ysByGxt; Sun, 29 Jan 2017 06:59:46 -0500 (EST)
+	with ESMTP id C5r6XVaUkrWa; Sun, 29 Jan 2017 15:42:20 -0500 (EST)
 Received: from mm01.cs.columbia.edu (localhost [127.0.0.1])
-	by mm01.cs.columbia.edu (Postfix) with ESMTP id 8000A405DA;
-	Sun, 29 Jan 2017 06:59:46 -0500 (EST)
+	by mm01.cs.columbia.edu (Postfix) with ESMTP id 6264A408EB;
+	Sun, 29 Jan 2017 15:42:20 -0500 (EST)
 Received: from localhost (localhost [127.0.0.1])
- by mm01.cs.columbia.edu (Postfix) with ESMTP id DB31B405DA
- for <kvmarm@lists.cs.columbia.edu>; Sun, 29 Jan 2017 06:59:44 -0500 (EST)
+ by mm01.cs.columbia.edu (Postfix) with ESMTP id E33DC40625
+ for <kvmarm@lists.cs.columbia.edu>; Sun, 29 Jan 2017 15:42:19 -0500 (EST)
 X-Virus-Scanned: at lists.cs.columbia.edu
 Received: from mm01.cs.columbia.edu ([127.0.0.1])
  by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id uZ4crFNqEakf for <kvmarm@lists.cs.columbia.edu>;
- Sun, 29 Jan 2017 06:59:44 -0500 (EST)
-Received: from mx1.redhat.com (mx1.redhat.com [209.132.183.28])
- by mm01.cs.columbia.edu (Postfix) with ESMTPS id DE96A40187
- for <kvmarm@lists.cs.columbia.edu>; Sun, 29 Jan 2017 06:59:43 -0500 (EST)
-Received: from int-mx10.intmail.prod.int.phx2.redhat.com
- (int-mx10.intmail.prod.int.phx2.redhat.com [10.5.11.23])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id 18DD17F08B;
- Sun, 29 Jan 2017 12:00:00 +0000 (UTC)
-Received: from hawk.localdomain (vpn1-4-142.ams2.redhat.com [10.36.4.142])
- by int-mx10.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP id
- v0TBxtID023353
- (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=NO);
- Sun, 29 Jan 2017 06:59:58 -0500
-Date: Sun, 29 Jan 2017 12:59:55 +0100
-From: Andrew Jones <drjones@redhat.com>
-To: Shannon Zhao <zhaoshenglong@huawei.com>
-Subject: Re: [Qemu-devel] [PATCH RFC 4/6] target: arm: Add a generic type cpu
-Message-ID: <20170129115955.kz2o3r6nuitg6o6i@hawk.localdomain>
-References: <1484558821-15512-1-git-send-email-zhaoshenglong@huawei.com>
- <1484558821-15512-5-git-send-email-zhaoshenglong@huawei.com>
+ with ESMTP id QNPboLiuX1t5 for <kvmarm@lists.cs.columbia.edu>;
+ Sun, 29 Jan 2017 15:42:18 -0500 (EST)
+Received: from mail-vk0-f46.google.com (mail-vk0-f46.google.com
+ [209.85.213.46])
+ by mm01.cs.columbia.edu (Postfix) with ESMTPS id 902C140296
+ for <kvmarm@lists.cs.columbia.edu>; Sun, 29 Jan 2017 15:42:18 -0500 (EST)
+Received: by mail-vk0-f46.google.com with SMTP id r136so205358616vke.1
+ for <kvmarm@lists.cs.columbia.edu>; Sun, 29 Jan 2017 12:42:35 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+ :cc; bh=FHVpmYlJtNlkulbwhwFTQSgU8qjZlevIQjCr4P87kd0=;
+ b=VeKBccj06plOC3ajJR0CioSmYIVoLAJS0DZY9+FA6ObdJb4RLQBMfsNWuWuK5JWKCG
+ 2Jv540o0TqBEhgCcnOQQiUaXlGtwlwflKqf+pF2/koJ2y7mc+i+X6VfMQqJS5PuPvAra
+ QV48IEd2XcsRTwn/2U6gTQpJawMxFWk7smumc=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+ :message-id:subject:to:cc;
+ bh=FHVpmYlJtNlkulbwhwFTQSgU8qjZlevIQjCr4P87kd0=;
+ b=U3r9vydEHqu6bvS3KcVB6MnyIMasotcA1Zv0V2o5pMy3JRiZczcM8PnNXaMI/AP+oM
+ E8vniBRfSq2jcXQ+AYXD9ukpCQaS/jwFFUurJw/Yw0gWUvvAngirixii2pst30E/iNDO
+ Gp6wn29tl/vuZxKxI3H3YMoISemYoYB1abTIgB4P9TBO/f6KbkvwQfRUp3SnPlJ+x5bL
+ OUZhOh3dc0Wp212KSb5LSh+oWezXEGo1zbxxRC8fxoS7FbO54LaJNHD0W5sd1IM9OdlA
+ 53Wps/JPvXCKN18SepESouVl3jL57ifxE2+VcKxgTnbiZCB0ZR30hDsv44qVdXec79VS
+ Uh5w==
+X-Gm-Message-State: AIkVDXLc0wlqhEbwr8ULMN8H6BGKd1E+vSy0A3V9jrqD7c+2SVdOD748dwfUHsXini/dkdLWnx44bczhZS339RNF
+X-Received: by 10.31.62.71 with SMTP id l68mr8944660vka.175.1485722554570;
+ Sun, 29 Jan 2017 12:42:34 -0800 (PST)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <1484558821-15512-5-git-send-email-zhaoshenglong@huawei.com>
-User-Agent: Mutt/1.6.0.1 (2016-04-01)
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.23
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
- (mx1.redhat.com [10.5.110.26]); Sun, 29 Jan 2017 12:00:00 +0000 (UTC)
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, kvmarm@lists.cs.columbia.edu,
+Received: by 10.31.205.2 with HTTP; Sun, 29 Jan 2017 12:42:14 -0800 (PST)
+In-Reply-To: <20170129115306.iuhvofl3y65x7sjw@hawk.localdomain>
+References: <1484558821-15512-1-git-send-email-zhaoshenglong@huawei.com>
+ <1484558821-15512-4-git-send-email-zhaoshenglong@huawei.com>
+ <20170129115306.iuhvofl3y65x7sjw@hawk.localdomain>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Sun, 29 Jan 2017 20:42:14 +0000
+Message-ID: <CAFEAcA-nB7uQAGcZWUYeiAis2tY33U6yeiig+kwd2-KRD=KSuw@mail.gmail.com>
+Subject: Re: [Qemu-devel] [PATCH RFC 3/6] arm: kvm64: Check if kvm supports
+ cross type vCPU
+To: Andrew Jones <drjones@redhat.com>
+Cc: QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
+ "kvmarm@lists.cs.columbia.edu" <kvmarm@lists.cs.columbia.edu>,
  wu.wubin@huawei.com
 X-BeenThere: kvmarm@lists.cs.columbia.edu
 X-Mailman-Version: 2.1.14
@@ -78,104 +93,32 @@ Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: kvmarm-bounces@lists.cs.columbia.edu
 Sender: kvmarm-bounces@lists.cs.columbia.edu
-X-TUID: LwRgrGu5Ohgb
+X-TUID: GKjYKG195QIR
 
-On Mon, Jan 16, 2017 at 05:26:59PM +0800, Shannon Zhao wrote:
-> From: Shannon Zhao <shannon.zhao@linaro.org>
-> 
-> Add a generic type cpu, it's useful for migration when running on
-> different hardwares.
+On 29 January 2017 at 11:53, Andrew Jones <drjones@redhat.com> wrote:
+> On Mon, Jan 16, 2017 at 05:26:58PM +0800, Shannon Zhao wrote:
+>> From: Shannon Zhao <shannon.zhao@linaro.org>
+>> +    memset(id_regitsers, 0, ARM_CPU_ID_MAX * sizeof(struct kvm_one_reg));
+>> +
+>> +    id_regitsers[0].id = ARM64_SYS_REG(ARM_CPU_ID_MIDR);
+>> +    id_regitsers[0].addr = (uintptr_t)&cpu->midr;
+>> +
+>> +    id_regitsers[1].id = ARM64_SYS_REG(ARM_CPU_ID_REVIDR);
+>> +    id_regitsers[1].addr = (uintptr_t)&cpu->revidr;
+>> +
+>
+> We can condense this nicely with list initialization
+>
+>  struct kvm_one_reg id_regitsers[] = {
+>    { ARM64_SYS_REG(ARM_CPU_ID_MIDR), (uintptr_t)&cpu->midr },
+>    { ARM64_SYS_REG(ARM_CPU_ID_REVIDR), (uintptr_t)&cpu->revidr },
+>    ...
+>    { 0, 0 }
 
-How are the cpu parameters and features chosen for this generic
-version? Shouldn't some of them, like id_aa64mmfr0, be configurable?
-Or do we want to create multiple generic flavors?
+"registers", please :-)
 
-Thanks,
-drew
-
-> 
-> Signed-off-by: Shannon Zhao <shannon.zhao@linaro.org>
-> ---
->  target/arm/cpu64.c | 54 ++++++++++++++++++++++++++++++++++++++++++++++++++++++
->  1 file changed, 54 insertions(+)
-> 
-> diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
-> index 549cb1e..223f31e 100644
-> --- a/target/arm/cpu64.c
-> +++ b/target/arm/cpu64.c
-> @@ -204,6 +204,59 @@ static void aarch64_a53_initfn(Object *obj)
->      define_arm_cp_regs(cpu, cortex_a57_a53_cp_reginfo);
->  }
->  
-> +static void aarch64_generic_initfn(Object *obj)
-> +{
-> +    ARMCPU *cpu = ARM_CPU(obj);
-> +
-> +    cpu->dtb_compatible = "arm,armv8";
-> +    set_feature(&cpu->env, ARM_FEATURE_V8);
-> +    set_feature(&cpu->env, ARM_FEATURE_VFP4);
-> +    set_feature(&cpu->env, ARM_FEATURE_NEON);
-> +    set_feature(&cpu->env, ARM_FEATURE_GENERIC_TIMER);
-> +    set_feature(&cpu->env, ARM_FEATURE_AARCH64);
-> +    set_feature(&cpu->env, ARM_FEATURE_CBAR_RO);
-> +    set_feature(&cpu->env, ARM_FEATURE_V8_AES);
-> +    set_feature(&cpu->env, ARM_FEATURE_V8_SHA1);
-> +    set_feature(&cpu->env, ARM_FEATURE_V8_SHA256);
-> +    set_feature(&cpu->env, ARM_FEATURE_V8_PMULL);
-> +    set_feature(&cpu->env, ARM_FEATURE_CRC);
-> +    set_feature(&cpu->env, ARM_FEATURE_EL3);
-> +    cpu->kvm_target = QEMU_KVM_ARM_TARGET_GENERIC_V8;
-> +    cpu->midr = 0x410fd000; /* FIXME: this needs to adjust */
-> +    cpu->revidr = 0x00000000;
-> +    cpu->reset_fpsid = 0x41034070;
-> +    cpu->mvfr0 = 0x10110222;
-> +    cpu->mvfr1 = 0x12111111;
-> +    cpu->mvfr2 = 0x00000043;
-> +    cpu->ctr = 0x84448004; /* L1Ip = VIPT */
-> +    cpu->reset_sctlr = 0x00c50838;
-> +    cpu->id_pfr0 = 0x00000131;
-> +    cpu->id_pfr1 = 0x00011011;
-> +    cpu->id_dfr0 = 0x03010066;
-> +    cpu->id_afr0 = 0x00000000;
-> +    cpu->id_mmfr0 = 0x10101105;
-> +    cpu->id_mmfr1 = 0x40000000;
-> +    cpu->id_mmfr2 = 0x01260000;
-> +    cpu->id_mmfr3 = 0x02102211;
-> +    cpu->id_isar0 = 0x02101110;
-> +    cpu->id_isar1 = 0x13112111;
-> +    cpu->id_isar2 = 0x21232042;
-> +    cpu->id_isar3 = 0x01112131;
-> +    cpu->id_isar4 = 0x00011142;
-> +    cpu->id_isar5 = 0x00011121;
-> +    cpu->id_aa64pfr0 = 0x00002222;
-> +    cpu->id_aa64dfr0 = 0x10305106;
-> +    cpu->id_aa64isar0 = 0x00011120;
-> +    cpu->id_aa64mmfr0 = 0x0f001101; /* only support 4k page, 36 bit physical addr */
-> +    cpu->dbgdidr = 0x3516d000;
-> +    cpu->clidr = 0x0a200023;
-> +    cpu->ccsidr[0] = 0x7003e01a; /* 8KB L1 dcache */
-> +    cpu->ccsidr[1] = 0x2007e00a; /* 8KB L1 icache */
-> +    cpu->ccsidr[2] = 0x700fe07a; /* 128KB L2 cache */
-> +    cpu->dcz_blocksize = 4; /* 64 bytes */
-> +    define_arm_cp_regs(cpu, cortex_a57_a53_cp_reginfo);
-> +}
-> +
->  #ifdef CONFIG_USER_ONLY
->  static void aarch64_any_initfn(Object *obj)
->  {
-> @@ -232,6 +285,7 @@ typedef struct ARMCPUInfo {
->  static const ARMCPUInfo aarch64_cpus[] = {
->      { .name = "cortex-a57",         .initfn = aarch64_a57_initfn },
->      { .name = "cortex-a53",         .initfn = aarch64_a53_initfn },
-> +    { .name = "generic",            .initfn = aarch64_generic_initfn },
->  #ifdef CONFIG_USER_ONLY
->      { .name = "any",         .initfn = aarch64_any_initfn },
->  #endif
-> -- 
-> 2.0.4
-> 
-> 
-> 
+thanks
+-- PMM
 _______________________________________________
 kvmarm mailing list
 kvmarm@lists.cs.columbia.edu

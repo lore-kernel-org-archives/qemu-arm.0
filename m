@@ -1,125 +1,88 @@
-Received: by 10.25.77.65 with SMTP id a62csp1158796lfb;
-        Sun, 29 Jan 2017 12:42:38 -0800 (PST)
-X-Received: by 10.55.147.198 with SMTP id v189mr17948480qkd.194.1485722558287;
-        Sun, 29 Jan 2017 12:42:38 -0800 (PST)
-Return-Path: <kvmarm-bounces@lists.cs.columbia.edu>
-Received: from mm01.cs.columbia.edu (mm01.cs.columbia.edu. [128.59.11.253])
-        by mx.google.com with ESMTP id 96si8151366qtc.34.2017.01.29.12.42.38;
-        Sun, 29 Jan 2017 12:42:38 -0800 (PST)
-Received-SPF: pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) client-ip=128.59.11.253;
+Received: by 10.25.77.65 with SMTP id a62csp1324236lfb;
+        Mon, 30 Jan 2017 00:21:55 -0800 (PST)
+X-Received: by 10.237.39.5 with SMTP id n5mr18114665qtd.38.1485764515013;
+        Mon, 30 Jan 2017 00:21:55 -0800 (PST)
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
+        by mx.google.com with ESMTPS id u34si9052069qta.88.2017.01.30.00.21.54
+        for <alex.bennee@linaro.org>
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Mon, 30 Jan 2017 00:21:55 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=neutral (body hash did not verify) header.i=@linaro.org;
-       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost (localhost [127.0.0.1])
-	by mm01.cs.columbia.edu (Postfix) with ESMTP id 52AD440A7B;
-	Sun, 29 Jan 2017 15:42:21 -0500 (EST)
-X-Virus-Scanned: at lists.cs.columbia.edu
-X-Spam-Flag: NO
-X-Spam-Score: 0.909
-X-Spam-Level: 
-X-Spam-Status: No, score=0.909 required=6.1 tests=[BAYES_00=-1.9,
-	DKIM_SIGNED=0.1, DNS_FROM_AHBL_RHSBL=2.699,
-	RCVD_IN_DNSWL_NONE=-0.0001, T_DKIM_INVALID=0.01] autolearn=no
-Authentication-Results: mm01.cs.columbia.edu (amavisd-new); dkim=softfail
-	(fail, message has been altered) header.i=@linaro.org
-Received: from mm01.cs.columbia.edu ([127.0.0.1])
-	by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id C5r6XVaUkrWa; Sun, 29 Jan 2017 15:42:20 -0500 (EST)
-Received: from mm01.cs.columbia.edu (localhost [127.0.0.1])
-	by mm01.cs.columbia.edu (Postfix) with ESMTP id 6264A408EB;
-	Sun, 29 Jan 2017 15:42:20 -0500 (EST)
-Received: from localhost (localhost [127.0.0.1])
- by mm01.cs.columbia.edu (Postfix) with ESMTP id E33DC40625
- for <kvmarm@lists.cs.columbia.edu>; Sun, 29 Jan 2017 15:42:19 -0500 (EST)
-X-Virus-Scanned: at lists.cs.columbia.edu
-Received: from mm01.cs.columbia.edu ([127.0.0.1])
- by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id QNPboLiuX1t5 for <kvmarm@lists.cs.columbia.edu>;
- Sun, 29 Jan 2017 15:42:18 -0500 (EST)
-Received: from mail-vk0-f46.google.com (mail-vk0-f46.google.com
- [209.85.213.46])
- by mm01.cs.columbia.edu (Postfix) with ESMTPS id 902C140296
- for <kvmarm@lists.cs.columbia.edu>; Sun, 29 Jan 2017 15:42:18 -0500 (EST)
-Received: by mail-vk0-f46.google.com with SMTP id r136so205358616vke.1
- for <kvmarm@lists.cs.columbia.edu>; Sun, 29 Jan 2017 12:42:35 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:in-reply-to:references:from:date:message-id:subject:to
- :cc; bh=FHVpmYlJtNlkulbwhwFTQSgU8qjZlevIQjCr4P87kd0=;
- b=VeKBccj06plOC3ajJR0CioSmYIVoLAJS0DZY9+FA6ObdJb4RLQBMfsNWuWuK5JWKCG
- 2Jv540o0TqBEhgCcnOQQiUaXlGtwlwflKqf+pF2/koJ2y7mc+i+X6VfMQqJS5PuPvAra
- QV48IEd2XcsRTwn/2U6gTQpJawMxFWk7smumc=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:in-reply-to:references:from:date
- :message-id:subject:to:cc;
- bh=FHVpmYlJtNlkulbwhwFTQSgU8qjZlevIQjCr4P87kd0=;
- b=U3r9vydEHqu6bvS3KcVB6MnyIMasotcA1Zv0V2o5pMy3JRiZczcM8PnNXaMI/AP+oM
- E8vniBRfSq2jcXQ+AYXD9ukpCQaS/jwFFUurJw/Yw0gWUvvAngirixii2pst30E/iNDO
- Gp6wn29tl/vuZxKxI3H3YMoISemYoYB1abTIgB4P9TBO/f6KbkvwQfRUp3SnPlJ+x5bL
- OUZhOh3dc0Wp212KSb5LSh+oWezXEGo1zbxxRC8fxoS7FbO54LaJNHD0W5sd1IM9OdlA
- 53Wps/JPvXCKN18SepESouVl3jL57ifxE2+VcKxgTnbiZCB0ZR30hDsv44qVdXec79VS
- Uh5w==
-X-Gm-Message-State: AIkVDXLc0wlqhEbwr8ULMN8H6BGKd1E+vSy0A3V9jrqD7c+2SVdOD748dwfUHsXini/dkdLWnx44bczhZS339RNF
-X-Received: by 10.31.62.71 with SMTP id l68mr8944660vka.175.1485722554570;
- Sun, 29 Jan 2017 12:42:34 -0800 (PST)
-MIME-Version: 1.0
-Received: by 10.31.205.2 with HTTP; Sun, 29 Jan 2017 12:42:14 -0800 (PST)
-In-Reply-To: <20170129115306.iuhvofl3y65x7sjw@hawk.localdomain>
-References: <1484558821-15512-1-git-send-email-zhaoshenglong@huawei.com>
- <1484558821-15512-4-git-send-email-zhaoshenglong@huawei.com>
- <20170129115306.iuhvofl3y65x7sjw@hawk.localdomain>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Sun, 29 Jan 2017 20:42:14 +0000
-Message-ID: <CAFEAcA-nB7uQAGcZWUYeiAis2tY33U6yeiig+kwd2-KRD=KSuw@mail.gmail.com>
-Subject: Re: [Qemu-devel] [PATCH RFC 3/6] arm: kvm64: Check if kvm supports
- cross type vCPU
-To: Andrew Jones <drjones@redhat.com>
-Cc: QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
- "kvmarm@lists.cs.columbia.edu" <kvmarm@lists.cs.columbia.edu>,
- wu.wubin@huawei.com
-X-BeenThere: kvmarm@lists.cs.columbia.edu
-X-Mailman-Version: 2.1.14
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:58475 helo=lists.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1cY7Dk-0002cV-JY
+	for alex.bennee@linaro.org; Mon, 30 Jan 2017 03:21:52 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:49075)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <kraxel@redhat.com>) id 1cY7C2-0001F7-CZ
+	for qemu-arm@nongnu.org; Mon, 30 Jan 2017 03:20:10 -0500
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+	(envelope-from <kraxel@redhat.com>) id 1cY7By-00068C-Ag
+	for qemu-arm@nongnu.org; Mon, 30 Jan 2017 03:20:06 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:42156)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <kraxel@redhat.com>) id 1cY7By-00066f-5B
+	for qemu-arm@nongnu.org; Mon, 30 Jan 2017 03:20:02 -0500
+Received: from int-mx14.intmail.prod.int.phx2.redhat.com
+	(int-mx14.intmail.prod.int.phx2.redhat.com [10.5.11.27])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 42F724FC;
+	Mon, 30 Jan 2017 08:20:01 +0000 (UTC)
+Received: from nilsson.home.kraxel.org (ovpn-116-32.ams2.redhat.com
+	[10.36.116.32])
+	by int-mx14.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id v0U8K08v003748; Mon, 30 Jan 2017 03:20:00 -0500
+Received: by nilsson.home.kraxel.org (Postfix, from userid 500)
+	id 8DAFE80F68; Mon, 30 Jan 2017 09:19:58 +0100 (CET)
+Message-ID: <1485764398.20455.13.camel@redhat.com>
+From: Gerd Hoffmann <kraxel@redhat.com>
+To: Icenowy Zheng <icenowy@aosc.xyz>
+Date: Mon, 30 Jan 2017 09:19:58 +0100
+In-Reply-To: <20170129010013.29637-1-icenowy@aosc.xyz>
+References: <20170129010013.29637-1-icenowy@aosc.xyz>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Mime-Version: 1.0
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.27
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.29]);
+	Mon, 30 Jan 2017 08:20:01 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-arm] [PATCH 1/2] usb/ehci: Add SysBus EHCI device for
+ Allwinner SoCs
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: Where KVM/ARM decisions are made <kvmarm.lists.cs.columbia.edu>
-List-Unsubscribe: <https://lists.cs.columbia.edu/mailman/options/kvmarm>,
- <mailto:kvmarm-request@lists.cs.columbia.edu?subject=unsubscribe>
-List-Archive: <https://lists.cs.columbia.edu/pipermail/kvmarm>
-List-Post: <mailto:kvmarm@lists.cs.columbia.edu>
-List-Help: <mailto:kvmarm-request@lists.cs.columbia.edu?subject=help>
-List-Subscribe: <https://lists.cs.columbia.edu/mailman/listinfo/kvmarm>,
- <mailto:kvmarm-request@lists.cs.columbia.edu?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Errors-To: kvmarm-bounces@lists.cs.columbia.edu
-Sender: kvmarm-bounces@lists.cs.columbia.edu
-X-TUID: GKjYKG195QIR
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Beniamino Galvani <b.galvani@gmail.com>,
+	Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 5ot/1HgLjQop
 
-On 29 January 2017 at 11:53, Andrew Jones <drjones@redhat.com> wrote:
-> On Mon, Jan 16, 2017 at 05:26:58PM +0800, Shannon Zhao wrote:
->> From: Shannon Zhao <shannon.zhao@linaro.org>
->> +    memset(id_regitsers, 0, ARM_CPU_ID_MAX * sizeof(struct kvm_one_reg));
->> +
->> +    id_regitsers[0].id = ARM64_SYS_REG(ARM_CPU_ID_MIDR);
->> +    id_regitsers[0].addr = (uintptr_t)&cpu->midr;
->> +
->> +    id_regitsers[1].id = ARM64_SYS_REG(ARM_CPU_ID_REVIDR);
->> +    id_regitsers[1].addr = (uintptr_t)&cpu->revidr;
->> +
->
-> We can condense this nicely with list initialization
->
->  struct kvm_one_reg id_regitsers[] = {
->    { ARM64_SYS_REG(ARM_CPU_ID_MIDR), (uintptr_t)&cpu->midr },
->    { ARM64_SYS_REG(ARM_CPU_ID_REVIDR), (uintptr_t)&cpu->revidr },
->    ...
->    { 0, 0 }
+On So, 2017-01-29 at 09:00 +0800, Icenowy Zheng wrote:
+> It uses a register map like the one in Exynos SoCs.
+>=20
+> Signed-off-by: Icenowy Zheng <icenowy@aosc.xyz>
 
-"registers", please :-)
+I guess this goes through the arm queue?
 
-thanks
--- PMM
-_______________________________________________
-kvmarm mailing list
-kvmarm@lists.cs.columbia.edu
-https://lists.cs.columbia.edu/mailman/listinfo/kvmarm
+Reviewed-by: Gerd Hoffmann <kraxel@redhat.com>
+
+cheers,
+  Gerd
+

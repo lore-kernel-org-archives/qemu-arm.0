@@ -1,236 +1,234 @@
-Received: by 10.25.234.1 with SMTP id i1csp2053717lfh;
-        Tue, 31 Jan 2017 11:10:48 -0800 (PST)
-X-Received: by 10.55.116.70 with SMTP id p67mr12871562qkc.216.1485889848615;
-        Tue, 31 Jan 2017 11:10:48 -0800 (PST)
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id h12si2191168qka.114.2017.01.31.11.10.46
-        for <alex.bennee@linaro.org>
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 31 Jan 2017 11:10:48 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+Received: by 10.25.77.65 with SMTP id a62csp89565lfb;
+        Tue, 31 Jan 2017 15:09:53 -0800 (PST)
+X-Received: by 10.84.233.132 with SMTP id l4mr43654588plk.15.1485904193527;
+        Tue, 31 Jan 2017 15:09:53 -0800 (PST)
+Return-Path: <rth7680@gmail.com>
+Received: from mail-pf0-x242.google.com (mail-pf0-x242.google.com. [2607:f8b0:400e:c00::242])
+        by mx.google.com with ESMTPS id h1si17315001pli.170.2017.01.31.15.09.53
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 31 Jan 2017 15:09:53 -0800 (PST)
+Received-SPF: pass (google.com: domain of rth7680@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) client-ip=2607:f8b0:400e:c00::242;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:40590 helo=lists.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1cYdpG-0000OP-IZ
-	for alex.bennee@linaro.org; Tue, 31 Jan 2017 14:10:46 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:60626)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <SRS0=CMim=ZN=redhat.com=mst@kernel.org>)
-	id 1cYdPX-0007gD-D2
-	for qemu-arm@nongnu.org; Tue, 31 Jan 2017 13:44:12 -0500
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <SRS0=CMim=ZN=redhat.com=mst@kernel.org>)
-	id 1cYdPV-0000jd-Tm
-	for qemu-arm@nongnu.org; Tue, 31 Jan 2017 13:44:11 -0500
-Received: from mail.kernel.org ([198.145.29.136]:38532)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <SRS0=CMim=ZN=redhat.com=mst@kernel.org>)
-	id 1cYdPV-0000jD-JO; Tue, 31 Jan 2017 13:44:09 -0500
-Received: from mail.kernel.org (localhost [127.0.0.1])
-	by mail.kernel.org (Postfix) with ESMTP id 7D4E02021B;
-	Tue, 31 Jan 2017 18:44:07 +0000 (UTC)
-Received: from redhat.com (pool-96-237-166-50.bstnma.fios.verizon.net
-	[96.237.166.50])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPSA id 1023320035;
-	Tue, 31 Jan 2017 18:44:05 +0000 (UTC)
-Date: Tue, 31 Jan 2017 20:44:05 +0200
-From: "Michael S. Tsirkin" <mst@redhat.com>
-To: qemu-devel@nongnu.org
-Message-ID: <1485888144-16531-24-git-send-email-mst@redhat.com>
-References: <1485888144-16531-1-git-send-email-mst@redhat.com>
+       dkim=pass header.i=@gmail.com;
+       spf=pass (google.com: domain of rth7680@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) smtp.mailfrom=rth7680@gmail.com
+Received: by mail-pf0-x242.google.com with SMTP id f144so30183651pfa.2;
+        Tue, 31 Jan 2017 15:09:53 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=sender:subject:to:references:cc:from:message-id:date:user-agent
+         :mime-version:in-reply-to:content-transfer-encoding;
+        bh=I3fB+XCa96QZJsOEU26XpeWkbIsPHFDKp2QU9ymopAU=;
+        b=WmpsYfHzSAjvZ5IAut1E8qegLB3SfyUNo65Dx29wfSCJNXqEgs58V1N7Z8S0+x756o
+         oKma7KhX33mjSZNqqb66RkMalFDurqfEDrVDZho/7Qdy5LR+zRVo0B+2YzHZHfwkglWy
+         PYILEOHn1qwWlMwzVVEcqfCuyuAodvrppxN0R1XAP3MvV0A5aedoo4KKZz6dO6CTQRT9
+         MQxqacl0AwzvplYLLPlC8m2KmEEuurdKxbfQZPzG0akM1zoMoJLFTh+2IdIXsHdwF7jz
+         uAMW2cwC5VV9w3BqMMC+RZSRkuCOTRL3sDaoPCfWlhND+LSSSa21PuKcQmW++wY1896S
+         pQnA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:sender:subject:to:references:cc:from:message-id
+         :date:user-agent:mime-version:in-reply-to:content-transfer-encoding;
+        bh=I3fB+XCa96QZJsOEU26XpeWkbIsPHFDKp2QU9ymopAU=;
+        b=NAttZay+MpVzv3BDoVxeP2KYP5z8lnvQ+sYo8sUMU+WblxrY36/7iuWDRYg4KsIQoc
+         oLXOl2n909OQfITq7brLYtZllFjBoed4ht/FIjZwUwfhrG31YGIumnpqZ0lWFbRMvAO8
+         Ov+iqpLivVqJGuOf8Xu6x4iHomZ+T/mPWfJLh2CgEOQgd+H8HswpapLaGGU9av1J6umM
+         BkGiquWxYe1W98yrZvjiKImFjk+JxWOkr0zdFeQQ2Ge0TWQ8ZgSvxvk2zl1pFABSaEzV
+         ocljWvpsoMyA+NlocHEMPvFXoa00djQSd6KLHhhSiWuaVxmUhTTaVMwoFrB8XCHO6OMZ
+         uqFg==
+X-Gm-Message-State: AIkVDXItWSF3Q+E9tU6yXBIZmuUmHjaMFfbc+TORlZAlDAJquZiq7500DHvVdMRRJRoSTg==
+X-Received: by 10.84.216.24 with SMTP id m24mr43662717pli.22.1485904192893;
+        Tue, 31 Jan 2017 15:09:52 -0800 (PST)
+Return-Path: <rth7680@gmail.com>
+Received: from bigtime.twiddle.net ([2602:47:d954:1500:5e51:4fff:fe40:9c64])
+        by smtp.googlemail.com with ESMTPSA id g85sm43741249pfe.38.2017.01.31.15.09.51
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 31 Jan 2017 15:09:51 -0800 (PST)
+Sender: Richard Henderson <rth7680@gmail.com>
+Subject: Re: [PATCH v8 16/25] cputlb and arm/sparc targets: convert mmuidx
+ flushes from varg to bitmap
+To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
+ mttcg@greensocs.com, qemu-devel@nongnu.org, fred.konrad@greensocs.com,
+ a.rigo@virtualopensystems.com, cota@braap.org, bobby.prani@gmail.com,
+ nikunj@linux.vnet.ibm.com
+References: <20170127103922.19658-1-alex.bennee@linaro.org>
+ <20170127103922.19658-17-alex.bennee@linaro.org>
+Cc: mark.burton@greensocs.com, pbonzini@redhat.com, jan.kiszka@siemens.com,
+ serge.fdrv@gmail.com, peter.maydell@linaro.org, claudio.fontana@huawei.com,
+ bamvor.zhangjian@linaro.org, Peter Crosthwaite
+ <crosthwaite.peter@gmail.com>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ Artyom Tarasenko <atar4qemu@gmail.com>, "open list:ARM" <qemu-arm@nongnu.org>
+From: Richard Henderson <rth@twiddle.net>
+Message-ID: <70fe24bb-c8f1-43c4-010f-a682bdd507ef@twiddle.net>
+Date: Tue, 31 Jan 2017 15:09:49 -0800
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
+ Thunderbird/45.6.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <1485888144-16531-1-git-send-email-mst@redhat.com>
-X-Mailer: git-send-email 2.8.0.287.g0deeb61
-X-Mutt-Fcc: =sent
-X-Virus-Scanned: ClamAV using ClamSMTP
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
-X-Received-From: 198.145.29.136
-Subject: [Qemu-arm] [PULL v4 23/23] arm: add trailing ; after MISMATCH_CHECK
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.21
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: zsvsuvL81EjA
+In-Reply-To: <20170127103922.19658-17-alex.bennee@linaro.org>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-TUID: dFrxjxOsoGPZ
 
-Macro calls without a trailing ; look weird in C, this works as a side
-effect of how QEMU_BUILD_BUG_ON is implemented. Fix this up.
+On 01/27/2017 02:39 AM, Alex Bennée wrote:
+> +    for (mmu_idx = 0; mmu_idx < NB_MMU_MODES; mmu_idx++) {
+>
+> -        tlb_debug("%d\n", mmu_idx);
+> +        if (test_bit(mmu_idx, &mmu_idx_bitmask)) {
+> +            tlb_debug("%d\n", mmu_idx);
+>
+> -        memset(env->tlb_table[mmu_idx], -1, sizeof(env->tlb_table[0]));
+> -        memset(env->tlb_v_table[mmu_idx], -1, sizeof(env->tlb_v_table[0]));
+> +            memset(env->tlb_table[mmu_idx], -1, sizeof(env->tlb_table[0]));
+> +            memset(env->tlb_v_table[mmu_idx], -1, sizeof(env->tlb_v_table[0]));
+> +        }
 
-Signed-off-by: Michael S. Tsirkin <mst@redhat.com>
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
----
- target/arm/kvm-consts.h | 98 ++++++++++++++++++++++++-------------------------
- 1 file changed, 49 insertions(+), 49 deletions(-)
+Perhaps it doesn't matter since NB_MMU_MODES is so small but
 
-diff --git a/target/arm/kvm-consts.h b/target/arm/kvm-consts.h
-index 06b6c92..aad2825 100644
---- a/target/arm/kvm-consts.h
-+++ b/target/arm/kvm-consts.h
-@@ -33,12 +33,12 @@
- #define CP_REG_ARM             0x4000000000000000ULL
- #define CP_REG_ARCH_MASK       0xff00000000000000ULL
- 
--MISMATCH_CHECK(CP_REG_SIZE_SHIFT, KVM_REG_SIZE_SHIFT)
--MISMATCH_CHECK(CP_REG_SIZE_MASK, KVM_REG_SIZE_MASK)
--MISMATCH_CHECK(CP_REG_SIZE_U32, KVM_REG_SIZE_U32)
--MISMATCH_CHECK(CP_REG_SIZE_U64, KVM_REG_SIZE_U64)
--MISMATCH_CHECK(CP_REG_ARM, KVM_REG_ARM)
--MISMATCH_CHECK(CP_REG_ARCH_MASK, KVM_REG_ARCH_MASK)
-+MISMATCH_CHECK(CP_REG_SIZE_SHIFT, KVM_REG_SIZE_SHIFT);
-+MISMATCH_CHECK(CP_REG_SIZE_MASK, KVM_REG_SIZE_MASK);
-+MISMATCH_CHECK(CP_REG_SIZE_U32, KVM_REG_SIZE_U32);
-+MISMATCH_CHECK(CP_REG_SIZE_U64, KVM_REG_SIZE_U64);
-+MISMATCH_CHECK(CP_REG_ARM, KVM_REG_ARM);
-+MISMATCH_CHECK(CP_REG_ARCH_MASK, KVM_REG_ARCH_MASK);
- 
- #define QEMU_PSCI_0_1_FN_BASE 0x95c1ba5e
- #define QEMU_PSCI_0_1_FN(n) (QEMU_PSCI_0_1_FN_BASE + (n))
-@@ -47,10 +47,10 @@ MISMATCH_CHECK(CP_REG_ARCH_MASK, KVM_REG_ARCH_MASK)
- #define QEMU_PSCI_0_1_FN_CPU_ON QEMU_PSCI_0_1_FN(2)
- #define QEMU_PSCI_0_1_FN_MIGRATE QEMU_PSCI_0_1_FN(3)
- 
--MISMATCH_CHECK(QEMU_PSCI_0_1_FN_CPU_SUSPEND, KVM_PSCI_FN_CPU_SUSPEND)
--MISMATCH_CHECK(QEMU_PSCI_0_1_FN_CPU_OFF, KVM_PSCI_FN_CPU_OFF)
--MISMATCH_CHECK(QEMU_PSCI_0_1_FN_CPU_ON, KVM_PSCI_FN_CPU_ON)
--MISMATCH_CHECK(QEMU_PSCI_0_1_FN_MIGRATE, KVM_PSCI_FN_MIGRATE)
-+MISMATCH_CHECK(QEMU_PSCI_0_1_FN_CPU_SUSPEND, KVM_PSCI_FN_CPU_SUSPEND);
-+MISMATCH_CHECK(QEMU_PSCI_0_1_FN_CPU_OFF, KVM_PSCI_FN_CPU_OFF);
-+MISMATCH_CHECK(QEMU_PSCI_0_1_FN_CPU_ON, KVM_PSCI_FN_CPU_ON);
-+MISMATCH_CHECK(QEMU_PSCI_0_1_FN_MIGRATE, KVM_PSCI_FN_MIGRATE);
- 
- #define QEMU_PSCI_0_2_FN_BASE 0x84000000
- #define QEMU_PSCI_0_2_FN(n) (QEMU_PSCI_0_2_FN_BASE + (n))
-@@ -77,13 +77,13 @@ MISMATCH_CHECK(QEMU_PSCI_0_1_FN_MIGRATE, KVM_PSCI_FN_MIGRATE)
- #define QEMU_PSCI_0_2_FN64_AFFINITY_INFO QEMU_PSCI_0_2_FN64(4)
- #define QEMU_PSCI_0_2_FN64_MIGRATE QEMU_PSCI_0_2_FN64(5)
- 
--MISMATCH_CHECK(QEMU_PSCI_0_2_FN_CPU_SUSPEND, PSCI_0_2_FN_CPU_SUSPEND)
--MISMATCH_CHECK(QEMU_PSCI_0_2_FN_CPU_OFF, PSCI_0_2_FN_CPU_OFF)
--MISMATCH_CHECK(QEMU_PSCI_0_2_FN_CPU_ON, PSCI_0_2_FN_CPU_ON)
--MISMATCH_CHECK(QEMU_PSCI_0_2_FN_MIGRATE, PSCI_0_2_FN_MIGRATE)
--MISMATCH_CHECK(QEMU_PSCI_0_2_FN64_CPU_SUSPEND, PSCI_0_2_FN64_CPU_SUSPEND)
--MISMATCH_CHECK(QEMU_PSCI_0_2_FN64_CPU_ON, PSCI_0_2_FN64_CPU_ON)
--MISMATCH_CHECK(QEMU_PSCI_0_2_FN64_MIGRATE, PSCI_0_2_FN64_MIGRATE)
-+MISMATCH_CHECK(QEMU_PSCI_0_2_FN_CPU_SUSPEND, PSCI_0_2_FN_CPU_SUSPEND);
-+MISMATCH_CHECK(QEMU_PSCI_0_2_FN_CPU_OFF, PSCI_0_2_FN_CPU_OFF);
-+MISMATCH_CHECK(QEMU_PSCI_0_2_FN_CPU_ON, PSCI_0_2_FN_CPU_ON);
-+MISMATCH_CHECK(QEMU_PSCI_0_2_FN_MIGRATE, PSCI_0_2_FN_MIGRATE);
-+MISMATCH_CHECK(QEMU_PSCI_0_2_FN64_CPU_SUSPEND, PSCI_0_2_FN64_CPU_SUSPEND);
-+MISMATCH_CHECK(QEMU_PSCI_0_2_FN64_CPU_ON, PSCI_0_2_FN64_CPU_ON);
-+MISMATCH_CHECK(QEMU_PSCI_0_2_FN64_MIGRATE, PSCI_0_2_FN64_MIGRATE);
- 
- /* PSCI v0.2 return values used by TCG emulation of PSCI */
- 
-@@ -93,9 +93,9 @@ MISMATCH_CHECK(QEMU_PSCI_0_2_FN64_MIGRATE, PSCI_0_2_FN64_MIGRATE)
- /* We implement version 0.2 only */
- #define QEMU_PSCI_0_2_RET_VERSION_0_2                       2
- 
--MISMATCH_CHECK(QEMU_PSCI_0_2_RET_TOS_MIGRATION_NOT_REQUIRED, PSCI_0_2_TOS_MP)
-+MISMATCH_CHECK(QEMU_PSCI_0_2_RET_TOS_MIGRATION_NOT_REQUIRED, PSCI_0_2_TOS_MP);
- MISMATCH_CHECK(QEMU_PSCI_0_2_RET_VERSION_0_2,
--               (PSCI_VERSION_MAJOR(0) | PSCI_VERSION_MINOR(2)))
-+               (PSCI_VERSION_MAJOR(0) | PSCI_VERSION_MINOR(2)));
- 
- /* PSCI return values (inclusive of all PSCI versions) */
- #define QEMU_PSCI_RET_SUCCESS                     0
-@@ -108,15 +108,15 @@ MISMATCH_CHECK(QEMU_PSCI_0_2_RET_VERSION_0_2,
- #define QEMU_PSCI_RET_NOT_PRESENT                 -7
- #define QEMU_PSCI_RET_DISABLED                    -8
- 
--MISMATCH_CHECK(QEMU_PSCI_RET_SUCCESS, PSCI_RET_SUCCESS)
--MISMATCH_CHECK(QEMU_PSCI_RET_NOT_SUPPORTED, PSCI_RET_NOT_SUPPORTED)
--MISMATCH_CHECK(QEMU_PSCI_RET_INVALID_PARAMS, PSCI_RET_INVALID_PARAMS)
--MISMATCH_CHECK(QEMU_PSCI_RET_DENIED, PSCI_RET_DENIED)
--MISMATCH_CHECK(QEMU_PSCI_RET_ALREADY_ON, PSCI_RET_ALREADY_ON)
--MISMATCH_CHECK(QEMU_PSCI_RET_ON_PENDING, PSCI_RET_ON_PENDING)
--MISMATCH_CHECK(QEMU_PSCI_RET_INTERNAL_FAILURE, PSCI_RET_INTERNAL_FAILURE)
--MISMATCH_CHECK(QEMU_PSCI_RET_NOT_PRESENT, PSCI_RET_NOT_PRESENT)
--MISMATCH_CHECK(QEMU_PSCI_RET_DISABLED, PSCI_RET_DISABLED)
-+MISMATCH_CHECK(QEMU_PSCI_RET_SUCCESS, PSCI_RET_SUCCESS);
-+MISMATCH_CHECK(QEMU_PSCI_RET_NOT_SUPPORTED, PSCI_RET_NOT_SUPPORTED);
-+MISMATCH_CHECK(QEMU_PSCI_RET_INVALID_PARAMS, PSCI_RET_INVALID_PARAMS);
-+MISMATCH_CHECK(QEMU_PSCI_RET_DENIED, PSCI_RET_DENIED);
-+MISMATCH_CHECK(QEMU_PSCI_RET_ALREADY_ON, PSCI_RET_ALREADY_ON);
-+MISMATCH_CHECK(QEMU_PSCI_RET_ON_PENDING, PSCI_RET_ON_PENDING);
-+MISMATCH_CHECK(QEMU_PSCI_RET_INTERNAL_FAILURE, PSCI_RET_INTERNAL_FAILURE);
-+MISMATCH_CHECK(QEMU_PSCI_RET_NOT_PRESENT, PSCI_RET_NOT_PRESENT);
-+MISMATCH_CHECK(QEMU_PSCI_RET_DISABLED, PSCI_RET_DISABLED);
- 
- /* Note that KVM uses overlapping values for AArch32 and AArch64
-  * target CPU numbers. AArch32 targets:
-@@ -137,14 +137,14 @@ MISMATCH_CHECK(QEMU_PSCI_RET_DISABLED, PSCI_RET_DISABLED)
- #define QEMU_KVM_ARM_TARGET_NONE UINT_MAX
- 
- #ifdef TARGET_AARCH64
--MISMATCH_CHECK(QEMU_KVM_ARM_TARGET_AEM_V8, KVM_ARM_TARGET_AEM_V8)
--MISMATCH_CHECK(QEMU_KVM_ARM_TARGET_FOUNDATION_V8, KVM_ARM_TARGET_FOUNDATION_V8)
--MISMATCH_CHECK(QEMU_KVM_ARM_TARGET_CORTEX_A57, KVM_ARM_TARGET_CORTEX_A57)
--MISMATCH_CHECK(QEMU_KVM_ARM_TARGET_XGENE_POTENZA, KVM_ARM_TARGET_XGENE_POTENZA)
--MISMATCH_CHECK(QEMU_KVM_ARM_TARGET_CORTEX_A53, KVM_ARM_TARGET_CORTEX_A53)
-+MISMATCH_CHECK(QEMU_KVM_ARM_TARGET_AEM_V8, KVM_ARM_TARGET_AEM_V8);
-+MISMATCH_CHECK(QEMU_KVM_ARM_TARGET_FOUNDATION_V8, KVM_ARM_TARGET_FOUNDATION_V8);
-+MISMATCH_CHECK(QEMU_KVM_ARM_TARGET_CORTEX_A57, KVM_ARM_TARGET_CORTEX_A57);
-+MISMATCH_CHECK(QEMU_KVM_ARM_TARGET_XGENE_POTENZA, KVM_ARM_TARGET_XGENE_POTENZA);
-+MISMATCH_CHECK(QEMU_KVM_ARM_TARGET_CORTEX_A53, KVM_ARM_TARGET_CORTEX_A53);
- #else
--MISMATCH_CHECK(QEMU_KVM_ARM_TARGET_CORTEX_A15, KVM_ARM_TARGET_CORTEX_A15)
--MISMATCH_CHECK(QEMU_KVM_ARM_TARGET_CORTEX_A7, KVM_ARM_TARGET_CORTEX_A7)
-+MISMATCH_CHECK(QEMU_KVM_ARM_TARGET_CORTEX_A15, KVM_ARM_TARGET_CORTEX_A15);
-+MISMATCH_CHECK(QEMU_KVM_ARM_TARGET_CORTEX_A7, KVM_ARM_TARGET_CORTEX_A7);
- #endif
- 
- #define CP_REG_ARM64                   0x6000000000000000ULL
-@@ -166,20 +166,20 @@ MISMATCH_CHECK(QEMU_KVM_ARM_TARGET_CORTEX_A7, KVM_ARM_TARGET_CORTEX_A7)
- #define CP_REG_ARM64_SYSREG_CP (CP_REG_ARM64_SYSREG >> CP_REG_ARM_COPROC_SHIFT)
- 
- #ifdef TARGET_AARCH64
--MISMATCH_CHECK(CP_REG_ARM64, KVM_REG_ARM64)
--MISMATCH_CHECK(CP_REG_ARM_COPROC_MASK, KVM_REG_ARM_COPROC_MASK)
--MISMATCH_CHECK(CP_REG_ARM_COPROC_SHIFT, KVM_REG_ARM_COPROC_SHIFT)
--MISMATCH_CHECK(CP_REG_ARM64_SYSREG, KVM_REG_ARM64_SYSREG)
--MISMATCH_CHECK(CP_REG_ARM64_SYSREG_OP0_MASK, KVM_REG_ARM64_SYSREG_OP0_MASK)
--MISMATCH_CHECK(CP_REG_ARM64_SYSREG_OP0_SHIFT, KVM_REG_ARM64_SYSREG_OP0_SHIFT)
--MISMATCH_CHECK(CP_REG_ARM64_SYSREG_OP1_MASK, KVM_REG_ARM64_SYSREG_OP1_MASK)
--MISMATCH_CHECK(CP_REG_ARM64_SYSREG_OP1_SHIFT, KVM_REG_ARM64_SYSREG_OP1_SHIFT)
--MISMATCH_CHECK(CP_REG_ARM64_SYSREG_CRN_MASK, KVM_REG_ARM64_SYSREG_CRN_MASK)
--MISMATCH_CHECK(CP_REG_ARM64_SYSREG_CRN_SHIFT, KVM_REG_ARM64_SYSREG_CRN_SHIFT)
--MISMATCH_CHECK(CP_REG_ARM64_SYSREG_CRM_MASK, KVM_REG_ARM64_SYSREG_CRM_MASK)
--MISMATCH_CHECK(CP_REG_ARM64_SYSREG_CRM_SHIFT, KVM_REG_ARM64_SYSREG_CRM_SHIFT)
--MISMATCH_CHECK(CP_REG_ARM64_SYSREG_OP2_MASK, KVM_REG_ARM64_SYSREG_OP2_MASK)
--MISMATCH_CHECK(CP_REG_ARM64_SYSREG_OP2_SHIFT, KVM_REG_ARM64_SYSREG_OP2_SHIFT)
-+MISMATCH_CHECK(CP_REG_ARM64, KVM_REG_ARM64);
-+MISMATCH_CHECK(CP_REG_ARM_COPROC_MASK, KVM_REG_ARM_COPROC_MASK);
-+MISMATCH_CHECK(CP_REG_ARM_COPROC_SHIFT, KVM_REG_ARM_COPROC_SHIFT);
-+MISMATCH_CHECK(CP_REG_ARM64_SYSREG, KVM_REG_ARM64_SYSREG);
-+MISMATCH_CHECK(CP_REG_ARM64_SYSREG_OP0_MASK, KVM_REG_ARM64_SYSREG_OP0_MASK);
-+MISMATCH_CHECK(CP_REG_ARM64_SYSREG_OP0_SHIFT, KVM_REG_ARM64_SYSREG_OP0_SHIFT);
-+MISMATCH_CHECK(CP_REG_ARM64_SYSREG_OP1_MASK, KVM_REG_ARM64_SYSREG_OP1_MASK);
-+MISMATCH_CHECK(CP_REG_ARM64_SYSREG_OP1_SHIFT, KVM_REG_ARM64_SYSREG_OP1_SHIFT);
-+MISMATCH_CHECK(CP_REG_ARM64_SYSREG_CRN_MASK, KVM_REG_ARM64_SYSREG_CRN_MASK);
-+MISMATCH_CHECK(CP_REG_ARM64_SYSREG_CRN_SHIFT, KVM_REG_ARM64_SYSREG_CRN_SHIFT);
-+MISMATCH_CHECK(CP_REG_ARM64_SYSREG_CRM_MASK, KVM_REG_ARM64_SYSREG_CRM_MASK);
-+MISMATCH_CHECK(CP_REG_ARM64_SYSREG_CRM_SHIFT, KVM_REG_ARM64_SYSREG_CRM_SHIFT);
-+MISMATCH_CHECK(CP_REG_ARM64_SYSREG_OP2_MASK, KVM_REG_ARM64_SYSREG_OP2_MASK);
-+MISMATCH_CHECK(CP_REG_ARM64_SYSREG_OP2_SHIFT, KVM_REG_ARM64_SYSREG_OP2_SHIFT);
- #endif
- 
- #undef MISMATCH_CHECK
--- 
-MST
+   for (; idxmap != 0; idxmap &= idxmap - 1) {
+     int mmu_idx = ctz32(idxmap);
+     ...
+   }
 
+iterates only for the bits that are set.
+
+> -typedef enum ARMMMUIdx {
+> -    ARMMMUIdx_S12NSE0 = 0,
+> -    ARMMMUIdx_S12NSE1 = 1,
+> -    ARMMMUIdx_S1E2 = 2,
+> -    ARMMMUIdx_S1E3 = 3,
+> -    ARMMMUIdx_S1SE0 = 4,
+> -    ARMMMUIdx_S1SE1 = 5,
+> -    ARMMMUIdx_S2NS = 6,
+> +typedef enum ARMMMUBitMap {
+> +    ARMMMUBit_S12NSE0 = 1 << 0,
+> +    ARMMMUBit_S12NSE1 = 1 << 1,
+> +    ARMMMUBit_S1E2 = 1 << 2,
+> +    ARMMMUBit_S1E3 = 1 << 3,
+> +    ARMMMUBit_S1SE0 = 1 << 4,
+> +    ARMMMUBit_S1SE1 = 1 << 5,
+> +    ARMMMUBit_S2NS = 1 << 6,
+>      /* Indexes below here don't have TLBs and are used only for AT system
+>       * instructions or for the first stage of an S12 page table walk.
+>       */
+> -    ARMMMUIdx_S1NSE0 = 7,
+> -    ARMMMUIdx_S1NSE1 = 8,
+> -} ARMMMUIdx;
+> +    ARMMMUBit_S1NSE0 = 1 << 7,
+> +    ARMMMUBit_S1NSE1 = 1 << 8,
+> +} ARMMMUBitMap;
+>
+> -#define MMU_USER_IDX 0
+> +typedef int ARMMMUIdx;
+> +
+> +static inline ARMMMUIdx arm_mmu_bit_to_idx(ARMMMUBitMap bit)
+> +{
+> +    g_assert(ctpop16(bit) == 1);
+> +    return ctz32(bit);
+> +}
+> +
+> +static inline ARMMMUBitMap arm_mmu_idx_to_bit(ARMMMUIdx idx)
+> +{
+> +    return 1 << idx;
+> +}
+
+I don't understand this redefinition though, causing...
+
+> @@ -2109,13 +2109,13 @@ static void ats_write(CPUARMState *env, const ARMCPRegInfo *ri, uint64_t value)
+>          /* stage 1 current state PL1: ATS1CPR, ATS1CPW */
+>          switch (el) {
+>          case 3:
+> -            mmu_idx = ARMMMUIdx_S1E3;
+> +            mmu_bit = ARMMMUBit_S1E3;
+>              break;
+>          case 2:
+> -            mmu_idx = ARMMMUIdx_S1NSE1;
+> +            mmu_bit = ARMMMUBit_S1NSE1;
+>              break;
+>          case 1:
+> -            mmu_idx = secure ? ARMMMUIdx_S1SE1 : ARMMMUIdx_S1NSE1;
+> +            mmu_bit = secure ? ARMMMUBit_S1SE1 : ARMMMUBit_S1NSE1;
+>              break;
+>          default:
+>              g_assert_not_reached();
+> @@ -2125,13 +2125,13 @@ static void ats_write(CPUARMState *env, const ARMCPRegInfo *ri, uint64_t value)
+>          /* stage 1 current state PL0: ATS1CUR, ATS1CUW */
+>          switch (el) {
+>          case 3:
+> -            mmu_idx = ARMMMUIdx_S1SE0;
+> +            mmu_bit = ARMMMUBit_S1SE0;
+>              break;
+>          case 2:
+> -            mmu_idx = ARMMMUIdx_S1NSE0;
+> +            mmu_bit = ARMMMUBit_S1NSE0;
+>              break;
+>          case 1:
+> -            mmu_idx = secure ? ARMMMUIdx_S1SE0 : ARMMMUIdx_S1NSE0;
+> +            mmu_bit = secure ? ARMMMUBit_S1SE0 : ARMMMUBit_S1NSE0;
+>              break;
+>          default:
+>              g_assert_not_reached();
+> @@ -2139,17 +2139,17 @@ static void ats_write(CPUARMState *env, const ARMCPRegInfo *ri, uint64_t value)
+>          break;
+>      case 4:
+>          /* stage 1+2 NonSecure PL1: ATS12NSOPR, ATS12NSOPW */
+> -        mmu_idx = ARMMMUIdx_S12NSE1;
+> +        mmu_bit = ARMMMUBit_S12NSE1;
+>          break;
+>      case 6:
+>          /* stage 1+2 NonSecure PL0: ATS12NSOUR, ATS12NSOUW */
+> -        mmu_idx = ARMMMUIdx_S12NSE0;
+> +        mmu_bit = ARMMMUBit_S12NSE0;
+>          break;
+>      default:
+>          g_assert_not_reached();
+>      }
+>
+> -    par64 = do_ats_write(env, value, access_type, mmu_idx);
+> +    par64 = do_ats_write(env, value, access_type, arm_mmu_bit_to_idx(mmu_bit));
+
+... this sort of churn, only to convert *back* to an index.
+
+> @@ -2185,26 +2186,26 @@ static void ats_write64(CPUARMState *env, const ARMCPRegInfo *ri,
+>      case 0:
+>          switch (ri->opc1) {
+>          case 0: /* AT S1E1R, AT S1E1W */
+> -            mmu_idx = secure ? ARMMMUIdx_S1SE1 : ARMMMUIdx_S1NSE1;
+> +            mmu_idx = secure ? ARMMMUBit_S1SE1 : ARMMMUBit_S1NSE1;
+>              break;
+>          case 4: /* AT S1E2R, AT S1E2W */
+> -            mmu_idx = ARMMMUIdx_S1E2;
+> +            mmu_idx = ARMMMUBit_S1E2;
+>              break;
+>          case 6: /* AT S1E3R, AT S1E3W */
+> -            mmu_idx = ARMMMUIdx_S1E3;
+> +            mmu_idx = ARMMMUBit_S1E3;
+>              break;
+>          default:
+>              g_assert_not_reached();
+>          }
+>          break;
+>      case 2: /* AT S1E0R, AT S1E0W */
+> -        mmu_idx = secure ? ARMMMUIdx_S1SE0 : ARMMMUIdx_S1NSE0;
+> +        mmu_idx = secure ? ARMMMUBit_S1SE0 : ARMMMUBit_S1NSE0;
+>          break;
+>      case 4: /* AT S12E1R, AT S12E1W */
+> -        mmu_idx = secure ? ARMMMUIdx_S1SE1 : ARMMMUIdx_S12NSE1;
+> +        mmu_idx = secure ? ARMMMUBit_S1SE1 : ARMMMUBit_S12NSE1;
+>          break;
+>      case 6: /* AT S12E0R, AT S12E0W */
+> -        mmu_idx = secure ? ARMMMUIdx_S1SE0 : ARMMMUIdx_S12NSE0;
+> +        mmu_idx = secure ? ARMMMUBit_S1SE0 : ARMMMUBit_S12NSE0;
+>          break;
+>      default:
+>          g_assert_not_reached();
+> @@ -2499,8 +2500,8 @@ static void vttbr_write(CPUARMState *env, const ARMCPRegInfo *ri,
+
+... and then there's this one where you don't rename the variable, and as far 
+as I can tell don't adjust the argument for do_ats_write.
+
+Which is probably a mistake?
+
+Just define both Idx and Bit symbols and be done with it.
+
+
+r~

@@ -1,83 +1,91 @@
-Received: by 10.25.77.65 with SMTP id a62csp98579lfb;
-        Tue, 31 Jan 2017 15:37:27 -0800 (PST)
-X-Received: by 10.84.212.2 with SMTP id d2mr43381027pli.152.1485905847107;
-        Tue, 31 Jan 2017 15:37:27 -0800 (PST)
+Received: by 10.25.77.65 with SMTP id a62csp99220lfb;
+        Tue, 31 Jan 2017 15:39:48 -0800 (PST)
+X-Received: by 10.98.200.207 with SMTP id i76mr31592326pfk.38.1485905987958;
+        Tue, 31 Jan 2017 15:39:47 -0800 (PST)
 Return-Path: <rth7680@gmail.com>
-Received: from mail-pf0-x241.google.com (mail-pf0-x241.google.com. [2607:f8b0:400e:c00::241])
-        by mx.google.com with ESMTPS id d84si17323358pfb.266.2017.01.31.15.37.26
+Received: from mail-pf0-x243.google.com (mail-pf0-x243.google.com. [2607:f8b0:400e:c00::243])
+        by mx.google.com with ESMTPS id m30si12600112pgd.339.2017.01.31.15.39.47
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 31 Jan 2017 15:37:27 -0800 (PST)
-Received-SPF: pass (google.com: domain of rth7680@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) client-ip=2607:f8b0:400e:c00::241;
+        Tue, 31 Jan 2017 15:39:47 -0800 (PST)
+Received-SPF: pass (google.com: domain of rth7680@gmail.com designates 2607:f8b0:400e:c00::243 as permitted sender) client-ip=2607:f8b0:400e:c00::243;
 Authentication-Results: mx.google.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of rth7680@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) smtp.mailfrom=rth7680@gmail.com
-Received: by mail-pf0-x241.google.com with SMTP id e4so30175619pfg.0;
-        Tue, 31 Jan 2017 15:37:26 -0800 (PST)
+       spf=pass (google.com: domain of rth7680@gmail.com designates 2607:f8b0:400e:c00::243 as permitted sender) smtp.mailfrom=rth7680@gmail.com
+Received: by mail-pf0-x243.google.com with SMTP id f144so30282673pfa.2;
+        Tue, 31 Jan 2017 15:39:47 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=sender:subject:to:references:cc:from:message-id:date:user-agent
          :mime-version:in-reply-to:content-transfer-encoding;
-        bh=J6XZaW/0YEnJ0MTnNGH404LYUtfd5bC+gGbMUniSGzs=;
-        b=sbdyH09r5ku1BCs52aSzplAmwCxS6fSBmVdT6Tq+qaDAqzL7ZULK0H/R4Ex3ABLInn
-         Nn22NfpeWqNPgtUJpmf+rbCdsr3gr1CPZ/YaUJKBMHjHOVPoFKZNBmpOKmj/oacJLXOv
-         xfVo/176fAxqtXBflK08//HfnVxqmAU52PgNp+g7IuDMpmW36rlJ4LvBDiGgT1LCaZs5
-         lIBTrebjym2zfWdEp3w/RkVXgofS2wbi4MIBTL0zm5LAudOu3uhO+SYkxLPHvI/QXnp+
-         jQYINzgxVAMf1hzeRdr9+9/waKs/EfagAQoeOzso2HY9lqZBhl7CueDjIwstEZ4mUzZe
-         izkg==
+        bh=U4kslvD7Hcpus+acxyxBc2VXjoZyJy0mqcItkeVCVfM=;
+        b=jCQWQHm36c9dFvUBgPNaCvvweNsuUQSEhGcAoUtv1BpBajjjS0EM7byUPk5I/kvEGj
+         pv3rwZc9nPv+uNcRSm/f8sgpU2X1cv5lWTy3UsSfXyHJYqmxrwiBVhFAE0t8U8Mw3OPC
+         ga2fdu5DWPcPki2Uk9bCvSdWxUzqhxpZjdWGWEtCmg4EDQtjD+59dEoaTcPaE0dc8LH6
+         A5YHYoJAj0orTnwA+nlX1bilppyj0t5uYpT5sY5R+A9vYSM/h4yu+CWEdgopOrJ8+pIJ
+         1Z6xGN7GqLAVWLAZJpSSy0e1WMH8+lA9hsqSiFKt/mO0o+fb26H97dBjww2prYhz0XjO
+         4cbg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:sender:subject:to:references:cc:from:message-id
          :date:user-agent:mime-version:in-reply-to:content-transfer-encoding;
-        bh=J6XZaW/0YEnJ0MTnNGH404LYUtfd5bC+gGbMUniSGzs=;
-        b=eNjugvqdqZqGSKO0/mYDXvM8fJo0OAklmmbVdxema6a2aCn2R945cN53WzVkN/hLyF
-         WtJu1YYJFoLVDuYCqtomAWdosmacEgpFg2zDv1vwkAs5RcMA3GwgmE0zVdgJNasKpH5d
-         280csf/b1rEzCpnsSeHSZB618bkNfB3DhJXuIdpjiyR3b8q2nHBuQX5erjnMNtxRYfxM
-         +zJgvjMnt7Egkxj6VvuS7L2CgYLD00jE2B1vWmZGvdg8mHb+yPiWDD0kyNn9kssKOvQy
-         by1YaenlUn9BXlBOFyMws1AedvT7bW3jIimPc4CR1ulGM/HaNxU8eJtdl2763xYKfjGS
-         I+sA==
-X-Gm-Message-State: AIkVDXIQZWvomJaiAKLBMAId/jMkNYIW9VMlL/2b4SrnTxOJnkdDFvlceGpEc7SZiQ2Kzg==
-X-Received: by 10.98.41.5 with SMTP id p5mr32611831pfp.183.1485905846653;
-        Tue, 31 Jan 2017 15:37:26 -0800 (PST)
+        bh=U4kslvD7Hcpus+acxyxBc2VXjoZyJy0mqcItkeVCVfM=;
+        b=iXxjPk8mQvHu+hi0iqEmkne1qQcnVLcnhhab1fJEmlr9/EONE8zPFqB0p6iVzoFxtt
+         WxCmCDe6eQlUmATC0YHG3NLr6jBuk96fqlLvygNitcIYAEmxXOjOVoIvH3TE+qA0vIun
+         VB/uu5moW9TMJ5Tvyhf3Vlfh+yEfwFG1MXQRDWaUUtAxr59MQXQBhvVWdCA1pKZbSyEC
+         8b7vEymRt1G1mQQLfmafrWEFJbj7Pfx7KP+42NkRZnf9g3XEdHwyBB9PHtNp4Nlv1bDE
+         h88TvVytzVHGjmYKe4celrtWHIhAC5JAv5u8sU5dg9CpzI3BMIxCaLpLKb5DvcPU5X2n
+         wACg==
+X-Gm-Message-State: AIkVDXIBQSSDNrq3HvP0nA7IcLWfCqejYlP96Okj27/PXRigbvbnFZ6d+qhmqcizWeQJmw==
+X-Received: by 10.84.136.135 with SMTP id 7mr43595927pll.149.1485905987487;
+        Tue, 31 Jan 2017 15:39:47 -0800 (PST)
 Return-Path: <rth7680@gmail.com>
 Received: from bigtime.twiddle.net ([2602:47:d954:1500:5e51:4fff:fe40:9c64])
-        by smtp.googlemail.com with ESMTPSA id f3sm44247728pga.34.2017.01.31.15.37.25
+        by smtp.googlemail.com with ESMTPSA id f3sm43858203pfd.10.2017.01.31.15.39.46
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 31 Jan 2017 15:37:26 -0800 (PST)
+        Tue, 31 Jan 2017 15:39:47 -0800 (PST)
 Sender: Richard Henderson <rth7680@gmail.com>
-Subject: Re: [PATCH v8 24/25] target-arm: ensure all cross vCPUs TLB flushes
- complete
+Subject: Re: [PATCH v8 25/25] tcg: enable MTTCG by default for ARM on x86
+ hosts
 To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
  mttcg@greensocs.com, qemu-devel@nongnu.org, fred.konrad@greensocs.com,
  a.rigo@virtualopensystems.com, cota@braap.org, bobby.prani@gmail.com,
  nikunj@linux.vnet.ibm.com
 References: <20170127103922.19658-1-alex.bennee@linaro.org>
- <20170127103922.19658-25-alex.bennee@linaro.org>
+ <20170127103922.19658-26-alex.bennee@linaro.org>
 Cc: mark.burton@greensocs.com, pbonzini@redhat.com, jan.kiszka@siemens.com,
  serge.fdrv@gmail.com, peter.maydell@linaro.org, claudio.fontana@huawei.com,
  bamvor.zhangjian@linaro.org, "open list:ARM" <qemu-arm@nongnu.org>
 From: Richard Henderson <rth@twiddle.net>
-Message-ID: <d929bbf5-3dbf-0816-9a45-8b0203689a96@twiddle.net>
-Date: Tue, 31 Jan 2017 15:37:24 -0800
+Message-ID: <f15d91cd-e5b9-3dda-7afa-5b2a91b9e9d0@twiddle.net>
+Date: Tue, 31 Jan 2017 15:39:45 -0800
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
  Thunderbird/45.6.0
 MIME-Version: 1.0
-In-Reply-To: <20170127103922.19658-25-alex.bennee@linaro.org>
+In-Reply-To: <20170127103922.19658-26-alex.bennee@linaro.org>
 Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-TUID: VazXqBNq+ZGY
+X-TUID: oCneVfe4jBLm
 
 On 01/27/2017 02:39 AM, Alex Bennée wrote:
-> Previously flushes on other vCPUs would only get serviced when they
-> exited their TranslationBlocks. While this isn't overly problematic it
-> violates the semantics of TLB flush from the point of view of source
-> vCPU.
->
-> To solve this we call the cputlb *_all_cpus() functions to do the
-> flushes and ask it to ensure all flushes are completed before we start
-> the next instruction. As this involves exiting the cpu_loop we need to
-> ensure the PC is saved before the tlb helper functions are called.
->
-> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+> +/* This defines the natural memory order supported by this
+> + * architecture before guarantees made by various barrier
+> + * instructions.
+> + *
+> + * The x86 has a pretty strong memory ordering which only really
+> + * allows for some stores to be re-ordered after loads.
+> + */
+> +#include "tcg-mo.h"
+> +
+> +static inline int get_tcg_target_mo(void)
+> +{
+> +    return TCG_MO_ALL & ~TCG_MO_LD_ST;
+> +}
+> +
+> +#define TCG_TARGET_DEFAULT_MO get_tcg_target_mo()
+> +
+
+Why the inline function?  The expression in the define would seem sufficient. 
+Otherwise,
 
 Reviewed-by: Richard Henderson <rth@twiddle.net>
 

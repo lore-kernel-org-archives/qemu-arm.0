@@ -1,117 +1,130 @@
-Received: by 10.25.77.65 with SMTP id a62csp1968669lfb;
-        Tue, 31 Jan 2017 07:20:13 -0800 (PST)
-X-Received: by 10.237.58.41 with SMTP id n38mr27195962qte.134.1485876013757;
-        Tue, 31 Jan 2017 07:20:13 -0800 (PST)
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 10.25.77.65 with SMTP id a62csp1969720lfb;
+        Tue, 31 Jan 2017 07:22:43 -0800 (PST)
+X-Received: by 10.237.53.236 with SMTP id d41mr28354634qte.135.1485876163253;
+        Tue, 31 Jan 2017 07:22:43 -0800 (PST)
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id g65si12154410qtd.177.2017.01.31.07.20.13
+        by mx.google.com with ESMTPS id 3si12151695qtn.280.2017.01.31.07.22.43
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 31 Jan 2017 07:20:13 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Tue, 31 Jan 2017 07:22:43 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:38944 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:38964 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1cYaE9-0001yJ-7b
-	for alex.bennee@linaro.org; Tue, 31 Jan 2017 10:20:13 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:57559)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1cYaGY-0005IH-L9
+	for alex.bennee@linaro.org; Tue, 31 Jan 2017 10:22:42 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:57457)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <wei@redhat.com>) id 1cYaA1-0007ef-8C
-	for qemu-devel@nongnu.org; Tue, 31 Jan 2017 10:15:59 -0500
+	(envelope-from <wei@redhat.com>) id 1cYa9u-0007XQ-7c
+	for qemu-arm@nongnu.org; Tue, 31 Jan 2017 10:15:51 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <wei@redhat.com>) id 1cYa9v-00019b-Gd
-	for qemu-devel@nongnu.org; Tue, 31 Jan 2017 10:15:57 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:47220)
+	(envelope-from <wei@redhat.com>) id 1cYa9t-00018F-5m
+	for qemu-arm@nongnu.org; Tue, 31 Jan 2017 10:15:50 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:50284)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <wei@redhat.com>)
-	id 1cYa9s-00017m-BM; Tue, 31 Jan 2017 10:15:48 -0500
+	id 1cYa9s-000181-Uo; Tue, 31 Jan 2017 10:15:49 -0500
 Received: from int-mx14.intmail.prod.int.phx2.redhat.com
 	(int-mx14.intmail.prod.int.phx2.redhat.com [10.5.11.27])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 7384C3B3C7;
-	Tue, 31 Jan 2017 15:15:48 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id 0FF873D95C;
+	Tue, 31 Jan 2017 15:15:49 +0000 (UTC)
 Received: from apm-mustang-ev3-30.khw.lab.eng.bos.redhat.com
 	(apm-mustang-ev3-30.khw.lab.eng.bos.redhat.com [10.16.184.124])
 	by int-mx14.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id v0VFFjua017317; Tue, 31 Jan 2017 10:15:48 -0500
+	id v0VFFjub017317; Tue, 31 Jan 2017 10:15:48 -0500
 From: Wei Huang <wei@redhat.com>
 To: qemu-devel@nongnu.org
-Date: Tue, 31 Jan 2017 10:15:44 -0500
-Message-Id: <1485875745-27741-5-git-send-email-wei@redhat.com>
+Date: Tue, 31 Jan 2017 10:15:45 -0500
+Message-Id: <1485875745-27741-6-git-send-email-wei@redhat.com>
 In-Reply-To: <1485875745-27741-1-git-send-email-wei@redhat.com>
 References: <1485875745-27741-1-git-send-email-wei@redhat.com>
 X-Scanned-By: MIMEDefang 2.68 on 10.5.11.27
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.26]);
-	Tue, 31 Jan 2017 15:15:48 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.30]);
+	Tue, 31 Jan 2017 15:15:49 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 209.132.183.28
-Subject: [Qemu-devel] [PATCH V2 4/5] target-arm: Add support for PMU
- register PMINTENSET_EL1
-X-BeenThere: qemu-devel@nongnu.org
+Subject: [Qemu-arm] [PATCH V2 5/5] target-arm: Enable vPMU support under TCG
+ mode
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: fMOB+Cz23nv+
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 9UcnEAsqfODY
 
-This patch adds access support for PMINTENSET_EL1.
+This patch contains several fixes to enable vPMU under TCG mode. It
+first removes the checking of kvm_enabled() while unsetting
+ARM_FEATURE_PMU. With it, the .pmu option can be used to turn on/off vPMU
+under TCG mode. Secondly the PMU node of DT table is now created under TCG.
+The last fix is to disable the masking of PMUver field of ID_AA64DFR0_EL1.
 
 Signed-off-by: Wei Huang <wei@redhat.com>
 ---
- target/arm/cpu.h    |  2 +-
- target/arm/helper.c | 10 +++++++++-
- 2 files changed, 10 insertions(+), 2 deletions(-)
+ hw/arm/virt.c       | 2 +-
+ target/arm/cpu.c    | 2 +-
+ target/arm/helper.c | 7 +------
+ 3 files changed, 3 insertions(+), 8 deletions(-)
 
-diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index ce02044..42aaea9 100644
---- a/target/arm/cpu.h
-+++ b/target/arm/cpu.h
-@@ -310,7 +310,7 @@ typedef struct CPUARMState {
-         uint64_t c9_pmxevtyper; /* perf monitor event type */
-         uint32_t c9_pmuserenr; /* perf monitor user enable */
-         uint64_t c9_pmselr; /* perf monitor counter selection register */
--        uint32_t c9_pminten; /* perf monitor interrupt enables */
-+        uint64_t c9_pminten; /* perf monitor interrupt enables */
-         union { /* Memory attribute redirection */
-             struct {
- #ifdef HOST_WORDS_BIGENDIAN
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index 6c9e898..5687d49 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -471,7 +471,7 @@ static void fdt_add_pmu_nodes(const VirtMachineState *vms)
+     CPU_FOREACH(cpu) {
+         armcpu = ARM_CPU(cpu);
+         if (!arm_feature(&armcpu->env, ARM_FEATURE_PMU) ||
+-            !kvm_arm_pmu_create(cpu, PPI(VIRTUAL_PMU_IRQ))) {
++            (kvm_enabled() && !kvm_arm_pmu_create(cpu, PPI(VIRTUAL_PMU_IRQ)))) {
+             return;
+         }
+     }
+diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+index e9f10f7..9a2bc8a 100644
+--- a/target/arm/cpu.c
++++ b/target/arm/cpu.c
+@@ -745,7 +745,7 @@ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
+         unset_feature(env, ARM_FEATURE_EL2);
+     }
+ 
+-    if (!cpu->has_pmu || !kvm_enabled()) {
++    if (!cpu->has_pmu) {
+         cpu->has_pmu = false;
+         unset_feature(env, ARM_FEATURE_PMU);
+     }
 diff --git a/target/arm/helper.c b/target/arm/helper.c
-index 6b8460a..b028042 100644
+index b028042..6cf0f4f 100644
 --- a/target/arm/helper.c
 +++ b/target/arm/helper.c
-@@ -1272,9 +1272,17 @@ static const ARMCPRegInfo v7_cp_reginfo[] = {
-       .writefn = pmuserenr_write, .raw_writefn = raw_write },
-     { .name = "PMINTENSET", .cp = 15, .crn = 9, .crm = 14, .opc1 = 0, .opc2 = 1,
-       .access = PL1_RW, .accessfn = access_tpm,
--      .fieldoffset = offsetof(CPUARMState, cp15.c9_pminten),
-+      .type = ARM_CP_ALIAS,
-+      .fieldoffset = offsetoflow32(CPUARMState, cp15.c9_pminten),
-       .resetvalue = 0,
-       .writefn = pmintenset_write, .raw_writefn = raw_write },
-+    { .name = "PMINTENSET_EL1", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 3, .opc1 = 0, .crn = 9, .crm = 14, .opc2 = 1,
-+      .access = PL1_RW, .accessfn = access_tpm,
-+      .type = ARM_CP_IO,
-+      .fieldoffset = offsetof(CPUARMState, cp15.c9_pminten),
-+      .writefn = pmintenset_write, .raw_writefn = raw_write,
-+      .resetvalue = 0x0 },
-     { .name = "PMINTENCLR", .cp = 15, .crn = 9, .crm = 14, .opc1 = 0, .opc2 = 2,
-       .access = PL1_RW, .accessfn = access_tpm, .type = ARM_CP_ALIAS,
-       .fieldoffset = offsetof(CPUARMState, cp15.c9_pminten),
+@@ -4630,12 +4630,7 @@ void register_cp_regs_for_features(ARMCPU *cpu)
+             { .name = "ID_AA64DFR0_EL1", .state = ARM_CP_STATE_AA64,
+               .opc0 = 3, .opc1 = 0, .crn = 0, .crm = 5, .opc2 = 0,
+               .access = PL1_R, .type = ARM_CP_CONST,
+-              /* We mask out the PMUVer field, because we don't currently
+-               * implement the PMU. Not advertising it prevents the guest
+-               * from trying to use it and getting UNDEFs on registers we
+-               * don't implement.
+-               */
+-              .resetvalue = cpu->id_aa64dfr0 & ~0xf00 },
++              .resetvalue = cpu->id_aa64dfr0 },
+             { .name = "ID_AA64DFR1_EL1", .state = ARM_CP_STATE_AA64,
+               .opc0 = 3, .opc1 = 0, .crn = 0, .crm = 5, .opc2 = 1,
+               .access = PL1_R, .type = ARM_CP_CONST,
 -- 
 1.8.3.1
 

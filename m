@@ -1,166 +1,138 @@
-Received: by 10.25.77.65 with SMTP id a62csp1737338lfb;
-        Mon, 30 Jan 2017 19:52:53 -0800 (PST)
-X-Received: by 10.55.191.6 with SMTP id p6mr24736622qkf.79.1485834773299;
-        Mon, 30 Jan 2017 19:52:53 -0800 (PST)
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 10.25.77.65 with SMTP id a62csp1966749lfb;
+        Tue, 31 Jan 2017 07:15:56 -0800 (PST)
+X-Received: by 10.200.51.199 with SMTP id d7mr28106545qtb.67.1485875756545;
+        Tue, 31 Jan 2017 07:15:56 -0800 (PST)
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id i2si11051254qki.207.2017.01.30.19.52.53
+        by mx.google.com with ESMTPS id m86si12123816qkl.237.2017.01.31.07.15.56
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 30 Jan 2017 19:52:53 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Tue, 31 Jan 2017 07:15:56 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gibson.dropbear.id.au;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:35986 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:38924 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1cYPUy-0000ou-Ox
-	for alex.bennee@linaro.org; Mon, 30 Jan 2017 22:52:52 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:56307)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1cYa9z-0007ZK-QI
+	for alex.bennee@linaro.org; Tue, 31 Jan 2017 10:15:55 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:57464)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <dgibson@ozlabs.org>) id 1cYPTq-0000nR-Jh
-	for qemu-devel@nongnu.org; Mon, 30 Jan 2017 22:51:43 -0500
+	(envelope-from <wei@redhat.com>) id 1cYa9u-0007XW-9K
+	for qemu-arm@nongnu.org; Tue, 31 Jan 2017 10:15:51 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <dgibson@ozlabs.org>) id 1cYPTp-0001Wo-EW
-	for qemu-devel@nongnu.org; Mon, 30 Jan 2017 22:51:42 -0500
-Received: from ozlabs.org ([2401:3900:2:1::2]:51475)
+	(envelope-from <wei@redhat.com>) id 1cYa9r-00017i-Eu
+	for qemu-arm@nongnu.org; Tue, 31 Jan 2017 10:15:50 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:50108)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <dgibson@ozlabs.org>)
-	id 1cYPTo-0001Up-7t; Mon, 30 Jan 2017 22:51:41 -0500
-Received: by ozlabs.org (Postfix, from userid 1007)
-	id 3vCC453H9Pz9sf9; Tue, 31 Jan 2017 14:51:33 +1100 (AEDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-	d=gibson.dropbear.id.au; s=201602; t=1485834693;
-	bh=6TlK5xm4M+LXoZ6A5E4j5AZZ/Xsf3B+G4rx/VfsfQy8=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=TiW/7PhTKkqvs54Zd7BpbItVkF5NiaU4a5cWmQb4URywim12X3DoPDnlyjKrJjBP5
-	52vvsBtu6L+PX+90vs8qmpqrqVt2JsQ9/ylypBxGReDWlI6zR5ABlKo5sE42XGsznr
-	DuUlbdnaQM2vSwLAubyJ7/ZblvlGfjg5HD77FC8A=
-Date: Tue, 31 Jan 2017 13:55:24 +1100
-From: David Gibson <david@gibson.dropbear.id.au>
-To: "Michael S. Tsirkin" <mst@redhat.com>
-Message-ID: <20170131025524.GI14879@umbus.fritz.box>
-References: <1485534415-20887-1-git-send-email-mst@redhat.com>
-	<1485534415-20887-3-git-send-email-mst@redhat.com>
-MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="ev7mvGV+3JQuI2Eo"
-Content-Disposition: inline
-In-Reply-To: <1485534415-20887-3-git-send-email-mst@redhat.com>
-User-Agent: Mutt/1.7.1 (2016-10-04)
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2401:3900:2:1::2
-Subject: Re: [Qemu-devel] [PATCH 3/3] ppc: switch to constants within
- BUILD_BUG_ON
-X-BeenThere: qemu-devel@nongnu.org
+	(Exim 4.71) (envelope-from <wei@redhat.com>)
+	id 1cYa9r-00016D-5j; Tue, 31 Jan 2017 10:15:47 -0500
+Received: from int-mx14.intmail.prod.int.phx2.redhat.com
+	(int-mx14.intmail.prod.int.phx2.redhat.com [10.5.11.27])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id B28186330D;
+	Tue, 31 Jan 2017 15:15:46 +0000 (UTC)
+Received: from apm-mustang-ev3-30.khw.lab.eng.bos.redhat.com
+	(apm-mustang-ev3-30.khw.lab.eng.bos.redhat.com [10.16.184.124])
+	by int-mx14.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id v0VFFjuX017317; Tue, 31 Jan 2017 10:15:46 -0500
+From: Wei Huang <wei@redhat.com>
+To: qemu-devel@nongnu.org
+Date: Tue, 31 Jan 2017 10:15:41 -0500
+Message-Id: <1485875745-27741-2-git-send-email-wei@redhat.com>
+In-Reply-To: <1485875745-27741-1-git-send-email-wei@redhat.com>
+References: <1485875745-27741-1-git-send-email-wei@redhat.com>
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.27
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.39]);
+	Tue, 31 Jan 2017 15:15:46 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.132.183.28
+Subject: [Qemu-arm] [PATCH V2 1/5] target-arm: Add support for PMU register
+ PMSELR_EL0
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
-	qemu-ppc@nongnu.org, qemu-devel@nongnu.org, Alexander Graf <agraf@suse.de>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: WUEWT+AtsDqy
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: CUmkjvk4gkFy
 
+This patch adds support for AArch64 register PMSELR_EL0. The existing
+PMSELR definition is revised accordingly.
 
---ev7mvGV+3JQuI2Eo
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Signed-off-by: Wei Huang <wei@redhat.com>
+---
+ target/arm/cpu.h    |  1 +
+ target/arm/helper.c | 25 ++++++++++++++++++++-----
+ 2 files changed, 21 insertions(+), 5 deletions(-)
 
-On Fri, Jan 27, 2017 at 06:27:16PM +0200, Michael S. Tsirkin wrote:
-> We are switching BUILD_BUG_ON to verify that it's parameter is a
-> compile-time constant, and it turns out that some gcc versions
-> (specifically gcc (Ubuntu 5.4.0-6ubuntu1~16.04.4) 5.4.0 20160609) are
-> not smart enough to figure it out for expressions involving local
-> variables. This is harmless but means that the check is ineffective for
-> these platforms.  To fix, replace the variable with macros.
->=20
-> Reported-by: Peter Maydell <peter.maydell@linaro.org>
-> Signed-off-by: Michael S. Tsirkin <mst@redhat.com>
+diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+index 39bff86..8a82c73 100644
+--- a/target/arm/cpu.h
++++ b/target/arm/cpu.h
+@@ -309,6 +309,7 @@ typedef struct CPUARMState {
+         uint32_t c9_pmovsr; /* perf monitor overflow status */
+         uint32_t c9_pmxevtyper; /* perf monitor event type */
+         uint32_t c9_pmuserenr; /* perf monitor user enable */
++        uint64_t c9_pmselr; /* perf monitor counter selection register */
+         uint32_t c9_pminten; /* perf monitor interrupt enables */
+         union { /* Memory attribute redirection */
+             struct {
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index c23df1b..67520ea 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -975,6 +975,17 @@ static uint64_t pmccntr_read(CPUARMState *env, const ARMCPRegInfo *ri)
+     return total_ticks - env->cp15.c15_ccnt;
+ }
+ 
++static void pmselr_write(CPUARMState *env, const ARMCPRegInfo *ri,
++                         uint64_t value)
++{
++    /* The value of PMSELR.SEL affects the behavior of PMXEVTYPER and
++     * PMXEVCNTR. We allow [0..31] to be written to PMSELR here; in the
++     * meanwhile, we check PMSELR.SEL when PMXEVTYPER and PMXEVCNTR are
++     * accessed.
++     */
++    env->cp15.c9_pmselr = value & 0x1f;
++}
++
+ static void pmccntr_write(CPUARMState *env, const ARMCPRegInfo *ri,
+                         uint64_t value)
+ {
+@@ -1194,12 +1205,16 @@ static const ARMCPRegInfo v7_cp_reginfo[] = {
+     /* Unimplemented so WI. */
+     { .name = "PMSWINC", .cp = 15, .crn = 9, .crm = 12, .opc1 = 0, .opc2 = 4,
+       .access = PL0_W, .accessfn = pmreg_access, .type = ARM_CP_NOP },
+-    /* Since we don't implement any events, writing to PMSELR is UNPREDICTABLE.
+-     * We choose to RAZ/WI.
+-     */
+     { .name = "PMSELR", .cp = 15, .crn = 9, .crm = 12, .opc1 = 0, .opc2 = 5,
+-      .access = PL0_RW, .type = ARM_CP_CONST, .resetvalue = 0,
+-      .accessfn = pmreg_access },
++      .access = PL0_RW, .type = ARM_CP_ALIAS,
++      .fieldoffset = offsetoflow32(CPUARMState, cp15.c9_pmselr),
++      .accessfn = pmreg_access, .writefn = pmselr_write,
++      .raw_writefn = raw_write},
++    { .name = "PMSELR_EL0", .state = ARM_CP_STATE_AA64,
++      .opc0 = 3, .opc1 = 3, .crn = 9, .crm = 12, .opc2 = 5,
++      .access = PL0_RW, .accessfn = pmreg_access,
++      .fieldoffset = offsetof(CPUARMState, cp15.c9_pmselr),
++      .writefn = pmselr_write, .raw_writefn = raw_write, },
+ #ifndef CONFIG_USER_ONLY
+     { .name = "PMCCNTR", .cp = 15, .crn = 9, .crm = 13, .opc1 = 0, .opc2 = 0,
+       .access = PL0_RW, .resetvalue = 0, .type = ARM_CP_IO,
+-- 
+1.8.3.1
 
-Applied to ppc-for-2.9, thanks.
-
-> ---
->  hw/ppc/spapr.c | 14 ++++++++------
->  1 file changed, 8 insertions(+), 6 deletions(-)
->=20
-> diff --git a/hw/ppc/spapr.c b/hw/ppc/spapr.c
-> index a642e66..b81f2ac 100644
-> --- a/hw/ppc/spapr.c
-> +++ b/hw/ppc/spapr.c
-> @@ -2630,8 +2630,8 @@ static void spapr_phb_placement(sPAPRMachineState *=
-spapr, uint32_t index,
->       * 1TiB 64-bit MMIO windows for each PHB.
->       */
->      const uint64_t base_buid =3D 0x800000020000000ULL;
-> -    const int max_phbs =3D
-> -        (SPAPR_PCI_LIMIT - SPAPR_PCI_BASE) / SPAPR_PCI_MEM64_WIN_SIZE - =
-1;
-> +#define SPAPR_MAX_PHBS ((SPAPR_PCI_LIMIT - SPAPR_PCI_BASE) / \
-> +                        SPAPR_PCI_MEM64_WIN_SIZE - 1)
->      int i;
-> =20
->      /* Sanity check natural alignments */
-> @@ -2640,12 +2640,14 @@ static void spapr_phb_placement(sPAPRMachineState=
- *spapr, uint32_t index,
->      QEMU_BUILD_BUG_ON((SPAPR_PCI_MEM64_WIN_SIZE % SPAPR_PCI_MEM32_WIN_SI=
-ZE) !=3D 0);
->      QEMU_BUILD_BUG_ON((SPAPR_PCI_MEM32_WIN_SIZE % SPAPR_PCI_IO_WIN_SIZE)=
- !=3D 0);
->      /* Sanity check bounds */
-> -    QEMU_BUILD_BUG_ON((max_phbs * SPAPR_PCI_IO_WIN_SIZE) > SPAPR_PCI_MEM=
-32_WIN_SIZE);
-> -    QEMU_BUILD_BUG_ON((max_phbs * SPAPR_PCI_MEM32_WIN_SIZE) > SPAPR_PCI_=
-MEM64_WIN_SIZE);
-> +    QEMU_BUILD_BUG_ON((SPAPR_MAX_PHBS * SPAPR_PCI_IO_WIN_SIZE) >
-> +                      SPAPR_PCI_MEM32_WIN_SIZE);
-> +    QEMU_BUILD_BUG_ON((SPAPR_MAX_PHBS * SPAPR_PCI_MEM32_WIN_SIZE) >
-> +                      SPAPR_PCI_MEM64_WIN_SIZE);
-> =20
-> -    if (index >=3D max_phbs) {
-> +    if (index >=3D SPAPR_MAX_PHBS) {
->          error_setg(errp, "\"index\" for PAPR PHB is too large (max %u)",
-> -                   max_phbs - 1);
-> +                   SPAPR_MAX_PHBS - 1);
->          return;
->      }
-> =20
-
---=20
-David Gibson			| I'll have my music baroque, and my code
-david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
-				| _way_ _around_!
-http://www.ozlabs.org/~dgibson
-
---ev7mvGV+3JQuI2Eo
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v2
-
-iQIcBAEBCAAGBQJYj/ybAAoJEGw4ysog2bOSficP/3+f7TdH9iw7CGx5su8KQGoj
-TnrcpqqW/NWF9jstWrYAodp2C/7OLEIVxyZYBXk+NCtLCCeM+H6T5ZD/u57/1oQW
-oEGjK5D0G2h4G5MD+THjZqTDiVfFOm91RWTsVzphe0oOLBbOUaqzrb6rO9gipOGa
-VS/xzY/DA1Jvg+tIRBGejg95w5YcPV6t4hS4tUebiZbWJ5ouJqNP/1vFAtFfsu+F
-TH84n8zE+0PGEJDPeES1Vhh6JuCM1rKOnWxFPn0sLydVXJxwg8dNsAeh1qDritxT
-RzNWnFiS3qvAT29Der8wB667+G3Ctl4CAQ6/0TUT+fc3WnIh9oBIWft8PeHoV3xd
-eFitTjTzrsbg8/nM3/4o2y3TPN+TX+RqFLsdrct+1mApLuwCJxjv+hvjH993r003
-3WT2Eb74RaVsmzYfXMjeMF7bdA7M8dZTMY6SuZTltTSHiGzPiSzqbHtVhNidRwqT
-pqjxkvaMs9Q7QUIRJ4C9PC2/u+lIq5gRA3ONFUCNlqhqZHWajyXHcqz2kDFXJkZ7
-2aNerh+M41LiOSIvdP1Iqm3bG+XDdh8VR0OXOH5IqoulLXZ5Ii/ho9Am0F8eM3cu
-jhR4ankpxQeYS3Ns8O3nUeVJg1Iw3huyvypQ/Ctb5eByaVcZNUWsLDAZqd8CNHDn
-q4/AThioX/X83b/G8xNG
-=ifgb
------END PGP SIGNATURE-----
-
---ev7mvGV+3JQuI2Eo--

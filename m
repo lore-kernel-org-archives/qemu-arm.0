@@ -1,57 +1,72 @@
-Received: by 10.25.77.65 with SMTP id a62csp1969720lfb;
-        Tue, 31 Jan 2017 07:22:43 -0800 (PST)
-X-Received: by 10.237.53.236 with SMTP id d41mr28354634qte.135.1485876163253;
-        Tue, 31 Jan 2017 07:22:43 -0800 (PST)
+Received: by 10.25.77.65 with SMTP id a62csp22809lfb;
+        Tue, 31 Jan 2017 08:18:21 -0800 (PST)
+X-Received: by 10.55.142.7 with SMTP id q7mr30108995qkd.104.1485879501499;
+        Tue, 31 Jan 2017 08:18:21 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id 3si12151695qtn.280.2017.01.31.07.22.43
+        by mx.google.com with ESMTPS id a188si12286448qkc.182.2017.01.31.08.18.21
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 31 Jan 2017 07:22:43 -0800 (PST)
+        Tue, 31 Jan 2017 08:18:21 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:38964 helo=lists.gnu.org)
+       dkim=fail header.i=@gmail.com;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:39294 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1cYaGY-0005IH-L9
-	for alex.bennee@linaro.org; Tue, 31 Jan 2017 10:22:42 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:57457)
+	id 1cYb8O-0005Bt-QE
+	for alex.bennee@linaro.org; Tue, 31 Jan 2017 11:18:20 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:41648)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <wei@redhat.com>) id 1cYa9u-0007XQ-7c
-	for qemu-arm@nongnu.org; Tue, 31 Jan 2017 10:15:51 -0500
+	(envelope-from <vijay.kilari@gmail.com>) id 1cYawe-0002Sv-FQ
+	for qemu-arm@nongnu.org; Tue, 31 Jan 2017 11:06:13 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <wei@redhat.com>) id 1cYa9t-00018F-5m
-	for qemu-arm@nongnu.org; Tue, 31 Jan 2017 10:15:50 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:50284)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <wei@redhat.com>)
-	id 1cYa9s-000181-Uo; Tue, 31 Jan 2017 10:15:49 -0500
-Received: from int-mx14.intmail.prod.int.phx2.redhat.com
-	(int-mx14.intmail.prod.int.phx2.redhat.com [10.5.11.27])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 0FF873D95C;
-	Tue, 31 Jan 2017 15:15:49 +0000 (UTC)
-Received: from apm-mustang-ev3-30.khw.lab.eng.bos.redhat.com
-	(apm-mustang-ev3-30.khw.lab.eng.bos.redhat.com [10.16.184.124])
-	by int-mx14.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id v0VFFjub017317; Tue, 31 Jan 2017 10:15:48 -0500
-From: Wei Huang <wei@redhat.com>
-To: qemu-devel@nongnu.org
-Date: Tue, 31 Jan 2017 10:15:45 -0500
-Message-Id: <1485875745-27741-6-git-send-email-wei@redhat.com>
-In-Reply-To: <1485875745-27741-1-git-send-email-wei@redhat.com>
-References: <1485875745-27741-1-git-send-email-wei@redhat.com>
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.27
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.30]);
-	Tue, 31 Jan 2017 15:15:49 +0000 (UTC)
+	(envelope-from <vijay.kilari@gmail.com>) id 1cYawa-0005QH-EV
+	for qemu-arm@nongnu.org; Tue, 31 Jan 2017 11:06:12 -0500
+Received: from mail-pf0-x243.google.com ([2607:f8b0:400e:c00::243]:35821)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <vijay.kilari@gmail.com>)
+	id 1cYawa-0005Po-8g; Tue, 31 Jan 2017 11:06:08 -0500
+Received: by mail-pf0-x243.google.com with SMTP id f144so28528143pfa.2;
+	Tue, 31 Jan 2017 08:06:06 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=from:to:cc:subject:date:message-id;
+	bh=eHfNRx0lYSFtG3IEr3bZ7BjoQAsVXy2tBjjdtQYOVh4=;
+	b=XfXHWjtMRDswOw+WRc9tPRR778iKLJsOfwSOCdHwitxSNuoKoyNE3abwyjcbksQ+hH
+	4dXJPrLQYqhVEEPuvo447BGfH/qXwzp/hQ6ntOjnTfdRwRU1s+F+FLb/iUci4YgwvTJ/
+	kmg8D8Unq9AHMDeUJpG1fQyoHP2s1SsTuJPd2LhcMVs/faDijhoHy5SxUvBWBPQull/3
+	mpCEpRLBFeLG6Km+UarfnrWlww0w4OEGvH5nTLGTPZ9KQzsYMVS22t4xWOdfh8Ir8Feo
+	/nlUZrYoq7WC4OE/XRYHQz0foGZZFDxnOsQIATKX2T1aYS4AE5ck5fs+yVDXl9GoLZAo
+	aiVw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:from:to:cc:subject:date:message-id;
+	bh=eHfNRx0lYSFtG3IEr3bZ7BjoQAsVXy2tBjjdtQYOVh4=;
+	b=H5z1SEW341h0zYbY1TXH2tuV5/vb5uFvFMJWQKci5H/EmObAznDulnfwtRxskl3ixT
+	OGIL1+lGeedpGbI8JwBAon5DtRUgP8kuFRDDlr7tMhbwg7y1VnFZ3em+SjOaKjZCSdrL
+	aBDu4P5SgvgVlpJChproMWS3Y8pgXLUGjbrHdYmhve0xYBEO/DHTKcNzxH3xpadwf0qe
+	/03O9pyj75dp+nSCuIeZa9qTB/cEf9kVvh4d+p3a85Yv7YtZ4r+l1zWDcv9d5RmNIE7H
+	w39a7jwGbKXXAii4uZ/5eH+pIx4Jh9kgGAKs1VIFW4PUy+6vT8C8Tw5ckY6LtaaVFX0/
+	t1EQ==
+X-Gm-Message-State: AIkVDXJXllfQt3LEczb5XFeBmuNltj5Hg61TRaqkpbl79qcS59AzcTpX9VXjWo/hUprRCg==
+X-Received: by 10.99.45.133 with SMTP id t127mr31388125pgt.224.1485878765816; 
+	Tue, 31 Jan 2017 08:06:05 -0800 (PST)
+Received: from localhost.localdomain ([106.51.232.200])
+	by smtp.gmail.com with ESMTPSA id
+	b10sm42699837pga.21.2017.01.31.08.06.03
+	(version=TLS1_1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+	Tue, 31 Jan 2017 08:06:05 -0800 (PST)
+From: vijay.kilari@gmail.com
+To: qemu-arm@nongnu.org, peter.maydell@linaro.org, christoffer.dall@linaro.org,
+	eric.auger@redhat.com
+Date: Tue, 31 Jan 2017 21:35:45 +0530
+Message-Id: <1485878749-5641-1-git-send-email-vijay.kilari@gmail.com>
+X-Mailer: git-send-email 1.7.9.5
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: [Qemu-arm] [PATCH V2 5/5] target-arm: Enable vPMU support under TCG
- mode
+X-Received-From: 2607:f8b0:400e:c00::243
+Subject: [Qemu-arm] [PATCH v7 0/4] GICv3 live migration support
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -63,68 +78,72 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org
+Cc: marc.zyngier@arm.com, p.fedin@samsung.com, qemu-devel@nongnu.org,
+	Vijaya Kumar K <Vijaya.Kumar@cavium.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 9UcnEAsqfODY
+X-TUID: CEXkVpbjxXH1
 
-This patch contains several fixes to enable vPMU under TCG mode. It
-first removes the checking of kvm_enabled() while unsetting
-ARM_FEATURE_PMU. With it, the .pmu option can be used to turn on/off vPMU
-under TCG mode. Secondly the PMU node of DT table is now created under TCG.
-The last fix is to disable the masking of PMUver field of ID_AA64DFR0_EL1.
+From: Vijaya Kumar K <Vijaya.Kumar@cavium.com>
 
-Signed-off-by: Wei Huang <wei@redhat.com>
----
- hw/arm/virt.c       | 2 +-
- target/arm/cpu.c    | 2 +-
- target/arm/helper.c | 7 +------
- 3 files changed, 3 insertions(+), 8 deletions(-)
+This series introduces support for GICv3 live migration with
+new VGIC implementation in 4.7-rc3 kernel.
+In this series, patch 1 of the previous implementation
+are ported.
+https://lists.nongnu.org/archive/html/qemu-devel/2015-10/msg05284.html
 
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index 6c9e898..5687d49 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -471,7 +471,7 @@ static void fdt_add_pmu_nodes(const VirtMachineState *vms)
-     CPU_FOREACH(cpu) {
-         armcpu = ARM_CPU(cpu);
-         if (!arm_feature(&armcpu->env, ARM_FEATURE_PMU) ||
--            !kvm_arm_pmu_create(cpu, PPI(VIRTUAL_PMU_IRQ))) {
-+            (kvm_enabled() && !kvm_arm_pmu_create(cpu, PPI(VIRTUAL_PMU_IRQ)))) {
-             return;
-         }
-     }
-diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-index e9f10f7..9a2bc8a 100644
---- a/target/arm/cpu.c
-+++ b/target/arm/cpu.c
-@@ -745,7 +745,7 @@ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
-         unset_feature(env, ARM_FEATURE_EL2);
-     }
- 
--    if (!cpu->has_pmu || !kvm_enabled()) {
-+    if (!cpu->has_pmu) {
-         cpu->has_pmu = false;
-         unset_feature(env, ARM_FEATURE_PMU);
-     }
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index b028042..6cf0f4f 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -4630,12 +4630,7 @@ void register_cp_regs_for_features(ARMCPU *cpu)
-             { .name = "ID_AA64DFR0_EL1", .state = ARM_CP_STATE_AA64,
-               .opc0 = 3, .opc1 = 0, .crn = 0, .crm = 5, .opc2 = 0,
-               .access = PL1_R, .type = ARM_CP_CONST,
--              /* We mask out the PMUVer field, because we don't currently
--               * implement the PMU. Not advertising it prevents the guest
--               * from trying to use it and getting UNDEFs on registers we
--               * don't implement.
--               */
--              .resetvalue = cpu->id_aa64dfr0 & ~0xf00 },
-+              .resetvalue = cpu->id_aa64dfr0 },
-             { .name = "ID_AA64DFR1_EL1", .state = ARM_CP_STATE_AA64,
-               .opc0 = 3, .opc1 = 0, .crn = 0, .crm = 5, .opc2 = 1,
-               .access = PL1_R, .type = ARM_CP_CONST,
+Patch 2, is based on below implementation.
+http://patchwork.ozlabs.org/patch/626746/
+
+Latest kernel patches
+https://www.spinics.net/lists/arm-kernel/msg558046.html
+
+This API definition is as per version of VGICv3 specification
+in linux kernel Documentation/virtual/kvm/devices/arm-vgic-v3.txt
+
+Tested Live migration of Idle VM running with 4 VCPUs and 8GB RAM.
+
+v6 => v7:
+ - Added patch to add icc_ctrl_el1 to vmstruct before live migration
+   patch
+ - Added patch to add gicv3state variable to CPUARMState struct to
+   store GICv3CPUState pointer.
+ - Added patch to register ARMCPRegInfo[] struct and reset on CPU reset.
+
+v5 => v6:
+ - Added separate patch for Reseting ICC* register
+ - Added seperate patch for save and restore of ICC_CTLR_EL1
+ - Dropped translate_fn mechanism and coded open functions
+   for edge_trigger and priority save and restore.
+ - Save and Restore APnR registers based on ICC_CTLR_EL1.PRIBITS
+
+v4 => v5:
+ - Initialized ICC registers before reset.
+
+v3 => v4:
+ - Reintroduced offset GICR_SGI_OFFSET
+ - Implement save and restore of ICC_SRE_EL1
+ - Updated kvm.h header file in sync with KVM v4 patches
+
+v2 => v3:
+ - Dropped offset GICR_SGI_OFFSET
+ - Implement save/restore of irq line level using
+   KVM_DEV_ARM_VGIC_GRP_LEVEL_INFO
+ - Fixed bug with save/restore of edge_trigger
+
+Vijaya Kumar K (4):
+  hw/intc/arm_gicv3_kvm: Add ICC_SRE_EL1 register to vmstate
+  hw/intc/arm_gicv3_kvm: Implement get/put functions
+  target-arm: Add GICv3CPUState in CPUARMState struct
+  hw/intc/arm_gicv3_kvm: Reset GICv3 cpu interface registers
+
+ hw/intc/arm_gicv3_common.c         |   1 +
+ hw/intc/arm_gicv3_kvm.c            | 640 ++++++++++++++++++++++++++++++++++++-
+ hw/intc/gicv3_internal.h           |   1 +
+ include/hw/intc/arm_gicv3_common.h |   1 +
+ target-arm/cpu.h                   |   2 +
+ 5 files changed, 634 insertions(+), 11 deletions(-)
+
 -- 
-1.8.3.1
+1.9.1
 

@@ -1,54 +1,192 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaro.local ([81.128.185.34])
-        by smtp.gmail.com with ESMTPSA id x135sm28049401wme.23.2017.01.31.23.44.21
+        by smtp.gmail.com with ESMTPSA id t103sm32678618wrc.43.2017.01.31.23.42.34
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 31 Jan 2017 23:44:21 -0800 (PST)
+        Tue, 31 Jan 2017 23:42:34 -0800 (PST)
 Received: from zen (localhost [127.0.0.1])
-	by zen.linaro.local (Postfix) with ESMTPS id 468CD3E0192;
-	Wed,  1 Feb 2017 07:44:23 +0000 (GMT)
-References: <20170127103922.19658-1-alex.bennee@linaro.org> <20170127103922.19658-26-alex.bennee@linaro.org> <f15d91cd-e5b9-3dda-7afa-5b2a91b9e9d0@twiddle.net>
+	by zen.linaro.local (Postfix) with ESMTPS id 78E313E025C;
+	Wed,  1 Feb 2017 07:42:36 +0000 (GMT)
+References: <20170127103922.19658-1-alex.bennee@linaro.org> <20170127103922.19658-17-alex.bennee@linaro.org> <70fe24bb-c8f1-43c4-010f-a682bdd507ef@twiddle.net>
 User-agent: mu4e 0.9.19; emacs 25.1.91.6
 From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: Richard Henderson <rth@twiddle.net>
-Cc: mttcg@greensocs.com, qemu-devel@nongnu.org, fred.konrad@greensocs.com, a.rigo@virtualopensystems.com, cota@braap.org, bobby.prani@gmail.com, nikunj@linux.vnet.ibm.com, mark.burton@greensocs.com, pbonzini@redhat.com, jan.kiszka@siemens.com, serge.fdrv@gmail.com, peter.maydell@linaro.org, claudio.fontana@huawei.com, bamvor.zhangjian@linaro.org, "open list\:ARM" <qemu-arm@nongnu.org>
-Subject: Re: [PATCH v8 25/25] tcg: enable MTTCG by default for ARM on x86 hosts
-In-reply-to: <f15d91cd-e5b9-3dda-7afa-5b2a91b9e9d0@twiddle.net>
-Date: Wed, 01 Feb 2017 07:44:23 +0000
-Message-ID: <87h94e4ap4.fsf@linaro.org>
+Cc: mttcg@greensocs.com, qemu-devel@nongnu.org, fred.konrad@greensocs.com, a.rigo@virtualopensystems.com, cota@braap.org, bobby.prani@gmail.com, nikunj@linux.vnet.ibm.com, mark.burton@greensocs.com, pbonzini@redhat.com, jan.kiszka@siemens.com, serge.fdrv@gmail.com, peter.maydell@linaro.org, claudio.fontana@huawei.com, bamvor.zhangjian@linaro.org, Peter Crosthwaite <crosthwaite.peter@gmail.com>, Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, Artyom Tarasenko <atar4qemu@gmail.com>, "open list\:ARM" <qemu-arm@nongnu.org>
+Subject: Re: [PATCH v8 16/25] cputlb and arm/sparc targets: convert mmuidx flushes from varg to bitmap
+In-reply-to: <70fe24bb-c8f1-43c4-010f-a682bdd507ef@twiddle.net>
+Date: Wed, 01 Feb 2017 07:42:36 +0000
+Message-ID: <87inou4as3.fsf@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 8bit
-X-TUID: ++puL10Ge/7h
+X-TUID: cwiFw/A43Icx
 
 
 Richard Henderson <rth@twiddle.net> writes:
 
 > On 01/27/2017 02:39 AM, Alex Bennée wrote:
->> +/* This defines the natural memory order supported by this
->> + * architecture before guarantees made by various barrier
->> + * instructions.
->> + *
->> + * The x86 has a pretty strong memory ordering which only really
->> + * allows for some stores to be re-ordered after loads.
->> + */
->> +#include "tcg-mo.h"
+>> +    for (mmu_idx = 0; mmu_idx < NB_MMU_MODES; mmu_idx++) {
+>>
+>> -        tlb_debug("%d\n", mmu_idx);
+>> +        if (test_bit(mmu_idx, &mmu_idx_bitmask)) {
+>> +            tlb_debug("%d\n", mmu_idx);
+>>
+>> -        memset(env->tlb_table[mmu_idx], -1, sizeof(env->tlb_table[0]));
+>> -        memset(env->tlb_v_table[mmu_idx], -1, sizeof(env->tlb_v_table[0]));
+>> +            memset(env->tlb_table[mmu_idx], -1, sizeof(env->tlb_table[0]));
+>> +            memset(env->tlb_v_table[mmu_idx], -1, sizeof(env->tlb_v_table[0]));
+>> +        }
+>
+> Perhaps it doesn't matter since NB_MMU_MODES is so small but
+>
+>    for (; idxmap != 0; idxmap &= idxmap - 1) {
+>      int mmu_idx = ctz32(idxmap);
+>      ...
+>    }
+>
+> iterates only for the bits that are set.
+>
+>> -typedef enum ARMMMUIdx {
+>> -    ARMMMUIdx_S12NSE0 = 0,
+>> -    ARMMMUIdx_S12NSE1 = 1,
+>> -    ARMMMUIdx_S1E2 = 2,
+>> -    ARMMMUIdx_S1E3 = 3,
+>> -    ARMMMUIdx_S1SE0 = 4,
+>> -    ARMMMUIdx_S1SE1 = 5,
+>> -    ARMMMUIdx_S2NS = 6,
+>> +typedef enum ARMMMUBitMap {
+>> +    ARMMMUBit_S12NSE0 = 1 << 0,
+>> +    ARMMMUBit_S12NSE1 = 1 << 1,
+>> +    ARMMMUBit_S1E2 = 1 << 2,
+>> +    ARMMMUBit_S1E3 = 1 << 3,
+>> +    ARMMMUBit_S1SE0 = 1 << 4,
+>> +    ARMMMUBit_S1SE1 = 1 << 5,
+>> +    ARMMMUBit_S2NS = 1 << 6,
+>>      /* Indexes below here don't have TLBs and are used only for AT system
+>>       * instructions or for the first stage of an S12 page table walk.
+>>       */
+>> -    ARMMMUIdx_S1NSE0 = 7,
+>> -    ARMMMUIdx_S1NSE1 = 8,
+>> -} ARMMMUIdx;
+>> +    ARMMMUBit_S1NSE0 = 1 << 7,
+>> +    ARMMMUBit_S1NSE1 = 1 << 8,
+>> +} ARMMMUBitMap;
+>>
+>> -#define MMU_USER_IDX 0
+>> +typedef int ARMMMUIdx;
 >> +
->> +static inline int get_tcg_target_mo(void)
+>> +static inline ARMMMUIdx arm_mmu_bit_to_idx(ARMMMUBitMap bit)
 >> +{
->> +    return TCG_MO_ALL & ~TCG_MO_LD_ST;
+>> +    g_assert(ctpop16(bit) == 1);
+>> +    return ctz32(bit);
 >> +}
 >> +
->> +#define TCG_TARGET_DEFAULT_MO get_tcg_target_mo()
->> +
+>> +static inline ARMMMUBitMap arm_mmu_idx_to_bit(ARMMMUIdx idx)
+>> +{
+>> +    return 1 << idx;
+>> +}
 >
-> Why the inline function?  The expression in the define would seem sufficient.
-> Otherwise,
+> I don't understand this redefinition though, causing...
+>
+>> @@ -2109,13 +2109,13 @@ static void ats_write(CPUARMState *env, const ARMCPRegInfo *ri, uint64_t value)
+>>          /* stage 1 current state PL1: ATS1CPR, ATS1CPW */
+>>          switch (el) {
+>>          case 3:
+>> -            mmu_idx = ARMMMUIdx_S1E3;
+>> +            mmu_bit = ARMMMUBit_S1E3;
+>>              break;
+>>          case 2:
+>> -            mmu_idx = ARMMMUIdx_S1NSE1;
+>> +            mmu_bit = ARMMMUBit_S1NSE1;
+>>              break;
+>>          case 1:
+>> -            mmu_idx = secure ? ARMMMUIdx_S1SE1 : ARMMMUIdx_S1NSE1;
+>> +            mmu_bit = secure ? ARMMMUBit_S1SE1 : ARMMMUBit_S1NSE1;
+>>              break;
+>>          default:
+>>              g_assert_not_reached();
+>> @@ -2125,13 +2125,13 @@ static void ats_write(CPUARMState *env, const ARMCPRegInfo *ri, uint64_t value)
+>>          /* stage 1 current state PL0: ATS1CUR, ATS1CUW */
+>>          switch (el) {
+>>          case 3:
+>> -            mmu_idx = ARMMMUIdx_S1SE0;
+>> +            mmu_bit = ARMMMUBit_S1SE0;
+>>              break;
+>>          case 2:
+>> -            mmu_idx = ARMMMUIdx_S1NSE0;
+>> +            mmu_bit = ARMMMUBit_S1NSE0;
+>>              break;
+>>          case 1:
+>> -            mmu_idx = secure ? ARMMMUIdx_S1SE0 : ARMMMUIdx_S1NSE0;
+>> +            mmu_bit = secure ? ARMMMUBit_S1SE0 : ARMMMUBit_S1NSE0;
+>>              break;
+>>          default:
+>>              g_assert_not_reached();
+>> @@ -2139,17 +2139,17 @@ static void ats_write(CPUARMState *env, const ARMCPRegInfo *ri, uint64_t value)
+>>          break;
+>>      case 4:
+>>          /* stage 1+2 NonSecure PL1: ATS12NSOPR, ATS12NSOPW */
+>> -        mmu_idx = ARMMMUIdx_S12NSE1;
+>> +        mmu_bit = ARMMMUBit_S12NSE1;
+>>          break;
+>>      case 6:
+>>          /* stage 1+2 NonSecure PL0: ATS12NSOUR, ATS12NSOUW */
+>> -        mmu_idx = ARMMMUIdx_S12NSE0;
+>> +        mmu_bit = ARMMMUBit_S12NSE0;
+>>          break;
+>>      default:
+>>          g_assert_not_reached();
+>>      }
+>>
+>> -    par64 = do_ats_write(env, value, access_type, mmu_idx);
+>> +    par64 = do_ats_write(env, value, access_type, arm_mmu_bit_to_idx(mmu_bit));
+>
+> ... this sort of churn, only to convert *back* to an index.
 
-Good point. It was just to get around the definition at pre-processor and
-compile time.
+Yeah I've dropped this is v9, ARM now justs does 1 << ARMMMUIdx_foo at
+the tlb_flush call sites.
 
 >
-> Reviewed-by: Richard Henderson <rth@twiddle.net>
+>> @@ -2185,26 +2186,26 @@ static void ats_write64(CPUARMState *env, const ARMCPRegInfo *ri,
+>>      case 0:
+>>          switch (ri->opc1) {
+>>          case 0: /* AT S1E1R, AT S1E1W */
+>> -            mmu_idx = secure ? ARMMMUIdx_S1SE1 : ARMMMUIdx_S1NSE1;
+>> +            mmu_idx = secure ? ARMMMUBit_S1SE1 : ARMMMUBit_S1NSE1;
+>>              break;
+>>          case 4: /* AT S1E2R, AT S1E2W */
+>> -            mmu_idx = ARMMMUIdx_S1E2;
+>> +            mmu_idx = ARMMMUBit_S1E2;
+>>              break;
+>>          case 6: /* AT S1E3R, AT S1E3W */
+>> -            mmu_idx = ARMMMUIdx_S1E3;
+>> +            mmu_idx = ARMMMUBit_S1E3;
+>>              break;
+>>          default:
+>>              g_assert_not_reached();
+>>          }
+>>          break;
+>>      case 2: /* AT S1E0R, AT S1E0W */
+>> -        mmu_idx = secure ? ARMMMUIdx_S1SE0 : ARMMMUIdx_S1NSE0;
+>> +        mmu_idx = secure ? ARMMMUBit_S1SE0 : ARMMMUBit_S1NSE0;
+>>          break;
+>>      case 4: /* AT S12E1R, AT S12E1W */
+>> -        mmu_idx = secure ? ARMMMUIdx_S1SE1 : ARMMMUIdx_S12NSE1;
+>> +        mmu_idx = secure ? ARMMMUBit_S1SE1 : ARMMMUBit_S12NSE1;
+>>          break;
+>>      case 6: /* AT S12E0R, AT S12E0W */
+>> -        mmu_idx = secure ? ARMMMUIdx_S1SE0 : ARMMMUIdx_S12NSE0;
+>> +        mmu_idx = secure ? ARMMMUBit_S1SE0 : ARMMMUBit_S12NSE0;
+>>          break;
+>>      default:
+>>          g_assert_not_reached();
+>> @@ -2499,8 +2500,8 @@ static void vttbr_write(CPUARMState *env, const ARMCPRegInfo *ri,
+>
+> ... and then there's this one where you don't rename the variable, and as far
+> as I can tell don't adjust the argument for do_ats_write.
+>
+> Which is probably a mistake?
+>
+> Just define both Idx and Bit symbols and be done with it.
 >
 >
 > r~

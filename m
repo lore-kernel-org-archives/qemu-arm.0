@@ -1,11 +1,11 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaro.local ([81.128.185.34])
-        by smtp.gmail.com with ESMTPSA id o81sm29940126wmb.14.2017.02.01.07.05.58
+        by smtp.gmail.com with ESMTPSA id c133sm29961157wmd.13.2017.02.01.07.06.01
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 01 Feb 2017 07:06:05 -0800 (PST)
+        Wed, 01 Feb 2017 07:06:07 -0800 (PST)
 Received: from zen.linaroharston (localhost [127.0.0.1])
-	by zen.linaro.local (Postfix) with ESMTP id 9B97B3E0E86;
-	Wed,  1 Feb 2017 15:05:54 +0000 (GMT)
+	by zen.linaro.local (Postfix) with ESMTP id 3DB773E0F8E;
+	Wed,  1 Feb 2017 15:05:55 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: mttcg@listserver.greensocs.com,
 	qemu-devel@nongnu.org,
@@ -22,534 +22,531 @@ Cc: mark.burton@greensocs.com,
 	peter.maydell@linaro.org,
 	bamvor.zhangjian@linaro.org,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Peter Crosthwaite <crosthwaite.peter@gmail.com>,
-	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
-	Artyom Tarasenko <atar4qemu@gmail.com>,
 	qemu-arm@nongnu.org (open list:ARM)
-Subject: [PATCH v9 16/25] cputlb and arm/sparc targets: convert mmuidx flushes from varg to bitmap
-Date: Wed,  1 Feb 2017 15:05:44 +0000
-Message-Id: <20170201150553.9381-17-alex.bennee@linaro.org>
+Subject: [PATCH v9 24/25] target-arm: ensure all cross vCPUs TLB flushes complete
+Date: Wed,  1 Feb 2017 15:05:52 +0000
+Message-Id: <20170201150553.9381-25-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.11.0
 In-Reply-To: <20170201150553.9381-1-alex.bennee@linaro.org>
 References: <20170201150553.9381-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: E0Vxl8L4L/Ul
+X-TUID: dlGKe+g/iC3a
 
-While the vargs approach was flexible the original MTTCG ended up
-having munge the bits to a bitmap so the data could be used in
-deferred work helpers. Instead of hiding that in cputlb we push the
-change to the API to make it take a bitmap of MMU indexes instead.
+Previously flushes on other vCPUs would only get serviced when they
+exited their TranslationBlocks. While this isn't overly problematic it
+violates the semantics of TLB flush from the point of view of source
+vCPU.
 
-For ARM some the resulting flushes end up being quite long so to aid
-readability I've tended to move the index shifting to a new line so
-all the bits being or-ed together line up nicely, for example:
-
-    tlb_flush_page_by_mmuidx(other_cs, pageaddr,
-                             (1 << ARMMMUIdx_S1SE1) |
-                             (1 << ARMMMUIdx_S1SE0));
+To solve this we call the cputlb *_all_cpus_synced() functions to do
+the flushes and ask it to ensure all flushes are completed before we
+start the next instruction. As this involves exiting the cpu_loop we
+need to ensure the PC is saved before the tlb helper functions are
+called.
 
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-[AT: SPARC part only]
-Reviewed-by: Artyom Tarasenko <atar4qemu@gmail.com>
-
+Reviewed-by: Richard Henderson <rth@twiddle.net>
 ---
+v8
+  - fixup merge for bitmap based API
+  - fixup new _synced API
 v9
-  - use (1 << ARMMMUIdx_foo) form to reduce churn in ARM
-  - checkpatch fixes (mostly > 80 chars)
-  - add r-b tag
+  - fixup merge conflicts
 ---
- cputlb.c                   |  60 +++++++++--------------
- include/exec/exec-all.h    |  13 ++---
- target/arm/helper.c        | 116 ++++++++++++++++++++++++++++-----------------
- target/sparc/ldst_helper.c |   8 ++--
- 4 files changed, 107 insertions(+), 90 deletions(-)
+ target/arm/helper.c | 221 +++++++++++++++++++++++-----------------------------
+ 1 file changed, 98 insertions(+), 123 deletions(-)
 
-diff --git a/cputlb.c b/cputlb.c
-index 5dfd3c3ba9..97e5c12de8 100644
---- a/cputlb.c
-+++ b/cputlb.c
-@@ -122,26 +122,25 @@ void tlb_flush(CPUState *cpu)
-     }
- }
- 
--static inline void v_tlb_flush_by_mmuidx(CPUState *cpu, va_list argp)
-+static inline void v_tlb_flush_by_mmuidx(CPUState *cpu, uint16_t idxmap)
- {
-     CPUArchState *env = cpu->env_ptr;
-+    unsigned long mmu_idx_bitmask = idxmap;
-+    int mmu_idx;
- 
-     assert_cpu_is_self(cpu);
-     tlb_debug("start\n");
- 
-     tb_lock();
- 
--    for (;;) {
--        int mmu_idx = va_arg(argp, int);
--
--        if (mmu_idx < 0) {
--            break;
--        }
-+    for (mmu_idx = 0; mmu_idx < NB_MMU_MODES; mmu_idx++) {
- 
--        tlb_debug("%d\n", mmu_idx);
-+        if (test_bit(mmu_idx, &mmu_idx_bitmask)) {
-+            tlb_debug("%d\n", mmu_idx);
- 
--        memset(env->tlb_table[mmu_idx], -1, sizeof(env->tlb_table[0]));
--        memset(env->tlb_v_table[mmu_idx], -1, sizeof(env->tlb_v_table[0]));
-+            memset(env->tlb_table[mmu_idx], -1, sizeof(env->tlb_table[0]));
-+            memset(env->tlb_v_table[mmu_idx], -1, sizeof(env->tlb_v_table[0]));
-+        }
-     }
- 
-     memset(cpu->tb_jmp_cache, 0, sizeof(cpu->tb_jmp_cache));
-@@ -149,12 +148,9 @@ static inline void v_tlb_flush_by_mmuidx(CPUState *cpu, va_list argp)
-     tb_unlock();
- }
- 
--void tlb_flush_by_mmuidx(CPUState *cpu, ...)
-+void tlb_flush_by_mmuidx(CPUState *cpu, uint16_t idxmap)
- {
--    va_list argp;
--    va_start(argp, cpu);
--    v_tlb_flush_by_mmuidx(cpu, argp);
--    va_end(argp);
-+    v_tlb_flush_by_mmuidx(cpu, idxmap);
- }
- 
- static inline void tlb_flush_entry(CPUTLBEntry *tlb_entry, target_ulong addr)
-@@ -219,13 +215,11 @@ void tlb_flush_page(CPUState *cpu, target_ulong addr)
-     }
- }
- 
--void tlb_flush_page_by_mmuidx(CPUState *cpu, target_ulong addr, ...)
-+void tlb_flush_page_by_mmuidx(CPUState *cpu, target_ulong addr, uint16_t idxmap)
- {
-     CPUArchState *env = cpu->env_ptr;
--    int i, k;
--    va_list argp;
--
--    va_start(argp, addr);
-+    unsigned long mmu_idx_bitmap = idxmap;
-+    int i, page, mmu_idx;
- 
-     assert_cpu_is_self(cpu);
-     tlb_debug("addr "TARGET_FMT_lx"\n", addr);
-@@ -236,31 +230,23 @@ void tlb_flush_page_by_mmuidx(CPUState *cpu, target_ulong addr, ...)
-                   TARGET_FMT_lx "/" TARGET_FMT_lx ")\n",
-                   env->tlb_flush_addr, env->tlb_flush_mask);
- 
--        v_tlb_flush_by_mmuidx(cpu, argp);
--        va_end(argp);
-+        v_tlb_flush_by_mmuidx(cpu, idxmap);
-         return;
-     }
- 
-     addr &= TARGET_PAGE_MASK;
--    i = (addr >> TARGET_PAGE_BITS) & (CPU_TLB_SIZE - 1);
--
--    for (;;) {
--        int mmu_idx = va_arg(argp, int);
-+    page = (addr >> TARGET_PAGE_BITS) & (CPU_TLB_SIZE - 1);
- 
--        if (mmu_idx < 0) {
--            break;
--        }
--
--        tlb_debug("idx %d\n", mmu_idx);
--
--        tlb_flush_entry(&env->tlb_table[mmu_idx][i], addr);
-+    for (mmu_idx = 0; mmu_idx < NB_MMU_MODES; mmu_idx++) {
-+        if (test_bit(mmu_idx, &mmu_idx_bitmap)) {
-+            tlb_flush_entry(&env->tlb_table[mmu_idx][page], addr);
- 
--        /* check whether there are vltb entries that need to be flushed */
--        for (k = 0; k < CPU_VTLB_SIZE; k++) {
--            tlb_flush_entry(&env->tlb_v_table[mmu_idx][k], addr);
-+            /* check whether there are vltb entries that need to be flushed */
-+            for (i = 0; i < CPU_VTLB_SIZE; i++) {
-+                tlb_flush_entry(&env->tlb_v_table[mmu_idx][i], addr);
-+            }
-         }
-     }
--    va_end(argp);
- 
-     tb_flush_jmp_cache(cpu, addr);
- }
-diff --git a/include/exec/exec-all.h b/include/exec/exec-all.h
-index e43cb68355..a6c17ed74a 100644
---- a/include/exec/exec-all.h
-+++ b/include/exec/exec-all.h
-@@ -106,21 +106,22 @@ void tlb_flush(CPUState *cpu);
-  * tlb_flush_page_by_mmuidx:
-  * @cpu: CPU whose TLB should be flushed
-  * @addr: virtual address of page to be flushed
-- * @...: list of MMU indexes to flush, terminated by a negative value
-+ * @idxmap: bitmap of MMU indexes to flush
-  *
-  * Flush one page from the TLB of the specified CPU, for the specified
-  * MMU indexes.
-  */
--void tlb_flush_page_by_mmuidx(CPUState *cpu, target_ulong addr, ...);
-+void tlb_flush_page_by_mmuidx(CPUState *cpu, target_ulong addr,
-+                              uint16_t idxmap);
- /**
-  * tlb_flush_by_mmuidx:
-  * @cpu: CPU whose TLB should be flushed
-- * @...: list of MMU indexes to flush, terminated by a negative value
-+ * @idxmap: bitmap of MMU indexes to flush
-  *
-  * Flush all entries from the TLB of the specified CPU, for the specified
-  * MMU indexes.
-  */
--void tlb_flush_by_mmuidx(CPUState *cpu, ...);
-+void tlb_flush_by_mmuidx(CPUState *cpu, uint16_t idxmap);
- /**
-  * tlb_set_page_with_attrs:
-  * @cpu: CPU to add this TLB entry for
-@@ -169,11 +170,11 @@ static inline void tlb_flush(CPUState *cpu)
- }
- 
- static inline void tlb_flush_page_by_mmuidx(CPUState *cpu,
--                                            target_ulong addr, ...)
-+                                            target_ulong addr, uint16_t idxmap)
- {
- }
- 
--static inline void tlb_flush_by_mmuidx(CPUState *cpu, ...)
-+static inline void tlb_flush_by_mmuidx(CPUState *cpu, uint16_t idxmap)
- {
- }
- #endif
 diff --git a/target/arm/helper.c b/target/arm/helper.c
-index 414191efb0..599eca872a 100644
+index 599eca872a..4ff9d26c8a 100644
 --- a/target/arm/helper.c
 +++ b/target/arm/helper.c
-@@ -578,8 +578,10 @@ static void tlbiall_nsnh_write(CPUARMState *env, const ARMCPRegInfo *ri,
+@@ -536,41 +536,33 @@ static void tlbimvaa_write(CPUARMState *env, const ARMCPRegInfo *ri,
+ static void tlbiall_is_write(CPUARMState *env, const ARMCPRegInfo *ri,
+                              uint64_t value)
  {
-     CPUState *cs = ENV_GET_CPU(env);
+-    CPUState *other_cs;
++    CPUState *cs = ENV_GET_CPU(env);
  
--    tlb_flush_by_mmuidx(cs, ARMMMUIdx_S12NSE1, ARMMMUIdx_S12NSE0,
--                        ARMMMUIdx_S2NS, -1);
-+    tlb_flush_by_mmuidx(cs,
-+                        (1 << ARMMMUIdx_S12NSE1) |
-+                        (1 << ARMMMUIdx_S12NSE0) |
-+                        (1 << ARMMMUIdx_S2NS));
+-    CPU_FOREACH(other_cs) {
+-        tlb_flush(other_cs);
+-    }
++    tlb_flush_all_cpus_synced(cs);
  }
  
+ static void tlbiasid_is_write(CPUARMState *env, const ARMCPRegInfo *ri,
+                              uint64_t value)
+ {
+-    CPUState *other_cs;
++    CPUState *cs = ENV_GET_CPU(env);
+ 
+-    CPU_FOREACH(other_cs) {
+-        tlb_flush(other_cs);
+-    }
++    tlb_flush_all_cpus_synced(cs);
+ }
+ 
+ static void tlbimva_is_write(CPUARMState *env, const ARMCPRegInfo *ri,
+                              uint64_t value)
+ {
+-    CPUState *other_cs;
++    CPUState *cs = ENV_GET_CPU(env);
+ 
+-    CPU_FOREACH(other_cs) {
+-        tlb_flush_page(other_cs, value & TARGET_PAGE_MASK);
+-    }
++    tlb_flush_page_all_cpus_synced(cs, value & TARGET_PAGE_MASK);
+ }
+ 
+ static void tlbimvaa_is_write(CPUARMState *env, const ARMCPRegInfo *ri,
+                              uint64_t value)
+ {
+-    CPUState *other_cs;
++    CPUState *cs = ENV_GET_CPU(env);
+ 
+-    CPU_FOREACH(other_cs) {
+-        tlb_flush_page(other_cs, value & TARGET_PAGE_MASK);
+-    }
++    tlb_flush_page_all_cpus_synced(cs, value & TARGET_PAGE_MASK);
+ }
+ 
+ static void tlbiall_nsnh_write(CPUARMState *env, const ARMCPRegInfo *ri,
+@@ -587,14 +579,12 @@ static void tlbiall_nsnh_write(CPUARMState *env, const ARMCPRegInfo *ri,
  static void tlbiall_nsnh_is_write(CPUARMState *env, const ARMCPRegInfo *ri,
-@@ -588,8 +590,10 @@ static void tlbiall_nsnh_is_write(CPUARMState *env, const ARMCPRegInfo *ri,
-     CPUState *other_cs;
- 
-     CPU_FOREACH(other_cs) {
--        tlb_flush_by_mmuidx(other_cs, ARMMMUIdx_S12NSE1,
--                            ARMMMUIdx_S12NSE0, ARMMMUIdx_S2NS, -1);
-+        tlb_flush_by_mmuidx(other_cs,
-+                            (1 << ARMMMUIdx_S12NSE1) |
-+                            (1 << ARMMMUIdx_S12NSE0) |
-+                            (1 << ARMMMUIdx_S2NS));
-     }
- }
- 
-@@ -611,7 +615,7 @@ static void tlbiipas2_write(CPUARMState *env, const ARMCPRegInfo *ri,
- 
-     pageaddr = sextract64(value << 12, 0, 40);
- 
--    tlb_flush_page_by_mmuidx(cs, pageaddr, ARMMMUIdx_S2NS, -1);
-+    tlb_flush_page_by_mmuidx(cs, pageaddr, (1 << ARMMMUIdx_S2NS));
- }
- 
- static void tlbiipas2_is_write(CPUARMState *env, const ARMCPRegInfo *ri,
-@@ -627,7 +631,7 @@ static void tlbiipas2_is_write(CPUARMState *env, const ARMCPRegInfo *ri,
-     pageaddr = sextract64(value << 12, 0, 40);
- 
-     CPU_FOREACH(other_cs) {
--        tlb_flush_page_by_mmuidx(other_cs, pageaddr, ARMMMUIdx_S2NS, -1);
-+        tlb_flush_page_by_mmuidx(other_cs, pageaddr, (1 << ARMMMUIdx_S2NS));
-     }
- }
- 
-@@ -636,7 +640,7 @@ static void tlbiall_hyp_write(CPUARMState *env, const ARMCPRegInfo *ri,
+                                   uint64_t value)
  {
-     CPUState *cs = ENV_GET_CPU(env);
+-    CPUState *other_cs;
++    CPUState *cs = ENV_GET_CPU(env);
  
--    tlb_flush_by_mmuidx(cs, ARMMMUIdx_S1E2, -1);
-+    tlb_flush_by_mmuidx(cs, (1 << ARMMMUIdx_S1E2));
+-    CPU_FOREACH(other_cs) {
+-        tlb_flush_by_mmuidx(other_cs,
+-                            (1 << ARMMMUIdx_S12NSE1) |
+-                            (1 << ARMMMUIdx_S12NSE0) |
+-                            (1 << ARMMMUIdx_S2NS));
+-    }
++    tlb_flush_by_mmuidx_all_cpus_synced(cs,
++                                        (1 << ARMMMUIdx_S12NSE1) |
++                                        (1 << ARMMMUIdx_S12NSE0) |
++                                        (1 << ARMMMUIdx_S2NS));
  }
  
+ static void tlbiipas2_write(CPUARMState *env, const ARMCPRegInfo *ri,
+@@ -621,7 +611,7 @@ static void tlbiipas2_write(CPUARMState *env, const ARMCPRegInfo *ri,
+ static void tlbiipas2_is_write(CPUARMState *env, const ARMCPRegInfo *ri,
+                                uint64_t value)
+ {
+-    CPUState *other_cs;
++    CPUState *cs = ENV_GET_CPU(env);
+     uint64_t pageaddr;
+ 
+     if (!arm_feature(env, ARM_FEATURE_EL2) || !(env->cp15.scr_el3 & SCR_NS)) {
+@@ -630,9 +620,8 @@ static void tlbiipas2_is_write(CPUARMState *env, const ARMCPRegInfo *ri,
+ 
+     pageaddr = sextract64(value << 12, 0, 40);
+ 
+-    CPU_FOREACH(other_cs) {
+-        tlb_flush_page_by_mmuidx(other_cs, pageaddr, (1 << ARMMMUIdx_S2NS));
+-    }
++    tlb_flush_page_by_mmuidx_all_cpus_synced(cs, pageaddr,
++                                             (1 << ARMMMUIdx_S2NS));
+ }
+ 
+ static void tlbiall_hyp_write(CPUARMState *env, const ARMCPRegInfo *ri,
+@@ -646,11 +635,9 @@ static void tlbiall_hyp_write(CPUARMState *env, const ARMCPRegInfo *ri,
  static void tlbiall_hyp_is_write(CPUARMState *env, const ARMCPRegInfo *ri,
-@@ -645,7 +649,7 @@ static void tlbiall_hyp_is_write(CPUARMState *env, const ARMCPRegInfo *ri,
-     CPUState *other_cs;
+                                  uint64_t value)
+ {
+-    CPUState *other_cs;
++    CPUState *cs = ENV_GET_CPU(env);
  
-     CPU_FOREACH(other_cs) {
--        tlb_flush_by_mmuidx(other_cs, ARMMMUIdx_S1E2, -1);
-+        tlb_flush_by_mmuidx(other_cs, (1 << ARMMMUIdx_S1E2));
-     }
+-    CPU_FOREACH(other_cs) {
+-        tlb_flush_by_mmuidx(other_cs, (1 << ARMMMUIdx_S1E2));
+-    }
++    tlb_flush_by_mmuidx_all_cpus_synced(cs, (1 << ARMMMUIdx_S1E2));
  }
  
-@@ -655,7 +659,7 @@ static void tlbimva_hyp_write(CPUARMState *env, const ARMCPRegInfo *ri,
-     CPUState *cs = ENV_GET_CPU(env);
-     uint64_t pageaddr = value & ~MAKE_64BIT_MASK(0, 12);
- 
--    tlb_flush_page_by_mmuidx(cs, pageaddr, ARMMMUIdx_S1E2, -1);
-+    tlb_flush_page_by_mmuidx(cs, pageaddr, (1 << ARMMMUIdx_S1E2));
- }
- 
+ static void tlbimva_hyp_write(CPUARMState *env, const ARMCPRegInfo *ri,
+@@ -665,12 +652,11 @@ static void tlbimva_hyp_write(CPUARMState *env, const ARMCPRegInfo *ri,
  static void tlbimva_hyp_is_write(CPUARMState *env, const ARMCPRegInfo *ri,
-@@ -665,7 +669,7 @@ static void tlbimva_hyp_is_write(CPUARMState *env, const ARMCPRegInfo *ri,
+                                  uint64_t value)
+ {
+-    CPUState *other_cs;
++    CPUState *cs = ENV_GET_CPU(env);
      uint64_t pageaddr = value & ~MAKE_64BIT_MASK(0, 12);
  
-     CPU_FOREACH(other_cs) {
--        tlb_flush_page_by_mmuidx(other_cs, pageaddr, ARMMMUIdx_S1E2, -1);
-+        tlb_flush_page_by_mmuidx(other_cs, pageaddr, (1 << ARMMMUIdx_S1E2));
-     }
+-    CPU_FOREACH(other_cs) {
+-        tlb_flush_page_by_mmuidx(other_cs, pageaddr, (1 << ARMMMUIdx_S1E2));
+-    }
++    tlb_flush_page_by_mmuidx_all_cpus_synced(cs, pageaddr,
++                                             (1 << ARMMMUIdx_S1E2));
  }
  
-@@ -2499,8 +2503,10 @@ static void vttbr_write(CPUARMState *env, const ARMCPRegInfo *ri,
- 
-     /* Accesses to VTTBR may change the VMID so we must flush the TLB.  */
-     if (raw_read(env, ri) != value) {
--        tlb_flush_by_mmuidx(cs, ARMMMUIdx_S12NSE1, ARMMMUIdx_S12NSE0,
--                            ARMMMUIdx_S2NS, -1);
-+        tlb_flush_by_mmuidx(cs,
-+                            (1 << ARMMMUIdx_S12NSE1) |
-+                            (1 << ARMMMUIdx_S12NSE0) |
-+                            (1 << ARMMMUIdx_S2NS));
-         raw_write(env, ri, value);
-     }
- }
-@@ -2859,9 +2865,13 @@ static void tlbi_aa64_vmalle1_write(CPUARMState *env, const ARMCPRegInfo *ri,
-     CPUState *cs = CPU(cpu);
+ static const ARMCPRegInfo cp_reginfo[] = {
+@@ -1339,14 +1325,16 @@ static const ARMCPRegInfo v7_cp_reginfo[] = {
+ static const ARMCPRegInfo v7mp_cp_reginfo[] = {
+     /* 32 bit TLB invalidates, Inner Shareable */
+     { .name = "TLBIALLIS", .cp = 15, .opc1 = 0, .crn = 8, .crm = 3, .opc2 = 0,
+-      .type = ARM_CP_NO_RAW, .access = PL1_W, .writefn = tlbiall_is_write },
++      .type = ARM_CP_NO_RAW | ARM_CP_EXIT_PC, .access = PL1_W,
++      .writefn = tlbiall_is_write },
+     { .name = "TLBIMVAIS", .cp = 15, .opc1 = 0, .crn = 8, .crm = 3, .opc2 = 1,
+-      .type = ARM_CP_NO_RAW, .access = PL1_W, .writefn = tlbimva_is_write },
++      .type = ARM_CP_NO_RAW | ARM_CP_EXIT_PC, .access = PL1_W,
++      .writefn = tlbimva_is_write },
+     { .name = "TLBIASIDIS", .cp = 15, .opc1 = 0, .crn = 8, .crm = 3, .opc2 = 2,
+-      .type = ARM_CP_NO_RAW, .access = PL1_W,
++      .type = ARM_CP_NO_RAW | ARM_CP_EXIT_PC, .access = PL1_W,
+       .writefn = tlbiasid_is_write },
+     { .name = "TLBIMVAAIS", .cp = 15, .opc1 = 0, .crn = 8, .crm = 3, .opc2 = 3,
+-      .type = ARM_CP_NO_RAW, .access = PL1_W,
++      .type = ARM_CP_NO_RAW | ARM_CP_EXIT_PC, .access = PL1_W,
+       .writefn = tlbimvaa_is_write },
+     REGINFO_SENTINEL
+ };
+@@ -2861,8 +2849,7 @@ static CPAccessResult aa64_cacheop_access(CPUARMState *env,
+ static void tlbi_aa64_vmalle1_write(CPUARMState *env, const ARMCPRegInfo *ri,
+                                     uint64_t value)
+ {
+-    ARMCPU *cpu = arm_env_get_cpu(env);
+-    CPUState *cs = CPU(cpu);
++    CPUState *cs = ENV_GET_CPU(env);
  
      if (arm_is_secure_below_el3(env)) {
--        tlb_flush_by_mmuidx(cs, ARMMMUIdx_S1SE1, ARMMMUIdx_S1SE0, -1);
-+        tlb_flush_by_mmuidx(cs,
-+                            (1 << ARMMMUIdx_S1SE1) |
-+                            (1 << ARMMMUIdx_S1SE0));
-     } else {
--        tlb_flush_by_mmuidx(cs, ARMMMUIdx_S12NSE1, ARMMMUIdx_S12NSE0, -1);
-+        tlb_flush_by_mmuidx(cs,
-+                            (1 << ARMMMUIdx_S12NSE1) |
-+                            (1 << ARMMMUIdx_S12NSE0));
+         tlb_flush_by_mmuidx(cs,
+@@ -2878,19 +2865,17 @@ static void tlbi_aa64_vmalle1_write(CPUARMState *env, const ARMCPRegInfo *ri,
+ static void tlbi_aa64_vmalle1is_write(CPUARMState *env, const ARMCPRegInfo *ri,
+                                       uint64_t value)
+ {
++    CPUState *cs = ENV_GET_CPU(env);
+     bool sec = arm_is_secure_below_el3(env);
+-    CPUState *other_cs;
+ 
+-    CPU_FOREACH(other_cs) {
+-        if (sec) {
+-            tlb_flush_by_mmuidx(other_cs,
+-                                (1 << ARMMMUIdx_S1SE1) |
+-                                (1 << ARMMMUIdx_S1SE0));
+-        } else {
+-            tlb_flush_by_mmuidx(other_cs,
+-                                (1 << ARMMMUIdx_S12NSE1) |
+-                                (1 << ARMMMUIdx_S12NSE0));
+-        }
++    if (sec) {
++        tlb_flush_by_mmuidx_all_cpus_synced(cs,
++                                            (1 << ARMMMUIdx_S1SE1) |
++                                            (1 << ARMMMUIdx_S1SE0));
++    } else {
++        tlb_flush_by_mmuidx_all_cpus_synced(cs,
++                                            (1 << ARMMMUIdx_S12NSE1) |
++                                            (1 << ARMMMUIdx_S12NSE0));
      }
  }
  
-@@ -2873,10 +2883,13 @@ static void tlbi_aa64_vmalle1is_write(CPUARMState *env, const ARMCPRegInfo *ri,
- 
-     CPU_FOREACH(other_cs) {
-         if (sec) {
--            tlb_flush_by_mmuidx(other_cs, ARMMMUIdx_S1SE1, ARMMMUIdx_S1SE0, -1);
-+            tlb_flush_by_mmuidx(other_cs,
-+                                (1 << ARMMMUIdx_S1SE1) |
-+                                (1 << ARMMMUIdx_S1SE0));
-         } else {
--            tlb_flush_by_mmuidx(other_cs, ARMMMUIdx_S12NSE1,
--                                ARMMMUIdx_S12NSE0, -1);
-+            tlb_flush_by_mmuidx(other_cs,
-+                                (1 << ARMMMUIdx_S12NSE1) |
-+                                (1 << ARMMMUIdx_S12NSE0));
-         }
-     }
- }
-@@ -2892,13 +2905,19 @@ static void tlbi_aa64_alle1_write(CPUARMState *env, const ARMCPRegInfo *ri,
-     CPUState *cs = CPU(cpu);
- 
-     if (arm_is_secure_below_el3(env)) {
--        tlb_flush_by_mmuidx(cs, ARMMMUIdx_S1SE1, ARMMMUIdx_S1SE0, -1);
-+        tlb_flush_by_mmuidx(cs,
-+                            (1 << ARMMMUIdx_S1SE1) |
-+                            (1 << ARMMMUIdx_S1SE0));
-     } else {
-         if (arm_feature(env, ARM_FEATURE_EL2)) {
--            tlb_flush_by_mmuidx(cs, ARMMMUIdx_S12NSE1, ARMMMUIdx_S12NSE0,
--                                ARMMMUIdx_S2NS, -1);
-+            tlb_flush_by_mmuidx(cs,
-+                                (1 << ARMMMUIdx_S12NSE1) |
-+                                (1 << ARMMMUIdx_S12NSE0) |
-+                                (1 << ARMMMUIdx_S2NS));
-         } else {
--            tlb_flush_by_mmuidx(cs, ARMMMUIdx_S12NSE1, ARMMMUIdx_S12NSE0, -1);
-+            tlb_flush_by_mmuidx(cs,
-+                                (1 << ARMMMUIdx_S12NSE1) |
-+                                (1 << ARMMMUIdx_S12NSE0));
-         }
-     }
- }
-@@ -2909,7 +2928,7 @@ static void tlbi_aa64_alle2_write(CPUARMState *env, const ARMCPRegInfo *ri,
-     ARMCPU *cpu = arm_env_get_cpu(env);
-     CPUState *cs = CPU(cpu);
- 
--    tlb_flush_by_mmuidx(cs, ARMMMUIdx_S1E2, -1);
-+    tlb_flush_by_mmuidx(cs, (1 << ARMMMUIdx_S1E2));
- }
- 
- static void tlbi_aa64_alle3_write(CPUARMState *env, const ARMCPRegInfo *ri,
-@@ -2918,7 +2937,7 @@ static void tlbi_aa64_alle3_write(CPUARMState *env, const ARMCPRegInfo *ri,
-     ARMCPU *cpu = arm_env_get_cpu(env);
-     CPUState *cs = CPU(cpu);
- 
--    tlb_flush_by_mmuidx(cs, ARMMMUIdx_S1E3, -1);
-+    tlb_flush_by_mmuidx(cs, (1 << ARMMMUIdx_S1E3));
- }
- 
- static void tlbi_aa64_alle1is_write(CPUARMState *env, const ARMCPRegInfo *ri,
-@@ -2934,13 +2953,18 @@ static void tlbi_aa64_alle1is_write(CPUARMState *env, const ARMCPRegInfo *ri,
- 
-     CPU_FOREACH(other_cs) {
-         if (sec) {
--            tlb_flush_by_mmuidx(other_cs, ARMMMUIdx_S1SE1, ARMMMUIdx_S1SE0, -1);
-+            tlb_flush_by_mmuidx(other_cs,
-+                                (1 << ARMMMUIdx_S1SE1) |
-+                                (1 << ARMMMUIdx_S1SE0));
-         } else if (has_el2) {
--            tlb_flush_by_mmuidx(other_cs, ARMMMUIdx_S12NSE1,
--                                ARMMMUIdx_S12NSE0, ARMMMUIdx_S2NS, -1);
-+            tlb_flush_by_mmuidx(other_cs,
-+                                (1 << ARMMMUIdx_S12NSE1) |
-+                                (1 << ARMMMUIdx_S12NSE0) |
-+                                (1 << ARMMMUIdx_S2NS));
-         } else {
--            tlb_flush_by_mmuidx(other_cs, ARMMMUIdx_S12NSE1,
--                                ARMMMUIdx_S12NSE0, -1);
-+            tlb_flush_by_mmuidx(other_cs,
-+                                (1 << ARMMMUIdx_S12NSE1) |
-+                                (1 << ARMMMUIdx_S12NSE0));
-         }
-     }
- }
-@@ -2951,7 +2975,7 @@ static void tlbi_aa64_alle2is_write(CPUARMState *env, const ARMCPRegInfo *ri,
-     CPUState *other_cs;
- 
-     CPU_FOREACH(other_cs) {
--        tlb_flush_by_mmuidx(other_cs, ARMMMUIdx_S1E2, -1);
-+        tlb_flush_by_mmuidx(other_cs, (1 << ARMMMUIdx_S1E2));
+@@ -2947,46 +2932,40 @@ static void tlbi_aa64_alle1is_write(CPUARMState *env, const ARMCPRegInfo *ri,
+      * stage 2 translations, whereas most other scopes only invalidate
+      * stage 1 translations.
+      */
++    CPUState *cs = ENV_GET_CPU(env);
+     bool sec = arm_is_secure_below_el3(env);
+     bool has_el2 = arm_feature(env, ARM_FEATURE_EL2);
+-    CPUState *other_cs;
+-
+-    CPU_FOREACH(other_cs) {
+-        if (sec) {
+-            tlb_flush_by_mmuidx(other_cs,
+-                                (1 << ARMMMUIdx_S1SE1) |
+-                                (1 << ARMMMUIdx_S1SE0));
+-        } else if (has_el2) {
+-            tlb_flush_by_mmuidx(other_cs,
+-                                (1 << ARMMMUIdx_S12NSE1) |
+-                                (1 << ARMMMUIdx_S12NSE0) |
+-                                (1 << ARMMMUIdx_S2NS));
+-        } else {
+-            tlb_flush_by_mmuidx(other_cs,
+-                                (1 << ARMMMUIdx_S12NSE1) |
+-                                (1 << ARMMMUIdx_S12NSE0));
+-        }
++
++    if (sec) {
++        tlb_flush_by_mmuidx_all_cpus_synced(cs,
++                                            (1 << ARMMMUIdx_S1SE1) |
++                                            (1 << ARMMMUIdx_S1SE0));
++    } else if (has_el2) {
++        tlb_flush_by_mmuidx_all_cpus_synced(cs,
++                                            (1 << ARMMMUIdx_S12NSE1) |
++                                            (1 << ARMMMUIdx_S12NSE0) |
++                                            (1 << ARMMMUIdx_S2NS));
++    } else {
++          tlb_flush_by_mmuidx_all_cpus_synced(cs,
++                                              (1 << ARMMMUIdx_S12NSE1) |
++                                              (1 << ARMMMUIdx_S12NSE0));
      }
  }
  
-@@ -2961,7 +2985,7 @@ static void tlbi_aa64_alle3is_write(CPUARMState *env, const ARMCPRegInfo *ri,
-     CPUState *other_cs;
+ static void tlbi_aa64_alle2is_write(CPUARMState *env, const ARMCPRegInfo *ri,
+                                     uint64_t value)
+ {
+-    CPUState *other_cs;
++    CPUState *cs = ENV_GET_CPU(env);
  
-     CPU_FOREACH(other_cs) {
--        tlb_flush_by_mmuidx(other_cs, ARMMMUIdx_S1E3, -1);
-+        tlb_flush_by_mmuidx(other_cs, (1 << ARMMMUIdx_S1E3));
-     }
+-    CPU_FOREACH(other_cs) {
+-        tlb_flush_by_mmuidx(other_cs, (1 << ARMMMUIdx_S1E2));
+-    }
++    tlb_flush_by_mmuidx_all_cpus_synced(cs, (1 << ARMMMUIdx_S1E2));
  }
  
-@@ -2978,11 +3002,13 @@ static void tlbi_aa64_vae1_write(CPUARMState *env, const ARMCPRegInfo *ri,
-     uint64_t pageaddr = sextract64(value << 12, 0, 56);
+ static void tlbi_aa64_alle3is_write(CPUARMState *env, const ARMCPRegInfo *ri,
+                                     uint64_t value)
+ {
+-    CPUState *other_cs;
++    CPUState *cs = ENV_GET_CPU(env);
  
-     if (arm_is_secure_below_el3(env)) {
--        tlb_flush_page_by_mmuidx(cs, pageaddr, ARMMMUIdx_S1SE1,
--                                 ARMMMUIdx_S1SE0, -1);
-+        tlb_flush_page_by_mmuidx(cs, pageaddr,
-+                                 (1 << ARMMMUIdx_S1SE1) |
-+                                 (1 << ARMMMUIdx_S1SE0));
-     } else {
--        tlb_flush_page_by_mmuidx(cs, pageaddr, ARMMMUIdx_S12NSE1,
--                                 ARMMMUIdx_S12NSE0, -1);
-+        tlb_flush_page_by_mmuidx(cs, pageaddr,
-+                                 (1 << ARMMMUIdx_S12NSE1) |
-+                                 (1 << ARMMMUIdx_S12NSE0));
-     }
+-    CPU_FOREACH(other_cs) {
+-        tlb_flush_by_mmuidx(other_cs, (1 << ARMMMUIdx_S1E3));
+-    }
++    tlb_flush_by_mmuidx_all_cpus_synced(cs, (1 << ARMMMUIdx_S1E3));
  }
  
-@@ -2997,7 +3023,7 @@ static void tlbi_aa64_vae2_write(CPUARMState *env, const ARMCPRegInfo *ri,
-     CPUState *cs = CPU(cpu);
-     uint64_t pageaddr = sextract64(value << 12, 0, 56);
- 
--    tlb_flush_page_by_mmuidx(cs, pageaddr, ARMMMUIdx_S1E2, -1);
-+    tlb_flush_page_by_mmuidx(cs, pageaddr, (1 << ARMMMUIdx_S1E2));
- }
- 
- static void tlbi_aa64_vae3_write(CPUARMState *env, const ARMCPRegInfo *ri,
-@@ -3011,7 +3037,7 @@ static void tlbi_aa64_vae3_write(CPUARMState *env, const ARMCPRegInfo *ri,
-     CPUState *cs = CPU(cpu);
-     uint64_t pageaddr = sextract64(value << 12, 0, 56);
- 
--    tlb_flush_page_by_mmuidx(cs, pageaddr, ARMMMUIdx_S1E3, -1);
-+    tlb_flush_page_by_mmuidx(cs, pageaddr, (1 << ARMMMUIdx_S1E3));
- }
- 
+ static void tlbi_aa64_vae1_write(CPUARMState *env, const ARMCPRegInfo *ri,
+@@ -3043,43 +3022,40 @@ static void tlbi_aa64_vae3_write(CPUARMState *env, const ARMCPRegInfo *ri,
  static void tlbi_aa64_vae1is_write(CPUARMState *env, const ARMCPRegInfo *ri,
-@@ -3023,11 +3049,13 @@ static void tlbi_aa64_vae1is_write(CPUARMState *env, const ARMCPRegInfo *ri,
- 
-     CPU_FOREACH(other_cs) {
-         if (sec) {
--            tlb_flush_page_by_mmuidx(other_cs, pageaddr, ARMMMUIdx_S1SE1,
--                                     ARMMMUIdx_S1SE0, -1);
-+            tlb_flush_page_by_mmuidx(other_cs, pageaddr,
-+                                     (1 << ARMMMUIdx_S1SE1) |
-+                                     (1 << ARMMMUIdx_S1SE0));
-         } else {
--            tlb_flush_page_by_mmuidx(other_cs, pageaddr, ARMMMUIdx_S12NSE1,
--                                     ARMMMUIdx_S12NSE0, -1);
-+            tlb_flush_page_by_mmuidx(other_cs, pageaddr,
-+                                     (1 << ARMMMUIdx_S12NSE1) |
-+                                     (1 << ARMMMUIdx_S12NSE0));
-         }
-     }
- }
-@@ -3039,7 +3067,7 @@ static void tlbi_aa64_vae2is_write(CPUARMState *env, const ARMCPRegInfo *ri,
+                                    uint64_t value)
+ {
++    ARMCPU *cpu = arm_env_get_cpu(env);
++    CPUState *cs = CPU(cpu);
+     bool sec = arm_is_secure_below_el3(env);
+-    CPUState *other_cs;
      uint64_t pageaddr = sextract64(value << 12, 0, 56);
  
-     CPU_FOREACH(other_cs) {
--        tlb_flush_page_by_mmuidx(other_cs, pageaddr, ARMMMUIdx_S1E2, -1);
-+        tlb_flush_page_by_mmuidx(other_cs, pageaddr, (1 << ARMMMUIdx_S1E2));
+-    CPU_FOREACH(other_cs) {
+-        if (sec) {
+-            tlb_flush_page_by_mmuidx(other_cs, pageaddr,
+-                                     (1 << ARMMMUIdx_S1SE1) |
+-                                     (1 << ARMMMUIdx_S1SE0));
+-        } else {
+-            tlb_flush_page_by_mmuidx(other_cs, pageaddr,
+-                                     (1 << ARMMMUIdx_S12NSE1) |
+-                                     (1 << ARMMMUIdx_S12NSE0));
+-        }
++    if (sec) {
++        tlb_flush_page_by_mmuidx_all_cpus_synced(cs, pageaddr,
++                                                 (1 << ARMMMUIdx_S1SE1) |
++                                                 (1 << ARMMMUIdx_S1SE0));
++    } else {
++        tlb_flush_page_by_mmuidx_all_cpus_synced(cs, pageaddr,
++                                                 (1 << ARMMMUIdx_S12NSE1) |
++                                                 (1 << ARMMMUIdx_S12NSE0));
      }
  }
  
-@@ -3050,7 +3078,7 @@ static void tlbi_aa64_vae3is_write(CPUARMState *env, const ARMCPRegInfo *ri,
+ static void tlbi_aa64_vae2is_write(CPUARMState *env, const ARMCPRegInfo *ri,
+                                    uint64_t value)
+ {
+-    CPUState *other_cs;
++    CPUState *cs = ENV_GET_CPU(env);
      uint64_t pageaddr = sextract64(value << 12, 0, 56);
  
-     CPU_FOREACH(other_cs) {
--        tlb_flush_page_by_mmuidx(other_cs, pageaddr, ARMMMUIdx_S1E3, -1);
-+        tlb_flush_page_by_mmuidx(other_cs, pageaddr, (1 << ARMMMUIdx_S1E3));
-     }
+-    CPU_FOREACH(other_cs) {
+-        tlb_flush_page_by_mmuidx(other_cs, pageaddr, (1 << ARMMMUIdx_S1E2));
+-    }
++    tlb_flush_page_by_mmuidx_all_cpus_synced(cs, pageaddr,
++                                             (1 << ARMMMUIdx_S1E2));
  }
  
-@@ -3073,7 +3101,7 @@ static void tlbi_aa64_ipas2e1_write(CPUARMState *env, const ARMCPRegInfo *ri,
+ static void tlbi_aa64_vae3is_write(CPUARMState *env, const ARMCPRegInfo *ri,
+                                    uint64_t value)
+ {
+-    CPUState *other_cs;
++    CPUState *cs = ENV_GET_CPU(env);
+     uint64_t pageaddr = sextract64(value << 12, 0, 56);
  
-     pageaddr = sextract64(value << 12, 0, 48);
- 
--    tlb_flush_page_by_mmuidx(cs, pageaddr, ARMMMUIdx_S2NS, -1);
-+    tlb_flush_page_by_mmuidx(cs, pageaddr, (1 << ARMMMUIdx_S2NS));
+-    CPU_FOREACH(other_cs) {
+-        tlb_flush_page_by_mmuidx(other_cs, pageaddr, (1 << ARMMMUIdx_S1E3));
+-    }
++    tlb_flush_page_by_mmuidx_all_cpus_synced(cs, pageaddr,
++                                             (1 << ARMMMUIdx_S1E3));
  }
  
+ static void tlbi_aa64_ipas2e1_write(CPUARMState *env, const ARMCPRegInfo *ri,
+@@ -3107,7 +3083,7 @@ static void tlbi_aa64_ipas2e1_write(CPUARMState *env, const ARMCPRegInfo *ri,
  static void tlbi_aa64_ipas2e1is_write(CPUARMState *env, const ARMCPRegInfo *ri,
-@@ -3089,7 +3117,7 @@ static void tlbi_aa64_ipas2e1is_write(CPUARMState *env, const ARMCPRegInfo *ri,
+                                       uint64_t value)
+ {
+-    CPUState *other_cs;
++    CPUState *cs = ENV_GET_CPU(env);
+     uint64_t pageaddr;
+ 
+     if (!arm_feature(env, ARM_FEATURE_EL2) || !(env->cp15.scr_el3 & SCR_NS)) {
+@@ -3116,9 +3092,8 @@ static void tlbi_aa64_ipas2e1is_write(CPUARMState *env, const ARMCPRegInfo *ri,
+ 
      pageaddr = sextract64(value << 12, 0, 48);
  
-     CPU_FOREACH(other_cs) {
--        tlb_flush_page_by_mmuidx(other_cs, pageaddr, ARMMMUIdx_S2NS, -1);
-+        tlb_flush_page_by_mmuidx(other_cs, pageaddr, (1 << ARMMMUIdx_S2NS));
-     }
+-    CPU_FOREACH(other_cs) {
+-        tlb_flush_page_by_mmuidx(other_cs, pageaddr, (1 << ARMMMUIdx_S2NS));
+-    }
++    tlb_flush_page_by_mmuidx_all_cpus_synced(cs, pageaddr,
++                                             (1 << ARMMMUIdx_S2NS));
  }
  
-diff --git a/target/sparc/ldst_helper.c b/target/sparc/ldst_helper.c
-index 2c05d6af75..57968d9143 100644
---- a/target/sparc/ldst_helper.c
-+++ b/target/sparc/ldst_helper.c
-@@ -1768,13 +1768,15 @@ void helper_st_asi(CPUSPARCState *env, target_ulong addr, target_ulong val,
-           case 1:
-               env->dmmu.mmu_primary_context = val;
-               env->immu.mmu_primary_context = val;
--              tlb_flush_by_mmuidx(CPU(cpu), MMU_USER_IDX, MMU_KERNEL_IDX, -1);
-+              tlb_flush_by_mmuidx(CPU(cpu),
-+                                  (1 << MMU_USER_IDX) | (1 << MMU_KERNEL_IDX));
-               break;
-           case 2:
-               env->dmmu.mmu_secondary_context = val;
-               env->immu.mmu_secondary_context = val;
--              tlb_flush_by_mmuidx(CPU(cpu), MMU_USER_SECONDARY_IDX,
--                                  MMU_KERNEL_SECONDARY_IDX, -1);
-+              tlb_flush_by_mmuidx(CPU(cpu),
-+                                  (1 << MMU_USER_SECONDARY_IDX) |
-+                                  (1 << MMU_KERNEL_SECONDARY_IDX));
-               break;
-           default:
-               cpu_unassigned_access(cs, addr, true, false, 1, size);
+ static CPAccessResult aa64_zva_access(CPUARMState *env, const ARMCPRegInfo *ri,
+@@ -3275,27 +3250,27 @@ static const ARMCPRegInfo v8_cp_reginfo[] = {
+     /* TLBI operations */
+     { .name = "TLBI_VMALLE1IS", .state = ARM_CP_STATE_AA64,
+       .opc0 = 1, .opc1 = 0, .crn = 8, .crm = 3, .opc2 = 0,
+-      .access = PL1_W, .type = ARM_CP_NO_RAW,
++      .access = PL1_W, .type = ARM_CP_NO_RAW | ARM_CP_EXIT_PC,
+       .writefn = tlbi_aa64_vmalle1is_write },
+     { .name = "TLBI_VAE1IS", .state = ARM_CP_STATE_AA64,
+       .opc0 = 1, .opc1 = 0, .crn = 8, .crm = 3, .opc2 = 1,
+-      .access = PL1_W, .type = ARM_CP_NO_RAW,
++      .access = PL1_W, .type = ARM_CP_NO_RAW | ARM_CP_EXIT_PC,
+       .writefn = tlbi_aa64_vae1is_write },
+     { .name = "TLBI_ASIDE1IS", .state = ARM_CP_STATE_AA64,
+       .opc0 = 1, .opc1 = 0, .crn = 8, .crm = 3, .opc2 = 2,
+-      .access = PL1_W, .type = ARM_CP_NO_RAW,
++      .access = PL1_W, .type = ARM_CP_NO_RAW | ARM_CP_EXIT_PC,
+       .writefn = tlbi_aa64_vmalle1is_write },
+     { .name = "TLBI_VAAE1IS", .state = ARM_CP_STATE_AA64,
+       .opc0 = 1, .opc1 = 0, .crn = 8, .crm = 3, .opc2 = 3,
+-      .access = PL1_W, .type = ARM_CP_NO_RAW,
++      .access = PL1_W, .type = ARM_CP_NO_RAW | ARM_CP_EXIT_PC,
+       .writefn = tlbi_aa64_vae1is_write },
+     { .name = "TLBI_VALE1IS", .state = ARM_CP_STATE_AA64,
+       .opc0 = 1, .opc1 = 0, .crn = 8, .crm = 3, .opc2 = 5,
+-      .access = PL1_W, .type = ARM_CP_NO_RAW,
++      .access = PL1_W, .type = ARM_CP_NO_RAW | ARM_CP_EXIT_PC,
+       .writefn = tlbi_aa64_vae1is_write },
+     { .name = "TLBI_VAALE1IS", .state = ARM_CP_STATE_AA64,
+       .opc0 = 1, .opc1 = 0, .crn = 8, .crm = 3, .opc2 = 7,
+-      .access = PL1_W, .type = ARM_CP_NO_RAW,
++      .access = PL1_W, .type = ARM_CP_NO_RAW | ARM_CP_EXIT_PC,
+       .writefn = tlbi_aa64_vae1is_write },
+     { .name = "TLBI_VMALLE1", .state = ARM_CP_STATE_AA64,
+       .opc0 = 1, .opc1 = 0, .crn = 8, .crm = 7, .opc2 = 0,
+@@ -3323,19 +3298,19 @@ static const ARMCPRegInfo v8_cp_reginfo[] = {
+       .writefn = tlbi_aa64_vae1_write },
+     { .name = "TLBI_IPAS2E1IS", .state = ARM_CP_STATE_AA64,
+       .opc0 = 1, .opc1 = 4, .crn = 8, .crm = 0, .opc2 = 1,
+-      .access = PL2_W, .type = ARM_CP_NO_RAW,
++      .access = PL2_W, .type = ARM_CP_NO_RAW | ARM_CP_EXIT_PC,
+       .writefn = tlbi_aa64_ipas2e1is_write },
+     { .name = "TLBI_IPAS2LE1IS", .state = ARM_CP_STATE_AA64,
+       .opc0 = 1, .opc1 = 4, .crn = 8, .crm = 0, .opc2 = 5,
+-      .access = PL2_W, .type = ARM_CP_NO_RAW,
++      .access = PL2_W, .type = ARM_CP_NO_RAW | ARM_CP_EXIT_PC,
+       .writefn = tlbi_aa64_ipas2e1is_write },
+     { .name = "TLBI_ALLE1IS", .state = ARM_CP_STATE_AA64,
+       .opc0 = 1, .opc1 = 4, .crn = 8, .crm = 3, .opc2 = 4,
+-      .access = PL2_W, .type = ARM_CP_NO_RAW,
++      .access = PL2_W, .type = ARM_CP_NO_RAW | ARM_CP_EXIT_PC,
+       .writefn = tlbi_aa64_alle1is_write },
+     { .name = "TLBI_VMALLS12E1IS", .state = ARM_CP_STATE_AA64,
+       .opc0 = 1, .opc1 = 4, .crn = 8, .crm = 3, .opc2 = 6,
+-      .access = PL2_W, .type = ARM_CP_NO_RAW,
++      .access = PL2_W, .type = ARM_CP_NO_RAW | ARM_CP_EXIT_PC,
+       .writefn = tlbi_aa64_alle1is_write },
+     { .name = "TLBI_IPAS2E1", .state = ARM_CP_STATE_AA64,
+       .opc0 = 1, .opc1 = 4, .crn = 8, .crm = 4, .opc2 = 1,
+@@ -3351,7 +3326,7 @@ static const ARMCPRegInfo v8_cp_reginfo[] = {
+       .writefn = tlbi_aa64_alle1_write },
+     { .name = "TLBI_VMALLS12E1", .state = ARM_CP_STATE_AA64,
+       .opc0 = 1, .opc1 = 4, .crn = 8, .crm = 7, .opc2 = 6,
+-      .access = PL2_W, .type = ARM_CP_NO_RAW,
++      .access = PL2_W, .type = ARM_CP_NO_RAW | ARM_CP_EXIT_PC,
+       .writefn = tlbi_aa64_alle1is_write },
+ #ifndef CONFIG_USER_ONLY
+     /* 64 bit address translation operations */
+@@ -3397,7 +3372,7 @@ static const ARMCPRegInfo v8_cp_reginfo[] = {
+     { .name = "TLBIMVALIS", .cp = 15, .opc1 = 0, .crn = 8, .crm = 3, .opc2 = 5,
+       .type = ARM_CP_NO_RAW, .access = PL1_W, .writefn = tlbimva_is_write },
+     { .name = "TLBIMVAALIS", .cp = 15, .opc1 = 0, .crn = 8, .crm = 3, .opc2 = 7,
+-      .type = ARM_CP_NO_RAW, .access = PL1_W,
++      .type = ARM_CP_NO_RAW | ARM_CP_EXIT_PC, .access = PL1_W,
+       .writefn = tlbimvaa_is_write },
+     { .name = "TLBIMVAL", .cp = 15, .opc1 = 0, .crn = 8, .crm = 7, .opc2 = 5,
+       .type = ARM_CP_NO_RAW, .access = PL1_W, .writefn = tlbimva_write },
+@@ -3408,7 +3383,7 @@ static const ARMCPRegInfo v8_cp_reginfo[] = {
+       .writefn = tlbimva_hyp_write },
+     { .name = "TLBIMVALHIS",
+       .cp = 15, .opc1 = 4, .crn = 8, .crm = 3, .opc2 = 5,
+-      .type = ARM_CP_NO_RAW, .access = PL2_W,
++      .type = ARM_CP_NO_RAW | ARM_CP_EXIT_PC, .access = PL2_W,
+       .writefn = tlbimva_hyp_is_write },
+     { .name = "TLBIIPAS2",
+       .cp = 15, .opc1 = 4, .crn = 8, .crm = 4, .opc2 = 1,
+@@ -3416,7 +3391,7 @@ static const ARMCPRegInfo v8_cp_reginfo[] = {
+       .writefn = tlbiipas2_write },
+     { .name = "TLBIIPAS2IS",
+       .cp = 15, .opc1 = 4, .crn = 8, .crm = 0, .opc2 = 1,
+-      .type = ARM_CP_NO_RAW, .access = PL2_W,
++      .type = ARM_CP_NO_RAW | ARM_CP_EXIT_PC, .access = PL2_W,
+       .writefn = tlbiipas2_is_write },
+     { .name = "TLBIIPAS2L",
+       .cp = 15, .opc1 = 4, .crn = 8, .crm = 4, .opc2 = 5,
+@@ -3424,7 +3399,7 @@ static const ARMCPRegInfo v8_cp_reginfo[] = {
+       .writefn = tlbiipas2_write },
+     { .name = "TLBIIPAS2LIS",
+       .cp = 15, .opc1 = 4, .crn = 8, .crm = 0, .opc2 = 5,
+-      .type = ARM_CP_NO_RAW, .access = PL2_W,
++      .type = ARM_CP_NO_RAW | ARM_CP_EXIT_PC, .access = PL2_W,
+       .writefn = tlbiipas2_is_write },
+     /* 32 bit cache operations */
+     { .name = "ICIALLUIS", .cp = 15, .opc1 = 0, .crn = 7, .crm = 1, .opc2 = 0,
+@@ -3764,7 +3739,7 @@ static const ARMCPRegInfo el2_cp_reginfo[] = {
+       .writefn = tlbiall_nsnh_write },
+     { .name = "TLBIALLNSNHIS",
+       .cp = 15, .opc1 = 4, .crn = 8, .crm = 3, .opc2 = 4,
+-      .type = ARM_CP_NO_RAW, .access = PL2_W,
++      .type = ARM_CP_NO_RAW | ARM_CP_EXIT_PC, .access = PL2_W,
+       .writefn = tlbiall_nsnh_is_write },
+     { .name = "TLBIALLH", .cp = 15, .opc1 = 4, .crn = 8, .crm = 7, .opc2 = 0,
+       .type = ARM_CP_NO_RAW, .access = PL2_W,
+@@ -3776,7 +3751,7 @@ static const ARMCPRegInfo el2_cp_reginfo[] = {
+       .type = ARM_CP_NO_RAW, .access = PL2_W,
+       .writefn = tlbimva_hyp_write },
+     { .name = "TLBIMVAHIS", .cp = 15, .opc1 = 4, .crn = 8, .crm = 3, .opc2 = 1,
+-      .type = ARM_CP_NO_RAW, .access = PL2_W,
++      .type = ARM_CP_NO_RAW | ARM_CP_EXIT_PC, .access = PL2_W,
+       .writefn = tlbimva_hyp_is_write },
+     { .name = "TLBI_ALLE2", .state = ARM_CP_STATE_AA64,
+       .opc0 = 1, .opc1 = 4, .crn = 8, .crm = 7, .opc2 = 0,
+@@ -3792,15 +3767,15 @@ static const ARMCPRegInfo el2_cp_reginfo[] = {
+       .writefn = tlbi_aa64_vae2_write },
+     { .name = "TLBI_ALLE2IS", .state = ARM_CP_STATE_AA64,
+       .opc0 = 1, .opc1 = 4, .crn = 8, .crm = 3, .opc2 = 0,
+-      .access = PL2_W, .type = ARM_CP_NO_RAW,
++      .access = PL2_W, .type = ARM_CP_NO_RAW | ARM_CP_EXIT_PC,
+       .writefn = tlbi_aa64_alle2is_write },
+     { .name = "TLBI_VAE2IS", .state = ARM_CP_STATE_AA64,
+       .opc0 = 1, .opc1 = 4, .crn = 8, .crm = 3, .opc2 = 1,
+-      .type = ARM_CP_NO_RAW, .access = PL2_W,
++      .type = ARM_CP_NO_RAW | ARM_CP_EXIT_PC, .access = PL2_W,
+       .writefn = tlbi_aa64_vae2is_write },
+     { .name = "TLBI_VALE2IS", .state = ARM_CP_STATE_AA64,
+       .opc0 = 1, .opc1 = 4, .crn = 8, .crm = 3, .opc2 = 5,
+-      .access = PL2_W, .type = ARM_CP_NO_RAW,
++      .access = PL2_W, .type = ARM_CP_NO_RAW | ARM_CP_EXIT_PC,
+       .writefn = tlbi_aa64_vae2is_write },
+ #ifndef CONFIG_USER_ONLY
+     /* Unlike the other EL2-related AT operations, these must
+@@ -3987,15 +3962,15 @@ static const ARMCPRegInfo el3_cp_reginfo[] = {
+       .resetvalue = 0 },
+     { .name = "TLBI_ALLE3IS", .state = ARM_CP_STATE_AA64,
+       .opc0 = 1, .opc1 = 6, .crn = 8, .crm = 3, .opc2 = 0,
+-      .access = PL3_W, .type = ARM_CP_NO_RAW,
++      .access = PL3_W, .type = ARM_CP_NO_RAW | ARM_CP_EXIT_PC,
+       .writefn = tlbi_aa64_alle3is_write },
+     { .name = "TLBI_VAE3IS", .state = ARM_CP_STATE_AA64,
+       .opc0 = 1, .opc1 = 6, .crn = 8, .crm = 3, .opc2 = 1,
+-      .access = PL3_W, .type = ARM_CP_NO_RAW,
++      .access = PL3_W, .type = ARM_CP_NO_RAW | ARM_CP_EXIT_PC,
+       .writefn = tlbi_aa64_vae3is_write },
+     { .name = "TLBI_VALE3IS", .state = ARM_CP_STATE_AA64,
+       .opc0 = 1, .opc1 = 6, .crn = 8, .crm = 3, .opc2 = 5,
+-      .access = PL3_W, .type = ARM_CP_NO_RAW,
++      .access = PL3_W, .type = ARM_CP_NO_RAW | ARM_CP_EXIT_PC,
+       .writefn = tlbi_aa64_vae3is_write },
+     { .name = "TLBI_ALLE3", .state = ARM_CP_STATE_AA64,
+       .opc0 = 1, .opc1 = 6, .crn = 8, .crm = 7, .opc2 = 0,
 -- 
 2.11.0

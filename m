@@ -1,92 +1,167 @@
-Received: by 10.25.77.65 with SMTP id a62csp567472lfb;
-        Wed, 1 Feb 2017 13:29:09 -0800 (PST)
-X-Received: by 10.84.173.4 with SMTP id o4mr7472356plb.106.1485984548964;
-        Wed, 01 Feb 2017 13:29:08 -0800 (PST)
-Return-Path: <rth7680@gmail.com>
-Received: from mail-pg0-x242.google.com (mail-pg0-x242.google.com. [2607:f8b0:400e:c05::242])
-        by mx.google.com with ESMTPS id o9si15468771pgi.274.2017.02.01.13.29.08
+Return-Path: <alex.bennee@linaro.org>
+Received: from zen.linaro.local ([81.128.185.34])
+        by smtp.gmail.com with ESMTPSA id l9sm34741807wmf.18.2017.02.02.03.03.20
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 01 Feb 2017 13:29:08 -0800 (PST)
-Received-SPF: pass (google.com: domain of rth7680@gmail.com designates 2607:f8b0:400e:c05::242 as permitted sender) client-ip=2607:f8b0:400e:c05::242;
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of rth7680@gmail.com designates 2607:f8b0:400e:c05::242 as permitted sender) smtp.mailfrom=rth7680@gmail.com
-Received: by mail-pg0-x242.google.com with SMTP id 75so35260400pgf.3;
-        Wed, 01 Feb 2017 13:29:08 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=sender:subject:to:references:cc:from:message-id:date:user-agent
-         :mime-version:in-reply-to:content-transfer-encoding;
-        bh=m9twQfihc6o/lCCb+ZvfNczfFjumAbrKMEYj2imKybY=;
-        b=vckinbKtjJU/SzivrfDRAHRNHhjgVFzasOZtTU0ROtAHbPIj1ShbYl4KqwI5KHZkrS
-         edIqMJ9rRPNNPogO383riucmSZMZ4CL6WsUm+ea00JBjpMXrCYn7Vh2bswm0v/C1vIaU
-         Lg9ZEIhoJgeo3Oqh39JvO4pxWFbHIINZ3T7CghqsSjS8E8NQWl1DKccrjN2GDs65j8UI
-         JnNI29/FjlkKh0zSOJrG1SUAugzyLRLPKNXXB1ftDl9JiYpTXRAQpi9AE1jUJONvLqPs
-         9f0OAGmc1LZE4tE/LDN+wJonoyl9ebyTyeLXmbiUHev/VzxyiBgwoKPLgr/UN+tNnY4L
-         nmJg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:sender:subject:to:references:cc:from:message-id
-         :date:user-agent:mime-version:in-reply-to:content-transfer-encoding;
-        bh=m9twQfihc6o/lCCb+ZvfNczfFjumAbrKMEYj2imKybY=;
-        b=Yl9XN2isPg1UgH3xcEZSjfmpxAk6fBH3Ns9Zy4cAdPMRJdjnATQp40zosCopQf/TvO
-         rabzz8ik940nk7A0w5qbc5et2rljWiumqLUz90pMmmrtJAvNZsBXzqGnTmvQnVdnFuee
-         /UL+Fx9F0mqOZcEzuH5NZBHCwdC9gng9kElDfhxIS1V4Ih2DBMojgsapYHEhBk72zcYP
-         lPmQmONMvsJ4R9fD+j6Z3uvwV6Hso2HxTOWuUxj574K6LiOJ5rxxlnACYByIvZaVt3B3
-         v9yk0jvvKCR/Nepy3CzahYatGzv3BnhyJAkjIqa3MTnXe7XX5s1saAFKuaxBGAeFc6KX
-         j1Fw==
-X-Gm-Message-State: AIkVDXJDHqAhowJkEoRLDYq2ePbx4LCFLsycD/p5Rt34M6DvmXglPjL0aW9EfFjK3U3Emg==
-X-Received: by 10.84.225.148 with SMTP id u20mr7279167plj.93.1485984548430;
-        Wed, 01 Feb 2017 13:29:08 -0800 (PST)
-Return-Path: <rth7680@gmail.com>
-Received: from bigtime.twiddle.net ([2602:47:d954:1500:5e51:4fff:fe40:9c64])
-        by smtp.googlemail.com with ESMTPSA id 21sm52057613pfy.4.2017.02.01.13.29.07
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 01 Feb 2017 13:29:07 -0800 (PST)
-Sender: Richard Henderson <rth7680@gmail.com>
-Subject: Re: [PATCH v9 16/25] cputlb and arm/sparc targets: convert mmuidx
- flushes from varg to bitmap
-To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
- mttcg@greensocs.com, qemu-devel@nongnu.org, fred.konrad@greensocs.com,
- a.rigo@virtualopensystems.com, cota@braap.org, bobby.prani@gmail.com,
- nikunj@linux.vnet.ibm.com
-References: <20170201150553.9381-1-alex.bennee@linaro.org>
- <20170201150553.9381-17-alex.bennee@linaro.org>
-Cc: mark.burton@greensocs.com, pbonzini@redhat.com, jan.kiszka@siemens.com,
- serge.fdrv@gmail.com, peter.maydell@linaro.org, bamvor.zhangjian@linaro.org,
- Peter Crosthwaite <crosthwaite.peter@gmail.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- Artyom Tarasenko <atar4qemu@gmail.com>, "open list:ARM" <qemu-arm@nongnu.org>
-From: Richard Henderson <rth@twiddle.net>
-Message-ID: <75cccc44-b1f6-d53c-b605-b3494df6a8a3@twiddle.net>
-Date: Wed, 1 Feb 2017 13:29:06 -0800
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
- Thunderbird/45.6.0
+        Thu, 02 Feb 2017 03:03:20 -0800 (PST)
+Received: from zen (localhost [127.0.0.1])
+	by zen.linaro.local (Postfix) with ESMTPS id 171043E0126;
+	Thu,  2 Feb 2017 11:03:24 +0000 (GMT)
+References: <CAFEAcA9j47hSCHyYh5TzNh5P-V3_ddcmA=XMcini+d8PnqruZA@mail.gmail.com>
+User-agent: mu4e 0.9.19; emacs 25.1.91.6
+From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: MTTCG Devel <mttcg@listserver.greensocs.com>, QEMU Developers
+ <qemu-devel@nongnu.org>, KONRAD =?utf-8?B?RnLDqWTDqXJpYw==?=
+ <fred.konrad@greensocs.com>, Alvise Rigo <a.rigo@virtualopensystems.com>,
+ "Emilio G. Cota" <cota@braap.org>, Pranith Kumar <bobby.prani@gmail.com>,
+ Nikunj A Dadhania <nikunj@linux.vnet.ibm.com>, Mark Burton
+ <mark.burton@greensocs.com>, Paolo Bonzini <pbonzini@redhat.com>, Jan
+ Kiszka <jan.kiszka@siemens.com>, Fedorov Sergey <serge.fdrv@gmail.com>,
+ Richard Henderson <rth@twiddle.net>, Claudio Fontana
+ <claudio.fontana@huawei.com>, bamvor.zhangjian@linaro.org, "open
+ list\:ARM" <qemu-arm@nongnu.org>
+Subject: Re: [PATCH v8 23/25] target-arm: introduce ARM_CP_EXIT_PC
+In-reply-to: <CAFEAcA9j47hSCHyYh5TzNh5P-V3_ddcmA=XMcini+d8PnqruZA@mail.gmail.com>
+Date: Thu, 02 Feb 2017 11:03:24 +0000
+Message-ID: <87bmuk4zyb.fsf@linaro.org>
 MIME-Version: 1.0
-In-Reply-To: <20170201150553.9381-17-alex.bennee@linaro.org>
-Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 8bit
-X-TUID: TYu3sUAU01OJ
+X-TUID: 9vxZC0m7d7Ve
 
-On 02/01/2017 07:05 AM, Alex Bennée wrote:
-> While the vargs approach was flexible the original MTTCG ended up
-> having munge the bits to a bitmap so the data could be used in
-> deferred work helpers. Instead of hiding that in cputlb we push the
-> change to the API to make it take a bitmap of MMU indexes instead.
+
+Peter Maydell <peter.maydell@linaro.org> writes:
+
+> On 27 January 2017 at 10:39, Alex Bennée <alex.bennee@linaro.org> wrote:
+>> Some helpers may trigger an immediate exit of the cpu_loop. If this
+>> happens the PC need to be rectified to ensure the restart will begin
+>> on the next instruction.
+>>
+>> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+>> ---
+>>  target/arm/cpu.h           | 3 ++-
+>>  target/arm/translate-a64.c | 4 ++++
+>>  target/arm/translate.c     | 4 ++++
+>>  3 files changed, 10 insertions(+), 1 deletion(-)
+>>
+>> diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+>> index f56a96c675..1b0670ae11 100644
+>> --- a/target/arm/cpu.h
+>> +++ b/target/arm/cpu.h
+>> @@ -1411,7 +1411,8 @@ static inline uint64_t cpreg_to_kvm_id(uint32_t cpregid)
+>>  #define ARM_CP_NZCV            (ARM_CP_SPECIAL | (3 << 8))
+>>  #define ARM_CP_CURRENTEL       (ARM_CP_SPECIAL | (4 << 8))
+>>  #define ARM_CP_DC_ZVA          (ARM_CP_SPECIAL | (5 << 8))
+>> -#define ARM_LAST_SPECIAL       ARM_CP_DC_ZVA
+>> +#define ARM_CP_EXIT_PC         (ARM_CP_SPECIAL | (6 << 8))
+>> +#define ARM_LAST_SPECIAL       ARM_CP_EXIT_PC
 >
-> For ARM some the resulting flushes end up being quite long so to aid
-> readability I've tended to move the index shifting to a new line so
-> all the bits being or-ed together line up nicely, for example:
+> There's a comment above this list of defines that documents
+> what all the flags mean; can you add an entry to it for the
+> new flag?
+
+Sure - given your comment bellow maybe AP_CP_SYNC_REGS is a better name?
+
 >
->     tlb_flush_page_by_mmuidx(other_cs, pageaddr,
->                              (1 << ARMMMUIdx_S1SE1) |
->                              (1 << ARMMMUIdx_S1SE0));
+>>  /* Used only as a terminator for ARMCPRegInfo lists */
+>>  #define ARM_CP_SENTINEL 0xffff
+>>  /* Mask of only the flag bits in a type field */
+>> diff --git a/target/arm/translate-a64.c b/target/arm/translate-a64.c
+>> index 05162f335e..a3f37d8bec 100644
+>> --- a/target/arm/translate-a64.c
+>> +++ b/target/arm/translate-a64.c
+>> @@ -1561,6 +1561,10 @@ static void handle_sys(DisasContext *s, uint32_t insn, bool isread,
+>>          tcg_rt = cpu_reg(s, rt);
+>>          gen_helper_dc_zva(cpu_env, tcg_rt);
+>>          return;
+>> +    case ARM_CP_EXIT_PC:
+>> +        /* The helper may exit the cpu_loop so ensure PC is correct */
+>> +        gen_a64_set_pc_im(s->pc);
+>> +        break;
 >
-> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-> [AT: SPARC part only]
-> Reviewed-by: Artyom Tarasenko <atar4qemu@gmail.com>
+> This will work, but it's a little odd because it breaks the
+> existing invariant that cp helpers never throw exceptions
+> (except in the access function).
 
-Reviewed-by: Richard Henderson <rth@twiddle.net>
+We don't throw an exception but we do exit the CPU loop which has work
+waiting for it.
+
+>
+> Does single-stepping (of the emulated architectural
+> debug step, and gdbstub singlestep) work across one of
+> these instructions?
+
+I'll have to test but I don't see why not. The instruction is fully
+executed we just ensure we have exited the run loop to process the flush
+before we get to the next instruction/
+
+> Should we also set dc->is_jmp to force ending the TB here?
+
+Probably - there is no reason to keep translating as the next
+instruction will be in its own block.
+
+> This is probably a question answered in the rest of the series,
+> but why do we need the helper to be able to longjump out to the
+> top level? Can't we just have the helper do its work and then
+> end the TB with tcg_gen_exit_tb(0) so we return to the top level
+> loop in the normal way?
+
+Well I guess this is a philosophical question. The cputlb API is
+offering the guarantee that when an *_all_cpus_synced() flush is done
+everything will be complete with respect to all vCPUS. This is reliant
+on the source vCPU executing an exclusive safe work which ensures all
+other vCPUs have halted and therefor will have run their safe work
+before returning to execution.
+
+If ARM wanted to it could call the *_all_cpus() variant, schedule its
+own exclusive safe work (a null function - as cputlb will have scheduled
+the flush) and exit the TB in the usual way. In fact this is the
+mechanism ARM could use if it wanted to defer the sync point to a later
+DMB instruction.
+
+I haven't implemented it yet as the flush stuff only comes up high in
+the perf runs with my aggressive TLB flush microbenchmarks.
+
+However I'm wary of having a _synched() variant which will only work
+correctly if the guest also does a bunch of other steps.
+
+>
+>>      default:
+>>          break;
+>>      }
+>> diff --git a/target/arm/translate.c b/target/arm/translate.c
+>> index 444a24c2b6..7bd18cd25d 100644
+>> --- a/target/arm/translate.c
+>> +++ b/target/arm/translate.c
+>> @@ -7508,6 +7508,10 @@ static int disas_coproc_insn(DisasContext *s, uint32_t insn)
+>>              gen_set_pc_im(s, s->pc);
+>>              s->is_jmp = DISAS_WFI;
+>>              return 0;
+>> +        case ARM_CP_EXIT_PC:
+>> +            /* The helper may exit the cpu_loop so ensure PC is correct */
+>> +            gen_set_pc_im(s, s->pc);
+>> +            break;
+>
+> Do we also need to gen_set_condexec() ?
+
+Do we? This isn't an exception so we don't need to resolve the condition
+flags as long as there is enough information preserved so the next TB
+can resolve if it needs to.
+
+I'm afraid my knowledge of the condition code is "it is deferred until
+it is needed as it is an expensive calculation". I'll dig into the
+implementation.
+
+>
+>>          default:
+>>              break;
+>>          }
+>> --
+>> 2.11.0
+>
+> thanks
+> -- PMM
 
 
-r~
+--
+Alex Bennée

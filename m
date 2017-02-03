@@ -1,50 +1,50 @@
-Received: by 10.25.77.65 with SMTP id a62csp559449lfb;
-        Fri, 3 Feb 2017 03:15:35 -0800 (PST)
-X-Received: by 10.28.46.74 with SMTP id u71mr875953wmu.136.1486120535761;
-        Fri, 03 Feb 2017 03:15:35 -0800 (PST)
+Received: by 10.25.77.65 with SMTP id a62csp560192lfb;
+        Fri, 3 Feb 2017 03:17:49 -0800 (PST)
+X-Received: by 10.28.69.28 with SMTP id s28mr897787wma.40.1486120669053;
+        Fri, 03 Feb 2017 03:17:49 -0800 (PST)
 Return-Path: <peter.maydell@linaro.org>
-Received: from mail-wm0-x22e.google.com (mail-wm0-x22e.google.com. [2a00:1450:400c:c09::22e])
-        by mx.google.com with ESMTPS id l66si1865517wma.43.2017.02.03.03.15.35
+Received: from mail-wm0-x232.google.com (mail-wm0-x232.google.com. [2a00:1450:400c:c09::232])
+        by mx.google.com with ESMTPS id w2si1850541wmb.90.2017.02.03.03.17.48
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 03 Feb 2017 03:15:35 -0800 (PST)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 2a00:1450:400c:c09::22e as permitted sender) client-ip=2a00:1450:400c:c09::22e;
+        Fri, 03 Feb 2017 03:17:48 -0800 (PST)
+Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 2a00:1450:400c:c09::232 as permitted sender) client-ip=2a00:1450:400c:c09::232;
 Authentication-Results: mx.google.com;
        dkim=pass header.i=@linaro.org;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 2a00:1450:400c:c09::22e as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 2a00:1450:400c:c09::232 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: by mail-wm0-x22e.google.com with SMTP id r141so22536554wmg.1
-        for <alex.bennee@linaro.org>; Fri, 03 Feb 2017 03:15:35 -0800 (PST)
+Received: by mail-wm0-x232.google.com with SMTP id c85so23577206wmi.1
+        for <alex.bennee@linaro.org>; Fri, 03 Feb 2017 03:17:48 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
         h=mime-version:in-reply-to:references:from:date:message-id:subject:to
          :cc:content-transfer-encoding;
-        bh=iCArxDJfN8kwhn49L0bm77/SjHuprn18GyyLAM3y5Hc=;
-        b=f5j+XzHRJjLaJnEgoEsYJ9SHVdOJv20U9/Vn2KtGivgC6R9TlREtbA6Qn3KPOsmoII
-         Dl1V2rOYPNqZ8NUq1TgR3QO6JCBOqmsYsFbX6e9CMEBRKQqXn2exuy8FNbKJEMFe1tSw
-         x19KDt09HhY/6Gtn3FbqFbkJ8tUM8tAaRPuoU=
+        bh=2fAUVxi3ZEW1YTUWrsMJHyem84/9hL5k/YuqM/5suaw=;
+        b=D5T/6JJl2T97U1mvszMNYW4jp5a48e3P4jc83WuH6UXnAbf6+y71wUt+Uo/u124aXK
+         WC6uM+5gf9n16dsTNAy56UK+1o7a9VrC7RAkEe73PuvgxZEGG7vkPvIIqpbxW1SDiC/1
+         FOusHjCiMtNDuRJTsM2nI49VOh0LREipptt5E=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:mime-version:in-reply-to:references:from:date
          :message-id:subject:to:cc:content-transfer-encoding;
-        bh=iCArxDJfN8kwhn49L0bm77/SjHuprn18GyyLAM3y5Hc=;
-        b=cMcEZnfKdRlOfVQmyOEoYItyxWz9WuIpdskVO7for0yEs/fDLusHA1EgHEuPpbv9QS
-         MPzu+JEkI83iXGJ7i0GL7OsIxrrbckl5I3GzwQvO0bfOjwi3y7opIsntNdDxsD4bZPgD
-         L5WwDfLlrOqN84OrHb7oxuT3degQuQjjlumcUpNjlheaGwoYHVesIL9Pv1/SV67pRIXj
-         6YVfZ/XxezshT8xT2vb3fF1VYZLkTUPSfEkPXVNgjUj9h/McxYnJ4NgsGWjV1oDapqx1
-         nHhtaAd/KOaRHJu973SC18CSKk4ZlhQPAEn4J1P/hGmwIMYD7gER8A0D+UY68JQNvXYh
-         L4Sw==
-X-Gm-Message-State: AMke39nSu7ico0Y2/miIDJEIYraZgxQdQpwuP+QhjSbN6tyyXStuBgF/+snlV9uVtNZ4AYrKzsxEugFZAyo6pnhFd/M=
-X-Received: by 10.28.189.135 with SMTP id n129mr884076wmf.92.1486120535284;
- Fri, 03 Feb 2017 03:15:35 -0800 (PST)
+        bh=2fAUVxi3ZEW1YTUWrsMJHyem84/9hL5k/YuqM/5suaw=;
+        b=qabIiROJmtvsirdHpD6ILwVnGhEo39J8uLamf0d5TITFQZ2MJVhmVWS6XwvKh5SRr/
+         druH1MOxaoXwRrH2Wc3eBhnmUSHPaZeJFI2nfu+k3YA3kBlzcQ7tfkEtWo84cIAEKskO
+         ER4D7scmwcfkGwucz39XqdGY6MYQsZ/A9++yiOjYfAVtxH4PFKqX5Caw1JPyuBz6hBlG
+         uOK6hNplXkrxcSs29v7oFw9BkiwxaWwPuURC2NvqnyTwDUBQKALtlDmxvII1EFUooaGT
+         pweONq/H5lc5zQsO19ou/ui5KcpiyeZ9c6yCM8r7j8D3GdTxp1WgMMpfEbgsI3AEEkwl
+         Z6ag==
+X-Gm-Message-State: AMke39nlOP8V6FPu0wxnWkpG04GDgKIVOa1Im0WHsXnFn++8JCCMp2bwaYsxexN3DArsIu25XBUIauGTvPHA8qweZS4=
+X-Received: by 10.28.55.199 with SMTP id e190mr888418wma.92.1486120668681;
+ Fri, 03 Feb 2017 03:17:48 -0800 (PST)
 MIME-Version: 1.0
-Received: by 10.223.145.69 with HTTP; Fri, 3 Feb 2017 03:15:14 -0800 (PST)
-In-Reply-To: <20170201150553.9381-21-alex.bennee@linaro.org>
-References: <20170201150553.9381-1-alex.bennee@linaro.org> <20170201150553.9381-21-alex.bennee@linaro.org>
+Received: by 10.223.145.69 with HTTP; Fri, 3 Feb 2017 03:17:28 -0800 (PST)
+In-Reply-To: <20170201150553.9381-22-alex.bennee@linaro.org>
+References: <20170201150553.9381-1-alex.bennee@linaro.org> <20170201150553.9381-22-alex.bennee@linaro.org>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 3 Feb 2017 11:15:14 +0000
-Message-ID: <CAFEAcA82=VUZF5DHBe+bEu0GBeM-Yg50TRkSHmDsgdAJ_YdgBw@mail.gmail.com>
-Subject: Re: [PATCH v9 20/25] target-arm/powerctl: defer cpu reset work to CPU context
+Date: Fri, 3 Feb 2017 11:17:28 +0000
+Message-ID: <CAFEAcA_TviTHP-WkppW342wSHRMHX8P9wqGd1UA6bdLG6n8_oQ@mail.gmail.com>
+Subject: Re: [PATCH v9 21/25] target-arm: don't generate WFE/YIELD calls for MTTCG
 To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
 Cc: MTTCG Devel <mttcg@listserver.greensocs.com>, QEMU Developers <qemu-devel@nongnu.org>, 
 	=?UTF-8?B?S09OUkFEIEZyw6lkw6lyaWM=?= <fred.konrad@greensocs.com>, 
@@ -56,30 +56,26 @@ Cc: MTTCG Devel <mttcg@listserver.greensocs.com>, QEMU Developers <qemu-devel@no
 	"open list:ARM" <qemu-arm@nongnu.org>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: quoted-printable
-X-TUID: omiroe2i/+Vx
+X-TUID: F0KJxbwTC6Uo
 
 On 1 February 2017 at 15:05, Alex Benn=C3=A9e <alex.bennee@linaro.org> wrot=
 e:
-> When switching a new vCPU on we want to complete a bunch of the setup
-> work before we start scheduling the vCPU thread. To do this cleanly we
-> defer vCPU setup to async work which will run the vCPUs execution
-> context as the thread is woken up. The scheduling of the work will kick
-> the vCPU awake.
->
-> This avoids potential races in MTTCG system emulation.
+> The WFE and YIELD instructions are really only hints and in TCG's case
+> they were useful to move the scheduling on from one vCPU to the next. In
+> the parallel context (MTTCG) this just causes an unnecessary cpu_exit
+> and contention of the BQL.
 >
 > Signed-off-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
 > Reviewed-by: Richard Henderson <rth@twiddle.net>
+> ---
+>  target/arm/op_helper.c     |  7 +++++++
+>  target/arm/translate-a64.c |  8 ++++++--
+>  target/arm/translate.c     | 20 ++++++++++++++++----
+>  3 files changed, 29 insertions(+), 6 deletions(-)
 
-Can we now have races between arm_set_cpu_on() and
-arm_set_cpu_off() ? It's not clear to me what prevents that.
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
-With this change our PSCI CPU_ON is no longer effectively
-atomic, which means we need to think about the races
-between PSCI CPU_ON and CPU_OFF, and the fact that the
-core might be in what the PSCI spec section 6.6
-calls an ON_PENDING state (ie CPU_ON has been called
-for it but it hasn't actually booted yet).
+though I'm not much of a fan of yet another global variable :-(
 
 thanks
 -- PMM

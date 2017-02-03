@@ -1,50 +1,50 @@
-Received: by 10.25.77.65 with SMTP id a62csp561866lfb;
-        Fri, 3 Feb 2017 03:23:10 -0800 (PST)
-X-Received: by 10.28.64.213 with SMTP id n204mr1046355wma.12.1486120990322;
-        Fri, 03 Feb 2017 03:23:10 -0800 (PST)
+Received: by 10.25.77.65 with SMTP id a62csp562814lfb;
+        Fri, 3 Feb 2017 03:26:17 -0800 (PST)
+X-Received: by 10.223.172.210 with SMTP id o76mr11730720wrc.21.1486121177551;
+        Fri, 03 Feb 2017 03:26:17 -0800 (PST)
 Return-Path: <peter.maydell@linaro.org>
-Received: from mail-wm0-x22c.google.com (mail-wm0-x22c.google.com. [2a00:1450:400c:c09::22c])
-        by mx.google.com with ESMTPS id w84si1851652wmg.121.2017.02.03.03.23.10
+Received: from mail-wm0-x235.google.com (mail-wm0-x235.google.com. [2a00:1450:400c:c09::235])
+        by mx.google.com with ESMTPS id h82si1847638wmh.163.2017.02.03.03.26.17
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 03 Feb 2017 03:23:10 -0800 (PST)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 2a00:1450:400c:c09::22c as permitted sender) client-ip=2a00:1450:400c:c09::22c;
+        Fri, 03 Feb 2017 03:26:17 -0800 (PST)
+Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 2a00:1450:400c:c09::235 as permitted sender) client-ip=2a00:1450:400c:c09::235;
 Authentication-Results: mx.google.com;
        dkim=pass header.i=@linaro.org;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 2a00:1450:400c:c09::22c as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 2a00:1450:400c:c09::235 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: by mail-wm0-x22c.google.com with SMTP id 196so13822320wmm.1
-        for <alex.bennee@linaro.org>; Fri, 03 Feb 2017 03:23:10 -0800 (PST)
+Received: by mail-wm0-x235.google.com with SMTP id v77so23187018wmv.0
+        for <alex.bennee@linaro.org>; Fri, 03 Feb 2017 03:26:17 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
         h=mime-version:in-reply-to:references:from:date:message-id:subject:to
          :cc:content-transfer-encoding;
-        bh=cvWiRebYrDY00Te1nN+i2s3BbgYiull7gMtQC62q2Os=;
-        b=fikO3X6OZ0rIbn+AjfiM4DTUUhOGkWJz187oeRkbEcDdKBqGspcv3bgnqAsrnQoZvH
-         0xZc8sJgI7iJeVEH2LdI9MdgJPgDiGzFevGZksIyfnDDrkiDVuYOhdvniZxjloDlimtM
-         KuwX3lgeS57X8rttIOgEJVJcfnthlnHc/klbg=
+        bh=pLVS6qNxCO50dDNs9pCMHTMC7ac8oLm75IKar43ihTc=;
+        b=ZSkdXkOAs6n7cBYBHv+6YwNNwdKpsEx5PIiKUTibrpM6zSn4gRzk3Vbq1JToGSNvwn
+         ZOjTK5j8xqyufsHVpwL7xAxvFLvcD5xVnrH++dbiCjmUiMLLoPqs+F8Jgm5vIQtfgA4W
+         tDtusaRSnIvWCR+CpoHIJuwAHVR3nBpsGTmps=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:mime-version:in-reply-to:references:from:date
          :message-id:subject:to:cc:content-transfer-encoding;
-        bh=cvWiRebYrDY00Te1nN+i2s3BbgYiull7gMtQC62q2Os=;
-        b=o3yHC/L6TX4y1gER+BzBAFNCaPnrn+RALJcHD3B6JhFNBKYVIkfUCP3sgzdbSWqJzg
-         2hGkdKRKnPS2MEUfmyX6w9LWZDgHScpVhri1PVhihI5/S7296etGOmX8Vw2yjXUoH9xt
-         o1611ElO22ZuKNd6oV5D8qGAqtOqlQ/9SxUXJOe4R7InzIxg9d8L9QyxuRXQhDITspos
-         vYb3T9wDalRNbd/zbH1xqaiDeysoIMPmkB1+wGOMZvd+UUen4iv9c4h1bhwqpNlJ8rC2
-         2nduv0MLHHtqmlpxRiG3a1qcvZrQM7XOhZpI2GQWSw0V9WswsRJR+0YgmOx4P4JnLao8
-         PgsA==
-X-Gm-Message-State: AMke39kG4UvwG/0wTOzg9qmtLZhSmrIQoj9e5/ndfAG0Iut7Vew56FWI8cKQXPWAHpJubkU6vyxRYSUSFQOvkOxtLK8=
-X-Received: by 10.28.189.135 with SMTP id n129mr916741wmf.92.1486120989892;
- Fri, 03 Feb 2017 03:23:09 -0800 (PST)
+        bh=pLVS6qNxCO50dDNs9pCMHTMC7ac8oLm75IKar43ihTc=;
+        b=sksEA9/1iyaNLUJt23JeMjIC7B89kpuF1ly79SSIist+0YZmTL1CH0qgv0hk1YJEZD
+         PVFNmLfTZNBSiy3h49iSUlYGMSlvkLSDD6hLvzCuj69BcnpDvKhexV8mYEjo/Y5VZAE0
+         I1sFQhOcjCC/3z+5H3C2DzEeBzNqExEz63NJSiKY8yrKLCG9Kzll+bKFkHc8yMDeNRPo
+         Rs8+UGP5WzktVC3YBilogVDb4WQACyto+472rYTQDYj3nRjSU2MLT82vsRXAR5JNVJF5
+         VLzAkuK2lypbqaWFdugMmppnUkLq3U+ochBT6E22pWO4O0flqCb00xll2WgjEhNrTFYt
+         x1jA==
+X-Gm-Message-State: AMke39l2sY9F5JbLoDcmQccWv0Mw0iKkO/mfCncOeEDsJ1YTFcGzITEuqXTQWnlAxDSuUJti9g2Vb3doOSRf+cbrvIw=
+X-Received: by 10.28.11.135 with SMTP id 129mr921655wml.111.1486121176912;
+ Fri, 03 Feb 2017 03:26:16 -0800 (PST)
 MIME-Version: 1.0
-Received: by 10.223.145.69 with HTTP; Fri, 3 Feb 2017 03:22:49 -0800 (PST)
-In-Reply-To: <20170201150553.9381-24-alex.bennee@linaro.org>
-References: <20170201150553.9381-1-alex.bennee@linaro.org> <20170201150553.9381-24-alex.bennee@linaro.org>
+Received: by 10.223.145.69 with HTTP; Fri, 3 Feb 2017 03:25:56 -0800 (PST)
+In-Reply-To: <20170201150553.9381-26-alex.bennee@linaro.org>
+References: <20170201150553.9381-1-alex.bennee@linaro.org> <20170201150553.9381-26-alex.bennee@linaro.org>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 3 Feb 2017 11:22:49 +0000
-Message-ID: <CAFEAcA9J4KgFLD5QiEjarw6HZY-T5WX4eSeSdGY6G2Y9ZAMOqQ@mail.gmail.com>
-Subject: Re: [PATCH v9 23/25] target-arm: introduce ARM_CP_EXIT_PC
+Date: Fri, 3 Feb 2017 11:25:56 +0000
+Message-ID: <CAFEAcA8nAQy4NNZ0RG0wOJ6rQoKz54UN22Z9LL2o2EgMdtpObQ@mail.gmail.com>
+Subject: Re: [PATCH v9 25/25] tcg: enable MTTCG by default for ARM on x86 hosts
 To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
 Cc: MTTCG Devel <mttcg@listserver.greensocs.com>, QEMU Developers <qemu-devel@nongnu.org>, 
 	=?UTF-8?B?S09OUkFEIEZyw6lkw6lyaWM=?= <fred.konrad@greensocs.com>, 
@@ -53,88 +53,65 @@ Cc: MTTCG Devel <mttcg@listserver.greensocs.com>, QEMU Developers <qemu-devel@no
 	Mark Burton <mark.burton@greensocs.com>, Paolo Bonzini <pbonzini@redhat.com>, 
 	Jan Kiszka <jan.kiszka@siemens.com>, Fedorov Sergey <serge.fdrv@gmail.com>, 
 	Richard Henderson <rth@twiddle.net>, Bamvor Zhang Jian <bamvor.zhangjian@linaro.org>, 
-	"open list:ARM" <qemu-arm@nongnu.org>
+	Peter Crosthwaite <crosthwaite.peter@gmail.com>, "open list:ARM" <qemu-arm@nongnu.org>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: quoted-printable
-X-TUID: CTg2uv9H3MNg
+X-TUID: NBKv437fnImG
 
 On 1 February 2017 at 15:05, Alex Benn=C3=A9e <alex.bennee@linaro.org> wrot=
 e:
-> Some helpers may trigger an immediate exit of the cpu_loop. If this
-> happens the PC need to be rectified to ensure the restart will begin
-> on the next instruction.
+> This enables the multi-threaded system emulation by default for ARMv7
+> and ARMv8 guests using the x86_64 TCG backend. This is because on the
+> guest side:
 >
-> Signed-off-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
-> ---
->  target/arm/cpu.h           | 3 ++-
->  target/arm/translate-a64.c | 4 ++++
->  target/arm/translate.c     | 4 ++++
->  3 files changed, 10 insertions(+), 1 deletion(-)
+>   - The ARM translate.c/translate-64.c have been converted to
+>     - use MTTCG safe atomic primitives
+>     - emit the appropriate barrier ops
+>   - The ARM machine has been updated to
+>     - hold the BQL when modifying shared cross-vCPU state
+>     - defer cpu_reset to async safe work
 >
+> All the host backends support the barrier and atomic primitives but
+> need to provide same-or-better support for normal load/store
+> operations.
+
+> diff --git a/cpus.c b/cpus.c
+> index e3d9f3fe21..e1b82bcd49 100644
+> --- a/cpus.c
+> +++ b/cpus.c
+> @@ -176,8 +176,8 @@ bool mttcg_enabled;
+>
+>  static bool check_tcg_memory_orders_compatible(void)
+>  {
+> -#if defined(TCG_DEFAULT_MO) && defined(TCG_TARGET_DEFAULT_MO)
+> -    return (TCG_DEFAULT_MO & ~TCG_TARGET_DEFAULT_MO) =3D=3D 0;
+> +#if defined(TCG_GUEST_DEFAULT_MO) && defined(TCG_TARGET_DEFAULT_MO)
+> +    return (TCG_GUEST_DEFAULT_MO & ~TCG_TARGET_DEFAULT_MO) =3D=3D 0;
+
+This looks like maybe something that should have been squashed
+into an earlier part of the patchset?
+
+>  #else
+>      return false;
+>  #endif
 > diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-> index d61793ca06..a3c4d07817 100644
+> index a3c4d07817..0ef31db3e0 100644
 > --- a/target/arm/cpu.h
 > +++ b/target/arm/cpu.h
-> @@ -1465,7 +1465,8 @@ static inline uint64_t cpreg_to_kvm_id(uint32_t cpr=
-egid)
->  #define ARM_CP_NZCV            (ARM_CP_SPECIAL | (3 << 8))
->  #define ARM_CP_CURRENTEL       (ARM_CP_SPECIAL | (4 << 8))
->  #define ARM_CP_DC_ZVA          (ARM_CP_SPECIAL | (5 << 8))
-> -#define ARM_LAST_SPECIAL       ARM_CP_DC_ZVA
-> +#define ARM_CP_EXIT_PC         (ARM_CP_SPECIAL | (6 << 8))
-> +#define ARM_LAST_SPECIAL       ARM_CP_EXIT_PC
+> @@ -30,6 +30,9 @@
+>  #  define TARGET_LONG_BITS 32
+>  #endif
+>
+> +/* ARM processors have a weak memory model */
+> +#define TCG_GUEST_DEFAULT_MO      (0)
 
-This shouldn't be a "special", because those are for
-"this is a special case that is handled entirely in the translate
-code", not "I need some extra behaviour on the code generated
-for calling the helper functions" (which is what the
-plain non-special ARM_CP flags do). Notice that all the other
-"special" cases completely define the behaviour of the cp that
-uses them, and the code implementing them ends the case
-statement with "return", not "break".
+Do you need the () ?
 
-Missing documentation comment change.
 
-That said, I'm definitely becoming more strongly of the
-opinion that longjumping out of this helper is not the
-best way to implement this, so these remarks are a bit moot.
+That said, if Richard is happy with turning this on then
+I'm happy to do so.
 
->  /* Used only as a terminator for ARMCPRegInfo lists */
->  #define ARM_CP_SENTINEL 0xffff
->  /* Mask of only the flag bits in a type field */
-> diff --git a/target/arm/translate-a64.c b/target/arm/translate-a64.c
-> index 7e7131fe2f..98d4fac070 100644
-> --- a/target/arm/translate-a64.c
-> +++ b/target/arm/translate-a64.c
-> @@ -1561,6 +1561,10 @@ static void handle_sys(DisasContext *s, uint32_t i=
-nsn, bool isread,
->          tcg_rt =3D cpu_reg(s, rt);
->          gen_helper_dc_zva(cpu_env, tcg_rt);
->          return;
-> +    case ARM_CP_EXIT_PC:
-> +        /* The helper may exit the cpu_loop so ensure PC is correct */
-> +        gen_a64_set_pc_im(s->pc);
-> +        break;
->      default:
->          break;
->      }
-> diff --git a/target/arm/translate.c b/target/arm/translate.c
-> index 24faa7c60c..e1f4a48720 100644
-> --- a/target/arm/translate.c
-> +++ b/target/arm/translate.c
-> @@ -7510,6 +7510,10 @@ static int disas_coproc_insn(DisasContext *s, uint=
-32_t insn)
->              gen_set_pc_im(s, s->pc);
->              s->is_jmp =3D DISAS_WFI;
->              return 0;
-> +        case ARM_CP_EXIT_PC:
-> +            /* The helper may exit the cpu_loop so ensure PC is correct =
-*/
-> +            gen_set_pc_im(s, s->pc);
-> +            break;
->          default:
->              break;
->          }
+Acked-by: Peter Maydell <peter.maydell@linaro.org>
 
 thanks
 -- PMM

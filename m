@@ -1,71 +1,63 @@
-Received: by 10.25.77.65 with SMTP id a62csp616636lfb;
-        Fri, 3 Feb 2017 05:32:20 -0800 (PST)
-X-Received: by 10.55.73.211 with SMTP id w202mr12841129qka.321.1486128740050;
-        Fri, 03 Feb 2017 05:32:20 -0800 (PST)
+Received: by 10.25.77.65 with SMTP id a62csp654934lfb;
+        Fri, 3 Feb 2017 07:04:18 -0800 (PST)
+X-Received: by 10.200.47.129 with SMTP id l1mr13295535qta.148.1486134258414;
+        Fri, 03 Feb 2017 07:04:18 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id s63si19237156qkc.208.2017.02.03.05.32.19
+        by mx.google.com with ESMTPS id f15si19397310qta.220.2017.02.03.07.04.18
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 03 Feb 2017 05:32:20 -0800 (PST)
+        Fri, 03 Feb 2017 07:04:18 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:34802 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:35200 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1cZdyN-00058Y-G4
-	for alex.bennee@linaro.org; Fri, 03 Feb 2017 08:32:19 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:50946)
+	id 1cZfPN-0000fQ-V6
+	for alex.bennee@linaro.org; Fri, 03 Feb 2017 10:04:18 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:52885)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1cZdyE-00056V-WB
-	for qemu-arm@nongnu.org; Fri, 03 Feb 2017 08:32:11 -0500
+	(envelope-from <wei@redhat.com>) id 1cZfPB-0000bW-Uh
+	for qemu-arm@nongnu.org; Fri, 03 Feb 2017 10:04:11 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1cZdyE-0008Ai-7f
-	for qemu-arm@nongnu.org; Fri, 03 Feb 2017 08:32:11 -0500
-Received: from mail-wm0-x22b.google.com ([2a00:1450:400c:c09::22b]:34967)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1cZdyE-00089t-2B
-	for qemu-arm@nongnu.org; Fri, 03 Feb 2017 08:32:10 -0500
-Received: by mail-wm0-x22b.google.com with SMTP id b65so29225741wmf.0
-	for <qemu-arm@nongnu.org>; Fri, 03 Feb 2017 05:32:09 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=Jq2X6Cm0AqaljgeyNBOmA7yYbDgAvuezlbTxtGBZHak=;
-	b=STZWQggBcUXZn4bANDUqrkoz2FrgZGAkGdyUbetM4HH4R1PTG6ug7aJ19AoYSAUhUJ
-	njFpRFlJk9pEknkG1+l5/l33c0Kd9vhP2XouP7yKEiG0fQ0XscvrwweMSdgKh0nmfTin
-	rZ4xSclFiZCGnNtyxmX/M/j0hEFm55DyjO/Rg=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=Jq2X6Cm0AqaljgeyNBOmA7yYbDgAvuezlbTxtGBZHak=;
-	b=qwx/rTWH6ykFaZq9LCLYCx9sf2JqjCsG+Wyt+JL2HUVgMAlAif43qMdE0u9AErWZlY
-	Zv8rDTGRpTL9qP4cDiTXxph5YV/ZtZg+bHIPvuJ49oS37rsnN4PvQb5zkTJlRyHw5S08
-	P9I9Hio5HbKplsaw6bHNxQ4vUnjUKZNsH1r7ld+tS4sUHR3Yu8DmzxrcjJmfT/VgOkdC
-	g8w/mU9kTJUS6BkIwZAf8N3iRdfdQk8m9fkMeTwPFAuj3XL9pplRkPDa3KVDM9SWFYu4
-	9EL4vgoBOlsRuWjqxxAh+8CIcMfJw2KDFjjc1aELsHCBSYXiYmP/FoDgJU+ItW9RXTHA
-	Y5ww==
-X-Gm-Message-State: AMke39lk4/pTra4O0JtLDvnMX48jnnhGGf57/ZhslQuvI9lsKYzvdemmGpryEg9zf35R80gG+wKLto/wXMFCM0iV
-X-Received: by 10.28.11.135 with SMTP id 129mr1403579wml.111.1486128728983;
-	Fri, 03 Feb 2017 05:32:08 -0800 (PST)
-MIME-Version: 1.0
-Received: by 10.223.145.69 with HTTP; Fri, 3 Feb 2017 05:31:48 -0800 (PST)
-In-Reply-To: <1485875745-27741-6-git-send-email-wei@redhat.com>
+	(envelope-from <wei@redhat.com>) id 1cZfP7-0005Yc-TA
+	for qemu-arm@nongnu.org; Fri, 03 Feb 2017 10:04:05 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:39728)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <wei@redhat.com>)
+	id 1cZfP7-0005Xj-LF; Fri, 03 Feb 2017 10:04:01 -0500
+Received: from int-mx11.intmail.prod.int.phx2.redhat.com
+	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id C72FF9D4E9;
+	Fri,  3 Feb 2017 15:04:00 +0000 (UTC)
+Received: from [10.10.58.2] (vpn-58-2.rdu2.redhat.com [10.10.58.2])
+	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id v13F3xhL018922; Fri, 3 Feb 2017 10:04:00 -0500
+To: Peter Maydell <peter.maydell@linaro.org>
 References: <1485875745-27741-1-git-send-email-wei@redhat.com>
-	<1485875745-27741-6-git-send-email-wei@redhat.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 3 Feb 2017 13:31:48 +0000
-Message-ID: <CAFEAcA_6u1wA1Fdyozor4FLwsb73PHocXOacBc-zxwmB8NVD2g@mail.gmail.com>
-To: Wei Huang <wei@redhat.com>
-Content-Type: text/plain; charset=UTF-8
+	<1485875745-27741-3-git-send-email-wei@redhat.com>
+	<CAFEAcA_Mgebwv8G_QM7owVm+HuNpLs-QfmXz4=Ac7xg9DKiUVg@mail.gmail.com>
+From: Wei Huang <wei@redhat.com>
+Message-ID: <9cf29949-2609-2f8d-cc8d-ffa90a8dd11d@redhat.com>
+Date: Fri, 3 Feb 2017 09:03:58 -0600
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
+	Thunderbird/45.6.0
+MIME-Version: 1.0
+In-Reply-To: <CAFEAcA_Mgebwv8G_QM7owVm+HuNpLs-QfmXz4=Ac7xg9DKiUVg@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.39]);
+	Fri, 03 Feb 2017 15:04:00 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2a00:1450:400c:c09::22b
-Subject: Re: [Qemu-arm] [PATCH V2 5/5] target-arm: Enable vPMU support under
- TCG mode
+	[fuzzy]
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-arm] [PATCH V2 2/5] target-arm: Add support for AArch64
+ PMU register PMXEVTYPER_EL0
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -80,19 +72,92 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 3blAx7z2voCI
+X-TUID: Mnx8C48IwLKf
 
-On 31 January 2017 at 15:15, Wei Huang <wei@redhat.com> wrote:
-> This patch contains several fixes to enable vPMU under TCG mode. It
-> first removes the checking of kvm_enabled() while unsetting
-> ARM_FEATURE_PMU. With it, the .pmu option can be used to turn on/off vPMU
-> under TCG mode. Secondly the PMU node of DT table is now created under TCG.
-> The last fix is to disable the masking of PMUver field of ID_AA64DFR0_EL1.
->
-> Signed-off-by: Wei Huang <wei@redhat.com>
-> ---
 
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
-thanks
--- PMM
+On 02/03/2017 07:24 AM, Peter Maydell wrote:
+> On 31 January 2017 at 15:15, Wei Huang <wei@redhat.com> wrote:
+>> In order to support Linux perf, which uses PMXEVTYPER register,
+>> this patch adds access support for PMXEVTYPER_EL0.
+>>
+>> Signed-off-by: Wei Huang <wei@redhat.com>
+>> ---
+>>  target/arm/cpu.h    |  2 +-
+>>  target/arm/helper.c | 19 ++++++++++++++++---
+>>  2 files changed, 17 insertions(+), 4 deletions(-)
+>>
+>> diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+>> index 8a82c73..ce02044 100644
+>> --- a/target/arm/cpu.h
+>> +++ b/target/arm/cpu.h
+>> @@ -307,7 +307,7 @@ typedef struct CPUARMState {
+>>          uint64_t c9_pmcr; /* performance monitor control register */
+>>          uint64_t c9_pmcnten; /* perf monitor counter enables */
+>>          uint32_t c9_pmovsr; /* perf monitor overflow status */
+>> -        uint32_t c9_pmxevtyper; /* perf monitor event type */
+>> +        uint64_t c9_pmxevtyper; /* perf monitor event type */
+>>          uint32_t c9_pmuserenr; /* perf monitor user enable */
+>>          uint64_t c9_pmselr; /* perf monitor counter selection register */
+>>          uint32_t c9_pminten; /* perf monitor interrupt enables */
+>> diff --git a/target/arm/helper.c b/target/arm/helper.c
+>> index 67520ea..c8620d9 100644
+>> --- a/target/arm/helper.c
+>> +++ b/target/arm/helper.c
+>> @@ -1054,7 +1054,13 @@ static void pmovsr_write(CPUARMState *env, const ARMCPRegInfo *ri,
+>>  static void pmxevtyper_write(CPUARMState *env, const ARMCPRegInfo *ri,
+>>                               uint64_t value)
+>>  {
+>> -    env->cp15.c9_pmxevtyper = value & 0xff;
+>> +    /* Attempts to access PMXEVTYPER are CONSTRAINED UNPREDICTABLE when
+>> +     * PMSELR value is equal to or greater than the number of implemented
+>> +     * counters, but not euqal to 0x1f. We opt to behave as a NOP.
+> 
+> "equal"
+> 
+>> +     */
+>> +    if (env->cp15.c9_pmselr == 0x1f) {
+>> +        pmccfiltr_write(env, ri, value);
+>> +    }
+>>  }
+>>
+>>  static void pmuserenr_write(CPUARMState *env, const ARMCPRegInfo *ri,
+>> @@ -1234,10 +1240,17 @@ static const ARMCPRegInfo v7_cp_reginfo[] = {
+>>        .fieldoffset = offsetof(CPUARMState, cp15.pmccfiltr_el0),
+>>        .resetvalue = 0, },
+>>      { .name = "PMXEVTYPER", .cp = 15, .crn = 9, .crm = 13, .opc1 = 0, .opc2 = 1,
+>> -      .access = PL0_RW,
+>> -      .fieldoffset = offsetof(CPUARMState, cp15.c9_pmxevtyper),
+>> +      .access = PL0_RW, .type = ARM_CP_ALIAS,
+>> +      .fieldoffset = offsetoflow32(CPUARMState, cp15.c9_pmxevtyper),
+>>        .accessfn = pmreg_access, .writefn = pmxevtyper_write,
+>>        .raw_writefn = raw_write },
+>> +    { .name = "PMXEVTYPER_EL0", .state = ARM_CP_STATE_AA64,
+>> +      .opc0 = 3, .opc1 = 3, .crn = 9, .crm = 13, .opc2 = 1,
+>> +      .access = PL0_RW, .accessfn = pmreg_access,
+>> +      .type = ARM_CP_IO,
+>> +      .fieldoffset = offsetof(CPUARMState, cp15.c9_pmxevtyper),
+>> +      .writefn = pmxevtyper_write, .raw_writefn = raw_write,
+>> +      .resetvalue = 0x0 },
+> 
+> Reads also need to give you PMCCFILTR_EL0, if PMSELR is set to 31,
+> so you need a readfn as well. (That also means that the c9_pmxevtyper
+> field in the struct becomes unused, so you can drop it, and
+> the .fieldoffset setting, and mark both the A32 and A64 reg structs
+> as ARM_CP_NO_RAW.)
+
+OK. I will redo this one. Since we are changing the design, I will
+revise the CONSTRAINED UNPREDICTABLE behavior of pmxevtyper access to
+RAZ/WI instead of NOP.
+
+> 
+>>      /* Unimplemented, RAZ/WI. */
+>>      { .name = "PMXEVCNTR", .cp = 15, .crn = 9, .crm = 13, .opc1 = 0, .opc2 = 2,
+>>        .access = PL0_RW, .type = ARM_CP_CONST, .resetvalue = 0,
+>> --
+>> 1.8.3.1
+>>
+> 
+> thanks
+> -- PMM
+> 

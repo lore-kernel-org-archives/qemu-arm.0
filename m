@@ -1,50 +1,51 @@
-Received: by 10.25.77.65 with SMTP id a62csp539400lfb;
-        Fri, 3 Feb 2017 02:10:13 -0800 (PST)
-X-Received: by 10.28.98.2 with SMTP id w2mr722760wmb.66.1486116613347;
-        Fri, 03 Feb 2017 02:10:13 -0800 (PST)
+Received: by 10.25.77.65 with SMTP id a62csp541209lfb;
+        Fri, 3 Feb 2017 02:15:33 -0800 (PST)
+X-Received: by 10.28.186.197 with SMTP id k188mr676438wmf.25.1486116933319;
+        Fri, 03 Feb 2017 02:15:33 -0800 (PST)
 Return-Path: <peter.maydell@linaro.org>
-Received: from mail-wm0-x22d.google.com (mail-wm0-x22d.google.com. [2a00:1450:400c:c09::22d])
-        by mx.google.com with ESMTPS id x197si1710067wmf.0.2017.02.03.02.10.13
+Received: from mail-wm0-x22c.google.com (mail-wm0-x22c.google.com. [2a00:1450:400c:c09::22c])
+        by mx.google.com with ESMTPS id q73si31977466wrb.323.2017.02.03.02.15.33
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 03 Feb 2017 02:10:13 -0800 (PST)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 2a00:1450:400c:c09::22d as permitted sender) client-ip=2a00:1450:400c:c09::22d;
+        Fri, 03 Feb 2017 02:15:33 -0800 (PST)
+Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 2a00:1450:400c:c09::22c as permitted sender) client-ip=2a00:1450:400c:c09::22c;
 Authentication-Results: mx.google.com;
        dkim=pass header.i=@linaro.org;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 2a00:1450:400c:c09::22d as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 2a00:1450:400c:c09::22c as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: by mail-wm0-x22d.google.com with SMTP id c85so20853702wmi.1
-        for <alex.bennee@linaro.org>; Fri, 03 Feb 2017 02:10:13 -0800 (PST)
+Received: by mail-wm0-x22c.google.com with SMTP id c85so21066774wmi.1
+        for <alex.bennee@linaro.org>; Fri, 03 Feb 2017 02:15:33 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
         h=mime-version:in-reply-to:references:from:date:message-id:subject:to
          :cc:content-transfer-encoding;
-        bh=7Ywq6SWj4/Q6/rLdInA4Hnva3Kl03QFreGRoiVnMOZo=;
-        b=aVXM1K5MXgmfok51zdjMtM20ZyVDlCKbagjdpM43Tpd8apqZc+4FCzUdVAi4XieVgN
-         Ba9X7B/LNyYjQrfDvwd5OziqO8vDGR8UXY3SawDCt7eZugQOSS7F7EfjbCC3Vubs7zO+
-         KwpJCiVdDVXy4lqlFLyN0d0NxmfJRb8ZBv97o=
+        bh=+d7vyeqXoJo5Y4ropFuwdaFzyPsCPUaAJj809y1ZEno=;
+        b=f6MmtbFXjmF9Rvz6o6xYKh0/INJXV+4k5FsFbdL08pbc5+wJAycY1Pm1NxmrMCgbX+
+         YDhWILKh1SsQnulU0qfrZG6NVGHWQhJ8oRVtj0AJQT3JvyqcSsCFmFGbgKvdYNJ/39nG
+         apVUY79OsOqrT/aWCmVFjU/yODYOBw4lJS7Ak=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:mime-version:in-reply-to:references:from:date
          :message-id:subject:to:cc:content-transfer-encoding;
-        bh=7Ywq6SWj4/Q6/rLdInA4Hnva3Kl03QFreGRoiVnMOZo=;
-        b=BV0Bu/Ltc6/czLJWx0f18bKPUMLqmyt5Pe1+Y+0MQF1/C2rJv5PSr+6oo70DudfZhf
-         pJ0WyzBmCCuaPLHiW/PFkC3idQYTNmx0w9FKswySoP0F/Uk//Ke3rUzPTYTXKQWBUy+C
-         FtO/KnP0BDsvwq8AYpORpDZO1bvnDecZweqBosHDYwG9G5Y3eP7lbdeLT+PHCCD0/l7A
-         KyuiVYIlkkLi+fqAlQfBB/3tz7DzT7pzxwGx4QtJ8eGmhJjdevPJiUl+YpTayRXemLqQ
-         muVPEVjkxcSdaGAQGfxQr0wPelkg2RA/zm5YQ+heOAEv1frRD6gbZUfw2tWs6hKkYmHe
-         YJbw==
-X-Gm-Message-State: AIkVDXIN/eT5C17ifyWLLs6YVmGRB/nvA5Og4jmccio7kM204zrhX8NYMjDTtJq0mnKeA03X3L+z6PmvIWCBgLSWxvM=
-X-Received: by 10.223.142.131 with SMTP id q3mr11258776wrb.195.1486116612917;
- Fri, 03 Feb 2017 02:10:12 -0800 (PST)
+        bh=+d7vyeqXoJo5Y4ropFuwdaFzyPsCPUaAJj809y1ZEno=;
+        b=iQwr3+LwIIf+vHN7SPJD87TJa2M3d/U0t9wDukOUzz/Q+1PQ/wzrYEfkgvjN/CREO/
+         HDxKuY31vXawQj1MfDSkHXbmuFGAfflVD8NKsXVqBDbC8InB9etZ7+6ePxpVrf8NRp4c
+         X5Y7td8cv76PkAOfNAmTuel8Wiw0I3ilJjBvDGY1ACKNZ09cf/tjm64BqEPxOMnI3g95
+         OFN+hvpWGZJZWG6AgLGV23UqXAL65rHlVFQpTE8Hd/3DDtw9bB17tAZFmkbwtNZvbDXD
+         uo0h4YH9vQDkyeD8NPUYcchu58pmHnqy/GFfrvBKlzDI0gZdHWIov6t7mJD0rME2HFyQ
+         +d9A==
+X-Gm-Message-State: AMke39mTcyc7gENEN3eiKyVLvFcKXLlOplWNoXSISYW/0wtjsJHE8Fk9Dn+4qIXW/vBoSUZ70q6oFqTmjWYJNMdv468=
+X-Received: by 10.28.16.70 with SMTP id 67mr722472wmq.142.1486116932837; Fri,
+ 03 Feb 2017 02:15:32 -0800 (PST)
 MIME-Version: 1.0
-Received: by 10.223.145.69 with HTTP; Fri, 3 Feb 2017 02:09:52 -0800 (PST)
-In-Reply-To: <20170201150553.9381-9-alex.bennee@linaro.org>
-References: <20170201150553.9381-1-alex.bennee@linaro.org> <20170201150553.9381-9-alex.bennee@linaro.org>
+Received: by 10.223.145.69 with HTTP; Fri, 3 Feb 2017 02:15:12 -0800 (PST)
+In-Reply-To: <20170201150553.9381-17-alex.bennee@linaro.org>
+References: <20170201150553.9381-1-alex.bennee@linaro.org> <20170201150553.9381-17-alex.bennee@linaro.org>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 3 Feb 2017 10:09:52 +0000
-Message-ID: <CAFEAcA95nduxcHy=Rxszqe3ONaO2pV69NesxJSWDLRLqujA23Q@mail.gmail.com>
-Subject: Re: [PATCH v9 08/25] tcg: drop global lock during TCG code execution
+Date: Fri, 3 Feb 2017 10:15:12 +0000
+Message-ID: <CAFEAcA8pNB3HAFAeh8vjbD7KMD6d4MtHTASsKYazRuq_oaQtnQ@mail.gmail.com>
+Subject: Re: [PATCH v9 16/25] cputlb and arm/sparc targets: convert mmuidx
+ flushes from varg to bitmap
 To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
 Cc: MTTCG Devel <mttcg@listserver.greensocs.com>, QEMU Developers <qemu-devel@nongnu.org>, 
 	=?UTF-8?B?S09OUkFEIEZyw6lkw6lyaWM=?= <fred.konrad@greensocs.com>, 
@@ -53,59 +54,34 @@ Cc: MTTCG Devel <mttcg@listserver.greensocs.com>, QEMU Developers <qemu-devel@no
 	Mark Burton <mark.burton@greensocs.com>, Paolo Bonzini <pbonzini@redhat.com>, 
 	Jan Kiszka <jan.kiszka@siemens.com>, Fedorov Sergey <serge.fdrv@gmail.com>, 
 	Richard Henderson <rth@twiddle.net>, Bamvor Zhang Jian <bamvor.zhangjian@linaro.org>, 
-	Peter Crosthwaite <crosthwaite.peter@gmail.com>, "Michael S. Tsirkin" <mst@redhat.com>, 
-	Eduardo Habkost <ehabkost@redhat.com>, David Gibson <david@gibson.dropbear.id.au>, 
-	Alexander Graf <agraf@suse.de>, "open list:ARM cores" <qemu-arm@nongnu.org>, 
-	"open list:PowerPC" <qemu-ppc@nongnu.org>
+	Peter Crosthwaite <crosthwaite.peter@gmail.com>, 
+	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, Artyom Tarasenko <atar4qemu@gmail.com>, 
+	"open list:ARM" <qemu-arm@nongnu.org>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: quoted-printable
-X-TUID: IaTLTIs+n7Qe
+X-TUID: W4IOb3wGbX96
 
 On 1 February 2017 at 15:05, Alex Benn=C3=A9e <alex.bennee@linaro.org> wrot=
 e:
-> From: Jan Kiszka <jan.kiszka@siemens.com>
+> While the vargs approach was flexible the original MTTCG ended up
+> having munge the bits to a bitmap so the data could be used in
+> deferred work helpers. Instead of hiding that in cputlb we push the
+> change to the API to make it take a bitmap of MMU indexes instead.
 >
-> This finally allows TCG to benefit from the iothread introduction: Drop
-> the global mutex while running pure TCG CPU code. Reacquire the lock
-> when entering MMIO or PIO emulation, or when leaving the TCG loop.
+> For ARM some the resulting flushes end up being quite long so to aid
+> readability I've tended to move the index shifting to a new line so
+> all the bits being or-ed together line up nicely, for example:
 >
-> We have to revert a few optimization for the current TCG threading
-> model, namely kicking the TCG thread in qemu_mutex_lock_iothread and not
-> kicking it in qemu_cpu_kick. We also need to disable RAM block
-> reordering until we have a more efficient locking mechanism at hand.
+>     tlb_flush_page_by_mmuidx(other_cs, pageaddr,
+>                              (1 << ARMMMUIdx_S1SE1) |
+>                              (1 << ARMMMUIdx_S1SE0));
 >
-> Still, a Linux x86 UP guest and my Musicpal ARM model boot fine here.
-> These numbers demonstrate where we gain something:
->
-> 20338 jan       20   0  331m  75m 6904 R   99  0.9   0:50.95 qemu-system-=
-arm
-> 20337 jan       20   0  331m  75m 6904 S   20  0.9   0:26.50 qemu-system-=
-arm
->
-> The guest CPU was fully loaded, but the iothread could still run mostly
-> independent on a second core. Without the patch we don't get beyond
->
-> 32206 jan       20   0  330m  73m 7036 R   82  0.9   1:06.00 qemu-system-=
-arm
-> 32204 jan       20   0  330m  73m 7036 S   21  0.9   0:17.03 qemu-system-=
-arm
->
-> We don't benefit significantly, though, when the guest is not fully
-> loading a host CPU.
->
-> Signed-off-by: Jan Kiszka <jan.kiszka@siemens.com>
-> Message-Id: <1439220437-23957-10-git-send-email-fred.konrad@greensocs.com=
->
-> [FK: Rebase, fix qemu_devices_reset deadlock, rm address_space_* mutex]
-> Signed-off-by: KONRAD Frederic <fred.konrad@greensocs.com>
-> [EGC: fixed iothread lock for cpu-exec IRQ handling]
-> Signed-off-by: Emilio G. Cota <cota@braap.org>
-> [AJB: -smp single-threaded fix, clean commit msg, BQL fixes]
 > Signed-off-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
-> Reviewed-by: Richard Henderson <rth@twiddle.net>
-> Reviewed-by: Pranith Kumar <bobby.prani@gmail.com>
+> [AT: SPARC part only]
+> Reviewed-by: Artyom Tarasenko <atar4qemu@gmail.com>
 
-target/arm changes:
-Acked-by: Peter Maydell <peter.maydell@linaro.org>
+ARM parts:
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
+thanks
 -- PMM

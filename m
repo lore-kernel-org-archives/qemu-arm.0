@@ -1,51 +1,50 @@
-Received: by 10.25.77.65 with SMTP id a62csp541209lfb;
-        Fri, 3 Feb 2017 02:15:33 -0800 (PST)
-X-Received: by 10.28.186.197 with SMTP id k188mr676438wmf.25.1486116933319;
-        Fri, 03 Feb 2017 02:15:33 -0800 (PST)
+Received: by 10.25.77.65 with SMTP id a62csp559449lfb;
+        Fri, 3 Feb 2017 03:15:35 -0800 (PST)
+X-Received: by 10.28.46.74 with SMTP id u71mr875953wmu.136.1486120535761;
+        Fri, 03 Feb 2017 03:15:35 -0800 (PST)
 Return-Path: <peter.maydell@linaro.org>
-Received: from mail-wm0-x22c.google.com (mail-wm0-x22c.google.com. [2a00:1450:400c:c09::22c])
-        by mx.google.com with ESMTPS id q73si31977466wrb.323.2017.02.03.02.15.33
+Received: from mail-wm0-x22e.google.com (mail-wm0-x22e.google.com. [2a00:1450:400c:c09::22e])
+        by mx.google.com with ESMTPS id l66si1865517wma.43.2017.02.03.03.15.35
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 03 Feb 2017 02:15:33 -0800 (PST)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 2a00:1450:400c:c09::22c as permitted sender) client-ip=2a00:1450:400c:c09::22c;
+        Fri, 03 Feb 2017 03:15:35 -0800 (PST)
+Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 2a00:1450:400c:c09::22e as permitted sender) client-ip=2a00:1450:400c:c09::22e;
 Authentication-Results: mx.google.com;
        dkim=pass header.i=@linaro.org;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 2a00:1450:400c:c09::22c as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 2a00:1450:400c:c09::22e as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: by mail-wm0-x22c.google.com with SMTP id c85so21066774wmi.1
-        for <alex.bennee@linaro.org>; Fri, 03 Feb 2017 02:15:33 -0800 (PST)
+Received: by mail-wm0-x22e.google.com with SMTP id r141so22536554wmg.1
+        for <alex.bennee@linaro.org>; Fri, 03 Feb 2017 03:15:35 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
         h=mime-version:in-reply-to:references:from:date:message-id:subject:to
          :cc:content-transfer-encoding;
-        bh=+d7vyeqXoJo5Y4ropFuwdaFzyPsCPUaAJj809y1ZEno=;
-        b=f6MmtbFXjmF9Rvz6o6xYKh0/INJXV+4k5FsFbdL08pbc5+wJAycY1Pm1NxmrMCgbX+
-         YDhWILKh1SsQnulU0qfrZG6NVGHWQhJ8oRVtj0AJQT3JvyqcSsCFmFGbgKvdYNJ/39nG
-         apVUY79OsOqrT/aWCmVFjU/yODYOBw4lJS7Ak=
+        bh=iCArxDJfN8kwhn49L0bm77/SjHuprn18GyyLAM3y5Hc=;
+        b=f5j+XzHRJjLaJnEgoEsYJ9SHVdOJv20U9/Vn2KtGivgC6R9TlREtbA6Qn3KPOsmoII
+         Dl1V2rOYPNqZ8NUq1TgR3QO6JCBOqmsYsFbX6e9CMEBRKQqXn2exuy8FNbKJEMFe1tSw
+         x19KDt09HhY/6Gtn3FbqFbkJ8tUM8tAaRPuoU=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:mime-version:in-reply-to:references:from:date
          :message-id:subject:to:cc:content-transfer-encoding;
-        bh=+d7vyeqXoJo5Y4ropFuwdaFzyPsCPUaAJj809y1ZEno=;
-        b=iQwr3+LwIIf+vHN7SPJD87TJa2M3d/U0t9wDukOUzz/Q+1PQ/wzrYEfkgvjN/CREO/
-         HDxKuY31vXawQj1MfDSkHXbmuFGAfflVD8NKsXVqBDbC8InB9etZ7+6ePxpVrf8NRp4c
-         X5Y7td8cv76PkAOfNAmTuel8Wiw0I3ilJjBvDGY1ACKNZ09cf/tjm64BqEPxOMnI3g95
-         OFN+hvpWGZJZWG6AgLGV23UqXAL65rHlVFQpTE8Hd/3DDtw9bB17tAZFmkbwtNZvbDXD
-         uo0h4YH9vQDkyeD8NPUYcchu58pmHnqy/GFfrvBKlzDI0gZdHWIov6t7mJD0rME2HFyQ
-         +d9A==
-X-Gm-Message-State: AMke39mTcyc7gENEN3eiKyVLvFcKXLlOplWNoXSISYW/0wtjsJHE8Fk9Dn+4qIXW/vBoSUZ70q6oFqTmjWYJNMdv468=
-X-Received: by 10.28.16.70 with SMTP id 67mr722472wmq.142.1486116932837; Fri,
- 03 Feb 2017 02:15:32 -0800 (PST)
+        bh=iCArxDJfN8kwhn49L0bm77/SjHuprn18GyyLAM3y5Hc=;
+        b=cMcEZnfKdRlOfVQmyOEoYItyxWz9WuIpdskVO7for0yEs/fDLusHA1EgHEuPpbv9QS
+         MPzu+JEkI83iXGJ7i0GL7OsIxrrbckl5I3GzwQvO0bfOjwi3y7opIsntNdDxsD4bZPgD
+         L5WwDfLlrOqN84OrHb7oxuT3degQuQjjlumcUpNjlheaGwoYHVesIL9Pv1/SV67pRIXj
+         6YVfZ/XxezshT8xT2vb3fF1VYZLkTUPSfEkPXVNgjUj9h/McxYnJ4NgsGWjV1oDapqx1
+         nHhtaAd/KOaRHJu973SC18CSKk4ZlhQPAEn4J1P/hGmwIMYD7gER8A0D+UY68JQNvXYh
+         L4Sw==
+X-Gm-Message-State: AMke39nSu7ico0Y2/miIDJEIYraZgxQdQpwuP+QhjSbN6tyyXStuBgF/+snlV9uVtNZ4AYrKzsxEugFZAyo6pnhFd/M=
+X-Received: by 10.28.189.135 with SMTP id n129mr884076wmf.92.1486120535284;
+ Fri, 03 Feb 2017 03:15:35 -0800 (PST)
 MIME-Version: 1.0
-Received: by 10.223.145.69 with HTTP; Fri, 3 Feb 2017 02:15:12 -0800 (PST)
-In-Reply-To: <20170201150553.9381-17-alex.bennee@linaro.org>
-References: <20170201150553.9381-1-alex.bennee@linaro.org> <20170201150553.9381-17-alex.bennee@linaro.org>
+Received: by 10.223.145.69 with HTTP; Fri, 3 Feb 2017 03:15:14 -0800 (PST)
+In-Reply-To: <20170201150553.9381-21-alex.bennee@linaro.org>
+References: <20170201150553.9381-1-alex.bennee@linaro.org> <20170201150553.9381-21-alex.bennee@linaro.org>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 3 Feb 2017 10:15:12 +0000
-Message-ID: <CAFEAcA8pNB3HAFAeh8vjbD7KMD6d4MtHTASsKYazRuq_oaQtnQ@mail.gmail.com>
-Subject: Re: [PATCH v9 16/25] cputlb and arm/sparc targets: convert mmuidx
- flushes from varg to bitmap
+Date: Fri, 3 Feb 2017 11:15:14 +0000
+Message-ID: <CAFEAcA82=VUZF5DHBe+bEu0GBeM-Yg50TRkSHmDsgdAJ_YdgBw@mail.gmail.com>
+Subject: Re: [PATCH v9 20/25] target-arm/powerctl: defer cpu reset work to CPU context
 To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
 Cc: MTTCG Devel <mttcg@listserver.greensocs.com>, QEMU Developers <qemu-devel@nongnu.org>, 
 	=?UTF-8?B?S09OUkFEIEZyw6lkw6lyaWM=?= <fred.konrad@greensocs.com>, 
@@ -54,34 +53,33 @@ Cc: MTTCG Devel <mttcg@listserver.greensocs.com>, QEMU Developers <qemu-devel@no
 	Mark Burton <mark.burton@greensocs.com>, Paolo Bonzini <pbonzini@redhat.com>, 
 	Jan Kiszka <jan.kiszka@siemens.com>, Fedorov Sergey <serge.fdrv@gmail.com>, 
 	Richard Henderson <rth@twiddle.net>, Bamvor Zhang Jian <bamvor.zhangjian@linaro.org>, 
-	Peter Crosthwaite <crosthwaite.peter@gmail.com>, 
-	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, Artyom Tarasenko <atar4qemu@gmail.com>, 
 	"open list:ARM" <qemu-arm@nongnu.org>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: quoted-printable
-X-TUID: W4IOb3wGbX96
+X-TUID: omiroe2i/+Vx
 
 On 1 February 2017 at 15:05, Alex Benn=C3=A9e <alex.bennee@linaro.org> wrot=
 e:
-> While the vargs approach was flexible the original MTTCG ended up
-> having munge the bits to a bitmap so the data could be used in
-> deferred work helpers. Instead of hiding that in cputlb we push the
-> change to the API to make it take a bitmap of MMU indexes instead.
+> When switching a new vCPU on we want to complete a bunch of the setup
+> work before we start scheduling the vCPU thread. To do this cleanly we
+> defer vCPU setup to async work which will run the vCPUs execution
+> context as the thread is woken up. The scheduling of the work will kick
+> the vCPU awake.
 >
-> For ARM some the resulting flushes end up being quite long so to aid
-> readability I've tended to move the index shifting to a new line so
-> all the bits being or-ed together line up nicely, for example:
->
->     tlb_flush_page_by_mmuidx(other_cs, pageaddr,
->                              (1 << ARMMMUIdx_S1SE1) |
->                              (1 << ARMMMUIdx_S1SE0));
+> This avoids potential races in MTTCG system emulation.
 >
 > Signed-off-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
-> [AT: SPARC part only]
-> Reviewed-by: Artyom Tarasenko <atar4qemu@gmail.com>
+> Reviewed-by: Richard Henderson <rth@twiddle.net>
 
-ARM parts:
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+Can we now have races between arm_set_cpu_on() and
+arm_set_cpu_off() ? It's not clear to me what prevents that.
+
+With this change our PSCI CPU_ON is no longer effectively
+atomic, which means we need to think about the races
+between PSCI CPU_ON and CPU_OFF, and the fact that the
+core might be in what the PSCI spec section 6.6
+calls an ON_PENDING state (ie CPU_ON has been called
+for it but it hasn't actually booted yet).
 
 thanks
 -- PMM

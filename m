@@ -1,81 +1,61 @@
-Received: by 10.25.77.65 with SMTP id a62csp1733249lfb;
-        Mon, 6 Feb 2017 07:06:51 -0800 (PST)
-X-Received: by 10.55.95.131 with SMTP id t125mr10665079qkb.279.1486393610955;
-        Mon, 06 Feb 2017 07:06:50 -0800 (PST)
+Received: by 10.25.77.65 with SMTP id a62csp1774657lfb;
+        Mon, 6 Feb 2017 08:49:14 -0800 (PST)
+X-Received: by 10.237.36.129 with SMTP id t1mr9975582qtc.202.1486399754898;
+        Mon, 06 Feb 2017 08:49:14 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id n33si662369qtd.237.2017.02.06.07.06.50
+        by mx.google.com with ESMTPS id j141si875139qke.147.2017.02.06.08.49.14
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 06 Feb 2017 07:06:50 -0800 (PST)
+        Mon, 06 Feb 2017 08:49:14 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:48928 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:49483 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1caksU-0008GX-3e
-	for alex.bennee@linaro.org; Mon, 06 Feb 2017 10:06:50 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:58539)
+	id 1camTa-00024P-BR
+	for alex.bennee@linaro.org; Mon, 06 Feb 2017 11:49:14 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:34534)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <edgar.iglesias@gmail.com>) id 1caksQ-0008GE-FY
-	for qemu-arm@nongnu.org; Mon, 06 Feb 2017 10:06:47 -0500
+	(envelope-from <alex.williamson@redhat.com>) id 1camTU-00023E-GE
+	for qemu-arm@nongnu.org; Mon, 06 Feb 2017 11:49:09 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <edgar.iglesias@gmail.com>) id 1caksH-0008B6-Aq
-	for qemu-arm@nongnu.org; Mon, 06 Feb 2017 10:06:46 -0500
-Received: from mail-lf0-x243.google.com ([2a00:1450:4010:c07::243]:34270)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <edgar.iglesias@gmail.com>)
-	id 1caksH-0008Aq-3a; Mon, 06 Feb 2017 10:06:37 -0500
-Received: by mail-lf0-x243.google.com with SMTP id q89so4189942lfi.1;
-	Mon, 06 Feb 2017 07:06:36 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=date:from:to:cc:subject:message-id:references:mime-version
-	:content-disposition:in-reply-to:user-agent;
-	bh=Z76zCpR6cMtv1sIUDPZO9MbqLSFC46pACfbTUZ480qo=;
-	b=ToyneyIwVIagJ24eweIyf7esd+IxmpwvV8BJG9/z17CltoR26LDvh9ctH4qdtXy4dm
-	GIupUZTDmLQVEXoeCFsCcdJFkqQXYcRuIdFW2SQ1IXKnpdYiRPvzmsbAYCi+fPzNNEkp
-	NDYPfpxYrsY94FyxCqp6+z1Hq4QGUK9ohEXJEu9aUAdlYEfgZww0Z6qNsaXu6WABlHm6
-	occM1hP80ggJ/poZ3I8jnqHIMeyLepMfZXhYtFgUwq6kaaeATVAA3bZaf5xxNque6kqj
-	YYPr2P8bUuM3T2kSYN01gS2057vAJ1A/7JxOWv06IRS/tRNZjExgQtQprq14Uh7gLt0c
-	QZRw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:date:from:to:cc:subject:message-id:references
-	:mime-version:content-disposition:in-reply-to:user-agent;
-	bh=Z76zCpR6cMtv1sIUDPZO9MbqLSFC46pACfbTUZ480qo=;
-	b=BRMF/1Ql77mbPkgVbYMk9JOUmXcy4PQ1jdHeI3OvgPjEshO9cKNRPIRaZ8e14pG/xN
-	lNVqUg0FPFL/tQHcAcZvjAEt76kioJtqtJIiJ3RMAwHxA1E1fn/nVKPaoXbrmlnIahLM
-	X6F9/BtgxRI1uauY9v6YvDzO4t2EFnTpxGXdKGF/rw+hsC6u+31dV+MtPS6K3nxLBRao
-	AfYr7mF08/jMrmOeqG094NsA5tCBVJCzAUrM8OEZNZ4shbX9RDpT615c3b2QzWPzlMY0
-	1joZYS21YnJbDP/tfVYebxxAlMQ7BPnVTKeMrnUayPjfyBDO8C3Ufsaa9PjGC/fmx2ae
-	eQPg==
-X-Gm-Message-State: AIkVDXKw7QdXK3nSRwOXfY5SOrfO7tMrxf/84/K9rYVz4i2ZoYyJlvlXDKh6JADQJTlZ7w==
-X-Received: by 10.25.21.142 with SMTP id 14mr3943815lfv.138.1486393595134;
-	Mon, 06 Feb 2017 07:06:35 -0800 (PST)
-Received: from localhost (81-231-233-234-no56.tbcn.telia.com. [81.231.233.234])
-	by smtp.gmail.com with ESMTPSA id m18sm350537lfe.45.2017.02.06.07.06.33
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Mon, 06 Feb 2017 07:06:34 -0800 (PST)
-Date: Mon, 6 Feb 2017 16:06:33 +0100
-From: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Message-ID: <20170206150633.GQ9606@toto>
-References: <1486144135-4894-1-git-send-email-peter.maydell@linaro.org>
-	<1486144135-4894-3-git-send-email-peter.maydell@linaro.org>
-	<20170204143132.GP9606@toto>
-	<CAFEAcA9ybZzMPKMUUyrALGq4ufwBbWPFAtZEctHmA1CKnnpLgQ@mail.gmail.com>
+	(envelope-from <alex.williamson@redhat.com>) id 1camTR-0004b2-GC
+	for qemu-arm@nongnu.org; Mon, 06 Feb 2017 11:49:08 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:51890)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <alex.williamson@redhat.com>)
+	id 1camTR-0004aQ-7g; Mon, 06 Feb 2017 11:49:05 -0500
+Received: from int-mx09.intmail.prod.int.phx2.redhat.com
+	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 3010080469;
+	Mon,  6 Feb 2017 16:49:05 +0000 (UTC)
+Received: from t450s.home (ovpn04.gateway.prod.ext.phx2.redhat.com [10.5.9.4])
+	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with
+	ESMTP id v16Gn45U018255; Mon, 6 Feb 2017 11:49:04 -0500
+Date: Mon, 6 Feb 2017 09:49:03 -0700
+From: Alex Williamson <alex.williamson@redhat.com>
+To: Thomas Huth <thuth@redhat.com>
+Message-ID: <20170206094903.7fe64817@t450s.home>
+In-Reply-To: <5f0bafdc-6bb8-d936-e38c-5be92c46efc6@redhat.com>
+References: <1485880595-16376-1-git-send-email-thuth@redhat.com>
+	<20170131103044.66316989@t450s.home>
+	<5f0bafdc-6bb8-d936-e38c-5be92c46efc6@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <CAFEAcA9ybZzMPKMUUyrALGq4ufwBbWPFAtZEctHmA1CKnnpLgQ@mail.gmail.com>
-User-Agent: Mutt/1.5.24 (2015-08-30)
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.28]);
+	Mon, 06 Feb 2017 16:49:05 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2a00:1450:4010:c07::243
-Subject: Re: [Qemu-arm] [PATCH v2 2/2] target/arm: A32,
- T32: Create Instruction Syndromes for Data Aborts
+	[fuzzy]
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-arm] [PATCH] hw/vfio: Add CONFIG switches for
+ calxeda-xgmac and amd-xgbe
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -87,43 +67,99 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
-	"patches@linaro.org" <patches@linaro.org>
+Cc: Eric Auger <eric.auger@redhat.com>, qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 4+qoW9mtfeb5
+X-TUID: u4YjMtTqy8d/
 
-On Mon, Feb 06, 2017 at 02:53:49PM +0000, Peter Maydell wrote:
-> On 4 February 2017 at 14:31, Edgar E. Iglesias <edgar.iglesias@gmail.com> wrote:
-> > On Fri, Feb 03, 2017 at 05:48:55PM +0000, Peter Maydell wrote:
-> >> Add support for generating the ISS (Instruction Specific Syndrome)
-> >> for Data Abort exceptions taken from AArch32. These syndromes are
-> >> used by hypervisors for example to trap and emulate memory accesses.
+On Tue, 31 Jan 2017 19:51:02 +0100
+Thomas Huth <thuth@redhat.com> wrote:
+
+> On 31.01.2017 18:30, Alex Williamson wrote:
+> > On Tue, 31 Jan 2017 17:36:35 +0100
+> > Thomas Huth <thuth@redhat.com> wrote:
+> >   
+> >> Both devices seem to be specific to the ARM platform. It's confusing
+> >> for the users if they show up on other target architectures, too
+> >> (e.g. when the user runs QEMU with "-device ?" to get a list of
+> >> supported devices). Thus let's introduce proper configuration switches
+> >> so that the devices are only compiled and included when they are
+> >> really required.
 > >>
-> >> This is the equivalent for AArch32 guests of the work done for AArch64
-> >> guests in commit aaa1f954d4cab243.
+> >> Signed-off-by: Thomas Huth <thuth@redhat.com>
+> >> ---
+> >>  default-configs/arm-softmmu.mak | 2 ++
+> >>  hw/vfio/Makefile.objs           | 4 ++--
+> >>  2 files changed, 4 insertions(+), 2 deletions(-)
+> >>
+> >> diff --git a/default-configs/arm-softmmu.mak b/default-configs/arm-softmmu.mak
+> >> index 6de3e16..a78be51 100644
+> >> --- a/default-configs/arm-softmmu.mak
+> >> +++ b/default-configs/arm-softmmu.mak
+> >> @@ -94,6 +94,8 @@ CONFIG_VERSATILE_PCI=y
+> >>  CONFIG_VERSATILE_I2C=y
+> >>  
+> >>  CONFIG_PCI_GENERIC=y
+> >> +CONFIG_VFIO_XGMAC=y
+> >> +CONFIG_VFIO_AMD_XGBE=y
+> >>  
+> >>  CONFIG_SDHCI=y
+> >>  CONFIG_INTEGRATOR_DEBUG=y
+> >> diff --git a/hw/vfio/Makefile.objs b/hw/vfio/Makefile.objs
+> >> index c25e32b..05e7fbb 100644
+> >> --- a/hw/vfio/Makefile.objs
+> >> +++ b/hw/vfio/Makefile.objs
+> >> @@ -2,7 +2,7 @@ ifeq ($(CONFIG_LINUX), y)
+> >>  obj-$(CONFIG_SOFTMMU) += common.o
+> >>  obj-$(CONFIG_PCI) += pci.o pci-quirks.o
+> >>  obj-$(CONFIG_SOFTMMU) += platform.o
+> >> -obj-$(CONFIG_SOFTMMU) += calxeda-xgmac.o
+> >> -obj-$(CONFIG_SOFTMMU) += amd-xgbe.o
+> >> +obj-$(CONFIG_VFIO_XGMAC) += calxeda-xgmac.o
+> >> +obj-$(CONFIG_VFIO_AMD_XGBE) += amd-xgbe.o
+> >>  obj-$(CONFIG_SOFTMMU) += spapr.o
+> >>  endif  
+> > 
+> > I can't say that I fully agree that this is a good idea.  How many
+> > users are actually confused by this, versus the benefit of ensuring
+> > that it builds across all architectures?  
 > 
-> >> +static void disas_set_insn_syndrome(DisasContext *s, uint32_t syn)
-> >> +{
-> >> +    /* We don't need to save all of the syndrome so we mask and shift
-> >> +     * out uneeded bits to help the sleb128 encoder do a better job.
-> >> +     */
-> >> +    syn &= ARM_INSN_START_WORD2_MASK;
-> >> +    syn >>= ARM_INSN_START_WORD2_SHIFT;
-> >> +
-> >> +    /* We check and clear insn_start_idx to catch multiple updates.  */
-> >> +    assert(s->insn_start_idx != 0);
-> >> +    tcg_set_insn_param(s->insn_start_idx, 2, syn);
-> >> +    s->insn_start_idx = 0;
-> >> +}
-> >
-> > Could we move this into translate.h and share it with translate-a64.c?
+> Why do you want this to be build on all architectures? The devices are
+> only available on ARM as far as I know, so I can't see any real use for
+> this. And it slows down compilation time, too, if we compile it
+> everywhere (well, a little bit at least ;-)).
 > 
-> Sure; I'll just squash that change into this patch and put the
-> results into the target-arm queue, rather than burdening the
-> list with a v3 respin, if that's OK.
+> > Do we want to make platform also specific to ARM  
+> 
+> I did not notice that one yet, since it does not show up in the "-device
+> ?" help text (it's apparently an abstract device), so it also does not
+> really bother me.
+> But if I remove the device from the build, I get a funny error when I
+> try to view the device help text:
+> 
+> $ qemu-system-tricore -device ?
+> **
+> ERROR:/home/thuth/devel/qemu/qom/object.c:168:type_get_parent: assertion
+> failed: (type->parent_type != NULL)
+> Aborted (core dumped)
+> 
+> So I guess we should rather keep that one for now.
+> 
+> > and spapr specific to ppc64?  
+> 
+> I already tried that (with the already existing CONFIG_PSERIES), but the
+> code in common.c depends on the code in spapr.c, so it can't be removed
+> without reworking the code quite a bit. But spapr.c also does not really
+> bug me, since it does not register a type that shows up in the "-device
+> ?" help text, so I think it is not worth the effort here.
 
-Sounds good, thanks!
+Ok, I guess my only real objection is that I need to build multiple
+targets in order to compile test all of vfio rather than getting that
+for free with only building x86_64 for development and only building the
+full target list prior to a submitting a pull request.  It's a bit
+selfish to impose those extra files on other targets for time and space
+reasons, so I guess I don't have any substantive objection to this.
+I'll queue it for my next pull request.  Thanks,
 
-Cheers,
-Edgar
+Alex

@@ -1,98 +1,126 @@
-Received: by 10.25.77.65 with SMTP id a62csp2047194lfb;
-        Mon, 6 Feb 2017 23:42:54 -0800 (PST)
-X-Received: by 10.55.162.138 with SMTP id l132mr12804720qke.204.1486453374717;
-        Mon, 06 Feb 2017 23:42:54 -0800 (PST)
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 10.25.77.65 with SMTP id a62csp2156877lfb;
+        Tue, 7 Feb 2017 05:00:55 -0800 (PST)
+X-Received: by 10.200.44.243 with SMTP id 48mr13291813qtx.262.1486472455751;
+        Tue, 07 Feb 2017 05:00:55 -0800 (PST)
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id p130si2372215qka.10.2017.02.06.23.42.54
+        by mx.google.com with ESMTPS id g5si2876543qtf.86.2017.02.07.05.00.55
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 06 Feb 2017 23:42:54 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Tue, 07 Feb 2017 05:00:55 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:52445 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:53608 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1cb0QO-0002HA-9P
-	for alex.bennee@linaro.org; Tue, 07 Feb 2017 02:42:52 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:50785)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1cb5O9-0003aM-1r
+	for alex.bennee@linaro.org; Tue, 07 Feb 2017 08:00:53 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:44208)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <kraxel@redhat.com>) id 1cb0QJ-0002Gt-8d
-	for qemu-arm@nongnu.org; Tue, 07 Feb 2017 02:42:48 -0500
+	(envelope-from <thuth@redhat.com>) id 1cb5NJ-0003X7-GS
+	for qemu-devel@nongnu.org; Tue, 07 Feb 2017 08:00:05 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <kraxel@redhat.com>) id 1cb0QG-0004Ne-5o
-	for qemu-arm@nongnu.org; Tue, 07 Feb 2017 02:42:47 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:51302)
+	(envelope-from <thuth@redhat.com>) id 1cb5NI-0002Zm-Mj
+	for qemu-devel@nongnu.org; Tue, 07 Feb 2017 08:00:01 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:41668)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <kraxel@redhat.com>) id 1cb0QG-0004Mn-0P
-	for qemu-arm@nongnu.org; Tue, 07 Feb 2017 02:42:44 -0500
-Received: from smtp.corp.redhat.com (int-mx16.intmail.prod.int.phx2.redhat.com
-	[10.5.11.28])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(Exim 4.71) (envelope-from <thuth@redhat.com>)
+	id 1cb5NE-0002UL-ED; Tue, 07 Feb 2017 07:59:56 -0500
+Received: from int-mx09.intmail.prod.int.phx2.redhat.com
+	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id DB7E0624A9;
-	Tue,  7 Feb 2017 07:42:43 +0000 (UTC)
-Received: from nilsson.home.kraxel.org (ovpn-116-105.ams2.redhat.com
-	[10.36.116.105])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 7D80516A73;
-	Tue,  7 Feb 2017 07:42:43 +0000 (UTC)
-Received: by nilsson.home.kraxel.org (Postfix, from userid 500)
-	id 8F19C8084E; Tue,  7 Feb 2017 08:42:40 +0100 (CET)
-Message-ID: <1486453360.24589.14.camel@redhat.com>
-From: Gerd Hoffmann <kraxel@redhat.com>
-To: Icenowy Zheng <icenowy@aosc.xyz>
-Date: Tue, 07 Feb 2017 08:42:40 +0100
-In-Reply-To: <20170207000824.8L0ShHJx@smtp1m.mail.yandex.net>
-References: <20170207000824.8L0ShHJx@smtp1m.mail.yandex.net>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Mime-Version: 1.0
-X-Scanned-By: MIMEDefang 2.74 on 10.5.11.28
+	by mx1.redhat.com (Postfix) with ESMTPS id AECC38047F;
+	Tue,  7 Feb 2017 12:59:55 +0000 (UTC)
+Received: from [10.36.116.128] (ovpn-116-128.ams2.redhat.com [10.36.116.128])
+	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with
+	ESMTP id v17CxqcM021853
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=NO);
+	Tue, 7 Feb 2017 07:59:54 -0500
+To: Sam Bobroff <sam.bobroff@au1.ibm.com>, qemu-devel@nongnu.org
+References: <cover.1486436185.git.sam.bobroff@au1.ibm.com>
+	<ebae23e8707659640095e8795fbde5c178b97adf.1486436186.git.sam.bobroff@au1.ibm.com>
+From: Thomas Huth <thuth@redhat.com>
+Message-ID: <f2441e2a-8380-1304-3e86-c1a23ec97849@redhat.com>
+Date: Tue, 7 Feb 2017 13:59:52 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
+	Thunderbird/45.6.0
+MIME-Version: 1.0
+In-Reply-To: <ebae23e8707659640095e8795fbde5c178b97adf.1486436186.git.sam.bobroff@au1.ibm.com>
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.39]);
-	Tue, 07 Feb 2017 07:42:44 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.28]);
+	Tue, 07 Feb 2017 12:59:56 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [PATCH 1/2] usb/ehci: Add SysBus EHCI device for
- Allwinner SoCs
-X-BeenThere: qemu-arm@nongnu.org
+Subject: Re: [Qemu-devel] [Qemu-ppc] [RFC PATCH 2/9] Update headers using
+ update-linux-headers.sh
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Beniamino Galvani <b.galvani@gmail.com>,
-	Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: c0BvWS7BP9aM
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: qemu-arm@nongnu.org, qemu-ppc@nongnu.org, david@gibson.dropbear.id.au
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 0Fka5WtOwezJ
 
-On Mo, 2017-01-30 at 21:59 +0800, Icenowy Zheng wrote:
-> 2017=E5=B9=B41=E6=9C=8830=E6=97=A5 16:19=E4=BA=8E Gerd Hoffmann <kraxel@r=
-edhat.com>=E5=86=99=E9=81=93=EF=BC=9A
-> >
-> > On So, 2017-01-29 at 09:00 +0800, Icenowy Zheng wrote:=20
-> > > It uses a register map like the one in Exynos SoCs.=20
-> > >=20
-> > > Signed-off-by: Icenowy Zheng <icenowy@aosc.xyz>=20
-> >
-> > I guess this goes through the arm queue?=20
->=20
-> I don't know about the QEMU development process, sorry.
+On 07.02.2017 03:56, Sam Bobroff wrote:
+> This provides some new definitions needed by ISA 3.00 guests.
+> 
+> It is a large change because this is the first import since
+> some kernel header files have become autogenerated.
+> 
+> Note: update-linux-headers.sh currently generates a change that
+> (incorrectly) removes virtio_mmio.h and the change has been manually
+> adjusted to prevent that.
+> 
+> Signed-off-by: Sam Bobroff <sam.bobroff@au1.ibm.com>
+> ---
+>  include/standard-headers/linux/input-event-codes.h |   2 +-
+>  include/standard-headers/linux/pci_regs.h          |   8 +
+>  include/standard-headers/linux/virtio_ids.h        |   1 +
+>  linux-headers/asm-arm/kvm.h                        |   2 +
+>  linux-headers/asm-arm/unistd.h                     | 419 +--------------------
+>  linux-headers/asm-powerpc/kvm.h                    |  25 ++
+>  linux-headers/asm-powerpc/unistd.h                 |   1 +
+>  linux-headers/asm-x86/kvm_para.h                   |   4 +-
+>  linux-headers/linux/kvm.h                          |  11 +-
+>  linux-headers/linux/vfio.h                         |  10 +
+>  10 files changed, 63 insertions(+), 420 deletions(-)
+[...]
+> diff --git a/linux-headers/asm-arm/unistd.h b/linux-headers/asm-arm/unistd.h
+> index ceb5450c81..155571b874 100644
+> --- a/linux-headers/asm-arm/unistd.h
+> +++ b/linux-headers/asm-arm/unistd.h
+> @@ -17,409 +17,14 @@
+>  
+>  #if defined(__thumb__) || defined(__ARM_EABI__)
+>  #define __NR_SYSCALL_BASE	0
+> +#include <asm/unistd-eabi.h>
+>  #else
+>  #define __NR_SYSCALL_BASE	__NR_OABI_SYSCALL_BASE
+> +#include <asm/unistd-oabi.h>
+>  #endif
+>  
+> -/*
+> - * This file contains the system call numbers.
+> - */
+[...]
 
-The question was for Peter who maintains the arm queue.
+Looks like the contents of asm-arm/unistd.h has been moved to two new
+files, unistd-eabi.h and unistd-oabi.h, but they are not part of your
+patch. I guess update-linux-headers.sh needs a fix for that?
 
-And as patch 2/2 (which clearly belongs to arm) depends on 1/2 it is
-easier to just take both through the same queue even though 2/2 is a usb
-patch.
-
-cheers,
-  Gerd
+ Thomas
 

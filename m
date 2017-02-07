@@ -1,141 +1,121 @@
-Received: by 10.25.77.65 with SMTP id a62csp2270219lfb;
-        Tue, 7 Feb 2017 09:17:52 -0800 (PST)
-X-Received: by 10.28.143.204 with SMTP id r195mr13581107wmd.32.1486487872362;
-        Tue, 07 Feb 2017 09:17:52 -0800 (PST)
-Return-Path: <peter.maydell@linaro.org>
-Received: from mail-wm0-x234.google.com (mail-wm0-x234.google.com. [2a00:1450:400c:c09::234])
-        by mx.google.com with ESMTPS id c63si12915167wmf.132.2017.02.07.09.17.52
+Received: by 10.25.77.65 with SMTP id a62csp2370914lfb;
+        Tue, 7 Feb 2017 13:49:57 -0800 (PST)
+X-Received: by 10.55.210.135 with SMTP id f129mr16229118qkj.184.1486504197409;
+        Tue, 07 Feb 2017 13:49:57 -0800 (PST)
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
+        by mx.google.com with ESMTPS id o16si3966444qto.270.2017.02.07.13.49.56
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 07 Feb 2017 09:17:52 -0800 (PST)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 2a00:1450:400c:c09::234 as permitted sender) client-ip=2a00:1450:400c:c09::234;
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Tue, 07 Feb 2017 13:49:57 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 2a00:1450:400c:c09::234 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: by mail-wm0-x234.google.com with SMTP id r141so160661028wmg.1
-        for <alex.bennee@linaro.org>; Tue, 07 Feb 2017 09:17:52 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-         :cc:content-transfer-encoding;
-        bh=5cBjCyYMmGU1WcwNWDUhfGNkX0iSPRA9zfYZ39bpanE=;
-        b=cX48cnFUmfNgr5KvmwNJQooPjgH9e6XpeUI5gTi9FIrKTBT4E40ll+kMwv87yAf4Da
-         nnRcJcAJCsX4SQunOsfeCfEOO7HuHp08wQKy2IrEYk5FlvUEJHiBS0NiUcTpmp5WpGVN
-         T1iQoOIMmM1EvKQ1CO+hxejmWun+oWd/T4Fxg=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-         :message-id:subject:to:cc:content-transfer-encoding;
-        bh=5cBjCyYMmGU1WcwNWDUhfGNkX0iSPRA9zfYZ39bpanE=;
-        b=mm0E+iJqaotTevmRLLvx4VJphj6kvMndJ+IdC/kxByKEVjvtE9lmXyU/w+zydV3HsH
-         7PkYgfgUS3eV0KdQHvsJARMnZNzvHCUEYZzmw3wkXdftWtxEwmAat9v/9EIbiqa2Iizx
-         Ibcj4X6F8pHxaxh/JXeaMVZ+9LAs15kzWMprz/nrmyAjJ80cf8ELBlvIrG7JWstWwwcW
-         I1o0eHK9TKYw5l3EGhEn5+2AIldeh9ZOCSREmJoJZFRmsJoo5hBU5zpslC55CdRteJQ7
-         gbd6lRcwvHeTgWwhWjS21/vMmEHKxlyeAmEcDOOV0TU08ots8dAOQHIxHK/NhzVUdV1V
-         o12Q==
-X-Gm-Message-State: AIkVDXImK1HBLuhhwyw1QBlbO1sO/jEIbMfRqFQ1iCbhH6FRQNpEUpymq/PDKgZUx0jHym24PnJbxmyB9GOJQrfjUiI=
-X-Received: by 10.223.142.131 with SMTP id q3mr14692475wrb.195.1486487869956;
- Tue, 07 Feb 2017 09:17:49 -0800 (PST)
-MIME-Version: 1.0
-Received: by 10.223.145.69 with HTTP; Tue, 7 Feb 2017 09:17:29 -0800 (PST)
-In-Reply-To: <877f52x7sx.fsf@linaro.org>
-References: <20170206153113.27729-1-alex.bennee@linaro.org>
- <20170206153113.27729-21-alex.bennee@linaro.org> <CAFEAcA9YEo2+_9jc4V_aEds_tQV-f5pU+W49zUs1Ls0JOiQTLg@mail.gmail.com>
- <877f52x7sx.fsf@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 7 Feb 2017 17:17:29 +0000
-Message-ID: <CAFEAcA86k-q+wG2e_tzD_0DcoywBCe39jb0nr1peC0j=1jkSPQ@mail.gmail.com>
-Subject: Re: [PATCH v10 20/23] target-arm/powerctl: defer cpu reset work to
- CPU context
-To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
-Cc: Richard Henderson <rth@twiddle.net>, MTTCG Devel <mttcg@listserver.greensocs.com>, 
-	QEMU Developers <qemu-devel@nongnu.org>, =?UTF-8?B?S09OUkFEIEZyw6lkw6lyaWM=?= <fred.konrad@greensocs.com>, 
-	Alvise Rigo <a.rigo@virtualopensystems.com>, "Emilio G. Cota" <cota@braap.org>, 
-	Pranith Kumar <bobby.prani@gmail.com>, Nikunj A Dadhania <nikunj@linux.vnet.ibm.com>, 
-	Mark Burton <mark.burton@greensocs.com>, Paolo Bonzini <pbonzini@redhat.com>, 
-	Jan Kiszka <jan.kiszka@siemens.com>, Fedorov Sergey <serge.fdrv@gmail.com>, 
-	Bamvor Zhang Jian <bamvor.zhangjian@linaro.org>, "open list:ARM" <qemu-arm@nongnu.org>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-X-TUID: 4YTfjgpLDWUY
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:56526 helo=lists.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1cbDe6-00039k-Pj
+	for alex.bennee@linaro.org; Tue, 07 Feb 2017 16:49:54 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:48853)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <wei@redhat.com>) id 1cbDdn-0002xU-GX
+	for qemu-arm@nongnu.org; Tue, 07 Feb 2017 16:49:36 -0500
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+	(envelope-from <wei@redhat.com>) id 1cbDdk-0007Xf-Vr
+	for qemu-arm@nongnu.org; Tue, 07 Feb 2017 16:49:35 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:56016)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <wei@redhat.com>)
+	id 1cbDdk-0007XE-Qh; Tue, 07 Feb 2017 16:49:32 -0500
+Received: from int-mx09.intmail.prod.int.phx2.redhat.com
+	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 24C35C05AA42;
+	Tue,  7 Feb 2017 21:49:32 +0000 (UTC)
+Received: from apm-mustang-ev3-30.khw.lab.eng.bos.redhat.com
+	(apm-mustang-ev3-30.khw.lab.eng.bos.redhat.com [10.16.184.124])
+	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id v17LnVCF006452; Tue, 7 Feb 2017 16:49:31 -0500
+From: Wei Huang <wei@redhat.com>
+To: qemu-devel@nongnu.org
+Date: Tue,  7 Feb 2017 16:49:27 -0500
+Message-Id: <1486504171-26807-1-git-send-email-wei@redhat.com>
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.32]);
+	Tue, 07 Feb 2017 21:49:32 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.132.183.28
+Subject: [Qemu-arm] [PATCH V3 0/4] Add vPMU vPMU support under TCG mode
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.21
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: s44xtwOvqKrx
 
-On 7 February 2017 at 16:52, Alex Benn=C3=A9e <alex.bennee@linaro.org> wrot=
-e:
->
-> Peter Maydell <peter.maydell@linaro.org> writes:
->> I find this too hard to reason about :-(  We store the current
->> CPU state in not one but two CPU structure fields, and then
->> we check and manipulate it not by doing "take lock; access
->> and update; drop lock" but by doing successive atomic
->> operations on the various different flags. This seems unnecessarily
->> tricky, and the patch doesn't provide any documentation about
->> what's going on and what the constraints are to avoid races.
->
-> I was trying to avoid changing the powered_off state to a new variable
-> (maybe pcsi_power_state?) because it meant I didn't have to touch the
-> kvm code that treated powered_off as a simple bool. However I can unify
-> the state into one variable if you wish.
+QEMU has implemented cycle count support for guest VM under TCG mode.
+But this feature is not complete. In fact using perf inside a
+64-bit Linux guest VM (under TCG) can cause the following kernel panic
+because some PMU registers are not implemented.
 
-Changing it also makes migration compatibility awkward.
-(Speaking of which, your new flag needs a migration subsection
-and appropriate needed function to only transfer it if it's set.)
+[  329.445970] [<fffffe000009e600>] armv8pmu_enable_event+0x58/0x8c
+[  329.446713] [<fffffe0000621e74>] armpmu_start+0x4c/0x74
 
-> As for locking do we have a handy per-CPU lock already or would it be
-> enough to use the BQL for this? Although that may be problematic as the
-> cpu_reset/on can come from two places (the initial realization and the
-> runtime switching of power state.)
+This patchset solves the problem by adding support for missing vPMU
+registers. Basic perf test can work (both ACPI and DT) now under TCG
+by applying this patchset.
 
-Nobody's going to put powering CPUs up and down in their critical
-path, so I think the BQL would be fine.
+address@hidden ~]# perf stat ls
+ Performance counter stats for 'ls':
 
->>> -    /* Start the new CPU at the requested address */
->>> -    cpu_set_pc(target_cpu_state, entry);
->>> +    /* To avoid racing with a CPU we are just kicking off we do the
->>> +     * final bit of preparation for the work in the target CPUs
->>> +     * context.
->>> +     */
->>> +    info =3D g_new(struct cpu_on_info, 1);
->>> +    info->entry =3D entry;
->>> +    info->context_id =3D context_id;
->>> +    info->target_el =3D target_el;
->>> +    info->target_aa64 =3D target_aa64;
->>>
->>> -    qemu_cpu_kick(target_cpu_state);
->>> +    async_run_on_cpu(target_cpu_state, arm_set_cpu_on_async_work,
->>> +                     RUN_ON_CPU_HOST_PTR(info));
->>>
->>>      /* We are good to go */
->>>      return QEMU_ARM_POWERCTL_RET_SUCCESS;
->>>  }
->>
->>> @@ -221,8 +284,9 @@ int arm_reset_cpu(uint64_t cpuid)
->>>          return QEMU_ARM_POWERCTL_IS_OFF;
->>>      }
->>>
->>> -    /* Reset the cpu */
->>> -    cpu_reset(target_cpu_state);
->>> +    /* Queue work to run under the target vCPUs context */
->>> +    async_run_on_cpu(target_cpu_state, arm_reset_cpu_async_work,
->>> +                     RUN_ON_CPU_NULL);
->>
->> The imx6 datasheet says that the RST bit in the SCR register
->> is set by the guest to trigger a reset, and then the bit
->> remains set until the reset has finished (at which point it
->> self-clears). At the moment the imx6_src.c code does this:
->>
->>         if (EXTRACT(change_mask, CORE0_RST)) {
->>             arm_reset_cpu(0);
->>             clear_bit(CORE0_RST_SHIFT, &current_value);
->>         }
->>
->> ie it assumes that arm_reset_cpu() is synchronous.
->
-> Well for this case the imx6 could queue the "clear_bit" function as
-> async work and then it will be correctly reported after the reset has
-> occurred.
+        226.740256      task-clock (msec)         #    0.312 CPUs utilized    
+                76      context-switches          #    0.335 K/sec
+                 0      cpu-migrations            #    0.000 K/sec
+                64      page-faults               #    0.282 K/sec
+       186,031,410      cycles                    #    0.820 GHz      (36.40%)
+   <not supported>      stalled-cycles-frontend
+   <not supported>      stalled-cycles-backend
+     <not counted>      instructions               (0.00%)
+   <not supported>      branches
+     <not counted>      branch-misses              (0.00%)
 
-It could, but as of this patchset it doesn't...
+V2->V3:
+ * Remove PMXEVCNTR_EL0 support
+ * Add read access support for PMXEVTYPER and change the CONSTRAINED
+   UNPREDICTABLE behavior of PMXEVTYPER to RAZ/WI.
 
-thanks
--- PMM
+V1->V2:
+  * Change most PMU registers to 64bit and the behavior of PMXEVTYPER
+  * Add support for PMXEVCNTR_EL0
+  * Misc fixes (DT, ID_AA64DFR0_EL1, ...) under TCG mode
+
+Thanks,
+-Wei
+
+Wei Huang (4):
+  target-arm: Add support for PMU register PMSELR_EL0
+  target-arm: Add support for AArch64 PMU register PMXEVTYPER_EL0
+  target-arm: Add support for PMU register PMINTENSET_EL1
+  target-arm: Enable vPMU support under TCG mode
+
+ hw/arm/virt.c       |  2 +-
+ target/arm/cpu.c    |  2 +-
+ target/arm/cpu.h    |  4 +--
+ target/arm/helper.c | 72 ++++++++++++++++++++++++++++++++++++++++-------------
+ 4 files changed, 59 insertions(+), 21 deletions(-)
+
+-- 
+1.8.3.1
+

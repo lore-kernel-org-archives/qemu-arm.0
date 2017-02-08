@@ -1,57 +1,46 @@
-Received: by 10.25.77.65 with SMTP id a62csp2371338lfb;
-        Tue, 7 Feb 2017 13:51:11 -0800 (PST)
-X-Received: by 10.200.57.27 with SMTP id s27mr15495174qtb.230.1486504271776;
-        Tue, 07 Feb 2017 13:51:11 -0800 (PST)
+Received: by 10.25.77.65 with SMTP id a62csp2653390lfb;
+        Wed, 8 Feb 2017 05:31:53 -0800 (PST)
+X-Received: by 10.200.40.113 with SMTP id 46mr18725868qtr.167.1486560710469;
+        Wed, 08 Feb 2017 05:31:50 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id z65si3961895qke.324.2017.02.07.13.51.11
+        by mx.google.com with ESMTPS id s65si5597282qtd.192.2017.02.08.05.31.49
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 07 Feb 2017 13:51:11 -0800 (PST)
+        Wed, 08 Feb 2017 05:31:50 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:56542 helo=lists.gnu.org)
+Received: from localhost ([::1]:59511 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1cbDfJ-0004AT-79
-	for alex.bennee@linaro.org; Tue, 07 Feb 2017 16:51:09 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:48859)
+	id 1cbSLb-0006Zq-M0
+	for alex.bennee@linaro.org; Wed, 08 Feb 2017 08:31:47 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:32933)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <wei@redhat.com>) id 1cbDdn-0002xb-LQ
-	for qemu-arm@nongnu.org; Tue, 07 Feb 2017 16:49:36 -0500
+	(envelope-from <agraf@suse.de>) id 1cbSLX-0006Xu-9L
+	for qemu-arm@nongnu.org; Wed, 08 Feb 2017 08:31:44 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <wei@redhat.com>) id 1cbDdm-0007ZQ-IO
-	for qemu-arm@nongnu.org; Tue, 07 Feb 2017 16:49:35 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:56024)
+	(envelope-from <agraf@suse.de>) id 1cbSLT-0003ut-1Q
+	for qemu-arm@nongnu.org; Wed, 08 Feb 2017 08:31:43 -0500
+Received: from mx2.suse.de ([195.135.220.15]:35656)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <wei@redhat.com>)
-	id 1cbDdm-0007YP-Cm; Tue, 07 Feb 2017 16:49:34 -0500
-Received: from int-mx09.intmail.prod.int.phx2.redhat.com
-	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 74018C05AA42;
-	Tue,  7 Feb 2017 21:49:34 +0000 (UTC)
-Received: from apm-mustang-ev3-30.khw.lab.eng.bos.redhat.com
-	(apm-mustang-ev3-30.khw.lab.eng.bos.redhat.com [10.16.184.124])
-	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id v17LnVCJ006452; Tue, 7 Feb 2017 16:49:34 -0500
-From: Wei Huang <wei@redhat.com>
+	(Exim 4.71) (envelope-from <agraf@suse.de>)
+	id 1cbSLS-0003tO-RV; Wed, 08 Feb 2017 08:31:38 -0500
+X-Virus-Scanned: by amavisd-new at test-mx.suse.de
+Received: from relay2.suse.de (charybdis-ext.suse.de [195.135.220.254])
+	by mx2.suse.de (Postfix) with ESMTP id AD110AAC7;
+	Wed,  8 Feb 2017 13:31:36 +0000 (UTC)
+From: Alexander Graf <agraf@suse.de>
 To: qemu-devel@nongnu.org
-Date: Tue,  7 Feb 2017 16:49:31 -0500
-Message-Id: <1486504171-26807-5-git-send-email-wei@redhat.com>
-In-Reply-To: <1486504171-26807-1-git-send-email-wei@redhat.com>
-References: <1486504171-26807-1-git-send-email-wei@redhat.com>
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.32]);
-	Tue, 07 Feb 2017 21:49:34 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: [Qemu-arm] [PATCH V3 4/4] target-arm: Enable vPMU support under TCG
- mode
+Date: Wed,  8 Feb 2017 14:31:52 +0100
+Message-Id: <1486560712-44171-1-git-send-email-agraf@suse.de>
+X-Mailer: git-send-email 1.8.5.6
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x (no
+	timestamps) [generic] [fuzzy]
+X-Received-From: 195.135.220.15
+Subject: [Qemu-arm] [PATCH] target-arm: Declare virtio-mmio as dma-coherent
+ in dt
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -63,69 +52,53 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org
+Cc: qemu-arm@nongnu.org, mst@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: xtCMmfH/gsxB
+X-TUID: yq1OxlK3GCNS
 
-This patch contains several fixes to enable vPMU under TCG mode. It
-first removes the checking of kvm_enabled() while unsetting
-ARM_FEATURE_PMU. With it, the .pmu option can be used to turn on/off vPMU
-under TCG mode. Secondly the PMU node of DT table is now created under TCG.
-The last fix is to disable the masking of PMUver field of ID_AA64DFR0_EL1.
+QEMU emulated hardware is always dma coherent with its guest. We do
+annotate that correctly on the PCI host controller, but left out
+virtio-mmio.
 
-Signed-off-by: Wei Huang <wei@redhat.com>
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+Recent kernels have started to interpret that flag rather than take
+dma coherency as granted with virtio-mmio. While that is considered
+a kernel bug, as it breaks previously working systems, it showed that
+our dt description is incomplete.
+
+This patch adds the respective marker that allows guest OSs to evaluate
+that our virtio-mmio devices are indeed cache coherent.
+
+Signed-off-by: Alexander Graf <agraf@suse.de>
 ---
- hw/arm/virt.c       | 2 +-
- target/arm/cpu.c    | 2 +-
- target/arm/helper.c | 7 +------
- 3 files changed, 3 insertions(+), 8 deletions(-)
+ hw/arm/vexpress.c | 1 +
+ hw/arm/virt.c     | 1 +
+ 2 files changed, 2 insertions(+)
 
+diff --git a/hw/arm/vexpress.c b/hw/arm/vexpress.c
+index 58760f4..e057568 100644
+--- a/hw/arm/vexpress.c
++++ b/hw/arm/vexpress.c
+@@ -452,6 +452,7 @@ static int add_virtio_mmio_node(void *fdt, uint32_t acells, uint32_t scells,
+                                        acells, addr, scells, size);
+     qemu_fdt_setprop_cells(fdt, nodename, "interrupt-parent", intc);
+     qemu_fdt_setprop_cells(fdt, nodename, "interrupts", 0, irq, 1);
++    qemu_fdt_setprop(fdt, nodename, "dma-coherent", NULL, 0);
+     g_free(nodename);
+     if (rc) {
+         return -1;
 diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index 1f216cf..8eef143 100644
+index 1f216cf..14881fa 100644
 --- a/hw/arm/virt.c
 +++ b/hw/arm/virt.c
-@@ -471,7 +471,7 @@ static void fdt_add_pmu_nodes(const VirtMachineState *vms)
-     CPU_FOREACH(cpu) {
-         armcpu = ARM_CPU(cpu);
-         if (!arm_feature(&armcpu->env, ARM_FEATURE_PMU) ||
--            !kvm_arm_pmu_create(cpu, PPI(VIRTUAL_PMU_IRQ))) {
-+            (kvm_enabled() && !kvm_arm_pmu_create(cpu, PPI(VIRTUAL_PMU_IRQ)))) {
-             return;
-         }
+@@ -797,6 +797,7 @@ static void create_virtio_devices(const VirtMachineState *vms, qemu_irq *pic)
+         qemu_fdt_setprop_cells(vms->fdt, nodename, "interrupts",
+                                GIC_FDT_IRQ_TYPE_SPI, irq,
+                                GIC_FDT_IRQ_FLAGS_EDGE_LO_HI);
++        qemu_fdt_setprop(vms->fdt, nodename, "dma-coherent", NULL, 0);
+         g_free(nodename);
      }
-diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-index e9f10f7..9a2bc8a 100644
---- a/target/arm/cpu.c
-+++ b/target/arm/cpu.c
-@@ -745,7 +745,7 @@ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
-         unset_feature(env, ARM_FEATURE_EL2);
-     }
- 
--    if (!cpu->has_pmu || !kvm_enabled()) {
-+    if (!cpu->has_pmu) {
-         cpu->has_pmu = false;
-         unset_feature(env, ARM_FEATURE_PMU);
-     }
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index c4daa6e..d363d02 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -4633,12 +4633,7 @@ void register_cp_regs_for_features(ARMCPU *cpu)
-             { .name = "ID_AA64DFR0_EL1", .state = ARM_CP_STATE_AA64,
-               .opc0 = 3, .opc1 = 0, .crn = 0, .crm = 5, .opc2 = 0,
-               .access = PL1_R, .type = ARM_CP_CONST,
--              /* We mask out the PMUVer field, because we don't currently
--               * implement the PMU. Not advertising it prevents the guest
--               * from trying to use it and getting UNDEFs on registers we
--               * don't implement.
--               */
--              .resetvalue = cpu->id_aa64dfr0 & ~0xf00 },
-+              .resetvalue = cpu->id_aa64dfr0 },
-             { .name = "ID_AA64DFR1_EL1", .state = ARM_CP_STATE_AA64,
-               .opc0 = 3, .opc1 = 0, .crn = 0, .crm = 5, .opc2 = 1,
-               .access = PL1_R, .type = ARM_CP_CONST,
+ }
 -- 
-1.8.3.1
+2.10.0
 

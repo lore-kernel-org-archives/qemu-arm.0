@@ -1,57 +1,48 @@
-Received: by 10.25.77.65 with SMTP id a62csp300349lfb;
-        Thu, 9 Feb 2017 04:43:38 -0800 (PST)
-X-Received: by 10.55.148.71 with SMTP id w68mr2515468qkd.130.1486644218040;
-        Thu, 09 Feb 2017 04:43:38 -0800 (PST)
+Received: by 10.25.77.65 with SMTP id a62csp304569lfb;
+        Thu, 9 Feb 2017 04:53:28 -0800 (PST)
+X-Received: by 10.55.22.219 with SMTP id 88mr2493367qkw.283.1486644808535;
+        Thu, 09 Feb 2017 04:53:28 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id a23si7891021qkj.160.2017.02.09.04.43.37
+        by mx.google.com with ESMTPS id v144si7918991qka.79.2017.02.09.04.53.28
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 09 Feb 2017 04:43:38 -0800 (PST)
+        Thu, 09 Feb 2017 04:53:28 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:37360 helo=lists.gnu.org)
+Received: from localhost ([::1]:37420 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1cbo4V-0005Q0-H1
-	for alex.bennee@linaro.org; Thu, 09 Feb 2017 07:43:35 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:56414)
+	id 1cboE2-0002cD-7Z
+	for alex.bennee@linaro.org; Thu, 09 Feb 2017 07:53:26 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:59135)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <agraf@suse.de>) id 1cbo4Q-0005Pr-K9
-	for qemu-arm@nongnu.org; Thu, 09 Feb 2017 07:43:31 -0500
+	(envelope-from <agraf@suse.de>) id 1cboDx-0002bI-7p
+	for qemu-arm@nongnu.org; Thu, 09 Feb 2017 07:53:22 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <agraf@suse.de>) id 1cbo4L-0004Op-Oz
-	for qemu-arm@nongnu.org; Thu, 09 Feb 2017 07:43:30 -0500
-Received: from mx2.suse.de ([195.135.220.15]:53884)
+	(envelope-from <agraf@suse.de>) id 1cboDs-0007Ob-DK
+	for qemu-arm@nongnu.org; Thu, 09 Feb 2017 07:53:21 -0500
+Received: from mx2.suse.de ([195.135.220.15]:54717)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <agraf@suse.de>)
-	id 1cbo4L-0004OW-Eo; Thu, 09 Feb 2017 07:43:25 -0500
+	id 1cboDs-0007O3-6y; Thu, 09 Feb 2017 07:53:16 -0500
 X-Virus-Scanned: by amavisd-new at test-mx.suse.de
 Received: from relay1.suse.de (charybdis-ext.suse.de [195.135.220.254])
-	by mx2.suse.de (Postfix) with ESMTP id 27F09AD67;
-	Thu,  9 Feb 2017 12:43:24 +0000 (UTC)
-To: Ard Biesheuvel <ard.biesheuvel@linaro.org>
-References: <1486560712-44171-1-git-send-email-agraf@suse.de>
-	<ef6b903b-5224-b4eb-1080-a3689fcec70a@redhat.com>
-	<f2f119bc-9c22-ad52-ff26-7d6ecc213a3c@suse.de>
-	<c1ff3829-b068-881a-1523-317ef0d31689@redhat.com>
-	<a5d47ced-527e-9fa5-9c31-5ffe7981b42c@suse.de>
-	<CAKv+Gu_mtaczzEP4SenfiQ8qB0M3mfmDvzHObSrCMwUYLuFgdQ@mail.gmail.com>
+	by mx2.suse.de (Postfix) with ESMTP id 0B92EADB2;
+	Thu,  9 Feb 2017 12:53:15 +0000 (UTC)
 From: Alexander Graf <agraf@suse.de>
-Message-ID: <b1462c75-eb29-e3ec-7c3d-f82e4d930af3@suse.de>
-Date: Thu, 9 Feb 2017 13:43:22 +0100
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.12; rv:45.0)
-	Gecko/20100101 Thunderbird/45.7.0
-MIME-Version: 1.0
-In-Reply-To: <CAKv+Gu_mtaczzEP4SenfiQ8qB0M3mfmDvzHObSrCMwUYLuFgdQ@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 7bit
+To: qemu-devel@nongnu.org
+Date: Thu,  9 Feb 2017 13:53:30 +0100
+Message-Id: <1486644810-33181-5-git-send-email-agraf@suse.de>
+X-Mailer: git-send-email 1.8.5.6
+In-Reply-To: <1486644810-33181-1-git-send-email-agraf@suse.de>
+References: <1486644810-33181-1-git-send-email-agraf@suse.de>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x (no
 	timestamps) [generic] [fuzzy]
 X-Received-From: 195.135.220.15
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH] target-arm: Declare virtio-mmio
- as dma-coherent in dt
+Subject: [Qemu-arm] [PATCH v2 4/4] hw/arm/virt: Declare fwcfg as dma cache
+ coherent in dt
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -63,112 +54,33 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Shannon Zhao <shannon.zhao@linaro.org>, qemu-arm <qemu-arm@nongnu.org>,
-	Laszlo Ersek <lersek@redhat.com>, QEMU Developers <qemu-devel@nongnu.org>,
-	"Michael S. Tsirkin" <mst@redhat.com>
+Cc: Ard Biesheuvel <ard.biesheuvel@linaro.org>, qemu-arm@nongnu.org,
+	Laszlo Ersek <lersek@redhat.com>,
+	Shannon Zhao <shannon.zhao@linaro.org>, mst@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: wRQeVBCsGllt
+X-TUID: 3acmlUUjokc0
 
+Fw-cfg recently learned how to directly access guest memory and does so in
+cache coherent fashion. Tell the guest about that fact when it's using DT.
 
+Signed-off-by: Alexander Graf <agraf@suse.de>
+---
+ hw/arm/virt.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-On 09/02/2017 13:30, Ard Biesheuvel wrote:
-> On 9 February 2017 at 12:24, Alexander Graf <agraf@suse.de> wrote:
->>
->>
->> On 08/02/2017 17:17, Laszlo Ersek wrote:
->>>
->>> On 02/08/17 17:12, Alexander Graf wrote:
->>>>
->>>> On 02/08/2017 04:29 PM, Laszlo Ersek wrote:
->>>>>
->>>>> CC'ing Ard and Shannon (I recall this property from earlier):
->>>>>
->>>>> On 02/08/17 14:31, Alexander Graf wrote:
->>>>>>
->>>>>> QEMU emulated hardware is always dma coherent with its guest. We do
->>>>>> annotate that correctly on the PCI host controller, but left out
->>>>>> virtio-mmio.
->>>>>
->>>>> I recommend to reference the following commit here:
->>>>>
->>>>> commit 5d636e21c44ecf982a22a7bc4ca89186079ac283
->>>>> Author: Ard Biesheuvel <ard.biesheuvel@linaro.org>
->>>>> Date:   Mon Jul 4 13:06:36 2016 +0100
->>>>>
->>>>>      hw/arm/virt: mark the PCIe host controller as DMA coherent in the
->>>>> DT
->>>>>           Since QEMU performs cacheable accesses to guest memory when
->>>>> doing DMA
->>>>>      as part of the implementation of emulated PCI devices, guest
->>>>> drivers
->>>>>      should use cacheable accesses as well when running under KVM.
->>>>> Since this
->>>>>      essentially means that emulated PCI devices are DMA coherent, set
->>>>> the
->>>>>      'dma-coherent' DT property on the PCIe host controller DT node.
->>>>>           This brings the DT description into line with the ACPI
->>>>> description,
->>>>>      which already marks the PCI bridge as cache coherent (see commit
->>>>>      bc64b96c984abf).
->>>>>           Signed-off-by: Ard Biesheuvel <ard.biesheuvel@linaro.org>
->>>>>      Message-id:
->>>>> 1467134090-5099-1-git-send-email-ard.biesheuvel@linaro.org
->>>>>      Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
->>>>>      Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
->>>>>
->>>>>> Recent kernels have started to interpret that flag rather than take
->>>>>> dma coherency as granted with virtio-mmio. While that is considered
->>>>>> a kernel bug, as it breaks previously working systems, it showed that
->>>>>> our dt description is incomplete.
->>>>>>
->>>>>> This patch adds the respective marker that allows guest OSs to evaluate
->>>>>> that our virtio-mmio devices are indeed cache coherent.
->>>>>
->>>>> As noted above, commit bc64b96c984a ("hw/arm/virt-acpi-build: _CCA
->>>>> attribute is compulsory", 2015-11-03) had done the same in the ACPI
->>>>> description of the PCIe host controller.
->>>>>
->>>>> Thus, do we need _CCA in the ACPI description of the virtio-mmio
->>>>> transports, to parallel the DT change? See the LNRO0005 device in
->>>>> acpi_dsdt_add_virtio().
->>>>
->>>>
->>>> Yes, we should also annotate it correctly in the DSDT. Today it's not a
->>>> deal breaker as Linux always assumes virtio-mmio to be dma coherent, but
->>>> it would make our platform description more accurate.
->>>>
->>>>> If that's the case, then I propose that either the patch please fix
->>>>> both DT and ACPI, or that at least we file a bug "somewhere", for
->>>>> adding _CCA in acpi_dsdt_add_virtio().
->>>>
->>>>
->>>> I agree that it should happen in the same patch (set). While I don't
->>>> care a lot about ACPI right now (since dt is preferred on upstream
->>>> kernels), I can take a look.
->>>
->>>
->>> Thank you!
->>
->>
->> Is ACPI boot supposed to work at all with 4.9?
->>
->
-> Yes, but only if you boot via UEFI
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index 14881fa..da9622f 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -929,6 +929,7 @@ static FWCfgState *create_fw_cfg(const VirtMachineState *vms, AddressSpace *as)
+                             "compatible", "qemu,fw-cfg-mmio");
+     qemu_fdt_setprop_sized_cells(vms->fdt, nodename, "reg",
+                                  2, base, 2, size);
++    qemu_fdt_setprop(vms->fdt, nodename, "dma-coherent", NULL, 0);
+     g_free(nodename);
+     return fw_cfg;
+ }
+-- 
+2.10.0
 
-I see, thanks. I guess there's no boot protocol to fetch ACPI tables 
-without UEFI.
-
-Interestingly enough, omitting the _CCA property didn't actually make 
-too much of a difference. The guest still seems to boot fine without it, 
-so it seems to treat virtio-mmio as cache coherent. Only if I explicitly 
-set _CCA as 0 it's broken the same as dt.
-
-If that's the case, it's scary if we have different defaults for dt and 
-acpi descriptions, no?
-
-Also, we should probably explicitly warn in the kernel every time we see 
-an ACPI device try to do DMA operations without _CCA set in its descriptor.
-
-
-Alex

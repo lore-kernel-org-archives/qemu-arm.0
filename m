@@ -1,66 +1,75 @@
-Received: by 10.25.77.65 with SMTP id a62csp198936lfb;
-        Wed, 8 Feb 2017 23:45:48 -0800 (PST)
-X-Received: by 10.55.184.3 with SMTP id i3mr1764485qkf.234.1486626348465;
-        Wed, 08 Feb 2017 23:45:48 -0800 (PST)
+Received: by 10.25.77.65 with SMTP id a62csp252824lfb;
+        Thu, 9 Feb 2017 02:40:11 -0800 (PST)
+X-Received: by 10.237.62.232 with SMTP id o37mr1965507qtf.188.1486636811114;
+        Thu, 09 Feb 2017 02:40:11 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id e126si7426121qkd.333.2017.02.08.23.45.47
+        by mx.google.com with ESMTPS id h62si7698386qkc.91.2017.02.09.02.40.10
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 08 Feb 2017 23:45:48 -0800 (PST)
+        Thu, 09 Feb 2017 02:40:11 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:36145 helo=lists.gnu.org)
+       dkim=fail header.i=@linaro.org;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:36880 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1cbjQH-0007s3-Mq
-	for alex.bennee@linaro.org; Thu, 09 Feb 2017 02:45:45 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:37721)
+	id 1cbm92-0006YO-IY
+	for alex.bennee@linaro.org; Thu, 09 Feb 2017 05:40:08 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:57379)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1cbjQC-0007ro-41
-	for qemu-arm@nongnu.org; Thu, 09 Feb 2017 02:45:41 -0500
+	(envelope-from <ard.biesheuvel@linaro.org>) id 1cbm4Z-0002Jw-3f
+	for qemu-arm@nongnu.org; Thu, 09 Feb 2017 05:35:31 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1cbjQ7-0003aY-5R
-	for qemu-arm@nongnu.org; Thu, 09 Feb 2017 02:45:40 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:44972)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <thuth@redhat.com>)
-	id 1cbjQ6-0003Zw-Ud; Thu, 09 Feb 2017 02:45:35 -0500
-Received: from int-mx13.intmail.prod.int.phx2.redhat.com
-	(int-mx13.intmail.prod.int.phx2.redhat.com [10.5.11.26])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id B46B17E9CE;
-	Thu,  9 Feb 2017 07:45:34 +0000 (UTC)
-Received: from [10.36.116.116] (ovpn-116-116.ams2.redhat.com [10.36.116.116])
-	by int-mx13.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with
-	ESMTP id v197jVbZ002407
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=NO);
-	Thu, 9 Feb 2017 02:45:33 -0500
-To: Sam Bobroff <sam.bobroff@au1.ibm.com>
-References: <cover.1486436185.git.sam.bobroff@au1.ibm.com>
-	<ebae23e8707659640095e8795fbde5c178b97adf.1486436186.git.sam.bobroff@au1.ibm.com>
-	<f2441e2a-8380-1304-3e86-c1a23ec97849@redhat.com>
-	<20170209045312.GA6905@tungsten.ozlabs.ibm.com>
-From: Thomas Huth <thuth@redhat.com>
-Message-ID: <1a288a08-a15e-2f19-77f6-69ebf569db63@redhat.com>
-Date: Thu, 9 Feb 2017 08:45:31 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
-	Thunderbird/45.6.0
+	(envelope-from <ard.biesheuvel@linaro.org>) id 1cbm4Y-00025Y-Ce
+	for qemu-arm@nongnu.org; Thu, 09 Feb 2017 05:35:31 -0500
+Received: from mail-io0-x230.google.com ([2607:f8b0:4001:c06::230]:36369)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <ard.biesheuvel@linaro.org>)
+	id 1cbm4Y-00024W-82
+	for qemu-arm@nongnu.org; Thu, 09 Feb 2017 05:35:30 -0500
+Received: by mail-io0-x230.google.com with SMTP id j13so13373196iod.3
+	for <qemu-arm@nongnu.org>; Thu, 09 Feb 2017 02:35:30 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=iNq31rEqMkyh0vj/yFr++F5Wta/Tupv/D+WergSUSdY=;
+	b=jy+K2JrT+E5tfAXoWqhlKaF0kiuIHby2f1IsRu+yspczAFRJpJpyIxytY0iBrwvXy3
+	5+fJrsVLR4p7BT5YSr+gHhdOri+5nZ2MJG0Nhdpv8xDJrPV554nMYg6G2fp1sfuWe6z4
+	iiHtHlD2fWztmqE/du3zntug1BsIE5J+zcfoE=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=iNq31rEqMkyh0vj/yFr++F5Wta/Tupv/D+WergSUSdY=;
+	b=WeYWGZnmLjBs0gWSy9xxgRvJE32HX1ZGPYj+kuavGfsUpGRc8TYUwB4BtRYPpULZIj
+	DA7r+NPevYxFe18bbGkbhHZqc9Klz9kuKP7VXVKJnVWsAI8OUoTCZ+sobM5dQwetBwsA
+	HmGACrfMwKfFKYpZYyDhgYnoW8hqO5IT77tgjwip2x7PPF/77i5D70rS/WaZuwVt4Tyj
+	k4LLQx7wKYbSIETwabZ2QxfH7Q8qmaI1zGX6IROQF70Yu88OiQZMKXn6O97kiMVybM9Q
+	JpgVS3lvijUKE1gRohW4yZg7DRTjxkbY3TY5k0n9P5IoR5tBSDWVbXZWfomKIIgRF2Ls
+	beKA==
+X-Gm-Message-State: AMke39mx4EBuLpNmhfBj3ldpbeV0Rl7B9AVdRCwbW6Y3ZXRFcorkp9fkcd0p5udIl7yDp+Ysr48IyBbgdhstKqgx
+X-Received: by 10.107.12.150 with SMTP id 22mr2383497iom.138.1486636529411;
+	Thu, 09 Feb 2017 02:35:29 -0800 (PST)
 MIME-Version: 1.0
-In-Reply-To: <20170209045312.GA6905@tungsten.ozlabs.ibm.com>
-Content-Type: text/plain; charset=utf-8
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.26
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.26]);
-	Thu, 09 Feb 2017 07:45:34 +0000 (UTC)
-Content-Transfer-Encoding: quoted-printable
+Received: by 10.107.144.139 with HTTP; Thu, 9 Feb 2017 02:35:28 -0800 (PST)
+In-Reply-To: <CAFEAcA8rjjzgvN-RuNPVHM53R9V9xry1Uj_ArmF1va-Y920eBQ@mail.gmail.com>
+References: <1486560712-44171-1-git-send-email-agraf@suse.de>
+	<ef6b903b-5224-b4eb-1080-a3689fcec70a@redhat.com>
+	<f2f119bc-9c22-ad52-ff26-7d6ecc213a3c@suse.de>
+	<c1ff3829-b068-881a-1523-317ef0d31689@redhat.com>
+	<C4E1DF44-1626-425D-880E-0053AD688422@linaro.org>
+	<CAFEAcA8rjjzgvN-RuNPVHM53R9V9xry1Uj_ArmF1va-Y920eBQ@mail.gmail.com>
+From: Ard Biesheuvel <ard.biesheuvel@linaro.org>
+Date: Thu, 9 Feb 2017 10:35:28 +0000
+Message-ID: <CAKv+Gu_HJ-MNZ+GPsroodWGNVm4z++CSWLUkPR6tro8jUh2zzA@mail.gmail.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+Content-Type: text/plain; charset=UTF-8
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [Qemu-ppc] [RFC PATCH 2/9] Update headers using
- update-linux-headers.sh
+X-Received-From: 2607:f8b0:4001:c06::230
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH] target-arm: Declare virtio-mmio
+ as dma-coherent in dt
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -72,72 +81,27 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm@nongnu.org, qemu-ppc@nongnu.org, qemu-devel@nongnu.org,
-	david@gibson.dropbear.id.au
+Cc: "Michael S. Tsirkin" <mst@redhat.com>,
+	QEMU Developers <qemu-devel@nongnu.org>,
+	Alexander Graf <agraf@suse.de>, qemu-arm <qemu-arm@nongnu.org>,
+	Shannon Zhao <shannon.zhao@linaro.org>, Laszlo Ersek <lersek@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: RwwbzzwaLZ34
+X-TUID: 3uJqXCeuWb1R
 
-On 09.02.2017 05:53, Sam Bobroff wrote:
-> On Tue, Feb 07, 2017 at 01:59:52PM +0100, Thomas Huth wrote:
->> On 07.02.2017 03:56, Sam Bobroff wrote:
->>> This provides some new definitions needed by ISA 3.00 guests.
->>>
->>> It is a large change because this is the first import since
->>> some kernel header files have become autogenerated.
->>>
->>> Note: update-linux-headers.sh currently generates a change that
->>> (incorrectly) removes virtio_mmio.h and the change has been manually
->>> adjusted to prevent that.
->>>
->>> Signed-off-by: Sam Bobroff <sam.bobroff@au1.ibm.com>
->>> ---
->>>  include/standard-headers/linux/input-event-codes.h |   2 +-
->>>  include/standard-headers/linux/pci_regs.h          |   8 +
->>>  include/standard-headers/linux/virtio_ids.h        |   1 +
->>>  linux-headers/asm-arm/kvm.h                        |   2 +
->>>  linux-headers/asm-arm/unistd.h                     | 419 +----------=
-----------
->>>  linux-headers/asm-powerpc/kvm.h                    |  25 ++
->>>  linux-headers/asm-powerpc/unistd.h                 |   1 +
->>>  linux-headers/asm-x86/kvm_para.h                   |   4 +-
->>>  linux-headers/linux/kvm.h                          |  11 +-
->>>  linux-headers/linux/vfio.h                         |  10 +
->>>  10 files changed, 63 insertions(+), 420 deletions(-)
->> [...]
->>> diff --git a/linux-headers/asm-arm/unistd.h b/linux-headers/asm-arm/u=
-nistd.h
->>> index ceb5450c81..155571b874 100644
->>> --- a/linux-headers/asm-arm/unistd.h
->>> +++ b/linux-headers/asm-arm/unistd.h
->>> @@ -17,409 +17,14 @@
->>> =20
->>>  #if defined(__thumb__) || defined(__ARM_EABI__)
->>>  #define __NR_SYSCALL_BASE	0
->>> +#include <asm/unistd-eabi.h>
->>>  #else
->>>  #define __NR_SYSCALL_BASE	__NR_OABI_SYSCALL_BASE
->>> +#include <asm/unistd-oabi.h>
->>>  #endif
->>> =20
->>> -/*
->>> - * This file contains the system call numbers.
->>> - */
->> [...]
->>
->> Looks like the contents of asm-arm/unistd.h has been moved to two new
->> files, unistd-eabi.h and unistd-oabi.h, but they are not part of your
->> patch. I guess update-linux-headers.sh needs a fix for that?
->>
->>  Thomas
->=20
-> Ah thanks! I'll look at it.
->=20
-> Should I try to fix the other problem with update-linux-headers.sh at
-> the same time? (I'm referring to the issue I noted in the commit
-> message, about virtio_mmio.h)
+(+Leif, Graeme)
 
-Yes, please!
+On 8 February 2017 at 18:23, Peter Maydell <peter.maydell@linaro.org> wrote:
+> On 8 February 2017 at 16:27, Ard Biesheuvel <ard.biesheuvel@linaro.org> wrote:
+>> The _CCA property is mandatory on arm64, and there is no default.
+>
+> Is there a tool that can check this kind of requirement
+> and complain about issues in the ACPI tables (and
+> ditto, device tree)? It's really easy to produce a
+> dt or ACPI table that works with current kernels and
+> then turns out to have a problem six or twelve
+> months down the line :-(
+>
 
- Thomas
-
+Perhaps Graeme or Leif could shed some light on this? I know this is
+on our roadmap, but I am not up to date with the latest status.

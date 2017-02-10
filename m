@@ -1,80 +1,302 @@
-Received: by 10.25.77.65 with SMTP id a62csp539032lfb;
-        Fri, 10 Feb 2017 07:34:38 -0800 (PST)
-X-Received: by 10.223.179.15 with SMTP id j15mr7751652wrd.159.1486740878726;
-        Fri, 10 Feb 2017 07:34:38 -0800 (PST)
-Return-Path: <peter.maydell@linaro.org>
-Received: from mail-wm0-x230.google.com (mail-wm0-x230.google.com. [2a00:1450:400c:c09::230])
-        by mx.google.com with ESMTPS id 18si1632636wmq.73.2017.02.10.07.34.38
+Received: by 10.25.77.65 with SMTP id a62csp614441lfb;
+        Fri, 10 Feb 2017 10:29:01 -0800 (PST)
+X-Received: by 10.55.15.91 with SMTP id z88mr9607211qkg.264.1486751341713;
+        Fri, 10 Feb 2017 10:29:01 -0800 (PST)
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
+        by mx.google.com with ESMTPS id z2si1836587qta.244.2017.02.10.10.29.01
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 10 Feb 2017 07:34:38 -0800 (PST)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 2a00:1450:400c:c09::230 as permitted sender) client-ip=2a00:1450:400c:c09::230;
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Fri, 10 Feb 2017 10:29:01 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 2a00:1450:400c:c09::230 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: by mail-wm0-x230.google.com with SMTP id c85so263448730wmi.1
-        for <alex.bennee@linaro.org>; Fri, 10 Feb 2017 07:34:38 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-         :cc:content-transfer-encoding;
-        bh=0mEZ15XhK74Q78NAQz8UYYGojDe4QQukTRk4d3GJVaw=;
-        b=Y4eL1nFqKHlPYsWLqdJ0DYXNW6dTsiM2GBupjNw49jYLRpv4EsdOPDWgE62qVOPz8K
-         RP7LIrJqijxZgy97ZJsQIbzh/H4bhrAobsjUGZ8wDdNxQSLWZWLVaJGFhjKyonOnk/xd
-         et5xid7xi5K23JDqt7Fh2OQ6Vhi8iDrTWx6eU=
+       dkim=fail header.i=@linaro.org;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:45436 helo=lists.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1ccFwJ-0003iJ-1X
+	for alex.bennee@linaro.org; Fri, 10 Feb 2017 13:28:59 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:56009)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <peter.maydell@linaro.org>) id 1ccFw9-0003fq-VD
+	for qemu-arm@nongnu.org; Fri, 10 Feb 2017 13:28:51 -0500
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+	(envelope-from <peter.maydell@linaro.org>) id 1ccFw8-0005If-J3
+	for qemu-arm@nongnu.org; Fri, 10 Feb 2017 13:28:49 -0500
+Received: from mail-wm0-x22a.google.com ([2a00:1450:400c:c09::22a]:35805)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1ccFw8-0005I9-7L
+	for qemu-arm@nongnu.org; Fri, 10 Feb 2017 13:28:48 -0500
+Received: by mail-wm0-x22a.google.com with SMTP id v186so117898766wmd.0
+	for <qemu-arm@nongnu.org>; Fri, 10 Feb 2017 10:28:48 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=KUhA42WER5gXRem3nikwFWZOG7qCRP1/NNari88wafc=;
+	b=UhOYfkbSwLzSAXfnrleW+yV2Q9j0+i9Lugxl6mVgWA/bpsJGIg7rOaD7epajMYDrpW
+	fI0P88Zl/NfDZ0uRIPzglLP3btCq68nGPwNN82rOgCmpknjbCcnSM0/sXqVsZrOHiGuv
+	4QSFsi7GLdLqLGfOff0OnXcRSzqa3b82lqffE=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-         :message-id:subject:to:cc:content-transfer-encoding;
-        bh=0mEZ15XhK74Q78NAQz8UYYGojDe4QQukTRk4d3GJVaw=;
-        b=Xgvg/lQ9FvqEKwSMAf4IBKeeVo1eMuKlOtyksp78LD+E/8lXPz3m770EX1TjWTgZpi
-         MUkRCHRHhA0cbP/e1UH+nLeqYomSE8ZqJZqRRTPUH7lILuwysxFGZAnMDC0LC2eDkmQh
-         zjAhc6g6B1BQM+eAuFHCVKCC1m7ls4bDgUHOQMfUP3rF8Oi/XhRAurRB4X9qJzJFh1+z
-         zaoSrUlnpvA3JKprjn8ckS52uqMtyPEl8m9nJnuRE+f1mDLrgo4i0VZs0kufYTxmke67
-         xyuPpT5VaGsEAJH9OOjA6DbPg01QSEaR5QtVYPMPE4LnfTKhy0OTvI3S9GsxIOWmmKHf
-         a0bQ==
-X-Gm-Message-State: AMke39mHjHEv9SklhQrlIJ2u8MmIrbQ2rjBR1c8HHTBqjwjnGo/dH2LqCeQmpo6/LYaw9h57ndyVpGGfRGMg/jFoURs=
-X-Received: by 10.28.91.16 with SMTP id p16mr7810234wmb.111.1486740878382;
- Fri, 10 Feb 2017 07:34:38 -0800 (PST)
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=KUhA42WER5gXRem3nikwFWZOG7qCRP1/NNari88wafc=;
+	b=QhcriMHC4pHG6iBB18MWlVKremmVW8Im5V2H6xzz6Hii44aMCPK31OZdrPwrJ1jKQ8
+	COzhJVIMclOuJfGiCoi5k3jkYsHiTuMaZ3G6N24MUd80bgqTSTgvouzpgaq3scp3U8gu
+	YBcrqGtgrSM3/zs4oOyt32L2r6VHbpIY6zBHy1C3dNAQO4lNbRNniCYdH64bZtCKULWZ
+	hdZe5ON6fFrpJ1APR8a9JlBZowrM90yUQg7rIfenIKAqkUa0GODiu9hlmNsseN/VYQij
+	33+GWqsKFAR3ZEcVRBxEHJ7LmxRRI0gY5NaOwr329Kn+3zYbwN2WSfWdmFO/59fJ/GHa
+	PaOQ==
+X-Gm-Message-State: AMke39mgE5CwguRax/v/0Q/Zt/Li+k1YmrUV6gThnVx19McRFJHlJUzQqiSbrBiX1NMgDOvpqbopdtiRfqNrWnkG
+X-Received: by 10.28.55.199 with SMTP id e190mr26430439wma.92.1486751326973;
+	Fri, 10 Feb 2017 10:28:46 -0800 (PST)
 MIME-Version: 1.0
-Received: by 10.223.145.69 with HTTP; Fri, 10 Feb 2017 07:34:17 -0800 (PST)
-In-Reply-To: <87tw82vzt6.fsf@linaro.org>
-References: <20170209170904.5713-1-alex.bennee@linaro.org> <20170209170904.5713-24-alex.bennee@linaro.org>
- <CAFEAcA8_UNip6QooREop-T5RBpdo1me0piEAscJRC+G7tGcNrA@mail.gmail.com> <87tw82vzt6.fsf@linaro.org>
+Received: by 10.223.145.69 with HTTP; Fri, 10 Feb 2017 10:28:26 -0800 (PST)
+In-Reply-To: <20170210180600.45797-1-marcinch7@gmail.com>
+References: <20170210180600.45797-1-marcinch7@gmail.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 10 Feb 2017 15:34:17 +0000
-Message-ID: <CAFEAcA-cwEAEq_upkAF49S7cbN43a7PPgs733DXD-Kykz--CUQ@mail.gmail.com>
-Subject: Re: [PATCH v11 23/24] hw/misc/imx6_src: defer clearing of SRC_SCR
- reset bits
-To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
-Cc: Richard Henderson <rth@twiddle.net>, MTTCG Devel <mttcg@listserver.greensocs.com>, 
-	QEMU Developers <qemu-devel@nongnu.org>, =?UTF-8?B?S09OUkFEIEZyw6lkw6lyaWM=?= <fred.konrad@greensocs.com>, 
-	Alvise Rigo <a.rigo@virtualopensystems.com>, "Emilio G. Cota" <cota@braap.org>, 
-	Pranith Kumar <bobby.prani@gmail.com>, Nikunj A Dadhania <nikunj@linux.vnet.ibm.com>, 
-	Mark Burton <mark.burton@greensocs.com>, Paolo Bonzini <pbonzini@redhat.com>, 
-	Jan Kiszka <jan.kiszka@siemens.com>, Fedorov Sergey <serge.fdrv@gmail.com>, 
-	Bamvor Zhang Jian <bamvor.zhangjian@linaro.org>, Peter Chubb <peter.chubb@nicta.com.au>, 
-	"open list:i.MX31" <qemu-arm@nongnu.org>
+Date: Fri, 10 Feb 2017 18:28:26 +0000
+Message-ID: <CAFEAcA84rHjGHgq2W2_Hj3e7TwHP0dYLXpLo+_uwEzM8nmNRgg@mail.gmail.com>
+To: Marcin Chojnacki <marcinch7@gmail.com>
 Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-X-TUID: X5UQYWYxZwUL
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 2a00:1450:400c:c09::22a
+Subject: Re: [Qemu-arm] [PATCH] target-arm: Implement BCM2835 hardware RNG
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.21
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: sP+orS/R2ReT
 
-On 10 February 2017 at 15:19, Alex Benn=C3=A9e <alex.bennee@linaro.org> wro=
-te:
-> Peter Maydell <peter.maydell@linaro.org> writes:
->> I guess a malloc-and-free is OK since the guest isn't going to be
->> bouncing CPUs through reset very often, though it's a bit ugly to
->> see in device code.
+On 10 February 2017 at 18:06, Marcin Chojnacki <marcinch7@gmail.com> wrote:
+> Recent vanilla Raspberry Pi kernels started to make use of
+> the hardware random number generator in BCM2835 SoC. As a
+> result, those kernels wouldn't work anymore under QEMU
+> but rather just freeze during the boot process.
 >
-> Previous patches had expanded the run_on_cpu code to have things like
-> CPUState and a single field to avoid malloc where we can. However I need
-> the IMX6SRCState and I don't know if I can get that in the work
-> function. Will there only ever be one on the system?
+> This patch implements a trivial BCM2835 compatible RNG,
+> and adds it as a peripheral to BCM2835 platform, which
+> allows to boot a vanilla Raspberry Pi kernel under Qemu.
 
-In practice there will be only one but I don't think we should
-rely on that. malloc/free is probably better than overly
-convoluted code at this point.
+Very nice...easier than I feared it might be.
+
+> Signed-off-by: Marcin Chojnacki <marcinch7@gmail.com>
+> ---
+>  hw/arm/bcm2835_peripherals.c         |  15 +++++
+>  hw/misc/Makefile.objs                |   1 +
+>  hw/misc/bcm2835_rng.c                | 115 +++++++++++++++++++++++++++++++++++
+>  include/hw/arm/bcm2835_peripherals.h |   2 +
+>  include/hw/misc/bcm2835_rng.h        |  23 +++++++
+>  5 files changed, 156 insertions(+)
+>  create mode 100644 hw/misc/bcm2835_rng.c
+>  create mode 100644 include/hw/misc/bcm2835_rng.h
+>
+> diff --git a/hw/arm/bcm2835_peripherals.c b/hw/arm/bcm2835_peripherals.c
+> index 2e641a3..9ed22d5 100644
+> --- a/hw/arm/bcm2835_peripherals.c
+> +++ b/hw/arm/bcm2835_peripherals.c
+> @@ -86,6 +86,11 @@ static void bcm2835_peripherals_init(Object *obj)
+>      object_property_add_const_link(OBJECT(&s->property), "dma-mr",
+>                                     OBJECT(&s->gpu_bus_mr), &error_abort);
+>
+> +    /* Random Number Generator */
+> +    object_initialize(&s->rng, sizeof(s->rng), TYPE_BCM2835_RNG);
+> +    object_property_add_child(obj, "rng", OBJECT(&s->rng), NULL);
+> +    qdev_set_parent_bus(DEVICE(&s->rng), sysbus_get_default());
+> +
+>      /* Extended Mass Media Controller */
+>      object_initialize(&s->sdhci, sizeof(s->sdhci), TYPE_SYSBUS_SDHCI);
+>      object_property_add_child(obj, "sdhci", OBJECT(&s->sdhci), NULL);
+> @@ -226,6 +231,16 @@ static void bcm2835_peripherals_realize(DeviceState *dev, Error **errp)
+>      sysbus_connect_irq(SYS_BUS_DEVICE(&s->property), 0,
+>                        qdev_get_gpio_in(DEVICE(&s->mboxes), MBOX_CHAN_PROPERTY));
+>
+> +    /* Random Number Generator */
+> +    object_property_set_bool(OBJECT(&s->rng), true, "realized", &err);
+> +    if (err) {
+> +        error_propagate(errp, err);
+> +        return;
+> +    }
+> +
+> +    memory_region_add_subregion(&s->peri_mr, RNG_OFFSET,
+> +                sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->rng), 0));
+> +
+>      /* Extended Mass Media Controller */
+>      object_property_set_int(OBJECT(&s->sdhci), BCM2835_SDHC_CAPAREG, "capareg",
+>                              &err);
+> diff --git a/hw/misc/Makefile.objs b/hw/misc/Makefile.objs
+> index 898e4cc..57a4406 100644
+> --- a/hw/misc/Makefile.objs
+> +++ b/hw/misc/Makefile.objs
+> @@ -42,6 +42,7 @@ obj-$(CONFIG_OMAP) += omap_sdrc.o
+>  obj-$(CONFIG_OMAP) += omap_tap.o
+>  obj-$(CONFIG_RASPI) += bcm2835_mbox.o
+>  obj-$(CONFIG_RASPI) += bcm2835_property.o
+> +obj-$(CONFIG_RASPI) += bcm2835_rng.o
+>  obj-$(CONFIG_SLAVIO) += slavio_misc.o
+>  obj-$(CONFIG_ZYNQ) += zynq_slcr.o
+>  obj-$(CONFIG_ZYNQ) += zynq-xadc.o
+> diff --git a/hw/misc/bcm2835_rng.c b/hw/misc/bcm2835_rng.c
+> new file mode 100644
+> index 0000000..00fb083
+> --- /dev/null
+> +++ b/hw/misc/bcm2835_rng.c
+> @@ -0,0 +1,115 @@
+> +/*
+> + * Raspberry Pi emulation (c) 2017 Marcin Chojnacki
+> + * This code is licensed under the GNU GPLv2 and later.
+> + */
+> +
+> +#include "qemu/osdep.h"
+> +#include "qemu/log.h"
+> +#include "hw/misc/bcm2835_rng.h"
+> +
+> +static uint64_t bcm2835_rng_read(void *opaque, hwaddr offset,
+> +    unsigned size)
+> +{
+> +    BCM2835RngState *s = (BCM2835RngState *)opaque;
+> +    uint32_t res = 0;
+> +
+> +    assert(size == 4);
+> +
+> +    switch (offset) {
+> +    case 0x0:    /* rng_ctrl */
+> +        res = s->rng_ctrl;
+> +        break;
+> +    case 0x4:    /* rng_status */
+> +        res = s->rng_status | (1 << 24);
+> +        break;
+> +    case 0x8:    /* rng_data */
+> +        res = rand();
+
+It would be nice if we could avoid calling rand() here:
+ * Coverity doesn't like it and will complain
+ * it means we become nondeterministic which is awkward for
+   record-replay
+
+We have an API for devices that are RNGs, in
+include/sysemu/rng.h. It's a bit awkward for the "I just
+want some bytes" case, but there's an example of doing
+that in hw/ppc/spapr_rng.c.
+
+Let me just put together a patch that abstracts that
+out of the spapr code so it's a bit easier to use here.
+
+> +        break;
+> +
+> +    default:
+> +        qemu_log_mask(LOG_GUEST_ERROR,
+> +            "bcm2835_rng_read: Bad offset %x\n", (int)offset);
+> +        res = 0;
+> +        break;
+> +    }
+> +
+> +    return res;
+> +}
+> +
+> +static void bcm2835_rng_write(void *opaque, hwaddr offset,
+> +    uint64_t value, unsigned size)
+> +{
+> +    BCM2835RngState *s = (BCM2835RngState *)opaque;
+> +
+> +    assert(size == 4);
+> +
+> +    switch (offset) {
+> +    case 0x0:    /* rng_ctrl */
+> +        s->rng_ctrl = value;
+> +        break;
+> +    case 0x4:    /* rng_status */
+> +        s->rng_status = value;
+
+We shouldn't let the guest write to bits [31..20] (since
+that interferes with the value we want to return in the
+RND_VAL field), so just mask them out here.
+
+> +        break;
+> +
+> +    default:
+> +        qemu_log_mask(LOG_GUEST_ERROR,
+> +            "bcm2835_rng_write: Bad offset %x\n", (int)offset);
+> +        break;
+> +    }
+> +}
+> +
+> +static const MemoryRegionOps bcm2835_rng_ops = {
+> +    .read = bcm2835_rng_read,
+> +    .write = bcm2835_rng_write,
+> +    .endianness = DEVICE_NATIVE_ENDIAN,
+> +};
+> +
+> +static const VMStateDescription vmstate_bcm2835_rng = {
+> +    .name = TYPE_BCM2835_RNG,
+> +    .version_id = 1,
+> +    .minimum_version_id = 1,
+> +    .minimum_version_id_old = 1,
+
+You don't need to specify minimum_version_id_old here if
+it's the same as minimum_version_id.
+
+> +    .fields      = (VMStateField[]) {
+
+This should have field entries for the state
+the guest can affect (ie rng_ctrl and rng_status).
+
+> +        VMSTATE_END_OF_LIST()
+> +    }
+> +};
+> +
+> +static void bcm2835_rng_init(Object *obj)
+> +{
+> +    BCM2835RngState *s = BCM2835_RNG(obj);
+> +
+> +    memory_region_init_io(&s->iomem, obj, &bcm2835_rng_ops, s,
+> +                          TYPE_BCM2835_RNG, 0x10);
+> +    sysbus_init_mmio(SYS_BUS_DEVICE(s), &s->iomem);
+> +}
+> +
+> +static void bcm2835_rng_realize(DeviceState *dev, Error **errp)
+> +{
+> +    BCM2835RngState *s = BCM2835_RNG(dev);
+> +
+> +    s->rng_ctrl = 0;
+> +    s->rng_status = 0;
+
+These should go in a reset function, not realize.
+
+> +}
+> +
+> +static void bcm2835_rng_class_init(ObjectClass *klass, void *data)
+> +{
+> +    DeviceClass *dc = DEVICE_CLASS(klass);
+> +
+> +    dc->realize = bcm2835_rng_realize;
+> +    dc->vmsd = &vmstate_bcm2835_rng;
+> +}
+> +
+> +static TypeInfo bcm2835_rng_info = {
+> +    .name          = TYPE_BCM2835_RNG,
+> +    .parent        = TYPE_SYS_BUS_DEVICE,
+> +    .instance_size = sizeof(BCM2835RngState),
+> +    .class_init    = bcm2835_rng_class_init,
+> +    .instance_init = bcm2835_rng_init,
+> +};
+> +
+> +static void bcm2835_rng_register_types(void)
+> +{
+> +    type_register_static(&bcm2835_rng_info);
+> +}
 
 thanks
 -- PMM

@@ -1,130 +1,106 @@
-Received: by 10.25.77.65 with SMTP id a62csp524538lfb;
-        Fri, 10 Feb 2017 07:03:51 -0800 (PST)
-X-Received: by 10.55.12.14 with SMTP id 14mr8613612qkm.308.1486739031738;
-        Fri, 10 Feb 2017 07:03:51 -0800 (PST)
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 10.25.77.65 with SMTP id a62csp532922lfb;
+        Fri, 10 Feb 2017 07:20:30 -0800 (PST)
+X-Received: by 10.200.56.4 with SMTP id q4mr9415790qtb.73.1486740030390;
+        Fri, 10 Feb 2017 07:20:30 -0800 (PST)
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id m65si1407593qtd.323.2017.02.10.07.03.51
+        by mx.google.com with ESMTPS id b197si1449722qkc.251.2017.02.10.07.20.29
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 10 Feb 2017 07:03:51 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Fri, 10 Feb 2017 07:20:30 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        dkim=fail header.i=@linaro.org;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:44292 helo=lists.gnu.org)
+Received: from localhost ([::1]:44401 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ccCjl-0005OS-7W
-	for alex.bennee@linaro.org; Fri, 10 Feb 2017 10:03:49 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:51574)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1ccCzr-0000tA-By
+	for alex.bennee@linaro.org; Fri, 10 Feb 2017 10:20:27 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:55716)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1ccCjF-000528-Lr
-	for qemu-arm@nongnu.org; Fri, 10 Feb 2017 10:03:18 -0500
+	(envelope-from <peter.maydell@linaro.org>) id 1ccCuL-0005Gh-35
+	for qemu-devel@nongnu.org; Fri, 10 Feb 2017 10:14:45 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1ccCjE-0001eh-SZ
-	for qemu-arm@nongnu.org; Fri, 10 Feb 2017 10:03:17 -0500
-Received: from mail-wm0-x22a.google.com ([2a00:1450:400c:c09::22a]:37437)
+	(envelope-from <peter.maydell@linaro.org>) id 1ccCuK-0005OS-6m
+	for qemu-devel@nongnu.org; Fri, 10 Feb 2017 10:14:45 -0500
+Received: from mail-wm0-x22b.google.com ([2a00:1450:400c:c09::22b]:37918)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1ccCjE-0001do-MY
-	for qemu-arm@nongnu.org; Fri, 10 Feb 2017 10:03:16 -0500
-Received: by mail-wm0-x22a.google.com with SMTP id v77so50503216wmv.0
-	for <qemu-arm@nongnu.org>; Fri, 10 Feb 2017 07:03:16 -0800 (PST)
+	id 1ccCuK-0005NT-0E
+	for qemu-devel@nongnu.org; Fri, 10 Feb 2017 10:14:44 -0500
+Received: by mail-wm0-x22b.google.com with SMTP id r141so51067606wmg.1
+	for <qemu-devel@nongnu.org>; Fri, 10 Feb 2017 07:14:43 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
 	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=zD/yY6hn1re23DWKqAZew0q7QbZ51cBJOQmEThtDsbU=;
-	b=OooSs3FXqbeSzH3RPTudxefeDw5KFsRpPnwnhC4jsO+Lm/uS/bNxHX0Vd6kZR59Nbs
-	YjsVdhH1mhS+0iVUJacc6HUfZy5zQHYN+jnYxUnKhERILV5uIswAbjr2DNoLhdtwZwuU
-	Z2do8RKz0MBoQaglzw02azQyWoswraUUUXVFE=
+	:cc:content-transfer-encoding;
+	bh=6orDMorTVhbYNPehJYwIfcD92UXHs1LoDZMULoHdswg=;
+	b=a7LR67rNRmQ6X/sNuBFfuZZNj6prsPnBxgD+EJDLLBwal5RGav8FiATwHSR56n2khv
+	g6Vcno2WdEyCYQn98YI50BdcZorI8l9fIomsj2qkXD641PR98pFiShCxlR/6lUDfjRRD
+	6kF6Ekn2kt3aC84cry0tC5WtdTZzyeziih2Xc=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=zD/yY6hn1re23DWKqAZew0q7QbZ51cBJOQmEThtDsbU=;
-	b=gTV7PoSLWpTE6pnD0wsAiKTqwLhwSggybJ0MFu95KwhgoKFw2jBjXWJjVSP0gLUqt1
-	DFvZTc6Zzv/0Y9hrOG0S3v9im25Nv0s0I6PjYWK7nmsNaF464IPTNUhHm/yPN/jp1FCd
-	AROqs1J6hXnwdpguDlsZQQ8ZuQ6JqFtjQK7AUt+/hvici0z84MJ1PiSTc1/lrayeyDrH
-	ztzZ059/osaYt0k5gkWUJgt77yFrn5Ek12cApbNEJc6IPO0v8eFhanc99McyTavKlPeK
-	RxGJYmyWEPsx7pqhZHT7GmXOIPqrUoAZnSnPcOWftu1PTIJbIsX+yn8p1+nlijFvPK10
-	64TA==
-X-Gm-Message-State: AMke39n15bAvv1DlWlM4+kfKG7rivpgCYSR+15J3+RPuhjCFuHKtPe3cCIbCZG/YGszoFq5ibrXs07q8PUxODQKY
-X-Received: by 10.28.91.16 with SMTP id p16mr7681566wmb.111.1486738995450;
-	Fri, 10 Feb 2017 07:03:15 -0800 (PST)
+	:message-id:subject:to:cc:content-transfer-encoding;
+	bh=6orDMorTVhbYNPehJYwIfcD92UXHs1LoDZMULoHdswg=;
+	b=YLX37oyhn/9Fjy9CWylDX+fGK7tA64OIx/ZKkwZeFucqfaZBumqoyO9Lsq7QbI7JRs
+	ruJN/TNzo1sqNfjI1pgaAVv8jaPquLfwoMyHi1LuIHL/S/c0Kj4jCuxRwbL4cTeMUc4A
+	ANf2uK0n2lKEhiNNKZ4/cZUF0ePkv22/BefS6Mlin3bwlZ4PV+1IIclwOUO7fcjSZMTP
+	K6FRbJFB+6Zi13tCirMh0wbaCyj413TtQMqLF9pz4YuC5c+Z1hrhBdw/8PVq8Tfy8pVl
+	3cl1bcD9HPJlePnqJD15xHk34Q2FHByBD0A4TC6dZ5u+bDcGroVVxLUyQgkd/6OjR2B1
+	bNrQ==
+X-Gm-Message-State: AMke39mDJ1aAkkQ57jLYXkLDcVcPM5yRsFijZ5DmdP/mH70KIU8fIJS8yvdNCv0x6PNqB8SXIRHgERTD26gu3VJh
+X-Received: by 10.28.91.16 with SMTP id p16mr7734667wmb.111.1486739683084;
+	Fri, 10 Feb 2017 07:14:43 -0800 (PST)
 MIME-Version: 1.0
-Received: by 10.223.145.69 with HTTP; Fri, 10 Feb 2017 07:02:54 -0800 (PST)
-In-Reply-To: <1486644810-33181-1-git-send-email-agraf@suse.de>
-References: <1486644810-33181-1-git-send-email-agraf@suse.de>
+Received: by 10.223.145.69 with HTTP; Fri, 10 Feb 2017 07:14:22 -0800 (PST)
+In-Reply-To: <1486648058-520-1-git-send-email-clg@kaod.org>
+References: <1486648058-520-1-git-send-email-clg@kaod.org>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 10 Feb 2017 15:02:54 +0000
-Message-ID: <CAFEAcA-m+gKBg69xBSe4NTVkEhpdBKMDT-6+qECh=ARH6v9fyw@mail.gmail.com>
-To: Alexander Graf <agraf@suse.de>
+Date: Fri, 10 Feb 2017 15:14:22 +0000
+Message-ID: <CAFEAcA_3WVww5Nnr7oBOAQtCFsZCUWNZQrEVivSJtay_Z9WkhA@mail.gmail.com>
+To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
 Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2a00:1450:400c:c09::22a
-Subject: Re: [Qemu-arm] [PATCH v2 0/4] target-arm: Add some omitted dma
- cache coherency flags
-X-BeenThere: qemu-arm@nongnu.org
+X-Received-From: 2a00:1450:400c:c09::22b
+Subject: Re: [Qemu-devel] [PATCH 0/4] aspeed: miscellaneous small fixes
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: "Michael S. Tsirkin" <mst@redhat.com>,
-	Ard Biesheuvel <ard.biesheuvel@linaro.org>,
-	QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
-	Shannon Zhao <shannon.zhao@linaro.org>, Laszlo Ersek <lersek@redhat.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: fvsPP+c8FBW7
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
+	Peter Crosthwaite <crosthwaite.peter@gmail.com>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: gPwj0X+db2qv
 
-On 9 February 2017 at 12:53, Alexander Graf <agraf@suse.de> wrote:
-> ARM is amazing when it comes to cache coherency and VMs. While any sane
-> architecture allows the host to override the guest's caching attributes,
-> that's very hard to do on ARM.
+On 9 February 2017 at 13:47, C=C3=A9dric Le Goater <clg@kaod.org> wrote:
+> Hello,
 >
-> That means that the guest may directly access guest memory bypassing the
-> cache while QEMU happily writes to / reads from cache. The end result is
-> very nasty, because both sides see very different views of the world.
+> Here is a short series fixing small issues in the SMC controller model
+> of the Aspeed SoC.
 >
-> That means that we need to be very cautious to tell guests that devices
-> that QEMU emulates are going to use data in the cache rather than directly
-> on memory.
+> Thanks,
 >
-> We added this to PCI a while back for DT (5d636e21 "hw/arm/virt: mark the PCIe
-> host controller as DMA coherent in the DT") and ACPI (bc64b96 "hw/arm/virt-
-> acpi-build: _CCA attribute is compulsory") but never updated virtio-mmio or
-> fw-cfg in DT or ACPI tables.
+> C.
 >
-> This patch set adds the respective cache coherency flags for them in both DT and
-> ACPI.
->
-> Fortunately, no guests except for Linux 4.9.7 and 4.9.8 are broken because of
-> this. Upstream realized quickly enough that every user of virtio-mmio out there
-> describes its cache coherency incorrectly and reverted the patch that would
-> require said dma coherency flag. But we should be safe for the future and "do
-> the right thing".
->
-> Alexander Graf (4):
->   target-arm: Declare virtio-mmio as dma-coherent in dt
->   hw/arm/virt: Declare virtio-mmio as dma cache coherent in ACPI
->   hw/arm/virt: Declare fwcfg as dma cache coherent in ACPI
->   hw/arm/virt: Declare fwcfg as dma cache coherent in dt
->
->  hw/arm/vexpress.c        | 1 +
->  hw/arm/virt-acpi-build.c | 2 ++
->  hw/arm/virt.c            | 2 ++
->  3 files changed, 5 insertions(+)
+> C=C3=A9dric Le Goater (4):
+>   aspeed: check for negative values returned by blk_getlength()
+>   aspeed: remove useless comment on controller segment size
+>   aspeed/smc: handle dummies only in fast read mode
+>   aspeed/smc: use a modulo to check segment limits
 
-The patches in this series have more lines of Reviewed-by: tags than
-they do actual code changes :-)
 
-Thanks, applied to target-arm.next.
+
+Applied to target-arm.next, thanks.
 
 -- PMM

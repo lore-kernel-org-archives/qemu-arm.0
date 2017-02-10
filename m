@@ -1,111 +1,152 @@
-Received: by 10.25.77.65 with SMTP id a62csp510515lfb;
-        Fri, 10 Feb 2017 06:31:28 -0800 (PST)
-X-Received: by 10.200.44.74 with SMTP id e10mr8820774qta.145.1486737088626;
-        Fri, 10 Feb 2017 06:31:28 -0800 (PST)
-Return-Path: <philippe.mathieu.daude@gmail.com>
-Received: from mail-qt0-x244.google.com (mail-qt0-x244.google.com. [2607:f8b0:400d:c0d::244])
-        by mx.google.com with ESMTPS id h67si1364209qkh.135.2017.02.10.06.31.28
+Received: by 10.25.77.65 with SMTP id a62csp516826lfb;
+        Fri, 10 Feb 2017 06:46:50 -0800 (PST)
+X-Received: by 10.223.174.199 with SMTP id y65mr9298908wrc.19.1486738010174;
+        Fri, 10 Feb 2017 06:46:50 -0800 (PST)
+Return-Path: <peter.maydell@linaro.org>
+Received: from mail-wm0-x230.google.com (mail-wm0-x230.google.com. [2a00:1450:400c:c09::230])
+        by mx.google.com with ESMTPS id b78si1448133wme.134.2017.02.10.06.46.49
+        for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 10 Feb 2017 06:31:28 -0800 (PST)
-Received-SPF: pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 2607:f8b0:400d:c0d::244 as permitted sender) client-ip=2607:f8b0:400d:c0d::244;
+        Fri, 10 Feb 2017 06:46:50 -0800 (PST)
+Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 2a00:1450:400c:c09::230 as permitted sender) client-ip=2a00:1450:400c:c09::230;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 2607:f8b0:400d:c0d::244 as permitted sender) smtp.mailfrom=philippe.mathieu.daude@gmail.com
-Received: by mail-qt0-x244.google.com with SMTP id s58so4734375qtc.2;
-        Fri, 10 Feb 2017 06:31:28 -0800 (PST)
+       dkim=pass header.i=@linaro.org;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 2a00:1450:400c:c09::230 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: by mail-wm0-x230.google.com with SMTP id v186so112152457wmd.0
+        for <alex.bennee@linaro.org>; Fri, 10 Feb 2017 06:46:49 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=sender:subject:to:references:cc:from:message-id:date:user-agent
-         :mime-version:in-reply-to:content-transfer-encoding;
-        bh=ZDFPOzQRG8En2NIifahwRqXmLljAFHqY9NUFydkOW8s=;
-        b=CRgbQPf2ngDLn7v6zE/RnGToNsz3TXm/Adr64i2y7YfnCApizi47QioTzNhTh2nWLG
-         jf9BDmj/lGAe2qHsZfM3M7HcBtBB0DFGvP572GVzLDnYAYfDHF5ZWRXtH32mZF6TVyQY
-         epEAflG9g9/G06GROCdOoUnriw1Hz6uCsyuPwmSQi6Wlu+GoNWVHeKj4MoyxH5jrwU8O
-         pMtxtWzGRfNAyeF80ri/2Jj4VqDObKBjOA+NSMkgHarZ6sE4d88WhicLEE8xgMz6jxOM
-         o7mqQ+fSVeBiYmlQnlONaIzR/b435g8TZjRl0ioVvOc7EmA1neTbJk2rh3RjkVjPaHSY
-         nItw==
+        d=linaro.org; s=google;
+        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+         :cc:content-transfer-encoding;
+        bh=CuZlRYAKkFw6ggaQD6qQTcm4CQg5Yv0ZxbPa3T3LDsU=;
+        b=aa8FyPNtbXnskQctWILAoT84C81H2Wpr7Xj68QjYmPEOV7nwiyzrPeLubrWy0GFFki
+         PXnkMzanoH3qpD88+sLuwfFrPo8fqzzoBw1MgDw+Und7MLb4CibTCcapZdzB+wR1GVj4
+         i/cNTx3h2TWE9ILwFm4t8E8J2pPp7vcC9qRa8=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:sender:subject:to:references:cc:from:message-id
-         :date:user-agent:mime-version:in-reply-to:content-transfer-encoding;
-        bh=ZDFPOzQRG8En2NIifahwRqXmLljAFHqY9NUFydkOW8s=;
-        b=CEec8UGLHQjM8spHRnbDzzcMN3lwiA17gOkja1Ksw9rMb3aCcBfHpkJ+2lN1j1M5nV
-         Bre26Wvlo/PNugpUvjMLio0H7pKZle2Wa++dFNPBwNC3vUQ4phgDELdNr1crAK5yzA87
-         YLtl3TmQE2+nkva741cagyfvRiadKnp/79CmtT9c5zFO/TzPRFb/19iSzkPy2io3t8+d
-         uEPSDf3gDP0b/v2aMvwvtu8BGZwZO1q1ktsuVTXc2a6TjRDePM0zXmviATbw97Xhuhpg
-         fbI3wuYyeyOt5oz+DerXl6Ds6EzwyUAJR+TuQHtI6qplxwGsf03SF5/6m4YfUz+pMQS0
-         1gBA==
-X-Gm-Message-State: AMke39n6rDouaGL9XiHHLTTJ5o9j8De2A+yedNIdJHEcblPk5WaUz+qk2K/7k88AWnhHBA==
-X-Received: by 10.237.33.188 with SMTP id l57mr7872543qtc.49.1486737088213;
-        Fri, 10 Feb 2017 06:31:28 -0800 (PST)
-Return-Path: <philippe.mathieu.daude@gmail.com>
-Received: from [192.168.1.10] ([138.117.48.226])
-        by smtp.gmail.com with ESMTPSA id w44sm1723225qta.4.2017.02.10.06.31.25
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 10 Feb 2017 06:31:27 -0800 (PST)
-Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philippe.mathieu.daude@gmail.com>
-Subject: Re: [Qemu-devel] [PATCH 9/9] armv7m: VECTCLRACTIVE and VECTRESET are
- UNPREDICTABLE
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-References: <1486065742-28639-1-git-send-email-peter.maydell@linaro.org>
- <1486065742-28639-10-git-send-email-peter.maydell@linaro.org>
-Cc: Liviu Ionescu <ilg@livius.net>, Michael Davidsaver
- <mdavidsaver@gmail.com>, =?UTF-8?Q?Alex_Benn=c3=a9e?=
- <alex.bennee@linaro.org>, patches@linaro.org
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <7a95b49b-83af-019d-b480-f26d69f0fe7d@amsat.org>
-Date: Fri, 10 Feb 2017 11:31:24 -0300
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
- Thunderbird/45.6.0
+        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+         :message-id:subject:to:cc:content-transfer-encoding;
+        bh=CuZlRYAKkFw6ggaQD6qQTcm4CQg5Yv0ZxbPa3T3LDsU=;
+        b=bz8E9hAwanQ7WMaDZC9hIlUoKn7LpODZpMRa7t6Vr8kgdkEFT0rddkufoWbPKxEdDx
+         EuNFwdi7b7dEEVcBjF1nfuM5Hr/9AaLUB/u5qpC5zVuKqXWRS3XAWlGHEcWL4OlW+vJr
+         Jv4G2lBkpdLRmwk2j99WzBZLQDfGYK0aAGDjmdJxZvmPe0p8jU+IxUfhrA1WbU74s2Db
+         //ugWER5hro2Let6a6CLr2bZSZwiQO2B6TQxAKuezOPe59Y2yHaax2eFu608a0hcbwp9
+         9CJQnvZRbx7M/nA+Co9K+gBJ9TcVas6UqxejMk40Dk3lme2fIBL75kl8EP1nwZ8iqq/O
+         pydg==
+X-Gm-Message-State: AMke39mutP7BcUlkvLgocHU0RhJIRYgUljUlyHrXlcqtHlUe1ZjFu1smzBmFQswRh17QYWDKGLoXmVCF4umTezfjors=
+X-Received: by 10.28.4.10 with SMTP id 10mr29373349wme.142.1486738009684; Fri,
+ 10 Feb 2017 06:46:49 -0800 (PST)
 MIME-Version: 1.0
-In-Reply-To: <1486065742-28639-10-git-send-email-peter.maydell@linaro.org>
-Content-Type: text/plain; charset=windows-1252; format=flowed
-Content-Transfer-Encoding: 8bit
-X-TUID: 9YfXvcUuvbWO
+Received: by 10.223.145.69 with HTTP; Fri, 10 Feb 2017 06:46:29 -0800 (PST)
+In-Reply-To: <20170209170904.5713-21-alex.bennee@linaro.org>
+References: <20170209170904.5713-1-alex.bennee@linaro.org> <20170209170904.5713-21-alex.bennee@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 10 Feb 2017 14:46:29 +0000
+Message-ID: <CAFEAcA8XFYaMibPkVUg8cYifn1+v=2X8HoMha67OoPnO_wBpiA@mail.gmail.com>
+Subject: Re: [PATCH v11 20/24] target-arm/powerctl: defer cpu reset work to
+ CPU context
+To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
+Cc: Richard Henderson <rth@twiddle.net>, MTTCG Devel <mttcg@listserver.greensocs.com>, 
+	QEMU Developers <qemu-devel@nongnu.org>, =?UTF-8?B?S09OUkFEIEZyw6lkw6lyaWM=?= <fred.konrad@greensocs.com>, 
+	Alvise Rigo <a.rigo@virtualopensystems.com>, "Emilio G. Cota" <cota@braap.org>, 
+	Pranith Kumar <bobby.prani@gmail.com>, Nikunj A Dadhania <nikunj@linux.vnet.ibm.com>, 
+	Mark Burton <mark.burton@greensocs.com>, Paolo Bonzini <pbonzini@redhat.com>, 
+	Jan Kiszka <jan.kiszka@siemens.com>, Fedorov Sergey <serge.fdrv@gmail.com>, 
+	Bamvor Zhang Jian <bamvor.zhangjian@linaro.org>, "open list:ARM" <qemu-arm@nongnu.org>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+X-TUID: iRI8b+ds9glz
 
-On 02/02/2017 05:02 PM, Peter Maydell wrote:
-> From: Michael Davidsaver <mdavidsaver@gmail.com>
+On 9 February 2017 at 17:09, Alex Benn=C3=A9e <alex.bennee@linaro.org> wrot=
+e:
+> When switching a new vCPU on we want to complete a bunch of the setup
+> work before we start scheduling the vCPU thread. To do this cleanly we
+> defer vCPU setup to async work which will run the vCPUs execution
+> context as the thread is woken up. The scheduling of the work will kick
+> the vCPU awake.
 >
-> The VECTCLRACTIVE and VECTRESET bits in the AIRCR are both
-> documented as UNPREDICTABLE if you write a 1 to them when
-> the processor is not halted in Debug state (ie stopped
-> and under the control of an external JTAG debugger).
-> Since we don't implement Debug state or emulated JTAG
-> these bits are always UNPREDICTABLE for us. Instead of
-> logging them as unimplemented we can simply log writes
-> as guest errors and ignore them.
+> This avoids potential races in MTTCG system emulation.
 >
-> Signed-off-by: Michael Davidsaver <mdavidsaver@gmail.com>
-> [PMM: change extracted from another patch; commit message
->  constructed from scratch]
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-
-Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-
+> Signed-off-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
+> Reviewed-by: Richard Henderson <rth@twiddle.net>
+>
 > ---
->  hw/intc/armv7m_nvic.c | 8 ++++++--
->  1 file changed, 6 insertions(+), 2 deletions(-)
+> v7
+>   - add const to static mode_for_el[] array
+>   - fix checkpatch long lines
+> v10
+>   - use async work for arm_set_cpu_off, arm_reset_cpu as well
+>   - model ON_PENDING to deal with racing arm_set_cpu_on
+> v11
+>   - move to single cpu->power_state protected by BQL
+>   - bump migration format
+> ---
+>  target/arm/arm-powerctl.c | 202 +++++++++++++++++++++++++++++++---------=
+------
+>  target/arm/arm-powerctl.h |   2 +
+>  target/arm/cpu.c          |   4 +-
+>  target/arm/cpu.h          |  13 ++-
+>  target/arm/kvm.c          |   7 +-
+>  target/arm/machine.c      |   6 +-
+>  target/arm/psci.c         |  16 +++-
+>  7 files changed, 174 insertions(+), 76 deletions(-)
 >
-> diff --git a/hw/intc/armv7m_nvic.c b/hw/intc/armv7m_nvic.c
-> index 7b61fe6..18c0e60 100644
-> --- a/hw/intc/armv7m_nvic.c
-> +++ b/hw/intc/armv7m_nvic.c
-> @@ -698,10 +698,14 @@ static void nvic_writel(NVICState *s, uint32_t offset, uint32_t value)
->                  qemu_irq_pulse(s->sysresetreq);
->              }
->              if (value & 2) {
-> -                qemu_log_mask(LOG_UNIMP, "VECTCLRACTIVE unimplemented\n");
-> +                qemu_log_mask(LOG_GUEST_ERROR,
-> +                              "Setting VECTCLRACTIVE when not in DEBUG mode "
-> +                              "is UNPREDICTABLE\n");
->              }
->              if (value & 1) {
-> -                qemu_log_mask(LOG_UNIMP, "AIRCR system reset unimplemented\n");
-> +                qemu_log_mask(LOG_GUEST_ERROR,
-> +                              "Setting VECTRESET when not in DEBUG mode "
-> +                              "is UNPREDICTABLE\n");
->              }
->              s->prigroup = extract32(value, 8, 3);
->              nvic_irq_update(s);
+> diff --git a/target/arm/arm-powerctl.c b/target/arm/arm-powerctl.c
+> index fbb7a15daa..3b4c51978c 100644
+> --- a/target/arm/arm-powerctl.c
+> +++ b/target/arm/arm-powerctl.c
+> @@ -14,6 +14,7 @@
+>  #include "internals.h"
+>  #include "arm-powerctl.h"
+>  #include "qemu/log.h"
+> +#include "qemu/main-loop.h"
+>  #include "exec/exec-all.h"
 >
+>  #ifndef DEBUG_ARM_POWERCTL
+> @@ -48,11 +49,93 @@ CPUState *arm_get_cpu_by_id(uint64_t id)
+>      return NULL;
+>  }
+>
+> +struct cpu_on_info {
+
+Since you'll need to respin this anyway, our coding
+style likes CamelCase for struct names.
+
+> diff --git a/target/arm/machine.c b/target/arm/machine.c
+> index fa5ec76090..15619a0430 100644
+> --- a/target/arm/machine.c
+> +++ b/target/arm/machine.c
+> @@ -286,8 +286,8 @@ static int cpu_post_load(void *opaque, int version_id=
+)
+>
+>  const VMStateDescription vmstate_arm_cpu =3D {
+>      .name =3D "cpu",
+> -    .version_id =3D 22,
+> -    .minimum_version_id =3D 22,
+> +    .version_id =3D 23,
+> +    .minimum_version_id =3D 23,
+
+Sorry, you can't do this, it will break migration. You need
+to do something cleverer with a subsection or other trick.
+
+David Gilbert's recent patch on list to docs/migration.txt
+should have some examples of how to do this.
+
+>      .pre_save =3D cpu_pre_save,
+>      .post_load =3D cpu_post_load,
+>      .fields =3D (VMStateField[]) {
+> @@ -329,7 +329,7 @@ const VMStateDescription vmstate_arm_cpu =3D {
+>          VMSTATE_UINT64(env.exception.vaddress, ARMCPU),
+>          VMSTATE_TIMER_PTR(gt_timer[GTIMER_PHYS], ARMCPU),
+>          VMSTATE_TIMER_PTR(gt_timer[GTIMER_VIRT], ARMCPU),
+> -        VMSTATE_BOOL(powered_off, ARMCPU),
+> +        VMSTATE_UINT32(power_state, ARMCPU),
+>          VMSTATE_END_OF_LIST()
+>      },
+>      .subsections =3D (const VMStateDescription*[]) {
+
+I think the rest is OK.
+
+thanks
+-- PMM

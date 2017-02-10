@@ -1,62 +1,72 @@
-Received: by 10.25.77.65 with SMTP id a62csp623950lfb;
-        Fri, 10 Feb 2017 10:55:43 -0800 (PST)
-X-Received: by 10.55.64.139 with SMTP id n133mr9646723qka.38.1486752943558;
-        Fri, 10 Feb 2017 10:55:43 -0800 (PST)
+Received: by 10.25.77.65 with SMTP id a62csp680282lfb;
+        Fri, 10 Feb 2017 13:34:01 -0800 (PST)
+X-Received: by 10.55.121.194 with SMTP id u185mr10358606qkc.56.1486762441057;
+        Fri, 10 Feb 2017 13:34:01 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id e184si1905301qkc.72.2017.02.10.10.55.42
+        by mx.google.com with ESMTPS id j68si2170847qkh.299.2017.02.10.13.34.00
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 10 Feb 2017 10:55:43 -0800 (PST)
+        Fri, 10 Feb 2017 13:34:01 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:45553 helo=lists.gnu.org)
+       dkim=fail header.i=@gmail.com;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:46032 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ccGM9-0001gK-1O
-	for alex.bennee@linaro.org; Fri, 10 Feb 2017 13:55:41 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:33966)
+	id 1ccIpK-0002Yu-Eg
+	for alex.bennee@linaro.org; Fri, 10 Feb 2017 16:33:58 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:37266)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <wei@redhat.com>) id 1ccGM2-0001eQ-LF
-	for qemu-arm@nongnu.org; Fri, 10 Feb 2017 13:55:35 -0500
+	(envelope-from <marcinch7@gmail.com>) id 1ccIRX-0003rj-Ul
+	for qemu-arm@nongnu.org; Fri, 10 Feb 2017 16:09:25 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <wei@redhat.com>) id 1ccGLz-0000X1-BG
-	for qemu-arm@nongnu.org; Fri, 10 Feb 2017 13:55:34 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:53576)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <wei@redhat.com>)
-	id 1ccGLz-0000WT-4c; Fri, 10 Feb 2017 13:55:31 -0500
-Received: from int-mx11.intmail.prod.int.phx2.redhat.com
-	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 522A08048A;
-	Fri, 10 Feb 2017 18:55:30 +0000 (UTC)
-Received: from [10.3.117.54] (ovpn-117-54.phx2.redhat.com [10.3.117.54])
-	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id v1AItTFG002609; Fri, 10 Feb 2017 13:55:30 -0500
-To: Peter Maydell <peter.maydell@linaro.org>
-References: <1486504171-26807-1-git-send-email-wei@redhat.com>
-	<CAFEAcA8+3+ZwOeA0cNXF_BRs-kivTye5bj7pcRsDAsJ4S1HwTg@mail.gmail.com>
-	<CAFEAcA8QFWi8-XmJyiWM15y8dUqFCbaqt9wuZ70Y7_Qgsa=CyQ@mail.gmail.com>
-From: Wei Huang <wei@redhat.com>
-Message-ID: <513c93db-34fc-ab17-aa12-fb956f8f1467@redhat.com>
-Date: Fri, 10 Feb 2017 12:55:28 -0600
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
-	Thunderbird/45.7.0
-MIME-Version: 1.0
-In-Reply-To: <CAFEAcA8QFWi8-XmJyiWM15y8dUqFCbaqt9wuZ70Y7_Qgsa=CyQ@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.28]);
-	Fri, 10 Feb 2017 18:55:30 +0000 (UTC)
+	(envelope-from <marcinch7@gmail.com>) id 1ccIRS-0001jz-Ut
+	for qemu-arm@nongnu.org; Fri, 10 Feb 2017 16:09:23 -0500
+Received: from mail-wm0-x243.google.com ([2a00:1450:400c:c09::243]:36222)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <marcinch7@gmail.com>)
+	id 1ccIRS-0001jq-LL; Fri, 10 Feb 2017 16:09:18 -0500
+Received: by mail-wm0-x243.google.com with SMTP id r18so9101513wmd.3;
+	Fri, 10 Feb 2017 13:09:18 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=from:to:cc:subject:date:message-id;
+	bh=agpweTcIBAmWsLk20KlX4MP6a9k6qJ8WlCFbaQpCP+0=;
+	b=UsVWDT1OZC/fwsETaebDSNf9gMPfJ7Q0byWMC7XC0YeTxx4VKWPGYLI2uZSiBTcU3F
+	/YR6xdWSLbZCa0kKMszosNLgIwmf+BZJ9W3I8Mw1+KSFpLKaDEDuFe8DI0H6ObmFBqxJ
+	mln1c5MjOwL0oJ+mF6+qtsNeuPFgXrOvBzO/uEUtouUXQiEnI6cbWtaybaBEzFA8Ij6v
+	JpaXKXRK/aVdb0RQtwL37f2g3nBoyC0dQ8JVecDo9jih5QtgQ+mxza9Ll/5BGcktrkHU
+	KSIjXZ1n0NWFGQ5NfHfHNu/ZJmNwFJ1aMq6Zv8ZBuvWW8LkSQrsjFOvOkpqXuzcQVgyf
+	pwJg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:from:to:cc:subject:date:message-id;
+	bh=agpweTcIBAmWsLk20KlX4MP6a9k6qJ8WlCFbaQpCP+0=;
+	b=q9vaMrwZePrmharh+DXru9+5u3VAwH65rpXlAbMBUs93qHh1QPNrqbcCXhzWv+xRxK
+	9oTfluWb8/8evlzUA3ZLLOJFpsw80Hk6qnFDLH5EJBs82ZQAGZnt5bx5u3cEu/CE26ld
+	alNOamt0PAqCOb9/dM+j6EqVNR8j6vpwOonKBU3Y1KQ5fGWNgkt1Ba+bNbQhB/truE3u
+	Az/bieAwRcw7W0xuWbrAhVKCx281ezmZ4sQLcbopzwXGQYFNrIazNKjywgvlZrf+PtaO
+	xVFCBUFNa3Sge4JcFLH8uqSoP+u/t+EZ7DgPNkmdkCP6oVT5CYwzTnhN1DmiSwD4918d
+	MAIQ==
+X-Gm-Message-State: AMke39m8y9t8HCrHE0SqqfJYwAyrXPNjQijy2oLyCONIF0O1nU8zcLkkvl6KbjDdc99SmA==
+X-Received: by 10.28.61.136 with SMTP id k130mr8885031wma.128.1486760957314;
+	Fri, 10 Feb 2017 13:09:17 -0800 (PST)
+Received: from localhost.localdomain (cbv156.neoplus.adsl.tpnet.pl.
+	[83.30.119.156]) by smtp.gmail.com with ESMTPSA id
+	z10sm1113090wmg.31.2017.02.10.13.09.15
+	(version=TLS1 cipher=AES128-SHA bits=128/128);
+	Fri, 10 Feb 2017 13:09:16 -0800 (PST)
+From: Marcin Chojnacki <marcinch7@gmail.com>
+To: qemu-arm@nongnu.org
+Date: Fri, 10 Feb 2017 22:08:57 +0100
+Message-Id: <20170210210857.47893-1-marcinch7@gmail.com>
+X-Mailer: git-send-email 2.10.1 (Apple Git-78)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [PATCH V3 0/4] Add vPMU vPMU support under TCG mode
+X-Received-From: 2a00:1450:400c:c09::243
+X-Mailman-Approved-At: Fri, 10 Feb 2017 16:33:47 -0500
+Subject: [Qemu-arm] [PATCH v2] target-arm: Implement BCM2835 hardware RNG
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -68,63 +78,266 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
+Cc: peter.maydell@linaro.org, qemu-devel@nongnu.org,
+	Marcin Chojnacki <marcinch7@gmail.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: qybZcXyEXtnC
+X-TUID: srMdnTTAWGYg
 
+Recent vanilla Raspberry Pi kernels started to make use of
+the hardware random number generator in BCM2835 SoC. As a
+result, those kernels wouldn't work anymore under QEMU
+but rather just freeze during the boot process.
 
+This patch implements a trivial BCM2835 compatible RNG,
+and adds it as a peripheral to BCM2835 platform, which
+allows to boot a vanilla Raspberry Pi kernel under Qemu.
 
-On 02/10/2017 09:11 AM, Peter Maydell wrote:
-> On 10 February 2017 at 15:00, Peter Maydell <peter.maydell@linaro.org> wrote:
->> On 7 February 2017 at 21:49, Wei Huang <wei@redhat.com> wrote:
->>> QEMU has implemented cycle count support for guest VM under TCG mode.
->>> But this feature is not complete. In fact using perf inside a
->>> 64-bit Linux guest VM (under TCG) can cause the following kernel panic
->>> because some PMU registers are not implemented.
->>>
->>> [  329.445970] [<fffffe000009e600>] armv8pmu_enable_event+0x58/0x8c
->>> [  329.446713] [<fffffe0000621e74>] armpmu_start+0x4c/0x74
->>>
->>> This patchset solves the problem by adding support for missing vPMU
->>> registers. Basic perf test can work (both ACPI and DT) now under TCG
->>> by applying this patchset.
->>>
->>> address@hidden ~]# perf stat ls
->>>  Performance counter stats for 'ls':
->>>
->>>         226.740256      task-clock (msec)         #    0.312 CPUs utilized
->>>                 76      context-switches          #    0.335 K/sec
->>>                  0      cpu-migrations            #    0.000 K/sec
->>>                 64      page-faults               #    0.282 K/sec
->>>        186,031,410      cycles                    #    0.820 GHz      (36.40%)
->>>    <not supported>      stalled-cycles-frontend
->>>    <not supported>      stalled-cycles-backend
->>>      <not counted>      instructions               (0.00%)
->>>    <not supported>      branches
->>>      <not counted>      branch-misses              (0.00%)
->>>
->>> V2->V3:
->>>  * Remove PMXEVCNTR_EL0 support
->>>  * Add read access support for PMXEVTYPER and change the CONSTRAINED
->>>    UNPREDICTABLE behavior of PMXEVTYPER to RAZ/WI.
->>>
->>> V1->V2:
->>>   * Change most PMU registers to 64bit and the behavior of PMXEVTYPER
->>>   * Add support for PMXEVCNTR_EL0
->>>   * Misc fixes (DT, ID_AA64DFR0_EL1, ...) under TCG mod
->>
->> Applied to target-arm.next, thanks.
-> 
-> ...though patch 1 breaks compilation of linux-user targets. I've
-> fixed it up by moving the #ifndef CONFIG_USER_ONLY to the right
-> place to cover the new regdefs.
+Changes since v1:
+ * Prevented guest from writing [31..20] bits in rng_status
+ * Removed redundant minimum_version_id_old
+ * Added field entries for the state
+ * Changed realize function to reset
 
-My bad. I normally did compilation for all targets + "make check" before
-sending patches out. But on that particular machine, qemu was configured
-for aarch64-softmmu only, thus missing this compilation error ...
+Signed-off-by: Marcin Chojnacki <marcinch7@gmail.com>
+---
+ hw/arm/bcm2835_peripherals.c         |  15 +++++
+ hw/misc/Makefile.objs                |   1 +
+ hw/misc/bcm2835_rng.c                | 124 +++++++++++++++++++++++++++++++++++
+ include/hw/arm/bcm2835_peripherals.h |   2 +
+ include/hw/misc/bcm2835_rng.h        |  27 ++++++++
+ 5 files changed, 169 insertions(+)
+ create mode 100644 hw/misc/bcm2835_rng.c
+ create mode 100644 include/hw/misc/bcm2835_rng.h
 
-> 
-> thanks
-> -- PMM
-> 
+diff --git a/hw/arm/bcm2835_peripherals.c b/hw/arm/bcm2835_peripherals.c
+index 2e641a3..9ed22d5 100644
+--- a/hw/arm/bcm2835_peripherals.c
++++ b/hw/arm/bcm2835_peripherals.c
+@@ -86,6 +86,11 @@ static void bcm2835_peripherals_init(Object *obj)
+     object_property_add_const_link(OBJECT(&s->property), "dma-mr",
+                                    OBJECT(&s->gpu_bus_mr), &error_abort);
+ 
++    /* Random Number Generator */
++    object_initialize(&s->rng, sizeof(s->rng), TYPE_BCM2835_RNG);
++    object_property_add_child(obj, "rng", OBJECT(&s->rng), NULL);
++    qdev_set_parent_bus(DEVICE(&s->rng), sysbus_get_default());
++
+     /* Extended Mass Media Controller */
+     object_initialize(&s->sdhci, sizeof(s->sdhci), TYPE_SYSBUS_SDHCI);
+     object_property_add_child(obj, "sdhci", OBJECT(&s->sdhci), NULL);
+@@ -226,6 +231,16 @@ static void bcm2835_peripherals_realize(DeviceState *dev, Error **errp)
+     sysbus_connect_irq(SYS_BUS_DEVICE(&s->property), 0,
+                       qdev_get_gpio_in(DEVICE(&s->mboxes), MBOX_CHAN_PROPERTY));
+ 
++    /* Random Number Generator */
++    object_property_set_bool(OBJECT(&s->rng), true, "realized", &err);
++    if (err) {
++        error_propagate(errp, err);
++        return;
++    }
++
++    memory_region_add_subregion(&s->peri_mr, RNG_OFFSET,
++                sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->rng), 0));
++
+     /* Extended Mass Media Controller */
+     object_property_set_int(OBJECT(&s->sdhci), BCM2835_SDHC_CAPAREG, "capareg",
+                             &err);
+diff --git a/hw/misc/Makefile.objs b/hw/misc/Makefile.objs
+index 898e4cc..57a4406 100644
+--- a/hw/misc/Makefile.objs
++++ b/hw/misc/Makefile.objs
+@@ -42,6 +42,7 @@ obj-$(CONFIG_OMAP) += omap_sdrc.o
+ obj-$(CONFIG_OMAP) += omap_tap.o
+ obj-$(CONFIG_RASPI) += bcm2835_mbox.o
+ obj-$(CONFIG_RASPI) += bcm2835_property.o
++obj-$(CONFIG_RASPI) += bcm2835_rng.o
+ obj-$(CONFIG_SLAVIO) += slavio_misc.o
+ obj-$(CONFIG_ZYNQ) += zynq_slcr.o
+ obj-$(CONFIG_ZYNQ) += zynq-xadc.o
+diff --git a/hw/misc/bcm2835_rng.c b/hw/misc/bcm2835_rng.c
+new file mode 100644
+index 0000000..d9a5acf
+--- /dev/null
++++ b/hw/misc/bcm2835_rng.c
+@@ -0,0 +1,124 @@
++/*
++ * BCM2835 Random Number Generator emulation
++ *
++ * Copyright (C) 2017 Marcin Chojnacki <marcinch7@gmail.com>
++ *
++ * This work is licensed under the terms of the GNU GPL, version 2 or later.
++ * See the COPYING file in the top-level directory.
++ */
++
++#include "qemu/osdep.h"
++#include "qemu/log.h"
++#include "hw/misc/bcm2835_rng.h"
++
++static uint64_t bcm2835_rng_read(void *opaque, hwaddr offset,
++                                 unsigned size)
++{
++    BCM2835RngState *s = (BCM2835RngState *)opaque;
++    uint32_t res = 0;
++
++    assert(size == 4);
++
++    switch (offset) {
++    case 0x0:    /* rng_ctrl */
++        res = s->rng_ctrl;
++        break;
++    case 0x4:    /* rng_status */
++        res = s->rng_status | (1 << 24);
++        break;
++    case 0x8:    /* rng_data */
++        res = rand();
++        break;
++
++    default:
++        qemu_log_mask(LOG_GUEST_ERROR,
++                      "bcm2835_rng_read: Bad offset %x\n",
++                      (int)offset);
++        res = 0;
++        break;
++    }
++
++    return res;
++}
++
++static void bcm2835_rng_write(void *opaque, hwaddr offset,
++                              uint64_t value, unsigned size)
++{
++    BCM2835RngState *s = (BCM2835RngState *)opaque;
++
++    assert(size == 4);
++
++    switch (offset) {
++    case 0x0:    /* rng_ctrl */
++        s->rng_ctrl = value;
++        break;
++    case 0x4:    /* rng_status */
++        /* we shouldn't let the guest write to bits [31..20] */
++        s->rng_status &= ~0xFFFFF;        /* clear 20 lower bits */
++        s->rng_status |= value & 0xFFFFF; /* set them to new value */
++        break;
++
++    default:
++        qemu_log_mask(LOG_GUEST_ERROR,
++                      "bcm2835_rng_write: Bad offset %x\n",
++                      (int)offset);
++        break;
++    }
++}
++
++static const MemoryRegionOps bcm2835_rng_ops = {
++    .read = bcm2835_rng_read,
++    .write = bcm2835_rng_write,
++    .endianness = DEVICE_NATIVE_ENDIAN,
++};
++
++static const VMStateDescription vmstate_bcm2835_rng = {
++    .name = TYPE_BCM2835_RNG,
++    .version_id = 1,
++    .minimum_version_id = 1,
++    .fields = (VMStateField[]) {
++        VMSTATE_UINT32(rng_ctrl, BCM2835RngState),
++        VMSTATE_UINT32(rng_status, BCM2835RngState),
++        VMSTATE_END_OF_LIST()
++    }
++};
++
++static void bcm2835_rng_init(Object *obj)
++{
++    BCM2835RngState *s = BCM2835_RNG(obj);
++
++    memory_region_init_io(&s->iomem, obj, &bcm2835_rng_ops, s,
++                          TYPE_BCM2835_RNG, 0x10);
++    sysbus_init_mmio(SYS_BUS_DEVICE(s), &s->iomem);
++}
++
++static void bcm2835_rng_reset(DeviceState *dev)
++{
++    BCM2835RngState *s = BCM2835_RNG(dev);
++
++    s->rng_ctrl = 0;
++    s->rng_status = 0;
++}
++
++static void bcm2835_rng_class_init(ObjectClass *klass, void *data)
++{
++    DeviceClass *dc = DEVICE_CLASS(klass);
++
++    dc->reset = bcm2835_rng_reset;
++    dc->vmsd = &vmstate_bcm2835_rng;
++}
++
++static TypeInfo bcm2835_rng_info = {
++    .name          = TYPE_BCM2835_RNG,
++    .parent        = TYPE_SYS_BUS_DEVICE,
++    .instance_size = sizeof(BCM2835RngState),
++    .class_init    = bcm2835_rng_class_init,
++    .instance_init = bcm2835_rng_init,
++};
++
++static void bcm2835_rng_register_types(void)
++{
++    type_register_static(&bcm2835_rng_info);
++}
++
++type_init(bcm2835_rng_register_types)
+diff --git a/include/hw/arm/bcm2835_peripherals.h b/include/hw/arm/bcm2835_peripherals.h
+index e12ae37..31241c7 100644
+--- a/include/hw/arm/bcm2835_peripherals.h
++++ b/include/hw/arm/bcm2835_peripherals.h
+@@ -19,6 +19,7 @@
+ #include "hw/dma/bcm2835_dma.h"
+ #include "hw/intc/bcm2835_ic.h"
+ #include "hw/misc/bcm2835_property.h"
++#include "hw/misc/bcm2835_rng.h"
+ #include "hw/misc/bcm2835_mbox.h"
+ #include "hw/sd/sdhci.h"
+ 
+@@ -41,6 +42,7 @@ typedef struct BCM2835PeripheralState {
+     BCM2835DMAState dma;
+     BCM2835ICState ic;
+     BCM2835PropertyState property;
++    BCM2835RngState rng;
+     BCM2835MboxState mboxes;
+     SDHCIState sdhci;
+ } BCM2835PeripheralState;
+diff --git a/include/hw/misc/bcm2835_rng.h b/include/hw/misc/bcm2835_rng.h
+new file mode 100644
+index 0000000..41a531b
+--- /dev/null
++++ b/include/hw/misc/bcm2835_rng.h
+@@ -0,0 +1,27 @@
++/*
++ * BCM2835 Random Number Generator emulation
++ *
++ * Copyright (C) 2017 Marcin Chojnacki <marcinch7@gmail.com>
++ *
++ * This work is licensed under the terms of the GNU GPL, version 2 or later.
++ * See the COPYING file in the top-level directory.
++ */
++
++#ifndef BCM2835_RNG_H
++#define BCM2835_RNG_H
++
++#include "hw/sysbus.h"
++
++#define TYPE_BCM2835_RNG "bcm2835-rng"
++#define BCM2835_RNG(obj) \
++        OBJECT_CHECK(BCM2835RngState, (obj), TYPE_BCM2835_RNG)
++
++typedef struct {
++    SysBusDevice busdev;
++    MemoryRegion iomem;
++
++    uint32_t rng_ctrl;
++    uint32_t rng_status;
++} BCM2835RngState;
++
++#endif
+-- 
+2.10.1 (Apple Git-78)
+

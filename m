@@ -1,51 +1,51 @@
-Received: by 10.25.77.65 with SMTP id a62csp516826lfb;
-        Fri, 10 Feb 2017 06:46:50 -0800 (PST)
-X-Received: by 10.223.174.199 with SMTP id y65mr9298908wrc.19.1486738010174;
-        Fri, 10 Feb 2017 06:46:50 -0800 (PST)
+Received: by 10.25.77.65 with SMTP id a62csp519721lfb;
+        Fri, 10 Feb 2017 06:53:51 -0800 (PST)
+X-Received: by 10.28.17.133 with SMTP id 127mr7666253wmr.80.1486738431479;
+        Fri, 10 Feb 2017 06:53:51 -0800 (PST)
 Return-Path: <peter.maydell@linaro.org>
-Received: from mail-wm0-x230.google.com (mail-wm0-x230.google.com. [2a00:1450:400c:c09::230])
-        by mx.google.com with ESMTPS id b78si1448133wme.134.2017.02.10.06.46.49
+Received: from mail-wr0-x230.google.com (mail-wr0-x230.google.com. [2a00:1450:400c:c0c::230])
+        by mx.google.com with ESMTPS id a9si2449164wrb.49.2017.02.10.06.53.51
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 10 Feb 2017 06:46:50 -0800 (PST)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 2a00:1450:400c:c09::230 as permitted sender) client-ip=2a00:1450:400c:c09::230;
+        Fri, 10 Feb 2017 06:53:51 -0800 (PST)
+Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 2a00:1450:400c:c0c::230 as permitted sender) client-ip=2a00:1450:400c:c0c::230;
 Authentication-Results: mx.google.com;
        dkim=pass header.i=@linaro.org;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 2a00:1450:400c:c09::230 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 2a00:1450:400c:c0c::230 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: by mail-wm0-x230.google.com with SMTP id v186so112152457wmd.0
-        for <alex.bennee@linaro.org>; Fri, 10 Feb 2017 06:46:49 -0800 (PST)
+Received: by mail-wr0-x230.google.com with SMTP id 89so109734141wrr.2
+        for <alex.bennee@linaro.org>; Fri, 10 Feb 2017 06:53:51 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
         h=mime-version:in-reply-to:references:from:date:message-id:subject:to
          :cc:content-transfer-encoding;
-        bh=CuZlRYAKkFw6ggaQD6qQTcm4CQg5Yv0ZxbPa3T3LDsU=;
-        b=aa8FyPNtbXnskQctWILAoT84C81H2Wpr7Xj68QjYmPEOV7nwiyzrPeLubrWy0GFFki
-         PXnkMzanoH3qpD88+sLuwfFrPo8fqzzoBw1MgDw+Und7MLb4CibTCcapZdzB+wR1GVj4
-         i/cNTx3h2TWE9ILwFm4t8E8J2pPp7vcC9qRa8=
+        bh=BCGdx/qCjmGPcaYyvx7L/BIf8FJIeVzqkCuxf84PnQQ=;
+        b=cS0cH6rBFKpR3oIGrqlPc6SsGKblnzz7MwEExG5RFgGjBYwrUXpfhapDFuj2I0/jSz
+         GE/py3x9aomYHSMyIXb9V7y430tIEgAhcgIniaLCewvmd7TaBWaI4VXdoCQ1d9saUlQ7
+         gTikWKkJymMGa7aKD+q9daIvTbeyMQYGVKNh0=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:mime-version:in-reply-to:references:from:date
          :message-id:subject:to:cc:content-transfer-encoding;
-        bh=CuZlRYAKkFw6ggaQD6qQTcm4CQg5Yv0ZxbPa3T3LDsU=;
-        b=bz8E9hAwanQ7WMaDZC9hIlUoKn7LpODZpMRa7t6Vr8kgdkEFT0rddkufoWbPKxEdDx
-         EuNFwdi7b7dEEVcBjF1nfuM5Hr/9AaLUB/u5qpC5zVuKqXWRS3XAWlGHEcWL4OlW+vJr
-         Jv4G2lBkpdLRmwk2j99WzBZLQDfGYK0aAGDjmdJxZvmPe0p8jU+IxUfhrA1WbU74s2Db
-         //ugWER5hro2Let6a6CLr2bZSZwiQO2B6TQxAKuezOPe59Y2yHaax2eFu608a0hcbwp9
-         9CJQnvZRbx7M/nA+Co9K+gBJ9TcVas6UqxejMk40Dk3lme2fIBL75kl8EP1nwZ8iqq/O
-         pydg==
-X-Gm-Message-State: AMke39mutP7BcUlkvLgocHU0RhJIRYgUljUlyHrXlcqtHlUe1ZjFu1smzBmFQswRh17QYWDKGLoXmVCF4umTezfjors=
-X-Received: by 10.28.4.10 with SMTP id 10mr29373349wme.142.1486738009684; Fri,
- 10 Feb 2017 06:46:49 -0800 (PST)
+        bh=BCGdx/qCjmGPcaYyvx7L/BIf8FJIeVzqkCuxf84PnQQ=;
+        b=N/toLdxXnP4mykmOtIqwceEIJUTpU11XKPD0g2UY9PoW4LXZqCTK/GZlpzz8iybvyB
+         IKWEOcHabWRivrv+G1keYYRjFdvqTXNcyR+Snr23pijlFMhnVraHDSmeYgbXCxNqr9Mi
+         Ssm1O8o4BYtwVb17fbwFPjQiOTAknMe9xE5dJSbkgb25EkOJB4EFOpVSqYV/HaGYIDhk
+         tedqvSc2Igld7HZ0e7/DZ7C6g+zVC0raxH9ph1Km5Ln/9zUhed4GPIoODp7ZwDd5W7jL
+         rBXntWeiDIGKWJhDRZIlbbmAoW+XYkm87Rz5XgDJg7KPUICb2MWGPz8ghdEtn2KHCCJC
+         dX/A==
+X-Gm-Message-State: AMke39lHgcIr84WlW/a7BoqZKMyC6Rf8Klf+nbpDDB6SefRXnZq/3ccD7RLgzGhHid2tnchMXikjr90HxKKcFktNJ80=
+X-Received: by 10.223.142.131 with SMTP id q3mr7978733wrb.195.1486738431072;
+ Fri, 10 Feb 2017 06:53:51 -0800 (PST)
 MIME-Version: 1.0
-Received: by 10.223.145.69 with HTTP; Fri, 10 Feb 2017 06:46:29 -0800 (PST)
-In-Reply-To: <20170209170904.5713-21-alex.bennee@linaro.org>
-References: <20170209170904.5713-1-alex.bennee@linaro.org> <20170209170904.5713-21-alex.bennee@linaro.org>
+Received: by 10.223.145.69 with HTTP; Fri, 10 Feb 2017 06:53:30 -0800 (PST)
+In-Reply-To: <20170209170904.5713-24-alex.bennee@linaro.org>
+References: <20170209170904.5713-1-alex.bennee@linaro.org> <20170209170904.5713-24-alex.bennee@linaro.org>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 10 Feb 2017 14:46:29 +0000
-Message-ID: <CAFEAcA8XFYaMibPkVUg8cYifn1+v=2X8HoMha67OoPnO_wBpiA@mail.gmail.com>
-Subject: Re: [PATCH v11 20/24] target-arm/powerctl: defer cpu reset work to
- CPU context
+Date: Fri, 10 Feb 2017 14:53:30 +0000
+Message-ID: <CAFEAcA8_UNip6QooREop-T5RBpdo1me0piEAscJRC+G7tGcNrA@mail.gmail.com>
+Subject: Re: [PATCH v11 23/24] hw/misc/imx6_src: defer clearing of SRC_SCR
+ reset bits
 To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
 Cc: Richard Henderson <rth@twiddle.net>, MTTCG Devel <mttcg@listserver.greensocs.com>, 
 	QEMU Developers <qemu-devel@nongnu.org>, =?UTF-8?B?S09OUkFEIEZyw6lkw6lyaWM=?= <fred.konrad@greensocs.com>, 
@@ -53,100 +53,98 @@ Cc: Richard Henderson <rth@twiddle.net>, MTTCG Devel <mttcg@listserver.greensocs
 	Pranith Kumar <bobby.prani@gmail.com>, Nikunj A Dadhania <nikunj@linux.vnet.ibm.com>, 
 	Mark Burton <mark.burton@greensocs.com>, Paolo Bonzini <pbonzini@redhat.com>, 
 	Jan Kiszka <jan.kiszka@siemens.com>, Fedorov Sergey <serge.fdrv@gmail.com>, 
-	Bamvor Zhang Jian <bamvor.zhangjian@linaro.org>, "open list:ARM" <qemu-arm@nongnu.org>
+	Bamvor Zhang Jian <bamvor.zhangjian@linaro.org>, Peter Chubb <peter.chubb@nicta.com.au>, 
+	"open list:i.MX31" <qemu-arm@nongnu.org>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: quoted-printable
-X-TUID: iRI8b+ds9glz
+X-TUID: cFI5xfojHnAG
 
 On 9 February 2017 at 17:09, Alex Benn=C3=A9e <alex.bennee@linaro.org> wrot=
 e:
-> When switching a new vCPU on we want to complete a bunch of the setup
-> work before we start scheduling the vCPU thread. To do this cleanly we
-> defer vCPU setup to async work which will run the vCPUs execution
-> context as the thread is woken up. The scheduling of the work will kick
-> the vCPU awake.
->
-> This avoids potential races in MTTCG system emulation.
+> The arm_reset_cpu/set_cpu_on/set_cpu_off() functions do their work
+> asynchronously in the target vCPUs context. As a result we need to
+> ensure the SRC_SCR reset bits correctly report the reset status at the
+> right time. To do this we defer the clearing of the bit with an async
+> job which will run after the work queued by ARM powerctl functions.
 >
 > Signed-off-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
-> Reviewed-by: Richard Henderson <rth@twiddle.net>
->
 > ---
-> v7
->   - add const to static mode_for_el[] array
->   - fix checkpatch long lines
-> v10
->   - use async work for arm_set_cpu_off, arm_reset_cpu as well
->   - model ON_PENDING to deal with racing arm_set_cpu_on
-> v11
->   - move to single cpu->power_state protected by BQL
->   - bump migration format
-> ---
->  target/arm/arm-powerctl.c | 202 +++++++++++++++++++++++++++++++---------=
+>  hw/misc/imx6_src.c | 58 +++++++++++++++++++++++++++++++++++++++++++++---=
 ------
->  target/arm/arm-powerctl.h |   2 +
->  target/arm/cpu.c          |   4 +-
->  target/arm/cpu.h          |  13 ++-
->  target/arm/kvm.c          |   7 +-
->  target/arm/machine.c      |   6 +-
->  target/arm/psci.c         |  16 +++-
->  7 files changed, 174 insertions(+), 76 deletions(-)
+>  1 file changed, 49 insertions(+), 9 deletions(-)
 >
-> diff --git a/target/arm/arm-powerctl.c b/target/arm/arm-powerctl.c
-> index fbb7a15daa..3b4c51978c 100644
-> --- a/target/arm/arm-powerctl.c
-> +++ b/target/arm/arm-powerctl.c
+> diff --git a/hw/misc/imx6_src.c b/hw/misc/imx6_src.c
+> index 55b817b8d7..f7c1d94a3e 100644
+> --- a/hw/misc/imx6_src.c
+> +++ b/hw/misc/imx6_src.c
 > @@ -14,6 +14,7 @@
->  #include "internals.h"
->  #include "arm-powerctl.h"
+>  #include "qemu/bitops.h"
 >  #include "qemu/log.h"
-> +#include "qemu/main-loop.h"
->  #include "exec/exec-all.h"
+>  #include "arm-powerctl.h"
+> +#include "qom/cpu.h"
 >
->  #ifndef DEBUG_ARM_POWERCTL
-> @@ -48,11 +49,93 @@ CPUState *arm_get_cpu_by_id(uint64_t id)
->      return NULL;
+>  #ifndef DEBUG_IMX6_SRC
+>  #define DEBUG_IMX6_SRC 0
+> @@ -113,6 +114,45 @@ static uint64_t imx6_src_read(void *opaque, hwaddr o=
+ffset, unsigned size)
+>      return value;
 >  }
 >
-> +struct cpu_on_info {
+> +
+> +/* The reset is asynchronous so we need to defer clearing the reset
+> + * bit until the work is completed.
+> + */
+> +
+> +struct src_scr_reset_info {
 
-Since you'll need to respin this anyway, our coding
-style likes CamelCase for struct names.
+Struct names should be CamelCase.
 
-> diff --git a/target/arm/machine.c b/target/arm/machine.c
-> index fa5ec76090..15619a0430 100644
-> --- a/target/arm/machine.c
-> +++ b/target/arm/machine.c
-> @@ -286,8 +286,8 @@ static int cpu_post_load(void *opaque, int version_id=
-)
->
->  const VMStateDescription vmstate_arm_cpu =3D {
->      .name =3D "cpu",
-> -    .version_id =3D 22,
-> -    .minimum_version_id =3D 22,
-> +    .version_id =3D 23,
-> +    .minimum_version_id =3D 23,
+> +    IMX6SRCState *s;
+> +    unsigned long reset_bit;
 
-Sorry, you can't do this, it will break migration. You need
-to do something cleverer with a subsection or other trick.
+Unsigned long ? That's always a bit of a red flag because it's
+variable in size from host to host. I think you want "int".
 
-David Gilbert's recent patch on list to docs/migration.txt
-should have some examples of how to do this.
+> +};
+> +
+> +static void imx6_clear_reset_bit(CPUState *cpu, run_on_cpu_data data)
+> +{
+> +    struct src_scr_reset_info *ri =3D data.host_ptr;
+> +    IMX6SRCState *s =3D ri->s;
+> +
+> +    assert(qemu_mutex_iothread_locked());
+> +
+> +    s->regs[SRC_SCR] =3D deposit32(s->regs[SRC_SCR], ri->reset_bit, 1, 0=
+);
+> +    DPRINTF("reg[%s] <=3D 0x%" PRIx32 "\n",
+> +            imx6_src_reg_name(SRC_SCR), s->regs[SRC_SCR]);
+> +
+> +    g_free(ri);
+> +}
+> +
+> +static void imx6_defer_clear_reset_bit(int cpuid,
+> +                                       IMX6SRCState *s,
+> +                                       unsigned long reset_shift)
+> +{
+> +    struct src_scr_reset_info *ri;
+> +
+> +    ri =3D g_malloc(sizeof(struct src_scr_reset_info));
+> +    ri->s =3D s;
+> +    ri->reset_bit =3D reset_shift;
+> +
+> +    async_run_on_cpu(arm_get_cpu_by_id(cpuid), imx6_clear_reset_bit,
+> +                     RUN_ON_CPU_HOST_PTR(ri));
+> +}
 
->      .pre_save =3D cpu_pre_save,
->      .post_load =3D cpu_post_load,
->      .fields =3D (VMStateField[]) {
-> @@ -329,7 +329,7 @@ const VMStateDescription vmstate_arm_cpu =3D {
->          VMSTATE_UINT64(env.exception.vaddress, ARMCPU),
->          VMSTATE_TIMER_PTR(gt_timer[GTIMER_PHYS], ARMCPU),
->          VMSTATE_TIMER_PTR(gt_timer[GTIMER_VIRT], ARMCPU),
-> -        VMSTATE_BOOL(powered_off, ARMCPU),
-> +        VMSTATE_UINT32(power_state, ARMCPU),
->          VMSTATE_END_OF_LIST()
->      },
->      .subsections =3D (const VMStateDescription*[]) {
+What happens if we do a system reset between calling this
+and the async hook running? Do all the outstanding async
+run hooks guarantee to run first?
 
-I think the rest is OK.
+I guess a malloc-and-free is OK since the guest isn't going to be
+bouncing CPUs through reset very often, though it's a bit ugly to
+see in device code.
+
+Otherwise this looks OK.
 
 thanks
 -- PMM

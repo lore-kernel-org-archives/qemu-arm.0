@@ -1,175 +1,130 @@
-Received: by 10.25.77.65 with SMTP id a62csp501737lfb;
-        Fri, 10 Feb 2017 06:12:20 -0800 (PST)
-X-Received: by 10.200.53.247 with SMTP id l52mr8342222qtb.144.1486735940316;
-        Fri, 10 Feb 2017 06:12:20 -0800 (PST)
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 10.25.77.65 with SMTP id a62csp524538lfb;
+        Fri, 10 Feb 2017 07:03:51 -0800 (PST)
+X-Received: by 10.55.12.14 with SMTP id 14mr8613612qkm.308.1486739031738;
+        Fri, 10 Feb 2017 07:03:51 -0800 (PST)
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id d16si910348qka.326.2017.02.10.06.12.19
+        by mx.google.com with ESMTPS id m65si1407593qtd.323.2017.02.10.07.03.51
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 10 Feb 2017 06:12:20 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Fri, 10 Feb 2017 07:03:51 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@canonical-com.20150623.gappssmtp.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=canonical.com
-Received: from localhost ([::1]:44062 helo=lists.gnu.org)
+       dkim=fail header.i=@linaro.org;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:44292 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ccBvt-0004cl-O6
-	for alex.bennee@linaro.org; Fri, 10 Feb 2017 09:12:17 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:58830)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1ccCjl-0005OS-7W
+	for alex.bennee@linaro.org; Fri, 10 Feb 2017 10:03:49 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:51574)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alex.hung@canonical.com>) id 1cc0Cg-0003SI-DE
-	for qemu-devel@nongnu.org; Thu, 09 Feb 2017 20:40:51 -0500
+	(envelope-from <peter.maydell@linaro.org>) id 1ccCjF-000528-Lr
+	for qemu-arm@nongnu.org; Fri, 10 Feb 2017 10:03:18 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <alex.hung@canonical.com>) id 1cc0Cf-0004S3-7i
-	for qemu-devel@nongnu.org; Thu, 09 Feb 2017 20:40:50 -0500
-Received: from mail-qk0-x231.google.com ([2607:f8b0:400d:c09::231]:34870)
+	(envelope-from <peter.maydell@linaro.org>) id 1ccCjE-0001eh-SZ
+	for qemu-arm@nongnu.org; Fri, 10 Feb 2017 10:03:17 -0500
+Received: from mail-wm0-x22a.google.com ([2a00:1450:400c:c09::22a]:37437)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <alex.hung@canonical.com>)
-	id 1cc0Cf-0004Rj-26
-	for qemu-devel@nongnu.org; Thu, 09 Feb 2017 20:40:49 -0500
-Received: by mail-qk0-x231.google.com with SMTP id u25so24617217qki.2
-	for <qemu-devel@nongnu.org>; Thu, 09 Feb 2017 17:40:48 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=canonical-com.20150623.gappssmtp.com; s=20150623;
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1ccCjE-0001do-MY
+	for qemu-arm@nongnu.org; Fri, 10 Feb 2017 10:03:16 -0500
+Received: by mail-wm0-x22a.google.com with SMTP id v77so50503216wmv.0
+	for <qemu-arm@nongnu.org>; Fri, 10 Feb 2017 07:03:16 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
 	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc:content-transfer-encoding;
-	bh=iT3AJZ0I67HvIskGn+9KDuwYFr3wEAV95zVOqT1uurg=;
-	b=OHZ3UGTIBDw8hSuUT4OHm5Ars1TDhEYRfBfTmzZwJ31O82/aTq9deMckpgMoihK910
-	O5OEVQWygrFNB7W3SgRSAaCzatxehUy1QmA6Ii0s7nvo2R9UwX6Ubvf/lcvtBXp5S4o6
-	yhC8da08Nq+C2yy0pT8kpYpyuZxbZNLX5tMUjm0su4gtYfklyg9wyd/BizLY0I4wBNpC
-	NCUQ9fqOpZZB3tu1JW9ny4m8jzd6W9nvcp63N+GNSVjS0qsLzNrozljYUq38/YII6emt
-	+AZ1Gw+ZIkNrF84J241JlsQn51Fw9B67/kVJXmr246Ts8hmAGJODljA9qode/V5M4qRi
-	2sZg==
+	:cc; bh=zD/yY6hn1re23DWKqAZew0q7QbZ51cBJOQmEThtDsbU=;
+	b=OooSs3FXqbeSzH3RPTudxefeDw5KFsRpPnwnhC4jsO+Lm/uS/bNxHX0Vd6kZR59Nbs
+	YjsVdhH1mhS+0iVUJacc6HUfZy5zQHYN+jnYxUnKhERILV5uIswAbjr2DNoLhdtwZwuU
+	Z2do8RKz0MBoQaglzw02azQyWoswraUUUXVFE=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc:content-transfer-encoding;
-	bh=iT3AJZ0I67HvIskGn+9KDuwYFr3wEAV95zVOqT1uurg=;
-	b=AuOIzpUyQipna5ZDmS+4dY8vXlDuycpZFIbJ1GcQ2oC+DGfae1xrMPIJtmjcJaBdJs
-	3FcxBwBJWSSzy3WfscmZmkABjdsqOUDbiUhJqoZj6n1nuKro5ET+AGDQ4zjPxEtxE7rk
-	SI27slHm6opO+D7y7HekM/RkyywR48pAJXN2AjGcW9uiWzceY2m9MC5kOIep8AVswcVD
-	EqjTjBHh3+DiG807701OqsRZnO+cjbFY9HNr6y9c39Bete+ZJ3um0eD6CllhpQde3JTQ
-	ZAOJ6GHpRRcCLtd7puhIJTECkVqltEVjr5Xm2GBl9UBDxeZmOOK3XHS1nP+PDUEgy53z
-	CrEg==
-X-Gm-Message-State: AMke39l0LltIQuqpnPVDRRhhb6gRfw3raa3XXljZqq0XT2mi4ofN7ZrdBlHLPBuWs9CZeOUyKZCeLQUNvU6DRZNZ
-X-Received: by 10.55.17.223 with SMTP id 92mr5952112qkr.30.1486690847904; Thu,
-	09 Feb 2017 17:40:47 -0800 (PST)
+	:message-id:subject:to:cc;
+	bh=zD/yY6hn1re23DWKqAZew0q7QbZ51cBJOQmEThtDsbU=;
+	b=gTV7PoSLWpTE6pnD0wsAiKTqwLhwSggybJ0MFu95KwhgoKFw2jBjXWJjVSP0gLUqt1
+	DFvZTc6Zzv/0Y9hrOG0S3v9im25Nv0s0I6PjYWK7nmsNaF464IPTNUhHm/yPN/jp1FCd
+	AROqs1J6hXnwdpguDlsZQQ8ZuQ6JqFtjQK7AUt+/hvici0z84MJ1PiSTc1/lrayeyDrH
+	ztzZ059/osaYt0k5gkWUJgt77yFrn5Ek12cApbNEJc6IPO0v8eFhanc99McyTavKlPeK
+	RxGJYmyWEPsx7pqhZHT7GmXOIPqrUoAZnSnPcOWftu1PTIJbIsX+yn8p1+nlijFvPK10
+	64TA==
+X-Gm-Message-State: AMke39n15bAvv1DlWlM4+kfKG7rivpgCYSR+15J3+RPuhjCFuHKtPe3cCIbCZG/YGszoFq5ibrXs07q8PUxODQKY
+X-Received: by 10.28.91.16 with SMTP id p16mr7681566wmb.111.1486738995450;
+	Fri, 10 Feb 2017 07:03:15 -0800 (PST)
 MIME-Version: 1.0
-Received: by 10.12.157.200 with HTTP; Thu, 9 Feb 2017 17:40:47 -0800 (PST)
-In-Reply-To: <374fb64f-9590-2b23-871a-90bbf08ce70d@linaro.org>
-References: <1486560712-44171-1-git-send-email-agraf@suse.de>
-	<ef6b903b-5224-b4eb-1080-a3689fcec70a@redhat.com>
-	<f2f119bc-9c22-ad52-ff26-7d6ecc213a3c@suse.de>
-	<c1ff3829-b068-881a-1523-317ef0d31689@redhat.com>
-	<C4E1DF44-1626-425D-880E-0053AD688422@linaro.org>
-	<CAFEAcA8rjjzgvN-RuNPVHM53R9V9xry1Uj_ArmF1va-Y920eBQ@mail.gmail.com>
-	<991fc2e7-e483-c7bc-fc45-3d32d9d37857@redhat.com>
-	<374fb64f-9590-2b23-871a-90bbf08ce70d@linaro.org>
-From: Alex Hung <alex.hung@canonical.com>
-Date: Fri, 10 Feb 2017 09:40:47 +0800
-Message-ID: <CAJ=jquaaiX1GM_ea9b2X2NOW47q456kp71mcvtc1q_q+OnpCRA@mail.gmail.com>
-To: Heyi Guo <heyi.guo@linaro.org>
+Received: by 10.223.145.69 with HTTP; Fri, 10 Feb 2017 07:02:54 -0800 (PST)
+In-Reply-To: <1486644810-33181-1-git-send-email-agraf@suse.de>
+References: <1486644810-33181-1-git-send-email-agraf@suse.de>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 10 Feb 2017 15:02:54 +0000
+Message-ID: <CAFEAcA-m+gKBg69xBSe4NTVkEhpdBKMDT-6+qECh=ARH6v9fyw@mail.gmail.com>
+To: Alexander Graf <agraf@suse.de>
 Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:400d:c09::231
-X-Mailman-Approved-At: Fri, 10 Feb 2017 09:10:24 -0500
-Subject: Re: [Qemu-devel] [Qemu-arm] [PATCH] target-arm: Declare virtio-mmio
- as dma-coherent in dt
-X-BeenThere: qemu-devel@nongnu.org
+X-Received-From: 2a00:1450:400c:c09::22a
+Subject: Re: [Qemu-arm] [PATCH v2 0/4] target-arm: Add some omitted dma
+ cache coherency flags
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
-	"Michael S. Tsirkin" <mst@redhat.com>,
-	Ard Biesheuvel <ard.biesheuvel@linaro.org>, Alexander Graf <agraf@suse.de>,
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: "Michael S. Tsirkin" <mst@redhat.com>,
+	Ard Biesheuvel <ard.biesheuvel@linaro.org>,
 	QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
 	Shannon Zhao <shannon.zhao@linaro.org>, Laszlo Ersek <lersek@redhat.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: qvdg9emj21gj
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: fvsPP+c8FBW7
 
-Hi,
-
-FWTS supports multiple architectures:
-
-- amd64
-- arm64
-- armhf
-- i386
-- ppc64el
-- s390x
-
-Package details are available @
-https://launchpad.net/~firmware-testing-team/+archive/ubuntu/ppa-fwts-stabl=
-e/+packages
-
-FWTS also supports device tree to some extent, thanks to contributions
-from Jeremy Kerr & Deb McLemore.
-
-Cheers,
-Alex Hung
-
-On Thu, Feb 9, 2017 at 8:04 PM, Heyi Guo <heyi.guo@linaro.org> wrote:
-> Hi all,
+On 9 February 2017 at 12:53, Alexander Graf <agraf@suse.de> wrote:
+> ARM is amazing when it comes to cache coherency and VMs. While any sane
+> architecture allows the host to override the guest's caching attributes,
+> that's very hard to do on ARM.
 >
-> Just to confirm that FWTS is supporting aarch64.
+> That means that the guest may directly access guest memory bypassing the
+> cache while QEMU happily writes to / reads from cache. The end result is
+> very nasty, because both sides see very different views of the world.
 >
-> Alex is the maintainer of FWTS and may provide more information.
+> That means that we need to be very cautious to tell guests that devices
+> that QEMU emulates are going to use data in the cache rather than directly
+> on memory.
 >
-> Regards,
+> We added this to PCI a while back for DT (5d636e21 "hw/arm/virt: mark the PCIe
+> host controller as DMA coherent in the DT") and ACPI (bc64b96 "hw/arm/virt-
+> acpi-build: _CCA attribute is compulsory") but never updated virtio-mmio or
+> fw-cfg in DT or ACPI tables.
 >
-> Gary (Heyi Guo)
+> This patch set adds the respective cache coherency flags for them in both DT and
+> ACPI.
 >
+> Fortunately, no guests except for Linux 4.9.7 and 4.9.8 are broken because of
+> this. Upstream realized quickly enough that every user of virtio-mmio out there
+> describes its cache coherency incorrectly and reverted the patch that would
+> require said dma coherency flag. But we should be safe for the future and "do
+> the right thing".
 >
-> =E5=9C=A8 2/9/2017 2:47 AM, Laszlo Ersek =E5=86=99=E9=81=93:
->>
->> On 02/08/17 19:23, Peter Maydell wrote:
->>>
->>> On 8 February 2017 at 16:27, Ard Biesheuvel <ard.biesheuvel@linaro.org>
->>> wrote:
->>>>
->>>> The _CCA property is mandatory on arm64, and there is no default.
->>>
->>> Is there a tool that can check this kind of requirement
->>> and complain about issues in the ACPI tables (and
->>> ditto, device tree)? It's really easy to produce a
->>> dt or ACPI table that works with current kernels and
->>> then turns out to have a problem six or twelve
->>> months down the line :-(
->>
->> I think the "bios bits" project or the FWTS (firmware test suite)
->> project might do some ACPI sanity checks. They could be run in guests.
->>
->> https://biosbits.org/
->> https://wiki.ubuntu.com/FirmwareTestSuite
->>
->> However, I'm unsure if they support aarch64. Also... it's not like those
->> projects are stationary. Even the ACPI spec is a moving target (and
->> spec-level regressions exist).
->>
->> I believe Heyi Guo @ Linaro used to work with FWTS on aarch64. CC'd.
->>
->> No clue about DT conformance testing. Is there an industry standard or a
->> working group behind DT?
->>
->> Thanks
->> Laszlo
->>
+> Alexander Graf (4):
+>   target-arm: Declare virtio-mmio as dma-coherent in dt
+>   hw/arm/virt: Declare virtio-mmio as dma cache coherent in ACPI
+>   hw/arm/virt: Declare fwcfg as dma cache coherent in ACPI
+>   hw/arm/virt: Declare fwcfg as dma cache coherent in dt
 >
+>  hw/arm/vexpress.c        | 1 +
+>  hw/arm/virt-acpi-build.c | 2 ++
+>  hw/arm/virt.c            | 2 ++
+>  3 files changed, 5 insertions(+)
 
+The patches in this series have more lines of Reviewed-by: tags than
+they do actual code changes :-)
 
+Thanks, applied to target-arm.next.
 
---=20
-Cheers,
-Alex Hung
+-- PMM

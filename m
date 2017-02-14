@@ -1,88 +1,115 @@
-Received: by 10.25.77.65 with SMTP id a62csp973042lfb;
-        Mon, 13 Feb 2017 09:34:38 -0800 (PST)
-X-Received: by 10.237.54.1 with SMTP id e1mr21503221qtb.68.1487007278655;
-        Mon, 13 Feb 2017 09:34:38 -0800 (PST)
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 10.25.77.65 with SMTP id a62csp1614881lfb;
+        Tue, 14 Feb 2017 13:51:04 -0800 (PST)
+X-Received: by 10.55.23.135 with SMTP id 7mr20625465qkx.125.1487109064542;
+        Tue, 14 Feb 2017 13:51:04 -0800 (PST)
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id s4si7725231qkb.27.2017.02.13.09.34.38
+        by mx.google.com with ESMTPS id v3si1401956qtc.39.2017.02.14.13.51.03
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 13 Feb 2017 09:34:38 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Tue, 14 Feb 2017 13:51:04 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:58409 helo=lists.gnu.org)
+       dkim=fail header.i=@codeaurora.org;
+       dkim=fail header.i=@codeaurora.org;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:37363 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1cdKWK-0005Gv-4a
-	for alex.bennee@linaro.org; Mon, 13 Feb 2017 12:34:36 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:58029)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1cdl01-0006Zz-Rb
+	for alex.bennee@linaro.org; Tue, 14 Feb 2017 16:51:01 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:52696)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <clg@kaod.org>) id 1cdKIz-00008k-GF
-	for qemu-arm@nongnu.org; Mon, 13 Feb 2017 12:20:50 -0500
+	(envelope-from <alindsay@codeaurora.org>) id 1cdkyg-0005te-E1
+	for qemu-devel@nongnu.org; Tue, 14 Feb 2017 16:49:40 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <clg@kaod.org>) id 1cdKIu-000564-Ev
-	for qemu-arm@nongnu.org; Mon, 13 Feb 2017 12:20:49 -0500
-Received: from 14.mo4.mail-out.ovh.net ([46.105.40.29]:46034)
+	(envelope-from <alindsay@codeaurora.org>) id 1cdkyf-0000EI-Dz
+	for qemu-devel@nongnu.org; Tue, 14 Feb 2017 16:49:38 -0500
+Received: from smtp.codeaurora.org ([198.145.29.96]:43866)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <clg@kaod.org>) id 1cdKIu-00055r-6w
-	for qemu-arm@nongnu.org; Mon, 13 Feb 2017 12:20:44 -0500
-Received: from player159.ha.ovh.net (b9.ovh.net [213.186.33.59])
-	by mo4.mail-out.ovh.net (Postfix) with ESMTP id 951404A781
-	for <qemu-arm@nongnu.org>; Mon, 13 Feb 2017 18:20:42 +0100 (CET)
-Received: from zorba.kaod.org (LFbn-1-10647-27.w90-89.abo.wanadoo.fr
-	[90.89.233.27]) (Authenticated sender: postmaster@kaod.org)
-	by player159.ha.ovh.net (Postfix) with ESMTPSA id CD7C0480093;
-	Mon, 13 Feb 2017 18:20:37 +0100 (CET)
-To: Peter Maydell <peter.maydell@linaro.org>
-References: <1486997062-23227-1-git-send-email-clg@kaod.org>
-From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-Message-ID: <df53ac4c-81bd-c8be-5be8-478292c7c3f4@kaod.org>
-Date: Mon, 13 Feb 2017 18:20:36 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
-	Thunderbird/45.7.0
+	(Exim 4.71) (envelope-from <alindsay@codeaurora.org>)
+	id 1cdkyY-00009R-WA; Tue, 14 Feb 2017 16:49:31 -0500
+Received: by smtp.codeaurora.org (Postfix, from userid 1000)
+	id 8FCCA60D6F; Tue, 14 Feb 2017 21:49:27 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=codeaurora.org;
+	s=default; t=1487108967;
+	bh=+oKcA/dqX0NSffl86lD3aeqduBwE/Kyd73JdaieObpg=;
+	h=Date:From:To:Cc:Subject:From;
+	b=EAagXzLAm99FWno5MupHvBsaAQpMkafJp7pwOPZuaPorKisCv1x1FFdgahYKC/rma
+	A4pHP7V/jDT47GODhIbdKx6J3E9qrqPrY3nmkTbPW7/d30I2jULlVAaGDzf10sbcJs
+	HRJWf8ZkqOm5+RJz1jRYEl8nPMww6dVUjmZr0Ds4=
+Received: from codeaurora.org (global_nat1_iad_fw.qualcomm.com [129.46.232.65])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	(Authenticated sender: alindsay@smtp.codeaurora.org)
+	by smtp.codeaurora.org (Postfix) with ESMTPSA id 8EA9360721;
+	Tue, 14 Feb 2017 21:49:26 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=codeaurora.org;
+	s=default; t=1487108967;
+	bh=+oKcA/dqX0NSffl86lD3aeqduBwE/Kyd73JdaieObpg=;
+	h=Date:From:To:Cc:Subject:From;
+	b=EAagXzLAm99FWno5MupHvBsaAQpMkafJp7pwOPZuaPorKisCv1x1FFdgahYKC/rma
+	A4pHP7V/jDT47GODhIbdKx6J3E9qrqPrY3nmkTbPW7/d30I2jULlVAaGDzf10sbcJs
+	HRJWf8ZkqOm5+RJz1jRYEl8nPMww6dVUjmZr0Ds4=
+DMARC-Filter: OpenDMARC Filter v1.3.2 smtp.codeaurora.org 8EA9360721
+Authentication-Results: pdx-caf-mail.web.codeaurora.org;
+	dmarc=none (p=none dis=none) header.from=codeaurora.org
+Authentication-Results: pdx-caf-mail.web.codeaurora.org;
+	spf=none smtp.mailfrom=alindsay@codeaurora.org
+Date: Tue, 14 Feb 2017 16:49:21 -0500
+From: Aaron Lindsay <alindsay@codeaurora.org>
+To: qemu-devel@nongnu.org
+Message-ID: <20170214214921.GA7958@codeaurora.org>
 MIME-Version: 1.0
-In-Reply-To: <1486997062-23227-1-git-send-email-clg@kaod.org>
-Content-Type: text/plain; charset=utf-8
-X-Ovh-Tracer-Id: 16927342150168120128
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrfeelgedrleefgdellecutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmd
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.5.23 (2014-03-12)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 46.105.40.29
-Subject: Re: [Qemu-arm] [PATCH 0/2] aspeed/smc: add support for DMAs
-X-BeenThere: qemu-arm@nongnu.org
+X-Received-From: 198.145.29.96
+Subject: [Qemu-devel] [RFC] Pointers for implementing AArch64 PMU
+ instruction counter?
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Paolo Bonzini <pbonzini@redhat.com>, qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 2bOp6BTIUpus
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Wei Huang <wei@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
+	qemu-arm@nongnu.org, cov@codeaurora.org
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: iW/gUp8e65Az
 
-On 02/13/2017 03:44 PM, C=C3=A9dric Le Goater wrote:
-> Hello,
->=20
-> Here is a short series adding support for DMAs to the SMC controller
-> of the Aspeed SoCs. It uses coroutines to spawn the DMA requests in
-> bottom halves. This method is inspired from the block layer, the code
-> looks nice but maybe, this is unnecessarily complex. Paolo, could you
-> provide some feedback ?
+I am interested in implementing an instruction counter to augment the
+ongoing (mostly cycle-counter) PMU work on AArch64. The icount
+infrastructure seems like the logical source for the instruction counts,
+but I have a couple of implementation-related questions:
 
-I forgot the magic word here. Sorry about that. When ever you have some
-time, please !
+1. It looks like cpu_get_icount_raw() can serve as a good source for
+directly reading the current instruction count. Does it seem reasonable
+to only enable the instruction counter in the PMU when icount is enabled
+and are there any caveats I've missed with using icount for this
+purpose?
 
-Thanks,
+2. Triggering interrupts on overflow seems like it will take more work.
+Does it seem reasonable to add a QEMU_CLOCK_VIRTUAL for the PMU so that
+tcg_get_icount_limit() will overflow at the appropriate time for the PMU
+if an instruction counter overflow interrupt is set? TBH, I'm not sure
+how well this would work since the timer code mostly seems to deal with
+time (as you might expect), keeping the icount values somewhat hidden
+away.
 
-C.=20
+Thanks for any feedback!
 
+-Aaron
+
+-- 
+Qualcomm Datacenter Technologies as an affiliate of Qualcomm Technologies, Inc.
+Qualcomm Technologies, Inc. is a member of the
+Code Aurora Forum, a Linux Foundation Collaborative Project.

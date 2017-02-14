@@ -1,109 +1,218 @@
-Received: by 10.25.77.65 with SMTP id a62csp898588lfb;
-        Mon, 13 Feb 2017 06:46:41 -0800 (PST)
-X-Received: by 10.200.46.248 with SMTP id i53mr20515074qta.281.1486997201579;
-        Mon, 13 Feb 2017 06:46:41 -0800 (PST)
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id w7si7374265qka.256.2017.02.13.06.46.40
-        for <alex.bennee@linaro.org>
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 13 Feb 2017 06:46:41 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
-Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:57335 helo=lists.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1cdHtm-0007y3-SJ
-	for alex.bennee@linaro.org; Mon, 13 Feb 2017 09:46:38 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:60492)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1cdHcH-0008Fy-9w
-	for qemu-arm@nongnu.org; Mon, 13 Feb 2017 09:28:34 -0500
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1cdHcG-0005GC-4u
-	for qemu-arm@nongnu.org; Mon, 13 Feb 2017 09:28:33 -0500
-Received: from orth.archaic.org.uk ([2001:8b0:1d0::2]:48495)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <pm215@archaic.org.uk>)
-	id 1cdHcF-0005C4-Uf; Mon, 13 Feb 2017 09:28:32 -0500
-Received: from pm215 by orth.archaic.org.uk with local (Exim 4.84_2)
-	(envelope-from <pm215@archaic.org.uk>)
-	id 1cdHc4-00014S-K5; Mon, 13 Feb 2017 14:28:20 +0000
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Date: Mon, 13 Feb 2017 14:28:15 +0000
-Message-Id: <1486996099-15820-1-git-send-email-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.7.4
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2001:8b0:1d0::2
-Subject: [Qemu-arm] [PATCH 0/4] cpu: Implement cpu_generic_new()
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.21
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Eduardo Habkost <ehabkost@redhat.com>, patches@linaro.org
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: v3BRZfFnNB0S
-
-This patchset adds a new function cpu_generic_new()
-which is similar to cpu_generic_init() except that it
-does not realize the created CPU object. This means that
-board code can do a "new cpu; set QOM properties; realize"
-sequence without having to do all the work of splitting
-the CPU model string and calling parse_features by hand.
-
-Patch 2 clarifies a TODO comment, hopefully correctly,
-based on an email conversation I had with Eduardo a
-little while back.
-
-Patches 3 and 4 change the ARM boards which currently
-call parse_features by hand to use the new function.
+Return-Path: <alex.bennee@linaro.org>
+Received: from zen.linaro.local ([81.128.185.34])
+        by smtp.gmail.com with ESMTPSA id b17sm1962720wma.33.2017.02.14.08.59.41
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 14 Feb 2017 08:59:41 -0800 (PST)
+Received: from zen (localhost [127.0.0.1])
+	by zen.linaro.local (Postfix) with ESMTPS id 19FFB3E017C;
+	Tue, 14 Feb 2017 17:00:02 +0000 (GMT)
+References: <1486065742-28639-1-git-send-email-peter.maydell@linaro.org> <1486065742-28639-2-git-send-email-peter.maydell@linaro.org>
+User-agent: mu4e 0.9.19; emacs 25.2.3
+From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, patches@linaro.org, Michael Davidsaver <mdavidsaver@gmail.com>, Liviu Ionescu <ilg@livius.net>
+Subject: Re: [PATCH 1/9] armv7m: Rename nvic_state to NVICState
+In-reply-to: <1486065742-28639-2-git-send-email-peter.maydell@linaro.org>
+Date: Tue, 14 Feb 2017 17:00:02 +0000
+Message-ID: <87a89ovhbh.fsf@linaro.org>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-TUID: viejTA0/R4EA
 
 
-If there's consensus that this is the right general
-direction to go in, then I think that some other
-architectures could also make cleanups to use this:
- * cpu_s390x_create() is almost exactly this function,
-   give or take some fine detail of error handling
- * ppc_cpu_parse_features is almost the same thing,
-   except that it doesn't actually create the CPU object,
-   it only calls parse_features
- * hw/i386/pc.c does a manual parse_features
+Peter Maydell <peter.maydell@linaro.org> writes:
 
-I'm not strongly attached to this particular approach
-(though it seems like a reasonable one, especially given
-the proliferation of different arch-specific helpers
-listed above and the bugs in boards which don't call
-parse_features when they should), but I would like us to
-figure out and document what the right way for a board
-to create and configure its CPU objects is...
+> Rename the nvic_state struct to NVICState, to match
+> our naming conventions.
+>
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+
+Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
+
+> ---
+>  hw/intc/armv7m_nvic.c | 44 ++++++++++++++++++++++----------------------
+>  1 file changed, 22 insertions(+), 22 deletions(-)
+>
+> diff --git a/hw/intc/armv7m_nvic.c b/hw/intc/armv7m_nvic.c
+> index fe5c303..09975f3 100644
+> --- a/hw/intc/armv7m_nvic.c
+> +++ b/hw/intc/armv7m_nvic.c
+> @@ -21,7 +21,7 @@
+>  #include "gic_internal.h"
+>  #include "qemu/log.h"
+>
+> -typedef struct {
+> +typedef struct NVICState {
+>      GICState gic;
+>      ARMCPU *cpu;
+>      struct {
+> @@ -35,7 +35,7 @@ typedef struct {
+>      MemoryRegion container;
+>      uint32_t num_irq;
+>      qemu_irq sysresetreq;
+> -} nvic_state;
+> +} NVICState;
+>
+>  #define TYPE_NVIC "armv7m_nvic"
+>  /**
+> @@ -57,7 +57,7 @@ typedef struct NVICClass {
+>  #define NVIC_GET_CLASS(obj) \
+>      OBJECT_GET_CLASS(NVICClass, (obj), TYPE_NVIC)
+>  #define NVIC(obj) \
+> -    OBJECT_CHECK(nvic_state, (obj), TYPE_NVIC)
+> +    OBJECT_CHECK(NVICState, (obj), TYPE_NVIC)
+>
+>  static const uint8_t nvic_id[] = {
+>      0x00, 0xb0, 0x1b, 0x00, 0x0d, 0xe0, 0x05, 0xb1
+> @@ -74,7 +74,7 @@ static const uint8_t nvic_id[] = {
+>  int system_clock_scale;
+>
+>  /* Conversion factor from qemu timer to SysTick frequencies.  */
+> -static inline int64_t systick_scale(nvic_state *s)
+> +static inline int64_t systick_scale(NVICState *s)
+>  {
+>      if (s->systick.control & SYSTICK_CLKSOURCE)
+>          return system_clock_scale;
+> @@ -82,7 +82,7 @@ static inline int64_t systick_scale(nvic_state *s)
+>          return 1000;
+>  }
+>
+> -static void systick_reload(nvic_state *s, int reset)
+> +static void systick_reload(NVICState *s, int reset)
+>  {
+>      /* The Cortex-M3 Devices Generic User Guide says that "When the
+>       * ENABLE bit is set to 1, the counter loads the RELOAD value from the
+> @@ -101,7 +101,7 @@ static void systick_reload(nvic_state *s, int reset)
+>
+>  static void systick_timer_tick(void * opaque)
+>  {
+> -    nvic_state *s = (nvic_state *)opaque;
+> +    NVICState *s = (NVICState *)opaque;
+>      s->systick.control |= SYSTICK_COUNTFLAG;
+>      if (s->systick.control & SYSTICK_TICKINT) {
+>          /* Trigger the interrupt.  */
+> @@ -114,7 +114,7 @@ static void systick_timer_tick(void * opaque)
+>      }
+>  }
+>
+> -static void systick_reset(nvic_state *s)
+> +static void systick_reset(NVICState *s)
+>  {
+>      s->systick.control = 0;
+>      s->systick.reload = 0;
+> @@ -126,7 +126,7 @@ static void systick_reset(nvic_state *s)
+>     IRQ is #16.  The internal GIC routines use #32 as the first IRQ.  */
+>  void armv7m_nvic_set_pending(void *opaque, int irq)
+>  {
+> -    nvic_state *s = (nvic_state *)opaque;
+> +    NVICState *s = (NVICState *)opaque;
+>      if (irq >= 16)
+>          irq += 16;
+>      gic_set_pending_private(&s->gic, 0, irq);
+> @@ -135,7 +135,7 @@ void armv7m_nvic_set_pending(void *opaque, int irq)
+>  /* Make pending IRQ active.  */
+>  int armv7m_nvic_acknowledge_irq(void *opaque)
+>  {
+> -    nvic_state *s = (nvic_state *)opaque;
+> +    NVICState *s = (NVICState *)opaque;
+>      uint32_t irq;
+>
+>      irq = gic_acknowledge_irq(&s->gic, 0, MEMTXATTRS_UNSPECIFIED);
+> @@ -148,13 +148,13 @@ int armv7m_nvic_acknowledge_irq(void *opaque)
+>
+>  void armv7m_nvic_complete_irq(void *opaque, int irq)
+>  {
+> -    nvic_state *s = (nvic_state *)opaque;
+> +    NVICState *s = (NVICState *)opaque;
+>      if (irq >= 16)
+>          irq += 16;
+>      gic_complete_irq(&s->gic, 0, irq, MEMTXATTRS_UNSPECIFIED);
+>  }
+>
+> -static uint32_t nvic_readl(nvic_state *s, uint32_t offset)
+> +static uint32_t nvic_readl(NVICState *s, uint32_t offset)
+>  {
+>      ARMCPU *cpu = s->cpu;
+>      uint32_t val;
+> @@ -294,7 +294,7 @@ static uint32_t nvic_readl(nvic_state *s, uint32_t offset)
+>      }
+>  }
+>
+> -static void nvic_writel(nvic_state *s, uint32_t offset, uint32_t value)
+> +static void nvic_writel(NVICState *s, uint32_t offset, uint32_t value)
+>  {
+>      ARMCPU *cpu = s->cpu;
+>      uint32_t oldval;
+> @@ -425,7 +425,7 @@ static void nvic_writel(nvic_state *s, uint32_t offset, uint32_t value)
+>  static uint64_t nvic_sysreg_read(void *opaque, hwaddr addr,
+>                                   unsigned size)
+>  {
+> -    nvic_state *s = (nvic_state *)opaque;
+> +    NVICState *s = (NVICState *)opaque;
+>      uint32_t offset = addr;
+>      int i;
+>      uint32_t val;
+> @@ -454,7 +454,7 @@ static uint64_t nvic_sysreg_read(void *opaque, hwaddr addr,
+>  static void nvic_sysreg_write(void *opaque, hwaddr addr,
+>                                uint64_t value, unsigned size)
+>  {
+> -    nvic_state *s = (nvic_state *)opaque;
+> +    NVICState *s = (NVICState *)opaque;
+>      uint32_t offset = addr;
+>      int i;
+>
+> @@ -486,17 +486,17 @@ static const VMStateDescription vmstate_nvic = {
+>      .version_id = 1,
+>      .minimum_version_id = 1,
+>      .fields = (VMStateField[]) {
+> -        VMSTATE_UINT32(systick.control, nvic_state),
+> -        VMSTATE_UINT32(systick.reload, nvic_state),
+> -        VMSTATE_INT64(systick.tick, nvic_state),
+> -        VMSTATE_TIMER_PTR(systick.timer, nvic_state),
+> +        VMSTATE_UINT32(systick.control, NVICState),
+> +        VMSTATE_UINT32(systick.reload, NVICState),
+> +        VMSTATE_INT64(systick.tick, NVICState),
+> +        VMSTATE_TIMER_PTR(systick.timer, NVICState),
+>          VMSTATE_END_OF_LIST()
+>      }
+>  };
+>
+>  static void armv7m_nvic_reset(DeviceState *dev)
+>  {
+> -    nvic_state *s = NVIC(dev);
+> +    NVICState *s = NVIC(dev);
+>      NVICClass *nc = NVIC_GET_CLASS(s);
+>      nc->parent_reset(dev);
+>      /* Common GIC reset resets to disabled; the NVIC doesn't have
+> @@ -513,7 +513,7 @@ static void armv7m_nvic_reset(DeviceState *dev)
+>
+>  static void armv7m_nvic_realize(DeviceState *dev, Error **errp)
+>  {
+> -    nvic_state *s = NVIC(dev);
+> +    NVICState *s = NVIC(dev);
+>      NVICClass *nc = NVIC_GET_CLASS(s);
+>      Error *local_err = NULL;
+>
+> @@ -569,7 +569,7 @@ static void armv7m_nvic_instance_init(Object *obj)
+>       */
+>      GICState *s = ARM_GIC_COMMON(obj);
+>      DeviceState *dev = DEVICE(obj);
+> -    nvic_state *nvic = NVIC(obj);
+> +    NVICState *nvic = NVIC(obj);
+>      /* The ARM v7m may have anything from 0 to 496 external interrupt
+>       * IRQ lines. We default to 64. Other boards may differ and should
+>       * set the num-irq property appropriately.
+> @@ -594,7 +594,7 @@ static const TypeInfo armv7m_nvic_info = {
+>      .name          = TYPE_NVIC,
+>      .parent        = TYPE_ARM_GIC_COMMON,
+>      .instance_init = armv7m_nvic_instance_init,
+> -    .instance_size = sizeof(nvic_state),
+> +    .instance_size = sizeof(NVICState),
+>      .class_init    = armv7m_nvic_class_init,
+>      .class_size    = sizeof(NVICClass),
+>  };
 
 
-Michael Davidsaver (1):
-  cpu: add cpu_generic_new()
-
-Peter Maydell (3):
-  cpu: Clarify TODO comment in cpu_generic_new()
-  hw/arm/integrator: Use new cpu_generic_new()
-  hw/arm/virt: Use new cpu_generic_new()
-
- include/qom/cpu.h     | 17 +++++++++++++++++
- hw/arm/integratorcp.c | 22 ++--------------------
- hw/arm/virt.c         | 24 ++----------------------
- qom/cpu.c             | 37 ++++++++++++++++++++++++++-----------
- 4 files changed, 47 insertions(+), 53 deletions(-)
-
--- 
-2.7.4
-
+--
+Alex Bennée

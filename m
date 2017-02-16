@@ -1,10 +1,10 @@
-Received: by 10.25.77.65 with SMTP id a62csp2552585lfb;
-        Thu, 16 Feb 2017 08:36:10 -0800 (PST)
-X-Received: by 10.99.217.85 with SMTP id e21mr3997324pgj.79.1487262970807;
+Received: by 10.25.77.65 with SMTP id a62csp2553126lfb;
+        Thu, 16 Feb 2017 08:37:32 -0800 (PST)
+X-Received: by 10.28.174.14 with SMTP id x14mr13016272wme.75.1487262970764;
         Thu, 16 Feb 2017 08:36:10 -0800 (PST)
 Return-Path: <pm215@archaic.org.uk>
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
-        by mx.google.com with ESMTPS id f17si7420494pgh.74.2017.02.16.08.36.09
+        by mx.google.com with ESMTPS id u28si1413746wru.47.2017.02.16.08.36.10
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
         Thu, 16 Feb 2017 08:36:10 -0800 (PST)
 Received-SPF: pass (google.com: best guess record for domain of pm215@archaic.org.uk designates 2001:8b0:1d0::2 as permitted sender) client-ip=2001:8b0:1d0::2;
@@ -13,210 +13,51 @@ Authentication-Results: mx.google.com;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from pm215 by orth.archaic.org.uk with local (Exim 4.84_2)
 	(envelope-from <pm215@archaic.org.uk>)
-	id 1ceP2K-00032m-6Q; Thu, 16 Feb 2017 16:36:04 +0000
+	id 1ceP2Q-00036x-80; Thu, 16 Feb 2017 16:36:10 +0000
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
 Cc: patches@linaro.org,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-Subject: [PATCH v2 01/13] armv7m: Rename nvic_state to NVICState
-Date: Thu, 16 Feb 2017 16:35:51 +0000
-Message-Id: <1487262963-11519-2-git-send-email-peter.maydell@linaro.org>
+Subject: [PATCH v2 13/13] armv7m: Allow SHCSR writes to change pending and active bits
+Date: Thu, 16 Feb 2017 16:36:03 +0000
+Message-Id: <1487262963-11519-14-git-send-email-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.7.4
 In-Reply-To: <1487262963-11519-1-git-send-email-peter.maydell@linaro.org>
 References: <1487262963-11519-1-git-send-email-peter.maydell@linaro.org>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-TUID: bnIXDYJJ6DNN
+X-TUID: G0I/rfsbwvBU
 
-Rename the nvic_state struct to NVICState, to match
-our naming conventions.
+Implement the NVIC SHCSR write behaviour which allows pending and
+active status of some exceptions to be changed.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- hw/intc/armv7m_nvic.c | 44 ++++++++++++++++++++++----------------------
- 1 file changed, 22 insertions(+), 22 deletions(-)
+ hw/intc/armv7m_nvic.c | 13 +++++++++++--
+ 1 file changed, 11 insertions(+), 2 deletions(-)
 
 diff --git a/hw/intc/armv7m_nvic.c b/hw/intc/armv7m_nvic.c
-index fe5c303..09975f3 100644
+index a8c5a9e..1d34e0d 100644
 --- a/hw/intc/armv7m_nvic.c
 +++ b/hw/intc/armv7m_nvic.c
-@@ -21,7 +21,7 @@
- #include "gic_internal.h"
- #include "qemu/log.h"
- 
--typedef struct {
-+typedef struct NVICState {
-     GICState gic;
-     ARMCPU *cpu;
-     struct {
-@@ -35,7 +35,7 @@ typedef struct {
-     MemoryRegion container;
-     uint32_t num_irq;
-     qemu_irq sysresetreq;
--} nvic_state;
-+} NVICState;
- 
- #define TYPE_NVIC "armv7m_nvic"
- /**
-@@ -57,7 +57,7 @@ typedef struct NVICClass {
- #define NVIC_GET_CLASS(obj) \
-     OBJECT_GET_CLASS(NVICClass, (obj), TYPE_NVIC)
- #define NVIC(obj) \
--    OBJECT_CHECK(nvic_state, (obj), TYPE_NVIC)
-+    OBJECT_CHECK(NVICState, (obj), TYPE_NVIC)
- 
- static const uint8_t nvic_id[] = {
-     0x00, 0xb0, 0x1b, 0x00, 0x0d, 0xe0, 0x05, 0xb1
-@@ -74,7 +74,7 @@ static const uint8_t nvic_id[] = {
- int system_clock_scale;
- 
- /* Conversion factor from qemu timer to SysTick frequencies.  */
--static inline int64_t systick_scale(nvic_state *s)
-+static inline int64_t systick_scale(NVICState *s)
- {
-     if (s->systick.control & SYSTICK_CLKSOURCE)
-         return system_clock_scale;
-@@ -82,7 +82,7 @@ static inline int64_t systick_scale(nvic_state *s)
-         return 1000;
- }
- 
--static void systick_reload(nvic_state *s, int reset)
-+static void systick_reload(NVICState *s, int reset)
- {
-     /* The Cortex-M3 Devices Generic User Guide says that "When the
-      * ENABLE bit is set to 1, the counter loads the RELOAD value from the
-@@ -101,7 +101,7 @@ static void systick_reload(nvic_state *s, int reset)
- 
- static void systick_timer_tick(void * opaque)
- {
--    nvic_state *s = (nvic_state *)opaque;
-+    NVICState *s = (NVICState *)opaque;
-     s->systick.control |= SYSTICK_COUNTFLAG;
-     if (s->systick.control & SYSTICK_TICKINT) {
-         /* Trigger the interrupt.  */
-@@ -114,7 +114,7 @@ static void systick_timer_tick(void * opaque)
-     }
- }
- 
--static void systick_reset(nvic_state *s)
-+static void systick_reset(NVICState *s)
- {
-     s->systick.control = 0;
-     s->systick.reload = 0;
-@@ -126,7 +126,7 @@ static void systick_reset(nvic_state *s)
-    IRQ is #16.  The internal GIC routines use #32 as the first IRQ.  */
- void armv7m_nvic_set_pending(void *opaque, int irq)
- {
--    nvic_state *s = (nvic_state *)opaque;
-+    NVICState *s = (NVICState *)opaque;
-     if (irq >= 16)
-         irq += 16;
-     gic_set_pending_private(&s->gic, 0, irq);
-@@ -135,7 +135,7 @@ void armv7m_nvic_set_pending(void *opaque, int irq)
- /* Make pending IRQ active.  */
- int armv7m_nvic_acknowledge_irq(void *opaque)
- {
--    nvic_state *s = (nvic_state *)opaque;
-+    NVICState *s = (NVICState *)opaque;
-     uint32_t irq;
- 
-     irq = gic_acknowledge_irq(&s->gic, 0, MEMTXATTRS_UNSPECIFIED);
-@@ -148,13 +148,13 @@ int armv7m_nvic_acknowledge_irq(void *opaque)
- 
- void armv7m_nvic_complete_irq(void *opaque, int irq)
- {
--    nvic_state *s = (nvic_state *)opaque;
-+    NVICState *s = (NVICState *)opaque;
-     if (irq >= 16)
-         irq += 16;
-     gic_complete_irq(&s->gic, 0, irq, MEMTXATTRS_UNSPECIFIED);
- }
- 
--static uint32_t nvic_readl(nvic_state *s, uint32_t offset)
-+static uint32_t nvic_readl(NVICState *s, uint32_t offset)
- {
-     ARMCPU *cpu = s->cpu;
-     uint32_t val;
-@@ -294,7 +294,7 @@ static uint32_t nvic_readl(nvic_state *s, uint32_t offset)
-     }
- }
- 
--static void nvic_writel(nvic_state *s, uint32_t offset, uint32_t value)
-+static void nvic_writel(NVICState *s, uint32_t offset, uint32_t value)
- {
-     ARMCPU *cpu = s->cpu;
-     uint32_t oldval;
-@@ -425,7 +425,7 @@ static void nvic_writel(nvic_state *s, uint32_t offset, uint32_t value)
- static uint64_t nvic_sysreg_read(void *opaque, hwaddr addr,
-                                  unsigned size)
- {
--    nvic_state *s = (nvic_state *)opaque;
-+    NVICState *s = (NVICState *)opaque;
-     uint32_t offset = addr;
-     int i;
-     uint32_t val;
-@@ -454,7 +454,7 @@ static uint64_t nvic_sysreg_read(void *opaque, hwaddr addr,
- static void nvic_sysreg_write(void *opaque, hwaddr addr,
-                               uint64_t value, unsigned size)
- {
--    nvic_state *s = (nvic_state *)opaque;
-+    NVICState *s = (NVICState *)opaque;
-     uint32_t offset = addr;
-     int i;
- 
-@@ -486,17 +486,17 @@ static const VMStateDescription vmstate_nvic = {
-     .version_id = 1,
-     .minimum_version_id = 1,
-     .fields = (VMStateField[]) {
--        VMSTATE_UINT32(systick.control, nvic_state),
--        VMSTATE_UINT32(systick.reload, nvic_state),
--        VMSTATE_INT64(systick.tick, nvic_state),
--        VMSTATE_TIMER_PTR(systick.timer, nvic_state),
-+        VMSTATE_UINT32(systick.control, NVICState),
-+        VMSTATE_UINT32(systick.reload, NVICState),
-+        VMSTATE_INT64(systick.tick, NVICState),
-+        VMSTATE_TIMER_PTR(systick.timer, NVICState),
-         VMSTATE_END_OF_LIST()
-     }
- };
- 
- static void armv7m_nvic_reset(DeviceState *dev)
- {
--    nvic_state *s = NVIC(dev);
-+    NVICState *s = NVIC(dev);
-     NVICClass *nc = NVIC_GET_CLASS(s);
-     nc->parent_reset(dev);
-     /* Common GIC reset resets to disabled; the NVIC doesn't have
-@@ -513,7 +513,7 @@ static void armv7m_nvic_reset(DeviceState *dev)
- 
- static void armv7m_nvic_realize(DeviceState *dev, Error **errp)
- {
--    nvic_state *s = NVIC(dev);
-+    NVICState *s = NVIC(dev);
-     NVICClass *nc = NVIC_GET_CLASS(s);
-     Error *local_err = NULL;
- 
-@@ -569,7 +569,7 @@ static void armv7m_nvic_instance_init(Object *obj)
-      */
-     GICState *s = ARM_GIC_COMMON(obj);
-     DeviceState *dev = DEVICE(obj);
--    nvic_state *nvic = NVIC(obj);
-+    NVICState *nvic = NVIC(obj);
-     /* The ARM v7m may have anything from 0 to 496 external interrupt
-      * IRQ lines. We default to 64. Other boards may differ and should
-      * set the num-irq property appropriately.
-@@ -594,7 +594,7 @@ static const TypeInfo armv7m_nvic_info = {
-     .name          = TYPE_NVIC,
-     .parent        = TYPE_ARM_GIC_COMMON,
-     .instance_init = armv7m_nvic_instance_init,
--    .instance_size = sizeof(nvic_state),
-+    .instance_size = sizeof(NVICState),
-     .class_init    = armv7m_nvic_class_init,
-     .class_size    = sizeof(NVICClass),
- };
+@@ -755,8 +755,17 @@ static void nvic_writel(NVICState *s, uint32_t offset, uint32_t value)
+         cpu->env.v7m.ccr = value;
+         break;
+     case 0xd24: /* System Handler Control.  */
+-        /* TODO: Real hardware allows you to set/clear the active bits
+-           under some circumstances.  We don't implement this.  */
++        s->vectors[ARMV7M_EXCP_MEM].active = (value & (1 << 0)) != 0;
++        s->vectors[ARMV7M_EXCP_BUS].active = (value & (1 << 1)) != 0;
++        s->vectors[ARMV7M_EXCP_USAGE].active = (value & (1 << 3)) != 0;
++        s->vectors[ARMV7M_EXCP_SVC].active = (value & (1 << 7)) != 0;
++        s->vectors[ARMV7M_EXCP_DEBUG].active = (value & (1 << 8)) != 0;
++        s->vectors[ARMV7M_EXCP_PENDSV].active = (value & (1 << 10)) != 0;
++        s->vectors[ARMV7M_EXCP_SYSTICK].active = (value & (1 << 11)) != 0;
++        s->vectors[ARMV7M_EXCP_USAGE].pending = (value & (1 << 12)) != 0;
++        s->vectors[ARMV7M_EXCP_MEM].pending = (value & (1 << 13)) != 0;
++        s->vectors[ARMV7M_EXCP_BUS].pending = (value & (1 << 14)) != 0;
++        s->vectors[ARMV7M_EXCP_SVC].pending = (value & (1 << 15)) != 0;
+         s->vectors[ARMV7M_EXCP_MEM].enabled = (value & (1 << 16)) != 0;
+         s->vectors[ARMV7M_EXCP_BUS].enabled = (value & (1 << 17)) != 0;
+         s->vectors[ARMV7M_EXCP_USAGE].enabled = (value & (1 << 18)) != 0;
 -- 
 2.7.4

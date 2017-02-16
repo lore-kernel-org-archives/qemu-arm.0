@@ -1,59 +1,74 @@
-Received: by 10.25.77.65 with SMTP id a62csp1835200lfb;
-        Wed, 15 Feb 2017 02:06:21 -0800 (PST)
-X-Received: by 10.55.189.134 with SMTP id n128mr20476509qkf.192.1487153181632;
-        Wed, 15 Feb 2017 02:06:21 -0800 (PST)
+Received: by 10.25.77.65 with SMTP id a62csp2373155lfb;
+        Thu, 16 Feb 2017 01:54:23 -0800 (PST)
+X-Received: by 10.200.56.4 with SMTP id q4mr1262798qtb.73.1487238863563;
+        Thu, 16 Feb 2017 01:54:23 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id t20si2459965qkt.325.2017.02.15.02.06.20
+        by mx.google.com with ESMTPS id b34si4845935qta.277.2017.02.16.01.54.23
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 15 Feb 2017 02:06:21 -0800 (PST)
+        Thu, 16 Feb 2017 01:54:23 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:39330 helo=lists.gnu.org)
+       dkim=fail header.i=@gmail.com;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:45502 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1cdwTa-0006pX-Qo
-	for alex.bennee@linaro.org; Wed, 15 Feb 2017 05:06:18 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:54216)
+	id 1ceIla-0005Jz-W1
+	for alex.bennee@linaro.org; Thu, 16 Feb 2017 04:54:23 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:37626)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1cdwTE-0006ZV-KF
-	for qemu-arm@nongnu.org; Wed, 15 Feb 2017 05:05:58 -0500
+	(envelope-from <vijay.kilari@gmail.com>) id 1ceIlS-0005IV-UP
+	for qemu-arm@nongnu.org; Thu, 16 Feb 2017 04:54:16 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1cdwTB-0001gC-46
-	for qemu-arm@nongnu.org; Wed, 15 Feb 2017 05:05:56 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:37372)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <armbru@redhat.com>)
-	id 1cdwTA-0001eM-Np; Wed, 15 Feb 2017 05:05:53 -0500
-Received: from smtp.corp.redhat.com (int-mx16.intmail.prod.int.phx2.redhat.com
-	[10.5.11.28])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 17FE280481;
-	Wed, 15 Feb 2017 10:05:52 +0000 (UTC)
-Received: from blackfin.pond.sub.org (ovpn-116-50.ams2.redhat.com
-	[10.36.116.50])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 9E6F17FE4F;
-	Wed, 15 Feb 2017 10:05:50 +0000 (UTC)
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
-	id DB5ED11384AF; Wed, 15 Feb 2017 11:05:47 +0100 (CET)
-From: Markus Armbruster <armbru@redhat.com>
-To: qemu-devel@nongnu.org
-Date: Wed, 15 Feb 2017 11:05:42 +0100
-Message-Id: <1487153147-11530-4-git-send-email-armbru@redhat.com>
-In-Reply-To: <1487153147-11530-1-git-send-email-armbru@redhat.com>
-References: <1487153147-11530-1-git-send-email-armbru@redhat.com>
-X-Scanned-By: MIMEDefang 2.74 on 10.5.11.28
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.28]);
-	Wed, 15 Feb 2017 10:05:52 +0000 (UTC)
+	(envelope-from <vijay.kilari@gmail.com>) id 1ceIlR-0004e4-J2
+	for qemu-arm@nongnu.org; Thu, 16 Feb 2017 04:54:15 -0500
+Received: from mail-lf0-x243.google.com ([2a00:1450:4010:c07::243]:36640)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <vijay.kilari@gmail.com>)
+	id 1ceIlR-0004d8-83; Thu, 16 Feb 2017 04:54:13 -0500
+Received: by mail-lf0-x243.google.com with SMTP id h65so1004853lfi.3;
+	Thu, 16 Feb 2017 01:54:12 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=AhC1//ILWeuNPAXxu4xwc2oYKUF0Kz2uzDk7ue932iw=;
+	b=osHR4LEA4P1DRnDphpAUJsEvu3U2VgS8ZczJV0WAgN312ffaQ3qE3u1/s6DL0n7+kO
+	ZkLvtisX99XnPib0gCPDapUefgSXuvTGHf90bBeci3/XqvDH6HJXh2sPwfayIvjlCf9F
+	03FpjZKky21aov/n0QoPQw6H96FqxTSrnV6eCS7KVfc9To6g0fyiHYyUkfnZKq4d8qhe
+	Cp+g/psUElO+C94cWZLiKYPYRO7ZRgcH69Zrw1fIDwjkxwlbGiW407+qn+Y+pJ4kFGun
+	t5iUB2vxiSu4zZD2xS/1wxcw/BfImPkkPvGd7CJN4pu0BW6wfsdpKkV0L+mkRe+0CDcA
+	RkBQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=AhC1//ILWeuNPAXxu4xwc2oYKUF0Kz2uzDk7ue932iw=;
+	b=khNNmbEP0Ftv3ek5nAq2FDkt8xStBgowRVUbM/21ym2xlEcurIrvhUFki+UAAvTLPy
+	EdgOCU3W62Ke1Bj1R+HZayq51F5nKNMYmc54CKWr7cxDRVt2K+nyWDV/VTGYFtiqLJvE
+	/IteooKaxrMQV/89ElzvcpyW5OfAam0Vmra2IyM8yvuLBcOUEr51eZAjJ2Z+sAtrI5Jj
+	z+cU26vxfFupkrPWMT3TZyapBsFZrYbFVYS0ncZS0WDTTPg67W44GMkznoX/zaMGUwww
+	AQK8KZahlnO/7HLjCo3qT5lhQaud5xbuQdC0lOTJvJjHoXkgX+loGP1rg52/2PccUhTJ
+	M7eQ==
+X-Gm-Message-State: AMke39msfOJdDJhnFST4iU/+EYwFvJwcBuD9JfFTSMho9/pbD5htiQgjy9XWsopQKzMzGifYIrojT5eOfMVHoQ==
+X-Received: by 10.46.84.76 with SMTP id y12mr420511ljd.51.1487238851100; Thu,
+	16 Feb 2017 01:54:11 -0800 (PST)
+MIME-Version: 1.0
+Received: by 10.46.20.15 with HTTP; Thu, 16 Feb 2017 01:54:10 -0800 (PST)
+In-Reply-To: <CAFEAcA-7PE_T7BsV=vSCEkQDeekB9KnX33Ou5NiUec4XeUu+zw@mail.gmail.com>
+References: <1485879782-6075-1-git-send-email-vijay.kilari@gmail.com>
+	<1485879782-6075-6-git-send-email-vijay.kilari@gmail.com>
+	<CAFEAcA-7PE_T7BsV=vSCEkQDeekB9KnX33Ou5NiUec4XeUu+zw@mail.gmail.com>
+From: Vijay Kilari <vijay.kilari@gmail.com>
+Date: Thu, 16 Feb 2017 15:24:10 +0530
+Message-ID: <CALicx6vWBR_bM2g_DObYgw-12girdK9YgGS8X=zAwenz2EmPFg@mail.gmail.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+Content-Type: text/plain; charset=UTF-8
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: [Qemu-arm] [PATCH v3 3/8] hw: Default -drive to if=none instead of
- ide when ide cannot work
+X-Received-From: 2a00:1450:4010:c07::243
+Subject: Re: [Qemu-arm] [PATCH v7 RESEND 5/5] hw/intc/arm_gicv3_kvm: Reset
+ GICv3 cpu interface registers
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -65,114 +80,150 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
-	Anthony Green <green@moxielogic.com>,
-	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
-	Max Filippov <jcmvbkbc@gmail.com>, Guan Xuetao <gxt@mprc.pku.edu.cn>,
-	Stefano Stabellini <sstabellini@kernel.org>,
-	Jia Liu <proljc@gmail.com>, qemu-block@nongnu.org,
-	Magnus Damm <magnus.damm@gmail.com>, Alexander Graf <agraf@suse.de>,
-	Anthony Perard <anthony.perard@citrix.com>,
-	Artyom Tarasenko <atar4qemu@gmail.com>,
-	Fabien Chouteau <chouteau@adacore.com>, qemu-arm@nongnu.org,
-	kwolf@redhat.com, Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
-	Laurent Vivier <laurent@vivier.eu>, mreitz@redhat.com,
-	Michael Walle <michael@walle.cc>, qemu-ppc@nongnu.org,
-	xen-devel@lists.xensource.com
+Cc: Marc Zyngier <marc.zyngier@arm.com>, Pavel Fedin <p.fedin@samsung.com>,
+	QEMU Developers <qemu-devel@nongnu.org>,
+	Vijaya Kumar K <Vijaya.Kumar@cavium.com>,
+	Eric Auger <eric.auger@redhat.com>, qemu-arm <qemu-arm@nongnu.org>,
+	Christoffer Dall <christoffer.dall@linaro.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: xyfPRTP6cLTm
+X-TUID: 3G90lAIbSUOd
 
-Block backends defined with -drive if=ide are meant to be picked up by
-machine initialization code: a suitable frontend gets created and
-wired up automatically.
+On Tue, Feb 7, 2017 at 8:19 PM, Peter Maydell <peter.maydell@linaro.org> wrote:
+> On 31 January 2017 at 16:23,  <vijay.kilari@gmail.com> wrote:
+>> From: Vijaya Kumar K <Vijaya.Kumar@cavium.com>
+>>
+>> Reset CPU interface registers of GICv3 when CPU is reset.
+>> For this, ARMCPRegInfo struct is registered with one ICC
+>> register whose resetfn is called when cpu is reset.
+>>
+>> All the ICC registers are reset under one single register
+>> reset function instead of calling resetfn for each ICC
+>> register.
+>>
+>> Signed-off-by: Vijaya Kumar K <Vijaya.Kumar@cavium.com>
+>> ---
+>>  hw/intc/arm_gicv3_kvm.c | 69 +++++++++++++++++++++++++++++++++++++++++++++++++
+>>  1 file changed, 69 insertions(+)
+>>
+>> diff --git a/hw/intc/arm_gicv3_kvm.c b/hw/intc/arm_gicv3_kvm.c
+>> index f91e0ac..c3f38aa 100644
+>> --- a/hw/intc/arm_gicv3_kvm.c
+>> +++ b/hw/intc/arm_gicv3_kvm.c
+>> @@ -604,6 +604,39 @@ static void kvm_arm_gicv3_get(GICv3State *s)
+>>      }
+>>  }
+>>
+>> +static void arm_gicv3_icc_reset(CPUARMState *env, const ARMCPRegInfo *ri)
+>> +{
+>> +    ARMCPU *cpu;
+>> +    GICv3State *s;
+>> +    GICv3CPUState *c;
+>> +
+>> +    c = (GICv3CPUState *)env->gicv3state;
+>> +    if (!c || !c->cpu || !c->gic) {
+>
+> We should assert this kind of thing, not just silently do nothing.
+> Or just assume it's true, because if it's not then we'll segfault
+> immediately below which is just as clear an indication of where
+> the bug is as asserting.
 
-if=ide drives not picked up that way can still be used with -device as
-if they had if=none, but that's unclean and best avoided.  Unused ones
-produce an "Orphaned drive without device" warning.
+OK
+>
+>> +        return;
+>> +    }
+>> +
+>> +    s = c->gic;
+>> +    if (!s) {
+>
+> You've already checked this once.
+>
+>> +        return;
+>> +    }
+>> +
+>> +    cpu = ARM_CPU(c->cpu);
+>> +    /* Initialize to actual HW supported configuration */
+>> +    kvm_device_access(s->dev_fd, KVM_DEV_ARM_VGIC_GRP_CPU_SYSREGS,
+>> +                      KVM_VGIC_ATTR(ICC_CTLR_EL1, cpu->mp_affinity),
+>> +                      &c->icc_ctlr_el1[GICV3_NS], false);
+>> +
+>> +    c->icc_ctlr_el1[GICV3_S] = c->icc_ctlr_el1[GICV3_NS];
+>> +    c->icc_pmr_el1 = 0;
+>> +    c->icc_bpr[GICV3_G0] = GIC_MIN_BPR;
+>> +    c->icc_bpr[GICV3_G1] = GIC_MIN_BPR;
+>> +    c->icc_bpr[GICV3_G1NS] = GIC_MIN_BPR;
+>> +
+>> +    c->icc_sre_el1 = 0x7;
+>> +    memset(c->icc_apr, 0, sizeof(c->icc_apr));
+>> +    memset(c->icc_igrpen, 0, sizeof(c->icc_igrpen));
+>> +}
+>> +
+>>  static void kvm_arm_gicv3_reset(DeviceState *dev)
+>>  {
+>>      GICv3State *s = ARM_GICV3_COMMON(dev);
+>> @@ -621,6 +654,41 @@ static void kvm_arm_gicv3_reset(DeviceState *dev)
+>>      kvm_arm_gicv3_put(s);
+>>  }
+>>
+>> +static uint64_t icc_cp_reg_read(CPUARMState *env, const ARMCPRegInfo *ri)
+>> +{
+>> +    return 0;
+>> +}
+>> +
+>> +static void icc_cp_reg_write(CPUARMState *env, const ARMCPRegInfo *ri,
+>> +                          uint64_t value)
+>> +{
+>> +    return;
+>> +}
+>
+> If you want to do nothing in a read/write function there are
+> already arm_cp_read_zero and arm_cp_write_ignore functions for
+> this. But using the ARM_CP_NOP flag is better still.
 
--drive parameter "if" is optional, and the default depends on the
-machine type.  If a machine type doesn't specify a default, the
-default is "ide".
+With ARM_CP_NOP qemu fails to boot.
+qemu-system-aarch64: KVM_SET_DEVICE_ATTR failed: Invalid argument
+Group 6 attr 0x000000000000c665
 
-Many machine types implicitly default to if=ide that way, even though
-they don't actually have an IDE controller.  This makes no sense.
-
-Change the implicit default to if=none.  Affected machines:
-
-* all targets: none
-* aarch64/arm: akita ast2500 canon cheetah collie connex imx25
-  integratorcp kzm lm3s6965evb lm3s811evb mainstone musicpal n800 n810
-  netduino2 nuri palmetto realview romulus sabrelite smdkc210 sx1 sx1
-  verdex z2
-* cris: axis-dev88
-* i386/x86_64: xenpv
-* lm32: lm32-evr lm32-uclinux milkymist
-* m68k: an5206 dummy mcf5208evb
-* microblaze/microblazeel: petalogix-ml605 petalogix-s3adsp1800
-* mips/mips64/mips64el/mipsel: mipssim
-* moxie: moxiesim
-* or32: or32-sim
-* ppc/ppc64/ppcemb: bamboo ref405ep taihu virtex-ml507
-* ppc/ppc64: mpc8544ds ppce500
-* sh4/sh4eb: shix
-* sparc: leon3_generic
-* sparc64: niagara
-* tricore: tricore_testboard
-* unicore32: puv3
-* xtensa/xtensaeb: kc705 lx200 lx60 ml605 sim
-
-None of these machines have an IDE controller, let alone code to
-honor if=ide.
-
-Cc: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-arm@nongnu.org
-Cc: Edgar E. Iglesias <edgar.iglesias@gmail.com>
-Cc: Stefano Stabellini <sstabellini@kernel.org>
-Cc: Anthony Perard <anthony.perard@citrix.com>
-Cc: xen-devel@lists.xensource.com
-Cc: Michael Walle <michael@walle.cc>
-Cc: Laurent Vivier <laurent@vivier.eu>
-Cc: Anthony Green <green@moxielogic.com>
-Cc: Jia Liu <proljc@gmail.com>
-Cc: Alexander Graf <agraf@suse.de>
-Cc: qemu-ppc@nongnu.org
-Cc: Magnus Damm <magnus.damm@gmail.com>
-Cc: Fabien Chouteau <chouteau@adacore.com>
-Cc: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
-Cc: Artyom Tarasenko <atar4qemu@gmail.com>
-Cc: Bastian Koppelmann <kbastian@mail.uni-paderborn.de>
-Cc: Guan Xuetao <gxt@mprc.pku.edu.cn>
-Cc: Max Filippov <jcmvbkbc@gmail.com>
-Signed-off-by: Markus Armbruster <armbru@redhat.com>
-Acked-By: Artyom Tarasenko <atar4qemu@gmail.com>
-Reviewed-by: Laurent Vivier <laurent@vivier.eu>
-Reviewed-by: Thomas Huth <thuth@redhat.com>
----
- include/sysemu/blockdev.h | 9 ++++-----
- 1 file changed, 4 insertions(+), 5 deletions(-)
-
-diff --git a/include/sysemu/blockdev.h b/include/sysemu/blockdev.h
-index 16432f3..351a039 100644
---- a/include/sysemu/blockdev.h
-+++ b/include/sysemu/blockdev.h
-@@ -19,12 +19,11 @@ void blockdev_auto_del(BlockBackend *blk);
- typedef enum {
-     IF_DEFAULT = -1,            /* for use with drive_add() only */
-     /*
--     * IF_IDE must be zero, because we want MachineClass member
--     * block_default_type to default-initialize to IF_IDE
-+     * IF_NONE must be zero, because we want MachineClass member
-+     * block_default_type to default-initialize to IF_NONE
-      */
--    IF_IDE = 0,
--    IF_NONE,
--    IF_SCSI, IF_FLOPPY, IF_PFLASH, IF_MTD, IF_SD, IF_VIRTIO, IF_XEN,
-+    IF_NONE = 0,
-+    IF_IDE, IF_SCSI, IF_FLOPPY, IF_PFLASH, IF_MTD, IF_SD, IF_VIRTIO, IF_XEN,
-     IF_COUNT
- } BlockInterfaceType;
- 
--- 
-2.7.4
-
+>
+>> +
+>> +/*
+>> + * CPU interface registers of GIC needs to be reset on CPU reset.
+>> + * For the calling arm_gicv3_icc_reset() on CPU reset, we register
+>> + * below ARMCPRegInfo. As we reset the whole cpu interface under single
+>> + * register reset, we define only one register of CPU interface instead
+>> + * of defining all the registers.
+>> + */
+>> +static const ARMCPRegInfo gicv3_cpuif_reginfo[] = {
+>> +    { .name = "ICC_CTLR_EL1", .state = ARM_CP_STATE_BOTH,
+>> +      .opc0 = 3, .opc1 = 0, .crn = 12, .crm = 12, .opc2 = 4,
+>> +      .type = ARM_CP_NO_RAW,
+>> +      .access = PL1_RW,
+>> +      .readfn = icc_cp_reg_read,
+>> +      .writefn = icc_cp_reg_write,
+>> +      /*
+>> +       * We hang the whole cpu interface reset routine off here
+>> +       * rather than parcelling it out into one little function
+>> +       * per register
+>> +       */
+>> +      .resetfn = arm_gicv3_icc_reset,
+>> +    },
+>> +    REGINFO_SENTINEL
+>> +};
+>> +
+>>  static void kvm_arm_gicv3_realize(DeviceState *dev, Error **errp)
+>>  {
+>>      GICv3State *s = KVM_ARM_GICV3(dev);
+>> @@ -650,6 +718,7 @@ static void kvm_arm_gicv3_realize(DeviceState *dev, Error **errp)
+>>
+>>          /* Store GICv3CPUState in CPUARMState gicv3state pointer */
+>>          env->gicv3state = (void *)&s->cpu[i];
+>> +        define_arm_cp_regs(cpu, gicv3_cpuif_reginfo);
+>>      }
+>>
+>>      /* Try to create the device via the device control API */
+>> --
+>> 1.9.1
+>>
+>
+> thanks
+> -- PMM

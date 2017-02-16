@@ -1,79 +1,127 @@
-Received: by 10.25.77.65 with SMTP id a62csp2542175lfb;
-        Thu, 16 Feb 2017 08:12:44 -0800 (PST)
-X-Received: by 10.28.65.132 with SMTP id o126mr2978523wma.14.1487261564661;
-        Thu, 16 Feb 2017 08:12:44 -0800 (PST)
-Return-Path: <peter.maydell@linaro.org>
-Received: from mail-wm0-x236.google.com (mail-wm0-x236.google.com. [2a00:1450:400c:c09::236])
-        by mx.google.com with ESMTPS id w81si1076344wmg.39.2017.02.16.08.12.44
-        for <alex.bennee@linaro.org>
+Received: by 10.25.77.65 with SMTP id a62csp2552548lfb;
+        Thu, 16 Feb 2017 08:36:07 -0800 (PST)
+X-Received: by 10.25.56.21 with SMTP id f21mr1100184lfa.83.1487262967506;
+        Thu, 16 Feb 2017 08:36:07 -0800 (PST)
+Return-Path: <pm215@archaic.org.uk>
+Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
+        by mx.google.com with ESMTPS id 196si3698086ljf.173.2017.02.16.08.36.07
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 16 Feb 2017 08:12:44 -0800 (PST)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 2a00:1450:400c:c09::236 as permitted sender) client-ip=2a00:1450:400c:c09::236;
+        Thu, 16 Feb 2017 08:36:07 -0800 (PST)
+Received-SPF: pass (google.com: best guess record for domain of pm215@archaic.org.uk designates 2001:8b0:1d0::2 as permitted sender) client-ip=2001:8b0:1d0::2;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 2a00:1450:400c:c09::236 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: by mail-wm0-x236.google.com with SMTP id c85so70359350wmi.1
-        for <alex.bennee@linaro.org>; Thu, 16 Feb 2017 08:12:44 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-         :cc:content-transfer-encoding;
-        bh=G4bJub6qRHrNdGEFmqY6XYlyFJhmXwKBpkLjkUhThnA=;
-        b=KWaTUlAu3hnTkfaaUpy2DP7fIJkUV8AKFaxwWR+nZxUBQV/k08pFe/jazERqkKWtRQ
-         k3ElCJxP+Z0ndp5ClGYI3zEyoLIzP6D5VMf7IhkROpI4UEwhiIMonOvqhDUWuX/wDLib
-         edrT3PEh4eZt9eD3jRRfSqTkVLUydbximPsVw=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-         :message-id:subject:to:cc:content-transfer-encoding;
-        bh=G4bJub6qRHrNdGEFmqY6XYlyFJhmXwKBpkLjkUhThnA=;
-        b=QrIsk3/qKNi7jHgMb7vT5vXAnpnYxuhPSJR4xaEDhsc3D7DvFL9yvVYD2jj0z1t17d
-         4rXN4TKPkRA35i3PGElGyShcQGn7Jh+NaS5DApK1Og/pg3afuzDfbVp3dQyVzplJNhF9
-         i2BvnEmJFLOC7gOR77nUvVVhI1G5o8VswvsUSk2ITBGMxlwg5f/CAjJf2ogm4iFTag0z
-         5j5l0+7d1vhd60wwTKQNMuD/wMMkU/mtrbyJyWVDLQsyOaxz47um9physN4mEbLdh5HA
-         b5jaYHYUGX4q82q+DS9XcabpUqJUleW6GUQq+6QbBca9vZHKSTY1Dg1Uls83kcJ9+QYS
-         c7Cw==
-X-Gm-Message-State: AMke39k0OvGVW3SaI1xUdzfEVNZfvFwqg+J6y4MOZ4gx6Oya/44BPWsbsK1vufh5+E+mdQgJ1oOKMIyHmstT9KyBM9o=
-X-Received: by 10.28.16.70 with SMTP id 67mr3287523wmq.142.1487261564344; Thu,
- 16 Feb 2017 08:12:44 -0800 (PST)
-MIME-Version: 1.0
-Received: by 10.223.145.69 with HTTP; Thu, 16 Feb 2017 08:12:23 -0800 (PST)
-In-Reply-To: <CAFEAcA-PFJp_9=NOCFqiQp=xF6Y-TnmE3bfU3zDa6xH7nK2Zfg@mail.gmail.com>
-References: <1486065742-28639-1-git-send-email-peter.maydell@linaro.org>
- <1486065742-28639-4-git-send-email-peter.maydell@linaro.org>
- <87mvdnvcxx.fsf@linaro.org> <CAFEAcA-PFJp_9=NOCFqiQp=xF6Y-TnmE3bfU3zDa6xH7nK2Zfg@mail.gmail.com>
+       spf=pass (google.com: best guess record for domain of pm215@archaic.org.uk designates 2001:8b0:1d0::2 as permitted sender) smtp.mailfrom=pm215@archaic.org.uk;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from pm215 by orth.archaic.org.uk with local (Exim 4.84_2)
+	(envelope-from <pm215@archaic.org.uk>)
+	id 1ceP2L-00033K-L8; Thu, 16 Feb 2017 16:36:05 +0000
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 16 Feb 2017 16:12:23 +0000
-Message-ID: <CAFEAcA9zp3uoDkXFJdHu2rRevWMCMrXX6v7uFhVzTSwkb8P0Cw@mail.gmail.com>
-Subject: Re: [PATCH 3/9] armv7m: Rewrite NVIC to not use any GIC code
-To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>, 
-	"patches@linaro.org" <patches@linaro.org>, Michael Davidsaver <mdavidsaver@gmail.com>, 
-	Liviu Ionescu <ilg@livius.net>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Cc: patches@linaro.org,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+Subject: [PATCH v2 04/13] armv7m: Fix condition check for taking exceptions
+Date: Thu, 16 Feb 2017 16:35:54 +0000
+Message-Id: <1487262963-11519-5-git-send-email-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.7.4
+In-Reply-To: <1487262963-11519-1-git-send-email-peter.maydell@linaro.org>
+References: <1487262963-11519-1-git-send-email-peter.maydell@linaro.org>
+MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-X-TUID: ZygxJHK9Pw1h
+Content-Transfer-Encoding: 8bit
+X-TUID: fSiQ3ihD9N3E
 
-On 15 February 2017 at 13:34, Peter Maydell <peter.maydell@linaro.org> wrot=
-e:
-> On 15 February 2017 at 12:46, Alex Benn=C3=A9e <alex.bennee@linaro.org> w=
-rote:
->> Can we not calculate a vector index rather than abusing the meaning of
->> offset while switching on it?
->
-> Yeah, we could. (This is just a case where I thought "I could
-> rewrite the code Michael did initially, but it doesn't quite
-> reach my threshold for doing that just because it's not the
-> way I'd have written it.".)
+The M profile condition for when we can take a pending exception or
+interrupt is not the same as that for A/R profile.  The code
+originally copied from the A/R profile version of the
+cpu_exec_interrupt function only worked by chance for the
+very simple case of exceptions being masked by PRIMASK.
+Replace it with a call to a function in the NVIC code that
+correctly compares the priority of the pending exception
+against the current execution priority of the CPU.
 
-FWIW, it took me five attempts at rewriting these loops before
-I got a version that actually worked. I think I'm going to
-take that as justification for my bias towards not rewriting
-code that already works :-)
+[Michael Davidsaver's patchset had a patch to do something
+similar but the implementation ended up being a rewrite.]
 
-(The change I ended up with just uses a local 'startvec' instead
-of modifying 'offset'.)
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
+---
+ target/arm/cpu.h      |  8 ++++++++
+ hw/intc/armv7m_nvic.c |  7 +++++++
+ target/arm/cpu.c      | 16 ++++++++--------
+ 3 files changed, 23 insertions(+), 8 deletions(-)
 
-thanks
--- PMM
+diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+index 0956a54..53299fa 100644
+--- a/target/arm/cpu.h
++++ b/target/arm/cpu.h
+@@ -1342,6 +1342,14 @@ uint32_t arm_phys_excp_target_el(CPUState *cs, uint32_t excp_idx,
+                                  uint32_t cur_el, bool secure);
+ 
+ /* Interface between CPU and Interrupt controller.  */
++#ifndef CONFIG_USER_ONLY
++bool armv7m_nvic_can_take_pending_exception(void *opaque);
++#else
++static inline bool armv7m_nvic_can_take_pending_exception(void *opaque)
++{
++    return true;
++}
++#endif
+ void armv7m_nvic_set_pending(void *opaque, int irq);
+ int armv7m_nvic_acknowledge_irq(void *opaque);
+ void armv7m_nvic_complete_irq(void *opaque, int irq);
+diff --git a/hw/intc/armv7m_nvic.c b/hw/intc/armv7m_nvic.c
+index f45b897..e0fce3e 100644
+--- a/hw/intc/armv7m_nvic.c
++++ b/hw/intc/armv7m_nvic.c
+@@ -286,6 +286,13 @@ static inline int nvic_exec_prio(NVICState *s)
+     return MIN(running, s->exception_prio);
+ }
+ 
++bool armv7m_nvic_can_take_pending_exception(void *opaque)
++{
++    NVICState *s = opaque;
++
++    return nvic_exec_prio(s) > nvic_pending_prio(s);
++}
++
+ /* caller must call nvic_irq_update() after this */
+ static void set_prio(NVICState *s, unsigned irq, uint8_t prio)
+ {
+diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+index 4a069f6..edbc87b 100644
+--- a/target/arm/cpu.c
++++ b/target/arm/cpu.c
+@@ -338,13 +338,6 @@ static bool arm_v7m_cpu_exec_interrupt(CPUState *cs, int interrupt_request)
+     CPUARMState *env = &cpu->env;
+     bool ret = false;
+ 
+-
+-    if (interrupt_request & CPU_INTERRUPT_FIQ
+-        && !(env->daif & PSTATE_F)) {
+-        cs->exception_index = EXCP_FIQ;
+-        cc->do_interrupt(cs);
+-        ret = true;
+-    }
+     /* ARMv7-M interrupt return works by loading a magic value
+      * into the PC.  On real hardware the load causes the
+      * return to occur.  The qemu implementation performs the
+@@ -354,9 +347,16 @@ static bool arm_v7m_cpu_exec_interrupt(CPUState *cs, int interrupt_request)
+      * the stack if an interrupt occurred at the wrong time.
+      * We avoid this by disabling interrupts when
+      * pc contains a magic address.
++     *
++     * ARMv7-M interrupt masking works differently than -A or -R.
++     * There is no FIQ/IRQ distinction. Instead of I and F bits
++     * masking FIQ and IRQ interrupts, an exception is taken only
++     * if it is higher priority than the current execution priority
++     * (which depends on state like BASEPRI, FAULTMASK and the
++     * currently active exception).
+      */
+     if (interrupt_request & CPU_INTERRUPT_HARD
+-        && !(env->daif & PSTATE_I)
++        && (armv7m_nvic_can_take_pending_exception(env->nvic))
+         && (env->regs[15] < 0xfffffff0)) {
+         cs->exception_index = EXCP_IRQ;
+         cc->do_interrupt(cs);
+-- 
+2.7.4

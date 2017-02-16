@@ -1,74 +1,74 @@
-Received: by 10.25.77.65 with SMTP id a62csp2373155lfb;
-        Thu, 16 Feb 2017 01:54:23 -0800 (PST)
-X-Received: by 10.200.56.4 with SMTP id q4mr1262798qtb.73.1487238863563;
-        Thu, 16 Feb 2017 01:54:23 -0800 (PST)
+Received: by 10.25.77.65 with SMTP id a62csp2374873lfb;
+        Thu, 16 Feb 2017 02:00:03 -0800 (PST)
+X-Received: by 10.237.59.19 with SMTP id p19mr1166999qte.90.1487239203785;
+        Thu, 16 Feb 2017 02:00:03 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id b34si4845935qta.277.2017.02.16.01.54.23
+        by mx.google.com with ESMTPS id l98si4877610qkh.30.2017.02.16.02.00.03
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 16 Feb 2017 01:54:23 -0800 (PST)
+        Thu, 16 Feb 2017 02:00:03 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        dkim=fail header.i=@gmail.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:45502 helo=lists.gnu.org)
+Received: from localhost ([::1]:45530 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ceIla-0005Jz-W1
-	for alex.bennee@linaro.org; Thu, 16 Feb 2017 04:54:23 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:37626)
+	id 1ceIr5-0001eo-96
+	for alex.bennee@linaro.org; Thu, 16 Feb 2017 05:00:03 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:38249)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <vijay.kilari@gmail.com>) id 1ceIlS-0005IV-UP
-	for qemu-arm@nongnu.org; Thu, 16 Feb 2017 04:54:16 -0500
+	(envelope-from <vijay.kilari@gmail.com>) id 1ceIpB-0000Jm-Tz
+	for qemu-arm@nongnu.org; Thu, 16 Feb 2017 04:58:07 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <vijay.kilari@gmail.com>) id 1ceIlR-0004e4-J2
-	for qemu-arm@nongnu.org; Thu, 16 Feb 2017 04:54:15 -0500
-Received: from mail-lf0-x243.google.com ([2a00:1450:4010:c07::243]:36640)
+	(envelope-from <vijay.kilari@gmail.com>) id 1ceIpB-0005vK-3s
+	for qemu-arm@nongnu.org; Thu, 16 Feb 2017 04:58:06 -0500
+Received: from mail-lf0-x241.google.com ([2a00:1450:4010:c07::241]:33623)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <vijay.kilari@gmail.com>)
-	id 1ceIlR-0004d8-83; Thu, 16 Feb 2017 04:54:13 -0500
-Received: by mail-lf0-x243.google.com with SMTP id h65so1004853lfi.3;
-	Thu, 16 Feb 2017 01:54:12 -0800 (PST)
+	id 1ceIpA-0005un-Sj; Thu, 16 Feb 2017 04:58:05 -0500
+Received: by mail-lf0-x241.google.com with SMTP id x1so1024265lff.0;
+	Thu, 16 Feb 2017 01:58:04 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
 	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=AhC1//ILWeuNPAXxu4xwc2oYKUF0Kz2uzDk7ue932iw=;
-	b=osHR4LEA4P1DRnDphpAUJsEvu3U2VgS8ZczJV0WAgN312ffaQ3qE3u1/s6DL0n7+kO
-	ZkLvtisX99XnPib0gCPDapUefgSXuvTGHf90bBeci3/XqvDH6HJXh2sPwfayIvjlCf9F
-	03FpjZKky21aov/n0QoPQw6H96FqxTSrnV6eCS7KVfc9To6g0fyiHYyUkfnZKq4d8qhe
-	Cp+g/psUElO+C94cWZLiKYPYRO7ZRgcH69Zrw1fIDwjkxwlbGiW407+qn+Y+pJ4kFGun
-	t5iUB2vxiSu4zZD2xS/1wxcw/BfImPkkPvGd7CJN4pu0BW6wfsdpKkV0L+mkRe+0CDcA
-	RkBQ==
+	:cc; bh=F+fr6gLCIChTcEh21sZWnkTlDMD8Xa5unWQyb7QEh8Q=;
+	b=m7j8D3VEkb9Vc/wAsbyV6tHRv+ipgrc6SnxY3A6So/SBzpJY02jzmPIVQe1sP/O0iw
+	rPfAdlvc5s4bUKZ2HF3wbDiI2m2k6wRck4A/joQIEkOth2i48Z8Noh6aMnrUz5v2c2bh
+	dY47nHnzlshPvMDv/CbA4DGS1Li90ugzzSyLXZt7R3yvMDtQQlinzME2ZqF3xYehKc4k
+	yBSWbrbAHeLEVglVx9nqcCK1cmKE1aNZHtfvb3M6Q+cvwQuSIZ9MgbvEgHxbnz0IXvvB
+	0HXbH3Pk5ddb4f5gubuzWrJHORMGuxLoJaytLbE/6xh8uGepfIhSfYBOAcVFrgEF4dLr
+	au3A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
 	:message-id:subject:to:cc;
-	bh=AhC1//ILWeuNPAXxu4xwc2oYKUF0Kz2uzDk7ue932iw=;
-	b=khNNmbEP0Ftv3ek5nAq2FDkt8xStBgowRVUbM/21ym2xlEcurIrvhUFki+UAAvTLPy
-	EdgOCU3W62Ke1Bj1R+HZayq51F5nKNMYmc54CKWr7cxDRVt2K+nyWDV/VTGYFtiqLJvE
-	/IteooKaxrMQV/89ElzvcpyW5OfAam0Vmra2IyM8yvuLBcOUEr51eZAjJ2Z+sAtrI5Jj
-	z+cU26vxfFupkrPWMT3TZyapBsFZrYbFVYS0ncZS0WDTTPg67W44GMkznoX/zaMGUwww
-	AQK8KZahlnO/7HLjCo3qT5lhQaud5xbuQdC0lOTJvJjHoXkgX+loGP1rg52/2PccUhTJ
-	M7eQ==
-X-Gm-Message-State: AMke39msfOJdDJhnFST4iU/+EYwFvJwcBuD9JfFTSMho9/pbD5htiQgjy9XWsopQKzMzGifYIrojT5eOfMVHoQ==
-X-Received: by 10.46.84.76 with SMTP id y12mr420511ljd.51.1487238851100; Thu,
-	16 Feb 2017 01:54:11 -0800 (PST)
+	bh=F+fr6gLCIChTcEh21sZWnkTlDMD8Xa5unWQyb7QEh8Q=;
+	b=nfDKj9lLqXfpBxS6aDJP6MmXOtrnCtGS6Os+YvHPcXo6XY5NNxk9/OcP9ZXrs7fich
+	Bmwgv6t1Q5OTpMthehqRJkowThVcwtvZDp3TbxNVydtb2SP/7W8yZbd/ujWaBW81tkTT
+	jiQczwPMRFtjg0GfL58bBtiIEZVZYPqcHBT5LZlpaerXGg+8IERnqC/iNs8ER5Qkh934
+	PhNQGxg+vJpp69wZ+m1b9WrEtcoBhl6hkhK93oatb6LMzkm4HNpx0R36Aqs7VtHrRwFp
+	1A7w32ycqhXckN5rDDs58pdT8rgekThamWKBZ7SharUNEgPBDM0t15JLHw0kNiXEnapz
+	Wdpg==
+X-Gm-Message-State: AMke39kUrwVTXacFfsqHyT9TjrbOxPol1u9mLrDQfCpENUvCgJ3OC7cM56eKMoXANaDfKiyRthHxYPE7uXOspQ==
+X-Received: by 10.46.9.143 with SMTP id 137mr397318ljj.132.1487239083360; Thu,
+	16 Feb 2017 01:58:03 -0800 (PST)
 MIME-Version: 1.0
-Received: by 10.46.20.15 with HTTP; Thu, 16 Feb 2017 01:54:10 -0800 (PST)
-In-Reply-To: <CAFEAcA-7PE_T7BsV=vSCEkQDeekB9KnX33Ou5NiUec4XeUu+zw@mail.gmail.com>
+Received: by 10.46.20.15 with HTTP; Thu, 16 Feb 2017 01:58:02 -0800 (PST)
+In-Reply-To: <CAFEAcA-Kty3EynELrP88fgNoFj3njh1w6XZ5DOpNsTC7edPmng@mail.gmail.com>
 References: <1485879782-6075-1-git-send-email-vijay.kilari@gmail.com>
-	<1485879782-6075-6-git-send-email-vijay.kilari@gmail.com>
-	<CAFEAcA-7PE_T7BsV=vSCEkQDeekB9KnX33Ou5NiUec4XeUu+zw@mail.gmail.com>
+	<1485879782-6075-5-git-send-email-vijay.kilari@gmail.com>
+	<CAFEAcA-Kty3EynELrP88fgNoFj3njh1w6XZ5DOpNsTC7edPmng@mail.gmail.com>
 From: Vijay Kilari <vijay.kilari@gmail.com>
-Date: Thu, 16 Feb 2017 15:24:10 +0530
-Message-ID: <CALicx6vWBR_bM2g_DObYgw-12girdK9YgGS8X=zAwenz2EmPFg@mail.gmail.com>
+Date: Thu, 16 Feb 2017 15:28:02 +0530
+Message-ID: <CALicx6u0sDaqxJ-y_GxCCMV1CXo095MGG_ibR9HB+ZYavpuc=Q@mail.gmail.com>
 To: Peter Maydell <peter.maydell@linaro.org>
 Content-Type: text/plain; charset=UTF-8
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2a00:1450:4010:c07::243
-Subject: Re: [Qemu-arm] [PATCH v7 RESEND 5/5] hw/intc/arm_gicv3_kvm: Reset
- GICv3 cpu interface registers
+X-Received-From: 2a00:1450:4010:c07::241
+Subject: Re: [Qemu-arm] [PATCH v7 RESEND 4/5] target-arm: Add GICv3CPUState
+ in CPUARMState struct
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -87,143 +87,57 @@ Cc: Marc Zyngier <marc.zyngier@arm.com>, Pavel Fedin <p.fedin@samsung.com>,
 	Christoffer Dall <christoffer.dall@linaro.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 3G90lAIbSUOd
+X-TUID: 2fLlA06KYtBS
 
-On Tue, Feb 7, 2017 at 8:19 PM, Peter Maydell <peter.maydell@linaro.org> wrote:
+On Tue, Feb 7, 2017 at 8:12 PM, Peter Maydell <peter.maydell@linaro.org> wrote:
 > On 31 January 2017 at 16:23,  <vijay.kilari@gmail.com> wrote:
 >> From: Vijaya Kumar K <Vijaya.Kumar@cavium.com>
 >>
->> Reset CPU interface registers of GICv3 when CPU is reset.
->> For this, ARMCPRegInfo struct is registered with one ICC
->> register whose resetfn is called when cpu is reset.
+>> Add gicv3state void pointer to CPUARMState struct
+>> to store GICv3CPUState.
 >>
->> All the ICC registers are reset under one single register
->> reset function instead of calling resetfn for each ICC
->> register.
+>> In case of usecase like CPU reset, we need to reset
+>> GICv3CPUState of the CPU. In such scenario, this pointer
+>> becomes handy.
+>>
+>> This patch take care of only GICv3.
 >>
 >> Signed-off-by: Vijaya Kumar K <Vijaya.Kumar@cavium.com>
 >> ---
->>  hw/intc/arm_gicv3_kvm.c | 69 +++++++++++++++++++++++++++++++++++++++++++++++++
->>  1 file changed, 69 insertions(+)
+>>  hw/intc/arm_gicv3_kvm.c | 8 ++++++++
+>>  target-arm/cpu.h        | 2 ++
+>>  2 files changed, 10 insertions(+)
 >>
 >> diff --git a/hw/intc/arm_gicv3_kvm.c b/hw/intc/arm_gicv3_kvm.c
->> index f91e0ac..c3f38aa 100644
+>> index 77af32d..f91e0ac 100644
 >> --- a/hw/intc/arm_gicv3_kvm.c
 >> +++ b/hw/intc/arm_gicv3_kvm.c
->> @@ -604,6 +604,39 @@ static void kvm_arm_gicv3_get(GICv3State *s)
->>      }
->>  }
+>> @@ -644,6 +644,14 @@ static void kvm_arm_gicv3_realize(DeviceState *dev, Error **errp)
 >>
->> +static void arm_gicv3_icc_reset(CPUARMState *env, const ARMCPRegInfo *ri)
->> +{
->> +    ARMCPU *cpu;
->> +    GICv3State *s;
->> +    GICv3CPUState *c;
+>>      gicv3_init_irqs_and_mmio(s, kvm_arm_gicv3_set_irq, NULL);
+>>
+>> +    for (i = 0; i < s->num_cpu; i++) {
+>> +        ARMCPU *cpu = ARM_CPU(qemu_get_cpu(i));
+>> +        CPUARMState *env = &cpu->env;
 >> +
->> +    c = (GICv3CPUState *)env->gicv3state;
->> +    if (!c || !c->cpu || !c->gic) {
->
-> We should assert this kind of thing, not just silently do nothing.
-> Or just assume it's true, because if it's not then we'll segfault
-> immediately below which is just as clear an indication of where
-> the bug is as asserting.
-
-OK
->
->> +        return;
+>> +        /* Store GICv3CPUState in CPUARMState gicv3state pointer */
+>> +        env->gicv3state = (void *)&s->cpu[i];
 >> +    }
 >> +
->> +    s = c->gic;
->> +    if (!s) {
->
-> You've already checked this once.
->
->> +        return;
->> +    }
->> +
->> +    cpu = ARM_CPU(c->cpu);
->> +    /* Initialize to actual HW supported configuration */
->> +    kvm_device_access(s->dev_fd, KVM_DEV_ARM_VGIC_GRP_CPU_SYSREGS,
->> +                      KVM_VGIC_ATTR(ICC_CTLR_EL1, cpu->mp_affinity),
->> +                      &c->icc_ctlr_el1[GICV3_NS], false);
->> +
->> +    c->icc_ctlr_el1[GICV3_S] = c->icc_ctlr_el1[GICV3_NS];
->> +    c->icc_pmr_el1 = 0;
->> +    c->icc_bpr[GICV3_G0] = GIC_MIN_BPR;
->> +    c->icc_bpr[GICV3_G1] = GIC_MIN_BPR;
->> +    c->icc_bpr[GICV3_G1NS] = GIC_MIN_BPR;
->> +
->> +    c->icc_sre_el1 = 0x7;
->> +    memset(c->icc_apr, 0, sizeof(c->icc_apr));
->> +    memset(c->icc_igrpen, 0, sizeof(c->icc_igrpen));
->> +}
->> +
->>  static void kvm_arm_gicv3_reset(DeviceState *dev)
->>  {
->>      GICv3State *s = ARM_GICV3_COMMON(dev);
->> @@ -621,6 +654,41 @@ static void kvm_arm_gicv3_reset(DeviceState *dev)
->>      kvm_arm_gicv3_put(s);
->>  }
->>
->> +static uint64_t icc_cp_reg_read(CPUARMState *env, const ARMCPRegInfo *ri)
->> +{
->> +    return 0;
->> +}
->> +
->> +static void icc_cp_reg_write(CPUARMState *env, const ARMCPRegInfo *ri,
->> +                          uint64_t value)
->> +{
->> +    return;
->> +}
->
-> If you want to do nothing in a read/write function there are
-> already arm_cp_read_zero and arm_cp_write_ignore functions for
-> this. But using the ARM_CP_NOP flag is better still.
-
-With ARM_CP_NOP qemu fails to boot.
-qemu-system-aarch64: KVM_SET_DEVICE_ATTR failed: Invalid argument
-Group 6 attr 0x000000000000c665
-
->
->> +
->> +/*
->> + * CPU interface registers of GIC needs to be reset on CPU reset.
->> + * For the calling arm_gicv3_icc_reset() on CPU reset, we register
->> + * below ARMCPRegInfo. As we reset the whole cpu interface under single
->> + * register reset, we define only one register of CPU interface instead
->> + * of defining all the registers.
->> + */
->> +static const ARMCPRegInfo gicv3_cpuif_reginfo[] = {
->> +    { .name = "ICC_CTLR_EL1", .state = ARM_CP_STATE_BOTH,
->> +      .opc0 = 3, .opc1 = 0, .crn = 12, .crm = 12, .opc2 = 4,
->> +      .type = ARM_CP_NO_RAW,
->> +      .access = PL1_RW,
->> +      .readfn = icc_cp_reg_read,
->> +      .writefn = icc_cp_reg_write,
->> +      /*
->> +       * We hang the whole cpu interface reset routine off here
->> +       * rather than parcelling it out into one little function
->> +       * per register
->> +       */
->> +      .resetfn = arm_gicv3_icc_reset,
->> +    },
->> +    REGINFO_SENTINEL
->> +};
->> +
->>  static void kvm_arm_gicv3_realize(DeviceState *dev, Error **errp)
->>  {
->>      GICv3State *s = KVM_ARM_GICV3(dev);
->> @@ -650,6 +718,7 @@ static void kvm_arm_gicv3_realize(DeviceState *dev, Error **errp)
->>
->>          /* Store GICv3CPUState in CPUARMState gicv3state pointer */
->>          env->gicv3state = (void *)&s->cpu[i];
->> +        define_arm_cp_regs(cpu, gicv3_cpuif_reginfo);
->>      }
->>
 >>      /* Try to create the device via the device control API */
->> --
->> 1.9.1
->>
+>>      s->dev_fd = kvm_create_device(kvm_state, KVM_DEV_TYPE_ARM_VGIC_V3, false);
+>>      if (s->dev_fd < 0) {
+>
+> Please set the CPU's pointer to the GICv3 in arm_gicv3_common_realize(),
+> because that's where we set the GICv3's pointer to the CPU.
+> (We don't want the pointer to be specific to the KVM GICv3
+> anyway.)
+
+Adding this arch specific to arm_gicv3_common_realize() lands in
+compilation errors
+ as arm_gicv3_common.c is common file.
+So, I would like to add this to arm_gicv3_cpuif.c and export it as a function
+and call from arm_gicv3_common_realize().
 >
 > thanks
 > -- PMM

@@ -1,234 +1,95 @@
-Received: by 10.25.77.65 with SMTP id a62csp2552547lfb;
-        Thu, 16 Feb 2017 08:36:07 -0800 (PST)
-X-Received: by 10.25.203.3 with SMTP id b3mr1095887lfg.130.1487262967436;
-        Thu, 16 Feb 2017 08:36:07 -0800 (PST)
+Received: by 10.25.77.65 with SMTP id a62csp2552553lfb;
+        Thu, 16 Feb 2017 08:36:08 -0800 (PST)
+X-Received: by 10.28.223.6 with SMTP id w6mr3267444wmg.17.1487262968019;
+        Thu, 16 Feb 2017 08:36:08 -0800 (PST)
 Return-Path: <pm215@archaic.org.uk>
-Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
-        by mx.google.com with ESMTPS id a185si3698559lfa.367.2017.02.16.08.36.07
+Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
+        by mx.google.com with ESMTPS id d18si9924293wra.196.2017.02.16.08.36.07
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
         Thu, 16 Feb 2017 08:36:07 -0800 (PST)
-Received-SPF: pass (google.com: best guess record for domain of pm215@archaic.org.uk designates 81.2.115.148 as permitted sender) client-ip=81.2.115.148;
+Received-SPF: pass (google.com: best guess record for domain of pm215@archaic.org.uk designates 2001:8b0:1d0::2 as permitted sender) client-ip=2001:8b0:1d0::2;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: best guess record for domain of pm215@archaic.org.uk designates 81.2.115.148 as permitted sender) smtp.mailfrom=pm215@archaic.org.uk;
+       spf=pass (google.com: best guess record for domain of pm215@archaic.org.uk designates 2001:8b0:1d0::2 as permitted sender) smtp.mailfrom=pm215@archaic.org.uk;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from pm215 by orth.archaic.org.uk with local (Exim 4.84_2)
 	(envelope-from <pm215@archaic.org.uk>)
-	id 1ceP2M-00033V-3t; Thu, 16 Feb 2017 16:36:06 +0000
+	id 1ceP2N-00034G-BK; Thu, 16 Feb 2017 16:36:07 +0000
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
 Cc: patches@linaro.org,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-Subject: [PATCH v2 05/13] arm: gic: Remove references to NVIC
-Date: Thu, 16 Feb 2017 16:35:55 +0000
-Message-Id: <1487262963-11519-6-git-send-email-peter.maydell@linaro.org>
+Subject: [PATCH v2 07/13] armv7m: Remove unused armv7m_nvic_acknowledge_irq() return value
+Date: Thu, 16 Feb 2017 16:35:57 +0000
+Message-Id: <1487262963-11519-8-git-send-email-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.7.4
 In-Reply-To: <1487262963-11519-1-git-send-email-peter.maydell@linaro.org>
 References: <1487262963-11519-1-git-send-email-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: EEw6fEU/U/Ry
+X-TUID: V6u3saOHOOYs
 
-From: Michael Davidsaver <mdavidsaver@gmail.com>
+Having armv7m_nvic_acknowledge_irq() return the new value of
+env->v7m.exception and its one caller assign the return value
+back to env->v7m.exception is pointless. Just make the return
+type void instead.
 
-Now that the NVIC is its own separate implementation, we can
-clean up the GIC code by removing REV_NVIC and conditionals
-which use it.
-
-Signed-off-by: Michael Davidsaver <mdavidsaver@gmail.com>
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- hw/intc/gic_internal.h   |  7 ++-----
- hw/intc/arm_gic.c        | 31 +++++--------------------------
- hw/intc/arm_gic_common.c | 23 ++++++++---------------
- 3 files changed, 15 insertions(+), 46 deletions(-)
+ target/arm/cpu.h      | 2 +-
+ hw/intc/armv7m_nvic.c | 4 +---
+ target/arm/helper.c   | 2 +-
+ 3 files changed, 3 insertions(+), 5 deletions(-)
 
-diff --git a/hw/intc/gic_internal.h b/hw/intc/gic_internal.h
-index 3f31174..7fe87b1 100644
---- a/hw/intc/gic_internal.h
-+++ b/hw/intc/gic_internal.h
-@@ -25,9 +25,7 @@
+diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+index 53299fa..ab46c0c 100644
+--- a/target/arm/cpu.h
++++ b/target/arm/cpu.h
+@@ -1351,7 +1351,7 @@ static inline bool armv7m_nvic_can_take_pending_exception(void *opaque)
+ }
+ #endif
+ void armv7m_nvic_set_pending(void *opaque, int irq);
+-int armv7m_nvic_acknowledge_irq(void *opaque);
++void armv7m_nvic_acknowledge_irq(void *opaque);
+ void armv7m_nvic_complete_irq(void *opaque, int irq);
  
- #define ALL_CPU_MASK ((unsigned)(((1 << GIC_NCPU) - 1)))
- 
--/* The NVIC has 16 internal vectors.  However these are not exposed
--   through the normal GIC interface.  */
--#define GIC_BASE_IRQ ((s->revision == REV_NVIC) ? 32 : 0)
-+#define GIC_BASE_IRQ 0
- 
- #define GIC_SET_ENABLED(irq, cm) s->irq_state[irq].enabled |= (cm)
- #define GIC_CLEAR_ENABLED(irq, cm) s->irq_state[irq].enabled &= ~(cm)
-@@ -75,7 +73,6 @@
- 
- /* The special cases for the revision property: */
- #define REV_11MPCORE 0
--#define REV_NVIC 0xffffffff
- 
- void gic_set_pending_private(GICState *s, int cpu, int irq);
- uint32_t gic_acknowledge_irq(GICState *s, int cpu, MemTxAttrs attrs);
-@@ -87,7 +84,7 @@ void gic_set_priority(GICState *s, int cpu, int irq, uint8_t val,
- 
- static inline bool gic_test_pending(GICState *s, int irq, int cm)
- {
--    if (s->revision == REV_NVIC || s->revision == REV_11MPCORE) {
-+    if (s->revision == REV_11MPCORE) {
-         return s->irq_state[irq].pending & cm;
-     } else {
-         /* Edge-triggered interrupts are marked pending on a rising edge, but
-diff --git a/hw/intc/arm_gic.c b/hw/intc/arm_gic.c
-index 521aac3..8e5a9d8 100644
---- a/hw/intc/arm_gic.c
-+++ b/hw/intc/arm_gic.c
-@@ -156,17 +156,6 @@ static void gic_set_irq_11mpcore(GICState *s, int irq, int level,
-     }
+ /* Interface for defining coprocessor registers.
+diff --git a/hw/intc/armv7m_nvic.c b/hw/intc/armv7m_nvic.c
+index d9b9a43..010bf92 100644
+--- a/hw/intc/armv7m_nvic.c
++++ b/hw/intc/armv7m_nvic.c
+@@ -412,7 +412,7 @@ void armv7m_nvic_set_pending(void *opaque, int irq)
  }
  
--static void gic_set_irq_nvic(GICState *s, int irq, int level,
--                                 int cm, int target)
--{
--    if (level) {
--        GIC_SET_LEVEL(irq, cm);
--        GIC_SET_PENDING(irq, target);
--    } else {
--        GIC_CLEAR_LEVEL(irq, cm);
--    }
--}
+ /* Make pending IRQ active.  */
+-int armv7m_nvic_acknowledge_irq(void *opaque)
++void armv7m_nvic_acknowledge_irq(void *opaque)
+ {
+     NVICState *s = (NVICState *)opaque;
+     CPUARMState *env = &s->cpu->env;
+@@ -439,8 +439,6 @@ int armv7m_nvic_acknowledge_irq(void *opaque)
+     env->v7m.exception = s->vectpending;
+ 
+     nvic_irq_update(s);
 -
- static void gic_set_irq_generic(GICState *s, int irq, int level,
-                                 int cm, int target)
- {
-@@ -214,8 +203,6 @@ static void gic_set_irq(void *opaque, int irq, int level)
- 
-     if (s->revision == REV_11MPCORE) {
-         gic_set_irq_11mpcore(s, irq, level, cm, target);
--    } else if (s->revision == REV_NVIC) {
--        gic_set_irq_nvic(s, irq, level, cm, target);
-     } else {
-         gic_set_irq_generic(s, irq, level, cm, target);
-     }
-@@ -367,7 +354,7 @@ uint32_t gic_acknowledge_irq(GICState *s, int cpu, MemTxAttrs attrs)
-         return 1023;
-     }
- 
--    if (s->revision == REV_11MPCORE || s->revision == REV_NVIC) {
-+    if (s->revision == REV_11MPCORE) {
-         /* Clear pending flags for both level and edge triggered interrupts.
-          * Level triggered IRQs will be reasserted once they become inactive.
-          */
-@@ -589,11 +576,6 @@ void gic_complete_irq(GICState *s, int cpu, int irq, MemTxAttrs attrs)
-             DPRINTF("Set %d pending mask %x\n", irq, cm);
-             GIC_SET_PENDING(irq, cm);
-         }
--    } else if (s->revision == REV_NVIC) {
--        if (GIC_TEST_LEVEL(irq, cm)) {
--            DPRINTF("Set nvic %d pending mask %x\n", irq, cm);
--            GIC_SET_PENDING(irq, cm);
--        }
-     }
- 
-     group = gic_has_groups(s) && GIC_TEST_GROUP(irq, cm);
-@@ -768,7 +750,7 @@ static uint32_t gic_dist_readb(void *opaque, hwaddr offset, MemTxAttrs attrs)
-     } else if (offset < 0xf10) {
-         goto bad_reg;
-     } else if (offset < 0xf30) {
--        if (s->revision == REV_11MPCORE || s->revision == REV_NVIC) {
-+        if (s->revision == REV_11MPCORE) {
-             goto bad_reg;
-         }
- 
-@@ -802,9 +784,6 @@ static uint32_t gic_dist_readb(void *opaque, hwaddr offset, MemTxAttrs attrs)
-             case 2:
-                 res = gic_id_gicv2[(offset - 0xfd0) >> 2];
-                 break;
--            case REV_NVIC:
--                /* Shouldn't be able to get here */
--                abort();
-             default:
-                 res = 0;
-             }
-@@ -1028,7 +1007,7 @@ static void gic_dist_writeb(void *opaque, hwaddr offset,
-                 continue; /* Ignore Non-secure access of Group0 IRQ */
-             }
- 
--            if (s->revision == REV_11MPCORE || s->revision == REV_NVIC) {
-+            if (s->revision == REV_11MPCORE) {
-                 if (value & (1 << (i * 2))) {
-                     GIC_SET_MODEL(irq + i);
-                 } else {
-@@ -1046,7 +1025,7 @@ static void gic_dist_writeb(void *opaque, hwaddr offset,
-         goto bad_reg;
-     } else if (offset < 0xf20) {
-         /* GICD_CPENDSGIRn */
--        if (s->revision == REV_11MPCORE || s->revision == REV_NVIC) {
-+        if (s->revision == REV_11MPCORE) {
-             goto bad_reg;
-         }
-         irq = (offset - 0xf10);
-@@ -1060,7 +1039,7 @@ static void gic_dist_writeb(void *opaque, hwaddr offset,
-         }
-     } else if (offset < 0xf30) {
-         /* GICD_SPENDSGIRn */
--        if (s->revision == REV_11MPCORE || s->revision == REV_NVIC) {
-+        if (s->revision == REV_11MPCORE) {
-             goto bad_reg;
-         }
-         irq = (offset - 0xf20);
-diff --git a/hw/intc/arm_gic_common.c b/hw/intc/arm_gic_common.c
-index 4a8df44..70f1134 100644
---- a/hw/intc/arm_gic_common.c
-+++ b/hw/intc/arm_gic_common.c
-@@ -99,9 +99,7 @@ void gic_init_irqs_and_mmio(GICState *s, qemu_irq_handler handler,
-      *  [N+32..N+63] PPIs for CPU 1
-      *   ...
-      */
--    if (s->revision != REV_NVIC) {
--        i += (GIC_INTERNAL * s->num_cpu);
--    }
-+    i += (GIC_INTERNAL * s->num_cpu);
-     qdev_init_gpio_in(DEVICE(s), handler, i);
- 
-     for (i = 0; i < s->num_cpu; i++) {
-@@ -121,16 +119,12 @@ void gic_init_irqs_and_mmio(GICState *s, qemu_irq_handler handler,
-     memory_region_init_io(&s->iomem, OBJECT(s), ops, s, "gic_dist", 0x1000);
-     sysbus_init_mmio(sbd, &s->iomem);
- 
--    if (s->revision != REV_NVIC) {
--        /* This is the main CPU interface "for this core". It is always
--         * present because it is required by both software emulation and KVM.
--         * NVIC is not handled here because its CPU interface is different,
--         * neither it can use KVM.
--         */
--        memory_region_init_io(&s->cpuiomem[0], OBJECT(s), ops ? &ops[1] : NULL,
--                              s, "gic_cpu", s->revision == 2 ? 0x2000 : 0x100);
--        sysbus_init_mmio(sbd, &s->cpuiomem[0]);
--    }
-+    /* This is the main CPU interface "for this core". It is always
-+     * present because it is required by both software emulation and KVM.
-+     */
-+    memory_region_init_io(&s->cpuiomem[0], OBJECT(s), ops ? &ops[1] : NULL,
-+                          s, "gic_cpu", s->revision == 2 ? 0x2000 : 0x100);
-+    sysbus_init_mmio(sbd, &s->cpuiomem[0]);
+-    return env->v7m.exception;
  }
  
- static void arm_gic_common_realize(DeviceState *dev, Error **errp)
-@@ -162,7 +156,7 @@ static void arm_gic_common_realize(DeviceState *dev, Error **errp)
-     }
- 
-     if (s->security_extn &&
--        (s->revision == REV_11MPCORE || s->revision == REV_NVIC)) {
-+        (s->revision == REV_11MPCORE)) {
-         error_setg(errp, "this GIC revision does not implement "
-                    "the security extensions");
+ void armv7m_nvic_complete_irq(void *opaque, int irq)
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index bac1718..050d8df 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -6141,7 +6141,7 @@ void arm_v7m_cpu_do_interrupt(CPUState *cs)
+         armv7m_nvic_set_pending(env->nvic, ARMV7M_EXCP_DEBUG);
          return;
-@@ -255,7 +249,6 @@ static Property arm_gic_common_properties[] = {
-     DEFINE_PROP_UINT32("num-irq", GICState, num_irq, 32),
-     /* Revision can be 1 or 2 for GIC architecture specification
-      * versions 1 or 2, or 0 to indicate the legacy 11MPCore GIC.
--     * (Internally, 0xffffffff also indicates "not a GIC but an NVIC".)
-      */
-     DEFINE_PROP_UINT32("revision", GICState, revision, 1),
-     /* True if the GIC should implement the security extensions */
+     case EXCP_IRQ:
+-        env->v7m.exception = armv7m_nvic_acknowledge_irq(env->nvic);
++        armv7m_nvic_acknowledge_irq(env->nvic);
+         break;
+     case EXCP_EXCEPTION_EXIT:
+         do_v7m_exception_exit(env);
 -- 
 2.7.4

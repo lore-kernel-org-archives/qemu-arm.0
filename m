@@ -1,151 +1,148 @@
-Received: by 10.25.77.65 with SMTP id a62csp75197lfb;
-        Fri, 17 Feb 2017 01:21:41 -0800 (PST)
-X-Received: by 10.55.66.68 with SMTP id p65mr5935043qka.187.1487323301742;
-        Fri, 17 Feb 2017 01:21:41 -0800 (PST)
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 10.25.77.65 with SMTP id a62csp77102lfb;
+        Fri, 17 Feb 2017 01:28:03 -0800 (PST)
+X-Received: by 10.55.123.5 with SMTP id w5mr7369996qkc.76.1487323683010;
+        Fri, 17 Feb 2017 01:28:03 -0800 (PST)
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id w185si7090450qkw.175.2017.02.17.01.21.41
+        by mx.google.com with ESMTPS id g8si7107406qtc.212.2017.02.17.01.28.02
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 17 Feb 2017 01:21:41 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Fri, 17 Feb 2017 01:28:03 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:52395 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:52448 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ceejV-0001LD-3V
-	for alex.bennee@linaro.org; Fri, 17 Feb 2017 04:21:41 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:56561)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1ceepe-00078M-GX
+	for alex.bennee@linaro.org; Fri, 17 Feb 2017 04:28:02 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:51332)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <vijay.kilari@gmail.com>) id 1ceeg3-0006sj-KH
-	for qemu-devel@nongnu.org; Fri, 17 Feb 2017 04:18:08 -0500
+	(envelope-from <eric.auger@redhat.com>) id 1ceeP0-00080c-9x
+	for qemu-arm@nongnu.org; Fri, 17 Feb 2017 04:00:31 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <vijay.kilari@gmail.com>) id 1ceeg2-0004QZ-Q4
-	for qemu-devel@nongnu.org; Fri, 17 Feb 2017 04:18:07 -0500
-Received: from mail-lf0-x242.google.com ([2a00:1450:4010:c07::242]:36791)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <vijay.kilari@gmail.com>)
-	id 1ceefx-0004Ni-2x; Fri, 17 Feb 2017 04:18:01 -0500
-Received: by mail-lf0-x242.google.com with SMTP id h65so3336016lfi.3;
-	Fri, 17 Feb 2017 01:18:00 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=Krtj+OJ8Xw0S7x2H6soXxlnQ3TxW/g9yQsLqM7AEsg8=;
-	b=iC9rC6efyjYKKNA4X7GQzP4bc9Q7iMSuixXz8hmUukvCNFGZ64Monzq5/v/WT4CgG5
-	FvAB52uFwyxhmPubFYwDP4Fet4lewXAbRd/0qNLtTHR4atlIvbwxIOx0G+yF9uM9VeDe
-	keiq2kpUP3eoyCb8XO0snJj/vEc8t6zL5Nh3xkLGEOZeCruXMvvm4tsw8/w3nZhkrHpT
-	owsv56tuH6t/z7rQLqjTXS8Bgp1aVYv3wyez7xlgLPJTwRvGHw4CVQsXvy8Z/i17XC1K
-	8T/Bj1QGAX9XuA4SRQ+zgLT0Bn47S7wOcS6F35R5XHhiIlaV+dZeQES00dz3w1tyamPW
-	a2EA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=Krtj+OJ8Xw0S7x2H6soXxlnQ3TxW/g9yQsLqM7AEsg8=;
-	b=aBLYdb9wDXADuPY3x8mgs/Q6v9Qlna/PSngqngno35BJm4ozsYeSI8jl/70JKMVPpp
-	Ydc5L0cyENX1+Dn46U203VATNEdOc1u0THMBjr3OmMbBqGWaB0mIRn17c16tHUt21tUU
-	oYLw/X/JcgxhembvpyBhJb0JRSzHQb7Vtvc4gfAjTRBIubVal1u6SsodyFbgiNSRwWmH
-	lt9wyBZMWZ5QrtBYeNMo9A1kTaBGOCKhc7XZ+ofVculdg30tA5AAb/5z6arwTgu3JErn
-	r1j46ngGAWF82Lmv25YiJIPJiveIXkGDwonU0bQCIdylDWzINMkI6ratJl99hqrDX6rm
-	ZHBA==
-X-Gm-Message-State: AMke39mw38ahFPYRdaymt1HdELvxhaeUkYRY8fG8yCoD9gXd0QgY6tXlfxvQNBy+q8K6hBsuMTXgN5+skKSlfg==
-X-Received: by 10.25.80.66 with SMTP id z2mr1766785lfj.157.1487323079599; Fri,
-	17 Feb 2017 01:17:59 -0800 (PST)
-MIME-Version: 1.0
-Received: by 10.46.20.15 with HTTP; Fri, 17 Feb 2017 01:17:59 -0800 (PST)
-In-Reply-To: <bebfa013-8627-83d2-85bc-7ae55131ea48@redhat.com>
+	(envelope-from <eric.auger@redhat.com>) id 1ceeOu-0002MS-Hu
+	for qemu-arm@nongnu.org; Fri, 17 Feb 2017 04:00:30 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:33982)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <eric.auger@redhat.com>)
+	id 1ceeOu-0002Lo-8z; Fri, 17 Feb 2017 04:00:24 -0500
+Received: from int-mx13.intmail.prod.int.phx2.redhat.com
+	(int-mx13.intmail.prod.int.phx2.redhat.com [10.5.11.26])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id D539FC04D28B;
+	Fri, 17 Feb 2017 09:00:23 +0000 (UTC)
+Received: from localhost.localdomain (ovpn-116-36.ams2.redhat.com
+	[10.36.116.36])
+	by int-mx13.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id v1H90KGC005156
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=NO);
+	Fri, 17 Feb 2017 04:00:21 -0500
+To: Vijay Kilari <vijay.kilari@gmail.com>,
+	Peter Maydell <peter.maydell@linaro.org>
 References: <1485879782-6075-1-git-send-email-vijay.kilari@gmail.com>
 	<1485879782-6075-3-git-send-email-vijay.kilari@gmail.com>
 	<CAFEAcA_K2TcihHTTrrr7kZ3pGZ3BNptDb0mt5Rc0YinkGD1eHQ@mail.gmail.com>
 	<CALicx6v7B3145pJXsOcgGass8xG4HHY7=iA6gEHKbMcHxqQD-A@mail.gmail.com>
-	<bebfa013-8627-83d2-85bc-7ae55131ea48@redhat.com>
-From: Vijay Kilari <vijay.kilari@gmail.com>
-Date: Fri, 17 Feb 2017 14:47:59 +0530
-Message-ID: <CALicx6uX8zn7FTBYW5kgAzZorDWRSn=S4WM1TqB37KRK_Disgg@mail.gmail.com>
-To: Auger Eric <eric.auger@redhat.com>
-Content-Type: text/plain; charset=UTF-8
+From: Auger Eric <eric.auger@redhat.com>
+Message-ID: <bebfa013-8627-83d2-85bc-7ae55131ea48@redhat.com>
+Date: Fri, 17 Feb 2017 10:00:18 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
+	Thunderbird/45.4.0
+MIME-Version: 1.0
+In-Reply-To: <CALicx6v7B3145pJXsOcgGass8xG4HHY7=iA6gEHKbMcHxqQD-A@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.26
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.31]);
+	Fri, 17 Feb 2017 09:00:24 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2a00:1450:4010:c07::242
-Subject: Re: [Qemu-devel] [PATCH v7 RESEND 2/5] hw/intc/arm_gicv3_kvm: Add
+	[fuzzy]
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-arm] [PATCH v7 RESEND 2/5] hw/intc/arm_gicv3_kvm: Add
  ICC_SRE_EL1 register to vmstate
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
-	Marc Zyngier <marc.zyngier@arm.com>, Pavel Fedin <p.fedin@samsung.com>,
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Marc Zyngier <marc.zyngier@arm.com>, Pavel Fedin <p.fedin@samsung.com>,
 	QEMU Developers <qemu-devel@nongnu.org>,
 	Vijaya Kumar K <Vijaya.Kumar@cavium.com>, qemu-arm <qemu-arm@nongnu.org>,
 	Christoffer Dall <christoffer.dall@linaro.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 66F5bkNAOJDX
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: iUT4zhwz25lm
 
-On Fri, Feb 17, 2017 at 2:30 PM, Auger Eric <eric.auger@redhat.com> wrote:
-> Hi Vijaya,
->
-> On 13/02/2017 13:17, Vijay Kilari wrote:
->> On Tue, Feb 7, 2017 at 8:09 PM, Peter Maydell <peter.maydell@linaro.org> wrote:
->>> On 31 January 2017 at 16:22,  <vijay.kilari@gmail.com> wrote:
->>>> From: Vijaya Kumar K <Vijaya.Kumar@cavium.com>
->>>>
->>>> To Save and Restore ICC_SRE_EL1 register Add ICC_SRE_EL1 register
->>>> to vmstate and GICv3CPUState struct.
->>>>
->>>> Signed-off-by: Vijaya Kumar K <Vijaya.Kumar@cavium.com>
->>>> ---
->>>>  hw/intc/arm_gicv3_common.c         | 1 +
->>>>  include/hw/intc/arm_gicv3_common.h | 1 +
->>>>  2 files changed, 2 insertions(+)
->>>>
->>>> diff --git a/hw/intc/arm_gicv3_common.c b/hw/intc/arm_gicv3_common.c
->>>> index 0f8c4b8..f3245d9 100644
->>>> --- a/hw/intc/arm_gicv3_common.c
->>>> +++ b/hw/intc/arm_gicv3_common.c
->>>> @@ -68,6 +68,7 @@ static const VMStateDescription vmstate_gicv3_cpu = {
->>>>          VMSTATE_UINT32(gicr_igrpmodr0, GICv3CPUState),
->>>>          VMSTATE_UINT32(gicr_nsacr, GICv3CPUState),
->>>>          VMSTATE_UINT8_ARRAY(gicr_ipriorityr, GICv3CPUState, GIC_INTERNAL),
->>>> +        VMSTATE_UINT64(icc_sre_el1, GICv3CPUState),
->>>>          VMSTATE_UINT64_ARRAY(icc_ctlr_el1, GICv3CPUState, 2),
->>>>          VMSTATE_UINT64(icc_pmr_el1, GICv3CPUState),
->>>>          VMSTATE_UINT64_ARRAY(icc_bpr, GICv3CPUState, 3),
->>>> diff --git a/include/hw/intc/arm_gicv3_common.h b/include/hw/intc/arm_gicv3_common.h
->>>> index 341a311..183c7f8 100644
->>>> --- a/include/hw/intc/arm_gicv3_common.h
->>>> +++ b/include/hw/intc/arm_gicv3_common.h
->>>> @@ -166,6 +166,7 @@ struct GICv3CPUState {
->>>>      uint8_t gicr_ipriorityr[GIC_INTERNAL];
->>>>
->>>>      /* CPU interface */
->>>> +    uint64_t icc_sre_el1;
->>>>      uint64_t icc_ctlr_el1[2];
->>>>      uint64_t icc_pmr_el1;
->>>>      uint64_t icc_bpr[3];
+Hi Vijaya,
+
+On 13/02/2017 13:17, Vijay Kilari wrote:
+> On Tue, Feb 7, 2017 at 8:09 PM, Peter Maydell <peter.maydell@linaro.org> wrote:
+>> On 31 January 2017 at 16:22,  <vijay.kilari@gmail.com> wrote:
+>>> From: Vijaya Kumar K <Vijaya.Kumar@cavium.com>
 >>>
->>> This breaks migration compatibility for TCG using GICv3; you
->>> need to do something here with a VMState subsection so
->>> the new register is only transferred if it's non-zero.
+>>> To Save and Restore ICC_SRE_EL1 register Add ICC_SRE_EL1 register
+>>> to vmstate and GICv3CPUState struct.
+>>>
+>>> Signed-off-by: Vijaya Kumar K <Vijaya.Kumar@cavium.com>
+>>> ---
+>>>  hw/intc/arm_gicv3_common.c         | 1 +
+>>>  include/hw/intc/arm_gicv3_common.h | 1 +
+>>>  2 files changed, 2 insertions(+)
+>>>
+>>> diff --git a/hw/intc/arm_gicv3_common.c b/hw/intc/arm_gicv3_common.c
+>>> index 0f8c4b8..f3245d9 100644
+>>> --- a/hw/intc/arm_gicv3_common.c
+>>> +++ b/hw/intc/arm_gicv3_common.c
+>>> @@ -68,6 +68,7 @@ static const VMStateDescription vmstate_gicv3_cpu = {
+>>>          VMSTATE_UINT32(gicr_igrpmodr0, GICv3CPUState),
+>>>          VMSTATE_UINT32(gicr_nsacr, GICv3CPUState),
+>>>          VMSTATE_UINT8_ARRAY(gicr_ipriorityr, GICv3CPUState, GIC_INTERNAL),
+>>> +        VMSTATE_UINT64(icc_sre_el1, GICv3CPUState),
+>>>          VMSTATE_UINT64_ARRAY(icc_ctlr_el1, GICv3CPUState, 2),
+>>>          VMSTATE_UINT64(icc_pmr_el1, GICv3CPUState),
+>>>          VMSTATE_UINT64_ARRAY(icc_bpr, GICv3CPUState, 3),
+>>> diff --git a/include/hw/intc/arm_gicv3_common.h b/include/hw/intc/arm_gicv3_common.h
+>>> index 341a311..183c7f8 100644
+>>> --- a/include/hw/intc/arm_gicv3_common.h
+>>> +++ b/include/hw/intc/arm_gicv3_common.h
+>>> @@ -166,6 +166,7 @@ struct GICv3CPUState {
+>>>      uint8_t gicr_ipriorityr[GIC_INTERNAL];
+>>>
+>>>      /* CPU interface */
+>>> +    uint64_t icc_sre_el1;
+>>>      uint64_t icc_ctlr_el1[2];
+>>>      uint64_t icc_pmr_el1;
+>>>      uint64_t icc_bpr[3];
 >>
->> So, you mean to put a check in kvm_arm_gicv3_put() and
->> kvm_arm_gicv3_get() to check for non-zero value?
->> icc_sre_el1 is always non-zero reset to 0xf in TCG and 0x7 in KVM mode.
-> In hw/intc/arm_gicv3_cpuif.c we have
->     { .name = "ICC_SRE_EL1", .state = ARM_CP_STATE_BOTH,
->         ../..
->       .resetvalue = 0x7,
->     },
-> where did you find the TCG reset value equal to 0xF? I am not able to
-> find it.
+>> This breaks migration compatibility for TCG using GICv3; you
+>> need to do something here with a VMState subsection so
+>> the new register is only transferred if it's non-zero.
+> 
+> So, you mean to put a check in kvm_arm_gicv3_put() and
+> kvm_arm_gicv3_get() to check for non-zero value?
+> icc_sre_el1 is always non-zero reset to 0xf in TCG and 0x7 in KVM mode.
+In hw/intc/arm_gicv3_cpuif.c we have
+    { .name = "ICC_SRE_EL1", .state = ARM_CP_STATE_BOTH,
+	../..
+      .resetvalue = 0x7,
+    },
+where did you find the TCG reset value equal to 0xF? I am not able to
+find it.
 
-Sorry, I have referred to ICC_SRE_EL2/3. 0x7 is correct
+Thanks
+
+Eric
+
+> 
+>>
+>> thanks
+>> -- PMM

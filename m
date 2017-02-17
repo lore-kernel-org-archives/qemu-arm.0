@@ -1,71 +1,56 @@
-Received: by 10.25.77.65 with SMTP id a62csp178399lfb;
-        Fri, 17 Feb 2017 05:41:12 -0800 (PST)
-X-Received: by 10.55.100.11 with SMTP id y11mr8451896qkb.62.1487338872569;
-        Fri, 17 Feb 2017 05:41:12 -0800 (PST)
+Received: by 10.25.77.65 with SMTP id a62csp182826lfb;
+        Fri, 17 Feb 2017 05:53:47 -0800 (PST)
+X-Received: by 10.55.212.133 with SMTP id s5mr8033672qks.105.1487339627065;
+        Fri, 17 Feb 2017 05:53:47 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id m65si7491847qtd.323.2017.02.17.05.41.12
+        by mx.google.com with ESMTPS id q190si7515737qkd.267.2017.02.17.05.53.46
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 17 Feb 2017 05:41:12 -0800 (PST)
+        Fri, 17 Feb 2017 05:53:47 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:53809 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:53867 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ceime-0003ra-2k
-	for alex.bennee@linaro.org; Fri, 17 Feb 2017 08:41:12 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:38786)
+	id 1ceiyo-0001vu-KU
+	for alex.bennee@linaro.org; Fri, 17 Feb 2017 08:53:46 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:41282)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1ceimX-0003pi-SJ
-	for qemu-arm@nongnu.org; Fri, 17 Feb 2017 08:41:07 -0500
+	(envelope-from <eric.auger@redhat.com>) id 1ceiyj-0001oj-Cx
+	for qemu-arm@nongnu.org; Fri, 17 Feb 2017 08:53:42 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1ceimW-0006GL-P0
-	for qemu-arm@nongnu.org; Fri, 17 Feb 2017 08:41:05 -0500
-Received: from mail-wm0-x236.google.com ([2a00:1450:400c:c09::236]:35786)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1ceimW-0006Fh-IH
-	for qemu-arm@nongnu.org; Fri, 17 Feb 2017 08:41:04 -0500
-Received: by mail-wm0-x236.google.com with SMTP id v186so15401256wmd.0
-	for <qemu-arm@nongnu.org>; Fri, 17 Feb 2017 05:41:04 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=a6Y4ZNo/VdUJNunxjzG+XdY4nlMNVyrkEx+sSkzhQbo=;
-	b=H5YpdjmAp0L6h8K3TudTZGIGDM+m5JMAcgy2eM+seoIawQatA2FIbpRgnzigYml8Po
-	naaA5ZRwZbibWZix84zZyxuwM+O4hjC+aYAYlldteK0UKk0Yo5qR1RcqrD+jT/uZsMrw
-	lso4fIy6m+/YJaD0tjOhUiyern4/JQw7PDdtY=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=a6Y4ZNo/VdUJNunxjzG+XdY4nlMNVyrkEx+sSkzhQbo=;
-	b=TLG6IVXngw4KAZ6JnFLthU1E+iMw0MNShQ9y5Lc9S3VFhuToRYmdd/NePlEfXP8rxy
-	fYxUcuRncZ40wjoVUrn5VPcYrllxWcJeSmA7r3Y2tBTT+mIwWd7GODrf0ua4r+Rv3l3t
-	jOFOaOaDRVPzgzQfBYPMR3+D3nN6K2qcNdYu0xDgE6EYrNiBzZiJN/bEijXPc79L7nmK
-	NCOKgFRT9RQldkArK6G74A3+qylbNUd7uct0z8gWnjbL+JJmkOvedgu9IUz5OL/OA5bU
-	3V31/C+QR15RtrYHsjjoDcqPxEq/MFSQY3qNh7uXiFGzMj4jE8WRwqULT+5fi32CcAiO
-	/zng==
-X-Gm-Message-State: AMke39mQdQnq1q19x5VJzItfJb3Cok87QLzcibxPAWj9GPIHfto59fHoe5CrZBr93AkfriQ3mmsJz8VtBJ8Yp5ID
-X-Received: by 10.28.16.70 with SMTP id 67mr2217090wmq.142.1487338863392; Fri,
-	17 Feb 2017 05:41:03 -0800 (PST)
-MIME-Version: 1.0
-Received: by 10.223.145.69 with HTTP; Fri, 17 Feb 2017 05:40:42 -0800 (PST)
-In-Reply-To: <1487313115-9510-6-git-send-email-vijay.kilari@gmail.com>
-References: <1487313115-9510-1-git-send-email-vijay.kilari@gmail.com>
-	<1487313115-9510-6-git-send-email-vijay.kilari@gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 17 Feb 2017 13:40:42 +0000
-Message-ID: <CAFEAcA8Fn0DUOx-htiJPQsRUhc+QG0oZ0vYpBees=OaKbu7s0Q@mail.gmail.com>
-To: Vijay Kilari <vijay.kilari@gmail.com>
-Content-Type: text/plain; charset=UTF-8
+	(envelope-from <eric.auger@redhat.com>) id 1ceiye-0003ul-HG
+	for qemu-arm@nongnu.org; Fri, 17 Feb 2017 08:53:41 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:59562)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <eric.auger@redhat.com>)
+	id 1ceiye-0003uM-9D; Fri, 17 Feb 2017 08:53:36 -0500
+Received: from int-mx13.intmail.prod.int.phx2.redhat.com
+	(int-mx13.intmail.prod.int.phx2.redhat.com [10.5.11.26])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 2734361B96;
+	Fri, 17 Feb 2017 13:53:36 +0000 (UTC)
+Received: from localhost.localdomain.com (ovpn-116-36.ams2.redhat.com
+	[10.36.116.36])
+	by int-mx13.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id v1HDrXt6013386; Fri, 17 Feb 2017 08:53:34 -0500
+From: Eric Auger <eric.auger@redhat.com>
+To: eric.auger.pro@gmail.com, eric.auger@redhat.com, peter.maydell@linaro.org, 
+	qemu-arm@nongnu.org, qemu-devel@nongnu.org
+Date: Fri, 17 Feb 2017 14:53:19 +0100
+Message-Id: <1487339599-20910-1-git-send-email-eric.auger@redhat.com>
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.26
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.39]);
+	Fri, 17 Feb 2017 13:53:36 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2a00:1450:400c:c09::236
-Subject: Re: [Qemu-arm] [PATCH v8 5/5] hw/intc/arm_gicv3_kvm: Reset GICv3
- cpu interface registers
+	[fuzzy]
+X-Received-From: 209.132.183.28
+Subject: [Qemu-arm] [PATCH] hw/arm/virt: Add a user option to disallow ITS
+ instantiation
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -77,108 +62,99 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Marc Zyngier <marc.zyngier@arm.com>, Pavel Fedin <p.fedin@samsung.com>,
-	QEMU Developers <qemu-devel@nongnu.org>,
-	Vijaya Kumar K <Vijaya.Kumar@cavium.com>,
-	Eric Auger <eric.auger@redhat.com>, qemu-arm <qemu-arm@nongnu.org>,
-	Christoffer Dall <christoffer.dall@linaro.org>
+Cc: drjones@redhat.com, vijay.kilari@gmail.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: LKm5d+7CUikl
+X-TUID: 9Hcoq/xWc+yM
 
-On 17 February 2017 at 06:31,  <vijay.kilari@gmail.com> wrote:
-> From: Vijaya Kumar K <Vijaya.Kumar@cavium.com>
->
-> Reset CPU interface registers of GICv3 when CPU is reset.
-> For this, ARMCPRegInfo struct is registered with one ICC
-> register whose resetfn is called when cpu is reset.
->
-> All the ICC registers are reset under one single register
-> reset function instead of calling resetfn for each ICC
-> register.
->
-> Signed-off-by: Vijaya Kumar K <Vijaya.Kumar@cavium.com>
-> ---
->  hw/intc/arm_gicv3_kvm.c | 58 +++++++++++++++++++++++++++++++++++++++++++++++++
->  1 file changed, 58 insertions(+)
->
-> diff --git a/hw/intc/arm_gicv3_kvm.c b/hw/intc/arm_gicv3_kvm.c
-> index cda1af4..6377dc3 100644
-> --- a/hw/intc/arm_gicv3_kvm.c
-> +++ b/hw/intc/arm_gicv3_kvm.c
-> @@ -604,6 +604,34 @@ static void kvm_arm_gicv3_get(GICv3State *s)
->      }
->  }
->
-> +static void arm_gicv3_icc_reset(CPUARMState *env, const ARMCPRegInfo *ri)
-> +{
-> +    ARMCPU *cpu;
-> +    GICv3State *s;
-> +    GICv3CPUState *c;
-> +
-> +    c = (GICv3CPUState *)env->gicv3state;
-> +    assert(!(!c || !c->cpu || !c->gic));
+In 2.9 ITS will block save/restore and migration use cases. As
+such let's introduce a user option that disallows its instantiation
+along with the GICv3. With no-its option turned true, migration will
+be possible, obviously at the expense of MSI support (with GICv3).
 
-I thought I'd made a comment about these asserts on a previous
-version of this code... they're pretty unnecessary since if
-any of them are untrue we'll just segfault in this function.
+Signed-off-by: Eric Auger <eric.auger@redhat.com>
 
-The aim of an assert is to turn a hard-to-debug failure that
-only becomes visible late into an easy-to-debug failure that
-happens earlier. Assertions which don't move the failure
-significantly forward in time or turn an obscure problem into a
-clear one aren't really worth having.
+---
 
-> +    s = c->gic;
-> +    cpu = ARM_CPU(c->cpu);
-> +
-> +    /* Initialize to actual HW supported configuration */
-> +    kvm_device_access(s->dev_fd, KVM_DEV_ARM_VGIC_GRP_CPU_SYSREGS,
-> +                      KVM_VGIC_ATTR(ICC_CTLR_EL1, cpu->mp_affinity),
-> +                      &c->icc_ctlr_el1[GICV3_NS], false);
-> +
-> +    c->icc_ctlr_el1[GICV3_S] = c->icc_ctlr_el1[GICV3_NS];
-> +    c->icc_pmr_el1 = 0;
-> +    c->icc_bpr[GICV3_G0] = GIC_MIN_BPR;
-> +    c->icc_bpr[GICV3_G1] = GIC_MIN_BPR;
-> +    c->icc_bpr[GICV3_G1NS] = GIC_MIN_BPR;
-> +
-> +    c->icc_sre_el1 = 0x7;
-> +    memset(c->icc_apr, 0, sizeof(c->icc_apr));
-> +    memset(c->icc_igrpen, 0, sizeof(c->icc_igrpen));
-> +}
-> +
->  static void kvm_arm_gicv3_reset(DeviceState *dev)
->  {
->      GICv3State *s = ARM_GICV3_COMMON(dev);
-> @@ -621,6 +649,30 @@ static void kvm_arm_gicv3_reset(DeviceState *dev)
->      kvm_arm_gicv3_put(s);
->  }
->
-> +/*
-> + * CPU interface registers of GIC needs to be reset on CPU reset.
-> + * For the calling arm_gicv3_icc_reset() on CPU reset, we register
-> + * below ARMCPRegInfo. As we reset the whole cpu interface under single
-> + * register reset, we define only one register of CPU interface instead
-> + * of defining all the registers.
-> + */
-> +static const ARMCPRegInfo gicv3_cpuif_reginfo[] = {
-> +    { .name = "ICC_CTLR_EL1", .state = ARM_CP_STATE_BOTH,
-> +      .opc0 = 3, .opc1 = 0, .crn = 12, .crm = 12, .opc2 = 4,
-> +      .type = ARM_CP_NO_RAW,
-> +      .access = PL1_RW,
-> +      .readfn = arm_cp_read_zero,
-> +      .writefn = arm_cp_write_ignore,
-> +      /*
-> +       * We hang the whole cpu interface reset routine off here
-> +       * rather than parcelling it out into one little function
-> +       * per register
-> +       */
-> +      .resetfn = arm_gicv3_icc_reset,
-> +    },
-> +    REGINFO_SENTINEL
+With this patch the option also is added in virt 2.8. I don't know
+if it is acceptable.
+---
+ hw/arm/virt.c         | 28 +++++++++++++++++++++++++++-
+ include/hw/arm/virt.h |  1 +
+ 2 files changed, 28 insertions(+), 1 deletion(-)
 
-I asked for a comment saying why we can't use ARM_CP_NOP...
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index f3440f2..702a392 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -605,7 +605,7 @@ static void create_gic(VirtMachineState *vms, qemu_irq *pic)
+ 
+     fdt_add_gic_node(vms);
+ 
+-    if (type == 3 && !vmc->no_its) {
++    if (type == 3 && !vmc->no_its && !vms->no_its) {
+         create_its(vms, gicdev);
+     } else if (type == 2) {
+         create_v2m(vms, pic);
+@@ -1480,6 +1480,21 @@ static void virt_set_highmem(Object *obj, bool value, Error **errp)
+     vms->highmem = value;
+ }
+ 
++static bool virt_get_no_its(Object *obj, Error **errp)
++{
++    VirtMachineState *vms = VIRT_MACHINE(obj);
++
++    return vms->no_its;
++}
++
++static void virt_set_no_its(Object *obj, bool value, Error **errp)
++{
++    VirtMachineState *vms = VIRT_MACHINE(obj);
++
++    vms->no_its = value;
++}
++
++
+ static char *virt_get_gic_version(Object *obj, Error **errp)
+ {
+     VirtMachineState *vms = VIRT_MACHINE(obj);
+@@ -1540,6 +1555,7 @@ type_init(machvirt_machine_init);
+ static void virt_2_9_instance_init(Object *obj)
+ {
+     VirtMachineState *vms = VIRT_MACHINE(obj);
++    VirtMachineClass *vmc = VIRT_MACHINE_GET_CLASS(vms);
+ 
+     /* EL3 is disabled by default on virt: this makes us consistent
+      * between KVM and TCG for this board, and it also allows us to
+@@ -1579,6 +1595,16 @@ static void virt_2_9_instance_init(Object *obj)
+                                     "Set GIC version. "
+                                     "Valid values are 2, 3 and host", NULL);
+ 
++    /* Default allows ITS instantiation */
++    if (!vmc->no_its) {
++        object_property_add_bool(obj, "no-its", virt_get_no_its,
++                                 virt_set_no_its, NULL);
++        vms->no_its = false;
++        object_property_set_description(obj, "no-its",
++                                        "Disallow the ITS instantiation"
++                                        NULL);
++    }
++
+     vms->memmap = a15memmap;
+     vms->irqmap = a15irqmap;
+ }
+diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
+index 58ce74e..5e73be9 100644
+--- a/include/hw/arm/virt.h
++++ b/include/hw/arm/virt.h
+@@ -93,6 +93,7 @@ typedef struct {
+     FWCfgState *fw_cfg;
+     bool secure;
+     bool highmem;
++    bool no_its;
+     bool virt;
+     int32_t gic_version;
+     struct arm_boot_info bootinfo;
+-- 
+2.5.5
 
-thanks
--- PMM

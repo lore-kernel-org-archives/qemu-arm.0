@@ -1,56 +1,69 @@
-Received: by 10.25.77.65 with SMTP id a62csp308992lfb;
-        Fri, 17 Feb 2017 10:58:04 -0800 (PST)
-X-Received: by 10.200.35.105 with SMTP id b38mr8495077qtb.1.1487357884260;
-        Fri, 17 Feb 2017 10:58:04 -0800 (PST)
+Received: by 10.25.77.65 with SMTP id a62csp312557lfb;
+        Fri, 17 Feb 2017 11:06:47 -0800 (PST)
+X-Received: by 10.200.34.81 with SMTP id p17mr8520785qtp.264.1487358407393;
+        Fri, 17 Feb 2017 11:06:47 -0800 (PST)
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id t32si8074148qtd.181.2017.02.17.10.58.04
+        by mx.google.com with ESMTPS id 33si8075563qth.307.2017.02.17.11.06.47
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 17 Feb 2017 10:58:04 -0800 (PST)
+        Fri, 17 Feb 2017 11:06:47 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:55275 helo=lists.gnu.org)
+       dkim=fail header.i=@linaro.org;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:55332 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1cenjH-0003X0-Lx
-	for alex.bennee@linaro.org; Fri, 17 Feb 2017 13:58:03 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:59198)
+	id 1cenri-0002at-SS
+	for alex.bennee@linaro.org; Fri, 17 Feb 2017 14:06:46 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:60797)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <imammedo@redhat.com>) id 1ceniB-0003HP-0W
-	for qemu-devel@nongnu.org; Fri, 17 Feb 2017 13:56:56 -0500
+	(envelope-from <peter.maydell@linaro.org>) id 1cenqi-0002ZS-1c
+	for qemu-devel@nongnu.org; Fri, 17 Feb 2017 14:05:45 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <imammedo@redhat.com>) id 1ceni9-0007Xu-Eg
-	for qemu-devel@nongnu.org; Fri, 17 Feb 2017 13:56:55 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:39932)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <imammedo@redhat.com>)
-	id 1ceni3-0007Ti-9T; Fri, 17 Feb 2017 13:56:47 -0500
-Received: from int-mx09.intmail.prod.int.phx2.redhat.com
-	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 41514C05AA43;
-	Fri, 17 Feb 2017 18:56:47 +0000 (UTC)
-Received: from dell-r430-03.lab.eng.brq.redhat.com
-	(dell-r430-03.lab.eng.brq.redhat.com [10.34.112.60])
-	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id v1HIubLN022004; Fri, 17 Feb 2017 13:56:45 -0500
-From: Igor Mammedov <imammedo@redhat.com>
-To: qemu-devel@nongnu.org
-Date: Fri, 17 Feb 2017 19:56:35 +0100
-Message-Id: <1487357795-52614-4-git-send-email-imammedo@redhat.com>
+	(envelope-from <peter.maydell@linaro.org>) id 1cenqg-00055Z-Vt
+	for qemu-devel@nongnu.org; Fri, 17 Feb 2017 14:05:43 -0500
+Received: from mail-wr0-x234.google.com ([2a00:1450:400c:c0c::234]:33188)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1cenqg-00054b-In
+	for qemu-devel@nongnu.org; Fri, 17 Feb 2017 14:05:42 -0500
+Received: by mail-wr0-x234.google.com with SMTP id i10so35112385wrb.0
+	for <qemu-devel@nongnu.org>; Fri, 17 Feb 2017 11:05:42 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=nuTw+XGzJOiRh+i6yOGjuI1f3k2P6dGjz2SUa+8SM8A=;
+	b=dfPvqTedOOPGWBtET7Ak4YJPF4rfHeGqERnBjzB0iqkmRkD3ycimG4JiYMQcr258Iu
+	btfufflBukNfmtcokVMSznQR9L9uKcel2hoz0rZQHbCCKOpsXgN/qbuXNz9m0WQ9viKq
+	TAm5ZR8+f2zs8LddtO6GE4afKfhKNiaTSLrb4=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=nuTw+XGzJOiRh+i6yOGjuI1f3k2P6dGjz2SUa+8SM8A=;
+	b=sfpPBgO1/5hed8IULJOysAtYN6G6ZKXHu9fC4lycpRbkaiqOEleAacwrMWn7OxW4Aq
+	ls/9wXM3OPSiykiX2OHGm4GBjtL+wXVx7VPvv73rVGZBCnWkXYdZq3UhbIRhyUr/jBKw
+	JyXImI5qS2KL0BGGaYJ4SwIQO/guvArJEgYYOwhKzA4VQUriFRQ2iVVd1l8Ag+hAjnC7
+	Zw3yhKCB56E1MDmdoroYnK/9TWUHV7PVYFaTLT6/M7sYobK8X3zECqXtia3e2V6Ctxtu
+	GIGkS2fcyDWGl8szIUkh8eRJnmpxmUlp0v0Wpyfmd1eQzGz4kMsIPr1zVq3ltDiQHJv/
+	oruw==
+X-Gm-Message-State: AMke39m3Vi7jRGNejhUx/x33nxxK7yM9OSwhy+2jhNX7YipdrpptYaLOkb0gjvEf7EMsxSKBGvWsUK1X+ytwqt4S
+X-Received: by 10.223.152.175 with SMTP id w44mr8507523wrb.151.1487358341319; 
+	Fri, 17 Feb 2017 11:05:41 -0800 (PST)
+MIME-Version: 1.0
+Received: by 10.223.145.69 with HTTP; Fri, 17 Feb 2017 11:05:20 -0800 (PST)
 In-Reply-To: <1487357795-52614-1-git-send-email-imammedo@redhat.com>
 References: <1487357795-52614-1-git-send-email-imammedo@redhat.com>
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.32]);
-	Fri, 17 Feb 2017 18:56:47 +0000 (UTC)
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 17 Feb 2017 19:05:20 +0000
+Message-ID: <CAFEAcA9JWzUEmGa2Wxd5xPE4dVknOKBkt=wMda7CAgxzrgOc+w@mail.gmail.com>
+To: Igor Mammedov <imammedo@redhat.com>
+Content-Type: text/plain; charset=UTF-8
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: [Qemu-devel] [RFC 3/3] machine: generilize cpu_model parsing
+X-Received-From: 2a00:1450:400c:c0c::234
+Subject: Re: [Qemu-devel] [RFC 0/3] generalize parsing of cpu_model
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -62,327 +75,52 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
 	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
-	Eduardo Habkost <ehabkost@redhat.com>, patches@linaro.org,
-	"Michael S. Tsirkin" <mst@redhat.com>, qemu-arm@nongnu.org,
-	qemu-ppc@nongnu.org, Marcel Apfelbaum <marcel@redhat.com>,
-	Paolo Bonzini <pbonzini@redhat.com>,
+Cc: Eduardo Habkost <ehabkost@redhat.com>,
+	"patches@linaro.org" <patches@linaro.org>,
+	"Michael S. Tsirkin" <mst@redhat.com>,
+	QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
+	"qemu-ppc@nongnu.org" <qemu-ppc@nongnu.org>,
+	Marcel Apfelbaum <marcel@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
 	David Gibson <david@gibson.dropbear.id.au>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: OM3IcqrZfrgw
+X-TUID: EODA0Z9bT1TA
 
-Parse cpu_model string into cpu_type and
-[=-]foo features in common machine code
-instead of doing the same on every board.
+On 17 February 2017 at 18:56, Igor Mammedov <imammedo@redhat.com> wrote:
+> Some callers call CPUClass->parse_features manually to convert
+> '-cpu cpufoo,featurestr' string to cpu type and featurestr
+> into a set of global properties. And theni do controlled
+> cpu creation with setting properties and completing it with realize.
+> That's a lot of code duplication as they are practically
+> reimplement the same parsing logic.
+>
+> Some don't and use cpu_generic_init() instead which does
+> the same parsing along with creation/realizing cpu within one
+> wrapper.
+>
+> And some trying to switch to controlled cpu creation,
+> implement object_new()/set properties/realize steps
+> but forget feature parsing logic witch lieads to 'bugs'
+> commit 00909b585 (hw/arm/integratorcp: Support specifying features via -cpu)
+>
+>
+> This series moves -cpu option parsing to generic machine code
+> that removes a little of code duplication and makes cpus creation
+> process more unified.
 
-TODO:
-patch handles only virt-arm/spapr/pc boards,
-but to avoid bisection breakage it should take
-care of all boards.
+This API seems a little awkward for the SoC case, where
+the board model doesn't actually know what the default
+CPU model or the valid CPU models are, because it just
+wants to say "create me a BCM2836 SoC" and let the SoC
+object deal with determining whether it's always a cortex-a15
+or if it might allow some user configurability either in
+cpu choices or in optional flags.
+Any thoughts about that use case?
 
-Signed-off-by: Igor Mammedov <imammedo@redhat.com>
----
- include/hw/boards.h  |  3 +++
- include/hw/ppc/ppc.h |  2 --
- hw/arm/virt.c        | 36 ++++--------------------------------
- hw/core/machine.c    | 44 +++++++++++++++++++++++++++++++++++++++++++-
- hw/i386/pc.c         | 24 +++---------------------
- hw/ppc/ppc.c         | 25 -------------------------
- hw/ppc/spapr.c       |  3 +--
- 7 files changed, 54 insertions(+), 83 deletions(-)
+(The stm32f205 SoC object has a "cpu-model" QOM property
+that the board sets, but I think that's as much because
+we somewhat awkwardly need to pass it into armv7m_init()
+as a deliberate design choice.)
 
-diff --git a/include/hw/boards.h b/include/hw/boards.h
-index 9f2dbfd..3374a49 100644
---- a/include/hw/boards.h
-+++ b/include/hw/boards.h
-@@ -136,12 +136,14 @@ struct MachineClass {
-     bool rom_file_has_mr;
-     int minimum_page_bits;
-     bool has_hotpluggable_cpus;
-+    const char *base_cpu_type;
- 
-     HotplugHandler *(*get_hotplug_handler)(MachineState *machine,
-                                            DeviceState *dev);
-     unsigned (*cpu_index_to_socket_id)(unsigned cpu_index);
-     const CPUArchIdList *(*possible_cpu_arch_ids)(MachineState *machine);
-     const char *(*default_cpu_model)(MachineState *machine);
-+    bool (*cpu_model_valid)(MachineState *machine, const char *cpu_model);
- };
- 
- /**
-@@ -182,6 +184,7 @@ struct MachineState {
-     char *kernel_cmdline;
-     char *initrd_filename;
-     const char *cpu_model;
-+    const char *cpu_typename;
-     AccelState *accelerator;
-     CPUArchIdList *possible_cpus;
- };
-diff --git a/include/hw/ppc/ppc.h b/include/hw/ppc/ppc.h
-index 4e7fe11..ff0ac30 100644
---- a/include/hw/ppc/ppc.h
-+++ b/include/hw/ppc/ppc.h
-@@ -105,6 +105,4 @@ enum {
- 
- /* ppc_booke.c */
- void ppc_booke_timers_init(PowerPCCPU *cpu, uint32_t freq, uint32_t flags);
--
--void ppc_cpu_parse_features(const char *cpu_model);
- #endif
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index 8380540..d767200 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -169,7 +169,7 @@ static const char *valid_cpus[] = {
-     "host",
- };
- 
--static bool cpuname_valid(const char *cpu)
-+static bool cpuname_valid(MachineState *machine, const char *cpu)
- {
-     int i;
- 
-@@ -1244,12 +1244,6 @@ static void machvirt_init(MachineState *machine)
-     MemoryRegion *secure_sysmem = NULL;
-     int n, virt_max_cpus;
-     MemoryRegion *ram = g_new(MemoryRegion, 1);
--    const char *cpu_model = machine->cpu_model;
--    char **cpustr;
--    ObjectClass *oc;
--    const char *typename;
--    CPUClass *cc;
--    Error *err = NULL;
-     bool firmware_loaded = bios_name || drive_get(IF_PFLASH, 0, 0);
- 
-     /* We can probe only here because during property set
-@@ -1268,14 +1262,6 @@ static void machvirt_init(MachineState *machine)
-         }
-     }
- 
--    /* Separate the actual CPU model name from any appended features */
--    cpustr = g_strsplit(cpu_model, ",", 2);
--
--    if (!cpuname_valid(cpustr[0])) {
--        error_report("mach-virt: CPU %s not supported", cpustr[0]);
--        exit(1);
--    }
--
-     /* If we have an EL3 boot ROM then the assumption is that it will
-      * implement PSCI itself, so disable QEMU's internal implementation
-      * so it doesn't get in the way. Instead of starting secondary
-@@ -1342,22 +1328,6 @@ static void machvirt_init(MachineState *machine)
- 
-     create_fdt(vms);
- 
--    oc = cpu_class_by_name(TYPE_ARM_CPU, cpustr[0]);
--    if (!oc) {
--        error_report("Unable to find CPU definition");
--        exit(1);
--    }
--    typename = object_class_get_name(oc);
--
--    /* convert -smp CPU options specified by the user into global props */
--    cc = CPU_CLASS(oc);
--    cc->parse_features(typename, cpustr[1], &err);
--    g_strfreev(cpustr);
--    if (err) {
--        error_report_err(err);
--        exit(1);
--    }
--
-     mc->possible_cpu_arch_ids(machine);
-     for (n = 0; n < machine->possible_cpus->len; n++) {
-         Object *cpuobj;
-@@ -1367,7 +1337,7 @@ static void machvirt_init(MachineState *machine)
-             break;
-         }
- 
--        cpuobj = object_new(typename);
-+        cpuobj = object_new(machine->cpu_typename);
-         object_property_set_int(cpuobj, machine->possible_cpus->cpus[n].arch_id,
-                                 "mp-affinity", NULL);
- 
-@@ -1583,6 +1553,8 @@ static void virt_machine_class_init(ObjectClass *oc, void *data)
-     mc->minimum_page_bits = 12;
-     mc->possible_cpu_arch_ids = virt_possible_cpu_arch_ids;
-     mc->default_cpu_model = virt_default_cpu_model;
-+    mc->cpu_model_valid = cpuname_valid;
-+    mc->base_cpu_type = TYPE_ARM_CPU;
- }
- 
- static const TypeInfo virt_machine_info = {
-diff --git a/hw/core/machine.c b/hw/core/machine.c
-index 2a954f0..42923b1 100644
---- a/hw/core/machine.c
-+++ b/hw/core/machine.c
-@@ -575,8 +575,12 @@ bool machine_mem_merge(MachineState *machine)
-     return machine->mem_merge;
- }
- 
--void machine_run_board_init(MachineState *machine)
-+static void machine_parse_cpu_model(MachineState *machine)
- {
-+    ObjectClass *oc;
-+    char **cpustr;
-+    CPUClass *cc;
-+    Error *err = NULL;
-     MachineClass *machine_class = MACHINE_GET_CLASS(machine);
- 
-     /* Force all boards to provide default_cpu_model callback */
-@@ -585,6 +589,44 @@ void machine_run_board_init(MachineState *machine)
-         machine->cpu_model = machine_class->default_cpu_model(machine);
-     }
- 
-+    /* Separate the actual CPU model name from any appended features */
-+    cpustr = g_strsplit(machine->cpu_model, ",", 2);
-+    if (!cpustr[0]) {
-+        error_setg(&err, "Invalid/empty CPU model name");
-+        goto out;
-+    }
-+
-+    if (machine_class->cpu_model_valid &&
-+        !machine_class->cpu_model_valid(machine, cpustr[0])) {
-+        error_report("CPU %s not supported", cpustr[0]);
-+        exit(1);
-+    }
-+
-+    /* Force all boards to provide base_cpu_type */
-+    assert(machine_class->base_cpu_type);
-+    oc = cpu_class_by_name(machine_class->base_cpu_type, cpustr[0]);
-+    if (!oc) {
-+        error_report("Unable to find CPU definition: %s", cpustr[0]);
-+        exit(1);
-+    }
-+    machine->cpu_typename = object_class_get_name(oc);
-+
-+    /* convert -smp CPU options specified by the user into global props */
-+    cc = CPU_CLASS(oc);
-+    cc->parse_features(machine->cpu_typename, cpustr[1], &err);
-+out:
-+    g_strfreev(cpustr);
-+    if (err) {
-+        error_report_err(err);
-+        exit(1);
-+    }
-+}
-+
-+void machine_run_board_init(MachineState *machine)
-+{
-+    MachineClass *machine_class = MACHINE_GET_CLASS(machine);
-+
-+    machine_parse_cpu_model(machine);
-     machine_class->init(machine);
- }
- 
-diff --git a/hw/i386/pc.c b/hw/i386/pc.c
-index 0073469..9e6149f 100644
---- a/hw/i386/pc.c
-+++ b/hw/i386/pc.c
-@@ -1140,31 +1140,11 @@ void pc_hot_add_cpu(const int64_t id, Error **errp)
- void pc_cpus_init(PCMachineState *pcms)
- {
-     int i;
--    CPUClass *cc;
--    ObjectClass *oc;
--    const char *typename;
--    gchar **model_pieces;
-     const CPUArchIdList *possible_cpus;
-     MachineState *machine = MACHINE(pcms);
-     MachineClass *mc = MACHINE_GET_CLASS(pcms);
- 
-     /* init CPUs */
--    model_pieces = g_strsplit(machine->cpu_model, ",", 2);
--    if (!model_pieces[0]) {
--        error_report("Invalid/empty CPU model name");
--        exit(1);
--    }
--
--    oc = cpu_class_by_name(TYPE_X86_CPU, model_pieces[0]);
--    if (oc == NULL) {
--        error_report("Unable to find CPU definition: %s", model_pieces[0]);
--        exit(1);
--    }
--    typename = object_class_get_name(oc);
--    cc = CPU_CLASS(oc);
--    cc->parse_features(typename, model_pieces[1], &error_fatal);
--    g_strfreev(model_pieces);
--
-     /* Calculates the limit to CPU APIC ID values
-      *
-      * Limit for the APIC ID value, so that all
-@@ -1175,7 +1155,8 @@ void pc_cpus_init(PCMachineState *pcms)
-     pcms->apic_id_limit = x86_cpu_apic_id_from_index(max_cpus - 1) + 1;
-     possible_cpus = mc->possible_cpu_arch_ids(machine);
-     for (i = 0; i < smp_cpus; i++) {
--        pc_new_cpu(typename, possible_cpus->cpus[i].arch_id, &error_fatal);
-+        pc_new_cpu(machine->cpu_typename,
-+                   possible_cpus->cpus[i].arch_id, &error_fatal);
-     }
- }
- 
-@@ -2326,6 +2307,7 @@ static void pc_machine_class_init(ObjectClass *oc, void *data)
-     mc->hot_add_cpu = pc_hot_add_cpu;
-     mc->max_cpus = 255;
-     mc->default_cpu_model = pc_default_cpu_model;
-+    mc->base_cpu_type = TYPE_X86_CPU;
-     mc->reset = pc_machine_reset;
-     hc->pre_plug = pc_machine_device_pre_plug_cb;
-     hc->plug = pc_machine_device_plug_cb;
-diff --git a/hw/ppc/ppc.c b/hw/ppc/ppc.c
-index d171e60..8587173 100644
---- a/hw/ppc/ppc.c
-+++ b/hw/ppc/ppc.c
-@@ -1364,28 +1364,3 @@ PowerPCCPU *ppc_get_vcpu_by_dt_id(int cpu_dt_id)
- 
-     return NULL;
- }
--
--void ppc_cpu_parse_features(const char *cpu_model)
--{
--    CPUClass *cc;
--    ObjectClass *oc;
--    const char *typename;
--    gchar **model_pieces;
--
--    model_pieces = g_strsplit(cpu_model, ",", 2);
--    if (!model_pieces[0]) {
--        error_report("Invalid/empty CPU model name");
--        exit(1);
--    }
--
--    oc = cpu_class_by_name(TYPE_POWERPC_CPU, model_pieces[0]);
--    if (oc == NULL) {
--        error_report("Unable to find CPU definition: %s", model_pieces[0]);
--        exit(1);
--    }
--
--    typename = object_class_get_name(oc);
--    cc = CPU_CLASS(oc);
--    cc->parse_features(typename, model_pieces[1], &error_fatal);
--    g_strfreev(model_pieces);
--}
-diff --git a/hw/ppc/spapr.c b/hw/ppc/spapr.c
-index 8f30765..181ea9b 100644
---- a/hw/ppc/spapr.c
-+++ b/hw/ppc/spapr.c
-@@ -1920,8 +1920,6 @@ static void ppc_spapr_init(MachineState *machine)
-     }
- 
-     /* init CPUs */
--    ppc_cpu_parse_features(machine->cpu_model);
--
-     spapr_init_cpus(spapr);
- 
-     if (kvm_enabled()) {
-@@ -2896,6 +2894,7 @@ static void spapr_machine_class_init(ObjectClass *oc, void *data)
-     mc->cpu_index_to_socket_id = spapr_cpu_index_to_socket_id;
-     mc->possible_cpu_arch_ids = spapr_possible_cpu_arch_ids;
-     mc->default_cpu_model = spapr_default_cpu_model;
-+    mc->base_cpu_type = TYPE_POWERPC_CPU;
-     hc->unplug_request = spapr_machine_device_unplug_request;
- 
-     smc->dr_lmb_enabled = true;
--- 
-2.7.4
-
+thanks
+-- PMM

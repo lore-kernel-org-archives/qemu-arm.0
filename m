@@ -1,76 +1,101 @@
-Received: by 10.25.77.65 with SMTP id a62csp190855lfb;
-        Fri, 17 Feb 2017 06:11:33 -0800 (PST)
-X-Received: by 10.28.189.135 with SMTP id n129mr2125488wmf.92.1487340693562;
-        Fri, 17 Feb 2017 06:11:33 -0800 (PST)
-Return-Path: <peter.maydell@linaro.org>
-Received: from mail-wm0-x230.google.com (mail-wm0-x230.google.com. [2a00:1450:400c:c09::230])
-        by mx.google.com with ESMTPS id h82si1830491wmh.163.2017.02.17.06.11.33
+Received: by 10.25.77.65 with SMTP id a62csp229871lfb;
+        Fri, 17 Feb 2017 07:39:48 -0800 (PST)
+X-Received: by 10.200.47.100 with SMTP id k33mr7569997qta.241.1487345988455;
+        Fri, 17 Feb 2017 07:39:48 -0800 (PST)
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
+        by mx.google.com with ESMTPS id m189si7733377qkc.38.2017.02.17.07.39.48
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 17 Feb 2017 06:11:33 -0800 (PST)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 2a00:1450:400c:c09::230 as permitted sender) client-ip=2a00:1450:400c:c09::230;
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Fri, 17 Feb 2017 07:39:48 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 2a00:1450:400c:c09::230 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: by mail-wm0-x230.google.com with SMTP id v77so11017531wmv.0
-        for <alex.bennee@linaro.org>; Fri, 17 Feb 2017 06:11:33 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-         :cc;
-        bh=b9KTD7vDfFb4Z1L2eb1xAml9KICPSbih9Vyn9wR2oGs=;
-        b=iXtHbCH1ukFEIle6ipW4vYXcDHXHhfsQ/OYGPn3eeP+hCCc1Wv07Ge6cikh6LIsQcm
-         zECjNP/Ph4tM6ja0bPN2EO/IPbtat08LlVu9gF3nCzSU00CuEyT9Qp3cz83arVTq2eD0
-         Q2kWLfBh3HKYboS5jiGzhT5kt3XndjDdvslaY=
+       dkim=fail header.i=@linaro.org;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:54343 helo=lists.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1cekdP-0006gW-Ve
+	for alex.bennee@linaro.org; Fri, 17 Feb 2017 10:39:48 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:41130)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <peter.maydell@linaro.org>) id 1cekcU-00064t-LH
+	for qemu-arm@nongnu.org; Fri, 17 Feb 2017 10:38:51 -0500
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+	(envelope-from <peter.maydell@linaro.org>) id 1cekcU-0004o2-0K
+	for qemu-arm@nongnu.org; Fri, 17 Feb 2017 10:38:50 -0500
+Received: from mail-wr0-x231.google.com ([2a00:1450:400c:c0c::231]:34893)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1cekcT-0004mv-Q1
+	for qemu-arm@nongnu.org; Fri, 17 Feb 2017 10:38:49 -0500
+Received: by mail-wr0-x231.google.com with SMTP id c4so32028154wrd.2
+	for <qemu-arm@nongnu.org>; Fri, 17 Feb 2017 07:38:49 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=usBVh3/4VO1ulOSBHM0ajXdwEJ7ftUSfgAT6kHyrbsQ=;
+	b=K6ZW496z0NsZl6JiKM1/g2+CU+WLggLUiMi8fbj72DZ2bRCP2GsFuWJVUfQHPy/2E4
+	zq9zTSa86ownfPOxpeBwFxhZT1g0zwqveJWowLZCnWhLpqE+QZ87o9mYgUjSJSi11d9z
+	BYOswa3uQQnOBK6llcCy1x0xM+ZC/ks8n+kDc=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-         :message-id:subject:to:cc;
-        bh=b9KTD7vDfFb4Z1L2eb1xAml9KICPSbih9Vyn9wR2oGs=;
-        b=WmoBcP3bGWiVeV2lbkKoWhhAKtnxQTWpAyTw458Cf8na60rHTaeR7zCEKAhKvlRDnc
-         +PV68M6vSElUjOTiXpxgXk0ZSD6/3DL4l1Quh+PWQUchNj9TwewQu3Mitfr17pnV+mTA
-         3Eh8/ImbXH8TJrDxI8yu4SzPZl9Wm6bCk/doRgRgqxkcZqdrFs9MIe9jquwbiYfbKJgD
-         s+ZanjnpsxZ5LaewWboEvu6qgKhgZTb2iot+4WAytqomI5w9d+pI6FsP0gIkRLX/rlbi
-         V9Bve0V7UbKjZcfNN5ordFYQoVdEXx4Ndw9Nm6V57ItPvcV/B0bEWvAw7Z1Ew9jOz/D3
-         w60g==
-X-Gm-Message-State: AMke39nvDwv2rLD8HvKPDOaThXL6rr6pN8wkRjN7BwSgHfJVyZUydo83PHLzv4ulyA0RyVV3W9peBE5WlmARCuDJkDg=
-X-Received: by 10.28.189.135 with SMTP id n129mr2125468wmf.92.1487340693227;
- Fri, 17 Feb 2017 06:11:33 -0800 (PST)
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=usBVh3/4VO1ulOSBHM0ajXdwEJ7ftUSfgAT6kHyrbsQ=;
+	b=eN2rkIjF4YFQS6N3ALNQqmxcn6O1oqbwRqGr+Ac6ksXxnpN3XHGCtGyeNqF3SCER2u
+	W1+nz9lOZfWS88/r8CO8ReneRbBBNicXh74iROPyMok3MdsiPYo0e5W2VQkIcj0SKAhD
+	973TJlXR368oIW67Vm+ckQl7XgKMPXRded9PnFPrEiY31n1OfNLTt1m675JIqmmz+wl5
+	vmbFRCq3ArL72GAiClOFjzyASsF+vURnvxwTHrhURTK89kfLk7XS9QG6Ql2kkucjkLGd
+	niVSy0mWguJh9B7FSAw7FynWfM00X0a+BHCyBTajrok1BklobxnYh8vUSX4Z0FF7jcsf
+	GTPA==
+X-Gm-Message-State: AMke39m5KDk8fHVqo6TbmlxKnV3H2xHn5MVfhk0dsCvcRmg3qcPr9r05yVng7xgamkJrVWo3BCnS3XVkwiAa/eXL
+X-Received: by 10.223.136.152 with SMTP id f24mr6707957wrf.187.1487345928447; 
+	Fri, 17 Feb 2017 07:38:48 -0800 (PST)
 MIME-Version: 1.0
-Received: by 10.223.145.69 with HTTP; Fri, 17 Feb 2017 06:11:12 -0800 (PST)
-In-Reply-To: <20170217140505.GB11399@redhat.com>
-References: <1487334159-19664-1-git-send-email-peter.maydell@linaro.org> <20170217140505.GB11399@redhat.com>
+Received: by 10.223.145.69 with HTTP; Fri, 17 Feb 2017 07:38:27 -0800 (PST)
+In-Reply-To: <CAFEAcA-i6xqsik1=hMk9N0w-rCa8JxZD9VF7h==hjYJokx1fCw@mail.gmail.com>
+References: <20170210210857.47893-1-marcinch7@gmail.com>
+	<CAFEAcA-i6xqsik1=hMk9N0w-rCa8JxZD9VF7h==hjYJokx1fCw@mail.gmail.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 17 Feb 2017 14:11:12 +0000
-Message-ID: <CAFEAcA8g6H5rHSc=bLOjx2tn+=WDSvevnPc3LokMUDuarqxZPg@mail.gmail.com>
-Subject: Re: [PATCH] bcm2835_rng: Use qcrypto_random_bytes() rather than rand()
-To: "Daniel P. Berrange" <berrange@redhat.com>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>, 
-	"patches@linaro.org" <patches@linaro.org>, Marcin Chojnacki <marcinch7@gmail.com>, 
-	=?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
+Date: Fri, 17 Feb 2017 15:38:27 +0000
+Message-ID: <CAFEAcA9DCBsqcWasVpvYWm6sKNUiQWiBJezEqQTQBgnO3zZgiw@mail.gmail.com>
+To: Marcin Chojnacki <marcinch7@gmail.com>
 Content-Type: text/plain; charset=UTF-8
-X-TUID: 62l8z/rPh6S+
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 2a00:1450:400c:c0c::231
+Subject: Re: [Qemu-arm] [PATCH v2] target-arm: Implement BCM2835 hardware RNG
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.21
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: V67ot0aWdckv
 
-On 17 February 2017 at 14:05, Daniel P. Berrange <berrange@redhat.com> wrote:
-> On Fri, Feb 17, 2017 at 12:22:39PM +0000, Peter Maydell wrote:
->> We should probably improve crypto/random-platform.c to use
->> getentropy() if available, which would fix the "BSD or OSX
->> host and not using gcrypt or gnutls" case which I think is
->> the most likely cause of qcrypto_random_bytes() failing.
+On 17 February 2017 at 12:54, Peter Maydell <peter.maydell@linaro.org> wrote:
+> On 10 February 2017 at 21:08, Marcin Chojnacki <marcinch7@gmail.com> wrote:
+>> Recent vanilla Raspberry Pi kernels started to make use of
+>> the hardware random number generator in BCM2835 SoC. As a
+>> result, those kernels wouldn't work anymore under QEMU
+>> but rather just freeze during the boot process.
+>>
+>> This patch implements a trivial BCM2835 compatible RNG,
+>> and adds it as a peripheral to BCM2835 platform, which
+>> allows to boot a vanilla Raspberry Pi kernel under Qemu.
 >
-> randopm-platform.c currentl uses /dev/urandom or /dev/random,
-> so that should work when GNUTLS/gcrypt are both disabled at
-> build time.
+> So this looks good to me (other than the rand issue which
+> I just posted a patch for).
 
-Ah, and OSX and the BSDs have those devices. (I had
-mistakenly assumed they were a linuxism.)
+Dan's reviewed the fix for the rand issue so I'm going to
+apply this to target-arm.next. Thanks!
 
-> What would fail, is uses it from a chroot with an empty /dev
-> of course.
-
-Yes; replacing the rand() in linux-user/main.c would require
-this I think (unless we're willing to fall back to rand ;-))
-
-thanks
 -- PMM

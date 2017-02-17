@@ -1,103 +1,77 @@
-Received: by 10.25.77.65 with SMTP id a62csp157872lfb;
-        Fri, 17 Feb 2017 04:56:05 -0800 (PST)
-X-Received: by 10.55.154.7 with SMTP id c7mr957630qke.285.1487336165059;
-        Fri, 17 Feb 2017 04:56:05 -0800 (PST)
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id j123si7415202qke.147.2017.02.17.04.56.04
+Received: by 10.25.77.65 with SMTP id a62csp163686lfb;
+        Fri, 17 Feb 2017 05:07:39 -0800 (PST)
+X-Received: by 10.28.23.70 with SMTP id 67mr3317225wmx.23.1487336859920;
+        Fri, 17 Feb 2017 05:07:39 -0800 (PST)
+Return-Path: <peter.maydell@linaro.org>
+Received: from mail-wm0-x236.google.com (mail-wm0-x236.google.com. [2a00:1450:400c:c09::236])
+        by mx.google.com with ESMTPS id i21si1670304wmc.94.2017.02.17.05.07.39
         for <alex.bennee@linaro.org>
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 17 Feb 2017 04:56:05 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 17 Feb 2017 05:07:39 -0800 (PST)
+Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 2a00:1450:400c:c09::236 as permitted sender) client-ip=2a00:1450:400c:c09::236;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:53316 helo=lists.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1cei4y-0005bN-Ic
-	for alex.bennee@linaro.org; Fri, 17 Feb 2017 07:56:04 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:55680)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1cei4A-0005JJ-9p
-	for qemu-devel@nongnu.org; Fri, 17 Feb 2017 07:55:15 -0500
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1cei49-0004KD-Is
-	for qemu-devel@nongnu.org; Fri, 17 Feb 2017 07:55:14 -0500
-Received: from mail-wr0-x22d.google.com ([2a00:1450:400c:c0c::22d]:33138)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1cei49-0004K1-D8
-	for qemu-devel@nongnu.org; Fri, 17 Feb 2017 07:55:13 -0500
-Received: by mail-wr0-x22d.google.com with SMTP id i10so29439640wrb.0
-	for <qemu-devel@nongnu.org>; Fri, 17 Feb 2017 04:55:13 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=SQ1eQb4/IzJKTQe9at1FU3oZupYrLQZSVd6Op8QKvWE=;
-	b=Rps5uJ+mH4JDsScIa3Rxj7iEoAWVKXwn1/NZNCHoK7klOAAu2Y+M4Yi2sgpiNG8xrM
-	zonFli8/QoUQhcZe/ZTnm+ZUvlcatV8odOASrKTK3nz5NA1xUoPQSMX4AXPdyg3jG1qW
-	miCIIZxjpr89h8IODuoOVoqMWkOIWEyr4Tw4U=
+       dkim=pass header.i=@linaro.org;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 2a00:1450:400c:c09::236 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: by mail-wm0-x236.google.com with SMTP id r141so9766470wmg.1
+        for <alex.bennee@linaro.org>; Fri, 17 Feb 2017 05:07:39 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+         :cc:content-transfer-encoding;
+        bh=kP4ijPcEAbRjSuYmd3m+scVosTZqJg8ziVpkZqNBnLo=;
+        b=AX8OzNjvNR6RobSMaMldrlXoaU0GsBA8ImEyeZdzD6vWqjCxV+JvzcwUiV4+cP/8Lh
+         JzW+0nJsQISpkp5osA/deuRKyORD14ipxbfZmFHW+VAuvvIyjyCTOEE2OHW1v2YniTDl
+         AvwDZZWvgqkYzvlIG0AOgN7KkkPQlLjWIOgio=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=SQ1eQb4/IzJKTQe9at1FU3oZupYrLQZSVd6Op8QKvWE=;
-	b=YTfIXL8jPiDtgw8mEp94kZrVsnwDs6zX3KmIG6wTv66f/O5TEdxMoAf01ECqV4Esaa
-	hsV635zltLeF4FZ/NjpDZRpsU5QvXcvxlQYkmNDyIhoNkEqnl8NFSa34wbOFfIKzf5Hm
-	YQxwbN5NdxAv3sF9qwZls5Es6ZQzeErl+0rd3Ji31+nOt4SPz2zXY7jhG+ckGFa4VmqB
-	A35+DTTl0myoOpxJ/+JxtPdnoZCarwJT+7T/noYxJp/1aGZELMVU3yz1LamL0HpMUhC3
-	KIestQXBjg0oNyaA8QKS5K/ZtC4BSOA3qedy12YZ3lw7R/ViYX2ySardsYJaP9Ea+Xt2
-	ys5Q==
-X-Gm-Message-State: AMke39lWHSN8GsnEn+yYsSxdkzFclBD93b8hUO53GCpXhJkgXUhPFQlnQLYOujtBAUFYVJ1nDyXcX1sT94hnc3rL
-X-Received: by 10.223.133.68 with SMTP id 62mr6415614wrh.195.1487336112119;
-	Fri, 17 Feb 2017 04:55:12 -0800 (PST)
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+         :message-id:subject:to:cc:content-transfer-encoding;
+        bh=kP4ijPcEAbRjSuYmd3m+scVosTZqJg8ziVpkZqNBnLo=;
+        b=F3P879/ijLwaOB0vbwAZMGiW+G7u7Q29QCNdmUacZOvnPvccHJJYePJ5RH3zWi1+WQ
+         pNsNqPRyQa69aJfguYoyi3CcpS9NvTkeiAZHDtoF7T2Scr/qPnDvlhymoxkRtvnML64x
+         RfG4kkofCVau16E+Q5eik/Bs7nPA0NS5AYU45yRzabwXgj6hVTxrTTw2PQgaqyVqmB+o
+         k4ysg9Zgly48QTWZnjEvV5QgrzBjYZptnwbf4nxsZVLcNTEKpFPs62qbMzJaIAG2+kHz
+         sNc6HsFmmN8b6+ZHdVoh6iAcBSuIilrYQmC9IOOhmjNKn/XMnH4Uu9uD2L940sHscXEU
+         efmQ==
+X-Gm-Message-State: AMke39nYh05EaaiDdFc1Gxs7DNZM/KEtOTiEi2huycMxD6NGItqswM+l1uRosTgVe4bd2ZR0J1lX5tIFpEcbsD+s4Go=
+X-Received: by 10.28.157.70 with SMTP id g67mr3368668wme.111.1487336859575;
+ Fri, 17 Feb 2017 05:07:39 -0800 (PST)
 MIME-Version: 1.0
-Received: by 10.223.145.69 with HTTP; Fri, 17 Feb 2017 04:54:51 -0800 (PST)
-In-Reply-To: <20170210210857.47893-1-marcinch7@gmail.com>
-References: <20170210210857.47893-1-marcinch7@gmail.com>
+Received: by 10.223.145.69 with HTTP; Fri, 17 Feb 2017 05:07:18 -0800 (PST)
+In-Reply-To: <20170213121017.12907-21-alex.bennee@linaro.org>
+References: <20170213121017.12907-1-alex.bennee@linaro.org> <20170213121017.12907-21-alex.bennee@linaro.org>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 17 Feb 2017 12:54:51 +0000
-Message-ID: <CAFEAcA-i6xqsik1=hMk9N0w-rCa8JxZD9VF7h==hjYJokx1fCw@mail.gmail.com>
-To: Marcin Chojnacki <marcinch7@gmail.com>
+Date: Fri, 17 Feb 2017 13:07:18 +0000
+Message-ID: <CAFEAcA835LOh9fFLGJGHNYJJBhbc9r=8ogFQvqzWuUwF7DfgmA@mail.gmail.com>
+Subject: Re: [PATCH v12 20/24] target-arm/powerctl: defer cpu reset work to
+ CPU context
+To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
+Cc: Richard Henderson <rth@twiddle.net>, MTTCG Devel <mttcg@listserver.greensocs.com>, 
+	QEMU Developers <qemu-devel@nongnu.org>, =?UTF-8?B?S09OUkFEIEZyw6lkw6lyaWM=?= <fred.konrad@greensocs.com>, 
+	Alvise Rigo <a.rigo@virtualopensystems.com>, "Emilio G. Cota" <cota@braap.org>, 
+	Pranith Kumar <bobby.prani@gmail.com>, Nikunj A Dadhania <nikunj@linux.vnet.ibm.com>, 
+	Mark Burton <mark.burton@greensocs.com>, Paolo Bonzini <pbonzini@redhat.com>, 
+	Jan Kiszka <jan.kiszka@siemens.com>, Fedorov Sergey <serge.fdrv@gmail.com>, 
+	Bamvor Zhang Jian <bamvor.zhangjian@linaro.org>, "open list:ARM" <qemu-arm@nongnu.org>
 Content-Type: text/plain; charset=UTF-8
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2a00:1450:400c:c0c::22d
-Subject: Re: [Qemu-devel] [PATCH v2] target-arm: Implement BCM2835 hardware
- RNG
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.21
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: chCVaEx0lozI
+Content-Transfer-Encoding: quoted-printable
+X-TUID: X0QKMKx7s9r0
 
-On 10 February 2017 at 21:08, Marcin Chojnacki <marcinch7@gmail.com> wrote:
-> Recent vanilla Raspberry Pi kernels started to make use of
-> the hardware random number generator in BCM2835 SoC. As a
-> result, those kernels wouldn't work anymore under QEMU
-> but rather just freeze during the boot process.
+On 13 February 2017 at 12:10, Alex Benn=C3=A9e <alex.bennee@linaro.org> wro=
+te:
+> When switching a new vCPU on we want to complete a bunch of the setup
+> work before we start scheduling the vCPU thread. To do this cleanly we
+> defer vCPU setup to async work which will run the vCPUs execution
+> context as the thread is woken up. The scheduling of the work will kick
+> the vCPU awake.
 >
-> This patch implements a trivial BCM2835 compatible RNG,
-> and adds it as a peripheral to BCM2835 platform, which
-> allows to boot a vanilla Raspberry Pi kernel under Qemu.
+> This avoids potential races in MTTCG system emulation.
+>
+> Signed-off-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
+> Reviewed-by: Richard Henderson <rth@twiddle.net>
 
-So this looks good to me (other than the rand issue which
-I just posted a patch for). My testing shows that it
-definitely helps for the raspbian image I just downloaded.
-However although the kernel boots OK it hangs indefinitely
-because it can't find a root filesystem -- presumably
-it doesn't see the sd card. Do you see that, or does it
-work for you?
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
 thanks
 -- PMM

@@ -1,148 +1,133 @@
-Received: by 10.25.77.65 with SMTP id a62csp77102lfb;
-        Fri, 17 Feb 2017 01:28:03 -0800 (PST)
-X-Received: by 10.55.123.5 with SMTP id w5mr7369996qkc.76.1487323683010;
-        Fri, 17 Feb 2017 01:28:03 -0800 (PST)
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 10.25.77.65 with SMTP id a62csp175244lfb;
+        Fri, 17 Feb 2017 05:33:25 -0800 (PST)
+X-Received: by 10.55.186.67 with SMTP id k64mr7550549qkf.232.1487338405760;
+        Fri, 17 Feb 2017 05:33:25 -0800 (PST)
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id g8si7107406qtc.212.2017.02.17.01.28.02
+        by mx.google.com with ESMTPS id s16si7485444qts.250.2017.02.17.05.33.25
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 17 Feb 2017 01:28:03 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Fri, 17 Feb 2017 05:33:25 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:52448 helo=lists.gnu.org)
+       dkim=pass header.i=@linaro.org;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:53758 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ceepe-00078M-GX
-	for alex.bennee@linaro.org; Fri, 17 Feb 2017 04:28:02 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:51332)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1ceif7-0005rP-9P
+	for alex.bennee@linaro.org; Fri, 17 Feb 2017 08:33:25 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:37054)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1ceeP0-00080c-9x
-	for qemu-arm@nongnu.org; Fri, 17 Feb 2017 04:00:31 -0500
+	(envelope-from <peter.maydell@linaro.org>) id 1ceieM-0005pj-9m
+	for qemu-devel@nongnu.org; Fri, 17 Feb 2017 08:32:39 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1ceeOu-0002MS-Hu
-	for qemu-arm@nongnu.org; Fri, 17 Feb 2017 04:00:30 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:33982)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <eric.auger@redhat.com>)
-	id 1ceeOu-0002Lo-8z; Fri, 17 Feb 2017 04:00:24 -0500
-Received: from int-mx13.intmail.prod.int.phx2.redhat.com
-	(int-mx13.intmail.prod.int.phx2.redhat.com [10.5.11.26])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id D539FC04D28B;
-	Fri, 17 Feb 2017 09:00:23 +0000 (UTC)
-Received: from localhost.localdomain (ovpn-116-36.ams2.redhat.com
-	[10.36.116.36])
-	by int-mx13.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id v1H90KGC005156
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=NO);
-	Fri, 17 Feb 2017 04:00:21 -0500
-To: Vijay Kilari <vijay.kilari@gmail.com>,
-	Peter Maydell <peter.maydell@linaro.org>
-References: <1485879782-6075-1-git-send-email-vijay.kilari@gmail.com>
-	<1485879782-6075-3-git-send-email-vijay.kilari@gmail.com>
-	<CAFEAcA_K2TcihHTTrrr7kZ3pGZ3BNptDb0mt5Rc0YinkGD1eHQ@mail.gmail.com>
-	<CALicx6v7B3145pJXsOcgGass8xG4HHY7=iA6gEHKbMcHxqQD-A@mail.gmail.com>
-From: Auger Eric <eric.auger@redhat.com>
-Message-ID: <bebfa013-8627-83d2-85bc-7ae55131ea48@redhat.com>
-Date: Fri, 17 Feb 2017 10:00:18 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
-	Thunderbird/45.4.0
+	(envelope-from <peter.maydell@linaro.org>) id 1ceieL-0007o3-Gu
+	for qemu-devel@nongnu.org; Fri, 17 Feb 2017 08:32:38 -0500
+Received: from mail-wr0-x231.google.com ([2a00:1450:400c:c0c::231]:33013)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1ceieL-0007nk-AW
+	for qemu-devel@nongnu.org; Fri, 17 Feb 2017 08:32:37 -0500
+Received: by mail-wr0-x231.google.com with SMTP id i10so29998872wrb.0
+	for <qemu-devel@nongnu.org>; Fri, 17 Feb 2017 05:32:37 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=Ccs2W3zCN1sWqp/8nZRaL/rzNZtRvMsq2vG0MKi3Yvk=;
+	b=UKlGvaRlF8wDaArh8UT+7np5jV8k4xG+ynihmTFUVHftIxXGer7fBciY7/Xc+EzY5J
+	TtfAF9yKLswenmlOijg69JFVhX1qNZ4fBKlsT0O4PYXiOZlt3gD0XngDlJ/sRD27FFwE
+	C8+kofj155Soyn1IzoLqqLYa8MvQcyRUUzPwI=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=Ccs2W3zCN1sWqp/8nZRaL/rzNZtRvMsq2vG0MKi3Yvk=;
+	b=jQVGIHay7ZKzOpBaX8aBxbUnvQwzCSj6YF8K2KmKfFiG6rsU14WNZf5sYfyw0IPMBX
+	cdDIrJgC3UAKhQpts8aFL7vmhHuErUxPpv3G3ShoGFMbdV0Luv9KzfkN2gMrUOTbsu6C
+	u4o1peVDzrnqlf+DKrKP5bcAjbgpijzHGk5LOZ5StQpekM/4TaAEBje6FYzSdZAhVxrD
+	cglfyiqW9okDAoI2YIKIgo2FjCqkJ/HQIeQMl9kRoirYJ+oUiv4G0CTWDwEIX/YurBEb
+	kK3qeHnXqtIvj1rXYq7NNYoTH9yQuLgctulnupOASDoJ6+AYC5f2285B2G5rtJ9JFJBp
+	7KmQ==
+X-Gm-Message-State: AMke39nszqPPzk+0utkHNFHUZZ2z/6FdRn9AeOUG6+69dB6RRHD17hrXsq9zJ1pHSr3Lus6qZ7XeYTeD/jqq2zjO
+X-Received: by 10.223.133.68 with SMTP id 62mr6544375wrh.195.1487338356208;
+	Fri, 17 Feb 2017 05:32:36 -0800 (PST)
 MIME-Version: 1.0
-In-Reply-To: <CALicx6v7B3145pJXsOcgGass8xG4HHY7=iA6gEHKbMcHxqQD-A@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.26
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.31]);
-	Fri, 17 Feb 2017 09:00:24 +0000 (UTC)
+Received: by 10.223.145.69 with HTTP; Fri, 17 Feb 2017 05:32:15 -0800 (PST)
+In-Reply-To: <20170216161114.220260cf@nial.brq.redhat.com>
+References: <1487253461-269218-1-git-send-email-imammedo@redhat.com>
+	<CAFEAcA_NgmdDCfbPy+DnHQBmNGmQ4tj1z4ci+OP7+x4tHLLCxg@mail.gmail.com>
+	<20170216161114.220260cf@nial.brq.redhat.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 17 Feb 2017 13:32:15 +0000
+Message-ID: <CAFEAcA-aaEPxhYK2ePq2QXW6UVe2A=NxP=V7cokURkurPzLRGg@mail.gmail.com>
+To: Igor Mammedov <imammedo@redhat.com>
+Content-Type: text/plain; charset=UTF-8
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [PATCH v7 RESEND 2/5] hw/intc/arm_gicv3_kvm: Add
- ICC_SRE_EL1 register to vmstate
-X-BeenThere: qemu-arm@nongnu.org
+X-Received-From: 2a00:1450:400c:c0c::231
+Subject: Re: [Qemu-devel] [PATCH] hw/arm/virt: fix cpu object reference leak
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Marc Zyngier <marc.zyngier@arm.com>, Pavel Fedin <p.fedin@samsung.com>,
-	QEMU Developers <qemu-devel@nongnu.org>,
-	Vijaya Kumar K <Vijaya.Kumar@cavium.com>, qemu-arm <qemu-arm@nongnu.org>,
-	Christoffer Dall <christoffer.dall@linaro.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: iUT4zhwz25lm
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Andrew Jones <drjones@redhat.com>, qemu-arm <qemu-arm@nongnu.org>,
+	QEMU Developers <qemu-devel@nongnu.org>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: QX+DuhCyYrir
 
-Hi Vijaya,
+On 16 February 2017 at 15:11, Igor Mammedov <imammedo@redhat.com> wrote:
+> On Thu, 16 Feb 2017 14:18:05 +0000
+> Peter Maydell <peter.maydell@linaro.org> wrote:
+>> I've always found the object reference semantics somewhat
+>> confusing (why does realizing a device add a reference,
+>> for instance?). Do we document them anywhere?
+> I'm not aware of a place where it's documented.
+>
+> currently device_realize() sets parent thus increasing
+> ref counter only if device creator haven't set parent
+> explicitly.
 
-On 13/02/2017 13:17, Vijay Kilari wrote:
-> On Tue, Feb 7, 2017 at 8:09 PM, Peter Maydell <peter.maydell@linaro.org> wrote:
->> On 31 January 2017 at 16:22,  <vijay.kilari@gmail.com> wrote:
->>> From: Vijaya Kumar K <Vijaya.Kumar@cavium.com>
->>>
->>> To Save and Restore ICC_SRE_EL1 register Add ICC_SRE_EL1 register
->>> to vmstate and GICv3CPUState struct.
->>>
->>> Signed-off-by: Vijaya Kumar K <Vijaya.Kumar@cavium.com>
->>> ---
->>>  hw/intc/arm_gicv3_common.c         | 1 +
->>>  include/hw/intc/arm_gicv3_common.h | 1 +
->>>  2 files changed, 2 insertions(+)
->>>
->>> diff --git a/hw/intc/arm_gicv3_common.c b/hw/intc/arm_gicv3_common.c
->>> index 0f8c4b8..f3245d9 100644
->>> --- a/hw/intc/arm_gicv3_common.c
->>> +++ b/hw/intc/arm_gicv3_common.c
->>> @@ -68,6 +68,7 @@ static const VMStateDescription vmstate_gicv3_cpu = {
->>>          VMSTATE_UINT32(gicr_igrpmodr0, GICv3CPUState),
->>>          VMSTATE_UINT32(gicr_nsacr, GICv3CPUState),
->>>          VMSTATE_UINT8_ARRAY(gicr_ipriorityr, GICv3CPUState, GIC_INTERNAL),
->>> +        VMSTATE_UINT64(icc_sre_el1, GICv3CPUState),
->>>          VMSTATE_UINT64_ARRAY(icc_ctlr_el1, GICv3CPUState, 2),
->>>          VMSTATE_UINT64(icc_pmr_el1, GICv3CPUState),
->>>          VMSTATE_UINT64_ARRAY(icc_bpr, GICv3CPUState, 3),
->>> diff --git a/include/hw/intc/arm_gicv3_common.h b/include/hw/intc/arm_gicv3_common.h
->>> index 341a311..183c7f8 100644
->>> --- a/include/hw/intc/arm_gicv3_common.h
->>> +++ b/include/hw/intc/arm_gicv3_common.h
->>> @@ -166,6 +166,7 @@ struct GICv3CPUState {
->>>      uint8_t gicr_ipriorityr[GIC_INTERNAL];
->>>
->>>      /* CPU interface */
->>> +    uint64_t icc_sre_el1;
->>>      uint64_t icc_ctlr_el1[2];
->>>      uint64_t icc_pmr_el1;
->>>      uint64_t icc_bpr[3];
->>
->> This breaks migration compatibility for TCG using GICv3; you
->> need to do something here with a VMState subsection so
->> the new register is only transferred if it's non-zero.
-> 
-> So, you mean to put a check in kvm_arm_gicv3_put() and
-> kvm_arm_gicv3_get() to check for non-zero value?
-> icc_sre_el1 is always non-zero reset to 0xf in TCG and 0x7 in KVM mode.
-In hw/intc/arm_gicv3_cpuif.c we have
-    { .name = "ICC_SRE_EL1", .state = ARM_CP_STATE_BOTH,
-	../..
-      .resetvalue = 0x7,
-    },
-where did you find the TCG reset value equal to 0xF? I am not able to
-find it.
+It doesn't seem to:
 
-Thanks
+static void device_realize(DeviceState *dev, Error **errp)
+{
+    DeviceClass *dc = DEVICE_GET_CLASS(dev);
 
-Eric
+    if (dc->init) {
+        int rc = dc->init(dev);
+        if (rc < 0) {
+            error_setg(errp, "Device initialization failed.");
+            return;
+        }
+    }
+}
 
-> 
->>
->> thanks
->> -- PMM
+...it just calls the device's init function if it has one.
+
+It's also pretty confusing that qdev_try_create()
+and qdev_create() return a pointer to an object
+that has been put into a bus and had unref called
+(so the caller doesn't need to manually unref),
+but plain object_new() returns a pointer to an
+object that hasn't been put into a bus, yet
+realizing does put it into a bus but doesn't do the
+corresponding unref.
+
+I'd be a lot happier if we had clear documentation that
+described how our object model, plugging things into buses,
+etc handled reference counting and what the expected
+"correct" code patterns are for using it.
+
+That said, I guess this patch is correct so I'm applying
+it to target-arm.next.
+
+thanks
+-- PMM

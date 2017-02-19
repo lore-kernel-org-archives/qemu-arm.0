@@ -1,80 +1,96 @@
-Received: by 10.25.77.65 with SMTP id a62csp693871lfb;
-        Sat, 18 Feb 2017 10:39:10 -0800 (PST)
-X-Received: by 10.28.5.70 with SMTP id 67mr10369508wmf.32.1487443150771;
-        Sat, 18 Feb 2017 10:39:10 -0800 (PST)
-Return-Path: <peter.maydell@linaro.org>
-Received: from mail-wm0-x22a.google.com (mail-wm0-x22a.google.com. [2a00:1450:400c:c09::22a])
-        by mx.google.com with ESMTPS id r127si6137741wmg.114.2017.02.18.10.39.10
-        for <alex.bennee@linaro.org>
+Received: by 10.25.0.147 with SMTP id 141csp170564lfa;
+        Sun, 19 Feb 2017 10:11:30 -0800 (PST)
+X-Received: by 10.36.79.13 with SMTP id c13mr16050412itb.103.1487527890843;
+        Sun, 19 Feb 2017 10:11:30 -0800 (PST)
+Return-Path: <mdavidsaver@gmail.com>
+Received: from mail-it0-x242.google.com (mail-it0-x242.google.com. [2607:f8b0:4001:c0b::242])
+        by mx.google.com with ESMTPS id j7si7876998ioo.214.2017.02.19.10.11.30
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 18 Feb 2017 10:39:10 -0800 (PST)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 2a00:1450:400c:c09::22a as permitted sender) client-ip=2a00:1450:400c:c09::22a;
+        Sun, 19 Feb 2017 10:11:30 -0800 (PST)
+Received-SPF: pass (google.com: domain of mdavidsaver@gmail.com designates 2607:f8b0:4001:c0b::242 as permitted sender) client-ip=2607:f8b0:4001:c0b::242;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 2a00:1450:400c:c09::22a as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: by mail-wm0-x22a.google.com with SMTP id c85so43171095wmi.1
-        for <alex.bennee@linaro.org>; Sat, 18 Feb 2017 10:39:10 -0800 (PST)
+       dkim=pass header.i=@gmail.com;
+       spf=pass (google.com: domain of mdavidsaver@gmail.com designates 2607:f8b0:4001:c0b::242 as permitted sender) smtp.mailfrom=mdavidsaver@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Received: by mail-it0-x242.google.com with SMTP id w185so2601553ita.3;
+        Sun, 19 Feb 2017 10:11:30 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-         :cc;
-        bh=n+TznCARoSYM2rlnZXxFCbwDHsDsAYllpahuxgX1+xI=;
-        b=GKIPRScARYH28Td0xChGl1/bFcWYL52mWghAHNrJ1aKsXBs3p1A/OMZeQXcNKw+AQW
-         6HDHOc3Rb0FZYMmgG3kSB9U/LNXI4fvM9+bMG1vNh7fzypkia1am8nCrDsHB760vS5+/
-         6+UNPIwU5K760PT066fa5wzayMtK87bd20urg=
+        d=gmail.com; s=20161025;
+        h=subject:to:references:cc:from:message-id:date:user-agent
+         :mime-version:in-reply-to:content-transfer-encoding;
+        bh=lbCd/Gj4WRXz2SlBO5oZm9Z5hSuJqNAq7i7JB2D/MMg=;
+        b=dB3IGeVVB/Tl3t2EEpSAlVmNy0bt0WeX2pXTTpv7cTmTPnuE9/P9knWMGFWMcpbJuH
+         M7UsVOEcQihH/WHIzXmzPMCm10HdiYAGfrncJaWSfAuzPjhUcilsiSwqN2JzseSm6x49
+         2hcguOc7MynqUkdhOlnC/30V7AN+jpxhAHJH9LIoi8RxPuX2WiJ8BoopHQrB1b2Xds3d
+         3MSzArl0KE9trbOpBXAVPrZO1kRehYehj87Ie3pHR7CeWTAV4fFdGBoe2QM6+ohaQ3RT
+         6gWZkhuIlwx7msUihWkcTQtQxjf+PY+o9Fn/K2DIjfd5t7hYrYM0QX7/MlqlS3SPfOrZ
+         G7Zw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-         :message-id:subject:to:cc;
-        bh=n+TznCARoSYM2rlnZXxFCbwDHsDsAYllpahuxgX1+xI=;
-        b=qO+XY1Tp3xg+1uP4+8OfPuIpyoSrdVNoAJcekFKjykA0zPMOdO43K9oTUcAe2Fod+V
-         JVt+Os7QyeIO0SNiP5yDKojvW6WXOrC9xTDRo8nfR3bEFttQP0kMfsLyMJ4H6Q5WKmkF
-         Ku/SV7VsRu+70TTqalOF2k7spnP9Y0Dzd2yU+dTLsIfFA9YoXXXWdkTQH77zDrhhel0T
-         elGG1U5zPZkMfqllnfC3FDQLdTTpniUnt0TUWfvgLsHiGdoZhX/XwjeWlKEEZoHbSFkH
-         imCLp7a2/nVOyDjEpxXhE8eKsL3z3bxFKPgT9YxKuW0TCYO/1gN7yYnRfpmHx9recoYt
-         AoqQ==
-X-Gm-Message-State: AMke39lUoGVTd7B2AikCmLGm3vcGkoSb/R1OdLB5uM2wekElxHN5ZJ1wXUPnAgSpebFmpQ4SR5ja4tZaiRHT0FZOEAk=
-X-Received: by 10.28.157.70 with SMTP id g67mr9985968wme.111.1487443150487;
- Sat, 18 Feb 2017 10:39:10 -0800 (PST)
-MIME-Version: 1.0
-Received: by 10.223.145.69 with HTTP; Sat, 18 Feb 2017 10:38:49 -0800 (PST)
-In-Reply-To: <1e2962d7-1b50-9543-3e1d-9c388d4167c3@gmail.com>
+        h=x-gm-message-state:subject:to:references:cc:from:message-id:date
+         :user-agent:mime-version:in-reply-to:content-transfer-encoding;
+        bh=lbCd/Gj4WRXz2SlBO5oZm9Z5hSuJqNAq7i7JB2D/MMg=;
+        b=bCPzEjBATxSCObZn9hdcuyXrJUX0V5T1KpuyZ9slUWlse94ZYXUDAg7AnBhj41TJJZ
+         bhW6VAalpOsaWBpa2BGW8jstj7DTfHohTepnzhul+nzaWLwUmhKEtvD4NmkTMse8pSwq
+         yX2oz7JaFwVk8hO3lUTMvQbwvHORcqqociiCM9R54TwO0VD20JrMcOBmie4dZrnfYvip
+         PjXN7IG9jjEY0iml36yNKr+0iPymg89PDeuh7rKgYIjxjZEGakrh2cMl159wPygjGg3w
+         9GBmi1/F6zCvy7MimfdF7P2wzGZFplROhcrV/3+grE5IXgLpagG/xx726UYq5f00BFCv
+         J9Eg==
+X-Gm-Message-State: AMke39kATseY5gZ/8D3Uas2CXowJZ6RxnPENO+n8FWvpmJGbDhbzjIQPSYe2xixwvvsbaA==
+X-Received: by 10.36.141.69 with SMTP id w66mr16208995itd.96.1487527890460;
+        Sun, 19 Feb 2017 10:11:30 -0800 (PST)
+Return-Path: <mdavidsaver@gmail.com>
+Received: from [192.168.43.106] (mbc2836d0.tmodns.net. [208.54.40.188])
+        by smtp.gmail.com with ESMTPSA id x128sm3937477ite.11.2017.02.19.10.11.29
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Sun, 19 Feb 2017 10:11:29 -0800 (PST)
+Subject: Re: [PATCH 3/9] armv7m: Rewrite NVIC to not use any GIC code
+To: Peter Maydell <peter.maydell@linaro.org>
 References: <1486065742-28639-1-git-send-email-peter.maydell@linaro.org>
  <1486065742-28639-4-git-send-email-peter.maydell@linaro.org>
- <87mvdnvcxx.fsf@linaro.org> <CAFEAcA-PFJp_9=NOCFqiQp=xF6Y-TnmE3bfU3zDa6xH7nK2Zfg@mail.gmail.com>
- <CAFEAcA8X1qvweDHBWQjZwH68xWdn4K+Wfqv0yRhjM5QCxd=VBA@mail.gmail.com> <1e2962d7-1b50-9543-3e1d-9c388d4167c3@gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Sat, 18 Feb 2017 18:38:49 +0000
-Message-ID: <CAFEAcA-9w-bKJY=gb9Bo9c45vLParh8zVwit3t4GPHqTJZxnJw@mail.gmail.com>
-Subject: Re: [PATCH 3/9] armv7m: Rewrite NVIC to not use any GIC code
-To: Michael Davidsaver <mdavidsaver@gmail.com>
-Cc: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
-	qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>, 
-	"patches@linaro.org" <patches@linaro.org>, Liviu Ionescu <ilg@livius.net>
-Content-Type: text/plain; charset=UTF-8
-X-TUID: gpj5Gey+yK6j
+ <87mvdnvcxx.fsf@linaro.org>
+ <CAFEAcA-PFJp_9=NOCFqiQp=xF6Y-TnmE3bfU3zDa6xH7nK2Zfg@mail.gmail.com>
+ <CAFEAcA8X1qvweDHBWQjZwH68xWdn4K+Wfqv0yRhjM5QCxd=VBA@mail.gmail.com>
+ <1e2962d7-1b50-9543-3e1d-9c388d4167c3@gmail.com>
+ <CAFEAcA-9w-bKJY=gb9Bo9c45vLParh8zVwit3t4GPHqTJZxnJw@mail.gmail.com>
+Cc: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
+ qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
+ "patches@linaro.org" <patches@linaro.org>, Liviu Ionescu <ilg@livius.net>
+From: Michael Davidsaver <mdavidsaver@gmail.com>
+Message-ID: <e4c435ec-a0fa-40a6-a20a-88ac2fa2cffa@gmail.com>
+Date: Sun, 19 Feb 2017 13:10:44 -0500
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
+ Icedove/45.6.0
+MIME-Version: 1.0
+In-Reply-To: <CAFEAcA-9w-bKJY=gb9Bo9c45vLParh8zVwit3t4GPHqTJZxnJw@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
+X-TUID: MmmTzMil0WK1
 
-On 18 February 2017 at 17:45, Michael Davidsaver <mdavidsaver@gmail.com> wrote:
-> On 02/16/2017 09:11 AM, Peter Maydell wrote:
->> I haven't actually checked real hardware behaviour, but I think
->> we can fairly safely implement this as not checking the IPSR
->> exception field. (We might as well go with the "reads 1 in
->> handler mode" choice of UNKNOWN that the M3 documents, though.)
->
-> For what it's worth, I dug up my TI TM4C1294 eval board and re-ran
-> test10.c [1] which is designed to probe this behavior by nesting
-> exceptions PendSV within SVC.  RETTOBASE is 0x800 in ICSR.
+On 02/18/2017 01:38 PM, Peter Maydell wrote:
+> On 18 February 2017 at 17:45, Michael Davidsaver <mdavidsaver@gmail.com> wrote:
+>> On 02/16/2017 09:11 AM, Peter Maydell wrote:
+>>> I haven't actually checked real hardware behaviour, but I think
+>>> we can fairly safely implement this as not checking the IPSR
+>>> exception field. (We might as well go with the "reads 1 in
+>>> handler mode" choice of UNKNOWN that the M3 documents, though.)
+>>
+>> For what it's worth, I dug up my TI TM4C1294 eval board and re-ran
+>> test10.c [1] which is designed to probe this behavior by nesting
+>> exceptions PendSV within SVC.  RETTOBASE is 0x800 in ICSR.
+> 
+> That's a Cortex-M4. From the test it looks like it
+> has a different choice of UNKNOWN behaviour for
+> the value in Handler mode, so real code in the field
+> isn't going to be relying on that and it doesn't
+> matter what we choose.
 
-That's a Cortex-M4. From the test it looks like it
-has a different choice of UNKNOWN behaviour for
-the value in Handler mode, so real code in the field
-isn't going to be relying on that and it doesn't
-matter what we choose.
+I've been away from arm/m for too long to claim any detailed knowledge
+of the documentation.  My intent here is only to provide a data point w/
+real hardware, not to interpret it.
 
-I don't think the test looks at the "what happens if the
-exception in the IPSR exception field isn't actually
-active" case, right?
+> I don't think the test looks at the "what happens if the
+> exception in the IPSR exception field isn't actually
+> active" case, right?
 
-thanks
--- PMM
+Correct.

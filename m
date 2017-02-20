@@ -1,174 +1,104 @@
-Received: by 10.25.0.147 with SMTP id 141csp459148lfa;
-        Mon, 20 Feb 2017 03:51:18 -0800 (PST)
-X-Received: by 10.200.47.129 with SMTP id l1mr18709644qta.148.1487591478704;
-        Mon, 20 Feb 2017 03:51:18 -0800 (PST)
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 10.25.0.147 with SMTP id 141csp11012lfa;
+        Mon, 20 Feb 2017 05:52:47 -0800 (PST)
+X-Received: by 10.237.37.165 with SMTP id x34mr8339676qtc.0.1487598767562;
+        Mon, 20 Feb 2017 05:52:47 -0800 (PST)
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id p129si12746458qkc.253.2017.02.20.03.51.18
+        by mx.google.com with ESMTPS id k2si6001606qtg.29.2017.02.20.05.52.47
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 20 Feb 2017 03:51:18 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Mon, 20 Feb 2017 05:52:47 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        dkim=fail header.i=@linaro.org;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:37675 helo=lists.gnu.org)
+Received: from localhost ([::1]:38670 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1cfmUw-0004yf-7n
-	for alex.bennee@linaro.org; Mon, 20 Feb 2017 06:51:18 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:39002)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1cfoOV-0002gu-3R
+	for alex.bennee@linaro.org; Mon, 20 Feb 2017 08:52:47 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:42378)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1cfmUs-0004yW-Hu
-	for qemu-arm@nongnu.org; Mon, 20 Feb 2017 06:51:15 -0500
+	(envelope-from <peter.maydell@linaro.org>) id 1cfoNz-0002gY-1m
+	for qemu-devel@nongnu.org; Mon, 20 Feb 2017 08:52:15 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1cfmUr-0001kL-IO
-	for qemu-arm@nongnu.org; Mon, 20 Feb 2017 06:51:14 -0500
-Received: from mail-wm0-x22a.google.com ([2a00:1450:400c:c09::22a]:36987)
+	(envelope-from <peter.maydell@linaro.org>) id 1cfoNx-00085b-Pn
+	for qemu-devel@nongnu.org; Mon, 20 Feb 2017 08:52:15 -0500
+Received: from mail-wm0-x22f.google.com ([2a00:1450:400c:c09::22f]:33206)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1cfmUr-0001k0-BV
-	for qemu-arm@nongnu.org; Mon, 20 Feb 2017 06:51:13 -0500
-Received: by mail-wm0-x22a.google.com with SMTP id v77so50477268wmv.0
-	for <qemu-arm@nongnu.org>; Mon, 20 Feb 2017 03:51:13 -0800 (PST)
+	id 1cfoNx-00085K-JJ
+	for qemu-devel@nongnu.org; Mon, 20 Feb 2017 08:52:13 -0500
+Received: by mail-wm0-x22f.google.com with SMTP id t18so22594645wmt.0
+	for <qemu-devel@nongnu.org>; Mon, 20 Feb 2017 05:52:13 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
 	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=W9B+Kolep6o6FcUoOZHJdANqoYGoC5zmGrCMwQ9R2Xk=;
-	b=Y4sNaOMbPl92PKmYJ+m9ecmVsefn1DB+hNGXZAic1dh3j+WdoygWPJZv+O5alnGh0p
-	m3osHxdWetD9MrFIpMasPtq4xpu4WZRayGpn0wo+to1VXJT1rCpv2NGlUJ9SzfHLSXP7
-	z0RY4GzNNgLFpCnWVFeVz+SNTx/da2HXNPmC4=
+	:cc:content-transfer-encoding;
+	bh=N9wkn/fP5c1jp1dmSWg7oUmN2nfJ2AAiGPkdfoMKK3I=;
+	b=Sb196YKIqMU02BkDXqgL853Z6uSi9Lw9kznToFxMw0OKAO6mt9WGIVJnYzjZJmdNKp
+	QBzhaB1tb65XP9nGljAw94X4KrLpRyTGDkQXyiIBPBP+wGm8wqXlfH5AJbKK6GYEUQMl
+	d1xC/4aXqRqplqwYbe5VXvBcqxbccgbDJKP8M=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=W9B+Kolep6o6FcUoOZHJdANqoYGoC5zmGrCMwQ9R2Xk=;
-	b=mniF+CZzT5t2pHCbG06v6uGLwTglE85oJgg8sDioJzOdFwk+BJ68qRbuYsPL9ZUAdZ
-	q4VXKn5DpMjvp+Kffy0k7qvvvXU1+Fg1odOSO2N0YTRegsoc8e+nYFNaNrCqmFNzFD0C
-	CvNe+fMoh/8bDxggBaQs2HUqRhWib86ab3KVW+M+H8/rZgpAT7Cxnf2bA3se9ggnK/7V
-	rlvgSUkM1yRgDFIaxwf3LKNxaS75f/iTLPb/pIASmKdWcenv1b6kXj1xTEMNHP9mvp8f
-	YLuI3IQnpHCrPnuI0P/YEdHJhVntt+b8IcR+rVnTAhPdtJpZMReEwZcyc1rYVTXt+4IG
-	H3tg==
-X-Gm-Message-State: AMke39lrE5nfbeBwo7v+GU0nlnzB3H8fNwDuYJuRchtQGUyVQSR1ACd80wVZN/fSEu54SoKWC+7lhA5Og6puqTgQ
-X-Received: by 10.28.157.70 with SMTP id g67mr18120068wme.111.1487591472042;
-	Mon, 20 Feb 2017 03:51:12 -0800 (PST)
+	:message-id:subject:to:cc:content-transfer-encoding;
+	bh=N9wkn/fP5c1jp1dmSWg7oUmN2nfJ2AAiGPkdfoMKK3I=;
+	b=LJb3r5wfGvI5Oqe/bi6Wdon2WNigWL3iu9NOKGBdDUKMF57r/5uUY+IWU3AEoKgiau
+	IQcBawWdCG5OnXBE2riBK8XXStS0rXtSp6xoDFeDHT0VNFq5u5HOuKGrvPGXQH4bpXQ1
+	ePSasRLOrXHJ/NGXSNDv2lsLgIeJGb/O4cNukR75kuucw+2moGFiR6qFRaVfI1aYv59h
+	utymP0lRT10lVjfxLcyekOIIgQ6FEHf1E5DTJQ0qg1oguTIAXszoqWWYNzBEJ/dwsluL
+	edK8Pa2LINeuUW/7OFKNfbTZL17666//GnExKuH2YgQHckajqaIUxr+/Bw5MUT9569h4
+	Sfog==
+X-Gm-Message-State: AMke39nHc2qJrM/KtPKhnBSPyyEQqmXcIFlBZAEr9ejK1hRSR+oyhYNRNjoiM13TWeqkgi0Me6ZYqxpy8S3eB32e
+X-Received: by 10.28.55.199 with SMTP id e190mr18251813wma.92.1487598732402;
+	Mon, 20 Feb 2017 05:52:12 -0800 (PST)
 MIME-Version: 1.0
-Received: by 10.223.145.69 with HTTP; Mon, 20 Feb 2017 03:50:51 -0800 (PST)
-In-Reply-To: <1487341525-5785-1-git-send-email-eric.auger@redhat.com>
-References: <1487341525-5785-1-git-send-email-eric.auger@redhat.com>
+Received: by 10.223.145.69 with HTTP; Mon, 20 Feb 2017 05:51:51 -0800 (PST)
+In-Reply-To: <1486997062-23227-2-git-send-email-clg@kaod.org>
+References: <1486997062-23227-1-git-send-email-clg@kaod.org>
+	<1486997062-23227-2-git-send-email-clg@kaod.org>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 20 Feb 2017 11:50:51 +0000
-Message-ID: <CAFEAcA97d3kxq1XWgKMdjRB4VjSdg+tYVA5U0hhL3Af6Ja9FmA@mail.gmail.com>
-To: Eric Auger <eric.auger@redhat.com>
+Date: Mon, 20 Feb 2017 13:51:51 +0000
+Message-ID: <CAFEAcA-q-VSup75PO-To9N11+0WCm=LNiFQ-SQXaTQMroyHFbw@mail.gmail.com>
+To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
 Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2a00:1450:400c:c09::22a
-Subject: Re: [Qemu-arm] [PATCH v2] hw/arm/virt: Add a user option to
- disallow ITS instantiation
-X-BeenThere: qemu-arm@nongnu.org
+X-Received-From: 2a00:1450:400c:c09::22f
+Subject: Re: [Qemu-devel] [PATCH 1/2] aspeed/smc: add a 'sdram_base' property
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jones <drjones@redhat.com>, qemu-arm <qemu-arm@nongnu.org>,
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Paolo Bonzini <pbonzini@redhat.com>, qemu-arm <qemu-arm@nongnu.org>,
 	QEMU Developers <qemu-devel@nongnu.org>,
-	Vijay Kilari <vijay.kilari@gmail.com>, eric.auger.pro@gmail.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Op9BoegpLrh7
+	Peter Crosthwaite <crosthwaite.peter@gmail.com>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: OOGOKp8qVNem
 
-On 17 February 2017 at 14:25, Eric Auger <eric.auger@redhat.com> wrote:
-> In 2.9 ITS will block save/restore and migration use cases. As
-> such let's introduce a user option that disallows its instantiation
-> along with the GICv3. With no-its option turned true, migration will
-> be possible, obviously at the expense of MSI support (with GICv3).
+On 13 February 2017 at 14:44, C=C3=A9dric Le Goater <clg@kaod.org> wrote:
+> The setting of the DRAM address of the DMA transaction depends on the
+> DRAM base address of the SoC. Let's add a property to give this
+> information to the SMC controller model.
 >
-> Signed-off-by: Eric Auger <eric.auger@redhat.com>
->
-> ---
->
-> v1 -> v2: fix omitted coma in object_property_set_description
->
-> With this patch the option also is added in virt 2.8. I don't know
-> if it is acceptable.
+> Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
+> Reviewed-by: Joel Stanley <joel@jms.id.au>
+> Reviewed-by: Andrew Jeffery <andrew@aj.id.au>
+> --
 
-I think that's OK.
-
-> ---
->  hw/arm/virt.c         | 28 +++++++++++++++++++++++++++-
->  include/hw/arm/virt.h |  1 +
->  2 files changed, 28 insertions(+), 1 deletion(-)
->
-> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-> index f3440f2..c08deb0 100644
-> --- a/hw/arm/virt.c
-> +++ b/hw/arm/virt.c
-> @@ -605,7 +605,7 @@ static void create_gic(VirtMachineState *vms, qemu_irq *pic)
->
->      fdt_add_gic_node(vms);
->
-> -    if (type == 3 && !vmc->no_its) {
-> +    if (type == 3 && !vmc->no_its && !vms->no_its) {
-
-Making the board creation code check both a vmc field and
-a vms field seems a bit awkward...
-
-> +    /* Default allows ITS instantiation */
-> +    if (!vmc->no_its) {
-> +        object_property_add_bool(obj, "no-its", virt_get_no_its,
-> +                                 virt_set_no_its, NULL);
-> +        vms->no_its = false;
-> +        object_property_set_description(obj, "no-its",
-> +                                        "Disallow the ITS instantiation",
-> +                                        NULL);
-
-Can we have the property be "its" with true-for-enabled,
-rather than "no-its", please? (See later for rationale.)
-
-> +    }
-
-...if we have this code have an else {} clause we can
-make it set the vms field appropriately, and then the
-board creation code only needs to check the vms field.
-
-> +
->      vms->memmap = a15memmap;
->      vms->irqmap = a15irqmap;
->  }
-> diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
-> index 58ce74e..5e73be9 100644
-> --- a/include/hw/arm/virt.h
-> +++ b/include/hw/arm/virt.h
-> @@ -93,6 +93,7 @@ typedef struct {
->      FWCfgState *fw_cfg;
->      bool secure;
->      bool highmem;
-> +    bool no_its;
-
-Can we make this "bool its" where true means "has an ITS", please?
-The fields in VirtMachineClass are all "no_foo" because we require
-the "false" case to be the "new modern behaviour" and the "true"
-case to be "legacy like old boards" for convenience of the
-virt_machine_*_options() function chain, but we don't need to
-do this for VirtMachineState fields. (So VMS 'secure', 'highmem'
-and 'virt' are all true-for-feature-enabled.)
-The user-facing property should also be "its" for the same reason.
-
-An alternative to having the property be always default true
-and only existing on newer boards would be to have the VMC field
-be "no_default_its", expose the "its" property in all cases and
-just have its default value be different for old virt-* machine
-versions. I have no opinion here about which would be better.
-
->      bool virt;
->      int32_t gic_version;
->      struct arm_boot_info bootinfo;
+This seems a bit weird -- what does it actually do in hardware?
+(Does it really have the ability to dma anywhere in the
+address space and just use an odd base address, or is it
+DMA'ing to a more restricted address space?)
 
 thanks
 -- PMM

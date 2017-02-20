@@ -1,53 +1,74 @@
-Received: by 10.25.0.147 with SMTP id 141csp183195lfa;
-        Sun, 19 Feb 2017 11:01:42 -0800 (PST)
-X-Received: by 10.55.159.214 with SMTP id i205mr8615301qke.94.1487530902618;
-        Sun, 19 Feb 2017 11:01:42 -0800 (PST)
+Received: by 10.25.0.147 with SMTP id 141csp347052lfa;
+        Sun, 19 Feb 2017 22:21:31 -0800 (PST)
+X-Received: by 10.200.39.76 with SMTP id h12mr7888976qth.212.1487571691301;
+        Sun, 19 Feb 2017 22:21:31 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id r3si11571854qkb.62.2017.02.19.11.01.42
+        by mx.google.com with ESMTPS id y65si12332587qkd.99.2017.02.19.22.21.31
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sun, 19 Feb 2017 11:01:42 -0800 (PST)
+        Sun, 19 Feb 2017 22:21:31 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:34801 helo=lists.gnu.org)
+       dkim=fail header.i=@gmail.com;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:36313 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1cfWju-0007uM-5o
-	for alex.bennee@linaro.org; Sun, 19 Feb 2017 14:01:42 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:50513)
+	id 1cfhLm-0000M1-Pb
+	for alex.bennee@linaro.org; Mon, 20 Feb 2017 01:21:30 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:55549)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mallachiev@ispras.ru>) id 1cfWjn-0007uD-8u
-	for qemu-arm@nongnu.org; Sun, 19 Feb 2017 14:01:40 -0500
+	(envelope-from <vijay.kilari@gmail.com>) id 1cfhLj-0000Lg-TJ
+	for qemu-arm@nongnu.org; Mon, 20 Feb 2017 01:21:28 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mallachiev@ispras.ru>) id 1cfWjh-0007oV-US
-	for qemu-arm@nongnu.org; Sun, 19 Feb 2017 14:01:35 -0500
-Received: from mail.ispras.ru ([83.149.199.45]:47358)
-	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mallachiev@ispras.ru>)
-	id 1cfWje-0007gi-TK; Sun, 19 Feb 2017 14:01:29 -0500
-Received: from [192.168.0.103] (nat-1-33.msu.umos.ru [85.89.127.33])
-	by mail.ispras.ru (Postfix) with ESMTPSA id 1559E54006E;
-	Sun, 19 Feb 2017 22:01:03 +0300 (MSK)
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
-	Peter Chubb <peter.chubb@nicta.com.au>,
-	QEMU Developers <qemu-devel@nongnu.org>
-References: <076b0d94-738e-252c-1ed8-4640a864ac34@ispras.ru>
-	<CAFEAcA-zURkUb28wVA347AFJX5Wa4GyXbFSVmUDH1BSXRMA+rQ@mail.gmail.com>
-	<4d2f2d04-e294-bdad-4f77-9a0171357d05@ispras.ru>
-From: Kurban Mallachiev <mallachiev@ispras.ru>
-Message-ID: <332706f6-7b54-89db-6b89-5684362fb2e3@ispras.ru>
-Date: Sun, 19 Feb 2017 22:00:50 +0300
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
-	Thunderbird/45.7.1
+	(envelope-from <vijay.kilari@gmail.com>) id 1cfhLi-0003BJ-IG
+	for qemu-arm@nongnu.org; Mon, 20 Feb 2017 01:21:27 -0500
+Received: from mail-lf0-x243.google.com ([2a00:1450:4010:c07::243]:36086)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <vijay.kilari@gmail.com>)
+	id 1cfhLi-0003Al-Bh; Mon, 20 Feb 2017 01:21:26 -0500
+Received: by mail-lf0-x243.google.com with SMTP id 90so235063lfr.3;
+	Sun, 19 Feb 2017 22:21:25 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=enUIFLPu8n7+lSHXqhNJDkKmpoDXsXw2o+2moCYqR+0=;
+	b=RVpj+VL7MClUI/ZCmlbGOCSfUQQk70UT3cl8FzQpfiFBm8dhF/rgv51913bmipCOoQ
+	6sJQVYNU0WOzaj+jvsjd+3yW3/JnX2E4oJg2PE0zCfbl5p0/Qm0myKRb4qfVoM+qmEH6
+	lYUmR/EhH7hSO3KyKMlm1uuVqMw9N1xqOqRVoJD469gJDSFRIfZ6VC3LqcjveYFSDRhB
+	keXFvoCFQTtymWWdnnsmttFTp0lNk4SogTEQrA5rjgchCifrnhRwg10NjuXxajSsSMTd
+	fyNFtnTtVCySV9HwT//VK3qN9gmTq0qHZtptIDpOYIt3IFXVVbjbsIwMvxd2Ciz8XRC6
+	FX7A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=enUIFLPu8n7+lSHXqhNJDkKmpoDXsXw2o+2moCYqR+0=;
+	b=ta00b050I/zlkuwmE5SNuhhgCu0OutvOGl/wuOvhMpRemn3XYuM95eLo3pMV+jEYaP
+	FgIXtig4Immvj/CYN0sx+ELbt02OdRmeuMWICbmJV6LnH7Jvmmm9ImKIexn106F0sgSU
+	EkorMopa/EkSvnipvV/HuesHHdZ2sLUJwWa81USoPp3XiA52DvMXuO/iMNozzF4VOD8S
+	RihkfJ29CVSwFj3CfRcVTLTUjt24oEzte3esq3giNgTC9GElGTuOgJcmbW2cHWIvm47h
+	ds8NVITcTr18OPL/J7SQMzd42tqh3tNpZvkuawNMw2v0Xtdo/mAEvTHwfCcqtbOKWfZJ
+	HZnA==
+X-Gm-Message-State: AMke39lG7+7JMBpst3mXXQZzcx1NYRwcYUVXM9xiOO7osGBbl7TPkigL0LF6xeksUXhIqYfx51+vmwaAJGqxTA==
+X-Received: by 10.25.93.70 with SMTP id p6mr5559749lfj.15.1487571684741; Sun,
+	19 Feb 2017 22:21:24 -0800 (PST)
 MIME-Version: 1.0
-In-Reply-To: <4d2f2d04-e294-bdad-4f77-9a0171357d05@ispras.ru>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
-X-Received-From: 83.149.199.45
-Subject: [Qemu-arm] [PATCH v3] ARM i.MX timers: fix software reset
+Received: by 10.46.20.15 with HTTP; Sun, 19 Feb 2017 22:21:24 -0800 (PST)
+In-Reply-To: <CAFEAcA8618+LGejFq6SpBEwGrNpfamBBX3MFWjss-ZxJ7Xk8mg@mail.gmail.com>
+References: <1487313115-9510-1-git-send-email-vijay.kilari@gmail.com>
+	<1487313115-9510-3-git-send-email-vijay.kilari@gmail.com>
+	<CAFEAcA8618+LGejFq6SpBEwGrNpfamBBX3MFWjss-ZxJ7Xk8mg@mail.gmail.com>
+From: Vijay Kilari <vijay.kilari@gmail.com>
+Date: Mon, 20 Feb 2017 11:51:24 +0530
+Message-ID: <CALicx6tqxXZxBTxYvF55ydBg5CB1to3MsEkhaohucx4EAZcEJA@mail.gmail.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+Content-Type: text/plain; charset=UTF-8
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 2a00:1450:4010:c07::243
+Subject: Re: [Qemu-arm] [PATCH v8 2/5] hw/intc/arm_gicv3_kvm: Add
+ ICC_SRE_EL1 register to vmstate
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -59,90 +80,116 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Marc Zyngier <marc.zyngier@arm.com>, Pavel Fedin <p.fedin@samsung.com>,
+	QEMU Developers <qemu-devel@nongnu.org>,
+	Vijaya Kumar K <Vijaya.Kumar@cavium.com>,
+	Eric Auger <eric.auger@redhat.com>, qemu-arm <qemu-arm@nongnu.org>,
+	Christoffer Dall <christoffer.dall@linaro.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: YTnNZKx0yAgt
+X-TUID: ONs0m1sFJ4GQ
 
-Hello!
+Hi Peter,
 
-Problem: function imx_gpt_reset is used for soft (requested by guest) 
-and hard resets. But soft and hard resets should have different 
-behaviour (hard reset should clear all registers, while soft reset 
-should preserve some bits).
+On Fri, Feb 17, 2017 at 7:25 PM, Peter Maydell <peter.maydell@linaro.org> wrote:
+> On 17 February 2017 at 06:31,  <vijay.kilari@gmail.com> wrote:
+>> From: Vijaya Kumar K <Vijaya.Kumar@cavium.com>
+>>
+>> To Save and Restore ICC_SRE_EL1 register introduce vmstate
+>> subsection and load only if non-zero.
+>> Also initialize icc_sre_el1 with to 0x7 in pre_load
+>> function.
+>>
+>> Signed-off-by: Vijaya Kumar K <Vijaya.Kumar@cavium.com>
+>> ---
+>>  hw/intc/arm_gicv3_common.c         | 32 ++++++++++++++++++++++++++++++++
+>>  include/hw/intc/arm_gicv3_common.h |  1 +
+>>  2 files changed, 33 insertions(+)
+>>
+>> diff --git a/hw/intc/arm_gicv3_common.c b/hw/intc/arm_gicv3_common.c
+>> index 16b9b0f..e62480e 100644
+>> --- a/hw/intc/arm_gicv3_common.c
+>> +++ b/hw/intc/arm_gicv3_common.c
+>> @@ -70,6 +70,34 @@ static const VMStateDescription vmstate_gicv3_cpu_virt = {
+>>      }
+>>  };
+>>
+>> +static int icc_sre_el1_reg_pre_load(void *opaque)
+>> +{
+>> +    GICv3CPUState *cs = opaque;
+>> +
+>> +    /* By default enable SRE and disable IRQ & FIQ bypass. */
+>> +    cs->icc_sre_el1 = 0x7;
+>
+> Why do we need the pre_load function? I would have
+> expected that reset would have given us these defaults
+> already.
+>
+>> +    return 0;
+>> +}
+>> +
+>> +static bool icc_sre_el1_reg_needed(void *opaque)
+>> +{
+>> +    GICv3CPUState *cs = opaque;
+>> +
+>> +    return cs->icc_sre_el1 != 0;
+>
+> I expected this to say "we need to transfer the value if
+> it isn't 0x7" (since the current situation of migration
+> is "we assume that the value is 0x7").
+>
+> Something should probably fail inbound migration for TCG
+> if the value isn't 0x7, for that matter.
+>
+> Is there a situation where KVM might allow a value other
+> than 0x7?
 
-Patch changelog:
-v1 -> v2: use different approach, patch completely rewritten
-v2 -> v3: in software reset add preserving of CLKSRC bit as manual says
+In KVM, the SRE_EL1 value is 0x1. During save, value
+read from KVM is 0x1 though we reset to 0x7.
 
----
-Software reset function clears CR bits that should not be cleared and
-preserve bits that should be cleared.
-
-Signed-off-by: Kurban Mallachiev <mallachiev@ispras.ru>
----
-  hw/timer/imx_gpt.c | 27 +++++++++++++++++++++------
-  1 file changed, 21 insertions(+), 6 deletions(-)
-
-diff --git a/hw/timer/imx_gpt.c b/hw/timer/imx_gpt.c
-index 010ccbf207..3ea18ff5de 100644
---- a/hw/timer/imx_gpt.c
-+++ b/hw/timer/imx_gpt.c
-@@ -296,18 +296,21 @@ static uint64_t imx_gpt_read(void *opaque, hwaddr 
-offset, unsigned size)
-      return reg_value;
-  }
-
--static void imx_gpt_reset(DeviceState *dev)
-+static void imx_gpt_reset_common(IMXGPTState *s, int is_soft_reset)
-  {
--    IMXGPTState *s = IMX_GPT(dev);
--
-      /* stop timer */
-      ptimer_stop(s->timer);
-
-      /*
-       * Soft reset doesn't touch some bits; hard reset clears them
-       */
--    s->cr &= ~(GPT_CR_EN|GPT_CR_ENMOD|GPT_CR_STOPEN|GPT_CR_DOZEN|
--               GPT_CR_WAITEN|GPT_CR_DBGEN);
-+    if (is_soft_reset) {
-+        s->cr &= GPT_CR_EN|GPT_CR_ENMOD|GPT_CR_STOPEN|GPT_CR_DOZEN|
-+                   GPT_CR_WAITEN|GPT_CR_DBGEN|
-+                   GPT_CR_CLKSRC_MASK<<GPT_CR_CLKSRC_SHIFT;
-+    } else {
-+        s->cr = 0;
-+    }
-      s->sr = 0;
-      s->pr = 0;
-      s->ir = 0;
-@@ -333,6 +336,18 @@ static void imx_gpt_reset(DeviceState *dev)
-      }
-  }
-
-+static void imx_gpt_soft_reset(DeviceState *dev)
-+{
-+    IMXGPTState *s = IMX_GPT(dev);
-+    imx_gpt_reset_common(s, 1);
-+}
-+
-+static void imx_gpt_reset(DeviceState *dev)
-+{
-+    IMXGPTState *s = IMX_GPT(dev);
-+    imx_gpt_reset_common(s, 0);
-+}
-+
-  static void imx_gpt_write(void *opaque, hwaddr offset, uint64_t value,
-                            unsigned size)
-  {
-@@ -348,7 +363,7 @@ static void imx_gpt_write(void *opaque, hwaddr 
-offset, uint64_t value,
-          s->cr = value & ~0x7c14;
-          if (s->cr & GPT_CR_SWR) { /* force reset */
-              /* handle the reset */
--            imx_gpt_reset(DEVICE(s));
-+            imx_gpt_soft_reset(DEVICE(s));
-          } else {
-              /* set our freq, as the source might have changed */
-              imx_gpt_set_freq(s);
--- 
-2.11.1
+>
+>> +}
+>> +
+>> +const VMStateDescription vmstate_gicv3_cpu_sre_el1 = {
+>> +    .name = "arm_gicv3_cpu/sre_el1",
+>> +    .version_id = 1,
+>> +    .minimum_version_id = 1,
+>> +    .pre_load = icc_sre_el1_reg_pre_load,
+>> +    .needed = icc_sre_el1_reg_needed,
+>> +    .fields = (VMStateField[]) {
+>> +        VMSTATE_UINT64(icc_sre_el1, GICv3CPUState),
+>> +        VMSTATE_END_OF_LIST()
+>> +    }
+>> +};
+>> +
+>>  static const VMStateDescription vmstate_gicv3_cpu = {
+>>      .name = "arm_gicv3_cpu",
+>>      .version_id = 1,
+>> @@ -100,6 +128,10 @@ static const VMStateDescription vmstate_gicv3_cpu = {
+>>      .subsections = (const VMStateDescription * []) {
+>>          &vmstate_gicv3_cpu_virt,
+>>          NULL
+>> +    },
+>> +    .subsections = (const VMStateDescription * []) {
+>> +        &vmstate_gicv3_cpu_sre_el1,
+>> +        NULL
+>>      }
+>>  };
+>>
+>> diff --git a/include/hw/intc/arm_gicv3_common.h b/include/hw/intc/arm_gicv3_common.h
+>> index 4156051..bccdfe1 100644
+>> --- a/include/hw/intc/arm_gicv3_common.h
+>> +++ b/include/hw/intc/arm_gicv3_common.h
+>> @@ -172,6 +172,7 @@ struct GICv3CPUState {
+>>      uint8_t gicr_ipriorityr[GIC_INTERNAL];
+>>
+>>      /* CPU interface */
+>> +    uint64_t icc_sre_el1;
+>>      uint64_t icc_ctlr_el1[2];
+>>      uint64_t icc_pmr_el1;
+>>      uint64_t icc_bpr[3];
+>> --
+>> 1.9.1
+>
+> thanks
+> -- PMM

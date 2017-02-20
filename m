@@ -1,62 +1,50 @@
-Received: by 10.25.0.147 with SMTP id 141csp86185lfa;
-        Mon, 20 Feb 2017 08:34:35 -0800 (PST)
-X-Received: by 10.200.34.155 with SMTP id f27mr19436083qta.129.1487608475533;
-        Mon, 20 Feb 2017 08:34:35 -0800 (PST)
+Received: by 10.25.0.147 with SMTP id 141csp113281lfa;
+        Mon, 20 Feb 2017 09:36:22 -0800 (PST)
+X-Received: by 10.237.33.67 with SMTP id 61mr20255436qtc.37.1487612182117;
+        Mon, 20 Feb 2017 09:36:22 -0800 (PST)
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id p10si11587481qki.65.2017.02.20.08.34.35
+        by mx.google.com with ESMTPS id d22si13368760qkc.321.2017.02.20.09.36.21
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 20 Feb 2017 08:34:35 -0800 (PST)
+        Mon, 20 Feb 2017 09:36:22 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:39659 helo=lists.gnu.org)
+       dkim=fail header.i=@antfield.fr;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=antfield.fr
+Received: from localhost ([::1]:40129 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1cfqv5-0006o5-10
-	for alex.bennee@linaro.org; Mon, 20 Feb 2017 11:34:35 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:59328)
+	id 1cfrsr-00053h-GD
+	for alex.bennee@linaro.org; Mon, 20 Feb 2017 12:36:21 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:48286)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <clg@kaod.org>) id 1cfqu2-0006le-5v
-	for qemu-devel@nongnu.org; Mon, 20 Feb 2017 11:33:31 -0500
+	(envelope-from <clement.deschamps@antfield.fr>) id 1cfrrP-0004O5-Rt
+	for qemu-devel@nongnu.org; Mon, 20 Feb 2017 12:34:52 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <clg@kaod.org>) id 1cfqty-0005Oh-WF
-	for qemu-devel@nongnu.org; Mon, 20 Feb 2017 11:33:30 -0500
-Received: from 1.mo2.mail-out.ovh.net ([46.105.63.121]:56496)
+	(envelope-from <clement.deschamps@antfield.fr>) id 1cfrrP-0007Fv-0M
+	for qemu-devel@nongnu.org; Mon, 20 Feb 2017 12:34:51 -0500
+Received: from bee.antfield.fr ([188.165.75.195]:46326)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <clg@kaod.org>) id 1cfqty-0005My-QJ
-	for qemu-devel@nongnu.org; Mon, 20 Feb 2017 11:33:26 -0500
-Received: from player728.ha.ovh.net (b7.ovh.net [213.186.33.57])
-	by mo2.mail-out.ovh.net (Postfix) with ESMTP id 329025277C
-	for <qemu-devel@nongnu.org>; Mon, 20 Feb 2017 17:33:24 +0100 (CET)
-Received: from zorba.kaod.org (LFbn-1-10647-27.w90-89.abo.wanadoo.fr
-	[90.89.233.27]) (Authenticated sender: postmaster@kaod.org)
-	by player728.ha.ovh.net (Postfix) with ESMTPSA id D5C7E540077;
-	Mon, 20 Feb 2017 17:33:18 +0100 (CET)
-To: Peter Maydell <peter.maydell@linaro.org>
-References: <1486997062-23227-1-git-send-email-clg@kaod.org>
-	<1486997062-23227-2-git-send-email-clg@kaod.org>
-	<CAFEAcA-q-VSup75PO-To9N11+0WCm=LNiFQ-SQXaTQMroyHFbw@mail.gmail.com>
-	<73cbda87-adc5-e97d-d46d-f1f3d29cd46c@kaod.org>
-	<CAFEAcA-1tzbEJ-kLF6iBR8LeXq_iiMgr92zh_HAgO9jVkMhCDg@mail.gmail.com>
-From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-Message-ID: <c67277be-26e1-44ba-9fc8-809680010f32@kaod.org>
-Date: Mon, 20 Feb 2017 17:33:18 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
-	Thunderbird/45.7.0
-MIME-Version: 1.0
-In-Reply-To: <CAFEAcA-1tzbEJ-kLF6iBR8LeXq_iiMgr92zh_HAgO9jVkMhCDg@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8
-X-Ovh-Tracer-Id: 1897141345248185152
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrfeelhedruddvgdekjecutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmd
-Content-Transfer-Encoding: quoted-printable
+	(Exim 4.71) (envelope-from <clement.deschamps@antfield.fr>)
+	id 1cfrrK-0007ET-08; Mon, 20 Feb 2017 12:34:46 -0500
+From: Clement Deschamps <clement.deschamps@antfield.fr>
+DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=antfield.fr; s=mail;
+	t=1487612083; bh=n3GAhG3z4+lq5GGBx9W6uoN4Se4lwgOE62wiOPnVP/M=;
+	h=From:To:Cc:Subject:Date:From;
+	b=J6oGf/CFD+JAYypjiXdzOSwJjmsplR53xY6kxEF0BiTiLT5le9TYS3G9omVczoC3H
+	DnNanWUTr6IhKUuitMJi9GJi/JlKqWLJOGK/NyxbpZ/KSnxpioXqyfEKTOCNEEYeMN
+	ILophVkaMR4J26iKPkQaWcV8cTmq+5PplR/Is2Ww=
+To: qemu-devel@nongnu.org
+Date: Mon, 20 Feb 2017 18:34:28 +0100
+Message-Id: <20170220173430.31630-1-clement.deschamps@antfield.fr>
+X-Mailer: git-send-email 2.11.0
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 46.105.63.121
-Subject: Re: [Qemu-devel] [PATCH 1/2] aspeed/smc: add a 'sdram_base' property
+X-Received-From: 188.165.75.195
+Subject: [Qemu-devel] [PATCH 0/2] add bcm2835 sdhost controller to bcm2835
+ platform
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -68,77 +56,61 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
 	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Paolo Bonzini <pbonzini@redhat.com>, qemu-arm <qemu-arm@nongnu.org>,
-	QEMU Developers <qemu-devel@nongnu.org>,
-	Peter Crosthwaite <crosthwaite.peter@gmail.com>
+Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org,
+	Clement Deschamps <clement.deschamps@antfield.fr>,
+	andrew.baumann@microsoft.com, gregory.estrade@gmail.com
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: K4b0dErgcgbm
+X-TUID: q82IRr3Rg64C
 
-On 02/20/2017 03:38 PM, Peter Maydell wrote:
-> On 20 February 2017 at 14:30, C=C3=A9dric Le Goater <clg@kaod.org> wrot=
-e:
->> On 02/20/2017 02:51 PM, Peter Maydell wrote:
->>> On 13 February 2017 at 14:44, C=C3=A9dric Le Goater <clg@kaod.org> wr=
-ote:
->>>> The setting of the DRAM address of the DMA transaction depends on th=
-e
->>>> DRAM base address of the SoC. Let's add a property to give this
->>>> information to the SMC controller model.
->>>>
->>>> Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
->>>> Reviewed-by: Joel Stanley <joel@jms.id.au>
->>>> Reviewed-by: Andrew Jeffery <andrew@aj.id.au>
->>>> --
->>>
->>> This seems a bit weird -- what does it actually do in hardware?
->>> (Does it really have the ability to dma anywhere in the
->>> address space and just use an odd base address, or is it
->>> DMA'ing to a more restricted address space?)
->>
->> For the AST2500, the valid address range for the DRAM side start
->> address of the DMA is [ 0x80000000 - 0xBFFFFFFF ] which is the
->> full 1024M SDRAM space. It will wrap back in case of overflow.
->>
->> For the AST2400, it is [ 0x40000000 - 0x5FFFFFFF ] which is the
->> full 512M SDRAM space.
->>
->> And the length of the DMA goes from 4 bytes to 32MB [ O - 0x7FFFFF ]
+This patches add the Arasan SD controller to the BCM2835/36 platforms.
 
-In fact, the above range is from the spec and it is wrong. I suppose
-it is a left over from previous boards. Here is the current one :
+The BCM2835/36/37 have 2 SD controllers.
 
-	 [ 0 - 0x1fffffc ]
-=20
-> So if I do a DMA access to 0x800000 that's the same as an
-> access at 0x0, or does it fail?
+The first one has an SDHCI interface and is already supported in QEMU
+(hw/sd/sdhci.c), the second one is an IP from Arasan.
 
-The length value wraps back just like the addresses.
+The latest versions of raspbian (since 2016) have a linux kernel which is using
+the Arasan SD controller for better performances, and thus are not working with
+the current version of QEMU.
 
-> I ask because the other option for modelling this kind of thing
-> would be that you make the DMA controller device take a link
-> property which is a MemoryRegion*. Then inside the DMA device
-> you create the AddressSpace* which you use to do DMA accesses,
-> and in the board code you pass the DMA device a suitably
-> constructed MemoryRegion that contains the things that the
-> device can DMA to.
+This patch can be tested with the latest version of raspbian (2017-01-11-raspbian-jessie):
+1. Extract kernel7.img and bcm2709-rpi-2-b.dtb from the first partition of 2017-01-11-raspbian-jessie.img
+2. Run qemu-system-arm -M raspi2 -kernel kernel7.img -dtb bcm2709-rpi-2-b.dtb -append "rw root=/dev/mmcblk0p2 console=ttyAMA0 rootwait" -sd 2017-01-11-raspbian-jessie.img -sd 2017-01-11-raspbian-jessie.img
 
-ok. I think I understand. I have done something similar for=20
-the SCOM sideband bus of the PowerNV machine. It looks a like=20
-a good idea. The 'minus 4' on the DMA length might be a little=20
-annoying but I will give it a try.
+On the real hardware, both SD controllers are wired to the same SD card.
+Selection is done via multi-function pins through the GPIO controller.  I'm not
+sure what would be the good solution to emulate this in QEMU.  For now on we
+pass two sd cards on the command line which is not ideal.
 
-Thanks,
+Note: In order to properly boot the kernel, you will first need to apply the
+BCM2835 hardware RNG patch submitted recently.
 
-C. =20
+Once raspbian has booted, the mouse and keyboard cannot be used in the
+graphical environment because the USB is not yet implemented in the raspberry
+pi emulation. Gregory Estrade and Andrew Baumann both worked on the USB
+implementation, their work is available on Andrew's github.
 
-> You don't have to do it that way (and I don't think we
-> have much in the way of examples of doing it like that,
-> except for the ARM CPU handling of secure and nonsecure
-> memory address spaces), but if it seems to fit better
-> with what the hardware's doing it might be worth the effort.
->=20
-> thanks
-> -- PMM
->=20
+
+Best regards,
+
+Clement Deschamps
+
+Clement Deschamps (2):
+  bcm2835_sdhost: add bcm2835 sdhost controller
+  bcm2835: add bcm2835_sdhost to bcm2835 platform
+
+ hw/arm/bcm2835_peripherals.c         |  24 ++
+ hw/arm/bcm2836.c                     |   7 +
+ hw/arm/raspi.c                       |  13 +-
+ hw/sd/Makefile.objs                  |   1 +
+ hw/sd/bcm2835_sdhost.c               | 429 +++++++++++++++++++++++++++++++++++
+ include/hw/arm/bcm2835_peripherals.h |   2 +
+ include/hw/sd/bcm2835_sdhost.h       |  48 ++++
+ 7 files changed, 523 insertions(+), 1 deletion(-)
+ create mode 100644 hw/sd/bcm2835_sdhost.c
+ create mode 100644 include/hw/sd/bcm2835_sdhost.h
+
+-- 
+2.11.0
 

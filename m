@@ -1,258 +1,110 @@
-Received: by 10.25.0.147 with SMTP id 141csp82116lfa;
-        Mon, 20 Feb 2017 08:25:40 -0800 (PST)
-X-Received: by 10.237.55.169 with SMTP id j38mr19180933qtb.286.1487607940751;
-        Mon, 20 Feb 2017 08:25:40 -0800 (PST)
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id d190si13227578qkb.262.2017.02.20.08.25.40
-        for <alex.bennee@linaro.org>
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 20 Feb 2017 08:25:40 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+Received: by 10.25.0.147 with SMTP id 141csp88432lfa;
+        Mon, 20 Feb 2017 08:40:08 -0800 (PST)
+X-Received: by 10.55.135.1 with SMTP id j1mr22323928qkd.107.1487608808583;
+        Mon, 20 Feb 2017 08:40:08 -0800 (PST)
+Return-Path: <philippe.mathieu.daude@gmail.com>
+Received: from mail-qt0-x241.google.com (mail-qt0-x241.google.com. [2607:f8b0:400d:c0d::241])
+        by mx.google.com with ESMTPS id v66si13275916qki.84.2017.02.20.08.40.08
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 20 Feb 2017 08:40:08 -0800 (PST)
+Received-SPF: pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 2607:f8b0:400d:c0d::241 as permitted sender) client-ip=2607:f8b0:400d:c0d::241;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:39611 helo=lists.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1cfqmS-00088S-4L
-	for alex.bennee@linaro.org; Mon, 20 Feb 2017 11:25:40 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:55869)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1cfqlP-00085y-QR
-	for qemu-devel@nongnu.org; Mon, 20 Feb 2017 11:24:37 -0500
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1cfqlL-0002xZ-QL
-	for qemu-devel@nongnu.org; Mon, 20 Feb 2017 11:24:35 -0500
-Received: from mail-qk0-x242.google.com ([2607:f8b0:400d:c09::242]:35818)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1cfqlL-0002wk-LV; Mon, 20 Feb 2017 11:24:31 -0500
-Received: by mail-qk0-x242.google.com with SMTP id n127so3963259qkf.2;
-	Mon, 20 Feb 2017 08:24:31 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=sender:subject:to:references:cc:from:message-id:date:user-agent
-	:mime-version:in-reply-to:content-transfer-encoding;
-	bh=AaAbc8lfn5Hu3b44XqMNsPDo75NLK0786KKfQCNZego=;
-	b=B+SCVpByztcc/irIze9K7qp3PSbNoxQMgTfDDxZQ3Q19vWqpHHnz2JAKY6c09iBAD1
-	Eu0nRIP1r99fYVHaIpdH8WbGQ4QtPptJvk6aUqqki88bIgEnbo/Yq57nnY5PMQToVRH8
-	yBiFwqHMdO08D8T2UEHg/E6vBcEHLVGZxoTX43z+EZII4plwdmi7tkOt0OAVa9VBuEAK
-	pv+tuv5LqBt93Md+vWD1kzZ1cOPrQea2xw5Poq1UR/rbuJTGOQf4fkeh1lzR+iciD2CI
-	hoF69wNdJEgh2dh4XUgpftxqCbAb9D3KkUAWLgl8QBkCrjDoA927oGFRo6E/95Ar04xw
-	9u7Q==
+       dkim=pass header.i=@gmail.com;
+       spf=pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 2607:f8b0:400d:c0d::241 as permitted sender) smtp.mailfrom=philippe.mathieu.daude@gmail.com
+Received: by mail-qt0-x241.google.com with SMTP id n13so14617923qtc.0;
+        Mon, 20 Feb 2017 08:40:08 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=sender:subject:to:references:cc:from:message-id:date:user-agent
+         :mime-version:in-reply-to:content-transfer-encoding;
+        bh=6aumq6kCWallsMM7iM5K7fjVOy0zN7PNz4UsN2KBjVo=;
+        b=HwokVphBkW738sfQhH23AX7O4jo9B7ZpMBdLqhIfTzPFmJlPWt+cH3ysaAMaifxZIW
+         SPgsqovvBiDdZLC2JGo8rd6OHPXJqUcRQIAn4qpc81cCpcYRL6+upNElxovGqG9S7QrR
+         EeQ5UPj4XIZKr+8kAeF7BQhMUJpBzAZ+cPaqmn+4UQebNaha38KxoNYRhqjzhkdgol99
+         7JcHzHZFgTyeSFZy3p6Zq6o1UdDS8O8uquP7Hd8/vfb5LRIRi2K/6oVqxJOTAdt/DnA2
+         XZF5gAjkwh2PBrAfAEPTAEPhuA7esJZv/FhVJsLd2Leihrcic+iR6ouETrREyg/0Zq8M
+         ebMg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:sender:subject:to:references:cc:from:message-id
-	:date:user-agent:mime-version:in-reply-to:content-transfer-encoding;
-	bh=AaAbc8lfn5Hu3b44XqMNsPDo75NLK0786KKfQCNZego=;
-	b=s/6opIvv42F8W4Aa0136kO5/HDrEFl5/zIDk1WI5OkF2qT6m/9XxxVTw9h4hjTcndv
-	eWB7qjlXVYOjnij3WPVt3WaNbOU4NvkD61q+jwL/QJtBBl9VlnDGzzxRDoLfwIoHFK7s
-	ojdE/A1hBpaSAnJCvxZoTRd7HpoQANp9tBMHzNGwzqXxwtYj3j4uvUkI9as7GjL/QiW9
-	7gYVqCXGSIaE6SUrKTIhzPmvdkbl3yIb8TCc9maNRuPyY2AJHQrSNgaEcIvWrBNc1Qh/
-	tAIOeIsaQX8TQV27Qm/p5tlJQ6h51Uhr/S5hSUxYOWVjAvztjzOwPDO0YFeIy5OCUrkK
-	l5mg==
-X-Gm-Message-State: AMke39nHIbL/lyCRfQRRFXHXvwpzpNHWAvVdVNISTjBOwwva1PEbPSUon53k8+yPx3hXkQ==
-X-Received: by 10.55.177.133 with SMTP id a127mr19929854qkf.301.1487607870122; 
-	Mon, 20 Feb 2017 08:24:30 -0800 (PST)
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:sender:subject:to:references:cc:from:message-id
+         :date:user-agent:mime-version:in-reply-to:content-transfer-encoding;
+        bh=6aumq6kCWallsMM7iM5K7fjVOy0zN7PNz4UsN2KBjVo=;
+        b=aoq4vy+P2y9qaK9e5u3aLuPuMVPmHO5DD2Y6hxyxaednil1EhGbOSkvZF35k0uDwOg
+         WQxiJ3Pndtr6vm0ZL1HaMkEOYSpbS7TUKDJQu/2qk+RiaMcaLlgjP2ojI2S6XQW709Ej
+         9mBAN7NpjsVlIJCcryk+W2YJV80QMjvhGLwPwNRY7iB7ky8d6expIBYj9cuZcd9BlqKJ
+         nfP4/pc2QCTO5edGE1mmWnOvu5TDWWISxGideMZXggIt0AdD7V88QPSKV76r8oHqhPLj
+         bgRUK1f2UN2bwKrwlwnUbjfexFOvsapmzbfyoqcHyfYVd2Pdg9RIhPLf+8nS4stwOnmX
+         hcWA==
+X-Gm-Message-State: AMke39nHnwIlPvmGcpyvnH4qz371jtmtMaPRtMFiGut4s780zkbfJ04yCKHUajxjgO726A==
+X-Received: by 10.200.2.8 with SMTP id k8mr19702930qtg.163.1487608808022;
+        Mon, 20 Feb 2017 08:40:08 -0800 (PST)
+Return-Path: <philippe.mathieu.daude@gmail.com>
 Received: from [192.168.1.10] ([138.117.48.226])
-	by smtp.gmail.com with ESMTPSA id
-	k18sm12229006qtc.12.2017.02.20.08.24.27
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Mon, 20 Feb 2017 08:24:29 -0800 (PST)
+        by smtp.gmail.com with ESMTPSA id x64sm12299195qke.60.2017.02.20.08.40.05
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 20 Feb 2017 08:40:07 -0800 (PST)
+Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philippe.mathieu.daude@gmail.com>
+Subject: Re: [Qemu-devel] [PATCH 08/11] armv7m: Don't put core v7M devices
+ under CONFIG_STELLARIS
 To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
+ qemu-devel@nongnu.org
 References: <1487604965-23220-1-git-send-email-peter.maydell@linaro.org>
-	<1487604965-23220-3-git-send-email-peter.maydell@linaro.org>
+ <1487604965-23220-9-git-send-email-peter.maydell@linaro.org>
+Cc: Alistair Francis <alistair23@gmail.com>,
+ Michael Davidsaver <mdavidsaver@gmail.com>,
+ =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>, patches@linaro.org
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <d1c1bc8f-31e8-0751-ef7b-c1af559bad72@amsat.org>
-Date: Mon, 20 Feb 2017 13:24:26 -0300
+Message-ID: <4217b13d-1dac-8a1b-a0df-0365cd9e6ec1@amsat.org>
+Date: Mon, 20 Feb 2017 13:40:03 -0300
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
-	Thunderbird/45.7.1
+ Thunderbird/45.7.1
 MIME-Version: 1.0
-In-Reply-To: <1487604965-23220-3-git-send-email-peter.maydell@linaro.org>
+In-Reply-To: <1487604965-23220-9-git-send-email-peter.maydell@linaro.org>
 Content-Type: text/plain; charset=windows-1252; format=flowed
 Content-Transfer-Encoding: 8bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:400d:c09::242
-Subject: Re: [Qemu-devel] [Qemu-arm] [PATCH 02/11] armv7m: Move NVICState
- struct definition into header
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.21
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Alistair Francis <alistair23@gmail.com>,
-	Michael Davidsaver <mdavidsaver@gmail.com>, patches@linaro.org
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: +BYTHFlLSgv+
+X-TUID: uagFk0Koof4z
 
-On 02/20/2017 12:35 PM, Peter Maydell wrote:
-> Move the NVICState struct definition into a header, so we can
-> embed it into other QOM objects like SoCs.
+On 02/20/2017 12:36 PM, Peter Maydell wrote:
+> The NVIC is a core v7M device that exists for all v7M CPUs;
+> put it under a CONFIG_ARM_V7M rather than hiding it under
+> CONFIG_STELLARIS.
+>
+> (We'll use CONFIG_ARM_V7M for the SysTick device too
+> when we split it out of the NVIC.)
 >
 > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 
 Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 
 > ---
->  include/hw/arm/armv7m_nvic.h | 66 ++++++++++++++++++++++++++++++++++++++++++++
->  hw/intc/armv7m_nvic.c        | 49 +-------------------------------
->  2 files changed, 67 insertions(+), 48 deletions(-)
->  create mode 100644 include/hw/arm/armv7m_nvic.h
+>  hw/intc/Makefile.objs           | 2 +-
+>  default-configs/arm-softmmu.mak | 2 ++
+>  2 files changed, 3 insertions(+), 1 deletion(-)
 >
-> diff --git a/include/hw/arm/armv7m_nvic.h b/include/hw/arm/armv7m_nvic.h
-> new file mode 100644
-> index 0000000..39b94ee
-> --- /dev/null
-> +++ b/include/hw/arm/armv7m_nvic.h
-> @@ -0,0 +1,66 @@
-> +/*
-> + * ARMv7M NVIC object
-> + *
-> + * Copyright (c) 2017 Linaro Ltd
-> + * Written by Peter Maydell <peter.maydell@linaro.org>
-> + *
-> + * This code is licensed under the GPL version 2 or later.
-> + */
-> +
-> +#ifndef HW_ARM_ARMV7M_NVIC_H
-> +#define HW_ARM_ARMV7M_NVIC_H
-> +
-> +#include "target/arm/cpu.h"
-> +#include "hw/sysbus.h"
-> +
-> +#define TYPE_NVIC "armv7m_nvic"
-> +
-> +#define NVIC(obj) \
-> +    OBJECT_CHECK(NVICState, (obj), TYPE_NVIC)
-> +
-> +/* Highest permitted number of exceptions (architectural limit) */
-> +#define NVIC_MAX_VECTORS 512
-> +
-> +typedef struct VecInfo {
-> +    /* Exception priorities can range from -3 to 255; only the unmodifiable
-> +     * priority values for RESET, NMI and HardFault can be negative.
-> +     */
-> +    int16_t prio;
-> +    uint8_t enabled;
-> +    uint8_t pending;
-> +    uint8_t active;
-> +    uint8_t level; /* exceptions <=15 never set level */
-> +} VecInfo;
-> +
-> +typedef struct NVICState {
-> +    /*< private >*/
-> +    SysBusDevice parent_obj;
-> +    /*< public >*/
-> +
-> +    ARMCPU *cpu;
-> +
-> +    VecInfo vectors[NVIC_MAX_VECTORS];
-> +    uint32_t prigroup;
-> +
-> +    /* vectpending and exception_prio are both cached state that can
-> +     * be recalculated from the vectors[] array and the prigroup field.
-> +     */
-> +    unsigned int vectpending; /* highest prio pending enabled exception */
-> +    int exception_prio; /* group prio of the highest prio active exception */
-> +
-> +    struct {
-> +        uint32_t control;
-> +        uint32_t reload;
-> +        int64_t tick;
-> +        QEMUTimer *timer;
-> +    } systick;
-> +
-> +    MemoryRegion sysregmem;
-> +    MemoryRegion container;
-> +
-> +    uint32_t num_irq;
-> +    qemu_irq excpout;
-> +    qemu_irq sysresetreq;
-> +} NVICState;
-> +
-> +#endif
-> diff --git a/hw/intc/armv7m_nvic.c b/hw/intc/armv7m_nvic.c
-> index 76097b4..f2ada39 100644
-> --- a/hw/intc/armv7m_nvic.c
-> +++ b/hw/intc/armv7m_nvic.c
-> @@ -17,6 +17,7 @@
->  #include "hw/sysbus.h"
->  #include "qemu/timer.h"
->  #include "hw/arm/arm.h"
-> +#include "hw/arm/armv7m_nvic.h"
->  #include "target/arm/cpu.h"
->  #include "exec/address-spaces.h"
->  #include "qemu/log.h"
-> @@ -47,7 +48,6 @@
->   * "exception" more or less interchangeably.
->   */
->  #define NVIC_FIRST_IRQ 16
-> -#define NVIC_MAX_VECTORS 512
->  #define NVIC_MAX_IRQ (NVIC_MAX_VECTORS - NVIC_FIRST_IRQ)
+> diff --git a/hw/intc/Makefile.objs b/hw/intc/Makefile.objs
+> index 8948106..adedd0d 100644
+> --- a/hw/intc/Makefile.objs
+> +++ b/hw/intc/Makefile.objs
+> @@ -24,7 +24,7 @@ obj-$(CONFIG_APIC) += apic.o apic_common.o
+>  obj-$(CONFIG_ARM_GIC_KVM) += arm_gic_kvm.o
+>  obj-$(call land,$(CONFIG_ARM_GIC_KVM),$(TARGET_AARCH64)) += arm_gicv3_kvm.o
+>  obj-$(call land,$(CONFIG_ARM_GIC_KVM),$(TARGET_AARCH64)) += arm_gicv3_its_kvm.o
+> -obj-$(CONFIG_STELLARIS) += armv7m_nvic.o
+> +obj-$(CONFIG_ARM_V7M) += armv7m_nvic.o
+>  obj-$(CONFIG_EXYNOS4) += exynos4210_gic.o exynos4210_combiner.o
+>  obj-$(CONFIG_GRLIB) += grlib_irqmp.o
+>  obj-$(CONFIG_IOAPIC) += ioapic.o
+> diff --git a/default-configs/arm-softmmu.mak b/default-configs/arm-softmmu.mak
+> index fdf4089..1e3bd2b 100644
+> --- a/default-configs/arm-softmmu.mak
+> +++ b/default-configs/arm-softmmu.mak
+> @@ -42,6 +42,8 @@ CONFIG_ARM11MPCORE=y
+>  CONFIG_A9MPCORE=y
+>  CONFIG_A15MPCORE=y
 >
->  /* Effective running priority of the CPU when no exception is active
-> @@ -55,53 +55,6 @@
->   */
->  #define NVIC_NOEXC_PRIO 0x100
->
-> -typedef struct VecInfo {
-> -    /* Exception priorities can range from -3 to 255; only the unmodifiable
-> -     * priority values for RESET, NMI and HardFault can be negative.
-> -     */
-> -    int16_t prio;
-> -    uint8_t enabled;
-> -    uint8_t pending;
-> -    uint8_t active;
-> -    uint8_t level; /* exceptions <=15 never set level */
-> -} VecInfo;
-> -
-> -typedef struct NVICState {
-> -    /*< private >*/
-> -    SysBusDevice parent_obj;
-> -    /*< public >*/
-> -
-> -    ARMCPU *cpu;
-> -
-> -    VecInfo vectors[NVIC_MAX_VECTORS];
-> -    uint32_t prigroup;
-> -
-> -    /* vectpending and exception_prio are both cached state that can
-> -     * be recalculated from the vectors[] array and the prigroup field.
-> -     */
-> -    unsigned int vectpending; /* highest prio pending enabled exception */
-> -    int exception_prio; /* group prio of the highest prio active exception */
-> -
-> -    struct {
-> -        uint32_t control;
-> -        uint32_t reload;
-> -        int64_t tick;
-> -        QEMUTimer *timer;
-> -    } systick;
-> -
-> -    MemoryRegion sysregmem;
-> -    MemoryRegion container;
-> -
-> -    uint32_t num_irq;
-> -    qemu_irq excpout;
-> -    qemu_irq sysresetreq;
-> -} NVICState;
-> -
-> -#define TYPE_NVIC "armv7m_nvic"
-> -
-> -#define NVIC(obj) \
-> -    OBJECT_CHECK(NVICState, (obj), TYPE_NVIC)
-> -
->  static const uint8_t nvic_id[] = {
->      0x00, 0xb0, 0x1b, 0x00, 0x0d, 0xe0, 0x05, 0xb1
->  };
+> +CONFIG_ARM_V7M=y
+> +
+>  CONFIG_ARM_GIC=y
+>  CONFIG_ARM_GIC_KVM=$(CONFIG_KVM)
+>  CONFIG_ARM_TIMER=y
 >

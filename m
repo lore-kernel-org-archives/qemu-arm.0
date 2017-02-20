@@ -1,72 +1,71 @@
-Received: by 10.25.0.147 with SMTP id 141csp347052lfa;
-        Sun, 19 Feb 2017 22:21:31 -0800 (PST)
-X-Received: by 10.200.39.76 with SMTP id h12mr7888976qth.212.1487571691301;
-        Sun, 19 Feb 2017 22:21:31 -0800 (PST)
+Received: by 10.25.0.147 with SMTP id 141csp418560lfa;
+        Mon, 20 Feb 2017 02:01:05 -0800 (PST)
+X-Received: by 10.55.212.24 with SMTP id l24mr21195917qki.189.1487584864547;
+        Mon, 20 Feb 2017 02:01:04 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id y65si12332587qkd.99.2017.02.19.22.21.31
+        by mx.google.com with ESMTPS id f33si12587162qtf.306.2017.02.20.02.01.04
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sun, 19 Feb 2017 22:21:31 -0800 (PST)
+        Mon, 20 Feb 2017 02:01:04 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com;
+       dkim=fail header.i=@linaro.org;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:36313 helo=lists.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:37066 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1cfhLm-0000M1-Pb
-	for alex.bennee@linaro.org; Mon, 20 Feb 2017 01:21:30 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:55549)
+	id 1cfkmF-0006Vt-WA
+	for alex.bennee@linaro.org; Mon, 20 Feb 2017 05:01:04 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:38116)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <vijay.kilari@gmail.com>) id 1cfhLj-0000Lg-TJ
-	for qemu-arm@nongnu.org; Mon, 20 Feb 2017 01:21:28 -0500
+	(envelope-from <peter.maydell@linaro.org>) id 1cfkdj-0006SL-K8
+	for qemu-arm@nongnu.org; Mon, 20 Feb 2017 04:52:16 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <vijay.kilari@gmail.com>) id 1cfhLi-0003BJ-IG
-	for qemu-arm@nongnu.org; Mon, 20 Feb 2017 01:21:27 -0500
-Received: from mail-lf0-x243.google.com ([2a00:1450:4010:c07::243]:36086)
+	(envelope-from <peter.maydell@linaro.org>) id 1cfkdi-0004Kt-Kx
+	for qemu-arm@nongnu.org; Mon, 20 Feb 2017 04:52:15 -0500
+Received: from mail-wm0-x22d.google.com ([2a00:1450:400c:c09::22d]:35296)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <vijay.kilari@gmail.com>)
-	id 1cfhLi-0003Al-Bh; Mon, 20 Feb 2017 01:21:26 -0500
-Received: by mail-lf0-x243.google.com with SMTP id 90so235063lfr.3;
-	Sun, 19 Feb 2017 22:21:25 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1cfkdi-0004KJ-EY
+	for qemu-arm@nongnu.org; Mon, 20 Feb 2017 04:52:14 -0500
+Received: by mail-wm0-x22d.google.com with SMTP id v186so73567525wmd.0
+	for <qemu-arm@nongnu.org>; Mon, 20 Feb 2017 01:52:12 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
 	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=enUIFLPu8n7+lSHXqhNJDkKmpoDXsXw2o+2moCYqR+0=;
-	b=RVpj+VL7MClUI/ZCmlbGOCSfUQQk70UT3cl8FzQpfiFBm8dhF/rgv51913bmipCOoQ
-	6sJQVYNU0WOzaj+jvsjd+3yW3/JnX2E4oJg2PE0zCfbl5p0/Qm0myKRb4qfVoM+qmEH6
-	lYUmR/EhH7hSO3KyKMlm1uuVqMw9N1xqOqRVoJD469gJDSFRIfZ6VC3LqcjveYFSDRhB
-	keXFvoCFQTtymWWdnnsmttFTp0lNk4SogTEQrA5rjgchCifrnhRwg10NjuXxajSsSMTd
-	fyNFtnTtVCySV9HwT//VK3qN9gmTq0qHZtptIDpOYIt3IFXVVbjbsIwMvxd2Ciz8XRC6
-	FX7A==
+	:cc; bh=x1XE85Bb1PJzo2TceMR+coIRzInVENIcxVCfZyxTQ1Q=;
+	b=Q4i8apLGkVUc0ATzEhneDR6ARTQNVkwtFrnsZTZgA26JmWe4X72VzIMum3wPvowt9h
+	NguRMah2i4HNWBug/ZzCZZqOHF7f4UehklE6vex0f/KO06036mAz19xE+NP41kQLI/75
+	s/qixg+rAU4foI9S57xB1v5IOPbHTfbHICs9I=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
 	:message-id:subject:to:cc;
-	bh=enUIFLPu8n7+lSHXqhNJDkKmpoDXsXw2o+2moCYqR+0=;
-	b=ta00b050I/zlkuwmE5SNuhhgCu0OutvOGl/wuOvhMpRemn3XYuM95eLo3pMV+jEYaP
-	FgIXtig4Immvj/CYN0sx+ELbt02OdRmeuMWICbmJV6LnH7Jvmmm9ImKIexn106F0sgSU
-	EkorMopa/EkSvnipvV/HuesHHdZ2sLUJwWa81USoPp3XiA52DvMXuO/iMNozzF4VOD8S
-	RihkfJ29CVSwFj3CfRcVTLTUjt24oEzte3esq3giNgTC9GElGTuOgJcmbW2cHWIvm47h
-	ds8NVITcTr18OPL/J7SQMzd42tqh3tNpZvkuawNMw2v0Xtdo/mAEvTHwfCcqtbOKWfZJ
-	HZnA==
-X-Gm-Message-State: AMke39lG7+7JMBpst3mXXQZzcx1NYRwcYUVXM9xiOO7osGBbl7TPkigL0LF6xeksUXhIqYfx51+vmwaAJGqxTA==
-X-Received: by 10.25.93.70 with SMTP id p6mr5559749lfj.15.1487571684741; Sun,
-	19 Feb 2017 22:21:24 -0800 (PST)
+	bh=x1XE85Bb1PJzo2TceMR+coIRzInVENIcxVCfZyxTQ1Q=;
+	b=oVYs4KXOx+wu8GlBErBdUWeaUFymeKoswWjujxV9DgL0LfrMB9H0u4+cAaJGmPsdQR
+	nWGCFrQn9iJ49F6i258Mkh3mAIvqDaXkqYhNrg4lCWZAteZ07HyMFZQfo8v7Xr1mvsds
+	+rfIPp4Brt79FSnqIlS+3wUYK8ceI5uH9cA7CA1zPeGefmlF+px38HFERrujCAYORQwx
+	9CVwf2io7pEwiDLtSRBn1FFTJjCyHyc83kA3nPugIFoM1tAHIFnczWoxpU3hImHrK3R/
+	sbXouRSECheZLau6bsZ+BnF8D6h5TDr4WfnSKKwjxUdi9tDbfWzn886ycnbrwE9KjYoP
+	J1Ag==
+X-Gm-Message-State: AMke39lNOi5ktI/7AQwYEwUE5o259QZsJrR+/b05ddzGDnCGxZ6FvMnzueUTmWml1BxbtRm/U7Th3poBZwVGWZ/P
+X-Received: by 10.28.16.70 with SMTP id 67mr10546543wmq.142.1487584331711;
+	Mon, 20 Feb 2017 01:52:11 -0800 (PST)
 MIME-Version: 1.0
-Received: by 10.46.20.15 with HTTP; Sun, 19 Feb 2017 22:21:24 -0800 (PST)
-In-Reply-To: <CAFEAcA8618+LGejFq6SpBEwGrNpfamBBX3MFWjss-ZxJ7Xk8mg@mail.gmail.com>
+Received: by 10.223.145.69 with HTTP; Mon, 20 Feb 2017 01:51:51 -0800 (PST)
+In-Reply-To: <CALicx6tqxXZxBTxYvF55ydBg5CB1to3MsEkhaohucx4EAZcEJA@mail.gmail.com>
 References: <1487313115-9510-1-git-send-email-vijay.kilari@gmail.com>
 	<1487313115-9510-3-git-send-email-vijay.kilari@gmail.com>
 	<CAFEAcA8618+LGejFq6SpBEwGrNpfamBBX3MFWjss-ZxJ7Xk8mg@mail.gmail.com>
-From: Vijay Kilari <vijay.kilari@gmail.com>
-Date: Mon, 20 Feb 2017 11:51:24 +0530
-Message-ID: <CALicx6tqxXZxBTxYvF55ydBg5CB1to3MsEkhaohucx4EAZcEJA@mail.gmail.com>
-To: Peter Maydell <peter.maydell@linaro.org>
+	<CALicx6tqxXZxBTxYvF55ydBg5CB1to3MsEkhaohucx4EAZcEJA@mail.gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 20 Feb 2017 09:51:51 +0000
+Message-ID: <CAFEAcA_NbQNzrUUCAS2e5Xso0rg6H3+nzDjTc9i8Tc+GLpXvLw@mail.gmail.com>
+To: Vijay Kilari <vijay.kilari@gmail.com>
 Content-Type: text/plain; charset=UTF-8
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2a00:1450:4010:c07::243
+X-Received-From: 2a00:1450:400c:c09::22d
 Subject: Re: [Qemu-arm] [PATCH v8 2/5] hw/intc/arm_gicv3_kvm: Add
  ICC_SRE_EL1 register to vmstate
 X-BeenThere: qemu-arm@nongnu.org
@@ -87,109 +86,33 @@ Cc: Marc Zyngier <marc.zyngier@arm.com>, Pavel Fedin <p.fedin@samsung.com>,
 	Christoffer Dall <christoffer.dall@linaro.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ONs0m1sFJ4GQ
+X-TUID: SzIs5kc9uo1V
 
-Hi Peter,
+On 20 February 2017 at 06:21, Vijay Kilari <vijay.kilari@gmail.com> wrote:
+> Hi Peter,
+>
+> On Fri, Feb 17, 2017 at 7:25 PM, Peter Maydell <peter.maydell@linaro.org> wrote:
+[on the guest-visible ICC_SRE_EL1 value]
+>> Is there a situation where KVM might allow a value other
+>> than 0x7?
+>
+> In KVM, the SRE_EL1 value is 0x1. During save, value
+> read from KVM is 0x1 though we reset to 0x7.
 
-On Fri, Feb 17, 2017 at 7:25 PM, Peter Maydell <peter.maydell@linaro.org> wrote:
-> On 17 February 2017 at 06:31,  <vijay.kilari@gmail.com> wrote:
->> From: Vijaya Kumar K <Vijaya.Kumar@cavium.com>
->>
->> To Save and Restore ICC_SRE_EL1 register introduce vmstate
->> subsection and load only if non-zero.
->> Also initialize icc_sre_el1 with to 0x7 in pre_load
->> function.
->>
->> Signed-off-by: Vijaya Kumar K <Vijaya.Kumar@cavium.com>
->> ---
->>  hw/intc/arm_gicv3_common.c         | 32 ++++++++++++++++++++++++++++++++
->>  include/hw/intc/arm_gicv3_common.h |  1 +
->>  2 files changed, 33 insertions(+)
->>
->> diff --git a/hw/intc/arm_gicv3_common.c b/hw/intc/arm_gicv3_common.c
->> index 16b9b0f..e62480e 100644
->> --- a/hw/intc/arm_gicv3_common.c
->> +++ b/hw/intc/arm_gicv3_common.c
->> @@ -70,6 +70,34 @@ static const VMStateDescription vmstate_gicv3_cpu_virt = {
->>      }
->>  };
->>
->> +static int icc_sre_el1_reg_pre_load(void *opaque)
->> +{
->> +    GICv3CPUState *cs = opaque;
->> +
->> +    /* By default enable SRE and disable IRQ & FIQ bypass. */
->> +    cs->icc_sre_el1 = 0x7;
->
-> Why do we need the pre_load function? I would have
-> expected that reset would have given us these defaults
-> already.
->
->> +    return 0;
->> +}
->> +
->> +static bool icc_sre_el1_reg_needed(void *opaque)
->> +{
->> +    GICv3CPUState *cs = opaque;
->> +
->> +    return cs->icc_sre_el1 != 0;
->
-> I expected this to say "we need to transfer the value if
-> it isn't 0x7" (since the current situation of migration
-> is "we assume that the value is 0x7").
->
-> Something should probably fail inbound migration for TCG
-> if the value isn't 0x7, for that matter.
->
-> Is there a situation where KVM might allow a value other
-> than 0x7?
+0x1 meanss "System Register Interface enabled, IRQ
+bypass enabled, FIQ bypass enabled". This seems
+rather a weird setting, because it means "the GICv3
+CPU interface functionality is disabled and the GICv3
+should signal interrupts via legacy IRQ and FIQ".
+Does KVM really support IRQ/FIQ bypass and does Linux
+really leave it enabled rather than turning it off
+by writing the value to 1?
 
-In KVM, the SRE_EL1 value is 0x1. During save, value
-read from KVM is 0x1 though we reset to 0x7.
+My expectation was that the KVM GICv3 emulation would
+make these bits RAO/WI like the TCG implementation.
+Is there maybe a bug in the kernel side where it
+doesn't implement bypass but has made these bits be
+RAZ/WI rather than RAO/WI ?
 
->
->> +}
->> +
->> +const VMStateDescription vmstate_gicv3_cpu_sre_el1 = {
->> +    .name = "arm_gicv3_cpu/sre_el1",
->> +    .version_id = 1,
->> +    .minimum_version_id = 1,
->> +    .pre_load = icc_sre_el1_reg_pre_load,
->> +    .needed = icc_sre_el1_reg_needed,
->> +    .fields = (VMStateField[]) {
->> +        VMSTATE_UINT64(icc_sre_el1, GICv3CPUState),
->> +        VMSTATE_END_OF_LIST()
->> +    }
->> +};
->> +
->>  static const VMStateDescription vmstate_gicv3_cpu = {
->>      .name = "arm_gicv3_cpu",
->>      .version_id = 1,
->> @@ -100,6 +128,10 @@ static const VMStateDescription vmstate_gicv3_cpu = {
->>      .subsections = (const VMStateDescription * []) {
->>          &vmstate_gicv3_cpu_virt,
->>          NULL
->> +    },
->> +    .subsections = (const VMStateDescription * []) {
->> +        &vmstate_gicv3_cpu_sre_el1,
->> +        NULL
->>      }
->>  };
->>
->> diff --git a/include/hw/intc/arm_gicv3_common.h b/include/hw/intc/arm_gicv3_common.h
->> index 4156051..bccdfe1 100644
->> --- a/include/hw/intc/arm_gicv3_common.h
->> +++ b/include/hw/intc/arm_gicv3_common.h
->> @@ -172,6 +172,7 @@ struct GICv3CPUState {
->>      uint8_t gicr_ipriorityr[GIC_INTERNAL];
->>
->>      /* CPU interface */
->> +    uint64_t icc_sre_el1;
->>      uint64_t icc_ctlr_el1[2];
->>      uint64_t icc_pmr_el1;
->>      uint64_t icc_bpr[3];
->> --
->> 1.9.1
->
-> thanks
-> -- PMM
+thanks
+-- PMM

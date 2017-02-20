@@ -1,19 +1,19 @@
-Received: by 10.25.0.147 with SMTP id 141csp59068lfa;
-        Mon, 20 Feb 2017 07:36:12 -0800 (PST)
-X-Received: by 10.84.210.232 with SMTP id a95mr32551350pli.31.1487604972440;
-        Mon, 20 Feb 2017 07:36:12 -0800 (PST)
+Received: by 10.25.0.147 with SMTP id 141csp59081lfa;
+        Mon, 20 Feb 2017 07:36:13 -0800 (PST)
+X-Received: by 10.25.205.3 with SMTP id d3mr6151644lfg.65.1487604973591;
+        Mon, 20 Feb 2017 07:36:13 -0800 (PST)
 Return-Path: <pm215@archaic.org.uk>
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
-        by mx.google.com with ESMTPS id a5si18899991pgi.390.2017.02.20.07.36.11
+        by mx.google.com with ESMTPS id t17si9672386ljd.194.2017.02.20.07.36.13
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 20 Feb 2017 07:36:12 -0800 (PST)
+        Mon, 20 Feb 2017 07:36:13 -0800 (PST)
 Received-SPF: pass (google.com: best guess record for domain of pm215@archaic.org.uk designates 2001:8b0:1d0::2 as permitted sender) client-ip=2001:8b0:1d0::2;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: best guess record for domain of pm215@archaic.org.uk designates 2001:8b0:1d0::2 as permitted sender) smtp.mailfrom=pm215@archaic.org.uk;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from pm215 by orth.archaic.org.uk with local (Exim 4.84_2)
 	(envelope-from <pm215@archaic.org.uk>)
-	id 1cfq0V-0005gN-3t; Mon, 20 Feb 2017 15:36:07 +0000
+	id 1cfq0a-0005jl-Qj; Mon, 20 Feb 2017 15:36:12 +0000
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
@@ -21,169 +21,93 @@ Cc: patches@linaro.org,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
 	Alistair Francis <alistair23@gmail.com>,
 	Michael Davidsaver <mdavidsaver@gmail.com>
-Subject: [PATCH 02/11] armv7m: Move NVICState struct definition into header
-Date: Mon, 20 Feb 2017 15:35:56 +0000
-Message-Id: <1487604965-23220-3-git-send-email-peter.maydell@linaro.org>
+Subject: [PATCH 11/11] stm32f205: Rename 'nvic' local to 'armv7m'
+Date: Mon, 20 Feb 2017 15:36:05 +0000
+Message-Id: <1487604965-23220-12-git-send-email-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.7.4
 In-Reply-To: <1487604965-23220-1-git-send-email-peter.maydell@linaro.org>
 References: <1487604965-23220-1-git-send-email-peter.maydell@linaro.org>
-X-TUID: o+GTVxbmkIgh
+X-TUID: Xo1ol31uTKOV
 
-Move the NVICState struct definition into a header, so we can
-embed it into other QOM objects like SoCs.
+The local variable 'nvic' in stm32f205_soc_realize() no longer
+holds a direct pointer to the NVIC device; it is a pointer to
+the ARMv7M container object. Rename it 'armv7m' accordingly.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- include/hw/arm/armv7m_nvic.h | 66 ++++++++++++++++++++++++++++++++++++++++++++
- hw/intc/armv7m_nvic.c        | 49 +-------------------------------
- 2 files changed, 67 insertions(+), 48 deletions(-)
- create mode 100644 include/hw/arm/armv7m_nvic.h
+ hw/arm/stm32f205_soc.c | 18 +++++++++---------
+ 1 file changed, 9 insertions(+), 9 deletions(-)
 
-diff --git a/include/hw/arm/armv7m_nvic.h b/include/hw/arm/armv7m_nvic.h
-new file mode 100644
-index 0000000..39b94ee
---- /dev/null
-+++ b/include/hw/arm/armv7m_nvic.h
-@@ -0,0 +1,66 @@
-+/*
-+ * ARMv7M NVIC object
-+ *
-+ * Copyright (c) 2017 Linaro Ltd
-+ * Written by Peter Maydell <peter.maydell@linaro.org>
-+ *
-+ * This code is licensed under the GPL version 2 or later.
-+ */
-+
-+#ifndef HW_ARM_ARMV7M_NVIC_H
-+#define HW_ARM_ARMV7M_NVIC_H
-+
-+#include "target/arm/cpu.h"
-+#include "hw/sysbus.h"
-+
-+#define TYPE_NVIC "armv7m_nvic"
-+
-+#define NVIC(obj) \
-+    OBJECT_CHECK(NVICState, (obj), TYPE_NVIC)
-+
-+/* Highest permitted number of exceptions (architectural limit) */
-+#define NVIC_MAX_VECTORS 512
-+
-+typedef struct VecInfo {
-+    /* Exception priorities can range from -3 to 255; only the unmodifiable
-+     * priority values for RESET, NMI and HardFault can be negative.
-+     */
-+    int16_t prio;
-+    uint8_t enabled;
-+    uint8_t pending;
-+    uint8_t active;
-+    uint8_t level; /* exceptions <=15 never set level */
-+} VecInfo;
-+
-+typedef struct NVICState {
-+    /*< private >*/
-+    SysBusDevice parent_obj;
-+    /*< public >*/
-+
-+    ARMCPU *cpu;
-+
-+    VecInfo vectors[NVIC_MAX_VECTORS];
-+    uint32_t prigroup;
-+
-+    /* vectpending and exception_prio are both cached state that can
-+     * be recalculated from the vectors[] array and the prigroup field.
-+     */
-+    unsigned int vectpending; /* highest prio pending enabled exception */
-+    int exception_prio; /* group prio of the highest prio active exception */
-+
-+    struct {
-+        uint32_t control;
-+        uint32_t reload;
-+        int64_t tick;
-+        QEMUTimer *timer;
-+    } systick;
-+
-+    MemoryRegion sysregmem;
-+    MemoryRegion container;
-+
-+    uint32_t num_irq;
-+    qemu_irq excpout;
-+    qemu_irq sysresetreq;
-+} NVICState;
-+
-+#endif
-diff --git a/hw/intc/armv7m_nvic.c b/hw/intc/armv7m_nvic.c
-index 76097b4..f2ada39 100644
---- a/hw/intc/armv7m_nvic.c
-+++ b/hw/intc/armv7m_nvic.c
-@@ -17,6 +17,7 @@
- #include "hw/sysbus.h"
- #include "qemu/timer.h"
- #include "hw/arm/arm.h"
-+#include "hw/arm/armv7m_nvic.h"
- #include "target/arm/cpu.h"
- #include "exec/address-spaces.h"
- #include "qemu/log.h"
-@@ -47,7 +48,6 @@
-  * "exception" more or less interchangeably.
-  */
- #define NVIC_FIRST_IRQ 16
--#define NVIC_MAX_VECTORS 512
- #define NVIC_MAX_IRQ (NVIC_MAX_VECTORS - NVIC_FIRST_IRQ)
+diff --git a/hw/arm/stm32f205_soc.c b/hw/arm/stm32f205_soc.c
+index e6bd73a..6e1260d 100644
+--- a/hw/arm/stm32f205_soc.c
++++ b/hw/arm/stm32f205_soc.c
+@@ -85,7 +85,7 @@ static void stm32f205_soc_initfn(Object *obj)
+ static void stm32f205_soc_realize(DeviceState *dev_soc, Error **errp)
+ {
+     STM32F205State *s = STM32F205_SOC(dev_soc);
+-    DeviceState *dev, *nvic;
++    DeviceState *dev, *armv7m;
+     SysBusDevice *busdev;
+     Error *err = NULL;
+     int i;
+@@ -113,9 +113,9 @@ static void stm32f205_soc_realize(DeviceState *dev_soc, Error **errp)
+     vmstate_register_ram_global(sram);
+     memory_region_add_subregion(system_memory, SRAM_BASE_ADDRESS, sram);
  
- /* Effective running priority of the CPU when no exception is active
-@@ -55,53 +55,6 @@
-  */
- #define NVIC_NOEXC_PRIO 0x100
+-    nvic = DEVICE(&s->armv7m);
+-    qdev_prop_set_uint32(nvic, "num-irq", 96);
+-    qdev_prop_set_string(nvic, "cpu-model", s->cpu_model);
++    armv7m = DEVICE(&s->armv7m);
++    qdev_prop_set_uint32(armv7m, "num-irq", 96);
++    qdev_prop_set_string(armv7m, "cpu-model", s->cpu_model);
+     object_property_set_link(OBJECT(&s->armv7m), OBJECT(get_system_memory()),
+                                      "memory", &error_abort);
+     object_property_set_bool(OBJECT(&s->armv7m), true, "realized", &err);
+@@ -133,7 +133,7 @@ static void stm32f205_soc_realize(DeviceState *dev_soc, Error **errp)
+     }
+     busdev = SYS_BUS_DEVICE(dev);
+     sysbus_mmio_map(busdev, 0, 0x40013800);
+-    sysbus_connect_irq(busdev, 0, qdev_get_gpio_in(nvic, 71));
++    sysbus_connect_irq(busdev, 0, qdev_get_gpio_in(armv7m, 71));
  
--typedef struct VecInfo {
--    /* Exception priorities can range from -3 to 255; only the unmodifiable
--     * priority values for RESET, NMI and HardFault can be negative.
--     */
--    int16_t prio;
--    uint8_t enabled;
--    uint8_t pending;
--    uint8_t active;
--    uint8_t level; /* exceptions <=15 never set level */
--} VecInfo;
--
--typedef struct NVICState {
--    /*< private >*/
--    SysBusDevice parent_obj;
--    /*< public >*/
--
--    ARMCPU *cpu;
--
--    VecInfo vectors[NVIC_MAX_VECTORS];
--    uint32_t prigroup;
--
--    /* vectpending and exception_prio are both cached state that can
--     * be recalculated from the vectors[] array and the prigroup field.
--     */
--    unsigned int vectpending; /* highest prio pending enabled exception */
--    int exception_prio; /* group prio of the highest prio active exception */
--
--    struct {
--        uint32_t control;
--        uint32_t reload;
--        int64_t tick;
--        QEMUTimer *timer;
--    } systick;
--
--    MemoryRegion sysregmem;
--    MemoryRegion container;
--
--    uint32_t num_irq;
--    qemu_irq excpout;
--    qemu_irq sysresetreq;
--} NVICState;
--
--#define TYPE_NVIC "armv7m_nvic"
--
--#define NVIC(obj) \
--    OBJECT_CHECK(NVICState, (obj), TYPE_NVIC)
--
- static const uint8_t nvic_id[] = {
-     0x00, 0xb0, 0x1b, 0x00, 0x0d, 0xe0, 0x05, 0xb1
- };
+     /* Attach UART (uses USART registers) and USART controllers */
+     for (i = 0; i < STM_NUM_USARTS; i++) {
+@@ -147,7 +147,7 @@ static void stm32f205_soc_realize(DeviceState *dev_soc, Error **errp)
+         }
+         busdev = SYS_BUS_DEVICE(dev);
+         sysbus_mmio_map(busdev, 0, usart_addr[i]);
+-        sysbus_connect_irq(busdev, 0, qdev_get_gpio_in(nvic, usart_irq[i]));
++        sysbus_connect_irq(busdev, 0, qdev_get_gpio_in(armv7m, usart_irq[i]));
+     }
+ 
+     /* Timer 2 to 5 */
+@@ -161,7 +161,7 @@ static void stm32f205_soc_realize(DeviceState *dev_soc, Error **errp)
+         }
+         busdev = SYS_BUS_DEVICE(dev);
+         sysbus_mmio_map(busdev, 0, timer_addr[i]);
+-        sysbus_connect_irq(busdev, 0, qdev_get_gpio_in(nvic, timer_irq[i]));
++        sysbus_connect_irq(busdev, 0, qdev_get_gpio_in(armv7m, timer_irq[i]));
+     }
+ 
+     /* ADC 1 to 3 */
+@@ -173,7 +173,7 @@ static void stm32f205_soc_realize(DeviceState *dev_soc, Error **errp)
+         return;
+     }
+     qdev_connect_gpio_out(DEVICE(s->adc_irqs), 0,
+-                          qdev_get_gpio_in(nvic, ADC_IRQ));
++                          qdev_get_gpio_in(armv7m, ADC_IRQ));
+ 
+     for (i = 0; i < STM_NUM_ADCS; i++) {
+         dev = DEVICE(&(s->adc[i]));
+@@ -198,7 +198,7 @@ static void stm32f205_soc_realize(DeviceState *dev_soc, Error **errp)
+         }
+         busdev = SYS_BUS_DEVICE(dev);
+         sysbus_mmio_map(busdev, 0, spi_addr[i]);
+-        sysbus_connect_irq(busdev, 0, qdev_get_gpio_in(nvic, spi_irq[i]));
++        sysbus_connect_irq(busdev, 0, qdev_get_gpio_in(armv7m, spi_irq[i]));
+     }
+ }
+ 
 -- 
 2.7.4

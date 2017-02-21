@@ -1,85 +1,71 @@
-Received: by 10.25.0.147 with SMTP id 141csp588188lfa;
-        Tue, 21 Feb 2017 08:58:39 -0800 (PST)
-X-Received: by 10.55.128.66 with SMTP id b63mr29476567qkd.297.1487696319827;
-        Tue, 21 Feb 2017 08:58:39 -0800 (PST)
+Received: by 10.25.0.147 with SMTP id 141csp593704lfa;
+        Tue, 21 Feb 2017 09:09:44 -0800 (PST)
+X-Received: by 10.55.192.93 with SMTP id o90mr25226151qki.18.1487696984807;
+        Tue, 21 Feb 2017 09:09:44 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id c27si15502646qta.35.2017.02.21.08.58.39
+        by mx.google.com with ESMTPS id e187si10790191qkd.317.2017.02.21.09.09.44
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 21 Feb 2017 08:58:39 -0800 (PST)
+        Tue, 21 Feb 2017 09:09:44 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@codeaurora.org;
-       dkim=fail header.i=@codeaurora.org;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:46940 helo=lists.gnu.org)
+Received: from localhost ([::1]:47024 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1cgDlt-00048p-3c
-	for alex.bennee@linaro.org; Tue, 21 Feb 2017 11:58:37 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:53674)
+	id 1cgDwb-0006jA-Mb
+	for alex.bennee@linaro.org; Tue, 21 Feb 2017 12:09:41 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:37398)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <okaya@codeaurora.org>) id 1cgCSy-000095-14
-	for qemu-arm@nongnu.org; Tue, 21 Feb 2017 10:35:00 -0500
+	(envelope-from <pbonzini@redhat.com>) id 1cgD9O-0000Mt-Mh
+	for qemu-arm@nongnu.org; Tue, 21 Feb 2017 11:18:51 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <okaya@codeaurora.org>) id 1cgCSs-00029B-Vp
-	for qemu-arm@nongnu.org; Tue, 21 Feb 2017 10:35:00 -0500
-Received: from smtp.codeaurora.org ([198.145.29.96]:36372)
+	(envelope-from <pbonzini@redhat.com>) id 1cgD9M-0007dN-2z
+	for qemu-arm@nongnu.org; Tue, 21 Feb 2017 11:18:50 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:32982)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <okaya@codeaurora.org>)
-	id 1cgCSs-00028v-Kq; Tue, 21 Feb 2017 10:34:54 -0500
-Received: by smtp.codeaurora.org (Postfix, from userid 1000)
-	id 4820860A9A; Tue, 21 Feb 2017 15:34:53 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=codeaurora.org;
-	s=default; t=1487691293;
-	bh=Mj5DAyOX/C66WB3wJvvF6m+482LPqhXUbPy/P0R9wEE=;
-	h=Subject:To:References:Cc:From:Date:In-Reply-To:From;
-	b=a9/pmsgI3PV0GazOihvGive2oQq9558nl6Cy3+0v3IRbcl9kgv8O5ow00AcVv7RU/
-	+4SFz2G0cbIctO7ZkCs1zz1aYbUOOeZHtOIwmzA7Wkfwcp365CFCLGWKwEVq/M4sct
-	uLlYWew6DoQpViwE9qg2miTerbYgADuBA8AAawts=
-Received: from [10.228.68.95] (global_nat1_iad_fw.qualcomm.com [129.46.232.65])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+	(Exim 4.71) (envelope-from <pbonzini@redhat.com>)
+	id 1cgD9L-0007c7-SW; Tue, 21 Feb 2017 11:18:47 -0500
+Received: from int-mx09.intmail.prod.int.phx2.redhat.com
+	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	(Authenticated sender: okaya@smtp.codeaurora.org)
-	by smtp.codeaurora.org (Postfix) with ESMTPSA id DF9F3607C2;
-	Tue, 21 Feb 2017 15:34:50 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=codeaurora.org;
-	s=default; t=1487691291;
-	bh=Mj5DAyOX/C66WB3wJvvF6m+482LPqhXUbPy/P0R9wEE=;
-	h=Subject:To:References:Cc:From:Date:In-Reply-To:From;
-	b=g9zSkDtIlT3cz+dR/1veB4orI3u8s7F9ZLkSMnSEAJUKOtWKMZHJNVCxm6ZYufnUc
-	mxRagpXUhyif/0s8IcraXeiSSXmeoXP0/J3JYK7mCDT6Q1zmWkoGKwCcsZEAm9VzQp
-	FVzIvg2JfHwS8AfZ4KSMyISyOPn7zF2TC3l4P62E=
-DMARC-Filter: OpenDMARC Filter v1.3.2 smtp.codeaurora.org DF9F3607C2
-Authentication-Results: pdx-caf-mail.web.codeaurora.org;
-	dmarc=none (p=none dis=none) header.from=codeaurora.org
-Authentication-Results: pdx-caf-mail.web.codeaurora.org;
-	spf=none smtp.mailfrom=okaya@codeaurora.org
-To: Auger Eric <eric.auger@redhat.com>, eric.auger.pro@gmail.com,
-	peter.maydell@linaro.org, alex.williamson@redhat.com, qemu-arm@nongnu.org, 
-	qemu-devel@nongnu.org
-References: <1487683100-16013-1-git-send-email-eric.auger@redhat.com>
-	<1487683100-16013-2-git-send-email-eric.auger@redhat.com>
-	<98d4d9e8-761c-76f9-ecb0-c5a4a658dfab@codeaurora.org>
-	<2dcc9002-ec06-c55e-c0a2-75d05fe05762@redhat.com>
-	<970561bf-0adc-4f60-bf2b-57bbafabb0aa@codeaurora.org>
-	<8d790f60-6ee6-9b48-6dfc-524532db112b@redhat.com>
-From: Sinan Kaya <okaya@codeaurora.org>
-Message-ID: <a9ed1831-5a1c-5c27-25b0-71d06c7dee2e@codeaurora.org>
-Date: Tue, 21 Feb 2017 10:34:49 -0500
-User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:45.0) Gecko/20100101
-	Thunderbird/45.7.1
+	by mx1.redhat.com (Postfix) with ESMTPS id D2C98C04BD4A;
+	Tue, 21 Feb 2017 16:18:40 +0000 (UTC)
+Received: from [10.36.116.127] (ovpn-116-127.ams2.redhat.com [10.36.116.127])
+	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with
+	ESMTP id v1LGIZlo027055
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=NO);
+	Tue, 21 Feb 2017 11:18:37 -0500
+To: Peter Maydell <peter.maydell@linaro.org>,
+	Markus Armbruster <armbru@redhat.com>
+References: <1487357795-52614-1-git-send-email-imammedo@redhat.com>
+	<CAFEAcA9JWzUEmGa2Wxd5xPE4dVknOKBkt=wMda7CAgxzrgOc+w@mail.gmail.com>
+	<20170220195500.332a4844@nial.brq.redhat.com>
+	<CAFEAcA-VAY8LM+8jE4B-L=0QdcY5FLvwmwGVbUhcXjnC9-AW+w@mail.gmail.com>
+	<20170221134416.5803b3e5@nial.brq.redhat.com>
+	<CAFEAcA-MggU5T1fO8GonkSpLF0SNe0jtygEHtEBkpWC8hyShSw@mail.gmail.com>
+	<87poibr6kv.fsf@dusky.pond.sub.org>
+	<CAFEAcA-75VPiOzPauZO4ukYVYWffB1cu1-tsQs6Hs8m8Vf41OQ@mail.gmail.com>
+From: Paolo Bonzini <pbonzini@redhat.com>
+Message-ID: <6959c545-4b6e-423b-45f2-8e0683b08ce2@redhat.com>
+Date: Tue, 21 Feb 2017 17:18:35 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
+	Thunderbird/45.7.0
 MIME-Version: 1.0
-In-Reply-To: <8d790f60-6ee6-9b48-6dfc-524532db112b@redhat.com>
-Content-Type: text/plain; charset=windows-1252
+In-Reply-To: <CAFEAcA-75VPiOzPauZO4ukYVYWffB1cu1-tsQs6Hs8m8Vf41OQ@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.31]);
+	Tue, 21 Feb 2017 16:18:40 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 198.145.29.96
-X-Mailman-Approved-At: Tue, 21 Feb 2017 10:46:13 -0500
-Subject: Re: [Qemu-arm] [PATCH 1/2] vfio/platform: make the vfio-platform
- device non abstract
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-arm] [Qemu-devel] [RFC 0/3] generalize parsing of
+ cpu_model
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -91,52 +77,39 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: pelcan@codeaurora.org, vikrams@codeaurora.org, shankerd@codeaurora.org,
-	agraf@suse.de
+Cc: Eduardo Habkost <ehabkost@redhat.com>,
+	"patches@linaro.org" <patches@linaro.org>,
+	Stefan Hajnoczi <stefanha@gmail.com>,
+	"Michael S. Tsirkin" <mst@redhat.com>,
+	QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
+	"qemu-ppc@nongnu.org" <qemu-ppc@nongnu.org>,
+	Marcel Apfelbaum <marcel@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
+	David Gibson <david@gibson.dropbear.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: doWl6HhCIlDx
-
-On 2/21/2017 10:23 AM, Auger Eric wrote:
->> Note that the goal is to be able to instantiate any platform device by just
->> passing a compatible string and the object from the host. We don't want
->> to make changes to QEMU every time somebody comes up with a new platform device.
->> This step is unnecessary.
-> Well we need to generate a device tree node for your device. We have not
-> proven yet the function that creates this latter can be generic. There
-> are some helpers that can read the host dt node, copy some properties
-> from the host to the guest. But still at the moment we can't make things
-> as generic as PCIe and this is why the platform passthrough still is
-> controversial. So this patch aims at lowering the integration efforts
-> but minimal specialization needs to be done in sysbus-fdt. Same on
-> kernel side with the reset module.
-
-Understood. You need to bring in the entire device tree parameters for a full-blown
-solution. We can always treat this as a TODO.
-
-I was more interested in simple devices like XHCI, AHCI, HIDMA where there
-is no platform device attribute besides the interrupt number and memory
-resources. QEMU already has access to these.
-
-I was hoping to cover this at least. More complex objects need their own
-implementation like the AMD driver in your example.
-
-I'm pasting my comment from the archives here. 
-
-https://lists.gnu.org/archive/html/qemu-devel/2016-08/msg03267.html
-
-"Why submit a new SATA AHCI driver for QEMU just to set the compat string?"
+X-TUID: CKz3Qht2JOWh
 
 
-> 
-> Thanks
-> 
-> Eric
-> 
-> 
 
+On 21/02/2017 14:57, Peter Maydell wrote:
+>> -global is a qdev thing.
+> ...which reminds me to ask: is there any hope for unifying
+> our properties so we don't have both "qdev properties" and
+> "qom properties" or are we doomed to two distinct sets of
+> APIs forever?
 
--- 
-Sinan Kaya
-Qualcomm Datacenter Technologies, Inc. as an affiliate of Qualcomm Technologies, Inc.
-Qualcomm Technologies, Inc. is a member of the Code Aurora Forum, a Linux Foundation Collaborative Project.
+We already have one set of property APIs in some sense.  qdev properties
+*are* QOM properties; you visit them with object_property_foreach and so on.
+
+The extensions that qdev adds, and are exclusive to qdev properties, are
+the following:
+
+- defining properties via DEFINE_PROPERTY_* (qdev_property_add_static etc.)
+
+- defining default values with -global (global_props and a handful of
+functions that use it).
+
+- providing alternative human-readable formatting for info qtree
+(qdev_property_add_legacy)
+
+Paolo

@@ -1,62 +1,71 @@
-Received: by 10.25.0.147 with SMTP id 141csp593035lfa;
-        Tue, 21 Feb 2017 09:08:28 -0800 (PST)
-X-Received: by 10.55.33.219 with SMTP id f88mr11185461qki.200.1487696907870;
-        Tue, 21 Feb 2017 09:08:27 -0800 (PST)
+Received: by 10.25.0.147 with SMTP id 141csp609797lfa;
+        Tue, 21 Feb 2017 09:49:15 -0800 (PST)
+X-Received: by 10.55.102.199 with SMTP id a190mr17524189qkc.277.1487699355790;
+        Tue, 21 Feb 2017 09:49:15 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id g10si15518141qtb.103.2017.02.21.09.08.27
+        by mx.google.com with ESMTPS id b24si15572630qkb.116.2017.02.21.09.49.15
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 21 Feb 2017 09:08:27 -0800 (PST)
+        Tue, 21 Feb 2017 09:49:15 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:47014 helo=lists.gnu.org)
+       dkim=pass header.i=@linaro.org;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:47444 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1cgDvM-0005hD-QV
-	for alex.bennee@linaro.org; Tue, 21 Feb 2017 12:08:24 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:34286)
+	id 1cgEYr-0002Ra-3v
+	for alex.bennee@linaro.org; Tue, 21 Feb 2017 12:49:13 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:45321)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <ehabkost@redhat.com>) id 1cgD0A-0007Ws-NZ
-	for qemu-arm@nongnu.org; Tue, 21 Feb 2017 11:09:19 -0500
+	(envelope-from <peter.maydell@linaro.org>) id 1cgEYl-0002Q0-9n
+	for qemu-arm@nongnu.org; Tue, 21 Feb 2017 12:49:08 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <ehabkost@redhat.com>) id 1cgD09-0004Th-Rl
-	for qemu-arm@nongnu.org; Tue, 21 Feb 2017 11:09:18 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:53084)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <ehabkost@redhat.com>)
-	id 1cgD09-0004Sj-LE; Tue, 21 Feb 2017 11:09:17 -0500
-Received: from int-mx14.intmail.prod.int.phx2.redhat.com
-	(int-mx14.intmail.prod.int.phx2.redhat.com [10.5.11.27])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id CBB777FB6A;
-	Tue, 21 Feb 2017 16:09:17 +0000 (UTC)
-Received: from localhost (ovpn-116-33.gru2.redhat.com [10.97.116.33])
-	by int-mx14.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id v1LG9GqH012731; Tue, 21 Feb 2017 11:09:17 -0500
-Date: Tue, 21 Feb 2017 13:01:13 -0300
-From: Eduardo Habkost <ehabkost@redhat.com>
-To: Igor Mammedov <imammedo@redhat.com>
-Message-ID: <20170221160113.GE2778@thinpad.lan.raisama.net>
-References: <1486996099-15820-1-git-send-email-peter.maydell@linaro.org>
-	<20170217200522.0e8db60b@nial.brq.redhat.com>
+	(envelope-from <peter.maydell@linaro.org>) id 1cgEYk-0003vE-Hn
+	for qemu-arm@nongnu.org; Tue, 21 Feb 2017 12:49:07 -0500
+Received: from mail-wr0-x232.google.com ([2a00:1450:400c:c0c::232]:33976)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1cgEYk-0003v3-BT
+	for qemu-arm@nongnu.org; Tue, 21 Feb 2017 12:49:06 -0500
+Received: by mail-wr0-x232.google.com with SMTP id z61so86686024wrc.1
+	for <qemu-arm@nongnu.org>; Tue, 21 Feb 2017 09:49:06 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=6OauJKK/PUaYkgD+bbHQ9NQmgx+gnuJGOec1Ia4clSI=;
+	b=NVbroiIw09mshN5Fqr4z/HQTCx3cYR1nCsbF+VSMIRUCQrUk7iiWZT3cC2FtUu4A4C
+	Jba3ZHEt4WQroGPyvrvBOR7meZZy4O7dw+O05x5BiAthCvC4fg9iQoJQ1qxdQ+lujA/A
+	6RXLoUZgdnznJmAc9e3Agy1fprE1NcYv7f428=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=6OauJKK/PUaYkgD+bbHQ9NQmgx+gnuJGOec1Ia4clSI=;
+	b=MvcGQraTBFIRh2F0jhvPnP3Iru45XdVsw+rwwU3MFcvuhDBeVurcqsj3eBX4afoHHi
+	Kz4v/jJiQS4USkXob3wTem2vAfmtEpzyc4B3AtLGyIoRto/MD1B4gDBRWAlwbZhHU9l9
+	AW6rnkKZzHpef3UH1cZ6ZNSy/BsZln/cf5vY3/SEdX/tIKEqU4zOReYNO73rpIQqbhFn
+	R/FWBX8ws27NKbAoLGIPtNqPArUPgpaS5/wBHg+NYIw0W25HI4gV+IrFIaTVd0mpkr3E
+	rPX3lSfdhoyZ4PUiZ4U/e37VOo4tko8aE31/jF2xAzGjDa9t59euauz7ZAH6MJuMU1CB
+	YTNQ==
+X-Gm-Message-State: AMke39lViXhlC8LUkPcqySxofwc55E06ooDedezrOYudeQ7uB0gYFWzf7qFMHP9cAiQQrtNGXxS9i6z0f+0x04/5
+X-Received: by 10.223.150.209 with SMTP id u75mr3867093wrb.195.1487699345119; 
+	Tue, 21 Feb 2017 09:49:05 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20170217200522.0e8db60b@nial.brq.redhat.com>
-X-Fnord: you can see the fnord
-User-Agent: Mutt/1.7.1 (2016-10-04)
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.27
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.25]);
-	Tue, 21 Feb 2017 16:09:17 +0000 (UTC)
+Received: by 10.223.145.69 with HTTP; Tue, 21 Feb 2017 09:48:44 -0800 (PST)
+In-Reply-To: <20170221155856.GD2778@thinpad.lan.raisama.net>
+References: <1486996099-15820-1-git-send-email-peter.maydell@linaro.org>
+	<CAFEAcA98V-3EMDS+o9HnAdY14JDoY4i8yYyFP=OiK8QXMSWvmA@mail.gmail.com>
+	<20170221155856.GD2778@thinpad.lan.raisama.net>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 21 Feb 2017 17:48:44 +0000
+Message-ID: <CAFEAcA9762NB0ghnvdST2AGFn_y_i5f_KxT0sdiVbZgzA=fk8A@mail.gmail.com>
+To: Eduardo Habkost <ehabkost@redhat.com>
+Content-Type: text/plain; charset=UTF-8
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH 0/4] cpu: Implement
- cpu_generic_new()
+X-Received-From: 2a00:1450:400c:c0c::232
+Subject: Re: [Qemu-arm] [PATCH 0/4] cpu: Implement cpu_generic_new()
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -68,67 +77,30 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org, patches@linaro.org
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
+	"patches@linaro.org" <patches@linaro.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 7AURg9HmBOlf
+X-TUID: I8ReqXj79wMJ
 
-On Fri, Feb 17, 2017 at 08:05:22PM +0100, Igor Mammedov wrote:
-> On Mon, 13 Feb 2017 14:28:15 +0000
-> Peter Maydell <peter.maydell@linaro.org> wrote:
-> 
-> > This patchset adds a new function cpu_generic_new()
-> > which is similar to cpu_generic_init() except that it
-> > does not realize the created CPU object. This means that
-> > board code can do a "new cpu; set QOM properties; realize"
-> > sequence without having to do all the work of splitting
-> > the CPU model string and calling parse_features by hand.
-> > 
-> > Patch 2 clarifies a TODO comment, hopefully correctly,
-> > based on an email conversation I had with Eduardo a
-> > little while back.
-> > 
-> > Patches 3 and 4 change the ARM boards which currently
-> > call parse_features by hand to use the new function.
-> > 
-> > 
-> > If there's consensus that this is the right general
-> > direction to go in, then I think that some other
-> > architectures could also make cleanups to use this:
-> >  * cpu_s390x_create() is almost exactly this function,
-> >    give or take some fine detail of error handling
-> >  * ppc_cpu_parse_features is almost the same thing,
-> >    except that it doesn't actually create the CPU object,
-> >    it only calls parse_features
-> >  * hw/i386/pc.c does a manual parse_features
-> > 
-> > I'm not strongly attached to this particular approach
-> > (though it seems like a reasonable one, especially given
-> > the proliferation of different arch-specific helpers
-> > listed above and the bugs in boards which don't call
-> > parse_features when they should), but I would like us to
-> > figure out and document what the right way for a board
-> > to create and configure its CPU objects is...
-> 
-> series looks like a step back adding yet another way
-> to create CPU and makes code even more inconsistent,
-> instead of removing TODO item by doing proper generalization.
-> So I'm sort of object to it.
-> 
-> I'll just posted RFC which show idea how generalization of
-> cpu_model/features parsing should be implemented.
-> 
-> However I don't have cycles to complete it, only
-> virt-arm/spapr/pc are converted as example.
-> One who would pick the task up should complete it for
-> all boards to make code consistent.
+On 21 February 2017 at 15:58, Eduardo Habkost <ehabkost@redhat.com> wrote:
+> On Thu, Feb 16, 2017 at 04:40:43PM +0000, Peter Maydell wrote:
+>> I know it's only been a few days, but I just wanted to
+>> say that I'd appreciate it if we could manage relatively
+>> quick review on this one, since I have a set of patches
+>> pending that depend on this and which it would be nice
+>> to get into 2.9 (softfreeze approaching rapidly).
+>
+> I was away from work for the past 3 weeks and I am catching up on
+> e-mail, right now. Is this proposal still up, or is this series
+> obsoleted by something else?
 
-If conversion of the code will take a while and this wrapper
-removes code duplication of the current boards, I believe this
-series is stlil a step in the right direction, even if the plan
-is to replace the wrapper one day. But I will take a look at your
-RFC first, before giving my opinion on which approach to take.
+Given Igor's view that this isn't the way we want to go, I have
+decoupled the other patches I mention above from this patchset
+(making them do an in-line call to parse_features etc like
+the virt.c code etc etc do at the moment). So there's no rush
+and we can take the time to decide what the right approach is
+(which we can then implement for QEMU 2.10, I expect).
 
--- 
-Eduardo
+thanks
+-- PMM

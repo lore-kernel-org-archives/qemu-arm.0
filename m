@@ -1,179 +1,160 @@
-Received: by 10.103.98.197 with SMTP id w188csp377480vsb;
-        Tue, 21 Feb 2017 05:08:32 -0800 (PST)
-X-Received: by 10.200.35.6 with SMTP id a6mr23753029qta.210.1487682512015;
-        Tue, 21 Feb 2017 05:08:32 -0800 (PST)
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 10.25.0.147 with SMTP id 141csp493125lfa;
+        Tue, 21 Feb 2017 05:16:36 -0800 (PST)
+X-Received: by 10.200.42.108 with SMTP id l41mr7559972qtl.58.1487682996250;
+        Tue, 21 Feb 2017 05:16:36 -0800 (PST)
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id t6si15075969qtd.8.2017.02.21.05.08.31
+        by mx.google.com with ESMTPS id q14si15027457qkl.211.2017.02.21.05.16.36
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 21 Feb 2017 05:08:32 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Tue, 21 Feb 2017 05:16:36 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:44428 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:44491 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1cgABD-0004cx-Em
-	for alex.bennee@linaro.org; Tue, 21 Feb 2017 08:08:31 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:48511)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1cgAJ1-0004Ss-G8
+	for alex.bennee@linaro.org; Tue, 21 Feb 2017 08:16:35 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:51109)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1cg9ef-0007k7-6m
-	for qemu-devel@nongnu.org; Tue, 21 Feb 2017 07:34:56 -0500
+	(envelope-from <imammedo@redhat.com>) id 1cg9ns-00081b-SV
+	for qemu-arm@nongnu.org; Tue, 21 Feb 2017 07:44:26 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1cg9ed-00086E-9K
-	for qemu-devel@nongnu.org; Tue, 21 Feb 2017 07:34:53 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:39080)
+	(envelope-from <imammedo@redhat.com>) id 1cg9np-0002mK-O8
+	for qemu-arm@nongnu.org; Tue, 21 Feb 2017 07:44:24 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:40688)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <armbru@redhat.com>)
-	id 1cg9eY-00084j-Iz; Tue, 21 Feb 2017 07:34:46 -0500
-Received: from int-mx11.intmail.prod.int.phx2.redhat.com
-	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
+	(Exim 4.71) (envelope-from <imammedo@redhat.com>)
+	id 1cg9np-0002mG-Ek; Tue, 21 Feb 2017 07:44:21 -0500
+Received: from int-mx14.intmail.prod.int.phx2.redhat.com
+	(int-mx14.intmail.prod.int.phx2.redhat.com [10.5.11.27])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 941993A7695;
-	Tue, 21 Feb 2017 12:34:45 +0000 (UTC)
-Received: from blackfin.pond.sub.org (ovpn-116-55.ams2.redhat.com
-	[10.36.116.55])
-	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id v1LCYfjj011814
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=NO); Tue, 21 Feb 2017 07:34:42 -0500
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
-	id D418F1138650; Tue, 21 Feb 2017 13:34:39 +0100 (CET)
-From: Markus Armbruster <armbru@redhat.com>
-To: qemu-devel@nongnu.org
-Date: Tue, 21 Feb 2017 13:34:31 +0100
-Message-Id: <1487680479-15132-4-git-send-email-armbru@redhat.com>
-In-Reply-To: <1487680479-15132-1-git-send-email-armbru@redhat.com>
-References: <1487680479-15132-1-git-send-email-armbru@redhat.com>
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
+	by mx1.redhat.com (Postfix) with ESMTPS id 55A9A80476;
+	Tue, 21 Feb 2017 12:44:21 +0000 (UTC)
+Received: from nial.brq.redhat.com (dhcp-1-118.brq.redhat.com [10.34.1.118])
+	by int-mx14.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id v1LCiIb4032327; Tue, 21 Feb 2017 07:44:18 -0500
+Date: Tue, 21 Feb 2017 13:44:16 +0100
+From: Igor Mammedov <imammedo@redhat.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+Message-ID: <20170221134416.5803b3e5@nial.brq.redhat.com>
+In-Reply-To: <CAFEAcA-VAY8LM+8jE4B-L=0QdcY5FLvwmwGVbUhcXjnC9-AW+w@mail.gmail.com>
+References: <1487357795-52614-1-git-send-email-imammedo@redhat.com>
+	<CAFEAcA9JWzUEmGa2Wxd5xPE4dVknOKBkt=wMda7CAgxzrgOc+w@mail.gmail.com>
+	<20170220195500.332a4844@nial.brq.redhat.com>
+	<CAFEAcA-VAY8LM+8jE4B-L=0QdcY5FLvwmwGVbUhcXjnC9-AW+w@mail.gmail.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.27
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.29]);
-	Tue, 21 Feb 2017 12:34:46 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.28]);
+	Tue, 21 Feb 2017 12:44:21 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 209.132.183.28
-Subject: [Qemu-devel] [PULL 03/11] hw: Default -drive to if=none instead of
- ide when ide cannot work
-X-BeenThere: qemu-devel@nongnu.org
+Subject: Re: [Qemu-arm] [Qemu-devel] [RFC 0/3] generalize parsing of
+ cpu_model
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
-	Stefano Stabellini <sstabellini@kernel.org>, Jia Liu <proljc@gmail.com>,
-	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
-	Anthony Green <green@moxielogic.com>, Laurent Vivier <laurent@vivier.eu>,
-	Fabien Chouteau <chouteau@adacore.com>, Alexander Graf <agraf@suse.de>,
-	Max Filippov <jcmvbkbc@gmail.com>,
-	Michael Walle <michael@walle.cc>, qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
-	Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
-	Anthony Perard <anthony.perard@citrix.com>,
-	"Edgar E . Iglesias" <edgar.iglesias@gmail.com>,
-	Guan Xuetao <gxt@mprc.pku.edu.cn>, xen-devel@lists.xensource.com,
-	Artyom Tarasenko <atar4qemu@gmail.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Cy38bF4aMNTO
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Eduardo Habkost <ehabkost@redhat.com>,
+	"Michael S. Tsirkin" <mst@redhat.com>,
+	Stefan Hajnoczi <stefanha@gmail.com>,
+	"patches@linaro.org" <patches@linaro.org>,
+	QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
+	"qemu-ppc@nongnu.org" <qemu-ppc@nongnu.org>,
+	Marcel Apfelbaum <marcel@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+	David Gibson <david@gibson.dropbear.id.au>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: q7mB2Dv99AUs
 
-Block backends defined with -drive if=ide are meant to be picked up by
-machine initialization code: a suitable frontend gets created and
-wired up automatically.
+On Mon, 20 Feb 2017 19:11:00 +0000
+Peter Maydell <peter.maydell@linaro.org> wrote:
 
-if=ide drives not picked up that way can still be used with -device as
-if they had if=none, but that's unclean and best avoided.  Unused ones
-produce an "Orphaned drive without device" warning.
+> On 20 February 2017 at 18:55, Igor Mammedov <imammedo@redhat.com> wrote:
+> > Peter Maydell <peter.maydell@linaro.org> wrote:  
+[...]
+> 
+> > its sole user netduino2 board has cpu_model hardcodded
+> > at board level which could be left alone or converted
+> > to this API.  
+> 
+> I think this may be for the benefit of the not-yet-in-tree
+> netduinoplus2 board, which is a very similar SoC but
+> with a cortex-m4. There are likely other ways we could
+> model that, though.
+> 
+> > Using API would make code more consistent
+> > at the cost of more code for default/valid callbacks.  
+> 
+> Mmm, we could have the board code just forward the
+> default/valid callbacks through to the SoC (which
+> would then either implement them or forward them again).
+> But I think we should definitely see if we can make
+> the code for handling "the CPU is actually inside some
+> other object" as clean as we can, because I think
+> that's by far the most common case. Machines like
+> the x86 pc and the ARM virt board where the CPU is
+> instantiated directly in the board code are the
+> non-standard cases I think. We have a lot of boards
+> where we do instantiate the CPU in the board code
+> just for legacy reasons where we don't properly
+> model the SoC the CPU is inside. But hardware that
+> really has the CPU as a top level pluggable object
+> is rare.
 
--drive parameter "if" is optional, and the default depends on the
-machine type.  If a machine type doesn't specify a default, the
-default is "ide".
+If we are to ditch legacy approach,
+It would be cleaner for SoC to have fixed/unconfigurable
+CPU type and each SoC being modeled as a separate
+QOM object/type that would instantiate CPU directly
+with QOM style, using type name, like:
 
-Many machine types implicitly default to if=ide that way, even though
-they don't actually have an IDE controller.  This makes no sense.
+    cpu = object_new(TYPE_FOO_CPU)
+    set props if necessary               
+    object_property_set_bool(cpu, true, "realized", &err)
+    object_unref(cpu)
 
-Change the implicit default to if=none.  Affected machines:
+or similar with extra check/logic on top of plain object_new()
 
-* all targets: none
-* aarch64/arm: akita ast2500 canon cheetah collie connex imx25
-  integratorcp kzm lm3s6965evb lm3s811evb mainstone musicpal n800 n810
-  netduino2 nuri palmetto realview romulus sabrelite smdkc210 sx1 sx1
-  verdex z2
-* cris: axis-dev88
-* i386/x86_64: xenpv
-* lm32: lm32-evr lm32-uclinux milkymist
-* m68k: an5206 dummy mcf5208evb
-* microblaze/microblazeel: petalogix-ml605 petalogix-s3adsp1800
-* mips/mips64/mips64el/mipsel: mipssim
-* moxie: moxiesim
-* or32: or32-sim
-* ppc/ppc64/ppcemb: bamboo ref405ep taihu virtex-ml507
-* ppc/ppc64: mpc8544ds ppce500
-* sh4/sh4eb: shix
-* sparc: leon3_generic
-* sparc64: niagara
-* tricore: tricore_testboard
-* unicore32: puv3
-* xtensa/xtensaeb: kc705 lx200 lx60 ml605 sim
+    prepare cpu_opts for cpu type TYPE_FOO_CPU
+    cpu = qdev_device_add(cpu_opts)
+    object_unref(cpu)
 
-None of these machines have an IDE controller, let alone code to
-honor if=ide.
+instead of using cpu_init/cpu_foo_init/cpu_generic_init()
+with cpu_model parsing logic which is not really needed
+there as concrete SoC model knows exact CPU type.
 
-Cc: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-arm@nongnu.org
-Cc: Edgar E. Iglesias <edgar.iglesias@gmail.com>
-Cc: Stefano Stabellini <sstabellini@kernel.org>
-Cc: Anthony Perard <anthony.perard@citrix.com>
-Cc: xen-devel@lists.xensource.com
-Cc: Michael Walle <michael@walle.cc>
-Cc: Laurent Vivier <laurent@vivier.eu>
-Cc: Anthony Green <green@moxielogic.com>
-Cc: Jia Liu <proljc@gmail.com>
-Cc: Alexander Graf <agraf@suse.de>
-Cc: qemu-ppc@nongnu.org
-Cc: Magnus Damm <magnus.damm@gmail.com>
-Cc: Fabien Chouteau <chouteau@adacore.com>
-Cc: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
-Cc: Artyom Tarasenko <atar4qemu@gmail.com>
-Cc: Bastian Koppelmann <kbastian@mail.uni-paderborn.de>
-Cc: Guan Xuetao <gxt@mprc.pku.edu.cn>
-Cc: Max Filippov <jcmvbkbc@gmail.com>
-Signed-off-by: Markus Armbruster <armbru@redhat.com>
-Acked-By: Artyom Tarasenko <atar4qemu@gmail.com>
-Reviewed-by: Laurent Vivier <laurent@vivier.eu>
-Reviewed-by: Thomas Huth <thuth@redhat.com>
-Message-Id: <1487153147-11530-4-git-send-email-armbru@redhat.com>
----
- include/sysemu/blockdev.h | 9 ++++-----
- 1 file changed, 4 insertions(+), 5 deletions(-)
+It should work for CPUs that are converted to QOM types,
+i.e. a cpu_model maps to a distinct QOM type but we
+still have legacy cpu_model handling where we have
+not completely QOMifed single base CPU types, ex.
 
-diff --git a/include/sysemu/blockdev.h b/include/sysemu/blockdev.h
-index 16432f3..351a039 100644
---- a/include/sysemu/blockdev.h
-+++ b/include/sysemu/blockdev.h
-@@ -19,12 +19,11 @@ void blockdev_auto_del(BlockBackend *blk);
- typedef enum {
-     IF_DEFAULT = -1,            /* for use with drive_add() only */
-     /*
--     * IF_IDE must be zero, because we want MachineClass member
--     * block_default_type to default-initialize to IF_IDE
-+     * IF_NONE must be zero, because we want MachineClass member
-+     * block_default_type to default-initialize to IF_NONE
-      */
--    IF_IDE = 0,
--    IF_NONE,
--    IF_SCSI, IF_FLOPPY, IF_PFLASH, IF_MTD, IF_SD, IF_VIRTIO, IF_XEN,
-+    IF_NONE = 0,
-+    IF_IDE, IF_SCSI, IF_FLOPPY, IF_PFLASH, IF_MTD, IF_SD, IF_VIRTIO, IF_XEN,
-     IF_COUNT
- } BlockInterfaceType;
- 
--- 
-2.7.4
+  cpu_mips_init(const char *cpu_model) 
+      cpudef = get_feature_set_by_name(cpu+model)
+      cpu = object_new(TYPE_MIPS_CPU)
+      cpu->cpudef = cdef
+
+which rely on cpu_model parsing like x86 used to be
+before conversion from a single CPU type to a set
+of concrete classes. QOMification of remaining
+CPUs that rely on legacy cpu_model could be idea
+for gsoc/outreachy project so students could learn
+about QEMU internals (CCing Stefan). 
+
+> 
+> thanks
+> -- PMM
+> 
 

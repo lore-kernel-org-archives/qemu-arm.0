@@ -1,80 +1,72 @@
-Received: by 10.25.0.147 with SMTP id 141csp547014lfa;
-        Tue, 21 Feb 2017 07:19:54 -0800 (PST)
-X-Received: by 10.55.203.88 with SMTP id d85mr27300204qkj.169.1487690394410;
-        Tue, 21 Feb 2017 07:19:54 -0800 (PST)
+Received: by 10.103.98.197 with SMTP id w188csp434382vsb;
+        Tue, 21 Feb 2017 07:24:55 -0800 (PST)
+X-Received: by 10.55.146.4 with SMTP id u4mr24108677qkd.37.1487690695201;
+        Tue, 21 Feb 2017 07:24:55 -0800 (PST)
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id v27si15296503qkv.152.2017.02.21.07.19.54
+        by mx.google.com with ESMTPS id r3si15322959qkb.62.2017.02.21.07.24.54
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 21 Feb 2017 07:19:54 -0800 (PST)
+        Tue, 21 Feb 2017 07:24:55 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@codeaurora.org;
-       dkim=fail header.i=@codeaurora.org;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:46257 helo=lists.gnu.org)
+       dkim=fail header.i=@linaro.org;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:46295 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1cgCEL-00027G-N0
-	for alex.bennee@linaro.org; Tue, 21 Feb 2017 10:19:53 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:36710)
+	id 1cgCJA-0006tT-ME
+	for alex.bennee@linaro.org; Tue, 21 Feb 2017 10:24:52 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:37766)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <okaya@codeaurora.org>) id 1cgBhL-0004CB-3D
-	for qemu-devel@nongnu.org; Tue, 21 Feb 2017 09:45:48 -0500
+	(envelope-from <peter.maydell@linaro.org>) id 1cgBj7-0005wN-33
+	for qemu-devel@nongnu.org; Tue, 21 Feb 2017 09:47:38 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <okaya@codeaurora.org>) id 1cgBhK-00015T-07
-	for qemu-devel@nongnu.org; Tue, 21 Feb 2017 09:45:47 -0500
-Received: from smtp.codeaurora.org ([198.145.29.96]:35932)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <okaya@codeaurora.org>)
-	id 1cgBhA-0000xi-MG; Tue, 21 Feb 2017 09:45:36 -0500
-Received: by smtp.codeaurora.org (Postfix, from userid 1000)
-	id 2735660C69; Tue, 21 Feb 2017 14:45:34 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=codeaurora.org;
-	s=default; t=1487688334;
-	bh=zupn1F5nmgPd/jFregCxWGoQOBoLH0uZQCrJ/vCvp0A=;
-	h=Subject:To:References:Cc:From:Date:In-Reply-To:From;
-	b=c/0tEc+jkxNCi87Mic5Rpds8gMbgWsjov6GteFD0U5friLkPHP5KcDTAqSeth9ASJ
-	ugtkFdt3F4mQ1L91/PQS/cozr3cf9g3weypSAB0zF/6sE2nynu+ke9AhId9Uax1eTo
-	QNu05QNM60OMuxcbi759O+F4hodLqu8PF90PQucU=
-Received: from [10.228.68.95] (global_nat1_iad_fw.qualcomm.com [129.46.232.65])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
-	(No client certificate requested)
-	(Authenticated sender: okaya@smtp.codeaurora.org)
-	by smtp.codeaurora.org (Postfix) with ESMTPSA id F0F4B60C52;
-	Tue, 21 Feb 2017 14:45:32 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=codeaurora.org;
-	s=default; t=1487688333;
-	bh=zupn1F5nmgPd/jFregCxWGoQOBoLH0uZQCrJ/vCvp0A=;
-	h=Subject:To:References:Cc:From:Date:In-Reply-To:From;
-	b=I8yjk6XUxz/yfKsmMhCr2uD3TD8bm9Szo+Eh1iEc27oXDlAY0hhGMangh9H4b9SEM
-	c1VVhbDdMgGgrM2Ny0+2eosXPuOdlEdFjlvac1knJ/pANo3XqeEJDKPSPqB+haCGxm
-	0AadFOOjUXSCvwYONZ/6BmIVD72EkOoQer0iI2rk=
-DMARC-Filter: OpenDMARC Filter v1.3.2 smtp.codeaurora.org F0F4B60C52
-Authentication-Results: pdx-caf-mail.web.codeaurora.org;
-	dmarc=none (p=none dis=none) header.from=codeaurora.org
-Authentication-Results: pdx-caf-mail.web.codeaurora.org;
-	spf=none smtp.mailfrom=okaya@codeaurora.org
-To: Eric Auger <eric.auger@redhat.com>, eric.auger.pro@gmail.com,
-	peter.maydell@linaro.org, alex.williamson@redhat.com, qemu-arm@nongnu.org, 
-	qemu-devel@nongnu.org
-References: <1487683100-16013-1-git-send-email-eric.auger@redhat.com>
-	<1487683100-16013-2-git-send-email-eric.auger@redhat.com>
-From: Sinan Kaya <okaya@codeaurora.org>
-Message-ID: <98d4d9e8-761c-76f9-ecb0-c5a4a658dfab@codeaurora.org>
-Date: Tue, 21 Feb 2017 09:45:31 -0500
-User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:45.0) Gecko/20100101
-	Thunderbird/45.7.1
+	(envelope-from <peter.maydell@linaro.org>) id 1cgBj6-000248-Ap
+	for qemu-devel@nongnu.org; Tue, 21 Feb 2017 09:47:37 -0500
+Received: from mail-wm0-x234.google.com ([2a00:1450:400c:c09::234]:34596)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1cgBj6-00023r-4Z
+	for qemu-devel@nongnu.org; Tue, 21 Feb 2017 09:47:36 -0500
+Received: by mail-wm0-x234.google.com with SMTP id 196so29530327wmm.1
+	for <qemu-devel@nongnu.org>; Tue, 21 Feb 2017 06:47:35 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=OlJ64C3MmQLbVD9E1vmLstXSLxSPqsI8RT3aO5qcto8=;
+	b=ksVx0RALmHDG0qhK0/kuiFPY0cAUHmjcnd3YTXI1qT1LzjAVomSsV2aVn9+8U6+y33
+	UmwL1z9mzz3cQNWa3Yr9v9tvxi25lI7M1HPJUR+RZI+6D9VyBFtqjg7NozSJW3w1fkha
+	7DXlMud3gM100+EgLw2LR2uexJCekagB1dH7c=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=OlJ64C3MmQLbVD9E1vmLstXSLxSPqsI8RT3aO5qcto8=;
+	b=VmMN11GsajFpjlezodjnLxImqNljmBtBBC1Yt7TRbwUjOW2VjCI8d7XyVuTBsG7SsH
+	9CfNHB0Xdf2Yrtx3rD+E8O8hCUVNkg91qwb/wWGB9E87abfLjI2utm/cu2vkKLyChu3p
+	hFp5o0DKo7mNdluHeoB/ErMxB3A3+d3fe4SjFgAM/8LX/wY5X9DtCItQj3VJLBNfFpHj
+	HD3k5VzSRg0HPfQEfFoyyvtQw8ZcvJsGeotSem5fgx1WUsa2ovBRb6DoQF/49NlxQsF8
+	vQgZldySuWBj5GEUVRtIPSfDORPAa3jImRUUFza78VRWSiqMssnwKeY9aH2uGJxCUwiD
+	9wJw==
+X-Gm-Message-State: AMke39kcD9KorHVnvqUw5QZ0d8KQzKd+hkdlz/PX+b6SU3R/EZjLQi7rSKHBjrr6CHSy4dKHdw6Vx6Nyh/sla53C
+X-Received: by 10.28.55.199 with SMTP id e190mr24361273wma.92.1487688454715;
+	Tue, 21 Feb 2017 06:47:34 -0800 (PST)
 MIME-Version: 1.0
-In-Reply-To: <1487683100-16013-2-git-send-email-eric.auger@redhat.com>
-Content-Type: text/plain; charset=windows-1252
-Content-Transfer-Encoding: 7bit
+Received: by 10.223.145.69 with HTTP; Tue, 21 Feb 2017 06:47:14 -0800 (PST)
+In-Reply-To: <332706f6-7b54-89db-6b89-5684362fb2e3@ispras.ru>
+References: <076b0d94-738e-252c-1ed8-4640a864ac34@ispras.ru>
+	<CAFEAcA-zURkUb28wVA347AFJX5Wa4GyXbFSVmUDH1BSXRMA+rQ@mail.gmail.com>
+	<4d2f2d04-e294-bdad-4f77-9a0171357d05@ispras.ru>
+	<332706f6-7b54-89db-6b89-5684362fb2e3@ispras.ru>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 21 Feb 2017 14:47:14 +0000
+Message-ID: <CAFEAcA-cQwhF5B8cZHVZsJvde_NHhL8iPr4ATr0y=a2yyg1n1w@mail.gmail.com>
+To: Kurban Mallachiev <mallachiev@ispras.ru>
+Content-Type: text/plain; charset=UTF-8
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 198.145.29.96
-Subject: Re: [Qemu-devel] [PATCH 1/2] vfio/platform: make the vfio-platform
- device non abstract
+X-Received-From: 2a00:1450:400c:c09::234
+Subject: Re: [Qemu-devel] [PATCH v3] ARM i.MX timers: fix software reset
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -86,30 +78,38 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
 	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: pelcan@codeaurora.org, vikrams@codeaurora.org, shankerd@codeaurora.org,
-	agraf@suse.de
+Cc: qemu-arm <qemu-arm@nongnu.org>, Peter Chubb <peter.chubb@nicta.com.au>,
+	QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: BM/AEI29q3L1
+X-TUID: milNdwCvxBy0
 
-Hi Eric,
-Thanks for the long anticipated patch.
+On 19 February 2017 at 19:00, Kurban Mallachiev <mallachiev@ispras.ru> wrote:
+> Hello!
+>
+> Problem: function imx_gpt_reset is used for soft (requested by guest) and
+> hard resets. But soft and hard resets should have different behaviour (hard
+> reset should clear all registers, while soft reset should preserve some
+> bits).
+>
+> Patch changelog:
+> v1 -> v2: use different approach, patch completely rewritten
+> v2 -> v3: in software reset add preserving of CLKSRC bit as manual says
+>
+> ---
+> Software reset function clears CR bits that should not be cleared and
+> preserve bits that should be cleared.
+>
+> Signed-off-by: Kurban Mallachiev <mallachiev@ispras.ru>
 
-On 2/21/2017 8:18 AM, Eric Auger wrote:
-> +    DEFINE_PROP_STRING("manufacturer", VFIOPlatformDevice, manufacturer),
-> +    DEFINE_PROP_STRING("model", VFIOPlatformDevice, model),
+Thanks for this patch -- I have added it to my target-arm queue
+(with a few tweaks).
 
-The OF string is not always of the format "manufacturer, model".
+Unfortunately your mail client mangled the patch a bit, and I had
+to apply it manually. I'm happy to do that for occasional contributions,
+but if you're planning to submit a lot of patches in the near future
+you might like to look at your patch submission workflow (we usually
+recommend 'git send-email').
 
-HIDMA for instance uses a syntax of "qcom, hidma-1.0" and "qcom, hidma-2.0".
-This syntax is used for cases where an IP gets used in multiple SOCs. 
-
-Maybe, we should call it just compatible-string and try not to make meaning
-out of it.
-
-Sinan
-
--- 
-Sinan Kaya
-Qualcomm Datacenter Technologies, Inc. as an affiliate of Qualcomm Technologies, Inc.
-Qualcomm Technologies, Inc. is a member of the Code Aurora Forum, a Linux Foundation Collaborative Project.
+thanks
+-- PMM

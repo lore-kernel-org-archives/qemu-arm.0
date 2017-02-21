@@ -1,76 +1,70 @@
-Received: by 10.103.98.197 with SMTP id w188csp398747vsb;
-        Tue, 21 Feb 2017 06:02:27 -0800 (PST)
-X-Received: by 10.55.26.98 with SMTP id a95mr24613471qka.223.1487685746959;
-        Tue, 21 Feb 2017 06:02:26 -0800 (PST)
+Received: by 10.103.98.197 with SMTP id w188csp399785vsb;
+        Tue, 21 Feb 2017 06:04:14 -0800 (PST)
+X-Received: by 10.55.48.143 with SMTP id w137mr3155345qkw.156.1487685854652;
+        Tue, 21 Feb 2017 06:04:14 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id r58si8537223qtb.43.2017.02.21.06.02.26
+        by mx.google.com with ESMTPS id e126si15134979qkd.333.2017.02.21.06.04.14
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 21 Feb 2017 06:02:26 -0800 (PST)
+        Tue, 21 Feb 2017 06:04:14 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        dkim=fail header.i=@linaro.org;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:45603 helo=lists.gnu.org)
+Received: from localhost ([::1]:45654 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1cgB1O-00061d-5A
-	for alex.bennee@linaro.org; Tue, 21 Feb 2017 09:02:26 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:47147)
+	id 1cgB38-0007Sw-4N
+	for alex.bennee@linaro.org; Tue, 21 Feb 2017 09:04:14 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:51188)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1cgAxO-0002Fu-SH
-	for qemu-arm@nongnu.org; Tue, 21 Feb 2017 08:58:19 -0500
+	(envelope-from <peter.maydell@linaro.org>) id 1cgB1r-0006fx-OI
+	for qemu-arm@nongnu.org; Tue, 21 Feb 2017 09:02:57 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1cgAxO-0003jx-DY
-	for qemu-arm@nongnu.org; Tue, 21 Feb 2017 08:58:19 -0500
-Received: from mail-wr0-x232.google.com ([2a00:1450:400c:c0c::232]:36805)
+	(envelope-from <peter.maydell@linaro.org>) id 1cgB1r-0006Tw-0n
+	for qemu-arm@nongnu.org; Tue, 21 Feb 2017 09:02:55 -0500
+Received: from mail-wr0-x229.google.com ([2a00:1450:400c:c0c::229]:34721)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1cgAxO-0003iD-6D
-	for qemu-arm@nongnu.org; Tue, 21 Feb 2017 08:58:18 -0500
-Received: by mail-wr0-x232.google.com with SMTP id 89so78012114wrr.3
-	for <qemu-arm@nongnu.org>; Tue, 21 Feb 2017 05:58:17 -0800 (PST)
+	id 1cgB1q-0006T3-Q3
+	for qemu-arm@nongnu.org; Tue, 21 Feb 2017 09:02:54 -0500
+Received: by mail-wr0-x229.google.com with SMTP id z61so82459535wrc.1
+	for <qemu-arm@nongnu.org>; Tue, 21 Feb 2017 06:02:54 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
 	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=itZP5Gd1mqvegQgXEMrJP7P+yQMmoxBx2kHgrogt2+A=;
-	b=csH5Tn6lClVK19poZsZ+mUFS4B7uhHOEt0A+dhlL+0f5LcXyfui7oPHF2+i4NwokJ6
-	tgX3Vki7UjYJppH8tUcA7A7GtRIrVly4i+Za/IyW/4g9TbRvYCjDoxERJKYzG1mPMvnS
-	Kv8SJshU+WyRwgRe9QHS071eTtObOwFKkylPU=
+	:cc; bh=cYOMrx/YbIiJ4aIEY9EF42sq0+nJjKmmlR6rQHd3cAA=;
+	b=AVO9WdhJ1qzhngZU+pDpI3ax9N5PbYQDxG29CV4eLkz9ZqioOv75VIi6jbEAmf5H22
+	VkJc9vvKlmDsd5Zt+FmuF/BiRfvHmaTZqE+E5N4IixidtCrYiYnIvD/s9WpdLZHO625V
+	Cs0wfC/Mil3w2L+NvwWdN9NCn0bfnC4p/E53w=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
 	:message-id:subject:to:cc;
-	bh=itZP5Gd1mqvegQgXEMrJP7P+yQMmoxBx2kHgrogt2+A=;
-	b=QhUU1iGpYcYiwhi3UwGfuRRtulY1kyquqUtJnyH4XkmVLHd2a8u/KgMW5hAA7X/U/L
-	fmvs+I7xd9CF7qoUB/gp2VsoW9IxON8cuM7MSOqqwFcYxEKMv1z/6K4d7FcoIPFbr6If
-	vmkmMIVhGg80ByClbGaRJtdX83fku5Ve01Nu/P54lBbCUsSMo4PY8t7079ZTEi//VV/0
-	lIR6baCKIqKnR+woQMrvyJrCQtZRbgh2AAu65y4oibIAHnysNlKrnKLwriZO7KinQ4C3
-	aiZWXNu5ZbRzozzvEQjABr2OiOcB/vnMD7MXQISWA7JiFPkpNlLnU3QGiJqjBfE4+1NA
-	cN8w==
-X-Gm-Message-State: AMke39klwuaFUSt4WIR3M31CeWVX18Z7hr12eB+xct3T2VrhHkETWADBSQx6c/WI+hZoY0jYd/LQ8chs/Y9FQIV8
-X-Received: by 10.223.169.76 with SMTP id u70mr10108918wrc.187.1487685496962; 
-	Tue, 21 Feb 2017 05:58:16 -0800 (PST)
+	bh=cYOMrx/YbIiJ4aIEY9EF42sq0+nJjKmmlR6rQHd3cAA=;
+	b=GVUHDDoT6ujJTUjxWVNsSkXv51H6WdVhpv67gVo9hc+mVceW66nd/sYq7kahZxaVIL
+	HcZ2tHv/XN6us1YYiWQSgMj1kDHGwD+tds6sRtPlljHs/vUasflu5FkoxYt0M0cARzoh
+	+x/YzFDoz3eXOCUTithBKUBiko7FfeuIL6T5jLWXBQCqdl/3BTU9hwzCLOppVAx2gsl/
+	COPExBcOGXDHuzJIbY2GDIRWZui1fEYQhF6v6dyg8Jif1ECVUgbThzugRUxylYo3KK0f
+	npUYjolec7N2oyqqVr8RRO7rq4Q2dXqZIWmRTl02O+Ig8yfdaZGhmc/5CEvRqNP09ykr
+	0mhA==
+X-Gm-Message-State: AMke39kHpuEQPtuQMWzin/4Wtc3gAvr3qfg7DPRTCjSU5/8rYREdL41HGu1fsBdQmXNDr1mmemRaWEmo3hQvFVRC
+X-Received: by 10.223.152.241 with SMTP id w104mr10235657wrb.151.1487685773428;
+	Tue, 21 Feb 2017 06:02:53 -0800 (PST)
 MIME-Version: 1.0
-Received: by 10.223.145.69 with HTTP; Tue, 21 Feb 2017 05:57:56 -0800 (PST)
-In-Reply-To: <87poibr6kv.fsf@dusky.pond.sub.org>
-References: <1487357795-52614-1-git-send-email-imammedo@redhat.com>
-	<CAFEAcA9JWzUEmGa2Wxd5xPE4dVknOKBkt=wMda7CAgxzrgOc+w@mail.gmail.com>
-	<20170220195500.332a4844@nial.brq.redhat.com>
-	<CAFEAcA-VAY8LM+8jE4B-L=0QdcY5FLvwmwGVbUhcXjnC9-AW+w@mail.gmail.com>
-	<20170221134416.5803b3e5@nial.brq.redhat.com>
-	<CAFEAcA-MggU5T1fO8GonkSpLF0SNe0jtygEHtEBkpWC8hyShSw@mail.gmail.com>
-	<87poibr6kv.fsf@dusky.pond.sub.org>
+Received: by 10.223.145.69 with HTTP; Tue, 21 Feb 2017 06:02:32 -0800 (PST)
+In-Reply-To: <1487681108-14452-1-git-send-email-eric.auger@redhat.com>
+References: <1487681108-14452-1-git-send-email-eric.auger@redhat.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 21 Feb 2017 13:57:56 +0000
-Message-ID: <CAFEAcA-75VPiOzPauZO4ukYVYWffB1cu1-tsQs6Hs8m8Vf41OQ@mail.gmail.com>
-To: Markus Armbruster <armbru@redhat.com>
+Date: Tue, 21 Feb 2017 14:02:32 +0000
+Message-ID: <CAFEAcA_MYmGBwPtVXFvywjp5DQ-R+opo2nvVJbHfASwdY9Do-A@mail.gmail.com>
+To: Eric Auger <eric.auger@redhat.com>
 Content-Type: text/plain; charset=UTF-8
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2a00:1450:400c:c0c::232
-Subject: Re: [Qemu-arm] [Qemu-devel] [RFC 0/3] generalize parsing of
- cpu_model
+X-Received-From: 2a00:1450:400c:c0c::229
+Subject: Re: [Qemu-arm] [PATCH v3] hw/arm/virt: Add a user option to
+ disallow ITS instantiation
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -82,26 +76,24 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Eduardo Habkost <ehabkost@redhat.com>,
-	"patches@linaro.org" <patches@linaro.org>,
-	Stefan Hajnoczi <stefanha@gmail.com>,
-	"Michael S. Tsirkin" <mst@redhat.com>,
-	QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
-	"qemu-ppc@nongnu.org" <qemu-ppc@nongnu.org>,
-	Paolo Bonzini <pbonzini@redhat.com>, Marcel Apfelbaum <marcel@redhat.com>,
-	Igor Mammedov <imammedo@redhat.com>,
-	David Gibson <david@gibson.dropbear.id.au>
+Cc: Andrew Jones <drjones@redhat.com>, qemu-arm <qemu-arm@nongnu.org>,
+	QEMU Developers <qemu-devel@nongnu.org>,
+	Vijay Kilari <vijay.kilari@gmail.com>, eric.auger.pro@gmail.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: H2M99N66PhQB
+X-TUID: Jwau/v2COZRV
 
-On 21 February 2017 at 13:56, Markus Armbruster <armbru@redhat.com> wrote:
-> -global is a qdev thing.
+On 21 February 2017 at 12:45, Eric Auger <eric.auger@redhat.com> wrote:
+> In 2.9 ITS will block save/restore and migration use cases. As such,
+> let's introduce a user option that allows to turn its instantiation
+> off, along with GICv3. With the "its" option turned false, migration
+> will be possible, obviously at the expense of MSI support (with GICv3).
+>
+> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+>
 
-...which reminds me to ask: is there any hope for unifying
-our properties so we don't have both "qdev properties" and
-"qom properties" or are we doomed to two distinct sets of
-APIs forever?
 
-thanks
+
+Applied to target-arm.next, thanks.
+
 -- PMM

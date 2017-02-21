@@ -1,61 +1,63 @@
-Received: by 10.25.0.147 with SMTP id 141csp588689lfa;
-        Tue, 21 Feb 2017 09:00:02 -0800 (PST)
-X-Received: by 10.200.52.108 with SMTP id v41mr540143qtb.240.1487696402124;
-        Tue, 21 Feb 2017 09:00:02 -0800 (PST)
+Received: by 10.25.0.147 with SMTP id 141csp592920lfa;
+        Tue, 21 Feb 2017 09:08:13 -0800 (PST)
+X-Received: by 10.200.45.137 with SMTP id p9mr6026156qta.201.1487696893202;
+        Tue, 21 Feb 2017 09:08:13 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id o4si2929696qta.45.2017.02.21.09.00.01
+        by mx.google.com with ESMTPS id v33si15518569qtv.194.2017.02.21.09.08.12
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 21 Feb 2017 09:00:02 -0800 (PST)
+        Tue, 21 Feb 2017 09:08:13 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:46958 helo=lists.gnu.org)
+Received: from localhost ([::1]:47013 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1cgDnD-0005Pa-AK
-	for alex.bennee@linaro.org; Tue, 21 Feb 2017 11:59:59 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:59664)
+	id 1cgDv8-0005YC-H6
+	for alex.bennee@linaro.org; Tue, 21 Feb 2017 12:08:10 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:34266)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <ehabkost@redhat.com>) id 1cgCqF-0006Nz-PC
-	for qemu-arm@nongnu.org; Tue, 21 Feb 2017 10:59:04 -0500
+	(envelope-from <ehabkost@redhat.com>) id 1cgD08-0007UR-Mc
+	for qemu-arm@nongnu.org; Tue, 21 Feb 2017 11:09:18 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <ehabkost@redhat.com>) id 1cgCqB-0001he-Rl
-	for qemu-arm@nongnu.org; Tue, 21 Feb 2017 10:59:03 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:47302)
+	(envelope-from <ehabkost@redhat.com>) id 1cgD07-0004SN-Go
+	for qemu-arm@nongnu.org; Tue, 21 Feb 2017 11:09:16 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:37368)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <ehabkost@redhat.com>)
-	id 1cgCqB-0001hQ-ML; Tue, 21 Feb 2017 10:58:59 -0500
-Received: from int-mx14.intmail.prod.int.phx2.redhat.com
-	(int-mx14.intmail.prod.int.phx2.redhat.com [10.5.11.27])
+	id 1cgD07-0004Ry-8g; Tue, 21 Feb 2017 11:09:15 -0500
+Received: from int-mx10.intmail.prod.int.phx2.redhat.com
+	(int-mx10.intmail.prod.int.phx2.redhat.com [10.5.11.23])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 259B4C04BD2E;
-	Tue, 21 Feb 2017 15:58:59 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id 6136E61BB9;
+	Tue, 21 Feb 2017 16:09:15 +0000 (UTC)
 Received: from localhost (ovpn-116-33.gru2.redhat.com [10.97.116.33])
-	by int-mx14.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id v1LFwwkw003391; Tue, 21 Feb 2017 10:58:58 -0500
-Date: Tue, 21 Feb 2017 12:58:56 -0300
+	by int-mx10.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id v1LG9EA7014297; Tue, 21 Feb 2017 11:09:14 -0500
+Date: Tue, 21 Feb 2017 13:09:12 -0300
 From: Eduardo Habkost <ehabkost@redhat.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Message-ID: <20170221155856.GD2778@thinpad.lan.raisama.net>
+To: Igor Mammedov <imammedo@redhat.com>
+Message-ID: <20170221160912.GF2778@thinpad.lan.raisama.net>
 References: <1486996099-15820-1-git-send-email-peter.maydell@linaro.org>
-	<CAFEAcA98V-3EMDS+o9HnAdY14JDoY4i8yYyFP=OiK8QXMSWvmA@mail.gmail.com>
+	<1486996099-15820-5-git-send-email-peter.maydell@linaro.org>
+	<20170220201029.441d825b@nial.brq.redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <CAFEAcA98V-3EMDS+o9HnAdY14JDoY4i8yYyFP=OiK8QXMSWvmA@mail.gmail.com>
+In-Reply-To: <20170220201029.441d825b@nial.brq.redhat.com>
 X-Fnord: you can see the fnord
 User-Agent: Mutt/1.7.1 (2016-10-04)
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.27
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.23
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.31]);
-	Tue, 21 Feb 2017 15:58:59 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.39]);
+	Tue, 21 Feb 2017 16:09:15 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [PATCH 0/4] cpu: Implement cpu_generic_new()
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH 4/4] hw/arm/virt: Use new
+ cpu_generic_new()
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -67,56 +69,106 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
-	"patches@linaro.org" <patches@linaro.org>
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org, patches@linaro.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: KzOvPvR/tylA
+X-TUID: ZeLsZPTeXaBL
 
-On Thu, Feb 16, 2017 at 04:40:43PM +0000, Peter Maydell wrote:
-> On 13 February 2017 at 14:28, Peter Maydell <peter.maydell@linaro.org> wrote:
-> > This patchset adds a new function cpu_generic_new()
-> > which is similar to cpu_generic_init() except that it
-> > does not realize the created CPU object. This means that
-> > board code can do a "new cpu; set QOM properties; realize"
-> > sequence without having to do all the work of splitting
-> > the CPU model string and calling parse_features by hand.
-> >
-> > Patch 2 clarifies a TODO comment, hopefully correctly,
-> > based on an email conversation I had with Eduardo a
-> > little while back.
-> >
-> > Patches 3 and 4 change the ARM boards which currently
-> > call parse_features by hand to use the new function.
-> >
-> >
-> > If there's consensus that this is the right general
-> > direction to go in, then I think that some other
-> > architectures could also make cleanups to use this:
-> >  * cpu_s390x_create() is almost exactly this function,
-> >    give or take some fine detail of error handling
-> >  * ppc_cpu_parse_features is almost the same thing,
-> >    except that it doesn't actually create the CPU object,
-> >    it only calls parse_features
-> >  * hw/i386/pc.c does a manual parse_features
-> >
-> > I'm not strongly attached to this particular approach
-> > (though it seems like a reasonable one, especially given
-> > the proliferation of different arch-specific helpers
-> > listed above and the bugs in boards which don't call
-> > parse_features when they should), but I would like us to
-> > figure out and document what the right way for a board
-> > to create and configure its CPU objects is...
+On Mon, Feb 20, 2017 at 08:10:29PM +0100, Igor Mammedov wrote:
+> On Mon, 13 Feb 2017 14:28:19 +0000
+> Peter Maydell <peter.maydell@linaro.org> wrote:
 > 
-> I know it's only been a few days, but I just wanted to
-> say that I'd appreciate it if we could manage relatively
-> quick review on this one, since I have a set of patches
-> pending that depend on this and which it would be nice
-> to get into 2.9 (softfreeze approaching rapidly).
+> > Use the new cpu_generic_new() rather than calling
+> > parse_features by hand.
+> > 
+> > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> > ---
+> >  hw/arm/virt.c | 24 ++----------------------
+> >  1 file changed, 2 insertions(+), 22 deletions(-)
+> > 
+> > diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+> > index f3440f2..bcb9a6d 100644
+> > --- a/hw/arm/virt.c
+> > +++ b/hw/arm/virt.c
+> > @@ -172,7 +172,6 @@ static const char *valid_cpus[] = {
+> >  static bool cpuname_valid(const char *cpu)
+> >  {
+> >      int i;
+> > -
+> >      for (i = 0; i < ARRAY_SIZE(valid_cpus); i++) {
+> >          if (strcmp(cpu, valid_cpus[i]) == 0) {
+> >              return true;
+> > @@ -1206,10 +1205,6 @@ static void machvirt_init(MachineState *machine)
+> >      MemoryRegion *ram = g_new(MemoryRegion, 1);
+> >      const char *cpu_model = machine->cpu_model;
+> >      char **cpustr;
+> > -    ObjectClass *oc;
+> > -    const char *typename;
+> > -    CPUClass *cc;
+> > -    Error *err = NULL;
+> >      bool firmware_loaded = bios_name || drive_get(IF_PFLASH, 0, 0);
+> >      uint8_t clustersz;
+> >  
+> > @@ -1240,6 +1235,7 @@ static void machvirt_init(MachineState *machine)
+> >          error_report("mach-virt: CPU %s not supported", cpustr[0]);
+> >          exit(1);
+> >      }
+> > +    g_strfreev(cpustr);
+> >  
+> >      /* If we have an EL3 boot ROM then the assumption is that it will
+> >       * implement PSCI itself, so disable QEMU's internal implementation
+> > @@ -1309,24 +1305,8 @@ static void machvirt_init(MachineState *machine)
+> >  
+> >      create_fdt(vms);
+> >  
+> > -    oc = cpu_class_by_name(TYPE_ARM_CPU, cpustr[0]);
+> > -    if (!oc) {
+> > -        error_report("Unable to find CPU definition");
+> > -        exit(1);
+> > -    }
+> > -    typename = object_class_get_name(oc);
+> > -
+> > -    /* convert -smp CPU options specified by the user into global props */
+> > -    cc = CPU_CLASS(oc);
+> > -    cc->parse_features(typename, cpustr[1], &err);
+> > -    g_strfreev(cpustr);
+> > -    if (err) {
+> > -        error_report_err(err);
+> > -        exit(1);
+> > -    }
+> > -
+> >      for (n = 0; n < smp_cpus; n++) {
+> > -        Object *cpuobj = object_new(typename);
+> > +        Object *cpuobj = OBJECT(cpu_generic_new(TYPE_ARM_CPU, cpu_model));
+> It unnecessarily pushes cpu_model parsing farther down the call stack
+> when all we need for CPU creation is type name.
 
-I was away from work for the past 3 weeks and I am catching up on
-e-mail, right now. Is this proposal still up, or is this series
-obsoleted by something else?
+I don't see a problem in pushing it down the call stack.  It is
+just replacing logic that is duplicated on lots of boards to a
+wrapper. When we refactor the parsing logic, it will be easier to
+do it if parsing is inside a single wrapper insted of being
+duplicated on multiple boards.
+
+> 
+> Since I'm looking at adding '-device cpu' support to virt-arm,
+> I would prefer to leave object_new() here so that creation logic
+> would be similar to device_add and not mix '-cpu' parsing to typename
+> + global properties that could be moved to generic machine code
+> with actual CPU creation.
+
+We can still move parsing to generic machine code, with the new
+wrapper. While we don't do that, we can have a helper that makes
+the current API easier to use. Once we move parsing to generic
+machine code, we can easily replace cpu_generic_new() with
+object_new().
+
+> 
+> 
+> >          if (!vmc->disallow_affinity_adjustment) {
+> >              /* Adjust MPIDR like 64-bit KVM hosts, which incorporate the
+> >               * GIC's target-list limitations. 32-bit KVM hosts currently
+> 
 
 -- 
 Eduardo

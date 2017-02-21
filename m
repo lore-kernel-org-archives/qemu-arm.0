@@ -1,161 +1,128 @@
-Received: by 10.103.98.197 with SMTP id w188csp371958vsb;
-        Tue, 21 Feb 2017 04:56:05 -0800 (PST)
-X-Received: by 10.200.46.155 with SMTP id h27mr3922266qta.158.1487681765069;
-        Tue, 21 Feb 2017 04:56:05 -0800 (PST)
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 10.103.98.197 with SMTP id w188csp374615vsb;
+        Tue, 21 Feb 2017 05:02:48 -0800 (PST)
+X-Received: by 10.55.198.152 with SMTP id s24mr24073758qkl.255.1487682168586;
+        Tue, 21 Feb 2017 05:02:48 -0800 (PST)
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id i29si366658qte.46.2017.02.21.04.56.04
+        by mx.google.com with ESMTPS id 64si11591473qks.68.2017.02.21.05.02.48
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 21 Feb 2017 04:56:05 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Tue, 21 Feb 2017 05:02:48 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:44290 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:44402 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1cg9zA-0001GE-I5
-	for alex.bennee@linaro.org; Tue, 21 Feb 2017 07:56:04 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:48475)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1cgA5g-00086B-3Q
+	for alex.bennee@linaro.org; Tue, 21 Feb 2017 08:02:48 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:48413)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1cg9ea-0007gC-Qy
-	for qemu-devel@nongnu.org; Tue, 21 Feb 2017 07:34:50 -0500
+	(envelope-from <armbru@redhat.com>) id 1cg9eZ-0007ef-9q
+	for qemu-arm@nongnu.org; Tue, 21 Feb 2017 07:34:50 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1cg9eZ-00085I-Cl
-	for qemu-devel@nongnu.org; Tue, 21 Feb 2017 07:34:48 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:39024)
+	(envelope-from <armbru@redhat.com>) id 1cg9eW-00083S-1M
+	for qemu-arm@nongnu.org; Tue, 21 Feb 2017 07:34:47 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:39038)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <armbru@redhat.com>)
-	id 1cg9eU-00082D-De; Tue, 21 Feb 2017 07:34:42 -0500
-Received: from int-mx11.intmail.prod.int.phx2.redhat.com
-	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
+	id 1cg9eV-00082y-Sp; Tue, 21 Feb 2017 07:34:43 -0500
+Received: from int-mx10.intmail.prod.int.phx2.redhat.com
+	(int-mx10.intmail.prod.int.phx2.redhat.com [10.5.11.23])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 669AE13A5E;
-	Tue, 21 Feb 2017 12:34:42 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id 0C56837F1F;
+	Tue, 21 Feb 2017 12:34:44 +0000 (UTC)
 Received: from blackfin.pond.sub.org (ovpn-116-55.ams2.redhat.com
 	[10.36.116.55])
-	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id v1LCYfhj011812
+	by int-mx10.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id v1LCYgn4029937
 	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=NO); Tue, 21 Feb 2017 07:34:42 -0500
+	verify=NO); Tue, 21 Feb 2017 07:34:43 -0500
 Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
-	id D1041113864D; Tue, 21 Feb 2017 13:34:39 +0100 (CET)
+	id D9DD111386CE; Tue, 21 Feb 2017 13:34:39 +0100 (CET)
 From: Markus Armbruster <armbru@redhat.com>
 To: qemu-devel@nongnu.org
-Date: Tue, 21 Feb 2017 13:34:30 +0100
-Message-Id: <1487680479-15132-3-git-send-email-armbru@redhat.com>
+Date: Tue, 21 Feb 2017 13:34:33 +0100
+Message-Id: <1487680479-15132-6-git-send-email-armbru@redhat.com>
 In-Reply-To: <1487680479-15132-1-git-send-email-armbru@redhat.com>
 References: <1487680479-15132-1-git-send-email-armbru@redhat.com>
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.23
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
 	(mx1.redhat.com [10.5.110.29]);
-	Tue, 21 Feb 2017 12:34:42 +0000 (UTC)
+	Tue, 21 Feb 2017 12:34:44 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 209.132.183.28
-Subject: [Qemu-devel] [PULL 02/11] hw/arm/cubieboard hw/arm/xlnx-ep108: Fix
- units_per_default_bus
-X-BeenThere: qemu-devel@nongnu.org
+Subject: [Qemu-arm] [PULL 05/11] hw/arm/highbank: Default -drive to if=ide
+ instead of if=scsi
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Beniamino Galvani <b.galvani@gmail.com>,
-	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
-	qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
-	Alistair Francis <alistair.francis@xilinx.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: NPByq+3gJjfR
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Rob Herring <robh@kernel.org>, qemu-arm@nongnu.org,
+	Peter Maydell <peter.maydell@linaro.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: P3PMKThSBrTC
 
-Machine types cubieboard, xlnx-ep108, xlnx-zcu102 have an onboard AHCI
-controller, but neglect to set their MachineClass member
-units_per_default_bus = 1.  This permits -drive if=ide,unit=1, which
-makes no sense for AHCI.  It also screws up index=N for odd N, because
-it gets desugared to unit=1,bus=N/2
+These machines have no onboard SCSI HBA, and no way to plug one.
+-drive if=scsi therefore cannot work.  They do have an onboard IDE
+controller (sysbus-ahci), but fail to honor if=ide.
 
-Doesn't really matter, because these machine types fail to honor
--drive if=ide.  Add the missing units_per_default_bus = 1 anyway,
-along with a TODO comment on what needs to be done for -drive if=ide.
+Change their default to if=ide, and add a TODO comment on what needs
+to be done to actually honor -drive if=ide.
 
-Also set block_default_type = IF_IDE explicitly.  It's currently the
-default, but the next commit will change it to something more
-sensible, and we want to keep the IF_IDE default for these three
-machines.  See also the previous commit.
-
-Cc: Beniamino Galvani <b.galvani@gmail.com>
-Cc: Alistair Francis <alistair.francis@xilinx.com>
-Cc: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
+Cc: Rob Herring <robh@kernel.org>
 Cc: Peter Maydell <peter.maydell@linaro.org>
 Cc: qemu-arm@nongnu.org
 Signed-off-by: Markus Armbruster <armbru@redhat.com>
-Acked-by: Alistair Francis <alistair.francis@xilinx.com>
-Message-Id: <1487153147-11530-3-git-send-email-armbru@redhat.com>
+Reviewed-by: Thomas Huth <thuth@redhat.com>
+Message-Id: <1487153147-11530-6-git-send-email-armbru@redhat.com>
 ---
- hw/arm/cubieboard.c | 4 ++++
- hw/arm/xlnx-ep108.c | 6 ++++++
- 2 files changed, 10 insertions(+)
+ hw/arm/highbank.c | 8 ++++++--
+ 1 file changed, 6 insertions(+), 2 deletions(-)
 
-diff --git a/hw/arm/cubieboard.c b/hw/arm/cubieboard.c
-index dd19ba3..b98e1c4 100644
---- a/hw/arm/cubieboard.c
-+++ b/hw/arm/cubieboard.c
-@@ -71,6 +71,8 @@ static void cubieboard_init(MachineState *machine)
-     memory_region_add_subregion(get_system_memory(), AW_A10_SDRAM_BASE,
-                                 &s->sdram);
- 
-+    /* TODO create and connect IDE devices for ide_drive_get() */
-+
-     cubieboard_binfo.ram_size = machine->ram_size;
-     cubieboard_binfo.kernel_filename = machine->kernel_filename;
-     cubieboard_binfo.kernel_cmdline = machine->kernel_cmdline;
-@@ -82,6 +84,8 @@ static void cubieboard_machine_init(MachineClass *mc)
- {
-     mc->desc = "cubietech cubieboard";
-     mc->init = cubieboard_init;
-+    mc->block_default_type = IF_IDE;
-+    mc->units_per_default_bus = 1;
- }
- 
- DEFINE_MACHINE("cubieboard", cubieboard_machine_init)
-diff --git a/hw/arm/xlnx-ep108.c b/hw/arm/xlnx-ep108.c
-index 4ec590a..860780a 100644
---- a/hw/arm/xlnx-ep108.c
-+++ b/hw/arm/xlnx-ep108.c
-@@ -106,6 +106,8 @@ static void xlnx_ep108_init(MachineState *machine)
-         sysbus_connect_irq(SYS_BUS_DEVICE(&s->soc.spi[i]), 1, cs_line);
+diff --git a/hw/arm/highbank.c b/hw/arm/highbank.c
+index 80e5fd4..0a4508c 100644
+--- a/hw/arm/highbank.c
++++ b/hw/arm/highbank.c
+@@ -363,6 +363,8 @@ static void calxeda_init(MachineState *machine, enum cxmachines machine_id)
+         sysbus_connect_irq(SYS_BUS_DEVICE(dev), 2, pic[82]);
      }
  
 +    /* TODO create and connect IDE devices for ide_drive_get() */
 +
-     xlnx_ep108_binfo.ram_size = ram_size;
-     xlnx_ep108_binfo.kernel_filename = machine->kernel_filename;
-     xlnx_ep108_binfo.kernel_cmdline = machine->kernel_cmdline;
-@@ -118,6 +120,8 @@ static void xlnx_ep108_machine_init(MachineClass *mc)
- {
-     mc->desc = "Xilinx ZynqMP EP108 board";
-     mc->init = xlnx_ep108_init;
+     highbank_binfo.ram_size = ram_size;
+     highbank_binfo.kernel_filename = kernel_filename;
+     highbank_binfo.kernel_cmdline = kernel_cmdline;
+@@ -405,7 +407,8 @@ static void highbank_class_init(ObjectClass *oc, void *data)
+ 
+     mc->desc = "Calxeda Highbank (ECX-1000)";
+     mc->init = highbank_init;
+-    mc->block_default_type = IF_SCSI;
 +    mc->block_default_type = IF_IDE;
 +    mc->units_per_default_bus = 1;
+     mc->max_cpus = 4;
  }
  
- DEFINE_MACHINE("xlnx-ep108", xlnx_ep108_machine_init)
-@@ -126,6 +130,8 @@ static void xlnx_zcu102_machine_init(MachineClass *mc)
- {
-     mc->desc = "Xilinx ZynqMP ZCU102 board";
-     mc->init = xlnx_ep108_init;
+@@ -421,7 +424,8 @@ static void midway_class_init(ObjectClass *oc, void *data)
+ 
+     mc->desc = "Calxeda Midway (ECX-2000)";
+     mc->init = midway_init;
+-    mc->block_default_type = IF_SCSI;
 +    mc->block_default_type = IF_IDE;
 +    mc->units_per_default_bus = 1;
+     mc->max_cpus = 4;
  }
  
- DEFINE_MACHINE("xlnx-zcu102", xlnx_zcu102_machine_init)
 -- 
 2.7.4
 

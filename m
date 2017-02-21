@@ -1,105 +1,163 @@
-Received: by 10.25.0.147 with SMTP id 141csp648830lfa;
-        Tue, 21 Feb 2017 11:34:04 -0800 (PST)
-X-Received: by 10.55.16.67 with SMTP id a64mr27200455qkh.226.1487705644700;
-        Tue, 21 Feb 2017 11:34:04 -0800 (PST)
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 10.103.98.197 with SMTP id w188csp563084vsb;
+        Tue, 21 Feb 2017 13:09:36 -0800 (PST)
+X-Received: by 10.55.124.7 with SMTP id x7mr27432701qkc.149.1487711375960;
+        Tue, 21 Feb 2017 13:09:35 -0800 (PST)
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id 37si15783173qtr.89.2017.02.21.11.34.04
+        by mx.google.com with ESMTPS id c4si8503799qtb.33.2017.02.21.13.09.35
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 21 Feb 2017 11:34:04 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Tue, 21 Feb 2017 13:09:35 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:48097 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:48589 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1cgGCI-00055T-77
-	for alex.bennee@linaro.org; Tue, 21 Feb 2017 14:34:02 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:46450)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1cgHgj-0003B4-FJ
+	for alex.bennee@linaro.org; Tue, 21 Feb 2017 16:09:33 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:39208)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1cgGBB-0004Zs-MT
-	for qemu-devel@nongnu.org; Tue, 21 Feb 2017 14:32:54 -0500
+	(envelope-from <eric.auger@redhat.com>) id 1cgHcP-0007Ot-KT
+	for qemu-arm@nongnu.org; Tue, 21 Feb 2017 16:05:06 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1cgGBA-0004qu-Sf
-	for qemu-devel@nongnu.org; Tue, 21 Feb 2017 14:32:53 -0500
-Received: from mail-wr0-x22c.google.com ([2a00:1450:400c:c0c::22c]:36499)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1cgGBA-0004qd-Kp
-	for qemu-devel@nongnu.org; Tue, 21 Feb 2017 14:32:52 -0500
-Received: by mail-wr0-x22c.google.com with SMTP id 89so83972265wrr.3
-	for <qemu-devel@nongnu.org>; Tue, 21 Feb 2017 11:32:52 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=jJ0Naq/B+96m9Re8s3/C49gzkRhhVukYTSlpc//uuCk=;
-	b=DKrxdghP29o0iWbAYm38czwcw+Dvghk5P83rUcuBXPnrjf0kgAouLsvjonPcx2Z6Eb
-	AhWeNBrH6Di4Ju/ASkCe9jbEjNb0UC+JLQ0nFXPreoDQ77sYxdJyIVAEgwhRLY2DjDHG
-	9EYt2ZAQgyyLP+IcnsLI2jnJkxiJ/2nUZlECs=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=jJ0Naq/B+96m9Re8s3/C49gzkRhhVukYTSlpc//uuCk=;
-	b=gOr8evHHJAzpOpUyKSauVhEBjHglZ10l5FSRq4rLmNVd3lxLIvHXHV3/+CjVwYllSw
-	3XzLFAqCJCRUHdCDHkvKvGCp4Q6P1o0ecaUcazpte8WQeimR9p8T1g5GRJY05Y4HhMRP
-	3DUlkcotBKtcuoJk53EkJVBZNibl6096SnlSSvLfYloB+MLjKPQppNpaFqFlH1WOpXFd
-	a6gqr88Sbiv5zCx+Ua1Qj2DRAiIC2Dm9x2IgKN0Zn8cHK745FDTg2nyfgu+aR5OUyGwy
-	xT8Eb/sfypFN11yHGe2EvUI90f02X+H8bpEOcl224Uv1bxJhvqzbkRZTn0uXKZaIOhlk
-	LmPQ==
-X-Gm-Message-State: AMke39kuMPGwgeUjB6d96O9ezDFkcvaSCp5yTZzpVMwfqPgjCjcouMiz/sY5Rj6O2wpHHEF+vKfsM29H/UWpRjfI
-X-Received: by 10.223.150.209 with SMTP id u75mr4175764wrb.195.1487705571518; 
-	Tue, 21 Feb 2017 11:32:51 -0800 (PST)
+	(envelope-from <eric.auger@redhat.com>) id 1cgHcL-0007Rh-9d
+	for qemu-arm@nongnu.org; Tue, 21 Feb 2017 16:05:05 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:45426)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <eric.auger@redhat.com>)
+	id 1cgHcL-0007RU-27; Tue, 21 Feb 2017 16:05:01 -0500
+Received: from int-mx10.intmail.prod.int.phx2.redhat.com
+	(int-mx10.intmail.prod.int.phx2.redhat.com [10.5.11.23])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 26D7E83F3E;
+	Tue, 21 Feb 2017 21:05:01 +0000 (UTC)
+Received: from localhost.localdomain (ovpn-116-95.ams2.redhat.com
+	[10.36.116.95])
+	by int-mx10.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id v1LL4uG6002603
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=NO);
+	Tue, 21 Feb 2017 16:04:58 -0500
+To: Sinan Kaya <okaya@codeaurora.org>, eric.auger.pro@gmail.com,
+	peter.maydell@linaro.org, alex.williamson@redhat.com,
+	qemu-arm@nongnu.org, qemu-devel@nongnu.org
+References: <1487683100-16013-1-git-send-email-eric.auger@redhat.com>
+	<1487683100-16013-2-git-send-email-eric.auger@redhat.com>
+	<98d4d9e8-761c-76f9-ecb0-c5a4a658dfab@codeaurora.org>
+	<2dcc9002-ec06-c55e-c0a2-75d05fe05762@redhat.com>
+	<970561bf-0adc-4f60-bf2b-57bbafabb0aa@codeaurora.org>
+	<8d790f60-6ee6-9b48-6dfc-524532db112b@redhat.com>
+	<a9ed1831-5a1c-5c27-25b0-71d06c7dee2e@codeaurora.org>
+From: Auger Eric <eric.auger@redhat.com>
+Message-ID: <b248aa6f-2cb7-05ba-54f2-ba1be0fa6775@redhat.com>
+Date: Tue, 21 Feb 2017 22:04:54 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
+	Thunderbird/45.4.0
 MIME-Version: 1.0
-Received: by 10.223.145.69 with HTTP; Tue, 21 Feb 2017 11:32:30 -0800 (PST)
-In-Reply-To: <20170221182859.GH2778@thinpad.lan.raisama.net>
-References: <1487357795-52614-1-git-send-email-imammedo@redhat.com>
-	<20170221182859.GH2778@thinpad.lan.raisama.net>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 21 Feb 2017 19:32:30 +0000
-Message-ID: <CAFEAcA9eBdjWTU975LrpAMihM5wMagL4G9bOORc0ypqpmLb=5w@mail.gmail.com>
-To: Eduardo Habkost <ehabkost@redhat.com>
-Content-Type: text/plain; charset=UTF-8
+In-Reply-To: <a9ed1831-5a1c-5c27-25b0-71d06c7dee2e@codeaurora.org>
+Content-Type: text/plain; charset=windows-1252
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.23
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.27]);
+	Tue, 21 Feb 2017 21:05:01 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2a00:1450:400c:c0c::22c
-Subject: Re: [Qemu-devel] [RFC 0/3] generalize parsing of cpu_model
-X-BeenThere: qemu-devel@nongnu.org
+	[fuzzy]
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-arm] [PATCH 1/2] vfio/platform: make the vfio-platform
+ device non abstract
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: "patches@linaro.org" <patches@linaro.org>,
-	"Michael S. Tsirkin" <mst@redhat.com>,
-	QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
-	"qemu-ppc@nongnu.org" <qemu-ppc@nongnu.org>,
-	Paolo Bonzini <pbonzini@redhat.com>, Marcel Apfelbaum <marcel@redhat.com>,
-	Igor Mammedov <imammedo@redhat.com>,
-	David Gibson <david@gibson.dropbear.id.au>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: zxGlzq9IKhb8
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: pelcan@codeaurora.org, vikrams@codeaurora.org, shankerd@codeaurora.org,
+	agraf@suse.de
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: TRW36aEVHsW+
 
-On 21 February 2017 at 18:28, Eduardo Habkost <ehabkost@redhat.com> wrote:
-> Peter, do you think a wrapper for parse_features + object_new()
-> would still be necessary to avoid too much code duplication on
-> arm boards in 2.9, or can we live without it until we apply
-> Igor's series (probaly after 2.9)?
+Hi Sinan,
 
-2.9 is very close now. I don't think we need to change any
-of the existing board code. Though there are quite a lot that
-don't accept -cpu foo,feat=on syntax because they use
-object_new() to create the CPU but don't call parse_features,
-they've been that way for years (eg since commit 223a72f1179dc0b
-from 2014 for versatilepb). We should figure out how we want
-to handle this and change all the boards just once, for 2.10.
+On 21/02/2017 16:34, Sinan Kaya wrote:
+> On 2/21/2017 10:23 AM, Auger Eric wrote:
+>>> Note that the goal is to be able to instantiate any platform device by just
+>>> passing a compatible string and the object from the host. We don't want
+>>> to make changes to QEMU every time somebody comes up with a new platform device.
+>>> This step is unnecessary.
+>> Well we need to generate a device tree node for your device. We have not
+>> proven yet the function that creates this latter can be generic. There
+>> are some helpers that can read the host dt node, copy some properties
+>> from the host to the guest. But still at the moment we can't make things
+>> as generic as PCIe and this is why the platform passthrough still is
+>> controversial. So this patch aims at lowering the integration efforts
+>> but minimal specialization needs to be done in sysbus-fdt. Same on
+>> kernel side with the reset module.
+> 
+> Understood. You need to bring in the entire device tree parameters for a full-blown
+> solution. We can always treat this as a TODO.
+> 
+> I was more interested in simple devices like XHCI, AHCI, HIDMA where there
+> is no platform device attribute besides the interrupt number and memory
+> resources. QEMU already has access to these.
+> 
+> I was hoping to cover this at least. More complex objects need their own
+> implementation like the AMD driver in your example.
+> 
+> I'm pasting my comment from the archives here. 
+> 
+> https://lists.gnu.org/archive/html/qemu-devel/2016-08/msg03267.html
+With respect to the compatible string we have 2 strategies: either
+1) the user passes it along the -device option line or
+2) qemu retrieves it in the host dt and applies the same on guest side.
 
-thanks
--- PMM
+I currently implemented 1)
+
+Then assuming the above mentioned devices have very basic dt nodes
+(compatible, reg, interrupts) we could imagine to copy the host property
+into the guest device tree. But looking at
+
+http://lxr.free-electrons.com/source/Documentation/devicetree/bindings/usb/usb-xhci.txt
+
+there can be optional properties which are much more complex to handle
+(clocks for instance).
+
+We could potentially have a minimalist node creation function that
+examines the host dt node and in case it only contains compat, reg,
+interrupts (and maybe dma_coherent) copies those on guest side. In case
+other properties exist and no specialized node creation function exists
+qemu would abort.
+
+Same for AHCI:
+
+http://lxr.free-electrons.com/source/Documentation/devicetree/bindings/ata/ahci-platform.txt
+
+HIDMA (https://patchwork.kernel.org/patch/8168281/) also seem to have
+non trivial properties which would require a custom node creation function.
+
+So I think this definitively deserves more discussions and agreements
+upstream before starting more time consuming developments. This is not
+for 2.9 anyway so I will move the series into an RFC.
+
+Thanks
+
+Eric
+> 
+> "Why submit a new SATA AHCI driver for QEMU just to set the compat string?"
+> 
+> 
+>>
+>> Thanks
+>>
+>> Eric
+>>
+>>
+> 
+> 

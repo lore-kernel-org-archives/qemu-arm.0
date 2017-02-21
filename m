@@ -1,177 +1,125 @@
-Received: by 10.25.0.147 with SMTP id 141csp493226lfa;
-        Tue, 21 Feb 2017 05:16:51 -0800 (PST)
-X-Received: by 10.55.142.7 with SMTP id q7mr27119388qkd.104.1487683011602;
-        Tue, 21 Feb 2017 05:16:51 -0800 (PST)
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 10.103.98.197 with SMTP id w188csp387962vsb;
+        Tue, 21 Feb 2017 05:34:48 -0800 (PST)
+X-Received: by 10.200.38.247 with SMTP id 52mr15964407qtp.55.1487684088446;
+        Tue, 21 Feb 2017 05:34:48 -0800 (PST)
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id b23si2602076qtc.42.2017.02.21.05.16.51
+        by mx.google.com with ESMTPS id 31si15111732qtz.162.2017.02.21.05.34.48
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 21 Feb 2017 05:16:51 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Tue, 21 Feb 2017 05:34:48 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:44495 helo=lists.gnu.org)
+       dkim=fail header.i=@linaro.org;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:44730 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1cgAJG-0004fM-RS
-	for alex.bennee@linaro.org; Tue, 21 Feb 2017 08:16:50 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:51445)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1cgAad-0003ym-Rx
+	for alex.bennee@linaro.org; Tue, 21 Feb 2017 08:34:47 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:53463)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1cg9or-0000VW-GC
-	for qemu-arm@nongnu.org; Tue, 21 Feb 2017 07:45:26 -0500
+	(envelope-from <peter.maydell@linaro.org>) id 1cg9yq-0001Xf-6C
+	for qemu-devel@nongnu.org; Tue, 21 Feb 2017 07:55:45 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1cg9oo-00030l-Bo
-	for qemu-arm@nongnu.org; Tue, 21 Feb 2017 07:45:25 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:56412)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <eric.auger@redhat.com>)
-	id 1cg9oo-00030B-3D; Tue, 21 Feb 2017 07:45:22 -0500
-Received: from int-mx11.intmail.prod.int.phx2.redhat.com
-	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 9239481F07;
-	Tue, 21 Feb 2017 12:45:20 +0000 (UTC)
-Received: from localhost.localdomain.com (ovpn-116-95.ams2.redhat.com
-	[10.36.116.95])
-	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id v1LCjIJb018001; Tue, 21 Feb 2017 07:45:18 -0500
-From: Eric Auger <eric.auger@redhat.com>
-To: eric.auger.pro@gmail.com, eric.auger@redhat.com, peter.maydell@linaro.org, 
-	qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Date: Tue, 21 Feb 2017 13:45:08 +0100
-Message-Id: <1487681108-14452-1-git-send-email-eric.auger@redhat.com>
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.26]);
-	Tue, 21 Feb 2017 12:45:20 +0000 (UTC)
+	(envelope-from <peter.maydell@linaro.org>) id 1cg9yo-0005CG-SQ
+	for qemu-devel@nongnu.org; Tue, 21 Feb 2017 07:55:44 -0500
+Received: from mail-wr0-x230.google.com ([2a00:1450:400c:c0c::230]:34438)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1cg9yo-0005Bw-IV
+	for qemu-devel@nongnu.org; Tue, 21 Feb 2017 07:55:42 -0500
+Received: by mail-wr0-x230.google.com with SMTP id z61so81304112wrc.1
+	for <qemu-devel@nongnu.org>; Tue, 21 Feb 2017 04:55:42 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=olAY4t4ZTWYYhtnBat6/dqaRF+qPRMTgocX6UIrLe4w=;
+	b=fTy4aeBXagekJNq5TWxdlZtNdMwLhaczS7x1rd4Tp02PowwKnCPXpi8XX4nInfvh39
+	koQpGIPsgdJXWTuLaKpDzWrLzdT+u6aCxoVXs+cMt3jYAsuzSDZmMUlb2aGcrgbAUZD4
+	2DegtOGpEkLGOa3t+XOjmFQ9jwgoMeH6qPgLE=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=olAY4t4ZTWYYhtnBat6/dqaRF+qPRMTgocX6UIrLe4w=;
+	b=Lpub+uWmSuw8fRRmFFVfpcBzJW/sT0wrMZkv1hygn5GdLErWm6GN3Z2/4y9uTWy95K
+	UhAIo+hbTY5YzqJ0BN9yLjg6cNM1Cd7jfdwWMMIgbAnq1SDcVkOJOunbUfDvNlqsFPwp
+	eLW1AmAYgpLaoQ1e3g6ipkDlLH+L5pipWy6W+MuBzXwcuN3183w5s9W0zGX3kIa3PMpV
+	8wxtfpk9UzhYcgSfCD74R0LxSTmq3Mab29oz9SJFUy5oTchKcqARaBZ8eiAeRYmjVbpn
+	RNf3GpvhfFoQyxGL+l+oqNwOxhiWS+iK7NEaL9Lk0q9g9dehC1FfXu9IxIdGt69Qk+NT
+	18pQ==
+X-Gm-Message-State: AMke39nGiv/EWeaMvRtIK9zrElczARtTpgMU/+68XkqQilvLGQ6yzVK46zhN46K/9BiphQJ72aCCjHLBrJg9XL+A
+X-Received: by 10.223.150.209 with SMTP id u75mr2791241wrb.195.1487681741298; 
+	Tue, 21 Feb 2017 04:55:41 -0800 (PST)
+MIME-Version: 1.0
+Received: by 10.223.145.69 with HTTP; Tue, 21 Feb 2017 04:55:20 -0800 (PST)
+In-Reply-To: <20170221134416.5803b3e5@nial.brq.redhat.com>
+References: <1487357795-52614-1-git-send-email-imammedo@redhat.com>
+	<CAFEAcA9JWzUEmGa2Wxd5xPE4dVknOKBkt=wMda7CAgxzrgOc+w@mail.gmail.com>
+	<20170220195500.332a4844@nial.brq.redhat.com>
+	<CAFEAcA-VAY8LM+8jE4B-L=0QdcY5FLvwmwGVbUhcXjnC9-AW+w@mail.gmail.com>
+	<20170221134416.5803b3e5@nial.brq.redhat.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 21 Feb 2017 12:55:20 +0000
+Message-ID: <CAFEAcA-MggU5T1fO8GonkSpLF0SNe0jtygEHtEBkpWC8hyShSw@mail.gmail.com>
+To: Igor Mammedov <imammedo@redhat.com>
+Content-Type: text/plain; charset=UTF-8
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: [Qemu-arm] [PATCH v3] hw/arm/virt: Add a user option to disallow
- ITS instantiation
-X-BeenThere: qemu-arm@nongnu.org
+X-Received-From: 2a00:1450:400c:c0c::230
+Subject: Re: [Qemu-devel] [RFC 0/3] generalize parsing of cpu_model
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: drjones@redhat.com, vijay.kilari@gmail.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: lvsQNvtph2Qd
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Eduardo Habkost <ehabkost@redhat.com>,
+	"Michael S. Tsirkin" <mst@redhat.com>,
+	Stefan Hajnoczi <stefanha@gmail.com>,
+	"patches@linaro.org" <patches@linaro.org>,
+	QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
+	"qemu-ppc@nongnu.org" <qemu-ppc@nongnu.org>,
+	Marcel Apfelbaum <marcel@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+	David Gibson <david@gibson.dropbear.id.au>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: khBIi5n0d0Kt
 
-In 2.9 ITS will block save/restore and migration use cases. As such,
-let's introduce a user option that allows to turn its instantiation
-off, along with GICv3. With the "its" option turned false, migration
-will be possible, obviously at the expense of MSI support (with GICv3).
+On 21 February 2017 at 12:44, Igor Mammedov <imammedo@redhat.com> wrote:
+> If we are to ditch legacy approach,
+> It would be cleaner for SoC to have fixed/unconfigurable
+> CPU type and each SoC being modeled as a separate
+> QOM object/type that would instantiate CPU directly
+> with QOM style, using type name, like:
+>
+>     cpu = object_new(TYPE_FOO_CPU)
+>     set props if necessary
+>     object_property_set_bool(cpu, true, "realized", &err)
+>     object_unref(cpu)
+>
+> or similar with extra check/logic on top of plain object_new()
+>
+>     prepare cpu_opts for cpu type TYPE_FOO_CPU
+>     cpu = qdev_device_add(cpu_opts)
+>     object_unref(cpu)
+>
+> instead of using cpu_init/cpu_foo_init/cpu_generic_init()
+> with cpu_model parsing logic which is not really needed
+> there as concrete SoC model knows exact CPU type.
 
-Signed-off-by: Eric Auger <eric.auger@redhat.com>
+Mmm, I think that's probably best. Would the end-user
+still be able to set CPU properties if necessary via
+a -global command line switch (since -cpu type,foo=on
+wouldn't work)?
 
----
+(I just worry slightly that we might have users doing
+weird things which we'd break.)
 
-v2 -> v3:
-- replace no-its by its. Don't check both state and class field
-  as suggested by Peter.
-
-v1 -> v2:
-- fix omitted comma in object_property_set_description
-
-With this patch the option also is added in virt 2.8. I don't know
-if it is acceptable.
----
- hw/arm/virt.c         | 31 +++++++++++++++++++++++++++++--
- include/hw/arm/virt.h |  1 +
- 2 files changed, 30 insertions(+), 2 deletions(-)
-
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index f3440f2..ceb2b8e 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -535,7 +535,6 @@ static void create_v2m(VirtMachineState *vms, qemu_irq *pic)
- static void create_gic(VirtMachineState *vms, qemu_irq *pic)
- {
-     /* We create a standalone GIC */
--    VirtMachineClass *vmc = VIRT_MACHINE_GET_CLASS(vms);
-     DeviceState *gicdev;
-     SysBusDevice *gicbusdev;
-     const char *gictype;
-@@ -605,7 +604,7 @@ static void create_gic(VirtMachineState *vms, qemu_irq *pic)
- 
-     fdt_add_gic_node(vms);
- 
--    if (type == 3 && !vmc->no_its) {
-+    if (type == 3 && vms->its) {
-         create_its(vms, gicdev);
-     } else if (type == 2) {
-         create_v2m(vms, pic);
-@@ -1480,6 +1479,20 @@ static void virt_set_highmem(Object *obj, bool value, Error **errp)
-     vms->highmem = value;
- }
- 
-+static bool virt_get_its(Object *obj, Error **errp)
-+{
-+    VirtMachineState *vms = VIRT_MACHINE(obj);
-+
-+    return vms->its;
-+}
-+
-+static void virt_set_its(Object *obj, bool value, Error **errp)
-+{
-+    VirtMachineState *vms = VIRT_MACHINE(obj);
-+
-+    vms->its = value;
-+}
-+
- static char *virt_get_gic_version(Object *obj, Error **errp)
- {
-     VirtMachineState *vms = VIRT_MACHINE(obj);
-@@ -1540,6 +1553,7 @@ type_init(machvirt_machine_init);
- static void virt_2_9_instance_init(Object *obj)
- {
-     VirtMachineState *vms = VIRT_MACHINE(obj);
-+    VirtMachineClass *vmc = VIRT_MACHINE_GET_CLASS(vms);
- 
-     /* EL3 is disabled by default on virt: this makes us consistent
-      * between KVM and TCG for this board, and it also allows us to
-@@ -1579,6 +1593,19 @@ static void virt_2_9_instance_init(Object *obj)
-                                     "Set GIC version. "
-                                     "Valid values are 2, 3 and host", NULL);
- 
-+    if (vmc->no_its) {
-+        vms->its = false;
-+    } else {
-+        /* Default allows ITS instantiation */
-+        vms->its = true;
-+        object_property_add_bool(obj, "its", virt_get_its,
-+                                 virt_set_its, NULL);
-+        object_property_set_description(obj, "its",
-+                                        "Set on/off to enable/disable "
-+                                        "ITS instantiation",
-+                                        NULL);
-+    }
-+
-     vms->memmap = a15memmap;
-     vms->irqmap = a15irqmap;
- }
-diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
-index 58ce74e..33b0ff3 100644
---- a/include/hw/arm/virt.h
-+++ b/include/hw/arm/virt.h
-@@ -93,6 +93,7 @@ typedef struct {
-     FWCfgState *fw_cfg;
-     bool secure;
-     bool highmem;
-+    bool its;
-     bool virt;
-     int32_t gic_version;
-     struct arm_boot_info bootinfo;
--- 
-2.5.5
-
+thanks
+-- PMM

@@ -1,113 +1,113 @@
-Received: by 10.25.0.147 with SMTP id 141csp951956lfa;
-        Wed, 22 Feb 2017 04:42:52 -0800 (PST)
-X-Received: by 10.200.41.153 with SMTP id 25mr28346624qts.108.1487767372374;
-        Wed, 22 Feb 2017 04:42:52 -0800 (PST)
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 10.25.0.147 with SMTP id 141csp973762lfa;
+        Wed, 22 Feb 2017 05:30:42 -0800 (PST)
+X-Received: by 10.55.121.194 with SMTP id u185mr30262742qkc.56.1487770242307;
+        Wed, 22 Feb 2017 05:30:42 -0800 (PST)
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id m9si766231qte.315.2017.02.22.04.42.51
+        by mx.google.com with ESMTPS id i10si860278qtg.274.2017.02.22.05.30.41
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 22 Feb 2017 04:42:52 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Wed, 22 Feb 2017 05:30:42 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:51976 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:52525 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1cgWFt-0005qP-Li
-	for alex.bennee@linaro.org; Wed, 22 Feb 2017 07:42:49 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:42166)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1cgX0B-0003IF-E1
+	for alex.bennee@linaro.org; Wed, 22 Feb 2017 08:30:39 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:54544)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1cgWE9-0004tW-Jw
-	for qemu-devel@nongnu.org; Wed, 22 Feb 2017 07:41:02 -0500
+	(envelope-from <imammedo@redhat.com>) id 1cgX02-0003I5-8K
+	for qemu-arm@nongnu.org; Wed, 22 Feb 2017 08:30:34 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1cgWE8-0001id-Ty
-	for qemu-devel@nongnu.org; Wed, 22 Feb 2017 07:41:01 -0500
-Received: from mail-wr0-x234.google.com ([2a00:1450:400c:c0c::234]:34826)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1cgWE8-0001iJ-NR
-	for qemu-devel@nongnu.org; Wed, 22 Feb 2017 07:41:00 -0500
-Received: by mail-wr0-x234.google.com with SMTP id s27so1013786wrb.2
-	for <qemu-devel@nongnu.org>; Wed, 22 Feb 2017 04:41:00 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=cIejmefgIcYpI71B7BzrFe0IKKPHUcGL3N9e48K+1rg=;
-	b=i2jRgX7ZKVaOX5v4k6ZgAt0+tV0KRbH8a7utjvVIkn/4X24Shybqlj+eSoGX7pTlyV
-	amk702me9lBZS8Kr4SahBHxCgb9XoylGb7frEslFh8ZSh80RpRcq57quprfgrOljTe1D
-	g2XhztHI+FTHUUtmj720dRqRBDhw+K+eaJXVg=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=cIejmefgIcYpI71B7BzrFe0IKKPHUcGL3N9e48K+1rg=;
-	b=rM5sKKanycCEoiunmvlPwFUyVhPaFfa+x8NrzYX6lSAgcpYThMrhSvyihb7yFB/JIb
-	EtNebkZNQIasqbPHM1TrrsSTgsM3jaVuigfuBx2a/TG7dj3clRRn55PYVI87M/RMZ/E4
-	JutBVlwU2sMRka/UCyE+DLP+8vpC7wtBUWiMVlfoqcutp3SrQaXFq3YKPKMePMO4TWSg
-	iDiFZwzAJ0eoe+5icHL/dV4vaJWMTVaiD7bopOx59Jk96vTEcL/y/hO2q5PQ3e0Drvqb
-	6+IRdjAhgflwhFb6+Hvz30JFeNQ23sqUgtLG/IP4ZCEYUjWPUh9CEVYsghcuPltsQayL
-	1IFQ==
-X-Gm-Message-State: AMke39lLAifQLkYsBvxFQUvW3jBloFRRW+eYVFZHz/EruppB0TrqCPvg9UixKgGOo3y1t3P1Qhl/bB8+aH1ogaCg
-X-Received: by 10.223.150.209 with SMTP id u75mr7315475wrb.195.1487767259621; 
-	Wed, 22 Feb 2017 04:40:59 -0800 (PST)
+	(envelope-from <imammedo@redhat.com>) id 1cgWzy-0006hU-1K
+	for qemu-arm@nongnu.org; Wed, 22 Feb 2017 08:30:30 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:44756)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <imammedo@redhat.com>)
+	id 1cgWzx-0006h4-RI; Wed, 22 Feb 2017 08:30:25 -0500
+Received: from int-mx13.intmail.prod.int.phx2.redhat.com
+	(int-mx13.intmail.prod.int.phx2.redhat.com [10.5.11.26])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id DB45A4E4DE;
+	Wed, 22 Feb 2017 13:30:25 +0000 (UTC)
+Received: from nial.brq.redhat.com (dhcp-1-118.brq.redhat.com [10.34.1.118])
+	by int-mx13.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id v1MDUNcM014960; Wed, 22 Feb 2017 08:30:23 -0500
+Date: Wed, 22 Feb 2017 14:30:19 +0100
+From: Igor Mammedov <imammedo@redhat.com>
+To: qemu-devel@nongnu.org
+Message-ID: <20170222143019.789cfbbf@nial.brq.redhat.com>
+In-Reply-To: <1487357795-52614-1-git-send-email-imammedo@redhat.com>
+References: <1487357795-52614-1-git-send-email-imammedo@redhat.com>
 MIME-Version: 1.0
-Received: by 10.223.145.69 with HTTP; Wed, 22 Feb 2017 04:40:38 -0800 (PST)
-In-Reply-To: <CAFEAcA8sTEtJGpvrL3qCQ7OfUaQ5Ym0siQfGMnTpaUQw+Uzh_A@mail.gmail.com>
-References: <1487313115-9510-1-git-send-email-vijay.kilari@gmail.com>
-	<1487313115-9510-3-git-send-email-vijay.kilari@gmail.com>
-	<CAFEAcA8618+LGejFq6SpBEwGrNpfamBBX3MFWjss-ZxJ7Xk8mg@mail.gmail.com>
-	<CALicx6tqxXZxBTxYvF55ydBg5CB1to3MsEkhaohucx4EAZcEJA@mail.gmail.com>
-	<CAFEAcA_NbQNzrUUCAS2e5Xso0rg6H3+nzDjTc9i8Tc+GLpXvLw@mail.gmail.com>
-	<CALicx6uiFYXsOMaiCH9HYW_jxbMSg+QSCrbVr0D-UKWwtf+TwA@mail.gmail.com>
-	<CAFEAcA8sTEtJGpvrL3qCQ7OfUaQ5Ym0siQfGMnTpaUQw+Uzh_A@mail.gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Wed, 22 Feb 2017 12:40:38 +0000
-Message-ID: <CAFEAcA_U_8tJqa7U8vKqrZJYkyJcdcCGBV4E8ou9psqu=GS2Ow@mail.gmail.com>
-To: Vijay Kilari <vijay.kilari@gmail.com>
-Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.26
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.38]);
+	Wed, 22 Feb 2017 13:30:25 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2a00:1450:400c:c0c::234
-Subject: Re: [Qemu-devel] [PATCH v8 2/5] hw/intc/arm_gicv3_kvm: Add
- ICC_SRE_EL1 register to vmstate
-X-BeenThere: qemu-devel@nongnu.org
+	[fuzzy]
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-arm] [Qemu-devel] [RFC 0/3] generalize parsing of
+ cpu_model
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Marc Zyngier <marc.zyngier@arm.com>, Pavel Fedin <p.fedin@samsung.com>,
-	QEMU Developers <qemu-devel@nongnu.org>,
-	Vijaya Kumar K <Vijaya.Kumar@cavium.com>,
-	Eric Auger <eric.auger@redhat.com>, qemu-arm <qemu-arm@nongnu.org>,
-	Christoffer Dall <christoffer.dall@linaro.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Rm6SJt9j6lND
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+	Eduardo Habkost <ehabkost@redhat.com>,
+	"Michael S. Tsirkin" <mst@redhat.com>, patches@linaro.org,
+	qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
+	Marcel Apfelbaum <marcel@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+	David Gibson <david@gibson.dropbear.id.au>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: nZgobI2Fi0nx
 
-On 22 February 2017 at 12:05, Peter Maydell <peter.maydell@linaro.org> wrote:
-> I talked to Marc Z who agreed this is a KVM bug -- the kernel
-> should have these bits be RAO/WI like TCG. I think Marc
-> was going to write a patch...
+On Fri, 17 Feb 2017 19:56:32 +0100
+Igor Mammedov <imammedo@redhat.com> wrote:
 
-...so given that, what we want on the QEMU side is:
- * in a migration preload function:
-   /* if the sre_el1 subsection is not transferred this
-    * means SRE_EL1 is 0x7 (which might not be the same as
-    * our reset value).
-    */
-   cs->icc_sre_el1 = 0x7;
+> Some callers call CPUClass->parse_features manually to convert
+> '-cpu cpufoo,featurestr' string to cpu type and featurestr
+> into a set of global properties. And theni do controlled
+> cpu creation with setting properties and completing it with realize.
+> That's a lot of code duplication as they are practically
+> reimplement the same parsing logic.
+> 
+> Some don't and use cpu_generic_init() instead which does
+> the same parsing along with creation/realizing cpu within one
+> wrapper.
+> 
+> And some trying to switch to controlled cpu creation,
+> implement object_new()/set properties/realize steps
+> but forget feature parsing logic witch lieads to 'bugs'
+> commit 00909b585 (hw/arm/integratorcp: Support specifying features via -cpu)
+> 
+> 
+> This series moves -cpu option parsing to generic machine code
+> that removes a little of code duplication and makes cpus creation
+> process more unified.
+> 
+> PS:
+> As I don't have time to rewrite this part QEMU, being busy
+> rewritting yet another part of QEMU,
+> SERIES IS UNFINISHED AND SERVERS TO SHOW IDEA HOW IT SHOULD
+> BE DONE. FEEL FREE TO PICK UP AND COMPLETE THIS PATCHES
+> TO HANDLE ALL BOARDS (series does it only for virt-arm/spapr/pc)
 
- * the reg_needed function should be
-   return cs->icc_sre_el1 != 0x7;
+series has been written on top my numa tree which apply it to
+upstream master. So here goes rebased on top of current master variant:
 
-and the rest of this patch is OK I think.
+https://github.com/imammedo/qemu/commits/generilize_cpu_model_parsing_rfc
 
-thanks
--- PMM

@@ -1,11 +1,11 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaro.local (host109-151-49-69.range109-151.btcentralplus.com. [109.151.49.69])
-        by smtp.gmail.com with ESMTPSA id k187sm7848019wmb.13.2017.02.23.10.36.32
+        by smtp.gmail.com with ESMTPSA id u184sm7379770wmb.29.2017.02.23.10.36.32
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
         Thu, 23 Feb 2017 10:36:33 -0800 (PST)
 Received: from zen.home (localhost [127.0.0.1])
-	by zen.linaro.local (Postfix) with ESMTP id F2D5A3E1792;
-	Thu, 23 Feb 2017 18:29:28 +0000 (GMT)
+	by zen.linaro.local (Postfix) with ESMTP id 104593E1795;
+	Thu, 23 Feb 2017 18:29:29 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: rth@twiddle.net,
 	peter.maydell@linaro.org
@@ -22,359 +22,151 @@ Cc: qemu-devel@nongnu.org,
 	serge.fdrv@gmail.com,
 	bamvor.zhangjian@linaro.org,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	qemu-arm@nongnu.org (open list:ARM)
-Subject: [PATCH v14 22/24] target-arm: ensure all cross vCPUs TLB flushes complete
-Date: Thu, 23 Feb 2017 18:29:25 +0000
-Message-Id: <20170223182927.7166-23-alex.bennee@linaro.org>
+	Peter Chubb <peter.chubb@nicta.com.au>,
+	qemu-arm@nongnu.org (open list:i.MX31)
+Subject: [PATCH v14 23/24] hw/misc/imx6_src: defer clearing of SRC_SCR reset bits
+Date: Thu, 23 Feb 2017 18:29:26 +0000
+Message-Id: <20170223182927.7166-24-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.11.0
 In-Reply-To: <20170223182927.7166-1-alex.bennee@linaro.org>
 References: <20170223182927.7166-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: /y1BMdbei0Te
+X-TUID: nnBFJwanc937
 
-Previously flushes on other vCPUs would only get serviced when they
-exited their TranslationBlocks. While this isn't overly problematic it
-violates the semantics of TLB flush from the point of view of source
-vCPU.
-
-To solve this we call the cputlb *_all_cpus_synced() functions to do
-the flushes which ensures all flushes are completed by the time the
-vCPU next schedules its own work. As the TLB instructions are modelled
-as CP writes the TB ends at this point meaning cpu->exit_request will
-be checked before the next instruction is executed.
-
-Deferring the work until the architectural sync point is a possible
-future optimisation.
+The arm_reset_cpu/set_cpu_on/set_cpu_off() functions do their work
+asynchronously in the target vCPUs context. As a result we need to
+ensure the SRC_SCR reset bits correctly report the reset status at the
+right time. To do this we defer the clearing of the bit with an async
+job which will run after the work queued by ARM powerctl functions.
 
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-Reviewed-by: Richard Henderson <rth@twiddle.net>
 Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
-
 ---
-v8
-  - fixup merge for bitmap based API
-  - fixup new _synced API
-v9
-  - fixup merge conflicts
-v10
-  - remove the ARM_CP_EXIT_PC flag from vCPU TLB flushes
-  - re-word the commit
----
- target/arm/helper.c | 165 ++++++++++++++++++++++------------------------------
- 1 file changed, 69 insertions(+), 96 deletions(-)
 
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index b41d0494d1..bcedb4a808 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -536,41 +536,33 @@ static void tlbimvaa_write(CPUARMState *env, const ARMCPRegInfo *ri,
- static void tlbiall_is_write(CPUARMState *env, const ARMCPRegInfo *ri,
-                              uint64_t value)
- {
--    CPUState *other_cs;
-+    CPUState *cs = ENV_GET_CPU(env);
+v12
+  - s/src_scr_reset_info/SRCSCRResetInfo/
+  - use int for reset_bit;
+---
+ hw/misc/imx6_src.c | 58 +++++++++++++++++++++++++++++++++++++++++++++---------
+ 1 file changed, 49 insertions(+), 9 deletions(-)
+
+diff --git a/hw/misc/imx6_src.c b/hw/misc/imx6_src.c
+index 55b817b8d7..edbb756c36 100644
+--- a/hw/misc/imx6_src.c
++++ b/hw/misc/imx6_src.c
+@@ -14,6 +14,7 @@
+ #include "qemu/bitops.h"
+ #include "qemu/log.h"
+ #include "arm-powerctl.h"
++#include "qom/cpu.h"
  
--    CPU_FOREACH(other_cs) {
--        tlb_flush(other_cs);
--    }
-+    tlb_flush_all_cpus_synced(cs);
+ #ifndef DEBUG_IMX6_SRC
+ #define DEBUG_IMX6_SRC 0
+@@ -113,6 +114,45 @@ static uint64_t imx6_src_read(void *opaque, hwaddr offset, unsigned size)
+     return value;
  }
  
- static void tlbiasid_is_write(CPUARMState *env, const ARMCPRegInfo *ri,
-                              uint64_t value)
- {
--    CPUState *other_cs;
-+    CPUState *cs = ENV_GET_CPU(env);
- 
--    CPU_FOREACH(other_cs) {
--        tlb_flush(other_cs);
--    }
-+    tlb_flush_all_cpus_synced(cs);
- }
- 
- static void tlbimva_is_write(CPUARMState *env, const ARMCPRegInfo *ri,
-                              uint64_t value)
- {
--    CPUState *other_cs;
-+    CPUState *cs = ENV_GET_CPU(env);
- 
--    CPU_FOREACH(other_cs) {
--        tlb_flush_page(other_cs, value & TARGET_PAGE_MASK);
--    }
-+    tlb_flush_page_all_cpus_synced(cs, value & TARGET_PAGE_MASK);
- }
- 
- static void tlbimvaa_is_write(CPUARMState *env, const ARMCPRegInfo *ri,
-                              uint64_t value)
- {
--    CPUState *other_cs;
-+    CPUState *cs = ENV_GET_CPU(env);
- 
--    CPU_FOREACH(other_cs) {
--        tlb_flush_page(other_cs, value & TARGET_PAGE_MASK);
--    }
-+    tlb_flush_page_all_cpus_synced(cs, value & TARGET_PAGE_MASK);
- }
- 
- static void tlbiall_nsnh_write(CPUARMState *env, const ARMCPRegInfo *ri,
-@@ -587,14 +579,12 @@ static void tlbiall_nsnh_write(CPUARMState *env, const ARMCPRegInfo *ri,
- static void tlbiall_nsnh_is_write(CPUARMState *env, const ARMCPRegInfo *ri,
-                                   uint64_t value)
- {
--    CPUState *other_cs;
-+    CPUState *cs = ENV_GET_CPU(env);
- 
--    CPU_FOREACH(other_cs) {
--        tlb_flush_by_mmuidx(other_cs,
--                            (1 << ARMMMUIdx_S12NSE1) |
--                            (1 << ARMMMUIdx_S12NSE0) |
--                            (1 << ARMMMUIdx_S2NS));
--    }
-+    tlb_flush_by_mmuidx_all_cpus_synced(cs,
-+                                        (1 << ARMMMUIdx_S12NSE1) |
-+                                        (1 << ARMMMUIdx_S12NSE0) |
-+                                        (1 << ARMMMUIdx_S2NS));
- }
- 
- static void tlbiipas2_write(CPUARMState *env, const ARMCPRegInfo *ri,
-@@ -621,7 +611,7 @@ static void tlbiipas2_write(CPUARMState *env, const ARMCPRegInfo *ri,
- static void tlbiipas2_is_write(CPUARMState *env, const ARMCPRegInfo *ri,
-                                uint64_t value)
- {
--    CPUState *other_cs;
-+    CPUState *cs = ENV_GET_CPU(env);
-     uint64_t pageaddr;
- 
-     if (!arm_feature(env, ARM_FEATURE_EL2) || !(env->cp15.scr_el3 & SCR_NS)) {
-@@ -630,9 +620,8 @@ static void tlbiipas2_is_write(CPUARMState *env, const ARMCPRegInfo *ri,
- 
-     pageaddr = sextract64(value << 12, 0, 40);
- 
--    CPU_FOREACH(other_cs) {
--        tlb_flush_page_by_mmuidx(other_cs, pageaddr, (1 << ARMMMUIdx_S2NS));
--    }
-+    tlb_flush_page_by_mmuidx_all_cpus_synced(cs, pageaddr,
-+                                             (1 << ARMMMUIdx_S2NS));
- }
- 
- static void tlbiall_hyp_write(CPUARMState *env, const ARMCPRegInfo *ri,
-@@ -646,11 +635,9 @@ static void tlbiall_hyp_write(CPUARMState *env, const ARMCPRegInfo *ri,
- static void tlbiall_hyp_is_write(CPUARMState *env, const ARMCPRegInfo *ri,
-                                  uint64_t value)
- {
--    CPUState *other_cs;
-+    CPUState *cs = ENV_GET_CPU(env);
- 
--    CPU_FOREACH(other_cs) {
--        tlb_flush_by_mmuidx(other_cs, (1 << ARMMMUIdx_S1E2));
--    }
-+    tlb_flush_by_mmuidx_all_cpus_synced(cs, (1 << ARMMMUIdx_S1E2));
- }
- 
- static void tlbimva_hyp_write(CPUARMState *env, const ARMCPRegInfo *ri,
-@@ -665,12 +652,11 @@ static void tlbimva_hyp_write(CPUARMState *env, const ARMCPRegInfo *ri,
- static void tlbimva_hyp_is_write(CPUARMState *env, const ARMCPRegInfo *ri,
-                                  uint64_t value)
- {
--    CPUState *other_cs;
-+    CPUState *cs = ENV_GET_CPU(env);
-     uint64_t pageaddr = value & ~MAKE_64BIT_MASK(0, 12);
- 
--    CPU_FOREACH(other_cs) {
--        tlb_flush_page_by_mmuidx(other_cs, pageaddr, (1 << ARMMMUIdx_S1E2));
--    }
-+    tlb_flush_page_by_mmuidx_all_cpus_synced(cs, pageaddr,
-+                                             (1 << ARMMMUIdx_S1E2));
- }
- 
- static const ARMCPRegInfo cp_reginfo[] = {
-@@ -2904,8 +2890,7 @@ static CPAccessResult aa64_cacheop_access(CPUARMState *env,
- static void tlbi_aa64_vmalle1_write(CPUARMState *env, const ARMCPRegInfo *ri,
-                                     uint64_t value)
- {
--    ARMCPU *cpu = arm_env_get_cpu(env);
--    CPUState *cs = CPU(cpu);
-+    CPUState *cs = ENV_GET_CPU(env);
- 
-     if (arm_is_secure_below_el3(env)) {
-         tlb_flush_by_mmuidx(cs,
-@@ -2921,19 +2906,17 @@ static void tlbi_aa64_vmalle1_write(CPUARMState *env, const ARMCPRegInfo *ri,
- static void tlbi_aa64_vmalle1is_write(CPUARMState *env, const ARMCPRegInfo *ri,
-                                       uint64_t value)
- {
-+    CPUState *cs = ENV_GET_CPU(env);
-     bool sec = arm_is_secure_below_el3(env);
--    CPUState *other_cs;
- 
--    CPU_FOREACH(other_cs) {
--        if (sec) {
--            tlb_flush_by_mmuidx(other_cs,
--                                (1 << ARMMMUIdx_S1SE1) |
--                                (1 << ARMMMUIdx_S1SE0));
--        } else {
--            tlb_flush_by_mmuidx(other_cs,
--                                (1 << ARMMMUIdx_S12NSE1) |
--                                (1 << ARMMMUIdx_S12NSE0));
--        }
-+    if (sec) {
-+        tlb_flush_by_mmuidx_all_cpus_synced(cs,
-+                                            (1 << ARMMMUIdx_S1SE1) |
-+                                            (1 << ARMMMUIdx_S1SE0));
-+    } else {
-+        tlb_flush_by_mmuidx_all_cpus_synced(cs,
-+                                            (1 << ARMMMUIdx_S12NSE1) |
-+                                            (1 << ARMMMUIdx_S12NSE0));
-     }
- }
- 
-@@ -2990,46 +2973,40 @@ static void tlbi_aa64_alle1is_write(CPUARMState *env, const ARMCPRegInfo *ri,
-      * stage 2 translations, whereas most other scopes only invalidate
-      * stage 1 translations.
-      */
-+    CPUState *cs = ENV_GET_CPU(env);
-     bool sec = arm_is_secure_below_el3(env);
-     bool has_el2 = arm_feature(env, ARM_FEATURE_EL2);
--    CPUState *other_cs;
--
--    CPU_FOREACH(other_cs) {
--        if (sec) {
--            tlb_flush_by_mmuidx(other_cs,
--                                (1 << ARMMMUIdx_S1SE1) |
--                                (1 << ARMMMUIdx_S1SE0));
--        } else if (has_el2) {
--            tlb_flush_by_mmuidx(other_cs,
--                                (1 << ARMMMUIdx_S12NSE1) |
--                                (1 << ARMMMUIdx_S12NSE0) |
--                                (1 << ARMMMUIdx_S2NS));
--        } else {
--            tlb_flush_by_mmuidx(other_cs,
--                                (1 << ARMMMUIdx_S12NSE1) |
--                                (1 << ARMMMUIdx_S12NSE0));
--        }
 +
-+    if (sec) {
-+        tlb_flush_by_mmuidx_all_cpus_synced(cs,
-+                                            (1 << ARMMMUIdx_S1SE1) |
-+                                            (1 << ARMMMUIdx_S1SE0));
-+    } else if (has_el2) {
-+        tlb_flush_by_mmuidx_all_cpus_synced(cs,
-+                                            (1 << ARMMMUIdx_S12NSE1) |
-+                                            (1 << ARMMMUIdx_S12NSE0) |
-+                                            (1 << ARMMMUIdx_S2NS));
-+    } else {
-+          tlb_flush_by_mmuidx_all_cpus_synced(cs,
-+                                              (1 << ARMMMUIdx_S12NSE1) |
-+                                              (1 << ARMMMUIdx_S12NSE0));
-     }
- }
- 
- static void tlbi_aa64_alle2is_write(CPUARMState *env, const ARMCPRegInfo *ri,
-                                     uint64_t value)
++/* The reset is asynchronous so we need to defer clearing the reset
++ * bit until the work is completed.
++ */
++
++struct SRCSCRResetInfo {
++    IMX6SRCState *s;
++    int reset_bit;
++};
++
++static void imx6_clear_reset_bit(CPUState *cpu, run_on_cpu_data data)
++{
++    struct SRCSCRResetInfo *ri = data.host_ptr;
++    IMX6SRCState *s = ri->s;
++
++    assert(qemu_mutex_iothread_locked());
++
++    s->regs[SRC_SCR] = deposit32(s->regs[SRC_SCR], ri->reset_bit, 1, 0);
++    DPRINTF("reg[%s] <= 0x%" PRIx32 "\n",
++            imx6_src_reg_name(SRC_SCR), s->regs[SRC_SCR]);
++
++    g_free(ri);
++}
++
++static void imx6_defer_clear_reset_bit(int cpuid,
++                                       IMX6SRCState *s,
++                                       unsigned long reset_shift)
++{
++    struct SRCSCRResetInfo *ri;
++
++    ri = g_malloc(sizeof(struct SRCSCRResetInfo));
++    ri->s = s;
++    ri->reset_bit = reset_shift;
++
++    async_run_on_cpu(arm_get_cpu_by_id(cpuid), imx6_clear_reset_bit,
++                     RUN_ON_CPU_HOST_PTR(ri));
++}
++
++
+ static void imx6_src_write(void *opaque, hwaddr offset, uint64_t value,
+                            unsigned size)
  {
--    CPUState *other_cs;
-+    CPUState *cs = ENV_GET_CPU(env);
- 
--    CPU_FOREACH(other_cs) {
--        tlb_flush_by_mmuidx(other_cs, (1 << ARMMMUIdx_S1E2));
--    }
-+    tlb_flush_by_mmuidx_all_cpus_synced(cs, (1 << ARMMMUIdx_S1E2));
- }
- 
- static void tlbi_aa64_alle3is_write(CPUARMState *env, const ARMCPRegInfo *ri,
-                                     uint64_t value)
- {
--    CPUState *other_cs;
-+    CPUState *cs = ENV_GET_CPU(env);
- 
--    CPU_FOREACH(other_cs) {
--        tlb_flush_by_mmuidx(other_cs, (1 << ARMMMUIdx_S1E3));
--    }
-+    tlb_flush_by_mmuidx_all_cpus_synced(cs, (1 << ARMMMUIdx_S1E3));
- }
- 
- static void tlbi_aa64_vae1_write(CPUARMState *env, const ARMCPRegInfo *ri,
-@@ -3086,43 +3063,40 @@ static void tlbi_aa64_vae3_write(CPUARMState *env, const ARMCPRegInfo *ri,
- static void tlbi_aa64_vae1is_write(CPUARMState *env, const ARMCPRegInfo *ri,
-                                    uint64_t value)
- {
-+    ARMCPU *cpu = arm_env_get_cpu(env);
-+    CPUState *cs = CPU(cpu);
-     bool sec = arm_is_secure_below_el3(env);
--    CPUState *other_cs;
-     uint64_t pageaddr = sextract64(value << 12, 0, 56);
- 
--    CPU_FOREACH(other_cs) {
--        if (sec) {
--            tlb_flush_page_by_mmuidx(other_cs, pageaddr,
--                                     (1 << ARMMMUIdx_S1SE1) |
--                                     (1 << ARMMMUIdx_S1SE0));
--        } else {
--            tlb_flush_page_by_mmuidx(other_cs, pageaddr,
--                                     (1 << ARMMMUIdx_S12NSE1) |
--                                     (1 << ARMMMUIdx_S12NSE0));
--        }
-+    if (sec) {
-+        tlb_flush_page_by_mmuidx_all_cpus_synced(cs, pageaddr,
-+                                                 (1 << ARMMMUIdx_S1SE1) |
-+                                                 (1 << ARMMMUIdx_S1SE0));
-+    } else {
-+        tlb_flush_page_by_mmuidx_all_cpus_synced(cs, pageaddr,
-+                                                 (1 << ARMMMUIdx_S12NSE1) |
-+                                                 (1 << ARMMMUIdx_S12NSE0));
-     }
- }
- 
- static void tlbi_aa64_vae2is_write(CPUARMState *env, const ARMCPRegInfo *ri,
-                                    uint64_t value)
- {
--    CPUState *other_cs;
-+    CPUState *cs = ENV_GET_CPU(env);
-     uint64_t pageaddr = sextract64(value << 12, 0, 56);
- 
--    CPU_FOREACH(other_cs) {
--        tlb_flush_page_by_mmuidx(other_cs, pageaddr, (1 << ARMMMUIdx_S1E2));
--    }
-+    tlb_flush_page_by_mmuidx_all_cpus_synced(cs, pageaddr,
-+                                             (1 << ARMMMUIdx_S1E2));
- }
- 
- static void tlbi_aa64_vae3is_write(CPUARMState *env, const ARMCPRegInfo *ri,
-                                    uint64_t value)
- {
--    CPUState *other_cs;
-+    CPUState *cs = ENV_GET_CPU(env);
-     uint64_t pageaddr = sextract64(value << 12, 0, 56);
- 
--    CPU_FOREACH(other_cs) {
--        tlb_flush_page_by_mmuidx(other_cs, pageaddr, (1 << ARMMMUIdx_S1E3));
--    }
-+    tlb_flush_page_by_mmuidx_all_cpus_synced(cs, pageaddr,
-+                                             (1 << ARMMMUIdx_S1E3));
- }
- 
- static void tlbi_aa64_ipas2e1_write(CPUARMState *env, const ARMCPRegInfo *ri,
-@@ -3150,7 +3124,7 @@ static void tlbi_aa64_ipas2e1_write(CPUARMState *env, const ARMCPRegInfo *ri,
- static void tlbi_aa64_ipas2e1is_write(CPUARMState *env, const ARMCPRegInfo *ri,
-                                       uint64_t value)
- {
--    CPUState *other_cs;
-+    CPUState *cs = ENV_GET_CPU(env);
-     uint64_t pageaddr;
- 
-     if (!arm_feature(env, ARM_FEATURE_EL2) || !(env->cp15.scr_el3 & SCR_NS)) {
-@@ -3159,9 +3133,8 @@ static void tlbi_aa64_ipas2e1is_write(CPUARMState *env, const ARMCPRegInfo *ri,
- 
-     pageaddr = sextract64(value << 12, 0, 48);
- 
--    CPU_FOREACH(other_cs) {
--        tlb_flush_page_by_mmuidx(other_cs, pageaddr, (1 << ARMMMUIdx_S2NS));
--    }
-+    tlb_flush_page_by_mmuidx_all_cpus_synced(cs, pageaddr,
-+                                             (1 << ARMMMUIdx_S2NS));
- }
- 
- static CPAccessResult aa64_zva_access(CPUARMState *env, const ARMCPRegInfo *ri,
+@@ -153,7 +193,7 @@ static void imx6_src_write(void *opaque, hwaddr offset, uint64_t value,
+                 arm_set_cpu_off(3);
+             }
+             /* We clear the reset bits as the processor changed state */
+-            clear_bit(CORE3_RST_SHIFT, &current_value);
++            imx6_defer_clear_reset_bit(3, s, CORE3_RST_SHIFT);
+             clear_bit(CORE3_RST_SHIFT, &change_mask);
+         }
+         if (EXTRACT(change_mask, CORE2_ENABLE)) {
+@@ -162,11 +202,11 @@ static void imx6_src_write(void *opaque, hwaddr offset, uint64_t value,
+                 arm_set_cpu_on(2, s->regs[SRC_GPR5], s->regs[SRC_GPR6],
+                                3, false);
+             } else {
+-                /* CORE 3 is shut down */
++                /* CORE 2 is shut down */
+                 arm_set_cpu_off(2);
+             }
+             /* We clear the reset bits as the processor changed state */
+-            clear_bit(CORE2_RST_SHIFT, &current_value);
++            imx6_defer_clear_reset_bit(2, s, CORE2_RST_SHIFT);
+             clear_bit(CORE2_RST_SHIFT, &change_mask);
+         }
+         if (EXTRACT(change_mask, CORE1_ENABLE)) {
+@@ -175,28 +215,28 @@ static void imx6_src_write(void *opaque, hwaddr offset, uint64_t value,
+                 arm_set_cpu_on(1, s->regs[SRC_GPR3], s->regs[SRC_GPR4],
+                                3, false);
+             } else {
+-                /* CORE 3 is shut down */
++                /* CORE 1 is shut down */
+                 arm_set_cpu_off(1);
+             }
+             /* We clear the reset bits as the processor changed state */
+-            clear_bit(CORE1_RST_SHIFT, &current_value);
++            imx6_defer_clear_reset_bit(1, s, CORE1_RST_SHIFT);
+             clear_bit(CORE1_RST_SHIFT, &change_mask);
+         }
+         if (EXTRACT(change_mask, CORE0_RST)) {
+             arm_reset_cpu(0);
+-            clear_bit(CORE0_RST_SHIFT, &current_value);
++            imx6_defer_clear_reset_bit(0, s, CORE0_RST_SHIFT);
+         }
+         if (EXTRACT(change_mask, CORE1_RST)) {
+             arm_reset_cpu(1);
+-            clear_bit(CORE1_RST_SHIFT, &current_value);
++            imx6_defer_clear_reset_bit(1, s, CORE1_RST_SHIFT);
+         }
+         if (EXTRACT(change_mask, CORE2_RST)) {
+             arm_reset_cpu(2);
+-            clear_bit(CORE2_RST_SHIFT, &current_value);
++            imx6_defer_clear_reset_bit(2, s, CORE2_RST_SHIFT);
+         }
+         if (EXTRACT(change_mask, CORE3_RST)) {
+             arm_reset_cpu(3);
+-            clear_bit(CORE3_RST_SHIFT, &current_value);
++            imx6_defer_clear_reset_bit(3, s, CORE3_RST_SHIFT);
+         }
+         if (EXTRACT(change_mask, SW_IPU2_RST)) {
+             /* We pretend the IPU2 is reset */
 -- 
 2.11.0

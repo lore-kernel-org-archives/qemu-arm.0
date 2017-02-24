@@ -1,78 +1,199 @@
-Received: by 10.25.0.147 with SMTP id 141csp773773lfa;
-        Fri, 24 Feb 2017 09:00:31 -0800 (PST)
-X-Received: by 10.223.135.215 with SMTP id c23mr2374350wrc.135.1487955631892;
-        Fri, 24 Feb 2017 09:00:31 -0800 (PST)
-Return-Path: <peter.maydell@linaro.org>
-Received: from mail-wr0-x233.google.com (mail-wr0-x233.google.com. [2a00:1450:400c:c0c::233])
-        by mx.google.com with ESMTPS id y190si3133577wmy.7.2017.02.24.09.00.31
-        for <alex.bennee@linaro.org>
+Return-Path: <alex.bennee@linaro.org>
+Received: from zen.linaro.local (host5-81-235-77.range5-81.btcentralplus.com. [5.81.235.77])
+        by smtp.gmail.com with ESMTPSA id k195sm3077015wmd.7.2017.02.24.09.13.48
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 24 Feb 2017 09:00:31 -0800 (PST)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 2a00:1450:400c:c0c::233 as permitted sender) client-ip=2a00:1450:400c:c0c::233;
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 2a00:1450:400c:c0c::233 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: by mail-wr0-x233.google.com with SMTP id 89so16964402wrr.3
-        for <alex.bennee@linaro.org>; Fri, 24 Feb 2017 09:00:31 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-         :cc:content-transfer-encoding;
-        bh=102zUqTMig0oGsRYLRuOuhV21rLk5LRT/t7cXTveOS8=;
-        b=eGg3A3UaN7AIPaCfRJNbnj4SRW7NETjR14yhqRB9i9Y9AJ6V3tjXIwVC4JphBRDtyd
-         nwyQbUaRPlqhtsiVXBr4R7E14wLBVKi3UiBr8OQ0BIi/yYRdyLOY8HZIirED3TBKJDQ5
-         y2tucn9XiA8vaVD6mTCoutL/SAtCzZV2G4Mak=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-         :message-id:subject:to:cc:content-transfer-encoding;
-        bh=102zUqTMig0oGsRYLRuOuhV21rLk5LRT/t7cXTveOS8=;
-        b=FuN8xmEj+yTLtpb/VC58KfKM52LhTqZ61jJ9ncexo8pxIznPAVeRQCC5arkmuoJSuV
-         qgDYvBVsrrVQ2psW7XUeL1W5lwGLZzHJRI60WRq0Wj7O+XuJ/e5PVFBIA3GJkXykLkWI
-         xOs0OrhZVJdyO3SNpIiEgZh60+wBTb8uTch8bmVnVQZk9/+Jezv7WlwCSgoW9rG8ke7J
-         q6Z4VD0hRGk2XnlDvstfuVF1Yq+p4HQKDsEpDf/+j7aMPn9ZxzYoEdpRPKkdh2M5ncGX
-         h8MaKhntFJ9alM62q7HWgfFUvMyy1B/nk6ikjFNW1sd9IULnEvcU4eaN68qUzghBDtqf
-         sPhw==
-X-Gm-Message-State: AMke39kkBLy/um9FL3/4FpISs8/yh+8m0CmK5iP0RcNFIhkN0k1bZqEZRvz98pbbwwquQ16qvTUJr8TptX1Oahs0c0M=
-X-Received: by 10.223.169.76 with SMTP id u70mr3350305wrc.187.1487955631271;
- Fri, 24 Feb 2017 09:00:31 -0800 (PST)
+        Fri, 24 Feb 2017 09:13:49 -0800 (PST)
+Received: from zen (localhost [127.0.0.1])
+	by zen.linaro.local (Postfix) with ESMTPS id AC5F63E0198;
+	Fri, 24 Feb 2017 17:13:47 +0000 (GMT)
+References: <1487262963-11519-1-git-send-email-peter.maydell@linaro.org> <1487262963-11519-11-git-send-email-peter.maydell@linaro.org>
+User-agent: mu4e 0.9.19; emacs 25.2.5
+From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, patches@linaro.org
+Subject: Re: [PATCH v2 10/13] armv7m: Extract "exception taken" code into functions
+In-reply-to: <1487262963-11519-11-git-send-email-peter.maydell@linaro.org>
+Date: Fri, 24 Feb 2017 17:13:47 +0000
+Message-ID: <87poi7ldf8.fsf@linaro.org>
 MIME-Version: 1.0
-Received: by 10.223.145.69 with HTTP; Fri, 24 Feb 2017 09:00:10 -0800 (PST)
-In-Reply-To: <87r32nleue.fsf@linaro.org>
-References: <1487262963-11519-1-git-send-email-peter.maydell@linaro.org>
- <CAFEAcA-MMw0_ombzTD+kQYpeNKywtcKY2UczcpR-hFDwGZhZJw@mail.gmail.com>
- <87wpcflmmb.fsf@linaro.org> <CAFEAcA-OhSMFKgRYsCWUrb6OBxxrWokkkpJyioveEur-p4-g2A@mail.gmail.com>
- <87shn3lkj3.fsf@linaro.org> <CAFEAcA-e5s6Tru_Kfba9hQHL827r2N5jyBvbpwbro7fHX2m1KA@mail.gmail.com>
- <87r32nleue.fsf@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 24 Feb 2017 17:00:10 +0000
-Message-ID: <CAFEAcA_nwfvS-WnZW1WuqGT7cv8Mm16o8CwM2N=XB1MWePkqbA@mail.gmail.com>
-Subject: Re: [Qemu-arm] [PATCH v2 00/13] Rewrite NVIC to not depend on the GIC
-To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>, 
-	"patches@linaro.org" <patches@linaro.org>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-X-TUID: 1jbJHeYAm0+6
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-TUID: xzUE5xy4kvJJ
 
-On 24 February 2017 at 16:43, Alex Benn=C3=A9e <alex.bennee@linaro.org> wro=
-te:
+
+Peter Maydell <peter.maydell@linaro.org> writes:
+
+> Extract the code from the tail end of arm_v7m_do_interrupt() which
+> enters the exception handler into a pair of utility functions
+> v7m_exception_taken() and v7m_push_stack(), which correspond roughly
+> to the pseudocode PushStack() and ExceptionTaken().
 >
-> Peter Maydell <peter.maydell@linaro.org> writes:
+> This also requires us to move the arm_v7m_load_vector() utility
+> routine up so we can call it.
 >
->> On 24 February 2017 at 14:40, Alex Benn=C3=A9e <alex.bennee@linaro.org> =
-wrote:
->> Could be. I use arm-linux-gnueabihf-gcc to build. If you use
->> PRIx32 does it build OK?
+> Handling illegal exception returns has some cases where we want to
+> take a UsageFault either on an existing stack frame or with a new
+> stack frame but with a specific LR value, so we want to be able to
+> call these without having to go via arm_v7m_cpu_do_interrupt().
 >
-> Well the problem is the non-eabi compilers don't have PRIx32 defined for
-> you. You have to specify yourself.
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 
-Oh, right. Or we could just cast these things to unsigned int ;-)
+Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
 
-Other than the tests being a bit ropy, are you happy with the
-patches proper?
+> ---
+>  target/arm/helper.c | 118 ++++++++++++++++++++++++++++++----------------------
+>  1 file changed, 68 insertions(+), 50 deletions(-)
+>
+> diff --git a/target/arm/helper.c b/target/arm/helper.c
+> index 1844852..f94d1c7 100644
+> --- a/target/arm/helper.c
+> +++ b/target/arm/helper.c
+> @@ -6001,6 +6001,72 @@ static void switch_v7m_sp(CPUARMState *env, bool new_spsel)
+>      }
+>  }
+>
+> +static uint32_t arm_v7m_load_vector(ARMCPU *cpu)
+> +{
+> +    CPUState *cs = CPU(cpu);
+> +    CPUARMState *env = &cpu->env;
+> +    MemTxResult result;
+> +    hwaddr vec = env->v7m.vecbase + env->v7m.exception * 4;
+> +    uint32_t addr;
+> +
+> +    addr = address_space_ldl(cs->as, vec,
+> +                             MEMTXATTRS_UNSPECIFIED, &result);
+> +    if (result != MEMTX_OK) {
+> +        /* Architecturally this should cause a HardFault setting HSFR.VECTTBL,
+> +         * which would then be immediately followed by our failing to load
+> +         * the entry vector for that HardFault, which is a Lockup case.
+> +         * Since we don't model Lockup, we just report this guest error
+> +         * via cpu_abort().
+> +         */
+> +        cpu_abort(cs, "Failed to read from exception vector table "
+> +                  "entry %08x\n", (unsigned)vec);
+> +    }
+> +    return addr;
+> +}
+> +
+> +static void v7m_exception_taken(ARMCPU *cpu, uint32_t lr)
+> +{
+> +    /* Do the "take the exception" parts of exception entry,
+> +     * but not the pushing of state to the stack. This is
+> +     * similar to the pseudocode ExceptionTaken() function.
+> +     */
+> +    CPUARMState *env = &cpu->env;
+> +    uint32_t addr;
+> +
+> +    armv7m_nvic_acknowledge_irq(env->nvic);
+> +    switch_v7m_sp(env, 0);
+> +    /* Clear IT bits */
+> +    env->condexec_bits = 0;
+> +    env->regs[14] = lr;
+> +    addr = arm_v7m_load_vector(cpu);
+> +    env->regs[15] = addr & 0xfffffffe;
+> +    env->thumb = addr & 1;
+> +}
+> +
+> +static void v7m_push_stack(ARMCPU *cpu)
+> +{
+> +    /* Do the "set up stack frame" part of exception entry,
+> +     * similar to pseudocode PushStack().
+> +     */
+> +    CPUARMState *env = &cpu->env;
+> +    uint32_t xpsr = xpsr_read(env);
+> +
+> +    /* Align stack pointer if the guest wants that */
+> +    if ((env->regs[13] & 4) && (env->v7m.ccr & R_V7M_CCR_STKALIGN_MASK)) {
+> +        env->regs[13] -= 4;
+> +        xpsr |= 0x200;
+> +    }
+> +    /* Switch to the handler mode.  */
+> +    v7m_push(env, xpsr);
+> +    v7m_push(env, env->regs[15]);
+> +    v7m_push(env, env->regs[14]);
+> +    v7m_push(env, env->regs[12]);
+> +    v7m_push(env, env->regs[3]);
+> +    v7m_push(env, env->regs[2]);
+> +    v7m_push(env, env->regs[1]);
+> +    v7m_push(env, env->regs[0]);
+> +}
+> +
+>  static void do_v7m_exception_exit(CPUARMState *env)
+>  {
+>      uint32_t type;
+> @@ -6062,37 +6128,11 @@ static void arm_log_exception(int idx)
+>      }
+>  }
+>
+> -static uint32_t arm_v7m_load_vector(ARMCPU *cpu)
+> -
+> -{
+> -    CPUState *cs = CPU(cpu);
+> -    CPUARMState *env = &cpu->env;
+> -    MemTxResult result;
+> -    hwaddr vec = env->v7m.vecbase + env->v7m.exception * 4;
+> -    uint32_t addr;
+> -
+> -    addr = address_space_ldl(cs->as, vec,
+> -                             MEMTXATTRS_UNSPECIFIED, &result);
+> -    if (result != MEMTX_OK) {
+> -        /* Architecturally this should cause a HardFault setting HSFR.VECTTBL,
+> -         * which would then be immediately followed by our failing to load
+> -         * the entry vector for that HardFault, which is a Lockup case.
+> -         * Since we don't model Lockup, we just report this guest error
+> -         * via cpu_abort().
+> -         */
+> -        cpu_abort(cs, "Failed to read from exception vector table "
+> -                  "entry %08x\n", (unsigned)vec);
+> -    }
+> -    return addr;
+> -}
+> -
+>  void arm_v7m_cpu_do_interrupt(CPUState *cs)
+>  {
+>      ARMCPU *cpu = ARM_CPU(cs);
+>      CPUARMState *env = &cpu->env;
+> -    uint32_t xpsr = xpsr_read(env);
+>      uint32_t lr;
+> -    uint32_t addr;
+>
+>      arm_log_exception(cs->exception_index);
+>
+> @@ -6150,31 +6190,9 @@ void arm_v7m_cpu_do_interrupt(CPUState *cs)
+>          return; /* Never happens.  Keep compiler happy.  */
+>      }
+>
+> -    armv7m_nvic_acknowledge_irq(env->nvic);
+> -
+> +    v7m_push_stack(cpu);
+> +    v7m_exception_taken(cpu, lr);
+>      qemu_log_mask(CPU_LOG_INT, "... as %d\n", env->v7m.exception);
+> -
+> -    /* Align stack pointer if the guest wants that */
+> -    if ((env->regs[13] & 4) && (env->v7m.ccr & R_V7M_CCR_STKALIGN_MASK)) {
+> -        env->regs[13] -= 4;
+> -        xpsr |= 0x200;
+> -    }
+> -    /* Switch to the handler mode.  */
+> -    v7m_push(env, xpsr);
+> -    v7m_push(env, env->regs[15]);
+> -    v7m_push(env, env->regs[14]);
+> -    v7m_push(env, env->regs[12]);
+> -    v7m_push(env, env->regs[3]);
+> -    v7m_push(env, env->regs[2]);
+> -    v7m_push(env, env->regs[1]);
+> -    v7m_push(env, env->regs[0]);
+> -    switch_v7m_sp(env, 0);
+> -    /* Clear IT bits */
+> -    env->condexec_bits = 0;
+> -    env->regs[14] = lr;
+> -    addr = arm_v7m_load_vector(cpu);
+> -    env->regs[15] = addr & 0xfffffffe;
+> -    env->thumb = addr & 1;
+>  }
+>
+>  /* Function used to synchronize QEMU's AArch64 register set with AArch32
 
-thanks
--- PMM
+
+--
+Alex Bennée

@@ -1,93 +1,75 @@
-Received: by 10.25.0.147 with SMTP id 141csp723018lfa;
-        Fri, 24 Feb 2017 06:58:56 -0800 (PST)
-X-Received: by 10.223.141.148 with SMTP id o20mr2928419wrb.191.1487948335979;
-        Fri, 24 Feb 2017 06:58:55 -0800 (PST)
-Return-Path: <peter.maydell@linaro.org>
-Received: from mail-wm0-x236.google.com (mail-wm0-x236.google.com. [2a00:1450:400c:c09::236])
-        by mx.google.com with ESMTPS id j26si10659217wrc.16.2017.02.24.06.58.55
-        for <alex.bennee@linaro.org>
+Return-Path: <alex.bennee@linaro.org>
+Received: from zen.linaro.local (host5-81-235-77.range5-81.btcentralplus.com. [5.81.235.77])
+        by smtp.gmail.com with ESMTPSA id w17sm11012972wra.28.2017.02.24.08.43.05
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 24 Feb 2017 06:58:55 -0800 (PST)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 2a00:1450:400c:c09::236 as permitted sender) client-ip=2a00:1450:400c:c09::236;
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 2a00:1450:400c:c09::236 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: by mail-wm0-x236.google.com with SMTP id t18so9067823wmt.0
-        for <alex.bennee@linaro.org>; Fri, 24 Feb 2017 06:58:55 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-         :cc:content-transfer-encoding;
-        bh=atoLI5ckv+n9BIVSlsFlcSa16bcYKlnKXrJFilsdvjI=;
-        b=FhFJtSzTUkdTXq247kLxxa45uns+C3dr+IUJLx1bIkVTMyfzLk5+Cu16Ip9ZBnxkLF
-         iTnZOZQ3ziBRQkzPdJ7g1mrl4P4PonV5uK0m3f0FceHrhXVOKp5ck3czJc0CTdiHEMSO
-         mRd7VtIi6t8Ch/GoyPbaCj4Ctt4JG4J2dibB8=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-         :message-id:subject:to:cc:content-transfer-encoding;
-        bh=atoLI5ckv+n9BIVSlsFlcSa16bcYKlnKXrJFilsdvjI=;
-        b=dXcQSF4i6INBeJTAE5SdCEXDDIbxNrp6EGcCDWvZ5DGTanghCJzdEjukvTBUE49Dqp
-         USSJPskmHFWV5XFtNVw8wJkfsOBNdrVGoWL/EYPQH3Gdm6UpEcrpzwSMm70KkZjNNhxZ
-         TEYpz29PUxYxrtnF05B7gCzB0bPPJu12qpvpsXATSYjCksLscpIO1F6F3XQoiTymUSzE
-         LTuojzU+A9pTqd+sUWDB5OEQfxLWhTM4jforgtFCJK1Ij7CAyWobiRIc9BisHTxHFCIJ
-         JNwLJYnkBCavyJXdMJYTptPczVloF7ggS27VoM+vaDqNTKfiXbO8EcsqQNmBAK13UavJ
-         sAug==
-X-Gm-Message-State: AMke39kwsriXOlaoG0BnrqASGa4Gkj75hGniUZ3iqSHucZUTFim0sv4nhbtXHlCAsEyzGMTnsn2iH74f84S05w1/t+4=
-X-Received: by 10.28.55.199 with SMTP id e190mr2881616wma.92.1487948335749;
- Fri, 24 Feb 2017 06:58:55 -0800 (PST)
+        Fri, 24 Feb 2017 08:43:05 -0800 (PST)
+Received: from zen (localhost [127.0.0.1])
+	by zen.linaro.local (Postfix) with ESMTPS id 4A9123E0198;
+	Fri, 24 Feb 2017 16:43:05 +0000 (GMT)
+References: <1487262963-11519-1-git-send-email-peter.maydell@linaro.org> <CAFEAcA-MMw0_ombzTD+kQYpeNKywtcKY2UczcpR-hFDwGZhZJw@mail.gmail.com> <87wpcflmmb.fsf@linaro.org> <CAFEAcA-OhSMFKgRYsCWUrb6OBxxrWokkkpJyioveEur-p4-g2A@mail.gmail.com> <87shn3lkj3.fsf@linaro.org> <CAFEAcA-e5s6Tru_Kfba9hQHL827r2N5jyBvbpwbro7fHX2m1KA@mail.gmail.com>
+User-agent: mu4e 0.9.19; emacs 25.2.5
+From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>, "patches\@linaro.org" <patches@linaro.org>
+Subject: Re: [Qemu-arm] [PATCH v2 00/13] Rewrite NVIC to not depend on the GIC
+In-reply-to: <CAFEAcA-e5s6Tru_Kfba9hQHL827r2N5jyBvbpwbro7fHX2m1KA@mail.gmail.com>
+Date: Fri, 24 Feb 2017 16:43:05 +0000
+Message-ID: <87r32nleue.fsf@linaro.org>
 MIME-Version: 1.0
-Received: by 10.223.145.69 with HTTP; Fri, 24 Feb 2017 06:58:35 -0800 (PST)
-In-Reply-To: <87varzll0r.fsf@linaro.org>
-References: <1487604965-23220-1-git-send-email-peter.maydell@linaro.org>
- <1487604965-23220-10-git-send-email-peter.maydell@linaro.org> <87varzll0r.fsf@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 24 Feb 2017 14:58:35 +0000
-Message-ID: <CAFEAcA-qNT=5yQVMoB4GSpsDYXFTAHOHktGT652eNKBCBS-wYw@mail.gmail.com>
-Subject: Re: [PATCH 09/11] armv7m: Split systick out from NVIC
-To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>, 
-	"patches@linaro.org" <patches@linaro.org>, Alistair Francis <alistair23@gmail.com>, 
-	Michael Davidsaver <mdavidsaver@gmail.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-X-TUID: sY3Vv6YW8Rrh
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-TUID: nucSsjxU69VP
 
-On 24 February 2017 at 14:29, Alex Benn=C3=A9e <alex.bennee@linaro.org> wro=
-te:
->
-> Peter Maydell <peter.maydell@linaro.org> writes:
->
->> The SysTick timer isn't really part of the NVIC proper;
->> we just modelled it that way back when we couldn't
->> easily have devices that only occupied a small chunk
->> of a memory region. Split it out into its own device.
+
+Peter Maydell <peter.maydell@linaro.org> writes:
+
+> On 24 February 2017 at 14:40, Alex Bennée <alex.bennee@linaro.org> wrote:
+>> The tests currently fail to build:
 >>
->> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-
->> +    default:
->> +        qemu_log_mask(LOG_GUEST_ERROR,
->> +                      "SysTick: Bad read offset 0x%" HWADDR_PRIx "\n", =
-addr);
->> +        break;
->> +    }
->> +
->> +    trace_systick_read(addr, val, size);
+>> /usr/bin/arm-none-eabi-objcopy -S -O binary test6-kern.elf test6-kern.bin
+>> test7.c: In function 'usage':
+>> test7.c:58:9: error: format '%x' expects argument of type 'unsigned int', but argument 2 has type 'uint32_t' [-Werror=format=]
+>>          testDiag("Ignoring bogus LR %x, doing return to handler", old_lr);
+>>          ^
+>> test7.c:76:9: error: format '%x' expects argument of type 'unsigned int', but argument 2 has type 'uint32_t' [-Werror=format=]
+>>          testDiag("Ignoring bogus LR %x, doing return to thread", old_lr);
+>>          ^
+>> test7.c: In function 'svc':
+>> test7.c:105:9: error: format '%x' expects argument of type 'unsigned int', but argument 2 has type 'uint32_t' [-Werror=format=]
+>>          testDiag("New xPSR %x", sframe[7]);
+>>          ^
+>> test7.c:109:9: error: format '%x' expects argument of type 'unsigned int', but argument 2 has type 'uint32_t' [-Werror=format=]
+>>          testDiag("old xPSR %x", sframe[7]);
+>>          ^
+>> test7.c:116:9: error: format '%x' expects argument of type 'unsigned int', but argument 2 has type 'uint32_t' [-Werror=format=]
+>>          testDiag("In SVC handler (direct call from main with LR %x)", old_lr);
+>>          ^
+>> /usr/bin/arm-none-eabi-objcopy -S -O binary test8-kern.elf test8-kern.bin
+>> /usr/bin/arm-none-eabi-objcopy -S -O binary test9-kern.elf test9-kern.bin
+>> /usr/bin/arm-none-eabi-objcopy -S -O binary test10-kern.elf test10-kern.bin
+>> /usr/bin/arm-none-eabi-objcopy -S -O binary test11-kern.elf test11-kern.bin
+>> /usr/bin/arm-none-eabi-objcopy -S -O binary test13-kern.elf test13-kern.bin
+>> /usr/bin/arm-none-eabi-objcopy -S -O binary test14-kern.elf test14-kern.bin
+>> cc1: all warnings being treated as errors
+>> Makefile:49: recipe for target 'test7.o' failed
+>> make: *** [test7.o] Error 1
+>> make: Target 'all' not remade because of errors.
+>>
+>> I suspect its the same thing as I came across with kvm-unit-tests that
+>> compilers targeting the same abi can still disagree about sizes:
+>>
+>>   https://git.kernel.org/cgit/virt/kvm/kvm-unit-tests.git/commit/?id=529046c397059b8c5ef4dc5fb3c258d86fafb126
 >
-> I'm getting the compiler complain:
->
-> hw/timer/armv7m_systick.c: In function =E2=80=98systick_read=E2=80=99:
-> hw/timer/armv7m_systick.c:81:14: error: =E2=80=98val=E2=80=99 may be used=
- uninitialized in this function [-Werror=3Dmaybe-uninitialized]
->      uint32_t val;
->               ^
-> cc1: all warnings being treated as errors
->
-> I suspect the trace function could pick up garbage if we take the
-> GUEST_ERROR leg and default out....
+> Could be. I use arm-linux-gnueabihf-gcc to build. If you use
+> PRIx32 does it build OK?
 
-Indeed, missing 'val =3D 0;' in the default case.
+Well the problem is the non-eabi compilers don't have PRIx32 defined for
+you. You have to specify yourself.
 
-thanks
--- PMM
+>
+> thanks
+> -- PMM
+
+
+--
+Alex Bennée

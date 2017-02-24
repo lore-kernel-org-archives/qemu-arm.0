@@ -1,133 +1,119 @@
-Received: by 10.25.0.147 with SMTP id 141csp605074lfa;
-        Fri, 24 Feb 2017 01:49:03 -0800 (PST)
-X-Received: by 10.55.187.1 with SMTP id l1mr1483250qkf.175.1487929743761;
-        Fri, 24 Feb 2017 01:49:03 -0800 (PST)
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 10.25.0.147 with SMTP id 141csp766224lfa;
+        Fri, 24 Feb 2017 08:40:38 -0800 (PST)
+X-Received: by 10.55.157.137 with SMTP id g131mr3900308qke.80.1487954438520;
+        Fri, 24 Feb 2017 08:40:38 -0800 (PST)
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id b190si5262364qkd.248.2017.02.24.01.49.03
+        by mx.google.com with ESMTPS id v1si5984414qki.194.2017.02.24.08.40.37
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 24 Feb 2017 01:49:03 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Fri, 24 Feb 2017 08:40:38 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=neutral (body hash did not verify) header.i=@antfield.fr;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
+       dkim=fail header.i=@antfield.fr;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=antfield.fr
-Received: from localhost ([::1]:35781 helo=lists.gnu.org)
+Received: from localhost ([::1]:38415 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1chCUn-0003CJ-6Q
-	for alex.bennee@linaro.org; Fri, 24 Feb 2017 04:49:01 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:54426)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1chIv5-0003OG-Tg
+	for alex.bennee@linaro.org; Fri, 24 Feb 2017 11:40:35 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:50366)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <clement.deschamps@antfield.fr>) id 1chCTB-0002LT-Pp
-	for qemu-devel@nongnu.org; Fri, 24 Feb 2017 04:47:22 -0500
+	(envelope-from <clement.deschamps@antfield.fr>) id 1chIuv-0003Mk-IT
+	for qemu-arm@nongnu.org; Fri, 24 Feb 2017 11:40:26 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <clement.deschamps@antfield.fr>) id 1chCTB-0002Sy-42
-	for qemu-devel@nongnu.org; Fri, 24 Feb 2017 04:47:21 -0500
-Received: from bee.antfield.fr ([188.165.75.195]:59400)
+	(envelope-from <clement.deschamps@antfield.fr>) id 1chIus-0001AJ-Vd
+	for qemu-arm@nongnu.org; Fri, 24 Feb 2017 11:40:25 -0500
+Received: from bee.antfield.fr ([188.165.75.195]:53514)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <clement.deschamps@antfield.fr>)
-	id 1chCT6-0002Rf-MT; Fri, 24 Feb 2017 04:47:16 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=antfield.fr; s=mail;
-	t=1487929635; bh=KF0ei83OQRU72N25A0DircsHbtz/oXr4g5gIDSIVW/4=;
-	h=Subject:To:References:Cc:From:Date:In-Reply-To:From;
-	b=yLAqmeNdgNtnrJOkZb9dJjdpZy9DlWh7AiWbqDBW8mr+Ldlo1SBNZE6gvfVnwDLCu
-	Rl8zNeBGfWNe4psPazRdjEjioA/rfXCE/yMQdpScapWA3n/jhA1DbtlJLgtz+sBMRM
-	86zpbk2tmUYdaCJ2qcxXTEfboNtPzp1xe2q6EHZ0=
-To: Peter Maydell <peter.maydell@linaro.org>
-References: <20170222112338.25492-1-clement.deschamps@antfield.fr>
-	<20170222112338.25492-3-clement.deschamps@antfield.fr>
-	<CAFEAcA_jPaQxfoXKz82WaQ+62krkbQ7RCm66DeELj30jOE7_Xg@mail.gmail.com>
+	id 1chIus-00019m-MC; Fri, 24 Feb 2017 11:40:22 -0500
 From: Clement Deschamps <clement.deschamps@antfield.fr>
-Message-ID: <5e429ced-9e7b-cf9e-ed73-1b9dd8baa46b@antfield.fr>
-Date: Fri, 24 Feb 2017 10:47:19 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
-	Thunderbird/45.7.1
-MIME-Version: 1.0
-In-Reply-To: <CAFEAcA_jPaQxfoXKz82WaQ+62krkbQ7RCm66DeELj30jOE7_Xg@mail.gmail.com>
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature";
-	boundary="WCpnN4GM5KEoATTgS600qIr1QjMf4Lrlg"
+DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=antfield.fr; s=mail;
+	t=1487954420; bh=YUKjlK7HJyhAmLZzS2kdReJIf9YxZ4bIzB/yVBmqphk=;
+	h=From:To:Cc:Subject:Date:From;
+	b=ovIIa2MpJ2fFhHLdwDIBn4owdowhlje+tipuivKi896B0HU/ZwkAJ3OoLGrgOZ5kD
+	3/J/PV5dFWO3Q/f6Ym412yyyq9jTZWre/Ge6g4+IixzjnbRaDEt+UDc6wlaB3cOxp/
+	0E/m8ZUfgz6EzfOExU5hQCNt91iHdUWkwPPJ7rr0=
+To: qemu-devel@nongnu.org
+Date: Fri, 24 Feb 2017 17:40:17 +0100
+Message-Id: <20170224164021.9066-1-clement.deschamps@antfield.fr>
+X-Mailer: git-send-email 2.11.1
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 188.165.75.195
-X-Content-Filtered-By: Mailman/MimeDel 2.1.21
-Subject: Re: [Qemu-devel] [PATCH v2 2/3] bcm2835_gpio: add bcm2835 gpio
- controller
-X-BeenThere: qemu-devel@nongnu.org
+Subject: [Qemu-arm] [PATCH v3 0/4] bcm2835: add sdhost and gpio controllers
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
-	Andrew Baumann <andrew.baumann@microsoft.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 1AwZXjy7EHFU
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org,
+	Clement Deschamps <clement.deschamps@antfield.fr>,
+	andrew.baumann@microsoft.com
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: k/nd2ztPJHOa
 
-This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
---WCpnN4GM5KEoATTgS600qIr1QjMf4Lrlg
-From: Clement Deschamps <clement.deschamps@antfield.fr>
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
- Andrew Baumann <andrew.baumann@microsoft.com>
-Message-ID: <5e429ced-9e7b-cf9e-ed73-1b9dd8baa46b@antfield.fr>
-Subject: Re: [PATCH v2 2/3] bcm2835_gpio: add bcm2835 gpio controller
-References: <20170222112338.25492-1-clement.deschamps@antfield.fr>
- <20170222112338.25492-3-clement.deschamps@antfield.fr>
- <CAFEAcA_jPaQxfoXKz82WaQ+62krkbQ7RCm66DeELj30jOE7_Xg@mail.gmail.com>
-In-Reply-To: <CAFEAcA_jPaQxfoXKz82WaQ+62krkbQ7RCm66DeELj30jOE7_Xg@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
+This patches add the Arasan SDHost controller and the GPIO controller to the BCM2835/36 platforms.
 
-On 02/23/2017 08:08 PM, Peter Maydell wrote:
-
-> Do we also need to call the SD card object's reset method?
-
-On the real Raspberry Pi, I think that the card is not reset when
-switching SD controllers.
-
-> Apart from my comments above about the card-reparenting function
-> this looks OK to me (and I'd like to squeeze it into 2.9 if we
-> can; deadline for "patches reviewed and in pull requests is very
-> near though, 28th).
-
-Sounds great! I'll send a v3 ASAP.
+This patches have been tested with raspbian 2015-09-24 (which uses the SDHCI controller),
+and raspbian 2017-01-11 (which dynamically switches to the SDHost controller).
 
 
-Best,
-Cl=C3=A9ment
+I spotted an issue with the raspi2 platform, but it is not related to this patch.
+The CP15 timer frequency is set to 19.20MHz in the raspbian kernel DTB.
+There is a constant (GTIMER_SCALE) in target/arm/internals.h which seems to tell that the timer is at 62.5MHz.
+This causes problems:
+- The sleep command entered in guest lasts around 1/3 of the time it is supposed to last.
+- The cursor is blinking faster that it should
+- The systemd timeouts expire too early.          
+- ...
+
+Did you already have this issue on another platform ?
+Should the frequency in the DTB be dynamically replaced depending on the GTIMER_SCALE value ?
+Or should the constant GTIMER_SCALE be platform dependent ?
 
 
+v2:
+- implements the GPIO controller for supporting SD controller selection via alternate functions of GPIOs 48-53
 
---WCpnN4GM5KEoATTgS600qIr1QjMf4Lrlg
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: OpenPGP digital signature
-Content-Disposition: attachment; filename="signature.asc"
+v3:
+- removed unneeded alias (sd-bus-2)
+- changed license to GPLv2 'or later'
+- moved the sdbus_reparent_card() function to hw/sd/core.c
+- added 'readonly' state propagation in sdbus_reparent_card()
+- the gpio controller is now exposing an sdbus and has 2 references to sdbus of sdhci and sdhost controllers
 
------BEGIN PGP SIGNATURE-----
+Clement Deschamps (4):
+  bcm2835_sdhost: add bcm2835 sdhost controller
+  hw/sd: add card-reparenting function
+  bcm2835_gpio: add bcm2835 gpio controller
+  bcm2835: add sdhost and gpio controllers
 
-iQJSBAEBCAA8FiEEaNi9eUaRP9BYKowJomWY3rxByn8FAliwASceHGNsZW1lbnQu
-ZGVzY2hhbXBzQGFudGZpZWxkLmZyAAoJEKJlmN68Qcp/eG8QAJzyiFOW04/aRzNV
-BeeEiKHd9pHT4YIZzgAd3zutMz3vPnlXsyfkYXq/J5z07vjghF1CyuMjZkYHu8eR
-82nMmIlx6F+ubmX52kUl/V9FYTIraAZukRdhy8ny3lq7UYt0JDOO1gzgxls69+uJ
-jXORsuVr8Kxf0ZMKlwvillbOG49JZWbn4452qPxg/Pu4DANTocfrIN7gyevZkBbk
-EPovez5oeA+FuCPmpAbiz90r2/ImqidOnv1R/w8bSETV6V8yhjDfGi8c+CvItRK5
-6N44eudxmD1YK1w234Zx3+GWaRhG0D0Cx4nNl6zG2zodsZf0dx70odWSAZe06h+L
-5rWUBJGTGwF4e46RjXEpKo9+gYfjFvSFxo2Nr/JVYgV/vnbmT9H0VkLBD/j5FppN
-kVc2b6rBbo4MerlfyJ4vrX7a29CkUsMItJFKWfn21j5HMznMAV8QZIYzm/OjH4UB
-2U51P375neJT1SyHujGavIjO9PNsAGWtCzh7pHZfYL7dahCfG7aPaiww7eMfAeWS
-+dxozKnNXQ0qDkMmdJJ8N+J2ej73eMD1SUAoj4RHSUMO1vOw6OQy50h1rQAojNlb
-IrdeUgM1uFRnfv4A12+4kkhtdwWVV5UNnNdzdlyt7lLVkg+1om0iaE7hh2budQwE
-BhpLMCRYItZOkID8XUjhPb77omnP
-=Xdmh
------END PGP SIGNATURE-----
+ hw/arm/bcm2835_peripherals.c         |  43 +++-
+ hw/gpio/Makefile.objs                |   1 +
+ hw/gpio/bcm2835_gpio.c               | 353 ++++++++++++++++++++++++++++
+ hw/sd/Makefile.objs                  |   1 +
+ hw/sd/bcm2835_sdhost.c               | 429 +++++++++++++++++++++++++++++++++++
+ hw/sd/core.c                         |  30 +++
+ include/hw/arm/bcm2835_peripherals.h |   4 +
+ include/hw/gpio/bcm2835_gpio.h       |  39 ++++
+ include/hw/sd/bcm2835_sdhost.h       |  48 ++++
+ include/hw/sd/sd.h                   |   1 +
+ 10 files changed, 947 insertions(+), 2 deletions(-)
+ create mode 100644 hw/gpio/bcm2835_gpio.c
+ create mode 100644 hw/sd/bcm2835_sdhost.c
+ create mode 100644 include/hw/gpio/bcm2835_gpio.h
+ create mode 100644 include/hw/sd/bcm2835_sdhost.h
 
---WCpnN4GM5KEoATTgS600qIr1QjMf4Lrlg--
+-- 
+2.11.1
+

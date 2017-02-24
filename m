@@ -1,579 +1,767 @@
-Received: by 10.25.0.147 with SMTP id 141csp767705lfa;
-        Fri, 24 Feb 2017 08:44:27 -0800 (PST)
-X-Received: by 10.55.103.145 with SMTP id b139mr3743326qkc.197.1487954667269;
-        Fri, 24 Feb 2017 08:44:27 -0800 (PST)
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 10.25.0.147 with SMTP id 141csp798600lfa;
+        Fri, 24 Feb 2017 10:01:20 -0800 (PST)
+X-Received: by 10.237.48.105 with SMTP id 96mr4219967qte.121.1487959280691;
+        Fri, 24 Feb 2017 10:01:20 -0800 (PST)
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id i6si5980484qkc.276.2017.02.24.08.44.26
+        by mx.google.com with ESMTPS id a192si6146324qkc.54.2017.02.24.10.01.19
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 24 Feb 2017 08:44:27 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Fri, 24 Feb 2017 10:01:20 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@antfield.fr;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=antfield.fr
-Received: from localhost ([::1]:38436 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:39001 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1chIym-0007wi-I3
-	for alex.bennee@linaro.org; Fri, 24 Feb 2017 11:44:24 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:50364)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1chKBB-0005da-Lz
+	for alex.bennee@linaro.org; Fri, 24 Feb 2017 13:01:17 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:39275)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <clement.deschamps@antfield.fr>) id 1chIuv-0003Mh-Ha
-	for qemu-arm@nongnu.org; Fri, 24 Feb 2017 11:40:27 -0500
+	(envelope-from <eric.auger@redhat.com>) id 1chK3Y-0006cp-BU
+	for qemu-devel@nongnu.org; Fri, 24 Feb 2017 12:53:27 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <clement.deschamps@antfield.fr>) id 1chIut-0001AU-9U
-	for qemu-arm@nongnu.org; Fri, 24 Feb 2017 11:40:25 -0500
-Received: from bee.antfield.fr ([188.165.75.195]:53522)
+	(envelope-from <eric.auger@redhat.com>) id 1chK3V-0007IT-Gt
+	for qemu-devel@nongnu.org; Fri, 24 Feb 2017 12:53:24 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:58909)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <clement.deschamps@antfield.fr>)
-	id 1chIus-0001A1-Vd; Fri, 24 Feb 2017 11:40:23 -0500
-From: Clement Deschamps <clement.deschamps@antfield.fr>
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=antfield.fr; s=mail;
-	t=1487954421; bh=PG9U60+vUsyUKgbjnnwYBCri9Nf4z/odJSdlEgQjtfU=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=lMaTJTDDoex/9XmHXL625U4Pzc0uJCRPdtRa/pW9+p3iWMaBiu3et5aX6fuaEU93l
-	ukvA55SaH5rAHSmtV13MWVsd5pglPAVmFwkE/u3nZjJXde6tH5eWy9zUrmTpLpRq4I
-	1WhLvW+8GzlB6yJ5/SBq9yA6InAi9jOaIT4+scbk=
-To: qemu-devel@nongnu.org
-Date: Fri, 24 Feb 2017 17:40:18 +0100
-Message-Id: <20170224164021.9066-2-clement.deschamps@antfield.fr>
-X-Mailer: git-send-email 2.11.1
-In-Reply-To: <20170224164021.9066-1-clement.deschamps@antfield.fr>
-References: <20170224164021.9066-1-clement.deschamps@antfield.fr>
+	(Exim 4.71) (envelope-from <eric.auger@redhat.com>)
+	id 1chK3O-0007Fw-R3; Fri, 24 Feb 2017 12:53:15 -0500
+Received: from smtp.corp.redhat.com (int-mx16.intmail.prod.int.phx2.redhat.com
+	[10.5.11.28])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id BDC84C00B8FC;
+	Fri, 24 Feb 2017 17:53:14 +0000 (UTC)
+Received: from localhost.localdomain (unknown [10.36.118.6])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 6026B2D653;
+	Fri, 24 Feb 2017 17:53:12 +0000 (UTC)
+To: vijay.kilari@gmail.com, qemu-arm@nongnu.org, peter.maydell@linaro.org,
+	christoffer.dall@linaro.org
+References: <1487313115-9510-1-git-send-email-vijay.kilari@gmail.com>
+	<1487313115-9510-4-git-send-email-vijay.kilari@gmail.com>
+From: Auger Eric <eric.auger@redhat.com>
+Message-ID: <d65f7034-919a-9a76-9a52-bff894346ec0@redhat.com>
+Date: Fri, 24 Feb 2017 18:53:09 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
+	Thunderbird/45.4.0
+MIME-Version: 1.0
+In-Reply-To: <1487313115-9510-4-git-send-email-vijay.kilari@gmail.com>
+Content-Type: text/plain; charset=windows-1252
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.74 on 10.5.11.28
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.31]);
+	Fri, 24 Feb 2017 17:53:14 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 188.165.75.195
-Subject: [Qemu-arm] [PATCH v3 1/4] bcm2835_sdhost: add bcm2835 sdhost
- controller
-X-BeenThere: qemu-arm@nongnu.org
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-devel] [PATCH v8 3/5] hw/intc/arm_gicv3_kvm: Implement
+ get/put functions
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org,
-	Clement Deschamps <clement.deschamps@antfield.fr>,
-	andrew.baumann@microsoft.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: CWrywvLcHL/0
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: marc.zyngier@arm.com, p.fedin@samsung.com, qemu-devel@nongnu.org,
+	Vijaya Kumar K <Vijaya.Kumar@cavium.com>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: Ny3wUZl9btG3
 
-This adds the BCM2835 SDHost controller from Arasan.
+Hi,
 
-Signed-off-by: Clement Deschamps <clement.deschamps@antfield.fr>
----
- hw/sd/Makefile.objs            |   1 +
- hw/sd/bcm2835_sdhost.c         | 429 +++++++++++++++++++++++++++++++++++++++++
- include/hw/sd/bcm2835_sdhost.h |  48 +++++
- 3 files changed, 478 insertions(+)
- create mode 100644 hw/sd/bcm2835_sdhost.c
- create mode 100644 include/hw/sd/bcm2835_sdhost.h
+On 17/02/2017 07:31, vijay.kilari@gmail.com wrote:
+> From: Vijaya Kumar K <Vijaya.Kumar@cavium.com>
+> 
+> This actually implements pre_save and post_load methods for in-kernel
+> vGICv3.
+> 
+> Signed-off-by: Pavel Fedin <p.fedin@samsung.com>
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+I noticed some saved/restored registers are not really emulated on
+kernel side (see below) but looks a good practice to do the job
+according to the spec anyway.
 
-diff --git a/hw/sd/Makefile.objs b/hw/sd/Makefile.objs
-index 31c83308f2..c2b7664264 100644
---- a/hw/sd/Makefile.objs
-+++ b/hw/sd/Makefile.objs
-@@ -6,3 +6,4 @@ common-obj-$(CONFIG_SDHCI) += sdhci.o
- obj-$(CONFIG_MILKYMIST) += milkymist-memcard.o
- obj-$(CONFIG_OMAP) += omap_mmc.o
- obj-$(CONFIG_PXA2XX) += pxa2xx_mmci.o
-+obj-$(CONFIG_RASPI) += bcm2835_sdhost.o
-diff --git a/hw/sd/bcm2835_sdhost.c b/hw/sd/bcm2835_sdhost.c
-new file mode 100644
-index 0000000000..f7f4e656df
---- /dev/null
-+++ b/hw/sd/bcm2835_sdhost.c
-@@ -0,0 +1,429 @@
-+/*
-+ * Raspberry Pi (BCM2835) SD Host Controller
-+ *
-+ * Copyright (c) 2017 Antfield SAS
-+ *
-+ * Authors:
-+ *  Clement Deschamps <clement.deschamps@antfield.fr>
-+ *  Luc Michel <luc.michel@antfield.fr>
-+ *
-+ * This work is licensed under the terms of the GNU GPL, version 2 or later.
-+ * See the COPYING file in the top-level directory.
-+ */
-+
-+#include "qemu/osdep.h"
-+#include "qemu/log.h"
-+#include "sysemu/blockdev.h"
-+#include "hw/sd/bcm2835_sdhost.h"
-+
-+#define TYPE_BCM2835_SDHOST_BUS "bcm2835-sdhost-bus"
-+#define BCM2835_SDHOST_BUS(obj) \
-+    OBJECT_CHECK(SDBus, (obj), TYPE_BCM2835_SDHOST_BUS)
-+
-+#define SDCMD  0x00 /* Command to SD card              - 16 R/W */
-+#define SDARG  0x04 /* Argument to SD card             - 32 R/W */
-+#define SDTOUT 0x08 /* Start value for timeout counter - 32 R/W */
-+#define SDCDIV 0x0c /* Start value for clock divider   - 11 R/W */
-+#define SDRSP0 0x10 /* SD card rsp (31:0)         - 32 R   */
-+#define SDRSP1 0x14 /* SD card rsp (63:32)        - 32 R   */
-+#define SDRSP2 0x18 /* SD card rsp (95:64)        - 32 R   */
-+#define SDRSP3 0x1c /* SD card rsp (127:96)       - 32 R   */
-+#define SDHSTS 0x20 /* SD host status                  - 11 R   */
-+#define SDVDD  0x30 /* SD card power control           -  1 R/W */
-+#define SDEDM  0x34 /* Emergency Debug Mode            - 13 R/W */
-+#define SDHCFG 0x38 /* Host configuration              -  2 R/W */
-+#define SDHBCT 0x3c /* Host byte count (debug)         - 32 R/W */
-+#define SDDATA 0x40 /* Data to/from SD card            - 32 R/W */
-+#define SDHBLC 0x50 /* Host block count (SDIO/SDHC)    -  9 R/W */
-+
-+#define SDCMD_NEW_FLAG                  0x8000
-+#define SDCMD_FAIL_FLAG                 0x4000
-+#define SDCMD_BUSYWAIT                  0x800
-+#define SDCMD_NO_RESPONSE               0x400
-+#define SDCMD_LONG_RESPONSE             0x200
-+#define SDCMD_WRITE_CMD                 0x80
-+#define SDCMD_READ_CMD                  0x40
-+#define SDCMD_CMD_MASK                  0x3f
-+
-+#define SDCDIV_MAX_CDIV                 0x7ff
-+
-+#define SDHSTS_BUSY_IRPT                0x400
-+#define SDHSTS_BLOCK_IRPT               0x200
-+#define SDHSTS_SDIO_IRPT                0x100
-+#define SDHSTS_REW_TIME_OUT             0x80
-+#define SDHSTS_CMD_TIME_OUT             0x40
-+#define SDHSTS_CRC16_ERROR              0x20
-+#define SDHSTS_CRC7_ERROR               0x10
-+#define SDHSTS_FIFO_ERROR               0x08
-+/* Reserved */
-+/* Reserved */
-+#define SDHSTS_DATA_FLAG                0x01
-+
-+#define SDHCFG_BUSY_IRPT_EN     (1 << 10)
-+#define SDHCFG_BLOCK_IRPT_EN    (1 << 8)
-+#define SDHCFG_SDIO_IRPT_EN     (1 << 5)
-+#define SDHCFG_DATA_IRPT_EN     (1 << 4)
-+#define SDHCFG_SLOW_CARD        (1 << 3)
-+#define SDHCFG_WIDE_EXT_BUS     (1 << 2)
-+#define SDHCFG_WIDE_INT_BUS     (1 << 1)
-+#define SDHCFG_REL_CMD_LINE     (1 << 0)
-+
-+#define SDEDM_FORCE_DATA_MODE   (1 << 19)
-+#define SDEDM_CLOCK_PULSE       (1 << 20)
-+#define SDEDM_BYPASS            (1 << 21)
-+
-+#define SDEDM_WRITE_THRESHOLD_SHIFT 9
-+#define SDEDM_READ_THRESHOLD_SHIFT 14
-+#define SDEDM_THRESHOLD_MASK     0x1f
-+
-+#define SDEDM_FSM_MASK           0xf
-+#define SDEDM_FSM_IDENTMODE      0x0
-+#define SDEDM_FSM_DATAMODE       0x1
-+#define SDEDM_FSM_READDATA       0x2
-+#define SDEDM_FSM_WRITEDATA      0x3
-+#define SDEDM_FSM_READWAIT       0x4
-+#define SDEDM_FSM_READCRC        0x5
-+#define SDEDM_FSM_WRITECRC       0x6
-+#define SDEDM_FSM_WRITEWAIT1     0x7
-+#define SDEDM_FSM_POWERDOWN      0x8
-+#define SDEDM_FSM_POWERUP        0x9
-+#define SDEDM_FSM_WRITESTART1    0xa
-+#define SDEDM_FSM_WRITESTART2    0xb
-+#define SDEDM_FSM_GENPULSES      0xc
-+#define SDEDM_FSM_WRITEWAIT2     0xd
-+#define SDEDM_FSM_STARTPOWDOWN   0xf
-+
-+#define SDDATA_FIFO_WORDS        16
-+
-+static void bcm2835_sdhost_update_irq(BCM2835SDHostState *s)
-+{
-+    uint32_t irq = s->status &
-+        (SDHSTS_BUSY_IRPT | SDHSTS_BLOCK_IRPT | SDHSTS_SDIO_IRPT);
-+    qemu_set_irq(s->irq, !!irq);
-+}
-+
-+static void bcm2835_sdhost_send_command(BCM2835SDHostState *s)
-+{
-+    SDRequest request;
-+    uint8_t rsp[16];
-+    int rlen;
-+
-+    request.cmd = s->cmd & SDCMD_CMD_MASK;
-+    request.arg = s->cmdarg;
-+
-+    rlen = sdbus_do_command(&s->sdbus, &request, rsp);
-+    if (rlen < 0) {
-+        goto error;
-+    }
-+    if (!(s->cmd & SDCMD_NO_RESPONSE)) {
-+#define RWORD(n) (((uint32_t)rsp[n] << 24) | (rsp[n + 1] << 16) \
-+                  | (rsp[n + 2] << 8) | rsp[n + 3])
-+        if (rlen == 0 || (rlen == 4 && (s->cmd & SDCMD_LONG_RESPONSE))) {
-+            goto error;
-+        }
-+        if (rlen != 4 && rlen != 16) {
-+            goto error;
-+        }
-+        if (rlen == 4) {
-+            s->rsp[0] = RWORD(0);
-+            s->rsp[1] = s->rsp[2] = s->rsp[3] = 0;
-+        } else {
-+            s->rsp[0] = RWORD(12);
-+            s->rsp[1] = RWORD(8);
-+            s->rsp[2] = RWORD(4);
-+            s->rsp[3] = RWORD(0);
-+        }
-+#undef RWORD
-+    }
-+    return;
-+
-+error:
-+    s->cmd |= SDCMD_FAIL_FLAG;
-+    s->status |= SDHSTS_CMD_TIME_OUT;
-+}
-+
-+static void bcm2835_sdhost_fifo_push(BCM2835SDHostState *s, uint32_t value)
-+{
-+    int n;
-+
-+    if (s->fifo_len == BCM2835_SDHOST_FIFO_LEN) {
-+        /* FIFO overflow */
-+        return;
-+    }
-+    n = (s->fifo_pos + s->fifo_len) & (BCM2835_SDHOST_FIFO_LEN - 1);
-+    s->fifo_len++;
-+    s->fifo[n] = value;
-+}
-+
-+static uint32_t bcm2835_sdhost_fifo_pop(BCM2835SDHostState *s)
-+{
-+    uint32_t value;
-+
-+    if (s->fifo_len == 0) {
-+        /* FIFO underflow */
-+        return 0;
-+    }
-+    value = s->fifo[s->fifo_pos];
-+    s->fifo_len--;
-+    s->fifo_pos = (s->fifo_pos + 1) & (BCM2835_SDHOST_FIFO_LEN - 1);
-+    return value;
-+}
-+
-+static void bcm2835_sdhost_fifo_run(BCM2835SDHostState *s)
-+{
-+    uint32_t value = 0;
-+    int n;
-+    int is_read;
-+
-+    is_read = (s->cmd & SDCMD_READ_CMD) != 0;
-+    if (s->datacnt != 0 && (!is_read || sdbus_data_ready(&s->sdbus))) {
-+        if (is_read) {
-+            n = 0;
-+            while (s->datacnt && s->fifo_len < BCM2835_SDHOST_FIFO_LEN) {
-+                value |= (uint32_t)sdbus_read_data(&s->sdbus) << (n * 8);
-+                s->datacnt--;
-+                n++;
-+                if (n == 4) {
-+                    bcm2835_sdhost_fifo_push(s, value);
-+                    n = 0;
-+                    value = 0;
-+                }
-+            }
-+            if (n != 0) {
-+                bcm2835_sdhost_fifo_push(s, value);
-+            }
-+        } else { /* write */
-+            n = 0;
-+            while (s->datacnt > 0 && (s->fifo_len > 0 || n > 0)) {
-+                if (n == 0) {
-+                    value = bcm2835_sdhost_fifo_pop(s);
-+                    n = 4;
-+                }
-+                n--;
-+                s->datacnt--;
-+                sdbus_write_data(&s->sdbus, value & 0xff);
-+                value >>= 8;
-+            }
-+        }
-+    }
-+    if (s->datacnt == 0) {
-+        s->status |= SDHSTS_DATA_FLAG;
-+
-+        s->edm &= ~0xf;
-+        s->edm |= SDEDM_FSM_DATAMODE;
-+
-+        if (s->config & SDHCFG_DATA_IRPT_EN) {
-+            s->status |= SDHSTS_SDIO_IRPT;
-+        }
-+
-+        if ((s->cmd & SDCMD_BUSYWAIT) && (s->config & SDHCFG_BUSY_IRPT_EN)) {
-+            s->status |= SDHSTS_BUSY_IRPT;
-+        }
-+
-+        if ((s->cmd & SDCMD_WRITE_CMD) && (s->config & SDHCFG_BLOCK_IRPT_EN)) {
-+            s->status |= SDHSTS_BLOCK_IRPT;
-+        }
-+
-+        bcm2835_sdhost_update_irq(s);
-+    }
-+
-+    s->edm &= ~(0x1f << 4);
-+    s->edm |= ((s->fifo_len & 0x1f) << 4);
-+}
-+
-+static uint64_t bcm2835_sdhost_read(void *opaque, hwaddr offset,
-+    unsigned size)
-+{
-+    BCM2835SDHostState *s = (BCM2835SDHostState *)opaque;
-+    uint32_t res = 0;
-+
-+    switch (offset) {
-+    case SDCMD:
-+        res = s->cmd;
-+        break;
-+    case SDHSTS:
-+        res = s->status;
-+        break;
-+    case SDRSP0:
-+        res = s->rsp[0];
-+        break;
-+    case SDRSP1:
-+        res = s->rsp[1];
-+        break;
-+    case SDRSP2:
-+        res = s->rsp[2];
-+        break;
-+    case SDRSP3:
-+        res = s->rsp[3];
-+        break;
-+    case SDEDM:
-+        res = s->edm;
-+        break;
-+    case SDVDD:
-+        res = s->vdd;
-+        break;
-+    case SDDATA:
-+        res = bcm2835_sdhost_fifo_pop(s);
-+        bcm2835_sdhost_fifo_run(s);
-+        break;
-+    case SDHBCT:
-+        res = s->hbct;
-+        break;
-+    case SDHBLC:
-+        res = s->hblc;
-+        break;
-+
-+    default:
-+        qemu_log_mask(LOG_GUEST_ERROR, "%s: Bad offset %"HWADDR_PRIx"\n",
-+                      __func__, offset);
-+        res = 0;
-+        break;
-+    }
-+
-+    return res;
-+}
-+
-+static void bcm2835_sdhost_write(void *opaque, hwaddr offset,
-+    uint64_t value, unsigned size)
-+{
-+    BCM2835SDHostState *s = (BCM2835SDHostState *)opaque;
-+
-+    switch (offset) {
-+    case SDCMD:
-+        s->cmd = value;
-+        if (value & SDCMD_NEW_FLAG) {
-+            bcm2835_sdhost_send_command(s);
-+            bcm2835_sdhost_fifo_run(s);
-+            s->cmd &= ~SDCMD_NEW_FLAG;
-+        }
-+        break;
-+    case SDTOUT:
-+        break;
-+    case SDCDIV:
-+        break;
-+    case SDHSTS:
-+        s->status &= ~value;
-+        bcm2835_sdhost_update_irq(s);
-+        break;
-+    case SDARG:
-+        s->cmdarg = value;
-+        break;
-+    case SDEDM:
-+        if ((value & 0xf) == 0xf) {
-+            /* power down */
-+            value &= ~0xf;
-+        }
-+        s->edm = value;
-+        break;
-+    case SDHCFG:
-+        s->config = value;
-+        bcm2835_sdhost_fifo_run(s);
-+        break;
-+    case SDVDD:
-+        s->vdd = value;
-+        break;
-+    case SDDATA:
-+        bcm2835_sdhost_fifo_push(s, value);
-+        bcm2835_sdhost_fifo_run(s);
-+        break;
-+    case SDHBCT:
-+        s->hbct = value;
-+        break;
-+    case SDHBLC:
-+        s->hblc = value;
-+        s->datacnt = s->hblc * s->hbct;
-+        bcm2835_sdhost_fifo_run(s);
-+        break;
-+
-+    default:
-+        qemu_log_mask(LOG_GUEST_ERROR, "%s: Bad offset %"HWADDR_PRIx"\n",
-+                      __func__, offset);
-+        break;
-+    }
-+}
-+
-+static const MemoryRegionOps bcm2835_sdhost_ops = {
-+    .read = bcm2835_sdhost_read,
-+    .write = bcm2835_sdhost_write,
-+    .endianness = DEVICE_NATIVE_ENDIAN,
-+};
-+
-+static const VMStateDescription vmstate_bcm2835_sdhost = {
-+    .name = TYPE_BCM2835_SDHOST,
-+    .version_id = 1,
-+    .minimum_version_id = 1,
-+    .fields = (VMStateField[]) {
-+        VMSTATE_UINT32(cmd, BCM2835SDHostState),
-+        VMSTATE_UINT32(cmdarg, BCM2835SDHostState),
-+        VMSTATE_UINT32(status, BCM2835SDHostState),
-+        VMSTATE_UINT32_ARRAY(rsp, BCM2835SDHostState, 4),
-+        VMSTATE_UINT32(config, BCM2835SDHostState),
-+        VMSTATE_UINT32(edm, BCM2835SDHostState),
-+        VMSTATE_UINT32(vdd, BCM2835SDHostState),
-+        VMSTATE_UINT32(hbct, BCM2835SDHostState),
-+        VMSTATE_UINT32(hblc, BCM2835SDHostState),
-+        VMSTATE_INT32(fifo_pos, BCM2835SDHostState),
-+        VMSTATE_INT32(fifo_len, BCM2835SDHostState),
-+        VMSTATE_UINT32_ARRAY(fifo, BCM2835SDHostState, BCM2835_SDHOST_FIFO_LEN),
-+        VMSTATE_UINT32(datacnt, BCM2835SDHostState),
-+        VMSTATE_END_OF_LIST()
-+    }
-+};
-+
-+static void bcm2835_sdhost_init(Object *obj)
-+{
-+    BCM2835SDHostState *s = BCM2835_SDHOST(obj);
-+
-+    qbus_create_inplace(&s->sdbus, sizeof(s->sdbus),
-+                        TYPE_BCM2835_SDHOST_BUS, DEVICE(s), "sd-bus");
-+
-+    memory_region_init_io(&s->iomem, obj, &bcm2835_sdhost_ops, s,
-+                          TYPE_BCM2835_SDHOST, 0x1000);
-+    sysbus_init_mmio(SYS_BUS_DEVICE(s), &s->iomem);
-+    sysbus_init_irq(SYS_BUS_DEVICE(s), &s->irq);
-+}
-+
-+static void bcm2835_sdhost_reset(DeviceState *dev)
-+{
-+    BCM2835SDHostState *s = BCM2835_SDHOST(dev);
-+
-+    s->cmd = 0;
-+    s->cmdarg = 0;
-+    s->edm = 0x0000c60f;
-+    s->config = 0;
-+    s->hbct = 0;
-+    s->hblc = 0;
-+    s->datacnt = 0;
-+    s->fifo_pos = 0;
-+    s->fifo_len = 0;
-+}
-+
-+static void bcm2835_sdhost_class_init(ObjectClass *klass, void *data)
-+{
-+    DeviceClass *dc = DEVICE_CLASS(klass);
-+
-+    dc->reset = bcm2835_sdhost_reset;
-+    dc->vmsd = &vmstate_bcm2835_sdhost;
-+}
-+
-+static TypeInfo bcm2835_sdhost_info = {
-+    .name          = TYPE_BCM2835_SDHOST,
-+    .parent        = TYPE_SYS_BUS_DEVICE,
-+    .instance_size = sizeof(BCM2835SDHostState),
-+    .class_init    = bcm2835_sdhost_class_init,
-+    .instance_init = bcm2835_sdhost_init,
-+};
-+
-+static const TypeInfo bcm2835_sdhost_bus_info = {
-+    .name = TYPE_BCM2835_SDHOST_BUS,
-+    .parent = TYPE_SD_BUS,
-+    .instance_size = sizeof(SDBus),
-+};
-+
-+static void bcm2835_sdhost_register_types(void)
-+{
-+    type_register_static(&bcm2835_sdhost_info);
-+    type_register_static(&bcm2835_sdhost_bus_info);
-+}
-+
-+type_init(bcm2835_sdhost_register_types)
-diff --git a/include/hw/sd/bcm2835_sdhost.h b/include/hw/sd/bcm2835_sdhost.h
-new file mode 100644
-index 0000000000..7520dd6507
---- /dev/null
-+++ b/include/hw/sd/bcm2835_sdhost.h
-@@ -0,0 +1,48 @@
-+/*
-+ * Raspberry Pi (BCM2835) SD Host Controller
-+ *
-+ * Copyright (c) 2017 Antfield SAS
-+ *
-+ * Authors:
-+ *  Clement Deschamps <clement.deschamps@antfield.fr>
-+ *  Luc Michel <luc.michel@antfield.fr>
-+ *
-+ * This work is licensed under the terms of the GNU GPL, version 2 or later.
-+ * See the COPYING file in the top-level directory.
-+ */
-+
-+#ifndef BCM2835_SDHOST_H
-+#define BCM2835_SDHOST_H
-+
-+#include "hw/sysbus.h"
-+#include "hw/sd/sd.h"
-+
-+#define TYPE_BCM2835_SDHOST "bcm2835-sdhost"
-+#define BCM2835_SDHOST(obj) \
-+        OBJECT_CHECK(BCM2835SDHostState, (obj), TYPE_BCM2835_SDHOST)
-+
-+#define BCM2835_SDHOST_FIFO_LEN 16
-+
-+typedef struct {
-+    SysBusDevice busdev;
-+    SDBus sdbus;
-+    MemoryRegion iomem;
-+
-+    uint32_t cmd;
-+    uint32_t cmdarg;
-+    uint32_t status;
-+    uint32_t rsp[4];
-+    uint32_t config;
-+    uint32_t edm;
-+    uint32_t vdd;
-+    uint32_t hbct;
-+    uint32_t hblc;
-+    int32_t fifo_pos;
-+    int32_t fifo_len;
-+    uint32_t fifo[BCM2835_SDHOST_FIFO_LEN];
-+    uint32_t datacnt;
-+
-+    qemu_irq irq;
-+} BCM2835SDHostState;
-+
-+#endif
--- 
-2.11.1
+Reviewed-by: Eric Auger <eric.auger@redhat.com>
 
+Thanks
+
+Eric
+
+
+> [PMM:
+>  * use decimal, not 0bnnn
+>  * fixed typo in names of ICC_APR0R_EL1 and ICC_AP1R_EL1
+>  * completely rearranged the get and put functions to read and write
+>    the state in a natural order, rather than mixing distributor and
+>    redistributor state together]
+> Signed-off-by: Vijaya Kumar K <Vijaya.Kumar@cavium.com>
+> [Vijay:
+>  * Update macro KVM_VGIC_ATTR
+>  * Use 32 bit access for gicd and gicr
+>  * GICD_IROUTER, GICD_TYPER, GICR_PROPBASER and GICR_PENDBASER reg
+>    access  are changed from 64-bit to 32-bit access
+>  * Add ICC_SRE_EL1 save and restore
+>  * Dropped translate_fn mechanism and coded functions to handle
+>    save and restore of edge_trigger and priority
+>  * Number of APnR register saved/restored based on number of
+>    priority bits supported]
+> Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+> ---
+> ---
+>  hw/intc/arm_gicv3_kvm.c  | 573 +++++++++++++++++++++++++++++++++++++++++++++--
+>  hw/intc/gicv3_internal.h |   1 +
+>  2 files changed, 558 insertions(+), 16 deletions(-)
+> 
+> diff --git a/hw/intc/arm_gicv3_kvm.c b/hw/intc/arm_gicv3_kvm.c
+> index d69dc47..cda1af4 100644
+> --- a/hw/intc/arm_gicv3_kvm.c
+> +++ b/hw/intc/arm_gicv3_kvm.c
+> @@ -23,8 +23,10 @@
+>  #include "qapi/error.h"
+>  #include "hw/intc/arm_gicv3_common.h"
+>  #include "hw/sysbus.h"
+> +#include "qemu/error-report.h"
+>  #include "sysemu/kvm.h"
+>  #include "kvm_arm.h"
+> +#include "gicv3_internal.h"
+>  #include "vgic_common.h"
+>  #include "migration/migration.h"
+>  
+> @@ -44,6 +46,32 @@
+>  #define KVM_ARM_GICV3_GET_CLASS(obj) \
+>       OBJECT_GET_CLASS(KVMARMGICv3Class, (obj), TYPE_KVM_ARM_GICV3)
+>  
+> +#define   KVM_DEV_ARM_VGIC_SYSREG(op0, op1, crn, crm, op2)         \
+> +                             (ARM64_SYS_REG_SHIFT_MASK(op0, OP0) | \
+> +                              ARM64_SYS_REG_SHIFT_MASK(op1, OP1) | \
+> +                              ARM64_SYS_REG_SHIFT_MASK(crn, CRN) | \
+> +                              ARM64_SYS_REG_SHIFT_MASK(crm, CRM) | \
+> +                              ARM64_SYS_REG_SHIFT_MASK(op2, OP2))
+> +
+> +#define ICC_PMR_EL1     \
+> +    KVM_DEV_ARM_VGIC_SYSREG(3, 0, 4, 6, 0)
+> +#define ICC_BPR0_EL1    \
+> +    KVM_DEV_ARM_VGIC_SYSREG(3, 0, 12, 8, 3)
+> +#define ICC_AP0R_EL1(n) \
+> +    KVM_DEV_ARM_VGIC_SYSREG(3, 0, 12, 8, 4 | n)
+> +#define ICC_AP1R_EL1(n) \
+> +    KVM_DEV_ARM_VGIC_SYSREG(3, 0, 12, 9, n)
+> +#define ICC_BPR1_EL1    \
+> +    KVM_DEV_ARM_VGIC_SYSREG(3, 0, 12, 12, 3)
+> +#define ICC_CTLR_EL1    \
+> +    KVM_DEV_ARM_VGIC_SYSREG(3, 0, 12, 12, 4)
+> +#define ICC_SRE_EL1 \
+> +    KVM_DEV_ARM_VGIC_SYSREG(3, 0, 12, 12, 5)
+> +#define ICC_IGRPEN0_EL1 \
+> +    KVM_DEV_ARM_VGIC_SYSREG(3, 0, 12, 12, 6)
+> +#define ICC_IGRPEN1_EL1 \
+> +    KVM_DEV_ARM_VGIC_SYSREG(3, 0, 12, 12, 7)
+> +
+>  typedef struct KVMARMGICv3Class {
+>      ARMGICv3CommonClass parent_class;
+>      DeviceRealize parent_realize;
+> @@ -57,16 +85,523 @@ static void kvm_arm_gicv3_set_irq(void *opaque, int irq, int level)
+>      kvm_arm_gic_set_irq(s->num_irq, irq, level);
+>  }
+>  
+> +#define KVM_VGIC_ATTR(reg, typer) \
+> +    ((typer & KVM_DEV_ARM_VGIC_V3_MPIDR_MASK) | (reg))
+> +
+> +static inline void kvm_gicd_access(GICv3State *s, int offset,
+> +                                   uint32_t *val, bool write)
+> +{
+> +    kvm_device_access(s->dev_fd, KVM_DEV_ARM_VGIC_GRP_DIST_REGS,
+> +                      KVM_VGIC_ATTR(offset, 0),
+> +                      val, write);
+> +}
+> +
+> +static inline void kvm_gicr_access(GICv3State *s, int offset, int cpu,
+> +                                   uint32_t *val, bool write)
+> +{
+> +    kvm_device_access(s->dev_fd, KVM_DEV_ARM_VGIC_GRP_REDIST_REGS,
+> +                      KVM_VGIC_ATTR(offset, s->cpu[cpu].gicr_typer),
+> +                      val, write);
+> +}
+> +
+> +static inline void kvm_gicc_access(GICv3State *s, uint64_t reg, int cpu,
+> +                                   uint64_t *val, bool write)
+> +{
+> +    kvm_device_access(s->dev_fd, KVM_DEV_ARM_VGIC_GRP_CPU_SYSREGS,
+> +                      KVM_VGIC_ATTR(reg, s->cpu[cpu].gicr_typer),
+> +                      val, write);
+> +}
+> +
+> +static inline void kvm_gic_line_level_access(GICv3State *s, int irq, int cpu,
+> +                                             uint32_t *val, bool write)
+> +{
+> +    kvm_device_access(s->dev_fd, KVM_DEV_ARM_VGIC_GRP_LEVEL_INFO,
+> +                      KVM_VGIC_ATTR(irq, s->cpu[cpu].gicr_typer) |
+> +                      (VGIC_LEVEL_INFO_LINE_LEVEL <<
+> +                       KVM_DEV_ARM_VGIC_LINE_LEVEL_INFO_SHIFT),
+> +                      val, write);
+> +}
+> +
+> +/* Loop through each distributor IRQ related register; since bits
+> + * corresponding to SPIs and PPIs are RAZ/WI when affinity routing
+> + * is enabled, we skip those.
+> + */
+> +#define for_each_dist_irq_reg(_irq, _max, _field_width) \
+> +    for (_irq = GIC_INTERNAL; _irq < _max; _irq += (32 / _field_width))
+> +
+> +static void kvm_dist_get_priority(GICv3State *s, uint32_t offset, uint8_t *bmp)
+> +{
+> +    uint32_t reg, *field;
+> +    int irq;
+> +
+> +    field = (uint32_t *)bmp;
+> +    for_each_dist_irq_reg(irq, s->num_irq, 8) {
+> +        kvm_gicd_access(s, offset, &reg, false);
+> +        *field = reg;
+> +        offset += 4;
+> +        field++;
+> +    }
+> +}
+> +
+> +static void kvm_dist_put_priority(GICv3State *s, uint32_t offset, uint8_t *bmp)
+> +{
+> +    uint32_t reg, *field;
+> +    int irq;
+> +
+> +    field = (uint32_t *)bmp;
+> +    for_each_dist_irq_reg(irq, s->num_irq, 8) {
+> +        reg = *field;
+> +        kvm_gicd_access(s, offset, &reg, true);
+> +        offset += 4;
+> +        field++;
+> +    }
+> +}
+> +
+> +static void kvm_dist_get_edge_trigger(GICv3State *s, uint32_t offset,
+> +                                      uint32_t *bmp)
+> +{
+> +    uint32_t reg;
+> +    int irq;
+> +
+> +    for_each_dist_irq_reg(irq, s->num_irq, 2) {
+> +        kvm_gicd_access(s, offset, &reg, false);
+> +        reg = half_unshuffle32(reg >> 1);
+> +        if (irq % 32 != 0) {
+> +            reg = (reg << 16);
+> +        }
+> +        *gic_bmp_ptr32(bmp, irq) |=  reg;
+> +        offset += 4;
+> +    }
+> +}
+> +
+> +static void kvm_dist_put_edge_trigger(GICv3State *s, uint32_t offset,
+> +                                      uint32_t *bmp)
+> +{
+> +    uint32_t reg;
+> +    int irq;
+> +
+> +    for_each_dist_irq_reg(irq, s->num_irq, 2) {
+> +        reg = *gic_bmp_ptr32(bmp, irq);
+> +        if (irq % 32 != 0) {
+> +            reg = (reg & 0xffff0000) >> 16;
+> +        } else {
+> +            reg = reg & 0xffff;
+> +        }
+> +        reg = half_shuffle32(reg) << 1;
+> +        kvm_gicd_access(s, offset, &reg, true);
+> +        offset += 4;
+> +    }
+> +}
+> +
+> +static void kvm_gic_get_line_level_bmp(GICv3State *s, uint32_t *bmp)
+> +{
+> +    uint32_t reg;
+> +    int irq;
+> +
+> +    for_each_dist_irq_reg(irq, s->num_irq, 1) {
+> +        kvm_gic_line_level_access(s, irq, 0, &reg, false);
+> +        *gic_bmp_ptr32(bmp, irq) = reg;
+> +    }
+> +}
+> +
+> +static void kvm_gic_put_line_level_bmp(GICv3State *s, uint32_t *bmp)
+> +{
+> +    uint32_t reg;
+> +    int irq;
+> +
+> +    for_each_dist_irq_reg(irq, s->num_irq, 1) {
+> +        reg = *gic_bmp_ptr32(bmp, irq);
+> +        kvm_gic_line_level_access(s, irq, 0, &reg, true);
+> +    }
+> +}
+> +
+> +/* Read a bitmap register group from the kernel VGIC. */
+> +static void kvm_dist_getbmp(GICv3State *s, uint32_t offset, uint32_t *bmp)
+> +{
+> +    uint32_t reg;
+> +    int irq;
+> +
+> +    for_each_dist_irq_reg(irq, s->num_irq, 1) {
+> +        kvm_gicd_access(s, offset, &reg, false);
+> +        *gic_bmp_ptr32(bmp, irq) = reg;
+> +        offset += 4;
+> +    }
+> +}
+> +
+> +static void kvm_dist_putbmp(GICv3State *s, uint32_t offset,
+> +                            uint32_t clroffset, uint32_t *bmp)
+> +{
+> +    uint32_t reg;
+> +    int irq;
+> +
+> +    for_each_dist_irq_reg(irq, s->num_irq, 1) {
+> +        /* If this bitmap is a set/clear register pair, first write to the
+> +         * clear-reg to clear all bits before using the set-reg to write
+> +         * the 1 bits.
+> +         */
+> +        if (clroffset != 0) {
+> +            reg = 0;
+> +            kvm_gicd_access(s, clroffset, &reg, true);
+> +        }
+> +        reg = *gic_bmp_ptr32(bmp, irq);
+> +        kvm_gicd_access(s, offset, &reg, true);
+> +        offset += 4;
+> +    }
+> +}
+> +
+> +static void kvm_arm_gicv3_check(GICv3State *s)
+> +{
+> +    uint32_t reg;
+> +    uint32_t num_irq;
+> +
+> +    /* Sanity checking s->num_irq */
+> +    kvm_gicd_access(s, GICD_TYPER, &reg, false);
+> +    num_irq = ((reg & 0x1f) + 1) * 32;
+> +
+> +    if (num_irq < s->num_irq) {
+> +        error_report("Model requests %u IRQs, but kernel supports max %u",
+> +                     s->num_irq, num_irq);
+> +        abort();
+> +    }
+> +}
+> +
+>  static void kvm_arm_gicv3_put(GICv3State *s)
+>  {
+> -    /* TODO */
+> -    DPRINTF("Cannot put kernel gic state, no kernel interface\n");
+> +    uint32_t regl, regh, reg;
+> +    uint64_t reg64, redist_typer;
+> +    int ncpu, i;
+> +
+> +    kvm_arm_gicv3_check(s);
+> +
+> +    kvm_gicr_access(s, GICR_TYPER, 0, &regl, false);
+> +    kvm_gicr_access(s, GICR_TYPER + 4, 0, &regh, false);
+> +    redist_typer = ((uint64_t)regh << 32) | regl;
+> +
+> +    reg = s->gicd_ctlr;
+> +    kvm_gicd_access(s, GICD_CTLR, &reg, true);
+> +
+> +    if (redist_typer & GICR_TYPER_PLPIS) {
+> +        /* Set base addresses before LPIs are enabled by GICR_CTLR write */
+> +        for (ncpu = 0; ncpu < s->num_cpu; ncpu++) {
+> +            GICv3CPUState *c = &s->cpu[ncpu];
+> +
+> +            reg64 = c->gicr_propbaser;
+> +            regl = (uint32_t)reg64;
+> +            kvm_gicr_access(s, GICR_PROPBASER, ncpu, &regl, true);
+> +            regh = (uint32_t)(reg64 >> 32);
+> +            kvm_gicr_access(s, GICR_PROPBASER + 4, ncpu, &regh, true);
+> +
+> +            reg64 = c->gicr_pendbaser;
+> +            if (!c->gicr_ctlr & GICR_CTLR_ENABLE_LPIS) {
+> +                /* Setting PTZ is advised if LPIs are disabled, to reduce
+> +                 * GIC initialization time.
+> +                 */
+> +                reg64 |= GICR_PENDBASER_PTZ;
+> +            }
+> +            regl = (uint32_t)reg64;
+> +            kvm_gicr_access(s, GICR_PENDBASER, ncpu, &regl, true);
+> +            regh = (uint32_t)(reg64 >> 32);
+> +            kvm_gicr_access(s, GICR_PENDBASER + 4, ncpu, &regh, true);
+> +        }
+> +    }
+> +
+> +    /* Redistributor state (one per CPU) */
+> +
+> +    for (ncpu = 0; ncpu < s->num_cpu; ncpu++) {
+> +        GICv3CPUState *c = &s->cpu[ncpu];
+> +
+> +        reg = c->gicr_ctlr;
+> +        kvm_gicr_access(s, GICR_CTLR, ncpu, &reg, true);
+> +
+> +        reg = c->gicr_statusr[GICV3_NS];
+> +        kvm_gicr_access(s, GICR_STATUSR, ncpu, &reg, true);
+I think this is vgic_mmio_read_raz, vgic_mmio_write_wi
+> +
+> +        reg = c->gicr_waker;
+> +        kvm_gicr_access(s, GICR_WAKER, ncpu, &reg, true);
+vgic_mmio_read_raz, vgic_mmio_write_wi
+> +
+> +        reg = c->gicr_igroupr0;
+> +        kvm_gicr_access(s, GICR_IGROUPR0, ncpu, &reg, true);
+vgic_mmio_read_rao, vgic_mmio_write_wi
+> +
+> +        reg = ~0;
+> +        kvm_gicr_access(s, GICR_ICENABLER0, ncpu, &reg, true);
+> +        reg = c->gicr_ienabler0;
+> +        kvm_gicr_access(s, GICR_ISENABLER0, ncpu, &reg, true);
+> +
+> +        /* Restore config before pending so we treat level/edge correctly */
+> +        reg = half_shuffle32(c->edge_trigger >> 16) << 1;
+> +        kvm_gicr_access(s, GICR_ICFGR1, ncpu, &reg, true);
+> +
+> +        reg = c->level;
+> +        kvm_gic_line_level_access(s, 0, ncpu, &reg, true);
+> +
+> +        reg = ~0;
+> +        kvm_gicr_access(s, GICR_ICPENDR0, ncpu, &reg, true);
+> +        reg = c->gicr_ipendr0;
+> +        kvm_gicr_access(s, GICR_ISPENDR0, ncpu, &reg, true);
+> +
+> +        reg = ~0;
+> +        kvm_gicr_access(s, GICR_ICACTIVER0, ncpu, &reg, true);
+> +        reg = c->gicr_iactiver0;
+> +        kvm_gicr_access(s, GICR_ISACTIVER0, ncpu, &reg, true);
+> +
+> +        for (i = 0; i < GIC_INTERNAL; i += 4) {
+> +            reg = c->gicr_ipriorityr[i] |
+> +                (c->gicr_ipriorityr[i + 1] << 8) |
+> +                (c->gicr_ipriorityr[i + 2] << 16) |
+> +                (c->gicr_ipriorityr[i + 3] << 24);
+> +            kvm_gicr_access(s, GICR_IPRIORITYR + i, ncpu, &reg, true);
+> +        }
+> +    }
+> +
+> +    /* Distributor state (shared between all CPUs */
+closing parenthesis
+> +    reg = s->gicd_statusr[GICV3_NS];
+> +    kvm_gicd_access(s, GICD_STATUSR, &reg, true);
+> +
+> +    /* s->enable bitmap -> GICD_ISENABLERn */
+> +    kvm_dist_putbmp(s, GICD_ISENABLER, GICD_ICENABLER, s->enabled);
+> +
+> +    /* s->group bitmap -> GICD_IGROUPRn */
+> +    kvm_dist_putbmp(s, GICD_IGROUPR, 0, s->group);
+> +
+> +    /* Restore targets before pending to ensure the pending state is set on
+> +     * the appropriate CPU interfaces in the kernel
+> +     */
+> +
+> +    /* s->gicd_irouter[irq] -> GICD_IROUTERn
+> +     * We can't use kvm_dist_put() here because the registers are 64-bit
+> +     */
+> +    for (i = GIC_INTERNAL; i < s->num_irq; i++) {
+> +        uint32_t offset;
+> +
+> +        offset = GICD_IROUTER + (sizeof(uint32_t) * i);
+> +        reg = (uint32_t)s->gicd_irouter[i];
+> +        kvm_gicd_access(s, offset, &reg, true);
+> +
+> +        offset = GICD_IROUTER + (sizeof(uint32_t) * i) + 4;
+> +        reg = (uint32_t)(s->gicd_irouter[i] >> 32);
+> +        kvm_gicd_access(s, offset, &reg, true);
+> +    }
+> +
+> +    /* s->trigger bitmap -> GICD_ICFGRn
+> +     * (restore configuration registers before pending IRQs so we treat
+> +     * level/edge correctly)
+> +     */
+> +    kvm_dist_put_edge_trigger(s, GICD_ICFGR, s->edge_trigger);
+> +
+> +    /* s->level bitmap ->  line_level */
+> +    kvm_gic_put_line_level_bmp(s, s->level);
+> +
+> +    /* s->pending bitmap -> GICD_ISPENDRn */
+> +    kvm_dist_putbmp(s, GICD_ISPENDR, GICD_ICPENDR, s->pending);
+> +
+> +    /* s->active bitmap -> GICD_ISACTIVERn */
+> +    kvm_dist_putbmp(s, GICD_ISACTIVER, GICD_ICACTIVER, s->active);
+> +
+> +    /* s->gicd_ipriority[] -> GICD_IPRIORITYRn */
+> +    kvm_dist_put_priority(s, GICD_IPRIORITYR, s->gicd_ipriority);
+> +
+> +    /* CPU Interface state (one per CPU) */
+> +
+> +    for (ncpu = 0; ncpu < s->num_cpu; ncpu++) {
+> +        GICv3CPUState *c = &s->cpu[ncpu];
+> +        int num_pri_bits;
+> +
+> +        kvm_gicc_access(s, ICC_SRE_EL1, ncpu, &c->icc_sre_el1, true);
+> +        kvm_gicc_access(s, ICC_CTLR_EL1, ncpu,
+> +                        &c->icc_ctlr_el1[GICV3_NS], true);
+> +        kvm_gicc_access(s, ICC_IGRPEN0_EL1, ncpu,
+> +                        &c->icc_igrpen[GICV3_G0], true);
+> +        kvm_gicc_access(s, ICC_IGRPEN1_EL1, ncpu,
+> +                        &c->icc_igrpen[GICV3_G1NS], true);
+> +        kvm_gicc_access(s, ICC_PMR_EL1, ncpu, &c->icc_pmr_el1, true);
+> +        kvm_gicc_access(s, ICC_BPR0_EL1, ncpu, &c->icc_bpr[GICV3_G0], true);
+> +        kvm_gicc_access(s, ICC_BPR1_EL1, ncpu, &c->icc_bpr[GICV3_G1NS], true);
+> +
+> +        num_pri_bits = ((c->icc_ctlr_el1[GICV3_NS] &
+> +                        ICC_CTLR_EL1_PRIBITS_MASK) >>
+> +                        ICC_CTLR_EL1_PRIBITS_SHIFT) + 1;
+> +
+> +        switch (num_pri_bits) {
+> +        case 7:
+> +            reg64 = c->icc_apr[GICV3_G0][3];
+> +            kvm_gicc_access(s, ICC_AP0R_EL1(3), ncpu, &reg64, true);
+> +            reg64 = c->icc_apr[GICV3_G0][2];
+> +            kvm_gicc_access(s, ICC_AP0R_EL1(2), ncpu, &reg64, true);
+> +        case 6:
+> +            reg64 = c->icc_apr[GICV3_G0][1];
+> +            kvm_gicc_access(s, ICC_AP0R_EL1(1), ncpu, &reg64, true);
+> +        default:
+> +            reg64 = c->icc_apr[GICV3_G0][0];
+> +            kvm_gicc_access(s, ICC_AP0R_EL1(0), ncpu, &reg64, true);
+> +        }
+> +
+> +        switch (num_pri_bits) {
+> +        case 7:
+> +            reg64 = c->icc_apr[GICV3_G1NS][3];
+> +            kvm_gicc_access(s, ICC_AP1R_EL1(3), ncpu, &reg64, true);
+> +            reg64 = c->icc_apr[GICV3_G1NS][2];
+> +            kvm_gicc_access(s, ICC_AP1R_EL1(2), ncpu, &reg64, true);
+> +        case 6:
+> +            reg64 = c->icc_apr[GICV3_G1NS][1];
+> +            kvm_gicc_access(s, ICC_AP1R_EL1(1), ncpu, &reg64, true);
+> +        default:
+> +            reg64 = c->icc_apr[GICV3_G1NS][0];
+> +            kvm_gicc_access(s, ICC_AP1R_EL1(0), ncpu, &reg64, true);
+> +        }
+> +    }
+>  }
+>  
+>  static void kvm_arm_gicv3_get(GICv3State *s)
+>  {
+> -    /* TODO */
+> -    DPRINTF("Cannot get kernel gic state, no kernel interface\n");
+> +    uint32_t regl, regh, reg;
+> +    uint64_t reg64, redist_typer;
+> +    int ncpu, i;
+> +
+> +    kvm_arm_gicv3_check(s);
+> +
+> +    kvm_gicr_access(s, GICR_TYPER, 0, &regl, false);
+> +    kvm_gicr_access(s, GICR_TYPER + 4, 0, &regh, false);
+> +    redist_typer = ((uint64_t)regh << 32) | regl;
+> +
+> +    kvm_gicd_access(s, GICD_CTLR, &reg, false);
+> +    s->gicd_ctlr = reg;
+> +
+> +    /* Redistributor state (one per CPU) */
+> +
+> +    for (ncpu = 0; ncpu < s->num_cpu; ncpu++) {
+> +        GICv3CPUState *c = &s->cpu[ncpu];
+> +
+> +        kvm_gicr_access(s, GICR_CTLR, ncpu, &reg, false);
+> +        c->gicr_ctlr = reg;
+> +
+> +        kvm_gicr_access(s, GICR_STATUSR, ncpu, &reg, false);
+> +        c->gicr_statusr[GICV3_NS] = reg;
+> +
+> +        kvm_gicr_access(s, GICR_WAKER, ncpu, &reg, false);
+> +        c->gicr_waker = reg;
+> +
+> +        kvm_gicr_access(s, GICR_IGROUPR0, ncpu, &reg, false);
+> +        c->gicr_igroupr0 = reg;
+> +        kvm_gicr_access(s, GICR_ISENABLER0, ncpu, &reg, false);
+> +        c->gicr_ienabler0 = reg;
+> +        kvm_gicr_access(s, GICR_ICFGR1, ncpu, &reg, false);
+> +        c->edge_trigger = half_unshuffle32(reg >> 1) << 16;
+> +        kvm_gic_line_level_access(s, 0, ncpu, &reg, false);
+> +        c->level = reg;
+> +        kvm_gicr_access(s, GICR_ISPENDR0, ncpu, &reg, false);
+> +        c->gicr_ipendr0 = reg;
+> +        kvm_gicr_access(s, GICR_ISACTIVER0, ncpu, &reg, false);
+> +        c->gicr_iactiver0 = reg;
+> +
+> +        for (i = 0; i < GIC_INTERNAL; i += 4) {
+> +            kvm_gicr_access(s, GICR_IPRIORITYR + i, ncpu, &reg, false);
+> +            c->gicr_ipriorityr[i] = extract32(reg, 0, 8);
+> +            c->gicr_ipriorityr[i + 1] = extract32(reg, 8, 8);
+> +            c->gicr_ipriorityr[i + 2] = extract32(reg, 16, 8);
+> +            c->gicr_ipriorityr[i + 3] = extract32(reg, 24, 8);
+> +        }
+> +    }
+> +
+> +    if (redist_typer & GICR_TYPER_PLPIS) {
+> +        for (ncpu = 0; ncpu < s->num_cpu; ncpu++) {
+> +            GICv3CPUState *c = &s->cpu[ncpu];
+> +
+> +            kvm_gicr_access(s, GICR_PROPBASER, ncpu, &regl, false);
+> +            kvm_gicr_access(s, GICR_PROPBASER + 4, ncpu, &regh, false);
+> +            c->gicr_propbaser = ((uint64_t)regh << 32) | regl;
+> +
+> +            kvm_gicr_access(s, GICR_PENDBASER, ncpu, &regl, false);
+> +            kvm_gicr_access(s, GICR_PENDBASER + 4, ncpu, &regh, false);
+> +            c->gicr_pendbaser = ((uint64_t)regh << 32) | regl;
+> +        }
+> +    }
+> +
+> +    /* Distributor state (shared between all CPUs */
+parenthesis
+> +
+> +    kvm_gicd_access(s, GICD_STATUSR, &reg, false);
+> +    s->gicd_statusr[GICV3_NS] = reg;
+> +
+> +    /* GICD_IGROUPRn -> s->group bitmap */
+> +    kvm_dist_getbmp(s, GICD_IGROUPR, s->group);
+> +
+> +    /* GICD_ISENABLERn -> s->enabled bitmap */
+> +    kvm_dist_getbmp(s, GICD_ISENABLER, s->enabled);
+> +
+> +    /* Line level of irq */
+> +    kvm_gic_get_line_level_bmp(s, s->level);
+> +    /* GICD_ISPENDRn -> s->pending bitmap */
+> +    kvm_dist_getbmp(s, GICD_ISPENDR, s->pending);
+> +
+> +    /* GICD_ISACTIVERn -> s->active bitmap */
+> +    kvm_dist_getbmp(s, GICD_ISACTIVER, s->active);
+> +
+> +    /* GICD_ICFGRn -> s->trigger bitmap */
+> +    kvm_dist_get_edge_trigger(s, GICD_ICFGR, s->edge_trigger);
+> +
+> +    /* GICD_IPRIORITYRn -> s->gicd_ipriority[] */
+> +    kvm_dist_get_priority(s, GICD_IPRIORITYR, s->gicd_ipriority);
+> +
+> +    /* GICD_IROUTERn -> s->gicd_irouter[irq] */
+> +    for (i = GIC_INTERNAL; i < s->num_irq; i++) {
+> +        uint32_t offset;
+> +
+> +        offset = GICD_IROUTER + (sizeof(uint32_t) * i);
+> +        kvm_gicd_access(s, offset, &regl, false);
+> +        offset = GICD_IROUTER + (sizeof(uint32_t) * i) + 4;
+> +        kvm_gicd_access(s, offset, &regh, false);
+> +        s->gicd_irouter[i] = ((uint64_t)regh << 32) | regl;
+> +    }
+> +
+> +    /*****************************************************************
+> +     * CPU Interface(s) State
+> +     */
+> +
+> +    for (ncpu = 0; ncpu < s->num_cpu; ncpu++) {
+> +        GICv3CPUState *c = &s->cpu[ncpu];
+> +        int num_pri_bits;
+> +
+> +        kvm_gicc_access(s, ICC_SRE_EL1, ncpu, &c->icc_sre_el1, false);
+> +        kvm_gicc_access(s, ICC_CTLR_EL1, ncpu,
+> +                        &c->icc_ctlr_el1[GICV3_NS], false);
+> +        kvm_gicc_access(s, ICC_IGRPEN0_EL1, ncpu,
+> +                        &c->icc_igrpen[GICV3_G0], false);
+> +        kvm_gicc_access(s, ICC_IGRPEN1_EL1, ncpu,
+> +                        &c->icc_igrpen[GICV3_G1NS], false);
+> +        kvm_gicc_access(s, ICC_PMR_EL1, ncpu, &c->icc_pmr_el1, false);
+> +        kvm_gicc_access(s, ICC_BPR0_EL1, ncpu, &c->icc_bpr[GICV3_G0], false);
+> +        kvm_gicc_access(s, ICC_BPR1_EL1, ncpu, &c->icc_bpr[GICV3_G1NS], false);
+> +        num_pri_bits = ((c->icc_ctlr_el1[GICV3_NS] &
+> +                        ICC_CTLR_EL1_PRIBITS_MASK) >>
+> +                        ICC_CTLR_EL1_PRIBITS_SHIFT) + 1;
+> +
+> +        switch (num_pri_bits) {
+> +        case 7:
+> +            kvm_gicc_access(s, ICC_AP0R_EL1(3), ncpu, &reg64, false);
+> +            c->icc_apr[GICV3_G0][3] = reg64;
+> +            kvm_gicc_access(s, ICC_AP0R_EL1(2), ncpu, &reg64, false);
+> +            c->icc_apr[GICV3_G0][2] = reg64;
+> +        case 6:
+> +            kvm_gicc_access(s, ICC_AP0R_EL1(1), ncpu, &reg64, false);
+> +            c->icc_apr[GICV3_G0][1] = reg64;
+> +        default:
+> +            kvm_gicc_access(s, ICC_AP0R_EL1(0), ncpu, &reg64, false);
+> +            c->icc_apr[GICV3_G0][0] = reg64;
+> +        }
+> +
+> +        switch (num_pri_bits) {
+> +        case 7:
+> +            kvm_gicc_access(s, ICC_AP1R_EL1(3), ncpu, &reg64, false);
+> +            c->icc_apr[GICV3_G1NS][3] = reg64;
+> +            kvm_gicc_access(s, ICC_AP1R_EL1(2), ncpu, &reg64, false);
+> +            c->icc_apr[GICV3_G1NS][2] = reg64;
+> +        case 6:
+> +            kvm_gicc_access(s, ICC_AP1R_EL1(1), ncpu, &reg64, false);
+> +            c->icc_apr[GICV3_G1NS][1] = reg64;
+> +        default:
+> +            kvm_gicc_access(s, ICC_AP1R_EL1(0), ncpu, &reg64, false);
+> +            c->icc_apr[GICV3_G1NS][0] = reg64;
+> +        }
+> +    }
+>  }
+>  
+>  static void kvm_arm_gicv3_reset(DeviceState *dev)
+> @@ -77,6 +612,12 @@ static void kvm_arm_gicv3_reset(DeviceState *dev)
+>      DPRINTF("Reset\n");
+>  
+>      kgc->parent_reset(dev);
+> +
+> +    if (s->migration_blocker) {
+> +        DPRINTF("Cannot put kernel gic state, no kernel interface\n");
+> +        return;
+> +    }
+> +
+>      kvm_arm_gicv3_put(s);
+>  }
+>  
+> @@ -103,18 +644,6 @@ static void kvm_arm_gicv3_realize(DeviceState *dev, Error **errp)
+>  
+>      gicv3_init_irqs_and_mmio(s, kvm_arm_gicv3_set_irq, NULL);
+>  
+> -    /* Block migration of a KVM GICv3 device: the API for saving and restoring
+> -     * the state in the kernel is not yet finalised in the kernel or
+> -     * implemented in QEMU.
+> -     */
+> -    error_setg(&s->migration_blocker, "vGICv3 migration is not implemented");
+> -    migrate_add_blocker(s->migration_blocker, &local_err);
+> -    if (local_err) {
+> -        error_propagate(errp, local_err);
+> -        error_free(s->migration_blocker);
+> -        return;
+> -    }
+> -
+>      /* Try to create the device via the device control API */
+>      s->dev_fd = kvm_create_device(kvm_state, KVM_DEV_TYPE_ARM_VGIC_V3, false);
+>      if (s->dev_fd < 0) {
+> @@ -145,6 +674,18 @@ static void kvm_arm_gicv3_realize(DeviceState *dev, Error **errp)
+>  
+>          kvm_irqchip_commit_routes(kvm_state);
+>      }
+> +
+> +    if (!kvm_device_check_attr(s->dev_fd, KVM_DEV_ARM_VGIC_GRP_DIST_REGS,
+> +                               GICD_CTLR)) {
+> +        error_setg(&s->migration_blocker, "This operating system kernel does "
+> +                                          "not support vGICv3 migration");
+> +        migrate_add_blocker(s->migration_blocker, &local_err);
+> +        if (local_err) {
+> +            error_propagate(errp, local_err);
+> +            error_free(s->migration_blocker);
+> +            return;
+> +        }
+> +    }
+>  }
+>  
+>  static void kvm_arm_gicv3_class_init(ObjectClass *klass, void *data)
+> diff --git a/hw/intc/gicv3_internal.h b/hw/intc/gicv3_internal.h
+> index aeb801d..457118e 100644
+> --- a/hw/intc/gicv3_internal.h
+> +++ b/hw/intc/gicv3_internal.h
+> @@ -138,6 +138,7 @@
+>  #define ICC_CTLR_EL1_EOIMODE        (1U << 1)
+>  #define ICC_CTLR_EL1_PMHE           (1U << 6)
+>  #define ICC_CTLR_EL1_PRIBITS_SHIFT 8
+> +#define ICC_CTLR_EL1_PRIBITS_MASK   (7U << ICC_CTLR_EL1_PRIBITS_SHIFT)
+>  #define ICC_CTLR_EL1_IDBITS_SHIFT 11
+>  #define ICC_CTLR_EL1_SEIS           (1U << 14)
+>  #define ICC_CTLR_EL1_A3V            (1U << 15)
+> 

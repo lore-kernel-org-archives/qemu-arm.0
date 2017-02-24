@@ -1,294 +1,89 @@
-Return-Path: <alex.bennee@linaro.org>
-Received: from zen.linaro.local (host5-81-235-77.range5-81.btcentralplus.com. [5.81.235.77])
-        by smtp.gmail.com with ESMTPSA id i203sm2449943wmf.12.2017.02.24.05.55.09
+Received: by 10.25.0.147 with SMTP id 141csp703783lfa;
+        Fri, 24 Feb 2017 06:07:47 -0800 (PST)
+X-Received: by 10.28.209.202 with SMTP id i193mr3182351wmg.20.1487945267633;
+        Fri, 24 Feb 2017 06:07:47 -0800 (PST)
+Return-Path: <peter.maydell@linaro.org>
+Received: from mail-wr0-x22b.google.com (mail-wr0-x22b.google.com. [2a00:1450:400c:c0c::22b])
+        by mx.google.com with ESMTPS id g4si2600691wmf.46.2017.02.24.06.07.47
+        for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 24 Feb 2017 05:55:09 -0800 (PST)
-Received: from zen (localhost [127.0.0.1])
-	by zen.linaro.local (Postfix) with ESMTPS id C62983E0198;
-	Fri, 24 Feb 2017 13:55:08 +0000 (GMT)
-References: <1487262963-11519-1-git-send-email-peter.maydell@linaro.org> <CAFEAcA-MMw0_ombzTD+kQYpeNKywtcKY2UczcpR-hFDwGZhZJw@mail.gmail.com>
-User-agent: mu4e 0.9.19; emacs 25.2.5
-From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>, "patches\@linaro.org" <patches@linaro.org>
-Subject: Re: [Qemu-arm] [PATCH v2 00/13] Rewrite NVIC to not depend on the GIC
-In-reply-to: <CAFEAcA-MMw0_ombzTD+kQYpeNKywtcKY2UczcpR-hFDwGZhZJw@mail.gmail.com>
-Date: Fri, 24 Feb 2017 13:55:08 +0000
-Message-ID: <87wpcflmmb.fsf@linaro.org>
+        Fri, 24 Feb 2017 06:07:47 -0800 (PST)
+Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 2a00:1450:400c:c0c::22b as permitted sender) client-ip=2a00:1450:400c:c0c::22b;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@linaro.org;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 2a00:1450:400c:c0c::22b as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: by mail-wr0-x22b.google.com with SMTP id u47so13807048wrb.0
+        for <alex.bennee@linaro.org>; Fri, 24 Feb 2017 06:07:47 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+         :cc:content-transfer-encoding;
+        bh=wvId37ax9VWi9XDIZWnbJXPMekTPSztKKOA7I67RF7Y=;
+        b=S5ZYHCo6GgftLdP7EAlYh7iE5cYCi1batPJhuAz0fxakn+yPj3CUN7vFJnkKVIApU5
+         tqSvczqfaTYcUIvlLy+MHsUfoq97AgcFG4roLBwVL9LXF5WXk/RBrZ+glGs50LoGrv1C
+         YQWpTAcwDpk8NbE4tmY9raCr97YfmVekWQYi4=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+         :message-id:subject:to:cc:content-transfer-encoding;
+        bh=wvId37ax9VWi9XDIZWnbJXPMekTPSztKKOA7I67RF7Y=;
+        b=qWLjEwOfVE50iPgZeLL426q2WpUxObXwJvRwVYsd/W/xO2Ks4qXAt+MGI6wyuC36FM
+         zAjBF2hX4X1s/os7aBdjs1VcLdgfd8T/mep3KQ/7882IHL4SfoM/f139Sqf4ROuV8pMw
+         L1Z9WGT+SAXK1j4iZbpzFVEcZNKKOHCOCSEYc6U3qlKdpi9RvUXahiDAEM6JprHITQ/r
+         croMiy61sP66tcSEDAd7zqk9FWeOOQ+/inCeUH/aJxEwRAN9XT/W/LokAO2EhLV9c56T
+         ciaL0wTjD2kwSz7c3uqeY6IgnGQpWzrcaxchPsYENXNqL3VPwQalMim8FGtJBqW9FbBG
+         0yVw==
+X-Gm-Message-State: AMke39kB6oL1EW8oUqMFMu5B2+iuSd3XrcfoEr250Dh4ey7FIl5yawOsOEBQ1CymjrWzmLqUh2wPyUPhvLjPksJ22Ts=
+X-Received: by 10.223.169.76 with SMTP id u70mr2659874wrc.187.1487945267146;
+ Fri, 24 Feb 2017 06:07:47 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8bit
-X-TUID: ClyO1Z4CXiHM
+Received: by 10.223.145.69 with HTTP; Fri, 24 Feb 2017 06:07:26 -0800 (PST)
+In-Reply-To: <87wpcflmmb.fsf@linaro.org>
+References: <1487262963-11519-1-git-send-email-peter.maydell@linaro.org>
+ <CAFEAcA-MMw0_ombzTD+kQYpeNKywtcKY2UczcpR-hFDwGZhZJw@mail.gmail.com> <87wpcflmmb.fsf@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 24 Feb 2017 14:07:26 +0000
+Message-ID: <CAFEAcA-OhSMFKgRYsCWUrb6OBxxrWokkkpJyioveEur-p4-g2A@mail.gmail.com>
+Subject: Re: [Qemu-arm] [PATCH v2 00/13] Rewrite NVIC to not depend on the GIC
+To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>, 
+	"patches@linaro.org" <patches@linaro.org>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+X-TUID: eAQtWs8u6J63
 
+On 24 February 2017 at 13:55, Alex Benn=C3=A9e <alex.bennee@linaro.org> wro=
+te:
+> Even this branch is failing the tests for me:
 
-Peter Maydell <peter.maydell@linaro.org> writes:
+> =3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D Testing test9-kern.bin =3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D
 
-> On 16 February 2017 at 16:35, Peter Maydell <peter.maydell@linaro.org> wrote:
->> This patchset is the revamp of the NVIC code from Michael
->> Davidsaver's patchset of a year ago.
->>
->> Despite some superficial similarities of register layout, the
->> M-profile NVIC is really very different from the A-profile GIC.  Our
->> current attempt to reuse the GIC code means that we have significant
->> bugs in our NVIC.  The series pulls the NVIC apart from the GIC code
->> (fixing a few accidental bugs in the process), and then once it has a
->> place to stand, implements a few minor cleanups, a key bugfix
->> (getting priority calculations and masking right) and a missing
->> feature (escalation to HardFault).
->>
->> For testing, I have used the Stellaris image I have to hand:
->> http://people.linaro.org/~peter.maydell/stellaris.tgz
->> and also a set of bare-metal test programs also written by
->> Michael. You can find my slightly tweaked and cleand up
->> version of those here (a README explains how to run them):
->> https://git.linaro.org/people/peter.maydell/m-profile-tests.git
->
-> PS: git branch of this v2 patchset at
-> https://git.linaro.org/people/peter.maydell/qemu-arm.git nvic-rewrite
-> (includes squashed-in fix to patch 3).
+> not ok 9 - 00000000 =3D=3D 00000800 icsr
 
-Even this branch is failing the tests for me:
+> =3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D Testing test10-kern.bin =3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D
+> not ok 1 - 00000000 =3D=3D 00000800 ICSR
 
-QEMU emulator version 2.8.50 (v2.8.0-1289-g63d3eb3ef5-dirty)
-Copyright (c) 2003-2016 Fabrice Bellard and the QEMU Project developers
-make: Nothing to be done for 'all'.
-=============== Testing test1-kern.bin ===============
-1..2
-# Starting
-# 12345678
-# 23456789
-# 6789
-# 600789
-ok 1 - 00000000 == 00000000 var1
-ok 2 - 87654321 == 87654321 var2
-Ran    2/2
-Passed 2/2
-Fail   0/2
-=============== Testing test9-kern.bin ===============
-NVIC: Bad read offset 0xd90
-NVIC: Bad read offset 0xd94
-1..19
-ok 1 - deadbeaf == deadbeaf marker
-ok 2 - ffffffff == ffffffff LR
-# XPSR 40000000
-ok 3 - 00000000 == 00000000 PRIMASK
-ok 4 - 00000000 == 00000000 FAULTMASK
-ok 5 - 00000000 == 00000000 BASEPRI
-ok 6 - 00000000 == 00000000 CONTROL
-ok 7 - 20000460 == 20000460 MSP
-ok 8 - 00000000 == 00000000 PSP
-# cpuid 410fc231
-not ok 9 - 00000000 == 00000800 icsr
-ok 10 - 00000000 == 00000000 vtor
-ok 11 - fa050000 == fa050000 aircr
-ok 12 - 00000000 == 00000000 scr
-ok 13 - 00000200 == 00000200 ccr
-ok 14 - 00000000 == 00000000 shpr[0]
-ok 15 - 00000000 == 00000000 shpr[1]
-ok 16 - 00000000 == 00000000 shpr[2]
-ok 17 - 00000000 == 00000000 shcsr
-ok 18 - 00000000 == 00000000 syst_csr
-# ictr 00000001
-# mpu_type 00000000
-ok 19 - 00000000 == 00000000 mpu_ctrl
-Ran    19/19
-Passed 18/19
-Fail   1/19
-=============== Testing test10-kern.bin ===============
-1..10
-# BASEPRI mask 000000ff
-# DEBUG prio 000000ff
-not ok 1 - 00000000 == 00000800 ICSR
-ok 2 - 00000000 == 00000000 SHCSR
-# Call SVC
-# In SVC
-ok 3 - 0000080b == 0000080b ICSR
-ok 4 - 00000080 == 00000080 SHCSR
-# In PendSV
-ok 5 - 0000000e == 0000000e ICSR
-ok 6 - 00000480 == 00000480 SHCSR
-# Back in SVC
-ok 7 - 00000003 == 00000003 Back in SVC
-# Back in main
-ok 8 - 00000004 == 00000004 Back in SVC
-not ok 9 - 00000000 == 00000800 ICSR
-ok 10 - 00000000 == 00000000 SHCSR
-# Done
-Ran    10/10
-Passed 8/10
-Fail   2/10
-=============== Testing test4-kern.bin ===============
-1..33
-ok 1 - 00000005 == 00000005 PRIGROUP
-# Enable IRQ0/1
-ok 2 - 00000003 == 00000003 ENA
-ok 3 - 00000000 == 00000000 PEND
-ok 4 - 00000000 == 00000000 ACT
-not ok 5 - 00000000 == 00000800 ICSR
-# Pend IRQ0 (shouldn't run)
-ok 6 - 00000003 == 00000003 ENA
-ok 7 - 00000001 == 00000001 PEND
-ok 8 - 00000000 == 00000000 ACT
-not ok 9 - 00410000 == 00410800 ICSR
-ok 10 - 00000001 == 00000001 SEQ 1
-# Unmask (should run now)
-# in IRQ0 SEQ 2
-ok 11 - 00000003 == 00000003 ENA
-ok 12 - 00000000 == 00000000 PEND
-ok 13 - 00000001 == 00000001 ACT
-ok 14 - 00000810 == 00000810 ICSR
-# Back in main
-ok 15 - 00000003 == 00000003 ENA
-ok 16 - 00000000 == 00000000 PEND
-ok 17 - 00000000 == 00000000 ACT
-ok 18 - 00000003 == 00000003 SEQ 3
-# Give IRQ1 priority over IRQ0
-# Pend IRQ0 and IRQ1 (should run now)
-# in IRQ1 SEQ 4
-ok 19 - 00000003 == 00000003 ENA
-ok 20 - 00000001 == 00000001 PEND
-ok 21 - 00000002 == 00000002 ACT
-ok 22 - 00410811 == 00410811 ICSR
-# in IRQ0 SEQ 5
-ok 23 - 00000003 == 00000003 ENA
-ok 24 - 00000000 == 00000000 PEND
-ok 25 - 00000001 == 00000001 ACT
-ok 26 - 00000810 == 00000810 ICSR
-# Back in main
-ok 27 - 00000006 == 00000006 SEQ 6
-# Pend IRQ0 (should run now)
-# in IRQ0 SEQ 7
-# pend IRQ1
-# in IRQ1 SEQ 8
-# back in IRQ0
-ok 28 - 00000009 == 00000009 SEQ 9
-# Back in main
-ok 29 - 0000000a == 0000000a SEQ 10
-# Pend IRQ1 (should run now)
-# in IRQ1 SEQ 11
-# pend IRQ0
-# still in IRQ1
-ok 30 - 0000000c == 0000000c SEQ 12
-# in IRQ0 SEQ 13
-# Back in main
-ok 31 - 0000000e == 0000000e SEQ 14
-# equal prio, IRQ1 has lower sub-group
-# Pend IRQ0 and IRQ1 (should run now)
-# in IRQ1 SEQ 15
-# in IRQ0 SEQ 16
-# Back in main
-ok 32 - 00000011 == 00000011 SEQ 17
-# Pend IRQ0 (should run now) and IRQ1
-# in IRQ0 SEQ 18
-# in IRQ1 SEQ 19
-# Back in main
-ok 33 - 00000014 == 00000014 SEQ 20
-# Done
-Ran    33/33
-Passed 31/33
-Fail   2/33
-=============== Testing test5-kern.bin ===============
-1..45
-# MSP=20000440 PSP=20000840
-# SP 20000400
-ok 1 - 00000000 == 00000000 CONTROL
-ok 2 - 00000000 == 00000000 IPSR
-ok 3 - stack0, avect=00000000 instack=00000000 actrl=00000000
-# Start, trigger SVC
-# in SVC SEQ 1
-# SP 200003e0
-ok 4 - 00000000 == 00000000 CONTROL
-ok 5 - 0000000b == 0000000b IPSR
-ok 6 - stack0, avect=0000000b instack=00000000 actrl=00000000
-# Back in main
-ok 7 - 00000002 == 00000002 SEQ 2
-# SP 20000400
-ok 8 - 00000000 == 00000000 CONTROL
-ok 9 - 00000000 == 00000000 IPSR
-ok 10 - stack0, avect=00000000 instack=00000000 actrl=00000000
-# Priv w/ proc stack
-# SP 20000818
-ok 11 - 00000002 == 00000002 CONTROL
-ok 12 - 00000000 == 00000000 IPSR
-ok 13 - stack2, avect=00000000 instack=00000002 actrl=00000002
-# trigger SVC
-# in SVC SEQ 3
-# SP 20000400
-ok 14 - 00000000 == 00000000 CONTROL
-ok 15 - 0000000b == 0000000b IPSR
-ok 16 - stack0, avect=0000000b instack=00000000 actrl=00000000
-# Back in main
-ok 17 - 00000004 == 00000004 SEQ 4
-# SP 20000818
-ok 18 - 00000002 == 00000002 CONTROL
-ok 19 - 00000000 == 00000000 IPSR
-ok 20 - stack2, avect=00000000 instack=00000002 actrl=00000002
-# Drop privlage
-# SP 20000818
-ok 21 - 00000003 == 00000003 CONTROL
-ok 22 - 00000000 == 00000000 IPSR
-ok 23 - stack2, avect=00000000 instack=00000002 actrl=00000003
-# trigger SVC
-# in SVC SEQ 5
-# SP 20000400
-ok 24 - 00000001 == 00000001 CONTROL
-ok 25 - 0000000b == 0000000b IPSR
-ok 26 - stack0, avect=0000000b instack=00000000 actrl=00000001
-# Back in main
-ok 27 - 00000006 == 00000006 SEQ 6
-# SP 20000818
-ok 28 - 00000003 == 00000003 CONTROL
-ok 29 - 00000000 == 00000000 IPSR
-ok 30 - stack2, avect=00000000 instack=00000002 actrl=00000003
-# Try to restore privlage and switch stack (should be noop)
-# SP 20000818
-ok 31 - 00000003 == 00000003 CONTROL
-ok 32 - 00000000 == 00000000 IPSR
-ok 33 - stack2, avect=00000000 instack=00000002 actrl=00000003
-# Try to set masks
-ok 34 - 00000000 == 00000000 masks
-# trigger SVC
-# in SVC SEQ 7
-ok 35 - 00000000 == 00000000 masks
-ok 36 - 00000001 == 00000001 masks
-# Back in main
-ok 37 - 00000008 == 00000008 SEQ 8
-ok 38 - 00000000 == 00000000 masks
-# trigger HardFault (restores priv)
-# HARDFAULT 9
-# Set CONTROL=0
-# Back in main
-ok 39 - 0000000a == 0000000a SEQ 10
-# SP 20000818
-ok 40 - 00000002 == 00000002 CONTROL
-ok 41 - 00000000 == 00000000 IPSR
-ok 42 - stack2, avect=00000000 instack=00000002 actrl=00000002
-# restore MSP
-# SP 20000400
-ok 43 - 00000000 == 00000000 CONTROL
-ok 44 - 00000000 == 00000000 IPSR
-ok 45 - stack0, avect=00000000 instack=00000000 actrl=00000000
-# Done.
-Ran    45/45
-Passed 45/45
-Fail   0/45
-=============== Testing test13-kern.bin ===============
-1..4
-# Tests of USAGEFAULTs
+> not ok 9 - 00000000 =3D=3D 00000800 ICSR
 
-# 1 USAGEFAULT for a random undefined insn should be UNDEFINSTR
-# Fault: 00000003 (Usage) FSR: 00010000 (UNDEFINSTR)
-ok 1 - 00000003 == 00000003 fault type
-ok 2 - 00010000 == 00010000 FSR
-# 2 USAGEFAULT for a cp insn should be NOCP
-# Fault: 00000003 (Usage) FSR: 00080000 (NOCP)
-ok 3 - 00000003 == 00000003 fault type
-ok 4 - 00080000 == 00080000 FSR
-# Done.
-Ran    4/4
-Passed 4/4
-Fail   0/4
+> =3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D Testing test4-kern.bin =3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D
+> not ok 5 - 00000000 =3D=3D 00000800 ICSR
 
+> not ok 9 - 00410000 =3D=3D 00410800 ICSR
 
---
-Alex Bennée
+Ah, I missed the test failures, but these are all test bugs.
+All of these failures are for reads of ICSR when we're not
+in an exception handler and the mismatch is because the
+expected value of RETTOBASE differs. The bit is architecturally
+UNKNOWN, and we did a late swap from making it be clear to
+making it be set, because that seemed to be more in line
+with the Cortex-M3 documented behaviour.
+
+I didn't notice that the tests needed to be updated to
+mask out the UNKNOWN bit before comparison.
+
+thanks
+-- PMM

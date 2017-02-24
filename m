@@ -1,49 +1,51 @@
-Received: by 10.25.0.147 with SMTP id 141csp766224lfa;
-        Fri, 24 Feb 2017 08:40:38 -0800 (PST)
-X-Received: by 10.55.157.137 with SMTP id g131mr3900308qke.80.1487954438520;
-        Fri, 24 Feb 2017 08:40:38 -0800 (PST)
+Received: by 10.25.0.147 with SMTP id 141csp766252lfa;
+        Fri, 24 Feb 2017 08:40:43 -0800 (PST)
+X-Received: by 10.237.62.25 with SMTP id l25mr3513622qtf.225.1487954443512;
+        Fri, 24 Feb 2017 08:40:43 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id v1si5984414qki.194.2017.02.24.08.40.37
+        by mx.google.com with ESMTPS id v21si5972726qkb.216.2017.02.24.08.40.42
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 24 Feb 2017 08:40:38 -0800 (PST)
+        Fri, 24 Feb 2017 08:40:43 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        dkim=fail header.i=@antfield.fr;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=antfield.fr
-Received: from localhost ([::1]:38415 helo=lists.gnu.org)
+Received: from localhost ([::1]:38419 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1chIv5-0003OG-Tg
-	for alex.bennee@linaro.org; Fri, 24 Feb 2017 11:40:35 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:50366)
+	id 1chIvA-0003Sg-K8
+	for alex.bennee@linaro.org; Fri, 24 Feb 2017 11:40:40 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:50390)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <clement.deschamps@antfield.fr>) id 1chIuv-0003Mk-IT
-	for qemu-arm@nongnu.org; Fri, 24 Feb 2017 11:40:26 -0500
+	(envelope-from <clement.deschamps@antfield.fr>) id 1chIuw-0003NP-ME
+	for qemu-arm@nongnu.org; Fri, 24 Feb 2017 11:40:28 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <clement.deschamps@antfield.fr>) id 1chIus-0001AJ-Vd
-	for qemu-arm@nongnu.org; Fri, 24 Feb 2017 11:40:25 -0500
-Received: from bee.antfield.fr ([188.165.75.195]:53514)
+	(envelope-from <clement.deschamps@antfield.fr>) id 1chIuv-0001BU-1A
+	for qemu-arm@nongnu.org; Fri, 24 Feb 2017 11:40:26 -0500
+Received: from bee.antfield.fr ([188.165.75.195]:53534)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <clement.deschamps@antfield.fr>)
-	id 1chIus-00019m-MC; Fri, 24 Feb 2017 11:40:22 -0500
+	id 1chIuu-0001Aq-Mp; Fri, 24 Feb 2017 11:40:24 -0500
 From: Clement Deschamps <clement.deschamps@antfield.fr>
 DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=antfield.fr; s=mail;
-	t=1487954420; bh=YUKjlK7HJyhAmLZzS2kdReJIf9YxZ4bIzB/yVBmqphk=;
-	h=From:To:Cc:Subject:Date:From;
-	b=ovIIa2MpJ2fFhHLdwDIBn4owdowhlje+tipuivKi896B0HU/ZwkAJ3OoLGrgOZ5kD
-	3/J/PV5dFWO3Q/f6Ym412yyyq9jTZWre/Ge6g4+IixzjnbRaDEt+UDc6wlaB3cOxp/
-	0E/m8ZUfgz6EzfOExU5hQCNt91iHdUWkwPPJ7rr0=
+	t=1487954423; bh=Z2JKHKQ9WEOVzcD22zFBPsWIXu/uMW0r9IXocOJ8NTI=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=eEe0M/L//9RD+PjHQ9G0Y5iaoABLsNPaNkVXvXQG8FxqVNRO7/l0ECuCN4NBaS0RF
+	Fvc+SoPxwQJu5uPHNkDVnb+HrQhND+vWAoC87WNsDBXjhOevM+iYb86Gur62OH3sWY
+	55WoZ6uNQR1t14TV4ltBCwkdGXq+yx4qbqS52gEE=
 To: qemu-devel@nongnu.org
-Date: Fri, 24 Feb 2017 17:40:17 +0100
-Message-Id: <20170224164021.9066-1-clement.deschamps@antfield.fr>
+Date: Fri, 24 Feb 2017 17:40:20 +0100
+Message-Id: <20170224164021.9066-4-clement.deschamps@antfield.fr>
 X-Mailer: git-send-email 2.11.1
+In-Reply-To: <20170224164021.9066-1-clement.deschamps@antfield.fr>
+References: <20170224164021.9066-1-clement.deschamps@antfield.fr>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 188.165.75.195
-Subject: [Qemu-arm] [PATCH v3 0/4] bcm2835: add sdhost and gpio controllers
+Subject: [Qemu-arm] [PATCH v3 3/4] bcm2835_gpio: add bcm2835 gpio controller
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -60,60 +62,436 @@ Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org,
 	andrew.baumann@microsoft.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: k/nd2ztPJHOa
+X-TUID: slOdBAGHjJfh
 
-This patches add the Arasan SDHost controller and the GPIO controller to the BCM2835/36 platforms.
+This adds the BCM2835 GPIO controller.
 
-This patches have been tested with raspbian 2015-09-24 (which uses the SDHCI controller),
-and raspbian 2017-01-11 (which dynamically switches to the SDHost controller).
+It currently implements:
+- The 54 GPIOs as outputs (qemu_irq)
+- The SD controller selection via alternate function of GPIOs 48-53
 
-
-I spotted an issue with the raspi2 platform, but it is not related to this patch.
-The CP15 timer frequency is set to 19.20MHz in the raspbian kernel DTB.
-There is a constant (GTIMER_SCALE) in target/arm/internals.h which seems to tell that the timer is at 62.5MHz.
-This causes problems:
-- The sleep command entered in guest lasts around 1/3 of the time it is supposed to last.
-- The cursor is blinking faster that it should
-- The systemd timeouts expire too early.          
-- ...
-
-Did you already have this issue on another platform ?
-Should the frequency in the DTB be dynamically replaced depending on the GTIMER_SCALE value ?
-Or should the constant GTIMER_SCALE be platform dependent ?
-
-
-v2:
-- implements the GPIO controller for supporting SD controller selection via alternate functions of GPIOs 48-53
-
-v3:
-- removed unneeded alias (sd-bus-2)
-- changed license to GPLv2 'or later'
-- moved the sdbus_reparent_card() function to hw/sd/core.c
-- added 'readonly' state propagation in sdbus_reparent_card()
-- the gpio controller is now exposing an sdbus and has 2 references to sdbus of sdhci and sdhost controllers
-
-Clement Deschamps (4):
-  bcm2835_sdhost: add bcm2835 sdhost controller
-  hw/sd: add card-reparenting function
-  bcm2835_gpio: add bcm2835 gpio controller
-  bcm2835: add sdhost and gpio controllers
-
- hw/arm/bcm2835_peripherals.c         |  43 +++-
- hw/gpio/Makefile.objs                |   1 +
- hw/gpio/bcm2835_gpio.c               | 353 ++++++++++++++++++++++++++++
- hw/sd/Makefile.objs                  |   1 +
- hw/sd/bcm2835_sdhost.c               | 429 +++++++++++++++++++++++++++++++++++
- hw/sd/core.c                         |  30 +++
- include/hw/arm/bcm2835_peripherals.h |   4 +
- include/hw/gpio/bcm2835_gpio.h       |  39 ++++
- include/hw/sd/bcm2835_sdhost.h       |  48 ++++
- include/hw/sd/sd.h                   |   1 +
- 10 files changed, 947 insertions(+), 2 deletions(-)
+Signed-off-by: Clement Deschamps <clement.deschamps@antfield.fr>
+---
+ hw/gpio/Makefile.objs          |   1 +
+ hw/gpio/bcm2835_gpio.c         | 353 +++++++++++++++++++++++++++++++++++++++++
+ include/hw/gpio/bcm2835_gpio.h |  39 +++++
+ 3 files changed, 393 insertions(+)
  create mode 100644 hw/gpio/bcm2835_gpio.c
- create mode 100644 hw/sd/bcm2835_sdhost.c
  create mode 100644 include/hw/gpio/bcm2835_gpio.h
- create mode 100644 include/hw/sd/bcm2835_sdhost.h
 
+diff --git a/hw/gpio/Makefile.objs b/hw/gpio/Makefile.objs
+index a43c7cf442..fa0a72e6d0 100644
+--- a/hw/gpio/Makefile.objs
++++ b/hw/gpio/Makefile.objs
+@@ -7,3 +7,4 @@ common-obj-$(CONFIG_GPIO_KEY) += gpio_key.o
+ 
+ obj-$(CONFIG_OMAP) += omap_gpio.o
+ obj-$(CONFIG_IMX) += imx_gpio.o
++obj-$(CONFIG_RASPI) += bcm2835_gpio.o
+diff --git a/hw/gpio/bcm2835_gpio.c b/hw/gpio/bcm2835_gpio.c
+new file mode 100644
+index 0000000000..acc2e3cf9e
+--- /dev/null
++++ b/hw/gpio/bcm2835_gpio.c
+@@ -0,0 +1,353 @@
++/*
++ * Raspberry Pi (BCM2835) GPIO Controller
++ *
++ * Copyright (c) 2017 Antfield SAS
++ *
++ * Authors:
++ *  Clement Deschamps <clement.deschamps@antfield.fr>
++ *  Luc Michel <luc.michel@antfield.fr>
++ *
++ * This work is licensed under the terms of the GNU GPL, version 2 or later.
++ * See the COPYING file in the top-level directory.
++ */
++
++#include "qemu/osdep.h"
++#include "qemu/log.h"
++#include "qemu/timer.h"
++#include "qapi/error.h"
++#include "hw/sysbus.h"
++#include "hw/sd/sd.h"
++#include "hw/gpio/bcm2835_gpio.h"
++
++#define GPFSEL0   0x00
++#define GPFSEL1   0x04
++#define GPFSEL2   0x08
++#define GPFSEL3   0x0C
++#define GPFSEL4   0x10
++#define GPFSEL5   0x14
++#define GPSET0    0x1C
++#define GPSET1    0x20
++#define GPCLR0    0x28
++#define GPCLR1    0x2C
++#define GPLEV0    0x34
++#define GPLEV1    0x38
++#define GPEDS0    0x40
++#define GPEDS1    0x44
++#define GPREN0    0x4C
++#define GPREN1    0x50
++#define GPFEN0    0x58
++#define GPFEN1    0x5C
++#define GPHEN0    0x64
++#define GPHEN1    0x68
++#define GPLEN0    0x70
++#define GPLEN1    0x74
++#define GPAREN0   0x7C
++#define GPAREN1   0x80
++#define GPAFEN0   0x88
++#define GPAFEN1   0x8C
++#define GPPUD     0x94
++#define GPPUDCLK0 0x98
++#define GPPUDCLK1 0x9C
++
++static uint32_t gpfsel_get(BCM2835GpioState *s, uint8_t reg)
++{
++    int i;
++    uint32_t value = 0;
++    for (i = 0; i < 10; i++) {
++        uint32_t index = 10 * reg + i;
++        if (index < sizeof(s->fsel)) {
++            value |= (s->fsel[index] & 0x7) << (3 * i);
++        }
++    }
++    return value;
++}
++
++static void gpfsel_set(BCM2835GpioState *s, uint8_t reg, uint32_t value)
++{
++    int i;
++    for (i = 0; i < 10; i++) {
++        uint32_t index = 10 * reg + i;
++        if (index < sizeof(s->fsel)) {
++            int fsel = (value >> (3 * i)) & 0x7;
++            s->fsel[index] = fsel;
++        }
++    }
++
++    /* SD controller selection (48-53) */
++    if (s->sd_fsel != 0
++            && (s->fsel[48] == 0) /* SD_CLK_R */
++            && (s->fsel[49] == 0) /* SD_CMD_R */
++            && (s->fsel[50] == 0) /* SD_DATA0_R */
++            && (s->fsel[51] == 0) /* SD_DATA1_R */
++            && (s->fsel[52] == 0) /* SD_DATA2_R */
++            && (s->fsel[53] == 0) /* SD_DATA3_R */
++            ) {
++        /* SDHCI controller selected */
++        sdbus_reparent_card(s->sdbus_sdhost, s->sdbus_sdhci);
++        s->sd_fsel = 0;
++    } else if (s->sd_fsel != 4
++            && (s->fsel[48] == 4) /* SD_CLK_R */
++            && (s->fsel[49] == 4) /* SD_CMD_R */
++            && (s->fsel[50] == 4) /* SD_DATA0_R */
++            && (s->fsel[51] == 4) /* SD_DATA1_R */
++            && (s->fsel[52] == 4) /* SD_DATA2_R */
++            && (s->fsel[53] == 4) /* SD_DATA3_R */
++            ) {
++        /* SDHost controller selected */
++        sdbus_reparent_card(s->sdbus_sdhci, s->sdbus_sdhost);
++        s->sd_fsel = 4;
++    }
++}
++
++static int gpfsel_is_out(BCM2835GpioState *s, int index)
++{
++    if (index >= 0 && index < 54) {
++        return s->fsel[index] == 1;
++    }
++    return 0;
++}
++
++static void gpset(BCM2835GpioState *s,
++        uint32_t val, uint8_t start, uint8_t count, uint32_t *lev)
++{
++    uint32_t changes = val & ~*lev;
++    uint32_t cur = 1;
++
++    int i;
++    for (i = 0; i < count; i++) {
++        if ((changes & cur) && (gpfsel_is_out(s, start + i))) {
++            qemu_set_irq(s->out[start + i], 1);
++        }
++        cur <<= 1;
++    }
++
++    *lev |= val;
++}
++
++static void gpclr(BCM2835GpioState *s,
++        uint32_t val, uint8_t start, uint8_t count, uint32_t *lev)
++{
++    uint32_t changes = val & *lev;
++    uint32_t cur = 1;
++
++    int i;
++    for (i = 0; i < count; i++) {
++        if ((changes & cur) && (gpfsel_is_out(s, start + i))) {
++            qemu_set_irq(s->out[start + i], 0);
++        }
++        cur <<= 1;
++    }
++
++    *lev &= ~val;
++}
++
++static uint64_t bcm2835_gpio_read(void *opaque, hwaddr offset,
++        unsigned size)
++{
++    BCM2835GpioState *s = (BCM2835GpioState *)opaque;
++
++    switch (offset) {
++    case GPFSEL0:
++    case GPFSEL1:
++    case GPFSEL2:
++    case GPFSEL3:
++    case GPFSEL4:
++    case GPFSEL5:
++        return gpfsel_get(s, offset / 4);
++    case GPSET0:
++    case GPSET1:
++        /* Write Only */
++        return 0;
++    case GPCLR0:
++    case GPCLR1:
++        /* Write Only */
++        return 0;
++    case GPLEV0:
++        return s->lev0;
++    case GPLEV1:
++        return s->lev1;
++    case GPEDS0:
++    case GPEDS1:
++    case GPREN0:
++    case GPREN1:
++    case GPFEN0:
++    case GPFEN1:
++    case GPHEN0:
++    case GPHEN1:
++    case GPLEN0:
++    case GPLEN1:
++    case GPAREN0:
++    case GPAREN1:
++    case GPAFEN0:
++    case GPAFEN1:
++    case GPPUD:
++    case GPPUDCLK0:
++    case GPPUDCLK1:
++        /* Not implemented */
++        return 0;
++    default:
++        qemu_log_mask(LOG_GUEST_ERROR, "%s: Bad offset %"HWADDR_PRIx"\n",
++                __func__, offset);
++        break;
++    }
++
++    return 0;
++}
++
++static void bcm2835_gpio_write(void *opaque, hwaddr offset,
++        uint64_t value, unsigned size)
++{
++    BCM2835GpioState *s = (BCM2835GpioState *)opaque;
++
++    switch (offset) {
++    case GPFSEL0:
++    case GPFSEL1:
++    case GPFSEL2:
++    case GPFSEL3:
++    case GPFSEL4:
++    case GPFSEL5:
++        gpfsel_set(s, offset / 4, value);
++        break;
++    case GPSET0:
++        gpset(s, value, 0, 32, &s->lev0);
++        break;
++    case GPSET1:
++        gpset(s, value, 32, 22, &s->lev1);
++        break;
++    case GPCLR0:
++        gpclr(s, value, 0, 32, &s->lev0);
++        break;
++    case GPCLR1:
++        gpclr(s, value, 32, 22, &s->lev1);
++        break;
++    case GPLEV0:
++    case GPLEV1:
++        /* Read Only */
++        break;
++    case GPEDS0:
++    case GPEDS1:
++    case GPREN0:
++    case GPREN1:
++    case GPFEN0:
++    case GPFEN1:
++    case GPHEN0:
++    case GPHEN1:
++    case GPLEN0:
++    case GPLEN1:
++    case GPAREN0:
++    case GPAREN1:
++    case GPAFEN0:
++    case GPAFEN1:
++    case GPPUD:
++    case GPPUDCLK0:
++    case GPPUDCLK1:
++        /* Not implemented */
++        break;
++    default:
++        goto err_out;
++    }
++    return;
++
++err_out:
++    qemu_log_mask(LOG_GUEST_ERROR, "%s: Bad offset %"HWADDR_PRIx"\n",
++            __func__, offset);
++}
++
++static void bcm2835_gpio_reset(DeviceState *dev)
++{
++    BCM2835GpioState *s = BCM2835_GPIO(dev);
++
++    int i;
++    for (i = 0; i < 6; i++) {
++        gpfsel_set(s, i, 0);
++    }
++
++    s->sd_fsel = 0;
++
++    /* SDHCI is selected by default */
++    sdbus_reparent_card(&s->sdbus, s->sdbus_sdhci);
++
++    s->lev0 = 0;
++    s->lev1 = 0;
++}
++
++static const MemoryRegionOps bcm2835_gpio_ops = {
++    .read = bcm2835_gpio_read,
++    .write = bcm2835_gpio_write,
++    .endianness = DEVICE_NATIVE_ENDIAN,
++};
++
++static const VMStateDescription vmstate_bcm2835_gpio = {
++    .name = "bcm2835_gpio",
++    .version_id = 1,
++    .minimum_version_id = 1,
++    .fields = (VMStateField[]) {
++        VMSTATE_UINT8_ARRAY(fsel, BCM2835GpioState, 54),
++        VMSTATE_UINT32(lev0, BCM2835GpioState),
++        VMSTATE_UINT32(lev1, BCM2835GpioState),
++        VMSTATE_UINT8(sd_fsel, BCM2835GpioState),
++        VMSTATE_END_OF_LIST()
++    }
++};
++
++static void bcm2835_gpio_init(Object *obj)
++{
++    BCM2835GpioState *s = BCM2835_GPIO(obj);
++    DeviceState *dev = DEVICE(obj);
++    SysBusDevice *sbd = SYS_BUS_DEVICE(obj);
++
++    qbus_create_inplace(&s->sdbus, sizeof(s->sdbus),
++                        TYPE_SD_BUS, DEVICE(s), "sd-bus");
++
++    memory_region_init_io(&s->iomem, obj,
++            &bcm2835_gpio_ops, s, "bcm2835_gpio", 0x1000);
++    sysbus_init_mmio(sbd, &s->iomem);
++    qdev_init_gpio_out(dev, s->out, 54);
++}
++
++static void bcm2835_gpio_realize(DeviceState *dev, Error **errp)
++{
++    BCM2835GpioState *s = BCM2835_GPIO(dev);
++    Object *obj;
++    Error *err = NULL;
++
++    obj = object_property_get_link(OBJECT(dev), "sdbus-sdhci", &err);
++    if (obj == NULL) {
++        error_setg(errp, "%s: required sdhci link not found: %s",
++                __func__, error_get_pretty(err));
++        return;
++    }
++    s->sdbus_sdhci = SD_BUS(obj);
++
++    obj = object_property_get_link(OBJECT(dev), "sdbus-sdhost", &err);
++    if (obj == NULL) {
++        error_setg(errp, "%s: required sdhost link not found: %s",
++                __func__, error_get_pretty(err));
++        return;
++    }
++    s->sdbus_sdhost = SD_BUS(obj);
++}
++
++static void bcm2835_gpio_class_init(ObjectClass *klass, void *data)
++{
++    DeviceClass *dc = DEVICE_CLASS(klass);
++
++    dc->vmsd = &vmstate_bcm2835_gpio;
++    dc->realize = &bcm2835_gpio_realize;
++    dc->reset = &bcm2835_gpio_reset;
++}
++
++static const TypeInfo bcm2835_gpio_info = {
++    .name          = TYPE_BCM2835_GPIO,
++    .parent        = TYPE_SYS_BUS_DEVICE,
++    .instance_size = sizeof(BCM2835GpioState),
++    .instance_init = bcm2835_gpio_init,
++    .class_init    = bcm2835_gpio_class_init,
++};
++
++static void bcm2835_gpio_register_types(void)
++{
++    type_register_static(&bcm2835_gpio_info);
++}
++
++type_init(bcm2835_gpio_register_types)
+diff --git a/include/hw/gpio/bcm2835_gpio.h b/include/hw/gpio/bcm2835_gpio.h
+new file mode 100644
+index 0000000000..9f8e0c720c
+--- /dev/null
++++ b/include/hw/gpio/bcm2835_gpio.h
+@@ -0,0 +1,39 @@
++/*
++ * Raspberry Pi (BCM2835) GPIO Controller
++ *
++ * Copyright (c) 2017 Antfield SAS
++ *
++ * Authors:
++ *  Clement Deschamps <clement.deschamps@antfield.fr>
++ *  Luc Michel <luc.michel@antfield.fr>
++ *
++ * This work is licensed under the terms of the GNU GPL, version 2 or later.
++ * See the COPYING file in the top-level directory.
++ */
++
++#ifndef BCM2835_GPIO_H
++#define BCM2835_GPIO_H
++
++#include "hw/sd/sd.h"
++
++typedef struct BCM2835GpioState {
++    SysBusDevice parent_obj;
++
++    MemoryRegion iomem;
++
++    /* SDBus selector */
++    SDBus sdbus;
++    SDBus *sdbus_sdhci;
++    SDBus *sdbus_sdhost;
++
++    uint8_t fsel[54];
++    uint32_t lev0, lev1;
++    uint8_t sd_fsel;
++    qemu_irq out[54];
++} BCM2835GpioState;
++
++#define TYPE_BCM2835_GPIO "bcm2835_gpio"
++#define BCM2835_GPIO(obj) \
++    OBJECT_CHECK(BCM2835GpioState, (obj), TYPE_BCM2835_GPIO)
++
++#endif
 -- 
 2.11.1
 

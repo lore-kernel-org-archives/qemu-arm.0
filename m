@@ -1,63 +1,49 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaro.local (host5-81-235-77.range5-81.btcentralplus.com. [5.81.235.77])
-        by smtp.gmail.com with ESMTPSA id o26sm3009063wro.44.2017.02.24.09.17.13
+        by smtp.gmail.com with ESMTPSA id h23sm11052423wrc.48.2017.02.24.09.17.36
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 24 Feb 2017 09:17:13 -0800 (PST)
+        Fri, 24 Feb 2017 09:17:36 -0800 (PST)
 Received: from zen (localhost [127.0.0.1])
-	by zen.linaro.local (Postfix) with ESMTPS id 1F1173E0198;
-	Fri, 24 Feb 2017 17:17:13 +0000 (GMT)
-References: <1487262963-11519-1-git-send-email-peter.maydell@linaro.org> <1487262963-11519-14-git-send-email-peter.maydell@linaro.org>
+	by zen.linaro.local (Postfix) with ESMTPS id 526103E0198;
+	Fri, 24 Feb 2017 17:17:36 +0000 (GMT)
+References: <1487262963-11519-1-git-send-email-peter.maydell@linaro.org> <CAFEAcA-MMw0_ombzTD+kQYpeNKywtcKY2UczcpR-hFDwGZhZJw@mail.gmail.com> <87wpcflmmb.fsf@linaro.org> <CAFEAcA-OhSMFKgRYsCWUrb6OBxxrWokkkpJyioveEur-p4-g2A@mail.gmail.com> <87shn3lkj3.fsf@linaro.org> <CAFEAcA-e5s6Tru_Kfba9hQHL827r2N5jyBvbpwbro7fHX2m1KA@mail.gmail.com> <87r32nleue.fsf@linaro.org> <CAFEAcA_nwfvS-WnZW1WuqGT7cv8Mm16o8CwM2N=XB1MWePkqbA@mail.gmail.com>
 User-agent: mu4e 0.9.19; emacs 25.2.5
 From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, patches@linaro.org
-Subject: Re: [PATCH v2 13/13] armv7m: Allow SHCSR writes to change pending and active bits
-In-reply-to: <1487262963-11519-14-git-send-email-peter.maydell@linaro.org>
-Date: Fri, 24 Feb 2017 17:17:13 +0000
-Message-ID: <87lgsvld9i.fsf@linaro.org>
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>, "patches\@linaro.org" <patches@linaro.org>
+Subject: Re: [Qemu-arm] [PATCH v2 00/13] Rewrite NVIC to not depend on the GIC
+In-reply-to: <CAFEAcA_nwfvS-WnZW1WuqGT7cv8Mm16o8CwM2N=XB1MWePkqbA@mail.gmail.com>
+Date: Fri, 24 Feb 2017 17:17:36 +0000
+Message-ID: <87k28fld8v.fsf@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 8bit
-X-TUID: kYKSBT7hzJ+H
+X-TUID: SS4b5V8Kq7B+
 
 
 Peter Maydell <peter.maydell@linaro.org> writes:
 
-> Implement the NVIC SHCSR write behaviour which allows pending and
-> active status of some exceptions to be changed.
+> On 24 February 2017 at 16:43, Alex Bennée <alex.bennee@linaro.org> wrote:
+>>
+>> Peter Maydell <peter.maydell@linaro.org> writes:
+>>
+>>> On 24 February 2017 at 14:40, Alex Bennée <alex.bennee@linaro.org> wrote:
+>>> Could be. I use arm-linux-gnueabihf-gcc to build. If you use
+>>> PRIx32 does it build OK?
+>>
+>> Well the problem is the non-eabi compilers don't have PRIx32 defined for
+>> you. You have to specify yourself.
 >
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-
-Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
-
-> ---
->  hw/intc/armv7m_nvic.c | 13 +++++++++++--
->  1 file changed, 11 insertions(+), 2 deletions(-)
+> Oh, right. Or we could just cast these things to unsigned int ;-)
 >
-> diff --git a/hw/intc/armv7m_nvic.c b/hw/intc/armv7m_nvic.c
-> index a8c5a9e..1d34e0d 100644
-> --- a/hw/intc/armv7m_nvic.c
-> +++ b/hw/intc/armv7m_nvic.c
-> @@ -755,8 +755,17 @@ static void nvic_writel(NVICState *s, uint32_t offset, uint32_t value)
->          cpu->env.v7m.ccr = value;
->          break;
->      case 0xd24: /* System Handler Control.  */
-> -        /* TODO: Real hardware allows you to set/clear the active bits
-> -           under some circumstances.  We don't implement this.  */
-> +        s->vectors[ARMV7M_EXCP_MEM].active = (value & (1 << 0)) != 0;
-> +        s->vectors[ARMV7M_EXCP_BUS].active = (value & (1 << 1)) != 0;
-> +        s->vectors[ARMV7M_EXCP_USAGE].active = (value & (1 << 3)) != 0;
-> +        s->vectors[ARMV7M_EXCP_SVC].active = (value & (1 << 7)) != 0;
-> +        s->vectors[ARMV7M_EXCP_DEBUG].active = (value & (1 << 8)) != 0;
-> +        s->vectors[ARMV7M_EXCP_PENDSV].active = (value & (1 << 10)) != 0;
-> +        s->vectors[ARMV7M_EXCP_SYSTICK].active = (value & (1 << 11)) != 0;
-> +        s->vectors[ARMV7M_EXCP_USAGE].pending = (value & (1 << 12)) != 0;
-> +        s->vectors[ARMV7M_EXCP_MEM].pending = (value & (1 << 13)) != 0;
-> +        s->vectors[ARMV7M_EXCP_BUS].pending = (value & (1 << 14)) != 0;
-> +        s->vectors[ARMV7M_EXCP_SVC].pending = (value & (1 << 15)) != 0;
->          s->vectors[ARMV7M_EXCP_MEM].enabled = (value & (1 << 16)) != 0;
->          s->vectors[ARMV7M_EXCP_BUS].enabled = (value & (1 << 17)) != 0;
->          s->vectors[ARMV7M_EXCP_USAGE].enabled = (value & (1 << 18)) != 0;
+> Other than the tests being a bit ropy, are you happy with the
+> patches proper?
+
+Yes, I've just looked through the last few and they look good to me.
+
+>
+> thanks
+> -- PMM
 
 
 --

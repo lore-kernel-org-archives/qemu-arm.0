@@ -1,71 +1,53 @@
-Received: by 10.25.0.147 with SMTP id 141csp937799lfa;
-        Mon, 27 Feb 2017 05:37:40 -0800 (PST)
-X-Received: by 10.55.102.199 with SMTP id a190mr14879273qkc.277.1488202660424;
-        Mon, 27 Feb 2017 05:37:40 -0800 (PST)
+Received: by 10.25.0.147 with SMTP id 141csp1039272lfa;
+        Mon, 27 Feb 2017 09:37:21 -0800 (PST)
+X-Received: by 10.55.144.4 with SMTP id s4mr16068981qkd.101.1488217041536;
+        Mon, 27 Feb 2017 09:37:21 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id u42si2389114qte.4.2017.02.27.05.37.39
+        by mx.google.com with ESMTPS id v34si12325921qtv.218.2017.02.27.09.37.20
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 27 Feb 2017 05:37:40 -0800 (PST)
+        Mon, 27 Feb 2017 09:37:21 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:52829 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:55109 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ciLUf-0005FU-Mc
-	for alex.bennee@linaro.org; Mon, 27 Feb 2017 08:37:37 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:50095)
+	id 1ciPEc-0001Ry-N7
+	for alex.bennee@linaro.org; Mon, 27 Feb 2017 12:37:18 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:41394)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1ciLQB-0001by-Gt
-	for qemu-arm@nongnu.org; Mon, 27 Feb 2017 08:33:00 -0500
+	(envelope-from <drjones@redhat.com>) id 1ciPEW-0001Ph-82
+	for qemu-arm@nongnu.org; Mon, 27 Feb 2017 12:37:15 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1ciLQ9-0006pw-R2
-	for qemu-arm@nongnu.org; Mon, 27 Feb 2017 08:32:59 -0500
-Received: from mail-wr0-x22d.google.com ([2a00:1450:400c:c0c::22d]:36209)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1ciLQ9-0006pU-KS
-	for qemu-arm@nongnu.org; Mon, 27 Feb 2017 08:32:57 -0500
-Received: by mail-wr0-x22d.google.com with SMTP id u108so22346681wrb.3
-	for <qemu-arm@nongnu.org>; Mon, 27 Feb 2017 05:32:57 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=Gl5XDd1/r8Wm76YOf8TASHPju3OB8mBj/2Gq+8Ty45s=;
-	b=bKJXVk9xBxqk3lrgTy94SJ6gkUSIZNhoQdrWoPhBKqR/0aIqZu/86Y/VNGU7Nsx6Rd
-	rF6DAUt2kBDzRZ18QGPw2pYVQ6JJf/UFva8E+pvkR/KxfDvO+4uhuka0eIqGJdsJMCfs
-	tIoKysM8iWDWURQPVaY0iK+dCaFBZBkXarltw=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=Gl5XDd1/r8Wm76YOf8TASHPju3OB8mBj/2Gq+8Ty45s=;
-	b=KkxqICInp+XlhHHs7EZFbpWY0QrLdho/6EOde2UUHNtKT4qZkoHbky25MKPmOG7DFR
-	C9uMm8xWAFvRvkJ5cbkbitnhH4EHQDIDmCoVqcqtnPfnIfolxZFv1p7CBuy5wAlV5uj+
-	Z2YWu17eVemjERg3PxUnl/4wkMlps8vAAaaHeNqBJ6/FaSP9Yr5kS6Rk9+ZbjaciQ0FE
-	I3Yh239wFv8U2ffUYqd4VF3pPRtQqxbQSfuzbQ09tHA0iXI2ogAYIdk3qkbJKQsV+66j
-	e6rMXG9P1DKE42XV6KneE/B5r4ao/AKHAChNgQH+hz2wCbrUgJiEvByNarR8oRJffGyC
-	psoQ==
-X-Gm-Message-State: AMke39lYZIJ5btEdDXjo9ER4ZFLvaU8a54kliLRyFPNJXBMUmQPM6UMJcYsR87rkeIT2DMy1RL8n0LsA2tWJYbn3
-X-Received: by 10.223.150.205 with SMTP id u71mr12843696wrb.195.1488202376548; 
-	Mon, 27 Feb 2017 05:32:56 -0800 (PST)
-MIME-Version: 1.0
-Received: by 10.223.145.69 with HTTP; Mon, 27 Feb 2017 05:32:35 -0800 (PST)
-In-Reply-To: <20170226200142.31169-1-krzk@kernel.org>
-References: <20170226200142.31169-1-krzk@kernel.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 27 Feb 2017 13:32:35 +0000
-Message-ID: <CAFEAcA8FGe3-yeDQDDqK89KDBBNzwVTGzxaEdNzE+yjBg8SbjQ@mail.gmail.com>
-To: Krzysztof Kozlowski <krzk@kernel.org>
-Content-Type: text/plain; charset=UTF-8
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2a00:1450:400c:c0c::22d
-Subject: Re: [Qemu-arm] [PATCH v2 1/2] hw/arm/exynos: Fix Linux kernel
- division by zero for PLLs
+	(envelope-from <drjones@redhat.com>) id 1ciPEV-0000bg-Fo
+	for qemu-arm@nongnu.org; Mon, 27 Feb 2017 12:37:12 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:43404)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <drjones@redhat.com>)
+	id 1ciPEV-0000ay-AA; Mon, 27 Feb 2017 12:37:11 -0500
+Received: from int-mx11.intmail.prod.int.phx2.redhat.com
+	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id A3A6B7FB66;
+	Mon, 27 Feb 2017 17:37:10 +0000 (UTC)
+Received: from kamzik.brq.redhat.com (kamzik.brq.redhat.com [10.34.1.143])
+	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id v1RHb8oh000943; Mon, 27 Feb 2017 12:37:09 -0500
+From: Andrew Jones <drjones@redhat.com>
+To: qemu-devel@nongnu.org, qemu-arm@nongnu.org
+Date: Mon, 27 Feb 2017 18:37:04 +0100
+Message-Id: <20170227173706.15210-1-drjones@redhat.com>
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.25]);
+	Mon, 27 Feb 2017 17:37:10 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.132.183.28
+Subject: [Qemu-arm] [PATCH 0/2] Enable QEMU to control MPIDR values
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -77,35 +59,27 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Igor Mitsyanko <i.mitsyanko@gmail.com>, qemu-arm <qemu-arm@nongnu.org>,
-	QEMU Developers <qemu-devel@nongnu.org>
+Cc: marc.zyngier@arm.com, peter.maydell@linaro.org, christoffer.dall@linaro.org,
+	imammedo@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: DYBjkpl8Vzbe
+X-TUID: FhWrG/pAQufg
 
-On 26 February 2017 at 20:01, Krzysztof Kozlowski <krzk@kernel.org> wrote:
-> Without any clock controller, the Linux kernel was hitting division by
-> zero during boot or with clk_summary:
-> [    0.000000] [<c031054c>] (unwind_backtrace) from [<c030ba6c>] (show_stack+0x10/0x14)
-> [    0.000000] [<c030ba6c>] (show_stack) from [<c05b2660>] (dump_stack+0x88/0x9c)
-> [    0.000000] [<c05b2660>] (dump_stack) from [<c05b11a4>] (Ldiv0+0x8/0x10)
-> [    0.000000] [<c05b11a4>] (Ldiv0) from [<c06ad1e0>] (samsung_pll45xx_recalc_rate+0x58/0x74)
-> [    0.000000] [<c06ad1e0>] (samsung_pll45xx_recalc_rate) from [<c0692ec0>] (clk_register+0x39c/0x63c)
-> [    0.000000] [<c0692ec0>] (clk_register) from [<c125d360>] (samsung_clk_register_pll+0x2e0/0x3d4)
-> [    0.000000] [<c125d360>] (samsung_clk_register_pll) from [<c125d7e8>] (exynos4_clk_init+0x1b0/0x5e4)
-> [    0.000000] [<c125d7e8>] (exynos4_clk_init) from [<c12335f4>] (of_clk_init+0x17c/0x210)
-> [    0.000000] [<c12335f4>] (of_clk_init) from [<c1204700>] (time_init+0x24/0x2c)
-> [    0.000000] [<c1204700>] (time_init) from [<c1200b2c>] (start_kernel+0x24c/0x38c)
-> [    0.000000] [<c1200b2c>] (start_kernel) from [<4020807c>] (0x4020807c)
->
-> Provide stub for clock controller returning reset values for PLLs.
->
-> Signed-off-by: Krzysztof Kozlowski <krzk@kernel.org>
->
-> ---
+Igor needs to know/select vcpu MPIDR values early in order to map vcpus
+to vnodes. Waiting until after vcpu init, when KVM sets them, is too
+late. With this patch, and its KVM counterpart, QEMU can control the
+values, allowing it to know/select them whenever it likes.
 
+Andrew Jones (2):
+  HACK: update linux/kvm header
+  arm: kvm: set MPIDR when we can
 
+ linux-headers/linux/kvm.h |  1 +
+ target/arm/cpu.c          |  3 +--
+ target/arm/kvm32.c        | 22 ++++++++++++++--------
+ target/arm/kvm64.c        | 22 ++++++++++++++--------
+ 4 files changed, 30 insertions(+), 18 deletions(-)
 
-Applied both to target-arm.next, thanks.
+-- 
+2.9.3
 
--- PMM

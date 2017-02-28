@@ -1,61 +1,63 @@
-Received: by 10.25.0.147 with SMTP id 141csp1454592lfa;
-        Tue, 28 Feb 2017 07:56:32 -0800 (PST)
-X-Received: by 10.237.36.210 with SMTP id u18mr3722364qtc.51.1488297392876;
-        Tue, 28 Feb 2017 07:56:32 -0800 (PST)
+Received: by 10.25.0.147 with SMTP id 141csp1455738lfa;
+        Tue, 28 Feb 2017 07:59:42 -0800 (PST)
+X-Received: by 10.55.214.209 with SMTP id p78mr3384681qkl.255.1488297582496;
+        Tue, 28 Feb 2017 07:59:42 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id h14si1758733qka.137.2017.02.28.07.56.32
+        by mx.google.com with ESMTPS id 33si1773207qth.121.2017.02.28.07.59.41
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 28 Feb 2017 07:56:32 -0800 (PST)
+        Tue, 28 Feb 2017 07:59:42 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:34600 helo=lists.gnu.org)
+Received: from localhost ([::1]:34734 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1cik8c-0004On-4Y
-	for alex.bennee@linaro.org; Tue, 28 Feb 2017 10:56:30 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:40459)
+	id 1cikBf-00079p-RZ
+	for alex.bennee@linaro.org; Tue, 28 Feb 2017 10:59:39 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:41509)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <imammedo@redhat.com>) id 1cik7n-0003op-M1
-	for qemu-arm@nongnu.org; Tue, 28 Feb 2017 10:55:40 -0500
+	(envelope-from <pbonzini@redhat.com>) id 1cikBX-00078C-Pd
+	for qemu-arm@nongnu.org; Tue, 28 Feb 2017 10:59:32 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <imammedo@redhat.com>) id 1cik7m-0003Qk-U7
-	for qemu-arm@nongnu.org; Tue, 28 Feb 2017 10:55:39 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:42434)
+	(envelope-from <pbonzini@redhat.com>) id 1cikBS-0004hA-Va
+	for qemu-arm@nongnu.org; Tue, 28 Feb 2017 10:59:31 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:53914)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <imammedo@redhat.com>)
-	id 1cik7m-0003QU-Ot; Tue, 28 Feb 2017 10:55:38 -0500
-Received: from int-mx11.intmail.prod.int.phx2.redhat.com
-	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
+	(Exim 4.71) (envelope-from <pbonzini@redhat.com>)
+	id 1cikBS-0004h5-Pm; Tue, 28 Feb 2017 10:59:26 -0500
+Received: from int-mx10.intmail.prod.int.phx2.redhat.com
+	(int-mx10.intmail.prod.int.phx2.redhat.com [10.5.11.23])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 9D0B97572E;
-	Tue, 28 Feb 2017 15:55:38 +0000 (UTC)
-Received: from Igors-MacBook-Pro.local (ovpn-112-29.ams2.redhat.com
-	[10.36.112.29])
-	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id v1SFtZZc005352; Tue, 28 Feb 2017 10:55:36 -0500
-Date: Tue, 28 Feb 2017 16:55:33 +0100
-From: Igor Mammedov <imammedo@redhat.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Message-ID: <20170228165533.690366cf@Igors-MacBook-Pro.local>
-In-Reply-To: <1488293711-14195-2-git-send-email-peter.maydell@linaro.org>
+	by mx1.redhat.com (Postfix) with ESMTPS id BDE4C33884C;
+	Tue, 28 Feb 2017 15:59:26 +0000 (UTC)
+Received: from [10.36.117.252] (ovpn-117-252.ams2.redhat.com [10.36.117.252])
+	by int-mx10.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with
+	ESMTP id v1SFxOu7011687
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=NO);
+	Tue, 28 Feb 2017 10:59:25 -0500
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
 References: <1488293711-14195-1-git-send-email-peter.maydell@linaro.org>
-	<1488293711-14195-2-git-send-email-peter.maydell@linaro.org>
+From: Paolo Bonzini <pbonzini@redhat.com>
+Message-ID: <516283e2-27bc-83a3-de86-1df72f2daad2@redhat.com>
+Date: Tue, 28 Feb 2017 16:59:23 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
+	Thunderbird/45.7.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+In-Reply-To: <1488293711-14195-1-git-send-email-peter.maydell@linaro.org>
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.23
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.25]);
-	Tue, 28 Feb 2017 15:55:38 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.29]);
+	Tue, 28 Feb 2017 15:59:26 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH 1/4] qdev: Have
- qdev_set_parent_bus() handle devices already on a bus
+Subject: Re: [Qemu-arm] [PATCH 0/4] handle reparenting of SD cards for rpi2
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -67,54 +69,33 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Paolo Bonzini <pbonzini@redhat.com>, qemu-arm@nongnu.org,
-	Clement Deschamps <clement.deschamps@antfield.fr>,
-	qemu-devel@nongnu.org, patches@linaro.org
+Cc: Clement Deschamps <clement.deschamps@antfield.fr>, patches@linaro.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: QPYhN5vapyuA
+X-TUID: f6y7qaLKGs4i
 
-On Tue, 28 Feb 2017 14:55:08 +0000
-Peter Maydell <peter.maydell@linaro.org> wrote:
 
-> Instead of qdev_set_parent_bus() silently doing the wrong
-> thing if it's handed a device that's already on a bus,
-> have it remove the device from the old bus and add it to
-> the new one. This is useful for the raspi2 sdcard.
+
+On 28/02/2017 15:55, Peter Maydell wrote:
+> These patches are a respin of Clement's work on the
+> rpi2 sd controller/gpio. They fix the valgrind issue that
+> I was seeing because we got reparenting of the card wrong.
 > 
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-Reviewed-by: Igor Mammedov <imammedo@redhat.com>
-
-> ---
->  hw/core/qdev.c | 14 ++++++++++++++
->  1 file changed, 14 insertions(+)
+> This patchset adds a new qdev patch which makes the
+> qdev_set_parent_bus() function do most of the work of
+> unplugging and replugging if the device was already on
+> a bus. In particular it calls bus_remove_child() which does
+> a lot of things that the previous "just call object_unparent"
+> attempt didn't do.
 > 
-> diff --git a/hw/core/qdev.c b/hw/core/qdev.c
-> index 06ba02e..923e626 100644
-> --- a/hw/core/qdev.c
-> +++ b/hw/core/qdev.c
-> @@ -102,9 +102,23 @@ static void bus_add_child(BusState *bus, DeviceState *child)
->  
->  void qdev_set_parent_bus(DeviceState *dev, BusState *bus)
->  {
-> +    bool replugging = dev->parent_bus != NULL;
-> +
-> +    if (replugging) {
-> +        /* Keep a reference to the device while it's not plugged into
-> +         * any bus, to avoid it potentially evaporating when it is
-> +         * dereffed in bus_remove_child().
-> +         */
-> +        object_ref(OBJECT(dev));
-> +        bus_remove_child(dev->parent_bus, dev);
-> +        object_unref(OBJECT(dev->parent_bus));
-> +    }
->      dev->parent_bus = bus;
->      object_ref(OBJECT(bus));
->      bus_add_child(bus, dev);
-> +    if (replugging) {
-> +        object_unref(OBJECT(dev));
-> +    }
->  }
->  
->  /* Create a new device.  This only initializes the device state
+> Comments on whether this makes sense to people welcome.
+> I'm still kind of hoping we can squeeze this into 2.9;
+> comments on whether that would be unwise also welcome.
 
+Looks good.  My first reaction was to add an assertion in
+qdev_set_parent_bus, modify it to handle qdev_set_parent_bus(dev, NULL),
+and then do a two-step unplug+replug in the raspi device models.
+
+However, who knows what you could unleash when adding that assertion...
+
+Paolo

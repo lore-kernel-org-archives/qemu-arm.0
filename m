@@ -1,74 +1,273 @@
-Received: by 10.25.0.147 with SMTP id 141csp1405355lfa;
-        Tue, 28 Feb 2017 06:05:29 -0800 (PST)
-X-Received: by 10.28.97.194 with SMTP id v185mr2616643wmb.117.1488290729529;
-        Tue, 28 Feb 2017 06:05:29 -0800 (PST)
-Return-Path: <peter.maydell@linaro.org>
-Received: from mail-wm0-x22b.google.com (mail-wm0-x22b.google.com. [2a00:1450:400c:c09::22b])
-        by mx.google.com with ESMTPS id s4si2595519wra.167.2017.02.28.06.05.29
-        for <alex.bennee@linaro.org>
+Return-Path: <alex.bennee@linaro.org>
+Received: from zen.linaro.local ([81.128.185.34])
+        by smtp.gmail.com with ESMTPSA id 191sm2835476wmo.21.2017.02.28.06.06.22
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 28 Feb 2017 06:05:29 -0800 (PST)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 2a00:1450:400c:c09::22b as permitted sender) client-ip=2a00:1450:400c:c09::22b;
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 2a00:1450:400c:c09::22b as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: by mail-wm0-x22b.google.com with SMTP id v77so85913570wmv.1
-        for <alex.bennee@linaro.org>; Tue, 28 Feb 2017 06:05:29 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-         :cc:content-transfer-encoding;
-        bh=bz1pS93/oFQyk0+9alnSOif9wP2e5gssCTudu4SKMos=;
-        b=JReAoh89drVqT7KcHGi14Zwfua1IUzDXR/+Kg414z4nkZ8ZtTNRUQHKhc5Iy+N0Mms
-         q+8NUArUcuvwGzXO3ujHAS6u8gw4uWlBdmeEDfL/CZf0UYJPzQNBpLKBIP0uL69ApGy/
-         qnlg9x9BesxGln+dpw4P1vTip2Jpha66/QyZs=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-         :message-id:subject:to:cc:content-transfer-encoding;
-        bh=bz1pS93/oFQyk0+9alnSOif9wP2e5gssCTudu4SKMos=;
-        b=iRgJSozPgh10pujA6yBjVo8T1uuXXvfXlLKnUEEkN2fQlgSuA4fq5mCYbrvRLQyRRG
-         lm+G7THPPBRr+tLf8vJkkWDroYcWfLglYTxTPAiB25VNSNUfPYcO9gMV0w41JLxhQIzk
-         5EM3eTrbQockK3vzbNSKXJWg8PE1EQM092MC13gpKohG7vTvPpGyBC9/yNtAoSJu1Q5w
-         oSEBRl+LIh6h6h+Pro4p/FEnASHLEGZFJlJqyEGFR9bqiNEob7cLTyONCmHWfNJqOLRs
-         9U0cOIG5Y/p/4GR4i/99OsmXE+2wGJobSMyLsiKm6Kra9NZJcy+9J42NSxToX4LNXHQ1
-         mqWQ==
-X-Gm-Message-State: AMke39mPIP/rlHBfWiQOGfE0Ny+UaMll+OpZKktihbcymWbU9OMJaBWhuD3yDhuJK9I7wj2a3CHVup4IJmBCEYzC03A=
-X-Received: by 10.28.189.135 with SMTP id n129mr2580639wmf.92.1488290729142;
- Tue, 28 Feb 2017 06:05:29 -0800 (PST)
+        Tue, 28 Feb 2017 06:06:22 -0800 (PST)
+Received: from zen (localhost [127.0.0.1])
+	by zen.linaro.local (Postfix) with ESMTPS id 18C3D3E0092;
+	Tue, 28 Feb 2017 14:06:22 +0000 (GMT)
+References: <1487604965-23220-1-git-send-email-peter.maydell@linaro.org> <1487604965-23220-8-git-send-email-peter.maydell@linaro.org>
+User-agent: mu4e 0.9.19; emacs 25.2.7
+From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, patches@linaro.org, Alistair Francis <alistair23@gmail.com>, Michael Davidsaver <mdavidsaver@gmail.com>
+Subject: Re: [PATCH 07/11] armv7m: Make bitband device take the address space to access
+In-reply-to: <1487604965-23220-8-git-send-email-peter.maydell@linaro.org>
+Date: Tue, 28 Feb 2017 14:06:22 +0000
+Message-ID: <87d1e22yw1.fsf@linaro.org>
 MIME-Version: 1.0
-Received: by 10.223.145.69 with HTTP; Tue, 28 Feb 2017 06:05:08 -0800 (PST)
-In-Reply-To: <87lgsq2zd5.fsf@linaro.org>
-References: <1487604965-23220-1-git-send-email-peter.maydell@linaro.org>
- <1487604965-23220-4-git-send-email-peter.maydell@linaro.org> <87lgsq2zd5.fsf@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 28 Feb 2017 14:05:08 +0000
-Message-ID: <CAFEAcA9ErvjYLgQK+UfM0xpHx9NrU_5qMwn=vZUh=5JMDxifVw@mail.gmail.com>
-Subject: Re: [PATCH 03/11] armv7m: QOMify the armv7m container
-To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>, 
-	"patches@linaro.org" <patches@linaro.org>, Alistair Francis <alistair23@gmail.com>, 
-	Michael Davidsaver <mdavidsaver@gmail.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-X-TUID: x6Gft5DZhW5d
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-TUID: NNTvftnfYUF1
 
-On 28 February 2017 at 13:56, Alex Benn=C3=A9e <alex.bennee@linaro.org> wro=
-te:
+
+Peter Maydell <peter.maydell@linaro.org> writes:
+
+> Instead of the bitband device doing a cpu_physical_memory_read/write,
+> make it take a MemoryRegion which specifies where it should be
+> accessing, and use address_space_read/write to access the
+> corresponding AddressSpace.
 >
-> Peter Maydell <peter.maydell@linaro.org> writes:
->> +static void armv7m_realize(DeviceState *dev, Error **errp)
->> +{
->> +    /* here realize our children */
+> Since this entails pretty much a rewrite, convert away from
+> old_mmio in the process.
 >
-> This comment is a little zen-like. Does this mean the child devices are
-> realised at this point when the armv7m realise code is run?
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 
-Yeah, it just means "we init child devices in init, and realize
-them in realize", but it's a bit cryptic. I have a feeling it
-was a placeholder comment I put in when I was writing this
-as a "put this code here" note. I'll delete it.
+Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
 
-thanks
--- PMM
+> ---
+>  include/hw/arm/armv7m.h |   2 +
+>  hw/arm/armv7m.c         | 166 +++++++++++++++++++++++-------------------------
+>  2 files changed, 81 insertions(+), 87 deletions(-)
+>
+> diff --git a/include/hw/arm/armv7m.h b/include/hw/arm/armv7m.h
+> index 3333c91..a9b3f2a 100644
+> --- a/include/hw/arm/armv7m.h
+> +++ b/include/hw/arm/armv7m.h
+> @@ -21,8 +21,10 @@ typedef struct {
+>      SysBusDevice parent_obj;
+>      /*< public >*/
+>
+> +    AddressSpace *source_as;
+>      MemoryRegion iomem;
+>      uint32_t base;
+> +    MemoryRegion *source_memory;
+>  } BitBandState;
+>
+>  #define TYPE_ARMV7M "armv7m"
+> diff --git a/hw/arm/armv7m.c b/hw/arm/armv7m.c
+> index fb21f74..4481106 100644
+> --- a/hw/arm/armv7m.c
+> +++ b/hw/arm/armv7m.c
+> @@ -23,103 +23,73 @@
+>  /* Bitbanded IO.  Each word corresponds to a single bit.  */
+>
+>  /* Get the byte address of the real memory for a bitband access.  */
+> -static inline uint32_t bitband_addr(void * opaque, uint32_t addr)
+> +static inline hwaddr bitband_addr(BitBandState *s, hwaddr offset)
+>  {
+> -    uint32_t res;
+> -
+> -    res = *(uint32_t *)opaque;
+> -    res |= (addr & 0x1ffffff) >> 5;
+> -    return res;
+> -
+> -}
+> -
+> -static uint32_t bitband_readb(void *opaque, hwaddr offset)
+> -{
+> -    uint8_t v;
+> -    cpu_physical_memory_read(bitband_addr(opaque, offset), &v, 1);
+> -    return (v & (1 << ((offset >> 2) & 7))) != 0;
+> -}
+> -
+> -static void bitband_writeb(void *opaque, hwaddr offset,
+> -                           uint32_t value)
+> -{
+> -    uint32_t addr;
+> -    uint8_t mask;
+> -    uint8_t v;
+> -    addr = bitband_addr(opaque, offset);
+> -    mask = (1 << ((offset >> 2) & 7));
+> -    cpu_physical_memory_read(addr, &v, 1);
+> -    if (value & 1)
+> -        v |= mask;
+> -    else
+> -        v &= ~mask;
+> -    cpu_physical_memory_write(addr, &v, 1);
+> -}
+> -
+> -static uint32_t bitband_readw(void *opaque, hwaddr offset)
+> -{
+> -    uint32_t addr;
+> -    uint16_t mask;
+> -    uint16_t v;
+> -    addr = bitband_addr(opaque, offset) & ~1;
+> -    mask = (1 << ((offset >> 2) & 15));
+> -    mask = tswap16(mask);
+> -    cpu_physical_memory_read(addr, &v, 2);
+> -    return (v & mask) != 0;
+> -}
+> -
+> -static void bitband_writew(void *opaque, hwaddr offset,
+> -                           uint32_t value)
+> -{
+> -    uint32_t addr;
+> -    uint16_t mask;
+> -    uint16_t v;
+> -    addr = bitband_addr(opaque, offset) & ~1;
+> -    mask = (1 << ((offset >> 2) & 15));
+> -    mask = tswap16(mask);
+> -    cpu_physical_memory_read(addr, &v, 2);
+> -    if (value & 1)
+> -        v |= mask;
+> -    else
+> -        v &= ~mask;
+> -    cpu_physical_memory_write(addr, &v, 2);
+> +    return s->base | (offset & 0x1ffffff) >> 5;
+>  }
+>
+> -static uint32_t bitband_readl(void *opaque, hwaddr offset)
+> +static MemTxResult bitband_read(void *opaque, hwaddr offset,
+> +                                uint64_t *data, unsigned size, MemTxAttrs attrs)
+>  {
+> -    uint32_t addr;
+> -    uint32_t mask;
+> -    uint32_t v;
+> -    addr = bitband_addr(opaque, offset) & ~3;
+> -    mask = (1 << ((offset >> 2) & 31));
+> -    mask = tswap32(mask);
+> -    cpu_physical_memory_read(addr, &v, 4);
+> -    return (v & mask) != 0;
+> +    BitBandState *s = opaque;
+> +    uint8_t buf[4];
+> +    MemTxResult res;
+> +    int bitpos, bit;
+> +    hwaddr addr;
+> +
+> +    assert(size <= 4);
+> +
+> +    /* Find address in underlying memory and round down to multiple of size */
+> +    addr = bitband_addr(s, offset) & (-size);
+> +    res = address_space_read(s->source_as, addr, attrs, buf, size);
+> +    if (res) {
+> +        return res;
+> +    }
+> +    /* Bit position in the N bytes read... */
+> +    bitpos = (offset >> 2) & ((size * 8) - 1);
+> +    /* ...converted to byte in buffer and bit in byte */
+> +    bit = (buf[bitpos >> 3] >> (bitpos & 7)) & 1;
+> +    *data = bit;
+> +    return MEMTX_OK;
+>  }
+>
+> -static void bitband_writel(void *opaque, hwaddr offset,
+> -                           uint32_t value)
+> +static MemTxResult bitband_write(void *opaque, hwaddr offset, uint64_t value,
+> +                                 unsigned size, MemTxAttrs attrs)
+>  {
+> -    uint32_t addr;
+> -    uint32_t mask;
+> -    uint32_t v;
+> -    addr = bitband_addr(opaque, offset) & ~3;
+> -    mask = (1 << ((offset >> 2) & 31));
+> -    mask = tswap32(mask);
+> -    cpu_physical_memory_read(addr, &v, 4);
+> -    if (value & 1)
+> -        v |= mask;
+> -    else
+> -        v &= ~mask;
+> -    cpu_physical_memory_write(addr, &v, 4);
+> +    BitBandState *s = opaque;
+> +    uint8_t buf[4];
+> +    MemTxResult res;
+> +    int bitpos, bit;
+> +    hwaddr addr;
+> +
+> +    assert(size <= 4);
+> +
+> +    /* Find address in underlying memory and round down to multiple of size */
+> +    addr = bitband_addr(s, offset) & (-size);
+> +    res = address_space_read(s->source_as, addr, attrs, buf, size);
+> +    if (res) {
+> +        return res;
+> +    }
+> +    /* Bit position in the N bytes read... */
+> +    bitpos = (offset >> 2) & ((size * 8) - 1);
+> +    /* ...converted to byte in buffer and bit in byte */
+> +    bit = 1 << (bitpos & 7);
+> +    if (value & 1) {
+> +        buf[bitpos >> 3] |= bit;
+> +    } else {
+> +        buf[bitpos >> 3] &= ~bit;
+> +    }
+> +    return address_space_write(s->source_as, addr, attrs, buf, size);
+>  }
+>
+>  static const MemoryRegionOps bitband_ops = {
+> -    .old_mmio = {
+> -        .read = { bitband_readb, bitband_readw, bitband_readl, },
+> -        .write = { bitband_writeb, bitband_writew, bitband_writel, },
+> -    },
+> +    .read_with_attrs = bitband_read,
+> +    .write_with_attrs = bitband_write,
+>      .endianness = DEVICE_NATIVE_ENDIAN,
+> +    .impl.min_access_size = 1,
+> +    .impl.max_access_size = 4,
+> +    .valid.min_access_size = 1,
+> +    .valid.max_access_size = 4,
+>  };
+>
+>  static void bitband_init(Object *obj)
+> @@ -127,11 +97,30 @@ static void bitband_init(Object *obj)
+>      BitBandState *s = BITBAND(obj);
+>      SysBusDevice *dev = SYS_BUS_DEVICE(obj);
+>
+> -    memory_region_init_io(&s->iomem, obj, &bitband_ops, &s->base,
+> +    object_property_add_link(obj, "source-memory",
+> +                             TYPE_MEMORY_REGION,
+> +                             (Object **)&s->source_memory,
+> +                             qdev_prop_allow_set_link_before_realize,
+> +                             OBJ_PROP_LINK_UNREF_ON_RELEASE,
+> +                             &error_abort);
+> +    memory_region_init_io(&s->iomem, obj, &bitband_ops, s,
+>                            "bitband", 0x02000000);
+>      sysbus_init_mmio(dev, &s->iomem);
+>  }
+>
+> +static void bitband_realize(DeviceState *dev, Error **errp)
+> +{
+> +    BitBandState *s = BITBAND(dev);
+> +
+> +    if (!s->source_memory) {
+> +        error_setg(errp, "source-memory property not set");
+> +        return;
+> +    }
+> +
+> +    s->source_as = address_space_init_shareable(s->source_memory,
+> +                                                "bitband-source");
+> +}
+> +
+>  /* Board init.  */
+>
+>  static const hwaddr bitband_input_addr[ARMV7M_NUM_BITBANDS] = {
+> @@ -251,6 +240,8 @@ static void armv7m_realize(DeviceState *dev, Error **errp)
+>              error_propagate(errp, err);
+>              return;
+>          }
+> +        object_property_set_link(obj, OBJECT(s->board_memory),
+> +                                 "source-memory", &error_abort);
+>          object_property_set_bool(obj, true, "realized", &err);
+>          if (err != NULL) {
+>              error_propagate(errp, err);
+> @@ -366,6 +357,7 @@ static void bitband_class_init(ObjectClass *klass, void *data)
+>  {
+>      DeviceClass *dc = DEVICE_CLASS(klass);
+>
+> +    dc->realize = bitband_realize;
+>      dc->props = bitband_properties;
+>  }
+
+
+--
+Alex Bennée

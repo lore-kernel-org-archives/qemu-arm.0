@@ -1,116 +1,187 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaro.local ([81.128.185.34])
-        by smtp.gmail.com with ESMTPSA id b51sm2447471wrd.39.2017.02.28.05.57.31
+        by smtp.gmail.com with ESMTPSA id e16sm2459351wra.36.2017.02.28.05.58.16
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 28 Feb 2017 05:57:31 -0800 (PST)
+        Tue, 28 Feb 2017 05:58:16 -0800 (PST)
 Received: from zen (localhost [127.0.0.1])
-	by zen.linaro.local (Postfix) with ESMTPS id 43FFE3E0189;
-	Tue, 28 Feb 2017 13:57:31 +0000 (GMT)
-References: <1487604965-23220-1-git-send-email-peter.maydell@linaro.org> <1487604965-23220-2-git-send-email-peter.maydell@linaro.org>
+	by zen.linaro.local (Postfix) with ESMTPS id 4DA513E03B2;
+	Tue, 28 Feb 2017 13:58:16 +0000 (GMT)
+References: <1487604965-23220-1-git-send-email-peter.maydell@linaro.org> <1487604965-23220-3-git-send-email-peter.maydell@linaro.org>
 User-agent: mu4e 0.9.19; emacs 25.2.7
 From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: Peter Maydell <peter.maydell@linaro.org>
 Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, patches@linaro.org, Alistair Francis <alistair23@gmail.com>, Michael Davidsaver <mdavidsaver@gmail.com>
-Subject: Re: [PATCH 01/11] armv7m: Abstract out the "load kernel" code
-In-reply-to: <1487604965-23220-2-git-send-email-peter.maydell@linaro.org>
-Date: Tue, 28 Feb 2017 13:57:31 +0000
-Message-ID: <87k28a2zas.fsf@linaro.org>
+Subject: Re: [PATCH 02/11] armv7m: Move NVICState struct definition into header
+In-reply-to: <1487604965-23220-3-git-send-email-peter.maydell@linaro.org>
+Date: Tue, 28 Feb 2017 13:58:16 +0000
+Message-ID: <87innu2z9j.fsf@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 8bit
-X-TUID: 4KC323okdxkt
+X-TUID: 1uUCHCsslFOz
 
 
 Peter Maydell <peter.maydell@linaro.org> writes:
 
-> Abstract the "load kernel" code out of armv7m_init() into its own
-> function.  This includes the registration of the CPU reset function,
-> to parallel how we handle this for A profile cores.
->
-> We make the function public so that boards which choose to
-> directly instantiate an ARMv7M device object can call it.
+> Move the NVICState struct definition into a header, so we can
+> embed it into other QOM objects like SoCs.
 >
 > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 
 Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
 
 > ---
->  include/hw/arm/arm.h | 12 ++++++++++++
->  hw/arm/armv7m.c      | 23 ++++++++++++++++++-----
->  2 files changed, 30 insertions(+), 5 deletions(-)
+>  include/hw/arm/armv7m_nvic.h | 66 ++++++++++++++++++++++++++++++++++++++++++++
+>  hw/intc/armv7m_nvic.c        | 49 +-------------------------------
+>  2 files changed, 67 insertions(+), 48 deletions(-)
+>  create mode 100644 include/hw/arm/armv7m_nvic.h
 >
-> diff --git a/include/hw/arm/arm.h b/include/hw/arm/arm.h
-> index c175c0e..a3f79d3 100644
-> --- a/include/hw/arm/arm.h
-> +++ b/include/hw/arm/arm.h
-> @@ -26,6 +26,18 @@ typedef enum {
->  /* armv7m.c */
->  DeviceState *armv7m_init(MemoryRegion *system_memory, int mem_size, int num_irq,
->                        const char *kernel_filename, const char *cpu_model);
-> +/**
-> + * armv7m_load_kernel:
-> + * @cpu: CPU
-> + * @kernel_filename: file to load
-> + * @mem_size: mem_size: maximum image size to load
+> diff --git a/include/hw/arm/armv7m_nvic.h b/include/hw/arm/armv7m_nvic.h
+> new file mode 100644
+> index 0000000..39b94ee
+> --- /dev/null
+> +++ b/include/hw/arm/armv7m_nvic.h
+> @@ -0,0 +1,66 @@
+> +/*
+> + * ARMv7M NVIC object
 > + *
-> + * Load the guest image for an ARMv7M system. This must be called by
-> + * any ARMv7M board, either directly or via armv7m_init(). (This is
-> + * necessary to ensure that the CPU resets correctly on system reset,
-> + * as well as for kernel loading.)
+> + * Copyright (c) 2017 Linaro Ltd
+> + * Written by Peter Maydell <peter.maydell@linaro.org>
+> + *
+> + * This code is licensed under the GPL version 2 or later.
 > + */
-> +void armv7m_load_kernel(ARMCPU *cpu, const char *kernel_filename, int mem_size);
->
->  /*
->   * struct used as a parameter of the arm_load_kernel machine init
-> diff --git a/hw/arm/armv7m.c b/hw/arm/armv7m.c
-> index 0c9ca7b..b2cc6e9 100644
-> --- a/hw/arm/armv7m.c
-> +++ b/hw/arm/armv7m.c
-> @@ -176,10 +176,6 @@ DeviceState *armv7m_init(MemoryRegion *system_memory, int mem_size, int num_irq,
->      ARMCPU *cpu;
->      CPUARMState *env;
->      DeviceState *nvic;
-> -    int image_size;
-> -    uint64_t entry;
-> -    uint64_t lowaddr;
-> -    int big_endian;
->
->      if (cpu_model == NULL) {
->  	cpu_model = "cortex-m3";
-> @@ -199,6 +195,16 @@ DeviceState *armv7m_init(MemoryRegion *system_memory, int mem_size, int num_irq,
->      qdev_init_nofail(nvic);
->      sysbus_connect_irq(SYS_BUS_DEVICE(nvic), 0,
->                         qdev_get_gpio_in(DEVICE(cpu), ARM_CPU_IRQ));
-> +    armv7m_load_kernel(cpu, kernel_filename, mem_size);
-> +    return nvic;
-> +}
 > +
-> +void armv7m_load_kernel(ARMCPU *cpu, const char *kernel_filename, int mem_size)
-> +{
-> +    int image_size;
-> +    uint64_t entry;
-> +    uint64_t lowaddr;
-> +    int big_endian;
->
->  #ifdef TARGET_WORDS_BIGENDIAN
->      big_endian = 1;
-> @@ -224,8 +230,15 @@ DeviceState *armv7m_init(MemoryRegion *system_memory, int mem_size, int num_irq,
->          }
->      }
->
-> +    /* CPU objects (unlike devices) are not automatically reset on system
-> +     * reset, so we must always register a handler to do so. Unlike
-> +     * A-profile CPUs, we don't need to do anything special in the
-> +     * handler to arrange that it starts correctly.
-> +     * This is arguably the wrong place to do this, but it matches the
-> +     * way A-profile does it. Note that this means that every M profile
-> +     * board must call this function!
+> +#ifndef HW_ARM_ARMV7M_NVIC_H
+> +#define HW_ARM_ARMV7M_NVIC_H
+> +
+> +#include "target/arm/cpu.h"
+> +#include "hw/sysbus.h"
+> +
+> +#define TYPE_NVIC "armv7m_nvic"
+> +
+> +#define NVIC(obj) \
+> +    OBJECT_CHECK(NVICState, (obj), TYPE_NVIC)
+> +
+> +/* Highest permitted number of exceptions (architectural limit) */
+> +#define NVIC_MAX_VECTORS 512
+> +
+> +typedef struct VecInfo {
+> +    /* Exception priorities can range from -3 to 255; only the unmodifiable
+> +     * priority values for RESET, NMI and HardFault can be negative.
 > +     */
->      qemu_register_reset(armv7m_reset, cpu);
-> -    return nvic;
->  }
+> +    int16_t prio;
+> +    uint8_t enabled;
+> +    uint8_t pending;
+> +    uint8_t active;
+> +    uint8_t level; /* exceptions <=15 never set level */
+> +} VecInfo;
+> +
+> +typedef struct NVICState {
+> +    /*< private >*/
+> +    SysBusDevice parent_obj;
+> +    /*< public >*/
+> +
+> +    ARMCPU *cpu;
+> +
+> +    VecInfo vectors[NVIC_MAX_VECTORS];
+> +    uint32_t prigroup;
+> +
+> +    /* vectpending and exception_prio are both cached state that can
+> +     * be recalculated from the vectors[] array and the prigroup field.
+> +     */
+> +    unsigned int vectpending; /* highest prio pending enabled exception */
+> +    int exception_prio; /* group prio of the highest prio active exception */
+> +
+> +    struct {
+> +        uint32_t control;
+> +        uint32_t reload;
+> +        int64_t tick;
+> +        QEMUTimer *timer;
+> +    } systick;
+> +
+> +    MemoryRegion sysregmem;
+> +    MemoryRegion container;
+> +
+> +    uint32_t num_irq;
+> +    qemu_irq excpout;
+> +    qemu_irq sysresetreq;
+> +} NVICState;
+> +
+> +#endif
+> diff --git a/hw/intc/armv7m_nvic.c b/hw/intc/armv7m_nvic.c
+> index 76097b4..f2ada39 100644
+> --- a/hw/intc/armv7m_nvic.c
+> +++ b/hw/intc/armv7m_nvic.c
+> @@ -17,6 +17,7 @@
+>  #include "hw/sysbus.h"
+>  #include "qemu/timer.h"
+>  #include "hw/arm/arm.h"
+> +#include "hw/arm/armv7m_nvic.h"
+>  #include "target/arm/cpu.h"
+>  #include "exec/address-spaces.h"
+>  #include "qemu/log.h"
+> @@ -47,7 +48,6 @@
+>   * "exception" more or less interchangeably.
+>   */
+>  #define NVIC_FIRST_IRQ 16
+> -#define NVIC_MAX_VECTORS 512
+>  #define NVIC_MAX_IRQ (NVIC_MAX_VECTORS - NVIC_FIRST_IRQ)
 >
->  static Property bitband_properties[] = {
+>  /* Effective running priority of the CPU when no exception is active
+> @@ -55,53 +55,6 @@
+>   */
+>  #define NVIC_NOEXC_PRIO 0x100
+>
+> -typedef struct VecInfo {
+> -    /* Exception priorities can range from -3 to 255; only the unmodifiable
+> -     * priority values for RESET, NMI and HardFault can be negative.
+> -     */
+> -    int16_t prio;
+> -    uint8_t enabled;
+> -    uint8_t pending;
+> -    uint8_t active;
+> -    uint8_t level; /* exceptions <=15 never set level */
+> -} VecInfo;
+> -
+> -typedef struct NVICState {
+> -    /*< private >*/
+> -    SysBusDevice parent_obj;
+> -    /*< public >*/
+> -
+> -    ARMCPU *cpu;
+> -
+> -    VecInfo vectors[NVIC_MAX_VECTORS];
+> -    uint32_t prigroup;
+> -
+> -    /* vectpending and exception_prio are both cached state that can
+> -     * be recalculated from the vectors[] array and the prigroup field.
+> -     */
+> -    unsigned int vectpending; /* highest prio pending enabled exception */
+> -    int exception_prio; /* group prio of the highest prio active exception */
+> -
+> -    struct {
+> -        uint32_t control;
+> -        uint32_t reload;
+> -        int64_t tick;
+> -        QEMUTimer *timer;
+> -    } systick;
+> -
+> -    MemoryRegion sysregmem;
+> -    MemoryRegion container;
+> -
+> -    uint32_t num_irq;
+> -    qemu_irq excpout;
+> -    qemu_irq sysresetreq;
+> -} NVICState;
+> -
+> -#define TYPE_NVIC "armv7m_nvic"
+> -
+> -#define NVIC(obj) \
+> -    OBJECT_CHECK(NVICState, (obj), TYPE_NVIC)
+> -
+>  static const uint8_t nvic_id[] = {
+>      0x00, 0xb0, 0x1b, 0x00, 0x0d, 0xe0, 0x05, 0xb1
+>  };
 
 
 --

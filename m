@@ -1,55 +1,70 @@
-Received: by 10.25.0.147 with SMTP id 141csp1039389lfa;
-        Mon, 27 Feb 2017 09:37:36 -0800 (PST)
-X-Received: by 10.55.105.66 with SMTP id e63mr14338577qkc.0.1488217056452;
-        Mon, 27 Feb 2017 09:37:36 -0800 (PST)
+Received: by 10.25.0.147 with SMTP id 141csp1415934lfa;
+        Tue, 28 Feb 2017 06:27:33 -0800 (PST)
+X-Received: by 10.176.66.66 with SMTP id i60mr1160926uai.131.1488292053616;
+        Tue, 28 Feb 2017 06:27:33 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id m5si12339213qkd.24.2017.02.27.09.37.35
+        by mx.google.com with ESMTPS id i66si676775uad.247.2017.02.28.06.27.32
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 27 Feb 2017 09:37:36 -0800 (PST)
+        Tue, 28 Feb 2017 06:27:33 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:55112 helo=lists.gnu.org)
+       dkim=fail header.i=@linaro.org;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:33279 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ciPEr-0001bu-Kt
-	for alex.bennee@linaro.org; Mon, 27 Feb 2017 12:37:33 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:41434)
+	id 1ciikV-0003q8-28
+	for alex.bennee@linaro.org; Tue, 28 Feb 2017 09:27:31 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:58898)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <drjones@redhat.com>) id 1ciPEZ-0001RV-FF
-	for qemu-arm@nongnu.org; Mon, 27 Feb 2017 12:37:16 -0500
+	(envelope-from <peter.maydell@linaro.org>) id 1ciiJ6-0004ca-9i
+	for qemu-arm@nongnu.org; Tue, 28 Feb 2017 08:59:13 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <drjones@redhat.com>) id 1ciPEY-0000cf-BT
-	for qemu-arm@nongnu.org; Mon, 27 Feb 2017 12:37:15 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:36736)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <drjones@redhat.com>)
-	id 1ciPEY-0000cF-3U; Mon, 27 Feb 2017 12:37:14 -0500
-Received: from int-mx11.intmail.prod.int.phx2.redhat.com
-	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 34871C05681A;
-	Mon, 27 Feb 2017 17:37:14 +0000 (UTC)
-Received: from kamzik.brq.redhat.com (kamzik.brq.redhat.com [10.34.1.143])
-	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id v1RHb8oj000943; Mon, 27 Feb 2017 12:37:12 -0500
-From: Andrew Jones <drjones@redhat.com>
-To: qemu-devel@nongnu.org, qemu-arm@nongnu.org
-Date: Mon, 27 Feb 2017 18:37:06 +0100
-Message-Id: <20170227173706.15210-3-drjones@redhat.com>
-In-Reply-To: <20170227173706.15210-1-drjones@redhat.com>
-References: <20170227173706.15210-1-drjones@redhat.com>
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.32]);
-	Mon, 27 Feb 2017 17:37:14 +0000 (UTC)
+	(envelope-from <peter.maydell@linaro.org>) id 1ciiJ5-0000SE-Ce
+	for qemu-arm@nongnu.org; Tue, 28 Feb 2017 08:59:12 -0500
+Received: from mail-wm0-x236.google.com ([2a00:1450:400c:c09::236]:38087)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1ciiJ5-0000Rk-64
+	for qemu-arm@nongnu.org; Tue, 28 Feb 2017 08:59:11 -0500
+Received: by mail-wm0-x236.google.com with SMTP id u199so12413734wmd.1
+	for <qemu-arm@nongnu.org>; Tue, 28 Feb 2017 05:59:10 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=Pb19gmVahxi11ene1QrbC+t2KU21NZbs0UO506/BKxM=;
+	b=MXooB1sswGuDaFChzQr172ZBUdYvcmW+y1hiW5BdDeI7Vbs5yw6lFW6PBJA2jG3nJD
+	OhrHKfo5oyWGA/w/tzqV2Wox2d5jUvWY8e43qNzCMxVK3JQzyduKE9wHLF15PLYLZifY
+	f7UvZc0QjRS+UmZP3Vw9fjOXIrzC1PgW4WWAQ=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=Pb19gmVahxi11ene1QrbC+t2KU21NZbs0UO506/BKxM=;
+	b=HhHSGk6GUckd88xW4RUrSW5SBbrpYtLw4fipfv1BxpGYRJSQcxqFAiGSkCJnRm1LN/
+	1Kj/7B21EqOO1uNs6/eOVzRrNscYc2CzWMsYfKC7Ytd9O9Yx+vmyqEFlyXA0gcbS61PY
+	HpsXbwH0kNZhNQwRUd6U0mFdSErWWoQmeJElku2xM/nIVpwuMnvMROslQ5Fobt9ySLY1
+	pxjdfPUS/5bqDClAeT1n3niGreLH3TUD3gAl3Hb49WHndxmiFBjVLoXvnumChMiI7Ztt
+	ktpg2x63ia3ZaGubWLyAD8wJ4Ny9MaMhJ5bFFc31+V46dz399MD1rXCwO7mA7Ov2rcot
+	urwQ==
+X-Gm-Message-State: AMke39nv7RMkKO7oGvu8ECdrQv508i3CHVEtC42ONIpKDA33DHjgh2UEMtgIWGudzwkdGZaZCtZgkcJqAqDVa7y7
+X-Received: by 10.28.55.199 with SMTP id e190mr17465133wma.92.1488290349918;
+	Tue, 28 Feb 2017 05:59:09 -0800 (PST)
+MIME-Version: 1.0
+Received: by 10.223.145.69 with HTTP; Tue, 28 Feb 2017 05:58:49 -0800 (PST)
+In-Reply-To: <20170224164021.9066-3-clement.deschamps@antfield.fr>
+References: <20170224164021.9066-1-clement.deschamps@antfield.fr>
+	<20170224164021.9066-3-clement.deschamps@antfield.fr>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 28 Feb 2017 13:58:49 +0000
+Message-ID: <CAFEAcA_ZRB9VRQkWTJRh7D9fg-3+Bb=JGnMduhvu6WbOF2YWMw@mail.gmail.com>
+To: Clement Deschamps <clement.deschamps@antfield.fr>
+Content-Type: text/plain; charset=UTF-8
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: [Qemu-arm] [PATCH 2/2] arm: kvm: set MPIDR when we can
+X-Received-From: 2a00:1450:400c:c09::236
+Subject: Re: [Qemu-arm] [PATCH v3 2/4] hw/sd: add card-reparenting function
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -61,124 +76,57 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: marc.zyngier@arm.com, peter.maydell@linaro.org, christoffer.dall@linaro.org,
-	imammedo@redhat.com
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
+	Andrew Baumann <andrew.baumann@microsoft.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: mRP3bI3O/89B
+X-TUID: 2QfsuBx7AxDz
 
-If KVM supports user provided MPIDRs for the vcpus, then provide
-them. This simplifies management of vcpus as we can be sure of
-the identity of a vcpu even before it's been instantiated.
+On 24 February 2017 at 16:40, Clement Deschamps
+<clement.deschamps@antfield.fr> wrote:
+> Provide a new function sdbus_reparent_card() in sd core for reparenting
+> a card from a SDBus to another one.
+>
+> This function is required by the raspi platform, where the two SD
+> controllers can be dynamically switched.
+>
+> Signed-off-by: Clement Deschamps <clement.deschamps@antfield.fr>
+> ---
+>  hw/sd/core.c       | 30 ++++++++++++++++++++++++++++++
+>  include/hw/sd/sd.h |  1 +
+>  2 files changed, 31 insertions(+)
+>
 
-Cc: Igor Mammedov <imammedo@redhat.com>
-Signed-off-by: Andrew Jones <drjones@redhat.com>
----
- target/arm/cpu.c   |  3 +--
- target/arm/kvm32.c | 22 ++++++++++++++--------
- target/arm/kvm64.c | 22 ++++++++++++++--------
- 3 files changed, 29 insertions(+), 18 deletions(-)
+It turns out we got the logic wrong here -- it causes random
+crashes on OSX, and this valgrind error on Linux:
 
-diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-index f7157dc0e59d..83cd5eefbef8 100644
---- a/target/arm/cpu.c
-+++ b/target/arm/cpu.c
-@@ -741,8 +741,7 @@ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
-         return;
-     }
- 
--    /* This cpu-id-to-MPIDR affinity is used only for TCG; KVM will override it.
--     * We don't support setting cluster ID ([16..23]) (known as Aff2
-+    /* We don't currently support setting cluster ID ([16..23]) (known as Aff2
-      * in later ARM ARM versions), or any of the higher affinity level fields,
-      * so these bits always RAZ.
-      */
-diff --git a/target/arm/kvm32.c b/target/arm/kvm32.c
-index 069da0c5fd10..5ad732498e5c 100644
---- a/target/arm/kvm32.c
-+++ b/target/arm/kvm32.c
-@@ -186,7 +186,6 @@ int kvm_arch_init_vcpu(CPUState *cs)
- {
-     int ret;
-     uint64_t v;
--    uint32_t mpidr;
-     struct kvm_one_reg r;
-     ARMCPU *cpu = ARM_CPU(cs);
- 
-@@ -223,16 +222,23 @@ int kvm_arch_init_vcpu(CPUState *cs)
-         return -EINVAL;
-     }
- 
--    /*
--     * When KVM is in use, PSCI is emulated in-kernel and not by qemu.
--     * Currently KVM has its own idea about MPIDR assignment, so we
--     * override our defaults with what we get from KVM.
--     */
--    ret = kvm_get_one_reg(cs, ARM_CP15_REG32(ARM_CPU_ID_MPIDR), &mpidr);
-+    if (kvm_check_extension(cs->kvm_state, KVM_CAP_ARM_USER_MPIDR)) {
-+        ret = kvm_set_one_reg(cs, ARM_CP15_REG32(ARM_CPU_ID_MPIDR),
-+                              &cpu->mp_affinity);
-+    } else {
-+        /* If we can't set the MPIDR, then KVM will generate one. We must
-+         * update our copy to that one in order to stay synchronized.
-+         */
-+        uint32_t mpidr;
-+
-+        ret = kvm_get_one_reg(cs, ARM_CP15_REG32(ARM_CPU_ID_MPIDR), &mpidr);
-+        if (!ret) {
-+            cpu->mp_affinity = mpidr & ARM32_AFFINITY_MASK;
-+        }
-+    }
-     if (ret) {
-         return ret;
-     }
--    cpu->mp_affinity = mpidr & ARM32_AFFINITY_MASK;
- 
-     return kvm_arm_init_cpreg_list(cpu);
- }
-diff --git a/target/arm/kvm64.c b/target/arm/kvm64.c
-index 61111091ad3b..a7d3f876c43b 100644
---- a/target/arm/kvm64.c
-+++ b/target/arm/kvm64.c
-@@ -486,7 +486,6 @@ bool kvm_arm_get_host_cpu_features(ARMHostCPUClass *ahcc)
- int kvm_arch_init_vcpu(CPUState *cs)
- {
-     int ret;
--    uint64_t mpidr;
-     ARMCPU *cpu = ARM_CPU(cs);
-     CPUARMState *env = &cpu->env;
- 
-@@ -524,16 +523,23 @@ int kvm_arch_init_vcpu(CPUState *cs)
-         return ret;
-     }
- 
--    /*
--     * When KVM is in use, PSCI is emulated in-kernel and not by qemu.
--     * Currently KVM has its own idea about MPIDR assignment, so we
--     * override our defaults with what we get from KVM.
--     */
--    ret = kvm_get_one_reg(cs, ARM64_SYS_REG(ARM_CPU_ID_MPIDR), &mpidr);
-+    if (kvm_check_extension(cs->kvm_state, KVM_CAP_ARM_USER_MPIDR)) {
-+        ret = kvm_set_one_reg(cs, ARM64_SYS_REG(ARM_CPU_ID_MPIDR),
-+                              &cpu->mp_affinity);
-+    } else {
-+        /* If we can't set the MPIDR, then KVM will generate one. We must
-+         * update our copy to that one in order to stay synchronized.
-+         */
-+        uint64_t mpidr;
-+
-+        ret = kvm_get_one_reg(cs, ARM64_SYS_REG(ARM_CPU_ID_MPIDR), &mpidr);
-+        if (!ret) {
-+            cpu->mp_affinity = mpidr & ARM64_AFFINITY_MASK;
-+        }
-+    }
-     if (ret) {
-         return ret;
-     }
--    cpu->mp_affinity = mpidr & ARM64_AFFINITY_MASK;
- 
-     kvm_arm_init_debug(cs);
- 
--- 
-2.9.3
+==19695== Invalid read of size 8
+==19695==    at 0x7DD59C: object_unparent (object.c:446)
+==19695==    by 0x6E920A: sdbus_reparent_card (core.c:158)
+==19695==    by 0x3ED0D5: bcm2835_gpio_reset (bcm2835_gpio.c:268)
+==19695==    by 0x5DE10E: device_reset (qdev.c:1148)
+==19695==    by 0x5DBFA3: qdev_reset_one (qdev.c:295)
+==19695==    by 0x5DCBA7: qdev_walk_children (qdev.c:610)
+==19695==    by 0x5E0D4A: qbus_walk_children (bus.c:59)
+==19695==    by 0x5DC0BD: qbus_reset_all (qdev.c:321)
+==19695==    by 0x5DC0E0: qbus_reset_all_fn (qdev.c:327)
+==19695==    by 0x5E1690: qemu_devices_reset (reset.c:69)
+==19695==    by 0x5258C6: qemu_system_reset (vl.c:1695)
+==19695==    by 0x52D915: main (vl.c:4645)
+==19695==  Address 0x354c9bc0 is 0 bytes after a block of size 32 alloc'd
+==19695==    at 0x4C2FB55: calloc (in
+/usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==19695==    by 0x1B7A5770: g_malloc0 (in
+/lib/x86_64-linux-gnu/libglib-2.0.so.0.4800.2)
+==19695==    by 0x5DB77C: bus_add_child (qdev.c:85)
+==19695==    by 0x5DB8C9: qdev_set_parent_bus (qdev.c:107)
+==19695==    by 0x5DBA17: qdev_try_create (qdev.c:153)
+==19695==    by 0x5DB8EF: qdev_create (qdev.c:117)
+==19695==    by 0x49E3AB: raspi2_init (raspi.c:152)
+==19695==    by 0x52D68C: main (vl.c:4523)
 
+I've dropped it (and the following patches) from the pull request
+for the moment and will have a look at what the fix is.
+
+thanks
+-- PMM

@@ -1,95 +1,74 @@
-Return-Path: <alex.bennee@linaro.org>
-Received: from zen.linaro.local ([81.128.185.34])
-        by smtp.gmail.com with ESMTPSA id l10sm2491151wrb.3.2017.02.28.06.04.03
+Received: by 10.25.0.147 with SMTP id 141csp1405355lfa;
+        Tue, 28 Feb 2017 06:05:29 -0800 (PST)
+X-Received: by 10.28.97.194 with SMTP id v185mr2616643wmb.117.1488290729529;
+        Tue, 28 Feb 2017 06:05:29 -0800 (PST)
+Return-Path: <peter.maydell@linaro.org>
+Received: from mail-wm0-x22b.google.com (mail-wm0-x22b.google.com. [2a00:1450:400c:c09::22b])
+        by mx.google.com with ESMTPS id s4si2595519wra.167.2017.02.28.06.05.29
+        for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 28 Feb 2017 06:04:03 -0800 (PST)
-Received: from zen (localhost [127.0.0.1])
-	by zen.linaro.local (Postfix) with ESMTPS id E96EA3E0092;
-	Tue, 28 Feb 2017 14:04:02 +0000 (GMT)
-References: <1487604965-23220-1-git-send-email-peter.maydell@linaro.org> <1487604965-23220-7-git-send-email-peter.maydell@linaro.org>
-User-agent: mu4e 0.9.19; emacs 25.2.7
-From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, patches@linaro.org, Alistair Francis <alistair23@gmail.com>, Michael Davidsaver <mdavidsaver@gmail.com>
-Subject: Re: [PATCH 06/11] armv7m: Make NVIC expose a memory region rather than mapping itself
-In-reply-to: <1487604965-23220-7-git-send-email-peter.maydell@linaro.org>
-Date: Tue, 28 Feb 2017 14:04:02 +0000
-Message-ID: <87efyi2yzx.fsf@linaro.org>
+        Tue, 28 Feb 2017 06:05:29 -0800 (PST)
+Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 2a00:1450:400c:c09::22b as permitted sender) client-ip=2a00:1450:400c:c09::22b;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@linaro.org;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 2a00:1450:400c:c09::22b as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: by mail-wm0-x22b.google.com with SMTP id v77so85913570wmv.1
+        for <alex.bennee@linaro.org>; Tue, 28 Feb 2017 06:05:29 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+         :cc:content-transfer-encoding;
+        bh=bz1pS93/oFQyk0+9alnSOif9wP2e5gssCTudu4SKMos=;
+        b=JReAoh89drVqT7KcHGi14Zwfua1IUzDXR/+Kg414z4nkZ8ZtTNRUQHKhc5Iy+N0Mms
+         q+8NUArUcuvwGzXO3ujHAS6u8gw4uWlBdmeEDfL/CZf0UYJPzQNBpLKBIP0uL69ApGy/
+         qnlg9x9BesxGln+dpw4P1vTip2Jpha66/QyZs=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+         :message-id:subject:to:cc:content-transfer-encoding;
+        bh=bz1pS93/oFQyk0+9alnSOif9wP2e5gssCTudu4SKMos=;
+        b=iRgJSozPgh10pujA6yBjVo8T1uuXXvfXlLKnUEEkN2fQlgSuA4fq5mCYbrvRLQyRRG
+         lm+G7THPPBRr+tLf8vJkkWDroYcWfLglYTxTPAiB25VNSNUfPYcO9gMV0w41JLxhQIzk
+         5EM3eTrbQockK3vzbNSKXJWg8PE1EQM092MC13gpKohG7vTvPpGyBC9/yNtAoSJu1Q5w
+         oSEBRl+LIh6h6h+Pro4p/FEnASHLEGZFJlJqyEGFR9bqiNEob7cLTyONCmHWfNJqOLRs
+         9U0cOIG5Y/p/4GR4i/99OsmXE+2wGJobSMyLsiKm6Kra9NZJcy+9J42NSxToX4LNXHQ1
+         mqWQ==
+X-Gm-Message-State: AMke39mPIP/rlHBfWiQOGfE0Ny+UaMll+OpZKktihbcymWbU9OMJaBWhuD3yDhuJK9I7wj2a3CHVup4IJmBCEYzC03A=
+X-Received: by 10.28.189.135 with SMTP id n129mr2580639wmf.92.1488290729142;
+ Tue, 28 Feb 2017 06:05:29 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8bit
-X-TUID: WFVw2qHjtjY6
+Received: by 10.223.145.69 with HTTP; Tue, 28 Feb 2017 06:05:08 -0800 (PST)
+In-Reply-To: <87lgsq2zd5.fsf@linaro.org>
+References: <1487604965-23220-1-git-send-email-peter.maydell@linaro.org>
+ <1487604965-23220-4-git-send-email-peter.maydell@linaro.org> <87lgsq2zd5.fsf@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 28 Feb 2017 14:05:08 +0000
+Message-ID: <CAFEAcA9ErvjYLgQK+UfM0xpHx9NrU_5qMwn=vZUh=5JMDxifVw@mail.gmail.com>
+Subject: Re: [PATCH 03/11] armv7m: QOMify the armv7m container
+To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>, 
+	"patches@linaro.org" <patches@linaro.org>, Alistair Francis <alistair23@gmail.com>, 
+	Michael Davidsaver <mdavidsaver@gmail.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+X-TUID: x6Gft5DZhW5d
 
-
-Peter Maydell <peter.maydell@linaro.org> writes:
-
-> Make the NVIC device expose a memory region for its users
-> to map, rather than mapping itself into the system memory
-> space on realize, and get the one user (the ARMv7M object)
-> to do this.
+On 28 February 2017 at 13:56, Alex Benn=C3=A9e <alex.bennee@linaro.org> wro=
+te:
 >
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> Peter Maydell <peter.maydell@linaro.org> writes:
+>> +static void armv7m_realize(DeviceState *dev, Error **errp)
+>> +{
+>> +    /* here realize our children */
+>
+> This comment is a little zen-like. Does this mean the child devices are
+> realised at this point when the armv7m realise code is run?
 
-Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
+Yeah, it just means "we init child devices in init, and realize
+them in realize", but it's a bit cryptic. I have a feeling it
+was a placeholder comment I put in when I was writing this
+as a "put this code here" note. I'll delete it.
 
-> ---
->  hw/arm/armv7m.c       | 7 ++++++-
->  hw/intc/armv7m_nvic.c | 7 ++-----
->  2 files changed, 8 insertions(+), 6 deletions(-)
->
-> diff --git a/hw/arm/armv7m.c b/hw/arm/armv7m.c
-> index 638c597..fb21f74 100644
-> --- a/hw/arm/armv7m.c
-> +++ b/hw/arm/armv7m.c
-> @@ -172,6 +172,7 @@ static void armv7m_realize(DeviceState *dev, Error **errp)
->  {
->      /* here realize our children */
->      ARMv7MState *s = ARMV7M(dev);
-> +    SysBusDevice *sbd;
->      Error *err = NULL;
->      int i;
->      char **cpustr;
-> @@ -233,10 +234,14 @@ static void armv7m_realize(DeviceState *dev, Error **errp)
->      qdev_pass_gpios(DEVICE(&s->nvic), dev, "SYSRESETREQ");
->
->      /* Wire the NVIC up to the CPU */
-> -    sysbus_connect_irq(SYS_BUS_DEVICE(&s->nvic), 0,
-> +    sbd = SYS_BUS_DEVICE(&s->nvic);
-> +    sysbus_connect_irq(sbd, 0,
->                         qdev_get_gpio_in(DEVICE(s->cpu), ARM_CPU_IRQ));
->      s->cpu->env.nvic = &s->nvic;
->
-> +    memory_region_add_subregion(&s->container, 0xe000e000,
-> +                                sysbus_mmio_get_region(sbd, 0));
-> +
->      for (i = 0; i < ARRAY_SIZE(s->bitband); i++) {
->          Object *obj = OBJECT(&s->bitband[i]);
->          SysBusDevice *sbd = SYS_BUS_DEVICE(&s->bitband[i]);
-> diff --git a/hw/intc/armv7m_nvic.c b/hw/intc/armv7m_nvic.c
-> index f2ada39..c814e16 100644
-> --- a/hw/intc/armv7m_nvic.c
-> +++ b/hw/intc/armv7m_nvic.c
-> @@ -19,7 +19,6 @@
->  #include "hw/arm/arm.h"
->  #include "hw/arm/armv7m_nvic.h"
->  #include "target/arm/cpu.h"
-> -#include "exec/address-spaces.h"
->  #include "qemu/log.h"
->  #include "trace.h"
->
-> @@ -1043,10 +1042,8 @@ static void armv7m_nvic_realize(DeviceState *dev, Error **errp)
->                            "nvic_sysregs", 0x1000);
->      memory_region_add_subregion(&s->container, 0, &s->sysregmem);
->
-> -    /* Map the whole thing into system memory at the location required
-> -     * by the v7M architecture.
-> -     */
-> -    memory_region_add_subregion(get_system_memory(), 0xe000e000, &s->container);
-> +    sysbus_init_mmio(SYS_BUS_DEVICE(dev), &s->container);
-> +
->      s->systick.timer = timer_new_ns(QEMU_CLOCK_VIRTUAL, systick_timer_tick, s);
->  }
-
-
---
-Alex Bennée
+thanks
+-- PMM

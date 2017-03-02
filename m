@@ -1,63 +1,71 @@
-Received: by 10.25.0.147 with SMTP id 141csp368861lfa;
-        Thu, 2 Mar 2017 08:50:28 -0800 (PST)
-X-Received: by 10.55.17.138 with SMTP id 10mr18612493qkr.202.1488473428034;
-        Thu, 02 Mar 2017 08:50:28 -0800 (PST)
+Received: by 10.25.0.147 with SMTP id 141csp371329lfa;
+        Thu, 2 Mar 2017 08:56:54 -0800 (PST)
+X-Received: by 10.55.178.133 with SMTP id b127mr17014129qkf.170.1488473814868;
+        Thu, 02 Mar 2017 08:56:54 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id s5si7330257qtb.173.2017.03.02.08.50.27
+        by mx.google.com with ESMTPS id q19si7342164qtg.125.2017.03.02.08.56.54
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 02 Mar 2017 08:50:28 -0800 (PST)
+        Thu, 02 Mar 2017 08:56:54 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:53312 helo=lists.gnu.org)
+       dkim=fail header.i=@linaro.org;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:53350 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1cjTvt-0007eZ-CU
-	for alex.bennee@linaro.org; Thu, 02 Mar 2017 11:50:25 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:33926)
+	id 1cjU28-0002ri-AA
+	for alex.bennee@linaro.org; Thu, 02 Mar 2017 11:56:52 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:39108)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <krzk@kernel.org>) id 1cjTvn-0007cC-1v
-	for qemu-arm@nongnu.org; Thu, 02 Mar 2017 11:50:20 -0500
+	(envelope-from <peter.maydell@linaro.org>) id 1cjU22-0002oi-7q
+	for qemu-arm@nongnu.org; Thu, 02 Mar 2017 11:56:47 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <krzk@kernel.org>) id 1cjTvj-000578-L1
-	for qemu-arm@nongnu.org; Thu, 02 Mar 2017 11:50:19 -0500
-Received: from mail.kernel.org ([198.145.29.136]:53710)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <krzk@kernel.org>)
-	id 1cjTvj-00056O-BZ; Thu, 02 Mar 2017 11:50:15 -0500
-Received: from mail.kernel.org (localhost [127.0.0.1])
-	by mail.kernel.org (Postfix) with ESMTP id 487682038A;
-	Thu,  2 Mar 2017 16:50:13 +0000 (UTC)
-Received: from mail-io0-f180.google.com (mail-io0-f180.google.com
-	[209.85.223.180])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
-	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPSA id 5D8C42026F;
-	Thu,  2 Mar 2017 16:50:11 +0000 (UTC)
-Received: by mail-io0-f180.google.com with SMTP id l7so57302752ioe.3;
-	Thu, 02 Mar 2017 08:50:11 -0800 (PST)
-X-Gm-Message-State: AMke39lMAmjUp+W7KMsaZNkWwBFzX4wJjKx+MZtlPhRGGxHhbU+yNkUebeMknINzgn6pW4JfxThght8h2qfOCw==
-X-Received: by 10.107.14.78 with SMTP id 75mr13808851ioo.76.1488473410815;
-	Thu, 02 Mar 2017 08:50:10 -0800 (PST)
+	(envelope-from <peter.maydell@linaro.org>) id 1cjU21-0001JV-0A
+	for qemu-arm@nongnu.org; Thu, 02 Mar 2017 11:56:46 -0500
+Received: from mail-wr0-x22b.google.com ([2a00:1450:400c:c0c::22b]:33726)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1cjU20-0001J9-Pf
+	for qemu-arm@nongnu.org; Thu, 02 Mar 2017 11:56:44 -0500
+Received: by mail-wr0-x22b.google.com with SMTP id u48so56963520wrc.0
+	for <qemu-arm@nongnu.org>; Thu, 02 Mar 2017 08:56:44 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=oSISrIkML7ieOZYLmQkpxo7iDpnCOI4WqOHuUe4wiuk=;
+	b=ZeHNfCgCHLjlY3rumyzLsi5Cq+fZYuRkHhCdJFq4wCayVknZAmT5QtmEug1IxdcR2E
+	LMGs6U1HUiO1UduMMwLV8g4k1t3R8ITsdg/sRKjnJcSMazUk3VSc3tP6tMbwPmNJWt0E
+	SWdLdQ2u4AiM28wfBtka/ooMBZpygDCqIXFZw=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=oSISrIkML7ieOZYLmQkpxo7iDpnCOI4WqOHuUe4wiuk=;
+	b=QK8ULJLjWDeXIuUA6m6vFTQS9/GGzxipnIe/yStGuunhzOdDVkcelPD1d9Nlfa+geg
+	LbiBaCpasz2NiGs0sKjqGAGwXholZYBT1FnTyqLA0M3DsDMCmooM8AmM/oFTk5oDQ0Hu
+	A5rnhw/1+Es36Gol+rHrEAnuV+h1F3UDAeiNmudMg39NiHs5BnytNBeMHfD4xCjvMWe7
+	20Ff+ENc/k8Fs6pZEh/F6sgTD9xKrkkqVvhhsUYVaBLORaTLMMSTgNvDXlQEtcLcb5eb
+	s32Q4RoUtTFMQ7pya8qMfJ8Y1esUR9FQ1fapNnGevqO5ZWGa1OAN0zQisqUZfQwk7Wnd
+	tqVA==
+X-Gm-Message-State: AMke39nPYIitTpsKrbDRZJRpGpQfgIu6RMeFWqyK3jV1g2xagJlyHyk794wpBoyqTz9tq9s24WSwt3dGl8ArGj6m
+X-Received: by 10.223.150.205 with SMTP id u71mr13243999wrb.195.1488473803508; 
+	Thu, 02 Mar 2017 08:56:43 -0800 (PST)
 MIME-Version: 1.0
-Received: by 10.107.59.133 with HTTP; Thu, 2 Mar 2017 08:50:10 -0800 (PST)
-In-Reply-To: <CAFEAcA8F013ggLmx9hhg+z4ODq3YkU7vfAygjk+QF7dBV6WW5g@mail.gmail.com>
+Received: by 10.223.145.69 with HTTP; Thu, 2 Mar 2017 08:56:22 -0800 (PST)
+In-Reply-To: <20170301182618.22395-1-krzk@kernel.org>
 References: <20170301182618.22395-1-krzk@kernel.org>
-	<20170301182618.22395-2-krzk@kernel.org>
-	<CAFEAcA8F013ggLmx9hhg+z4ODq3YkU7vfAygjk+QF7dBV6WW5g@mail.gmail.com>
-From: Krzysztof Kozlowski <krzk@kernel.org>
-Date: Thu, 2 Mar 2017 18:50:10 +0200
-X-Gmail-Original-Message-ID: <CAJKOXPe3ecS82Vn8F9otAEprNjnp1q55ZfVwAhy=jXPOPZLLXw@mail.gmail.com>
-Message-ID: <CAJKOXPe3ecS82Vn8F9otAEprNjnp1q55ZfVwAhy=jXPOPZLLXw@mail.gmail.com>
-To: Peter Maydell <peter.maydell@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 2 Mar 2017 16:56:22 +0000
+Message-ID: <CAFEAcA-A1FFRnbuU8ev_oEF3rdtSY-ewQixSKr4+G1Op-eYSJQ@mail.gmail.com>
+To: Krzysztof Kozlowski <krzk@kernel.org>
 Content-Type: text/plain; charset=UTF-8
-X-Virus-Scanned: ClamAV using ClamSMTP
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
-X-Received-From: 198.145.29.136
-Subject: Re: [Qemu-arm] [PATCH 1/5] hw/intc/exynos4210_gic: Fix GIC memory
- mappings for secondary CPU
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2a00:1450:400c:c0c::22b
+Subject: Re: [Qemu-arm] [RFC 0/5] hw: arm: exynos: Bring up secondary CPU +
+ CPUIDLE issue
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -74,115 +82,68 @@ Cc: Igor Mitsyanko <i.mitsyanko@gmail.com>, qemu-arm <qemu-arm@nongnu.org>,
 	Shannon Zhao <shannon.zhao@linaro.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: LAk4fPOZ32Jk
+X-TUID: khifZ7ig1DbC
 
-On Thu, Mar 2, 2017 at 6:37 PM, Peter Maydell <peter.maydell@linaro.org> wrote:
-> On 1 March 2017 at 18:26, Krzysztof Kozlowski <krzk@kernel.org> wrote:
->> Recent Linux kernel (tested next-20170224) was complaining about missing
->> GIC mask and was unable to bring up secondary CPU:
->>
->>     [    0.000000] NR_IRQS:16 nr_irqs:16 16
->>     [    0.000000] GIC CPU mask not found - kernel will fail to boot.
->>     ...
->>     [    0.400492] smp: Bringing up secondary CPUs ...
->>     [    1.413184] CPU1: failed to boot: -110
->>     [    1.423981] smp: Brought up 1 node, 1 CPU
->>
->> In its instance_init() call, the Exynos GIC driver was setting GIC
->> memory mappings for each CPU, from 1 up to "num-cpu" property.  The
->> Exynos4210 machine init call on the other hand, first created Exynos GIC
->> device and then set the "num-cpu" property which was too late.  The init
->> already happened with default "num-cpu" value of 1 thus GIC mappings
->> were created only for the first CPU.
->>
->> Split the Exynos GIC init code into realize function so the code will
->> see updated "num-cpu" property.  This fixes the warning and brings
->> second CPU:
->>     [    0.435780] CPU1: thread -1, cpu 1, socket 9, mpidr 80000901
->>     [    0.451838] smp: Brought up 1 node, 2 CPUs
->>
->> Signed-off-by: Krzysztof Kozlowski <krzk@kernel.org>
->> ---
->>
->> But please read cover letter!
->>
->> ---
->>  hw/intc/exynos4210_gic.c | 24 +++++++++++++++---------
->>  1 file changed, 15 insertions(+), 9 deletions(-)
->>
->> diff --git a/hw/intc/exynos4210_gic.c b/hw/intc/exynos4210_gic.c
->> index 2a55817b7660..5986e54d39c9 100644
->> --- a/hw/intc/exynos4210_gic.c
->> +++ b/hw/intc/exynos4210_gic.c
->> @@ -283,9 +283,19 @@ static void exynos4210_gic_set_irq(void *opaque, int irq, int level)
->>
->>  static void exynos4210_gic_init(Object *obj)
->>  {
->> -    DeviceState *dev = DEVICE(obj);
->>      Exynos4210GicState *s = EXYNOS4210_GIC(obj);
->> -    SysBusDevice *sbd = SYS_BUS_DEVICE(obj);
->> +
->> +    memory_region_init(&s->cpu_container, obj, "exynos4210-cpu-container",
->> +            EXYNOS4210_EXT_GIC_CPU_REGION_SIZE);
->> +    memory_region_init(&s->dist_container, obj, "exynos4210-dist-container",
->> +            EXYNOS4210_EXT_GIC_DIST_REGION_SIZE);
->> +
->> +}
->> +
->> +static void exynos4210_gic_realize(DeviceState *dev, Error **errp)
->> +{
->> +    Exynos4210GicState *s = EXYNOS4210_GIC(dev);
->> +    SysBusDevice *sbd = SYS_BUS_DEVICE(dev);
->>      uint32_t i;
->>      const char cpu_prefix[] = "exynos4210-gic-alias_cpu";
->>      const char dist_prefix[] = "exynos4210-gic-alias_dist";
->> @@ -306,15 +316,10 @@ static void exynos4210_gic_init(Object *obj)
->>      qdev_init_gpio_in(dev, exynos4210_gic_set_irq,
->>                        EXYNOS4210_GIC_NIRQ - 32);
->>
->> -    memory_region_init(&s->cpu_container, obj, "exynos4210-cpu-container",
->> -            EXYNOS4210_EXT_GIC_CPU_REGION_SIZE);
->> -    memory_region_init(&s->dist_container, obj, "exynos4210-dist-container",
->> -            EXYNOS4210_EXT_GIC_DIST_REGION_SIZE);
->> -
->>      for (i = 0; i < s->num_cpu; i++) {
->>          /* Map CPU interface per SMP Core */
->>          sprintf(cpu_alias_name, "%s%x", cpu_prefix, i);
->> -        memory_region_init_alias(&s->cpu_alias[i], obj,
->> +        memory_region_init_alias(&s->cpu_alias[i], OBJECT(s),
->>                                   cpu_alias_name,
->>                                   sysbus_mmio_get_region(busdev, 1),
->>                                   0,
->> @@ -324,7 +329,7 @@ static void exynos4210_gic_init(Object *obj)
->>
->>          /* Map Distributor per SMP Core */
->>          sprintf(dist_alias_name, "%s%x", dist_prefix, i);
->> -        memory_region_init_alias(&s->dist_alias[i], obj,
->> +        memory_region_init_alias(&s->dist_alias[i], OBJECT(s),
->>                                   dist_alias_name,
->>                                   sysbus_mmio_get_region(busdev, 0),
->>                                   0,
+On 1 March 2017 at 18:26, Krzysztof Kozlowski <krzk@kernel.org> wrote:
+> Overview of the problem
+> =======================
+> On Exynos4210, by default Linux kernel uses cpuidle driver which tries
+> to enter low power mode, called AFTR (Arm Off, Top Running).  On real
+> hardware this brings some power savings.  This AFTR mode requires second
+> CPU to be off, so the driver (coupled cpuidle driver) when system is idle:
+> 1. Turns off second CPU,
+> 2. Enters AFTR on CPU0.
 >
-> Slightly better to define
->   Object *obj = OBJECT(dev);
-> at the start of the realize function rather than doing the dynamic
-> cast twice every time round the loop.
+> However the QEMU system is then totally unresponsive (e.g. on serial console)
+> and RCU stalls appear from time to time.  I spent some time on it and did not
+> find the real cause behind the lag.  Maybe it is because the second CPU
+> does not really power down itself and system just burns the cycles under spin
+> locks?
+
+Possibly so. You might check whether it still has this behaviour with
+current head of git now that the multi-threaded TCG support has landed.
+
+> I am quite new to QEMU.  I do not know the internals (yet), nor the design
+> how hardware should be emulated in such subtle details.
 >
->> @@ -346,6 +351,7 @@ static void exynos4210_gic_class_init(ObjectClass *klass, void *data)
->>  {
->>      DeviceClass *dc = DEVICE_CLASS(klass);
->>
->> +    dc->realize = exynos4210_gic_realize;
->>      dc->props = exynos4210_gic_properties;
->>  }
->
-> Otherwise
-> Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+> The questions I have are:
+> 1. What is the preferred way to solve it? Maybe some a QEMU
+>    workaround to disable the cpuidle is okay?
+> 2. Is it worth implementing a proper secondary CPU power down and
+>    at the end proper AFTR cpuidle? It might be quite difficult...
+> 3. How such issues with deep sleep modes were solved for other
+>    ARM targets?
 
-Sure, I'll re-spin with the cast and reviewed-by tags.
+The general answer to 3 is "we don't bother implementing deep sleep
+and mostly this hasn't caused problems, but more by luck than
+judgement". Most of our boards aren't SMP; until now SMP TCG guests
+have been slower than single core so even on a nominally SMP guest
+board most users probably use (the default) -smp 1.
 
-What about the issue I mentioned in the cover letter? Fixing the GIC
-caused the recent Linux kernel to behave worst...
+ The SMP board that gets most use is the "virt" board whose
+power-down functionality works through our PSCI implementation.
+The other board we have which has power-down is the imx6 one:
+hw/misc/imx6_src.c is the system reset controller model which
+does this. Basically the model of the whatever-it-is that
+causes the CPU to be powered down does it via the APIs in
+target/arm/arm-powerctl.h, which lets you turn CPUs off and on.
+When a CPU is off then we don't try to let it execute instructions,
+so it shouldn't chew host CPU at the expense of other guest CPUs.
 
-Best regards,
-Krzysztof
+Minor caution with that API: arm_set_cpu_on() is asynchronous,
+so if you need to tell the guest "CPU now actually booted" then
+you'll need to use an async_run_on_cpu() callback the way the
+imx6_src.c code does.
+
+If the "CPU on" behaviour you need is "CPU powers on as if
+starting up in standard reset" rather than "CPU powers up
+and appears to start execution at given address", then it's
+probably best to improve the arm_powerctl APIs rather than
+fudge it by trying to work out the arguments to pass to
+arm_set_cpu_on() to make its "and now go to this address"
+code not do anything. (The APIs are targeted at the current
+users which both want "do things which are done in the guest
+firmware or real hardware".)
+
+thanks
+-- PMM

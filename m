@@ -1,71 +1,72 @@
-Received: by 10.25.0.147 with SMTP id 141csp363821lfa;
-        Thu, 2 Mar 2017 08:37:46 -0800 (PST)
-X-Received: by 10.200.36.43 with SMTP id c40mr19530302qtc.161.1488472666517;
-        Thu, 02 Mar 2017 08:37:46 -0800 (PST)
+Received: by 10.25.0.147 with SMTP id 141csp364052lfa;
+        Thu, 2 Mar 2017 08:38:24 -0800 (PST)
+X-Received: by 10.200.53.69 with SMTP id z5mr18334312qtb.120.1488472704001;
+        Thu, 02 Mar 2017 08:38:24 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id 52si7283755qtv.302.2017.03.02.08.37.45
+        by mx.google.com with ESMTPS id d10si7298033qtb.186.2017.03.02.08.38.23
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 02 Mar 2017 08:37:46 -0800 (PST)
+        Thu, 02 Mar 2017 08:38:23 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        dkim=fail header.i=@linaro.org;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:53237 helo=lists.gnu.org)
+Received: from localhost ([::1]:53239 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1cjTjb-0008GZ-Q9
-	for alex.bennee@linaro.org; Thu, 02 Mar 2017 11:37:43 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:57168)
+	id 1cjTkD-0000CE-Fw
+	for alex.bennee@linaro.org; Thu, 02 Mar 2017 11:38:21 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:57419)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1cjTjR-0008F3-Qv
-	for qemu-arm@nongnu.org; Thu, 02 Mar 2017 11:37:35 -0500
+	(envelope-from <peter.maydell@linaro.org>) id 1cjTk3-0000Am-Nl
+	for qemu-arm@nongnu.org; Thu, 02 Mar 2017 11:38:12 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1cjTjQ-00070E-M9
-	for qemu-arm@nongnu.org; Thu, 02 Mar 2017 11:37:33 -0500
-Received: from mail-wm0-x234.google.com ([2a00:1450:400c:c09::234]:36129)
+	(envelope-from <peter.maydell@linaro.org>) id 1cjTk3-0007Be-14
+	for qemu-arm@nongnu.org; Thu, 02 Mar 2017 11:38:11 -0500
+Received: from mail-wr0-x22b.google.com ([2a00:1450:400c:c0c::22b]:34737)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1cjTjQ-0006zu-Es
-	for qemu-arm@nongnu.org; Thu, 02 Mar 2017 11:37:32 -0500
-Received: by mail-wm0-x234.google.com with SMTP id n11so29249628wma.1
-	for <qemu-arm@nongnu.org>; Thu, 02 Mar 2017 08:37:32 -0800 (PST)
+	id 1cjTk2-0007Ae-R7
+	for qemu-arm@nongnu.org; Thu, 02 Mar 2017 11:38:10 -0500
+Received: by mail-wr0-x22b.google.com with SMTP id l37so56533990wrc.1
+	for <qemu-arm@nongnu.org>; Thu, 02 Mar 2017 08:38:10 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
 	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=P9HjcELCl6/TjKmuF+Na+/QZztwRpzvTX4gJ+YvhMhw=;
-	b=NMbW2+FSdW+NLOnQyvt1bVWN5BKbZ/7Iakcna5q/VF8nPmUAe5vcQMhdHP4d6mRZCb
-	MikNiAO2tsVt/e9DRZ1VAf64dxyKMoJs0ymPWNA5yoqVwijvsMoJdy76P9SIViDJYv8d
-	GH06vufMqOXzGkw+PrAdXMrDE5w8XfrUhB/Zc=
+	:cc; bh=QrenZLf/QZmodBdN57+iCBR3lDjeOmtO/+PYwBx2jD0=;
+	b=g2TgVW09CzU2B7/T+kzOyMHVsbpMOdBlKIFYiIqGFHHy0JrcoIqYqXI0SKp6D4v8KS
+	gHhof6FLDSCba0+l97Oqy6EcIaZXkUb3qd1XA/yTvyPM3ahX+d+T2hW1KMPIgwknXwMs
+	duEZkokbX0PNCXI2em8vcYTLA5QHYmLhqw7Yc=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
 	:message-id:subject:to:cc;
-	bh=P9HjcELCl6/TjKmuF+Na+/QZztwRpzvTX4gJ+YvhMhw=;
-	b=fkwtU65VEyxULCmHzanfSrMfpsDIT7caNL4dtSPzIrhMrXyweHftvoNORM09FgyGKQ
-	iEWBnLp4a+Trcp7BeqTIq+uE8OkoqN1yBbxc51Nzh2wA9jdaSbMd1pS3H5QtH1oiJBQT
-	wNqgVcC6DIsUaWdJqxjE01RaQ8A04RarkMobPpDYkIxJkHL+mcC07IYSNBsFjvPiWaMM
-	enlLm140m/lrWiW2KxGTvNavDfR6SGy+KxuZn4vWa73aPp4YWmrKukMC7y6269jbslfd
-	fRCJspz4RtCUFdFDgNoWjtKqmEveBru7dz2H3Obb9iTkNBvMRcYYo0/h0w/EDGHSJVai
-	42xw==
-X-Gm-Message-State: AMke39kouVva9ctbsxKLDgaipaiEQ3xDR3tDUoBwKGCUxyq5xPUNzXIF2lne58HtERAVktDRLIMPvK5H24av9zx/
-X-Received: by 10.28.226.215 with SMTP id z206mr8594050wmg.92.1488472650857;
-	Thu, 02 Mar 2017 08:37:30 -0800 (PST)
+	bh=QrenZLf/QZmodBdN57+iCBR3lDjeOmtO/+PYwBx2jD0=;
+	b=kMdtbkuzujANanZf/Gj8bJ+UDCBLb9blkWK6PVGk3q3lX2sv9aiAFT66VAOUQxKrRe
+	hXpEXhPbNuUa+piQKB0ghyarbwo9/3NM5CMJ2GFtThrsRBWBMn68YcboXgIvArCS+JkR
+	BTYSvPHJh2LAbYMKyPcHakc/xiv/W4n5d4wtJyElR6B+ACDV72GYYoX6UcVNWQCPYfXl
+	0JfKYiOMUV82s2slSOfROJlbM/tT7jg1uSNZZkr84Gm1qqCxpAGOT9vPov1bQMoHpvjc
+	h9i/nzG0FPj0k9klS9+O6+iXg1mrRtF2rPJfGq/aM8pOiFlzm9M16Nsf7sgJudjmgS9r
+	5Qqg==
+X-Gm-Message-State: AMke39nBdf+4AsFnYFlOzZ+NCMMm9ssNncwSpZLOLJegp5+oAYCN1QE2MEK8JFHqgFq0SpxlsK6hG9mBP5fOyz73
+X-Received: by 10.223.150.205 with SMTP id u71mr13170413wrb.195.1488472689771; 
+	Thu, 02 Mar 2017 08:38:09 -0800 (PST)
 MIME-Version: 1.0
-Received: by 10.223.145.69 with HTTP; Thu, 2 Mar 2017 08:37:10 -0800 (PST)
-In-Reply-To: <20170301182618.22395-2-krzk@kernel.org>
+Received: by 10.223.145.69 with HTTP; Thu, 2 Mar 2017 08:37:49 -0800 (PST)
+In-Reply-To: <20170301182618.22395-3-krzk@kernel.org>
 References: <20170301182618.22395-1-krzk@kernel.org>
-	<20170301182618.22395-2-krzk@kernel.org>
+	<20170301182618.22395-3-krzk@kernel.org>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 2 Mar 2017 16:37:10 +0000
-Message-ID: <CAFEAcA8F013ggLmx9hhg+z4ODq3YkU7vfAygjk+QF7dBV6WW5g@mail.gmail.com>
+Date: Thu, 2 Mar 2017 16:37:49 +0000
+Message-ID: <CAFEAcA-wgPqejWpNC-nQSG564ABP4G+J5AeVW37aEqqSa+LHmw@mail.gmail.com>
 To: Krzysztof Kozlowski <krzk@kernel.org>
 Content-Type: text/plain; charset=UTF-8
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2a00:1450:400c:c09::234
-Subject: Re: [Qemu-arm] [PATCH 1/5] hw/intc/exynos4210_gic: Fix GIC memory
- mappings for secondary CPU
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2a00:1450:400c:c0c::22b
+Subject: Re: [Qemu-arm] [PATCH 2/5] hw/intc/exynos4210_gic: Use more
+ meaningful name for local variable
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -82,108 +83,22 @@ Cc: Igor Mitsyanko <i.mitsyanko@gmail.com>, qemu-arm <qemu-arm@nongnu.org>,
 	Shannon Zhao <shannon.zhao@linaro.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: er5r8gV51skh
+X-TUID: kQkkk3j5g4Ku
 
 On 1 March 2017 at 18:26, Krzysztof Kozlowski <krzk@kernel.org> wrote:
-> Recent Linux kernel (tested next-20170224) was complaining about missing
-> GIC mask and was unable to bring up secondary CPU:
+> There are to SysBusDevice variables in exynos4210_gic_realize()
+> function: one for the device itself and second for arm_gic device.  Add
+> a prefix "gic" to the second one so it will be easier to understand the
+> code.
 >
->     [    0.000000] NR_IRQS:16 nr_irqs:16 16
->     [    0.000000] GIC CPU mask not found - kernel will fail to boot.
->     ...
->     [    0.400492] smp: Bringing up secondary CPUs ...
->     [    1.413184] CPU1: failed to boot: -110
->     [    1.423981] smp: Brought up 1 node, 1 CPU
->
-> In its instance_init() call, the Exynos GIC driver was setting GIC
-> memory mappings for each CPU, from 1 up to "num-cpu" property.  The
-> Exynos4210 machine init call on the other hand, first created Exynos GIC
-> device and then set the "num-cpu" property which was too late.  The init
-> already happened with default "num-cpu" value of 1 thus GIC mappings
-> were created only for the first CPU.
->
-> Split the Exynos GIC init code into realize function so the code will
-> see updated "num-cpu" property.  This fixes the warning and brings
-> second CPU:
->     [    0.435780] CPU1: thread -1, cpu 1, socket 9, mpidr 80000901
->     [    0.451838] smp: Brought up 1 node, 2 CPUs
+> While at it, put local uninitialized 'i' variable at the end, next to
+> other uninitialized ones.
 >
 > Signed-off-by: Krzysztof Kozlowski <krzk@kernel.org>
 > ---
->
-> But please read cover letter!
->
-> ---
->  hw/intc/exynos4210_gic.c | 24 +++++++++++++++---------
->  1 file changed, 15 insertions(+), 9 deletions(-)
->
-> diff --git a/hw/intc/exynos4210_gic.c b/hw/intc/exynos4210_gic.c
-> index 2a55817b7660..5986e54d39c9 100644
-> --- a/hw/intc/exynos4210_gic.c
-> +++ b/hw/intc/exynos4210_gic.c
-> @@ -283,9 +283,19 @@ static void exynos4210_gic_set_irq(void *opaque, int irq, int level)
->
->  static void exynos4210_gic_init(Object *obj)
->  {
-> -    DeviceState *dev = DEVICE(obj);
->      Exynos4210GicState *s = EXYNOS4210_GIC(obj);
-> -    SysBusDevice *sbd = SYS_BUS_DEVICE(obj);
-> +
-> +    memory_region_init(&s->cpu_container, obj, "exynos4210-cpu-container",
-> +            EXYNOS4210_EXT_GIC_CPU_REGION_SIZE);
-> +    memory_region_init(&s->dist_container, obj, "exynos4210-dist-container",
-> +            EXYNOS4210_EXT_GIC_DIST_REGION_SIZE);
-> +
-> +}
-> +
-> +static void exynos4210_gic_realize(DeviceState *dev, Error **errp)
-> +{
-> +    Exynos4210GicState *s = EXYNOS4210_GIC(dev);
-> +    SysBusDevice *sbd = SYS_BUS_DEVICE(dev);
->      uint32_t i;
->      const char cpu_prefix[] = "exynos4210-gic-alias_cpu";
->      const char dist_prefix[] = "exynos4210-gic-alias_dist";
-> @@ -306,15 +316,10 @@ static void exynos4210_gic_init(Object *obj)
->      qdev_init_gpio_in(dev, exynos4210_gic_set_irq,
->                        EXYNOS4210_GIC_NIRQ - 32);
->
-> -    memory_region_init(&s->cpu_container, obj, "exynos4210-cpu-container",
-> -            EXYNOS4210_EXT_GIC_CPU_REGION_SIZE);
-> -    memory_region_init(&s->dist_container, obj, "exynos4210-dist-container",
-> -            EXYNOS4210_EXT_GIC_DIST_REGION_SIZE);
-> -
->      for (i = 0; i < s->num_cpu; i++) {
->          /* Map CPU interface per SMP Core */
->          sprintf(cpu_alias_name, "%s%x", cpu_prefix, i);
-> -        memory_region_init_alias(&s->cpu_alias[i], obj,
-> +        memory_region_init_alias(&s->cpu_alias[i], OBJECT(s),
->                                   cpu_alias_name,
->                                   sysbus_mmio_get_region(busdev, 1),
->                                   0,
-> @@ -324,7 +329,7 @@ static void exynos4210_gic_init(Object *obj)
->
->          /* Map Distributor per SMP Core */
->          sprintf(dist_alias_name, "%s%x", dist_prefix, i);
-> -        memory_region_init_alias(&s->dist_alias[i], obj,
-> +        memory_region_init_alias(&s->dist_alias[i], OBJECT(s),
->                                   dist_alias_name,
->                                   sysbus_mmio_get_region(busdev, 0),
->                                   0,
+>  hw/intc/exynos4210_gic.c | 12 ++++++------
+>  1 file changed, 6 insertions(+), 6 deletions(-)
 
-Slightly better to define
-  Object *obj = OBJECT(dev);
-at the start of the realize function rather than doing the dynamic
-cast twice every time round the loop.
-
-> @@ -346,6 +351,7 @@ static void exynos4210_gic_class_init(ObjectClass *klass, void *data)
->  {
->      DeviceClass *dc = DEVICE_CLASS(klass);
->
-> +    dc->realize = exynos4210_gic_realize;
->      dc->props = exynos4210_gic_properties;
->  }
-
-Otherwise
 Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
 thanks

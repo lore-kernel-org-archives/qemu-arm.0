@@ -1,50 +1,71 @@
-Received: by 10.25.0.147 with SMTP id 141csp1987016lfa;
-        Wed, 1 Mar 2017 10:33:52 -0800 (PST)
-X-Received: by 10.200.38.72 with SMTP id v8mr12330910qtv.27.1488393232456;
-        Wed, 01 Mar 2017 10:33:52 -0800 (PST)
+Received: by 10.25.0.147 with SMTP id 141csp363821lfa;
+        Thu, 2 Mar 2017 08:37:46 -0800 (PST)
+X-Received: by 10.200.36.43 with SMTP id c40mr19530302qtc.161.1488472666517;
+        Thu, 02 Mar 2017 08:37:46 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id f5si4868251qkb.239.2017.03.01.10.33.51
+        by mx.google.com with ESMTPS id 52si7283755qtv.302.2017.03.02.08.37.45
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 01 Mar 2017 10:33:52 -0800 (PST)
+        Thu, 02 Mar 2017 08:37:46 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:48175 helo=lists.gnu.org)
+       dkim=fail header.i=@linaro.org;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:53237 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1cj94P-0001uP-IV
-	for alex.bennee@linaro.org; Wed, 01 Mar 2017 13:33:49 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:60631)
+	id 1cjTjb-0008GZ-Q9
+	for alex.bennee@linaro.org; Thu, 02 Mar 2017 11:37:43 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:57168)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <no-reply@patchew.org>) id 1cj94I-0001sT-OF
-	for qemu-arm@nongnu.org; Wed, 01 Mar 2017 13:33:44 -0500
+	(envelope-from <peter.maydell@linaro.org>) id 1cjTjR-0008F3-Qv
+	for qemu-arm@nongnu.org; Thu, 02 Mar 2017 11:37:35 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <no-reply@patchew.org>) id 1cj94H-0002WS-PN
-	for qemu-arm@nongnu.org; Wed, 01 Mar 2017 13:33:42 -0500
-Resent-Date: Wed, 01 Mar 2017 13:33:42 -0500
-Resent-Message-Id: <E1cj94H-0002WS-PN@eggs.gnu.org>
-Received: from sender-of-o52.zoho.com ([135.84.80.217]:21321)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <no-reply@patchew.org>)
-	id 1cj94C-0002Rl-ND; Wed, 01 Mar 2017 13:33:36 -0500
-Received: from [172.17.0.2] (23.253.156.214 [23.253.156.214]) by
-	mx.zohomail.com with SMTPS id 1488393199730556.8000333736331;
-	Wed, 1 Mar 2017 10:33:19 -0800 (PST)
-In-Reply-To: <20170301182618.22395-1-krzk@kernel.org>
-Message-ID: <148839319906.285.10296846671880555758@0e2666bad730>
+	(envelope-from <peter.maydell@linaro.org>) id 1cjTjQ-00070E-M9
+	for qemu-arm@nongnu.org; Thu, 02 Mar 2017 11:37:33 -0500
+Received: from mail-wm0-x234.google.com ([2a00:1450:400c:c09::234]:36129)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1cjTjQ-0006zu-Es
+	for qemu-arm@nongnu.org; Thu, 02 Mar 2017 11:37:32 -0500
+Received: by mail-wm0-x234.google.com with SMTP id n11so29249628wma.1
+	for <qemu-arm@nongnu.org>; Thu, 02 Mar 2017 08:37:32 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=P9HjcELCl6/TjKmuF+Na+/QZztwRpzvTX4gJ+YvhMhw=;
+	b=NMbW2+FSdW+NLOnQyvt1bVWN5BKbZ/7Iakcna5q/VF8nPmUAe5vcQMhdHP4d6mRZCb
+	MikNiAO2tsVt/e9DRZ1VAf64dxyKMoJs0ymPWNA5yoqVwijvsMoJdy76P9SIViDJYv8d
+	GH06vufMqOXzGkw+PrAdXMrDE5w8XfrUhB/Zc=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=P9HjcELCl6/TjKmuF+Na+/QZztwRpzvTX4gJ+YvhMhw=;
+	b=fkwtU65VEyxULCmHzanfSrMfpsDIT7caNL4dtSPzIrhMrXyweHftvoNORM09FgyGKQ
+	iEWBnLp4a+Trcp7BeqTIq+uE8OkoqN1yBbxc51Nzh2wA9jdaSbMd1pS3H5QtH1oiJBQT
+	wNqgVcC6DIsUaWdJqxjE01RaQ8A04RarkMobPpDYkIxJkHL+mcC07IYSNBsFjvPiWaMM
+	enlLm140m/lrWiW2KxGTvNavDfR6SGy+KxuZn4vWa73aPp4YWmrKukMC7y6269jbslfd
+	fRCJspz4RtCUFdFDgNoWjtKqmEveBru7dz2H3Obb9iTkNBvMRcYYo0/h0w/EDGHSJVai
+	42xw==
+X-Gm-Message-State: AMke39kouVva9ctbsxKLDgaipaiEQ3xDR3tDUoBwKGCUxyq5xPUNzXIF2lne58HtERAVktDRLIMPvK5H24av9zx/
+X-Received: by 10.28.226.215 with SMTP id z206mr8594050wmg.92.1488472650857;
+	Thu, 02 Mar 2017 08:37:30 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Resent-From: 
-From: no-reply@patchew.org
-To: krzk@kernel.org
-Date: Wed, 1 Mar 2017 10:33:19 -0800 (PST)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
-X-Received-From: 135.84.80.217
-Subject: Re: [Qemu-arm] [Qemu-devel] [RFC 0/5] hw: arm: exynos: Bring up
- secondary CPU + CPUIDLE issue
+Received: by 10.223.145.69 with HTTP; Thu, 2 Mar 2017 08:37:10 -0800 (PST)
+In-Reply-To: <20170301182618.22395-2-krzk@kernel.org>
+References: <20170301182618.22395-1-krzk@kernel.org>
+	<20170301182618.22395-2-krzk@kernel.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 2 Mar 2017 16:37:10 +0000
+Message-ID: <CAFEAcA8F013ggLmx9hhg+z4ODq3YkU7vfAygjk+QF7dBV6WW5g@mail.gmail.com>
+To: Krzysztof Kozlowski <krzk@kernel.org>
+Content-Type: text/plain; charset=UTF-8
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 2a00:1450:400c:c09::234
+Subject: Re: [Qemu-arm] [PATCH 1/5] hw/intc/exynos4210_gic: Fix GIC memory
+ mappings for secondary CPU
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -56,53 +77,114 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: qemu-devel@nongnu.org
-Cc: peter.maydell@linaro.org, famz@redhat.com, i.mitsyanko@gmail.com,
-	qemu-devel@nongnu.org, krzk@kernel.org, qemu-arm@nongnu.org,
-	shannon.zhao@linaro.org
+Cc: Igor Mitsyanko <i.mitsyanko@gmail.com>, qemu-arm <qemu-arm@nongnu.org>,
+	QEMU Developers <qemu-devel@nongnu.org>,
+	Shannon Zhao <shannon.zhao@linaro.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: /iLpf2V5r65k
+X-TUID: er5r8gV51skh
 
-SGksCgpUaGlzIHNlcmllcyBzZWVtcyB0byBoYXZlIHNvbWUgY29kaW5nIHN0eWxlIHByb2JsZW1z
-LiBTZWUgb3V0cHV0IGJlbG93IGZvcgptb3JlIGluZm9ybWF0aW9uOgoKTWVzc2FnZS1pZDogMjAx
-NzAzMDExODI2MTguMjIzOTUtMS1rcnprQGtlcm5lbC5vcmcKVHlwZTogc2VyaWVzClN1YmplY3Q6
-IFtRZW11LWRldmVsXSBbUkZDIDAvNV0gaHc6IGFybTogZXh5bm9zOiBCcmluZyB1cCBzZWNvbmRh
-cnkgQ1BVICsgQ1BVSURMRSBpc3N1ZQoKPT09IFRFU1QgU0NSSVBUIEJFR0lOID09PQojIS9iaW4v
-YmFzaAoKQkFTRT1iYXNlCm49MQp0b3RhbD0kKGdpdCBsb2cgLS1vbmVsaW5lICRCQVNFLi4gfCB3
-YyAtbCkKZmFpbGVkPTAKCiMgVXNlZnVsIGdpdCBvcHRpb25zCmdpdCBjb25maWcgLS1sb2NhbCBk
-aWZmLnJlbmFtZWxpbWl0IDAKZ2l0IGNvbmZpZyAtLWxvY2FsIGRpZmYucmVuYW1lcyBUcnVlCgpj
-b21taXRzPSIkKGdpdCBsb2cgLS1mb3JtYXQ9JUggLS1yZXZlcnNlICRCQVNFLi4pIgpmb3IgYyBp
-biAkY29tbWl0czsgZG8KICAgIGVjaG8gIkNoZWNraW5nIFBBVENIICRuLyR0b3RhbDogJChnaXQg
-bG9nIC1uIDEgLS1mb3JtYXQ9JXMgJGMpLi4uIgogICAgaWYgISBnaXQgc2hvdyAkYyAtLWZvcm1h
-dD1lbWFpbCB8IC4vc2NyaXB0cy9jaGVja3BhdGNoLnBsIC0tbWFpbGJhY2sgLTsgdGhlbgogICAg
-ICAgIGZhaWxlZD0xCiAgICAgICAgZWNobwogICAgZmkKICAgIG49JCgobisxKSkKZG9uZQoKZXhp
-dCAkZmFpbGVkCj09PSBURVNUIFNDUklQVCBFTkQgPT09CgpVcGRhdGluZyAzYzhjZjVhOWMyMWZm
-ODc4MjE2NGQxZGVmN2Y0NGJkODg4NzEzMzg0CkZyb20gaHR0cHM6Ly9naXRodWIuY29tL3BhdGNo
-ZXctcHJvamVjdC9xZW11CiAqIFtuZXcgdGFnXSAgICAgICAgIHBhdGNoZXcvMjAxNzAzMDExODI2
-MTguMjIzOTUtMS1rcnprQGtlcm5lbC5vcmcgLT4gcGF0Y2hldy8yMDE3MDMwMTE4MjYxOC4yMjM5
-NS0xLWtyemtAa2VybmVsLm9yZwpTd2l0Y2hlZCB0byBhIG5ldyBicmFuY2ggJ3Rlc3QnCmFjYzIy
-YjIgaHcvdGltZXIvZXh5bm9zNDIxMF9tY3Q6IFJlbW92ZSB1bnVzZWQgZGVmaW5lcwozMTJjM2Zj
-IGh3L3RpbWVyL2V4eW5vczQyMTBfbWN0OiBGaXggY2hlY2twYXRjaCBzdHlsZSBlcnJvcnMKZmI4
-OTIyNCBody90aW1lci9leHlub3M0MjEwX21jdDogQ2xlYW51cCBpbmRlbnRhdGlvbiBhbmQgZW1w
-dHkgbmV3IGxpbmVzCjA0MGYzZjggaHcvaW50Yy9leHlub3M0MjEwX2dpYzogVXNlIG1vcmUgbWVh
-bmluZ2Z1bCBuYW1lIGZvciBsb2NhbCB2YXJpYWJsZQoyMGFhNDIxIGh3L2ludGMvZXh5bm9zNDIx
-MF9naWM6IEZpeCBHSUMgbWVtb3J5IG1hcHBpbmdzIGZvciBzZWNvbmRhcnkgQ1BVCgo9PT0gT1VU
-UFVUIEJFR0lOID09PQpDaGVja2luZyBQQVRDSCAxLzU6IGh3L2ludGMvZXh5bm9zNDIxMF9naWM6
-IEZpeCBHSUMgbWVtb3J5IG1hcHBpbmdzIGZvciBzZWNvbmRhcnkgQ1BVLi4uCkNoZWNraW5nIFBB
-VENIIDIvNTogaHcvaW50Yy9leHlub3M0MjEwX2dpYzogVXNlIG1vcmUgbWVhbmluZ2Z1bCBuYW1l
-IGZvciBsb2NhbCB2YXJpYWJsZS4uLgpDaGVja2luZyBQQVRDSCAzLzU6IGh3L3RpbWVyL2V4eW5v
-czQyMTBfbWN0OiBDbGVhbnVwIGluZGVudGF0aW9uIGFuZCBlbXB0eSBuZXcgbGluZXMuLi4KRVJS
-T1I6IHNwYWNlcyByZXF1aXJlZCBhcm91bmQgdGhhdCAnJicgKGN0eDpWeFYpCiM2NDogRklMRTog
-aHcvdGltZXIvZXh5bm9zNDIxMF9tY3QuYzoxMTYzOgorICAgICAgICBpZiAob2Zmc2V0JjB4NCkg
-ewogICAgICAgICAgICAgICAgICAgXgoKdG90YWw6IDEgZXJyb3JzLCAwIHdhcm5pbmdzLCA5MyBs
-aW5lcyBjaGVja2VkCgpZb3VyIHBhdGNoIGhhcyBzdHlsZSBwcm9ibGVtcywgcGxlYXNlIHJldmll
-dy4gIElmIGFueSBvZiB0aGVzZSBlcnJvcnMKYXJlIGZhbHNlIHBvc2l0aXZlcyByZXBvcnQgdGhl
-bSB0byB0aGUgbWFpbnRhaW5lciwgc2VlCkNIRUNLUEFUQ0ggaW4gTUFJTlRBSU5FUlMuCgpDaGVj
-a2luZyBQQVRDSCA0LzU6IGh3L3RpbWVyL2V4eW5vczQyMTBfbWN0OiBGaXggY2hlY2twYXRjaCBz
-dHlsZSBlcnJvcnMuLi4KQ2hlY2tpbmcgUEFUQ0ggNS81OiBody90aW1lci9leHlub3M0MjEwX21j
-dDogUmVtb3ZlIHVudXNlZCBkZWZpbmVzLi4uCj09PSBPVVRQVVQgRU5EID09PQoKVGVzdCBjb21t
-YW5kIGV4aXRlZCB3aXRoIGNvZGU6IDEKCgotLS0KRW1haWwgZ2VuZXJhdGVkIGF1dG9tYXRpY2Fs
-bHkgYnkgUGF0Y2hldyBbaHR0cDovL3BhdGNoZXcub3JnL10uClBsZWFzZSBzZW5kIHlvdXIgZmVl
-ZGJhY2sgdG8gcGF0Y2hldy1kZXZlbEBmcmVlbGlzdHMub3Jn
+On 1 March 2017 at 18:26, Krzysztof Kozlowski <krzk@kernel.org> wrote:
+> Recent Linux kernel (tested next-20170224) was complaining about missing
+> GIC mask and was unable to bring up secondary CPU:
+>
+>     [    0.000000] NR_IRQS:16 nr_irqs:16 16
+>     [    0.000000] GIC CPU mask not found - kernel will fail to boot.
+>     ...
+>     [    0.400492] smp: Bringing up secondary CPUs ...
+>     [    1.413184] CPU1: failed to boot: -110
+>     [    1.423981] smp: Brought up 1 node, 1 CPU
+>
+> In its instance_init() call, the Exynos GIC driver was setting GIC
+> memory mappings for each CPU, from 1 up to "num-cpu" property.  The
+> Exynos4210 machine init call on the other hand, first created Exynos GIC
+> device and then set the "num-cpu" property which was too late.  The init
+> already happened with default "num-cpu" value of 1 thus GIC mappings
+> were created only for the first CPU.
+>
+> Split the Exynos GIC init code into realize function so the code will
+> see updated "num-cpu" property.  This fixes the warning and brings
+> second CPU:
+>     [    0.435780] CPU1: thread -1, cpu 1, socket 9, mpidr 80000901
+>     [    0.451838] smp: Brought up 1 node, 2 CPUs
+>
+> Signed-off-by: Krzysztof Kozlowski <krzk@kernel.org>
+> ---
+>
+> But please read cover letter!
+>
+> ---
+>  hw/intc/exynos4210_gic.c | 24 +++++++++++++++---------
+>  1 file changed, 15 insertions(+), 9 deletions(-)
+>
+> diff --git a/hw/intc/exynos4210_gic.c b/hw/intc/exynos4210_gic.c
+> index 2a55817b7660..5986e54d39c9 100644
+> --- a/hw/intc/exynos4210_gic.c
+> +++ b/hw/intc/exynos4210_gic.c
+> @@ -283,9 +283,19 @@ static void exynos4210_gic_set_irq(void *opaque, int irq, int level)
+>
+>  static void exynos4210_gic_init(Object *obj)
+>  {
+> -    DeviceState *dev = DEVICE(obj);
+>      Exynos4210GicState *s = EXYNOS4210_GIC(obj);
+> -    SysBusDevice *sbd = SYS_BUS_DEVICE(obj);
+> +
+> +    memory_region_init(&s->cpu_container, obj, "exynos4210-cpu-container",
+> +            EXYNOS4210_EXT_GIC_CPU_REGION_SIZE);
+> +    memory_region_init(&s->dist_container, obj, "exynos4210-dist-container",
+> +            EXYNOS4210_EXT_GIC_DIST_REGION_SIZE);
+> +
+> +}
+> +
+> +static void exynos4210_gic_realize(DeviceState *dev, Error **errp)
+> +{
+> +    Exynos4210GicState *s = EXYNOS4210_GIC(dev);
+> +    SysBusDevice *sbd = SYS_BUS_DEVICE(dev);
+>      uint32_t i;
+>      const char cpu_prefix[] = "exynos4210-gic-alias_cpu";
+>      const char dist_prefix[] = "exynos4210-gic-alias_dist";
+> @@ -306,15 +316,10 @@ static void exynos4210_gic_init(Object *obj)
+>      qdev_init_gpio_in(dev, exynos4210_gic_set_irq,
+>                        EXYNOS4210_GIC_NIRQ - 32);
+>
+> -    memory_region_init(&s->cpu_container, obj, "exynos4210-cpu-container",
+> -            EXYNOS4210_EXT_GIC_CPU_REGION_SIZE);
+> -    memory_region_init(&s->dist_container, obj, "exynos4210-dist-container",
+> -            EXYNOS4210_EXT_GIC_DIST_REGION_SIZE);
+> -
+>      for (i = 0; i < s->num_cpu; i++) {
+>          /* Map CPU interface per SMP Core */
+>          sprintf(cpu_alias_name, "%s%x", cpu_prefix, i);
+> -        memory_region_init_alias(&s->cpu_alias[i], obj,
+> +        memory_region_init_alias(&s->cpu_alias[i], OBJECT(s),
+>                                   cpu_alias_name,
+>                                   sysbus_mmio_get_region(busdev, 1),
+>                                   0,
+> @@ -324,7 +329,7 @@ static void exynos4210_gic_init(Object *obj)
+>
+>          /* Map Distributor per SMP Core */
+>          sprintf(dist_alias_name, "%s%x", dist_prefix, i);
+> -        memory_region_init_alias(&s->dist_alias[i], obj,
+> +        memory_region_init_alias(&s->dist_alias[i], OBJECT(s),
+>                                   dist_alias_name,
+>                                   sysbus_mmio_get_region(busdev, 0),
+>                                   0,
 
+Slightly better to define
+  Object *obj = OBJECT(dev);
+at the start of the realize function rather than doing the dynamic
+cast twice every time round the loop.
+
+> @@ -346,6 +351,7 @@ static void exynos4210_gic_class_init(ObjectClass *klass, void *data)
+>  {
+>      DeviceClass *dc = DEVICE_CLASS(klass);
+>
+> +    dc->realize = exynos4210_gic_realize;
+>      dc->props = exynos4210_gic_properties;
+>  }
+
+Otherwise
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+
+thanks
+-- PMM

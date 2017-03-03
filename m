@@ -1,82 +1,70 @@
-Received: by 10.25.0.147 with SMTP id 141csp210809lfa;
-        Fri, 3 Mar 2017 03:59:39 -0800 (PST)
-X-Received: by 10.223.171.78 with SMTP id r14mr2117782wrc.113.1488542378952;
-        Fri, 03 Mar 2017 03:59:38 -0800 (PST)
-Return-Path: <pm215@archaic.org.uk>
-Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
-        by mx.google.com with ESMTPS id f12si2673182wmd.44.2017.03.03.03.59.38
+Received: by 10.25.0.147 with SMTP id 141csp225823lfa;
+        Fri, 3 Mar 2017 04:32:35 -0800 (PST)
+X-Received: by 10.55.40.77 with SMTP id o74mr2432205qkh.288.1488544355751;
+        Fri, 03 Mar 2017 04:32:35 -0800 (PST)
+Return-Path: <drjones@redhat.com>
+Received: from mx1.redhat.com (mx1.redhat.com. [209.132.183.28])
+        by mx.google.com with ESMTPS id 30si9266265qtr.25.2017.03.03.04.32.35
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 03 Mar 2017 03:59:38 -0800 (PST)
-Received-SPF: pass (google.com: best guess record for domain of pm215@archaic.org.uk designates 2001:8b0:1d0::2 as permitted sender) client-ip=2001:8b0:1d0::2;
+        Fri, 03 Mar 2017 04:32:35 -0800 (PST)
+Received-SPF: pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) client-ip=209.132.183.28;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: best guess record for domain of pm215@archaic.org.uk designates 2001:8b0:1d0::2 as permitted sender) smtp.mailfrom=pm215@archaic.org.uk;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from pm215 by orth.archaic.org.uk with local (Exim 4.84_2)
-	(envelope-from <pm215@archaic.org.uk>)
-	id 1cjlrz-000628-Db; Fri, 03 Mar 2017 11:59:35 +0000
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Cc: patches@linaro.org,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Peter Chubb <peter.chubb@nicta.com.au>,
-	Jean-Christophe DUBOIS <jcd@tribudubois.net>
-Subject: [PATCH for-2.9] hw/misc/imx6_src: Don't crash trying to reset missing CPUs
-Date: Fri,  3 Mar 2017 11:59:34 +0000
-Message-Id: <1488542374-1256-1-git-send-email-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.7.4
-X-TUID: Ww2DXWSs7IJQ
+       spf=pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=drjones@redhat.com
+Received: from int-mx10.intmail.prod.int.phx2.redhat.com (int-mx10.intmail.prod.int.phx2.redhat.com [10.5.11.23])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id DDE3737E72;
+	Fri,  3 Mar 2017 12:32:35 +0000 (UTC)
+Received: from kamzik.brq.redhat.com (kamzik.brq.redhat.com [10.34.1.143])
+	by int-mx10.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP id v23CWYRT026632;
+	Fri, 3 Mar 2017 07:32:34 -0500
+From: Andrew Jones <drjones@redhat.com>
+To: qemu-devel@nongnu.org, qemu-arm@nongnu.org
+Cc: peter.maydell@linaro.org, alex.bennee@linaro.org
+Subject: [PATCH] [RFT] target/arm/arm-powerctl: Fix psci info return values
+Date: Fri,  3 Mar 2017 13:32:32 +0100
+Message-Id: <20170303123232.4967-1-drjones@redhat.com>
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.23
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.5.110.29]); Fri, 03 Mar 2017 12:32:35 +0000 (UTC)
+X-TUID: bUgPW2ES3Ds1
 
-Commit 4881658a4b introduced a call to arm_get_cpu_by_id(),
-and Coverity noticed that we weren't checking that it didn't
-return NULL (CID 1371652).
+The power state spec section 5.1.5 AFFINITY_INFO defines the
+affinity info return values as
 
-Normally this won't happen (because all 4 CPUs are expected
-to exist), but it's possible the user requested fewer CPUs
-on the command line. Handle this possibility by silently
-doing nothing, which is the same behaviour as before commit
-4881658a4b and also how we handle the other CPU operations
-(since we ignore the INVALID_PARAM returns from arm_set_cpu_on()
-and friends).
+  0 ON
+  1 OFF
+  2 ON_PENDING
 
-There is a slight behavioural difference to the pre-4881658a4b
-situation: the "reset this core" bit will remain set rather
-than not being permitted to be set. The imx6 datasheet is
-unclear about the behaviour in this odd corner case, so we
-opt for the simpler code rather than complicated logic to
-maintain identical behaviour.
+I grepped QEMU for power_state to ensure that no assumptions
+of OFF=0 were being made.
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+Signed-off-by: Andrew Jones <drjones@redhat.com>
+
 ---
-I couldn't actually get this to crash even with -smp 1 with
-my test image, but we should fix it anyhow.
 
- hw/misc/imx6_src.c | 8 ++++++--
- 1 file changed, 6 insertions(+), 2 deletions(-)
+I found this with the yet to be committed kvm-unit-tests test
+https://lists.cs.columbia.edu/pipermail/kvmarm/2017-February/023820.html
 
-diff --git a/hw/misc/imx6_src.c b/hw/misc/imx6_src.c
-index edbb756..cfb0871 100644
---- a/hw/misc/imx6_src.c
-+++ b/hw/misc/imx6_src.c
-@@ -143,13 +143,17 @@ static void imx6_defer_clear_reset_bit(int cpuid,
-                                        unsigned long reset_shift)
- {
-     struct SRCSCRResetInfo *ri;
-+    CPUState *cpu = arm_get_cpu_by_id(cpuid);
-+
-+    if (!cpu) {
-+        return;
-+    }
- 
-     ri = g_malloc(sizeof(struct SRCSCRResetInfo));
-     ri->s = s;
-     ri->reset_bit = reset_shift;
- 
--    async_run_on_cpu(arm_get_cpu_by_id(cpuid), imx6_clear_reset_bit,
--                     RUN_ON_CPU_HOST_PTR(ri));
-+    async_run_on_cpu(cpu, imx6_clear_reset_bit, RUN_ON_CPU_HOST_PTR(ri));
- }
- 
+I've added the RFT because I didn't bother to confirm Linux is still
+happy (although I can't see why it wouldn't be happier).
+
+ target/arm/cpu.h | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+index 25ceaabb5ded..a8aabce7ddd5 100644
+--- a/target/arm/cpu.h
++++ b/target/arm/cpu.h
+@@ -536,8 +536,8 @@ typedef void ARMELChangeHook(ARMCPU *cpu, void *opaque);
+ /* These values map onto the return values for
+  * QEMU_PSCI_0_2_FN_AFFINITY_INFO */
+ typedef enum ARMPSCIState {
+-    PSCI_OFF = 0,
+-    PSCI_ON = 1,
++    PSCI_ON = 0,
++    PSCI_OFF = 1,
+     PSCI_ON_PENDING = 2
+ } ARMPSCIState;
  
 -- 
-2.7.4
+2.9.3

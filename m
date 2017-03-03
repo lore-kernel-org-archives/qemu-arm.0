@@ -1,97 +1,122 @@
-Received: by 10.25.0.147 with SMTP id 141csp341406lfa;
-        Fri, 3 Mar 2017 09:07:31 -0800 (PST)
-X-Received: by 10.28.193.193 with SMTP id r184mr3502201wmf.80.1488560851238;
-        Fri, 03 Mar 2017 09:07:31 -0800 (PST)
-Return-Path: <fred.konrad@greensocs.com>
-Received: from greensocs.com (greensocs.com. [193.104.36.180])
-        by mx.google.com with ESMTP id v8si15597051wrd.2.2017.03.03.09.07.31;
-        Fri, 03 Mar 2017 09:07:31 -0800 (PST)
-Received-SPF: pass (google.com: domain of fred.konrad@greensocs.com designates 193.104.36.180 as permitted sender) client-ip=193.104.36.180;
+Received: by 10.25.0.147 with SMTP id 141csp342567lfa;
+        Fri, 3 Mar 2017 09:10:14 -0800 (PST)
+X-Received: by 10.223.149.66 with SMTP id 60mr3505745wrs.29.1488561014618;
+        Fri, 03 Mar 2017 09:10:14 -0800 (PST)
+Return-Path: <peter.maydell@linaro.org>
+Received: from mail-wr0-x22a.google.com (mail-wr0-x22a.google.com. [2a00:1450:400c:c0c::22a])
+        by mx.google.com with ESMTPS id p137si3649035wmd.166.2017.03.03.09.10.14
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 03 Mar 2017 09:10:14 -0800 (PST)
+Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 2a00:1450:400c:c0c::22a as permitted sender) client-ip=2a00:1450:400c:c0c::22a;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@greensocs.com;
-       dkim=pass header.i=@greensocs.com;
-       spf=pass (google.com: domain of fred.konrad@greensocs.com designates 193.104.36.180 as permitted sender) smtp.mailfrom=fred.konrad@greensocs.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=greensocs.com
-Received: from localhost (localhost [127.0.0.1])
-	by greensocs.com (Postfix) with ESMTP id EC33130AB1D;
-	Fri,  3 Mar 2017 18:07:30 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=greensocs.com;
-	s=mail; t=1488560851;
-	bh=ui8ZqcGzRfxAiyqKG5Q/kLK6rsmyQ4asTwNh7g7hcWE=;
-	h=Subject:To:References:Cc:From:Date:In-Reply-To;
-	b=MmXJJ3NPVktH917dL1YjeK7kRIjNMNUuaFdRxc/YCaSA6WToGM3o3RXC8B6DI3t5o
-	 sGox78fdoB+by9QOqv7trKJ423DBvTb0ZnnqmYzISR4t3+UQgbkKMDZjmiXOsl9tuN
-	 1oS45WI7O1NK2Vnk29p8jsUOtQriWGtzYixNerKM=
-X-Virus-Scanned: amavisd-new at greensocs.com
-X-Spam-Flag: NO
-X-Spam-Score: -1.1
-X-Spam-Level:
-X-Spam-Status: No, score=-1.1 tagged_above=-999 required=6.2
-	tests=[ALL_TRUSTED=-1, DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
-	DKIM_VALID_AU=-0.1] autolearn=unavailable autolearn_force=no
-Authentication-Results: gs-01.greensocs.com (amavisd-new);
-	dkim=pass (1024-bit key) header.d=greensocs.com
-Received: from greensocs.com ([127.0.0.1])
-	by localhost (gs-01.greensocs.com [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id FiMBg6HbhJJR; Fri,  3 Mar 2017 18:07:30 +0100 (CET)
-Received: from corsair.home (bd231-7-88-127-3-24.fbx.proxad.net [88.127.3.24])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	(Authenticated sender: fred.konrad@greensocs.com)
-	by greensocs.com (Postfix) with ESMTPSA id 915F630AB05;
-	Fri,  3 Mar 2017 18:07:29 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=greensocs.com;
-	s=mail; t=1488560850;
-	bh=ui8ZqcGzRfxAiyqKG5Q/kLK6rsmyQ4asTwNh7g7hcWE=;
-	h=Subject:To:References:Cc:From:Date:In-Reply-To;
-	b=uxaiIhCyz+d/fF+pif06Z5ABa95tE3XHnT2kW0iCaQgm5oVdh65Ly8vv5ACsbWZZT
-	 RtuqR1mHrXEoyjn913qAMxtPS+bj2ddrhPASNcf597YY4Q+SUfXktsW2+V7xzc1PaQ
-	 GUb25JJBJ5gx6lpVVXMInOFPkHrTiz3QwItyk9R0=
-Subject: Re: [Qemu-devel] [PATCH v2 10/11] target/arm/helper: make it clear
- the EC field is also in hex
-To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>
-References: <20170302195337.31558-1-alex.bennee@linaro.org>
- <20170302195337.31558-11-alex.bennee@linaro.org>
-Cc: peter.maydell@linaro.org, rth@twiddle.net, pbonzini@redhat.com,
- mttcg@listserver.greensocs.com, nikunj@linux.vnet.ibm.com,
- a.rigo@virtualopensystems.com, qemu-devel@nongnu.org, cota@braap.org,
- "open list:ARM" <qemu-arm@nongnu.org>, bobby.prani@gmail.com
-From: Frederic Konrad <fred.konrad@greensocs.com>
-Message-ID: <06e77aaf-491e-8345-fbc1-e1027c20252a@greensocs.com>
-Date: Fri, 3 Mar 2017 18:07:29 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
- Thunderbird/45.2
+       dkim=pass header.i=@linaro.org;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 2a00:1450:400c:c0c::22a as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: by mail-wr0-x22a.google.com with SMTP id g10so77885850wrg.2
+        for <alex.bennee@linaro.org>; Fri, 03 Mar 2017 09:10:14 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+         :cc:content-transfer-encoding;
+        bh=wtuJAfxACxr1gf5kly73wXau9+1nRV7bQ+2O4U1vPAA=;
+        b=TGpyDZG0kItdln6iQKkJnMjIjyjSPl//DHG3z+Gs/q/LvkRxJE2eT+9GnYbp/BKXFi
+         YLvYmxmxU943G9sT1WXS1G4OqthAZfQVeZXrT9AC+UF+TNtMNCcHF33bkAdm6SZHa7yK
+         lvjjYnJ7lKOjHoGOXWyTc2+xQJGJdWelXif6s=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+         :message-id:subject:to:cc:content-transfer-encoding;
+        bh=wtuJAfxACxr1gf5kly73wXau9+1nRV7bQ+2O4U1vPAA=;
+        b=nlQbwqqZ471KKJMpGiZ4XEWkQDmfnwr5eZS+Y53r+/RjK5f7Jmz+BBWL8CHImNzsie
+         dEE6D2zLZlJy5r8j7iAD6kIhP3dyUcpENdZ1CNTvwD54qOrlLoAGs7kqhkJIu7IVyghc
+         A/iC8gunKxyDQb3HKviReE6H9Vj9EMOSymUdQBip/PRC3jDrXqteqMOgHWFKZKil00Ax
+         Ojv4HlgcStxLchu/PYYImjl8D+bJqXQag6ixKihUj5WFsT7RPHPeAqRZt2rgoC+vhuAa
+         7q4eiCV7C2iZAQ6+941r3lu7hz9RyJao+jRG0xu+gXWufZs9wcVH6cL8Q/5RWdTKTLhm
+         rPIw==
+X-Gm-Message-State: AMke39nJMCI6ixtPzZaYxG5eZ88Dj1ffs5PG3btsSRCCYQVOfT1QzZ5Ytsr455vkubB5GQjzo7Rm4xBkCEWbET6WRX8=
+X-Received: by 10.223.152.215 with SMTP id w81mr4010043wrb.151.1488561014286;
+ Fri, 03 Mar 2017 09:10:14 -0800 (PST)
 MIME-Version: 1.0
-In-Reply-To: <20170302195337.31558-11-alex.bennee@linaro.org>
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8bit
-X-TUID: QVelKImHnGo3
+Received: by 10.223.145.33 with HTTP; Fri, 3 Mar 2017 09:09:53 -0800 (PST)
+In-Reply-To: <4e71b620-8ebd-0f66-f032-64fb8cc98b9f@greensocs.com>
+References: <20170302195337.31558-1-alex.bennee@linaro.org>
+ <20170302195337.31558-12-alex.bennee@linaro.org> <4e71b620-8ebd-0f66-f032-64fb8cc98b9f@greensocs.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 3 Mar 2017 17:09:53 +0000
+Message-ID: <CAFEAcA-t3vNH2dYWCGh8WaHsKeYs+kZonbcncv7dmm8dy29+Dw@mail.gmail.com>
+Subject: Re: [Qemu-devel] [PATCH v2 11/11] hw/intc/arm_gic: modernise the DPRINTF
+To: Frederic Konrad <fred.konrad@greensocs.com>
+Cc: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
+	Richard Henderson <rth@twiddle.net>, Paolo Bonzini <pbonzini@redhat.com>, 
+	MTTCG Devel <mttcg@listserver.greensocs.com>, 
+	Nikunj A Dadhania <nikunj@linux.vnet.ibm.com>, Alvise Rigo <a.rigo@virtualopensystems.com>, 
+	QEMU Developers <qemu-devel@nongnu.org>, "Emilio G. Cota" <cota@braap.org>, 
+	"open list:ARM cores" <qemu-arm@nongnu.org>, Pranith Kumar <bobby.prani@gmail.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+X-TUID: FxtpvY4Pn7fD
 
-On 03/02/2017 08:53 PM, Alex Bennée wrote:
-> ..just like the rest of the displayed ESR register. Otherwise people
-> might scratch their heads if a not obviously hex number is displayed
-> for the EC field.
-> 
-> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-> ---
->  target/arm/helper.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/target/arm/helper.c b/target/arm/helper.c
-> index 3f4211b572..76b608f0ba 100644
-> --- a/target/arm/helper.c
-> +++ b/target/arm/helper.c
-> @@ -6857,7 +6857,7 @@ void arm_cpu_do_interrupt(CPUState *cs)
->                    new_el);
->      if (qemu_loglevel_mask(CPU_LOG_INT)
->          && !excp_is_internal(cs->exception_index)) {
-> -        qemu_log_mask(CPU_LOG_INT, "...with ESR %x/0x%" PRIx32 "\n",
-> +        qemu_log_mask(CPU_LOG_INT, "...with ESR 0x%x/0x%" PRIx32 "\n",
->                        env->exception.syndrome >> ARM_EL_EC_SHIFT,
->                        env->exception.syndrome);
->      }
-> 
+On 3 March 2017 at 17:05, Frederic Konrad <fred.konrad@greensocs.com> wrote=
+:
+> Hi Alex,
+>
+> On 03/02/2017 08:53 PM, Alex Benn=C3=A9e wrote:
+>> While I was debugging the icount issues I realised a bunch of the
+>> messages look quite similar. I've fixed this by including __func__ in
+>> the debug print. At the same time I move the a modern if (GATE) style
+>> printf which ensures the compiler can check for format string errors
+>> even if the code gets optimised away in the non-DEBUG_GIC case.
+>>
+>> Signed-off-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
+>> ---
+>>  hw/intc/arm_gic.c | 13 +++++++++----
+>>  1 file changed, 9 insertions(+), 4 deletions(-)
+>>
+>> diff --git a/hw/intc/arm_gic.c b/hw/intc/arm_gic.c
+>> index 8e5a9d8a3e..b305d9032a 100644
+>> --- a/hw/intc/arm_gic.c
+>> +++ b/hw/intc/arm_gic.c
+>> @@ -26,15 +26,20 @@
+>>  #include "qemu/log.h"
+>>  #include "trace.h"
+>>
+>> -//#define DEBUG_GIC
+>> +/* #define DEBUG_GIC */
+>>
+>>  #ifdef DEBUG_GIC
+>> -#define DPRINTF(fmt, ...) \
+>> -do { fprintf(stderr, "arm_gic: " fmt , ## __VA_ARGS__); } while (0)
+>> +#define DEBUG_GIC_GATE 1
+>>  #else
+>> -#define DPRINTF(fmt, ...) do {} while(0)
+>> +#define DEBUG_GIC_GATE 0
+>>  #endif
+>>
+>> +#define DPRINTF(fmt, ...) do {                                         =
+ \
+>> +        if (DEBUG_GIC_GATE) {                                          =
+ \
+>> +            fprintf(stderr, "%s: " fmt, __func__, ## __VA_ARGS__);     =
+ \
+>> +        }                                                              =
+ \
+>> +    } while (0)
+>> +
+>
+> Seems a prefered way is using qemu_log instead of fprintf?
 
-This seems OK to me.
+This is debug print. Our "preferred" approach is the trace-events
+framework (look at how gicv3 does it for example), which has the
+nice property of being user-enableable at runtime, but there's
+no absolute requirement to update old code to use that instead of
+debug printfs. (It's not completely trivial to update, and among
+other things you need to consider what trace might be useful to
+the user rather than merely whatever random fprintfs you found
+helpful during development.)
 
-Reviewed-by: KONRAD Frederic <fred.konrad@greensocs.com>
+qemu_log is for certain specific kinds of user-enableable tracing
+(notably "guest did something wrong" and "we don't implement this").
+
+thanks
+-- PMM

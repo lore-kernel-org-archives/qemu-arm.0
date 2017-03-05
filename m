@@ -1,70 +1,69 @@
-Received: by 10.25.0.147 with SMTP id 141csp761291lfa;
-        Sat, 4 Mar 2017 11:10:32 -0800 (PST)
-X-Received: by 10.237.63.7 with SMTP id p7mr8502052qtf.249.1488654632247;
-        Sat, 04 Mar 2017 11:10:32 -0800 (PST)
+Received: by 10.25.0.147 with SMTP id 141csp1084322lfa;
+        Sun, 5 Mar 2017 10:52:45 -0800 (PST)
+X-Received: by 10.55.170.212 with SMTP id t203mr11990855qke.53.1488739965370;
+        Sun, 05 Mar 2017 10:52:45 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id 52si12101583qtv.302.2017.03.04.11.10.31
+        by mx.google.com with ESMTPS id y81si9066508qkb.334.2017.03.05.10.52.44
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sat, 04 Mar 2017 11:10:32 -0800 (PST)
+        Sun, 05 Mar 2017 10:52:45 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:36339 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:40045 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ckF4X-00044W-IZ
-	for alex.bennee@linaro.org; Sat, 04 Mar 2017 14:10:29 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:32828)
+	id 1ckbGs-0004Dx-Pi
+	for alex.bennee@linaro.org; Sun, 05 Mar 2017 13:52:42 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:53691)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <viniciusfre@gmail.com>) id 1ckF4R-00044D-TG
-	for qemu-arm@nongnu.org; Sat, 04 Mar 2017 14:10:24 -0500
+	(envelope-from <k.kozlowski.k@gmail.com>) id 1ckbGo-0004Ds-4g
+	for qemu-arm@nongnu.org; Sun, 05 Mar 2017 13:52:39 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <viniciusfre@gmail.com>) id 1ckF4Q-0003X2-GD
-	for qemu-arm@nongnu.org; Sat, 04 Mar 2017 14:10:23 -0500
-Received: from mail-ua0-x22b.google.com ([2607:f8b0:400c:c08::22b]:33721)
+	(envelope-from <k.kozlowski.k@gmail.com>) id 1ckbGl-0001uz-3B
+	for qemu-arm@nongnu.org; Sun, 05 Mar 2017 13:52:38 -0500
+Received: from mail-wr0-f195.google.com ([209.85.128.195]:35443)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <viniciusfre@gmail.com>)
-	id 1ckF4Q-0003Wn-BL
-	for qemu-arm@nongnu.org; Sat, 04 Mar 2017 14:10:22 -0500
-Received: by mail-ua0-x22b.google.com with SMTP id u30so6742365uau.0
-	for <qemu-arm@nongnu.org>; Sat, 04 Mar 2017 11:10:20 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=mime-version:from:date:message-id:subject:to;
-	bh=RFsZTnoM/Mbbj1+2KT7jY9xqwB9YKnSVjUEHzbCMc64=;
-	b=Sfw2Hi+Pcniah3Hr0ZENBtB/hymF4vTUlJIUhZbo/k/lX5KzxlDVNpTqXPNhAZlio6
-	asH9h8SG1dL/iPOJkAq4QP/UA9aZlUgehjUAU4p29lOpNXg9iQASxM8abscCM9BxsqMG
-	zMzJVoy/UApfMeLhrwRTpE1Ahqewl3VvTODfAKSdXybEbyLpZnvy066ftnywKQYmfCJs
-	8Qkp75vUAL5LUKUM4vJ/QXF69dT6KagiBQeqNzxtQDjkhELfJ1jP/ITfTJmoPXkZOBBo
-	haYvZ3S85SzNfX/pUs/IgwbyKybZA/N1ir0B6gejcM+36fXqdVfedHidSXq5iOOrnChP
-	N04Q==
+	(Exim 4.71) (envelope-from <k.kozlowski.k@gmail.com>)
+	id 1ckbGk-0001uX-T0; Sun, 05 Mar 2017 13:52:35 -0500
+Received: by mail-wr0-f195.google.com with SMTP id u108so15266679wrb.2;
+	Sun, 05 Mar 2017 10:52:33 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:from:date:message-id:subject:to;
-	bh=RFsZTnoM/Mbbj1+2KT7jY9xqwB9YKnSVjUEHzbCMc64=;
-	b=WPgBr6FC4/BfQ9vV7+pK3RHTIjcA4EucpKhlzjop+m34eFQLoZ0zYg5/8j7V5aM9vc
-	0gkFybJgHPgsVMqo/6Mz878x5TWir2wHldZgzQiWJjgILaxC6W6JRjCsQNi4lPwtk5kz
-	QATAtJ1p3rKJQEIoB4DpwFThDMRD5cdssmy0C2kl5+N+IjTJIKlhvBtk8qEdemAADqB5
-	4Cs4/MyzSieUaigNC1zfEi0Z9UIvYxhKUyUOYRAko38fg8p/XZSoiQdZBei1FguGuJef
-	q19Id+ZdwSY0IEWEb8P+7GypMEVdsT1pi4An9ZOmh563uEFUIcsXAooTsqJHHd7Vjmf6
-	0OVQ==
-X-Gm-Message-State: AMke39nffWoLGNw1aEsDjbRdksfhJncuhPLgb1ygwHBA5obWBv6cV/lbV3dGJtYL+Vb4n3gkRvbLSn0afTrKBA==
-X-Received: by 10.176.85.26 with SMTP id t26mr3111904uaa.7.1488654619857; Sat,
-	04 Mar 2017 11:10:19 -0800 (PST)
+	h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+	:mime-version:content-disposition:in-reply-to:user-agent;
+	bh=mvO+bBIiwnVU0QpJUmxD3QvfXTfdA9u/HL0vVPUphqw=;
+	b=s5OilA7OOcWq/vjxlplhj4aV5rvBzqDyc5YgvBop2H4Loqu6P8wVSM0Jo4LIJyHBZD
+	ieFvmVUCx1mh9Z6aid6e5+pEqKIHMvYT7IYLpBWaaSR+c9GC/bdm7d4inXzsxvpYFblV
+	7GhXl3oMgFXFIdpT81Ppurda2yF+Z55leo3OrCUMoOhyYmX2AlgE7XWVaFkZ6wQnYPqu
+	C8N8lYPOIJ/sv2/jXHgj+LORlBa6hbgzK1gmZ6O428d606AVBqeigWQB/3eeIE4fAiU6
+	u0BgeWxll95HbXqsZDr3g1RGsV0dbjlsXaBKW7qr6iB5m2HUr5lWspDuYzkTvkWPVurA
+	C6mQ==
+X-Gm-Message-State: AMke39kmp4IaQvHuUfW+lTCfBhELh+5MA75Mlv1X3zAHee53Hms22QIfa9KOhQIlJjtp/g==
+X-Received: by 10.223.170.73 with SMTP id q9mr11197187wrd.13.1488739951800;
+	Sun, 05 Mar 2017 10:52:31 -0800 (PST)
+Received: from kozik-lap (bzq-109-67-52-244.red.bezeqint.net. [109.67.52.244])
+	by smtp.googlemail.com with ESMTPSA id
+	x18sm10474532wmd.14.2017.03.05.10.52.30
+	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+	Sun, 05 Mar 2017 10:52:31 -0800 (PST)
+Date: Sun, 5 Mar 2017 20:52:26 +0200
+From: Krzysztof Kozlowski <krzk@kernel.org>
+To: Peter Maydell <peter.maydell@linaro.org>
+Message-ID: <20170305185226.mhyz6cqpmcz5wrxv@kozik-lap>
+References: <20170301182618.22395-1-krzk@kernel.org>
+	<CAFEAcA-A1FFRnbuU8ev_oEF3rdtSY-ewQixSKr4+G1Op-eYSJQ@mail.gmail.com>
 MIME-Version: 1.0
-Received: by 10.176.0.201 with HTTP; Sat, 4 Mar 2017 11:10:19 -0800 (PST)
-From: Vinicius Maciel <viniciusfre@gmail.com>
-Date: Sat, 4 Mar 2017 16:10:19 -0300
-Message-ID: <CAEz5UgHOXCSMmfymSuV5XYdyWyc_Ozp=24xv6X_wg2FMCMJFZg@mail.gmail.com>
-To: qemu-arm@nongnu.org
-Content-Type: multipart/alternative; boundary=f403045dd850cf5b7e0549ec691f
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:400c:c08::22b
-Subject: [Qemu-arm]  [Bug] Raspberry PI 2 get stuck in boot
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+In-Reply-To: <CAFEAcA-A1FFRnbuU8ev_oEF3rdtSY-ewQixSKr4+G1Op-eYSJQ@mail.gmail.com>
+User-Agent: Mutt/1.6.2-neo (2016-08-21)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.85.128.195
+Subject: Re: [Qemu-arm] [RFC 0/5] hw: arm: exynos: Bring up secondary CPU +
+ CPUIDLE issue
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -76,138 +75,89 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Igor Mitsyanko <i.mitsyanko@gmail.com>, qemu-arm <qemu-arm@nongnu.org>,
+	QEMU Developers <qemu-devel@nongnu.org>,
+	Shannon Zhao <shannon.zhao@linaro.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: OkeP2ZJSkFvP
+X-TUID: 2hk7t2DnqhQ6
 
---f403045dd850cf5b7e0549ec691f
-Content-Type: text/plain; charset=UTF-8
+On Thu, Mar 02, 2017 at 04:56:22PM +0000, Peter Maydell wrote:
+> On 1 March 2017 at 18:26, Krzysztof Kozlowski <krzk@kernel.org> wrote:
+> > Overview of the problem
+> > =======================
+> > On Exynos4210, by default Linux kernel uses cpuidle driver which tries
+> > to enter low power mode, called AFTR (Arm Off, Top Running).  On real
+> > hardware this brings some power savings.  This AFTR mode requires second
+> > CPU to be off, so the driver (coupled cpuidle driver) when system is idle:
+> > 1. Turns off second CPU,
+> > 2. Enters AFTR on CPU0.
+> >
+> > However the QEMU system is then totally unresponsive (e.g. on serial console)
+> > and RCU stalls appear from time to time.  I spent some time on it and did not
+> > find the real cause behind the lag.  Maybe it is because the second CPU
+> > does not really power down itself and system just burns the cycles under spin
+> > locks?
+> 
+> Possibly so. You might check whether it still has this behaviour with
+> current head of git now that the multi-threaded TCG support has landed.
 
-Hi,
+No changes.
 
-The linux kernel 4.4.34-v7+, version , used
-in 2017-01-11-raspbian-jessie-lite.img get stuck in boot.
+> > I am quite new to QEMU.  I do not know the internals (yet), nor the design
+> > how hardware should be emulated in such subtle details.
+> >
+> > The questions I have are:
+> > 1. What is the preferred way to solve it? Maybe some a QEMU
+> >    workaround to disable the cpuidle is okay?
+> > 2. Is it worth implementing a proper secondary CPU power down and
+> >    at the end proper AFTR cpuidle? It might be quite difficult...
+> > 3. How such issues with deep sleep modes were solved for other
+> >    ARM targets?
+> 
+> The general answer to 3 is "we don't bother implementing deep sleep
+> and mostly this hasn't caused problems, but more by luck than
+> judgement". Most of our boards aren't SMP; until now SMP TCG guests
+> have been slower than single core so even on a nominally SMP guest
+> board most users probably use (the default) -smp 1.
+> 
+>  The SMP board that gets most use is the "virt" board whose
+> power-down functionality works through our PSCI implementation.
+> The other board we have which has power-down is the imx6 one:
+> hw/misc/imx6_src.c is the system reset controller model which
+> does this. Basically the model of the whatever-it-is that
+> causes the CPU to be powered down does it via the APIs in
+> target/arm/arm-powerctl.h, which lets you turn CPUs off and on.
+> When a CPU is off then we don't try to let it execute instructions,
+> so it shouldn't chew host CPU at the expense of other guest CPUs.
+> 
+> Minor caution with that API: arm_set_cpu_on() is asynchronous,
+> so if you need to tell the guest "CPU now actually booted" then
+> you'll need to use an async_run_on_cpu() callback the way the
+> imx6_src.c code does.
+> 
+> If the "CPU on" behaviour you need is "CPU powers on as if
+> starting up in standard reset" rather than "CPU powers up
+> and appears to start execution at given address", then it's
+> probably best to improve the arm_powerctl APIs rather than
+> fudge it by trying to work out the arguments to pass to
+> arm_set_cpu_on() to make its "and now go to this address"
+> code not do anything. (The APIs are targeted at the current
+> users which both want "do things which are done in the guest
+> firmware or real hardware".)
 
-[   31.572869] INFO: rcu_sched detected stalls on CPUs/tasks:
+Thanks for the hints! Especially the existing implementations might be
+quite useful.
 
-[   31.576423] 1-O..: (13 GPs behind) idle=001/140000000000000/0
-softirq=0/0 fqs=0
+The cpuidle driver expects the CPU to come up to the same resume
+address. I'll see what others are doing and learn from that. 
 
-[   31.578076] 2-O..: (13 GPs behind) idle=001/140000000000000/0
-softirq=0/0 fqs=0
+As I mentioned before, on current master thish patchset makes everything
+more laggish and unresponsive (because of cpuidle) so actually I think
+the first commit could be postponed for now. At least till I figure out
+solution for the cpuidle problem.
 
-[   31.579390] 3-O..: (13 GPs behind) idle=001/140000000000000/0
-softirq=0/0 fqs=0
-
-[   31.580762] (detected by 0, t=2102 jiffies, g=-287, c=-288, q=1)
-
-[   31.583707] Task dump for CPU 1:
-
-[   31.585268] swapper/1       R running      0     0      1 0x00000000
-
-[   31.591144] Task dump for CPU 2:
-
-[   31.591805] swapper/2       R running      0     0      1 0x00000000
-
-[   31.593095] Task dump for CPU 3:
-
-[   31.593741] swapper/3       R running      0     0      1 0x00000000
-[   31.596279] rcu_sched kthread starved for 2102 jiffies! g4294967009
-c4294967008 f0x0 s3 ->state=0x0
-
-It happens in target-arm.for-upstream from Peter' repository and
-http://git.qemu-project.org/qemu.git/ branch master as well.
 
 Best regards,
-Vinicius
+Krzysztof
 
---f403045dd850cf5b7e0549ec691f
-Content-Type: text/html; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr">Hi,<div><br></div><div>The linux kernel 4.4.34-v7+, versio=
-n , used in=C2=A02017-01-11-raspbian-jessie-lite.img get stuck in boot.</di=
-v><div><br></div><div><span id=3D"gmail-docs-internal-guid-b3f49d99-9a9e-38=
-98-39d5-d24d57fadec5"><p dir=3D"ltr" style=3D"line-height:1.38;margin-top:0=
-pt;margin-bottom:0pt"><span style=3D"font-family:arial;color:rgb(0,0,0);bac=
-kground-color:transparent;vertical-align:baseline;white-space:pre-wrap">[ =
-=C2=A0=C2=A031.572869] INFO: rcu_sched detected stalls on CPUs/tasks:</span=
-></p><p dir=3D"ltr" style=3D"line-height:1.38;margin-top:0pt;margin-bottom:=
-0pt"><span style=3D"font-family:arial;color:rgb(0,0,0);background-color:tra=
-nsparent;vertical-align:baseline;white-space:pre-wrap">[ =C2=A0=C2=A031.576=
-423] </span><span style=3D"font-family:arial;color:rgb(0,0,0);background-co=
-lor:transparent;vertical-align:baseline;white-space:pre-wrap"><span class=
-=3D"gmail-Apple-tab-span" style=3D"white-space:pre">	</span></span><span st=
-yle=3D"font-family:arial;color:rgb(0,0,0);background-color:transparent;vert=
-ical-align:baseline;white-space:pre-wrap">1-O..: (13 GPs behind) idle=3D001=
-/140000000000000/0 softirq=3D0/0 fqs=3D0 </span></p><p dir=3D"ltr" style=3D=
-"line-height:1.38;margin-top:0pt;margin-bottom:0pt"><span style=3D"font-fam=
-ily:arial;color:rgb(0,0,0);background-color:transparent;vertical-align:base=
-line;white-space:pre-wrap">[ =C2=A0=C2=A031.578076] </span><span style=3D"f=
-ont-family:arial;color:rgb(0,0,0);background-color:transparent;vertical-ali=
-gn:baseline;white-space:pre-wrap"><span class=3D"gmail-Apple-tab-span" styl=
-e=3D"white-space:pre">	</span></span><span style=3D"font-family:arial;color=
-:rgb(0,0,0);background-color:transparent;vertical-align:baseline;white-spac=
-e:pre-wrap">2-O..: (13 GPs behind) idle=3D001/140000000000000/0 softirq=3D0=
-/0 fqs=3D0 </span></p><p dir=3D"ltr" style=3D"line-height:1.38;margin-top:0=
-pt;margin-bottom:0pt"><span style=3D"font-family:arial;color:rgb(0,0,0);bac=
-kground-color:transparent;vertical-align:baseline;white-space:pre-wrap">[ =
-=C2=A0=C2=A031.579390] </span><span style=3D"font-family:arial;color:rgb(0,=
-0,0);background-color:transparent;vertical-align:baseline;white-space:pre-w=
-rap"><span class=3D"gmail-Apple-tab-span" style=3D"white-space:pre">	</span=
-></span><span style=3D"font-family:arial;color:rgb(0,0,0);background-color:=
-transparent;vertical-align:baseline;white-space:pre-wrap">3-O..: (13 GPs be=
-hind) idle=3D001/140000000000000/0 softirq=3D0/0 fqs=3D0 </span></p><p dir=
-=3D"ltr" style=3D"line-height:1.38;margin-top:0pt;margin-bottom:0pt"><span =
-style=3D"font-family:arial;color:rgb(0,0,0);background-color:transparent;ve=
-rtical-align:baseline;white-space:pre-wrap">[ =C2=A0=C2=A031.580762] </span=
-><span style=3D"font-family:arial;color:rgb(0,0,0);background-color:transpa=
-rent;vertical-align:baseline;white-space:pre-wrap"><span class=3D"gmail-App=
-le-tab-span" style=3D"white-space:pre">	</span></span><span style=3D"font-f=
-amily:arial;color:rgb(0,0,0);background-color:transparent;vertical-align:ba=
-seline;white-space:pre-wrap">(detected by 0, t=3D2102 jiffies, g=3D-287, c=
-=3D-288, q=3D1)</span></p><p dir=3D"ltr" style=3D"line-height:1.38;margin-t=
-op:0pt;margin-bottom:0pt"><span style=3D"font-family:arial;color:rgb(0,0,0)=
-;background-color:transparent;vertical-align:baseline;white-space:pre-wrap"=
->[ =C2=A0=C2=A031.583707] Task dump for CPU 1:</span></p><p dir=3D"ltr" sty=
-le=3D"line-height:1.38;margin-top:0pt;margin-bottom:0pt"><span style=3D"fon=
-t-family:arial;color:rgb(0,0,0);background-color:transparent;vertical-align=
-:baseline;white-space:pre-wrap">[ =C2=A0=C2=A031.585268] swapper/1 =C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0R running =C2=A0=C2=A0=C2=A0=C2=A0=C2=A00 =C2=
-=A0=C2=A0=C2=A0=C2=A00 =C2=A0=C2=A0=C2=A0=C2=A0=C2=A01 0x00000000</span></p=
-><p dir=3D"ltr" style=3D"line-height:1.38;margin-top:0pt;margin-bottom:0pt"=
-><span style=3D"font-family:arial;color:rgb(0,0,0);background-color:transpa=
-rent;vertical-align:baseline;white-space:pre-wrap">[ =C2=A0=C2=A031.591144]=
- Task dump for CPU 2:</span></p><p dir=3D"ltr" style=3D"line-height:1.38;ma=
-rgin-top:0pt;margin-bottom:0pt"><span style=3D"font-family:arial;color:rgb(=
-0,0,0);background-color:transparent;vertical-align:baseline;white-space:pre=
--wrap">[ =C2=A0=C2=A031.591805] swapper/2 =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0R running =C2=A0=C2=A0=C2=A0=C2=A0=C2=A00 =C2=A0=C2=A0=C2=A0=C2=A00 =C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A01 0x00000000</span></p><p dir=3D"ltr" style=3D"l=
-ine-height:1.38;margin-top:0pt;margin-bottom:0pt"><span style=3D"font-famil=
-y:arial;color:rgb(0,0,0);background-color:transparent;vertical-align:baseli=
-ne;white-space:pre-wrap">[ =C2=A0=C2=A031.593095] Task dump for CPU 3:</spa=
-n></p><p dir=3D"ltr" style=3D"line-height:1.38;margin-top:0pt;margin-bottom=
-:0pt"><span style=3D"font-family:arial;color:rgb(0,0,0);background-color:tr=
-ansparent;vertical-align:baseline;white-space:pre-wrap">[ =C2=A0=C2=A031.59=
-3741] swapper/3 =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0R running =C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A00 =C2=A0=C2=A0=C2=A0=C2=A00 =C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A01 0x00000000</span></p><span style=3D"font-family:arial;color:rgb(0,0,0)=
-;background-color:transparent;vertical-align:baseline;white-space:pre-wrap"=
->[ =C2=A0=C2=A031.596279] rcu_sched kthread starved for 2102 jiffies! g4294=
-967009 c4294967008 f0x0 s3 -&gt;state=3D0x0</span></span><br></div><div><sp=
-an><span style=3D"font-family:arial;color:rgb(0,0,0);background-color:trans=
-parent;vertical-align:baseline;white-space:pre-wrap"><br></span></span></di=
-v><div><span style=3D"font-family:arial;color:rgb(0,0,0);background-color:t=
-ransparent;vertical-align:baseline;white-space:pre-wrap">It happens in </sp=
-an><font color=3D"#000000" face=3D"arial"><span style=3D"white-space:pre-wr=
-ap">target-arm.for-upstream from Peter&#39; repository and <a href=3D"http:=
-//git.qemu-project.org/qemu.git/">http://git.qemu-project.org/qemu.git/</a>=
- branch master as well.</span></font></div><div><font color=3D"#000000" fac=
-e=3D"arial"><span style=3D"white-space:pre-wrap"><br></span></font></div><d=
-iv><font color=3D"#000000" face=3D"arial"><span style=3D"white-space:pre-wr=
-ap">Best regards,</span></font></div><div><font color=3D"#000000" face=3D"a=
-rial"><span style=3D"white-space:pre-wrap">Vinicius</span></font></div></di=
-v>
-
---f403045dd850cf5b7e0549ec691f--

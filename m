@@ -1,66 +1,67 @@
-Received: by 10.25.0.147 with SMTP id 141csp1459864lfa;
-        Mon, 6 Mar 2017 08:55:27 -0800 (PST)
-X-Received: by 10.55.186.67 with SMTP id k64mr16434468qkf.232.1488819327803;
-        Mon, 06 Mar 2017 08:55:27 -0800 (PST)
+Received: by 10.25.0.147 with SMTP id 141csp1465628lfa;
+        Mon, 6 Mar 2017 09:08:07 -0800 (PST)
+X-Received: by 10.200.57.162 with SMTP id v31mr18617705qte.173.1488820087195;
+        Mon, 06 Mar 2017 09:08:07 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id b23si15887925qtc.42.2017.03.06.08.55.27
+        by mx.google.com with ESMTPS id s52si3347482qtc.326.2017.03.06.09.08.06
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 06 Mar 2017 08:55:27 -0800 (PST)
+        Mon, 06 Mar 2017 09:08:07 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:44973 helo=lists.gnu.org)
+Received: from localhost ([::1]:45189 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ckvuv-0006xB-6F
-	for alex.bennee@linaro.org; Mon, 06 Mar 2017 11:55:25 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:36736)
+	id 1ckw7A-0005mn-B9
+	for alex.bennee@linaro.org; Mon, 06 Mar 2017 12:08:04 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:40293)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1ckvuq-0006x2-2d
-	for qemu-arm@nongnu.org; Mon, 06 Mar 2017 11:55:21 -0500
+	(envelope-from <k.kozlowski.k@gmail.com>) id 1ckw75-0005l4-TF
+	for qemu-arm@nongnu.org; Mon, 06 Mar 2017 12:08:00 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1ckvum-0003QR-5x
-	for qemu-arm@nongnu.org; Mon, 06 Mar 2017 11:55:20 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:57656)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <eblake@redhat.com>)
-	id 1ckvul-0003Q6-TN; Mon, 06 Mar 2017 11:55:16 -0500
-Received: from int-mx14.intmail.prod.int.phx2.redhat.com
-	(int-mx14.intmail.prod.int.phx2.redhat.com [10.5.11.27])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id AD86261BA5;
-	Mon,  6 Mar 2017 16:55:15 +0000 (UTC)
-Received: from [10.10.124.84] (ovpn-124-84.rdu2.redhat.com [10.10.124.84] (may
-	be forged))
-	by int-mx14.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id v26GtEGv025382; Mon, 6 Mar 2017 11:55:14 -0500
-To: Krzysztof Kozlowski <krzk@kernel.org>,
-	Igor Mitsyanko <i.mitsyanko@gmail.com>,
-	Peter Maydell <peter.maydell@linaro.org>, Paolo Bonzini
-	<pbonzini@redhat.com>, qemu-arm@nongnu.org, qemu-devel@nongnu.org
+	(envelope-from <k.kozlowski.k@gmail.com>) id 1ckw72-0008Vq-NV
+	for qemu-arm@nongnu.org; Mon, 06 Mar 2017 12:07:59 -0500
+Received: from mail-wr0-f194.google.com ([209.85.128.194]:35468)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <k.kozlowski.k@gmail.com>)
+	id 1ckw72-0008UZ-Hs; Mon, 06 Mar 2017 12:07:56 -0500
+Received: by mail-wr0-f194.google.com with SMTP id u108so18576042wrb.2;
+	Mon, 06 Mar 2017 09:07:56 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+	:mime-version:content-disposition:in-reply-to:user-agent;
+	bh=n4JSjPJi/UaE7Gu4Z6vNvNdqS2A8RPWpG+TNvezc+Ls=;
+	b=Xr7dI1BluY7SuAoVKXFxcaW3/indoz/WukhKUueEZDu9XnP7rkkRld0ocWvzByEaWh
+	A5mf6p1Ui3aR4tLyzIgHufdXYhqIcy5tRbPoOcVqoKmz97gLBRzrrxcuizEhcBY3zYgW
+	HYcXk6BTKrHFeZrXtehQ2zDU4jl2J6Oof+DelWm+GJw3C+dkO5C29sjuzHgUb2mF2N/o
+	N3zeTP18BoolJV+fcmZzGx4MNzVT5cLfudGq5i74e3x+MrU1xIPWBtPHlh11mYNAqwt1
+	uThXCGvWfCTkx47Xp9aMB4T3Hzww2uRxoU2rMZHASA6yzxwZgRzS3IH5hX1eNB1pMU+n
+	GF/g==
+X-Gm-Message-State: AMke39k4xHn2MaetYVntn2gPXuOB2XUsYAq5VVsRtBTgmR/i1b9pxNTdRO/blj99z9IHQg==
+X-Received: by 10.223.144.65 with SMTP id h59mr17653134wrh.30.1488820075150;
+	Mon, 06 Mar 2017 09:07:55 -0800 (PST)
+Received: from kozik-lap (bzq-109-67-52-244.red.bezeqint.net. [109.67.52.244])
+	by smtp.googlemail.com with ESMTPSA id
+	j26sm4185037wrb.69.2017.03.06.09.07.53
+	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+	Mon, 06 Mar 2017 09:07:54 -0800 (PST)
+Date: Mon, 6 Mar 2017 19:07:51 +0200
+From: Krzysztof Kozlowski <krzk@kernel.org>
+To: Eric Blake <eblake@redhat.com>
+Message-ID: <20170306170751.jr7cgwsz3yqq2kd2@kozik-lap>
 References: <20170305214857.9510-1-krzk@kernel.org>
-From: Eric Blake <eblake@redhat.com>
-Openpgp: url=http://people.redhat.com/eblake/eblake.gpg
-Organization: Red Hat, Inc.
-Message-ID: <f441f1d9-b312-5f96-0fbf-53a46a8b16a8@redhat.com>
-Date: Mon, 6 Mar 2017 10:55:12 -0600
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
-	Thunderbird/45.7.0
+	<f441f1d9-b312-5f96-0fbf-53a46a8b16a8@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <20170305214857.9510-1-krzk@kernel.org>
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature";
-	boundary="XduqJM5unoi09FuBBwo3kCEsnQkTOEsv5"
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.27
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.39]);
-	Mon, 06 Mar 2017 16:55:15 +0000 (UTC)
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+In-Reply-To: <f441f1d9-b312-5f96-0fbf-53a46a8b16a8@redhat.com>
+User-Agent: Mutt/1.6.2-neo (2016-08-21)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 209.132.183.28
+X-Received-From: 209.85.128.194
 Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH 1/3] hw/arm/exynos: Convert
  fprintf to error_report()
 X-BeenThere: qemu-arm@nongnu.org
@@ -74,81 +75,46 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Igor Mitsyanko <i.mitsyanko@gmail.com>,
+	Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Tp/8yEe/YBuk
+X-TUID: TcCwWU4vefnC
 
-This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
---XduqJM5unoi09FuBBwo3kCEsnQkTOEsv5
-Content-Type: multipart/mixed; boundary="d002ScOsEhlvBQhjauPGElBlx2b9VvrxU";
- protected-headers="v1"
-From: Eric Blake <eblake@redhat.com>
-To: Krzysztof Kozlowski <krzk@kernel.org>,
- Igor Mitsyanko <i.mitsyanko@gmail.com>,
- Peter Maydell <peter.maydell@linaro.org>, Paolo Bonzini
- <pbonzini@redhat.com>, qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Message-ID: <f441f1d9-b312-5f96-0fbf-53a46a8b16a8@redhat.com>
-Subject: Re: [Qemu-devel] [PATCH 1/3] hw/arm/exynos: Convert fprintf to
- error_report()
-References: <20170305214857.9510-1-krzk@kernel.org>
-In-Reply-To: <20170305214857.9510-1-krzk@kernel.org>
+On Mon, Mar 06, 2017 at 10:55:12AM -0600, Eric Blake wrote:
+> On 03/05/2017 03:48 PM, Krzysztof Kozlowski wrote:
+> > error_report() is preferred over fprintf() for logging errors.  Also
+> > remove square brackets [] and additional new line characters in printed
+> > messages.
+> > 
+> > Signed-off-by: Krzysztof Kozlowski <krzk@kernel.org>
+> > ---
+> 
+> I don't see a 0/3 cover letter. When sending multiple patches, it's
+> always best to package them in-reply-to the cover letter ('git config
+> format.coverLetter auto' makes it easy to remember).
 
---d002ScOsEhlvBQhjauPGElBlx2b9VvrxU
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
+The patches are trivial cleanups without any dependencies so the cover
+letter would be one sentence of "trivial cleanup". :)
 
-On 03/05/2017 03:48 PM, Krzysztof Kozlowski wrote:
-> error_report() is preferred over fprintf() for logging errors.  Also
-> remove square brackets [] and additional new line characters in printed=
+If that's the practice in qemu, I can send them, no problem.
 
-> messages.
->=20
-> Signed-off-by: Krzysztof Kozlowski <krzk@kernel.org>
-> ---
+> 
+> 
+> > @@ -101,9 +102,8 @@ static Exynos4210State *exynos4_boards_init_common(MachineState *machine,
+> >      MachineClass *mc = MACHINE_GET_CLASS(machine);
+> >  
+> >      if (smp_cpus != EXYNOS4210_NCPUS && !qtest_enabled()) {
+> > -        fprintf(stderr, "%s board supports only %d CPU cores. Ignoring smp_cpus"
+> > -                " value.\n",
+> > -                mc->name, EXYNOS4210_NCPUS);
+> > +        error_report("%s board supports only %d CPU cores. Ignoring smp_cpus value.",
+> 
+> Most uses of error_report() avoid trailing dot.
 
-I don't see a 0/3 cover letter. When sending multiple patches, it's
-always best to package them in-reply-to the cover letter ('git config
-format.coverLetter auto' makes it easy to remember).
+Sure, I can rephrase it to one sentence without dot.
 
+Best regards,
+Krzysztof
 
-> @@ -101,9 +102,8 @@ static Exynos4210State *exynos4_boards_init_common(=
-MachineState *machine,
->      MachineClass *mc =3D MACHINE_GET_CLASS(machine);
-> =20
->      if (smp_cpus !=3D EXYNOS4210_NCPUS && !qtest_enabled()) {
-> -        fprintf(stderr, "%s board supports only %d CPU cores. Ignoring=
- smp_cpus"
-> -                " value.\n",
-> -                mc->name, EXYNOS4210_NCPUS);
-> +        error_report("%s board supports only %d CPU cores. Ignoring sm=
-p_cpus value.",
-
-Most uses of error_report() avoid trailing dot.
-
---=20
-Eric Blake   eblake redhat com    +1-919-301-3266
-Libvirt virtualization library http://libvirt.org
-
-
---d002ScOsEhlvBQhjauPGElBlx2b9VvrxU--
-
---XduqJM5unoi09FuBBwo3kCEsnQkTOEsv5
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: OpenPGP digital signature
-Content-Disposition: attachment; filename="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v2
-Comment: Public key at http://people.redhat.com/eblake/eblake.gpg
-Comment: Using GnuPG with Thunderbird - http://www.enigmail.net/
-
-iQEcBAEBCAAGBQJYvZRwAAoJEKeha0olJ0Nqke8H/0d9WaPKCNPvEmj8RA2a6G+c
-a+6QIct0bZjKggUu3P2YuLgBUdj7wOKBWwpCvTHTfSaQt6JXgvfxeMLymHO4vIfp
-gnV4xc2K8LhR9/oFSUb8WFhveovCsIyfR/GL5ZXS8Mj6in0ZssLjcbDDNm0WfBju
-Th2qBQrMm42yUJd/mwZMIt43oHg/5e+Bj53eSvbGLbiK6hKNYFv4wDfcpWpQRJF6
-VTEp8QncjiX1SjS3aSNlKZ6TikBvNOOgmOJQX9Kpx7y0AZ7zXFX2ZA94i3tRIDPp
-JtFoQzmByDxgYUD2NYButzPXxYsFWTYT7/wjuOSJlNPrwk8Rukw2SBrEUi3fKMY=
-=aSXV
------END PGP SIGNATURE-----
-
---XduqJM5unoi09FuBBwo3kCEsnQkTOEsv5--

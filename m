@@ -1,84 +1,86 @@
-Received: by 10.25.0.147 with SMTP id 141csp1129060lfa;
-        Sun, 5 Mar 2017 13:56:33 -0800 (PST)
-X-Received: by 10.55.192.195 with SMTP id v64mr6795089qkv.155.1488750993122;
-        Sun, 05 Mar 2017 13:56:33 -0800 (PST)
+Received: by 10.25.0.147 with SMTP id 141csp1205246lfa;
+        Sun, 5 Mar 2017 19:58:38 -0800 (PST)
+X-Received: by 10.55.23.134 with SMTP id 6mr14579949qkx.201.1488772718038;
+        Sun, 05 Mar 2017 19:58:38 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id d10si14152527qtb.186.2017.03.05.13.56.32
+        by mx.google.com with ESMTPS id i49si14638195qte.80.2017.03.05.19.58.37
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sun, 05 Mar 2017 13:56:33 -0800 (PST)
+        Sun, 05 Mar 2017 19:58:38 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        dkim=fail header.i=@gmail.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:40554 helo=lists.gnu.org)
+Received: from localhost ([::1]:41540 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1cke8k-0008Nu-Fy
-	for alex.bennee@linaro.org; Sun, 05 Mar 2017 16:56:30 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:52710)
+	id 1ckjn9-0002uK-Be
+	for alex.bennee@linaro.org; Sun, 05 Mar 2017 22:58:35 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:45973)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1cke8d-0008MP-Ap
-	for qemu-arm@nongnu.org; Sun, 05 Mar 2017 16:56:24 -0500
+	id 1ckjn4-0002t0-Oq
+	for qemu-arm@nongnu.org; Sun, 05 Mar 2017 22:58:31 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1cke8c-0001N3-CP
-	for qemu-arm@nongnu.org; Sun, 05 Mar 2017 16:56:23 -0500
-Received: from mail-qk0-x244.google.com ([2607:f8b0:400d:c09::244]:33961)
+	id 1ckjn3-0001k1-RA
+	for qemu-arm@nongnu.org; Sun, 05 Mar 2017 22:58:30 -0500
+Received: from mail-qk0-x243.google.com ([2607:f8b0:400d:c09::243]:36832)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1cke8X-0001KN-Fu; Sun, 05 Mar 2017 16:56:17 -0500
-Received: by mail-qk0-x244.google.com with SMTP id v125so1862579qkh.1;
-	Sun, 05 Mar 2017 13:56:14 -0800 (PST)
+	id 1ckjmy-0001jP-PG; Sun, 05 Mar 2017 22:58:24 -0500
+Received: by mail-qk0-x243.google.com with SMTP id n141so17554614qke.3;
+	Sun, 05 Mar 2017 19:58:24 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
 	h=sender:subject:to:references:from:message-id:date:user-agent
 	:mime-version:in-reply-to:content-transfer-encoding;
-	bh=7FCOl2x061I4ZaPV8DdyRW/fiapzDZXtUn4DG/sO7Sc=;
-	b=O1YHkI/spVB8Mc6Ii+1TT6shmE1o4VwIzkzL2lkJ1366XitH1Dwk3WgZVq1N1mDZwi
-	dZLiTJaK9Z2W5Yxc/3tTs0wfsfQaVxkuEqPT4xdWXoczSDsS88WtHhs7cqyB0Pnl3vRf
-	DDak+yYQhpTcNXMTwLQ/W5e8qe9qrOM2biVtoKC7yZg82bBy5JGdPBkUHSiWjv9pUdmm
-	EOqQer9Dk5+IL5a68jAP1ZuVIJG6ULJMAc6F+qnccK9YQ2U8W4h+/kDL5hqDBQL9GM5y
-	GWu9aCAtS5tXXNwAj2KwIVbv+3urInl9e0ItC9wJKjmX12+Xg51E+zGG7Ac+afCr9B6p
-	I33A==
+	bh=U0AMd/auYE3pR5XESM9sSGk4zZiCvr0CFQiPKlm+hgY=;
+	b=WytkgTQ8tKn+2UFIxnhs+HC9zeV80MMnZftyoPo+R9KXgx1dSJ+JsK5/On9khXxhWM
+	AwI0jdPdKFm9IfVtBMcKQomBeljXoxLOPx4/s2/55N245dBfXEpa094DJlCnPmZCOu+e
+	5l/rGbAvbk9xexdJYBsQ3C+ljhQcTkvV6maZhKDmrFe8qoJxgz0BBa4g1catmrvicf3j
+	esvLFurJ/xDKQKEeOjQH70CocIHj/v7vqaHWKx/1kBTV77YNPpCKqCb7kBFk+1eEsyIj
+	3F7SWjwaNbsOaWDoIznCLT8vItCqSvQqHAPYfIPFwFpZ8syGRDPR6qqosW4XA0Bwkz9G
+	zeoA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:sender:subject:to:references:from:message-id
 	:date:user-agent:mime-version:in-reply-to:content-transfer-encoding;
-	bh=7FCOl2x061I4ZaPV8DdyRW/fiapzDZXtUn4DG/sO7Sc=;
-	b=dy6n8lj8seR7H9hMtaOPf/aePitI6ulIguk74WBq4KjdGd78g5RC+cC3uW9pmgV8CW
-	J4hOrUiPnf4vinSzsH2c/5BSF1lIPMqJ9yucniOXU0GIgBpjjXDCu0vF9ohmJecEWdfZ
-	wZa/0Y9tRQlWNVl0SfJ1l5+iIhvDoPs05nex0vI9j1STz1926fjD1sU7+NgD91rP7xu4
-	fGCKiLA63YzfWv734yu2QxxRETnFieD2sEj+6WDEybCxF30kP5IMw6WmG68iUWD1WvKN
-	+ls1ccKbgGk5zXj4lKGmSKehh9rANdsquaSBzvSDDjz1jh+oPUVEnMkJazbIVSk3RbnF
-	k3hg==
-X-Gm-Message-State: AMke39nDWWgT1EqBYCkW5ZrODwCX09HvyAVh+1Y+lpNif6YP3ZO5GuTvLfJrmxXG80j4vg==
-X-Received: by 10.200.1.14 with SMTP id e14mr14088891qtg.244.1488750973984;
-	Sun, 05 Mar 2017 13:56:13 -0800 (PST)
+	bh=U0AMd/auYE3pR5XESM9sSGk4zZiCvr0CFQiPKlm+hgY=;
+	b=IBnYv9Oi3JoBc7SLQBSyQSJYfPKLxSGPQyPLdup8vMltWZIoN7G5qJ5i9kvgRZwyZi
+	Pzb7opUVMvz9k1CBjzONRfFcvN1B9YcMITUR2/b2FRd5vEifk1++8LsIyrdjg03j0fpl
+	Gi95aW+1zZyau8HO74Mxsg4n1SIu126Bhvx2ipDOpBIoKpY41Qx5er+bwJSIJV6NqfQ0
+	m8fBRISpWiL6JzVSTPjBO/Uy/soQigAxoYaF8ZGgOn05s4Si8ZnGB3P5ws8zzO3YHkBJ
+	CLbWCNFYhUfsrQHo9A5jAtqJGEhFJSChW05q/ivnrDskwDH55+fboAIbh95/IX3h4JNy
+	Idaw==
+X-Gm-Message-State: AMke39mEPZ3rk/ZHdWw4L+ZcjKN697krnF9eUR5ClAE/ycvi/zqRLtwuzWui4KvpjH3BPQ==
+X-Received: by 10.55.209.28 with SMTP id s28mr12952756qki.178.1488772704063;
+	Sun, 05 Mar 2017 19:58:24 -0800 (PST)
 Received: from [192.168.1.10] ([138.117.48.226])
 	by smtp.gmail.com with ESMTPSA id
-	w35sm5005597qtc.55.2017.03.05.13.56.11
+	j95sm12557852qte.52.2017.03.05.19.58.20
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Sun, 05 Mar 2017 13:56:13 -0800 (PST)
+	Sun, 05 Mar 2017 19:58:23 -0800 (PST)
 To: Krzysztof Kozlowski <krzk@kernel.org>,
 	Igor Mitsyanko <i.mitsyanko@gmail.com>,
 	Peter Maydell <peter.maydell@linaro.org>, Paolo Bonzini
 	<pbonzini@redhat.com>, qemu-arm@nongnu.org, qemu-devel@nongnu.org
 References: <20170305214857.9510-1-krzk@kernel.org>
+	<20170305214857.9510-2-krzk@kernel.org>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <67b0d01e-219a-9df6-1e46-f763e879e767@amsat.org>
-Date: Sun, 5 Mar 2017 18:56:09 -0300
+Message-ID: <43e6ba5d-7138-7ac7-57e6-e3a0a53109de@amsat.org>
+Date: Mon, 6 Mar 2017 00:58:19 -0300
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
 	Thunderbird/45.7.1
 MIME-Version: 1.0
-In-Reply-To: <20170305214857.9510-1-krzk@kernel.org>
+In-Reply-To: <20170305214857.9510-2-krzk@kernel.org>
 Content-Type: text/plain; charset=windows-1252; format=flowed
-Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:400d:c09::244
-Subject: Re: [Qemu-arm] [PATCH 1/3] hw/arm/exynos: Convert fprintf to
- error_report()
+Content-Transfer-Encoding: 8bit
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:400d:c09::243
+Subject: Re: [Qemu-arm] [PATCH 2/3] hw/arm/exynos4210: Constify data pointed
+ by few arguments and variables
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -92,161 +94,138 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: y8q+UOzj1wca
-
-Hi Krzysztof,
+X-TUID: xKo9zgM6w/Oo
 
 On 03/05/2017 06:48 PM, Krzysztof Kozlowski wrote:
-> error_report() is preferred over fprintf() for logging errors.  Also
-> remove square brackets [] and additional new line characters in printed
-> messages.
+> In few places the function arguments and local variables are not
+> modifying data passed through pointers so this can be made const for
+> code safeness.  Also the static array exynos4210_uart_regs is not being
+> modified.
 >
 > Signed-off-by: Krzysztof Kozlowski <krzk@kernel.org>
+
+Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+
 > ---
->  hw/arm/exynos4_boards.c   |  6 +++---
->  hw/timer/exynos4210_mct.c |  5 +++--
->  hw/timer/exynos4210_pwm.c | 11 +++++------
->  hw/timer/exynos4210_rtc.c | 16 +++++++---------
->  4 files changed, 18 insertions(+), 20 deletions(-)
+>  hw/char/exynos4210_uart.c     | 10 +++++-----
+>  hw/intc/exynos4210_combiner.c |  2 +-
+>  hw/intc/exynos4210_gic.c      |  8 ++++----
+>  hw/misc/exynos4210_pmu.c      |  2 +-
+>  4 files changed, 11 insertions(+), 11 deletions(-)
 >
-> diff --git a/hw/arm/exynos4_boards.c b/hw/arm/exynos4_boards.c
-> index 0efa19405409..5cd94d402b52 100644
-> --- a/hw/arm/exynos4_boards.c
-> +++ b/hw/arm/exynos4_boards.c
-> @@ -22,6 +22,7 @@
->   */
+> diff --git a/hw/char/exynos4210_uart.c b/hw/char/exynos4210_uart.c
+> index b75f28d473bf..83e1be253255 100644
+> --- a/hw/char/exynos4210_uart.c
+> +++ b/hw/char/exynos4210_uart.c
+> @@ -102,7 +102,7 @@ typedef struct Exynos4210UartReg {
+>      uint32_t            reset_value;
+>  } Exynos4210UartReg;
 >
->  #include "qemu/osdep.h"
-> +#include "qemu/error-report.h"
->  #include "qemu-common.h"
->  #include "cpu.h"
->  #include "sysemu/sysemu.h"
-> @@ -101,9 +102,8 @@ static Exynos4210State *exynos4_boards_init_common(MachineState *machine,
->      MachineClass *mc = MACHINE_GET_CLASS(machine);
+> -static Exynos4210UartReg exynos4210_uart_regs[] = {
+> +static const Exynos4210UartReg exynos4210_uart_regs[] = {
+>      {"ULCON",    ULCON,    0x00000000},
+>      {"UCON",     UCON,     0x00003000},
+>      {"UFCON",    UFCON,    0x00000000},
+> @@ -220,7 +220,7 @@ static uint8_t fifo_retrieve(Exynos4210UartFIFO *q)
+>      return  ret;
+>  }
 >
->      if (smp_cpus != EXYNOS4210_NCPUS && !qtest_enabled()) {
-> -        fprintf(stderr, "%s board supports only %d CPU cores. Ignoring smp_cpus"
-> -                " value.\n",
-> -                mc->name, EXYNOS4210_NCPUS);
-> +        error_report("%s board supports only %d CPU cores. Ignoring smp_cpus value.",
-> +                     mc->name, EXYNOS4210_NCPUS);
-
-ok, to inform the user
-
->      }
+> -static int fifo_elements_number(Exynos4210UartFIFO *q)
+> +static int fifo_elements_number(const Exynos4210UartFIFO *q)
+>  {
+>      if (q->sp < q->rp) {
+>          return q->size - q->rp + q->sp;
+> @@ -229,7 +229,7 @@ static int fifo_elements_number(Exynos4210UartFIFO *q)
+>      return q->sp - q->rp;
+>  }
 >
->      exynos4_board_binfo.ram_size = exynos4_board_ram_size[board_type];
-> diff --git a/hw/timer/exynos4210_mct.c b/hw/timer/exynos4210_mct.c
-> index 6069116942a4..48041ab036a6 100644
-> --- a/hw/timer/exynos4210_mct.c
-> +++ b/hw/timer/exynos4210_mct.c
-> @@ -53,6 +53,7 @@
->   */
+> -static int fifo_empty_elements_number(Exynos4210UartFIFO *q)
+> +static int fifo_empty_elements_number(const Exynos4210UartFIFO *q)
+>  {
+>      return q->size - fifo_elements_number(q);
+>  }
+> @@ -245,7 +245,7 @@ static void fifo_reset(Exynos4210UartFIFO *q)
+>      q->rp = 0;
+>  }
 >
->  #include "qemu/osdep.h"
-> +#include "qemu/error-report.h"
->  #include "hw/sysbus.h"
->  #include "qemu/timer.h"
->  #include "qemu/main-loop.h"
-> @@ -1364,8 +1365,8 @@ static void exynos4210_mct_write(void *opaque, hwaddr offset,
->      case L0_TCNTO: case L1_TCNTO:
->      case L0_ICNTO: case L1_ICNTO:
->      case L0_FRCNTO: case L1_FRCNTO:
-> -        fprintf(stderr, "\n[exynos4210.mct: write to RO register "
-> -                TARGET_FMT_plx "]\n\n", offset);
-> +        error_report("exynos4210.mct: write to RO register " TARGET_FMT_plx,
-> +                     offset);
-
-no need to annoy the user here, it seems better to use 
-qemu_log_mask(LOG_UNIMP, ...
-
-same for following diffs
-
->          break;
+> -static uint32_t exynos4210_uart_Tx_FIFO_trigger_level(Exynos4210UartState *s)
+> +static uint32_t exynos4210_uart_Tx_FIFO_trigger_level(const Exynos4210UartState *s)
+>  {
+>      uint32_t level = 0;
+>      uint32_t reg;
+> @@ -488,7 +488,7 @@ static const MemoryRegionOps exynos4210_uart_ops = {
 >
->      case L0_INT_CSTAT: case L1_INT_CSTAT:
-> diff --git a/hw/timer/exynos4210_pwm.c b/hw/timer/exynos4210_pwm.c
-> index f5765075c720..f8826e24e63d 100644
-> --- a/hw/timer/exynos4210_pwm.c
-> +++ b/hw/timer/exynos4210_pwm.c
-> @@ -21,6 +21,7 @@
->   */
+>  static int exynos4210_uart_can_receive(void *opaque)
+>  {
+> -    Exynos4210UartState *s = (Exynos4210UartState *)opaque;
+> +    const Exynos4210UartState *s = (Exynos4210UartState *)opaque;
 >
->  #include "qemu/osdep.h"
-> +#include "qemu/error-report.h"
->  #include "hw/sysbus.h"
->  #include "qemu/timer.h"
->  #include "qemu-common.h"
-> @@ -252,9 +253,8 @@ static uint64_t exynos4210_pwm_read(void *opaque, hwaddr offset,
->          break;
+>      return fifo_empty_elements_number(&s->rx);
+>  }
+> diff --git a/hw/intc/exynos4210_combiner.c b/hw/intc/exynos4210_combiner.c
+> index f19a7062be3a..b057921e0504 100644
+> --- a/hw/intc/exynos4210_combiner.c
+> +++ b/hw/intc/exynos4210_combiner.c
+> @@ -180,7 +180,7 @@ void exynos4210_combiner_get_gpioin(Exynos4210Irq *irqs, DeviceState *dev,
+>  static uint64_t
+>  exynos4210_combiner_read(void *opaque, hwaddr offset, unsigned size)
+>  {
+> -    struct Exynos4210CombinerState *s =
+> +    const struct Exynos4210CombinerState *s =
+>              (struct Exynos4210CombinerState *)opaque;
+>      uint32_t req_quad_base_n;    /* Base of registers quad. Multiply it by 4 and
+>                                     get a start of corresponding group quad */
+> diff --git a/hw/intc/exynos4210_gic.c b/hw/intc/exynos4210_gic.c
+> index 2a55817b7660..432b8425d09d 100644
+> --- a/hw/intc/exynos4210_gic.c
+> +++ b/hw/intc/exynos4210_gic.c
+> @@ -190,7 +190,7 @@ combiner_grp_to_gic_id[64-EXYNOS4210_MAX_EXT_COMBINER_OUT_IRQ][8] = {
 >
->      default:
-> -        fprintf(stderr,
-> -                "[exynos4210.pwm: bad read offset " TARGET_FMT_plx "]\n",
-> -                offset);
-> +        error_report("exynos4210.pwm: bad read offset " TARGET_FMT_plx,
-> +                     offset);
->          break;
->      }
->      return value;
-> @@ -343,9 +343,8 @@ static void exynos4210_pwm_write(void *opaque, hwaddr offset,
->          break;
+>  static void exynos4210_irq_handler(void *opaque, int irq, int level)
+>  {
+> -    Exynos4210Irq *s = (Exynos4210Irq *)opaque;
+> +    const Exynos4210Irq *s = (Exynos4210Irq *)opaque;
 >
->      default:
-> -        fprintf(stderr,
-> -                "[exynos4210.pwm: bad write offset " TARGET_FMT_plx "]\n",
-> -                offset);
-> +        error_report("exynos4210.pwm: bad write offset " TARGET_FMT_plx,
-> +                     offset);
->          break;
+>      /* Bypass */
+>      qemu_set_irq(s->board_irqs[irq], level);
+> @@ -277,7 +277,7 @@ typedef struct {
 >
->      }
-> diff --git a/hw/timer/exynos4210_rtc.c b/hw/timer/exynos4210_rtc.c
-> index 1a648c5d9e67..f4548cd555f4 100644
-> --- a/hw/timer/exynos4210_rtc.c
-> +++ b/hw/timer/exynos4210_rtc.c
-> @@ -26,6 +26,7 @@
->   */
+>  static void exynos4210_gic_set_irq(void *opaque, int irq, int level)
+>  {
+> -    Exynos4210GicState *s = (Exynos4210GicState *)opaque;
+> +    const Exynos4210GicState *s = (Exynos4210GicState *)opaque;
+>      qemu_set_irq(qdev_get_gpio_in(s->gic, irq), level);
+>  }
 >
->  #include "qemu/osdep.h"
-> +#include "qemu/error-report.h"
->  #include "hw/sysbus.h"
->  #include "qemu/timer.h"
->  #include "qemu-common.h"
-> @@ -370,9 +371,8 @@ static uint64_t exynos4210_rtc_read(void *opaque, hwaddr offset,
->          break;
+> @@ -401,7 +401,7 @@ static const VMStateDescription vmstate_exynos4210_irq_gate = {
+>  /* Process a change in IRQ input. */
+>  static void exynos4210_irq_gate_handler(void *opaque, int irq, int level)
+>  {
+> -    Exynos4210IRQGateState *s = (Exynos4210IRQGateState *)opaque;
+> +    const Exynos4210IRQGateState *s = (Exynos4210IRQGateState *)opaque;
+>      uint32_t i;
 >
->      default:
-> -        fprintf(stderr,
-> -                "[exynos4210.rtc: bad read offset " TARGET_FMT_plx "]\n",
-> -                offset);
-> +        error_report("exynos4210.rtc: bad read offset " TARGET_FMT_plx,
-> +                     offset);
->          break;
->      }
->      return value;
-> @@ -433,9 +433,8 @@ static void exynos4210_rtc_write(void *opaque, hwaddr offset,
->          if (value > TICNT_THRESHOLD) {
->              s->reg_ticcnt = value;
->          } else {
-> -            fprintf(stderr,
-> -                    "[exynos4210.rtc: bad TICNT value %u ]\n",
-> -                    (uint32_t)value);
-> +            error_report("exynos4210.rtc: bad TICNT value %u",
-> +                         (uint32_t)value);
->          }
->          break;
+>      assert(irq < s->n_in);
+> @@ -420,7 +420,7 @@ static void exynos4210_irq_gate_handler(void *opaque, int irq, int level)
 >
-> @@ -500,9 +499,8 @@ static void exynos4210_rtc_write(void *opaque, hwaddr offset,
->          break;
+>  static void exynos4210_irq_gate_reset(DeviceState *d)
+>  {
+> -    Exynos4210IRQGateState *s = EXYNOS4210_IRQ_GATE(d);
+> +    const Exynos4210IRQGateState *s = EXYNOS4210_IRQ_GATE(d);
 >
->      default:
-> -        fprintf(stderr,
-> -                "[exynos4210.rtc: bad write offset " TARGET_FMT_plx "]\n",
-> -                offset);
-> +        error_report("exynos4210.rtc: bad write offset " TARGET_FMT_plx,
-> +                     offset);
->          break;
+>      memset(s->level, 0, s->n_in * sizeof(*s->level));
+>  }
+> diff --git a/hw/misc/exynos4210_pmu.c b/hw/misc/exynos4210_pmu.c
+> index e30dbc7d3d83..cbdfa0614600 100644
+> --- a/hw/misc/exynos4210_pmu.c
+> +++ b/hw/misc/exynos4210_pmu.c
+> @@ -400,7 +400,7 @@ typedef struct Exynos4210PmuState {
+>  static uint64_t exynos4210_pmu_read(void *opaque, hwaddr offset,
+>                                      unsigned size)
+>  {
+> -    Exynos4210PmuState *s = (Exynos4210PmuState *)opaque;
+> +    const Exynos4210PmuState *s = (Exynos4210PmuState *)opaque;
+>      unsigned i;
+>      const Exynos4210PmuReg *reg_p = exynos4210_pmu_regs;
 >
->      }
 >

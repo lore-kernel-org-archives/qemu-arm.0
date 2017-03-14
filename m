@@ -1,93 +1,114 @@
-Received: by 10.25.77.4 with SMTP id a4csp1585547lfb;
-        Tue, 14 Mar 2017 04:53:11 -0700 (PDT)
-X-Received: by 10.28.217.83 with SMTP id q80mr14258323wmg.58.1489492391610;
-        Tue, 14 Mar 2017 04:53:11 -0700 (PDT)
+Received: by 10.25.77.4 with SMTP id a4csp1585756lfb;
+        Tue, 14 Mar 2017 04:53:42 -0700 (PDT)
+X-Received: by 10.28.191.24 with SMTP id p24mr14616457wmf.118.1489492422372;
+        Tue, 14 Mar 2017 04:53:42 -0700 (PDT)
 Return-Path: <peter.maydell@linaro.org>
-Received: from mail-wm0-x235.google.com (mail-wm0-x235.google.com. [2a00:1450:400c:c09::235])
-        by mx.google.com with ESMTPS id 48si4817331wry.53.2017.03.14.04.53.11
+Received: from mail-wm0-x229.google.com (mail-wm0-x229.google.com. [2a00:1450:400c:c09::229])
+        by mx.google.com with ESMTPS id n107si4826314wrb.4.2017.03.14.04.53.42
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 14 Mar 2017 04:53:11 -0700 (PDT)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 2a00:1450:400c:c09::235 as permitted sender) client-ip=2a00:1450:400c:c09::235;
+        Tue, 14 Mar 2017 04:53:42 -0700 (PDT)
+Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 2a00:1450:400c:c09::229 as permitted sender) client-ip=2a00:1450:400c:c09::229;
 Authentication-Results: mx.google.com;
        dkim=pass header.i=@linaro.org;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 2a00:1450:400c:c09::235 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 2a00:1450:400c:c09::229 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: by mail-wm0-x235.google.com with SMTP id n11so61757291wma.0
-        for <alex.bennee@linaro.org>; Tue, 14 Mar 2017 04:53:11 -0700 (PDT)
+Received: by mail-wm0-x229.google.com with SMTP id n11so61767383wma.0
+        for <alex.bennee@linaro.org>; Tue, 14 Mar 2017 04:53:42 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
         h=mime-version:in-reply-to:references:from:date:message-id:subject:to
          :cc;
-        bh=8nyfODCTh86WjOq0yvS8KppVosu+CJL9Kq42SYk/RyM=;
-        b=Ew2OA3TbPi4CtWe3s8lQZeo25Xf5H5eA9TBEIxnmE9v1RnaUY6Ii8bzPcBg24e4p28
-         aqXkaZSz78Tm40MpIYHo+PtzgVV9E17OI4wlabfzKZrX7voPEKPu83/ICR+LqcMRfS/3
-         URBO1Rpnc9VlHxMp/lge1rkdQqk0S1+9MwVxo=
+        bh=WacbL4yvwQKF1F+xVfK5KtNT4x5eN/jqbQ3QzYu901Y=;
+        b=Jo63WE4FbHmLRn63quNctHuNkAIs52ILP/KRos8zy/0jzw7I5prZ9/iwVng+uOquJD
+         XFGe1yO+axDFGyFJkdEUhFDUUCNqIEhT+v3ZwrM/ZZIhRQ7PR5yfeqguFxp1Bbz/oGYf
+         1h3pI1+7bVLGcJc4yFr/coqroJruUFPDkeObY=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:mime-version:in-reply-to:references:from:date
          :message-id:subject:to:cc;
-        bh=8nyfODCTh86WjOq0yvS8KppVosu+CJL9Kq42SYk/RyM=;
-        b=Ig+3xaoy/+fEl5Kd+c6Luo+q1JfBEWvM8pOf0uaF6XSQ1//kFU8yLgaqA4fccspQgK
-         wls0gde3yhIfTpPusDFoTEx+hq1QXxo8PsvfZQPyir32bjgw4QHhkfBox7R7A4yTOS48
-         NWaPWC0MmFWbjG2UjuEOyo1BWOSSoC9hAHIE4rMI0016ROvO+gThkLBL2maW3U1LhWl1
-         epjAT4ntghE8GUpNUBueLdN3D5uq844/ShKveDTAeGJDQN6pIA2zqJqAJbTwlRIo5g4N
-         UAapsFH86cRaiHJDkWs+mM/mi1skM9NAk9pcTrHL30u70OuNkpJI27/4Dz8fTnuIQlv+
-         GUkA==
-X-Gm-Message-State: AFeK/H3v3e7+PqF1FVDVw51tHL9wLUxTBcn8DYwKq3eqGJMK7kAiSOS8JDDREAriG7hE62bCxC+uKFl+pzaKPyV99LE=
-X-Received: by 10.28.226.215 with SMTP id z206mr13576946wmg.92.1489492391257;
- Tue, 14 Mar 2017 04:53:11 -0700 (PDT)
+        bh=WacbL4yvwQKF1F+xVfK5KtNT4x5eN/jqbQ3QzYu901Y=;
+        b=WRzhK/Kx0t9zNWJsQ1RcRIj5ElApoRG4zVVh/1voYk/lUyo2V9hYH1o/WP+/SRuDg9
+         iCgOJ0MvILiJ6ll2YnyGH+/KaJ/3w8YSAqmw30XfcCwx7CAmXK05sFzVvaAW/BCics7K
+         FrfxiZ7OgGcifSzv/2LTNuroo3TTPZbaWJ5UxgSOXvuJS4ZVp+FB7QJzJ6j/y6Q/Sdn8
+         YG3vYoXssRPO1/cW01/Y+g2BemRnmWYU2ew5ufWZTAGKHSBQXNf6bxmlomjbjJ8frGTy
+         1inemE+BeEhB1SDHJRM1vu5UhQPvNcES8dCcdvK9rFVtu4xYx0oZXNnl7jcaIWyIae5f
+         iKHg==
+X-Gm-Message-State: AFeK/H3anN61FPqAic7nw88dj5333vD9V0V5ZTwNdxPad03+A0VJPw0O7Zmlshuif52mVAn5tTAqevyRmq+PUAbnJXE=
+X-Received: by 10.28.172.68 with SMTP id v65mr13830212wme.111.1489492422067;
+ Tue, 14 Mar 2017 04:53:42 -0700 (PDT)
 MIME-Version: 1.0
-Received: by 10.223.145.33 with HTTP; Tue, 14 Mar 2017 04:52:50 -0700 (PDT)
-In-Reply-To: <1487616072-9226-1-git-send-email-peter.maydell@linaro.org>
-References: <1487616072-9226-1-git-send-email-peter.maydell@linaro.org>
+Received: by 10.223.145.33 with HTTP; Tue, 14 Mar 2017 04:53:21 -0700 (PDT)
+In-Reply-To: <1488542374-1256-1-git-send-email-peter.maydell@linaro.org>
+References: <1488542374-1256-1-git-send-email-peter.maydell@linaro.org>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 14 Mar 2017 12:52:50 +0100
-Message-ID: <CAFEAcA-j1NSm=_H=V5xJNx=Hv3_P7M+UdVB6gMpL-dS+5NXL1Q@mail.gmail.com>
-Subject: Re: [Qemu-arm] [PATCH 0/4] arm: Fix M profile MSR/MRS
+Date: Tue, 14 Mar 2017 12:53:21 +0100
+Message-ID: <CAFEAcA-S5REnMvKZsDKf8cNgfsHrCCtQm9A=mMevkkwwCYb1BA@mail.gmail.com>
+Subject: Re: [Qemu-arm] [PATCH for-2.9] hw/misc/imx6_src: Don't crash trying
+ to reset missing CPUs
 To: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>, 
 	=?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
-Cc: Michael Davidsaver <mdavidsaver@gmail.com>, "patches@linaro.org" <patches@linaro.org>
+Cc: Peter Chubb <peter.chubb@nicta.com.au>, Jean-Christophe DUBOIS <jcd@tribudubois.net>, 
+	"patches@linaro.org" <patches@linaro.org>
 Content-Type: text/plain; charset=UTF-8
-X-TUID: TKOjPzeXxTp8
+X-TUID: dY876eXm1Qp/
 
-Ping for review -- since this is a bugfix it should go
-into 2.9.
+Ping for review...
 
 thanks
 -- PMM
 
-On 20 February 2017 at 19:41, Peter Maydell <peter.maydell@linaro.org> wrote:
-> This patchseries fixes up some deficiencies and one nasty
-> bug in the M profile MSR/MRS handling.
+On 3 March 2017 at 12:59, Peter Maydell <peter.maydell@linaro.org> wrote:
+> Commit 4881658a4b introduced a call to arm_get_cpu_by_id(),
+> and Coverity noticed that we weren't checking that it didn't
+> return NULL (CID 1371652).
 >
-> The first three patches are just cleaning up the decode
-> so that we UNDEF where we should in the MRS/MSR space
-> for M profile -- this won't have caused any problems in
-> practice since real world code doesn't generally execute
-> UNDEFfing instructions on purpose.
+> Normally this won't happen (because all 4 CPUs are expected
+> to exist), but it's possible the user requested fewer CPUs
+> on the command line. Handle this possibility by silently
+> doing nothing, which is the same behaviour as before commit
+> 4881658a4b and also how we handle the other CPU operations
+> (since we ignore the INVALID_PARAM returns from arm_set_cpu_on()
+> and friends).
 >
-> The fourth patch fixes a nasty bug that I introduced in
-> commit 58117c9bb429cd which broke APSR writes via MSR,
-> and brings them into line with the pseudocode by allowing
-> writes to the APSR GE[3:0] bits when the CPU implements
-> the DSP extensions.
+> There is a slight behavioural difference to the pre-4881658a4b
+> situation: the "reset this core" bit will remain set rather
+> than not being permitted to be set. The imx6 datasheet is
+> unclear about the behaviour in this odd corner case, so we
+> opt for the simpler code rather than complicated logic to
+> maintain identical behaviour.
 >
-> Alex -- I should have paid closer attention to your review
-> comments on the patch that became commit 58117c9bb429cd;
-> sorry about that. I knew we didn't get the GE[3:0] stuff
-> right yet but I didn't spot that we'd managed to invert
-> the sense of the SYSm bit 2 test in that patch :-(
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> ---
+> I couldn't actually get this to crash even with -smp 1 with
+> my test image, but we should fix it anyhow.
 >
-> thanks
-> -- PMM
+>  hw/misc/imx6_src.c | 8 ++++++--
+>  1 file changed, 6 insertions(+), 2 deletions(-)
 >
-> Peter Maydell (4):
->   arm: HVC and SMC encodings don't exist for M profile
->   arm: Don't decode MRS(banked) or MSR(banked) for M profile
->   arm: Enforce should-be-1 bits in MRS decoding
->   arm: Fix APSR writes via M profile MSR
+> diff --git a/hw/misc/imx6_src.c b/hw/misc/imx6_src.c
+> index edbb756..cfb0871 100644
+> --- a/hw/misc/imx6_src.c
+> +++ b/hw/misc/imx6_src.c
+> @@ -143,13 +143,17 @@ static void imx6_defer_clear_reset_bit(int cpuid,
+>                                         unsigned long reset_shift)
+>  {
+>      struct SRCSCRResetInfo *ri;
+> +    CPUState *cpu = arm_get_cpu_by_id(cpuid);
+> +
+> +    if (!cpu) {
+> +        return;
+> +    }
 >
->  target/arm/helper.c    | 26 ++++++++++++++++++++++----
->  target/arm/translate.c | 26 +++++++++++++++++++++++---
->  2 files changed, 45 insertions(+), 7 deletions(-)
+>      ri = g_malloc(sizeof(struct SRCSCRResetInfo));
+>      ri->s = s;
+>      ri->reset_bit = reset_shift;
+>
+> -    async_run_on_cpu(arm_get_cpu_by_id(cpuid), imx6_clear_reset_bit,
+> -                     RUN_ON_CPU_HOST_PTR(ri));
+> +    async_run_on_cpu(cpu, imx6_clear_reset_bit, RUN_ON_CPU_HOST_PTR(ri));
+>  }
+>
+>
+> --
+> 2.7.4

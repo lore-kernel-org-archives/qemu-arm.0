@@ -1,138 +1,195 @@
-Received: by 10.25.77.4 with SMTP id a4csp1303404lfb;
-        Mon, 13 Mar 2017 12:28:23 -0700 (PDT)
-X-Received: by 10.237.39.222 with SMTP id m30mr32909211qtg.21.1489433303762;
-        Mon, 13 Mar 2017 12:28:23 -0700 (PDT)
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id s138si1183265qke.102.2017.03.13.12.28.23
-        for <alex.bennee@linaro.org>
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 13 Mar 2017 12:28:23 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+Received: by 10.25.77.4 with SMTP id a4csp298120lfb;
+        Wed, 15 Mar 2017 05:51:24 -0700 (PDT)
+X-Received: by 10.55.149.197 with SMTP id x188mr2799504qkd.70.1489582284438;
+        Wed, 15 Mar 2017 05:51:24 -0700 (PDT)
+Return-Path: <kvmarm-bounces@lists.cs.columbia.edu>
+Received: from mm01.cs.columbia.edu (mm01.cs.columbia.edu. [128.59.11.253])
+        by mx.google.com with ESMTP id v15si1334698qtb.224.2017.03.15.05.51.23;
+        Wed, 15 Mar 2017 05:51:24 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) client-ip=128.59.11.253;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:53995 helo=lists.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1cnVdl-000287-4V
-	for alex.bennee@linaro.org; Mon, 13 Mar 2017 15:28:21 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:36005)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1cnVdg-00024y-HC
-	for qemu-arm@nongnu.org; Mon, 13 Mar 2017 15:28:17 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1cnVdf-0005y0-HS
-	for qemu-arm@nongnu.org; Mon, 13 Mar 2017 15:28:16 -0400
-Received: from mail-qk0-x243.google.com ([2607:f8b0:400d:c09::243]:35507)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1cnVda-0005wT-CC; Mon, 13 Mar 2017 15:28:10 -0400
-Received: by mail-qk0-x243.google.com with SMTP id o135so38468776qke.2;
-	Mon, 13 Mar 2017 12:28:10 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=sender:subject:to:references:cc:from:message-id:date:user-agent
-	:mime-version:in-reply-to:content-transfer-encoding;
-	bh=prRc5rODItlNr4Z/d/LQKMi/gKuv6DwWB/fNckwUt74=;
-	b=HXrUzA+8EyXVL7n1rrgJfmM7gDnNDXLIVdU4SgiwBwICp0FGkZy9n+NiK0ITUtO/PN
-	I8hTzjPHSigJR+I0P6XDff0PB0ogCK2d9qkngvPWqBkakSTMkrTDVKSCWiaem3cYmY4O
-	GeVXxL09FCUVba+foa6N82xUc/Gsl7fS/M3neYzkLAgTUGzm/0FCjlqKgzLM2VYNjSIR
-	MajvS4mZpJqDJlbuG0JWASniP7DzH32j5kQiov5570wQ0H9rbDCyk6mI0GZte46xTPXs
-	hBLqCFvSg1MqQhhTxm5kbtD+bFWqS9iTUuaG6JyTfB/gW10MUdPJP5UKtyMRVIqElHbj
-	hguQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:sender:subject:to:references:cc:from:message-id
-	:date:user-agent:mime-version:in-reply-to:content-transfer-encoding;
-	bh=prRc5rODItlNr4Z/d/LQKMi/gKuv6DwWB/fNckwUt74=;
-	b=hCdkLlK/LJhd0lZiwyeqGssl4EGWhD8EtpXsDBepd69S+zUl+zUhB1tQqIcUBI4+GU
-	Acg0nzjbRsZuJfORJYSsuMVPgK+po8Hmg0bNekauj9DhjtPMV/+S9OElfogrziJcjY+4
-	fYzc/gp0bpPEXYk5Lij6VkJqt7gS50xnurgexWBS2tWg/QPqa99YlmpyHorGS9+s9yzE
-	8XCAG8+fV9naJFVegC7lVnF82pmkEHqf/z7B/kNoc2zWjy8DNNJIeAQt5gcaFd/R8Bq1
-	Q6JyHBe6tpEIc7Lg7ux6xelNf4KsCjsEoJ4s8YijBklaqnviJB9GkLIW2De3sb14alOR
-	HncQ==
-X-Gm-Message-State: AMke39mNdgKMQMChVm5IzD9+hD72tpulHvlR8qekLeETEySwDyzMMXQy5fcJUf2YunxXog==
-X-Received: by 10.55.200.81 with SMTP id c78mr30957544qkj.253.1489433289739;
-	Mon, 13 Mar 2017 12:28:09 -0700 (PDT)
-Received: from [192.168.1.10] ([138.117.48.226])
-	by smtp.gmail.com with ESMTPSA id
-	j20sm12823923qke.14.2017.03.13.12.28.06
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Mon, 13 Mar 2017 12:28:09 -0700 (PDT)
-To: Krzysztof Kozlowski <krzk@kernel.org>,
-	Igor Mitsyanko <i.mitsyanko@gmail.com>,
-	Peter Maydell <peter.maydell@linaro.org>, Paolo Bonzini
-	<pbonzini@redhat.com>, qemu-arm@nongnu.org, qemu-devel@nongnu.org
-References: <20170313184750.429-1-krzk@kernel.org>
-	<20170313184750.429-4-krzk@kernel.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <65adff21-6f04-f27b-08bc-5a731da58604@amsat.org>
-Date: Mon, 13 Mar 2017 16:28:05 -0300
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
-	Thunderbird/45.8.0
+       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu
+Received: from localhost (localhost [127.0.0.1])
+	by mm01.cs.columbia.edu (Postfix) with ESMTP id 2E21D40BDA;
+	Wed, 15 Mar 2017 08:49:47 -0400 (EDT)
+X-Virus-Scanned: at lists.cs.columbia.edu
+X-Spam-Flag: NO
+X-Spam-Score: -4.202
+X-Spam-Level: 
+X-Spam-Status: No, score=-4.202 required=6.1 tests=[BAYES_00=-1.9,
+	DNS_FROM_AHBL_RHSBL=2.699, RCVD_IN_DNSWL_HI=-5, SPF_HELO_PASS=-0.001]
+	autolearn=unavailable
+Received: from mm01.cs.columbia.edu ([127.0.0.1])
+	by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id b7TXrcfclqWy; Wed, 15 Mar 2017 08:49:45 -0400 (EDT)
+Received: from mm01.cs.columbia.edu (localhost [127.0.0.1])
+	by mm01.cs.columbia.edu (Postfix) with ESMTP id E972640430;
+	Wed, 15 Mar 2017 08:49:45 -0400 (EDT)
+Received: from localhost (localhost [127.0.0.1])
+ by mm01.cs.columbia.edu (Postfix) with ESMTP id F304640430
+ for <kvmarm@lists.cs.columbia.edu>; Wed, 15 Mar 2017 08:49:43 -0400 (EDT)
+X-Virus-Scanned: at lists.cs.columbia.edu
+Received: from mm01.cs.columbia.edu ([127.0.0.1])
+ by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id l7gD+WCybgLw for <kvmarm@lists.cs.columbia.edu>;
+ Wed, 15 Mar 2017 08:49:42 -0400 (EDT)
+Received: from mx1.redhat.com (mx1.redhat.com [209.132.183.28])
+ by mm01.cs.columbia.edu (Postfix) with ESMTPS id A5C0940064
+ for <kvmarm@lists.cs.columbia.edu>; Wed, 15 Mar 2017 08:49:42 -0400 (EDT)
+Received: from smtp.corp.redhat.com (int-mx16.intmail.prod.int.phx2.redhat.com
+ [10.5.11.28])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mx1.redhat.com (Postfix) with ESMTPS id 98CF93D941;
+ Wed, 15 Mar 2017 12:51:18 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 98CF93D941
+Authentication-Results: ext-mx06.extmail.prod.ext.phx2.redhat.com;
+ dmarc=none (p=none dis=none) header.from=redhat.com
+Authentication-Results: ext-mx06.extmail.prod.ext.phx2.redhat.com;
+ spf=pass smtp.mailfrom=drjones@redhat.com
+DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com 98CF93D941
+Received: from kamzik.brq.redhat.com (kamzik.brq.redhat.com [10.34.1.143])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 72E8F2D5C4;
+ Wed, 15 Mar 2017 12:51:16 +0000 (UTC)
+Date: Wed, 15 Mar 2017 13:51:13 +0100
+From: Andrew Jones <drjones@redhat.com>
+To: Christoffer Dall <cdall@linaro.org>
+Subject: Re: [PATCH RFC 6/7] ARM64: KVM: Support heterogeneous system
+Message-ID: <20170315125113.erfl2gk6fwmbccsn@kamzik.brq.redhat.com>
+References: <1484559214-2248-1-git-send-email-zhaoshenglong@huawei.com>
+ <1484559214-2248-7-git-send-email-zhaoshenglong@huawei.com>
+ <20170128145551.sknp447ieue56xgo@hawk.localdomain>
+ <20170315115044.GO1277@cbox>
 MIME-Version: 1.0
-In-Reply-To: <20170313184750.429-4-krzk@kernel.org>
-Content-Type: text/plain; charset=windows-1252; format=flowed
-Content-Transfer-Encoding: 8bit
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:400d:c09::243
-Subject: Re: [Qemu-arm] [PATCH v3 3/3] hw/misc/exynos4210_pmu: Reorder local
- variables for readability
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.21
+Content-Disposition: inline
+In-Reply-To: <20170315115044.GO1277@cbox>
+User-Agent: Mutt/1.6.0.1 (2016-04-01)
+X-Scanned-By: MIMEDefang 2.74 on 10.5.11.28
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+ (mx1.redhat.com [10.5.110.30]); Wed, 15 Mar 2017 12:51:18 +0000 (UTC)
+Cc: marc.zyngier@arm.com, qemu-arm@nongnu.org, wu.wubin@huawei.com,
+ kvmarm@lists.cs.columbia.edu
+X-BeenThere: kvmarm@lists.cs.columbia.edu
+X-Mailman-Version: 2.1.14
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: eblake@redhat.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: sKudDvgz95+N
+List-Id: Where KVM/ARM decisions are made <kvmarm.lists.cs.columbia.edu>
+List-Unsubscribe: <https://lists.cs.columbia.edu/mailman/options/kvmarm>,
+ <mailto:kvmarm-request@lists.cs.columbia.edu?subject=unsubscribe>
+List-Archive: <https://lists.cs.columbia.edu/pipermail/kvmarm>
+List-Post: <mailto:kvmarm@lists.cs.columbia.edu>
+List-Help: <mailto:kvmarm-request@lists.cs.columbia.edu?subject=help>
+List-Subscribe: <https://lists.cs.columbia.edu/mailman/listinfo/kvmarm>,
+ <mailto:kvmarm-request@lists.cs.columbia.edu?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Errors-To: kvmarm-bounces@lists.cs.columbia.edu
+Sender: kvmarm-bounces@lists.cs.columbia.edu
+X-TUID: KyYdIp6jbZNR
 
-On 03/13/2017 03:47 PM, Krzysztof Kozlowski wrote:
-> Short declaration of 'i' was in the middle of declarations with
-> assignments.  Make it a little bit more readable.  Additionally switch
-> from "unsigned" to "unsigned int" as this pattern is more widely used.
-> No functional change.
->
-> Signed-off-by: Krzysztof Kozlowski <krzk@kernel.org>
+On Wed, Mar 15, 2017 at 12:50:44PM +0100, Christoffer Dall wrote:
+> Hi Drew,
+> 
+> [Replying here to try to capture the discussion about this patch we had
+> at connect].
+> 
+> On Sat, Jan 28, 2017 at 03:55:51PM +0100, Andrew Jones wrote:
+> > On Mon, Jan 16, 2017 at 05:33:33PM +0800, Shannon Zhao wrote:
+> > > From: Shannon Zhao <shannon.zhao@linaro.org>
+> > > 
+> > > When initializing KVM, check whether physical hardware is a
+> > > heterogeneous system through the MIDR values. If so, force userspace to
+> > > set the KVM_ARM_VCPU_CROSS feature bit. Otherwise, it should fail to
+> > > initialize VCPUs.
+> > > 
+> > > Signed-off-by: Shannon Zhao <shannon.zhao@linaro.org>
+> > > ---
+> > >  arch/arm/kvm/arm.c       | 26 ++++++++++++++++++++++++++
+> > >  include/uapi/linux/kvm.h |  1 +
+> > >  2 files changed, 27 insertions(+)
+> > > 
+> > > diff --git a/arch/arm/kvm/arm.c b/arch/arm/kvm/arm.c
+> > > index bdceb19..21ec070 100644
+> > > --- a/arch/arm/kvm/arm.c
+> > > +++ b/arch/arm/kvm/arm.c
+> > > @@ -46,6 +46,7 @@
+> > >  #include <asm/kvm_coproc.h>
+> > >  #include <asm/kvm_psci.h>
+> > >  #include <asm/sections.h>
+> > > +#include <asm/cputype.h>
+> > >  
+> > >  #ifdef REQUIRES_VIRT
+> > >  __asm__(".arch_extension	virt");
+> > > @@ -65,6 +66,7 @@ static unsigned int kvm_vmid_bits __read_mostly;
+> > >  static DEFINE_SPINLOCK(kvm_vmid_lock);
+> > >  
+> > >  static bool vgic_present;
+> > > +static bool heterogeneous_system;
+> > >  
+> > >  static DEFINE_PER_CPU(unsigned char, kvm_arm_hardware_enabled);
+> > >  
+> > > @@ -210,6 +212,9 @@ int kvm_vm_ioctl_check_extension(struct kvm *kvm, long ext)
+> > >  	case KVM_CAP_ARM_CROSS_VCPU:
+> > >  		r = 1;
+> > >  		break;
+> > > +	case KVM_CAP_ARM_HETEROGENEOUS:
+> > > +		r = heterogeneous_system;
+> > > +		break;
+> > 
+> > What's this for? When/why would usespace check it?
+> > 
+> 
+> Without a capability, how can userspace tell the difference between "I
+> got -EINVAL because I'm on an old kernel" or "I asked for something that
+> any kernel cannot emulate"?
+> 
+> Do we need to distinguish between these cases?
 
-Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+Yup, I'm in full agreement that we need a capability for the
+cross-vcpu support. Above this heterogeneous one there's the
+CROSS_VCPU one though. Do we need both? If QEMU wants to know
+whether or not the host it's running on is heterogeneous, then
+it can just query sysfs, rather than ask KVM.
 
-> ---
->  hw/misc/exynos4210_pmu.c | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
->
-> diff --git a/hw/misc/exynos4210_pmu.c b/hw/misc/exynos4210_pmu.c
-> index e30dbc7d3d83..63a8ccd35559 100644
-> --- a/hw/misc/exynos4210_pmu.c
-> +++ b/hw/misc/exynos4210_pmu.c
-> @@ -401,8 +401,8 @@ static uint64_t exynos4210_pmu_read(void *opaque, hwaddr offset,
->                                      unsigned size)
->  {
->      Exynos4210PmuState *s = (Exynos4210PmuState *)opaque;
-> -    unsigned i;
->      const Exynos4210PmuReg *reg_p = exynos4210_pmu_regs;
-> +    unsigned int i;
->
->      for (i = 0; i < PMU_NUM_OF_REGISTERS; i++) {
->          if (reg_p->offset == offset) {
-> @@ -420,8 +420,8 @@ static void exynos4210_pmu_write(void *opaque, hwaddr offset,
->                                   uint64_t val, unsigned size)
->  {
->      Exynos4210PmuState *s = (Exynos4210PmuState *)opaque;
-> -    unsigned i;
->      const Exynos4210PmuReg *reg_p = exynos4210_pmu_regs;
-> +    unsigned int i;
->
->      for (i = 0; i < PMU_NUM_OF_REGISTERS; i++) {
->          if (reg_p->offset == offset) {
->
+> 
+> > >  	case KVM_CAP_COALESCED_MMIO:
+> > >  		r = KVM_COALESCED_MMIO_PAGE_OFFSET;
+> > >  		break;
+> > > @@ -812,6 +817,12 @@ static int kvm_vcpu_set_target(struct kvm_vcpu *vcpu,
+> > >  	int phys_target = kvm_target_cpu();
+> > >  	bool cross_vcpu = kvm_vcpu_has_feature_cross_cpu(init);
+> > >  
+> > > +	if (heterogeneous_system && !cross_vcpu) {
+> > > +		kvm_err("%s:Host is a heterogeneous system, set KVM_ARM_VCPU_CROSS bit\n",
+> > > +			__func__);
+> > > +		return -EINVAL;
+> > > +	}
+> > 
+> > Instead of forcing userspace to set a bit, why not just confirm the
+> > target selected will work? E.g. if only generic works on a heterogeneous
+> > system then just 
+> > 
+> >  if (heterogeneous_system && init->target != GENERIC)
+> >     return -EINVAL
+> > 
+> > should work
+> > 
+> 
+> Yes, I think we concluded that if we advertise if we can do the
+> cross type emulation or not, then if we can do the emulation we should
+> just do it when possible, for maximum user experience.
+
+Your agreement here implies to me that we only need the one capability.
+
+> 
+> I'm sure I missed some aspect of this discussion though.
+
+Me too. As we discussed, it's probably time to try and hash out a fresh
+design doc. It'd be good to get a clear design agreed upon before
+returning to the patches.
+
+Thanks,
+drew
+_______________________________________________
+kvmarm mailing list
+kvmarm@lists.cs.columbia.edu
+https://lists.cs.columbia.edu/mailman/listinfo/kvmarm

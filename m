@@ -1,78 +1,63 @@
-Received: by 10.25.77.4 with SMTP id a4csp363924lfb;
-        Wed, 15 Mar 2017 08:22:59 -0700 (PDT)
-X-Received: by 10.55.18.158 with SMTP id 30mr3569591qks.123.1489591379011;
-        Wed, 15 Mar 2017 08:22:59 -0700 (PDT)
+Received: by 10.25.77.4 with SMTP id a4csp368228lfb;
+        Wed, 15 Mar 2017 08:32:46 -0700 (PDT)
+X-Received: by 10.200.46.208 with SMTP id i16mr3427480qta.13.1489591966256;
+        Wed, 15 Mar 2017 08:32:46 -0700 (PDT)
 Return-Path: <kvmarm-bounces@lists.cs.columbia.edu>
 Received: from mm01.cs.columbia.edu (mm01.cs.columbia.edu. [128.59.11.253])
-        by mx.google.com with ESMTP id m67si1634048qkl.180.2017.03.15.08.22.58;
-        Wed, 15 Mar 2017 08:22:59 -0700 (PDT)
+        by mx.google.com with ESMTP id u128si1644918qkf.301.2017.03.15.08.32.45;
+        Wed, 15 Mar 2017 08:32:46 -0700 (PDT)
 Received-SPF: pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) client-ip=128.59.11.253;
 Authentication-Results: mx.google.com;
-       dkim=neutral (body hash did not verify) header.i=@linaro.org;
-       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu
 Received: from localhost (localhost [127.0.0.1])
-	by mm01.cs.columbia.edu (Postfix) with ESMTP id 49BA740284;
-	Wed, 15 Mar 2017 11:21:22 -0400 (EDT)
+	by mm01.cs.columbia.edu (Postfix) with ESMTP id 8924E40B40;
+	Wed, 15 Mar 2017 11:31:09 -0400 (EDT)
 X-Virus-Scanned: at lists.cs.columbia.edu
 X-Spam-Flag: NO
-X-Spam-Score: 0.909
+X-Spam-Score: -4.202
 X-Spam-Level: 
-X-Spam-Status: No, score=0.909 required=6.1 tests=[BAYES_00=-1.9,
-	DKIM_SIGNED=0.1, DNS_FROM_AHBL_RHSBL=2.699,
-	RCVD_IN_DNSWL_NONE=-0.0001, T_DKIM_INVALID=0.01] autolearn=no
-Authentication-Results: mm01.cs.columbia.edu (amavisd-new); dkim=softfail
-	(fail, message has been altered) header.i=@linaro.org
+X-Spam-Status: No, score=-4.202 required=6.1 tests=[BAYES_00=-1.9,
+	DNS_FROM_AHBL_RHSBL=2.699, RCVD_IN_DNSWL_HI=-5, SPF_HELO_PASS=-0.001]
+	autolearn=unavailable
 Received: from mm01.cs.columbia.edu ([127.0.0.1])
 	by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id GK9M5ZzRg-PL; Wed, 15 Mar 2017 11:21:18 -0400 (EDT)
+	with ESMTP id eJiljLLejRGK; Wed, 15 Mar 2017 11:31:08 -0400 (EDT)
 Received: from mm01.cs.columbia.edu (localhost [127.0.0.1])
-	by mm01.cs.columbia.edu (Postfix) with ESMTP id 39ACA40296;
-	Wed, 15 Mar 2017 11:21:18 -0400 (EDT)
+	by mm01.cs.columbia.edu (Postfix) with ESMTP id 7F05B40962;
+	Wed, 15 Mar 2017 11:31:08 -0400 (EDT)
 Received: from localhost (localhost [127.0.0.1])
- by mm01.cs.columbia.edu (Postfix) with ESMTP id 3838640190
- for <kvmarm@lists.cs.columbia.edu>; Wed, 15 Mar 2017 11:21:17 -0400 (EDT)
+ by mm01.cs.columbia.edu (Postfix) with ESMTP id 1E61440BD2
+ for <kvmarm@lists.cs.columbia.edu>; Wed, 15 Mar 2017 11:31:07 -0400 (EDT)
 X-Virus-Scanned: at lists.cs.columbia.edu
 Received: from mm01.cs.columbia.edu ([127.0.0.1])
  by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id X+4jGUvmUSBw for <kvmarm@lists.cs.columbia.edu>;
- Wed, 15 Mar 2017 11:21:15 -0400 (EDT)
-Received: from mail-wr0-f170.google.com (mail-wr0-f170.google.com
- [209.85.128.170])
- by mm01.cs.columbia.edu (Postfix) with ESMTPS id B211640187
- for <kvmarm@lists.cs.columbia.edu>; Wed, 15 Mar 2017 11:21:15 -0400 (EDT)
-Received: by mail-wr0-f170.google.com with SMTP id g10so13332053wrg.2
- for <kvmarm@lists.cs.columbia.edu>; Wed, 15 Mar 2017 08:22:51 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to:user-agent;
- bh=e9sluZCcDF5uVrbf5L/5YPB0513qg4RHas/xsEjMfHk=;
- b=TqjdDdniknNqXg3cUgr1b+RGW8IGPK+b/c9xIzvJ3/PZ1KiB7x9yapTwFqD/WXjVwa
- D0vgDHJ5K1GAZavykaf39Ik1D3Nc9WrouuXvTqplBaVBw07VYclDp95DeqOVszHkIeIp
- K29uJEWGb/GrwZhtLvch4GmjoJkaw3W6G2TAc=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to:user-agent;
- bh=e9sluZCcDF5uVrbf5L/5YPB0513qg4RHas/xsEjMfHk=;
- b=GPwC2klulx+DzYpYO59bw0n2SjmyRrBnzMC5QBcdId1OeazBhX/9YgTyVl6yr9mjOk
- fApbXQ/JJtVPLXN+cbzCgpC33MwINbWTvWRgBcSTRqzuO+xinvRtNv/vS8IVqqagFxAz
- UXg2cD6kyh3gGkcFB7I8s/nAXB6NAPEYFAR8jHNcUHudBo8qaYs/lGujDu3l8faYkHGJ
- 5tLGu+f2Rqd3gLzTz/fG/jmN2urZH/1tySENWdZgRK/FKQ2bfO4MGVFVcMzxurtiX/za
- siNcTqUGAR4OpPZAm4hkPE/a9OFQQ4Iv0j8diEeQabDtKTcEqMJf5XK70QrqtjBaWzBf
- +/wg==
-X-Gm-Message-State: AFeK/H0ud38lWleGhObKMFtpFyL2TfYB39BSVcBPyK9v9/X6FyPdR1Do0TaRYVTaEZOo7E6B
-X-Received: by 10.223.177.148 with SMTP id q20mr3654142wra.154.1489591369470; 
- Wed, 15 Mar 2017 08:22:49 -0700 (PDT)
-Received: from localhost (xd93ddc2d.cust.hiper.dk. [217.61.220.45])
- by smtp.gmail.com with ESMTPSA id 136sm842584wms.32.2017.03.15.08.22.48
- (version=TLS1_2 cipher=AES128-SHA bits=128/128);
- Wed, 15 Mar 2017 08:22:48 -0700 (PDT)
-Date: Wed, 15 Mar 2017 16:22:37 +0100
-From: Christoffer Dall <cdall@linaro.org>
-To: Andrew Jones <drjones@redhat.com>
+ with ESMTP id 561CZ-GZRSjq for <kvmarm@lists.cs.columbia.edu>;
+ Wed, 15 Mar 2017 11:31:06 -0400 (EDT)
+Received: from mx1.redhat.com (mx1.redhat.com [209.132.183.28])
+ by mm01.cs.columbia.edu (Postfix) with ESMTPS id EA2D6400E9
+ for <kvmarm@lists.cs.columbia.edu>; Wed, 15 Mar 2017 11:31:05 -0400 (EDT)
+Received: from int-mx09.intmail.prod.int.phx2.redhat.com
+ (int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mx1.redhat.com (Postfix) with ESMTPS id 2ED677F359;
+ Wed, 15 Mar 2017 15:32:42 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 2ED677F359
+Authentication-Results: ext-mx02.extmail.prod.ext.phx2.redhat.com;
+ dmarc=none (p=none dis=none) header.from=redhat.com
+Authentication-Results: ext-mx02.extmail.prod.ext.phx2.redhat.com;
+ spf=pass smtp.mailfrom=drjones@redhat.com
+DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com 2ED677F359
+Received: from kamzik.brq.redhat.com (kamzik.brq.redhat.com [10.34.1.143])
+ by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP id
+ v2FFWcSg005109
+ (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=NO);
+ Wed, 15 Mar 2017 11:32:40 -0400
+Date: Wed, 15 Mar 2017 16:32:37 +0100
+From: Andrew Jones <drjones@redhat.com>
+To: Christoffer Dall <cdall@linaro.org>
 Subject: Re: [PATCH RFC 6/7] ARM64: KVM: Support heterogeneous system
-Message-ID: <20170315152237.GR1277@cbox>
+Message-ID: <20170315153237.fsozm4j3h7ykrvqj@kamzik.brq.redhat.com>
 References: <1484559214-2248-1-git-send-email-zhaoshenglong@huawei.com>
  <1484559214-2248-7-git-send-email-zhaoshenglong@huawei.com>
  <20170128145551.sknp447ieue56xgo@hawk.localdomain>
@@ -80,10 +65,14 @@ References: <1484559214-2248-1-git-send-email-zhaoshenglong@huawei.com>
  <20170315125113.erfl2gk6fwmbccsn@kamzik.brq.redhat.com>
  <20170315133645.GQ1277@cbox>
  <20170315140633.jtultotyihql7qlr@kamzik.brq.redhat.com>
+ <20170315152237.GR1277@cbox>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20170315140633.jtultotyihql7qlr@kamzik.brq.redhat.com>
-User-Agent: Mutt/1.5.21 (2010-09-15)
+In-Reply-To: <20170315152237.GR1277@cbox>
+User-Agent: Mutt/1.6.0.1 (2016-04-01)
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+ (mx1.redhat.com [10.5.110.26]); Wed, 15 Mar 2017 15:32:42 +0000 (UTC)
 Cc: marc.zyngier@arm.com, qemu-arm@nongnu.org, wu.wubin@huawei.com,
  kvmarm@lists.cs.columbia.edu
 X-BeenThere: kvmarm@lists.cs.columbia.edu
@@ -101,38 +90,42 @@ Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: kvmarm-bounces@lists.cs.columbia.edu
 Sender: kvmarm-bounces@lists.cs.columbia.edu
-X-TUID: 3JYKQFsBAxyV
+X-TUID: kwPDlUzwX7yI
 
-On Wed, Mar 15, 2017 at 03:06:33PM +0100, Andrew Jones wrote:
-> On Wed, Mar 15, 2017 at 02:36:45PM +0100, Christoffer Dall wrote:
-> > > If QEMU wants to know
-> > > whether or not the host it's running on is heterogeneous, then
-> > > it can just query sysfs, rather than ask KVM.
+On Wed, Mar 15, 2017 at 04:22:37PM +0100, Christoffer Dall wrote:
+> On Wed, Mar 15, 2017 at 03:06:33PM +0100, Andrew Jones wrote:
+> > On Wed, Mar 15, 2017 at 02:36:45PM +0100, Christoffer Dall wrote:
+> > > > If QEMU wants to know
+> > > > whether or not the host it's running on is heterogeneous, then
+> > > > it can just query sysfs, rather than ask KVM.
+> > > > 
 > > > 
+> > > Can it?  Is this information available in a reliable way from userspace?
 > > 
-> > Can it?  Is this information available in a reliable way from userspace?
-> 
-> I don't know much (anything) about it, but, afaict, yes. See
-> https://lkml.org/lkml/2017/1/19/380
-> 
-> > > > I'm sure I missed some aspect of this discussion though.
-> > > 
-> > > Me too. As we discussed, it's probably time to try and hash out a fresh
-> > > design doc. It'd be good to get a clear design agreed upon before
-> > > returning to the patches.
-> > > 
+> > I don't know much (anything) about it, but, afaict, yes. See
+> > https://lkml.org/lkml/2017/1/19/380
 > > 
-> > Yes, it's on my list.
-> 
-> I'm happy to help with this, even to take a stab at the first draft. Just
-> let me know if you or Shannon prefer to do the draft yourselves. If you
-> don't have a preference, then I can start working on it pretty soon.
-> 
-I'd be really happy for you to draft a new design doc, and I can review
-in private or publicly first as you prefer.
+> > > > > I'm sure I missed some aspect of this discussion though.
+> > > > 
+> > > > Me too. As we discussed, it's probably time to try and hash out a fresh
+> > > > design doc. It'd be good to get a clear design agreed upon before
+> > > > returning to the patches.
+> > > > 
+> > > 
+> > > Yes, it's on my list.
+> > 
+> > I'm happy to help with this, even to take a stab at the first draft. Just
+> > let me know if you or Shannon prefer to do the draft yourselves. If you
+> > don't have a preference, then I can start working on it pretty soon.
+> > 
+> I'd be really happy for you to draft a new design doc, and I can review
+> in private or publicly first as you prefer.
+>
+
+OK, I'll hopefully have something pulled together by the end of next week.
 
 Thanks,
--Christoffer
+drew
 _______________________________________________
 kvmarm mailing list
 kvmarm@lists.cs.columbia.edu

@@ -1,70 +1,53 @@
-Received: by 10.25.77.4 with SMTP id a4csp840807lfb;
-        Thu, 16 Mar 2017 08:28:53 -0700 (PDT)
-X-Received: by 10.200.44.138 with SMTP id 10mr9553556qtw.12.1489678133291;
-        Thu, 16 Mar 2017 08:28:53 -0700 (PDT)
+Received: by 10.25.15.230 with SMTP id 99csp614676lfp;
+        Sat, 18 Mar 2017 07:28:41 -0700 (PDT)
+X-Received: by 10.237.45.198 with SMTP id i64mr20177510qtd.238.1489847321236;
+        Sat, 18 Mar 2017 07:28:41 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id q15si4150384qtb.202.2017.03.16.08.28.53
+        by mx.google.com with ESMTPS id j65si8827762qkd.212.2017.03.18.07.28.41
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 16 Mar 2017 08:28:53 -0700 (PDT)
+        Sat, 18 Mar 2017 07:28:41 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:44306 helo=lists.gnu.org)
+Received: from localhost ([::1]:53547 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1coXKe-0003r6-Px
-	for alex.bennee@linaro.org; Thu, 16 Mar 2017 11:28:52 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:50041)
+	id 1cpFLU-00037m-Lw
+	for alex.bennee@linaro.org; Sat, 18 Mar 2017 10:28:40 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:53170)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1coXKa-0003qz-To
-	for qemu-arm@nongnu.org; Thu, 16 Mar 2017 11:28:50 -0400
+	(envelope-from <krzk@kernel.org>) id 1cpFLO-00035W-R9
+	for qemu-arm@nongnu.org; Sat, 18 Mar 2017 10:28:36 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1coXKV-0003DB-W6
-	for qemu-arm@nongnu.org; Thu, 16 Mar 2017 11:28:48 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:50100)
+	(envelope-from <krzk@kernel.org>) id 1cpFLK-00085w-S7
+	for qemu-arm@nongnu.org; Sat, 18 Mar 2017 10:28:34 -0400
+Received: from mail.kernel.org ([198.145.29.136]:49512)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <eric.auger@redhat.com>)
-	id 1coXKV-0003Ct-ML; Thu, 16 Mar 2017 11:28:43 -0400
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
-	[10.5.11.15])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(Exim 4.71) (envelope-from <krzk@kernel.org>)
+	id 1cpFLK-000850-IZ; Sat, 18 Mar 2017 10:28:30 -0400
+Received: from mail.kernel.org (localhost [127.0.0.1])
+	by mail.kernel.org (Postfix) with ESMTP id 5D06920382;
+	Sat, 18 Mar 2017 14:28:26 +0000 (UTC)
+Received: from localhost.localdomain (bzq-109-66-69-167.red.bezeqint.net
+	[109.66.69.167])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 9EFA8C057FA4;
-	Thu, 16 Mar 2017 15:28:43 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 9EFA8C057FA4
-Authentication-Results: ext-mx08.extmail.prod.ext.phx2.redhat.com;
-	dmarc=none (p=none dis=none) header.from=redhat.com
-Authentication-Results: ext-mx08.extmail.prod.ext.phx2.redhat.com;
-	spf=pass smtp.mailfrom=eric.auger@redhat.com
-DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com 9EFA8C057FA4
-Received: from localhost.localdomain (ovpn-116-159.ams2.redhat.com
-	[10.36.116.159])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 5FEAC17100;
-	Thu, 16 Mar 2017 15:28:39 +0000 (UTC)
-To: Peter Maydell <peter.maydell@linaro.org>
-References: <1488800894-22421-1-git-send-email-eric.auger@redhat.com>
-	<1488800894-22421-4-git-send-email-eric.auger@redhat.com>
-	<CAFEAcA97hCS-bbKDV+w2G3yRunUm=QpsA+8Bqp9YNaa_VtMP-w@mail.gmail.com>
-From: Auger Eric <eric.auger@redhat.com>
-Message-ID: <884feb25-e918-1cc6-10d5-ea37387bceb7@redhat.com>
-Date: Thu, 16 Mar 2017 16:28:36 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
-	Thunderbird/45.4.0
-MIME-Version: 1.0
-In-Reply-To: <CAFEAcA97hCS-bbKDV+w2G3yRunUm=QpsA+8Bqp9YNaa_VtMP-w@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.32]);
-	Thu, 16 Mar 2017 15:28:43 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [RFC v2 3/3] hw/intc/arm_gicv3_its: Allow
- save/restore
+	by mail.kernel.org (Postfix) with ESMTPSA id CC0FB202A1;
+	Sat, 18 Mar 2017 14:28:22 +0000 (UTC)
+From: Krzysztof Kozlowski <krzk@kernel.org>
+To: Igor Mitsyanko <i.mitsyanko@gmail.com>,
+	Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Date: Sat, 18 Mar 2017 16:28:13 +0200
+Message-Id: <20170318142813.4781-1-krzk@kernel.org>
+X-Mailer: git-send-email 2.9.3
+X-Virus-Scanned: ClamAV using ClamSMTP
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
+X-Received-From: 198.145.29.136
+Subject: [Qemu-arm] [PATCH] hw/misc: Add Exynos4210 Pseudo Random Number
+ Generator
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -76,154 +59,331 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jones <drjones@redhat.com>, Vijay Kilari <vijay.kilari@gmail.com>,
-	Juan Quintela <quintela@redhat.com>,
-	QEMU Developers <qemu-devel@nongnu.org>,
-	Peter Xu <peterx@redhat.com>, "Kumar, Vijaya" <Vijaya.Kumar@cavium.com>,
-	qemu-arm <qemu-arm@nongnu.org>,
-	Christoffer Dall <christoffer.dall@linaro.org>,
-	"Dr. David Alan Gilbert" <dgilbert@redhat.com>, eric.auger.pro@gmail.com
+Cc: Krzysztof Kozlowski <krzk@kernel.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: FKyRqX3eI9IA
+X-TUID: QxxeVGK31+8o
 
-Hi Peter,
+Add emulation for Exynos4210 Pseudo Random Number Generator which could
+work on fixed seeds or with seeds provided by True Random Number
+Generator block inside the SoC.
 
-On 13/03/2017 19:03, Peter Maydell wrote:
-> On 6 March 2017 at 12:48, Eric Auger <eric.auger@redhat.com> wrote:
->> We change the restoration priority of both the GICv3 and ITS. The
->> GICv3 must be restored before the ITS and the ITS needs to be restored
->> before PCIe devices since it translates their MSI transactions.
-> 
->> We typically observe the virtio-pci-net device sending MSI transactions
->> very early (even before the first vcpu run) which looks weird. It
->> appears that not servicing those transactions cause the virtio-pci-net
->> to stall.
-> 
-> This does seem rather weird and worth closer investigation.
-> A stopped VM ought IMHO to be completely stopped, not still
-> doing things...
-Yes I will take time to investigate what does happen.
+Implement only the fixed seeds part of it in polling mode (no
+interrupts).  Simple testing:
+    # echo "exynos" > /sys/class/misc/hw_random/rng_current
+    # dd if=/dev/hwrng of=/dev/null bs=1 count=16
 
-> 
->> Signed-off-by: Eric Auger <eric.auger@redhat.com>
->>
->> ---
->>
->> v1 -> v2:
->> - handle case where migrate_add_blocker fails
->> - add comments along with ITS and GICv3 migration priorities
->> ---
->>  hw/intc/arm_gicv3_common.c     |  1 +
->>  hw/intc/arm_gicv3_its_common.c |  3 ++-
->>  hw/intc/arm_gicv3_its_kvm.c    | 23 +++++++++++------------
->>  include/migration/vmstate.h    |  2 ++
->>  4 files changed, 16 insertions(+), 13 deletions(-)
->>
->> diff --git a/hw/intc/arm_gicv3_common.c b/hw/intc/arm_gicv3_common.c
->> index c6493d6..4228b7c 100644
->> --- a/hw/intc/arm_gicv3_common.c
->> +++ b/hw/intc/arm_gicv3_common.c
->> @@ -145,6 +145,7 @@ static const VMStateDescription vmstate_gicv3 = {
->>      .minimum_version_id = 1,
->>      .pre_save = gicv3_pre_save,
->>      .post_load = gicv3_post_load,
->> +    .priority = MIG_PRI_GICV3,
->>      .fields = (VMStateField[]) {
->>          VMSTATE_UINT32(gicd_ctlr, GICv3State),
->>          VMSTATE_UINT32_ARRAY(gicd_statusr, GICv3State, 2),
->> diff --git a/hw/intc/arm_gicv3_its_common.c b/hw/intc/arm_gicv3_its_common.c
->> index 75b9f04..854709f 100644
->> --- a/hw/intc/arm_gicv3_its_common.c
->> +++ b/hw/intc/arm_gicv3_its_common.c
->> @@ -48,7 +48,8 @@ static const VMStateDescription vmstate_its = {
->>      .name = "arm_gicv3_its",
->>      .pre_save = gicv3_its_pre_save,
->>      .post_load = gicv3_its_post_load,
->> -    .unmigratable = true,
->> +    .unmigratable = false,
-> 
-> unmigratable = false is the default, so we can just delete the line.
-OK thanks
-> 
->> +    .priority = MIG_PRI_GICV3_ITS,
->>      .fields = (VMStateField[]) {
->>          VMSTATE_UINT32(ctlr, GICv3ITSState),
->>          VMSTATE_UINT64(cbaser, GICv3ITSState),
->> diff --git a/hw/intc/arm_gicv3_its_kvm.c b/hw/intc/arm_gicv3_its_kvm.c
->> index 45e57d6..3bd2873 100644
->> --- a/hw/intc/arm_gicv3_its_kvm.c
->> +++ b/hw/intc/arm_gicv3_its_kvm.c
->> @@ -76,18 +76,6 @@ static void kvm_arm_its_realize(DeviceState *dev, Error **errp)
->>      GICv3ITSState *s = ARM_GICV3_ITS_COMMON(dev);
->>      Error *local_err = NULL;
->>
->> -    /*
->> -     * Block migration of a KVM GICv3 ITS device: the API for saving and
->> -     * restoring the state in the kernel is not yet available
->> -     */
->> -    error_setg(&s->migration_blocker, "vITS migration is not implemented");
->> -    migrate_add_blocker(s->migration_blocker, &local_err);
->> -    if (local_err) {
->> -        error_propagate(errp, local_err);
->> -        error_free(s->migration_blocker);
->> -        return;
->> -    }
->> -
->>      s->dev_fd = kvm_create_device(kvm_state, KVM_DEV_TYPE_ARM_VGIC_ITS, false);
->>      if (s->dev_fd < 0) {
->>          error_setg_errno(errp, -s->dev_fd, "error creating in-kernel ITS");
->> @@ -104,6 +92,17 @@ static void kvm_arm_its_realize(DeviceState *dev, Error **errp)
->>
->>      gicv3_its_init_mmio(s, NULL);
->>
->> +    if (!kvm_device_check_attr(s->dev_fd, KVM_DEV_ARM_VGIC_GRP_ITS_REGS,
->> +        GITS_CTLR)) {
->> +        error_setg(&s->migration_blocker, "vITS migration is not implemented");
-> 
-> I think we should specifically say that it's the host kernel
-> that doesn't support ITS migration (ie not QEMU that's missing
-> support).
-> 
-> The GICv3 uses the message
->  "This operating system kernel does not support vGICv3 migration"
-> which is slightly odd phrasing but I guess we should follow that.
-Sure I will use that message.
+Signed-off-by: Krzysztof Kozlowski <krzk@kernel.org>
+---
+ hw/arm/exynos4210.c      |   4 +
+ hw/misc/Makefile.objs    |   2 +-
+ hw/misc/exynos4210_rng.c | 262 +++++++++++++++++++++++++++++++++++++++++++++++
+ 3 files changed, 267 insertions(+), 1 deletion(-)
+ create mode 100644 hw/misc/exynos4210_rng.c
 
-Thank you for the review
+diff --git a/hw/arm/exynos4210.c b/hw/arm/exynos4210.c
+index 1d2b50cc4eea..0ec4250f0c05 100644
+--- a/hw/arm/exynos4210.c
++++ b/hw/arm/exynos4210.c
+@@ -78,6 +78,9 @@
+ /* Clock controller SFR base address */
+ #define EXYNOS4210_CLK_BASE_ADDR            0x10030000
+ 
++/* PRNG/HASH SFR base address */
++#define EXYNOS4210_RNG_BASE_ADDR            0x10830400
++
+ /* Display controllers (FIMD) */
+ #define EXYNOS4210_FIMD0_BASE_ADDR          0x11C00000
+ 
+@@ -314,6 +317,7 @@ Exynos4210State *exynos4210_init(MemoryRegion *system_mem,
+     sysbus_create_simple("exynos4210.pmu", EXYNOS4210_PMU_BASE_ADDR, NULL);
+ 
+     sysbus_create_simple("exynos4210.clk", EXYNOS4210_CLK_BASE_ADDR, NULL);
++    sysbus_create_simple("exynos4210.rng", EXYNOS4210_RNG_BASE_ADDR, NULL);
+ 
+     /* PWM */
+     sysbus_create_varargs("exynos4210.pwm", EXYNOS4210_PWM_BASE_ADDR,
+diff --git a/hw/misc/Makefile.objs b/hw/misc/Makefile.objs
+index c8b489390f7e..e0699ea11155 100644
+--- a/hw/misc/Makefile.objs
++++ b/hw/misc/Makefile.objs
+@@ -26,7 +26,7 @@ obj-$(CONFIG_IVSHMEM) += ivshmem.o
+ obj-$(CONFIG_REALVIEW) += arm_sysctl.o
+ obj-$(CONFIG_NSERIES) += cbus.o
+ obj-$(CONFIG_ECCMEMCTL) += eccmemctl.o
+-obj-$(CONFIG_EXYNOS4) += exynos4210_pmu.o exynos4210_clk.o
++obj-$(CONFIG_EXYNOS4) += exynos4210_pmu.o exynos4210_clk.o exynos4210_rng.o
+ obj-$(CONFIG_IMX) += imx_ccm.o
+ obj-$(CONFIG_IMX) += imx31_ccm.o
+ obj-$(CONFIG_IMX) += imx25_ccm.o
+diff --git a/hw/misc/exynos4210_rng.c b/hw/misc/exynos4210_rng.c
+new file mode 100644
+index 000000000000..1fe00a6f1e6b
+--- /dev/null
++++ b/hw/misc/exynos4210_rng.c
+@@ -0,0 +1,262 @@
++/*
++ *  Exynos4210 Pseudo Random Nubmer Generator Emulation
++ *
++ *  Copyright (c) 2017 Krzysztof Kozlowski <krzk@kernel.org>
++ *
++ *  This program is free software; you can redistribute it and/or modify it
++ *  under the terms of the GNU General Public License as published by the
++ *  Free Software Foundation; either version 2 of the License, or
++ *  (at your option) any later version.
++ *
++ *  This program is distributed in the hope that it will be useful, but WITHOUT
++ *  ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
++ *  FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License
++ *  for more details.
++ *
++ *  You should have received a copy of the GNU General Public License along
++ *  with this program; if not, see <http://www.gnu.org/licenses/>.
++ */
++
++#include "qemu/osdep.h"
++#include "hw/sysbus.h"
++#include "qemu/log.h"
++
++#define TYPE_EXYNOS4210_RNG             "exynos4210.rng"
++#define EXYNOS4210_RNG(obj) \
++    OBJECT_CHECK(Exynos4210RngState, (obj), TYPE_EXYNOS4210_RNG)
++
++/*
++ * Exynos4220, PRNG, only polling mode is supported.
++ */
++
++/* RNG_CONTROL_1 register bitfields, reset value: 0x0 */
++#define EXYNOS4210_RNG_CONTROL_1_PRNG           0x8
++#define EXYNOS4210_RNG_CONTROL_1_START_INIT     BIT(4)
++/* RNG_STATUS register bitfields, reset value: 0x1 */
++#define EXYNOS4210_RNG_STATUS_PRNG_ERROR        BIT(7)
++#define EXYNOS4210_RNG_STATUS_PRNG_DONE         BIT(5)
++#define EXYNOS4210_RNG_STATUS_MSG_DONE          BIT(4)
++#define EXYNOS4210_RNG_STATUS_PARTIAL_DONE      BIT(3)
++#define EXYNOS4210_RNG_STATUS_PRNG_BUSY         BIT(2)
++#define EXYNOS4210_RNG_STATUS_SEED_SETTING_DONE BIT(1)
++#define EXYNOS4210_RNG_STATUS_BUFFER_READY      BIT(0)
++#define EXYNOS4210_RNG_STATUS_WRITE_MASK        (EXYNOS4210_RNG_STATUS_PRNG_DONE \
++                                                    | EXYNOS4210_RNG_STATUS_MSG_DONE \
++                                                    | EXYNOS4210_RNG_STATUS_PARTIAL_DONE)
++
++#define EXYNOS4210_RNG_CONTROL_1                  0x0
++#define EXYNOS4210_RNG_STATUS                    0x10
++#define EXYNOS4210_RNG_SEED_IN                  0x140
++#define EXYNOS4210_RNG_SEED_IN_OFFSET(n)        (EXYNOS4210_RNG_SEED_IN + (n * 0x4))
++#define EXYNOS4210_RNG_PRNG                     0x160
++#define EXYNOS4210_RNG_PRNG_OFFSET(n)           (EXYNOS4210_RNG_PRNG + (n * 0x4))
++
++#define EXYNOS4210_RNG_PRNG_NUM                 5
++
++#define EXYNOS4210_RNG_REGS_MEM_SIZE            0x200
++
++typedef struct Exynos4210RngState {
++    SysBusDevice parent_obj;
++    MemoryRegion iomem;
++
++    int32_t randr_value[EXYNOS4210_RNG_PRNG_NUM];
++    uint32_t seeds[EXYNOS4210_RNG_PRNG_NUM];
++
++    /* Register values */
++    uint32_t reg_control;
++    uint32_t reg_status;
++} Exynos4210RngState;
++
++static bool exynos4210_rng_seed_ready(const Exynos4210RngState *s)
++{
++    unsigned int i;
++
++    for (i = 0; i < EXYNOS4210_RNG_PRNG_NUM; i++) {
++        /*
++         * Assuming 0 as invalid (uninitialized) seed value.
++         * This also matches the reset value for SEED registers.
++         */
++        if (!s->seeds[i]) {
++            return false;
++        }
++    }
++
++    return true;
++}
++
++static void exynos4210_rng_set_seed(Exynos4210RngState *s, unsigned int i,
++                                    uint64_t val)
++{
++    s->seeds[i] = val & UINT32_MAX;
++
++    /* If all seeds were written, update the status to reflect it */
++    if (exynos4210_rng_seed_ready(s)) {
++        s->reg_status |= EXYNOS4210_RNG_STATUS_SEED_SETTING_DONE;
++    } else {
++        s->reg_status &= ~EXYNOS4210_RNG_STATUS_SEED_SETTING_DONE;
++    }
++}
++
++static void exynos4210_rng_run_engine(Exynos4210RngState *s)
++{
++    unsigned int i;
++
++    /* Seed set? */
++    if ((s->reg_status & EXYNOS4210_RNG_STATUS_SEED_SETTING_DONE) == 0) {
++        goto out;
++    }
++
++    /* PRNG engine chosen? */
++    if ((s->reg_control & EXYNOS4210_RNG_CONTROL_1_PRNG) == 0) {
++        goto out;
++    }
++
++    /* PRNG engine started? */
++    if ((s->reg_control & EXYNOS4210_RNG_CONTROL_1_START_INIT) == 0) {
++        goto out;
++    }
++
++    /* Get randoms */
++    for (i = 0; i < EXYNOS4210_RNG_PRNG_NUM; i++) {
++        s->randr_value[i] = rand_r(&s->seeds[i]);
++    }
++
++    /* Notify that PRNG is ready */
++    s->reg_status |= EXYNOS4210_RNG_STATUS_PRNG_DONE;
++
++out:
++    /* Always clear start engine bit */
++    s->reg_control &= ~EXYNOS4210_RNG_CONTROL_1_START_INIT;
++}
++
++static uint64_t exynos4210_rng_read(void *opaque, hwaddr offset,
++                                    unsigned size)
++{
++    Exynos4210RngState *s = (Exynos4210RngState *)opaque;
++    uint32_t val = 0;
++
++    assert(size == 4);
++
++    switch (offset) {
++    case EXYNOS4210_RNG_CONTROL_1:
++        val = s->reg_control;
++        break;
++
++    case EXYNOS4210_RNG_STATUS:
++        val = s->reg_status;
++        break;
++
++    case EXYNOS4210_RNG_PRNG_OFFSET(0):
++    case EXYNOS4210_RNG_PRNG_OFFSET(1):
++    case EXYNOS4210_RNG_PRNG_OFFSET(2):
++    case EXYNOS4210_RNG_PRNG_OFFSET(3):
++    case EXYNOS4210_RNG_PRNG_OFFSET(4):
++        val = s->randr_value[(offset - EXYNOS4210_RNG_PRNG_OFFSET(0)) / 4];
++        break;
++
++    default:
++        qemu_log_mask(LOG_GUEST_ERROR, "%s: bad read offset 0x%04x\n",
++                      __func__, (uint32_t)offset);
++    }
++
++    return val;
++}
++
++static void exynos4210_rng_write(void *opaque, hwaddr offset,
++                                 uint64_t val, unsigned size)
++{
++    Exynos4210RngState *s = (Exynos4210RngState *)opaque;
++
++    assert(size == 4);
++
++    switch (offset) {
++    case EXYNOS4210_RNG_CONTROL_1:
++        s->reg_control = val;
++        exynos4210_rng_run_engine(s);
++        break;
++
++    case EXYNOS4210_RNG_STATUS:
++        /* For clearing status fields */
++        s->reg_status &= ~EXYNOS4210_RNG_STATUS_WRITE_MASK;
++        s->reg_status |= val & EXYNOS4210_RNG_STATUS_WRITE_MASK;
++        break;
++
++    case EXYNOS4210_RNG_SEED_IN_OFFSET(0):
++    case EXYNOS4210_RNG_SEED_IN_OFFSET(1):
++    case EXYNOS4210_RNG_SEED_IN_OFFSET(2):
++    case EXYNOS4210_RNG_SEED_IN_OFFSET(3):
++    case EXYNOS4210_RNG_SEED_IN_OFFSET(4):
++        exynos4210_rng_set_seed(s,
++                                (offset - EXYNOS4210_RNG_SEED_IN_OFFSET(0)) / 4,
++                                val);
++        break;
++
++    default:
++        qemu_log_mask(LOG_GUEST_ERROR, "%s: bad write offset 0x%04x\n",
++                      __func__, (uint32_t)offset);
++    }
++}
++
++static const MemoryRegionOps exynos4210_rng_ops = {
++    .read = exynos4210_rng_read,
++    .write = exynos4210_rng_write,
++    .endianness = DEVICE_NATIVE_ENDIAN,
++};
++
++static void exynos4210_rng_reset(DeviceState *dev)
++{
++    Exynos4210RngState *s = EXYNOS4210_RNG(dev);
++
++    s->reg_control = 0;
++    s->reg_status = EXYNOS4210_RNG_STATUS_BUFFER_READY;
++    memset(s->seeds, 0, EXYNOS4210_RNG_PRNG_NUM * sizeof(*(s->seeds)));
++    memset(s->seeds, 0, EXYNOS4210_RNG_PRNG_NUM * sizeof(*(s->randr_value)));
++}
++
++static void exynos4210_rng_init(Object *obj)
++{
++    Exynos4210RngState *s = EXYNOS4210_RNG(obj);
++    SysBusDevice *dev = SYS_BUS_DEVICE(obj);
++
++    memory_region_init_io(&s->iomem, obj, &exynos4210_rng_ops, s,
++                          TYPE_EXYNOS4210_RNG, EXYNOS4210_RNG_REGS_MEM_SIZE);
++    sysbus_init_mmio(dev, &s->iomem);
++}
++
++static const VMStateDescription exynos4210_rng_vmstate = {
++    .name = TYPE_EXYNOS4210_RNG,
++    .version_id = 1,
++    .minimum_version_id = 1,
++    .fields = (VMStateField[]) {
++        VMSTATE_INT32_ARRAY(randr_value, Exynos4210RngState,
++                            EXYNOS4210_RNG_PRNG_NUM),
++        VMSTATE_UINT32_ARRAY(seeds, Exynos4210RngState,
++                             EXYNOS4210_RNG_PRNG_NUM),
++        VMSTATE_UINT32(reg_status, Exynos4210RngState),
++        VMSTATE_UINT32(reg_control, Exynos4210RngState),
++        VMSTATE_END_OF_LIST()
++    }
++};
++
++static void exynos4210_rng_class_init(ObjectClass *klass, void *data)
++{
++    DeviceClass *dc = DEVICE_CLASS(klass);
++
++    dc->reset = exynos4210_rng_reset;
++    dc->vmsd = &exynos4210_rng_vmstate;
++}
++
++static const TypeInfo exynos4210_rng_info = {
++    .name          = TYPE_EXYNOS4210_RNG,
++    .parent        = TYPE_SYS_BUS_DEVICE,
++    .instance_size = sizeof(Exynos4210RngState),
++    .instance_init = exynos4210_rng_init,
++    .class_init    = exynos4210_rng_class_init,
++};
++
++static void exynos4210_rng_register(void)
++{
++    type_register_static(&exynos4210_rng_info);
++}
++
++type_init(exynos4210_rng_register)
+-- 
+2.9.3
 
-Best Regards
-
-Eric
-> 
->> +        migrate_add_blocker(s->migration_blocker, &local_err);
->> +        if (local_err) {
->> +            error_propagate(errp, local_err);
->> +            error_free(s->migration_blocker);
->> +            return;
->> +        }
->> +    }
->> +
->>      kvm_msi_use_devid = true;
->>      kvm_gsi_direct_mapping = false;
->>      kvm_msi_via_irqfd_allowed = kvm_irqfds_enabled();
->> diff --git a/include/migration/vmstate.h b/include/migration/vmstate.h
->> index f2dbf84..8dab9c7 100644
->> --- a/include/migration/vmstate.h
->> +++ b/include/migration/vmstate.h
->> @@ -198,6 +198,8 @@ enum VMStateFlags {
->>  typedef enum {
->>      MIG_PRI_DEFAULT = 0,
->>      MIG_PRI_IOMMU,              /* Must happen before PCI devices */
->> +    MIG_PRI_GICV3_ITS,          /* Must happen before PCI devices */
->> +    MIG_PRI_GICV3,              /* Must happen before the ITS */
->>      MIG_PRI_MAX,
->>  } MigrationPriority;
->>
->> --
->> 2.5.5
->>
-> 
-> thanks
-> -- PMM
-> 

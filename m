@@ -1,117 +1,84 @@
-Return-Path: <alex.bennee@linaro.org>
-Received: from zen.linaro.local ([81.128.185.34])
-        by smtp.gmail.com with ESMTPSA id t63sm13022921wme.16.2017.03.20.04.01.29
+Received: by 10.25.15.230 with SMTP id 99csp1235318lfp;
+        Mon, 20 Mar 2017 04:05:41 -0700 (PDT)
+X-Received: by 10.28.45.212 with SMTP id t203mr8992673wmt.37.1490007941061;
+        Mon, 20 Mar 2017 04:05:41 -0700 (PDT)
+Return-Path: <peter.maydell@linaro.org>
+Received: from mail-wm0-x231.google.com (mail-wm0-x231.google.com. [2a00:1450:400c:c09::231])
+        by mx.google.com with ESMTPS id t23si22510381wrc.41.2017.03.20.04.05.40
+        for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 20 Mar 2017 04:01:29 -0700 (PDT)
-Received: from zen (localhost [127.0.0.1])
-	by zen.linaro.local (Postfix) with ESMTPS id 0814A3E018C;
-	Mon, 20 Mar 2017 11:01:55 +0000 (GMT)
-References: <1487616072-9226-1-git-send-email-peter.maydell@linaro.org> <1487616072-9226-5-git-send-email-peter.maydell@linaro.org>
-User-agent: mu4e 0.9.19; emacs 25.2.10
-From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, patches@linaro.org, Michael Davidsaver <mdavidsaver@gmail.com>
-Subject: Re: [PATCH 4/4] arm: Fix APSR writes via M profile MSR
-In-reply-to: <1487616072-9226-5-git-send-email-peter.maydell@linaro.org>
-Date: Mon, 20 Mar 2017 11:01:54 +0000
-Message-ID: <87mvcgnrdp.fsf@linaro.org>
+        Mon, 20 Mar 2017 04:05:40 -0700 (PDT)
+Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 2a00:1450:400c:c09::231 as permitted sender) client-ip=2a00:1450:400c:c09::231;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@linaro.org;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 2a00:1450:400c:c09::231 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: by mail-wm0-x231.google.com with SMTP id n11so60255315wma.1
+        for <alex.bennee@linaro.org>; Mon, 20 Mar 2017 04:05:40 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+         :cc:content-transfer-encoding;
+        bh=7r9Hy48lP47Q+i+FleGx0CelyblJ7byn7kDDsurPaLI=;
+        b=PUN1XIwIFxeLnn16He9x2aeKpn1t3cDmcgNECc478svl05HOFBmc0LydUCmgg3IUWd
+         h3s8+/GCsNfbmS3mHbvuFMAI/pGm1lNyERxZHrdHvHOqOjMfDr5Y4364iYJ9drYSXMyS
+         u5vocC58mtn2oPOtKkPVOVBnEXa//kUUh/65Q=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+         :message-id:subject:to:cc:content-transfer-encoding;
+        bh=7r9Hy48lP47Q+i+FleGx0CelyblJ7byn7kDDsurPaLI=;
+        b=rs5xveYPFOLZo/NZAfjKGrPBr9wnsKm8+iYzOhvm9cIvO3kHuWWvv5f7YT8aWjuBn6
+         FVP++ZXe0Q93AElXHR+Ud1igTviEq5a/VcRfxo5ckuHTKuUi93JiWJhGSpTdvd9WBmGa
+         nIEuUt8BoHl48sz/xDsZ09I0TOAjeNdr6N7d5c0EsloC9iq64nvCDaFazDB/J7zoE8S8
+         M76J70yvxQfyFRLwaXDQybJaX1mohca8A2JW31VG6HxynN5Q97/FoGT0+WLD6CnZu0uD
+         7kX8kiBs9Vy4bu8bMTIq0AHb4H09bG1DysR4kxhQoILtw9Hse9qS7NP73XKUkJQXzhJf
+         O20w==
+X-Gm-Message-State: AFeK/H1QGtLBndb0gtY6SIEVB8LuhGI5LHJRhc80NoUeHrS381lFzJOdTJim1lgIqErdb6jWCvsTxyjze876XS3u+tI=
+X-Received: by 10.28.6.6 with SMTP id 6mr9527279wmg.111.1490007940759; Mon, 20
+ Mar 2017 04:05:40 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8bit
-X-TUID: tYKEXyMBV8IU
+Received: by 10.223.145.33 with HTTP; Mon, 20 Mar 2017 04:05:20 -0700 (PDT)
+In-Reply-To: <87pohcnrlu.fsf@linaro.org>
+References: <1487616072-9226-1-git-send-email-peter.maydell@linaro.org>
+ <1487616072-9226-3-git-send-email-peter.maydell@linaro.org> <87pohcnrlu.fsf@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 20 Mar 2017 11:05:20 +0000
+Message-ID: <CAFEAcA967QpqPygNGO7977=uj1xz9hG4-_FhuRY89HHksCu_6A@mail.gmail.com>
+Subject: Re: [PATCH 2/4] arm: Don't decode MRS(banked) or MSR(banked) for M profile
+To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>, 
+	"patches@linaro.org" <patches@linaro.org>, Michael Davidsaver <mdavidsaver@gmail.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+X-TUID: Aj0t2iOWAi0l
 
+On 20 March 2017 at 10:57, Alex Benn=C3=A9e <alex.bennee@linaro.org> wrote:
+>
+> Peter Maydell <peter.maydell@linaro.org> writes:
+>
+>> M profile doesn't have the MSR(banked) and MRS(banked) instructions
+>> and uses the encodings for different kinds of M-profile MRS/MSR.
+>> Guard the relevant bits of the decode logic to make sure we don't
+>> accidentally fall into them by accident on M-profile.
+>
+> The ARMv7-A documentation talks about banked registers being a feature
+> of application processors with Virtualisation Extensions which make the
+> sense of the test a bit weird. But I guess they are functionally
+> equivalent. Are there in practice any -A cores without virt?
 
-Peter Maydell <peter.maydell@linaro.org> writes:
+You can have an A profile core without EL2 implemented, yes.
+In particular in ARMv8 this encoding is legal (and has defined
+effects) even if EL2 is not implemented. It's introduced in
+ARMv7VE, and there's an argument for allowing it even if we
+don't implement EL2 for those CPUs which in real hardware do
+implement it, because system software might assume it can use
+these encodings.
 
-> Our implementation of writes to the APSR for M-profile via the MSR
-> instruction was badly broken.
->
-> First and worst, we had the sense wrong on the test of bit 2 of the
-> SYSm field -- this is supposed to request an APSR write if bit 2 is 0
-> but we were doing it if bit 2 was 1.  This bug was introduced in
-> commit 58117c9bb429cd, so hasn't been in a QEMU release.
->
-> Secondly, the choice of exactly which parts of APSR should be written
-> is defined by bits in the 'mask' field.  We were not passing these
-> through from instruction decode, making it impossible to check them
-> in the helper.
->
-> Pass the mask bits through from the instruction decode to the helper
-> function and process them appropriately; fix the wrong sense of the
-> SYSm bit 2 check.
->
-> Invalid mask values and invalid combinations of mask and register
-> number are UNPREDICTABLE; we choose to treat them as if the mask
-> values were valid.
->
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+We should probably UNDEF it for pre-v7VE cores though. For
+this patchset what I really wanted was to avoid the different
+decode used by M profile getting mixed up with the A profile
+decode path.
 
-Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
-
-> ---
->  target/arm/helper.c    | 26 ++++++++++++++++++++++----
->  target/arm/translate.c |  3 ++-
->  2 files changed, 24 insertions(+), 5 deletions(-)
->
-> diff --git a/target/arm/helper.c b/target/arm/helper.c
-> index 948aba2..8349e1f 100644
-> --- a/target/arm/helper.c
-> +++ b/target/arm/helper.c
-> @@ -8478,8 +8478,18 @@ uint32_t HELPER(v7m_mrs)(CPUARMState *env, uint32_t reg)
->      }
->  }
->
-> -void HELPER(v7m_msr)(CPUARMState *env, uint32_t reg, uint32_t val)
-> -{
-> +void HELPER(v7m_msr)(CPUARMState *env, uint32_t maskreg, uint32_t val)
-> +{
-> +    /* We're passed bits [11..0] of the instruction; extract
-> +     * SYSm and the mask bits.
-> +     * Invalid combinations of SYSm and mask are UNPREDICTABLE;
-> +     * we choose to treat them as if the mask bits were valid.
-> +     * NB that the pseudocode 'mask' variable is bits [11..10],
-> +     * whereas ours is [11..8].
-> +     */
-> +    uint32_t mask = extract32(maskreg, 8, 4);
-> +    uint32_t reg = extract32(maskreg, 0, 8);
-> +
->      if (arm_current_el(env) == 0 && reg > 7) {
->          /* only xPSR sub-fields may be written by unprivileged */
->          return;
-> @@ -8488,8 +8498,16 @@ void HELPER(v7m_msr)(CPUARMState *env, uint32_t reg, uint32_t val)
->      switch (reg) {
->      case 0 ... 7: /* xPSR sub-fields */
->          /* only APSR is actually writable */
-> -        if (reg & 4) {
-> -            xpsr_write(env, val, 0xf8000000); /* APSR */
-> +        if (!(reg & 4)) {
-> +            uint32_t apsrmask = 0;
-> +
-> +            if (mask & 8) {
-> +                apsrmask |= 0xf8000000; /* APSR NZCVQ */
-> +            }
-> +            if ((mask & 4) && arm_feature(env, ARM_FEATURE_THUMB_DSP)) {
-> +                apsrmask |= 0x000f0000; /* APSR GE[3:0] */
-> +            }
-> +            xpsr_write(env, val, apsrmask);
->          }
->          break;
->      case 8: /* MSP */
-> diff --git a/target/arm/translate.c b/target/arm/translate.c
-> index 9090356..ce7f19f 100644
-> --- a/target/arm/translate.c
-> +++ b/target/arm/translate.c
-> @@ -10391,7 +10391,8 @@ static int disas_thumb2_insn(CPUARMState *env, DisasContext *s, uint16_t insn_hw
->                      case 0: /* msr cpsr.  */
->                          if (arm_dc_feature(s, ARM_FEATURE_M)) {
->                              tmp = load_reg(s, rn);
-> -                            addr = tcg_const_i32(insn & 0xff);
-> +                            /* the constant is the mask and SYSm fields */
-> +                            addr = tcg_const_i32(insn & 0xfff);
->                              gen_helper_v7m_msr(cpu_env, addr, tmp);
->                              tcg_temp_free_i32(addr);
->                              tcg_temp_free_i32(tmp);
-
-
---
-Alex Bennée
+thanks
+-- PMM

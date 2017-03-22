@@ -1,63 +1,63 @@
-Received: by 10.25.15.230 with SMTP id 99csp260216lfp;
-        Wed, 22 Mar 2017 06:41:35 -0700 (PDT)
-X-Received: by 10.55.26.24 with SMTP id a24mr8880939qka.139.1490190095653;
-        Wed, 22 Mar 2017 06:41:35 -0700 (PDT)
+Received: by 10.25.15.230 with SMTP id 99csp260744lfp;
+        Wed, 22 Mar 2017 06:42:55 -0700 (PDT)
+X-Received: by 10.233.223.198 with SMTP id t189mr10239983qkf.292.1490190175347;
+        Wed, 22 Mar 2017 06:42:55 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id u21si587095qku.164.2017.03.22.06.41.35
+        by mx.google.com with ESMTPS id h65si1107154qkf.257.2017.03.22.06.42.55
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 22 Mar 2017 06:41:35 -0700 (PDT)
+        Wed, 22 Mar 2017 06:42:55 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:51164 helo=lists.gnu.org)
+Received: from localhost ([::1]:51180 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1cqgW7-0005zD-2g
-	for alex.bennee@linaro.org; Wed, 22 Mar 2017 09:41:35 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:45480)
+	id 1cqgXO-0007CW-Q1
+	for alex.bennee@linaro.org; Wed, 22 Mar 2017 09:42:54 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:45266)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <imammedo@redhat.com>) id 1cqgPl-0000JJ-My
-	for qemu-arm@nongnu.org; Wed, 22 Mar 2017 09:35:02 -0400
+	(envelope-from <imammedo@redhat.com>) id 1cqgPU-0008UF-0G
+	for qemu-arm@nongnu.org; Wed, 22 Mar 2017 09:34:44 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <imammedo@redhat.com>) id 1cqgPf-0002FM-MQ
-	for qemu-arm@nongnu.org; Wed, 22 Mar 2017 09:35:01 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:27580)
+	(envelope-from <imammedo@redhat.com>) id 1cqgPQ-0002Af-8m
+	for qemu-arm@nongnu.org; Wed, 22 Mar 2017 09:34:44 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:40944)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <imammedo@redhat.com>)
-	id 1cqgPf-0002Ez-D4; Wed, 22 Mar 2017 09:34:55 -0400
+	id 1cqgPQ-0002AQ-2W; Wed, 22 Mar 2017 09:34:40 -0400
 Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
 	[10.5.11.11])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 5C58D804FA;
-	Wed, 22 Mar 2017 13:34:55 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 5C58D804FA
-Authentication-Results: ext-mx03.extmail.prod.ext.phx2.redhat.com;
+	by mx1.redhat.com (Postfix) with ESMTPS id CDFF2915BE;
+	Wed, 22 Mar 2017 13:34:39 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com CDFF2915BE
+Authentication-Results: ext-mx01.extmail.prod.ext.phx2.redhat.com;
 	dmarc=none (p=none dis=none) header.from=redhat.com
-Authentication-Results: ext-mx03.extmail.prod.ext.phx2.redhat.com;
+Authentication-Results: ext-mx01.extmail.prod.ext.phx2.redhat.com;
 	spf=pass smtp.mailfrom=imammedo@redhat.com
-DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com 5C58D804FA
+DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com CDFF2915BE
 Received: from dell-r430-03.lab.eng.brq.redhat.com
 	(dell-r430-03.lab.eng.brq.redhat.com [10.34.112.60])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id A65916046C;
-	Wed, 22 Mar 2017 13:34:52 +0000 (UTC)
+	by smtp.corp.redhat.com (Postfix) with ESMTP id BC170A5662;
+	Wed, 22 Mar 2017 13:34:34 +0000 (UTC)
 From: Igor Mammedov <imammedo@redhat.com>
 To: qemu-devel@nongnu.org
-Date: Wed, 22 Mar 2017 14:32:46 +0100
-Message-Id: <1490189568-167621-22-git-send-email-imammedo@redhat.com>
+Date: Wed, 22 Mar 2017 14:32:42 +0100
+Message-Id: <1490189568-167621-18-git-send-email-imammedo@redhat.com>
 In-Reply-To: <1490189568-167621-1-git-send-email-imammedo@redhat.com>
 References: <1490189568-167621-1-git-send-email-imammedo@redhat.com>
 X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.27]);
-	Wed, 22 Mar 2017 13:34:55 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.25]);
+	Wed, 22 Mar 2017 13:34:40 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 209.132.183.28
-Subject: [Qemu-arm] [PATCH for-2.10 21/23] numa: remove node_cpu bitmaps as
- they are no longer used
+Subject: [Qemu-arm] [PATCH for-2.10 17/23] numa: remove no longer used
+ numa_get_node_for_cpu()
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -76,115 +76,54 @@ Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jones <drjones@redhat.com>,
 	David Gibson <david@gibson.dropbear.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Tu+btVGz3Vl0
+X-TUID: CPIqhltOGif1
 
-Postfactum "CPU(s) present in multiple NUMA nodes" check
-was the last user of node_cpu bitmaps, but it's not need
-as machine_set_cpu_numa_node() does the similar check at
-the time mapping is set for cpus (i.e. when -numa cpus=
-is parsed) and ensures that cpu can be mapped only to
-one node.
-
-Remove duplicate check based on node_cpu bitmaps and
-since the last user is gone remove node_cpu as well,
-which completes internal transition from legacy bitmap
-based mapping storage to possible_cpus storage.
+it's been replaced by fetching mapping info from possible_cpus
 
 Signed-off-by: Igor Mammedov <imammedo@redhat.com>
 ---
- include/sysemu/numa.h |  1 -
- numa.c                | 42 ------------------------------------------
- 2 files changed, 43 deletions(-)
+ include/sysemu/numa.h |  4 ----
+ numa.c                | 14 --------------
+ 2 files changed, 18 deletions(-)
 
 diff --git a/include/sysemu/numa.h b/include/sysemu/numa.h
-index 345bb94..796ee94 100644
+index 46ea6c7..c67763a 100644
 --- a/include/sysemu/numa.h
 +++ b/include/sysemu/numa.h
-@@ -17,7 +17,6 @@ struct numa_addr_range {
- 
- typedef struct node_info {
-     uint64_t node_mem;
--    unsigned long *node_cpu;
-     struct HostMemoryBackend *node_memdev;
-     bool present;
-     QLIST_HEAD(, numa_addr_range) addr; /* List to store address ranges */
+@@ -31,8 +31,4 @@ extern QemuOptsList qemu_numa_opts;
+ void numa_set_mem_node_id(ram_addr_t addr, uint64_t size, uint32_t node);
+ void numa_unset_mem_node_id(ram_addr_t addr, uint64_t size, uint32_t node);
+ uint32_t numa_get_node(ram_addr_t addr, Error **errp);
+-
+-/* on success returns node index in numa_info,
+- * on failure returns nb_numa_nodes */
+-int numa_get_node_for_cpu(int idx);
+ #endif
 diff --git a/numa.c b/numa.c
-index 523558f..088fae3 100644
+index ab41776..187c93f 100644
 --- a/numa.c
 +++ b/numa.c
-@@ -177,7 +177,6 @@ static void numa_node_parse(MachineState *ms, NumaNodeOptions *node,
-                        cpus->value, max_cpus);
-             return;
-         }
--        bitmap_set(numa_info[nodenr].node_cpu, cpus->value, 1);
-         props = mc->cpu_index_to_instance_props(ms, cpus->value);
-         props.node_id = nodenr;
-         props.has_node_id = true;
-@@ -261,51 +260,12 @@ end:
-     return 0;
+@@ -583,20 +583,6 @@ MemdevList *qmp_query_memdev(Error **errp)
+     return list;
  }
  
--static char *enumerate_cpus(unsigned long *cpus, int max_cpus)
--{
--    int cpu;
--    bool first = true;
--    GString *s = g_string_new(NULL);
--
--    for (cpu = find_first_bit(cpus, max_cpus);
--        cpu < max_cpus;
--        cpu = find_next_bit(cpus, max_cpus, cpu + 1)) {
--        g_string_append_printf(s, "%s%d", first ? "" : " ", cpu);
--        first = false;
--    }
--    return g_string_free(s, FALSE);
--}
--
--static void validate_numa_cpus(void)
+-int numa_get_node_for_cpu(int idx)
 -{
 -    int i;
--    unsigned long *seen_cpus = bitmap_new(max_cpus);
+-
+-    assert(idx < max_cpus);
 -
 -    for (i = 0; i < nb_numa_nodes; i++) {
--        if (bitmap_intersects(seen_cpus, numa_info[i].node_cpu, max_cpus)) {
--            bitmap_and(seen_cpus, seen_cpus,
--                       numa_info[i].node_cpu, max_cpus);
--            error_report("CPU(s) present in multiple NUMA nodes: %s",
--                         enumerate_cpus(seen_cpus, max_cpus));
--            g_free(seen_cpus);
--            exit(EXIT_FAILURE);
+-        if (test_bit(idx, numa_info[i].node_cpu)) {
+-            break;
 -        }
--        bitmap_or(seen_cpus, seen_cpus,
--                  numa_info[i].node_cpu, max_cpus);
 -    }
--    g_free(seen_cpus);
+-    return i;
 -}
 -
- void parse_numa_opts(MachineState *ms)
+ void ram_block_notifier_add(RAMBlockNotifier *n)
  {
-     int i;
-     const CPUArchIdList *possible_cpus;
-     MachineClass *mc = MACHINE_GET_CLASS(ms);
- 
--    for (i = 0; i < MAX_NODES; i++) {
--        numa_info[i].node_cpu = bitmap_new(max_cpus);
--    }
--
-     if (qemu_opts_foreach(qemu_find_opts("numa"), parse_numa, ms, NULL)) {
-         exit(1);
-     }
-@@ -397,12 +357,10 @@ void parse_numa_opts(MachineState *ms)
-                 props = mc->cpu_index_to_instance_props(ms, i);
-                 props.has_node_id = true;
- 
--                set_bit(i, numa_info[props.node_id].node_cpu);
-                 machine_set_cpu_numa_node(ms, &props, &error_fatal);
-             }
-         }
- 
--        validate_numa_cpus();
-     } else {
-         numa_set_mem_node_id(0, ram_size, 0);
-     }
+     QLIST_INSERT_HEAD(&ram_list.ramblock_notifiers, n, next);
 -- 
 2.7.4
 

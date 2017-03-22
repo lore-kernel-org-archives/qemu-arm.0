@@ -1,63 +1,63 @@
-Received: by 10.25.15.230 with SMTP id 99csp258986lfp;
-        Wed, 22 Mar 2017 06:38:42 -0700 (PDT)
-X-Received: by 10.200.34.38 with SMTP id o35mr37055141qto.226.1490189922667;
-        Wed, 22 Mar 2017 06:38:42 -0700 (PDT)
+Received: by 10.25.15.230 with SMTP id 99csp259236lfp;
+        Wed, 22 Mar 2017 06:39:20 -0700 (PDT)
+X-Received: by 10.200.42.78 with SMTP id l14mr39696619qtl.15.1490189960861;
+        Wed, 22 Mar 2017 06:39:20 -0700 (PDT)
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id 129si659514qki.313.2017.03.22.06.38.42
+        by mx.google.com with ESMTPS id o1si1105895qtb.185.2017.03.22.06.39.20
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 22 Mar 2017 06:38:42 -0700 (PDT)
+        Wed, 22 Mar 2017 06:39:20 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:51138 helo=lists.gnu.org)
+Received: from localhost ([::1]:51144 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1cqgTK-0003Ay-31
-	for alex.bennee@linaro.org; Wed, 22 Mar 2017 09:38:42 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:44516)
+	id 1cqgTw-0003hV-6E
+	for alex.bennee@linaro.org; Wed, 22 Mar 2017 09:39:20 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:44994)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <imammedo@redhat.com>) id 1cqgOH-0007L2-Dp
-	for qemu-devel@nongnu.org; Wed, 22 Mar 2017 09:33:35 -0400
+	(envelope-from <imammedo@redhat.com>) id 1cqgP2-00085j-Nb
+	for qemu-devel@nongnu.org; Wed, 22 Mar 2017 09:34:20 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <imammedo@redhat.com>) id 1cqgOG-0001pU-Aj
-	for qemu-devel@nongnu.org; Wed, 22 Mar 2017 09:33:29 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:60104)
+	(envelope-from <imammedo@redhat.com>) id 1cqgP1-00022v-I3
+	for qemu-devel@nongnu.org; Wed, 22 Mar 2017 09:34:16 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:10173)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <imammedo@redhat.com>)
-	id 1cqgOB-0001oh-It; Wed, 22 Mar 2017 09:33:23 -0400
+	id 1cqgOy-00021h-KO; Wed, 22 Mar 2017 09:34:12 -0400
 Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
 	[10.5.11.11])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 83408C05490E;
-	Wed, 22 Mar 2017 13:33:23 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 83408C05490E
-Authentication-Results: ext-mx08.extmail.prod.ext.phx2.redhat.com;
+	by mx1.redhat.com (Postfix) with ESMTPS id 7DD4980B20;
+	Wed, 22 Mar 2017 13:34:12 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 7DD4980B20
+Authentication-Results: ext-mx04.extmail.prod.ext.phx2.redhat.com;
 	dmarc=none (p=none dis=none) header.from=redhat.com
-Authentication-Results: ext-mx08.extmail.prod.ext.phx2.redhat.com;
+Authentication-Results: ext-mx04.extmail.prod.ext.phx2.redhat.com;
 	spf=pass smtp.mailfrom=imammedo@redhat.com
-DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com 83408C05490E
+DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com 7DD4980B20
 Received: from dell-r430-03.lab.eng.brq.redhat.com
 	(dell-r430-03.lab.eng.brq.redhat.com [10.34.112.60])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id DA287A5660;
-	Wed, 22 Mar 2017 13:33:14 +0000 (UTC)
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 6018C18A23;
+	Wed, 22 Mar 2017 13:34:07 +0000 (UTC)
 From: Igor Mammedov <imammedo@redhat.com>
 To: qemu-devel@nongnu.org
-Date: Wed, 22 Mar 2017 14:32:31 +0100
-Message-Id: <1490189568-167621-7-git-send-email-imammedo@redhat.com>
+Date: Wed, 22 Mar 2017 14:32:37 +0100
+Message-Id: <1490189568-167621-13-git-send-email-imammedo@redhat.com>
 In-Reply-To: <1490189568-167621-1-git-send-email-imammedo@redhat.com>
 References: <1490189568-167621-1-git-send-email-imammedo@redhat.com>
 X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.32]);
-	Wed, 22 Mar 2017 13:33:23 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.28]);
+	Wed, 22 Mar 2017 13:34:12 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 209.132.183.28
-Subject: [Qemu-devel] [PATCH for-2.10 06/23] spapr: add node-id property to
- sPAPR core
+Subject: [Qemu-devel] [PATCH for-2.10 12/23] pc: get numa node mapping from
+ possible_cpus instead of numa_get_node_for_cpu()
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -76,127 +76,120 @@ Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jones <drjones@redhat.com>,
 	David Gibson <david@gibson.dropbear.id.au>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: hyxB9iPw2bXL
-
-it will allow switching from cpu_index to core based numa
-mapping in follow up patches.
+X-TUID: fHEKJdj8v8mb
 
 Signed-off-by: Igor Mammedov <imammedo@redhat.com>
 ---
- include/hw/ppc/spapr_cpu_core.h |  1 +
- include/qom/cpu.h               |  2 ++
- hw/ppc/spapr.c                  | 17 +++++++++++++++++
- hw/ppc/spapr_cpu_core.c         | 11 ++++++++---
- 4 files changed, 28 insertions(+), 3 deletions(-)
+ hw/acpi/cpu.c        |  7 +++----
+ hw/i386/acpi-build.c | 11 ++++-------
+ hw/i386/pc.c         | 18 ++++++++++--------
+ 3 files changed, 17 insertions(+), 19 deletions(-)
 
-diff --git a/include/hw/ppc/spapr_cpu_core.h b/include/hw/ppc/spapr_cpu_core.h
-index 3c35665..93051e9 100644
---- a/include/hw/ppc/spapr_cpu_core.h
-+++ b/include/hw/ppc/spapr_cpu_core.h
-@@ -27,6 +27,7 @@ typedef struct sPAPRCPUCore {
+diff --git a/hw/acpi/cpu.c b/hw/acpi/cpu.c
+index 8c719d3..90fe24d 100644
+--- a/hw/acpi/cpu.c
++++ b/hw/acpi/cpu.c
+@@ -503,7 +503,6 @@ void build_cpus_aml(Aml *table, MachineState *machine, CPUHotplugFeatures opts,
  
-     /*< public >*/
-     void *threads;
-+    int node_id;
- } sPAPRCPUCore;
+         /* build Processor object for each processor */
+         for (i = 0; i < arch_ids->len; i++) {
+-            int j;
+             Aml *dev;
+             Aml *uid = aml_int(i);
+             GArray *madt_buf = g_array_new(0, 1, 1);
+@@ -557,9 +556,9 @@ void build_cpus_aml(Aml *table, MachineState *machine, CPUHotplugFeatures opts,
+              * as a result _PXM is required for all CPUs which might
+              * be hot-plugged. For simplicity, add it for all CPUs.
+              */
+-            j = numa_get_node_for_cpu(i);
+-            if (j < nb_numa_nodes) {
+-                aml_append(dev, aml_name_decl("_PXM", aml_int(j)));
++            if (arch_ids->cpus[i].props.has_node_id) {
++                int node_id = arch_ids->cpus[i].props.node_id;
++                aml_append(dev, aml_name_decl("_PXM", aml_int(node_id)));
+             }
  
- typedef struct sPAPRCPUCoreClass {
-diff --git a/include/qom/cpu.h b/include/qom/cpu.h
-index c3292ef..7f27d56 100644
---- a/include/qom/cpu.h
-+++ b/include/qom/cpu.h
-@@ -258,6 +258,8 @@ typedef void (*run_on_cpu_func)(CPUState *cpu, run_on_cpu_data data);
+             aml_append(cpus_dev, dev);
+diff --git a/hw/i386/acpi-build.c b/hw/i386/acpi-build.c
+index 2073108..a2be70b 100644
+--- a/hw/i386/acpi-build.c
++++ b/hw/i386/acpi-build.c
+@@ -2306,7 +2306,8 @@ build_srat(GArray *table_data, BIOSLinker *linker, MachineState *machine)
+     srat->reserved1 = cpu_to_le32(1);
  
- struct qemu_work_item;
+     for (i = 0; i < apic_ids->len; i++) {
+-        int j = numa_get_node_for_cpu(i);
++        int node_id = apic_ids->cpus[i].props.has_node_id ?
++            apic_ids->cpus[i].props.node_id : 0;
+         uint32_t apic_id = apic_ids->cpus[i].arch_id;
  
-+#define CPU_UNSET_NUMA_NODE_ID -1
-+
- /**
-  * CPUState:
-  * @cpu_index: CPU index (informative).
-diff --git a/hw/ppc/spapr.c b/hw/ppc/spapr.c
-index 9dcbbcc..9c61721 100644
---- a/hw/ppc/spapr.c
-+++ b/hw/ppc/spapr.c
-@@ -2770,9 +2770,11 @@ static void spapr_core_pre_plug(HotplugHandler *hotplug_dev, DeviceState *dev,
-     MachineClass *mc = MACHINE_GET_CLASS(hotplug_dev);
-     Error *local_err = NULL;
-     CPUCore *cc = CPU_CORE(dev);
-+    sPAPRCPUCore *sc = SPAPR_CPU_CORE(dev);
-     char *base_core_type = spapr_get_cpu_core_type(machine->cpu_model);
-     const char *type = object_get_typename(OBJECT(dev));
-     CPUArchId *core_slot;
-+    int node_id;
-     int index;
- 
-     if (dev->hotplugged && !mc->has_hotpluggable_cpus) {
-@@ -2801,6 +2803,21 @@ static void spapr_core_pre_plug(HotplugHandler *hotplug_dev, DeviceState *dev,
-         goto out;
-     }
- 
-+    node_id = numa_get_node_for_cpu(cc->core_id);
-+    if (node_id == nb_numa_nodes) {
-+        /* by default CPUState::numa_node was 0 if it's not set via CLI
-+         * keep it this way for now but in future we probably should
-+         * refuse to start up with incomplete numa mapping */
-+        node_id = 0;
-+    }
-+    if (sc->node_id == CPU_UNSET_NUMA_NODE_ID) {
-+        sc->node_id = node_id;
-+    } else if (sc->node_id != node_id) {
-+        error_setg(&local_err, "node-id %d must match numa node specified"
-+            "with -numa option for cpu-index %d", sc->node_id, cc->core_id);
-+        goto out;
-+    }
-+
- out:
-     g_free(base_core_type);
-     error_propagate(errp, local_err);
-diff --git a/hw/ppc/spapr_cpu_core.c b/hw/ppc/spapr_cpu_core.c
-index 6883f09..25988f8 100644
---- a/hw/ppc/spapr_cpu_core.c
-+++ b/hw/ppc/spapr_cpu_core.c
-@@ -163,7 +163,6 @@ static void spapr_cpu_core_realize(DeviceState *dev, Error **errp)
-     const char *typename = object_class_get_name(scc->cpu_class);
-     size_t size = object_type_get_instance_size(typename);
-     Error *local_err = NULL;
--    int core_node_id = numa_get_node_for_cpu(cc->core_id);;
-     void *obj;
-     int i, j;
- 
-@@ -181,10 +180,10 @@ static void spapr_cpu_core_realize(DeviceState *dev, Error **errp)
- 
-         /* Set NUMA node for the added CPUs  */
-         node_id = numa_get_node_for_cpu(cs->cpu_index);
--        if (node_id != core_node_id) {
-+        if (node_id != sc->node_id) {
-             error_setg(&local_err, "Invalid node-id=%d of thread[cpu-index: %d]"
-                 " on CPU[core-id: %d, node-id: %d], node-id must be the same",
--                 node_id, cs->cpu_index, cc->core_id, core_node_id);
-+                 node_id, cs->cpu_index, cc->core_id, sc->node_id);
-             goto err;
+         if (apic_id < 255) {
+@@ -2316,9 +2317,7 @@ build_srat(GArray *table_data, BIOSLinker *linker, MachineState *machine)
+             core->type = ACPI_SRAT_PROCESSOR_APIC;
+             core->length = sizeof(*core);
+             core->local_apic_id = apic_id;
+-            if (j < nb_numa_nodes) {
+-                core->proximity_lo = j;
+-            }
++            core->proximity_lo = node_id;
+             memset(core->proximity_hi, 0, 3);
+             core->local_sapic_eid = 0;
+             core->flags = cpu_to_le32(1);
+@@ -2329,9 +2328,7 @@ build_srat(GArray *table_data, BIOSLinker *linker, MachineState *machine)
+             core->type = ACPI_SRAT_PROCESSOR_x2APIC;
+             core->length = sizeof(*core);
+             core->x2apic_id = cpu_to_le32(apic_id);
+-            if (j < nb_numa_nodes) {
+-                core->proximity_domain = cpu_to_le32(j);
+-            }
++            core->proximity_domain = cpu_to_le32(node_id);
+             core->flags = cpu_to_le32(1);
          }
-         if (node_id < nb_numa_nodes) {
-@@ -250,6 +249,11 @@ static const char *spapr_core_models[] = {
-     "POWER9_v1.0",
- };
- 
-+static Property spapr_cpu_core_properties[] = {
-+    DEFINE_PROP_INT32("node-id", sPAPRCPUCore, node_id, CPU_UNSET_NUMA_NODE_ID),
-+    DEFINE_PROP_END_OF_LIST()
-+};
-+
- void spapr_cpu_core_class_init(ObjectClass *oc, void *data)
+     }
+diff --git a/hw/i386/pc.c b/hw/i386/pc.c
+index 873bbfa..6fdec59 100644
+--- a/hw/i386/pc.c
++++ b/hw/i386/pc.c
+@@ -747,7 +747,9 @@ static FWCfgState *bochs_bios_init(AddressSpace *as, PCMachineState *pcms)
  {
-     DeviceClass *dc = DEVICE_CLASS(oc);
-@@ -257,6 +261,7 @@ void spapr_cpu_core_class_init(ObjectClass *oc, void *data)
+     FWCfgState *fw_cfg;
+     uint64_t *numa_fw_cfg;
+-    int i, j;
++    int i;
++    const CPUArchIdList *cpus;
++    MachineClass *mc = MACHINE_GET_CLASS(pcms);
  
-     dc->realize = spapr_cpu_core_realize;
-     dc->unrealize = spapr_cpu_core_unrealizefn;
-+    dc->props = spapr_cpu_core_properties;
-     scc->cpu_class = cpu_class_by_name(TYPE_POWERPC_CPU, data);
-     g_assert(scc->cpu_class);
- }
+     fw_cfg = fw_cfg_init_io_dma(FW_CFG_IO_BASE, FW_CFG_IO_BASE + 4, as);
+     fw_cfg_add_i16(fw_cfg, FW_CFG_NB_CPUS, pcms->boot_cpus);
+@@ -782,12 +784,12 @@ static FWCfgState *bochs_bios_init(AddressSpace *as, PCMachineState *pcms)
+      */
+     numa_fw_cfg = g_new0(uint64_t, 1 + pcms->apic_id_limit + nb_numa_nodes);
+     numa_fw_cfg[0] = cpu_to_le64(nb_numa_nodes);
+-    for (i = 0; i < max_cpus; i++) {
+-        unsigned int apic_id = x86_cpu_apic_id_from_index(i);
++    cpus = mc->possible_cpu_arch_ids(MACHINE(pcms));
++    for (i = 0; i < cpus->len; i++) {
++        unsigned int apic_id = cpus->cpus[i].arch_id;
+         assert(apic_id < pcms->apic_id_limit);
+-        j = numa_get_node_for_cpu(i);
+-        if (j < nb_numa_nodes) {
+-            numa_fw_cfg[apic_id + 1] = cpu_to_le64(j);
++        if (cpus->cpus[i].props.has_node_id) {
++            numa_fw_cfg[apic_id + 1] = cpu_to_le64(cpus->cpus[i].props.node_id);
+         }
+     }
+     for (i = 0; i < nb_numa_nodes; i++) {
+@@ -1986,8 +1988,8 @@ static void pc_cpu_pre_plug(HotplugHandler *hotplug_dev,
+     cs = CPU(cpu);
+     cs->cpu_index = idx;
+ 
+-    node_id = numa_get_node_for_cpu(cs->cpu_index);
+-    if (node_id == nb_numa_nodes) {
++    node_id = cpu_slot->props.node_id;
++    if (!cpu_slot->props.has_node_id) {
+         /* by default CPUState::numa_node was 0 if it's not set via CLI
+          * keep it this way for now but in future we probably should
+          * refuse to start up with incomplete numa mapping */
 -- 
 2.7.4
 

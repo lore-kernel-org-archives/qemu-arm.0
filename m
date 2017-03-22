@@ -1,66 +1,63 @@
-Received: by 10.25.15.230 with SMTP id 99csp186182lfp;
-        Wed, 22 Mar 2017 03:34:26 -0700 (PDT)
-X-Received: by 10.55.112.70 with SMTP id l67mr37084377qkc.174.1490178866037;
-        Wed, 22 Mar 2017 03:34:26 -0700 (PDT)
+Received: by 10.25.15.230 with SMTP id 99csp256663lfp;
+        Wed, 22 Mar 2017 06:33:02 -0700 (PDT)
+X-Received: by 10.55.91.66 with SMTP id p63mr20060395qkb.319.1490189582089;
+        Wed, 22 Mar 2017 06:33:02 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id q64si740775qtd.258.2017.03.22.03.34.25
+        by mx.google.com with ESMTPS id f37si1093932qta.177.2017.03.22.06.33.01
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 22 Mar 2017 03:34:26 -0700 (PDT)
+        Wed, 22 Mar 2017 06:33:02 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:50041 helo=lists.gnu.org)
+Received: from localhost ([::1]:51095 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1cqdaz-0005Nt-Gn
-	for alex.bennee@linaro.org; Wed, 22 Mar 2017 06:34:25 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:46113)
+	id 1cqgNp-0006te-Il
+	for alex.bennee@linaro.org; Wed, 22 Mar 2017 09:33:01 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:44182)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <drjones@redhat.com>) id 1cqdas-0005NX-LC
-	for qemu-arm@nongnu.org; Wed, 22 Mar 2017 06:34:20 -0400
+	(envelope-from <imammedo@redhat.com>) id 1cqgNl-0006tD-9T
+	for qemu-arm@nongnu.org; Wed, 22 Mar 2017 09:32:58 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <drjones@redhat.com>) id 1cqdao-0001C9-FM
-	for qemu-arm@nongnu.org; Wed, 22 Mar 2017 06:34:18 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:47014)
+	(envelope-from <imammedo@redhat.com>) id 1cqgNj-0001gP-6M
+	for qemu-arm@nongnu.org; Wed, 22 Mar 2017 09:32:57 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:43665)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <drjones@redhat.com>)
-	id 1cqdao-0001Bo-77; Wed, 22 Mar 2017 06:34:14 -0400
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
-	[10.5.11.16])
+	(Exim 4.71) (envelope-from <imammedo@redhat.com>)
+	id 1cqgNi-0001gA-Ul; Wed, 22 Mar 2017 09:32:55 -0400
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
+	[10.5.11.11])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 6246880F99;
-	Wed, 22 Mar 2017 10:34:13 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 6246880F99
-Authentication-Results: ext-mx03.extmail.prod.ext.phx2.redhat.com;
+	by mx1.redhat.com (Postfix) with ESMTPS id BD20C75EAB;
+	Wed, 22 Mar 2017 13:32:54 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com BD20C75EAB
+Authentication-Results: ext-mx04.extmail.prod.ext.phx2.redhat.com;
 	dmarc=none (p=none dis=none) header.from=redhat.com
-Authentication-Results: ext-mx03.extmail.prod.ext.phx2.redhat.com;
-	spf=pass smtp.mailfrom=drjones@redhat.com
-DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com 6246880F99
-Received: from hawk.localdomain (ovpn-204-115.brq.redhat.com [10.40.204.115])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 76D5F8567A;
-	Wed, 22 Mar 2017 10:34:08 +0000 (UTC)
-Date: Wed, 22 Mar 2017 11:34:05 +0100
-From: Andrew Jones <drjones@redhat.com>
-To: He Chen <he.chen@linux.intel.com>
-Message-ID: <20170322103405.rcye74zye6gvrfis@hawk.localdomain>
-References: <1490175166-19785-1-git-send-email-he.chen@linux.intel.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <1490175166-19785-1-git-send-email-he.chen@linux.intel.com>
-User-Agent: Mutt/1.6.0.1 (2016-04-01)
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
+Authentication-Results: ext-mx04.extmail.prod.ext.phx2.redhat.com;
+	spf=pass smtp.mailfrom=imammedo@redhat.com
+DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com BD20C75EAB
+Received: from dell-r430-03.lab.eng.brq.redhat.com
+	(dell-r430-03.lab.eng.brq.redhat.com [10.34.112.60])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id C2A6AA5660;
+	Wed, 22 Mar 2017 13:32:52 +0000 (UTC)
+From: Igor Mammedov <imammedo@redhat.com>
+To: qemu-devel@nongnu.org
+Date: Wed, 22 Mar 2017 14:32:26 +0100
+Message-Id: <1490189568-167621-2-git-send-email-imammedo@redhat.com>
+In-Reply-To: <1490189568-167621-1-git-send-email-imammedo@redhat.com>
+References: <1490189568-167621-1-git-send-email-imammedo@redhat.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.27]);
-	Wed, 22 Mar 2017 10:34:13 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.28]);
+	Wed, 22 Mar 2017 13:32:54 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v3] Allow setting NUMA distance
- for different NUMA nodes
+Subject: [Qemu-arm] [PATCH for-2.10 01/23] tests: add CPUs to numa node
+ mapping test
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -72,420 +69,171 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
-	Eduardo Habkost <ehabkost@redhat.com>,
-	"Michael S . Tsirkin" <mst@redhat.com>, qemu-devel@nongnu.org,
-	Markus Armbruster <armbru@redhat.com>,
-	Igor Mammedov <imammedo@redhat.com>, qemu-arm@nongnu.org,
-	Shannon Zhao <zhaoshenglong@huawei.com>,
-	Paolo Bonzini <pbonzini@redhat.com>, Richard Henderson <rth@twiddle.net>
+Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jones <drjones@redhat.com>,
+	Eduardo Habkost <ehabkost@redhat.com>, qemu-arm@nongnu.org,
+	qemu-ppc@nongnu.org, Shannon Zhao <zhaoshenglong@huawei.com>,
+	Paolo Bonzini <pbonzini@redhat.com>, Eric Blake <eblake@redhat.com>,
+	David Gibson <david@gibson.dropbear.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: yvkufpVJehkA
+X-TUID: xAR572iAlzRz
 
+Signed-off-by: Igor Mammedov <imammedo@redhat.com>
+---
+ tests/Makefile.include |   5 +++
+ tests/numa-test.c      | 106 +++++++++++++++++++++++++++++++++++++++++++++++++
+ 2 files changed, 111 insertions(+)
+ create mode 100644 tests/numa-test.c
 
-You should have CC'ed me, considering this version is addressing my
-review comments, but whatever, I usually skim the list so I found it...
+diff --git a/tests/Makefile.include b/tests/Makefile.include
+index 402e71c..4547b01 100644
+--- a/tests/Makefile.include
++++ b/tests/Makefile.include
+@@ -260,6 +260,7 @@ check-qtest-i386-y += tests/test-filter-mirror$(EXESUF)
+ check-qtest-i386-y += tests/test-filter-redirector$(EXESUF)
+ check-qtest-i386-y += tests/postcopy-test$(EXESUF)
+ check-qtest-i386-y += tests/test-x86-cpuid-compat$(EXESUF)
++check-qtest-i386-y += tests/numa-test$(EXESUF)
+ check-qtest-x86_64-y += $(check-qtest-i386-y)
+ gcov-files-i386-y += i386-softmmu/hw/timer/mc146818rtc.c
+ gcov-files-x86_64-y = $(subst i386-softmmu/,x86_64-softmmu/,$(gcov-files-i386-y))
+@@ -300,6 +301,7 @@ check-qtest-ppc64-y += tests/test-netfilter$(EXESUF)
+ check-qtest-ppc64-y += tests/test-filter-mirror$(EXESUF)
+ check-qtest-ppc64-y += tests/test-filter-redirector$(EXESUF)
+ check-qtest-ppc64-y += tests/display-vga-test$(EXESUF)
++check-qtest-ppc64-y += tests/numa-test$(EXESUF)
+ check-qtest-ppc64-$(CONFIG_EVENTFD) += tests/ivshmem-test$(EXESUF)
+ 
+ check-qtest-sh4-y = tests/endianness-test$(EXESUF)
+@@ -324,6 +326,8 @@ gcov-files-arm-y += arm-softmmu/hw/block/virtio-blk.c
+ check-qtest-arm-y += tests/test-arm-mptimer$(EXESUF)
+ gcov-files-arm-y += hw/timer/arm_mptimer.c
+ 
++check-qtest-aarch64-y = tests/numa-test$(EXESUF)
++
+ check-qtest-microblazeel-y = $(check-qtest-microblaze-y)
+ 
+ check-qtest-xtensaeb-y = $(check-qtest-xtensa-y)
+@@ -747,6 +751,7 @@ tests/vhost-user-bridge$(EXESUF): tests/vhost-user-bridge.o contrib/libvhost-use
+ tests/test-uuid$(EXESUF): tests/test-uuid.o $(test-util-obj-y)
+ tests/test-arm-mptimer$(EXESUF): tests/test-arm-mptimer.o
+ tests/test-qapi-util$(EXESUF): tests/test-qapi-util.o $(test-util-obj-y)
++tests/numa-test$(EXESUF): tests/numa-test.o
+ 
+ tests/migration/stress$(EXESUF): tests/migration/stress.o
+ 	$(call quiet-command, $(LINKPROG) -static -O3 $(PTHREAD_LIB) -o $@ $< ,"LINK","$(TARGET_DIR)$@")
+diff --git a/tests/numa-test.c b/tests/numa-test.c
+new file mode 100644
+index 0000000..f5da0c8
+--- /dev/null
++++ b/tests/numa-test.c
+@@ -0,0 +1,106 @@
++/*
++ * NUMA configuration test cases
++ *
++ * Copyright (c) 2017 Red Hat Inc.
++ * Authors:
++ *  Igor Mammedov <imammedo@redhat.com>
++ *
++ * This work is licensed under the terms of the GNU GPL, version 2 or later.
++ * See the COPYING file in the top-level directory.
++ */
++
++#include "qemu/osdep.h"
++#include "libqtest.h"
++
++static char *make_cli(const char *generic_cli, const char *test_cli)
++{
++    return g_strdup_printf("%s %s", generic_cli ? generic_cli : "", test_cli);
++}
++
++static char *hmp_info_numa(void)
++{
++    QDict *resp;
++    char *s;
++
++    resp = qmp("{ 'execute': 'human-monitor-command', 'arguments': "
++                      "{ 'command-line': 'info numa '} }");
++    g_assert(resp);
++    g_assert(qdict_haskey(resp, "return"));
++    s = g_strdup(qdict_get_str(resp, "return"));
++    g_assert(s);
++    QDECREF(resp);
++    return s;
++}
++
++static void test_mon_explicit(const void *data)
++{
++    char *s;
++    char *cli;
++
++    cli = make_cli(data, "-smp 8 "
++                   "-numa node,nodeid=0,cpus=0-3 "
++                   "-numa node,nodeid=1,cpus=4-7 ");
++    qtest_start(cli);
++
++    s = hmp_info_numa();
++    g_assert(strstr(s, "node 0 cpus: 0 1 2 3"));
++    g_assert(strstr(s, "node 1 cpus: 4 5 6 7"));
++    g_free(s);
++
++    qtest_end();
++    g_free(cli);
++}
++
++static void test_mon_default(const void *data)
++{
++    char *s;
++    char *cli;
++
++    cli = make_cli(data, "-smp 8 -numa node -numa node");
++    qtest_start(cli);
++
++    s = hmp_info_numa();
++    g_assert(strstr(s, "node 0 cpus: 0 2 4 6"));
++    g_assert(strstr(s, "node 1 cpus: 1 3 5 7"));
++    g_free(s);
++
++    qtest_end();
++    g_free(cli);
++}
++
++static void test_mon_partial(const void *data)
++{
++    char *s;
++    char *cli;
++
++    cli = make_cli(data, "-smp 8 "
++                   "-numa node,nodeid=0,cpus=0-1 "
++                   "-numa node,nodeid=1,cpus=4-5 ");
++    qtest_start(cli);
++
++    s = hmp_info_numa();
++    g_assert(strstr(s, "node 0 cpus: 0 1 2 3 6 7"));
++    g_assert(strstr(s, "node 1 cpus: 4 5"));
++    g_free(s);
++
++    qtest_end();
++    g_free(cli);
++}
++
++int main(int argc, char **argv)
++{
++    const char *args = NULL;
++    const char *arch = qtest_get_arch();
++
++    if (strcmp(arch, "aarch64") == 0) {
++        args = "-machine virt";
++    }
++
++    g_test_init(&argc, &argv, NULL);
++
++    qtest_add_data_func("/numa/mon/default", args, test_mon_default);
++    qtest_add_data_func("/numa/mon/cpus/explicit", args, test_mon_explicit);
++    qtest_add_data_func("/numa/mon/cpus/partial", args, test_mon_partial);
++
++    return g_test_run();
++}
+-- 
+2.7.4
 
-On Wed, Mar 22, 2017 at 05:32:46PM +0800, He Chen wrote:
-> Current, QEMU does not provide a clear command to set vNUMA distance for
-> guest although we already have `-numa` command to set vNUMA nodes.
-> 
-> vNUMA distance makes sense in certain scenario.
-> But now, if we create a guest that has 4 vNUMA nodes, when we check NUMA
-> info via `numactl -H`, we will see:
-> 
-> node distance:
-> node    0    1    2    3
->   0:   10   20   20   20
->   1:   20   10   20   20
->   2:   20   20   10   20
->   3:   20   20   20   10
-> 
-> Guest kernel regards all local node as distance 10, and all remote node
-> as distance 20 when there is no SLIT table since QEMU doesn't build it.
-> It looks like a little strange when you have seen the distance in an
-> actual physical machine that contains 4 NUMA nodes. My machine shows:
-> 
-> node distance:
-> node    0    1    2    3
->   0:   10   21   31   41
->   1:   21   10   21   31
->   2:   31   21   10   21
->   3:   41   31   21   10
-> 
-> To set vNUMA distance, guest should see a complete SLIT table.
-> I found QEMU has provide `-acpitable` command that allows users to add
-> a ACPI table into guest, but it requires users building ACPI table by
-> themselves first. Using `-acpitable` to add a SLIT table may be not so
-> straightforward or flexible, imagine that when the vNUMA configuration
-> is changes and we need to generate another SLIT table manually. It may
-> not be friendly to users or upper software like libvirt.
-> 
-> This patch is going to add SLIT table support in QEMU, and provides
-> additional option `dist` for command `-numa` to allow user set vNUMA
-> distance by QEMU command.
-> 
-> With this patch, when a user wants to create a guest that contains
-> several vNUMA nodes and also wants to set distance among those nodes,
-> the QEMU command would like:
-> 
-> ```
-> -object memory-backend-ram,size=1G,prealloc=yes,host-nodes=0,policy=bind,id=node0 \
-> -numa node,nodeid=0,cpus=0,memdev=node0 \
-> -object memory-backend-ram,size=1G,prealloc=yes,host-nodes=1,policy=bind,id=node1 \
-> -numa node,nodeid=1,cpus=1,memdev=node1 \
-> -object memory-backend-ram,size=1G,prealloc=yes,host-nodes=2,policy=bind,id=node2 \
-> -numa node,nodeid=2,cpus=2,memdev=node2 \
-> -object memory-backend-ram,size=1G,prealloc=yes,host-nodes=3,policy=bind,id=node3 \
-> -numa node,nodeid=3,cpus=3,memdev=node3 \
-> -numa dist,src=0,dst=1,val=21 \
-> -numa dist,src=0,dst=2,val=31 \
-> -numa dist,src=0,dst=3,val=41 \
-> -numa dist,src=1,dst=0,val=21 \
-> ...
-> ```
-> 
-> Signed-off-by: He Chen <he.chen@linux.intel.com>
-> 
-> fix
-
-stray 'fix' above the ---
-
-> ---
->  hw/acpi/aml-build.c         | 26 +++++++++++++++++++++++++
->  hw/arm/virt-acpi-build.c    |  2 ++
->  hw/i386/acpi-build.c        |  2 ++
->  include/hw/acpi/aml-build.h |  1 +
->  include/sysemu/numa.h       |  1 +
->  include/sysemu/sysemu.h     |  4 ++++
->  numa.c                      | 47 +++++++++++++++++++++++++++++++++++++++++++++
->  qapi-schema.json            | 30 ++++++++++++++++++++++++++---
->  qemu-options.hx             | 12 +++++++++++-
->  9 files changed, 121 insertions(+), 4 deletions(-)
-> 
-> diff --git a/hw/acpi/aml-build.c b/hw/acpi/aml-build.c
-> index c6f2032..410b30e 100644
-> --- a/hw/acpi/aml-build.c
-> +++ b/hw/acpi/aml-build.c
-> @@ -24,6 +24,7 @@
->  #include "hw/acpi/aml-build.h"
->  #include "qemu/bswap.h"
->  #include "qemu/bitops.h"
-> +#include "sysemu/numa.h"
->  
->  static GArray *build_alloc_array(void)
->  {
-> @@ -1609,3 +1610,28 @@ void build_srat_memory(AcpiSratMemoryAffinity *numamem, uint64_t base,
->      numamem->base_addr = cpu_to_le64(base);
->      numamem->range_length = cpu_to_le64(len);
->  }
-> +
-> +/*
-> + * ACPI spec 5.2.17 System Locality Distance Information Table
-> + * (Revision 2.0 or later)
-> + */
-> +void build_slit(GArray *table_data, BIOSLinker *linker)
-> +{
-> +    int slit_start, i, j;
-> +    slit_start = table_data->len;
-> +
-> +    acpi_data_push(table_data, sizeof(AcpiTableHeader));
-> +
-> +    build_append_int_noprefix(table_data, nb_numa_nodes, 8);
-> +    for (i = 0; i < nb_numa_nodes; i++) {
-> +        for (j = 0; j < nb_numa_nodes; j++) {
-> +            build_append_int_noprefix(table_data, numa_info[i].distance[j], 1);
-> +        }
-> +    }
-> +
-> +    build_header(linker, table_data,
-> +                 (void *)(table_data->data + slit_start),
-> +                 "SLIT",
-> +                 table_data->len - slit_start, 1, NULL, NULL);
-> +}
-> +
-> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-> index 0835e59..d9e6828 100644
-> --- a/hw/arm/virt-acpi-build.c
-> +++ b/hw/arm/virt-acpi-build.c
-> @@ -781,6 +781,8 @@ void virt_acpi_build(VirtMachineState *vms, AcpiBuildTables *tables)
->      if (nb_numa_nodes > 0) {
->          acpi_add_table(table_offsets, tables_blob);
->          build_srat(tables_blob, tables->linker, vms);
-> +        acpi_add_table(table_offsets, tables_blob);
-> +        build_slit(tables_blob, tables->linker);
-
-I didn't expect you'd actually add the support to the ARM machine
-model, but only provide the API. Anyway, thanks for this, assuming
-you've tested it and it works.
-
->      }
->  
->      if (its_class_name() && !vmc->no_its) {
-> diff --git a/hw/i386/acpi-build.c b/hw/i386/acpi-build.c
-> index 2073108..12730ea 100644
-> --- a/hw/i386/acpi-build.c
-> +++ b/hw/i386/acpi-build.c
-> @@ -2678,6 +2678,8 @@ void acpi_build(AcpiBuildTables *tables, MachineState *machine)
->      if (pcms->numa_nodes) {
->          acpi_add_table(table_offsets, tables_blob);
->          build_srat(tables_blob, tables->linker, machine);
-> +        acpi_add_table(table_offsets, tables_blob);
-> +        build_slit(tables_blob, tables->linker);
->      }
->      if (acpi_get_mcfg(&mcfg)) {
->          acpi_add_table(table_offsets, tables_blob);
-> diff --git a/include/hw/acpi/aml-build.h b/include/hw/acpi/aml-build.h
-> index 00c21f1..329a0d0 100644
-> --- a/include/hw/acpi/aml-build.h
-> +++ b/include/hw/acpi/aml-build.h
-> @@ -389,4 +389,5 @@ GCC_FMT_ATTR(2, 3);
->  void build_srat_memory(AcpiSratMemoryAffinity *numamem, uint64_t base,
->                         uint64_t len, int node, MemoryAffinityFlags flags);
->  
-> +void build_slit(GArray *table_data, BIOSLinker *linker);
->  #endif
-> diff --git a/include/sysemu/numa.h b/include/sysemu/numa.h
-> index 8f09dcf..2f7a941 100644
-> --- a/include/sysemu/numa.h
-> +++ b/include/sysemu/numa.h
-> @@ -21,6 +21,7 @@ typedef struct node_info {
->      struct HostMemoryBackend *node_memdev;
->      bool present;
->      QLIST_HEAD(, numa_addr_range) addr; /* List to store address ranges */
-> +    uint8_t distance[MAX_NODES];
->  } NodeInfo;
->  
->  extern NodeInfo numa_info[MAX_NODES];
-> diff --git a/include/sysemu/sysemu.h b/include/sysemu/sysemu.h
-> index 576c7ce..a4e328d 100644
-> --- a/include/sysemu/sysemu.h
-> +++ b/include/sysemu/sysemu.h
-> @@ -169,6 +169,10 @@ extern int mem_prealloc;
->  
->  #define MAX_NODES 128
->  #define NUMA_NODE_UNASSIGNED MAX_NODES
-> +#define MIN_NUMA_DISTANCE 10
-> +#define DEF_NUMA_DISTANCE 20
-> +#define MAX_NUMA_DISTANCE 254
-
-You ignored my comment about starting with 'NUMA_DISTANCE' without
-even replying to that comment stating why you prefer it this way.
-That's a bit annoying.
-
-> +#define NUMA_DISTANCE_UNREACHABLE 255
-
-Here you do start with NUMA_DISTANCE, so these names have an
-inconsistent format.
-
->  
->  #define MAX_OPTION_ROMS 16
->  typedef struct QEMUOptionRom {
-> diff --git a/numa.c b/numa.c
-> index e01cb54..425a320 100644
-> --- a/numa.c
-> +++ b/numa.c
-> @@ -212,6 +212,28 @@ static void numa_node_parse(NumaNodeOptions *node, QemuOpts *opts, Error **errp)
->      max_numa_nodeid = MAX(max_numa_nodeid, nodenr + 1);
->  }
->  
-> +static void numa_distance_parse(NumaDistOptions *dist, QemuOpts *opts, Error **errp)
-> +{
-> +    uint64_t src = dist->src;
-> +    uint64_t dst = dist->dst;
-> +    uint8_t val = dist->val;
-> +
-> +    if (src >= MAX_NODES || dst >= MAX_NODES) {
-> +        error_setg(errp, "Max number of NUMA nodes reached: %"
-> +                   PRIu64 "", src > dst ? src : dst);
-> +        return;
-> +    }
-> +
-> +    if (val < MIN_NUMA_DISTANCE || val > MAX_NUMA_DISTANCE) {
-
-val > MAX_NUMA_DISTANCE is not invalid, as NUMA_DISTANCE_UNREACHABLE
-is 255. Isn't it possible that that could be what the user wants?
-
-> +        error_setg(errp,
-> +                "NUMA distance (%" PRIu8 ") out of range (%d) ~ (%d)",
-> +                dist->val, MIN_NUMA_DISTANCE, MAX_NUMA_DISTANCE);
-> +        return;
-> +    }
-> +
-> +    numa_info[src].distance[dst] = val;
-> +}
-> +
->  static int parse_numa(void *opaque, QemuOpts *opts, Error **errp)
->  {
->      NumaOptions *object = NULL;
-> @@ -235,6 +257,12 @@ static int parse_numa(void *opaque, QemuOpts *opts, Error **errp)
->          }
->          nb_numa_nodes++;
->          break;
-> +    case NUMA_OPTIONS_TYPE_DIST:
-> +        numa_distance_parse(&object->u.dist, opts, &err);
-> +        if (err) {
-> +            goto end;
-> +        }
-> +        break;
->      default:
->          abort();
->      }
-> @@ -294,6 +322,24 @@ static void validate_numa_cpus(void)
->      g_free(seen_cpus);
->  }
->  
-> +static void default_numa_distance(void)
-> +{
-> +    int src, dst;
-> +
-> +    for (src = 0; src < nb_numa_nodes; src++) {
-> +        for (dst = 0; dst < nb_numa_nodes; dst++) {
-> +            if (src == dst && numa_info[src].distance[dst] != MIN_NUMA_DISTANCE) {
-> +                numa_info[src].distance[dst] = MIN_NUMA_DISTANCE;
-> +            } else if (numa_info[src].distance[dst] <= MIN_NUMA_DISTANCE) {
-> +                if (numa_info[dst].distance[src] > MIN_NUMA_DISTANCE)
-> +                    numa_info[src].distance[dst] = numa_info[dst].distance[src];
-> +                else
-> +                    numa_info[src].distance[dst] = DEF_NUMA_DISTANCE;
-> +            }
-> +        }
-> +    }
-> +}
-> +
->  void parse_numa_opts(MachineClass *mc)
->  {
->      int i;
-> @@ -390,6 +436,7 @@ void parse_numa_opts(MachineClass *mc)
->          }
->  
->          validate_numa_cpus();
-> +        default_numa_distance();
->      } else {
->          numa_set_mem_node_id(0, ram_size, 0);
->      }
-> diff --git a/qapi-schema.json b/qapi-schema.json
-> index 32b4a4b..21ad94a 100644
-> --- a/qapi-schema.json
-> +++ b/qapi-schema.json
-> @@ -5644,15 +5644,19 @@
->  ##
->  # @NumaOptionsType:
->  #
-> +# @node: NUMA nodes configuration
-> +#
-> +# @dist: NUMA distance configuration
-> +#
->  # Since: 2.1
->  ##
->  { 'enum': 'NumaOptionsType',
-> -  'data': [ 'node' ] }
-> +  'data': [ 'node', 'dist' ] }
->  
->  ##
->  # @NumaOptions:
->  #
-> -# A discriminated record of NUMA options. (for OptsVisitor)
-> +# A discriminated record of NUMA options.
->  #
->  # Since: 2.1
->  ##
-> @@ -5660,7 +5664,8 @@
->    'base': { 'type': 'NumaOptionsType' },
->    'discriminator': 'type',
->    'data': {
-> -    'node': 'NumaNodeOptions' }}
-> +    'node': 'NumaNodeOptions',
-> +    'dist': 'NumaDistOptions' }}
->  
->  ##
->  # @NumaNodeOptions:
-> @@ -5689,6 +5694,25 @@
->     '*memdev': 'str' }}
->  
->  ##
-> +# @NumaDistOptions:
-> +#
-> +# Set distance between 2 NUMA nodes. (for OptsVisitor)
-
-Set the distance
-
-> +#
-> +# @src: source NUMA node.
-> +#
-> +# @dst: destination NUMA node.
-> +#
-> +# @val: NUMA distance from source node to destination node.
-> +#
-> +# Since: 2.10
-> +##
-> +{ 'struct': 'NumaDistOptions',
-> +  'data': {
-> +   'src': 'uint64',
-> +   'dst': 'uint64',
-> +   'val': 'uint8' }}
-> +
-> +##
->  # @HostMemPolicy:
->  #
->  # Host memory policy types
-> diff --git a/qemu-options.hx b/qemu-options.hx
-> index 8dd8ee3..43c3950 100644
-> --- a/qemu-options.hx
-> +++ b/qemu-options.hx
-> @@ -139,12 +139,15 @@ ETEXI
->  
->  DEF("numa", HAS_ARG, QEMU_OPTION_numa,
->      "-numa node[,mem=size][,cpus=firstcpu[-lastcpu]][,nodeid=node]\n"
-> -    "-numa node[,memdev=id][,cpus=firstcpu[-lastcpu]][,nodeid=node]\n", QEMU_ARCH_ALL)
-> +    "-numa node[,memdev=id][,cpus=firstcpu[-lastcpu]][,nodeid=node]\n"
-> +    "-numa dist,src=source,dst=destination,val=distance\n", QEMU_ARCH_ALL)
->  STEXI
->  @item -numa node[,mem=@var{size}][,cpus=@var{firstcpu}[-@var{lastcpu}]][,nodeid=@var{node}]
->  @itemx -numa node[,memdev=@var{id}][,cpus=@var{firstcpu}[-@var{lastcpu}]][,nodeid=@var{node}]
-> +@itemx -numa dist,src=@var{source},dst=@var{destination},val=@var{distance}
->  @findex -numa
->  Define a NUMA node and assign RAM and VCPUs to it.
-> +Set NUMA distance from source node to destination node.
-
-Set the NUMA distance from a source node to a destination node.
-
->  
->  @var{firstcpu} and @var{lastcpu} are CPU indexes. Each
->  @samp{cpus} option represent a contiguous range of CPU indexes
-> @@ -167,6 +170,13 @@ split equally between them.
->  @samp{mem} and @samp{memdev} are mutually exclusive. Furthermore,
->  if one node uses @samp{memdev}, all of them have to use it.
->  
-> +@var{source} and @var{destination} are NUMA node IDs.
-> +@var{distance} is the NUMA distance from @var{source} to @var{destination}.
-> +The distance from node A to node B may be different from the distance from
-> +node B to node A since the distance can to be asymmetry.
-
-/since/as/
-/asymmetry/asymmetrical/
-
-> +If the distance is not set, the default distance for a local NUMA node is 10,
-
-no need for ,
-
-> +and 20 for a remote node.
-
-and the default distance for a remote node is 20.
-
-Also need sentence like: When the distance for only one direction is
-given, then the opposite direction defaults to the same distance.
-
-And maybe should also point out how to set an unreachable node with 255.
-
-> +
->  Note that the -@option{numa} option doesn't allocate any of the
->  specified resources, it just assigns existing resources to NUMA
->  nodes. This means that one still has to use the @option{-m},
-> -- 
-> 2.7.4
-> 
-> 
-
-drew

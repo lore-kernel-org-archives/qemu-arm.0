@@ -1,63 +1,63 @@
-Received: by 10.25.15.230 with SMTP id 99csp260744lfp;
-        Wed, 22 Mar 2017 06:42:55 -0700 (PDT)
-X-Received: by 10.233.223.198 with SMTP id t189mr10239983qkf.292.1490190175347;
-        Wed, 22 Mar 2017 06:42:55 -0700 (PDT)
+Received: by 10.25.15.230 with SMTP id 99csp260835lfp;
+        Wed, 22 Mar 2017 06:43:09 -0700 (PDT)
+X-Received: by 10.237.42.194 with SMTP id t60mr40845747qtd.269.1490190189771;
+        Wed, 22 Mar 2017 06:43:09 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id h65si1107154qkf.257.2017.03.22.06.42.55
+        by mx.google.com with ESMTPS id o22si372883qko.132.2017.03.22.06.43.09
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 22 Mar 2017 06:42:55 -0700 (PDT)
+        Wed, 22 Mar 2017 06:43:09 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:51180 helo=lists.gnu.org)
+Received: from localhost ([::1]:51183 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1cqgXO-0007CW-Q1
-	for alex.bennee@linaro.org; Wed, 22 Mar 2017 09:42:54 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:45266)
+	id 1cqgXd-0007QZ-5U
+	for alex.bennee@linaro.org; Wed, 22 Mar 2017 09:43:09 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:45515)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <imammedo@redhat.com>) id 1cqgPU-0008UF-0G
-	for qemu-arm@nongnu.org; Wed, 22 Mar 2017 09:34:44 -0400
+	(envelope-from <imammedo@redhat.com>) id 1cqgPo-0000Me-V4
+	for qemu-arm@nongnu.org; Wed, 22 Mar 2017 09:35:06 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <imammedo@redhat.com>) id 1cqgPQ-0002Af-8m
-	for qemu-arm@nongnu.org; Wed, 22 Mar 2017 09:34:44 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:40944)
+	(envelope-from <imammedo@redhat.com>) id 1cqgPm-0002IN-Nl
+	for qemu-arm@nongnu.org; Wed, 22 Mar 2017 09:35:04 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:34936)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <imammedo@redhat.com>)
-	id 1cqgPQ-0002AQ-2W; Wed, 22 Mar 2017 09:34:40 -0400
+	id 1cqgPm-0002HC-G4; Wed, 22 Mar 2017 09:35:02 -0400
 Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
 	[10.5.11.11])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id CDFF2915BE;
-	Wed, 22 Mar 2017 13:34:39 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com CDFF2915BE
-Authentication-Results: ext-mx01.extmail.prod.ext.phx2.redhat.com;
+	by mx1.redhat.com (Postfix) with ESMTPS id 2498AC054C5E;
+	Wed, 22 Mar 2017 13:35:02 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 2498AC054C5E
+Authentication-Results: ext-mx08.extmail.prod.ext.phx2.redhat.com;
 	dmarc=none (p=none dis=none) header.from=redhat.com
-Authentication-Results: ext-mx01.extmail.prod.ext.phx2.redhat.com;
+Authentication-Results: ext-mx08.extmail.prod.ext.phx2.redhat.com;
 	spf=pass smtp.mailfrom=imammedo@redhat.com
-DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com CDFF2915BE
+DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com 2498AC054C5E
 Received: from dell-r430-03.lab.eng.brq.redhat.com
 	(dell-r430-03.lab.eng.brq.redhat.com [10.34.112.60])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id BC170A5662;
-	Wed, 22 Mar 2017 13:34:34 +0000 (UTC)
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 69DDBA5660;
+	Wed, 22 Mar 2017 13:34:59 +0000 (UTC)
 From: Igor Mammedov <imammedo@redhat.com>
 To: qemu-devel@nongnu.org
-Date: Wed, 22 Mar 2017 14:32:42 +0100
-Message-Id: <1490189568-167621-18-git-send-email-imammedo@redhat.com>
+Date: Wed, 22 Mar 2017 14:32:48 +0100
+Message-Id: <1490189568-167621-24-git-send-email-imammedo@redhat.com>
 In-Reply-To: <1490189568-167621-1-git-send-email-imammedo@redhat.com>
 References: <1490189568-167621-1-git-send-email-imammedo@redhat.com>
 X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.25]);
-	Wed, 22 Mar 2017 13:34:40 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.32]);
+	Wed, 22 Mar 2017 13:35:02 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 209.132.183.28
-Subject: [Qemu-arm] [PATCH for-2.10 17/23] numa: remove no longer used
- numa_get_node_for_cpu()
+Subject: [Qemu-arm] [PATCH for-2.10 23/23] tests: check -numa node,
+ cpu=props_list usecase
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -76,54 +76,181 @@ Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jones <drjones@redhat.com>,
 	David Gibson <david@gibson.dropbear.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: CPIqhltOGif1
-
-it's been replaced by fetching mapping info from possible_cpus
+X-TUID: 20eZcHVrWnp4
 
 Signed-off-by: Igor Mammedov <imammedo@redhat.com>
 ---
- include/sysemu/numa.h |  4 ----
- numa.c                | 14 --------------
- 2 files changed, 18 deletions(-)
+ tests/numa-test.c | 151 ++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 151 insertions(+)
 
-diff --git a/include/sysemu/numa.h b/include/sysemu/numa.h
-index 46ea6c7..c67763a 100644
---- a/include/sysemu/numa.h
-+++ b/include/sysemu/numa.h
-@@ -31,8 +31,4 @@ extern QemuOptsList qemu_numa_opts;
- void numa_set_mem_node_id(ram_addr_t addr, uint64_t size, uint32_t node);
- void numa_unset_mem_node_id(ram_addr_t addr, uint64_t size, uint32_t node);
- uint32_t numa_get_node(ram_addr_t addr, Error **errp);
--
--/* on success returns node index in numa_info,
-- * on failure returns nb_numa_nodes */
--int numa_get_node_for_cpu(int idx);
- #endif
-diff --git a/numa.c b/numa.c
-index ab41776..187c93f 100644
---- a/numa.c
-+++ b/numa.c
-@@ -583,20 +583,6 @@ MemdevList *qmp_query_memdev(Error **errp)
-     return list;
+diff --git a/tests/numa-test.c b/tests/numa-test.c
+index 8326321..d371923 100644
+--- a/tests/numa-test.c
++++ b/tests/numa-test.c
+@@ -130,6 +130,144 @@ static void test_query_cpus(const void *data)
+     g_free(cli);
  }
  
--int numa_get_node_for_cpu(int idx)
--{
--    int i;
--
--    assert(idx < max_cpus);
--
--    for (i = 0; i < nb_numa_nodes; i++) {
--        if (test_bit(idx, numa_info[i].node_cpu)) {
--            break;
--        }
--    }
--    return i;
--}
--
- void ram_block_notifier_add(RAMBlockNotifier *n)
++static void pc_numa_cpu(const void *data)
++{
++    char *cli;
++    QDict *resp;
++    QList *cpus;
++    const QObject *e;
++
++    cli = make_cli(data, "-cpu pentium -smp 8,sockets=2,cores=2,threads=2 "
++        "-numa node,nodeid=0 -numa node,nodeid=1 "
++        "-numa cpu,node-id=1,socket-id=0 "
++        "-numa cpu,node-id=0,socket-id=1,core-id=0 "
++        "-numa cpu,node-id=0,socket-id=1,core-id=1,thread-id=0 "
++        "-numa cpu,node-id=1,socket-id=1,core-id=1,thread-id=1");
++    qtest_start(cli);
++    cpus = get_cpus(&resp);
++    g_assert(cpus);
++
++    while ((e = qlist_pop(cpus))) {
++        QDict *cpu, *props;
++        int64_t socket, core, thread, node;
++
++        cpu = qobject_to_qdict(e);
++        g_assert(qdict_haskey(cpu, "props"));
++        props = qdict_get_qdict(cpu, "props");
++
++        g_assert(qdict_haskey(props, "node-id"));
++        node = qdict_get_int(props, "node-id");
++        g_assert(qdict_haskey(props, "socket-id"));
++        socket = qdict_get_int(props, "socket-id");
++        g_assert(qdict_haskey(props, "core-id"));
++        core = qdict_get_int(props, "core-id");
++        g_assert(qdict_haskey(props, "thread-id"));
++        thread = qdict_get_int(props, "thread-id");
++
++        if (socket == 0) {
++            g_assert_cmpint(node, ==, 1);
++        } else if (socket == 1 && core == 0) {
++            g_assert_cmpint(node, ==, 0);
++        } else if (socket == 1 && core == 1 && thread == 0) {
++            g_assert_cmpint(node, ==, 0);
++        } else if (socket == 1 && core == 1 && thread == 1) {
++            g_assert_cmpint(node, ==, 1);
++        } else {
++            g_assert(false);
++        }
++    }
++
++    QDECREF(resp);
++    qtest_end();
++    g_free(cli);
++}
++
++static void spapr_numa_cpu(const void *data)
++{
++    char *cli;
++    QDict *resp;
++    QList *cpus;
++    const QObject *e;
++
++    cli = make_cli(data, "-smp 4,cores=4 "
++        "-numa node,nodeid=0 -numa node,nodeid=1 "
++        "-numa cpu,node-id=0,core-id=0 "
++        "-numa cpu,node-id=0,core-id=1 "
++        "-numa cpu,node-id=0,core-id=2 "
++        "-numa cpu,node-id=1,core-id=3");
++    qtest_start(cli);
++    cpus = get_cpus(&resp);
++    g_assert(cpus);
++
++    while ((e = qlist_pop(cpus))) {
++        QDict *cpu, *props;
++        int64_t core, node;
++
++        cpu = qobject_to_qdict(e);
++        g_assert(qdict_haskey(cpu, "props"));
++        props = qdict_get_qdict(cpu, "props");
++
++        g_assert(qdict_haskey(props, "node-id"));
++        node = qdict_get_int(props, "node-id");
++        g_assert(qdict_haskey(props, "core-id"));
++        core = qdict_get_int(props, "core-id");
++
++        if (core >= 0 && core < 3) {
++            g_assert_cmpint(node, ==, 0);
++        } else if (core == 3) {
++            g_assert_cmpint(node, ==, 1);
++        } else {
++            g_assert(false);
++        }
++    }
++
++    QDECREF(resp);
++    qtest_end();
++    g_free(cli);
++}
++
++static void aarch64_numa_cpu(const void *data)
++{
++    char *cli;
++    QDict *resp;
++    QList *cpus;
++    const QObject *e;
++
++    cli = make_cli(data, "-smp 2 "
++        "-numa node,nodeid=0 -numa node,nodeid=1 "
++        "-numa cpu,node-id=1,thread-id=0 "
++        "-numa cpu,node-id=0,thread-id=1");
++    qtest_start(cli);
++    cpus = get_cpus(&resp);
++    g_assert(cpus);
++
++    while ((e = qlist_pop(cpus))) {
++        QDict *cpu, *props;
++        int64_t thread, node;
++
++        cpu = qobject_to_qdict(e);
++        g_assert(qdict_haskey(cpu, "props"));
++        props = qdict_get_qdict(cpu, "props");
++
++        g_assert(qdict_haskey(props, "node-id"));
++        node = qdict_get_int(props, "node-id");
++        g_assert(qdict_haskey(props, "thread-id"));
++        thread = qdict_get_int(props, "thread-id");
++
++        if (thread == 0) {
++            g_assert_cmpint(node, ==, 1);
++        } else if (thread == 1) {
++            g_assert_cmpint(node, ==, 0);
++        } else {
++            g_assert(false);
++        }
++    }
++
++    QDECREF(resp);
++    qtest_end();
++    g_free(cli);
++}
++
+ int main(int argc, char **argv)
  {
-     QLIST_INSERT_HEAD(&ram_list.ramblock_notifiers, n, next);
+     const char *args = NULL;
+@@ -146,5 +284,18 @@ int main(int argc, char **argv)
+     qtest_add_data_func("/numa/mon/cpus/partial", args, test_mon_partial);
+     qtest_add_data_func("/numa/qmp/cpus/query-cpus", args, test_query_cpus);
+ 
++    if (!strcmp(arch, "i386") || !strcmp(arch, "x86_64")) {
++        qtest_add_data_func("/numa/pc/cpu/explicit", args, pc_numa_cpu);
++    }
++
++    if (!strcmp(arch, "ppc64")) {
++        qtest_add_data_func("/numa/spapr/cpu/explicit", args, spapr_numa_cpu);
++    }
++
++    if (!strcmp(arch, "aarch64")) {
++        qtest_add_data_func("/numa/aarch64/cpu/explicit", args,
++                            aarch64_numa_cpu);
++    }
++
+     return g_test_run();
+ }
 -- 
 2.7.4
 

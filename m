@@ -1,45 +1,45 @@
-Received: by 10.25.15.230 with SMTP id 99csp802843lfp;
-        Thu, 23 Mar 2017 08:10:51 -0700 (PDT)
-X-Received: by 10.55.8.5 with SMTP id 5mr2968371qki.70.1490281851026;
-        Thu, 23 Mar 2017 08:10:51 -0700 (PDT)
+Received: by 10.25.15.230 with SMTP id 99csp803679lfp;
+        Thu, 23 Mar 2017 08:12:27 -0700 (PDT)
+X-Received: by 10.237.34.150 with SMTP id p22mr2692994qtc.66.1490281947173;
+        Thu, 23 Mar 2017 08:12:27 -0700 (PDT)
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id d203si3898311qkc.148.2017.03.23.08.10.50
+        by mx.google.com with ESMTPS id g11si3916923qtf.75.2017.03.23.08.12.26
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 23 Mar 2017 08:10:51 -0700 (PDT)
+        Thu, 23 Mar 2017 08:12:27 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=nxp.com
-Received: from localhost ([::1]:56938 helo=lists.gnu.org)
+Received: from localhost ([::1]:56944 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1cr4O2-0005pK-EE
-	for alex.bennee@linaro.org; Thu, 23 Mar 2017 11:10:50 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:35703)
+	id 1cr4Pa-0006t7-JZ
+	for alex.bennee@linaro.org; Thu, 23 Mar 2017 11:12:26 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:36107)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <diana.craciun@nxp.com>) id 1cr4N3-0005Lo-SI
-	for qemu-devel@nongnu.org; Thu, 23 Mar 2017 11:09:53 -0400
+	(envelope-from <diana.craciun@nxp.com>) id 1cr4OA-00064f-E1
+	for qemu-devel@nongnu.org; Thu, 23 Mar 2017 11:10:59 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <diana.craciun@nxp.com>) id 1cr4N2-0002Vh-6o
-	for qemu-devel@nongnu.org; Thu, 23 Mar 2017 11:09:49 -0400
-Received: from mail-co1nam03on0084.outbound.protection.outlook.com
-	([104.47.40.84]:30932
-	helo=NAM03-CO1-obe.outbound.protection.outlook.com)
+	(envelope-from <diana.craciun@nxp.com>) id 1cr4O9-00034Z-3B
+	for qemu-devel@nongnu.org; Thu, 23 Mar 2017 11:10:58 -0400
+Received: from mail-bl2nam02on0059.outbound.protection.outlook.com
+	([104.47.38.59]:45217
+	helo=NAM02-BL2-obe.outbound.protection.outlook.com)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <diana.craciun@nxp.com>)
-	id 1cr4Mt-0002Se-LO; Thu, 23 Mar 2017 11:09:40 -0400
-Received: from DM5PR03CA0049.namprd03.prod.outlook.com (10.174.189.166) by
-	CY1PR03MB2268.namprd03.prod.outlook.com (10.166.207.20) with Microsoft
+	id 1cr4O1-0002vk-Rg; Thu, 23 Mar 2017 11:10:50 -0400
+Received: from BN3PR03CA0060.namprd03.prod.outlook.com (10.167.1.148) by
+	SN2PR03MB2269.namprd03.prod.outlook.com (10.166.210.14) with Microsoft
 	SMTP Server (version=TLS1_2,
-	cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id
-	15.1.991.14; Thu, 23 Mar 2017 13:37:30 +0000
-Received: from BN1AFFO11FD037.protection.gbl (2a01:111:f400:7c10::181) by
-	DM5PR03CA0049.outlook.office365.com (2603:10b6:4:3b::38) with Microsoft
-	SMTP Server (version=TLS1_2,
-	cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id
-	15.1.991.14 via Frontend Transport; Thu, 23 Mar 2017 13:37:30 +0000
+	cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384_P384) id
+	15.1.961.17; Thu, 23 Mar 2017 13:37:18 +0000
+Received: from BN1BFFO11FD001.protection.gbl (2a01:111:f400:7c10::1:156) by
+	BN3PR03CA0060.outlook.office365.com (2a01:111:e400:7a4d::20) with
+	Microsoft SMTP Server (version=TLS1_2,
+	cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.991.14 via
+	Frontend Transport; Thu, 23 Mar 2017 13:37:18 +0000
 Authentication-Results: spf=fail (sender IP is 192.88.158.2)
 	smtp.mailfrom=nxp.com; nxp.com; dkim=none (message not signed)
 	header.d=none;nxp.com; dmarc=fail action=none header.from=nxp.com;
@@ -48,90 +48,87 @@ Received-SPF: Fail (protection.outlook.com: domain of nxp.com does not
 	receiver=protection.outlook.com; 
 	client-ip=192.88.158.2; helo=az84smr01.freescale.net;
 Received: from az84smr01.freescale.net (192.88.158.2) by
-	BN1AFFO11FD037.mail.protection.outlook.com (10.58.52.241) with
+	BN1BFFO11FD001.mail.protection.outlook.com (10.58.144.64) with
 	Microsoft SMTP Server (version=TLS1_0,
 	cipher=TLS_RSA_WITH_AES_256_CBC_SHA) id 15.1.977.7
-	via Frontend Transport; Thu, 23 Mar 2017 13:37:30 +0000
+	via Frontend Transport; Thu, 23 Mar 2017 13:37:17 +0000
 Received: from fsr-fed2364-102.ea.freescale.net
 	(fsr-fed2364-102.ea.freescale.net [10.171.72.66])
-	by az84smr01.freescale.net (8.14.3/8.14.0) with ESMTP id v2NDbEsx029966;
-	Thu, 23 Mar 2017 06:37:27 -0700
+	by az84smr01.freescale.net (8.14.3/8.14.0) with ESMTP id v2NDbEsv029966;
+	Thu, 23 Mar 2017 06:37:15 -0700
 From: Diana Craciun <diana.craciun@nxp.com>
 To: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>
-Date: Thu, 23 Mar 2017 15:36:52 +0200
-Message-ID: <1490276212-32008-3-git-send-email-diana.craciun@nxp.com>
+Date: Thu, 23 Mar 2017 15:36:50 +0200
+Message-ID: <1490276212-32008-1-git-send-email-diana.craciun@nxp.com>
 X-Mailer: git-send-email 2.5.5
-In-Reply-To: <1490276212-32008-1-git-send-email-diana.craciun@nxp.com>
-References: <1490276212-32008-1-git-send-email-diana.craciun@nxp.com>
 X-EOPAttributedMessage: 0
-X-Matching-Connectors: 131347498502891380;
+X-Matching-Connectors: 131347498381105601;
 	(91ab9b29-cfa4-454e-5278-08d120cd25b8); ()
 X-Forefront-Antispam-Report: CIP:192.88.158.2; IPV:NLI; CTRY:US; EFV:NLI;
 	SFV:NSPM;
-	SFS:(10009020)(6009001)(336005)(39850400002)(39380400002)(39840400002)(39450400003)(39410400002)(39400400002)(39860400002)(2980300002)(1109001)(1110001)(339900001)(189002)(199003)(9170700003)(8936002)(50226002)(36756003)(53936002)(2906002)(48376002)(104016004)(47776003)(77096006)(81166006)(54906002)(189998001)(8676002)(85426001)(8656002)(33646002)(5660300001)(38730400002)(76176999)(575784001)(50466002)(356003)(86362001)(2950100002)(50986999)(305945005)(4326008)(6666003)(105606002)(106466001)(5003940100001)(217873001);
-	DIR:OUT; SFP:1101; SCL:1; SRVR:CY1PR03MB2268;
-	H:az84smr01.freescale.net; FPR:; SPF:Fail; MLV:ovrnspm; MX:1;
-	A:1; PTR:InfoDomainNonexistent; LANG:en; 
-X-Microsoft-Exchange-Diagnostics: 1; BN1AFFO11FD037;
-	1:khmrZkRZNzB40TYRXVtlfgabqo3W696OcQMAjepC+ESnPZ+TL3ncpHFfzM9TOutrQT7uWMV8fUlJntIXwZ2HpnwXBzPq69kPXgTj5tkFBjDAX7gspFM2SV8XOD5NmhE13Wr505p/ZGElpKIl8luAFHfD0t6QH+VTAx403M3ZctHKRy0uXD7tNShjG4B7NVU0JnM7OLl1kx7UwWQ7bEwld6AgVQ/VURbhwhsynzB292w1u3Lzm+ERY8cKjdzsae8j06sfkeAQBIAeYzkS3XReM8BcgwWAsYfi1pWleZzw4/GxCIl/vwj9EQmiZRGRdYR1VLQBZAEHBH5qbas104q8kSprlC0r8aB5GAVJxSU+zt1fKLDCGPfmXpCLhHJtR492b3HRH1oAq9C2hj7bw0QqdHPb5aInFX3GPlS/XEsMGlvI0p1o1oQgn5w2nQUJbzd9H2l/Q+bUZX9n21sZ3meWxwWEq6IeykbII2dN8Cgxeas+4OWq9F4falb+Z4quw/8mWZNRRj+JCcZgT8v+amIXj3nqQZlVJxECndnzvZaDcDgJckf+NgypxeEhzyyxBkEFn2GR5dqEV6lXPqQvhwOpS2VOs7aNgdGSaOUDf8vj+ayTG/FJEvRnwCg6drzBa+QSiB5bazQmhReundLIMEutiHw/eLS0Vum4ZStVhAfFKvKERUWDrL2RFndY8GE9PWmlaNQyBivmkEWIXhNBxjMK9w==
+	SFS:(10009020)(6009001)(336005)(39850400002)(39410400002)(39380400002)(39860400002)(39840400002)(39400400002)(39450400003)(2980300002)(1109001)(1110001)(339900001)(199003)(189002)(9170700003)(4326008)(104016004)(33646002)(81166006)(47776003)(36756003)(6306002)(50466002)(2906002)(85426001)(77096006)(189998001)(50986999)(356003)(105606002)(6666003)(106466001)(86362001)(561944003)(8936002)(50226002)(54906002)(38730400002)(53936002)(8676002)(5003940100001)(8656002)(5660300001)(48376002)(305945005)(217873001);
+	DIR:OUT; SFP:1101; SCL:1; SRVR:SN2PR03MB2269;
+	H:az84smr01.freescale.net; FPR:; SPF:Fail; MLV:ovrnspm; A:1;
+	MX:1; PTR:InfoDomainNonexistent; LANG:en; 
+X-Microsoft-Exchange-Diagnostics: 1; BN1BFFO11FD001;
+	1:xDQQc/qKvPopW/uzTekOo2eZ2na5RyPgiQGg/sSNPKfBk6DS1l5Sa46Ba2zp57FpozqwS6l4+klI2Id1DaaapWB9jxiPa3rNCFhowTeX47DkU8N6umqUWq0Go7XO1lN0nzXv3ET5qL1Ef1lS1da7mBYmhk6voF3NBby8WGW19PxpNqQLQbvsrz1TlKwGfW0BKnsp4tl0o+6k5pajX0TeLLYmMLDZnm/KudZRkRtGzJQ+YsoIt4Typ0Ze5LiW65Z9b58pmCfFOUnhM0SWOu+p80pBxmaf+kTsMwdA3N3AfLSq4uluKOr6RCrApuKz98T53Nw03NuNAGwLJmoRNA9sI6JGIIAENECJrfyk+/+tuP+d1cmtu/u5a1dtLMIUJx4TvV9zrkm1/rn3ySBolaUGhnIdudTmSPHfq14U/l78QRoYubPSycwPbUOM+7i2yAFPgT5wjLD6raXbv9/eUx7WxwODrape+3UP5rXXO7qrIdFV8/SZjp6RRWadR/2OmipH/MIW4o05S+mUy0T+4zZsORgjdJQH5C7perUmRoR5KnDwqLGL5gbyg0PLCU8jbsk70Fpuuhaq7t52kTb4goSjCztSgB53r5ExnI+SAKRWeK0Rl48g6IqxmIzwM/x8uJ7rNH1d42G1hyUCx1jueOCuTUN1XcXoK5O40j6uPXBBpCCG+33vyYVIcXrtka2q4Q32hoBfQ5L1g05e9mt6JpNbVA==
 MIME-Version: 1.0
 Content-Type: text/plain
-X-MS-Office365-Filtering-Correlation-Id: d91d6d52-7e67-48db-4613-08d471f1c0db
-X-Microsoft-Antispam: UriScan:;BCL:0;PCL:0;RULEID:(22001);SRVR:CY1PR03MB2268;
-X-Microsoft-Exchange-Diagnostics: 1; CY1PR03MB2268;
-	3:5h8VkGuXuxHouZgRaIInM1ahkoGq7G/L8wnjRWvAx6un744im3Z3+iEzJHT/6qqOPj2Ma4b81fQ7ADlw1jwyDQFw0134XuZig7klnmgZhke0uqEktIpjSm0SREbRxadkYmhyw11RRxBxpTzO+LhrDX6mjt4C6nySOGeiK9G3REoRk1+aW/Oc0SQ5Rkud7lISkSLJvCFXvBdIA70GuXuy9bMUzVG2swUe7jt49p15UnGO+xbmEDNgs9s50WEAKO0Ll3sA6CR9PeaaNyjj6wUicOQVjcMrfIeYzsE+x4YqElinCvqYPObZYO1534ZDrF+s3d8Iw+pH3J/TLA3At4dShPrwlg4ZE0+l8MbxJlP8mITPUbU1RlpBv78E5FAWIvGh;
-	25:v7ZRfahWnZyObMmbK+Hsjxo9lLl8STQvfmijq48vzn2MdCFmFxq7w+8jhAwO857xuX7cQ8zG/y+ZUJdpF7IxLUUxE4bQc5Cf8EBUOtQIlqCRSP0F2MGypfA00by6uTZci842gtUKf+pobtO/pCBSe1qfFsYv6uxlhWmRtFESKgrk7nQKnffyf+vIyHzsYr8xabaXe/t6kSVCw7Q/YX77XAqWy/f6eV8y6TxZ9KCOQsfuzRoc9JN4dmJwQTJF9TurEocIWHNKwrCtmHvkD6Ez6+6yKDL4yJ9AGCmvfD8WWJaSFSfw/8/RF5dPbNoylC+jCQSIXWCzHcmdgE5JpZES69UG3z66YqnySoWWqJCNL8PKYgcAL2NYRTzTsVbTgg7Zf3HtFGOfQ3QyMRv0TBJQBlxWc8ItdCpgDelWdP9byugTPGSyEIdPnMaCpAIl6uclk0+COaGIuv6ehs6Enn2TZQ==
-X-Microsoft-Exchange-Diagnostics: 1; CY1PR03MB2268;
-	31:FMt/xoKlCrbbKUk199+0JDYMabeBgyK82H2xxSBjRZWnvIeaNHw1rLSdlwMtGvFWmCiK4e7QDWCSYyCpPd+KawbPUBgKdZHMGToj8bXJxYJx1vKcn/h9U9T0F/guBbJRY4JP/X4odveaWNx4JMwWQ+CpQwUMtE/k2GoFpE1ZwDwzcvjbFCeKpVYhHUUTRU1dJpDqqXN5HlH4p563xGuuuI9+6mipY1ZVQutPQbnk+CzAT6JrlKoMIxLGVYz+56zj2lai9F9jpB/PlcXzwWphbQ==
-X-Microsoft-Antispam-PRVS: <CY1PR03MB226806D4AEC6C07EB9182608FF3F0@CY1PR03MB2268.namprd03.prod.outlook.com>
-X-Exchange-Antispam-Report-Test: UriScan:(185117386973197);
+X-MS-Office365-Filtering-Correlation-Id: a2be46ed-e6cf-4ad7-4eb9-08d471f1b988
+X-Microsoft-Antispam: UriScan:;BCL:0;PCL:0;RULEID:(22001);SRVR:SN2PR03MB2269;
+X-Microsoft-Exchange-Diagnostics: 1; SN2PR03MB2269;
+	3:qddPmJu1D3kIfI0se9VT/Y23FE4QB7o0QL+64EKAoUFUv3AchDYvugd/d2B2fXKmR7NOkeig3Wza4EGe+qWueDGMJsIz5hLrpsWpUhrm7UGIJ0srkb4ygdNWwKEPgZxasF+Rd7752h1kOV08RJ0v2I+bG19NbjeYIZKZLMTxHBTzHvrws0Ok4jGsS0ct9Q/uVhqc+pvLRvXjC5t3EPVJ3kR6C1VuzFnBYOl0eF9Ti+7VyszFJW2J1zEU2KmNsDvRvycFo49OhHwTjwdOFx0wuP5Yk1GuCeFC6qWX2Oghc9Qa3EBsksysciOTqR05CpfQprgudgjUCeJ3XZjkPrwVZjjwE587FLJ++vKOEDEzWxXRsC9C+vYJy7fw4/rgca1E;
+	25:XdQXThF//MoZaqpu6IWtKJXgoRVPgZUS9RMjL2BQKZEacPyOK+2W8SJ1eo/YSUkkhJekXgDGPib7r8EK+iYqCgfFLTm17i3JioUWJa3cgU9fsfAg1Iv967q702MLXPxWvrLoEXrf6+wfTc/HY3wE0AOhxAVN6c762C1JJQ1HZ+l/gwX1yR9gscQrLR5C40noyp+xkqV1RP8sY7rcLTCwHvBI4+hjgYRKfIJbImckmB/YqgnohmoCWvc1Rj2RYMEwd/8mrz8OFGUWZeo3B83zR7tGjXE1GcPfL+4pvPXsc+ylV9ubkIE11Q2x4mvvi/gV43+alyCGL6tzX42q4O0TFq+l1Bi0qjZNNof4crp2iPsM6aNJKQuxLbHyRXWPyJTni4XqJBToHlH4R0zYyERSOtcI7Pit1daMEWqc8GA+NsurlAMQYsp8Ijb4Vf4omxITxRIMKEPAr8d2Rc3m3C5Q1A==
+X-Microsoft-Exchange-Diagnostics: 1; SN2PR03MB2269;
+	31:Rvoo/VYHNHn7x/s+M3lHWDXXAvlTOcPiLhLwc6uIBBbtkdvydWKo0oHahQodrkGlccS2wcTZb3CfzetBgzB17b7h6vQ0Xuc4vH8N56AEsqgdhCpz6GfIrPMDQGIGUZI39imNgEISWrKSGMOdUTgsfAWzc3UeWAmWPx3r8Jsb15QM/CzbBkBBmXy+yfjkfCetgZZdUjd4MsQdcl5YecRRH38yuEwx+onRu5PUU+GHNQdFXvn8pdVon8ud1fwumzzWyo7skAQuq3pJaxT4Sn8pJN91rnl2tCf8OCE97HTaMvU=
+X-Microsoft-Antispam-PRVS: <SN2PR03MB2269298867332166AF549A0AFF3F0@SN2PR03MB2269.namprd03.prod.outlook.com>
+X-Exchange-Antispam-Report-Test: UriScan:(84791874153150);
 X-Exchange-Antispam-Report-CFA-Test: BCL:0; PCL:0;
-	RULEID:(6095060)(601004)(2401047)(13015025)(8121501046)(5005006)(13024025)(13023025)(13018025)(13017025)(3002001)(10201501046)(6055026)(6096035)(20161123565025)(20161123559025)(20161123563025)(20161123561025)(20161123556025);
-	SRVR:CY1PR03MB2268; BCL:0; PCL:0; RULEID:(400006);
-	SRVR:CY1PR03MB2268; 
-X-Microsoft-Exchange-Diagnostics: 1; CY1PR03MB2268;
-	4:qvUuEq9wXXkEzo6pGASZQNn7PJkHGh3gAHYoSDMwnKvr5ZfMu1d4URMZUE300DzBUzQujK2o72Ca4xUTs1ztgBucunSIIUeI/XZBY1DGg3ElfVox3MmgB2m6Cc3dCMLhFVuZ2pmIyuo2fEp/etqDG7nkX31G+wymBH25gtKKwtspsLq3aAFVyhYgDs2W1qy0hmVriLBibu2Dj5YG6ImssHWF5wQS2AwLpnr6+MKEX8K5Hy/sKMb//XrhOayYdVYEVpsyt56/fvf6Hvr3eFeD17WKLKpT3CX9P1ToB1VL7wUD8mP1PuoGyseHBE5VVjF+rz2Mod+d8gVjGobg9BJUFobC+C2iUD52KyzvhNz5V1gXcCR7hyxxbpVt4Ny+8aHQBLcJzLFwKHkboPrrZOyQY3kVL33iUfQbkOzNpnk/53IWK4HZ6lQpGamT33LcBJGf1amEqiUC+zG0xUOgaAGRYw4GV+3dDd9KYp5rq70NXjzY1pyi/IXMFbb1SgwW21phOBV+jwZBTdNA5a86S/kx1JulKRAPbCVoLIliZts0UR4Qn7tPGHdIEin2OPY6KNw+EeNmf2ClVeH0oXwOb/BKMG+vmOz8b/5BSTMiyZru1XobjU5s+iXVn3HbA0IpHXY0GpDkP9J+yYsCy3yD93akrGtBqJgbv4MoJVlZYn/q+W6INn9Qqf7UcmriOwoRCksnMp5V4djTDIaMBJlfRBL0eIfqo+3pjv0kd6pj0aDPCKA9by8eIPxvhHAJaitW8q3z
+	RULEID:(6095060)(601004)(2401047)(13024025)(5005006)(13023025)(13015025)(8121501046)(13017025)(13018025)(10201501046)(3002001)(6055026)(6096035)(20161123561025)(20161123565025)(20161123563025)(20161123556025)(20161123559025);
+	SRVR:SN2PR03MB2269; BCL:0; PCL:0; RULEID:(400006);
+	SRVR:SN2PR03MB2269; 
+X-Microsoft-Exchange-Diagnostics: 1; SN2PR03MB2269;
+	4:Wu/qZxxq70Nq14fmN9LEDn+DkYTkwFYrUb7youZk5e+X+oMGMeDnNI7E+o80V8JO2lZs3nhSuyC9H7j5janDyCgOSzyb75zeSoynI1j5qEz1t41PpD5BKsu/gHXgwUuNXuonFpX/lXgKWBfnOv89sP3eKuSvevoXea06KwP1IX89t/e5tkuDac053slV/PASOKYSKVY1Ut0ga8nWb2RTi5YA7vfrTPrslHdK9d8Eww+N+niWvx5XQk9o+aXTI0U01q36psetGz66We1YtiFUB9Ri06xCQVSQMqTEPeWigz+4HGXrJ3KlwBPdmFHWuV/UdUE9WVRPZTGx+0XOiESRAiPi8iSP5KY08FLyDR9odY2pHvnvPwkA6tkR6i/jgQzGOYGU6RjGehfoNoQKmFvHqHuyQXmWcsCU8N4xzAojtddiAw8Bbfxu7hkVV8JdHE61ZdOzMadCB++8581kilHPNbUtGf9+wm7E2P/jYtwM2z0VyF6Fpk7sYGtGOUmyG2GxJwgYvs6Yb2RMaZHdGfig/CkQUZURw3FDJ+B8hpHJNUZQ6obADf/nfOMj9FC6XAa4HcRU+tr/dgdZy7iVt6cQV1WGO+LfLWmNI4sbwwVvq96j+cElcs3cuF0Zva61qyywsD+YWNRePPAizVKeZFJ5Jfv09172pld+4KCWHe/zhrPCko/msj5QqUesqT9neJDoGHK0LaZpvGVRCdMvfCcG5dGpXFyV/MsHrV6Ym8JdNnhGhxEv2KaSSXubLSCocLc7
 X-Forefront-PRVS: 0255DF69B9
-X-Microsoft-Exchange-Diagnostics: =?us-ascii?Q?1; CY1PR03MB2268;
-	23:N+8DBRmAkXrYEc/lWOOwB3yRSet7eIDEvYL3SlA5l?=
-	=?us-ascii?Q?roAkMr1zFbh5wJbzakuT3Zzi/kYt2kUkfOSZDnF9HSo4BxrZq0b/t3NrXvgg?=
-	=?us-ascii?Q?6WqfbnS8Y6hafjuW352DohrG/exbKKdLLnBq86VlykUS5+Z++e9OPHetNqWc?=
-	=?us-ascii?Q?SR3iQ2jdk3wM37tTt/XOz2HhPz2etZ5tswhck+fCjxvTR6kwy/rJhgrUU1lT?=
-	=?us-ascii?Q?BrwVNVbuNXsSbWXULCsi6XK/T6nlSacdgehAvwmse2kzBpdrfg6kxXoCdMfT?=
-	=?us-ascii?Q?0x1TLhjP34KpsVN0sKvch1GyZdzPp7v1ensyB/4Gz2LDxJeEBakJGKsKfXkV?=
-	=?us-ascii?Q?yuyGoeGYwD3C8m1D4n3xfzG/yG9PpSFvY93slF/qNFCGMZE8WIe3AKKayx4y?=
-	=?us-ascii?Q?nVD11O3KmV/7hGOkkNs2ZTbRrMpWYpy3fYkyAHElk6zTb1yWr3e4CVH+FKej?=
-	=?us-ascii?Q?NwU72jt0Fd9XFn54/NDsKHJiMEZP/1Kw/JJzUNLF8je4nBgBi4AGemq7lUxx?=
-	=?us-ascii?Q?S6fjEfGQ5xYxaEnZa1w2RsL46uRvaQrQSA9+bwR+siYfAheHlckNUVXIJKDo?=
-	=?us-ascii?Q?Nl+0yq747RfXBrO4WHOBkKmH1m0LzvHYPukrLshR5NIi7TvXIgu4x+0SCS7l?=
-	=?us-ascii?Q?ZKy4XkuN0U83iVq2PRpdUfClmOEg9yXUEpJPguBM2gmSUtaJdmlUTaBkW2yx?=
-	=?us-ascii?Q?39UKy1c3cfgVKrtCx0KoywKn+Xcgs/OHwqoPu8jg2rONpk1dX35srmMF8MXV?=
-	=?us-ascii?Q?ucRXIhP/ZOISuJ8XeuokpXO2F5yvke16gZAJwnJ6M2Ll22qTc0Nci+vtjQZN?=
-	=?us-ascii?Q?P22YkdeX5/RGysDyTTHa8RWHq/VEzrO7JhE/TSPU/qQDcYViQO87/twQE6X9?=
-	=?us-ascii?Q?klBD1eXDs6UVtG/4/7+iKOAdm+DzmdmeTxgXvehrqqLrxfgjcVc6bmGziJFt?=
-	=?us-ascii?Q?JYe6wOATt5FhvUqKrwJK4BqxjxNAO2prrfnvH6fty9ODcTxHP++XrfnVZYyN?=
-	=?us-ascii?Q?i4hfmPci/sLgPjPKGhgRX/4X0VidjLghS/hed/WT1cirnXVNffnz/WTxX9t4?=
-	=?us-ascii?Q?+U1jW32QNCSfA6EDF+qde9x7+aBsDKuurN2yqF9v8+gUfJ5WJWMuROjHf9fS?=
-	=?us-ascii?Q?leMKz5LPEgVKM7dc1SZsakn7/dM1LLEYO5b2DOsw3ldXYSQs6tewQJIPADj7?=
-	=?us-ascii?Q?cOHpZqi8hZQVF9eLXaIqnAj16IkTPNcLBW0?=
-X-Microsoft-Exchange-Diagnostics: 1; CY1PR03MB2268;
-	6:gDZm9rNDx2yAlA0NEQTs/OyAlRDQ6Gb4HKvYTkSicN71zt1EqrQ0S61VAZe3rzZFgXBbAaSy5zcH9aaD+I96aTorCOXzMVa5IkCPxBM7ImJROu1s5UNsdaKZPVx7QFmI9IUQY0hYhCXAGFLtc18/qQOXSVHUMT5uttVG9Pvd5WqebJ9pGfIliMq4rVVil5mNTxkfloSNdKw+CBkex3w8jGxyoi7JtnUJ0L81U3TQlkmq/0aRUgYTYImURF9Evr6sfGSyNcr0S4GYVtCNoBU2tqEHx7w/1lkhM3STdbm5amd235ZqPLkMzsBHdanaLMc+w+CuyCQK0lIpK4chhpMyPx+Rpisr3XLDqdajvydKJT6GXLCb4YH6XTqfzMia327wS4xq/K9y2poNbf8cZ93mjabsvRwabmd2Wxy9LJ0ISoM=;
-	5:ZrksAPvXFconEkJxlTZjGLEiB2IW1iQi2DJYqT6nLKBaWAnfUDETBARH1QDppNG6UtHnsK7ceFQZEb9r15wdWnqoYw7qCpuf0TI9VugxnlA8cjcH/bTD8t0hZKgfRKvvyWA3KT0et1GhKRbd8TJSYe08rWXYp+ohURX9Iwkpm8W3jlMIyu7LJLYMN/1OWgaG;
-	24:t8YdABzaps5AmR+IxgTeMpV1fUJK+N7oLMJj+lcZ2cEag6vTuniYWFPSW2xz/s/1EtS+AWdb7Z6r1kF10UU7nbDKI+8i2lLi5HYefN9XJV4=
+X-Microsoft-Exchange-Diagnostics: =?us-ascii?Q?1; SN2PR03MB2269;
+	23:4qW8BhZsc/vwJpOHbCHNtFyF8PTzGTfx1lvF5cWUH?=
+	=?us-ascii?Q?MneFHysBOnshXydlDSLZ1o806nMj1Bf8TQcJkkgAJXRn20UP7hjywYZhmKAT?=
+	=?us-ascii?Q?PxZOqxcD74E4NCE8qqrMoyWIX5XXjYG3Vwxb9oBgvdCFR3C4J+qvgSuSwNbp?=
+	=?us-ascii?Q?6E/pgph1JEQ4UccO/TjLHjuYTs4v9s9ccs/ye4GNjRlrNnLp2c6Dvo1CWlfV?=
+	=?us-ascii?Q?THdWMh1iRAumpYlgxD/nRhO3zv8awCU+tS+1nK2FhMC6TUNWt18P90wQsX/S?=
+	=?us-ascii?Q?beYdrprjCAzoW0kV6rYuY0sZbPXdx43E94ATjXYEe2D+9G8KwYt3vLXqDVU5?=
+	=?us-ascii?Q?nK59/9EBHH0fzabkK4WIU+p1nHGklu3Om5EbX37xrOn9j+wvPTH74/iAN6PV?=
+	=?us-ascii?Q?RxnEd0f6q1UtnW6gUiozZORmsn3PwgFIRVxg6OP5fjeSA5NzW+LkFdBdUaWy?=
+	=?us-ascii?Q?ITb/DyTTUVrjaWNBAURYIzjnZ4RExvKXr40z10PjhDpCLFhvdCar5d5mTQAu?=
+	=?us-ascii?Q?J47MJocNWBaAKstYTCCRLSfcX3HblRF+NArextJ2x/vnnU1dusFk9cFtK+uW?=
+	=?us-ascii?Q?CqOye14l7/INn6e5uTVlawzQtx3YOQypmSzCkRVrQ1v5vIR5BjtORCV8t4w7?=
+	=?us-ascii?Q?jCNkENTcNMlSegotHHQJ/PIs0ESI0dnItwnStLRWROIGvpXubfZxOfu5FlSJ?=
+	=?us-ascii?Q?NBmiJJ66QP/GvTkaIaG8gaLptvqusJaLojQQ+0li9ShMQCj2jcNjrL5u4skb?=
+	=?us-ascii?Q?UcBDPteQ4jUlxCHj4qTGLtynamG1mt1Q3t48fMy+GNh2u3+LE+NlO4MRnT5N?=
+	=?us-ascii?Q?t5GJ4CeqsAegppfd1gZ/hnOpIQXOdR7qDTxTRD+po2i7ztr7vkigUFiQse40?=
+	=?us-ascii?Q?MABCqPfTBotifmYVTlwMet7DwPtqOedRUScVD0WkMYUiouaB63aYEw/T8asj?=
+	=?us-ascii?Q?tE1R9AdtsqfnnW4MRSVADA12YTRzTKaDC7Tda6QGTuwfGqclijsMbJYVw8Lj?=
+	=?us-ascii?Q?2Z3aCjeR6TiyoN3qn/0erabK9rP7/NxZKSvoVxHDOtlpnt3Bc6CBmRAbct1E?=
+	=?us-ascii?Q?N5KMFrhb8t7np59KITy4d2w8xoHIefvLqEb2I/h1GNI7noLDogalfiKauV0Q?=
+	=?us-ascii?Q?iaDYUqet6HZMjfaeZiYP8yjRfKX2ZxrOZvywNhuxdxD+6HMH5yNloBPNUmsC?=
+	=?us-ascii?Q?FCIYQcY8Q73/KI=3D?=
+X-Microsoft-Exchange-Diagnostics: 1; SN2PR03MB2269;
+	6:ZLKyhRRBMdMNil7SXsy75HByj0DX6otDKvVqrsx62aosieeWs1eWEeJkXvQaKvz+w2glvago4aUBMuLPch0QKxE2DEMwmqVjmu+7gRhyJOu0pbrKQqGVU98eKdhai7I09Zr+86t7bp74iLckCEVzUjpjFpX3x1bHXV9hjtxjzdF+7+wzfEio/28SlRSYo7xBEXiZe5Ejvzy1RzyPqkYrZs0vo68H2nmyVdpa2JQ9MJ1DuE5KfyoruvuJKG6iw/+9vUuB1qm3/BdsIuR6iJDB4jHZysXx9k+B0tkY8GOoZpwJ+hroQHaF/hgO4A9InnoTSjKVQA/J80vI3wd0xZZmy0+/pj7qEVx4Q5pZRYl7zw2QpCg9PWICw9cPUhqrdiFxBR6qlj+tl87rcumr1k4FthdC4ry2I7DX8+2NBmNlazM=;
+	5:wSLC6sBVkk9CCzAgxDMPod3e+gYevjhWcivRqIYlXyf0/lUwzz0DZt/nFCn28AW4va59IVyWETWt3DjnWcwsiBgwzhjn990nLW45uwNmDjplZ/jUNnmDb1hGvxa8dtWqbov2GpSlUfXA+0yfOIB5oLmwjMVY4QAZR4UdBa+3HS9DeGTL5eq5f9S2rn3KFSos;
+	24:GtCHNf8W+UHhMqop9k+2feNvBF+Af0LgJUcKlUuqbY/3ks39JolVNlTpgIRgUNE13/fysJPVV787FxFhslaS5PIghMxSmuww/8odwwpuyXw=
 SpamDiagnosticOutput: 1:99
 SpamDiagnosticMetadata: NSPM
-X-Microsoft-Exchange-Diagnostics: 1; CY1PR03MB2268;
-	7:uZFNy8WtQ2oReg0oYYw3nCVKl40pwM7pqXIUIwp4NCQYHkBWLJv1fygaDvl950m/qTjwpyweUHHKUFBUt6NHuRG6aeqeuzQpDl1R1mFrye7XEpXCJ3HLRfgkd8CuAlYiMtw8Tsdhu4G0fs0nnzJdMIZX3VFaPgfdiTKsxIVCfOaoJMreI5n0dLsERFm/suMqh3vgKgF5Zm10wa+kbODbxloc/sEzBs7w3vMfithpIGt9MQ65ALlpMm4gO8YXRZsmgU0fJK2pCtF/bSwoXX6692YaQy5rkrEVrZeq7riBjf+lvJfm4QWYRjwT0r/BHmmm6s5gbRYbQDtFMANHnIojLg==
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 23 Mar 2017 13:37:30.0395 (UTC)
+X-Microsoft-Exchange-Diagnostics: 1; SN2PR03MB2269;
+	7:DGB8tpUXtnz8lZuPL3YLFnbbdrQvrI21emr7RaJ8ie7xMIecHx/U5gJiJB0Bev6IEU0UOW9ccA8nRiO12hh7Lwcamp+ZfEF16OSpNlFQPB/cD/rjB8t5W4jS5pzjrNOp/fAv2Xn/Fvr2nnwFzj/6t2Qd0xhIsgUq1jYZ6yP+OlD2dhccY2cmM7SWpKylUoC4HZv9MG0njxB0EqnmsD+NtcqUcwBjuRp23bUVg32RkA1BiIOCnJQgx6R8YvezkCJMmtu/re4fzaYistE8dtjXayeoLXbpE3UWWEDgtVkk5ZXF3ID8ygVHyhrJrOnuNOWyX5OKso+PG8bt8jZMOQlR7Q==
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 23 Mar 2017 13:37:17.7517 (UTC)
 X-MS-Exchange-CrossTenant-Id: 5afe0b00-7697-4969-b663-5eab37d5f47e
 X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=5afe0b00-7697-4969-b663-5eab37d5f47e; Ip=[192.88.158.2];
 	Helo=[az84smr01.freescale.net]
 X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: CY1PR03MB2268
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SN2PR03MB2269
 X-detected-operating-system: by eggs.gnu.org: Windows 7 or 8 [fuzzy]
-X-Received-From: 104.47.40.84
-Subject: [Qemu-devel] [PATCH RFC 2/2] Add a unique ID in the virt machine to
- be used as device ID
+X-Received-From: 104.47.38.59
+Subject: [Qemu-devel] [PATCH RFC 0/2] Add global device ID in virt machine
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -148,228 +145,63 @@ Cc: Diana Craciun <diana.craciun@nxp.com>, eric.auger@redhat.com,
 	christoffer.dall@linaro.org, laurentiu.tudor@nxp.com
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: gVQEcwJE87bi
+X-TUID: GdBE6y2+IJMV
 
-Device IDs are required by the ARM GICv3 ITS for IRQ remapping.
-Currently, for PCI devices, the requester ID was used as device
-ID in the virt machine. If the system has multiple masters that
-use MSIs a unique ID accross the platform is needed.
-A static scheme is used and each master is allocated a range of IDs
-with the formula:
-DeviceID = zero_extend( RequesterID[15:0] ) + 0x10000*Constant (as
-recommended by SBSA).
+The NXP DPAA2 is a hardware architecture designed for high-speeed network
+packet processing. The DPPA2 hardware components are managed by a hardware
+component called the Management Complex (or MC) which provides an
+object-base abstraction for software drivers to use the DPAA2 hardware.
+For more details you can see: 
+https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/drivers/staging/fsl-mc/README.txt?h=v4.10
 
-Signed-off-by: Diana Craciun <diana.craciun@nxp.com>
----
- hw/arm/virt.c              | 26 ++++++++++++++++++++++++++
- hw/pci-host/gpex.c         |  6 ++++++
- hw/pci/msi.c               |  2 +-
- hw/pci/pci.c               | 19 +++++++++++++++++++
- include/hw/arm/virt.h      |  1 +
- include/hw/pci-host/gpex.h |  2 ++
- include/hw/pci/pci.h       |  2 ++
- kvm-all.c                  |  4 ++--
- 8 files changed, 59 insertions(+), 3 deletions(-)
+The interrupts generated by the DPPA2 hardware components are MSIs. We will add
+support for direct assigning these DPPA2 components/objects to a virtual 
+machine. However, this will add the need to expand the MSI usage in QEMU.
 
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index 5f62a03..a969694 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -110,6 +110,8 @@ static ARMPlatformBusSystemParams platform_bus_params;
- #define RAMLIMIT_GB 255
- #define RAMLIMIT_BYTES (RAMLIMIT_GB * 1024ULL * 1024 * 1024)
- 
-+#define STREAM_ID_RANGE_SIZE 0x10000
-+
- /* Addresses and sizes of our components.
-  * 0..128MB is space for a flash device so we can run bootrom code such as UEFI.
-  * 128MB..256MB is used for miscellaneous device I/O.
-@@ -162,6 +164,22 @@ static const int a15irqmap[] = {
-     [VIRT_PLATFORM_BUS] = 112, /* ...to 112 + PLATFORM_BUS_NUM_IRQS -1 */
- };
- 
-+/* Device IDs are required by the ARM GICV3 ITS for IRQ remapping. Currently
-+ * for PCI devices the requester ID was used as device ID. But if the system has
-+ * multiple masters that use MSIs, the requester ID may cause deviceID clashes.
-+ * So a unique number is  needed accross the system.
-+ * We are using the following formula:
-+ * DeviceID = zero_extend( RequesterID[15:0] ) + 0x10000*Constant
-+ * (as recommanded by SBSA). Currently we do not have an SMMU emulation, but the
-+ * same formula can be used for the generation of the streamID as well.
-+ * For each master the device ID will be derrived from the requester ID using
-+ * the abovemntione formula.
-+ */
-+
-+static const uint32_t streamidmap[] = {
-+    [VIRT_PCIE] = 0,         /* currently only one PCI controller */
-+};
-+
- static const char *valid_cpus[] = {
-     "cortex-a15",
-     "cortex-a53",
-@@ -980,6 +998,7 @@ static void create_pcie(const VirtMachineState *vms, qemu_irq *pic)
-     hwaddr base_ecam = vms->memmap[VIRT_PCIE_ECAM].base;
-     hwaddr size_ecam = vms->memmap[VIRT_PCIE_ECAM].size;
-     hwaddr base = base_mmio;
-+    uint32_t stream_id = vms->streamidmap[VIRT_PCIE] * STREAM_ID_RANGE_SIZE;
-     int nr_pcie_buses = size_ecam / PCIE_MMCFG_SIZE_MIN;
-     int irq = vms->irqmap[VIRT_PCIE];
-     MemoryRegion *mmio_alias;
-@@ -992,6 +1011,7 @@ static void create_pcie(const VirtMachineState *vms, qemu_irq *pic)
-     PCIHostState *pci;
- 
-     dev = qdev_create(NULL, TYPE_GPEX_HOST);
-+    qdev_prop_set_uint32(dev, "stream-id-base", stream_id);
-     qdev_init_nofail(dev);
- 
-     /* Map only the first size_ecam bytes of ECAM space */
-@@ -1056,6 +1076,11 @@ static void create_pcie(const VirtMachineState *vms, qemu_irq *pic)
-     if (vms->msi_phandle) {
-         qemu_fdt_setprop_cells(vms->fdt, nodename, "msi-parent",
-                                vms->msi_phandle);
-+        qemu_fdt_setprop_sized_cells(vms->fdt, nodename, "msi-map",
-+                                     1, 0,
-+                                     1, vms->msi_phandle,
-+                                     1, stream_id,
-+                                     1, STREAM_ID_RANGE_SIZE);
-     }
- 
-     qemu_fdt_setprop_sized_cells(vms->fdt, nodename, "reg",
-@@ -1609,6 +1634,7 @@ static void virt_2_9_instance_init(Object *obj)
- 
-     vms->memmap = a15memmap;
-     vms->irqmap = a15irqmap;
-+    vms->streamidmap = streamidmap;
- }
- 
- static void virt_machine_2_9_options(MachineClass *mc)
-diff --git a/hw/pci-host/gpex.c b/hw/pci-host/gpex.c
-index 66055ee..de72408 100644
---- a/hw/pci-host/gpex.c
-+++ b/hw/pci-host/gpex.c
-@@ -43,6 +43,11 @@ static void gpex_set_irq(void *opaque, int irq_num, int level)
-     qemu_set_irq(s->irq[irq_num], level);
- }
- 
-+static Property gpex_props[] = {
-+    DEFINE_PROP_UINT32("stream-id-base", GPEXHost, stream_id_base, 0),
-+    DEFINE_PROP_END_OF_LIST(),
-+};
-+
- static void gpex_host_realize(DeviceState *dev, Error **errp)
- {
-     PCIHostState *pci = PCI_HOST_BRIDGE(dev);
-@@ -83,6 +88,7 @@ static void gpex_host_class_init(ObjectClass *klass, void *data)
- 
-     hc->root_bus_path = gpex_host_root_bus_path;
-     dc->realize = gpex_host_realize;
-+    dc->props = gpex_props;
-     set_bit(DEVICE_CATEGORY_BRIDGE, dc->categories);
-     dc->fw_name = "pci";
- }
-diff --git a/hw/pci/msi.c b/hw/pci/msi.c
-index 7925851..b60a410 100644
---- a/hw/pci/msi.c
-+++ b/hw/pci/msi.c
-@@ -336,7 +336,7 @@ void msi_send_message(PCIDevice *dev, MSIMessage msg)
- {
-     MemTxAttrs attrs = {};
- 
--    attrs.stream_id = pci_requester_id(dev);
-+    attrs.stream_id = pci_stream_id(dev);
-     address_space_stl_le(&dev->bus_master_as, msg.address, msg.data,
-                          attrs, NULL);
- }
-diff --git a/hw/pci/pci.c b/hw/pci/pci.c
-index 273f1e4..0ef622c 100644
---- a/hw/pci/pci.c
-+++ b/hw/pci/pci.c
-@@ -945,6 +945,25 @@ uint16_t pci_requester_id(PCIDevice *dev)
-     return pci_req_id_cache_extract(&dev->requester_id_cache);
- }
- 
-+uint32_t pci_stream_id(PCIDevice *dev)
-+{
-+    PCIBus *rootbus = pci_device_root_bus(dev);
-+    PCIHostState *host_bridge = PCI_HOST_BRIDGE(rootbus->qbus.parent);
-+    Error *err = NULL;
-+    int64_t stream_id;
-+
-+    stream_id = object_property_get_int(OBJECT(host_bridge), "stream-id-base",
-+                                        &err);
-+    if (stream_id < 0) {
-+        stream_id =  0;
-+    }
-+    /* DeviceID = RequesterID[15:0] + stream_id_base. If the stream-id-base
-+     * property is not found (e.g. for platforms that are not needing a
-+     * global ID) the requester ID will be used instead. */
-+    stream_id += (uint16_t)pci_requester_id(dev);
-+
-+    return stream_id;
-+}
- /* -1 for devfn means auto assign */
- static PCIDevice *do_pci_register_device(PCIDevice *pci_dev, PCIBus *bus,
-                                          const char *name, int devfn,
-diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
-index 33b0ff3..94c007a 100644
---- a/include/hw/arm/virt.h
-+++ b/include/hw/arm/virt.h
-@@ -99,6 +99,7 @@ typedef struct {
-     struct arm_boot_info bootinfo;
-     const MemMapEntry *memmap;
-     const int *irqmap;
-+    const uint32_t *streamidmap;
-     int smp_cpus;
-     void *fdt;
-     int fdt_size;
-diff --git a/include/hw/pci-host/gpex.h b/include/hw/pci-host/gpex.h
-index 68c9348..47df01a 100644
---- a/include/hw/pci-host/gpex.h
-+++ b/include/hw/pci-host/gpex.h
-@@ -48,6 +48,8 @@ typedef struct GPEXHost {
- 
-     GPEXRootState gpex_root;
- 
-+    uint32_t stream_id_base;
-+
-     MemoryRegion io_ioport;
-     MemoryRegion io_mmio;
-     qemu_irq irq[GPEX_NUM_IRQS];
-diff --git a/include/hw/pci/pci.h b/include/hw/pci/pci.h
-index 9349acb..2dfabb1 100644
---- a/include/hw/pci/pci.h
-+++ b/include/hw/pci/pci.h
-@@ -734,6 +734,8 @@ static inline uint16_t pci_get_bdf(PCIDevice *dev)
- 
- uint16_t pci_requester_id(PCIDevice *dev);
- 
-+uint32_t pci_stream_id(PCIDevice *dev);
-+
- /* DMA access functions */
- static inline AddressSpace *pci_get_address_space(PCIDevice *dev)
- {
-diff --git a/kvm-all.c b/kvm-all.c
-index 9040bd5..9b988c4 100644
---- a/kvm-all.c
-+++ b/kvm-all.c
-@@ -1279,7 +1279,7 @@ int kvm_irqchip_add_msi_route(KVMState *s, int vector, PCIDevice *dev)
-     kroute.u.msi.data = le32_to_cpu(msg.data);
-     if (kvm_msi_devid_required()) {
-         kroute.flags = KVM_MSI_VALID_DEVID;
--        kroute.u.msi.devid = pci_requester_id(dev);
-+        kroute.u.msi.devid = pci_stream_id(dev);
-     }
-     if (kvm_arch_fixup_msi_route(&kroute, msg.address, msg.data, dev)) {
-         kvm_irqchip_release_virq(s, virq);
-@@ -1316,7 +1316,7 @@ int kvm_irqchip_update_msi_route(KVMState *s, int virq, MSIMessage msg,
-     kroute.u.msi.data = le32_to_cpu(msg.data);
-     if (kvm_msi_devid_required()) {
-         kroute.flags = KVM_MSI_VALID_DEVID;
--        kroute.u.msi.devid = pci_requester_id(dev);
-+        kroute.u.msi.devid = pci_stream_id(dev);
-     }
-     if (kvm_arch_fixup_msi_route(&kroute, msg.address, msg.data, dev)) {
-         return -EINVAL;
+Currently the MSIs in QEMU are pretty much tied to PCI. For ARM the
+GIC ITS is using a device ID for interrupt translation. Currently, for
+PCI, the requester ID is used as device ID. This will not work when
+we add another entity that needs also a device ID which is supposed to
+be unique across the system.
+
+My proposal is to add a static allocation in the virt machine. I considered
+that this allocation is specific to each machine/platform. Currently only
+virt machine has it, but other implementations may use the same mechanism
+as well.
+So, I used a static allocation with this formula:
+
+DeviceID = zero_extend( RequesterID[15:0] ) + 0x10000 * Constant
+
+This formula was taken from SBSA spec (Appendix I: DeviceID generation and
+ITS groups). In case of QEMU the constant will be different for each entity.
+In this way a unique DeviceID will be generated and the device ID will be
+derived from a requesterID (in case of PCI) or other means in case of other
+entities.
+
+In order to have a clear picture of what I wanted to say, I have
+implemented an RFC. There is a potential problem with this RFC,
+the PCI tree is traversed each time a message is sent which can affect
+performance. However if the general idea is good, solutions can be found
+such as caching the device ID in the device itself.
+
+Diana Craciun (2):
+  Increased the size of requester_id field from MemTxAttrs
+  Add a unique ID in the virt machine to be used as device ID
+
+ hw/arm/virt.c                          | 26 ++++++++++++++++++++++++++
+ hw/intc/arm_gicv3_its_common.c         |  2 +-
+ hw/intc/arm_gicv3_its_kvm.c            |  2 +-
+ hw/pci-host/gpex.c                     |  6 ++++++
+ hw/pci/msi.c                           |  2 +-
+ hw/pci/pci.c                           | 19 +++++++++++++++++++
+ include/exec/memattrs.h                |  4 ++--
+ include/hw/arm/virt.h                  |  1 +
+ include/hw/intc/arm_gicv3_its_common.h |  2 +-
+ include/hw/pci-host/gpex.h             |  2 ++
+ include/hw/pci/pci.h                   |  2 ++
+ kvm-all.c                              |  4 ++--
+ 12 files changed, 64 insertions(+), 8 deletions(-)
+
 -- 
 2.5.5
 

@@ -1,72 +1,78 @@
-Received: by 10.25.15.230 with SMTP id 99csp766165lfp;
-        Thu, 23 Mar 2017 06:52:59 -0700 (PDT)
-X-Received: by 10.200.47.208 with SMTP id m16mr2237223qta.103.1490277179649;
-        Thu, 23 Mar 2017 06:52:59 -0700 (PDT)
+Received: by 10.25.15.230 with SMTP id 99csp848488lfp;
+        Thu, 23 Mar 2017 09:56:51 -0700 (PDT)
+X-Received: by 10.55.26.98 with SMTP id a95mr2958989qka.312.1490288211794;
+        Thu, 23 Mar 2017 09:56:51 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id m12si3733971qtf.141.2017.03.23.06.52.59
+        by mx.google.com with ESMTPS id a198si344142qkc.54.2017.03.23.09.56.51
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 23 Mar 2017 06:52:59 -0700 (PDT)
+        Thu, 23 Mar 2017 09:56:51 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:56616 helo=lists.gnu.org)
+       dkim=fail header.i=@gmail.com;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:57503 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1cr3Ah-0001nF-6S
-	for alex.bennee@linaro.org; Thu, 23 Mar 2017 09:52:59 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:40493)
+	id 1cr62d-0000qD-BL
+	for alex.bennee@linaro.org; Thu, 23 Mar 2017 12:56:51 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:41803)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1cr3Ac-0001n9-13
-	for qemu-arm@nongnu.org; Thu, 23 Mar 2017 09:52:55 -0400
+	(envelope-from <bobby.prani@gmail.com>) id 1cr62X-0000q0-VV
+	for qemu-arm@nongnu.org; Thu, 23 Mar 2017 12:56:46 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1cr3AZ-0007Bi-0W
-	for qemu-arm@nongnu.org; Thu, 23 Mar 2017 09:52:54 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:60990)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <eblake@redhat.com>)
-	id 1cr3AY-0007B5-OD; Thu, 23 Mar 2017 09:52:50 -0400
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
-	[10.5.11.13])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 476233B755;
-	Thu, 23 Mar 2017 13:52:50 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 476233B755
-Authentication-Results: ext-mx06.extmail.prod.ext.phx2.redhat.com;
-	dmarc=none (p=none dis=none) header.from=redhat.com
-Authentication-Results: ext-mx06.extmail.prod.ext.phx2.redhat.com;
-	spf=pass smtp.mailfrom=eblake@redhat.com
-DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com 476233B755
-Received: from [10.10.121.124] (ovpn-121-124.rdu2.redhat.com [10.10.121.124])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id CC0E160BEF;
-	Thu, 23 Mar 2017 13:52:46 +0000 (UTC)
-To: He Chen <he.chen@linux.intel.com>, Andrew Jones <drjones@redhat.com>
-References: <1490175166-19785-1-git-send-email-he.chen@linux.intel.com>
-	<20170322103405.rcye74zye6gvrfis@hawk.localdomain>
-	<20170323072335.GC10166@he>
-From: Eric Blake <eblake@redhat.com>
-Openpgp: url=http://people.redhat.com/eblake/eblake.gpg
-Organization: Red Hat, Inc.
-Message-ID: <4c620bdf-5979-38f5-8dc2-74641c627151@redhat.com>
-Date: Thu, 23 Mar 2017 08:52:40 -0500
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
-	Thunderbird/45.8.0
+	(envelope-from <bobby.prani@gmail.com>) id 1cr62W-0004VT-1A
+	for qemu-arm@nongnu.org; Thu, 23 Mar 2017 12:56:46 -0400
+Received: from mail-yw0-x22d.google.com ([2607:f8b0:4002:c05::22d]:33444)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <bobby.prani@gmail.com>)
+	id 1cr62V-0004UK-QV; Thu, 23 Mar 2017 12:56:43 -0400
+Received: by mail-yw0-x22d.google.com with SMTP id v76so151232881ywg.0;
+	Thu, 23 Mar 2017 09:56:43 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc:content-transfer-encoding;
+	bh=JEvQdS+Spxdux/7LKn+NkZK01GyqV4COWdZ5MYNiiE8=;
+	b=fKPzWz5cwRMESgFyWRmVFu1g+H+Rxz0o3UtUBdwDl5ks+BRQ+CX7Rys1nqmpdu7Sou
+	C2We9+UIco9bymXaMxpsX1qSbwFwDdc80mV5YlFSk8oO0Skb0Q9FxRA0mByneQ4CFukR
+	1keR1S+Qld/f0BRdJzeQQqX0VEIMblBZZQcAgkxLxVbJQr1S7z2HYPYL+s+8dEFPxhy0
+	c2gV0YA2uwleJuHmJkhFRgtdkc3v40umXUuXUA53i8Rpe2KXwvTXDnhHPFf5KFp/N3CB
+	gsw5OTFrHeFDy8gj4qIdQ6MnnQVDRa+uo8ABTkFmcC+SB1SVXwL6ovSnTCOPxxlHzyUO
+	oBtw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc:content-transfer-encoding;
+	bh=JEvQdS+Spxdux/7LKn+NkZK01GyqV4COWdZ5MYNiiE8=;
+	b=ZNaEUO4ZaqB/HNFb3pQZjkvF+kHPZ4pU6HmPXW8lQtdabunzj+hRGU9k2F++6QfD1C
+	KPk26hvTfRdTZS9Zak+AoiDqw51YOBpzFZMf/Q7Na+nlfaJGu9yZL0aolJ1NAvl9WNxL
+	6laVg3om8NaFjoSECo4Z2LfLZMUOjrJ9pgo7fjEDXiyyYgW2J7lUCqxHbSG0oM2YjCfd
+	uVtYWxYx6zy0c2R1HM8hVWToYNlBzbCY/dp9rGL2tePmVrLhBgKUnOgR4bq0cGSc+hpr
+	h4Yqp6L6q00/J77P++VnndGBDaVkEWYL00Xp7VK29toyZGCoJUvze5hIRmowK3btxZIV
+	A47w==
+X-Gm-Message-State: AFeK/H3bCTwd3iBbyoYekavSAmAGihLdLZxbUQeM6vVJoLllTF0xnqB+tL/HDvPlXAFtCCaulgXnfIVo8HyfNg==
+X-Received: by 10.129.183.18 with SMTP id v18mr2376785ywh.217.1490288202939;
+	Thu, 23 Mar 2017 09:56:42 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <20170323072335.GC10166@he>
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature";
-	boundary="aSlSVi119flFnvmNsdRmavNEsFwfjtXJJ"
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.30]);
-	Thu, 23 Mar 2017 13:52:50 +0000 (UTC)
+Received: by 10.129.52.75 with HTTP; Thu, 23 Mar 2017 09:56:12 -0700 (PDT)
+In-Reply-To: <C94A741879221447B4FC9B607EB4FFCD79EA34F4@DGGEMA504-MBX.china.huawei.com>
+References: <1459777195-7907-1-git-send-email-vijayak@caviumnetworks.com>
+	<1459777195-7907-3-git-send-email-vijayak@caviumnetworks.com>
+	<CAFEAcA_755uEOZoGj0SCtmT-5PyLMntkK3wZeuHvZ_kPG9A1aQ@mail.gmail.com>
+	<5703D7EE.2000005@redhat.com>
+	<CAFEAcA8G_-jQOtnVag2Ef++RbfbEJ-XzNnyYM=o9Sh8c6ohecA@mail.gmail.com>
+	<C94A741879221447B4FC9B607EB4FFCD79EA34F4@DGGEMA504-MBX.china.huawei.com>
+From: Pranith Kumar <bobby.prani@gmail.com>
+Date: Thu, 23 Mar 2017 12:56:12 -0400
+Message-ID: <CAJhHMCDDu_kEJichH=60N=np+ZKbU1e9bWK-pP9Z-9=Fn4w1_w@mail.gmail.com>
+To: Wangjintang <wangjintang@huawei.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v3] Allow setting NUMA distance
- for different NUMA nodes
+X-Received-From: 2607:f8b0:4002:c05::22d
+Subject: Re: [Qemu-arm] about armv8's prefetch decode
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -78,80 +84,29 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
-	Eduardo Habkost <ehabkost@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
-	"Michael S . Tsirkin" <mst@redhat.com>, qemu-devel@nongnu.org,
-	Markus Armbruster <armbru@redhat.com>, qemu-arm@nongnu.org,
-	Shannon Zhao <zhaoshenglong@huawei.com>,
-	Igor Mammedov <imammedo@redhat.com>, Richard Henderson <rth@twiddle.net>
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm <qemu-arm@nongnu.org>,
+	qemu-devel <qemu-devel@nongnu.org>,
+	"Ori Chalak \(A\)" <Ori.Chalak@huawei.com>,
+	"Shlomo Pongratz \(A\)" <shlomo.pongratz@huawei.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: rqb6pAQlGSTF
+X-TUID: gJAy3btcmp1o
 
-This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
---aSlSVi119flFnvmNsdRmavNEsFwfjtXJJ
-Content-Type: multipart/mixed; boundary="X5IIEQKDxaoPhhQn8aqkTWl624HTwslfe";
- protected-headers="v1"
-From: Eric Blake <eblake@redhat.com>
-To: He Chen <he.chen@linux.intel.com>, Andrew Jones <drjones@redhat.com>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Eduardo Habkost <ehabkost@redhat.com>, "Michael S . Tsirkin"
- <mst@redhat.com>, qemu-devel@nongnu.org,
- Markus Armbruster <armbru@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
- qemu-arm@nongnu.org, Shannon Zhao <zhaoshenglong@huawei.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Richard Henderson <rth@twiddle.net>
-Message-ID: <4c620bdf-5979-38f5-8dc2-74641c627151@redhat.com>
-Subject: Re: [Qemu-devel] [PATCH v3] Allow setting NUMA distance for different
- NUMA nodes
-References: <1490175166-19785-1-git-send-email-he.chen@linux.intel.com>
- <20170322103405.rcye74zye6gvrfis@hawk.localdomain>
- <20170323072335.GC10166@he>
-In-Reply-To: <20170323072335.GC10166@he>
+Hi Jed,
 
---X5IIEQKDxaoPhhQn8aqkTWl624HTwslfe
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
+On Mon, Mar 20, 2017 at 2:35 AM, Wangjintang <wangjintang@huawei.com> wrote=
+:
+> Hi,
+>
+>         We see that armv8's prefetch instruction decode have been skipped=
+ in qemu. For some user, they need prefetch instruction, for example, they =
+use qemu to generate the instruction trace. We want to merge this patch to =
+community, it's ok or not?  Thanks.
+>
 
-On 03/23/2017 02:23 AM, He Chen wrote:
+Your patch seems to be missing. Can you retry with the content of the
+patch pasted in the email?
 
->>> -numa dist,src=3D1,dst=3D0,val=3D21 \
-
->>
->> And maybe should also point out how to set an unreachable node with 25=
-5.
->>
-> Thanks for your careful review. Regarding setting unreachable node,
-> which way is good? Set exact 255 as distance or distance that is larger=
-
-> than 255 is regarded as unreachable?
-
-Given that you spec'd val as 'uint8', you can't pass a value for
-distance that is larger than 255.
-
---=20
-Eric Blake   eblake redhat com    +1-919-301-3266
-Libvirt virtualization library http://libvirt.org
-
-
---X5IIEQKDxaoPhhQn8aqkTWl624HTwslfe--
-
---aSlSVi119flFnvmNsdRmavNEsFwfjtXJJ
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: OpenPGP digital signature
-Content-Disposition: attachment; filename="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v2
-Comment: Public key at http://people.redhat.com/eblake/eblake.gpg
-Comment: Using GnuPG with Thunderbird - http://www.enigmail.net/
-
-iQEcBAEBCAAGBQJY09MoAAoJEKeha0olJ0NqEDsH/0kauDQHjgH93I+2C7D78tXZ
-XuJwTAsx35eolxLFYPasKbwrQ4QRsR/4DQB+enX12LTbaqNCWyw/UQu8ZyI9yDBM
-4KuLxXD+LWFOfyKFjf9nAmtRJlaPzgvaXhHuoJRY+jjUxBIRGCf1cYQdacodhASm
-1CB9b2FsqjSy7i3Ye03zqs3F6MtqvIL1IxYrRuKxUjhtqnDLQmwS6a3yEMtscikh
-zAVXrRz7/ZCdv3jWtoVI832Gj7IZEOc4CyMbbwllshsNLMN1VCuW7mwFvPyGgG5D
-FspF+htjYieTUNKRyNzigQ3scHKg/7M6pG/f8oBs3BpiQT+CF7DCLc8Gs/c5WwY=
-=VMmG
------END PGP SIGNATURE-----
-
---aSlSVi119flFnvmNsdRmavNEsFwfjtXJJ--
+Thanks,
+--
+Pranith

@@ -1,68 +1,67 @@
-Received: by 10.25.15.230 with SMTP id 99csp646872lfp;
-        Thu, 23 Mar 2017 01:46:09 -0700 (PDT)
-X-Received: by 10.200.46.196 with SMTP id i4mr1213686qta.17.1490258769325;
-        Thu, 23 Mar 2017 01:46:09 -0700 (PDT)
+Received: by 10.25.15.230 with SMTP id 99csp647593lfp;
+        Thu, 23 Mar 2017 01:48:47 -0700 (PDT)
+X-Received: by 10.200.36.194 with SMTP id t2mr1189629qtt.61.1490258927752;
+        Thu, 23 Mar 2017 01:48:47 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id g17si3144011qtc.257.2017.03.23.01.46.09
+        by mx.google.com with ESMTPS id o16si3159044qto.176.2017.03.23.01.48.47
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 23 Mar 2017 01:46:09 -0700 (PDT)
+        Thu, 23 Mar 2017 01:48:47 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:54960 helo=lists.gnu.org)
+Received: from localhost ([::1]:54962 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1cqyNk-0006RW-Se
-	for alex.bennee@linaro.org; Thu, 23 Mar 2017 04:46:08 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:39835)
+	id 1cqyQJ-0006tF-4v
+	for alex.bennee@linaro.org; Thu, 23 Mar 2017 04:48:47 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:41253)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <wangjintang@huawei.com>) id 1cqyNg-0006RR-S0
-	for qemu-arm@nongnu.org; Thu, 23 Mar 2017 04:46:06 -0400
+	(envelope-from <imammedo@redhat.com>) id 1cqyQE-0006sE-Pf
+	for qemu-arm@nongnu.org; Thu, 23 Mar 2017 04:48:43 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <wangjintang@huawei.com>) id 1cqyNd-0001XX-L0
-	for qemu-arm@nongnu.org; Thu, 23 Mar 2017 04:46:04 -0400
-Received: from [45.249.212.187] (port=3007 helo=dggrg01-dlp.huawei.com)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_ARCFOUR_SHA1:16) (Exim 4.71)
-	(envelope-from <wangjintang@huawei.com>) id 1cqyNa-0000ti-7I
-	for qemu-arm@nongnu.org; Thu, 23 Mar 2017 04:46:01 -0400
-Received: from 172.30.72.56 (EHLO DGGEMA405-HUB.china.huawei.com)
-	([172.30.72.56])
-	by dggrg01-dlp.huawei.com (MOS 4.4.6-GA FastPath queued)
-	with ESMTP id ALG11601; Thu, 23 Mar 2017 16:41:20 +0800 (CST)
-Received: from DGGEMA504-MBX.china.huawei.com ([169.254.4.180]) by
-	DGGEMA405-HUB.china.huawei.com ([10.3.20.46]) with mapi id
-	14.03.0301.000; Thu, 23 Mar 2017 16:41:11 +0800
-From: Wangjintang <wangjintang@huawei.com>
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm <qemu-arm@nongnu.org>
-Thread-Topic: [Qemu-arm] about armv8's prefetch decode
-Thread-Index: AQHRj1R6bYMlriGS4E2IOsFES6FMxKGfZpSAgATWYmA=
-Date: Thu, 23 Mar 2017 08:41:11 +0000
-Message-ID: <C94A741879221447B4FC9B607EB4FFCD79EA6B52@DGGEMA504-MBX.china.huawei.com>
-References: <1459777195-7907-1-git-send-email-vijayak@caviumnetworks.com>
-	<1459777195-7907-3-git-send-email-vijayak@caviumnetworks.com>
-	<CAFEAcA_755uEOZoGj0SCtmT-5PyLMntkK3wZeuHvZ_kPG9A1aQ@mail.gmail.com>
-	<5703D7EE.2000005@redhat.com>
-	<CAFEAcA8G_-jQOtnVag2Ef++RbfbEJ-XzNnyYM=o9Sh8c6ohecA@mail.gmail.com> 
-Accept-Language: zh-CN, en-US
-Content-Language: zh-CN
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-originating-ip: [10.177.25.122]
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+	(envelope-from <imammedo@redhat.com>) id 1cqyQB-0002UQ-NZ
+	for qemu-arm@nongnu.org; Thu, 23 Mar 2017 04:48:42 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:60414)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <imammedo@redhat.com>)
+	id 1cqyQB-0002UB-H9; Thu, 23 Mar 2017 04:48:39 -0400
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+	[10.5.11.14])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 4DC088046B;
+	Thu, 23 Mar 2017 08:48:39 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 4DC088046B
+Authentication-Results: ext-mx04.extmail.prod.ext.phx2.redhat.com;
+	dmarc=none (p=none dis=none) header.from=redhat.com
+Authentication-Results: ext-mx04.extmail.prod.ext.phx2.redhat.com;
+	spf=pass smtp.mailfrom=imammedo@redhat.com
+DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com 4DC088046B
+Received: from nial.brq.redhat.com (dhcp-1-118.brq.redhat.com [10.34.1.118])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 0DB445DD62;
+	Thu, 23 Mar 2017 08:48:36 +0000 (UTC)
+Date: Thu, 23 Mar 2017 09:48:34 +0100
+From: Igor Mammedov <imammedo@redhat.com>
+To: Bharata B Rao <bharata.rao@gmail.com>
+Message-ID: <20170323094834.0de7c3cb@nial.brq.redhat.com>
+In-Reply-To: <CAGZKiBpD=uLyJWFPhxKYfn0-wLL2WYnUm5h4KJhZ_fVHi+1z-w@mail.gmail.com>
+References: <1490189568-167621-1-git-send-email-imammedo@redhat.com>
+	<1490189568-167621-6-git-send-email-imammedo@redhat.com>
+	<CAGZKiBpD=uLyJWFPhxKYfn0-wLL2WYnUm5h4KJhZ_fVHi+1z-w@mail.gmail.com>
 MIME-Version: 1.0
-X-CFilter-Loop: Reflected
-X-Mirapoint-Virus-RAPID-Raw: score=unknown(0),
-	refid=str=0001.0A020206.58D38A32.019F, ss=1, re=0.000, recu=0.000,
-	reip=0.000, cl=1, cld=1, fgs=0, ip=169.254.4.180,
-	so=2014-11-16 11:51:01, dmn=2013-03-21 17:37:32
-X-Mirapoint-Loop-Id: 8f596a3057ff9a436ff8afe7d163b73a
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.28]);
+	Thu, 23 Mar 2017 08:48:39 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 45.249.212.187
-Subject: Re: [Qemu-arm] about armv8's prefetch decode
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH for-2.10 05/23] numa: move
+ source of default CPUs to NUMA node mapping into boards
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -74,32 +73,63 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: "Shlomo Pongratz \(A\)" <shlomo.pongratz@huawei.com>,
-	"Wanghaibin \(Benjamin\)" <benjamin.wanghaibin@huawei.com>,
-	"Ori Chalak \(A\)" <Ori.Chalak@huawei.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jones <drjones@redhat.com>,
+	Eduardo Habkost <ehabkost@redhat.com>,
+	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+	qemu-arm@nongnu.org, "qemu-ppc@nongnu.org" <qemu-ppc@nongnu.org>,
+	Shannon Zhao <zhaoshenglong@huawei.com>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	David Gibson <david@gibson.dropbear.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: DJcS+Cw7sFVe
+X-TUID: cePKcZw1mIit
 
-SGksDQoNCglUaGVyZSBpcyBubyBmZWVkYmFjayBhYm91dCB0aGlzLCBzbyBhc2sgYWdhaW4uICAN
-CkRvZXMgbmVlZCBJIHBhc3RlIHRoZSBhcm12OCdzIHByZWZldGNoIGluc3RydWN0aW9uIGRlY29k
-ZSBwYXRjaCBoZXJlPyANCg0KV2Ugd2lsbCByZWxlYXNlIGl0IHVuZGVyIGEgbWFjcm8sIHdob3Nl
-IGRlZmF1bHQgaXMgZGlzYWJsZWQuIA0KDQojdW5kZWYgIFRDR19BQVJDSDY0X1RSQU5TTEFURV9Q
-UkVGRVRDSA0KI2lmZGVmIFRDR19BQVJDSDY0X1RSQU5TTEFURV9QUkVGRVRDSA0KUHJlZmV0Y2gg
-dHJhbnNsYXRpb24NCiNlbmRpZg0KDQpCZXN0IFJlZ2FyZHMsDQrnjovph5HloIIgLyBKZWQNCg0K
-DQoNCuWNjuS4uuaKgOacr+aciemZkOWFrOWPuEh1YXdlaSBUZWNobm9sb2dpZXMgQ28uLCBMdGQu
-IA0KRW1haWw6IHdhbmdqaW50YW5nQGh1YXdlaS5jb20NCkJ1aWxkaW5nIFo4LCBIdWF3ZWkgUiZE
-IGNlbnRlciwgSmlhbmdzaHUgUmQgMzYwLCBCaW5qaWFuZyBEaXN0cmljdCxIYW5nemhvdSAzMTAw
-NTEsIFAuUi5DaGluYQ0KaHR0cDovL3d3dy5odWF3ZWkuY29tIA0KDQoNCj4gLS0tLS1PcmlnaW5h
-bCBNZXNzYWdlLS0tLS0NCj4gRnJvbTogV2FuZ2ppbnRhbmcNCj4gU2VudDogTW9uZGF5LCBNYXJj
-aCAyMCwgMjAxNyAyOjM1IFBNDQo+IFRvOiAnUGV0ZXIgTWF5ZGVsbCcNCj4gQ2M6IHFlbXUtYXJt
-OyBTaGxvbW8gUG9uZ3JhdHogKEEpOyBPcmkgQ2hhbGFrIChBKQ0KPiBTdWJqZWN0OiBbUWVtdS1h
-cm1dIGFib3V0IGFybXY4J3MgcHJlZmV0Y2ggZGVjb2RlDQo+IA0KPiBIaSwNCj4gDQo+IAlXZSBz
-ZWUgdGhhdCBhcm12OCdzIHByZWZldGNoIGluc3RydWN0aW9uIGRlY29kZSBoYXZlIGJlZW4gc2tp
-cHBlZCBpbg0KPiBxZW11LiBGb3Igc29tZSB1c2VyLCB0aGV5IG5lZWQgcHJlZmV0Y2ggaW5zdHJ1
-Y3Rpb24sIGZvciBleGFtcGxlLCB0aGV5IHVzZQ0KPiBxZW11IHRvIGdlbmVyYXRlIHRoZSBpbnN0
-cnVjdGlvbiB0cmFjZS4gV2Ugd2FudCB0byBtZXJnZSB0aGlzIHBhdGNoIHRvDQo+IGNvbW11bml0
-eSwgaXQncyBvayBvciBub3Q/ICBUaGFua3MuDQo+IA0KPiANCj4gQmVzdCBSZWdhcmRzLA0KPiDn
-jovph5HloIIgLyBKZWQNCj4gDQo+IA0KPiANCj4gSHVhd2VpIFRlY2hub2xvZ2llcyBDby4sIEx0
-ZC4NCj4gRW1haWw6IHdhbmdqaW50YW5nQGh1YXdlaS5jb20NCj4gaHR0cDovL3d3dy5odWF3ZWku
-Y29tDQo=
+On Thu, 23 Mar 2017 11:40:29 +0530
+Bharata B Rao <bharata.rao@gmail.com> wrote:
+
+> On Wed, Mar 22, 2017 at 7:02 PM, Igor Mammedov <imammedo@redhat.com> wrote:
+> 
+> > diff --git a/numa.c b/numa.c
+> > index e01cb54..b6e71bc 100644
+> > --- a/numa.c
+> > +++ b/numa.c
+> > @@ -294,9 +294,10 @@ static void validate_numa_cpus(void)
+> >      g_free(seen_cpus);
+> >  }
+> >
+> > -void parse_numa_opts(MachineClass *mc)
+> > +void parse_numa_opts(MachineState *ms)
+> >  {
+> >      int i;
+> > +    MachineClass *mc = MACHINE_GET_CLASS(ms);
+> >
+> >      for (i = 0; i < MAX_NODES; i++) {
+> >          numa_info[i].node_cpu = bitmap_new(max_cpus);
+> > @@ -378,14 +379,16 @@ void parse_numa_opts(MachineClass *mc)
+> >           * rule grouping VCPUs by socket so that VCPUs from the same
+> > socket
+> >           * would be on the same node.
+> >           */
+> > +        if (!mc->cpu_index_to_instance_props) {
+> > +            error_report("default CPUs to NUMA node mapping isn't
+> > supported");
+> > +            exit(1);
+> > +        }
+> >  
+> 
+> Just trying to understand the impact of the above enforcement. So targets
+> and machine types that don't define ->cpu_index_to_instance_props() are
+> expected not to boot ? Shouldn't they have a default to fall back upon ?
+Currently there are 3 boards that support numa and with this series
+they all implement cpu_index_to_instance_props callback,
+so boards that has supported numa shouldn't be affected.
+
+But if someone used '-numa' with a board that doesn't support numa,
+it would stop booting with error message instead of silently parsing
+not supported option or falling back bogus defaults (which aren't
+used anyway).
+
+
+> Regards,
+> Bharata.
+

@@ -1,71 +1,77 @@
-Received: by 10.25.15.230 with SMTP id 99csp1118970lfp;
-        Fri, 24 Mar 2017 00:55:31 -0700 (PDT)
-X-Received: by 10.237.42.98 with SMTP id k31mr6828186qtf.232.1490342131269;
-        Fri, 24 Mar 2017 00:55:31 -0700 (PDT)
+Received: by 10.25.15.230 with SMTP id 99csp1157977lfp;
+        Fri, 24 Mar 2017 03:06:51 -0700 (PDT)
+X-Received: by 10.200.37.81 with SMTP id 17mr6549817qtn.165.1490350011503;
+        Fri, 24 Mar 2017 03:06:51 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id k126si1164626qkc.96.2017.03.24.00.55.31
+        by mx.google.com with ESMTPS id c7si1387568qta.231.2017.03.24.03.06.51
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 24 Mar 2017 00:55:31 -0700 (PDT)
+        Fri, 24 Mar 2017 03:06:51 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:60177 helo=lists.gnu.org)
+       dkim=fail header.i=@linaro.org;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:60539 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1crK4I-0004PM-RU
-	for alex.bennee@linaro.org; Fri, 24 Mar 2017 03:55:30 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:51352)
+	id 1crM7O-0001je-TX
+	for alex.bennee@linaro.org; Fri, 24 Mar 2017 06:06:50 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:50775)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <wangjintang@huawei.com>) id 1crK4C-0004PE-NL
-	for qemu-arm@nongnu.org; Fri, 24 Mar 2017 03:55:25 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1crM7I-0001ij-I8
+	for qemu-arm@nongnu.org; Fri, 24 Mar 2017 06:06:45 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <wangjintang@huawei.com>) id 1crK49-0006tO-Mh
-	for qemu-arm@nongnu.org; Fri, 24 Mar 2017 03:55:24 -0400
-Received: from [45.249.212.187] (port=3012 helo=dggrg01-dlp.huawei.com)
-	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <wangjintang@huawei.com>) id 1crK48-0006sX-Uv
-	for qemu-arm@nongnu.org; Fri, 24 Mar 2017 03:55:21 -0400
-Received: from 172.30.72.57 (EHLO DGGEMA404-HUB.china.huawei.com)
-	([172.30.72.57])
-	by dggrg01-dlp.huawei.com (MOS 4.4.6-GA FastPath queued)
-	with ESMTP id ALJ10217; Fri, 24 Mar 2017 15:54:57 +0800 (CST)
-Received: from DGGEMA504-MBX.china.huawei.com ([169.254.4.180]) by
-	DGGEMA404-HUB.china.huawei.com ([10.3.20.45]) with mapi id
-	14.03.0301.000; Fri, 24 Mar 2017 15:54:47 +0800
-From: Wangjintang <wangjintang@huawei.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Thread-Topic: [Qemu-arm] about armv8's prefetch decode
-Thread-Index: AQHSo/eux5c5C7FGr0WVMMqwyZ/RZaGjg+xw
-Date: Fri, 24 Mar 2017 07:54:46 +0000
-Message-ID: <C94A741879221447B4FC9B607EB4FFCD79EA7C46@DGGEMA504-MBX.china.huawei.com>
+	(envelope-from <peter.maydell@linaro.org>) id 1crM7H-0000pw-AR
+	for qemu-arm@nongnu.org; Fri, 24 Mar 2017 06:06:44 -0400
+Received: from mail-wr0-x22e.google.com ([2a00:1450:400c:c0c::22e]:33207)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1crM7H-0000pj-4D
+	for qemu-arm@nongnu.org; Fri, 24 Mar 2017 06:06:43 -0400
+Received: by mail-wr0-x22e.google.com with SMTP id y90so6077730wrb.0
+	for <qemu-arm@nongnu.org>; Fri, 24 Mar 2017 03:06:43 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=G0eKo+rzAofwwwCh/9LLNUJMcEzpb2JeiTd4FOKcL9g=;
+	b=D3tK6YcFz7Za3oM9To57G9DNrufG8O8qh4Lbq9lF2dCYTHBBguU9MzSZWyT5xxiJbs
+	AC7aZY1/jj0ur8WI7FPTSTdwK/FETH+G8A4Zy1tacgNwPaBDXnOwD0ddw3Ye//yDDYAr
+	EKxs9maDxiLwoaNGhydYZs0dfF354a0ZN1WBE=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=G0eKo+rzAofwwwCh/9LLNUJMcEzpb2JeiTd4FOKcL9g=;
+	b=Oo2XBmJY1lphk8BtwRQNENE2Lv4q7TwHQINzX8McJNMobs2UYIfpLakjY88NV99Mz1
+	NoR+7It7/uOfg0c0d150ptWTJpv4WjO72Ro9m0CkH5b5bCe9dUbFkluIOJy86T6+h25t
+	xWTaSzYeS7d7mdK0tYEUatqqCTHf4FQCi6OvD74uaq+z9Ul+ZIwiQ9lgcFgrvtvqWD6a
+	fkJP1QKiaqX2pB2vg05iFJkAhwV4PLvDTKMu8HvvhMBjurXyi5P+G+ZaJJpH4CsmuMyq
+	s3qS+soxNTEfjg3Q+Xw87Vjz+gaQzG842NfCmK1He1BbTZ1/djxsgbdnN8LKf/jenKZc
+	WUMw==
+X-Gm-Message-State: AFeK/H3ws9TF8QZFnaYZyukv3Qf+HUI9d8bhkiD+cQ6i2GbQmQGZKfIRp1CJqDJcUO4umZx70nmS5V4KbhNPd6lH
+X-Received: by 10.223.169.70 with SMTP id u64mr2124838wrc.187.1490350001946;
+	Fri, 24 Mar 2017 03:06:41 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.223.145.33 with HTTP; Fri, 24 Mar 2017 03:06:21 -0700 (PDT)
+In-Reply-To: <C94A741879221447B4FC9B607EB4FFCD79EA7BA3@DGGEMA504-MBX.china.huawei.com>
 References: <1459777195-7907-1-git-send-email-vijayak@caviumnetworks.com>
 	<1459777195-7907-3-git-send-email-vijayak@caviumnetworks.com>
 	<CAFEAcA_755uEOZoGj0SCtmT-5PyLMntkK3wZeuHvZ_kPG9A1aQ@mail.gmail.com>
 	<5703D7EE.2000005@redhat.com>
 	<CAFEAcA8G_-jQOtnVag2Ef++RbfbEJ-XzNnyYM=o9Sh8c6ohecA@mail.gmail.com>
 	<C94A741879221447B4FC9B607EB4FFCD79EA34F4@DGGEMA504-MBX.china.huawei.com>
-	<CAFEAcA-AjxQ-wCu3Uh8AiunbQk8LSgs7T=ymbd3_QkgZAa2TUQ@mail.gmail.com>
-In-Reply-To: <CAFEAcA-AjxQ-wCu3Uh8AiunbQk8LSgs7T=ymbd3_QkgZAa2TUQ@mail.gmail.com>
-Accept-Language: zh-CN, en-US
-Content-Language: zh-CN
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-originating-ip: [10.177.25.122]
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-MIME-Version: 1.0
-X-CFilter-Loop: Reflected
-X-Mirapoint-Virus-RAPID-Raw: score=unknown(0),
-	refid=str=0001.0A020205.58D4D0D2.018C, ss=1, re=0.000, recu=0.000,
-	reip=0.000, cl=1, cld=1, fgs=0, ip=169.254.4.180,
-	so=2014-11-16 11:51:01, dmn=2013-03-21 17:37:32
-X-Mirapoint-Loop-Id: 8f596a3057ff9a436ff8afe7d163b73a
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
-	[fuzzy]
-X-Received-From: 45.249.212.187
-Subject: Re: [Qemu-arm] about armv8's prefetch decode
+	<CAJhHMCDDu_kEJichH=60N=np+ZKbU1e9bWK-pP9Z-9=Fn4w1_w@mail.gmail.com>
+	<C94A741879221447B4FC9B607EB4FFCD79EA7BA3@DGGEMA504-MBX.china.huawei.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 24 Mar 2017 10:06:21 +0000
+Message-ID: <CAFEAcA_0UA1hnP9XVBn8w0B66eyR12GnnUoCOxjirPSDgHcHvQ@mail.gmail.com>
+To: Wangjintang <wangjintang@huawei.com>
+Content-Type: text/plain; charset=UTF-8
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2a00:1450:400c:c0c::22e
+Subject: Re: [Qemu-arm] [patch 1/1]about armv8's prefetch decode
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -78,42 +84,48 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: "Shlomo Pongratz \(A\)" <shlomo.pongratz@huawei.com>,
-	"Wanghaibin \(Benjamin\)" <benjamin.wanghaibin@huawei.com>,
-	qemu-arm <qemu-arm@nongnu.org>, "Ori Chalak \(A\)" <Ori.Chalak@huawei.com>
+	"Ori Chalak \(A\)" <Ori.Chalak@huawei.com>,
+	qemu-devel <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
+	Pranith Kumar <bobby.prani@gmail.com>,
+	"Wanghaibin \(Benjamin\)" <benjamin.wanghaibin@huawei.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 9pnqhk/crT9T
+X-TUID: 5uoUCWwb/n0l
 
-SGkgUGV0ZXIsDQoNCglBdCBmaXJzdCB0aGFua3MgeW91ciByZXBseS4NCkkgYWRkIGRldGFpbCBp
-bGx1c3RyYXRpb24gYXQgYmVsb3c6DQoNCj4gLS0tLS1PcmlnaW5hbCBNZXNzYWdlLS0tLS0NCj4g
-RnJvbTogUGV0ZXIgTWF5ZGVsbCBbbWFpbHRvOnBldGVyLm1heWRlbGxAbGluYXJvLm9yZ10NCj4g
-U2VudDogRnJpZGF5LCBNYXJjaCAyNCwgMjAxNyAxOjA1IEFNDQo+IFRvOiBXYW5namludGFuZw0K
-PiBDYzogcWVtdS1hcm07IFNobG9tbyBQb25ncmF0eiAoQSk7IE9yaSBDaGFsYWsgKEEpDQo+IFN1
-YmplY3Q6IFJlOiBbUWVtdS1hcm1dIGFib3V0IGFybXY4J3MgcHJlZmV0Y2ggZGVjb2RlDQo+IA0K
-PiBPbiAyMCBNYXJjaCAyMDE3IGF0IDA2OjM1LCBXYW5namludGFuZyA8d2FuZ2ppbnRhbmdAaHVh
-d2VpLmNvbT4NCj4gd3JvdGU6DQo+ID4gICAgICAgICBXZSBzZWUgdGhhdCBhcm12OCdzIHByZWZl
-dGNoIGluc3RydWN0aW9uIGRlY29kZSBoYXZlIGJlZW4NCj4gPiBza2lwcGVkIGluIHFlbXUuIEZv
-ciBzb21lIHVzZXIsIHRoZXkgbmVlZCBwcmVmZXRjaCBpbnN0cnVjdGlvbiwNCj4gPiBmb3IgZXhh
-bXBsZSwgdGhleSB1c2UgcWVtdSB0byBnZW5lcmF0ZSB0aGUgaW5zdHJ1Y3Rpb24gdHJhY2UuDQo+
-ID4gV2Ugd2FudCB0byBtZXJnZSB0aGlzIHBhdGNoIHRvIGNvbW11bml0eSwgaXQncyBvayBvciBu
-b3Q/ICBUaGFua3MuDQo+IA0KPiBJdCB3b3VsZCBiZSBoZWxwZnVsIGlmIHlvdSBjb3VsZCBiZSBt
-b3JlIHByZWNpc2UgYWJvdXQgd2hhdA0KPiBpcyBtaXNzaW5nIGFuZCB3aGF0IGdvZXMgd3Jvbmcg
-KGVnIHdoaWNoIGluc3RydWN0aW9ucyB3ZQ0KPiBtaXNoYW5kbGUpLiBJbiBnZW5lcmFsIEkgYmVs
-aWV2ZSB0aGF0IHdlIGRvIGNvcnJlY3RseSBoYW5kbGUNCj4gdGhlIHZhcmlvdXMgcHJlZmV0Y2gg
-aW5zdHJ1Y3Rpb25zLiBUaGV5IGRvbid0IG5lZWQgdG8gZ2VuZXJhdGUNCj4gYW55IGludGVybWVk
-aWF0ZSBjb2RlLCBvZiBjb3Vyc2UsIGJlY2F1c2UgcHJlZmV0Y2ggaXMganVzdA0KPiBhIGhpbnQu
-IEl0J3MgcG9zc2libGUgd2UgZ290IHRoZSBkZWNvZGUgd3JvbmcgZm9yIHNvbWUgc3Vic2V0DQo+
-IG9mIHRoZW0uDQo+IA0KPiB0aGFua3MNCj4gLS0gUE1NDQoNCiAgWW91J3JlIHJpZ2h0LiBGb3Ig
-ZnVuY3Rpb24gbW9kZWwgZG9uJ3QgbmVlZCBnZW5lcmF0ZSANCmludGVybWVkaWF0ZSBjb2RlIGZv
-ciBwcmVmZXRjaCBpbnN0cnVjdGlvbnMuIEJ1dCBmb3Igc2ltdWxhdG9yIHVzZXIsIA0KdGhleSBu
-ZWVkIGVudGlyZWx5IEFybXY4J3MgaW5zdHJ1Y3Rpb24gYW5kIGxkL3N0IGluc3RydWN0aW9uJ3Mg
-bWVtb3J5IGFkZHJlc3MuDQpDdXJyZW50IGNvZGUgdGhhdCBza2lwIGdlbmVyYXRlIHByZWZldGNo
-IGluc3RydWN0aW9ucycgaW50ZXJtZWRpYXRlIGNvZGUsIA0Kc28gZm9yIHNpbXVsYXRvciB1c2Vy
-LCB0aGV5IGNhbid0IGdldCB0aGUgcHJlZmV0Y2ggaW5zdHJ1Y3Rpb24gcmVsYXRpdmUgDQptZW1v
-cnkgYWRkcmVzcy4gDQogIFRoZSBwYXRjaCBpcyBmb3IgdGhpcyBjYXNlLiBHZW5lcmF0ZSBpbnRl
-cm1lZGlhdGUgY29kZSBmb3IgcHJlZmV0Y2ggDQppbnN0cnVjdGlvbiBjb2RlLCBhdCB0aGUgc2Ft
-ZSB0aW1lIGRvbid0IGVmZmVjdCB0aGUgdmFsdWUgaW4gcm0vcnQgcmVnaXN0ZXIuICAgDQoNCkJl
-c3QgUmVnYXJkcywNCldhbmcgamludGFuZyAvIEplZA0KDQpIdWF3ZWkgVGVjaG5vbG9naWVzIENv
-LiwgTHRkLiANCkVtYWlsOiB3YW5namludGFuZ0BodWF3ZWkuY29tDQpCdWlsZGluZyBaOCwgSHVh
-d2VpIFImRCBjZW50ZXIsIEppYW5nc2h1IFJkIDM2MCwgQmluamlhbmcgRGlzdHJpY3QsSGFuZ3po
-b3UgMzEwMDUxLCBQLlIuQ2hpbmENCmh0dHA6Ly93d3cuaHVhd2VpLmNvbQ0K
+On 24 March 2017 at 06:14, Wangjintang <wangjintang@huawei.com> wrote:
+> Hi Pranith,
+>
+>         Thanks for your reply. patch as below, new added code default is off, please review.
+> The major thinking is about translate Armv8's prefetch instruction into intermediate code, at the same time don't effect the rm/rn register.
+>
+>
+> diff --git a/translate-a64.c b/translate-a64.c
+> index 814f30f..86da8ee 100644
+> --- a/translate-a64.c
+> +++ b/translate-a64.c
+> @@ -2061,7 +2061,11 @@ static void disas_ld_lit(DisasContext *s, uint32_t insn)
+>      } else {
+>          if (opc == 3) {
+>              /* PRFM (literal) : prefetch */
+> +            #ifdef TCG_AARCH64_PREFETCH_TRANSLATE
+> +            ;
+> +            #else
+>              return;
+> +            #endif
+>          }
+
+No, these changes look wrong. PRFM instructions do not need to
+do anything and should definitely not be emitting any intermediate
+code. In particular if you let execution fall through and try
+do_gpr_ld() then it will really do a load, which might cause
+an exception -- this is specifically forbidden for PRFM.
+Architecturally the ARM ARM says "it is valid for the PE to
+treat any or all prefetch instructions as a NOP", which is
+what QEMU does.
+
+The existing code is correct. In general you should not
+expect to be able to deduce the guest instructions from
+the intermediate code representation.
+
+thanks
+-- PMM

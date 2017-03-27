@@ -1,63 +1,64 @@
-Received: by 10.25.15.230 with SMTP id 99csp1073709lfp;
-        Mon, 27 Mar 2017 02:49:20 -0700 (PDT)
-X-Received: by 10.233.232.88 with SMTP id a85mr20547606qkg.104.1490608160459;
-        Mon, 27 Mar 2017 02:49:20 -0700 (PDT)
+Received: by 10.25.15.230 with SMTP id 99csp1074251lfp;
+        Mon, 27 Mar 2017 02:51:13 -0700 (PDT)
+X-Received: by 10.55.163.141 with SMTP id m135mr7196124qke.243.1490608273058;
+        Mon, 27 Mar 2017 02:51:13 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id c33si47479qtd.246.2017.03.27.02.49.20
+        by mx.google.com with ESMTPS id u21si57527qku.164.2017.03.27.02.51.12
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 27 Mar 2017 02:49:20 -0700 (PDT)
+        Mon, 27 Mar 2017 02:51:13 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:45358 helo=lists.gnu.org)
+Received: from localhost ([::1]:45371 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1csRH5-0006WO-Vo
-	for alex.bennee@linaro.org; Mon, 27 Mar 2017 05:49:20 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:55172)
+	id 1csRIu-000803-IZ
+	for alex.bennee@linaro.org; Mon, 27 Mar 2017 05:51:12 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:55144)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1csRH0-0006UD-DE
-	for qemu-arm@nongnu.org; Mon, 27 Mar 2017 05:49:15 -0400
+	(envelope-from <eric.auger@redhat.com>) id 1csRGw-0006Rl-Tf
+	for qemu-arm@nongnu.org; Mon, 27 Mar 2017 05:49:12 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1csRGz-0007bc-4H
-	for qemu-arm@nongnu.org; Mon, 27 Mar 2017 05:49:14 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:44202)
+	(envelope-from <eric.auger@redhat.com>) id 1csRGu-0007a9-BO
+	for qemu-arm@nongnu.org; Mon, 27 Mar 2017 05:49:10 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:48604)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <eric.auger@redhat.com>)
-	id 1csRGy-0007bH-SY; Mon, 27 Mar 2017 05:49:13 -0400
+	id 1csRGu-0007Zu-2v; Mon, 27 Mar 2017 05:49:08 -0400
 Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
 	[10.5.11.11])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id C13A0C04B938;
-	Mon, 27 Mar 2017 09:49:11 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com C13A0C04B938
-Authentication-Results: ext-mx07.extmail.prod.ext.phx2.redhat.com;
+	by mx1.redhat.com (Postfix) with ESMTPS id F3B514DD60;
+	Mon, 27 Mar 2017 09:49:06 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com F3B514DD60
+Authentication-Results: ext-mx09.extmail.prod.ext.phx2.redhat.com;
 	dmarc=none (p=none dis=none) header.from=redhat.com
-Authentication-Results: ext-mx07.extmail.prod.ext.phx2.redhat.com;
+Authentication-Results: ext-mx09.extmail.prod.ext.phx2.redhat.com;
 	spf=pass smtp.mailfrom=eric.auger@redhat.com
-DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com C13A0C04B938
+DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com F3B514DD60
 Received: from localhost.localdomain.com (ovpn-117-27.ams2.redhat.com
 	[10.36.117.27])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 5637A189E1;
-	Mon, 27 Mar 2017 09:49:07 +0000 (UTC)
+	by smtp.corp.redhat.com (Postfix) with ESMTP id D6610189E1;
+	Mon, 27 Mar 2017 09:48:59 +0000 (UTC)
 From: Eric Auger <eric.auger@redhat.com>
 To: eric.auger.pro@gmail.com, eric.auger@redhat.com, peter.maydell@linaro.org,
 	qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Date: Mon, 27 Mar 2017 11:48:46 +0200
-Message-Id: <1490608126-22187-4-git-send-email-eric.auger@redhat.com>
+Date: Mon, 27 Mar 2017 11:48:45 +0200
+Message-Id: <1490608126-22187-3-git-send-email-eric.auger@redhat.com>
 In-Reply-To: <1490608126-22187-1-git-send-email-eric.auger@redhat.com>
 References: <1490608126-22187-1-git-send-email-eric.auger@redhat.com>
 X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.31]);
-	Mon, 27 Mar 2017 09:49:12 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.38]);
+	Mon, 27 Mar 2017 09:49:07 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 209.132.183.28
-Subject: [Qemu-arm] [RFC v3 3/3] hw/intc/arm_gicv3_its: Allow save/restore
+Subject: [Qemu-arm] [RFC v3 2/3] hw/intc/arm_gicv3_its: Implement state
+ save/restore
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -74,109 +75,216 @@ Cc: drjones@redhat.com, vijay.kilari@gmail.com, quintela@redhat.com,
 	christoffer.dall@linaro.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: FXalDCN+zhfP
+X-TUID: LYZRc0aOTgYM
 
-We change the restoration priority of both the GICv3 and ITS. The
-GICv3 must be restored before the ITS and the ITS needs to be restored
-before PCIe devices since it translates their MSI transactions.
+We need to handle both registers and ITS tables. While
+register handling is standard, ITS table handling is more
+challenging since the kernel API is devised so that the
+tables are flushed into guest RAM and not in vmstate buffers.
+
+Flushing the ITS tables on device pre_save() is too late
+since the guest RAM is already saved at this point.
+
+Table flushing needs to happen when we are sure the vcpus
+are stopped and before the last dirty page saving. The
+right point is RUN_STATE_FINISH_MIGRATE but sometimes the
+VM gets stopped before migration launch so let's simply
+flush the tables each time the VM gets stopped.
+
+For regular ITS registers we just can use vmstate pre_save()
+and post_load() callbacks.
 
 Signed-off-by: Eric Auger <eric.auger@redhat.com>
 
 ---
+
 v2 -> v3:
-- reword migration blocker message
-- remove unmigratable setting to false
-
-v1 -> v2:
-- handle case where migrate_add_blocker fails
-- add comments along with ITS and GICv3 migration priorities
+- take into account Peter's comments:
+  - add iidr save/restore
+  - reword comments
+  - remove s->ctlr = extract64(reg, 0, 32);
+  - rename get()/put() function into pre_save()/post_load()
+- do not execute put() if iidr == 0
 ---
- hw/intc/arm_gicv3_common.c     |  1 +
- hw/intc/arm_gicv3_its_common.c |  2 +-
- hw/intc/arm_gicv3_its_kvm.c    | 24 ++++++++++++------------
- include/migration/vmstate.h    |  2 ++
- 4 files changed, 16 insertions(+), 13 deletions(-)
+ hw/intc/arm_gicv3_its_common.c         |  9 ++++
+ hw/intc/arm_gicv3_its_kvm.c            | 96 ++++++++++++++++++++++++++++++++++
+ include/hw/intc/arm_gicv3_its_common.h |  8 +++
+ 3 files changed, 113 insertions(+)
 
-diff --git a/hw/intc/arm_gicv3_common.c b/hw/intc/arm_gicv3_common.c
-index c6493d6..4228b7c 100644
---- a/hw/intc/arm_gicv3_common.c
-+++ b/hw/intc/arm_gicv3_common.c
-@@ -145,6 +145,7 @@ static const VMStateDescription vmstate_gicv3 = {
-     .minimum_version_id = 1,
-     .pre_save = gicv3_pre_save,
-     .post_load = gicv3_post_load,
-+    .priority = MIG_PRI_GICV3,
-     .fields = (VMStateField[]) {
-         VMSTATE_UINT32(gicd_ctlr, GICv3State),
-         VMSTATE_UINT32_ARRAY(gicd_statusr, GICv3State, 2),
 diff --git a/hw/intc/arm_gicv3_its_common.c b/hw/intc/arm_gicv3_its_common.c
-index efab8c7..22ce4c4 100644
+index 9d67c5c..efab8c7 100644
 --- a/hw/intc/arm_gicv3_its_common.c
 +++ b/hw/intc/arm_gicv3_its_common.c
-@@ -48,7 +48,7 @@ static const VMStateDescription vmstate_its = {
-     .name = "arm_gicv3_its",
+@@ -49,6 +49,15 @@ static const VMStateDescription vmstate_its = {
      .pre_save = gicv3_its_pre_save,
      .post_load = gicv3_its_post_load,
--    .unmigratable = true,
-+    .priority = MIG_PRI_GICV3_ITS,
-     .fields = (VMStateField[]) {
-         VMSTATE_UINT32(ctlr, GICv3ITSState),
-         VMSTATE_UINT32(iidr, GICv3ITSState),
+     .unmigratable = true,
++    .fields = (VMStateField[]) {
++        VMSTATE_UINT32(ctlr, GICv3ITSState),
++        VMSTATE_UINT32(iidr, GICv3ITSState),
++        VMSTATE_UINT64(cbaser, GICv3ITSState),
++        VMSTATE_UINT64(cwriter, GICv3ITSState),
++        VMSTATE_UINT64(creadr, GICv3ITSState),
++        VMSTATE_UINT64_ARRAY(baser, GICv3ITSState, 8),
++        VMSTATE_END_OF_LIST()
++    },
+ };
+ 
+ static MemTxResult gicv3_its_trans_read(void *opaque, hwaddr offset,
 diff --git a/hw/intc/arm_gicv3_its_kvm.c b/hw/intc/arm_gicv3_its_kvm.c
-index 1732831..15159f4 100644
+index bd4f3aa..1732831 100644
 --- a/hw/intc/arm_gicv3_its_kvm.c
 +++ b/hw/intc/arm_gicv3_its_kvm.c
-@@ -76,18 +76,6 @@ static void kvm_arm_its_realize(DeviceState *dev, Error **errp)
-     GICv3ITSState *s = ARM_GICV3_ITS_COMMON(dev);
-     Error *local_err = NULL;
+@@ -53,6 +53,24 @@ static int kvm_its_send_msi(GICv3ITSState *s, uint32_t value, uint16_t devid)
+     return kvm_vm_ioctl(kvm_state, KVM_SIGNAL_MSI, &msi);
+ }
  
--    /*
--     * Block migration of a KVM GICv3 ITS device: the API for saving and
--     * restoring the state in the kernel is not yet available
--     */
--    error_setg(&s->migration_blocker, "vITS migration is not implemented");
--    migrate_add_blocker(s->migration_blocker, &local_err);
--    if (local_err) {
--        error_propagate(errp, local_err);
--        error_free(s->migration_blocker);
--        return;
--    }
--
-     s->dev_fd = kvm_create_device(kvm_state, KVM_DEV_TYPE_ARM_VGIC_ITS, false);
-     if (s->dev_fd < 0) {
-         error_setg_errno(errp, -s->dev_fd, "error creating in-kernel ITS");
-@@ -104,6 +92,18 @@ static void kvm_arm_its_realize(DeviceState *dev, Error **errp)
- 
-     gicv3_its_init_mmio(s, NULL);
- 
-+    if (!kvm_device_check_attr(s->dev_fd, KVM_DEV_ARM_VGIC_GRP_ITS_REGS,
-+        GITS_CTLR)) {
-+        error_setg(&s->migration_blocker, "This operating system kernel "
-+                   "does not support vGICv3 migration");
-+        migrate_add_blocker(s->migration_blocker, &local_err);
-+        if (local_err) {
-+            error_propagate(errp, local_err);
-+            error_free(s->migration_blocker);
-+            return;
-+        }
-+    }
++/**
++ * vm_change_state_handler - VM change state callback aiming at flushing
++ * ITS tables into guest RAM
++ *
++ * The tables get flushed to guest RAM whenever the VM gets stopped.
++ */
++static void vm_change_state_handler(void *opaque, int running,
++                                    RunState state)
++{
++    GICv3ITSState *s = (GICv3ITSState *)opaque;
 +
++    if (running) {
++        return;
++    }
++    kvm_device_access(s->dev_fd, KVM_DEV_ARM_VGIC_GRP_ITS_TABLES,
++                      0, NULL, false);
++}
++
+ static void kvm_arm_its_realize(DeviceState *dev, Error **errp)
+ {
+     GICv3ITSState *s = ARM_GICV3_ITS_COMMON(dev);
+@@ -89,6 +107,8 @@ static void kvm_arm_its_realize(DeviceState *dev, Error **errp)
      kvm_msi_use_devid = true;
      kvm_gsi_direct_mapping = false;
      kvm_msi_via_irqfd_allowed = kvm_irqfds_enabled();
-diff --git a/include/migration/vmstate.h b/include/migration/vmstate.h
-index f2dbf84..8dab9c7 100644
---- a/include/migration/vmstate.h
-+++ b/include/migration/vmstate.h
-@@ -198,6 +198,8 @@ enum VMStateFlags {
- typedef enum {
-     MIG_PRI_DEFAULT = 0,
-     MIG_PRI_IOMMU,              /* Must happen before PCI devices */
-+    MIG_PRI_GICV3_ITS,          /* Must happen before PCI devices */
-+    MIG_PRI_GICV3,              /* Must happen before the ITS */
-     MIG_PRI_MAX,
- } MigrationPriority;
++
++    qemu_add_vm_change_state_handler(vm_change_state_handler, s);
+ }
  
+ static void kvm_arm_its_init(Object *obj)
+@@ -102,6 +122,80 @@ static void kvm_arm_its_init(Object *obj)
+                              &error_abort);
+ }
+ 
++/**
++ * kvm_arm_its_pre_save - handles the saving of ITS registers.
++ * ITS tables are flushed into guest RAM separately and earlier,
++ * through the VM change state handler, since at the moment pre_save()
++ * is called, the guest RAM has already been saved.
++ */
++static void kvm_arm_its_pre_save(GICv3ITSState *s)
++{
++    uint64_t reg;
++    int i;
++
++    for (i = 0; i < 8; i++) {
++        kvm_device_access(s->dev_fd, KVM_DEV_ARM_VGIC_GRP_ITS_REGS,
++                          GITS_BASER + i * 8, &s->baser[i], false);
++    }
++
++    kvm_device_access(s->dev_fd, KVM_DEV_ARM_VGIC_GRP_ITS_REGS,
++                      GITS_CTLR, &s->ctlr, false);
++
++    kvm_device_access(s->dev_fd, KVM_DEV_ARM_VGIC_GRP_ITS_REGS,
++                      GITS_CBASER, &s->cbaser, false);
++
++    kvm_device_access(s->dev_fd, KVM_DEV_ARM_VGIC_GRP_ITS_REGS,
++                      GITS_CREADR, &s->creadr, false);
++
++    kvm_device_access(s->dev_fd, KVM_DEV_ARM_VGIC_GRP_ITS_REGS,
++                      GITS_CWRITER, &s->cwriter, false);
++
++    kvm_device_access(s->dev_fd, KVM_DEV_ARM_VGIC_GRP_ITS_REGS,
++                      GITS_IIDR, &s->iidr, false);
++}
++
++/**
++ * kvm_arm_its_post_load - Restore both the ITS registers and tables
++ */
++static void kvm_arm_its_post_load(GICv3ITSState *s)
++{
++    uint64_t reg;
++    int i;
++
++    if (!s->iidr) {
++        return;
++    }
++
++    kvm_device_access(s->dev_fd, KVM_DEV_ARM_VGIC_GRP_ITS_REGS,
++                      GITS_IIDR, &s->iidr, true);
++
++    /*
++     * must be written before GITS_CREADR since GITS_CBASER write
++     * access resets GITS_CREADR.
++     */
++    kvm_device_access(s->dev_fd, KVM_DEV_ARM_VGIC_GRP_ITS_REGS,
++                      GITS_CBASER, &s->cbaser, true);
++
++    kvm_device_access(s->dev_fd, KVM_DEV_ARM_VGIC_GRP_ITS_REGS,
++                      GITS_CREADR, &s->creadr, true);
++
++    kvm_device_access(s->dev_fd, KVM_DEV_ARM_VGIC_GRP_ITS_REGS,
++                      GITS_CWRITER, &s->cwriter, true);
++
++
++    for (i = 0; i < 8; i++) {
++        kvm_device_access(s->dev_fd, KVM_DEV_ARM_VGIC_GRP_ITS_REGS,
++                          GITS_BASER + i * 8, &s->baser[i], true);
++    }
++
++    kvm_device_access(s->dev_fd, KVM_DEV_ARM_VGIC_GRP_ITS_TABLES,
++                      0, NULL, true);
++
++    reg = s->ctlr;
++    kvm_device_access(s->dev_fd, KVM_DEV_ARM_VGIC_GRP_ITS_REGS,
++                      GITS_CTLR, &reg, true);
++}
++
+ static void kvm_arm_its_class_init(ObjectClass *klass, void *data)
+ {
+     DeviceClass *dc = DEVICE_CLASS(klass);
+@@ -109,6 +203,8 @@ static void kvm_arm_its_class_init(ObjectClass *klass, void *data)
+ 
+     dc->realize = kvm_arm_its_realize;
+     icc->send_msi = kvm_its_send_msi;
++    icc->pre_save = kvm_arm_its_pre_save;
++    icc->post_load = kvm_arm_its_post_load;
+ }
+ 
+ static const TypeInfo kvm_arm_its_info = {
+diff --git a/include/hw/intc/arm_gicv3_its_common.h b/include/hw/intc/arm_gicv3_its_common.h
+index 1ba1894..fd1fe64 100644
+--- a/include/hw/intc/arm_gicv3_its_common.h
++++ b/include/hw/intc/arm_gicv3_its_common.h
+@@ -28,6 +28,13 @@
+ #define ITS_TRANS_SIZE   0x10000
+ #define ITS_SIZE         (ITS_CONTROL_SIZE + ITS_TRANS_SIZE)
+ 
++#define GITS_CTLR        0x0
++#define GITS_IIDR        0x4
++#define GITS_CBASER      0x80
++#define GITS_CWRITER     0x88
++#define GITS_CREADR      0x90
++#define GITS_BASER       0x100
++
+ struct GICv3ITSState {
+     SysBusDevice parent_obj;
+ 
+@@ -43,6 +50,7 @@ struct GICv3ITSState {
+ 
+     /* Registers */
+     uint32_t ctlr;
++    uint32_t iidr;
+     uint64_t cbaser;
+     uint64_t cwriter;
+     uint64_t creadr;
 -- 
 2.5.5
 

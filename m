@@ -1,79 +1,59 @@
-Received: by 10.25.15.230 with SMTP id 99csp438729lfp;
-        Sat, 25 Mar 2017 05:36:04 -0700 (PDT)
-X-Received: by 10.237.34.8 with SMTP id n8mr13351796qtc.98.1490445364396;
-        Sat, 25 Mar 2017 05:36:04 -0700 (PDT)
+Received: by 10.25.15.230 with SMTP id 99csp952610lfp;
+        Sun, 26 Mar 2017 18:30:31 -0700 (PDT)
+X-Received: by 10.200.53.69 with SMTP id z5mr18821826qtb.120.1490578230923;
+        Sun, 26 Mar 2017 18:30:30 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id s29si1860782qks.309.2017.03.25.05.36.04
+        by mx.google.com with ESMTPS id y6si8456511qkd.212.2017.03.26.18.30.30
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sat, 25 Mar 2017 05:36:04 -0700 (PDT)
+        Sun, 26 Mar 2017 18:30:30 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:37203 helo=lists.gnu.org)
+       dkim=fail header.i=@gibson.dropbear.id.au;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:43705 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1crkvL-0004aa-QS
-	for alex.bennee@linaro.org; Sat, 25 Mar 2017 08:36:03 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:45734)
+	id 1csJUM-0002UI-EK
+	for alex.bennee@linaro.org; Sun, 26 Mar 2017 21:30:30 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:54386)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1crkvG-0004ZI-Py
-	for qemu-arm@nongnu.org; Sat, 25 Mar 2017 08:35:59 -0400
+	(envelope-from <dgibson@ozlabs.org>) id 1csJUG-0002U9-91
+	for qemu-arm@nongnu.org; Sun, 26 Mar 2017 21:30:25 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1crkvF-0001K2-LG
-	for qemu-arm@nongnu.org; Sat, 25 Mar 2017 08:35:58 -0400
-Received: from mail-wr0-x22d.google.com ([2a00:1450:400c:c0c::22d]:36191)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1crkvF-0001Jg-EF
-	for qemu-arm@nongnu.org; Sat, 25 Mar 2017 08:35:57 -0400
-Received: by mail-wr0-x22d.google.com with SMTP id u108so8103793wrb.3
-	for <qemu-arm@nongnu.org>; Sat, 25 Mar 2017 05:35:56 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=IXPkO/BuXc206H8ThgbSSxZ04/WmBfkJ1dP+1GlGN1s=;
-	b=We8YY9PHzAXrm4BvaRVomQ+wZH63PEIkSmNKgfp4yildsu4tbXkQh5ww4o7Io7hFP2
-	dlGzYs4by1QuKsYV9H5ci6GC63HT71Mx3Mw84ehirXq1BqnuNHP309Fx54g9uIv3r3bC
-	nsq9qXG57Kyh4kMZzgVVuIGDcyLn7mD/rrnDs=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=IXPkO/BuXc206H8ThgbSSxZ04/WmBfkJ1dP+1GlGN1s=;
-	b=qOpwwxM7n2T1kReUn2B2u9nQVw+AtdrvL/GYxUpsremcPt6nhK5+SsOiEbPFEK1rZP
-	we3qC6+XOtaELimyJ2uyNvXXF2+TWtegKvdwiVI3ovKaOuPpOSpQRZsHPd6TdPoqNV9C
-	jrcHYdW/ApYox2CGZjFGpPmmiOylA8Ach1YvyDc12nNdvZkd43Mdsu1CW+UK2gL14Acf
-	NG62x83mzDqhQGxMCqaSxkEQZxTXx1R0gD++MYKHfiGfcs/oQZNn9ZuC2NtVmRapWN+W
-	oYSH3pLZTJCpZ3DJ9rldAUk5SOD0WJwVG8iYZHZXoc94fuTScm27r30elN0wBrFFLrVg
-	Q1XA==
-X-Gm-Message-State: AFeK/H0LrwoTlb4ZUztYe7f6QpLgfVcNGH8rB4uPJnaP722FwfV+jaVwQPNeTK5vvrUNeE0ZgMtiBUXocJDrWF52
-X-Received: by 10.223.169.70 with SMTP id u64mr7356874wrc.187.1490445355695;
-	Sat, 25 Mar 2017 05:35:55 -0700 (PDT)
+	(envelope-from <dgibson@ozlabs.org>) id 1csJUD-0002y5-5S
+	for qemu-arm@nongnu.org; Sun, 26 Mar 2017 21:30:24 -0400
+Received: from ozlabs.org ([103.22.144.67]:44751)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <dgibson@ozlabs.org>)
+	id 1csJUC-0002xL-25; Sun, 26 Mar 2017 21:30:21 -0400
+Received: by ozlabs.org (Postfix, from userid 1007)
+	id 3vrxKb31vmz9s2s; Mon, 27 Mar 2017 12:30:11 +1100 (AEDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+	d=gibson.dropbear.id.au; s=201602; t=1490578211;
+	bh=Ljwfu5o/Eydlm8Co8/Cl22qNSPBJNXY4mrfC/VObRME=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=PH9M4/WzVHrzkSbJjGzCYstrwvBvaJaGFgQoMyYYcUTdPnxJ+8MsjmdUvSJXN1YOc
+	6jLyN/bCd0Rb82KXZOewN85Mnkrx8el+5LvD950Zg390/nJLrVWe6HDFz0TirJrbMa
+	OtQ1YplbrmpRh6HYorV+ZqxrQrLV+1FncSkVz548=
+Date: Mon, 27 Mar 2017 11:31:05 +1100
+From: David Gibson <david@gibson.dropbear.id.au>
+To: Igor Mammedov <imammedo@redhat.com>
+Message-ID: <20170327003105.GR19078@umbus.fritz.box>
+References: <1490189568-167621-1-git-send-email-imammedo@redhat.com>
+	<1490189568-167621-2-git-send-email-imammedo@redhat.com>
 MIME-Version: 1.0
-Received: by 10.223.145.33 with HTTP; Sat, 25 Mar 2017 05:35:35 -0700 (PDT)
-In-Reply-To: <C94A741879221447B4FC9B607EB4FFCD79EACAC2@DGGEMA504-MBS.china.huawei.com>
-References: <1459777195-7907-1-git-send-email-vijayak@caviumnetworks.com>
-	<1459777195-7907-3-git-send-email-vijayak@caviumnetworks.com>
-	<CAFEAcA_755uEOZoGj0SCtmT-5PyLMntkK3wZeuHvZ_kPG9A1aQ@mail.gmail.com>
-	<5703D7EE.2000005@redhat.com>
-	<CAFEAcA8G_-jQOtnVag2Ef++RbfbEJ-XzNnyYM=o9Sh8c6ohecA@mail.gmail.com>
-	<C94A741879221447B4FC9B607EB4FFCD79EA34F4@DGGEMA504-MBX.china.huawei.com>
-	<CAJhHMCDDu_kEJichH=60N=np+ZKbU1e9bWK-pP9Z-9=Fn4w1_w@mail.gmail.com>
-	<C94A741879221447B4FC9B607EB4FFCD79EA7BA3@DGGEMA504-MBX.china.huawei.com>
-	<CAFEAcA_0UA1hnP9XVBn8w0B66eyR12GnnUoCOxjirPSDgHcHvQ@mail.gmail.com>
-	<C94A741879221447B4FC9B607EB4FFCD79EACAC2@DGGEMA504-MBS.china.huawei.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Sat, 25 Mar 2017 12:35:35 +0000
-Message-ID: <CAFEAcA_NQjvKiGxLwAOZ8zSwJXgHHwABWmDvQfC0dv7kaYFyqA@mail.gmail.com>
-To: Wangjintang <wangjintang@huawei.com>
-Content-Type: text/plain; charset=UTF-8
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2a00:1450:400c:c0c::22d
-Subject: Re: [Qemu-arm] [patch 1/1]about armv8's prefetch decode
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="ZmeoGP/RI+eIV+cU"
+Content-Disposition: inline
+In-Reply-To: <1490189568-167621-2-git-send-email-imammedo@redhat.com>
+User-Agent: Mutt/1.8.0 (2017-02-23)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 103.22.144.67
+Subject: Re: [Qemu-arm] [PATCH for-2.10 01/23] tests: add CPUs to numa node
+ mapping test
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -85,38 +65,217 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: "Shlomo Pongratz \(A\)" <shlomo.pongratz@huawei.com>,
-	"Ori Chalak \(A\)" <Ori.Chalak@huawei.com>,
-	qemu-devel <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
-	Pranith Kumar <bobby.prani@gmail.com>,
-	"Wanghaibin \(Benjamin\)" <benjamin.wanghaibin@huawei.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jones <drjones@redhat.com>,
+	Eduardo Habkost <ehabkost@redhat.com>, qemu-devel@nongnu.org,
+	qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
+	Shannon Zhao <zhaoshenglong@huawei.com>,
+	Paolo Bonzini <pbonzini@redhat.com>, Eric Blake <eblake@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 73hw4mtzyECF
+X-TUID: prsKQAiGPicd
 
-On 25 March 2017 at 02:22, Wangjintang <wangjintang@huawei.com> wrote:
-> the patch regard the prefetch as load instruction, at the same time
-> don't affect rm/rt register. Only the PRFM instruction been emitted to
-> intermediate code and do a really load, then we can get the memory
-> address relative to the prefetch instruction. Because the rm/rt register
-> don't been modified, so the application can run correctly.
 
-It will still fault if the address is not valid, which is
-not a permitted behaviour.
+--ZmeoGP/RI+eIV+cU
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-> In our case, we need all the instruction trace & ld/st instruction's
-> access memory address, the trace as the input for chip cycle-accurate
-> model. Similar with flexus + qemu.
-> Current code that skip generate prefetch instructions' intermediate code,
-> So we can get prefetch instruction, but can't get the prefetch instruction
-> relative memory address.
+On Wed, Mar 22, 2017 at 02:32:26PM +0100, Igor Mammedov wrote:
+> Signed-off-by: Igor Mammedov <imammedo@redhat.com>
 
-I understand the use case you would like, but if we want
-to support that kind of thing we should do it with a much
-more significant and consistent degree of support for
-tracing of guest code actions, not with a small ad-hoc
-change that happens to fix the immediate thing you're
-running into for your specific problem.
+Reviewed-by: David Gibson <david@gibson.dropbear.id.au>
 
-thanks
--- PMM
+> ---
+>  tests/Makefile.include |   5 +++
+>  tests/numa-test.c      | 106 +++++++++++++++++++++++++++++++++++++++++++=
+++++++
+>  2 files changed, 111 insertions(+)
+>  create mode 100644 tests/numa-test.c
+>=20
+> diff --git a/tests/Makefile.include b/tests/Makefile.include
+> index 402e71c..4547b01 100644
+> --- a/tests/Makefile.include
+> +++ b/tests/Makefile.include
+> @@ -260,6 +260,7 @@ check-qtest-i386-y +=3D tests/test-filter-mirror$(EXE=
+SUF)
+>  check-qtest-i386-y +=3D tests/test-filter-redirector$(EXESUF)
+>  check-qtest-i386-y +=3D tests/postcopy-test$(EXESUF)
+>  check-qtest-i386-y +=3D tests/test-x86-cpuid-compat$(EXESUF)
+> +check-qtest-i386-y +=3D tests/numa-test$(EXESUF)
+>  check-qtest-x86_64-y +=3D $(check-qtest-i386-y)
+>  gcov-files-i386-y +=3D i386-softmmu/hw/timer/mc146818rtc.c
+>  gcov-files-x86_64-y =3D $(subst i386-softmmu/,x86_64-softmmu/,$(gcov-fil=
+es-i386-y))
+> @@ -300,6 +301,7 @@ check-qtest-ppc64-y +=3D tests/test-netfilter$(EXESUF)
+>  check-qtest-ppc64-y +=3D tests/test-filter-mirror$(EXESUF)
+>  check-qtest-ppc64-y +=3D tests/test-filter-redirector$(EXESUF)
+>  check-qtest-ppc64-y +=3D tests/display-vga-test$(EXESUF)
+> +check-qtest-ppc64-y +=3D tests/numa-test$(EXESUF)
+>  check-qtest-ppc64-$(CONFIG_EVENTFD) +=3D tests/ivshmem-test$(EXESUF)
+> =20
+>  check-qtest-sh4-y =3D tests/endianness-test$(EXESUF)
+> @@ -324,6 +326,8 @@ gcov-files-arm-y +=3D arm-softmmu/hw/block/virtio-blk=
+=2Ec
+>  check-qtest-arm-y +=3D tests/test-arm-mptimer$(EXESUF)
+>  gcov-files-arm-y +=3D hw/timer/arm_mptimer.c
+> =20
+> +check-qtest-aarch64-y =3D tests/numa-test$(EXESUF)
+> +
+>  check-qtest-microblazeel-y =3D $(check-qtest-microblaze-y)
+> =20
+>  check-qtest-xtensaeb-y =3D $(check-qtest-xtensa-y)
+> @@ -747,6 +751,7 @@ tests/vhost-user-bridge$(EXESUF): tests/vhost-user-br=
+idge.o contrib/libvhost-use
+>  tests/test-uuid$(EXESUF): tests/test-uuid.o $(test-util-obj-y)
+>  tests/test-arm-mptimer$(EXESUF): tests/test-arm-mptimer.o
+>  tests/test-qapi-util$(EXESUF): tests/test-qapi-util.o $(test-util-obj-y)
+> +tests/numa-test$(EXESUF): tests/numa-test.o
+> =20
+>  tests/migration/stress$(EXESUF): tests/migration/stress.o
+>  	$(call quiet-command, $(LINKPROG) -static -O3 $(PTHREAD_LIB) -o $@ $< ,=
+"LINK","$(TARGET_DIR)$@")
+> diff --git a/tests/numa-test.c b/tests/numa-test.c
+> new file mode 100644
+> index 0000000..f5da0c8
+> --- /dev/null
+> +++ b/tests/numa-test.c
+> @@ -0,0 +1,106 @@
+> +/*
+> + * NUMA configuration test cases
+> + *
+> + * Copyright (c) 2017 Red Hat Inc.
+> + * Authors:
+> + *  Igor Mammedov <imammedo@redhat.com>
+> + *
+> + * This work is licensed under the terms of the GNU GPL, version 2 or la=
+ter.
+> + * See the COPYING file in the top-level directory.
+> + */
+> +
+> +#include "qemu/osdep.h"
+> +#include "libqtest.h"
+> +
+> +static char *make_cli(const char *generic_cli, const char *test_cli)
+> +{
+> +    return g_strdup_printf("%s %s", generic_cli ? generic_cli : "", test=
+_cli);
+> +}
+> +
+> +static char *hmp_info_numa(void)
+> +{
+> +    QDict *resp;
+> +    char *s;
+> +
+> +    resp =3D qmp("{ 'execute': 'human-monitor-command', 'arguments': "
+> +                      "{ 'command-line': 'info numa '} }");
+> +    g_assert(resp);
+> +    g_assert(qdict_haskey(resp, "return"));
+> +    s =3D g_strdup(qdict_get_str(resp, "return"));
+> +    g_assert(s);
+> +    QDECREF(resp);
+> +    return s;
+> +}
+> +
+> +static void test_mon_explicit(const void *data)
+> +{
+> +    char *s;
+> +    char *cli;
+> +
+> +    cli =3D make_cli(data, "-smp 8 "
+> +                   "-numa node,nodeid=3D0,cpus=3D0-3 "
+> +                   "-numa node,nodeid=3D1,cpus=3D4-7 ");
+> +    qtest_start(cli);
+> +
+> +    s =3D hmp_info_numa();
+> +    g_assert(strstr(s, "node 0 cpus: 0 1 2 3"));
+> +    g_assert(strstr(s, "node 1 cpus: 4 5 6 7"));
+> +    g_free(s);
+> +
+> +    qtest_end();
+> +    g_free(cli);
+> +}
+> +
+> +static void test_mon_default(const void *data)
+> +{
+> +    char *s;
+> +    char *cli;
+> +
+> +    cli =3D make_cli(data, "-smp 8 -numa node -numa node");
+> +    qtest_start(cli);
+> +
+> +    s =3D hmp_info_numa();
+> +    g_assert(strstr(s, "node 0 cpus: 0 2 4 6"));
+> +    g_assert(strstr(s, "node 1 cpus: 1 3 5 7"));
+> +    g_free(s);
+> +
+> +    qtest_end();
+> +    g_free(cli);
+> +}
+> +
+> +static void test_mon_partial(const void *data)
+> +{
+> +    char *s;
+> +    char *cli;
+> +
+> +    cli =3D make_cli(data, "-smp 8 "
+> +                   "-numa node,nodeid=3D0,cpus=3D0-1 "
+> +                   "-numa node,nodeid=3D1,cpus=3D4-5 ");
+> +    qtest_start(cli);
+> +
+> +    s =3D hmp_info_numa();
+> +    g_assert(strstr(s, "node 0 cpus: 0 1 2 3 6 7"));
+> +    g_assert(strstr(s, "node 1 cpus: 4 5"));
+> +    g_free(s);
+> +
+> +    qtest_end();
+> +    g_free(cli);
+> +}
+> +
+> +int main(int argc, char **argv)
+> +{
+> +    const char *args =3D NULL;
+> +    const char *arch =3D qtest_get_arch();
+> +
+> +    if (strcmp(arch, "aarch64") =3D=3D 0) {
+> +        args =3D "-machine virt";
+> +    }
+> +
+> +    g_test_init(&argc, &argv, NULL);
+> +
+> +    qtest_add_data_func("/numa/mon/default", args, test_mon_default);
+> +    qtest_add_data_func("/numa/mon/cpus/explicit", args, test_mon_explic=
+it);
+> +    qtest_add_data_func("/numa/mon/cpus/partial", args, test_mon_partial=
+);
+> +
+> +    return g_test_run();
+> +}
+
+--=20
+David Gibson			| I'll have my music baroque, and my code
+david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
+				| _way_ _around_!
+http://www.ozlabs.org/~dgibson
+
+--ZmeoGP/RI+eIV+cU
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v2
+
+iQIcBAEBCAAGBQJY2F1JAAoJEGw4ysog2bOSzZQP/3FX711Q9FbQHlg1E6H8btGT
+Qdw/t/aPGVLjHOnqfeTixB8Dyfg0hHgDoLMWs4eOdvpjPJ6tZdLMZzoJW5fXgHkB
+vjnfuYPikLqh5dZn7nVKH/UzyDq4iWWtEn8icXpViBDMILRbQufA0l8oj53pIE9J
+HWUcSD8qncpx/obHfikchlXTimA7xzyvGmiqK/mjyp1cRPA3CQV3R9ZGqAixgFtm
+NDP8XOvWhh/0kUQ7c5czqxanU+V21oKYkk7CWfoWV1qHt8pcScWpUh+5gKggIlzs
+Hq8LXRCgrDujtYpTbHv03MoIHErwxV7ux9tZB2Aw00snAWz8DAahG0EtTxtIUycD
+qnTU/NodmMbWtIbk0Kb5oRWAadKbQJt+Rtj1/G1pjKthMJvGtegJo1v4uotcLEkf
+lHwjRJzLzRVqEO6rfujxR3VkC4sYr488IQbc1OJqKWRZ37vs8kxBfI1AueB+f/eX
+lsyO5QPCSq31AZy87iU4rYUruJiGbRh78bE2l9/wRgQEJQj6lEANa4ZutLAX7XY3
+xAFeFEXqBiJFH29OK5t838+d3Ep36fG311xSrgm5PwVak53w85ESxvoOUzc0+66R
+nNvLtBPmxELMnD4RNvFXKgh/JnRbmy7vIjybS8ncLSZr7oUWspFIVcRWEI7+Qx6q
+ETUt4pywDpJ23R7aWzjG
+=UGhg
+-----END PGP SIGNATURE-----
+
+--ZmeoGP/RI+eIV+cU--

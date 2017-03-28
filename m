@@ -1,67 +1,71 @@
-Received: by 10.25.15.230 with SMTP id 99csp1638810lfp;
-        Tue, 28 Mar 2017 07:03:08 -0700 (PDT)
-X-Received: by 10.200.46.208 with SMTP id i16mr26393260qta.13.1490709788506;
-        Tue, 28 Mar 2017 07:03:08 -0700 (PDT)
+Received: by 10.25.15.230 with SMTP id 99csp1666582lfp;
+        Tue, 28 Mar 2017 08:08:53 -0700 (PDT)
+X-Received: by 10.55.130.4 with SMTP id e4mr27409955qkd.65.1490713733426;
+        Tue, 28 Mar 2017 08:08:53 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id m12si3513735qtf.141.2017.03.28.07.03.08
+        by mx.google.com with ESMTPS id i20si3651485qta.138.2017.03.28.08.08.53
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 28 Mar 2017 07:03:08 -0700 (PDT)
+        Tue, 28 Mar 2017 08:08:53 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:53490 helo=lists.gnu.org)
+       dkim=fail header.i=@gmail.com;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:53841 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1csriF-0006FR-VE
-	for alex.bennee@linaro.org; Tue, 28 Mar 2017 10:03:07 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:40540)
+	id 1cssjs-00007J-Tj
+	for alex.bennee@linaro.org; Tue, 28 Mar 2017 11:08:52 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:34654)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1csri9-0006F6-Pd
-	for qemu-arm@nongnu.org; Tue, 28 Mar 2017 10:03:03 -0400
+	(envelope-from <vijay.kilari@gmail.com>) id 1cssjp-00006I-56
+	for qemu-arm@nongnu.org; Tue, 28 Mar 2017 11:08:50 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1csri5-0007CK-Sq
-	for qemu-arm@nongnu.org; Tue, 28 Mar 2017 10:03:01 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:56420)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <eric.auger@redhat.com>)
-	id 1csri5-0007C8-K6; Tue, 28 Mar 2017 10:02:57 -0400
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
-	[10.5.11.12])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 46FC4C04BD3F;
-	Tue, 28 Mar 2017 14:02:56 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 46FC4C04BD3F
-Authentication-Results: ext-mx07.extmail.prod.ext.phx2.redhat.com;
-	dmarc=none (p=none dis=none) header.from=redhat.com
-Authentication-Results: ext-mx07.extmail.prod.ext.phx2.redhat.com;
-	spf=pass smtp.mailfrom=eric.auger@redhat.com
-DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com 46FC4C04BD3F
-Received: from localhost.localdomain (ovpn-117-27.ams2.redhat.com
-	[10.36.117.27])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id DFE0594D3C;
-	Tue, 28 Mar 2017 14:02:52 +0000 (UTC)
-To: eric.auger.pro@gmail.com, peter.maydell@linaro.org, qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-References: <1490709513-7180-1-git-send-email-eric.auger@redhat.com>
-From: Auger Eric <eric.auger@redhat.com>
-Message-ID: <6799a75d-e424-c3c1-41ae-f0715f727455@redhat.com>
-Date: Tue, 28 Mar 2017 16:02:51 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
-	Thunderbird/45.4.0
+	(envelope-from <vijay.kilari@gmail.com>) id 1cssjo-0007Sf-93
+	for qemu-arm@nongnu.org; Tue, 28 Mar 2017 11:08:49 -0400
+Received: from mail-ot0-x244.google.com ([2607:f8b0:4003:c0f::244]:33467)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <vijay.kilari@gmail.com>)
+	id 1cssjo-0007SC-53; Tue, 28 Mar 2017 11:08:48 -0400
+Received: by mail-ot0-x244.google.com with SMTP id j47so9584765otd.0;
+	Tue, 28 Mar 2017 08:08:47 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=38o4fG9DoRfOVZMQr9cauAox0K2r0Kz+jQumx0YUofE=;
+	b=bEPwsyC+KCVZ2JynqgkIjX7cB7wHWHhnz2lWgfndM5Azoy2cvunhhvRnqIMO0+34+h
+	gO05JyORCi0rd+UrpWxR6rUgzOsvOIhsWLA35DVURcceNUaqOW2r+i2Ak2W1A6Kam7NW
+	mI0FOaW2A7AaIDYj0VdGPtpsmdgAr83nMC6Jk9JRQVe1dtZ0SP6CCiedahytHQ27fsgD
+	mKRsp0iHWQBOVr02D8ltJWnHWxTY8uvGE6Fn8ekYwtO3y2dX9Mc5oFRte+AnhvTDtsFq
+	XCeB3Ifg/N4ny1aFdYL0yZYyYJh+o6L6grVQSpjgsRN8/3J5BUHoJAjfBoIrfJBM0Fjv
+	027g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=38o4fG9DoRfOVZMQr9cauAox0K2r0Kz+jQumx0YUofE=;
+	b=Dko9WAhocEE/f9d9eiZgFHAvKD7pd16qpi7YA0EF2fCujqktwpbOWNqNPoWxNIc+Ys
+	x4GgEL/Fi8XNt3mTqxg5O9EOo+kaa5hOi/Wa6tLtYVFF5vxNzO6InXu6zBNs3zFUvsuQ
+	6FidlbP1bnBp0VS8tdjImFFg81Clh7AdVjVQDzYBEA5VWpOCeAf8Vdk4M2QKmvwQ4l8B
+	O/fzoD3O1yuYgvh9ebKJKCcIvNQxp1soqTzrOjzF39SNEJ2waxQJ3e1ncvjwvefQY7/9
+	Dwl6RJ38MU+02nNUU88sTO6CBlIi49kP7Edek+tcHGfwVzc/qYntfslxxj+4SYG8sHkd
+	Pm4Q==
+X-Gm-Message-State: AFeK/H1jhZSciNfMOsIcpH6WJ5RpRazduD60QnSSFJukNWS9Qrp5fa0fgg/2iM02HED8AumwweBCtwuI9Yd/Rg==
+X-Received: by 10.157.46.232 with SMTP id w95mr13028068ota.78.1490713727298;
+	Tue, 28 Mar 2017 08:08:47 -0700 (PDT)
 MIME-Version: 1.0
+Received: by 10.157.37.120 with HTTP; Tue, 28 Mar 2017 08:08:46 -0700 (PDT)
 In-Reply-To: <1490709513-7180-1-git-send-email-eric.auger@redhat.com>
-Content-Type: text/plain; charset=windows-1252
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.31]);
-	Tue, 28 Mar 2017 14:02:56 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.132.183.28
+References: <1490709513-7180-1-git-send-email-eric.auger@redhat.com>
+From: Vijay Kilari <vijay.kilari@gmail.com>
+Date: Tue, 28 Mar 2017 20:38:46 +0530
+Message-ID: <CALicx6t8ZsN96rqOb8ydh56FnO9mPog3QxhN_Sa3Apa85_9nUQ@mail.gmail.com>
+To: Eric Auger <eric.auger@redhat.com>
+Content-Type: text/plain; charset=UTF-8
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:4003:c0f::244
 Subject: Re: [Qemu-arm] [PATCH] hw/intc/arm_gicv3_kvm: Check
  KVM_DEV_ARM_VGIC_GRP_CPU_SYSREGS in reset
 X-BeenThere: qemu-arm@nongnu.org
@@ -75,40 +79,33 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: drjones@redhat.com, Prakash B <bjsprakash.linux@gmail.com>,
-	vijay.kilari@gmail.com, Vijaya.Kumar@cavium.com
+Cc: Peter Maydell <peter.maydell@linaro.org>, drjones@redhat.com,
+	QEMU Developers <qemu-devel@nongnu.org>, "Kumar,
+	Vijaya" <Vijaya.Kumar@cavium.com>,
+	qemu-arm <qemu-arm@nongnu.org>, eric.auger.pro@gmail.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 6rTSPc78EBfe
+X-TUID: CATSSuMYpejm
 
-Adding Prakash B in cc too, sorry.
+Hi Eric,
 
-Vijaya, please let me know if I missed something in your original patch.
-
-I tested GICv3 KVM save/restore with v4.11-rc4 and Prakash B use case
-with 4.10 kernel.
-
-Thanks
-
-Eric
-
-On 28/03/2017 15:58, Eric Auger wrote:
+On Tue, Mar 28, 2017 at 7:28 PM, Eric Auger <eric.auger@redhat.com> wrote:
 > KVM_DEV_ARM_VGIC_GRP_CPU_SYSREGS needs to be checked before
 > attempting to read ICC_CTLR_EL1; otherwise kernel versions not
 > exposing this kvm device group will be incompatible with qemu 2.9.
-> 
+>
 > Fixes: 07a5628  ("hw/intc/arm_gicv3_kvm: Reset GICv3 cpu interface registers")
 > Signed-off-by: Eric Auger <eric.auger@redhat.com>
 > Reported-by: Prakash B <bjsprakash.linux@gmail.com>
-> 
+>
 > ---
-> 
+>
 > I understand the ICC_CTLR_EL1 state only is used in the put() function
 > which is used for migration
 > ---
 >  hw/intc/arm_gicv3_kvm.c | 17 +++++++++++------
 >  1 file changed, 11 insertions(+), 6 deletions(-)
-> 
+>
 > diff --git a/hw/intc/arm_gicv3_kvm.c b/hw/intc/arm_gicv3_kvm.c
 > index 81f0403..4c3a88e 100644
 > --- a/hw/intc/arm_gicv3_kvm.c
@@ -116,7 +113,7 @@ On 28/03/2017 15:58, Eric Auger wrote:
 > @@ -614,12 +614,6 @@ static void arm_gicv3_icc_reset(CPUARMState *env, const ARMCPRegInfo *ri)
 >      s = c->gic;
 >      cpu = ARM_CPU(c->cpu);
->  
+>
 > -    /* Initialize to actual HW supported configuration */
 > -    kvm_device_access(s->dev_fd, KVM_DEV_ARM_VGIC_GRP_CPU_SYSREGS,
 > -                      KVM_VGIC_ATTR(ICC_CTLR_EL1, cpu->mp_affinity),
@@ -135,6 +132,9 @@ On 28/03/2017 15:58, Eric Auger wrote:
 > +                              KVM_VGIC_ATTR(ICC_CTLR_EL1, cpu->mp_affinity))) {
 > +        return;
 > +    }
+
+ Can't we use gicv3 migration blocker provided if it is set before this reset.
+
 > +    /* Initialize to actual HW supported configuration */
 > +    kvm_device_access(s->dev_fd, KVM_DEV_ARM_VGIC_GRP_CPU_SYSREGS,
 > +                      KVM_VGIC_ATTR(ICC_CTLR_EL1, cpu->mp_affinity),
@@ -142,6 +142,8 @@ On 28/03/2017 15:58, Eric Auger wrote:
 > +
 > +    c->icc_ctlr_el1[GICV3_S] = c->icc_ctlr_el1[GICV3_NS];
 >  }
->  
+>
 >  static void kvm_arm_gicv3_reset(DeviceState *dev)
-> 
+> --
+> 2.5.5
+>

@@ -1,68 +1,68 @@
-Received: by 10.25.15.230 with SMTP id 99csp1556869lfp;
-        Tue, 28 Mar 2017 03:53:33 -0700 (PDT)
-X-Received: by 10.55.22.16 with SMTP id g16mr28024755qkh.102.1490698413635;
-        Tue, 28 Mar 2017 03:53:33 -0700 (PDT)
+Received: by 10.25.15.230 with SMTP id 99csp1564127lfp;
+        Tue, 28 Mar 2017 04:09:31 -0700 (PDT)
+X-Received: by 10.55.59.67 with SMTP id i64mr12826181qka.142.1490699371531;
+        Tue, 28 Mar 2017 04:09:31 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id o50si3114205qtf.321.2017.03.28.03.53.33
+        by mx.google.com with ESMTPS id t12si3159565qte.164.2017.03.28.04.09.31
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 28 Mar 2017 03:53:33 -0700 (PDT)
+        Tue, 28 Mar 2017 04:09:31 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:52345 helo=lists.gnu.org)
+Received: from localhost ([::1]:52405 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1csokn-0008Kb-4O
-	for alex.bennee@linaro.org; Tue, 28 Mar 2017 06:53:33 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:44686)
+	id 1csp0E-00044W-MI
+	for alex.bennee@linaro.org; Tue, 28 Mar 2017 07:09:30 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:48302)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <imammedo@redhat.com>) id 1csoke-0008J3-KJ
-	for qemu-arm@nongnu.org; Tue, 28 Mar 2017 06:53:26 -0400
+	(envelope-from <imammedo@redhat.com>) id 1csp05-00042z-Ae
+	for qemu-arm@nongnu.org; Tue, 28 Mar 2017 07:09:22 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <imammedo@redhat.com>) id 1csoka-0004HG-0U
-	for qemu-arm@nongnu.org; Tue, 28 Mar 2017 06:53:24 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:40632)
+	(envelope-from <imammedo@redhat.com>) id 1csp03-0002zk-Vs
+	for qemu-arm@nongnu.org; Tue, 28 Mar 2017 07:09:21 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:41596)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <imammedo@redhat.com>)
-	id 1csokZ-0004Gz-NU; Tue, 28 Mar 2017 06:53:19 -0400
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
-	[10.5.11.11])
+	id 1csp03-0002zS-MF; Tue, 28 Mar 2017 07:09:19 -0400
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
+	[10.5.11.12])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 735CD7AEAC;
-	Tue, 28 Mar 2017 10:53:18 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 735CD7AEAC
-Authentication-Results: ext-mx01.extmail.prod.ext.phx2.redhat.com;
+	by mx1.redhat.com (Postfix) with ESMTPS id C28713DBD4;
+	Tue, 28 Mar 2017 11:09:18 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com C28713DBD4
+Authentication-Results: ext-mx06.extmail.prod.ext.phx2.redhat.com;
 	dmarc=none (p=none dis=none) header.from=redhat.com
-Authentication-Results: ext-mx01.extmail.prod.ext.phx2.redhat.com;
+Authentication-Results: ext-mx06.extmail.prod.ext.phx2.redhat.com;
 	spf=pass smtp.mailfrom=imammedo@redhat.com
-DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com 735CD7AEAC
+DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com C28713DBD4
 Received: from Igors-MacBook-Pro.local (ovpn-112-31.ams2.redhat.com
 	[10.36.112.31])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id CD0C419E8F;
-	Tue, 28 Mar 2017 10:53:14 +0000 (UTC)
-Date: Tue, 28 Mar 2017 12:53:10 +0200
+	by smtp.corp.redhat.com (Postfix) with ESMTP id A3C2577D49;
+	Tue, 28 Mar 2017 11:09:15 +0000 (UTC)
+Date: Tue, 28 Mar 2017 13:09:11 +0200
 From: Igor Mammedov <imammedo@redhat.com>
 To: David Gibson <david@gibson.dropbear.id.au>
-Message-ID: <20170328125310.4fa3da50@Igors-MacBook-Pro.local>
-In-Reply-To: <20170328041920.GC21068@umbus.fritz.box>
+Message-ID: <20170328130911.78c2edc6@Igors-MacBook-Pro.local>
+In-Reply-To: <20170328051602.GK21068@umbus.fritz.box>
 References: <1490189568-167621-1-git-send-email-imammedo@redhat.com>
-	<1490189568-167621-6-git-send-email-imammedo@redhat.com>
-	<20170328041920.GC21068@umbus.fritz.box>
+	<1490189568-167621-23-git-send-email-imammedo@redhat.com>
+	<20170328051602.GK21068@umbus.fritz.box>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.25]);
-	Tue, 28 Mar 2017 10:53:18 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.30]);
+	Tue, 28 Mar 2017 11:09:18 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [PATCH for-2.10 05/23] numa: move source of default
- CPUs to NUMA node mapping into boards
+Subject: Re: [Qemu-arm] [PATCH for-2.10 22/23] numa: add '-numa cpu,
+ ...' option for property based node mapping
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -81,313 +81,167 @@ Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jones <drjones@redhat.com>,
 	Paolo Bonzini <pbonzini@redhat.com>, Eric Blake <eblake@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: WV5y0PWjkq2a
+X-TUID: 39ciM/67m32e
 
-On Tue, 28 Mar 2017 15:19:20 +1100
+On Tue, 28 Mar 2017 16:16:02 +1100
 David Gibson <david@gibson.dropbear.id.au> wrote:
 
-> On Wed, Mar 22, 2017 at 02:32:30PM +0100, Igor Mammedov wrote:
-> > Originally CPU threads were by default assigned in
-> > round-robin fashion. However it was causing issues in
-> > guest since CPU threads from the same socket/core could
-> > be placed on different NUMA nodes.
-> > Commit fb43b73b (pc: fix default VCPU to NUMA node mapping)
-> > fixed it by grouping threads within a socket on the same node
-> > introducing cpu_index_to_socket_id() callback and commit
-> > 20bb648d (spapr: Fix default NUMA node allocation for threads)
-> > reused callback to fix similar issues for SPAPR machine
-> > even though socket doesn't make much sense there.
+> On Wed, Mar 22, 2017 at 02:32:47PM +0100, Igor Mammedov wrote:
+> > legacy cpu to node mapping is using cpu index values to map
+> > VCPU to node with help of '-numa node,nodeid=node,cpus=x[-y]'
+> > option. However cpu index is internal concept and QEMU users
+> > have to guess /reimplement qemu's logic/ to map it to
+> > a concrete cpu socket/core/thread to make sane CPUs
+> > placement across numa nodes.
 > > 
-> > As result QEMU ended up having 3 default distribution rules
-> > used by 3 targets /virt-arm, spapr, pc/.
+> > This patch allows to map cpu objects to numa nodes using
+> > the same properties as used for cpus with -device/device_add
+> > (socket-id/core-id/thread-id/node-id).
 > > 
-> > In effort of moving NUMA mapping for CPUs into possible_cpus,
-> > generalize default mapping in numa.c by making boards decide
-> > on default mapping and let them explicitly tell generic
-> > numa code to which node a CPU thread belongs to by replacing
-> > cpu_index_to_socket_id() with @cpu_index_to_instance_props()
-> > which provides default node_id assigned by board to specified
-> > cpu_index.
+> > At present valid properties/values to address CPUs could be
+> > fetched using hotpluggable-cpus monitor/qmp command, it will
+> > require user to start qemu twice when creating domain to fetch
+> > possible CPUs for a machine type/-smp layout first and
+> > then the second time with numa explicit mapping for actual
+> > usage. The first step results could be saved and reused to
+> > set/change mapping later as far as machine type/-smp stays
+> > the same.
+> > 
+> > Proposed impl. supports exact and wildcard matching to
+> > simplify CLI and allow to set mapping for a specific cpu
+> > or group of cpu objects specified by matched properties.
+> > 
+> > For example:
+> > 
+> >    # exact mapping x86
+> >    -numa cpu,node-id=x,socket-id=y,core-id=z,thread-id=n
+> > 
+> >    # exact mapping SPAPR
+> >    -numa cpu,node-id=x,core-id=y
+> > 
+> >    # wildcard mapping, all cpu objects that match socket-id=y
+> >    # are mapped to node-id=x
+> >    -numa cpu,node-id=x,socket-id=y
 > > 
 > > Signed-off-by: Igor Mammedov <imammedo@redhat.com>
+> 
+> What's the rationale for adding a new CLI, rather than adding node-id
+> properties to the appropriate objects with -device, -global or -set as
+> appropriate?
+ '-global' applies to all cpus, while '-device,-set' applies to present
+ at boot time cpus only. So they do not work for the case of possible but
+ not present at boot time objects. For ACPI based targets, we need to have
+ numa mapping at boot time to build ACPI SRAT table.
+ I don't know if it's important for spapr/fdt, but it uses current predefined
+ mapping with -numa node,cpus=x-y and new CLI hides from user internal
+ cpu_index and allows to use the same properties as we use for -device cpu,...
+ to define mapping to numa nodes for present/possible cpus.
+
+> 
 > > ---
-> > Patch only moves source of default mapping to possible_cpus[]
-> > and leaves the rest of NUMA handling to numa_info[node_id].node_cpu
-> > bitmaps. It's up to follow up patches to replace bitmaps
-> > with possible_cpus[] internally.
-> > ---
-> >  include/hw/boards.h   |  8 ++++++--
-> >  include/sysemu/numa.h |  2 +-
-> >  hw/arm/virt.c         | 19 +++++++++++++++++--
-> >  hw/i386/pc.c          | 22 ++++++++++++++++------
-> >  hw/ppc/spapr.c        | 27 ++++++++++++++++++++-------
-> >  numa.c                | 15 +++++++++------
-> >  vl.c                  |  2 +-
-> >  7 files changed, 70 insertions(+), 25 deletions(-)
+> >  numa.c           | 13 +++++++++++++
+> >  qapi-schema.json |  7 +++++--
+> >  qemu-options.hx  | 23 ++++++++++++++++++++++-
+> >  3 files changed, 40 insertions(+), 3 deletions(-)
 > > 
-> > diff --git a/include/hw/boards.h b/include/hw/boards.h
-> > index 269d0ba..1dd0fde 100644
-> > --- a/include/hw/boards.h
-> > +++ b/include/hw/boards.h
-> > @@ -74,7 +74,10 @@ typedef struct {
-> >   *    of HotplugHandler object, which handles hotplug operation
-> >   *    for a given @dev. It may return NULL if @dev doesn't require
-> >   *    any actions to be performed by hotplug handler.
-> > - * @cpu_index_to_socket_id:
-> > + * @cpu_index_to_instance_props:
-> > + *    used to provide @cpu_index to socket/core/thread number mapping, allowing
-> > + *    legacy code to perform maping from cpu_index to topology properties
-> > + *    Returns: tuple of socket/core/thread ids given cpu_index belongs to.
-> >   *    used to provide @cpu_index to socket number mapping, allowing
-> >   *    a machine to group CPU threads belonging to the same socket/package
-> >   *    Returns: socket number given cpu_index belongs to.
-> > @@ -138,7 +141,8 @@ struct MachineClass {
-> >  
-> >      HotplugHandler *(*get_hotplug_handler)(MachineState *machine,
-> >                                             DeviceState *dev);
-> > -    unsigned (*cpu_index_to_socket_id)(unsigned cpu_index);
-> > +    CpuInstanceProperties (*cpu_index_to_instance_props)(MachineState *machine,
-> > +                                                         unsigned cpu_index);
-> >      const CPUArchIdList *(*possible_cpu_arch_ids)(MachineState *machine);
-> >  };
-> >  
-> > diff --git a/include/sysemu/numa.h b/include/sysemu/numa.h
-> > index 8f09dcf..46ea6c7 100644
-> > --- a/include/sysemu/numa.h
-> > +++ b/include/sysemu/numa.h
-> > @@ -24,7 +24,7 @@ typedef struct node_info {
-> >  } NodeInfo;
-> >  
-> >  extern NodeInfo numa_info[MAX_NODES];
-> > -void parse_numa_opts(MachineClass *mc);
-> > +void parse_numa_opts(MachineState *ms);
-> >  void numa_post_machine_init(void);
-> >  void query_numa_node_mem(uint64_t node_mem[]);
-> >  extern QemuOptsList qemu_numa_opts;
-> > diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-> > index 0cbcbc1..8748d25 100644
-> > --- a/hw/arm/virt.c
-> > +++ b/hw/arm/virt.c
-> > @@ -1554,6 +1554,16 @@ static void virt_set_gic_version(Object *obj, const char *value, Error **errp)
-> >      }
-> >  }
-> >  
-> > +static CpuInstanceProperties
-> > +virt_cpu_index_to_props(MachineState *ms, unsigned cpu_index)
-> > +{
-> > +    MachineClass *mc = MACHINE_GET_CLASS(ms);
-> > +    const CPUArchIdList *possible_cpus = mc->possible_cpu_arch_ids(ms);
-> > +
-> > +    assert(cpu_index < possible_cpus->len);
-> > +    return possible_cpus->cpus[cpu_index].props;;
-> > +}
-> > +
-> 
-> It seems a bit weird to have a machine specific hook to pull the
-> property information when one way or another it's coming from the
-> possible_cpus table, which is already constructed by a machine
-> specific hook.  Could we add a range or list of cpu_index values to
-> each possible_cpus entry instead, and have a generic lookup of the
-> right entry based on that?
-> 
-> 
-> >  static const CPUArchIdList *virt_possible_cpu_arch_ids(MachineState *ms)
-> >  {
-> >      int n;
-> > @@ -1573,8 +1583,12 @@ static const CPUArchIdList *virt_possible_cpu_arch_ids(MachineState *ms)
-> >          ms->possible_cpus->cpus[n].props.has_thread_id = true;
-> >          ms->possible_cpus->cpus[n].props.thread_id = n;
-> >  
-> > -        /* TODO: add 'has_node/node' here to describe
-> > -           to which node core belongs */
-> > +        /* default distribution of CPUs over NUMA nodes */
-> > +        if (nb_numa_nodes) {
-> > +            /* preset values but do not enable them i.e. 'has_node_id = false',
-> > +             * board will enable them if manual mapping wasn't present on CLI */
-> 
-> I'm a little confused by this comment, since I don't see any board
-> code altering has_node_id.
-> 
-> > +            ms->possible_cpus->cpus[n].props.node_id = n % nb_numa_nodes;;
-> > +        }
-> >      }
-> >      return ms->possible_cpus;
-> >  }
-> > @@ -1596,6 +1610,7 @@ static void virt_machine_class_init(ObjectClass *oc, void *data)
-> >      /* We know we will never create a pre-ARMv7 CPU which needs 1K pages */
-> >      mc->minimum_page_bits = 12;
-> >      mc->possible_cpu_arch_ids = virt_possible_cpu_arch_ids;
-> > +    mc->cpu_index_to_instance_props = virt_cpu_index_to_props;
-> >  }
-> >  
-> >  static const TypeInfo virt_machine_info = {
-> > diff --git a/hw/i386/pc.c b/hw/i386/pc.c
-> > index d24388e..7031100 100644
-> > --- a/hw/i386/pc.c
-> > +++ b/hw/i386/pc.c
-> > @@ -2245,12 +2245,14 @@ static void pc_machine_reset(void)
-> >      }
-> >  }
-> >  
-> > -static unsigned pc_cpu_index_to_socket_id(unsigned cpu_index)
-> > +static CpuInstanceProperties
-> > +pc_cpu_index_to_props(MachineState *ms, unsigned cpu_index)
-> >  {
-> > -    X86CPUTopoInfo topo;
-> > -    x86_topo_ids_from_idx(smp_cores, smp_threads, cpu_index,
-> > -                          &topo);
-> > -    return topo.pkg_id;
-> > +    MachineClass *mc = MACHINE_GET_CLASS(ms);
-> > +    const CPUArchIdList *possible_cpus = mc->possible_cpu_arch_ids(ms);
-> > +
-> > +    assert(cpu_index < possible_cpus->len);
-> > +    return possible_cpus->cpus[cpu_index].props;;
-> 
-> Since the pc and arm version of this are basically identical, I wonder
-> if that should actually be the default implementation.  If we need it
-> at all.
-ARM is still moving target and props are not really defined for it yet,
-so I'd like to keep it separate for now and when it stabilizes we can think
-about generalizing it.
-
-> 
-> >  }
-> >  
-> >  static const CPUArchIdList *pc_possible_cpu_arch_ids(MachineState *ms)
-> > @@ -2282,6 +2284,14 @@ static const CPUArchIdList *pc_possible_cpu_arch_ids(MachineState *ms)
-> >          ms->possible_cpus->cpus[i].props.core_id = topo.core_id;
-> >          ms->possible_cpus->cpus[i].props.has_thread_id = true;
-> >          ms->possible_cpus->cpus[i].props.thread_id = topo.smt_id;
-> > +
-> > +        /* default distribution of CPUs over NUMA nodes */
-> > +        if (nb_numa_nodes) {
-> > +            /* preset values but do not enable them i.e. 'has_node_id = false',
-> > +             * board will enable them if manual mapping wasn't present on CLI */
-> > +            ms->possible_cpus->cpus[i].props.node_id =
-> > +                topo.pkg_id % nb_numa_nodes;
-> > +        }
-> >      }
-> >      return ms->possible_cpus;
-> >  }
-> > @@ -2324,7 +2334,7 @@ static void pc_machine_class_init(ObjectClass *oc, void *data)
-> >      pcmc->acpi_data_size = 0x20000 + 0x8000;
-> >      pcmc->save_tsc_khz = true;
-> >      mc->get_hotplug_handler = pc_get_hotpug_handler;
-> > -    mc->cpu_index_to_socket_id = pc_cpu_index_to_socket_id;
-> > +    mc->cpu_index_to_instance_props = pc_cpu_index_to_props;
-> >      mc->possible_cpu_arch_ids = pc_possible_cpu_arch_ids;
-> >      mc->has_hotpluggable_cpus = true;
-> >      mc->default_boot_order = "cad";
-> > diff --git a/hw/ppc/spapr.c b/hw/ppc/spapr.c
-> > index 6ee566d..9dcbbcc 100644
-> > --- a/hw/ppc/spapr.c
-> > +++ b/hw/ppc/spapr.c
-> > @@ -2921,11 +2921,18 @@ static HotplugHandler *spapr_get_hotplug_handler(MachineState *machine,
-> >      return NULL;
-> >  }
-> >  
-> > -static unsigned spapr_cpu_index_to_socket_id(unsigned cpu_index)
-> > +static CpuInstanceProperties
-> > +spapr_cpu_index_to_props(MachineState *machine, unsigned cpu_index)
-> >  {
-> > -    /* Allocate to NUMA nodes on a "socket" basis (not that concept of
-> > -     * socket means much for the paravirtualized PAPR platform) */
-> > -    return cpu_index / smp_threads / smp_cores;
-> > +    CPUArchId *core_slot;
-> > +    MachineClass *mc = MACHINE_GET_CLASS(machine);
-> > +    int core_id = cpu_index / smp_threads * smp_threads;
-> 
-> I don't think you need this.  AIUI the purpose of
-> spapr_find_cpu_slot() is that it already finds the right CPU slot from
-> a cpu_index, so you can just pass the cpu_index directly.
-ok, will do in v2
-
-> 
-> > +
-> > +    /* make sure possible_cpu are intialized */
-> > +    mc->possible_cpu_arch_ids(machine);
-> > +    core_slot = spapr_find_cpu_slot(machine, core_id, NULL);
-> > +    assert(core_slot);
-> > +    return core_slot->props;
-> >  }
-> >  
-> >  static const CPUArchIdList *spapr_possible_cpu_arch_ids(MachineState *machine)
-> > @@ -2952,8 +2959,14 @@ static const CPUArchIdList *spapr_possible_cpu_arch_ids(MachineState *machine)
-> >          machine->possible_cpus->cpus[i].arch_id = core_id;
-> >          machine->possible_cpus->cpus[i].props.has_core_id = true;
-> >          machine->possible_cpus->cpus[i].props.core_id = core_id;
-> > -        /* TODO: add 'has_node/node' here to describe
-> > -           to which node core belongs */
-> > +
-> > +        /* default distribution of CPUs over NUMA nodes */
-> > +        if (nb_numa_nodes) {
-> > +            /* preset values but do not enable them i.e. 'has_node_id = false',
-> > +             * board will enable them if manual mapping wasn't present on CLI */
-> > +            machine->possible_cpus->cpus[i].props.node_id =
-> > +                core_id / smp_threads / smp_cores % nb_numa_nodes;
-> > +        }
-> >      }
-> >      return machine->possible_cpus;
-> >  }
-> > @@ -3076,7 +3089,7 @@ static void spapr_machine_class_init(ObjectClass *oc, void *data)
-> >      hc->pre_plug = spapr_machine_device_pre_plug;
-> >      hc->plug = spapr_machine_device_plug;
-> >      hc->unplug = spapr_machine_device_unplug;
-> > -    mc->cpu_index_to_socket_id = spapr_cpu_index_to_socket_id;
-> > +    mc->cpu_index_to_instance_props = spapr_cpu_index_to_props;
-> >      mc->possible_cpu_arch_ids = spapr_possible_cpu_arch_ids;
-> >      hc->unplug_request = spapr_machine_device_unplug_request;
-> >  
 > > diff --git a/numa.c b/numa.c
-> > index e01cb54..b6e71bc 100644
+> > index 088fae3..588586b 100644
 > > --- a/numa.c
 > > +++ b/numa.c
-> > @@ -294,9 +294,10 @@ static void validate_numa_cpus(void)
-> >      g_free(seen_cpus);
-> >  }
-> >  
-> > -void parse_numa_opts(MachineClass *mc)
-> > +void parse_numa_opts(MachineState *ms)
-> >  {
-> >      int i;
-> > +    MachineClass *mc = MACHINE_GET_CLASS(ms);
-> >  
-> >      for (i = 0; i < MAX_NODES; i++) {
-> >          numa_info[i].node_cpu = bitmap_new(max_cpus);
-> > @@ -378,14 +379,16 @@ void parse_numa_opts(MachineClass *mc)
-> >           * rule grouping VCPUs by socket so that VCPUs from the same socket
-> >           * would be on the same node.
-> >           */
-> > +        if (!mc->cpu_index_to_instance_props) {
-> > +            error_report("default CPUs to NUMA node mapping isn't supported");
-> > +            exit(1);
-> > +        }
-> >          if (i == nb_numa_nodes) {
-> >              for (i = 0; i < max_cpus; i++) {
-> > -                unsigned node_id = i % nb_numa_nodes;
-> > -                if (mc->cpu_index_to_socket_id) {
-> > -                    node_id = mc->cpu_index_to_socket_id(i) % nb_numa_nodes;
-> > -                }
-> > +                CpuInstanceProperties props;
-> > +                props = mc->cpu_index_to_instance_props(ms, i);
-> >  
-> > -                set_bit(i, numa_info[node_id].node_cpu);
-> > +                set_bit(i, numa_info[props.node_id].node_cpu);
-> >              }
+> > @@ -246,6 +246,19 @@ static int parse_numa(void *opaque, QemuOpts *opts, Error **errp)
 > >          }
+> >          nb_numa_nodes++;
+> >          break;
+> > +    case NUMA_OPTIONS_TYPE_CPU:
+> > +        if (!object->u.cpu.has_node_id) {
+> > +            error_setg(&err, "Missing mandatory node-id property");
+> > +            goto end;
+> > +        }
+> > +        if (!numa_info[object->u.cpu.node_id].present) {
+> > +            error_setg(&err, "Invalid node-id=%" PRId64 ", NUMA node must be "
+> > +                "defined with -numa node,nodeid=ID before it's used with "
+> > +                "-numa cpu,node-id=ID", object->u.cpu.node_id);
+> > +            goto end;
+> > +        }
+> > +        machine_set_cpu_numa_node(ms, &object->u.cpu, &err);
+> > +        break;
+> >      default:
+> >          abort();
+> >      }
+> > diff --git a/qapi-schema.json b/qapi-schema.json
+> > index a6b5955..a9a1d5e 100644
+> > --- a/qapi-schema.json
+> > +++ b/qapi-schema.json
+> > @@ -5673,10 +5673,12 @@
+> >  ##
+> >  # @NumaOptionsType:
+> >  #
+> > +# @cpu: property based CPU(s) to node mapping (Since: 2.10)
+> > +#
+> >  # Since: 2.1
+> >  ##
+> >  { 'enum': 'NumaOptionsType',
+> > -  'data': [ 'node' ] }
+> > +  'data': [ 'node', 'cpu' ] }
 > >  
-> > diff --git a/vl.c b/vl.c
-> > index 0b4ed52..5ffb9c3 100644
-> > --- a/vl.c
-> > +++ b/vl.c
-> > @@ -4498,7 +4498,7 @@ int main(int argc, char **argv, char **envp)
-> >      default_drive(default_floppy, snapshot, IF_FLOPPY, 0, FD_OPTS);
-> >      default_drive(default_sdcard, snapshot, IF_SD, 0, SD_OPTS);
+> >  ##
+> >  # @NumaOptions:
+> > @@ -5689,7 +5691,8 @@
+> >    'base': { 'type': 'NumaOptionsType' },
+> >    'discriminator': 'type',
+> >    'data': {
+> > -    'node': 'NumaNodeOptions' }}
+> > +    'node': 'NumaNodeOptions',
+> > +    'cpu': 'CpuInstanceProperties' }}
 > >  
-> > -    parse_numa_opts(machine_class);
-> > +    parse_numa_opts(current_machine);
+> >  ##
+> >  # @NumaNodeOptions:
+> > diff --git a/qemu-options.hx b/qemu-options.hx
+> > index 99af8ed..2185c34 100644
+> > --- a/qemu-options.hx
+> > +++ b/qemu-options.hx
+> > @@ -139,13 +139,16 @@ ETEXI
 > >  
-> >      if (qemu_opts_foreach(qemu_find_opts("mon"),
-> >                            mon_init_func, NULL, NULL)) {
+> >  DEF("numa", HAS_ARG, QEMU_OPTION_numa,
+> >      "-numa node[,mem=size][,cpus=firstcpu[-lastcpu]][,nodeid=node]\n"
+> > -    "-numa node[,memdev=id][,cpus=firstcpu[-lastcpu]][,nodeid=node]\n", QEMU_ARCH_ALL)
+> > +    "-numa node[,memdev=id][,cpus=firstcpu[-lastcpu]][,nodeid=node]\n"
+> > +    "-numa cpu,node-id=node[,socket-id=x][,core-id=y][,thread-id=z]\n", QEMU_ARCH_ALL)
+> >  STEXI
+> >  @item -numa node[,mem=@var{size}][,cpus=@var{firstcpu}[-@var{lastcpu}]][,nodeid=@var{node}]
+> >  @itemx -numa node[,memdev=@var{id}][,cpus=@var{firstcpu}[-@var{lastcpu}]][,nodeid=@var{node}]
+> > +@itemx -numa cpu,node-id=@var{node}[,socket-id=@var{x}][,core-id=@var{y}][,thread-id=@var{z}]
+> >  @findex -numa
+> >  Define a NUMA node and assign RAM and VCPUs to it.
+> >  
+> > +Legacy VCPU assignment uses @samp{cpus} option where
+> >  @var{firstcpu} and @var{lastcpu} are CPU indexes. Each
+> >  @samp{cpus} option represent a contiguous range of CPU indexes
+> >  (or a single VCPU if @var{lastcpu} is omitted). A non-contiguous
+> > @@ -159,6 +162,24 @@ a NUMA node:
+> >  -numa node,cpus=0-2,cpus=5
+> >  @end example
+> >  
+> > +@samp{cpu} option is new alternative to @samp{cpus} option
+> > +uses @samp{socket-id|core-id|thread-id} properties to assign
+> > +CPU objects to a @var{node} using topology layout properties of CPU.
+> > +Set of properties is machine specific, and depends on used machine
+> > +type/@samp{smp} options. It could be queried with @samp{hotpluggable-cpus}
+> > +monitor command.
+> > +@samp{node-id} property specifies @var{node} to which CPU object
+> > +will be assigned, it's required for @var{node} to be declared
+> > +with @samp{node} option before it's used with @samp{cpu} option.
+> > +
+> > +For example:
+> > +@example
+> > +-M pc \
+> > +-smp 1,sockets=2,maxcpus=2 \
+> > +-numa node,nodeid=0 -numa node,nodeid=1 \
+> > +-numa cpu,node-id=0,socket-id=0 -numa cpu,node-id=1,socket-id=1
+> > +@end example
+> > +
+> >  @samp{mem} assigns a given RAM amount to a node. @samp{memdev}
+> >  assigns RAM from a given memory backend device to a node. If
+> >  @samp{mem} and @samp{memdev} are omitted in all nodes, RAM is
 > 
 

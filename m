@@ -1,61 +1,59 @@
-Received: by 10.25.15.230 with SMTP id 99csp1073637lfp;
-        Mon, 27 Mar 2017 02:49:04 -0700 (PDT)
-X-Received: by 10.55.150.1 with SMTP id y1mr17672234qkd.311.1490608144609;
-        Mon, 27 Mar 2017 02:49:04 -0700 (PDT)
+Received: by 10.25.15.230 with SMTP id 99csp1445055lfp;
+        Mon, 27 Mar 2017 21:24:19 -0700 (PDT)
+X-Received: by 10.55.164.73 with SMTP id n70mr2078962qke.297.1490675059097;
+        Mon, 27 Mar 2017 21:24:19 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id c8si61354qtg.86.2017.03.27.02.49.04
+        by mx.google.com with ESMTPS id 74si2459619qkk.135.2017.03.27.21.24.18
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 27 Mar 2017 02:49:04 -0700 (PDT)
+        Mon, 27 Mar 2017 21:24:19 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
+       dkim=fail header.i=@gibson.dropbear.id.au;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:45353 helo=lists.gnu.org)
+Received: from localhost ([::1]:49895 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1csRGq-0006LU-62
-	for alex.bennee@linaro.org; Mon, 27 Mar 2017 05:49:04 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:55099)
+	id 1csig6-0001Hf-GY
+	for alex.bennee@linaro.org; Tue, 28 Mar 2017 00:24:18 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:51150)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1csRGm-0006LI-BO
-	for qemu-arm@nongnu.org; Mon, 27 Mar 2017 05:49:01 -0400
+	(envelope-from <dgibson@ozlabs.org>) id 1csifw-0001Ey-Hb
+	for qemu-arm@nongnu.org; Tue, 28 Mar 2017 00:24:09 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1csRGj-0007Xf-QT
-	for qemu-arm@nongnu.org; Mon, 27 Mar 2017 05:49:00 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:35772)
+	(envelope-from <dgibson@ozlabs.org>) id 1csifu-0008Em-Tg
+	for qemu-arm@nongnu.org; Tue, 28 Mar 2017 00:24:08 -0400
+Received: from ozlabs.org ([103.22.144.67]:51593)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <eric.auger@redhat.com>)
-	id 1csRGj-0007XS-Kb; Mon, 27 Mar 2017 05:48:57 -0400
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
-	[10.5.11.11])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 7581485363;
-	Mon, 27 Mar 2017 09:48:56 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 7581485363
-Authentication-Results: ext-mx01.extmail.prod.ext.phx2.redhat.com;
-	dmarc=none (p=none dis=none) header.from=redhat.com
-Authentication-Results: ext-mx01.extmail.prod.ext.phx2.redhat.com;
-	spf=pass smtp.mailfrom=eric.auger@redhat.com
-DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com 7581485363
-Received: from localhost.localdomain.com (ovpn-117-27.ams2.redhat.com
-	[10.36.117.27])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id A502F189E1;
-	Mon, 27 Mar 2017 09:48:48 +0000 (UTC)
-From: Eric Auger <eric.auger@redhat.com>
-To: eric.auger.pro@gmail.com, eric.auger@redhat.com, peter.maydell@linaro.org,
-	qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Date: Mon, 27 Mar 2017 11:48:43 +0200
-Message-Id: <1490608126-22187-1-git-send-email-eric.auger@redhat.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.25]);
-	Mon, 27 Mar 2017 09:48:56 +0000 (UTC)
+	(Exim 4.71) (envelope-from <dgibson@ozlabs.org>) id 1csifu-0008Db-A1
+	for qemu-arm@nongnu.org; Tue, 28 Mar 2017 00:24:06 -0400
+Received: by ozlabs.org (Postfix, from userid 1007)
+	id 3vsd7d6tXWz9s7F; Tue, 28 Mar 2017 15:23:57 +1100 (AEDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+	d=gibson.dropbear.id.au; s=201602; t=1490675037;
+	bh=VMJIZrrPn5EvOrIIyu9UTBHGi18pN7mKKUD+tbasVgw=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=mtleTuEzJF3hJe9dtvPRJDcGQdHVczQh84QWFSYJe+In4GzyVWy2kFyL6DqSdVFPc
+	917Bwcxr2F+uQ14i8jh0122RWv1opNMn6la4qTxruPlxIbCiKrSly6bgPXURm+0xTo
+	0AmYy2Z9poi738x5BaKs3d4N9bC1X3F+yrcS/xig=
+Date: Tue, 28 Mar 2017 15:23:17 +1100
+From: David Gibson <david@gibson.dropbear.id.au>
+To: Igor Mammedov <imammedo@redhat.com>
+Message-ID: <20170328042317.GD21068@umbus.fritz.box>
+References: <1490189568-167621-1-git-send-email-imammedo@redhat.com>
+	<1490189568-167621-7-git-send-email-imammedo@redhat.com>
+MIME-Version: 1.0
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="VMt1DrMGOVs3KQwf"
+Content-Disposition: inline
+In-Reply-To: <1490189568-167621-7-git-send-email-imammedo@redhat.com>
+User-Agent: Mutt/1.8.0 (2017-02-23)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: [Qemu-arm] [RFC v3 0/3] vITS save/restore
+X-Received-From: 103.22.144.67
+Subject: Re: [Qemu-arm] [PATCH for-2.10 06/23] spapr: add node-id property
+ to sPAPR core
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -67,59 +65,182 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: drjones@redhat.com, vijay.kilari@gmail.com, quintela@redhat.com,
-	dgilbert@redhat.com, peterx@redhat.com, Vijaya.Kumar@cavium.com,
-	christoffer.dall@linaro.org
+Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jones <drjones@redhat.com>,
+	Eduardo Habkost <ehabkost@redhat.com>, qemu-devel@nongnu.org,
+	qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
+	Shannon Zhao <zhaoshenglong@huawei.com>,
+	Paolo Bonzini <pbonzini@redhat.com>, Eric Blake <eblake@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: iXF/X36spPXZ
+X-TUID: 6zNRX0GwbJGd
 
-This series allows ITS save/restore and migration use cases.
-It relies on not upstreamed kernel series [1].
 
-ITS tables are flushed into guest RAM on VM stop while registers
-are save on pre_save() callback. Tables and registers are restored
-on ITS post_load().
+--VMt1DrMGOVs3KQwf
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-That work was tested on Cavium ThunderX using virsh save/restore and
-virt-manager live migration.
+On Wed, Mar 22, 2017 at 02:32:31PM +0100, Igor Mammedov wrote:
+> it will allow switching from cpu_index to core based numa
+> mapping in follow up patches.
+>=20
+> Signed-off-by: Igor Mammedov <imammedo@redhat.com>
 
-Best Regards
+Reviewed-by: David Gibson <david@gibson.dropbear.id.au>
 
-Eric
+> ---
+>  include/hw/ppc/spapr_cpu_core.h |  1 +
+>  include/qom/cpu.h               |  2 ++
+>  hw/ppc/spapr.c                  | 17 +++++++++++++++++
+>  hw/ppc/spapr_cpu_core.c         | 11 ++++++++---
+>  4 files changed, 28 insertions(+), 3 deletions(-)
+>=20
+> diff --git a/include/hw/ppc/spapr_cpu_core.h b/include/hw/ppc/spapr_cpu_c=
+ore.h
+> index 3c35665..93051e9 100644
+> --- a/include/hw/ppc/spapr_cpu_core.h
+> +++ b/include/hw/ppc/spapr_cpu_core.h
+> @@ -27,6 +27,7 @@ typedef struct sPAPRCPUCore {
+> =20
+>      /*< public >*/
+>      void *threads;
+> +    int node_id;
+>  } sPAPRCPUCore;
+> =20
+>  typedef struct sPAPRCPUCoreClass {
+> diff --git a/include/qom/cpu.h b/include/qom/cpu.h
+> index c3292ef..7f27d56 100644
+> --- a/include/qom/cpu.h
+> +++ b/include/qom/cpu.h
+> @@ -258,6 +258,8 @@ typedef void (*run_on_cpu_func)(CPUState *cpu, run_on=
+_cpu_data data);
+> =20
+>  struct qemu_work_item;
+> =20
+> +#define CPU_UNSET_NUMA_NODE_ID -1
+> +
+>  /**
+>   * CPUState:
+>   * @cpu_index: CPU index (informative).
+> diff --git a/hw/ppc/spapr.c b/hw/ppc/spapr.c
+> index 9dcbbcc..9c61721 100644
+> --- a/hw/ppc/spapr.c
+> +++ b/hw/ppc/spapr.c
+> @@ -2770,9 +2770,11 @@ static void spapr_core_pre_plug(HotplugHandler *ho=
+tplug_dev, DeviceState *dev,
+>      MachineClass *mc =3D MACHINE_GET_CLASS(hotplug_dev);
+>      Error *local_err =3D NULL;
+>      CPUCore *cc =3D CPU_CORE(dev);
+> +    sPAPRCPUCore *sc =3D SPAPR_CPU_CORE(dev);
+>      char *base_core_type =3D spapr_get_cpu_core_type(machine->cpu_model);
+>      const char *type =3D object_get_typename(OBJECT(dev));
+>      CPUArchId *core_slot;
+> +    int node_id;
+>      int index;
+> =20
+>      if (dev->hotplugged && !mc->has_hotpluggable_cpus) {
+> @@ -2801,6 +2803,21 @@ static void spapr_core_pre_plug(HotplugHandler *ho=
+tplug_dev, DeviceState *dev,
+>          goto out;
+>      }
+> =20
+> +    node_id =3D numa_get_node_for_cpu(cc->core_id);
+> +    if (node_id =3D=3D nb_numa_nodes) {
+> +        /* by default CPUState::numa_node was 0 if it's not set via CLI
+> +         * keep it this way for now but in future we probably should
+> +         * refuse to start up with incomplete numa mapping */
+> +        node_id =3D 0;
+> +    }
+> +    if (sc->node_id =3D=3D CPU_UNSET_NUMA_NODE_ID) {
+> +        sc->node_id =3D node_id;
+> +    } else if (sc->node_id !=3D node_id) {
+> +        error_setg(&local_err, "node-id %d must match numa node specifie=
+d"
+> +            "with -numa option for cpu-index %d", sc->node_id, cc->core_=
+id);
+> +        goto out;
+> +    }
+> +
+>  out:
+>      g_free(base_core_type);
+>      error_propagate(errp, local_err);
+> diff --git a/hw/ppc/spapr_cpu_core.c b/hw/ppc/spapr_cpu_core.c
+> index 6883f09..25988f8 100644
+> --- a/hw/ppc/spapr_cpu_core.c
+> +++ b/hw/ppc/spapr_cpu_core.c
+> @@ -163,7 +163,6 @@ static void spapr_cpu_core_realize(DeviceState *dev, =
+Error **errp)
+>      const char *typename =3D object_class_get_name(scc->cpu_class);
+>      size_t size =3D object_type_get_instance_size(typename);
+>      Error *local_err =3D NULL;
+> -    int core_node_id =3D numa_get_node_for_cpu(cc->core_id);;
+>      void *obj;
+>      int i, j;
+> =20
+> @@ -181,10 +180,10 @@ static void spapr_cpu_core_realize(DeviceState *dev=
+, Error **errp)
+> =20
+>          /* Set NUMA node for the added CPUs  */
+>          node_id =3D numa_get_node_for_cpu(cs->cpu_index);
+> -        if (node_id !=3D core_node_id) {
+> +        if (node_id !=3D sc->node_id) {
+>              error_setg(&local_err, "Invalid node-id=3D%d of thread[cpu-i=
+ndex: %d]"
+>                  " on CPU[core-id: %d, node-id: %d], node-id must be the =
+same",
+> -                 node_id, cs->cpu_index, cc->core_id, core_node_id);
+> +                 node_id, cs->cpu_index, cc->core_id, sc->node_id);
+>              goto err;
+>          }
+>          if (node_id < nb_numa_nodes) {
+> @@ -250,6 +249,11 @@ static const char *spapr_core_models[] =3D {
+>      "POWER9_v1.0",
+>  };
+> =20
+> +static Property spapr_cpu_core_properties[] =3D {
+> +    DEFINE_PROP_INT32("node-id", sPAPRCPUCore, node_id, CPU_UNSET_NUMA_N=
+ODE_ID),
+> +    DEFINE_PROP_END_OF_LIST()
+> +};
+> +
+>  void spapr_cpu_core_class_init(ObjectClass *oc, void *data)
+>  {
+>      DeviceClass *dc =3D DEVICE_CLASS(oc);
+> @@ -257,6 +261,7 @@ void spapr_cpu_core_class_init(ObjectClass *oc, void =
+*data)
+> =20
+>      dc->realize =3D spapr_cpu_core_realize;
+>      dc->unrealize =3D spapr_cpu_core_unrealizefn;
+> +    dc->props =3D spapr_cpu_core_properties;
+>      scc->cpu_class =3D cpu_class_by_name(TYPE_POWERPC_CPU, data);
+>      g_assert(scc->cpu_class);
+>  }
 
-Host Kernel dependencies:
-- [1] [PATCH v4 00/22] vITS save/restore
+--=20
+David Gibson			| I'll have my music baroque, and my code
+david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
+				| _way_ _around_!
+http://www.ozlabs.org/~dgibson
 
-History:
+--VMt1DrMGOVs3KQwf
+Content-Type: application/pgp-signature; name="signature.asc"
 
-v2 -> v3:
-- GITS_IIDR is now saved and restored to check ABI revision.
-- get/put functions renamed into pre_save/post_load
-- unmigratable = false removed
-- changed the migration blocker message
-- remove the extract64 round s->ctlr
-- reword some comments
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v2
 
-v1 -> v2:
-- rebase on 2.9 soft release code
-- handle case where migrate_add_blocker fails
-- add comments along with ITS and GICv3 migration priorities
+iQIcBAEBCAAGBQJY2eU1AAoJEGw4ysog2bOSYAQQAIGGBYnYHsL4Rw5Ae5uY1FEk
+FvuvoJbXv5yFCwBaCLfpJN62hPAJ3SkawAsCVqcZc6ODmBpzIa1GzzW7EfcZOaKo
+5XI6BriGOLXHHn1Du2wL271TRQ3Tp3KEaucSYlRovqT6URV2/uzUJ3Y/Z574l/34
+LxPwkclEcka9V6NNYxXFX2+Hpz9PCVTOITW665nb5vISlCf/egi6Rnu9ADeiImtA
+GqtM5x/+7eNwUWI4qfwNO9g+zs8ZO8OV7Vh9uFS0UGfYyFALuTU3IABHKI7diuhW
+NI84f71eIhRq2nRvCN2P0rI+s3FDzhrqP8H9+/GuTVBNKbXdFSTkznIaGzoM1Kq6
+ZD1E3SNC5avukLt5WJypKyZ7axmnyHhiqu6hQtk1ewacrJHhKUjVwIViGfKQDre5
+Unppewz8pXZG8GT8IIlfFO2xqRglIwHISlQm8ZnUB45lgoDnYQOBn7ioRZzK2l1L
+MphcPU3qKZlcOciGA8/WWCenHiZx8B6Uik7Gmy7/p1cN7pFo5BUH+9ONuRk2Ju2q
+iV6NU5DOjeE5nObKep2hssc+i0CTmLInKwrvoRicDRVv8TgNMUjP3xbWBxTWeMXR
+8dgL5QR5P81CsKG9SVc4HOQtGnQOiToJTWf4Eijhn85AWDZfU1QCXtjJBA3bItSI
+klgVOIapBzlidr43vP/Z
+=cGBR
+-----END PGP SIGNATURE-----
 
-Eric Auger (3):
-  linux-headers: Partial header update for vITS save/restore
-  hw/intc/arm_gicv3_its: Implement state save/restore
-  hw/intc/arm_gicv3_its: Allow save/restore
-
- hw/intc/arm_gicv3_common.c             |   1 +
- hw/intc/arm_gicv3_its_common.c         |  11 ++-
- hw/intc/arm_gicv3_its_kvm.c            | 120 +++++++++++++++++++++++++++++----
- include/hw/intc/arm_gicv3_its_common.h |   8 +++
- include/migration/vmstate.h            |   2 +
- linux-headers/asm-arm/kvm.h            |   2 +
- linux-headers/asm-arm64/kvm.h          |   2 +
- 7 files changed, 133 insertions(+), 13 deletions(-)
-
--- 
-2.5.5
-
+--VMt1DrMGOVs3KQwf--

@@ -1,71 +1,70 @@
-Received: by 10.25.15.230 with SMTP id 99csp2612208lfp;
-        Thu, 30 Mar 2017 08:28:17 -0700 (PDT)
-X-Received: by 10.200.47.129 with SMTP id l1mr349646qta.112.1490887697118;
-        Thu, 30 Mar 2017 08:28:17 -0700 (PDT)
+Received: by 10.25.15.230 with SMTP id 99csp2639226lfp;
+        Thu, 30 Mar 2017 09:29:34 -0700 (PDT)
+X-Received: by 10.55.17.35 with SMTP id b35mr567062qkh.275.1490891374409;
+        Thu, 30 Mar 2017 09:29:34 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id c204si2082769qke.73.2017.03.30.08.28.16
+        by mx.google.com with ESMTPS id f50si2222477qtc.47.2017.03.30.09.29.34
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 30 Mar 2017 08:28:17 -0700 (PDT)
+        Thu, 30 Mar 2017 09:29:34 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
+       dkim=fail header.i=@dgtlrift-com.20150623.gappssmtp.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:36342 helo=lists.gnu.org)
+Received: from localhost ([::1]:36696 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ctbzk-000612-Kv
-	for alex.bennee@linaro.org; Thu, 30 Mar 2017 11:28:16 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:47452)
+	id 1ctcx3-0000QG-S9
+	for alex.bennee@linaro.org; Thu, 30 Mar 2017 12:29:33 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:39775)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <drjones@redhat.com>) id 1ctbyB-00050M-FJ
-	for qemu-arm@nongnu.org; Thu, 30 Mar 2017 11:26:42 -0400
+	(envelope-from <jhanley@dgtlrift.com>) id 1ctcvm-0007rS-63
+	for qemu-arm@nongnu.org; Thu, 30 Mar 2017 12:28:15 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <drjones@redhat.com>) id 1ctby7-0007zV-G6
-	for qemu-arm@nongnu.org; Thu, 30 Mar 2017 11:26:39 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:37814)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <drjones@redhat.com>)
-	id 1ctby7-0007yL-7o; Thu, 30 Mar 2017 11:26:35 -0400
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
-	[10.5.11.11])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 8C1A5C83D;
-	Thu, 30 Mar 2017 15:26:33 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 8C1A5C83D
-Authentication-Results: ext-mx06.extmail.prod.ext.phx2.redhat.com;
-	dmarc=none (p=none dis=none) header.from=redhat.com
-Authentication-Results: ext-mx06.extmail.prod.ext.phx2.redhat.com;
-	spf=pass smtp.mailfrom=drjones@redhat.com
-DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com 8C1A5C83D
-Received: from kamzik.brq.redhat.com (kamzik.brq.redhat.com [10.34.1.143])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 4AE748442B;
-	Thu, 30 Mar 2017 15:26:28 +0000 (UTC)
-Date: Thu, 30 Mar 2017 17:26:26 +0200
-From: Andrew Jones <drjones@redhat.com>
-To: Eduardo Habkost <ehabkost@redhat.com>
-Message-ID: <20170330152626.ndf2lvh3vz2u5gnw@kamzik.brq.redhat.com>
-References: <1490175166-19785-1-git-send-email-he.chen@linux.intel.com>
-	<20170323102955.5e2d1c65@nial.brq.redhat.com>
-	<20170329085000.GA20377@he>
-	<20170329134458.793e882d@nial.brq.redhat.com>
-	<20170329123038.u6ebwn2xazbzr4nv@kamzik.brq.redhat.com>
-	<20170330150048.GL3709@thinpad.lan.raisama.net>
+	(envelope-from <jhanley@dgtlrift.com>) id 1ctcvl-0001FI-7G
+	for qemu-arm@nongnu.org; Thu, 30 Mar 2017 12:28:14 -0400
+Received: from mail-vk0-x22d.google.com ([2607:f8b0:400c:c05::22d]:33472)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <jhanley@dgtlrift.com>)
+	id 1ctcvl-0001EL-0v
+	for qemu-arm@nongnu.org; Thu, 30 Mar 2017 12:28:13 -0400
+Received: by mail-vk0-x22d.google.com with SMTP id d188so60619064vka.0
+	for <qemu-arm@nongnu.org>; Thu, 30 Mar 2017 09:28:12 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=dgtlrift-com.20150623.gappssmtp.com; s=20150623;
+	h=mime-version:from:date:message-id:subject:to;
+	bh=nAmondgvSSU+Slhc+McqK6juBHJXxAuR+vell1I6w/A=;
+	b=gCbScFyrEwn0rrPw8skKDDQ4KjMa8s8vzIB96NlbYE+y9t2s4Kteo1juKxE2BGjQZx
+	V+WUmElm6EFVpqrt1YEkf7gExu1mgtVwYMjZd5bPA0iJK8pJGVnbmtIriPqIXSYyWBqP
+	B6mmlSUnwAlXeAb06q3G86BsOev5yxQnowy8wioSorM5s3GoQjSJY0T3NAgcfc9P2K+o
+	iKyM3N543dWBwVhHN2EJhN18IkoOsLlNRfVoDVOa+oaAtsXF1DhNiAZt3r9hjBsbB37e
+	1B0ICfZwy+jcxOU2uZsykE8yE5zuieXSX2QFuLSzFAeAuWJy1sWnHFXUSaoOAaBQS42B
+	+9XA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:from:date:message-id:subject:to;
+	bh=nAmondgvSSU+Slhc+McqK6juBHJXxAuR+vell1I6w/A=;
+	b=aYULNwk5hyxq0zbNtl3KRLn5nsNG8OqahnyxH27wy5Qyf74DgCP+3N9/7iSIH5KX0/
+	C8ct43BY1MV4jQbPkykC7EmZNk4Ep4/KjAET5wLTdeO9Gu+9Krml+eR8h+tIcmBBNCF0
+	jKZtnEi8glbA8Dx9hdpQnuJ8/j7Ir+apqRd+VwPk3Blo21qWOUqSbIZQtb9k3SrbKXEM
+	Rt2le6a/871wVcCHu9Z5XCJniyNYZIzvCNsE32A2FqjWB69hWkF53w0GRkHN5092sc2r
+	gicVIl7HohKlKyo0Cb71u7tmDs/J1esUxyYRhLQ0SiTmGS2CPh6eq7F2DB+ASekwxpld
+	X3Ug==
+X-Gm-Message-State: AFeK/H1lm6Wuseld6xyYmgolVy1Zz8VsCTH/d3g0H7sh49woISbb+v2idd6Z/o5FXhyovQkFL/BI2IxOfYI30g==
+X-Received: by 10.176.74.222 with SMTP id t30mr331181uae.132.1490891291855;
+	Thu, 30 Mar 2017 09:28:11 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20170330150048.GL3709@thinpad.lan.raisama.net>
-User-Agent: Mutt/1.6.0.1 (2016-04-01)
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.30]);
-	Thu, 30 Mar 2017 15:26:33 +0000 (UTC)
+Received: by 10.103.86.88 with HTTP; Thu, 30 Mar 2017 09:28:11 -0700 (PDT)
+From: James Hanley <jhanley@dgtlrift.com>
+Date: Thu, 30 Mar 2017 12:28:11 -0400
+Message-ID: <CAF++6ANmUc8GxjJqZ01ow=VBeEh2q1pXk+NSe71WJy=+bu5T4g@mail.gmail.com>
+To: qemu-arm <qemu-arm@nongnu.org>, qemu-discuss@nongnu.org, 
+	qemu-devel <qemu-devel@nongnu.org>
+Content-Type: multipart/alternative; boundary=f403045f8a94d9ff55054bf52d1a
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v3] Allow setting NUMA distance
- for different NUMA nodes
+X-Received-From: 2607:f8b0:400c:c05::22d
+Subject: [Qemu-arm] Loading microcode to ROM for new Arm based CPU type
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -77,64 +76,54 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
-	"Michael S . Tsirkin" <mst@redhat.com>, He Chen <he.chen@linux.intel.com>,
-	Markus Armbruster <armbru@redhat.com>, qemu-devel@nongnu.org,
-	Igor Mammedov <imammedo@redhat.com>, qemu-arm@nongnu.org,
-	Shannon Zhao <zhaoshenglong@huawei.com>,
-	Paolo Bonzini <pbonzini@redhat.com>, Richard Henderson <rth@twiddle.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: IIDDc6/dHTTn
+X-TUID: 5fzPc/Oqln/S
 
-On Thu, Mar 30, 2017 at 12:00:48PM -0300, Eduardo Habkost wrote:
-> On Wed, Mar 29, 2017 at 02:30:38PM +0200, Andrew Jones wrote:
-> > On Wed, Mar 29, 2017 at 01:44:58PM +0200, Igor Mammedov wrote:
-> > > On Wed, 29 Mar 2017 16:50:00 +0800
-> > > He Chen <he.chen@linux.intel.com> wrote:
-> > > > > > +static void default_numa_distance(void)
-> > > > > > +{
-> > > > > > +    int src, dst;
-> > > > > > +  
-> > > > > fill in defaults only if there weren't any '-numa dist' on CLI
-> > > > > and refuse to start if partial filled table were explicitly provided on CLI
-> > > > >   
-> > > > I am afraid that I may have a bad function name here, fill_numa_distance
-> > > > might be a better name?
-> > > > 
-> > > > Also, since the distance can be asymmetric, IMHO, providing a partial
-> > > > filled table looks fine. If we set many NUMA nodes e.g. 8 nodes for
-> > > > guest, the whole filled table would require many command lines which
-> > > > might be inconvenient and less flexible.
-> > > asymmetric doesn't imply sparse, so one has to specify full matrix
-> > > it might be inconvenient /long/ but is very flexible.
-> > 
-> > This makes me realize that a user only inputting one of A -> B or B -> A
-> > command line inputs doesn't imply symmetry.  It could be that the user
-> > just forgot to input the opposite.  To avoid the ambiguity we either need
-> > to force both to be input (as it was before I suggested otherwise), or
-> > add a '-numa symmetric' type of property to enable the shortcut.  I guess
-> > we should just avoid the shortcut, at least for now.
-> 
-> Is protecting the user from one very specific (and very rare[1])
-> mistake a good reason for making the automatic default less
-> useful?
+--f403045f8a94d9ff55054bf52d1a
+Content-Type: text/plain; charset=UTF-8
 
-Maybe not, but creating new interfaces with known ambiguities isn't ideal
-either.
+I've been trying to develop a Atmel SAM4 series support for CPU support as
+an MCU, mimicking implementation layout of the STM support.   Part of the
+ATSAM4 die series is ROM microcode used for referencing details such as NMI
+located at 0x00800000.   I've loaded our own application at 0x00400000,
+which is the reset vector for the chip... when I try to add it via
 
-> Requiring an explicit '-numa symmetric' option to enable
-> the automatic default seems to defeat the purpose of having an
-> automatic default, to me.
+qemu-system-arm -M ourBoard ... \
+-device loader,addr=0x00400000,file=${imageApplication} \
+-kernel ${imageApplication} \
+-device loader,addr=0x00800000,file=ATSAM4_ROM.img \
+...
 
-We could reverse it, '-numa asymmetric' could turn off the defaults
-and abort on an incomplete table.
+It loads the imageApplication at the proper address location, mindful that
+in order for the to work I needed to specify the kernel option as well for
+the same file. For the microcode file ATSAM4_ROM.img, it does not show any
+data at that address location (0x00800000) even when I specify a second
+-kernel option specifying the ATSAM_ROM.img...  is there something I'm
+doing wrong with the command line to make it available?
 
+Thanks in advance,
+-Jim
 
-Or, we could leave it ambiguous, but improve the heuristic by requiring
-all directions be given if even one direction has an asymmetric reverse
-path given. With that, there's still a chance to let user error slip
-through, but much less. I could live with that.
+--f403045f8a94d9ff55054bf52d1a
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
 
-Thanks,
-drew
+<div dir=3D"ltr"><div><br></div><div>I&#39;ve been trying to develop a Atme=
+l SAM4 series support for CPU support as an MCU, mimicking implementation l=
+ayout of the STM support. =C2=A0 Part of the ATSAM4 die series is ROM micro=
+code used for referencing details such as NMI located at 0x00800000. =C2=A0=
+ I&#39;ve loaded our own application at 0x00400000, which is the reset vect=
+or for the chip... when I try to add it via</div><div><br></div><div>qemu-s=
+ystem-arm -M ourBoard ... \</div>-device loader,addr=3D0x00400000,file=3D${=
+imageApplication} \<div>-kernel=C2=A0${imageApplication} \<br><div>-device =
+loader,addr=3D0x00800000,file=3DATSAM4_ROM.img \</div></div><div>...</div><=
+div><br></div><div>It loads the imageApplication at the proper address loca=
+tion, mindful that in order for the to work I needed to specify the kernel =
+option as well for the same file. For the microcode file ATSAM4_ROM.img, it=
+ does not show any data at that address location (0x00800000) even when I s=
+pecify a second -kernel option specifying the ATSAM_ROM.img... =C2=A0is the=
+re something I&#39;m doing wrong with the command line to make it available=
+?</div><div><br></div><div>Thanks in advance,</div><div>-Jim</div></div>
+
+--f403045f8a94d9ff55054bf52d1a--

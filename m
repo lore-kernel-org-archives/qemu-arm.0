@@ -1,70 +1,62 @@
-Received: by 10.25.15.230 with SMTP id 99csp2639226lfp;
-        Thu, 30 Mar 2017 09:29:34 -0700 (PDT)
-X-Received: by 10.55.17.35 with SMTP id b35mr567062qkh.275.1490891374409;
-        Thu, 30 Mar 2017 09:29:34 -0700 (PDT)
+Received: by 10.25.15.230 with SMTP id 99csp2721157lfp;
+        Thu, 30 Mar 2017 12:42:40 -0700 (PDT)
+X-Received: by 10.55.41.33 with SMTP id p33mr1425357qkh.103.1490902960238;
+        Thu, 30 Mar 2017 12:42:40 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id f50si2222477qtc.47.2017.03.30.09.29.34
+        by mx.google.com with ESMTPS id u29si2655926qta.260.2017.03.30.12.42.40
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 30 Mar 2017 09:29:34 -0700 (PDT)
+        Thu, 30 Mar 2017 12:42:40 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@dgtlrift-com.20150623.gappssmtp.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:36696 helo=lists.gnu.org)
+Received: from localhost ([::1]:37390 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ctcx3-0000QG-S9
-	for alex.bennee@linaro.org; Thu, 30 Mar 2017 12:29:33 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:39775)
+	id 1ctfxv-0003Ai-Oo
+	for alex.bennee@linaro.org; Thu, 30 Mar 2017 15:42:39 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:39888)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <jhanley@dgtlrift.com>) id 1ctcvm-0007rS-63
-	for qemu-arm@nongnu.org; Thu, 30 Mar 2017 12:28:15 -0400
+	(envelope-from <eric.auger@redhat.com>) id 1ctfxp-00039I-TN
+	for qemu-arm@nongnu.org; Thu, 30 Mar 2017 15:42:35 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <jhanley@dgtlrift.com>) id 1ctcvl-0001FI-7G
-	for qemu-arm@nongnu.org; Thu, 30 Mar 2017 12:28:14 -0400
-Received: from mail-vk0-x22d.google.com ([2607:f8b0:400c:c05::22d]:33472)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <jhanley@dgtlrift.com>)
-	id 1ctcvl-0001EL-0v
-	for qemu-arm@nongnu.org; Thu, 30 Mar 2017 12:28:13 -0400
-Received: by mail-vk0-x22d.google.com with SMTP id d188so60619064vka.0
-	for <qemu-arm@nongnu.org>; Thu, 30 Mar 2017 09:28:12 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=dgtlrift-com.20150623.gappssmtp.com; s=20150623;
-	h=mime-version:from:date:message-id:subject:to;
-	bh=nAmondgvSSU+Slhc+McqK6juBHJXxAuR+vell1I6w/A=;
-	b=gCbScFyrEwn0rrPw8skKDDQ4KjMa8s8vzIB96NlbYE+y9t2s4Kteo1juKxE2BGjQZx
-	V+WUmElm6EFVpqrt1YEkf7gExu1mgtVwYMjZd5bPA0iJK8pJGVnbmtIriPqIXSYyWBqP
-	B6mmlSUnwAlXeAb06q3G86BsOev5yxQnowy8wioSorM5s3GoQjSJY0T3NAgcfc9P2K+o
-	iKyM3N543dWBwVhHN2EJhN18IkoOsLlNRfVoDVOa+oaAtsXF1DhNiAZt3r9hjBsbB37e
-	1B0ICfZwy+jcxOU2uZsykE8yE5zuieXSX2QFuLSzFAeAuWJy1sWnHFXUSaoOAaBQS42B
-	+9XA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:from:date:message-id:subject:to;
-	bh=nAmondgvSSU+Slhc+McqK6juBHJXxAuR+vell1I6w/A=;
-	b=aYULNwk5hyxq0zbNtl3KRLn5nsNG8OqahnyxH27wy5Qyf74DgCP+3N9/7iSIH5KX0/
-	C8ct43BY1MV4jQbPkykC7EmZNk4Ep4/KjAET5wLTdeO9Gu+9Krml+eR8h+tIcmBBNCF0
-	jKZtnEi8glbA8Dx9hdpQnuJ8/j7Ir+apqRd+VwPk3Blo21qWOUqSbIZQtb9k3SrbKXEM
-	Rt2le6a/871wVcCHu9Z5XCJniyNYZIzvCNsE32A2FqjWB69hWkF53w0GRkHN5092sc2r
-	gicVIl7HohKlKyo0Cb71u7tmDs/J1esUxyYRhLQ0SiTmGS2CPh6eq7F2DB+ASekwxpld
-	X3Ug==
-X-Gm-Message-State: AFeK/H1lm6Wuseld6xyYmgolVy1Zz8VsCTH/d3g0H7sh49woISbb+v2idd6Z/o5FXhyovQkFL/BI2IxOfYI30g==
-X-Received: by 10.176.74.222 with SMTP id t30mr331181uae.132.1490891291855;
-	Thu, 30 Mar 2017 09:28:11 -0700 (PDT)
-MIME-Version: 1.0
-Received: by 10.103.86.88 with HTTP; Thu, 30 Mar 2017 09:28:11 -0700 (PDT)
-From: James Hanley <jhanley@dgtlrift.com>
-Date: Thu, 30 Mar 2017 12:28:11 -0400
-Message-ID: <CAF++6ANmUc8GxjJqZ01ow=VBeEh2q1pXk+NSe71WJy=+bu5T4g@mail.gmail.com>
-To: qemu-arm <qemu-arm@nongnu.org>, qemu-discuss@nongnu.org, 
-	qemu-devel <qemu-devel@nongnu.org>
-Content-Type: multipart/alternative; boundary=f403045f8a94d9ff55054bf52d1a
+	(envelope-from <eric.auger@redhat.com>) id 1ctfxm-000758-QW
+	for qemu-arm@nongnu.org; Thu, 30 Mar 2017 15:42:33 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:57642)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <eric.auger@redhat.com>)
+	id 1ctfxm-00073Z-Hg; Thu, 30 Mar 2017 15:42:30 -0400
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
+	[10.5.11.12])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id B8AEC4E4CD;
+	Thu, 30 Mar 2017 19:42:28 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com B8AEC4E4CD
+Authentication-Results: ext-mx09.extmail.prod.ext.phx2.redhat.com;
+	dmarc=none (p=none dis=none) header.from=redhat.com
+Authentication-Results: ext-mx09.extmail.prod.ext.phx2.redhat.com;
+	spf=pass smtp.mailfrom=eric.auger@redhat.com
+DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com B8AEC4E4CD
+Received: from localhost.localdomain.com (ovpn-117-27.ams2.redhat.com
+	[10.36.117.27])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 9EA2877D53;
+	Thu, 30 Mar 2017 19:42:23 +0000 (UTC)
+From: Eric Auger <eric.auger@redhat.com>
+To: eric.auger.pro@gmail.com, eric.auger@redhat.com, peter.maydell@linaro.org,
+	edgar.iglesias@gmail.com, qemu-arm@nongnu.org, qemu-devel@nongnu.org,
+	prem.mallappa@gmail.com
+Date: Thu, 30 Mar 2017 21:42:13 +0200
+Message-Id: <1490902938-9009-1-git-send-email-eric.auger@redhat.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.38]);
+	Thu, 30 Mar 2017 19:42:28 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:400c:c05::22d
-Subject: [Qemu-arm] Loading microcode to ROM for new Arm based CPU type
+	[fuzzy]
+X-Received-From: 209.132.183.28
+Subject: [Qemu-arm] [RFC v3 0/5] SMMUv3 Emmulation Support
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -76,54 +68,113 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: drjones@redhat.com, Radha.Chintakuntla@cavium.com,
+	christoffer.dall@linaro.org, Sunil.Goutham@cavium.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 5fzPc/Oqln/S
+X-TUID: ELmbg7ESdRNY
 
---f403045f8a94d9ff55054bf52d1a
-Content-Type: text/plain; charset=UTF-8
+This series introduces the emulation code for ARM SMMUv3.
+This is the continuation of Prem's work [1].
 
-I've been trying to develop a Atmel SAM4 series support for CPU support as
-an MCU, mimicking implementation layout of the STM support.   Part of the
-ATSAM4 die series is ROM microcode used for referencing details such as NMI
-located at 0x00800000.   I've loaded our own application at 0x00400000,
-which is the reset vector for the chip... when I try to add it via
+At the moment only AArch64 translation format is supported, ie.
+no support for AArch32 (LPAE) translation.
 
-qemu-system-arm -M ourBoard ... \
--device loader,addr=0x00400000,file=${imageApplication} \
--kernel ${imageApplication} \
--device loader,addr=0x00800000,file=ATSAM4_ROM.img \
-...
+stage1, stage2 and stage1 + Stage2 are supposed to work but I only
+tested stage 1 at the moment.
 
-It loads the imageApplication at the proper address location, mindful that
-in order for the to work I needed to specify the kernel option as well for
-the same file. For the microcode file ATSAM4_ROM.img, it does not show any
-data at that address location (0x00800000) even when I specify a second
--kernel option specifying the ATSAM_ROM.img...  is there something I'm
-doing wrong with the command line to make it available?
+I will do the comprehensive inventory of unsupported features in
+next version.
 
-Thanks in advance,
--Jim
+As reported by Edgar, TBUs are not modeled properly and this will be
+addressed in next respin.
 
---f403045f8a94d9ff55054bf52d1a
-Content-Type: text/html; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
+Don't spend too much time reviewing this version. This is just a rebase
+plus some cleanups done while getting familiar with the code structure.
+I will try to move as much in the base class and reuse Xilinx code when
+sensible.
 
-<div dir=3D"ltr"><div><br></div><div>I&#39;ve been trying to develop a Atme=
-l SAM4 series support for CPU support as an MCU, mimicking implementation l=
-ayout of the STM support. =C2=A0 Part of the ATSAM4 die series is ROM micro=
-code used for referencing details such as NMI located at 0x00800000. =C2=A0=
- I&#39;ve loaded our own application at 0x00400000, which is the reset vect=
-or for the chip... when I try to add it via</div><div><br></div><div>qemu-s=
-ystem-arm -M ourBoard ... \</div>-device loader,addr=3D0x00400000,file=3D${=
-imageApplication} \<div>-kernel=C2=A0${imageApplication} \<br><div>-device =
-loader,addr=3D0x00800000,file=3DATSAM4_ROM.img \</div></div><div>...</div><=
-div><br></div><div>It loads the imageApplication at the proper address loca=
-tion, mindful that in order for the to work I needed to specify the kernel =
-option as well for the same file. For the microcode file ATSAM4_ROM.img, it=
- does not show any data at that address location (0x00800000) even when I s=
-pecify a second -kernel option specifying the ATSAM_ROM.img... =C2=A0is the=
-re something I&#39;m doing wrong with the command line to make it available=
-?</div><div><br></div><div>Thanks in advance,</div><div>-Jim</div></div>
+Best Regards
 
---f403045f8a94d9ff55054bf52d1a--
+Eric
+
+Testing:
+- booted a 4.11-rc4 guest in dt mode with virtio-pci device
+
+References:
+[1] Prem's last iteration:
+- https://lists.gnu.org/archive/html/qemu-devel/2016-08/msg03531.html
+
+History:
+v2 -> v3 [Eric]:
+- rebased on 2.9
+- mostly code and patch reorganization to ease the review process
+- optional patches removed. They may be handled separately. I am currently
+  working on ACPI enablement.
+- optional instantiation of the smmu in mach-virt
+- removed [2/9] (fdt functions) since not mandated
+- start splitting main patch into base and derived object
+- no new function feature added
+
+v1 -> v2 [Prem]:
+- Adopted review comments from Eric Auger
+        - Make SMMU_DPRINTF to internally call qemu_log
+            (since translation requests are too many, we need control
+             on the type of log we want)
+        - SMMUTransCfg modified to suite simplicity
+        - Change RegInfo to uint64 register array
+        - Code cleanup
+        - Test cleanups
+- Reshuffled patches
+
+v0 -> v1 [Prem]:
+- As per SMMUv3 spec 16.0 (only is_ste_consistant() is noticeable)
+- Reworked register access/update logic
+- Factored out translation code for
+        - single point bug fix
+        - sharing/removal in future
+- (optional) Unit tests added, with PCI test device
+        - S1 with 4k/64k, S1+S2 with 4k/64k
+        - (S1 or S2) only can be verified by Linux 4.7 driver
+        - (optional) Priliminary ACPI support
+
+v0 [Prem]:
+- Implements SMMUv3 spec 11.0
+- Supported for PCIe devices,
+- Command Queue and Event Queue supported
+- LPAE only, S1 is supported and Tested, S2 not tested
+- BE mode Translation not supported
+- IRQ support (legacy, no MSI)
+
+
+Eric Auger (2):
+  hw/arm/smmu-common: smmu base class
+  hw/arm/virt: Add 2.10 machine type
+
+Prem Mallappa (3):
+  log: Add new IOMMU type
+  hw/arm/smmuv3: smmuv3 emulation model
+  hw/arm/virt: Add SMMUv3 to the virt board
+
+ default-configs/aarch64-softmmu.mak |    1 +
+ hw/arm/Makefile.objs                |    1 +
+ hw/arm/smmu-common.c                |  193 ++++++
+ hw/arm/smmuv3-internal.h            |  544 +++++++++++++++++
+ hw/arm/smmuv3.c                     | 1131 +++++++++++++++++++++++++++++++++++
+ hw/arm/virt.c                       |  109 +++-
+ include/hw/arm/smmu-common.h        |  151 +++++
+ include/hw/arm/smmuv3.h             |   88 +++
+ include/hw/arm/virt.h               |    5 +
+ include/hw/compat.h                 |    3 +
+ include/qemu/log.h                  |    1 +
+ util/log.c                          |    2 +
+ 12 files changed, 2227 insertions(+), 2 deletions(-)
+ create mode 100644 hw/arm/smmu-common.c
+ create mode 100644 hw/arm/smmuv3-internal.h
+ create mode 100644 hw/arm/smmuv3.c
+ create mode 100644 include/hw/arm/smmu-common.h
+ create mode 100644 include/hw/arm/smmuv3.h
+
+-- 
+2.5.5
+

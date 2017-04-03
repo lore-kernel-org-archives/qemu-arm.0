@@ -1,57 +1,68 @@
-Received: by 10.25.15.230 with SMTP id 99csp3478256lfp;
-        Sat, 1 Apr 2017 06:03:00 -0700 (PDT)
-X-Received: by 10.200.39.56 with SMTP id g53mr8083212qtg.134.1491051780207;
-        Sat, 01 Apr 2017 06:03:00 -0700 (PDT)
+Received: by 10.25.15.230 with SMTP id 99csp4086257lfp;
+        Mon, 3 Apr 2017 00:34:49 -0700 (PDT)
+X-Received: by 10.55.42.14 with SMTP id q14mr5307771qkh.10.1491204889833;
+        Mon, 03 Apr 2017 00:34:49 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id r100si1788323qkh.119.2017.04.01.06.02.59
+        by mx.google.com with ESMTPS id s23si11234572qka.239.2017.04.03.00.34.49
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sat, 01 Apr 2017 06:03:00 -0700 (PDT)
+        Mon, 03 Apr 2017 00:34:49 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:51257 helo=lists.gnu.org)
+Received: from localhost ([::1]:57900 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1cuIgD-00054g-F0
-	for alex.bennee@linaro.org; Sat, 01 Apr 2017 09:02:57 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:41941)
+	id 1cuwVj-0008KZ-90
+	for alex.bennee@linaro.org; Mon, 03 Apr 2017 03:34:47 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:37159)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <clg@kaod.org>) id 1cuIdX-00039O-Lt
-	for qemu-arm@nongnu.org; Sat, 01 Apr 2017 09:00:16 -0400
+	(envelope-from <eric.auger@redhat.com>) id 1cuwVd-0008KU-Gf
+	for qemu-arm@nongnu.org; Mon, 03 Apr 2017 03:34:43 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <clg@kaod.org>) id 1cuIdT-00056q-HK
-	for qemu-arm@nongnu.org; Sat, 01 Apr 2017 09:00:11 -0400
-Received: from 14.mo5.mail-out.ovh.net ([188.165.51.82]:41161)
+	(envelope-from <eric.auger@redhat.com>) id 1cuwVa-0002TV-4v
+	for qemu-arm@nongnu.org; Mon, 03 Apr 2017 03:34:41 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:37996)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <clg@kaod.org>) id 1cuIdT-00052q-5L
-	for qemu-arm@nongnu.org; Sat, 01 Apr 2017 09:00:07 -0400
-Received: from player799.ha.ovh.net (b6.ovh.net [213.186.33.56])
-	by mo5.mail-out.ovh.net (Postfix) with ESMTP id B5890E4518
-	for <qemu-arm@nongnu.org>; Sat,  1 Apr 2017 15:00:05 +0200 (CEST)
-Received: from zorba.kaod.org (LFbn-1-10647-27.w90-89.abo.wanadoo.fr
-	[90.89.233.27]) (Authenticated sender: clg@kaod.org)
-	by player799.ha.ovh.net (Postfix) with ESMTPSA id EA6CA52007A;
-	Sat,  1 Apr 2017 14:59:52 +0200 (CEST)
-From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
-To: Peter Maydell <peter.maydell@linaro.org>
-Date: Sat,  1 Apr 2017 14:57:57 +0200
-Message-Id: <1491051477-10455-5-git-send-email-clg@kaod.org>
-X-Mailer: git-send-email 2.7.4
-In-Reply-To: <1491051477-10455-1-git-send-email-clg@kaod.org>
-References: <1491051477-10455-1-git-send-email-clg@kaod.org>
+	(Exim 4.71) (envelope-from <eric.auger@redhat.com>)
+	id 1cuwVZ-0002Sm-SQ; Mon, 03 Apr 2017 03:34:38 -0400
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+	[10.5.11.13])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 8753F85543;
+	Mon,  3 Apr 2017 07:34:34 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 8753F85543
+Authentication-Results: ext-mx04.extmail.prod.ext.phx2.redhat.com;
+	dmarc=none (p=none dis=none) header.from=redhat.com
+Authentication-Results: ext-mx04.extmail.prod.ext.phx2.redhat.com;
+	spf=pass smtp.mailfrom=eric.auger@redhat.com
+DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com 8753F85543
+Received: from localhost.localdomain (ovpn-117-27.ams2.redhat.com
+	[10.36.117.27])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 6AF4F17ABB;
+	Mon,  3 Apr 2017 07:34:31 +0000 (UTC)
+To: Radha Mohan <mohun106@gmail.com>
+References: <1490902938-9009-1-git-send-email-eric.auger@redhat.com>
+	<CAC8NTUVH1--3o812m5rUamLK_3tqX5p7=t-vDbrAcGsjQV0JtQ@mail.gmail.com>
+From: Auger Eric <eric.auger@redhat.com>
+Message-ID: <8ae0e957-2822-6bf9-425f-c64f2f1e8a8b@redhat.com>
+Date: Mon, 3 Apr 2017 09:34:29 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
+	Thunderbird/45.4.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-X-Ovh-Tracer-Id: 11841370798783433489
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrfeelhedrleefgdehkecutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmd
-Content-Transfer-Encoding: quoted-printable
+In-Reply-To: <CAC8NTUVH1--3o812m5rUamLK_3tqX5p7=t-vDbrAcGsjQV0JtQ@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.28]);
+	Mon, 03 Apr 2017 07:34:34 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 188.165.51.82
-Subject: [Qemu-arm] [PATCH 4/4] slirp: add a fake NC-SI backend
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-arm] [Qemu-devel] [RFC v3 0/5] SMMUv3 Emmulation Support
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -63,726 +74,184 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Jan Kiszka <jan.kiszka@siemens.com>, Jason Wang <jasowang@redhat.com>,
+Cc: peter.maydell@linaro.org, Drew Jones <drjones@redhat.com>,
+	Radha.Chintakuntla@cavium.com, Sunil.Goutham@cavium.com,
 	qemu-devel@nongnu.org, qemu-arm@nongnu.org,
-	=?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
-	Dmitry Fleytman <dmitry@daynix.com>,
-	Samuel Thibault <samuel.thibault@ens-lyon.org>
+	prem.mallappa@gmail.com, christoffer.dall@linaro.org,
+	eric.auger.pro@gmail.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: zyvYXvCfB6/d
+X-TUID: mxmIaiX0Izif
 
-NC-SI (Network Controller Sideband Interface) enables a BMC to manage
-a set of NICs on a system. This model takes the simplest approach and
-reverses the NC-SI packets to pretend a NIC is present and exercise
-the Linux driver.
+Hi Radha,
 
-The NCSI header file <ncsi-pkt.h> comes from mainline Linux and was
-untabified.
+On 01/04/2017 02:56, Radha Mohan wrote:
+> Hi Eric
+> 
+> On Thu, Mar 30, 2017 at 12:42 PM, Eric Auger <eric.auger@redhat.com> wrote:
+>> This series introduces the emulation code for ARM SMMUv3.
+>> This is the continuation of Prem's work [1].
+>>
+>> At the moment only AArch64 translation format is supported, ie.
+>> no support for AArch32 (LPAE) translation.
+>>
+>> stage1, stage2 and stage1 + Stage2 are supposed to work but I only
+>> tested stage 1 at the moment.
+>>
+>> I will do the comprehensive inventory of unsupported features in
+>> next version.
+>>
+>> As reported by Edgar, TBUs are not modeled properly and this will be
+>> addressed in next respin.
+>>
+>> Don't spend too much time reviewing this version. This is just a rebase
+>> plus some cleanups done while getting familiar with the code structure.
+>> I will try to move as much in the base class and reuse Xilinx code when
+>> sensible.
+>>
+>> Best Regards
+>>
+>> Eric
+>>
+>> Testing:
+>> - booted a 4.11-rc4 guest in dt mode with virtio-pci device
+>>
+>> References:
+>> [1] Prem's last iteration:
+>> - https://lists.gnu.org/archive/html/qemu-devel/2016-08/msg03531.html
+>>
+>> History:
+>> v2 -> v3 [Eric]:
+>> - rebased on 2.9
+>> - mostly code and patch reorganization to ease the review process
+>> - optional patches removed. They may be handled separately. I am currently
+>>   working on ACPI enablement.
+>> - optional instantiation of the smmu in mach-virt
+>> - removed [2/9] (fdt functions) since not mandated
+>> - start splitting main patch into base and derived object
+>> - no new function feature added
+>>
+>> v1 -> v2 [Prem]:
+>> - Adopted review comments from Eric Auger
+>>         - Make SMMU_DPRINTF to internally call qemu_log
+>>             (since translation requests are too many, we need control
+>>              on the type of log we want)
+>>         - SMMUTransCfg modified to suite simplicity
+>>         - Change RegInfo to uint64 register array
+>>         - Code cleanup
+>>         - Test cleanups
+>> - Reshuffled patches
+>>
+>> v0 -> v1 [Prem]:
+>> - As per SMMUv3 spec 16.0 (only is_ste_consistant() is noticeable)
+>> - Reworked register access/update logic
+>> - Factored out translation code for
+>>         - single point bug fix
+>>         - sharing/removal in future
+>> - (optional) Unit tests added, with PCI test device
+>>         - S1 with 4k/64k, S1+S2 with 4k/64k
+>>         - (S1 or S2) only can be verified by Linux 4.7 driver
+>>         - (optional) Priliminary ACPI support
+>>
+>> v0 [Prem]:
+>> - Implements SMMUv3 spec 11.0
+>> - Supported for PCIe devices,
+>> - Command Queue and Event Queue supported
+>> - LPAE only, S1 is supported and Tested, S2 not tested
+>> - BE mode Translation not supported
+>> - IRQ support (legacy, no MSI)
+>>
+>>
+>> Eric Auger (2):
+>>   hw/arm/smmu-common: smmu base class
+>>   hw/arm/virt: Add 2.10 machine type
+>>
+>> Prem Mallappa (3):
+>>   log: Add new IOMMU type
+>>   hw/arm/smmuv3: smmuv3 emulation model
+>>   hw/arm/virt: Add SMMUv3 to the virt board
+>>
+>>  default-configs/aarch64-softmmu.mak |    1 +
+>>  hw/arm/Makefile.objs                |    1 +
+>>  hw/arm/smmu-common.c                |  193 ++++++
+>>  hw/arm/smmuv3-internal.h            |  544 +++++++++++++++++
+>>  hw/arm/smmuv3.c                     | 1131 +++++++++++++++++++++++++++++++++++
+>>  hw/arm/virt.c                       |  109 +++-
+>>  include/hw/arm/smmu-common.h        |  151 +++++
+>>  include/hw/arm/smmuv3.h             |   88 +++
+>>  include/hw/arm/virt.h               |    5 +
+>>  include/hw/compat.h                 |    3 +
+>>  include/qemu/log.h                  |    1 +
+>>  util/log.c                          |    2 +
+>>  12 files changed, 2227 insertions(+), 2 deletions(-)
+>>  create mode 100644 hw/arm/smmu-common.c
+>>  create mode 100644 hw/arm/smmuv3-internal.h
+>>  create mode 100644 hw/arm/smmuv3.c
+>>  create mode 100644 include/hw/arm/smmu-common.h
+>>  create mode 100644 include/hw/arm/smmuv3.h
+>>
+>> --
+>> 2.5.5
+> 
+> Did a quick test with 4.10.1 guest and 4.11-rc3 host.
+> 
+> ~# qemu-system-aarch64 -cpu host -enable-kvm -M virt,gic_version=3
+> -nographic -smp 1 -m 2048 -drive
+> if=none,id=hd0,file=/root/zesty-server-cloudimg-arm64.img,id=0 -device
+> virtio-blk-device,drive=hd0 -pflash /root/flash0.img -pflash
+> /root/flash1.img -device vfio-pci,host=0000:13:00.1 -M virt,smmu=on
+> qemu-system-aarch64: -device vfio-pci,host=0000:13:00.1: iommu map to
+> non memory area 0
+> qemu-system-aarch64: -device vfio-pci,host=0000:13:00.1: iommu map to
+> non memory area 1000
+> qemu-system-aarch64: -device vfio-pci,host=0000:13:00.1: iommu map to
+> non memory area 2000
+> qemu-system-aarch64: -device vfio-pci,host=0000:13:00.1: iommu map to
+> non memory area 3000
+> qemu-system-aarch64: -device vfio-pci,host=0000:13:00.1: iommu map to
+> non memory area 4000
+> qemu-system-aarch64: -device vfio-pci,host=0000:13:00.1: iommu map to
+> non memory area 5000
+> qemu-system-aarch64: -device vfio-pci,host=0000:13:00.1: iommu map to
+> non memory area 6000
+> qemu-system-aarch64: -device vfio-pci,host=0000:13:00.1: iommu map to
+> non memory area 7000
+> qemu-system-aarch64: -device vfio-pci,host=0000:13:00.1: iommu map to
+> non memory area 8000
+> qemu-system-aarch64: -device vfio-pci,host=0000:13:00.1: iommu map to
+> non memory area 9000
+> ..
+> ..
+> qemu-system-aarch64: -device vfio-pci,host=0000:13:00.1: iommu map to
+> non memory area fff000
+> qemu-system-aarch64: -device vfio-pci,host=0000:13:00.1: VFIO_MAP_DMA: -22
+> qemu-system-aarch64: -device vfio-pci,host=0000:13:00.1:
+> vfio_dma_map(0x1d52e600, 0x40000000, 0x0, 0xffff17e00000) = -22
+> (Invalid argument)
+> qemu-system-aarch64: -device vfio-pci,host=0000:13:00.1: VFIO_MAP_DMA: -22
+> qemu-system-aarch64: -device vfio-pci,host=0000:13:00.1:
+> vfio_dma_map(0x1d52e600, 0x40001000, 0x0, 0xffff17e01000) = -22
+> (Invalid argument)
+> qemu-system-aarch64: -device vfio-pci,host=0000:13:00.1: VFIO_MAP_DMA: -22
+> qemu-system-aarch64: -device vfio-pci,host=0000:13:00.1:
+> vfio_dma_map(0x1d52e600, 0x40002000, 0x0, 0xffff17e02000) = -22
+> (Invalid argument)
 
-Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
----
- include/net/eth.h   |   1 +
- slirp/Makefile.objs |   2 +-
- slirp/ncsi-pkt.h    | 418 ++++++++++++++++++++++++++++++++++++++++++++++=
-++++++
- slirp/ncsi.c        |  78 ++++++++++
- slirp/slirp.c       |   4 +
- slirp/slirp.h       |   3 +
- 6 files changed, 505 insertions(+), 1 deletion(-)
- create mode 100644 slirp/ncsi-pkt.h
- create mode 100644 slirp/ncsi.c
+As indicated in the cover letter I did not test with VFIO yet and I am
+not really surprised it does not work. I would encourage you to test
+with virtio or DPDK/OVS instead at the moment.
 
-diff --git a/include/net/eth.h b/include/net/eth.h
-index afeb45be34e1..09054a506d6e 100644
---- a/include/net/eth.h
-+++ b/include/net/eth.h
-@@ -209,6 +209,7 @@ struct tcp_hdr {
- #define ETH_P_IPV6                (0x86dd)
- #define ETH_P_VLAN                (0x8100)
- #define ETH_P_DVLAN               (0x88a8)
-+#define ETH_P_NCSI                (0x88f8)
- #define ETH_P_UNKNOWN             (0xffff)
- #define VLAN_VID_MASK             0x0fff
- #define IP_HEADER_VERSION_4       (4)
-diff --git a/slirp/Makefile.objs b/slirp/Makefile.objs
-index 1baa1f1c7cfb..28049b03cddc 100644
---- a/slirp/Makefile.objs
-+++ b/slirp/Makefile.objs
-@@ -2,4 +2,4 @@ common-obj-y =3D cksum.o if.o ip_icmp.o ip6_icmp.o ip6_in=
-put.o ip6_output.o \
-                ip_input.o ip_output.o dnssearch.o dhcpv6.o
- common-obj-y +=3D slirp.o mbuf.o misc.o sbuf.o socket.o tcp_input.o tcp_=
-output.o
- common-obj-y +=3D tcp_subr.o tcp_timer.o udp.o udp6.o bootp.o tftp.o arp=
-_table.o \
--                ndp_table.o
-+                ndp_table.o ncsi.o
-diff --git a/slirp/ncsi-pkt.h b/slirp/ncsi-pkt.h
-new file mode 100644
-index 000000000000..cb786bba463e
---- /dev/null
-+++ b/slirp/ncsi-pkt.h
-@@ -0,0 +1,418 @@
-+/*
-+ * Copyright Gavin Shan, IBM Corporation 2016.
-+ *
-+ * This program is free software; you can redistribute it and/or modify
-+ * it under the terms of the GNU General Public License as published by
-+ * the Free Software Foundation; either version 2 of the License, or
-+ * (at your option) any later version.
-+ */
-+
-+#ifndef NCSI_PKT_H
-+#define NCSI_PKT_H
-+
-+#define __be32 uint32_t
-+#define __be16 uint16_t
-+
-+struct ncsi_pkt_hdr {
-+        unsigned char mc_id;        /* Management controller ID */
-+        unsigned char revision;     /* NCSI version - 0x01      */
-+        unsigned char reserved;     /* Reserved                 */
-+        unsigned char id;           /* Packet sequence number   */
-+        unsigned char type;         /* Packet type              */
-+        unsigned char channel;      /* Network controller ID    */
-+        __be16        length;       /* Payload length           */
-+        __be32        reserved1[2]; /* Reserved                 */
-+};
-+
-+struct ncsi_cmd_pkt_hdr {
-+        struct ncsi_pkt_hdr common; /* Common NCSI packet header */
-+};
-+
-+struct ncsi_rsp_pkt_hdr {
-+        struct ncsi_pkt_hdr common; /* Common NCSI packet header */
-+        __be16              code;   /* Response code             */
-+        __be16              reason; /* Response reason           */
-+};
-+
-+struct ncsi_aen_pkt_hdr {
-+        struct ncsi_pkt_hdr common;       /* Common NCSI packet header *=
-/
-+        unsigned char       reserved2[3]; /* Reserved                  *=
-/
-+        unsigned char       type;         /* AEN packet type           *=
-/
-+};
-+
-+/* NCSI common command packet */
-+struct ncsi_cmd_pkt {
-+        struct ncsi_cmd_pkt_hdr cmd;      /* Command header */
-+        __be32                  checksum; /* Checksum       */
-+        unsigned char           pad[26];
-+};
-+
-+struct ncsi_rsp_pkt {
-+        struct ncsi_rsp_pkt_hdr rsp;      /* Response header */
-+        __be32                  checksum; /* Checksum        */
-+        unsigned char           pad[22];
-+};
-+
-+/* Select Package */
-+struct ncsi_cmd_sp_pkt {
-+        struct ncsi_cmd_pkt_hdr cmd;            /* Command header */
-+        unsigned char           reserved[3];    /* Reserved       */
-+        unsigned char           hw_arbitration; /* HW arbitration */
-+        __be32                  checksum;       /* Checksum       */
-+        unsigned char           pad[22];
-+};
-+
-+/* Disable Channel */
-+struct ncsi_cmd_dc_pkt {
-+        struct ncsi_cmd_pkt_hdr cmd;         /* Command header  */
-+        unsigned char           reserved[3]; /* Reserved        */
-+        unsigned char           ald;         /* Allow link down */
-+        __be32                  checksum;    /* Checksum        */
-+        unsigned char           pad[22];
-+};
-+
-+/* Reset Channel */
-+struct ncsi_cmd_rc_pkt {
-+        struct ncsi_cmd_pkt_hdr cmd;      /* Command header */
-+        __be32                  reserved; /* Reserved       */
-+        __be32                  checksum; /* Checksum       */
-+        unsigned char           pad[22];
-+};
-+
-+/* AEN Enable */
-+struct ncsi_cmd_ae_pkt {
-+        struct ncsi_cmd_pkt_hdr cmd;         /* Command header   */
-+        unsigned char           reserved[3]; /* Reserved         */
-+        unsigned char           mc_id;       /* MC ID            */
-+        __be32                  mode;        /* AEN working mode */
-+        __be32                  checksum;    /* Checksum         */
-+        unsigned char           pad[18];
-+};
-+
-+/* Set Link */
-+struct ncsi_cmd_sl_pkt {
-+        struct ncsi_cmd_pkt_hdr cmd;      /* Command header    */
-+        __be32                  mode;     /* Link working mode */
-+        __be32                  oem_mode; /* OEM link mode     */
-+        __be32                  checksum; /* Checksum          */
-+        unsigned char           pad[18];
-+};
-+
-+/* Set VLAN Filter */
-+struct ncsi_cmd_svf_pkt {
-+        struct ncsi_cmd_pkt_hdr cmd;       /* Command header    */
-+        __be16                  reserved;  /* Reserved          */
-+        __be16                  vlan;      /* VLAN ID           */
-+        __be16                  reserved1; /* Reserved          */
-+        unsigned char           index;     /* VLAN table index  */
-+        unsigned char           enable;    /* Enable or disable */
-+        __be32                  checksum;  /* Checksum          */
-+        unsigned char           pad[14];
-+};
-+
-+/* Enable VLAN */
-+struct ncsi_cmd_ev_pkt {
-+        struct ncsi_cmd_pkt_hdr cmd;         /* Command header   */
-+        unsigned char           reserved[3]; /* Reserved         */
-+        unsigned char           mode;        /* VLAN filter mode */
-+        __be32                  checksum;    /* Checksum         */
-+        unsigned char           pad[22];
-+};
-+
-+/* Set MAC Address */
-+struct ncsi_cmd_sma_pkt {
-+        struct ncsi_cmd_pkt_hdr cmd;      /* Command header          */
-+        unsigned char           mac[6];   /* MAC address             */
-+        unsigned char           index;    /* MAC table index         */
-+        unsigned char           at_e;     /* Addr type and operation */
-+        __be32                  checksum; /* Checksum                */
-+        unsigned char           pad[18];
-+};
-+
-+/* Enable Broadcast Filter */
-+struct ncsi_cmd_ebf_pkt {
-+        struct ncsi_cmd_pkt_hdr cmd;      /* Command header */
-+        __be32                  mode;     /* Filter mode    */
-+        __be32                  checksum; /* Checksum       */
-+        unsigned char           pad[22];
-+};
-+
-+/* Enable Global Multicast Filter */
-+struct ncsi_cmd_egmf_pkt {
-+        struct ncsi_cmd_pkt_hdr cmd;      /* Command header */
-+        __be32                  mode;     /* Global MC mode */
-+        __be32                  checksum; /* Checksum       */
-+        unsigned char           pad[22];
-+};
-+
-+/* Set NCSI Flow Control */
-+struct ncsi_cmd_snfc_pkt {
-+        struct ncsi_cmd_pkt_hdr cmd;         /* Command header    */
-+        unsigned char           reserved[3]; /* Reserved          */
-+        unsigned char           mode;        /* Flow control mode */
-+        __be32                  checksum;    /* Checksum          */
-+        unsigned char           pad[22];
-+};
-+
-+/* Get Link Status */
-+struct ncsi_rsp_gls_pkt {
-+        struct ncsi_rsp_pkt_hdr rsp;        /* Response header   */
-+        __be32                  status;     /* Link status       */
-+        __be32                  other;      /* Other indications */
-+        __be32                  oem_status; /* OEM link status   */
-+        __be32                  checksum;
-+        unsigned char           pad[10];
-+};
-+
-+/* Get Version ID */
-+struct ncsi_rsp_gvi_pkt {
-+        struct ncsi_rsp_pkt_hdr rsp;          /* Response header */
-+        __be32                  ncsi_version; /* NCSI version    */
-+        unsigned char           reserved[3];  /* Reserved        */
-+        unsigned char           alpha2;       /* NCSI version    */
-+        unsigned char           fw_name[12];  /* f/w name string */
-+        __be32                  fw_version;   /* f/w version     */
-+        __be16                  pci_ids[4];   /* PCI IDs         */
-+        __be32                  mf_id;        /* Manufacture ID  */
-+        __be32                  checksum;
-+};
-+
-+/* Get Capabilities */
-+struct ncsi_rsp_gc_pkt {
-+        struct ncsi_rsp_pkt_hdr rsp;         /* Response header   */
-+        __be32                  cap;         /* Capabilities      */
-+        __be32                  bc_cap;      /* Broadcast cap     */
-+        __be32                  mc_cap;      /* Multicast cap     */
-+        __be32                  buf_cap;     /* Buffering cap     */
-+        __be32                  aen_cap;     /* AEN cap           */
-+        unsigned char           vlan_cnt;    /* VLAN filter count */
-+        unsigned char           mixed_cnt;   /* Mix filter count  */
-+        unsigned char           mc_cnt;      /* MC filter count   */
-+        unsigned char           uc_cnt;      /* UC filter count   */
-+        unsigned char           reserved[2]; /* Reserved          */
-+        unsigned char           vlan_mode;   /* VLAN mode         */
-+        unsigned char           channel_cnt; /* Channel count     */
-+        __be32                  checksum;    /* Checksum          */
-+};
-+
-+/* Get Parameters */
-+struct ncsi_rsp_gp_pkt {
-+        struct ncsi_rsp_pkt_hdr rsp;          /* Response header       *=
-/
-+        unsigned char           mac_cnt;      /* Number of MAC addr    *=
-/
-+        unsigned char           reserved[2];  /* Reserved              *=
-/
-+        unsigned char           mac_enable;   /* MAC addr enable flags *=
-/
-+        unsigned char           vlan_cnt;     /* VLAN tag count        *=
-/
-+        unsigned char           reserved1;    /* Reserved              *=
-/
-+        __be16                  vlan_enable;  /* VLAN tag enable flags *=
-/
-+        __be32                  link_mode;    /* Link setting          *=
-/
-+        __be32                  bc_mode;      /* BC filter mode        *=
-/
-+        __be32                  valid_modes;  /* Valid mode parameters *=
-/
-+        unsigned char           vlan_mode;    /* VLAN mode             *=
-/
-+        unsigned char           fc_mode;      /* Flow control mode     *=
-/
-+        unsigned char           reserved2[2]; /* Reserved              *=
-/
-+        __be32                  aen_mode;     /* AEN mode              *=
-/
-+        unsigned char           mac[6];       /* Supported MAC addr    *=
-/
-+        __be16                  vlan;         /* Supported VLAN tags   *=
-/
-+        __be32                  checksum;     /* Checksum              *=
-/
-+};
-+
-+/* Get Controller Packet Statistics */
-+struct ncsi_rsp_gcps_pkt {
-+        struct ncsi_rsp_pkt_hdr rsp;            /* Response header      =
-      */
-+        __be32                  cnt_hi;         /* Counter cleared      =
-      */
-+        __be32                  cnt_lo;         /* Counter cleared      =
-      */
-+        __be32                  rx_bytes;       /* Rx bytes             =
-      */
-+        __be32                  tx_bytes;       /* Tx bytes             =
-      */
-+        __be32                  rx_uc_pkts;     /* Rx UC packets        =
-      */
-+        __be32                  rx_mc_pkts;     /* Rx MC packets        =
-      */
-+        __be32                  rx_bc_pkts;     /* Rx BC packets        =
-      */
-+        __be32                  tx_uc_pkts;     /* Tx UC packets        =
-      */
-+        __be32                  tx_mc_pkts;     /* Tx MC packets        =
-      */
-+        __be32                  tx_bc_pkts;     /* Tx BC packets        =
-      */
-+        __be32                  fcs_err;        /* FCS errors           =
-      */
-+        __be32                  align_err;      /* Alignment errors     =
-      */
-+        __be32                  false_carrier;  /* False carrier detecti=
-on    */
-+        __be32                  runt_pkts;      /* Rx runt packets      =
-      */
-+        __be32                  jabber_pkts;    /* Rx jabber packets    =
-      */
-+        __be32                  rx_pause_xon;   /* Rx pause XON frames  =
-      */
-+        __be32                  rx_pause_xoff;  /* Rx XOFF frames       =
-      */
-+        __be32                  tx_pause_xon;   /* Tx XON frames        =
-      */
-+        __be32                  tx_pause_xoff;  /* Tx XOFF frames       =
-      */
-+        __be32                  tx_s_collision; /* Single collision fram=
-es    */
-+        __be32                  tx_m_collision; /* Multiple collision fr=
-ames  */
-+        __be32                  l_collision;    /* Late collision frames=
-      */
-+        __be32                  e_collision;    /* Excessive collision f=
-rames */
-+        __be32                  rx_ctl_frames;  /* Rx control frames    =
-      */
-+        __be32                  rx_64_frames;   /* Rx 64-bytes frames   =
-      */
-+        __be32                  rx_127_frames;  /* Rx 65-127 bytes frame=
-s     */
-+        __be32                  rx_255_frames;  /* Rx 128-255 bytes fram=
-es    */
-+        __be32                  rx_511_frames;  /* Rx 256-511 bytes fram=
-es    */
-+        __be32                  rx_1023_frames; /* Rx 512-1023 bytes fra=
-mes   */
-+        __be32                  rx_1522_frames; /* Rx 1024-1522 bytes fr=
-ames  */
-+        __be32                  rx_9022_frames; /* Rx 1523-9022 bytes fr=
-ames  */
-+        __be32                  tx_64_frames;   /* Tx 64-bytes frames   =
-      */
-+        __be32                  tx_127_frames;  /* Tx 65-127 bytes frame=
-s     */
-+        __be32                  tx_255_frames;  /* Tx 128-255 bytes fram=
-es    */
-+        __be32                  tx_511_frames;  /* Tx 256-511 bytes fram=
-es    */
-+        __be32                  tx_1023_frames; /* Tx 512-1023 bytes fra=
-mes   */
-+        __be32                  tx_1522_frames; /* Tx 1024-1522 bytes fr=
-ames  */
-+        __be32                  tx_9022_frames; /* Tx 1523-9022 bytes fr=
-ames  */
-+        __be32                  rx_valid_bytes; /* Rx valid bytes       =
-      */
-+        __be32                  rx_runt_pkts;   /* Rx error runt packets=
-      */
-+        __be32                  rx_jabber_pkts; /* Rx error jabber packe=
-ts    */
-+        __be32                  checksum;       /* Checksum             =
-      */
-+};
-+
-+/* Get NCSI Statistics */
-+struct ncsi_rsp_gns_pkt {
-+        struct ncsi_rsp_pkt_hdr rsp;           /* Response header       =
-  */
-+        __be32                  rx_cmds;       /* Rx NCSI commands      =
-  */
-+        __be32                  dropped_cmds;  /* Dropped commands      =
-  */
-+        __be32                  cmd_type_errs; /* Command type errors   =
-  */
-+        __be32                  cmd_csum_errs; /* Command checksum error=
-s */
-+        __be32                  rx_pkts;       /* Rx NCSI packets       =
-  */
-+        __be32                  tx_pkts;       /* Tx NCSI packets       =
-  */
-+        __be32                  tx_aen_pkts;   /* Tx AEN packets        =
-  */
-+        __be32                  checksum;      /* Checksum              =
-  */
-+};
-+
-+/* Get NCSI Pass-through Statistics */
-+struct ncsi_rsp_gnpts_pkt {
-+        struct ncsi_rsp_pkt_hdr rsp;            /* Response header     *=
-/
-+        __be32                  tx_pkts;        /* Tx packets          *=
-/
-+        __be32                  tx_dropped;     /* Tx dropped packets  *=
-/
-+        __be32                  tx_channel_err; /* Tx channel errors   *=
-/
-+        __be32                  tx_us_err;      /* Tx undersize errors *=
-/
-+        __be32                  rx_pkts;        /* Rx packets          *=
-/
-+        __be32                  rx_dropped;     /* Rx dropped packets  *=
-/
-+        __be32                  rx_channel_err; /* Rx channel errors   *=
-/
-+        __be32                  rx_us_err;      /* Rx undersize errors *=
-/
-+        __be32                  rx_os_err;      /* Rx oversize errors  *=
-/
-+        __be32                  checksum;       /* Checksum            *=
-/
-+};
-+
-+/* Get package status */
-+struct ncsi_rsp_gps_pkt {
-+        struct ncsi_rsp_pkt_hdr rsp;      /* Response header            =
- */
-+        __be32                  status;   /* Hardware arbitration status=
- */
-+        __be32                  checksum;
-+};
-+
-+/* Get package UUID */
-+struct ncsi_rsp_gpuuid_pkt {
-+        struct ncsi_rsp_pkt_hdr rsp;      /* Response header */
-+        unsigned char           uuid[16]; /* UUID            */
-+        __be32                  checksum;
-+};
-+
-+/* AEN: Link State Change */
-+struct ncsi_aen_lsc_pkt {
-+        struct ncsi_aen_pkt_hdr aen;        /* AEN header      */
-+        __be32                  status;     /* Link status     */
-+        __be32                  oem_status; /* OEM link status */
-+        __be32                  checksum;   /* Checksum        */
-+        unsigned char           pad[14];
-+};
-+
-+/* AEN: Configuration Required */
-+struct ncsi_aen_cr_pkt {
-+        struct ncsi_aen_pkt_hdr aen;      /* AEN header */
-+        __be32                  checksum; /* Checksum   */
-+        unsigned char           pad[22];
-+};
-+
-+/* AEN: Host Network Controller Driver Status Change */
-+struct ncsi_aen_hncdsc_pkt {
-+        struct ncsi_aen_pkt_hdr aen;      /* AEN header */
-+        __be32                  status;   /* Status     */
-+        __be32                  checksum; /* Checksum   */
-+        unsigned char           pad[18];
-+};
-+
-+/* NCSI packet revision */
-+#define NCSI_PKT_REVISION       0x01
-+
-+/* NCSI packet commands */
-+#define NCSI_PKT_CMD_CIS        0x00 /* Clear Initial State             =
- */
-+#define NCSI_PKT_CMD_SP         0x01 /* Select Package                  =
- */
-+#define NCSI_PKT_CMD_DP         0x02 /* Deselect Package                =
- */
-+#define NCSI_PKT_CMD_EC         0x03 /* Enable Channel                  =
- */
-+#define NCSI_PKT_CMD_DC         0x04 /* Disable Channel                 =
- */
-+#define NCSI_PKT_CMD_RC         0x05 /* Reset Channel                   =
- */
-+#define NCSI_PKT_CMD_ECNT       0x06 /* Enable Channel Network Tx       =
- */
-+#define NCSI_PKT_CMD_DCNT       0x07 /* Disable Channel Network Tx      =
- */
-+#define NCSI_PKT_CMD_AE         0x08 /* AEN Enable                      =
- */
-+#define NCSI_PKT_CMD_SL         0x09 /* Set Link                        =
- */
-+#define NCSI_PKT_CMD_GLS        0x0a /* Get Link                        =
- */
-+#define NCSI_PKT_CMD_SVF        0x0b /* Set VLAN Filter                 =
- */
-+#define NCSI_PKT_CMD_EV         0x0c /* Enable VLAN                     =
- */
-+#define NCSI_PKT_CMD_DV         0x0d /* Disable VLAN                    =
- */
-+#define NCSI_PKT_CMD_SMA        0x0e /* Set MAC address                 =
- */
-+#define NCSI_PKT_CMD_EBF        0x10 /* Enable Broadcast Filter         =
- */
-+#define NCSI_PKT_CMD_DBF        0x11 /* Disable Broadcast Filter        =
- */
-+#define NCSI_PKT_CMD_EGMF       0x12 /* Enable Global Multicast Filter  =
- */
-+#define NCSI_PKT_CMD_DGMF       0x13 /* Disable Global Multicast Filter =
- */
-+#define NCSI_PKT_CMD_SNFC       0x14 /* Set NCSI Flow Control           =
- */
-+#define NCSI_PKT_CMD_GVI        0x15 /* Get Version ID                  =
- */
-+#define NCSI_PKT_CMD_GC         0x16 /* Get Capabilities                =
- */
-+#define NCSI_PKT_CMD_GP         0x17 /* Get Parameters                  =
- */
-+#define NCSI_PKT_CMD_GCPS       0x18 /* Get Controller Packet Statistics=
- */
-+#define NCSI_PKT_CMD_GNS        0x19 /* Get NCSI Statistics             =
- */
-+#define NCSI_PKT_CMD_GNPTS      0x1a /* Get NCSI Pass-throu Statistics  =
- */
-+#define NCSI_PKT_CMD_GPS        0x1b /* Get package status              =
- */
-+#define NCSI_PKT_CMD_OEM        0x50 /* OEM                             =
- */
-+#define NCSI_PKT_CMD_PLDM       0x51 /* PLDM request over NCSI over RBT =
- */
-+#define NCSI_PKT_CMD_GPUUID     0x52 /* Get package UUID                =
- */
-+
-+/* NCSI packet responses */
-+#define NCSI_PKT_RSP_CIS        (NCSI_PKT_CMD_CIS    + 0x80)
-+#define NCSI_PKT_RSP_SP         (NCSI_PKT_CMD_SP     + 0x80)
-+#define NCSI_PKT_RSP_DP         (NCSI_PKT_CMD_DP     + 0x80)
-+#define NCSI_PKT_RSP_EC         (NCSI_PKT_CMD_EC     + 0x80)
-+#define NCSI_PKT_RSP_DC         (NCSI_PKT_CMD_DC     + 0x80)
-+#define NCSI_PKT_RSP_RC         (NCSI_PKT_CMD_RC     + 0x80)
-+#define NCSI_PKT_RSP_ECNT       (NCSI_PKT_CMD_ECNT   + 0x80)
-+#define NCSI_PKT_RSP_DCNT       (NCSI_PKT_CMD_DCNT   + 0x80)
-+#define NCSI_PKT_RSP_AE         (NCSI_PKT_CMD_AE     + 0x80)
-+#define NCSI_PKT_RSP_SL         (NCSI_PKT_CMD_SL     + 0x80)
-+#define NCSI_PKT_RSP_GLS        (NCSI_PKT_CMD_GLS    + 0x80)
-+#define NCSI_PKT_RSP_SVF        (NCSI_PKT_CMD_SVF    + 0x80)
-+#define NCSI_PKT_RSP_EV         (NCSI_PKT_CMD_EV     + 0x80)
-+#define NCSI_PKT_RSP_DV         (NCSI_PKT_CMD_DV     + 0x80)
-+#define NCSI_PKT_RSP_SMA        (NCSI_PKT_CMD_SMA    + 0x80)
-+#define NCSI_PKT_RSP_EBF        (NCSI_PKT_CMD_EBF    + 0x80)
-+#define NCSI_PKT_RSP_DBF        (NCSI_PKT_CMD_DBF    + 0x80)
-+#define NCSI_PKT_RSP_EGMF       (NCSI_PKT_CMD_EGMF   + 0x80)
-+#define NCSI_PKT_RSP_DGMF       (NCSI_PKT_CMD_DGMF   + 0x80)
-+#define NCSI_PKT_RSP_SNFC       (NCSI_PKT_CMD_SNFC   + 0x80)
-+#define NCSI_PKT_RSP_GVI        (NCSI_PKT_CMD_GVI    + 0x80)
-+#define NCSI_PKT_RSP_GC         (NCSI_PKT_CMD_GC     + 0x80)
-+#define NCSI_PKT_RSP_GP         (NCSI_PKT_CMD_GP     + 0x80)
-+#define NCSI_PKT_RSP_GCPS       (NCSI_PKT_CMD_GCPS   + 0x80)
-+#define NCSI_PKT_RSP_GNS        (NCSI_PKT_CMD_GNS    + 0x80)
-+#define NCSI_PKT_RSP_GNPTS      (NCSI_PKT_CMD_GNPTS  + 0x80)
-+#define NCSI_PKT_RSP_GPS        (NCSI_PKT_CMD_GPS    + 0x80)
-+#define NCSI_PKT_RSP_OEM        (NCSI_PKT_CMD_OEM    + 0x80)
-+#define NCSI_PKT_RSP_PLDM       (NCSI_PKT_CMD_PLDM   + 0x80)
-+#define NCSI_PKT_RSP_GPUUID     (NCSI_PKT_CMD_GPUUID + 0x80)
-+
-+/* NCSI response code/reason */
-+#define NCSI_PKT_RSP_C_COMPLETED        0x0000 /* Command Completed     =
-   */
-+#define NCSI_PKT_RSP_C_FAILED           0x0001 /* Command Failed        =
-   */
-+#define NCSI_PKT_RSP_C_UNAVAILABLE      0x0002 /* Command Unavailable   =
-   */
-+#define NCSI_PKT_RSP_C_UNSUPPORTED      0x0003 /* Command Unsupported   =
-   */
-+#define NCSI_PKT_RSP_R_NO_ERROR         0x0000 /* No Error              =
-   */
-+#define NCSI_PKT_RSP_R_INTERFACE        0x0001 /* Interface not ready   =
-   */
-+#define NCSI_PKT_RSP_R_PARAM            0x0002 /* Invalid Parameter     =
-   */
-+#define NCSI_PKT_RSP_R_CHANNEL          0x0003 /* Channel not Ready     =
-   */
-+#define NCSI_PKT_RSP_R_PACKAGE          0x0004 /* Package not Ready     =
-   */
-+#define NCSI_PKT_RSP_R_LENGTH           0x0005 /* Invalid payload length=
-   */
-+#define NCSI_PKT_RSP_R_UNKNOWN          0x7fff /* Command type unsupport=
-ed */
-+
-+/* NCSI AEN packet type */
-+#define NCSI_PKT_AEN            0xFF /* AEN Packet               */
-+#define NCSI_PKT_AEN_LSC        0x00 /* Link status change       */
-+#define NCSI_PKT_AEN_CR         0x01 /* Configuration required   */
-+#define NCSI_PKT_AEN_HNCDSC     0x02 /* HNC driver status change */
-+
-+#endif /* NCSI_PKT_H */
-diff --git a/slirp/ncsi.c b/slirp/ncsi.c
-new file mode 100644
-index 000000000000..77302ec5e5a5
---- /dev/null
-+++ b/slirp/ncsi.c
-@@ -0,0 +1,78 @@
-+/*
-+ * NC-SI (Network Controller Sideband Interface) "echo" model
-+ *
-+ * Copyright (C) 2016 IBM Corp.
-+ *
-+ * This code is licensed under the GPL version 2 or later. See the
-+ * COPYING file in the top-level directory.
-+ */
-+#include "qemu/osdep.h"
-+#include "slirp.h"
-+
-+#include "ncsi-pkt.h"
-+
-+/*
-+ * ncsi header + checksum + max payload (NCSI_PKT_CMD_GVI)
-+ */
-+#define NCSI_LEN (sizeof(struct ncsi_pkt_hdr) + 4 + 36)
-+
-+void ncsi_input(Slirp *slirp, const uint8_t *pkt, int pkt_len)
-+{
-+    struct ncsi_pkt_hdr *nh =3D (struct ncsi_pkt_hdr *)(pkt + ETH_HLEN);
-+    uint8_t ncsi_reply[ETH_HLEN + NCSI_LEN];
-+    struct ethhdr *reh =3D (struct ethhdr *)ncsi_reply;
-+    struct ncsi_rsp_pkt_hdr *rnh =3D (struct ncsi_rsp_pkt_hdr *)
-+        (ncsi_reply + ETH_HLEN);
-+
-+    memset(ncsi_reply, 0, sizeof(ncsi_reply));
-+
-+    memset(reh->h_dest, 0xff, ETH_ALEN);
-+    memset(reh->h_source, 0xff, ETH_ALEN);
-+    reh->h_proto =3D htons(ETH_P_NCSI);
-+
-+    rnh->common.mc_id        =3D nh->mc_id;
-+    rnh->common.revision     =3D NCSI_PKT_REVISION;
-+    rnh->common.reserved     =3D 0;
-+    rnh->common.id           =3D nh->id;
-+    rnh->common.type         =3D nh->type + 0x80;
-+    rnh->common.channel      =3D nh->channel;
-+    rnh->common.length       =3D htons(4);
-+    rnh->common.reserved1[0] =3D 0;
-+    rnh->common.reserved1[1] =3D 0;
-+    rnh->code         =3D htons(NCSI_PKT_RSP_C_COMPLETED);
-+    rnh->reason       =3D htons(NCSI_PKT_RSP_R_NO_ERROR);
-+
-+    switch (nh->type) {
-+    case NCSI_PKT_CMD_SMA:
-+        rnh->common.length =3D htons(4);
-+        break;
-+    case NCSI_PKT_CMD_GVI:
-+        rnh->common.length =3D htons(36);
-+        break;
-+    case NCSI_PKT_CMD_GC: {
-+        struct ncsi_rsp_gc_pkt *rsp =3D (struct ncsi_rsp_gc_pkt *) rnh;
-+
-+        rnh->common.length =3D htons(32);
-+        rsp->cap =3D htonl(~0);
-+        rsp->bc_cap =3D htonl(~0);
-+        rsp->mc_cap =3D htonl(~0);
-+        rsp->buf_cap =3D htonl(~0);
-+        rsp->aen_cap =3D htonl(~0);
-+        rsp->vlan_mode =3D 0xff;
-+        rsp->uc_cnt =3D 2;
-+        break;
-+    }
-+
-+    case NCSI_PKT_CMD_GLS: {
-+        struct ncsi_rsp_gls_pkt *rsp =3D (struct ncsi_rsp_gls_pkt *) rnh=
-;
-+
-+        rnh->common.length =3D htons(16);
-+        rsp->status =3D htonl(0x1);
-+        break;
-+    }
-+    default:
-+        break;
-+    }
-+
-+    slirp_output(slirp->opaque, ncsi_reply, sizeof(ncsi_reply));
-+}
-diff --git a/slirp/slirp.c b/slirp/slirp.c
-index 5a94b06f5eb4..9a50918346b1 100644
---- a/slirp/slirp.c
-+++ b/slirp/slirp.c
-@@ -870,6 +870,10 @@ void slirp_input(Slirp *slirp, const uint8_t *pkt, i=
-nt pkt_len)
-         }
-         break;
-=20
-+    case ETH_P_NCSI:
-+        ncsi_input(slirp, pkt, pkt_len);
-+        break;
-+
-     default:
-         break;
-     }
-diff --git a/slirp/slirp.h b/slirp/slirp.h
-index 3877f667f027..5af4f482b55f 100644
---- a/slirp/slirp.h
-+++ b/slirp/slirp.h
-@@ -231,6 +231,9 @@ extern Slirp *slirp_instance;
-=20
- void if_start(Slirp *);
-=20
-+/* ncsi.c */
-+void ncsi_input(Slirp *slirp, const uint8_t *pkt, int pkt_len);
-+
- #ifndef _WIN32
- #include <netdb.h>
- #endif
---=20
-2.7.4
+I reproduced the above traces and I will investigate what's wrong with
+the VFIO integration
 
+Thanks
+
+Eric
+> ..
+> ..
+> 
+> And this goes on until I kill the qemu process.
+> 
+>>
+>>
+> 

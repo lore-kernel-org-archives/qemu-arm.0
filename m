@@ -1,67 +1,71 @@
-Received: by 10.25.15.230 with SMTP id 99csp215976lfp;
-        Tue, 4 Apr 2017 06:44:36 -0700 (PDT)
-X-Received: by 10.55.114.199 with SMTP id n190mr23225070qkc.229.1491313476715;
-        Tue, 04 Apr 2017 06:44:36 -0700 (PDT)
+Received: by 10.25.15.230 with SMTP id 99csp225105lfp;
+        Tue, 4 Apr 2017 07:06:24 -0700 (PDT)
+X-Received: by 10.200.51.92 with SMTP id u28mr25248611qta.151.1491314783953;
+        Tue, 04 Apr 2017 07:06:23 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id n128si15031436qkd.262.2017.04.04.06.44.36
+        by mx.google.com with ESMTPS id n44si15111118qta.1.2017.04.04.07.06.23
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 04 Apr 2017 06:44:36 -0700 (PDT)
+        Tue, 04 Apr 2017 07:06:23 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:35866 helo=lists.gnu.org)
+       dkim=fail header.i=@linaro.org;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:35941 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1cvOlA-00038o-6n
-	for alex.bennee@linaro.org; Tue, 04 Apr 2017 09:44:36 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:33303)
+	id 1cvP6F-000251-Ep
+	for alex.bennee@linaro.org; Tue, 04 Apr 2017 10:06:23 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:39074)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <k.kozlowski.k@gmail.com>) id 1cvOl4-00038Y-En
-	for qemu-arm@nongnu.org; Tue, 04 Apr 2017 09:44:31 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1cvP5Q-0001dN-Et
+	for qemu-arm@nongnu.org; Tue, 04 Apr 2017 10:05:38 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <k.kozlowski.k@gmail.com>) id 1cvOl1-00081E-2O
-	for qemu-arm@nongnu.org; Tue, 04 Apr 2017 09:44:30 -0400
-Received: from mail-wr0-f196.google.com ([209.85.128.196]:33558)
+	(envelope-from <peter.maydell@linaro.org>) id 1cvP5P-00023W-Ba
+	for qemu-arm@nongnu.org; Tue, 04 Apr 2017 10:05:32 -0400
+Received: from mail-wr0-x234.google.com ([2a00:1450:400c:c0c::234]:34286)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <k.kozlowski.k@gmail.com>)
-	id 1cvOkg-0007wc-Mu; Tue, 04 Apr 2017 09:44:26 -0400
-Received: by mail-wr0-f196.google.com with SMTP id u18so42391599wrc.0;
-	Tue, 04 Apr 2017 06:44:06 -0700 (PDT)
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1cvP5P-00022Y-5Y
+	for qemu-arm@nongnu.org; Tue, 04 Apr 2017 10:05:31 -0400
+Received: by mail-wr0-x234.google.com with SMTP id t20so11973374wra.1
+	for <qemu-arm@nongnu.org>; Tue, 04 Apr 2017 07:05:31 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=H3knjsp16HCDYtYg36xMSVs8DoNVSYQxEN2rGKy4IJo=;
+	b=O1uMtNvsO1oCftv4uNoAxNQs3WNl/IrTnlFbINbMAGZDFph8Np+r9IuZBQzqBEfil6
+	Kg+pcryTzNsMq/XHStreiic4Fp0oxqNPNJXJJswQYRCfSTg9dBkM4RAFuk0MwA1GUaZa
+	k8TTEzh5nnBI50j2tY59qyvOr0RCmCS5Fmc40=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:date:from:to:cc:subject:message-id:references
-	:mime-version:content-disposition:in-reply-to:user-agent;
-	bh=kuAweG/zdzGrafd41Bn9YP4uNv69rB+Zsm0HWZNfJPE=;
-	b=m77ORsn8Ow0o54BvYb7Tn2YM5MrF6cghAvIaMxhbt6mrlfj6ffETHj+tMfr+ZpKKkr
-	pfkMmoRP3IZVOyS9mP7M5EXNcgpS6ZLuJsQuGfNV28Z6wOJOhxph7CF7M3gYDR+OyzuB
-	Caz8MIMgVLdkMVnCcgMW2OdmASFyLPv8M1mWn9bmwC7koRQqy3GC3kAxUFpzokFVUfb7
-	Eg0Enw5vVyuMT3yyZeU9rbZpDKHaoskjxBlYY5iwLPhtLtdQKc85f/06grOnMX5TxsnF
-	zhlx1yYQ5Rt2F2uqHsIMYIkSOpRJZ7chV2Fv4gVNqDZftF14zgO2L+u0NeEtHhIuBaS3
-	qozw==
-X-Gm-Message-State: AFeK/H1aKxSDaCivslXXKKLX1MUMhCRs6KP5OnTA9mfF1svqgjCK8N+TghV8MmmVA/apFg==
-X-Received: by 10.223.164.2 with SMTP id d2mr19394017wra.47.1491313445223;
-	Tue, 04 Apr 2017 06:44:05 -0700 (PDT)
-Received: from kozik-book ([212.203.117.2])
-	by smtp.googlemail.com with ESMTPSA id
-	e21sm14657791wma.5.2017.04.04.06.44.04
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Tue, 04 Apr 2017 06:44:04 -0700 (PDT)
-Date: Tue, 4 Apr 2017 15:44:02 +0200
-From: Krzysztof Kozlowski <krzk@kernel.org>
-To: Peter Maydell <peter.maydell@linaro.org>
-Message-ID: <20170404134402.GA4196@kozik-book>
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=H3knjsp16HCDYtYg36xMSVs8DoNVSYQxEN2rGKy4IJo=;
+	b=T4udtv8J8hnMEBN8+mCv8USURsMqkEZW6zfGjF9JUHAmSdPRvrGXuYrIbB1gtpm76u
+	iIkNts/NTIYvTQzBHMQwAsoJ9jM4fbnj6yQJ3XIpHn7O7gofwKgLO+1JtWGcE+sTmB8Y
+	fKHzVpt4BdUmCkOlS2fLOikVu2puvBqLni3yn2lMf7hmROP2DbEM3wRzV/Z3hbIsdCrq
+	oLZZnzYgKISaPs9Xkad4joxZjmKKG+8VZBmrEOcAziKeZ6ulQlaFvHUHRO3uAiYBdU2D
+	dIgdzUqwrmYaxpxz6iWVfmHlzJAl2LleO9iHPcGnytYyX6e5uhW43M2StxFZBVpvxXSB
+	hh9g==
+X-Gm-Message-State: AFeK/H2CAGYYC0F9vw3M81ABFe9qQI8u4zucynOXUw0CDbisdoM32qvxhia0uf9o8nJlPS96h2XjpL4BeU2nOqcr
+X-Received: by 10.223.169.70 with SMTP id u64mr19673001wrc.187.1491314730010; 
+	Tue, 04 Apr 2017 07:05:30 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.223.145.97 with HTTP; Tue, 4 Apr 2017 07:05:09 -0700 (PDT)
+In-Reply-To: <20170404134402.GA4196@kozik-book>
 References: <20170318192509.15499-1-krzk@kernel.org>
 	<CAFEAcA8WGoa=DYXRH4MHfnHmUR_5-xERdmcuqrsk=bmS7GBCmg@mail.gmail.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-In-Reply-To: <CAFEAcA8WGoa=DYXRH4MHfnHmUR_5-xERdmcuqrsk=bmS7GBCmg@mail.gmail.com>
-User-Agent: Mutt/1.5.24 (2015-08-30)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.85.128.196
+	<20170404134402.GA4196@kozik-book>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 4 Apr 2017 15:05:09 +0100
+Message-ID: <CAFEAcA9UGEVVUfL3--goP4mVU+ezegWPcoka41XM8d_E2yyJkQ@mail.gmail.com>
+To: Krzysztof Kozlowski <krzk@kernel.org>
+Content-Type: text/plain; charset=UTF-8
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2a00:1450:400c:c0c::234
 Subject: Re: [Qemu-arm] [PATCH v2] hw/misc: Add Exynos4210 Pseudo Random
  Number Generator
 X-BeenThere: qemu-arm@nongnu.org
@@ -79,75 +83,59 @@ Cc: Igor Mitsyanko <i.mitsyanko@gmail.com>, qemu-arm <qemu-arm@nongnu.org>,
 	QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: N7M8IOH+LQVl
+X-TUID: FQTpBB0YdOj0
 
-On Tue, Apr 04, 2017 at 01:09:08PM +0100, Peter Maydell wrote:
-> On 18 March 2017 at 19:25, Krzysztof Kozlowski <krzk@kernel.org> wrote:
-> > Add emulation for Exynos4210 Pseudo Random Number Generator which could
-> > work on fixed seeds or with seeds provided by True Random Number
-> > Generator block inside the SoC.
-> >
-> > Implement only the fixed seeds part of it in polling mode (no
-> > interrupts).  Simple testing:
-> >     # echo "exynos" > /sys/class/misc/hw_random/rng_current
-> >     # dd if=/dev/hwrng of=/dev/null bs=1 count=16
-> >
-> > Signed-off-by: Krzysztof Kozlowski <krzk@kernel.org>
-> >
-> > ---
-> >
-> > Changes since v1:
-> > 1. Use GRand-like functions to fix build on MingW32 (this adds also
-> >    finalize).
-> > 2. Add DPRINTF macro.
-> > 3. Use HWADDR_PRIx and family for printing values.
-> 
-> Is there a data sheet that describes this RNG? I had a quick google
-> but couldn't find anything in the 4210 manual you can get from Samsung.
+On 4 April 2017 at 14:44, Krzysztof Kozlowski <krzk@kernel.org> wrote:
+> On Tue, Apr 04, 2017 at 01:09:08PM +0100, Peter Maydell wrote:
+>> On 18 March 2017 at 19:25, Krzysztof Kozlowski <krzk@kernel.org> wrote:
+>> > Add emulation for Exynos4210 Pseudo Random Number Generator which could
+>> > work on fixed seeds or with seeds provided by True Random Number
+>> > Generator block inside the SoC.
+>> >
+>> > Implement only the fixed seeds part of it in polling mode (no
+>> > interrupts).  Simple testing:
+>> >     # echo "exynos" > /sys/class/misc/hw_random/rng_current
+>> >     # dd if=/dev/hwrng of=/dev/null bs=1 count=16
+>> >
+>> > Signed-off-by: Krzysztof Kozlowski <krzk@kernel.org>
+>> >
+>> > ---
+>> >
+>> > Changes since v1:
+>> > 1. Use GRand-like functions to fix build on MingW32 (this adds also
+>> >    finalize).
+>> > 2. Add DPRINTF macro.
+>> > 3. Use HWADDR_PRIx and family for printing values.
+>>
+>> Is there a data sheet that describes this RNG? I had a quick google
+>> but couldn't find anything in the 4210 manual you can get from Samsung.
+>
+> Official and public datasheet - I never heard about it... AFAIK, Samsung
+> never released any datasheet... But recently I found a copy of
+> Exynos4412 datasheet published on FriendlyArm website:
+> http://wiki.friendlyarm.com/wiki/index.php/NanoPC-T1
+> (at the bottom in "Resources").
+>
+> Some blocks in Exynos4412, including the RNG, are the same as in
+> Exynos4210. However, you should not expect too much data about the RNG
+> in the datasheet...
+>
+>> In particular I'm not sure we want to use GRand here.
+>
+> Now, I am not sure neither. :)
 
-Official and public datasheet - I never heard about it... AFAIK, Samsung
-never released any datasheet... But recently I found a copy of
-Exynos4412 datasheet published on FriendlyArm website:
-http://wiki.friendlyarm.com/wiki/index.php/NanoPC-T1
-(at the bottom in "Resources").
+The last RNG we added was hw/misc/bcm2835_rng.c, which uses
+qcrypto_random_bytes() to get cryptographically-random bytes
+from the host. On the other hand it sounds like this Exynos
+hardware is a PRNG without true-random input...
 
-Some blocks in Exynos4412, including the RNG, are the same as in
-Exynos4210. However, you should not expect too much data about the RNG
-in the datasheet...
+> During the discussions about new kernel driver, I found that this RNG
+> module (at least on Exynos4412 board) requires seeding but it is not
+> following the Pseudo RNG behavior - seeding with the same value produces
+> different results. This means that GRand would not be needed here.
 
-> In particular I'm not sure we want to use GRand here.
+That's rather odd. You're right that the datasheet is hopelessly
+uninformative about what's actually going on.
 
-Now, I am not sure neither. :) Let me describe the background:
-
-Recently I started also improving the Linux kernel driver for RNG module
-which ended in writing a new driver followed by discussions
-from which I learnt a lot. See [1][2][3]
-
-The datasheet is not saying too much how the RNG module works inside...
-so it is all a guessing. I must admit that I wrote the QEMU RNG part mostly
-looking at behavior of kernel driver and combining the knowledge with
-information obtained from datasheet. Thus I used GRand to have
-repeatable sequences for same seed.
-
-During the discussions about new kernel driver, I found that this RNG
-module (at least on Exynos4412 board) requires seeding but it is not
-following the Pseudo RNG behavior - seeding with the same value produces
-different results. This means that GRand would not be needed here.
-
-The new driver (not merged yet) took this into account and it behaves
-differently than previous one. Most notably it tries to be a better pseudo
-random number generator in terms of randomness.
-
-I did not test the new kernel driver with this QEMU RNG driver because
-it uses different user-space API and I still did not configure full
-Linux box in QEMU (mounting root, having some distro in the image). I am
-booting the QEMU kernel to initramfs with some toolset included.
-
-[1] https://www.spinics.net/lists/kernel/msg2474154.html
-[2] https://www.spinics.net/lists/arm-kernel/msg571653.html
-[3] https://www.spinics.net/lists/arm-kernel/msg571516.html
-
-
-Best regards,
-Krzysztof
-
+thanks
+-- PMM

@@ -1,75 +1,61 @@
-Received: by 10.25.15.230 with SMTP id 99csp243066lfp;
-        Tue, 4 Apr 2017 07:44:51 -0700 (PDT)
-X-Received: by 10.55.47.5 with SMTP id v5mr20918427qkh.162.1491317090994;
-        Tue, 04 Apr 2017 07:44:50 -0700 (PDT)
+Received: by 10.25.15.230 with SMTP id 99csp394163lfp;
+        Tue, 4 Apr 2017 13:25:02 -0700 (PDT)
+X-Received: by 10.55.23.149 with SMTP id 21mr14105149qkx.267.1491337502394;
+        Tue, 04 Apr 2017 13:25:02 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id 43si15170350qtr.309.2017.04.04.07.44.50
+        by mx.google.com with ESMTPS id u67si15989899qkh.159.2017.04.04.13.25.02
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 04 Apr 2017 07:44:50 -0700 (PDT)
+        Tue, 04 Apr 2017 13:25:02 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:36059 helo=lists.gnu.org)
+Received: from localhost ([::1]:37471 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1cvPhS-0005Ls-Gt
-	for alex.bennee@linaro.org; Tue, 04 Apr 2017 10:44:50 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:55574)
+	id 1cvV0f-0001iO-Qh
+	for alex.bennee@linaro.org; Tue, 04 Apr 2017 16:25:01 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:43309)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <ehabkost@redhat.com>) id 1cvPhL-0005Ll-Kh
-	for qemu-arm@nongnu.org; Tue, 04 Apr 2017 10:44:45 -0400
+	(envelope-from <ehabkost@redhat.com>) id 1cvV0Y-0001ed-AE
+	for qemu-arm@nongnu.org; Tue, 04 Apr 2017 16:24:56 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <ehabkost@redhat.com>) id 1cvPhG-000441-J5
-	for qemu-arm@nongnu.org; Tue, 04 Apr 2017 10:44:43 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:39546)
+	(envelope-from <ehabkost@redhat.com>) id 1cvV0V-0002oR-10
+	for qemu-arm@nongnu.org; Tue, 04 Apr 2017 16:24:54 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:51942)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <ehabkost@redhat.com>)
-	id 1cvPhG-00042G-9e; Tue, 04 Apr 2017 10:44:38 -0400
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
-	[10.5.11.15])
+	id 1cvV0U-0002o7-Nx; Tue, 04 Apr 2017 16:24:50 -0400
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
+	[10.5.11.11])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id A15191556C;
-	Tue,  4 Apr 2017 14:44:35 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com A15191556C
+	by mx1.redhat.com (Postfix) with ESMTPS id 284B7461EA;
+	Tue,  4 Apr 2017 20:24:49 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 284B7461EA
 Authentication-Results: ext-mx05.extmail.prod.ext.phx2.redhat.com;
 	dmarc=none (p=none dis=none) header.from=redhat.com
 Authentication-Results: ext-mx05.extmail.prod.ext.phx2.redhat.com;
 	spf=pass smtp.mailfrom=ehabkost@redhat.com
-DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com A15191556C
+DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com 284B7461EA
 Received: from localhost (ovpn-116-5.gru2.redhat.com [10.97.116.5])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 5E57396294;
-	Tue,  4 Apr 2017 14:44:22 +0000 (UTC)
-Date: Tue, 4 Apr 2017 11:44:17 -0300
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 19E575C464;
+	Tue,  4 Apr 2017 20:24:38 +0000 (UTC)
 From: Eduardo Habkost <ehabkost@redhat.com>
-To: Alexander Graf <agraf@suse.de>
-Message-ID: <20170404144417.GT1910@thinpad.lan.raisama.net>
-References: <20170401004624.30886-4-ehabkost@redhat.com>
-	<CAFEAcA_uRHZR0N-=h=eWsDKjZpN4csua1j++wLVfZbsNVpaH5Q@mail.gmail.com>
-	<20170403201026.GJ1910@thinpad.lan.raisama.net>
-	<f612e8c0-0f2a-d373-12c1-a20d6dccc7d0@suse.de>
-	<20170403210030.GK1910@thinpad.lan.raisama.net>
-	<522a3489-2e8c-b31a-c592-391fe5cf3b5f@suse.de>
-	<40848cee-6a6b-75fa-c395-2ba4705d5bf0@redhat.com>
-	<cab14f30-929d-c5ab-143e-07e63009f808@suse.de>
-	<20170404125904.GQ1910@thinpad.lan.raisama.net>
-	<9d0341ca-6713-3d1f-4d91-0818957c28fb@suse.de>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <9d0341ca-6713-3d1f-4d91-0818957c28fb@suse.de>
-X-Fnord: you can see the fnord
-User-Agent: Mutt/1.7.1 (2016-10-04)
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
+To: qemu-devel@nongnu.org
+Date: Tue,  4 Apr 2017 17:24:10 -0300
+Message-Id: <20170404202429.14643-3-ehabkost@redhat.com>
+In-Reply-To: <20170404202429.14643-1-ehabkost@redhat.com>
+References: <20170404202429.14643-1-ehabkost@redhat.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
 	(mx1.redhat.com [10.5.110.29]);
-	Tue, 04 Apr 2017 14:44:36 +0000 (UTC)
+	Tue, 04 Apr 2017 20:24:49 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [RFC 03/19] sysbus: Set user_creatable=false by
+Subject: [Qemu-arm] [PATCH v2 02/21] sysbus: Set user_creatable=false by
  default on TYPE_SYS_BUS_DEVICE
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
@@ -83,253 +69,588 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>,
+	Yi Min Zhao <zyimin@linux.vnet.ibm.com>,
 	"Michael S. Tsirkin" <mst@redhat.com>, Jason Wang <jasowang@redhat.com>,
-	QEMU Developers <qemu-devel@nongnu.org>, Gerd Hoffmann <kraxel@redhat.com>,
-	Qemu-block <qemu-block@nongnu.org>, Markus Armbruster <armbru@redhat.com>,
+	Pierre Morel <pmorel@linux.vnet.ibm.com>,
+	Markus Armbruster <armbru@redhat.com>,
+	Gerd Hoffmann <kraxel@redhat.com>, Rob Herring <robh@kernel.org>,
+	sstabellini@kernel.org, qemu-block@nongnu.org,
+	Alexander Graf <agraf@suse.de>,
+	Christian Borntraeger <borntraeger@de.ibm.com>,
 	Shannon Zhao <zhaoshenglong@huawei.com>,
 	Marcel Apfelbaum <marcel@redhat.com>, Richard Henderson <rth@twiddle.net>,
-	Laszlo Ersek <lersek@redhat.com>, Thomas Huth <thuth@redhat.com>,
-	"Gabriel L . Somlo" <somlo@cmu.edu>,
+	Laszlo Ersek <lersek@redhat.com>, Kevin Wolf <kwolf@redhat.com>,
+	Thomas Huth <thuth@redhat.com>, "Gabriel L . Somlo" <somlo@cmu.edu>,
 	Alistair Francis <alistair.francis@xilinx.com>,
 	Beniamino Galvani <b.galvani@gmail.com>,
 	Alex Williamson <alex.williamson@redhat.com>,
-	qemu-arm <qemu-arm@nongnu.org>, Igor Mammedov <imammedo@redhat.com>,
-	Scott Wood <scottwood@freescale.com>, John Snow <jsnow@redhat.com>,
-	David Gibson <david@gibson.dropbear.id.au>, Kevin Wolf <kwolf@redhat.com>,
-	Prasad J Pandit <pjp@fedoraproject.org>, Max Reitz <mreitz@redhat.com>,
-	"qemu-ppc@nongnu.org" <qemu-ppc@nongnu.org>,
-	Paolo Bonzini <pbonzini@redhat.com>
+	qemu-arm@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
+	Cornelia Huck <cornelia.huck@de.ibm.com>, John Snow <jsnow@redhat.com>,
+	David Gibson <david@gibson.dropbear.id.au>,
+	Juergen Gross <jgross@suse.com>,
+	Frank Blaschka <frank.blaschka@de.ibm.com>,
+	Prasad J Pandit <pjp@fedoraproject.org>,
+	Max Reitz <mreitz@redhat.com>, qemu-ppc@nongnu.org,
+	Igor Mammedov <imammedo@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: NnfRb1nlIcxH
+X-TUID: rYNQBuSU5B8l
 
-On Tue, Apr 04, 2017 at 03:06:30PM +0200, Alexander Graf wrote:
-> On 04/04/2017 02:59 PM, Eduardo Habkost wrote:
-> > On Tue, Apr 04, 2017 at 09:02:28AM +0200, Alexander Graf wrote:
-> > > 
-> > > On 04.04.17 08:58, Thomas Huth wrote:
-> > > > On 04.04.2017 08:53, Alexander Graf wrote:
-> > > > > 
-> > > > > On 03.04.17 23:00, Eduardo Habkost wrote:
-> > > > > > On Mon, Apr 03, 2017 at 10:15:44PM +0200, Alexander Graf wrote:
-> > > > > > > 
-> > > > > > > On 03.04.17 22:10, Eduardo Habkost wrote:
-> > > > > > > > On Mon, Apr 03, 2017 at 08:49:16PM +0100, Peter Maydell wrote:
-> > > > > > > > > On 1 April 2017 at 01:46, Eduardo Habkost <ehabkost@redhat.com> wrote:
-> > > > > > > > > > commit 33cd52b5d7b9adfd009e95f07e6c64dd88ae2a31 unset
-> > > > > > > > > > cannot_instantiate_with_device_add_yet in TYPE_SYSBUS, making
-> > > > > > > > > > all kinds of untested devices available to -device and
-> > > > > > > > > > device_add.
-> > > > > > > > > > 
-> > > > > > > > > > The problem with that is: setting has_dynamic_sysbus on a
-> > > > > > > > > > machine-type lets it accept all the 288 sysbus device types we
-> > > > > > > > > > have in QEMU, and most of them were never meant to be used with
-> > > > > > > > > > -device. That's a lot of untested code.
-> > > > > > > > > > 
-> > > > > > > > > > Fortunately today we have just a few has_dynamic_sysbus=1
-> > > > > > > > > > machines: virt, pc-q35-*, ppce500, and spapr.
-> > > > > > > > > > 
-> > > > > > > > > > virt, ppce500, and spapr have extra checks to ensure just a few
-> > > > > > > > > > device types can be instantiated:
-> > > > > > > > > > 
-> > > > > > > > > > * virt supports only TYPE_VFIO_CALXEDA_XGMAC, TYPE_VFIO_AMD_XGBE.
-> > > > > > > > > > * ppce500 supports only TYPE_ETSEC_COMMON.
-> > > > > > > > > > * spapr supports only TYPE_SPAPR_PCI_HOST_BRIDGE.
-> > > > > > > > > > 
-> > > > > > > > > > q35 has no code to block unsupported sysbus devices, however, and
-> > > > > > > > > > accepts all device types. Fortunately, only the following 20
-> > > > > > > > > > device types are compiled into the qemu-system-x86_64 and
-> > > > > > > > > > qemu-system-i386 binaries:
-> > > > > > > > > > 
-> > > > > > > > > > * allwinner-ahci
-> > > > > > > > > > * amd-iommu
-> > > > > > > > > > * cfi.pflash01
-> > > > > > > > > > * esp
-> > > > > > > > > > * fw_cfg_io
-> > > > > > > > > > * fw_cfg_mem
-> > > > > > > > > > * generic-sdhci
-> > > > > > > > > > * hpet
-> > > > > > > > > > * intel-iommu
-> > > > > > > > > > * ioapic
-> > > > > > > > > > * isabus-bridge
-> > > > > > > > > > * kvmclock
-> > > > > > > > > > * kvm-ioapic
-> > > > > > > > > > * kvmvapic
-> > > > > > > > > > * SUNW,fdtwo
-> > > > > > > > > > * sysbus-ahci
-> > > > > > > > > > * sysbus-fdc
-> > > > > > > > > > * sysbus-ohci
-> > > > > > > > > > * unimplemented-device
-> > > > > > > > > > * virtio-mmio
-> > > > > > > > > > 
-> > > > > > > > > > Instead of requiring each machine-type with has_dynamic_sysbus=1
-> > > > > > > > > > to implement its own mechanism to block unsupported devices, we
-> > > > > > > > > > can use the user_creatable flag to ensure we won't let the user
-> > > > > > > > > > plug anything that will never work.
-> > > > > > > > > How does this work? Which devices can be dynamically
-> > > > > > > > > plugged is machine dependent. You can't dynamically-plug
-> > > > > > > > > an intel-iommu on the ARM virt board, and you can't
-> > > > > > > > > dynamically-plug the vfio-calxeda-xgmac on the spapr
-> > > > > > > > > board, and so on. So I don't see how we can just have
-> > > > > > > > > a flag on the device itself that controls whether
-> > > > > > > > > it can be dynamically plugged.
-> > > > > > > > > 
-> > > > > > > > > So I'm definitely coming around to the opinion that
-> > > > > > > > > it's just a bug in the q35 board that it doesn't have
-> > > > > > > > > any device whitelisting, and we should fix that.
-> > > > > > > > OK, let's assume q35 must implement a whitelist:
-> > > > > > > > 
-> > > > > > > > To build that whitelist, we need to be able to know what should
-> > > > > > > > be in the whitelist, or not. And nobody knew for sure what was
-> > > > > > > > user-creatable in q35 by accident, and what was really supposed
-> > > > > > > > to be user-creatable in q35. See the "q35 and sysbus devices"
-> > > > > > > > thread I started ~2 weeks ago.
-> > > > > > > > 
-> > > > > > > > Building a q35 whitelist will be much easier if make
-> > > > > > > > sys-bus-devices non-user-creatable by default.
-> > > > > > > So why are they user creatable in the first place?
-> > > > > > > 
-> > > > > > > We used to have boards that were dynamic sysbus aware (ppce500, virt)
-> > > > > > > that
-> > > > > > > allowed dynamic creation and every other board did not. I don't
-> > > > > > > remember the
-> > > > > > > exact mechanism behind it though.
-> > > > > > > 
-> > > > > > > When did that behavior change? It sounds like a regression somewhere.
-> > > > > > See patch description:
-> > > > > > 
-> > > > > > > > > > commit 33cd52b5d7b9adfd009e95f07e6c64dd88ae2a31 unset
-> > > > > > > > > > cannot_instantiate_with_device_add_yet in TYPE_SYSBUS,
-> > > > > > Note that the commit above is not a regression[1] (because q35
-> > > > > > didn't have has_dynamic_sysbus=1 yet), but having sysbus devices
-> > > > > > have cannot_instantiate_with_device_add_yet=false/user_creatable=true
-> > > > > > by default makes it harder to build the whitelist for q35 (or
-> > > > > > other machines that will have has_dynamic_sysbus=1 in the
-> > > > > > future).
-> > > > > I seem to miss the bigger picture.
-> > > > > 
-> > > > > Why would anyone set has_dynamic_sysbus=1 in a board file without an
-> > > > > explicit whitelist? The whitelist is *not* device specific. It's board
-> > > > > specific, because your board needs to know how to wire up a device and
-> > > > > how to expose the fact that it exists to the OS.
-> > > > > 
-> > > > > So the real bug is that someone set has_dynamic_sysbus=1 in q35 without
-> > > > > implementing all of the dynamic sysbus logic, no?
-> > > > According to commit bf8d492405feaee2c1685b3b9d5e03228ed3e47f this was
-> > > > just introduced for allowing the "intel-iommu" device, so I guess this
-> > > > is the device that we want to have in a whitelist there?
-> > > If you want a dynamic intel-iommu, you also need to have dynamic ACPI
-> > > generation to create DMAR tables the OS can use to drive the IOMMU, no? At
-> > > last at that point, someone should have realized that a "whitelist" is
-> > > mandatory.
-> > > 
-> > > But yes, please just only add a whitelist for intel-iommu to the q35 board.
-> > > That is the real bug.
-> > Look, I don't disagree that we need a whitelist on q35. But I
-> > don't know why you assume it is as simple as adding intel-iommu.
-> 
-> So why has intel-iommu worked in the first place?
+commit 33cd52b5d7b9adfd009e95f07e6c64dd88ae2a31 unset
+cannot_instantiate_with_device_add_yet in TYPE_SYSBUS, making all
+sysbus devices appear on "-device help" and lack the "no-user"
+flag in "info qdm".
 
-Most of the code required to make it work is simply triggered by
-its realize() method (that only works with TYPE_PC_MACHINE
-machines).
+To fix this, we can set user_creatable=false by default on
+TYPE_SYS_BUS_DEVICE, but this requires setting
+user_creatable=true explicitly on the sysbus devices that
+actually work with -device.
 
-> Who wired up its memory regions?
+Fortunately today we have just a few has_dynamic_sysbus=1
+machines: virt, pc-q35-*, ppce500, and spapr.
 
-Its realize() method (vtd_realize()).
+virt, ppce500, and spapr have extra checks to ensure just a few
+device types can be instantiated:
 
-> Who wired up fault IRQs?
+* virt supports only TYPE_VFIO_CALXEDA_XGMAC, TYPE_VFIO_AMD_XGBE.
+* ppce500 supports only TYPE_ETSEC_COMMON.
+* spapr supports only TYPE_SPAPR_PCI_HOST_BRIDGE.
 
-I don't know the answer for that, but probably it is at the
-apic_get_class()->send_msi() call at vtd_generate_interrupt().
+This patch sets user_creatable=true explicitly on those 4 device
+classes.
 
-> Who added the DMAR table to ACPI when it was created?
+Now, the more complex cases:
 
-acpi-build.c code calls calls x86_iommu_get_default(), which
-returns the value set by x86_iommu_set_default(), which is called
-by TYPE_X86_IOMMU_DEVICE's realize() method
-(x86_iommu_realize()).
+pc-q35-*: q35 has no sysbus device whitelist yet (which is a
+separate bug). We are in the process of fixing it and building a
+sysbus whitelist on q35, but in the meantime we can fix the
+"-device help" and "info qdm" bugs mentioned above. Also, despite
+not being strictly necessary for fixing the q35 bug, reducing the
+list of user_creatable=true devices will help us be more
+confident when building the q35 whitelist.
 
-> 
-> > We *don't know* what should be on q35 whitelist until we review
-> > each device that is accepted by q35 today, and make sure it
-> > really is not supposed to be supported on -device.
-> 
-> If in doubt, not a single sysbus device should have ever worked without
-> explicit code around it. Really :).
+xen: We also have a hack at xen_set_dynamic_sysbus(), that sets
+has_dynamic_sysbus=true at runtime when using the Xen
+accelerator. This hack is only used to allow xen-backend devices
+to be dynamically plugged/unplugged.
 
-If by "code around it", you mean something as clear as a
-foreach_dynamic_sysbus_device() call somewhere that handles each
-type of sysbus device, then that's not true in practice.
+This means today we can use -device with the following 22 device
+types, that are the ones compiled into the qemu-system-x86_64 and
+qemu-system-i386 binaries:
 
-If by "code around it" you mean code buried inside board-specific
-code (like the x86_iommu_get_default() calls inside
-hw/i386/acpi-build.c), then you're right.
+* allwinner-ahci
+* amd-iommu
+* cfi.pflash01
+* esp
+* fw_cfg_io
+* fw_cfg_mem
+* generic-sdhci
+* hpet
+* intel-iommu
+* ioapic
+* isabus-bridge
+* kvmclock
+* kvm-ioapic
+* kvmvapic
+* SUNW,fdtwo
+* sysbus-ahci
+* sysbus-fdc
+* sysbus-ohci
+* unimplemented-device
+* virtio-mmio
+* xen-backend
+* xen-sysdev
 
-(Don't ask me why it works that way, I didn't write that code, I
-am just trying to clean up the q35 mess. :) )
+This patch adds user_creatable=true explicitly to those devices,
+temporarily, just to keep 100% compatibility with existing
+behavior of q35. Subsequent patches will remove
+user_creatable=true from the devices that are really not meant to
+user-creatable on any machine, and remove the FIXME comment from
+the ones that are really supposed to be user-creatable. This is
+being done in separate patches because we still don't have an
+obvious list of devices that will be whitelisted by q35, and I
+would like to get each device reviewed individually.
 
-> 
-> > Making has_dynamic_sysbus/user_creatable consistent on sysbus
-> > devices helps on that. It is not necessary nor sufficient to fix
-> > q35, that's true, but it helps *a lot*.
-> > 
-> > See, after I start this series, I already found two exceptions to
-> > the "just add intel-iommu" rule:
-> > 
-> > 1) amd-iommu
-> > 2) xen-backend
-> > 
-> > I'm not sure yet if we have others, until people review the other
-> > "Remove user_creatable from <device>" patches in this
-> > series.
-> 
-> Same question as above there. How do they get mapped? How does the OS learn
-> they exist?
+Cc: Alexander Graf <agraf@suse.de>
+Cc: Alex Williamson <alex.williamson@redhat.com>
+Cc: Alistair Francis <alistair.francis@xilinx.com>
+Cc: Beniamino Galvani <b.galvani@gmail.com>
+Cc: Christian Borntraeger <borntraeger@de.ibm.com>
+Cc: Cornelia Huck <cornelia.huck@de.ibm.com>
+Cc: David Gibson <david@gibson.dropbear.id.au>
+Cc: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
+Cc: Eduardo Habkost <ehabkost@redhat.com>
+Cc: Frank Blaschka <frank.blaschka@de.ibm.com>
+Cc: Gabriel L. Somlo <somlo@cmu.edu>
+Cc: Gerd Hoffmann <kraxel@redhat.com>
+Cc: Igor Mammedov <imammedo@redhat.com>
+Cc: Jason Wang <jasowang@redhat.com>
+Cc: John Snow <jsnow@redhat.com>
+Cc: Juergen Gross <jgross@suse.com>
+Cc: Kevin Wolf <kwolf@redhat.com>
+Cc: Laszlo Ersek <lersek@redhat.com>
+Cc: Marcel Apfelbaum <marcel@redhat.com>
+Cc: Markus Armbruster <armbru@redhat.com>
+Cc: Max Reitz <mreitz@redhat.com>
+Cc: "Michael S. Tsirkin" <mst@redhat.com>
+Cc: Paolo Bonzini <pbonzini@redhat.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>
+Cc: Pierre Morel <pmorel@linux.vnet.ibm.com>
+Cc: Prasad J Pandit <pjp@fedoraproject.org>
+Cc: qemu-arm@nongnu.org
+Cc: qemu-block@nongnu.org
+Cc: qemu-ppc@nongnu.org
+Cc: Richard Henderson <rth@twiddle.net>
+Cc: Rob Herring <robh@kernel.org>
+Cc: Shannon Zhao <zhaoshenglong@huawei.com>
+Cc: sstabellini@kernel.org
+Cc: Thomas Huth <thuth@redhat.com>
+Cc: Yi Min Zhao <zyimin@linux.vnet.ibm.com>
+Signed-off-by: Eduardo Habkost <ehabkost@redhat.com>
+---
+Changes v1 -> v2:
+* Rewrite commit message: don't pretend we are actually fixing
+  the q35 issue. We're just fixing "info qdm" and "-device help".
+  Making it easier to fix q35 is just a nice side-effect.
+* Rewrite FIXME comments to make it clear that we just have
+  user_creatable=true because we don't know yet if the device
+  should be in the q35 whitelist
+---
+ hw/block/fdc.c           | 10 ++++++++++
+ hw/block/pflash_cfi01.c  |  5 +++++
+ hw/core/sysbus.c         | 11 +++++++++++
+ hw/i386/amd_iommu.c      |  5 +++++
+ hw/i386/intel_iommu.c    |  5 +++++
+ hw/i386/kvm/clock.c      |  5 +++++
+ hw/i386/kvm/ioapic.c     |  5 +++++
+ hw/i386/kvmvapic.c       |  5 +++++
+ hw/ide/ahci.c            | 10 ++++++++++
+ hw/intc/ioapic.c         |  5 +++++
+ hw/isa/isa-bus.c         |  5 +++++
+ hw/misc/unimp.c          |  5 +++++
+ hw/net/fsl_etsec/etsec.c |  2 ++
+ hw/nvram/fw_cfg.c        | 10 ++++++++++
+ hw/ppc/spapr_pci.c       |  2 ++
+ hw/scsi/esp.c            |  5 +++++
+ hw/sd/sdhci.c            |  5 +++++
+ hw/timer/hpet.c          |  5 +++++
+ hw/usb/hcd-ohci.c        |  5 +++++
+ hw/vfio/amd-xgbe.c       |  2 ++
+ hw/vfio/calxeda-xgmac.c  |  2 ++
+ hw/virtio/virtio-mmio.c  |  5 +++++
+ hw/xen/xen_backend.c     | 10 ++++++++++
+ 23 files changed, 129 insertions(+)
 
-In the case of *-iommu, the realize() method seems to trigger
-everything we need. In the case of xen-backend, I guess the Xen
-magic is triggered by the xen_backend.c code.
-
-Some cases may be more subtle, like kvmclock:
-
-kvmclock _could_ work using -device already, because it simply
-provides a few MSRs to the guest. The only thing that let me
-conclude that -device kvmclock is not useful is that it doesn't
-set the kvmclock CPUID bits in the VCPU.
-
-If kvmclock added the CPUID bits from its realize() method,
--device kvmclock would already working out of the box and I
-wouldn't be able to remove it from the whitelist.
-
-
-> > 
-> > > The basic idea behind dynamic sysbus is that you move the responsibility of
-> > > sysbus spawnability checks from the sysbus layer to the board file. If the
-> > > board file ignores to do those checks, it's at fault.
-> > I think I will do this:
-> > 
-> > I will submit v2 of this thread pretending it is just going to
-> > fix the "info qdm" regression introduced by commit
-> > bf8d492405feaee2c1685b3b9d5e03228ed3e47f, and remove any mention
-> > of the q35 bug from the series and patch description.
-> > 
-> > I hopt this will make us stop diverging the discussion to "you
-> > should add a whitelist to q35 first", and stop ignoring that:
-> > 1) cannot_instantiate_with_device_add_yet is being set
-> >     incorrectly on the sysbus device classes and that's a bad
-> >     idea;
-> > 2) cannot_instantiate_with_device_add_yet is an awful name.
-> 
-> 
-> We need to make sure that the board has control over which devices are
-> spawnable. I fail to see how this series helps or achieves that, but I'm
-> happy to learn.
-
-The series doesn't help the board have control over which devices
-are spawnable. In addition to fixing (1) and (2) above, the
-series helps us (humans) reduce the list of candidates for the
-q35 whitelist we need to build.
-
+diff --git a/hw/block/fdc.c b/hw/block/fdc.c
+index a328693d15..3d05565628 100644
+--- a/hw/block/fdc.c
++++ b/hw/block/fdc.c
+@@ -2880,6 +2880,11 @@ static void sysbus_fdc_class_init(ObjectClass *klass, void *data)
+ 
+     dc->props = sysbus_fdc_properties;
+     set_bit(DEVICE_CATEGORY_STORAGE, dc->categories);
++    /*
++     * FIXME: Set only because we are not sure yet if this device
++     * will be outside the q35 sysbus whitelist.
++     */
++    dc->user_creatable = true;
+ }
+ 
+ static const TypeInfo sysbus_fdc_info = {
+@@ -2906,6 +2911,11 @@ static void sun4m_fdc_class_init(ObjectClass *klass, void *data)
+ 
+     dc->props = sun4m_fdc_properties;
+     set_bit(DEVICE_CATEGORY_STORAGE, dc->categories);
++    /*
++     * FIXME: Set only because we are not sure yet if this device
++     * will be outside the q35 sysbus whitelist.
++     */
++    dc->user_creatable = true;
+ }
+ 
+ static const TypeInfo sun4m_fdc_info = {
+diff --git a/hw/block/pflash_cfi01.c b/hw/block/pflash_cfi01.c
+index 594d4cf6fe..ef71956433 100644
+--- a/hw/block/pflash_cfi01.c
++++ b/hw/block/pflash_cfi01.c
+@@ -927,6 +927,11 @@ static void pflash_cfi01_class_init(ObjectClass *klass, void *data)
+     dc->props = pflash_cfi01_properties;
+     dc->vmsd = &vmstate_pflash;
+     set_bit(DEVICE_CATEGORY_STORAGE, dc->categories);
++    /*
++     * FIXME: Set only because we are not sure yet if this device
++     * will be outside the q35 sysbus whitelist.
++     */
++    dc->user_creatable = true;
+ }
+ 
+ 
+diff --git a/hw/core/sysbus.c b/hw/core/sysbus.c
+index c0f560b289..6a2eec8dd0 100644
+--- a/hw/core/sysbus.c
++++ b/hw/core/sysbus.c
+@@ -326,6 +326,17 @@ static void sysbus_device_class_init(ObjectClass *klass, void *data)
+     DeviceClass *k = DEVICE_CLASS(klass);
+     k->init = sysbus_device_init;
+     k->bus_type = TYPE_SYSTEM_BUS;
++    /*
++     * device_add plugs devices into suitable bus.  For "real" buses,
++     * that actually connects the device.  For sysbus, the connections
++     * need to be made separately, and device_add can't do that.  The
++     * device would be left unconnected, and will probably not work
++     *
++     * However, a few machines and a few devices can handle a few sysbus
++     * devices. In this case, the device subclass needs to override
++     * it and set user_creatable=true.
++     */
++    k->user_creatable = false;
+ }
+ 
+ static const TypeInfo sysbus_device_type_info = {
+diff --git a/hw/i386/amd_iommu.c b/hw/i386/amd_iommu.c
+index f86a40aa30..7b92c8c15a 100644
+--- a/hw/i386/amd_iommu.c
++++ b/hw/i386/amd_iommu.c
+@@ -1186,6 +1186,11 @@ static void amdvi_class_init(ObjectClass *klass, void* data)
+     dc->vmsd = &vmstate_amdvi;
+     dc->hotpluggable = false;
+     dc_class->realize = amdvi_realize;
++    /*
++     * FIXME: Set only because we are not sure yet if this device
++     * will be outside the q35 sysbus whitelist.
++     */
++    dc->user_creatable = true;
+ }
+ 
+ static const TypeInfo amdvi = {
+diff --git a/hw/i386/intel_iommu.c b/hw/i386/intel_iommu.c
+index 22d8226e43..d71d52c328 100644
+--- a/hw/i386/intel_iommu.c
++++ b/hw/i386/intel_iommu.c
+@@ -2601,6 +2601,11 @@ static void vtd_class_init(ObjectClass *klass, void *data)
+     dc->hotpluggable = false;
+     x86_class->realize = vtd_realize;
+     x86_class->int_remap = vtd_int_remap;
++    /*
++     * FIXME: Set only because we are not sure yet if this device
++     * will be outside the q35 sysbus whitelist.
++     */
++    dc->user_creatable = true;
+ }
+ 
+ static const TypeInfo vtd_info = {
+diff --git a/hw/i386/kvm/clock.c b/hw/i386/kvm/clock.c
+index 13eca374cd..7665bef999 100644
+--- a/hw/i386/kvm/clock.c
++++ b/hw/i386/kvm/clock.c
+@@ -286,6 +286,11 @@ static void kvmclock_class_init(ObjectClass *klass, void *data)
+     dc->realize = kvmclock_realize;
+     dc->vmsd = &kvmclock_vmsd;
+     dc->props = kvmclock_properties;
++    /*
++     * FIXME: Set only because we are not sure yet if this device
++     * will be outside the q35 sysbus whitelist.
++     */
++    dc->user_creatable = true;
+ }
+ 
+ static const TypeInfo kvmclock_info = {
+diff --git a/hw/i386/kvm/ioapic.c b/hw/i386/kvm/ioapic.c
+index 98ca480792..348c405180 100644
+--- a/hw/i386/kvm/ioapic.c
++++ b/hw/i386/kvm/ioapic.c
+@@ -167,6 +167,11 @@ static void kvm_ioapic_class_init(ObjectClass *klass, void *data)
+     k->post_load = kvm_ioapic_put;
+     dc->reset    = kvm_ioapic_reset;
+     dc->props    = kvm_ioapic_properties;
++    /*
++     * FIXME: Set only because we are not sure yet if this device
++     * will be outside the q35 sysbus whitelist.
++     */
++    dc->user_creatable = true;
+ }
+ 
+ static const TypeInfo kvm_ioapic_info = {
+diff --git a/hw/i386/kvmvapic.c b/hw/i386/kvmvapic.c
+index 82a49556af..45f6267c93 100644
+--- a/hw/i386/kvmvapic.c
++++ b/hw/i386/kvmvapic.c
+@@ -856,6 +856,11 @@ static void vapic_class_init(ObjectClass *klass, void *data)
+     dc->reset   = vapic_reset;
+     dc->vmsd    = &vmstate_vapic;
+     dc->realize = vapic_realize;
++    /*
++     * FIXME: Set only because we are not sure yet if this device
++     * will be outside the q35 sysbus whitelist.
++     */
++    dc->user_creatable = true;
+ }
+ 
+ static const TypeInfo vapic_type = {
+diff --git a/hw/ide/ahci.c b/hw/ide/ahci.c
+index f60826d6e0..7f10cda354 100644
+--- a/hw/ide/ahci.c
++++ b/hw/ide/ahci.c
+@@ -1721,6 +1721,11 @@ static void sysbus_ahci_class_init(ObjectClass *klass, void *data)
+     dc->props = sysbus_ahci_properties;
+     dc->reset = sysbus_ahci_reset;
+     set_bit(DEVICE_CATEGORY_STORAGE, dc->categories);
++    /*
++     * FIXME: Set only because we are not sure yet if this device
++     * will be outside the q35 sysbus whitelist.
++     */
++    dc->user_creatable = true;
+ }
+ 
+ static const TypeInfo sysbus_ahci_info = {
+@@ -1815,6 +1820,11 @@ static void allwinner_ahci_class_init(ObjectClass *klass, void *data)
+     DeviceClass *dc = DEVICE_CLASS(klass);
+ 
+     dc->vmsd = &vmstate_allwinner_ahci;
++    /*
++     * FIXME: Set only because we are not sure yet if this device
++     * will be outside the q35 sysbus whitelist.
++     */
++    dc->user_creatable = true;
+ }
+ 
+ static const TypeInfo allwinner_ahci_info = {
+diff --git a/hw/intc/ioapic.c b/hw/intc/ioapic.c
+index 37c4386ae3..f9e4f77def 100644
+--- a/hw/intc/ioapic.c
++++ b/hw/intc/ioapic.c
+@@ -448,6 +448,11 @@ static void ioapic_class_init(ObjectClass *klass, void *data)
+     k->post_load = ioapic_update_kvm_routes;
+     dc->reset = ioapic_reset_common;
+     dc->props = ioapic_properties;
++    /*
++     * FIXME: Set only because we are not sure yet if this device
++     * will be outside the q35 sysbus whitelist.
++     */
++    dc->user_creatable = true;
+ }
+ 
+ static const TypeInfo ioapic_info = {
+diff --git a/hw/isa/isa-bus.c b/hw/isa/isa-bus.c
+index 348e0eab9d..ad4ac3b4f6 100644
+--- a/hw/isa/isa-bus.c
++++ b/hw/isa/isa-bus.c
+@@ -221,6 +221,11 @@ static void isabus_bridge_class_init(ObjectClass *klass, void *data)
+ 
+     set_bit(DEVICE_CATEGORY_BRIDGE, dc->categories);
+     dc->fw_name = "isa";
++    /*
++     * FIXME: Set only because we are not sure yet if this device
++     * will be outside the q35 sysbus whitelist.
++     */
++    dc->user_creatable = true;
+ }
+ 
+ static const TypeInfo isabus_bridge_info = {
+diff --git a/hw/misc/unimp.c b/hw/misc/unimp.c
+index bcbb585888..e446c1d652 100644
+--- a/hw/misc/unimp.c
++++ b/hw/misc/unimp.c
+@@ -90,6 +90,11 @@ static void unimp_class_init(ObjectClass *klass, void *data)
+ 
+     dc->realize = unimp_realize;
+     dc->props = unimp_properties;
++    /*
++     * FIXME: Set only because we are not sure yet if this device
++     * will be outside the q35 sysbus whitelist.
++     */
++    dc->user_creatable = true;
+ }
+ 
+ static const TypeInfo unimp_info = {
+diff --git a/hw/net/fsl_etsec/etsec.c b/hw/net/fsl_etsec/etsec.c
+index aa2b0d5a85..9da1932970 100644
+--- a/hw/net/fsl_etsec/etsec.c
++++ b/hw/net/fsl_etsec/etsec.c
+@@ -416,6 +416,8 @@ static void etsec_class_init(ObjectClass *klass, void *data)
+     dc->realize = etsec_realize;
+     dc->reset = etsec_reset;
+     dc->props = etsec_properties;
++    /* Supported by ppce500 machine */
++    dc->user_creatable = true;
+ }
+ 
+ static TypeInfo etsec_info = {
+diff --git a/hw/nvram/fw_cfg.c b/hw/nvram/fw_cfg.c
+index 316fca9bc1..7993aea792 100644
+--- a/hw/nvram/fw_cfg.c
++++ b/hw/nvram/fw_cfg.c
+@@ -1101,6 +1101,11 @@ static void fw_cfg_io_class_init(ObjectClass *klass, void *data)
+ 
+     dc->realize = fw_cfg_io_realize;
+     dc->props = fw_cfg_io_properties;
++    /*
++     * FIXME: Set only because we are not sure yet if this device
++     * will be outside the q35 sysbus whitelist.
++     */
++    dc->user_creatable = true;
+ }
+ 
+ static const TypeInfo fw_cfg_io_info = {
+@@ -1167,6 +1172,11 @@ static void fw_cfg_mem_class_init(ObjectClass *klass, void *data)
+ 
+     dc->realize = fw_cfg_mem_realize;
+     dc->props = fw_cfg_mem_properties;
++    /*
++     * FIXME: Set only because we are not sure yet if this device
++     * will be outside the q35 sysbus whitelist.
++     */
++    dc->user_creatable = true;
+ }
+ 
+ static const TypeInfo fw_cfg_mem_info = {
+diff --git a/hw/ppc/spapr_pci.c b/hw/ppc/spapr_pci.c
+index 98c52e411f..cae2b31230 100644
+--- a/hw/ppc/spapr_pci.c
++++ b/hw/ppc/spapr_pci.c
+@@ -1990,6 +1990,8 @@ static void spapr_phb_class_init(ObjectClass *klass, void *data)
+     dc->props = spapr_phb_properties;
+     dc->reset = spapr_phb_reset;
+     dc->vmsd = &vmstate_spapr_pci;
++    /* Supported by TYPE_SPAPR_MACHINE */
++    dc->user_creatable = true;
+     set_bit(DEVICE_CATEGORY_BRIDGE, dc->categories);
+     hp->plug = spapr_phb_hot_plug_child;
+     hp->unplug = spapr_phb_hot_unplug_child;
+diff --git a/hw/scsi/esp.c b/hw/scsi/esp.c
+index eee831efeb..7bdc1e1b99 100644
+--- a/hw/scsi/esp.c
++++ b/hw/scsi/esp.c
+@@ -728,6 +728,11 @@ static void sysbus_esp_class_init(ObjectClass *klass, void *data)
+     dc->reset = sysbus_esp_hard_reset;
+     dc->vmsd = &vmstate_sysbus_esp_scsi;
+     set_bit(DEVICE_CATEGORY_STORAGE, dc->categories);
++    /*
++     * FIXME: Set only because we are not sure yet if this device
++     * will be outside the q35 sysbus whitelist.
++     */
++    dc->user_creatable = true;
+ }
+ 
+ static const TypeInfo sysbus_esp_info = {
+diff --git a/hw/sd/sdhci.c b/hw/sd/sdhci.c
+index 6d6a791ee9..dbf61fccb8 100644
+--- a/hw/sd/sdhci.c
++++ b/hw/sd/sdhci.c
+@@ -1360,6 +1360,11 @@ static void sdhci_sysbus_class_init(ObjectClass *klass, void *data)
+     dc->props = sdhci_sysbus_properties;
+     dc->realize = sdhci_sysbus_realize;
+     dc->reset = sdhci_poweron_reset;
++    /*
++     * FIXME: Set only because we are not sure yet if this device
++     * will be outside the q35 sysbus whitelist.
++     */
++    dc->user_creatable = true;
+ }
+ 
+ static const TypeInfo sdhci_sysbus_info = {
+diff --git a/hw/timer/hpet.c b/hw/timer/hpet.c
+index a2c18b30c3..4dcbd5bb3d 100644
+--- a/hw/timer/hpet.c
++++ b/hw/timer/hpet.c
+@@ -771,6 +771,11 @@ static void hpet_device_class_init(ObjectClass *klass, void *data)
+     dc->reset = hpet_reset;
+     dc->vmsd = &vmstate_hpet;
+     dc->props = hpet_device_properties;
++    /*
++     * FIXME: Set only because we are not sure yet if this device
++     * will be outside the q35 sysbus whitelist.
++     */
++    dc->user_creatable = true;
+ }
+ 
+ static const TypeInfo hpet_device_info = {
+diff --git a/hw/usb/hcd-ohci.c b/hw/usb/hcd-ohci.c
+index 3ada35e954..18b31022a7 100644
+--- a/hw/usb/hcd-ohci.c
++++ b/hw/usb/hcd-ohci.c
+@@ -2159,6 +2159,11 @@ static void ohci_sysbus_class_init(ObjectClass *klass, void *data)
+     dc->desc = "OHCI USB Controller";
+     dc->props = ohci_sysbus_properties;
+     dc->reset = usb_ohci_reset_sysbus;
++    /*
++     * FIXME: Set only because we are not sure yet if this device
++     * will be outside the q35 sysbus whitelist.
++     */
++    dc->user_creatable = true;
+ }
+ 
+ static const TypeInfo ohci_sysbus_info = {
+diff --git a/hw/vfio/amd-xgbe.c b/hw/vfio/amd-xgbe.c
+index 2c60310cf9..fab196cebf 100644
+--- a/hw/vfio/amd-xgbe.c
++++ b/hw/vfio/amd-xgbe.c
+@@ -38,6 +38,8 @@ static void vfio_amd_xgbe_class_init(ObjectClass *klass, void *data)
+     dc->realize = amd_xgbe_realize;
+     dc->desc = "VFIO AMD XGBE";
+     dc->vmsd = &vfio_platform_amd_xgbe_vmstate;
++    /* Supported by TYPE_VIRT_MACHINE */
++    dc->user_creatable = true;
+ }
+ 
+ static const TypeInfo vfio_amd_xgbe_dev_info = {
+diff --git a/hw/vfio/calxeda-xgmac.c b/hw/vfio/calxeda-xgmac.c
+index bb15d588e5..7bb17af7ad 100644
+--- a/hw/vfio/calxeda-xgmac.c
++++ b/hw/vfio/calxeda-xgmac.c
+@@ -38,6 +38,8 @@ static void vfio_calxeda_xgmac_class_init(ObjectClass *klass, void *data)
+     dc->realize = calxeda_xgmac_realize;
+     dc->desc = "VFIO Calxeda XGMAC";
+     dc->vmsd = &vfio_platform_calxeda_xgmac_vmstate;
++    /* Supported by TYPE_VIRT_MACHINE */
++    dc->user_creatable = true;
+ }
+ 
+ static const TypeInfo vfio_calxeda_xgmac_dev_info = {
+diff --git a/hw/virtio/virtio-mmio.c b/hw/virtio/virtio-mmio.c
+index 5807aa87fe..6491a771ff 100644
+--- a/hw/virtio/virtio-mmio.c
++++ b/hw/virtio/virtio-mmio.c
+@@ -450,6 +450,11 @@ static void virtio_mmio_class_init(ObjectClass *klass, void *data)
+     dc->reset = virtio_mmio_reset;
+     set_bit(DEVICE_CATEGORY_MISC, dc->categories);
+     dc->props = virtio_mmio_properties;
++    /*
++     * FIXME: Set only because we are not sure yet if this device
++     * will be outside the q35 sysbus whitelist.
++     */
++    dc->user_creatable = true;
+ }
+ 
+ static const TypeInfo virtio_mmio_info = {
+diff --git a/hw/xen/xen_backend.c b/hw/xen/xen_backend.c
+index 6c21c37d68..b39dce4cab 100644
+--- a/hw/xen/xen_backend.c
++++ b/hw/xen/xen_backend.c
+@@ -618,6 +618,11 @@ static void xendev_class_init(ObjectClass *klass, void *data)
+ 
+     dc->props = xendev_properties;
+     set_bit(DEVICE_CATEGORY_MISC, dc->categories);
++    /*
++     * FIXME: Set only because we are not sure yet if this device
++     * will be outside the q35 sysbus whitelist.
++     */
++    dc->user_creatable = true;
+ }
+ 
+ static const TypeInfo xendev_type_info = {
+@@ -661,6 +666,11 @@ static void xen_sysdev_class_init(ObjectClass *klass, void *data)
+     k->init = xen_sysdev_init;
+     dc->props = xen_sysdev_properties;
+     dc->bus_type = TYPE_XENSYSBUS;
++    /*
++     * FIXME: Set only because we are not sure yet if this device
++     * will be outside the q35 sysbus whitelist.
++     */
++    dc->user_creatable = true;
+ }
+ 
+ static const TypeInfo xensysdev_info = {
 -- 
-Eduardo
+2.11.0.259.g40922b1
+

@@ -1,59 +1,70 @@
-Received: by 10.25.15.230 with SMTP id 99csp63172lfp;
-        Tue, 4 Apr 2017 00:02:45 -0700 (PDT)
-X-Received: by 10.55.17.84 with SMTP id b81mr13001613qkh.167.1491289365038;
-        Tue, 04 Apr 2017 00:02:45 -0700 (PDT)
+Received: by 10.25.15.230 with SMTP id 99csp166189lfp;
+        Tue, 4 Apr 2017 04:53:22 -0700 (PDT)
+X-Received: by 10.55.217.71 with SMTP id u68mr2308613qki.272.1491306802804;
+        Tue, 04 Apr 2017 04:53:22 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id 90si14294008qtf.205.2017.04.04.00.02.44
+        by mx.google.com with ESMTPS id x62si14804094qka.141.2017.04.04.04.53.22
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 04 Apr 2017 00:02:45 -0700 (PDT)
+        Tue, 04 Apr 2017 04:53:22 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:34244 helo=lists.gnu.org)
+       dkim=fail header.i=@linaro.org;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:35098 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1cvIUG-0005ZF-Iw
-	for alex.bennee@linaro.org; Tue, 04 Apr 2017 03:02:44 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:57442)
+	id 1cvN1W-0006uF-AU
+	for alex.bennee@linaro.org; Tue, 04 Apr 2017 07:53:22 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:52391)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <agraf@suse.de>) id 1cvIU9-0005Z8-IR
-	for qemu-arm@nongnu.org; Tue, 04 Apr 2017 03:02:38 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1cvN1P-0006tt-98
+	for qemu-arm@nongnu.org; Tue, 04 Apr 2017 07:53:16 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <agraf@suse.de>) id 1cvIU6-0007fJ-FH
-	for qemu-arm@nongnu.org; Tue, 04 Apr 2017 03:02:37 -0400
-Received: from mx2.suse.de ([195.135.220.15]:57582)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <agraf@suse.de>)
-	id 1cvIU6-0007e6-4m; Tue, 04 Apr 2017 03:02:34 -0400
-X-Virus-Scanned: by amavisd-new at test-mx.suse.de
-Received: from relay2.suse.de (charybdis-ext.suse.de [195.135.220.254])
-	by mx2.suse.de (Postfix) with ESMTP id 6DAAAAB9D;
-	Tue,  4 Apr 2017 07:02:32 +0000 (UTC)
-To: Thomas Huth <thuth@redhat.com>, Eduardo Habkost <ehabkost@redhat.com>
-References: <20170401004624.30886-1-ehabkost@redhat.com>
-	<20170401004624.30886-4-ehabkost@redhat.com>
-	<CAFEAcA_uRHZR0N-=h=eWsDKjZpN4csua1j++wLVfZbsNVpaH5Q@mail.gmail.com>
-	<20170403201026.GJ1910@thinpad.lan.raisama.net>
-	<f612e8c0-0f2a-d373-12c1-a20d6dccc7d0@suse.de>
-	<20170403210030.GK1910@thinpad.lan.raisama.net>
-	<522a3489-2e8c-b31a-c592-391fe5cf3b5f@suse.de>
-	<40848cee-6a6b-75fa-c395-2ba4705d5bf0@redhat.com>
-From: Alexander Graf <agraf@suse.de>
-Message-ID: <cab14f30-929d-c5ab-143e-07e63009f808@suse.de>
-Date: Tue, 4 Apr 2017 09:02:28 +0200
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.12; rv:45.0)
-	Gecko/20100101 Thunderbird/45.8.0
+	(envelope-from <peter.maydell@linaro.org>) id 1cvN1O-0006Dw-HF
+	for qemu-arm@nongnu.org; Tue, 04 Apr 2017 07:53:15 -0400
+Received: from mail-wr0-x22f.google.com ([2a00:1450:400c:c0c::22f]:34040)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1cvN1O-0006Dk-9H
+	for qemu-arm@nongnu.org; Tue, 04 Apr 2017 07:53:14 -0400
+Received: by mail-wr0-x22f.google.com with SMTP id t20so6711178wra.1
+	for <qemu-arm@nongnu.org>; Tue, 04 Apr 2017 04:53:13 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=bdYSvtT8g8M0voyHMR2doU3bL8bKk8xKa9AyPC+rbi0=;
+	b=b7diCRJKD9xtPzJJ/CzC22l/VcHM6sqFTyHDtOaNyGuVW/Iy4TREt0W0LNp9geuuFF
+	TqURw5kcUG0z7ge1BPuyC2qKw9m4096Rw5ln4dpIhVTDmSd9Mlkv6Xb5H0k+Hu3o8Vzs
+	s18NUXuK9zpVbC7emvQa7cql9aJrGnNVdfyJo=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=bdYSvtT8g8M0voyHMR2doU3bL8bKk8xKa9AyPC+rbi0=;
+	b=GIEHurJTFinmkz+yNqIlF4QglCVWjOrAssZJZ7rhSuwE5UY7bHXmW1eynMeHpReTJe
+	/WO6HeuzugxZLwtw5YsTqrdfZXIiNs0w+ENCt2tqHPi4PM063msCsqLVbbRhGoJj0gQH
+	U90vVbT8BbNtKfdNRuL5XfH3wOCTs+A7WbDTOcQp8lyiil+/cbNSI4Tg+HyPY6OvE90y
+	uPvdlOrw6M6+B0RlMKSwlZIE8W5L2q96ICBTdByL07CSgnSjeD8ir2JpT4tWusAOrd6D
+	7x7iFQTneag9T9unA0oFQDdGdV2QF0+GeVm16ADEd7/qxNjA1yacRxSXUCo9lArXuDG8
+	cDow==
+X-Gm-Message-State: AFeK/H0FszCxYaQedP1xZvmsGGDBu0GMhN626TomgnK+tlMCuG6md6UrD8daQxhhaSbJx485Dn08PfSWSPMtuT9k
+X-Received: by 10.28.226.215 with SMTP id z206mr14124514wmg.92.1491306792839; 
+	Tue, 04 Apr 2017 04:53:12 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <40848cee-6a6b-75fa-c395-2ba4705d5bf0@redhat.com>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x (no
-	timestamps) [generic] [fuzzy]
-X-Received-From: 195.135.220.15
-Subject: Re: [Qemu-arm] [RFC 03/19] sysbus: Set user_creatable=false by
- default on TYPE_SYS_BUS_DEVICE
+Received: by 10.223.145.97 with HTTP; Tue, 4 Apr 2017 04:52:51 -0700 (PDT)
+In-Reply-To: <20170313184750.429-1-krzk@kernel.org>
+References: <20170313184750.429-1-krzk@kernel.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 4 Apr 2017 12:52:51 +0100
+Message-ID: <CAFEAcA8ErNnDj9XsJGG0ziDyeCA+T_N-HZf1DhXSAVTvzG=wPg@mail.gmail.com>
+To: Krzysztof Kozlowski <krzk@kernel.org>
+Content-Type: text/plain; charset=UTF-8
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2a00:1450:400c:c0c::22f
+Subject: Re: [Qemu-arm] [PATCH v3 0/3] hw/arm/exynos: Minor cleanups
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -65,160 +76,35 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
-	"Michael S. Tsirkin" <mst@redhat.com>, Jason Wang <jasowang@redhat.com>,
-	QEMU Developers <qemu-devel@nongnu.org>, Gerd Hoffmann <kraxel@redhat.com>,
-	Qemu-block <qemu-block@nongnu.org>, Markus Armbruster <armbru@redhat.com>,
-	Shannon Zhao <zhaoshenglong@huawei.com>,
-	Marcel Apfelbaum <marcel@redhat.com>, Richard Henderson <rth@twiddle.net>,
-	Laszlo Ersek <lersek@redhat.com>, "Gabriel L . Somlo" <somlo@cmu.edu>,
-	Alistair Francis <alistair.francis@xilinx.com>,
-	Beniamino Galvani <b.galvani@gmail.com>,
-	Alex Williamson <alex.williamson@redhat.com>,
-	qemu-arm <qemu-arm@nongnu.org>, Igor Mammedov <imammedo@redhat.com>,
-	Scott Wood <scottwood@freescale.com>, John Snow <jsnow@redhat.com>,
-	David Gibson <david@gibson.dropbear.id.au>, Kevin Wolf <kwolf@redhat.com>,
-	Prasad J Pandit <pjp@fedoraproject.org>, Max Reitz <mreitz@redhat.com>,
-	"qemu-ppc@nongnu.org" <qemu-ppc@nongnu.org>,
-	Paolo Bonzini <pbonzini@redhat.com>
+Cc: Igor Mitsyanko <i.mitsyanko@gmail.com>,
+	QEMU Developers <qemu-devel@nongnu.org>,
+	=?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>,
+	qemu-arm <qemu-arm@nongnu.org>, Paolo Bonzini <pbonzini@redhat.com>,
+	Eric Blake <eblake@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 0LB1HMER3uBQ
+X-TUID: 035h/ikcKQ2w
 
-
-
-On 04.04.17 08:58, Thomas Huth wrote:
-> On 04.04.2017 08:53, Alexander Graf wrote:
->>
->>
->> On 03.04.17 23:00, Eduardo Habkost wrote:
->>> On Mon, Apr 03, 2017 at 10:15:44PM +0200, Alexander Graf wrote:
->>>>
->>>>
->>>> On 03.04.17 22:10, Eduardo Habkost wrote:
->>>>> On Mon, Apr 03, 2017 at 08:49:16PM +0100, Peter Maydell wrote:
->>>>>> On 1 April 2017 at 01:46, Eduardo Habkost <ehabkost@redhat.com> wrote:
->>>>>>> commit 33cd52b5d7b9adfd009e95f07e6c64dd88ae2a31 unset
->>>>>>> cannot_instantiate_with_device_add_yet in TYPE_SYSBUS, making
->>>>>>> all kinds of untested devices available to -device and
->>>>>>> device_add.
->>>>>>>
->>>>>>> The problem with that is: setting has_dynamic_sysbus on a
->>>>>>> machine-type lets it accept all the 288 sysbus device types we
->>>>>>> have in QEMU, and most of them were never meant to be used with
->>>>>>> -device. That's a lot of untested code.
->>>>>>>
->>>>>>> Fortunately today we have just a few has_dynamic_sysbus=1
->>>>>>> machines: virt, pc-q35-*, ppce500, and spapr.
->>>>>>>
->>>>>>> virt, ppce500, and spapr have extra checks to ensure just a few
->>>>>>> device types can be instantiated:
->>>>>>>
->>>>>>> * virt supports only TYPE_VFIO_CALXEDA_XGMAC, TYPE_VFIO_AMD_XGBE.
->>>>>>> * ppce500 supports only TYPE_ETSEC_COMMON.
->>>>>>> * spapr supports only TYPE_SPAPR_PCI_HOST_BRIDGE.
->>>>>>>
->>>>>>> q35 has no code to block unsupported sysbus devices, however, and
->>>>>>> accepts all device types. Fortunately, only the following 20
->>>>>>> device types are compiled into the qemu-system-x86_64 and
->>>>>>> qemu-system-i386 binaries:
->>>>>>>
->>>>>>> * allwinner-ahci
->>>>>>> * amd-iommu
->>>>>>> * cfi.pflash01
->>>>>>> * esp
->>>>>>> * fw_cfg_io
->>>>>>> * fw_cfg_mem
->>>>>>> * generic-sdhci
->>>>>>> * hpet
->>>>>>> * intel-iommu
->>>>>>> * ioapic
->>>>>>> * isabus-bridge
->>>>>>> * kvmclock
->>>>>>> * kvm-ioapic
->>>>>>> * kvmvapic
->>>>>>> * SUNW,fdtwo
->>>>>>> * sysbus-ahci
->>>>>>> * sysbus-fdc
->>>>>>> * sysbus-ohci
->>>>>>> * unimplemented-device
->>>>>>> * virtio-mmio
->>>>>>>
->>>>>>> Instead of requiring each machine-type with has_dynamic_sysbus=1
->>>>>>> to implement its own mechanism to block unsupported devices, we
->>>>>>> can use the user_creatable flag to ensure we won't let the user
->>>>>>> plug anything that will never work.
->>>>>>
->>>>>> How does this work? Which devices can be dynamically
->>>>>> plugged is machine dependent. You can't dynamically-plug
->>>>>> an intel-iommu on the ARM virt board, and you can't
->>>>>> dynamically-plug the vfio-calxeda-xgmac on the spapr
->>>>>> board, and so on. So I don't see how we can just have
->>>>>> a flag on the device itself that controls whether
->>>>>> it can be dynamically plugged.
->>>>>>
->>>>>> So I'm definitely coming around to the opinion that
->>>>>> it's just a bug in the q35 board that it doesn't have
->>>>>> any device whitelisting, and we should fix that.
->>>>>
->>>>> OK, let's assume q35 must implement a whitelist:
->>>>>
->>>>> To build that whitelist, we need to be able to know what should
->>>>> be in the whitelist, or not. And nobody knew for sure what was
->>>>> user-creatable in q35 by accident, and what was really supposed
->>>>> to be user-creatable in q35. See the "q35 and sysbus devices"
->>>>> thread I started ~2 weeks ago.
->>>>>
->>>>> Building a q35 whitelist will be much easier if make
->>>>> sys-bus-devices non-user-creatable by default.
->>>>
->>>> So why are they user creatable in the first place?
->>>>
->>>> We used to have boards that were dynamic sysbus aware (ppce500, virt)
->>>> that
->>>> allowed dynamic creation and every other board did not. I don't
->>>> remember the
->>>> exact mechanism behind it though.
->>>>
->>>> When did that behavior change? It sounds like a regression somewhere.
->>>
->>> See patch description:
->>>
->>>>>>> commit 33cd52b5d7b9adfd009e95f07e6c64dd88ae2a31 unset
->>>>>>> cannot_instantiate_with_device_add_yet in TYPE_SYSBUS,
->>>
->>> Note that the commit above is not a regression[1] (because q35
->>> didn't have has_dynamic_sysbus=1 yet), but having sysbus devices
->>> have cannot_instantiate_with_device_add_yet=false/user_creatable=true
->>> by default makes it harder to build the whitelist for q35 (or
->>> other machines that will have has_dynamic_sysbus=1 in the
->>> future).
->>
->> I seem to miss the bigger picture.
->>
->> Why would anyone set has_dynamic_sysbus=1 in a board file without an
->> explicit whitelist? The whitelist is *not* device specific. It's board
->> specific, because your board needs to know how to wire up a device and
->> how to expose the fact that it exists to the OS.
->>
->> So the real bug is that someone set has_dynamic_sysbus=1 in q35 without
->> implementing all of the dynamic sysbus logic, no?
+On 13 March 2017 at 18:47, Krzysztof Kozlowski <krzk@kernel.org> wrote:
+> Hi,
 >
-> According to commit bf8d492405feaee2c1685b3b9d5e03228ed3e47f this was
-> just introduced for allowing the "intel-iommu" device, so I guess this
-> is the device that we want to have in a whitelist there?
+> Minor cleanups, no dependencies.
+>
+> Changes since v1
+> ================
+> 1. Patch 1/3: Address missed Philippe's comments about error reporting
+>    verbosity.
+>
+> Changes since v2
+> ================
+> 1. Patch 1/3: Address Eric's comment.
+> 2. Patch 2/3: Address Peter's comments about "const".
+> 3. Patch 3/3: Use "unsigned int". I had impression that no consensus was
+>    reached during discussion. If that is wrong impression, let me know.
 
-If you want a dynamic intel-iommu, you also need to have dynamic ACPI 
-generation to create DMAR tables the OS can use to drive the IOMMU, no? 
-At last at that point, someone should have realized that a "whitelist" 
-is mandatory.
+Applied to target-arm.next for 2.10, thanks.
 
-But yes, please just only add a whitelist for intel-iommu to the q35 
-board. That is the real bug.
+(I wrapped a long line in patch 1 that checkpatch complains about.)
 
-The basic idea behind dynamic sysbus is that you move the responsibility 
-of sysbus spawnability checks from the sysbus layer to the board file. 
-If the board file ignores to do those checks, it's at fault.
-
-
-Alex
+thanks
+-- PMM

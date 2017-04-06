@@ -1,82 +1,82 @@
-Received: by 10.25.15.230 with SMTP id 99csp832709lfp;
-        Thu, 6 Apr 2017 09:25:13 -0700 (PDT)
-X-Received: by 10.55.43.219 with SMTP id r88mr31698672qkr.143.1491495913320;
-        Thu, 06 Apr 2017 09:25:13 -0700 (PDT)
+Received: by 10.25.15.230 with SMTP id 99csp836331lfp;
+        Thu, 6 Apr 2017 09:34:50 -0700 (PDT)
+X-Received: by 10.200.53.237 with SMTP id l42mr34062518qtb.264.1491496490598;
+        Thu, 06 Apr 2017 09:34:50 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id l4si1799483qkb.60.2017.04.06.09.25.13
+        by mx.google.com with ESMTPS id g11si1805478qtb.242.2017.04.06.09.34.50
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 06 Apr 2017 09:25:13 -0700 (PDT)
+        Thu, 06 Apr 2017 09:34:50 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        dkim=fail header.i=@gmail.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:46861 helo=lists.gnu.org)
+Received: from localhost ([::1]:46889 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1cwADg-0000KM-OA
-	for alex.bennee@linaro.org; Thu, 06 Apr 2017 12:25:12 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:58900)
+	id 1cwAN0-0001yt-1t
+	for alex.bennee@linaro.org; Thu, 06 Apr 2017 12:34:50 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:33599)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1cwADW-0000DZ-OF
-	for qemu-arm@nongnu.org; Thu, 06 Apr 2017 12:25:08 -0400
+	id 1cwAMv-0001x6-Vs
+	for qemu-arm@nongnu.org; Thu, 06 Apr 2017 12:34:46 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1cwADV-0008CH-Kz
-	for qemu-arm@nongnu.org; Thu, 06 Apr 2017 12:25:02 -0400
-Received: from mail-qt0-x242.google.com ([2607:f8b0:400d:c0d::242]:35641)
+	id 1cwAMv-00056O-3K
+	for qemu-arm@nongnu.org; Thu, 06 Apr 2017 12:34:46 -0400
+Received: from mail-qt0-x242.google.com ([2607:f8b0:400d:c0d::242]:34242)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1cwADQ-00086d-V2; Thu, 06 Apr 2017 12:24:57 -0400
-Received: by mail-qt0-x242.google.com with SMTP id r5so6359749qtb.2;
-	Thu, 06 Apr 2017 09:24:56 -0700 (PDT)
+	id 1cwAMo-00052u-U8; Thu, 06 Apr 2017 12:34:39 -0400
+Received: by mail-qt0-x242.google.com with SMTP id x35so6355553qtc.1;
+	Thu, 06 Apr 2017 09:34:38 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
 	h=sender:subject:to:references:cc:from:message-id:date:user-agent
 	:mime-version:in-reply-to:content-transfer-encoding;
-	bh=ZsfmFmdgATgIWR46DgCa82tvAhbSVyEm85KlHcnOGs4=;
-	b=MqWy0WuSSq2B1ELVyA+V0gvWQKMYyEbmcgZ5EN0LiWIzqyaYINil0ebXNOLcCUSARY
-	IACf6j06erV4nll/6PaPw+ge/ljQilKY/0ny3CpXWTDZxanz44/fJ0jsitnFrLvKvW/v
-	dXF5D+8BvGcXKrBrYZMWBhkoBg2BTMgV11KEpkINWDvvY5zKi2F2da5iKgiUPuX6VbBw
-	etmg80zO1gccx0Q+IO2t5A6WjGKOP+CeWEoHh45hfuz/TJxAfael7FDFgubun+CCTNLj
-	LHjBt4cEHh1FUzrFEZwKJ7xbN4gNG6x7jqiLaIK7c8GQivZFB9BwWUUeuPELiln2iNUi
-	P6+Q==
+	bh=wwYL4G7z2aF2sPqsnEqrwoBCDGGZjOiOaL4mIM7n7q8=;
+	b=A8w/6KyE8kX0CmufqQYXgFjvigKyOd3nNwl/Uky9+l72nzbb1yvXCjR9aToYZwVmCL
+	YNGLdJ3QuGG6HqnJDZbFdDgP0d1eYFCac5rP7IUTz45vIv61iQBUnEnggpUqkIBPk+Jk
+	wqZZjjErmq6fpAd0ZOj62aGYlEWk4I3YjDvmimQTYLA6vrcsu1BMLPJ/gWoQT3P8EQlu
+	/wDFxPx84/eTxFprBf+7gMtbb72jmX0YDf8v7v9J3KL3bxypQ03cIlNtDjrOTQZgw+K1
+	ZzUVbcfezF3ozCB8M9DDWhq7FguMR/+uVWKMfeM3QcKXSYyuoz29v5dZCA0JU2Vc/7jB
+	7ldw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:sender:subject:to:references:cc:from:message-id
 	:date:user-agent:mime-version:in-reply-to:content-transfer-encoding;
-	bh=ZsfmFmdgATgIWR46DgCa82tvAhbSVyEm85KlHcnOGs4=;
-	b=PXEAwclDxhZIKiQy2ZJz25FJ7XjZq0RUw/FK3r7ySakqyU+QI49yhXzzxF4EYdaNAG
-	yKBhNBDeqmC3cFv/Kk3WKCAMtuni2RHNO5VGZzf/xdq0ua9ll3PheWEKYScXAZcdIrCF
-	ukJzCas08S+vSiPLNBu/ao0463SC5x2ney0zlprXE7xu/vanYdmdGhRxHIqRARajHZtA
-	MnZQZYjtQab3BWg5zvRpr8GhbZubrG6S8mACqoKEbkyhgw/JeCNbsPaHllyPyHdx17bg
-	EDsx7ZoQvGw2E2wqQwX0xYKhmq+c14dQ/gAirkMNv759i66opsH6affOAZ5mhEIRAlSA
-	+Qmg==
-X-Gm-Message-State: AFeK/H3Trz/2dRFrvKXn5h7fMV2SvVYWoKY/LSfCPwcP8xhaHTdAecojqYs0xqo33Mxh0g==
-X-Received: by 10.200.34.37 with SMTP id o34mr35525285qto.213.1491495896139;
-	Thu, 06 Apr 2017 09:24:56 -0700 (PDT)
+	bh=wwYL4G7z2aF2sPqsnEqrwoBCDGGZjOiOaL4mIM7n7q8=;
+	b=Wz037GmEIPF6mlcGM8YZsIwixoMBr//5oR8BeXI1j9MuwidbjaZhWrmcm2OfCQQsmv
+	X44kt1slOUT6kJ36ROivYumZ6KKUmZENtwRqkis+GIqXMSjwQxuXvucp7mr4xG6UH9mT
+	Ryv566lLwex8mjHZu+jb+fkef0pjOw2JTppz2apm1fBapoT3iCaPKiMQvfAMNc6sqoe5
+	ut0u4oiD2rwHO9ideBKTDfQGA+FLufrXw8+U4d7PZFEtfSgOEhw6aKidDbpb5PT5vDYT
+	zx2ZHVe4LaEZuCnFiNMv6bSggraPg5XPyFT31A8+vNk56U3su3n/nLMnXpkeRHhhNWkW
+	NwdA==
+X-Gm-Message-State: AFeK/H1dUJ5TDY/WOoYQR0CT91mTxGGVUg5fN+SSXOhoGX6Zh/6cxJvgGbnu4K4QHsZ63g==
+X-Received: by 10.237.36.172 with SMTP id t41mr34202773qtc.142.1491496478213; 
+	Thu, 06 Apr 2017 09:34:38 -0700 (PDT)
 Received: from [192.168.1.10] ([138.117.48.226])
 	by smtp.gmail.com with ESMTPSA id
-	r24sm1242678qkl.54.2017.04.06.09.24.54
+	s10sm1254843qke.53.2017.04.06.09.34.35
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Thu, 06 Apr 2017 09:24:55 -0700 (PDT)
+	Thu, 06 Apr 2017 09:34:37 -0700 (PDT)
 To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-References: <1491486314-25823-1-git-send-email-peter.maydell@linaro.org>
+References: <1491486340-25988-1-git-send-email-peter.maydell@linaro.org>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <419a5b1f-5442-0105-d5f3-e2ab08f461bd@amsat.org>
-Date: Thu, 6 Apr 2017 13:24:52 -0300
+Message-ID: <30f2db0a-2132-4f6e-cd06-f5505f01db88@amsat.org>
+Date: Thu, 6 Apr 2017 13:34:32 -0300
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
 	Thunderbird/45.8.0
 MIME-Version: 1.0
-In-Reply-To: <1491486314-25823-1-git-send-email-peter.maydell@linaro.org>
+In-Reply-To: <1491486340-25988-1-git-send-email-peter.maydell@linaro.org>
 Content-Type: text/plain; charset=windows-1252; format=flowed
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 2607:f8b0:400d:c0d::242
-Subject: Re: [Qemu-arm] [PATCH] stellaris: Don't hw_error() on bad register
- accesses
+Subject: Re: [Qemu-arm] [PATCH] target/arm: Add missing entries to
+ excnames[] for log strings
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -91,183 +91,52 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: patches@linaro.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: b0b6yFXyEvtL
+X-TUID: PfOWWyQqwYen
 
 Hi Peter,
 
+excnames[] is only used in arm_log_exception(), can we move it there?
+
+anyway:
+Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+
 On 04/06/2017 10:45 AM, Peter Maydell wrote:
-> Current recommended style is to log a guest error on bad register
-> accesses, not kill the whole system with hw_error().  Change the
-> hw_error() calls to log as LOG_GUEST_ERROR or LOG_UNIMP or use
-> g_assert_not_reached() as appropriate.
+> Recent changes have added new EXCP_ values to ARM but forgot
+> to update the excnames[] array which is used to provide
+> human-readable strings when printing information about the
+> exception for debug logging. Add the missing entries, and
+> add a comment to the list of #defines to help avoid the mistake
+> being repeated in future.
 >
 > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 > ---
->  hw/arm/stellaris.c | 60 +++++++++++++++++++++++++++++++++---------------------
->  1 file changed, 37 insertions(+), 23 deletions(-)
+>  target/arm/cpu.h       | 1 +
+>  target/arm/internals.h | 2 ++
+>  2 files changed, 3 insertions(+)
 >
-> diff --git a/hw/arm/stellaris.c b/hw/arm/stellaris.c
-> index 9edcd49..ea7a809 100644
-> --- a/hw/arm/stellaris.c
-> +++ b/hw/arm/stellaris.c
-> @@ -108,7 +108,10 @@ static void gptm_reload(gptm_state *s, int n, int reset)
->      } else if (s->mode[n] == 0xa) {
->          /* PWM mode.  Not implemented.  */
->      } else {
-> -        hw_error("TODO: 16-bit timer mode 0x%x\n", s->mode[n]);
-> +        qemu_log_mask(LOG_UNIMP,
-> +                      "GPTM: 16-bit timer mode unimplemented: 0x%x\n",
-> +                      s->mode[n]);
-> +        return;
->      }
->      s->tick[n] = tick;
->      timer_mod(s->timer[n], tick);
-> @@ -149,7 +152,9 @@ static void gptm_tick(void *opaque)
->      } else if (s->mode[n] == 0xa) {
->          /* PWM mode.  Not implemented.  */
->      } else {
-> -        hw_error("TODO: 16-bit timer mode 0x%x\n", s->mode[n]);
-> +        qemu_log_mask(LOG_UNIMP,
-> +                      "GPTM: 16-bit timer mode unimplemented: 0x%x\n",
-> +                      s->mode[n]);
->      }
->      gptm_update_irq(s);
->  }
-> @@ -286,7 +291,8 @@ static void gptm_write(void *opaque, hwaddr offset,
->          s->match_prescale[0] = value;
->          break;
->      default:
-> -        hw_error("gptm_write: Bad offset 0x%x\n", (int)offset);
-> +        qemu_log_mask(LOG_GUEST_ERROR,
-> +                      "GPTM: read at bad offset 0x%x\n", (int)offset);
-
-use HWADDR_PRIx to remove this unnecessary casts here in following changes?
-
-ie: "GPTM: read at bad offset 0x%" HWADDR_PRIx "\n", offset);
-
-either way:
-Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-
->      }
->      gptm_update_irq(s);
->  }
-> @@ -425,7 +431,10 @@ static int ssys_board_class(const ssys_state *s)
->          }
->          /* for unknown classes, fall through */
->      default:
-> -        hw_error("ssys_board_class: Unknown class 0x%08x\n", did0);
-> +        /* This can only happen if the hardwired constant did0 value
-> +         * in this board's stellaris_board_info struct is wrong.
-> +         */
-> +        g_assert_not_reached();
->      }
->  }
+> diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+> index a8aabce..e6f05e2 100644
+> --- a/target/arm/cpu.h
+> +++ b/target/arm/cpu.h
+> @@ -58,6 +58,7 @@
+>  #define EXCP_SEMIHOST       16   /* semihosting call */
+>  #define EXCP_NOCP           17   /* v7M NOCP UsageFault */
+>  #define EXCP_INVSTATE       18   /* v7M INVSTATE UsageFault */
+> +/* NB: new EXCP_ defines should be added to the excnames[] array too */
 >
-> @@ -479,8 +488,7 @@ static uint64_t ssys_read(void *opaque, hwaddr offset,
->              case DID0_CLASS_SANDSTORM:
->                  return pllcfg_sandstorm[xtal];
->              default:
-> -                hw_error("ssys_read: Unhandled class for PLLCFG read.\n");
-> -                return 0;
-> +                g_assert_not_reached();
->              }
->          }
->      case 0x070: /* RCC2 */
-> @@ -512,7 +520,8 @@ static uint64_t ssys_read(void *opaque, hwaddr offset,
->      case 0x1e4: /* USER1 */
->          return s->user1;
->      default:
-> -        hw_error("ssys_read: Bad offset 0x%x\n", (int)offset);
-> +        qemu_log_mask(LOG_GUEST_ERROR,
-> +                      "SSYS: read at bad offset 0x%x\n", (int)offset);
->          return 0;
->      }
->  }
-> @@ -614,7 +623,8 @@ static void ssys_write(void *opaque, hwaddr offset,
->          s->ldoarst = value;
->          break;
->      default:
-> -        hw_error("ssys_write: Bad offset 0x%x\n", (int)offset);
-> +        qemu_log_mask(LOG_GUEST_ERROR,
-> +                      "SSYS: write at bad offset 0x%x\n", (int)offset);
->      }
->      ssys_update(s);
->  }
-> @@ -748,7 +758,8 @@ static uint64_t stellaris_i2c_read(void *opaque, hwaddr offset,
->      case 0x20: /* MCR */
->          return s->mcr;
->      default:
-> -        hw_error("strllaris_i2c_read: Bad offset 0x%x\n", (int)offset);
-> +        qemu_log_mask(LOG_GUEST_ERROR,
-> +                      "stellaris_i2c: read at bad offset 0x%x\n", (int)offset);
->          return 0;
->      }
->  }
-> @@ -823,17 +834,18 @@ static void stellaris_i2c_write(void *opaque, hwaddr offset,
->          s->mris &= ~value;
->          break;
->      case 0x20: /* MCR */
-> -        if (value & 1)
-> -            hw_error(
-> -                      "stellaris_i2c_write: Loopback not implemented\n");
-> -        if (value & 0x20)
-> -            hw_error(
-> -                      "stellaris_i2c_write: Slave mode not implemented\n");
-> +        if (value & 1) {
-> +            qemu_log_mask(LOG_UNIMP, "stellaris_i2c: Loopback not implemented");
-> +        }
-> +        if (value & 0x20) {
-> +            qemu_log_mask(LOG_UNIMP,
-> +                          "stellaris_i2c: Slave mode not implemented");
-> +        }
->          s->mcr = value & 0x31;
->          break;
->      default:
-> -        hw_error("stellaris_i2c_write: Bad offset 0x%x\n",
-> -                  (int)offset);
-> +        qemu_log_mask(LOG_GUEST_ERROR,
-> +                      "stellaris_i2c: write at bad offset 0x%x\n", (int)offset);
->      }
->      stellaris_i2c_update(s);
->  }
-> @@ -1057,8 +1069,8 @@ static uint64_t stellaris_adc_read(void *opaque, hwaddr offset,
->      case 0x30: /* SAC */
->          return s->sac;
->      default:
-> -        hw_error("strllaris_adc_read: Bad offset 0x%x\n",
-> -                  (int)offset);
-> +        qemu_log_mask(LOG_GUEST_ERROR,
-> +                      "stellaris_adc: read at bad offset 0x%x\n", (int)offset);
->          return 0;
->      }
->  }
-> @@ -1078,8 +1090,9 @@ static void stellaris_adc_write(void *opaque, hwaddr offset,
->              return;
->          case 0x04: /* SSCTL */
->              if (value != 6) {
-> -                hw_error("ADC: Unimplemented sequence %" PRIx64 "\n",
-> -                          value);
-> +                qemu_log_mask(LOG_UNIMP,
-> +                              "ADC: Unimplemented sequence %" PRIx64 "\n",
-> +                              value);
->              }
->              s->ssctl[n] = value;
->              return;
-> @@ -1110,13 +1123,14 @@ static void stellaris_adc_write(void *opaque, hwaddr offset,
->          s->sspri = value;
->          break;
->      case 0x28: /* PSSI */
-> -        hw_error("Not implemented:  ADC sample initiate\n");
-> +        qemu_log_mask(LOG_UNIMP, "ADC: sample initiate unimplemented");
->          break;
->      case 0x30: /* SAC */
->          s->sac = value;
->          break;
->      default:
-> -        hw_error("stellaris_adc_write: Bad offset 0x%x\n", (int)offset);
-> +        qemu_log_mask(LOG_GUEST_ERROR,
-> +                      "stellaris_adc: write at bad offset 0x%x\n", (int)offset);
->      }
->      stellaris_adc_update(s);
->  }
+>  #define ARMV7M_EXCP_RESET   1
+>  #define ARMV7M_EXCP_NMI     2
+> diff --git a/target/arm/internals.h b/target/arm/internals.h
+> index f742a41..97ca034 100644
+> --- a/target/arm/internals.h
+> +++ b/target/arm/internals.h
+> @@ -70,6 +70,8 @@ static const char * const excnames[] = {
+>      [EXCP_VIRQ] = "Virtual IRQ",
+>      [EXCP_VFIQ] = "Virtual FIQ",
+>      [EXCP_SEMIHOST] = "Semihosting call",
+> +    [EXCP_NOCP] = "v7M NOCP UsageFault",
+> +    [EXCP_INVSTATE] = "v7M INVSTATE UsageFault",
+>  };
+>
+>  /* Scale factor for generic timers, ie number of ns per tick.
 >

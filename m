@@ -1,160 +1,141 @@
-Received: by 10.25.15.230 with SMTP id 99csp236593lfp;
-        Tue, 4 Apr 2017 07:31:38 -0700 (PDT)
-X-Received: by 10.200.58.163 with SMTP id x32mr25736363qte.123.1491316298613;
-        Tue, 04 Apr 2017 07:31:38 -0700 (PDT)
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 10.25.0.144 with SMTP id 138csp87987lfa;
+        Fri, 7 Apr 2017 22:58:39 -0700 (PDT)
+X-Received: by 10.200.49.123 with SMTP id h56mr5764227qtb.172.1491631119380;
+        Fri, 07 Apr 2017 22:58:39 -0700 (PDT)
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id s70si15126736qka.198.2017.04.04.07.31.38
+        by mx.google.com with ESMTPS id f124si7419700qkc.185.2017.04.07.22.58.39
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 04 Apr 2017 07:31:38 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Fri, 07 Apr 2017 22:58:39 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:36017 helo=lists.gnu.org)
+       dkim=fail header.i=@microsoft.com;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:53659 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1cvPUg-0000gx-3d
-	for alex.bennee@linaro.org; Tue, 04 Apr 2017 10:31:38 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:48080)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1cwjOQ-0007cl-Tn
+	for alex.bennee@linaro.org; Sat, 08 Apr 2017 01:58:38 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:39343)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <k.kozlowski.k@gmail.com>) id 1cvPUW-0000gS-I3
-	for qemu-arm@nongnu.org; Tue, 04 Apr 2017 10:31:35 -0400
+	(envelope-from <Andrew.Baumann@microsoft.com>) id 1cwjNb-0007Jb-0a
+	for qemu-devel@nongnu.org; Sat, 08 Apr 2017 01:57:47 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <k.kozlowski.k@gmail.com>) id 1cvPUT-0005iG-DA
-	for qemu-arm@nongnu.org; Tue, 04 Apr 2017 10:31:28 -0400
-Received: from mail-wr0-f176.google.com ([209.85.128.176]:36627)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <k.kozlowski.k@gmail.com>)
-	id 1cvPUT-0005gx-7W; Tue, 04 Apr 2017 10:31:25 -0400
-Received: by mail-wr0-f176.google.com with SMTP id w11so214874291wrc.3;
-	Tue, 04 Apr 2017 07:31:25 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:date:from:to:cc:subject:message-id:references
-	:mime-version:content-disposition:in-reply-to:user-agent;
-	bh=SeGatCBAwZukTv1lnPzi57wbzUxe8DEnJDDKVB6fMiw=;
-	b=lkekEXzW49IhbSp2QLiLmZzqmeMRFjH6ktyHGRmJZK6hDyLgrSOcH5w6AGn05vR1M/
-	psthVIGYHSCagOGNljHjx7aXYvHymPpESj0IuasrgUPg/VWgbbhcDGdO8nPTHLgfHToV
-	1bS4yXc94cVRyR/+2sBkzolZOWn50Lh5hPTv0f4684d2j/3DxWc0eCLvWLhOwFgnFGZ2
-	WEEfzdXig5EpsSCeHr3/fK9lUZ5YLSwxw+SETNQ9X2XF/HQ4Z3pknshXb3Q8gsZ+wOte
-	apHxQXF7VNwh5TvDYwx4gB4kUACsgfm4Xjd9hSfq/g2fOyd+qfsCq1QvdwwKl/194Ow5
-	aNNQ==
-X-Gm-Message-State: AFeK/H3tXybIzirZWjwVdB1mT9Rf+7ShLO67v4hvvd6PUD9xMrg+Cvo4Z3LxXPCRLrIbyg==
-X-Received: by 10.223.183.6 with SMTP id l6mr21659821wre.192.1491316284012;
-	Tue, 04 Apr 2017 07:31:24 -0700 (PDT)
-Received: from kozik-book ([212.203.117.2])
-	by smtp.googlemail.com with ESMTPSA id
-	o15sm22510391wra.61.2017.04.04.07.31.23
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Tue, 04 Apr 2017 07:31:23 -0700 (PDT)
-Date: Tue, 4 Apr 2017 16:31:21 +0200
-From: Krzysztof Kozlowski <krzk@kernel.org>
-To: Peter Maydell <peter.maydell@linaro.org>
-Message-ID: <20170404143121.GA6421@kozik-book>
-References: <20170318192509.15499-1-krzk@kernel.org>
-	<CAFEAcA8WGoa=DYXRH4MHfnHmUR_5-xERdmcuqrsk=bmS7GBCmg@mail.gmail.com>
-	<20170404134402.GA4196@kozik-book>
-	<CAFEAcA9UGEVVUfL3--goP4mVU+ezegWPcoka41XM8d_E2yyJkQ@mail.gmail.com>
+	(envelope-from <Andrew.Baumann@microsoft.com>) id 1cwjNX-00055M-W8
+	for qemu-devel@nongnu.org; Sat, 08 Apr 2017 01:57:47 -0400
+Received: from mail-sn1nam01on0106.outbound.protection.outlook.com
+	([104.47.32.106]:18592
+	helo=NAM01-SN1-obe.outbound.protection.outlook.com)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <Andrew.Baumann@microsoft.com>)
+	id 1cwjNX-00054m-L3
+	for qemu-devel@nongnu.org; Sat, 08 Apr 2017 01:57:43 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+	s=selector1; h=From:Date:Subject:Message-ID:Content-Type:MIME-Version; 
+	bh=8fXH0XeSP+lctwOI1GbwEjZfPLWmH+SM6ashmUU4x6U=;
+	b=VX996G+Wumj6Q0lNkWnu0v/c2NU9KMEM2gUDYR4sGwvdLOSwlYUyHcZOn1UMaQ+bEaiZo9l1XUJFWm0kjCri158dAIhMIEbFyNmPOm6Lhki45d7JztAEdC72uZLlWVWODDKhXB4Hj59xfvwvmEz9c2+sni+9O5IyPDR6fc9bL0A=
+Received: from DM2PR21MB0060.namprd21.prod.outlook.com (10.161.140.26) by
+	DM2PR21MB0060.namprd21.prod.outlook.com (10.161.140.26) with Microsoft
+	SMTP Server (version=TLS1_2,
+	cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id
+	15.1.1019.0; Sat, 8 Apr 2017 05:57:32 +0000
+Received: from DM2PR21MB0060.namprd21.prod.outlook.com ([10.161.140.26]) by
+	DM2PR21MB0060.namprd21.prod.outlook.com ([10.161.140.26]) with mapi id
+	15.01.1019.024; Sat, 8 Apr 2017 05:57:32 +0000
+To: Omar Rizwan <omar.rizwan@gmail.com>, "qemu-devel@nongnu.org"
+	<qemu-devel@nongnu.org>
+Thread-Topic: [PATCH] raspi: Add Raspberry Pi 1 support
+Thread-Index: AQHSsCsTEf3dQbLwekqJsp96j8QypKG69+5Q
+Date: Sat, 8 Apr 2017 05:57:32 +0000
+Message-ID: <DM2PR21MB00601A5A86C3F935CCCBAC0D9E0F0@DM2PR21MB0060.namprd21.prod.outlook.com>
+References: <20170408054318.19830-1-omar.rizwan@gmail.com>
+In-Reply-To: <20170408054318.19830-1-omar.rizwan@gmail.com>
+Accept-Language: en-AU, en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: gmail.com; dkim=none (message not signed)
+	header.d=none; gmail.com;
+	dmarc=none action=none header.from=microsoft.com; 
+x-originating-ip: [50.47.115.53]
+x-microsoft-exchange-diagnostics: 1; DM2PR21MB0060;
+	7:Xia922gBZzDlSSZY3HULcjGbLH3LUQH7inGWUDE4sHPtTNmduD1A3UIV3AoxwWDjaq5+4bZvWSKEIbn98nUGbzJdbrLQdopAGPTH588UlkW7VSZsH84XNJpCJbmwskE9S2PB63xyIUkgoDJrOFaPSfqCoQOdCQDxI2E1wlIQVH4i0yswyyjSiI1JnLE3Tx/D9z9repMmXAwx6N0Ze2r1sTtsdQCu3C3khYBHxKEdPEmSq8ji6fOO4ZFGGsczP7cYj0lkWU/jFz1lr+R1uuzAD8IIFGeNC+WTSaeCH6Muxqorkm+WlceqcYfMA+sy8kBzQq0vk8Yxb4dJFvHCNN7mAx2fda6gOXkhNGsqFKiJ4XE=
+x-ms-office365-filtering-correlation-id: d9e85056-03e6-4662-854f-08d47e4425f8
+x-ms-office365-filtering-ht: Tenant
+x-microsoft-antispam: UriScan:; BCL:0; PCL:0;
+	RULEID:(22001)(2017030254075)(48565401081)(201703131423075)(201703031133081)(201702281549075);
+	SRVR:DM2PR21MB0060; 
+x-microsoft-antispam-prvs: <DM2PR21MB00607CEA75E6A12586B491379E0F0@DM2PR21MB0060.namprd21.prod.outlook.com>
+x-exchange-antispam-report-test: UriScan:;
+x-exchange-antispam-report-cfa-test: BCL:0; PCL:0;
+	RULEID:(61425038)(6040450)(601004)(2401047)(5005006)(8121501046)(93006095)(93001095)(10201501046)(3002001)(6055026)(61426038)(61427038)(6041248)(20161123560025)(20161123564025)(201703131423075)(201702281528075)(201703061421075)(20161123555025)(20161123562025)(6072148);
+	SRVR:DM2PR21MB0060; BCL:0; PCL:0; RULEID:; SRVR:DM2PR21MB0060; 
+x-forefront-prvs: 0271483E06
+x-forefront-antispam-report: SFV:NSPM;
+	SFS:(10019020)(6009001)(39840400002)(39450400003)(39860400002)(39850400002)(39400400002)(39410400002)(54356999)(74316002)(76176999)(2501003)(2906002)(305945005)(50986999)(7736002)(2900100001)(7696004)(122556002)(8676002)(33656002)(81166006)(2950100002)(5660300001)(229853002)(10290500002)(38730400002)(5005710100001)(189998001)(6246003)(102836003)(8990500004)(39060400002)(6116002)(3846002)(6436002)(99286003)(54906002)(9686003)(55016002)(77096006)(53936002)(6506006)(8936002)(3660700001)(86362001)(10090500001)(4326008)(66066001)(3280700002)(25786009)(86612001);
+	DIR:OUT; SFP:1102; SCL:1; SRVR:DM2PR21MB0060;
+	H:DM2PR21MB0060.namprd21.prod.outlook.com; FPR:; SPF:None;
+	MLV:ovrnspm; PTR:InfoNoRecords; LANG:en; 
+spamdiagnosticoutput: 1:99
+spamdiagnosticmetadata: NSPM
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-In-Reply-To: <CAFEAcA9UGEVVUfL3--goP4mVU+ezegWPcoka41XM8d_E2yyJkQ@mail.gmail.com>
-User-Agent: Mutt/1.5.24 (2015-08-30)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.85.128.176
-Subject: Re: [Qemu-arm] [PATCH v2] hw/misc: Add Exynos4210 Pseudo Random
- Number Generator
-X-BeenThere: qemu-arm@nongnu.org
+X-OriginatorOrg: microsoft.com
+X-MS-Exchange-CrossTenant-originalarrivaltime: 08 Apr 2017 05:57:32.4831 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 72f988bf-86f1-41af-91ab-2d7cd011db47
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM2PR21MB0060
+X-detected-operating-system: by eggs.gnu.org: Windows 7 or 8 [fuzzy]
+X-Received-From: 104.47.32.106
+Subject: Re: [Qemu-devel] [PATCH] raspi: Add Raspberry Pi 1 support
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Igor Mitsyanko <i.mitsyanko@gmail.com>, qemu-arm <qemu-arm@nongnu.org>,
-	QEMU Developers <qemu-devel@nongnu.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: yQAsuc9mFvJi
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+From: Andrew Baumann via Qemu-devel <qemu-devel@nongnu.org>
+Reply-To: Andrew Baumann <Andrew.Baumann@microsoft.com>
+Cc: "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
+	"qemu-arm@nongnu.org" <qemu-arm@nongnu.org>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: EwzXiPyTprQD
 
-On Tue, Apr 04, 2017 at 03:05:09PM +0100, Peter Maydell wrote:
-> On 4 April 2017 at 14:44, Krzysztof Kozlowski <krzk@kernel.org> wrote:
-> > On Tue, Apr 04, 2017 at 01:09:08PM +0100, Peter Maydell wrote:
-> >> On 18 March 2017 at 19:25, Krzysztof Kozlowski <krzk@kernel.org> wrote:
-> >> > Add emulation for Exynos4210 Pseudo Random Number Generator which could
-> >> > work on fixed seeds or with seeds provided by True Random Number
-> >> > Generator block inside the SoC.
-> >> >
-> >> > Implement only the fixed seeds part of it in polling mode (no
-> >> > interrupts).  Simple testing:
-> >> >     # echo "exynos" > /sys/class/misc/hw_random/rng_current
-> >> >     # dd if=/dev/hwrng of=/dev/null bs=1 count=16
-> >> >
-> >> > Signed-off-by: Krzysztof Kozlowski <krzk@kernel.org>
-> >> >
-> >> > ---
-> >> >
-> >> > Changes since v1:
-> >> > 1. Use GRand-like functions to fix build on MingW32 (this adds also
-> >> >    finalize).
-> >> > 2. Add DPRINTF macro.
-> >> > 3. Use HWADDR_PRIx and family for printing values.
-> >>
-> >> Is there a data sheet that describes this RNG? I had a quick google
-> >> but couldn't find anything in the 4210 manual you can get from Samsung.
-> >
-> > Official and public datasheet - I never heard about it... AFAIK, Samsung
-> > never released any datasheet... But recently I found a copy of
-> > Exynos4412 datasheet published on FriendlyArm website:
-> > http://wiki.friendlyarm.com/wiki/index.php/NanoPC-T1
-> > (at the bottom in "Resources").
-> >
-> > Some blocks in Exynos4412, including the RNG, are the same as in
-> > Exynos4210. However, you should not expect too much data about the RNG
-> > in the datasheet...
-> >
-> >> In particular I'm not sure we want to use GRand here.
-> >
-> > Now, I am not sure neither. :)
-> 
-> The last RNG we added was hw/misc/bcm2835_rng.c, which uses
-> qcrypto_random_bytes() to get cryptographically-random bytes
-> from the host. On the other hand it sounds like this Exynos
-> hardware is a PRNG without true-random input...
+Hi Omar,
 
-Yes, I think that is the case. The PRNG block looks the same on all
-Exynos SoCs. At least from datasheet perspective and registers.
-The difference came with Exynos5420 with introducing another block -
-True RNG - which could be chained to PRNG as seed. However the PRNG
-stays the same (according to datasheet).
+> From: Omar Rizwan [mailto:omar.rizwan@gmail.com]
+> Sent: Friday, 7 April 2017 22:43
 
-Unfortunately I could not verify too much of this because on Exynos5420
-apparently the PRNG block is locked by SecureMonitor.
+Did you do any testing of this? One of the reasons I never got around to up=
+streaming this was that I couldn't get Raspbian working reliably (there was=
+ some problem with stalled DMA reads from the MMC controller), and I didn't=
+ have the cycles to debug it further. Also, IIRC Raspbian on pi1 depended o=
+n the system timer devices, so it might not make sense to have this board-l=
+evel support without adding that first.
 
-At some point I will probably get back to Exynos5420 (and True RNG) but
-till then, the choice of GRand repeatable random sequences makes some
-sense to me.
+> --- a/hw/arm/bcm2835_peripherals.c
+> +++ b/hw/arm/bcm2835_peripherals.c
+> @@ -34,6 +34,7 @@ static void bcm2835_peripherals_init(Object *obj)
+>      /* Internal memory region for peripheral bus addresses (not exported=
+) */
+>      memory_region_init(&s->gpu_bus_mr, obj, "bcm2835-gpu", (uint64_t)1 <=
+<
+> 32);
+>      object_property_add_child(obj, "gpu-bus", OBJECT(&s->gpu_bus_mr),
+> NULL);
+> +    sysbus_init_mmio(SYS_BUS_DEVICE(s), &s->gpu_bus_mr);
+>=20
+>      /* Internal memory region for request/response communication with
+>       * mailbox-addressable peripherals (not exported)
 
-The remaining issue with this QEMU patch, brought to light during
-discussions on LKML, is that it does not accept multiple seeds. From
-what I understood, a good PRNG should be able to consume more seeds
-at one pass (into same registers) thus. In other words these cases
-should produce different results:
-1. Seed(a), random
-2. Seed(b), Seed(a), random
+This line looks like it might have snuck in by accident?
 
-As of now, I think GRand will not allow this.
-
-The hardware on Exynos4412 behaves like this plus it generates random
-numbers even for the same seed after reboot (which could mean that it
-was seeded by bootloader or Secure OS).
-
-Best regards,
-Krzysztof
-
+Andrew

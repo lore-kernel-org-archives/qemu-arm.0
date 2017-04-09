@@ -1,76 +1,76 @@
-Received: by 10.25.0.144 with SMTP id 138csp484985lfa;
-        Sun, 9 Apr 2017 04:21:26 -0700 (PDT)
-X-Received: by 10.200.40.210 with SMTP id j18mr53086775qtj.272.1491736886654;
-        Sun, 09 Apr 2017 04:21:26 -0700 (PDT)
+Received: by 10.25.0.144 with SMTP id 138csp485028lfa;
+        Sun, 9 Apr 2017 04:21:39 -0700 (PDT)
+X-Received: by 10.55.46.71 with SMTP id u68mr45671688qkh.115.1491736899060;
+        Sun, 09 Apr 2017 04:21:39 -0700 (PDT)
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id 201si10992421qko.98.2017.04.09.04.21.26
+        by mx.google.com with ESMTPS id u46si10980631qtu.318.2017.04.09.04.21.38
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sun, 09 Apr 2017 04:21:26 -0700 (PDT)
+        Sun, 09 Apr 2017 04:21:39 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        dkim=fail header.i=@gmail.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:58112 helo=lists.gnu.org)
+Received: from localhost ([::1]:58114 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1cxAuM-00051L-4R
-	for alex.bennee@linaro.org; Sun, 09 Apr 2017 07:21:26 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:39876)
+	id 1cxAuY-00059M-F5
+	for alex.bennee@linaro.org; Sun, 09 Apr 2017 07:21:38 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:39947)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <sundeep.lkml@gmail.com>) id 1cxAse-00046y-Ll
-	for qemu-devel@nongnu.org; Sun, 09 Apr 2017 07:19:42 -0400
+	(envelope-from <sundeep.lkml@gmail.com>) id 1cxAsr-0004Cv-Tf
+	for qemu-devel@nongnu.org; Sun, 09 Apr 2017 07:19:56 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <sundeep.lkml@gmail.com>) id 1cxAsd-0000uI-FL
-	for qemu-devel@nongnu.org; Sun, 09 Apr 2017 07:19:40 -0400
-Received: from mail-pg0-x243.google.com ([2607:f8b0:400e:c05::243]:36608)
+	(envelope-from <sundeep.lkml@gmail.com>) id 1cxAso-00010A-AM
+	for qemu-devel@nongnu.org; Sun, 09 Apr 2017 07:19:53 -0400
+Received: from mail-pf0-x242.google.com ([2607:f8b0:400e:c00::242]:34842)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <sundeep.lkml@gmail.com>)
-	id 1cxAsd-0000tD-7G; Sun, 09 Apr 2017 07:19:39 -0400
-Received: by mail-pg0-x243.google.com with SMTP id 81so22345214pgh.3;
-	Sun, 09 Apr 2017 04:19:39 -0700 (PDT)
+	id 1cxAso-0000zf-1w; Sun, 09 Apr 2017 07:19:50 -0400
+Received: by mail-pf0-x242.google.com with SMTP id n11so5864134pfg.2;
+	Sun, 09 Apr 2017 04:19:49 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
 	h=from:to:cc:subject:date:message-id:in-reply-to:references;
-	bh=srhK+p3Dd+bTfmMyuQg+OsKyWvDcoW+BaKfSFsZ2Za4=;
-	b=GMMHZvWBD+O6OBSZzt4sb0MEVnY7XaI7BQrPGK/qzMoqODXbo8c7b+mlbtw1cJsrpT
-	S/T8H/yTu9E8eaPgrXeBttQ8fP8U1nuJT1tZUmFmzpEttRceYkXiJqqW3KOlU3j41qMt
-	nAMqRCxSIBQoE8m+GtUoWhFR6fRz+9lNtLmU7r57+c4CReQory/F6dd//ULOVgz1ED6s
-	p2en1H3nmb84vIUvBdmxNcLEDFH3sgTYR+oSz6W8unIocs7P5QhYIIUG1thTlOnw4yF1
-	aXS2vau9/9Koqv7nUz5wgPqlO2FXev36cn/pJuNEl1fSgArNC2nhc9BsQnWdB6Q1LoBr
-	bGTg==
+	bh=NJSagYw/aseHu+HqyOPJNCi92ayY3jClPDrehb+ckT0=;
+	b=hzsUF8N3h0/W3CXxWfzOdd+6xLa7CJJkt2s3Uxe2gYTvXNIv5hd0hew6OpNUOPwwRu
+	aVhP/FPkd72+sH4FG9JSTVIetVwiRDyIyfbTKPHi4O2//nGfq+jx1FeN4FZ/kNPNPHfn
+	mWVI4MbrJ6yQLsvBeOx3YRbEPhVcL9g+hmAhrH7sa1w3EfWGBfNZjvwvUfML1tRWjO7Z
+	BUi5Al22FNtCUngx8ftCU5QoPg5nUinKUexjA+5YxYT7dbS+yjnhKb6cv63MibvnIMFh
+	nfOeh+P2XwUEyiKVEF59K6UBeVOTSVh0frjdECImAqfkeXaU6Dd0wXL9WtjqY8mmBk3s
+	rh9A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
 	:references;
-	bh=srhK+p3Dd+bTfmMyuQg+OsKyWvDcoW+BaKfSFsZ2Za4=;
-	b=qlyOd6ZP1/e0q6D9UVJjj+fHQL+TArKN/MWE+KJTKpD1XoN+/h+yjYVbLqDthIBi4y
-	qdjlnB9rwV1440CjH5O0aDnGy175Z/HGdDiFv82sz5scJPY7q3Mc+gWjXQKUJHVASc0W
-	VbYT0uXD5yoeb+ux02ohKC787MZgrjrn8KndExl0lsrkHU/YJ05fLe+QmPi7UKvWaYZr
-	7bDy8xgNd596XmppB04BTrB1MMJjgM+nsXnK3cvWiDQEh2BaTRcuI9K5O69K/mcUitiS
-	3ZIb2uLG7YgB0/YnfOTg5/GAdFt+tsnzTjJDnONRHm497+b0gk3a2reBO6/XTJS7Esj5
-	ECFw==
-X-Gm-Message-State: AFeK/H34Iny6g8qIMKZr5dhUC2V+LzMQVrM9CXzKWpNBJeTdVfR4oxFeWnMtgyjli5gBxQ==
-X-Received: by 10.99.125.75 with SMTP id m11mr19441622pgn.13.1491736778189;
-	Sun, 09 Apr 2017 04:19:38 -0700 (PDT)
+	bh=NJSagYw/aseHu+HqyOPJNCi92ayY3jClPDrehb+ckT0=;
+	b=meSlh3nawIzIdVG6FDht2y00/qG/bEPHDa7w2PeYbBz9cxYuLtBWjNUBRLqXxJPehK
+	WtNvTZPDIkq99OFPNIUCTBrED8WR0mWdRrgToHBPEWPKx25HLofaVYXMJyh5ExQBIug6
+	BNKO0oPyhLJfTHIq6Ffn1+KawFn583gQsxPgpe48QUYr5dI7gJhRvfL3VKFjiBXwUVf3
+	QP1iUtH+RsdvxIm5e8/c2lfbv3CZs9t2FecgT3iWPScaYuBLk1uolb4NUKMlZNG2S4+e
+	fplJXo9Jv5LvMCJ0af2wEkyJ4G+mhuwuM3XubHt/G2jzmYU6GNpEeYF7rc5tE0/HAOWx
+	+sGw==
+X-Gm-Message-State: AFeK/H3C5WiAENP767sdZY9C8zWnJknwHxE9E1ISRqidKK572HEuAHIsdtbyY9StVgMBEA==
+X-Received: by 10.98.137.68 with SMTP id v65mr35386730pfd.125.1491736789031;
+	Sun, 09 Apr 2017 04:19:49 -0700 (PDT)
 Received: from localhost.localdomain ([124.123.70.3])
 	by smtp.gmail.com with ESMTPSA id
-	g5sm18914139pgn.38.2017.04.09.04.19.34
+	g5sm18914139pgn.38.2017.04.09.04.19.42
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-	Sun, 09 Apr 2017 04:19:37 -0700 (PDT)
+	Sun, 09 Apr 2017 04:19:48 -0700 (PDT)
 From: Subbaraya Sundeep <sundeep.lkml@gmail.com>
 To: qemu-devel@nongnu.org,
 	qemu-arm@nongnu.org
-Date: Sun,  9 Apr 2017 16:49:15 +0530
-Message-Id: <1491736758-19540-2-git-send-email-sundeep.lkml@gmail.com>
+Date: Sun,  9 Apr 2017 16:49:17 +0530
+Message-Id: <1491736758-19540-4-git-send-email-sundeep.lkml@gmail.com>
 X-Mailer: git-send-email 2.5.0
 In-Reply-To: <1491736758-19540-1-git-send-email-sundeep.lkml@gmail.com>
 References: <1491736758-19540-1-git-send-email-sundeep.lkml@gmail.com>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:400e:c05::243
-Subject: [Qemu-devel] [Qemu-devel RFC v2 1/4] msf2: Add Smartfusion2 System
- timer
+X-Received-From: 2607:f8b0:400e:c00::242
+Subject: [Qemu-devel] [Qemu-devel RFC v2 3/4] msf2: Add Smartfusion2 SPI
+ controller
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -86,37 +86,39 @@ Cc: peter.maydell@linaro.org, Subbaraya Sundeep <sundeep.lkml@gmail.com>,
 	crosthwaite.peter@gmail.com
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: pi+NBCRksHrF
+X-TUID: lxetz9tIkwO8
 
-Modelled System Timer in Microsemi's Smartfusion2 Soc.
-Timer has two 32bit down counters and two interrupts.
+Modelled Microsemi's Smartfusion2 SPI controller.
 
 Signed-off-by: Subbaraya Sundeep <sundeep.lkml@gmail.com>
 ---
- hw/timer/Makefile.objs |   1 +
- hw/timer/msf2_timer.c  | 273 +++++++++++++++++++++++++++++++++++++++++++++++++
- 2 files changed, 274 insertions(+)
- create mode 100644 hw/timer/msf2_timer.c
+ hw/ssi/Makefile.objs |   1 +
+ hw/ssi/msf2_spi.c    | 449 +++++++++++++++++++++++++++++++++++++++++++++++++++
+ 2 files changed, 450 insertions(+)
+ create mode 100644 hw/ssi/msf2_spi.c
 
-diff --git a/hw/timer/Makefile.objs b/hw/timer/Makefile.objs
-index dd6f27e..0bdf1e1 100644
---- a/hw/timer/Makefile.objs
-+++ b/hw/timer/Makefile.objs
-@@ -41,3 +41,4 @@ common-obj-$(CONFIG_STM32F2XX_TIMER) += stm32f2xx_timer.o
- common-obj-$(CONFIG_ASPEED_SOC) += aspeed_timer.o
+diff --git a/hw/ssi/Makefile.objs b/hw/ssi/Makefile.objs
+index 487add2..86445d7 100644
+--- a/hw/ssi/Makefile.objs
++++ b/hw/ssi/Makefile.objs
+@@ -4,6 +4,7 @@ common-obj-$(CONFIG_XILINX_SPI) += xilinx_spi.o
+ common-obj-$(CONFIG_XILINX_SPIPS) += xilinx_spips.o
+ common-obj-$(CONFIG_ASPEED_SOC) += aspeed_smc.o
+ common-obj-$(CONFIG_STM32F2XX_SPI) += stm32f2xx_spi.o
++common-obj-$(CONFIG_MSF2) += msf2_spi.o
  
- common-obj-$(CONFIG_SUN4V_RTC) += sun4v-rtc.o
-+common-obj-$(CONFIG_MSF2) += msf2_timer.o
-diff --git a/hw/timer/msf2_timer.c b/hw/timer/msf2_timer.c
+ obj-$(CONFIG_OMAP) += omap_spi.o
+ obj-$(CONFIG_IMX) += imx_spi.o
+diff --git a/hw/ssi/msf2_spi.c b/hw/ssi/msf2_spi.c
 new file mode 100644
-index 0000000..962ada4
+index 0000000..6054cd8
 --- /dev/null
-+++ b/hw/timer/msf2_timer.c
-@@ -0,0 +1,273 @@
++++ b/hw/ssi/msf2_spi.c
+@@ -0,0 +1,449 @@
 +/*
-+ * Timer block model of Microsemi SmartFusion2.
++ * SPI controller model of Microsemi Smartfusion2.
 + *
-+ * Copyright (c) 2017 Subbaraya Sundeep <sundeep.lkml@gmail.com>.
++ * Copyright (C) 2017 Subbaraya Sundeep <sundeep.lkml@gmail.com>
 + *
 + * Permission is hereby granted, free of charge, to any person obtaining a copy
 + * of this software and associated documentation files (the "Software"), to deal
@@ -139,184 +141,364 @@ index 0000000..962ada4
 +
 +#include "qemu/osdep.h"
 +#include "hw/sysbus.h"
-+#include "hw/ptimer.h"
++#include "sysemu/sysemu.h"
 +#include "qemu/log.h"
-+#include "qemu/main-loop.h"
++#include "qemu/fifo32.h"
 +
-+#define D(x)
++#include "hw/ssi/ssi.h"
 +
-+#define NUM_TIMERS     2
++#ifdef MSF2_SPI_ERR_DEBUG
++#define DB_PRINT(...) do { \
++    fprintf(stderr,  ": %s: ", __func__); \
++    fprintf(stderr, ## __VA_ARGS__); \
++    } while (0);
++#else
++    #define DB_PRINT(...)
++#endif
 +
-+#define R_VAL          0
-+#define R_LOADVAL      1
-+#define R_BGLOADVAL    2
-+#define R_CTRL         3
-+#define R_RIS          4
-+#define R_MIS          5
-+#define R_MAX          6
++#define FIFO_CAPACITY     32
++#define FIFO_CAPACITY     32
 +
-+#define TIMER_CTRL_ENBL     (1 << 0)
-+#define TIMER_CTRL_ONESHOT  (1 << 1)
-+#define TIMER_CTRL_INTR     (1 << 2)
-+#define TIMER_RIS_ACK       (1 << 0)
-+#define TIMER_RST_CLR       (1 << 6)
++#define R_CONTROL         0
++#define R_DFSIZE          1
++#define R_STATUS          2
++#define R_INTCLR          3
++#define R_RX              4
++#define R_TX              5
++#define R_CLKGEN          6
++#define R_SS              7
++#define R_MIS             8
++#define R_RIS             9
++#define R_CONTROL2        10
++#define R_COMMAND         11
++#define R_PKTSIZE         12
++#define R_CMDSIZE         13
++#define R_HWSTATUS        14
++#define R_STAT8           15
++#define R_MAX             16
 +
-+struct msf2_timer {
-+    QEMUBH *bh;
-+    ptimer_state *ptimer;
-+    void *parent;
-+    int nr; /* for debug.  */
++#define S_RXFIFOFUL       (1 << 4)
++#define S_RXFIFOFULNXT    (1 << 5)
++#define S_RXFIFOEMP       (1 << 6)
++#define S_RXFIFOEMPNXT    (1 << 7)
++#define S_TXFIFOFUL       (1 << 8)
++#define S_TXFIFOFULNXT    (1 << 9)
++#define S_TXFIFOEMP       (1 << 10)
++#define S_TXFIFOEMPNXT    (1 << 11)
++#define S_FRAMESTART      (1 << 12)
++#define S_SSEL            (1 << 13)
++#define S_ACTIVE          (1 << 14)
 +
-+    unsigned long timer_div;
++#define C_ENABLE          (1 << 0)
++#define C_MODE            (1 << 1)
++#define C_INTRXDATA       (1 << 4)
++#define C_INTTXDATA       (1 << 5)
++#define C_INTRXOVRFLO     (1 << 6)
++#define C_SPS             (1 << 26)
++#define C_BIGFIFO         (1 << 29)
++#define C_RESET           (1 << 31)
 +
-+    uint32_t regs[R_MAX];
-+    qemu_irq irq;
-+};
++#define FRAMESZ_MASK      0x1F
++#define FMCOUNT_MASK      0x00FFFF00
++#define FMCOUNT_SHIFT     8
 +
-+#define TYPE_MSF2_TIMER "msf2-timer"
-+#define MSF2_TIMER(obj) \
-+    OBJECT_CHECK(struct timerblock, (obj), TYPE_MSF2_TIMER)
++#define TXDONE            (1 << 0)
++#define RXRDY             (1 << 1)
++#define RXCHOVRF          (1 << 2)
 +
-+struct timerblock {
++#define TYPE_MSF2_SPI   "msf2-spi"
++#define MSF2_SPI(obj)   OBJECT_CHECK(Msf2SPI, (obj), TYPE_MSF2_SPI)
++
++typedef struct Msf2SPI {
 +    SysBusDevice parent_obj;
 +
 +    MemoryRegion mmio;
-+    uint32_t freq_hz;
-+    struct msf2_timer *timers;
-+};
 +
-+static inline unsigned int timer_from_addr(hwaddr addr)
++    qemu_irq irq;
++
++    qemu_irq cs_line;
++
++    SSIBus *spi;
++
++    Fifo32 rx_fifo;
++    Fifo32 tx_fifo;
++
++    int fifo_depth;
++    uint32_t frame_count;
++    bool enabled;
++
++    uint32_t regs[R_MAX];
++} Msf2SPI;
++
++static void txfifo_reset(Msf2SPI *s)
 +{
-+    /* Timers get a 6x32bit control reg area each.  */
-+    return addr / R_MAX;
++    fifo32_reset(&s->tx_fifo);
++
++    s->regs[R_STATUS] &= ~S_TXFIFOFUL;
++    s->regs[R_STATUS] |= S_TXFIFOEMP;
 +}
 +
-+static void timer_update_irq(struct msf2_timer *st)
++static void rxfifo_reset(Msf2SPI *s)
 +{
-+    int isr;
-+    int ier;
++    fifo32_reset(&s->rx_fifo);
 +
-+    isr = !!(st->regs[R_RIS] & TIMER_RIS_ACK);
-+    ier = !!(st->regs[R_CTRL] & TIMER_CTRL_INTR);
++    s->regs[R_STATUS] &= ~S_RXFIFOFUL;
++    s->regs[R_STATUS] |= S_RXFIFOEMP;
++}
 +
-+    qemu_set_irq(st->irq, (ier && isr));
++static void set_fifodepth(Msf2SPI *s)
++{
++    int size = s->regs[R_DFSIZE] & FRAMESZ_MASK;
++
++    if (0 <= size && size <= 8) {
++        s->fifo_depth = 32;
++    }
++    if (9 <= size && size <= 16) {
++        s->fifo_depth = 16;
++    }
++    if (17 <= size && size <= 32) {
++        s->fifo_depth = 8;
++    }
++}
++
++static void msf2_spi_do_reset(Msf2SPI *s)
++{
++    memset(s->regs, 0, sizeof s->regs);
++    s->regs[R_CONTROL] = 0x80000102;
++    s->regs[R_DFSIZE] = 0x4;
++    s->regs[R_STATUS] = 0x2440;
++    s->regs[R_CLKGEN] = 0x7;
++    s->regs[R_STAT8] = 0x7;
++    s->regs[R_RIS] = 0x0;
++
++    s->fifo_depth = 4;
++    s->frame_count = 1;
++    s->enabled = false;
++
++    rxfifo_reset(s);
++    txfifo_reset(s);
++}
++
++static void update_mis(Msf2SPI *s)
++{
++    uint32_t reg = s->regs[R_CONTROL];
++    uint32_t tmp;
++
++    /*
++     * form the Control register interrupt enable bits
++     * same as RIS, MIS and Interrupt clear registers for simplicity
++     */
++    tmp = ((reg & C_INTRXOVRFLO) >> 4) | ((reg & C_INTRXDATA) >> 3) |
++           ((reg & C_INTTXDATA) >> 5);
++    s->regs[R_MIS] |= tmp & s->regs[R_RIS];
++}
++
++static void spi_update_irq(Msf2SPI *s)
++{
++    int irq;
++
++    update_mis(s);
++    irq = !!(s->regs[R_MIS]);
++
++    qemu_set_irq(s->irq, irq);
++}
++
++static void msf2_spi_reset(DeviceState *d)
++{
++    msf2_spi_do_reset(MSF2_SPI(d));
 +}
 +
 +static uint64_t
-+timer_read(void *opaque, hwaddr addr, unsigned int size)
++spi_read(void *opaque, hwaddr addr, unsigned int size)
 +{
-+    struct timerblock *t = opaque;
-+    struct msf2_timer *st;
++    Msf2SPI *s = opaque;
 +    uint32_t r = 0;
-+    unsigned int timer;
-+    int isr;
-+    int ier;
 +
 +    addr >>= 2;
-+    timer = timer_from_addr(addr);
-+    st = &t->timers[timer];
-+
-+    if (timer) {
-+        addr -= 6;
-+    }
-+
 +    switch (addr) {
-+    case R_VAL:
-+        r = ptimer_get_count(st->ptimer);
-+        D(qemu_log("msf2_timer t=%d read counter=%x\n", timer, r));
++    case R_RX:
++        s->regs[R_STATUS] &= ~S_RXFIFOFUL;
++        s->regs[R_STATUS] &= ~RXCHOVRF;
++        r = fifo32_pop(&s->rx_fifo);
++        if (fifo32_is_empty(&s->rx_fifo)) {
++            s->regs[R_STATUS] |= S_RXFIFOEMP;
++        }
 +        break;
 +
 +    case R_MIS:
-+        isr = !!(st->regs[R_RIS] & TIMER_RIS_ACK);
-+        ier = !!(st->regs[R_CTRL] & TIMER_CTRL_INTR);
-+        r = ier && isr;
++        update_mis(s);
++        r = s->regs[R_MIS];
 +        break;
 +
 +    default:
-+        if (addr < ARRAY_SIZE(st->regs)) {
-+            r = st->regs[addr];
++        if (addr < ARRAY_SIZE(s->regs)) {
++            r = s->regs[addr];
 +        }
 +        break;
 +    }
-+    D(fprintf(stderr, "%s timer=%d %x=%x\n", __func__, timer, addr * 4, r));
++
++    DB_PRINT("addr=" TARGET_FMT_plx " = %x\n", addr * 4, r);
++    spi_update_irq(s);
 +    return r;
 +}
 +
-+static void timer_update(struct msf2_timer *st)
++static void assert_cs(Msf2SPI *s)
 +{
-+    uint64_t count;
-+
-+    D(fprintf(stderr, "%s timer=%d\n", __func__, st->nr));
-+
-+    if (!(st->regs[R_CTRL] & TIMER_CTRL_ENBL)) {
-+        ptimer_stop(st->ptimer);
-+        return;
-+    }
-+
-+    count = st->regs[R_LOADVAL];
-+    ptimer_set_limit(st->ptimer, count, 1);
-+    ptimer_run(st->ptimer, 1);
++    qemu_set_irq(s->cs_line, 0);
 +}
 +
-+static void
-+timer_write(void *opaque, hwaddr addr,
-+            uint64_t val64, unsigned int size)
++static void deassert_cs(Msf2SPI *s)
 +{
-+    struct timerblock *t = opaque;
-+    struct msf2_timer *st;
-+    unsigned int timer;
-+    uint32_t value = val64;
++    qemu_set_irq(s->cs_line, 1);
++}
 +
-+    addr >>= 2;
-+    timer = timer_from_addr(addr);
-+    st = &t->timers[timer];
-+    D(fprintf(stderr, "%s addr=%x val=%x (timer=%d)\n",
-+             __func__, addr * 4, value, timer));
++static void spi_flush_txfifo(Msf2SPI *s)
++{
++    uint32_t tx;
++    uint32_t rx;
++    bool sps = !!(s->regs[R_CONTROL] & C_SPS);
 +
-+    if (timer) {
-+        addr -= 6;
++    /*
++     * Chip Select(CS) is automatically controlled by this controller.
++     * If SPS bit is set in Control register then CS is asserted
++     * until all the frames set in frame count of Control register are
++     * transferred. If SPS is not set then CS pulses between frames.
++     * Note that Slave Select register specifies which of the CS line
++     * has to be controlled automatically by controller. Bits SS[7:1] are for
++     * masters in FPGA fabric since we model only Microcontroller subsystem
++     * of Smartfusion2 we control only one CS(SS[0]) line.
++     */
++    while (!fifo32_is_empty(&s->tx_fifo) && s->frame_count) {
++        assert_cs(s);
++
++        s->regs[R_STATUS] &= ~TXDONE;
++        s->regs[R_STATUS] &= ~RXRDY;
++
++        tx = fifo32_pop(&s->tx_fifo);
++        DB_PRINT("data tx:%x\n", tx);
++        rx = ssi_transfer(s->spi, tx);
++        DB_PRINT("data rx:%x\n", rx);
++
++        if (fifo32_num_used(&s->rx_fifo) == s->fifo_depth) {
++            s->regs[R_STATUS] |= RXCHOVRF;
++            s->regs[R_RIS] |= RXCHOVRF;
++        } else {
++            fifo32_push(&s->rx_fifo, rx);
++            s->regs[R_STATUS] &= ~S_RXFIFOEMP;
++            if (fifo32_num_used(&s->rx_fifo) == (s->fifo_depth - 1)) {
++                s->regs[R_STATUS] |= S_RXFIFOFULNXT;
++            }
++            if (fifo32_num_used(&s->rx_fifo) == s->fifo_depth) {
++                s->regs[R_STATUS] |= S_RXFIFOFUL;
++            }
++        }
++        s->frame_count--;
++        if (!sps) {
++            deassert_cs(s);
++            assert_cs(s);
++        }
 +    }
 +
++    if (!sps) {
++        deassert_cs(s);
++    }
++
++    if (!s->frame_count) {
++        s->frame_count = (s->regs[R_CONTROL] & FMCOUNT_MASK) >> FMCOUNT_SHIFT;
++        if (sps) {
++            deassert_cs(s);
++        }
++        s->regs[R_RIS] |= TXDONE;
++        s->regs[R_RIS] |= RXRDY;
++        s->regs[R_STATUS] |= TXDONE;
++        s->regs[R_STATUS] |= RXRDY;
++   }
++}
++
++static void spi_write(void *opaque, hwaddr addr,
++            uint64_t val64, unsigned int size)
++{
++    Msf2SPI *s = opaque;
++    uint32_t value = val64;
++
++    DB_PRINT("addr=" TARGET_FMT_plx " = %x\n", addr, value);
++    addr >>= 2;
++
 +    switch (addr) {
-+    case R_CTRL:
-+        st->regs[R_CTRL] = value;
-+        timer_update(st);
-+        break;
-+
-+    case R_RIS:
-+        if (value & TIMER_RIS_ACK) {
-+            st->regs[R_RIS] &= ~TIMER_RIS_ACK;
++    case R_TX:
++        /* adding to already full FIFO */
++        if (fifo32_num_used(&s->tx_fifo) == s->fifo_depth) {
++            break;
++        }
++        s->regs[R_STATUS] &= ~S_TXFIFOEMP;
++        fifo32_push(&s->tx_fifo, value);
++        if (fifo32_num_used(&s->tx_fifo) == (s->fifo_depth - 1)) {
++            s->regs[R_STATUS] |= S_TXFIFOFULNXT;
++        }
++        if (fifo32_num_used(&s->tx_fifo) == s->fifo_depth) {
++            s->regs[R_STATUS] |= S_TXFIFOFUL;
++        }
++        if (s->enabled) {
++            spi_flush_txfifo(s);
 +        }
 +        break;
 +
-+    case R_LOADVAL:
-+        st->regs[R_LOADVAL] = value;
-+        if (st->regs[R_CTRL] & TIMER_CTRL_ENBL) {
-+            timer_update(st);
++    case R_CONTROL:
++        s->regs[R_CONTROL] = value;
++        if (value & C_BIGFIFO) {
++            set_fifodepth(s);
++        } else {
++            s->fifo_depth = 4;
++        }
++        if (value & C_ENABLE) {
++            s->enabled = true;
++        } else {
++            s->enabled = false;
++        }
++        s->frame_count = (value & FMCOUNT_MASK) >> FMCOUNT_SHIFT;
++        if (value & C_RESET) {
++            msf2_spi_do_reset(s);
 +        }
 +        break;
 +
-+    case R_BGLOADVAL:
-+        st->regs[R_BGLOADVAL] = value;
-+        st->regs[R_LOADVAL] = value;
++    case R_DFSIZE:
++        if (s->enabled) {
++            break;
++        }
++        s->regs[R_DFSIZE] = value;
 +        break;
 +
-+    case R_VAL:
++    case R_INTCLR:
++        s->regs[R_INTCLR] = value;
++        if (value & TXDONE) {
++            s->regs[R_RIS] &= ~TXDONE;
++        }
++        if (value & RXRDY) {
++            s->regs[R_RIS] &= ~RXRDY;
++        }
++        if (value & RXCHOVRF) {
++            s->regs[R_RIS] &= ~RXCHOVRF;
++        }
++        break;
++
 +    case R_MIS:
++    case R_STATUS:
++    case R_RIS:
 +        break;
 +
 +    default:
-+        if (addr < ARRAY_SIZE(st->regs)) {
-+            st->regs[addr] = value;
++        if (addr < ARRAY_SIZE(s->regs)) {
++            s->regs[addr] = value;
 +        }
 +        break;
 +    }
-+    timer_update_irq(st);
++
++    spi_update_irq(s);
 +}
 +
-+static const MemoryRegionOps timer_ops = {
-+    .read = timer_read,
-+    .write = timer_write,
++static const MemoryRegionOps spi_ops = {
++    .read = spi_read,
++    .write = spi_write,
 +    .endianness = DEVICE_NATIVE_ENDIAN,
 +    .valid = {
 +        .min_access_size = 4,
@@ -324,68 +506,64 @@ index 0000000..962ada4
 +    }
 +};
 +
-+static void timer_hit(void *opaque)
++static int msf2_spi_init(SysBusDevice *sbd)
 +{
-+    struct msf2_timer *st = opaque;
-+    D(fprintf(stderr, "%s %d\n", __func__, st->nr));
-+    st->regs[R_RIS] |= TIMER_RIS_ACK;
++    DeviceState *dev = DEVICE(sbd);
++    Msf2SPI *s = MSF2_SPI(dev);
 +
-+    if (!(st->regs[R_CTRL] & TIMER_CTRL_ONESHOT)) {
-+        timer_update(st);
-+    }
-+    timer_update_irq(st);
++    DB_PRINT("\n");
++
++    s->spi = ssi_create_bus(dev, "spi");
++
++    sysbus_init_irq(sbd, &s->irq);
++    ssi_auto_connect_slaves(dev, &s->cs_line, s->spi);
++    sysbus_init_irq(sbd, &s->cs_line);
++
++    memory_region_init_io(&s->mmio, OBJECT(s), &spi_ops, s,
++                          "msf2-spi", R_MAX * 4);
++    sysbus_init_mmio(sbd, &s->mmio);
++
++    fifo32_create(&s->tx_fifo, FIFO_CAPACITY);
++    fifo32_create(&s->rx_fifo, FIFO_CAPACITY);
++
++    return 0;
 +}
 +
-+static void msf2_timer_realize(DeviceState *dev, Error **errp)
-+{
-+    struct timerblock *t = MSF2_TIMER(dev);
-+    unsigned int i;
-+
-+    /* Init all the ptimers.  */
-+    t->timers = g_malloc0((sizeof t->timers[0]) * NUM_TIMERS);
-+    for (i = 0; i < NUM_TIMERS; i++) {
-+        struct msf2_timer *st = &t->timers[i];
-+
-+        st->parent = t;
-+        st->nr = i;
-+        st->bh = qemu_bh_new(timer_hit, st);
-+        st->ptimer = ptimer_init(st->bh, PTIMER_POLICY_DEFAULT);
-+        ptimer_set_freq(st->ptimer, t->freq_hz);
-+        sysbus_init_irq(SYS_BUS_DEVICE(dev), &st->irq);
++static const VMStateDescription vmstate_msf2_spi = {
++    .name = "msf2_spi",
++    .version_id = 1,
++    .minimum_version_id = 1,
++    .fields = (VMStateField[]) {
++        VMSTATE_FIFO32(tx_fifo, Msf2SPI),
++        VMSTATE_FIFO32(rx_fifo, Msf2SPI),
++        VMSTATE_UINT32_ARRAY(regs, Msf2SPI, R_MAX),
++        VMSTATE_END_OF_LIST()
 +    }
-+
-+    memory_region_init_io(&t->mmio, OBJECT(t), &timer_ops, t, "msf2-timer",
-+                          R_MAX * 4 * NUM_TIMERS);
-+    sysbus_init_mmio(SYS_BUS_DEVICE(dev), &t->mmio);
-+}
-+
-+static Property msf2_timer_properties[] = {
-+    DEFINE_PROP_UINT32("clock-frequency", struct timerblock, freq_hz,
-+                                                                83 * 1000000),
-+    DEFINE_PROP_END_OF_LIST(),
 +};
 +
-+static void msf2_timer_class_init(ObjectClass *klass, void *data)
++static void msf2_spi_class_init(ObjectClass *klass, void *data)
 +{
 +    DeviceClass *dc = DEVICE_CLASS(klass);
++    SysBusDeviceClass *k = SYS_BUS_DEVICE_CLASS(klass);
 +
-+    dc->realize = msf2_timer_realize;
-+    dc->props = msf2_timer_properties;
++    k->init = msf2_spi_init;
++    dc->reset = msf2_spi_reset;
++    dc->vmsd = &vmstate_msf2_spi;
 +}
 +
-+static const TypeInfo msf2_timer_info = {
-+    .name          = TYPE_MSF2_TIMER,
-+    .parent        = TYPE_SYS_BUS_DEVICE,
-+    .instance_size = sizeof(struct timerblock),
-+    .class_init    = msf2_timer_class_init,
++static const TypeInfo msf2_spi_info = {
++    .name           = TYPE_MSF2_SPI,
++    .parent         = TYPE_SYS_BUS_DEVICE,
++    .instance_size  = sizeof(Msf2SPI),
++    .class_init     = msf2_spi_class_init,
 +};
 +
-+static void msf2_timer_register_types(void)
++static void msf2_spi_register_types(void)
 +{
-+    type_register_static(&msf2_timer_info);
++    type_register_static(&msf2_spi_info);
 +}
 +
-+type_init(msf2_timer_register_types)
++type_init(msf2_spi_register_types)
 -- 
 2.5.0
 

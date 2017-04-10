@@ -1,48 +1,48 @@
-Received: by 10.25.0.144 with SMTP id 138csp959169lfa;
-        Mon, 10 Apr 2017 10:13:59 -0700 (PDT)
-X-Received: by 10.55.189.130 with SMTP id n124mr54497940qkf.235.1491844439397;
-        Mon, 10 Apr 2017 10:13:59 -0700 (PDT)
+Received: by 10.25.0.144 with SMTP id 138csp966156lfa;
+        Mon, 10 Apr 2017 10:34:19 -0700 (PDT)
+X-Received: by 10.55.158.215 with SMTP id h206mr34573385qke.154.1491845659155;
+        Mon, 10 Apr 2017 10:34:19 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id n44si13993956qta.1.2017.04.10.10.13.58
+        by mx.google.com with ESMTPS id z53si14026490qta.146.2017.04.10.10.34.18
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 10 Apr 2017 10:13:59 -0700 (PDT)
+        Mon, 10 Apr 2017 10:34:19 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:35546 helo=lists.gnu.org)
+Received: from localhost ([::1]:35631 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1cxct2-0001aP-PJ
-	for alex.bennee@linaro.org; Mon, 10 Apr 2017 13:13:56 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:54980)
+	id 1cxdCi-0000nS-AS
+	for alex.bennee@linaro.org; Mon, 10 Apr 2017 13:34:16 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:60789)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1cxcss-0001VI-9x
-	for qemu-arm@nongnu.org; Mon, 10 Apr 2017 13:13:47 -0400
+	(envelope-from <pm215@archaic.org.uk>) id 1cxdCb-0000mt-MQ
+	for qemu-arm@nongnu.org; Mon, 10 Apr 2017 13:34:10 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1cxcsr-000765-8x
-	for qemu-arm@nongnu.org; Mon, 10 Apr 2017 13:13:46 -0400
-Received: from orth.archaic.org.uk ([2001:8b0:1d0::2]:49123)
+	(envelope-from <pm215@archaic.org.uk>) id 1cxdCa-0006qh-TZ
+	for qemu-arm@nongnu.org; Mon, 10 Apr 2017 13:34:09 -0400
+Received: from orth.archaic.org.uk ([2001:8b0:1d0::2]:49130)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <pm215@archaic.org.uk>)
-	id 1cxcsr-00075j-2C; Mon, 10 Apr 2017 13:13:45 -0400
+	id 1cxdCa-0006qG-O3; Mon, 10 Apr 2017 13:34:08 -0400
 Received: from pm215 by orth.archaic.org.uk with local (Exim 4.84_2)
 	(envelope-from <pm215@archaic.org.uk>)
-	id 1cxcsq-0005jy-6g; Mon, 10 Apr 2017 18:13:44 +0100
+	id 1cxcsn-0005hv-P3; Mon, 10 Apr 2017 18:13:41 +0100
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Date: Mon, 10 Apr 2017 18:13:37 +0100
-Message-Id: <1491844419-12485-8-git-send-email-peter.maydell@linaro.org>
+Date: Mon, 10 Apr 2017 18:13:32 +0100
+Message-Id: <1491844419-12485-3-git-send-email-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.7.4
 In-Reply-To: <1491844419-12485-1-git-send-email-peter.maydell@linaro.org>
 References: <1491844419-12485-1-git-send-email-peter.maydell@linaro.org>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 2001:8b0:1d0::2
-Subject: [Qemu-arm] [PATCH v2 7/9] arm: Track M profile handler mode state
- in TB flags
+Subject: [Qemu-arm] [PATCH v2 2/9] arm: Thumb shift operations should not
+ permit interworking branches
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -59,78 +59,44 @@ Cc: Richard Henderson <rth@twiddle.net>,
 	patches@linaro.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: eY3mE6RwhNpw
+X-TUID: Ay0QmvsYjEgq
 
-For M profile exception-return handling we'd like to generate different
-code for some instructions depending on whether we are in Handler
-mode or Thread mode. This isn't the same as "are we privileged
-or user", so we need an extra bit in the TB flags to distinguish.
+In Thumb mode, the only instructions which can cause an interworking
+branch by writing the PC are BLX, BX, BXJ, LDR, POP and LDM. Unlike
+ARM mode, data processing instructions which target the PC do not
+cause interworking branches.
+
+When we added support for doing interworking branches on writes to
+PC from data processing instructions in commit 21aeb3430ce7ba, we
+accidentally changed a Thumb instruction to have interworking
+branch behaviour for writes to PC. (MOV, MOVS register-shifted
+register, encoding T2; this is the standard encoding for
+LSL/LSR/ASR/ROR (register).)
+
+For this encoding, behaviour with Rd == R15 is specified as
+UNPREDICTABLE, so allowing an interworking branch is within
+spec, but it's confusing and differs from our handling of this
+class of UNPREDICTABLE for other Thumb ALU operations. Make
+it perform a simple (non-interworking) branch like the others.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- target/arm/cpu.h       | 9 +++++++++
- target/arm/translate.h | 1 +
- target/arm/translate.c | 1 +
- 3 files changed, 11 insertions(+)
+ target/arm/translate.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index e6f05e2..7d26357 100644
---- a/target/arm/cpu.h
-+++ b/target/arm/cpu.h
-@@ -2291,6 +2291,9 @@ static inline bool arm_cpu_data_is_big_endian(CPUARMState *env)
- #define ARM_TBFLAG_NS_MASK          (1 << ARM_TBFLAG_NS_SHIFT)
- #define ARM_TBFLAG_BE_DATA_SHIFT    20
- #define ARM_TBFLAG_BE_DATA_MASK     (1 << ARM_TBFLAG_BE_DATA_SHIFT)
-+/* For M profile only, Handler (ie not Thread) mode */
-+#define ARM_TBFLAG_HANDLER_SHIFT    21
-+#define ARM_TBFLAG_HANDLER_MASK     (1 << ARM_TBFLAG_HANDLER_SHIFT)
- 
- /* Bit usage when in AArch64 state */
- #define ARM_TBFLAG_TBI0_SHIFT 0        /* TBI0 for EL0/1 or TBI for EL2/3 */
-@@ -2327,6 +2330,8 @@ static inline bool arm_cpu_data_is_big_endian(CPUARMState *env)
-     (((F) & ARM_TBFLAG_NS_MASK) >> ARM_TBFLAG_NS_SHIFT)
- #define ARM_TBFLAG_BE_DATA(F) \
-     (((F) & ARM_TBFLAG_BE_DATA_MASK) >> ARM_TBFLAG_BE_DATA_SHIFT)
-+#define ARM_TBFLAG_HANDLER(F) \
-+    (((F) & ARM_TBFLAG_HANDLER_MASK) >> ARM_TBFLAG_HANDLER_SHIFT)
- #define ARM_TBFLAG_TBI0(F) \
-     (((F) & ARM_TBFLAG_TBI0_MASK) >> ARM_TBFLAG_TBI0_SHIFT)
- #define ARM_TBFLAG_TBI1(F) \
-@@ -2517,6 +2522,10 @@ static inline void cpu_get_tb_cpu_state(CPUARMState *env, target_ulong *pc,
-     }
-     *flags |= fp_exception_el(env) << ARM_TBFLAG_FPEXC_EL_SHIFT;
- 
-+    if (env->v7m.exception != 0) {
-+        *flags |= ARM_TBFLAG_HANDLER_MASK;
-+    }
-+
-     *cs_base = 0;
- }
- 
-diff --git a/target/arm/translate.h b/target/arm/translate.h
-index abb0760..f955174 100644
---- a/target/arm/translate.h
-+++ b/target/arm/translate.h
-@@ -31,6 +31,7 @@ typedef struct DisasContext {
-     bool vfp_enabled; /* FP enabled via FPSCR.EN */
-     int vec_len;
-     int vec_stride;
-+    bool handler; /* v7M Handler mode */
-     /* Immediate value in AArch32 SVC insn; must be set if is_jmp == DISAS_SWI
-      * so that top level loop can generate correct syndrome information.
-      */
 diff --git a/target/arm/translate.c b/target/arm/translate.c
-index f28c4ca..f980cda 100644
+index fe3f442..ddc62b6 100644
 --- a/target/arm/translate.c
 +++ b/target/arm/translate.c
-@@ -11780,6 +11780,7 @@ void gen_intermediate_code(CPUARMState *env, TranslationBlock *tb)
-     dc->vec_len = ARM_TBFLAG_VECLEN(tb->flags);
-     dc->vec_stride = ARM_TBFLAG_VECSTRIDE(tb->flags);
-     dc->c15_cpar = ARM_TBFLAG_XSCALE_CPAR(tb->flags);
-+    dc->handler = ARM_TBFLAG_HANDLER(tb->flags);
-     dc->cp_regs = cpu->cp_regs;
-     dc->features = env->features;
- 
+@@ -9959,7 +9959,7 @@ static int disas_thumb2_insn(CPUARMState *env, DisasContext *s, uint16_t insn_hw
+             gen_arm_shift_reg(tmp, op, tmp2, logic_cc);
+             if (logic_cc)
+                 gen_logic_CC(tmp);
+-            store_reg_bx(s, rd, tmp);
++            store_reg(s, rd, tmp);
+             break;
+         case 1: /* Sign/zero extend.  */
+             op = (insn >> 20) & 7;
 -- 
 2.7.4
 

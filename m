@@ -1,128 +1,193 @@
-Received: by 10.25.0.144 with SMTP id 138csp820842lfa;
-        Mon, 10 Apr 2017 04:44:59 -0700 (PDT)
-X-Received: by 10.55.39.138 with SMTP id n132mr8450139qkn.25.1491824699510;
-        Mon, 10 Apr 2017 04:44:59 -0700 (PDT)
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 10.25.0.144 with SMTP id 138csp860104lfa;
+        Mon, 10 Apr 2017 06:22:43 -0700 (PDT)
+X-Received: by 10.200.51.28 with SMTP id t28mr9607776qta.16.1491830563334;
+        Mon, 10 Apr 2017 06:22:43 -0700 (PDT)
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id f40si5999154qtc.140.2017.04.10.04.44.58
+        by mx.google.com with ESMTPS id e1si13383847qkf.232.2017.04.10.06.22.42
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 10 Apr 2017 04:44:59 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Mon, 10 Apr 2017 06:22:43 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        dkim=fail header.i=@gmail.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:33833 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:34452 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1cxXke-0002VO-QA
-	for alex.bennee@linaro.org; Mon, 10 Apr 2017 07:44:56 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:37421)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1cxZHE-0004ta-JX
+	for alex.bennee@linaro.org; Mon, 10 Apr 2017 09:22:40 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:32784)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1cxXjI-0001lU-0i
-	for qemu-devel@nongnu.org; Mon, 10 Apr 2017 07:43:38 -0400
+	id 1cxZH9-0004rg-Mv
+	for qemu-arm@nongnu.org; Mon, 10 Apr 2017 09:22:36 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1cxXjE-0003S2-VD
-	for qemu-devel@nongnu.org; Mon, 10 Apr 2017 07:43:32 -0400
-Received: from mail-qk0-x241.google.com ([2607:f8b0:400d:c09::241]:34742)
+	id 1cxZH8-00066X-Lm
+	for qemu-arm@nongnu.org; Mon, 10 Apr 2017 09:22:35 -0400
+Received: from mail-qt0-x242.google.com ([2607:f8b0:400d:c0d::242]:35677)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1cxXjE-0003Rl-Qm; Mon, 10 Apr 2017 07:43:28 -0400
-Received: by mail-qk0-x241.google.com with SMTP id p68so18725322qke.1;
-	Mon, 10 Apr 2017 04:43:28 -0700 (PDT)
+	id 1cxZH3-00064N-Db; Mon, 10 Apr 2017 09:22:29 -0400
+Received: by mail-qt0-x242.google.com with SMTP id o36so3072191qtb.2;
+	Mon, 10 Apr 2017 06:22:29 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
 	h=sender:subject:to:references:cc:from:message-id:date:user-agent
 	:mime-version:in-reply-to:content-transfer-encoding;
-	bh=UjYHl1R5wAZKfbSpQrjY216HV4jFP+jq2vbD2/dlUOw=;
-	b=FkHl+RYx1m7pRID6zmSEmbVSggVOPjz+P7gFOKtyox4QL5tO4Lcns9F8HCqy5eYLdT
-	Pv4TbYT0r7yKVfFTTxp0HxGiNQEPACs1DiU5v/WtRpOv9O3G/7xfkErqRhdzey5CT4tR
-	mFwOSM3jeHjCgzD/CoUmJlTWyqoAeI75TfUo3qqjWvyf1Ff3LhfMSod9JDio/uFul7CO
-	kQB4c4WfHrSVnK+qZaoIThu3C4FlxZ7h+opwZ8eEcrCxiB1TeTc4hbYtee5o16rqkYR/
-	EcHKtYcYLCP4S85GleRy1voD+wDkYsoOqcFzi21H0UnGEIjQ2w1TQ5zEAAY0tl7H/4d7
-	mLQA==
+	bh=bbGrNKTy/hZ8ly/tWxT0QS/6Ha2NRrGfLzb1cwfkTqU=;
+	b=lwqkDGpCvDBvcx+MAktMubRuhfLEK78kgDokxsYRSojvKDm2/TZxmeAg+D2HDmaMul
+	Q3uPDAQLKK+WPWgwmACQs5nj2K1EQ59Xk+MukGBKARX6UtkMfdJYsaRgjujEEi6u+Uzq
+	B9QsHTv1JMTodrM/qbzQO5jeBek2Nt4Ioskp7xWCwTqaJrrx4E29TYzx+IJxV4WS475R
+	uELdXDO/HErcTpadDPpHFkMPI1eLwGELupAE6p7eic2BVWqwnIZf4lL7lbeZyYE0bIxr
+	7UF9Tw2wuSYV/03dp4zmsBTTb6EE+JrMW0VeiqBj0YQe1v08TDCf8wXJJKGD/4oFW2ut
+	avrQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:sender:subject:to:references:cc:from:message-id
 	:date:user-agent:mime-version:in-reply-to:content-transfer-encoding;
-	bh=UjYHl1R5wAZKfbSpQrjY216HV4jFP+jq2vbD2/dlUOw=;
-	b=i+/2FAVEBjqXI56zMRPlEfcbZFlmNCdEamBSohDyNzXWE0ncdfnCQpuKec903I6Lyy
-	pdqa5JZm6DSjsNYVsPs0X2d0MhbNgltxxmdWvyClL8Zk2xxzTgXZBnN9nwrjx6DXYHSM
-	KidDYbbIDjsqPw0mKJd8+luV4b1RiNXOiazujlQyOrKaZmTDnCg0mz23ETC712Okadzu
-	u5Np4hnFvmMvFuyPrGR2cG0nBIu8jvUBkRljCf+VFGg5gext1zGNck6acse4K458Vvt0
-	kIeDxdq6qrM20a/0aZ//6KQDNkraMzSCANcWXdWEpX5lUaeymY83UUQdGeh7aEtTIeMy
-	opCg==
-X-Gm-Message-State: AN3rC/5ys3hUzQQlpHCf92BtaEKielDUhqbBjKeqVv0wY1wKFCspUfijyIAsXZ9ReKA+sw==
-X-Received: by 10.55.96.133 with SMTP id u127mr16115785qkb.105.1491824608248; 
-	Mon, 10 Apr 2017 04:43:28 -0700 (PDT)
+	bh=bbGrNKTy/hZ8ly/tWxT0QS/6Ha2NRrGfLzb1cwfkTqU=;
+	b=JE5TIn348D8pTsE2E5JRnYAGoxYr8A5dCCbywUg4iKnxIOMQyipiK3FF9u4oyDsS7t
+	fmYAH936kdg0RexVjN59DbF2/96iTnfnpVp82JnzcXf4q1e4U4E6PbNqPX6Pih8SMrAl
+	FbJvvxat7Y41LKD1V7eYsRLIVWCnKYIz98oF7sv9KwmJK7w2t3JDugRkzTQfwMOMq96E
+	DDIm+YIU0OzPQuWeExR2HNKwzo+BVpYhueTFn9DpKR0txoGtqEZexxh2bJSPVQ8fI6UB
+	dQq8XEiyCQ8K7BlOpZ638NDb7eaLf7GeNtKyPTZnVFPuxrapK8ZDm5UtzOxhZyJbp6zE
+	eZtw==
+X-Gm-Message-State: AFeK/H0/OFneQ6c7CHF8LPKu05hUEGCxdvWgy0h3lrF4Y+MXdQ51pkAvCHfWj3R7qwKxbQ==
+X-Received: by 10.237.36.84 with SMTP id s20mr52090815qtc.271.1491830548707;
+	Mon, 10 Apr 2017 06:22:28 -0700 (PDT)
 Received: from [192.168.1.10] ([138.117.48.226])
-	by smtp.gmail.com with ESMTPSA id z4sm8578845qkc.68.2017.04.10.04.43.25
+	by smtp.gmail.com with ESMTPSA id
+	s10sm8775117qke.53.2017.04.10.06.22.26
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Mon, 10 Apr 2017 04:43:27 -0700 (PDT)
+	Mon, 10 Apr 2017 06:22:28 -0700 (PDT)
 To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
 References: <1491820793-5348-1-git-send-email-peter.maydell@linaro.org>
-	<1491820793-5348-2-git-send-email-peter.maydell@linaro.org>
+	<1491820793-5348-6-git-send-email-peter.maydell@linaro.org>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <264eb0ef-168b-487e-3911-a2f1beafcd68@amsat.org>
-Date: Mon, 10 Apr 2017 08:43:24 -0300
+Message-ID: <6a8d54a6-cf11-38d3-390f-dd4536b2c2b6@amsat.org>
+Date: Mon, 10 Apr 2017 10:22:25 -0300
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
 	Thunderbird/45.8.0
 MIME-Version: 1.0
-In-Reply-To: <1491820793-5348-2-git-send-email-peter.maydell@linaro.org>
+In-Reply-To: <1491820793-5348-6-git-send-email-peter.maydell@linaro.org>
 Content-Type: text/plain; charset=windows-1252; format=flowed
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400d:c09::241
-Subject: Re: [Qemu-devel] [Qemu-arm] [PATCH 1/7] arm: Don't implement BXJ on
- M-profile CPUs
-X-BeenThere: qemu-devel@nongnu.org
+X-Received-From: 2607:f8b0:400d:c0d::242
+Subject: Re: [Qemu-arm] [PATCH 5/7] arm: Move condition-failed codepath
+ generation out of if()
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: patches@linaro.org, Richard Henderson <rth@twiddle.net>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 75j7D5CChLOY
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: CEAju1ixv4IQ
+
+Hi Peter,
 
 On 04/10/2017 07:39 AM, Peter Maydell wrote:
-> For M-profile CPUs, the BXJ instruction does not exist at all, and
-> the encoding should always UNDEF. We were accidentally implementing
-> it to behave like A-profile BXJ; correct the error.
+> Move the code to generate the "condition failed" instruction
+> codepath out of the if (singlestepping) {} else {}. This
+> will allow adding support for handling a new is_jmp type
+> which can't be neatly split into "singlestepping case"
+> versus "not singlestepping case".
+
+This makes also the code more readable :)
+
 >
 > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> ---
+>  target/arm/translate.c | 24 +++++++++++-------------
+>  1 file changed, 11 insertions(+), 13 deletions(-)
+>
+> diff --git a/target/arm/translate.c b/target/arm/translate.c
+> index a1a0e73..87fd702 100644
+> --- a/target/arm/translate.c
+> +++ b/target/arm/translate.c
+> @@ -11988,9 +11988,9 @@ void gen_intermediate_code(CPUARMState *env, TranslationBlock *tb)
+>      /* At this stage dc->condjmp will only be set when the skipped
+>         instruction was a conditional branch or trap, and the PC has
+>         already been written.  */
+> +    gen_set_condexec(dc);
+>      if (unlikely(cs->singlestep_enabled || dc->ss_active)) {
+>          /* Unconditional and "condition passed" instruction codepath. */
+> -        gen_set_condexec(dc);
+>          switch (dc->is_jmp) {
+>          case DISAS_SWI:
+>              gen_ss_advance(dc);
+> @@ -12013,13 +12013,6 @@ void gen_intermediate_code(CPUARMState *env, TranslationBlock *tb)
+>              /* FIXME: Single stepping a WFI insn will not halt the CPU. */
+>              gen_singlestep_exception(dc);
+>          }
+> -        if (dc->condjmp) {
+> -            /* "Condition failed" instruction codepath. */
+> -            gen_set_label(dc->condlabel);
+> -            gen_set_condexec(dc);
+> -            gen_set_pc_im(dc, dc->pc);
+> -            gen_singlestep_exception(dc);
+> -        }
+>      } else {
+>          /* While branches must always occur at the end of an IT block,
+>             there are a few other things that can cause us to terminate
+> @@ -12029,7 +12022,6 @@ void gen_intermediate_code(CPUARMState *env, TranslationBlock *tb)
+>              - Hardware watchpoints.
+>             Hardware breakpoints have already been handled and skip this code.
+>           */
+> -        gen_set_condexec(dc);
+>          switch(dc->is_jmp) {
+>          case DISAS_NEXT:
+>              gen_goto_tb(dc, 1, dc->pc);
+> @@ -12069,11 +12061,17 @@ void gen_intermediate_code(CPUARMState *env, TranslationBlock *tb)
+>              gen_exception(EXCP_SMC, syn_aa32_smc(), 3);
+>              break;
+>          }
+> -        if (dc->condjmp) {
+> -            gen_set_label(dc->condlabel);
+> -            gen_set_condexec(dc);
+> +    }
+> +
+> +    if (dc->condjmp) {
+> +        /* "Condition failed" instruction codepath for the branch/trap insn */
+> +        gen_set_label(dc->condlabel);
+> +        gen_set_condexec(dc);
+> +        if (unlikely(cs->singlestep_enabled || dc->ss_active)) {
+
+I'm custom to think "let's change that and think how to protect the code 
+to help the next one who will modify it" and wonder if it isn't safer to 
+define:
+
+const bool singlestepping;
+
+singlestepping = cs->singlestep_enabled || dc->ss_active;
+
+Then use:
+
+if unlikely(singlestepping)
+
+At line 11993 and here, what do you think?
+
+Either way:
 
 Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 
-> ---
->  target/arm/translate.c | 7 ++++++-
->  1 file changed, 6 insertions(+), 1 deletion(-)
+> +            gen_set_pc_im(dc, dc->pc);
+> +            gen_singlestep_exception(dc);
+> +        } else {
+>              gen_goto_tb(dc, 1, dc->pc);
+> -            dc->condjmp = 0;
+>          }
+>      }
 >
-> diff --git a/target/arm/translate.c b/target/arm/translate.c
-> index e32e38c..fe3f442 100644
-> --- a/target/arm/translate.c
-> +++ b/target/arm/translate.c
-> @@ -10485,7 +10485,12 @@ static int disas_thumb2_insn(CPUARMState *env, DisasContext *s, uint16_t insn_hw
->                          }
->                          break;
->                      case 4: /* bxj */
-> -                        /* Trivial implementation equivalent to bx.  */
-> +                        /* Trivial implementation equivalent to bx.
-> +                         * This instruction doesn't exist at all for M-profile.
-> +                         */
-> +                        if (arm_dc_feature(s, ARM_FEATURE_M)) {
-> +                            goto illegal_op;
-> +                        }
->                          tmp = load_reg(s, rn);
->                          gen_bx(s, tmp);
->                          break;
 >

@@ -1,72 +1,98 @@
-Received: by 10.25.0.144 with SMTP id 138csp104286lfa;
-        Sat, 8 Apr 2017 00:08:08 -0700 (PDT)
-X-Received: by 10.237.34.212 with SMTP id q20mr44189353qtc.5.1491635288372;
-        Sat, 08 Apr 2017 00:08:08 -0700 (PDT)
+Received: by 10.25.0.144 with SMTP id 138csp955642lfa;
+        Mon, 10 Apr 2017 10:05:16 -0700 (PDT)
+X-Received: by 10.55.149.70 with SMTP id x67mr20047665qkd.48.1491843916878;
+        Mon, 10 Apr 2017 10:05:16 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id c144si7595244qkb.319.2017.04.08.00.08.08
+        by mx.google.com with ESMTPS id i61si13951741qtd.212.2017.04.10.10.05.16
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sat, 08 Apr 2017 00:08:08 -0700 (PDT)
+        Mon, 10 Apr 2017 10:05:16 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:53773 helo=lists.gnu.org)
+       dkim=fail header.i=@microsoft.com;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:35527 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1cwkTf-0005eB-On
-	for alex.bennee@linaro.org; Sat, 08 Apr 2017 03:08:07 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:38013)
+	id 1cxckc-0000F5-AL
+	for alex.bennee@linaro.org; Mon, 10 Apr 2017 13:05:14 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:52766)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <omar.rizwan@gmail.com>) id 1cwjA0-00063B-8L
-	for qemu-arm@nongnu.org; Sat, 08 Apr 2017 01:43:46 -0400
+	(envelope-from <Andrew.Baumann@microsoft.com>) id 1cxckU-0000CY-0Y
+	for qemu-arm@nongnu.org; Mon, 10 Apr 2017 13:05:07 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <omar.rizwan@gmail.com>) id 1cwj9y-0001t1-KP
-	for qemu-arm@nongnu.org; Sat, 08 Apr 2017 01:43:44 -0400
-Received: from mail-pg0-x241.google.com ([2607:f8b0:400e:c05::241]:32960)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <omar.rizwan@gmail.com>)
-	id 1cwj9s-0001nS-VB; Sat, 08 Apr 2017 01:43:37 -0400
-Received: by mail-pg0-x241.google.com with SMTP id 79so19330806pgf.0;
-	Fri, 07 Apr 2017 22:43:36 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=from:to:cc:subject:date:message-id;
-	bh=T1WraSu+gBGBA5n2/fhkoG6OQ8d+U2g1styT7Sd9Rpk=;
-	b=Wme4atN+EJKHmNsb8nSFtXSJsdiES0bjOSQr91TEKYhPV6E4Ye9nxyaIjzv5hClTsO
-	m8EFtv+DWaHmSI2Q86751CJE6+zpum5qVEdSPbggGwJTnlYMUnyS+roSLCAmx3BcjTbl
-	jRj72GQ6NgTaL0esmO/I5xH/7mbcu69oQ+zOnAa1iQggrmmN5TrHqbf5N+Mm1YMHMPHD
-	jAhgQoeSJhPtD4WGPLke0tnMnT3a08N7sJOeV4GgkoKjkiDsH/G/WZzIcNgjE44Vnm83
-	nMiHz4QhTWY2gDH5uKpoYZ0cM4tqXRcgF4jFDxD2RG9LPXZzmdb1GqzMrTrfPsdmjsQh
-	gZkA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:from:to:cc:subject:date:message-id;
-	bh=T1WraSu+gBGBA5n2/fhkoG6OQ8d+U2g1styT7Sd9Rpk=;
-	b=oEdH9N0gjRgKU6fFrRG2WfGhHs/BId8PwDjusByB+ZVuY4E+MG+5DUMFmMGd+yKmGR
-	X70801BR9kl0KwEVzeJ9DrIS0ca/nvPhbtTtCb6iWHqPIqP1PEoqfD9yAADqJ1ufj6Oe
-	cinYUl6FHUzq7PyeJzU2ULSdIMOwwrUT6ysticyozQ8B0eabb+EsDpPOFKESxJ3Ree+h
-	Q3ADedkk5UsONxCJj7+GXsOJNHE9tA4ev4nEfPCqCDVJ0xxwHM0eCkM0Pk+q+UWeyEe9
-	HlvK/T/3EdLA1LT/ZcapEk7iVofUbQMiGjEg7TBrOMhAMgm4P/8OjISRAj6hGt6W+kZA
-	03pA==
-X-Gm-Message-State: AFeK/H38yJCZEjOSC9bTJZZ03mttXPxNZ0t93pFWWEWEgLWelfDLStwaQIgThrxbABr/bA==
-X-Received: by 10.99.109.67 with SMTP id i64mr44600225pgc.56.1491630215564;
-	Fri, 07 Apr 2017 22:43:35 -0700 (PDT)
-Received: from DN0a22697f.SUNet (DN2lk5k05.stanford.edu. [171.66.208.5])
-	by smtp.gmail.com with ESMTPSA id
-	s17sm12589528pgo.27.2017.04.07.22.43.34
-	(version=TLS1 cipher=AES128-SHA bits=128/128);
-	Fri, 07 Apr 2017 22:43:34 -0700 (PDT)
-From: Omar Rizwan <omar.rizwan@gmail.com>
-To: qemu-devel@nongnu.org
-Date: Fri,  7 Apr 2017 22:43:18 -0700
-Message-Id: <20170408054318.19830-1-omar.rizwan@gmail.com>
-X-Mailer: git-send-email 2.10.1 (Apple Git-78)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:400e:c05::241
-X-Mailman-Approved-At: Sat, 08 Apr 2017 03:07:58 -0400
-Subject: [Qemu-arm] [PATCH] raspi: Add Raspberry Pi 1 support
+	(envelope-from <Andrew.Baumann@microsoft.com>) id 1cxckQ-0004lP-09
+	for qemu-arm@nongnu.org; Mon, 10 Apr 2017 13:05:06 -0400
+Received: from mail-sn1nam02on0121.outbound.protection.outlook.com
+	([104.47.36.121]:11776
+	helo=NAM02-SN1-obe.outbound.protection.outlook.com)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <Andrew.Baumann@microsoft.com>)
+	id 1cxckP-0004l0-Jo
+	for qemu-arm@nongnu.org; Mon, 10 Apr 2017 13:05:01 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+	s=selector1; h=From:Date:Subject:Message-ID:Content-Type:MIME-Version; 
+	bh=Ga0WAL1iGk2taxdb1STsxDFQeA+hEuzl9bBy9sR0Z8o=;
+	b=ob9iw6c4bItu7wH9CCMQis/ngM0+E+fETTmQlvPu+SI9sAnfwWLz5CDXi0HYs47DfV5KSRX/GMXldeW3qKj2Lz8OEZUZCARg0kMtCtqoalIR6OEOSyKJun2jf0taWFS/TZ4xmO0GkmIGBMEqwngh+7P5vXxmGUm3/70BZFd+1pw=
+Received: from DM2PR21MB0060.namprd21.prod.outlook.com (10.161.140.26) by
+	DM2PR21MB0057.namprd21.prod.outlook.com (10.161.140.23) with Microsoft
+	SMTP Server (version=TLS1_2,
+	cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id
+	15.1.1047.0; Mon, 10 Apr 2017 17:04:58 +0000
+Received: from DM2PR21MB0060.namprd21.prod.outlook.com ([10.161.140.26]) by
+	DM2PR21MB0060.namprd21.prod.outlook.com ([10.161.140.26]) with mapi id
+	15.01.1047.000; Mon, 10 Apr 2017 17:04:58 +0000
+To: Omar Rizwan <omar.rizwan@gmail.com>, "qemu-devel@nongnu.org"
+	<qemu-devel@nongnu.org>
+Thread-Topic: [PATCH] raspi: Add Raspberry Pi 1 support
+Thread-Index: AQHSsCsTEf3dQbLwekqJsp96j8QypKG69+5QgAAGKQCAA9Cy8A==
+Date: Mon, 10 Apr 2017 17:04:57 +0000
+Message-ID: <DM2PR21MB00607B40448D581BDE2DA7D99E010@DM2PR21MB0060.namprd21.prod.outlook.com>
+References: <20170408054318.19830-1-omar.rizwan@gmail.com>
+	<DM2PR21MB00601A5A86C3F935CCCBAC0D9E0F0@DM2PR21MB0060.namprd21.prod.outlook.com>
+	<CAJ=RBN+VF1ysQ39NELKY7dK75aMGcB-iDDGy_sFooC6pTf1rBw@mail.gmail.com>
+In-Reply-To: <CAJ=RBN+VF1ysQ39NELKY7dK75aMGcB-iDDGy_sFooC6pTf1rBw@mail.gmail.com>
+Accept-Language: en-AU, en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: gmail.com; dkim=none (message not signed)
+	header.d=none; gmail.com;
+	dmarc=none action=none header.from=microsoft.com; 
+x-originating-ip: [2001:4898:80e8:c::340]
+x-ms-publictraffictype: Email
+x-microsoft-exchange-diagnostics: 1; DM2PR21MB0057;
+	7:C2UC8CblkFuzs4iDnTa6d8N5qOQjfqX+MZiWjbluKJhMmtFmkrnTu/bwSgwxzhwTkT79K51th2TmlFhE1TbCY7+hEnr42DMHY8+X/wbwFhIKKfRmSr2x3GGM2daIovl+tfTdzIV7rK4ity9/cQhX7bdCq4HYe92u2SqDADG6uAgShJAaMysO3SMB69MJXI7WjauVgOER123H7odzDx8IypOkCIm7gItVch3vY/3SVvj6SvM0PpCHi09B/HlNkyhwrK3iXlwmLI/ATdr18f+UAjDLlvcNLsxkXigeilH8nf2Ko3T8NynRvTiIxkgsLk07CgIXT0m4fX3ecOSQuZzIFEcByW2S/qyeu10LfdgCqww=
+x-ms-office365-filtering-correlation-id: 9fa326d9-9855-4e61-ee0c-08d48033b7ce
+x-ms-office365-filtering-ht: Tenant
+x-microsoft-antispam: UriScan:; BCL:0; PCL:0;
+	RULEID:(22001)(2017030254075)(48565401081)(201703131423075)(201703031133081)(201702281549075);
+	SRVR:DM2PR21MB0057; 
+x-microsoft-antispam-prvs: <DM2PR21MB00570A8C9AB4B3EFED58CEB19E010@DM2PR21MB0057.namprd21.prod.outlook.com>
+x-exchange-antispam-report-test: UriScan:;
+x-exchange-antispam-report-cfa-test: BCL:0; PCL:0;
+	RULEID:(61425038)(6040450)(601004)(2401047)(5005006)(8121501046)(3002001)(93006095)(93001095)(10201501046)(6055026)(61426038)(61427038)(6041248)(20161123555025)(20161123560025)(20161123562025)(20161123564025)(201703131423075)(201702281528075)(201703061421075)(6072148);
+	SRVR:DM2PR21MB0057; BCL:0; PCL:0; RULEID:; SRVR:DM2PR21MB0057; 
+x-forefront-prvs: 027367F73D
+x-forefront-antispam-report: SFV:NSPM;
+	SFS:(10019020)(6009001)(39410400002)(39860400002)(39400400002)(39850400002)(39840400002)(39450400003)(377454003)(24454002)(2950100002)(86612001)(86362001)(7696004)(2900100001)(122556002)(106356001)(6436002)(54356999)(76176999)(50986999)(25786009)(53546009)(7736002)(2501003)(39060400002)(4326008)(8990500004)(5660300001)(33656002)(74316002)(305945005)(6306002)(9686003)(55016002)(54906002)(99286003)(77096006)(6506006)(10090500001)(6246003)(38730400002)(10290500002)(5005710100001)(53936002)(8936002)(8676002)(81166006)(3660700001)(3280700002)(2906002)(6116002)(102836003)(229853002)(189998001)(12290500005)(15398625002);
+	DIR:OUT; SFP:1102; SCL:1; SRVR:DM2PR21MB0057;
+	H:DM2PR21MB0060.namprd21.prod.outlook.com; FPR:; SPF:None;
+	MLV:ovrnspm; PTR:InfoNoRecords; LANG:en; 
+spamdiagnosticoutput: 1:99
+spamdiagnosticmetadata: NSPM
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+MIME-Version: 1.0
+X-OriginatorOrg: microsoft.com
+X-MS-Exchange-CrossTenant-originalarrivaltime: 10 Apr 2017 17:04:57.7343 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 72f988bf-86f1-41af-91ab-2d7cd011db47
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM2PR21MB0057
+X-detected-operating-system: by eggs.gnu.org: Windows 7 or 8 [fuzzy]
+X-Received-From: 104.47.36.121
+Subject: Re: [Qemu-arm] [PATCH] raspi: Add Raspberry Pi 1 support
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -78,314 +104,91 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org,
-	Omar Rizwan <omar.rizwan@gmail.com>, Andrew.Baumann@microsoft.com
+From: Andrew Baumann via Qemu-arm <qemu-arm@nongnu.org>
+Reply-To: Andrew Baumann <Andrew.Baumann@microsoft.com>
+Cc: "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
+	"qemu-arm@nongnu.org" <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: HzvBM7EwV1HJ
+X-TUID: 9i15zXIiYv7d
 
-Signed-off-by: Omar Rizwan <omar.rizwan@gmail.com>
----
- hw/arm/Makefile.objs         |   2 +-
- hw/arm/bcm2835.c             | 119 +++++++++++++++++++++++++++++++++++++++++++
- hw/arm/bcm2835_peripherals.c |   1 +
- hw/arm/raspi.c               |  47 ++++++++++++++---
- include/hw/arm/bcm2835.h     |  31 +++++++++++
- 5 files changed, 191 insertions(+), 9 deletions(-)
- create mode 100644 hw/arm/bcm2835.c
- create mode 100644 include/hw/arm/bcm2835.h
-
-diff --git a/hw/arm/Makefile.objs b/hw/arm/Makefile.objs
-index 4c5c4ee..77ef47f 100644
---- a/hw/arm/Makefile.objs
-+++ b/hw/arm/Makefile.objs
-@@ -11,7 +11,7 @@ obj-y += armv7m.o exynos4210.o pxa2xx.o pxa2xx_gpio.o pxa2xx_pic.o
- obj-$(CONFIG_DIGIC) += digic.o
- obj-y += omap1.o omap2.o strongarm.o
- obj-$(CONFIG_ALLWINNER_A10) += allwinner-a10.o cubieboard.o
--obj-$(CONFIG_RASPI) += bcm2835_peripherals.o bcm2836.o raspi.o
-+obj-$(CONFIG_RASPI) += bcm2835_peripherals.o bcm2835.o bcm2836.o raspi.o
- obj-$(CONFIG_STM32F205_SOC) += stm32f205_soc.o
- obj-$(CONFIG_XLNX_ZYNQMP) += xlnx-zynqmp.o xlnx-ep108.o
- obj-$(CONFIG_FSL_IMX25) += fsl-imx25.o imx25_pdk.o
-diff --git a/hw/arm/bcm2835.c b/hw/arm/bcm2835.c
-new file mode 100644
-index 0000000..b19b86c
---- /dev/null
-+++ b/hw/arm/bcm2835.c
-@@ -0,0 +1,119 @@
-+/*
-+ * Raspberry Pi emulation (c) 2012 Gregory Estrade
-+ * Upstreaming code cleanup [including bcm2835_*] (c) 2013 Jan Petrous
-+ *
-+ * Raspberry Pi 2 emulation and refactoring Copyright (c) 2015, Microsoft
-+ * Written by Andrew Baumann
-+ *
-+ * Rebase onto master (c) 2017 Omar Rizwan
-+ *
-+ * This code is licensed under the GNU GPLv2 and later.
-+ */
-+
-+#include "qemu/osdep.h"
-+#include "cpu.h"
-+#include "hw/arm/bcm2835.h"
-+#include "hw/arm/raspi_platform.h"
-+#include "hw/sysbus.h"
-+#include "exec/address-spaces.h"
-+
-+/* Peripheral base address seen by the CPU */
-+#define BCM2835_PERI_BASE       0x20000000
-+
-+static void bcm2835_init(Object *obj)
-+{
-+    BCM2835State *s = BCM2835(obj);
-+
-+    object_initialize(&s->cpu, sizeof(s->cpu), "arm1176-" TYPE_ARM_CPU);
-+    object_property_add_child(obj, "cpu", OBJECT(&s->cpu), &error_abort);
-+
-+    object_initialize(&s->peripherals, sizeof(s->peripherals),
-+                      TYPE_BCM2835_PERIPHERALS);
-+    object_property_add_child(obj, "peripherals", OBJECT(&s->peripherals),
-+                              &error_abort);
-+    object_property_add_alias(obj, "board-rev", OBJECT(&s->peripherals),
-+                              "board-rev", &error_abort);
-+    object_property_add_alias(obj, "vcram-size", OBJECT(&s->peripherals),
-+                              "vcram-size", &error_abort);
-+    qdev_set_parent_bus(DEVICE(&s->peripherals), sysbus_get_default());
-+}
-+
-+static void bcm2835_realize(DeviceState *dev, Error **errp)
-+{
-+    BCM2835State *s = BCM2835(dev);
-+    Object *obj;
-+    Error *err = NULL;
-+
-+    /* common peripherals from bcm2835 */
-+    obj = object_property_get_link(OBJECT(dev), "ram", &err);
-+    if (obj == NULL) {
-+        error_setg(errp, "%s: required ram link not found: %s",
-+                   __func__, error_get_pretty(err));
-+        return;
-+    }
-+
-+    object_property_add_const_link(OBJECT(&s->peripherals), "ram", obj, &err);
-+    if (err) {
-+        error_propagate(errp, err);
-+        return;
-+    }
-+
-+    object_property_set_bool(OBJECT(&s->peripherals), true, "realized", &err);
-+    if (err) {
-+        error_propagate(errp, err);
-+        return;
-+    }
-+
-+    object_property_add_alias(OBJECT(s), "sd-bus", OBJECT(&s->peripherals),
-+                              "sd-bus", &err);
-+    if (err) {
-+        error_propagate(errp, err);
-+        return;
-+    }
-+
-+    sysbus_mmio_map_overlap(SYS_BUS_DEVICE(&s->peripherals), 0,
-+                            BCM2835_PERI_BASE, 1);
-+
-+    sysbus_mmio_map_overlap(SYS_BUS_DEVICE(&s->peripherals), 1,
-+                            0x40000000, 1);
-+
-+    object_property_set_bool(OBJECT(&s->cpu), true, "realized", &err);
-+    if (err) {
-+        error_report_err(err);
-+        exit(1);
-+    }
-+
-+    sysbus_connect_irq(SYS_BUS_DEVICE(&s->peripherals), 0,
-+                       qdev_get_gpio_in(DEVICE(&s->cpu), ARM_CPU_IRQ));
-+    sysbus_connect_irq(SYS_BUS_DEVICE(&s->peripherals), 1,
-+                       qdev_get_gpio_in(DEVICE(&s->cpu), ARM_CPU_FIQ));
-+
-+}
-+
-+static void bcm2835_class_init(ObjectClass *oc, void *data)
-+{
-+    DeviceClass *dc = DEVICE_CLASS(oc);
-+
-+    dc->realize = bcm2835_realize;
-+
-+    /*
-+     * Reason: creates an ARM CPU, thus use after free(), see
-+     * arm_cpu_class_init()
-+     */
-+    dc->cannot_destroy_with_object_finalize_yet = true;
-+}
-+
-+static const TypeInfo bcm2835_type_info = {
-+    .name = TYPE_BCM2835,
-+    .parent = TYPE_SYS_BUS_DEVICE,
-+    .instance_size = sizeof(BCM2835State),
-+    .instance_init = bcm2835_init,
-+    .class_init = bcm2835_class_init,
-+};
-+
-+static void bcm2835_register_types(void)
-+{
-+    type_register_static(&bcm2835_type_info);
-+}
-+
-+type_init(bcm2835_register_types)
-diff --git a/hw/arm/bcm2835_peripherals.c b/hw/arm/bcm2835_peripherals.c
-index 369ef1e..a6cd54a 100644
---- a/hw/arm/bcm2835_peripherals.c
-+++ b/hw/arm/bcm2835_peripherals.c
-@@ -34,6 +34,7 @@ static void bcm2835_peripherals_init(Object *obj)
-     /* Internal memory region for peripheral bus addresses (not exported) */
-     memory_region_init(&s->gpu_bus_mr, obj, "bcm2835-gpu", (uint64_t)1 << 32);
-     object_property_add_child(obj, "gpu-bus", OBJECT(&s->gpu_bus_mr), NULL);
-+    sysbus_init_mmio(SYS_BUS_DEVICE(s), &s->gpu_bus_mr);
- 
-     /* Internal memory region for request/response communication with
-      * mailbox-addressable peripherals (not exported)
-diff --git a/hw/arm/raspi.c b/hw/arm/raspi.c
-index 2b295f1..dca6077 100644
---- a/hw/arm/raspi.c
-+++ b/hw/arm/raspi.c
-@@ -2,9 +2,11 @@
-  * Raspberry Pi emulation (c) 2012 Gregory Estrade
-  * Upstreaming code cleanup [including bcm2835_*] (c) 2013 Jan Petrous
-  *
-- * Rasperry Pi 2 emulation Copyright (c) 2015, Microsoft
-+ * Raspberry Pi 2 emulation Copyright (c) 2015, Microsoft
-  * Written by Andrew Baumann
-  *
-+ * Raspberry Pi 1 rebase onto master (c) 2017, Omar Rizwan
-+ *
-  * This code is licensed under the GNU GPLv2 and later.
-  */
- 
-@@ -12,6 +14,7 @@
- #include "qapi/error.h"
- #include "qemu-common.h"
- #include "cpu.h"
-+#include "hw/arm/bcm2835.h"
- #include "hw/arm/bcm2836.h"
- #include "qemu/error-report.h"
- #include "hw/boards.h"
-@@ -27,6 +30,11 @@
- /* Table of Linux board IDs for different Pi versions */
- static const int raspi_boardid[] = {[1] = 0xc42, [2] = 0xc43};
- 
-+/* Table of board revisions:
-+ * https://github.com/AndrewFromMelbourne/raspberry_pi_revision/blob/2764c19983fb7b1ef8cb21031e94c293703afa2e/README.md
-+ */
-+static const uint32_t raspi_boardrev[] = {[1] = 0x10, [2] = 0xa21041};
-+
- typedef struct RasPiState {
-     BCM2836State soc;
-     MemoryRegion ram;
-@@ -113,7 +121,8 @@ static void setup_boot(MachineState *machine, int version, size_t ram_size)
-     arm_load_kernel(ARM_CPU(first_cpu), &binfo);
- }
- 
--static void raspi2_init(MachineState *machine)
-+static void raspi_machine_init(MachineState *machine, int version,
-+                               const char *soc_type)
- {
-     RasPiState *s = g_new0(RasPiState, 1);
-     uint32_t vcram_size;
-@@ -122,7 +131,7 @@ static void raspi2_init(MachineState *machine)
-     BusState *bus;
-     DeviceState *carddev;
- 
--    object_initialize(&s->soc, sizeof(s->soc), TYPE_BCM2836);
-+    object_initialize(&s->soc, sizeof(s->soc), soc_type);
-     object_property_add_child(OBJECT(machine), "soc", OBJECT(&s->soc),
-                               &error_abort);
- 
-@@ -135,10 +144,12 @@ static void raspi2_init(MachineState *machine)
-     /* Setup the SOC */
-     object_property_add_const_link(OBJECT(&s->soc), "ram", OBJECT(&s->ram),
-                                    &error_abort);
--    object_property_set_int(OBJECT(&s->soc), smp_cpus, "enabled-cpus",
--                            &error_abort);
--    object_property_set_int(OBJECT(&s->soc), 0xa21041, "board-rev",
--                            &error_abort);
-+    if (version == 2) {
-+        object_property_set_int(OBJECT(&s->soc), smp_cpus, "enabled-cpus",
-+                                &error_abort);
-+    }
-+    object_property_set_int(OBJECT(&s->soc), raspi_boardrev[version],
-+                            "board-rev", &error_abort);
-     object_property_set_bool(OBJECT(&s->soc), true, "realized", &error_abort);
- 
-     /* Create and plug in the SD cards */
-@@ -155,9 +166,29 @@ static void raspi2_init(MachineState *machine)
- 
-     vcram_size = object_property_get_int(OBJECT(&s->soc), "vcram-size",
-                                          &error_abort);
--    setup_boot(machine, 2, machine->ram_size - vcram_size);
-+    setup_boot(machine, version, machine->ram_size - vcram_size);
-+}
-+
-+static void raspi1_init(MachineState *machine)
-+{
-+    raspi_machine_init(machine, 1, TYPE_BCM2835);
- }
-+static void raspi1_machine_init(MachineClass *mc)
-+{
-+    mc->desc = "Raspberry Pi";
-+    mc->init = raspi1_init;
-+    mc->block_default_type = IF_SD;
-+    mc->no_parallel = 1;
-+    mc->no_floppy = 1;
-+    mc->no_cdrom = 1;
-+    mc->default_ram_size = 512 * 1024 * 1024;
-+};
-+DEFINE_MACHINE("raspi", raspi1_machine_init)
- 
-+static void raspi2_init(MachineState *machine)
-+{
-+    raspi_machine_init(machine, 2, TYPE_BCM2836);
-+}
- static void raspi2_machine_init(MachineClass *mc)
- {
-     mc->desc = "Raspberry Pi 2";
-diff --git a/include/hw/arm/bcm2835.h b/include/hw/arm/bcm2835.h
-new file mode 100644
-index 0000000..c93c4ef
---- /dev/null
-+++ b/include/hw/arm/bcm2835.h
-@@ -0,0 +1,31 @@
-+/*
-+ * Raspberry Pi emulation (c) 2012 Gregory Estrade
-+ * Upstreaming code cleanup [including bcm2835_*] (c) 2013 Jan Petrous
-+ *
-+ * Raspberry Pi 2 emulation and refactoring Copyright (c) 2015, Microsoft
-+ * Written by Andrew Baumann
-+ *
-+ * Rebase onto master (c) 2017 Omar Rizwan
-+ *
-+ * This code is licensed under the GNU GPLv2 and later.
-+ */
-+
-+#ifndef BCM2835_H
-+#define BCM2835_H
-+
-+#include "hw/arm/arm.h"
-+#include "hw/arm/bcm2835_peripherals.h"
-+
-+#define TYPE_BCM2835 "bcm2835"
-+#define BCM2835(obj) OBJECT_CHECK(BCM2835State, (obj), TYPE_BCM2835)
-+
-+typedef struct BCM2835State {
-+    /*< private >*/
-+    DeviceState parent_obj;
-+    /*< public >*/
-+
-+    ARMCPU cpu;
-+    BCM2835PeripheralState peripherals;
-+} BCM2835State;
-+
-+#endif /* BCM2835_H */
--- 
-2.10.1 (Apple Git-78)
-
+PiBGcm9tOiBPbWFyIFJpendhbiBbbWFpbHRvOm9tYXIucml6d2FuQGdtYWlsLmNvbV0NCj4gU2Vu
+dDogRnJpZGF5LCA3IEFwcmlsIDIwMTcgMjM6MTMNCj4gT24gRnJpLCBBcHIgNywgMjAxNyBhdCAx
+MDo1NyBQTSBBbmRyZXcgQmF1bWFubg0KPiA8QW5kcmV3LkJhdW1hbm5AbWljcm9zb2Z0LmNvbT4g
+d3JvdGU6DQo+ID4gPiBGcm9tOiBPbWFyIFJpendhbiBbbWFpbHRvOm9tYXIucml6d2FuQGdtYWls
+LmNvbV0NCj4gPiA+IFNlbnQ6IEZyaWRheSwgNyBBcHJpbCAyMDE3IDIyOjQzDQoNCj4gPiBEaWQg
+eW91IGRvIGFueSB0ZXN0aW5nIG9mIHRoaXM/IE9uZSBvZiB0aGUgcmVhc29ucyBJIG5ldmVyIGdv
+dCBhcm91bmQgdG8NCj4gdXBzdHJlYW1pbmcgdGhpcyB3YXMgdGhhdCBJIGNvdWxkbid0IGdldCBS
+YXNwYmlhbiB3b3JraW5nIHJlbGlhYmx5ICh0aGVyZSB3YXMNCj4gc29tZSBwcm9ibGVtIHdpdGgg
+c3RhbGxlZCBETUEgcmVhZHMgZnJvbSB0aGUgTU1DIGNvbnRyb2xsZXIpLCBhbmQgSSBkaWRuJ3QN
+Cj4gaGF2ZSB0aGUgY3ljbGVzIHRvIGRlYnVnIGl0IGZ1cnRoZXIuIEFsc28sIElJUkMgUmFzcGJp
+YW4gb24gcGkxIGRlcGVuZGVkIG9uIHRoZQ0KPiBzeXN0ZW0gdGltZXIgZGV2aWNlcywgc28gaXQg
+bWlnaHQgbm90IG1ha2Ugc2Vuc2UgdG8gaGF2ZSB0aGlzIGJvYXJkLWxldmVsDQo+IHN1cHBvcnQg
+d2l0aG91dCBhZGRpbmcgdGhhdCBmaXJzdC4NCj4gDQo+IEkgZGlkIHRlc3QgUmFzcGJpYW4gb24g
+dGhlIHJhc3BpIG1hY2hpbmUgYW5kIG1heWJlIGVuY291bnRlcmVkIHRoZQ0KPiBzYW1lIGlzc3Vl
+IHlvdSBkaWQgKG9yLCBtb3JlIGxpa2VseSwgYSBzeXN0aW1lciByZWxhdGVkIGlzc3VlKTsNCj4g
+aXQgd291bGQganVzdCBoYW5nIGluIGEgbG9vcCB3aXRoIHByb2dyYW0gY291bnRlciBhdCAweEMw
+MDBBMDAwLg0KPiANCj4gQnV0IG15IHVzZSBmb3IgdGhpcyBpcyBiYXJlLW1ldGFsIGNvZGUsIHdo
+aWNoIHdvcmtzIE9LLg0KPiAoSXMgdGhlcmUgc29tZSBzdGFuZGFyZCB0aGF0IHRoZSBtYWNoaW5l
+IHNob3VsZCBydW4gTGludXggYmVmb3JlDQo+IGdldHRpbmcgdXBzdHJlYW1lZD8pDQoNCk5vLCBJ
+IGRvbid0IGtub3cgb2Ygc3VjaCBhIHN0YW5kYXJkLCBidXQgaXQncyBwcm9iYWJseSB3b3J0aCBu
+b3RpbmcgdGhlIGxpbWl0YXRpb25zIGluIHRoZSBjb21taXQgbWVzc2FnZS4gQW5kIGl0IG1pZ2h0
+IGV2ZW4gYmUgd29ydGggcHV0dGluZyB0aGUgc3lzdGltZXJzIGZpcnN0Li4uDQoNCj4gSSdkIGxp
+a2UgdG8gdXBzdHJlYW0gdGhlIHN5c3RlbSB0aW1lciBuZXh0LCBhbnl3YXkuDQoNClNvdW5kcyBn
+b29kLg0KDQo+ID4gPiAtLS0gYS9ody9hcm0vYmNtMjgzNV9wZXJpcGhlcmFscy5jDQo+ID4gPiAr
+KysgYi9ody9hcm0vYmNtMjgzNV9wZXJpcGhlcmFscy5jDQo+ID4gPiBAQCAtMzQsNiArMzQsNyBA
+QCBzdGF0aWMgdm9pZCBiY20yODM1X3BlcmlwaGVyYWxzX2luaXQoT2JqZWN0ICpvYmopDQo+ID4g
+PiAgICAgIC8qIEludGVybmFsIG1lbW9yeSByZWdpb24gZm9yIHBlcmlwaGVyYWwgYnVzIGFkZHJl
+c3NlcyAobm90IGV4cG9ydGVkKSAqLw0KPiA+ID4gICAgICBtZW1vcnlfcmVnaW9uX2luaXQoJnMt
+PmdwdV9idXNfbXIsIG9iaiwgImJjbTI4MzUtZ3B1IiwgKHVpbnQ2NF90KTENCj4gPDwNCj4gPiA+
+IDMyKTsNCj4gPiA+ICAgICAgb2JqZWN0X3Byb3BlcnR5X2FkZF9jaGlsZChvYmosICJncHUtYnVz
+IiwgT0JKRUNUKCZzLT5ncHVfYnVzX21yKSwNCj4gPiA+IE5VTEwpOw0KPiA+ID4gKyAgICBzeXNi
+dXNfaW5pdF9tbWlvKFNZU19CVVNfREVWSUNFKHMpLCAmcy0+Z3B1X2J1c19tcik7DQo+ID4gPg0K
+PiA+ID4gICAgICAvKiBJbnRlcm5hbCBtZW1vcnkgcmVnaW9uIGZvciByZXF1ZXN0L3Jlc3BvbnNl
+IGNvbW11bmljYXRpb24gd2l0aA0KPiA+ID4gICAgICAgKiBtYWlsYm94LWFkZHJlc3NhYmxlIHBl
+cmlwaGVyYWxzIChub3QgZXhwb3J0ZWQpDQo+ID4NCj4gPiBUaGlzIGxpbmUgbG9va3MgbGlrZSBp
+dCBtaWdodCBoYXZlIHNudWNrIGluIGJ5IGFjY2lkZW50Pw0KPiANCj4gDQo+IERvIHlvdSByZWNh
+bGwgd2h5IHRoYXQgbGluZSB3YXMgcmVtb3ZlZD8gYmNtMjgzNV9yZWFsaXplIGZhaWxzIHdpdGhv
+dXQNCj4gaXQsIGJlY2F1c2UgdGhlIHNlY29uZCBzeXNidXNfbW1pb19tYXBfb3ZlcmxhcCBjYWxs
+DQo+IA0KPiBzeXNidXNfbW1pb19tYXBfb3ZlcmxhcChTWVNfQlVTX0RFVklDRSgmcy0+cGVyaXBo
+ZXJhbHMpLCAxLA0KPiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgMHg0MDAwMDAwMCwgMSk7
+DQo+IA0KPiBmYWlscyB0aGlzIGFzc2VydGlvbiBpbiBzeXNidXMuYywgaW4gc3lzYnVzX21taW9f
+bWFwX2NvbW1vbjoNCj4gDQo+IGFzc2VydChuID49IDAgJiYgbiA8IGRldi0+bnVtX21taW8pOw0K
+PiANCj4gSSBjYW4ndCBlYXNpbHkgZmluZCBkb2N1bWVudGF0aW9uIGZvciB0aGF0IDB4NDAwMDAw
+MDAgbWVtb3J5IG1hcHBpbmcsDQo+IHdoaWNoIEkgZmlndXJlZCBJJ2Qga2VlcCBpbjsgc2hvdWxk
+IGl0IGp1c3QgYmUgcmVtb3ZlZCBmcm9tIGJjbTI4MzU/DQo+IEFtIEkgbWlzdW5kZXJzdGFuZGlu
+ZyBzb21ldGhpbmc/DQoNClRoZSB2YXJpb3VzIG1hcHBpbmcgYWxpYXNlcyBhcmUgaW50ZW5kZWQg
+dG8gaW1wbGVtZW50IHRoZSBidXMgYWRkcmVzc2VzIGZyb20gUzEuMi4zIC8gZmlndXJlIG9uIHBh
+Z2UgNSBvZiB0aGlzIGRvY3VtZW50Og0KaHR0cHM6Ly93d3cucmFzcGJlcnJ5cGkub3JnL3dwLWNv
+bnRlbnQvdXBsb2Fkcy8yMDEyLzAyL0JDTTI4MzUtQVJNLVBlcmlwaGVyYWxzLnBkZg0KDQpJbiBB
+Uk0gQ1BVIHBoeXNpY2FsIGFkZHJlc3NlcywgdGhlIFJBTSBpcyBtYXBwZWQgYXQgMCwgYW5kIHRo
+ZSBwZXJpcGhlcmFscyBhdCAweDIwMDAwMDAwDQoNCkluIFZDIENQVSBidXMgYWRkcmVzc2VzICh3
+aGljaCBnZXQgdXNlZCBmb3IgRE1BKSwgUkFNIGlzIGFsaWFzZWQgZm91ciB0aW1lcywgYXQgMCAw
+eDQwMDAwMDAwIDB4ODAwMDAwMDAgYW5kIDB4QzAwMDAwMDAuIFBlcmlwaGVyYWxzIGFyZSBhbHNv
+IGFsaWFzZWQgZm91ciB0aW1lcyBhdCBhIGZpeGVkIG9mZnNldCBvZiAweDNlMDAwMDAwIGZyb20g
+dGhlIGJhc2Ugb2YgdGhlIFJBTSBhbGlhcywgd2hpY2ggaXMgaG93IHlvdSBnZXQgdGhlIDB4N2Uw
+MDAwMDAgcGVyaXBoZXJhbCBiYXNlICgweDQwMDAwMDAwICsgMHgzZTAwMDAwMCkuDQoNClRoaXMg
+aXMgaW1wbGVtZW50ZWQgYXMgZm9sbG93czogYmNtMjgzNV9wZXJpcGhlcmFscyBpbXBsZW1lbnRz
+L2V4cG9ydHMgb25lIG1lbW9yeSByZWdpb24gInBlcmlfbXIiIHdoaWNoIGNvbnRhaW5zIGp1c3Qg
+dGhlIHBlcmlwaGVyYWxzLiBJdCBhbHNvIGJ1aWxkcyBhIHByaXZhdGUgTVIgZm9yIHRoZSBHUFUg
+KCJWQyBDUFUiIGluIHRoZSBzcGVjKSBidXMgYWRkcmVzc2VzLCAiZ3B1X21yIiwgYW5kIGFsaWFz
+ZXMgUkFNIGludG8gaXQgZm91ciB0aW1lcyBhbG9uZyB3aXRoIHRoZSBwZXJpcGhlcmFsIE1SIGF0
+IEJDTTI4MzVfVkNfUEVSSV9CQVNFICgweDdlMDAwMDAwKS4gSXRzIHBhcmVudCwgZGV2aWNlLCBl
+aXRoZXIgYmNtMjgzNSBvciBiY20yODM2LCBtYXBzIHRoZSBwZXJpcGhlcmFsIE1SIGludG8gdGhl
+IGRlZmF1bHQgc3lzYnVzIG1taW8gYnVzIChpLmUuLCB0aGUgQ1BVJ3MgcGh5c2ljYWwgYWRkcmVz
+cyBzcGFjZSkgYXQgdGhlIHJlbGV2YW50IENQVSBwaHlzaWNhbCBiYXNlIGFkZHJlc3MgKDB4MjAw
+MDAwMDAgb24gcGkxLCAweDNGMDAwMDAwIG9uIHBpMikuDQoNCk5vdywgYXMgdG8gd2h5IHRoZSBt
+YXBwaW5nIGNhbGwgZmFpbHM6IEknbSBjb25mdXNlZCB3aGVyZSB5b3Ugc2F3IHRoYXQgY2FsbCB3
+aXRoIHRoZSAweDQwMDAwMDAwIGFkZHJlc3MuIFRoZSBjb2RlIGluIG15IHRyZWUgZm9yIGJjbTI4
+MzUuYyBpczoNCg0KLyogUGVyaXBoZXJhbCBiYXNlIGFkZHJlc3Mgc2VlbiBieSB0aGUgQ1BVICov
+DQojZGVmaW5lIEJDTTI4MzVfUEVSSV9CQVNFICAgICAgIDB4MjAwMDAwMDANCi4uLg0KICAgIHN5
+c2J1c19tbWlvX21hcF9vdmVybGFwKFNZU19CVVNfREVWSUNFKCZzLT5wZXJpcGhlcmFscyksIDAs
+DQogICAgICAgICAgICAgICAgICAgICAgICAgICAgQkNNMjgzNV9QRVJJX0JBU0UsIDEpOw0KDQpB
+bHNvLCBub3RlIHRoYXQgdGhpcyBpcyBtYXBwaW5nIHRoZSBwZXJpcGhlcmFscyBNUiwgbm90IHRo
+ZSB0aGUgZ3B1X2J1c19tciB3aGljaCBpcyBuZXZlciB1c2VkIHdpdGggYW55IHN5c2J1cyBBUElz
+LCBzbyBJJ20gc3RpbGwgbm90IGNsZWFyIG9uIHdoeSB3ZSBuZWVkIHRvIGNhbGwgc3lzYnVzX2lu
+aXRfbW1pbyBvbiBpdC4gSXQncyBlbnRpcmVseSBwb3NzaWJsZSBteSBjb2RlIGlzIGJyb2tlbiwg
+YW5kL29yIHRoYXQgYXNzZXJ0IHdhc24ndCB0aGVyZSB3aGVuIEkgdGVzdGVkIGl0LCBidXQgeW91
+IG1pZ2h0IGhhdmUgdG8gZGlnIGEgYml0IGRlZXBlciB0byBjb252aW5jZSBtZSB0aGF0IHdoYXQg
+eW91J3JlIGRvaW5nIGlzIGFsc28gc2FuZSA6KQ0KDQpCVFcsIEkgc3VzcGVjdCBub2JvZHkgZWxz
+ZSB3aWxsIHdhbnQgdG8gcmV2aWV3IHRoaXMgdW50aWwgYWZ0ZXIgMi45Lg0KDQpBbmRyZXcNCg==

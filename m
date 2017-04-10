@@ -1,274 +1,182 @@
-Received: by 10.25.0.144 with SMTP id 138csp485454lfa;
-        Sun, 9 Apr 2017 04:23:25 -0700 (PDT)
-X-Received: by 10.55.221.135 with SMTP id u7mr21087413qku.34.1491737005027;
-        Sun, 09 Apr 2017 04:23:25 -0700 (PDT)
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 10.25.0.144 with SMTP id 138csp767278lfa;
+        Mon, 10 Apr 2017 01:42:43 -0700 (PDT)
+X-Received: by 10.237.33.143 with SMTP id l15mr51188875qtc.222.1491813763142;
+        Mon, 10 Apr 2017 01:42:43 -0700 (PDT)
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id k5si10979068qkh.201.2017.04.09.04.23.24
+        by mx.google.com with ESMTPS id h65si12894341qkf.257.2017.04.10.01.42.42
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sun, 09 Apr 2017 04:23:25 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Mon, 10 Apr 2017 01:42:43 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        dkim=fail header.i=@gmail.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:58126 helo=lists.gnu.org)
+Received: from localhost ([::1]:32977 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1cxAwG-0006PW-Fq
-	for alex.bennee@linaro.org; Sun, 09 Apr 2017 07:23:24 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:39957)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1cxUuG-00018P-BZ
+	for alex.bennee@linaro.org; Mon, 10 Apr 2017 04:42:40 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:49282)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <sundeep.lkml@gmail.com>) id 1cxAst-0004DZ-CL
-	for qemu-devel@nongnu.org; Sun, 09 Apr 2017 07:19:56 -0400
+	(envelope-from <edgar.iglesias@gmail.com>) id 1cxUu7-00016O-C0
+	for qemu-arm@nongnu.org; Mon, 10 Apr 2017 04:42:32 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <sundeep.lkml@gmail.com>) id 1cxAsr-00013C-US
-	for qemu-devel@nongnu.org; Sun, 09 Apr 2017 07:19:55 -0400
-Received: from mail-pf0-x241.google.com ([2607:f8b0:400e:c00::241]:33375)
+	(envelope-from <edgar.iglesias@gmail.com>) id 1cxUu4-0002sZ-7n
+	for qemu-arm@nongnu.org; Mon, 10 Apr 2017 04:42:31 -0400
+Received: from mail-lf0-x241.google.com ([2a00:1450:4010:c07::241]:35404)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <sundeep.lkml@gmail.com>)
-	id 1cxAsr-00012T-MX; Sun, 09 Apr 2017 07:19:53 -0400
-Received: by mail-pf0-x241.google.com with SMTP id c198so3231049pfc.0;
-	Sun, 09 Apr 2017 04:19:53 -0700 (PDT)
+	(Exim 4.71) (envelope-from <edgar.iglesias@gmail.com>)
+	id 1cxUu3-0002rv-Ut; Mon, 10 Apr 2017 04:42:28 -0400
+Received: by mail-lf0-x241.google.com with SMTP id i3so4150366lfh.2;
+	Mon, 10 Apr 2017 01:42:26 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=from:to:cc:subject:date:message-id:in-reply-to:references;
-	bh=NRq2FE6coqybHq/zT7WKbmwlLN4+8i9SPh2+vrGIzBU=;
-	b=aEcaZ+rBbtUW5wz0VpslswpAiGcWL3ZwIuW6mTy2UV+SrmEYxpqjnZqT68qZrjkONK
-	euVYCIdwZtjLmoBJsKTRnSqRj/8D0/w2IHxHB560EINZJI+59FklZULuODur5q1DR7F2
-	gxWorJBAOlGRbjkANg3RgXz0Y2lkMq7TSiC0XOUfsE9r2TAYUhzsFbk4v4Km43sPUR5K
-	7+D1eT+OJxxgUUKm6T87vSyCV28QnX7Z/MWnbAhK8ZloooWUvruJH1dCTWn04HfSyn5B
-	WKWbShU0EXqHRkUAYUTOLRpFoBFZRiln4aVeY4Htc4uzP4L9vAqXHV+qT9uSdJZpHGDs
-	mWPQ==
+	h=date:from:to:cc:subject:message-id:references:mime-version
+	:content-disposition:in-reply-to:user-agent;
+	bh=nJHu/F8XPPyl1U8+lTdga1jwJPd0dx97onPf4sGp628=;
+	b=JU+fInolbsazXiyV8uL9i4RQJVWJKa7xhkTG0Ta5x3Fl0Dj26lFSBhq0zdk9z5hVyD
+	uaodkMCg4bgBqhAeRP/7cOTiMpBnuadluXaA1qTIsqK3izxm12YIO04mbs+yvOuQ2wTq
+	cFaRp15R1CvNBWhXkLNJcvK6UMCBQrbd4zo8SSI3guxmX0DO+dsdoja4ZngexTnbbSpd
+	SOUmkGDAPsAPGFaq6XdRK0IPuAQV1WoBdb3vObERsttQJgfiHBeCSTZSZFr+JWT4puNE
+	uUq4wfOt+QvPS9szkPLyfuXgjlFRd5N8AFD2vbrCBsOHC9BFMgOSmJk35EFQ47Bebx8M
+	csTg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
-	:references;
-	bh=NRq2FE6coqybHq/zT7WKbmwlLN4+8i9SPh2+vrGIzBU=;
-	b=lMinsKDHRRiozMdo0JF5GqFwvGGuvRTrdrfKF6QaR9eq4uiqTsVfA2TohI5fAY5xA6
-	fho4ILHRV4rJv6CrfZA1mzHEkGzsqFLTspfdNoawE1XHjUNPmTp8lKg4L1DXoxcT7OCv
-	Vty0QhNf4Fw2M5/heVSZAmX3iEIKAeo1PWLShTgcDvM8BauRmUUwNZAFca7EoI1Pu/Ow
-	D7UjnQUVGe0C+rSObuF/3CWjqR4ZtvOhTmzD4L7Dn2HPvl8/3wBEaxLiAebVs3xsp02D
-	6UBT3zVUtf5RYvYN9G0lzhAIaXvRftWqbghCu9+CZ/aLDjPypxce54hSaAscIi3ugxar
-	HXng==
-X-Gm-Message-State: AFeK/H03f1RD1bASIowohntig0pRGfq7U74xePVG8/8S5fzdYX/C3mWfToSzp28OFUZeDg==
-X-Received: by 10.98.46.134 with SMTP id u128mr49475526pfu.264.1491736792788; 
-	Sun, 09 Apr 2017 04:19:52 -0700 (PDT)
-Received: from localhost.localdomain ([124.123.70.3])
+	h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+	:mime-version:content-disposition:in-reply-to:user-agent;
+	bh=nJHu/F8XPPyl1U8+lTdga1jwJPd0dx97onPf4sGp628=;
+	b=pR8NK9jkMkCl+XypxFeI4KDai0iuilrVSWLgQKV6963mCluSHKirAmQHYzrTJFtYM7
+	cULGxdEJjh1fimnypn4zYMZN0wEjh3tdb3hNg/oyyWiuN6zptknc2WY+hNbgDIhjc4+1
+	g/EFQFuvBXcPvXg89uZhmRvHQ/w0vnRAYVqzXejtZ5NLusLSpj2bGNEbAKT7K0D2mIH4
+	cyON3y5VGPderQIm93yLMTdKtX87o6za/dJCVT33y6HeeH/h25cYmQaza7Y82uzev4FC
+	4ozqT8LrgD2T3ma8ZYTfEfWIAFWBaHUv0OoroXGNc+383aAmJFzoce+j+cfHVUc/9tLI
+	22LQ==
+X-Gm-Message-State: AFeK/H3nT2gVEMkUeJlhxb2qSS/pl7oWK2NUd45bdSjWBMVW1mp8iyRDtDbL/yb1GGOl8Q==
+X-Received: by 10.25.93.86 with SMTP id p22mr17285328lfj.9.1491813744803;
+	Mon, 10 Apr 2017 01:42:24 -0700 (PDT)
+Received: from localhost (81-231-233-234-no56.tbcn.telia.com. [81.231.233.234])
 	by smtp.gmail.com with ESMTPSA id
-	g5sm18914139pgn.38.2017.04.09.04.19.49
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-	Sun, 09 Apr 2017 04:19:52 -0700 (PDT)
-From: Subbaraya Sundeep <sundeep.lkml@gmail.com>
-To: qemu-devel@nongnu.org,
-	qemu-arm@nongnu.org
-Date: Sun,  9 Apr 2017 16:49:18 +0530
-Message-Id: <1491736758-19540-5-git-send-email-sundeep.lkml@gmail.com>
-X-Mailer: git-send-email 2.5.0
-In-Reply-To: <1491736758-19540-1-git-send-email-sundeep.lkml@gmail.com>
-References: <1491736758-19540-1-git-send-email-sundeep.lkml@gmail.com>
+	o80sm2670814lff.25.2017.04.10.01.42.23
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Mon, 10 Apr 2017 01:42:23 -0700 (PDT)
+Date: Mon, 10 Apr 2017 10:42:22 +0200
+From: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+Message-ID: <20170410084222.GA19103@toto>
+References: <1491486152-24304-1-git-send-email-peter.maydell@linaro.org>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <1491486152-24304-1-git-send-email-peter.maydell@linaro.org>
+User-Agent: Mutt/1.5.24 (2015-08-30)
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400e:c00::241
-Subject: [Qemu-devel] [Qemu-devel RFC v2 4/4] msf2: Add Emcraft's
- Smartfusion2 SOM kit.
-X-BeenThere: qemu-devel@nongnu.org
+X-Received-From: 2a00:1450:4010:c07::241
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH] target/arm: Add assertion about
+ FSC format for syndrome registers
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, Subbaraya Sundeep <sundeep.lkml@gmail.com>,
-	crosthwaite.peter@gmail.com
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 99/BJcHSQOY1
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: "Edgar E . Iglesias" <edgar.iglesias@xilinx.com>, qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org, patches@linaro.org
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: ii0s/1Fj/8Eb
 
-Emulated Emcraft's Smartfusion2 System On Module starter
-kit.
+On Thu, Apr 06, 2017 at 02:42:32PM +0100, Peter Maydell wrote:
+> In tlb_fill() we construct a syndrome register value from a
+> fault status register value which is filled in by arm_tlb_fill().
+> arm_tlb_fill() returns FSR values which might be in the format
+> used with short-format page descriptors, or the format used
+> with long-format (LPAE) descriptors. The syndrome register
+> always uses LPAE-format FSR status codes.
+> 
+> It isn't actually possible to end up delivering a syndrome
+> register value to the guest for a fault which is reported
+> with a short-format FSR (that kind of stage 1 fault will only
+> happen for an AArch32 translation regime which doesn't have
+> a syndrome register, and can never be redirected to an AArch64
+> or Hyp exception level). Add an assertion which checks this,
+> and adjust the code so that we construct a syndrome with
+> an invalid status code, rather than allowing set bits in
+> the FSR input to randomly corrupt other fields in the syndrome.
+> 
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 
-Signed-off-by: Subbaraya Sundeep <sundeep.lkml@gmail.com>
----
- default-configs/arm-softmmu.mak |   1 +
- hw/arm/Makefile.objs            |   2 +-
- hw/arm/msf2_soc.c               | 141 ++++++++++++++++++++++++++++++++++++++++
- 3 files changed, 143 insertions(+), 1 deletion(-)
- create mode 100644 hw/arm/msf2_soc.c
+Tricky but it looks correct as far as I can follow the specs...
 
-diff --git a/default-configs/arm-softmmu.mak b/default-configs/arm-softmmu.mak
-index 1e3bd2b..379f7e1 100644
---- a/default-configs/arm-softmmu.mak
-+++ b/default-configs/arm-softmmu.mak
-@@ -121,3 +121,4 @@ CONFIG_ACPI=y
- CONFIG_SMBIOS=y
- CONFIG_ASPEED_SOC=y
- CONFIG_GPIO_KEY=y
-+CONFIG_MSF2=y
-diff --git a/hw/arm/Makefile.objs b/hw/arm/Makefile.objs
-index 4c5c4ee..cce2759 100644
---- a/hw/arm/Makefile.objs
-+++ b/hw/arm/Makefile.objs
-@@ -1,7 +1,7 @@
- obj-y += boot.o collie.o exynos4_boards.o gumstix.o highbank.o
- obj-$(CONFIG_DIGIC) += digic_boards.o
- obj-y += integratorcp.o mainstone.o musicpal.o nseries.o
--obj-y += omap_sx1.o palm.o realview.o spitz.o stellaris.o
-+obj-y += omap_sx1.o palm.o realview.o spitz.o stellaris.o msf2_soc.o
- obj-y += tosa.o versatilepb.o vexpress.o virt.o xilinx_zynq.o z2.o
- obj-$(CONFIG_ACPI) += virt-acpi-build.o
- obj-y += netduino2.o
-diff --git a/hw/arm/msf2_soc.c b/hw/arm/msf2_soc.c
-new file mode 100644
-index 0000000..7277b51
---- /dev/null
-+++ b/hw/arm/msf2_soc.c
-@@ -0,0 +1,141 @@
-+/*
-+ * Smartfusion2 SOM starter kit(from Emcraft) emulation.
-+ *
-+ * Copyright (c) 2017 Subbaraya Sundeep <sundeep.lkml@gmail.com>
-+ *
-+ * Permission is hereby granted, free of charge, to any person obtaining a copy
-+ * of this software and associated documentation files (the "Software"), to deal
-+ * in the Software without restriction, including without limitation the rights
-+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-+ * copies of the Software, and to permit persons to whom the Software is
-+ * furnished to do so, subject to the following conditions:
-+ *
-+ * The above copyright notice and this permission notice shall be included in
-+ * all copies or substantial portions of the Software.
-+ *
-+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
-+ * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-+ * THE SOFTWARE.
-+ */
-+
-+#include "qemu/osdep.h"
-+#include "qapi/error.h"
-+#include "qemu-common.h"
-+#include "hw/arm/arm.h"
-+#include "exec/address-spaces.h"
-+#include "hw/sysbus.h"
-+#include "hw/char/serial.h"
-+#include "hw/boards.h"
-+#include "sysemu/block-backend.h"
-+#include "hw/ssi/ssi.h"
-+
-+#define MSF2_NUM_USARTS       1
-+#define MSF2_NUM_TIMERS       2
-+
-+#define ENVM_BASE_ADDRESS     0x60000000
-+#define ENVM_SIZE             (128 * 1024)
-+
-+#define DDR_BASE_ADDRESS      0xA0000000
-+#define DDR_SIZE              (64 * 1024 * 1024)
-+
-+#define SRAM_BASE_ADDRESS     0x20000000
-+#define SRAM_SIZE             (64 * 1024)
-+
-+#define MSF2_TIMER_BASE       0x40004000
-+#define MSF2_UART0_BASE       0x40000000
-+#define MSF2_SYSREG_BASE      0x40038000
-+#define MSF2_SPI0_BASE        0x40001000
-+
-+#define MSF2_SPI0_IRQ         2
-+#define MSF2_UART0_IRQ        10
-+#define MSF2_TIMER_IRQ0       14
-+#define MSF2_TIMER_IRQ1       15
-+
-+static void msf2_init(MachineState *machine)
-+{
-+    const char *kernel_filename = NULL;
-+    DeviceState *dev, *nvic;
-+    MemoryRegion *system_memory = get_system_memory();
-+    MemoryRegion *nvm = g_new(MemoryRegion, 1);
-+    MemoryRegion *nvm_alias = g_new(MemoryRegion, 1);
-+    MemoryRegion *sram = g_new(MemoryRegion, 1);
-+    MemoryRegion *ddr = g_new(MemoryRegion, 1);
-+    QemuOpts *machine_opts = qemu_get_machine_opts();
-+    SysBusDevice *busdev;
-+    DriveInfo *dinfo = drive_get_next(IF_MTD);
-+    qemu_irq cs_line;
-+    SSIBus *spi;
-+
-+    kernel_filename = qemu_opt_get(machine_opts, "kernel");
-+
-+    memory_region_init_ram(nvm, NULL, "MSF2.envm", ENVM_SIZE,
-+                           &error_fatal);
-+    memory_region_init_alias(nvm_alias, NULL, "MSF2.flash.alias",
-+                             nvm, 0, ENVM_SIZE);
-+    vmstate_register_ram_global(nvm);
-+
-+    memory_region_set_readonly(nvm, true);
-+    memory_region_set_readonly(nvm_alias, true);
-+
-+    memory_region_add_subregion(system_memory, ENVM_BASE_ADDRESS, nvm);
-+    memory_region_add_subregion(system_memory, 0, nvm_alias);
-+
-+    memory_region_init_ram(ddr, NULL, "MSF2.ddr", DDR_SIZE,
-+                           &error_fatal);
-+    vmstate_register_ram_global(ddr);
-+    memory_region_add_subregion(system_memory, DDR_BASE_ADDRESS, ddr);
-+
-+    memory_region_init_ram(sram, NULL, "MSF2.sram", SRAM_SIZE,
-+                           &error_fatal);
-+    vmstate_register_ram_global(sram);
-+    memory_region_add_subregion(system_memory, SRAM_BASE_ADDRESS, sram);
-+
-+    nvic = armv7m_init(system_memory, ENVM_SIZE, 96,
-+                       kernel_filename, "cortex-m3");
-+
-+	if (serial_hds[0]) {
-+                serial_mm_init(get_system_memory(), MSF2_UART0_BASE, 2,
-+                       qdev_get_gpio_in(nvic, MSF2_UART0_IRQ),
-+                       115200, serial_hds[0], DEVICE_NATIVE_ENDIAN);
-+    }
-+    dev = qdev_create(NULL, "msf2-timer");
-+    qdev_prop_set_uint32(dev, "clock-frequency", 83 * 1000000);
-+    qdev_init_nofail(dev);
-+    sysbus_mmio_map(SYS_BUS_DEVICE(dev), 0, MSF2_TIMER_BASE);
-+    sysbus_connect_irq(SYS_BUS_DEVICE(dev), 0,
-+                           qdev_get_gpio_in(nvic, MSF2_TIMER_IRQ0));
-+    sysbus_connect_irq(SYS_BUS_DEVICE(dev), 1,
-+                           qdev_get_gpio_in(nvic, MSF2_TIMER_IRQ1));
-+
-+    dev = qdev_create(NULL, "msf2-sysreg");
-+    qdev_init_nofail(dev);
-+    sysbus_mmio_map(SYS_BUS_DEVICE(dev), 0, MSF2_SYSREG_BASE);
-+
-+    dev = qdev_create(NULL, "msf2-spi");
-+    qdev_init_nofail(dev);
-+    busdev = SYS_BUS_DEVICE(dev);
-+    sysbus_mmio_map(busdev, 0, MSF2_SPI0_BASE);
-+    sysbus_connect_irq(busdev, 0, qdev_get_gpio_in(nvic, MSF2_SPI0_IRQ));
-+
-+    spi = (SSIBus *)qdev_get_child_bus(dev, "spi");
-+    dev = ssi_create_slave_no_init(spi, "s25sl12801");
-+    qdev_prop_set_uint8(dev, "spansion-cr2nv", 1);
-+    if (dinfo)
-+		qdev_prop_set_drive(dev, "drive", blk_by_legacy_dinfo(dinfo),
-+                                    &error_fatal);
-+    qdev_init_nofail(dev);
-+    cs_line = qdev_get_gpio_in_named(dev, SSI_GPIO_CS, 0);
-+    sysbus_connect_irq(busdev, 1, cs_line);
-+}
-+
-+static void msf2_machine_init(MachineClass *mc)
-+{
-+    mc->desc = "SmartFusion2 SOM kit from Emcraft";
-+    mc->init = msf2_init;
-+}
-+
-+DEFINE_MACHINE("smartfusion2-som", msf2_machine_init)
--- 
-2.5.0
+Reviewed-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
 
+
+
+
+> ---
+> It took me a little while to convince myself that you'd
+> never take a short-format FSR to a using-syndrome EL :-)
+> ---
+>  target/arm/op_helper.c | 23 ++++++++++++++++++-----
+>  1 file changed, 18 insertions(+), 5 deletions(-)
+> 
+> diff --git a/target/arm/op_helper.c b/target/arm/op_helper.c
+> index d64c867..156b825 100644
+> --- a/target/arm/op_helper.c
+> +++ b/target/arm/op_helper.c
+> @@ -130,7 +130,7 @@ void tlb_fill(CPUState *cs, target_ulong addr, MMUAccessType access_type,
+>      if (unlikely(ret)) {
+>          ARMCPU *cpu = ARM_CPU(cs);
+>          CPUARMState *env = &cpu->env;
+> -        uint32_t syn, exc;
+> +        uint32_t syn, exc, fsc;
+>          unsigned int target_el;
+>          bool same_el;
+>  
+> @@ -145,19 +145,32 @@ void tlb_fill(CPUState *cs, target_ulong addr, MMUAccessType access_type,
+>              env->cp15.hpfar_el2 = extract64(fi.s2addr, 12, 47) << 4;
+>          }
+>          same_el = arm_current_el(env) == target_el;
+> -        /* AArch64 syndrome does not have an LPAE bit */
+> -        syn = fsr & ~(1 << 9);
+> +
+> +        if (fsr & (1 << 9)) {
+> +            /* LPAE format fault status register : bottom 6 bits are
+> +             * status code in the same form as needed for syndrome
+> +             */
+> +            fsc = extract32(fsr, 0, 6);
+> +        } else {
+> +            /* Short format FSR : this fault will never actually be reported
+> +             * to an EL that uses a syndrome register. Check that here,
+> +             * and use a (currently) reserved FSR code in case the constructed
+> +             * syndrome does leak into the guest somehow.
+> +             */
+> +            assert(target_el != 2 && !arm_el_is_aa64(env, target_el));
+> +            fsc = 0x3f;
+> +        }
+>  
+>          /* For insn and data aborts we assume there is no instruction syndrome
+>           * information; this is always true for exceptions reported to EL1.
+>           */
+>          if (access_type == MMU_INST_FETCH) {
+> -            syn = syn_insn_abort(same_el, 0, fi.s1ptw, syn);
+> +            syn = syn_insn_abort(same_el, 0, fi.s1ptw, fsc);
+>              exc = EXCP_PREFETCH_ABORT;
+>          } else {
+>              syn = merge_syn_data_abort(env->exception.syndrome, target_el,
+>                                         same_el, fi.s1ptw,
+> -                                       access_type == MMU_DATA_STORE, syn);
+> +                                       access_type == MMU_DATA_STORE, fsc);
+>              if (access_type == MMU_DATA_STORE
+>                  && arm_feature(env, ARM_FEATURE_V6)) {
+>                  fsr |= (1 << 11);
+> -- 
+> 2.7.4
+> 
+> 

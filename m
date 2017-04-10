@@ -1,192 +1,175 @@
-Received: by 10.25.0.144 with SMTP id 138csp959140lfa;
-        Mon, 10 Apr 2017 10:13:54 -0700 (PDT)
-X-Received: by 10.200.33.245 with SMTP id 50mr2930898qtz.64.1491844434741;
-        Mon, 10 Apr 2017 10:13:54 -0700 (PDT)
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 10.25.0.144 with SMTP id 138csp992612lfa;
+        Mon, 10 Apr 2017 11:55:56 -0700 (PDT)
+X-Received: by 10.55.90.70 with SMTP id o67mr56264024qkb.251.1491850556816;
+        Mon, 10 Apr 2017 11:55:56 -0700 (PDT)
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id s17si13967740qki.280.2017.04.10.10.13.54
+        by mx.google.com with ESMTPS id s5si14192749qkf.254.2017.04.10.11.55.56
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 10 Apr 2017 10:13:54 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Mon, 10 Apr 2017 11:55:56 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:35541 helo=lists.gnu.org)
+       dkim=fail header.i=@gmail.com;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:35848 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1cxcsy-0001VS-2l
-	for alex.bennee@linaro.org; Mon, 10 Apr 2017 13:13:52 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:54963)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1cxeTi-0000UL-AP
+	for alex.bennee@linaro.org; Mon, 10 Apr 2017 14:55:54 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:53361)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1cxcsr-0001VG-73
-	for qemu-arm@nongnu.org; Mon, 10 Apr 2017 13:13:46 -0400
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1cxeSq-000083-4U
+	for qemu-devel@nongnu.org; Mon, 10 Apr 2017 14:55:01 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1cxcsp-00075e-Ue
-	for qemu-arm@nongnu.org; Mon, 10 Apr 2017 13:13:45 -0400
-Received: from orth.archaic.org.uk ([2001:8b0:1d0::2]:49112)
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1cxeSl-00015c-Fl
+	for qemu-devel@nongnu.org; Mon, 10 Apr 2017 14:55:00 -0400
+Received: from mail-qt0-x244.google.com ([2607:f8b0:400d:c0d::244]:35458)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <pm215@archaic.org.uk>)
-	id 1cxcsp-00075P-Ll; Mon, 10 Apr 2017 13:13:43 -0400
-Received: from pm215 by orth.archaic.org.uk with local (Exim 4.84_2)
-	(envelope-from <pm215@archaic.org.uk>)
-	id 1cxcsm-0005hZ-Q8; Mon, 10 Apr 2017 18:13:40 +0100
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
+	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1cxeSl-00015U-9n; Mon, 10 Apr 2017 14:54:55 -0400
+Received: by mail-qt0-x244.google.com with SMTP id o36so4472068qtb.2;
+	Mon, 10 Apr 2017 11:54:55 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=sender:subject:to:references:cc:from:message-id:date:user-agent
+	:mime-version:in-reply-to:content-transfer-encoding;
+	bh=gj0aeLZ5XT4LZg75gmd1VgrsK+BFoetcHLMIy6o3OJM=;
+	b=BZ8kIzX19QbIGP4sY+lAQCJXxe7EzI7T0WBl4m/EpMn9r8BFyZlmPSBiL0lU7Z1j3k
+	tl9QX2LkUfoz7liC6fWojU6g3oJ/4rNUx98rSYSaW371ucjUxa3PxSYhDYumQJ7FVk63
+	lyVXeC1fJGI37pRKlzP/WIFu/BQMfeu7foMxqY3Q46aiyMc7vNrVf78AH3x64ncSe/UD
+	Up0Pc0020d3Bu4mNQNhNxudXAkCx+2BCIPir7qpBgmVH0cU5g/V1X48bJar8s/SVdsc2
+	msmZFc6InhIcOaIgoq29KBpjcL6swrpJgHozb1QFpyfjaDUdEa/0DGVbHSHVJTxjMW6g
+	h1CQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:sender:subject:to:references:cc:from:message-id
+	:date:user-agent:mime-version:in-reply-to:content-transfer-encoding;
+	bh=gj0aeLZ5XT4LZg75gmd1VgrsK+BFoetcHLMIy6o3OJM=;
+	b=MbisjkED08535goaHgGIW/O9DmIoPUWvgykN2QnYdX01RrbOxIgusSmW9VHm9KwFwP
+	8qLp26dMrVeChCq4ee5ljLyBvAXXkwqTqPUmAO8R11uwhLZzsCLdU57nXywP9Y1N56MU
+	Ay2XASABTIWDZqXgmlUlv2KioYmoNGDZ1awEwqYCRlMZeo+Cz/nFp3Y3EGNdYHI/UyVp
+	8WJ8Hi1anVbJJt24rdF8jnPJS1YI9EcBvJozd4xlUsYM5bsILy/HCd0Qjqoic0aJhvOw
+	9HFuf5pUIcNHssFokVvzqdQg7RNh2Gr+6TEx4v7a4MePsWulCxLhQTM33Inhn2dc31Bp
+	dKVA==
+X-Gm-Message-State: AN3rC/7bhRwcOBPTo4ntiSkzlZdI1nVKXlsNQqlnPTRDHM4G6jJnhCQRX7fjtTPWKNxqyA==
+X-Received: by 10.200.4.140 with SMTP id s12mr7464389qtg.35.1491850494628;
+	Mon, 10 Apr 2017 11:54:54 -0700 (PDT)
+Received: from [192.168.1.10] ([138.117.48.226])
+	by smtp.gmail.com with ESMTPSA id
+	z32sm9328695qtg.17.2017.04.10.11.54.52
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Mon, 10 Apr 2017 11:54:53 -0700 (PDT)
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Date: Mon, 10 Apr 2017 18:13:30 +0100
-Message-Id: <1491844419-12485-1-git-send-email-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.7.4
+References: <1491844419-12485-1-git-send-email-peter.maydell@linaro.org>
+	<1491844419-12485-7-git-send-email-peter.maydell@linaro.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Message-ID: <d8517799-0767-dd58-175b-f8908a94e598@amsat.org>
+Date: Mon, 10 Apr 2017 15:54:50 -0300
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
+	Thunderbird/45.8.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+In-Reply-To: <1491844419-12485-7-git-send-email-peter.maydell@linaro.org>
+Content-Type: text/plain; charset=windows-1252; format=flowed
 Content-Transfer-Encoding: 8bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2001:8b0:1d0::2
-Subject: [Qemu-arm] [PATCH v2 0/9] arm: Implement M profile exception return
- properly
-X-BeenThere: qemu-arm@nongnu.org
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:400d:c0d::244
+Subject: Re: [Qemu-devel] [PATCH v2 6/9] arm: Abstract out "are we
+ singlestepping" test to utility function
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Richard Henderson <rth@twiddle.net>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
-	patches@linaro.org
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 9XsOlf0YqjqT
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Richard Henderson <rth@twiddle.net>, patches@linaro.org
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: xH+n7aFFypUd
 
-On M profile, return from exceptions happen when code in Handler mode
-executes one of the following function call return instructions:
-     * POP or LDM which loads the PC
-     * LDR to PC
-     * BX register
-and the new PC value is 0xFFxxxxxx.
-    
-QEMU tries to implement this by not treating the instruction
-specially but then catching the attempt to execute from the magic
-address value.  This is not ideal, because:
- * there are guest visible differences from the architecturally
-   specified behaviour (for instance jumping to 0xFFxxxxxx via a
-   different instruction should not cause an exception return but it
-   will in the QEMU implementation)
- * we have to account for it in various places (like refusing to take
-   an interrupt if the PC is at a magic value, and making sure that
-   the MPU doesn't deny execution at the magic value addresses)
-    
-Drop these hacks, and instead implement exception return the way the
-architecture specifies -- by having the relevant instructions check
-for the magic value and raise the 'do an exception return' QEMU
-internal exception immediately.
+On 04/10/2017 02:13 PM, Peter Maydell wrote:
+> We now test for "are we singlestepping" in several places and
+> it's not a trivial check because we need to care about both
+> architectural singlestep and QEMU gdbstub singlestep. We're
+> also about to add another place that needs to make this check,
+> so pull the condition out into a function.
+>
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> ---
+>  target/arm/translate.c | 20 +++++++++++++++-----
+>  1 file changed, 15 insertions(+), 5 deletions(-)
+>
+> diff --git a/target/arm/translate.c b/target/arm/translate.c
+> index 87fd702..f28c4ca 100644
+> --- a/target/arm/translate.c
+> +++ b/target/arm/translate.c
+> @@ -309,6 +309,17 @@ static void gen_singlestep_exception(DisasContext *s)
+>      }
+>  }
+>
+> +static inline bool is_singlestepping(DisasContext *s)
+> +{
+> +    /* Return true if we are singlestepping either because of
+> +     * architectural singlestep or QEMU gdbstub singlestep. This does
+> +     * not include the command line '-singlestep' mode which is rather
+> +     * misnamed as it only means "one instruction per TB" and doesn't
+> +     * affect the code we generate.
+> +     */
 
-I realised when I was looking at the MPU patches that the current
-mechanism was a bit awkward and needed still more workarounds in
-code that really shouldn't have to care about exception-return.
-And it turns out that implementing it properly doesn't actually
-have very much runtime cost at all.
+This comment is very welcome :)
 
-NB: this is technically speaking a migration compatibility break,
-if you were unlucky enough to migrate just after an exception
-return when the PC value was one of the magic values, since the
-new QEMU will not treat this as "now do exception return".
-However we don't guarantee migration compatibility for M profile,
-so that's OK.
-    
-The effect on the generated code is minor:
-    
-     bx lr, old code (and new code for Thread mode):
-      TCG:
-       mov_i32 tmp5,r14
-       movi_i32 tmp6,$0xfffffffffffffffe
-       and_i32 pc,tmp5,tmp6
-       movi_i32 tmp6,$0x1
-       and_i32 tmp5,tmp5,tmp6
-       st_i32 tmp5,env,$0x218
-       exit_tb $0x0
-      x86_64 generated code:
-       0x7f2aabe87019:  mov    %ebx,%ebp
-       0x7f2aabe8701b:  and    $0xfffffffffffffffe,%ebp
-       0x7f2aabe8701e:  mov    %ebp,0x3c(%r14)
-       0x7f2aabe87022:  and    $0x1,%ebx
-       0x7f2aabe87025:  mov    %ebx,0x218(%r14)
-       0x7f2aabe8702c:  xor    %eax,%eax
-       0x7f2aabe8702e:  jmpq   0x7f2aabe7c016
-    
-     bx lr, new code when in Handler mode:
-      TCG:
-       mov_i32 tmp5,r14
-       movi_i32 tmp6,$0xfffffffffffffffe
-       and_i32 pc,tmp5,tmp6
-       movi_i32 tmp6,$0x1
-       and_i32 tmp5,tmp5,tmp6
-       st_i32 tmp5,env,$0x218
-       movi_i32 tmp5,$0xffffffffff000000
-       brcond_i32 pc,tmp5,geu,$L1
-       exit_tb $0x0
-       set_label $L1
-       movi_i32 tmp5,$0x8
-       call exception_internal,$0x0,$0,env,tmp5
-      x86_64 generated code:
-       0x7fe8fa1264e3:  mov    %ebp,%ebx
-       0x7fe8fa1264e5:  and    $0xfffffffffffffffe,%ebx
-       0x7fe8fa1264e8:  mov    %ebx,0x3c(%r14)
-       0x7fe8fa1264ec:  and    $0x1,%ebp
-       0x7fe8fa1264ef:  mov    %ebp,0x218(%r14)
-       0x7fe8fa1264f6:  cmp    $0xff000000,%ebx
-       0x7fe8fa1264fc:  jae    0x7fe8fa126509
-       0x7fe8fa126502:  xor    %eax,%eax
-       0x7fe8fa126504:  jmpq   0x7fe8fa122016
-       0x7fe8fa126509:  mov    %r14,%rdi
-       0x7fe8fa12650c:  mov    $0x8,%esi
-       0x7fe8fa126511:  mov    $0x56095dbeccf5,%r10
-       0x7fe8fa12651b:  callq  *%r10
-    
-which is a difference of one cmp/branch-not-taken. This will
-be lost in the noise of having to exit generated code and
-look up the next TB anyway.
-    
-Patches 1 and 2 are minor bug fixes which remove code paths that
-incorrectly called gen_bx(), so we don't have to consider them when
-looking at which gen_bx() calls need to be changed to call
-gen_bx_excret().  Patches 3 to 6 are minor preliminary refactorings;
-patch 7 adds the 'in handler mode' bit to the TB flags; patch 8
-is the meat of the series; finally patch 9 removes the old mechanism.
+Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 
-Changes v1->v2:
- * Abstract out "are we singlestepping" test to utility function
-   (new patch 6)
- * track Handler state in TB flags and use it to determine when
-   to allow exception-return, not the incorrect IS_USER test I had
-   in v1
- * add a brief comment about bx vs blx in patch 8
-
-thanks
--- PMM
-
-Peter Maydell (9):
-  arm: Don't implement BXJ on M-profile CPUs
-  arm: Thumb shift operations should not permit interworking branches
-  arm: Factor out "generate right kind of step exception"
-  arm: Move gen_set_condexec() and gen_set_pc_im() up in the file
-  arm: Move condition-failed codepath generation out of if()
-  arm: Abstract out "are we singlestepping" test to utility function
-  arm: Track M profile handler mode state in TB flags
-  arm: Implement M profile exception return properly
-  arm: Remove workarounds for old M-profile exception return
-    implementation
-
- target/arm/cpu.h       |   9 +++
- target/arm/translate.h |   5 ++
- target/arm/cpu.c       |  43 +-----------
- target/arm/translate.c | 181 +++++++++++++++++++++++++++++++++----------------
- 4 files changed, 138 insertions(+), 100 deletions(-)
-
--- 
-2.7.4
-
+> +    return s->singlestep_enabled || s->ss_active;
+> +}
+> +
+>  static void gen_smul_dual(TCGv_i32 a, TCGv_i32 b)
+>  {
+>      TCGv_i32 tmp1 = tcg_temp_new_i32();
+> @@ -4104,7 +4115,7 @@ static inline void gen_goto_tb(DisasContext *s, int n, target_ulong dest)
+>
+>  static inline void gen_jmp (DisasContext *s, uint32_t dest)
+>  {
+> -    if (unlikely(s->singlestep_enabled || s->ss_active)) {
+> +    if (unlikely(is_singlestepping(s))) {
+>          /* An indirect jump so that we still trigger the debug exception.  */
+>          if (s->thumb)
+>              dest |= 1;
+> @@ -11970,9 +11981,8 @@ void gen_intermediate_code(CPUARMState *env, TranslationBlock *tb)
+>              ((dc->pc >= next_page_start - 3) && insn_crosses_page(env, dc));
+>
+>      } while (!dc->is_jmp && !tcg_op_buf_full() &&
+> -             !cs->singlestep_enabled &&
+> +             !is_singlestepping(dc) &&
+>               !singlestep &&
+> -             !dc->ss_active &&
+>               !end_of_page &&
+>               num_insns < max_insns);
+>
+> @@ -11989,7 +11999,7 @@ void gen_intermediate_code(CPUARMState *env, TranslationBlock *tb)
+>         instruction was a conditional branch or trap, and the PC has
+>         already been written.  */
+>      gen_set_condexec(dc);
+> -    if (unlikely(cs->singlestep_enabled || dc->ss_active)) {
+> +    if (unlikely(is_singlestepping(dc))) {
+>          /* Unconditional and "condition passed" instruction codepath. */
+>          switch (dc->is_jmp) {
+>          case DISAS_SWI:
+> @@ -12067,7 +12077,7 @@ void gen_intermediate_code(CPUARMState *env, TranslationBlock *tb)
+>          /* "Condition failed" instruction codepath for the branch/trap insn */
+>          gen_set_label(dc->condlabel);
+>          gen_set_condexec(dc);
+> -        if (unlikely(cs->singlestep_enabled || dc->ss_active)) {
+> +        if (unlikely(is_singlestepping(dc))) {
+>              gen_set_pc_im(dc, dc->pc);
+>              gen_singlestep_exception(dc);
+>          } else {
+>

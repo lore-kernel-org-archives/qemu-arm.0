@@ -1,69 +1,69 @@
-Received: by 10.25.0.144 with SMTP id 138csp767278lfa;
-        Mon, 10 Apr 2017 01:42:43 -0700 (PDT)
-X-Received: by 10.237.33.143 with SMTP id l15mr51188875qtc.222.1491813763142;
-        Mon, 10 Apr 2017 01:42:43 -0700 (PDT)
+Received: by 10.25.0.144 with SMTP id 138csp767837lfa;
+        Mon, 10 Apr 2017 01:45:08 -0700 (PDT)
+X-Received: by 10.55.67.135 with SMTP id q129mr51998427qka.98.1491813908258;
+        Mon, 10 Apr 2017 01:45:08 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id h65si12894341qkf.257.2017.04.10.01.42.42
+        by mx.google.com with ESMTPS id c138si12923982qke.203.2017.04.10.01.45.07
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 10 Apr 2017 01:42:43 -0700 (PDT)
+        Mon, 10 Apr 2017 01:45:08 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        dkim=fail header.i=@gmail.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:32977 helo=lists.gnu.org)
+Received: from localhost ([::1]:32986 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1cxUuG-00018P-BZ
-	for alex.bennee@linaro.org; Mon, 10 Apr 2017 04:42:40 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:49282)
+	id 1cxUwb-0002O1-L4
+	for alex.bennee@linaro.org; Mon, 10 Apr 2017 04:45:05 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:49993)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <edgar.iglesias@gmail.com>) id 1cxUu7-00016O-C0
-	for qemu-arm@nongnu.org; Mon, 10 Apr 2017 04:42:32 -0400
+	(envelope-from <edgar.iglesias@gmail.com>) id 1cxUwY-0002Nv-Bj
+	for qemu-arm@nongnu.org; Mon, 10 Apr 2017 04:45:03 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <edgar.iglesias@gmail.com>) id 1cxUu4-0002sZ-7n
-	for qemu-arm@nongnu.org; Mon, 10 Apr 2017 04:42:31 -0400
-Received: from mail-lf0-x241.google.com ([2a00:1450:4010:c07::241]:35404)
+	(envelope-from <edgar.iglesias@gmail.com>) id 1cxUwV-0003m2-6R
+	for qemu-arm@nongnu.org; Mon, 10 Apr 2017 04:45:02 -0400
+Received: from mail-lf0-x243.google.com ([2a00:1450:4010:c07::243]:33926)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <edgar.iglesias@gmail.com>)
-	id 1cxUu3-0002rv-Ut; Mon, 10 Apr 2017 04:42:28 -0400
-Received: by mail-lf0-x241.google.com with SMTP id i3so4150366lfh.2;
-	Mon, 10 Apr 2017 01:42:26 -0700 (PDT)
+	id 1cxUwU-0003lh-UM; Mon, 10 Apr 2017 04:44:59 -0400
+Received: by mail-lf0-x243.google.com with SMTP id x72so3330540lfb.1;
+	Mon, 10 Apr 2017 01:44:58 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
 	h=date:from:to:cc:subject:message-id:references:mime-version
 	:content-disposition:in-reply-to:user-agent;
-	bh=nJHu/F8XPPyl1U8+lTdga1jwJPd0dx97onPf4sGp628=;
-	b=JU+fInolbsazXiyV8uL9i4RQJVWJKa7xhkTG0Ta5x3Fl0Dj26lFSBhq0zdk9z5hVyD
-	uaodkMCg4bgBqhAeRP/7cOTiMpBnuadluXaA1qTIsqK3izxm12YIO04mbs+yvOuQ2wTq
-	cFaRp15R1CvNBWhXkLNJcvK6UMCBQrbd4zo8SSI3guxmX0DO+dsdoja4ZngexTnbbSpd
-	SOUmkGDAPsAPGFaq6XdRK0IPuAQV1WoBdb3vObERsttQJgfiHBeCSTZSZFr+JWT4puNE
-	uUq4wfOt+QvPS9szkPLyfuXgjlFRd5N8AFD2vbrCBsOHC9BFMgOSmJk35EFQ47Bebx8M
-	csTg==
+	bh=97tiJEWivlzZNssH+q0WOf/tyCk/GmJwDB4HqsSTv60=;
+	b=bdXi5WHPXJXc1aedIMPnSo/lAKE+8RdbSdEjuquUUFiVZDRnDfuDvIj39FJz2PlU6S
+	CSimT0cKNIg3lziFBwmJZDUsLYgDNQf8qgO812nvHiDSEj42EZQcFw5zkMZKRT5pLhI1
+	zUxcmOTJi2rDVcn/8KTeP0QnHM7dcF2ktydAsTihBYvozX9BckozmE/7T0Qya0RUumja
+	al8CRfOm0AR5+/P8bMupx+OgjWa0/ZEuCKC8Yb0HbseHjbpqw6X4oE/iiNkji7v+aCrH
+	V0Urj2LeOU0XJ1CGktaJ+cQaZBhkU+7dHFcdnIfjPcFsRrOHBkfwD+Y4h/0TdFrQw5UN
+	CcdA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:date:from:to:cc:subject:message-id:references
 	:mime-version:content-disposition:in-reply-to:user-agent;
-	bh=nJHu/F8XPPyl1U8+lTdga1jwJPd0dx97onPf4sGp628=;
-	b=pR8NK9jkMkCl+XypxFeI4KDai0iuilrVSWLgQKV6963mCluSHKirAmQHYzrTJFtYM7
-	cULGxdEJjh1fimnypn4zYMZN0wEjh3tdb3hNg/oyyWiuN6zptknc2WY+hNbgDIhjc4+1
-	g/EFQFuvBXcPvXg89uZhmRvHQ/w0vnRAYVqzXejtZ5NLusLSpj2bGNEbAKT7K0D2mIH4
-	cyON3y5VGPderQIm93yLMTdKtX87o6za/dJCVT33y6HeeH/h25cYmQaza7Y82uzev4FC
-	4ozqT8LrgD2T3ma8ZYTfEfWIAFWBaHUv0OoroXGNc+383aAmJFzoce+j+cfHVUc/9tLI
-	22LQ==
-X-Gm-Message-State: AFeK/H3nT2gVEMkUeJlhxb2qSS/pl7oWK2NUd45bdSjWBMVW1mp8iyRDtDbL/yb1GGOl8Q==
-X-Received: by 10.25.93.86 with SMTP id p22mr17285328lfj.9.1491813744803;
-	Mon, 10 Apr 2017 01:42:24 -0700 (PDT)
+	bh=97tiJEWivlzZNssH+q0WOf/tyCk/GmJwDB4HqsSTv60=;
+	b=dEioe3H+PGD9md3vqyo1gRYrhPWadeFT4FgNbALoj0hxJcbQLMAy/UZx8tOKfZuOx3
+	6nkjN8qcmkVB+mb+ZjKyVprhmyCVUoMc+I5gYzbiPA9ACrp/R+A1uMEbwdr26lzJ7dT4
+	CCzKmNnv1+o5flkOc4Fkjt/wL5YvLeqyW/7lZydJOGZFYxMyw8fh+nPCPXw0Ou+lSZwE
+	3DKonS5kENFPdrgvqEvNDnXqpWZw7DY8E1WbCI7Q8VGp8JQ7kepkxzMoPqJSZmzk1ahw
+	JFOesc9MJ9xBv3cTDdFG58BI+0+5F6KpBbJhl3eaWICAcPy5yEyaYKsFWnkzUgw9hxHw
+	S7ew==
+X-Gm-Message-State: AN3rC/43gdTOzblzdBoqFQ1yTUpapS6uhb5fbaikvLaqkrrqPA4y708Yg3pFsX5d/wJZLA==
+X-Received: by 10.25.221.197 with SMTP id w66mr1744692lfi.10.1491813897460;
+	Mon, 10 Apr 2017 01:44:57 -0700 (PDT)
 Received: from localhost (81-231-233-234-no56.tbcn.telia.com. [81.231.233.234])
 	by smtp.gmail.com with ESMTPSA id
-	o80sm2670814lff.25.2017.04.10.01.42.23
+	e91sm2747762lji.40.2017.04.10.01.44.56
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Mon, 10 Apr 2017 01:42:23 -0700 (PDT)
-Date: Mon, 10 Apr 2017 10:42:22 +0200
+	Mon, 10 Apr 2017 01:44:56 -0700 (PDT)
+Date: Mon, 10 Apr 2017 10:44:56 +0200
 From: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
 To: Peter Maydell <peter.maydell@linaro.org>
-Message-ID: <20170410084222.GA19103@toto>
+Message-ID: <20170410084456.GB19103@toto>
 References: <1491486152-24304-1-git-send-email-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
@@ -72,7 +72,7 @@ In-Reply-To: <1491486152-24304-1-git-send-email-peter.maydell@linaro.org>
 User-Agent: Mutt/1.5.24 (2015-08-30)
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2a00:1450:4010:c07::241
+X-Received-From: 2a00:1450:4010:c07::243
 Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH] target/arm: Add assertion about
  FSC format for syndrome registers
 X-BeenThere: qemu-arm@nongnu.org
@@ -90,7 +90,7 @@ Cc: "Edgar E . Iglesias" <edgar.iglesias@xilinx.com>, qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org, patches@linaro.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ii0s/1Fj/8Eb
+X-TUID: NuEl9Tuw4ea5
 
 On Thu, Apr 06, 2017 at 02:42:32PM +0100, Peter Maydell wrote:
 > In tlb_fill() we construct a syndrome register value from a
@@ -109,16 +109,18 @@ On Thu, Apr 06, 2017 at 02:42:32PM +0100, Peter Maydell wrote:
 > and adjust the code so that we construct a syndrome with
 > an invalid status code, rather than allowing set bits in
 > the FSR input to randomly corrupt other fields in the syndrome.
+
+
+BTW,
+
+Have you seen something suspicous when running code or was
+this a theoretical issue?
+
+Cheers,
+Edgar
+
 > 
 > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-
-Tricky but it looks correct as far as I can follow the specs...
-
-Reviewed-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
-
-
-
-
 > ---
 > It took me a little while to convince myself that you'd
 > never take a short-format FSR to a using-syndrome EL :-)

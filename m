@@ -1,137 +1,137 @@
-Received: by 10.25.0.144 with SMTP id 138csp967081lfa;
-        Mon, 10 Apr 2017 10:37:00 -0700 (PDT)
-X-Received: by 10.55.131.7 with SMTP id f7mr7457988qkd.0.1491845819979;
-        Mon, 10 Apr 2017 10:36:59 -0700 (PDT)
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 10.25.0.144 with SMTP id 138csp967587lfa;
+        Mon, 10 Apr 2017 10:38:33 -0700 (PDT)
+X-Received: by 10.55.201.211 with SMTP id m80mr42605319qkl.253.1491845913292;
+        Mon, 10 Apr 2017 10:38:33 -0700 (PDT)
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id m67si14028082qte.217.2017.04.10.10.36.59
+        by mx.google.com with ESMTPS id h206si14005335qke.313.2017.04.10.10.38.32
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 10 Apr 2017 10:36:59 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Mon, 10 Apr 2017 10:38:33 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:35653 helo=lists.gnu.org)
+Received: from localhost ([::1]:35658 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1cxdFJ-0002zE-74
-	for alex.bennee@linaro.org; Mon, 10 Apr 2017 13:36:57 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:60865)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1cxdGo-00047i-Ik
+	for alex.bennee@linaro.org; Mon, 10 Apr 2017 13:38:30 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:32790)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1cxdCf-0000n6-2r
-	for qemu-arm@nongnu.org; Mon, 10 Apr 2017 13:34:14 -0400
+	(envelope-from <pm215@archaic.org.uk>) id 1cxdCk-0000sY-2N
+	for qemu-devel@nongnu.org; Mon, 10 Apr 2017 13:34:19 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1cxdCe-0006sa-0x
-	for qemu-arm@nongnu.org; Mon, 10 Apr 2017 13:34:12 -0400
-Received: from orth.archaic.org.uk ([2001:8b0:1d0::2]:49130)
+	(envelope-from <pm215@archaic.org.uk>) id 1cxdCj-0006vj-5T
+	for qemu-devel@nongnu.org; Mon, 10 Apr 2017 13:34:18 -0400
+Received: from orth.archaic.org.uk ([2001:8b0:1d0::2]:49133)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <pm215@archaic.org.uk>)
-	id 1cxdCd-0006qG-QK; Mon, 10 Apr 2017 13:34:11 -0400
+	id 1cxdCg-0006tu-NT; Mon, 10 Apr 2017 13:34:14 -0400
 Received: from pm215 by orth.archaic.org.uk with local (Exim 4.84_2)
 	(envelope-from <pm215@archaic.org.uk>)
-	id 1cxcso-0005iF-8L; Mon, 10 Apr 2017 18:13:42 +0100
+	id 1cxcsp-0005jG-M3; Mon, 10 Apr 2017 18:13:43 +0100
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Date: Mon, 10 Apr 2017 18:13:33 +0100
-Message-Id: <1491844419-12485-4-git-send-email-peter.maydell@linaro.org>
+Date: Mon, 10 Apr 2017 18:13:36 +0100
+Message-Id: <1491844419-12485-7-git-send-email-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.7.4
 In-Reply-To: <1491844419-12485-1-git-send-email-peter.maydell@linaro.org>
 References: <1491844419-12485-1-git-send-email-peter.maydell@linaro.org>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 2001:8b0:1d0::2
-Subject: [Qemu-arm] [PATCH v2 3/9] arm: Factor out "generate right kind of
- step exception"
-X-BeenThere: qemu-arm@nongnu.org
+Subject: [Qemu-devel] [PATCH v2 6/9] arm: Abstract out "are we
+ singlestepping" test to utility function
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Richard Henderson <rth@twiddle.net>,
 	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
 	patches@linaro.org
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: pHiintLQLT9N
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 3rPss6r9ybWs
 
-We currently have two places that do:
-            if (dc->ss_active) {
-                gen_step_complete_exception(dc);
-            } else {
-                gen_exception_internal(EXCP_DEBUG);
-            }
-
-Factor this out into its own function, as we're about to add
-a third place that needs the same logic.
+We now test for "are we singlestepping" in several places and
+it's not a trivial check because we need to care about both
+architectural singlestep and QEMU gdbstub singlestep. We're
+also about to add another place that needs to make this check,
+so pull the condition out into a function.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- target/arm/translate.c | 28 ++++++++++++++++------------
- 1 file changed, 16 insertions(+), 12 deletions(-)
+ target/arm/translate.c | 20 +++++++++++++++-----
+ 1 file changed, 15 insertions(+), 5 deletions(-)
 
 diff --git a/target/arm/translate.c b/target/arm/translate.c
-index ddc62b6..870e320 100644
+index 87fd702..f28c4ca 100644
 --- a/target/arm/translate.c
 +++ b/target/arm/translate.c
-@@ -296,6 +296,19 @@ static void gen_step_complete_exception(DisasContext *s)
-     s->is_jmp = DISAS_EXC;
+@@ -309,6 +309,17 @@ static void gen_singlestep_exception(DisasContext *s)
+     }
  }
  
-+static void gen_singlestep_exception(DisasContext *s)
++static inline bool is_singlestepping(DisasContext *s)
 +{
-+    /* Generate the right kind of exception for singlestep, which is
-+     * either the architectural singlestep or EXCP_DEBUG for QEMU's
-+     * gdb singlestepping.
++    /* Return true if we are singlestepping either because of
++     * architectural singlestep or QEMU gdbstub singlestep. This does
++     * not include the command line '-singlestep' mode which is rather
++     * misnamed as it only means "one instruction per TB" and doesn't
++     * affect the code we generate.
 +     */
-+    if (s->ss_active) {
-+        gen_step_complete_exception(s);
-+    } else {
-+        gen_exception_internal(EXCP_DEBUG);
-+    }
++    return s->singlestep_enabled || s->ss_active;
 +}
 +
  static void gen_smul_dual(TCGv_i32 a, TCGv_i32 b)
  {
      TCGv_i32 tmp1 = tcg_temp_new_i32();
-@@ -11998,24 +12011,15 @@ void gen_intermediate_code(CPUARMState *env, TranslationBlock *tb)
+@@ -4104,7 +4115,7 @@ static inline void gen_goto_tb(DisasContext *s, int n, target_ulong dest)
+ 
+ static inline void gen_jmp (DisasContext *s, uint32_t dest)
+ {
+-    if (unlikely(s->singlestep_enabled || s->ss_active)) {
++    if (unlikely(is_singlestepping(s))) {
+         /* An indirect jump so that we still trigger the debug exception.  */
+         if (s->thumb)
+             dest |= 1;
+@@ -11970,9 +11981,8 @@ void gen_intermediate_code(CPUARMState *env, TranslationBlock *tb)
+             ((dc->pc >= next_page_start - 3) && insn_crosses_page(env, dc));
+ 
+     } while (!dc->is_jmp && !tcg_op_buf_full() &&
+-             !cs->singlestep_enabled &&
++             !is_singlestepping(dc) &&
+              !singlestep &&
+-             !dc->ss_active &&
+              !end_of_page &&
+              num_insns < max_insns);
+ 
+@@ -11989,7 +11999,7 @@ void gen_intermediate_code(CPUARMState *env, TranslationBlock *tb)
+        instruction was a conditional branch or trap, and the PC has
+        already been written.  */
+     gen_set_condexec(dc);
+-    if (unlikely(cs->singlestep_enabled || dc->ss_active)) {
++    if (unlikely(is_singlestepping(dc))) {
+         /* Unconditional and "condition passed" instruction codepath. */
+         switch (dc->is_jmp) {
+         case DISAS_SWI:
+@@ -12067,7 +12077,7 @@ void gen_intermediate_code(CPUARMState *env, TranslationBlock *tb)
+         /* "Condition failed" instruction codepath for the branch/trap insn */
+         gen_set_label(dc->condlabel);
+         gen_set_condexec(dc);
+-        if (unlikely(cs->singlestep_enabled || dc->ss_active)) {
++        if (unlikely(is_singlestepping(dc))) {
              gen_set_pc_im(dc, dc->pc);
-             /* fall through */
-         default:
--            if (dc->ss_active) {
--                gen_step_complete_exception(dc);
--            } else {
--                /* FIXME: Single stepping a WFI insn will not halt
--                   the CPU.  */
--                gen_exception_internal(EXCP_DEBUG);
--            }
-+            /* FIXME: Single stepping a WFI insn will not halt the CPU. */
-+            gen_singlestep_exception(dc);
-         }
-         if (dc->condjmp) {
-             /* "Condition failed" instruction codepath. */
-             gen_set_label(dc->condlabel);
-             gen_set_condexec(dc);
-             gen_set_pc_im(dc, dc->pc);
--            if (dc->ss_active) {
--                gen_step_complete_exception(dc);
--            } else {
--                gen_exception_internal(EXCP_DEBUG);
--            }
-+            gen_singlestep_exception(dc);
-         }
-     } else {
-         /* While branches must always occur at the end of an IT block,
+             gen_singlestep_exception(dc);
+         } else {
 -- 
 2.7.4
 

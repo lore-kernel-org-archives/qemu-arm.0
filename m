@@ -1,41 +1,41 @@
-Received: by 10.25.0.144 with SMTP id 138csp966260lfa;
-        Mon, 10 Apr 2017 10:34:35 -0700 (PDT)
-X-Received: by 10.55.221.135 with SMTP id u7mr26468279qku.34.1491845675123;
-        Mon, 10 Apr 2017 10:34:35 -0700 (PDT)
+Received: by 10.25.0.144 with SMTP id 138csp966269lfa;
+        Mon, 10 Apr 2017 10:34:36 -0700 (PDT)
+X-Received: by 10.200.43.149 with SMTP id m21mr60037751qtm.102.1491845676206;
+        Mon, 10 Apr 2017 10:34:36 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id y5si13996876qkc.328.2017.04.10.10.34.34
+        by mx.google.com with ESMTPS id w64si11870042qkb.27.2017.04.10.10.34.35
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 10 Apr 2017 10:34:35 -0700 (PDT)
+        Mon, 10 Apr 2017 10:34:36 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:35637 helo=lists.gnu.org)
+Received: from localhost ([::1]:35635 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1cxdCy-000123-Hd
-	for alex.bennee@linaro.org; Mon, 10 Apr 2017 13:34:32 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:60881)
+	id 1cxdCz-0000zW-Hx
+	for alex.bennee@linaro.org; Mon, 10 Apr 2017 13:34:33 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:60828)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1cxdCf-0000nG-EW
-	for qemu-arm@nongnu.org; Mon, 10 Apr 2017 13:34:14 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1cxdCe-0006t1-QU
+	(envelope-from <pm215@archaic.org.uk>) id 1cxdCd-0000n2-Aw
 	for qemu-arm@nongnu.org; Mon, 10 Apr 2017 13:34:13 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+	(envelope-from <pm215@archaic.org.uk>) id 1cxdCc-0006rY-Fe
+	for qemu-arm@nongnu.org; Mon, 10 Apr 2017 13:34:11 -0400
 Received: from orth.archaic.org.uk ([2001:8b0:1d0::2]:49130)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <pm215@archaic.org.uk>)
-	id 1cxdCe-0006qG-JO; Mon, 10 Apr 2017 13:34:12 -0400
+	id 1cxdCc-0006qG-9B; Mon, 10 Apr 2017 13:34:10 -0400
 Received: from pm215 by orth.archaic.org.uk with local (Exim 4.84_2)
 	(envelope-from <pm215@archaic.org.uk>)
-	id 1cxcsn-0005hk-9m; Mon, 10 Apr 2017 18:13:41 +0100
+	id 1cxcsp-0005io-6e; Mon, 10 Apr 2017 18:13:43 +0100
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Date: Mon, 10 Apr 2017 18:13:31 +0100
-Message-Id: <1491844419-12485-2-git-send-email-peter.maydell@linaro.org>
+Date: Mon, 10 Apr 2017 18:13:35 +0100
+Message-Id: <1491844419-12485-6-git-send-email-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.7.4
 In-Reply-To: <1491844419-12485-1-git-send-email-peter.maydell@linaro.org>
 References: <1491844419-12485-1-git-send-email-peter.maydell@linaro.org>
@@ -44,7 +44,8 @@ Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 2001:8b0:1d0::2
-Subject: [Qemu-arm] [PATCH v2 1/9] arm: Don't implement BXJ on M-profile CPUs
+Subject: [Qemu-arm] [PATCH v2 5/9] arm: Move condition-failed codepath
+ generation out of if()
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -61,36 +62,79 @@ Cc: Richard Henderson <rth@twiddle.net>,
 	patches@linaro.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: oEklsJ5r2b6Q
+X-TUID: aYkXjefkWqr2
 
-For M-profile CPUs, the BXJ instruction does not exist at all, and
-the encoding should always UNDEF. We were accidentally implementing
-it to behave like A-profile BXJ; correct the error.
+Move the code to generate the "condition failed" instruction
+codepath out of the if (singlestepping) {} else {}. This
+will allow adding support for handling a new is_jmp type
+which can't be neatly split into "singlestepping case"
+versus "not singlestepping case".
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- target/arm/translate.c | 7 ++++++-
- 1 file changed, 6 insertions(+), 1 deletion(-)
+ target/arm/translate.c | 24 +++++++++++-------------
+ 1 file changed, 11 insertions(+), 13 deletions(-)
 
 diff --git a/target/arm/translate.c b/target/arm/translate.c
-index e32e38c..fe3f442 100644
+index a1a0e73..87fd702 100644
 --- a/target/arm/translate.c
 +++ b/target/arm/translate.c
-@@ -10485,7 +10485,12 @@ static int disas_thumb2_insn(CPUARMState *env, DisasContext *s, uint16_t insn_hw
-                         }
-                         break;
-                     case 4: /* bxj */
--                        /* Trivial implementation equivalent to bx.  */
-+                        /* Trivial implementation equivalent to bx.
-+                         * This instruction doesn't exist at all for M-profile.
-+                         */
-+                        if (arm_dc_feature(s, ARM_FEATURE_M)) {
-+                            goto illegal_op;
-+                        }
-                         tmp = load_reg(s, rn);
-                         gen_bx(s, tmp);
-                         break;
+@@ -11988,9 +11988,9 @@ void gen_intermediate_code(CPUARMState *env, TranslationBlock *tb)
+     /* At this stage dc->condjmp will only be set when the skipped
+        instruction was a conditional branch or trap, and the PC has
+        already been written.  */
++    gen_set_condexec(dc);
+     if (unlikely(cs->singlestep_enabled || dc->ss_active)) {
+         /* Unconditional and "condition passed" instruction codepath. */
+-        gen_set_condexec(dc);
+         switch (dc->is_jmp) {
+         case DISAS_SWI:
+             gen_ss_advance(dc);
+@@ -12013,13 +12013,6 @@ void gen_intermediate_code(CPUARMState *env, TranslationBlock *tb)
+             /* FIXME: Single stepping a WFI insn will not halt the CPU. */
+             gen_singlestep_exception(dc);
+         }
+-        if (dc->condjmp) {
+-            /* "Condition failed" instruction codepath. */
+-            gen_set_label(dc->condlabel);
+-            gen_set_condexec(dc);
+-            gen_set_pc_im(dc, dc->pc);
+-            gen_singlestep_exception(dc);
+-        }
+     } else {
+         /* While branches must always occur at the end of an IT block,
+            there are a few other things that can cause us to terminate
+@@ -12029,7 +12022,6 @@ void gen_intermediate_code(CPUARMState *env, TranslationBlock *tb)
+             - Hardware watchpoints.
+            Hardware breakpoints have already been handled and skip this code.
+          */
+-        gen_set_condexec(dc);
+         switch(dc->is_jmp) {
+         case DISAS_NEXT:
+             gen_goto_tb(dc, 1, dc->pc);
+@@ -12069,11 +12061,17 @@ void gen_intermediate_code(CPUARMState *env, TranslationBlock *tb)
+             gen_exception(EXCP_SMC, syn_aa32_smc(), 3);
+             break;
+         }
+-        if (dc->condjmp) {
+-            gen_set_label(dc->condlabel);
+-            gen_set_condexec(dc);
++    }
++
++    if (dc->condjmp) {
++        /* "Condition failed" instruction codepath for the branch/trap insn */
++        gen_set_label(dc->condlabel);
++        gen_set_condexec(dc);
++        if (unlikely(cs->singlestep_enabled || dc->ss_active)) {
++            gen_set_pc_im(dc, dc->pc);
++            gen_singlestep_exception(dc);
++        } else {
+             gen_goto_tb(dc, 1, dc->pc);
+-            dc->condjmp = 0;
+         }
+     }
+ 
 -- 
 2.7.4
 

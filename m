@@ -1,137 +1,145 @@
-Received: by 10.25.0.144 with SMTP id 138csp967587lfa;
-        Mon, 10 Apr 2017 10:38:33 -0700 (PDT)
-X-Received: by 10.55.201.211 with SMTP id m80mr42605319qkl.253.1491845913292;
-        Mon, 10 Apr 2017 10:38:33 -0700 (PDT)
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 10.25.0.144 with SMTP id 138csp1268388lfa;
+        Tue, 11 Apr 2017 05:02:35 -0700 (PDT)
+X-Received: by 10.55.4.6 with SMTP id 6mr9084660qke.222.1491912155320;
+        Tue, 11 Apr 2017 05:02:35 -0700 (PDT)
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id h206si14005335qke.313.2017.04.10.10.38.32
+        by mx.google.com with ESMTPS id 33si16202622qth.121.2017.04.11.05.02.34
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 10 Apr 2017 10:38:33 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Tue, 11 Apr 2017 05:02:35 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:35658 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:38926 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1cxdGo-00047i-Ik
-	for alex.bennee@linaro.org; Mon, 10 Apr 2017 13:38:30 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:32790)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1cxuVE-0004MZ-OR
+	for alex.bennee@linaro.org; Tue, 11 Apr 2017 08:02:32 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:32768)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1cxdCk-0000sY-2N
-	for qemu-devel@nongnu.org; Mon, 10 Apr 2017 13:34:19 -0400
+	(envelope-from <krzk@kernel.org>) id 1cxuV9-0004HR-JI
+	for qemu-arm@nongnu.org; Tue, 11 Apr 2017 08:02:28 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1cxdCj-0006vj-5T
-	for qemu-devel@nongnu.org; Mon, 10 Apr 2017 13:34:18 -0400
-Received: from orth.archaic.org.uk ([2001:8b0:1d0::2]:49133)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <pm215@archaic.org.uk>)
-	id 1cxdCg-0006tu-NT; Mon, 10 Apr 2017 13:34:14 -0400
-Received: from pm215 by orth.archaic.org.uk with local (Exim 4.84_2)
-	(envelope-from <pm215@archaic.org.uk>)
-	id 1cxcsp-0005jG-M3; Mon, 10 Apr 2017 18:13:43 +0100
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Date: Mon, 10 Apr 2017 18:13:36 +0100
-Message-Id: <1491844419-12485-7-git-send-email-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.7.4
-In-Reply-To: <1491844419-12485-1-git-send-email-peter.maydell@linaro.org>
-References: <1491844419-12485-1-git-send-email-peter.maydell@linaro.org>
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2001:8b0:1d0::2
-Subject: [Qemu-devel] [PATCH v2 6/9] arm: Abstract out "are we
- singlestepping" test to utility function
-X-BeenThere: qemu-devel@nongnu.org
+	(envelope-from <krzk@kernel.org>) id 1cxuV5-000065-I5
+	for qemu-arm@nongnu.org; Tue, 11 Apr 2017 08:02:27 -0400
+Received: from mail.kernel.org ([198.145.29.136]:42714)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <krzk@kernel.org>)
+	id 1cxuV5-00005i-8Y; Tue, 11 Apr 2017 08:02:23 -0400
+Received: from mail.kernel.org (localhost [127.0.0.1])
+	by mail.kernel.org (Postfix) with ESMTP id B2705201BC;
+	Tue, 11 Apr 2017 12:02:19 +0000 (UTC)
+Received: from mail-io0-f172.google.com (mail-io0-f172.google.com
+	[209.85.223.172])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+	(No client certificate requested)
+	by mail.kernel.org (Postfix) with ESMTPSA id 83C5120173;
+	Tue, 11 Apr 2017 12:02:13 +0000 (UTC)
+Received: by mail-io0-f172.google.com with SMTP id r16so75977308ioi.2;
+	Tue, 11 Apr 2017 05:02:13 -0700 (PDT)
+X-Gm-Message-State: AFeK/H07KIwSqAijYSDO/PafJfT1XSirzVDCqUiWIF3OvKpFCpn7MCyxU0/elLfieXtZZ+QJEpMzhudROWd7ZQ==
+X-Received: by 10.107.4.74 with SMTP id 71mr60415170ioe.87.1491912132694; Tue,
+	11 Apr 2017 05:02:12 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.107.62.196 with HTTP; Tue, 11 Apr 2017 05:02:12 -0700 (PDT)
+In-Reply-To: <CAFEAcA_DaW_DdcYweHPGpJrMNMP+Sd-Bw6W_OM7tCF5cMyh4aQ@mail.gmail.com>
+References: <20170318192509.15499-1-krzk@kernel.org>
+	<CAFEAcA8WGoa=DYXRH4MHfnHmUR_5-xERdmcuqrsk=bmS7GBCmg@mail.gmail.com>
+	<20170404134402.GA4196@kozik-book>
+	<CAFEAcA9UGEVVUfL3--goP4mVU+ezegWPcoka41XM8d_E2yyJkQ@mail.gmail.com>
+	<20170404143121.GA6421@kozik-book>
+	<CAFEAcA_DaW_DdcYweHPGpJrMNMP+Sd-Bw6W_OM7tCF5cMyh4aQ@mail.gmail.com>
+From: Krzysztof Kozlowski <krzk@kernel.org>
+Date: Tue, 11 Apr 2017 14:02:12 +0200
+X-Gmail-Original-Message-ID: <CAJKOXPecitJXUxfzPut-nt+TzMEfncNpHHshCbAeZ-4pe_S4Xw@mail.gmail.com>
+Message-ID: <CAJKOXPecitJXUxfzPut-nt+TzMEfncNpHHshCbAeZ-4pe_S4Xw@mail.gmail.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+Content-Type: text/plain; charset=UTF-8
+X-Virus-Scanned: ClamAV using ClamSMTP
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
+X-Received-From: 198.145.29.136
+Subject: Re: [Qemu-arm] [PATCH v2] hw/misc: Add Exynos4210 Pseudo Random
+ Number Generator
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Richard Henderson <rth@twiddle.net>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
-	patches@linaro.org
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 3rPss6r9ybWs
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Igor Mitsyanko <i.mitsyanko@gmail.com>, qemu-arm <qemu-arm@nongnu.org>,
+	"Daniel P. Berrange" <berrange@redhat.com>,
+	QEMU Developers <qemu-devel@nongnu.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: vyKNNs+XH04U
 
-We now test for "are we singlestepping" in several places and
-it's not a trivial check because we need to care about both
-architectural singlestep and QEMU gdbstub singlestep. We're
-also about to add another place that needs to make this check,
-so pull the condition out into a function.
+On Mon, Apr 10, 2017 at 5:15 PM, Peter Maydell <peter.maydell@linaro.org> wrote:
+> On 4 April 2017 at 15:31, Krzysztof Kozlowski <krzk@kernel.org> wrote:
+>> On Tue, Apr 04, 2017 at 03:05:09PM +0100, Peter Maydell wrote:
+>>> On 4 April 2017 at 14:44, Krzysztof Kozlowski <krzk@kernel.org> wrote:
+>>> > On Tue, Apr 04, 2017 at 01:09:08PM +0100, Peter Maydell wrote:
+>>> >> Is there a data sheet that describes this RNG? I had a quick google
+>>> >> but couldn't find anything in the 4210 manual you can get from Samsung.
+>>> >
+>>> > Official and public datasheet - I never heard about it... AFAIK, Samsung
+>>> > never released any datasheet... But recently I found a copy of
+>>> > Exynos4412 datasheet published on FriendlyArm website:
+>>> > http://wiki.friendlyarm.com/wiki/index.php/NanoPC-T1
+>>> > (at the bottom in "Resources").
+>>> >
+>>> > Some blocks in Exynos4412, including the RNG, are the same as in
+>>> > Exynos4210. However, you should not expect too much data about the RNG
+>>> > in the datasheet...
+>>> >
+>>> >> In particular I'm not sure we want to use GRand here.
+>>> >
+>>> > Now, I am not sure neither. :)
+>>>
+>>> The last RNG we added was hw/misc/bcm2835_rng.c, which uses
+>>> qcrypto_random_bytes() to get cryptographically-random bytes
+>>> from the host. On the other hand it sounds like this Exynos
+>>> hardware is a PRNG without true-random input...
+>>
+>> Yes, I think that is the case. The PRNG block looks the same on all
+>> Exynos SoCs. At least from datasheet perspective and registers.
+>> The difference came with Exynos5420 with introducing another block -
+>> True RNG - which could be chained to PRNG as seed. However the PRNG
+>> stays the same (according to datasheet).
+>>
+>> Unfortunately I could not verify too much of this because on Exynos5420
+>> apparently the PRNG block is locked by SecureMonitor.
+>>
+>> At some point I will probably get back to Exynos5420 (and True RNG) but
+>> till then, the choice of GRand repeatable random sequences makes some
+>> sense to me.
+>
+> I was talking to Dan on IRC and his suggestion was that we should just
+> use qcrypto_random_bytes() for everything. On the other hand I'm
+> not totally sure that's the right approach.
+>
+> I think my core issue here is that we really don't understand what
+> the hardware is doing or what the properties of its randomness
+> actually are. To me that says "Linux should not trust this thing
+> at all and shouldn't use it" which in turn makes implementing a
+> model in QEMU less important :-)
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
- target/arm/translate.c | 20 +++++++++++++++-----
- 1 file changed, 15 insertions(+), 5 deletions(-)
+That makes sense. I can only guess by experiments how the hardware
+really behaves. As I wrote, it seems it is not a reproducible PRNG so
+using qcrypto_random_bytes() should be fine.
 
-diff --git a/target/arm/translate.c b/target/arm/translate.c
-index 87fd702..f28c4ca 100644
---- a/target/arm/translate.c
-+++ b/target/arm/translate.c
-@@ -309,6 +309,17 @@ static void gen_singlestep_exception(DisasContext *s)
-     }
- }
- 
-+static inline bool is_singlestepping(DisasContext *s)
-+{
-+    /* Return true if we are singlestepping either because of
-+     * architectural singlestep or QEMU gdbstub singlestep. This does
-+     * not include the command line '-singlestep' mode which is rather
-+     * misnamed as it only means "one instruction per TB" and doesn't
-+     * affect the code we generate.
-+     */
-+    return s->singlestep_enabled || s->ss_active;
-+}
-+
- static void gen_smul_dual(TCGv_i32 a, TCGv_i32 b)
- {
-     TCGv_i32 tmp1 = tcg_temp_new_i32();
-@@ -4104,7 +4115,7 @@ static inline void gen_goto_tb(DisasContext *s, int n, target_ulong dest)
- 
- static inline void gen_jmp (DisasContext *s, uint32_t dest)
- {
--    if (unlikely(s->singlestep_enabled || s->ss_active)) {
-+    if (unlikely(is_singlestepping(s))) {
-         /* An indirect jump so that we still trigger the debug exception.  */
-         if (s->thumb)
-             dest |= 1;
-@@ -11970,9 +11981,8 @@ void gen_intermediate_code(CPUARMState *env, TranslationBlock *tb)
-             ((dc->pc >= next_page_start - 3) && insn_crosses_page(env, dc));
- 
-     } while (!dc->is_jmp && !tcg_op_buf_full() &&
--             !cs->singlestep_enabled &&
-+             !is_singlestepping(dc) &&
-              !singlestep &&
--             !dc->ss_active &&
-              !end_of_page &&
-              num_insns < max_insns);
- 
-@@ -11989,7 +11999,7 @@ void gen_intermediate_code(CPUARMState *env, TranslationBlock *tb)
-        instruction was a conditional branch or trap, and the PC has
-        already been written.  */
-     gen_set_condexec(dc);
--    if (unlikely(cs->singlestep_enabled || dc->ss_active)) {
-+    if (unlikely(is_singlestepping(dc))) {
-         /* Unconditional and "condition passed" instruction codepath. */
-         switch (dc->is_jmp) {
-         case DISAS_SWI:
-@@ -12067,7 +12077,7 @@ void gen_intermediate_code(CPUARMState *env, TranslationBlock *tb)
-         /* "Condition failed" instruction codepath for the branch/trap insn */
-         gen_set_label(dc->condlabel);
-         gen_set_condexec(dc);
--        if (unlikely(cs->singlestep_enabled || dc->ss_active)) {
-+        if (unlikely(is_singlestepping(dc))) {
-             gen_set_pc_im(dc, dc->pc);
-             gen_singlestep_exception(dc);
-         } else {
--- 
-2.7.4
+I'll switch to that interface.
 
+But first I need to setup proper booting image + rootfs instead of
+only initramfs. The sdhci node is failing (missing regulators or
+capabilities) so essentially there is no storage now.
+
+How do you access any kind of disk image in case of other boards?
+
+Best regards,
+Krzysztof

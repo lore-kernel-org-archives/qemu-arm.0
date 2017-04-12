@@ -1,69 +1,94 @@
-Received: by 10.25.0.144 with SMTP id 138csp120889lfa;
-        Tue, 11 Apr 2017 20:46:56 -0700 (PDT)
-X-Received: by 10.55.146.135 with SMTP id u129mr57694690qkd.219.1491968816788;
-        Tue, 11 Apr 2017 20:46:56 -0700 (PDT)
-Return-Path: <pbonzini@redhat.com>
-Received: from mx1.redhat.com (mx1.redhat.com. [209.132.183.28])
-        by mx.google.com with ESMTPS id p206si18293005qke.7.2017.04.11.20.46.56
+Received: by 10.25.0.144 with SMTP id 138csp138043lfa;
+        Tue, 11 Apr 2017 22:07:33 -0700 (PDT)
+X-Received: by 10.55.132.3 with SMTP id g3mr55915750qkd.300.1491973653795;
+        Tue, 11 Apr 2017 22:07:33 -0700 (PDT)
+Return-Path: <cota@braap.org>
+Received: from out1-smtp.messagingengine.com (out1-smtp.messagingengine.com. [66.111.4.25])
+        by mx.google.com with ESMTPS id y10si8264571qkb.235.2017.04.11.22.07.33
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 11 Apr 2017 20:46:56 -0700 (PDT)
-Received-SPF: pass (google.com: domain of pbonzini@redhat.com designates 209.132.183.28 as permitted sender) client-ip=209.132.183.28;
+        Tue, 11 Apr 2017 22:07:33 -0700 (PDT)
+Received-SPF: pass (google.com: domain of cota@braap.org designates 66.111.4.25 as permitted sender) client-ip=66.111.4.25;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of pbonzini@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=pbonzini@redhat.com
-Received: from int-mx11.intmail.prod.int.phx2.redhat.com (int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 9EC58D1FC5;
-	Wed, 12 Apr 2017 03:46:55 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 9EC58D1FC5
-Authentication-Results: ext-mx03.extmail.prod.ext.phx2.redhat.com; dmarc=none (p=none dis=none) header.from=redhat.com
-Authentication-Results: ext-mx03.extmail.prod.ext.phx2.redhat.com; spf=pass smtp.mailfrom=pbonzini@redhat.com
-DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com 9EC58D1FC5
-Received: from [10.72.8.56] (ovpn-8-56.pek2.redhat.com [10.72.8.56])
-	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP id v3C3kmJu030332
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=NO);
-	Tue, 11 Apr 2017 23:46:50 -0400
-Subject: Re: [PATCH 10/10] tb-hash: improve tb_jmp_cache hash function in user
- mode
-To: "Emilio G. Cota" <cota@braap.org>, qemu-devel@nongnu.org
+       dkim=pass header.i=@braap.org;
+       dkim=pass header.i=@messagingengine.com;
+       spf=pass (google.com: domain of cota@braap.org designates 66.111.4.25 as permitted sender) smtp.mailfrom=cota@braap.org
+Received: from compute4.internal (compute4.nyi.internal [10.202.2.44])
+	by mailout.nyi.internal (Postfix) with ESMTP id 3ACF220C57;
+	Wed, 12 Apr 2017 01:07:33 -0400 (EDT)
+Received: from frontend1 ([10.202.2.160])
+  by compute4.internal (MEProxy); Wed, 12 Apr 2017 01:07:33 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=braap.org; h=cc
+	:content-type:date:from:in-reply-to:message-id:mime-version
+	:references:subject:to:x-me-sender:x-me-sender:x-sasl-enc
+	:x-sasl-enc; s=mesmtp; bh=Hq9ID9E0qczz1XceUvpnBXpQFyPOvqlAzoI4ci
+	m6238=; b=pfdejkQQqzcwHvcUjZ1QwgkqxxdXF0EwsO5g0oRnRVo9AvRAxygHRx
+	ZOTfBbR24iUg+dMvWOnKsgJyZ/B5sgadaCxwo3lw/bQaxkFNUSI1NGTIt8m3Wwu/
+	MjaJKDAkXM6uZjqNX9CEhxQFZv37irhNwspllIEYOjTe8dBpvcGF0=
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+	messagingengine.com; h=cc:content-type:date:from:in-reply-to
+	:message-id:mime-version:references:subject:to:x-me-sender
+	:x-me-sender:x-sasl-enc:x-sasl-enc; s=fm1; bh=Hq9ID9E0qczz1XceUv
+	pnBXpQFyPOvqlAzoI4cim6238=; b=LtfjYywQWc6uTqiV/dTOISKKgiil3aTjgT
+	frKAA53PycLIoP/bWJK6hsoSsnVW9sAdkgVqOnTbZOCOMm/z9VxEOu9wwoUe8Icg
+	1vgVSm5sxso/ia/IlmzkoMNDAtgTYASTL/dr6W3ruKfIgWsYW0+Nh1749joEOaOl
+	ZYV8gMb8DKUkz3MK33jloUnGUhdV7uw8yg8QYuvQ1UUX7I1CHl/2teNcIZSQ4Amr
+	F47ymoLEFHzFLJtG7u0WYUB4hv4TSQRmoP5aC8rnnboPS4WD1cfKa+mMquLXMvhF
+	xRqystVCb/SRPOpt19KUbNwBm+nPet3cplj9wrLeooI5FLuzjzfA==
+X-ME-Sender: <xms:FbbtWEnsZwJvXtWbEBjtbjk1jkNLgMVW1iJU0yHso3AkP7g8jSPJlg>
+X-Sasl-enc: SwtJTGVGVpyINVYfPRLgzZp4i9wkIw9t1xgP3KW4PT4W 1491973652
+Received: from localhost (flamenco.cs.columbia.edu [128.59.20.216])
+	by mail.messagingengine.com (Postfix) with ESMTPA id E8FAF7E638;
+	Wed, 12 Apr 2017 01:07:32 -0400 (EDT)
+Date: Wed, 12 Apr 2017 01:07:32 -0400
+From: "Emilio G. Cota" <cota@braap.org>
+To: Paolo Bonzini <pbonzini@redhat.com>
+Cc: qemu-devel@nongnu.org, Peter Crosthwaite <crosthwaite.peter@gmail.com>,
+	Richard Henderson <rth@twiddle.net>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	Eduardo Habkost <ehabkost@redhat.com>,
+	Andrzej Zaborowski <balrogg@gmail.com>,
+	Aurelien Jarno <aurelien@aurel32.net>,
+	Alexander Graf <agraf@suse.de>, Stefan Weil <sw@weilnetz.de>,
+	qemu-arm@nongnu.org, alex.bennee@linaro.org,
+	Pranith Kumar <bobby.prani+qemu@gmail.com>
+Subject: Re: [PATCH 10/10] tb-hash: improve tb_jmp_cache hash function in
+ user mode
+Message-ID: <20170412050732.GA10279@flamenco>
 References: <1491959850-30756-1-git-send-email-cota@braap.org>
  <1491959850-30756-11-git-send-email-cota@braap.org>
-Cc: Peter Crosthwaite <crosthwaite.peter@gmail.com>,
-        Richard Henderson <rth@twiddle.net>,
-        Peter Maydell
- <peter.maydell@linaro.org>,
-        Eduardo Habkost <ehabkost@redhat.com>,
-        Claudio Fontana <claudio.fontana@huawei.com>,
-        Andrzej Zaborowski <balrogg@gmail.com>,
-        Aurelien Jarno
- <aurelien@aurel32.net>, Alexander Graf <agraf@suse.de>,
-        Stefan Weil <sw@weilnetz.de>, qemu-arm@nongnu.org,
-        alex.bennee@linaro.org, Pranith Kumar <bobby.prani+qemu@gmail.com>
-From: Paolo Bonzini <pbonzini@redhat.com>
-Message-ID: <93ae643a-582f-8f1a-3f2a-63ae2d9261bc@redhat.com>
-Date: Wed, 12 Apr 2017 11:46:47 +0800
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
- Thunderbird/45.8.0
+ <93ae643a-582f-8f1a-3f2a-63ae2d9261bc@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <1491959850-30756-11-git-send-email-cota@braap.org>
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.5.110.27]); Wed, 12 Apr 2017 03:46:55 +0000 (UTC)
-X-TUID: 9LK2UydB2CQa
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <93ae643a-582f-8f1a-3f2a-63ae2d9261bc@redhat.com>
+User-Agent: Mutt/1.5.24 (2015-08-30)
+X-TUID: 1v+MqjX6y2+V
 
+On Wed, Apr 12, 2017 at 11:46:47 +0800, Paolo Bonzini wrote:
+> 
+> 
+> On 12/04/2017 09:17, Emilio G. Cota wrote:
+> > +
+> > +/* In user-mode we can get better hashing because we do not have a TLB */
+> > +static inline unsigned int tb_jmp_cache_hash_func(target_ulong pc)
+> > +{
+> > +    return (pc ^ (pc >> TB_JMP_CACHE_BITS)) & (TB_JMP_CACHE_SIZE - 1);
+> > +}
+> 
+> What about multiplicative hashing?
+> 
+> 	return (uint64_t) (pc * 2654435761) >> 32;
 
+I tested this one, taking the TB_JMP_CACHE_SIZE-1 lower bits of
+the result:
 
-On 12/04/2017 09:17, Emilio G. Cota wrote:
-> +
-> +/* In user-mode we can get better hashing because we do not have a TLB */
-> +static inline unsigned int tb_jmp_cache_hash_func(target_ulong pc)
-> +{
-> +    return (pc ^ (pc >> TB_JMP_CACHE_BITS)) & (TB_JMP_CACHE_SIZE - 1);
-> +}
+  http://imgur.com/QIhm875
 
-What about multiplicative hashing?
+In terms of quality it's good (I profile hit rates and they're all
+pretty good), but shift+xor are just so hard to beat: shift+xor
+take 1 cycle each; the multiplication takes on my machine 3 or 4
+cycles (source: Fog's tables).
 
-	return (uint64_t) (pc * 2654435761) >> 32;
+Thanks,
 
-Paolo
+		E.

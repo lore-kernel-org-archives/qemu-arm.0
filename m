@@ -1,175 +1,111 @@
-Received: by 10.25.0.144 with SMTP id 138csp992612lfa;
-        Mon, 10 Apr 2017 11:55:56 -0700 (PDT)
-X-Received: by 10.55.90.70 with SMTP id o67mr56264024qkb.251.1491850556816;
-        Mon, 10 Apr 2017 11:55:56 -0700 (PDT)
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id s5si14192749qkf.254.2017.04.10.11.55.56
-        for <alex.bennee@linaro.org>
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 10 Apr 2017 11:55:56 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+Received: by 10.25.0.144 with SMTP id 138csp89154lfa;
+        Tue, 11 Apr 2017 18:17:47 -0700 (PDT)
+X-Received: by 10.200.34.39 with SMTP id o36mr5016690qto.189.1491959867255;
+        Tue, 11 Apr 2017 18:17:47 -0700 (PDT)
+Return-Path: <cota@braap.org>
+Received: from out1-smtp.messagingengine.com (out1-smtp.messagingengine.com. [66.111.4.25])
+        by mx.google.com with ESMTPS id u28si17906848qkl.160.2017.04.11.18.17.46
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 11 Apr 2017 18:17:47 -0700 (PDT)
+Received-SPF: pass (google.com: domain of cota@braap.org designates 66.111.4.25 as permitted sender) client-ip=66.111.4.25;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:35848 helo=lists.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1cxeTi-0000UL-AP
-	for alex.bennee@linaro.org; Mon, 10 Apr 2017 14:55:54 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:53361)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1cxeSq-000083-4U
-	for qemu-devel@nongnu.org; Mon, 10 Apr 2017 14:55:01 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1cxeSl-00015c-Fl
-	for qemu-devel@nongnu.org; Mon, 10 Apr 2017 14:55:00 -0400
-Received: from mail-qt0-x244.google.com ([2607:f8b0:400d:c0d::244]:35458)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1cxeSl-00015U-9n; Mon, 10 Apr 2017 14:54:55 -0400
-Received: by mail-qt0-x244.google.com with SMTP id o36so4472068qtb.2;
-	Mon, 10 Apr 2017 11:54:55 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=sender:subject:to:references:cc:from:message-id:date:user-agent
-	:mime-version:in-reply-to:content-transfer-encoding;
-	bh=gj0aeLZ5XT4LZg75gmd1VgrsK+BFoetcHLMIy6o3OJM=;
-	b=BZ8kIzX19QbIGP4sY+lAQCJXxe7EzI7T0WBl4m/EpMn9r8BFyZlmPSBiL0lU7Z1j3k
-	tl9QX2LkUfoz7liC6fWojU6g3oJ/4rNUx98rSYSaW371ucjUxa3PxSYhDYumQJ7FVk63
-	lyVXeC1fJGI37pRKlzP/WIFu/BQMfeu7foMxqY3Q46aiyMc7vNrVf78AH3x64ncSe/UD
-	Up0Pc0020d3Bu4mNQNhNxudXAkCx+2BCIPir7qpBgmVH0cU5g/V1X48bJar8s/SVdsc2
-	msmZFc6InhIcOaIgoq29KBpjcL6swrpJgHozb1QFpyfjaDUdEa/0DGVbHSHVJTxjMW6g
-	h1CQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:sender:subject:to:references:cc:from:message-id
-	:date:user-agent:mime-version:in-reply-to:content-transfer-encoding;
-	bh=gj0aeLZ5XT4LZg75gmd1VgrsK+BFoetcHLMIy6o3OJM=;
-	b=MbisjkED08535goaHgGIW/O9DmIoPUWvgykN2QnYdX01RrbOxIgusSmW9VHm9KwFwP
-	8qLp26dMrVeChCq4ee5ljLyBvAXXkwqTqPUmAO8R11uwhLZzsCLdU57nXywP9Y1N56MU
-	Ay2XASABTIWDZqXgmlUlv2KioYmoNGDZ1awEwqYCRlMZeo+Cz/nFp3Y3EGNdYHI/UyVp
-	8WJ8Hi1anVbJJt24rdF8jnPJS1YI9EcBvJozd4xlUsYM5bsILy/HCd0Qjqoic0aJhvOw
-	9HFuf5pUIcNHssFokVvzqdQg7RNh2Gr+6TEx4v7a4MePsWulCxLhQTM33Inhn2dc31Bp
-	dKVA==
-X-Gm-Message-State: AN3rC/7bhRwcOBPTo4ntiSkzlZdI1nVKXlsNQqlnPTRDHM4G6jJnhCQRX7fjtTPWKNxqyA==
-X-Received: by 10.200.4.140 with SMTP id s12mr7464389qtg.35.1491850494628;
-	Mon, 10 Apr 2017 11:54:54 -0700 (PDT)
-Received: from [192.168.1.10] ([138.117.48.226])
-	by smtp.gmail.com with ESMTPSA id
-	z32sm9328695qtg.17.2017.04.10.11.54.52
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Mon, 10 Apr 2017 11:54:53 -0700 (PDT)
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-References: <1491844419-12485-1-git-send-email-peter.maydell@linaro.org>
-	<1491844419-12485-7-git-send-email-peter.maydell@linaro.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <d8517799-0767-dd58-175b-f8908a94e598@amsat.org>
-Date: Mon, 10 Apr 2017 15:54:50 -0300
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
-	Thunderbird/45.8.0
-MIME-Version: 1.0
-In-Reply-To: <1491844419-12485-7-git-send-email-peter.maydell@linaro.org>
-Content-Type: text/plain; charset=windows-1252; format=flowed
-Content-Transfer-Encoding: 8bit
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:400d:c0d::244
-Subject: Re: [Qemu-devel] [PATCH v2 6/9] arm: Abstract out "are we
- singlestepping" test to utility function
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.21
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Richard Henderson <rth@twiddle.net>, patches@linaro.org
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: xH+n7aFFypUd
+       dkim=pass header.i=@braap.org;
+       dkim=pass header.i=@messagingengine.com;
+       spf=pass (google.com: domain of cota@braap.org designates 66.111.4.25 as permitted sender) smtp.mailfrom=cota@braap.org
+Received: from compute4.internal (compute4.nyi.internal [10.202.2.44])
+	by mailout.nyi.internal (Postfix) with ESMTP id 9BE7B20B63;
+	Tue, 11 Apr 2017 21:17:46 -0400 (EDT)
+Received: from frontend2 ([10.202.2.161])
+  by compute4.internal (MEProxy); Tue, 11 Apr 2017 21:17:46 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=braap.org; h=cc
+	:date:from:message-id:subject:to:x-me-sender:x-me-sender
+	:x-sasl-enc:x-sasl-enc; s=mesmtp; bh=d4wA/DNhCPFc/tGISppLLg2CDMm
+	aAwJS2DA2HPUeFFQ=; b=KZIjODO/qh5tvJA+ccgW4lTz+fPyWYcoplMT7/dX855
+	kiXZFYr4Qtxc8xhOtcJruSCwAOvfJMJaGHMEXZ1U0ElgN531KYgcsQgIHVNuTNiC
+	dQ+yhZbzRdchtk38s7GBpzWx9+Jr6hfI0CluehQbDF5SU2DM75zliBN6ZiDI+y0k
+	=
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+	messagingengine.com; h=cc:date:from:message-id:subject:to
+	:x-me-sender:x-me-sender:x-sasl-enc:x-sasl-enc; s=fm1; bh=d4wA/D
+	NhCPFc/tGISppLLg2CDMmaAwJS2DA2HPUeFFQ=; b=H53hhBQ8SR0f0BeoVC9d9h
+	o006aup8lPJ8kyorDBlX3euAAwp6iyvUtd9LhTroy6LZ+/1ohsJJDsmY2lA2YfzO
+	tAldMwvdhZnXQtHO07NfQHHreOAZksoLe1tk9PEv+SnisiUbWTzY8w5DpSRp/oVw
+	UtWfRFNTqnp06aD0Tsxe65J5CV3flAaES1SgnVjq5qDankeyS6Ofm/u5hxlktZWN
+	HMMkZLqMP5C22PB9k9tWTsfEjnDl8+Dwg+iWsAGzffBdjYsRbtHeb7YPaCT1N6fO
+	+vNkcSpIGpfr96TGNv7c5sk/gJR1Do1yOFyjtDaNbrZro6w4RTdhKGZvfyAiVgQg
+	==
+X-ME-Sender: <xms:OoDtWLseVRyzU3Ys1zWGp9B4v4Yrbha9RNioYJu6P7_v69DfOhgQgw>
+X-Sasl-enc: lc4c70W2fhoGkKUDWmOtgQkKErDIxaFwR3n+DYN/qAw9 1491959866
+Received: from localhost (flamenco.cs.columbia.edu [128.59.20.216])
+	by mail.messagingengine.com (Postfix) with ESMTPA id 586D624432;
+	Tue, 11 Apr 2017 21:17:46 -0400 (EDT)
+From: "Emilio G. Cota" <cota@braap.org>
+To: qemu-devel@nongnu.org
+Cc: Paolo Bonzini <pbonzini@redhat.com>,
+	Peter Crosthwaite <crosthwaite.peter@gmail.com>,
+	Richard Henderson <rth@twiddle.net>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	Eduardo Habkost <ehabkost@redhat.com>,
+	Claudio Fontana <claudio.fontana@huawei.com>,
+	Andrzej Zaborowski <balrogg@gmail.com>,
+	Aurelien Jarno <aurelien@aurel32.net>,
+	Alexander Graf <agraf@suse.de>,
+	Stefan Weil <sw@weilnetz.de>,
+	qemu-arm@nongnu.org,
+	alex.bennee@linaro.org,
+	Pranith Kumar <bobby.prani+qemu@gmail.com>
+Subject: [PATCH 00/10] TCG optimizations for 2.10
+Date: Tue, 11 Apr 2017 21:17:20 -0400
+Message-Id: <1491959850-30756-1-git-send-email-cota@braap.org>
+X-Mailer: git-send-email 2.7.4
+X-TUID: AnYnM6NAi9cA
 
-On 04/10/2017 02:13 PM, Peter Maydell wrote:
-> We now test for "are we singlestepping" in several places and
-> it's not a trivial check because we need to care about both
-> architectural singlestep and QEMU gdbstub singlestep. We're
-> also about to add another place that needs to make this check,
-> so pull the condition out into a function.
->
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> ---
->  target/arm/translate.c | 20 +++++++++++++++-----
->  1 file changed, 15 insertions(+), 5 deletions(-)
->
-> diff --git a/target/arm/translate.c b/target/arm/translate.c
-> index 87fd702..f28c4ca 100644
-> --- a/target/arm/translate.c
-> +++ b/target/arm/translate.c
-> @@ -309,6 +309,17 @@ static void gen_singlestep_exception(DisasContext *s)
->      }
->  }
->
-> +static inline bool is_singlestepping(DisasContext *s)
-> +{
-> +    /* Return true if we are singlestepping either because of
-> +     * architectural singlestep or QEMU gdbstub singlestep. This does
-> +     * not include the command line '-singlestep' mode which is rather
-> +     * misnamed as it only means "one instruction per TB" and doesn't
-> +     * affect the code we generate.
-> +     */
+Hi all,
 
-This comment is very welcome :)
+This series is aimed at 2.10 or beyond. Its goal is to improve
+TCG performance by optimizing:
 
-Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+1- Cross-page direct jumps (softmmu only, obviously). Patches 1-4.
+2- Indirect branches (softmmu and user-mode). Patches 5-9.
+3- tb_jmp_cache hashing in user-mode. Patch 10.
 
-> +    return s->singlestep_enabled || s->ss_active;
-> +}
-> +
->  static void gen_smul_dual(TCGv_i32 a, TCGv_i32 b)
->  {
->      TCGv_i32 tmp1 = tcg_temp_new_i32();
-> @@ -4104,7 +4115,7 @@ static inline void gen_goto_tb(DisasContext *s, int n, target_ulong dest)
->
->  static inline void gen_jmp (DisasContext *s, uint32_t dest)
->  {
-> -    if (unlikely(s->singlestep_enabled || s->ss_active)) {
-> +    if (unlikely(is_singlestepping(s))) {
->          /* An indirect jump so that we still trigger the debug exception.  */
->          if (s->thumb)
->              dest |= 1;
-> @@ -11970,9 +11981,8 @@ void gen_intermediate_code(CPUARMState *env, TranslationBlock *tb)
->              ((dc->pc >= next_page_start - 3) && insn_crosses_page(env, dc));
->
->      } while (!dc->is_jmp && !tcg_op_buf_full() &&
-> -             !cs->singlestep_enabled &&
-> +             !is_singlestepping(dc) &&
->               !singlestep &&
-> -             !dc->ss_active &&
->               !end_of_page &&
->               num_insns < max_insns);
->
-> @@ -11989,7 +11999,7 @@ void gen_intermediate_code(CPUARMState *env, TranslationBlock *tb)
->         instruction was a conditional branch or trap, and the PC has
->         already been written.  */
->      gen_set_condexec(dc);
-> -    if (unlikely(cs->singlestep_enabled || dc->ss_active)) {
-> +    if (unlikely(is_singlestepping(dc))) {
->          /* Unconditional and "condition passed" instruction codepath. */
->          switch (dc->is_jmp) {
->          case DISAS_SWI:
-> @@ -12067,7 +12077,7 @@ void gen_intermediate_code(CPUARMState *env, TranslationBlock *tb)
->          /* "Condition failed" instruction codepath for the branch/trap insn */
->          gen_set_label(dc->condlabel);
->          gen_set_condexec(dc);
-> -        if (unlikely(cs->singlestep_enabled || dc->ss_active)) {
-> +        if (unlikely(is_singlestepping(dc))) {
->              gen_set_pc_im(dc, dc->pc);
->              gen_singlestep_exception(dc);
->          } else {
->
+I decided to work on this after reading this paper [1] (code at [2]),
+which among other optimizations it proposes solutions for 1 and 2.
+I followed the same overall scheme they follow, that is to use helpers
+to check whether the target vaddr is valid, and if so, jump to its
+corresponding translated code (host address) without having to go back
+to the exec loop. My implementation differs from that in the paper
+in that it uses tb_jmp_cache instead of adding more caches,
+which is simpler and probably more resilient in environments
+where TLB invalidations are frequent (in the paper they acknowledge
+that they limited background processes to a minimum, which isn't
+realistic).
+
+These changes require modifications on the targets and, for optimization
+number 2, a new TCG opcode to jump to a host address contained in a register.
+
+For now I only implemented this for the i386 and arm targets, and
+the i386 TCG backend. Other targets/backends can easily opt-in.
+
+The 3rd optimization is implemented in the last patch: it improves
+tb_jmp_cache hashing for user-mode by removing the requirement of
+being able to clear parts of the cache given a page number, since this
+requirement only applies to softmmu.
+
+The series applies cleanly on top of 95b31d709ba34.
+
+The commit logs include many measurements, performed using SPECint06 and
+NBench from dbt-bench[3].
+
+Feedback welcome! Thanks,
+
+		Emilio
+
+[1] "Optimizing Control Transfer and Memory Virtualization
+in Full System Emulators", Ding-Yong Hong, Chun-Chen Hsu, Cheng-Yi Chou,
+Wei-Chung Hsu, Pangfeng Liu, Jan-Jan Wu. ACM TACO, Jan. 2016.
+  http://www.iis.sinica.edu.tw/page/library/TechReport/tr2015/tr15002.pdf
+
+[2] https://github.com/tkhsu/quick-android-emulator/tree/quick-qemu
+
+[3] https://github.com/cota/dbt-bench

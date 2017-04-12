@@ -1,10 +1,10 @@
-Received: by 10.25.0.144 with SMTP id 138csp89161lfa;
+Received: by 10.25.0.144 with SMTP id 138csp89160lfa;
         Tue, 11 Apr 2017 18:17:48 -0700 (PDT)
-X-Received: by 10.200.4.147 with SMTP id s19mr4795326qtg.226.1491959868235;
+X-Received: by 10.237.59.19 with SMTP id p19mr60407592qte.28.1491959868189;
         Tue, 11 Apr 2017 18:17:48 -0700 (PDT)
 Return-Path: <cota@braap.org>
 Received: from out1-smtp.messagingengine.com (out1-smtp.messagingengine.com. [66.111.4.25])
-        by mx.google.com with ESMTPS id t17si3950758qke.279.2017.04.11.18.17.48
+        by mx.google.com with ESMTPS id 63si17939119qtc.201.2017.04.11.18.17.47
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
         Tue, 11 Apr 2017 18:17:48 -0700 (PDT)
 Received-SPF: pass (google.com: domain of cota@braap.org designates 66.111.4.25 as permitted sender) client-ip=66.111.4.25;
@@ -13,32 +13,32 @@ Authentication-Results: mx.google.com;
        dkim=pass header.i=@messagingengine.com;
        spf=pass (google.com: domain of cota@braap.org designates 66.111.4.25 as permitted sender) smtp.mailfrom=cota@braap.org
 Received: from compute4.internal (compute4.nyi.internal [10.202.2.44])
-	by mailout.nyi.internal (Postfix) with ESMTP id 6C7FC20B79;
+	by mailout.nyi.internal (Postfix) with ESMTP id 43B8A20B4B;
 	Tue, 11 Apr 2017 21:17:47 -0400 (EDT)
-Received: from frontend2 ([10.202.2.161])
+Received: from frontend1 ([10.202.2.160])
   by compute4.internal (MEProxy); Tue, 11 Apr 2017 21:17:47 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=braap.org; h=cc
 	:date:from:in-reply-to:message-id:references:subject:to
-	:x-me-sender:x-me-sender:x-sasl-enc:x-sasl-enc; s=mesmtp; bh=Tj7
-	7T4KERFxEoiUruN1r0FWqM16gUREttWZpODDV7JI=; b=lo6m3DYBSTk829P5PCV
-	bzzKeuauPxy/ZSsLfo057ZKe7jKP/5mMtbAKOJpY+ZRkem1hBXDUzvR3Cu/KcfkF
-	39Hl6WUQAe+m21s6Q3dqOtmycboPF8TqtqJhIbb9LaeSXnUYXCW84X/79xN9rd97
-	UV60hEkVYH/iJAm6fLRzB4h0=
+	:x-me-sender:x-me-sender:x-sasl-enc:x-sasl-enc; s=mesmtp; bh=5TS
+	T+1dZBNmJyO7KRqDMvNdeu2S380NORRHnloEkdok=; b=tjv1QxJWYbnkUrWx1mF
+	qufJki1RlMDS3SWqEf/9EK8U/WwS+/A6hVDSbLA/WKCPR5n6zIgfpgrsotcaUKDm
+	/wXxkCziFW/8dRnt1dWl3KvoYdnVp6z/isP70c0bQVpnQj1co4zBFZcO3UP4xQnV
+	8sKrZ8RqfQxNjLjEYCP0ZCdQ=
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
 	messagingengine.com; h=cc:date:from:in-reply-to:message-id
 	:references:subject:to:x-me-sender:x-me-sender:x-sasl-enc
-	:x-sasl-enc; s=fm1; bh=Tj77T4KERFxEoiUruN1r0FWqM16gUREttWZpODDV7
-	JI=; b=QpaV68gUr/jVgr0a59TXiH5ao2zeiB/20xf6DMZaBpjHAsYmINdx93KBp
-	hV/zTrWQLiVLZQXodOeNqwtE/B9SKqYQOc1Vk/urkg1q8CynM2GAuHdZAneK0fgj
-	ONrt64rHH+P0HmpYo2N600GNDRQxPQzyO+fEE4EOKprEGVBGcyGMT7sYXqHIdFL5
-	ke2fiKwF8/ip27d/XHHgjaeWJHfpbAb/IKI9aYXXgLHPd9ZgFFGFJO9ndgFGtB+o
-	4gT7zuHQ0Gbi3VSxTIX+ddiwldDgievc3m+3zy9v3L/SUNR09JGR5F+q4WH3XQ/W
-	FHqcVmKwnOFn+QGrREbMS3XsTwOUA==
-X-ME-Sender: <xms:O4DtWMPOwTIa0ACwAm-GIKnUzBq65SVpznDuudiHaLnm4U9GdktohQ>
-X-Sasl-enc: ERqzZr8eoF/o3qTAIQudLnGpPiI9+MZL93SFqLcWFQJf 1491959867
+	:x-sasl-enc; s=fm1; bh=5TST+1dZBNmJyO7KRqDMvNdeu2S380NORRHnloEkd
+	ok=; b=dQ8+fJvR6WM1NHDIQTFempvzlLDBaEMYseA+2f4Ws/guLJ+YgnjVT/fZx
+	+58G3OmURnk02CY8QXg1JhnxwsYlQ7OHCWtqD/m0e6WWs5OoNj5TF5gAy9zPl5Bw
+	AhJN1cBB+YNWwOWVZA4ukxwClM9IQDf8BdyXtnND/aboqQPs8noPZ7pMx/FDHhMz
+	zU5XKm2E4eSMXJvu1k+TrQeNOwELMxy1EV5lAe8XHNHqfQoeJ/CeXlkw5KesZVCt
+	F+WgJghZ6lF1AoB96ZNYHz8UHHV15DcU6hEciFh7vvIxIKr7gYKoi9pfamUQda5y
+	iL46q3XzPrC64+wDwRAWdmRcYq+pA==
+X-ME-Sender: <xms:O4DtWELFTO9og7me0nuiDiGdYHM4LL9PWFYHq_YQxIWZ2ncH5qgZDw>
+X-Sasl-enc: ERq/ZaMEoUDg17PIOgadLnGpPiI9+MZL93SFqLcWFQJf 1491959867
 Received: from localhost (flamenco.cs.columbia.edu [128.59.20.216])
-	by mail.messagingengine.com (Postfix) with ESMTPA id 2B99624526;
-	Tue, 11 Apr 2017 21:17:47 -0400 (EDT)
+	by mail.messagingengine.com (Postfix) with ESMTPA id F29667E442;
+	Tue, 11 Apr 2017 21:17:46 -0400 (EDT)
 From: "Emilio G. Cota" <cota@braap.org>
 To: qemu-devel@nongnu.org
 Cc: Paolo Bonzini <pbonzini@redhat.com>,
@@ -54,13 +54,13 @@ Cc: Paolo Bonzini <pbonzini@redhat.com>,
 	qemu-arm@nongnu.org,
 	alex.bennee@linaro.org,
 	Pranith Kumar <bobby.prani+qemu@gmail.com>
-Subject: [PATCH 04/10] target/i386: optimize cross-page block chaining in softmmu
-Date: Tue, 11 Apr 2017 21:17:24 -0400
-Message-Id: <1491959850-30756-5-git-send-email-cota@braap.org>
+Subject: [PATCH 03/10] target/arm: optimize cross-page block chaining in softmmu
+Date: Tue, 11 Apr 2017 21:17:23 -0400
+Message-Id: <1491959850-30756-4-git-send-email-cota@braap.org>
 X-Mailer: git-send-email 2.7.4
 In-Reply-To: <1491959850-30756-1-git-send-email-cota@braap.org>
 References: <1491959850-30756-1-git-send-email-cota@braap.org>
-X-TUID: WGpG0oPFhw0j
+X-TUID: gRjfA2nK/J2I
 
 Instead of unconditionally exiting to the exec loop, add a helper to
 check whether the target TB is valid. As long as the hit rate in
@@ -68,104 +68,89 @@ tb_jmp_cache remains high, this improves performance.
 
 Measurements:
 
--       specINT 2006 (test set), x86_64-softmmu. Host: Intel i7-4790K @ 4.00GHz
-                          Y axis: Speedup over 95b31d70
+- Boot time of ARM debian jessie on Intel host:
 
-     1.3x+-+-------------------------------------------------------------+-+
-         |           cross $$                                              |
-    1.25x+-+.............................................................+-+
-         |                                                                 |
-     1.2x+-+.............................................................+-+
-         |                                                        :        |
-         |                                                        :        |
-    1.15x+-+.............................................................+-+
-         |           $$$$ $$$$                     +++            :        |
-     1.1x+-+.........$..$.$..$...........................................+-+
-         |           $  $ $  $                     $$$           $$$$      |
-    1.05x+-+.........$..$.$..$.....................$.$.$$$$......$..$....+-+
-         |           $  $ $  $      +++  +++  +++  $+$ $++$  +++ $: $ $$$$ |
-         |       +++ $  $ $  $ +++  $$$   :    :   $ $ $  $ $$$$ $: $ $++$ |
-       1x+-$$$$G$$$$_$EM$_$ro$s$$$..$.$.......$$$..$.$.$..$.$..$.$..$.$..$-+
-         | $++$ $ :$ $  $ $  $ $ $  $ $   :   $+$  $ $ $  $ $++$ $: $ $  $ |
-    0.95x+-$..$.$..$.$..$.$..$.$.$..$.$..$$$..$.$..$.$.$..$.$..$.$..$.$..$-+
-         | $  $ $  $ $  $ $  $ $ $  $ $  $:$  $ $  $ $ $  $ $  $ $  $ $  $ |
-     0.9x+-$$$$-$$$$-$$$$-$$$$-$$$--$$$--$$$--$$$--$$$-$$$$-$$$$-$$$$-$$$$-+
-           astarbzip2gcc gobmh264rehmlibquantumcfomneperlbensjxalancbhmean
-  png: http://imgur.com/cwRnmCi
+| setup              | ARM debian boot+shutdown time | stddev |
+|--------------------+-------------------------------+--------|
+| master             |                  10.050247057 | 0.0361 |
+| +cross             |                  10.311265443 | 0.0721 |
 
-That is, a hmean gain of 2.6%.
+That is a 2.58% slowdown when booting. This is reasonable given that
+tb_jmp_cache's hit rate when booting is expected to be low.
 
--      specINT 2006 (train set), x86_64-softmmu. Host: Intel i7-4790K @ 4.00GHz
-                          Y axis: Speedup over 95b31d70
+-                NBench, arm-softmmu. Host: Intel i7-4790K @ 4.00GHz
+                        (y axis: Speedup over 95b31d70)
 
-    1.25x+-+-------------------------------------------------------------+-+
-         |                cross $$                                         |
-         |                                                                 |
-     1.2x+-+.............................................................+-+
-         |                                          :            +++       |
-    1.15x+-+.............................................................+-+
-         |            :                            $$$ $$$$      $$$$      |
-         |           $$$$ +++                      $:$ $++$  +++ $: $      |
-     1.1x+-+.........$..$.$$$$.....................$.$.$..$......$..$....+-+
-         |       +++ $++$ $++$ +++   :             $ $ $  $   :  $++$ +++  |
-    1.05x+-+....$$$$.$..$.$..$......$$$............$.$.$..$.$$$$.$..$.$$$$-+
-         |      $++$ $  $ $  $ $$$  $:$            $ $ $  $ $ :$ $  $ $  $ |
-         |      $  $ $  $ $  $ $:$  $+$  +++  +++  $ $ $  $ $ :$ $  $ $  $ |
-       1x+-$$$$G$AP$_$EM$_$ro$s$i$li$e$..$$$.......$.$.$..$.$..$.$..$.$..$-+
-         | $++$ $  $ $  $ $  $ $+$  $ $  $:$  $$$  $ $ $  $ $  $ $  $ $  $ |
-    0.95x+-$..$.$..$.$..$.$..$.$.$..$.$..$.$..$.$..$.$.$..$.$..$.$..$.$..$-+
-         | $  $ $  $ $  $ $  $ $ $  $ $  $ $  $+$  $ $ $  $ $  $ $  $ $  $ |
-         | $  $ $  $ $  $ $  $ $ $  $ $  $ $  $ $  $ $ $  $ $  $ $  $ $  $ |
-     0.9x+-$$$$-$$$$-$$$$-$$$$-$$$--$$$--$$$--$$$--$$$-$$$$-$$$$-$$$$-$$$$-+
-           astarbzip2gcc gobmh264rehmlibquantumcfomneperlbensjxalancbhmean
-  png: http://imgur.com/0CbG7dD
+    1.3x+-+--------------------------------------------------------------+-+
+        |                                           cross+noinline $$$     |
+        |                                           cross+inline   %%%     |
+        |                   $$$%%                                          |
+    1.2x+-+.................$.$.%.......$$$..............................+-+
+        |                   $ $ %       $ $%                               |
+        |                   $ $ %       $ $%                               |
+    1.1x+-+.................$.$.%.......$.$%.............................+-+
+        |             $$$%% $ $ %       $ $%                               |
+        |             $ $ % $ $ %       $ $% $$$%%             $$$%% $$$%% |
+        | $$$%% $$$%% $ $ % $ $ % $$$%% $ $% $ $ %   %%%       $ $ % $ $ % |
+      1x+-$.$B%R$R$A%G$A$H%T$M$_%P$L$i%l$n$%.$.$.%...%.%.$$$%%.$.$.%.$.$.%-+
+        | $ $ % $ $ % $ $ % $ $ % $ $ % $ $% $ $ %   % % $ $ % $ $ % $ $ % |
+        | $ $ % $ $ % $ $ % $ $ % $ $ % $ $% $ $ %   % % $ $ % $ $ % $ $ % |
+    0.9x+-$.$.%.$.$.%.$.$.%.$.$.%.$.$.%.$.$%.$.$.%...%.%.$.$.%.$.$.%.$.$.%-+
+        | $ $ % $ $ % $ $ % $ $ % $ $ % $ $% $ $ %   % % $ $ % $ $ % $ $ % |
+        | $ $ % $ $ % $ $ % $ $ % $ $ % $ $% $ $ % $$$ % $ $ % $ $ % $ $ % |
+        | $ $ % $ $ % $ $ % $ $ % $ $ % $ $% $ $ % $ $ % $ $ % $ $ % $ $ % |
+    0.8x+-$$$%%-$$$%%-$$$%%-$$$%%-$$$%%-$$$%-$$$%%-$$$%%-$$$%%-$$$%%-$$$%%-+
+       ASSIGNMBITFIELFOUFP_EMULATHUFFMALU_DECOMPNEURANUMERICSTRING_SOhmean
 
-This is the larger "train" set. We get a hmean improvement of 6.1%.
+  png: http://imgur.com/1rmYSaF
+
+That is, a 4.04% hmean perf improvement over master with tb_from_jmp_cache
+not inlined, and a 5.82% hmean perf improvement over master with tb_from_jmp_cache
+inlined (i.e. this commit). The largest improvement is 21% for the FP_EMULATION
+benchmark.
 
 Signed-off-by: Emilio G. Cota <cota@braap.org>
 ---
- target/i386/helper.h      |  2 ++
- target/i386/misc_helper.c |  5 +++++
- target/i386/translate.c   | 14 +++++++++++++-
- 3 files changed, 20 insertions(+), 1 deletion(-)
+ target/arm/helper.c    |  5 +++++
+ target/arm/helper.h    |  2 ++
+ target/arm/translate.c | 12 ++++++++++++
+ 3 files changed, 19 insertions(+)
 
-diff --git a/target/i386/helper.h b/target/i386/helper.h
-index 6fb8fb9..dceb343 100644
---- a/target/i386/helper.h
-+++ b/target/i386/helper.h
-@@ -1,6 +1,8 @@
- DEF_HELPER_FLAGS_4(cc_compute_all, TCG_CALL_NO_RWG_SE, tl, tl, tl, tl, int)
- DEF_HELPER_FLAGS_4(cc_compute_c, TCG_CALL_NO_RWG_SE, tl, tl, tl, tl, int)
- 
-+DEF_HELPER_2(cross_page_check, i32, env, tl)
-+
- DEF_HELPER_3(write_eflags, void, env, tl, i32)
- DEF_HELPER_1(read_eflags, tl, env)
- DEF_HELPER_2(divb_AL, void, env, tl)
-diff --git a/target/i386/misc_helper.c b/target/i386/misc_helper.c
-index ca2ea09..a41daed 100644
---- a/target/i386/misc_helper.c
-+++ b/target/i386/misc_helper.c
-@@ -637,3 +637,8 @@ void helper_wrpkru(CPUX86State *env, uint32_t ecx, uint64_t val)
-     env->pkru = val;
-     tlb_flush(cs);
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index 8cb7a94..10b8807 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -9922,3 +9922,8 @@ uint32_t HELPER(crc32c)(uint32_t acc, uint32_t val, uint32_t bytes)
+     /* Linux crc32c converts the output to one's complement.  */
+     return crc32c(acc, buf, bytes) ^ 0xffffffff;
  }
 +
-+uint32_t helper_cross_page_check(CPUX86State *env, target_ulong vaddr)
++uint32_t HELPER(cross_page_check)(CPUARMState *env, target_ulong vaddr)
 +{
 +    return !!tb_from_jmp_cache(env, vaddr);
 +}
-diff --git a/target/i386/translate.c b/target/i386/translate.c
-index 1d1372f..ffc8ccc 100644
---- a/target/i386/translate.c
-+++ b/target/i386/translate.c
-@@ -2153,7 +2153,19 @@ static inline void gen_goto_tb(DisasContext *s, int tb_num, target_ulong eip)
-         gen_jmp_im(eip);
-         tcg_gen_exit_tb((uintptr_t)s->tb + tb_num);
+diff --git a/target/arm/helper.h b/target/arm/helper.h
+index df86bf7..d4b779b 100644
+--- a/target/arm/helper.h
++++ b/target/arm/helper.h
+@@ -1,6 +1,8 @@
+ DEF_HELPER_FLAGS_1(sxtb16, TCG_CALL_NO_RWG_SE, i32, i32)
+ DEF_HELPER_FLAGS_1(uxtb16, TCG_CALL_NO_RWG_SE, i32, i32)
+ 
++DEF_HELPER_2(cross_page_check, i32, env, tl)
++
+ DEF_HELPER_3(add_setq, i32, env, i32, i32)
+ DEF_HELPER_3(add_saturate, i32, env, i32, i32)
+ DEF_HELPER_3(sub_saturate, i32, env, i32, i32)
+diff --git a/target/arm/translate.c b/target/arm/translate.c
+index e32e38c..ce97d0c 100644
+--- a/target/arm/translate.c
++++ b/target/arm/translate.c
+@@ -4085,6 +4085,18 @@ static inline void gen_goto_tb(DisasContext *s, int n, target_ulong dest)
+         gen_set_pc_im(s, dest);
+         tcg_gen_exit_tb((uintptr_t)s->tb + n);
      } else {
--        /* jump to another page: currently not optimized */
-+        /* jump to another page */
-+        TCGv vaddr = tcg_const_tl(eip);
++        TCGv vaddr = tcg_const_tl(dest);
 +        TCGv_i32 valid = tcg_temp_new_i32();
 +        TCGLabel *label = gen_new_label();
 +
@@ -173,12 +158,12 @@ index 1d1372f..ffc8ccc 100644
 +        tcg_temp_free(vaddr);
 +        tcg_gen_brcondi_i32(TCG_COND_EQ, valid, 0, label);
 +        tcg_temp_free_i32(valid);
-+        tcg_gen_goto_tb(tb_num);
-+        gen_jmp_im(eip);
-+        tcg_gen_exit_tb((uintptr_t)s->tb + tb_num);
++        tcg_gen_goto_tb(n);
++        gen_set_pc_im(s, dest);
++        tcg_gen_exit_tb((uintptr_t)s->tb + n);
 +        gen_set_label(label);
-         gen_jmp_im(eip);
-         gen_eob(s);
+         gen_set_pc_im(s, dest);
+         tcg_gen_exit_tb(0);
      }
 -- 
 2.7.4

@@ -1,313 +1,93 @@
-Received: by 10.25.0.144 with SMTP id 138csp471927lfa;
-        Wed, 12 Apr 2017 14:15:46 -0700 (PDT)
-X-Received: by 10.200.34.39 with SMTP id o36mr9552469qto.189.1492031746610;
-        Wed, 12 Apr 2017 14:15:46 -0700 (PDT)
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 10.25.0.144 with SMTP id 138csp515900lfa;
+        Wed, 12 Apr 2017 16:58:44 -0700 (PDT)
+X-Received: by 10.55.22.159 with SMTP id 31mr229144qkw.113.1492041524529;
+        Wed, 12 Apr 2017 16:58:44 -0700 (PDT)
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id 39si20577814qta.160.2017.04.12.14.15.45
+        by mx.google.com with ESMTPS id z94si20940583qtc.333.2017.04.12.16.58.43
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 12 Apr 2017 14:15:46 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Wed, 12 Apr 2017 16:58:44 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:46308 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:46638 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1cyPc8-0001BI-08
-	for alex.bennee@linaro.org; Wed, 12 Apr 2017 17:15:44 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:45571)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1cyS9p-0006Ls-To
+	for alex.bennee@linaro.org; Wed, 12 Apr 2017 19:58:41 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:43737)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <ehabkost@redhat.com>) id 1cyPc3-00019o-A4
-	for qemu-arm@nongnu.org; Wed, 12 Apr 2017 17:15:41 -0400
+	(envelope-from <no-reply@patchew.org>) id 1cyS8j-0005lE-CT
+	for qemu-devel@nongnu.org; Wed, 12 Apr 2017 19:57:34 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <ehabkost@redhat.com>) id 1cyPby-0003Zr-A9
-	for qemu-arm@nongnu.org; Wed, 12 Apr 2017 17:15:39 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:44478)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <ehabkost@redhat.com>)
-	id 1cyPby-0003WE-0X; Wed, 12 Apr 2017 17:15:34 -0400
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
-	[10.5.11.13])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id BB1D161D02;
-	Wed, 12 Apr 2017 21:15:32 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com BB1D161D02
-Authentication-Results: ext-mx10.extmail.prod.ext.phx2.redhat.com;
-	dmarc=none (p=none dis=none) header.from=redhat.com
-Authentication-Results: ext-mx10.extmail.prod.ext.phx2.redhat.com;
-	spf=pass smtp.mailfrom=ehabkost@redhat.com
-DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com BB1D161D02
-Received: from localhost (ovpn-116-31.gru2.redhat.com [10.97.116.31])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 0C2BE60BE3;
-	Wed, 12 Apr 2017 21:15:30 +0000 (UTC)
-Date: Wed, 12 Apr 2017 18:15:29 -0300
-From: Eduardo Habkost <ehabkost@redhat.com>
-To: Igor Mammedov <imammedo@redhat.com>
-Message-ID: <20170412211529.GD27126@thinpad.lan.raisama.net>
-References: <1490189568-167621-1-git-send-email-imammedo@redhat.com>
-	<1490189568-167621-11-git-send-email-imammedo@redhat.com>
+	(envelope-from <no-reply@patchew.org>) id 1cyS8g-0005ti-AY
+	for qemu-devel@nongnu.org; Wed, 12 Apr 2017 19:57:33 -0400
+Resent-Date: Wed, 12 Apr 2017 19:57:33 -0400
+Resent-Message-Id: <E1cyS8g-0005ti-AY@eggs.gnu.org>
+Received: from sender-of-o52.zoho.com ([135.84.80.217]:21312)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <no-reply@patchew.org>)
+	id 1cyS8g-0005tU-2h; Wed, 12 Apr 2017 19:57:30 -0400
+Received: from [172.17.0.2] (23.253.156.214 [23.253.156.214]) by
+	mx.zohomail.com with SMTPS id 1492041435625627.3669671235808;
+	Wed, 12 Apr 2017 16:57:15 -0700 (PDT)
+Message-ID: <149204143506.10500.9312462203357418218@6c512846dbc7>
+In-Reply-To: <20170408054318.19830-1-omar.rizwan@gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <1490189568-167621-11-git-send-email-imammedo@redhat.com>
-X-Fnord: you can see the fnord
-User-Agent: Mutt/1.7.1 (2016-10-04)
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.39]);
-	Wed, 12 Apr 2017 21:15:32 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH for-2.10 10/23] numa: mirror cpu
- to node mapping in MachineState::possible_cpus
-X-BeenThere: qemu-arm@nongnu.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Resent-From: 
+From: no-reply@patchew.org
+To: omar.rizwan@gmail.com
+Date: Wed, 12 Apr 2017 16:57:15 -0700 (PDT)
+X-ZohoMailClient: External
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
+X-Received-From: 135.84.80.217
+Subject: Re: [Qemu-devel] [PATCH] raspi: Add Raspberry Pi 1 support
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jones <drjones@redhat.com>,
-	qemu-devel@nongnu.org, qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
-	Shannon Zhao <zhaoshenglong@huawei.com>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	David Gibson <david@gibson.dropbear.id.au>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: YBkjIMeWSMSy
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Reply-To: qemu-devel@nongnu.org
+Cc: peter.maydell@linaro.org, famz@redhat.com, qemu-devel@nongnu.org,
+	Andrew.Baumann@microsoft.com, qemu-arm@nongnu.org, omar.rizwan@gmail.com
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: /GOoaMiWhMxZ
 
-On Wed, Mar 22, 2017 at 02:32:35PM +0100, Igor Mammedov wrote:
-> Introduce machine_set_cpu_numa_node() helper that stores
-> node mapping for CPU in MachineState::possible_cpus.
-> CPU and node it belongs to is specified by 'props' argument.
-> 
-> Patch doesn't remove old way of storing mapping in
-> numa_info[X].node_cpu as removing it at the same time
-> makes patch rather big. Instead it just mirrors mapping
-> in possible_cpus and follow up per target patches will
-> switch to possible_cpus and numa_info[X].node_cpu will
-> be removed once there isn't any users left.
-> 
-> Signed-off-by: Igor Mammedov <imammedo@redhat.com>
+SGksCgpUaGlzIHNlcmllcyBzZWVtcyB0byBoYXZlIHNvbWUgY29kaW5nIHN0eWxlIHByb2JsZW1z
+LiBTZWUgb3V0cHV0IGJlbG93IGZvcgptb3JlIGluZm9ybWF0aW9uOgoKTWVzc2FnZS1pZDogMjAx
+NzA0MDgwNTQzMTguMTk4MzAtMS1vbWFyLnJpendhbkBnbWFpbC5jb20KU3ViamVjdDogW1FlbXUt
+ZGV2ZWxdIFtQQVRDSF0gcmFzcGk6IEFkZCBSYXNwYmVycnkgUGkgMSBzdXBwb3J0ClR5cGU6IHNl
+cmllcwoKPT09IFRFU1QgU0NSSVBUIEJFR0lOID09PQojIS9iaW4vYmFzaAoKQkFTRT1iYXNlCm49
+MQp0b3RhbD0kKGdpdCBsb2cgLS1vbmVsaW5lICRCQVNFLi4gfCB3YyAtbCkKZmFpbGVkPTAKCiMg
+VXNlZnVsIGdpdCBvcHRpb25zCmdpdCBjb25maWcgLS1sb2NhbCBkaWZmLnJlbmFtZWxpbWl0IDAK
+Z2l0IGNvbmZpZyAtLWxvY2FsIGRpZmYucmVuYW1lcyBUcnVlCgpjb21taXRzPSIkKGdpdCBsb2cg
+LS1mb3JtYXQ9JUggLS1yZXZlcnNlICRCQVNFLi4pIgpmb3IgYyBpbiAkY29tbWl0czsgZG8KICAg
+IGVjaG8gIkNoZWNraW5nIFBBVENIICRuLyR0b3RhbDogJChnaXQgbG9nIC1uIDEgLS1mb3JtYXQ9
+JXMgJGMpLi4uIgogICAgaWYgISBnaXQgc2hvdyAkYyAtLWZvcm1hdD1lbWFpbCB8IC4vc2NyaXB0
+cy9jaGVja3BhdGNoLnBsIC0tbWFpbGJhY2sgLTsgdGhlbgogICAgICAgIGZhaWxlZD0xCiAgICAg
+ICAgZWNobwogICAgZmkKICAgIG49JCgobisxKSkKZG9uZQoKZXhpdCAkZmFpbGVkCj09PSBURVNU
+IFNDUklQVCBFTkQgPT09CgpVcGRhdGluZyAzYzhjZjVhOWMyMWZmODc4MjE2NGQxZGVmN2Y0NGJk
+ODg4NzEzMzg0ClN3aXRjaGVkIHRvIGEgbmV3IGJyYW5jaCAndGVzdCcKMDgyYmI2MSByYXNwaTog
+QWRkIFJhc3BiZXJyeSBQaSAxIHN1cHBvcnQKCj09PSBPVVRQVVQgQkVHSU4gPT09CkNoZWNraW5n
+IFBBVENIIDEvMTogcmFzcGk6IEFkZCBSYXNwYmVycnkgUGkgMSBzdXBwb3J0Li4uCkVSUk9SOiBs
+aW5lIG92ZXIgOTAgY2hhcmFjdGVycwojMTg5OiBGSUxFOiBody9hcm0vcmFzcGkuYzozNDoKKyAq
+IGh0dHBzOi8vZ2l0aHViLmNvbS9BbmRyZXdGcm9tTWVsYm91cm5lL3Jhc3BiZXJyeV9waV9yZXZp
+c2lvbi9ibG9iLzI3NjRjMTk5ODNmYjdiMWVmOGNiMjEwMzFlOTRjMjkzNzAzYWZhMmUvUkVBRE1F
+Lm1kCgp0b3RhbDogMSBlcnJvcnMsIDAgd2FybmluZ3MsIDI1OCBsaW5lcyBjaGVja2VkCgpZb3Vy
+IHBhdGNoIGhhcyBzdHlsZSBwcm9ibGVtcywgcGxlYXNlIHJldmlldy4gIElmIGFueSBvZiB0aGVz
+ZSBlcnJvcnMKYXJlIGZhbHNlIHBvc2l0aXZlcyByZXBvcnQgdGhlbSB0byB0aGUgbWFpbnRhaW5l
+ciwgc2VlCkNIRUNLUEFUQ0ggaW4gTUFJTlRBSU5FUlMuCgo9PT0gT1VUUFVUIEVORCA9PT0KClRl
+c3QgY29tbWFuZCBleGl0ZWQgd2l0aCBjb2RlOiAxCgoKLS0tCkVtYWlsIGdlbmVyYXRlZCBhdXRv
+bWF0aWNhbGx5IGJ5IFBhdGNoZXcgW2h0dHA6Ly9wYXRjaGV3Lm9yZy9dLgpQbGVhc2Ugc2VuZCB5
+b3VyIGZlZWRiYWNrIHRvIHBhdGNoZXctZGV2ZWxAZnJlZWxpc3RzLm9yZw==
 
-So, this patch is the one that makes "-numa" and "-numa cpu"
-affect query-hotpluggable-cpus output.
-
-Before this patch:
-
-  $ qemu-system-x86_64 -smp 2 -m 2G -numa node -numa node -numa node -numa node
-  [run qmp-shell]
-  (QEMU) query-hotpluggable-cpus
-  {
-      "return": [
-          {
-              "qom-path": "/machine/unattached/device[2]",
-              "type": "qemu64-x86_64-cpu",
-              "vcpus-count": 1,
-              "props": {
-                  "socket-id": 1,
-                  "core-id": 0,
-                  "thread-id": 0
-              }
-          },
-          {
-              "qom-path": "/machine/unattached/device[0]",
-              "type": "qemu64-x86_64-cpu",
-              "vcpus-count": 1,
-              "props": {
-                  "socket-id": 0,
-                  "core-id": 0,
-                  "thread-id": 0
-              }
-          }
-      ]
-  }
-
-
-After this patch:
-
-  $ qemu-system-x86_64 -smp 2 -m 2G -numa node -numa node -numa node -numa node
-  [run qmp-shell]
-  (QEMU) query-hotpluggable-cpus
-  {
-      "return": [
-          {
-              "qom-path": "/machine/unattached/device[2]",
-              "type": "qemu64-x86_64-cpu",
-              "vcpus-count": 1,
-              "props": {
-                  "socket-id": 1,
-                  "node-id": 1,
-                  "core-id": 0,
-                  "thread-id": 0
-              }
-          },
-          {
-              "qom-path": "/machine/unattached/device[0]",
-              "type": "qemu64-x86_64-cpu",
-              "vcpus-count": 1,
-              "props": {
-                  "socket-id": 0,
-                  "node-id": 0,
-                  "core-id": 0,
-                  "thread-id": 0
-              }
-          }
-      ]
-  }
-
-
-As noted in another message, I am not sure we really should make
-"-numa" affect query-hotpluggable-cpus output unconditionally (I
-believe we shouldn't). But we do, we need to document this very
-clearly.
-
-
-> ---
->  include/hw/boards.h |  2 ++
->  hw/core/machine.c   | 68 +++++++++++++++++++++++++++++++++++++++++++++++++++++
->  numa.c              |  8 +++++++
->  3 files changed, 78 insertions(+)
-> 
-> diff --git a/include/hw/boards.h b/include/hw/boards.h
-> index 1dd0fde..40f30f1 100644
-> --- a/include/hw/boards.h
-> +++ b/include/hw/boards.h
-> @@ -42,6 +42,8 @@ bool machine_dump_guest_core(MachineState *machine);
->  bool machine_mem_merge(MachineState *machine);
->  void machine_register_compat_props(MachineState *machine);
->  HotpluggableCPUList *machine_query_hotpluggable_cpus(MachineState *machine);
-> +void machine_set_cpu_numa_node(MachineState *machine,
-> +                               CpuInstanceProperties *props, Error **errp);
->  
->  /**
->   * CPUArchId:
-> diff --git a/hw/core/machine.c b/hw/core/machine.c
-> index 0d92672..6ff0b45 100644
-> --- a/hw/core/machine.c
-> +++ b/hw/core/machine.c
-> @@ -388,6 +388,74 @@ HotpluggableCPUList *machine_query_hotpluggable_cpus(MachineState *machine)
->      return head;
->  }
->  
-> +void machine_set_cpu_numa_node(MachineState *machine,
-> +                               CpuInstanceProperties *props, Error **errp)
-> +{
-> +    MachineClass *mc = MACHINE_GET_CLASS(machine);
-> +    bool match = false;
-> +    int i;
-> +
-> +    if (!mc->possible_cpu_arch_ids) {
-> +        error_setg(errp, "mapping of CPUs to NUMA node is not supported");
-> +        return;
-> +    }
-> +
-> +    /* force board to initialize possible_cpus if it hasn't been done yet */
-> +    mc->possible_cpu_arch_ids(machine);
-> +
-> +    for (i = 0; i < machine->possible_cpus->len; i++) {
-> +        CPUArchId *slot = &machine->possible_cpus->cpus[i];
-> +
-> +        /* reject unsupported by board properties */
-> +        if (props->has_thread_id && !slot->props.has_thread_id) {
-> +            error_setg(errp, "thread-id is not supported");
-> +            return;
-> +        }
-> +
-> +        if (props->has_core_id && !slot->props.has_core_id) {
-> +            error_setg(errp, "core-id is not supported");
-> +            return;
-> +        }
-> +
-> +        if (props->has_socket_id && !slot->props.has_socket_id) {
-> +            error_setg(errp, "socket-id is not supported");
-> +            return;
-> +        }
-> +
-> +        /* skip slots with explicit mismatch */
-> +        if (props->has_thread_id && props->thread_id != slot->props.thread_id) {
-> +                continue;
-> +        }
-> +
-> +        if (props->has_core_id && props->core_id != slot->props.core_id) {
-> +                continue;
-> +        }
-> +
-> +        if (props->has_socket_id && props->socket_id != slot->props.socket_id) {
-> +                continue;
-> +        }
-> +
-> +        /* reject assignment if slot is already assigned, for compatibility
-> +         * of legacy cpu_index mapping with SPAPR core based mapping do not
-> +         * error out if cpu thread and matched core have the same node-id */
-> +        if (slot->props.has_node_id &&
-> +            slot->props.node_id != props->node_id) {
-> +            error_setg(errp, "CPU is already assigned to node-id: %" PRId64,
-> +                       slot->props.node_id);
-> +            return;
-> +        }
-> +
-> +        /* assign slot to node as it's matched '-numa cpu' key */
-> +        match = true;
-> +        slot->props.node_id = props->node_id;
-> +        slot->props.has_node_id = props->has_node_id;
-> +    }
-> +
-> +    if (!match) {
-> +        error_setg(errp, "no match found");
-> +    }
-> +}
-> +
->  static void machine_class_init(ObjectClass *oc, void *data)
->  {
->      MachineClass *mc = MACHINE_CLASS(oc);
-> diff --git a/numa.c b/numa.c
-> index 24c596d..44057f1 100644
-> --- a/numa.c
-> +++ b/numa.c
-> @@ -169,6 +169,7 @@ static void numa_node_parse(MachineState *ms, NumaNodeOptions *node,
->          exit(1);
->      }
->      for (cpus = node->cpus; cpus; cpus = cpus->next) {
-> +        CpuInstanceProperties props;
->          if (cpus->value >= max_cpus) {
->              error_setg(errp,
->                         "CPU index (%" PRIu16 ")"
-> @@ -177,6 +178,10 @@ static void numa_node_parse(MachineState *ms, NumaNodeOptions *node,
->              return;
->          }
->          bitmap_set(numa_info[nodenr].node_cpu, cpus->value, 1);
-> +        props = mc->cpu_index_to_instance_props(ms, cpus->value);
-> +        props.node_id = nodenr;
-> +        props.has_node_id = true;
-> +        machine_set_cpu_numa_node(ms, &props, &error_fatal);
->      }
->  
->      if (node->has_mem && node->has_memdev) {
-> @@ -393,9 +398,12 @@ void parse_numa_opts(MachineState *ms)
->          if (i == nb_numa_nodes) {
->              for (i = 0; i < max_cpus; i++) {
->                  CpuInstanceProperties props;
-> +                /* fetch default mapping from board and enable it */
->                  props = mc->cpu_index_to_instance_props(ms, i);
-> +                props.has_node_id = true;
->  
->                  set_bit(i, numa_info[props.node_id].node_cpu);
-> +                machine_set_cpu_numa_node(ms, &props, &error_fatal);
->              }
->          }
->  
-> -- 
-> 2.7.4
-> 
-> 
-
--- 
-Eduardo

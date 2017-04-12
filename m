@@ -1,94 +1,99 @@
-Received: by 10.25.0.144 with SMTP id 138csp138043lfa;
-        Tue, 11 Apr 2017 22:07:33 -0700 (PDT)
-X-Received: by 10.55.132.3 with SMTP id g3mr55915750qkd.300.1491973653795;
-        Tue, 11 Apr 2017 22:07:33 -0700 (PDT)
-Return-Path: <cota@braap.org>
-Received: from out1-smtp.messagingengine.com (out1-smtp.messagingengine.com. [66.111.4.25])
-        by mx.google.com with ESMTPS id y10si8264571qkb.235.2017.04.11.22.07.33
+Return-Path: <alex.bennee@linaro.org>
+Received: from zen.linaro.local ([81.128.185.34])
+        by smtp.gmail.com with ESMTPSA id m139sm5897849wmb.27.2017.04.12.03.03.14
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 11 Apr 2017 22:07:33 -0700 (PDT)
-Received-SPF: pass (google.com: domain of cota@braap.org designates 66.111.4.25 as permitted sender) client-ip=66.111.4.25;
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@braap.org;
-       dkim=pass header.i=@messagingengine.com;
-       spf=pass (google.com: domain of cota@braap.org designates 66.111.4.25 as permitted sender) smtp.mailfrom=cota@braap.org
-Received: from compute4.internal (compute4.nyi.internal [10.202.2.44])
-	by mailout.nyi.internal (Postfix) with ESMTP id 3ACF220C57;
-	Wed, 12 Apr 2017 01:07:33 -0400 (EDT)
-Received: from frontend1 ([10.202.2.160])
-  by compute4.internal (MEProxy); Wed, 12 Apr 2017 01:07:33 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=braap.org; h=cc
-	:content-type:date:from:in-reply-to:message-id:mime-version
-	:references:subject:to:x-me-sender:x-me-sender:x-sasl-enc
-	:x-sasl-enc; s=mesmtp; bh=Hq9ID9E0qczz1XceUvpnBXpQFyPOvqlAzoI4ci
-	m6238=; b=pfdejkQQqzcwHvcUjZ1QwgkqxxdXF0EwsO5g0oRnRVo9AvRAxygHRx
-	ZOTfBbR24iUg+dMvWOnKsgJyZ/B5sgadaCxwo3lw/bQaxkFNUSI1NGTIt8m3Wwu/
-	MjaJKDAkXM6uZjqNX9CEhxQFZv37irhNwspllIEYOjTe8dBpvcGF0=
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
-	messagingengine.com; h=cc:content-type:date:from:in-reply-to
-	:message-id:mime-version:references:subject:to:x-me-sender
-	:x-me-sender:x-sasl-enc:x-sasl-enc; s=fm1; bh=Hq9ID9E0qczz1XceUv
-	pnBXpQFyPOvqlAzoI4cim6238=; b=LtfjYywQWc6uTqiV/dTOISKKgiil3aTjgT
-	frKAA53PycLIoP/bWJK6hsoSsnVW9sAdkgVqOnTbZOCOMm/z9VxEOu9wwoUe8Icg
-	1vgVSm5sxso/ia/IlmzkoMNDAtgTYASTL/dr6W3ruKfIgWsYW0+Nh1749joEOaOl
-	ZYV8gMb8DKUkz3MK33jloUnGUhdV7uw8yg8QYuvQ1UUX7I1CHl/2teNcIZSQ4Amr
-	F47ymoLEFHzFLJtG7u0WYUB4hv4TSQRmoP5aC8rnnboPS4WD1cfKa+mMquLXMvhF
-	xRqystVCb/SRPOpt19KUbNwBm+nPet3cplj9wrLeooI5FLuzjzfA==
-X-ME-Sender: <xms:FbbtWEnsZwJvXtWbEBjtbjk1jkNLgMVW1iJU0yHso3AkP7g8jSPJlg>
-X-Sasl-enc: SwtJTGVGVpyINVYfPRLgzZp4i9wkIw9t1xgP3KW4PT4W 1491973652
-Received: from localhost (flamenco.cs.columbia.edu [128.59.20.216])
-	by mail.messagingengine.com (Postfix) with ESMTPA id E8FAF7E638;
-	Wed, 12 Apr 2017 01:07:32 -0400 (EDT)
-Date: Wed, 12 Apr 2017 01:07:32 -0400
-From: "Emilio G. Cota" <cota@braap.org>
-To: Paolo Bonzini <pbonzini@redhat.com>
-Cc: qemu-devel@nongnu.org, Peter Crosthwaite <crosthwaite.peter@gmail.com>,
-	Richard Henderson <rth@twiddle.net>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	Eduardo Habkost <ehabkost@redhat.com>,
-	Andrzej Zaborowski <balrogg@gmail.com>,
-	Aurelien Jarno <aurelien@aurel32.net>,
-	Alexander Graf <agraf@suse.de>, Stefan Weil <sw@weilnetz.de>,
-	qemu-arm@nongnu.org, alex.bennee@linaro.org,
-	Pranith Kumar <bobby.prani+qemu@gmail.com>
-Subject: Re: [PATCH 10/10] tb-hash: improve tb_jmp_cache hash function in
- user mode
-Message-ID: <20170412050732.GA10279@flamenco>
+        Wed, 12 Apr 2017 03:03:14 -0700 (PDT)
+Received: from zen (localhost [127.0.0.1])
+	by zen.linaro.local (Postfix) with ESMTPS id AC57A3E058D;
+	Wed, 12 Apr 2017 11:03:25 +0100 (BST)
 References: <1491959850-30756-1-git-send-email-cota@braap.org>
- <1491959850-30756-11-git-send-email-cota@braap.org>
- <93ae643a-582f-8f1a-3f2a-63ae2d9261bc@redhat.com>
+User-agent: mu4e 0.9.19; emacs 25.2.15
+From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: "Emilio G. Cota" <cota@braap.org>
+Cc: qemu-devel@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>, Peter Crosthwaite <crosthwaite.peter@gmail.com>, Richard Henderson <rth@twiddle.net>, Peter Maydell <peter.maydell@linaro.org>, Eduardo Habkost <ehabkost@redhat.com>, Claudio Fontana <claudio.fontana@huawei.com>, Andrzej Zaborowski <balrogg@gmail.com>, Aurelien Jarno <aurelien@aurel32.net>, Alexander Graf <agraf@suse.de>, Stefan Weil <sw@weilnetz.de>, qemu-arm@nongnu.org, Pranith Kumar <bobby.prani+qemu@gmail.com>
+Subject: Re: [PATCH 00/10] TCG optimizations for 2.10
+In-reply-to: <1491959850-30756-1-git-send-email-cota@braap.org>
+Date: Wed, 12 Apr 2017 11:03:25 +0100
+Message-ID: <87fuhej636.fsf@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <93ae643a-582f-8f1a-3f2a-63ae2d9261bc@redhat.com>
-User-Agent: Mutt/1.5.24 (2015-08-30)
-X-TUID: 1v+MqjX6y2+V
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-TUID: DSzwUHCZ8PZJ
 
-On Wed, Apr 12, 2017 at 11:46:47 +0800, Paolo Bonzini wrote:
-> 
-> 
-> On 12/04/2017 09:17, Emilio G. Cota wrote:
-> > +
-> > +/* In user-mode we can get better hashing because we do not have a TLB */
-> > +static inline unsigned int tb_jmp_cache_hash_func(target_ulong pc)
-> > +{
-> > +    return (pc ^ (pc >> TB_JMP_CACHE_BITS)) & (TB_JMP_CACHE_SIZE - 1);
-> > +}
-> 
-> What about multiplicative hashing?
-> 
-> 	return (uint64_t) (pc * 2654435761) >> 32;
 
-I tested this one, taking the TB_JMP_CACHE_SIZE-1 lower bits of
-the result:
+Emilio G. Cota <cota@braap.org> writes:
 
-  http://imgur.com/QIhm875
+> Hi all,
+>
+> This series is aimed at 2.10 or beyond. Its goal is to improve
+> TCG performance by optimizing:
+>
+> 1- Cross-page direct jumps (softmmu only, obviously). Patches 1-4.
+> 2- Indirect branches (softmmu and user-mode). Patches 5-9.
+> 3- tb_jmp_cache hashing in user-mode. Patch 10.
+>
+> I decided to work on this after reading this paper [1] (code at [2]),
+> which among other optimizations it proposes solutions for 1 and 2.
+> I followed the same overall scheme they follow, that is to use helpers
+> to check whether the target vaddr is valid, and if so, jump to its
+> corresponding translated code (host address) without having to go back
+> to the exec loop. My implementation differs from that in the paper
+> in that it uses tb_jmp_cache instead of adding more caches,
+> which is simpler and probably more resilient in environments
+> where TLB invalidations are frequent (in the paper they acknowledge
+> that they limited background processes to a minimum, which isn't
+> realistic).
 
-In terms of quality it's good (I profile hit rates and they're all
-pretty good), but shift+xor are just so hard to beat: shift+xor
-take 1 cycle each; the multiplication takes on my machine 3 or 4
-cycles (source: Fog's tables).
+Hi Emilio,
 
-Thanks,
+If you want to get some numbers on TLB invalidations please have a look
+at my WIP branch:
 
-		E.
+  https://github.com/stsquad/qemu/tree/misc/tlb-flush-stats
+
+It's mainly an experiment at how easy it is to extract number data using
+QEMU's trace subsystem (it turns out pretty easy). I had started looking
+at the execution trace but got a little bogged down with re-implementing
+hashes in python - it would be nice if we could just ctype dll load the
+C implementation (or maybe just save the computed hashes in another
+trace point rather than inferring via exec_tb).
+
+>
+> These changes require modifications on the targets and, for optimization
+> number 2, a new TCG opcode to jump to a host address contained in a register.
+>
+> For now I only implemented this for the i386 and arm targets, and
+> the i386 TCG backend. Other targets/backends can easily opt-in.
+>
+> The 3rd optimization is implemented in the last patch: it improves
+> tb_jmp_cache hashing for user-mode by removing the requirement of
+> being able to clear parts of the cache given a page number, since this
+> requirement only applies to softmmu.
+>
+> The series applies cleanly on top of 95b31d709ba34.
+>
+> The commit logs include many measurements, performed using SPECint06 and
+> NBench from dbt-bench[3].
+>
+> Feedback welcome! Thanks,
+
+Given my notes above I think it would be worthwhile coming up with some
+trace-points in the helpers and hash lookups so we can analyse their
+behaviour as well as just looking at the performance improvement in
+benchmarks.
+
+>
+> 		Emilio
+>
+> [1] "Optimizing Control Transfer and Memory Virtualization
+> in Full System Emulators", Ding-Yong Hong, Chun-Chen Hsu, Cheng-Yi Chou,
+> Wei-Chung Hsu, Pangfeng Liu, Jan-Jan Wu. ACM TACO, Jan. 2016.
+>   http://www.iis.sinica.edu.tw/page/library/TechReport/tr2015/tr15002.pdf
+>
+> [2] https://github.com/tkhsu/quick-android-emulator/tree/quick-qemu
+>
+> [3] https://github.com/cota/dbt-bench
+
+
+--
+Alex Bennée

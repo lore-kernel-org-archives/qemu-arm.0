@@ -1,68 +1,68 @@
-Received: by 10.25.0.144 with SMTP id 138csp754850lfa;
-        Thu, 13 Apr 2017 06:58:19 -0700 (PDT)
-X-Received: by 10.55.217.205 with SMTP id q74mr2457755qkl.136.1492091899665;
-        Thu, 13 Apr 2017 06:58:19 -0700 (PDT)
+Received: by 10.25.0.144 with SMTP id 138csp833798lfa;
+        Thu, 13 Apr 2017 10:09:51 -0700 (PDT)
+X-Received: by 10.55.108.68 with SMTP id h65mr3840424qkc.302.1492103391658;
+        Thu, 13 Apr 2017 10:09:51 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id h89si10242702qtd.269.2017.04.13.06.58.19
+        by mx.google.com with ESMTPS id a4si23187767qkc.54.2017.04.13.10.09.51
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 13 Apr 2017 06:58:19 -0700 (PDT)
+        Thu, 13 Apr 2017 10:09:51 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:49300 helo=lists.gnu.org)
+Received: from localhost ([::1]:50114 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1cyfGN-0004X1-4s
-	for alex.bennee@linaro.org; Thu, 13 Apr 2017 09:58:19 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:50013)
+	id 1cyiFj-00049Y-1c
+	for alex.bennee@linaro.org; Thu, 13 Apr 2017 13:09:51 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:48661)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <ehabkost@redhat.com>) id 1cyfGJ-0004Ww-OT
-	for qemu-arm@nongnu.org; Thu, 13 Apr 2017 09:58:16 -0400
+	(envelope-from <lersek@redhat.com>) id 1cyiFa-00047h-Ed
+	for qemu-arm@nongnu.org; Thu, 13 Apr 2017 13:09:44 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <ehabkost@redhat.com>) id 1cyfGE-0004dn-Sm
-	for qemu-arm@nongnu.org; Thu, 13 Apr 2017 09:58:15 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:41306)
+	(envelope-from <lersek@redhat.com>) id 1cyiFY-0007P4-CA
+	for qemu-arm@nongnu.org; Thu, 13 Apr 2017 13:09:42 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:52796)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <ehabkost@redhat.com>)
-	id 1cyfGE-0004cS-Ju; Thu, 13 Apr 2017 09:58:10 -0400
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
-	[10.5.11.16])
+	(Exim 4.71) (envelope-from <lersek@redhat.com>)
+	id 1cyiFY-0007Oa-2b; Thu, 13 Apr 2017 13:09:40 -0400
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
+	[10.5.11.12])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 437EB8E251;
-	Thu, 13 Apr 2017 13:58:09 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 437EB8E251
-Authentication-Results: ext-mx02.extmail.prod.ext.phx2.redhat.com;
+	by mx1.redhat.com (Postfix) with ESMTPS id 115D67AEB6;
+	Thu, 13 Apr 2017 17:09:39 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 115D67AEB6
+Authentication-Results: ext-mx01.extmail.prod.ext.phx2.redhat.com;
 	dmarc=none (p=none dis=none) header.from=redhat.com
-Authentication-Results: ext-mx02.extmail.prod.ext.phx2.redhat.com;
-	spf=pass smtp.mailfrom=ehabkost@redhat.com
-DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com 437EB8E251
-Received: from localhost (ovpn-116-31.gru2.redhat.com [10.97.116.31])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id F26839FDEB;
-	Thu, 13 Apr 2017 13:58:06 +0000 (UTC)
-Date: Thu, 13 Apr 2017 10:58:05 -0300
-From: Eduardo Habkost <ehabkost@redhat.com>
-To: Igor Mammedov <imammedo@redhat.com>
-Message-ID: <20170413135805.GE27126@thinpad.lan.raisama.net>
-References: <1490189568-167621-1-git-send-email-imammedo@redhat.com>
-	<1490189568-167621-11-git-send-email-imammedo@redhat.com>
+Authentication-Results: ext-mx01.extmail.prod.ext.phx2.redhat.com;
+	spf=pass smtp.mailfrom=lersek@redhat.com
+DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com 115D67AEB6
+Received: from lacos-laptop-7.usersys.redhat.com (ovpn-117-106.phx2.redhat.com
+	[10.3.117.106])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 570E77E8E0;
+	Thu, 13 Apr 2017 17:09:33 +0000 (UTC)
+To: Shannon Zhao <zhaoshenglong@huawei.com>,
+	"edk2-devel@lists.01.org" <edk2-devel@ml01.01.org>
+References: <58EF2AA9.8010501@huawei.com>
+From: Laszlo Ersek <lersek@redhat.com>
+Message-ID: <313049a7-b154-d3a1-9cb1-205950ab055a@redhat.com>
+Date: Thu, 13 Apr 2017 19:09:31 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
+	Thunderbird/45.8.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <1490189568-167621-11-git-send-email-imammedo@redhat.com>
-X-Fnord: you can see the fnord
-User-Agent: Mutt/1.7.1 (2016-10-04)
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
+In-Reply-To: <58EF2AA9.8010501@huawei.com>
+Content-Type: text/plain; charset=windows-1252
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.26]);
-	Thu, 13 Apr 2017 13:58:09 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.25]);
+	Thu, 13 Apr 2017 17:09:39 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH for-2.10 10/23] numa: mirror cpu
- to node mapping in MachineState::possible_cpus
+Subject: Re: [Qemu-arm] ARM virt machine boots fail with 14 ioh3420
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -74,120 +74,153 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jones <drjones@redhat.com>,
-	qemu-devel@nongnu.org, qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
-	Shannon Zhao <zhaoshenglong@huawei.com>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	David Gibson <david@gibson.dropbear.id.au>
+Cc: Drew Jones <drjones@redhat.com>, Ard Biesheuvel <ard.biesheuvel@linaro.org>,
+	Andrea Bolognani <abologna@redhat.com>,
+	qemu devel list <qemu-devel@nongnu.org>,
+	qemu-arm <qemu-arm@nongnu.org>, zhuweilun <zhuweilun@huawei.com>,
+	Marcel Apfelbaum <marcel@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: A3zbHM4Ve8oH
+X-TUID: uWzG+gN19qd+
 
-On Wed, Mar 22, 2017 at 02:32:35PM +0100, Igor Mammedov wrote:
-> Introduce machine_set_cpu_numa_node() helper that stores
-> node mapping for CPU in MachineState::possible_cpus.
-> CPU and node it belongs to is specified by 'props' argument.
+Adding Andrea, Ard, Drew and Marcel; and the main qemu list
+
+On 04/13/17 09:37, Shannon Zhao wrote:
+> Hi,
 > 
-> Patch doesn't remove old way of storing mapping in
-> numa_info[X].node_cpu as removing it at the same time
-> makes patch rather big. Instead it just mirrors mapping
-> in possible_cpus and follow up per target patches will
-> switch to possible_cpus and numa_info[X].node_cpu will
-> be removed once there isn't any users left.
+> I'm testing the PCIe devices hotplug for ARM virt machine and using
+> ioh3420 as root port. I found that below command line could work.
 > 
-> Signed-off-by: Igor Mammedov <imammedo@redhat.com>
-> ---
->  include/hw/boards.h |  2 ++
->  hw/core/machine.c   | 68 +++++++++++++++++++++++++++++++++++++++++++++++++++++
->  numa.c              |  8 +++++++
->  3 files changed, 78 insertions(+)
+> qemu-system-aarch64 -machine virt,accel=kvm,usb=off -cpu host -bios
+> QEMU_EFI.fd -m 12288 -smp 8,sockets=8,cores=1,threads=1  -device
+> ioh3420,port=0x8,chassis=1,id=pci.1,bus=pcie.0,addr=0x1 -device
+> ioh3420,port=0x9,chassis=2,id=pci.2,bus=pcie.0,addr=0x2 -device
+> ioh3420,port=0xa,chassis=3,id=pci.3,bus=pcie.0,addr=0x3 -device
+> ioh3420,port=0xb,chassis=4,id=pci.4,bus=pcie.0,addr=0x4 -device
+> ioh3420,port=0xc,chassis=5,id=pci.5,bus=pcie.0,addr=0x5 -device
+> ioh3420,port=0xd,chassis=6,id=pci.6,bus=pcie.0,addr=0x6 -device
+> ioh3420,port=0xe,chassis=7,id=pci.7,bus=pcie.0,addr=0x7 -device
+> ioh3420,port=0xf,chassis=8,id=pci.8,bus=pcie.0,addr=0x8 -device
+> ioh3420,port=0x10,chassis=9,id=pci.9,bus=pcie.0,addr=0x9 -device
+> ioh3420,port=0x11,chassis=10,id=pci.10,bus=pcie.0,addr=0xa -device
+> ioh3420,port=0x12,chassis=11,id=pci.11,bus=pcie.0,addr=0xb -device
+> ioh3420,port=0x13,chassis=12,id=pci.12,bus=pcie.0,addr=0xc -device
+> ioh3420,port=0x14,chassis=13,id=pci.13,bus=pcie.0,addr=0xd -device
+> i82801b11-bridge,id=pci.17,bus=pcie.0,addr=0x11 -device
+> pci-bridge,chassis_nr=18,id=pci.18,bus=pci.17,addr=0x0 -device
+> usb-ehci,id=usb,bus=pci.18,addr=0x1 -device
+> virtio-scsi-pci,id=scsi0,bus=pci.1,addr=0x0,disable-legacy=on,disable-modern=off
+> -drive
+> file=/mnt/sdb/guest.raw,format=raw,if=none,id=drive-scsi0-0-0-0,cache=none,aio=native
+> -device
+> scsi-hd,bus=scsi0.0,channel=0,scsi-id=0,lun=0,drive=drive-scsi0-0-0-0,id=scsi0-0-0-0,bootindex=1
+> -netdev tap,id=hostnet1,vhost=on -device
+> virtio-net-pci,netdev=hostnet1,id=net1,mac=00:16:3e:2b:cc:e1,bus=pci.2,addr=0x0,disable-legacy=on,disable-modern=off
+> -netdev tap,id=hostnet2,vhost=on -device
+> virtio-net-pci,netdev=hostnet2,id=net2,mac=00:16:3e:22:29:80,bus=pci.3,addr=0x0,disable-legacy=on,disable-modern=off
+> -netdev tap,id=hostnet3,vhost=on -device
+> virtio-net-pci,netdev=hostnet3,id=net3,mac=00:16:3e:28:07:9a,bus=pci.4,addr=0x0,disable-legacy=on,disable-modern=off
+> -netdev tap,id=hostnet4,vhost=on -device
+> virtio-net-pci,netdev=hostnet4,id=net4,mac=00:16:3e:3d:cd:b6,bus=pci.5,addr=0x0,disable-legacy=on,disable-modern=off
+> -netdev tap,id=hostnet5,vhost=on -device
+> virtio-net-pci,netdev=hostnet5,id=net5,mac=00:16:3e:64:9f:b0,bus=pci.6,addr=0x0,disable-legacy=on,disable-modern=off
+> -netdev tap,id=hostnet6,vhost=on -device
+> virtio-net-pci,netdev=hostnet6,id=net6,mac=00:16:3e:33:5b:d3,bus=pci.7,addr=0x0,disable-legacy=on,disable-modern=off
+> -netdev tap,id=hostnet7,vhost=on -device
+> virtio-net-pci,netdev=hostnet7,id=net7,mac=00:16:3e:39:7c:df,bus=pci.8,addr=0x0,disable-legacy=on,disable-modern=off
+> -netdev tap,id=hostnet8,vhost=on -device
+> virtio-net-pci,netdev=hostnet8,id=net8,mac=00:16:3e:0a:c1:4e,bus=pci.9,addr=0x0,disable-legacy=on,disable-modern=off
+> -netdev tap,id=hostnet9,vhost=on -device
+> virtio-net-pci,netdev=hostnet9,id=net9,mac=00:16:3e:0a:58:a6,bus=pci.10,addr=0x0,disable-legacy=on,disable-modern=off
+> -netdev tap,id=hostnet10,vhost=on -device
+> virtio-net-pci,netdev=hostnet10,id=net10,mac=00:16:3e:35:b5:80,bus=pci.11,addr=0x0,disable-legacy=on,disable-modern=off
+> -netdev tap,id=hostnet11,vhost=on -device
+> virtio-net-pci,netdev=hostnet11,id=net11,mac=00:16:3e:4d:b5:bb,bus=pci.12,addr=0x0,disable-legacy=on,disable-modern=off
+> -netdev tap,id=hostnet12,vhost=on -device
+> virtio-net-pci,netdev=hostnet12,id=net12,mac=00:16:3e:3b:69:e9,bus=pci.13,addr=0x0,disable-legacy=on,disable-modern=off
+> -nographic
 > 
-> diff --git a/include/hw/boards.h b/include/hw/boards.h
-> index 1dd0fde..40f30f1 100644
-> --- a/include/hw/boards.h
-> +++ b/include/hw/boards.h
-> @@ -42,6 +42,8 @@ bool machine_dump_guest_core(MachineState *machine);
->  bool machine_mem_merge(MachineState *machine);
->  void machine_register_compat_props(MachineState *machine);
->  HotpluggableCPUList *machine_query_hotpluggable_cpus(MachineState *machine);
-> +void machine_set_cpu_numa_node(MachineState *machine,
-> +                               CpuInstanceProperties *props, Error **errp);
->  
->  /**
->   * CPUArchId:
-> diff --git a/hw/core/machine.c b/hw/core/machine.c
-> index 0d92672..6ff0b45 100644
-> --- a/hw/core/machine.c
-> +++ b/hw/core/machine.c
-> @@ -388,6 +388,74 @@ HotpluggableCPUList *machine_query_hotpluggable_cpus(MachineState *machine)
->      return head;
->  }
->  
-> +void machine_set_cpu_numa_node(MachineState *machine,
-> +                               CpuInstanceProperties *props, Error **errp)
-
-If you change this to:
-
-  void cpu_slot_set_numa_node(CPUArchId *slot, uint64_t node_id,
-                              Error **errp);
-
-and move the CPU slot lookup code from machine_set_cpu_numa_node()
-to a helper:
-
-  CPUArchId *machine_get_cpu_slot(MachineState *machine,
-                                  CpuInstanceProperties *props, Error **errp);
-
-and change cpu_index_to_cpu_instance_props to return CPUArchId:
-
-  CPUArchId *cpu_index_to_cpu_slot(MachineState *machine, int cpu_index);
-
-We could simply have this on "-numa cpu" code:
-
-    slot = machine_get_cpu_slot(machine, props);
-    cpu_slot_set_numa_node(slot, node_id);
-
-and this on the legacy "-numa node,cpu=..." code:
-
-    slot = mc->cpu_index_to_cpu_slot(machine, i);
-    cpu_slot_set_numa_node(slot, node_id);
-
-I believe we will be able to reuse machine_get_cpu_slot() to
-replace pc_find_cpu_slot() and spapr_find_cpu_slot() later.
-
-(I also suggest renaming "CPUArchId" and "possible CPUs" to
-"CPUSlot" and "CPU slots" in the code and comments. This would
-help people reviewing the code, but it can be done later if you
-prefer.)
-
-[...]
-> @@ -177,6 +178,10 @@ static void numa_node_parse(MachineState *ms, NumaNodeOptions *node,
->              return;
->          }
->          bitmap_set(numa_info[nodenr].node_cpu, cpus->value, 1);
-> +        props = mc->cpu_index_to_instance_props(ms, cpus->value);
-> +        props.node_id = nodenr;
-> +        props.has_node_id = true;
-> +        machine_set_cpu_numa_node(ms, &props, &error_fatal);
->      }
->  
->      if (node->has_mem && node->has_memdev) {
-> @@ -393,9 +398,12 @@ void parse_numa_opts(MachineState *ms)
->          if (i == nb_numa_nodes) {
->              for (i = 0; i < max_cpus; i++) {
->                  CpuInstanceProperties props;
-> +                /* fetch default mapping from board and enable it */
->                  props = mc->cpu_index_to_instance_props(ms, i);
-> +                props.has_node_id = true;
->  
->                  set_bit(i, numa_info[props.node_id].node_cpu);
-> +                machine_set_cpu_numa_node(ms, &props, &error_fatal);
->              }
->          }
->  
-> -- 
-> 2.7.4
+> But if I add one more ioh3420 device by appending above command with
+> "-device ioh3420,port=0x15,chassis=14,id=pci.14,bus=pcie.0,addr=0xe",
+> the guest can't boot. It seems that the firmware doesn't recognize the
+> PCIe devices and print "Connect: PciRoot(0x0): Not Found".
 > 
-> 
+> I'm using QEMU 2.8.1 and edk2 at commit 36a0d5c. Is there any limitation
+> of the supported PCIe devices?
 
--- 
-Eduardo
+In one sentence: you are running out of (emulated) IO space.
+
+Aarch64 does not have "IO space", but with QEMU, using the "virt"
+machine type, we emulate 64KB of IO space, mapped to a special MMIO
+range. This is available for PCI resource allocation, for such devices
+that have IO BARs (and for such PCI bridges that reserve IO space for
+hotplug purposes).
+
+The ioh3420 PCI Express Root Port device represents such a bridge. Even
+if you plug a PCI Express device into it that has only MMIO BARs, the
+bridge still advertises IO support, and it causes the firmware (and/or
+Linux) to reserve 4KB of IO space. With ~15-16 such ports, you run out
+of the 64 KB IO aperture, and the resource assignment fails.
+
+The solution to this problem comes together from several parts:
+
+(1) New, vendor-independent device models in QEMU, for PCI Express Root
+Ports and Downstream Ports, that (optionally) do not advertise any
+support at all for IO BARs. This is on Marcel's task list. Please refer to:
+
+  generic port device model:
+    https://bugzilla.redhat.com/show_bug.cgi?id=1390316
+
+  optional disablement of IO space:
+    https://bugzilla.redhat.com/show_bug.cgi?id=1344299
+
+(2) A similar question exists for MMIO space. While there the issue
+isn't exactly "running out of available aperture", we still want to
+control the MMIO reservation size for root ports and downstream ports --
+different devices that are to be hot-plugged can require different
+reservations in advance. For this, please refer to:
+
+  sizing of MMIO reservation:
+    https://bugzilla.redhat.com/show_bug.cgi?id=1437113
+
+(3) In the firmware, platform code can control the aperture reservation
+of bridges, for hotplug purposes, while the generic PCI Bus driver
+enumerates devices and assigns resources. The driver that does this is
+
+  OvmfPkg/PciHotPlugInitDxe
+
+At the moment, this driver is only included in OVMF, not in ArmVirtQemu.
+Plus, it doesn't really do the right thing in OVMF either.
+
+Once items (1) and (2) above are solved, I will update PciHotPlugInitDxe
+so that it adheres to the reservation sizes dictated by QEMU. For this,
+please refer to:
+
+  adhere to IO reservation disablement:
+    https://bugzilla.redhat.com/show_bug.cgi?id=1434740
+    (depends on BZ#1344299 above)
+
+  adhere to MMIO reservation sizing:
+    https://bugzilla.redhat.com/show_bug.cgi?id=1434747
+    (depends on BZ#1437113 above)
+
+We plan to work on these items in the following months (upstream first,
+obviously).
+
+--*--
+
+Please read the following document in the QEMU source tree:
+
+  docs/pcie.txt
+
+It will give you the "grand vision" we have for PCI Express on the Q35
+(x86) machine type, and most of that -- intentionally! -- applies to the
+"virt" (aarch64) machine type as well.
+
+See also the following QEMU commits (especially the second one):
+
+  9ca019c1dd57 q35: Improve sample configuration files
+  166d434685ed mach-virt: Provide sample configuration files
+
+Thanks!
+Laszlo

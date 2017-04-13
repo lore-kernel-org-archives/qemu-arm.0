@@ -1,68 +1,55 @@
-Received: by 10.25.0.144 with SMTP id 138csp636574lfa;
-        Thu, 13 Apr 2017 01:19:03 -0700 (PDT)
-X-Received: by 10.200.50.199 with SMTP id a7mr1478665qtb.95.1492071543715;
-        Thu, 13 Apr 2017 01:19:03 -0700 (PDT)
+Received: by 10.25.0.144 with SMTP id 138csp659496lfa;
+        Thu, 13 Apr 2017 02:42:31 -0700 (PDT)
+X-Received: by 10.55.54.16 with SMTP id d16mr1542091qka.97.1492076551825;
+        Thu, 13 Apr 2017 02:42:31 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id 6si10469056qke.125.2017.04.13.01.19.03
+        by mx.google.com with ESMTPS id m50si22202402qtm.193.2017.04.13.02.42.31
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 13 Apr 2017 01:19:03 -0700 (PDT)
+        Thu, 13 Apr 2017 02:42:31 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:47902 helo=lists.gnu.org)
+Received: from localhost ([::1]:48281 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1cyZy0-0007IW-TV
-	for alex.bennee@linaro.org; Thu, 13 Apr 2017 04:19:00 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:48862)
+	id 1cybGn-0001tW-6e
+	for alex.bennee@linaro.org; Thu, 13 Apr 2017 05:42:29 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:40736)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <lvivier@redhat.com>) id 1cyZxu-0007IQ-EO
-	for qemu-arm@nongnu.org; Thu, 13 Apr 2017 04:18:55 -0400
+	(envelope-from <clg@kaod.org>) id 1cybGb-0001rs-RK
+	for qemu-arm@nongnu.org; Thu, 13 Apr 2017 05:42:18 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <lvivier@redhat.com>) id 1cyZxr-0003jt-Am
-	for qemu-arm@nongnu.org; Thu, 13 Apr 2017 04:18:54 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:46986)
+	(envelope-from <clg@kaod.org>) id 1cybGX-0000n9-UI
+	for qemu-arm@nongnu.org; Thu, 13 Apr 2017 05:42:17 -0400
+Received: from 4.mo178.mail-out.ovh.net ([46.105.49.171]:36318)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <lvivier@redhat.com>)
-	id 1cyZxr-0003jU-59; Thu, 13 Apr 2017 04:18:51 -0400
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
-	[10.5.11.11])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id C28607572D;
-	Thu, 13 Apr 2017 08:18:49 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com C28607572D
-Authentication-Results: ext-mx01.extmail.prod.ext.phx2.redhat.com;
-	dmarc=none (p=none dis=none) header.from=redhat.com
-Authentication-Results: ext-mx01.extmail.prod.ext.phx2.redhat.com;
-	spf=pass smtp.mailfrom=lvivier@redhat.com
-DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com C28607572D
-Received: from [10.36.116.243] (ovpn-116-243.ams2.redhat.com [10.36.116.243])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id E34D218A4C;
-	Thu, 13 Apr 2017 08:18:47 +0000 (UTC)
-To: Markus Armbruster <armbru@redhat.com>
-References: <20170412173203.20072-1-lvivier@redhat.com>
-	<87efwwrdki.fsf@dusky.pond.sub.org>
-From: Laurent Vivier <lvivier@redhat.com>
-Message-ID: <ab71843b-7148-7df4-6e5a-c5585121fa1d@redhat.com>
-Date: Thu, 13 Apr 2017 10:18:47 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
-	Thunderbird/45.8.0
+	(Exim 4.71) (envelope-from <clg@kaod.org>) id 1cybGX-0000mu-NQ
+	for qemu-arm@nongnu.org; Thu, 13 Apr 2017 05:42:13 -0400
+Received: from player715.ha.ovh.net (b9.ovh.net [213.186.33.59])
+	by mo178.mail-out.ovh.net (Postfix) with ESMTP id 23C67308E9
+	for <qemu-arm@nongnu.org>; Thu, 13 Apr 2017 11:42:11 +0200 (CEST)
+Received: from zorba.kaod.org.com (LFbn-1-10647-27.w90-89.abo.wanadoo.fr
+	[90.89.233.27]) (Authenticated sender: clg@kaod.org)
+	by player715.ha.ovh.net (Postfix) with ESMTPSA id 9112B1C00A5;
+	Thu, 13 Apr 2017 11:42:03 +0200 (CEST)
+From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
+To: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 13 Apr 2017 11:41:49 +0200
+Message-Id: <1492076514-28821-1-git-send-email-clg@kaod.org>
+X-Mailer: git-send-email 2.7.4
 MIME-Version: 1.0
-In-Reply-To: <87efwwrdki.fsf@dusky.pond.sub.org>
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.25]);
-	Thu, 13 Apr 2017 08:18:50 +0000 (UTC)
+Content-Type: text/plain; charset=UTF-8
+X-Ovh-Tracer-Id: 5184487597427034897
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrfeeliedrudekgddujecutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmd
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH] arm: remove remaining
- cannot_destroy_with_object_finalize_yet
+X-Received-From: 46.105.49.171
+Subject: [Qemu-arm] [PATCH v2 0/5] FTGMAC100 nic model for the Aspeed SoCs
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -74,38 +61,61 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org,
-	Alistair Francis <alistair.francis@xilinx.com>,
-	Beniamino Galvani <b.galvani@gmail.com>, qemu-arm@nongnu.org,
-	Antony Pavlov <antonynpavlov@gmail.com>
+Cc: Jan Kiszka <jan.kiszka@siemens.com>, Jason Wang <jasowang@redhat.com>,
+	qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+	=?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
+	Dmitry Fleytman <dmitry@daynix.com>,
+	Samuel Thibault <samuel.thibault@ens-lyon.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 99grve25fXUj
+X-TUID: +QQQVpGyneg3
 
-On 13/04/2017 09:06, Markus Armbruster wrote:
-> Laurent Vivier <lvivier@redhat.com> writes:
-> 
->> With commit ce5b1bbf624b ("exec: move cpu_exec_init() calls to
->> realize functions"), we can now remove all the
->> remaining cannot_destroy_with_object_finalize_yet as
->> unsafe references have been moved to cpu_exec_realizefn().
->> (tested with QOM command provided by commit 4c315c27).
-> 
-> Also tested with device-introspect-test :)
-> 
->> Suggested-by: Markus Armbruster <armbru@redhat.com>
->> Signed-off-by: Laurent Vivier <lvivier@redhat.com>
-> 
-> Thanks, Laurent!
-> 
-> Reviewed-by: Markus Armbruster <armbru@redhat.com>
-> 
-> Just three places marking broken devices left: versatile.c
-> ("realview_pci" and "versatile_pci"), target/ppc/kvm.c (various ppc
-> CPUs).  Volunteers to fix them, so we can get rid of
-> cannot_destroy_with_object_finalize_yet?
-> 
+Hi,
 
-I think I can have a look to these ones too.
+The Aspeed SoCs AST2400 and AST2500 have two FTGMAC100 ethernet
+controllers. This serie proposes a model for this device and a way to
+customize the bit definitions which are slightly different from the
+Faraday definitions.
 
-Laurent
+The last patch adds a fake NC-SI (Network Controller Sideband
+Interface) backend to pretend a NIC is being managed. This is only
+usable with the slirp stack.
+
+The model has been tested on the 'palmetto', 'romulus' and
+'ast2500-evb' machines using different implementations of the Linux
+driver and with U-Boot.  It has been stressed with iperf.
+
+Thanks,
+
+C.=20
+
+C=C3=A9dric Le Goater (5):
+  hw/net: add MII definitions
+  net: add FTGMAC100 support
+  net/ftgmac100: add a 'aspeed' property
+  aspeed: add a FTGMAC100 nic
+  slirp: add a fake NC-SI backend
+
+ default-configs/arm-softmmu.mak |    1 +
+ hw/arm/aspeed_soc.c             |   21 +
+ hw/net/Makefile.objs            |    1 +
+ hw/net/ftgmac100.c              | 1016 +++++++++++++++++++++++++++++++++=
+++++++
+ include/hw/arm/aspeed_soc.h     |    2 +
+ include/hw/net/ftgmac100.h      |   64 +++
+ include/hw/net/mii.h            |   71 ++-
+ include/net/eth.h               |    1 +
+ slirp/Makefile.objs             |    2 +-
+ slirp/ncsi-pkt.h                |  418 ++++++++++++++++
+ slirp/ncsi.c                    |   78 +++
+ slirp/slirp.c                   |    4 +
+ slirp/slirp.h                   |    3 +
+ 13 files changed, 1663 insertions(+), 19 deletions(-)
+ create mode 100644 hw/net/ftgmac100.c
+ create mode 100644 include/hw/net/ftgmac100.h
+ create mode 100644 slirp/ncsi-pkt.h
+ create mode 100644 slirp/ncsi.c
+
+--=20
+2.7.4
+

@@ -1,93 +1,123 @@
-Received: by 10.25.0.144 with SMTP id 138csp515900lfa;
-        Wed, 12 Apr 2017 16:58:44 -0700 (PDT)
-X-Received: by 10.55.22.159 with SMTP id 31mr229144qkw.113.1492041524529;
-        Wed, 12 Apr 2017 16:58:44 -0700 (PDT)
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id z94si20940583qtc.333.2017.04.12.16.58.43
-        for <alex.bennee@linaro.org>
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 12 Apr 2017 16:58:44 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+Received: by 10.25.0.144 with SMTP id 138csp541979lfa;
+        Wed, 12 Apr 2017 18:46:48 -0700 (PDT)
+X-Received: by 10.55.127.129 with SMTP id a123mr493588qkd.127.1492048008011;
+        Wed, 12 Apr 2017 18:46:48 -0700 (PDT)
+Return-Path: <cota@braap.org>
+Received: from out1-smtp.messagingengine.com (out1-smtp.messagingengine.com. [66.111.4.25])
+        by mx.google.com with ESMTPS id u42si6373022qta.298.2017.04.12.18.46.47
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 12 Apr 2017 18:46:47 -0700 (PDT)
+Received-SPF: pass (google.com: domain of cota@braap.org designates 66.111.4.25 as permitted sender) client-ip=66.111.4.25;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:46638 helo=lists.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1cyS9p-0006Ls-To
-	for alex.bennee@linaro.org; Wed, 12 Apr 2017 19:58:41 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:43737)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <no-reply@patchew.org>) id 1cyS8j-0005lE-CT
-	for qemu-devel@nongnu.org; Wed, 12 Apr 2017 19:57:34 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <no-reply@patchew.org>) id 1cyS8g-0005ti-AY
-	for qemu-devel@nongnu.org; Wed, 12 Apr 2017 19:57:33 -0400
-Resent-Date: Wed, 12 Apr 2017 19:57:33 -0400
-Resent-Message-Id: <E1cyS8g-0005ti-AY@eggs.gnu.org>
-Received: from sender-of-o52.zoho.com ([135.84.80.217]:21312)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <no-reply@patchew.org>)
-	id 1cyS8g-0005tU-2h; Wed, 12 Apr 2017 19:57:30 -0400
-Received: from [172.17.0.2] (23.253.156.214 [23.253.156.214]) by
-	mx.zohomail.com with SMTPS id 1492041435625627.3669671235808;
-	Wed, 12 Apr 2017 16:57:15 -0700 (PDT)
-Message-ID: <149204143506.10500.9312462203357418218@6c512846dbc7>
-In-Reply-To: <20170408054318.19830-1-omar.rizwan@gmail.com>
+       dkim=pass header.i=@braap.org;
+       dkim=pass header.i=@messagingengine.com;
+       spf=pass (google.com: domain of cota@braap.org designates 66.111.4.25 as permitted sender) smtp.mailfrom=cota@braap.org
+Received: from compute4.internal (compute4.nyi.internal [10.202.2.44])
+	by mailout.nyi.internal (Postfix) with ESMTP id 673432100E;
+	Wed, 12 Apr 2017 21:46:47 -0400 (EDT)
+Received: from frontend2 ([10.202.2.161])
+  by compute4.internal (MEProxy); Wed, 12 Apr 2017 21:46:47 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=braap.org; h=cc
+	:content-type:date:from:in-reply-to:message-id:mime-version
+	:references:subject:to:x-me-sender:x-me-sender:x-sasl-enc
+	:x-sasl-enc; s=mesmtp; bh=zX0UtDf4AviOaXBMI9Y+ZGdqyS4R9WGdCjeY6W
+	WaRS4=; b=DayMhtsqAWZbO1h1UmjdUH4AIkKodG9zW9ulL3gztQFf3GoZkUD4Wi
+	QJaGxHFr5x8nipttTtMmPuVK2Wjlat3Z61oioWynsLU1Vc8AZAFlo3tEJfTdmokR
+	eYYXcKYIIhuQpWrChmtRtLmRrdR+aDlDuEIz9eGHM96Gd8cMO/TGQ=
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+	messagingengine.com; h=cc:content-type:date:from:in-reply-to
+	:message-id:mime-version:references:subject:to:x-me-sender
+	:x-me-sender:x-sasl-enc:x-sasl-enc; s=fm1; bh=zX0UtDf4AviOaXBMI9
+	Y+ZGdqyS4R9WGdCjeY6WWaRS4=; b=NM8ovvjIt2N/Qz17xmrX84gKsjrPOjpX8x
+	gXsmP3cNQCPf4AmQkp+cjjBosQ7qkLiz9xJ6UyJTxfJ692ydVNL2kaAEN8Gz8HGw
+	4omfel+2purOSjW9e+nY15UiccbMSoetUCBDLafB3bgMCNIUP7MkHeTBdh6XQzQt
+	0Xt5gJwybiNXf2QTIE+XVMoZtgK7mnSPt1Aw57DChY2Ox/tkgwnj9dkfQDHIgLA5
+	P31jtHGXYW0rq/SEaojuKl1o+ZkJZtQAK0HTIgtIwjGJlf9nTj6+wAi+HuBLOgIs
+	/lxldmXJiLhqfSuJEFQC2Flo6LKZkNsWAkGcV2G4SxTLSH/d5dog==
+X-ME-Sender: <xms:h9juWJIhWqCQRmCttz1Nzo_m5UyGi0gJ6PXvj5y0SAGdA2NYbMgVNA>
+X-Sasl-enc: 6NoG4EjlAscvI9SwaVU/vuqxUdCND1szlok/+tftFqoZ 1492048007
+Received: from localhost (flamenco.cs.columbia.edu [128.59.20.216])
+	by mail.messagingengine.com (Postfix) with ESMTPA id 1FDB32400E;
+	Wed, 12 Apr 2017 21:46:47 -0400 (EDT)
+Date: Wed, 12 Apr 2017 21:46:46 -0400
+From: "Emilio G. Cota" <cota@braap.org>
+To: Paolo Bonzini <pbonzini@redhat.com>
+Cc: qemu-devel@nongnu.org, Peter Crosthwaite <crosthwaite.peter@gmail.com>,
+	Richard Henderson <rth@twiddle.net>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	Eduardo Habkost <ehabkost@redhat.com>,
+	Claudio Fontana <claudio.fontana@huawei.com>,
+	Andrzej Zaborowski <balrogg@gmail.com>,
+	Aurelien Jarno <aurelien@aurel32.net>,
+	Alexander Graf <agraf@suse.de>, Stefan Weil <sw@weilnetz.de>,
+	qemu-arm@nongnu.org, alex.bennee@linaro.org,
+	Pranith Kumar <bobby.prani+qemu@gmail.com>
+Subject: Re: [PATCH 09/10] target/i386: optimize indirect branches with TCG's
+ jr op
+Message-ID: <20170413014646.GA1474@flamenco>
+References: <1491959850-30756-1-git-send-email-cota@braap.org>
+ <1491959850-30756-10-git-send-email-cota@braap.org>
+ <2ede0852-6888-8bcb-ac5a-363478841bc7@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Resent-From: 
-From: no-reply@patchew.org
-To: omar.rizwan@gmail.com
-Date: Wed, 12 Apr 2017 16:57:15 -0700 (PDT)
-X-ZohoMailClient: External
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
-X-Received-From: 135.84.80.217
-Subject: Re: [Qemu-devel] [PATCH] raspi: Add Raspberry Pi 1 support
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.21
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Reply-To: qemu-devel@nongnu.org
-Cc: peter.maydell@linaro.org, famz@redhat.com, qemu-devel@nongnu.org,
-	Andrew.Baumann@microsoft.com, qemu-arm@nongnu.org, omar.rizwan@gmail.com
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: /GOoaMiWhMxZ
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <2ede0852-6888-8bcb-ac5a-363478841bc7@redhat.com>
+User-Agent: Mutt/1.5.24 (2015-08-30)
+X-TUID: LXOpL2hPHTL6
 
-SGksCgpUaGlzIHNlcmllcyBzZWVtcyB0byBoYXZlIHNvbWUgY29kaW5nIHN0eWxlIHByb2JsZW1z
-LiBTZWUgb3V0cHV0IGJlbG93IGZvcgptb3JlIGluZm9ybWF0aW9uOgoKTWVzc2FnZS1pZDogMjAx
-NzA0MDgwNTQzMTguMTk4MzAtMS1vbWFyLnJpendhbkBnbWFpbC5jb20KU3ViamVjdDogW1FlbXUt
-ZGV2ZWxdIFtQQVRDSF0gcmFzcGk6IEFkZCBSYXNwYmVycnkgUGkgMSBzdXBwb3J0ClR5cGU6IHNl
-cmllcwoKPT09IFRFU1QgU0NSSVBUIEJFR0lOID09PQojIS9iaW4vYmFzaAoKQkFTRT1iYXNlCm49
-MQp0b3RhbD0kKGdpdCBsb2cgLS1vbmVsaW5lICRCQVNFLi4gfCB3YyAtbCkKZmFpbGVkPTAKCiMg
-VXNlZnVsIGdpdCBvcHRpb25zCmdpdCBjb25maWcgLS1sb2NhbCBkaWZmLnJlbmFtZWxpbWl0IDAK
-Z2l0IGNvbmZpZyAtLWxvY2FsIGRpZmYucmVuYW1lcyBUcnVlCgpjb21taXRzPSIkKGdpdCBsb2cg
-LS1mb3JtYXQ9JUggLS1yZXZlcnNlICRCQVNFLi4pIgpmb3IgYyBpbiAkY29tbWl0czsgZG8KICAg
-IGVjaG8gIkNoZWNraW5nIFBBVENIICRuLyR0b3RhbDogJChnaXQgbG9nIC1uIDEgLS1mb3JtYXQ9
-JXMgJGMpLi4uIgogICAgaWYgISBnaXQgc2hvdyAkYyAtLWZvcm1hdD1lbWFpbCB8IC4vc2NyaXB0
-cy9jaGVja3BhdGNoLnBsIC0tbWFpbGJhY2sgLTsgdGhlbgogICAgICAgIGZhaWxlZD0xCiAgICAg
-ICAgZWNobwogICAgZmkKICAgIG49JCgobisxKSkKZG9uZQoKZXhpdCAkZmFpbGVkCj09PSBURVNU
-IFNDUklQVCBFTkQgPT09CgpVcGRhdGluZyAzYzhjZjVhOWMyMWZmODc4MjE2NGQxZGVmN2Y0NGJk
-ODg4NzEzMzg0ClN3aXRjaGVkIHRvIGEgbmV3IGJyYW5jaCAndGVzdCcKMDgyYmI2MSByYXNwaTog
-QWRkIFJhc3BiZXJyeSBQaSAxIHN1cHBvcnQKCj09PSBPVVRQVVQgQkVHSU4gPT09CkNoZWNraW5n
-IFBBVENIIDEvMTogcmFzcGk6IEFkZCBSYXNwYmVycnkgUGkgMSBzdXBwb3J0Li4uCkVSUk9SOiBs
-aW5lIG92ZXIgOTAgY2hhcmFjdGVycwojMTg5OiBGSUxFOiBody9hcm0vcmFzcGkuYzozNDoKKyAq
-IGh0dHBzOi8vZ2l0aHViLmNvbS9BbmRyZXdGcm9tTWVsYm91cm5lL3Jhc3BiZXJyeV9waV9yZXZp
-c2lvbi9ibG9iLzI3NjRjMTk5ODNmYjdiMWVmOGNiMjEwMzFlOTRjMjkzNzAzYWZhMmUvUkVBRE1F
-Lm1kCgp0b3RhbDogMSBlcnJvcnMsIDAgd2FybmluZ3MsIDI1OCBsaW5lcyBjaGVja2VkCgpZb3Vy
-IHBhdGNoIGhhcyBzdHlsZSBwcm9ibGVtcywgcGxlYXNlIHJldmlldy4gIElmIGFueSBvZiB0aGVz
-ZSBlcnJvcnMKYXJlIGZhbHNlIHBvc2l0aXZlcyByZXBvcnQgdGhlbSB0byB0aGUgbWFpbnRhaW5l
-ciwgc2VlCkNIRUNLUEFUQ0ggaW4gTUFJTlRBSU5FUlMuCgo9PT0gT1VUUFVUIEVORCA9PT0KClRl
-c3QgY29tbWFuZCBleGl0ZWQgd2l0aCBjb2RlOiAxCgoKLS0tCkVtYWlsIGdlbmVyYXRlZCBhdXRv
-bWF0aWNhbGx5IGJ5IFBhdGNoZXcgW2h0dHA6Ly9wYXRjaGV3Lm9yZy9dLgpQbGVhc2Ugc2VuZCB5
-b3VyIGZlZWRiYWNrIHRvIHBhdGNoZXctZGV2ZWxAZnJlZWxpc3RzLm9yZw==
+On Wed, Apr 12, 2017 at 11:43:45 +0800, Paolo Bonzini wrote:
+> 
+> 
+> On 12/04/2017 09:17, Emilio G. Cota wrote:
+> > 
+> > The fact that NBench is not very sensitive to changes here is a
+> > little surprising, especially given the significant improvements for
+> > ARM shown in the previous commit. I wonder whether the compiler is doing
+> > a better job compiling the x86_64 version (I'm using gcc 5.4.0), or I'm simply
+> > missing some i386 instructions to which the jr optimization should
+> > be applied.
+> 
+> Maybe it is "ret"?  That would be a straightforward "bx lr" on ARM, but
+> it is missing in your i386 patch.
 
+Yes I missed that. I added this fix-up:
+
+diff --git a/target/i386/translate.c b/target/i386/translate.c
+index aab5c13..f2b5a0f 100644
+--- a/target/i386/translate.c
++++ b/target/i386/translate.c
+@@ -6430,7 +6430,7 @@ static target_ulong disas_insn(CPUX86State *env, DisasContext *s,
+         /* Note that gen_pop_T0 uses a zero-extending load.  */
+         gen_op_jmp_v(cpu_T0);
+         gen_bnd_jmp(s);
+-        gen_eob(s);
++        gen_jr(s, cpu_T0);
+         break;
+     case 0xc3: /* ret */
+         ot = gen_pop_T0(s);
+@@ -6438,7 +6438,7 @@ static target_ulong disas_insn(CPUX86State *env, DisasContext *s,
+         /* Note that gen_pop_T0 uses a zero-extending load.  */
+         gen_op_jmp_v(cpu_T0);
+         gen_bnd_jmp(s);
+-        gen_eob(s);
++        gen_jr(s, cpu_T0);
+         break;
+     case 0xca: /* lret im */
+         val = cpu_ldsw_code(env, s->pc);
+
+Any other instructions I should look into? Perhaps lret/lret im?
+
+Anyway, nbench does not improve much with the above. The reason seems to be
+that it's full of direct jumps (visible with -d in_asm). Also tried softmmu
+to see whether these jumps are in-page or not: peak improvement is ~8%, so
+I guess most of them are in-page. See http://imgur.com/EKRrYUz
+
+I'm running new tests on a server with no other users and which has
+frequency scaling disabled. This should help get less noisy numbers,
+since I'm having trouble replicating my own results :> (I used my desktop
+machine until now). Will post these numbers tomorrow (running overnight
+SPECint both train and set sizes).
+
+Thanks,
+
+		Emilio

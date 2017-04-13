@@ -1,72 +1,57 @@
-Received: by 10.25.0.144 with SMTP id 138csp660257lfa;
-        Thu, 13 Apr 2017 02:45:26 -0700 (PDT)
-X-Received: by 10.200.47.108 with SMTP id k41mr1909994qta.92.1492076726384;
-        Thu, 13 Apr 2017 02:45:26 -0700 (PDT)
+Received: by 10.25.0.144 with SMTP id 138csp660900lfa;
+        Thu, 13 Apr 2017 02:47:34 -0700 (PDT)
+X-Received: by 10.200.51.215 with SMTP id d23mr1900461qtb.55.1492076854737;
+        Thu, 13 Apr 2017 02:47:34 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id t86si22205591qkt.136.2017.04.13.02.45.25
+        by mx.google.com with ESMTPS id l14si22211399qkh.162.2017.04.13.02.47.34
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 13 Apr 2017 02:45:26 -0700 (PDT)
+        Thu, 13 Apr 2017 02:47:34 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:48307 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:48317 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1cybJb-0004Sh-UW
-	for alex.bennee@linaro.org; Thu, 13 Apr 2017 05:45:23 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:41602)
+	id 1cybLg-0006E0-4l
+	for alex.bennee@linaro.org; Thu, 13 Apr 2017 05:47:32 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:40930)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1cybJE-00048T-4l
-	for qemu-arm@nongnu.org; Thu, 13 Apr 2017 05:45:00 -0400
+	(envelope-from <clg@kaod.org>) id 1cybH7-0002JY-PZ
+	for qemu-arm@nongnu.org; Thu, 13 Apr 2017 05:42:53 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1cybJD-0001Vv-Br
-	for qemu-arm@nongnu.org; Thu, 13 Apr 2017 05:45:00 -0400
-Received: from mail-wm0-x229.google.com ([2a00:1450:400c:c09::229]:37007)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1cybJD-0001Vi-5P
-	for qemu-arm@nongnu.org; Thu, 13 Apr 2017 05:44:59 -0400
-Received: by mail-wm0-x229.google.com with SMTP id u2so42510218wmu.0
-	for <qemu-arm@nongnu.org>; Thu, 13 Apr 2017 02:44:58 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=jYd+mkkfElo7O0EWadejZnexvArk30RhZZTmbeIyHTo=;
-	b=f2CBB94WC1C6bChV984i1CxQxKvXoWXyr27lTFkS5RiTl9TGj4/jsE9rntIaw4NwH3
-	ROE5+mdSvdlr0jqNKw+idwighKLnjuxoeqZtYIP3yPtMghfb45VCNTnbWVqXLE9RnFt2
-	o9nx06xM2qqWpwtGdrR7wSmq/C+qwAuPAq+aE=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=jYd+mkkfElo7O0EWadejZnexvArk30RhZZTmbeIyHTo=;
-	b=j0Hkaiiz37Cd26FoEc9wRo8i9CwEwCpJWnk8wJyTT5JbTg8rPftorhgDaIFwlij3a3
-	g/dwmMZVVS2oGoTQ6DmhEgEJPSq4dXzEFi8i/Z+K73MCuA9wyEjaIaRvpcl0pNIdHeCb
-	byct8e8qNZ//z/FRaiQazmx3Qt9vyr8bT0rvGGXSflSD/uAhvSAIcTwSjNGVzYK26QY8
-	qRTbz7pyWTJ+YU/DjRFZxDBqPPd2zBEgraHweFj+J/sHZCNx9NWXUBtipzMisIguEFJu
-	XPvoWAEjG3YaVPEmxpyJ0zjAyfn/ELgbNhRoyD9jnCl3ngDdrDuuw0sEASjXKgY1hq1/
-	DQ5g==
-X-Gm-Message-State: AN3rC/5HcxV7lodLvtmyM8BatCut74AxJ92rMVjEUk4PeA88QJ6FdRS3
-	b6sufk9IxgDCw9U3xVbVYih63kl2Ex0c
-X-Received: by 10.28.236.210 with SMTP id h79mr2342432wmi.92.1492076697965;
-	Thu, 13 Apr 2017 02:44:57 -0700 (PDT)
+	(envelope-from <clg@kaod.org>) id 1cybH3-0000vu-SQ
+	for qemu-arm@nongnu.org; Thu, 13 Apr 2017 05:42:49 -0400
+Received: from 9.mo178.mail-out.ovh.net ([46.105.75.45]:53129)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <clg@kaod.org>) id 1cybH3-0000vm-M9
+	for qemu-arm@nongnu.org; Thu, 13 Apr 2017 05:42:45 -0400
+Received: from player715.ha.ovh.net (b9.ovh.net [213.186.33.59])
+	by mo178.mail-out.ovh.net (Postfix) with ESMTP id 035BA317F0
+	for <qemu-arm@nongnu.org>; Thu, 13 Apr 2017 11:42:43 +0200 (CEST)
+Received: from zorba.kaod.org.com (LFbn-1-10647-27.w90-89.abo.wanadoo.fr
+	[90.89.233.27]) (Authenticated sender: clg@kaod.org)
+	by player715.ha.ovh.net (Postfix) with ESMTPSA id C22781C0091;
+	Thu, 13 Apr 2017 11:42:35 +0200 (CEST)
+From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
+To: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 13 Apr 2017 11:41:53 +0200
+Message-Id: <1492076514-28821-5-git-send-email-clg@kaod.org>
+X-Mailer: git-send-email 2.7.4
+In-Reply-To: <1492076514-28821-1-git-send-email-clg@kaod.org>
+References: <1492076514-28821-1-git-send-email-clg@kaod.org>
 MIME-Version: 1.0
-Received: by 10.223.145.35 with HTTP; Thu, 13 Apr 2017 02:44:37 -0700 (PDT)
-In-Reply-To: <CALHRZurSfOAt53Sf=aGdGe7cHCxNggjUrt6pPDEQLRcvfX_cDA@mail.gmail.com>
-References: <1491736758-19540-1-git-send-email-sundeep.lkml@gmail.com>
-	<CALHRZurSfOAt53Sf=aGdGe7cHCxNggjUrt6pPDEQLRcvfX_cDA@mail.gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 13 Apr 2017 10:44:37 +0100
-Message-ID: <CAFEAcA9V0A9XvjtXHkq4RKmPDwRPuUgqwncy_hXMzv_FyVrD_w@mail.gmail.com>
-To: sundeep subbaraya <sundeep.lkml@gmail.com>
 Content-Type: text/plain; charset=UTF-8
+X-Ovh-Tracer-Id: 5193494799208975121
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrfeeliedrudekgddujecutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmd
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2a00:1450:400c:c09::229
-Subject: Re: [Qemu-arm] [Qemu-devel RFC v2 0/4] Add support for Smartfusion2
- SoC
+	[fuzzy]
+X-Received-From: 46.105.75.45
+Subject: [Qemu-arm] [PATCH v2 4/5] aspeed: add a FTGMAC100 nic
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -78,25 +63,104 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
+Cc: Jan Kiszka <jan.kiszka@siemens.com>, Jason Wang <jasowang@redhat.com>,
+	qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+	=?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
+	Dmitry Fleytman <dmitry@daynix.com>,
+	Samuel Thibault <samuel.thibault@ens-lyon.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: dnAZRtfn9m43
+X-TUID: kLuSV+NzBHty
 
-On 13 April 2017 at 04:21, sundeep subbaraya <sundeep.lkml@gmail.com> wrote:
-> Hi Qemu-devel,
->
-> This is my first attempt in Qemu.
-> Please let me know am doing correct or not.
-> SoC is cortex M3 based so no bootrom stuff and unlike other
-> SoCs Qemu need not load dtb and kernel in DDR. Hence am using
-> u-boot (supplied with -kernel) as bootloader in eNVM and it loads
-> kernel from SPI flash to DDR same like real hardware scenario.
-> Also let me know any other Maintainers need to be CCed.
+There is a second NIC but we do not use it for the moment. We use the
+'aspeed' property to tune the definition of the end of ring buffer bit
+for the Aspeed SoCs.
 
-Hi -- thanks for the patchset. I've put it onto my queue of
-patches to review, but it may be a little while until I
-can get to it (especially since it's the Easter holiday
-in the UK right now).
+Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
+---
+ hw/arm/aspeed_soc.c         | 21 +++++++++++++++++++++
+ include/hw/arm/aspeed_soc.h |  2 ++
+ 2 files changed, 23 insertions(+)
 
--- PMM
+diff --git a/hw/arm/aspeed_soc.c b/hw/arm/aspeed_soc.c
+index 712ae9d6c54d..af0964cf6add 100644
+--- a/hw/arm/aspeed_soc.c
++++ b/hw/arm/aspeed_soc.c
+@@ -19,6 +19,7 @@
+ #include "hw/char/serial.h"
+ #include "qemu/log.h"
+ #include "hw/i2c/aspeed_i2c.h"
++#include "net/net.h"
+=20
+ #define ASPEED_SOC_UART_5_BASE      0x00184000
+ #define ASPEED_SOC_IOMEM_SIZE       0x00200000
+@@ -33,6 +34,8 @@
+ #define ASPEED_SOC_TIMER_BASE       0x1E782000
+ #define ASPEED_SOC_WDT_BASE         0x1E785000
+ #define ASPEED_SOC_I2C_BASE         0x1E78A000
++#define ASPEED_SOC_ETH1_BASE        0x1E660000
++#define ASPEED_SOC_ETH2_BASE        0x1E680000
+=20
+ static const int uart_irqs[] =3D { 9, 32, 33, 34, 10 };
+ static const int timer_irqs[] =3D { 16, 17, 18, 35, 36, 37, 38, 39, };
+@@ -177,6 +180,10 @@ static void aspeed_soc_init(Object *obj)
+     qdev_set_parent_bus(DEVICE(&s->wdt), sysbus_get_default());
+     object_property_add_const_link(OBJECT(&s->wdt), "scu", OBJECT(&s->sc=
+u),
+                                    NULL);
++
++    object_initialize(&s->ftgmac100, sizeof(s->ftgmac100), TYPE_FTGMAC10=
+0);
++    object_property_add_child(obj, "ftgmac100", OBJECT(&s->ftgmac100), N=
+ULL);
++    qdev_set_parent_bus(DEVICE(&s->ftgmac100), sysbus_get_default());
+ }
+=20
+ static void aspeed_soc_realize(DeviceState *dev, Error **errp)
+@@ -304,6 +311,20 @@ static void aspeed_soc_realize(DeviceState *dev, Err=
+or **errp)
+         return;
+     }
+     sysbus_mmio_map(SYS_BUS_DEVICE(&s->wdt), 0, ASPEED_SOC_WDT_BASE);
++
++    /* Net */
++    qdev_set_nic_properties(DEVICE(&s->ftgmac100), &nd_table[0]);
++    object_property_set_bool(OBJECT(&s->ftgmac100), true, "aspeed", &err=
+);
++    object_property_set_bool(OBJECT(&s->ftgmac100), true, "realized",
++                             &local_err);
++    error_propagate(&err, local_err);
++    if (err) {
++        error_propagate(errp, err);
++        return;
++    }
++    sysbus_mmio_map(SYS_BUS_DEVICE(&s->ftgmac100), 0, ASPEED_SOC_ETH1_BA=
+SE);
++    sysbus_connect_irq(SYS_BUS_DEVICE(&s->ftgmac100), 0,
++                       qdev_get_gpio_in(DEVICE(&s->vic), 2));
+ }
+=20
+ static void aspeed_soc_class_init(ObjectClass *oc, void *data)
+diff --git a/include/hw/arm/aspeed_soc.h b/include/hw/arm/aspeed_soc.h
+index dbec0c159885..4c5fc66a1ee0 100644
+--- a/include/hw/arm/aspeed_soc.h
++++ b/include/hw/arm/aspeed_soc.h
+@@ -20,6 +20,7 @@
+ #include "hw/i2c/aspeed_i2c.h"
+ #include "hw/ssi/aspeed_smc.h"
+ #include "hw/watchdog/wdt_aspeed.h"
++#include "hw/net/ftgmac100.h"
+=20
+ #define ASPEED_SPIS_NUM  2
+=20
+@@ -39,6 +40,7 @@ typedef struct AspeedSoCState {
+     AspeedSMCState spi[ASPEED_SPIS_NUM];
+     AspeedSDMCState sdmc;
+     AspeedWDTState wdt;
++    FTGMAC100State ftgmac100;
+ } AspeedSoCState;
+=20
+ #define TYPE_ASPEED_SOC "aspeed-soc"
+--=20
+2.7.4
+

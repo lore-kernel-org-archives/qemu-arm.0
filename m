@@ -1,70 +1,74 @@
-Received: by 10.25.0.144 with SMTP id 138csp517831lfa;
-        Wed, 12 Apr 2017 17:04:48 -0700 (PDT)
-X-Received: by 10.55.24.202 with SMTP id 71mr266074qky.190.1492041888224;
-        Wed, 12 Apr 2017 17:04:48 -0700 (PDT)
+Received: by 10.25.0.144 with SMTP id 138csp563658lfa;
+        Wed, 12 Apr 2017 20:21:27 -0700 (PDT)
+X-Received: by 10.55.51.1 with SMTP id z1mr733058qkz.66.1492053687782;
+        Wed, 12 Apr 2017 20:21:27 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id p18si20963533qtc.21.2017.04.12.17.04.47
+        by mx.google.com with ESMTPS id j67si2263005qkd.22.2017.04.12.20.21.27
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 12 Apr 2017 17:04:48 -0700 (PDT)
+        Wed, 12 Apr 2017 20:21:27 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:46659 helo=lists.gnu.org)
+       dkim=fail header.i=@gmail.com;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:47173 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1cySFh-0008KF-Kp
-	for alex.bennee@linaro.org; Wed, 12 Apr 2017 20:04:45 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:44929)
+	id 1cyVK1-0000Qh-5P
+	for alex.bennee@linaro.org; Wed, 12 Apr 2017 23:21:25 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:49725)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1cySFe-0008K9-I7
-	for qemu-arm@nongnu.org; Wed, 12 Apr 2017 20:04:43 -0400
+	(envelope-from <sundeep.lkml@gmail.com>) id 1cyVJu-0000Pd-Oi
+	for qemu-arm@nongnu.org; Wed, 12 Apr 2017 23:21:19 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1cySFb-0008Og-EB
-	for qemu-arm@nongnu.org; Wed, 12 Apr 2017 20:04:42 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:47890)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <eblake@redhat.com>)
-	id 1cySFb-0008Ob-59; Wed, 12 Apr 2017 20:04:39 -0400
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
-	[10.5.11.13])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id E651F61D02;
-	Thu, 13 Apr 2017 00:04:37 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com E651F61D02
-Authentication-Results: ext-mx10.extmail.prod.ext.phx2.redhat.com;
-	dmarc=none (p=none dis=none) header.from=redhat.com
-Authentication-Results: ext-mx10.extmail.prod.ext.phx2.redhat.com;
-	spf=pass smtp.mailfrom=eblake@redhat.com
-DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com E651F61D02
-Received: from [10.10.122.61] (ovpn-122-61.rdu2.redhat.com [10.10.122.61])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id AA37B18EFD;
-	Thu, 13 Apr 2017 00:04:34 +0000 (UTC)
-To: qemu-devel@nongnu.org, omar.rizwan@gmail.com
-References: <149204143506.10500.9312462203357418218@6c512846dbc7>
-From: Eric Blake <eblake@redhat.com>
-Openpgp: url=http://people.redhat.com/eblake/eblake.gpg
-Organization: Red Hat, Inc.
-Message-ID: <f52ad9a6-c3e7-4823-c21c-091809780341@redhat.com>
-Date: Wed, 12 Apr 2017 19:04:33 -0500
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
-	Thunderbird/45.8.0
+	(envelope-from <sundeep.lkml@gmail.com>) id 1cyVJt-0008Ey-LM
+	for qemu-arm@nongnu.org; Wed, 12 Apr 2017 23:21:18 -0400
+Received: from mail-yb0-x242.google.com ([2607:f8b0:4002:c09::242]:36056)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <sundeep.lkml@gmail.com>)
+	id 1cyVJr-0008EO-E8; Wed, 12 Apr 2017 23:21:15 -0400
+Received: by mail-yb0-x242.google.com with SMTP id l201so1873650ybf.3;
+	Wed, 12 Apr 2017 20:21:13 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=GEuseDJKp2FXQa/h0IJ+jnTP/Mx7PCLb2cl/RrXy6AU=;
+	b=UTpVHa1lqXcC8WjLlZQJFM3IxzKfgqX84vx/twZi413/pFPnD4CzYqEpt/gGZx9UHS
+	EiMUawDG0wq0QHfH/o8IrohefqLNWhAkPZae6sbM7pL0FROdjLnZS6HRtbcJQ3Dx098b
+	FA/ye854F2egaktpIDHm4fkQ9/Q2rBLLjIAp2pUfeC6yKYvrmH0csNtMuE3WgO/zirul
+	1R6GUtqzy6/BCZi4z4OD5I77ydjoWP3gUqt0jcwd0sOjoWroeB3Jfp8MiDZniBLwSeEu
+	oCh/bSdjM+0NQ6Axgj+hbqCt2PZNRMr3HII0HWyifV1ju972kik1nogEwEy6vgVuzqT9
+	0F5g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=GEuseDJKp2FXQa/h0IJ+jnTP/Mx7PCLb2cl/RrXy6AU=;
+	b=Otxqappp0oCx1tO2rfDfOie9/OGcUrLEHrj/eBC64+mUa9qu+ELMWwOmvXbJXAmSjs
+	ii6lZ5h1z8q5S23MvJ0Kxz9K/3KdV6eCklcloazd9fQbDZ/kwjxroVO8oEEpSk6LTNqt
+	5S2Fr/OYLlk4U8fOXvQAxMKbGP7D5wsSNdw6xamuCWHZeKSDeb9fTPRas8lQtaQhID1c
+	k8d0Qx2P8xwPviwlo3+Zudr1meKNaKWxB99wmqa0YvVb7TGvb05T9znnQXPNa6RmTq+F
+	9OWg9o4JTEYdo7SAS0r31hCrKT+bcB/8aWAg24Autsracb/+LiGrCJcbBvAFX7gXWU3I
+	zTBg==
+X-Gm-Message-State: AN3rC/6woEGo+qTFasYnY03TA2pZZxXHMYQjFlMhKXJxnnrlqOPHdBFd
+	AfKSY2Y68bxg2Zo6iMjWcHTbXZtZpw==
+X-Received: by 10.37.172.100 with SMTP id r36mr699648ybd.107.1492053672748;
+	Wed, 12 Apr 2017 20:21:12 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <149204143506.10500.9312462203357418218@6c512846dbc7>
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature";
-	boundary="N9Ic3KCCNaEKdegA4a6u8iUSMindfqXEB"
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.39]);
-	Thu, 13 Apr 2017 00:04:38 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH] raspi: Add Raspberry Pi 1
- support
+Received: by 10.13.244.1 with HTTP; Wed, 12 Apr 2017 20:21:12 -0700 (PDT)
+In-Reply-To: <1491736758-19540-1-git-send-email-sundeep.lkml@gmail.com>
+References: <1491736758-19540-1-git-send-email-sundeep.lkml@gmail.com>
+From: sundeep subbaraya <sundeep.lkml@gmail.com>
+Date: Thu, 13 Apr 2017 08:51:12 +0530
+Message-ID: <CALHRZurSfOAt53Sf=aGdGe7cHCxNggjUrt6pPDEQLRcvfX_cDA@mail.gmail.com>
+To: qemu-devel@nongnu.org, qemu-arm@nongnu.org
+Content-Type: text/plain; charset=UTF-8
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:4002:c09::242
+Subject: Re: [Qemu-arm] [Qemu-devel RFC v2 0/4] Add support for Smartfusion2
+ SoC
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -76,77 +80,74 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org, famz@redhat.com,
-	Andrew.Baumann@microsoft.com
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+	Subbaraya Sundeep <sundeep.lkml@gmail.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 92TYqUxwZ8J1
+X-TUID: 4cn1pLpgHPBk
 
-This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
---N9Ic3KCCNaEKdegA4a6u8iUSMindfqXEB
-Content-Type: multipart/mixed; boundary="jjtKrswklhP976KqNiewpKKsWEkgmF0tF";
- protected-headers="v1"
-From: Eric Blake <eblake@redhat.com>
-To: qemu-devel@nongnu.org, omar.rizwan@gmail.com
-Cc: peter.maydell@linaro.org, famz@redhat.com, Andrew.Baumann@microsoft.com,
- qemu-arm@nongnu.org
-Message-ID: <f52ad9a6-c3e7-4823-c21c-091809780341@redhat.com>
-Subject: Re: [Qemu-devel] [PATCH] raspi: Add Raspberry Pi 1 support
-References: <149204143506.10500.9312462203357418218@6c512846dbc7>
-In-Reply-To: <149204143506.10500.9312462203357418218@6c512846dbc7>
+Hi Qemu-devel,
 
---jjtKrswklhP976KqNiewpKKsWEkgmF0tF
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
+This is my first attempt in Qemu.
+Please let me know am doing correct or not.
+SoC is cortex M3 based so no bootrom stuff and unlike other
+SoCs Qemu need not load dtb and kernel in DDR. Hence am using
+u-boot (supplied with -kernel) as bootloader in eNVM and it loads
+kernel from SPI flash to DDR same like real hardware scenario.
+Also let me know any other Maintainers need to be CCed.
 
-On 04/12/2017 06:57 PM, no-reply@patchew.org wrote:
-> Hi,
->=20
-> This series seems to have some coding style problems. See output below =
-for
-> more information:
+Thank you,
+Sundeep
 
-> =3D=3D=3D OUTPUT BEGIN =3D=3D=3D
-> Checking PATCH 1/1: raspi: Add Raspberry Pi 1 support...
-> ERROR: line over 90 characters
-> #189: FILE: hw/arm/raspi.c:34:
-> + * https://github.com/AndrewFromMelbourne/raspberry_pi_revision/blob/2=
-764c19983fb7b1ef8cb21031e94c293703afa2e/README.md
-
-You can shorten this:
-
-https://github.com/AndrewFromMelbourne/raspberry_pi_revision/blob/2764c19=
-9/README.md
-
-to fit under 90, while still resolving to the same place (collisions
-with just an 8-char prefix are rare enough to generally not be an issue
-to git)
-
---=20
-Eric Blake, Principal Software Engineer
-Red Hat, Inc.           +1-919-301-3266
-Virtualization:  qemu.org | libvirt.org
-
-
---jjtKrswklhP976KqNiewpKKsWEkgmF0tF--
-
---N9Ic3KCCNaEKdegA4a6u8iUSMindfqXEB
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: OpenPGP digital signature
-Content-Disposition: attachment; filename="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v2
-Comment: Public key at http://people.redhat.com/eblake/eblake.gpg
-Comment: Using GnuPG with Thunderbird - http://www.enigmail.net/
-
-iQEcBAEBCAAGBQJY7sCRAAoJEKeha0olJ0NqvqkH+QEUpVoC9Iicoo/W31K+D3gp
-SGdJYCCyp/gpjn2gJYkxpJ5ckcPCYwjtCa461fn2CVyAMtWZ0Tysg3wH/ud4+lpu
-ijcSkIn5CxePfj0QBDkfnplcGZ5rOKCUqRxMX89JS6psg6Mg5lbiP8UtQ6qhGhIR
-zy6jYGGkhpL4h1LAjbmF1Vi4xZyN2Q797ocdtO7G210dv7bu+D7skw5/vQcNzn+L
-AixwwwOlpi9DlMGi6zI8D8QlYxrcX32vv/etMbED60g9J/Ptb5LVIZOuH8rE8Kbw
-bCTqidurFfGkqihRDBr3N9HLyYLlK1eT3WwfHdAaiua8obOFn0AYsYyAmtl3Gsw=
-=n51A
------END PGP SIGNATURE-----
-
---N9Ic3KCCNaEKdegA4a6u8iUSMindfqXEB--
+On Sun, Apr 9, 2017 at 4:49 PM, Subbaraya Sundeep
+<sundeep.lkml@gmail.com> wrote:
+> Hi Qemu-devel,
+>
+> I am trying to add Smartfusion2 SoC.
+> SoC is from Microsemi and System on Module(SOM)
+> board is from Emcraft systems. Smartfusion2 has hardened
+> Microcontroller(Cortex-M3)based Sub System and FPGA fabric.
+> At the moment only system timer, sysreg and SPI
+> controller are modelled.
+>
+> Testing:
+> ./arm-softmmu/qemu-system-arm -M smartfusion2-som -serial mon:stdio \
+> -kernel u-boot.bin -display none -drive file=spi.bin,if=mtd,format=raw
+>
+> U-boot is from Emcraft with modified SPI driver not to use PDMA.
+> Linux is 4.5 linux with Smartfusion2 SoC dts and clocksource
+> driver added by myself @
+> https://github.com/Subbaraya-Sundeep/linux.git
+>
+> Baremetal elfs from Microsemi Softconsole IDE are also working.
+>
+> Changes from v1:
+>     Added SPI controller.
+>
+> Thanks,
+> Sundeep
+>
+> Subbaraya Sundeep (4):
+>   msf2: Add Smartfusion2 System timer
+>   msf2: Microsemi Smartfusion2 System Register block.
+>   msf2: Add Smartfusion2 SPI controller
+>   msf2: Add Emcraft's Smartfusion2 SOM kit.
+>
+>  default-configs/arm-softmmu.mak |   1 +
+>  hw/arm/Makefile.objs            |   2 +-
+>  hw/arm/msf2_soc.c               | 141 +++++++++++++
+>  hw/misc/Makefile.objs           |   1 +
+>  hw/misc/msf2_sysreg.c           | 168 +++++++++++++++
+>  hw/ssi/Makefile.objs            |   1 +
+>  hw/ssi/msf2_spi.c               | 449 ++++++++++++++++++++++++++++++++++++++++
+>  hw/timer/Makefile.objs          |   1 +
+>  hw/timer/msf2_timer.c           | 273 ++++++++++++++++++++++++
+>  9 files changed, 1036 insertions(+), 1 deletion(-)
+>  create mode 100644 hw/arm/msf2_soc.c
+>  create mode 100644 hw/misc/msf2_sysreg.c
+>  create mode 100644 hw/ssi/msf2_spi.c
+>  create mode 100644 hw/timer/msf2_timer.c
+>
+> --
+> 2.5.0
+>

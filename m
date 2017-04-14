@@ -1,165 +1,123 @@
-Received: by 10.25.0.144 with SMTP id 138csp186607lfa;
-        Fri, 14 Apr 2017 01:39:48 -0700 (PDT)
-X-Received: by 10.55.116.1 with SMTP id p1mr5901045qkc.115.1492159188636;
-        Fri, 14 Apr 2017 01:39:48 -0700 (PDT)
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 10.25.0.144 with SMTP id 138csp186772lfa;
+        Fri, 14 Apr 2017 01:40:33 -0700 (PDT)
+X-Received: by 10.200.50.48 with SMTP id x45mr6760296qta.246.1492159233203;
+        Fri, 14 Apr 2017 01:40:33 -0700 (PDT)
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id u23si1230474qtc.142.2017.04.14.01.39.48
+        by mx.google.com with ESMTPS id g55si1212604qte.318.2017.04.14.01.40.33
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 14 Apr 2017 01:39:48 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Fri, 14 Apr 2017 01:40:33 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:52315 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:52325 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1cywlg-00089T-2q
-	for alex.bennee@linaro.org; Fri, 14 Apr 2017 04:39:48 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:56504)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1cywmO-0000X1-LK
+	for alex.bennee@linaro.org; Fri, 14 Apr 2017 04:40:32 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:56880)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <clg@kaod.org>) id 1cywhs-0005Mx-6R
-	for qemu-devel@nongnu.org; Fri, 14 Apr 2017 04:35:58 -0400
+	(envelope-from <lvivier@redhat.com>) id 1cywjV-0006gT-03
+	for qemu-arm@nongnu.org; Fri, 14 Apr 2017 04:37:33 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <clg@kaod.org>) id 1cywhn-0007OM-O3
-	for qemu-devel@nongnu.org; Fri, 14 Apr 2017 04:35:52 -0400
-Received: from 10.mo178.mail-out.ovh.net ([46.105.76.150]:51250)
+	(envelope-from <lvivier@redhat.com>) id 1cywjM-0008JW-2U
+	for qemu-arm@nongnu.org; Fri, 14 Apr 2017 04:37:29 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:33366)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <clg@kaod.org>) id 1cywhn-0007OF-HM
-	for qemu-devel@nongnu.org; Fri, 14 Apr 2017 04:35:47 -0400
-Received: from player715.ha.ovh.net (b9.ovh.net [213.186.33.59])
-	by mo178.mail-out.ovh.net (Postfix) with ESMTP id 528D9317DE
-	for <qemu-devel@nongnu.org>; Fri, 14 Apr 2017 10:35:46 +0200 (CEST)
-Received: from zorba.kaod.org.com (LFbn-1-10647-27.w90-89.abo.wanadoo.fr
-	[90.89.233.27]) (Authenticated sender: clg@kaod.org)
-	by player715.ha.ovh.net (Postfix) with ESMTPSA id 1DD541C00A3;
-	Fri, 14 Apr 2017 10:35:38 +0200 (CEST)
-From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
+	(Exim 4.71) (envelope-from <lvivier@redhat.com>)
+	id 1cywjL-0008IQ-QH; Fri, 14 Apr 2017 04:37:23 -0400
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+	[10.5.11.13])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 7C8D519D00C;
+	Fri, 14 Apr 2017 08:37:21 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 7C8D519D00C
+Authentication-Results: ext-mx05.extmail.prod.ext.phx2.redhat.com;
+	dmarc=none (p=none dis=none) header.from=redhat.com
+Authentication-Results: ext-mx05.extmail.prod.ext.phx2.redhat.com;
+	spf=pass smtp.mailfrom=lvivier@redhat.com
+DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com 7C8D519D00C
+Received: from thinkpad.redhat.com (ovpn-116-243.ams2.redhat.com
+	[10.36.116.243])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id C9ACD60A99;
+	Fri, 14 Apr 2017 08:37:18 +0000 (UTC)
+From: Laurent Vivier <lvivier@redhat.com>
 To: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 14 Apr 2017 10:35:02 +0200
-Message-Id: <1492158903-8016-5-git-send-email-clg@kaod.org>
-X-Mailer: git-send-email 2.7.4
-In-Reply-To: <1492158903-8016-1-git-send-email-clg@kaod.org>
-References: <1492158903-8016-1-git-send-email-clg@kaod.org>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-X-Ovh-Tracer-Id: 9935503732144966417
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrfeeliedrvddtgddtgecutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmd
-Content-Transfer-Encoding: quoted-printable
+Date: Fri, 14 Apr 2017 10:37:13 +0200
+Message-Id: <20170414083717.13641-1-lvivier@redhat.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.29]);
+	Fri, 14 Apr 2017 08:37:21 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 46.105.76.150
-Subject: [Qemu-devel] [PATCH v3 4/5] aspeed: add a FTGMAC100 nic
-X-BeenThere: qemu-devel@nongnu.org
+X-Received-From: 209.132.183.28
+Subject: [Qemu-arm] [PATCH v2 0/4] qdev: remove all remaining
+ cannot_destroy_with_object_finalize_yet
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Jan Kiszka <jan.kiszka@siemens.com>, Jason Wang <jasowang@redhat.com>,
-	qemu-devel@nongnu.org, qemu-arm@nongnu.org,
-	=?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
-	Dmitry Fleytman <dmitry@daynix.com>,
-	Samuel Thibault <samuel.thibault@ens-lyon.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: C2Y+7qMOgmmZ
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Laurent Vivier <lvivier@redhat.com>, Markus Armbruster <armbru@redhat.com>,
+	qemu-devel@nongnu.org, Alistair Francis <alistair.francis@xilinx.com>,
+	Beniamino Galvani <b.galvani@gmail.com>, qemu-arm@nongnu.org,
+	qemu-ppc@nongnu.org, Antony Pavlov <antonynpavlov@gmail.com>,
+	David Gibson <david@gibson.dropbear.id.au>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: c9S1HOq+sQRm
 
-There is a second NIC but we do not use it for the moment. We use the
-'aspeed' property to tune the definition of the end of ring buffer bit
-for the Aspeed SoCs.
+This series removes all the remaining uses of
+cannot_destroy_with_object_finalize_yet to finally remove
+the flag itself.
 
-Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
----
- hw/arm/aspeed_soc.c         | 21 +++++++++++++++++++++
- include/hw/arm/aspeed_soc.h |  2 ++
- 2 files changed, 23 insertions(+)
+The ARM patch has already been sent alone and reviewed by Markus.
+I have tested the ppc one on ppc64 machine with KVM and using
+QDM device-list-properties command.
 
-diff --git a/hw/arm/aspeed_soc.c b/hw/arm/aspeed_soc.c
-index 571e4f097b02..4937e2bc8323 100644
---- a/hw/arm/aspeed_soc.c
-+++ b/hw/arm/aspeed_soc.c
-@@ -19,6 +19,7 @@
- #include "hw/char/serial.h"
- #include "qemu/log.h"
- #include "hw/i2c/aspeed_i2c.h"
-+#include "net/net.h"
-=20
- #define ASPEED_SOC_UART_5_BASE      0x00184000
- #define ASPEED_SOC_IOMEM_SIZE       0x00200000
-@@ -33,6 +34,8 @@
- #define ASPEED_SOC_TIMER_BASE       0x1E782000
- #define ASPEED_SOC_WDT_BASE         0x1E785000
- #define ASPEED_SOC_I2C_BASE         0x1E78A000
-+#define ASPEED_SOC_ETH1_BASE        0x1E660000
-+#define ASPEED_SOC_ETH2_BASE        0x1E680000
-=20
- static const int uart_irqs[] =3D { 9, 32, 33, 34, 10 };
- static const int timer_irqs[] =3D { 16, 17, 18, 35, 36, 37, 38, 39, };
-@@ -175,6 +178,10 @@ static void aspeed_soc_init(Object *obj)
-     object_initialize(&s->wdt, sizeof(s->wdt), TYPE_ASPEED_WDT);
-     object_property_add_child(obj, "wdt", OBJECT(&s->wdt), NULL);
-     qdev_set_parent_bus(DEVICE(&s->wdt), sysbus_get_default());
-+
-+    object_initialize(&s->ftgmac100, sizeof(s->ftgmac100), TYPE_FTGMAC10=
-0);
-+    object_property_add_child(obj, "ftgmac100", OBJECT(&s->ftgmac100), N=
-ULL);
-+    qdev_set_parent_bus(DEVICE(&s->ftgmac100), sysbus_get_default());
- }
-=20
- static void aspeed_soc_realize(DeviceState *dev, Error **errp)
-@@ -299,6 +306,20 @@ static void aspeed_soc_realize(DeviceState *dev, Err=
-or **errp)
-         return;
-     }
-     sysbus_mmio_map(SYS_BUS_DEVICE(&s->wdt), 0, ASPEED_SOC_WDT_BASE);
-+
-+    /* Net */
-+    qdev_set_nic_properties(DEVICE(&s->ftgmac100), &nd_table[0]);
-+    object_property_set_bool(OBJECT(&s->ftgmac100), true, "aspeed", &err=
-);
-+    object_property_set_bool(OBJECT(&s->ftgmac100), true, "realized",
-+                             &local_err);
-+    error_propagate(&err, local_err);
-+    if (err) {
-+        error_propagate(errp, err);
-+        return;
-+    }
-+    sysbus_mmio_map(SYS_BUS_DEVICE(&s->ftgmac100), 0, ASPEED_SOC_ETH1_BA=
-SE);
-+    sysbus_connect_irq(SYS_BUS_DEVICE(&s->ftgmac100), 0,
-+                       qdev_get_gpio_in(DEVICE(&s->vic), 2));
- }
-=20
- static void aspeed_soc_class_init(ObjectClass *oc, void *data)
-diff --git a/include/hw/arm/aspeed_soc.h b/include/hw/arm/aspeed_soc.h
-index dbec0c159885..4c5fc66a1ee0 100644
---- a/include/hw/arm/aspeed_soc.h
-+++ b/include/hw/arm/aspeed_soc.h
-@@ -20,6 +20,7 @@
- #include "hw/i2c/aspeed_i2c.h"
- #include "hw/ssi/aspeed_smc.h"
- #include "hw/watchdog/wdt_aspeed.h"
-+#include "hw/net/ftgmac100.h"
-=20
- #define ASPEED_SPIS_NUM  2
-=20
-@@ -39,6 +40,7 @@ typedef struct AspeedSoCState {
-     AspeedSMCState spi[ASPEED_SPIS_NUM];
-     AspeedSDMCState sdmc;
-     AspeedWDTState wdt;
-+    FTGMAC100State ftgmac100;
- } AspeedSoCState;
-=20
- #define TYPE_ASPEED_SOC "aspeed-soc"
---=20
-2.7.4
+For the versatile one, the flag allowed to workaround a problem
+in the bus unparent function: the bus unparent is trying to
+unparent all the children of the bus. To do that, it has a list
+of the children of the bus, and calls object_unparent() for each
+child, and object_unparent() calls object_property_del_child() if
+obj->parent is not NULL.  As qdev_set_parent_bus() set only
+parent_bus and the list of children, parent is NULL and the child
+is never deleted.  We can avoid the problem by moving the
+qdev_set_parent_bus() to the realize part.
+
+I've tested all the changes with "make check" (including
+device-introspect-test). I've booted a versatilepb machine
+with a 3.16.0-4 debian installer kernel.
+
+Laurent Vivier (4):
+  arm: remove remaining cannot_destroy_with_object_finalize_yet
+  ppc: remove cannot_destroy_with_object_finalize_yet
+  versatile: remove cannot_destroy_with_object_finalize_yet
+  qdev: remove cannot_destroy_with_object_finalize_yet
+
+ hw/arm/allwinner-a10.c  |  6 ------
+ hw/arm/bcm2836.c        |  6 ------
+ hw/arm/digic.c          |  6 ------
+ hw/arm/fsl-imx25.c      |  5 -----
+ hw/arm/fsl-imx31.c      |  5 -----
+ hw/arm/fsl-imx6.c       |  5 -----
+ hw/arm/xlnx-zynqmp.c    |  6 ------
+ hw/pci-host/versatile.c | 35 ++++++++++++-----------------------
+ include/hw/qdev-core.h  | 13 -------------
+ qmp.c                   |  5 -----
+ target/ppc/kvm.c        | 10 ----------
+ 11 files changed, 12 insertions(+), 90 deletions(-)
+
+-- 
+2.9.3
 

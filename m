@@ -1,74 +1,81 @@
-Received: by 10.25.0.144 with SMTP id 138csp431718lfa;
-        Fri, 14 Apr 2017 14:33:19 -0700 (PDT)
-X-Received: by 10.55.106.199 with SMTP id f190mr8484795qkc.151.1492205599787;
-        Fri, 14 Apr 2017 14:33:19 -0700 (PDT)
+Received: by 10.25.0.144 with SMTP id 138csp623665lfa;
+        Sat, 15 Apr 2017 05:31:52 -0700 (PDT)
+X-Received: by 10.55.46.194 with SMTP id u185mr1660960qkh.168.1492259511949;
+        Sat, 15 Apr 2017 05:31:51 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id q16si2870162qke.23.2017.04.14.14.33.19
+        by mx.google.com with ESMTPS id b43si50279qtb.70.2017.04.15.05.31.51
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 14 Apr 2017 14:33:19 -0700 (PDT)
+        Sat, 15 Apr 2017 05:31:51 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        dkim=fail header.i=@gmail.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:54694 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:56672 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1cz8qF-0002xi-7W
-	for alex.bennee@linaro.org; Fri, 14 Apr 2017 17:33:19 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:38492)
+	id 1czMrn-0000Nh-FI
+	for alex.bennee@linaro.org; Sat, 15 Apr 2017 08:31:51 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:47736)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alistair23@gmail.com>) id 1cz8q8-0002wY-B6
-	for qemu-arm@nongnu.org; Fri, 14 Apr 2017 17:33:14 -0400
+	(envelope-from <rth7680@gmail.com>) id 1czMre-0000Mk-0n
+	for qemu-arm@nongnu.org; Sat, 15 Apr 2017 08:31:45 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <alistair23@gmail.com>) id 1cz8q6-0004tU-Uu
-	for qemu-arm@nongnu.org; Fri, 14 Apr 2017 17:33:12 -0400
-Received: from mail-oi0-x22d.google.com ([2607:f8b0:4003:c06::22d]:36342)
+	(envelope-from <rth7680@gmail.com>) id 1czMrd-0004zc-2x
+	for qemu-arm@nongnu.org; Sat, 15 Apr 2017 08:31:42 -0400
+Received: from mail-wm0-x241.google.com ([2a00:1450:400c:c09::241]:33686)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <alistair23@gmail.com>)
-	id 1cz8q3-0004si-Si; Fri, 14 Apr 2017 17:33:07 -0400
-Received: by mail-oi0-x22d.google.com with SMTP id r203so101192924oib.3;
-	Fri, 14 Apr 2017 14:33:07 -0700 (PDT)
+	(Exim 4.71) (envelope-from <rth7680@gmail.com>)
+	id 1czMrX-0004xG-Pk; Sat, 15 Apr 2017 08:31:35 -0400
+Received: by mail-wm0-x241.google.com with SMTP id o81so2296039wmb.0;
+	Sat, 15 Apr 2017 05:31:35 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=1o03XoH5O45DjQwLf7BG2ZefKpkN4dfuDcecTLaT76M=;
-	b=aU1OUJIObx9/AZb16gFSgcTSx0wJJfcBnl72asVxu3bAHQybk85bYq7f6atY9S70ec
-	0SLNmD6czFVIMl4PkzjMHcflNwIzJw6Ckm69pCNvEuwKd8rrSw3AHcUsjH1Ks2iHKLO+
-	ydpF1Ew8t9Mn9tMQce85amnLThc763tSL7Wm/t7wG1RPcYZefFXH1+3c322FddLG1oLj
-	pz5oic2/yntBeeivQ9e6thkWXYE+nWeYqxeho9SxJ1LqdAoKFGBZR+mM814QlKiOUjFv
-	QKDTDC25kqM/9GmwjzR3Vy1C/8kqMBAMSdpXQiih1nZ4TbwQnavmpNV+kC42InB7CqG5
-	2Y8Q==
+	h=sender:subject:to:references:cc:from:message-id:date:user-agent
+	:mime-version:in-reply-to:content-transfer-encoding;
+	bh=ApJr3miNtcUc5H5RVFkVl15MT6VH/dUegom2F4MK9Mg=;
+	b=Yn4yhPJAHOqia3zIqeYHgD+EWRfUt5h9Y96TelssvLFj52h8VEVoAzGNX9VdJcj4cM
+	QC6TT4kSixne1QGQOrqp5vtdUyc6VUdvg+3bmuQFnQbqs6EABIHuPpkISkL4Qb2987b8
+	raf8V10aBWgsluTPvLLDj5Ax3RVcGQAgKCIOtEMJUrDibzzcfSJQsIs7Ev5dKRZ7dhgv
+	xHfJdcI5kKET0tVNEBPar03KUcAl7wil/G6BJtMaOYLKp25ZC5Z6JsUfuVDIrWY4J8cl
+	x3bvfEjB3V1Eras59SK1ty80uQF7fx50Xt4vfw3ZAQs1p1s7k/GCt5QWo5AR/PS9/sEP
+	pcmg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=1o03XoH5O45DjQwLf7BG2ZefKpkN4dfuDcecTLaT76M=;
-	b=Ahn8iB+iNy+WV9cusGAOP8SoPdC+RwgsMZ8D5wKAmt/W+D149HtuBHOqHTLRdFfI0I
-	e4L4a+/2qa6WhXlE7JehUJV7e4VQz8xnhQxJOXM/9bygdDgZ3+ADBri5d4FOwtDriX7Y
-	pGnLW4oadKu0X0ef99Eb1wYsaHZboe04SvNBqNPs4CTDfzlGZKUrUf9L1mnYj4BriMmj
-	guB31+S7P6MF/yNxx04qmyRWZOO2uZCDwBoBVwqncKkU0JsQpn+kbcLUmqOxpXW2tfcu
-	FdVkqOPYvJPHjk2LQ9/6M5swOP5ZfrZ+/TjU4RcxqxpkHawcPNwVeIDwzkdqaaGpDlnl
-	Oj5A==
-X-Gm-Message-State: AN3rC/7aNadzEHq6kFuL2qCu9WdMY3+xpFzJEGvhWtFfXcJJpryMcj4B
-	QroZh9UWw4KrUExF7QtArgn51b3o3g==
-X-Received: by 10.202.105.75 with SMTP id e72mr5281481oic.98.1492205586947;
-	Fri, 14 Apr 2017 14:33:06 -0700 (PDT)
+	h=x-gm-message-state:sender:subject:to:references:cc:from:message-id
+	:date:user-agent:mime-version:in-reply-to:content-transfer-encoding;
+	bh=ApJr3miNtcUc5H5RVFkVl15MT6VH/dUegom2F4MK9Mg=;
+	b=kstB7tM/eTBB5GbykEreHKNO+aI6RBbbgiVkYxAHrNBC4L1Q6wq84bXVRFMx5g3iM4
+	H8qm8uc2sSPwPqn43y5dfi0FsuV2sEd84aU6NXyQCho5P7uk6iZnH7f38p9kdKbdYN4n
+	h4o252oSKaRaYsniP1qARiSTUx4ntWLiaQ4bs/j1H6T0RSVJv3stIFCPBwA+WLN+WmdH
+	RwnFqUto5qI99BUcDssyHxR9IamCEwy7NsMNANnGiyLk1O09X+v18/Yiw7EE+5EXi+mj
+	B5OBgK4zIljrjJkCxJ+iugR+1/dtxf+oReSQUyyWtlhdSKOCZFkTta8+y4qiy7cxDs/4
+	9iiQ==
+X-Gm-Message-State: AN3rC/6wk7UYT6B4Nx6jmMWT3kRP79TX0HDAhMNn84GWZMWaNJO1jYB1
+	+rjvHF4WJ0C4cg==
+X-Received: by 10.28.195.7 with SMTP id t7mr2478873wmf.62.1492259494659;
+	Sat, 15 Apr 2017 05:31:34 -0700 (PDT)
+Received: from bigtime.twiddle.net ([87.111.149.139])
+	by smtp.googlemail.com with ESMTPSA id
+	n6sm6244913wrb.62.2017.04.15.05.31.32
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Sat, 15 Apr 2017 05:31:33 -0700 (PDT)
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+References: <1491844419-12485-1-git-send-email-peter.maydell@linaro.org>
+From: Richard Henderson <rth@twiddle.net>
+Message-ID: <0f3ee3f1-5d73-79be-2e7d-45c0385c6758@twiddle.net>
+Date: Sat, 15 Apr 2017 05:31:30 -0700
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
+	Thunderbird/45.8.0
 MIME-Version: 1.0
-Received: by 10.182.44.229 with HTTP; Fri, 14 Apr 2017 14:32:36 -0700 (PDT)
-In-Reply-To: <1491736758-19540-3-git-send-email-sundeep.lkml@gmail.com>
-References: <1491736758-19540-1-git-send-email-sundeep.lkml@gmail.com>
-	<1491736758-19540-3-git-send-email-sundeep.lkml@gmail.com>
-From: Alistair Francis <alistair23@gmail.com>
-Date: Fri, 14 Apr 2017 14:32:36 -0700
-Message-ID: <CAKmqyKNzkdJV1=qepkzVhGGOdNYbHMhnKgP9PxfKhCKxPqdNcg@mail.gmail.com>
-To: Subbaraya Sundeep <sundeep.lkml@gmail.com>
-Content-Type: text/plain; charset=UTF-8
+In-Reply-To: <1491844419-12485-1-git-send-email-peter.maydell@linaro.org>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:4003:c06::22d
-Subject: Re: [Qemu-arm] [Qemu-devel] [Qemu-devel RFC v2 2/4] msf2: Microsemi
- Smartfusion2 System Register block.
+X-Received-From: 2a00:1450:400c:c09::241
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v2 0/9] arm: Implement M profile
+ exception return properly
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -80,225 +87,32 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm <qemu-arm@nongnu.org>,
-	"qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>
+Cc: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+	patches@linaro.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 9kqqxb1zTVrB
+X-TUID: d/QUdlJz3JV3
 
-On Sun, Apr 9, 2017 at 4:19 AM, Subbaraya Sundeep
-<sundeep.lkml@gmail.com> wrote:
-> Added Sytem register block of Smartfusion2.
-> This block has PLL registers which are accessed by guest.
+On 04/10/2017 10:13 AM, Peter Maydell wrote:
+> Peter Maydell (9):
+>   arm: Don't implement BXJ on M-profile CPUs
+>   arm: Thumb shift operations should not permit interworking branches
+>   arm: Factor out "generate right kind of step exception"
+>   arm: Move gen_set_condexec() and gen_set_pc_im() up in the file
+>   arm: Move condition-failed codepath generation out of if()
+>   arm: Abstract out "are we singlestepping" test to utility function
+>   arm: Track M profile handler mode state in TB flags
+>   arm: Implement M profile exception return properly
+>   arm: Remove workarounds for old M-profile exception return
+>     implementation
 >
-> Signed-off-by: Subbaraya Sundeep <sundeep.lkml@gmail.com>
-> ---
->  hw/misc/Makefile.objs |   1 +
->  hw/misc/msf2_sysreg.c | 168 ++++++++++++++++++++++++++++++++++++++++++++++++++
->  2 files changed, 169 insertions(+)
->  create mode 100644 hw/misc/msf2_sysreg.c
->
-> diff --git a/hw/misc/Makefile.objs b/hw/misc/Makefile.objs
-> index c8b4893..aee53df 100644
-> --- a/hw/misc/Makefile.objs
-> +++ b/hw/misc/Makefile.objs
-> @@ -56,3 +56,4 @@ obj-$(CONFIG_EDU) += edu.o
->  obj-$(CONFIG_HYPERV_TESTDEV) += hyperv_testdev.o
->  obj-$(CONFIG_AUX) += auxbus.o
->  obj-$(CONFIG_ASPEED_SOC) += aspeed_scu.o aspeed_sdmc.o
-> +obj-$(CONFIG_MSF2) += msf2_sysreg.o
-> diff --git a/hw/misc/msf2_sysreg.c b/hw/misc/msf2_sysreg.c
-> new file mode 100644
-> index 0000000..4873463
-> --- /dev/null
-> +++ b/hw/misc/msf2_sysreg.c
-> @@ -0,0 +1,168 @@
-> +/*
-> + * System Register block model of Microsemi SmartFusion2.
-> + *
-> + * Copyright (c) 2017 Subbaraya Sundeep <sundeep.lkml@gmail.com>
-> + *
-> + * This program is free software; you can redistribute it and/or
-> + * modify it under the terms of the GNU General Public License
-> + * as published by the Free Software Foundation; either version
-> + * 2 of the License, or (at your option) any later version.
-> + *
-> + * You should have received a copy of the GNU General Public License along
-> + * with this program; if not, see <http://www.gnu.org/licenses/>.
-> + */
-> +
-> +#include "qemu/osdep.h"
-> +#include "hw/hw.h"
-> +#include "qemu/timer.h"
-> +#include "hw/sysbus.h"
-> +#include "sysemu/sysemu.h"
-> +#include "qemu/log.h"
-> +
-> +#ifndef MSF2_SYSREG_ERR_DEBUG
-> +#define MSF2_SYSREG_ERR_DEBUG 0
-> +#endif
-> +
-> +#define DB_PRINT(...) do { \
-> +        if (MSF2_SYSREG_ERR_DEBUG) { \
-> +            fprintf(stderr,  ": %s: ", __func__); \
-> +            fprintf(stderr, ## __VA_ARGS__); \
+>  target/arm/cpu.h       |   9 +++
+>  target/arm/translate.h |   5 ++
+>  target/arm/cpu.c       |  43 +-----------
+>  target/arm/translate.c | 181 +++++++++++++++++++++++++++++++++----------------
+>  4 files changed, 138 insertions(+), 100 deletions(-)
 
-You should use qemu_log() here.
+Reviewed-by: Richard Henderson <rth@twiddle.net>
 
-> +        } \
-> +    } while (0);
-> +
-> +#define R_PSS_RST_CTRL_SOFT_RST 0x1
-> +
-> +enum {
-> +    ESRAM_CR        = 0x00 / 4,
-> +    ESRAM_MAX_LAT,
-> +    DDR_CR,
-> +    ENVM_CR,
-> +    ENVM_REMAP_BASE_CR,
-> +    ENVM_REMAP_FAB_CR,
-> +    CC_CR,
-> +    CC_REGION_CR,
-> +    CC_LOCK_BASE_ADDR_CR,
-> +    CC_FLUSH_INDX_CR,
-> +    DDRB_BUF_TIMER_CR,
-> +    DDRB_NB_ADDR_CR,
-> +    DDRB_NB_SIZE_CR,
-> +    DDRB_CR,
-> +
-> +    SOFT_RESET_CR  = 0x48 / 4,
-> +    M3_CR,
-> +
-> +    GPIO_SYSRESET_SEL_CR = 0x58 / 4,
-> +
-> +    MDDR_CR = 0x60 / 4,
-> +
-> +    MSSDDR_PLL_STATUS_LOW_CR = 0x90 / 4,
-> +    MSSDDR_PLL_STATUS_HIGH_CR,
-> +    MSSDDR_FACC1_CR,
-> +    MSSDDR_FACC2_CR,
-> +
-> +    MSSDDR_PLL_STATUS = 0x150 / 4,
-> +
-> +};
-> +
-> +#define MSF2_SYSREG_MMIO_SIZE     0x300
-> +#define MSF2_SYSREG_NUM_REGS      (MSF2_SYSREG_MMIO_SIZE / 4)
-> +
-> +#define TYPE_MSF2_SYSREG          "msf2-sysreg"
-> +#define MSF2_SYSREG(obj)  OBJECT_CHECK(Sf2SysregState, (obj), TYPE_MSF2_SYSREG)
-> +
-> +typedef struct Sf2SysregState {
-> +    SysBusDevice parent_obj;
-> +
-> +    MemoryRegion iomem;
-> +
-> +    uint32_t regs[MSF2_SYSREG_NUM_REGS];
-> +} Sf2SysregState;
-> +
-> +static void msf2_sysreg_reset(DeviceState *d)
-> +{
-> +    Sf2SysregState *s = MSF2_SYSREG(d);
-> +
-> +    DB_PRINT("RESET\n");
-> +
-> +    s->regs[MSSDDR_PLL_STATUS_LOW_CR] = 0x02420041;
-> +    s->regs[MSSDDR_FACC1_CR] = 0x0A482124;
-> +    s->regs[MSSDDR_PLL_STATUS] = 0x3;
-> +}
-> +
-> +static uint64_t msf2_sysreg_read(void *opaque, hwaddr offset,
-> +    unsigned size)
-> +{
-> +    Sf2SysregState *s = opaque;
-> +    offset /= 4;
-> +    uint32_t ret = s->regs[offset];
 
-Probably should check that this offset value is inside the array.
-
-> +
-> +    DB_PRINT("addr: %08" HWADDR_PRIx " data: %08" PRIx32 "\n", offset * 4, ret);
-> +
-> +   return ret;
-> +}
-> +
-> +static void msf2_sysreg_write(void *opaque, hwaddr offset,
-> +                          uint64_t val, unsigned size)
-> +{
-> +    Sf2SysregState *s = (Sf2SysregState *)opaque;
-> +    offset /= 4;
-> +
-> +    DB_PRINT("addr: %08" HWADDR_PRIx " data: %08" PRIx64 "\n", offset * 4, val);
-> +
-> +    switch (offset) {
-> +    case MSSDDR_PLL_STATUS:
-> +        break;
-> +
-> +    default:
-> +        s->regs[offset] = val;
-
-Check the bounds here as well.
-
-> +        break;
-> +    }
-> +}
-> +
-> +static const MemoryRegionOps sysreg_ops = {
-> +    .read = msf2_sysreg_read,
-> +    .write = msf2_sysreg_write,
-> +    .endianness = DEVICE_NATIVE_ENDIAN,
-> +};
-> +
-> +static void msf2_sysreg_init(Object *obj)
-> +{
-> +    Sf2SysregState *s = MSF2_SYSREG(obj);
-> +
-> +    memory_region_init_io(&s->iomem, obj, &sysreg_ops, s, "sysreg",
-> +                          MSF2_SYSREG_MMIO_SIZE);
-> +    sysbus_init_mmio(SYS_BUS_DEVICE(obj), &s->iomem);
-> +}
-> +
-> +static const VMStateDescription vmstate_msf2_sysreg = {
-> +    .name = "msf2_sysreg",
-> +    .version_id = 2,
-> +    .minimum_version_id = 2,
-
-This version_id should start at 1, you only increase it when you make
-changes to the code that affects migration once it's in the tree.
-
-Thanks,
-
-Alistair
-
-> +    .fields = (VMStateField[]) {
-> +        VMSTATE_UINT32_ARRAY(regs, Sf2SysregState, MSF2_SYSREG_NUM_REGS),
-> +        VMSTATE_END_OF_LIST()
-> +    }
-> +};
-> +
-> +static void msf2_sysreg_class_init(ObjectClass *klass, void *data)
-> +{
-> +    DeviceClass *dc = DEVICE_CLASS(klass);
-> +
-> +    dc->vmsd = &vmstate_msf2_sysreg;
-> +    dc->reset = msf2_sysreg_reset;
-> +}
-> +
-> +static const TypeInfo msf2_sysreg_info = {
-> +    .class_init = msf2_sysreg_class_init,
-> +    .name  = TYPE_MSF2_SYSREG,
-> +    .parent = TYPE_SYS_BUS_DEVICE,
-> +    .instance_size  = sizeof(Sf2SysregState),
-> +    .instance_init = msf2_sysreg_init,
-> +};
-> +
-> +static void msf2_sysreg_register_types(void)
-> +{
-> +    type_register_static(&msf2_sysreg_info);
-> +}
-> +
-> +type_init(msf2_sysreg_register_types)
-> --
-> 2.5.0
->
->
+r~

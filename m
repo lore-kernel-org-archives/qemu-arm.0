@@ -1,112 +1,91 @@
-Received: by 10.25.0.144 with SMTP id 138csp609396lfa;
-        Sat, 15 Apr 2017 04:40:42 -0700 (PDT)
-X-Received: by 10.223.175.81 with SMTP id z75mr10786702wrc.11.1492256442225;
-        Sat, 15 Apr 2017 04:40:42 -0700 (PDT)
-Return-Path: <rth7680@gmail.com>
-Received: from mail-wr0-x243.google.com (mail-wr0-x243.google.com. [2a00:1450:400c:c0c::243])
-        by mx.google.com with ESMTPS id l13si7245771wrb.103.2017.04.15.04.40.42
+Received: by 10.25.0.144 with SMTP id 138csp1012140lfa;
+        Sun, 16 Apr 2017 11:28:44 -0700 (PDT)
+X-Received: by 10.200.36.139 with SMTP id s11mr6638141qts.19.1492367324444;
+        Sun, 16 Apr 2017 11:28:44 -0700 (PDT)
+Return-Path: <cota@braap.org>
+Received: from out1-smtp.messagingengine.com (out1-smtp.messagingengine.com. [66.111.4.25])
+        by mx.google.com with ESMTPS id f131si8424246qkb.116.2017.04.16.11.28.44
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 15 Apr 2017 04:40:42 -0700 (PDT)
-Received-SPF: pass (google.com: domain of rth7680@gmail.com designates 2a00:1450:400c:c0c::243 as permitted sender) client-ip=2a00:1450:400c:c0c::243;
+        Sun, 16 Apr 2017 11:28:44 -0700 (PDT)
+Received-SPF: pass (google.com: domain of cota@braap.org designates 66.111.4.25 as permitted sender) client-ip=66.111.4.25;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of rth7680@gmail.com designates 2a00:1450:400c:c0c::243 as permitted sender) smtp.mailfrom=rth7680@gmail.com
-Received: by mail-wr0-x243.google.com with SMTP id o21so15079911wrb.3;
-        Sat, 15 Apr 2017 04:40:42 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=sender:subject:to:references:cc:from:message-id:date:user-agent
-         :mime-version:in-reply-to:content-transfer-encoding;
-        bh=TqcQxVtDekXvU4c/ZH1pJlSz4dlx4ISSAqn6TiQD7fM=;
-        b=Z9yIs3B1IVCSEm2R+uqEKyOeWXE8dey4hncAIpWgvmEabGfkbPLZiYuj0D7SHmn0B6
-         OjLlTVn7V7nYXULcXUQnAgI+I9mE+cxRLwzdgF76wdDFtq+ANF38daeXMT1CXSM2SjtM
-         dMGxTKFIcTLhTI2mgT2bR03L4OUEcU/FVghtGeRWTKpvLV1AX9BxihY/Eej5I27QHQ/S
-         C+Gm+iFDvZ1ldLjPyY3qu+yOYjeGkvj0nFxWM4YB2xMwJwZ3B3hZSkIyXtWlT27LBZzF
-         b3cG1d48gzDDQGwVBspkVimbCbKwBsThxd8AoS6cHW8PoFZ5DG/+26O8cczjwkU7T33n
-         jG3w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:sender:subject:to:references:cc:from:message-id
-         :date:user-agent:mime-version:in-reply-to:content-transfer-encoding;
-        bh=TqcQxVtDekXvU4c/ZH1pJlSz4dlx4ISSAqn6TiQD7fM=;
-        b=pIOvPY0Tx38+k1oK9d2XS3MCtNZZFqPLAxqapqAlAz1pdA2Jt0Mnl2eHOPDeYaQz4G
-         tR9dvulMbp0nw0JHCpvM3FeKi3/QultxyetV1kCMKay861lUtSicrvwvrwwdbpnoFNbW
-         veyh3w50T+cJJg4DrQAkVCVz6Ur3XXykj/75AJXbjk+H1/YjjyQ5HQHbvHV5fT5lsFIH
-         6o+JzeD6DawlorlpxoBNfLev+wDl3FAsdWbvszeVfm+2XkFEq5aqfGgwBA7urp1xubfT
-         O5cetIbwhzSNwdmQwfyZnhk2xLnlf5Mkkzj8h64etTEpQKun5G2EuF9XK7JFJnCNwUwT
-         d9Lw==
-X-Gm-Message-State: AN3rC/5QxPO7xDxigz7L2TU8SJQjUss1p1VEbqxEdYtKxUmXLhcz4fAs
-	FLC79IvMTga0cQ==
-X-Received: by 10.223.170.143 with SMTP id h15mr11257092wrc.64.1492256441771;
-        Sat, 15 Apr 2017 04:40:41 -0700 (PDT)
-Return-Path: <rth7680@gmail.com>
-Received: from bigtime.twiddle.net ([87.111.149.139])
-        by smtp.googlemail.com with ESMTPSA id 59sm6077857wrl.48.2017.04.15.04.40.38
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 15 Apr 2017 04:40:40 -0700 (PDT)
-Sender: Richard Henderson <rth7680@gmail.com>
+       dkim=pass header.i=@braap.org;
+       dkim=pass header.i=@messagingengine.com;
+       spf=pass (google.com: domain of cota@braap.org designates 66.111.4.25 as permitted sender) smtp.mailfrom=cota@braap.org
+Received: from compute4.internal (compute4.nyi.internal [10.202.2.44])
+	by mailout.nyi.internal (Postfix) with ESMTP id E283820792;
+	Sun, 16 Apr 2017 14:28:43 -0400 (EDT)
+Received: from frontend1 ([10.202.2.160])
+  by compute4.internal (MEProxy); Sun, 16 Apr 2017 14:28:43 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=braap.org; h=cc
+	:content-type:date:from:in-reply-to:message-id:mime-version
+	:references:subject:to:x-me-sender:x-me-sender:x-sasl-enc
+	:x-sasl-enc; s=mesmtp; bh=EuwN9bfznaC1rikLMDl/bEU+Lsuq77d0qMle1K
+	HpJeM=; b=VmoYskGySZJQLYcPqsJz2XZCGarL2oEeqokCq7hboZAOxPvNmMFAUQ
+	EbpJ2v8LsP2ehQjRrGi0TAbgJBMi6glZ6ymgCwxwfK3PIAiw/OSIMuL/kst8HBxV
+	35sde6NWWh689NnDM+D3efZT0xFJ4a5eh5MIK9NUbZkIxk9f3KKmk=
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+	messagingengine.com; h=cc:content-type:date:from:in-reply-to
+	:message-id:mime-version:references:subject:to:x-me-sender
+	:x-me-sender:x-sasl-enc:x-sasl-enc; s=fm1; bh=EuwN9bfznaC1rikLMD
+	l/bEU+Lsuq77d0qMle1KHpJeM=; b=R7v4RGd9V2kxu3hOskfGuk5Ahub+pnKmVf
+	4Oz3Cu5btKuBxfMA994pPl0tpOngXMsdwjx4ucOqSAxpV2TxWwnxCjBVUlQbWS3a
+	xbbm7o10PreTKCHhYwVQthohMboHK6ptgEbTH8dlHhv78vWAr5pIXO+ruSxPNkh4
+	H4bWNpgf+cAGt4bVe/wagWOnMtHNloJxoBmn71Um16vsva3REO7CNY4C9QqgMP8k
+	KncYPSPGSG+QQ91E3EizySQqX7gL+zb6JdH84cqrZqeTh5IPzTCj24ojEZxLBLqy
+	l4/LIoPOXs5q+VASK1es08jq9ehn4evDuA/xH3oQtYBdWgzpE1NA==
+X-ME-Sender: <xms:27fzWAx50FntnebZQSRexfWe0N0LMbks22kehZEFO4IAQoqAIntcIw>
+X-Sasl-enc: ZERzR+qVeaGsg6nxBswVmL38ruPQvOek6HLLrxhb70nM 1492367323
+Received: from localhost (flamenco.cs.columbia.edu [128.59.20.216])
+	by mail.messagingengine.com (Postfix) with ESMTPA id ABB347E6E3;
+	Sun, 16 Apr 2017 14:28:43 -0400 (EDT)
+Date: Sun, 16 Apr 2017 14:28:43 -0400
+From: "Emilio G. Cota" <cota@braap.org>
+To: Richard Henderson <rth@twiddle.net>
+Cc: qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
+	Eduardo Habkost <ehabkost@redhat.com>,
+	Peter Crosthwaite <crosthwaite.peter@gmail.com>,
+	Stefan Weil <sw@weilnetz.de>, Alexander Graf <agraf@suse.de>,
+	alex.bennee@linaro.org, qemu-arm@nongnu.org,
+	Pranith Kumar <bobby.prani+qemu@gmail.com>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	Aurelien Jarno <aurelien@aurel32.net>
 Subject: Re: [Qemu-devel] [PATCH 05/10] tcg: add jr opcode
-To: "Emilio G. Cota" <cota@braap.org>, qemu-devel@nongnu.org
+Message-ID: <20170416182843.GA30160@flamenco>
 References: <1491959850-30756-1-git-send-email-cota@braap.org>
  <1491959850-30756-6-git-send-email-cota@braap.org>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Eduardo Habkost <ehabkost@redhat.com>,
- Peter Crosthwaite <crosthwaite.peter@gmail.com>, Stefan Weil
- <sw@weilnetz.de>, Claudio Fontana <claudio.fontana@huawei.com>,
- Alexander Graf <agraf@suse.de>, alex.bennee@linaro.org, qemu-arm@nongnu.org,
- Pranith Kumar <bobby.prani+qemu@gmail.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
-From: Richard Henderson <rth@twiddle.net>
-Message-ID: <73257eb8-edfd-ae0b-a5fa-b1194de568d8@twiddle.net>
-Date: Sat, 15 Apr 2017 04:40:35 -0700
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
- Thunderbird/45.8.0
+ <73257eb8-edfd-ae0b-a5fa-b1194de568d8@twiddle.net>
 MIME-Version: 1.0
-In-Reply-To: <1491959850-30756-6-git-send-email-cota@braap.org>
-Content-Type: text/plain; charset=windows-1252; format=flowed
-Content-Transfer-Encoding: 7bit
-X-TUID: wm+tqgsgD8qm
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <73257eb8-edfd-ae0b-a5fa-b1194de568d8@twiddle.net>
+User-Agent: Mutt/1.5.24 (2015-08-30)
+X-TUID: p2oV2VaNARmL
 
-On 04/11/2017 06:17 PM, Emilio G. Cota wrote:
-> This will be used by TCG targets to implement a fast path
-> for indirect branches.
->
-> I only have implemented and tested this on an i386 host, so
-> make this opcode optional and mark it as not implemented by
-> other TCG backends.
+On Sat, Apr 15, 2017 at 04:40:35 -0700, Richard Henderson wrote:
+> On 04/11/2017 06:17 PM, Emilio G. Cota wrote:
+> >This will be used by TCG targets to implement a fast path
+> >for indirect branches.
+> >
+> >I only have implemented and tested this on an i386 host, so
+> >make this opcode optional and mark it as not implemented by
+> >other TCG backends.
+> 
+> I don't think this is quite the right abstraction.  In particular, if we can
+> always return a valid address from the helper, we can eliminate a
+> conditional branch.
+> 
+> I think this should work as follows:
+(snip)
 
-I don't think this is quite the right abstraction.  In particular, if we can 
-always return a valid address from the helper, we can eliminate a conditional 
-branch.
+Yes that's much better. In fact in the cover letter I forgot to
+mention that the code by the paper authors does something similar
+to avoid the branch.
 
-I think this should work as follows:
+I went with the design with a branch because (1) I wasn't sure that
+exporting tb_ret_addr would get your approval and (2) my knowledge
+of TCG backend code is shamefully poor.
 
-(1) tb_ret_addr gets moved into TCGContext so that it's available for other 
-code to see.
+Will work on a v2. Thanks for the feedback!
 
-(2) Have a generic helper
-
-void *HELPER(lookup_tb_ptr)(CPUArchState *env, target_ulong addr)
-{
-     TranslationBlock *tb = tb_from_jmp_cache(env, addr);
-     return tb ? tb->tc_ptr : tcg_ctx.tb_ret_addr;
-}
-
-(3) Emit TCG opcodes like
-
-	call t0,lookup_tb_ptr,env,addr
-	jmp_tb t0
-
-(4) Emit code for jmp_tb like
-
-	mov	%rax,%rdx	// save target into new register
-	xor	%eax,%eax	// set return value a-la exit_tb
-	jmp	*%edx		// branch to tb or epilogue.
-
-(5) There needs to be a convenience function in tcg/tcg-op.c.  If the host does 
-not support jmp_tb, we should just generate exit_tb like we do now.  There 
-should be no ifdefs inside target/*.
-
-
-
-r~
+		Emilio

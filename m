@@ -1,190 +1,136 @@
-Received: by 10.25.0.144 with SMTP id 138csp1116160lfa;
-        Sun, 16 Apr 2017 20:23:53 -0700 (PDT)
-X-Received: by 10.55.131.7 with SMTP id f7mr6684741qkd.0.1492399433244;
-        Sun, 16 Apr 2017 20:23:53 -0700 (PDT)
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id p65si9619329qkb.89.2017.04.16.20.23.53
-        for <alex.bennee@linaro.org>
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sun, 16 Apr 2017 20:23:53 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+Received: by 10.25.0.144 with SMTP id 138csp1116541lfa;
+        Sun, 16 Apr 2017 20:26:10 -0700 (PDT)
+X-Received: by 10.55.19.16 with SMTP id d16mr6727240qkh.142.1492399570233;
+        Sun, 16 Apr 2017 20:26:10 -0700 (PDT)
+Return-Path: <philippe.mathieu.daude@gmail.com>
+Received: from mail-qk0-x243.google.com (mail-qk0-x243.google.com. [2607:f8b0:400d:c09::243])
+        by mx.google.com with ESMTPS id c27si9603389qta.207.2017.04.16.20.26.10
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Sun, 16 Apr 2017 20:26:10 -0700 (PDT)
+Received-SPF: pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 2607:f8b0:400d:c09::243 as permitted sender) client-ip=2607:f8b0:400d:c09::243;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:34612 helo=lists.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1czxGa-00033j-MY
-	for alex.bennee@linaro.org; Sun, 16 Apr 2017 23:23:52 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:50296)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1czxGU-00032C-3f
-	for qemu-arm@nongnu.org; Sun, 16 Apr 2017 23:23:47 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1czxGT-0005FW-5n
-	for qemu-arm@nongnu.org; Sun, 16 Apr 2017 23:23:46 -0400
-Received: from mail-qt0-x244.google.com ([2607:f8b0:400d:c0d::244]:36605)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1czxGN-00058v-2s; Sun, 16 Apr 2017 23:23:39 -0400
-Received: by mail-qt0-x244.google.com with SMTP id t52so5739648qtb.3;
-	Sun, 16 Apr 2017 20:23:39 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=sender:subject:to:references:cc:from:message-id:date:user-agent
-	:mime-version:in-reply-to:content-transfer-encoding;
-	bh=SP7ekfDEwGfsOHrSTwk5j3qAaJv8PhKk6PJVuQ8jNLA=;
-	b=VlijZJP4xPBpFNRpd6cUpx9wHdIaYQ03COiYe4r5CjbhgAj1umhSqHIO2+PKfjQp6N
-	A5DLn3vs1mk57Pfq3A5as71ugLxsjly3NvqBqiAJQetX6viq+cJrBMQHFF32+MiJ7QJu
-	nv2Opo4XnxQ18xo8RkM1j2w4kjcVuPMUMG+IeG/DUvAUGX0e/pIuFCs5lBkXZFnn97UD
-	UBd2ZGE67ldCxb9MrEp1kIdQWjueaC3f0iiLKWp23UPp8UQCWXlB10teeMeg8/vwJtB3
-	xOMLyiIF6qa8OKT4rHMk5qjXF4k0Ce/4MDpAOnSEMvwurmsOUfnnCph7BktKm0hUkv3l
-	m22A==
+       dkim=pass header.i=@gmail.com;
+       spf=pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 2607:f8b0:400d:c09::243 as permitted sender) smtp.mailfrom=philippe.mathieu.daude@gmail.com
+Received: by mail-qk0-x243.google.com with SMTP id v75so18001440qkb.3;
+        Sun, 16 Apr 2017 20:26:10 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=sender:subject:to:references:cc:from:message-id:date:user-agent
+         :mime-version:in-reply-to:content-transfer-encoding;
+        bh=CXPNblC5t7eFi+mbKs8k1TVuCjDDdsd+N4ygQsm7wPg=;
+        b=XpyZrhYE5JhiP+WLwMSaVFBPLSJQShGSvz78nEZL4xnKPjzMRqvrIh/sMXdH3vY9XB
+         +oEIs9HuzA9GS7dKz96PHkbGRcp2HPknkbPpoySDH4Nd0kQ+uI05zZXHnYOCBg9SbXZS
+         Npyr/4Vo6sEivHZJVl8sKP6ESGieK0OhtxGD3XrAmZAsPqiObFFUmzpOeDNPByUjIRv4
+         PMmfWRhvEdFSoZ7QpwRWZYkJCrVtjxh5PInDIpH9f301XPeUVR/4HbRkzt08jPWZji2V
+         6jiLYlIWi32nMFzedqwvui0h6Zm2KUx7i2bmPR/Q0pSTt4SdOw2QuxbA1lwHFzwEyp98
+         Pq3w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:sender:subject:to:references:cc:from:message-id
-	:date:user-agent:mime-version:in-reply-to:content-transfer-encoding;
-	bh=SP7ekfDEwGfsOHrSTwk5j3qAaJv8PhKk6PJVuQ8jNLA=;
-	b=rWVxUGfMFSIv1oZCLjht8xYUNDe9+Qlun4tkZ0ouPjHRedfI8aT30IPxObace/ZNt4
-	CYwCgC9kM+zx3bsYWcM3dVN2ozuY21H47Omh4Znr++wyj6rpPCWZFhZr1qUVKXjuCR98
-	m4LJXXoH9poAr2KRnQm2d7racWqh5wg23MSP0CPIcky0i3Z39y04g6kc0xgTpg6XiDSm
-	/OnQ4D7MRa8rknkpeonywVpMI074daAime53Bq5YVlzRO+Ypd/HKzTo1OvwiaV+hUQQy
-	25+PDO7cM/ZswqDkNJlM/Rmu5+2rLLanuHp1HtVNCBUPILY1VQ2hUpKw9Xa3IPWGqv5I
-	tLhQ==
-X-Gm-Message-State: AN3rC/7BKqM2M2ZJSndSMJrSUchp1BAH/oIFa4dKHryYCzegp5QHS7uk
-	ewWKmudcII5FMw==
-X-Received: by 10.200.57.226 with SMTP id v89mr7953467qte.255.1492399418465;
-	Sun, 16 Apr 2017 20:23:38 -0700 (PDT)
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:sender:subject:to:references:cc:from:message-id
+         :date:user-agent:mime-version:in-reply-to:content-transfer-encoding;
+        bh=CXPNblC5t7eFi+mbKs8k1TVuCjDDdsd+N4ygQsm7wPg=;
+        b=PWlKM1oBZoAkdSON8xA+qotow9MzSO0bLHCfSLL9nJNZbGVR7pu98NrKMw8jiyrRsR
+         WPO9DpjP+ih09ScSROs+fVdKmgJrNonFn7i2aQxnfGSguWO8lesuVLDkeGfpBFIf8EhO
+         0tm0cNrGNjIqPF9aIOU+bs3Biy0BcxaOGHAVBXqWtbWO5AIKSMe+aEjwe2pdkigySDPg
+         yFr8roHVFwO5efWizsMhQfZRqdEAm9k1K4VYYQhHsgiod/WmslYYOlrQ9Tal5WqQIADV
+         p9LOYG+yeLot9TUJ9crB0RP7UbzKdOOs21bClJ18eNevvK/HSLTA6BGUTGVvPgDko9vM
+         pZIA==
+X-Gm-Message-State: AN3rC/4yhDUTnsHgTfM0FfNe5m/l8nRPFxbflAi05Ha8loEfzgheDpPM
+	rIf5csg3jqSmUv2vN64=
+X-Received: by 10.55.43.219 with SMTP id r88mr7582478qkr.143.1492399569705;
+        Sun, 16 Apr 2017 20:26:09 -0700 (PDT)
+Return-Path: <philippe.mathieu.daude@gmail.com>
 Received: from [192.168.1.10] ([138.117.48.226])
-	by smtp.gmail.com with ESMTPSA id
-	v11sm6340644qtg.33.2017.04.16.20.23.35
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Sun, 16 Apr 2017 20:23:37 -0700 (PDT)
+        by smtp.gmail.com with ESMTPSA id u68sm5158150qku.2.2017.04.16.20.26.07
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Sun, 16 Apr 2017 20:26:09 -0700 (PDT)
+Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philippe.mathieu.daude@gmail.com>
+Subject: Re: [Qemu-devel] [PATCH 06/11] armv7m: Make NVIC expose a memory
+ region rather than mapping itself
 To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
+ qemu-devel@nongnu.org
 References: <1487604965-23220-1-git-send-email-peter.maydell@linaro.org>
-	<1487604965-23220-5-git-send-email-peter.maydell@linaro.org>
+ <1487604965-23220-7-git-send-email-peter.maydell@linaro.org>
+Cc: Alistair Francis <alistair23@gmail.com>,
+ Michael Davidsaver <mdavidsaver@gmail.com>,
+ =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>, patches@linaro.org
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <4261d33b-a3d8-06fd-7b06-0cd0a30bc987@amsat.org>
-Date: Mon, 17 Apr 2017 00:23:34 -0300
+Message-ID: <e0853a2f-7cc0-9ee5-fed6-d5af02e86b06@amsat.org>
+Date: Mon, 17 Apr 2017 00:26:06 -0300
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
-	Thunderbird/45.8.0
+ Thunderbird/45.8.0
 MIME-Version: 1.0
-In-Reply-To: <1487604965-23220-5-git-send-email-peter.maydell@linaro.org>
+In-Reply-To: <1487604965-23220-7-git-send-email-peter.maydell@linaro.org>
 Content-Type: text/plain; charset=windows-1252; format=flowed
 Content-Transfer-Encoding: 8bit
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:400d:c0d::244
-Subject: Re: [Qemu-arm] [PATCH 04/11] armv7m: Use QOMified armv7m object in
- armv7m_init()
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.21
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Alistair Francis <alistair23@gmail.com>,
-	Michael Davidsaver <mdavidsaver@gmail.com>, patches@linaro.org
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: sYUU//Ws5UPV
+X-TUID: 0O45a8AnkfWB
 
-On 02/20/2017 12:35 PM, Peter Maydell wrote:
-> Make the legacy armv7m_init() function use the newly QOMified
-> armv7m object rather than doing everything by hand.
->
-> We can return the armv7m object rather than the NVIC from
-> armv7m_init() because its interface to the rest of the
-> board (GPIOs, etc) is identical.
+On 02/20/2017 12:36 PM, Peter Maydell wrote:
+> Make the NVIC device expose a memory region for its users
+> to map, rather than mapping itself into the system memory
+> space on realize, and get the one user (the ARMv7M object)
+> to do this.
 >
 > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 
 Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 
 > ---
->  hw/arm/armv7m.c | 49 ++++++++++++-------------------------------------
->  1 file changed, 12 insertions(+), 37 deletions(-)
+>  hw/arm/armv7m.c       | 7 ++++++-
+>  hw/intc/armv7m_nvic.c | 7 ++-----
+>  2 files changed, 8 insertions(+), 6 deletions(-)
 >
 > diff --git a/hw/arm/armv7m.c b/hw/arm/armv7m.c
-> index 56d02d4..36f213c 100644
+> index 638c597..fb21f74 100644
 > --- a/hw/arm/armv7m.c
 > +++ b/hw/arm/armv7m.c
-> @@ -131,21 +131,6 @@ static void bitband_init(Object *obj)
->      sysbus_init_mmio(dev, &s->iomem);
->  }
->
-> -static void armv7m_bitband_init(void)
-> -{
-> -    DeviceState *dev;
-> -
-> -    dev = qdev_create(NULL, TYPE_BITBAND);
-> -    qdev_prop_set_uint32(dev, "base", 0x20000000);
-> -    qdev_init_nofail(dev);
-> -    sysbus_mmio_map(SYS_BUS_DEVICE(dev), 0, 0x22000000);
-> -
-> -    dev = qdev_create(NULL, TYPE_BITBAND);
-> -    qdev_prop_set_uint32(dev, "base", 0x40000000);
-> -    qdev_init_nofail(dev);
-> -    sysbus_mmio_map(SYS_BUS_DEVICE(dev), 0, 0x42000000);
-> -}
-> -
->  /* Board init.  */
->
->  static const hwaddr bitband_input_addr[ARMV7M_NUM_BITBANDS] = {
-> @@ -283,35 +268,25 @@ static void armv7m_reset(void *opaque)
->
->  /* Init CPU and memory for a v7-M based board.
->     mem_size is in bytes.
-> -   Returns the NVIC array.  */
-> +   Returns the ARMv7M device.  */
->
->  DeviceState *armv7m_init(MemoryRegion *system_memory, int mem_size, int num_irq,
->                        const char *kernel_filename, const char *cpu_model)
+> @@ -172,6 +172,7 @@ static void armv7m_realize(DeviceState *dev, Error **errp)
 >  {
-> -    ARMCPU *cpu;
-> -    CPUARMState *env;
-> -    DeviceState *nvic;
-> +    DeviceState *armv7m;
+>      /* here realize our children */
+>      ARMv7MState *s = ARMV7M(dev);
+> +    SysBusDevice *sbd;
+>      Error *err = NULL;
+>      int i;
+>      char **cpustr;
+> @@ -233,10 +234,14 @@ static void armv7m_realize(DeviceState *dev, Error **errp)
+>      qdev_pass_gpios(DEVICE(&s->nvic), dev, "SYSRESETREQ");
 >
->      if (cpu_model == NULL) {
-> -	cpu_model = "cortex-m3";
-> +        cpu_model = "cortex-m3";
->      }
-> -    cpu = cpu_arm_init(cpu_model);
-> -    if (cpu == NULL) {
-> -        fprintf(stderr, "Unable to find CPU definition\n");
-> -        exit(1);
-> -    }
-> -    env = &cpu->env;
-> -
-> -    armv7m_bitband_init();
-> -
-> -    nvic = qdev_create(NULL, "armv7m_nvic");
-> -    qdev_prop_set_uint32(nvic, "num-irq", num_irq);
-> -    env->nvic = nvic;
-> -    qdev_init_nofail(nvic);
-> -    sysbus_connect_irq(SYS_BUS_DEVICE(nvic), 0,
-> -                       qdev_get_gpio_in(DEVICE(cpu), ARM_CPU_IRQ));
-> -    armv7m_load_kernel(cpu, kernel_filename, mem_size);
-> -    return nvic;
+>      /* Wire the NVIC up to the CPU */
+> -    sysbus_connect_irq(SYS_BUS_DEVICE(&s->nvic), 0,
+> +    sbd = SYS_BUS_DEVICE(&s->nvic);
+> +    sysbus_connect_irq(sbd, 0,
+>                         qdev_get_gpio_in(DEVICE(s->cpu), ARM_CPU_IRQ));
+>      s->cpu->env.nvic = &s->nvic;
+>
+> +    memory_region_add_subregion(&s->container, 0xe000e000,
+> +                                sysbus_mmio_get_region(sbd, 0));
 > +
-> +    armv7m = qdev_create(NULL, "armv7m");
-> +    qdev_prop_set_uint32(armv7m, "num-irq", num_irq);
-> +    qdev_prop_set_string(armv7m, "cpu-model", cpu_model);
-> +    /* This will exit with an error if the user passed us a bad cpu_model */
-> +    qdev_init_nofail(armv7m);
+>      for (i = 0; i < ARRAY_SIZE(s->bitband); i++) {
+>          Object *obj = OBJECT(&s->bitband[i]);
+>          SysBusDevice *sbd = SYS_BUS_DEVICE(&s->bitband[i]);
+> diff --git a/hw/intc/armv7m_nvic.c b/hw/intc/armv7m_nvic.c
+> index f2ada39..c814e16 100644
+> --- a/hw/intc/armv7m_nvic.c
+> +++ b/hw/intc/armv7m_nvic.c
+> @@ -19,7 +19,6 @@
+>  #include "hw/arm/arm.h"
+>  #include "hw/arm/armv7m_nvic.h"
+>  #include "target/arm/cpu.h"
+> -#include "exec/address-spaces.h"
+>  #include "qemu/log.h"
+>  #include "trace.h"
+>
+> @@ -1043,10 +1042,8 @@ static void armv7m_nvic_realize(DeviceState *dev, Error **errp)
+>                            "nvic_sysregs", 0x1000);
+>      memory_region_add_subregion(&s->container, 0, &s->sysregmem);
+>
+> -    /* Map the whole thing into system memory at the location required
+> -     * by the v7M architecture.
+> -     */
+> -    memory_region_add_subregion(get_system_memory(), 0xe000e000, &s->container);
+> +    sysbus_init_mmio(SYS_BUS_DEVICE(dev), &s->container);
 > +
-> +    armv7m_load_kernel(ARM_CPU(first_cpu), kernel_filename, mem_size);
-> +    return armv7m;
+>      s->systick.timer = timer_new_ns(QEMU_CLOCK_VIRTUAL, systick_timer_tick, s);
 >  }
 >
->  void armv7m_load_kernel(ARMCPU *cpu, const char *kernel_filename, int mem_size)
 >

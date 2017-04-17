@@ -1,75 +1,66 @@
-Received: by 10.25.0.144 with SMTP id 138csp1218770lfa;
-        Mon, 17 Apr 2017 03:44:29 -0700 (PDT)
-X-Received: by 10.200.56.56 with SMTP id q53mr9131177qtb.105.1492425869814;
-        Mon, 17 Apr 2017 03:44:29 -0700 (PDT)
+Received: by 10.25.0.144 with SMTP id 138csp1450194lfa;
+        Mon, 17 Apr 2017 15:00:03 -0700 (PDT)
+X-Received: by 10.200.34.144 with SMTP id f16mr11803635qta.186.1492466403532;
+        Mon, 17 Apr 2017 15:00:03 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id k25si10546530qtk.308.2017.04.17.03.44.29
+        by mx.google.com with ESMTPS id m47si12115037qtc.294.2017.04.17.15.00.03
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 17 Apr 2017 03:44:29 -0700 (PDT)
+        Mon, 17 Apr 2017 15:00:03 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:35827 helo=lists.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:38913 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1d048z-0007p0-9h
-	for alex.bennee@linaro.org; Mon, 17 Apr 2017 06:44:29 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:40418)
+	id 1d0Egk-0000YV-RC
+	for alex.bennee@linaro.org; Mon, 17 Apr 2017 18:00:02 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:54251)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <sundeep.lkml@gmail.com>) id 1d048s-0007nQ-Cx
-	for qemu-arm@nongnu.org; Mon, 17 Apr 2017 06:44:23 -0400
+	(envelope-from <ehabkost@redhat.com>) id 1d0EgW-0000WL-Fv
+	for qemu-arm@nongnu.org; Mon, 17 Apr 2017 17:59:50 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <sundeep.lkml@gmail.com>) id 1d048q-000781-Ec
-	for qemu-arm@nongnu.org; Mon, 17 Apr 2017 06:44:22 -0400
-Received: from mail-yw0-x243.google.com ([2607:f8b0:4002:c05::243]:36709)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <sundeep.lkml@gmail.com>)
-	id 1d048m-00075u-R7; Mon, 17 Apr 2017 06:44:16 -0400
-Received: by mail-yw0-x243.google.com with SMTP id 203so9718039ywk.3;
-	Mon, 17 Apr 2017 03:44:16 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=SXiXDTWS2ADdDYDXWkjarpE+bk10+zmgfu3/SPPKAt0=;
-	b=V8BkZIX/m9yF0/ZgqLSSvoZjZRas5cng+GjwlTuEs6myVlH0HA8iVsExLNYlbeSZhQ
-	cKn8yOIX04ET8ebvSeAgyv7yCezglKqkqo8B7QHqEuDiBpNdw4FxGb2K4nuz569NZlP3
-	NDLQ3LHJnji5vd0LM+vMM66vIxI7oBZchLAd/Bkp24Qy3+nBYp22+fzAI9OW8susZ45T
-	abW353X2zntmb7DeiHkKpjeUeU4EBpsDXnus+tu+hdOqsjcQ113CmPYH64E21Jsa9yTJ
-	QGDsSFWDpHrBkjQ8XH7g1Nf3eWL2TQiQtwHl6bFJYv4uBA1cMeVq5RnSVFObyPkJSjza
-	rk0g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=SXiXDTWS2ADdDYDXWkjarpE+bk10+zmgfu3/SPPKAt0=;
-	b=OtElI2JF2NuI+ul2k23Jo75Qjz3uCbSKiHx+WC2uoJjeJJvzIQ3a7n5bxrEyO18wI3
-	Op8xe7uLi8ldTxzWNGZBOOQCeGIozP4oTZJa8NFzx0KmJqnHMoiv0/3V77i0JkVKHUW4
-	jG/sQZyF3tRYZnAU5mhLaD6ffkNNYZJ2lTLwsLugGxgqu5v+yRqSOlJ1baDZuRaKhAvu
-	xfTlLFc41xcMv5tg68fSYyDT943KcsnmsLa18q+Sb9wDPil7gjwqwsHWIjqwgl1XB/EP
-	zb5V/H+ZsMNRCj/rWi5fP1AaAQFmubJYhtpREcYUSwV3+bp7zk3L3v30YxbeipSF+GOH
-	as8A==
-X-Gm-Message-State: AN3rC/60VuTXHAIrGB/SZ8f+hOMoyHzgN8HMEnUZaYPOdexYA2ENrPDP
-	wdMS2jZ89WKanYfihQyJRoMTLnjpAg==
-X-Received: by 10.13.209.70 with SMTP id t67mr15418917ywd.148.1492425856072;
-	Mon, 17 Apr 2017 03:44:16 -0700 (PDT)
+	(envelope-from <ehabkost@redhat.com>) id 1d0EgT-0005pH-Lb
+	for qemu-arm@nongnu.org; Mon, 17 Apr 2017 17:59:48 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:47834)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <ehabkost@redhat.com>)
+	id 1d0EgT-0005nJ-Dg; Mon, 17 Apr 2017 17:59:45 -0400
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+	[10.5.11.14])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id C337FC06586B;
+	Mon, 17 Apr 2017 21:59:38 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com C337FC06586B
+Authentication-Results: ext-mx08.extmail.prod.ext.phx2.redhat.com;
+	dmarc=none (p=none dis=none) header.from=redhat.com
+Authentication-Results: ext-mx08.extmail.prod.ext.phx2.redhat.com;
+	spf=pass smtp.mailfrom=ehabkost@redhat.com
+DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com C337FC06586B
+Received: from localhost (ovpn-116-4.gru2.redhat.com [10.97.116.4])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id C253717ACA;
+	Mon, 17 Apr 2017 21:59:34 +0000 (UTC)
+From: Eduardo Habkost <ehabkost@redhat.com>
+To: qemu-devel@nongnu.org
+Date: Mon, 17 Apr 2017 18:59:12 -0300
+Message-Id: <20170417215916.12431-4-ehabkost@redhat.com>
+In-Reply-To: <20170417215916.12431-1-ehabkost@redhat.com>
+References: <20170417215916.12431-1-ehabkost@redhat.com>
 MIME-Version: 1.0
-Received: by 10.13.244.1 with HTTP; Mon, 17 Apr 2017 03:44:15 -0700 (PDT)
-In-Reply-To: <CAKmqyKPAwL27-ina2X4DUJ-x_POTqRdf5HAr1mNUVYQBeUAjPQ@mail.gmail.com>
-References: <1491736758-19540-1-git-send-email-sundeep.lkml@gmail.com>
-	<1491736758-19540-5-git-send-email-sundeep.lkml@gmail.com>
-	<CAKmqyKPAwL27-ina2X4DUJ-x_POTqRdf5HAr1mNUVYQBeUAjPQ@mail.gmail.com>
-From: sundeep subbaraya <sundeep.lkml@gmail.com>
-Date: Mon, 17 Apr 2017 16:14:15 +0530
-Message-ID: <CALHRZuo3s-NRXPpJvfkkaf7FzNoyv2uSmox-nhycSz1x+r6fGg@mail.gmail.com>
-To: Alistair Francis <alistair23@gmail.com>
 Content-Type: text/plain; charset=UTF-8
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.32]);
+	Mon, 17 Apr 2017 21:59:39 +0000 (UTC)
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:4002:c05::243
-Subject: Re: [Qemu-arm] [Qemu-devel] [Qemu-devel RFC v2 4/4] msf2: Add
- Emcraft's Smartfusion2 SOM kit.
+	[fuzzy]
+X-Received-From: 209.132.183.28
+Subject: [Qemu-arm] [RFC 3/7] pci: Change pci_bus_new*() parameter to
+ PCIHostState
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -81,231 +72,237 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm <qemu-arm@nongnu.org>,
-	"qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+	"Michael S. Tsirkin" <mst@redhat.com>, aik@ozlabs.ru,
+	qemu-ppc@nongnu.org, qemu-arm@nongnu.org,
+	=?UTF-8?q?Herv=C3=A9=20Poussineau?= <hpoussin@reactos.org>,
+	Marcel Apfelbaum <marcel@redhat.com>, David Gibson <dgibson@redhat.com>,
+	Laszlo Ersek <lersek@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: LEhfW5sQ81yQ
+X-TUID: Arx/J7sauaKk
 
-Hii Alistair,
+The pci_bus_new*() functions already require the 'parent' argument to be
+a PCI_HOST_BRIDGE object. Change the parameter type to reflect that.
 
-On Sat, Apr 15, 2017 at 2:42 AM, Alistair Francis <alistair23@gmail.com> wrote:
-> On Sun, Apr 9, 2017 at 4:19 AM, Subbaraya Sundeep
-> <sundeep.lkml@gmail.com> wrote:
->> Emulated Emcraft's Smartfusion2 System On Module starter
->> kit.
->>
->> Signed-off-by: Subbaraya Sundeep <sundeep.lkml@gmail.com>
->
-> Hey Sundeep,
->
-> Cool patch, I have some comments below.
->
->> ---
->>  default-configs/arm-softmmu.mak |   1 +
->>  hw/arm/Makefile.objs            |   2 +-
->>  hw/arm/msf2_soc.c               | 141 ++++++++++++++++++++++++++++++++++++++++
->>  3 files changed, 143 insertions(+), 1 deletion(-)
->>  create mode 100644 hw/arm/msf2_soc.c
->>
->> diff --git a/default-configs/arm-softmmu.mak b/default-configs/arm-softmmu.mak
->> index 1e3bd2b..379f7e1 100644
->> --- a/default-configs/arm-softmmu.mak
->> +++ b/default-configs/arm-softmmu.mak
->> @@ -121,3 +121,4 @@ CONFIG_ACPI=y
->>  CONFIG_SMBIOS=y
->>  CONFIG_ASPEED_SOC=y
->>  CONFIG_GPIO_KEY=y
->> +CONFIG_MSF2=y
->> diff --git a/hw/arm/Makefile.objs b/hw/arm/Makefile.objs
->> index 4c5c4ee..cce2759 100644
->> --- a/hw/arm/Makefile.objs
->> +++ b/hw/arm/Makefile.objs
->> @@ -1,7 +1,7 @@
->>  obj-y += boot.o collie.o exynos4_boards.o gumstix.o highbank.o
->>  obj-$(CONFIG_DIGIC) += digic_boards.o
->>  obj-y += integratorcp.o mainstone.o musicpal.o nseries.o
->> -obj-y += omap_sx1.o palm.o realview.o spitz.o stellaris.o
->> +obj-y += omap_sx1.o palm.o realview.o spitz.o stellaris.o msf2_soc.o
->>  obj-y += tosa.o versatilepb.o vexpress.o virt.o xilinx_zynq.o z2.o
->>  obj-$(CONFIG_ACPI) += virt-acpi-build.o
->>  obj-y += netduino2.o
->> diff --git a/hw/arm/msf2_soc.c b/hw/arm/msf2_soc.c
->> new file mode 100644
->> index 0000000..7277b51
->> --- /dev/null
->> +++ b/hw/arm/msf2_soc.c
->> @@ -0,0 +1,141 @@
->> +/*
->> + * Smartfusion2 SOM starter kit(from Emcraft) emulation.
->> + *
->> + * Copyright (c) 2017 Subbaraya Sundeep <sundeep.lkml@gmail.com>
->> + *
->> + * Permission is hereby granted, free of charge, to any person obtaining a copy
->> + * of this software and associated documentation files (the "Software"), to deal
->> + * in the Software without restriction, including without limitation the rights
->> + * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
->> + * copies of the Software, and to permit persons to whom the Software is
->> + * furnished to do so, subject to the following conditions:
->> + *
->> + * The above copyright notice and this permission notice shall be included in
->> + * all copies or substantial portions of the Software.
->> + *
->> + * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
->> + * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
->> + * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
->> + * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
->> + * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
->> + * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
->> + * THE SOFTWARE.
->> + */
->> +
->> +#include "qemu/osdep.h"
->> +#include "qapi/error.h"
->> +#include "qemu-common.h"
->> +#include "hw/arm/arm.h"
->> +#include "exec/address-spaces.h"
->> +#include "hw/sysbus.h"
->> +#include "hw/char/serial.h"
->> +#include "hw/boards.h"
->> +#include "sysemu/block-backend.h"
->> +#include "hw/ssi/ssi.h"
->> +
->> +#define MSF2_NUM_USARTS       1
->> +#define MSF2_NUM_TIMERS       2
->> +
->> +#define ENVM_BASE_ADDRESS     0x60000000
->> +#define ENVM_SIZE             (128 * 1024)
->> +
->> +#define DDR_BASE_ADDRESS      0xA0000000
->> +#define DDR_SIZE              (64 * 1024 * 1024)
->> +
->> +#define SRAM_BASE_ADDRESS     0x20000000
->> +#define SRAM_SIZE             (64 * 1024)
->> +
->> +#define MSF2_TIMER_BASE       0x40004000
->> +#define MSF2_UART0_BASE       0x40000000
->> +#define MSF2_SYSREG_BASE      0x40038000
->> +#define MSF2_SPI0_BASE        0x40001000
->> +
->> +#define MSF2_SPI0_IRQ         2
->> +#define MSF2_UART0_IRQ        10
->> +#define MSF2_TIMER_IRQ0       14
->> +#define MSF2_TIMER_IRQ1       15
->> +
->> +static void msf2_init(MachineState *machine)
->> +{
->> +    const char *kernel_filename = NULL;
->> +    DeviceState *dev, *nvic;
->> +    MemoryRegion *system_memory = get_system_memory();
->> +    MemoryRegion *nvm = g_new(MemoryRegion, 1);
->> +    MemoryRegion *nvm_alias = g_new(MemoryRegion, 1);
->> +    MemoryRegion *sram = g_new(MemoryRegion, 1);
->> +    MemoryRegion *ddr = g_new(MemoryRegion, 1);
->> +    QemuOpts *machine_opts = qemu_get_machine_opts();
->> +    SysBusDevice *busdev;
->> +    DriveInfo *dinfo = drive_get_next(IF_MTD);
->> +    qemu_irq cs_line;
->> +    SSIBus *spi;
->> +
->> +    kernel_filename = qemu_opt_get(machine_opts, "kernel");
->
-> You can just get the kernel filename directly from: machine->kernel_filename
->
-I have to check again. I remember getting NULL from machine->kernel_filename.
-I will comment on this again.
->> +
->> +    memory_region_init_ram(nvm, NULL, "MSF2.envm", ENVM_SIZE,
->> +                           &error_fatal);
->> +    memory_region_init_alias(nvm_alias, NULL, "MSF2.flash.alias",
->> +                             nvm, 0, ENVM_SIZE);
->> +    vmstate_register_ram_global(nvm);
->> +
->> +    memory_region_set_readonly(nvm, true);
->> +    memory_region_set_readonly(nvm_alias, true);
->> +
->> +    memory_region_add_subregion(system_memory, ENVM_BASE_ADDRESS, nvm);
->> +    memory_region_add_subregion(system_memory, 0, nvm_alias);
->> +
->> +    memory_region_init_ram(ddr, NULL, "MSF2.ddr", DDR_SIZE,
->> +                           &error_fatal);
->> +    vmstate_register_ram_global(ddr);
->> +    memory_region_add_subregion(system_memory, DDR_BASE_ADDRESS, ddr);
->> +
->> +    memory_region_init_ram(sram, NULL, "MSF2.sram", SRAM_SIZE,
->> +                           &error_fatal);
->> +    vmstate_register_ram_global(sram);
->> +    memory_region_add_subregion(system_memory, SRAM_BASE_ADDRESS, sram);
->> +
->> +    nvic = armv7m_init(system_memory, ENVM_SIZE, 96,
->> +                       kernel_filename, "cortex-m3");
->> +
->> +       if (serial_hds[0]) {
->> +                serial_mm_init(get_system_memory(), MSF2_UART0_BASE, 2,
->> +                       qdev_get_gpio_in(nvic, MSF2_UART0_IRQ),
->> +                       115200, serial_hds[0], DEVICE_NATIVE_ENDIAN);
->> +    }
->> +    dev = qdev_create(NULL, "msf2-timer");
->> +    qdev_prop_set_uint32(dev, "clock-frequency", 83 * 1000000);
->> +    qdev_init_nofail(dev);
->> +    sysbus_mmio_map(SYS_BUS_DEVICE(dev), 0, MSF2_TIMER_BASE);
->> +    sysbus_connect_irq(SYS_BUS_DEVICE(dev), 0,
->> +                           qdev_get_gpio_in(nvic, MSF2_TIMER_IRQ0));
->> +    sysbus_connect_irq(SYS_BUS_DEVICE(dev), 1,
->> +                           qdev_get_gpio_in(nvic, MSF2_TIMER_IRQ1));
->> +
->> +    dev = qdev_create(NULL, "msf2-sysreg");
->> +    qdev_init_nofail(dev);
->> +    sysbus_mmio_map(SYS_BUS_DEVICE(dev), 0, MSF2_SYSREG_BASE);
->> +
->> +    dev = qdev_create(NULL, "msf2-spi");
->> +    qdev_init_nofail(dev);
->> +    busdev = SYS_BUS_DEVICE(dev);
->> +    sysbus_mmio_map(busdev, 0, MSF2_SPI0_BASE);
->> +    sysbus_connect_irq(busdev, 0, qdev_get_gpio_in(nvic, MSF2_SPI0_IRQ));
->> +
->> +    spi = (SSIBus *)qdev_get_child_bus(dev, "spi");
->> +    dev = ssi_create_slave_no_init(spi, "s25sl12801");
->> +    qdev_prop_set_uint8(dev, "spansion-cr2nv", 1);
->> +    if (dinfo)
->> +               qdev_prop_set_drive(dev, "drive", blk_by_legacy_dinfo(dinfo),
->> +                                    &error_fatal);
->> +    qdev_init_nofail(dev);
->> +    cs_line = qdev_get_gpio_in_named(dev, SSI_GPIO_CS, 0);
->> +    sysbus_connect_irq(busdev, 1, cs_line);
->
-> Instead of calling all of these in the init function you should split
-> it up over the machines init and realize function.
->
-> Look at the stm32f205_soc or xlnx-zynqmp files for examples of how to do this.
->
-> It also moves away from calling qdev_create() and qdev_init_nofail()
-> and instead manually creates the objects.
->
-I am still learning all these. Please correct me if am wrong.
-I need to create a SoC file and a board file like stm32f205 and
-xlnx-zynqmp now right?
+Cc: "Michael S. Tsirkin" <mst@redhat.com>
+Cc: Marcel Apfelbaum <marcel@redhat.com>
+Cc: "Herv=C3=A9 Poussineau" <hpoussin@reactos.org>
+Cc: Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-ppc@nongnu.org
+Cc: qemu-arm@nongnu.org
+Signed-off-by: Eduardo Habkost <ehabkost@redhat.com>
+---
+ include/hw/pci/pci.h                |  5 +++--
+ hw/pci-bridge/pci_expander_bridge.c | 15 ++++++++-------
+ hw/pci-host/piix.c                  |  2 +-
+ hw/pci-host/prep.c                  |  2 +-
+ hw/pci-host/q35.c                   |  2 +-
+ hw/pci-host/versatile.c             |  2 +-
+ hw/pci/pci.c                        | 13 ++++++-------
+ 7 files changed, 21 insertions(+), 20 deletions(-)
 
-> Otherwise this patch looks pretty good.
+diff --git a/include/hw/pci/pci.h b/include/hw/pci/pci.h
+index a37a2d5cb6..2242aa25eb 100644
+--- a/include/hw/pci/pci.h
++++ b/include/hw/pci/pci.h
+@@ -393,12 +393,13 @@ typedef PCIINTxRoute (*pci_route_irq_fn)(void *opaq=
+ue, int pin);
+=20
+ bool pci_bus_is_express(PCIBus *bus);
+ bool pci_bus_is_root(PCIBus *bus);
+-void pci_bus_new_inplace(PCIBus *bus, size_t bus_size, DeviceState *pare=
+nt,
++void pci_bus_new_inplace(PCIBus *bus, size_t bus_size,
++                         PCIHostState *phb,
+                          const char *name,
+                          MemoryRegion *address_space_mem,
+                          MemoryRegion *address_space_io,
+                          uint8_t devfn_min, const char *typename);
+-PCIBus *pci_bus_new(DeviceState *parent, const char *name,
++PCIBus *pci_bus_new(PCIHostState *phb, const char *name,
+                     MemoryRegion *address_space_mem,
+                     MemoryRegion *address_space_io,
+                     uint8_t devfn_min, const char *typename);
+diff --git a/hw/pci-bridge/pci_expander_bridge.c b/hw/pci-bridge/pci_expa=
+nder_bridge.c
+index 6ac187fa32..39d29d2230 100644
+--- a/hw/pci-bridge/pci_expander_bridge.c
++++ b/hw/pci-bridge/pci_expander_bridge.c
+@@ -213,7 +213,8 @@ static gint pxb_compare(gconstpointer a, gconstpointe=
+r b)
+ static void pxb_dev_realize_common(PCIDevice *dev, bool pcie, Error **er=
+rp)
+ {
+     PXBDev *pxb =3D convert_to_pxb(dev);
+-    DeviceState *ds, *bds =3D NULL;
++    DeviceState *bds =3D NULL;
++    PCIHostState *phb;
+     PCIBus *bus;
+     const char *dev_name =3D NULL;
+     Error *local_err =3D NULL;
+@@ -228,11 +229,11 @@ static void pxb_dev_realize_common(PCIDevice *dev, =
+bool pcie, Error **errp)
+         dev_name =3D dev->qdev.id;
+     }
+=20
+-    ds =3D qdev_create(NULL, TYPE_PXB_HOST);
++    phb =3D PCI_HOST_BRIDGE(qdev_create(NULL, TYPE_PXB_HOST));
+     if (pcie) {
+-        bus =3D pci_bus_new(ds, dev_name, NULL, NULL, 0, TYPE_PXB_PCIE_B=
+US);
++        bus =3D pci_bus_new(phb, dev_name, NULL, NULL, 0, TYPE_PXB_PCIE_=
+BUS);
+     } else {
+-        bus =3D pci_bus_new(ds, "pxb-internal", NULL, NULL, 0, TYPE_PXB_=
+BUS);
++        bus =3D pci_bus_new(phb, "pxb-internal", NULL, NULL, 0, TYPE_PXB=
+_BUS);
+         bds =3D qdev_create(BUS(bus), "pci-bridge");
+         bds->id =3D dev_name;
+         qdev_prop_set_uint8(bds, PCI_BRIDGE_DEV_PROP_CHASSIS_NR, pxb->bu=
+s_nr);
+@@ -244,7 +245,7 @@ static void pxb_dev_realize_common(PCIDevice *dev, bo=
+ol pcie, Error **errp)
+     bus->address_space_io =3D dev->bus->address_space_io;
+     bus->map_irq =3D pxb_map_irq_fn;
+=20
+-    PCI_HOST_BRIDGE(ds)->bus =3D bus;
++    phb->bus =3D bus;
+=20
+     pxb_register_bus(dev, bus, &local_err);
+     if (local_err) {
+@@ -252,7 +253,7 @@ static void pxb_dev_realize_common(PCIDevice *dev, bo=
+ol pcie, Error **errp)
+         goto err_register_bus;
+     }
+=20
+-    qdev_init_nofail(ds);
++    qdev_init_nofail(DEVICE(phb));
+     if (bds) {
+         qdev_init_nofail(bds);
+     }
+@@ -267,7 +268,7 @@ static void pxb_dev_realize_common(PCIDevice *dev, bo=
+ol pcie, Error **errp)
+ err_register_bus:
+     object_unref(OBJECT(bds));
+     object_unparent(OBJECT(bus));
+-    object_unref(OBJECT(ds));
++    object_unref(OBJECT(phb));
+ }
+=20
+ static void pxb_dev_realize(PCIDevice *dev, Error **errp)
+diff --git a/hw/pci-host/piix.c b/hw/pci-host/piix.c
+index f9218aa952..91fec05b38 100644
+--- a/hw/pci-host/piix.c
++++ b/hw/pci-host/piix.c
+@@ -340,7 +340,7 @@ PCIBus *i440fx_init(const char *host_type, const char=
+ *pci_type,
+=20
+     dev =3D qdev_create(NULL, host_type);
+     s =3D PCI_HOST_BRIDGE(dev);
+-    b =3D pci_bus_new(dev, NULL, pci_address_space,
++    b =3D pci_bus_new(s, NULL, pci_address_space,
+                     address_space_io, 0, TYPE_PCI_BUS);
+     s->bus =3D b;
+     object_property_add_child(qdev_get_machine(), "i440fx", OBJECT(dev),=
+ NULL);
+diff --git a/hw/pci-host/prep.c b/hw/pci-host/prep.c
+index 260a119a9e..2e2cd267f4 100644
+--- a/hw/pci-host/prep.c
++++ b/hw/pci-host/prep.c
+@@ -269,7 +269,7 @@ static void raven_pcihost_initfn(Object *obj)
+     memory_region_add_subregion_overlap(address_space_mem, 0x80000000,
+                                         &s->pci_io_non_contiguous, 1);
+     memory_region_add_subregion(address_space_mem, 0xc0000000, &s->pci_m=
+emory);
+-    pci_bus_new_inplace(&s->pci_bus, sizeof(s->pci_bus), DEVICE(obj), NU=
+LL,
++    pci_bus_new_inplace(&s->pci_bus, sizeof(s->pci_bus), h, NULL,
+                         &s->pci_memory, &s->pci_io, 0, TYPE_PCI_BUS);
+=20
+     /* Bus master address space */
+diff --git a/hw/pci-host/q35.c b/hw/pci-host/q35.c
+index 344f77b10c..860b47a1ba 100644
+--- a/hw/pci-host/q35.c
++++ b/hw/pci-host/q35.c
+@@ -49,7 +49,7 @@ static void q35_host_realize(DeviceState *dev, Error **=
+errp)
+     sysbus_add_io(sbd, MCH_HOST_BRIDGE_CONFIG_DATA, &pci->data_mem);
+     sysbus_init_ioports(sbd, MCH_HOST_BRIDGE_CONFIG_DATA, 4);
+=20
+-    pci->bus =3D pci_bus_new(DEVICE(s), "pcie.0",
++    pci->bus =3D pci_bus_new(pci, "pcie.0",
+                            s->mch.pci_address_space, s->mch.address_spac=
+e_io,
+                            0, TYPE_PCIE_BUS);
+     PC_MACHINE(qdev_get_machine())->bus =3D pci->bus;
+diff --git a/hw/pci-host/versatile.c b/hw/pci-host/versatile.c
+index 467cbb9cb8..24ef87610b 100644
+--- a/hw/pci-host/versatile.c
++++ b/hw/pci-host/versatile.c
+@@ -386,7 +386,7 @@ static void pci_vpb_init(Object *obj)
+     memory_region_init(&s->pci_io_space, OBJECT(s), "pci_io", 1ULL << 32=
+);
+     memory_region_init(&s->pci_mem_space, OBJECT(s), "pci_mem", 1ULL << =
+32);
+=20
+-    pci_bus_new_inplace(&s->pci_bus, sizeof(s->pci_bus), DEVICE(obj), "p=
+ci",
++    pci_bus_new_inplace(&s->pci_bus, sizeof(s->pci_bus), h, "pci",
+                         &s->pci_mem_space, &s->pci_io_space,
+                         PCI_DEVFN(11, 0), TYPE_PCI_BUS);
+     h->bus =3D &s->pci_bus;
+diff --git a/hw/pci/pci.c b/hw/pci/pci.c
+index d9535c0bdc..f4488b46fc 100644
+--- a/hw/pci/pci.c
++++ b/hw/pci/pci.c
+@@ -388,26 +388,25 @@ bool pci_bus_is_root(PCIBus *bus)
+     return PCI_BUS_GET_CLASS(bus)->is_root(bus);
+ }
+=20
+-void pci_bus_new_inplace(PCIBus *bus, size_t bus_size, DeviceState *pare=
+nt,
++void pci_bus_new_inplace(PCIBus *bus, size_t bus_size,
++                         PCIHostState *phb,
+                          const char *name,
+                          MemoryRegion *address_space_mem,
+                          MemoryRegion *address_space_io,
+                          uint8_t devfn_min, const char *typename)
+ {
+-    PCIHostState *phb =3D PCI_HOST_BRIDGE(parent);
+-    qbus_create_inplace(bus, bus_size, typename, parent, name);
++    qbus_create_inplace(bus, bus_size, typename, DEVICE(phb), name);
+     pci_bus_init(bus, phb, address_space_mem, address_space_io, devfn_mi=
+n);
+ }
+=20
+-PCIBus *pci_bus_new(DeviceState *parent, const char *name,
++PCIBus *pci_bus_new(PCIHostState *phb, const char *name,
+                     MemoryRegion *address_space_mem,
+                     MemoryRegion *address_space_io,
+                     uint8_t devfn_min, const char *typename)
+ {
+-    PCIHostState *phb =3D PCI_HOST_BRIDGE(parent);
+     PCIBus *bus;
+=20
+-    bus =3D PCI_BUS(qbus_create(typename, parent, name));
++    bus =3D PCI_BUS(qbus_create(typename, DEVICE(phb), name));
+     pci_bus_init(bus, phb, address_space_mem, address_space_io, devfn_mi=
+n);
+     return bus;
+ }
+@@ -431,7 +430,7 @@ PCIBus *pci_register_bus(DeviceState *parent, const c=
+har *name,
+ {
+     PCIBus *bus;
+=20
+-    bus =3D pci_bus_new(parent, name, address_space_mem,
++    bus =3D pci_bus_new(PCI_HOST_BRIDGE(parent), name, address_space_mem=
+,
+                       address_space_io, devfn_min, typename);
+     pci_bus_irqs(bus, set_irq, map_irq, irq_opaque, nirq);
+     return bus;
+--=20
+2.11.0.259.g40922b1
 
-Thank you :)
-Sundeep
-
->
-> Thanks,
->
-> Alistair
->
->> +}
->> +
->> +static void msf2_machine_init(MachineClass *mc)
->> +{
->> +    mc->desc = "SmartFusion2 SOM kit from Emcraft";
->> +    mc->init = msf2_init;
->> +}
->> +
->> +DEFINE_MACHINE("smartfusion2-som", msf2_machine_init)
->> --
->> 2.5.0
->>
->>

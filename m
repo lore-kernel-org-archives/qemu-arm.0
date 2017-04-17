@@ -1,52 +1,84 @@
-Received: by 10.25.0.144 with SMTP id 138csp969581lfa;
-        Sun, 16 Apr 2017 08:16:26 -0700 (PDT)
-X-Received: by 10.237.45.194 with SMTP id i60mr1464889qtd.262.1492355786485;
-        Sun, 16 Apr 2017 08:16:26 -0700 (PDT)
+Received: by 10.25.0.144 with SMTP id 138csp1126389lfa;
+        Sun, 16 Apr 2017 21:20:33 -0700 (PDT)
+X-Received: by 10.237.56.67 with SMTP id j61mr4892852qte.86.1492402833166;
+        Sun, 16 Apr 2017 21:20:33 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id y56si8085901qtc.31.2017.04.16.08.16.26
+        by mx.google.com with ESMTPS id n125si2836827qkd.262.2017.04.16.21.20.32
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sun, 16 Apr 2017 08:16:26 -0700 (PDT)
+        Sun, 16 Apr 2017 21:20:33 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
+       dkim=fail header.i=@gmail.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:60865 helo=lists.gnu.org)
+Received: from localhost ([::1]:34798 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1czluc-00050c-0i
-	for alex.bennee@linaro.org; Sun, 16 Apr 2017 11:16:26 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:48164)
+	id 1czy9Q-0001LO-Kc
+	for alex.bennee@linaro.org; Mon, 17 Apr 2017 00:20:32 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:33184)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <krzk@kernel.org>) id 1czluX-00050I-Kd
-	for qemu-arm@nongnu.org; Sun, 16 Apr 2017 11:16:22 -0400
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1czy9E-0001Ju-Di
+	for qemu-arm@nongnu.org; Mon, 17 Apr 2017 00:20:21 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <krzk@kernel.org>) id 1czluU-0004DT-FP
-	for qemu-arm@nongnu.org; Sun, 16 Apr 2017 11:16:21 -0400
-Received: from mail.kernel.org ([198.145.29.136]:58162)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <krzk@kernel.org>)
-	id 1czluU-0004C8-6M; Sun, 16 Apr 2017 11:16:18 -0400
-Received: from mail.kernel.org (localhost [127.0.0.1])
-	by mail.kernel.org (Postfix) with ESMTP id A24FF20131;
-	Sun, 16 Apr 2017 15:16:15 +0000 (UTC)
-Received: from kozik-lap.dzcmts001-cpe-001.datazug.ch
-	(pub082136089155.dh-hfc.datazug.ch [82.136.89.155])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
-	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPSA id 2428120328;
-	Sun, 16 Apr 2017 15:16:12 +0000 (UTC)
-From: Krzysztof Kozlowski <krzk@kernel.org>
-To: Igor Mitsyanko <i.mitsyanko@gmail.com>,
-	Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1czy9D-0006KM-6A
+	for qemu-arm@nongnu.org; Mon, 17 Apr 2017 00:20:20 -0400
+Received: from mail-qk0-x242.google.com ([2607:f8b0:400d:c09::242]:33104)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1czy98-0006Ev-7j; Mon, 17 Apr 2017 00:20:14 -0400
+Received: by mail-qk0-x242.google.com with SMTP id d131so18113046qkc.0;
+	Sun, 16 Apr 2017 21:20:10 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=sender:subject:to:references:cc:from:message-id:date:user-agent
+	:mime-version:in-reply-to:content-transfer-encoding;
+	bh=7CyGZRTHFzN/+SlP0BBFSDOpyzbN9lL5qPQMG6G0hFw=;
+	b=VTF4SaSap+kFAiOWYq2neiJrHjlnpzQw5KYScUqntA8qJME47A/5g383UxOP11YR+2
+	SVP3v4wzT0zGFRzQbwF9JkvS5G2CI9hUoF/3++h0unogmun/8Znz8elw97aLryUKS4As
+	hKSZd5ajjk/WrZ5Mg/BVuY9jm6Pa8gWLAAzW/jVEgywwxc5zaX+PTHNdt2Oi91LP4bsa
+	ZqPDDIkeNRBfRTiy3MoGRtxgFHDKmWN8Q00lT/FV0bYrFfiMkd8yScyaQXvqA8SEkXZO
+	QyL10o/x1SQeQo6CXxYDRVL7U1gRdSEwj7zonErRRAtYjLKLvJ5fxEl2u0e4jPIr9u9n
+	3bmA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:sender:subject:to:references:cc:from:message-id
+	:date:user-agent:mime-version:in-reply-to:content-transfer-encoding;
+	bh=7CyGZRTHFzN/+SlP0BBFSDOpyzbN9lL5qPQMG6G0hFw=;
+	b=FawBA1UUxFS9bVa3Azdn4VAmU1sgEEfZuYBiRFq0DeB67VBw0rQYjeY4O21w3M4DlJ
+	PyKv9tXsk9N6ghFJjk+1lTX6NPpBa5Ad/SOOY8Eg5NSkuhIipIfVjsUpQLcHxXO6uO9O
+	cRNXquSNBLrDZ9tdEOdLgbRm4atGtX+IVe7jgXM+NfqYAYlXnbDL5Js6VAAAsuomQj1h
+	YD7UNb49no49AWEJoY3sNQO+2/qv8L3G2C9AXvUxyC0L7Q27+p+puZX2TbB9zXIzWywN
+	QosAI0JH4BwhNwldaXTYSVC3UR8g5t6HJc2Lc10ENvr2usssx3sy4f1FSl1HrbJoXZWH
+	k19A==
+X-Gm-Message-State: AN3rC/6A4r3ScuVQeSL9qa1ITXtVFKUdXde/Yl4rm8aVP3EaNQ8USbBT
+	sKTIyN4kZzLtmw==
+X-Received: by 10.55.7.135 with SMTP id 129mr6663244qkh.82.1492402810418;
+	Sun, 16 Apr 2017 21:20:10 -0700 (PDT)
+Received: from [192.168.1.10] ([138.117.48.226])
+	by smtp.gmail.com with ESMTPSA id t40sm6436375qtb.6.2017.04.16.21.20.07
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Sun, 16 Apr 2017 21:20:09 -0700 (PDT)
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Date: Sun, 16 Apr 2017 17:16:04 +0200
-Message-Id: <20170416151604.22506-1-krzk@kernel.org>
-X-Mailer: git-send-email 2.9.3
-X-Virus-Scanned: ClamAV using ClamSMTP
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
-X-Received-From: 198.145.29.136
-Subject: [Qemu-arm] [RFC] hw/arm/exynos: Add generic SDHCI devices
+References: <1491844419-12485-1-git-send-email-peter.maydell@linaro.org>
+	<1491844419-12485-8-git-send-email-peter.maydell@linaro.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Message-ID: <3dd852ae-3ff9-0b53-11f1-ea4e2a3ed59c@amsat.org>
+Date: Mon, 17 Apr 2017 01:20:06 -0300
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
+	Thunderbird/45.8.0
+MIME-Version: 1.0
+In-Reply-To: <1491844419-12485-8-git-send-email-peter.maydell@linaro.org>
+Content-Type: text/plain; charset=windows-1252; format=flowed
+Content-Transfer-Encoding: 7bit
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:400d:c09::242
+Subject: Re: [Qemu-arm] [PATCH v2 7/9] arm: Track M profile handler mode
+ state in TB flags
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -58,106 +90,88 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Krzysztof Kozlowski <krzk@kernel.org>
+Cc: Richard Henderson <rth@twiddle.net>, patches@linaro.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: n8xPQbZSOqxU
+X-TUID: zxPqVRypEBzX
 
-Exynos4210 has four SD/MMC controllers supporting:
- - SD Standard Host Specification Version 2.0,
- - MMC Specification Version 4.3,
- - SDIO Card Specification Version 2.0,
- - DMA and ADMA.
+Hi Peter,
 
-Add emulation of SDHCI devices which allows accessing storage through SD
-cards. Differences from real hardware:
- - Devices are shipped with eMMC memory, not SD card.
- - The Exynos4210 SDHCI has few more registers, e.g. for
-   controlling the clocks, additional status (0x80, 0x84, 0x8c). These
-   are not implemented.
+On 04/10/2017 02:13 PM, Peter Maydell wrote:
+> For M profile exception-return handling we'd like to generate different
+> code for some instructions depending on whether we are in Handler
+> mode or Thread mode. This isn't the same as "are we privileged
+> or user", so we need an extra bit in the TB flags to distinguish.
+>
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> ---
+>  target/arm/cpu.h       | 9 +++++++++
+>  target/arm/translate.h | 1 +
+>  target/arm/translate.c | 1 +
+>  3 files changed, 11 insertions(+)
+>
+> diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+> index e6f05e2..7d26357 100644
+> --- a/target/arm/cpu.h
+> +++ b/target/arm/cpu.h
+> @@ -2291,6 +2291,9 @@ static inline bool arm_cpu_data_is_big_endian(CPUARMState *env)
+>  #define ARM_TBFLAG_NS_MASK          (1 << ARM_TBFLAG_NS_SHIFT)
+>  #define ARM_TBFLAG_BE_DATA_SHIFT    20
+>  #define ARM_TBFLAG_BE_DATA_MASK     (1 << ARM_TBFLAG_BE_DATA_SHIFT)
+> +/* For M profile only, Handler (ie not Thread) mode */
+> +#define ARM_TBFLAG_HANDLER_SHIFT    21
+> +#define ARM_TBFLAG_HANDLER_MASK     (1 << ARM_TBFLAG_HANDLER_SHIFT)
+>
+>  /* Bit usage when in AArch64 state */
+>  #define ARM_TBFLAG_TBI0_SHIFT 0        /* TBI0 for EL0/1 or TBI for EL2/3 */
+> @@ -2327,6 +2330,8 @@ static inline bool arm_cpu_data_is_big_endian(CPUARMState *env)
+>      (((F) & ARM_TBFLAG_NS_MASK) >> ARM_TBFLAG_NS_SHIFT)
+>  #define ARM_TBFLAG_BE_DATA(F) \
+>      (((F) & ARM_TBFLAG_BE_DATA_MASK) >> ARM_TBFLAG_BE_DATA_SHIFT)
+> +#define ARM_TBFLAG_HANDLER(F) \
+> +    (((F) & ARM_TBFLAG_HANDLER_MASK) >> ARM_TBFLAG_HANDLER_SHIFT)
+>  #define ARM_TBFLAG_TBI0(F) \
+>      (((F) & ARM_TBFLAG_TBI0_MASK) >> ARM_TBFLAG_TBI0_SHIFT)
+>  #define ARM_TBFLAG_TBI1(F) \
+> @@ -2517,6 +2522,10 @@ static inline void cpu_get_tb_cpu_state(CPUARMState *env, target_ulong *pc,
+>      }
+>      *flags |= fp_exception_el(env) << ARM_TBFLAG_FPEXC_EL_SHIFT;
+>
+> +    if (env->v7m.exception != 0) {
+> +        *flags |= ARM_TBFLAG_HANDLER_MASK;
+> +    }
+> +
+>      *cs_base = 0;
+>  }
+>
+> diff --git a/target/arm/translate.h b/target/arm/translate.h
+> index abb0760..f955174 100644
+> --- a/target/arm/translate.h
+> +++ b/target/arm/translate.h
+> @@ -31,6 +31,7 @@ typedef struct DisasContext {
+>      bool vfp_enabled; /* FP enabled via FPSCR.EN */
+>      int vec_len;
+>      int vec_stride;
+> +    bool handler; /* v7M Handler mode */
 
-Testing on smdkc210 machine with "-drive file=FILE,if=sd,bus=0,index=2".
+What about a more descriptive name like 'is_v7m_handler_mode' or 
+'v7m_mode_handler'? It makes your next patch easier to understand:
 
-Signed-off-by: Krzysztof Kozlowski <krzk@kernel.org>
+     if (s->handler && arm_dc_feature(s, ARM_FEATURE_M)) {
 
----
-
-Mostly it works:
-[   11.763786] sdhci: Secure Digital Host Controller Interface driver
-[   11.764593] sdhci: Copyright(c) Pierre Ossman
-[   11.777295] s3c-sdhci 12530000.sdhci: clock source 2: mmc_busclk.2 (12000000 Hz)
-[   11.976250] mmc0: SDHCI controller on samsung-hsmmc [12530000.sdhci] using ADMA
-[   11.980283] Synopsys Designware Multimedia Card Interface Driver
-[   12.086757] mmc0: new SDHC card at address 4567
-[   12.151653] mmcblk0: mmc0:4567 QEMU! 4.00 GiB
-
-... except that for guest, the storage starts from 0x50000. It just
-skips first 0x50000 bytes thus the paritions (MBR) and initial data is
-not visible.
-
-I don't know what is the cause.
-
-Any hints?
-
-Signed-off-by: Krzysztof Kozlowski <krzk@kernel.org>
----
- hw/arm/exynos4210.c | 29 +++++++++++++++++++++++++++++
- 1 file changed, 29 insertions(+)
-
-diff --git a/hw/arm/exynos4210.c b/hw/arm/exynos4210.c
-index 0ec4250f0c05..d581f2217253 100644
---- a/hw/arm/exynos4210.c
-+++ b/hw/arm/exynos4210.c
-@@ -32,6 +32,7 @@
- #include "hw/arm/arm.h"
- #include "hw/loader.h"
- #include "hw/arm/exynos4210.h"
-+#include "hw/sd/sd.h"
- #include "hw/usb/hcd-ehci.h"
- 
- #define EXYNOS4210_CHIPID_ADDR         0x10000000
-@@ -72,6 +73,13 @@
- #define EXYNOS4210_EXT_COMBINER_BASE_ADDR   0x10440000
- #define EXYNOS4210_INT_COMBINER_BASE_ADDR   0x10448000
- 
-+/* SD/MMC host controllers */
-+#define EXYNOS4210_SDHCI_CAPABILITIES       0x05E80080
-+#define EXYNOS4210_SDHCI_BASE_ADDR          0x12510000
-+#define EXYNOS4210_SDHCI_ADDR(n)            (EXYNOS4210_SDHCI_BASE_ADDR + \
-+                                                0x00010000 * (n))
-+#define EXYNOS4210_SDHCI_NUMBER             4
-+
- /* PMU SFR base address */
- #define EXYNOS4210_PMU_BASE_ADDR            0x10020000
- 
-@@ -386,6 +394,27 @@ Exynos4210State *exynos4210_init(MemoryRegion *system_mem,
-                            EXYNOS4210_UART3_FIFO_SIZE, 3, NULL,
-                   s->irq_table[exynos4210_get_irq(EXYNOS4210_UART_INT_GRP, 3)]);
- 
-+    /*** SD/MMC host controllers ***/
-+    for (n = 0; n < EXYNOS4210_SDHCI_NUMBER; n++) {
-+        DeviceState *carddev;
-+        DriveInfo *di;
-+        BlockBackend *blk;
-+
-+        dev = qdev_create(NULL, "generic-sdhci");
-+        qdev_prop_set_uint32(dev, "capareg", EXYNOS4210_SDHCI_CAPABILITIES);
-+        qdev_init_nofail(dev);
-+
-+        busdev = SYS_BUS_DEVICE(dev);
-+        sysbus_mmio_map(busdev, 0, EXYNOS4210_SDHCI_ADDR(n));
-+        sysbus_connect_irq(busdev, 0, s->irq_table[exynos4210_get_irq(29, n)]);
-+
-+        di = drive_get_next(IF_SD);
-+        blk = di ? blk_by_legacy_dinfo(di) : NULL;
-+        carddev = qdev_create(qdev_get_child_bus(dev, "sd-bus"), TYPE_SD_CARD);
-+        qdev_prop_set_drive(carddev, "drive", blk, &error_abort);
-+        qdev_prop_set_bit(carddev, "realized", true);
-+    }
-+
-     /*** Display controller (FIMD) ***/
-     sysbus_create_varargs("exynos4210.fimd", EXYNOS4210_FIMD0_BASE_ADDR,
-             s->irq_table[exynos4210_get_irq(11, 0)],
--- 
-2.9.3
-
+>      /* Immediate value in AArch32 SVC insn; must be set if is_jmp == DISAS_SWI
+>       * so that top level loop can generate correct syndrome information.
+>       */
+> diff --git a/target/arm/translate.c b/target/arm/translate.c
+> index f28c4ca..f980cda 100644
+> --- a/target/arm/translate.c
+> +++ b/target/arm/translate.c
+> @@ -11780,6 +11780,7 @@ void gen_intermediate_code(CPUARMState *env, TranslationBlock *tb)
+>      dc->vec_len = ARM_TBFLAG_VECLEN(tb->flags);
+>      dc->vec_stride = ARM_TBFLAG_VECSTRIDE(tb->flags);
+>      dc->c15_cpar = ARM_TBFLAG_XSCALE_CPAR(tb->flags);
+> +    dc->handler = ARM_TBFLAG_HANDLER(tb->flags);
+>      dc->cp_regs = cpu->cp_regs;
+>      dc->features = env->features;
+>
+>

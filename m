@@ -1,59 +1,59 @@
-Received: by 10.25.0.144 with SMTP id 138csp1532950lfa;
-        Mon, 17 Apr 2017 21:01:48 -0700 (PDT)
-X-Received: by 10.233.239.18 with SMTP id d18mr10751161qkg.313.1492488108068;
-        Mon, 17 Apr 2017 21:01:48 -0700 (PDT)
+Received: by 10.25.0.144 with SMTP id 138csp1533057lfa;
+        Mon, 17 Apr 2017 21:02:09 -0700 (PDT)
+X-Received: by 10.200.54.2 with SMTP id m2mr11393483qtb.176.1492488129518;
+        Mon, 17 Apr 2017 21:02:09 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id l90si12747280qte.273.2017.04.17.21.01.47
+        by mx.google.com with ESMTPS id r53si9149044qta.258.2017.04.17.21.02.09
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 17 Apr 2017 21:01:48 -0700 (PDT)
+        Mon, 17 Apr 2017 21:02:09 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        dkim=fail header.i=@gibson.dropbear.id.au;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:39935 helo=lists.gnu.org)
+Received: from localhost ([::1]:39940 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1d0KKp-0001vS-Gf
-	for alex.bennee@linaro.org; Tue, 18 Apr 2017 00:01:47 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:60333)
+	id 1d0KLB-0002GT-0b
+	for alex.bennee@linaro.org; Tue, 18 Apr 2017 00:02:09 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:60371)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <dgibson@ozlabs.org>) id 1d0KKi-0001tb-A6
-	for qemu-arm@nongnu.org; Tue, 18 Apr 2017 00:01:41 -0400
+	(envelope-from <dgibson@ozlabs.org>) id 1d0KKj-0001uB-Q3
+	for qemu-arm@nongnu.org; Tue, 18 Apr 2017 00:01:43 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <dgibson@ozlabs.org>) id 1d0KKh-0005Pu-BU
-	for qemu-arm@nongnu.org; Tue, 18 Apr 2017 00:01:40 -0400
-Received: from ozlabs.org ([2401:3900:2:1::2]:44093)
+	(envelope-from <dgibson@ozlabs.org>) id 1d0KKg-0005PX-P3
+	for qemu-arm@nongnu.org; Tue, 18 Apr 2017 00:01:41 -0400
+Received: from ozlabs.org ([103.22.144.67]:42447)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <dgibson@ozlabs.org>)
-	id 1d0KKg-0005NA-Tp; Tue, 18 Apr 2017 00:01:39 -0400
+	id 1d0KKg-0005N2-5K; Tue, 18 Apr 2017 00:01:38 -0400
 Received: by ozlabs.org (Postfix, from userid 1007)
-	id 3w6Wf72xmXz9s2P; Tue, 18 Apr 2017 14:01:35 +1000 (AEST)
+	id 3w6Wf71Lv6z9s1h; Tue, 18 Apr 2017 14:01:35 +1000 (AEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
 	d=gibson.dropbear.id.au; s=201602; t=1492488095;
-	bh=CrMT98o7/gpRQpurtm+imXdXHtL07HWf+acULsFSgmI=;
+	bh=Pl2eGn2Bov9L8TAT5U5VrzoSfDBQZn9UQnMOryP53sQ=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=jv59rXAwCzOGZloWRC3KcjVeoaGpx1AGpz+VcL04U4j1KRKmcx9W+35ORqqADGfpo
-	hYN2madB7+FcuiSQjwuKLb24tS1FJiTAsm5Dg1Aom1VCNVB9zSmmWXOOVv3aStIWrm
-	hFVaF5aPHQQ+GS/oGYXOMEGumpIX9j3Zf5kEeo7k=
-Date: Tue, 18 Apr 2017 13:56:30 +1000
+	b=nUFzqJ7/dNplDvnMSVSSJiOIVHitRQjvCsuWbZR33vFq09Lm9UVl18Z7UTtaMBFIu
+	7Vl1Uy66QPG7o6vX2BSk5UsbzJbrPpCM8UtUtiUYSwGIjjva5IpR5vZACs58j21rfn
+	xN8LgDejQ+DXbWwFaYHqXSzfI3e5tcv0bqc+yC0A=
+Date: Tue, 18 Apr 2017 13:52:40 +1000
 From: David Gibson <david@gibson.dropbear.id.au>
 To: Eduardo Habkost <ehabkost@redhat.com>
-Message-ID: <20170418035630.GO12235@umbus.fritz.box>
+Message-ID: <20170418035240.GK12235@umbus.fritz.box>
 References: <20170417215916.12431-1-ehabkost@redhat.com>
-	<20170417215916.12431-8-ehabkost@redhat.com>
+	<20170417215916.12431-4-ehabkost@redhat.com>
 MIME-Version: 1.0
 Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="IpgPcFyQO6wM49Um"
+	protocol="application/pgp-signature"; boundary="NqNl6FRZtoRUn5bW"
 Content-Disposition: inline
-In-Reply-To: <20170417215916.12431-8-ehabkost@redhat.com>
+In-Reply-To: <20170417215916.12431-4-ehabkost@redhat.com>
 User-Agent: Mutt/1.8.0 (2017-02-23)
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2401:3900:2:1::2
-Subject: Re: [Qemu-arm] [RFC 7/7] pci: Set phb->bus inside
- pci_bus_new_inplace()
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 103.22.144.67
+Subject: Re: [Qemu-arm] [RFC 3/7] pci: Change pci_bus_new*() parameter to
+ PCIHostState
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -73,75 +73,238 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
 	Laszlo Ersek <lersek@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: KhBjxkvyHOKa
+X-TUID: PbEkiVH/Gacd
 
 
---IpgPcFyQO6wM49Um
+--NqNl6FRZtoRUn5bW
 Content-Type: text/plain; charset=iso-8859-1
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
-On Mon, Apr 17, 2017 at 06:59:16PM -0300, Eduardo Habkost wrote:
-> Every single caller of pci_bus_new_inplace() sets phb->bus to point to
-> 'bus'. Do that inside pci_bus_new_inplace() to avoid code duplication
-> and make it harder to break.
+On Mon, Apr 17, 2017 at 06:59:12PM -0300, Eduardo Habkost wrote:
+> The pci_bus_new*() functions already require the 'parent' argument to be
+> a PCI_HOST_BRIDGE object. Change the parameter type to reflect that.
 >=20
-> Cc: "Herv=E9 Poussineau" <hpoussin@reactos.org>
-> Cc: Marcel Apfelbaum <marcel@redhat.com>
 > Cc: "Michael S. Tsirkin" <mst@redhat.com>
+> Cc: Marcel Apfelbaum <marcel@redhat.com>
+> Cc: "Herv=E9 Poussineau" <hpoussin@reactos.org>
 > Cc: Peter Maydell <peter.maydell@linaro.org>
-> Cc: qemu-arm@nongnu.org
 > Cc: qemu-ppc@nongnu.org
+> Cc: qemu-arm@nongnu.org
 > Signed-off-by: Eduardo Habkost <ehabkost@redhat.com>
 
 Reviewed-by: David Gibson <david@gibson.dropbear.id.au>
 
 > ---
->  hw/pci-host/prep.c      | 2 --
->  hw/pci-host/versatile.c | 1 -
->  hw/pci/pci.c            | 1 +
->  3 files changed, 1 insertion(+), 3 deletions(-)
+>  include/hw/pci/pci.h                |  5 +++--
+>  hw/pci-bridge/pci_expander_bridge.c | 15 ++++++++-------
+>  hw/pci-host/piix.c                  |  2 +-
+>  hw/pci-host/prep.c                  |  2 +-
+>  hw/pci-host/q35.c                   |  2 +-
+>  hw/pci-host/versatile.c             |  2 +-
+>  hw/pci/pci.c                        | 13 ++++++-------
+>  7 files changed, 21 insertions(+), 20 deletions(-)
 >=20
-> diff --git a/hw/pci-host/prep.c b/hw/pci-host/prep.c
-> index 2e2cd267f4..6efa5bc5ef 100644
-> --- a/hw/pci-host/prep.c
-> +++ b/hw/pci-host/prep.c
-> @@ -284,8 +284,6 @@ static void raven_pcihost_initfn(Object *obj)
->      address_space_init(&s->bm_as, &s->bm, "raven-bm");
->      pci_setup_iommu(&s->pci_bus, raven_pcihost_set_iommu, s);
+> diff --git a/include/hw/pci/pci.h b/include/hw/pci/pci.h
+> index a37a2d5cb6..2242aa25eb 100644
+> --- a/include/hw/pci/pci.h
+> +++ b/include/hw/pci/pci.h
+> @@ -393,12 +393,13 @@ typedef PCIINTxRoute (*pci_route_irq_fn)(void *opaq=
+ue, int pin);
 > =20
-> -    h->bus =3D &s->pci_bus;
-> -
->      object_initialize(&s->pci_dev, sizeof(s->pci_dev), TYPE_RAVEN_PCI_DE=
-VICE);
->      pci_dev =3D DEVICE(&s->pci_dev);
->      qdev_set_parent_bus(pci_dev, BUS(&s->pci_bus));
-> diff --git a/hw/pci-host/versatile.c b/hw/pci-host/versatile.c
-> index 24ef87610b..630f1ac1c5 100644
-> --- a/hw/pci-host/versatile.c
-> +++ b/hw/pci-host/versatile.c
-> @@ -389,7 +389,6 @@ static void pci_vpb_init(Object *obj)
->      pci_bus_new_inplace(&s->pci_bus, sizeof(s->pci_bus), h, "pci",
->                          &s->pci_mem_space, &s->pci_io_space,
->                          PCI_DEVFN(11, 0), TYPE_PCI_BUS);
-> -    h->bus =3D &s->pci_bus;
-> =20
->      object_initialize(&s->pci_dev, sizeof(s->pci_dev), TYPE_VERSATILE_PC=
-I_HOST);
->      qdev_set_parent_bus(DEVICE(&s->pci_dev), BUS(&s->pci_bus));
-> diff --git a/hw/pci/pci.c b/hw/pci/pci.c
-> index 486aeb7514..ef226f8b41 100644
-> --- a/hw/pci/pci.c
-> +++ b/hw/pci/pci.c
-> @@ -397,6 +397,7 @@ void pci_bus_new_inplace(PCIBus *bus, size_t bus_size,
+>  bool pci_bus_is_express(PCIBus *bus);
+>  bool pci_bus_is_root(PCIBus *bus);
+> -void pci_bus_new_inplace(PCIBus *bus, size_t bus_size, DeviceState *pare=
+nt,
+> +void pci_bus_new_inplace(PCIBus *bus, size_t bus_size,
+> +                         PCIHostState *phb,
+>                           const char *name,
+>                           MemoryRegion *address_space_mem,
+>                           MemoryRegion *address_space_io,
+>                           uint8_t devfn_min, const char *typename);
+> -PCIBus *pci_bus_new(DeviceState *parent, const char *name,
+> +PCIBus *pci_bus_new(PCIHostState *phb, const char *name,
+>                      MemoryRegion *address_space_mem,
+>                      MemoryRegion *address_space_io,
+>                      uint8_t devfn_min, const char *typename);
+> diff --git a/hw/pci-bridge/pci_expander_bridge.c b/hw/pci-bridge/pci_expa=
+nder_bridge.c
+> index 6ac187fa32..39d29d2230 100644
+> --- a/hw/pci-bridge/pci_expander_bridge.c
+> +++ b/hw/pci-bridge/pci_expander_bridge.c
+> @@ -213,7 +213,8 @@ static gint pxb_compare(gconstpointer a, gconstpointe=
+r b)
+>  static void pxb_dev_realize_common(PCIDevice *dev, bool pcie, Error **er=
+rp)
 >  {
->      qbus_create_inplace(bus, bus_size, typename, DEVICE(phb), name);
->      pci_bus_init(bus, phb, address_space_mem, address_space_io, devfn_mi=
-n);
+>      PXBDev *pxb =3D convert_to_pxb(dev);
+> -    DeviceState *ds, *bds =3D NULL;
+> +    DeviceState *bds =3D NULL;
+> +    PCIHostState *phb;
+>      PCIBus *bus;
+>      const char *dev_name =3D NULL;
+>      Error *local_err =3D NULL;
+> @@ -228,11 +229,11 @@ static void pxb_dev_realize_common(PCIDevice *dev, =
+bool pcie, Error **errp)
+>          dev_name =3D dev->qdev.id;
+>      }
+> =20
+> -    ds =3D qdev_create(NULL, TYPE_PXB_HOST);
+> +    phb =3D PCI_HOST_BRIDGE(qdev_create(NULL, TYPE_PXB_HOST));
+>      if (pcie) {
+> -        bus =3D pci_bus_new(ds, dev_name, NULL, NULL, 0, TYPE_PXB_PCIE_B=
+US);
+> +        bus =3D pci_bus_new(phb, dev_name, NULL, NULL, 0, TYPE_PXB_PCIE_=
+BUS);
+>      } else {
+> -        bus =3D pci_bus_new(ds, "pxb-internal", NULL, NULL, 0, TYPE_PXB_=
+BUS);
+> +        bus =3D pci_bus_new(phb, "pxb-internal", NULL, NULL, 0, TYPE_PXB=
+_BUS);
+>          bds =3D qdev_create(BUS(bus), "pci-bridge");
+>          bds->id =3D dev_name;
+>          qdev_prop_set_uint8(bds, PCI_BRIDGE_DEV_PROP_CHASSIS_NR, pxb->bu=
+s_nr);
+> @@ -244,7 +245,7 @@ static void pxb_dev_realize_common(PCIDevice *dev, bo=
+ol pcie, Error **errp)
+>      bus->address_space_io =3D dev->bus->address_space_io;
+>      bus->map_irq =3D pxb_map_irq_fn;
+> =20
+> -    PCI_HOST_BRIDGE(ds)->bus =3D bus;
 > +    phb->bus =3D bus;
+> =20
+>      pxb_register_bus(dev, bus, &local_err);
+>      if (local_err) {
+> @@ -252,7 +253,7 @@ static void pxb_dev_realize_common(PCIDevice *dev, bo=
+ol pcie, Error **errp)
+>          goto err_register_bus;
+>      }
+> =20
+> -    qdev_init_nofail(ds);
+> +    qdev_init_nofail(DEVICE(phb));
+>      if (bds) {
+>          qdev_init_nofail(bds);
+>      }
+> @@ -267,7 +268,7 @@ static void pxb_dev_realize_common(PCIDevice *dev, bo=
+ol pcie, Error **errp)
+>  err_register_bus:
+>      object_unref(OBJECT(bds));
+>      object_unparent(OBJECT(bus));
+> -    object_unref(OBJECT(ds));
+> +    object_unref(OBJECT(phb));
 >  }
 > =20
->  PCIBus *pci_bus_new(PCIHostState *phb, const char *name,
+>  static void pxb_dev_realize(PCIDevice *dev, Error **errp)
+> diff --git a/hw/pci-host/piix.c b/hw/pci-host/piix.c
+> index f9218aa952..91fec05b38 100644
+> --- a/hw/pci-host/piix.c
+> +++ b/hw/pci-host/piix.c
+> @@ -340,7 +340,7 @@ PCIBus *i440fx_init(const char *host_type, const char=
+ *pci_type,
+> =20
+>      dev =3D qdev_create(NULL, host_type);
+>      s =3D PCI_HOST_BRIDGE(dev);
+> -    b =3D pci_bus_new(dev, NULL, pci_address_space,
+> +    b =3D pci_bus_new(s, NULL, pci_address_space,
+>                      address_space_io, 0, TYPE_PCI_BUS);
+>      s->bus =3D b;
+>      object_property_add_child(qdev_get_machine(), "i440fx", OBJECT(dev),=
+ NULL);
+> diff --git a/hw/pci-host/prep.c b/hw/pci-host/prep.c
+> index 260a119a9e..2e2cd267f4 100644
+> --- a/hw/pci-host/prep.c
+> +++ b/hw/pci-host/prep.c
+> @@ -269,7 +269,7 @@ static void raven_pcihost_initfn(Object *obj)
+>      memory_region_add_subregion_overlap(address_space_mem, 0x80000000,
+>                                          &s->pci_io_non_contiguous, 1);
+>      memory_region_add_subregion(address_space_mem, 0xc0000000, &s->pci_m=
+emory);
+> -    pci_bus_new_inplace(&s->pci_bus, sizeof(s->pci_bus), DEVICE(obj), NU=
+LL,
+> +    pci_bus_new_inplace(&s->pci_bus, sizeof(s->pci_bus), h, NULL,
+>                          &s->pci_memory, &s->pci_io, 0, TYPE_PCI_BUS);
+> =20
+>      /* Bus master address space */
+> diff --git a/hw/pci-host/q35.c b/hw/pci-host/q35.c
+> index 344f77b10c..860b47a1ba 100644
+> --- a/hw/pci-host/q35.c
+> +++ b/hw/pci-host/q35.c
+> @@ -49,7 +49,7 @@ static void q35_host_realize(DeviceState *dev, Error **=
+errp)
+>      sysbus_add_io(sbd, MCH_HOST_BRIDGE_CONFIG_DATA, &pci->data_mem);
+>      sysbus_init_ioports(sbd, MCH_HOST_BRIDGE_CONFIG_DATA, 4);
+> =20
+> -    pci->bus =3D pci_bus_new(DEVICE(s), "pcie.0",
+> +    pci->bus =3D pci_bus_new(pci, "pcie.0",
+>                             s->mch.pci_address_space, s->mch.address_spac=
+e_io,
+>                             0, TYPE_PCIE_BUS);
+>      PC_MACHINE(qdev_get_machine())->bus =3D pci->bus;
+> diff --git a/hw/pci-host/versatile.c b/hw/pci-host/versatile.c
+> index 467cbb9cb8..24ef87610b 100644
+> --- a/hw/pci-host/versatile.c
+> +++ b/hw/pci-host/versatile.c
+> @@ -386,7 +386,7 @@ static void pci_vpb_init(Object *obj)
+>      memory_region_init(&s->pci_io_space, OBJECT(s), "pci_io", 1ULL << 32=
+);
+>      memory_region_init(&s->pci_mem_space, OBJECT(s), "pci_mem", 1ULL << =
+32);
+> =20
+> -    pci_bus_new_inplace(&s->pci_bus, sizeof(s->pci_bus), DEVICE(obj), "p=
+ci",
+> +    pci_bus_new_inplace(&s->pci_bus, sizeof(s->pci_bus), h, "pci",
+>                          &s->pci_mem_space, &s->pci_io_space,
+>                          PCI_DEVFN(11, 0), TYPE_PCI_BUS);
+>      h->bus =3D &s->pci_bus;
+> diff --git a/hw/pci/pci.c b/hw/pci/pci.c
+> index d9535c0bdc..f4488b46fc 100644
+> --- a/hw/pci/pci.c
+> +++ b/hw/pci/pci.c
+> @@ -388,26 +388,25 @@ bool pci_bus_is_root(PCIBus *bus)
+>      return PCI_BUS_GET_CLASS(bus)->is_root(bus);
+>  }
+> =20
+> -void pci_bus_new_inplace(PCIBus *bus, size_t bus_size, DeviceState *pare=
+nt,
+> +void pci_bus_new_inplace(PCIBus *bus, size_t bus_size,
+> +                         PCIHostState *phb,
+>                           const char *name,
+>                           MemoryRegion *address_space_mem,
+>                           MemoryRegion *address_space_io,
+>                           uint8_t devfn_min, const char *typename)
+>  {
+> -    PCIHostState *phb =3D PCI_HOST_BRIDGE(parent);
+> -    qbus_create_inplace(bus, bus_size, typename, parent, name);
+> +    qbus_create_inplace(bus, bus_size, typename, DEVICE(phb), name);
+>      pci_bus_init(bus, phb, address_space_mem, address_space_io, devfn_mi=
+n);
+>  }
+> =20
+> -PCIBus *pci_bus_new(DeviceState *parent, const char *name,
+> +PCIBus *pci_bus_new(PCIHostState *phb, const char *name,
+>                      MemoryRegion *address_space_mem,
+>                      MemoryRegion *address_space_io,
+>                      uint8_t devfn_min, const char *typename)
+>  {
+> -    PCIHostState *phb =3D PCI_HOST_BRIDGE(parent);
+>      PCIBus *bus;
+> =20
+> -    bus =3D PCI_BUS(qbus_create(typename, parent, name));
+> +    bus =3D PCI_BUS(qbus_create(typename, DEVICE(phb), name));
+>      pci_bus_init(bus, phb, address_space_mem, address_space_io, devfn_mi=
+n);
+>      return bus;
+>  }
+> @@ -431,7 +430,7 @@ PCIBus *pci_register_bus(DeviceState *parent, const c=
+har *name,
+>  {
+>      PCIBus *bus;
+> =20
+> -    bus =3D pci_bus_new(parent, name, address_space_mem,
+> +    bus =3D pci_bus_new(PCI_HOST_BRIDGE(parent), name, address_space_mem,
+>                        address_space_io, devfn_min, typename);
+>      pci_bus_irqs(bus, set_irq, map_irq, irq_opaque, nirq);
+>      return bus;
 
 --=20
 David Gibson			| I'll have my music baroque, and my code
@@ -149,25 +312,25 @@ david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
 				| _way_ _around_!
 http://www.ozlabs.org/~dgibson
 
---IpgPcFyQO6wM49Um
+--NqNl6FRZtoRUn5bW
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 Version: GnuPG v2
 
-iQIcBAEBCAAGBQJY9Y5uAAoJEGw4ysog2bOScxcP/3T7dGJRK5cFLxdlFQqDxNfa
-eKLsjltGWV5nJT0F8M27CBKyC/z4T1b0ZMQPWukhRBlp/prXx/Rh++476O/nVXGP
-0Gkb6dR2T2k3hyDfzaHf4VG7s+0gOtEgGDabqsqLzIBoynW2MgtiJCOANvMnBCM2
-V0y/f6fQ87kV+g+fBW1WvIoeog4rM9iQR5K9Yd1a8DdEYYSrcxHwEJgA8ezR5ZKb
-oLb2DSG/SXjI7S4wCu0AylNm2OCoU0nMBJ00fz/Dk1myxrbehMKwwhBBkv6OF4oO
-r78er3ruFAOkh4uZPoGuqnChvNCUykvn5ieFeFWwpYhka4oRezVEjir/1LWD0uqZ
-NhZJfVoAje+USaO9+ywp4CaQEsU7cIDgjJHhLTQ93Z47GAsi5nSSLmWgztlYKHuz
-pnRL7A8xwpEPkvTf152rpTjVWJmyasLAK0l7FhEr5pKeOMeIGjh+uzs39vAYDD94
-tsEtJWxjVFqjXFOaM0xst+aN1nyaWCv0bGKBND8Hq0loxaYvFd53I1blnHg8Mi8h
-LxflVQHQZvryM7sk/vH1vIHTbrbw4/mxr5D8jzE5YFSvI42wp81TRUUu9FQgesj3
-BJavuyKn+WDmgEg8BVoAMPbJwrVqBlEJXHdJEer1VHpCEIzCto6h5rX92ug9Nirr
-mMBfqsiKzQVczUSXOgap
-=JN1d
+iQIcBAEBCAAGBQJY9Y2IAAoJEGw4ysog2bOSIK8QAMjig48kj6H7x1iGMhiGwm/m
+smHncY/m0cJPtJ1Q8e8SKhQjcP8m3Wshr4+bELS0IsUO48liN4Mdh+xVkkjeiihR
+QPrhgce1Sw0mYdYKQqnk3EXz7ZKudNMXhZqESVRvP7Dyt0kGJHLKtCLc1BP5yb0D
+bK0dJbKUxUOeUTCodAko+ojk0F2yOXZcW7PJKD/ZBeh4bnRNfqghfGVMWZbx50uI
+qYCyUFbzeAbXyRDNP1M+GhTDb4+VZkhgtOh5THCjMQWS7RsOFdJITfzZX/bx9zyj
+7QK0nwDZfzRp70e0usCLJfo7uIGaaEGWfwZlX5u9o4Xp+pOjf09ZpOA1vFRTC9dN
+8H+GrvU0njc1450e+qV/BKq28Y0bwXTvY5xLaHxacAfIwYz98DhSUyXRBa9Xme89
+ZYMjzQp/7HIR7B7hBzQUq7xRrBepaDnMlUIxNmhUIfksKSTNfOwI7qFVnQ2pFERV
+sh5qEvl4PG9nVvKph6zq9GpqJQsMSL1d7+k/tevhIeEhU9kmLt4Jbx7pRUFf6MSF
+OzLJP8Kb0EGnbXI7F0iFT34vHswPTWzSrhsPxMtqb0cTu7tbtdADGUnKQvYBOBpH
+KexDA9o+9CPBLXBs8atOzWdWO7YONoipp1+jLqlhs+sDdnwCx/VyVHKCHJxrRYV1
+CXlA4AW9qLA0vOINykfg
+=Cfd8
 -----END PGP SIGNATURE-----
 
---IpgPcFyQO6wM49Um--
+--NqNl6FRZtoRUn5bW--

@@ -1,70 +1,75 @@
-Received: by 10.25.0.144 with SMTP id 138csp252856lfa;
-        Wed, 19 Apr 2017 05:50:32 -0700 (PDT)
-X-Received: by 10.200.38.21 with SMTP id u21mr2204855qtu.96.1492606232799;
-        Wed, 19 Apr 2017 05:50:32 -0700 (PDT)
+Received: by 10.25.0.144 with SMTP id 138csp378055lfa;
+        Wed, 19 Apr 2017 10:42:01 -0700 (PDT)
+X-Received: by 10.55.78.201 with SMTP id c192mr3961070qkb.81.1492623721710;
+        Wed, 19 Apr 2017 10:42:01 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id b18si2213524qkj.183.2017.04.19.05.50.32
+        by mx.google.com with ESMTPS id 25si3051565qts.101.2017.04.19.10.42.01
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 19 Apr 2017 05:50:32 -0700 (PDT)
+        Wed, 19 Apr 2017 10:42:01 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:47986 helo=lists.gnu.org)
+       dkim=fail header.i=@codeaurora.org;
+       dkim=fail header.i=@codeaurora.org;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:49603 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1d0p44-0003z5-C6
-	for alex.bennee@linaro.org; Wed, 19 Apr 2017 08:50:32 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:53167)
+	id 1d0tc9-0008BF-3M
+	for alex.bennee@linaro.org; Wed, 19 Apr 2017 13:42:01 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:43848)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <ehabkost@redhat.com>) id 1d0p41-0003yu-6v
-	for qemu-arm@nongnu.org; Wed, 19 Apr 2017 08:50:30 -0400
+	(envelope-from <alindsay@codeaurora.org>) id 1d0tc1-0008Aq-KH
+	for qemu-arm@nongnu.org; Wed, 19 Apr 2017 13:41:54 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <ehabkost@redhat.com>) id 1d0p3w-0000OT-8W
-	for qemu-arm@nongnu.org; Wed, 19 Apr 2017 08:50:29 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:46262)
+	(envelope-from <alindsay@codeaurora.org>) id 1d0tby-0004LI-Iq
+	for qemu-arm@nongnu.org; Wed, 19 Apr 2017 13:41:53 -0400
+Received: from smtp.codeaurora.org ([198.145.29.96]:37494)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <ehabkost@redhat.com>)
-	id 1d0p3w-0000O9-2u; Wed, 19 Apr 2017 08:50:24 -0400
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
-	[10.5.11.14])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(Exim 4.71) (envelope-from <alindsay@codeaurora.org>)
+	id 1d0tby-0004Kl-E2; Wed, 19 Apr 2017 13:41:50 -0400
+Received: by smtp.codeaurora.org (Postfix, from userid 1000)
+	id 8408B6110F; Wed, 19 Apr 2017 17:41:49 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=codeaurora.org;
+	s=default; t=1492623709;
+	bh=JglSadC0Al4BPQ25hgChOtMpAlVa9OJ8BceFBOsPFIs=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=e8BlNJVfnPju4lBlapJsz226A4HuqhGTfYHR6qND/ngjo8H9MWA8KNoZ+Epq+JYmz
+	u75wH8LH5DoH/tuP2iTZMOko/2srAP7LSWBjUBZHcvnV1QlVi3O4mCAxvQ7DXkxMOt
+	fzgnW3oNTSdESrp7jPOE7E5Qywqxv1oZBI2jYLlc=
+Received: from mossypile.qualcomm.com (global_nat1_iad_fw.qualcomm.com
+	[129.46.232.65])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 809023DBD3;
-	Wed, 19 Apr 2017 12:50:22 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 809023DBD3
-Authentication-Results: ext-mx06.extmail.prod.ext.phx2.redhat.com;
-	dmarc=none (p=none dis=none) header.from=redhat.com
-Authentication-Results: ext-mx06.extmail.prod.ext.phx2.redhat.com;
-	spf=pass smtp.mailfrom=ehabkost@redhat.com
-DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com 809023DBD3
-Received: from localhost (ovpn-116-28.gru2.redhat.com [10.97.116.28])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 014007F371;
-	Wed, 19 Apr 2017 12:50:02 +0000 (UTC)
-Date: Wed, 19 Apr 2017 09:50:01 -0300
-From: Eduardo Habkost <ehabkost@redhat.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Message-ID: <20170419125001.GU25239@thinpad.lan.raisama.net>
-References: <20170418221724.5707-1-ehabkost@redhat.com>
-	<20170418221724.5707-4-ehabkost@redhat.com>
-	<CAFEAcA_Ky5SecogNFq3+RO8pX4sqxvsSbw0KihAv=8teqCSJbw@mail.gmail.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <CAFEAcA_Ky5SecogNFq3+RO8pX4sqxvsSbw0KihAv=8teqCSJbw@mail.gmail.com>
-X-Fnord: you can see the fnord
-User-Agent: Mutt/1.8.0 (2017-02-23)
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.30]);
-	Wed, 19 Apr 2017 12:50:23 +0000 (UTC)
+	(Authenticated sender: alindsay@smtp.codeaurora.org)
+	by smtp.codeaurora.org (Postfix) with ESMTPSA id 8BE71610DB;
+	Wed, 19 Apr 2017 17:41:48 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=codeaurora.org;
+	s=default; t=1492623709;
+	bh=JglSadC0Al4BPQ25hgChOtMpAlVa9OJ8BceFBOsPFIs=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=e8BlNJVfnPju4lBlapJsz226A4HuqhGTfYHR6qND/ngjo8H9MWA8KNoZ+Epq+JYmz
+	u75wH8LH5DoH/tuP2iTZMOko/2srAP7LSWBjUBZHcvnV1QlVi3O4mCAxvQ7DXkxMOt
+	fzgnW3oNTSdESrp7jPOE7E5Qywqxv1oZBI2jYLlc=
+DMARC-Filter: OpenDMARC Filter v1.3.2 smtp.codeaurora.org 8BE71610DB
+Authentication-Results: pdx-caf-mail.web.codeaurora.org;
+	dmarc=none (p=none dis=none) header.from=codeaurora.org
+Authentication-Results: pdx-caf-mail.web.codeaurora.org;
+	spf=none smtp.mailfrom=alindsay@codeaurora.org
+From: Aaron Lindsay <alindsay@codeaurora.org>
+To: Peter Maydell <peter.maydell@linaro.org>,
+	qemu-arm@nongnu.org
+Date: Wed, 19 Apr 2017 13:41:13 -0400
+Message-Id: <1492623684-25799-3-git-send-email-alindsay@codeaurora.org>
+X-Mailer: git-send-email 1.9.1
+In-Reply-To: <1492623684-25799-1-git-send-email-alindsay@codeaurora.org>
+References: <1492623684-25799-1-git-send-email-alindsay@codeaurora.org>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [RFC v2 3/6] pci: Rename and change signatures of
- pci_bus_new() & related functions
+X-Received-From: 198.145.29.96
+Subject: [Qemu-arm] [PATCH 02/13] target/arm: Check PMCNTEN for whether
+ PMCCNTR is enabled
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -76,54 +81,32 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: "qemu-ppc@nongnu.org" <qemu-ppc@nongnu.org>,
-	Cornelia Huck <cornelia.huck@de.ibm.com>,
-	Paul Burton <paul.burton@imgtec.com>,
-	"Michael S. Tsirkin" <mst@redhat.com>,
-	Alexey Kardashevskiy <aik@ozlabs.ru>, Yongbok Kim <yongbok.kim@imgtec.com>,
-	QEMU Developers <qemu-devel@nongnu.org>, Alexander Graf <agraf@suse.de>,
-	Scott Wood <scottwood@freescale.com>,
-	Christian Borntraeger <borntraeger@de.ibm.com>,
-	qemu-arm <qemu-arm@nongnu.org>,
-	=?iso-8859-1?Q?Herv=E9?= Poussineau <hpoussin@reactos.org>,
-	Marcel Apfelbaum <marcel@redhat.com>, David Gibson <dgibson@redhat.com>,
-	Richard Henderson <rth@twiddle.net>, Laszlo Ersek <lersek@redhat.com>,
-	Aurelien Jarno <aurelien@aurel32.net>,
-	David Gibson <david@gibson.dropbear.id.au>
+Cc: Aaron Lindsay <alindsay@codeaurora.org>, mspradli@codeaurora.org,
+	qemu-devel@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: L7wIpdYsEZbZ
+X-TUID: oERbGcZBA95k
 
-On Wed, Apr 19, 2017 at 09:41:42AM +0100, Peter Maydell wrote:
-> On 18 April 2017 at 23:17, Eduardo Habkost <ehabkost@redhat.com> wrote:
-> > pci_bus_new*() and pci_register_bus() work only when the 'parent'
-> > argument is a PCI_HOST_BRIDGE object. Rename them to reflect that they
-> > are meant to initialize a bus that's in a PCI host bridge.
-> >
-> > The new function names are:
-> > * pci_host_bus_init() (replacing pci_bus_new())
-> > * pci_host_bus_init_inplace() (replacing pci_bus_new_inplace())
-> > * pci_host_bus_init_irqs() (replacing pci_register_bus())
-> 
-> This is moving these functions away from the convention that
-> we seem to mostly follow for buses (eg ISA, SCSI) of
-> foo_bus_new() to allocate and return a new bus, and
-> foo_bus_new_inplace() to initialize a bus that's inline in
-> some other struct.
-> 
-> I'm not sure this is a good idea unless we have a plan to
-> convert all the other QOM buses and document that this is
-> the right way to implement init for a bus.
+Signed-off-by: Aaron Lindsay <alindsay@codeaurora.org>
+---
+ target/arm/helper.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-The point of the rename is that those functions are doing more
-than just allocating a PCIBus. They do some initialization of
-PCIHostState as well. That's why non-root PCI buses can't be
-created by pci_bus_new*() today.
-
-Maybe the answer here is to move the PCI_HOST_BRIDGE-specific
-code somewhere else, and make pci_bus_new*() more generic. This
-would allow us to reuse pci_bus_new*() when creating non-root PCI
-buses, later.
-
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index 8cb7a94..8888391 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -964,7 +964,7 @@ static inline bool arm_ccnt_enabled(CPUARMState *env)
+ {
+     /* This does not support checking PMCCFILTR_EL0 register */
+ 
+-    if (!(env->cp15.c9_pmcr & PMCRE)) {
++    if (!(env->cp15.c9_pmcr & PMCRE) || !(env->cp15.c9_pmcnten & (1 << 31))) {
+         return false;
+     }
+ 
 -- 
-Eduardo
+Qualcomm Datacenter Technologies as an affiliate of Qualcomm Technologies, Inc.
+Qualcomm Technologies, Inc. is a member of the
+Code Aurora Forum, a Linux Foundation Collaborative Project.
+

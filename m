@@ -1,58 +1,58 @@
-Received: by 10.25.0.144 with SMTP id 138csp379823lfa;
-        Wed, 19 Apr 2017 10:47:14 -0700 (PDT)
-X-Received: by 10.237.40.2 with SMTP id r2mr4207334qtd.173.1492624034826;
-        Wed, 19 Apr 2017 10:47:14 -0700 (PDT)
+Received: by 10.25.0.144 with SMTP id 138csp379943lfa;
+        Wed, 19 Apr 2017 10:47:36 -0700 (PDT)
+X-Received: by 10.237.53.71 with SMTP id b7mr4119771qte.143.1492624056783;
+        Wed, 19 Apr 2017 10:47:36 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id m25si1518449qkh.133.2017.04.19.10.47.14
+        by mx.google.com with ESMTPS id d56si3068429qta.117.2017.04.19.10.47.36
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 19 Apr 2017 10:47:14 -0700 (PDT)
+        Wed, 19 Apr 2017 10:47:36 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        dkim=fail header.i=@codeaurora.org;
        dkim=fail header.i=@codeaurora.org;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:49639 helo=lists.gnu.org)
+Received: from localhost ([::1]:49643 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1d0thC-0004U6-5O
-	for alex.bennee@linaro.org; Wed, 19 Apr 2017 13:47:14 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:44025)
+	id 1d0thY-0004pn-5d
+	for alex.bennee@linaro.org; Wed, 19 Apr 2017 13:47:36 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:44110)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alindsay@codeaurora.org>) id 1d0tc6-0008Ee-Ah
-	for qemu-arm@nongnu.org; Wed, 19 Apr 2017 13:41:59 -0400
+	(envelope-from <alindsay@codeaurora.org>) id 1d0tcA-0008Jx-2j
+	for qemu-arm@nongnu.org; Wed, 19 Apr 2017 13:42:03 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <alindsay@codeaurora.org>) id 1d0tc4-0004PT-Vp
-	for qemu-arm@nongnu.org; Wed, 19 Apr 2017 13:41:58 -0400
-Received: from smtp.codeaurora.org ([198.145.29.96]:37842)
+	(envelope-from <alindsay@codeaurora.org>) id 1d0tc8-0004Ro-K2
+	for qemu-arm@nongnu.org; Wed, 19 Apr 2017 13:42:02 -0400
+Received: from smtp.codeaurora.org ([198.145.29.96]:38046)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <alindsay@codeaurora.org>)
-	id 1d0tc4-0004P3-Np; Wed, 19 Apr 2017 13:41:56 -0400
+	id 1d0tc8-0004RO-Bg; Wed, 19 Apr 2017 13:42:00 -0400
 Received: by smtp.codeaurora.org (Postfix, from userid 1000)
-	id DD146610DB; Wed, 19 Apr 2017 17:41:55 +0000 (UTC)
+	id 4544B610DB; Wed, 19 Apr 2017 17:41:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=codeaurora.org;
-	s=default; t=1492623715;
-	bh=OTbX9A7wytE4wdwL05+NR5tWAO1elhLdDEHA/I2z1y4=;
+	s=default; t=1492623719;
+	bh=ZreWRgDXqjKokq9Izys1qzIE8Ql8xnbSoFMZ4gvfcdA=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=Ogwq6Rwm5mDk3OujlwrieV4/DkAgGKOyGVumWPL0FUC/ipvu3XJ80ehthDaXySP3C
-	WR9mS/9WDAddk+AZhhsEIPJi3ID7Uj5VZK0cW6rBxtKHpf2ktVPxLzbYI/SY+fA5QF
-	3t++b1ThfpMoUT7TB5rb60XlHT4R03ih9tJGb5SE=
+	b=DLfubCkVvfhH0mw+EATtb1MkZPpU9oPztPpR1BGR4LaNNk0Bs24RErmVLInCy4dqS
+	WtXlSuga3C3Kct3yzJzyjfjad2HbWyDkEo41I7Hds7d3FZv58BgpA4kpVSP9hZowUS
+	bwwmUw/AH7HdzHwwl/ezwQtkTkzobYh+3klrWe8E=
 Received: from mossypile.qualcomm.com (global_nat1_iad_fw.qualcomm.com
 	[129.46.232.65])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-SHA256 (128/128 bits))
 	(No client certificate requested)
 	(Authenticated sender: alindsay@smtp.codeaurora.org)
-	by smtp.codeaurora.org (Postfix) with ESMTPSA id D2C9D610D4;
-	Wed, 19 Apr 2017 17:41:54 +0000 (UTC)
+	by smtp.codeaurora.org (Postfix) with ESMTPSA id 46EAD6110B;
+	Wed, 19 Apr 2017 17:41:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=codeaurora.org;
-	s=default; t=1492623715;
-	bh=OTbX9A7wytE4wdwL05+NR5tWAO1elhLdDEHA/I2z1y4=;
+	s=default; t=1492623718;
+	bh=ZreWRgDXqjKokq9Izys1qzIE8Ql8xnbSoFMZ4gvfcdA=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=Ogwq6Rwm5mDk3OujlwrieV4/DkAgGKOyGVumWPL0FUC/ipvu3XJ80ehthDaXySP3C
-	WR9mS/9WDAddk+AZhhsEIPJi3ID7Uj5VZK0cW6rBxtKHpf2ktVPxLzbYI/SY+fA5QF
-	3t++b1ThfpMoUT7TB5rb60XlHT4R03ih9tJGb5SE=
-DMARC-Filter: OpenDMARC Filter v1.3.2 smtp.codeaurora.org D2C9D610D4
+	b=VuB/oZNO/0uPhc1gEQmGLTk9vEDQvh1ra5bCH0YEl7iTxeei2KRSpjPbQ1CeFr4wv
+	sQX+OFNigap3wgWZ4h5rzAK6bWGP2n8Zv/+yS3C7MJwtCUkgmET1uxeTCURQ7w+FbN
+	lSKSFDXWTjEMkjVvopLem9kvlRMII5QgNzqJCx40=
+DMARC-Filter: OpenDMARC Filter v1.3.2 smtp.codeaurora.org 46EAD6110B
 Authentication-Results: pdx-caf-mail.web.codeaurora.org;
 	dmarc=none (p=none dis=none) header.from=codeaurora.org
 Authentication-Results: pdx-caf-mail.web.codeaurora.org;
@@ -60,16 +60,15 @@ Authentication-Results: pdx-caf-mail.web.codeaurora.org;
 From: Aaron Lindsay <alindsay@codeaurora.org>
 To: Peter Maydell <peter.maydell@linaro.org>,
 	qemu-arm@nongnu.org
-Date: Wed, 19 Apr 2017 13:41:20 -0400
-Message-Id: <1492623684-25799-10-git-send-email-alindsay@codeaurora.org>
+Date: Wed, 19 Apr 2017 13:41:24 -0400
+Message-Id: <1492623684-25799-14-git-send-email-alindsay@codeaurora.org>
 X-Mailer: git-send-email 1.9.1
 In-Reply-To: <1492623684-25799-1-git-send-email-alindsay@codeaurora.org>
 References: <1492623684-25799-1-git-send-email-alindsay@codeaurora.org>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 198.145.29.96
-Subject: [Qemu-arm] [PATCH 09/13] target/arm: Add array for supported PMU
- events, generate PMCEID[01]
+Subject: [Qemu-arm] [PATCH 13/13] target/arm: Implement PMSWINC
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -85,104 +84,86 @@ Cc: Aaron Lindsay <alindsay@codeaurora.org>, mspradli@codeaurora.org,
 	qemu-devel@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: shb4yRzAhe08
-
-This commit doesn't add any supported events, but provides the framework
-for adding them. We store the pm_event structs in a simple array, and
-provide the mapping from the event numbers to array indexes in
-the supported_event_map array.
+X-TUID: vfa6pB8fFHYo
 
 Signed-off-by: Aaron Lindsay <alindsay@codeaurora.org>
 ---
- target/arm/cpu.c    |  4 ++++
- target/arm/cpu.h    | 10 ++++++++++
- target/arm/helper.c | 37 +++++++++++++++++++++++++++++++++++++
- 3 files changed, 51 insertions(+)
+ target/arm/helper.c | 40 ++++++++++++++++++++++++++++++++++++++--
+ 1 file changed, 38 insertions(+), 2 deletions(-)
 
-diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-index 44c965c..d61ea12 100644
---- a/target/arm/cpu.c
-+++ b/target/arm/cpu.c
-@@ -788,6 +788,10 @@ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
-     if (!cpu->has_pmu) {
-         cpu->has_pmu = false;
-         unset_feature(env, ARM_FEATURE_PMU);
-+    } else {
-+        uint64_t pmceid = get_pmceid(&cpu->env);
-+        cpu->pmceid0 = pmceid & 0xffffffff;
-+        cpu->pmceid1 = (pmceid >> 32) & 0xffffffff;
-     }
- 
-     if (!arm_feature(env, ARM_FEATURE_EL2)) {
-diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index f3524f6..57ca684 100644
---- a/target/arm/cpu.h
-+++ b/target/arm/cpu.h
-@@ -780,6 +780,16 @@ void pmccntr_sync(CPUARMState *env);
-  */
- void pmu_sync(CPUARMState *env);
- 
-+/*
-+ * get_pmceid
-+ * @env: CPUARMState
-+ *
-+ * Return the PMCEID[01] register values corresponding to the counters which
-+ * are supported given the current configuration (0 is low 32, 1 is high 32
-+ * bits)
-+ */
-+uint64_t get_pmceid(CPUARMState *env);
-+
- /* SCTLR bit meanings. Several bits have been reused in newer
-  * versions of the architecture; in that case we define constants
-  * for both old and new bit meanings. Code which tests against those
 diff --git a/target/arm/helper.c b/target/arm/helper.c
-index 5d07f72..a0ae201 100644
+index a15b932..2c51f92 100644
 --- a/target/arm/helper.c
 +++ b/target/arm/helper.c
-@@ -891,6 +891,43 @@ static const ARMCPRegInfo v6_cp_reginfo[] = {
- /* Bits allowed to be set/cleared for PMCNTEN* and PMINTEN* */
- #define PMU_COUNTER_MASK(env) ((1 << 31) | ((1 << PMU_NUM_COUNTERS(env)) - 1))
+@@ -907,6 +907,15 @@ static bool event_always_supported(CPUARMState *env)
+     return true;
+ }
  
-+typedef struct pm_event {
-+    uint16_t number; /* PMEVTYPER.evtCount is 10 bits wide */
-+    /* If the event is supported on this CPU (used to generate PMCEID[01]) */
-+    bool (*supported)(CPUARMState *);
-+    /* Retrieve the current count of the underlying event. The programmed
-+     * counters hold a difference from the return value from this function */
-+    uint64_t (*get_count)(CPUARMState *);
-+} pm_event;
-+
-+#define SUPPORTED_EVENT_SENTINEL UINT16_MAX
-+static const pm_event pm_events[] = {
-+    { .number = SUPPORTED_EVENT_SENTINEL }
-+};
-+static uint16_t supported_event_map[0x3f];
-+
-+/*
-+ * Called upon initialization to build PMCEID0 (low 32 bits) and PMCEID1 (high
-+ * 32). We also use it to build a map of ARM event numbers to indices in
-+ * our pm_events array.
-+ */
-+uint64_t get_pmceid(CPUARMState *env)
++static uint64_t swinc_get_count(CPUARMState *env)
 +{
-+    uint64_t pmceid = 0;
-+    unsigned int i = 0;
-+    while (pm_events[i].number != SUPPORTED_EVENT_SENTINEL) {
-+        const pm_event *cnt = &pm_events[i];
-+        if (cnt->number < 0x3f && cnt->supported(env)) {
-+            pmceid |= (1 << cnt->number);
-+            supported_event_map[cnt->number] = i;
-+        } else {
-+            supported_event_map[cnt->number] = SUPPORTED_EVENT_SENTINEL;
-+        }
-+        i++;
-+    }
-+    return pmceid;
++    /*
++     * SW_INCR events are written directly to the pmevcntr's by writes to
++     * PMSWINC, so don't do anything here...
++     */
++    return 0;
 +}
 +
- static CPAccessResult pmreg_access(CPUARMState *env, const ARMCPRegInfo *ri,
-                                    bool isread)
+ static uint64_t cycles_get_count(CPUARMState *env)
  {
+     uint64_t ret;
+@@ -941,6 +950,10 @@ static uint64_t instructions_get_count(CPUARMState *env)
+ 
+ #define SUPPORTED_EVENT_SENTINEL UINT16_MAX
+ static const pm_event pm_events[] = {
++    { .number = 0x000, /* SW_INCR */
++      .supported = event_always_supported,
++      .get_count = swinc_get_count
++    },
+     { .number = 0x008, /* INST_RETIRED */
+       .supported = instructions_supported,
+       .get_count = instructions_get_count
+@@ -1191,6 +1204,25 @@ static void pmcr_write(CPUARMState *env, const ARMCPRegInfo *ri,
+     pmu_sync(env);
+ }
+ 
++static void pmswinc_write(CPUARMState *env, const ARMCPRegInfo *ri,
++                          uint64_t value)
++{
++    unsigned int i;
++    for (i = 0; i < PMU_NUM_COUNTERS(env); i++) {
++        /* Increment a counter's count iff: */
++        if ((value & (1 << i)) && /* counter's bit is set */
++                /* counter is enabled and not filtered */
++                pmu_counter_enabled(env, i) &&
++                !pmu_counter_filtered(env, env->cp15.c14_pmevtyper[i]) &&
++                /* counter is SW_INCR */
++                (env->cp15.c14_pmevtyper[i] & PMXEVTYPER_EVTCOUNT) == 0x0) {
++            pmu_sync_counter(env, i);
++            env->cp15.c14_pmevcntr[i]++;
++            pmu_sync_counter(env, i);
++        }
++    }
++}
++
+ static uint64_t pmccntr_read(CPUARMState *env, const ARMCPRegInfo *ri)
+ {
+     uint64_t ret;
+@@ -1559,9 +1591,13 @@ static const ARMCPRegInfo v7_cp_reginfo[] = {
+       .fieldoffset = offsetof(CPUARMState, cp15.c9_pmovsr),
+       .writefn = pmovsset_write,
+       .raw_writefn = raw_write },
+-    /* Unimplemented so WI. */
+     { .name = "PMSWINC", .cp = 15, .crn = 9, .crm = 12, .opc1 = 0, .opc2 = 4,
+-      .access = PL0_W, .accessfn = pmreg_access_swinc, .type = ARM_CP_NOP },
++      .access = PL0_W, .accessfn = pmreg_access_swinc, .type = ARM_CP_NO_RAW,
++      .writefn = pmswinc_write },
++    { .name = "PMSWINC_EL0", .state = ARM_CP_STATE_AA64,
++      .opc0 = 3, .opc1 = 3, .crn = 9, .crm = 12, .opc2 = 4,
++      .access = PL0_W, .accessfn = pmreg_access_swinc, .type = ARM_CP_NO_RAW,
++      .writefn = pmswinc_write },
+ #ifndef CONFIG_USER_ONLY
+     { .name = "PMSELR", .cp = 15, .crn = 9, .crm = 12, .opc1 = 0, .opc2 = 5,
+       .access = PL0_RW, .type = ARM_CP_ALIAS,
 -- 
 Qualcomm Datacenter Technologies as an affiliate of Qualcomm Technologies, Inc.
 Qualcomm Technologies, Inc. is a member of the

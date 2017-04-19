@@ -1,302 +1,217 @@
-Received: by 10.25.0.144 with SMTP id 138csp1124737lfa;
-        Sun, 16 Apr 2017 21:11:28 -0700 (PDT)
-X-Received: by 10.55.188.65 with SMTP id m62mr6158214qkf.259.1492402288470;
-        Sun, 16 Apr 2017 21:11:28 -0700 (PDT)
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 10.25.0.144 with SMTP id 138csp182891lfa;
+        Wed, 19 Apr 2017 02:31:20 -0700 (PDT)
+X-Received: by 10.200.46.217 with SMTP id i25mr1788111qta.74.1492594280499;
+        Wed, 19 Apr 2017 02:31:20 -0700 (PDT)
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id p123si9703935qkf.234.2017.04.16.21.11.28
+        by mx.google.com with ESMTPS id d42si1697404qtd.241.2017.04.19.02.31.20
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sun, 16 Apr 2017 21:11:28 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Wed, 19 Apr 2017 02:31:20 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:34778 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:46649 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1czy0d-0008Uh-Vv
-	for alex.bennee@linaro.org; Mon, 17 Apr 2017 00:11:28 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:59722)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1d0lxI-0008EY-0R
+	for alex.bennee@linaro.org; Wed, 19 Apr 2017 05:31:20 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:47749)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1czxzm-0008A8-H4
-	for qemu-devel@nongnu.org; Mon, 17 Apr 2017 00:10:35 -0400
+	(envelope-from <imammedo@redhat.com>) id 1d0lxE-0008EN-1T
+	for qemu-arm@nongnu.org; Wed, 19 Apr 2017 05:31:17 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1czxzi-0008Mf-GR
-	for qemu-devel@nongnu.org; Mon, 17 Apr 2017 00:10:34 -0400
-Received: from mail-qk0-x241.google.com ([2607:f8b0:400d:c09::241]:36176)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1czxzi-0008MT-Bz; Mon, 17 Apr 2017 00:10:30 -0400
-Received: by mail-qk0-x241.google.com with SMTP id v75so18069466qkb.3;
-	Sun, 16 Apr 2017 21:10:30 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=sender:subject:to:references:cc:from:message-id:date:user-agent
-	:mime-version:in-reply-to:content-transfer-encoding;
-	bh=0H8jMUKTIYJCDvqu9QzeftM4Hbj8weaICvTWs8H29zU=;
-	b=R4Peh8tXDPKxk7dHPNzPXmJRGQaMBHYYPAsmL0lGnaC3+tg6KwB2sTDGm1P4mSHrpR
-	13LeDNsn0RXuw28K6KrG04107Y4Mm2yjqhT6tECw5EqqsG87jSLQW61t1PgA+R/OFFWU
-	VdJBJTS7FxwxkNg/m2MLUXfCNostP8yaCA4qbYO03OMKLy/LiZFWJKZEyc9b7hz7QRFx
-	EEz6s2qkEJ3UKnUCYOYzmGANd7At7JMAZ+jM/lQf1fBZ3zMBMnbkAv7WVnAwI4Eg6cn/
-	HGzaqEqh67tzaoso5llN43a2Y9NxiRrggxUi421o18+iRzsT65XLV5UACwtkv04MGA7p
-	AxLg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:sender:subject:to:references:cc:from:message-id
-	:date:user-agent:mime-version:in-reply-to:content-transfer-encoding;
-	bh=0H8jMUKTIYJCDvqu9QzeftM4Hbj8weaICvTWs8H29zU=;
-	b=jwu91NQRCTL94xcnSEUZG6UFXMaGZQ/OzN2TXG1igst33z++fTBTkdy6Wfp7o1D7kq
-	LQRRgeMjYpncFg9BROVO0eJhPB1YABx5f6hfMB9sGk1th1OpAeAWyAPSA2YV+wL9+8Xj
-	fk4jISHQKYGtz6XIdKGiDypCyRr5CUanFUPEpjTL9SWp89KH8a7mei5aZ5xduYXgqP4J
-	UtiMeVctFI3CKESQnSD2KeVC8HkzvIkSPq5n97VY3yoT2cbsWkOW9+gscP1zlXQutxlR
-	JEuhbSA6pzYZw7ASnAPOX4FZM9LBNUAii4E1apr2Ls5PeBYEoJK35a3AD20HlCxn6B4k
-	lD1w==
-X-Gm-Message-State: AN3rC/4y1sNKdCNmyjXZZonPyiMLkrl7kBK3cWmF0PYKiFiOgVqPOruG
-	nAgVPJhKUwY8MA==
-X-Received: by 10.55.40.197 with SMTP id o66mr7644773qko.59.1492402229744;
-	Sun, 16 Apr 2017 21:10:29 -0700 (PDT)
-Received: from [192.168.1.10] ([138.117.48.226])
-	by smtp.gmail.com with ESMTPSA id 1sm6464229qtb.40.2017.04.16.21.10.27
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Sun, 16 Apr 2017 21:10:29 -0700 (PDT)
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-References: <1487262963-11519-1-git-send-email-peter.maydell@linaro.org>
-	<1487262963-11519-6-git-send-email-peter.maydell@linaro.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <b3c7907d-ab29-486c-102f-760b12e99688@amsat.org>
-Date: Mon, 17 Apr 2017 01:10:26 -0300
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
-	Thunderbird/45.8.0
+	(envelope-from <imammedo@redhat.com>) id 1d0lxA-0007lg-1F
+	for qemu-arm@nongnu.org; Wed, 19 Apr 2017 05:31:16 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:36578)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <imammedo@redhat.com>)
+	id 1d0lx9-0007jb-MF; Wed, 19 Apr 2017 05:31:11 -0400
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+	[10.5.11.14])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id B5D2215F542;
+	Wed, 19 Apr 2017 09:31:09 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com B5D2215F542
+Authentication-Results: ext-mx04.extmail.prod.ext.phx2.redhat.com;
+	dmarc=none (p=none dis=none) header.from=redhat.com
+Authentication-Results: ext-mx04.extmail.prod.ext.phx2.redhat.com;
+	spf=pass smtp.mailfrom=imammedo@redhat.com
+DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com B5D2215F542
+Received: from nial.brq.redhat.com (dhcp-1-118.brq.redhat.com [10.34.1.118])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 755327C771;
+	Wed, 19 Apr 2017 09:31:07 +0000 (UTC)
+Date: Wed, 19 Apr 2017 11:31:05 +0200
+From: Igor Mammedov <imammedo@redhat.com>
+To: Eduardo Habkost <ehabkost@redhat.com>
+Message-ID: <20170419113105.48020438@nial.brq.redhat.com>
+In-Reply-To: <20170413135805.GE27126@thinpad.lan.raisama.net>
+References: <1490189568-167621-1-git-send-email-imammedo@redhat.com>
+	<1490189568-167621-11-git-send-email-imammedo@redhat.com>
+	<20170413135805.GE27126@thinpad.lan.raisama.net>
 MIME-Version: 1.0
-In-Reply-To: <1487262963-11519-6-git-send-email-peter.maydell@linaro.org>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:400d:c09::241
-Subject: Re: [Qemu-devel] [Qemu-arm] [PATCH v2 05/13] arm: gic: Remove
- references to NVIC
-X-BeenThere: qemu-devel@nongnu.org
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.28]);
+	Wed, 19 Apr 2017 09:31:10 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH for-2.10 10/23] numa: mirror cpu
+ to node mapping in MachineState::possible_cpus
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: patches@linaro.org
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: VwVWZtRKo12l
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jones <drjones@redhat.com>,
+	qemu-devel@nongnu.org, qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
+	Shannon Zhao <zhaoshenglong@huawei.com>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	David Gibson <david@gibson.dropbear.id.au>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: kKCQKpf45hsr
 
-On 02/16/2017 01:35 PM, Peter Maydell wrote:
-> From: Michael Davidsaver <mdavidsaver@gmail.com>
->
-> Now that the NVIC is its own separate implementation, we can
-> clean up the GIC code by removing REV_NVIC and conditionals
-> which use it.
->
-> Signed-off-by: Michael Davidsaver <mdavidsaver@gmail.com>
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
+On Thu, 13 Apr 2017 10:58:05 -0300
+Eduardo Habkost <ehabkost@redhat.com> wrote:
 
-Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+> On Wed, Mar 22, 2017 at 02:32:35PM +0100, Igor Mammedov wrote:
+> > Introduce machine_set_cpu_numa_node() helper that stores
+> > node mapping for CPU in MachineState::possible_cpus.
+> > CPU and node it belongs to is specified by 'props' argument.
+> > 
+> > Patch doesn't remove old way of storing mapping in
+> > numa_info[X].node_cpu as removing it at the same time
+> > makes patch rather big. Instead it just mirrors mapping
+> > in possible_cpus and follow up per target patches will
+> > switch to possible_cpus and numa_info[X].node_cpu will
+> > be removed once there isn't any users left.
+> > 
+> > Signed-off-by: Igor Mammedov <imammedo@redhat.com>
+> > ---
+> >  include/hw/boards.h |  2 ++
+> >  hw/core/machine.c   | 68 +++++++++++++++++++++++++++++++++++++++++++++++++++++
+> >  numa.c              |  8 +++++++
+> >  3 files changed, 78 insertions(+)
+> > 
+> > diff --git a/include/hw/boards.h b/include/hw/boards.h
+> > index 1dd0fde..40f30f1 100644
+> > --- a/include/hw/boards.h
+> > +++ b/include/hw/boards.h
+> > @@ -42,6 +42,8 @@ bool machine_dump_guest_core(MachineState *machine);
+> >  bool machine_mem_merge(MachineState *machine);
+> >  void machine_register_compat_props(MachineState *machine);
+> >  HotpluggableCPUList *machine_query_hotpluggable_cpus(MachineState *machine);
+> > +void machine_set_cpu_numa_node(MachineState *machine,
+> > +                               CpuInstanceProperties *props, Error **errp);
+> >  
+> >  /**
+> >   * CPUArchId:
+> > diff --git a/hw/core/machine.c b/hw/core/machine.c
+> > index 0d92672..6ff0b45 100644
+> > --- a/hw/core/machine.c
+> > +++ b/hw/core/machine.c
+> > @@ -388,6 +388,74 @@ HotpluggableCPUList *machine_query_hotpluggable_cpus(MachineState *machine)
+> >      return head;
+> >  }
+> >  
+> > +void machine_set_cpu_numa_node(MachineState *machine,
+> > +                               CpuInstanceProperties *props, Error **errp)  
+> 
+> If you change this to:
+> 
+>   void cpu_slot_set_numa_node(CPUArchId *slot, uint64_t node_id,
+>                               Error **errp);
+> 
+> and move the CPU slot lookup code from machine_set_cpu_numa_node()
+> to a helper:
+> 
+>   CPUArchId *machine_get_cpu_slot(MachineState *machine,
+>                                   CpuInstanceProperties *props, Error **errp);
+it would work in case of exact 1:1 lookup, but Paolo asked for
+wildcard support (i.e. -numa cpu,node-id=x,socket-id=y should set
+mapping for all cpus in socket y).
+So I'd prefer to keep machine_set_cpu_numa_node() as is,
+with it series splits nicely in clean and bisectable patches
+without breaking anything in the middle.
 
-> ---
->  hw/intc/gic_internal.h   |  7 ++-----
->  hw/intc/arm_gic.c        | 31 +++++--------------------------
->  hw/intc/arm_gic_common.c | 23 ++++++++---------------
->  3 files changed, 15 insertions(+), 46 deletions(-)
->
-> diff --git a/hw/intc/gic_internal.h b/hw/intc/gic_internal.h
-> index 3f31174..7fe87b1 100644
-> --- a/hw/intc/gic_internal.h
-> +++ b/hw/intc/gic_internal.h
-> @@ -25,9 +25,7 @@
->
->  #define ALL_CPU_MASK ((unsigned)(((1 << GIC_NCPU) - 1)))
->
-> -/* The NVIC has 16 internal vectors.  However these are not exposed
-> -   through the normal GIC interface.  */
-> -#define GIC_BASE_IRQ ((s->revision == REV_NVIC) ? 32 : 0)
-> +#define GIC_BASE_IRQ 0
->
->  #define GIC_SET_ENABLED(irq, cm) s->irq_state[irq].enabled |= (cm)
->  #define GIC_CLEAR_ENABLED(irq, cm) s->irq_state[irq].enabled &= ~(cm)
-> @@ -75,7 +73,6 @@
->
->  /* The special cases for the revision property: */
->  #define REV_11MPCORE 0
-> -#define REV_NVIC 0xffffffff
->
->  void gic_set_pending_private(GICState *s, int cpu, int irq);
->  uint32_t gic_acknowledge_irq(GICState *s, int cpu, MemTxAttrs attrs);
-> @@ -87,7 +84,7 @@ void gic_set_priority(GICState *s, int cpu, int irq, uint8_t val,
->
->  static inline bool gic_test_pending(GICState *s, int irq, int cm)
->  {
-> -    if (s->revision == REV_NVIC || s->revision == REV_11MPCORE) {
-> +    if (s->revision == REV_11MPCORE) {
->          return s->irq_state[irq].pending & cm;
->      } else {
->          /* Edge-triggered interrupts are marked pending on a rising edge, but
-> diff --git a/hw/intc/arm_gic.c b/hw/intc/arm_gic.c
-> index 521aac3..8e5a9d8 100644
-> --- a/hw/intc/arm_gic.c
-> +++ b/hw/intc/arm_gic.c
-> @@ -156,17 +156,6 @@ static void gic_set_irq_11mpcore(GICState *s, int irq, int level,
->      }
->  }
->
-> -static void gic_set_irq_nvic(GICState *s, int irq, int level,
-> -                                 int cm, int target)
-> -{
-> -    if (level) {
-> -        GIC_SET_LEVEL(irq, cm);
-> -        GIC_SET_PENDING(irq, target);
-> -    } else {
-> -        GIC_CLEAR_LEVEL(irq, cm);
-> -    }
-> -}
-> -
->  static void gic_set_irq_generic(GICState *s, int irq, int level,
->                                  int cm, int target)
->  {
-> @@ -214,8 +203,6 @@ static void gic_set_irq(void *opaque, int irq, int level)
->
->      if (s->revision == REV_11MPCORE) {
->          gic_set_irq_11mpcore(s, irq, level, cm, target);
-> -    } else if (s->revision == REV_NVIC) {
-> -        gic_set_irq_nvic(s, irq, level, cm, target);
->      } else {
->          gic_set_irq_generic(s, irq, level, cm, target);
->      }
-> @@ -367,7 +354,7 @@ uint32_t gic_acknowledge_irq(GICState *s, int cpu, MemTxAttrs attrs)
->          return 1023;
->      }
->
-> -    if (s->revision == REV_11MPCORE || s->revision == REV_NVIC) {
-> +    if (s->revision == REV_11MPCORE) {
->          /* Clear pending flags for both level and edge triggered interrupts.
->           * Level triggered IRQs will be reasserted once they become inactive.
->           */
-> @@ -589,11 +576,6 @@ void gic_complete_irq(GICState *s, int cpu, int irq, MemTxAttrs attrs)
->              DPRINTF("Set %d pending mask %x\n", irq, cm);
->              GIC_SET_PENDING(irq, cm);
->          }
-> -    } else if (s->revision == REV_NVIC) {
-> -        if (GIC_TEST_LEVEL(irq, cm)) {
-> -            DPRINTF("Set nvic %d pending mask %x\n", irq, cm);
-> -            GIC_SET_PENDING(irq, cm);
-> -        }
->      }
->
->      group = gic_has_groups(s) && GIC_TEST_GROUP(irq, cm);
-> @@ -768,7 +750,7 @@ static uint32_t gic_dist_readb(void *opaque, hwaddr offset, MemTxAttrs attrs)
->      } else if (offset < 0xf10) {
->          goto bad_reg;
->      } else if (offset < 0xf30) {
-> -        if (s->revision == REV_11MPCORE || s->revision == REV_NVIC) {
-> +        if (s->revision == REV_11MPCORE) {
->              goto bad_reg;
->          }
->
-> @@ -802,9 +784,6 @@ static uint32_t gic_dist_readb(void *opaque, hwaddr offset, MemTxAttrs attrs)
->              case 2:
->                  res = gic_id_gicv2[(offset - 0xfd0) >> 2];
->                  break;
-> -            case REV_NVIC:
-> -                /* Shouldn't be able to get here */
-> -                abort();
->              default:
->                  res = 0;
->              }
-> @@ -1028,7 +1007,7 @@ static void gic_dist_writeb(void *opaque, hwaddr offset,
->                  continue; /* Ignore Non-secure access of Group0 IRQ */
->              }
->
-> -            if (s->revision == REV_11MPCORE || s->revision == REV_NVIC) {
-> +            if (s->revision == REV_11MPCORE) {
->                  if (value & (1 << (i * 2))) {
->                      GIC_SET_MODEL(irq + i);
->                  } else {
-> @@ -1046,7 +1025,7 @@ static void gic_dist_writeb(void *opaque, hwaddr offset,
->          goto bad_reg;
->      } else if (offset < 0xf20) {
->          /* GICD_CPENDSGIRn */
-> -        if (s->revision == REV_11MPCORE || s->revision == REV_NVIC) {
-> +        if (s->revision == REV_11MPCORE) {
->              goto bad_reg;
->          }
->          irq = (offset - 0xf10);
-> @@ -1060,7 +1039,7 @@ static void gic_dist_writeb(void *opaque, hwaddr offset,
->          }
->      } else if (offset < 0xf30) {
->          /* GICD_SPENDSGIRn */
-> -        if (s->revision == REV_11MPCORE || s->revision == REV_NVIC) {
-> +        if (s->revision == REV_11MPCORE) {
->              goto bad_reg;
->          }
->          irq = (offset - 0xf20);
-> diff --git a/hw/intc/arm_gic_common.c b/hw/intc/arm_gic_common.c
-> index 4a8df44..70f1134 100644
-> --- a/hw/intc/arm_gic_common.c
-> +++ b/hw/intc/arm_gic_common.c
-> @@ -99,9 +99,7 @@ void gic_init_irqs_and_mmio(GICState *s, qemu_irq_handler handler,
->       *  [N+32..N+63] PPIs for CPU 1
->       *   ...
->       */
-> -    if (s->revision != REV_NVIC) {
-> -        i += (GIC_INTERNAL * s->num_cpu);
-> -    }
-> +    i += (GIC_INTERNAL * s->num_cpu);
->      qdev_init_gpio_in(DEVICE(s), handler, i);
->
->      for (i = 0; i < s->num_cpu; i++) {
-> @@ -121,16 +119,12 @@ void gic_init_irqs_and_mmio(GICState *s, qemu_irq_handler handler,
->      memory_region_init_io(&s->iomem, OBJECT(s), ops, s, "gic_dist", 0x1000);
->      sysbus_init_mmio(sbd, &s->iomem);
->
-> -    if (s->revision != REV_NVIC) {
-> -        /* This is the main CPU interface "for this core". It is always
-> -         * present because it is required by both software emulation and KVM.
-> -         * NVIC is not handled here because its CPU interface is different,
-> -         * neither it can use KVM.
-> -         */
-> -        memory_region_init_io(&s->cpuiomem[0], OBJECT(s), ops ? &ops[1] : NULL,
-> -                              s, "gic_cpu", s->revision == 2 ? 0x2000 : 0x100);
-> -        sysbus_init_mmio(sbd, &s->cpuiomem[0]);
-> -    }
-> +    /* This is the main CPU interface "for this core". It is always
-> +     * present because it is required by both software emulation and KVM.
-> +     */
-> +    memory_region_init_io(&s->cpuiomem[0], OBJECT(s), ops ? &ops[1] : NULL,
-> +                          s, "gic_cpu", s->revision == 2 ? 0x2000 : 0x100);
-> +    sysbus_init_mmio(sbd, &s->cpuiomem[0]);
->  }
->
->  static void arm_gic_common_realize(DeviceState *dev, Error **errp)
-> @@ -162,7 +156,7 @@ static void arm_gic_common_realize(DeviceState *dev, Error **errp)
->      }
->
->      if (s->security_extn &&
-> -        (s->revision == REV_11MPCORE || s->revision == REV_NVIC)) {
-> +        (s->revision == REV_11MPCORE)) {
->          error_setg(errp, "this GIC revision does not implement "
->                     "the security extensions");
->          return;
-> @@ -255,7 +249,6 @@ static Property arm_gic_common_properties[] = {
->      DEFINE_PROP_UINT32("num-irq", GICState, num_irq, 32),
->      /* Revision can be 1 or 2 for GIC architecture specification
->       * versions 1 or 2, or 0 to indicate the legacy 11MPCore GIC.
-> -     * (Internally, 0xffffffff also indicates "not a GIC but an NVIC".)
->       */
->      DEFINE_PROP_UINT32("revision", GICState, revision, 1),
->      /* True if the GIC should implement the security extensions */
->
+
+> and change cpu_index_to_cpu_instance_props to return CPUArchId:
+> 
+>   CPUArchId *cpu_index_to_cpu_slot(MachineState *machine, int cpu_index);
+> 
+> We could simply have this on "-numa cpu" code:
+> 
+>     slot = machine_get_cpu_slot(machine, props);
+>     cpu_slot_set_numa_node(slot, node_id);
+> 
+> and this on the legacy "-numa node,cpu=..." code:
+> 
+>     slot = mc->cpu_index_to_cpu_slot(machine, i);
+>     cpu_slot_set_numa_node(slot, node_id);
+> 
+> I believe we will be able to reuse machine_get_cpu_slot() to
+> replace pc_find_cpu_slot() and spapr_find_cpu_slot() later.
+As I already replied to David, xxx_find_cpu_slot() possibly might
+be generalized but I'd like to postpone it until ARM topology
+is materialized and merged.
+
+Another reason I'd like to postpone generalization is that
+xxx_find_cpu_slot() could be optimized in target specific way
+replacing CPU lookup in array with computational expression.
+It will make lookup O(1) function and it could be used as
+a better replacement for qemu_get_cpu()/cpu_exists() but
+I haven't looked into this yet.
+
+ 
+> (I also suggest renaming "CPUArchId" and "possible CPUs" to
+> "CPUSlot" and "CPU slots" in the code and comments. This would
+> help people reviewing the code, but it can be done later if you
+> prefer.)
+I'm fine with changing CPUArchId to CPUSlot but I'd leave
+"possible CPUs" as is, since it precisely describes what it is,
+"CPU slots" is too ambiguous.
+
+> 
+> [...]
+> > @@ -177,6 +178,10 @@ static void numa_node_parse(MachineState *ms, NumaNodeOptions *node,
+> >              return;
+> >          }
+> >          bitmap_set(numa_info[nodenr].node_cpu, cpus->value, 1);
+> > +        props = mc->cpu_index_to_instance_props(ms, cpus->value);
+> > +        props.node_id = nodenr;
+> > +        props.has_node_id = true;
+> > +        machine_set_cpu_numa_node(ms, &props, &error_fatal);
+> >      }
+> >  
+> >      if (node->has_mem && node->has_memdev) {
+> > @@ -393,9 +398,12 @@ void parse_numa_opts(MachineState *ms)
+> >          if (i == nb_numa_nodes) {
+> >              for (i = 0; i < max_cpus; i++) {
+> >                  CpuInstanceProperties props;
+> > +                /* fetch default mapping from board and enable it */
+> >                  props = mc->cpu_index_to_instance_props(ms, i);
+> > +                props.has_node_id = true;
+> >  
+> >                  set_bit(i, numa_info[props.node_id].node_cpu);
+> > +                machine_set_cpu_numa_node(ms, &props, &error_fatal);
+> >              }
+> >          }
+> >  
+> > -- 
+> > 2.7.4
+> > 
+> >   
+> 
+

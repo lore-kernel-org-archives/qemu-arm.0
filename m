@@ -1,211 +1,111 @@
-Received: by 10.25.0.144 with SMTP id 138csp743522lfa;
-        Thu, 20 Apr 2017 06:52:26 -0700 (PDT)
-X-Received: by 10.237.52.162 with SMTP id x31mr8056919qtd.263.1492696346446;
-        Thu, 20 Apr 2017 06:52:26 -0700 (PDT)
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 10.25.0.144 with SMTP id 138csp759220lfa;
+        Thu, 20 Apr 2017 07:26:19 -0700 (PDT)
+X-Received: by 10.237.54.166 with SMTP id f35mr8328918qtb.90.1492698379708;
+        Thu, 20 Apr 2017 07:26:19 -0700 (PDT)
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id v41si5924722qtc.250.2017.04.20.06.52.26
+        by mx.google.com with ESMTPS id d27si6015081qte.219.2017.04.20.07.26.19
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 20 Apr 2017 06:52:26 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Thu, 20 Apr 2017 07:26:19 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        dkim=fail header.i=@linaro.org;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:53994 helo=lists.gnu.org)
+Received: from localhost ([::1]:54349 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1d1CVV-000184-KC
-	for alex.bennee@linaro.org; Thu, 20 Apr 2017 09:52:25 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:41742)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1d1D2J-00068S-69
+	for alex.bennee@linaro.org; Thu, 20 Apr 2017 10:26:19 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:58783)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1d1CUW-0000mv-Mp
-	for qemu-devel@nongnu.org; Thu, 20 Apr 2017 09:51:26 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1d1D29-000669-8E
+	for qemu-arm@nongnu.org; Thu, 20 Apr 2017 10:26:13 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1d1CUV-0003zg-0x
-	for qemu-devel@nongnu.org; Thu, 20 Apr 2017 09:51:24 -0400
-Received: from mail-wr0-x232.google.com ([2a00:1450:400c:c0c::232]:35190)
+	(envelope-from <peter.maydell@linaro.org>) id 1d1D28-0007ei-34
+	for qemu-arm@nongnu.org; Thu, 20 Apr 2017 10:26:09 -0400
+Received: from mail-wm0-x22a.google.com ([2a00:1450:400c:c09::22a]:38850)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1d1CUU-0003z1-Oq
-	for qemu-devel@nongnu.org; Thu, 20 Apr 2017 09:51:22 -0400
-Received: by mail-wr0-x232.google.com with SMTP id o21so36085916wrb.2
-	for <qemu-devel@nongnu.org>; Thu, 20 Apr 2017 06:51:22 -0700 (PDT)
+	id 1d1D27-0007ck-PD
+	for qemu-arm@nongnu.org; Thu, 20 Apr 2017 10:26:07 -0400
+Received: by mail-wm0-x22a.google.com with SMTP id r190so49911037wme.1
+	for <qemu-arm@nongnu.org>; Thu, 20 Apr 2017 07:26:07 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
 	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=57LATNgxI0Z6h7J5oPmEON30RLoe3q5GAz3e6SEwOAQ=;
-	b=HGeZklrMzT+W5KL8Mm/K0aXNOea6/tQqDIOZMKDADhVN7+1nRPCdL7U++Yv9tBzhal
-	XLl9eu6QXoHhK7jb5uC9SvQspirfZsF8RNfb+RwSOhldlU+74iT7ZRmT1tAKj3kkyqf2
-	aDKiz6LOmuzc7ZeHuAV3vzCwAebO0y8F9tLAA=
+	:cc:content-transfer-encoding;
+	bh=zeE4ZXaWCkc3rxMhtP6STyF6EkwfNh0OPfmqPjpz7N4=;
+	b=GDmPY3tXxKNQdK0UnVe7GTZAgLCN1PM76VZ1l3Hes87T74eZJkurZEj3XC/X+IM1JG
+	p5MCKczxWp8JBKBfOjQzk/DBtPv9NyBlqSz0BFTIv9+FoqFpl4HH02Mi0WQFq72zjEAd
+	kRI2SNQ6dArp8U3Azf9SJ0tJ+kQsIVOfec9+o=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=57LATNgxI0Z6h7J5oPmEON30RLoe3q5GAz3e6SEwOAQ=;
-	b=SacezBHaMKfcEw+p19cB2Z6KjRlQ47nV1NFMKEgPawK57e8VNpNmWeBG79lfP2+8dE
-	B+VKgs45QEdm0WpRrN0JgDinEmMSsklix0sFYRzPlBXN5AK3FxIm1LFd/Pkg+PvsNXw8
-	XHMS+z5u4UbdDdfWwg4nCpS2D2ZTp8oyShXKW8Zw4vewEPXz46eXLOhvUUKxRvremvc4
-	zb2KWQ5Q2ZUmmOtDGCOH+0RzVx/6YSsypoLSdegG5oCSZgBBzxWjdtTtr4s7AYMrogZG
-	2i436ewpyX43uoAUe6//OdSCJ1j9TxnHRA33OHPZgMKyKTwzqCXDXy/2OitT+4Z0cw95
-	AB1w==
-X-Gm-Message-State: AN3rC/60Rz3vXY8cyETWQvm8HhJcIn20Ki0Q2O/xnAzmeIYH6PzYcsYa
-	LQNIieDTaoGaBeScTn8Ast9M4jq8ROZt
-X-Received: by 10.223.150.179 with SMTP id u48mr1985969wrb.195.1492696281292; 
-	Thu, 20 Apr 2017 06:51:21 -0700 (PDT)
+	:message-id:subject:to:cc:content-transfer-encoding;
+	bh=zeE4ZXaWCkc3rxMhtP6STyF6EkwfNh0OPfmqPjpz7N4=;
+	b=uErNBvOnqeHPq4Df5HwDSIb4FXdLgO+PF0PYUuXvXqXZ5dFzfVLNQgw3CS4WNeIdyJ
+	pm+xL3HieWYMFm75ifEefsaG9p5H5ZaWI5b5Joq3X+Z+kpX328XUdC5uyFKSRbjqxtMG
+	CZ9hdcWw4W6Olu3dpsYgn7MoR6tT94v5QMK1aovxfwDqrNFm6mI+ko6hJKAJnZt/Gi4j
+	hyQz3dMsb09g8c0GQXlGlZOG3X0lWEan6lc61OuXiN9kg+1/bvv4TLll+xks/Jz/5B68
+	PkcEJN/Yt6abzHLN1G2SvVbhKHKUkoSetyC1zYfpuTyDh8D1HvA+VjDT3LmKhiOE/5Fn
+	lRKg==
+X-Gm-Message-State: AN3rC/4pNgiky/VEm3e3OhmZlnQrlzN6cm9d4pTcXfpkeMXSM56XjPG/
+	o90vFt4fSBEqPsZ+5QeGqU2eakZfjQ8n
+X-Received: by 10.28.214.211 with SMTP id n202mr3546006wmg.142.1492698366644; 
+	Thu, 20 Apr 2017 07:26:06 -0700 (PDT)
 MIME-Version: 1.0
-Received: by 10.223.145.68 with HTTP; Thu, 20 Apr 2017 06:51:00 -0700 (PDT)
-In-Reply-To: <20170416151604.22506-1-krzk@kernel.org>
-References: <20170416151604.22506-1-krzk@kernel.org>
+Received: by 10.223.145.68 with HTTP; Thu, 20 Apr 2017 07:25:46 -0700 (PDT)
+In-Reply-To: <3dd852ae-3ff9-0b53-11f1-ea4e2a3ed59c@amsat.org>
+References: <1491844419-12485-1-git-send-email-peter.maydell@linaro.org>
+	<1491844419-12485-8-git-send-email-peter.maydell@linaro.org>
+	<3dd852ae-3ff9-0b53-11f1-ea4e2a3ed59c@amsat.org>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 20 Apr 2017 14:51:00 +0100
-Message-ID: <CAFEAcA915o-MYNYwPQXpAs7sWS=4ft_iXG41uZx=S27JuutH7Q@mail.gmail.com>
-To: Krzysztof Kozlowski <krzk@kernel.org>
+Date: Thu, 20 Apr 2017 15:25:46 +0100
+Message-ID: <CAFEAcA8HeZXitVwpuTG5j2LCxxYt5Tp-kLAuTnTzMqK5fN=+Zg@mail.gmail.com>
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
 Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2a00:1450:400c:c0c::232
-Subject: Re: [Qemu-devel] [RFC] hw/arm/exynos: Add generic SDHCI devices
-X-BeenThere: qemu-devel@nongnu.org
+X-Received-From: 2a00:1450:400c:c09::22a
+Subject: Re: [Qemu-arm] [PATCH v2 7/9] arm: Track M profile handler mode
+ state in TB flags
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Igor Mitsyanko <i.mitsyanko@gmail.com>, qemu-arm <qemu-arm@nongnu.org>,
-	QEMU Developers <qemu-devel@nongnu.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: NBzqyOC5D6TT
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Richard Henderson <rth@twiddle.net>, qemu-arm <qemu-arm@nongnu.org>,
+	QEMU Developers <qemu-devel@nongnu.org>,
+	"patches@linaro.org" <patches@linaro.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: QekiXfwJbwEQ
 
-On 16 April 2017 at 16:16, Krzysztof Kozlowski <krzk@kernel.org> wrote:
-> Exynos4210 has four SD/MMC controllers supporting:
->  - SD Standard Host Specification Version 2.0,
->  - MMC Specification Version 4.3,
->  - SDIO Card Specification Version 2.0,
->  - DMA and ADMA.
+On 17 April 2017 at 05:20, Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> wr=
+ote:
+> On 04/10/2017 02:13 PM, Peter Maydell wrote:
+>> --- a/target/arm/translate.h
+>> +++ b/target/arm/translate.h
+>> @@ -31,6 +31,7 @@ typedef struct DisasContext {
+>>      bool vfp_enabled; /* FP enabled via FPSCR.EN */
+>>      int vec_len;
+>>      int vec_stride;
+>> +    bool handler; /* v7M Handler mode */
 >
-> Add emulation of SDHCI devices which allows accessing storage through SD
-> cards. Differences from real hardware:
->  - Devices are shipped with eMMC memory, not SD card.
->  - The Exynos4210 SDHCI has few more registers, e.g. for
->    controlling the clocks, additional status (0x80, 0x84, 0x8c). These
->    are not implemented.
 >
-> Testing on smdkc210 machine with "-drive file=FILE,if=sd,bus=0,index=2".
->
-> Signed-off-by: Krzysztof Kozlowski <krzk@kernel.org>
->
-> ---
->
-> Mostly it works:
-> [   11.763786] sdhci: Secure Digital Host Controller Interface driver
-> [   11.764593] sdhci: Copyright(c) Pierre Ossman
-> [   11.777295] s3c-sdhci 12530000.sdhci: clock source 2: mmc_busclk.2 (12000000 Hz)
-> [   11.976250] mmc0: SDHCI controller on samsung-hsmmc [12530000.sdhci] using ADMA
-> [   11.980283] Synopsys Designware Multimedia Card Interface Driver
-> [   12.086757] mmc0: new SDHC card at address 4567
-> [   12.151653] mmcblk0: mmc0:4567 QEMU! 4.00 GiB
->
-> ... except that for guest, the storage starts from 0x50000. It just
-> skips first 0x50000 bytes thus the paritions (MBR) and initial data is
-> not visible.
->
-> I don't know what is the cause.
->
-> Any hints?
+> What about a more descriptive name like 'is_v7m_handler_mode' or
+> 'v7m_mode_handler'? It makes your next patch easier to understand:
 
-That is strange and it sounds like we should try to track down
-what is going on there. Hopefully it shouldn't be too hard to trace
-through what happens when the guest accesses what it thinks is the
-first block on the SD card...
-
-Otherwise I just have a couple of nits below.
-
-> Signed-off-by: Krzysztof Kozlowski <krzk@kernel.org>
-> ---
->  hw/arm/exynos4210.c | 29 +++++++++++++++++++++++++++++
->  1 file changed, 29 insertions(+)
->
-> diff --git a/hw/arm/exynos4210.c b/hw/arm/exynos4210.c
-> index 0ec4250f0c05..d581f2217253 100644
-> --- a/hw/arm/exynos4210.c
-> +++ b/hw/arm/exynos4210.c
-> @@ -32,6 +32,7 @@
->  #include "hw/arm/arm.h"
->  #include "hw/loader.h"
->  #include "hw/arm/exynos4210.h"
-> +#include "hw/sd/sd.h"
->  #include "hw/usb/hcd-ehci.h"
->
->  #define EXYNOS4210_CHIPID_ADDR         0x10000000
-> @@ -72,6 +73,13 @@
->  #define EXYNOS4210_EXT_COMBINER_BASE_ADDR   0x10440000
->  #define EXYNOS4210_INT_COMBINER_BASE_ADDR   0x10448000
->
-> +/* SD/MMC host controllers */
-> +#define EXYNOS4210_SDHCI_CAPABILITIES       0x05E80080
-> +#define EXYNOS4210_SDHCI_BASE_ADDR          0x12510000
-> +#define EXYNOS4210_SDHCI_ADDR(n)            (EXYNOS4210_SDHCI_BASE_ADDR + \
-> +                                                0x00010000 * (n))
-> +#define EXYNOS4210_SDHCI_NUMBER             4
-> +
->  /* PMU SFR base address */
->  #define EXYNOS4210_PMU_BASE_ADDR            0x10020000
->
-> @@ -386,6 +394,27 @@ Exynos4210State *exynos4210_init(MemoryRegion *system_mem,
->                             EXYNOS4210_UART3_FIFO_SIZE, 3, NULL,
->                    s->irq_table[exynos4210_get_irq(EXYNOS4210_UART_INT_GRP, 3)]);
->
-> +    /*** SD/MMC host controllers ***/
-> +    for (n = 0; n < EXYNOS4210_SDHCI_NUMBER; n++) {
-> +        DeviceState *carddev;
-> +        DriveInfo *di;
-> +        BlockBackend *blk;
-> +
-> +        dev = qdev_create(NULL, "generic-sdhci");
-> +        qdev_prop_set_uint32(dev, "capareg", EXYNOS4210_SDHCI_CAPABILITIES);
-> +        qdev_init_nofail(dev);
-> +
-> +        busdev = SYS_BUS_DEVICE(dev);
-> +        sysbus_mmio_map(busdev, 0, EXYNOS4210_SDHCI_ADDR(n));
-> +        sysbus_connect_irq(busdev, 0, s->irq_table[exynos4210_get_irq(29, n)]);
-> +
-> +        di = drive_get_next(IF_SD);
-
-    di = drive_get(IF_SD, 0, n);
-
-would be better -- this explicitly states that SD cards 0,1,2,3
-connect to these controllers, rather than implicitly assigning
-whatever the "next" ones happen to be.
-
-> +        blk = di ? blk_by_legacy_dinfo(di) : NULL;
-> +        carddev = qdev_create(qdev_get_child_bus(dev, "sd-bus"), TYPE_SD_CARD);
-> +        qdev_prop_set_drive(carddev, "drive", blk, &error_abort);
-> +        qdev_prop_set_bit(carddev, "realized", true);
-
-This isn't the right way to set the realized property. You can either:
- (a) use qdev_init_nofail(), which sets the property and prints an
-error and exits if the device realize fails
- (b) use object_property_set_bool() to set the property and handle
-errors yourself
-
-> +    }
-> +
->      /*** Display controller (FIMD) ***/
->      sysbus_create_varargs("exynos4210.fimd", EXYNOS4210_FIMD0_BASE_ADDR,
->              s->irq_table[exynos4210_get_irq(11, 0)],
-> --
-> 2.9.3
-
-Incidentally someday maybe we should convert this Exynos4210 code
-to a proper QOM SoC container object, but that would be a lot of
-work.
+Seems reasonable; I've made that change (but won't repost the
+series as that's the only tweak).
 
 thanks
 -- PMM

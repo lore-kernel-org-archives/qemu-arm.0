@@ -1,71 +1,75 @@
-Received: by 10.25.0.144 with SMTP id 138csp729602lfa;
-        Thu, 20 Apr 2017 06:20:39 -0700 (PDT)
-X-Received: by 10.55.144.194 with SMTP id s185mr8104790qkd.144.1492694439278;
-        Thu, 20 Apr 2017 06:20:39 -0700 (PDT)
+Received: by 10.25.0.144 with SMTP id 138csp755689lfa;
+        Thu, 20 Apr 2017 07:18:15 -0700 (PDT)
+X-Received: by 10.55.150.133 with SMTP id y127mr7840828qkd.230.1492697895826;
+        Thu, 20 Apr 2017 07:18:15 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id d42si5839292qtc.191.2017.04.20.06.20.39
+        by mx.google.com with ESMTPS id d56si6008439qta.117.2017.04.20.07.18.15
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 20 Apr 2017 06:20:39 -0700 (PDT)
+        Thu, 20 Apr 2017 07:18:15 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        dkim=fail header.i=@linaro.org;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:53913 helo=lists.gnu.org)
+Received: from localhost ([::1]:54072 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1d1C0k-0002Qy-MW
-	for alex.bennee@linaro.org; Thu, 20 Apr 2017 09:20:38 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:34722)
+	id 1d1CuV-0007U9-40
+	for alex.bennee@linaro.org; Thu, 20 Apr 2017 10:18:15 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:48774)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1d1C0f-0002Oa-6i
-	for qemu-arm@nongnu.org; Thu, 20 Apr 2017 09:20:34 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1d1CuL-0007R7-GE
+	for qemu-arm@nongnu.org; Thu, 20 Apr 2017 10:18:09 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1d1C0d-0006nx-Cv
-	for qemu-arm@nongnu.org; Thu, 20 Apr 2017 09:20:33 -0400
-Received: from mail-wr0-x229.google.com ([2a00:1450:400c:c0c::229]:32961)
+	(envelope-from <peter.maydell@linaro.org>) id 1d1CuK-0007ZG-Kc
+	for qemu-arm@nongnu.org; Thu, 20 Apr 2017 10:18:05 -0400
+Received: from mail-wm0-x233.google.com ([2a00:1450:400c:c09::233]:35669)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1d1C0d-0006nY-39
-	for qemu-arm@nongnu.org; Thu, 20 Apr 2017 09:20:31 -0400
-Received: by mail-wr0-x229.google.com with SMTP id w50so12200477wrc.0
-	for <qemu-arm@nongnu.org>; Thu, 20 Apr 2017 06:20:30 -0700 (PDT)
+	id 1d1CuK-0007Yj-E6
+	for qemu-arm@nongnu.org; Thu, 20 Apr 2017 10:18:04 -0400
+Received: by mail-wm0-x233.google.com with SMTP id w64so105259992wma.0
+	for <qemu-arm@nongnu.org>; Thu, 20 Apr 2017 07:18:04 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
 	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=LwJ9NEs+4saiQc4KcpCQjpQSTgwoGh4H4gMQlpFCKTw=;
-	b=BiKFiRi9gcSpDUXKhWRLFBwi7GfYbXOI+XBccqYsIWUfxoOj3BDlTKnlbjayyH8w7z
-	x//dJ7VoCU+a9zK+ykH+hZs6GlClcfHqVzIi2jMPix0C5333otlm7MAJ4IOkLrdb8Hos
-	Wy9UshtN0qK8GsvWF9FfHcqLaJtAUw9914AqA=
+	:cc:content-transfer-encoding;
+	bh=TZZEzvB1wueQJbUNEKfrO3quKPEG0rZWtRE0OFZP4OY=;
+	b=YxvEcxdH+07gf2OMEWC1fWoNj9w5b08pSDqJXyerOCIRF8H1pdd2ztJxcS07G7mYhj
+	H4Wj3og2xENkizI/5JaHQMRk10nlXbumphn/DPQ7rKdVa2gFvP5ZnHRYn0V8RhgC9rlI
+	5dG5tiBy7XR3PWSNvgd6kTG9Pul+pu6DVccck=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=LwJ9NEs+4saiQc4KcpCQjpQSTgwoGh4H4gMQlpFCKTw=;
-	b=L6XgzmeOb6BJEu//ewN39N6wg1g7CU7Pbys1Gu8zmE+APUeomF/sG5k/li3VNIMHiP
-	5xS/Inebu+rGVEsVOYd5vYeQdsoIS5Pr7gg31/WGZX5dmrR/g0kAJf0c9m6W571UNKVQ
-	GG8aS5FM0UZU+NoKPwb5JlDhtfPKNssai/Tab66oF/Gfyo/i+PSh38z8ShL48GWBBdey
-	gbOCxCCuOZi0stuoLiFSQRA8OAmlXeCHreUvi6kpOJTvVjtvF+xEOwKE5AXZO3xwWk/4
-	CMh5on9683O4LOJbydKlcOEqOyfvyq6N25jw24F3F2CABSgUJrBQ+LzftEp5rP2fYl3M
-	RvDg==
-X-Gm-Message-State: AN3rC/72nTJ+DVk/tkL+XEsMm2kOCFHK9ZI/vYVoSKYOEY+UFA1cXWVv
-	RPJohR7gup0OB2hCnIJvd6MMHUKQDVL2
-X-Received: by 10.223.150.179 with SMTP id u48mr1855675wrb.195.1492694429844; 
-	Thu, 20 Apr 2017 06:20:29 -0700 (PDT)
+	:message-id:subject:to:cc:content-transfer-encoding;
+	bh=TZZEzvB1wueQJbUNEKfrO3quKPEG0rZWtRE0OFZP4OY=;
+	b=fu8Tx5+roBRTNl1YW870dr7J3wBcguxYo3YYX5HAwsiUwpwegbuxDJCAUlKs1g/F9F
+	yV4TNSI7oCwXgNjUBM0uMWubsB5WXbIB+TvCZG1PqUcaEMB324mG4aZdk/1m0vZM2Dtg
+	qPQqfg4H2xCXi3rGljMKv6G0v4dVX/aINm7YlBa3R/18Pzi1R9IfW6vKB594itUlBcKq
+	I5qJZc8X7tOygXNI+VATW7RTx2eFL+hUKkPu3TxWghTwf9YXb+4cGW5sZnn6X3JfwJ/K
+	rrm+oZDVyBzwyTMsPudbC4b9RVuWGliqsYUipDLNna6o1tWaQCcfqQVAWjB1jvzeaZ2L
+	ovNg==
+X-Gm-Message-State: AN3rC/4aVsrHI56Ac9oIXDOcOMIdT4Xfxul6oOG7KHlNSVyOLFE4JYv2
+	cVzZ8dgrxK2JAeQFoaCrWrQYslh4ikCm
+X-Received: by 10.28.57.138 with SMTP id g132mr3351508wma.92.1492697883331;
+	Thu, 20 Apr 2017 07:18:03 -0700 (PDT)
 MIME-Version: 1.0
-Received: by 10.223.145.68 with HTTP; Thu, 20 Apr 2017 06:20:09 -0700 (PDT)
-In-Reply-To: <20170408054318.19830-1-omar.rizwan@gmail.com>
-References: <20170408054318.19830-1-omar.rizwan@gmail.com>
+Received: by 10.223.145.68 with HTTP; Thu, 20 Apr 2017 07:17:42 -0700 (PDT)
+In-Reply-To: <CAAdtpL43f=RFUJJ+pOXLUaGpx=Vg=Wy3gML9=EWpCGBAu80nww@mail.gmail.com>
+References: <1487604965-23220-1-git-send-email-peter.maydell@linaro.org>
+	<1487604965-23220-4-git-send-email-peter.maydell@linaro.org>
+	<CAAdtpL43f=RFUJJ+pOXLUaGpx=Vg=Wy3gML9=EWpCGBAu80nww@mail.gmail.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 20 Apr 2017 14:20:09 +0100
-Message-ID: <CAFEAcA_t1L_UPwV7Uwy9ygEOjBw=RLEkdcD13yepMJe+s7kQmg@mail.gmail.com>
-To: Omar Rizwan <omar.rizwan@gmail.com>
+Date: Thu, 20 Apr 2017 15:17:42 +0100
+Message-ID: <CAFEAcA8BUqU_Z1OKfhbx0ViYXfGwhx1POdeYGGAc9AQmjUBi8w@mail.gmail.com>
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
 Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2a00:1450:400c:c0c::229
-Subject: Re: [Qemu-arm] [PATCH] raspi: Add Raspberry Pi 1 support
+X-Received-From: 2a00:1450:400c:c09::233
+Subject: Re: [Qemu-arm] [PATCH 03/11] armv7m: QOMify the armv7m container
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -77,219 +81,39 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
-	Andrew Baumann <Andrew.Baumann@microsoft.com>
+Cc: Alistair Francis <alistair23@gmail.com>,
+	Michael Davidsaver <mdavidsaver@gmail.com>, qemu-arm <qemu-arm@nongnu.org>,
+	"qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
+	"patches@linaro.org" <patches@linaro.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: sPn3P5VMcfFR
+X-TUID: Hx6LWCag9T/e
 
-On 8 April 2017 at 06:43, Omar Rizwan <omar.rizwan@gmail.com> wrote:
-> Signed-off-by: Omar Rizwan <omar.rizwan@gmail.com>
-> ---
->  hw/arm/Makefile.objs         |   2 +-
->  hw/arm/bcm2835.c             | 119 +++++++++++++++++++++++++++++++++++++++++++
->  hw/arm/bcm2835_peripherals.c |   1 +
->  hw/arm/raspi.c               |  47 ++++++++++++++---
->  include/hw/arm/bcm2835.h     |  31 +++++++++++
->  5 files changed, 191 insertions(+), 9 deletions(-)
->  create mode 100644 hw/arm/bcm2835.c
->  create mode 100644 include/hw/arm/bcm2835.h
-
-Hi; thanks for this patch. I have a few comments below to add to the ones
-from Andrew.
-
-
-> +/* Peripheral base address seen by the CPU */
-> +#define BCM2835_PERI_BASE       0x20000000
-> +
-> +static void bcm2835_init(Object *obj)
-> +{
-> +    BCM2835State *s = BCM2835(obj);
-> +
-> +    object_initialize(&s->cpu, sizeof(s->cpu), "arm1176-" TYPE_ARM_CPU);
-> +    object_property_add_child(obj, "cpu", OBJECT(&s->cpu), &error_abort);
-> +
-> +    object_initialize(&s->peripherals, sizeof(s->peripherals),
-> +                      TYPE_BCM2835_PERIPHERALS);
-> +    object_property_add_child(obj, "peripherals", OBJECT(&s->peripherals),
-> +                              &error_abort);
-> +    object_property_add_alias(obj, "board-rev", OBJECT(&s->peripherals),
-> +                              "board-rev", &error_abort);
-> +    object_property_add_alias(obj, "vcram-size", OBJECT(&s->peripherals),
-> +                              "vcram-size", &error_abort);
-> +    qdev_set_parent_bus(DEVICE(&s->peripherals), sysbus_get_default());
-> +}
-> +
-> +static void bcm2835_realize(DeviceState *dev, Error **errp)
-> +{
-> +    BCM2835State *s = BCM2835(dev);
-> +    Object *obj;
-> +    Error *err = NULL;
-> +
-> +    /* common peripherals from bcm2835 */
-> +    obj = object_property_get_link(OBJECT(dev), "ram", &err);
-> +    if (obj == NULL) {
-> +        error_setg(errp, "%s: required ram link not found: %s",
-> +                   __func__, error_get_pretty(err));
-> +        return;
-> +    }
-> +
-> +    object_property_add_const_link(OBJECT(&s->peripherals), "ram", obj, &err);
-> +    if (err) {
-> +        error_propagate(errp, err);
-> +        return;
-> +    }
-> +
-> +    object_property_set_bool(OBJECT(&s->peripherals), true, "realized", &err);
-> +    if (err) {
-> +        error_propagate(errp, err);
-> +        return;
-> +    }
-> +
-> +    object_property_add_alias(OBJECT(s), "sd-bus", OBJECT(&s->peripherals),
-> +                              "sd-bus", &err);
-> +    if (err) {
-> +        error_propagate(errp, err);
-> +        return;
-> +    }
-> +
-> +    sysbus_mmio_map_overlap(SYS_BUS_DEVICE(&s->peripherals), 0,
-> +                            BCM2835_PERI_BASE, 1);
-> +
-> +    sysbus_mmio_map_overlap(SYS_BUS_DEVICE(&s->peripherals), 1,
-> +                            0x40000000, 1);
-
-If this mapping is correct, can we have a #define for this address, like we
-do for BCM2835_PERI_BASE ?
-
-(I see from Andrew's review that it's not clear whether we should be
-mapping this here.)
-
-> +
-> +    object_property_set_bool(OBJECT(&s->cpu), true, "realized", &err);
-> +    if (err) {
-> +        error_report_err(err);
-> +        exit(1);
-> +    }
-> +
-> +    sysbus_connect_irq(SYS_BUS_DEVICE(&s->peripherals), 0,
-> +                       qdev_get_gpio_in(DEVICE(&s->cpu), ARM_CPU_IRQ));
-> +    sysbus_connect_irq(SYS_BUS_DEVICE(&s->peripherals), 1,
-> +                       qdev_get_gpio_in(DEVICE(&s->cpu), ARM_CPU_FIQ));
-> +
-> +}
-> +
-> +static void bcm2835_class_init(ObjectClass *oc, void *data)
-> +{
-> +    DeviceClass *dc = DEVICE_CLASS(oc);
-> +
-> +    dc->realize = bcm2835_realize;
-> +
-> +    /*
-> +     * Reason: creates an ARM CPU, thus use after free(), see
-> +     * arm_cpu_class_init()
-> +     */
-> +    dc->cannot_destroy_with_object_finalize_yet = true;
-
-This assignment and its attached comment can be deleted, because
-the issue with arm_cpu_class_init() has now been fixed upstream
-(there's a patchset on the list that removes the DeviceClass
-field entirely).
-
-> +}
-> +
-> +static const TypeInfo bcm2835_type_info = {
-> +    .name = TYPE_BCM2835,
-> +    .parent = TYPE_SYS_BUS_DEVICE,
-> +    .instance_size = sizeof(BCM2835State),
-> +    .instance_init = bcm2835_init,
-> +    .class_init = bcm2835_class_init,
-> +};
-> +
-> +static void bcm2835_register_types(void)
-> +{
-> +    type_register_static(&bcm2835_type_info);
-> +}
-> +
-> +type_init(bcm2835_register_types)
-> diff --git a/hw/arm/bcm2835_peripherals.c b/hw/arm/bcm2835_peripherals.c
-> index 369ef1e..a6cd54a 100644
-> --- a/hw/arm/bcm2835_peripherals.c
-> +++ b/hw/arm/bcm2835_peripherals.c
-> @@ -34,6 +34,7 @@ static void bcm2835_peripherals_init(Object *obj)
->      /* Internal memory region for peripheral bus addresses (not exported) */
->      memory_region_init(&s->gpu_bus_mr, obj, "bcm2835-gpu", (uint64_t)1 << 32);
->      object_property_add_child(obj, "gpu-bus", OBJECT(&s->gpu_bus_mr), NULL);
-> +    sysbus_init_mmio(SYS_BUS_DEVICE(s), &s->gpu_bus_mr);
-
-If we determine that this is correct, then we should delete the "(not exported)"
-part of the comment above, because this added call to sysbus_init_mmio()
-is exporting the memory region.
-
->      /* Internal memory region for request/response communication with
->       * mailbox-addressable peripherals (not exported)
-> diff --git a/hw/arm/raspi.c b/hw/arm/raspi.c
-> index 2b295f1..dca6077 100644
-> --- a/hw/arm/raspi.c
-> +++ b/hw/arm/raspi.c
-> @@ -2,9 +2,11 @@
->   * Raspberry Pi emulation (c) 2012 Gregory Estrade
->   * Upstreaming code cleanup [including bcm2835_*] (c) 2013 Jan Petrous
->   *
-> - * Rasperry Pi 2 emulation Copyright (c) 2015, Microsoft
-> + * Raspberry Pi 2 emulation Copyright (c) 2015, Microsoft
->   * Written by Andrew Baumann
->   *
-> + * Raspberry Pi 1 rebase onto master (c) 2017, Omar Rizwan
-> + *
->   * This code is licensed under the GNU GPLv2 and later.
->   */
+On 17 April 2017 at 04:59, Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> wr=
+ote:
+> On Mon, Feb 20, 2017 at 12:35 PM, Peter Maydell <peter.maydell@linaro.org=
 >
-> @@ -12,6 +14,7 @@
->  #include "qapi/error.h"
->  #include "qemu-common.h"
->  #include "cpu.h"
-> +#include "hw/arm/bcm2835.h"
->  #include "hw/arm/bcm2836.h"
->  #include "qemu/error-report.h"
->  #include "hw/boards.h"
-> @@ -27,6 +30,11 @@
->  /* Table of Linux board IDs for different Pi versions */
->  static const int raspi_boardid[] = {[1] = 0xc42, [2] = 0xc43};
+> wrote:
+>> +static const hwaddr bitband_input_addr[ARMV7M_NUM_BITBANDS] =3D {
+>> +    0x20000000, 0x40000000
+>> +};
 >
-> +/* Table of board revisions:
-> + * https://github.com/AndrewFromMelbourne/raspberry_pi_revision/blob/2764c19983fb7b1ef8cb21031e94c293703afa2e/README.md
-> + */
-> +static const uint32_t raspi_boardrev[] = {[1] = 0x10, [2] = 0xa21041};
+>
+> What do you think about adding a
+>
+> #define ARMV7M_BITBAND_[REGION/IOMEM]_SIZE (1ULL << 25) or 0x2000000
+>
+> and use it at least with memory_region_init_io() and eventually to get th=
+e
+> output base addr?
 
-So we have three things here that are per-board:
- * the boardid value
- * the boardrev value
- * the soc_type value
+I don't think the size of the bitbanding region and the output base
+address are inherently related: it's just a coincidence that the
+output-region base address is at input-region-base + output-region-size.
 
-which we have stored in two arrays plus passing a different parameter
-to the raspi_machine_init function.
-
-Perhaps this would be better as a
-typedef struct RPiInfo {
-    const char *soc_type;
-    uint32_t boardrev;
-    uint32_t boardid;
-} RPiInfo;
-
-static const RPiInfo rpi_boards[] = {
-    {
-         /* Raspberry Pi 1 */
-         .soc_type = TYPE_BCM2835,
-         .boardrev = 0x10,
-         .boardid = 0xc42,
-    }, {
-         /* Raspberry Pi 2 */
-         ...
-    }
-};
-
-?
+I don't particularly object to a constant for the region size,
+but I don't currently have any plans to come back to this particular
+bit of code for a while (this patch is already in master).
 
 thanks
 -- PMM

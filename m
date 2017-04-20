@@ -1,47 +1,75 @@
-Received: by 10.25.0.144 with SMTP id 138csp898746lfa;
-        Thu, 20 Apr 2017 13:28:55 -0700 (PDT)
-X-Received: by 10.36.64.76 with SMTP id n73mr4132788ita.4.1492720135252;
-        Thu, 20 Apr 2017 13:28:55 -0700 (PDT)
+Received: by 10.25.0.144 with SMTP id 138csp7072lfa;
+        Thu, 20 Apr 2017 15:56:11 -0700 (PDT)
+X-Received: by 10.84.218.14 with SMTP id q14mr12355199pli.80.1492728970931;
+        Thu, 20 Apr 2017 15:56:10 -0700 (PDT)
 Return-Path: <kvm-owner@vger.kernel.org>
 Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
-        by mx.google.com with ESMTP id v2si298342itd.11.2017.04.20.13.28.55;
-        Thu, 20 Apr 2017 13:28:55 -0700 (PDT)
+        by mx.google.com with ESMTP id r81si7877814pfk.4.2017.04.20.15.56.10;
+        Thu, 20 Apr 2017 15:56:10 -0700 (PDT)
 Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dkim=fail header.i=@gmail.com;
+       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
 Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S945549AbdDTU2x (ORCPT <rfc822;francois.ozog@linaro.org>
-        + 6 others); Thu, 20 Apr 2017 16:28:53 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:39034 "EHLO mx1.redhat.com"
-        rhost-flags-OK-OK-OK-OK) by vger.kernel.org with ESMTP
-        id S945402AbdDTU2v (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Thu, 20 Apr 2017 16:28:51 -0400
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com [10.5.11.16])
-        (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-        (No client certificate requested)
-        by mx1.redhat.com (Postfix) with ESMTPS id 31C03F93F4;
-        Thu, 20 Apr 2017 20:28:50 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 31C03F93F4
-Authentication-Results: ext-mx10.extmail.prod.ext.phx2.redhat.com; dmarc=none (p=none dis=none) header.from=redhat.com
-Authentication-Results: ext-mx10.extmail.prod.ext.phx2.redhat.com; spf=pass smtp.mailfrom=eblake@redhat.com
-DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com 31C03F93F4
-Received: from [10.10.121.102] (ovpn-121-102.rdu2.redhat.com [10.10.121.102])
-        by smtp.corp.redhat.com (Postfix) with ESMTP id 95FFC5C894;
-        Thu, 20 Apr 2017 20:28:15 +0000 (UTC)
+        id S1031208AbdDTW4J (ORCPT <rfc822;francois.ozog@linaro.org>
+        + 6 others); Thu, 20 Apr 2017 18:56:09 -0400
+Received: from mail-oi0-f67.google.com ([209.85.218.67]:35576 "EHLO
+        mail-oi0-f67.google.com" rhost-flags-OK-OK-OK-OK) by vger.kernel.org
+        with ESMTP id S970136AbdDTW4H (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Thu, 20 Apr 2017 18:56:07 -0400
+Received: by mail-oi0-f67.google.com with SMTP id m34so5282147oik.2
+        for <kvm@vger.kernel.org>; Thu, 20 Apr 2017 15:56:06 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=mime-version:sender:in-reply-to:references:from:date:message-id
+         :subject:to:cc;
+        bh=n6FDnmICsDWgaWEoQJRXnA+vUQddmW47gbaVqMo1dlY=;
+        b=Nwxaqx4o1g+iG6q70eORKF5GgyoU+GvxoBu7Q6NvFQFSODNxaiwsthjNK89nWYmcHd
+         xTdCwfjfivwuKUZb8U/1BA8S9O+DR0HYGKfKAX/9nraU2jJnHHsROzYLwqJa1sFgwON2
+         FEeGkWiY3lXvHSDiBLTk8p7+QhjJv9abPE/iFFhL1OOE9qnCrjqP8xPrdJtCdgVZ2k2h
+         GMSazEOqP+oB1ntu0qwNiUA6XeluQ3/vVqYHz/bv5dm/IkP9riSkPOD+ZRyc3YyM9aqD
+         NCEWBVvbwVDfgXsqoVrWa5F8VQXxa/rcjdaOQXAg1LxIQgxfaJ6qxocG5oP7O5rdHi/L
+         1t8Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:mime-version:sender:in-reply-to:references:from
+         :date:message-id:subject:to:cc;
+        bh=n6FDnmICsDWgaWEoQJRXnA+vUQddmW47gbaVqMo1dlY=;
+        b=LfMaxi7QsUve76o/6jJxb9iAuxHIu/MZYBCZclQJBwWap77GIEVrRQ/B4joBBvWO3W
+         ZvZvqYqWXBR8Q+sHlFvenNfpGC2Yl/JRF9L13KaenAWIqRpCZEk2MA8VRnej+n6qG7+u
+         9ahbIhxKOGbl5n2qoIQMurMbU5sIFO7Rh3xhaJ889cfK6sGMO9Jea5keowh70pjmPeNG
+         fw4wF4G5lxech26np0g1FpnOo0H/XGPJK4qGs7GZu50XriOuc9BhUAL3mkII6psOsj7S
+         qZ5eeq/XQ+xvc92NsaL7XhicPMPZvx1DsjvfEIuxG9xaBs1i2OjHL9JSo0Gc2Zl1Q8VC
+         lJMA==
+X-Gm-Message-State: AN3rC/54GktU/B6XtiBL5hdDW259MD0tOtAzV2zhVGPondyol9+ryssV
+        qUnsBmY2NfFmLS4En1fSHBJYCxj6Aw==
+X-Received: by 10.157.47.69 with SMTP id h63mr6442015otb.89.1492728966259;
+ Thu, 20 Apr 2017 15:56:06 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.182.44.229 with HTTP; Thu, 20 Apr 2017 15:55:35 -0700 (PDT)
+In-Reply-To: <53bc367e-df07-be34-25c5-dbf0b3ee174e@redhat.com>
+References: <20170419222258.13415-1-eblake@redhat.com> <87k26fffxa.fsf@dusky.pond.sub.org>
+ <1adf2797-b86a-00be-bb98-658ee8d0a55d@redhat.com> <87lgqv833h.fsf@dusky.pond.sub.org>
+ <53bc367e-df07-be34-25c5-dbf0b3ee174e@redhat.com>
+From:   Alistair Francis <alistair.francis@xilinx.com>
+Date:   Thu, 20 Apr 2017 15:55:35 -0700
+X-Google-Sender-Auth: tV58tQNCCIRRa4jK32DZbmbyNBY
+Message-ID: <CAKmqyKNftan_4zYRsNyOPG-PkM+iYKDxUC5_950pZyfrYSK3Qg@mail.gmail.com>
 Subject: Re: [Qemu-devel] [PATCH v2] event: Add source information to SHUTDOWN
-To:     qemu-devel@nongnu.org
-Cc:     Peter Maydell <peter.maydell@linaro.org>,
+To:     Eric Blake <eblake@redhat.com>
+Cc:     Markus Armbruster <armbru@redhat.com>,
+        Peter Maydell <peter.maydell@linaro.org>,
         "open list:Overall" <kvm@vger.kernel.org>,
         "Michael S. Tsirkin" <mst@redhat.com>,
         Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
-        Alexander Graf <agraf@suse.de>,
+        "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
         Scott Wood <scottwood@freescale.com>,
         Gerd Hoffmann <kraxel@redhat.com>,
         "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
         Rob Herring <robh@kernel.org>,
         Stefano Stabellini <sstabellini@kernel.org>,
-        Magnus Damm <magnus.damm@gmail.com>, armbru@redhat.com,
+        Magnus Damm <magnus.damm@gmail.com>,
+        Alexander Graf <agraf@suse.de>,
         Christian Borntraeger <borntraeger@de.ibm.com>,
         Anthony Perard <anthony.perard@citrix.com>,
         "open list:X86" <xen-devel@lists.xenproject.org>,
@@ -63,123 +91,83 @@ Cc:     Peter Maydell <peter.maydell@linaro.org>,
         Yongbok Kim <yongbok.kim@imgtec.com>,
         Paolo Bonzini <pbonzini@redhat.com>,
         Aurelien Jarno <aurelien@aurel32.net>
-References: <20170419222258.13415-1-eblake@redhat.com>
-From:   Eric Blake <eblake@redhat.com>
-Openpgp: url=http://people.redhat.com/eblake/eblake.gpg
-Organization: Red Hat, Inc.
-Message-ID: <fdc51365-3006-18d1-96eb-4834e8cac002@redhat.com>
-Date:   Thu, 20 Apr 2017 15:28:14 -0500
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
- Thunderbird/52.0
-MIME-Version: 1.0
-In-Reply-To: <20170419222258.13415-1-eblake@redhat.com>
-Content-Type: multipart/signed; micalg=pgp-sha256;
- protocol="application/pgp-signature";
- boundary="rBrcRnlV50apGaIkc3KGProSE0TetEuNj"
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.5.110.39]); Thu, 20 Apr 2017 20:28:51 +0000 (UTC)
+Content-Type: text/plain; charset=UTF-8
 Sender: kvm-owner@vger.kernel.org
 Precedence: bulk
 List-ID: <kvm.vger.kernel.org>
 X-Mailing-List: kvm@vger.kernel.org
-X-TUID: V93usfVKtbcl
+X-TUID: DVwjOAqy8QS3
 
-This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
---rBrcRnlV50apGaIkc3KGProSE0TetEuNj
-Content-Type: multipart/mixed; boundary="E0EiK4kbWLgV6Go6L8IiGthoAcpKQvJ6m";
- protected-headers="v1"
-From: Eric Blake <eblake@redhat.com>
-To: qemu-devel@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- "open list:Overall" <kvm@vger.kernel.org>,
- "Michael S. Tsirkin" <mst@redhat.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- Alexander Graf <agraf@suse.de>, Scott Wood <scottwood@freescale.com>,
- Gerd Hoffmann <kraxel@redhat.com>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, Rob Herring
- <robh@kernel.org>, Stefano Stabellini <sstabellini@kernel.org>,
- Magnus Damm <magnus.damm@gmail.com>, armbru@redhat.com,
- Christian Borntraeger <borntraeger@de.ibm.com>,
- Anthony Perard <anthony.perard@citrix.com>,
- "open list:X86" <xen-devel@lists.xenproject.org>,
- Richard Henderson <rth@twiddle.net>, Artyom Tarasenko <atar4qemu@gmail.com>,
- Eduardo Habkost <ehabkost@redhat.com>, Stefan Weil <sw@weilnetz.de>,
- Alistair Francis <alistair.francis@xilinx.com>,
- "open list:Calxeda Highbank" <qemu-arm@nongnu.org>,
- Jan Kiszka <jan.kiszka@web.de>, Igor Mammedov <imammedo@redhat.com>,
- Cornelia Huck <cornelia.huck@de.ibm.com>,
- David Gibson <david@gibson.dropbear.id.au>,
- Paul Burton <paul.burton@imgtec.com>, Max Filippov <jcmvbkbc@gmail.com>,
- Marcelo Tosatti <mtosatti@redhat.com>, Michael Walle <michael@walle.cc>,
- "open list:New World" <qemu-ppc@nongnu.org>,
- Yongbok Kim <yongbok.kim@imgtec.com>, Paolo Bonzini <pbonzini@redhat.com>,
- Aurelien Jarno <aurelien@aurel32.net>
-Message-ID: <fdc51365-3006-18d1-96eb-4834e8cac002@redhat.com>
-Subject: Re: [Qemu-devel] [PATCH v2] event: Add source information to SHUTDOWN
-References: <20170419222258.13415-1-eblake@redhat.com>
-In-Reply-To: <20170419222258.13415-1-eblake@redhat.com>
+On Thu, Apr 20, 2017 at 12:05 PM, Eric Blake <eblake@redhat.com> wrote:
+> On 04/20/2017 11:18 AM, Markus Armbruster wrote:
+>> Eric Blake <eblake@redhat.com> writes:
+>>
+>>> On 04/20/2017 06:59 AM, Markus Armbruster wrote:
+>>>
+>>>>
+>>>> No objection to Alistair's idea to turn this into an enumeration.
+>>>
+>>> Question - should the enum be more than just 'guest' and 'host'?  For
+>>> example, my patch proves that we have a lot of places that handle
+>>> complimentary machine commands to reset and shutdown, and that whether
+>>> 'reset' triggers a reset (and the guest keeps running as if rebooted) or
+>>> a shutdown is then based on the command-line arguments given to qemu.
+>>> So having the enum differentiate between 'guest-reset' and
+>>> 'guest-shutdown' would be a possibility, if we want the enum to have
+>>> additional states.
+>>
+>> I don't know.  What I do know is that we better get the enum right:
+>> while adding members is backwards-compatible, changing the member sent
+>> for a specific trigger is not.  If we want to reserve the option to do
+>> that anyway, we need suitable documentation.
+>
+> Or even this idea:
+>
+> { 'enum': 'ShutdownCause', 'data': [ 'shutdown', 'reset', 'panic' ] }
+> { 'event': 'SHUTDOWN',
+>   'data': { 'guest': 'bool', '*cause': 'ShutdownCause' } }
+>
+> where the enum can grow as we come up with ever more reasons worth
+> exposing (maybe even 'qmp', 'gui' and 'interrupt' are reasonable causes
+> for a host shutdown).  Our promise would be that 'guest' never changes
+> for an existing shutdown reason, but that 'cause' may become more
+> refined over time if someone expresses a need for having the distinction.
+>
+> Thoughts?
 
---E0EiK4kbWLgV6Go6L8IiGthoAcpKQvJ6m
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: quoted-printable
+I'm not a fan of the 'guest' bool. I do see that it helps with
+maintaining backwards compatibility but I think we would be better off
+just getting the reasons right in the first place.
 
-On 04/19/2017 05:22 PM, Eric Blake wrote:
-> Libvirt would like to be able to distinguish between a SHUTDOWN
-> event triggered solely by guest request and one triggered by a
-> SIGTERM or other action on the host.  qemu_kill_report() is
-> already able to tell whether a shutdown was triggered by a host
-> signal (but NOT by a host UI event, such as clicking the X on
-> the window), but that information was then lost after being
-> printed to stderr.
->=20
-> Enhance the shutdown request path to take a parameter of which
-> way it is being triggered, and update ALL callers.  It would have
-> been less churn to keep the common case with no arguments as
-> meaning guest-triggered, and only modified the host-triggered
-> code paths, via a wrapper function, but then we'd still have to
-> audit that I didn't miss any host-triggered spots; changing the
-> signature forces us to double-check that I correctly categorized
-> all callers.
->=20
-> Here is output from 'virsh qemu-monitor-event --loop' with the
-> patch installed:
->=20
-> event SHUTDOWN at 1492639680.731251 for domain fedora_13: {"guest":true=
-}
-> event STOP at 1492639680.732116 for domain fedora_13: <null>
-> event SHUTDOWN at 1492639680.732830 for domain fedora_13: {"guest":fals=
-e}
+What about something that can grow in the future? We start with a
+general guest shutdown that is always there and then as we add new
+reasons things can be moved to use the new method or continue to use
+the general one.
 
-Another reason I'll need a v3: at least qemu-iotests 87 has to be
-updated for new expected output.
+SHUTDOWN_HOST
+SHUTDOWN_HOST_GUI
+/* This is always a backwards compatible fall-back
+ * Maybe this could be SHUTDOWN_GUEST_UNKNOWN instead?
+ */
+SHUTDOWN_GUEST_GENERAL
+SHUTDOWN_GUEST_HALT
+SHUTDOWN_GUEST_RESET
+...
 
+That way we can guarantee the base coverage but still expand more
+specific reasons in the future.
 
---=20
-Eric Blake, Principal Software Engineer
-Red Hat, Inc.           +1-919-301-3266
-Virtualization:  qemu.org | libvirt.org
+I guess the only problem is that then the reasons aren't always
+reliable then as we could introduce a new reason and something gets
+stuck using the general fall back.
 
+Thanks,
 
---E0EiK4kbWLgV6Go6L8IiGthoAcpKQvJ6m--
+Alistair
 
---rBrcRnlV50apGaIkc3KGProSE0TetEuNj
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: OpenPGP digital signature
-Content-Disposition: attachment; filename="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v2
-Comment: Public key at http://people.redhat.com/eblake/eblake.gpg
-Comment: Using GnuPG with Thunderbird - http://www.enigmail.net/
-
-iQEcBAEBCAAGBQJY+RneAAoJEKeha0olJ0NqbaQH/3QPSDMwQQPP++YfbHSPpWhQ
-H/XceYryP1bFidJ1BOtcmM5w4BSHqjPXCALbq+bF4Z9A9WsY4ffxdxvWDUpH71Z1
-qAQuTgUUEM+LFpKMlV8WMjulmmQbHVKjURtzIjtuQluK/RtZ8m8/5NtAMvFXH1QO
-YmWmMrQOZrRkJ89/e6yo1QQ5Xuro8Sd9nWeI3uvhBGCs2/kyOD2wt5M3l+zMDV22
-wQ2pE3aKn3emZv5yqThOe69gSisiOyPt9xPysQmII+08Ni/smAuQo2kkZAqTF76q
-yhMygaDft61exPOi81wVCynFpeii3MiDHdleLW71F+iZIOmonZl29rkr3Yj7tpw=
-=8Anw
------END PGP SIGNATURE-----
-
---rBrcRnlV50apGaIkc3KGProSE0TetEuNj--
+>
+> --
+> Eric Blake, Principal Software Engineer
+> Red Hat, Inc.           +1-919-301-3266
+> Virtualization:  qemu.org | libvirt.org
+>

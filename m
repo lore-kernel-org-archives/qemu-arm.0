@@ -1,76 +1,71 @@
-Received: by 10.25.0.144 with SMTP id 138csp759220lfa;
-        Thu, 20 Apr 2017 07:26:19 -0700 (PDT)
-X-Received: by 10.237.54.166 with SMTP id f35mr8328918qtb.90.1492698379708;
-        Thu, 20 Apr 2017 07:26:19 -0700 (PDT)
+Received: by 10.25.0.144 with SMTP id 138csp799133lfa;
+        Thu, 20 Apr 2017 08:59:41 -0700 (PDT)
+X-Received: by 10.200.44.36 with SMTP id d33mr9359290qta.198.1492703981466;
+        Thu, 20 Apr 2017 08:59:41 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id d27si6015081qte.219.2017.04.20.07.26.19
+        by mx.google.com with ESMTPS id n23si6295065qkl.68.2017.04.20.08.59.41
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 20 Apr 2017 07:26:19 -0700 (PDT)
+        Thu, 20 Apr 2017 08:59:41 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:54349 helo=lists.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:54714 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1d1D2J-00068S-69
-	for alex.bennee@linaro.org; Thu, 20 Apr 2017 10:26:19 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:58783)
+	id 1d1EUe-0001WF-U9
+	for alex.bennee@linaro.org; Thu, 20 Apr 2017 11:59:40 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:58489)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1d1D29-000669-8E
-	for qemu-arm@nongnu.org; Thu, 20 Apr 2017 10:26:13 -0400
+	(envelope-from <armbru@redhat.com>) id 1d1EUY-0001UX-R2
+	for qemu-arm@nongnu.org; Thu, 20 Apr 2017 11:59:36 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1d1D28-0007ei-34
-	for qemu-arm@nongnu.org; Thu, 20 Apr 2017 10:26:09 -0400
-Received: from mail-wm0-x22a.google.com ([2a00:1450:400c:c09::22a]:38850)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1d1D27-0007ck-PD
-	for qemu-arm@nongnu.org; Thu, 20 Apr 2017 10:26:07 -0400
-Received: by mail-wm0-x22a.google.com with SMTP id r190so49911037wme.1
-	for <qemu-arm@nongnu.org>; Thu, 20 Apr 2017 07:26:07 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc:content-transfer-encoding;
-	bh=zeE4ZXaWCkc3rxMhtP6STyF6EkwfNh0OPfmqPjpz7N4=;
-	b=GDmPY3tXxKNQdK0UnVe7GTZAgLCN1PM76VZ1l3Hes87T74eZJkurZEj3XC/X+IM1JG
-	p5MCKczxWp8JBKBfOjQzk/DBtPv9NyBlqSz0BFTIv9+FoqFpl4HH02Mi0WQFq72zjEAd
-	kRI2SNQ6dArp8U3Azf9SJ0tJ+kQsIVOfec9+o=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc:content-transfer-encoding;
-	bh=zeE4ZXaWCkc3rxMhtP6STyF6EkwfNh0OPfmqPjpz7N4=;
-	b=uErNBvOnqeHPq4Df5HwDSIb4FXdLgO+PF0PYUuXvXqXZ5dFzfVLNQgw3CS4WNeIdyJ
-	pm+xL3HieWYMFm75ifEefsaG9p5H5ZaWI5b5Joq3X+Z+kpX328XUdC5uyFKSRbjqxtMG
-	CZ9hdcWw4W6Olu3dpsYgn7MoR6tT94v5QMK1aovxfwDqrNFm6mI+ko6hJKAJnZt/Gi4j
-	hyQz3dMsb09g8c0GQXlGlZOG3X0lWEan6lc61OuXiN9kg+1/bvv4TLll+xks/Jz/5B68
-	PkcEJN/Yt6abzHLN1G2SvVbhKHKUkoSetyC1zYfpuTyDh8D1HvA+VjDT3LmKhiOE/5Fn
-	lRKg==
-X-Gm-Message-State: AN3rC/4pNgiky/VEm3e3OhmZlnQrlzN6cm9d4pTcXfpkeMXSM56XjPG/
-	o90vFt4fSBEqPsZ+5QeGqU2eakZfjQ8n
-X-Received: by 10.28.214.211 with SMTP id n202mr3546006wmg.142.1492698366644; 
-	Thu, 20 Apr 2017 07:26:06 -0700 (PDT)
+	(envelope-from <armbru@redhat.com>) id 1d1EUV-0001cH-KF
+	for qemu-arm@nongnu.org; Thu, 20 Apr 2017 11:59:34 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:60908)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <armbru@redhat.com>)
+	id 1d1EUV-0001bX-B0; Thu, 20 Apr 2017 11:59:31 -0400
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
+	[10.5.11.15])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 498B475EC5;
+	Thu, 20 Apr 2017 15:59:29 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 498B475EC5
+Authentication-Results: ext-mx04.extmail.prod.ext.phx2.redhat.com;
+	dmarc=none (p=none dis=none) header.from=redhat.com
+Authentication-Results: ext-mx04.extmail.prod.ext.phx2.redhat.com;
+	spf=pass smtp.mailfrom=armbru@redhat.com
+DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com 498B475EC5
+Received: from blackfin.pond.sub.org (ovpn-116-149.ams2.redhat.com
+	[10.36.116.149])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id DFD8F173A9;
+	Thu, 20 Apr 2017 15:59:28 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+	id 3A8581138646; Thu, 20 Apr 2017 17:59:27 +0200 (CEST)
+From: Markus Armbruster <armbru@redhat.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+References: <20170414083717.13641-1-lvivier@redhat.com>
+	<CAFEAcA-NTpaXL9foLOqZ1AyBOcFokKfJGMxicQFXeAzkMATfBA@mail.gmail.com>
+Date: Thu, 20 Apr 2017 17:59:27 +0200
+In-Reply-To: <CAFEAcA-NTpaXL9foLOqZ1AyBOcFokKfJGMxicQFXeAzkMATfBA@mail.gmail.com>
+	(Peter Maydell's message of "Thu, 20 Apr 2017 14:02:38 +0100")
+Message-ID: <871ssn9ijk.fsf@dusky.pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/25.1 (gnu/linux)
 MIME-Version: 1.0
-Received: by 10.223.145.68 with HTTP; Thu, 20 Apr 2017 07:25:46 -0700 (PDT)
-In-Reply-To: <3dd852ae-3ff9-0b53-11f1-ea4e2a3ed59c@amsat.org>
-References: <1491844419-12485-1-git-send-email-peter.maydell@linaro.org>
-	<1491844419-12485-8-git-send-email-peter.maydell@linaro.org>
-	<3dd852ae-3ff9-0b53-11f1-ea4e2a3ed59c@amsat.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 20 Apr 2017 15:25:46 +0100
-Message-ID: <CAFEAcA8HeZXitVwpuTG5j2LCxxYt5Tp-kLAuTnTzMqK5fN=+Zg@mail.gmail.com>
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2a00:1450:400c:c09::22a
-Subject: Re: [Qemu-arm] [PATCH v2 7/9] arm: Track M profile handler mode
- state in TB flags
+Content-Type: text/plain
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.28]);
+	Thu, 20 Apr 2017 15:59:30 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v2 0/4] qdev: remove all
+ remaining cannot_destroy_with_object_finalize_yet
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -82,30 +77,58 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Richard Henderson <rth@twiddle.net>, qemu-arm <qemu-arm@nongnu.org>,
+Cc: Laurent Vivier <lvivier@redhat.com>,
 	QEMU Developers <qemu-devel@nongnu.org>,
-	"patches@linaro.org" <patches@linaro.org>
+	Alistair Francis <alistair.francis@xilinx.com>,
+	Beniamino Galvani <b.galvani@gmail.com>, qemu-arm <qemu-arm@nongnu.org>,
+	"qemu-ppc@nongnu.org" <qemu-ppc@nongnu.org>,
+	Antony Pavlov <antonynpavlov@gmail.com>,
+	David Gibson <david@gibson.dropbear.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: QekiXfwJbwEQ
+X-TUID: bszr90243PjX
 
-On 17 April 2017 at 05:20, Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> wr=
-ote:
-> On 04/10/2017 02:13 PM, Peter Maydell wrote:
->> --- a/target/arm/translate.h
->> +++ b/target/arm/translate.h
->> @@ -31,6 +31,7 @@ typedef struct DisasContext {
->>      bool vfp_enabled; /* FP enabled via FPSCR.EN */
->>      int vec_len;
->>      int vec_stride;
->> +    bool handler; /* v7M Handler mode */
+Peter Maydell <peter.maydell@linaro.org> writes:
+
+> On 14 April 2017 at 09:37, Laurent Vivier <lvivier@redhat.com> wrote:
+>> This series removes all the remaining uses of
+>> cannot_destroy_with_object_finalize_yet to finally remove
+>> the flag itself.
+>>
+>> The ARM patch has already been sent alone and reviewed by Markus.
+>> I have tested the ppc one on ppc64 machine with KVM and using
+>> QDM device-list-properties command.
+>>
+>> For the versatile one, the flag allowed to workaround a problem
+>> in the bus unparent function: the bus unparent is trying to
+>> unparent all the children of the bus. To do that, it has a list
+>> of the children of the bus, and calls object_unparent() for each
+>> child, and object_unparent() calls object_property_del_child() if
+>> obj->parent is not NULL.  As qdev_set_parent_bus() set only
+>> parent_bus and the list of children, parent is NULL and the child
+>> is never deleted.  We can avoid the problem by moving the
+>> qdev_set_parent_bus() to the realize part.
+>>
+>> I've tested all the changes with "make check" (including
+>> device-introspect-test). I've booted a versatilepb machine
+>> with a 3.16.0-4 debian installer kernel.
+>>
+>> Laurent Vivier (4):
+>>   arm: remove remaining cannot_destroy_with_object_finalize_yet
+>>   ppc: remove cannot_destroy_with_object_finalize_yet
+>>   versatile: remove cannot_destroy_with_object_finalize_yet
+>>   qdev: remove cannot_destroy_with_object_finalize_yet
 >
->
-> What about a more descriptive name like 'is_v7m_handler_mode' or
-> 'v7m_mode_handler'? It makes your next patch easier to understand:
+> Markus -- are you planning to take this whole series through
+> your tree? I'm happy with the ARM patches but I guess we
+> should keep the whole series together since patch 4 depends
+> on the other 3...
 
-Seems reasonable; I've made that change (but won't repost the
-series as that's the only tweak).
+We have no qdev maintainer.  David, you wrote you applied PATCH 2.  Are
+you okay with me taking all four?  If yes, would you like me to add your
+Acked-by or Reviewed-by to PATCH 2?
 
-thanks
--- PMM
+> I guess that means
+> Acked-by: Peter Maydell <peter.maydell@linaro.org>
+
+Noted.

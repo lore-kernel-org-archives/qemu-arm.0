@@ -1,245 +1,295 @@
-Received: by 10.25.0.144 with SMTP id 138csp217340lfa;
-        Wed, 19 Apr 2017 04:16:33 -0700 (PDT)
-X-Received: by 10.55.79.216 with SMTP id d207mr1732600qkb.298.1492600593063;
-        Wed, 19 Apr 2017 04:16:33 -0700 (PDT)
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 10.25.0.144 with SMTP id 138csp729602lfa;
+        Thu, 20 Apr 2017 06:20:39 -0700 (PDT)
+X-Received: by 10.55.144.194 with SMTP id s185mr8104790qkd.144.1492694439278;
+        Thu, 20 Apr 2017 06:20:39 -0700 (PDT)
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id s7si1944984qtc.277.2017.04.19.04.16.32
+        by mx.google.com with ESMTPS id d42si5839292qtc.191.2017.04.20.06.20.39
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 19 Apr 2017 04:16:33 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Thu, 20 Apr 2017 06:20:39 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:47170 helo=lists.gnu.org)
+       dkim=fail header.i=@linaro.org;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:53913 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1d0nb6-0008GM-H2
-	for alex.bennee@linaro.org; Wed, 19 Apr 2017 07:16:32 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:54372)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1d1C0k-0002Qy-MW
+	for alex.bennee@linaro.org; Thu, 20 Apr 2017 09:20:38 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:34722)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <imammedo@redhat.com>) id 1d0nZv-0007eT-H4
-	for qemu-devel@nongnu.org; Wed, 19 Apr 2017 07:15:22 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1d1C0f-0002Oa-6i
+	for qemu-arm@nongnu.org; Thu, 20 Apr 2017 09:20:34 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <imammedo@redhat.com>) id 1d0nZr-0003k4-29
-	for qemu-devel@nongnu.org; Wed, 19 Apr 2017 07:15:19 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:44336)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <imammedo@redhat.com>)
-	id 1d0nZl-0003fa-CH; Wed, 19 Apr 2017 07:15:09 -0400
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
-	[10.5.11.16])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 147302D8E97;
-	Wed, 19 Apr 2017 11:15:08 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 147302D8E97
-Authentication-Results: ext-mx09.extmail.prod.ext.phx2.redhat.com;
-	dmarc=none (p=none dis=none) header.from=redhat.com
-Authentication-Results: ext-mx09.extmail.prod.ext.phx2.redhat.com;
-	spf=pass smtp.mailfrom=imammedo@redhat.com
-DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com 147302D8E97
-Received: from nial.brq.redhat.com (dhcp-1-118.brq.redhat.com [10.34.1.118])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id A600D74AC8;
-	Wed, 19 Apr 2017 11:14:59 +0000 (UTC)
-Date: Wed, 19 Apr 2017 13:14:58 +0200
-From: Igor Mammedov <imammedo@redhat.com>
-To: Eduardo Habkost <ehabkost@redhat.com>
-Message-ID: <20170419131458.59e2d00e@nial.brq.redhat.com>
-In-Reply-To: <20170412210239.GC27126@thinpad.lan.raisama.net>
-References: <1490189568-167621-1-git-send-email-imammedo@redhat.com>
-	<1490189568-167621-8-git-send-email-imammedo@redhat.com>
-	<20170412210239.GC27126@thinpad.lan.raisama.net>
+	(envelope-from <peter.maydell@linaro.org>) id 1d1C0d-0006nx-Cv
+	for qemu-arm@nongnu.org; Thu, 20 Apr 2017 09:20:33 -0400
+Received: from mail-wr0-x229.google.com ([2a00:1450:400c:c0c::229]:32961)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1d1C0d-0006nY-39
+	for qemu-arm@nongnu.org; Thu, 20 Apr 2017 09:20:31 -0400
+Received: by mail-wr0-x229.google.com with SMTP id w50so12200477wrc.0
+	for <qemu-arm@nongnu.org>; Thu, 20 Apr 2017 06:20:30 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=LwJ9NEs+4saiQc4KcpCQjpQSTgwoGh4H4gMQlpFCKTw=;
+	b=BiKFiRi9gcSpDUXKhWRLFBwi7GfYbXOI+XBccqYsIWUfxoOj3BDlTKnlbjayyH8w7z
+	x//dJ7VoCU+a9zK+ykH+hZs6GlClcfHqVzIi2jMPix0C5333otlm7MAJ4IOkLrdb8Hos
+	Wy9UshtN0qK8GsvWF9FfHcqLaJtAUw9914AqA=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=LwJ9NEs+4saiQc4KcpCQjpQSTgwoGh4H4gMQlpFCKTw=;
+	b=L6XgzmeOb6BJEu//ewN39N6wg1g7CU7Pbys1Gu8zmE+APUeomF/sG5k/li3VNIMHiP
+	5xS/Inebu+rGVEsVOYd5vYeQdsoIS5Pr7gg31/WGZX5dmrR/g0kAJf0c9m6W571UNKVQ
+	GG8aS5FM0UZU+NoKPwb5JlDhtfPKNssai/Tab66oF/Gfyo/i+PSh38z8ShL48GWBBdey
+	gbOCxCCuOZi0stuoLiFSQRA8OAmlXeCHreUvi6kpOJTvVjtvF+xEOwKE5AXZO3xwWk/4
+	CMh5on9683O4LOJbydKlcOEqOyfvyq6N25jw24F3F2CABSgUJrBQ+LzftEp5rP2fYl3M
+	RvDg==
+X-Gm-Message-State: AN3rC/72nTJ+DVk/tkL+XEsMm2kOCFHK9ZI/vYVoSKYOEY+UFA1cXWVv
+	RPJohR7gup0OB2hCnIJvd6MMHUKQDVL2
+X-Received: by 10.223.150.179 with SMTP id u48mr1855675wrb.195.1492694429844; 
+	Thu, 20 Apr 2017 06:20:29 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.38]);
-	Wed, 19 Apr 2017 11:15:08 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-devel] [PATCH for-2.10 07/23] pc: add node-id property to
- CPU
-X-BeenThere: qemu-devel@nongnu.org
+Received: by 10.223.145.68 with HTTP; Thu, 20 Apr 2017 06:20:09 -0700 (PDT)
+In-Reply-To: <20170408054318.19830-1-omar.rizwan@gmail.com>
+References: <20170408054318.19830-1-omar.rizwan@gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 20 Apr 2017 14:20:09 +0100
+Message-ID: <CAFEAcA_t1L_UPwV7Uwy9ygEOjBw=RLEkdcD13yepMJe+s7kQmg@mail.gmail.com>
+To: Omar Rizwan <omar.rizwan@gmail.com>
+Content-Type: text/plain; charset=UTF-8
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2a00:1450:400c:c0c::229
+Subject: Re: [Qemu-arm] [PATCH] raspi: Add Raspberry Pi 1 support
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jones <drjones@redhat.com>,
-	qemu-devel@nongnu.org, qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
-	Shannon Zhao <zhaoshenglong@huawei.com>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	David Gibson <david@gibson.dropbear.id.au>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Dvv2z24HO32p
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
+	Andrew Baumann <Andrew.Baumann@microsoft.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: sPn3P5VMcfFR
 
-On Wed, 12 Apr 2017 18:02:39 -0300
-Eduardo Habkost <ehabkost@redhat.com> wrote:
+On 8 April 2017 at 06:43, Omar Rizwan <omar.rizwan@gmail.com> wrote:
+> Signed-off-by: Omar Rizwan <omar.rizwan@gmail.com>
+> ---
+>  hw/arm/Makefile.objs         |   2 +-
+>  hw/arm/bcm2835.c             | 119 +++++++++++++++++++++++++++++++++++++++++++
+>  hw/arm/bcm2835_peripherals.c |   1 +
+>  hw/arm/raspi.c               |  47 ++++++++++++++---
+>  include/hw/arm/bcm2835.h     |  31 +++++++++++
+>  5 files changed, 191 insertions(+), 9 deletions(-)
+>  create mode 100644 hw/arm/bcm2835.c
+>  create mode 100644 include/hw/arm/bcm2835.h
 
-> On Wed, Mar 22, 2017 at 02:32:32PM +0100, Igor Mammedov wrote:
-> > it will allow switching from cpu_index to property based
-> > numa mapping in follow up patches.  
-> 
-> I am not sure I understand all the consequences of this, so I
-> will give it a try:
-> 
-> "node-id" is an existing field in CpuInstanceProperties.
-> CpuInstanceProperties is used on both query-hotpluggable-cpus
-> output and in MachineState::possible_cpus.
-> 
-> We will start using MachineState::possible_cpus to keep track of
-> NUMA CPU affinity, and that means query-hotpluggable-cpus will
-> start reporting a "node-id" property when a NUMA mapping is
-> configured.
-> 
-> To allow query-hotpluggable-cpus to report "node-id", the CPU
-> objects must have a "node-id" property that can be set. This
-> patch adds the "node-id" property to X86CPU.
-> 
-> Is this description accurate? Is the presence of "node-id" in
-> query-hotpluggable-cpus the only reason we really need this
-> patch, or is there something else that requires the "node-id"
-> property?
-That accurate description, node-id is in the same 'address'
-properties category as socket/core/thread-id. So if you have
-numa enabled machine you'd see node-id property in
-query-hotpluggable-cpus.
+Hi; thanks for this patch. I have a few comments below to add to the ones
+from Andrew.
 
 
-> Why exactly do we need to change the output of
-> query-hotpluggable-cpus for all machines to include "node-id", to
-> make "-numa cpu" work?
-It's for introspection as well as for consolidating topology data
-in a single place purposes and complements already outputed
-socket/core/thread-id address properties with numa node-id.
-That way one doesn't need yet another command for introspecting
-numa mapping for cpus and use existing query-hotpluggable-cpus
-for full topology description.
+> +/* Peripheral base address seen by the CPU */
+> +#define BCM2835_PERI_BASE       0x20000000
+> +
+> +static void bcm2835_init(Object *obj)
+> +{
+> +    BCM2835State *s = BCM2835(obj);
+> +
+> +    object_initialize(&s->cpu, sizeof(s->cpu), "arm1176-" TYPE_ARM_CPU);
+> +    object_property_add_child(obj, "cpu", OBJECT(&s->cpu), &error_abort);
+> +
+> +    object_initialize(&s->peripherals, sizeof(s->peripherals),
+> +                      TYPE_BCM2835_PERIPHERALS);
+> +    object_property_add_child(obj, "peripherals", OBJECT(&s->peripherals),
+> +                              &error_abort);
+> +    object_property_add_alias(obj, "board-rev", OBJECT(&s->peripherals),
+> +                              "board-rev", &error_abort);
+> +    object_property_add_alias(obj, "vcram-size", OBJECT(&s->peripherals),
+> +                              "vcram-size", &error_abort);
+> +    qdev_set_parent_bus(DEVICE(&s->peripherals), sysbus_get_default());
+> +}
+> +
+> +static void bcm2835_realize(DeviceState *dev, Error **errp)
+> +{
+> +    BCM2835State *s = BCM2835(dev);
+> +    Object *obj;
+> +    Error *err = NULL;
+> +
+> +    /* common peripherals from bcm2835 */
+> +    obj = object_property_get_link(OBJECT(dev), "ram", &err);
+> +    if (obj == NULL) {
+> +        error_setg(errp, "%s: required ram link not found: %s",
+> +                   __func__, error_get_pretty(err));
+> +        return;
+> +    }
+> +
+> +    object_property_add_const_link(OBJECT(&s->peripherals), "ram", obj, &err);
+> +    if (err) {
+> +        error_propagate(errp, err);
+> +        return;
+> +    }
+> +
+> +    object_property_set_bool(OBJECT(&s->peripherals), true, "realized", &err);
+> +    if (err) {
+> +        error_propagate(errp, err);
+> +        return;
+> +    }
+> +
+> +    object_property_add_alias(OBJECT(s), "sd-bus", OBJECT(&s->peripherals),
+> +                              "sd-bus", &err);
+> +    if (err) {
+> +        error_propagate(errp, err);
+> +        return;
+> +    }
+> +
+> +    sysbus_mmio_map_overlap(SYS_BUS_DEVICE(&s->peripherals), 0,
+> +                            BCM2835_PERI_BASE, 1);
+> +
+> +    sysbus_mmio_map_overlap(SYS_BUS_DEVICE(&s->peripherals), 1,
+> +                            0x40000000, 1);
 
->  Did you consider saving node_id inside
-> CPUArchId and outside CpuInstanceProperties, so
-> query-hotplugabble-cpus output won't be affected by "-numa cpu"?
-nope, intent was to make node-id visible if numa is enabled and
-I think that intent was there from the very begging when
-query-hotplugabble-cpus was introduced with CpuInstanceProperties
-having node_id field but unused since it has been out of scope
-of cpu hotplug.
+If this mapping is correct, can we have a #define for this address, like we
+do for BCM2835_PERI_BASE ?
 
+(I see from Andrew's review that it's not clear whether we should be
+mapping this here.)
 
-> I'm asking this because I believe we will eventually need a
-> mechanism that lets management check what are the valid arguments
-> for "-numa cpu" for a given machine, and it looks like
-> query-hotpluggable-cpus is already the right mechanism for that.
-it's problem similar with -device cpu_foo,...
+> +
+> +    object_property_set_bool(OBJECT(&s->cpu), true, "realized", &err);
+> +    if (err) {
+> +        error_report_err(err);
+> +        exit(1);
+> +    }
+> +
+> +    sysbus_connect_irq(SYS_BUS_DEVICE(&s->peripherals), 0,
+> +                       qdev_get_gpio_in(DEVICE(&s->cpu), ARM_CPU_IRQ));
+> +    sysbus_connect_irq(SYS_BUS_DEVICE(&s->peripherals), 1,
+> +                       qdev_get_gpio_in(DEVICE(&s->cpu), ARM_CPU_FIQ));
+> +
+> +}
+> +
+> +static void bcm2835_class_init(ObjectClass *oc, void *data)
+> +{
+> +    DeviceClass *dc = DEVICE_CLASS(oc);
+> +
+> +    dc->realize = bcm2835_realize;
+> +
+> +    /*
+> +     * Reason: creates an ARM CPU, thus use after free(), see
+> +     * arm_cpu_class_init()
+> +     */
+> +    dc->cannot_destroy_with_object_finalize_yet = true;
 
-> But we can't make query-hotpluggable-cpus output depend on "-numa
-> cpu" input, if the "-numa cpu" input will also depend on
-> query-hotpluggable-cpus output.
-I don't think that query-hotpluggable-cpus must be independent of
-'-numa' option.
+This assignment and its attached comment can be deleted, because
+the issue with arm_cpu_class_init() has now been fixed upstream
+(there's a patchset on the list that removes the DeviceClass
+field entirely).
 
-query-hotpluggable-cpus is a function of -smp and machine type and
-it's output is dynamic and can change during runtime so we've never
-made promise to make it static. I think it's ok to make it depend
-on -numa as extra input argument when present.
+> +}
+> +
+> +static const TypeInfo bcm2835_type_info = {
+> +    .name = TYPE_BCM2835,
+> +    .parent = TYPE_SYS_BUS_DEVICE,
+> +    .instance_size = sizeof(BCM2835State),
+> +    .instance_init = bcm2835_init,
+> +    .class_init = bcm2835_class_init,
+> +};
+> +
+> +static void bcm2835_register_types(void)
+> +{
+> +    type_register_static(&bcm2835_type_info);
+> +}
+> +
+> +type_init(bcm2835_register_types)
+> diff --git a/hw/arm/bcm2835_peripherals.c b/hw/arm/bcm2835_peripherals.c
+> index 369ef1e..a6cd54a 100644
+> --- a/hw/arm/bcm2835_peripherals.c
+> +++ b/hw/arm/bcm2835_peripherals.c
+> @@ -34,6 +34,7 @@ static void bcm2835_peripherals_init(Object *obj)
+>      /* Internal memory region for peripheral bus addresses (not exported) */
+>      memory_region_init(&s->gpu_bus_mr, obj, "bcm2835-gpu", (uint64_t)1 << 32);
+>      object_property_add_child(obj, "gpu-bus", OBJECT(&s->gpu_bus_mr), NULL);
+> +    sysbus_init_mmio(SYS_BUS_DEVICE(s), &s->gpu_bus_mr);
 
-It bothers me as well, that '-numa cpu' as well as '-device cpu_foo'
-options depend on query-hotpluggable-cpus and when we considered
-generic '-device cpu' support, we though that initially
-query-hotpluggable-cpus could be used to get list of CPUs
-for given -smp/machine combination and then it could be used
-for composing proper CLI. That makes mgmt to start QEMU twice
-when creating configuration for the 1st time, but end result CLI
-could be reused without repeating query step again provided
-topology/machine stays the same. The same applies to '-numa cpu'.
+If we determine that this is correct, then we should delete the "(not exported)"
+part of the comment above, because this added call to sysbus_init_mmio()
+is exporting the memory region.
 
-In future to avoid starting QEMU twice we were thinking about
-configuring QEMU from QMP at runtime, that's where preconfigure
-approach could be used to help solving it in the future:
+>      /* Internal memory region for request/response communication with
+>       * mailbox-addressable peripherals (not exported)
+> diff --git a/hw/arm/raspi.c b/hw/arm/raspi.c
+> index 2b295f1..dca6077 100644
+> --- a/hw/arm/raspi.c
+> +++ b/hw/arm/raspi.c
+> @@ -2,9 +2,11 @@
+>   * Raspberry Pi emulation (c) 2012 Gregory Estrade
+>   * Upstreaming code cleanup [including bcm2835_*] (c) 2013 Jan Petrous
+>   *
+> - * Rasperry Pi 2 emulation Copyright (c) 2015, Microsoft
+> + * Raspberry Pi 2 emulation Copyright (c) 2015, Microsoft
+>   * Written by Andrew Baumann
+>   *
+> + * Raspberry Pi 1 rebase onto master (c) 2017, Omar Rizwan
+> + *
+>   * This code is licensed under the GNU GPLv2 and later.
+>   */
+>
+> @@ -12,6 +14,7 @@
+>  #include "qapi/error.h"
+>  #include "qemu-common.h"
+>  #include "cpu.h"
+> +#include "hw/arm/bcm2835.h"
+>  #include "hw/arm/bcm2836.h"
+>  #include "qemu/error-report.h"
+>  #include "hw/boards.h"
+> @@ -27,6 +30,11 @@
+>  /* Table of Linux board IDs for different Pi versions */
+>  static const int raspi_boardid[] = {[1] = 0xc42, [2] = 0xc43};
+>
+> +/* Table of board revisions:
+> + * https://github.com/AndrewFromMelbourne/raspberry_pi_revision/blob/2764c19983fb7b1ef8cb21031e94c293703afa2e/README.md
+> + */
+> +static const uint32_t raspi_boardrev[] = {[1] = 0x10, [2] = 0xa21041};
 
-  1. introduce pause before machine_init CLI option to allow
-     preconfig machine from qmp/monitor
-  2. make query-hotpluggable-cpus usable at preconfig time
-  3. start qemu with needed number of numa nodes and default mapping:
-         #qemu -smp ... -numa node,nodeid=0 -node node,nodeid=1
-  4. get possible cpus list
-  5. add qmp/monitor command variant for '-numa cpu' to set numa mapping
-  6. optionally, set new numa mapping and get updated
-     possible cpus list with query-hotpluggable-cpus
-  7. optionally, add extra cpus with device_add using updated
-     cpus list and get updated cpus list as it's been changed again.
-  8. unpause preconfig stage and let qemu continue to execute
-     machine_init and the rest.
+So we have three things here that are per-board:
+ * the boardid value
+ * the boardrev value
+ * the soc_type value
 
-Since we would need to implement QMP configuration for '-device cpu',
-we as well might reuse it for custom numa mapping.
- 
-> > Signed-off-by: Igor Mammedov <imammedo@redhat.com>
-> > ---
-> >  hw/i386/pc.c      | 17 +++++++++++++++++
-> >  target/i386/cpu.c |  1 +
-> >  2 files changed, 18 insertions(+)
-> > 
-> > diff --git a/hw/i386/pc.c b/hw/i386/pc.c
-> > index 7031100..873bbfa 100644
-> > --- a/hw/i386/pc.c
-> > +++ b/hw/i386/pc.c
-> > @@ -1895,6 +1895,7 @@ static void pc_cpu_pre_plug(HotplugHandler *hotplug_dev,
-> >                              DeviceState *dev, Error **errp)
-> >  {
-> >      int idx;
-> > +    int node_id;
-> >      CPUState *cs;
-> >      CPUArchId *cpu_slot;
-> >      X86CPUTopoInfo topo;
-> > @@ -1984,6 +1985,22 @@ static void pc_cpu_pre_plug(HotplugHandler *hotplug_dev,
-> >  
-> >      cs = CPU(cpu);
-> >      cs->cpu_index = idx;
-> > +
-> > +    node_id = numa_get_node_for_cpu(cs->cpu_index);
-> > +    if (node_id == nb_numa_nodes) {
-> > +        /* by default CPUState::numa_node was 0 if it's not set via CLI
-> > +         * keep it this way for now but in future we probably should
-> > +         * refuse to start up with incomplete numa mapping */
-> > +        node_id = 0;
-> > +    }
-> > +    if (cs->numa_node == CPU_UNSET_NUMA_NODE_ID) {
-> > +        cs->numa_node = node_id;
-> > +    } else if (cs->numa_node != node_id) {
-> > +            error_setg(errp, "node-id %d must match numa node specified"
-> > +                "with -numa option for cpu-index %d",
-> > +                cs->numa_node, cs->cpu_index);
-> > +            return;
-> > +    }
-> >  }
-> >  
-> >  static void pc_machine_device_pre_plug_cb(HotplugHandler *hotplug_dev,
-> > diff --git a/target/i386/cpu.c b/target/i386/cpu.c
-> > index 7aa7622..d690244 100644
-> > --- a/target/i386/cpu.c
-> > +++ b/target/i386/cpu.c
-> > @@ -3974,6 +3974,7 @@ static Property x86_cpu_properties[] = {
-> >      DEFINE_PROP_INT32("core-id", X86CPU, core_id, -1),
-> >      DEFINE_PROP_INT32("socket-id", X86CPU, socket_id, -1),
-> >  #endif
-> > +    DEFINE_PROP_INT32("node-id", CPUState, numa_node, CPU_UNSET_NUMA_NODE_ID),
-> >      DEFINE_PROP_BOOL("pmu", X86CPU, enable_pmu, false),
-> >      { .name  = "hv-spinlocks", .info  = &qdev_prop_spinlocks },
-> >      DEFINE_PROP_BOOL("hv-relaxed", X86CPU, hyperv_relaxed_timing, false),
-> > -- 
-> > 2.7.4
-> > 
-> >   
-> 
+which we have stored in two arrays plus passing a different parameter
+to the raspi_machine_init function.
 
+Perhaps this would be better as a
+typedef struct RPiInfo {
+    const char *soc_type;
+    uint32_t boardrev;
+    uint32_t boardid;
+} RPiInfo;
+
+static const RPiInfo rpi_boards[] = {
+    {
+         /* Raspberry Pi 1 */
+         .soc_type = TYPE_BCM2835,
+         .boardrev = 0x10,
+         .boardid = 0xc42,
+    }, {
+         /* Raspberry Pi 2 */
+         ...
+    }
+};
+
+?
+
+thanks
+-- PMM

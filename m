@@ -1,151 +1,115 @@
-Received: by 10.25.0.144 with SMTP id 138csp760540lfa;
-        Thu, 20 Apr 2017 07:29:29 -0700 (PDT)
-X-Received: by 10.200.4.140 with SMTP id s12mr8822285qtg.35.1492698569001;
-        Thu, 20 Apr 2017 07:29:29 -0700 (PDT)
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 10.25.0.144 with SMTP id 138csp760955lfa;
+        Thu, 20 Apr 2017 07:30:36 -0700 (PDT)
+X-Received: by 10.200.52.85 with SMTP id v21mr8563936qtb.155.1492698635938;
+        Thu, 20 Apr 2017 07:30:35 -0700 (PDT)
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id x67si6012520qkd.274.2017.04.20.07.29.28
+        by mx.google.com with ESMTPS id r25si1085443qki.133.2017.04.20.07.30.35
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 20 Apr 2017 07:29:28 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Thu, 20 Apr 2017 07:30:35 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:54373 helo=lists.gnu.org)
+       dkim=fail header.i=@linaro.org;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:54385 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1d1D5M-0007fA-DS
-	for alex.bennee@linaro.org; Thu, 20 Apr 2017 10:29:28 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:59925)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1d1D6R-0008W6-B6
+	for alex.bennee@linaro.org; Thu, 20 Apr 2017 10:30:35 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:59973)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <imammedo@redhat.com>) id 1d1D5E-0007ex-U6
-	for qemu-arm@nongnu.org; Thu, 20 Apr 2017 10:29:22 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1d1D5G-0007f7-HB
+	for qemu-devel@nongnu.org; Thu, 20 Apr 2017 10:29:23 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <imammedo@redhat.com>) id 1d1D5B-0002hy-Kg
-	for qemu-arm@nongnu.org; Thu, 20 Apr 2017 10:29:20 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:41066)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <imammedo@redhat.com>)
-	id 1d1D5B-0002hc-9g; Thu, 20 Apr 2017 10:29:17 -0400
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
-	[10.5.11.14])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id C44D9C05493A;
-	Thu, 20 Apr 2017 14:29:15 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com C44D9C05493A
-Authentication-Results: ext-mx08.extmail.prod.ext.phx2.redhat.com;
-	dmarc=none (p=none dis=none) header.from=redhat.com
-Authentication-Results: ext-mx08.extmail.prod.ext.phx2.redhat.com;
-	spf=pass smtp.mailfrom=imammedo@redhat.com
-DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com C44D9C05493A
-Received: from nial.brq.redhat.com (dhcp-1-118.brq.redhat.com [10.34.1.118])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 2CB7118204;
-	Thu, 20 Apr 2017 14:29:13 +0000 (UTC)
-Date: Thu, 20 Apr 2017 16:29:12 +0200
-From: Igor Mammedov <imammedo@redhat.com>
-To: David Gibson <david@gibson.dropbear.id.au>
-Message-ID: <20170420162912.52241bfe@nial.brq.redhat.com>
-In-Reply-To: <20170328041920.GC21068@umbus.fritz.box>
-References: <1490189568-167621-1-git-send-email-imammedo@redhat.com>
-	<1490189568-167621-6-git-send-email-imammedo@redhat.com>
-	<20170328041920.GC21068@umbus.fritz.box>
+	(envelope-from <peter.maydell@linaro.org>) id 1d1D5F-0002kV-EE
+	for qemu-devel@nongnu.org; Thu, 20 Apr 2017 10:29:22 -0400
+Received: from mail-wm0-x22d.google.com ([2a00:1450:400c:c09::22d]:38401)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1d1D5F-0002jr-7N
+	for qemu-devel@nongnu.org; Thu, 20 Apr 2017 10:29:21 -0400
+Received: by mail-wm0-x22d.google.com with SMTP id r190so49999964wme.1
+	for <qemu-devel@nongnu.org>; Thu, 20 Apr 2017 07:29:21 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=eUE1e0G2ePMvgEzwXTcjgBFx1BfyL3FeGGwek4Rdkh4=;
+	b=SSxTcW4S2tCbrHyAnWW0B7wrJmp5x/lOqaDewYIFwh6XwTLfMnBGQ+Mqpvkkk+aRpH
+	IE/II7BsQBvWYbyf3v8NlCuZygAVQkzkjIcxqQDPEQfxNQqiaruHkq4nRHkZyRCyLyWU
+	gJO6DwFjW2S5RPlPYCwxBoCYAW211TTjFQIC0=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=eUE1e0G2ePMvgEzwXTcjgBFx1BfyL3FeGGwek4Rdkh4=;
+	b=JT6oU7mxnxuLueCGMUPanGf0v0HBV2mJGmOemimebojg5oPS1pIlXZrMwA6Nqrr/Nz
+	VstaYjcg5DM5UYJ6/YpRuQo7r/Ux0SZ/Vl4N9JIo9j+bxRtXnkzR8V1jDrTd/JDcMFKp
+	hkkoIyYU49edkRjCNrZ8UNvjtCLyi56UPY0vShxQ6A9BBo7ngI7khaX7DEZD5fJmf7e2
+	PpgaSCXrsHGCBh5HbiOIaNu8VwsIdw3Lsy4p/uPGbQ3XT7ZHUmVVwMOpLFwFxiu2+2Oj
+	XzHGHlUQp6w81j6Tj2e+5PFNJf7qwDI2BUJkBqTYUS8/C+Wz2Kcy9k7WR4Vjm6Zmq2vo
+	I+0Q==
+X-Gm-Message-State: AN3rC/5iVDTJD2ti/fvQYfUuKeo/bK9lLBQmTH/RVfzDNhk4NHVv7PgO
+	6yPBp7vPNXWIDTIKDur2F6kwMU9lm+Jk
+X-Received: by 10.28.104.195 with SMTP id d186mr3485049wmc.111.1492698560225; 
+	Thu, 20 Apr 2017 07:29:20 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.32]);
-	Thu, 20 Apr 2017 14:29:16 +0000 (UTC)
+Received: by 10.223.145.68 with HTTP; Thu, 20 Apr 2017 07:28:59 -0700 (PDT)
+In-Reply-To: <0f3ee3f1-5d73-79be-2e7d-45c0385c6758@twiddle.net>
+References: <1491844419-12485-1-git-send-email-peter.maydell@linaro.org>
+	<0f3ee3f1-5d73-79be-2e7d-45c0385c6758@twiddle.net>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 20 Apr 2017 15:28:59 +0100
+Message-ID: <CAFEAcA_9=zNiJvbbg-Cdc5_rSkA3ySYeo=quP6ApdGG6wibMoA@mail.gmail.com>
+To: Richard Henderson <rth@twiddle.net>
+Content-Type: text/plain; charset=UTF-8
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH for-2.10 05/23] numa: move
- source of default CPUs to NUMA node mapping into boards
-X-BeenThere: qemu-arm@nongnu.org
+X-Received-From: 2a00:1450:400c:c09::22d
+Subject: Re: [Qemu-devel] [PATCH v2 0/9] arm: Implement M profile exception
+ return properly
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jones <drjones@redhat.com>,
-	Eduardo Habkost <ehabkost@redhat.com>, qemu-devel@nongnu.org,
-	qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
-	Shannon Zhao <zhaoshenglong@huawei.com>,
-	Paolo Bonzini <pbonzini@redhat.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: aODy5RJycbfx
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
+	"patches@linaro.org" <patches@linaro.org>,
+	=?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: tjvHNrWSZ/GF
 
-On Tue, 28 Mar 2017 15:19:20 +1100
-David Gibson <david@gibson.dropbear.id.au> wrote:
+On 15 April 2017 at 13:31, Richard Henderson <rth@twiddle.net> wrote:
+> On 04/10/2017 10:13 AM, Peter Maydell wrote:
+>>
+>> Peter Maydell (9):
+>>   arm: Don't implement BXJ on M-profile CPUs
+>>   arm: Thumb shift operations should not permit interworking branches
+>>   arm: Factor out "generate right kind of step exception"
+>>   arm: Move gen_set_condexec() and gen_set_pc_im() up in the file
+>>   arm: Move condition-failed codepath generation out of if()
+>>   arm: Abstract out "are we singlestepping" test to utility function
+>>   arm: Track M profile handler mode state in TB flags
+>>   arm: Implement M profile exception return properly
+>>   arm: Remove workarounds for old M-profile exception return
+>>     implementation
+>>
+>>  target/arm/cpu.h       |   9 +++
+>>  target/arm/translate.h |   5 ++
+>>  target/arm/cpu.c       |  43 +-----------
+>>  target/arm/translate.c | 181
+>> +++++++++++++++++++++++++++++++++----------------
+>>  4 files changed, 138 insertions(+), 100 deletions(-)
+>
+>
+> Reviewed-by: Richard Henderson <rth@twiddle.net>
 
-> On Wed, Mar 22, 2017 at 02:32:30PM +0100, Igor Mammedov wrote:
-[...]
-answering to questions that I forgot to answer before
+Thanks; applied to target-arm.next.
 
-> > @@ -1554,6 +1554,16 @@ static void virt_set_gic_version(Object *obj, const char *value, Error **errp)
-> >      }
-> >  }
-> >  
-> > +static CpuInstanceProperties
-> > +virt_cpu_index_to_props(MachineState *ms, unsigned cpu_index)
-> > +{
-> > +    MachineClass *mc = MACHINE_GET_CLASS(ms);
-> > +    const CPUArchIdList *possible_cpus = mc->possible_cpu_arch_ids(ms);
-> > +
-> > +    assert(cpu_index < possible_cpus->len);
-> > +    return possible_cpus->cpus[cpu_index].props;;
-> > +}
-> > +  
-> 
-> It seems a bit weird to have a machine specific hook to pull the
-> property information when one way or another it's coming from the
-> possible_cpus table, which is already constructed by a machine
-> specific hook.  Could we add a range or list of cpu_index values to
-> each possible_cpus entry instead, and have a generic lookup of the
-> right entry based on that?
-Mainly I dislike the idea because it adds duplicate data to manage
-that could be computed from already stored there CpuInstanceProperties.
-
-And secondly if it were just 1 number then generic lookup would be trivial
-but with list it becomes cumbersome to manage and implementation
-larger then 3 *_cpu_index_to_props() hooks combined, it's not worth it
-in foreseeable future.
- 
-> >  static const CPUArchIdList *virt_possible_cpu_arch_ids(MachineState *ms)
-> >  {
-> >      int n;
-> > @@ -1573,8 +1583,12 @@ static const CPUArchIdList *virt_possible_cpu_arch_ids(MachineState *ms)
-> >          ms->possible_cpus->cpus[n].props.has_thread_id = true;
-> >          ms->possible_cpus->cpus[n].props.thread_id = n;
-> >  
-> > -        /* TODO: add 'has_node/node' here to describe
-> > -           to which node core belongs */
-> > +        /* default distribution of CPUs over NUMA nodes */
-> > +        if (nb_numa_nodes) {
-> > +            /* preset values but do not enable them i.e. 'has_node_id = false',
-> > +             * board will enable them if manual mapping wasn't present on CLI */  
-> 
-> I'm a little confused by this comment, since I don't see any board
-> code altering has_node_id.
-it happens in the last 2 hunks of patch 10/23
-may be I should write it like this:
-
-+            /* preset values but do not enable them i.e. 'has_node_id = false',
-+             * numa initialization code will enable them later if manual mapping
-+             * wasn't present on CLI */
-
-> 
-> > +            ms->possible_cpus->cpus[n].props.node_id = n % nb_numa_nodes;;
-> > +        }
-> >      }
-> >      return ms->possible_cpus;
-> >  }
-[...]
+-- PMM

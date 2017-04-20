@@ -1,235 +1,211 @@
-Received: by 10.25.0.144 with SMTP id 138csp734576lfa;
-        Thu, 20 Apr 2017 06:31:42 -0700 (PDT)
-X-Received: by 10.84.222.134 with SMTP id x6mr10497369pls.52.1492695102021;
-        Thu, 20 Apr 2017 06:31:42 -0700 (PDT)
-Return-Path: <kvm-owner@vger.kernel.org>
-Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
-        by mx.google.com with ESMTP id 91si6509381plh.326.2017.04.20.06.31.41;
-        Thu, 20 Apr 2017 06:31:42 -0700 (PDT)
-Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
+Received: by 10.25.0.144 with SMTP id 138csp743522lfa;
+        Thu, 20 Apr 2017 06:52:26 -0700 (PDT)
+X-Received: by 10.237.52.162 with SMTP id x31mr8056919qtd.263.1492696346446;
+        Thu, 20 Apr 2017 06:52:26 -0700 (PDT)
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
+        by mx.google.com with ESMTPS id v41si5924722qtc.250.2017.04.20.06.52.26
+        for <alex.bennee@linaro.org>
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Thu, 20 Apr 2017 06:52:26 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S945738AbdDTNb3 (ORCPT <rfc822;francois.ozog@linaro.org>
-        + 6 others); Thu, 20 Apr 2017 09:31:29 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:51166 "EHLO mx1.redhat.com"
-        rhost-flags-OK-OK-OK-OK) by vger.kernel.org with ESMTP
-        id S945734AbdDTNb1 (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Thu, 20 Apr 2017 09:31:27 -0400
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com [10.5.11.11])
-        (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-        (No client certificate requested)
-        by mx1.redhat.com (Postfix) with ESMTPS id 00B95C04B31F;
-        Thu, 20 Apr 2017 13:31:27 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 00B95C04B31F
-Authentication-Results: ext-mx07.extmail.prod.ext.phx2.redhat.com; dmarc=none (p=none dis=none) header.from=redhat.com
-Authentication-Results: ext-mx07.extmail.prod.ext.phx2.redhat.com; spf=pass smtp.mailfrom=eblake@redhat.com
-DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com 00B95C04B31F
-Received: from [10.10.121.102] (ovpn-121-102.rdu2.redhat.com [10.10.121.102])
-        by smtp.corp.redhat.com (Postfix) with ESMTP id DFA665B80D;
-        Thu, 20 Apr 2017 13:31:14 +0000 (UTC)
-Subject: Re: [Qemu-devel] [PATCH v2] event: Add source information to SHUTDOWN
-To:     Markus Armbruster <armbru@redhat.com>
-Cc:     qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
-        "open list:Overall" <kvm@vger.kernel.org>,
-        "Michael S. Tsirkin" <mst@redhat.com>,
-        Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
-        Alexander Graf <agraf@suse.de>,
-        Scott Wood <scottwood@freescale.com>,
-        Gerd Hoffmann <kraxel@redhat.com>,
-        "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
-        Rob Herring <robh@kernel.org>,
-        Stefano Stabellini <sstabellini@kernel.org>,
-        Magnus Damm <magnus.damm@gmail.com>,
-        Christian Borntraeger <borntraeger@de.ibm.com>,
-        Anthony Perard <anthony.perard@citrix.com>,
-        "open list:X86" <xen-devel@lists.xenproject.org>,
-        Richard Henderson <rth@twiddle.net>,
-        Artyom Tarasenko <atar4qemu@gmail.com>,
-        Eduardo Habkost <ehabkost@redhat.com>,
-        Stefan Weil <sw@weilnetz.de>,
-        Alistair Francis <alistair.francis@xilinx.com>,
-        "open list:Calxeda Highbank" <qemu-arm@nongnu.org>,
-        Jan Kiszka <jan.kiszka@web.de>,
-        Igor Mammedov <imammedo@redhat.com>,
-        Cornelia Huck <cornelia.huck@de.ibm.com>,
-        David Gibson <david@gibson.dropbear.id.au>,
-        Paul Burton <paul.burton@imgtec.com>,
-        Max Filippov <jcmvbkbc@gmail.com>,
-        Marcelo Tosatti <mtosatti@redhat.com>,
-        Michael Walle <michael@walle.cc>,
-        "open list:New World" <qemu-ppc@nongnu.org>,
-        Yongbok Kim <yongbok.kim@imgtec.com>,
-        Paolo Bonzini <pbonzini@redhat.com>,
-        Aurelien Jarno <aurelien@aurel32.net>
-References: <20170419222258.13415-1-eblake@redhat.com>
- <87k26fffxa.fsf@dusky.pond.sub.org>
-From:   Eric Blake <eblake@redhat.com>
-Openpgp: url=http://people.redhat.com/eblake/eblake.gpg
-Organization: Red Hat, Inc.
-Message-ID: <1adf2797-b86a-00be-bb98-658ee8d0a55d@redhat.com>
-Date:   Thu, 20 Apr 2017 08:31:13 -0500
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
- Thunderbird/52.0
+       dkim=fail header.i=@linaro.org;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:53994 helo=lists.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1d1CVV-000184-KC
+	for alex.bennee@linaro.org; Thu, 20 Apr 2017 09:52:25 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:41742)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <peter.maydell@linaro.org>) id 1d1CUW-0000mv-Mp
+	for qemu-devel@nongnu.org; Thu, 20 Apr 2017 09:51:26 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+	(envelope-from <peter.maydell@linaro.org>) id 1d1CUV-0003zg-0x
+	for qemu-devel@nongnu.org; Thu, 20 Apr 2017 09:51:24 -0400
+Received: from mail-wr0-x232.google.com ([2a00:1450:400c:c0c::232]:35190)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1d1CUU-0003z1-Oq
+	for qemu-devel@nongnu.org; Thu, 20 Apr 2017 09:51:22 -0400
+Received: by mail-wr0-x232.google.com with SMTP id o21so36085916wrb.2
+	for <qemu-devel@nongnu.org>; Thu, 20 Apr 2017 06:51:22 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=57LATNgxI0Z6h7J5oPmEON30RLoe3q5GAz3e6SEwOAQ=;
+	b=HGeZklrMzT+W5KL8Mm/K0aXNOea6/tQqDIOZMKDADhVN7+1nRPCdL7U++Yv9tBzhal
+	XLl9eu6QXoHhK7jb5uC9SvQspirfZsF8RNfb+RwSOhldlU+74iT7ZRmT1tAKj3kkyqf2
+	aDKiz6LOmuzc7ZeHuAV3vzCwAebO0y8F9tLAA=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=57LATNgxI0Z6h7J5oPmEON30RLoe3q5GAz3e6SEwOAQ=;
+	b=SacezBHaMKfcEw+p19cB2Z6KjRlQ47nV1NFMKEgPawK57e8VNpNmWeBG79lfP2+8dE
+	B+VKgs45QEdm0WpRrN0JgDinEmMSsklix0sFYRzPlBXN5AK3FxIm1LFd/Pkg+PvsNXw8
+	XHMS+z5u4UbdDdfWwg4nCpS2D2ZTp8oyShXKW8Zw4vewEPXz46eXLOhvUUKxRvremvc4
+	zb2KWQ5Q2ZUmmOtDGCOH+0RzVx/6YSsypoLSdegG5oCSZgBBzxWjdtTtr4s7AYMrogZG
+	2i436ewpyX43uoAUe6//OdSCJ1j9TxnHRA33OHPZgMKyKTwzqCXDXy/2OitT+4Z0cw95
+	AB1w==
+X-Gm-Message-State: AN3rC/60Rz3vXY8cyETWQvm8HhJcIn20Ki0Q2O/xnAzmeIYH6PzYcsYa
+	LQNIieDTaoGaBeScTn8Ast9M4jq8ROZt
+X-Received: by 10.223.150.179 with SMTP id u48mr1985969wrb.195.1492696281292; 
+	Thu, 20 Apr 2017 06:51:21 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <87k26fffxa.fsf@dusky.pond.sub.org>
-Content-Type: multipart/signed; micalg=pgp-sha256;
- protocol="application/pgp-signature";
- boundary="rvogOOC9M8Qchv8Tmi1DsIOcOodRm5gnm"
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.5.110.31]); Thu, 20 Apr 2017 13:31:27 +0000 (UTC)
-Sender: kvm-owner@vger.kernel.org
-Precedence: bulk
-List-ID: <kvm.vger.kernel.org>
-X-Mailing-List: kvm@vger.kernel.org
-X-TUID: Jk/kXef+OaLj
+Received: by 10.223.145.68 with HTTP; Thu, 20 Apr 2017 06:51:00 -0700 (PDT)
+In-Reply-To: <20170416151604.22506-1-krzk@kernel.org>
+References: <20170416151604.22506-1-krzk@kernel.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 20 Apr 2017 14:51:00 +0100
+Message-ID: <CAFEAcA915o-MYNYwPQXpAs7sWS=4ft_iXG41uZx=S27JuutH7Q@mail.gmail.com>
+To: Krzysztof Kozlowski <krzk@kernel.org>
+Content-Type: text/plain; charset=UTF-8
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2a00:1450:400c:c0c::232
+Subject: Re: [Qemu-devel] [RFC] hw/arm/exynos: Add generic SDHCI devices
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.21
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Igor Mitsyanko <i.mitsyanko@gmail.com>, qemu-arm <qemu-arm@nongnu.org>,
+	QEMU Developers <qemu-devel@nongnu.org>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: NBzqyOC5D6TT
 
-This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
---rvogOOC9M8Qchv8Tmi1DsIOcOodRm5gnm
-Content-Type: multipart/mixed; boundary="bdiEwU9oHGQkEuSqQaCVwe4exF35AiELM";
- protected-headers="v1"
-From: Eric Blake <eblake@redhat.com>
-To: Markus Armbruster <armbru@redhat.com>
-Cc: qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
- "open list:Overall" <kvm@vger.kernel.org>,
- "Michael S. Tsirkin" <mst@redhat.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- Alexander Graf <agraf@suse.de>, Scott Wood <scottwood@freescale.com>,
- Gerd Hoffmann <kraxel@redhat.com>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, Rob Herring
- <robh@kernel.org>, Stefano Stabellini <sstabellini@kernel.org>,
- Magnus Damm <magnus.damm@gmail.com>,
- Christian Borntraeger <borntraeger@de.ibm.com>,
- Anthony Perard <anthony.perard@citrix.com>,
- "open list:X86" <xen-devel@lists.xenproject.org>,
- Richard Henderson <rth@twiddle.net>, Artyom Tarasenko <atar4qemu@gmail.com>,
- Eduardo Habkost <ehabkost@redhat.com>, Stefan Weil <sw@weilnetz.de>,
- Alistair Francis <alistair.francis@xilinx.com>,
- "open list:Calxeda Highbank" <qemu-arm@nongnu.org>,
- Jan Kiszka <jan.kiszka@web.de>, Igor Mammedov <imammedo@redhat.com>,
- Cornelia Huck <cornelia.huck@de.ibm.com>,
- David Gibson <david@gibson.dropbear.id.au>,
- Paul Burton <paul.burton@imgtec.com>, Max Filippov <jcmvbkbc@gmail.com>,
- Marcelo Tosatti <mtosatti@redhat.com>, Michael Walle <michael@walle.cc>,
- "open list:New World" <qemu-ppc@nongnu.org>,
- Yongbok Kim <yongbok.kim@imgtec.com>, Paolo Bonzini <pbonzini@redhat.com>,
- Aurelien Jarno <aurelien@aurel32.net>
-Message-ID: <1adf2797-b86a-00be-bb98-658ee8d0a55d@redhat.com>
-Subject: Re: [Qemu-devel] [PATCH v2] event: Add source information to SHUTDOWN
-References: <20170419222258.13415-1-eblake@redhat.com>
- <87k26fffxa.fsf@dusky.pond.sub.org>
-In-Reply-To: <87k26fffxa.fsf@dusky.pond.sub.org>
+On 16 April 2017 at 16:16, Krzysztof Kozlowski <krzk@kernel.org> wrote:
+> Exynos4210 has four SD/MMC controllers supporting:
+>  - SD Standard Host Specification Version 2.0,
+>  - MMC Specification Version 4.3,
+>  - SDIO Card Specification Version 2.0,
+>  - DMA and ADMA.
+>
+> Add emulation of SDHCI devices which allows accessing storage through SD
+> cards. Differences from real hardware:
+>  - Devices are shipped with eMMC memory, not SD card.
+>  - The Exynos4210 SDHCI has few more registers, e.g. for
+>    controlling the clocks, additional status (0x80, 0x84, 0x8c). These
+>    are not implemented.
+>
+> Testing on smdkc210 machine with "-drive file=FILE,if=sd,bus=0,index=2".
+>
+> Signed-off-by: Krzysztof Kozlowski <krzk@kernel.org>
+>
+> ---
+>
+> Mostly it works:
+> [   11.763786] sdhci: Secure Digital Host Controller Interface driver
+> [   11.764593] sdhci: Copyright(c) Pierre Ossman
+> [   11.777295] s3c-sdhci 12530000.sdhci: clock source 2: mmc_busclk.2 (12000000 Hz)
+> [   11.976250] mmc0: SDHCI controller on samsung-hsmmc [12530000.sdhci] using ADMA
+> [   11.980283] Synopsys Designware Multimedia Card Interface Driver
+> [   12.086757] mmc0: new SDHC card at address 4567
+> [   12.151653] mmcblk0: mmc0:4567 QEMU! 4.00 GiB
+>
+> ... except that for guest, the storage starts from 0x50000. It just
+> skips first 0x50000 bytes thus the paritions (MBR) and initial data is
+> not visible.
+>
+> I don't know what is the cause.
+>
+> Any hints?
 
---bdiEwU9oHGQkEuSqQaCVwe4exF35AiELM
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: quoted-printable
+That is strange and it sounds like we should try to track down
+what is going on there. Hopefully it shouldn't be too hard to trace
+through what happens when the guest accesses what it thinks is the
+first block on the SD card...
 
-On 04/20/2017 06:59 AM, Markus Armbruster wrote:
+Otherwise I just have a couple of nits below.
 
->=20
-> No objection to Alistair's idea to turn this into an enumeration.
+> Signed-off-by: Krzysztof Kozlowski <krzk@kernel.org>
+> ---
+>  hw/arm/exynos4210.c | 29 +++++++++++++++++++++++++++++
+>  1 file changed, 29 insertions(+)
+>
+> diff --git a/hw/arm/exynos4210.c b/hw/arm/exynos4210.c
+> index 0ec4250f0c05..d581f2217253 100644
+> --- a/hw/arm/exynos4210.c
+> +++ b/hw/arm/exynos4210.c
+> @@ -32,6 +32,7 @@
+>  #include "hw/arm/arm.h"
+>  #include "hw/loader.h"
+>  #include "hw/arm/exynos4210.h"
+> +#include "hw/sd/sd.h"
+>  #include "hw/usb/hcd-ehci.h"
+>
+>  #define EXYNOS4210_CHIPID_ADDR         0x10000000
+> @@ -72,6 +73,13 @@
+>  #define EXYNOS4210_EXT_COMBINER_BASE_ADDR   0x10440000
+>  #define EXYNOS4210_INT_COMBINER_BASE_ADDR   0x10448000
+>
+> +/* SD/MMC host controllers */
+> +#define EXYNOS4210_SDHCI_CAPABILITIES       0x05E80080
+> +#define EXYNOS4210_SDHCI_BASE_ADDR          0x12510000
+> +#define EXYNOS4210_SDHCI_ADDR(n)            (EXYNOS4210_SDHCI_BASE_ADDR + \
+> +                                                0x00010000 * (n))
+> +#define EXYNOS4210_SDHCI_NUMBER             4
+> +
+>  /* PMU SFR base address */
+>  #define EXYNOS4210_PMU_BASE_ADDR            0x10020000
+>
+> @@ -386,6 +394,27 @@ Exynos4210State *exynos4210_init(MemoryRegion *system_mem,
+>                             EXYNOS4210_UART3_FIFO_SIZE, 3, NULL,
+>                    s->irq_table[exynos4210_get_irq(EXYNOS4210_UART_INT_GRP, 3)]);
+>
+> +    /*** SD/MMC host controllers ***/
+> +    for (n = 0; n < EXYNOS4210_SDHCI_NUMBER; n++) {
+> +        DeviceState *carddev;
+> +        DriveInfo *di;
+> +        BlockBackend *blk;
+> +
+> +        dev = qdev_create(NULL, "generic-sdhci");
+> +        qdev_prop_set_uint32(dev, "capareg", EXYNOS4210_SDHCI_CAPABILITIES);
+> +        qdev_init_nofail(dev);
+> +
+> +        busdev = SYS_BUS_DEVICE(dev);
+> +        sysbus_mmio_map(busdev, 0, EXYNOS4210_SDHCI_ADDR(n));
+> +        sysbus_connect_irq(busdev, 0, s->irq_table[exynos4210_get_irq(29, n)]);
+> +
+> +        di = drive_get_next(IF_SD);
 
-Question - should the enum be more than just 'guest' and 'host'?  For
-example, my patch proves that we have a lot of places that handle
-complimentary machine commands to reset and shutdown, and that whether
-'reset' triggers a reset (and the guest keeps running as if rebooted) or
-a shutdown is then based on the command-line arguments given to qemu.
-So having the enum differentiate between 'guest-reset' and
-'guest-shutdown' would be a possibility, if we want the enum to have
-additional states.
+    di = drive_get(IF_SD, 0, n);
 
+would be better -- this explicitly states that SD cards 0,1,2,3
+connect to these controllers, rather than implicitly assigning
+whatever the "next" ones happen to be.
 
->> +++ b/vl.c
->> @@ -1717,7 +1717,7 @@ void qemu_system_guest_panicked(GuestPanicInform=
-ation *info)
->>      if (!no_shutdown) {
->>          qapi_event_send_guest_panicked(GUEST_PANIC_ACTION_POWEROFF,
->>                                         !!info, info, &error_abort);
->> -        qemu_system_shutdown_request();
->> +        qemu_system_shutdown_request(false);
->=20
-> Panicking is a guest action.  Whether the shutdown on panic should be
-> attributed to guest or host is perhaps debatable.
+> +        blk = di ? blk_by_legacy_dinfo(di) : NULL;
+> +        carddev = qdev_create(qdev_get_child_bus(dev, "sd-bus"), TYPE_SD_CARD);
+> +        qdev_prop_set_drive(carddev, "drive", blk, &error_abort);
+> +        qdev_prop_set_bit(carddev, "realized", true);
 
-And it relates to the idea that a guest request for a 'reset' turns into
-a qemu response of 'shutdown'.  After all, whether a guest panic results
-in a shutdown action is determined by command-line arguments to qemu.
-So if we DO want to differentiate between a guest panic and a normal
-guest shutdown, when both events are wired at the command line to cause
-the SHUTDOWN action, then that's another enum to add to my list.
+This isn't the right way to set the realized property. You can either:
+ (a) use qdev_init_nofail(), which sets the property and prints an
+error and exits if the device realize fails
+ (b) use object_property_set_bool() to set the property and handle
+errors yourself
 
+> +    }
+> +
+>      /*** Display controller (FIMD) ***/
+>      sysbus_create_varargs("exynos4210.fimd", EXYNOS4210_FIMD0_BASE_ADDR,
+>              s->irq_table[exynos4210_get_irq(11, 0)],
+> --
+> 2.9.3
 
->> +++ b/replay/replay.c
->> @@ -51,7 +51,10 @@ bool replay_next_event_is(int event)
->>          switch (replay_state.data_kind) {
->>          case EVENT_SHUTDOWN:
->>              replay_finish_event();
->> -            qemu_system_shutdown_request();
->> +            /* TODO: track source of shutdown request, to replay a
->> +             * guest-initiated request rather than always claiming to=
+Incidentally someday maybe we should convert this Exynos4210 code
+to a proper QOM SoC container object, but that would be a lot of
+work.
 
->> +             * be from the host? */
->> +            qemu_system_shutdown_request(false);
->=20
-> This is what your "need a followup patch" refers to.  I'd like to have
-> an opinion from someone familiar with replay on what exactly we need
-> here.
-
-replay-internal.h has an enum ReplayEvents, which is a list of one-byte
-codes used in the replay data stream to record which event to replay. I
-don't know if it is easier to change the replay stream to add a 2-byte
-code (shutdown-with-cause, followed by an encoding of the cause enum),
-or a range of one-byte codes (one new code per number of enum members).
-I also don't know how easy or hard it is to extend the enum (are we free
-to add events in the middle, or are we worried about back-compat to an
-older replay stream that must still play correctly with a newer qemu,
-such that new events must be higher than all existing events).
-
-So yes, I'm hoping for feedback from someone familiar with replay.
-
->=20
-> Amazing number of ways to shut down or reset a machine.
-
-And as I said, it would be easier to submit a patch with less churn by
-having the uncommon case (host-triggered) call a new
-qemu_system_shutdown_request_reason(enum), while the common case
-(guest-triggered) be handled by having qemu_system_shutdown_request()
-with no arguments call
-qemu_system_shutdown_request_reason(SHUTDOWN_GUEST).  I'm just worried
-that doing it that way makes it easy for yet another new host shutdown
-method to use the wrong wrapper.
-
->=20
-> Looks sane on first glance.
->=20
-
---=20
-Eric Blake, Principal Software Engineer
-Red Hat, Inc.           +1-919-301-3266
-Virtualization:  qemu.org | libvirt.org
-
-
---bdiEwU9oHGQkEuSqQaCVwe4exF35AiELM--
-
---rvogOOC9M8Qchv8Tmi1DsIOcOodRm5gnm
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: OpenPGP digital signature
-Content-Disposition: attachment; filename="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v2
-Comment: Public key at http://people.redhat.com/eblake/eblake.gpg
-Comment: Using GnuPG with Thunderbird - http://www.enigmail.net/
-
-iQEcBAEBCAAGBQJY+LghAAoJEKeha0olJ0NqDt8IAIrnTV7Mwg28cND2x9q3CyEM
-xBNQKsByD/aE87wf8Au0NWGtzlfa5DhEHbqqMhPBO+QHUQfa0l9Go44h5HXUKmy/
-dmm+X/9ow24Ujuf8ARxFIGJacPB7L7hSGxJdeIw853qIxlh6RNIW91plyZKn/FVa
-O8hSosbP4+YiDT0p/yKVtt1e4h3fZ1WD0YFWFUTkIruJcABCPmYHyRPkSHNClkAq
-rPnd3/Kk+D1HpvGXF6aAfXp7/flBcDvpp4b1qgxe086zMjL/beMkfwAIJNMlFZQ+
-nKLWFfi9uRwkGUYUIwOOtxvCcK+EBU8dww7ZUTt/xEmONlIzHUtQVAS1XVTJ7/g=
-=qNfk
------END PGP SIGNATURE-----
-
---rvogOOC9M8Qchv8Tmi1DsIOcOodRm5gnm--
+thanks
+-- PMM

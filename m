@@ -1,183 +1,113 @@
-Received: by 10.25.0.144 with SMTP id 138csp58676lfa;
-        Thu, 20 Apr 2017 18:59:29 -0700 (PDT)
-X-Received: by 10.55.116.1 with SMTP id p1mr10351662qkc.115.1492739969041;
-        Thu, 20 Apr 2017 18:59:29 -0700 (PDT)
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 10.25.0.144 with SMTP id 138csp110918lfa;
+        Thu, 20 Apr 2017 22:44:44 -0700 (PDT)
+X-Received: by 10.55.155.131 with SMTP id d125mr11180705qke.32.1492753483987;
+        Thu, 20 Apr 2017 22:44:43 -0700 (PDT)
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id m5si7949155qkd.24.2017.04.20.18.59.28
+        by mx.google.com with ESMTPS id 75si8471787qky.210.2017.04.20.22.44.43
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 20 Apr 2017 18:59:29 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Thu, 20 Apr 2017 22:44:43 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gibson.dropbear.id.au;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:56700 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:57267 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1d1Nr6-0002nl-Ik
-	for alex.bennee@linaro.org; Thu, 20 Apr 2017 21:59:28 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:59318)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1d1RN5-0000B7-4E
+	for alex.bennee@linaro.org; Fri, 21 Apr 2017 01:44:43 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:48412)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <dgibson@ozlabs.org>) id 1d1Nqz-0002md-2M
-	for qemu-arm@nongnu.org; Thu, 20 Apr 2017 21:59:22 -0400
+	(envelope-from <armbru@redhat.com>) id 1d1RJa-0005sf-2T
+	for qemu-devel@nongnu.org; Fri, 21 Apr 2017 01:41:07 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <dgibson@ozlabs.org>) id 1d1Nqw-0006Ra-1M
-	for qemu-arm@nongnu.org; Thu, 20 Apr 2017 21:59:21 -0400
-Received: from ozlabs.org ([103.22.144.67]:38447)
+	(envelope-from <armbru@redhat.com>) id 1d1RJZ-0004e9-6r
+	for qemu-devel@nongnu.org; Fri, 21 Apr 2017 01:41:06 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:47904)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <dgibson@ozlabs.org>)
-	id 1d1Nqv-0006QY-Bt; Thu, 20 Apr 2017 21:59:17 -0400
-Received: by ozlabs.org (Postfix, from userid 1007)
-	id 3w8JnW5FQSz9s4s; Fri, 21 Apr 2017 11:59:11 +1000 (AEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-	d=gibson.dropbear.id.au; s=201602; t=1492739951;
-	bh=TPVV+1VHtcH48ualLl5WVLDv3+aRpXgt8h9Q5n0ltFc=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=BVAgf64AQeG/vg9mqGnyB4SJcMTuW2oLaUGUywaIXxyVY17ANJKZJhmFmJqNvZkwM
-	pQlFJJDoI3SPgeTAjP6D/xoA2PllAWczzsDpAgHw1RRdnZDqNGx3BNl/tKRjU8pigd
-	qw25C/wqrwTsfGB82eQ6LZ0rudPFh8t6YAJ8EQbs=
-Date: Fri, 21 Apr 2017 11:45:10 +1000
-From: David Gibson <david@gibson.dropbear.id.au>
+	(Exim 4.71) (envelope-from <armbru@redhat.com>)
+	id 1d1RJS-0004YL-O9; Fri, 21 Apr 2017 01:40:58 -0400
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+	[10.5.11.13])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 989A320264;
+	Fri, 21 Apr 2017 05:40:57 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 989A320264
+Authentication-Results: ext-mx05.extmail.prod.ext.phx2.redhat.com;
+	dmarc=none (p=none dis=none) header.from=redhat.com
+Authentication-Results: ext-mx05.extmail.prod.ext.phx2.redhat.com;
+	spf=pass smtp.mailfrom=armbru@redhat.com
+DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com 989A320264
+Received: from blackfin.pond.sub.org (ovpn-116-149.ams2.redhat.com
+	[10.36.116.149])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 5362717966;
+	Fri, 21 Apr 2017 05:40:57 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+	id C35F51138646; Fri, 21 Apr 2017 07:40:55 +0200 (CEST)
+From: Markus Armbruster <armbru@redhat.com>
 To: Laurent Vivier <lvivier@redhat.com>
-Message-ID: <20170421014510.GA31355@umbus.fritz.box>
 References: <20170414083717.13641-1-lvivier@redhat.com>
-	<20170414083717.13641-3-lvivier@redhat.com>
-	<20170418030950.GE12235@umbus.fritz.box>
+Date: Fri, 21 Apr 2017 07:40:55 +0200
+In-Reply-To: <20170414083717.13641-1-lvivier@redhat.com> (Laurent Vivier's
+	message of "Fri, 14 Apr 2017 10:37:13 +0200")
+Message-ID: <87tw5i1fo8.fsf@dusky.pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/25.1 (gnu/linux)
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="/04w6evG8XlLl3ft"
-Content-Disposition: inline
-In-Reply-To: <20170418030950.GE12235@umbus.fritz.box>
-User-Agent: Mutt/1.8.0 (2017-02-23)
+Content-Type: text/plain
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.29]);
+	Fri, 21 Apr 2017 05:40:57 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 103.22.144.67
-Subject: Re: [Qemu-arm] [Qemu-ppc] [PATCH v2 2/4] ppc: remove
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-devel] [PATCH v2 0/4] qdev: remove all remaining
  cannot_destroy_with_object_finalize_yet
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org,
-	Markus Armbruster <armbru@redhat.com>,
 	Alistair Francis <alistair.francis@xilinx.com>,
 	Beniamino Galvani <b.galvani@gmail.com>, qemu-arm@nongnu.org,
-	qemu-ppc@nongnu.org, Antony Pavlov <antonynpavlov@gmail.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: UQYy5mdOmaCl
+	qemu-ppc@nongnu.org, Antony Pavlov <antonynpavlov@gmail.com>,
+	"Edgar E . Iglesias" <edgar.iglesias@gmail.com>,
+	David Gibson <david@gibson.dropbear.id.au>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: jxaOc93zkpVP
 
+Laurent Vivier <lvivier@redhat.com> writes:
 
---/04w6evG8XlLl3ft
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+> This series removes all the remaining uses of
+> cannot_destroy_with_object_finalize_yet to finally remove
+> the flag itself.
+>
+> The ARM patch has already been sent alone and reviewed by Markus.
+> I have tested the ppc one on ppc64 machine with KVM and using
+> QDM device-list-properties command.
+>
+> For the versatile one, the flag allowed to workaround a problem
+> in the bus unparent function: the bus unparent is trying to
+> unparent all the children of the bus. To do that, it has a list
+> of the children of the bus, and calls object_unparent() for each
+> child, and object_unparent() calls object_property_del_child() if
+> obj->parent is not NULL.  As qdev_set_parent_bus() set only
+> parent_bus and the list of children, parent is NULL and the child
+> is never deleted.  We can avoid the problem by moving the
+> qdev_set_parent_bus() to the realize part.
+>
+> I've tested all the changes with "make check" (including
+> device-introspect-test). I've booted a versatilepb machine
+> with a 3.16.0-4 debian installer kernel.
 
-On Tue, Apr 18, 2017 at 01:09:50PM +1000, David Gibson wrote:
-> On Fri, Apr 14, 2017 at 10:37:15AM +0200, Laurent Vivier wrote:
-> > This removes the assert(kvm_enabled()) from kvmppc_host_cpu_initfn()
-> >=20
-> > This assert can never be triggered as the function is only registered
-> > when KVM is available (see also 4c315c2
-> > "qdev: Protect device-list-properties against broken devices").
-> >=20
-> > So we can remove the cannot_destroy_with_object_finalize_yet from
-> > kvmppc_host_cpu_class_init() without fear and beyond reproach.
-> > (as it has already be done for i386 with 771a13e "i386: Unset
-> > cannot_destroy_with_object_finalize_yet on "host" model" and
-> > e435601 "target-i386: Remove assert(kvm_enabled()) from
-> > host_x86_cpu_initfn()")
-> >=20
-> > Signed-off-by: Laurent Vivier <lvivier@redhat.com>
->=20
-> Applied to ppc-for-2.10 (fixing a contextual conflict on the way).
-
-Looks like this will go through Markus' tree instead, so:
-
-Acked-by: David Gibson <david@gibson.dropbear.id.au>
-
->=20
->=20
-> > ---
-> >  target/ppc/kvm.c | 10 ----------
-> >  1 file changed, 10 deletions(-)
-> >=20
-> > diff --git a/target/ppc/kvm.c b/target/ppc/kvm.c
-> > index 9f1f132..64017ac 100644
-> > --- a/target/ppc/kvm.c
-> > +++ b/target/ppc/kvm.c
-> > @@ -2245,14 +2245,8 @@ static void alter_insns(uint64_t *word, uint64_t=
- flags, bool on)
-> >      }
-> >  }
-> > =20
-> > -static void kvmppc_host_cpu_initfn(Object *obj)
-> > -{
-> > -    assert(kvm_enabled());
-> > -}
-> > -
-> >  static void kvmppc_host_cpu_class_init(ObjectClass *oc, void *data)
-> >  {
-> > -    DeviceClass *dc =3D DEVICE_CLASS(oc);
-> >      PowerPCCPUClass *pcc =3D POWERPC_CPU_CLASS(oc);
-> >      uint32_t vmx =3D kvmppc_get_vmx();
-> >      uint32_t dfp =3D kvmppc_get_dfp();
-> > @@ -2279,9 +2273,6 @@ static void kvmppc_host_cpu_class_init(ObjectClas=
-s *oc, void *data)
-> >      if (icache_size !=3D -1) {
-> >          pcc->l1_icache_size =3D icache_size;
-> >      }
-> > -
-> > -    /* Reason: kvmppc_host_cpu_initfn() dies when !kvm_enabled() */
-> > -    dc->cannot_destroy_with_object_finalize_yet =3D true;
-> >  }
-> > =20
-> >  bool kvmppc_has_cap_epr(void)
-> > @@ -2333,7 +2324,6 @@ static int kvm_ppc_register_host_cpu_type(void)
-> >  {
-> >      TypeInfo type_info =3D {
-> >          .name =3D TYPE_HOST_POWERPC_CPU,
-> > -        .instance_init =3D kvmppc_host_cpu_initfn,
-> >          .class_init =3D kvmppc_host_cpu_class_init,
-> >      };
-> >      PowerPCCPUClass *pvr_pcc;
->=20
-
-
-
---=20
-David Gibson			| I'll have my music baroque, and my code
-david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
-				| _way_ _around_!
-http://www.ozlabs.org/~dgibson
-
---/04w6evG8XlLl3ft
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v2
-
-iQIcBAEBCAAGBQJY+WQjAAoJEGw4ysog2bOSvL0QAJDRZ9ysivKCwbsxPwByH8Zb
-jphOQk3Qx4afn9odc05Gdz/1L7/XUK0PHEL+TdBKNqKrDD9nH5x9KY5EoTmmgEoG
-i/jJ46uw/PWgG1nTxFijfJJ5gK4mDKR7ISo9ROJm1aqKoqk44jDdN8LIEGXJgv8u
-gFN4zp26g0WK9urGvcZoH4n+AA3TYIlBiWFs6+e6jmLpPqY3FTz9YBo4RjOhnDgS
-PMQ2NAPKjCqBE+UHsHNjUNrKwxk2twiGpdovJW30UZJzSp8EB5prKX3hbRU5YU61
-OP12J30fZqCHZrVJouhkuNbfuTGSTCI/6HuD0MBjoIPZ83Ouy41Nf9maDvH2JhIW
-VJm9iDB9TYOz2xwHPLCHgMKQ5yIgV+J2ed8HARTC9nNZFjOtFlein6cZAAiL2JDN
-LWkd1AbGYWIPTL28OEYlkmAfW7C878MijOik4j0CY8Q/q7Gu+OTLHSljVg9uxnia
-tVcBCwOKANViozo0YMshw68Z1RbL1HKmfKMuTukN32QVy/zCs9CnxTaINGghLqGn
-CJRsxlb9UrjJvgksW3AiVcHk8LEK7PuUjtAFpscPdhk+UvFx2K9KhpJ7ODXy7BcJ
-mHaczL3M7WCl7IseX6GZOSorHRg8eLpATyZ5DCczgcKGMvk9ODXoBPyko9xm4Z5i
-pq1VesQ/16cKmatBrg5S
-=74K3
------END PGP SIGNATURE-----
-
---/04w6evG8XlLl3ft--
+Applied to my tree, thanks!

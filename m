@@ -1,51 +1,69 @@
-Received: by 10.25.0.144 with SMTP id 138csp301307lfa;
-        Fri, 21 Apr 2017 06:56:54 -0700 (PDT)
-X-Received: by 10.55.105.6 with SMTP id e6mr12618808qkc.252.1492783014482;
-        Fri, 21 Apr 2017 06:56:54 -0700 (PDT)
+Received: by 10.25.0.144 with SMTP id 138csp789951lfa;
+        Sat, 22 Apr 2017 11:46:47 -0700 (PDT)
+X-Received: by 10.55.103.212 with SMTP id b203mr17787653qkc.264.1492886807264;
+        Sat, 22 Apr 2017 11:46:47 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id 97si9588932qtc.208.2017.04.21.06.56.54
+        by mx.google.com with ESMTPS id y129si9487014qke.157.2017.04.22.11.46.47
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 21 Apr 2017 06:56:54 -0700 (PDT)
+        Sat, 22 Apr 2017 11:46:47 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:59802 helo=lists.gnu.org)
+Received: from localhost ([::1]:36540 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1d1Z3N-0004oN-RX
-	for alex.bennee@linaro.org; Fri, 21 Apr 2017 09:56:53 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:45695)
+	id 1d203S-00053x-Po
+	for alex.bennee@linaro.org; Sat, 22 Apr 2017 14:46:46 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:42942)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <jdumaresq@cimeq.qc.ca>) id 1d1YeX-0006Un-S2
-	for qemu-arm@nongnu.org; Fri, 21 Apr 2017 09:31:15 -0400
+	(envelope-from <k.kozlowski.k@gmail.com>) id 1d203O-00053f-M9
+	for qemu-arm@nongnu.org; Sat, 22 Apr 2017 14:46:44 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <jdumaresq@cimeq.qc.ca>) id 1d1YeU-0004zw-Lp
-	for qemu-arm@nongnu.org; Fri, 21 Apr 2017 09:31:13 -0400
-Received: from sogo.cimeq.qc.ca ([205.237.245.50]:41590)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <jdumaresq@cimeq.qc.ca>)
-	id 1d1YeU-0004uI-G0
-	for qemu-arm@nongnu.org; Fri, 21 Apr 2017 09:31:10 -0400
-Received: from [10.0.3.1] (unknown [10.0.3.1])
-	by sogo.cimeq.qc.ca (Postfix) with ESMTPSA id 581A32E0108
-	for <qemu-arm@nongnu.org>; Fri, 21 Apr 2017 09:30:55 -0400 (EDT)
-To: qemu-arm@nongnu.org
-From: Jonathan Dumaresq <jdumaresq@cimeq.qc.ca>
-Message-ID: <2c661969-7598-be7a-16d8-b121da250a30@cimeq.qc.ca>
-Date: Fri, 21 Apr 2017 09:30:55 -0400
-User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:52.0) Gecko/20100101
-	Thunderbird/52.0.1
+	(envelope-from <k.kozlowski.k@gmail.com>) id 1d203J-0000kh-N0
+	for qemu-arm@nongnu.org; Sat, 22 Apr 2017 14:46:42 -0400
+Received: from mail-wr0-f193.google.com ([209.85.128.193]:34607)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <k.kozlowski.k@gmail.com>)
+	id 1d203J-0000hy-Cw; Sat, 22 Apr 2017 14:46:37 -0400
+Received: by mail-wr0-f193.google.com with SMTP id 6so1606806wrb.1;
+	Sat, 22 Apr 2017 11:46:36 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+	:mime-version:content-disposition:in-reply-to:user-agent;
+	bh=jRGStI2YAdFqQjJsTyM0XTJcP73jSX0HggZBU1fBK2I=;
+	b=jyAXYke9pF5uQDKJgmGsiqcpOqWHK3aQY0P6NUJva8STgWUHoj2re8JA9byhZHtNS3
+	x2r7UX34KcNf1dg+5W3olqogrALc7r4M5LYiJlJNYQAacraQVlbc8+Y9CYuxnu+jFurL
+	bQKXOXXkuilQmwlNSI9ga2s+8D+SkWCS5IRTtBCsQT7yugp5Ea+ekRfq9LRKnkyXT3u/
+	4L3vfBxQEsXdIM+8S85IA5cwNe9Aimkdgz7y3WXL2knIzmTAi7TY/PYXrdaF8+KPzZ5v
+	WkuDlr3r4QfdBOex3wRUzi7bpfoGH4HCSOTxtG6TLg6dYWc06/TXe3if2Y5Ecrh9SSbl
+	QCqg==
+X-Gm-Message-State: AN3rC/6WIY5XBoq/b84d95F3oxQAhdgzBxM8Os35ksZaHXtkkACL+/Ic
+	2nsEhxA+HfcHp8/sPh8=
+X-Received: by 10.223.147.228 with SMTP id 91mr2604863wrp.116.1492886795481;
+	Sat, 22 Apr 2017 11:46:35 -0700 (PDT)
+Received: from kozik-lap (pub082136089155.dh-hfc.datazug.ch. [82.136.89.155])
+	by smtp.googlemail.com with ESMTPSA id
+	h80sm6486987wmd.7.2017.04.22.11.46.34
+	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+	Sat, 22 Apr 2017 11:46:34 -0700 (PDT)
+Date: Sat, 22 Apr 2017 20:46:32 +0200
+From: Krzysztof Kozlowski <krzk@kernel.org>
+To: Peter Maydell <peter.maydell@linaro.org>
+Message-ID: <20170422184632.nm2s7shuo34ukswd@kozik-lap>
+References: <20170416151604.22506-1-krzk@kernel.org>
+	<CAFEAcA915o-MYNYwPQXpAs7sWS=4ft_iXG41uZx=S27JuutH7Q@mail.gmail.com>
 MIME-Version: 1.0
-Content-Type: multipart/alternative;
-	boundary="------------A1FE9E36712FC622E9D4E12B"
-Content-Language: fr
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+In-Reply-To: <CAFEAcA915o-MYNYwPQXpAs7sWS=4ft_iXG41uZx=S27JuutH7Q@mail.gmail.com>
+User-Agent: Mutt/1.6.2-neo (2016-08-21)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 205.237.245.50
-X-Mailman-Approved-At: Fri, 21 Apr 2017 09:56:44 -0400
-Subject: [Qemu-arm] semihosting file hosted access
+X-Received-From: 209.85.128.193
+Subject: Re: [Qemu-arm] [RFC] hw/arm/exynos: Add generic SDHCI devices
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -57,80 +75,154 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Igor Mitsyanko <i.mitsyanko@gmail.com>, qemu-arm <qemu-arm@nongnu.org>,
+	QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Iv0jShh6sHtL
+X-TUID: KjSGOaHxnCwQ
 
-This is a multi-part message in MIME format.
---------------A1FE9E36712FC622E9D4E12B
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 7bit
+On Thu, Apr 20, 2017 at 02:51:00PM +0100, Peter Maydell wrote:
+> On 16 April 2017 at 16:16, Krzysztof Kozlowski <krzk@kernel.org> wrote:
+> > Exynos4210 has four SD/MMC controllers supporting:
+> >  - SD Standard Host Specification Version 2.0,
+> >  - MMC Specification Version 4.3,
+> >  - SDIO Card Specification Version 2.0,
+> >  - DMA and ADMA.
+> >
+> > Add emulation of SDHCI devices which allows accessing storage through SD
+> > cards. Differences from real hardware:
+> >  - Devices are shipped with eMMC memory, not SD card.
+> >  - The Exynos4210 SDHCI has few more registers, e.g. for
+> >    controlling the clocks, additional status (0x80, 0x84, 0x8c). These
+> >    are not implemented.
+> >
+> > Testing on smdkc210 machine with "-drive file=FILE,if=sd,bus=0,index=2".
+> >
+> > Signed-off-by: Krzysztof Kozlowski <krzk@kernel.org>
+> >
+> > ---
+> >
+> > Mostly it works:
+> > [   11.763786] sdhci: Secure Digital Host Controller Interface driver
+> > [   11.764593] sdhci: Copyright(c) Pierre Ossman
+> > [   11.777295] s3c-sdhci 12530000.sdhci: clock source 2: mmc_busclk.2 (12000000 Hz)
+> > [   11.976250] mmc0: SDHCI controller on samsung-hsmmc [12530000.sdhci] using ADMA
+> > [   11.980283] Synopsys Designware Multimedia Card Interface Driver
+> > [   12.086757] mmc0: new SDHC card at address 4567
+> > [   12.151653] mmcblk0: mmc0:4567 QEMU! 4.00 GiB
+> >
+> > ... except that for guest, the storage starts from 0x50000. It just
+> > skips first 0x50000 bytes thus the paritions (MBR) and initial data is
+> > not visible.
+> >
+> > I don't know what is the cause.
+> >
+> > Any hints?
+> 
+> That is strange and it sounds like we should try to track down
+> what is going on there. Hopefully it shouldn't be too hard to trace
+> through what happens when the guest accesses what it thinks is the
+> first block on the SD card...
+> 
+> Otherwise I just have a couple of nits below.
 
-Hi,
+Nah, I am just total dumbass. Skipped bytes from image are okay because
+that is the header of QEMU image (e.g. QCOW2). The partitions were not
+visible because I tried to attach snapshot of partition itself, not
+entire disk.
 
-I try the semihosting for cortex-m profile and it's working pretty well. 
-Now I wwant to use the fileIO semihosting the be able to host all the 
-files on my host and access it by my running application. So far, I can 
-open a file with fopen, and write/red into it.
+Everything works fine.
 
-The question is about the drive emulation. On my real board I have a SPI 
-flash, and I use a fat system (Chan fatFS drive 0: )). On my board I 
-also have an SD card (used by Chan fatFS (drive 1: )). I try to figure 
-how I could emulate those drive to have my files hosted on my host. I 
-would like to have each drive in separate folder like: c:\drive0, 
-c:\drive1.
+> 
+> > Signed-off-by: Krzysztof Kozlowski <krzk@kernel.org>
+> > ---
+> >  hw/arm/exynos4210.c | 29 +++++++++++++++++++++++++++++
+> >  1 file changed, 29 insertions(+)
+> >
+> > diff --git a/hw/arm/exynos4210.c b/hw/arm/exynos4210.c
+> > index 0ec4250f0c05..d581f2217253 100644
+> > --- a/hw/arm/exynos4210.c
+> > +++ b/hw/arm/exynos4210.c
+> > @@ -32,6 +32,7 @@
+> >  #include "hw/arm/arm.h"
+> >  #include "hw/loader.h"
+> >  #include "hw/arm/exynos4210.h"
+> > +#include "hw/sd/sd.h"
+> >  #include "hw/usb/hcd-ehci.h"
+> >
+> >  #define EXYNOS4210_CHIPID_ADDR         0x10000000
+> > @@ -72,6 +73,13 @@
+> >  #define EXYNOS4210_EXT_COMBINER_BASE_ADDR   0x10440000
+> >  #define EXYNOS4210_INT_COMBINER_BASE_ADDR   0x10448000
+> >
+> > +/* SD/MMC host controllers */
+> > +#define EXYNOS4210_SDHCI_CAPABILITIES       0x05E80080
+> > +#define EXYNOS4210_SDHCI_BASE_ADDR          0x12510000
+> > +#define EXYNOS4210_SDHCI_ADDR(n)            (EXYNOS4210_SDHCI_BASE_ADDR + \
+> > +                                                0x00010000 * (n))
+> > +#define EXYNOS4210_SDHCI_NUMBER             4
+> > +
+> >  /* PMU SFR base address */
+> >  #define EXYNOS4210_PMU_BASE_ADDR            0x10020000
+> >
+> > @@ -386,6 +394,27 @@ Exynos4210State *exynos4210_init(MemoryRegion *system_mem,
+> >                             EXYNOS4210_UART3_FIFO_SIZE, 3, NULL,
+> >                    s->irq_table[exynos4210_get_irq(EXYNOS4210_UART_INT_GRP, 3)]);
+> >
+> > +    /*** SD/MMC host controllers ***/
+> > +    for (n = 0; n < EXYNOS4210_SDHCI_NUMBER; n++) {
+> > +        DeviceState *carddev;
+> > +        DriveInfo *di;
+> > +        BlockBackend *blk;
+> > +
+> > +        dev = qdev_create(NULL, "generic-sdhci");
+> > +        qdev_prop_set_uint32(dev, "capareg", EXYNOS4210_SDHCI_CAPABILITIES);
+> > +        qdev_init_nofail(dev);
+> > +
+> > +        busdev = SYS_BUS_DEVICE(dev);
+> > +        sysbus_mmio_map(busdev, 0, EXYNOS4210_SDHCI_ADDR(n));
+> > +        sysbus_connect_irq(busdev, 0, s->irq_table[exynos4210_get_irq(29, n)]);
+> > +
+> > +        di = drive_get_next(IF_SD);
+> 
+>     di = drive_get(IF_SD, 0, n);
+> 
+> would be better -- this explicitly states that SD cards 0,1,2,3
+> connect to these controllers, rather than implicitly assigning
+> whatever the "next" ones happen to be.
 
-When I open a file in my application 0:myFile.txt I would like to have 
-it on my host in c:\drive0\myFile.txt. Same thing for drive 1:
+Sure.
 
-Is it something doable ? Can I configure QEMU to have such arrangement ? 
-If possible I don't want to modify my application for drive access.
+> 
+> > +        blk = di ? blk_by_legacy_dinfo(di) : NULL;
+> > +        carddev = qdev_create(qdev_get_child_bus(dev, "sd-bus"), TYPE_SD_CARD);
+> > +        qdev_prop_set_drive(carddev, "drive", blk, &error_abort);
+> > +        qdev_prop_set_bit(carddev, "realized", true);
+> 
+> This isn't the right way to set the realized property. You can either:
+>  (a) use qdev_init_nofail(), which sets the property and prints an
+> error and exits if the device realize fails
+>  (b) use object_property_set_bool() to set the property and handle
+> errors yourself
 
-Regards
+I'll fix it.
 
-Jonathan
+> 
+> > +    }
+> > +
+> >      /*** Display controller (FIMD) ***/
+> >      sysbus_create_varargs("exynos4210.fimd", EXYNOS4210_FIMD0_BASE_ADDR,
+> >              s->irq_table[exynos4210_get_irq(11, 0)],
+> > --
+> > 2.9.3
+> 
+> Incidentally someday maybe we should convert this Exynos4210 code
+> to a proper QOM SoC container object, but that would be a lot of
+> work.
 
+Any existing platforms which I could take as an good example? Maybe I'll
+have some time to do it.
 
---------------A1FE9E36712FC622E9D4E12B
-Content-Type: text/html; charset=utf-8
-Content-Transfer-Encoding: 7bit
+Best regards,
+Krzysztof
 
-<html>
-  <head>
-
-    <meta http-equiv="content-type" content="text/html; charset=utf-8">
-  </head>
-  <body text="#000000" bgcolor="#FFFFFF">
-    <p><font size="-1"><font face="Courier New, Courier, monospace">Hi,</font></font></p>
-    <p><font size="-1"><font face="Courier New, Courier, monospace">I
-          try the semihosting for cortex-m profile and it's working
-          pretty well. Now I wwant to use the fileIO semihosting the be
-          able to host all the files on my host and access it by my
-          running application. So far, I can open a file with fopen, and
-          write/red into it. <br>
-        </font></font></p>
-    <p><font size="-1"><font face="Courier New, Courier, monospace">The
-          question is about the drive emulation. On my real board I have
-          a SPI flash, and I use a fat system (Chan fatFS drive 0: )).
-          On my board I also have an SD card (used by Chan fatFS (drive
-          1: )). I try to figure how I could emulate those drive to have
-          my files hosted on my host. I would like to have each drive in
-          separate folder like: c:\drive0, c:\drive1. <br>
-        </font></font></p>
-    <p><font size="-1"><font face="Courier New, Courier, monospace">When
-          I open a file in my application 0:myFile.txt I would like to
-          have it on my host in c:\drive0\myFile.txt. Same thing for
-          drive 1:<br>
-        </font></font></p>
-    <p><font size="-1"><font face="Courier New, Courier, monospace">Is
-          it something doable ? Can I configure QEMU to have such
-          arrangement ? If possible I don't want to modify my
-          application for drive access. <br>
-        </font></font></p>
-    <p><font size="-1"><font face="Courier New, Courier, monospace">Regards</font></font></p>
-    <p><font size="-1"><font face="Courier New, Courier, monospace">Jonathan<br>
-        </font></font></p>
-  </body>
-</html>
-
---------------A1FE9E36712FC622E9D4E12B--

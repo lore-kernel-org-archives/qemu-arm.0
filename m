@@ -1,71 +1,65 @@
-Received: by 10.25.0.144 with SMTP id 138csp795383lfa;
-        Sat, 22 Apr 2017 12:08:12 -0700 (PDT)
-X-Received: by 10.55.220.193 with SMTP id v184mr13073970qki.42.1492888092279;
-        Sat, 22 Apr 2017 12:08:12 -0700 (PDT)
+Received: by 10.25.0.144 with SMTP id 138csp1379495lfa;
+        Mon, 24 Apr 2017 05:20:12 -0700 (PDT)
+X-Received: by 10.55.51.1 with SMTP id z1mr23675009qkz.66.1493036412446;
+        Mon, 24 Apr 2017 05:20:12 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id z207si13626374qka.242.2017.04.22.12.08.12
+        by mx.google.com with ESMTPS id o16si17290025qki.132.2017.04.24.05.20.12
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sat, 22 Apr 2017 12:08:12 -0700 (PDT)
+        Mon, 24 Apr 2017 05:20:12 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:36603 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:43851 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1d20OB-0008NK-Mo
-	for alex.bennee@linaro.org; Sat, 22 Apr 2017 15:08:11 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:47633)
+	id 1d2cyR-0000HP-RA
+	for alex.bennee@linaro.org; Mon, 24 Apr 2017 08:20:11 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:42187)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <k.kozlowski.k@gmail.com>) id 1d20O2-0008M3-3Z
-	for qemu-arm@nongnu.org; Sat, 22 Apr 2017 15:08:03 -0400
+	(envelope-from <kraxel@redhat.com>) id 1d2cvl-0006ax-Et
+	for qemu-arm@nongnu.org; Mon, 24 Apr 2017 08:17:26 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <k.kozlowski.k@gmail.com>) id 1d20Ny-00072V-0F
-	for qemu-arm@nongnu.org; Sat, 22 Apr 2017 15:08:02 -0400
-Received: from mail-wr0-f193.google.com ([209.85.128.193]:32945)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <k.kozlowski.k@gmail.com>)
-	id 1d20Nx-00072K-Pr; Sat, 22 Apr 2017 15:07:57 -0400
-Received: by mail-wr0-f193.google.com with SMTP id w50so11362765wrc.0;
-	Sat, 22 Apr 2017 12:07:57 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:date:from:to:cc:subject:message-id:references
-	:mime-version:content-disposition:in-reply-to:user-agent;
-	bh=KspGebNBH/jrQiVtjNRG1EZXVo6ZYh+hK24t6+U+0mk=;
-	b=mT7GpHdUd+eh5P8yQWxI8J8cpd8QqJjd/g2xGTh0YMOa4aJvPTplKUigAzJACIdvH2
-	luauJ0881aIYVxE/ZdMAfA4KuowwnKMmDSWO/yQUsbW4X8XyJDxjc2VT2bM/RE4+vp5k
-	S+mYAu7tV0GsqrBPj5BlRA9fLaN2iY2hn+tXdN8CZ1QGnBp0QkV2VcU8vtZALVEOYfnT
-	aOj8SEhbibW0koqbhKobWpgJ14Pc6RXrvuZNXA1/C0RJVqIW4mSjBzN32unfeHMfFkRM
-	ioIAJgOvYYf78u4hgUT2c08n4hOEfT5DZDhnb3Q3hOtj3BBatvarfw9HYLfRW1NFnXVn
-	JN5Q==
-X-Gm-Message-State: AN3rC/7RexUd4v0ue3RCOrQE31NsJXKrEcfP+UJa5Kq3KVmZaOpVL/rC
-	Kfd4K+oBYFGPCQ==
-X-Received: by 10.223.134.145 with SMTP id 17mr2597105wrx.130.1492888076476;
-	Sat, 22 Apr 2017 12:07:56 -0700 (PDT)
-Received: from kozik-lap (pub082136089155.dh-hfc.datazug.ch. [82.136.89.155])
-	by smtp.googlemail.com with ESMTPSA id
-	u66sm6555534wmd.24.2017.04.22.12.07.55
-	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-	Sat, 22 Apr 2017 12:07:55 -0700 (PDT)
-Date: Sat, 22 Apr 2017 21:07:54 +0200
-From: Krzysztof Kozlowski <krzk@kernel.org>
-To: Peter Maydell <peter.maydell@linaro.org>
-Message-ID: <20170422190754.3tsrihhj5e57r2sy@kozik-lap>
-References: <20170416151604.22506-1-krzk@kernel.org>
-	<CAFEAcA915o-MYNYwPQXpAs7sWS=4ft_iXG41uZx=S27JuutH7Q@mail.gmail.com>
-	<20170422184632.nm2s7shuo34ukswd@kozik-lap>
-	<CAFEAcA-8JJtYjAzq=gXJsRHTnO2xiu_EdFEsMR174jh=G0zW8A@mail.gmail.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-In-Reply-To: <CAFEAcA-8JJtYjAzq=gXJsRHTnO2xiu_EdFEsMR174jh=G0zW8A@mail.gmail.com>
-User-Agent: Mutt/1.6.2-neo (2016-08-21)
+	(envelope-from <kraxel@redhat.com>) id 1d2cvg-0007P6-Nt
+	for qemu-arm@nongnu.org; Mon, 24 Apr 2017 08:17:25 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:48895)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <kraxel@redhat.com>)
+	id 1d2cvg-0007MN-Hu; Mon, 24 Apr 2017 08:17:20 -0400
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
+	[10.5.11.15])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 3D4E570727;
+	Mon, 24 Apr 2017 12:17:16 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 3D4E570727
+Authentication-Results: ext-mx02.extmail.prod.ext.phx2.redhat.com;
+	dmarc=none (p=none dis=none) header.from=redhat.com
+Authentication-Results: ext-mx02.extmail.prod.ext.phx2.redhat.com;
+	spf=pass smtp.mailfrom=kraxel@redhat.com
+DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com 3D4E570727
+Received: from nilsson.home.kraxel.org (ovpn-116-121.ams2.redhat.com
+	[10.36.116.121])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id E240FB19D2;
+	Mon, 24 Apr 2017 12:17:15 +0000 (UTC)
+Received: by nilsson.home.kraxel.org (Postfix, from userid 500)
+	id 6888180D72; Mon, 24 Apr 2017 14:17:10 +0200 (CEST)
+From: Gerd Hoffmann <kraxel@redhat.com>
+To: qemu-devel@nongnu.org
+Date: Mon, 24 Apr 2017 14:17:04 +0200
+Message-Id: <20170424121708.31953-10-kraxel@redhat.com>
+In-Reply-To: <20170424121708.31953-1-kraxel@redhat.com>
+References: <20170424121708.31953-1-kraxel@redhat.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.26]);
+	Mon, 24 Apr 2017 12:17:16 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 209.85.128.193
-Subject: Re: [Qemu-arm] [RFC] hw/arm/exynos: Add generic SDHCI devices
+X-Received-From: 209.132.183.28
+Subject: [Qemu-arm] [PULL 09/13] exynos: make display updates thread safe
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -77,30 +71,57 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Igor Mitsyanko <i.mitsyanko@gmail.com>, qemu-arm <qemu-arm@nongnu.org>,
-	QEMU Developers <qemu-devel@nongnu.org>
+Cc: Igor Mitsyanko <i.mitsyanko@gmail.com>,
+	"open list:Exynos" <qemu-arm@nongnu.org>, Gerd Hoffmann <kraxel@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: LjfbowBhO7+q
+X-TUID: 5IeLV01AMq/B
 
-On Sat, Apr 22, 2017 at 08:05:41PM +0100, Peter Maydell wrote:
-> On 22 April 2017 at 19:46, Krzysztof Kozlowski <krzk@kernel.org> wrote:
-> > On Thu, Apr 20, 2017 at 02:51:00PM +0100, Peter Maydell wrote:
-> >> Incidentally someday maybe we should convert this Exynos4210 code
-> >> to a proper QOM SoC container object, but that would be a lot of
-> >> work.
-> >
-> > Any existing platforms which I could take as an good example? Maybe I'll
-> > have some time to do it.
-> 
-> The Xilinx ones, or stm32f205_soc, maybe. Basically the idea
-> is that instead of having a random function which is doing
-> a lot of instantiation of SoC devices, you have a QoM device
-> which encapsulates all this, and the board level code just
-> creates and configures that device.
+Signed-off-by: Gerd Hoffmann <kraxel@redhat.com>
+Message-id: 20170421091632.30900-7-kraxel@redhat.com
+Signed-off-by: Gerd Hoffmann <kraxel@redhat.com>
+---
+ hw/display/exynos4210_fimd.c | 11 ++++++-----
+ 1 file changed, 6 insertions(+), 5 deletions(-)
 
-Right, I've seen this pattern. Thanks for the hint.
-
-Best regards,
-Krzysztof
+diff --git a/hw/display/exynos4210_fimd.c b/hw/display/exynos4210_fimd.c
+index e5be713406..fd0b2bec65 100644
+--- a/hw/display/exynos4210_fimd.c
++++ b/hw/display/exynos4210_fimd.c
+@@ -1263,6 +1263,7 @@ static void exynos4210_fimd_update(void *opaque)
+     Exynos4210fimdState *s = (Exynos4210fimdState *)opaque;
+     DisplaySurface *surface;
+     Exynos4210fimdWindow *w;
++    DirtyBitmapSnapshot *snap;
+     int i, line;
+     hwaddr fb_line_addr, inc_size;
+     int scrn_height;
+@@ -1291,10 +1292,12 @@ static void exynos4210_fimd_update(void *opaque)
+             memory_region_sync_dirty_bitmap(w->mem_section.mr);
+             host_fb_addr = w->host_fb_addr;
+             fb_line_addr = w->mem_section.offset_within_region;
++            snap = memory_region_snapshot_and_clear_dirty(w->mem_section.mr,
++                    fb_line_addr, inc_size * scrn_height, DIRTY_MEMORY_VGA);
+ 
+             for (line = 0; line < scrn_height; line++) {
+-                is_dirty = memory_region_get_dirty(w->mem_section.mr,
+-                            fb_line_addr, scrn_width, DIRTY_MEMORY_VGA);
++                is_dirty = memory_region_snapshot_get_dirty(w->mem_section.mr,
++                            snap, fb_line_addr, scrn_width);
+ 
+                 if (s->invalidate || is_dirty) {
+                     if (first_line == -1) {
+@@ -1309,9 +1312,7 @@ static void exynos4210_fimd_update(void *opaque)
+                 fb_line_addr += inc_size;
+                 is_dirty = false;
+             }
+-            memory_region_reset_dirty(w->mem_section.mr,
+-                w->mem_section.offset_within_region,
+-                w->fb_len, DIRTY_MEMORY_VGA);
++            g_free(snap);
+             blend = true;
+         }
+     }
+-- 
+2.9.3
 

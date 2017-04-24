@@ -1,127 +1,162 @@
-Received: by 10.25.0.144 with SMTP id 138csp1379495lfa;
-        Mon, 24 Apr 2017 05:20:12 -0700 (PDT)
-X-Received: by 10.55.51.1 with SMTP id z1mr23675009qkz.66.1493036412446;
-        Mon, 24 Apr 2017 05:20:12 -0700 (PDT)
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id o16si17290025qki.132.2017.04.24.05.20.12
+Received: by 10.25.0.144 with SMTP id 138csp1492259lfa;
+        Mon, 24 Apr 2017 09:33:39 -0700 (PDT)
+X-Received: by 10.28.208.74 with SMTP id h71mr9818195wmg.36.1493051619413;
+        Mon, 24 Apr 2017 09:33:39 -0700 (PDT)
+Return-Path: <pm215@archaic.org.uk>
+Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
+        by mx.google.com with ESMTPS id b25si955122wmi.20.2017.04.24.09.33.39
         for <alex.bennee@linaro.org>
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 24 Apr 2017 05:20:12 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 24 Apr 2017 09:33:39 -0700 (PDT)
+Received-SPF: pass (google.com: best guess record for domain of pm215@archaic.org.uk designates 2001:8b0:1d0::2 as permitted sender) client-ip=2001:8b0:1d0::2;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:43851 helo=lists.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1d2cyR-0000HP-RA
-	for alex.bennee@linaro.org; Mon, 24 Apr 2017 08:20:11 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:42187)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <kraxel@redhat.com>) id 1d2cvl-0006ax-Et
-	for qemu-arm@nongnu.org; Mon, 24 Apr 2017 08:17:26 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <kraxel@redhat.com>) id 1d2cvg-0007P6-Nt
-	for qemu-arm@nongnu.org; Mon, 24 Apr 2017 08:17:25 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:48895)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <kraxel@redhat.com>)
-	id 1d2cvg-0007MN-Hu; Mon, 24 Apr 2017 08:17:20 -0400
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
-	[10.5.11.15])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 3D4E570727;
-	Mon, 24 Apr 2017 12:17:16 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 3D4E570727
-Authentication-Results: ext-mx02.extmail.prod.ext.phx2.redhat.com;
-	dmarc=none (p=none dis=none) header.from=redhat.com
-Authentication-Results: ext-mx02.extmail.prod.ext.phx2.redhat.com;
-	spf=pass smtp.mailfrom=kraxel@redhat.com
-DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com 3D4E570727
-Received: from nilsson.home.kraxel.org (ovpn-116-121.ams2.redhat.com
-	[10.36.116.121])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id E240FB19D2;
-	Mon, 24 Apr 2017 12:17:15 +0000 (UTC)
-Received: by nilsson.home.kraxel.org (Postfix, from userid 500)
-	id 6888180D72; Mon, 24 Apr 2017 14:17:10 +0200 (CEST)
-From: Gerd Hoffmann <kraxel@redhat.com>
-To: qemu-devel@nongnu.org
-Date: Mon, 24 Apr 2017 14:17:04 +0200
-Message-Id: <20170424121708.31953-10-kraxel@redhat.com>
-In-Reply-To: <20170424121708.31953-1-kraxel@redhat.com>
-References: <20170424121708.31953-1-kraxel@redhat.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.26]);
-	Mon, 24 Apr 2017 12:17:16 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: [Qemu-arm] [PULL 09/13] exynos: make display updates thread safe
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.21
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Igor Mitsyanko <i.mitsyanko@gmail.com>,
-	"open list:Exynos" <qemu-arm@nongnu.org>, Gerd Hoffmann <kraxel@redhat.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 5IeLV01AMq/B
+       spf=pass (google.com: best guess record for domain of pm215@archaic.org.uk designates 2001:8b0:1d0::2 as permitted sender) smtp.mailfrom=pm215@archaic.org.uk;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from pm215 by orth.archaic.org.uk with local (Exim 4.84_2)
+	(envelope-from <pm215@archaic.org.uk>)
+	id 1d2gvh-0002pb-RI; Mon, 24 Apr 2017 17:33:37 +0100
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+	Richard Henderson <rth@twiddle.net>
+Subject: [RFC 3/3] arm: Use different ARMMMUIdx values for M profile
+Date: Mon, 24 Apr 2017 17:33:35 +0100
+Message-Id: <1493051615-30715-4-git-send-email-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.7.4
+In-Reply-To: <1493051615-30715-1-git-send-email-peter.maydell@linaro.org>
+References: <1493051615-30715-1-git-send-email-peter.maydell@linaro.org>
+X-TUID: i8y1VtIz9CLK
 
-Signed-off-by: Gerd Hoffmann <kraxel@redhat.com>
-Message-id: 20170421091632.30900-7-kraxel@redhat.com
-Signed-off-by: Gerd Hoffmann <kraxel@redhat.com>
+Make M profile use completely separate ARMMMUIdx values from
+those that A profile CPUs use. This is a prelude to adding
+support for the MPU and for v8M, which together will require
+6 MMU indexes which don't map cleanly onto the A profile
+uses:
+ non secure User
+ non secure Privileged
+ non secure Privileged, execution priority < 0
+ secure User
+ secure Privileged
+ secure Privileged, execution priority < 0
+
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- hw/display/exynos4210_fimd.c | 11 ++++++-----
- 1 file changed, 6 insertions(+), 5 deletions(-)
+ target/arm/cpu.h       | 21 ++++++++++++++++++---
+ target/arm/helper.c    |  5 +++++
+ target/arm/translate.c |  3 +++
+ 3 files changed, 26 insertions(+), 3 deletions(-)
 
-diff --git a/hw/display/exynos4210_fimd.c b/hw/display/exynos4210_fimd.c
-index e5be713406..fd0b2bec65 100644
---- a/hw/display/exynos4210_fimd.c
-+++ b/hw/display/exynos4210_fimd.c
-@@ -1263,6 +1263,7 @@ static void exynos4210_fimd_update(void *opaque)
-     Exynos4210fimdState *s = (Exynos4210fimdState *)opaque;
-     DisplaySurface *surface;
-     Exynos4210fimdWindow *w;
-+    DirtyBitmapSnapshot *snap;
-     int i, line;
-     hwaddr fb_line_addr, inc_size;
-     int scrn_height;
-@@ -1291,10 +1292,12 @@ static void exynos4210_fimd_update(void *opaque)
-             memory_region_sync_dirty_bitmap(w->mem_section.mr);
-             host_fb_addr = w->host_fb_addr;
-             fb_line_addr = w->mem_section.offset_within_region;
-+            snap = memory_region_snapshot_and_clear_dirty(w->mem_section.mr,
-+                    fb_line_addr, inc_size * scrn_height, DIRTY_MEMORY_VGA);
+diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+index c162d43..226ddd9 100644
+--- a/target/arm/cpu.h
++++ b/target/arm/cpu.h
+@@ -2055,8 +2055,9 @@ static inline bool arm_excp_unmasked(CPUState *cs, unsigned int excp_idx,
+  * of the AT/ATS operations.
+  * The values used are carefully arranged to make mmu_idx => EL lookup easy.
+  */
+-#define ARM_MMU_IDX_A 0x10 /* A profile (and M profile, for the moment) */
++#define ARM_MMU_IDX_A 0x10 /* A profile */
+ #define ARM_MMU_IDX_NOTLB 0x20 /* does not have a TLB */
++#define ARM_MMU_IDX_M 0x40 /* M profile */
  
-             for (line = 0; line < scrn_height; line++) {
--                is_dirty = memory_region_get_dirty(w->mem_section.mr,
--                            fb_line_addr, scrn_width, DIRTY_MEMORY_VGA);
-+                is_dirty = memory_region_snapshot_get_dirty(w->mem_section.mr,
-+                            snap, fb_line_addr, scrn_width);
+ typedef enum ARMMMUIdx {
+     ARMMMUIdx_S12NSE0 = 0 | ARM_MMU_IDX_A,
+@@ -2066,6 +2067,8 @@ typedef enum ARMMMUIdx {
+     ARMMMUIdx_S1SE0 = 4 | ARM_MMU_IDX_A,
+     ARMMMUIdx_S1SE1 = 5 | ARM_MMU_IDX_A,
+     ARMMMUIdx_S2NS = 6 | ARM_MMU_IDX_A,
++    ARMMMUIdx_MUser = 0 | ARM_MMU_IDX_M,
++    ARMMMUIdx_MPriv = 1 | ARM_MMU_IDX_M,
+     /* Indexes below here don't have TLBs and are used only for AT system
+      * instructions or for the first stage of an S12 page table walk.
+      */
+@@ -2084,6 +2087,8 @@ typedef enum ARMMMUIdxBit {
+     ARMMMUIdxBit_S1SE0 = 1 << 4,
+     ARMMMUIdxBit_S1SE1 = 1 << 5,
+     ARMMMUIdxBit_S2NS = 1 << 6,
++    ARMMMUIdxBit_MUser = 1 << 0,
++    ARMMMUIdxBit_MPriv = 1 << 1,
+ } ARMMMUIdxBit;
  
-                 if (s->invalidate || is_dirty) {
-                     if (first_line == -1) {
-@@ -1309,9 +1312,7 @@ static void exynos4210_fimd_update(void *opaque)
-                 fb_line_addr += inc_size;
-                 is_dirty = false;
-             }
--            memory_region_reset_dirty(w->mem_section.mr,
--                w->mem_section.offset_within_region,
--                w->fb_len, DIRTY_MEMORY_VGA);
-+            g_free(snap);
-             blend = true;
-         }
+ #define MMU_USER_IDX 0
+@@ -2095,13 +2100,17 @@ static inline int arm_to_core_mmu_idx(ARMMMUIdx mmu_idx)
+ 
+ static inline ARMMMUIdx core_to_arm_mmu_idx(CPUARMState *env, int mmu_idx)
+ {
+-    return mmu_idx | ARM_MMU_IDX_A;
++    if (arm_feature(env, ARM_FEATURE_M)) {
++        return mmu_idx | ARM_MMU_IDX_M;
++    } else {
++        return mmu_idx | ARM_MMU_IDX_A;
++    }
+ }
+ 
+ /* Return the exception level we're running at if this is our mmu_idx */
+ static inline int arm_mmu_idx_to_el(ARMMMUIdx mmu_idx)
+ {
+-    assert(mmu_idx < ARMMMUIdx_S2NS);
++    assert((mmu_idx & ~7) != ARM_MMU_IDX_NOTLB);
+     return mmu_idx & 3;
+ }
+ 
+@@ -2110,6 +2119,12 @@ static inline int cpu_mmu_index(CPUARMState *env, bool ifetch)
+ {
+     int el = arm_current_el(env);
+ 
++    if (arm_feature(env, ARM_FEATURE_M)) {
++        ARMMMUIdx mmu_idx = el == 0 ? ARMMMUIdx_MUser : ARMMMUIdx_MPriv;
++
++        return arm_to_core_mmu_idx(mmu_idx);
++    }
++
+     if (el < 2 && arm_is_secure_below_el3(env)) {
+         return arm_to_core_mmu_idx(ARMMMUIdx_S1SE0 + el);
      }
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index 520adcc..791332c 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -6992,6 +6992,8 @@ static inline uint32_t regime_el(CPUARMState *env, ARMMMUIdx mmu_idx)
+     case ARMMMUIdx_S1SE1:
+     case ARMMMUIdx_S1NSE0:
+     case ARMMMUIdx_S1NSE1:
++    case ARMMMUIdx_MPriv:
++    case ARMMMUIdx_MUser:
+         return 1;
+     default:
+         g_assert_not_reached();
+@@ -7008,6 +7010,8 @@ static inline bool regime_is_secure(CPUARMState *env, ARMMMUIdx mmu_idx)
+     case ARMMMUIdx_S1NSE1:
+     case ARMMMUIdx_S1E2:
+     case ARMMMUIdx_S2NS:
++    case ARMMMUIdx_MPriv:
++    case ARMMMUIdx_MUser:
+         return false;
+     case ARMMMUIdx_S1E3:
+     case ARMMMUIdx_S1SE0:
+@@ -7146,6 +7150,7 @@ static inline bool regime_is_user(CPUARMState *env, ARMMMUIdx mmu_idx)
+     switch (mmu_idx) {
+     case ARMMMUIdx_S1SE0:
+     case ARMMMUIdx_S1NSE0:
++    case ARMMMUIdx_MUser:
+         return true;
+     default:
+         return false;
+diff --git a/target/arm/translate.c b/target/arm/translate.c
+index 8d509a2..ac905dd 100644
+--- a/target/arm/translate.c
++++ b/target/arm/translate.c
+@@ -161,6 +161,9 @@ static inline int get_a32_user_mem_index(DisasContext *s)
+     case ARMMMUIdx_S1SE0:
+     case ARMMMUIdx_S1SE1:
+         return arm_to_core_mmu_idx(ARMMMUIdx_S1SE0);
++    case ARMMMUIdx_MUser:
++    case ARMMMUIdx_MPriv:
++        return arm_to_core_mmu_idx(ARMMMUIdx_MUser);
+     case ARMMMUIdx_S2NS:
+     default:
+         g_assert_not_reached();
 -- 
-2.9.3
-
+2.7.4

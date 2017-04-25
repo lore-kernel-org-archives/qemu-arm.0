@@ -1,102 +1,222 @@
-Received: by 10.25.0.144 with SMTP id 138csp1836759lfa;
-        Tue, 25 Apr 2017 05:09:07 -0700 (PDT)
-X-Received: by 10.28.125.137 with SMTP id y131mr1811576wmc.141.1493122147106;
-        Tue, 25 Apr 2017 05:09:07 -0700 (PDT)
-Return-Path: <rth7680@gmail.com>
-Received: from mail-wm0-x241.google.com (mail-wm0-x241.google.com. [2a00:1450:400c:c09::241])
-        by mx.google.com with ESMTPS id 12si295654wrt.64.2017.04.25.05.09.06
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 25 Apr 2017 05:09:06 -0700 (PDT)
-Received-SPF: pass (google.com: domain of rth7680@gmail.com designates 2a00:1450:400c:c09::241 as permitted sender) client-ip=2a00:1450:400c:c09::241;
+Received: by 10.25.0.144 with SMTP id 138csp1891632lfa;
+        Tue, 25 Apr 2017 07:09:43 -0700 (PDT)
+X-Received: by 10.55.163.66 with SMTP id m63mr26976474qke.140.1493129383060;
+        Tue, 25 Apr 2017 07:09:43 -0700 (PDT)
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
+        by mx.google.com with ESMTPS id x45si22071360qtb.149.2017.04.25.07.09.42
+        for <alex.bennee@linaro.org>
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Tue, 25 Apr 2017 07:09:43 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of rth7680@gmail.com designates 2a00:1450:400c:c09::241 as permitted sender) smtp.mailfrom=rth7680@gmail.com
-Received: by mail-wm0-x241.google.com with SMTP id d79so24520503wmi.2;
-        Tue, 25 Apr 2017 05:09:06 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=sender:subject:to:cc:references:from:message-id:date:user-agent
-         :mime-version:in-reply-to:content-language:content-transfer-encoding;
-        bh=iDcCY84PECIH8tFS+14sxfFT+DZGZ6bdvYPoH4MkMrI=;
-        b=VB17hdTCy45awytYg4DK6VCi4+vONBG5rKooNzRjfE9xM/1gGMjd/mf69nxtSimX7l
-         w9AXGfPWMjXVHQLFnnyyEmyk3wieJXI13S3vZiD/Lfk9TU2FzWR2Uioq7NG4rMZRjI0R
-         ocgYcC8l2uPclvMdoA8u/OYpDhvhqd4ez2hOXHkkmhMTlfoYmKHH7t3k9wqTdPT2Npb9
-         lerHRUEHX7QAX8FNZm3Q6hG4lHY9C2yguVBVtqKO+NFkwn3X15qMAPGYyW/zKDJOJaAy
-         ImSRM7p8GDPLEOmHi8FrzVnP2GkjtkLXQ8hgtcuOt/PaGmwxTpXHTQBdB1R6Z8V4qS+t
-         yoeQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
-         :date:user-agent:mime-version:in-reply-to:content-language
-         :content-transfer-encoding;
-        bh=iDcCY84PECIH8tFS+14sxfFT+DZGZ6bdvYPoH4MkMrI=;
-        b=uNAkHRalxwSwT6/uv6Smka7HT6c1BGvFLtrz9EAi0q69JAEv/z3MVqpNTwypXv0rtF
-         BgI4iwQr0HPtfOF/gNaCqcpI77GdYsVetwPZYmdDj/XGT547kaWuEFbqq4K627GXGdLt
-         VLmWzsFr+cIM8N6GsIWh0fATKO5Cnz2ctNzLkjF27fUq8cgCp2alU2XZ8BaqZrP2XFk/
-         s7kRYde72js17pEXSAY4zUNwXl+QKt+a5dAdia8mHUkpxzhWbkEcMJxYs3eE6AMGaqXA
-         /udm3vGIdQWtZZ0MlswjYIV08PUyN/zNz2oMNhxXPOCXwtwmN3dDmUXeCL4egs8ReqoY
-         ykwg==
-X-Gm-Message-State: AN3rC/6rmea3VoBxiCQCiU/GkmbUJts0XiBhWp7MG3tMvTOspMsMSO3w
-	ZS0Q+s34ab9HI889SvI=
-X-Received: by 10.28.214.212 with SMTP id n203mr1885864wmg.61.1493122146706;
-        Tue, 25 Apr 2017 05:09:06 -0700 (PDT)
-Return-Path: <rth7680@gmail.com>
-Received: from bigtime.twiddle.net (251.red-80-29-7.adsl.static.ccgg.telefonica.net. [80.29.7.251])
-        by smtp.googlemail.com with ESMTPSA id 72sm2368213wmx.23.2017.04.25.05.09.04
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 25 Apr 2017 05:09:05 -0700 (PDT)
-Sender: Richard Henderson <rth7680@gmail.com>
-Subject: Re: [PATCH v2 06/13] tcg: add goto_ptr opcode
-To: "Emilio G. Cota" <cota@braap.org>, qemu-devel@nongnu.org
-Cc: Paolo Bonzini <pbonzini@redhat.com>,
- Peter Crosthwaite <crosthwaite.peter@gmail.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Eduardo Habkost <ehabkost@redhat.com>, Andrzej Zaborowski
- <balrogg@gmail.com>, Aurelien Jarno <aurelien@aurel32.net>,
- Alexander Graf <agraf@suse.de>, Stefan Weil <sw@weilnetz.de>,
- qemu-arm@nongnu.org, alex.bennee@linaro.org,
- Pranith Kumar <bobby.prani+qemu@gmail.com>
-References: <1493106839-10438-1-git-send-email-cota@braap.org>
- <1493106839-10438-7-git-send-email-cota@braap.org>
-From: Richard Henderson <rth@twiddle.net>
-Message-ID: <4f90169b-3d23-434a-40de-1e3eec37f64c@twiddle.net>
-Date: Tue, 25 Apr 2017 14:09:02 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
- Thunderbird/52.0
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:49566 helo=lists.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1d319y-0007e0-HC
+	for alex.bennee@linaro.org; Tue, 25 Apr 2017 10:09:42 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:53200)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <drjones@redhat.com>) id 1d319t-0007di-Ta
+	for qemu-arm@nongnu.org; Tue, 25 Apr 2017 10:09:39 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+	(envelope-from <drjones@redhat.com>) id 1d319o-0003xU-Ty
+	for qemu-arm@nongnu.org; Tue, 25 Apr 2017 10:09:37 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:44594)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <drjones@redhat.com>)
+	id 1d319o-0003x2-Kr; Tue, 25 Apr 2017 10:09:32 -0400
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+	[10.5.11.14])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 5EC95C049D5B;
+	Tue, 25 Apr 2017 14:09:31 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 5EC95C049D5B
+Authentication-Results: ext-mx07.extmail.prod.ext.phx2.redhat.com;
+	dmarc=none (p=none dis=none) header.from=redhat.com
+Authentication-Results: ext-mx07.extmail.prod.ext.phx2.redhat.com;
+	spf=pass smtp.mailfrom=drjones@redhat.com
+DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com 5EC95C049D5B
+Received: from kamzik.brq.redhat.com (kamzik.brq.redhat.com [10.34.1.143])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 35C10830E7;
+	Tue, 25 Apr 2017 14:09:28 +0000 (UTC)
+Date: Tue, 25 Apr 2017 16:09:26 +0200
+From: Andrew Jones <drjones@redhat.com>
+To: Igor Mammedov <imammedo@redhat.com>
+Message-ID: <20170425140926.jufnkmtjgnzdxjos@kamzik.brq.redhat.com>
+References: <1490189568-167621-1-git-send-email-imammedo@redhat.com>
+	<1490189568-167621-3-git-send-email-imammedo@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <1493106839-10438-7-git-send-email-cota@braap.org>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-TUID: sBEqpa9IUsjG
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <1490189568-167621-3-git-send-email-imammedo@redhat.com>
+User-Agent: Mutt/1.6.0.1 (2016-04-01)
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.31]);
+	Tue, 25 Apr 2017 14:09:31 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH for-2.10 02/23] hw/arm/virt:
+ extract mp-affinity calculation in separate function
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.21
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+	Eduardo Habkost <ehabkost@redhat.com>, qemu-devel@nongnu.org,
+	qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
+	Shannon Zhao <zhaoshenglong@huawei.com>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	David Gibson <david@gibson.dropbear.id.au>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: bdIAu38EDwEd
 
-On 04/25/2017 09:53 AM, Emilio G. Cota wrote:
-> +void tcg_gen_goto_ptr(TCGv_ptr ptr)
+On Wed, Mar 22, 2017 at 02:32:27PM +0100, Igor Mammedov wrote:
+> Signed-off-by: Igor Mammedov <imammedo@redhat.com>
+> ---
+>  hw/arm/virt.c | 59 ++++++++++++++++++++++++++++++++++++++++++-----------------
+>  1 file changed, 42 insertions(+), 17 deletions(-)
+> 
+> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+> index 5f62a03..484754e 100644
+> --- a/hw/arm/virt.c
+> +++ b/hw/arm/virt.c
+> @@ -1194,6 +1194,45 @@ void virt_machine_done(Notifier *notifier, void *data)
+>      virt_build_smbios(vms);
+>  }
+>  
+> +static uint64_t virt_idx2mp_affinity(VirtMachineState *vms, int idx)
+
+I think I'd prefer virt_cpu_mp_affinity, or anything without a '2' in it
+for the name.
+
 > +{
-> +    if (TCG_TARGET_HAS_goto_ptr) {
-> +        tcg_gen_op1i(INDEX_op_goto_ptr, GET_TCGV_PTR(ptr));
+> +    uint64_t mp_affinity;
+> +    uint8_t clustersz;
+> +    VirtMachineClass *vmc = VIRT_MACHINE_GET_CLASS(vms);
+> +
+> +    if (!vmc->disallow_affinity_adjustment) {
+> +        uint8_t aff0, aff1;
+
+The else part also needs aff0, aff1; might as well move them up.
+
+> +
+> +        if (vms->gic_version == 3) {
+> +            clustersz = GICV3_TARGETLIST_BITS;
+> +        } else {
+> +            clustersz = GIC_TARGETLIST_BITS;
+> +        }
+> +
+> +        /* Adjust MPIDR like 64-bit KVM hosts, which incorporate the
+> +         * GIC's target-list limitations. 32-bit KVM hosts currently
+> +         * always create clusters of 4 CPUs, but that is expected to
+> +         * change when they gain support for gicv3. When KVM is enabled
+> +         * it will override the changes we make here, therefore our
+> +         * purposes are to make TCG consistent (with 64-bit KVM hosts)
+> +         * and to improve SGI efficiency.
+> +         */
+> +        aff1 = idx / clustersz;
+> +        aff0 = idx % clustersz;
+> +        mp_affinity = (aff1 << ARM_AFF1_SHIFT) | aff0;
 > +    } else {
-> +        tcg_gen_exit_tb(0);
+> +        /* This cpu-id-to-MPIDR affinity is used only for TCG;
+> +         * KVM will override it. We don't support setting cluster ID
+> +         * ([16..23]) (known as Aff2 in later ARM ARM versions), or any of
+> +         * the higher affinity level fields, so these bits always RAZ.
+> +         */
+> +        uint32_t Aff1 = idx / ARM_DEFAULT_CPUS_PER_CLUSTER;
+> +        uint32_t Aff0 = idx % ARM_DEFAULT_CPUS_PER_CLUSTER;
+> +        mp_affinity = (Aff1 << ARM_AFF1_SHIFT) | Aff0;
 > +    }
+
+Maybe we should create an ARM CPU function
+
+ uint64_t arm_cpu_mp_affinity(int idx, uint8_t clustersz)
+ {
+   uint32_t Aff1 = idx / clustersz;
+   uint32_t Aff0 = idx % clustersz;
+   return (Aff1 << ARM_AFF1_SHIFT) | Aff0;
+ }
+
+which we'd use in arm_cpu_realizefn() and here
+
+ static uint64_t virt_cpu_mp_affinity(VirtMachineState *vms, int idx)
+ {
+   if (VIRT_MACHINE_GET_CLASS(vms)->disallow_affinity_adjustment) {
+      return arm_cpu_mp_affinity(idx, ARM_DEFAULT_CPUS_PER_CLUSTER);
+   }
+
+   /* ...big comment... */
+   return arm_cpu_mp_affinity(idx, vms->gic_version == 3 ?
+                          GICV3_TARGETLIST_BITS : GIC_TARGETLIST_BITS);
+ }
+
+> +    return mp_affinity;
 > +}
 > +
+>  static void machvirt_init(MachineState *machine)
+>  {
+>      VirtMachineState *vms = VIRT_MACHINE(machine);
+> @@ -1210,7 +1249,6 @@ static void machvirt_init(MachineState *machine)
+>      CPUClass *cc;
+>      Error *err = NULL;
+>      bool firmware_loaded = bios_name || drive_get(IF_PFLASH, 0, 0);
+> -    uint8_t clustersz;
+>  
+>      if (!cpu_model) {
+>          cpu_model = "cortex-a15";
+> @@ -1263,10 +1301,8 @@ static void machvirt_init(MachineState *machine)
+>       */
+>      if (vms->gic_version == 3) {
+>          virt_max_cpus = vms->memmap[VIRT_GIC_REDIST].size / 0x20000;
+> -        clustersz = GICV3_TARGETLIST_BITS;
+>      } else {
+>          virt_max_cpus = GIC_NCPU;
+> -        clustersz = GIC_TARGETLIST_BITS;
+>      }
+>  
+>      if (max_cpus > virt_max_cpus) {
+> @@ -1326,20 +1362,9 @@ static void machvirt_init(MachineState *machine)
+>  
+>      for (n = 0; n < smp_cpus; n++) {
+>          Object *cpuobj = object_new(typename);
+> -        if (!vmc->disallow_affinity_adjustment) {
+> -            /* Adjust MPIDR like 64-bit KVM hosts, which incorporate the
+> -             * GIC's target-list limitations. 32-bit KVM hosts currently
+> -             * always create clusters of 4 CPUs, but that is expected to
+> -             * change when they gain support for gicv3. When KVM is enabled
+> -             * it will override the changes we make here, therefore our
+> -             * purposes are to make TCG consistent (with 64-bit KVM hosts)
+> -             * and to improve SGI efficiency.
+> -             */
+> -            uint8_t aff1 = n / clustersz;
+> -            uint8_t aff0 = n % clustersz;
+> -            object_property_set_int(cpuobj, (aff1 << ARM_AFF1_SHIFT) | aff0,
+> -                                    "mp-affinity", NULL);
+> -        }
+> +
+> +        object_property_set_int(cpuobj, virt_idx2mp_affinity(vms, n),
+> +                                "mp-affinity", NULL);
+>  
+>          if (!vms->secure) {
+>              object_property_set_bool(cpuobj, false, "has_el3", NULL);
+> -- 
+> 2.7.4
+> 
+>
 
-I think this function should look more like
-
-void tcg_gen_lookup_and_goto_ptr(TCGv target_addr)
-{
-     if (TCG_TARGET_HAS_goto_ptr) {
-         TCGv_ptr ptr = tcg_temp_new_ptr();
-         gen_helper_lookup_tb_ptr(ptr, tcg_ctx.tcg_env, addr);
-         tcg_gen_op1i(INDEX_op_goto_ptr, GET_TCGV_PTR(ptr));
-         tcg_temp_free_ptr(ptr);
-     } else {
-         tcg_gen_exit_tb(0);
-     }
-}
-
-since there's not really any point in all targets being exposed to the 
-implementation detail of lookup_tb_ptr.
-
-
-r~
+Thanks,
+drew 

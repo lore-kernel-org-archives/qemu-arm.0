@@ -1,68 +1,68 @@
-Received: by 10.25.0.144 with SMTP id 138csp1975738lfa;
-        Tue, 25 Apr 2017 10:06:58 -0700 (PDT)
-X-Received: by 10.55.21.154 with SMTP id 26mr24278716qkv.287.1493140018570;
-        Tue, 25 Apr 2017 10:06:58 -0700 (PDT)
+Received: by 10.25.0.144 with SMTP id 138csp1981009lfa;
+        Tue, 25 Apr 2017 10:16:35 -0700 (PDT)
+X-Received: by 10.237.53.37 with SMTP id a34mr34288967qte.274.1493140595511;
+        Tue, 25 Apr 2017 10:16:35 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id l50si22698571qtf.79.2017.04.25.10.06.58
+        by mx.google.com with ESMTPS id q123si22712021qkb.95.2017.04.25.10.16.35
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 25 Apr 2017 10:06:58 -0700 (PDT)
+        Tue, 25 Apr 2017 10:16:35 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:50578 helo=lists.gnu.org)
+Received: from localhost ([::1]:50627 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1d33vW-0006DG-09
-	for alex.bennee@linaro.org; Tue, 25 Apr 2017 13:06:58 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:53250)
+	id 1d344o-00014F-Qy
+	for alex.bennee@linaro.org; Tue, 25 Apr 2017 13:16:34 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:56325)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <drjones@redhat.com>) id 1d33vJ-0006C3-Ch
-	for qemu-arm@nongnu.org; Tue, 25 Apr 2017 13:06:47 -0400
+	(envelope-from <drjones@redhat.com>) id 1d344d-00012z-R4
+	for qemu-arm@nongnu.org; Tue, 25 Apr 2017 13:16:24 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <drjones@redhat.com>) id 1d33vG-0007Mx-6Q
-	for qemu-arm@nongnu.org; Tue, 25 Apr 2017 13:06:45 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:57558)
+	(envelope-from <drjones@redhat.com>) id 1d344Y-00031S-Q3
+	for qemu-arm@nongnu.org; Tue, 25 Apr 2017 13:16:23 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:48082)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <drjones@redhat.com>)
-	id 1d33vF-0007Lr-T1; Tue, 25 Apr 2017 13:06:42 -0400
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
-	[10.5.11.12])
+	id 1d344Y-000316-JJ; Tue, 25 Apr 2017 13:16:18 -0400
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+	[10.5.11.13])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 4ECDE85365;
-	Tue, 25 Apr 2017 17:06:40 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 4ECDE85365
-Authentication-Results: ext-mx01.extmail.prod.ext.phx2.redhat.com;
+	by mx1.redhat.com (Postfix) with ESMTPS id 830ED80052;
+	Tue, 25 Apr 2017 17:16:17 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 830ED80052
+Authentication-Results: ext-mx03.extmail.prod.ext.phx2.redhat.com;
 	dmarc=none (p=none dis=none) header.from=redhat.com
-Authentication-Results: ext-mx01.extmail.prod.ext.phx2.redhat.com;
+Authentication-Results: ext-mx03.extmail.prod.ext.phx2.redhat.com;
 	spf=pass smtp.mailfrom=drjones@redhat.com
-DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com 4ECDE85365
+DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com 830ED80052
 Received: from kamzik.brq.redhat.com (kamzik.brq.redhat.com [10.34.1.143])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 6B33B90DDF;
-	Tue, 25 Apr 2017 17:06:37 +0000 (UTC)
-Date: Tue, 25 Apr 2017 19:06:34 +0200
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 8758E86D2C;
+	Tue, 25 Apr 2017 17:16:15 +0000 (UTC)
+Date: Tue, 25 Apr 2017 19:16:13 +0200
 From: Andrew Jones <drjones@redhat.com>
 To: Igor Mammedov <imammedo@redhat.com>
-Message-ID: <20170425170634.2mqfc45fujwy7qu3@kamzik.brq.redhat.com>
+Message-ID: <20170425171613.sfsjxu6jjuelq54f@kamzik.brq.redhat.com>
 References: <1490189568-167621-1-git-send-email-imammedo@redhat.com>
-	<1490189568-167621-15-git-send-email-imammedo@redhat.com>
+	<1490189568-167621-9-git-send-email-imammedo@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <1490189568-167621-15-git-send-email-imammedo@redhat.com>
+In-Reply-To: <1490189568-167621-9-git-send-email-imammedo@redhat.com>
 User-Agent: Mutt/1.6.0.1 (2016-04-01)
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.25]);
-	Tue, 25 Apr 2017 17:06:40 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.27]);
+	Tue, 25 Apr 2017 17:16:17 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH for-2.10 14/23] virt-arm: get
- numa node mapping from possible_cpus instead of numa_get_node_for_cpu()
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH for-2.10 08/23] virt-arm: add
+ node-id property to CPU
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -82,132 +82,46 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
 	David Gibson <david@gibson.dropbear.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 7lxYc9UTMmDO
+X-TUID: VdqOwFUJr5/A
 
-On Wed, Mar 22, 2017 at 02:32:39PM +0100, Igor Mammedov wrote:
+On Wed, Mar 22, 2017 at 02:32:33PM +0100, Igor Mammedov wrote:
+> it will allow switching from cpu_index to property based
+> numa mapping in follow up patches.
+> 
 > Signed-off-by: Igor Mammedov <imammedo@redhat.com>
 > ---
->  hw/arm/virt-acpi-build.c | 19 +++++++------------
->  hw/arm/virt.c            | 13 +++++++------
->  2 files changed, 14 insertions(+), 18 deletions(-)
+>  hw/arm/virt.c    | 15 +++++++++++++++
+>  target/arm/cpu.c |  1 +
+>  2 files changed, 16 insertions(+)
 > 
-> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-> index 0835e59..ce7499c 100644
-> --- a/hw/arm/virt-acpi-build.c
-> +++ b/hw/arm/virt-acpi-build.c
-> @@ -486,30 +486,25 @@ build_srat(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
->      AcpiSystemResourceAffinityTable *srat;
->      AcpiSratProcessorGiccAffinity *core;
->      AcpiSratMemoryAffinity *numamem;
-> -    int i, j, srat_start;
-> +    int i, srat_start;
->      uint64_t mem_base;
-> -    uint32_t *cpu_node = g_malloc0(vms->smp_cpus * sizeof(uint32_t));
-> -
-> -    for (i = 0; i < vms->smp_cpus; i++) {
-> -        j = numa_get_node_for_cpu(i);
-> -        if (j < nb_numa_nodes) {
-> -                cpu_node[i] = j;
-> -        }
-> -    }
-> +    MachineClass *mc = MACHINE_GET_CLASS(vms);
-> +    const CPUArchIdList *cpu_list = mc->possible_cpu_arch_ids(MACHINE(vms));
->  
->      srat_start = table_data->len;
->      srat = acpi_data_push(table_data, sizeof(*srat));
->      srat->reserved1 = cpu_to_le32(1);
->  
-> -    for (i = 0; i < vms->smp_cpus; ++i) {
-> +    for (i = 0; i < cpu_list->len; ++i) {
-> +        int node_id = cpu_list->cpus[i].props.has_node_id ?
-> +            cpu_list->cpus[i].props.node_id : 0;
->          core = acpi_data_push(table_data, sizeof(*core));
->          core->type = ACPI_SRAT_PROCESSOR_GICC;
->          core->length = sizeof(*core);
-> -        core->proximity = cpu_to_le32(cpu_node[i]);
-> +        core->proximity = cpu_to_le32(node_id);
->          core->acpi_processor_uid = cpu_to_le32(i);
->          core->flags = cpu_to_le32(1);
->      }
-> -    g_free(cpu_node);
->  
->      mem_base = vms->memmap[VIRT_MEM].base;
->      for (i = 0; i < nb_numa_nodes; ++i) {
 > diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-> index 68d44f3..0a75df5 100644
+> index 8748d25..68d44f3 100644
 > --- a/hw/arm/virt.c
 > +++ b/hw/arm/virt.c
-> @@ -338,7 +338,7 @@ static void fdt_add_cpu_nodes(const VirtMachineState *vms)
->  {
->      int cpu;
->      int addr_cells = 1;
-> -    unsigned int i;
-> +    const MachineState *ms = MACHINE(vms);
+> @@ -1365,6 +1365,7 @@ static void machvirt_init(MachineState *machine)
+>      for (n = 0; n < machine->possible_cpus->len; n++) {
+>          Object *cpuobj;
+>          CPUState *cs;
+> +        int node_id;
 >  
->      /*
->       * From Documentation/devicetree/bindings/arm/cpus.txt
-> @@ -369,6 +369,7 @@ static void fdt_add_cpu_nodes(const VirtMachineState *vms)
->      for (cpu = vms->smp_cpus - 1; cpu >= 0; cpu--) {
->          char *nodename = g_strdup_printf("/cpus/cpu@%d", cpu);
->          ARMCPU *armcpu = ARM_CPU(qemu_get_cpu(cpu));
-> +        CPUState *cs = CPU(armcpu);
->  
->          qemu_fdt_add_subnode(vms->fdt, nodename);
->          qemu_fdt_setprop_string(vms->fdt, nodename, "device_type", "cpu");
-> @@ -389,9 +390,9 @@ static void fdt_add_cpu_nodes(const VirtMachineState *vms)
->                                    armcpu->mp_affinity);
->          }
->  
-> -        i = numa_get_node_for_cpu(cpu);
-> -        if (i < nb_numa_nodes) {
-> -            qemu_fdt_setprop_cell(vms->fdt, nodename, "numa-node-id", i);
-> +        if (ms->possible_cpus->cpus[cs->cpu_index].props.has_node_id) {
-> +            qemu_fdt_setprop_cell(vms->fdt, nodename, "numa-node-id",
-> +                ms->possible_cpus->cpus[cs->cpu_index].props.node_id);
->          }
->  
->          g_free(nodename);
-> @@ -1378,8 +1379,8 @@ static void machvirt_init(MachineState *machine)
+>          if (n >= smp_cpus) {
+>              break;
+> @@ -1377,6 +1378,20 @@ static void machvirt_init(MachineState *machine)
 >          cs = CPU(cpuobj);
 >          cs->cpu_index = n;
 >  
-> -        node_id = numa_get_node_for_cpu(cs->cpu_index);
-> -        if (node_id == nb_numa_nodes) {
-> +        node_id = machine->possible_cpus->cpus[cs->cpu_index].props.node_id;
-> +        if (!machine->possible_cpus->cpus[cs->cpu_index].props.has_node_id) {
->              /* by default CPUState::numa_node was 0 if it's not set via CLI
->               * keep it this way for now but in future we probably should
->               * refuse to start up with incomplete numa mapping */
-> -- 
-> 2.7.4
-> 
->
+> +        node_id = numa_get_node_for_cpu(cs->cpu_index);
+> +        if (node_id == nb_numa_nodes) {
+> +            /* by default CPUState::numa_node was 0 if it's not set via CLI
+> +             * keep it this way for now but in future we probably should
+> +             * refuse to start up with incomplete numa mapping */
+> +             node_id = 0;
 
-We now have many machine->possible_cpus->cpus[index].props.[has_]node_id
-instances. I think we need inline accessors added to include/sysemu/numa.h
-like
-
- static inline bool numa_has_node_id(MachineState *ms, int index)
- {
-   return ms->possible_cpus->cpus[index].props.has_node_id;
- }
-
- static inline int numa_node_id(MachineState *ms, int index)
- {
-   return ms->possible_cpus->cpus[index].props.node_id;
- }
-
- ...
-
-to improve readability and maintainability.
-
-Or, instead, we could provide macros to allow assignments, e.g.
-
- #define NUMA_HAS_NODE_ID(ms, index) \
-   ((ms)->possible_cpus->cpus[index].props.has_node_id)
- #define NUMA_NODE_ID(ms, index) \
-   ((ms)->possible_cpus->cpus[index].props.node_id)
-
+Do other architectures already abort on incomplete numa? If so, it'd be
+nice to do that for mach-virt sooner than later. I guess we just need
+another compat variable for 2.9 and older machine types.  I think libvirt
+always supplies all cpu-node mappings, if any, so there shouldn't be an
+issue with it.
 
 Thanks,
 drew

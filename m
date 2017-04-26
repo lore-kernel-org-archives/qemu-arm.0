@@ -1,100 +1,339 @@
-Received: by 10.25.0.144 with SMTP id 138csp390471lfa;
-        Wed, 26 Apr 2017 10:15:09 -0700 (PDT)
-X-Received: by 10.200.51.183 with SMTP id c52mr890032qtb.252.1493226909848;
-        Wed, 26 Apr 2017 10:15:09 -0700 (PDT)
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 10.25.0.144 with SMTP id 138csp403713lfa;
+        Wed, 26 Apr 2017 10:49:52 -0700 (PDT)
+X-Received: by 10.55.160.201 with SMTP id j192mr1008816qke.159.1493228992525;
+        Wed, 26 Apr 2017 10:49:52 -0700 (PDT)
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id 38si837773qtw.335.2017.04.26.10.15.09
+        by mx.google.com with ESMTPS id 25si970418qts.101.2017.04.26.10.49.52
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 26 Apr 2017 10:15:09 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Wed, 26 Apr 2017 10:49:52 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:56318 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:56445 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1d3QWz-00035d-7e
-	for alex.bennee@linaro.org; Wed, 26 Apr 2017 13:15:09 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:43634)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1d3R4a-0001RA-2L
+	for alex.bennee@linaro.org; Wed, 26 Apr 2017 13:49:52 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:54614)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1d3QVU-0002Ee-VL
-	for qemu-devel@nongnu.org; Wed, 26 Apr 2017 13:13:37 -0400
+	(envelope-from <ehabkost@redhat.com>) id 1d3R4V-0001R2-Ng
+	for qemu-arm@nongnu.org; Wed, 26 Apr 2017 13:49:49 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1d3QVP-0000QI-Dk
-	for qemu-devel@nongnu.org; Wed, 26 Apr 2017 13:13:36 -0400
-Received: from orth.archaic.org.uk ([2001:8b0:1d0::2]:36968)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <pm215@archaic.org.uk>)
-	id 1d3QVI-0000JT-BB; Wed, 26 Apr 2017 13:13:24 -0400
-Received: from pm215 by orth.archaic.org.uk with local (Exim 4.84_2)
-	(envelope-from <pm215@archaic.org.uk>)
-	id 1d3QV8-0004fu-M4; Wed, 26 Apr 2017 18:13:14 +0100
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Date: Wed, 26 Apr 2017 18:13:11 +0100
-Message-Id: <1493226792-3237-3-git-send-email-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.7.4
-In-Reply-To: <1493226792-3237-1-git-send-email-peter.maydell@linaro.org>
-References: <1493226792-3237-1-git-send-email-peter.maydell@linaro.org>
+	(envelope-from <ehabkost@redhat.com>) id 1d3R4R-0008LX-Ke
+	for qemu-arm@nongnu.org; Wed, 26 Apr 2017 13:49:47 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:41732)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <ehabkost@redhat.com>)
+	id 1d3R4R-0008Kv-AW; Wed, 26 Apr 2017 13:49:43 -0400
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+	[10.5.11.14])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id F2651274876;
+	Wed, 26 Apr 2017 17:49:41 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com F2651274876
+Authentication-Results: ext-mx09.extmail.prod.ext.phx2.redhat.com;
+	dmarc=none (p=none dis=none) header.from=redhat.com
+Authentication-Results: ext-mx09.extmail.prod.ext.phx2.redhat.com;
+	spf=pass smtp.mailfrom=ehabkost@redhat.com
+DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com F2651274876
+Received: from localhost (ovpn-116-14.gru2.redhat.com [10.97.116.14])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 812B618682;
+	Wed, 26 Apr 2017 17:49:37 +0000 (UTC)
+Date: Wed, 26 Apr 2017 14:49:36 -0300
+From: Eduardo Habkost <ehabkost@redhat.com>
+To: "Michael S. Tsirkin" <mst@redhat.com>
+Message-ID: <20170426174936.GZ3482@thinpad.lan.raisama.net>
+References: <20170417215916.12431-1-ehabkost@redhat.com>
+	<20170417215916.12431-4-ehabkost@redhat.com>
+	<20170426191406-mutt-send-email-mst@kernel.org>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+In-Reply-To: <20170426191406-mutt-send-email-mst@kernel.org>
+X-Fnord: you can see the fnord
+User-Agent: Mutt/1.8.0 (2017-02-23)
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.38]);
+	Wed, 26 Apr 2017 17:49:42 +0000 (UTC)
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2001:8b0:1d0::2
-Subject: [Qemu-devel] [PATCH 2/3] hw/intc/arm_gicv3_cpuif: Don't let BPR be
- set below its minimum
-X-BeenThere: qemu-devel@nongnu.org
+	[fuzzy]
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-arm] [RFC 3/7] pci: Change pci_bus_new*() parameter to
+ PCIHostState
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: patches@linaro.org
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: b3c/dpLdZnPb
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>, aik@ozlabs.ru,
+	qemu-ppc@nongnu.org, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+	=?iso-8859-1?Q?Herv=E9?= Poussineau <hpoussin@reactos.org>,
+	Marcel Apfelbaum <marcel@redhat.com>, David Gibson <dgibson@redhat.com>,
+	Laszlo Ersek <lersek@redhat.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: JmETGilnuh+8
 
-icc_bpr_write() was not enforcing that writing a value below the
-minimum for the BPR should behave as if the BPR was set to the
-minimum value. This doesn't make a difference for the secure
-BPRs (since we define the minimum for the QEMU implementation
-as zero) but did mean we were allowing the NS BPR1 to be set to
-0 when 1 should be the lowest value.
+On Wed, Apr 26, 2017 at 07:16:26PM +0300, Michael S. Tsirkin wrote:
+> On Mon, Apr 17, 2017 at 06:59:12PM -0300, Eduardo Habkost wrote:
+> > The pci_bus_new*() functions already require the 'parent' argument to=
+ be
+> > a PCI_HOST_BRIDGE object. Change the parameter type to reflect that.
+> >=20
+> > Cc: "Michael S. Tsirkin" <mst@redhat.com>
+> > Cc: Marcel Apfelbaum <marcel@redhat.com>
+> > Cc: "Herv=E9 Poussineau" <hpoussin@reactos.org>
+> > Cc: Peter Maydell <peter.maydell@linaro.org>
+> > Cc: qemu-ppc@nongnu.org
+> > Cc: qemu-arm@nongnu.org
+> > Signed-off-by: Eduardo Habkost <ehabkost@redhat.com>
+>=20
+> This function doesn't create a generic pci bus, it's only good
+> for creating root buses.
+>=20
+> As we are changing all callers anyway, let's rename this to
+> pci_host_bus_new or pci_root_bus_new?
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
- hw/intc/arm_gicv3_cpuif.c | 6 ++++++
- 1 file changed, 6 insertions(+)
+Something similar was already done on v2[1]. But based on
+additional feedback on v2, I plan to make pci_bus_new() more
+generic, moving the PCIHostState-specific initialization to
+pci_host_bus_init*() wrappers.
 
-diff --git a/hw/intc/arm_gicv3_cpuif.c b/hw/intc/arm_gicv3_cpuif.c
-index d31eba0..e660b3f 100644
---- a/hw/intc/arm_gicv3_cpuif.c
-+++ b/hw/intc/arm_gicv3_cpuif.c
-@@ -1388,6 +1388,7 @@ static void icc_bpr_write(CPUARMState *env, const ARMCPRegInfo *ri,
- {
-     GICv3CPUState *cs = icc_cs_from_env(env);
-     int grp = (ri->crm == 8) ? GICV3_G0 : GICV3_G1;
-+    uint64_t minval;
- 
-     if (icv_access(env, grp == GICV3_G0 ? HCR_FMO : HCR_IMO)) {
-         icv_bpr_write(env, ri, value);
-@@ -1415,6 +1416,11 @@ static void icc_bpr_write(CPUARMState *env, const ARMCPRegInfo *ri,
-         return;
-     }
- 
-+    minval = (grp == GICV3_G1NS) ? GIC_MIN_BPR_NS : GIC_MIN_BPR;
-+    if (value < minval) {
-+        value = minval;
-+    }
-+
-     cs->icc_bpr[grp] = value & 7;
-     gicv3_cpuif_update(cs);
- }
--- 
-2.7.4
+[1] The new function names were:
+* pci_host_bus_init() (replacing pci_bus_new())
+* pci_host_bus_init_inplace() (replacing pci_bus_new_inplace())
+* pci_host_bus_init_irqs() (replacing pci_register_bus())
 
+
+>=20
+> > ---
+> >  include/hw/pci/pci.h                |  5 +++--
+> >  hw/pci-bridge/pci_expander_bridge.c | 15 ++++++++-------
+> >  hw/pci-host/piix.c                  |  2 +-
+> >  hw/pci-host/prep.c                  |  2 +-
+> >  hw/pci-host/q35.c                   |  2 +-
+> >  hw/pci-host/versatile.c             |  2 +-
+> >  hw/pci/pci.c                        | 13 ++++++-------
+> >  7 files changed, 21 insertions(+), 20 deletions(-)
+> >=20
+> > diff --git a/include/hw/pci/pci.h b/include/hw/pci/pci.h
+> > index a37a2d5cb6..2242aa25eb 100644
+> > --- a/include/hw/pci/pci.h
+> > +++ b/include/hw/pci/pci.h
+> > @@ -393,12 +393,13 @@ typedef PCIINTxRoute (*pci_route_irq_fn)(void *=
+opaque, int pin);
+> > =20
+> >  bool pci_bus_is_express(PCIBus *bus);
+> >  bool pci_bus_is_root(PCIBus *bus);
+> > -void pci_bus_new_inplace(PCIBus *bus, size_t bus_size, DeviceState *=
+parent,
+> > +void pci_bus_new_inplace(PCIBus *bus, size_t bus_size,
+> > +                         PCIHostState *phb,
+> >                           const char *name,
+> >                           MemoryRegion *address_space_mem,
+> >                           MemoryRegion *address_space_io,
+> >                           uint8_t devfn_min, const char *typename);
+> > -PCIBus *pci_bus_new(DeviceState *parent, const char *name,
+> > +PCIBus *pci_bus_new(PCIHostState *phb, const char *name,
+> >                      MemoryRegion *address_space_mem,
+> >                      MemoryRegion *address_space_io,
+> >                      uint8_t devfn_min, const char *typename);
+> > diff --git a/hw/pci-bridge/pci_expander_bridge.c b/hw/pci-bridge/pci_=
+expander_bridge.c
+> > index 6ac187fa32..39d29d2230 100644
+> > --- a/hw/pci-bridge/pci_expander_bridge.c
+> > +++ b/hw/pci-bridge/pci_expander_bridge.c
+> > @@ -213,7 +213,8 @@ static gint pxb_compare(gconstpointer a, gconstpo=
+inter b)
+> >  static void pxb_dev_realize_common(PCIDevice *dev, bool pcie, Error =
+**errp)
+> >  {
+> >      PXBDev *pxb =3D convert_to_pxb(dev);
+> > -    DeviceState *ds, *bds =3D NULL;
+> > +    DeviceState *bds =3D NULL;
+> > +    PCIHostState *phb;
+> >      PCIBus *bus;
+> >      const char *dev_name =3D NULL;
+> >      Error *local_err =3D NULL;
+> > @@ -228,11 +229,11 @@ static void pxb_dev_realize_common(PCIDevice *d=
+ev, bool pcie, Error **errp)
+> >          dev_name =3D dev->qdev.id;
+> >      }
+> > =20
+> > -    ds =3D qdev_create(NULL, TYPE_PXB_HOST);
+> > +    phb =3D PCI_HOST_BRIDGE(qdev_create(NULL, TYPE_PXB_HOST));
+> >      if (pcie) {
+> > -        bus =3D pci_bus_new(ds, dev_name, NULL, NULL, 0, TYPE_PXB_PC=
+IE_BUS);
+> > +        bus =3D pci_bus_new(phb, dev_name, NULL, NULL, 0, TYPE_PXB_P=
+CIE_BUS);
+> >      } else {
+> > -        bus =3D pci_bus_new(ds, "pxb-internal", NULL, NULL, 0, TYPE_=
+PXB_BUS);
+> > +        bus =3D pci_bus_new(phb, "pxb-internal", NULL, NULL, 0, TYPE=
+_PXB_BUS);
+> >          bds =3D qdev_create(BUS(bus), "pci-bridge");
+> >          bds->id =3D dev_name;
+> >          qdev_prop_set_uint8(bds, PCI_BRIDGE_DEV_PROP_CHASSIS_NR, pxb=
+->bus_nr);
+> > @@ -244,7 +245,7 @@ static void pxb_dev_realize_common(PCIDevice *dev=
+, bool pcie, Error **errp)
+> >      bus->address_space_io =3D dev->bus->address_space_io;
+> >      bus->map_irq =3D pxb_map_irq_fn;
+> > =20
+> > -    PCI_HOST_BRIDGE(ds)->bus =3D bus;
+> > +    phb->bus =3D bus;
+> > =20
+> >      pxb_register_bus(dev, bus, &local_err);
+> >      if (local_err) {
+> > @@ -252,7 +253,7 @@ static void pxb_dev_realize_common(PCIDevice *dev=
+, bool pcie, Error **errp)
+> >          goto err_register_bus;
+> >      }
+> > =20
+> > -    qdev_init_nofail(ds);
+> > +    qdev_init_nofail(DEVICE(phb));
+> >      if (bds) {
+> >          qdev_init_nofail(bds);
+> >      }
+> > @@ -267,7 +268,7 @@ static void pxb_dev_realize_common(PCIDevice *dev=
+, bool pcie, Error **errp)
+> >  err_register_bus:
+> >      object_unref(OBJECT(bds));
+> >      object_unparent(OBJECT(bus));
+> > -    object_unref(OBJECT(ds));
+> > +    object_unref(OBJECT(phb));
+> >  }
+> > =20
+> >  static void pxb_dev_realize(PCIDevice *dev, Error **errp)
+> > diff --git a/hw/pci-host/piix.c b/hw/pci-host/piix.c
+> > index f9218aa952..91fec05b38 100644
+> > --- a/hw/pci-host/piix.c
+> > +++ b/hw/pci-host/piix.c
+> > @@ -340,7 +340,7 @@ PCIBus *i440fx_init(const char *host_type, const =
+char *pci_type,
+> > =20
+> >      dev =3D qdev_create(NULL, host_type);
+> >      s =3D PCI_HOST_BRIDGE(dev);
+> > -    b =3D pci_bus_new(dev, NULL, pci_address_space,
+> > +    b =3D pci_bus_new(s, NULL, pci_address_space,
+> >                      address_space_io, 0, TYPE_PCI_BUS);
+> >      s->bus =3D b;
+> >      object_property_add_child(qdev_get_machine(), "i440fx", OBJECT(d=
+ev), NULL);
+> > diff --git a/hw/pci-host/prep.c b/hw/pci-host/prep.c
+> > index 260a119a9e..2e2cd267f4 100644
+> > --- a/hw/pci-host/prep.c
+> > +++ b/hw/pci-host/prep.c
+> > @@ -269,7 +269,7 @@ static void raven_pcihost_initfn(Object *obj)
+> >      memory_region_add_subregion_overlap(address_space_mem, 0x8000000=
+0,
+> >                                          &s->pci_io_non_contiguous, 1=
+);
+> >      memory_region_add_subregion(address_space_mem, 0xc0000000, &s->p=
+ci_memory);
+> > -    pci_bus_new_inplace(&s->pci_bus, sizeof(s->pci_bus), DEVICE(obj)=
+, NULL,
+> > +    pci_bus_new_inplace(&s->pci_bus, sizeof(s->pci_bus), h, NULL,
+> >                          &s->pci_memory, &s->pci_io, 0, TYPE_PCI_BUS)=
+;
+> > =20
+> >      /* Bus master address space */
+> > diff --git a/hw/pci-host/q35.c b/hw/pci-host/q35.c
+> > index 344f77b10c..860b47a1ba 100644
+> > --- a/hw/pci-host/q35.c
+> > +++ b/hw/pci-host/q35.c
+> > @@ -49,7 +49,7 @@ static void q35_host_realize(DeviceState *dev, Erro=
+r **errp)
+> >      sysbus_add_io(sbd, MCH_HOST_BRIDGE_CONFIG_DATA, &pci->data_mem);
+> >      sysbus_init_ioports(sbd, MCH_HOST_BRIDGE_CONFIG_DATA, 4);
+> > =20
+> > -    pci->bus =3D pci_bus_new(DEVICE(s), "pcie.0",
+> > +    pci->bus =3D pci_bus_new(pci, "pcie.0",
+> >                             s->mch.pci_address_space, s->mch.address_=
+space_io,
+> >                             0, TYPE_PCIE_BUS);
+> >      PC_MACHINE(qdev_get_machine())->bus =3D pci->bus;
+> > diff --git a/hw/pci-host/versatile.c b/hw/pci-host/versatile.c
+> > index 467cbb9cb8..24ef87610b 100644
+> > --- a/hw/pci-host/versatile.c
+> > +++ b/hw/pci-host/versatile.c
+> > @@ -386,7 +386,7 @@ static void pci_vpb_init(Object *obj)
+> >      memory_region_init(&s->pci_io_space, OBJECT(s), "pci_io", 1ULL <=
+< 32);
+> >      memory_region_init(&s->pci_mem_space, OBJECT(s), "pci_mem", 1ULL=
+ << 32);
+> > =20
+> > -    pci_bus_new_inplace(&s->pci_bus, sizeof(s->pci_bus), DEVICE(obj)=
+, "pci",
+> > +    pci_bus_new_inplace(&s->pci_bus, sizeof(s->pci_bus), h, "pci",
+> >                          &s->pci_mem_space, &s->pci_io_space,
+> >                          PCI_DEVFN(11, 0), TYPE_PCI_BUS);
+> >      h->bus =3D &s->pci_bus;
+> > diff --git a/hw/pci/pci.c b/hw/pci/pci.c
+> > index d9535c0bdc..f4488b46fc 100644
+> > --- a/hw/pci/pci.c
+> > +++ b/hw/pci/pci.c
+> > @@ -388,26 +388,25 @@ bool pci_bus_is_root(PCIBus *bus)
+> >      return PCI_BUS_GET_CLASS(bus)->is_root(bus);
+> >  }
+> > =20
+> > -void pci_bus_new_inplace(PCIBus *bus, size_t bus_size, DeviceState *=
+parent,
+> > +void pci_bus_new_inplace(PCIBus *bus, size_t bus_size,
+> > +                         PCIHostState *phb,
+> >                           const char *name,
+> >                           MemoryRegion *address_space_mem,
+> >                           MemoryRegion *address_space_io,
+> >                           uint8_t devfn_min, const char *typename)
+> >  {
+> > -    PCIHostState *phb =3D PCI_HOST_BRIDGE(parent);
+> > -    qbus_create_inplace(bus, bus_size, typename, parent, name);
+> > +    qbus_create_inplace(bus, bus_size, typename, DEVICE(phb), name);
+> >      pci_bus_init(bus, phb, address_space_mem, address_space_io, devf=
+n_min);
+> >  }
+> > =20
+> > -PCIBus *pci_bus_new(DeviceState *parent, const char *name,
+> > +PCIBus *pci_bus_new(PCIHostState *phb, const char *name,
+> >                      MemoryRegion *address_space_mem,
+> >                      MemoryRegion *address_space_io,
+> >                      uint8_t devfn_min, const char *typename)
+> >  {
+> > -    PCIHostState *phb =3D PCI_HOST_BRIDGE(parent);
+> >      PCIBus *bus;
+> > =20
+> > -    bus =3D PCI_BUS(qbus_create(typename, parent, name));
+> > +    bus =3D PCI_BUS(qbus_create(typename, DEVICE(phb), name));
+> >      pci_bus_init(bus, phb, address_space_mem, address_space_io, devf=
+n_min);
+> >      return bus;
+> >  }
+> > @@ -431,7 +430,7 @@ PCIBus *pci_register_bus(DeviceState *parent, con=
+st char *name,
+> >  {
+> >      PCIBus *bus;
+> > =20
+> > -    bus =3D pci_bus_new(parent, name, address_space_mem,
+> > +    bus =3D pci_bus_new(PCI_HOST_BRIDGE(parent), name, address_space=
+_mem,
+> >                        address_space_io, devfn_min, typename);
+> >      pci_bus_irqs(bus, set_irq, map_irq, irq_opaque, nirq);
+> >      return bus;
+> > --=20
+> > 2.11.0.259.g40922b1
+
+--=20
+Eduardo

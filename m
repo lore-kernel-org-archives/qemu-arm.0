@@ -1,225 +1,84 @@
-Received: by 10.25.0.144 with SMTP id 138csp218893lfa;
-        Wed, 26 Apr 2017 03:55:55 -0700 (PDT)
-X-Received: by 10.200.45.167 with SMTP id p36mr40026067qta.265.1493204155778;
-        Wed, 26 Apr 2017 03:55:55 -0700 (PDT)
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id e9si25102484qkb.250.2017.04.26.03.55.55
-        for <alex.bennee@linaro.org>
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 26 Apr 2017 03:55:55 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+Received: by 10.25.0.144 with SMTP id 138csp250442lfa;
+        Wed, 26 Apr 2017 05:12:31 -0700 (PDT)
+X-Received: by 10.223.165.14 with SMTP id i14mr13141571wrb.7.1493208751605;
+        Wed, 26 Apr 2017 05:12:31 -0700 (PDT)
+Return-Path: <rth7680@gmail.com>
+Received: from mail-wm0-x241.google.com (mail-wm0-x241.google.com. [2a00:1450:400c:c09::241])
+        by mx.google.com with ESMTPS id q126si6172881wme.149.2017.04.26.05.12.31
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 26 Apr 2017 05:12:31 -0700 (PDT)
+Received-SPF: pass (google.com: domain of rth7680@gmail.com designates 2a00:1450:400c:c09::241 as permitted sender) client-ip=2a00:1450:400c:c09::241;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:54253 helo=lists.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1d3Kbz-0005U9-7W
-	for alex.bennee@linaro.org; Wed, 26 Apr 2017 06:55:55 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:59806)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <imammedo@redhat.com>) id 1d3Kap-0004bq-5H
-	for qemu-arm@nongnu.org; Wed, 26 Apr 2017 06:54:44 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <imammedo@redhat.com>) id 1d3Kak-0001wB-8x
-	for qemu-arm@nongnu.org; Wed, 26 Apr 2017 06:54:43 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:35774)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <imammedo@redhat.com>)
-	id 1d3Kaj-0001vT-Us; Wed, 26 Apr 2017 06:54:38 -0400
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
-	[10.5.11.16])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id B5C014E4C4;
-	Wed, 26 Apr 2017 10:54:36 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com B5C014E4C4
-Authentication-Results: ext-mx09.extmail.prod.ext.phx2.redhat.com;
-	dmarc=none (p=none dis=none) header.from=redhat.com
-Authentication-Results: ext-mx09.extmail.prod.ext.phx2.redhat.com;
-	spf=pass smtp.mailfrom=imammedo@redhat.com
-DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com B5C014E4C4
-Received: from nial.brq.redhat.com (dhcp-1-118.brq.redhat.com [10.34.1.118])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id EF7994DA69;
-	Wed, 26 Apr 2017 10:54:34 +0000 (UTC)
-Date: Wed, 26 Apr 2017 12:54:33 +0200
-From: Igor Mammedov <imammedo@redhat.com>
-To: Andrew Jones <drjones@redhat.com>
-Message-ID: <20170426125433.428a6c1b@nial.brq.redhat.com>
-In-Reply-To: <20170425170634.2mqfc45fujwy7qu3@kamzik.brq.redhat.com>
-References: <1490189568-167621-1-git-send-email-imammedo@redhat.com>
-	<1490189568-167621-15-git-send-email-imammedo@redhat.com>
-	<20170425170634.2mqfc45fujwy7qu3@kamzik.brq.redhat.com>
+       dkim=pass header.i=@gmail.com;
+       spf=pass (google.com: domain of rth7680@gmail.com designates 2a00:1450:400c:c09::241 as permitted sender) smtp.mailfrom=rth7680@gmail.com
+Received: by mail-wm0-x241.google.com with SMTP id y10so564524wmh.0;
+        Wed, 26 Apr 2017 05:12:31 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=sender:subject:to:cc:references:from:message-id:date:user-agent
+         :mime-version:in-reply-to:content-language:content-transfer-encoding;
+        bh=wiRaRtrQQDLdunUj9NfW8MOwjjEnG9c9SVdjJa66OhM=;
+        b=JUe4yJcbaZVVsLT//Wj+sjNHrJj2UyoDyJCRRN0ULadlQAIMz4PkkWqHJI+HgcM8CF
+         W9cqb72UHz5MG7emEyPR7usTjhnkVOpyDSKh60/+iCeOBKDrxg97obljJ60eGflWz01Y
+         os8vEldPb0Pvfb3g/v6jKDlwIh04TptuC3XSgcIi8LhGSzn2a3f1EhX/ghOBdkhDyO+0
+         X6OYS9h5XZm9PEt7dacXsNRJ3vJvvZHitlewHp1l54ijZMiWAv528qm4B52WqMTTX/7o
+         8iD8TPbXWLSz/t2GKY3PHH7TXZFSH7H/oZlODinO2OtxOfrJP0yt9XUhq9M/FYR/7j/t
+         QrTA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+         :date:user-agent:mime-version:in-reply-to:content-language
+         :content-transfer-encoding;
+        bh=wiRaRtrQQDLdunUj9NfW8MOwjjEnG9c9SVdjJa66OhM=;
+        b=Ts7QjDv0Ic7e7IYIJWb1UWSTsyJ6jQyGVqLx6B/k5ULQ9V+odTtCADRj+5kfNwVGDE
+         N1vfgfbgPR1gHsHo3X08kZ3w3NaxFKfIj81n+hXgtycgHJwToPV6Fo2gZ7+lFBbHUCjm
+         Ti4rYXG5S38fZ+Q7I5jnT5WgrO1kpI0hFOewBSdwUCCPP/J0VxypSeWOWxim3OwdAD2m
+         ZnO1aR0jCRdpPjD6P2O+Q543KEF0bu0pxIC0HRnJj1lexT3OE8PAcEagOfhklAl4lqpY
+         Jz1xAFuIL8ITCtObzkCw+Lj1378JX/LYoflwMg6oLy2JzHlYGGWPxi65/ubaRSJo6oYz
+         bROg==
+X-Gm-Message-State: AN3rC/6zQ305OfqxedfLZ/5jZgbcrByfVOFCAVyYtn7705fNZ7Y/qCGp
+	Na8MGgLYSotUlldW/jU=
+X-Received: by 10.28.93.65 with SMTP id r62mr595967wmb.70.1493208751354;
+        Wed, 26 Apr 2017 05:12:31 -0700 (PDT)
+Return-Path: <rth7680@gmail.com>
+Received: from bigtime.twiddle.net (251.red-80-29-7.adsl.static.ccgg.telefonica.net. [80.29.7.251])
+        by smtp.googlemail.com with ESMTPSA id 32sm47848wrq.34.2017.04.26.05.12.29
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 26 Apr 2017 05:12:30 -0700 (PDT)
+Sender: Richard Henderson <rth7680@gmail.com>
+Subject: Re: [PATCH v3 02/10] tcg: introduce goto_ptr opcode
+To: "Emilio G. Cota" <cota@braap.org>, qemu-devel@nongnu.org
+Cc: Paolo Bonzini <pbonzini@redhat.com>,
+ Peter Crosthwaite <crosthwaite.peter@gmail.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Eduardo Habkost <ehabkost@redhat.com>, Andrzej Zaborowski
+ <balrogg@gmail.com>, Aurelien Jarno <aurelien@aurel32.net>,
+ Alexander Graf <agraf@suse.de>, Stefan Weil <sw@weilnetz.de>,
+ qemu-arm@nongnu.org, alex.bennee@linaro.org,
+ Pranith Kumar <bobby.prani+qemu@gmail.com>
+References: <1493187803-4510-1-git-send-email-cota@braap.org>
+ <1493187803-4510-3-git-send-email-cota@braap.org>
+From: Richard Henderson <rth@twiddle.net>
+Message-ID: <472dde45-4b3e-bad7-ef64-718e089d7a68@twiddle.net>
+Date: Wed, 26 Apr 2017 14:12:27 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+ Thunderbird/52.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+In-Reply-To: <1493187803-4510-3-git-send-email-cota@braap.org>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
 Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.38]);
-	Wed, 26 Apr 2017 10:54:36 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH for-2.10 14/23] virt-arm: get
- numa node mapping from possible_cpus instead of numa_get_node_for_cpu()
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.21
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
-	Eduardo Habkost <ehabkost@redhat.com>, qemu-devel@nongnu.org,
-	qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
-	Shannon Zhao <zhaoshenglong@huawei.com>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	David Gibson <david@gibson.dropbear.id.au>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: oLSQTuRAzwVV
+X-TUID: 6nV6OM8VBAEO
 
-On Tue, 25 Apr 2017 19:06:34 +0200
-Andrew Jones <drjones@redhat.com> wrote:
+On 04/26/2017 08:23 AM, Emilio G. Cota wrote:
+> +DEF(goto_ptr, 0, 1, 0, TCG_OPF_BB_END)
 
-> On Wed, Mar 22, 2017 at 02:32:39PM +0100, Igor Mammedov wrote:
-> > Signed-off-by: Igor Mammedov <imammedo@redhat.com>
-> > ---
-> >  hw/arm/virt-acpi-build.c | 19 +++++++------------
-> >  hw/arm/virt.c            | 13 +++++++------
-> >  2 files changed, 14 insertions(+), 18 deletions(-)
-> > 
-> > diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-> > index 0835e59..ce7499c 100644
-> > --- a/hw/arm/virt-acpi-build.c
-> > +++ b/hw/arm/virt-acpi-build.c
-> > @@ -486,30 +486,25 @@ build_srat(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
-> >      AcpiSystemResourceAffinityTable *srat;
-> >      AcpiSratProcessorGiccAffinity *core;
-> >      AcpiSratMemoryAffinity *numamem;
-> > -    int i, j, srat_start;
-> > +    int i, srat_start;
-> >      uint64_t mem_base;
-> > -    uint32_t *cpu_node = g_malloc0(vms->smp_cpus * sizeof(uint32_t));
-> > -
-> > -    for (i = 0; i < vms->smp_cpus; i++) {
-> > -        j = numa_get_node_for_cpu(i);
-> > -        if (j < nb_numa_nodes) {
-> > -                cpu_node[i] = j;
-> > -        }
-> > -    }
-> > +    MachineClass *mc = MACHINE_GET_CLASS(vms);
-> > +    const CPUArchIdList *cpu_list = mc->possible_cpu_arch_ids(MACHINE(vms));
-> >  
-> >      srat_start = table_data->len;
-> >      srat = acpi_data_push(table_data, sizeof(*srat));
-> >      srat->reserved1 = cpu_to_le32(1);
-> >  
-> > -    for (i = 0; i < vms->smp_cpus; ++i) {
-> > +    for (i = 0; i < cpu_list->len; ++i) {
-> > +        int node_id = cpu_list->cpus[i].props.has_node_id ?
-> > +            cpu_list->cpus[i].props.node_id : 0;
-> >          core = acpi_data_push(table_data, sizeof(*core));
-> >          core->type = ACPI_SRAT_PROCESSOR_GICC;
-> >          core->length = sizeof(*core);
-> > -        core->proximity = cpu_to_le32(cpu_node[i]);
-> > +        core->proximity = cpu_to_le32(node_id);
-> >          core->acpi_processor_uid = cpu_to_le32(i);
-> >          core->flags = cpu_to_le32(1);
-> >      }
-> > -    g_free(cpu_node);
-> >  
-> >      mem_base = vms->memmap[VIRT_MEM].base;
-> >      for (i = 0; i < nb_numa_nodes; ++i) {
-> > diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-> > index 68d44f3..0a75df5 100644
-> > --- a/hw/arm/virt.c
-> > +++ b/hw/arm/virt.c
-> > @@ -338,7 +338,7 @@ static void fdt_add_cpu_nodes(const VirtMachineState *vms)
-> >  {
-> >      int cpu;
-> >      int addr_cells = 1;
-> > -    unsigned int i;
-> > +    const MachineState *ms = MACHINE(vms);
-> >  
-> >      /*
-> >       * From Documentation/devicetree/bindings/arm/cpus.txt
-> > @@ -369,6 +369,7 @@ static void fdt_add_cpu_nodes(const VirtMachineState *vms)
-> >      for (cpu = vms->smp_cpus - 1; cpu >= 0; cpu--) {
-> >          char *nodename = g_strdup_printf("/cpus/cpu@%d", cpu);
-> >          ARMCPU *armcpu = ARM_CPU(qemu_get_cpu(cpu));
-> > +        CPUState *cs = CPU(armcpu);
-> >  
-> >          qemu_fdt_add_subnode(vms->fdt, nodename);
-> >          qemu_fdt_setprop_string(vms->fdt, nodename, "device_type", "cpu");
-> > @@ -389,9 +390,9 @@ static void fdt_add_cpu_nodes(const VirtMachineState *vms)
-> >                                    armcpu->mp_affinity);
-> >          }
-> >  
-> > -        i = numa_get_node_for_cpu(cpu);
-> > -        if (i < nb_numa_nodes) {
-> > -            qemu_fdt_setprop_cell(vms->fdt, nodename, "numa-node-id", i);
-> > +        if (ms->possible_cpus->cpus[cs->cpu_index].props.has_node_id) {
-> > +            qemu_fdt_setprop_cell(vms->fdt, nodename, "numa-node-id",
-> > +                ms->possible_cpus->cpus[cs->cpu_index].props.node_id);
-> >          }
-> >  
-> >          g_free(nodename);
-> > @@ -1378,8 +1379,8 @@ static void machvirt_init(MachineState *machine)
-> >          cs = CPU(cpuobj);
-> >          cs->cpu_index = n;
-> >  
-> > -        node_id = numa_get_node_for_cpu(cs->cpu_index);
-> > -        if (node_id == nb_numa_nodes) {
-> > +        node_id = machine->possible_cpus->cpus[cs->cpu_index].props.node_id;
-> > +        if (!machine->possible_cpus->cpus[cs->cpu_index].props.has_node_id) {
-> >              /* by default CPUState::numa_node was 0 if it's not set via CLI
-> >               * keep it this way for now but in future we probably should
-> >               * refuse to start up with incomplete numa mapping */
-> > -- 
-> > 2.7.4
-> > 
-> >  
-> 
-> We now have many machine->possible_cpus->cpus[index].props.[has_]node_id
-> instances. I think we need inline accessors added to include/sysemu/numa.h
-> like
-> 
->  static inline bool numa_has_node_id(MachineState *ms, int index)
->  {
->    return ms->possible_cpus->cpus[index].props.has_node_id;
->  }
-> 
->  static inline int numa_node_id(MachineState *ms, int index)
->  {
->    return ms->possible_cpus->cpus[index].props.node_id;
->  }
-> 
->  ...
-> 
-> to improve readability and maintainability.
-I dislike this kind of one-line wrappers as it hurts readability
-and maintainability of code for me as I'm forced to jump
-around code every time I see such wrapper to recall what and
-how it does. Code still fits in one line so I'd like to keep
-it wrapper-less in this case if you don't insist on the change.
+One more thing:
 
-> 
-> Or, instead, we could provide macros to allow assignments, e.g.
-> 
->  #define NUMA_HAS_NODE_ID(ms, index) \
->    ((ms)->possible_cpus->cpus[index].props.has_node_id)
->  #define NUMA_NODE_ID(ms, index) \
->    ((ms)->possible_cpus->cpus[index].props.node_id)
-ditto + worse debuggability 
+DEF(goto_ptr, 0, 1, 0, TCG_OPF_BB_END | IMPL(TCG_TARGET_HAS_goto_ptr))
 
-> 
-> Thanks,
-> drew
-> 
+You'd have noticed this if you'd have tested this particular patch, with 
+--enable-debug-tcg, before applying patch 4.
 
+
+r~

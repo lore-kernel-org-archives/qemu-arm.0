@@ -1,127 +1,137 @@
-Received: by 10.25.0.144 with SMTP id 138csp215113lfa;
-        Wed, 26 Apr 2017 03:44:00 -0700 (PDT)
-X-Received: by 10.223.151.146 with SMTP id s18mr12679766wrb.40.1493203440183;
-        Wed, 26 Apr 2017 03:44:00 -0700 (PDT)
-Return-Path: <rth7680@gmail.com>
-Received: from mail-wm0-x243.google.com (mail-wm0-x243.google.com. [2a00:1450:400c:c09::243])
-        by mx.google.com with ESMTPS id r5si6532925wmf.88.2017.04.26.03.43.59
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 26 Apr 2017 03:44:00 -0700 (PDT)
-Received-SPF: pass (google.com: domain of rth7680@gmail.com designates 2a00:1450:400c:c09::243 as permitted sender) client-ip=2a00:1450:400c:c09::243;
+Received: by 10.25.0.144 with SMTP id 138csp217229lfa;
+        Wed, 26 Apr 2017 03:50:31 -0700 (PDT)
+X-Received: by 10.200.42.28 with SMTP id k28mr36005641qtk.248.1493203831789;
+        Wed, 26 Apr 2017 03:50:31 -0700 (PDT)
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
+        by mx.google.com with ESMTPS id q38si25100022qtb.33.2017.04.26.03.50.31
+        for <alex.bennee@linaro.org>
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Wed, 26 Apr 2017 03:50:31 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of rth7680@gmail.com designates 2a00:1450:400c:c09::243 as permitted sender) smtp.mailfrom=rth7680@gmail.com
-Received: by mail-wm0-x243.google.com with SMTP id z129so32122694wmb.1;
-        Wed, 26 Apr 2017 03:43:59 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=sender:subject:to:cc:references:from:message-id:date:user-agent
-         :mime-version:in-reply-to:content-language:content-transfer-encoding;
-        bh=HAt7OOJFPlXd0THEwgyG4GjXKfGwaSfuV4vXn+aZe9A=;
-        b=OozIDTDVUFj9ke5bwqacxWHeVx5zULtekepkV1QuySUhtLrVRF5HDECdjdl9yEgrqt
-         SuwYPboo0ua1HbJS26C6JM9VZCKpagTGmbo3E0gvL1YJGylvyHuKclXsvbJKKrKxqWKD
-         teJmXfJ7sLAwOcQfP1gMD9Yg8wGBeg3PqgFmMHt0ZKMZkoZg6tr2EU6wAqryBDhY3oX9
-         uryXzbv2fQ0sC2J2keE3KAs04ARJMXItX8KbcHqZowKJsZcxCXfOKMP6vfA64kWo6sNJ
-         DcofQAgLX23M+vxfXP86mvx6okHQQFcHhuOZu4fjBmrPgcZqApecRy+A1bUK3C8J4fOL
-         z/wA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
-         :date:user-agent:mime-version:in-reply-to:content-language
-         :content-transfer-encoding;
-        bh=HAt7OOJFPlXd0THEwgyG4GjXKfGwaSfuV4vXn+aZe9A=;
-        b=TRJU8prlDWMCMEbgCVyOSsKdOXgXe24DS8e769FEDjcs+bvwlhjLu1NRqNc28Z0ULL
-         wT8c2JFxmnumxnjjPsElePxIsxcbzZ41XIz474Ma+pZ1qbFDyJ+uGSadk95e3QlvR3tE
-         JT8FgJyfvtigOGJmaSiVMKwBDnn4k3gGN5G0anOK9uXCONBnNDxdaUFKYjKGeONzJqRH
-         DFa50qEvaKTDrRin9srEGc5VqmQfcxjDdJrQ7jZR6B4F2MZVvF7RJO/+Jj/DoqIfJO1z
-         ENS9dCtPXX6YUhICzWbdMaiqyezPIA9Iy4RrPtxtq6rtE9W8arA0F2mmFnkpMknwPtPX
-         EPJQ==
-X-Gm-Message-State: AN3rC/4v7wX9e8zElfPV+VxschYjUNDZU5gutLk1RkTSCSvLAGZ9r8Rf
-	YRGUT6lKI3GD0Q==
-X-Received: by 10.28.129.65 with SMTP id c62mr304209wmd.79.1493203439731;
-        Wed, 26 Apr 2017 03:43:59 -0700 (PDT)
-Return-Path: <rth7680@gmail.com>
-Received: from bigtime.twiddle.net (251.red-80-29-7.adsl.static.ccgg.telefonica.net. [80.29.7.251])
-        by smtp.googlemail.com with ESMTPSA id h199sm6042896wme.4.2017.04.26.03.43.57
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 26 Apr 2017 03:43:58 -0700 (PDT)
-Sender: Richard Henderson <rth7680@gmail.com>
-Subject: Re: [PATCH v3 01/10] tcg-runtime: add lookup_tb_ptr helper
-To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
- "Emilio G. Cota" <cota@braap.org>
-Cc: qemu-devel@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
- Peter Crosthwaite <crosthwaite.peter@gmail.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Eduardo Habkost <ehabkost@redhat.com>, Andrzej Zaborowski
- <balrogg@gmail.com>, Aurelien Jarno <aurelien@aurel32.net>,
- Alexander Graf <agraf@suse.de>, Stefan Weil <sw@weilnetz.de>,
- qemu-arm@nongnu.org, Pranith Kumar <bobby.prani+qemu@gmail.com>
-References: <1493187803-4510-1-git-send-email-cota@braap.org>
- <1493187803-4510-2-git-send-email-cota@braap.org> <87efwf8nsm.fsf@linaro.org>
-From: Richard Henderson <rth@twiddle.net>
-Message-ID: <4f999ad8-7208-7980-c17a-e9450176d1df@twiddle.net>
-Date: Wed, 26 Apr 2017 12:43:55 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
- Thunderbird/52.0
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:54213 helo=lists.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1d3KWl-00015G-9W
+	for alex.bennee@linaro.org; Wed, 26 Apr 2017 06:50:31 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:57619)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <imammedo@redhat.com>) id 1d3KTc-00074n-Vk
+	for qemu-arm@nongnu.org; Wed, 26 Apr 2017 06:47:18 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+	(envelope-from <imammedo@redhat.com>) id 1d3KTZ-0005t1-VA
+	for qemu-arm@nongnu.org; Wed, 26 Apr 2017 06:47:17 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:53518)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <imammedo@redhat.com>)
+	id 1d3KTZ-0005s3-OO; Wed, 26 Apr 2017 06:47:13 -0400
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
+	[10.5.11.12])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 66289C04B926;
+	Wed, 26 Apr 2017 10:47:12 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 66289C04B926
+Authentication-Results: ext-mx07.extmail.prod.ext.phx2.redhat.com;
+	dmarc=none (p=none dis=none) header.from=redhat.com
+Authentication-Results: ext-mx07.extmail.prod.ext.phx2.redhat.com;
+	spf=pass smtp.mailfrom=imammedo@redhat.com
+DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com 66289C04B926
+Received: from nial.brq.redhat.com (dhcp-1-118.brq.redhat.com [10.34.1.118])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 7E70F7E2F4;
+	Wed, 26 Apr 2017 10:47:10 +0000 (UTC)
+Date: Wed, 26 Apr 2017 12:47:08 +0200
+From: Igor Mammedov <imammedo@redhat.com>
+To: Andrew Jones <drjones@redhat.com>
+Message-ID: <20170426124708.54a9effc@nial.brq.redhat.com>
+In-Reply-To: <20170425171613.sfsjxu6jjuelq54f@kamzik.brq.redhat.com>
+References: <1490189568-167621-1-git-send-email-imammedo@redhat.com>
+	<1490189568-167621-9-git-send-email-imammedo@redhat.com>
+	<20170425171613.sfsjxu6jjuelq54f@kamzik.brq.redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <87efwf8nsm.fsf@linaro.org>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-TUID: 7CCciSdOphu5
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.31]);
+	Wed, 26 Apr 2017 10:47:12 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH for-2.10 08/23] virt-arm: add
+ node-id property to CPU
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.21
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+	Eduardo Habkost <ehabkost@redhat.com>, qemu-devel@nongnu.org,
+	qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
+	Shannon Zhao <zhaoshenglong@huawei.com>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	David Gibson <david@gibson.dropbear.id.au>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: rP2ngTcJqcAa
 
-On 04/26/2017 12:29 PM, Alex Bennée wrote:
+On Tue, 25 Apr 2017 19:16:13 +0200
+Andrew Jones <drjones@redhat.com> wrote:
+
+> On Wed, Mar 22, 2017 at 02:32:33PM +0100, Igor Mammedov wrote:
+> > it will allow switching from cpu_index to property based
+> > numa mapping in follow up patches.
+> > 
+> > Signed-off-by: Igor Mammedov <imammedo@redhat.com>
+> > ---
+> >  hw/arm/virt.c    | 15 +++++++++++++++
+> >  target/arm/cpu.c |  1 +
+> >  2 files changed, 16 insertions(+)
+> > 
+> > diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+> > index 8748d25..68d44f3 100644
+> > --- a/hw/arm/virt.c
+> > +++ b/hw/arm/virt.c
+> > @@ -1365,6 +1365,7 @@ static void machvirt_init(MachineState *machine)
+> >      for (n = 0; n < machine->possible_cpus->len; n++) {
+> >          Object *cpuobj;
+> >          CPUState *cs;
+> > +        int node_id;
+> >  
+> >          if (n >= smp_cpus) {
+> >              break;
+> > @@ -1377,6 +1378,20 @@ static void machvirt_init(MachineState *machine)
+> >          cs = CPU(cpuobj);
+> >          cs->cpu_index = n;
+> >  
+> > +        node_id = numa_get_node_for_cpu(cs->cpu_index);
+> > +        if (node_id == nb_numa_nodes) {
+> > +            /* by default CPUState::numa_node was 0 if it's not set via CLI
+> > +             * keep it this way for now but in future we probably should
+> > +             * refuse to start up with incomplete numa mapping */
+> > +             node_id = 0;  
 > 
-> Emilio G. Cota <cota@braap.org> writes:
+> Do other architectures already abort on incomplete numa? If so, it'd be
+> nice to do that for mach-virt sooner than later. I guess we just need
+> another compat variable for 2.9 and older machine types.  I think libvirt
+> always supplies all cpu-node mappings, if any, so there shouldn't be an
+> issue with it.
+so far we only print warning messages but allow to proceed (it global policy),
+intent was that further down the road we would obsolete it and turn them in
+hard errors (maybe without keeping even compat stuff).
+I guess we can do it for all supported archs at the same time in 2-3 releases
+after announcing it (patch 20/23 adds obsoleted message).
+
 > 
->> This paves the way for upcoming work.
->>
->> Reviewed-by: Richard Henderson <rth@twiddle.net>
->> Signed-off-by: Emilio G. Cota <cota@braap.org>
->> ---
->>   tcg-runtime.c     | 21 +++++++++++++++++++++
->>   tcg/tcg-runtime.h |  2 ++
->>   tcg/tcg.h         |  1 +
->>   3 files changed, 24 insertions(+)
->>
->> diff --git a/tcg-runtime.c b/tcg-runtime.c
->> index 4c60c96..90d2d4b 100644
->> --- a/tcg-runtime.c
->> +++ b/tcg-runtime.c
->> @@ -27,6 +27,7 @@
->>   #include "exec/helper-proto.h"
->>   #include "exec/cpu_ldst.h"
->>   #include "exec/exec-all.h"
->> +#include "exec/tb-hash.h"
->>
->>   /* 32-bit helpers */
->>
->> @@ -141,6 +142,26 @@ uint64_t HELPER(ctpop_i64)(uint64_t arg)
->>       return ctpop64(arg);
->>   }
->>
->> +void *HELPER(lookup_tb_ptr)(CPUArchState *env, target_ulong addr)
->> +{
->> +    CPUState *cpu = ENV_GET_CPU(env);
->> +    TranslationBlock *tb;
->> +    target_ulong cs_base, pc;
->> +    uint32_t flags;
->> +
->> +    if (unlikely(atomic_read(&cpu->exit_request))) {
->> +        goto out_epilogue;
->> +    }
->> +    cpu_get_tb_cpu_state(env, &pc, &cs_base, &flags);
->> +    tb = atomic_rcu_read(&cpu->tb_jmp_cache[tb_jmp_cache_hash_func(addr)]);
->> +    if (likely(tb && tb->pc == addr && tb->cs_base == cs_base &&
->> +               tb->flags == flags)) {
-> 
-> Should we also not be checking the TB hasn't been invalidated: tb->invalid?
+> Thanks,
+> drew
 
-We don't check in tb_find.
-
-I guess we're assuming that such have been purged from the tb_jmp_cache.  That 
-said, tb_phys_invalidate assumes tb_locked, and I don't immediately remember 
-how all that is supposed to tie together.
-
-
-r~

@@ -1,71 +1,73 @@
-Received: by 10.25.0.144 with SMTP id 138csp223254lfa;
-        Wed, 26 Apr 2017 04:06:29 -0700 (PDT)
-X-Received: by 10.200.38.132 with SMTP id 4mr33576925qto.99.1493204789039;
-        Wed, 26 Apr 2017 04:06:29 -0700 (PDT)
+Received: by 10.25.0.144 with SMTP id 138csp227943lfa;
+        Wed, 26 Apr 2017 04:18:14 -0700 (PDT)
+X-Received: by 10.237.62.176 with SMTP id n45mr36596413qtf.208.1493205494628;
+        Wed, 26 Apr 2017 04:18:14 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id t26si20258994qki.192.2017.04.26.04.06.28
+        by mx.google.com with ESMTPS id q71si3362498qke.23.2017.04.26.04.18.14
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 26 Apr 2017 04:06:29 -0700 (PDT)
+        Wed, 26 Apr 2017 04:18:14 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
+       dkim=fail header.i=@gmail.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:54297 helo=lists.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:54339 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1d3KmC-0002CA-IJ
-	for alex.bennee@linaro.org; Wed, 26 Apr 2017 07:06:28 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:34054)
+	id 1d3Kxa-0007Qb-3O
+	for alex.bennee@linaro.org; Wed, 26 Apr 2017 07:18:14 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:37203)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <ehabkost@redhat.com>) id 1d3KkR-0000uc-IZ
-	for qemu-arm@nongnu.org; Wed, 26 Apr 2017 07:04:40 -0400
+	(envelope-from <bjsprakash.linux@gmail.com>) id 1d3KxT-0007Pf-GG
+	for qemu-arm@nongnu.org; Wed, 26 Apr 2017 07:18:08 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <ehabkost@redhat.com>) id 1d3KkN-0007C4-KT
-	for qemu-arm@nongnu.org; Wed, 26 Apr 2017 07:04:39 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:40128)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <ehabkost@redhat.com>)
-	id 1d3KkN-0007Bu-Ei; Wed, 26 Apr 2017 07:04:35 -0400
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
-	[10.5.11.13])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 1D8AC8048D;
-	Wed, 26 Apr 2017 11:04:34 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 1D8AC8048D
-Authentication-Results: ext-mx04.extmail.prod.ext.phx2.redhat.com;
-	dmarc=none (p=none dis=none) header.from=redhat.com
-Authentication-Results: ext-mx04.extmail.prod.ext.phx2.redhat.com;
-	spf=pass smtp.mailfrom=ehabkost@redhat.com
-DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com 1D8AC8048D
-Received: from localhost (ovpn-116-14.gru2.redhat.com [10.97.116.14])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 8DEF78AC0B;
-	Wed, 26 Apr 2017 11:04:33 +0000 (UTC)
-Date: Wed, 26 Apr 2017 08:04:32 -0300
-From: Eduardo Habkost <ehabkost@redhat.com>
-To: Igor Mammedov <imammedo@redhat.com>
-Message-ID: <20170426110432.GT3482@thinpad.lan.raisama.net>
-References: <1490189568-167621-1-git-send-email-imammedo@redhat.com>
-	<1490189568-167621-11-git-send-email-imammedo@redhat.com>
-	<20170412211529.GD27126@thinpad.lan.raisama.net>
-	<20170419115245.5855f624@nial.brq.redhat.com>
+	(envelope-from <bjsprakash.linux@gmail.com>) id 1d3KxS-00058B-FY
+	for qemu-arm@nongnu.org; Wed, 26 Apr 2017 07:18:07 -0400
+Received: from mail-lf0-x241.google.com ([2a00:1450:4010:c07::241]:34104)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <bjsprakash.linux@gmail.com>)
+	id 1d3KxS-00057l-6h; Wed, 26 Apr 2017 07:18:06 -0400
+Received: by mail-lf0-x241.google.com with SMTP id x72so24463037lfb.1;
+	Wed, 26 Apr 2017 04:18:05 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=w50tMejSWYjMSAqMob5KYXldDTqq94Qhb/bEy0GuQpU=;
+	b=JfteJ8KUS1oZDgvPiTOywCCuP5GqmEq7wMLSAZy7yEECedgN3XoBNt0GYr1LmBWp4R
+	F2mRgtjEIy78N574M/8HQ3cAiY91a0E989ig3mJaHCtZWLp/uCbl53UoppovF91BPthN
+	XGKtQ1Dkf/k2xF8aOIHjMpl7KrtdE03mU3a032j0nwzZEAlFJshwDgp3T8DoDAz+sr1E
+	PnBNJucY0oSmXPhlwAEn0fEA2FB7hc/Yb8lXRbGE3u+SNK/jvZ8sZSUBBTX9EYLbU6Eo
+	CZgPuvZOaDPfAVnDeV9CkMwWBBtVCa5FWOHJDXntdV4wW9h4yCqgWXeEnF4SHRAS6y38
+	YGOw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=w50tMejSWYjMSAqMob5KYXldDTqq94Qhb/bEy0GuQpU=;
+	b=DTf1xM7b8zgEWnvOMIs75a2IOBc1WzVLM++LHtc8FIyhJ/iqaFH6xRx+sRQ4GpPjBq
+	C6H8+uh18YDkOwwrF9XRyEaqPIQQg8fhQwTa2dG50u0/jWWfXgAHF9X9PxHdCyDXIe6W
+	JYJgs3wSHhWBRPyKNIqP1LTtNGfQ5U9PZY5FRzlm/0BJaVJ0F57Yl9mLr763l5h4vOdJ
+	DSo2h45Sa6pVMiyyjsCN14Zx+KRW1+otQQc3bLoBwCBve2qDwH9irxwIZC3huMIsffLx
+	aWPa54V0l3sw5KREAUHTHwUvGuICFBsXvoHL0oncsPKNK/CgsxUrXtjpPMe6/w+aJsR1
+	x9/g==
+X-Gm-Message-State: AN3rC/6dEDLyFVYBQbeT9RF2HDWwp88YwVHUxWN/0GJQGChuC0mqEcCL
+	nU/egbGRAxGrSuU/OmXHDaXgXD1/TQ==
+X-Received: by 10.25.153.137 with SMTP id b131mr11362710lfe.114.1493205484437; 
+	Wed, 26 Apr 2017 04:18:04 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20170419115245.5855f624@nial.brq.redhat.com>
-X-Fnord: you can see the fnord
-User-Agent: Mutt/1.8.0 (2017-02-23)
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.28]);
-	Wed, 26 Apr 2017 11:04:34 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH for-2.10 10/23] numa: mirror cpu
- to node mapping in MachineState::possible_cpus
+Received: by 10.46.80.1 with HTTP; Wed, 26 Apr 2017 04:18:04 -0700 (PDT)
+In-Reply-To: <1492173995-14140-1-git-send-email-eric.auger@redhat.com>
+References: <1492173995-14140-1-git-send-email-eric.auger@redhat.com>
+From: Prakash B <bjsprakash.linux@gmail.com>
+Date: Wed, 26 Apr 2017 16:48:04 +0530
+Message-ID: <CACJhumcMAtJgnRVctCLE5XJ0eo0vpQ35zjjB8twMTkbVphfB8g@mail.gmail.com>
+To: Eric Auger <eric.auger@redhat.com>
+Content-Type: text/plain; charset=UTF-8
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2a00:1450:4010:c07::241
+Subject: Re: [Qemu-arm] [Qemu-devel] [RFC v5 0/4] vITS save/restore
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -77,47 +79,82 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jones <drjones@redhat.com>,
-	qemu-devel@nongnu.org, qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
-	Shannon Zhao <zhaoshenglong@huawei.com>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	David Gibson <david@gibson.dropbear.id.au>
+Cc: Peter Maydell <peter.maydell@linaro.org>, drjones@redhat.com,
+	Vijay Kilari <vijay.kilari@gmail.com>, quintela@redhat.com,
+	qemu-devel@nongnu.org, dgilbert@redhat.com, qemu-arm@nongnu.org,
+	Vijaya.Kumar@cavium.com, Christoffer Dall <christoffer.dall@linaro.org>,
+	eric.auger.pro@gmail.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 2yQKPRZpaASO
+X-TUID: uS+YL+X9rmDP
 
-On Wed, Apr 19, 2017 at 11:52:45AM +0200, Igor Mammedov wrote:
-> On Wed, 12 Apr 2017 18:15:29 -0300
-> Eduardo Habkost <ehabkost@redhat.com> wrote:
-> 
-> > On Wed, Mar 22, 2017 at 02:32:35PM +0100, Igor Mammedov wrote:
-> > > Introduce machine_set_cpu_numa_node() helper that stores
-> > > node mapping for CPU in MachineState::possible_cpus.
-> > > CPU and node it belongs to is specified by 'props' argument.
-> > > 
-> > > Patch doesn't remove old way of storing mapping in
-> > > numa_info[X].node_cpu as removing it at the same time
-> > > makes patch rather big. Instead it just mirrors mapping
-> > > in possible_cpus and follow up per target patches will
-> > > switch to possible_cpus and numa_info[X].node_cpu will
-> > > be removed once there isn't any users left.
-> > > 
-> > > Signed-off-by: Igor Mammedov <imammedo@redhat.com>  
-> > 
-> > So, this patch is the one that makes "-numa" and "-numa cpu"
-> > affect query-hotpluggable-cpus output.
-> that was intent behind series.
-> 
-> [...]
-> > As noted in another message, I am not sure we really should make
-> > "-numa" affect query-hotpluggable-cpus output unconditionally (I
-> > believe we shouldn't). But we do, we need to document this very
-> > clearly.
-> What place would you suggest to document this at?
+Verified on Cavium ThunderX platform
+Continousily migrated Guest more than 500 times b/w different  hosts.
+Please feel free to add  Tested-by: Prakash, Brahmajyosyula
+<Brahmajyosyula.Prakash@cavium.com>
 
-qemu-options.hx documentation for -numa cpu, NumaCpuOptions docs
-on qapi-schema, and/or query-hotpluggable-cpus docs on
-qapi-schema.
-
--- 
-Eduardo
+On Fri, Apr 14, 2017 at 6:16 PM, Eric Auger <eric.auger@redhat.com> wrote:
+> This series allows ITS save/restore and migration use cases.
+> It relies on not upstreamed kernel series [1].
+>
+> ITS tables are flushed into guest RAM on VM stop while registers
+> are save on pre_save() callback. Tables and registers are restored
+> on ITS post_load().
+>
+> Redistributor pending tables also are flushed on VM stop, independently
+> on ITS tables.
+>
+> That work was tested on Cavium ThunderX using virsh save/restore and
+> virt-manager live migration.
+>
+> Best Regards
+>
+> Eric
+>
+> Host Kernel dependencies:
+> - [1] [PATCH v5 00/22] vITS save/restore
+>
+> History:
+> v4 -> v5:
+> - adapt to the new user API
+> - new patch "hw/intc/arm_gicv3_kvm: Implement pending table save"
+>   as the pending table save now is handled on GICV3 side.
+>
+> v3 -> v4:
+> - oversight in v3, missed a last minute correction related to
+>   reg useless declaration in kvm_arm_its_pre_save
+>
+> v2 -> v3:
+> - GITS_IIDR is now saved and restored to check ABI revision.
+> - get/put functions renamed into pre_save/post_load
+> - unmigratable = false removed
+> - changed the migration blocker message
+> - remove the extract64 round s->ctlr
+> - reword some comments
+>
+> v1 -> v2:
+> - rebase on 2.9 soft release code
+> - handle case where migrate_add_blocker fails
+> - add comments along with ITS and GICv3 migration priorities
+>
+>
+> Eric Auger (4):
+>   linux-headers: Update for vITS save/restore
+>   hw/intc/arm_gicv3_its: Implement state save/restore
+>   hw/intc/arm_gicv3_kvm: Implement pending table save
+>   hw/intc/arm_gicv3_its: Allow save/restore
+>
+>  hw/intc/arm_gicv3_common.c             |   1 +
+>  hw/intc/arm_gicv3_its_common.c         |  11 ++-
+>  hw/intc/arm_gicv3_its_kvm.c            | 120 +++++++++++++++++++++++++++++----
+>  hw/intc/arm_gicv3_kvm.c                |  25 +++++++
+>  include/hw/intc/arm_gicv3_its_common.h |   8 +++
+>  include/migration/vmstate.h            |   2 +
+>  linux-headers/asm-arm/kvm.h            |   6 +-
+>  linux-headers/asm-arm64/kvm.h          |   6 +-
+>  8 files changed, 164 insertions(+), 15 deletions(-)
+>
+> --
+> 2.5.5
+>
+>

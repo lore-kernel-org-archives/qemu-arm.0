@@ -1,88 +1,84 @@
-Received: by 10.25.0.144 with SMTP id 138csp198488lfa;
-        Wed, 26 Apr 2017 02:57:15 -0700 (PDT)
-X-Received: by 10.28.26.149 with SMTP id a143mr183432wma.18.1493200635048;
-        Wed, 26 Apr 2017 02:57:15 -0700 (PDT)
+Received: by 10.25.0.144 with SMTP id 138csp202420lfa;
+        Wed, 26 Apr 2017 03:07:09 -0700 (PDT)
+X-Received: by 10.223.139.87 with SMTP id v23mr1159452wra.9.1493201228867;
+        Wed, 26 Apr 2017 03:07:08 -0700 (PDT)
 Return-Path: <rth7680@gmail.com>
 Received: from mail-wm0-x243.google.com (mail-wm0-x243.google.com. [2a00:1450:400c:c09::243])
-        by mx.google.com with ESMTPS id c41si20869969wra.299.2017.04.26.02.57.14
+        by mx.google.com with ESMTPS id w1si7680799wrc.161.2017.04.26.03.07.08
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 26 Apr 2017 02:57:14 -0700 (PDT)
+        Wed, 26 Apr 2017 03:07:08 -0700 (PDT)
 Received-SPF: pass (google.com: domain of rth7680@gmail.com designates 2a00:1450:400c:c09::243 as permitted sender) client-ip=2a00:1450:400c:c09::243;
 Authentication-Results: mx.google.com;
        dkim=pass header.i=@gmail.com;
        spf=pass (google.com: domain of rth7680@gmail.com designates 2a00:1450:400c:c09::243 as permitted sender) smtp.mailfrom=rth7680@gmail.com
-Received: by mail-wm0-x243.google.com with SMTP id d79so31862399wmi.2;
-        Wed, 26 Apr 2017 02:57:14 -0700 (PDT)
+Received: by mail-wm0-x243.google.com with SMTP id u65so31827153wmu.3;
+        Wed, 26 Apr 2017 03:07:08 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=sender:subject:to:cc:references:from:message-id:date:user-agent
          :mime-version:in-reply-to:content-language:content-transfer-encoding;
-        bh=MO3Jq9TEZolLbQATgCz3z3vITuY7wG3fPvli3R2qp1g=;
-        b=ZaUr7/kA1XRU9tS9J/T3eN0jelH/ysmGbH1SGAPO0z7S5V1TvuAZYPVCUoiqYbpNO+
-         YtL3WXxhBl59hYUjpA309plQqIAgFOwlBt+x55wlMj5rPrbMZwkUxQknRS785nBkG2FX
-         VgcG1KKG0LBKRPEvxmSrlmyqI9AmHnXmxJbRrG1KPwYOtEowsI/J/Rr9BqlFliSDj1uO
-         gClYeroF/7hoDcyQx5yZ/C66cscjoB2OYOcLk/EvqVq/re6DUdfqor7xpop3gxFcfvop
-         5Di1VxDqZl9md6P+ixqV/5xMd2eFj4b2+y89MscZPJKr12ySnJdVcbGJdakl66pUYgFx
-         9KtQ==
+        bh=r/lV4gMuuP8g8iwsPQLve0p/9bnSTqlfgjCi7w4KyDU=;
+        b=eFLh753wNjBsPq1aGpTujZxJgs2Xo2Dg2nsCQYeaD/7nOuYLPldZArNNcXX6xQz/s6
+         Q/FnCb73JY77NajDlRtV8UOjGlpZA21gCbRfnsQ1UabbkJGV5uu7LKJSrZzXZViub/E/
+         TDtk2XQYII1OzFPNr+WxpVxrJVdjRtgt9rfYzoWb0SIsus+QBkPlp9s3JNSHFAnJpnvH
+         1cK4CIYENo5v5IXOjJ6tF1F48aS4OJiMKee5WeYp9ht5qvOSm9hm5ClYIdPwjHpjH5ox
+         /90VgAv2QBejKpZLoQQpkTQEZXTzCraQJ/8qMs7fdz/SQ4qlB3BRRaxnncmb7O64Sko1
+         c4OA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
          :date:user-agent:mime-version:in-reply-to:content-language
          :content-transfer-encoding;
-        bh=MO3Jq9TEZolLbQATgCz3z3vITuY7wG3fPvli3R2qp1g=;
-        b=A2auzJDQ/h+7bB1T8WaJbKFDi+r+aWxCEyrW5O/VjfGhHAUml3IAYThqbAaOdNXWZ7
-         LDtqzrP+AuCWA+NRCOUic9W5VRdlCZ1Xu6UooY3VZKvU+v8IXlLCXljkMd5VcBBKc0Jz
-         iQyfApaniVmWI7zO6pMlBBC2Qp3Tr656gq+4FL3AsKZI5sJjOtVIBTZPlHWICi1hRrZx
-         lXdDYQaE74JgO4bGyOOU1mTNJ/OGa5adhBd0qBkGXWWgJy7tH+lSCbw8sBcW1n6qboYL
-         DPkUCWcfRruaq72naab0/C8Fd9WGq41qT4eJpgcv9vdOTrboh3ve3sQO3sIi0Q2V8tBJ
-         mXrQ==
-X-Gm-Message-State: AN3rC/7nzUh0MeMXw4k4Qfl7kf4NQGU4QU7v6mRLOfPzzk+1TjrPc0+5
-	0Yx4ERbRLJy4AA==
-X-Received: by 10.28.63.148 with SMTP id m142mr5093517wma.98.1493200634607;
-        Wed, 26 Apr 2017 02:57:14 -0700 (PDT)
+        bh=r/lV4gMuuP8g8iwsPQLve0p/9bnSTqlfgjCi7w4KyDU=;
+        b=awQ9FpML+qmpaisOf+8oOb87fcYDQm3CP9nxfb6kd2eUX6zW9kIE+PIq1Hmn2y8BXI
+         09lJznu7j14vpKP50bKdjpreI5W/ne+VHHGqGs52XaAs1mU1KfCQ5wBMi8hxtdJDFd5d
+         H+8KsThLjsnXXpD4KkslvbaOZKJjCz81p7W2Pi2jiGytL+M389xhs/pO2bgdfgiZdJH8
+         CD7nPXv8Z0sU1nECiY6THnlhkODiq+O/3u8U0vzDDUtsuB2EBQ8eiHO1DNxiR6NlwxPq
+         gA0SGzOWzXzn5IMebeBQ44ndKpQe6B6OGISuWHm7N9Tb7QuGnW4K8PB/j+slH/gAE1dU
+         7Dwg==
+X-Gm-Message-State: AN3rC/76rnaI/aIbU7KqgHp++i96+VY2fFhksvdVpSIKuDWIjj2uduUt
+	11eku52B+adfvQ==
+X-Received: by 10.28.128.68 with SMTP id b65mr206137wmd.140.1493201228629;
+        Wed, 26 Apr 2017 03:07:08 -0700 (PDT)
 Return-Path: <rth7680@gmail.com>
 Received: from bigtime.twiddle.net (251.red-80-29-7.adsl.static.ccgg.telefonica.net. [80.29.7.251])
-        by smtp.googlemail.com with ESMTPSA id w126sm5502168wmb.25.2017.04.26.02.57.12
+        by smtp.googlemail.com with ESMTPSA id v8sm29058246wrd.42.2017.04.26.03.07.07
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 26 Apr 2017 02:57:13 -0700 (PDT)
+        Wed, 26 Apr 2017 03:07:07 -0700 (PDT)
 Sender: Richard Henderson <rth7680@gmail.com>
-Subject: Re: [Qemu-devel] [RFC 1/3] arm: Use the mmu_idx we're passed in
- arm_cpu_do_unaligned_access()
+Subject: Re: [Qemu-devel] [RFC 0/3] split core mmu_idx from ARMMMUIdx values
 To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
  qemu-devel@nongnu.org
 Cc: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
  =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>
 References: <1493051615-30715-1-git-send-email-peter.maydell@linaro.org>
- <1493051615-30715-2-git-send-email-peter.maydell@linaro.org>
 From: Richard Henderson <rth@twiddle.net>
-Message-ID: <3b00cc54-e40f-9dfb-3701-3cda61a6ce8a@twiddle.net>
-Date: Wed, 26 Apr 2017 11:57:11 +0200
+Message-ID: <b196d1fa-3db5-6d9b-8eff-dda153f23a01@twiddle.net>
+Date: Wed, 26 Apr 2017 12:07:05 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
  Thunderbird/52.0
 MIME-Version: 1.0
-In-Reply-To: <1493051615-30715-2-git-send-email-peter.maydell@linaro.org>
+In-Reply-To: <1493051615-30715-1-git-send-email-peter.maydell@linaro.org>
 Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Language: en-US
 Content-Transfer-Encoding: 7bit
-X-TUID: pPUSEP09pr+o
+X-TUID: eoq0Mw/QYKvZ
 
 On 04/24/2017 06:33 PM, Peter Maydell wrote:
-> When identifying the DFSR format for an alignment fault, use
-> the mmu index that we are passed, rather than calling cpu_mmu_index()
-> to get the mmu index for the current CPU state. This doesn't actually
-> make any difference since the only cases where the current MMU index
-> differs from the index used for the load are the "unprivileged
-> load/store" instructions, and in that case the mmu index may
-> differ but the translation regime is the same (apart from the
-> "use from Hyp mode" case which is UNPREDICTABLE).
-> However it's the more logical thing to do.
-> 
-> Signed-off-by: Peter Maydell<peter.maydell@linaro.org>
-> ---
->   target/arm/op_helper.c | 2 +-
->   1 file changed, 1 insertion(+), 1 deletion(-)
+> Overall questions:
+>   * does this look like it's workable enough to justify taking
+>     it rather than the simple-but-worse-perf-on-some-archs
+>     option 1 ?
 
-Reviewed-by: Richard Henderson <rth@twiddle.net>
+I think it's workable.
+
+>   * this does risk breaking A profile in corner cases, because
+>     C unfortunately doesn't typecheck int vs enum so if I forgot
+>     a call to an index conversion function somewhere things will
+>     break. are we happy the risk isn't too huge?
+
+If you like, we could add a tcg_debug assert somewhere that verifies that the 
+given index is < NB_MMU_MODES...
 
 
 r~

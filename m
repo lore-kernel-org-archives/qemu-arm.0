@@ -1,84 +1,82 @@
-Received: by 10.25.0.144 with SMTP id 138csp202420lfa;
-        Wed, 26 Apr 2017 03:07:09 -0700 (PDT)
-X-Received: by 10.223.139.87 with SMTP id v23mr1159452wra.9.1493201228867;
-        Wed, 26 Apr 2017 03:07:08 -0700 (PDT)
-Return-Path: <rth7680@gmail.com>
-Received: from mail-wm0-x243.google.com (mail-wm0-x243.google.com. [2a00:1450:400c:c09::243])
-        by mx.google.com with ESMTPS id w1si7680799wrc.161.2017.04.26.03.07.08
+Received: by 10.25.0.144 with SMTP id 138csp206320lfa;
+        Wed, 26 Apr 2017 03:17:49 -0700 (PDT)
+X-Received: by 10.223.136.75 with SMTP id e11mr13258682wre.14.1493201869649;
+        Wed, 26 Apr 2017 03:17:49 -0700 (PDT)
+Return-Path: <peter.maydell@linaro.org>
+Received: from mail-wm0-x22a.google.com (mail-wm0-x22a.google.com. [2a00:1450:400c:c09::22a])
+        by mx.google.com with ESMTPS id p81si6558297wmf.2.2017.04.26.03.17.49
+        for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 26 Apr 2017 03:07:08 -0700 (PDT)
-Received-SPF: pass (google.com: domain of rth7680@gmail.com designates 2a00:1450:400c:c09::243 as permitted sender) client-ip=2a00:1450:400c:c09::243;
+        Wed, 26 Apr 2017 03:17:49 -0700 (PDT)
+Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 2a00:1450:400c:c09::22a as permitted sender) client-ip=2a00:1450:400c:c09::22a;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of rth7680@gmail.com designates 2a00:1450:400c:c09::243 as permitted sender) smtp.mailfrom=rth7680@gmail.com
-Received: by mail-wm0-x243.google.com with SMTP id u65so31827153wmu.3;
-        Wed, 26 Apr 2017 03:07:08 -0700 (PDT)
+       dkim=pass header.i=@linaro.org;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 2a00:1450:400c:c09::22a as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: by mail-wm0-x22a.google.com with SMTP id w64so45808248wma.0
+        for <alex.bennee@linaro.org>; Wed, 26 Apr 2017 03:17:49 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=sender:subject:to:cc:references:from:message-id:date:user-agent
-         :mime-version:in-reply-to:content-language:content-transfer-encoding;
-        bh=r/lV4gMuuP8g8iwsPQLve0p/9bnSTqlfgjCi7w4KyDU=;
-        b=eFLh753wNjBsPq1aGpTujZxJgs2Xo2Dg2nsCQYeaD/7nOuYLPldZArNNcXX6xQz/s6
-         Q/FnCb73JY77NajDlRtV8UOjGlpZA21gCbRfnsQ1UabbkJGV5uu7LKJSrZzXZViub/E/
-         TDtk2XQYII1OzFPNr+WxpVxrJVdjRtgt9rfYzoWb0SIsus+QBkPlp9s3JNSHFAnJpnvH
-         1cK4CIYENo5v5IXOjJ6tF1F48aS4OJiMKee5WeYp9ht5qvOSm9hm5ClYIdPwjHpjH5ox
-         /90VgAv2QBejKpZLoQQpkTQEZXTzCraQJ/8qMs7fdz/SQ4qlB3BRRaxnncmb7O64Sko1
-         c4OA==
+        d=linaro.org; s=google;
+        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+         :cc;
+        bh=BAMUdzL2NXia+Vb+9Bo86gadjTWJ9LJTVEPNhvpotMc=;
+        b=QKd8IxKzcMkfzDTCZQb08tTi981HBGXLEwVaX3XreHKzj3yF8JXcWzXY12Fs1eI1GT
+         nZaf5AHuVmvmSGmIeDvSz0LF0UhohQcYofborAv3DKyj7p778kcft1mZltMjEcLnsgUq
+         2ScAVvykZFuNa2HwvQSZ6CFT/mPp4SM/NeDQQ=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
-         :date:user-agent:mime-version:in-reply-to:content-language
-         :content-transfer-encoding;
-        bh=r/lV4gMuuP8g8iwsPQLve0p/9bnSTqlfgjCi7w4KyDU=;
-        b=awQ9FpML+qmpaisOf+8oOb87fcYDQm3CP9nxfb6kd2eUX6zW9kIE+PIq1Hmn2y8BXI
-         09lJznu7j14vpKP50bKdjpreI5W/ne+VHHGqGs52XaAs1mU1KfCQ5wBMi8hxtdJDFd5d
-         H+8KsThLjsnXXpD4KkslvbaOZKJjCz81p7W2Pi2jiGytL+M389xhs/pO2bgdfgiZdJH8
-         CD7nPXv8Z0sU1nECiY6THnlhkODiq+O/3u8U0vzDDUtsuB2EBQ8eiHO1DNxiR6NlwxPq
-         gA0SGzOWzXzn5IMebeBQ44ndKpQe6B6OGISuWHm7N9Tb7QuGnW4K8PB/j+slH/gAE1dU
-         7Dwg==
-X-Gm-Message-State: AN3rC/76rnaI/aIbU7KqgHp++i96+VY2fFhksvdVpSIKuDWIjj2uduUt
-	11eku52B+adfvQ==
-X-Received: by 10.28.128.68 with SMTP id b65mr206137wmd.140.1493201228629;
-        Wed, 26 Apr 2017 03:07:08 -0700 (PDT)
-Return-Path: <rth7680@gmail.com>
-Received: from bigtime.twiddle.net (251.red-80-29-7.adsl.static.ccgg.telefonica.net. [80.29.7.251])
-        by smtp.googlemail.com with ESMTPSA id v8sm29058246wrd.42.2017.04.26.03.07.07
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 26 Apr 2017 03:07:07 -0700 (PDT)
-Sender: Richard Henderson <rth7680@gmail.com>
-Subject: Re: [Qemu-devel] [RFC 0/3] split core mmu_idx from ARMMMUIdx values
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-Cc: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>
-References: <1493051615-30715-1-git-send-email-peter.maydell@linaro.org>
-From: Richard Henderson <rth@twiddle.net>
-Message-ID: <b196d1fa-3db5-6d9b-8eff-dda153f23a01@twiddle.net>
-Date: Wed, 26 Apr 2017 12:07:05 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
- Thunderbird/52.0
+        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+         :message-id:subject:to:cc;
+        bh=BAMUdzL2NXia+Vb+9Bo86gadjTWJ9LJTVEPNhvpotMc=;
+        b=NhJa4pbfrMxXjAPDP/C/SswzB4NP8qMiEn3dh6S+XlrUvUqm2Gt0BFJC5Vg5f4vlqS
+         tELQwSDsFEOOO6U9T/7n7NmG08te2dzziSYf+0yWkpoF7nncIhk+e0nkmB9w/yeGCnj0
+         Pei3lkU81R9cwqAVSCWRz5a509xHOGtPf4pYH4abkn+fxzFfySTWyYOr0krM2E2pHZqU
+         /nfIdfG/2UIeVHom7YivDnCscZ2t6Eh0Y1z3m0Tayv/iPY3FcE9zVlLynwQ8nccVB0xr
+         6FLFY7OEuaL7huTzRxK45+glouydriKaqU11QA/69NkHk44GHyIGFZRyQ5trS5UdYWwx
+         c64A==
+X-Gm-Message-State: AN3rC/4jVhUdLPn9neVXj38R+GhfYM/RUCzdArq/Zo0PzRjECASL9nRL
+	0AAgRi/xREJdQmF0I3Dkh2t2jjDG03Ufkts=
+X-Received: by 10.28.67.68 with SMTP id q65mr5258105wma.142.1493201869405;
+ Wed, 26 Apr 2017 03:17:49 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <1493051615-30715-1-git-send-email-peter.maydell@linaro.org>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-TUID: eoq0Mw/QYKvZ
+Received: by 10.223.145.68 with HTTP; Wed, 26 Apr 2017 03:17:28 -0700 (PDT)
+In-Reply-To: <b196d1fa-3db5-6d9b-8eff-dda153f23a01@twiddle.net>
+References: <1493051615-30715-1-git-send-email-peter.maydell@linaro.org> <b196d1fa-3db5-6d9b-8eff-dda153f23a01@twiddle.net>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Wed, 26 Apr 2017 11:17:28 +0100
+Message-ID: <CAFEAcA_fD-MZR2RP4yXmskhqe9VJVKvwXPOzeU-T1+TboyzE1A@mail.gmail.com>
+Subject: Re: [Qemu-devel] [RFC 0/3] split core mmu_idx from ARMMMUIdx values
+To: Richard Henderson <rth@twiddle.net>
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>, 
+	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>, =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
+Content-Type: text/plain; charset=UTF-8
+X-TUID: F3RakskyIHIw
 
-On 04/24/2017 06:33 PM, Peter Maydell wrote:
-> Overall questions:
->   * does this look like it's workable enough to justify taking
->     it rather than the simple-but-worse-perf-on-some-archs
->     option 1 ?
+On 26 April 2017 at 11:07, Richard Henderson <rth@twiddle.net> wrote:
+> On 04/24/2017 06:33 PM, Peter Maydell wrote:
+>>
+>> Overall questions:
+>>   * does this look like it's workable enough to justify taking
+>>     it rather than the simple-but-worse-perf-on-some-archs
+>>     option 1 ?
+>
+>
+> I think it's workable.
 
-I think it's workable.
+Yes, I think I agree overall.
 
->   * this does risk breaking A profile in corner cases, because
->     C unfortunately doesn't typecheck int vs enum so if I forgot
->     a call to an index conversion function somewhere things will
->     break. are we happy the risk isn't too huge?
+>>   * this does risk breaking A profile in corner cases, because
+>>     C unfortunately doesn't typecheck int vs enum so if I forgot
+>>     a call to an index conversion function somewhere things will
+>>     break. are we happy the risk isn't too huge?
+>
+>
+> If you like, we could add a tcg_debug assert somewhere that verifies that
+> the given index is < NB_MMU_MODES...
 
-If you like, we could add a tcg_debug assert somewhere that verifies that the 
-given index is < NB_MMU_MODES...
+There is one already, because in my testing I ran into it.
+The problem is that since it's a runtime assert, it's not
+certain that I caught everything.
 
-
-r~
+thanks
+-- PMM

@@ -1,82 +1,106 @@
-Received: by 10.25.0.144 with SMTP id 138csp206320lfa;
-        Wed, 26 Apr 2017 03:17:49 -0700 (PDT)
-X-Received: by 10.223.136.75 with SMTP id e11mr13258682wre.14.1493201869649;
-        Wed, 26 Apr 2017 03:17:49 -0700 (PDT)
-Return-Path: <peter.maydell@linaro.org>
-Received: from mail-wm0-x22a.google.com (mail-wm0-x22a.google.com. [2a00:1450:400c:c09::22a])
-        by mx.google.com with ESMTPS id p81si6558297wmf.2.2017.04.26.03.17.49
-        for <alex.bennee@linaro.org>
+Return-Path: <alex.bennee@linaro.org>
+Received: from zen.linaro.local ([81.128.185.34])
+        by smtp.gmail.com with ESMTPSA id z90sm11289403wrc.36.2017.04.26.03.29.00
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 26 Apr 2017 03:17:49 -0700 (PDT)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 2a00:1450:400c:c09::22a as permitted sender) client-ip=2a00:1450:400c:c09::22a;
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 2a00:1450:400c:c09::22a as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: by mail-wm0-x22a.google.com with SMTP id w64so45808248wma.0
-        for <alex.bennee@linaro.org>; Wed, 26 Apr 2017 03:17:49 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-         :cc;
-        bh=BAMUdzL2NXia+Vb+9Bo86gadjTWJ9LJTVEPNhvpotMc=;
-        b=QKd8IxKzcMkfzDTCZQb08tTi981HBGXLEwVaX3XreHKzj3yF8JXcWzXY12Fs1eI1GT
-         nZaf5AHuVmvmSGmIeDvSz0LF0UhohQcYofborAv3DKyj7p778kcft1mZltMjEcLnsgUq
-         2ScAVvykZFuNa2HwvQSZ6CFT/mPp4SM/NeDQQ=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-         :message-id:subject:to:cc;
-        bh=BAMUdzL2NXia+Vb+9Bo86gadjTWJ9LJTVEPNhvpotMc=;
-        b=NhJa4pbfrMxXjAPDP/C/SswzB4NP8qMiEn3dh6S+XlrUvUqm2Gt0BFJC5Vg5f4vlqS
-         tELQwSDsFEOOO6U9T/7n7NmG08te2dzziSYf+0yWkpoF7nncIhk+e0nkmB9w/yeGCnj0
-         Pei3lkU81R9cwqAVSCWRz5a509xHOGtPf4pYH4abkn+fxzFfySTWyYOr0krM2E2pHZqU
-         /nfIdfG/2UIeVHom7YivDnCscZ2t6Eh0Y1z3m0Tayv/iPY3FcE9zVlLynwQ8nccVB0xr
-         6FLFY7OEuaL7huTzRxK45+glouydriKaqU11QA/69NkHk44GHyIGFZRyQ5trS5UdYWwx
-         c64A==
-X-Gm-Message-State: AN3rC/4jVhUdLPn9neVXj38R+GhfYM/RUCzdArq/Zo0PzRjECASL9nRL
-	0AAgRi/xREJdQmF0I3Dkh2t2jjDG03Ufkts=
-X-Received: by 10.28.67.68 with SMTP id q65mr5258105wma.142.1493201869405;
- Wed, 26 Apr 2017 03:17:49 -0700 (PDT)
+        Wed, 26 Apr 2017 03:29:00 -0700 (PDT)
+Received: from zen (localhost [127.0.0.1])
+	by zen.linaro.local (Postfix) with ESMTPS id 55BA23E0126;
+	Wed, 26 Apr 2017 11:29:29 +0100 (BST)
+References: <1493187803-4510-1-git-send-email-cota@braap.org> <1493187803-4510-2-git-send-email-cota@braap.org>
+User-agent: mu4e 0.9.19; emacs 25.2.17
+From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: "Emilio G. Cota" <cota@braap.org>
+Cc: qemu-devel@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>, Peter Crosthwaite <crosthwaite.peter@gmail.com>, Richard Henderson <rth@twiddle.net>, Peter Maydell <peter.maydell@linaro.org>, Eduardo Habkost <ehabkost@redhat.com>, Andrzej Zaborowski <balrogg@gmail.com>, Aurelien Jarno <aurelien@aurel32.net>, Alexander Graf <agraf@suse.de>, Stefan Weil <sw@weilnetz.de>, qemu-arm@nongnu.org, Pranith Kumar <bobby.prani+qemu@gmail.com>
+Subject: Re: [PATCH v3 01/10] tcg-runtime: add lookup_tb_ptr helper
+In-reply-to: <1493187803-4510-2-git-send-email-cota@braap.org>
+Date: Wed, 26 Apr 2017 11:29:29 +0100
+Message-ID: <87efwf8nsm.fsf@linaro.org>
 MIME-Version: 1.0
-Received: by 10.223.145.68 with HTTP; Wed, 26 Apr 2017 03:17:28 -0700 (PDT)
-In-Reply-To: <b196d1fa-3db5-6d9b-8eff-dda153f23a01@twiddle.net>
-References: <1493051615-30715-1-git-send-email-peter.maydell@linaro.org> <b196d1fa-3db5-6d9b-8eff-dda153f23a01@twiddle.net>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Wed, 26 Apr 2017 11:17:28 +0100
-Message-ID: <CAFEAcA_fD-MZR2RP4yXmskhqe9VJVKvwXPOzeU-T1+TboyzE1A@mail.gmail.com>
-Subject: Re: [Qemu-devel] [RFC 0/3] split core mmu_idx from ARMMMUIdx values
-To: Richard Henderson <rth@twiddle.net>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>, 
-	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>, =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
-Content-Type: text/plain; charset=UTF-8
-X-TUID: F3RakskyIHIw
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-TUID: RK9aL4BPd47X
 
-On 26 April 2017 at 11:07, Richard Henderson <rth@twiddle.net> wrote:
-> On 04/24/2017 06:33 PM, Peter Maydell wrote:
->>
->> Overall questions:
->>   * does this look like it's workable enough to justify taking
->>     it rather than the simple-but-worse-perf-on-some-archs
->>     option 1 ?
+
+Emilio G. Cota <cota@braap.org> writes:
+
+> This paves the way for upcoming work.
 >
+> Reviewed-by: Richard Henderson <rth@twiddle.net>
+> Signed-off-by: Emilio G. Cota <cota@braap.org>
+> ---
+>  tcg-runtime.c     | 21 +++++++++++++++++++++
+>  tcg/tcg-runtime.h |  2 ++
+>  tcg/tcg.h         |  1 +
+>  3 files changed, 24 insertions(+)
 >
-> I think it's workable.
-
-Yes, I think I agree overall.
-
->>   * this does risk breaking A profile in corner cases, because
->>     C unfortunately doesn't typecheck int vs enum so if I forgot
->>     a call to an index conversion function somewhere things will
->>     break. are we happy the risk isn't too huge?
+> diff --git a/tcg-runtime.c b/tcg-runtime.c
+> index 4c60c96..90d2d4b 100644
+> --- a/tcg-runtime.c
+> +++ b/tcg-runtime.c
+> @@ -27,6 +27,7 @@
+>  #include "exec/helper-proto.h"
+>  #include "exec/cpu_ldst.h"
+>  #include "exec/exec-all.h"
+> +#include "exec/tb-hash.h"
 >
+>  /* 32-bit helpers */
 >
-> If you like, we could add a tcg_debug assert somewhere that verifies that
-> the given index is < NB_MMU_MODES...
+> @@ -141,6 +142,26 @@ uint64_t HELPER(ctpop_i64)(uint64_t arg)
+>      return ctpop64(arg);
+>  }
+>
+> +void *HELPER(lookup_tb_ptr)(CPUArchState *env, target_ulong addr)
+> +{
+> +    CPUState *cpu = ENV_GET_CPU(env);
+> +    TranslationBlock *tb;
+> +    target_ulong cs_base, pc;
+> +    uint32_t flags;
+> +
+> +    if (unlikely(atomic_read(&cpu->exit_request))) {
+> +        goto out_epilogue;
+> +    }
+> +    cpu_get_tb_cpu_state(env, &pc, &cs_base, &flags);
+> +    tb = atomic_rcu_read(&cpu->tb_jmp_cache[tb_jmp_cache_hash_func(addr)]);
+> +    if (likely(tb && tb->pc == addr && tb->cs_base == cs_base &&
+> +               tb->flags == flags)) {
 
-There is one already, because in my testing I ran into it.
-The problem is that since it's a runtime assert, it's not
-certain that I caught everything.
+Should we also not be checking the TB hasn't been invalidated: tb->invalid?
 
-thanks
--- PMM
+> +        return tb->tc_ptr;
+> +    }
+> + out_epilogue:
+> +    return tcg_ctx.code_gen_epilogue;
+> +}
+> +
+>  void HELPER(exit_atomic)(CPUArchState *env)
+>  {
+>      cpu_loop_exit_atomic(ENV_GET_CPU(env), GETPC());
+> diff --git a/tcg/tcg-runtime.h b/tcg/tcg-runtime.h
+> index 114ea6f..c41d38a 100644
+> --- a/tcg/tcg-runtime.h
+> +++ b/tcg/tcg-runtime.h
+> @@ -24,6 +24,8 @@ DEF_HELPER_FLAGS_1(clrsb_i64, TCG_CALL_NO_RWG_SE, i64, i64)
+>  DEF_HELPER_FLAGS_1(ctpop_i32, TCG_CALL_NO_RWG_SE, i32, i32)
+>  DEF_HELPER_FLAGS_1(ctpop_i64, TCG_CALL_NO_RWG_SE, i64, i64)
+>
+> +DEF_HELPER_FLAGS_2(lookup_tb_ptr, TCG_CALL_NO_WG_SE, ptr, env, tl)
+> +
+>  DEF_HELPER_FLAGS_1(exit_atomic, TCG_CALL_NO_WG, noreturn, env)
+>
+>  #ifdef CONFIG_SOFTMMU
+> diff --git a/tcg/tcg.h b/tcg/tcg.h
+> index 6c216bb..5ec48d1 100644
+> --- a/tcg/tcg.h
+> +++ b/tcg/tcg.h
+> @@ -699,6 +699,7 @@ struct TCGContext {
+>         extension that allows arithmetic on void*.  */
+>      int code_gen_max_blocks;
+>      void *code_gen_prologue;
+> +    void *code_gen_epilogue;
+>      void *code_gen_buffer;
+>      size_t code_gen_buffer_size;
+>      void *code_gen_ptr;
+
+
+--
+Alex Bennée

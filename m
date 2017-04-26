@@ -1,48 +1,45 @@
-Received: by 10.25.0.144 with SMTP id 138csp389786lfa;
-        Wed, 26 Apr 2017 10:13:29 -0700 (PDT)
-X-Received: by 10.237.62.243 with SMTP id o48mr826868qtf.89.1493226809378;
-        Wed, 26 Apr 2017 10:13:29 -0700 (PDT)
+Received: by 10.25.0.144 with SMTP id 138csp389809lfa;
+        Wed, 26 Apr 2017 10:13:33 -0700 (PDT)
+X-Received: by 10.200.39.100 with SMTP id h33mr847405qth.280.1493226813153;
+        Wed, 26 Apr 2017 10:13:33 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id k76si846249qke.86.2017.04.26.10.13.29
+        by mx.google.com with ESMTPS id b6si865680qkg.144.2017.04.26.10.13.32
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 26 Apr 2017 10:13:29 -0700 (PDT)
+        Wed, 26 Apr 2017 10:13:33 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:56310 helo=lists.gnu.org)
+Received: from localhost ([::1]:56312 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1d3QVM-00025x-Pt
-	for alex.bennee@linaro.org; Wed, 26 Apr 2017 13:13:28 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:43532)
+	id 1d3QVQ-000280-I4
+	for alex.bennee@linaro.org; Wed, 26 Apr 2017 13:13:32 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:43589)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1d3QVI-00025J-H7
-	for qemu-arm@nongnu.org; Wed, 26 Apr 2017 13:13:25 -0400
+	(envelope-from <pm215@archaic.org.uk>) id 1d3QVL-00025v-68
+	for qemu-arm@nongnu.org; Wed, 26 Apr 2017 13:13:28 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1d3QVH-0000L8-Mo
-	for qemu-arm@nongnu.org; Wed, 26 Apr 2017 13:13:24 -0400
+	(envelope-from <pm215@archaic.org.uk>) id 1d3QVK-0000Mz-A6
+	for qemu-arm@nongnu.org; Wed, 26 Apr 2017 13:13:27 -0400
 Received: from orth.archaic.org.uk ([2001:8b0:1d0::2]:36968)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <pm215@archaic.org.uk>)
-	id 1d3QVH-0000JT-G2; Wed, 26 Apr 2017 13:13:23 -0400
+	id 1d3QVK-0000JT-36; Wed, 26 Apr 2017 13:13:26 -0400
 Received: from pm215 by orth.archaic.org.uk with local (Exim 4.84_2)
 	(envelope-from <pm215@archaic.org.uk>)
-	id 1d3QV8-0004fj-7O; Wed, 26 Apr 2017 18:13:14 +0100
+	id 1d3QV7-0004fY-OD; Wed, 26 Apr 2017 18:13:13 +0100
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Date: Wed, 26 Apr 2017 18:13:10 +0100
-Message-Id: <1493226792-3237-2-git-send-email-peter.maydell@linaro.org>
+Date: Wed, 26 Apr 2017 18:13:09 +0100
+Message-Id: <1493226792-3237-1-git-send-email-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.7.4
-In-Reply-To: <1493226792-3237-1-git-send-email-peter.maydell@linaro.org>
-References: <1493226792-3237-1-git-send-email-peter.maydell@linaro.org>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 2001:8b0:1d0::2
-Subject: [Qemu-arm] [PATCH 1/3] hw/intc/arm_gicv3_cpuif: Fix reset value for
- VMCR_EL2.VBPR1
+Subject: [Qemu-arm] [PATCH 0/3] gicv3: Correct mishandling of NS BPR1 values
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -57,30 +54,37 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: patches@linaro.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: I7GgBBryJBhG
+X-TUID: TyblkhXmDneh
 
-We were setting the VBPR1 field of VMCR_EL2 to icv_min_vbpr()
-on reset, but this is not correct. The field should reset to
-the minimum value of ICV_BPR0_EL1 plus one.
+I happened to be looking at the GICv3 spec and our implementation,
+and I realized that we don't correctly calculate the mask values
+to get group priorities based on BPR values if the NS BPR1 is
+being used. This BPR, unlike the S BPR1 or the BPR0, has
+off-by-one semantics, so instead of "use bits [7:1]" being
+bpr == 0, it is bpr == 1, and so on, with an NS BPR1 value of
+0 being impossible.
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
- hw/intc/arm_gicv3_cpuif.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Patch 3 in this set fixes this error, and fixes the comments
+so they're actually accurate. Patches 1 and 2 are preliminary
+bug fixes which ensure that the NS BPR1 values are actually
+constrained to be greater than 0, so that the assert()s added
+in patch 3 can't fire.
 
-diff --git a/hw/intc/arm_gicv3_cpuif.c b/hw/intc/arm_gicv3_cpuif.c
-index 0b20856..d31eba0 100644
---- a/hw/intc/arm_gicv3_cpuif.c
-+++ b/hw/intc/arm_gicv3_cpuif.c
-@@ -2014,7 +2014,7 @@ static void icc_reset(CPUARMState *env, const ARMCPRegInfo *ri)
-     cs->ich_hcr_el2 = 0;
-     memset(cs->ich_lr_el2, 0, sizeof(cs->ich_lr_el2));
-     cs->ich_vmcr_el2 = ICH_VMCR_EL2_VFIQEN |
--        (icv_min_vbpr(cs) << ICH_VMCR_EL2_VBPR1_SHIFT) |
-+        ((icv_min_vbpr(cs) + 1) << ICH_VMCR_EL2_VBPR1_SHIFT) |
-         (icv_min_vbpr(cs) << ICH_VMCR_EL2_VBPR0_SHIFT);
- }
- 
+I'm sending this as the last thing before I head out of the
+door, so will respond to review comments in June...
+
+thanks
+-- PMM
+
+
+Peter Maydell (3):
+  hw/intc/arm_gicv3_cpuif: Fix reset value for VMCR_EL2.VBPR1
+  hw/intc/arm_gicv3_cpuif: Don't let BPR be set below its minimum
+  hw/intc/arm_gicv3_cpuif: Fix priority masking for NS BPR1
+
+ hw/intc/arm_gicv3_cpuif.c | 49 ++++++++++++++++++++++++++++++++++++++++++-----
+ 1 file changed, 44 insertions(+), 5 deletions(-)
+
 -- 
 2.7.4
 

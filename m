@@ -1,101 +1,105 @@
-Received: by 10.25.0.144 with SMTP id 138csp240058lfa;
-        Wed, 26 Apr 2017 04:49:43 -0700 (PDT)
-X-Received: by 10.55.19.205 with SMTP id 74mr32747424qkt.220.1493207383099;
-        Wed, 26 Apr 2017 04:49:43 -0700 (PDT)
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 10.25.0.144 with SMTP id 138csp240313lfa;
+        Wed, 26 Apr 2017 04:50:21 -0700 (PDT)
+X-Received: by 10.55.162.84 with SMTP id l81mr25668336qke.275.1493207421591;
+        Wed, 26 Apr 2017 04:50:21 -0700 (PDT)
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id o2si20673942qtd.62.2017.04.26.04.49.42
+        by mx.google.com with ESMTPS id 201si25280131qko.98.2017.04.26.04.50.21
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 26 Apr 2017 04:49:43 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Wed, 26 Apr 2017 04:50:21 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        dkim=fail header.i=@gmail.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:54513 helo=lists.gnu.org)
+Received: from localhost ([::1]:54514 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1d3LS2-0004Lv-Ft
-	for alex.bennee@linaro.org; Wed, 26 Apr 2017 07:49:42 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:43519)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1d3LSf-0004Va-2n
+	for alex.bennee@linaro.org; Wed, 26 Apr 2017 07:50:21 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:43100)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <bjsprakash.linux@gmail.com>) id 1d3LJO-0004Zl-Gj
-	for qemu-arm@nongnu.org; Wed, 26 Apr 2017 07:40:47 -0400
+	(envelope-from <bjsprakash.linux@gmail.com>) id 1d3LHz-0003Jp-Ju
+	for qemu-devel@nongnu.org; Wed, 26 Apr 2017 07:39:20 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <bjsprakash.linux@gmail.com>) id 1d3LJN-0006uK-Q4
-	for qemu-arm@nongnu.org; Wed, 26 Apr 2017 07:40:46 -0400
-Received: from mail-lf0-x241.google.com ([2a00:1450:4010:c07::241]:36191)
+	(envelope-from <bjsprakash.linux@gmail.com>) id 1d3LHy-0006GB-SP
+	for qemu-devel@nongnu.org; Wed, 26 Apr 2017 07:39:19 -0400
+Received: from mail-lf0-x243.google.com ([2a00:1450:4010:c07::243]:33087)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <bjsprakash.linux@gmail.com>)
-	id 1d3LJN-0006uA-IZ; Wed, 26 Apr 2017 07:40:45 -0400
-Received: by mail-lf0-x241.google.com with SMTP id 75so24552298lfs.3;
-	Wed, 26 Apr 2017 04:40:45 -0700 (PDT)
+	id 1d3LHw-0006FK-Te; Wed, 26 Apr 2017 07:39:17 -0400
+Received: by mail-lf0-x243.google.com with SMTP id 88so24543622lfr.0;
+	Wed, 26 Apr 2017 04:39:16 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
 	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=9Bh8WBC5pbaUqXqOKwat7VWBatkF4ddLXetC+61wT2o=;
-	b=LOT3UKB6lwlcvfRNS96sjOGazm8vwPnQV2mT3jxGepbc6FNKvLVY1TbW/8K7WHbWxu
-	2N0MUcFh15x2H25coLJaMdopKWBmscxhreJmGbCklQGG4AsdfiyXP99f7spnjmvkIqgt
-	dePPhBU27+sfDbYx/1fNcN6acXhgu/HJCB1HUbSlZib2rnhSR7x36t/jo2o84ToscBKi
-	/byhl4rHNbV2ONRbJGR0FdUeFmuDQCx5ZN1uswgMCG6yZ1sGfdAf/f+u6Ki2sptXKxnl
-	+5ubUoh+26I0kU94xlvsWMgYFc4hDGEDzX2f3asvqvI3aVV2FIi3zeO/pS6PNVov6tNu
-	TcJw==
+	:cc; bh=J30XkscGMXwlvzgSi9scQnvYGjLpbhzigafO8N9GAds=;
+	b=SgeTLx1DqTlRSVHUucQ+3U8ZImAI8m4NBtjPtzzECX4eY+8e8OFu9XG5JkJSIph1zC
+	fGozgmVtrDvKCN6Z6+eVRHFL3pyu4UPgNCW5sI/pSBa3N/GdvcxFCM29i5kQAxIziEli
+	fypvhoSsPWR4XtLokubl91YTgVb8GMCmqQr+qwW5TJIrO0/CPbNECKtH/odRozMgYJun
+	nxiX+Na+1nqXcGIDb/NFUCPO0hPs8Adgvk/0SdLkFPMWxFqwANnYCBMwnxNtW6Um3Oip
+	CIQqJXBcYmliuJ4tZZ545Vqn++CgCSjtzK6sDt6N1mRk6ANXb26fvHgE1I0jlCPD+3Li
+	4MHQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
 	:message-id:subject:to:cc;
-	bh=9Bh8WBC5pbaUqXqOKwat7VWBatkF4ddLXetC+61wT2o=;
-	b=rkpV6kNG+zLGDN5zJwT7UllvbnzB1yyb0kbXw1n6GnpSKqhcdWfK7deZ2lDQ7ZzNu9
-	fEfYOX92HLT/gm9YwDkzIv5bqjMWY0A1KHeb8LDXxPTogYv7ByYAKEIrDEoHzxPg3eu5
-	/vkpWKCmHhaQx5AuDLTN0ARvcOCEAdgePp10YEvMeFGN/a7AMBtD3qYMCtLh3ArgMUE2
-	r5tvjdFdwNDzYoRPNK4xcovFnHld4X+dhu4NKOENuXNfQAizG5wnjJxHf/er8VwrYoFF
-	Zz5v0LsRAr4edwKuMI4BRYm7sBrsFo2GJoIv7z2g/40vpApgQlpxifaw9aVryetyKUY7
-	aT+w==
-X-Gm-Message-State: AN3rC/7b0iw/atrDg6HahwJo6qRjHMJP131Ka/2kqr/6d7+KgTweDI0n
-	eLJdmTP1eZQvQ6q7m3rlyFRc/itMhA==
-X-Received: by 10.46.32.35 with SMTP id g35mr14120013ljg.126.1493206844307;
-	Wed, 26 Apr 2017 04:40:44 -0700 (PDT)
+	bh=J30XkscGMXwlvzgSi9scQnvYGjLpbhzigafO8N9GAds=;
+	b=Iqejil2fx4U9QrC64D6cWf/vLVKzxzqbJbaqXobEXjyjF+uAd5wcH282QdWsfSc5sQ
+	f2IRUNt6QMdxiorgWthszqjxiX994Md6+U+ZPUOptZ7OgOJgOcn5XLYB2CDGjLGSFPBJ
+	d1RAGJtBnbbBPv1BCA/QL3NhtLqvEe+LIvCMWkfb+risCVRvQFcE0OwE3QrLmFACtaj7
+	PYFYb/EM4pRZoy+OJn8A4HAfSxFIvSlkx/+cssp/RQImP1aJC3FrGgdTeU8927phRc3w
+	iPrQUDRNiR/7qhWLWGXzhoLoD22/X5AlSmsv3D+ECiBiiII7GeOjYxmcde3OKmhH7SAI
+	yp4Q==
+X-Gm-Message-State: AN3rC/4W46EamH3CKuZFgELbsHuxQJEhpN6PUXeswtfcPnkWjcC67TrY
+	aIBZfL0eLOT78U56DmyChUGCHyfE1g==
+X-Received: by 10.25.99.22 with SMTP id x22mr10767762lfb.59.1493206755508;
+	Wed, 26 Apr 2017 04:39:15 -0700 (PDT)
 MIME-Version: 1.0
-Received: by 10.46.80.1 with HTTP; Wed, 26 Apr 2017 04:40:44 -0700 (PDT)
-In-Reply-To: <1492173995-14140-4-git-send-email-eric.auger@redhat.com>
+Received: by 10.46.80.1 with HTTP; Wed, 26 Apr 2017 04:39:15 -0700 (PDT)
+In-Reply-To: <1492173995-14140-2-git-send-email-eric.auger@redhat.com>
 References: <1492173995-14140-1-git-send-email-eric.auger@redhat.com>
-	<1492173995-14140-4-git-send-email-eric.auger@redhat.com>
+	<1492173995-14140-2-git-send-email-eric.auger@redhat.com>
 From: Prakash B <bjsprakash.linux@gmail.com>
-Date: Wed, 26 Apr 2017 17:10:44 +0530
-Message-ID: <CACJhumf3+knQdPj2watGezS0E+2es+Y5Y-wW0MQ1Tw1E810UGQ@mail.gmail.com>
+Date: Wed, 26 Apr 2017 17:09:15 +0530
+Message-ID: <CACJhumf5KVCMD7jkcYBz9bFJPypbcZXoTS-TPZWD-g9z9OhQ=g@mail.gmail.com>
 To: Eric Auger <eric.auger@redhat.com>
 Content-Type: text/plain; charset=UTF-8
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2a00:1450:4010:c07::241
-Subject: Re: [Qemu-arm] [Qemu-devel] [RFC v5 3/4] hw/intc/arm_gicv3_kvm:
- Implement pending table save
-X-BeenThere: qemu-arm@nongnu.org
+X-Received-From: 2a00:1450:4010:c07::243
+Subject: Re: [Qemu-devel] [RFC v5 1/4] linux-headers: Update for vITS
+ save/restore
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>, drjones@redhat.com,
 	Vijay Kilari <vijay.kilari@gmail.com>, quintela@redhat.com,
 	qemu-devel@nongnu.org, dgilbert@redhat.com, qemu-arm@nongnu.org,
 	Vijaya.Kumar@cavium.com, Christoffer Dall <christoffer.dall@linaro.org>,
 	eric.auger.pro@gmail.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: qTF67ltWG9Xz
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: aVo5vh2b5IGP
 
 On Fri, Apr 14, 2017 at 6:16 PM, Eric Auger <eric.auger@redhat.com> wrote:
-> This patch adds the flush of the LPI pending bits into the
-> redistributor pending tables. This happens on VM stop.
+> This is a linux header update against 4.11-rc6 plus the non
+> upstreamed ITS migration series.
 >
-> There is no explicit restore as the tables are implicitly sync'ed
-> on ITS table restore and on LPI enable at redistributor level.
+> https://github.com/eauger/linux/tree/v4.11-rc6-its-mig-v5
+>
+> It aims at enhancing the KVM user API with vITS save/restore
+> capability. Those are new attributes supported in the
+> ITS and GICv3 KVM device KVM_DEV_ARM_VGIC_GRP_CTRL groups.
 >
 > Signed-off-by: Eric Auger <eric.auger@redhat.com>
+
 Tested-by: Prakash, Brahmajyosyula <Brahmajyosyula.Prakash@cavium.com>

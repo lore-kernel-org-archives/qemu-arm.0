@@ -1,84 +1,321 @@
-Received: by 10.25.0.144 with SMTP id 138csp250442lfa;
-        Wed, 26 Apr 2017 05:12:31 -0700 (PDT)
-X-Received: by 10.223.165.14 with SMTP id i14mr13141571wrb.7.1493208751605;
-        Wed, 26 Apr 2017 05:12:31 -0700 (PDT)
-Return-Path: <rth7680@gmail.com>
-Received: from mail-wm0-x241.google.com (mail-wm0-x241.google.com. [2a00:1450:400c:c09::241])
-        by mx.google.com with ESMTPS id q126si6172881wme.149.2017.04.26.05.12.31
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 26 Apr 2017 05:12:31 -0700 (PDT)
-Received-SPF: pass (google.com: domain of rth7680@gmail.com designates 2a00:1450:400c:c09::241 as permitted sender) client-ip=2a00:1450:400c:c09::241;
+Received: by 10.25.0.144 with SMTP id 138csp255241lfa;
+        Wed, 26 Apr 2017 05:22:55 -0700 (PDT)
+X-Received: by 10.237.46.69 with SMTP id j63mr36191161qtd.125.1493209374978;
+        Wed, 26 Apr 2017 05:22:54 -0700 (PDT)
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
+        by mx.google.com with ESMTPS id a16si4188196qkj.142.2017.04.26.05.22.54
+        for <alex.bennee@linaro.org>
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Wed, 26 Apr 2017 05:22:54 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of rth7680@gmail.com designates 2a00:1450:400c:c09::241 as permitted sender) smtp.mailfrom=rth7680@gmail.com
-Received: by mail-wm0-x241.google.com with SMTP id y10so564524wmh.0;
-        Wed, 26 Apr 2017 05:12:31 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=sender:subject:to:cc:references:from:message-id:date:user-agent
-         :mime-version:in-reply-to:content-language:content-transfer-encoding;
-        bh=wiRaRtrQQDLdunUj9NfW8MOwjjEnG9c9SVdjJa66OhM=;
-        b=JUe4yJcbaZVVsLT//Wj+sjNHrJj2UyoDyJCRRN0ULadlQAIMz4PkkWqHJI+HgcM8CF
-         W9cqb72UHz5MG7emEyPR7usTjhnkVOpyDSKh60/+iCeOBKDrxg97obljJ60eGflWz01Y
-         os8vEldPb0Pvfb3g/v6jKDlwIh04TptuC3XSgcIi8LhGSzn2a3f1EhX/ghOBdkhDyO+0
-         X6OYS9h5XZm9PEt7dacXsNRJ3vJvvZHitlewHp1l54ijZMiWAv528qm4B52WqMTTX/7o
-         8iD8TPbXWLSz/t2GKY3PHH7TXZFSH7H/oZlODinO2OtxOfrJP0yt9XUhq9M/FYR/7j/t
-         QrTA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
-         :date:user-agent:mime-version:in-reply-to:content-language
-         :content-transfer-encoding;
-        bh=wiRaRtrQQDLdunUj9NfW8MOwjjEnG9c9SVdjJa66OhM=;
-        b=Ts7QjDv0Ic7e7IYIJWb1UWSTsyJ6jQyGVqLx6B/k5ULQ9V+odTtCADRj+5kfNwVGDE
-         N1vfgfbgPR1gHsHo3X08kZ3w3NaxFKfIj81n+hXgtycgHJwToPV6Fo2gZ7+lFBbHUCjm
-         Ti4rYXG5S38fZ+Q7I5jnT5WgrO1kpI0hFOewBSdwUCCPP/J0VxypSeWOWxim3OwdAD2m
-         ZnO1aR0jCRdpPjD6P2O+Q543KEF0bu0pxIC0HRnJj1lexT3OE8PAcEagOfhklAl4lqpY
-         Jz1xAFuIL8ITCtObzkCw+Lj1378JX/LYoflwMg6oLy2JzHlYGGWPxi65/ubaRSJo6oYz
-         bROg==
-X-Gm-Message-State: AN3rC/6zQ305OfqxedfLZ/5jZgbcrByfVOFCAVyYtn7705fNZ7Y/qCGp
-	Na8MGgLYSotUlldW/jU=
-X-Received: by 10.28.93.65 with SMTP id r62mr595967wmb.70.1493208751354;
-        Wed, 26 Apr 2017 05:12:31 -0700 (PDT)
-Return-Path: <rth7680@gmail.com>
-Received: from bigtime.twiddle.net (251.red-80-29-7.adsl.static.ccgg.telefonica.net. [80.29.7.251])
-        by smtp.googlemail.com with ESMTPSA id 32sm47848wrq.34.2017.04.26.05.12.29
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 26 Apr 2017 05:12:30 -0700 (PDT)
-Sender: Richard Henderson <rth7680@gmail.com>
-Subject: Re: [PATCH v3 02/10] tcg: introduce goto_ptr opcode
-To: "Emilio G. Cota" <cota@braap.org>, qemu-devel@nongnu.org
-Cc: Paolo Bonzini <pbonzini@redhat.com>,
- Peter Crosthwaite <crosthwaite.peter@gmail.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Eduardo Habkost <ehabkost@redhat.com>, Andrzej Zaborowski
- <balrogg@gmail.com>, Aurelien Jarno <aurelien@aurel32.net>,
- Alexander Graf <agraf@suse.de>, Stefan Weil <sw@weilnetz.de>,
- qemu-arm@nongnu.org, alex.bennee@linaro.org,
- Pranith Kumar <bobby.prani+qemu@gmail.com>
-References: <1493187803-4510-1-git-send-email-cota@braap.org>
- <1493187803-4510-3-git-send-email-cota@braap.org>
-From: Richard Henderson <rth@twiddle.net>
-Message-ID: <472dde45-4b3e-bad7-ef64-718e089d7a68@twiddle.net>
-Date: Wed, 26 Apr 2017 14:12:27 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
- Thunderbird/52.0
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:54957 helo=lists.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1d3LyA-0002P6-EO
+	for alex.bennee@linaro.org; Wed, 26 Apr 2017 08:22:54 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:56056)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <ehabkost@redhat.com>) id 1d3Lx3-0001L2-Oi
+	for qemu-arm@nongnu.org; Wed, 26 Apr 2017 08:21:47 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+	(envelope-from <ehabkost@redhat.com>) id 1d3Lwz-0007Ly-Mw
+	for qemu-arm@nongnu.org; Wed, 26 Apr 2017 08:21:45 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:56878)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <ehabkost@redhat.com>)
+	id 1d3Lwz-0007Ld-CH; Wed, 26 Apr 2017 08:21:41 -0400
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
+	[10.5.11.16])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 480DB3DBCC;
+	Wed, 26 Apr 2017 12:21:40 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 480DB3DBCC
+Authentication-Results: ext-mx06.extmail.prod.ext.phx2.redhat.com;
+	dmarc=none (p=none dis=none) header.from=redhat.com
+Authentication-Results: ext-mx06.extmail.prod.ext.phx2.redhat.com;
+	spf=pass smtp.mailfrom=ehabkost@redhat.com
+DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com 480DB3DBCC
+Received: from localhost (ovpn-116-14.gru2.redhat.com [10.97.116.14])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 98E0080335;
+	Wed, 26 Apr 2017 12:21:39 +0000 (UTC)
+Date: Wed, 26 Apr 2017 09:21:38 -0300
+From: Eduardo Habkost <ehabkost@redhat.com>
+To: Igor Mammedov <imammedo@redhat.com>
+Message-ID: <20170426122138.GU3482@thinpad.lan.raisama.net>
+References: <1490189568-167621-1-git-send-email-imammedo@redhat.com>
+	<1490189568-167621-8-git-send-email-imammedo@redhat.com>
+	<20170412210239.GC27126@thinpad.lan.raisama.net>
+	<20170419131458.59e2d00e@nial.brq.redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <1493187803-4510-3-git-send-email-cota@braap.org>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-TUID: 6nV6OM8VBAEO
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20170419131458.59e2d00e@nial.brq.redhat.com>
+X-Fnord: you can see the fnord
+User-Agent: Mutt/1.8.0 (2017-02-23)
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.30]);
+	Wed, 26 Apr 2017 12:21:40 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH for-2.10 07/23] pc: add node-id
+ property to CPU
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.21
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jones <drjones@redhat.com>,
+	qemu-devel@nongnu.org, qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
+	Shannon Zhao <zhaoshenglong@huawei.com>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	David Gibson <david@gibson.dropbear.id.au>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: k2ZTl8cj6Kqx
 
-On 04/26/2017 08:23 AM, Emilio G. Cota wrote:
-> +DEF(goto_ptr, 0, 1, 0, TCG_OPF_BB_END)
 
-One more thing:
+(Sorry for taking so long to continue the discussion. I thought I
+was convinced setting node-id on HotpluggableCPU.props was
+required, but after thinking more about it, it looks like it's
+still not required.)
 
-DEF(goto_ptr, 0, 1, 0, TCG_OPF_BB_END | IMPL(TCG_TARGET_HAS_goto_ptr))
+On Wed, Apr 19, 2017 at 01:14:58PM +0200, Igor Mammedov wrote:
+> On Wed, 12 Apr 2017 18:02:39 -0300
+> Eduardo Habkost <ehabkost@redhat.com> wrote:
+> 
+> > On Wed, Mar 22, 2017 at 02:32:32PM +0100, Igor Mammedov wrote:
+> > > it will allow switching from cpu_index to property based
+> > > numa mapping in follow up patches.  
+> > 
+> > I am not sure I understand all the consequences of this, so I
+> > will give it a try:
+> > 
+> > "node-id" is an existing field in CpuInstanceProperties.
+> > CpuInstanceProperties is used on both query-hotpluggable-cpus
+> > output and in MachineState::possible_cpus.
+> > 
+> > We will start using MachineState::possible_cpus to keep track of
+> > NUMA CPU affinity, and that means query-hotpluggable-cpus will
+> > start reporting a "node-id" property when a NUMA mapping is
+> > configured.
+> > 
+> > To allow query-hotpluggable-cpus to report "node-id", the CPU
+> > objects must have a "node-id" property that can be set. This
+> > patch adds the "node-id" property to X86CPU.
+> > 
+> > Is this description accurate? Is the presence of "node-id" in
+> > query-hotpluggable-cpus the only reason we really need this
+> > patch, or is there something else that requires the "node-id"
+> > property?
+> That accurate description, node-id is in the same 'address'
+> properties category as socket/core/thread-id. So if you have
+> numa enabled machine you'd see node-id property in
+> query-hotpluggable-cpus.
 
-You'd have noticed this if you'd have tested this particular patch, with 
---enable-debug-tcg, before applying patch 4.
+I agree that we can make -numa cpu affect query-hotpluggable-cpus
+output (i.e. affect some field on HotpluggableCPU.props).
 
+But it looks like we disagree about the purpose of
+HotpluggableCPU.props:
 
-r~
+I believe HotpluggableCPU.props is just an opaque identifier for
+the location we want to plug the CPU, and the only requirement is
+that it should be unique and have all the information device_add
+needs. As socket IDs are already unique on our existing machines,
+and socket<=>node mapping is already configured using -numa cpu,
+node-id doesn't need to be in HotpluggableCPU.props. (see example
+below)
+
+I don't think clients should assume topology information in
+HotpluggableCPU.props is always present, because the field has a
+different purpose: letting clients know what are the required
+device_add arguments. If we need introspection of CPU topology,
+we can add new fields to HotpluggableCPU, outside 'props'.
+
+> 
+> 
+> > Why exactly do we need to change the output of
+> > query-hotpluggable-cpus for all machines to include "node-id", to
+> > make "-numa cpu" work?
+> It's for introspection as well as for consolidating topology data
+> in a single place purposes and complements already outputed
+> socket/core/thread-id address properties with numa node-id.
+> That way one doesn't need yet another command for introspecting
+> numa mapping for cpus and use existing query-hotpluggable-cpus
+> for full topology description.
+
+I don't disagree about including node-id in HotpluggableCPU
+struct, I am just unsure about including it in
+HotpluggableCPU.props.
+
+My question is: if we use:
+
+ -numa cpu,socket=2,core=1,thread=0,node-id=3
+
+and then:
+
+ device_add ...,socket=2,core=1,thread=0
+ (omitting node-id on device_add)
+
+won't it work exactly the same, and place the new CPU on NUMA
+node 3?
+
+In this case, if we don't need a node-id argument on device_add,
+so node-id doesn't need to be in HotpluggableCPU.props.
+
+> 
+> >  Did you consider saving node_id inside
+> > CPUArchId and outside CpuInstanceProperties, so
+> > query-hotplugabble-cpus output won't be affected by "-numa cpu"?
+> nope, intent was to make node-id visible if numa is enabled and
+> I think that intent was there from the very begging when
+> query-hotplugabble-cpus was introduced with CpuInstanceProperties
+> having node_id field but unused since it has been out of scope
+> of cpu hotplug.
+> 
+> 
+> > I'm asking this because I believe we will eventually need a
+> > mechanism that lets management check what are the valid arguments
+> > for "-numa cpu" for a given machine, and it looks like
+> > query-hotpluggable-cpus is already the right mechanism for that.
+> it's problem similar with -device cpu_foo,...
+
+True.
+
+> 
+> > But we can't make query-hotpluggable-cpus output depend on "-numa
+> > cpu" input, if the "-numa cpu" input will also depend on
+> > query-hotpluggable-cpus output.
+> I don't think that query-hotpluggable-cpus must be independent of
+> '-numa' option.
+> 
+> query-hotpluggable-cpus is a function of -smp and machine type and
+> it's output is dynamic and can change during runtime so we've never
+> made promise to make it static. I think it's ok to make it depend
+> on -numa as extra input argument when present.
+
+OK, I agree that we can make -numa cpu affect
+query-hotpluggable-cpus output.
+
+I also think it might be OK to make -numa affect
+HotpluggableCPU.props, as clients should be prepared for that. I
+just want to understand if we really _have_ to make it so.
+Because not including it would help us avoid surprises, and even
+simplify the code (making this series shorter).
+
+> 
+> It bothers me as well, that '-numa cpu' as well as '-device cpu_foo'
+> options depend on query-hotpluggable-cpus and when we considered
+> generic '-device cpu' support, we though that initially
+> query-hotpluggable-cpus could be used to get list of CPUs
+> for given -smp/machine combination and then it could be used
+> for composing proper CLI. That makes mgmt to start QEMU twice
+> when creating configuration for the 1st time, but end result CLI
+> could be reused without repeating query step again provided
+> topology/machine stays the same. The same applies to '-numa cpu'.
+> 
+> In future to avoid starting QEMU twice we were thinking about
+> configuring QEMU from QMP at runtime, that's where preconfigure
+> approach could be used to help solving it in the future:
+> 
+>   1. introduce pause before machine_init CLI option to allow
+>      preconfig machine from qmp/monitor
+>   2. make query-hotpluggable-cpus usable at preconfig time
+>   3. start qemu with needed number of numa nodes and default mapping:
+>          #qemu -smp ... -numa node,nodeid=0 -node node,nodeid=1
+>   4. get possible cpus list
+
+This is where things can get tricky: if we have the default
+mapping set, step 4 would return "node-id" already set on all
+possible CPUs.
+
+>   5. add qmp/monitor command variant for '-numa cpu' to set numa mapping
+
+This is where I think we would make things simpler: if node-id
+isn't present on 'props', we can simply document the arguments
+that identify the CPU for the numa-cpu command as "just use the
+properties you get on query-hotpluggable-cpus.props". Clients
+would be able to treat CpuInstanceProperties as an opaque CPU
+slot identifier.
+
+i.e. I think this would be a better way to define and document
+the interface:
+
+##
+# @NumaCpuOptions:
+#
+# Mapping of a given CPU (or a set of CPUs) to a NUMA node.
+#
+# @cpu: Properties identifying the CPU(s). Use the 'props' field of
+#       query-hotpluggable-cpus for possible values for this
+#       field.
+#       TODO: describe what happens when 'cpu' matches
+#       multiple slots.
+# @node-id: NUMA node where the CPUs are going to be located.
+##
+{ 'struct': 'NumaCpuOptions',
+  'data': {
+   'cpu': 'CpuInstanceProperties',
+   'node-id': 'int' } }
+
+This separates "what identifies the CPU slot(s) we are
+configuring" from "what identifies the node ID we are binding
+to".
+
+In case we have trouble making this struct work with QemuOpts, we
+could do this (temporarily?):
+
+##
+# @NumaCpuOptions:
+#
+# Mapping of a given CPU (or a set of CPUs) to a NUMA node.
+#
+# @cpu: Properties identifying the CPU(s). Use the 'props' field of
+#       query-hotpluggable-cpus for possible values for this
+#       field.
+#       TODO: describe what happens when 'cpu' matches
+#       multiple slots.
+# @node-id: NUMA node where the CPUs are going to be located.
+#
+# @socket-id: Shortcut for cpu.socket-id, to make this struct
+#             friendly to QemuOpts.
+# @core-id: Shortcut for cpu.core-id, to make this struct
+#           friendly to QemuOpts.
+# @thread-id: Shortcut for cpu.thread-id, to make this struct
+#             friendly to QemuOpts.
+##
+{ 'struct': 'NumaCpuOptions',
+  'data': {
+   '*cpu': 'CpuInstanceProperties',
+   '*socket-id': 'int',
+   '*core-id': 'int',
+   '*thread-id': 'int',
+   'node-id': 'int' } }
+
+>   6. optionally, set new numa mapping and get updated
+>      possible cpus list with query-hotpluggable-cpus
+>   7. optionally, add extra cpus with device_add using updated
+>      cpus list and get updated cpus list as it's been changed again.
+>   8. unpause preconfig stage and let qemu continue to execute
+>      machine_init and the rest.
+> 
+> Since we would need to implement QMP configuration for '-device cpu',
+> we as well might reuse it for custom numa mapping.
+> 
+>  [...]
+
+-- 
+Eduardo

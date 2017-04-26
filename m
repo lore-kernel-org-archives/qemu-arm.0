@@ -1,43 +1,43 @@
-Received: by 10.25.0.144 with SMTP id 138csp133473lfa;
+Received: by 10.25.0.144 with SMTP id 138csp133474lfa;
         Tue, 25 Apr 2017 23:23:31 -0700 (PDT)
-X-Received: by 10.233.222.3 with SMTP id s3mr32671244qkf.17.1493187811040;
+X-Received: by 10.237.36.5 with SMTP id r5mr32812607qtc.253.1493187811211;
         Tue, 25 Apr 2017 23:23:31 -0700 (PDT)
 Return-Path: <cota@braap.org>
 Received: from out4-smtp.messagingengine.com (out4-smtp.messagingengine.com. [66.111.4.28])
-        by mx.google.com with ESMTPS id b30si24590974qte.154.2017.04.25.23.23.30
+        by mx.google.com with ESMTPS id b99si23727757qkb.38.2017.04.25.23.23.31
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 25 Apr 2017 23:23:30 -0700 (PDT)
+        Tue, 25 Apr 2017 23:23:31 -0700 (PDT)
 Received-SPF: pass (google.com: domain of cota@braap.org designates 66.111.4.28 as permitted sender) client-ip=66.111.4.28;
 Authentication-Results: mx.google.com;
        dkim=pass header.i=@braap.org;
        dkim=pass header.i=@messagingengine.com;
        spf=pass (google.com: domain of cota@braap.org designates 66.111.4.28 as permitted sender) smtp.mailfrom=cota@braap.org
 Received: from compute4.internal (compute4.nyi.internal [10.202.2.44])
-	by mailout.nyi.internal (Postfix) with ESMTP id 9905321CBE;
+	by mailout.nyi.internal (Postfix) with ESMTP id CCCE021C9D;
 	Wed, 26 Apr 2017 02:23:30 -0400 (EDT)
-Received: from frontend1 ([10.202.2.160])
+Received: from frontend2 ([10.202.2.161])
   by compute4.internal (MEProxy); Wed, 26 Apr 2017 02:23:30 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=braap.org; h=cc
 	:date:from:in-reply-to:message-id:references:subject:to
-	:x-me-sender:x-me-sender:x-sasl-enc:x-sasl-enc; s=mesmtp; bh=znh
-	YymT2jwNXO2D7r87K+U4zrPFbSFp/JZ1A9bvCotM=; b=c1tId1mGfxrAe5rO/KD
-	3kFIRo/Qr5MXJzX72QNsqpJhunp2KwrfLYctY4Enp7XhN/XNK0g0SoOEPLxYftle
-	GNX8ij33hnk6nnE1mSULEez0J4rqmbX7QW9p1vfPwiRkp+LwxCQVv1sFm0KSOdQe
-	Jx9RynmSL5dwF9qYcVQhG1V0=
+	:x-me-sender:x-me-sender:x-sasl-enc:x-sasl-enc; s=mesmtp; bh=pKp
+	S0yuDSSVlyo9EsBzA2VP7+IDzwZtAiCNNJZ78iCU=; b=xHmKK47ALDb18XjBscM
+	p+HZZ6gPCBF5i7VkMJasULs1YAxNjn+tYQ7VJCB7Z0Rt05Jc3VXVV8JyVMm19KSo
+	MxnNdo1AoDeFZTDRV9q9WrP3MxvgHXR2K5isz88MKoTUSoYZUW+fHEX1mzJaZnTv
+	r4nIbWtR++iObWTEKnZ+xvmk=
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
 	messagingengine.com; h=cc:date:from:in-reply-to:message-id
 	:references:subject:to:x-me-sender:x-me-sender:x-sasl-enc
-	:x-sasl-enc; s=fm1; bh=znhYymT2jwNXO2D7r87K+U4zrPFbSFp/JZ1A9bvCo
-	tM=; b=q8dSz76fwBPYWFQGchP8aaZG1jjRzWOO2FkQIYC2dahx2B33yZ0MjToe5
-	WM8SHVdXKCkPUQgsn7Ox36iIRmivvA/b/kBSK9FDnylaVamuzkJIUn7Asns8n5i7
-	BJVAd6P6L2E1oUJYRMTeXeJe4ugixurO3d3JSofU+LNYw/ifoNvx83lhGF3d9tDh
-	v+VD7snya9rOswXAKJwf/M1rCe/POxdYryL4+kCGLzIQ+iPoTcI3aLrckRvQWNr9
-	2ufPDMe7/YNuikUvAu6qdGVflYaBYsrXqzODFIqvUdRMivyhMH1eAAnL1FmDqzFK
-	sZSQk2NutaJrm3WM3MM5aXNS3qe6Q==
-X-ME-Sender: <xms:4jwAWTU_mfHgKrYLSEqY0wPHxbDtfX3jyrvsO2SSFwKhp96w13EJzQ>
-X-Sasl-enc: Se0gEdV2ewrGP02Vx4YcbnkOWoRYLQKgCXwdP7MdiM1v 1493187810
+	:x-sasl-enc; s=fm1; bh=pKpS0yuDSSVlyo9EsBzA2VP7+IDzwZtAiCNNJZ78i
+	CU=; b=eweRhM8BCjYJ06gQz2rSR4xtcGgky65daY3CJlOEdCc3B247X4gMz+jfB
+	0bF4aL4N1qZixc94ii/ETOirYqF4v1XeDOVn+e+hRoqIQG2haUX2jpYjvJKkCJGP
+	BmxU4xUoYQR4UddkwQNyFXuv2YnSzlkLOenzguLkS4bQiFSMBxYEFUB5/MZj3mnq
+	tneNAKvbgRqPVyz5lYsGv9mRRFK8z6a2MjdEyVsi1rIUjwx6b+l7vLEzWLjH1aBp
+	Uqf0jLuRbgswSTxrpu3TWHqklM/Y0vY/adTLooopQ7MQ3mwVCsg1kSr4yIjxXVEv
+	Bf9AFzt4+aHuBel5i/C1gMf+Ywgtw==
+X-ME-Sender: <xms:4jwAWZ-gKXi9QdpVsfCVklIlrShp_x0cQzCzeiBrLYjBv1fMSoh3GA>
+X-Sasl-enc: Se0tF91jbA/YNE+V2YocbnkOWoRYLQKgCXwdP7MdiM1v 1493187810
 Received: from localhost (flamenco.cs.columbia.edu [128.59.20.216])
-	by mail.messagingengine.com (Postfix) with ESMTPA id 5D2237E43A;
+	by mail.messagingengine.com (Postfix) with ESMTPA id 881582469B;
 	Wed, 26 Apr 2017 02:23:30 -0400 (EDT)
 From: "Emilio G. Cota" <cota@braap.org>
 To: qemu-devel@nongnu.org
@@ -53,87 +53,147 @@ Cc: Paolo Bonzini <pbonzini@redhat.com>,
 	qemu-arm@nongnu.org,
 	alex.bennee@linaro.org,
 	Pranith Kumar <bobby.prani+qemu@gmail.com>
-Subject: [PATCH v3 01/10] tcg-runtime: add lookup_tb_ptr helper
-Date: Wed, 26 Apr 2017 02:23:14 -0400
-Message-Id: <1493187803-4510-2-git-send-email-cota@braap.org>
+Subject: [PATCH v3 02/10] tcg: introduce goto_ptr opcode
+Date: Wed, 26 Apr 2017 02:23:15 -0400
+Message-Id: <1493187803-4510-3-git-send-email-cota@braap.org>
 X-Mailer: git-send-email 2.7.4
 In-Reply-To: <1493187803-4510-1-git-send-email-cota@braap.org>
 References: <1493187803-4510-1-git-send-email-cota@braap.org>
-X-TUID: Vc3Dps0UR8zy
+X-TUID: /thmZ9CWtlc6
 
-This paves the way for upcoming work.
-
-Reviewed-by: Richard Henderson <rth@twiddle.net>
 Signed-off-by: Emilio G. Cota <cota@braap.org>
 ---
- tcg-runtime.c     | 21 +++++++++++++++++++++
- tcg/tcg-runtime.h |  2 ++
- tcg/tcg.h         |  1 +
- 3 files changed, 24 insertions(+)
+ tcg/aarch64/tcg-target.h | 1 +
+ tcg/arm/tcg-target.h     | 1 +
+ tcg/i386/tcg-target.h    | 1 +
+ tcg/ia64/tcg-target.h    | 1 +
+ tcg/mips/tcg-target.h    | 1 +
+ tcg/ppc/tcg-target.h     | 1 +
+ tcg/s390/tcg-target.h    | 1 +
+ tcg/sparc/tcg-target.h   | 1 +
+ tcg/tcg-opc.h            | 1 +
+ tcg/tci/tcg-target.h     | 1 +
+ 10 files changed, 10 insertions(+)
 
-diff --git a/tcg-runtime.c b/tcg-runtime.c
-index 4c60c96..90d2d4b 100644
---- a/tcg-runtime.c
-+++ b/tcg-runtime.c
-@@ -27,6 +27,7 @@
- #include "exec/helper-proto.h"
- #include "exec/cpu_ldst.h"
- #include "exec/exec-all.h"
-+#include "exec/tb-hash.h"
+diff --git a/tcg/aarch64/tcg-target.h b/tcg/aarch64/tcg-target.h
+index 1a5ea23..b82eac4 100644
+--- a/tcg/aarch64/tcg-target.h
++++ b/tcg/aarch64/tcg-target.h
+@@ -77,6 +77,7 @@ typedef enum {
+ #define TCG_TARGET_HAS_mulsh_i32        0
+ #define TCG_TARGET_HAS_extrl_i64_i32    0
+ #define TCG_TARGET_HAS_extrh_i64_i32    0
++#define TCG_TARGET_HAS_goto_ptr         0
  
- /* 32-bit helpers */
+ #define TCG_TARGET_HAS_div_i64          1
+ #define TCG_TARGET_HAS_rem_i64          1
+diff --git a/tcg/arm/tcg-target.h b/tcg/arm/tcg-target.h
+index 09a19c6..2f3ecfd 100644
+--- a/tcg/arm/tcg-target.h
++++ b/tcg/arm/tcg-target.h
+@@ -123,6 +123,7 @@ extern bool use_idiv_instructions;
+ #define TCG_TARGET_HAS_mulsh_i32        0
+ #define TCG_TARGET_HAS_div_i32          use_idiv_instructions
+ #define TCG_TARGET_HAS_rem_i32          0
++#define TCG_TARGET_HAS_goto_ptr         0
  
-@@ -141,6 +142,26 @@ uint64_t HELPER(ctpop_i64)(uint64_t arg)
-     return ctpop64(arg);
- }
+ enum {
+     TCG_AREG0 = TCG_REG_R6,
+diff --git a/tcg/i386/tcg-target.h b/tcg/i386/tcg-target.h
+index 4275787..59d9835 100644
+--- a/tcg/i386/tcg-target.h
++++ b/tcg/i386/tcg-target.h
+@@ -107,6 +107,7 @@ extern bool have_popcnt;
+ #define TCG_TARGET_HAS_muls2_i32        1
+ #define TCG_TARGET_HAS_muluh_i32        0
+ #define TCG_TARGET_HAS_mulsh_i32        0
++#define TCG_TARGET_HAS_goto_ptr         0
  
-+void *HELPER(lookup_tb_ptr)(CPUArchState *env, target_ulong addr)
-+{
-+    CPUState *cpu = ENV_GET_CPU(env);
-+    TranslationBlock *tb;
-+    target_ulong cs_base, pc;
-+    uint32_t flags;
-+
-+    if (unlikely(atomic_read(&cpu->exit_request))) {
-+        goto out_epilogue;
-+    }
-+    cpu_get_tb_cpu_state(env, &pc, &cs_base, &flags);
-+    tb = atomic_rcu_read(&cpu->tb_jmp_cache[tb_jmp_cache_hash_func(addr)]);
-+    if (likely(tb && tb->pc == addr && tb->cs_base == cs_base &&
-+               tb->flags == flags)) {
-+        return tb->tc_ptr;
-+    }
-+ out_epilogue:
-+    return tcg_ctx.code_gen_epilogue;
-+}
-+
- void HELPER(exit_atomic)(CPUArchState *env)
- {
-     cpu_loop_exit_atomic(ENV_GET_CPU(env), GETPC());
-diff --git a/tcg/tcg-runtime.h b/tcg/tcg-runtime.h
-index 114ea6f..c41d38a 100644
---- a/tcg/tcg-runtime.h
-+++ b/tcg/tcg-runtime.h
-@@ -24,6 +24,8 @@ DEF_HELPER_FLAGS_1(clrsb_i64, TCG_CALL_NO_RWG_SE, i64, i64)
- DEF_HELPER_FLAGS_1(ctpop_i32, TCG_CALL_NO_RWG_SE, i32, i32)
- DEF_HELPER_FLAGS_1(ctpop_i64, TCG_CALL_NO_RWG_SE, i64, i64)
+ #if TCG_TARGET_REG_BITS == 64
+ #define TCG_TARGET_HAS_extrl_i64_i32    0
+diff --git a/tcg/ia64/tcg-target.h b/tcg/ia64/tcg-target.h
+index 42aea03..901bb75 100644
+--- a/tcg/ia64/tcg-target.h
++++ b/tcg/ia64/tcg-target.h
+@@ -173,6 +173,7 @@ typedef enum {
+ #define TCG_TARGET_HAS_mulsh_i64        0
+ #define TCG_TARGET_HAS_extrl_i64_i32    0
+ #define TCG_TARGET_HAS_extrh_i64_i32    0
++#define TCG_TARGET_HAS_goto_ptr         0
  
-+DEF_HELPER_FLAGS_2(lookup_tb_ptr, TCG_CALL_NO_WG_SE, ptr, env, tl)
-+
- DEF_HELPER_FLAGS_1(exit_atomic, TCG_CALL_NO_WG, noreturn, env)
+ #define TCG_TARGET_deposit_i32_valid(ofs, len) ((len) <= 16)
+ #define TCG_TARGET_deposit_i64_valid(ofs, len) ((len) <= 16)
+diff --git a/tcg/mips/tcg-target.h b/tcg/mips/tcg-target.h
+index f46d64a..e3240cf 100644
+--- a/tcg/mips/tcg-target.h
++++ b/tcg/mips/tcg-target.h
+@@ -130,6 +130,7 @@ extern bool use_mips32r2_instructions;
+ #define TCG_TARGET_HAS_muluh_i32        1
+ #define TCG_TARGET_HAS_mulsh_i32        1
+ #define TCG_TARGET_HAS_bswap32_i32      1
++#define TCG_TARGET_HAS_goto_ptr         0
  
- #ifdef CONFIG_SOFTMMU
-diff --git a/tcg/tcg.h b/tcg/tcg.h
-index 6c216bb..5ec48d1 100644
---- a/tcg/tcg.h
-+++ b/tcg/tcg.h
-@@ -699,6 +699,7 @@ struct TCGContext {
-        extension that allows arithmetic on void*.  */
-     int code_gen_max_blocks;
-     void *code_gen_prologue;
-+    void *code_gen_epilogue;
-     void *code_gen_buffer;
-     size_t code_gen_buffer_size;
-     void *code_gen_ptr;
+ #if TCG_TARGET_REG_BITS == 64
+ #define TCG_TARGET_HAS_add2_i32         0
+diff --git a/tcg/ppc/tcg-target.h b/tcg/ppc/tcg-target.h
+index abd8b3d..a9aa974 100644
+--- a/tcg/ppc/tcg-target.h
++++ b/tcg/ppc/tcg-target.h
+@@ -82,6 +82,7 @@ extern bool have_isa_3_00;
+ #define TCG_TARGET_HAS_muls2_i32        0
+ #define TCG_TARGET_HAS_muluh_i32        1
+ #define TCG_TARGET_HAS_mulsh_i32        1
++#define TCG_TARGET_HAS_goto_ptr         0
+ 
+ #if TCG_TARGET_REG_BITS == 64
+ #define TCG_TARGET_HAS_add2_i32         0
+diff --git a/tcg/s390/tcg-target.h b/tcg/s390/tcg-target.h
+index cbdd2a6..6b7bcfb 100644
+--- a/tcg/s390/tcg-target.h
++++ b/tcg/s390/tcg-target.h
+@@ -92,6 +92,7 @@ extern uint64_t s390_facilities;
+ #define TCG_TARGET_HAS_mulsh_i32      0
+ #define TCG_TARGET_HAS_extrl_i64_i32  0
+ #define TCG_TARGET_HAS_extrh_i64_i32  0
++#define TCG_TARGET_HAS_goto_ptr       0
+ 
+ #define TCG_TARGET_HAS_div2_i64       1
+ #define TCG_TARGET_HAS_rot_i64        1
+diff --git a/tcg/sparc/tcg-target.h b/tcg/sparc/tcg-target.h
+index b8b74f9..9348ddd 100644
+--- a/tcg/sparc/tcg-target.h
++++ b/tcg/sparc/tcg-target.h
+@@ -123,6 +123,7 @@ extern bool use_vis3_instructions;
+ #define TCG_TARGET_HAS_muls2_i32        1
+ #define TCG_TARGET_HAS_muluh_i32        0
+ #define TCG_TARGET_HAS_mulsh_i32        0
++#define TCG_TARGET_HAS_goto_ptr         0
+ 
+ #define TCG_TARGET_HAS_extrl_i64_i32    1
+ #define TCG_TARGET_HAS_extrh_i64_i32    1
+diff --git a/tcg/tcg-opc.h b/tcg/tcg-opc.h
+index f06f894..c64b994 100644
+--- a/tcg/tcg-opc.h
++++ b/tcg/tcg-opc.h
+@@ -193,6 +193,7 @@ DEF(insn_start, 0, 0, TLADDR_ARGS * TARGET_INSN_START_WORDS,
+     TCG_OPF_NOT_PRESENT)
+ DEF(exit_tb, 0, 0, 1, TCG_OPF_BB_END)
+ DEF(goto_tb, 0, 0, 1, TCG_OPF_BB_END)
++DEF(goto_ptr, 0, 1, 0, TCG_OPF_BB_END)
+ 
+ DEF(qemu_ld_i32, 1, TLADDR_ARGS, 1,
+     TCG_OPF_CALL_CLOBBER | TCG_OPF_SIDE_EFFECTS)
+diff --git a/tcg/tci/tcg-target.h b/tcg/tci/tcg-target.h
+index 838bf3a..0696328 100644
+--- a/tcg/tci/tcg-target.h
++++ b/tcg/tci/tcg-target.h
+@@ -85,6 +85,7 @@
+ #define TCG_TARGET_HAS_muls2_i32        0
+ #define TCG_TARGET_HAS_muluh_i32        0
+ #define TCG_TARGET_HAS_mulsh_i32        0
++#define TCG_TARGET_HAS_goto_ptr         0
+ 
+ #if TCG_TARGET_REG_BITS == 64
+ #define TCG_TARGET_HAS_extrl_i64_i32    0
 -- 
 2.7.4

@@ -1,429 +1,98 @@
-Received: by 10.25.0.144 with SMTP id 138csp2002122lfa;
-        Tue, 25 Apr 2017 11:06:34 -0700 (PDT)
-X-Received: by 10.200.42.77 with SMTP id l13mr18298785qtl.20.1493143593989;
-        Tue, 25 Apr 2017 11:06:33 -0700 (PDT)
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id x94si22845424qte.200.2017.04.25.11.06.33
-        for <alex.bennee@linaro.org>
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 25 Apr 2017 11:06:33 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+Received: by 10.25.0.144 with SMTP id 138csp133470lfa;
+        Tue, 25 Apr 2017 23:23:31 -0700 (PDT)
+X-Received: by 10.55.22.160 with SMTP id 32mr22422216qkw.89.1493187810836;
+        Tue, 25 Apr 2017 23:23:30 -0700 (PDT)
+Return-Path: <cota@braap.org>
+Received: from out4-smtp.messagingengine.com (out4-smtp.messagingengine.com. [66.111.4.28])
+        by mx.google.com with ESMTPS id t184si24570976qkh.288.2017.04.25.23.23.30
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 25 Apr 2017 23:23:30 -0700 (PDT)
+Received-SPF: pass (google.com: domain of cota@braap.org designates 66.111.4.28 as permitted sender) client-ip=66.111.4.28;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:50757 helo=lists.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1d34rB-00075t-FH
-	for alex.bennee@linaro.org; Tue, 25 Apr 2017 14:06:33 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:41502)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <krzk@kernel.org>) id 1d34r4-00074R-3Y
-	for qemu-arm@nongnu.org; Tue, 25 Apr 2017 14:06:27 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <krzk@kernel.org>) id 1d34qy-0001AI-Vx
-	for qemu-arm@nongnu.org; Tue, 25 Apr 2017 14:06:26 -0400
-Received: from mail.kernel.org ([198.145.29.136]:42956)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <krzk@kernel.org>)
-	id 1d34qy-00019C-N7; Tue, 25 Apr 2017 14:06:20 -0400
-Received: from mail.kernel.org (localhost [127.0.0.1])
-	by mail.kernel.org (Postfix) with ESMTP id 6FD3A201B9;
-	Tue, 25 Apr 2017 18:06:17 +0000 (UTC)
-Received: from kozik-lap.dzcmts001-cpe-001.datazug.ch
-	(pub082136089155.dh-hfc.datazug.ch [82.136.89.155])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
-	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPSA id B86AC20145;
-	Tue, 25 Apr 2017 18:06:14 +0000 (UTC)
-From: Krzysztof Kozlowski <krzk@kernel.org>
-To: Igor Mitsyanko <i.mitsyanko@gmail.com>,
-	Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Date: Tue, 25 Apr 2017 20:06:09 +0200
-Message-Id: <20170425180609.11004-1-krzk@kernel.org>
-X-Mailer: git-send-email 2.9.3
-X-Virus-Scanned: ClamAV using ClamSMTP
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
-X-Received-From: 198.145.29.136
-Subject: [Qemu-arm] [PATCH v3] hw/misc: Add Exynos4210 Pseudo Random Number
- Generator
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.21
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Krzysztof Kozlowski <krzk@kernel.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: dgNcz7zANwFP
+       dkim=pass header.i=@braap.org;
+       dkim=pass header.i=@messagingengine.com;
+       spf=pass (google.com: domain of cota@braap.org designates 66.111.4.28 as permitted sender) smtp.mailfrom=cota@braap.org
+Received: from compute4.internal (compute4.nyi.internal [10.202.2.44])
+	by mailout.nyi.internal (Postfix) with ESMTP id 6303321B79;
+	Wed, 26 Apr 2017 02:23:30 -0400 (EDT)
+Received: from frontend2 ([10.202.2.161])
+  by compute4.internal (MEProxy); Wed, 26 Apr 2017 02:23:30 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=braap.org; h=cc
+	:date:from:message-id:subject:to:x-me-sender:x-me-sender
+	:x-sasl-enc:x-sasl-enc; s=mesmtp; bh=kNv2ej/zqNXDKOPS5t00Vv7ANnb
+	b6/aFj2D3BXgnDwo=; b=s4C7il24PAanfEhlDFgROxk8Hbm5da4D9KUD9zN63Mm
+	w+Q2Lgx1xO/h2vddF9HrTkxMrop2G8DeS6LNemaU7xJbjZaDI6jNE7kFlTcoDG3V
+	zRAUiP7UI3cdvKwefDp3ARDApek/HyIdm3vvPTxu4WQ9VStZ/uabai0g2YU3f2UE
+	=
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+	messagingengine.com; h=cc:date:from:message-id:subject:to
+	:x-me-sender:x-me-sender:x-sasl-enc:x-sasl-enc; s=fm1; bh=kNv2ej
+	/zqNXDKOPS5t00Vv7ANnbb6/aFj2D3BXgnDwo=; b=TdfPsk2NaqPwnbep/6hWiX
+	NHxsfrNNtUJRDyWkIy9VFeJvsfsjVuDJkJWFHiU01XohcMKm3+XH6Ifalgkqaziv
+	JDDMFDYYT2Y5+RpgWWyXd2ZoIPGRwIsOdI2yjjNbqxqvON0uoptcw2UJAXFF4rc5
+	gnMlemgPZlliyr5+0u0ZLFiTLYZzquoFqWrMUug/RxsP94uxrMG3nkNRn90oVbmn
+	TR/Ht5XOV8AFO+8hVsWGbPn0tPXD143R8Bx5Ctf/Dgp50LBkQLke22nfcuuCr11w
+	c6Xqi4jsZmkZxiDDUYQ0cgq7vZpIYH1s4TLF2XvOTxoljSN0yJUyiy4q2RFjq05g
+	==
+X-ME-Sender: <xms:4jwAWR48punhppdFMkjcwxaYOualAG39C02PzRUrac6Bp2wDkNuGrg>
+X-Sasl-enc: Se0/HMxzZw7XOEWa24UcbnkOWoRYLQKgCXwdP7MdiM1v 1493187810
+Received: from localhost (flamenco.cs.columbia.edu [128.59.20.216])
+	by mail.messagingengine.com (Postfix) with ESMTPA id 1B02B2469B;
+	Wed, 26 Apr 2017 02:23:30 -0400 (EDT)
+From: "Emilio G. Cota" <cota@braap.org>
+To: qemu-devel@nongnu.org
+Cc: Paolo Bonzini <pbonzini@redhat.com>,
+	Peter Crosthwaite <crosthwaite.peter@gmail.com>,
+	Richard Henderson <rth@twiddle.net>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	Eduardo Habkost <ehabkost@redhat.com>,
+	Andrzej Zaborowski <balrogg@gmail.com>,
+	Aurelien Jarno <aurelien@aurel32.net>,
+	Alexander Graf <agraf@suse.de>,
+	Stefan Weil <sw@weilnetz.de>,
+	qemu-arm@nongnu.org,
+	alex.bennee@linaro.org,
+	Pranith Kumar <bobby.prani+qemu@gmail.com>
+Subject: [PATCH v3 00/10] TCG optimizations for 2.10
+Date: Wed, 26 Apr 2017 02:23:13 -0400
+Message-Id: <1493187803-4510-1-git-send-email-cota@braap.org>
+X-Mailer: git-send-email 2.7.4
+X-TUID: PhNU+wiss6/X
 
-Add emulation for Exynos4210 Pseudo Random Number Generator which could
-work on fixed seeds or with seeds provided by True Random Number
-Generator block inside the SoC.
+This is the v3 of this series. v2 for context:
+  https://lists.gnu.org/archive/html/qemu-devel/2017-04/msg04342.html
 
-Implement only the fixed seeds part of it in polling mode (no
-interrupts).
+Changes from v2 -- all due to Richard's comments:
 
-Emulation tested with two independent Linux kernel exynos-rng drivers:
-1. New kcapi-rng interface (targeting Linux v4.12),
-2. Old hwrng inteface
-   # echo "exynos" > /sys/class/misc/hw_random/rng_current
-   # dd if=/dev/hwrng of=/dev/null bs=1 count=16
+- Inlined tb_from_jmp_cache into the TCG helper; now that this helper
+  is common there is no point in having a separate function for this.
 
-Signed-off-by: Krzysztof Kozlowski <krzk@kernel.org>
+- Compile-tested for all targets.
 
----
+- Dropped the TCG alignment patches for now.
 
-Changes since v2:
-1. Drop GRand in favor of qcrypto_random_bytes() after discussion with
-   Peter Maydell.
-2. Because of above, ignore the seed value but mark if each one of five
-   seed registers were seeded.
-3. Fix memset of s->randr_value (copy paste error, also shorter sizeof
-   can be used).
+- Added reviewed-by tags.
 
-Changes since v1:
-1. Use GRand-like functions to fix build on MingW32 (this adds also
-   finalize).
-2. Add DPRINTF macro.
-3. Use HWADDR_PRIx and family for printing values.
----
- hw/arm/exynos4210.c      |   4 +
- hw/misc/Makefile.objs    |   2 +-
- hw/misc/exynos4210_rng.c | 282 +++++++++++++++++++++++++++++++++++++++++++++++
- 3 files changed, 287 insertions(+), 1 deletion(-)
- create mode 100644 hw/misc/exynos4210_rng.c
+- Removed stray goto_tb from tcg_dump_ops. (That was a leftover
+  that should have been removed long ago.)
 
-diff --git a/hw/arm/exynos4210.c b/hw/arm/exynos4210.c
-index 960f27e45a36..5a622cfedfc8 100644
---- a/hw/arm/exynos4210.c
-+++ b/hw/arm/exynos4210.c
-@@ -86,6 +86,9 @@
- /* Clock controller SFR base address */
- #define EXYNOS4210_CLK_BASE_ADDR            0x10030000
- 
-+/* PRNG/HASH SFR base address */
-+#define EXYNOS4210_RNG_BASE_ADDR            0x10830400
-+
- /* Display controllers (FIMD) */
- #define EXYNOS4210_FIMD0_BASE_ADDR          0x11C00000
- 
-@@ -322,6 +325,7 @@ Exynos4210State *exynos4210_init(MemoryRegion *system_mem,
-     sysbus_create_simple("exynos4210.pmu", EXYNOS4210_PMU_BASE_ADDR, NULL);
- 
-     sysbus_create_simple("exynos4210.clk", EXYNOS4210_CLK_BASE_ADDR, NULL);
-+    sysbus_create_simple("exynos4210.rng", EXYNOS4210_RNG_BASE_ADDR, NULL);
- 
-     /* PWM */
-     sysbus_create_varargs("exynos4210.pwm", EXYNOS4210_PWM_BASE_ADDR,
-diff --git a/hw/misc/Makefile.objs b/hw/misc/Makefile.objs
-index c8b489390f7e..e0699ea11155 100644
---- a/hw/misc/Makefile.objs
-+++ b/hw/misc/Makefile.objs
-@@ -26,7 +26,7 @@ obj-$(CONFIG_IVSHMEM) += ivshmem.o
- obj-$(CONFIG_REALVIEW) += arm_sysctl.o
- obj-$(CONFIG_NSERIES) += cbus.o
- obj-$(CONFIG_ECCMEMCTL) += eccmemctl.o
--obj-$(CONFIG_EXYNOS4) += exynos4210_pmu.o exynos4210_clk.o
-+obj-$(CONFIG_EXYNOS4) += exynos4210_pmu.o exynos4210_clk.o exynos4210_rng.o
- obj-$(CONFIG_IMX) += imx_ccm.o
- obj-$(CONFIG_IMX) += imx31_ccm.o
- obj-$(CONFIG_IMX) += imx25_ccm.o
-diff --git a/hw/misc/exynos4210_rng.c b/hw/misc/exynos4210_rng.c
-new file mode 100644
-index 000000000000..3f1459edb5df
---- /dev/null
-+++ b/hw/misc/exynos4210_rng.c
-@@ -0,0 +1,282 @@
-+/*
-+ *  Exynos4210 Pseudo Random Nubmer Generator Emulation
-+ *
-+ *  Copyright (c) 2017 Krzysztof Kozlowski <krzk@kernel.org>
-+ *
-+ *  This program is free software; you can redistribute it and/or modify it
-+ *  under the terms of the GNU General Public License as published by the
-+ *  Free Software Foundation; either version 2 of the License, or
-+ *  (at your option) any later version.
-+ *
-+ *  This program is distributed in the hope that it will be useful, but WITHOUT
-+ *  ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
-+ *  FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License
-+ *  for more details.
-+ *
-+ *  You should have received a copy of the GNU General Public License along
-+ *  with this program; if not, see <http://www.gnu.org/licenses/>.
-+ */
-+
-+#include "qemu/osdep.h"
-+#include "crypto/random.h"
-+#include "hw/sysbus.h"
-+#include "qemu/log.h"
-+
-+#define DEBUG_EXYNOS_RNG 0
-+
-+#define DPRINTF(fmt, ...) \
-+    do { \
-+        if (DEBUG_EXYNOS_RNG) { \
-+            printf("exynos4210_rng: " fmt, ## __VA_ARGS__); \
-+        } \
-+    } while (0)
-+
-+#define TYPE_EXYNOS4210_RNG             "exynos4210.rng"
-+#define EXYNOS4210_RNG(obj) \
-+    OBJECT_CHECK(Exynos4210RngState, (obj), TYPE_EXYNOS4210_RNG)
-+
-+/*
-+ * Exynos4220, PRNG, only polling mode is supported.
-+ */
-+
-+/* RNG_CONTROL_1 register bitfields, reset value: 0x0 */
-+#define EXYNOS4210_RNG_CONTROL_1_PRNG           0x8
-+#define EXYNOS4210_RNG_CONTROL_1_START_INIT     BIT(4)
-+/* RNG_STATUS register bitfields, reset value: 0x1 */
-+#define EXYNOS4210_RNG_STATUS_PRNG_ERROR        BIT(7)
-+#define EXYNOS4210_RNG_STATUS_PRNG_DONE         BIT(5)
-+#define EXYNOS4210_RNG_STATUS_MSG_DONE          BIT(4)
-+#define EXYNOS4210_RNG_STATUS_PARTIAL_DONE      BIT(3)
-+#define EXYNOS4210_RNG_STATUS_PRNG_BUSY         BIT(2)
-+#define EXYNOS4210_RNG_STATUS_SEED_SETTING_DONE BIT(1)
-+#define EXYNOS4210_RNG_STATUS_BUFFER_READY      BIT(0)
-+#define EXYNOS4210_RNG_STATUS_WRITE_MASK        (EXYNOS4210_RNG_STATUS_PRNG_DONE \
-+                                                    | EXYNOS4210_RNG_STATUS_MSG_DONE \
-+                                                    | EXYNOS4210_RNG_STATUS_PARTIAL_DONE)
-+
-+#define EXYNOS4210_RNG_CONTROL_1                  0x0
-+#define EXYNOS4210_RNG_STATUS                    0x10
-+#define EXYNOS4210_RNG_SEED_IN                  0x140
-+#define EXYNOS4210_RNG_SEED_IN_OFFSET(n)        (EXYNOS4210_RNG_SEED_IN + (n * 0x4))
-+#define EXYNOS4210_RNG_PRNG                     0x160
-+#define EXYNOS4210_RNG_PRNG_OFFSET(n)           (EXYNOS4210_RNG_PRNG + (n * 0x4))
-+
-+#define EXYNOS4210_RNG_PRNG_NUM                 5
-+
-+#define EXYNOS4210_RNG_REGS_MEM_SIZE            0x200
-+
-+typedef struct Exynos4210RngState {
-+    SysBusDevice parent_obj;
-+    MemoryRegion iomem;
-+
-+    int32_t randr_value[EXYNOS4210_RNG_PRNG_NUM];
-+    /* bits from 0 to EXYNOS4210_RNG_PRNG_NUM if given seed register was set */
-+    uint32_t seed_set;
-+
-+    /* Register values */
-+    uint32_t reg_control;
-+    uint32_t reg_status;
-+} Exynos4210RngState;
-+
-+static bool exynos4210_rng_seed_ready(const Exynos4210RngState *s)
-+{
-+    unsigned int i;
-+
-+    for (i = 0; i < EXYNOS4210_RNG_PRNG_NUM; i++) {
-+        if ((s->seed_set & BIT(i)) == 0) {
-+            return false;
-+        }
-+    }
-+
-+    return true;
-+}
-+
-+static void exynos4210_rng_set_seed(Exynos4210RngState *s, unsigned int i,
-+                                    uint64_t val)
-+{
-+    /*
-+     * We actually ignore the seed and always generate true random numbers.
-+     * Theoretically this should not match the device as Exynos has
-+     * a Pseudo Random Number Generator but testing shown that it always
-+     * generates random numbers regardless of the seed value.
-+     */
-+    s->seed_set |= BIT(i);
-+
-+    /* If all seeds were written, update the status to reflect it */
-+    if (exynos4210_rng_seed_ready(s)) {
-+        s->reg_status |= EXYNOS4210_RNG_STATUS_SEED_SETTING_DONE;
-+    } else {
-+        s->reg_status &= ~EXYNOS4210_RNG_STATUS_SEED_SETTING_DONE;
-+    }
-+}
-+
-+static void exynos4210_rng_run_engine(Exynos4210RngState *s)
-+{
-+    Error *err = NULL;
-+    int ret;
-+
-+    /* Seed set? */
-+    if ((s->reg_status & EXYNOS4210_RNG_STATUS_SEED_SETTING_DONE) == 0) {
-+        goto out;
-+    }
-+
-+    /* PRNG engine chosen? */
-+    if ((s->reg_control & EXYNOS4210_RNG_CONTROL_1_PRNG) == 0) {
-+        goto out;
-+    }
-+
-+    /* PRNG engine started? */
-+    if ((s->reg_control & EXYNOS4210_RNG_CONTROL_1_START_INIT) == 0) {
-+        goto out;
-+    }
-+
-+    /* Get randoms */
-+    ret = qcrypto_random_bytes((uint8_t *)s->randr_value,
-+                               sizeof(s->randr_value), &err);
-+    if (!ret) {
-+        /* Notify that PRNG is ready */
-+        s->reg_status |= EXYNOS4210_RNG_STATUS_PRNG_DONE;
-+    } else {
-+        error_report_err(err);
-+    }
-+
-+out:
-+    /* Always clear start engine bit */
-+    s->reg_control &= ~EXYNOS4210_RNG_CONTROL_1_START_INIT;
-+}
-+
-+static uint64_t exynos4210_rng_read(void *opaque, hwaddr offset,
-+                                    unsigned size)
-+{
-+    Exynos4210RngState *s = (Exynos4210RngState *)opaque;
-+    uint32_t val = 0;
-+
-+    assert(size == 4);
-+
-+    switch (offset) {
-+    case EXYNOS4210_RNG_CONTROL_1:
-+        val = s->reg_control;
-+        break;
-+
-+    case EXYNOS4210_RNG_STATUS:
-+        val = s->reg_status;
-+        break;
-+
-+    case EXYNOS4210_RNG_PRNG_OFFSET(0):
-+    case EXYNOS4210_RNG_PRNG_OFFSET(1):
-+    case EXYNOS4210_RNG_PRNG_OFFSET(2):
-+    case EXYNOS4210_RNG_PRNG_OFFSET(3):
-+    case EXYNOS4210_RNG_PRNG_OFFSET(4):
-+        val = s->randr_value[(offset - EXYNOS4210_RNG_PRNG_OFFSET(0)) / 4];
-+        DPRINTF("returning random @0x%" HWADDR_PRIx ": 0x%" PRIx32 "\n",
-+                offset, val);
-+        break;
-+
-+    default:
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+                      "%s: bad read offset 0x%" HWADDR_PRIx "\n",
-+                      __func__, offset);
-+    }
-+
-+    return val;
-+}
-+
-+static void exynos4210_rng_write(void *opaque, hwaddr offset,
-+                                 uint64_t val, unsigned size)
-+{
-+    Exynos4210RngState *s = (Exynos4210RngState *)opaque;
-+
-+    assert(size == 4);
-+
-+    switch (offset) {
-+    case EXYNOS4210_RNG_CONTROL_1:
-+        DPRINTF("RNG_CONTROL_1 = 0x%" PRIx64 "\n", val);
-+        s->reg_control = val;
-+        exynos4210_rng_run_engine(s);
-+        break;
-+
-+    case EXYNOS4210_RNG_STATUS:
-+        /* For clearing status fields */
-+        s->reg_status &= ~EXYNOS4210_RNG_STATUS_WRITE_MASK;
-+        s->reg_status |= val & EXYNOS4210_RNG_STATUS_WRITE_MASK;
-+        break;
-+
-+    case EXYNOS4210_RNG_SEED_IN_OFFSET(0):
-+    case EXYNOS4210_RNG_SEED_IN_OFFSET(1):
-+    case EXYNOS4210_RNG_SEED_IN_OFFSET(2):
-+    case EXYNOS4210_RNG_SEED_IN_OFFSET(3):
-+    case EXYNOS4210_RNG_SEED_IN_OFFSET(4):
-+        exynos4210_rng_set_seed(s,
-+                                (offset - EXYNOS4210_RNG_SEED_IN_OFFSET(0)) / 4,
-+                                val);
-+        break;
-+
-+    default:
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+                      "%s: bad write offset 0x%" HWADDR_PRIx "\n",
-+                      __func__, offset);
-+    }
-+}
-+
-+static const MemoryRegionOps exynos4210_rng_ops = {
-+    .read = exynos4210_rng_read,
-+    .write = exynos4210_rng_write,
-+    .endianness = DEVICE_NATIVE_ENDIAN,
-+};
-+
-+static void exynos4210_rng_reset(DeviceState *dev)
-+{
-+    Exynos4210RngState *s = EXYNOS4210_RNG(dev);
-+
-+    s->reg_control = 0;
-+    s->reg_status = EXYNOS4210_RNG_STATUS_BUFFER_READY;
-+    memset(s->randr_value, 0, sizeof(s->randr_value));
-+    s->seed_set = 0;
-+}
-+
-+static void exynos4210_rng_init(Object *obj)
-+{
-+    Exynos4210RngState *s = EXYNOS4210_RNG(obj);
-+    SysBusDevice *dev = SYS_BUS_DEVICE(obj);
-+
-+    memory_region_init_io(&s->iomem, obj, &exynos4210_rng_ops, s,
-+                          TYPE_EXYNOS4210_RNG, EXYNOS4210_RNG_REGS_MEM_SIZE);
-+    sysbus_init_mmio(dev, &s->iomem);
-+}
-+
-+static const VMStateDescription exynos4210_rng_vmstate = {
-+    .name = TYPE_EXYNOS4210_RNG,
-+    .version_id = 1,
-+    .minimum_version_id = 1,
-+    .fields = (VMStateField[]) {
-+        VMSTATE_INT32_ARRAY(randr_value, Exynos4210RngState,
-+                            EXYNOS4210_RNG_PRNG_NUM),
-+        VMSTATE_UINT32(seed_set, Exynos4210RngState),
-+        VMSTATE_UINT32(reg_status, Exynos4210RngState),
-+        VMSTATE_UINT32(reg_control, Exynos4210RngState),
-+        VMSTATE_END_OF_LIST()
-+    }
-+};
-+
-+static void exynos4210_rng_class_init(ObjectClass *klass, void *data)
-+{
-+    DeviceClass *dc = DEVICE_CLASS(klass);
-+
-+    dc->reset = exynos4210_rng_reset;
-+    dc->vmsd = &exynos4210_rng_vmstate;
-+}
-+
-+static const TypeInfo exynos4210_rng_info = {
-+    .name          = TYPE_EXYNOS4210_RNG,
-+    .parent        = TYPE_SYS_BUS_DEVICE,
-+    .instance_size = sizeof(Exynos4210RngState),
-+    .instance_init = exynos4210_rng_init,
-+    .class_init    = exynos4210_rng_class_init,
-+};
-+
-+static void exynos4210_rng_register(void)
-+{
-+    type_register_static(&exynos4210_rng_info);
-+}
-+
-+type_init(exynos4210_rng_register)
--- 
-2.9.3
+- merged helper_lookup_tb_ptr and goto_ptr into gen_lookup_and_goto_ptr.
+  This makes the calling code simpler and also prunes out the lookup
+  when goto_ptr isn't implemented by the backend.
 
+- tcg/i386: add the "pre-epilogue" instruction that sets eax to 0,
+  instead of setting eax to 0 before every goto_ptr.
+
+- return "r" instead of "ri" for goto_ptr's op def. (*ouch!*)
+
+- target/arm: extend to tl before calling the lookup_and_goto_ptr
+  helper, thereby fixing aarch64-* target compilation.
+
+Also re-ran all measurements, and dropped the noinline measurements
+since now there's only a single (inlined) caller.
+You can inspect/fetch the changes at:
+  https://github.com/cota/qemu/tree/tcg-opt-v3
+
+Thanks,
+
+		Emilio

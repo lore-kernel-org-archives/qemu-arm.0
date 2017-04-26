@@ -1,10 +1,10 @@
-Received: by 10.25.0.144 with SMTP id 138csp133527lfa;
+Received: by 10.25.0.144 with SMTP id 138csp133529lfa;
         Tue, 25 Apr 2017 23:23:32 -0700 (PDT)
-X-Received: by 10.55.17.32 with SMTP id b32mr34677468qkh.5.1493187812647;
+X-Received: by 10.55.124.66 with SMTP id x63mr31588148qkc.225.1493187812762;
         Tue, 25 Apr 2017 23:23:32 -0700 (PDT)
 Return-Path: <cota@braap.org>
 Received: from out4-smtp.messagingengine.com (out4-smtp.messagingengine.com. [66.111.4.28])
-        by mx.google.com with ESMTPS id x145si9263588qkb.117.2017.04.25.23.23.32
+        by mx.google.com with ESMTPS id n15si20316748qkh.164.2017.04.25.23.23.32
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
         Tue, 25 Apr 2017 23:23:32 -0700 (PDT)
 Received-SPF: pass (google.com: domain of cota@braap.org designates 66.111.4.28 as permitted sender) client-ip=66.111.4.28;
@@ -13,32 +13,32 @@ Authentication-Results: mx.google.com;
        dkim=pass header.i=@messagingengine.com;
        spf=pass (google.com: domain of cota@braap.org designates 66.111.4.28 as permitted sender) smtp.mailfrom=cota@braap.org
 Received: from compute4.internal (compute4.nyi.internal [10.202.2.44])
-	by mailout.nyi.internal (Postfix) with ESMTP id 4275821CCE;
+	by mailout.nyi.internal (Postfix) with ESMTP id 67A4321B49;
 	Wed, 26 Apr 2017 02:23:32 -0400 (EDT)
-Received: from frontend1 ([10.202.2.160])
+Received: from frontend2 ([10.202.2.161])
   by compute4.internal (MEProxy); Wed, 26 Apr 2017 02:23:32 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=braap.org; h=cc
 	:date:from:in-reply-to:message-id:references:subject:to
-	:x-me-sender:x-me-sender:x-sasl-enc:x-sasl-enc; s=mesmtp; bh=15o
-	sJEsGDnVzxhqZFHkOUQS7uBrU2al87S0YPknkkVM=; b=mzNkJp+FExFSZkUZL2Q
-	9Jf0v4xWd30rb2uIt/0EOwQq9+VIY1U+ZJW5hj3nbmfZNvWxf0EFULiUKS+rhbSJ
-	TGCtVEV9veLrrlpk+knkPipP1OzNp6w2PB+5F0Nt02Qrnm5h0FLqTBfc4LjNeaZ+
-	Nb5hItvtLZhccO7Q4FGRZ1K0=
+	:x-me-sender:x-me-sender:x-sasl-enc:x-sasl-enc; s=mesmtp; bh=FA+
+	e3Xv5AjO7YH2WX0VOsBB3hIAwoqYtkldFYtYp9nk=; b=afa0eokhX4S3N7prWwF
+	9YvVD3m4YvaF2/F7zK8IrBsI7JbDXc+75vJev7kcloVduIL5weZvjpg0LrDOWVtl
+	q7BF+a4+jvcW64KXIb1iA9Fvks/Kj0GHLj9DTbC8ziKoPec8R6xTa17yvNpsyPfS
+	/6cwiHJo46gYbItlKPrDpX/s=
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
 	messagingengine.com; h=cc:date:from:in-reply-to:message-id
 	:references:subject:to:x-me-sender:x-me-sender:x-sasl-enc
-	:x-sasl-enc; s=fm1; bh=15osJEsGDnVzxhqZFHkOUQS7uBrU2al87S0YPknkk
-	VM=; b=B8JXkCIpNe9x4TqSx6MBLW1HSmmTcv8kjAwcYKSQbJ4DGpOUmgBhm/XM2
-	fUSKfqsYKMoZSBaqyVcHhlyXYUh3eT7UGgF8/6+JxmejPEL6TikiavXL59wOCOvx
-	CGYhYgRY6SSsS7RF2oqQ9qJBB0iqK/02wuyhDQJ0yIBcn75fimYsof6+Kh6mlvkG
-	HDa43MWgo7FjdssFXdZbvh2QYN3JgzPk1J0R7er8a6BGWW9bLIgme4npbyyq7tcv
-	RAVaqOi4p2nt7J3xyA2nseMruKqxeHJP1m1jdNGh+3ehbQ/ouNDbNTd0y8tZFlyH
-	HHJqMw6o1NMoDGlG5fNzfGq9mfHZw==
-X-ME-Sender: <xms:5DwAWXz_ssrIg8iaXcd_QdBAXDtTfh35ZXy7EbfqEcLoV7Z1kCcw1Q>
-X-Sasl-enc: TrZoq9ih4dSSs3gR1W5dw7aYyJCDSOdJuuB+x2HTqFCJ 1493187811
+	:x-sasl-enc; s=fm1; bh=FA+e3Xv5AjO7YH2WX0VOsBB3hIAwoqYtkldFYtYp9
+	nk=; b=fE6p0AfbU4vLHU5fdWHsWUFlbzCbvRNmayiBuE66e3cmVJwHpKQqP2IQI
+	74EKY5R3yOyFOtEaNWSn56WzD8RIsqN0ZYE6w/JAAPClaWGfn4YolFwLlJqUxB1Y
+	zmx3pLzZ6WuXKwsTW0J5sm9ILe3ldPJEH1C25mVtj793zolY82BBllGA5/fUYVUY
+	bF5FqszUD5NeqJhtFMq6+lI/7SHf/VObT3U93T41wxqan3fef2NskS6Tx6EEY0JJ
+	o8qkvVCr0//lNZWVFofrTIoYIyXEljdapT2WQkJl/uz4YRNeqJR4qv8Vf9KwwLx7
+	BXxtwURq+APBpCnjhbZtJSkyByTdA==
+X-ME-Sender: <xms:5DwAWdbxrZct5nhVbrNIRF6hhatH1idxZ911KAsNPh8Iqm-e6H6-NQ>
+X-Sasl-enc: Zd1KxaOa7TbcVsY6SE7Kpg6aFgUTn+iC/4o4p4QXtsOo 1493187812
 Received: from localhost (flamenco.cs.columbia.edu [128.59.20.216])
-	by mail.messagingengine.com (Postfix) with ESMTPA id EB4BF7E0A4;
-	Wed, 26 Apr 2017 02:23:31 -0400 (EDT)
+	by mail.messagingengine.com (Postfix) with ESMTPA id 267C82469B;
+	Wed, 26 Apr 2017 02:23:32 -0400 (EDT)
 From: "Emilio G. Cota" <cota@braap.org>
 To: qemu-devel@nongnu.org
 Cc: Paolo Bonzini <pbonzini@redhat.com>,
@@ -53,116 +53,189 @@ Cc: Paolo Bonzini <pbonzini@redhat.com>,
 	qemu-arm@nongnu.org,
 	alex.bennee@linaro.org,
 	Pranith Kumar <bobby.prani+qemu@gmail.com>
-Subject: [PATCH v3 09/10] target/i386: optimize indirect branches
-Date: Wed, 26 Apr 2017 02:23:22 -0400
-Message-Id: <1493187803-4510-10-git-send-email-cota@braap.org>
+Subject: [PATCH v3 10/10] tb-hash: improve tb_jmp_cache hash function in user mode
+Date: Wed, 26 Apr 2017 02:23:23 -0400
+Message-Id: <1493187803-4510-11-git-send-email-cota@braap.org>
 X-Mailer: git-send-email 2.7.4
 In-Reply-To: <1493187803-4510-1-git-send-email-cota@braap.org>
 References: <1493187803-4510-1-git-send-email-cota@braap.org>
-X-TUID: +qCDDr+VCCpO
+X-TUID: V3UU8yYvK9FL
 
-Speed up indirect branches by jumping to the target if it is valid.
+Optimizations to cross-page chaining and indirect branches make
+performance more sensitive to the hit rate of tb_jmp_cache.
+The constraint of reserving some bits for the page number
+lowers the achievable quality of the hashing function.
 
-Softmmu measurements (see later commit for user-mode numbers):
+However, user-mode does not have this requirement. Thus,
+with this change we use for user-mode a hashing function that
+is both faster and of better quality than the previous one.
+
+Measurements:
 
 Note: baseline (i.e. speedup == 1x) is QEMU v2.9.0.
 
--                  SPECint06 (test set), x86_64-softmmu (Ubuntu 16.04 guest). Host: Intel i7-4790K @ 4.00GHz
+-                           SPECint06 (test set), x86_64-linux-user. Host: Intel i7-6700K @ 4.00GHz
 
- 2.4x +-+--------------------------------------------------------------------------------------------------------------+-+
+ 2.2x +-+--------------------------------------------------------------------------------------------------------------+-+
       |                                                                                                                  |
-      |   cross                                                                                                          |
- 2.2x +cross+jr..........................................................................+++...........................+-+
-      |                                                                                   |                              |
-      |                                                                               +++ |                              |
-   2x +-+..............................................................................|..|............................+-+
-      |                                                                                |  |                              |
-      |                                                                                |  |                              |
- 1.8x +-+..............................................................................|####...........................+-+
-      |                                                                                |# |#                             |
-      |                                                                              **** |#                             |
- 1.6x +-+............................................................................*.|*.|#...........................+-+
-      |                                                                              * |* |#                             |
-      |                                                                              * |* |#                             |
- 1.4x +-+.......................................................................+++..*.|*.|#...........................+-+
-      |                                                      ++++++             #### * |*++#             +++             |
-      |                        +++                            |  |              #++# *++*  #          +++ |              |
- 1.2x +-+......................###.....####....+++............|..|...........****..#.*..*..#....####...|.###.....####..+-+
-      |        +++          **** #  ****  #    ####          ***###          *++*  # *  *  #    #++#  ****|#  +++#++#    |
-      |    ****###     +++  *++* #  *++*  #  ++#  #    ####  *|* |#     +++  *  *  # *  *  #  ***  #  *| *|#  ****  #    |
-   1x +-++-*++*++#++***###++*++*+#++*+-*++#+****++#++***++#+-*+*++#-+****##++*++*-+#+*++*-+#++*+*++#++*-+*+#++*++*++#-++-+
-      |    *  *  #  * *  #  *  * #  *  *  # *  *  #  * *  #  *|* |#  *++* #  *  *  # *  *  #  * *  #  *  * #  *  *  #    |
-      |    *  *  #  * *  #  *  * #  *  *  # *  *  #  * *  #  *+*++#  *  * #  *  *  # *  *  #  * *  #  *  * #  *  *  #    |
- 0.8x +-+--****###--***###--****##--****###-****###--***###--***###--****##--****###-****###--***###--****##--****###--+-+
+      |         jr                                                                                                       |
+   2x +jr+multhash        +....................................................+++++...................................+-+
+      |    jr+hash                                                              |$$$                                     |
+      |                                                                         |$+$                                     |
+      |                                                                        ### $                                     |
+ 1.8x +-+......................................................................#|#.$...................................+-+
+      |                                                                      ++#+# $                                     |
+      |                                                                       |# # $                                     |
+ 1.6x +-+....................................................................***.#.$....................++$$$..........+-+
+      |                                         $$$                          *+* # $                     |$+$            |
+      |                       ++$$$           ### $                          * * # $                  +++|$ $            |
+      |                     ++###+$           # # $                          * * # $           ###   ****## $            |
+ 1.4x +-+...................***+#.$.........***.#.$..........................*.*.#.$...........#+#$$.*++*|#.$..........+-+
+      |                     *+* # $         * * # $                          * * # $           # # $ *  *+# $            |
+      |                     * * # $   +++++ * * # $                          * * # $         *** # $ *  * # $   ###$$    |
+ 1.2x +-+...................*.*.#.$.***##$$.*.*.#.$..........................*.*.#.$.........*.*.#.$.*..*.#.$.***+#+$..+-+
+      |                     * * # $ *+* # $ * * # $   +++                    * * # $ ++###$$ * * # $ *  * # $ * * # $    |
+      |    ***##$$          * * # $ * * # $ * * # $ ***##$$          ++###   * * # $ *** #+$ * * # $ *  * # $ * * # $    |
+      |    *+*+#+$ ***##$$$ * * # $ * * # $ * * # $ *+* # $ ++####$$ ***+#   * * # $ * * # $ * * # $ *  * # $ * * # $    |
+   1x +-++-*+*+#+$+*+*+#-+$+*+*-#+$+*+*+#+$+*+*+#+$+*-*+#+$+***++#+$+*+*+#$$+*+*+#+$+*+*+#+$+*+*-#+$+*+-*+#+$+*+*+#+$-++-+
+      |    * * # $ * * #  $ * * # $ * * # $ * * # $ * * # $ * *  # $ * * # $ * * # $ * * # $ * * # $ *  * # $ * * # $    |
+      |    * * # $ * * #  $ * * # $ * * # $ * * # $ * * # $ * *  # $ * * # $ * * # $ * * # $ * * # $ *  * # $ * * # $    |
+ 0.8x +-+--***##$$-***##$$$-***##$$-***##$$-***##$$-***##$$-***###$$-***##$$-***##$$-***##$$-***##$$-****##$$-***##$$--+-+
          astar   bzip2      gcc   gobmk h264ref   hmmlibquantum      mcf omnetpperlbench   sjengxalancbmk   hmean
-  png: http://imgur.com/DU36YFU
+  png: http://imgur.com/4UXTrEc
 
-NB. 'cross' represents the previous commit.
+Here I also tried the hash function suggested by Paolo ("multhash"):
 
+  return ((uint64_t) (pc * 2654435761) >> 32) & (TB_JMP_CACHE_SIZE - 1);
+
+As you can see it is just as good as the other new function ("hash"),
+which is what I ended up going with.
+
+-                          SPECint06 (train set), x86_64-linux-user. Host: Intel i7-6700K @ 4.00GHz
+
+ 2.6x +-+--------------------------------------------------------------------------------------------------------------+-+
+      |                                                                                                                  |
+      |     jr                                                                                           ###             |
+ 2.4x +jr+hash...........................................................................................#.#...........+-+
+      |                                                                                                  # #             |
+      |                                                                                                  # #             |
+ 2.2x +-+................................................................................................#.#...........+-+
+      |                                                                                                  # #             |
+      |                                                                                                  # #             |
+   2x +-+................................................................................................#.#...........+-+
+      |                                                                                               **** #             |
+      |                                                                                               *  * #             |
+ 1.8x +-+.............................................................................................*..*.#...........+-+
+      |                                                                         +++                   *  * #             |
+      |                                                                         ####    ####          *  * #             |
+ 1.6x +-+......................................####.............................#..#.****..#..........*..*.#...........+-+
+      |                        +++             #++#                          ****  # *  *  #    ####  *  * #             |
+      |                        ###             #  #                          *  *  # *  *  #    #  #  *  * #             |
+ 1.4x +-+...................****+#..........****..#..........................*..*..#.*..*..#....#..#..*..*.#...........+-+
+      |                     *++* #          *  *  #                          *  *  # *  *  #  ***  #  *  * #     ####    |
+      |                     *  * #     #### *  *  #                          *  *  # *  *  #  * *  #  *  * #  ****  #    |
+ 1.2x +-+...................*..*.#..****++#.*..*..#..........................*..*..#.*..*..#..*.*..#..*..*.#..*..*..#..+-+
+      |    ****###          *  * #  *  *  # *  *  #                          *  *  # *  *  #  * *  #  *  * #  *  *  #    |
+      |    *  *  #  ***###  *  * #  *  *  # *  *  #                  ****##  *  *  # *  *  #  * *  #  *  * #  *  *  #    |
+   1x +-+--****###--***###--****##--****###-****###--***###--***###--****##--****###-****###--***###--****##--****###--+-+
+         astar   bzip2      gcc   gobmk h264ref   hmmlibquantum      mcf omnetpperlbench   sjengxalancbmk   hmean
+  png: http://imgur.com/ArCbHqo
+
+-                                    NBench, x86_64-linux-user. Host: Intel i7-6700K @ 4.00GHz
+
+ 1.12x +-+-------------------------------------------------------------------------------------------------------------+-+
+       |                                                                                                                 |
+       |     jr                                                           +++                                            |
+  1.1x +jr+hash...........................................................####.........................................+-+
+       |                                                               +++#| #                                           |
+       |                                                                | #++#                                           |
+ 1.08x +-+................................+++................+++.+++..*****..#.........................................+-+
+       |                                   |  +++             |   |   * | *  #                                           |
+       |                                   |   |              |   |   *+++*  #                                           |
+ 1.06x +-+................................****###.............|...|...*...*..#.........................+++.............+-+
+       |                                  *| * |#            ****###  *   *  #                          |                |
+       |                                  *| *++#            *| * |#  *   *  #                        ####               |
+ 1.04x +-+................................*++*..#............*|.*.|#..*...*..#........................#.|#.............+-+
+       |                                  *  *  #            *++*++#  *   *  #                     +++#++#               |
+       |                                  *  *  #            *  *  #  *   *  #                      | #  #   +++####     |
+ 1.02x +-+................................*..*..#......+++...*..*..#..*...*..#.....................****..#..*****++#...+-+
+       |         +++                      *  *  #   +++ |    *  *  #  *   *  #  +++                *| *  #  *+++*  #     |
+       |      +++ |    +++ +++   ++++++   *  *  #  *****###  *  *  #  *   *  #   |  +++   ++++++   *++*  #  *   *  #     |
+    1x +-++-+++++####++****###++++-+####+-*++*++#-+*+++*-+#++*++*++#++*+-+*++#+-+++####-+*****###++*++*++#++*+-+*++#+-++-+
+       |     *****| #  *++* |#  *****| #  *  *  #  *   *++#  *  *  #  *   *  #  **** |#  *   *  #  *  *  #  *   *  #     |
+       |     * | *| #  *  *++#  * | *++#  *  *  #  *   *  #  *  *  #  *   *  #  *| *++#  *   *  #  *  *  #  *   *  #     |
+ 0.98x +-+...*.|.*++#..*..*..#..*+++*..#..*..*..#..*...*..#..*..*..#..*...*..#..*++*..#..*...*..#..*..*..#..*...*..#...+-+
+       |     *+++*  #  *  *  #  *   *  #  *  *  #  *   *  #  *  *  #  *   *  #  *  *  #  *   *  #  *  *  #  *   *  #     |
+       |     *   *  #  *  *  #  *   *  #  *  *  #  *   *  #  *  *  #  *   *  #  *  *  #  *   *  #  *  *  #  *   *  #     |
+ 0.96x +-+---*****###--****###--*****###--****###--*****###--****###--*****###--****###--*****###--****###--*****###---+-+
+       ASSIGNMENT BITFIELD   FOURFP EMULATION   HUFFMAN   LU DECOMPOSITIONEURAL NNUMERIC SOSTRING SORT     hmean
+  png: http://imgur.com/ZXFX0hJ
+
+-                                   NBench, arm-linux-user. Host: Intel i7-4790K @ 4.00GHz
+
+  1.3x +-+-------------------------------------------------------------------------------------------------------------+-+
+       |                            ####                                                                                 |
+       |     jr                     #  #                                            +++                                  |
+ 1.25x +jr+hash.....................#..#...........................................####................................+-+
+       |                            #  #                                           #  #                                  |
+       |                            #  #                                           #  #                                  |
+  1.2x +-+..........................#..#...........................................#..#................................+-+
+       |                            #  #                                           #  #                                  |
+       |                            #  #                                           #  #                                  |
+ 1.15x +-+..........................#..#...........................................#..#................................+-+
+       |                            #  #                                  ####     #  #                                  |
+       |                            #  #                                  #  #     #  #                                  |
+  1.1x +-+..........................#..#..................................#..#.....#..#................................+-+
+       |                            #  #                                  #  #     #  #                         +++      |
+       |                            #  #               ####               #  #     #  #                         ####     |
+ 1.05x +-+..........................#..#...............#..#.....####......#..#.....#..#.........................#..#...+-+
+       |                            #  #               #  #     #  #      #  #     #  #                +++      #  #     |
+       |                   +++  *****  #     ####  *****  #     #  #   +++#  #  ****  #            ****###      #  #     |
+    1x +-++-+*****###++****+++++*+-+*++#+-****++#-+*+++*-+#+++++#++#++*****++#+-*++*++#-+*****-++++*++*++#++*****++#+-++-+
+       |     *   *  #  *  * |   *   *  #  *  *  #  *   *  #  ****  #  *   *  #  *  *  #  *   *###  *  *++#  *   *  #     |
+       |     *   *  #  *  *###  *   *  #  *  *  #  *   *  #  *  *  #  *   *  #  *  *  #  *   *  #  *  *  #  *   *  #     |
+ 0.95x +-+...*...*..#..*..*.|#..*...*..#..*..*..#..*...*..#..*..*..#..*...*..#..*..*..#..*...*..#..*..*..#..*...*..#...+-+
+       |     *   *  #  *  * |#  *   *  #  *  *  #  *   *  #  *  *  #  *   *  #  *  *  #  *   *  #  *  *  #  *   *  #     |
+       |     *   *  #  *  * |#  *   *  #  *  *  #  *   *  #  *  *  #  *   *  #  *  *  #  *   *  #  *  *  #  *   *  #     |
+  0.9x +-+---*****###--****###--*****###--****###--*****###--****###--*****###--****###--*****###--****###--*****###---+-+
+       ASSIGNMENT BITFIELD   FOURFP EMULATION   HUFFMAN   LU DECOMPOSITIONEURAL NNUMERIC SOSTRING SORT     hmean
+  png: http://imgur.com/FfD27ey
+
+Reviewed-by: Richard Henderson <rth@twiddle.net>
 Signed-off-by: Emilio G. Cota <cota@braap.org>
 ---
- target/i386/translate.c | 14 ++++++++------
- 1 file changed, 8 insertions(+), 6 deletions(-)
+ include/exec/tb-hash.h | 12 ++++++++++++
+ 1 file changed, 12 insertions(+)
 
-diff --git a/target/i386/translate.c b/target/i386/translate.c
-index a065271..3bd80c0 100644
---- a/target/i386/translate.c
-+++ b/target/i386/translate.c
-@@ -4988,7 +4988,7 @@ static target_ulong disas_insn(CPUX86State *env, DisasContext *s,
-             gen_push_v(s, cpu_T1);
-             gen_op_jmp_v(cpu_T0);
-             gen_bnd_jmp(s);
--            gen_eob(s);
-+            gen_jr(s, cpu_T0);
-             break;
-         case 3: /* lcall Ev */
-             gen_op_ld_v(s, ot, cpu_T1, cpu_A0);
-@@ -5006,7 +5006,8 @@ static target_ulong disas_insn(CPUX86State *env, DisasContext *s,
-                                       tcg_const_i32(dflag - 1),
-                                       tcg_const_i32(s->pc - s->cs_base));
-             }
--            gen_eob(s);
-+            tcg_gen_ld_tl(cpu_tmp4, cpu_env, offsetof(CPUX86State, eip));
-+            gen_jr(s, cpu_tmp4);
-             break;
-         case 4: /* jmp Ev */
-             if (dflag == MO_16) {
-@@ -5014,7 +5015,7 @@ static target_ulong disas_insn(CPUX86State *env, DisasContext *s,
-             }
-             gen_op_jmp_v(cpu_T0);
-             gen_bnd_jmp(s);
--            gen_eob(s);
-+            gen_jr(s, cpu_T0);
-             break;
-         case 5: /* ljmp Ev */
-             gen_op_ld_v(s, ot, cpu_T1, cpu_A0);
-@@ -5029,7 +5030,8 @@ static target_ulong disas_insn(CPUX86State *env, DisasContext *s,
-                 gen_op_movl_seg_T0_vm(R_CS);
-                 gen_op_jmp_v(cpu_T1);
-             }
--            gen_eob(s);
-+            tcg_gen_ld_tl(cpu_tmp4, cpu_env, offsetof(CPUX86State, eip));
-+            gen_jr(s, cpu_tmp4);
-             break;
-         case 6: /* push Ev */
-             gen_push_v(s, cpu_T0);
-@@ -6409,7 +6411,7 @@ static target_ulong disas_insn(CPUX86State *env, DisasContext *s,
-         /* Note that gen_pop_T0 uses a zero-extending load.  */
-         gen_op_jmp_v(cpu_T0);
-         gen_bnd_jmp(s);
--        gen_eob(s);
-+        gen_jr(s, cpu_T0);
-         break;
-     case 0xc3: /* ret */
-         ot = gen_pop_T0(s);
-@@ -6417,7 +6419,7 @@ static target_ulong disas_insn(CPUX86State *env, DisasContext *s,
-         /* Note that gen_pop_T0 uses a zero-extending load.  */
-         gen_op_jmp_v(cpu_T0);
-         gen_bnd_jmp(s);
--        gen_eob(s);
-+        gen_jr(s, cpu_T0);
-         break;
-     case 0xca: /* lret im */
-         val = cpu_ldsw_code(env, s->pc);
+diff --git a/include/exec/tb-hash.h b/include/exec/tb-hash.h
+index 2c27490..b1fe2d0 100644
+--- a/include/exec/tb-hash.h
++++ b/include/exec/tb-hash.h
+@@ -22,6 +22,8 @@
+ 
+ #include "exec/tb-hash-xx.h"
+ 
++#ifdef CONFIG_SOFTMMU
++
+ /* Only the bottom TB_JMP_PAGE_BITS of the jump cache hash bits vary for
+    addresses on the same page.  The top bits are the same.  This allows
+    TLB invalidation to quickly clear a subset of the hash table.  */
+@@ -45,6 +47,16 @@ static inline unsigned int tb_jmp_cache_hash_func(target_ulong pc)
+            | (tmp & TB_JMP_ADDR_MASK));
+ }
+ 
++#else
++
++/* In user-mode we can get better hashing because we do not have a TLB */
++static inline unsigned int tb_jmp_cache_hash_func(target_ulong pc)
++{
++    return (pc ^ (pc >> TB_JMP_CACHE_BITS)) & (TB_JMP_CACHE_SIZE - 1);
++}
++
++#endif /* CONFIG_SOFTMMU */
++
+ static inline
+ uint32_t tb_hash_func(tb_page_addr_t phys_pc, target_ulong pc, uint32_t flags)
+ {
 -- 
 2.7.4

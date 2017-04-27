@@ -1,96 +1,153 @@
-Received: by 10.25.0.144 with SMTP id 138csp692367lfa;
-        Thu, 27 Apr 2017 03:26:04 -0700 (PDT)
-X-Received: by 10.28.71.132 with SMTP id m4mr1620106wmi.130.1493288764142;
-        Thu, 27 Apr 2017 03:26:04 -0700 (PDT)
-Return-Path: <aurelien@aurel32.net>
-Received: from hall.aurel32.net (hall.aurel32.net. [2001:bc8:30d7:100::1])
-        by mx.google.com with ESMTPS id p193si2678507wme.51.2017.04.27.03.26.03
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 27 Apr 2017 03:26:04 -0700 (PDT)
-Received-SPF: pass (google.com: best guess record for domain of aurelien@aurel32.net designates 2001:bc8:30d7:100::1 as permitted sender) client-ip=2001:bc8:30d7:100::1;
+Received: by 10.25.0.144 with SMTP id 138csp885729lfa;
+        Thu, 27 Apr 2017 10:39:05 -0700 (PDT)
+X-Received: by 10.31.146.12 with SMTP id u12mr2830555vkd.102.1493314745348;
+        Thu, 27 Apr 2017 10:39:05 -0700 (PDT)
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
+        by mx.google.com with ESMTPS id a123si873815vkf.210.2017.04.27.10.39.05
+        for <alex.bennee@linaro.org>
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Thu, 27 Apr 2017 10:39:05 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: best guess record for domain of aurelien@aurel32.net designates 2001:bc8:30d7:100::1 as permitted sender) smtp.mailfrom=aurelien@aurel32.net
-Received: from ohm.aurel32.net ([2001:bc8:30d7:111::1000])
-	by hall.aurel32.net with esmtpsa (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
-	(Exim 4.89)
-	(envelope-from <aurelien@aurel32.net>)
-	id 1d3gca-0004te-QW; Thu, 27 Apr 2017 12:26:00 +0200
-Received: from aurel32 by ohm.aurel32.net with local (Exim 4.89)
-	(envelope-from <aurelien@aurel32.net>)
-	id 1d3gcU-00070U-EC; Thu, 27 Apr 2017 12:25:54 +0200
-Date: Thu, 27 Apr 2017 12:25:54 +0200
-From: Aurelien Jarno <aurelien@aurel32.net>
-To: "Emilio G. Cota" <cota@braap.org>
-Cc: Richard Henderson <rth@twiddle.net>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	Eduardo Habkost <ehabkost@redhat.com>,
-	Peter Crosthwaite <crosthwaite.peter@gmail.com>,
-	Stefan Weil <sw@weilnetz.de>, qemu-devel@nongnu.org,
-	Alexander Graf <agraf@suse.de>, alex.bennee@linaro.org,
-	qemu-arm@nongnu.org, Pranith Kumar <bobby.prani+qemu@gmail.com>,
-	Paolo Bonzini <pbonzini@redhat.com>
-Subject: Re: [Qemu-devel] [PATCH v3 06/10] target/arm: optimize indirect
- branches
-Message-ID: <20170427102554.2trmv3c3l7e3h33h@aurel32.net>
-References: <1493187803-4510-1-git-send-email-cota@braap.org>
- <1493187803-4510-7-git-send-email-cota@braap.org>
- <9ed31413-ddd8-b229-9731-a0433f8fbcde@twiddle.net>
- <20170427032038.GA5078@flamenco>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20170427032038.GA5078@flamenco>
-User-Agent: NeoMutt/20170113 (1.7.2)
-X-TUID: 71lz3GywFSKB
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:33477 helo=lists.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1d3nNg-00049G-O8
+	for alex.bennee@linaro.org; Thu, 27 Apr 2017 13:39:04 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:38487)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <wei@redhat.com>) id 1d3nNa-000491-St
+	for qemu-arm@nongnu.org; Thu, 27 Apr 2017 13:38:59 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+	(envelope-from <wei@redhat.com>) id 1d3nNY-0005Dt-PM
+	for qemu-arm@nongnu.org; Thu, 27 Apr 2017 13:38:58 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:44636)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <wei@redhat.com>)
+	id 1d3nNY-0005Dh-Ir; Thu, 27 Apr 2017 13:38:56 -0400
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
+	[10.5.11.12])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 727A146D093;
+	Thu, 27 Apr 2017 17:38:55 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 727A146D093
+Authentication-Results: ext-mx05.extmail.prod.ext.phx2.redhat.com;
+	dmarc=none (p=none dis=none) header.from=redhat.com
+Authentication-Results: ext-mx05.extmail.prod.ext.phx2.redhat.com;
+	spf=pass smtp.mailfrom=wei@redhat.com
+DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com 727A146D093
+Received: from weilaptop.redhat.com (ovpn-125-235.rdu2.redhat.com
+	[10.10.125.235])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id E30B5996D0;
+	Thu, 27 Apr 2017 17:38:54 +0000 (UTC)
+From: Wei Huang <wei@redhat.com>
+To: qemu-arm@nongnu.org
+Date: Thu, 27 Apr 2017 12:38:47 -0500
+Message-Id: <1493314727-6951-3-git-send-email-wei@redhat.com>
+In-Reply-To: <1493314727-6951-1-git-send-email-wei@redhat.com>
+References: <1493314727-6951-1-git-send-email-wei@redhat.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.29]);
+	Thu, 27 Apr 2017 17:38:55 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.132.183.28
+Subject: [Qemu-arm] [PATCH 2/2] armv7m: Use stub functions if CONFIG_ARM_V7M
+ is not defined
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.21
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: peter.maydell@linaro.org, qemu-devel@nongnu.org
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: GHkBF8xa2jNC
 
-On 2017-04-26 23:20, Emilio G. Cota wrote:
-> On Wed, Apr 26, 2017 at 09:54:07 +0200, Richard Henderson wrote:
-> > On 04/26/2017 08:23 AM, Emilio G. Cota wrote:
-> > >+static bool gen_jr;...
-> > >         case DISAS_JUMP:
-> > >+            if (gen_jr) {
-> > 
-> > Why the variable?  Why not just try the goto_ptr for any DISAS_JUMP?
-> 
-> We have code that assumes DISAS_JUMP implies "go to exec loop", e.g.:
->             case 6: /* isb */
->                 /* We need to break the TB after this insn to execute
->                  * self-modifying code correctly and also to take
->                  * any pending interrupts immediately.
->                  */
->                 gen_lookup_tb(s);
-> where gen_lookup_tb does:
-> 
-> /* Force a TB lookup after an instruction that changes the CPU state.  */
-> static inline void gen_lookup_tb(DisasContext *s)
-> {
->     tcg_gen_movi_i32(cpu_R[15], s->pc & ~1);
->     s->is_jmp = DISAS_JUMP;
-> }
+M-profile CPUs relies on NVIC controller which won't be compiled if
+CONFIG_ARM_V7M is not defined. To solve the problem, this patch
+defines four NVIC stub functions. These functions are called when
+CONFIG_ARM_V7M is not defined.
 
-Changing the CPU state should already be taken into account in
-lookup_tb_ptr through the cpu_get_tb_cpu_state function. Also interrupts
-should be checked at the beginning of each TB.
+Signed-off-by: Wei Huang <wei@redhat.com>
+---
+ target/arm/Makefile.objs |  1 +
+ target/arm/armv7m-stub.c | 43 +++++++++++++++++++++++++++++++++++++++++++
+ 2 files changed, 44 insertions(+)
+ create mode 100644 target/arm/armv7m-stub.c
 
-> Also, the gen_exception_* functions set DISAS_JUMP. I suspect we want to go
-> to the exec loop with those as well.
-
-Technically all the code after the one generated by gen_exception_*
-function is not executed, including the tcg_gen_exit_tb(0). Therefore
-generating code using tcg_gen_exit_tb or or tcg_gen_lookup_and_goto_ptr
-should no change the behaviour.
-
-> Testing shows that I'm onto something; if I remove the variable,
-> and note that I make sure DISAS_UPDATE is not falling through, I get
-> easily reproducible (~1 out of 5) freezes and other instability
-> (e.g. RCU lockup warnings) when booting + shutting down debian jessie
-> in the guest.
-
-I agree that always calling lookup_tb_ptr might be suboptimal in case we
-know for sure that the lookup will fail or that there will be an exit
-request at the beginning of the next TB. That said I found strange that
-it causes issues, and I wonder if it just expose a bug somewhere.
-
+diff --git a/target/arm/Makefile.objs b/target/arm/Makefile.objs
+index 847fb52..328367d 100644
+--- a/target/arm/Makefile.objs
++++ b/target/arm/Makefile.objs
+@@ -4,6 +4,7 @@ obj-$(CONFIG_KVM) += kvm.o
+ obj-$(call land,$(CONFIG_KVM),$(call lnot,$(TARGET_AARCH64))) += kvm32.o
+ obj-$(call land,$(CONFIG_KVM),$(TARGET_AARCH64)) += kvm64.o
+ obj-$(call lnot,$(CONFIG_KVM)) += kvm-stub.o
++obj-$(call lnot,$(CONFIG_ARM_V7M)) += armv7m-stub.o
+ obj-y += translate.o op_helper.o helper.o cpu.o
+ obj-y += neon_helper.o iwmmxt_helper.o
+ obj-y += gdbstub.o
+diff --git a/target/arm/armv7m-stub.c b/target/arm/armv7m-stub.c
+new file mode 100644
+index 0000000..1be3874
+--- /dev/null
++++ b/target/arm/armv7m-stub.c
+@@ -0,0 +1,43 @@
++/*
++ * ARMv7M stubs
++ *
++ * This work is licensed under the terms of the GNU GPL, version 2 or later.
++ * See the COPYING file in the top-level directory.
++ *
++ */
++#include "qemu/osdep.h"
++#include "qemu-common.h"
++#include "cpu.h"
++#include "hw/arm/armv7m.h"
++
++void armv7m_nvic_acknowledge_irq(void *opaque)
++{
++    NVICState *s = (NVICState *)opaque;
++
++    cpu_abort(CPU(s->cpu), "No NVIC avaialable to acknowledge IRQ\n");
++}
++
++void armv7m_nvic_set_pending(void *opaque, int irq)
++{
++    NVICState *s = (NVICState *)opaque;
++
++    cpu_abort(CPU(s->cpu), "No NVIC avaialable to set IRQ pending\n");
++}
++
++int armv7m_nvic_complete_irq(void *opaque, int irq)
++{
++    NVICState *s = (NVICState *)opaque;
++
++    cpu_abort(CPU(s->cpu), "No NVIC avaialable to complete IRQ\n");
++
++    return 0;
++}
++
++bool armv7m_nvic_can_take_pending_exception(void *opaque)
++{
++    NVICState *s = (NVICState *)opaque;
++
++    cpu_abort(CPU(s->cpu), "No NVIC avaialable to check pending exception\n");
++
++    return false;
++}
 -- 
-Aurelien Jarno                          GPG: 4096R/1DDD8C9B
-aurelien@aurel32.net                 http://www.aurel32.net
+1.8.3.1
+

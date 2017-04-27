@@ -1,70 +1,70 @@
-Received: by 10.25.0.144 with SMTP id 138csp766138lfa;
-        Thu, 27 Apr 2017 06:14:50 -0700 (PDT)
-X-Received: by 10.237.62.150 with SMTP id n22mr4972610qtf.70.1493298890400;
-        Thu, 27 Apr 2017 06:14:50 -0700 (PDT)
+Received: by 10.25.0.144 with SMTP id 138csp771007lfa;
+        Thu, 27 Apr 2017 06:24:56 -0700 (PDT)
+X-Received: by 10.55.220.3 with SMTP id v3mr5167094qki.284.1493299496821;
+        Thu, 27 Apr 2017 06:24:56 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id x55si2879572qta.329.2017.04.27.06.14.50
+        by mx.google.com with ESMTPS id c40si2852028qtc.152.2017.04.27.06.24.56
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 27 Apr 2017 06:14:50 -0700 (PDT)
+        Thu, 27 Apr 2017 06:24:56 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:60675 helo=lists.gnu.org)
+Received: from localhost ([::1]:60701 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1d3jFx-0002gP-Ol
-	for alex.bennee@linaro.org; Thu, 27 Apr 2017 09:14:49 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:44484)
+	id 1d3jPk-0005b8-A8
+	for alex.bennee@linaro.org; Thu, 27 Apr 2017 09:24:56 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:46683)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <imammedo@redhat.com>) id 1d3jFT-0002ND-Kg
-	for qemu-arm@nongnu.org; Thu, 27 Apr 2017 09:14:21 -0400
+	(envelope-from <imammedo@redhat.com>) id 1d3jPf-0005an-IW
+	for qemu-arm@nongnu.org; Thu, 27 Apr 2017 09:24:53 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <imammedo@redhat.com>) id 1d3jFQ-0007zl-AE
-	for qemu-arm@nongnu.org; Thu, 27 Apr 2017 09:14:19 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:40722)
+	(envelope-from <imammedo@redhat.com>) id 1d3jPa-0002q6-Go
+	for qemu-arm@nongnu.org; Thu, 27 Apr 2017 09:24:51 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:59446)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <imammedo@redhat.com>)
-	id 1d3jFQ-0007zP-0X; Thu, 27 Apr 2017 09:14:16 -0400
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
-	[10.5.11.14])
+	id 1d3jPa-0002pi-7k; Thu, 27 Apr 2017 09:24:46 -0400
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
+	[10.5.11.11])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id EACB2C001098;
-	Thu, 27 Apr 2017 13:14:14 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com EACB2C001098
-Authentication-Results: ext-mx08.extmail.prod.ext.phx2.redhat.com;
+	by mx1.redhat.com (Postfix) with ESMTPS id F32B623E6F9;
+	Thu, 27 Apr 2017 13:24:44 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com F32B623E6F9
+Authentication-Results: ext-mx05.extmail.prod.ext.phx2.redhat.com;
 	dmarc=none (p=none dis=none) header.from=redhat.com
-Authentication-Results: ext-mx08.extmail.prod.ext.phx2.redhat.com;
+Authentication-Results: ext-mx05.extmail.prod.ext.phx2.redhat.com;
 	spf=pass smtp.mailfrom=imammedo@redhat.com
-DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com EACB2C001098
+DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com F32B623E6F9
 Received: from nial.brq.redhat.com (dhcp-1-118.brq.redhat.com [10.34.1.118])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id E5E7E89EE7;
-	Thu, 27 Apr 2017 13:14:07 +0000 (UTC)
-Date: Thu, 27 Apr 2017 15:14:06 +0200
+	by smtp.corp.redhat.com (Postfix) with ESMTP id A68DA890B9;
+	Thu, 27 Apr 2017 13:24:32 +0000 (UTC)
+Date: Thu, 27 Apr 2017 15:24:31 +0200
 From: Igor Mammedov <imammedo@redhat.com>
-To: Eduardo Habkost <ehabkost@redhat.com>
-Message-ID: <20170427151406.57fbfa79@nial.brq.redhat.com>
-In-Reply-To: <20170426122138.GU3482@thinpad.lan.raisama.net>
+To: Andrew Jones <drjones@redhat.com>
+Message-ID: <20170427152431.5d6fc282@nial.brq.redhat.com>
+In-Reply-To: <20170426112752.r55p4rgignqungpn@kamzik.brq.redhat.com>
 References: <1490189568-167621-1-git-send-email-imammedo@redhat.com>
-	<1490189568-167621-8-git-send-email-imammedo@redhat.com>
-	<20170412210239.GC27126@thinpad.lan.raisama.net>
-	<20170419131458.59e2d00e@nial.brq.redhat.com>
-	<20170426122138.GU3482@thinpad.lan.raisama.net>
+	<1490189568-167621-15-git-send-email-imammedo@redhat.com>
+	<20170425170634.2mqfc45fujwy7qu3@kamzik.brq.redhat.com>
+	<20170426125433.428a6c1b@nial.brq.redhat.com>
+	<20170426112752.r55p4rgignqungpn@kamzik.brq.redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.32]);
-	Thu, 27 Apr 2017 13:14:15 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.29]);
+	Thu, 27 Apr 2017 13:24:45 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH for-2.10 07/23] pc: add node-id
- property to CPU
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH for-2.10 14/23] virt-arm: get
+ numa node mapping from possible_cpus instead of numa_get_node_for_cpu()
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -76,254 +76,164 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jones <drjones@redhat.com>,
-	Peter Krempa <pkrempa@redhat.com>, qemu-devel@nongnu.org,
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+	Eduardo Habkost <ehabkost@redhat.com>, qemu-devel@nongnu.org,
 	qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
 	Shannon Zhao <zhaoshenglong@huawei.com>,
 	Paolo Bonzini <pbonzini@redhat.com>,
 	David Gibson <david@gibson.dropbear.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: fClzMxzhSvlV
+X-TUID: dUUcBVFFdOeD
 
-On Wed, 26 Apr 2017 09:21:38 -0300
-Eduardo Habkost <ehabkost@redhat.com> wrote:
+On Wed, 26 Apr 2017 13:27:52 +0200
+Andrew Jones <drjones@redhat.com> wrote:
 
-adding Peter to CC list
-
-[...]
-
-> On Wed, Apr 19, 2017 at 01:14:58PM +0200, Igor Mammedov wrote:
-> > On Wed, 12 Apr 2017 18:02:39 -0300
-> > Eduardo Habkost <ehabkost@redhat.com> wrote:
+> On Wed, Apr 26, 2017 at 12:54:33PM +0200, Igor Mammedov wrote:
+> > On Tue, 25 Apr 2017 19:06:34 +0200
+> > Andrew Jones <drjones@redhat.com> wrote:
 > >   
-> > > On Wed, Mar 22, 2017 at 02:32:32PM +0100, Igor Mammedov wrote:  
-> > > > it will allow switching from cpu_index to property based
-> > > > numa mapping in follow up patches.    
+> > > On Wed, Mar 22, 2017 at 02:32:39PM +0100, Igor Mammedov wrote:  
+> > > > Signed-off-by: Igor Mammedov <imammedo@redhat.com>
+> > > > ---
+> > > >  hw/arm/virt-acpi-build.c | 19 +++++++------------
+> > > >  hw/arm/virt.c            | 13 +++++++------
+> > > >  2 files changed, 14 insertions(+), 18 deletions(-)
+> > > > 
+> > > > diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+> > > > index 0835e59..ce7499c 100644
+> > > > --- a/hw/arm/virt-acpi-build.c
+> > > > +++ b/hw/arm/virt-acpi-build.c
+> > > > @@ -486,30 +486,25 @@ build_srat(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+> > > >      AcpiSystemResourceAffinityTable *srat;
+> > > >      AcpiSratProcessorGiccAffinity *core;
+> > > >      AcpiSratMemoryAffinity *numamem;
+> > > > -    int i, j, srat_start;
+> > > > +    int i, srat_start;
+> > > >      uint64_t mem_base;
+> > > > -    uint32_t *cpu_node = g_malloc0(vms->smp_cpus * sizeof(uint32_t));
+> > > > -
+> > > > -    for (i = 0; i < vms->smp_cpus; i++) {
+> > > > -        j = numa_get_node_for_cpu(i);
+> > > > -        if (j < nb_numa_nodes) {
+> > > > -                cpu_node[i] = j;
+> > > > -        }
+> > > > -    }
+> > > > +    MachineClass *mc = MACHINE_GET_CLASS(vms);
+> > > > +    const CPUArchIdList *cpu_list = mc->possible_cpu_arch_ids(MACHINE(vms));
+> > > >  
+> > > >      srat_start = table_data->len;
+> > > >      srat = acpi_data_push(table_data, sizeof(*srat));
+> > > >      srat->reserved1 = cpu_to_le32(1);
+> > > >  
+> > > > -    for (i = 0; i < vms->smp_cpus; ++i) {
+> > > > +    for (i = 0; i < cpu_list->len; ++i) {
+> > > > +        int node_id = cpu_list->cpus[i].props.has_node_id ?
+> > > > +            cpu_list->cpus[i].props.node_id : 0;
+> > > >          core = acpi_data_push(table_data, sizeof(*core));
+> > > >          core->type = ACPI_SRAT_PROCESSOR_GICC;
+> > > >          core->length = sizeof(*core);
+> > > > -        core->proximity = cpu_to_le32(cpu_node[i]);
+> > > > +        core->proximity = cpu_to_le32(node_id);
+> > > >          core->acpi_processor_uid = cpu_to_le32(i);
+> > > >          core->flags = cpu_to_le32(1);
+> > > >      }
+> > > > -    g_free(cpu_node);
+> > > >  
+> > > >      mem_base = vms->memmap[VIRT_MEM].base;
+> > > >      for (i = 0; i < nb_numa_nodes; ++i) {
+> > > > diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+> > > > index 68d44f3..0a75df5 100644
+> > > > --- a/hw/arm/virt.c
+> > > > +++ b/hw/arm/virt.c
+> > > > @@ -338,7 +338,7 @@ static void fdt_add_cpu_nodes(const VirtMachineState *vms)
+> > > >  {
+> > > >      int cpu;
+> > > >      int addr_cells = 1;
+> > > > -    unsigned int i;
+> > > > +    const MachineState *ms = MACHINE(vms);
+> > > >  
+> > > >      /*
+> > > >       * From Documentation/devicetree/bindings/arm/cpus.txt
+> > > > @@ -369,6 +369,7 @@ static void fdt_add_cpu_nodes(const VirtMachineState *vms)
+> > > >      for (cpu = vms->smp_cpus - 1; cpu >= 0; cpu--) {
+> > > >          char *nodename = g_strdup_printf("/cpus/cpu@%d", cpu);
+> > > >          ARMCPU *armcpu = ARM_CPU(qemu_get_cpu(cpu));
+> > > > +        CPUState *cs = CPU(armcpu);
+> > > >  
+> > > >          qemu_fdt_add_subnode(vms->fdt, nodename);
+> > > >          qemu_fdt_setprop_string(vms->fdt, nodename, "device_type", "cpu");
+> > > > @@ -389,9 +390,9 @@ static void fdt_add_cpu_nodes(const VirtMachineState *vms)
+> > > >                                    armcpu->mp_affinity);
+> > > >          }
+> > > >  
+> > > > -        i = numa_get_node_for_cpu(cpu);
+> > > > -        if (i < nb_numa_nodes) {
+> > > > -            qemu_fdt_setprop_cell(vms->fdt, nodename, "numa-node-id", i);
+> > > > +        if (ms->possible_cpus->cpus[cs->cpu_index].props.has_node_id) {
+> > > > +            qemu_fdt_setprop_cell(vms->fdt, nodename, "numa-node-id",
+> > > > +                ms->possible_cpus->cpus[cs->cpu_index].props.node_id);
+> > > >          }
+> > > >  
+> > > >          g_free(nodename);
+> > > > @@ -1378,8 +1379,8 @@ static void machvirt_init(MachineState *machine)
+> > > >          cs = CPU(cpuobj);
+> > > >          cs->cpu_index = n;
+> > > >  
+> > > > -        node_id = numa_get_node_for_cpu(cs->cpu_index);
+> > > > -        if (node_id == nb_numa_nodes) {
+> > > > +        node_id = machine->possible_cpus->cpus[cs->cpu_index].props.node_id;
+> > > > +        if (!machine->possible_cpus->cpus[cs->cpu_index].props.has_node_id) {
+> > > >              /* by default CPUState::numa_node was 0 if it's not set via CLI
+> > > >               * keep it this way for now but in future we probably should
+> > > >               * refuse to start up with incomplete numa mapping */
+> > > > -- 
+> > > > 2.7.4
+> > > > 
+> > > >    
 > > > 
-> > > I am not sure I understand all the consequences of this, so I
-> > > will give it a try:
+> > > We now have many machine->possible_cpus->cpus[index].props.[has_]node_id
+> > > instances. I think we need inline accessors added to include/sysemu/numa.h
+> > > like
 > > > 
-> > > "node-id" is an existing field in CpuInstanceProperties.
-> > > CpuInstanceProperties is used on both query-hotpluggable-cpus
-> > > output and in MachineState::possible_cpus.
+> > >  static inline bool numa_has_node_id(MachineState *ms, int index)
+> > >  {
+> > >    return ms->possible_cpus->cpus[index].props.has_node_id;
+> > >  }
 > > > 
-> > > We will start using MachineState::possible_cpus to keep track of
-> > > NUMA CPU affinity, and that means query-hotpluggable-cpus will
-> > > start reporting a "node-id" property when a NUMA mapping is
-> > > configured.
+> > >  static inline int numa_node_id(MachineState *ms, int index)
+> > >  {
+> > >    return ms->possible_cpus->cpus[index].props.node_id;
+> > >  }
 > > > 
-> > > To allow query-hotpluggable-cpus to report "node-id", the CPU
-> > > objects must have a "node-id" property that can be set. This
-> > > patch adds the "node-id" property to X86CPU.
+> > >  ...
 > > > 
-> > > Is this description accurate? Is the presence of "node-id" in
-> > > query-hotpluggable-cpus the only reason we really need this
-> > > patch, or is there something else that requires the "node-id"
-> > > property?  
-> > That accurate description, node-id is in the same 'address'
-> > properties category as socket/core/thread-id. So if you have
-> > numa enabled machine you'd see node-id property in
-> > query-hotpluggable-cpus.  
+> > > to improve readability and maintainability.  
+> > I dislike this kind of one-line wrappers as it hurts readability
+> > and maintainability of code for me as I'm forced to jump
+> > around code every time I see such wrapper to recall what and
+> > how it does. Code still fits in one line so I'd like to keep
+> > it wrapper-less in this case if you don't insist on the change.  
 > 
-> I agree that we can make -numa cpu affect query-hotpluggable-cpus
-> output (i.e. affect some field on HotpluggableCPU.props).
-> 
-> But it looks like we disagree about the purpose of
-> HotpluggableCPU.props:
-> 
-> I believe HotpluggableCPU.props is just an opaque identifier for
-> the location we want to plug the CPU, and the only requirement is
-> that it should be unique and have all the information device_add
-> needs. As socket IDs are already unique on our existing machines,
-> and socket<=>node mapping is already configured using -numa cpu,
-> node-id doesn't need to be in HotpluggableCPU.props. (see example
-> below)
-node-id is also location property which logically complements
-to socket/core/thread properties.  Also socket is not necessarily
-unique id that maps 1:1 to node-id from generic pov.
-BTW -numa cpu[s] is not the only way to specify mapping,
-it could be specified like we do with pc-dimm:
-   device_add pc-dimm,node=x
+> I prefer to jump around in code (jump once, read many) to going
+> blind looking for one or two char differences in 50 char long
+> variable names. So, to whatever degree I can, I insist :-)
+Ok, I'll convert it to wrapper
 
-Looking at it more genericly, there could be the same
-socket-ids for different nodes, then we would have to add
-node-id to props anyway and end up with 2 node-id, one in props
-and another in the parent struct.
-
-
-> I don't think clients should assume topology information in
-> HotpluggableCPU.props is always present, because the field has a
-> different purpose: letting clients know what are the required
-> device_add arguments. If we need introspection of CPU topology,
-> we can add new fields to HotpluggableCPU, outside 'props'.
-looking at existing clients (libvirt), it doesn't treat 'props'
-as opaque set, but parses it into topology information (my guess
-is that because it's the sole source such info from QEMU).
-Actually we never forbade this, the only requirement for
-props was that mgmt should provide those properties to create
-a cpu. Property names where designed in topology/location
-friendly terms so that clients could make the sense from them.
-
-So I wouldn't try now to reduce meaning of 'props' to
-opaque as you suggest.
-
-[..]
-> My question is: if we use:
 > 
->  -numa cpu,socket=2,core=1,thread=0,node-id=3
+> >   
+> > > 
+> > > Or, instead, we could provide macros to allow assignments, e.g.
+> > > 
+> > >  #define NUMA_HAS_NODE_ID(ms, index) \
+> > >    ((ms)->possible_cpus->cpus[index].props.has_node_id)
+> > >  #define NUMA_NODE_ID(ms, index) \
+> > >    ((ms)->possible_cpus->cpus[index].props.node_id)  
+> > ditto + worse debuggability   
 > 
-> and then:
+> I prefer the functions myself. I think the assignments to these
+> properties are rare enough that we only need the read accessors.
 > 
->  device_add ...,socket=2,core=1,thread=0
->  (omitting node-id on device_add)
-> 
-> won't it work exactly the same, and place the new CPU on NUMA
-> node 3?
-yep, it's allowed for compat reasons:
-  1: to allow DST start with old CLI variant, that didn't have node-id
-     (migration)
-  2: to let old libvirt hotplug CPUs, it doesn't treat 'props'
-     as opaque set that is just replayed to device_add,
-     instead it composes command from topo info it got
-     from QEMU and unfortunately node-id is only read but is
-     not emitted when device_add is composed
-    (I consider this bug but it's out in the wild so we have to deal with it)
-
-we can't enforce presence in these cases or at least have to
-keep it relaxed for old machine types.
- 
-> In this case, if we don't need a node-id argument on device_add,
-> so node-id doesn't need to be in HotpluggableCPU.props.
-I'd say we currently don't have to (for above reasons) but
-it doesn't hurt and actually allows to use pc-dimm way of
-mapping CPUs to nodes as David noted. i.e.:
-  -device cpu-foo,node-id=x,...
-without any of -numa cpu[s] options on CLI.
-It's currently explicitly disabled but should work if one
-doesn't care about hotplug or if target doesn't care about
-mapping at startup (sPAPR), it also might work for x86 as
-well using _PXM method in ACPI.
-(But that's out of scope of this series and needs more
-testing as some guest OSes might expect populated SRAT
-to work correctly).
-
-[...]
-> > 
-> > In future to avoid starting QEMU twice we were thinking about
-> > configuring QEMU from QMP at runtime, that's where preconfigure
-> > approach could be used to help solving it in the future:
-> > 
-> >   1. introduce pause before machine_init CLI option to allow
-> >      preconfig machine from qmp/monitor
-> >   2. make query-hotpluggable-cpus usable at preconfig time
-> >   3. start qemu with needed number of numa nodes and default mapping:
-> >          #qemu -smp ... -numa node,nodeid=0 -node node,nodeid=1
-> >   4. get possible cpus list  
-> 
-> This is where things can get tricky: if we have the default
-> mapping set, step 4 would return "node-id" already set on all
-> possible CPUs.
-that would depend on impl.
- - display node-id with default preset values to override
- - do not set defaults and force user to do mapping
-
-> >   5. add qmp/monitor command variant for '-numa cpu' to set numa mapping  
-> 
-> This is where I think we would make things simpler: if node-id
-> isn't present on 'props', we can simply document the arguments
-> that identify the CPU for the numa-cpu command as "just use the
-> properties you get on query-hotpluggable-cpus.props". Clients
-> would be able to treat CpuInstanceProperties as an opaque CPU
-> slot identifier.
-> 
-> i.e. I think this would be a better way to define and document
-> the interface:
-> 
-> ##
-> # @NumaCpuOptions:
-> #
-> # Mapping of a given CPU (or a set of CPUs) to a NUMA node.
-> #
-> # @cpu: Properties identifying the CPU(s). Use the 'props' field of
-> #       query-hotpluggable-cpus for possible values for this
-> #       field.
-> #       TODO: describe what happens when 'cpu' matches
-> #       multiple slots.
-> # @node-id: NUMA node where the CPUs are going to be located.
-> ##
-> { 'struct': 'NumaCpuOptions',
->   'data': {
->    'cpu': 'CpuInstanceProperties',
->    'node-id': 'int' } }
-> 
-> This separates "what identifies the CPU slot(s) we are
-> configuring" from "what identifies the node ID we are binding
-> to".
-Doesn't look any simpler to me, I'd better document node-id usage
-in props, like
-
- #
- # A discriminated record of NUMA options. (for OptsVisitor)
- #
-+# For 'cpu' type as arguments use a set of cpu properties returned
-+# by query-hotpluggable-cpus[].props, where node-id could be used
-+# to override default node mapping. Since: 2.10
-+#
- # Since: 2.1
- ##
- { 'union': 'NumaOptions',
-   'base': { 'type': 'NumaOptionsType' },
-   'discriminator': 'type',
-   'data': {
--    'node': 'NumaNodeOptions' }}
-+    'node': 'NumaNodeOptions',
-+    'cpu' : 'CpuInstanceProperties' }}
- 
- ##
- # @NumaNodeOptions:
-
-
-> In case we have trouble making this struct work with QemuOpts, we
-> could do this (temporarily?):
-> 
-> ##
-> # @NumaCpuOptions:
-> #
-> # Mapping of a given CPU (or a set of CPUs) to a NUMA node.
-> #
-> # @cpu: Properties identifying the CPU(s). Use the 'props' field of
-> #       query-hotpluggable-cpus for possible values for this
-> #       field.
-> #       TODO: describe what happens when 'cpu' matches
-> #       multiple slots.
-> # @node-id: NUMA node where the CPUs are going to be located.
-> #
-> # @socket-id: Shortcut for cpu.socket-id, to make this struct
-> #             friendly to QemuOpts.
-> # @core-id: Shortcut for cpu.core-id, to make this struct
-> #           friendly to QemuOpts.
-> # @thread-id: Shortcut for cpu.thread-id, to make this struct
-> #             friendly to QemuOpts.
-> ##
-> { 'struct': 'NumaCpuOptions',
->   'data': {
->    '*cpu': 'CpuInstanceProperties',
->    '*socket-id': 'int',
->    '*core-id': 'int',
->    '*thread-id': 'int',
->    'node-id': 'int' } }
-> 
-> >   6. optionally, set new numa mapping and get updated
-> >      possible cpus list with query-hotpluggable-cpus
-> >   7. optionally, add extra cpus with device_add using updated
-> >      cpus list and get updated cpus list as it's been changed again.
-> >   8. unpause preconfig stage and let qemu continue to execute
-> >      machine_init and the rest.
-> > 
-> > Since we would need to implement QMP configuration for '-device cpu',
-> > we as well might reuse it for custom numa mapping.
-> > 
-> >  [...]  
-> 
+> Thanks,
+> drew
 

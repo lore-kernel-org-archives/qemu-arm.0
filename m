@@ -1,85 +1,153 @@
-Received: by 10.25.0.144 with SMTP id 138csp648973lfa;
-        Thu, 27 Apr 2017 01:12:53 -0700 (PDT)
-X-Received: by 10.28.98.65 with SMTP id w62mr1301024wmb.85.1493280772980;
-        Thu, 27 Apr 2017 01:12:52 -0700 (PDT)
-Return-Path: <rth7680@gmail.com>
-Received: from mail-wr0-x244.google.com (mail-wr0-x244.google.com. [2a00:1450:400c:c0c::244])
-        by mx.google.com with ESMTPS id 18si2232947wrw.52.2017.04.27.01.12.52
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 27 Apr 2017 01:12:52 -0700 (PDT)
-Received-SPF: pass (google.com: domain of rth7680@gmail.com designates 2a00:1450:400c:c0c::244 as permitted sender) client-ip=2a00:1450:400c:c0c::244;
+Received: by 10.25.0.144 with SMTP id 138csp675828lfa;
+        Thu, 27 Apr 2017 02:37:04 -0700 (PDT)
+X-Received: by 10.28.207.204 with SMTP id f195mr1481221wmg.72.1493285824211;
+        Thu, 27 Apr 2017 02:37:04 -0700 (PDT)
+Return-Path: <aurelien@aurel32.net>
+Received: from hall.aurel32.net (hall.aurel32.net. [2001:bc8:30d7:100::1])
+        by mx.google.com with ESMTPS id v63si2526819wmb.160.2017.04.27.02.37.04
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 27 Apr 2017 02:37:04 -0700 (PDT)
+Received-SPF: pass (google.com: best guess record for domain of aurelien@aurel32.net designates 2001:bc8:30d7:100::1 as permitted sender) client-ip=2001:bc8:30d7:100::1;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of rth7680@gmail.com designates 2a00:1450:400c:c0c::244 as permitted sender) smtp.mailfrom=rth7680@gmail.com
-Received: by mail-wr0-x244.google.com with SMTP id w50so2869852wrc.0;
-        Thu, 27 Apr 2017 01:12:52 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=sender:subject:to:cc:references:from:message-id:date:user-agent
-         :mime-version:in-reply-to:content-language:content-transfer-encoding;
-        bh=JYF4wPtMsL/swgYf/Gb2/CcFYAhRc6kxBZ7U9A+gKeA=;
-        b=c7ROPh032pWJQyrQEjRlIDOzADAIoLOE0siAaGtgdNiUPp+P57G5dJQHGfIsPqwL5W
-         ymh0c2sWMzNhxIjB8hG0xSjfezc1MlSRidYg7pl20N96llBheV4rS9EHhUhqOiPE8yRA
-         GXK1urT1DOGwAY4/YN8SrgFgvCfSu4ttOLV3yEyGUh+OScA/wD9Uz4CC9IDhNN+GFaya
-         LFrQP83oPTDbMLbZAEvIokSROs95i7PUxrj+dx500+WCOVfbBlpCxNfLc4tdFDliV954
-         VmVxHGVWN7lcrWURV9iQc8HE0Ko+Tf/w63wfX3ZQmQwK8xbAATRlOTG4jvh9Sb9Mrt//
-         iKBg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
-         :date:user-agent:mime-version:in-reply-to:content-language
-         :content-transfer-encoding;
-        bh=JYF4wPtMsL/swgYf/Gb2/CcFYAhRc6kxBZ7U9A+gKeA=;
-        b=IRB/2DDXjeqySUng2mGOCeecVVps4hstHrNbQDPZ7HQk5QO845brcn08CBxp66O8Sx
-         eos9WfTZUPEh5AuJz1iNCAnTujGH6gPdBtsXAN2e2eBDK8O6z+aewJ1/cUe0dcIoIRuW
-         ytRxtJ6sR2vcPBSGcVegc17I0Sc1diG0rBtyzbdZEDM+sp9PrC4EHZbReZ6sv5xVqx+a
-         mEC4FfOT8F7FqRLXtX5ib172bEf8qjZEggZmoEZobYju2JSC/pxCHtCFsird+XG5xTwH
-         IOFXuMlCVrzylA40VShKQY4zp6ZWJTMCkRxJQLgNQuvGEfvnfmYXFq6Q4L78O+OkJkw9
-         ijSA==
-X-Gm-Message-State: AN3rC/77w6VAPf11aMsGgt/dESsFKJ2eWsD5QL0s2XAQ9ISukMEKfBNp
-	5XrJnB6mo+Uu7g==
-X-Received: by 10.223.175.218 with SMTP id y26mr2407012wrd.63.1493280772768;
-        Thu, 27 Apr 2017 01:12:52 -0700 (PDT)
-Return-Path: <rth7680@gmail.com>
-Received: from bigtime.twiddle.net (251.red-80-29-7.adsl.static.ccgg.telefonica.net. [80.29.7.251])
-        by smtp.googlemail.com with ESMTPSA id 188sm2574576wmf.29.2017.04.27.01.12.51
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 27 Apr 2017 01:12:52 -0700 (PDT)
-Sender: Richard Henderson <rth7680@gmail.com>
-Subject: Re: [PATCH v4 08/11] target/i386: introduce gen_jr helper to generate
- lookup_and_goto_ptr
-To: "Emilio G. Cota" <cota@braap.org>, qemu-devel@nongnu.org
-Cc: Paolo Bonzini <pbonzini@redhat.com>,
- Peter Crosthwaite <crosthwaite.peter@gmail.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Eduardo Habkost <ehabkost@redhat.com>, Andrzej Zaborowski
- <balrogg@gmail.com>, Aurelien Jarno <aurelien@aurel32.net>,
- Alexander Graf <agraf@suse.de>, Stefan Weil <sw@weilnetz.de>,
- qemu-arm@nongnu.org, alex.bennee@linaro.org,
- Pranith Kumar <bobby.prani+qemu@gmail.com>
+       spf=pass (google.com: best guess record for domain of aurelien@aurel32.net designates 2001:bc8:30d7:100::1 as permitted sender) smtp.mailfrom=aurelien@aurel32.net
+Received: from ohm.aurel32.net ([2001:bc8:30d7:111::1000])
+	by hall.aurel32.net with esmtpsa (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+	(Exim 4.89)
+	(envelope-from <aurelien@aurel32.net>)
+	id 1d3fqq-0002zi-1r; Thu, 27 Apr 2017 11:36:40 +0200
+Received: from aurel32 by ohm.aurel32.net with local (Exim 4.89)
+	(envelope-from <aurelien@aurel32.net>)
+	id 1d3fqp-0001b9-C6; Thu, 27 Apr 2017 11:36:39 +0200
+Date: Thu, 27 Apr 2017 11:36:39 +0200
+From: Aurelien Jarno <aurelien@aurel32.net>
+To: "Emilio G. Cota" <cota@braap.org>
+Cc: qemu-devel@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
+	Peter Crosthwaite <crosthwaite.peter@gmail.com>,
+	Richard Henderson <rth@twiddle.net>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	Eduardo Habkost <ehabkost@redhat.com>,
+	Andrzej Zaborowski <balrogg@gmail.com>,
+	Alexander Graf <agraf@suse.de>, Stefan Weil <sw@weilnetz.de>,
+	qemu-arm@nongnu.org, alex.bennee@linaro.org,
+	Pranith Kumar <bobby.prani+qemu@gmail.com>
+Subject: Re: [PATCH v4 07/11] target/arm: optimize indirect branches
+Message-ID: <20170427093639.x4ckqibxcdgj76gf@aurel32.net>
 References: <1493263764-18657-1-git-send-email-cota@braap.org>
- <1493263764-18657-9-git-send-email-cota@braap.org>
-From: Richard Henderson <rth@twiddle.net>
-Message-ID: <4415513e-db6d-ed35-295b-63a2ae7c8f90@twiddle.net>
-Date: Thu, 27 Apr 2017 10:12:49 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
- Thunderbird/52.0
+ <1493263764-18657-8-git-send-email-cota@braap.org>
 MIME-Version: 1.0
-In-Reply-To: <1493263764-18657-9-git-send-email-cota@braap.org>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-TUID: 7qZUo/5/l7mt
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <1493263764-18657-8-git-send-email-cota@braap.org>
+User-Agent: NeoMutt/20170113 (1.7.2)
+X-TUID: J50IZYO7gLUj
 
-On 04/27/2017 05:29 AM, Emilio G. Cota wrote:
-> This helper will be used by subsequent changes.
+On 2017-04-26 23:29, Emilio G. Cota wrote:
+> Speed up indirect branches by jumping to the target if it is valid.
 > 
-> Signed-off-by: Emilio G. Cota<cota@braap.org>
+> Softmmu measurements (see later commit for user-mode results):
+> 
+> Note: baseline (i.e. speedup == 1x) is QEMU v2.9.0.
+> 
+> - Impact on Boot time
+> 
+> | setup  | ARM debian jessie boot+shutdown time | stddev |
+> |--------+--------------------------------------+--------|
+> | v2.9.0 |                                 8.84 |   0.07 |
+> | +cross |                                 8.85 |   0.03 |
+> | +jr    |                                 8.83 |   0.06 |
+> 
+> -                            NBench, arm-softmmu (debian jessie guest). Host: Intel i7-4790K @ 4.00GHz
+> 
+>   1.3x +-+-------------------------------------------------------------------------------------------------------------+-+
+>        |                                                                                                                 |
+>        |   cross                                                          ####                                           |
+>  1.25x +cross+jr..........................................................#++#.........................................+-+
+>        |                                                        ####      #  #                                           |
+>        |                                                     +++#  #      #  #                                           |
+>        |                                      +++            ****  #      #  #                                           |
+>   1.2x +-+...................................####............*..*..#......#..#.........................................+-+
+>        |                                  ****  #            *  *  #      #  #     ####                                  |
+>        |                                  *  *  #            *  *  #      #  #     #  #                                  |
+>  1.15x +-+................................*..*..#............*..*..#......#..#.....#..#................................+-+
+>        |                                  *  *  #            *  *  #      #  #     #  #                                  |
+>        |                                  *  *  #      ####  *  *  #      #  #     #  #                                  |
+>        |                                  *  *  #      #  #  *  *  #      #  #     #  #                         ####     |
+>   1.1x +-+................................*..*..#......#..#..*..*..#......#..#.....#..#.........................#..#...+-+
+>        |                                  *  *  #      #  #  *  *  #      #  #     #  #                         #  #     |
+>        |                                  *  *  #      #  #  *  *  #      #  #     #  #                         #  #     |
+>  1.05x +-+..........................####..*..*..#......#..#..*..*..#......#..#.....#..#......+++............*****..#...+-+
+>        |                        *****  #  *  *  #      #  #  *  *  #  *****  #     #  #   +++ |    ****###  *   *  #     |
+>        |                        *+++*  #  *  *  #      #  #  *  *  #  *+++*  #  ****  #  *****###  *  *  #  *   *  #     |
+>        |     *****###  +++####  *   *  #  *  *  #  *****  #  *  *  #  *   *  #  *  *  #  * | *++#  *  *  #  *   *  #     |
+>     1x +-++-+*+++*-+#++****++#++*+-+*++#+-*++*++#-+*+++*-+#++*++*++#++*+-+*++#+-*++*++#-+*+++*-+#++*++*++#++*+-+*++#+-++-+
+>        |     *   *  #  *  *  #  *   *  #  *  *  #  *   *  #  *  *  #  *   *  #  *  *  #  *   *  #  *  *  #  *   *  #     |
+>        |     *   *  #  *  *  #  *   *  #  *  *  #  *   *  #  *  *  #  *   *  #  *  *  #  *   *  #  *  *  #  *   *  #     |
+>  0.95x +-+---*****###--****###--*****###--****###--*****###--****###--*****###--****###--*****###--****###--*****###---+-+
+>        ASSIGNMENT BITFIELD   FOURFP EMULATION   HUFFMAN   LU DECOMPOSITIONEURAL NNUMERIC SOSTRING SORT     hmean
+>   png: http://imgur.com/eOLmZNR
+> 
+> NB. 'cross' represents the previous commit.
+> 
+> Signed-off-by: Emilio G. Cota <cota@braap.org>
 > ---
->   target/i386/translate.c | 25 ++++++++++++++++++++++++-
->   1 file changed, 24 insertions(+), 1 deletion(-)
+>  target/arm/translate.c | 18 ++++++++++++++++++
+>  1 file changed, 18 insertions(+)
+> 
+> diff --git a/target/arm/translate.c b/target/arm/translate.c
+> index 02cad96..d46a576 100644
+> --- a/target/arm/translate.c
+> +++ b/target/arm/translate.c
+> @@ -65,6 +65,7 @@ static TCGv_i32 cpu_R[16];
+>  TCGv_i32 cpu_CF, cpu_NF, cpu_VF, cpu_ZF;
+>  TCGv_i64 cpu_exclusive_addr;
+>  TCGv_i64 cpu_exclusive_val;
+> +static bool gen_jr;
+>  
+>  /* FIXME:  These should be removed.  */
+>  static TCGv_i32 cpu_F0s, cpu_F1s;
+> @@ -221,6 +222,7 @@ static void store_reg(DisasContext *s, int reg, TCGv_i32 var)
+>           */
+>          tcg_gen_andi_i32(var, var, s->thumb ? ~1 : ~3);
+>          s->is_jmp = DISAS_JUMP;
+> +        gen_jr = true;
+>      }
+>      tcg_gen_mov_i32(cpu_R[reg], var);
+>      tcg_temp_free_i32(var);
+> @@ -893,6 +895,7 @@ static inline void gen_bx_im(DisasContext *s, uint32_t addr)
+>          tcg_temp_free_i32(tmp);
+>      }
+>      tcg_gen_movi_i32(cpu_R[15], addr & ~1);
+> +    gen_jr = true;
+>  }
+>  
+>  /* Set PC and Thumb state from var.  var is marked as dead.  */
+> @@ -902,6 +905,7 @@ static inline void gen_bx(DisasContext *s, TCGv_i32 var)
+>      tcg_gen_andi_i32(cpu_R[15], var, ~1);
+>      tcg_gen_andi_i32(var, var, 1);
+>      store_cpu_field(var, thumb);
+> +    gen_jr = true;
+>  }
+>  
+>  /* Variant of store_reg which uses branch&exchange logic when storing
+> @@ -12034,6 +12038,20 @@ void gen_intermediate_code(CPUARMState *env, TranslationBlock *tb)
+>              gen_set_pc_im(dc, dc->pc);
+>              /* fall through */
+>          case DISAS_JUMP:
+> +            /*
+> +             * gen_jr is not set on every DISAS_JUMP because for some of those
+> +             * we do want to exit to the exec loop.
+> +             */
 
-Reviewed-by: Richard Henderson <rth@twiddle.net>
+What would be the reason for that? IIUC the lookup_tb_ptr helper calls
+cpu_get_tb_cpu_state to get the new TB flags go lookup from the current
+CPU state. It means it is able for example to handle a transition from
+user to privileged mode. Also the exit_req flag or its new equivalent
+is tested at the beginning of each TB in case there is an interruption.
 
+It therefore seems to be that we can replace all calls to
+tcg_gen_exit_tb by tcg_gen_lookup_and_goto_ptr with the program counter
+in argument.
 
-r~
+-- 
+Aurelien Jarno                          GPG: 4096R/1DDD8C9B
+aurelien@aurel32.net                 http://www.aurel32.net

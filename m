@@ -1,12 +1,12 @@
-Received: by 10.25.0.144 with SMTP id 138csp689051lfa;
-        Thu, 27 Apr 2017 03:16:02 -0700 (PDT)
-X-Received: by 10.28.129.201 with SMTP id c192mr1786301wmd.22.1493288162113;
-        Thu, 27 Apr 2017 03:16:02 -0700 (PDT)
+Received: by 10.25.0.144 with SMTP id 138csp692367lfa;
+        Thu, 27 Apr 2017 03:26:04 -0700 (PDT)
+X-Received: by 10.28.71.132 with SMTP id m4mr1620106wmi.130.1493288764142;
+        Thu, 27 Apr 2017 03:26:04 -0700 (PDT)
 Return-Path: <aurelien@aurel32.net>
 Received: from hall.aurel32.net (hall.aurel32.net. [2001:bc8:30d7:100::1])
-        by mx.google.com with ESMTPS id i66si2767996wmh.162.2017.04.27.03.16.01
+        by mx.google.com with ESMTPS id p193si2678507wme.51.2017.04.27.03.26.03
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 27 Apr 2017 03:16:02 -0700 (PDT)
+        Thu, 27 Apr 2017 03:26:04 -0700 (PDT)
 Received-SPF: pass (google.com: best guess record for domain of aurelien@aurel32.net designates 2001:bc8:30d7:100::1 as permitted sender) client-ip=2001:bc8:30d7:100::1;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: best guess record for domain of aurelien@aurel32.net designates 2001:bc8:30d7:100::1 as permitted sender) smtp.mailfrom=aurelien@aurel32.net
@@ -14,159 +14,82 @@ Received: from ohm.aurel32.net ([2001:bc8:30d7:111::1000])
 	by hall.aurel32.net with esmtpsa (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
 	(Exim 4.89)
 	(envelope-from <aurelien@aurel32.net>)
-	id 1d3gSo-0004aT-82; Thu, 27 Apr 2017 12:15:54 +0200
+	id 1d3gca-0004te-QW; Thu, 27 Apr 2017 12:26:00 +0200
 Received: from aurel32 by ohm.aurel32.net with local (Exim 4.89)
 	(envelope-from <aurelien@aurel32.net>)
-	id 1d3gSd-0006j5-Fa; Thu, 27 Apr 2017 12:15:43 +0200
-Date: Thu, 27 Apr 2017 12:15:43 +0200
+	id 1d3gcU-00070U-EC; Thu, 27 Apr 2017 12:25:54 +0200
+Date: Thu, 27 Apr 2017 12:25:54 +0200
 From: Aurelien Jarno <aurelien@aurel32.net>
-To: Richard Henderson <rth@twiddle.net>
-Cc: "Emilio G. Cota" <cota@braap.org>, qemu-devel@nongnu.org,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	Peter Crosthwaite <crosthwaite.peter@gmail.com>,
+To: "Emilio G. Cota" <cota@braap.org>
+Cc: Richard Henderson <rth@twiddle.net>,
 	Peter Maydell <peter.maydell@linaro.org>,
 	Eduardo Habkost <ehabkost@redhat.com>,
-	Andrzej Zaborowski <balrogg@gmail.com>,
-	Alexander Graf <agraf@suse.de>, Stefan Weil <sw@weilnetz.de>,
-	qemu-arm@nongnu.org, alex.bennee@linaro.org,
-	Pranith Kumar <bobby.prani+qemu@gmail.com>
-Subject: Re: [PATCH v4 07/11] target/arm: optimize indirect branches
-Message-ID: <20170427101543.wslpadfibz2v3pcx@aurel32.net>
-References: <1493263764-18657-1-git-send-email-cota@braap.org>
- <1493263764-18657-8-git-send-email-cota@braap.org>
- <20170427093639.x4ckqibxcdgj76gf@aurel32.net>
- <59cec207-d067-db90-6dca-e0a236145c11@twiddle.net>
+	Peter Crosthwaite <crosthwaite.peter@gmail.com>,
+	Stefan Weil <sw@weilnetz.de>, qemu-devel@nongnu.org,
+	Alexander Graf <agraf@suse.de>, alex.bennee@linaro.org,
+	qemu-arm@nongnu.org, Pranith Kumar <bobby.prani+qemu@gmail.com>,
+	Paolo Bonzini <pbonzini@redhat.com>
+Subject: Re: [Qemu-devel] [PATCH v3 06/10] target/arm: optimize indirect
+ branches
+Message-ID: <20170427102554.2trmv3c3l7e3h33h@aurel32.net>
+References: <1493187803-4510-1-git-send-email-cota@braap.org>
+ <1493187803-4510-7-git-send-email-cota@braap.org>
+ <9ed31413-ddd8-b229-9731-a0433f8fbcde@twiddle.net>
+ <20170427032038.GA5078@flamenco>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <59cec207-d067-db90-6dca-e0a236145c11@twiddle.net>
+In-Reply-To: <20170427032038.GA5078@flamenco>
 User-Agent: NeoMutt/20170113 (1.7.2)
-X-TUID: BFUvNd4WoqWV
+X-TUID: 71lz3GywFSKB
 
-On 2017-04-27 11:42, Richard Henderson wrote:
-> On 04/27/2017 11:36 AM, Aurelien Jarno wrote:
-> > On 2017-04-26 23:29, Emilio G. Cota wrote:
-> > > Speed up indirect branches by jumping to the target if it is valid.
-> > > 
-> > > Softmmu measurements (see later commit for user-mode results):
-> > > 
-> > > Note: baseline (i.e. speedup == 1x) is QEMU v2.9.0.
-> > > 
-> > > - Impact on Boot time
-> > > 
-> > > | setup  | ARM debian jessie boot+shutdown time | stddev |
-> > > |--------+--------------------------------------+--------|
-> > > | v2.9.0 |                                 8.84 |   0.07 |
-> > > | +cross |                                 8.85 |   0.03 |
-> > > | +jr    |                                 8.83 |   0.06 |
-> > > 
-> > > -                            NBench, arm-softmmu (debian jessie guest). Host: Intel i7-4790K @ 4.00GHz
-> > > 
-> > >    1.3x +-+-------------------------------------------------------------------------------------------------------------+-+
-> > >         |                                                                                                                 |
-> > >         |   cross                                                          ####                                           |
-> > >   1.25x +cross+jr..........................................................#++#.........................................+-+
-> > >         |                                                        ####      #  #                                           |
-> > >         |                                                     +++#  #      #  #                                           |
-> > >         |                                      +++            ****  #      #  #                                           |
-> > >    1.2x +-+...................................####............*..*..#......#..#.........................................+-+
-> > >         |                                  ****  #            *  *  #      #  #     ####                                  |
-> > >         |                                  *  *  #            *  *  #      #  #     #  #                                  |
-> > >   1.15x +-+................................*..*..#............*..*..#......#..#.....#..#................................+-+
-> > >         |                                  *  *  #            *  *  #      #  #     #  #                                  |
-> > >         |                                  *  *  #      ####  *  *  #      #  #     #  #                                  |
-> > >         |                                  *  *  #      #  #  *  *  #      #  #     #  #                         ####     |
-> > >    1.1x +-+................................*..*..#......#..#..*..*..#......#..#.....#..#.........................#..#...+-+
-> > >         |                                  *  *  #      #  #  *  *  #      #  #     #  #                         #  #     |
-> > >         |                                  *  *  #      #  #  *  *  #      #  #     #  #                         #  #     |
-> > >   1.05x +-+..........................####..*..*..#......#..#..*..*..#......#..#.....#..#......+++............*****..#...+-+
-> > >         |                        *****  #  *  *  #      #  #  *  *  #  *****  #     #  #   +++ |    ****###  *   *  #     |
-> > >         |                        *+++*  #  *  *  #      #  #  *  *  #  *+++*  #  ****  #  *****###  *  *  #  *   *  #     |
-> > >         |     *****###  +++####  *   *  #  *  *  #  *****  #  *  *  #  *   *  #  *  *  #  * | *++#  *  *  #  *   *  #     |
-> > >      1x +-++-+*+++*-+#++****++#++*+-+*++#+-*++*++#-+*+++*-+#++*++*++#++*+-+*++#+-*++*++#-+*+++*-+#++*++*++#++*+-+*++#+-++-+
-> > >         |     *   *  #  *  *  #  *   *  #  *  *  #  *   *  #  *  *  #  *   *  #  *  *  #  *   *  #  *  *  #  *   *  #     |
-> > >         |     *   *  #  *  *  #  *   *  #  *  *  #  *   *  #  *  *  #  *   *  #  *  *  #  *   *  #  *  *  #  *   *  #     |
-> > >   0.95x +-+---*****###--****###--*****###--****###--*****###--****###--*****###--****###--*****###--****###--*****###---+-+
-> > >         ASSIGNMENT BITFIELD   FOURFP EMULATION   HUFFMAN   LU DECOMPOSITIONEURAL NNUMERIC SOSTRING SORT     hmean
-> > >    png: http://imgur.com/eOLmZNR
-> > > 
-> > > NB. 'cross' represents the previous commit.
-> > > 
-> > > Signed-off-by: Emilio G. Cota <cota@braap.org>
-> > > ---
-> > >   target/arm/translate.c | 18 ++++++++++++++++++
-> > >   1 file changed, 18 insertions(+)
-> > > 
-> > > diff --git a/target/arm/translate.c b/target/arm/translate.c
-> > > index 02cad96..d46a576 100644
-> > > --- a/target/arm/translate.c
-> > > +++ b/target/arm/translate.c
-> > > @@ -65,6 +65,7 @@ static TCGv_i32 cpu_R[16];
-> > >   TCGv_i32 cpu_CF, cpu_NF, cpu_VF, cpu_ZF;
-> > >   TCGv_i64 cpu_exclusive_addr;
-> > >   TCGv_i64 cpu_exclusive_val;
-> > > +static bool gen_jr;
-> > >   /* FIXME:  These should be removed.  */
-> > >   static TCGv_i32 cpu_F0s, cpu_F1s;
-> > > @@ -221,6 +222,7 @@ static void store_reg(DisasContext *s, int reg, TCGv_i32 var)
-> > >            */
-> > >           tcg_gen_andi_i32(var, var, s->thumb ? ~1 : ~3);
-> > >           s->is_jmp = DISAS_JUMP;
-> > > +        gen_jr = true;
-> > >       }
-> > >       tcg_gen_mov_i32(cpu_R[reg], var);
-> > >       tcg_temp_free_i32(var);
-> > > @@ -893,6 +895,7 @@ static inline void gen_bx_im(DisasContext *s, uint32_t addr)
-> > >           tcg_temp_free_i32(tmp);
-> > >       }
-> > >       tcg_gen_movi_i32(cpu_R[15], addr & ~1);
-> > > +    gen_jr = true;
-> > >   }
-> > >   /* Set PC and Thumb state from var.  var is marked as dead.  */
-> > > @@ -902,6 +905,7 @@ static inline void gen_bx(DisasContext *s, TCGv_i32 var)
-> > >       tcg_gen_andi_i32(cpu_R[15], var, ~1);
-> > >       tcg_gen_andi_i32(var, var, 1);
-> > >       store_cpu_field(var, thumb);
-> > > +    gen_jr = true;
-> > >   }
-> > >   /* Variant of store_reg which uses branch&exchange logic when storing
-> > > @@ -12034,6 +12038,20 @@ void gen_intermediate_code(CPUARMState *env, TranslationBlock *tb)
-> > >               gen_set_pc_im(dc, dc->pc);
-> > >               /* fall through */
-> > >           case DISAS_JUMP:
-> > > +            /*
-> > > +             * gen_jr is not set on every DISAS_JUMP because for some of those
-> > > +             * we do want to exit to the exec loop.
-> > > +             */
+On 2017-04-26 23:20, Emilio G. Cota wrote:
+> On Wed, Apr 26, 2017 at 09:54:07 +0200, Richard Henderson wrote:
+> > On 04/26/2017 08:23 AM, Emilio G. Cota wrote:
+> > >+static bool gen_jr;...
+> > >         case DISAS_JUMP:
+> > >+            if (gen_jr) {
 > > 
-> > What would be the reason for that? IIUC the lookup_tb_ptr helper calls
-> > cpu_get_tb_cpu_state to get the new TB flags go lookup from the current
-> > CPU state. It means it is able for example to handle a transition from
-> > user to privileged mode. Also the exit_req flag or its new equivalent
-> > is tested at the beginning of each TB in case there is an interruption.
-> > 
-> > It therefore seems to be that we can replace all calls to
-> > tcg_gen_exit_tb by tcg_gen_lookup_and_goto_ptr with the program counter
-> > in argument.
-> > 
+> > Why the variable?  Why not just try the goto_ptr for any DISAS_JUMP?
 > 
-> That was my thought too.  The only examples I saw while converting
-> target/alpha that I really want exit_tb are when I have just flushed the
-> TBs, and I know that the lookup will definitely fail.
+> We have code that assumes DISAS_JUMP implies "go to exec loop", e.g.:
+>             case 6: /* isb */
+>                 /* We need to break the TB after this insn to execute
+>                  * self-modifying code correctly and also to take
+>                  * any pending interrupts immediately.
+>                  */
+>                 gen_lookup_tb(s);
+> where gen_lookup_tb does:
+> 
+> /* Force a TB lookup after an instruction that changes the CPU state.  */
+> static inline void gen_lookup_tb(DisasContext *s)
+> {
+>     tcg_gen_movi_i32(cpu_R[15], s->pc & ~1);
+>     s->is_jmp = DISAS_JUMP;
+> }
 
-Indeed that's suboptimal, but that should still work.
+Changing the CPU state should already be taken into account in
+lookup_tb_ptr through the cpu_get_tb_cpu_state function. Also interrupts
+should be checked at the beginning of each TB.
 
-> That said, elsewhere (in the v3 thread?) Emilio mentioned that ARM has some
-> cases where it wants interrupts (or something) to be recognized right away,
-> which would also seem to call for an exit_tb.
+> Also, the gen_exception_* functions set DISAS_JUMP. I suspect we want to go
+> to the exec loop with those as well.
 
-Thanks for the pointer, I will answer the mail.
+Technically all the code after the one generated by gen_exception_*
+function is not executed, including the tcg_gen_exit_tb(0). Therefore
+generating code using tcg_gen_exit_tb or or tcg_gen_lookup_and_goto_ptr
+should no change the behaviour.
 
-> My thought is that these cases should be specifically noted with a new
-> DISAS_EXIT or something like that, rather than overloading DISAS_JUMP with a
-> gen_jr flag.
+> Testing shows that I'm onto something; if I remove the variable,
+> and note that I make sure DISAS_UPDATE is not falling through, I get
+> easily reproducible (~1 out of 5) freezes and other instability
+> (e.g. RCU lockup warnings) when booting + shutting down debian jessie
+> in the guest.
 
-I agree.
+I agree that always calling lookup_tb_ptr might be suboptimal in case we
+know for sure that the lookup will fail or that there will be an exit
+request at the beginning of the next TB. That said I found strange that
+it causes issues, and I wonder if it just expose a bug somewhere.
 
 -- 
 Aurelien Jarno                          GPG: 4096R/1DDD8C9B

@@ -1,72 +1,69 @@
-Received: by 10.25.0.144 with SMTP id 138csp165309lfa;
-        Fri, 28 Apr 2017 05:10:21 -0700 (PDT)
-X-Received: by 10.55.58.199 with SMTP id h190mr9284342qka.262.1493381421279;
-        Fri, 28 Apr 2017 05:10:21 -0700 (PDT)
+Received: by 10.25.0.144 with SMTP id 138csp212386lfa;
+        Fri, 28 Apr 2017 06:58:32 -0700 (PDT)
+X-Received: by 10.237.62.115 with SMTP id m48mr10103731qtf.192.1493387911898;
+        Fri, 28 Apr 2017 06:58:31 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id 34si5587379qtg.309.2017.04.28.05.10.21
+        by mx.google.com with ESMTPS id a3si6056879qth.135.2017.04.28.06.58.31
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 28 Apr 2017 05:10:21 -0700 (PDT)
+        Fri, 28 Apr 2017 06:58:31 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:36798 helo=lists.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:37228 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1d44j6-000882-PX
-	for alex.bennee@linaro.org; Fri, 28 Apr 2017 08:10:20 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:37764)
+	id 1d46Pn-00009b-D2
+	for alex.bennee@linaro.org; Fri, 28 Apr 2017 09:58:31 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:36406)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1d44j3-00087t-Gq
-	for qemu-arm@nongnu.org; Fri, 28 Apr 2017 08:10:18 -0400
+	(envelope-from <wei@redhat.com>) id 1d46Pi-000098-W7
+	for qemu-arm@nongnu.org; Fri, 28 Apr 2017 09:58:27 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1d44j2-0007N6-Lm
-	for qemu-arm@nongnu.org; Fri, 28 Apr 2017 08:10:17 -0400
-Received: from mail-wm0-x22c.google.com ([2a00:1450:400c:c09::22c]:37402)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1d44j2-0007MI-Du
-	for qemu-arm@nongnu.org; Fri, 28 Apr 2017 08:10:16 -0400
-Received: by mail-wm0-x22c.google.com with SMTP id m123so44830607wma.0
-	for <qemu-arm@nongnu.org>; Fri, 28 Apr 2017 05:10:16 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=nYwyCSEpHEPMSYyhDb+ZQDT9fUND49sYb/z0ikK9Mh4=;
-	b=Z72vR32Y2ZMHxHKcfAyARj4JdvrlMqbJtGRCwldc+UXGNOx9S+Z3ciqyp0kyEI1SkM
-	Al1rV8IIL9lYO8UAe5XluT6nrcd/XlqVr3lWZBFWOMkBaoNla+0Fqs0/5+LHrBltfHYy
-	j5ZlMxBJbQQHOM1n1CBhwW2Wn+CLijLHqAHF4=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=nYwyCSEpHEPMSYyhDb+ZQDT9fUND49sYb/z0ikK9Mh4=;
-	b=UAZQqWjnfheBzIWWR95QrbwSEd8lwIvFoGqYwnzLXkOXqUH7CQT2QR+6nYNH4xLcDM
-	gEf0PlBIbkIHMfHowrAO50BlVw2jchBw7Ba6DvW64T/GnyPaWe420CQi687rgTKpeotZ
-	B0Kh1tbF77DPRQAqwU/OdCObhG24Zi1JGChetk4QO09qzSx8gqPgWIZAFJLjjy8mBb+6
-	00D5gEe9jKYJsvBmbEig3H8uIEiOuNUSx7T4H3QIY6WB2LiWmazy7QkjXu2F2xO6WtOp
-	TKItMkAIHx/o2zywX9Wlv1ejygU+4Q09OKeAwHj3o3jvlGwbHwfhN5H68wLySNYdAk7u
-	hNMA==
-X-Gm-Message-State: AN3rC/4Lm6+9i6lUp4pzKckLGySG8yYUUPk655BKobQDsjB4DUURmHV2
-	AqnKuu94NWhsvju8dvGZuyIwYxN+FXWy
-X-Received: by 10.28.57.138 with SMTP id g132mr5343375wma.92.1493381415033;
-	Fri, 28 Apr 2017 05:10:15 -0700 (PDT)
-MIME-Version: 1.0
-Received: by 10.223.145.68 with HTTP; Fri, 28 Apr 2017 05:09:54 -0700 (PDT)
-In-Reply-To: <4dbaaea9-7576-9acf-5327-b22db6f00ed2@redhat.com>
+	(envelope-from <wei@redhat.com>) id 1d46Pf-0002y1-Uy
+	for qemu-arm@nongnu.org; Fri, 28 Apr 2017 09:58:27 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:59872)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <wei@redhat.com>)
+	id 1d46Pf-0002xn-O7; Fri, 28 Apr 2017 09:58:23 -0400
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+	[10.5.11.13])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 507F741A3E;
+	Fri, 28 Apr 2017 13:58:22 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 507F741A3E
+Authentication-Results: ext-mx06.extmail.prod.ext.phx2.redhat.com;
+	dmarc=none (p=none dis=none) header.from=redhat.com
+Authentication-Results: ext-mx06.extmail.prod.ext.phx2.redhat.com;
+	spf=pass smtp.mailfrom=wei@redhat.com
+DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com 507F741A3E
+Received: from [10.10.123.28] (ovpn-123-28.rdu2.redhat.com [10.10.123.28])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 76320183FA;
+	Fri, 28 Apr 2017 13:58:21 +0000 (UTC)
+To: Peter Maydell <peter.maydell@linaro.org>
 References: <1493314727-6951-1-git-send-email-wei@redhat.com>
 	<CAFEAcA-KKvhspYza=8TNNuFtqzco=ChhtS6Aa5hnn8=Cb036-Q@mail.gmail.com>
 	<4dbaaea9-7576-9acf-5327-b22db6f00ed2@redhat.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 28 Apr 2017 13:09:54 +0100
-Message-ID: <CAFEAcA8K9DENSPqJD2Okqjqyi7T8RhSBmhCa3ztooJK5xdcZVg@mail.gmail.com>
-To: Wei Huang <wei@redhat.com>
-Content-Type: text/plain; charset=UTF-8
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2a00:1450:400c:c09::22c
+	<CAFEAcA8K9DENSPqJD2Okqjqyi7T8RhSBmhCa3ztooJK5xdcZVg@mail.gmail.com>
+From: Wei Huang <wei@redhat.com>
+Message-ID: <8b782ee5-3545-3cb5-3b09-209fcffee7e4@redhat.com>
+Date: Fri, 28 Apr 2017 08:58:20 -0500
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
+	Thunderbird/45.8.0
+MIME-Version: 1.0
+In-Reply-To: <CAFEAcA8K9DENSPqJD2Okqjqyi7T8RhSBmhCa3ztooJK5xdcZVg@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.30]);
+	Fri, 28 Apr 2017 13:58:22 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.132.183.28
 Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH 0/2] Fix compilation dependency
  issues of CONFIG_ARM_V7M
 X-BeenThere: qemu-arm@nongnu.org
@@ -83,28 +80,47 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: jSaRXB0wSb5Z
+X-TUID: IptJNDxJzpv0
 
-On 28 April 2017 at 01:10, Wei Huang <wei@redhat.com> wrote:
-> In our downstream code, we try to minimize the number of supported
-> devices to reduce the maintenance effort. ARM v7M is not in the
-> supported list.
->
-> For most unsupported devices, we can remove them by configuring
-> default-configs file, except for CONFIG_ARM_V7M=y. This is because the
-> ARMv7m code in target/arm/helper.c intertwines with NVIC code. As a
-> result we have to keep NVIC and SysTick in order to compile helper.c,
-> which is not desirable.
->
-> This patchset tries to address the problem by making NVIC and SysTick
-> removable.
 
-I think that's the wrong way to do it. If you want to not compile
-in ARMv7M support then you need more ifdeffery in the target/arm
-code to disable the v7M code and CPUs entirely. NVIC and systick
-are required core parts of v7M CPUs and so if they are not
-present then QEMU will claim to support the v7M cores but not
-in fact correctly do so.
 
-thanks
--- PMM
+On 04/28/2017 07:09 AM, Peter Maydell wrote:
+> On 28 April 2017 at 01:10, Wei Huang <wei@redhat.com> wrote:
+>> In our downstream code, we try to minimize the number of supported
+>> devices to reduce the maintenance effort. ARM v7M is not in the
+>> supported list.
+>>
+>> For most unsupported devices, we can remove them by configuring
+>> default-configs file, except for CONFIG_ARM_V7M=y. This is because the
+>> ARMv7m code in target/arm/helper.c intertwines with NVIC code. As a
+>> result we have to keep NVIC and SysTick in order to compile helper.c,
+>> which is not desirable.
+>>
+>> This patchset tries to address the problem by making NVIC and SysTick
+>> removable.
+> 
+> I think that's the wrong way to do it. If you want to not compile
+> in ARMv7M support then you need more ifdeffery in the target/arm
+> code to disable the v7M code and CPUs entirely. NVIC and systick
+
+We do disable most CPUs, which means only a limited number of CPUs
+(host, cortex-a15, cortex-53/57) are left.
+
+Using #ifdef is indeed a cleaner solution. However I can't use "#ifdef
+CONFIG_ARM_V7M" & co inside target/arm/cpu.c file because CONFIG_xxx
+aren't available as preprocessor directives. From what I saw the
+CONFIG_xxx options can only control compiling source file. One solution
+is to extract out all v7M code into separate files and use
+CONFIG_ARM_V7M to direct compilation. A bit messy though. Any other
+suggestions?
+
+> are required core parts of v7M CPUs and so if they are not
+> present then QEMU will claim to support the v7M cores but not
+> in fact correctly do so.
+
+
+
+> 
+> thanks
+> -- PMM
+> 

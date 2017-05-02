@@ -1,327 +1,180 @@
-Received: by 10.25.0.198 with SMTP id 189csp184009lfa;
-        Tue, 2 May 2017 01:04:00 -0700 (PDT)
-X-Received: by 10.237.53.37 with SMTP id a34mr26959506qte.274.1493712240133;
-        Tue, 02 May 2017 01:04:00 -0700 (PDT)
-Return-Path: <kvmarm-bounces@lists.cs.columbia.edu>
-Received: from mm01.cs.columbia.edu (mm01.cs.columbia.edu. [128.59.11.253])
-        by mx.google.com with ESMTP id y6si16368220qta.278.2017.05.02.01.03.59;
-        Tue, 02 May 2017 01:04:00 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) client-ip=128.59.11.253;
+Received: by 10.25.0.198 with SMTP id 189csp246678lfa;
+        Tue, 2 May 2017 04:13:13 -0700 (PDT)
+X-Received: by 10.200.35.73 with SMTP id b9mr25667962qtb.268.1493723593225;
+        Tue, 02 May 2017 04:13:13 -0700 (PDT)
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
+        by mx.google.com with ESMTPS id l19si16982288qtf.37.2017.05.02.04.13.13
+        for <alex.bennee@linaro.org>
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Tue, 02 May 2017 04:13:13 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=neutral (body hash did not verify) header.i=@linaro.org;
-       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost (localhost [127.0.0.1])
-	by mm01.cs.columbia.edu (Postfix) with ESMTP id 849CA40A66;
-	Tue,  2 May 2017 04:00:57 -0400 (EDT)
-X-Virus-Scanned: at lists.cs.columbia.edu
-X-Spam-Flag: NO
-X-Spam-Score: 0.909
-X-Spam-Level: 
-X-Spam-Status: No, score=0.909 required=6.1 tests=[BAYES_00=-1.9,
-	DKIM_SIGNED=0.1, DNS_FROM_AHBL_RHSBL=2.699,
-	RCVD_IN_DNSWL_NONE=-0.0001, T_DKIM_INVALID=0.01] autolearn=no
-Authentication-Results: mm01.cs.columbia.edu (amavisd-new); dkim=softfail
-	(fail, message has been altered) header.i=@linaro.org
-Received: from mm01.cs.columbia.edu ([127.0.0.1])
-	by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 2xHQtdqprlWE; Tue,  2 May 2017 04:00:51 -0400 (EDT)
-Received: from mm01.cs.columbia.edu (localhost [127.0.0.1])
-	by mm01.cs.columbia.edu (Postfix) with ESMTP id 37D9340BC4;
-	Tue,  2 May 2017 04:00:51 -0400 (EDT)
-Received: from localhost (localhost [127.0.0.1])
- by mm01.cs.columbia.edu (Postfix) with ESMTP id 5592840BC4
- for <kvmarm@lists.cs.columbia.edu>; Tue,  2 May 2017 04:00:49 -0400 (EDT)
-X-Virus-Scanned: at lists.cs.columbia.edu
-Received: from mm01.cs.columbia.edu ([127.0.0.1])
- by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id R+Lsz8ilOVrD for <kvmarm@lists.cs.columbia.edu>;
- Tue,  2 May 2017 04:00:42 -0400 (EDT)
-Received: from mail-wm0-f51.google.com (mail-wm0-f51.google.com [74.125.82.51])
- by mm01.cs.columbia.edu (Postfix) with ESMTPS id A7CAC40A66
- for <kvmarm@lists.cs.columbia.edu>; Tue,  2 May 2017 04:00:42 -0400 (EDT)
-Received: by mail-wm0-f51.google.com with SMTP id w64so104113536wma.0
- for <kvmarm@lists.cs.columbia.edu>; Tue, 02 May 2017 01:03:44 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to:user-agent;
- bh=fwRjTW+u/bc1Ra8I5ZI3YrxhU2ueioCmJZclkRUTEDU=;
- b=SxPxXkCm5tFRX0lfM/FD2Kae55AU2cKtoBiUngVADxoL3CXhfGg50ru1ae1dmCnnIx
- ongXmVDnHFsv/gXqd0AXSE4ucWepglv8VDdCu4GfxsAxYRn2/Enug/1KNQNLqecA925/
- vutBRpr8u+YfMnTgq5Um9qI2hqO+7xCjt0zgs=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to:user-agent;
- bh=fwRjTW+u/bc1Ra8I5ZI3YrxhU2ueioCmJZclkRUTEDU=;
- b=a9rinxQ9fRdExMe9DUNHBx3QZYIvSJ+Id6yslBPXHKUH0sN6l/TKOTO01p13HrkSGJ
- F+5wqH6IELOc1yaqwqyVMfmtd40ROfVrbWKDdbWTkyDUpyLT1xQiq7dXt9ZoyYSv+/nq
- Ac0W1sld3lHl9IZl906u9GMwFWWbqk+2JlEvdq1eqshb6FwaPO+EnAXs4ukscEaPZShe
- QotJdT1ms1o038D9P2VB6dp0fOgsvJnXB0WoOaSrg61C3MvkLrWa7+Ik9n4708ntVZfZ
- W8tPnXkcQ9NvNynRpdEMynauwL4LI535nkhO9rhbdhUDqNcfL3BSjdv0XOfxkWjctEgQ
- xR5w==
-X-Gm-Message-State: AN3rC/79CWzGTrzcxjqgE/PV4QdXy/2/nyxzuNu5inOHi4bXJ8umjvmO
- rCiTOys/kMBxObrK
-X-Received: by 10.80.184.226 with SMTP id l89mr22451444ede.137.1493712223068; 
- Tue, 02 May 2017 01:03:43 -0700 (PDT)
-Received: from localhost (xd93ddc2d.cust.hiper.dk. [217.61.220.45])
- by smtp.gmail.com with ESMTPSA id h15sm8745326edh.56.2017.05.02.01.03.42
- (version=TLS1_2 cipher=AES128-SHA bits=128/128);
- Tue, 02 May 2017 01:03:42 -0700 (PDT)
-Date: Tue, 2 May 2017 10:03:42 +0200
-From: Christoffer Dall <cdall@linaro.org>
-To: Dongjiu Geng <gengdongjiu@huawei.com>
-Subject: Re: [PATCH v3 2/3] arm64: kvm: inject SError with virtual syndrome
-Message-ID: <20170502080342.GF16940@cbox>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:58078 helo=lists.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1d5Vk0-0000gC-OD
+	for alex.bennee@linaro.org; Tue, 02 May 2017 07:13:12 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:58433)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <gengdongjiu@huawei.com>) id 1d5Vjt-0000g5-Gu
+	for qemu-arm@nongnu.org; Tue, 02 May 2017 07:13:09 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+	(envelope-from <gengdongjiu@huawei.com>) id 1d5Vjp-0004z7-IM
+	for qemu-arm@nongnu.org; Tue, 02 May 2017 07:13:05 -0400
+Received: from szxga02-in.huawei.com ([45.249.212.188]:3915)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_ARCFOUR_SHA1:16) (Exim 4.71)
+	(envelope-from <gengdongjiu@huawei.com>)
+	id 1d5Vjo-0004uJ-Vc; Tue, 02 May 2017 07:13:01 -0400
+Received: from 172.30.72.56 (EHLO DGGEML404-HUB.china.huawei.com)
+	([172.30.72.56])
+	by dggrg02-dlp.huawei.com (MOS 4.4.6-GA FastPath queued)
+	with ESMTP id AMU58949; Tue, 02 May 2017 19:06:05 +0800 (CST)
+Received: from [127.0.0.1] (10.142.68.147) by DGGEML404-HUB.china.huawei.com
+	(10.3.17.39) with Microsoft SMTP Server id 14.3.301.0; Tue, 2 May 2017
+	19:05:51 +0800
+To: Christoffer Dall <cdall@linaro.org>
 References: <1493530677-4919-1-git-send-email-gengdongjiu@huawei.com>
- <1493530677-4919-2-git-send-email-gengdongjiu@huawei.com>
+	<20170502075631.GE16940@cbox>
+From: gengdongjiu <gengdongjiu@huawei.com>
+Message-ID: <c56b7b8f-3fa6-ed03-acb2-a2af1fcd5237@huawei.com>
+Date: Tue, 2 May 2017 19:05:42 +0800
+User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64; rv:45.0) Gecko/20100101
+	Thunderbird/45.7.1
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <1493530677-4919-2-git-send-email-gengdongjiu@huawei.com>
-User-Agent: Mutt/1.5.21 (2010-09-15)
-Cc: mtsirkin@redhat.com, kvm@vger.kernel.org, tbaicar@codeaurora.org,
- qemu-devel@nongnu.org, wangxiongfeng2@huawei.com, ben@skyportsystems.com,
- linux@armlinux.org.uk, kvmarm@lists.cs.columbia.edu, huangshaoyu@huawei.com,
- lersek@redhat.com, songwenjun@huawei.com, wuquanming@huawei.com,
- marc.zyngier@arm.com, qemu-arm@nongnu.org, imammedo@redhat.com,
- linux-arm-kernel@lists.infradead.org, ard.biesheuvel@linaro.org,
- pbonzini@redhat.com
-X-BeenThere: kvmarm@lists.cs.columbia.edu
-X-Mailman-Version: 2.1.14
-Precedence: list
-List-Id: Where KVM/ARM decisions are made <kvmarm.lists.cs.columbia.edu>
-List-Unsubscribe: <https://lists.cs.columbia.edu/mailman/options/kvmarm>,
- <mailto:kvmarm-request@lists.cs.columbia.edu?subject=unsubscribe>
-List-Archive: <https://lists.cs.columbia.edu/pipermail/kvmarm>
-List-Post: <mailto:kvmarm@lists.cs.columbia.edu>
-List-Help: <mailto:kvmarm-request@lists.cs.columbia.edu?subject=help>
-List-Subscribe: <https://lists.cs.columbia.edu/mailman/listinfo/kvmarm>,
- <mailto:kvmarm-request@lists.cs.columbia.edu?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
+In-Reply-To: <20170502075631.GE16940@cbox>
+Content-Type: text/plain; charset="windows-1252"
 Content-Transfer-Encoding: 7bit
-Errors-To: kvmarm-bounces@lists.cs.columbia.edu
-Sender: kvmarm-bounces@lists.cs.columbia.edu
-X-TUID: Tbc3MLIUF9ib
+X-Originating-IP: [10.142.68.147]
+X-CFilter-Loop: Reflected
+X-Mirapoint-Virus-RAPID-Raw: score=unknown(0),
+	refid=str=0001.0A020201.59086820.0301, ss=1, re=0.000, recu=0.000,
+	reip=0.000, cl=1, cld=1, fgs=0, ip=0.0.0.0,
+	so=2014-11-16 11:51:01, dmn=2013-03-21 17:37:32
+X-Mirapoint-Loop-Id: 29ff11dbc02fc2cfc505e5889d3955c1
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
+	[fuzzy]
+X-Received-From: 45.249.212.188
+Subject: Re: [Qemu-arm] [PATCH v3 1/3] arm64: kvm: support kvmtool to detect
+ RAS extension feature
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.21
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: peter.maydell@linaro.org, mtsirkin@redhat.com, kvm@vger.kernel.org,
+	rkrcmar@redhat.com, tbaicar@codeaurora.org,
+	qemu-devel@nongnu.org, wangxiongfeng2@huawei.com,
+	ben@skyportsystems.com, linux@armlinux.org.uk,
+	kvmarm@lists.cs.columbia.edu, huangshaoyu@huawei.com,
+	zhaoshenglong@huawei.com, lersek@redhat.com,
+	songwenjun@huawei.com, drjones@redhat.com, wuquanming@huawei.com,
+	xiexiuqi@huawei.com, marc.zyngier@arm.com, qemu-arm@nongnu.org,
+	imammedo@redhat.com, linux-arm-kernel@lists.infradead.org,
+	ard.biesheuvel@linaro.org, james.morse@arm.com,
+	pbonzini@redhat.com, christoffer.dall@linaro.org
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: Ufr9XBM1JLoA
 
-On Sun, Apr 30, 2017 at 01:37:56PM +0800, Dongjiu Geng wrote:
-> when SError happen, kvm notifies kvmtool to generate GHES table
-> to record the error, then kvmtools inject the SError with specified
+Hi Christoffer,
+   thanks for your review and comments
 
-again, is this really specific to kvmtool?  Pleae try to explain this
-mechanism in generic terms.
-
-> virtual syndrome. when switch to guest, a virtual SError will happen with
-> this specified syndrome.
+On 2017/5/2 15:56, Christoffer Dall wrote:
+> Hi Dongjiu,
 > 
-> Signed-off-by: Dongjiu Geng <gengdongjiu@huawei.com>
-> ---
->  arch/arm64/include/asm/esr.h         |  2 ++
->  arch/arm64/include/asm/kvm_emulate.h | 10 ++++++++++
->  arch/arm64/include/asm/kvm_host.h    |  1 +
->  arch/arm64/include/asm/sysreg.h      |  3 +++
->  arch/arm64/kvm/handle_exit.c         | 25 +++++++++++++++++++------
->  arch/arm64/kvm/hyp/switch.c          | 15 ++++++++++++++-
->  include/uapi/linux/kvm.h             |  5 +++++
->  7 files changed, 54 insertions(+), 7 deletions(-)
+> Please send a cover letter for patch series with more than a single
+> patch.
+  OK, got it.
+
 > 
-> diff --git a/arch/arm64/include/asm/esr.h b/arch/arm64/include/asm/esr.h
-> index 22f9c90..d009c99 100644
-> --- a/arch/arm64/include/asm/esr.h
-> +++ b/arch/arm64/include/asm/esr.h
-> @@ -127,6 +127,8 @@
->  #define ESR_ELx_WFx_ISS_WFE	(UL(1) << 0)
->  #define ESR_ELx_xVC_IMM_MASK	((1UL << 16) - 1)
->  
-> +#define VSESR_ELx_IDS_ISS_MASK    ((1UL << 25) - 1)
-> +
->  /* ESR value templates for specific events */
->  
->  /* BRK instruction trap from AArch64 state */
-> diff --git a/arch/arm64/include/asm/kvm_emulate.h b/arch/arm64/include/asm/kvm_emulate.h
-> index f5ea0ba..a3259a9 100644
-> --- a/arch/arm64/include/asm/kvm_emulate.h
-> +++ b/arch/arm64/include/asm/kvm_emulate.h
-> @@ -148,6 +148,16 @@ static inline u32 kvm_vcpu_get_hsr(const struct kvm_vcpu *vcpu)
->  	return vcpu->arch.fault.esr_el2;
->  }
->  
-> +static inline u32 kvm_vcpu_get_vsesr(const struct kvm_vcpu *vcpu)
-> +{
-> +		return vcpu->arch.fault.vsesr_el2;
-> +}
-> +
-> +static inline void kvm_vcpu_set_vsesr(struct kvm_vcpu *vcpu, unsigned long val)
-> +{
-> +		vcpu->arch.fault.vsesr_el2 = val;
-> +}
-> +
->  static inline int kvm_vcpu_get_condition(const struct kvm_vcpu *vcpu)
->  {
->  	u32 esr = kvm_vcpu_get_hsr(vcpu);
-> diff --git a/arch/arm64/include/asm/kvm_host.h b/arch/arm64/include/asm/kvm_host.h
-> index e7705e7..84ed239 100644
-> --- a/arch/arm64/include/asm/kvm_host.h
-> +++ b/arch/arm64/include/asm/kvm_host.h
-> @@ -86,6 +86,7 @@ struct kvm_vcpu_fault_info {
->  	u32 esr_el2;		/* Hyp Syndrom Register */
->  	u64 far_el2;		/* Hyp Fault Address Register */
->  	u64 hpfar_el2;		/* Hyp IPA Fault Address Register */
-> +	u32 vsesr_el2;		/* Virtual SError Exception Syndrome Register */
->  };
->  
->  /*
-> diff --git a/arch/arm64/include/asm/sysreg.h b/arch/arm64/include/asm/sysreg.h
-> index 32964c7..b6afb7a 100644
-> --- a/arch/arm64/include/asm/sysreg.h
-> +++ b/arch/arm64/include/asm/sysreg.h
-> @@ -125,6 +125,9 @@
->  #define REG_PSTATE_PAN_IMM		sys_reg(0, 0, 4, 0, 4)
->  #define REG_PSTATE_UAO_IMM		sys_reg(0, 0, 4, 0, 3)
->  
-> +#define VSESR_EL2			sys_reg(3, 4, 5, 2, 3)
-> +
-> +
->  #define SET_PSTATE_PAN(x) __emit_inst(0xd5000000 | REG_PSTATE_PAN_IMM |	\
->  				      (!!x)<<8 | 0x1f)
->  #define SET_PSTATE_UAO(x) __emit_inst(0xd5000000 | REG_PSTATE_UAO_IMM |	\
-> diff --git a/arch/arm64/kvm/handle_exit.c b/arch/arm64/kvm/handle_exit.c
-> index c89d83a..3d024a9 100644
-> --- a/arch/arm64/kvm/handle_exit.c
-> +++ b/arch/arm64/kvm/handle_exit.c
-> @@ -180,7 +180,11 @@ static exit_handle_fn kvm_get_exit_handler(struct kvm_vcpu *vcpu)
->  
->  static int kvm_handle_guest_sei(struct kvm_vcpu *vcpu, struct kvm_run *run)
->  {
-> -	unsigned long fault_ipa = kvm_vcpu_get_fault_ipa(vcpu);
-> +	unsigned long hva, fault_ipa = kvm_vcpu_get_fault_ipa(vcpu);
-> +	struct kvm_memory_slot *memslot;
-> +	int hsr, ret = 1;
-> +	bool writable;
-> +	gfn_t gfn;
->  
->  	if (handle_guest_sei((unsigned long)fault_ipa,
->  				kvm_vcpu_get_hsr(vcpu))) {
-> @@ -190,9 +194,20 @@ static int kvm_handle_guest_sei(struct kvm_vcpu *vcpu, struct kvm_run *run)
->  				(unsigned long)kvm_vcpu_get_hsr(vcpu));
->  
->  		kvm_inject_vabt(vcpu);
-> +	} else {
-> +		hsr = kvm_vcpu_get_hsr(vcpu);
-> +
-> +		gfn = fault_ipa >> PAGE_SHIFT;
-> +		memslot = gfn_to_memslot(vcpu->kvm, gfn);
-> +		hva = gfn_to_hva_memslot_prot(memslot, gfn, &writable);
-> +
-> +		run->exit_reason = KVM_EXIT_INTR;
-> +		run->intr.syndrome_info = hsr;
-> +		run->intr.address = hva;
-> +		ret = 0;
->  	}
->  
-> -	return 0;
-> +	return ret;
->  }
->  
->  /*
-> @@ -218,8 +233,7 @@ int handle_exit(struct kvm_vcpu *vcpu, struct kvm_run *run,
->  			*vcpu_pc(vcpu) -= adj;
->  		}
->  
-> -		kvm_handle_guest_sei(vcpu, run);
-> -		return 1;
-> +		return kvm_handle_guest_sei(vcpu, run);
->  	}
->  
->  	exception_index = ARM_EXCEPTION_CODE(exception_index);
-> @@ -228,8 +242,7 @@ int handle_exit(struct kvm_vcpu *vcpu, struct kvm_run *run,
->  	case ARM_EXCEPTION_IRQ:
->  		return 1;
->  	case ARM_EXCEPTION_EL1_SERROR:
-> -		kvm_handle_guest_sei(vcpu, run);
-> -		return 1;
-> +		return kvm_handle_guest_sei(vcpu, run);
->  	case ARM_EXCEPTION_TRAP:
->  		/*
->  		 * See ARM ARM B1.14.1: "Hyp traps on instructions
-> diff --git a/arch/arm64/kvm/hyp/switch.c b/arch/arm64/kvm/hyp/switch.c
-> index aede165..ded6211 100644
-> --- a/arch/arm64/kvm/hyp/switch.c
-> +++ b/arch/arm64/kvm/hyp/switch.c
-> @@ -86,6 +86,13 @@ static void __hyp_text __activate_traps(struct kvm_vcpu *vcpu)
->  		isb();
->  	}
->  	write_sysreg(val, hcr_el2);
-> +    /* If virtual System Error or Asynchronous Abort is pending. set
+> The subject and description of these patches are also misleading.
+> Hopefully this is in no way tied to kvmtool, but to userspace
+> generically, for example also to be used by QEMU?
+ yes, it is also used by QEMU, it should be userspace.
 
-nit: I think you want a comma after pending, not a dot.
 
-> +     * the virtual exception syndrome information
-> +     */
+> 
+> On Sun, Apr 30, 2017 at 01:37:55PM +0800, Dongjiu Geng wrote:
+>> Handle kvmtool's detection for RAS extension, because sometimes
+>> the APP needs to know the CPU's capacity
+> 
+> the APP ?
+> 
+> the CPU's capacity?
+  I will fix it.
 
-nit: commenting style
+> 
+>>
+>> Signed-off-by: Dongjiu Geng <gengdongjiu@huawei.com>
+>> ---
+>>  arch/arm64/kvm/reset.c   | 11 +++++++++++
+>>  include/uapi/linux/kvm.h |  1 +
+>>  2 files changed, 12 insertions(+)
+>>
+>> diff --git a/arch/arm64/kvm/reset.c b/arch/arm64/kvm/reset.c
+>> index d9e9697..1004039 100644
+>> --- a/arch/arm64/kvm/reset.c
+>> +++ b/arch/arm64/kvm/reset.c
+>> @@ -64,6 +64,14 @@ static bool cpu_has_32bit_el1(void)
+>>  	return !!(pfr0 & 0x20);
+>>  }
+>>  
+>> +static bool kvm_arm_support_ras_extension(void)
+>> +{
+>> +	u64 pfr0;
+>> +
+>> +	pfr0 = read_system_reg(SYS_ID_AA64PFR0_EL1);
+>> +	return !!(pfr0 & 0x10000000);
+>> +}
+>> +
+>>  /**
+>>   * kvm_arch_dev_ioctl_check_extension
+>>   *
+>> @@ -87,6 +95,9 @@ int kvm_arch_dev_ioctl_check_extension(struct kvm *kvm, long ext)
+>>  	case KVM_CAP_ARM_PMU_V3:
+>>  		r = kvm_arm_support_pmu_v3();
+>>  		break;
+>> +	case KVM_CAP_ARM_RAS_EXTENSION:
+>> +		r = kvm_arm_support_ras_extension();
+>> +		break;
+> 
+> You need to document this capability and API in
+> Documentation/virtual/kvm/api.txt and explain how this works.
+  Ok, thanks for your suggestion.
 
-> +	if (cpus_have_cap(ARM64_HAS_RAS_EXTN) &&
-> +			(vcpu->arch.hcr_el2 & HCR_VSE))
-> +		write_sysreg_s(vcpu->arch.fault.vsesr_el2, VSESR_EL2);
-> +
->  	/* Trap on AArch32 cp15 c15 accesses (EL1 or EL0) */
->  	write_sysreg(1 << 15, hstr_el2);
->  	/*
-> @@ -139,9 +146,15 @@ static void __hyp_text __deactivate_traps(struct kvm_vcpu *vcpu)
->  	 * the crucial bit is "On taking a vSError interrupt,
->  	 * HCR_EL2.VSE is cleared to 0."
->  	 */
-> -	if (vcpu->arch.hcr_el2 & HCR_VSE)
-> +	if (vcpu->arch.hcr_el2 & HCR_VSE) {
->  		vcpu->arch.hcr_el2 = read_sysreg(hcr_el2);
->  
-> +		if (cpus_have_cap(ARM64_HAS_RAS_EXTN)) {
-> +			/* set vsesr_el2[24:0] with esr_el2[24:0] */
-> +			kvm_vcpu_set_vsesr(vcpu, read_sysreg_el2(esr)
-> +					& VSESR_ELx_IDS_ISS_MASK);
-> +		}
-> +	}
->  	__deactivate_traps_arch()();
->  	write_sysreg(0, hstr_el2);
->  	write_sysreg(0, pmuserenr_el0);
-> diff --git a/include/uapi/linux/kvm.h b/include/uapi/linux/kvm.h
-> index 27fe556..bb02909 100644
-> --- a/include/uapi/linux/kvm.h
-> +++ b/include/uapi/linux/kvm.h
-> @@ -360,6 +360,11 @@ struct kvm_run {
->  		struct {
->  			__u8 vector;
->  		} eoi;
-> +		/* KVM_EXIT_INTR */
-> +		struct {
-> +			__u32 syndrome_info;
-> +			__u64 address;
-> +		} intr;
-
-definitely, not.  KVM_EXIT_INTR is a generic exit code to tell userspace
-that we exited because we needed to deliver a signal or something else
-related to an asynchronous event.  This implies that the syndrome_info
-etc. always has valid values on all architectures when exiting with
-KVM_EXIT_INTR.
-
-Either document the behavior as the syndrome_info has side-channel
-information on every exit, or on some KVM_EXIT_INTR exits, as we explain
-in the KVM_CAP_ARM_USER_IRQ ABI that was just added, or dedicate an
-access code.
-
->  		/* KVM_EXIT_HYPERV */
->  		struct kvm_hyperv_exit hyperv;
->  		/* Fix the size of the union. */
-> -- 
-> 2.10.1
+> 
+> 
+> 
+>>  	case KVM_CAP_SET_GUEST_DEBUG:
+>>  	case KVM_CAP_VCPU_ATTRIBUTES:
+>>  		r = 1;
+>> diff --git a/include/uapi/linux/kvm.h b/include/uapi/linux/kvm.h
+>> index f51d508..27fe556 100644
+>> --- a/include/uapi/linux/kvm.h
+>> +++ b/include/uapi/linux/kvm.h
+>> @@ -883,6 +883,7 @@ struct kvm_ppc_resize_hpt {
+>>  #define KVM_CAP_PPC_MMU_RADIX 134
+>>  #define KVM_CAP_PPC_MMU_HASH_V3 135
+>>  #define KVM_CAP_IMMEDIATE_EXIT 136
+>> +#define KVM_CAP_ARM_RAS_EXTENSION 137
+>>  
+>>  #ifdef KVM_CAP_IRQ_ROUTING
+>>  
+>> -- 
+>> 2.10.1
+>>
+> 
+> Thanks,
+> -Christoffer
+> 
+> .
 > 
 
-I'll look at the details of such patches once the ABI is clear and
-well-documented.
-
-Thanks,
--Christoffer
-_______________________________________________
-kvmarm mailing list
-kvmarm@lists.cs.columbia.edu
-https://lists.cs.columbia.edu/mailman/listinfo/kvmarm

@@ -1,64 +1,68 @@
-Received: by 10.25.0.198 with SMTP id 189csp184078lfa;
-        Wed, 3 May 2017 09:35:56 -0700 (PDT)
-X-Received: by 10.55.141.67 with SMTP id p64mr3640686qkd.195.1493829356527;
-        Wed, 03 May 2017 09:35:56 -0700 (PDT)
+Received: by 10.25.0.198 with SMTP id 189csp185580lfa;
+        Wed, 3 May 2017 09:39:30 -0700 (PDT)
+X-Received: by 10.55.215.145 with SMTP id t17mr4183740qkt.78.1493829570438;
+        Wed, 03 May 2017 09:39:30 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id e123si2179257qkc.327.2017.05.03.09.35.55
+        by mx.google.com with ESMTPS id c81si1067754qke.174.2017.05.03.09.39.29
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 03 May 2017 09:35:56 -0700 (PDT)
+        Wed, 03 May 2017 09:39:30 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:37813 helo=lists.gnu.org)
+Received: from localhost ([::1]:37821 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1d5xFp-00019e-U6
-	for alex.bennee@linaro.org; Wed, 03 May 2017 12:35:53 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:47981)
+	id 1d5xJH-0002PK-MX
+	for alex.bennee@linaro.org; Wed, 03 May 2017 12:39:27 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:48895)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <ehabkost@redhat.com>) id 1d5xFm-00019X-0N
-	for qemu-arm@nongnu.org; Wed, 03 May 2017 12:35:51 -0400
+	(envelope-from <eblake@redhat.com>) id 1d5xJ9-0002Jy-8f
+	for qemu-arm@nongnu.org; Wed, 03 May 2017 12:39:20 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <ehabkost@redhat.com>) id 1d5xFi-00007J-SR
-	for qemu-arm@nongnu.org; Wed, 03 May 2017 12:35:50 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:42108)
+	(envelope-from <eblake@redhat.com>) id 1d5xJ6-0001vO-5z
+	for qemu-arm@nongnu.org; Wed, 03 May 2017 12:39:19 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:47284)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <ehabkost@redhat.com>)
-	id 1d5xFi-000064-HR; Wed, 03 May 2017 12:35:46 -0400
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
-	[10.5.11.16])
+	(Exim 4.71) (envelope-from <eblake@redhat.com>)
+	id 1d5xJ5-0001vD-Sm; Wed, 03 May 2017 12:39:16 -0400
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
+	[10.5.11.11])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 63773C04B946;
-	Wed,  3 May 2017 16:35:45 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 63773C04B946
-Authentication-Results: ext-mx07.extmail.prod.ext.phx2.redhat.com;
+	by mx1.redhat.com (Postfix) with ESMTPS id BE291804E4;
+	Wed,  3 May 2017 16:39:14 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com BE291804E4
+Authentication-Results: ext-mx03.extmail.prod.ext.phx2.redhat.com;
 	dmarc=none (p=none dis=none) header.from=redhat.com
-Authentication-Results: ext-mx07.extmail.prod.ext.phx2.redhat.com;
-	spf=pass smtp.mailfrom=ehabkost@redhat.com
-DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com 63773C04B946
-Received: from localhost (ovpn-116-4.gru2.redhat.com [10.97.116.4])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id B68B674AA8;
-	Wed,  3 May 2017 16:35:44 +0000 (UTC)
-Date: Wed, 3 May 2017 13:35:43 -0300
-From: Eduardo Habkost <ehabkost@redhat.com>
-To: Igor Mammedov <imammedo@redhat.com>
-Message-ID: <20170503163543.GR3482@thinpad.lan.raisama.net>
+Authentication-Results: ext-mx03.extmail.prod.ext.phx2.redhat.com;
+	spf=pass smtp.mailfrom=eblake@redhat.com
+DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com BE291804E4
+Received: from [10.10.122.206] (ovpn-122-206.rdu2.redhat.com [10.10.122.206])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 677567EA23;
+	Wed,  3 May 2017 16:39:11 +0000 (UTC)
+To: Eduardo Habkost <ehabkost@redhat.com>, Igor Mammedov <imammedo@redhat.com>
 References: <1493816238-33120-1-git-send-email-imammedo@redhat.com>
 	<1493816238-33120-24-git-send-email-imammedo@redhat.com>
+	<20170503163543.GR3482@thinpad.lan.raisama.net>
+From: Eric Blake <eblake@redhat.com>
+Openpgp: url=http://people.redhat.com/eblake/eblake.gpg
+Organization: Red Hat, Inc.
+Message-ID: <5f71cfda-2a73-77e3-0bf7-85e2aed53811@redhat.com>
+Date: Wed, 3 May 2017 11:39:10 -0500
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <1493816238-33120-24-git-send-email-imammedo@redhat.com>
-X-Fnord: you can see the fnord
-User-Agent: Mutt/1.8.0 (2017-02-23)
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
+In-Reply-To: <20170503163543.GR3482@thinpad.lan.raisama.net>
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature";
+	boundary="lhfCCggt5jSkqBv6uUkQLmEV9JVLJumRN"
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.31]);
-	Wed, 03 May 2017 16:35:45 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.27]);
+	Wed, 03 May 2017 16:39:15 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 209.132.183.28
@@ -79,113 +83,83 @@ Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jones <drjones@redhat.com>,
 	qemu-devel@nongnu.org, Michael Roth <mdroth@linux.vnet.ibm.com>,
 	qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
 	Shannon Zhao <zhaoshenglong@huawei.com>,
-	Paolo Bonzini <pbonzini@redhat.com>, Eric Blake <eblake@redhat.com>,
+	Paolo Bonzini <pbonzini@redhat.com>,
 	David Gibson <david@gibson.dropbear.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: D5/Bt9onrMOY
+X-TUID: 4k9lez/OfKZF
 
-On Wed, May 03, 2017 at 02:57:17PM +0200, Igor Mammedov wrote:
-[...]
-> diff --git a/numa.c b/numa.c
-> index 40e9f44..61521f5 100644
-> --- a/numa.c
-> +++ b/numa.c
-> @@ -227,6 +227,7 @@ static int parse_numa(void *opaque, QemuOpts *opts, Error **errp)
->      NumaOptions *object = NULL;
->      MachineState *ms = opaque;
->      Error *err = NULL;
-> +    CpuInstanceProperties cpu;
->  
->      {
->          Visitor *v = opts_visitor_new(opts);
-> @@ -246,6 +247,30 @@ static int parse_numa(void *opaque, QemuOpts *opts, Error **errp)
->          }
->          nb_numa_nodes++;
->          break;
-> +    case NUMA_OPTIONS_TYPE_CPU:
-> +        if (!object->u.cpu.has_node_id) {
-> +            error_setg(&err, "Missing mandatory node-id property");
-> +            goto end;
-> +        }
-> +        if (!numa_info[object->u.cpu.node_id].present) {
-> +            error_setg(&err, "Invalid node-id=%" PRId64 ", NUMA node must be "
-> +                "defined with -numa node,nodeid=ID before it's used with "
-> +                "-numa cpu,node-id=ID", object->u.cpu.node_id);
-> +            goto end;
-> +        }
-> +
-> +        memset(&cpu, 0, sizeof(cpu));
-> +        cpu.has_node_id = object->u.cpu.has_node_id;
-> +        cpu.node_id = object->u.cpu.node_id;
-> +        cpu.has_socket_id = object->u.cpu.has_socket_id;
-> +        cpu.socket_id = object->u.cpu.socket_id;
-> +        cpu.has_core_id = object->u.cpu.has_core_id;
-> +        cpu.core_id = object->u.cpu.core_id;
-> +        cpu.has_thread_id = object->u.cpu.has_thread_id;
-> +        cpu.thread_id = object->u.cpu.thread_id;
+This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
+--lhfCCggt5jSkqBv6uUkQLmEV9JVLJumRN
+Content-Type: multipart/mixed; boundary="imIfilwcucljLASlM5vdJeX2rQX4UPhDn";
+ protected-headers="v1"
+From: Eric Blake <eblake@redhat.com>
+To: Eduardo Habkost <ehabkost@redhat.com>, Igor Mammedov <imammedo@redhat.com>
+Cc: qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
+ Andrew Jones <drjones@redhat.com>, David Gibson
+ <david@gibson.dropbear.id.au>, Paolo Bonzini <pbonzini@redhat.com>,
+ Shannon Zhao <zhaoshenglong@huawei.com>, qemu-arm@nongnu.org,
+ qemu-ppc@nongnu.org, Michael Roth <mdroth@linux.vnet.ibm.com>
+Message-ID: <5f71cfda-2a73-77e3-0bf7-85e2aed53811@redhat.com>
+Subject: Re: [PATCH v2 23/24] numa: add '-numa cpu,...' option for property
+ based node mapping
+References: <1493816238-33120-1-git-send-email-imammedo@redhat.com>
+ <1493816238-33120-24-git-send-email-imammedo@redhat.com>
+ <20170503163543.GR3482@thinpad.lan.raisama.net>
+In-Reply-To: <20170503163543.GR3482@thinpad.lan.raisama.net>
 
-We don't have a way to avoid copying each field individually?
-Some visitor trick, maybe?
+--imIfilwcucljLASlM5vdJeX2rQX4UPhDn
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: quoted-printable
 
-Eric, Markus, Michael, do you have any suggestions?
+On 05/03/2017 11:35 AM, Eduardo Habkost wrote:
 
-> +
-> +        machine_set_cpu_numa_node(ms, &cpu, &err);
-> +        break;
->      default:
->          abort();
->      }
-> diff --git a/qapi-schema.json b/qapi-schema.json
-> index 76d137d..5baf3a4 100644
-> --- a/qapi-schema.json
-> +++ b/qapi-schema.json
-> @@ -5680,10 +5680,12 @@
->  ##
->  # @NumaOptionsType:
->  #
-> +# @cpu: property based CPU(s) to node mapping (Since: 2.10)
-> +#
->  # Since: 2.1
->  ##
->  { 'enum': 'NumaOptionsType',
-> -  'data': [ 'node' ] }
-> +  'data': [ 'node', 'cpu' ] }
->  
->  ##
->  # @NumaOptions:
-> @@ -5696,7 +5698,8 @@
->    'base': { 'type': 'NumaOptionsType' },
->    'discriminator': 'type',
->    'data': {
-> -    'node': 'NumaNodeOptions' }}
-> +    'node': 'NumaNodeOptions',
-> +    'cpu': 'NumaCpuOptions' }}
->  
->  ##
->  # @NumaNodeOptions:
-> @@ -5725,6 +5728,20 @@
->     '*memdev': 'str' }}
->  
->  ##
-> +# @NumaCpuOptions:
-> +#
-> +# Option "-numa cpu" overrides default cpu to node mapping.
-> +# It accepts the same set of cpu properties as returned by
-> +# query-hotpluggable-cpus[].props, where node-id could be used to
-> +# override default node mapping.
-> +#
-> +# Since: 2.10
-> +##
-> +{ 'struct': 'NumaCpuOptions',
-> +   'base': 'CpuInstanceProperties',
-> +   'data' : {} }
-> +
-> +##
->  # @HostMemPolicy:
->  #
->  # Host memory policy types
-[...]
+>> +
+>> +        memset(&cpu, 0, sizeof(cpu));
+>> +        cpu.has_node_id =3D object->u.cpu.has_node_id;
+>> +        cpu.node_id =3D object->u.cpu.node_id;
+>> +        cpu.has_socket_id =3D object->u.cpu.has_socket_id;
+>> +        cpu.socket_id =3D object->u.cpu.socket_id;
+>> +        cpu.has_core_id =3D object->u.cpu.has_core_id;
+>> +        cpu.core_id =3D object->u.cpu.core_id;
+>> +        cpu.has_thread_id =3D object->u.cpu.has_thread_id;
+>> +        cpu.thread_id =3D object->u.cpu.thread_id;
+>=20
+> We don't have a way to avoid copying each field individually?
+> Some visitor trick, maybe?
+>=20
+> Eric, Markus, Michael, do you have any suggestions?
 
--- 
-Eduardo
+Markus just added QAPI_CLONE_MEMBERS(), which sounds like what you want:
+
+https://lists.gnu.org/archive/html/qemu-devel/2017-04/msg04867.html
+
+--=20
+Eric Blake, Principal Software Engineer
+Red Hat, Inc.           +1-919-301-3266
+Virtualization:  qemu.org | libvirt.org
+
+
+--imIfilwcucljLASlM5vdJeX2rQX4UPhDn--
+
+--lhfCCggt5jSkqBv6uUkQLmEV9JVLJumRN
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: OpenPGP digital signature
+Content-Disposition: attachment; filename="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v2
+Comment: Public key at http://people.redhat.com/eblake/eblake.gpg
+Comment: Using GnuPG with Thunderbird - http://www.enigmail.net/
+
+iQEcBAEBCAAGBQJZCgeuAAoJEKeha0olJ0NqJfIIAKao90LOyCfH9uPw+ovOQ47U
+liLX8Hjs42ox2oZg348a8TN3xPpO1cXnjE7e7n6toCZAcm4nUFUf4ThUL4xdrFd3
+qD6rujsM678A7mnnKvFBWh3gGLmxnNVz1Fm2But0S9BxQzvBycoZrg5S39YbMOZ8
+c4IrtOtwf+jGr/gW2cNqt7MIIJbU4ELdSy1mmoVBHOM8C/jHooXGHZ+TppMFOebA
+A2nu8uoyDM3+6ELS00tvx10rReaCLt0RwH1PKMJzJK5DyWwP0I4Wbg/F1ZJi3uJ2
+I6E7yb53a9bO+GATGWTGrw6baVRtpl9cHwqyWTkKHrlzHfBxa6XscN5cmd8dUxk=
+=d6MN
+-----END PGP SIGNATURE-----
+
+--lhfCCggt5jSkqBv6uUkQLmEV9JVLJumRN--

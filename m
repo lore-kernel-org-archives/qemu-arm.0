@@ -1,160 +1,527 @@
-Received: by 10.25.0.198 with SMTP id 189csp368803lfa;
-        Tue, 2 May 2017 08:42:35 -0700 (PDT)
-X-Received: by 10.98.38.197 with SMTP id m188mr18375565pfm.175.1493739754908;
-        Tue, 02 May 2017 08:42:34 -0700 (PDT)
-Return-Path: <kvm-owner@vger.kernel.org>
-Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
-        by mx.google.com with ESMTP id v19si17909443pfl.130.2017.05.02.08.42.34;
-        Tue, 02 May 2017 08:42:34 -0700 (PDT)
-Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
+Received: by 10.25.0.198 with SMTP id 189csp329004lfa;
+        Wed, 3 May 2017 16:33:27 -0700 (PDT)
+X-Received: by 10.55.7.138 with SMTP id 132mr5044723qkh.274.1493854407118;
+        Wed, 03 May 2017 16:33:27 -0700 (PDT)
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
+        by mx.google.com with ESMTPS id i46si415203qta.64.2017.05.03.16.33.26
+        for <alex.bennee@linaro.org>
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Wed, 03 May 2017 16:33:27 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
-Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S1750795AbdEBPmc (ORCPT <rfc822;francois.ozog@linaro.org>
-        + 6 others); Tue, 2 May 2017 11:42:32 -0400
-Received: from foss.arm.com ([217.140.101.70]:46144 "EHLO foss.arm.com"
-        rhost-flags-OK-OK-OK-OK) by vger.kernel.org with ESMTP
-        id S1750762AbdEBPmb (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Tue, 2 May 2017 11:42:31 -0400
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.72.51.249])
-        by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 27ADC142F;
-        Tue,  2 May 2017 08:42:31 -0700 (PDT)
-Received: from [10.1.207.55] (melchizedek.cambridge.arm.com [10.1.207.55])
-        by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 753633F41F;
-        Tue,  2 May 2017 08:42:27 -0700 (PDT)
-Message-ID: <5908A8C5.2020407@arm.com>
-Date:   Tue, 02 May 2017 16:41:57 +0100
-From:   James Morse <james.morse@arm.com>
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:31.0) Gecko/20100101 Icedove/31.6.0
+       dkim=fail header.i=@gmail.com;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:39052 helo=lists.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1d63ls-0001iJ-6c
+	for alex.bennee@linaro.org; Wed, 03 May 2017 19:33:24 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:35941)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <alistair23@gmail.com>) id 1d63ll-0001fI-9S
+	for qemu-arm@nongnu.org; Wed, 03 May 2017 19:33:19 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+	(envelope-from <alistair23@gmail.com>) id 1d63lj-000706-9V
+	for qemu-arm@nongnu.org; Wed, 03 May 2017 19:33:17 -0400
+Received: from mail-io0-x243.google.com ([2607:f8b0:4001:c06::243]:34914)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <alistair23@gmail.com>)
+	id 1d63le-0006tP-M4; Wed, 03 May 2017 19:33:10 -0400
+Received: by mail-io0-x243.google.com with SMTP id v34so5856834iov.2;
+	Wed, 03 May 2017 16:33:09 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=ZaFrDZlP5VALxbPzPTxiRA2hi23atR++CzukoTLHLHk=;
+	b=PFxGs0hHcADERvc0iybpI39jzLzoFWJ5fP076XoQlKWLqTpUqe6nnj8C3ZrRPsLxbW
+	FSHmJAzuYmWbNievwtS+bWZ2Vd0V8syGCAqoSyW6KQvlHqpgWq2qT7L1Q9JqLr825Ioe
+	6ALocM35dsV7JZwRthVuT5bEv95818HK0fKj0rntKgVIuHLzBMOQQMiFKVCccK4XoAJa
+	KU7nBl0Sw4+Aj7qhr1/fltii6yPQGP4TgQ9/0YB8UhlHZQ7lbHuozPRDjCuceiqO8Icq
+	qH49ifqYneSUBkzaVmYVzQtqx9XBCc1FmdQ6BzF+4vmOotNoMZ9LBB6tAauD82yNesN3
+	qt7w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=ZaFrDZlP5VALxbPzPTxiRA2hi23atR++CzukoTLHLHk=;
+	b=Rs4QJQ2BY09HaOgxA2eLR79ItNvvtktDqdPPQAkrZJV4kKQnQ7aARnDC8xA5rbyf2c
+	00HfX1FGuOr0GmeRrFZ/eRmYBrjQ8Eg+lkyxHeY48qxyQlk7eGf+JYUEi2FmmUh4dbjB
+	zg7DIA42Qa6GeH6PHj1Jfp/wQIRViWmKTt2/FktrmootTujLytFSSISglbaz10tA7+Pl
+	z2/+Y+hP8mt40NOE773pRDqeMvW44TDjFttq+FHfQcVbxLI84PM1OKlvbsu+WngK689G
+	eYMO9qJglQlDHyItaA9v12nyFZg39Ml4K6hcVbvyf7evGQq+hZUdTWkWiVehAmjbQAxH
+	RFcQ==
+X-Gm-Message-State: AN3rC/7/Yz7jDrEfdz00eYup0Aj14h/qFFWogz0DLTNqTfIBax/J8OmN
+	AKyrNktnzy8J01mOd8mvNzzoUEA7Mg==
+X-Received: by 10.157.23.14 with SMTP id i14mr14240019ota.126.1493854388124;
+	Wed, 03 May 2017 16:33:08 -0700 (PDT)
 MIME-Version: 1.0
-To:     Dongjiu Geng <gengdongjiu@huawei.com>
-CC:     marc.zyngier@arm.com, christoffer.dall@linaro.org,
-        rkrcmar@redhat.com, linux@armlinux.org.uk, tbaicar@codeaurora.org,
-        imammedo@redhat.com, zhaoshenglong@huawei.com,
-        peter.maydell@linaro.org, pbonzini@redhat.com,
-        qemu-devel@nongnu.org, qemu-arm@nongnu.org, lersek@redhat.com,
-        ard.biesheuvel@linaro.org, mtsirkin@redhat.com, drjones@redhat.com,
-        ben@skyportsystems.com, kvm@vger.kernel.org,
-        linux-arm-kernel@lists.infradead.org, kvmarm@lists.cs.columbia.edu,
-        xiexiuqi@huawei.com, wangxiongfeng2@huawei.com,
-        songwenjun@huawei.com, wuquanming@huawei.com,
-        huangshaoyu@huawei.com
-Subject: Re: [PATCH v3 3/3] arm/arm64: signal SIBGUS and inject SEA Error
-References: <1493530677-4919-1-git-send-email-gengdongjiu@huawei.com> <1493530677-4919-3-git-send-email-gengdongjiu@huawei.com>
-In-Reply-To: <1493530677-4919-3-git-send-email-gengdongjiu@huawei.com>
-Content-Type: text/plain; charset=windows-1252
-Content-Transfer-Encoding: 7bit
-Sender: kvm-owner@vger.kernel.org
-Precedence: bulk
-List-ID: <kvm.vger.kernel.org>
-X-Mailing-List: kvm@vger.kernel.org
-X-TUID: VVglkeG2ay9W
+Received: by 10.182.72.162 with HTTP; Wed, 3 May 2017 16:32:37 -0700 (PDT)
+In-Reply-To: <CALHRZupcBZ5ArNKW86z=7O4NakRt_LZki6HrdDdS2O6qQ7SbpQ@mail.gmail.com>
+References: <1493398313-6673-1-git-send-email-sundeep.lkml@gmail.com>
+	<1493398313-6673-2-git-send-email-sundeep.lkml@gmail.com>
+	<CAKmqyKNMHdsf1rra0eJK_XTb_i5F6EA677WGFqsMfWMK6385NA@mail.gmail.com>
+	<CALHRZupcBZ5ArNKW86z=7O4NakRt_LZki6HrdDdS2O6qQ7SbpQ@mail.gmail.com>
+From: Alistair Francis <alistair23@gmail.com>
+Date: Wed, 3 May 2017 16:32:37 -0700
+Message-ID: <CAKmqyKOGzAkkYyxOybRqTJ6WSCE+=oZFMUWjMztVhxe3Aq+CHA@mail.gmail.com>
+To: sundeep subbaraya <sundeep.lkml@gmail.com>
+Content-Type: text/plain; charset=UTF-8
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:4001:c06::243
+Subject: Re: [Qemu-arm] [Qemu-devel RFC v3 1/5] msf2: Add Smartfusion2
+ System timer
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.21
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm <qemu-arm@nongnu.org>,
+	"qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: Grb/LbntteYF
 
-Hi Dongjiu Geng,
+On Tue, May 2, 2017 at 10:11 PM, sundeep subbaraya
+<sundeep.lkml@gmail.com> wrote:
+> Hi Alistair,
+>
+> On Wed, May 3, 2017 at 3:25 AM, Alistair Francis <alistair23@gmail.com> wrote:
+>> On Fri, Apr 28, 2017 at 9:51 AM, Subbaraya Sundeep
+>> <sundeep.lkml@gmail.com> wrote:
+>>> Modelled System Timer in Microsemi's Smartfusion2 Soc.
+>>> Timer has two 32bit down counters and two interrupts.
+>>>
+>>> Signed-off-by: Subbaraya Sundeep <sundeep.lkml@gmail.com>
+>>> ---
+>>>  hw/timer/Makefile.objs        |   1 +
+>>>  hw/timer/msf2_timer.c         | 250 ++++++++++++++++++++++++++++++++++++++++++
+>>>  include/hw/timer/msf2_timer.h |  82 ++++++++++++++
+>>>  3 files changed, 333 insertions(+)
+>>>  create mode 100644 hw/timer/msf2_timer.c
+>>>  create mode 100644 include/hw/timer/msf2_timer.h
+>>>
+>>> diff --git a/hw/timer/Makefile.objs b/hw/timer/Makefile.objs
+>>> index dd6f27e..0bdf1e1 100644
+>>> --- a/hw/timer/Makefile.objs
+>>> +++ b/hw/timer/Makefile.objs
+>>> @@ -41,3 +41,4 @@ common-obj-$(CONFIG_STM32F2XX_TIMER) += stm32f2xx_timer.o
+>>>  common-obj-$(CONFIG_ASPEED_SOC) += aspeed_timer.o
+>>>
+>>>  common-obj-$(CONFIG_SUN4V_RTC) += sun4v-rtc.o
+>>> +common-obj-$(CONFIG_MSF2) += msf2_timer.o
+>>> diff --git a/hw/timer/msf2_timer.c b/hw/timer/msf2_timer.c
+>>> new file mode 100644
+>>> index 0000000..d1dbde5
+>>> --- /dev/null
+>>> +++ b/hw/timer/msf2_timer.c
+>>
+>> Hey Sundeep,
+>>
+>> File names should use '-' instead of '_'.
+>
+> Ok will change.
+>>
+>>> @@ -0,0 +1,250 @@
+>>> +/*
+>>> + * Timer block model of Microsemi SmartFusion2.
+>>> + *
+>>> + * Copyright (c) 2017 Subbaraya Sundeep <sundeep.lkml@gmail.com>.
+>>> + *
+>>> + * Permission is hereby granted, free of charge, to any person obtaining a copy
+>>> + * of this software and associated documentation files (the "Software"), to deal
+>>> + * in the Software without restriction, including without limitation the rights
+>>> + * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+>>> + * copies of the Software, and to permit persons to whom the Software is
+>>> + * furnished to do so, subject to the following conditions:
+>>> + *
+>>> + * The above copyright notice and this permission notice shall be included in
+>>> + * all copies or substantial portions of the Software.
+>>> + *
+>>> + * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+>>> + * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+>>> + * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+>>> + * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+>>> + * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+>>> + * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+>>> + * THE SOFTWARE.
+>>> + */
+>>> +
+>>> +#include "qemu/osdep.h"
+>>> +#include "hw/timer/msf2_timer.h"
+>>> +#include "hw/sysbus.h"
+>>> +#include "qemu/log.h"
+>>> +#include "qemu/main-loop.h"
+>>
+>> Do you need to include the main-loop.h? This doesn't look right.
+>>
+> Ok I will remove it.
+>
+>>> +
+>>> +#ifndef MSF2_TIMER_ERR_DEBUG
+>>> +#define MSF2_TIMER_ERR_DEBUG  0
+>>> +#endif
+>>> +
+>>> +#define DB_PRINT_L(lvl, fmt, args...) do { \
+>>> +    if (MSF2_TIMER_ERR_DEBUG >= lvl) { \
+>>> +        qemu_log("%s: " fmt, __func__, ## args); \
+>>> +    } \
+>>> +} while (0);
+>>> +
+>>> +#define DB_PRINT(fmt, args...) DB_PRINT_L(1, fmt, ## args)
+>>> +
+>>> +static void timer_update_irq(struct Msf2Timer *st)
+>>> +{
+>>> +    bool isr, ier;
+>>> +
+>>> +    isr = !!(st->regs[R_TIM_RIS] & TIMER_RIS_ACK);
+>>> +    ier = !!(st->regs[R_TIM_CTRL] & TIMER_CTRL_INTR);
+>>> +
+>>> +    qemu_set_irq(st->irq, (ier && isr));
+>>> +}
+>>> +
+>>> +static void timer_update(struct Msf2Timer *st)
+>>> +{
+>>> +    uint64_t count;
+>>> +
+>>> +    DB_PRINT("timer=%d\n", st->nr);
+>>
+>> Maybe make this a little more explict. Something like "Updating timer: %d"?
+>>
+> Yeah will change that.
+>>> +
+>>> +    if (!(st->regs[R_TIM_CTRL] & TIMER_CTRL_ENBL)) {
+>>> +        ptimer_stop(st->ptimer);
+>>> +        return;
+>>> +    }
+>>> +
+>>> +    count = st->regs[R_TIM_LOADVAL];
+>>> +    ptimer_set_limit(st->ptimer, count, 1);
+>>> +    ptimer_run(st->ptimer, 1);
+>>> +}
+>>> +
+>>> +static uint64_t
+>>> +timer_read(void *opaque, hwaddr addr, unsigned int size)
+>>> +{
+>>> +    MSF2TimerState *t = opaque;
+>>> +    struct Msf2Timer *st;
+>>> +    uint32_t r = 0;
+>>
+>> Call the ret instead of r and it should be a uint64_t.
+>>
+> I will change to ret. I guess uint32_t is fine because same is used
+> for returning values in 32 bit registers.
+>
+>>> +    unsigned int timer = 0;
+>>
+>> Isn't the timer normally an int? Try to use the same type throughout the code.
+>>
+> Ok will use int.
+>
+>>> +    int isr;
+>>> +    int ier;
+>>> +
+>>> +    addr >>= 2;
+>>> +    /*
+>>> +     * Two independent timers has same base address.
+>>> +     * Based on addr passed figure out which timer is being used.
+>>> +     */
+>>> +    if (addr >= R_TIM1_MAX) {
+>>> +        timer = 1;
+>>> +        addr -= R_TIM1_MAX;
+>>> +    }
+>>> +
+>>> +    st = &t->timers[timer];
+>>> +
+>>> +    switch (addr) {
+>>> +    case R_TIM_VAL:
+>>> +        r = ptimer_get_count(st->ptimer);
+>>> +        DB_PRINT("msf2_timer t=%d read counter=%x\n", timer, r);
+>>
+>> Put a 0x in front of hex values.
+>>
+> Ok
+>> Also %x isn't the correct type for uint64_t, it's something similar to PRIx.
+>>
+> Yeah build test reported these errors. I will fix them.
+>
+>>> +        break;
+>>> +
+>>> +    case R_TIM_MIS:
+>>> +        isr = !!(st->regs[R_TIM_RIS] & TIMER_RIS_ACK);
+>>> +        ier = !!(st->regs[R_TIM_CTRL] & TIMER_CTRL_INTR);
+>>> +        r = ier && isr;
+>>
+>> This should be a bitwise AND.
+>>
+> Ok
+>>> +        break;
+>>> +
+>>> +    default:
+>>> +        if (addr < ARRAY_SIZE(st->regs)) {
+>>> +            r = st->regs[addr];
+>>> +        }
+>>
+>> If the write is outside the array you should print a guest error.
+>>
+> Ok
+>>> +        break;
+>>> +    }
+>>> +    DB_PRINT("timer=%d %lu=%x\n", timer, addr * 4, r);
+>>> +    return r;
+>>> +}
+>>> +
+>>> +static void
+>>> +timer_write(void *opaque, hwaddr addr,
+>>> +            uint64_t val64, unsigned int size)
+>>> +{
+>>> +    MSF2TimerState *t = opaque;
+>>> +    struct Msf2Timer *st;
+>>> +    unsigned int timer = 0;
+>>> +    uint32_t value = val64;
+>>> +
+>>> +    addr >>= 2;
+>>> +    /*
+>>> +     * Two independent timers has same base address.
+>>> +     * Based on addr passed figure out which timer is being used.
+>>> +     */
+>>> +    if (addr >= R_TIM1_MAX) {
+>>> +        timer = 1;
+>>> +        addr -= R_TIM1_MAX;
+>>> +    }
+>>> +
+>>> +    st = &t->timers[timer];
+>>> +
+>>> +    DB_PRINT("addr=%lu val=%x (timer=%d)\n", addr * 4, value, timer);
+>>> +
+>>> +    switch (addr) {
+>>> +    case R_TIM_CTRL:
+>>> +        st->regs[R_TIM_CTRL] = value;
+>>> +        timer_update(st);
+>>> +        break;
+>>> +
+>>> +    case R_TIM_RIS:
+>>> +        if (value & TIMER_RIS_ACK) {
+>>> +            st->regs[R_TIM_RIS] &= ~TIMER_RIS_ACK;
+>>> +        }
+>>> +        break;
+>>> +
+>>> +    case R_TIM_LOADVAL:
+>>> +        st->regs[R_TIM_LOADVAL] = value;
+>>> +        if (st->regs[R_TIM_CTRL] & TIMER_CTRL_ENBL) {
+>>> +            timer_update(st);
+>>> +        }
+>>> +        break;
+>>> +
+>>> +    case R_TIM_BGLOADVAL:
+>>> +        st->regs[R_TIM_BGLOADVAL] = value;
+>>> +        st->regs[R_TIM_LOADVAL] = value;
+>>> +        break;
+>>> +
+>>> +    case R_TIM_VAL:
+>>> +    case R_TIM_MIS:
+>>> +        break;
+>>> +
+>>> +    case R_TIM_MODE:
+>>> +        if (value & TIMER_MODE) {
+>>> +            DB_PRINT("64-bit mode not supported\n");
+>>
+>> There is an unimp mask for qemu_log() which you should use here.
+>>
+> I see. I will change it.
+>>> +        }
+>>> +        break;
+>>> +
+>>> +    default:
+>>> +        if (addr < ARRAY_SIZE(st->regs)) {
+>>> +            st->regs[addr] = value;
+>>> +        }
+>>> +        break;
+>>> +    }
+>>> +    timer_update_irq(st);
+>>> +}
+>>> +
+>>> +static const MemoryRegionOps timer_ops = {
+>>> +    .read = timer_read,
+>>> +    .write = timer_write,
+>>> +    .endianness = DEVICE_NATIVE_ENDIAN,
+>>> +    .valid = {
+>>> +        .min_access_size = 4,
+>>> +        .max_access_size = 4
+>>> +    }
+>>> +};
+>>> +
+>>> +static void timer_hit(void *opaque)
+>>> +{
+>>> +    struct Msf2Timer *st = opaque;
+>>> +
+>>> +    DB_PRINT("%d\n", st->nr);
+>>
+>> Maybe make this clearer.
+>>
+> Ok
+>>> +    st->regs[R_TIM_RIS] |= TIMER_RIS_ACK;
+>>> +
+>>> +    if (!(st->regs[R_TIM_CTRL] & TIMER_CTRL_ONESHOT)) {
+>>> +        timer_update(st);
+>>> +    }
+>>> +    timer_update_irq(st);
+>>> +}
+>>> +
+>>> +static void msf2_timer_init(Object *obj)
+>>> +{
+>>> +    MSF2TimerState *t = MSF2_TIMER(obj);
+>>> +    unsigned int i;
+>>
+>> int i;
+>>
+> Ok
+>>> +
+>>> +    /* Init all the ptimers.  */
+>>> +    t->timers = g_malloc0((sizeof t->timers[0]) * NUM_TIMERS);
+>>> +    for (i = 0; i < NUM_TIMERS; i++) {
+>>> +        struct Msf2Timer *st = &t->timers[i];
+>>> +
+>>> +        st->nr = i;
+>>> +        st->bh = qemu_bh_new(timer_hit, st);
+>>> +        st->ptimer = ptimer_init(st->bh, PTIMER_POLICY_DEFAULT);
+>>> +        ptimer_set_freq(st->ptimer, t->freq_hz);
+>>> +        sysbus_init_irq(SYS_BUS_DEVICE(obj), &st->irq);
+>>> +    }
+>>> +
+>>> +    memory_region_init_io(&t->mmio, OBJECT(t), &timer_ops, t, TYPE_MSF2_TIMER,
+>>> +                          R_TIM_MAX * 4);
+>>> +    sysbus_init_mmio(SYS_BUS_DEVICE(obj), &t->mmio);
+>>> +}
+>>> +
+>>> +static Property msf2_timer_properties[] = {
+>>> +    DEFINE_PROP_UINT32("clock-frequency", MSF2TimerState, freq_hz,
+>>> +                       83 * 1000000),
+>>
+>> This value should be a macro.
+>>
+> Yes will add in header file.
+>
+>>> +    DEFINE_PROP_END_OF_LIST(),
+>>> +};
+>>> +
+>>> +static void msf2_timer_class_init(ObjectClass *klass, void *data)
+>>> +{
+>>> +    DeviceClass *dc = DEVICE_CLASS(klass);
+>>> +
+>>> +    dc->props = msf2_timer_properties;
+>>> +}
+>>> +
+>>> +static const TypeInfo msf2_timer_info = {
+>>> +    .name          = TYPE_MSF2_TIMER,
+>>> +    .parent        = TYPE_SYS_BUS_DEVICE,
+>>> +    .instance_size = sizeof(MSF2TimerState),
+>>> +    .instance_init = msf2_timer_init,
+>>> +    .class_init    = msf2_timer_class_init,
+>>> +};
+>>> +
+>>> +static void msf2_timer_register_types(void)
+>>> +{
+>>> +    type_register_static(&msf2_timer_info);
+>>> +}
+>>> +
+>>> +type_init(msf2_timer_register_types)
+>>> diff --git a/include/hw/timer/msf2_timer.h b/include/hw/timer/msf2_timer.h
+>>> new file mode 100644
+>>> index 0000000..93d9fb3
+>>> --- /dev/null
+>>> +++ b/include/hw/timer/msf2_timer.h
+>>> @@ -0,0 +1,82 @@
+>>> +/*
+>>> + * Microsemi SmartFusion2 Timer.
+>>> + *
+>>> + * Copyright (c) 2017 Subbaraya Sundeep <sundeep.lkml@gmail.com>
+>>> + *
+>>> + * Permission is hereby granted, free of charge, to any person obtaining a copy
+>>> + * of this software and associated documentation files (the "Software"), to deal
+>>> + * in the Software without restriction, including without limitation the rights
+>>> + * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+>>> + * copies of the Software, and to permit persons to whom the Software is
+>>> + * furnished to do so, subject to the following conditions:
+>>> + *
+>>> + * The above copyright notice and this permission notice shall be included in
+>>> + * all copies or substantial portions of the Software.
+>>> + *
+>>> + * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+>>> + * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+>>> + * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+>>> + * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+>>> + * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+>>> + * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+>>> + * THE SOFTWARE.
+>>> + */
+>>> +
+>>> +#ifndef HW_MSF2_TIMER_H
+>>> +#define HW_MSF2_TIMER_H
+>>> +
+>>> +#include "hw/sysbus.h"
+>>> +#include "hw/ptimer.h"
+>>> +#include "sysemu/sysemu.h"
+>>
+>> I think osdep should be included in header files as well.
+>>
+> Ok will add.
+>>> +
+>>> +#define TYPE_MSF2_TIMER     "msf2-timer"
+>>> +#define MSF2_TIMER(obj)     OBJECT_CHECK(MSF2TimerState, \
+>>> +                              (obj), TYPE_MSF2_TIMER)
+>>> +
+>>> +/*
+>>> + * There are two 32-bit down counting timers.
+>>> + * Timers 1 and 2 can be concatenated into a single 64-bit Timer
+>>> + * that operates either in Periodic mode or in One-shot mode.
+>>> + * Writing 1 to the TIM64_MODE register bit 0 sets the Timers in 64-bit mode.
+>>> + * In 64-bit mode, writing to the 32-bit registers has no effect.
+>>> + * Similarly, in 32-bit mode, writing to the 64-bit mode registers
+>>> + * has no effect. Only two 32-bit timers are supported currently.
+>>> + */
+>>> +#define NUM_TIMERS        2
+>>> +
+>>> +#define R_TIM_VAL         0
+>>> +#define R_TIM_LOADVAL     1
+>>> +#define R_TIM_BGLOADVAL   2
+>>> +#define R_TIM_CTRL        3
+>>> +#define R_TIM_RIS         4
+>>> +#define R_TIM_MIS         5
+>>> +#define R_TIM1_MAX        6
+>>> +
+>>> +#define R_TIM_MODE       21
+>>> +#define R_TIM_MAX        22 /* including 64-bit timer registers */
+>>> +
+>>> +#define TIMER_CTRL_ENBL     (1 << 0)
+>>> +#define TIMER_CTRL_ONESHOT  (1 << 1)
+>>> +#define TIMER_CTRL_INTR     (1 << 2)
+>>> +#define TIMER_RIS_ACK       (1 << 0)
+>>> +#define TIMER_RST_CLR       (1 << 6)
+>>> +#define TIMER_MODE          (1 << 0)
+>>> +
+>>> +struct Msf2Timer {
+>>> +    QEMUBH *bh;
+>>> +    ptimer_state *ptimer;
+>>> +    int nr; /* for debug. */
+>>
+>> What is this used for?
+>>
+> Just for debugging which timer is being handled.
 
-On 30/04/17 06:37, Dongjiu Geng wrote:
-> when happen SEA, deliver signal bus and handle the ioctl that
-> inject SEA abort to guest, so that guest can handle the SEA error.
+It's probably best to just pass that information into the function
+instead of having it in the struct.
 
-> diff --git a/arch/arm/kvm/mmu.c b/arch/arm/kvm/mmu.c
-> index 105b6ab..a96594f 100644
-> --- a/arch/arm/kvm/mmu.c
-> +++ b/arch/arm/kvm/mmu.c
-> @@ -20,8 +20,10 @@
-> @@ -1238,6 +1240,36 @@ static void coherent_cache_guest_page(struct kvm_vcpu *vcpu, kvm_pfn_t pfn,
->  	__coherent_cache_guest_page(vcpu, pfn, size);
->  }
->  
-> +static void kvm_send_signal(unsigned long address, bool hugetlb, bool hwpoison)
-> +{
-> +	siginfo_t info;
-> +
-> +	info.si_signo   = SIGBUS;
-> +	info.si_errno   = 0;
-> +	if (hwpoison)
-> +		info.si_code    = BUS_MCEERR_AR;
-> +	else
-> +		info.si_code    = 0;
-> +
-> +	info.si_addr    = (void __user *)address;
-> +	if (hugetlb)
-> +		info.si_addr_lsb = PMD_SHIFT;
-> +	else
-> +		info.si_addr_lsb = PAGE_SHIFT;
-> +
-> +	send_sig_info(SIGBUS, &info, current);
-> +}
-> +
+> Also can you please answer my query on SPI controller model patch.
 
-Punit reviewed the other version of this patch, this PMD_SHIFT is not the right
-thing to do, it needs a more accurate set of calls and shifts as there may be
-hugetlbfs pages other than PMD_SIZE.
-
-https://www.spinics.net/lists/arm-kernel/msg568919.html
-
-I haven't posted a new version of that patch because I was still hunting a bug
-in the hugepage/hwpoison code, even with Punit's fixes series I see -EFAULT
-returned to userspace instead of this hwpoison code being invoked.
-
-Please avoid duplicating functionality between patches, it wastes reviewers
-time, especially when we know there are problems with this approach.
-
-
-> +static void kvm_handle_bad_page(unsigned long address,
-> +					bool hugetlb, bool hwpoison)
-> +{
-> +	/* handle both hwpoison and other synchronous external Abort */
-> +	if (hwpoison)
-> +		kvm_send_signal(address, hugetlb, true);
-> +	else
-> +		kvm_send_signal(address, hugetlb, false);
-> +}
-
-Why the extra level of indirection? We only want to signal userspace like this
-from KVM for hwpoison. Signals for RAS related reasons should come from the bits
-of the kernel that decoded the error.
-
-(hwpoison for KVM is a corner case as Qemu's memory effectively has two users,
-Qemu and KVM. This isn't the example of how user-space gets signalled.)
-
-
-> diff --git a/arch/arm64/kvm/guest.c b/arch/arm64/kvm/guest.c
-> index b37446a..780e3c4 100644
-> --- a/arch/arm64/kvm/guest.c
-> +++ b/arch/arm64/kvm/guest.c
-> @@ -277,6 +277,13 @@ int kvm_arch_vcpu_ioctl_set_sregs(struct kvm_vcpu *vcpu,
->  	return -EINVAL;
->  }
->  
-> +int kvm_vcpu_ioctl_sea(struct kvm_vcpu *vcpu)
-> +{
-> +	kvm_inject_dabt(vcpu, kvm_vcpu_get_hfar(vcpu));
-> +
-> +	return 0;
-> +}
-
-> diff --git a/include/uapi/linux/kvm.h b/include/uapi/linux/kvm.h
-> index bb02909..1d2e2e7 100644
-> --- a/include/uapi/linux/kvm.h
-> +++ b/include/uapi/linux/kvm.h
-> @@ -1306,6 +1306,7 @@ struct kvm_s390_ucas_mapping {
->  #define KVM_S390_GET_IRQ_STATE	  _IOW(KVMIO, 0xb6, struct kvm_s390_irq_state)
->  /* Available with KVM_CAP_X86_SMM */
->  #define KVM_SMI                   _IO(KVMIO,   0xb7)
-> +#define KVM_ARM_SEA               _IO(KVMIO,   0xb8)
->  
->  #define KVM_DEV_ASSIGN_ENABLE_IOMMU	(1 << 0)
->  #define KVM_DEV_ASSIGN_PCI_2_3		(1 << 1)
-> 
-
-Why do we need a userspace API for SEA? It can also be done by using
-KVM_{G,S}ET_ONE_REG to change the vcpu registers. The advantage of doing it this
-way is you can choose which ESR value to use.
-
-Adding a new API call to do something you could do with an old one doesn't look
-right.
-
+Ok, will do.
 
 Thanks,
-
-James
+Alistair

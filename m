@@ -1,64 +1,64 @@
-Received: by 10.25.0.198 with SMTP id 189csp84904lfa;
-        Wed, 3 May 2017 05:58:17 -0700 (PDT)
-X-Received: by 10.55.72.143 with SMTP id v137mr2706626qka.222.1493816297850;
-        Wed, 03 May 2017 05:58:17 -0700 (PDT)
+Received: by 10.25.0.198 with SMTP id 189csp85149lfa;
+        Wed, 3 May 2017 05:58:49 -0700 (PDT)
+X-Received: by 10.200.56.175 with SMTP id f44mr35471339qtc.161.1493816329839;
+        Wed, 03 May 2017 05:58:49 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id 201si1804070qko.98.2017.05.03.05.58.17
+        by mx.google.com with ESMTPS id m20si19701011qta.3.2017.05.03.05.58.49
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 03 May 2017 05:58:17 -0700 (PDT)
+        Wed, 03 May 2017 05:58:49 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:36569 helo=lists.gnu.org)
+Received: from localhost ([::1]:36573 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1d5trF-0008UF-AT
-	for alex.bennee@linaro.org; Wed, 03 May 2017 08:58:17 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:39244)
+	id 1d5trl-0000hP-6G
+	for alex.bennee@linaro.org; Wed, 03 May 2017 08:58:49 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:39169)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <imammedo@redhat.com>) id 1d5tqb-00080f-Dc
-	for qemu-arm@nongnu.org; Wed, 03 May 2017 08:57:38 -0400
+	(envelope-from <imammedo@redhat.com>) id 1d5tqV-0007vY-OM
+	for qemu-arm@nongnu.org; Wed, 03 May 2017 08:57:32 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <imammedo@redhat.com>) id 1d5tqZ-0000bk-DW
-	for qemu-arm@nongnu.org; Wed, 03 May 2017 08:57:37 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:51364)
+	(envelope-from <imammedo@redhat.com>) id 1d5tqU-0000Yv-JE
+	for qemu-arm@nongnu.org; Wed, 03 May 2017 08:57:31 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:52726)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <imammedo@redhat.com>)
-	id 1d5tqZ-0000bK-6i; Wed, 03 May 2017 08:57:35 -0400
+	id 1d5tqU-0000YY-A6; Wed, 03 May 2017 08:57:30 -0400
 Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
 	[10.5.11.15])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 02D888124D;
-	Wed,  3 May 2017 12:57:34 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 02D888124D
-Authentication-Results: ext-mx01.extmail.prod.ext.phx2.redhat.com;
+	by mx1.redhat.com (Postfix) with ESMTPS id 2112F61D0F;
+	Wed,  3 May 2017 12:57:29 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 2112F61D0F
+Authentication-Results: ext-mx10.extmail.prod.ext.phx2.redhat.com;
 	dmarc=none (p=none dis=none) header.from=redhat.com
-Authentication-Results: ext-mx01.extmail.prod.ext.phx2.redhat.com;
+Authentication-Results: ext-mx10.extmail.prod.ext.phx2.redhat.com;
 	spf=pass smtp.mailfrom=imammedo@redhat.com
-DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com 02D888124D
+DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com 2112F61D0F
 Received: from dell-r430-03.lab.eng.brq.redhat.com
 	(dell-r430-03.lab.eng.brq.redhat.com [10.34.112.60])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id D124517C5A;
-	Wed,  3 May 2017 12:57:31 +0000 (UTC)
+	by smtp.corp.redhat.com (Postfix) with ESMTP id F1824182D8;
+	Wed,  3 May 2017 12:57:26 +0000 (UTC)
 From: Igor Mammedov <imammedo@redhat.com>
 To: qemu-devel@nongnu.org
-Date: Wed,  3 May 2017 14:56:58 +0200
-Message-Id: <1493816238-33120-5-git-send-email-imammedo@redhat.com>
+Date: Wed,  3 May 2017 14:56:56 +0200
+Message-Id: <1493816238-33120-3-git-send-email-imammedo@redhat.com>
 In-Reply-To: <1493816238-33120-1-git-send-email-imammedo@redhat.com>
 References: <1493816238-33120-1-git-send-email-imammedo@redhat.com>
 X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.25]);
-	Wed, 03 May 2017 12:57:34 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.39]);
+	Wed, 03 May 2017 12:57:29 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 209.132.183.28
-Subject: [Qemu-arm] [PATCH v2 04/24] hw/arm/virt: explicitly allocate
- cpu_index for cpus
+Subject: [Qemu-arm] [PATCH v2 02/24] hw/arm/virt: extract mp-affinity
+ calculation in separate function
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -77,52 +77,140 @@ Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jones <drjones@redhat.com>,
 	David Gibson <david@gibson.dropbear.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: QAdEG/gB+khT
-
-Currently cpu_index is implicitly auto assigned during
-cpu.realize() time cpu_exec_realizefn()->cpu_list_add().
-
-It happens to match index in possible_cpus so take
-control over it and make board initialize cpu_index
-to possible_cpus index explicitly. It will at least
-document that board is in control of it and when
-'-device cpu' support comes it will keep cpu_index
-stable regardless of order cpus are created so it won't
-break migration.
-Within this series it will be used for internal
-conversion from storing cpu_index based NUMA node
-bitmaps to property based mapping with possible_cpus,
-And will allow map cpu_index to a CPU entry in
-possible_cpus array.
+X-TUID: t/aAnkuGrf6Z
 
 Signed-off-by: Igor Mammedov <imammedo@redhat.com>
-Reviewed-by: Andrew Jones <drjones@redhat.com>
 ---
- hw/arm/virt.c | 4 ++++
- 1 file changed, 4 insertions(+)
+v2:
+ (Drew)
+   - s/virt_idx2mp_affinity/virt_cpu_mp_affinity/
+   - add arm_cpu_mp_affinity() to reduce code duplication
+---
+ target/arm/cpu.h |  2 ++
+ hw/arm/virt.c    | 43 ++++++++++++++++++++++++++-----------------
+ target/arm/cpu.c | 12 +++++++++---
+ 3 files changed, 37 insertions(+), 20 deletions(-)
 
+diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+index 1055bfe..048faed 100644
+--- a/target/arm/cpu.h
++++ b/target/arm/cpu.h
+@@ -710,6 +710,8 @@ static inline ARMCPU *arm_env_get_cpu(CPUARMState *env)
+     return container_of(env, ARMCPU, env);
+ }
+ 
++uint64_t arm_cpu_mp_affinity(int idx, uint8_t clustersz);
++
+ #define ENV_GET_CPU(e) CPU(arm_env_get_cpu(e))
+ 
+ #define ENV_OFFSET offsetof(ARMCPU, env)
 diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index e2c5626..acc748e 100644
+index 5f62a03..61ae437 100644
 --- a/hw/arm/virt.c
 +++ b/hw/arm/virt.c
-@@ -1349,6 +1349,7 @@ static void machvirt_init(MachineState *machine)
-     possible_cpus = mc->possible_cpu_arch_ids(machine);
-     for (n = 0; n < possible_cpus->len; n++) {
-         Object *cpuobj;
-+        CPUState *cs;
+@@ -1194,6 +1194,29 @@ void virt_machine_done(Notifier *notifier, void *data)
+     virt_build_smbios(vms);
+ }
  
-         if (n >= smp_cpus) {
-             break;
-@@ -1358,6 +1359,9 @@ static void machvirt_init(MachineState *machine)
-         object_property_set_int(cpuobj, possible_cpus->cpus[n].arch_id,
-                                 "mp-affinity", NULL);
- 
-+        cs = CPU(cpuobj);
-+        cs->cpu_index = n;
++static uint64_t virt_cpu_mp_affinity(VirtMachineState *vms, int idx)
++{
++    uint8_t clustersz = ARM_DEFAULT_CPUS_PER_CLUSTER;
++    VirtMachineClass *vmc = VIRT_MACHINE_GET_CLASS(vms);
 +
++    if (!vmc->disallow_affinity_adjustment) {
++        /* Adjust MPIDR like 64-bit KVM hosts, which incorporate the
++         * GIC's target-list limitations. 32-bit KVM hosts currently
++         * always create clusters of 4 CPUs, but that is expected to
++         * change when they gain support for gicv3. When KVM is enabled
++         * it will override the changes we make here, therefore our
++         * purposes are to make TCG consistent (with 64-bit KVM hosts)
++         * and to improve SGI efficiency.
++         */
++        if (vms->gic_version == 3) {
++            clustersz = GICV3_TARGETLIST_BITS;
++        } else {
++            clustersz = GIC_TARGETLIST_BITS;
++        }
++    }
++    return arm_cpu_mp_affinity(idx, clustersz);
++}
++
+ static void machvirt_init(MachineState *machine)
+ {
+     VirtMachineState *vms = VIRT_MACHINE(machine);
+@@ -1210,7 +1233,6 @@ static void machvirt_init(MachineState *machine)
+     CPUClass *cc;
+     Error *err = NULL;
+     bool firmware_loaded = bios_name || drive_get(IF_PFLASH, 0, 0);
+-    uint8_t clustersz;
+ 
+     if (!cpu_model) {
+         cpu_model = "cortex-a15";
+@@ -1263,10 +1285,8 @@ static void machvirt_init(MachineState *machine)
+      */
+     if (vms->gic_version == 3) {
+         virt_max_cpus = vms->memmap[VIRT_GIC_REDIST].size / 0x20000;
+-        clustersz = GICV3_TARGETLIST_BITS;
+     } else {
+         virt_max_cpus = GIC_NCPU;
+-        clustersz = GIC_TARGETLIST_BITS;
+     }
+ 
+     if (max_cpus > virt_max_cpus) {
+@@ -1326,20 +1346,9 @@ static void machvirt_init(MachineState *machine)
+ 
+     for (n = 0; n < smp_cpus; n++) {
+         Object *cpuobj = object_new(typename);
+-        if (!vmc->disallow_affinity_adjustment) {
+-            /* Adjust MPIDR like 64-bit KVM hosts, which incorporate the
+-             * GIC's target-list limitations. 32-bit KVM hosts currently
+-             * always create clusters of 4 CPUs, but that is expected to
+-             * change when they gain support for gicv3. When KVM is enabled
+-             * it will override the changes we make here, therefore our
+-             * purposes are to make TCG consistent (with 64-bit KVM hosts)
+-             * and to improve SGI efficiency.
+-             */
+-            uint8_t aff1 = n / clustersz;
+-            uint8_t aff0 = n % clustersz;
+-            object_property_set_int(cpuobj, (aff1 << ARM_AFF1_SHIFT) | aff0,
+-                                    "mp-affinity", NULL);
+-        }
++
++        object_property_set_int(cpuobj, virt_cpu_mp_affinity(vms, n),
++                                "mp-affinity", NULL);
+ 
          if (!vms->secure) {
              object_property_set_bool(cpuobj, false, "has_el3", NULL);
-         }
+diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+index b357aee..ee1406d 100644
+--- a/target/arm/cpu.c
++++ b/target/arm/cpu.c
+@@ -458,6 +458,13 @@ static void arm_disas_set_info(CPUState *cpu, disassemble_info *info)
+     }
+ }
+ 
++uint64_t arm_cpu_mp_affinity(int idx, uint8_t clustersz)
++{
++    uint32_t Aff1 = idx / clustersz;
++    uint32_t Aff0 = idx % clustersz;
++    return (Aff1 << ARM_AFF1_SHIFT) | Aff0;
++}
++
+ static void arm_cpu_initfn(Object *obj)
+ {
+     CPUState *cs = CPU(obj);
+@@ -709,9 +716,8 @@ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
+      * so these bits always RAZ.
+      */
+     if (cpu->mp_affinity == ARM64_AFFINITY_INVALID) {
+-        uint32_t Aff1 = cs->cpu_index / ARM_DEFAULT_CPUS_PER_CLUSTER;
+-        uint32_t Aff0 = cs->cpu_index % ARM_DEFAULT_CPUS_PER_CLUSTER;
+-        cpu->mp_affinity = (Aff1 << ARM_AFF1_SHIFT) | Aff0;
++        cpu->mp_affinity = arm_cpu_mp_affinity(cs->cpu_index,
++                                               ARM_DEFAULT_CPUS_PER_CLUSTER);
+     }
+ 
+     if (cpu->reset_hivecs) {
 -- 
 2.7.4
 

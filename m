@@ -1,68 +1,68 @@
-Received: by 10.25.0.198 with SMTP id 189csp553570lfa;
-        Thu, 4 May 2017 05:37:27 -0700 (PDT)
-X-Received: by 10.31.200.65 with SMTP id y62mr19881541vkf.142.1493901447330;
-        Thu, 04 May 2017 05:37:27 -0700 (PDT)
+Received: by 10.25.0.198 with SMTP id 189csp555828lfa;
+        Thu, 4 May 2017 05:43:28 -0700 (PDT)
+X-Received: by 10.176.2.47 with SMTP id 44mr6852602uas.111.1493901808570;
+        Thu, 04 May 2017 05:43:28 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id 15si853067uag.46.2017.05.04.05.37.27
+        by mx.google.com with ESMTPS id m125si921835vkh.223.2017.05.04.05.43.28
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 04 May 2017 05:37:27 -0700 (PDT)
+        Thu, 04 May 2017 05:43:28 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:41743 helo=lists.gnu.org)
+Received: from localhost ([::1]:41777 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1d6G0c-00070h-P9
-	for alex.bennee@linaro.org; Thu, 04 May 2017 08:37:26 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:60714)
+	id 1d6G6S-0002Rm-1X
+	for alex.bennee@linaro.org; Thu, 04 May 2017 08:43:28 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:34472)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <drjones@redhat.com>) id 1d6Fyo-0004wK-EU
-	for qemu-arm@nongnu.org; Thu, 04 May 2017 08:35:35 -0400
+	(envelope-from <drjones@redhat.com>) id 1d6G6M-0002RV-7J
+	for qemu-arm@nongnu.org; Thu, 04 May 2017 08:43:23 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <drjones@redhat.com>) id 1d6Fyn-0006dI-HF
-	for qemu-arm@nongnu.org; Thu, 04 May 2017 08:35:34 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:54346)
+	(envelope-from <drjones@redhat.com>) id 1d6G6J-0001VD-3X
+	for qemu-arm@nongnu.org; Thu, 04 May 2017 08:43:22 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:55256)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <drjones@redhat.com>)
-	id 1d6Fyn-0006cN-82; Thu, 04 May 2017 08:35:33 -0400
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
-	[10.5.11.16])
+	id 1d6G6I-0001Ui-QN; Thu, 04 May 2017 08:43:19 -0400
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
+	[10.5.11.11])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 15F5C3DBC5;
-	Thu,  4 May 2017 12:35:32 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 15F5C3DBC5
-Authentication-Results: ext-mx06.extmail.prod.ext.phx2.redhat.com;
+	by mx1.redhat.com (Postfix) with ESMTPS id 6BA9961E78;
+	Thu,  4 May 2017 12:43:17 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 6BA9961E78
+Authentication-Results: ext-mx10.extmail.prod.ext.phx2.redhat.com;
 	dmarc=none (p=none dis=none) header.from=redhat.com
-Authentication-Results: ext-mx06.extmail.prod.ext.phx2.redhat.com;
+Authentication-Results: ext-mx10.extmail.prod.ext.phx2.redhat.com;
 	spf=pass smtp.mailfrom=drjones@redhat.com
-DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com 15F5C3DBC5
+DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com 6BA9961E78
 Received: from kamzik.brq.redhat.com (kamzik.brq.redhat.com [10.34.1.143])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id DD0C2777EB;
-	Thu,  4 May 2017 12:35:29 +0000 (UTC)
-Date: Thu, 4 May 2017 14:35:27 +0200
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 3CE2C18EFF;
+	Thu,  4 May 2017 12:43:14 +0000 (UTC)
+Date: Thu, 4 May 2017 14:43:12 +0200
 From: Andrew Jones <drjones@redhat.com>
 To: Igor Mammedov <imammedo@redhat.com>
-Message-ID: <20170504123527.nu5hwlxjarifboni@kamzik.brq.redhat.com>
+Message-ID: <20170504124312.tbvwxgmws2asjgko@kamzik.brq.redhat.com>
 References: <1493816238-33120-1-git-send-email-imammedo@redhat.com>
-	<1493816238-33120-20-git-send-email-imammedo@redhat.com>
+	<1493816238-33120-22-git-send-email-imammedo@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <1493816238-33120-20-git-send-email-imammedo@redhat.com>
+In-Reply-To: <1493816238-33120-22-git-send-email-imammedo@redhat.com>
 User-Agent: Mutt/1.6.0.1 (2016-04-01)
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.30]);
-	Thu, 04 May 2017 12:35:32 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.39]);
+	Thu, 04 May 2017 12:43:17 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [PATCH v2 19/24] numa: remove no longer need
- numa_post_machine_init()
+Subject: Re: [Qemu-arm] [PATCH v2 21/24] numa: use possible_cpus for not
+ mapped CPUs check
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -82,75 +82,137 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
 	David Gibson <david@gibson.dropbear.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: PMNEqmmvc96D
+X-TUID: lvXl2OdaX/lD
 
-On Wed, May 03, 2017 at 02:57:13PM +0200, Igor Mammedov wrote:
-> CPUState::numa_node is still in use but now it's set by
-> board when it creates CPU objects. So there isn't any
-> need to set it again after all CPU's are created,
-> since it's been already set.
+On Wed, May 03, 2017 at 02:57:15PM +0200, Igor Mammedov wrote:
+> and remove corresponding part in numa.c that uses
+> node_cpu bitmaps.
 > 
 > Signed-off-by: Igor Mammedov <imammedo@redhat.com>
 > Reviewed-by: David Gibson <david@gibson.dropbear.id.au>
 > ---
->  include/sysemu/numa.h |  1 -
->  numa.c                | 15 ---------------
->  vl.c                  |  2 --
->  3 files changed, 18 deletions(-)
+> It's one more less user of node_cpu bitmpas, following
+> commit will remove the last user along with
+> node_cpu itself.
+> ---
+>  hw/core/machine.c | 58 +++++++++++++++++++++++++++++++++++++++++++++++++++++++
+>  numa.c            | 10 ----------
+>  2 files changed, 58 insertions(+), 10 deletions(-)
 > 
-> diff --git a/include/sysemu/numa.h b/include/sysemu/numa.h
-> index 9077bb2..0b0a044 100644
-> --- a/include/sysemu/numa.h
-> +++ b/include/sysemu/numa.h
-> @@ -25,7 +25,6 @@ typedef struct node_info {
+> diff --git a/hw/core/machine.c b/hw/core/machine.c
+> index 217b4f4..4229054 100644
+> --- a/hw/core/machine.c
+> +++ b/hw/core/machine.c
+> @@ -19,6 +19,7 @@
+>  #include "sysemu/sysemu.h"
+>  #include "qemu/error-report.h"
+>  #include "qemu/cutils.h"
+> +#include "sysemu/numa.h"
 >  
->  extern NodeInfo numa_info[MAX_NODES];
->  void parse_numa_opts(MachineState *ms);
-> -void numa_post_machine_init(void);
->  void query_numa_node_mem(uint64_t node_mem[]);
->  extern QemuOptsList qemu_numa_opts;
->  void numa_set_mem_node_id(ram_addr_t addr, uint64_t size, uint32_t node);
-> diff --git a/numa.c b/numa.c
-> index 06c42e9..f8c849d 100644
-> --- a/numa.c
-> +++ b/numa.c
-> @@ -418,21 +418,6 @@ void parse_numa_opts(MachineState *ms)
->      }
+>  static char *machine_get_accel(Object *obj, Error **errp)
+>  {
+> @@ -648,9 +649,66 @@ bool machine_mem_merge(MachineState *machine)
+>      return machine->mem_merge;
 >  }
 >  
-> -void numa_post_machine_init(void)
-> -{
-> -    CPUState *cpu;
-> -    int i;
+> +static char *cpu_slot_to_string(const CPUArchId *cpu)
+> +{
+> +    GString *s = g_string_new(NULL);
+> +    if (cpu->props.has_socket_id) {
+> +        g_string_append_printf(s, "socket-id: %"PRId64, cpu->props.socket_id);
+> +    }
+> +    if (cpu->props.has_core_id) {
+> +        if (s->len) {
+> +            g_string_append_printf(s, ", ");
+> +        }
+> +        g_string_append_printf(s, "core-id: %"PRId64, cpu->props.core_id);
+> +    }
+> +    if (cpu->props.has_thread_id) {
+> +        if (s->len) {
+> +            g_string_append_printf(s, ", ");
+> +        }
+> +        g_string_append_printf(s, "thread-id: %"PRId64, cpu->props.thread_id);
+> +    }
+> +    return g_string_free(s, false);
+> +}
+> +
+> +static void machine_numa_validate(MachineState *machine)
+> +{
+> +    int i;
+> +    GString *s = g_string_new(NULL);
+> +    MachineClass *mc = MACHINE_GET_CLASS(machine);
+> +    const CPUArchIdList *possible_cpus = mc->possible_cpu_arch_ids(machine);
+> +
+> +    assert(nb_numa_nodes);
+
+Can't this be
+
+ if (!nb_numa_nodes)
+   return;
+
+instead? And then..
+
+> +    for (i = 0; i < possible_cpus->len; i++) {
+> +        const CPUArchId *cpu_slot = &possible_cpus->cpus[i];
+> +
+> +        /* at this point numa mappings are initilized by CLI options
+> +         * or with default mappings so it's sufficient to list
+> +         * all not yet mapped CPUs here */
+> +        /* TODO: make it hard error in future */
+> +        if (!cpu_slot->props.has_node_id) {
+> +            char *cpu_str = cpu_slot_to_string(cpu_slot);
+> +            g_string_append_printf(s, "%sCPU %d [%s]", s->len ? ", " : "", i,
+> +                                   cpu_str);
+> +            g_free(cpu_str);
+> +        }
+> +    }
+> +    if (s->len) {
+> +        error_report("warning: CPU(s) not present in any NUMA nodes: %s",
+> +                     s->str);
+> +        error_report("warning: All CPU(s) up to maxcpus should be described "
+> +                     "in NUMA config, ability to start up with partial NUMA "
+> +                     "mappings is obsoleted and will be removed in future");
+> +    }
+> +    g_string_free(s, true);
+> +}
+> +
+>  void machine_run_board_init(MachineState *machine)
+>  {
+>      MachineClass *machine_class = MACHINE_GET_CLASS(machine);
+> +
+> +    if (nb_numa_nodes) {
+> +        machine_numa_validate(machine);
+> +    }
+
+...this condition wouldn't be necessary.
+
+>      machine_class->init(machine);
+>  }
+>  
+> diff --git a/numa.c b/numa.c
+> index f8c849d..d7aa662 100644
+> --- a/numa.c
+> +++ b/numa.c
+> @@ -293,16 +293,6 @@ static void validate_numa_cpus(void)
+>          bitmap_or(seen_cpus, seen_cpus,
+>                    numa_info[i].node_cpu, max_cpus);
+>      }
 > -
-> -    CPU_FOREACH(cpu) {
-> -        for (i = 0; i < nb_numa_nodes; i++) {
-> -            assert(cpu->cpu_index < max_cpus);
-> -            if (test_bit(cpu->cpu_index, numa_info[i].node_cpu)) {
-> -                cpu->numa_node = i;
-> -            }
-> -        }
+> -    if (!bitmap_full(seen_cpus, max_cpus)) {
+> -        char *msg;
+> -        bitmap_complement(seen_cpus, seen_cpus, max_cpus);
+> -        msg = enumerate_cpus(seen_cpus, max_cpus);
+> -        error_report("warning: CPU(s) not present in any NUMA nodes: %s", msg);
+> -        error_report("warning: All CPU(s) up to maxcpus should be described "
+> -                     "in NUMA config");
+> -        g_free(msg);
 > -    }
-> -}
-> -
->  static void allocate_system_memory_nonnuma(MemoryRegion *mr, Object *owner,
->                                             const char *name,
->                                             uint64_t ram_size)
-> diff --git a/vl.c b/vl.c
-> index c63f4d5..fe4741d 100644
-> --- a/vl.c
-> +++ b/vl.c
-> @@ -4595,8 +4595,6 @@ int main(int argc, char **argv, char **envp)
+>      g_free(seen_cpus);
+>  }
 >  
->      cpu_synchronize_all_post_init();
->  
-> -    numa_post_machine_init();
-> -
->      rom_reset_order_override();
->  
->      /*
 > -- 
 > 2.7.4
 >
 
+Otherwise
 Reviewed-by: Andrew Jones <drjones@redhat.com> 

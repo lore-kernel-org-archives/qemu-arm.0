@@ -1,327 +1,271 @@
-Received: by 10.25.0.198 with SMTP id 189csp674165lfa;
-        Thu, 4 May 2017 09:45:24 -0700 (PDT)
-X-Received: by 10.176.80.38 with SMTP id b35mr11825967uaa.103.1493916324836;
-        Thu, 04 May 2017 09:45:24 -0700 (PDT)
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 10.25.0.198 with SMTP id 189csp681009lfa;
+        Thu, 4 May 2017 10:01:24 -0700 (PDT)
+X-Received: by 10.31.11.208 with SMTP id 199mr20342744vkl.149.1493917284173;
+        Thu, 04 May 2017 10:01:24 -0700 (PDT)
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id f186si1216579vkd.99.2017.05.04.09.45.24
+        by mx.google.com with ESMTPS id v11si1315549uag.245.2017.05.04.10.01.23
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 04 May 2017 09:45:24 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Thu, 04 May 2017 10:01:24 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:43055 helo=lists.gnu.org)
+       dkim=fail header.i=@gibson.dropbear.id.au;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:43119 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1d6Jsa-0004si-9a
-	for alex.bennee@linaro.org; Thu, 04 May 2017 12:45:24 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:54616)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1d6K83-0006KU-Gm
+	for alex.bennee@linaro.org; Thu, 04 May 2017 13:01:23 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:58792)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <gengdj.1984@gmail.com>) id 1d6Jro-0004Wt-6M
-	for qemu-devel@nongnu.org; Thu, 04 May 2017 12:44:37 -0400
+	(envelope-from <dgibson@ozlabs.org>) id 1d6K7r-0006HB-5w
+	for qemu-arm@nongnu.org; Thu, 04 May 2017 13:01:12 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <gengdj.1984@gmail.com>) id 1d6Jrm-0004EW-M3
-	for qemu-devel@nongnu.org; Thu, 04 May 2017 12:44:36 -0400
-Received: from mail-yw0-x231.google.com ([2607:f8b0:4002:c05::231]:35234)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <gengdj.1984@gmail.com>)
-	id 1d6Jrm-0004Ce-Fp; Thu, 04 May 2017 12:44:34 -0400
-Received: by mail-yw0-x231.google.com with SMTP id l135so9484806ywb.2;
-	Thu, 04 May 2017 09:44:34 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:content-transfer-encoding;
-	bh=cKMLpvp0F8eSA+L5liE8hJ1hr4FVvs6VVyl5NL/2myY=;
-	b=TydTe2bIRs+K4Q+kmMvqtKeaOYSXd7i1esV34ETXjxkfjx0xYLCGendYIuKgQsx11q
-	L6GsZ1jzLW9oJbpDOmjEzh1OyqcCwrmbslnvmgxMtWBWgNCu16OZpiTQAhkS+FaYYunk
-	QrDob1jDZf/DBBEZoUt5MhMsMZ8nIvPYDlBZwCp3nLaN3fIii+cIN7H/mZYH4OO/SMNs
-	yF1+ee4Lqd12dRl0jysMr0LSsqJMrgF8pis1HUhd/MzGEThI9Ufs8OPCDPjxD8G9vktU
-	Zi4tv1fveeyBW3icBZvHXNecmmFRoAz+5uBJGn0+QQF65kwu4/+Ox9e4ePXE7PAwRfS/
-	5r5g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:content-transfer-encoding;
-	bh=cKMLpvp0F8eSA+L5liE8hJ1hr4FVvs6VVyl5NL/2myY=;
-	b=IiRp+F1+bL8Slw2QhEWaI+xmEMXuXSPWSvWR2OK2TkLpS4DtS3DiirlQ2Bh9vVlW5s
-	5vkrsirwsVtYS7AcJdAKohYdeHJESwHO6Bmc5A+leY4QheHnirdBzrflr+68t/WO7dWY
-	MUAZvKo5bYqbPV6qsBcd/iXiDHRbzNUYQhBuIz7di4H9dbVzV5X9847VlBG4u93n6xvv
-	COA+P0eTZKdIH4x4s886A8WEWws5O8x7rDU+PGTa2gmd8miDXk7j+wOLg6IqLVKII2tb
-	7jrWUUEbS1k6G1xZ5DjuxI5sELVkUg9LbHUWI8H4W/hTxnhVgv8Cy3sBsen4bCze+Wvg
-	NAsg==
-X-Gm-Message-State: AN3rC/718Nk5jb4RWEa/8YmKw5L9Ahw3GLwVbrhXNG9xsj6T9FZSByMW
-	d9LR7ZcHX/B7BdKpKQZa7xvcX8NzgQ==
-X-Received: by 10.13.193.131 with SMTP id c125mr34804074ywd.213.1493916273395; 
-	Thu, 04 May 2017 09:44:33 -0700 (PDT)
+	(envelope-from <dgibson@ozlabs.org>) id 1d6K7o-0001Aq-52
+	for qemu-arm@nongnu.org; Thu, 04 May 2017 13:01:11 -0400
+Received: from ozlabs.org ([103.22.144.67]:57611)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <dgibson@ozlabs.org>)
+	id 1d6K7n-00018m-B5; Thu, 04 May 2017 13:01:08 -0400
+Received: by ozlabs.org (Postfix, from userid 1007)
+	id 3wJhB76lfsz9s0m; Fri,  5 May 2017 03:01:03 +1000 (AEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+	d=gibson.dropbear.id.au; s=201602; t=1493917263;
+	bh=Cixff4ZShCZxnr5bqmiw/s8lEBw55kxXgPV+Twyjfhg=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=kM8NcZsFC4mL9HJnneKmlCktWz23q0IAy3BUiJ4iDHJ+H7uSlceWTg1PXQeCs/PeJ
+	RPJUYCVdkm5t65tZ1bfK5oGCiRNowPngzgNO6yzS2oqWb9tGi2HcoTCjcQATFpl9hr
+	ZMx+4TuN9J4oAFGnAI/Yl5h8bOZaVxDY39/Ep6C4=
+Date: Fri, 5 May 2017 02:49:52 +1000
+From: David Gibson <david@gibson.dropbear.id.au>
+To: Igor Mammedov <imammedo@redhat.com>
+Message-ID: <20170504164952.GH14413@umbus.fritz.box>
+References: <1493816238-33120-1-git-send-email-imammedo@redhat.com>
+	<1493816238-33120-7-git-send-email-imammedo@redhat.com>
+	<20170503144644.GM3482@thinpad.lan.raisama.net>
+	<20170503181217.1757e128@nial.brq.redhat.com>
 MIME-Version: 1.0
-Received: by 10.129.172.99 with HTTP; Thu, 4 May 2017 09:44:33 -0700 (PDT)
-In-Reply-To: <CAMj-D2DO_CfvD77izsGfggoKP45HSC9aD6auUPAYC9Yeq_aX7w@mail.gmail.com>
-References: <CAMj-D2DO_CfvD77izsGfggoKP45HSC9aD6auUPAYC9Yeq_aX7w@mail.gmail.com>
-From: gengdongjiu <gengdj.1984@gmail.com>
-Date: Fri, 5 May 2017 00:44:33 +0800
-Message-ID: <CAMj-D2BVerutQXg0AArBvWrB04x9jYF+ACMQCZu3FT92kReZBg@mail.gmail.com>
-To: mtsirkin@redhat.com, kvm@vger.kernel.org, 
-	Tyler Baicar <tbaicar@codeaurora.org>, qemu-devel@nongnu.org, 
-	Xiongfeng Wang <wangxiongfeng2@huawei.com>, ben@skyportsystems.com,
-	linux@armlinux.org.uk, 
-	kvmarm@lists.cs.columbia.edu, huangshaoyu@huawei.com, lersek@redhat.com,
-	songwenjun@huawei.com, wuquanming@huawei.com, 
-	Marc Zyngier <marc.zyngier@arm.com>, qemu-arm@nongnu.org,
-	imammedo@redhat.com, linux-arm-kernel@lists.infradead.org, 
-	Ard Biesheuvel <ard.biesheuvel@linaro.org>, pbonzini@redhat.com, 
-	James Morse <james.morse@arm.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:4002:c05::231
-Subject: Re: [Qemu-devel] (no subject)
-X-BeenThere: qemu-devel@nongnu.org
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="QDd5rp1wjxlDmy9q"
+Content-Disposition: inline
+In-Reply-To: <20170503181217.1757e128@nial.brq.redhat.com>
+User-Agent: Mutt/1.8.0 (2017-02-23)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 103.22.144.67
+Subject: Re: [Qemu-arm] [PATCH v2 06/24] spapr: add node-id property to
+ sPAPR core
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: X9l6AVtL+Z5P
-Message-ID: <20170504164433.-R4MwdHUh-JsguFdWx3wiBEj8zSUKYNg82YUHWq73Pg@z>
-
-Dear James,
-   Thanks a lot for your review and comments. I am very sorry for the
-late response.
-
-
-2017-05-04 23:42 GMT+08:00 gengdongjiu <gengdj.1984@gmail.com>:
->  Hi Dongjiu Geng,
->
-> On 30/04/17 06:37, Dongjiu Geng wrote:
->> when happen SEA, deliver signal bus and handle the ioctl that
->> inject SEA abort to guest, so that guest can handle the SEA error.
->
->> diff --git a/arch/arm/kvm/mmu.c b/arch/arm/kvm/mmu.c
->> index 105b6ab..a96594f 100644
->> --- a/arch/arm/kvm/mmu.c
->> +++ b/arch/arm/kvm/mmu.c
->> @@ -20,8 +20,10 @@
->> @@ -1238,6 +1240,36 @@ static void coherent_cache_guest_page(struct kvm_=
-vcpu *vcpu, kvm_pfn_t pfn,
->>   __coherent_cache_guest_page(vcpu, pfn, size);
->>  }
->>
->> +static void kvm_send_signal(unsigned long address, bool hugetlb, bool h=
-wpoison)
->> +{
->> + siginfo_t info;
->> +
->> + info.si_signo   =3D SIGBUS;
->> + info.si_errno   =3D 0;
->> + if (hwpoison)
->> + info.si_code    =3D BUS_MCEERR_AR;
->> + else
->> + info.si_code    =3D 0;
->> +
->> + info.si_addr    =3D (void __user *)address;
->> + if (hugetlb)
->> + info.si_addr_lsb =3D PMD_SHIFT;
->> + else
->> + info.si_addr_lsb =3D PAGE_SHIFT;
->> +
->> + send_sig_info(SIGBUS, &info, current);
->> +}
->> +
-> =C2=AB  [hide part of quote]
->
-> Punit reviewed the other version of this patch, this PMD_SHIFT is not the=
- right
-> thing to do, it needs a more accurate set of calls and shifts as there ma=
-y be
-> hugetlbfs pages other than PMD_SIZE.
->
-> https://www.spinics.net/lists/arm-kernel/msg568919.html
->
-> I haven't posted a new version of that patch because I was still hunting =
-a bug
-> in the hugepage/hwpoison code, even with Punit's fixes series I see -EFAU=
-LT
-> returned to userspace instead of this hwpoison code being invoked.
-
-  Ok, got it, thanks for your information.
->
-> Please avoid duplicating functionality between patches, it wastes reviewe=
-rs
-> time, especially when we know there are problems with this approach.
->
->
->> +static void kvm_handle_bad_page(unsigned long address,
->> + bool hugetlb, bool hwpoison)
->> +{
->> + /* handle both hwpoison and other synchronous external Abort */
->> + if (hwpoison)
->> + kvm_send_signal(address, hugetlb, true);
->> + else
->> + kvm_send_signal(address, hugetlb, false);
->> +}
->
-> Why the extra level of indirection? We only want to signal userspace like=
- this
-> from KVM for hwpoison. Signals for RAS related reasons should come from t=
-he bits
-> of the kernel that decoded the error.
-
-For the SEA, the are maily two types:
-0b010000 Synchronous External Abort on memory access.
-0b0101xx Synchronous External Abort on page table walk. DFSC[1:0]
-encode the level.
-
-hwpoison should belong to the  "Synchronous External Abort on memory access=
-"
-if the SEA type is not hwpoison, such as page table walk, do you mean
-KVM do not deliver the SIGBUS?
-If so, how the KVM handle the SEA type other than hwpoison?
-
->
-> (hwpoison for KVM is a corner case as Qemu's memory effectively has two u=
-sers,
-> Qemu and KVM. This isn't the example of how user-space gets signalled.)
->
->
->> diff --git a/arch/arm64/kvm/guest.c b/arch/arm64/kvm/guest.c
->> index b37446a..780e3c4 100644
->> --- a/arch/arm64/kvm/guest.c
->> +++ b/arch/arm64/kvm/guest.c
->> @@ -277,6 +277,13 @@ int kvm_arch_vcpu_ioctl_set_sregs(struct kvm_vcpu *=
-vcpu,
->>   return -EINVAL;
->>  }
->>
->> +int kvm_vcpu_ioctl_sea(struct kvm_vcpu *vcpu)
->> +{
->> + kvm_inject_dabt(vcpu, kvm_vcpu_get_hfar(vcpu));
->> +
->> + return 0;
->> +}
->
->> diff --git a/include/uapi/linux/kvm.h b/include/uapi/linux/kvm.h
->> index bb02909..1d2e2e7 100644
->> --- a/include/uapi/linux/kvm.h
->> +++ b/include/uapi/linux/kvm.h
->> @@ -1306,6 +1306,7 @@ struct kvm_s390_ucas_mapping {
->>  #define KVM_S390_GET_IRQ_STATE  _IOW(KVMIO, 0xb6, struct kvm_s390_irq_s=
-tate)
->>  /* Available with KVM_CAP_X86_SMM */
->>  #define KVM_SMI                   _IO(KVMIO,   0xb7)
->> +#define KVM_ARM_SEA               _IO(KVMIO,   0xb8)
->>
->>  #define KVM_DEV_ASSIGN_ENABLE_IOMMU (1 << 0)
->>  #define KVM_DEV_ASSIGN_PCI_2_3 (1 << 1)
->>
->
-> Why do we need a userspace API for SEA? It can also be done by using
-> KVM_{G,S}ET_ONE_REG to change the vcpu registers. The advantage of doing =
-it this
-> way is you can choose which ESR value to use.
->
-> Adding a new API call to do something you could do with an old one doesn'=
-t look
-> right.
-
-James, I considered your suggestion before that use the
-KVM_{G,S}ET_ONE_REG to change the vcpu registers. but I found it does
-not have difference to use the alread existed KVM API.  so may be
-changing the vcpu registers in qemu will duplicate with the KVM APIs.
-
-injection a SEA is no more than setting some registers: elr_el1, PC,
-PSTATE, SPSR_el1, far_el1, esr_el1
-I seen this KVM API do the same thing as Qemu.  do you found call this
-API will have issue and necessary to choose another ESR value?
-
-I pasted the alread existed KVM API code:
-
-static void inject_abt64(struct kvm_vcpu *vcpu, bool is_iabt, unsigned
-long addr)
-{
- unsigned long cpsr =3D *vcpu_cpsr(vcpu);
- bool is_aarch32 =3D vcpu_mode_is_32bit(vcpu);
- u32 esr =3D 0;
- *vcpu_elr_el1(vcpu) =3D *vcpu_pc(vcpu);
- *vcpu_pc(vcpu) =3D get_except_vector(vcpu, except_type_sync);
- *vcpu_cpsr(vcpu) =3D PSTATE_FAULT_BITS_64;
- *vcpu_spsr(vcpu) =3D cpsr;
- vcpu_sys_reg(vcpu, FAR_EL1) =3D addr;
- /*
-  * Build an {i,d}abort, depending on the level and the
-  * instruction set. Report an external synchronous abort.
-  */
- if (kvm_vcpu_trap_il_is32bit(vcpu))
-  esr |=3D ESR_ELx_IL;
- /*
-  * Here, the guest runs in AArch64 mode when in EL1. If we get
-  * an AArch32 fault, it means we managed to trap an EL0 fault.
-  */
- if (is_aarch32 || (cpsr & PSR_MODE_MASK) =3D=3D PSR_MODE_EL0t)
-  esr |=3D (ESR_ELx_EC_IABT_LOW << ESR_ELx_EC_SHIFT);
- else
-  esr |=3D (ESR_ELx_EC_IABT_CUR << ESR_ELx_EC_SHIFT);
- if (!is_iabt)
-  esr |=3D ESR_ELx_EC_DABT_LOW << ESR_ELx_EC_SHIFT;
- vcpu_sys_reg(vcpu, ESR_EL1) =3D esr | ESR_ELx_FSC_EXTABT;
-}
-
-static void inject_abt32(struct kvm_vcpu *vcpu, bool is_pabt,
-    unsigned long addr)
-{
- u32 vect_offset;
- u32 *far, *fsr;
- bool is_lpae;
- if (is_pabt) {
-  vect_offset =3D 12;
-  far =3D &vcpu_cp15(vcpu, c6_IFAR);
-  fsr =3D &vcpu_cp15(vcpu, c5_IFSR);
- } else { /* !iabt */
-  vect_offset =3D 16;
-  far =3D &vcpu_cp15(vcpu, c6_DFAR);
-  fsr =3D &vcpu_cp15(vcpu, c5_DFSR);
- }
- prepare_fault32(vcpu, COMPAT_PSR_MODE_ABT | COMPAT_PSR_A_BIT, vect_offset)=
-;
- *far =3D addr;
- /* Give the guest an IMPLEMENTATION DEFINED exception */
- is_lpae =3D (vcpu_cp15(vcpu, c2_TTBCR) >> 31);
- if (is_lpae)
-  *fsr =3D 1 << 9 | 0x34;
- else
-  *fsr =3D 0x14;
-}
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jones <drjones@redhat.com>,
+	Eduardo Habkost <ehabkost@redhat.com>, qemu-devel@nongnu.org,
+	qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
+	Shannon Zhao <zhaoshenglong@huawei.com>,
+	Paolo Bonzini <pbonzini@redhat.com>, Eric Blake <eblake@redhat.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: Q5AFj6yfheTY
 
 
-/**
- * kvm_inject_dabt - inject a data abort into the guest
- * @vcpu: The VCPU to receive the undefined exception
- * @addr: The address to report in the DFAR
- *
- * It is assumed that this code is called from the VCPU thread and that the
- * VCPU therefore is not currently executing guest code.
- */
-void kvm_inject_dabt(struct kvm_vcpu *vcpu, unsigned long addr)
-{
- if (!(vcpu->arch.hcr_el2 & HCR_RW))
-  inject_abt32(vcpu, false, addr);
- else
-  inject_abt64(vcpu, false, addr);
-}
+--QDd5rp1wjxlDmy9q
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
+On Wed, May 03, 2017 at 06:12:17PM +0200, Igor Mammedov wrote:
+> On Wed, 3 May 2017 11:46:44 -0300
+> Eduardo Habkost <ehabkost@redhat.com> wrote:
+>=20
+> > On Wed, May 03, 2017 at 02:57:00PM +0200, Igor Mammedov wrote:
+> > > it will allow switching from cpu_index to core based numa
+> > > mapping in follow up patches.
+> > >=20
+> > > Signed-off-by: Igor Mammedov <imammedo@redhat.com>
+> > > Reviewed-by: David Gibson <david@gibson.dropbear.id.au> =20
+> >=20
+> > Have you considered adding this to TYPE_CPU instead of
+> > duplicating the same code on multiple architectures/boards?
+> it was in TYPE_CPU at RFC time, but it adds public node-id
+> property to every CPU.
+> So I've rewrote it they way it would affect only necessary CPUs,
+>=20
+> it might be possible to generalize node_id sanity checks at
+> pre_plug time into a common wrapper, I can do it on top so
+> it would be visible what it's generalized (or an extra patch on
+> respin)
 
->
->
-> Thanks,
->
-> James
+Note that the spapr cpu core type here is *not* a descendent of
+TYPE_CPU (the threads under it are).
+
+>=20
+> >=20
+> > > ---
+> > >  include/hw/ppc/spapr_cpu_core.h |  1 +
+> > >  include/qom/cpu.h               |  2 ++
+> > >  hw/ppc/spapr.c                  | 17 +++++++++++++++++
+> > >  hw/ppc/spapr_cpu_core.c         | 11 ++++++++---
+> > >  4 files changed, 28 insertions(+), 3 deletions(-)
+> > >=20
+> > > diff --git a/include/hw/ppc/spapr_cpu_core.h b/include/hw/ppc/spapr_c=
+pu_core.h
+> > > index 3c35665..93051e9 100644
+> > > --- a/include/hw/ppc/spapr_cpu_core.h
+> > > +++ b/include/hw/ppc/spapr_cpu_core.h
+> > > @@ -27,6 +27,7 @@ typedef struct sPAPRCPUCore {
+> > > =20
+> > >      /*< public >*/
+> > >      void *threads;
+> > > +    int node_id;
+> > >  } sPAPRCPUCore;
+> > > =20
+> > >  typedef struct sPAPRCPUCoreClass {
+> > > diff --git a/include/qom/cpu.h b/include/qom/cpu.h
+> > > index 5d10359..55214ce 100644
+> > > --- a/include/qom/cpu.h
+> > > +++ b/include/qom/cpu.h
+> > > @@ -258,6 +258,8 @@ typedef void (*run_on_cpu_func)(CPUState *cpu, ru=
+n_on_cpu_data data);
+> > > =20
+> > >  struct qemu_work_item;
+> > > =20
+> > > +#define CPU_UNSET_NUMA_NODE_ID -1
+> > > +
+> > >  /**
+> > >   * CPUState:
+> > >   * @cpu_index: CPU index (informative).
+> > > diff --git a/hw/ppc/spapr.c b/hw/ppc/spapr.c
+> > > index 33405a0..7f58ee4 100644
+> > > --- a/hw/ppc/spapr.c
+> > > +++ b/hw/ppc/spapr.c
+> > > @@ -2824,9 +2824,11 @@ static void spapr_core_pre_plug(HotplugHandler=
+ *hotplug_dev, DeviceState *dev,
+> > >      MachineClass *mc =3D MACHINE_GET_CLASS(hotplug_dev);
+> > >      Error *local_err =3D NULL;
+> > >      CPUCore *cc =3D CPU_CORE(dev);
+> > > +    sPAPRCPUCore *sc =3D SPAPR_CPU_CORE(dev);
+> > >      char *base_core_type =3D spapr_get_cpu_core_type(machine->cpu_mo=
+del);
+> > >      const char *type =3D object_get_typename(OBJECT(dev));
+> > >      CPUArchId *core_slot;
+> > > +    int node_id;
+> > >      int index;
+> > > =20
+> > >      if (dev->hotplugged && !mc->has_hotpluggable_cpus) {
+> > > @@ -2861,6 +2863,21 @@ static void spapr_core_pre_plug(HotplugHandler=
+ *hotplug_dev, DeviceState *dev,
+> > >          goto out;
+> > >      }
+> > > =20
+> > > +    node_id =3D numa_get_node_for_cpu(cc->core_id);
+> > > +    if (node_id =3D=3D nb_numa_nodes) {
+> > > +        /* by default CPUState::numa_node was 0 if it's not set via =
+CLI
+> > > +         * keep it this way for now but in future we probably should
+> > > +         * refuse to start up with incomplete numa mapping */
+> > > +        node_id =3D 0;
+> > > +    }
+> > > +    if (sc->node_id =3D=3D CPU_UNSET_NUMA_NODE_ID) {
+> > > +        sc->node_id =3D node_id;
+> > > +    } else if (sc->node_id !=3D node_id) {
+> > > +        error_setg(&local_err, "node-id %d must match numa node spec=
+ified"
+> > > +            "with -numa option for cpu-index %d", sc->node_id, cc->c=
+ore_id);
+> > > +        goto out;
+> > > +    }
+> > > +
+> > >  out:
+> > >      g_free(base_core_type);
+> > >      error_propagate(errp, local_err);
+> > > diff --git a/hw/ppc/spapr_cpu_core.c b/hw/ppc/spapr_cpu_core.c
+> > > index 4389ef4..9de7a56 100644
+> > > --- a/hw/ppc/spapr_cpu_core.c
+> > > +++ b/hw/ppc/spapr_cpu_core.c
+> > > @@ -176,7 +176,6 @@ static void spapr_cpu_core_realize(DeviceState *d=
+ev, Error **errp)
+> > >      const char *typename =3D object_class_get_name(scc->cpu_class);
+> > >      size_t size =3D object_type_get_instance_size(typename);
+> > >      Error *local_err =3D NULL;
+> > > -    int core_node_id =3D numa_get_node_for_cpu(cc->core_id);;
+> > >      void *obj;
+> > >      int i, j;
+> > > =20
+> > > @@ -194,10 +193,10 @@ static void spapr_cpu_core_realize(DeviceState =
+*dev, Error **errp)
+> > > =20
+> > >          /* Set NUMA node for the added CPUs  */
+> > >          node_id =3D numa_get_node_for_cpu(cs->cpu_index);
+> > > -        if (node_id !=3D core_node_id) {
+> > > +        if (node_id !=3D sc->node_id) {
+> > >              error_setg(&local_err, "Invalid node-id=3D%d of thread[c=
+pu-index: %d]"
+> > >                  " on CPU[core-id: %d, node-id: %d], node-id must be =
+the same",
+> > > -                 node_id, cs->cpu_index, cc->core_id, core_node_id);
+> > > +                 node_id, cs->cpu_index, cc->core_id, sc->node_id);
+> > >              goto err;
+> > >          }
+> > >          if (node_id < nb_numa_nodes) {
+> > > @@ -263,6 +262,11 @@ static const char *spapr_core_models[] =3D {
+> > >      "POWER9_v1.0",
+> > >  };
+> > > =20
+> > > +static Property spapr_cpu_core_properties[] =3D {
+> > > +    DEFINE_PROP_INT32("node-id", sPAPRCPUCore, node_id, CPU_UNSET_NU=
+MA_NODE_ID),
+> > > +    DEFINE_PROP_END_OF_LIST()
+> > > +};
+> > > +
+> > >  void spapr_cpu_core_class_init(ObjectClass *oc, void *data)
+> > >  {
+> > >      DeviceClass *dc =3D DEVICE_CLASS(oc);
+> > > @@ -270,6 +274,7 @@ void spapr_cpu_core_class_init(ObjectClass *oc, v=
+oid *data)
+> > > =20
+> > >      dc->realize =3D spapr_cpu_core_realize;
+> > >      dc->unrealize =3D spapr_cpu_core_unrealizefn;
+> > > +    dc->props =3D spapr_cpu_core_properties;
+> > >      scc->cpu_class =3D cpu_class_by_name(TYPE_POWERPC_CPU, data);
+> > >      g_assert(scc->cpu_class);
+> > >  }
+> >=20
+>=20
+
+--=20
+David Gibson			| I'll have my music baroque, and my code
+david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
+				| _way_ _around_!
+http://www.ozlabs.org/~dgibson
+
+--QDd5rp1wjxlDmy9q
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v2
+
+iQIcBAEBCAAGBQJZC1utAAoJEGw4ysog2bOSBNkP/3AAnAk2Sm178UDji1kdUcuC
+y6eCM9GiWrjhkMa4TA1MT+DSAtn203Mxmq+eKtVVayyRUfiJs1DEZp9tnuJL0sQU
+3DzbFx0vL7M89GUHmNEss7QIGIUntE73fLIfnhkm/RWT6q2vwR/sjI9+xQC0vKkE
+QlPbeB1YxiRT//yg8JUFYjOW20pwJJjyImB5tJtKI8zaaoQnsQIdPVdCFhUWLnwL
+Shio+fCpJB1L/zIheNTjFvcJA0UbJZ14j16ZTUwALcVOBbE0YuoxdUup4BLVZLIf
+lD1CXy8Vy+PVyyQS+kPKJjKE8B8/zlwwwhW2eG0e1aqmE+VpL7pqHN7+uBOC8mU6
+IZZqauZY7NzYy7aWg8woH1aGLvS+TB7954G2832h1QMnC06gqIxILJP7wAJHCzJs
++p9vTi+EjkhSqECfupmmSHGH71uBr5Pn6DyN01rcZq6lrFBeMzluUrIe4hdlgU14
+ESWton628Gqn3qg4yLSBPH21uXP9ZOGUoBSWxzf79Uc+0u5dzB3kY+7XZHOl0CJO
+FZqEP7JBhYJ7ZR2I34VwTENIDEBvFwB0Lx6yzNpuA5tStt0JETbg3GHHgGBa24sL
+oL39hbRBYSyLdUpxa1Epj06T0YcMOv6hPHwfZEJFeJCJXKyL3wWmnFGYdtWYo9uA
+nnnbRYE4ZNsOuqSVIoZS
+=LiJy
+-----END PGP SIGNATURE-----
+
+--QDd5rp1wjxlDmy9q--

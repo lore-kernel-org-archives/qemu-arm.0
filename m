@@ -1,68 +1,68 @@
-Received: by 10.25.0.198 with SMTP id 189csp561724lfa;
-        Thu, 4 May 2017 05:59:10 -0700 (PDT)
-X-Received: by 10.176.22.137 with SMTP id e9mr22458494uaf.78.1493902750599;
-        Thu, 04 May 2017 05:59:10 -0700 (PDT)
+Received: by 10.25.0.198 with SMTP id 189csp566321lfa;
+        Thu, 4 May 2017 06:07:09 -0700 (PDT)
+X-Received: by 10.176.69.206 with SMTP id u72mr12252483uau.69.1493903229832;
+        Thu, 04 May 2017 06:07:09 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id k5si707416uaa.198.2017.05.04.05.59.10
+        by mx.google.com with ESMTPS id d77si875876vka.241.2017.05.04.06.07.09
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 04 May 2017 05:59:10 -0700 (PDT)
+        Thu, 04 May 2017 06:07:09 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:41847 helo=lists.gnu.org)
+Received: from localhost ([::1]:41905 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1d6GLd-0004aW-Uf
-	for alex.bennee@linaro.org; Thu, 04 May 2017 08:59:10 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:38288)
+	id 1d6GTN-0001J2-66
+	for alex.bennee@linaro.org; Thu, 04 May 2017 09:07:09 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:41010)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <imammedo@redhat.com>) id 1d6GJv-0002Zw-Kx
-	for qemu-arm@nongnu.org; Thu, 04 May 2017 08:57:24 -0400
+	(envelope-from <imammedo@redhat.com>) id 1d6GT1-00018L-QX
+	for qemu-arm@nongnu.org; Thu, 04 May 2017 09:06:51 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <imammedo@redhat.com>) id 1d6GJu-0007UJ-Fd
-	for qemu-arm@nongnu.org; Thu, 04 May 2017 08:57:23 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:46036)
+	(envelope-from <imammedo@redhat.com>) id 1d6GSr-0002HY-Qw
+	for qemu-arm@nongnu.org; Thu, 04 May 2017 09:06:47 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:32872)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <imammedo@redhat.com>)
-	id 1d6GJu-0007Te-6O; Thu, 04 May 2017 08:57:22 -0400
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
-	[10.5.11.15])
+	id 1d6GSr-0002HD-Ev; Thu, 04 May 2017 09:06:37 -0400
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
+	[10.5.11.11])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id E7AAD624A9;
-	Thu,  4 May 2017 12:57:20 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com E7AAD624A9
+	by mx1.redhat.com (Postfix) with ESMTPS id 8475C61E5F;
+	Thu,  4 May 2017 13:06:35 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 8475C61E5F
 Authentication-Results: ext-mx10.extmail.prod.ext.phx2.redhat.com;
 	dmarc=none (p=none dis=none) header.from=redhat.com
 Authentication-Results: ext-mx10.extmail.prod.ext.phx2.redhat.com;
 	spf=pass smtp.mailfrom=imammedo@redhat.com
-DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com E7AAD624A9
+DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com 8475C61E5F
 Received: from nial.brq.redhat.com (dhcp-1-118.brq.redhat.com [10.34.1.118])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 4A3DF183D0;
-	Thu,  4 May 2017 12:57:17 +0000 (UTC)
-Date: Thu, 4 May 2017 14:57:16 +0200
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 47FA118EFF;
+	Thu,  4 May 2017 13:06:33 +0000 (UTC)
+Date: Thu, 4 May 2017 15:06:31 +0200
 From: Igor Mammedov <imammedo@redhat.com>
 To: Andrew Jones <drjones@redhat.com>
-Message-ID: <20170504145716.7d9841f0@nial.brq.redhat.com>
-In-Reply-To: <20170504114018.zpqvohjxu23bhar7@kamzik.brq.redhat.com>
+Message-ID: <20170504150631.7841566c@nial.brq.redhat.com>
+In-Reply-To: <20170504124312.tbvwxgmws2asjgko@kamzik.brq.redhat.com>
 References: <1493816238-33120-1-git-send-email-imammedo@redhat.com>
-	<1493816238-33120-11-git-send-email-imammedo@redhat.com>
-	<20170504114018.zpqvohjxu23bhar7@kamzik.brq.redhat.com>
+	<1493816238-33120-22-git-send-email-imammedo@redhat.com>
+	<20170504124312.tbvwxgmws2asjgko@kamzik.brq.redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
 	(mx1.redhat.com [10.5.110.39]);
-	Thu, 04 May 2017 12:57:21 +0000 (UTC)
+	Thu, 04 May 2017 13:06:35 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [PATCH v2 10/24] numa: mirror cpu to node mapping in
- MachineState::possible_cpus
+Subject: Re: [Qemu-arm] [PATCH v2 21/24] numa: use possible_cpus for not
+ mapped CPUs check
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -82,167 +82,145 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
 	David Gibson <david@gibson.dropbear.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: QrMUet/SHRxl
+X-TUID: 8nqimRzk46fg
 
-On Thu, 4 May 2017 13:40:18 +0200
+On Thu, 4 May 2017 14:43:12 +0200
 Andrew Jones <drjones@redhat.com> wrote:
 
-> On Wed, May 03, 2017 at 02:57:04PM +0200, Igor Mammedov wrote:
-> > Introduce machine_set_cpu_numa_node() helper that stores
-> > node mapping for CPU in MachineState::possible_cpus.
-> > CPU and node it belongs to is specified by 'props' argument.
-> > 
-> > Patch doesn't remove old way of storing mapping in
-> > numa_info[X].node_cpu as removing it at the same time
-> > makes patch rather big. Instead it just mirrors mapping
-> > in possible_cpus and follow up per target patches will
-> > switch to possible_cpus and numa_info[X].node_cpu will
-> > be removed once there isn't any users left.
+> On Wed, May 03, 2017 at 02:57:15PM +0200, Igor Mammedov wrote:
+> > and remove corresponding part in numa.c that uses
+> > node_cpu bitmaps.
 > > 
 > > Signed-off-by: Igor Mammedov <imammedo@redhat.com>
 > > Reviewed-by: David Gibson <david@gibson.dropbear.id.au>
 > > ---
-> >  include/hw/boards.h |  2 ++
-> >  hw/core/machine.c   | 68 +++++++++++++++++++++++++++++++++++++++++++++++++++++
-> >  numa.c              |  8 +++++++
-> >  3 files changed, 78 insertions(+)
+> > It's one more less user of node_cpu bitmpas, following
+> > commit will remove the last user along with
+> > node_cpu itself.
+> > ---
+> >  hw/core/machine.c | 58 +++++++++++++++++++++++++++++++++++++++++++++++++++++++
+> >  numa.c            | 10 ----------
+> >  2 files changed, 58 insertions(+), 10 deletions(-)
 > > 
-> > diff --git a/include/hw/boards.h b/include/hw/boards.h
-> > index 5d6af21..1f518a1 100644
-> > --- a/include/hw/boards.h
-> > +++ b/include/hw/boards.h
-> > @@ -42,6 +42,8 @@ bool machine_dump_guest_core(MachineState *machine);
-> >  bool machine_mem_merge(MachineState *machine);
-> >  void machine_register_compat_props(MachineState *machine);
-> >  HotpluggableCPUList *machine_query_hotpluggable_cpus(MachineState *machine);
-> > +void machine_set_cpu_numa_node(MachineState *machine,
-> > +                               CpuInstanceProperties *props, Error **errp);
-> >  
-> >  /**
-> >   * CPUArchId:
 > > diff --git a/hw/core/machine.c b/hw/core/machine.c
-> > index ada9eea..a63f17b 100644
+> > index 217b4f4..4229054 100644
 > > --- a/hw/core/machine.c
 > > +++ b/hw/core/machine.c
-> > @@ -388,6 +388,74 @@ HotpluggableCPUList *machine_query_hotpluggable_cpus(MachineState *machine)
-> >      return head;
+> > @@ -19,6 +19,7 @@
+> >  #include "sysemu/sysemu.h"
+> >  #include "qemu/error-report.h"
+> >  #include "qemu/cutils.h"
+> > +#include "sysemu/numa.h"
+> >  
+> >  static char *machine_get_accel(Object *obj, Error **errp)
+> >  {
+> > @@ -648,9 +649,66 @@ bool machine_mem_merge(MachineState *machine)
+> >      return machine->mem_merge;
 > >  }
 > >  
-> > +void machine_set_cpu_numa_node(MachineState *machine,
-> > +                               CpuInstanceProperties *props, Error **errp)
+> > +static char *cpu_slot_to_string(const CPUArchId *cpu)
 > > +{
-> > +    MachineClass *mc = MACHINE_GET_CLASS(machine);
-> > +    bool match = false;
-> > +    int i;
-> > +
-> > +    if (!mc->possible_cpu_arch_ids) {
-> > +        error_setg(errp, "mapping of CPUs to NUMA node is not supported");
-> > +        return;
+> > +    GString *s = g_string_new(NULL);
+> > +    if (cpu->props.has_socket_id) {
+> > +        g_string_append_printf(s, "socket-id: %"PRId64, cpu->props.socket_id);
 > > +    }
-> > +
-> > +    /* force board to initialize possible_cpus if it hasn't been done yet */
-> > +    mc->possible_cpu_arch_ids(machine);
-> > +
-> > +    for (i = 0; i < machine->possible_cpus->len; i++) {
-> > +        CPUArchId *slot = &machine->possible_cpus->cpus[i];
-> > +
-> > +        /* reject unsupported by board properties */
-> > +        if (props->has_thread_id && !slot->props.has_thread_id) {
-> > +            error_setg(errp, "thread-id is not supported");
-> > +            return;
+> > +    if (cpu->props.has_core_id) {
+> > +        if (s->len) {
+> > +            g_string_append_printf(s, ", ");
 > > +        }
-> > +
-> > +        if (props->has_core_id && !slot->props.has_core_id) {
-> > +            error_setg(errp, "core-id is not supported");
-> > +            return;
-> > +        }
-> > +
-> > +        if (props->has_socket_id && !slot->props.has_socket_id) {
-> > +            error_setg(errp, "socket-id is not supported");
-> > +            return;
-> > +        }
-> > +
-> > +        /* skip slots with explicit mismatch */
-> > +        if (props->has_thread_id && props->thread_id != slot->props.thread_id) {
-> > +                continue;
-> > +        }
-> > +
-> > +        if (props->has_core_id && props->core_id != slot->props.core_id) {
-> > +                continue;
-> > +        }
-> > +
-> > +        if (props->has_socket_id && props->socket_id != slot->props.socket_id) {
-> > +                continue;
-> > +        }  
-> 
-> nit: above 3 if-conditions could be condensed into 1 compound condition
-I'll merge them on the respin
-
-> 
-> > +
-> > +        /* reject assignment if slot is already assigned, for compatibility
-> > +         * of legacy cpu_index mapping with SPAPR core based mapping do not
-> > +         * error out if cpu thread and matched core have the same node-id */
-> > +        if (slot->props.has_node_id &&
-> > +            slot->props.node_id != props->node_id) {
-> > +            error_setg(errp, "CPU is already assigned to node-id: %" PRId64,
-> > +                       slot->props.node_id);
-> > +            return;
-> > +        }
-> > +
-> > +        /* assign slot to node as it's matched '-numa cpu' key */
-> > +        match = true;
-> > +        slot->props.node_id = props->node_id;
-> > +        slot->props.has_node_id = props->has_node_id;
+> > +        g_string_append_printf(s, "core-id: %"PRId64, cpu->props.core_id);
 > > +    }
-> > +
-> > +    if (!match) {
-> > +        error_setg(errp, "no match found");
+> > +    if (cpu->props.has_thread_id) {
+> > +        if (s->len) {
+> > +            g_string_append_printf(s, ", ");
+> > +        }
+> > +        g_string_append_printf(s, "thread-id: %"PRId64, cpu->props.thread_id);
 > > +    }
+> > +    return g_string_free(s, false);
 > > +}
 > > +
-> >  static void machine_class_init(ObjectClass *oc, void *data)
+> > +static void machine_numa_validate(MachineState *machine)
+> > +{
+> > +    int i;
+> > +    GString *s = g_string_new(NULL);
+> > +    MachineClass *mc = MACHINE_GET_CLASS(machine);
+> > +    const CPUArchIdList *possible_cpus = mc->possible_cpu_arch_ids(machine);
+> > +
+> > +    assert(nb_numa_nodes);  
+> 
+> Can't this be
+> 
+>  if (!nb_numa_nodes)
+>    return;
+> 
+> instead? And then..
+> 
+> > +    for (i = 0; i < possible_cpus->len; i++) {
+> > +        const CPUArchId *cpu_slot = &possible_cpus->cpus[i];
+> > +
+> > +        /* at this point numa mappings are initilized by CLI options
+> > +         * or with default mappings so it's sufficient to list
+> > +         * all not yet mapped CPUs here */
+> > +        /* TODO: make it hard error in future */
+> > +        if (!cpu_slot->props.has_node_id) {
+> > +            char *cpu_str = cpu_slot_to_string(cpu_slot);
+> > +            g_string_append_printf(s, "%sCPU %d [%s]", s->len ? ", " : "", i,
+> > +                                   cpu_str);
+> > +            g_free(cpu_str);
+> > +        }
+> > +    }
+> > +    if (s->len) {
+> > +        error_report("warning: CPU(s) not present in any NUMA nodes: %s",
+> > +                     s->str);
+> > +        error_report("warning: All CPU(s) up to maxcpus should be described "
+> > +                     "in NUMA config, ability to start up with partial NUMA "
+> > +                     "mappings is obsoleted and will be removed in future");
+> > +    }
+> > +    g_string_free(s, true);
+> > +}
+> > +
+> >  void machine_run_board_init(MachineState *machine)
 > >  {
-> >      MachineClass *mc = MACHINE_CLASS(oc);
+> >      MachineClass *machine_class = MACHINE_GET_CLASS(machine);
+> > +
+> > +    if (nb_numa_nodes) {
+> > +        machine_numa_validate(machine);
+> > +    }  
+> 
+> ...this condition wouldn't be necessary.
+I prefer to keep such conditions in the caller as during review/reading
+it allows to exclude jumping into called function if condition is not
+relevant for considered usecase.
+
+> 
+> >      machine_class->init(machine);
+> >  }
+> >  
 > > diff --git a/numa.c b/numa.c
-> > index b517870..5ff1212 100644
+> > index f8c849d..d7aa662 100644
 > > --- a/numa.c
 > > +++ b/numa.c
-> > @@ -169,6 +169,7 @@ static void numa_node_parse(MachineState *ms, NumaNodeOptions *node,
-> >          exit(1);
+> > @@ -293,16 +293,6 @@ static void validate_numa_cpus(void)
+> >          bitmap_or(seen_cpus, seen_cpus,
+> >                    numa_info[i].node_cpu, max_cpus);
 > >      }
-> >      for (cpus = node->cpus; cpus; cpus = cpus->next) {
-> > +        CpuInstanceProperties props;
-> >          if (cpus->value >= max_cpus) {
-> >              error_setg(errp,
-> >                         "CPU index (%" PRIu16 ")"
-> > @@ -177,6 +178,10 @@ static void numa_node_parse(MachineState *ms, NumaNodeOptions *node,
-> >              return;
-> >          }
-> >          bitmap_set(numa_info[nodenr].node_cpu, cpus->value, 1);
-> > +        props = mc->cpu_index_to_instance_props(ms, cpus->value);
-> > +        props.node_id = nodenr;
-> > +        props.has_node_id = true;
-> > +        machine_set_cpu_numa_node(ms, &props, &error_fatal);
-> >      }
-> >  
-> >      if (node->has_mem && node->has_memdev) {
-> > @@ -393,9 +398,12 @@ void parse_numa_opts(MachineState *ms)
-> >          if (i == nb_numa_nodes) {
-> >              for (i = 0; i < max_cpus; i++) {
-> >                  CpuInstanceProperties props;
-> > +                /* fetch default mapping from board and enable it */
-> >                  props = mc->cpu_index_to_instance_props(ms, i);
-> > +                props.has_node_id = true;
-> >  
-> >                  set_bit(i, numa_info[props.node_id].node_cpu);
-> > +                machine_set_cpu_numa_node(ms, &props, &error_fatal);
-> >              }
-> >          }
+> > -
+> > -    if (!bitmap_full(seen_cpus, max_cpus)) {
+> > -        char *msg;
+> > -        bitmap_complement(seen_cpus, seen_cpus, max_cpus);
+> > -        msg = enumerate_cpus(seen_cpus, max_cpus);
+> > -        error_report("warning: CPU(s) not present in any NUMA nodes: %s", msg);
+> > -        error_report("warning: All CPU(s) up to maxcpus should be described "
+> > -                     "in NUMA config");
+> > -        g_free(msg);
+> > -    }
+> >      g_free(seen_cpus);
+> >  }
 > >  
 > > -- 
 > > 2.7.4
 > >  
 > 
+> Otherwise
 > Reviewed-by: Andrew Jones <drjones@redhat.com> 
 

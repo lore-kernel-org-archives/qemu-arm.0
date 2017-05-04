@@ -1,217 +1,230 @@
-Received: by 10.25.0.198 with SMTP id 189csp634548lfa;
-        Thu, 4 May 2017 08:22:57 -0700 (PDT)
-X-Received: by 10.31.98.196 with SMTP id w187mr371908vkb.96.1493911377378;
-        Thu, 04 May 2017 08:22:57 -0700 (PDT)
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id 102si1031605uac.41.2017.05.04.08.22.57
-        for <alex.bennee@linaro.org>
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 04 May 2017 08:22:57 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+Received: by 10.25.0.198 with SMTP id 189csp673851lfa;
+        Thu, 4 May 2017 09:44:39 -0700 (PDT)
+X-Received: by 10.55.38.69 with SMTP id y66mr8575088qkg.204.1493916278991;
+        Thu, 04 May 2017 09:44:38 -0700 (PDT)
+Return-Path: <kvmarm-bounces@lists.cs.columbia.edu>
+Received: from mm01.cs.columbia.edu (mm01.cs.columbia.edu. [128.59.11.253])
+        by mx.google.com with ESMTP id o9si2283549qtb.78.2017.05.04.09.44.38;
+        Thu, 04 May 2017 09:44:38 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) client-ip=128.59.11.253;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gibson.dropbear.id.au;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:42512 helo=lists.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1d6Iam-0000wq-Og
-	for alex.bennee@linaro.org; Thu, 04 May 2017 11:22:56 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:55674)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <dgibson@ozlabs.org>) id 1d6Iaf-0000uQ-PZ
-	for qemu-arm@nongnu.org; Thu, 04 May 2017 11:22:51 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <dgibson@ozlabs.org>) id 1d6Iae-0007KU-AH
-	for qemu-arm@nongnu.org; Thu, 04 May 2017 11:22:49 -0400
-Received: from ozlabs.org ([2401:3900:2:1::2]:38131)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <dgibson@ozlabs.org>)
-	id 1d6Iad-0007Ic-SS; Thu, 04 May 2017 11:22:48 -0400
-Received: by ozlabs.org (Postfix, from userid 1007)
-	id 3wJf0h3M5qz9s3s; Fri,  5 May 2017 01:22:44 +1000 (AEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-	d=gibson.dropbear.id.au; s=201602; t=1493911364;
-	bh=wfWAVeVpTuG0YZfq7+6eCxsdnUoxtk00sVvebpjHchs=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=LqM9juZWsCZmcspw+4uuq2J5TXZtA74hjdMrrQhdA+NTBAfBAovAkJrZpKgdmv6CS
-	qNvPDAmTgwmEBwnZlG1sHd18KLuV19d1W6bYLoRqGQty8NrIWxXXlfw8T7w1afyqE4
-	Jlztfa2txtq2mbpbQ+muF7XysrXWLFVxriHjHRRY=
-Date: Thu, 4 May 2017 17:32:13 +1000
-From: David Gibson <david@gibson.dropbear.id.au>
-To: Eduardo Habkost <ehabkost@redhat.com>
-Message-ID: <20170504073213.GE14413@umbus.fritz.box>
-References: <1493816238-33120-1-git-send-email-imammedo@redhat.com>
-	<1493816238-33120-6-git-send-email-imammedo@redhat.com>
-	<20170503144240.GL3482@thinpad.lan.raisama.net>
+       dkim=neutral (body hash did not verify) header.i=@gmail.com;
+       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Received: from localhost (localhost [127.0.0.1])
+	by mm01.cs.columbia.edu (Postfix) with ESMTP id E188040BDE;
+	Thu,  4 May 2017 12:41:31 -0400 (EDT)
+X-Virus-Scanned: at lists.cs.columbia.edu
+X-Spam-Flag: NO
+X-Spam-Score: 0.911
+X-Spam-Level: 
+X-Spam-Status: No, score=0.911 required=6.1 tests=[BAYES_00=-1.9,
+	DKIM_ADSP_CUSTOM_MED=0.001, DKIM_SIGNED=0.1,
+	DNS_FROM_AHBL_RHSBL=2.699, FREEMAIL_FROM=0.001,
+	RCVD_IN_DNSWL_NONE=-0.0001, T_DKIM_INVALID=0.01] autolearn=no
+Authentication-Results: mm01.cs.columbia.edu (amavisd-new); dkim=softfail
+	(fail, message has been altered) header.i=@gmail.com
+Received: from mm01.cs.columbia.edu ([127.0.0.1])
+	by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id SZ5LMipUhCCd; Thu,  4 May 2017 12:41:30 -0400 (EDT)
+Received: from mm01.cs.columbia.edu (localhost [127.0.0.1])
+	by mm01.cs.columbia.edu (Postfix) with ESMTP id C008440AF5;
+	Thu,  4 May 2017 12:41:30 -0400 (EDT)
+Received: from localhost (localhost [127.0.0.1])
+ by mm01.cs.columbia.edu (Postfix) with ESMTP id EA40B40AF5
+ for <kvmarm@lists.cs.columbia.edu>; Thu,  4 May 2017 12:41:28 -0400 (EDT)
+X-Virus-Scanned: at lists.cs.columbia.edu
+Received: from mm01.cs.columbia.edu ([127.0.0.1])
+ by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id hNKfZgcAO554 for <kvmarm@lists.cs.columbia.edu>;
+ Thu,  4 May 2017 12:41:27 -0400 (EDT)
+Received: from mail-yw0-f178.google.com (mail-yw0-f178.google.com
+ [209.85.161.178])
+ by mm01.cs.columbia.edu (Postfix) with ESMTPS id A981F40190
+ for <kvmarm@lists.cs.columbia.edu>; Thu,  4 May 2017 12:41:27 -0400 (EDT)
+Received: by mail-yw0-f178.google.com with SMTP id 203so9488718ywe.0
+ for <kvmarm@lists.cs.columbia.edu>; Thu, 04 May 2017 09:44:34 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+ :content-transfer-encoding;
+ bh=cKMLpvp0F8eSA+L5liE8hJ1hr4FVvs6VVyl5NL/2myY=;
+ b=TydTe2bIRs+K4Q+kmMvqtKeaOYSXd7i1esV34ETXjxkfjx0xYLCGendYIuKgQsx11q
+ L6GsZ1jzLW9oJbpDOmjEzh1OyqcCwrmbslnvmgxMtWBWgNCu16OZpiTQAhkS+FaYYunk
+ QrDob1jDZf/DBBEZoUt5MhMsMZ8nIvPYDlBZwCp3nLaN3fIii+cIN7H/mZYH4OO/SMNs
+ yF1+ee4Lqd12dRl0jysMr0LSsqJMrgF8pis1HUhd/MzGEThI9Ufs8OPCDPjxD8G9vktU
+ Zi4tv1fveeyBW3icBZvHXNecmmFRoAz+5uBJGn0+QQF65kwu4/+Ox9e4ePXE7PAwRfS/
+ 5r5g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+ :message-id:subject:to:content-transfer-encoding;
+ bh=cKMLpvp0F8eSA+L5liE8hJ1hr4FVvs6VVyl5NL/2myY=;
+ b=ImOZmrNzL1XAWH9nNnRMexXxRfLrH4Fv4PF5lly3EAlao3pZjOALgNssLNxGMY+8ZX
+ +vYCNm/hOyktHfej7DWo8xNlQ3rrlFQ5WGfFZZSrjJmhGoA4dj16x1j6EOBur17j/9Zf
+ iIfu6ogH9u0jJE+3ZXS9XZU6S4qxrXOh1C8VWaq9UwEjw66a9A3SvLuW4kQmaEJeLP+E
+ PiaXo4bJM7Uu02U4jtXUf32xFdOWXprFi1Ieg81cLnteRVWkPo3eqZa+tRlW4hjeozwj
+ Dkk+T5/+MCt1s3A802WqjjalYEOUy05XAGhZs1hN55AqyCau0PWIhH30DCvK4eaLWFga
+ 8WIw==
+X-Gm-Message-State: AN3rC/6PAXYaESO7ydwDDOHqXmL6xxITkpeW0mN0CmawPxhmcHkpeRkO
+ xjVF51Itf5KVdrpbJRa5I9SnViBtwA==
+X-Received: by 10.13.193.131 with SMTP id c125mr34804074ywd.213.1493916273395; 
+ Thu, 04 May 2017 09:44:33 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="qFgkTsE6LiHkLPZw"
-Content-Disposition: inline
-In-Reply-To: <20170503144240.GL3482@thinpad.lan.raisama.net>
-User-Agent: Mutt/1.8.0 (2017-02-23)
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2401:3900:2:1::2
-Subject: Re: [Qemu-arm] [PATCH v2 05/24] numa: move source of default CPUs
- to NUMA node mapping into boards
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.21
+Received: by 10.129.172.99 with HTTP; Thu, 4 May 2017 09:44:33 -0700 (PDT)
+In-Reply-To: <CAMj-D2DO_CfvD77izsGfggoKP45HSC9aD6auUPAYC9Yeq_aX7w@mail.gmail.com>
+References: <CAMj-D2DO_CfvD77izsGfggoKP45HSC9aD6auUPAYC9Yeq_aX7w@mail.gmail.com>
+From: gengdongjiu <gengdj.1984@gmail.com>
+Date: Fri, 5 May 2017 00:44:33 +0800
+Message-ID: <CAMj-D2BVerutQXg0AArBvWrB04x9jYF+ACMQCZu3FT92kReZBg@mail.gmail.com>
+Subject: Re:
+To: mtsirkin@redhat.com, kvm@vger.kernel.org, 
+ Tyler Baicar <tbaicar@codeaurora.org>, qemu-devel@nongnu.org, 
+ Xiongfeng Wang <wangxiongfeng2@huawei.com>, ben@skyportsystems.com,
+ linux@armlinux.org.uk, 
+ kvmarm@lists.cs.columbia.edu, huangshaoyu@huawei.com, lersek@redhat.com, 
+ songwenjun@huawei.com, wuquanming@huawei.com, 
+ Marc Zyngier <marc.zyngier@arm.com>, qemu-arm@nongnu.org, imammedo@redhat.com, 
+ linux-arm-kernel@lists.infradead.org, 
+ Ard Biesheuvel <ard.biesheuvel@linaro.org>, pbonzini@redhat.com, 
+ James Morse <james.morse@arm.com>
+X-BeenThere: kvmarm@lists.cs.columbia.edu
+X-Mailman-Version: 2.1.14
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jones <drjones@redhat.com>,
-	Shannon Zhao <zhaoshenglong@huawei.com>, qemu-devel@nongnu.org,
-	qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
-	Paolo Bonzini <pbonzini@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
-	Eric Blake <eblake@redhat.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: YXD9Jk+l4Klz
+List-Id: Where KVM/ARM decisions are made <kvmarm.lists.cs.columbia.edu>
+List-Unsubscribe: <https://lists.cs.columbia.edu/mailman/options/kvmarm>,
+ <mailto:kvmarm-request@lists.cs.columbia.edu?subject=unsubscribe>
+List-Archive: <https://lists.cs.columbia.edu/pipermail/kvmarm>
+List-Post: <mailto:kvmarm@lists.cs.columbia.edu>
+List-Help: <mailto:kvmarm-request@lists.cs.columbia.edu?subject=help>
+List-Subscribe: <https://lists.cs.columbia.edu/mailman/listinfo/kvmarm>,
+ <mailto:kvmarm-request@lists.cs.columbia.edu?subject=subscribe>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Errors-To: kvmarm-bounces@lists.cs.columbia.edu
+Sender: kvmarm-bounces@lists.cs.columbia.edu
+X-TUID: 2FboJvFeZirO
 
-
---qFgkTsE6LiHkLPZw
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-On Wed, May 03, 2017 at 11:42:40AM -0300, Eduardo Habkost wrote:
-> On Wed, May 03, 2017 at 02:56:59PM +0200, Igor Mammedov wrote:
-> > Originally CPU threads were by default assigned in
-> > round-robin fashion. However it was causing issues in
-> > guest since CPU threads from the same socket/core could
-> > be placed on different NUMA nodes.
-> > Commit fb43b73b (pc: fix default VCPU to NUMA node mapping)
-> > fixed it by grouping threads within a socket on the same node
-> > introducing cpu_index_to_socket_id() callback and commit
-> > 20bb648d (spapr: Fix default NUMA node allocation for threads)
-> > reused callback to fix similar issues for SPAPR machine
-> > even though socket doesn't make much sense there.
-> >=20
-> > As result QEMU ended up having 3 default distribution rules
-> > used by 3 targets /virt-arm, spapr, pc/.
-> >=20
-> > In effort of moving NUMA mapping for CPUs into possible_cpus,
-> > generalize default mapping in numa.c by making boards decide
-> > on default mapping and let them explicitly tell generic
-> > numa code to which node a CPU thread belongs to by replacing
-> > cpu_index_to_socket_id() with @cpu_index_to_instance_props()
-> > which provides default node_id assigned by board to specified
-> > cpu_index.
-> >=20
-> > Signed-off-by: Igor Mammedov <imammedo@redhat.com>
->=20
-> Reviewed-by: Eduardo Habkost <ehabkost@redhat.com>
->=20
-> Just two extra comments below:
->=20
-> [...]
-> > +static CpuInstanceProperties
-> > +virt_cpu_index_to_props(MachineState *ms, unsigned cpu_index)
-> > +{
-> > +    MachineClass *mc =3D MACHINE_GET_CLASS(ms);
-> > +    const CPUArchIdList *possible_cpus =3D mc->possible_cpu_arch_ids(m=
-s);
-> > +
-> > +    assert(cpu_index < possible_cpus->len);
-> > +    return possible_cpus->cpus[cpu_index].props;;
-> > +}
-> > +
-> [...]
-> > +static CpuInstanceProperties
-> > +pc_cpu_index_to_props(MachineState *ms, unsigned cpu_index)
-> >  {
-> > +    MachineClass *mc =3D MACHINE_GET_CLASS(ms);
-> > +    const CPUArchIdList *possible_cpus =3D mc->possible_cpu_arch_ids(m=
-s);
-> > +
-> > +    assert(cpu_index < possible_cpus->len);
-> > +    return possible_cpus->cpus[cpu_index].props;;
-> >  }
->=20
-> The fact that these two implementations look exactly the same
-> made me wonder:
->=20
-> 1) Why this isn't the default implementation;
-> 2) Why exactly spapr needs a different implementation.
->=20
-> Then I noticed that there's nothing in the common machine code
-> that specifies that possible_cpus->cpus[] is indexed by
-> cpu_index. This means it is indeed safer to require each machine
-> to provide its own cpu_index_to_props implementation than having
-> a default implementation that can unexpectedly break (e.g. if
-> granularity at possible_cpus is not at VCPU/thread level).
->=20
-> I would still like to have an abstraction that wouldn't require
-> writing machine-specific code (e.g. cpu_index ranges to
-> possible_cpus like David suggested), but that's for a follow-up
-> series.
-
-Yeah, that similarity bothered me to, but like you I realised the
-problem is that spapr simply doesn't have the same granularity of
-information as x86 and ARM - there's only one entry per core for PAPR
-instead of one per thread.
-
-So, we do need a machine specific mapping of cpu_index to location
-properties, which is what the callback is for.
-
-It does occur to me that another way of accomplishing that would be
-for possible_cpu_arch_ids() to create a cpu_index->props mapping as a
-simple array ofpointers, in addition to the list of possiblee props
-structures.
-
-Not sure if that would end up looking better or not.
-
-> [...]
-> > +static CpuInstanceProperties
-> > +spapr_cpu_index_to_props(MachineState *machine, unsigned cpu_index)
-> >  {
-> > +    CPUArchId *core_slot;
-> > +    MachineClass *mc =3D MACHINE_GET_CLASS(machine);
-> > +
-> > +    /* make sure possible_cpu are intialized */
-> > +    mc->possible_cpu_arch_ids(machine);
-> > +    core_slot =3D spapr_find_cpu_slot(machine, cpu_index, NULL);
-> > +    assert(core_slot);
-> > +    return core_slot->props;
-> >  }
->=20
-> If you need to submit v3, maybe a comment here explaining why
-> spapr needs a different cpu_index_to_props implementation would
-> be helpful. I took a while to figure it out.
->=20
-
---=20
-David Gibson			| I'll have my music baroque, and my code
-david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
-				| _way_ _around_!
-http://www.ozlabs.org/~dgibson
-
---qFgkTsE6LiHkLPZw
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v2
-
-iQIcBAEBCAAGBQJZCtj9AAoJEGw4ysog2bOSo7oP/0k4x31sVyXtnHIuuK6tOTgd
-hK+UsIyxIDYD9U513sEypfb3hNd4bX4ZLECQPtZYrwf05KkW2Ul499SoKcxYxCYM
-Vdb1WSUfNhhzcaNgk3bo5ID9b6+MqI3o8e2qFOWMLFqWlBNpPRezC1jWr0KXrBlj
-VgLUpjRXubZ6hBKZsp4Zbu0SpW8lUqu/n2FujGQQRrdFS+y/rvyIIzOlqz9U6Ar8
-rzYJhQ44Teamq5Q7d5gFg11fIZnSmtKxocqYkZ+rjaPGD79OftQ7nRYxWHwRI7US
-w6kH7wx4hQOsaE1z+LVlq+58EX77UlkD2YExY8GHYyXxjQOO0ljEJKGfqPSi47eV
-0PcCM7c1F6RkZYcuZ1e6NvEOGhQ5LbfNpxJwcD2git0xBajTfijzuJwN8Gz0IsHX
-dLZ6qhIYWN+hOSv8Qy9ZlA16cW+O5Z7ZS6n031vd93HitTwzE/014greViNM+gw2
-Tijs1KZo2kENA7cbmZP+VRlBG96/ME+oI8+NIGsyvFd6QE9+n2chdvETxi/ieoRe
-kGf9cg597DBhJFF/UV7fbkLOMHQzSQdZ8UhhkKx63kVebtax9vNrxqJBv/KCzPgm
-3+4tgH+nUdMrdn56UBJKA4BhbyHmVFmMQyyn5+1PoVNOizaAni86/DUMYQvgCM8Y
-NW/wvaOv9+OC8Azh1HZw
-=QDpq
------END PGP SIGNATURE-----
-
---qFgkTsE6LiHkLPZw--
+RGVhciBKYW1lcywKICAgVGhhbmtzIGEgbG90IGZvciB5b3VyIHJldmlldyBhbmQgY29tbWVudHMu
+IEkgYW0gdmVyeSBzb3JyeSBmb3IgdGhlCmxhdGUgcmVzcG9uc2UuCgoKMjAxNy0wNS0wNCAyMzo0
+MiBHTVQrMDg6MDAgZ2VuZ2RvbmdqaXUgPGdlbmdkai4xOTg0QGdtYWlsLmNvbT46Cj4gIEhpIERv
+bmdqaXUgR2VuZywKPgo+IE9uIDMwLzA0LzE3IDA2OjM3LCBEb25naml1IEdlbmcgd3JvdGU6Cj4+
+IHdoZW4gaGFwcGVuIFNFQSwgZGVsaXZlciBzaWduYWwgYnVzIGFuZCBoYW5kbGUgdGhlIGlvY3Rs
+IHRoYXQKPj4gaW5qZWN0IFNFQSBhYm9ydCB0byBndWVzdCwgc28gdGhhdCBndWVzdCBjYW4gaGFu
+ZGxlIHRoZSBTRUEgZXJyb3IuCj4KPj4gZGlmZiAtLWdpdCBhL2FyY2gvYXJtL2t2bS9tbXUuYyBi
+L2FyY2gvYXJtL2t2bS9tbXUuYwo+PiBpbmRleCAxMDViNmFiLi5hOTY1OTRmIDEwMDY0NAo+PiAt
+LS0gYS9hcmNoL2FybS9rdm0vbW11LmMKPj4gKysrIGIvYXJjaC9hcm0va3ZtL21tdS5jCj4+IEBA
+IC0yMCw4ICsyMCwxMCBAQAo+PiBAQCAtMTIzOCw2ICsxMjQwLDM2IEBAIHN0YXRpYyB2b2lkIGNv
+aGVyZW50X2NhY2hlX2d1ZXN0X3BhZ2Uoc3RydWN0IGt2bV92Y3B1ICp2Y3B1LCBrdm1fcGZuX3Qg
+cGZuLAo+PiAgIF9fY29oZXJlbnRfY2FjaGVfZ3Vlc3RfcGFnZSh2Y3B1LCBwZm4sIHNpemUpOwo+
+PiAgfQo+Pgo+PiArc3RhdGljIHZvaWQga3ZtX3NlbmRfc2lnbmFsKHVuc2lnbmVkIGxvbmcgYWRk
+cmVzcywgYm9vbCBodWdldGxiLCBib29sIGh3cG9pc29uKQo+PiArewo+PiArIHNpZ2luZm9fdCBp
+bmZvOwo+PiArCj4+ICsgaW5mby5zaV9zaWdubyAgID0gU0lHQlVTOwo+PiArIGluZm8uc2lfZXJy
+bm8gICA9IDA7Cj4+ICsgaWYgKGh3cG9pc29uKQo+PiArIGluZm8uc2lfY29kZSAgICA9IEJVU19N
+Q0VFUlJfQVI7Cj4+ICsgZWxzZQo+PiArIGluZm8uc2lfY29kZSAgICA9IDA7Cj4+ICsKPj4gKyBp
+bmZvLnNpX2FkZHIgICAgPSAodm9pZCBfX3VzZXIgKilhZGRyZXNzOwo+PiArIGlmIChodWdldGxi
+KQo+PiArIGluZm8uc2lfYWRkcl9sc2IgPSBQTURfU0hJRlQ7Cj4+ICsgZWxzZQo+PiArIGluZm8u
+c2lfYWRkcl9sc2IgPSBQQUdFX1NISUZUOwo+PiArCj4+ICsgc2VuZF9zaWdfaW5mbyhTSUdCVVMs
+ICZpbmZvLCBjdXJyZW50KTsKPj4gK30KPj4gKwo+IMKrICBbaGlkZSBwYXJ0IG9mIHF1b3RlXQo+
+Cj4gUHVuaXQgcmV2aWV3ZWQgdGhlIG90aGVyIHZlcnNpb24gb2YgdGhpcyBwYXRjaCwgdGhpcyBQ
+TURfU0hJRlQgaXMgbm90IHRoZSByaWdodAo+IHRoaW5nIHRvIGRvLCBpdCBuZWVkcyBhIG1vcmUg
+YWNjdXJhdGUgc2V0IG9mIGNhbGxzIGFuZCBzaGlmdHMgYXMgdGhlcmUgbWF5IGJlCj4gaHVnZXRs
+YmZzIHBhZ2VzIG90aGVyIHRoYW4gUE1EX1NJWkUuCj4KPiBodHRwczovL3d3dy5zcGluaWNzLm5l
+dC9saXN0cy9hcm0ta2VybmVsL21zZzU2ODkxOS5odG1sCj4KPiBJIGhhdmVuJ3QgcG9zdGVkIGEg
+bmV3IHZlcnNpb24gb2YgdGhhdCBwYXRjaCBiZWNhdXNlIEkgd2FzIHN0aWxsIGh1bnRpbmcgYSBi
+dWcKPiBpbiB0aGUgaHVnZXBhZ2UvaHdwb2lzb24gY29kZSwgZXZlbiB3aXRoIFB1bml0J3MgZml4
+ZXMgc2VyaWVzIEkgc2VlIC1FRkFVTFQKPiByZXR1cm5lZCB0byB1c2Vyc3BhY2UgaW5zdGVhZCBv
+ZiB0aGlzIGh3cG9pc29uIGNvZGUgYmVpbmcgaW52b2tlZC4KCiAgT2ssIGdvdCBpdCwgdGhhbmtz
+IGZvciB5b3VyIGluZm9ybWF0aW9uLgo+Cj4gUGxlYXNlIGF2b2lkIGR1cGxpY2F0aW5nIGZ1bmN0
+aW9uYWxpdHkgYmV0d2VlbiBwYXRjaGVzLCBpdCB3YXN0ZXMgcmV2aWV3ZXJzCj4gdGltZSwgZXNw
+ZWNpYWxseSB3aGVuIHdlIGtub3cgdGhlcmUgYXJlIHByb2JsZW1zIHdpdGggdGhpcyBhcHByb2Fj
+aC4KPgo+Cj4+ICtzdGF0aWMgdm9pZCBrdm1faGFuZGxlX2JhZF9wYWdlKHVuc2lnbmVkIGxvbmcg
+YWRkcmVzcywKPj4gKyBib29sIGh1Z2V0bGIsIGJvb2wgaHdwb2lzb24pCj4+ICt7Cj4+ICsgLyog
+aGFuZGxlIGJvdGggaHdwb2lzb24gYW5kIG90aGVyIHN5bmNocm9ub3VzIGV4dGVybmFsIEFib3J0
+ICovCj4+ICsgaWYgKGh3cG9pc29uKQo+PiArIGt2bV9zZW5kX3NpZ25hbChhZGRyZXNzLCBodWdl
+dGxiLCB0cnVlKTsKPj4gKyBlbHNlCj4+ICsga3ZtX3NlbmRfc2lnbmFsKGFkZHJlc3MsIGh1Z2V0
+bGIsIGZhbHNlKTsKPj4gK30KPgo+IFdoeSB0aGUgZXh0cmEgbGV2ZWwgb2YgaW5kaXJlY3Rpb24/
+IFdlIG9ubHkgd2FudCB0byBzaWduYWwgdXNlcnNwYWNlIGxpa2UgdGhpcwo+IGZyb20gS1ZNIGZv
+ciBod3BvaXNvbi4gU2lnbmFscyBmb3IgUkFTIHJlbGF0ZWQgcmVhc29ucyBzaG91bGQgY29tZSBm
+cm9tIHRoZSBiaXRzCj4gb2YgdGhlIGtlcm5lbCB0aGF0IGRlY29kZWQgdGhlIGVycm9yLgoKRm9y
+IHRoZSBTRUEsIHRoZSBhcmUgbWFpbHkgdHdvIHR5cGVzOgowYjAxMDAwMCBTeW5jaHJvbm91cyBF
+eHRlcm5hbCBBYm9ydCBvbiBtZW1vcnkgYWNjZXNzLgowYjAxMDF4eCBTeW5jaHJvbm91cyBFeHRl
+cm5hbCBBYm9ydCBvbiBwYWdlIHRhYmxlIHdhbGsuIERGU0NbMTowXQplbmNvZGUgdGhlIGxldmVs
+LgoKaHdwb2lzb24gc2hvdWxkIGJlbG9uZyB0byB0aGUgICJTeW5jaHJvbm91cyBFeHRlcm5hbCBB
+Ym9ydCBvbiBtZW1vcnkgYWNjZXNzIgppZiB0aGUgU0VBIHR5cGUgaXMgbm90IGh3cG9pc29uLCBz
+dWNoIGFzIHBhZ2UgdGFibGUgd2FsaywgZG8geW91IG1lYW4KS1ZNIGRvIG5vdCBkZWxpdmVyIHRo
+ZSBTSUdCVVM/CklmIHNvLCBob3cgdGhlIEtWTSBoYW5kbGUgdGhlIFNFQSB0eXBlIG90aGVyIHRo
+YW4gaHdwb2lzb24/Cgo+Cj4gKGh3cG9pc29uIGZvciBLVk0gaXMgYSBjb3JuZXIgY2FzZSBhcyBR
+ZW11J3MgbWVtb3J5IGVmZmVjdGl2ZWx5IGhhcyB0d28gdXNlcnMsCj4gUWVtdSBhbmQgS1ZNLiBU
+aGlzIGlzbid0IHRoZSBleGFtcGxlIG9mIGhvdyB1c2VyLXNwYWNlIGdldHMgc2lnbmFsbGVkLikK
+Pgo+Cj4+IGRpZmYgLS1naXQgYS9hcmNoL2FybTY0L2t2bS9ndWVzdC5jIGIvYXJjaC9hcm02NC9r
+dm0vZ3Vlc3QuYwo+PiBpbmRleCBiMzc0NDZhLi43ODBlM2M0IDEwMDY0NAo+PiAtLS0gYS9hcmNo
+L2FybTY0L2t2bS9ndWVzdC5jCj4+ICsrKyBiL2FyY2gvYXJtNjQva3ZtL2d1ZXN0LmMKPj4gQEAg
+LTI3Nyw2ICsyNzcsMTMgQEAgaW50IGt2bV9hcmNoX3ZjcHVfaW9jdGxfc2V0X3NyZWdzKHN0cnVj
+dCBrdm1fdmNwdSAqdmNwdSwKPj4gICByZXR1cm4gLUVJTlZBTDsKPj4gIH0KPj4KPj4gK2ludCBr
+dm1fdmNwdV9pb2N0bF9zZWEoc3RydWN0IGt2bV92Y3B1ICp2Y3B1KQo+PiArewo+PiArIGt2bV9p
+bmplY3RfZGFidCh2Y3B1LCBrdm1fdmNwdV9nZXRfaGZhcih2Y3B1KSk7Cj4+ICsKPj4gKyByZXR1
+cm4gMDsKPj4gK30KPgo+PiBkaWZmIC0tZ2l0IGEvaW5jbHVkZS91YXBpL2xpbnV4L2t2bS5oIGIv
+aW5jbHVkZS91YXBpL2xpbnV4L2t2bS5oCj4+IGluZGV4IGJiMDI5MDkuLjFkMmUyZTcgMTAwNjQ0
+Cj4+IC0tLSBhL2luY2x1ZGUvdWFwaS9saW51eC9rdm0uaAo+PiArKysgYi9pbmNsdWRlL3VhcGkv
+bGludXgva3ZtLmgKPj4gQEAgLTEzMDYsNiArMTMwNiw3IEBAIHN0cnVjdCBrdm1fczM5MF91Y2Fz
+X21hcHBpbmcgewo+PiAgI2RlZmluZSBLVk1fUzM5MF9HRVRfSVJRX1NUQVRFICBfSU9XKEtWTUlP
+LCAweGI2LCBzdHJ1Y3Qga3ZtX3MzOTBfaXJxX3N0YXRlKQo+PiAgLyogQXZhaWxhYmxlIHdpdGgg
+S1ZNX0NBUF9YODZfU01NICovCj4+ICAjZGVmaW5lIEtWTV9TTUkgICAgICAgICAgICAgICAgICAg
+X0lPKEtWTUlPLCAgIDB4YjcpCj4+ICsjZGVmaW5lIEtWTV9BUk1fU0VBICAgICAgICAgICAgICAg
+X0lPKEtWTUlPLCAgIDB4YjgpCj4+Cj4+ICAjZGVmaW5lIEtWTV9ERVZfQVNTSUdOX0VOQUJMRV9J
+T01NVSAoMSA8PCAwKQo+PiAgI2RlZmluZSBLVk1fREVWX0FTU0lHTl9QQ0lfMl8zICgxIDw8IDEp
+Cj4+Cj4KPiBXaHkgZG8gd2UgbmVlZCBhIHVzZXJzcGFjZSBBUEkgZm9yIFNFQT8gSXQgY2FuIGFs
+c28gYmUgZG9uZSBieSB1c2luZwo+IEtWTV97RyxTfUVUX09ORV9SRUcgdG8gY2hhbmdlIHRoZSB2
+Y3B1IHJlZ2lzdGVycy4gVGhlIGFkdmFudGFnZSBvZiBkb2luZyBpdCB0aGlzCj4gd2F5IGlzIHlv
+dSBjYW4gY2hvb3NlIHdoaWNoIEVTUiB2YWx1ZSB0byB1c2UuCj4KPiBBZGRpbmcgYSBuZXcgQVBJ
+IGNhbGwgdG8gZG8gc29tZXRoaW5nIHlvdSBjb3VsZCBkbyB3aXRoIGFuIG9sZCBvbmUgZG9lc24n
+dCBsb29rCj4gcmlnaHQuCgpKYW1lcywgSSBjb25zaWRlcmVkIHlvdXIgc3VnZ2VzdGlvbiBiZWZv
+cmUgdGhhdCB1c2UgdGhlCktWTV97RyxTfUVUX09ORV9SRUcgdG8gY2hhbmdlIHRoZSB2Y3B1IHJl
+Z2lzdGVycy4gYnV0IEkgZm91bmQgaXQgZG9lcwpub3QgaGF2ZSBkaWZmZXJlbmNlIHRvIHVzZSB0
+aGUgYWxyZWFkIGV4aXN0ZWQgS1ZNIEFQSS4gIHNvIG1heSBiZQpjaGFuZ2luZyB0aGUgdmNwdSBy
+ZWdpc3RlcnMgaW4gcWVtdSB3aWxsIGR1cGxpY2F0ZSB3aXRoIHRoZSBLVk0gQVBJcy4KCmluamVj
+dGlvbiBhIFNFQSBpcyBubyBtb3JlIHRoYW4gc2V0dGluZyBzb21lIHJlZ2lzdGVyczogZWxyX2Vs
+MSwgUEMsClBTVEFURSwgU1BTUl9lbDEsIGZhcl9lbDEsIGVzcl9lbDEKSSBzZWVuIHRoaXMgS1ZN
+IEFQSSBkbyB0aGUgc2FtZSB0aGluZyBhcyBRZW11LiAgZG8geW91IGZvdW5kIGNhbGwgdGhpcwpB
+UEkgd2lsbCBoYXZlIGlzc3VlIGFuZCBuZWNlc3NhcnkgdG8gY2hvb3NlIGFub3RoZXIgRVNSIHZh
+bHVlPwoKSSBwYXN0ZWQgdGhlIGFscmVhZCBleGlzdGVkIEtWTSBBUEkgY29kZToKCnN0YXRpYyB2
+b2lkIGluamVjdF9hYnQ2NChzdHJ1Y3Qga3ZtX3ZjcHUgKnZjcHUsIGJvb2wgaXNfaWFidCwgdW5z
+aWduZWQKbG9uZyBhZGRyKQp7CiB1bnNpZ25lZCBsb25nIGNwc3IgPSAqdmNwdV9jcHNyKHZjcHUp
+OwogYm9vbCBpc19hYXJjaDMyID0gdmNwdV9tb2RlX2lzXzMyYml0KHZjcHUpOwogdTMyIGVzciA9
+IDA7CiAqdmNwdV9lbHJfZWwxKHZjcHUpID0gKnZjcHVfcGModmNwdSk7CiAqdmNwdV9wYyh2Y3B1
+KSA9IGdldF9leGNlcHRfdmVjdG9yKHZjcHUsIGV4Y2VwdF90eXBlX3N5bmMpOwogKnZjcHVfY3Bz
+cih2Y3B1KSA9IFBTVEFURV9GQVVMVF9CSVRTXzY0OwogKnZjcHVfc3Bzcih2Y3B1KSA9IGNwc3I7
+CiB2Y3B1X3N5c19yZWcodmNwdSwgRkFSX0VMMSkgPSBhZGRyOwogLyoKICAqIEJ1aWxkIGFuIHtp
+LGR9YWJvcnQsIGRlcGVuZGluZyBvbiB0aGUgbGV2ZWwgYW5kIHRoZQogICogaW5zdHJ1Y3Rpb24g
+c2V0LiBSZXBvcnQgYW4gZXh0ZXJuYWwgc3luY2hyb25vdXMgYWJvcnQuCiAgKi8KIGlmIChrdm1f
+dmNwdV90cmFwX2lsX2lzMzJiaXQodmNwdSkpCiAgZXNyIHw9IEVTUl9FTHhfSUw7CiAvKgogICog
+SGVyZSwgdGhlIGd1ZXN0IHJ1bnMgaW4gQUFyY2g2NCBtb2RlIHdoZW4gaW4gRUwxLiBJZiB3ZSBn
+ZXQKICAqIGFuIEFBcmNoMzIgZmF1bHQsIGl0IG1lYW5zIHdlIG1hbmFnZWQgdG8gdHJhcCBhbiBF
+TDAgZmF1bHQuCiAgKi8KIGlmIChpc19hYXJjaDMyIHx8IChjcHNyICYgUFNSX01PREVfTUFTSykg
+PT0gUFNSX01PREVfRUwwdCkKICBlc3IgfD0gKEVTUl9FTHhfRUNfSUFCVF9MT1cgPDwgRVNSX0VM
+eF9FQ19TSElGVCk7CiBlbHNlCiAgZXNyIHw9IChFU1JfRUx4X0VDX0lBQlRfQ1VSIDw8IEVTUl9F
+THhfRUNfU0hJRlQpOwogaWYgKCFpc19pYWJ0KQogIGVzciB8PSBFU1JfRUx4X0VDX0RBQlRfTE9X
+IDw8IEVTUl9FTHhfRUNfU0hJRlQ7CiB2Y3B1X3N5c19yZWcodmNwdSwgRVNSX0VMMSkgPSBlc3Ig
+fCBFU1JfRUx4X0ZTQ19FWFRBQlQ7Cn0KCnN0YXRpYyB2b2lkIGluamVjdF9hYnQzMihzdHJ1Y3Qg
+a3ZtX3ZjcHUgKnZjcHUsIGJvb2wgaXNfcGFidCwKICAgIHVuc2lnbmVkIGxvbmcgYWRkcikKewog
+dTMyIHZlY3Rfb2Zmc2V0OwogdTMyICpmYXIsICpmc3I7CiBib29sIGlzX2xwYWU7CiBpZiAoaXNf
+cGFidCkgewogIHZlY3Rfb2Zmc2V0ID0gMTI7CiAgZmFyID0gJnZjcHVfY3AxNSh2Y3B1LCBjNl9J
+RkFSKTsKICBmc3IgPSAmdmNwdV9jcDE1KHZjcHUsIGM1X0lGU1IpOwogfSBlbHNlIHsgLyogIWlh
+YnQgKi8KICB2ZWN0X29mZnNldCA9IDE2OwogIGZhciA9ICZ2Y3B1X2NwMTUodmNwdSwgYzZfREZB
+Uik7CiAgZnNyID0gJnZjcHVfY3AxNSh2Y3B1LCBjNV9ERlNSKTsKIH0KIHByZXBhcmVfZmF1bHQz
+Mih2Y3B1LCBDT01QQVRfUFNSX01PREVfQUJUIHwgQ09NUEFUX1BTUl9BX0JJVCwgdmVjdF9vZmZz
+ZXQpOwogKmZhciA9IGFkZHI7CiAvKiBHaXZlIHRoZSBndWVzdCBhbiBJTVBMRU1FTlRBVElPTiBE
+RUZJTkVEIGV4Y2VwdGlvbiAqLwogaXNfbHBhZSA9ICh2Y3B1X2NwMTUodmNwdSwgYzJfVFRCQ1Ip
+ID4+IDMxKTsKIGlmIChpc19scGFlKQogICpmc3IgPSAxIDw8IDkgfCAweDM0OwogZWxzZQogICpm
+c3IgPSAweDE0Owp9CgoKLyoqCiAqIGt2bV9pbmplY3RfZGFidCAtIGluamVjdCBhIGRhdGEgYWJv
+cnQgaW50byB0aGUgZ3Vlc3QKICogQHZjcHU6IFRoZSBWQ1BVIHRvIHJlY2VpdmUgdGhlIHVuZGVm
+aW5lZCBleGNlcHRpb24KICogQGFkZHI6IFRoZSBhZGRyZXNzIHRvIHJlcG9ydCBpbiB0aGUgREZB
+UgogKgogKiBJdCBpcyBhc3N1bWVkIHRoYXQgdGhpcyBjb2RlIGlzIGNhbGxlZCBmcm9tIHRoZSBW
+Q1BVIHRocmVhZCBhbmQgdGhhdCB0aGUKICogVkNQVSB0aGVyZWZvcmUgaXMgbm90IGN1cnJlbnRs
+eSBleGVjdXRpbmcgZ3Vlc3QgY29kZS4KICovCnZvaWQga3ZtX2luamVjdF9kYWJ0KHN0cnVjdCBr
+dm1fdmNwdSAqdmNwdSwgdW5zaWduZWQgbG9uZyBhZGRyKQp7CiBpZiAoISh2Y3B1LT5hcmNoLmhj
+cl9lbDIgJiBIQ1JfUlcpKQogIGluamVjdF9hYnQzMih2Y3B1LCBmYWxzZSwgYWRkcik7CiBlbHNl
+CiAgaW5qZWN0X2FidDY0KHZjcHUsIGZhbHNlLCBhZGRyKTsKfQoKCj4KPgo+IFRoYW5rcywKPgo+
+IEphbWVzCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmt2
+bWFybSBtYWlsaW5nIGxpc3QKa3ZtYXJtQGxpc3RzLmNzLmNvbHVtYmlhLmVkdQpodHRwczovL2xp
+c3RzLmNzLmNvbHVtYmlhLmVkdS9tYWlsbWFuL2xpc3RpbmZvL2t2bWFybQo=

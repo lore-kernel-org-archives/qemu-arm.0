@@ -1,68 +1,70 @@
-Received: by 10.25.0.198 with SMTP id 189csp566321lfa;
-        Thu, 4 May 2017 06:07:09 -0700 (PDT)
-X-Received: by 10.176.69.206 with SMTP id u72mr12252483uau.69.1493903229832;
-        Thu, 04 May 2017 06:07:09 -0700 (PDT)
+Received: by 10.25.0.198 with SMTP id 189csp571079lfa;
+        Thu, 4 May 2017 06:16:19 -0700 (PDT)
+X-Received: by 10.176.82.153 with SMTP id v25mr2391752uav.123.1493903779594;
+        Thu, 04 May 2017 06:16:19 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id d77si875876vka.241.2017.05.04.06.07.09
+        by mx.google.com with ESMTPS id b131si845127vkd.137.2017.05.04.06.16.19
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 04 May 2017 06:07:09 -0700 (PDT)
+        Thu, 04 May 2017 06:16:19 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:41905 helo=lists.gnu.org)
+Received: from localhost ([::1]:41945 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1d6GTN-0001J2-66
-	for alex.bennee@linaro.org; Thu, 04 May 2017 09:07:09 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:41010)
+	id 1d6GcE-0005PA-BO
+	for alex.bennee@linaro.org; Thu, 04 May 2017 09:16:18 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:44272)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <imammedo@redhat.com>) id 1d6GT1-00018L-QX
-	for qemu-arm@nongnu.org; Thu, 04 May 2017 09:06:51 -0400
+	(envelope-from <drjones@redhat.com>) id 1d6Gc8-0005Nm-WA
+	for qemu-arm@nongnu.org; Thu, 04 May 2017 09:16:14 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <imammedo@redhat.com>) id 1d6GSr-0002HY-Qw
-	for qemu-arm@nongnu.org; Thu, 04 May 2017 09:06:47 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:32872)
+	(envelope-from <drjones@redhat.com>) id 1d6Gc4-0007IQ-T6
+	for qemu-arm@nongnu.org; Thu, 04 May 2017 09:16:12 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:47054)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <imammedo@redhat.com>)
-	id 1d6GSr-0002HD-Ev; Thu, 04 May 2017 09:06:37 -0400
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
-	[10.5.11.11])
+	(Exim 4.71) (envelope-from <drjones@redhat.com>)
+	id 1d6Gc4-0007Gv-KB; Thu, 04 May 2017 09:16:08 -0400
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+	[10.5.11.14])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 8475C61E5F;
-	Thu,  4 May 2017 13:06:35 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 8475C61E5F
+	by mx1.redhat.com (Postfix) with ESMTPS id 708EB61E7C;
+	Thu,  4 May 2017 13:16:07 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 708EB61E7C
 Authentication-Results: ext-mx10.extmail.prod.ext.phx2.redhat.com;
 	dmarc=none (p=none dis=none) header.from=redhat.com
 Authentication-Results: ext-mx10.extmail.prod.ext.phx2.redhat.com;
-	spf=pass smtp.mailfrom=imammedo@redhat.com
-DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com 8475C61E5F
-Received: from nial.brq.redhat.com (dhcp-1-118.brq.redhat.com [10.34.1.118])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 47FA118EFF;
-	Thu,  4 May 2017 13:06:33 +0000 (UTC)
-Date: Thu, 4 May 2017 15:06:31 +0200
-From: Igor Mammedov <imammedo@redhat.com>
-To: Andrew Jones <drjones@redhat.com>
-Message-ID: <20170504150631.7841566c@nial.brq.redhat.com>
-In-Reply-To: <20170504124312.tbvwxgmws2asjgko@kamzik.brq.redhat.com>
+	spf=pass smtp.mailfrom=drjones@redhat.com
+DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com 708EB61E7C
+Received: from kamzik.brq.redhat.com (kamzik.brq.redhat.com [10.34.1.143])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 384575DD67;
+	Thu,  4 May 2017 13:16:05 +0000 (UTC)
+Date: Thu, 4 May 2017 15:16:02 +0200
+From: Andrew Jones <drjones@redhat.com>
+To: Igor Mammedov <imammedo@redhat.com>
+Message-ID: <20170504131602.4v5pbh6t2skrjici@kamzik.brq.redhat.com>
 References: <1493816238-33120-1-git-send-email-imammedo@redhat.com>
-	<1493816238-33120-22-git-send-email-imammedo@redhat.com>
-	<20170504124312.tbvwxgmws2asjgko@kamzik.brq.redhat.com>
+	<1493816238-33120-4-git-send-email-imammedo@redhat.com>
+	<20170504093822.2u4p7z7qjcyorbto@kamzik.brq.redhat.com>
+	<20170504145509.394ce832@nial.brq.redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20170504145509.394ce832@nial.brq.redhat.com>
+User-Agent: Mutt/1.6.0.1 (2016-04-01)
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
 	(mx1.redhat.com [10.5.110.39]);
-	Thu, 04 May 2017 13:06:35 +0000 (UTC)
+	Thu, 04 May 2017 13:16:07 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [PATCH v2 21/24] numa: use possible_cpus for not
- mapped CPUs check
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v2 03/24] hw/arm/virt: use
+ machine->possible_cpus for storing possible topology info
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -78,149 +80,100 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
 	Eduardo Habkost <ehabkost@redhat.com>, qemu-devel@nongnu.org,
 	qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
 	Shannon Zhao <zhaoshenglong@huawei.com>,
-	Paolo Bonzini <pbonzini@redhat.com>, Eric Blake <eblake@redhat.com>,
+	Paolo Bonzini <pbonzini@redhat.com>,
 	David Gibson <david@gibson.dropbear.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 8nqimRzk46fg
+X-TUID: lT4NeK5hMxTM
 
-On Thu, 4 May 2017 14:43:12 +0200
-Andrew Jones <drjones@redhat.com> wrote:
-
-> On Wed, May 03, 2017 at 02:57:15PM +0200, Igor Mammedov wrote:
-> > and remove corresponding part in numa.c that uses
-> > node_cpu bitmaps.
+On Thu, May 04, 2017 at 02:55:09PM +0200, Igor Mammedov wrote:
+> On Thu, 4 May 2017 11:38:22 +0200
+> Andrew Jones <drjones@redhat.com> wrote:
+> 
+> > On Wed, May 03, 2017 at 02:56:57PM +0200, Igor Mammedov wrote:
+> > > for now precalculate and store mp_afinity in possible_cpus
+> > > as ARM cpus don't have socket/core/thread-id properties yet.
+> > > In follow patches possible_cpus will be used for storing
+> > > and setting NUMA node mapping and replace legacy bitmap
+> > > based numa_info[node_id].node_cpu/numa_get_node_for_cpu()
+> > > 
+> > > For the lack of better idea, this patch cannibalizes
+> > > possible_cpus.cpus[x].props.thread_id so that
+> > > *_cpu_index_to_props() callback could return addressable
+> > > by props CPU which will be used by machine_set_cpu_numa_node()
+> > > in follow up patches to assign a CPU to node. But
+> > > cannibalizing is fine for now as that thread_id isn't exposed
+> > > to users (no hotpluggable_cpus callback support for ARM yet)
+> > > and it will be used only internally until 'device_add cpu'
+> > > is supported where we can decide on which properties to use.
+> > > 
+> > > Signed-off-by: Igor Mammedov <imammedo@redhat.com>
+> > > ---
+> > > v2:
+> > >   (Drew)
+> > >     - discarding result of possible_cpu_arch_ids() makes
+> > >       call not obvious and is confusing. Instead assign
+> > >       possible_cpu_arch_ids() result to local var and use
+> > >       it instead of direct access to machine->possible_cpus
+> > >       field, as it's done in pc.c
+> > > ---
+> > >  hw/arm/virt.c | 40 +++++++++++++++++++++++++++++++++++++---
+> > >  1 file changed, 37 insertions(+), 3 deletions(-)
+> > > 
+> > > diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+> > > index 61ae437..e2c5626 100644
+> > > --- a/hw/arm/virt.c
+> > > +++ b/hw/arm/virt.c
+> > > @@ -1221,6 +1221,8 @@ static void machvirt_init(MachineState *machine)
+> > >  {
+> > >      VirtMachineState *vms = VIRT_MACHINE(machine);
+> > >      VirtMachineClass *vmc = VIRT_MACHINE_GET_CLASS(machine);
+> > > +    MachineClass *mc = MACHINE_GET_CLASS(machine);
+> > > +    const CPUArchIdList *possible_cpus;
+> > >      qemu_irq pic[NUM_IRQS];
+> > >      MemoryRegion *sysmem = get_system_memory();
+> > >      MemoryRegion *secure_sysmem = NULL;
+> > > @@ -1344,10 +1346,16 @@ static void machvirt_init(MachineState *machine)
+> > >          exit(1);
+> > >      }
+> > >  
+> > > -    for (n = 0; n < smp_cpus; n++) {
+> > > -        Object *cpuobj = object_new(typename);
+> > > +    possible_cpus = mc->possible_cpu_arch_ids(machine);
+> > > +    for (n = 0; n < possible_cpus->len; n++) {
+> > > +        Object *cpuobj;
+> > >  
+> > > -        object_property_set_int(cpuobj, virt_cpu_mp_affinity(vms, n),
+> > > +        if (n >= smp_cpus) {
+> > > +            break;
+> > > +        }  
 > > 
-> > Signed-off-by: Igor Mammedov <imammedo@redhat.com>
-> > Reviewed-by: David Gibson <david@gibson.dropbear.id.au>
-> > ---
-> > It's one more less user of node_cpu bitmpas, following
-> > commit will remove the last user along with
-> > node_cpu itself.
-> > ---
-> >  hw/core/machine.c | 58 +++++++++++++++++++++++++++++++++++++++++++++++++++++++
-> >  numa.c            | 10 ----------
-> >  2 files changed, 58 insertions(+), 10 deletions(-)
-> > 
-> > diff --git a/hw/core/machine.c b/hw/core/machine.c
-> > index 217b4f4..4229054 100644
-> > --- a/hw/core/machine.c
-> > +++ b/hw/core/machine.c
-> > @@ -19,6 +19,7 @@
-> >  #include "sysemu/sysemu.h"
-> >  #include "qemu/error-report.h"
-> >  #include "qemu/cutils.h"
-> > +#include "sysemu/numa.h"
-> >  
-> >  static char *machine_get_accel(Object *obj, Error **errp)
-> >  {
-> > @@ -648,9 +649,66 @@ bool machine_mem_merge(MachineState *machine)
-> >      return machine->mem_merge;
-> >  }
-> >  
-> > +static char *cpu_slot_to_string(const CPUArchId *cpu)
-> > +{
-> > +    GString *s = g_string_new(NULL);
-> > +    if (cpu->props.has_socket_id) {
-> > +        g_string_append_printf(s, "socket-id: %"PRId64, cpu->props.socket_id);
-> > +    }
-> > +    if (cpu->props.has_core_id) {
-> > +        if (s->len) {
-> > +            g_string_append_printf(s, ", ");
-> > +        }
-> > +        g_string_append_printf(s, "core-id: %"PRId64, cpu->props.core_id);
-> > +    }
-> > +    if (cpu->props.has_thread_id) {
-> > +        if (s->len) {
-> > +            g_string_append_printf(s, ", ");
-> > +        }
-> > +        g_string_append_printf(s, "thread-id: %"PRId64, cpu->props.thread_id);
-> > +    }
-> > +    return g_string_free(s, false);
-> > +}
-> > +
-> > +static void machine_numa_validate(MachineState *machine)
-> > +{
-> > +    int i;
-> > +    GString *s = g_string_new(NULL);
-> > +    MachineClass *mc = MACHINE_GET_CLASS(machine);
-> > +    const CPUArchIdList *possible_cpus = mc->possible_cpu_arch_ids(machine);
-> > +
-> > +    assert(nb_numa_nodes);  
+> > Why the break instead of just looping 'n < smp_cpus' like x86 does? Is
+> > there some future work where looping up to possible_cpus->len (aka
+> > max_cpus) is what we'll eventually want? If so, then we need a TODO
+> > comment here. If not, then we should clean this up by removing the break.
+> There is no plans to loop here upto possible_cpus->len.
 > 
-> Can't this be
+> It seemed to me more consistent/safer to use index limited
+> by possible_cpus->len to index possible_cpus->cpus[n] array
+> than index limited by smp_cpus though the former currently is
+> always less than smp_cpus.
+         ^ greater than or equal to
 > 
->  if (!nb_numa_nodes)
->    return;
-> 
-> instead? And then..
-> 
-> > +    for (i = 0; i < possible_cpus->len; i++) {
-> > +        const CPUArchId *cpu_slot = &possible_cpus->cpus[i];
-> > +
-> > +        /* at this point numa mappings are initilized by CLI options
-> > +         * or with default mappings so it's sufficient to list
-> > +         * all not yet mapped CPUs here */
-> > +        /* TODO: make it hard error in future */
-> > +        if (!cpu_slot->props.has_node_id) {
-> > +            char *cpu_str = cpu_slot_to_string(cpu_slot);
-> > +            g_string_append_printf(s, "%sCPU %d [%s]", s->len ? ", " : "", i,
-> > +                                   cpu_str);
-> > +            g_free(cpu_str);
-> > +        }
-> > +    }
-> > +    if (s->len) {
-> > +        error_report("warning: CPU(s) not present in any NUMA nodes: %s",
-> > +                     s->str);
-> > +        error_report("warning: All CPU(s) up to maxcpus should be described "
-> > +                     "in NUMA config, ability to start up with partial NUMA "
-> > +                     "mappings is obsoleted and will be removed in future");
-> > +    }
-> > +    g_string_free(s, true);
-> > +}
-> > +
-> >  void machine_run_board_init(MachineState *machine)
-> >  {
-> >      MachineClass *machine_class = MACHINE_GET_CLASS(machine);
-> > +
-> > +    if (nb_numa_nodes) {
-> > +        machine_numa_validate(machine);
-> > +    }  
-> 
-> ...this condition wouldn't be necessary.
-I prefer to keep such conditions in the caller as during review/reading
-it allows to exclude jumping into called function if condition is not
-relevant for considered usecase.
+> If you prefer 'n < smp_cpus' loop, then I can switch to it.
 
-> 
-> >      machine_class->init(machine);
-> >  }
-> >  
-> > diff --git a/numa.c b/numa.c
-> > index f8c849d..d7aa662 100644
-> > --- a/numa.c
-> > +++ b/numa.c
-> > @@ -293,16 +293,6 @@ static void validate_numa_cpus(void)
-> >          bitmap_or(seen_cpus, seen_cpus,
-> >                    numa_info[i].node_cpu, max_cpus);
-> >      }
-> > -
-> > -    if (!bitmap_full(seen_cpus, max_cpus)) {
-> > -        char *msg;
-> > -        bitmap_complement(seen_cpus, seen_cpus, max_cpus);
-> > -        msg = enumerate_cpus(seen_cpus, max_cpus);
-> > -        error_report("warning: CPU(s) not present in any NUMA nodes: %s", msg);
-> > -        error_report("warning: All CPU(s) up to maxcpus should be described "
-> > -                     "in NUMA config");
-> > -        g_free(msg);
-> > -    }
-> >      g_free(seen_cpus);
-> >  }
-> >  
-> > -- 
-> > 2.7.4
-> >  
-> 
-> Otherwise
-> Reviewed-by: Andrew Jones <drjones@redhat.com> 
+I just don't like the 'if (n >= smp_cpus) { break; }' - the whole thing
+would look much nicer without it. And, if there's a valid concern that
+possible_cpus->len can be < smp_cpus, then we should check it in x86
+too. Anyway we can check both conditions in the 'for', which would
+look a bit more pleasing to me...
 
+ for (n = 0; n < possible_cpus->len && n < smp_cpus; n++) {
+     Object *cpuobj = object_new(typename);
+     object_property_set_int(cpuobj, possible_cpus->cpus[n].arch_id,
+                             "mp-affinity", NULL);
+     ...
+
+All that said, it's just a nit in the end, so
+
+Reviewed-by: Andrew Jones <drjones@redhat.com>

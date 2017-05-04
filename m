@@ -1,137 +1,208 @@
-Received: by 10.25.0.198 with SMTP id 189csp550688lfa;
-        Thu, 4 May 2017 05:30:43 -0700 (PDT)
-X-Received: by 10.159.48.81 with SMTP id i17mr5514826uab.144.1493901043581;
-        Thu, 04 May 2017 05:30:43 -0700 (PDT)
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 10.25.0.198 with SMTP id 189csp551421lfa;
+        Thu, 4 May 2017 05:32:26 -0700 (PDT)
+X-Received: by 10.176.24.196 with SMTP id d4mr12950761uah.45.1493901145932;
+        Thu, 04 May 2017 05:32:25 -0700 (PDT)
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id u69si831434uau.50.2017.05.04.05.30.43
+        by mx.google.com with ESMTPS id f30si868767vki.125.2017.05.04.05.32.25
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 04 May 2017 05:30:43 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Thu, 04 May 2017 05:32:25 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:41705 helo=lists.gnu.org)
+Received: from localhost ([::1]:41711 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1d6Fu7-0000na-24
-	for alex.bennee@linaro.org; Thu, 04 May 2017 08:30:43 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:59489)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1d6Fvl-0001hF-Bb
+	for alex.bennee@linaro.org; Thu, 04 May 2017 08:32:25 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:59588)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <drjones@redhat.com>) id 1d6Ftz-0000mq-1i
-	for qemu-arm@nongnu.org; Thu, 04 May 2017 08:30:35 -0400
+	(envelope-from <drjones@redhat.com>) id 1d6FuS-000130-8r
+	for qemu-devel@nongnu.org; Thu, 04 May 2017 08:31:06 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <drjones@redhat.com>) id 1d6Ftv-0004eo-UE
-	for qemu-arm@nongnu.org; Thu, 04 May 2017 08:30:35 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:52856)
+	(envelope-from <drjones@redhat.com>) id 1d6FuM-0004mG-6V
+	for qemu-devel@nongnu.org; Thu, 04 May 2017 08:31:04 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:26967)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <drjones@redhat.com>)
-	id 1d6Ftv-0004ed-Ns; Thu, 04 May 2017 08:30:31 -0400
+	id 1d6FuE-0004kR-75; Thu, 04 May 2017 08:30:50 -0400
 Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
 	[10.5.11.15])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 10DF34E4CA;
-	Thu,  4 May 2017 12:30:30 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 10DF34E4CA
-Authentication-Results: ext-mx09.extmail.prod.ext.phx2.redhat.com;
+	by mx1.redhat.com (Postfix) with ESMTPS id 1E8EF3B717;
+	Thu,  4 May 2017 12:30:49 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 1E8EF3B717
+Authentication-Results: ext-mx06.extmail.prod.ext.phx2.redhat.com;
 	dmarc=none (p=none dis=none) header.from=redhat.com
-Authentication-Results: ext-mx09.extmail.prod.ext.phx2.redhat.com;
+Authentication-Results: ext-mx06.extmail.prod.ext.phx2.redhat.com;
 	spf=pass smtp.mailfrom=drjones@redhat.com
-DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com 10DF34E4CA
+DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com 1E8EF3B717
 Received: from kamzik.brq.redhat.com (kamzik.brq.redhat.com [10.34.1.143])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 41B8F1838C;
-	Thu,  4 May 2017 12:30:24 +0000 (UTC)
-Date: Thu, 4 May 2017 14:30:21 +0200
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 51DC118380;
+	Thu,  4 May 2017 12:30:47 +0000 (UTC)
+Date: Thu, 4 May 2017 14:30:44 +0200
 From: Andrew Jones <drjones@redhat.com>
 To: Igor Mammedov <imammedo@redhat.com>
-Message-ID: <20170504123021.hnvrteifvt7jk6en@kamzik.brq.redhat.com>
+Message-ID: <20170504123044.dieszx6qvezdz5zf@kamzik.brq.redhat.com>
 References: <1493816238-33120-1-git-send-email-imammedo@redhat.com>
-	<1493816238-33120-13-git-send-email-imammedo@redhat.com>
+	<1493816238-33120-14-git-send-email-imammedo@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <1493816238-33120-13-git-send-email-imammedo@redhat.com>
+In-Reply-To: <1493816238-33120-14-git-send-email-imammedo@redhat.com>
 User-Agent: Mutt/1.6.0.1 (2016-04-01)
 X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.38]);
-	Thu, 04 May 2017 12:30:30 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.30]);
+	Thu, 04 May 2017 12:30:49 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v2 12/24] numa: add
- numa_[has_]node_id() wrappers
-X-BeenThere: qemu-arm@nongnu.org
+Subject: Re: [Qemu-devel] [PATCH v2 13/24] pc: get numa node mapping from
+ possible_cpus instead of numa_get_node_for_cpu()
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>,
 	Eduardo Habkost <ehabkost@redhat.com>, qemu-devel@nongnu.org,
 	qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
 	Shannon Zhao <zhaoshenglong@huawei.com>,
 	Paolo Bonzini <pbonzini@redhat.com>,
 	David Gibson <david@gibson.dropbear.id.au>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Hvp7GUC9O6RV
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: Yp+/BoJuzYSp
 
-On Wed, May 03, 2017 at 02:57:06PM +0200, Igor Mammedov wrote:
-> wrappers should make access to [has]node_id fields more readable
-> 
+On Wed, May 03, 2017 at 02:57:07PM +0200, Igor Mammedov wrote:
 > Signed-off-by: Igor Mammedov <imammedo@redhat.com>
 > ---
->  follow up patches will use this wrappers
->  v2:
->     - add wrappers (Drew)
+> v2:
+>    use numa_[has_]node_id() wrappers (Drew)
 > ---
->  include/sysemu/numa.h | 10 ++++++++++
->  numa.c                |  2 +-
->  2 files changed, 11 insertions(+), 1 deletion(-)
+>  hw/acpi/cpu.c        |  7 +++----
+>  hw/i386/acpi-build.c | 11 ++++-------
+>  hw/i386/pc.c         | 18 ++++++++++--------
+>  3 files changed, 17 insertions(+), 19 deletions(-)
 > 
-> diff --git a/include/sysemu/numa.h b/include/sysemu/numa.h
-> index 46ea6c7..98d01e6 100644
-> --- a/include/sysemu/numa.h
-> +++ b/include/sysemu/numa.h
-> @@ -35,4 +35,14 @@ uint32_t numa_get_node(ram_addr_t addr, Error **errp);
->  /* on success returns node index in numa_info,
->   * on failure returns nb_numa_nodes */
->  int numa_get_node_for_cpu(int idx);
-> +
-> +static inline bool numa_has_node_id(const CPUArchIdList *possible_cpus, int idx)
-> +{
-> +    return possible_cpus->cpus[idx].props.has_node_id;
-> +}
-> +
-> +static inline int numa_node_id(const CPUArchIdList *possible_cpus, int idx)
-> +{
-> +    return possible_cpus->cpus[idx].props.node_id;
-> +}
->  #endif
-> diff --git a/numa.c b/numa.c
-> index c7e3e0a..872ee0d 100644
-> --- a/numa.c
-> +++ b/numa.c
-> @@ -394,7 +394,7 @@ void parse_numa_opts(MachineState *ms)
+> diff --git a/hw/acpi/cpu.c b/hw/acpi/cpu.c
+> index 8c719d3..2002198 100644
+> --- a/hw/acpi/cpu.c
+> +++ b/hw/acpi/cpu.c
+> @@ -503,7 +503,6 @@ void build_cpus_aml(Aml *table, MachineState *machine, CPUHotplugFeatures opts,
 >  
->          possible_cpus = mc->possible_cpu_arch_ids(ms);
->          for (i = 0; i < possible_cpus->len; i++) {
-> -            if (possible_cpus->cpus[i].props.has_node_id) {
-> +            if (numa_has_node_id(possible_cpus, i)) {
->                  break;
+>          /* build Processor object for each processor */
+>          for (i = 0; i < arch_ids->len; i++) {
+> -            int j;
+>              Aml *dev;
+>              Aml *uid = aml_int(i);
+>              GArray *madt_buf = g_array_new(0, 1, 1);
+> @@ -557,9 +556,9 @@ void build_cpus_aml(Aml *table, MachineState *machine, CPUHotplugFeatures opts,
+>               * as a result _PXM is required for all CPUs which might
+>               * be hot-plugged. For simplicity, add it for all CPUs.
+>               */
+> -            j = numa_get_node_for_cpu(i);
+> -            if (j < nb_numa_nodes) {
+> -                aml_append(dev, aml_name_decl("_PXM", aml_int(j)));
+> +            if (numa_has_node_id(arch_ids, i)) {
+> +                aml_append(dev,
+> +                    aml_name_decl("_PXM", aml_int(numa_node_id(arch_ids, i))));
 >              }
+>  
+>              aml_append(cpus_dev, dev);
+> diff --git a/hw/i386/acpi-build.c b/hw/i386/acpi-build.c
+> index 2073108..a66a968 100644
+> --- a/hw/i386/acpi-build.c
+> +++ b/hw/i386/acpi-build.c
+> @@ -2306,7 +2306,8 @@ build_srat(GArray *table_data, BIOSLinker *linker, MachineState *machine)
+>      srat->reserved1 = cpu_to_le32(1);
+>  
+>      for (i = 0; i < apic_ids->len; i++) {
+> -        int j = numa_get_node_for_cpu(i);
+> +        int node_id = numa_has_node_id(apic_ids, i) ?
+> +            numa_node_id(apic_ids, i) : 0;
+>          uint32_t apic_id = apic_ids->cpus[i].arch_id;
+>  
+>          if (apic_id < 255) {
+> @@ -2316,9 +2317,7 @@ build_srat(GArray *table_data, BIOSLinker *linker, MachineState *machine)
+>              core->type = ACPI_SRAT_PROCESSOR_APIC;
+>              core->length = sizeof(*core);
+>              core->local_apic_id = apic_id;
+> -            if (j < nb_numa_nodes) {
+> -                core->proximity_lo = j;
+> -            }
+> +            core->proximity_lo = node_id;
+>              memset(core->proximity_hi, 0, 3);
+>              core->local_sapic_eid = 0;
+>              core->flags = cpu_to_le32(1);
+> @@ -2329,9 +2328,7 @@ build_srat(GArray *table_data, BIOSLinker *linker, MachineState *machine)
+>              core->type = ACPI_SRAT_PROCESSOR_x2APIC;
+>              core->length = sizeof(*core);
+>              core->x2apic_id = cpu_to_le32(apic_id);
+> -            if (j < nb_numa_nodes) {
+> -                core->proximity_domain = cpu_to_le32(j);
+> -            }
+> +            core->proximity_domain = cpu_to_le32(node_id);
+>              core->flags = cpu_to_le32(1);
 >          }
+>      }
+> diff --git a/hw/i386/pc.c b/hw/i386/pc.c
+> index 4a4fb1c..aeecf4b 100644
+> --- a/hw/i386/pc.c
+> +++ b/hw/i386/pc.c
+> @@ -747,7 +747,9 @@ static FWCfgState *bochs_bios_init(AddressSpace *as, PCMachineState *pcms)
+>  {
+>      FWCfgState *fw_cfg;
+>      uint64_t *numa_fw_cfg;
+> -    int i, j;
+> +    int i;
+> +    const CPUArchIdList *cpus;
+> +    MachineClass *mc = MACHINE_GET_CLASS(pcms);
+>  
+>      fw_cfg = fw_cfg_init_io_dma(FW_CFG_IO_BASE, FW_CFG_IO_BASE + 4, as);
+>      fw_cfg_add_i16(fw_cfg, FW_CFG_NB_CPUS, pcms->boot_cpus);
+> @@ -782,12 +784,12 @@ static FWCfgState *bochs_bios_init(AddressSpace *as, PCMachineState *pcms)
+>       */
+>      numa_fw_cfg = g_new0(uint64_t, 1 + pcms->apic_id_limit + nb_numa_nodes);
+>      numa_fw_cfg[0] = cpu_to_le64(nb_numa_nodes);
+> -    for (i = 0; i < max_cpus; i++) {
+> -        unsigned int apic_id = x86_cpu_apic_id_from_index(i);
+> +    cpus = mc->possible_cpu_arch_ids(MACHINE(pcms));
+> +    for (i = 0; i < cpus->len; i++) {
+> +        unsigned int apic_id = cpus->cpus[i].arch_id;
+>          assert(apic_id < pcms->apic_id_limit);
+> -        j = numa_get_node_for_cpu(i);
+> -        if (j < nb_numa_nodes) {
+> -            numa_fw_cfg[apic_id + 1] = cpu_to_le64(j);
+> +        if (numa_has_node_id(cpus, i)) {
+> +            numa_fw_cfg[apic_id + 1] = cpu_to_le64(numa_node_id(cpus, i));
+>          }
+>      }
+>      for (i = 0; i < nb_numa_nodes; i++) {
+> @@ -1984,8 +1986,8 @@ static void pc_cpu_pre_plug(HotplugHandler *hotplug_dev,
+>      cs = CPU(cpu);
+>      cs->cpu_index = idx;
+>  
+> -    node_id = numa_get_node_for_cpu(cs->cpu_index);
+> -    if (node_id == nb_numa_nodes) {
+> +    node_id = cpu_slot->props.node_id;
+> +    if (!cpu_slot->props.has_node_id) {
+>          /* by default CPUState::numa_node was 0 if it's not set via CLI
+>           * keep it this way for now but in future we probably should
+>           * refuse to start up with incomplete numa mapping */
 > -- 
 > 2.7.4
 > 
 >
 
-Reviewed-by: Andrew Jones <drjones@redhat.com>
+Reviewed-by: Andrew Jones <drjones@redhat.com> 

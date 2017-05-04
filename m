@@ -1,74 +1,61 @@
-Received: by 10.25.0.198 with SMTP id 189csp673851lfa;
-        Thu, 4 May 2017 09:44:39 -0700 (PDT)
-X-Received: by 10.55.38.69 with SMTP id y66mr8575088qkg.204.1493916278991;
-        Thu, 04 May 2017 09:44:38 -0700 (PDT)
-Return-Path: <kvmarm-bounces@lists.cs.columbia.edu>
-Received: from mm01.cs.columbia.edu (mm01.cs.columbia.edu. [128.59.11.253])
-        by mx.google.com with ESMTP id o9si2283549qtb.78.2017.05.04.09.44.38;
-        Thu, 04 May 2017 09:44:38 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) client-ip=128.59.11.253;
+Received: by 10.25.0.198 with SMTP id 189csp674165lfa;
+        Thu, 4 May 2017 09:45:24 -0700 (PDT)
+X-Received: by 10.176.80.38 with SMTP id b35mr11825967uaa.103.1493916324836;
+        Thu, 04 May 2017 09:45:24 -0700 (PDT)
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
+        by mx.google.com with ESMTPS id f186si1216579vkd.99.2017.05.04.09.45.24
+        for <alex.bennee@linaro.org>
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Thu, 04 May 2017 09:45:24 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=neutral (body hash did not verify) header.i=@gmail.com;
-       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu;
+       dkim=fail header.i=@gmail.com;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: from localhost (localhost [127.0.0.1])
-	by mm01.cs.columbia.edu (Postfix) with ESMTP id E188040BDE;
-	Thu,  4 May 2017 12:41:31 -0400 (EDT)
-X-Virus-Scanned: at lists.cs.columbia.edu
-X-Spam-Flag: NO
-X-Spam-Score: 0.911
-X-Spam-Level: 
-X-Spam-Status: No, score=0.911 required=6.1 tests=[BAYES_00=-1.9,
-	DKIM_ADSP_CUSTOM_MED=0.001, DKIM_SIGNED=0.1,
-	DNS_FROM_AHBL_RHSBL=2.699, FREEMAIL_FROM=0.001,
-	RCVD_IN_DNSWL_NONE=-0.0001, T_DKIM_INVALID=0.01] autolearn=no
-Authentication-Results: mm01.cs.columbia.edu (amavisd-new); dkim=softfail
-	(fail, message has been altered) header.i=@gmail.com
-Received: from mm01.cs.columbia.edu ([127.0.0.1])
-	by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id SZ5LMipUhCCd; Thu,  4 May 2017 12:41:30 -0400 (EDT)
-Received: from mm01.cs.columbia.edu (localhost [127.0.0.1])
-	by mm01.cs.columbia.edu (Postfix) with ESMTP id C008440AF5;
-	Thu,  4 May 2017 12:41:30 -0400 (EDT)
-Received: from localhost (localhost [127.0.0.1])
- by mm01.cs.columbia.edu (Postfix) with ESMTP id EA40B40AF5
- for <kvmarm@lists.cs.columbia.edu>; Thu,  4 May 2017 12:41:28 -0400 (EDT)
-X-Virus-Scanned: at lists.cs.columbia.edu
-Received: from mm01.cs.columbia.edu ([127.0.0.1])
- by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id hNKfZgcAO554 for <kvmarm@lists.cs.columbia.edu>;
- Thu,  4 May 2017 12:41:27 -0400 (EDT)
-Received: from mail-yw0-f178.google.com (mail-yw0-f178.google.com
- [209.85.161.178])
- by mm01.cs.columbia.edu (Postfix) with ESMTPS id A981F40190
- for <kvmarm@lists.cs.columbia.edu>; Thu,  4 May 2017 12:41:27 -0400 (EDT)
-Received: by mail-yw0-f178.google.com with SMTP id 203so9488718ywe.0
- for <kvmarm@lists.cs.columbia.edu>; Thu, 04 May 2017 09:44:34 -0700 (PDT)
+Received: from localhost ([::1]:43055 helo=lists.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1d6Jsa-0004si-9a
+	for alex.bennee@linaro.org; Thu, 04 May 2017 12:45:24 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:54616)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <gengdj.1984@gmail.com>) id 1d6Jro-0004Wt-6M
+	for qemu-devel@nongnu.org; Thu, 04 May 2017 12:44:37 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+	(envelope-from <gengdj.1984@gmail.com>) id 1d6Jrm-0004EW-M3
+	for qemu-devel@nongnu.org; Thu, 04 May 2017 12:44:36 -0400
+Received: from mail-yw0-x231.google.com ([2607:f8b0:4002:c05::231]:35234)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <gengdj.1984@gmail.com>)
+	id 1d6Jrm-0004Ce-Fp; Thu, 04 May 2017 12:44:34 -0400
+Received: by mail-yw0-x231.google.com with SMTP id l135so9484806ywb.2;
+	Thu, 04 May 2017 09:44:34 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:in-reply-to:references:from:date:message-id:subject:to
- :content-transfer-encoding;
- bh=cKMLpvp0F8eSA+L5liE8hJ1hr4FVvs6VVyl5NL/2myY=;
- b=TydTe2bIRs+K4Q+kmMvqtKeaOYSXd7i1esV34ETXjxkfjx0xYLCGendYIuKgQsx11q
- L6GsZ1jzLW9oJbpDOmjEzh1OyqcCwrmbslnvmgxMtWBWgNCu16OZpiTQAhkS+FaYYunk
- QrDob1jDZf/DBBEZoUt5MhMsMZ8nIvPYDlBZwCp3nLaN3fIii+cIN7H/mZYH4OO/SMNs
- yF1+ee4Lqd12dRl0jysMr0LSsqJMrgF8pis1HUhd/MzGEThI9Ufs8OPCDPjxD8G9vktU
- Zi4tv1fveeyBW3icBZvHXNecmmFRoAz+5uBJGn0+QQF65kwu4/+Ox9e4ePXE7PAwRfS/
- 5r5g==
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:content-transfer-encoding;
+	bh=cKMLpvp0F8eSA+L5liE8hJ1hr4FVvs6VVyl5NL/2myY=;
+	b=TydTe2bIRs+K4Q+kmMvqtKeaOYSXd7i1esV34ETXjxkfjx0xYLCGendYIuKgQsx11q
+	L6GsZ1jzLW9oJbpDOmjEzh1OyqcCwrmbslnvmgxMtWBWgNCu16OZpiTQAhkS+FaYYunk
+	QrDob1jDZf/DBBEZoUt5MhMsMZ8nIvPYDlBZwCp3nLaN3fIii+cIN7H/mZYH4OO/SMNs
+	yF1+ee4Lqd12dRl0jysMr0LSsqJMrgF8pis1HUhd/MzGEThI9Ufs8OPCDPjxD8G9vktU
+	Zi4tv1fveeyBW3icBZvHXNecmmFRoAz+5uBJGn0+QQF65kwu4/+Ox9e4ePXE7PAwRfS/
+	5r5g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:in-reply-to:references:from:date
- :message-id:subject:to:content-transfer-encoding;
- bh=cKMLpvp0F8eSA+L5liE8hJ1hr4FVvs6VVyl5NL/2myY=;
- b=ImOZmrNzL1XAWH9nNnRMexXxRfLrH4Fv4PF5lly3EAlao3pZjOALgNssLNxGMY+8ZX
- +vYCNm/hOyktHfej7DWo8xNlQ3rrlFQ5WGfFZZSrjJmhGoA4dj16x1j6EOBur17j/9Zf
- iIfu6ogH9u0jJE+3ZXS9XZU6S4qxrXOh1C8VWaq9UwEjw66a9A3SvLuW4kQmaEJeLP+E
- PiaXo4bJM7Uu02U4jtXUf32xFdOWXprFi1Ieg81cLnteRVWkPo3eqZa+tRlW4hjeozwj
- Dkk+T5/+MCt1s3A802WqjjalYEOUy05XAGhZs1hN55AqyCau0PWIhH30DCvK4eaLWFga
- 8WIw==
-X-Gm-Message-State: AN3rC/6PAXYaESO7ydwDDOHqXmL6xxITkpeW0mN0CmawPxhmcHkpeRkO
- xjVF51Itf5KVdrpbJRa5I9SnViBtwA==
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:content-transfer-encoding;
+	bh=cKMLpvp0F8eSA+L5liE8hJ1hr4FVvs6VVyl5NL/2myY=;
+	b=IiRp+F1+bL8Slw2QhEWaI+xmEMXuXSPWSvWR2OK2TkLpS4DtS3DiirlQ2Bh9vVlW5s
+	5vkrsirwsVtYS7AcJdAKohYdeHJESwHO6Bmc5A+leY4QheHnirdBzrflr+68t/WO7dWY
+	MUAZvKo5bYqbPV6qsBcd/iXiDHRbzNUYQhBuIz7di4H9dbVzV5X9847VlBG4u93n6xvv
+	COA+P0eTZKdIH4x4s886A8WEWws5O8x7rDU+PGTa2gmd8miDXk7j+wOLg6IqLVKII2tb
+	7jrWUUEbS1k6G1xZ5DjuxI5sELVkUg9LbHUWI8H4W/hTxnhVgv8Cy3sBsen4bCze+Wvg
+	NAsg==
+X-Gm-Message-State: AN3rC/718Nk5jb4RWEa/8YmKw5L9Ahw3GLwVbrhXNG9xsj6T9FZSByMW
+	d9LR7ZcHX/B7BdKpKQZa7xvcX8NzgQ==
 X-Received: by 10.13.193.131 with SMTP id c125mr34804074ywd.213.1493916273395; 
- Thu, 04 May 2017 09:44:33 -0700 (PDT)
+	Thu, 04 May 2017 09:44:33 -0700 (PDT)
 MIME-Version: 1.0
 Received: by 10.129.172.99 with HTTP; Thu, 4 May 2017 09:44:33 -0700 (PDT)
 In-Reply-To: <CAMj-D2DO_CfvD77izsGfggoKP45HSC9aD6auUPAYC9Yeq_aX7w@mail.gmail.com>
@@ -76,155 +63,265 @@ References: <CAMj-D2DO_CfvD77izsGfggoKP45HSC9aD6auUPAYC9Yeq_aX7w@mail.gmail.com>
 From: gengdongjiu <gengdj.1984@gmail.com>
 Date: Fri, 5 May 2017 00:44:33 +0800
 Message-ID: <CAMj-D2BVerutQXg0AArBvWrB04x9jYF+ACMQCZu3FT92kReZBg@mail.gmail.com>
-Subject: Re:
 To: mtsirkin@redhat.com, kvm@vger.kernel.org, 
- Tyler Baicar <tbaicar@codeaurora.org>, qemu-devel@nongnu.org, 
- Xiongfeng Wang <wangxiongfeng2@huawei.com>, ben@skyportsystems.com,
- linux@armlinux.org.uk, 
- kvmarm@lists.cs.columbia.edu, huangshaoyu@huawei.com, lersek@redhat.com, 
- songwenjun@huawei.com, wuquanming@huawei.com, 
- Marc Zyngier <marc.zyngier@arm.com>, qemu-arm@nongnu.org, imammedo@redhat.com, 
- linux-arm-kernel@lists.infradead.org, 
- Ard Biesheuvel <ard.biesheuvel@linaro.org>, pbonzini@redhat.com, 
- James Morse <james.morse@arm.com>
-X-BeenThere: kvmarm@lists.cs.columbia.edu
-X-Mailman-Version: 2.1.14
+	Tyler Baicar <tbaicar@codeaurora.org>, qemu-devel@nongnu.org, 
+	Xiongfeng Wang <wangxiongfeng2@huawei.com>, ben@skyportsystems.com,
+	linux@armlinux.org.uk, 
+	kvmarm@lists.cs.columbia.edu, huangshaoyu@huawei.com, lersek@redhat.com,
+	songwenjun@huawei.com, wuquanming@huawei.com, 
+	Marc Zyngier <marc.zyngier@arm.com>, qemu-arm@nongnu.org,
+	imammedo@redhat.com, linux-arm-kernel@lists.infradead.org, 
+	Ard Biesheuvel <ard.biesheuvel@linaro.org>, pbonzini@redhat.com, 
+	James Morse <james.morse@arm.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:4002:c05::231
+Subject: Re: [Qemu-devel] (no subject)
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: Where KVM/ARM decisions are made <kvmarm.lists.cs.columbia.edu>
-List-Unsubscribe: <https://lists.cs.columbia.edu/mailman/options/kvmarm>,
- <mailto:kvmarm-request@lists.cs.columbia.edu?subject=unsubscribe>
-List-Archive: <https://lists.cs.columbia.edu/pipermail/kvmarm>
-List-Post: <mailto:kvmarm@lists.cs.columbia.edu>
-List-Help: <mailto:kvmarm-request@lists.cs.columbia.edu?subject=help>
-List-Subscribe: <https://lists.cs.columbia.edu/mailman/listinfo/kvmarm>,
- <mailto:kvmarm-request@lists.cs.columbia.edu?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Errors-To: kvmarm-bounces@lists.cs.columbia.edu
-Sender: kvmarm-bounces@lists.cs.columbia.edu
-X-TUID: 2FboJvFeZirO
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: X9l6AVtL+Z5P
+Message-ID: <20170504164433.-R4MwdHUh-JsguFdWx3wiBEj8zSUKYNg82YUHWq73Pg@z>
 
-RGVhciBKYW1lcywKICAgVGhhbmtzIGEgbG90IGZvciB5b3VyIHJldmlldyBhbmQgY29tbWVudHMu
-IEkgYW0gdmVyeSBzb3JyeSBmb3IgdGhlCmxhdGUgcmVzcG9uc2UuCgoKMjAxNy0wNS0wNCAyMzo0
-MiBHTVQrMDg6MDAgZ2VuZ2RvbmdqaXUgPGdlbmdkai4xOTg0QGdtYWlsLmNvbT46Cj4gIEhpIERv
-bmdqaXUgR2VuZywKPgo+IE9uIDMwLzA0LzE3IDA2OjM3LCBEb25naml1IEdlbmcgd3JvdGU6Cj4+
-IHdoZW4gaGFwcGVuIFNFQSwgZGVsaXZlciBzaWduYWwgYnVzIGFuZCBoYW5kbGUgdGhlIGlvY3Rs
-IHRoYXQKPj4gaW5qZWN0IFNFQSBhYm9ydCB0byBndWVzdCwgc28gdGhhdCBndWVzdCBjYW4gaGFu
-ZGxlIHRoZSBTRUEgZXJyb3IuCj4KPj4gZGlmZiAtLWdpdCBhL2FyY2gvYXJtL2t2bS9tbXUuYyBi
-L2FyY2gvYXJtL2t2bS9tbXUuYwo+PiBpbmRleCAxMDViNmFiLi5hOTY1OTRmIDEwMDY0NAo+PiAt
-LS0gYS9hcmNoL2FybS9rdm0vbW11LmMKPj4gKysrIGIvYXJjaC9hcm0va3ZtL21tdS5jCj4+IEBA
-IC0yMCw4ICsyMCwxMCBAQAo+PiBAQCAtMTIzOCw2ICsxMjQwLDM2IEBAIHN0YXRpYyB2b2lkIGNv
-aGVyZW50X2NhY2hlX2d1ZXN0X3BhZ2Uoc3RydWN0IGt2bV92Y3B1ICp2Y3B1LCBrdm1fcGZuX3Qg
-cGZuLAo+PiAgIF9fY29oZXJlbnRfY2FjaGVfZ3Vlc3RfcGFnZSh2Y3B1LCBwZm4sIHNpemUpOwo+
-PiAgfQo+Pgo+PiArc3RhdGljIHZvaWQga3ZtX3NlbmRfc2lnbmFsKHVuc2lnbmVkIGxvbmcgYWRk
-cmVzcywgYm9vbCBodWdldGxiLCBib29sIGh3cG9pc29uKQo+PiArewo+PiArIHNpZ2luZm9fdCBp
-bmZvOwo+PiArCj4+ICsgaW5mby5zaV9zaWdubyAgID0gU0lHQlVTOwo+PiArIGluZm8uc2lfZXJy
-bm8gICA9IDA7Cj4+ICsgaWYgKGh3cG9pc29uKQo+PiArIGluZm8uc2lfY29kZSAgICA9IEJVU19N
-Q0VFUlJfQVI7Cj4+ICsgZWxzZQo+PiArIGluZm8uc2lfY29kZSAgICA9IDA7Cj4+ICsKPj4gKyBp
-bmZvLnNpX2FkZHIgICAgPSAodm9pZCBfX3VzZXIgKilhZGRyZXNzOwo+PiArIGlmIChodWdldGxi
-KQo+PiArIGluZm8uc2lfYWRkcl9sc2IgPSBQTURfU0hJRlQ7Cj4+ICsgZWxzZQo+PiArIGluZm8u
-c2lfYWRkcl9sc2IgPSBQQUdFX1NISUZUOwo+PiArCj4+ICsgc2VuZF9zaWdfaW5mbyhTSUdCVVMs
-ICZpbmZvLCBjdXJyZW50KTsKPj4gK30KPj4gKwo+IMKrICBbaGlkZSBwYXJ0IG9mIHF1b3RlXQo+
-Cj4gUHVuaXQgcmV2aWV3ZWQgdGhlIG90aGVyIHZlcnNpb24gb2YgdGhpcyBwYXRjaCwgdGhpcyBQ
-TURfU0hJRlQgaXMgbm90IHRoZSByaWdodAo+IHRoaW5nIHRvIGRvLCBpdCBuZWVkcyBhIG1vcmUg
-YWNjdXJhdGUgc2V0IG9mIGNhbGxzIGFuZCBzaGlmdHMgYXMgdGhlcmUgbWF5IGJlCj4gaHVnZXRs
-YmZzIHBhZ2VzIG90aGVyIHRoYW4gUE1EX1NJWkUuCj4KPiBodHRwczovL3d3dy5zcGluaWNzLm5l
-dC9saXN0cy9hcm0ta2VybmVsL21zZzU2ODkxOS5odG1sCj4KPiBJIGhhdmVuJ3QgcG9zdGVkIGEg
-bmV3IHZlcnNpb24gb2YgdGhhdCBwYXRjaCBiZWNhdXNlIEkgd2FzIHN0aWxsIGh1bnRpbmcgYSBi
-dWcKPiBpbiB0aGUgaHVnZXBhZ2UvaHdwb2lzb24gY29kZSwgZXZlbiB3aXRoIFB1bml0J3MgZml4
-ZXMgc2VyaWVzIEkgc2VlIC1FRkFVTFQKPiByZXR1cm5lZCB0byB1c2Vyc3BhY2UgaW5zdGVhZCBv
-ZiB0aGlzIGh3cG9pc29uIGNvZGUgYmVpbmcgaW52b2tlZC4KCiAgT2ssIGdvdCBpdCwgdGhhbmtz
-IGZvciB5b3VyIGluZm9ybWF0aW9uLgo+Cj4gUGxlYXNlIGF2b2lkIGR1cGxpY2F0aW5nIGZ1bmN0
-aW9uYWxpdHkgYmV0d2VlbiBwYXRjaGVzLCBpdCB3YXN0ZXMgcmV2aWV3ZXJzCj4gdGltZSwgZXNw
-ZWNpYWxseSB3aGVuIHdlIGtub3cgdGhlcmUgYXJlIHByb2JsZW1zIHdpdGggdGhpcyBhcHByb2Fj
-aC4KPgo+Cj4+ICtzdGF0aWMgdm9pZCBrdm1faGFuZGxlX2JhZF9wYWdlKHVuc2lnbmVkIGxvbmcg
-YWRkcmVzcywKPj4gKyBib29sIGh1Z2V0bGIsIGJvb2wgaHdwb2lzb24pCj4+ICt7Cj4+ICsgLyog
-aGFuZGxlIGJvdGggaHdwb2lzb24gYW5kIG90aGVyIHN5bmNocm9ub3VzIGV4dGVybmFsIEFib3J0
-ICovCj4+ICsgaWYgKGh3cG9pc29uKQo+PiArIGt2bV9zZW5kX3NpZ25hbChhZGRyZXNzLCBodWdl
-dGxiLCB0cnVlKTsKPj4gKyBlbHNlCj4+ICsga3ZtX3NlbmRfc2lnbmFsKGFkZHJlc3MsIGh1Z2V0
-bGIsIGZhbHNlKTsKPj4gK30KPgo+IFdoeSB0aGUgZXh0cmEgbGV2ZWwgb2YgaW5kaXJlY3Rpb24/
-IFdlIG9ubHkgd2FudCB0byBzaWduYWwgdXNlcnNwYWNlIGxpa2UgdGhpcwo+IGZyb20gS1ZNIGZv
-ciBod3BvaXNvbi4gU2lnbmFscyBmb3IgUkFTIHJlbGF0ZWQgcmVhc29ucyBzaG91bGQgY29tZSBm
-cm9tIHRoZSBiaXRzCj4gb2YgdGhlIGtlcm5lbCB0aGF0IGRlY29kZWQgdGhlIGVycm9yLgoKRm9y
-IHRoZSBTRUEsIHRoZSBhcmUgbWFpbHkgdHdvIHR5cGVzOgowYjAxMDAwMCBTeW5jaHJvbm91cyBF
-eHRlcm5hbCBBYm9ydCBvbiBtZW1vcnkgYWNjZXNzLgowYjAxMDF4eCBTeW5jaHJvbm91cyBFeHRl
-cm5hbCBBYm9ydCBvbiBwYWdlIHRhYmxlIHdhbGsuIERGU0NbMTowXQplbmNvZGUgdGhlIGxldmVs
-LgoKaHdwb2lzb24gc2hvdWxkIGJlbG9uZyB0byB0aGUgICJTeW5jaHJvbm91cyBFeHRlcm5hbCBB
-Ym9ydCBvbiBtZW1vcnkgYWNjZXNzIgppZiB0aGUgU0VBIHR5cGUgaXMgbm90IGh3cG9pc29uLCBz
-dWNoIGFzIHBhZ2UgdGFibGUgd2FsaywgZG8geW91IG1lYW4KS1ZNIGRvIG5vdCBkZWxpdmVyIHRo
-ZSBTSUdCVVM/CklmIHNvLCBob3cgdGhlIEtWTSBoYW5kbGUgdGhlIFNFQSB0eXBlIG90aGVyIHRo
-YW4gaHdwb2lzb24/Cgo+Cj4gKGh3cG9pc29uIGZvciBLVk0gaXMgYSBjb3JuZXIgY2FzZSBhcyBR
-ZW11J3MgbWVtb3J5IGVmZmVjdGl2ZWx5IGhhcyB0d28gdXNlcnMsCj4gUWVtdSBhbmQgS1ZNLiBU
-aGlzIGlzbid0IHRoZSBleGFtcGxlIG9mIGhvdyB1c2VyLXNwYWNlIGdldHMgc2lnbmFsbGVkLikK
-Pgo+Cj4+IGRpZmYgLS1naXQgYS9hcmNoL2FybTY0L2t2bS9ndWVzdC5jIGIvYXJjaC9hcm02NC9r
-dm0vZ3Vlc3QuYwo+PiBpbmRleCBiMzc0NDZhLi43ODBlM2M0IDEwMDY0NAo+PiAtLS0gYS9hcmNo
-L2FybTY0L2t2bS9ndWVzdC5jCj4+ICsrKyBiL2FyY2gvYXJtNjQva3ZtL2d1ZXN0LmMKPj4gQEAg
-LTI3Nyw2ICsyNzcsMTMgQEAgaW50IGt2bV9hcmNoX3ZjcHVfaW9jdGxfc2V0X3NyZWdzKHN0cnVj
-dCBrdm1fdmNwdSAqdmNwdSwKPj4gICByZXR1cm4gLUVJTlZBTDsKPj4gIH0KPj4KPj4gK2ludCBr
-dm1fdmNwdV9pb2N0bF9zZWEoc3RydWN0IGt2bV92Y3B1ICp2Y3B1KQo+PiArewo+PiArIGt2bV9p
-bmplY3RfZGFidCh2Y3B1LCBrdm1fdmNwdV9nZXRfaGZhcih2Y3B1KSk7Cj4+ICsKPj4gKyByZXR1
-cm4gMDsKPj4gK30KPgo+PiBkaWZmIC0tZ2l0IGEvaW5jbHVkZS91YXBpL2xpbnV4L2t2bS5oIGIv
-aW5jbHVkZS91YXBpL2xpbnV4L2t2bS5oCj4+IGluZGV4IGJiMDI5MDkuLjFkMmUyZTcgMTAwNjQ0
-Cj4+IC0tLSBhL2luY2x1ZGUvdWFwaS9saW51eC9rdm0uaAo+PiArKysgYi9pbmNsdWRlL3VhcGkv
-bGludXgva3ZtLmgKPj4gQEAgLTEzMDYsNiArMTMwNiw3IEBAIHN0cnVjdCBrdm1fczM5MF91Y2Fz
-X21hcHBpbmcgewo+PiAgI2RlZmluZSBLVk1fUzM5MF9HRVRfSVJRX1NUQVRFICBfSU9XKEtWTUlP
-LCAweGI2LCBzdHJ1Y3Qga3ZtX3MzOTBfaXJxX3N0YXRlKQo+PiAgLyogQXZhaWxhYmxlIHdpdGgg
-S1ZNX0NBUF9YODZfU01NICovCj4+ICAjZGVmaW5lIEtWTV9TTUkgICAgICAgICAgICAgICAgICAg
-X0lPKEtWTUlPLCAgIDB4YjcpCj4+ICsjZGVmaW5lIEtWTV9BUk1fU0VBICAgICAgICAgICAgICAg
-X0lPKEtWTUlPLCAgIDB4YjgpCj4+Cj4+ICAjZGVmaW5lIEtWTV9ERVZfQVNTSUdOX0VOQUJMRV9J
-T01NVSAoMSA8PCAwKQo+PiAgI2RlZmluZSBLVk1fREVWX0FTU0lHTl9QQ0lfMl8zICgxIDw8IDEp
-Cj4+Cj4KPiBXaHkgZG8gd2UgbmVlZCBhIHVzZXJzcGFjZSBBUEkgZm9yIFNFQT8gSXQgY2FuIGFs
-c28gYmUgZG9uZSBieSB1c2luZwo+IEtWTV97RyxTfUVUX09ORV9SRUcgdG8gY2hhbmdlIHRoZSB2
-Y3B1IHJlZ2lzdGVycy4gVGhlIGFkdmFudGFnZSBvZiBkb2luZyBpdCB0aGlzCj4gd2F5IGlzIHlv
-dSBjYW4gY2hvb3NlIHdoaWNoIEVTUiB2YWx1ZSB0byB1c2UuCj4KPiBBZGRpbmcgYSBuZXcgQVBJ
-IGNhbGwgdG8gZG8gc29tZXRoaW5nIHlvdSBjb3VsZCBkbyB3aXRoIGFuIG9sZCBvbmUgZG9lc24n
-dCBsb29rCj4gcmlnaHQuCgpKYW1lcywgSSBjb25zaWRlcmVkIHlvdXIgc3VnZ2VzdGlvbiBiZWZv
-cmUgdGhhdCB1c2UgdGhlCktWTV97RyxTfUVUX09ORV9SRUcgdG8gY2hhbmdlIHRoZSB2Y3B1IHJl
-Z2lzdGVycy4gYnV0IEkgZm91bmQgaXQgZG9lcwpub3QgaGF2ZSBkaWZmZXJlbmNlIHRvIHVzZSB0
-aGUgYWxyZWFkIGV4aXN0ZWQgS1ZNIEFQSS4gIHNvIG1heSBiZQpjaGFuZ2luZyB0aGUgdmNwdSBy
-ZWdpc3RlcnMgaW4gcWVtdSB3aWxsIGR1cGxpY2F0ZSB3aXRoIHRoZSBLVk0gQVBJcy4KCmluamVj
-dGlvbiBhIFNFQSBpcyBubyBtb3JlIHRoYW4gc2V0dGluZyBzb21lIHJlZ2lzdGVyczogZWxyX2Vs
-MSwgUEMsClBTVEFURSwgU1BTUl9lbDEsIGZhcl9lbDEsIGVzcl9lbDEKSSBzZWVuIHRoaXMgS1ZN
-IEFQSSBkbyB0aGUgc2FtZSB0aGluZyBhcyBRZW11LiAgZG8geW91IGZvdW5kIGNhbGwgdGhpcwpB
-UEkgd2lsbCBoYXZlIGlzc3VlIGFuZCBuZWNlc3NhcnkgdG8gY2hvb3NlIGFub3RoZXIgRVNSIHZh
-bHVlPwoKSSBwYXN0ZWQgdGhlIGFscmVhZCBleGlzdGVkIEtWTSBBUEkgY29kZToKCnN0YXRpYyB2
-b2lkIGluamVjdF9hYnQ2NChzdHJ1Y3Qga3ZtX3ZjcHUgKnZjcHUsIGJvb2wgaXNfaWFidCwgdW5z
-aWduZWQKbG9uZyBhZGRyKQp7CiB1bnNpZ25lZCBsb25nIGNwc3IgPSAqdmNwdV9jcHNyKHZjcHUp
-OwogYm9vbCBpc19hYXJjaDMyID0gdmNwdV9tb2RlX2lzXzMyYml0KHZjcHUpOwogdTMyIGVzciA9
-IDA7CiAqdmNwdV9lbHJfZWwxKHZjcHUpID0gKnZjcHVfcGModmNwdSk7CiAqdmNwdV9wYyh2Y3B1
-KSA9IGdldF9leGNlcHRfdmVjdG9yKHZjcHUsIGV4Y2VwdF90eXBlX3N5bmMpOwogKnZjcHVfY3Bz
-cih2Y3B1KSA9IFBTVEFURV9GQVVMVF9CSVRTXzY0OwogKnZjcHVfc3Bzcih2Y3B1KSA9IGNwc3I7
-CiB2Y3B1X3N5c19yZWcodmNwdSwgRkFSX0VMMSkgPSBhZGRyOwogLyoKICAqIEJ1aWxkIGFuIHtp
-LGR9YWJvcnQsIGRlcGVuZGluZyBvbiB0aGUgbGV2ZWwgYW5kIHRoZQogICogaW5zdHJ1Y3Rpb24g
-c2V0LiBSZXBvcnQgYW4gZXh0ZXJuYWwgc3luY2hyb25vdXMgYWJvcnQuCiAgKi8KIGlmIChrdm1f
-dmNwdV90cmFwX2lsX2lzMzJiaXQodmNwdSkpCiAgZXNyIHw9IEVTUl9FTHhfSUw7CiAvKgogICog
-SGVyZSwgdGhlIGd1ZXN0IHJ1bnMgaW4gQUFyY2g2NCBtb2RlIHdoZW4gaW4gRUwxLiBJZiB3ZSBn
-ZXQKICAqIGFuIEFBcmNoMzIgZmF1bHQsIGl0IG1lYW5zIHdlIG1hbmFnZWQgdG8gdHJhcCBhbiBF
-TDAgZmF1bHQuCiAgKi8KIGlmIChpc19hYXJjaDMyIHx8IChjcHNyICYgUFNSX01PREVfTUFTSykg
-PT0gUFNSX01PREVfRUwwdCkKICBlc3IgfD0gKEVTUl9FTHhfRUNfSUFCVF9MT1cgPDwgRVNSX0VM
-eF9FQ19TSElGVCk7CiBlbHNlCiAgZXNyIHw9IChFU1JfRUx4X0VDX0lBQlRfQ1VSIDw8IEVTUl9F
-THhfRUNfU0hJRlQpOwogaWYgKCFpc19pYWJ0KQogIGVzciB8PSBFU1JfRUx4X0VDX0RBQlRfTE9X
-IDw8IEVTUl9FTHhfRUNfU0hJRlQ7CiB2Y3B1X3N5c19yZWcodmNwdSwgRVNSX0VMMSkgPSBlc3Ig
-fCBFU1JfRUx4X0ZTQ19FWFRBQlQ7Cn0KCnN0YXRpYyB2b2lkIGluamVjdF9hYnQzMihzdHJ1Y3Qg
-a3ZtX3ZjcHUgKnZjcHUsIGJvb2wgaXNfcGFidCwKICAgIHVuc2lnbmVkIGxvbmcgYWRkcikKewog
-dTMyIHZlY3Rfb2Zmc2V0OwogdTMyICpmYXIsICpmc3I7CiBib29sIGlzX2xwYWU7CiBpZiAoaXNf
-cGFidCkgewogIHZlY3Rfb2Zmc2V0ID0gMTI7CiAgZmFyID0gJnZjcHVfY3AxNSh2Y3B1LCBjNl9J
-RkFSKTsKICBmc3IgPSAmdmNwdV9jcDE1KHZjcHUsIGM1X0lGU1IpOwogfSBlbHNlIHsgLyogIWlh
-YnQgKi8KICB2ZWN0X29mZnNldCA9IDE2OwogIGZhciA9ICZ2Y3B1X2NwMTUodmNwdSwgYzZfREZB
-Uik7CiAgZnNyID0gJnZjcHVfY3AxNSh2Y3B1LCBjNV9ERlNSKTsKIH0KIHByZXBhcmVfZmF1bHQz
-Mih2Y3B1LCBDT01QQVRfUFNSX01PREVfQUJUIHwgQ09NUEFUX1BTUl9BX0JJVCwgdmVjdF9vZmZz
-ZXQpOwogKmZhciA9IGFkZHI7CiAvKiBHaXZlIHRoZSBndWVzdCBhbiBJTVBMRU1FTlRBVElPTiBE
-RUZJTkVEIGV4Y2VwdGlvbiAqLwogaXNfbHBhZSA9ICh2Y3B1X2NwMTUodmNwdSwgYzJfVFRCQ1Ip
-ID4+IDMxKTsKIGlmIChpc19scGFlKQogICpmc3IgPSAxIDw8IDkgfCAweDM0OwogZWxzZQogICpm
-c3IgPSAweDE0Owp9CgoKLyoqCiAqIGt2bV9pbmplY3RfZGFidCAtIGluamVjdCBhIGRhdGEgYWJv
-cnQgaW50byB0aGUgZ3Vlc3QKICogQHZjcHU6IFRoZSBWQ1BVIHRvIHJlY2VpdmUgdGhlIHVuZGVm
-aW5lZCBleGNlcHRpb24KICogQGFkZHI6IFRoZSBhZGRyZXNzIHRvIHJlcG9ydCBpbiB0aGUgREZB
-UgogKgogKiBJdCBpcyBhc3N1bWVkIHRoYXQgdGhpcyBjb2RlIGlzIGNhbGxlZCBmcm9tIHRoZSBW
-Q1BVIHRocmVhZCBhbmQgdGhhdCB0aGUKICogVkNQVSB0aGVyZWZvcmUgaXMgbm90IGN1cnJlbnRs
-eSBleGVjdXRpbmcgZ3Vlc3QgY29kZS4KICovCnZvaWQga3ZtX2luamVjdF9kYWJ0KHN0cnVjdCBr
-dm1fdmNwdSAqdmNwdSwgdW5zaWduZWQgbG9uZyBhZGRyKQp7CiBpZiAoISh2Y3B1LT5hcmNoLmhj
-cl9lbDIgJiBIQ1JfUlcpKQogIGluamVjdF9hYnQzMih2Y3B1LCBmYWxzZSwgYWRkcik7CiBlbHNl
-CiAgaW5qZWN0X2FidDY0KHZjcHUsIGZhbHNlLCBhZGRyKTsKfQoKCj4KPgo+IFRoYW5rcywKPgo+
-IEphbWVzCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmt2
-bWFybSBtYWlsaW5nIGxpc3QKa3ZtYXJtQGxpc3RzLmNzLmNvbHVtYmlhLmVkdQpodHRwczovL2xp
-c3RzLmNzLmNvbHVtYmlhLmVkdS9tYWlsbWFuL2xpc3RpbmZvL2t2bWFybQo=
+Dear James,
+   Thanks a lot for your review and comments. I am very sorry for the
+late response.
+
+
+2017-05-04 23:42 GMT+08:00 gengdongjiu <gengdj.1984@gmail.com>:
+>  Hi Dongjiu Geng,
+>
+> On 30/04/17 06:37, Dongjiu Geng wrote:
+>> when happen SEA, deliver signal bus and handle the ioctl that
+>> inject SEA abort to guest, so that guest can handle the SEA error.
+>
+>> diff --git a/arch/arm/kvm/mmu.c b/arch/arm/kvm/mmu.c
+>> index 105b6ab..a96594f 100644
+>> --- a/arch/arm/kvm/mmu.c
+>> +++ b/arch/arm/kvm/mmu.c
+>> @@ -20,8 +20,10 @@
+>> @@ -1238,6 +1240,36 @@ static void coherent_cache_guest_page(struct kvm_=
+vcpu *vcpu, kvm_pfn_t pfn,
+>>   __coherent_cache_guest_page(vcpu, pfn, size);
+>>  }
+>>
+>> +static void kvm_send_signal(unsigned long address, bool hugetlb, bool h=
+wpoison)
+>> +{
+>> + siginfo_t info;
+>> +
+>> + info.si_signo   =3D SIGBUS;
+>> + info.si_errno   =3D 0;
+>> + if (hwpoison)
+>> + info.si_code    =3D BUS_MCEERR_AR;
+>> + else
+>> + info.si_code    =3D 0;
+>> +
+>> + info.si_addr    =3D (void __user *)address;
+>> + if (hugetlb)
+>> + info.si_addr_lsb =3D PMD_SHIFT;
+>> + else
+>> + info.si_addr_lsb =3D PAGE_SHIFT;
+>> +
+>> + send_sig_info(SIGBUS, &info, current);
+>> +}
+>> +
+> =C2=AB  [hide part of quote]
+>
+> Punit reviewed the other version of this patch, this PMD_SHIFT is not the=
+ right
+> thing to do, it needs a more accurate set of calls and shifts as there ma=
+y be
+> hugetlbfs pages other than PMD_SIZE.
+>
+> https://www.spinics.net/lists/arm-kernel/msg568919.html
+>
+> I haven't posted a new version of that patch because I was still hunting =
+a bug
+> in the hugepage/hwpoison code, even with Punit's fixes series I see -EFAU=
+LT
+> returned to userspace instead of this hwpoison code being invoked.
+
+  Ok, got it, thanks for your information.
+>
+> Please avoid duplicating functionality between patches, it wastes reviewe=
+rs
+> time, especially when we know there are problems with this approach.
+>
+>
+>> +static void kvm_handle_bad_page(unsigned long address,
+>> + bool hugetlb, bool hwpoison)
+>> +{
+>> + /* handle both hwpoison and other synchronous external Abort */
+>> + if (hwpoison)
+>> + kvm_send_signal(address, hugetlb, true);
+>> + else
+>> + kvm_send_signal(address, hugetlb, false);
+>> +}
+>
+> Why the extra level of indirection? We only want to signal userspace like=
+ this
+> from KVM for hwpoison. Signals for RAS related reasons should come from t=
+he bits
+> of the kernel that decoded the error.
+
+For the SEA, the are maily two types:
+0b010000 Synchronous External Abort on memory access.
+0b0101xx Synchronous External Abort on page table walk. DFSC[1:0]
+encode the level.
+
+hwpoison should belong to the  "Synchronous External Abort on memory access=
+"
+if the SEA type is not hwpoison, such as page table walk, do you mean
+KVM do not deliver the SIGBUS?
+If so, how the KVM handle the SEA type other than hwpoison?
+
+>
+> (hwpoison for KVM is a corner case as Qemu's memory effectively has two u=
+sers,
+> Qemu and KVM. This isn't the example of how user-space gets signalled.)
+>
+>
+>> diff --git a/arch/arm64/kvm/guest.c b/arch/arm64/kvm/guest.c
+>> index b37446a..780e3c4 100644
+>> --- a/arch/arm64/kvm/guest.c
+>> +++ b/arch/arm64/kvm/guest.c
+>> @@ -277,6 +277,13 @@ int kvm_arch_vcpu_ioctl_set_sregs(struct kvm_vcpu *=
+vcpu,
+>>   return -EINVAL;
+>>  }
+>>
+>> +int kvm_vcpu_ioctl_sea(struct kvm_vcpu *vcpu)
+>> +{
+>> + kvm_inject_dabt(vcpu, kvm_vcpu_get_hfar(vcpu));
+>> +
+>> + return 0;
+>> +}
+>
+>> diff --git a/include/uapi/linux/kvm.h b/include/uapi/linux/kvm.h
+>> index bb02909..1d2e2e7 100644
+>> --- a/include/uapi/linux/kvm.h
+>> +++ b/include/uapi/linux/kvm.h
+>> @@ -1306,6 +1306,7 @@ struct kvm_s390_ucas_mapping {
+>>  #define KVM_S390_GET_IRQ_STATE  _IOW(KVMIO, 0xb6, struct kvm_s390_irq_s=
+tate)
+>>  /* Available with KVM_CAP_X86_SMM */
+>>  #define KVM_SMI                   _IO(KVMIO,   0xb7)
+>> +#define KVM_ARM_SEA               _IO(KVMIO,   0xb8)
+>>
+>>  #define KVM_DEV_ASSIGN_ENABLE_IOMMU (1 << 0)
+>>  #define KVM_DEV_ASSIGN_PCI_2_3 (1 << 1)
+>>
+>
+> Why do we need a userspace API for SEA? It can also be done by using
+> KVM_{G,S}ET_ONE_REG to change the vcpu registers. The advantage of doing =
+it this
+> way is you can choose which ESR value to use.
+>
+> Adding a new API call to do something you could do with an old one doesn'=
+t look
+> right.
+
+James, I considered your suggestion before that use the
+KVM_{G,S}ET_ONE_REG to change the vcpu registers. but I found it does
+not have difference to use the alread existed KVM API.  so may be
+changing the vcpu registers in qemu will duplicate with the KVM APIs.
+
+injection a SEA is no more than setting some registers: elr_el1, PC,
+PSTATE, SPSR_el1, far_el1, esr_el1
+I seen this KVM API do the same thing as Qemu.  do you found call this
+API will have issue and necessary to choose another ESR value?
+
+I pasted the alread existed KVM API code:
+
+static void inject_abt64(struct kvm_vcpu *vcpu, bool is_iabt, unsigned
+long addr)
+{
+ unsigned long cpsr =3D *vcpu_cpsr(vcpu);
+ bool is_aarch32 =3D vcpu_mode_is_32bit(vcpu);
+ u32 esr =3D 0;
+ *vcpu_elr_el1(vcpu) =3D *vcpu_pc(vcpu);
+ *vcpu_pc(vcpu) =3D get_except_vector(vcpu, except_type_sync);
+ *vcpu_cpsr(vcpu) =3D PSTATE_FAULT_BITS_64;
+ *vcpu_spsr(vcpu) =3D cpsr;
+ vcpu_sys_reg(vcpu, FAR_EL1) =3D addr;
+ /*
+  * Build an {i,d}abort, depending on the level and the
+  * instruction set. Report an external synchronous abort.
+  */
+ if (kvm_vcpu_trap_il_is32bit(vcpu))
+  esr |=3D ESR_ELx_IL;
+ /*
+  * Here, the guest runs in AArch64 mode when in EL1. If we get
+  * an AArch32 fault, it means we managed to trap an EL0 fault.
+  */
+ if (is_aarch32 || (cpsr & PSR_MODE_MASK) =3D=3D PSR_MODE_EL0t)
+  esr |=3D (ESR_ELx_EC_IABT_LOW << ESR_ELx_EC_SHIFT);
+ else
+  esr |=3D (ESR_ELx_EC_IABT_CUR << ESR_ELx_EC_SHIFT);
+ if (!is_iabt)
+  esr |=3D ESR_ELx_EC_DABT_LOW << ESR_ELx_EC_SHIFT;
+ vcpu_sys_reg(vcpu, ESR_EL1) =3D esr | ESR_ELx_FSC_EXTABT;
+}
+
+static void inject_abt32(struct kvm_vcpu *vcpu, bool is_pabt,
+    unsigned long addr)
+{
+ u32 vect_offset;
+ u32 *far, *fsr;
+ bool is_lpae;
+ if (is_pabt) {
+  vect_offset =3D 12;
+  far =3D &vcpu_cp15(vcpu, c6_IFAR);
+  fsr =3D &vcpu_cp15(vcpu, c5_IFSR);
+ } else { /* !iabt */
+  vect_offset =3D 16;
+  far =3D &vcpu_cp15(vcpu, c6_DFAR);
+  fsr =3D &vcpu_cp15(vcpu, c5_DFSR);
+ }
+ prepare_fault32(vcpu, COMPAT_PSR_MODE_ABT | COMPAT_PSR_A_BIT, vect_offset)=
+;
+ *far =3D addr;
+ /* Give the guest an IMPLEMENTATION DEFINED exception */
+ is_lpae =3D (vcpu_cp15(vcpu, c2_TTBCR) >> 31);
+ if (is_lpae)
+  *fsr =3D 1 << 9 | 0x34;
+ else
+  *fsr =3D 0x14;
+}
+
+
+/**
+ * kvm_inject_dabt - inject a data abort into the guest
+ * @vcpu: The VCPU to receive the undefined exception
+ * @addr: The address to report in the DFAR
+ *
+ * It is assumed that this code is called from the VCPU thread and that the
+ * VCPU therefore is not currently executing guest code.
+ */
+void kvm_inject_dabt(struct kvm_vcpu *vcpu, unsigned long addr)
+{
+ if (!(vcpu->arch.hcr_el2 & HCR_RW))
+  inject_abt32(vcpu, false, addr);
+ else
+  inject_abt64(vcpu, false, addr);
+}
+
+
+>
+>
+> Thanks,
+>
+> James

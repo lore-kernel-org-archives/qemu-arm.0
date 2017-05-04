@@ -1,68 +1,68 @@
-Received: by 10.25.0.198 with SMTP id 189csp552636lfa;
-        Thu, 4 May 2017 05:35:06 -0700 (PDT)
-X-Received: by 10.31.180.81 with SMTP id d78mr19595956vkf.44.1493901306522;
-        Thu, 04 May 2017 05:35:06 -0700 (PDT)
+Received: by 10.25.0.198 with SMTP id 189csp552812lfa;
+        Thu, 4 May 2017 05:35:33 -0700 (PDT)
+X-Received: by 10.176.86.28 with SMTP id y28mr5919387uaa.145.1493901333390;
+        Thu, 04 May 2017 05:35:33 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id l2si919448uah.35.2017.05.04.05.35.06
+        by mx.google.com with ESMTPS id c23si882625uah.10.2017.05.04.05.35.33
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 04 May 2017 05:35:06 -0700 (PDT)
+        Thu, 04 May 2017 05:35:33 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:41721 helo=lists.gnu.org)
+Received: from localhost ([::1]:41732 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1d6FyL-0004PJ-RB
-	for alex.bennee@linaro.org; Thu, 04 May 2017 08:35:05 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:60315)
+	id 1d6Fym-0004p7-Rq
+	for alex.bennee@linaro.org; Thu, 04 May 2017 08:35:32 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:60615)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <drjones@redhat.com>) id 1d6Fx5-000318-KM
-	for qemu-arm@nongnu.org; Thu, 04 May 2017 08:33:48 -0400
+	(envelope-from <drjones@redhat.com>) id 1d6Fye-0004nd-KG
+	for qemu-arm@nongnu.org; Thu, 04 May 2017 08:35:25 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <drjones@redhat.com>) id 1d6Fx2-0005ik-Gi
-	for qemu-arm@nongnu.org; Thu, 04 May 2017 08:33:47 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:42920)
+	(envelope-from <drjones@redhat.com>) id 1d6FyY-0006UP-QY
+	for qemu-arm@nongnu.org; Thu, 04 May 2017 08:35:24 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:42186)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <drjones@redhat.com>)
-	id 1d6Fx2-0005hu-6h; Thu, 04 May 2017 08:33:44 -0400
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
-	[10.5.11.12])
+	id 1d6FyY-0006U7-Kf; Thu, 04 May 2017 08:35:18 -0400
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+	[10.5.11.14])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 1D64E448D62;
-	Thu,  4 May 2017 12:33:43 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 1D64E448D62
-Authentication-Results: ext-mx05.extmail.prod.ext.phx2.redhat.com;
+	by mx1.redhat.com (Postfix) with ESMTPS id 4B17C7F7AD;
+	Thu,  4 May 2017 12:35:17 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 4B17C7F7AD
+Authentication-Results: ext-mx04.extmail.prod.ext.phx2.redhat.com;
 	dmarc=none (p=none dis=none) header.from=redhat.com
-Authentication-Results: ext-mx05.extmail.prod.ext.phx2.redhat.com;
+Authentication-Results: ext-mx04.extmail.prod.ext.phx2.redhat.com;
 	spf=pass smtp.mailfrom=drjones@redhat.com
-DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com 1D64E448D62
+DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com 4B17C7F7AD
 Received: from kamzik.brq.redhat.com (kamzik.brq.redhat.com [10.34.1.143])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 02FE47E2E8;
-	Thu,  4 May 2017 12:33:40 +0000 (UTC)
-Date: Thu, 4 May 2017 14:33:38 +0200
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 6B1495DD67;
+	Thu,  4 May 2017 12:35:01 +0000 (UTC)
+Date: Thu, 4 May 2017 14:34:58 +0200
 From: Andrew Jones <drjones@redhat.com>
 To: Igor Mammedov <imammedo@redhat.com>
-Message-ID: <20170504123338.vnvyxeisxftxtpd7@kamzik.brq.redhat.com>
+Message-ID: <20170504123458.sehggkxpci3w2emq@kamzik.brq.redhat.com>
 References: <1493816238-33120-1-git-send-email-imammedo@redhat.com>
-	<1493816238-33120-16-git-send-email-imammedo@redhat.com>
+	<1493816238-33120-19-git-send-email-imammedo@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <1493816238-33120-16-git-send-email-imammedo@redhat.com>
+In-Reply-To: <1493816238-33120-19-git-send-email-imammedo@redhat.com>
 User-Agent: Mutt/1.6.0.1 (2016-04-01)
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.29]);
-	Thu, 04 May 2017 12:33:43 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.28]);
+	Thu, 04 May 2017 12:35:17 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [PATCH v2 15/24] virt-arm: get numa node mapping
- from possible_cpus instead of numa_get_node_for_cpu()
+Subject: Re: [Qemu-arm] [PATCH v2 18/24] numa: remove no longer used
+ numa_get_node_for_cpu()
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -82,105 +82,58 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
 	David Gibson <david@gibson.dropbear.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: woVB+DryXL0l
+X-TUID: TjBY3QbemM20
 
-On Wed, May 03, 2017 at 02:57:09PM +0200, Igor Mammedov wrote:
-> Signed-off-by: Igor Mammedov <imammedo@redhat.com>
-> ---
-> v2:
->    use numa_[has_]node_id() wrappers (Drew)
-> ---
->  hw/arm/virt-acpi-build.c | 19 +++++++------------
->  hw/arm/virt.c            | 13 +++++++------
->  2 files changed, 14 insertions(+), 18 deletions(-)
+On Wed, May 03, 2017 at 02:57:12PM +0200, Igor Mammedov wrote:
+> it's been replaced by fetching mapping info from possible_cpus
 > 
-> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-> index 0835e59..2404bb1 100644
-> --- a/hw/arm/virt-acpi-build.c
-> +++ b/hw/arm/virt-acpi-build.c
-> @@ -486,30 +486,25 @@ build_srat(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
->      AcpiSystemResourceAffinityTable *srat;
->      AcpiSratProcessorGiccAffinity *core;
->      AcpiSratMemoryAffinity *numamem;
-> -    int i, j, srat_start;
-> +    int i, srat_start;
->      uint64_t mem_base;
-> -    uint32_t *cpu_node = g_malloc0(vms->smp_cpus * sizeof(uint32_t));
+> Signed-off-by: Igor Mammedov <imammedo@redhat.com>
+> Reviewed-by: David Gibson <david@gibson.dropbear.id.au>
+> ---
+>  include/sysemu/numa.h |  4 ----
+>  numa.c                | 14 --------------
+>  2 files changed, 18 deletions(-)
+> 
+> diff --git a/include/sysemu/numa.h b/include/sysemu/numa.h
+> index 98d01e6..9077bb2 100644
+> --- a/include/sysemu/numa.h
+> +++ b/include/sysemu/numa.h
+> @@ -32,10 +32,6 @@ void numa_set_mem_node_id(ram_addr_t addr, uint64_t size, uint32_t node);
+>  void numa_unset_mem_node_id(ram_addr_t addr, uint64_t size, uint32_t node);
+>  uint32_t numa_get_node(ram_addr_t addr, Error **errp);
+>  
+> -/* on success returns node index in numa_info,
+> - * on failure returns nb_numa_nodes */
+> -int numa_get_node_for_cpu(int idx);
 > -
-> -    for (i = 0; i < vms->smp_cpus; i++) {
-> -        j = numa_get_node_for_cpu(i);
-> -        if (j < nb_numa_nodes) {
-> -                cpu_node[i] = j;
+>  static inline bool numa_has_node_id(const CPUArchIdList *possible_cpus, int idx)
+>  {
+>      return possible_cpus->cpus[idx].props.has_node_id;
+> diff --git a/numa.c b/numa.c
+> index 872ee0d..06c42e9 100644
+> --- a/numa.c
+> +++ b/numa.c
+> @@ -583,20 +583,6 @@ MemdevList *qmp_query_memdev(Error **errp)
+>      return list;
+>  }
+>  
+> -int numa_get_node_for_cpu(int idx)
+> -{
+> -    int i;
+> -
+> -    assert(idx < max_cpus);
+> -
+> -    for (i = 0; i < nb_numa_nodes; i++) {
+> -        if (test_bit(idx, numa_info[i].node_cpu)) {
+> -            break;
 > -        }
 > -    }
-> +    MachineClass *mc = MACHINE_GET_CLASS(vms);
-> +    const CPUArchIdList *cpu_list = mc->possible_cpu_arch_ids(MACHINE(vms));
->  
->      srat_start = table_data->len;
->      srat = acpi_data_push(table_data, sizeof(*srat));
->      srat->reserved1 = cpu_to_le32(1);
->  
-> -    for (i = 0; i < vms->smp_cpus; ++i) {
-> +    for (i = 0; i < cpu_list->len; ++i) {
-> +        int node_id = numa_has_node_id(cpu_list, i) ?
-> +            numa_node_id(cpu_list, i) : 0;
->          core = acpi_data_push(table_data, sizeof(*core));
->          core->type = ACPI_SRAT_PROCESSOR_GICC;
->          core->length = sizeof(*core);
-> -        core->proximity = cpu_to_le32(cpu_node[i]);
-> +        core->proximity = cpu_to_le32(node_id);
->          core->acpi_processor_uid = cpu_to_le32(i);
->          core->flags = cpu_to_le32(1);
->      }
-> -    g_free(cpu_node);
->  
->      mem_base = vms->memmap[VIRT_MEM].base;
->      for (i = 0; i < nb_numa_nodes; ++i) {
-> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-> index 05a2822..233e8a7 100644
-> --- a/hw/arm/virt.c
-> +++ b/hw/arm/virt.c
-> @@ -338,7 +338,7 @@ static void fdt_add_cpu_nodes(const VirtMachineState *vms)
+> -    return i;
+> -}
+> -
+>  void ram_block_notifier_add(RAMBlockNotifier *n)
 >  {
->      int cpu;
->      int addr_cells = 1;
-> -    unsigned int i;
-> +    const MachineState *ms = MACHINE(vms);
->  
->      /*
->       * From Documentation/devicetree/bindings/arm/cpus.txt
-> @@ -369,6 +369,7 @@ static void fdt_add_cpu_nodes(const VirtMachineState *vms)
->      for (cpu = vms->smp_cpus - 1; cpu >= 0; cpu--) {
->          char *nodename = g_strdup_printf("/cpus/cpu@%d", cpu);
->          ARMCPU *armcpu = ARM_CPU(qemu_get_cpu(cpu));
-> +        CPUState *cs = CPU(armcpu);
->  
->          qemu_fdt_add_subnode(vms->fdt, nodename);
->          qemu_fdt_setprop_string(vms->fdt, nodename, "device_type", "cpu");
-> @@ -389,9 +390,9 @@ static void fdt_add_cpu_nodes(const VirtMachineState *vms)
->                                    armcpu->mp_affinity);
->          }
->  
-> -        i = numa_get_node_for_cpu(cpu);
-> -        if (i < nb_numa_nodes) {
-> -            qemu_fdt_setprop_cell(vms->fdt, nodename, "numa-node-id", i);
-> +        if (numa_has_node_id(ms->possible_cpus, cs->cpu_index)) {
-> +            qemu_fdt_setprop_cell(vms->fdt, nodename, "numa-node-id",
-> +                numa_node_id(ms->possible_cpus, cs->cpu_index));
->          }
->  
->          g_free(nodename);
-> @@ -1363,8 +1364,8 @@ static void machvirt_init(MachineState *machine)
->          cs = CPU(cpuobj);
->          cs->cpu_index = n;
->  
-> -        node_id = numa_get_node_for_cpu(cs->cpu_index);
-> -        if (node_id == nb_numa_nodes) {
-> +        node_id = numa_node_id(possible_cpus, cs->cpu_index);
-> +        if (!numa_has_node_id(possible_cpus, cs->cpu_index)) {
->              /* by default CPUState::numa_node was 0 if it's not set via CLI
->               * keep it this way for now but in future we probably should
->               * refuse to start up with incomplete numa mapping */
+>      QLIST_INSERT_HEAD(&ram_list.ramblock_notifiers, n, next);
 > -- 
 > 2.7.4
 >

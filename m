@@ -1,72 +1,68 @@
-Received: by 10.25.0.198 with SMTP id 189csp354372lfa;
-        Fri, 5 May 2017 13:04:43 -0700 (PDT)
-X-Received: by 10.55.59.139 with SMTP id i133mr13767946qka.248.1494014682925;
-        Fri, 05 May 2017 13:04:42 -0700 (PDT)
+Received: by 10.25.0.198 with SMTP id 189csp363671lfa;
+        Fri, 5 May 2017 13:29:45 -0700 (PDT)
+X-Received: by 10.237.56.68 with SMTP id j62mr25553547qte.213.1494016185021;
+        Fri, 05 May 2017 13:29:45 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id r9si5607530qte.46.2017.05.05.13.04.42
+        by mx.google.com with ESMTPS id n74si2090097qke.273.2017.05.05.13.29.44
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 05 May 2017 13:04:42 -0700 (PDT)
+        Fri, 05 May 2017 13:29:45 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:48786 helo=lists.gnu.org)
+Received: from localhost ([::1]:48907 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1d6jSy-0007rc-8q
-	for alex.bennee@linaro.org; Fri, 05 May 2017 16:04:40 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:48013)
+	id 1d6jrC-000550-Dv
+	for alex.bennee@linaro.org; Fri, 05 May 2017 16:29:42 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:55270)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <imammedo@redhat.com>) id 1d6jSo-0007q9-K3
-	for qemu-arm@nongnu.org; Fri, 05 May 2017 16:04:31 -0400
+	(envelope-from <ehabkost@redhat.com>) id 1d6jr6-00054h-Vb
+	for qemu-arm@nongnu.org; Fri, 05 May 2017 16:29:38 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <imammedo@redhat.com>) id 1d6jSk-0007FQ-01
-	for qemu-arm@nongnu.org; Fri, 05 May 2017 16:04:30 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:48914)
+	(envelope-from <ehabkost@redhat.com>) id 1d6jr3-000187-OS
+	for qemu-arm@nongnu.org; Fri, 05 May 2017 16:29:36 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:37934)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <imammedo@redhat.com>)
-	id 1d6jSj-0007Ez-QS; Fri, 05 May 2017 16:04:25 -0400
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
-	[10.5.11.11])
+	(Exim 4.71) (envelope-from <ehabkost@redhat.com>)
+	id 1d6jr3-00016E-FA; Fri, 05 May 2017 16:29:33 -0400
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
+	[10.5.11.15])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 7E3AB7F4A1;
-	Fri,  5 May 2017 20:04:24 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 7E3AB7F4A1
-Authentication-Results: ext-mx02.extmail.prod.ext.phx2.redhat.com;
+	by mx1.redhat.com (Postfix) with ESMTPS id B234D3D97E;
+	Fri,  5 May 2017 20:29:25 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com B234D3D97E
+Authentication-Results: ext-mx06.extmail.prod.ext.phx2.redhat.com;
 	dmarc=none (p=none dis=none) header.from=redhat.com
-Authentication-Results: ext-mx02.extmail.prod.ext.phx2.redhat.com;
-	spf=pass smtp.mailfrom=imammedo@redhat.com
-DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com 7E3AB7F4A1
-Received: from Igors-MacBook-Pro.local (ovpn-112-18.ams2.redhat.com
-	[10.36.112.18])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id D651419144;
-	Fri,  5 May 2017 20:04:20 +0000 (UTC)
-Date: Fri, 5 May 2017 22:04:16 +0200
-From: Igor Mammedov <imammedo@redhat.com>
-To: Eduardo Habkost <ehabkost@redhat.com>
-Message-ID: <20170505220416.03697c36@Igors-MacBook-Pro.local>
-In-Reply-To: <20170505171226.GI3482@thinpad.lan.raisama.net>
+Authentication-Results: ext-mx06.extmail.prod.ext.phx2.redhat.com;
+	spf=pass smtp.mailfrom=ehabkost@redhat.com
+DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com B234D3D97E
+Received: from localhost (ovpn-116-28.gru2.redhat.com [10.97.116.28])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 12F247801D;
+	Fri,  5 May 2017 20:29:24 +0000 (UTC)
+Date: Fri, 5 May 2017 17:29:23 -0300
+From: Eduardo Habkost <ehabkost@redhat.com>
+To: Igor Mammedov <imammedo@redhat.com>
+Message-ID: <20170505202923.GM3482@thinpad.lan.raisama.net>
 References: <1493816238-33120-1-git-send-email-imammedo@redhat.com>
-	<1493816238-33120-13-git-send-email-imammedo@redhat.com>
-	<20170505014522.GK14413@umbus.fritz.box>
-	<20170505100918.181acc8b@nial.brq.redhat.com>
-	<20170505090602.c2u7ugdh65rdjrs6@hawk.localdomain>
-	<20170505171226.GI3482@thinpad.lan.raisama.net>
+	<1493816238-33120-8-git-send-email-imammedo@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <1493816238-33120-8-git-send-email-imammedo@redhat.com>
+X-Fnord: you can see the fnord
+User-Agent: Mutt/1.8.0 (2017-02-23)
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.26]);
-	Fri, 05 May 2017 20:04:24 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.30]);
+	Fri, 05 May 2017 20:29:26 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v2 12/24] numa: add
- numa_[has_]node_id() wrappers
+Subject: Re: [Qemu-arm] [PATCH v2 07/24] pc: add node-id property to CPU
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -81,59 +77,86 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jones <drjones@redhat.com>,
 	qemu-devel@nongnu.org, qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
 	Shannon Zhao <zhaoshenglong@huawei.com>,
-	Paolo Bonzini <pbonzini@redhat.com>,
+	Paolo Bonzini <pbonzini@redhat.com>, Eric Blake <eblake@redhat.com>,
 	David Gibson <david@gibson.dropbear.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: qW781Zb6sOfr
+X-TUID: a0Y4Hbimjjb5
 
-On Fri, 5 May 2017 14:12:26 -0300
-Eduardo Habkost <ehabkost@redhat.com> wrote:
+On Wed, May 03, 2017 at 02:57:01PM +0200, Igor Mammedov wrote:
+> it will allow switching from cpu_index to property based
+> numa mapping in follow up patches.
+> 
+> Signed-off-by: Igor Mammedov <imammedo@redhat.com>
+> ---
+>  hw/i386/pc.c      | 17 +++++++++++++++++
+>  target/i386/cpu.c |  1 +
+>  2 files changed, 18 insertions(+)
+> 
+> diff --git a/hw/i386/pc.c b/hw/i386/pc.c
+> index 9cec0c1..4a4fb1c 100644
+> --- a/hw/i386/pc.c
+> +++ b/hw/i386/pc.c
+> @@ -1893,6 +1893,7 @@ static void pc_cpu_pre_plug(HotplugHandler *hotplug_dev,
+>                              DeviceState *dev, Error **errp)
+>  {
+>      int idx;
+> +    int node_id;
+>      CPUState *cs;
+>      CPUArchId *cpu_slot;
+>      X86CPUTopoInfo topo;
+> @@ -1982,6 +1983,22 @@ static void pc_cpu_pre_plug(HotplugHandler *hotplug_dev,
+>  
+>      cs = CPU(cpu);
+>      cs->cpu_index = idx;
+> +
+> +    node_id = numa_get_node_for_cpu(cs->cpu_index);
+> +    if (node_id == nb_numa_nodes) {
+> +        /* by default CPUState::numa_node was 0 if it's not set via CLI
+> +         * keep it this way for now but in future we probably should
+> +         * refuse to start up with incomplete numa mapping */
+> +        node_id = 0;
+> +    }
+> +    if (cs->numa_node == CPU_UNSET_NUMA_NODE_ID) {
+> +        cs->numa_node = node_id;
 
-> On Fri, May 05, 2017 at 11:06:02AM +0200, Andrew Jones wrote:
-> > On Fri, May 05, 2017 at 10:09:18AM +0200, Igor Mammedov wrote:
-> > > On Fri, 5 May 2017 11:45:22 +1000
-> > > David Gibson <david@gibson.dropbear.id.au> wrote:
-> > > 
-> > > > On Wed, May 03, 2017 at 02:57:06PM +0200, Igor Mammedov wrote:
-> > > > > wrappers should make access to [has]node_id fields more readable
-> > > > > 
-> > > > > Signed-off-by: Igor Mammedov <imammedo@redhat.com>  
-> > > > 
-> > > > Reviewed-by: David Gibson <david@gibson.dropbear.id.au>
-> > > > 
-> > > > Correct, though I'm not sure it actually simplifies things that much.
-> > > > Maybe more in future patches, though.
-> > > that's what Drew insisted on, and even though I prefer other way around
-> > > I won't stall series arguing about styling issues,
-> > > so here this patch goes.
-> > 
-> > My argument in the last review of this series was that references like
-> > 
-> >  machine->possible_cpus->cpus[cs->cpu_index].props.has_node_id
-> > and
-> >  machine->possible_cpus->cpus[cs->cpu_index].props.node_id
-> > 
-> > are quite long, and only differ by 'has_', making it tough to
-> > easily recognize.
+I suggest moving the above lines to cpu_common_realizefn(), and
+deleting the code in numa_post_machine_init().
+
+If you want to do this in v3 of this series, or as a follow-up
+patch, it's up to you.
+
+
+> +    } else if (cs->numa_node != node_id) {
+> +            error_setg(errp, "node-id %d must match numa node specified"
+> +                "with -numa option for cpu-index %d",
+> +                cs->numa_node, cs->cpu_index);
+> +            return;
+> +    }
+>  }
+>  
+>  static void pc_machine_device_pre_plug_cb(HotplugHandler *hotplug_dev,
+> diff --git a/target/i386/cpu.c b/target/i386/cpu.c
+> index 13c0985..007a5bd 100644
+> --- a/target/i386/cpu.c
+> +++ b/target/i386/cpu.c
+> @@ -3982,6 +3982,7 @@ static Property x86_cpu_properties[] = {
+>      DEFINE_PROP_INT32("core-id", X86CPU, core_id, -1),
+>      DEFINE_PROP_INT32("socket-id", X86CPU, socket_id, -1),
+>  #endif
+> +    DEFINE_PROP_INT32("node-id", CPUState, numa_node, CPU_UNSET_NUMA_NODE_ID),
+
+This changes the default from 0 to CPU_UNSET_NUMA_NODE_ID, but it
+looks like there's no existing i386 or PC code that ever looks at
+CPUState::numa_node. Maybe worth mentioning in the commit
+message.
+
+>      DEFINE_PROP_BOOL("pmu", X86CPU, enable_pmu, false),
+>      { .name  = "hv-spinlocks", .info  = &qdev_prop_spinlocks },
+>      DEFINE_PROP_BOOL("hv-relaxed", X86CPU, hyperv_relaxed_timing, false),
+> -- 
+> 2.7.4
 > 
-> If expression length is a problem, we can just use an extra
-> variable:
-> 
->  CPUArchId *slot = &machine->possible_cpus->cpus[cs->cpu_index];
->  if (slot->props.has_node_id && slot->props.node_id == FOO) ...
-> 
-> 
-> >                   But, if nobody, but me, sees value in changing
-> > them to
-> > 
-> >  numa_has_node_id(machine->possible_cpus, cs->cpu_index)
-> > and
-> >  numa_node_id(machine->possible_cpus, cs->cpu_index)
-> > 
-> > then I won't insist.
-> 
-> I don't mind that much, but I still prefer the version without
-> the wrappers.
-considering 3vs1 for wrapper less variant, I'll return it back.
-but respin will have to wait till Tuesday due to holiday over here.
+
+-- 
+Eduardo

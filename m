@@ -1,59 +1,59 @@
-Received: by 10.25.0.198 with SMTP id 189csp681303lfa;
-        Thu, 4 May 2017 10:01:52 -0700 (PDT)
-X-Received: by 10.176.24.196 with SMTP id d4mr13741639uah.45.1493917312346;
-        Thu, 04 May 2017 10:01:52 -0700 (PDT)
+Received: by 10.25.0.198 with SMTP id 189csp869237lfa;
+        Thu, 4 May 2017 19:30:17 -0700 (PDT)
+X-Received: by 10.55.91.133 with SMTP id p127mr11519297qkb.280.1493951416930;
+        Thu, 04 May 2017 19:30:16 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id b8si1156171uab.179.2017.05.04.10.01.52
+        by mx.google.com with ESMTPS id n28si3358320qtc.223.2017.05.04.19.30.16
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 04 May 2017 10:01:52 -0700 (PDT)
+        Thu, 04 May 2017 19:30:16 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        dkim=fail header.i=@gibson.dropbear.id.au;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:43123 helo=lists.gnu.org)
+Received: from localhost ([::1]:44691 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1d6K8V-0006gN-Oy
-	for alex.bennee@linaro.org; Thu, 04 May 2017 13:01:51 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:58772)
+	id 1d6T0Y-0006sa-3O
+	for alex.bennee@linaro.org; Thu, 04 May 2017 22:30:14 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:51190)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <dgibson@ozlabs.org>) id 1d6K7p-0006Gf-Fx
-	for qemu-arm@nongnu.org; Thu, 04 May 2017 13:01:10 -0400
+	(envelope-from <dgibson@ozlabs.org>) id 1d6T0T-0006pZ-6l
+	for qemu-arm@nongnu.org; Thu, 04 May 2017 22:30:10 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <dgibson@ozlabs.org>) id 1d6K7o-0001B8-F6
-	for qemu-arm@nongnu.org; Thu, 04 May 2017 13:01:09 -0400
-Received: from ozlabs.org ([2401:3900:2:1::2]:53155)
+	(envelope-from <dgibson@ozlabs.org>) id 1d6T0S-0000sx-1d
+	for qemu-arm@nongnu.org; Thu, 04 May 2017 22:30:09 -0400
+Received: from ozlabs.org ([2401:3900:2:1::2]:57061)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <dgibson@ozlabs.org>)
-	id 1d6K7o-000194-1c; Thu, 04 May 2017 13:01:08 -0400
+	id 1d6T0R-0000pw-Iu; Thu, 04 May 2017 22:30:07 -0400
 Received: by ozlabs.org (Postfix, from userid 1007)
-	id 3wJhB81Lvlz9s3w; Fri,  5 May 2017 03:01:03 +1000 (AEST)
+	id 3wJwpg1nqZz9s8W; Fri,  5 May 2017 12:30:03 +1000 (AEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-	d=gibson.dropbear.id.au; s=201602; t=1493917264;
-	bh=wtS3L44j5ERqvWYUJQvysHDJemzXQaZ4CGmqBpOWZV0=;
+	d=gibson.dropbear.id.au; s=201602; t=1493951403;
+	bh=RIms/FiZNk5LTCpP7N4r9Zr1GQJUGqSPbOhFf8DyNFw=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=Nsf/5JNohCom9RBqv/rAkgTQKYl8te0zGW4B4Hu2ueQasXImGXbwHiDy7fOEz6Fdb
-	9dLHIW/FYnaMRNxXpZ01ScBrfJf0sr9UbuQRoRY6NSqMjb0YUO7n/fTKhv/jAX6nS2
-	xsdyGpLgPrvb0EBfTOsBIOTI/jvp1keptPXLkvj8=
-Date: Fri, 5 May 2017 02:51:09 +1000
+	b=AmkPjJqgm3K60BRCuQJGy8Hn9NdZR3/G+f/lELSwe4dSZA4pCu4BE9oiCm7vbaQJO
+	QtmN/ix3zV+2cMIQWU2Sdj0dCoq0DKLpneDHUz1SpfXJ1k5tcFNDbAX47tvSFQD9Bd
+	YcEYW3LI2D1Z0V0QkugetaJ+rIb0uF3FRPHb5wTs=
+Date: Fri, 5 May 2017 11:45:22 +1000
 From: David Gibson <david@gibson.dropbear.id.au>
 To: Igor Mammedov <imammedo@redhat.com>
-Message-ID: <20170504165109.GI14413@umbus.fritz.box>
+Message-ID: <20170505014522.GK14413@umbus.fritz.box>
 References: <1493816238-33120-1-git-send-email-imammedo@redhat.com>
-	<1493816238-33120-10-git-send-email-imammedo@redhat.com>
+	<1493816238-33120-13-git-send-email-imammedo@redhat.com>
 MIME-Version: 1.0
 Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="a7XSrSxqzVsaECgU"
+	protocol="application/pgp-signature"; boundary="kswDJesP0akhmDn8"
 Content-Disposition: inline
-In-Reply-To: <1493816238-33120-10-git-send-email-imammedo@redhat.com>
+In-Reply-To: <1493816238-33120-13-git-send-email-imammedo@redhat.com>
 User-Agent: Mutt/1.8.0 (2017-02-23)
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
 X-Received-From: 2401:3900:2:1::2
-Subject: Re: [Qemu-arm] [PATCH v2 09/24] numa: add check that board supports
- cpu_index to node mapping
+Subject: Re: [Qemu-arm] [PATCH v2 12/24] numa: add numa_[has_]node_id()
+ wrappers
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -72,93 +72,67 @@ Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jones <drjones@redhat.com>,
 	Paolo Bonzini <pbonzini@redhat.com>, Eric Blake <eblake@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 5kZoUt475tpF
+X-TUID: gBGEscwdhQVe
 
 
---a7XSrSxqzVsaECgU
+--kswDJesP0akhmDn8
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
-On Wed, May 03, 2017 at 02:57:03PM +0200, Igor Mammedov wrote:
-> Default node mapping initialization already checks that board
-> supports cpu_index to node mapping and refuses to start if
-> it's not supported. Do the same for explicitly provided
-> mapping "-numa node,cpus=3D..."
+On Wed, May 03, 2017 at 02:57:06PM +0200, Igor Mammedov wrote:
+> wrappers should make access to [has]node_id fields more readable
 >=20
 > Signed-off-by: Igor Mammedov <imammedo@redhat.com>
 
 Reviewed-by: David Gibson <david@gibson.dropbear.id.au>
 
-Makes sense in the series at present, although it might be obsoleted
-by other suggested changes.
+Correct, though I'm not sure it actually simplifies things that much.
+Maybe more in future patches, though.
 
 > ---
->  numa.c | 13 ++++++++++---
->  1 file changed, 10 insertions(+), 3 deletions(-)
+>  follow up patches will use this wrappers
+>  v2:
+>     - add wrappers (Drew)
+> ---
+>  include/sysemu/numa.h | 10 ++++++++++
+>  numa.c                |  2 +-
+>  2 files changed, 11 insertions(+), 1 deletion(-)
 >=20
+> diff --git a/include/sysemu/numa.h b/include/sysemu/numa.h
+> index 46ea6c7..98d01e6 100644
+> --- a/include/sysemu/numa.h
+> +++ b/include/sysemu/numa.h
+> @@ -35,4 +35,14 @@ uint32_t numa_get_node(ram_addr_t addr, Error **errp);
+>  /* on success returns node index in numa_info,
+>   * on failure returns nb_numa_nodes */
+>  int numa_get_node_for_cpu(int idx);
+> +
+> +static inline bool numa_has_node_id(const CPUArchIdList *possible_cpus, =
+int idx)
+> +{
+> +    return possible_cpus->cpus[idx].props.has_node_id;
+> +}
+> +
+> +static inline int numa_node_id(const CPUArchIdList *possible_cpus, int i=
+dx)
+> +{
+> +    return possible_cpus->cpus[idx].props.node_id;
+> +}
+>  #endif
 > diff --git a/numa.c b/numa.c
-> index ab1661d..b517870 100644
+> index c7e3e0a..872ee0d 100644
 > --- a/numa.c
 > +++ b/numa.c
-> @@ -140,10 +140,12 @@ uint32_t numa_get_node(ram_addr_t addr, Error **err=
-p)
->      return -1;
->  }
+> @@ -394,7 +394,7 @@ void parse_numa_opts(MachineState *ms)
 > =20
-> -static void numa_node_parse(NumaNodeOptions *node, QemuOpts *opts, Error=
- **errp)
-> +static void numa_node_parse(MachineState *ms, NumaNodeOptions *node,
-> +                            QemuOpts *opts, Error **errp)
->  {
->      uint16_t nodenr;
->      uint16List *cpus =3D NULL;
-> +    MachineClass *mc =3D MACHINE_GET_CLASS(ms);
-> =20
->      if (node->has_nodeid) {
->          nodenr =3D node->nodeid;
-> @@ -162,6 +164,10 @@ static void numa_node_parse(NumaNodeOptions *node, Q=
-emuOpts *opts, Error **errp)
->          return;
->      }
-> =20
-> +    if (!mc->cpu_index_to_instance_props) {
-> +        error_report("CPUs to NUMA node mapping isn't supported");
-> +        exit(1);
-> +    }
->      for (cpus =3D node->cpus; cpus; cpus =3D cpus->next) {
->          if (cpus->value >=3D max_cpus) {
->              error_setg(errp,
-> @@ -215,6 +221,7 @@ static void numa_node_parse(NumaNodeOptions *node, Qe=
-muOpts *opts, Error **errp)
->  static int parse_numa(void *opaque, QemuOpts *opts, Error **errp)
->  {
->      NumaOptions *object =3D NULL;
-> +    MachineState *ms =3D opaque;
->      Error *err =3D NULL;
-> =20
->      {
-> @@ -229,7 +236,7 @@ static int parse_numa(void *opaque, QemuOpts *opts, E=
-rror **errp)
-> =20
->      switch (object->type) {
->      case NUMA_OPTIONS_TYPE_NODE:
-> -        numa_node_parse(&object->u.node, opts, &err);
-> +        numa_node_parse(ms, &object->u.node, opts, &err);
->          if (err) {
->              goto end;
+>          possible_cpus =3D mc->possible_cpu_arch_ids(ms);
+>          for (i =3D 0; i < possible_cpus->len; i++) {
+> -            if (possible_cpus->cpus[i].props.has_node_id) {
+> +            if (numa_has_node_id(possible_cpus, i)) {
+>                  break;
+>              }
 >          }
-> @@ -303,7 +310,7 @@ void parse_numa_opts(MachineState *ms)
->          numa_info[i].node_cpu =3D bitmap_new(max_cpus);
->      }
-> =20
-> -    if (qemu_opts_foreach(qemu_find_opts("numa"), parse_numa, NULL, NULL=
-)) {
-> +    if (qemu_opts_foreach(qemu_find_opts("numa"), parse_numa, ms, NULL))=
- {
->          exit(1);
->      }
-> =20
 
 --=20
 David Gibson			| I'll have my music baroque, and my code
@@ -166,25 +140,25 @@ david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
 				| _way_ _around_!
 http://www.ozlabs.org/~dgibson
 
---a7XSrSxqzVsaECgU
+--kswDJesP0akhmDn8
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 Version: GnuPG v2
 
-iQIcBAEBCAAGBQJZC1v9AAoJEGw4ysog2bOSDrMP/22VwihVh0KTIlnv8rAWehGO
-Hx4cNtxD3o3MzTBV3zUgiw99YGjS+fird4i/Gg41oOm97nBRAs+UYsrGpZ3In1Zz
-5mHFTKgGtwJoeN4QxS1g1/ZubOt7gOqCQKRujofMykK4IkSBhML5F71Qg1NT6cEA
-D/SdMv4I8QTzIFKdOtpmujnjCXwEBPwIwMo4+tx+NrOcRyPypeh+13JnZNBQmf6w
-0pQpa6119Any6DpKYWlLHn7NQqiNXkV63EUFA2PRaujHffLzynAkCRNPlSh4Iitp
-StnUyPEybVdsbwQ8tHCOyXVT15Bphk075dANmDbbeqfHhx8uNUb/OZ2seOSuRTUE
-tFrUYhbylQVtfKXnBWjkBWChwatbj8P2fPBLksuq9ygboa+slYxvsFdE3zqb3qDd
-Zy0a4qtZ/uKRgM8Zo0ZOi/TVT3tdwBk6mhMzev2Pul+JLcC9k7MCphB3ZWTlEkfE
-JbOmAt/BQ9PQmId78sm0qKYLSndBmU/iAAbruNgIXl6zyRXHcBvflcZrhO7nGurI
-mOvt+RjXnIs+4ObOHQnknT/peDH/eyblaCj67BC3EbPHdgCsYwBUUUCxx0jwpOlD
-rl7rUqobVNch8GfQG82dD0wO5/zv9773qUkzm7hj6xC0rtSq73kxKlUdCN0GV3Ij
-7B+6Fy7ZIKYI7PAPZG4Q
-=IKki
+iQIcBAEBCAAGBQJZC9kuAAoJEGw4ysog2bOSmSsP/0ccdmR65sMDQswO18tGBQUu
+H9UJQJImV0UkmeTrbeN7JRzqKIOmqQ1dkunRzeS2R7M6vdyZZFZPbjMhNocOTmmh
+hOg/yBM3rPPtUnOHkQ68zhQlVS0nrwZSpExoyFt9UWed8i0thQZSVxAw1OP0Ya5v
+lI8GuP5s051cn1a2VzjpPJJFEgKxVBsEYXPhpU0Qc0Ql6mupLoF0hTp6v6jSjbDi
+Np4G/znuzO3Ze4vhRBhzlfwgcOZdCHM8laXUNWo/TpzZlIO9lB0XPe3WLGgD3UQB
+FcikNtGRFK6zQ65MosCL9Y1cdnxHzOwJRedzlDZm8zvsfs6pTB5GXeLiGetln7Gz
+bNe1ddFtzrbUICgrqduBhMud9shhROqfFakzNO9oQDqk4RcLwDuFIGPL1nMHIGGn
+rjJdqjqjhnt0RLmx5viwqRxP82Jxr0tC6q9KScVc4w/QGNVBtkLAM9arf/cgGER+
++DnMOytU2Sjia1C2nrc/iRPzy7CPUS3540EZvEWaQ9HfAKQKJ4tVO+eHNF1oA4e0
+yZ3p1FCCctkao0GiJr+aZCw/gitVwMXCw/aUHM15mwKMgUzyqTLHYxTCjKuu5u4B
+tBUDkKdvXxZvG6fsj4VE0x4GRL8vEYkBxRG3+VWKJHuudwkl54JMCa+RBFarSQLj
+CCuYREyAVcBX/F+j7yVL
+=e8CJ
 -----END PGP SIGNATURE-----
 
---a7XSrSxqzVsaECgU--
+--kswDJesP0akhmDn8--

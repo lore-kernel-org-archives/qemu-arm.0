@@ -1,59 +1,96 @@
-Received: by 10.25.0.198 with SMTP id 189csp24398lfa;
-        Thu, 4 May 2017 23:37:56 -0700 (PDT)
-X-Received: by 10.233.222.134 with SMTP id s128mr5031526qkf.190.1493966275955;
-        Thu, 04 May 2017 23:37:55 -0700 (PDT)
+Received: by 10.25.0.198 with SMTP id 189csp40484lfa;
+        Fri, 5 May 2017 00:36:59 -0700 (PDT)
+X-Received: by 10.237.34.136 with SMTP id p8mr42827991qtc.282.1493969819625;
+        Fri, 05 May 2017 00:36:59 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id o1si3707084qte.164.2017.05.04.23.37.55
+        by mx.google.com with ESMTPS id j21si996680qke.40.2017.05.05.00.36.58
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 04 May 2017 23:37:55 -0700 (PDT)
+        Fri, 05 May 2017 00:36:59 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gibson.dropbear.id.au;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:45309 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=ibm.com
+Received: from localhost ([::1]:45485 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1d6WsD-0003lQ-AT
-	for alex.bennee@linaro.org; Fri, 05 May 2017 02:37:53 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:60614)
+	id 1d6XnM-0000Q9-Rq
+	for alex.bennee@linaro.org; Fri, 05 May 2017 03:36:56 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:42212)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <dgibson@ozlabs.org>) id 1d6Ws8-0003lH-Lh
-	for qemu-arm@nongnu.org; Fri, 05 May 2017 02:37:50 -0400
+	(envelope-from <cornelia.huck@de.ibm.com>) id 1d6Xn9-0000NL-Gd
+	for qemu-arm@nongnu.org; Fri, 05 May 2017 03:36:46 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <dgibson@ozlabs.org>) id 1d6Ws7-0007Vf-KT
-	for qemu-arm@nongnu.org; Fri, 05 May 2017 02:37:48 -0400
-Received: from ozlabs.org ([2401:3900:2:1::2]:55601)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <dgibson@ozlabs.org>)
-	id 1d6Ws6-0007Tx-SR; Fri, 05 May 2017 02:37:47 -0400
-Received: by ozlabs.org (Postfix, from userid 1007)
-	id 3wK2JM5qJDz9s8W; Fri,  5 May 2017 16:37:39 +1000 (AEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-	d=gibson.dropbear.id.au; s=201602; t=1493966259;
-	bh=cqbCIjzjthSuIAbrriyWbW++ieFydkHROSfqspR05TQ=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=fZ0ICfKXz+/vr88KzgnP6a3Qo0biSTxrDR6vYljxznjREPUCyKahxWfleP/xX4git
-	UTLXtPvBL6RaPeJgFaFyuBN/r4UjwRc33zZkeGfWmXwksCaJzvuHwqnkiiQJiTgLPj
-	4ttCeFpH6cHXK7fCnzjt53yNhuLOa36l2PuOQqjc=
-Date: Fri, 5 May 2017 13:23:06 +1000
-From: David Gibson <david@gibson.dropbear.id.au>
-To: Igor Mammedov <imammedo@redhat.com>
-Message-ID: <20170505032306.GN14413@umbus.fritz.box>
-References: <1493816238-33120-1-git-send-email-imammedo@redhat.com>
-	<1493816238-33120-21-git-send-email-imammedo@redhat.com>
+	(envelope-from <cornelia.huck@de.ibm.com>) id 1d6Xn5-0005lm-H3
+	for qemu-arm@nongnu.org; Fri, 05 May 2017 03:36:43 -0400
+Received: from mx0b-001b2d01.pphosted.com ([148.163.158.5]:38921
+	helo=mx0a-001b2d01.pphosted.com)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <cornelia.huck@de.ibm.com>)
+	id 1d6Xn5-0005lY-AC
+	for qemu-arm@nongnu.org; Fri, 05 May 2017 03:36:39 -0400
+Received: from pps.filterd (m0098417.ppops.net [127.0.0.1])
+	by mx0a-001b2d01.pphosted.com (8.16.0.20/8.16.0.20) with SMTP id
+	v457Tu0v005554
+	for <qemu-arm@nongnu.org>; Fri, 5 May 2017 03:36:38 -0400
+Received: from e06smtp12.uk.ibm.com (e06smtp12.uk.ibm.com [195.75.94.108])
+	by mx0a-001b2d01.pphosted.com with ESMTP id 2a8hw3qjen-1
+	(version=TLSv1.2 cipher=AES256-SHA bits=256 verify=NOT)
+	for <qemu-arm@nongnu.org>; Fri, 05 May 2017 03:36:37 -0400
+Received: from localhost
+	by e06smtp12.uk.ibm.com with IBM ESMTP SMTP Gateway: Authorized Use
+	Only! Violators will be prosecuted
+	for <qemu-arm@nongnu.org> from <cornelia.huck@de.ibm.com>;
+	Fri, 5 May 2017 08:36:33 +0100
+Received: from b06cxnps4075.portsmouth.uk.ibm.com (9.149.109.197)
+	by e06smtp12.uk.ibm.com (192.168.101.142) with IBM ESMTP SMTP Gateway:
+	Authorized Use Only! Violators will be prosecuted; 
+	Fri, 5 May 2017 08:36:24 +0100
+Received: from d06av22.portsmouth.uk.ibm.com (d06av22.portsmouth.uk.ibm.com
+	[9.149.105.58])
+	by b06cxnps4075.portsmouth.uk.ibm.com (8.14.9/8.14.9/NCO v10.0) with
+	ESMTP id v457aO1834799722; Fri, 5 May 2017 07:36:24 GMT
+Received: from d06av22.portsmouth.uk.ibm.com (unknown [127.0.0.1])
+	by IMSVA (Postfix) with ESMTP id 5531A4C050;
+	Fri,  5 May 2017 08:35:21 +0100 (BST)
+Received: from d06av22.portsmouth.uk.ibm.com (unknown [127.0.0.1])
+	by IMSVA (Postfix) with ESMTP id 7475B4C04A;
+	Fri,  5 May 2017 08:35:20 +0100 (BST)
+Received: from gondolin (unknown [9.152.224.119])
+	by d06av22.portsmouth.uk.ibm.com (Postfix) with ESMTP;
+	Fri,  5 May 2017 08:35:20 +0100 (BST)
+Date: Fri, 5 May 2017 09:36:22 +0200
+From: Cornelia Huck <cornelia.huck@de.ibm.com>
+To: Eduardo Habkost <ehabkost@redhat.com>
+In-Reply-To: <20170503203604.31462-3-ehabkost@redhat.com>
+References: <20170503203604.31462-1-ehabkost@redhat.com>
+	<20170503203604.31462-3-ehabkost@redhat.com>
+Organization: IBM Deutschland Research & Development GmbH Vorsitzende des
+	Aufsichtsrats: Martina Koederitz
+	=?UTF-8?B?R2VzY2jDpGZ0c2bDvGhydW5nOg==?=
+	Dirk Wittkopp Sitz der Gesellschaft: =?UTF-8?B?QsO2Ymxpbmdlbg==?=
+	Registergericht: Amtsgericht Stuttgart, HRB 243294
+X-Mailer: Claws Mail 3.11.1 (GTK+ 2.24.23; x86_64-pc-linux-gnu)
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="4Y142/9l9nQlBiaj"
-Content-Disposition: inline
-In-Reply-To: <1493816238-33120-21-git-send-email-imammedo@redhat.com>
-User-Agent: Mutt/1.8.0 (2017-02-23)
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2401:3900:2:1::2
-Subject: Re: [Qemu-arm] [PATCH v2 20/24] machine: call machine init from
- wrapper
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+X-TM-AS-GCONF: 00
+x-cbid: 17050507-0008-0000-0000-0000043CBECB
+X-IBM-AV-DETECTION: SAVI=unused REMOTE=unused XFE=unused
+x-cbparentid: 17050507-0009-0000-0000-00001D8A89AE
+Message-Id: <20170505093622.37902dea.cornelia.huck@de.ibm.com>
+X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10432:, ,
+	definitions=2017-05-05_07:, , signatures=0
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+	spamscore=0 suspectscore=0
+	malwarescore=0 phishscore=0 adultscore=0 bulkscore=0 classifier=spam
+	adjust=0 reason=mlx scancount=1 engine=8.0.1-1703280000
+	definitions=main-1705050081
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [generic] [fuzzy]
+X-Received-From: 148.163.158.5
+Subject: Re: [Qemu-arm] [PATCH RESEND v2 02/21] sysbus: Set
+ user_creatable=false by default on TYPE_SYS_BUS_DEVICE
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -65,106 +102,212 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jones <drjones@redhat.com>,
-	Eduardo Habkost <ehabkost@redhat.com>, qemu-devel@nongnu.org,
-	qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+	Yi Min Zhao <zyimin@linux.vnet.ibm.com>,
+	"Michael S. Tsirkin" <mst@redhat.com>, Jason Wang <jasowang@redhat.com>,
+	Pierre Morel <pmorel@linux.vnet.ibm.com>, qemu-devel@nongnu.org,
+	Markus Armbruster <armbru@redhat.com>,
+	Gerd Hoffmann <kraxel@redhat.com>, Rob Herring <robh@kernel.org>,
+	sstabellini@kernel.org, qemu-block@nongnu.org,
+	Alexander Graf <agraf@suse.de>,
+	Christian Borntraeger <borntraeger@de.ibm.com>,
 	Shannon Zhao <zhaoshenglong@huawei.com>,
-	Paolo Bonzini <pbonzini@redhat.com>, Eric Blake <eblake@redhat.com>
+	Marcel Apfelbaum <marcel@redhat.com>, Richard Henderson <rth@twiddle.net>,
+	Laszlo Ersek <lersek@redhat.com>, Kevin Wolf <kwolf@redhat.com>,
+	Thomas Huth <thuth@redhat.com>, "Gabriel L . Somlo" <somlo@cmu.edu>,
+	Alistair Francis <alistair.francis@xilinx.com>,
+	Beniamino Galvani <b.galvani@gmail.com>,
+	Alex Williamson <alex.williamson@redhat.com>,
+	qemu-arm@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
+	John Snow <jsnow@redhat.com>, David Gibson <david@gibson.dropbear.id.au>,
+	Juergen Gross <jgross@suse.com>,
+	Frank Blaschka <frank.blaschka@de.ibm.com>,
+	Prasad J Pandit <pjp@fedoraproject.org>,
+	Max Reitz <mreitz@redhat.com>, qemu-ppc@nongnu.org,
+	Igor Mammedov <imammedo@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Webh7vHHnvUf
+X-TUID: 2ZdW7/phxbq8
 
+On Wed,  3 May 2017 17:35:45 -0300
+Eduardo Habkost <ehabkost@redhat.com> wrote:
 
---4Y142/9l9nQlBiaj
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-On Wed, May 03, 2017 at 02:57:14PM +0200, Igor Mammedov wrote:
-> add machine_run_board_init() wrapper that calls machine
-> init for now but in follow up patches it will be used
-> to run generic machine code that should run before
-> machine init.
->=20
-> Signed-off-by: Igor Mammedov <imammedo@redhat.com>
-
-Reviewed-by: David Gibson <david@gibson.dropbear.id.au>
-
+> commit 33cd52b5d7b9adfd009e95f07e6c64dd88ae2a31 unset
+> cannot_instantiate_with_device_add_yet in TYPE_SYSBUS, making all
+> sysbus devices appear on "-device help" and lack the "no-user"
+> flag in "info qdm".
+> 
+> To fix this, we can set user_creatable=false by default on
+> TYPE_SYS_BUS_DEVICE, but this requires setting
+> user_creatable=true explicitly on the sysbus devices that
+> actually work with -device.
+> 
+> Fortunately today we have just a few has_dynamic_sysbus=1
+> machines: virt, pc-q35-*, ppce500, and spapr.
+> 
+> virt, ppce500, and spapr have extra checks to ensure just a few
+> device types can be instantiated:
+> 
+> * virt supports only TYPE_VFIO_CALXEDA_XGMAC, TYPE_VFIO_AMD_XGBE.
+> * ppce500 supports only TYPE_ETSEC_COMMON.
+> * spapr supports only TYPE_SPAPR_PCI_HOST_BRIDGE.
+> 
+> This patch sets user_creatable=true explicitly on those 4 device
+> classes.
+> 
+> Now, the more complex cases:
+> 
+> pc-q35-*: q35 has no sysbus device whitelist yet (which is a
+> separate bug). We are in the process of fixing it and building a
+> sysbus whitelist on q35, but in the meantime we can fix the
+> "-device help" and "info qdm" bugs mentioned above. Also, despite
+> not being strictly necessary for fixing the q35 bug, reducing the
+> list of user_creatable=true devices will help us be more
+> confident when building the q35 whitelist.
+> 
+> xen: We also have a hack at xen_set_dynamic_sysbus(), that sets
+> has_dynamic_sysbus=true at runtime when using the Xen
+> accelerator. This hack is only used to allow xen-backend devices
+> to be dynamically plugged/unplugged.
+> 
+> This means today we can use -device with the following 22 device
+> types, that are the ones compiled into the qemu-system-x86_64 and
+> qemu-system-i386 binaries:
+> 
+> * allwinner-ahci
+> * amd-iommu
+> * cfi.pflash01
+> * esp
+> * fw_cfg_io
+> * fw_cfg_mem
+> * generic-sdhci
+> * hpet
+> * intel-iommu
+> * ioapic
+> * isabus-bridge
+> * kvmclock
+> * kvm-ioapic
+> * kvmvapic
+> * SUNW,fdtwo
+> * sysbus-ahci
+> * sysbus-fdc
+> * sysbus-ohci
+> * unimplemented-device
+> * virtio-mmio
+> * xen-backend
+> * xen-sysdev
+> 
+> This patch adds user_creatable=true explicitly to those devices,
+> temporarily, just to keep 100% compatibility with existing
+> behavior of q35. Subsequent patches will remove
+> user_creatable=true from the devices that are really not meant to
+> user-creatable on any machine, and remove the FIXME comment from
+> the ones that are really supposed to be user-creatable. This is
+> being done in separate patches because we still don't have an
+> obvious list of devices that will be whitelisted by q35, and I
+> would like to get each device reviewed individually.
+> 
+> Cc: Alexander Graf <agraf@suse.de>
+> Cc: Alex Williamson <alex.williamson@redhat.com>
+> Cc: Alistair Francis <alistair.francis@xilinx.com>
+> Cc: Beniamino Galvani <b.galvani@gmail.com>
+> Cc: Christian Borntraeger <borntraeger@de.ibm.com>
+> Cc: Cornelia Huck <cornelia.huck@de.ibm.com>
+> Cc: David Gibson <david@gibson.dropbear.id.au>
+> Cc: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
+> Cc: Eduardo Habkost <ehabkost@redhat.com>
+> Cc: Frank Blaschka <frank.blaschka@de.ibm.com>
+> Cc: Gabriel L. Somlo <somlo@cmu.edu>
+> Cc: Gerd Hoffmann <kraxel@redhat.com>
+> Cc: Igor Mammedov <imammedo@redhat.com>
+> Cc: Jason Wang <jasowang@redhat.com>
+> Cc: John Snow <jsnow@redhat.com>
+> Cc: Juergen Gross <jgross@suse.com>
+> Cc: Kevin Wolf <kwolf@redhat.com>
+> Cc: Laszlo Ersek <lersek@redhat.com>
+> Cc: Marcel Apfelbaum <marcel@redhat.com>
+> Cc: Markus Armbruster <armbru@redhat.com>
+> Cc: Max Reitz <mreitz@redhat.com>
+> Cc: "Michael S. Tsirkin" <mst@redhat.com>
+> Cc: Paolo Bonzini <pbonzini@redhat.com>
+> Cc: Peter Maydell <peter.maydell@linaro.org>
+> Cc: Pierre Morel <pmorel@linux.vnet.ibm.com>
+> Cc: Prasad J Pandit <pjp@fedoraproject.org>
+> Cc: qemu-arm@nongnu.org
+> Cc: qemu-block@nongnu.org
+> Cc: qemu-ppc@nongnu.org
+> Cc: Richard Henderson <rth@twiddle.net>
+> Cc: Rob Herring <robh@kernel.org>
+> Cc: Shannon Zhao <zhaoshenglong@huawei.com>
+> Cc: sstabellini@kernel.org
+> Cc: Thomas Huth <thuth@redhat.com>
+> Cc: Yi Min Zhao <zyimin@linux.vnet.ibm.com>
+> Acked-by: John Snow <jsnow@redhat.com>
+> Acked-by: Juergen Gross <jgross@suse.com>
+> Acked-by: Marcel Apfelbaum <marcel@redhat.com>
+> Signed-off-by: Eduardo Habkost <ehabkost@redhat.com>
 > ---
->  include/hw/boards.h | 1 +
->  hw/core/machine.c   | 6 ++++++
->  vl.c                | 2 +-
->  3 files changed, 8 insertions(+), 1 deletion(-)
->=20
-> diff --git a/include/hw/boards.h b/include/hw/boards.h
-> index 1f518a1..0e74484 100644
-> --- a/include/hw/boards.h
-> +++ b/include/hw/boards.h
-> @@ -32,6 +32,7 @@ void memory_region_allocate_system_memory(MemoryRegion =
-*mr, Object *owner,
->  MachineClass *find_default_machine(void);
->  extern MachineState *current_machine;
-> =20
-> +void machine_run_board_init(MachineState *machine);
->  bool machine_usb(MachineState *machine);
->  bool machine_kernel_irqchip_allowed(MachineState *machine);
->  bool machine_kernel_irqchip_required(MachineState *machine);
-> diff --git a/hw/core/machine.c b/hw/core/machine.c
-> index a63f17b..217b4f4 100644
-> --- a/hw/core/machine.c
-> +++ b/hw/core/machine.c
-> @@ -648,6 +648,12 @@ bool machine_mem_merge(MachineState *machine)
->      return machine->mem_merge;
+> Changes v1 -> v2:
+> * Rewrite commit message: don't pretend we are actually fixing
+>   the q35 issue. We're just fixing "info qdm" and "-device help".
+>   Making it easier to fix q35 is just a nice side-effect.
+> * Rewrite FIXME comments to make it clear that we just have
+>   user_creatable=true because we don't know yet if the device
+>   should be in the q35 whitelist
+> ---
+>  hw/block/fdc.c           | 10 ++++++++++
+>  hw/block/pflash_cfi01.c  |  5 +++++
+>  hw/core/sysbus.c         | 11 +++++++++++
+>  hw/i386/amd_iommu.c      |  5 +++++
+>  hw/i386/intel_iommu.c    |  5 +++++
+>  hw/i386/kvm/clock.c      |  5 +++++
+>  hw/i386/kvm/ioapic.c     |  5 +++++
+>  hw/i386/kvmvapic.c       |  5 +++++
+>  hw/ide/ahci.c            | 10 ++++++++++
+>  hw/intc/ioapic.c         |  5 +++++
+>  hw/isa/isa-bus.c         |  5 +++++
+>  hw/misc/unimp.c          |  5 +++++
+>  hw/net/fsl_etsec/etsec.c |  2 ++
+>  hw/nvram/fw_cfg.c        | 10 ++++++++++
+>  hw/ppc/spapr_pci.c       |  2 ++
+>  hw/scsi/esp.c            |  5 +++++
+>  hw/sd/sdhci.c            |  5 +++++
+>  hw/timer/hpet.c          |  5 +++++
+>  hw/usb/hcd-ohci.c        |  5 +++++
+>  hw/vfio/amd-xgbe.c       |  2 ++
+>  hw/vfio/calxeda-xgmac.c  |  2 ++
+>  hw/virtio/virtio-mmio.c  |  5 +++++
+>  hw/xen/xen_backend.c     | 10 ++++++++++
+>  23 files changed, 129 insertions(+)
+> 
+
+> diff --git a/hw/core/sysbus.c b/hw/core/sysbus.c
+> index c0f560b289..6a2eec8dd0 100644
+> --- a/hw/core/sysbus.c
+> +++ b/hw/core/sysbus.c
+> @@ -326,6 +326,17 @@ static void sysbus_device_class_init(ObjectClass *klass, void *data)
+>      DeviceClass *k = DEVICE_CLASS(klass);
+>      k->init = sysbus_device_init;
+>      k->bus_type = TYPE_SYSTEM_BUS;
+> +    /*
+> +     * device_add plugs devices into suitable bus.  For "real" buses,
+
+s/suitable/a suitable/
+
+> +     * that actually connects the device.  For sysbus, the connections
+> +     * need to be made separately, and device_add can't do that.  The
+> +     * device would be left unconnected, and will probably not work
+> +     *
+> +     * However, a few machines and a few devices can handle a few sysbus
+> +     * devices. In this case, the device subclass needs to override
+
+Should that rather be "a few machines can handle a few specific sysbus
+devices"?
+
+> +     * it and set user_creatable=true.
+> +     */
+> +    k->user_creatable = false;
 >  }
-> =20
-> +void machine_run_board_init(MachineState *machine)
-> +{
-> +    MachineClass *machine_class =3D MACHINE_GET_CLASS(machine);
-> +    machine_class->init(machine);
-> +}
-> +
->  static void machine_class_finalize(ObjectClass *klass, void *data)
->  {
->      MachineClass *mc =3D MACHINE_CLASS(klass);
-> diff --git a/vl.c b/vl.c
-> index fe4741d..ac46d6e 100644
-> --- a/vl.c
-> +++ b/vl.c
-> @@ -4562,7 +4562,7 @@ int main(int argc, char **argv, char **envp)
->      current_machine->boot_order =3D boot_order;
->      current_machine->cpu_model =3D cpu_model;
-> =20
-> -    machine_class->init(current_machine);
-> +    machine_run_board_init(current_machine);
-> =20
->      realtime_init();
-> =20
+> 
+>  static const TypeInfo sysbus_device_type_info = {
 
---=20
-David Gibson			| I'll have my music baroque, and my code
-david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
-				| _way_ _around_!
-http://www.ozlabs.org/~dgibson
-
---4Y142/9l9nQlBiaj
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v2
-
-iQIcBAEBCAAGBQJZC/AaAAoJEGw4ysog2bOSv4AP/ih8nLvhqX3v0Mta1ipbgc52
-91vfhfXjmSe6Uv2342PrDduQ8iJXxplHeIkNcqdmMlRwUQ+fQgDyCjolu+tH78aK
-q6MXPjQ9MPTltPeOq+1jLxynWuTAZ6WTbcCFmDR4TLOWU7aAZXTEx7+Lwoo1p7im
-Jeq7YXDM/7p/h9bMDVZd5ktPV4qpm+8jTeO5POURKrP2gthrDlaihWLFvZrkNdb3
-Arhs6K/pte3bxW1yThNRgbbLJQo5f6NyXxQGfHNftZxmR2xK3OBFzc4xQEu3XELi
-ZXxBEX5neVIr2VaqzzW6ccc+/mKkDrEXp5Zh1Cj8NgO7bVcblAqhY16Bp88BkAoR
-kD2tlviUBiD8CVCh+mFHiX/JdrlRH4f34qBNipCcUfPKnatNW7VaS+cSVNNAx7ad
-3KAZbA0Jx5EPk3RhLMwJyLihufYhMU8TPneDJM2Y3gM1UQajMsryPJW9s5V1Vn42
-/ShK3xoDueiAXqYKHGgBCArVBeLeZ/1xIOmAb0cmM5pfxlJKwTFROs+PCTVlvM7G
-bxF5L8qNNn6l+L/g/qkYw8MJ6NaE9iebpSTbdeuo9z/oyvdYf0CUJZhPeEiruW23
-iQUWAqh0Gm1AtDHdd4MpzEATIPKVAoBIEK6NhGt3h1P5dyCdJykSHccNZY89Ui+P
-x4nwn+NbcWtMeo3H7QBD
-=nnjb
------END PGP SIGNATURE-----
-
---4Y142/9l9nQlBiaj--

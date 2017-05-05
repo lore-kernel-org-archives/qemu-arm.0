@@ -1,75 +1,71 @@
-Received: by 10.25.0.198 with SMTP id 189csp264035lfa;
-        Fri, 5 May 2017 09:14:52 -0700 (PDT)
-X-Received: by 10.200.50.121 with SMTP id y54mr40712237qta.228.1494000891963;
-        Fri, 05 May 2017 09:14:51 -0700 (PDT)
+Received: by 10.25.0.198 with SMTP id 189csp285447lfa;
+        Fri, 5 May 2017 10:04:37 -0700 (PDT)
+X-Received: by 10.237.38.103 with SMTP id z94mr42564260qtc.215.1494003877586;
+        Fri, 05 May 2017 10:04:37 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id a74si5045243qkg.7.2017.05.05.09.14.51
+        by mx.google.com with ESMTPS id 47si5370228qtq.103.2017.05.05.10.04.36
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 05 May 2017 09:14:51 -0700 (PDT)
+        Fri, 05 May 2017 10:04:37 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:48021 helo=lists.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:48183 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1d6fsX-0001VU-5i
-	for alex.bennee@linaro.org; Fri, 05 May 2017 12:14:49 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:55893)
+	id 1d6geg-0008Ip-V1
+	for alex.bennee@linaro.org; Fri, 05 May 2017 13:04:34 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:38698)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <sundeep.lkml@gmail.com>) id 1d6fsS-0001Tr-Gn
-	for qemu-arm@nongnu.org; Fri, 05 May 2017 12:14:46 -0400
+	(envelope-from <ehabkost@redhat.com>) id 1d6geZ-0008If-Bf
+	for qemu-arm@nongnu.org; Fri, 05 May 2017 13:04:28 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <sundeep.lkml@gmail.com>) id 1d6fsQ-00055F-HB
-	for qemu-arm@nongnu.org; Fri, 05 May 2017 12:14:44 -0400
-Received: from mail-yb0-x241.google.com ([2607:f8b0:4002:c09::241]:33448)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <sundeep.lkml@gmail.com>)
-	id 1d6fsL-00053d-VS; Fri, 05 May 2017 12:14:38 -0400
-Received: by mail-yb0-x241.google.com with SMTP id d72so360792ybh.0;
-	Fri, 05 May 2017 09:14:36 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=YniwciIgZgKfqFYufL6V8wkKJ/O4QueT8+TPkOD2fnE=;
-	b=feXGfJhh+Cge7PESNkQHGTkTLurstE+kQg/HOQFS2ilYTyjSYEKywJ7HFHTH4wcIuv
-	G1W+N4WmMmCVWtlmMvmW3K1VpJGMRuVpNOyN30bcEelbMhvarotd6ZIEdiPKKwgBR9VQ
-	l3BliIuEk4TZketkybRJKibK7D81rKBfHvPkiQOxkPaYjUTrVW20ZK9DiWpZtU8+4zTz
-	von5BvrWvwTSNH6+xG7uUD6CD6bYd68UTAIRDPU764IP9Ujj2/syP91sc2At/LPper5v
-	iiXawxfnJZY8aRDZr44WUp2LenqcqVPT5rIp34L7ccmzbsv3TlGhgIs1B6RWqPhp791C
-	taIw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=YniwciIgZgKfqFYufL6V8wkKJ/O4QueT8+TPkOD2fnE=;
-	b=m47Im1CxsBEqQdZ+mHmsw4IX+4gKmv3eBUyo2JiH5eqQxPG+bosXiUctsJYhem62SC
-	MacPKo4LZlpY7XVrcCWZvCaT8I6qbOU071wd5qbDzb/R229dIQdNPubrWC0ChC2v6ga2
-	uOFCneB+MGv5K2Ls18nDRDReU6T6LXhlzdZszbBDUOyGV4lQbk0JR7pfLT5jg5VaeBj6
-	rp0vniNY6WOJxFWp0ioBoeZSD4A8FOneWCtVz8i487pvRlgpQLQUJmdQ00boyiCLxfZY
-	rJJwyn8rhRBuIL5oRgqCIR85iYHswig36bZV85N5KGxzRB29BatHpDN9SoLbF5yY+PoW
-	cpig==
-X-Gm-Message-State: AN3rC/6FJ9Kpqh1pX8J0xLU2BRQ/2B8QYfPQRjC2l7TDkAGmFiywvQGD
-	E5IbSsSK/NgMsPkB6600zROw7j1SYQ==
-X-Received: by 10.37.164.69 with SMTP id f63mr41536466ybi.78.1494000875247;
-	Fri, 05 May 2017 09:14:35 -0700 (PDT)
+	(envelope-from <ehabkost@redhat.com>) id 1d6geU-0007fT-N4
+	for qemu-arm@nongnu.org; Fri, 05 May 2017 13:04:27 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:37046)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <ehabkost@redhat.com>)
+	id 1d6geU-0007fD-E2; Fri, 05 May 2017 13:04:22 -0400
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
+	[10.5.11.16])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 3F69E4E4E6;
+	Fri,  5 May 2017 17:04:21 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 3F69E4E4E6
+Authentication-Results: ext-mx09.extmail.prod.ext.phx2.redhat.com;
+	dmarc=none (p=none dis=none) header.from=redhat.com
+Authentication-Results: ext-mx09.extmail.prod.ext.phx2.redhat.com;
+	spf=pass smtp.mailfrom=ehabkost@redhat.com
+DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com 3F69E4E4E6
+Received: from localhost (ovpn-116-28.gru2.redhat.com [10.97.116.28])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 8A836171E8;
+	Fri,  5 May 2017 17:04:20 +0000 (UTC)
+Date: Fri, 5 May 2017 14:04:15 -0300
+From: Eduardo Habkost <ehabkost@redhat.com>
+To: Igor Mammedov <imammedo@redhat.com>
+Message-ID: <20170505170415.GH3482@thinpad.lan.raisama.net>
+References: <1493816238-33120-1-git-send-email-imammedo@redhat.com>
+	<1493816238-33120-11-git-send-email-imammedo@redhat.com>
+	<20170503152022.GQ3482@thinpad.lan.raisama.net>
+	<20170505141648.35ba172f@nial.brq.redhat.com>
 MIME-Version: 1.0
-Received: by 10.13.244.1 with HTTP; Fri, 5 May 2017 09:14:34 -0700 (PDT)
-In-Reply-To: <CAKmqyKMrCfOkLXBWP-UDboWmPD0Ah6Viv9gFn3WxTUwyxR4thw@mail.gmail.com>
-References: <1493398313-6673-1-git-send-email-sundeep.lkml@gmail.com>
-	<1493398313-6673-5-git-send-email-sundeep.lkml@gmail.com>
-	<CAKmqyKMrCfOkLXBWP-UDboWmPD0Ah6Viv9gFn3WxTUwyxR4thw@mail.gmail.com>
-From: sundeep subbaraya <sundeep.lkml@gmail.com>
-Date: Fri, 5 May 2017 21:44:34 +0530
-Message-ID: <CALHRZupOf4KWYnVUSAJPW-MZQBj8LJct_km5Lsn+ci5_FgmNXA@mail.gmail.com>
-To: Alistair Francis <alistair23@gmail.com>
-Content-Type: text/plain; charset=UTF-8
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:4002:c09::241
-Subject: Re: [Qemu-arm] [Qemu-devel RFC v3 4/5] msf2: Add Smartfusion2 SoC.
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20170505141648.35ba172f@nial.brq.redhat.com>
+X-Fnord: you can see the fnord
+User-Agent: Mutt/1.8.0 (2017-02-23)
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.38]);
+	Fri, 05 May 2017 17:04:21 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-arm] [PATCH v2 10/24] numa: mirror cpu to node mapping in
+ MachineState::possible_cpus
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -81,369 +77,103 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm <qemu-arm@nongnu.org>,
-	"qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>
+Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jones <drjones@redhat.com>,
+	qemu-devel@nongnu.org, qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
+	Shannon Zhao <zhaoshenglong@huawei.com>,
+	Paolo Bonzini <pbonzini@redhat.com>, Eric Blake <eblake@redhat.com>,
+	David Gibson <david@gibson.dropbear.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: nlM4nVJTYr0n
+X-TUID: puRBsW4sC71m
 
-Hi Alistair,
+On Fri, May 05, 2017 at 02:16:48PM +0200, Igor Mammedov wrote:
+> On Wed, 3 May 2017 12:20:22 -0300
+> Eduardo Habkost <ehabkost@redhat.com> wrote:
+> 
+> > On Wed, May 03, 2017 at 02:57:04PM +0200, Igor Mammedov wrote:
+> > > Introduce machine_set_cpu_numa_node() helper that stores
+> > > node mapping for CPU in MachineState::possible_cpus.
+> > > CPU and node it belongs to is specified by 'props' argument.
+> > > 
+> > > Patch doesn't remove old way of storing mapping in
+> > > numa_info[X].node_cpu as removing it at the same time
+> > > makes patch rather big. Instead it just mirrors mapping
+> > > in possible_cpus and follow up per target patches will
+> > > switch to possible_cpus and numa_info[X].node_cpu will
+> > > be removed once there isn't any users left.
+> > > 
+> > > Signed-off-by: Igor Mammedov <imammedo@redhat.com>
+> > > Reviewed-by: David Gibson <david@gibson.dropbear.id.au>
+> > > ---
+> > >  include/hw/boards.h |  2 ++
+> > >  hw/core/machine.c   | 68 +++++++++++++++++++++++++++++++++++++++++++++++++++++
+> > >  numa.c              |  8 +++++++
+> > >  3 files changed, 78 insertions(+)
+> > > 
+> > > diff --git a/include/hw/boards.h b/include/hw/boards.h
+> > > index 5d6af21..1f518a1 100644
+> > > --- a/include/hw/boards.h
+> > > +++ b/include/hw/boards.h
+> > > @@ -42,6 +42,8 @@ bool machine_dump_guest_core(MachineState *machine);
+> > >  bool machine_mem_merge(MachineState *machine);
+> > >  void machine_register_compat_props(MachineState *machine);
+> > >  HotpluggableCPUList *machine_query_hotpluggable_cpus(MachineState *machine);
+> > > +void machine_set_cpu_numa_node(MachineState *machine,
+> > > +                               CpuInstanceProperties *props, Error **errp);
+> > >  
+> > >  /**
+> > >   * CPUArchId:
+> > > diff --git a/hw/core/machine.c b/hw/core/machine.c
+> > > index ada9eea..a63f17b 100644
+> > > --- a/hw/core/machine.c
+> > > +++ b/hw/core/machine.c
+> > > @@ -388,6 +388,74 @@ HotpluggableCPUList *machine_query_hotpluggable_cpus(MachineState *machine)
+> > >      return head;
+> > >  }
+> > >  
+> > > +void machine_set_cpu_numa_node(MachineState *machine,
+> > > +                               CpuInstanceProperties *props, Error **errp)  
+> > 
+> > As the semantics of this function aren't trivial, it would be
+> > nice to have a comment explaining what exactly this function do.
+> > 
+> > e.g.:
+> > * make it clear that it could affect multiple CPU slots;
+> > * make it clear what does it mean to have props->has_node_id=false as
+> >   argument (is it really valid?);
+> > * make it clear that it will refuse to change an existing mapping.
+> Will be following comment sufficient?
+> 
+> +/**
+> + * machine_set_cpu_numa_node:
+> + * @machine: machine object to modify
+> + * @props: specifies which cpu objects to assign to
+> + *         numa node specified by @props.node_id
+> + * @errp: if an error occurs, a pointer to an area to store the error
+> + *
+> + * Associate NUMA node specified by @props.node_id with cpu slots that
+> + * match socket/core/thread-ids specified by @props. It's recommended to use
+> + * query-hotpluggable-cpus.props values to specify affected cpu slots,
+> + * which would lead to exact 1:1 mapping of cpu slots to NUMA node.
+> + *
+> + * However for CLI convenience it's possible to pass in subset of properties,
+> + * which would affect all cpu slots that match it.
+> + * Ex for pc machine:
+> + *    -smp 4,cores=2,sockets=2 -numa node,nodeid=0 -numa node,nodeid=1 \
+> + *    -numa cpu,node-id=0,socket_id=0 \
+> + *    -numa cpu,node-id=1,socket_id=1
+> + * will assign all child cores of socket 0 to node 0 and
+> + * of socket 1 to node 1.
+> + *
+> + * Empty subset is disallowed and function will return with error in this case.
+> + */
+>  void machine_set_cpu_numa_node(MachineState *machine,
+>                                 CpuInstanceProperties *props, Error **errp)
 
-On Fri, May 5, 2017 at 3:51 AM, Alistair Francis <alistair23@gmail.com> wrote:
-> On Fri, Apr 28, 2017 at 9:51 AM, Subbaraya Sundeep
-> <sundeep.lkml@gmail.com> wrote:
->> Smartfusion2 SoC has hardened Microcontroller subsystem
->> and flash based FPGA fabric. This patch adds support for
->> Microcontroller subsystem in the SoC.
->>
->> Signed-off-by: Subbaraya Sundeep <sundeep.lkml@gmail.com>
->> ---
->>  default-configs/arm-softmmu.mak |   1 +
->>  hw/arm/Makefile.objs            |   2 +-
->>  hw/arm/msf2_soc.c               | 194 ++++++++++++++++++++++++++++++++++++++++
->>  include/hw/arm/msf2_soc.h       |  62 +++++++++++++
->>  4 files changed, 258 insertions(+), 1 deletion(-)
->>  create mode 100644 hw/arm/msf2_soc.c
->>  create mode 100644 include/hw/arm/msf2_soc.h
->>
->> diff --git a/default-configs/arm-softmmu.mak b/default-configs/arm-softmmu.mak
->> index 78d7af0..7062512 100644
->> --- a/default-configs/arm-softmmu.mak
->> +++ b/default-configs/arm-softmmu.mak
->> @@ -122,3 +122,4 @@ CONFIG_ACPI=y
->>  CONFIG_SMBIOS=y
->>  CONFIG_ASPEED_SOC=y
->>  CONFIG_GPIO_KEY=y
->> +CONFIG_MSF2=y
->> diff --git a/hw/arm/Makefile.objs b/hw/arm/Makefile.objs
->> index 4c5c4ee..cce2759 100644
->> --- a/hw/arm/Makefile.objs
->> +++ b/hw/arm/Makefile.objs
->> @@ -1,7 +1,7 @@
->>  obj-y += boot.o collie.o exynos4_boards.o gumstix.o highbank.o
->>  obj-$(CONFIG_DIGIC) += digic_boards.o
->>  obj-y += integratorcp.o mainstone.o musicpal.o nseries.o
->> -obj-y += omap_sx1.o palm.o realview.o spitz.o stellaris.o
->> +obj-y += omap_sx1.o palm.o realview.o spitz.o stellaris.o msf2_soc.o
->>  obj-y += tosa.o versatilepb.o vexpress.o virt.o xilinx_zynq.o z2.o
->>  obj-$(CONFIG_ACPI) += virt-acpi-build.o
->>  obj-y += netduino2.o
->> diff --git a/hw/arm/msf2_soc.c b/hw/arm/msf2_soc.c
->> new file mode 100644
->> index 0000000..a470872
->> --- /dev/null
->> +++ b/hw/arm/msf2_soc.c
->> @@ -0,0 +1,194 @@
->> +/*
->> + * SmartFusion2 SoC emulation.
->> + *
->> + * Copyright (c) 2017 Subbaraya Sundeep <sundeep.lkml@gmail.com>
->> + *
->> + * Permission is hereby granted, free of charge, to any person obtaining a copy
->> + * of this software and associated documentation files (the "Software"), to deal
->> + * in the Software without restriction, including without limitation the rights
->> + * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
->> + * copies of the Software, and to permit persons to whom the Software is
->> + * furnished to do so, subject to the following conditions:
->> + *
->> + * The above copyright notice and this permission notice shall be included in
->> + * all copies or substantial portions of the Software.
->> + *
->> + * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
->> + * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
->> + * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
->> + * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
->> + * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
->> + * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
->> + * THE SOFTWARE.
->> + */
->> +
->> +#include "qemu/osdep.h"
->> +#include "qapi/error.h"
->> +#include "qemu-common.h"
->> +#include "hw/arm/arm.h"
->> +#include "exec/address-spaces.h"
->> +#include "hw/char/serial.h"
->> +#include "hw/boards.h"
->> +#include "sysemu/block-backend.h"
->> +#include "hw/arm/msf2_soc.h"
->> +
->> +#define MSF2_TIMER_BASE       0x40004000
->> +#define MSF2_SYSREG_BASE      0x40038000
->> +
->> +#define MSF2_TIMER_IRQ0       14
->> +#define MSF2_TIMER_IRQ1       15
->> +
->> +static const uint32_t spi_addr[MSF2_NUM_SPIS] = { 0x40001000 , 0x40011000 };
->
-> Hey Sundeep,
->
-> From your other patch it sounds like this should just be a single SPI
-> device with to busses, so this will have to be re-worked.
->
-I may be entirely wrong please correct me. I assumed this SoC and Board file
-are analogous to dtsi and dts in linux. So SoC file will instantiate
-all the controllers
-like SPI0 and SPI1 present in SoC whereas board file will attach slaves present
-on board (like EEPROM, SPI flashes etc.,).  Hence in board file I
-attached flash to
-SPI0. I was expecting one bus for each controller eg:
-SPI0:
-        bus: spi0
-             device: flash (Chip select 0)
-             device: other device (Chip select 1)
-SPI1:
-        bus: spi1
-             device: other device (Chip select 0) (if attached in board file)
+Sounds good to me.
 
-But this is not the case because am not able to create spi1 bus in
-controller model
-(hw/ssi/msf2_spi.c). How would model know about which
-controller(SPI0/1) is currently
-accessed and use corresponding bus(spi0/spi1) to transfer to slave devices?
-If am wrong I will remove SPI1 from SoC.
+While at it, we could make 'props' const, as it's not going to be
+touched by the function.
 
->> +static const uint32_t uart_addr[MSF2_NUM_UARTS] = { 0x40000000 , 0x40010000 };
->> +
->> +static const int spi_irq[MSF2_NUM_SPIS] = { 2, 3 };
->> +static const int uart_irq[MSF2_NUM_UARTS] = { 10, 11 };
->> +
->> +static void msf2_soc_initfn(Object *obj)
->> +{
->> +    MSF2State *s = MSF2_SOC(obj);
->> +    int i;
->> +
->> +    object_initialize(&s->armv7m, sizeof(s->armv7m), TYPE_ARMV7M);
->> +    qdev_set_parent_bus(DEVICE(&s->armv7m), sysbus_get_default());
->> +
->> +    object_initialize(&s->sysreg, sizeof(s->sysreg), TYPE_MSF2_SYSREG);
->> +    qdev_set_parent_bus(DEVICE(&s->sysreg), sysbus_get_default());
->> +
->> +    object_initialize(&s->timer, sizeof(s->timer), TYPE_MSF2_TIMER);
->> +    qdev_set_parent_bus(DEVICE(&s->timer), sysbus_get_default());
->> +
->> +    for (i = 0; i < MSF2_NUM_SPIS; i++) {
->> +        object_initialize(&s->spi[i], sizeof(s->spi[i]),
->> +                          TYPE_MSF2_SPI);
->> +        qdev_set_parent_bus(DEVICE(&s->spi[i]), sysbus_get_default());
->> +    }
->> +}
->> +
->> +static void msf2_soc_realize(DeviceState *dev_soc, Error **errp)
->> +{
->> +    MSF2State *s = MSF2_SOC(dev_soc);
->> +    DeviceState *dev, *armv7m;
->> +    SysBusDevice *busdev;
->> +    Error *err = NULL;
->> +    int i;
->> +
->> +    MemoryRegion *system_memory = get_system_memory();
->> +    MemoryRegion *nvm = g_new(MemoryRegion, 1);
->> +    MemoryRegion *nvm_alias = g_new(MemoryRegion, 1);
->> +    MemoryRegion *sram = g_new(MemoryRegion, 1);
->> +    MemoryRegion *ddr = g_new(MemoryRegion, 1);
->> +
->> +    memory_region_init_ram(nvm, NULL, "MSF2.envm", ENVM_SIZE,
->> +                           &error_fatal);
->> +    memory_region_init_alias(nvm_alias, NULL, "MSF2.flash.alias",
->> +                             nvm, 0, ENVM_SIZE);
->> +    vmstate_register_ram_global(nvm);
->> +
->> +    memory_region_set_readonly(nvm, true);
->> +    memory_region_set_readonly(nvm_alias, true);
->> +
->> +    memory_region_add_subregion(system_memory, ENVM_BASE_ADDRESS, nvm);
->> +    memory_region_add_subregion(system_memory, 0, nvm_alias);
->> +
->> +    memory_region_init_ram(ddr, NULL, "MSF2.ddr", DDR_SIZE,
->> +                           &error_fatal);
->> +    vmstate_register_ram_global(ddr);
->> +    memory_region_add_subregion(system_memory, DDR_BASE_ADDRESS, ddr);
->> +
->> +    memory_region_init_ram(sram, NULL, "MSF2.sram", SRAM_SIZE,
->> +                           &error_fatal);
->> +    vmstate_register_ram_global(sram);
->> +    memory_region_add_subregion(system_memory, SRAM_BASE_ADDRESS, sram);
->> +
->> +    armv7m = DEVICE(&s->armv7m);
->> +    qdev_prop_set_uint32(armv7m, "num-irq", 96);
->> +    qdev_prop_set_string(armv7m, "cpu-model", s->cpu_model);
->> +    object_property_set_link(OBJECT(&s->armv7m), OBJECT(get_system_memory()),
->> +                                     "memory", &error_abort);
->> +    object_property_set_bool(OBJECT(&s->armv7m), true, "realized", &err);
->> +    if (err != NULL) {
->> +        error_propagate(errp, err);
->> +        return;
->> +    }
->> +
->> +    for (i = 0; i < MSF2_NUM_UARTS; i++) {
->> +        if (serial_hds[i]) {
->> +            serial_mm_init(get_system_memory(), uart_addr[i], 2,
->> +                           qdev_get_gpio_in(armv7m, uart_irq[i]),
->> +                           115200, serial_hds[i], DEVICE_NATIVE_ENDIAN);
->> +        }
->> +    }
->> +
->> +    dev = DEVICE(&s->timer);
->> +    qdev_prop_set_uint32(dev, "clock-frequency", 83 * 1000000);
->
-> Macro for the frequency.
->
-Yeah will change.
-
->> +    object_property_set_bool(OBJECT(&s->timer), true, "realized", &err);
->> +    if (err != NULL) {
->> +        error_propagate(errp, err);
->> +        return;
->> +    }
->> +    busdev = SYS_BUS_DEVICE(dev);
->> +    sysbus_mmio_map(busdev, 0, MSF2_TIMER_BASE);
->> +    sysbus_connect_irq(busdev, 0,
->> +                           qdev_get_gpio_in(armv7m, MSF2_TIMER_IRQ0));
->> +    sysbus_connect_irq(busdev, 1,
->> +                           qdev_get_gpio_in(armv7m, MSF2_TIMER_IRQ1));
->> +
->> +    dev = DEVICE(&s->sysreg);
->> +    object_property_set_bool(OBJECT(&s->sysreg), true, "realized", &err);
->> +    if (err != NULL) {
->> +        error_propagate(errp, err);
->> +        return;
->> +    }
->> +    busdev = SYS_BUS_DEVICE(dev);
->> +    sysbus_mmio_map(busdev, 0, MSF2_SYSREG_BASE);
->> +
->> +    for (i = 0; i < MSF2_NUM_SPIS; i++) {
->> +        gchar *bus_name = g_strdup_printf("spi%d", i);
->> +
->> +        object_property_set_bool(OBJECT(&s->spi[i]), true, "realized", &err);
->> +        if (err != NULL) {
->> +            g_free(bus_name);
->> +            error_propagate(errp, err);
->> +            return;
->> +        }
->> +
->> +        sysbus_mmio_map(SYS_BUS_DEVICE(&s->spi[i]), 0, spi_addr[i]);
->> +        sysbus_connect_irq(SYS_BUS_DEVICE(&s->spi[i]), 0,
->> +                           qdev_get_gpio_in(armv7m, spi_irq[i]));
->> +
->> +        /* Alias controller SPI bus to the SoC itself */
->> +        object_property_add_alias(OBJECT(s), bus_name,
->> +                                  OBJECT(&s->spi[i]), "spi0",
->> +                                  &error_abort);
->> +        g_free(bus_name);
->> +    }
->> +}
->> +
->> +static Property msf2_soc_properties[] = {
->> +    DEFINE_PROP_STRING("cpu-model", MSF2State, cpu_model),
->
-> Does this actually change?
->
-No. I will remove the property.
-
-> This looks pretty good, just a few things to fix up.
->
-
-Thank you,
-Sundeep
-
-> Thanks,
->
-> Alistair
->
->> +    DEFINE_PROP_END_OF_LIST(),
->> +};
->> +
->> +static void msf2_soc_class_init(ObjectClass *klass, void *data)
->> +{
->> +    DeviceClass *dc = DEVICE_CLASS(klass);
->> +
->> +    dc->realize = msf2_soc_realize;
->> +    dc->props = msf2_soc_properties;
->> +}
->> +
->> +static const TypeInfo msf2_soc_info = {
->> +    .name          = TYPE_MSF2_SOC,
->> +    .parent        = TYPE_SYS_BUS_DEVICE,
->> +    .instance_size = sizeof(MSF2State),
->> +    .instance_init = msf2_soc_initfn,
->> +    .class_init    = msf2_soc_class_init,
->> +};
->> +
->> +static void msf2_soc_types(void)
->> +{
->> +    type_register_static(&msf2_soc_info);
->> +}
->> +
->> +type_init(msf2_soc_types)
->> diff --git a/include/hw/arm/msf2_soc.h b/include/hw/arm/msf2_soc.h
->> new file mode 100644
->> index 0000000..1184d9a
->> --- /dev/null
->> +++ b/include/hw/arm/msf2_soc.h
->> @@ -0,0 +1,62 @@
->> +/*
->> + * Microsemi Smartfusion2 SoC
->> + *
->> + * Copyright (c) 2017 Subbaraya Sundeep <sundeep.lkml@gmail.com>
->> + *
->> + * Permission is hereby granted, free of charge, to any person obtaining a copy
->> + * of this software and associated documentation files (the "Software"), to deal
->> + * in the Software without restriction, including without limitation the rights
->> + * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
->> + * copies of the Software, and to permit persons to whom the Software is
->> + * furnished to do so, subject to the following conditions:
->> + *
->> + * The above copyright notice and this permission notice shall be included in
->> + * all copies or substantial portions of the Software.
->> + *
->> + * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
->> + * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
->> + * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
->> + * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
->> + * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
->> + * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
->> + * THE SOFTWARE.
->> + */
->> +
->> +#ifndef HW_ARM_MSF2_SOC_H
->> +#define HW_ARM_MSF2_SOC_H
->> +
->> +#include "hw/misc/msf2_sysreg.h"
->> +#include "hw/timer/msf2_timer.h"
->> +#include "hw/ssi/msf2_spi.h"
->> +#include "hw/arm/armv7m.h"
->> +
->> +#define TYPE_MSF2_SOC     "msf2-soc"
->> +#define MSF2_SOC(obj)     OBJECT_CHECK(MSF2State, (obj), TYPE_MSF2_SOC)
->> +
->> +#define MSF2_NUM_SPIS         2
->> +#define MSF2_NUM_UARTS        2
->> +
->> +#define ENVM_BASE_ADDRESS     0x60000000
->> +#define ENVM_SIZE             (128 * 1024)
->> +
->> +#define DDR_BASE_ADDRESS      0xA0000000
->> +#define DDR_SIZE              (64 * 1024 * 1024)
->> +
->> +#define SRAM_BASE_ADDRESS     0x20000000
->> +#define SRAM_SIZE             (64 * 1024)
->> +
->> +typedef struct MSF2State {
->> +    /*< private >*/
->> +    SysBusDevice parent_obj;
->> +    /*< public >*/
->> +
->> +    char *cpu_model;
->> +
->> +    ARMv7MState armv7m;
->> +
->> +    MSF2SysregState sysreg;
->> +    MSF2TimerState timer;
->> +    MSF2SpiState spi[MSF2_NUM_SPIS];
->> +} MSF2State;
->> +
->> +#endif
->> --
->> 2.5.0
->>
+-- 
+Eduardo

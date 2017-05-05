@@ -1,59 +1,59 @@
-Received: by 10.25.0.198 with SMTP id 189csp881048lfa;
-        Thu, 4 May 2017 20:22:18 -0700 (PDT)
-X-Received: by 10.55.55.17 with SMTP id e17mr11948086qka.63.1493954538451;
-        Thu, 04 May 2017 20:22:18 -0700 (PDT)
+Received: by 10.25.0.198 with SMTP id 189csp24398lfa;
+        Thu, 4 May 2017 23:37:56 -0700 (PDT)
+X-Received: by 10.233.222.134 with SMTP id s128mr5031526qkf.190.1493966275955;
+        Thu, 04 May 2017 23:37:55 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id d25si3480880qtd.169.2017.05.04.20.22.17
+        by mx.google.com with ESMTPS id o1si3707084qte.164.2017.05.04.23.37.55
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 04 May 2017 20:22:18 -0700 (PDT)
+        Thu, 04 May 2017 23:37:55 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        dkim=fail header.i=@gibson.dropbear.id.au;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:44855 helo=lists.gnu.org)
+Received: from localhost ([::1]:45309 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1d6Tot-0006Xx-S3
-	for alex.bennee@linaro.org; Thu, 04 May 2017 23:22:15 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:59353)
+	id 1d6WsD-0003lQ-AT
+	for alex.bennee@linaro.org; Fri, 05 May 2017 02:37:53 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:60614)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <dgibson@ozlabs.org>) id 1d6Too-0006Xr-QX
-	for qemu-arm@nongnu.org; Thu, 04 May 2017 23:22:11 -0400
+	(envelope-from <dgibson@ozlabs.org>) id 1d6Ws8-0003lH-Lh
+	for qemu-arm@nongnu.org; Fri, 05 May 2017 02:37:50 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <dgibson@ozlabs.org>) id 1d6Ton-0006IX-J7
-	for qemu-arm@nongnu.org; Thu, 04 May 2017 23:22:10 -0400
-Received: from ozlabs.org ([2401:3900:2:1::2]:51487)
+	(envelope-from <dgibson@ozlabs.org>) id 1d6Ws7-0007Vf-KT
+	for qemu-arm@nongnu.org; Fri, 05 May 2017 02:37:48 -0400
+Received: from ozlabs.org ([2401:3900:2:1::2]:55601)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <dgibson@ozlabs.org>)
-	id 1d6Ton-0006Fi-4d; Thu, 04 May 2017 23:22:09 -0400
+	id 1d6Ws6-0007Tx-SR; Fri, 05 May 2017 02:37:47 -0400
 Received: by ozlabs.org (Postfix, from userid 1007)
-	id 3wJxyh4bn0z9s9c; Fri,  5 May 2017 13:22:04 +1000 (AEST)
+	id 3wK2JM5qJDz9s8W; Fri,  5 May 2017 16:37:39 +1000 (AEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-	d=gibson.dropbear.id.au; s=201602; t=1493954524;
-	bh=tw35hhFtHgFKuqSB6G2PKbjPIEq2zuuAmcZV6+wTbio=;
+	d=gibson.dropbear.id.au; s=201602; t=1493966259;
+	bh=cqbCIjzjthSuIAbrriyWbW++ieFydkHROSfqspR05TQ=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=oCI/0Mi5TGbIwUvDa/R+6wympK6Re8aEbbpbWsr7bscVAxyreJTox5R2Rl+vZVnr6
-	d8cv+mxO5XZKjRFCxh+jPBK8cBuGzPCbDd5Hcgy2rwq1Bmz1kNEAbbc44wgdB0uTBv
-	oED5BULOwcLp603TeYx8mnBWUiRUcnSe0Gk2UQO8=
-Date: Fri, 5 May 2017 13:22:00 +1000
+	b=fZ0ICfKXz+/vr88KzgnP6a3Qo0biSTxrDR6vYljxznjREPUCyKahxWfleP/xX4git
+	UTLXtPvBL6RaPeJgFaFyuBN/r4UjwRc33zZkeGfWmXwksCaJzvuHwqnkiiQJiTgLPj
+	4ttCeFpH6cHXK7fCnzjt53yNhuLOa36l2PuOQqjc=
+Date: Fri, 5 May 2017 13:23:06 +1000
 From: David Gibson <david@gibson.dropbear.id.au>
 To: Igor Mammedov <imammedo@redhat.com>
-Message-ID: <20170505032200.GM14413@umbus.fritz.box>
+Message-ID: <20170505032306.GN14413@umbus.fritz.box>
 References: <1493816238-33120-1-git-send-email-imammedo@redhat.com>
-	<1493816238-33120-18-git-send-email-imammedo@redhat.com>
+	<1493816238-33120-21-git-send-email-imammedo@redhat.com>
 MIME-Version: 1.0
 Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="Aaj1jBvBEV7KRjLi"
+	protocol="application/pgp-signature"; boundary="4Y142/9l9nQlBiaj"
 Content-Disposition: inline
-In-Reply-To: <1493816238-33120-18-git-send-email-imammedo@redhat.com>
+In-Reply-To: <1493816238-33120-21-git-send-email-imammedo@redhat.com>
 User-Agent: Mutt/1.8.0 (2017-02-23)
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
 X-Received-From: 2401:3900:2:1::2
-Subject: Re: [Qemu-arm] [PATCH v2 17/24] tests: numa: add case for QMP
- command query-cpus
+Subject: Re: [Qemu-arm] [PATCH v2 20/24] machine: call machine init from
+ wrapper
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -72,93 +72,73 @@ Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jones <drjones@redhat.com>,
 	Paolo Bonzini <pbonzini@redhat.com>, Eric Blake <eblake@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: l6odo5QrHABY
+X-TUID: Webh7vHHnvUf
 
 
---Aaj1jBvBEV7KRjLi
+--4Y142/9l9nQlBiaj
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
-On Wed, May 03, 2017 at 02:57:11PM +0200, Igor Mammedov wrote:
+On Wed, May 03, 2017 at 02:57:14PM +0200, Igor Mammedov wrote:
+> add machine_run_board_init() wrapper that calls machine
+> init for now but in follow up patches it will be used
+> to run generic machine code that should run before
+> machine init.
+>=20
 > Signed-off-by: Igor Mammedov <imammedo@redhat.com>
 
 Reviewed-by: David Gibson <david@gibson.dropbear.id.au>
 
 > ---
-> v2:
->  * fix checkpatch error, move { to newline
-> ---
->  tests/numa-test.c | 45 +++++++++++++++++++++++++++++++++++++++++++++
->  1 file changed, 45 insertions(+)
+>  include/hw/boards.h | 1 +
+>  hw/core/machine.c   | 6 ++++++
+>  vl.c                | 2 +-
+>  3 files changed, 8 insertions(+), 1 deletion(-)
 >=20
-> diff --git a/tests/numa-test.c b/tests/numa-test.c
-> index f5da0c8..2722687 100644
-> --- a/tests/numa-test.c
-> +++ b/tests/numa-test.c
-> @@ -87,6 +87,50 @@ static void test_mon_partial(const void *data)
->      g_free(cli);
+> diff --git a/include/hw/boards.h b/include/hw/boards.h
+> index 1f518a1..0e74484 100644
+> --- a/include/hw/boards.h
+> +++ b/include/hw/boards.h
+> @@ -32,6 +32,7 @@ void memory_region_allocate_system_memory(MemoryRegion =
+*mr, Object *owner,
+>  MachineClass *find_default_machine(void);
+>  extern MachineState *current_machine;
+> =20
+> +void machine_run_board_init(MachineState *machine);
+>  bool machine_usb(MachineState *machine);
+>  bool machine_kernel_irqchip_allowed(MachineState *machine);
+>  bool machine_kernel_irqchip_required(MachineState *machine);
+> diff --git a/hw/core/machine.c b/hw/core/machine.c
+> index a63f17b..217b4f4 100644
+> --- a/hw/core/machine.c
+> +++ b/hw/core/machine.c
+> @@ -648,6 +648,12 @@ bool machine_mem_merge(MachineState *machine)
+>      return machine->mem_merge;
 >  }
 > =20
-> +static QList *get_cpus(QDict **resp)
+> +void machine_run_board_init(MachineState *machine)
 > +{
-> +    *resp =3D qmp("{ 'execute': 'query-cpus' }");
-> +    g_assert(*resp);
-> +    g_assert(qdict_haskey(*resp, "return"));
-> +    return  qdict_get_qlist(*resp, "return");
+> +    MachineClass *machine_class =3D MACHINE_GET_CLASS(machine);
+> +    machine_class->init(machine);
 > +}
 > +
-> +static void test_query_cpus(const void *data)
-> +{
-> +    char *cli;
-> +    QDict *resp;
-> +    QList *cpus;
-> +    const QObject *e;
-> +
-> +    cli =3D make_cli(data, "-smp 8 -numa node,cpus=3D0-3 -numa node,cpus=
-=3D4-7");
-> +    qtest_start(cli);
-> +    cpus =3D get_cpus(&resp);
-> +    g_assert(cpus);
-> +
-> +    while ((e =3D qlist_pop(cpus))) {
-> +        QDict *cpu, *props;
-> +        int64_t cpu_idx, node;
-> +
-> +        cpu =3D qobject_to_qdict(e);
-> +        g_assert(qdict_haskey(cpu, "CPU"));
-> +        g_assert(qdict_haskey(cpu, "props"));
-> +
-> +        cpu_idx =3D qdict_get_int(cpu, "CPU");
-> +        props =3D qdict_get_qdict(cpu, "props");
-> +        g_assert(qdict_haskey(props, "node-id"));
-> +        node =3D qdict_get_int(props, "node-id");
-> +        if (cpu_idx >=3D 0 && cpu_idx < 4) {
-> +            g_assert_cmpint(node, =3D=3D, 0);
-> +        } else {
-> +            g_assert_cmpint(node, =3D=3D, 1);
-> +        }
-> +    }
-> +
-> +    QDECREF(resp);
-> +    qtest_end();
-> +    g_free(cli);
-> +}
-> +
->  int main(int argc, char **argv)
+>  static void machine_class_finalize(ObjectClass *klass, void *data)
 >  {
->      const char *args =3D NULL;
-> @@ -101,6 +145,7 @@ int main(int argc, char **argv)
->      qtest_add_data_func("/numa/mon/default", args, test_mon_default);
->      qtest_add_data_func("/numa/mon/cpus/explicit", args, test_mon_explic=
-it);
->      qtest_add_data_func("/numa/mon/cpus/partial", args, test_mon_partial=
-);
-> +    qtest_add_data_func("/numa/qmp/cpus/query-cpus", args, test_query_cp=
-us);
+>      MachineClass *mc =3D MACHINE_CLASS(klass);
+> diff --git a/vl.c b/vl.c
+> index fe4741d..ac46d6e 100644
+> --- a/vl.c
+> +++ b/vl.c
+> @@ -4562,7 +4562,7 @@ int main(int argc, char **argv, char **envp)
+>      current_machine->boot_order =3D boot_order;
+>      current_machine->cpu_model =3D cpu_model;
 > =20
->      return g_test_run();
->  }
+> -    machine_class->init(current_machine);
+> +    machine_run_board_init(current_machine);
+> =20
+>      realtime_init();
+> =20
 
 --=20
 David Gibson			| I'll have my music baroque, and my code
@@ -166,25 +146,25 @@ david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
 				| _way_ _around_!
 http://www.ozlabs.org/~dgibson
 
---Aaj1jBvBEV7KRjLi
+--4Y142/9l9nQlBiaj
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 Version: GnuPG v2
 
-iQIcBAEBCAAGBQJZC+/YAAoJEGw4ysog2bOSSTIQALBo/OvAvax/yZ2WxNMbV0Uf
-2YlijRA7OwyWbggNRuf9qYkY7BNDzvUSqgxdiwysMFodswz0zSrSsvUSnv8ZxB9U
-JW3CRZe1KTechFudXb1JoNj4cgReF0vExPeLeY39LWLK9cWJeZ/FERZ4EyVEmc3I
-Y4abqL7KHYahBZD9edj2ShPsws5Mo6QHqp0ZZo5SZHt23R1mWYHzYPdJLaA/5S7q
-/WRhsqziOwvMErDNt7DLt+UjmzkMN4qeoVYdspGXxSAaYx6QSpaiZBB1c870IqjZ
-SI6B+Z/cPqXEAd6FV6kKQg9qotHmzSf51emjFpH4afw2TFFmaIQdciGM6/iTIfjv
-AoWI8Y2cLoDGFsDSjKRhsCZIhhV8sdaxE0B4Gj2F0kNKNiV/sjkTXX1EUTpVE+03
-g3MHDJ0gOjcXmiVwsI2rqz0u5ZOMKYS/L4Ms1A/yOTFmjkEEmllWeyulpRKMZAZN
-EPQqMbbh+CAI8BQph+APtvN7cZcgiq1XhEaNNFaoWH7sJahZOjqSkki/CWKcebY0
-t7H9FAj+Mjz3Mgerg8M7JsBqjGIzGj9fc9QnNjZe5xLGJno6F2U+a0hxxXShko0/
-3qc3DZHWYQhYWeLwDKa2ls47x8YAT0rF5qI3+rYRk9Sr2gqHU/lhL8JD5qIn9r2R
-mkupdpwwViQvZyZx1Tl3
-=hh7b
+iQIcBAEBCAAGBQJZC/AaAAoJEGw4ysog2bOSv4AP/ih8nLvhqX3v0Mta1ipbgc52
+91vfhfXjmSe6Uv2342PrDduQ8iJXxplHeIkNcqdmMlRwUQ+fQgDyCjolu+tH78aK
+q6MXPjQ9MPTltPeOq+1jLxynWuTAZ6WTbcCFmDR4TLOWU7aAZXTEx7+Lwoo1p7im
+Jeq7YXDM/7p/h9bMDVZd5ktPV4qpm+8jTeO5POURKrP2gthrDlaihWLFvZrkNdb3
+Arhs6K/pte3bxW1yThNRgbbLJQo5f6NyXxQGfHNftZxmR2xK3OBFzc4xQEu3XELi
+ZXxBEX5neVIr2VaqzzW6ccc+/mKkDrEXp5Zh1Cj8NgO7bVcblAqhY16Bp88BkAoR
+kD2tlviUBiD8CVCh+mFHiX/JdrlRH4f34qBNipCcUfPKnatNW7VaS+cSVNNAx7ad
+3KAZbA0Jx5EPk3RhLMwJyLihufYhMU8TPneDJM2Y3gM1UQajMsryPJW9s5V1Vn42
+/ShK3xoDueiAXqYKHGgBCArVBeLeZ/1xIOmAb0cmM5pfxlJKwTFROs+PCTVlvM7G
+bxF5L8qNNn6l+L/g/qkYw8MJ6NaE9iebpSTbdeuo9z/oyvdYf0CUJZhPeEiruW23
+iQUWAqh0Gm1AtDHdd4MpzEATIPKVAoBIEK6NhGt3h1P5dyCdJykSHccNZY89Ui+P
+x4nwn+NbcWtMeo3H7QBD
+=nnjb
 -----END PGP SIGNATURE-----
 
---Aaj1jBvBEV7KRjLi--
+--4Y142/9l9nQlBiaj--

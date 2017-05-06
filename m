@@ -1,101 +1,55 @@
-Received: by 10.25.0.198 with SMTP id 189csp545704lfa;
-        Sat, 6 May 2017 01:49:26 -0700 (PDT)
-X-Received: by 10.55.214.7 with SMTP id t7mr15523483qki.170.1494060566709;
-        Sat, 06 May 2017 01:49:26 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1494060566; cv=none;
-        d=google.com; s=arc-20160816;
-        b=BapjS/mtceuehTU0Q05DRGS/wBoOSKSTLDne+4BK95xPdqFKcliBS6gJscJHn0xez9
-         Xg6DlVVl1g0pABRccacqL+CqX7zg2d7g3PT+9WhkfX34YDZvZCVQW3yLZEIEbTARkKD3
-         fvKpQyJDNjSwUxryN2iU9lhr0c4egN9KkaGiI+86SgtqRKLVHLnOYMysh7gPYOnI9A8m
-         Yw7NRK4H8xVS2KPR0ktkQ8m4h/ap29W+1UYwXtavK8Vlfw6tOTrwaKM4A4kMu/TMkISJ
-         AO3MQoLj9UKMUeBJ+KqHHQkbqcE4Z5d8zOEeaXIXM9km7j78Y0IbTSG6BXSqiySYr9zk
-         vjpA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
-         :references:in-reply-to:mime-version:dkim-signature
-         :arc-authentication-results;
-        bh=BthxhmxDB6c7cZGLxDlpUhs94bzNxbfcQcjx+2pYgxo=;
-        b=oLtwHuVsm9cmgTnqz6MJ0zBQu7wCvk7AFI0lLLjOv3CztqHGGCBzK5klIZFgzSw+h7
-         9j9JS01iOpXINCpQSHuf7LnReKcM0BRYDwye7NuQnZSq/t01NBY3Qs1m/WclqQd5FayF
-         Z/z8e1QPfyxoAu/aGZHjn4Za+SPnDoh8WEpw9B+0pjJQq+KT1cGS0QKX8icC7BmwWEIy
-         nAXsstWbRbg84MOoCKZpo99G3nq6s7Cgeky0JH1ZxDYfeHEDCrXg6SnLsJ95x9oAt/kn
-         3UvLL43ylfNEo+WJtolvfeYhVBufyXuu/uqGKq35qeEnxD5DXwYcSo11R2IRez0Y72IE
-         8pwQ==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Received: by 10.25.0.198 with SMTP id 189csp663045lfa;
+        Sat, 6 May 2017 08:24:34 -0700 (PDT)
+X-Received: by 10.200.52.165 with SMTP id w34mr23102050qtb.77.1494084273906;
+        Sat, 06 May 2017 08:24:33 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id p129si7049009qkc.253.2017.05.06.01.49.25
+        by mx.google.com with ESMTPS id l3si6620967qtd.56.2017.05.06.08.24.33
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sat, 06 May 2017 01:49:26 -0700 (PDT)
+        Sat, 06 May 2017 08:24:33 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:50540 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:51763 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1d6vP2-0004Im-1M
-	for alex.bennee@linaro.org; Sat, 06 May 2017 04:49:24 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:57431)
+	id 1d71ZP-0007JO-CP
+	for alex.bennee@linaro.org; Sat, 06 May 2017 11:24:31 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:33956)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <sundeep.lkml@gmail.com>) id 1d6vOu-0004Gl-Ls
-	for qemu-arm@nongnu.org; Sat, 06 May 2017 04:49:19 -0400
+	(envelope-from <krzk@kernel.org>) id 1d71ZL-0007J8-J8
+	for qemu-arm@nongnu.org; Sat, 06 May 2017 11:24:28 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <sundeep.lkml@gmail.com>) id 1d6vOs-0000xv-H8
-	for qemu-arm@nongnu.org; Sat, 06 May 2017 04:49:16 -0400
-Received: from mail-yw0-x242.google.com ([2607:f8b0:4002:c05::242]:34606)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <sundeep.lkml@gmail.com>)
-	id 1d6vOo-0000sj-2X; Sat, 06 May 2017 04:49:10 -0400
-Received: by mail-yw0-x242.google.com with SMTP id 17so1983135ywk.1;
-	Sat, 06 May 2017 01:49:09 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=BthxhmxDB6c7cZGLxDlpUhs94bzNxbfcQcjx+2pYgxo=;
-	b=ViWMBtmGAfoF4TmyQfgtDIYNfNK5wdNk2iq+kiaMFpFTOfYlmq0aWupjd/HsvGs2V9
-	fv7TMUNfNZsolx6YDZieBB6VDXBjaUZL1knUhzi9vTsNRjGZ81FtDaau+1IN4r/+Yljz
-	2IxQSnHmjuMeBhq6iRrICuzK9glDlxDLZLdqpa2H8G3JpR2flO8UlBu80f0I4Wu5+iSk
-	IVMtslyHUU0D+9WhpxyoYqkD6y9g3PBeU4t1qQK/npoGFH7Pz+v5i3dEIj9eoBSAGvK/
-	BhI6fUBE5bdkF0dIT9+KIBBKfbOOGy2i6WWvVrzdFwKb5wJ2MDYKqq1ZNnMvyJk56Kx6
-	VlqQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=BthxhmxDB6c7cZGLxDlpUhs94bzNxbfcQcjx+2pYgxo=;
-	b=OJtbqtj/UGd36nQe85tVnrGIWaQGSmRVGVHDIoQ6UmqQR/Nzy0VtP2RAAizUOuZ+Vi
-	hL7Al4G6r2zV9W62tgFgn9ittcYtxbspNc80hWr9lgKNeeRGdx0q4iyfqS+vfrT2sfd3
-	VySSODhTGQtyK4XC6BGURhbY5lj5vWGl6mZ8UUX/6MUQTBrZoAzhCNJYcj93NVWpbZMc
-	l9ptaMlRbjS2jcSmyJYVAhtnNkR5pKZo524PVpEV/R70Qc0osQ9JD+F1+7h3QFOGnJJK
-	XSDPMjanPZ9gKWLyl1jiqrDwzpm/6QFQg0ySYG6koZlTrkxKal8BbSs5kKPG+4+hlmBa
-	JoQg==
-X-Gm-Message-State: AN3rC/7ZpG309j9XjIhR5wXUCDnA9krnFeXqztrz9/eXoAjlwUpRbwiu
-	ep9ej7sqJBJeON9SxEXmJwNJyWWokw==
-X-Received: by 10.129.97.195 with SMTP id v186mr10649624ywb.151.1494060549124; 
-	Sat, 06 May 2017 01:49:09 -0700 (PDT)
-MIME-Version: 1.0
-Received: by 10.13.244.1 with HTTP; Sat, 6 May 2017 01:49:08 -0700 (PDT)
-In-Reply-To: <CAKmqyKMb=K=jTedaPO=ML0Af+6C8zfP6CfBVnAa=bfMHxmT0bQ@mail.gmail.com>
-References: <1493398313-6673-1-git-send-email-sundeep.lkml@gmail.com>
-	<1493398313-6673-5-git-send-email-sundeep.lkml@gmail.com>
-	<CAKmqyKMrCfOkLXBWP-UDboWmPD0Ah6Viv9gFn3WxTUwyxR4thw@mail.gmail.com>
-	<CALHRZupOf4KWYnVUSAJPW-MZQBj8LJct_km5Lsn+ci5_FgmNXA@mail.gmail.com>
-	<CAKmqyKMb=K=jTedaPO=ML0Af+6C8zfP6CfBVnAa=bfMHxmT0bQ@mail.gmail.com>
-From: sundeep subbaraya <sundeep.lkml@gmail.com>
-Date: Sat, 6 May 2017 14:19:08 +0530
-Message-ID: <CALHRZuo2+13tXgtF_DJn28yQTC0E3pY9CA5fnd4Ur9AUYSOVUQ@mail.gmail.com>
-To: Alistair Francis <alistair23@gmail.com>
-Content-Type: text/plain; charset=UTF-8
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:4002:c05::242
-Subject: Re: [Qemu-arm] [Qemu-devel RFC v3 4/5] msf2: Add Smartfusion2 SoC.
+	(envelope-from <krzk@kernel.org>) id 1d71ZJ-0002rp-Ie
+	for qemu-arm@nongnu.org; Sat, 06 May 2017 11:24:27 -0400
+Received: from mail.kernel.org ([198.145.29.136]:48048)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <krzk@kernel.org>)
+	id 1d71ZJ-0002rl-An; Sat, 06 May 2017 11:24:25 -0400
+Received: from mail.kernel.org (localhost [127.0.0.1])
+	by mail.kernel.org (Postfix) with ESMTP id 8750E203A0;
+	Sat,  6 May 2017 15:24:23 +0000 (UTC)
+Received: from kozik-lap.dzcmts001-cpe-001.datazug.ch
+	(pub082136089155.dh-hfc.datazug.ch [82.136.89.155])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+	(No client certificate requested)
+	by mail.kernel.org (Postfix) with ESMTPSA id 4E1A6203AB;
+	Sat,  6 May 2017 15:24:21 +0000 (UTC)
+From: Krzysztof Kozlowski <krzk@kernel.org>
+To: Igor Mitsyanko <i.mitsyanko@gmail.com>,
+	Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Date: Sat,  6 May 2017 17:24:12 +0200
+Message-Id: <20170506152414.8704-2-krzk@kernel.org>
+X-Mailer: git-send-email 2.9.3
+In-Reply-To: <20170506152414.8704-1-krzk@kernel.org>
+References: <20170506152414.8704-1-krzk@kernel.org>
+X-Virus-Scanned: ClamAV using ClamSMTP
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
+X-Received-From: 198.145.29.136
+Subject: [Qemu-arm] [PATCH 1/3] hw/arm/exynos: Move RAM initialization next
+ boards
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -107,436 +61,179 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm <qemu-arm@nongnu.org>,
-	"qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>
+Cc: Krzysztof Kozlowski <krzk@kernel.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 0fE+437x2w1r
+X-TUID: ZCWxbYeSYuCB
 
-Hi Alistair,
+Before QOM-ifying the Exynos4 SoC model, move the RAM initialization
+from exynos4210.c to exynos4_boards.c because RAM is board specific,
+not SoC.
 
-On Sat, May 6, 2017 at 5:23 AM, Alistair Francis <alistair23@gmail.com> wrote:
-> On Fri, May 5, 2017 at 9:14 AM, sundeep subbaraya
-> <sundeep.lkml@gmail.com> wrote:
->> Hi Alistair,
->>
->> On Fri, May 5, 2017 at 3:51 AM, Alistair Francis <alistair23@gmail.com> wrote:
->>> On Fri, Apr 28, 2017 at 9:51 AM, Subbaraya Sundeep
->>> <sundeep.lkml@gmail.com> wrote:
->>>> Smartfusion2 SoC has hardened Microcontroller subsystem
->>>> and flash based FPGA fabric. This patch adds support for
->>>> Microcontroller subsystem in the SoC.
->>>>
->>>> Signed-off-by: Subbaraya Sundeep <sundeep.lkml@gmail.com>
->>>> ---
->>>>  default-configs/arm-softmmu.mak |   1 +
->>>>  hw/arm/Makefile.objs            |   2 +-
->>>>  hw/arm/msf2_soc.c               | 194 ++++++++++++++++++++++++++++++++++++++++
->>>>  include/hw/arm/msf2_soc.h       |  62 +++++++++++++
->>>>  4 files changed, 258 insertions(+), 1 deletion(-)
->>>>  create mode 100644 hw/arm/msf2_soc.c
->>>>  create mode 100644 include/hw/arm/msf2_soc.h
->>>>
->>>> diff --git a/default-configs/arm-softmmu.mak b/default-configs/arm-softmmu.mak
->>>> index 78d7af0..7062512 100644
->>>> --- a/default-configs/arm-softmmu.mak
->>>> +++ b/default-configs/arm-softmmu.mak
->>>> @@ -122,3 +122,4 @@ CONFIG_ACPI=y
->>>>  CONFIG_SMBIOS=y
->>>>  CONFIG_ASPEED_SOC=y
->>>>  CONFIG_GPIO_KEY=y
->>>> +CONFIG_MSF2=y
->>>> diff --git a/hw/arm/Makefile.objs b/hw/arm/Makefile.objs
->>>> index 4c5c4ee..cce2759 100644
->>>> --- a/hw/arm/Makefile.objs
->>>> +++ b/hw/arm/Makefile.objs
->>>> @@ -1,7 +1,7 @@
->>>>  obj-y += boot.o collie.o exynos4_boards.o gumstix.o highbank.o
->>>>  obj-$(CONFIG_DIGIC) += digic_boards.o
->>>>  obj-y += integratorcp.o mainstone.o musicpal.o nseries.o
->>>> -obj-y += omap_sx1.o palm.o realview.o spitz.o stellaris.o
->>>> +obj-y += omap_sx1.o palm.o realview.o spitz.o stellaris.o msf2_soc.o
->>>>  obj-y += tosa.o versatilepb.o vexpress.o virt.o xilinx_zynq.o z2.o
->>>>  obj-$(CONFIG_ACPI) += virt-acpi-build.o
->>>>  obj-y += netduino2.o
->>>> diff --git a/hw/arm/msf2_soc.c b/hw/arm/msf2_soc.c
->>>> new file mode 100644
->>>> index 0000000..a470872
->>>> --- /dev/null
->>>> +++ b/hw/arm/msf2_soc.c
->>>> @@ -0,0 +1,194 @@
->>>> +/*
->>>> + * SmartFusion2 SoC emulation.
->>>> + *
->>>> + * Copyright (c) 2017 Subbaraya Sundeep <sundeep.lkml@gmail.com>
->>>> + *
->>>> + * Permission is hereby granted, free of charge, to any person obtaining a copy
->>>> + * of this software and associated documentation files (the "Software"), to deal
->>>> + * in the Software without restriction, including without limitation the rights
->>>> + * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
->>>> + * copies of the Software, and to permit persons to whom the Software is
->>>> + * furnished to do so, subject to the following conditions:
->>>> + *
->>>> + * The above copyright notice and this permission notice shall be included in
->>>> + * all copies or substantial portions of the Software.
->>>> + *
->>>> + * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
->>>> + * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
->>>> + * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
->>>> + * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
->>>> + * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
->>>> + * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
->>>> + * THE SOFTWARE.
->>>> + */
->>>> +
->>>> +#include "qemu/osdep.h"
->>>> +#include "qapi/error.h"
->>>> +#include "qemu-common.h"
->>>> +#include "hw/arm/arm.h"
->>>> +#include "exec/address-spaces.h"
->>>> +#include "hw/char/serial.h"
->>>> +#include "hw/boards.h"
->>>> +#include "sysemu/block-backend.h"
->>>> +#include "hw/arm/msf2_soc.h"
->>>> +
->>>> +#define MSF2_TIMER_BASE       0x40004000
->>>> +#define MSF2_SYSREG_BASE      0x40038000
->>>> +
->>>> +#define MSF2_TIMER_IRQ0       14
->>>> +#define MSF2_TIMER_IRQ1       15
->>>> +
->>>> +static const uint32_t spi_addr[MSF2_NUM_SPIS] = { 0x40001000 , 0x40011000 };
->>>
->>> Hey Sundeep,
->>>
->>> From your other patch it sounds like this should just be a single SPI
->>> device with to busses, so this will have to be re-worked.
->>>
->> I may be entirely wrong please correct me. I assumed this SoC and Board file
->> are analogous to dtsi and dts in linux. So SoC file will instantiate
->> all the controllers
->> like SPI0 and SPI1 present in SoC whereas board file will attach slaves present
->> on board (like EEPROM, SPI flashes etc.,).  Hence in board file I
->> attached flash to
->> SPI0. I was expecting one bus for each controller eg:
->> SPI0:
->>         bus: spi0
->>              device: flash (Chip select 0)
->>              device: other device (Chip select 1)
->> SPI1:
->>         bus: spi1
->>              device: other device (Chip select 0) (if attached in board file)
->
-> That's pretty much each. The SoC should create everything that is on
-> the SoC. So the SoC should create the SPI controller (which will
-> create the SPI buses) but not connect anything to them.
->
-> Then it's up to the board/machine to connect the SPI devices to the SPI buses.
->
->>
->> But this is not the case because am not able to create spi1 bus in
->> controller model
->> (hw/ssi/msf2_spi.c). How would model know about which
->> controller(SPI0/1) is currently
->> accessed and use corresponding bus(spi0/spi1) to transfer to slave devices?
->
-> I don't know anything about the board, but it sounds like you need to
-> be able to create the spi1 bus in a single SPI device right?
->
-> Otherwise you can do what the ZynqMP board does and create multiple
-> spi devices and alias spi0,spi1... to the spi0 bus of each device.
->
-Now I understood. spi0, spi1 are aliases and are used to retrieve which
-controller to attach slaves to in board file. But bus name will always be
-spi0 only. Other SoCs use bus names like ssi/spi.
-AFAIK for I2C, bus name will use incrementing index for each controller.
-Thats not the case for SPI.
-I tested other controller also by attaching another SPI flash to it and it works
-prefect. Below is the output:
+Signed-off-by: Krzysztof Kozlowski <krzk@kernel.org>
+---
+ hw/arm/exynos4210.c         | 20 +-----------------
+ hw/arm/exynos4_boards.c     | 50 ++++++++++++++++++++++++++++++++++++++-------
+ include/hw/arm/exynos4210.h |  5 +----
+ 3 files changed, 45 insertions(+), 30 deletions(-)
 
-bus: main-system-bus
-  type System
-  dev: msf2-soc, id ""
-    cpu-model = "cortex-m3"
-  dev: msf2-spi, id ""
-    gpio-out "sysbus-irq" 2
-    mmio 0000000040011000/0000000000000040
-    bus: spi0
-      type SSI
-      dev: s25sl12800, id ""
-        gpio-in "ssi-gpio-cs" 1
-        nonvolatile-cfg = 36863 (0x8fff)
-        spansion-cr1nv = 0 (0x0)
-        spansion-cr2nv = 1 (0x1)
-        spansion-cr3nv = 2 (0x2)
-        spansion-cr4nv = 16 (0x10)
-        drive = "mtd1"
-  dev: msf2-spi, id ""
-    gpio-out "sysbus-irq" 2
-    mmio 0000000040001000/0000000000000040
-    bus: spi0
-      type SSI
-      dev: s25sl12801, id ""
-        gpio-in "ssi-gpio-cs" 1
-        nonvolatile-cfg = 36863 (0x8fff)
-        spansion-cr1nv = 0 (0x0)
-        spansion-cr2nv = 1 (0x1)
-        spansion-cr3nv = 2 (0x2)
-        spansion-cr4nv = 16 (0x10)
-        drive = "mtd0"
+diff --git a/hw/arm/exynos4210.c b/hw/arm/exynos4210.c
+index 960f27e45a36..0da877f8db0a 100644
+--- a/hw/arm/exynos4210.c
++++ b/hw/arm/exynos4210.c
+@@ -160,13 +160,11 @@ static uint64_t exynos4210_calc_affinity(int cpu)
+     return mp_affinity;
+ }
+ 
+-Exynos4210State *exynos4210_init(MemoryRegion *system_mem,
+-        unsigned long ram_size)
++Exynos4210State *exynos4210_init(MemoryRegion *system_mem)
+ {
+     int i, n;
+     Exynos4210State *s = g_new(Exynos4210State, 1);
+     qemu_irq gate_irq[EXYNOS4210_NCPUS][EXYNOS4210_IRQ_GATE_NINPUTS];
+-    unsigned long mem_size;
+     DeviceState *dev;
+     SysBusDevice *busdev;
+     ObjectClass *cpu_oc;
+@@ -299,22 +297,6 @@ Exynos4210State *exynos4210_init(MemoryRegion *system_mem,
+     memory_region_add_subregion(system_mem, EXYNOS4210_IRAM_BASE_ADDR,
+                                 &s->iram_mem);
+ 
+-    /* DRAM */
+-    mem_size = ram_size;
+-    if (mem_size > EXYNOS4210_DRAM_MAX_SIZE) {
+-        memory_region_init_ram(&s->dram1_mem, NULL, "exynos4210.dram1",
+-                mem_size - EXYNOS4210_DRAM_MAX_SIZE, &error_fatal);
+-        vmstate_register_ram_global(&s->dram1_mem);
+-        memory_region_add_subregion(system_mem, EXYNOS4210_DRAM1_BASE_ADDR,
+-                &s->dram1_mem);
+-        mem_size = EXYNOS4210_DRAM_MAX_SIZE;
+-    }
+-    memory_region_init_ram(&s->dram0_mem, NULL, "exynos4210.dram0", mem_size,
+-                           &error_fatal);
+-    vmstate_register_ram_global(&s->dram0_mem);
+-    memory_region_add_subregion(system_mem, EXYNOS4210_DRAM0_BASE_ADDR,
+-            &s->dram0_mem);
+-
+    /* PMU.
+     * The only reason of existence at the moment is that secondary CPU boot
+     * loader uses PMU INFORM5 register as a holding pen.
+diff --git a/hw/arm/exynos4_boards.c b/hw/arm/exynos4_boards.c
+index 4853c318023c..6240b26839cd 100644
+--- a/hw/arm/exynos4_boards.c
++++ b/hw/arm/exynos4_boards.c
+@@ -22,6 +22,7 @@
+  */
+ 
+ #include "qemu/osdep.h"
++#include "qapi/error.h"
+ #include "qemu/error-report.h"
+ #include "qemu-common.h"
+ #include "cpu.h"
+@@ -56,6 +57,12 @@ typedef enum Exynos4BoardType {
+     EXYNOS4_NUM_OF_BOARDS
+ } Exynos4BoardType;
+ 
++typedef struct Exynos4BoardState {
++    Exynos4210State *soc;
++    MemoryRegion dram0_mem;
++    MemoryRegion dram1_mem;
++} Exynos4BoardState;
++
+ static int exynos4_board_id[EXYNOS4_NUM_OF_BOARDS] = {
+     [EXYNOS4_BOARD_NURI]     = 0xD33,
+     [EXYNOS4_BOARD_SMDKC210] = 0xB16,
+@@ -96,9 +103,34 @@ static void lan9215_init(uint32_t base, qemu_irq irq)
+     }
+ }
+ 
+-static Exynos4210State *exynos4_boards_init_common(MachineState *machine,
+-                                                   Exynos4BoardType board_type)
++static void exynos4_boards_init_ram(Exynos4BoardState *s,
++                                    MemoryRegion *system_mem,
++                                    unsigned long ram_size)
++{
++    unsigned long mem_size = ram_size;
++
++    if (mem_size > EXYNOS4210_DRAM_MAX_SIZE) {
++        memory_region_init_ram(&s->dram1_mem, NULL, "exynos4210.dram1",
++                               mem_size - EXYNOS4210_DRAM_MAX_SIZE,
++                               &error_fatal);
++        vmstate_register_ram_global(&s->dram1_mem);
++        memory_region_add_subregion(system_mem, EXYNOS4210_DRAM1_BASE_ADDR,
++                                    &s->dram1_mem);
++        mem_size = EXYNOS4210_DRAM_MAX_SIZE;
++    }
++
++    memory_region_init_ram(&s->dram0_mem, NULL, "exynos4210.dram0", mem_size,
++                           &error_fatal);
++    vmstate_register_ram_global(&s->dram0_mem);
++    memory_region_add_subregion(system_mem, EXYNOS4210_DRAM0_BASE_ADDR,
++                                &s->dram0_mem);
++}
++
++static Exynos4BoardState *
++exynos4_boards_init_common(MachineState *machine,
++                           Exynos4BoardType board_type)
+ {
++    Exynos4BoardState *s = g_new(Exynos4BoardState, 1);
+     MachineClass *mc = MACHINE_GET_CLASS(machine);
+ 
+     if (smp_cpus != EXYNOS4210_NCPUS && !qtest_enabled()) {
+@@ -127,8 +159,12 @@ static Exynos4210State *exynos4_boards_init_common(MachineState *machine,
+             machine->kernel_cmdline,
+             machine->initrd_filename);
+ 
+-    return exynos4210_init(get_system_memory(),
+-            exynos4_board_ram_size[board_type]);
++    exynos4_boards_init_ram(s, get_system_memory(),
++                            exynos4_board_ram_size[board_type]);
++
++    s->soc = exynos4210_init(get_system_memory());
++
++    return s;
+ }
+ 
+ static void nuri_init(MachineState *machine)
+@@ -140,11 +176,11 @@ static void nuri_init(MachineState *machine)
+ 
+ static void smdkc210_init(MachineState *machine)
+ {
+-    Exynos4210State *s = exynos4_boards_init_common(machine,
+-                                                    EXYNOS4_BOARD_SMDKC210);
++    Exynos4BoardState *s = exynos4_boards_init_common(machine,
++                                                      EXYNOS4_BOARD_SMDKC210);
+ 
+     lan9215_init(SMDK_LAN9118_BASE_ADDR,
+-            qemu_irq_invert(s->irq_table[exynos4210_get_irq(37, 1)]));
++            qemu_irq_invert(s->soc->irq_table[exynos4210_get_irq(37, 1)]));
+     arm_load_kernel(ARM_CPU(first_cpu), &exynos4_board_binfo);
+ }
+ 
+diff --git a/include/hw/arm/exynos4210.h b/include/hw/arm/exynos4210.h
+index d9e08014d6ff..098a69ec73d3 100644
+--- a/include/hw/arm/exynos4210.h
++++ b/include/hw/arm/exynos4210.h
+@@ -93,8 +93,6 @@ typedef struct Exynos4210State {
+     MemoryRegion iram_mem;
+     MemoryRegion irom_mem;
+     MemoryRegion irom_alias_mem;
+-    MemoryRegion dram0_mem;
+-    MemoryRegion dram1_mem;
+     MemoryRegion boot_secondary;
+     MemoryRegion bootreg_mem;
+     I2CBus *i2c_if[EXYNOS4210_I2C_NUMBER];
+@@ -103,8 +101,7 @@ typedef struct Exynos4210State {
+ void exynos4210_write_secondary(ARMCPU *cpu,
+         const struct arm_boot_info *info);
+ 
+-Exynos4210State *exynos4210_init(MemoryRegion *system_mem,
+-        unsigned long ram_size);
++Exynos4210State *exynos4210_init(MemoryRegion *system_mem);
+ 
+ /* Initialize exynos4210 IRQ subsystem stub */
+ qemu_irq *exynos4210_init_irq(Exynos4210Irq *env);
+-- 
+2.9.3
 
-I will fix other comments and send the patch.
-
-Thank you,
-Sundeep
-
-> Thanks,
->
-> Alistair
->
->> If am wrong I will remove SPI1 from SoC.
->>
->>>> +static const uint32_t uart_addr[MSF2_NUM_UARTS] = { 0x40000000 , 0x40010000 };
->>>> +
->>>> +static const int spi_irq[MSF2_NUM_SPIS] = { 2, 3 };
->>>> +static const int uart_irq[MSF2_NUM_UARTS] = { 10, 11 };
->>>> +
->>>> +static void msf2_soc_initfn(Object *obj)
->>>> +{
->>>> +    MSF2State *s = MSF2_SOC(obj);
->>>> +    int i;
->>>> +
->>>> +    object_initialize(&s->armv7m, sizeof(s->armv7m), TYPE_ARMV7M);
->>>> +    qdev_set_parent_bus(DEVICE(&s->armv7m), sysbus_get_default());
->>>> +
->>>> +    object_initialize(&s->sysreg, sizeof(s->sysreg), TYPE_MSF2_SYSREG);
->>>> +    qdev_set_parent_bus(DEVICE(&s->sysreg), sysbus_get_default());
->>>> +
->>>> +    object_initialize(&s->timer, sizeof(s->timer), TYPE_MSF2_TIMER);
->>>> +    qdev_set_parent_bus(DEVICE(&s->timer), sysbus_get_default());
->>>> +
->>>> +    for (i = 0; i < MSF2_NUM_SPIS; i++) {
->>>> +        object_initialize(&s->spi[i], sizeof(s->spi[i]),
->>>> +                          TYPE_MSF2_SPI);
->>>> +        qdev_set_parent_bus(DEVICE(&s->spi[i]), sysbus_get_default());
->>>> +    }
->>>> +}
->>>> +
->>>> +static void msf2_soc_realize(DeviceState *dev_soc, Error **errp)
->>>> +{
->>>> +    MSF2State *s = MSF2_SOC(dev_soc);
->>>> +    DeviceState *dev, *armv7m;
->>>> +    SysBusDevice *busdev;
->>>> +    Error *err = NULL;
->>>> +    int i;
->>>> +
->>>> +    MemoryRegion *system_memory = get_system_memory();
->>>> +    MemoryRegion *nvm = g_new(MemoryRegion, 1);
->>>> +    MemoryRegion *nvm_alias = g_new(MemoryRegion, 1);
->>>> +    MemoryRegion *sram = g_new(MemoryRegion, 1);
->>>> +    MemoryRegion *ddr = g_new(MemoryRegion, 1);
->>>> +
->>>> +    memory_region_init_ram(nvm, NULL, "MSF2.envm", ENVM_SIZE,
->>>> +                           &error_fatal);
->>>> +    memory_region_init_alias(nvm_alias, NULL, "MSF2.flash.alias",
->>>> +                             nvm, 0, ENVM_SIZE);
->>>> +    vmstate_register_ram_global(nvm);
->>>> +
->>>> +    memory_region_set_readonly(nvm, true);
->>>> +    memory_region_set_readonly(nvm_alias, true);
->>>> +
->>>> +    memory_region_add_subregion(system_memory, ENVM_BASE_ADDRESS, nvm);
->>>> +    memory_region_add_subregion(system_memory, 0, nvm_alias);
->>>> +
->>>> +    memory_region_init_ram(ddr, NULL, "MSF2.ddr", DDR_SIZE,
->>>> +                           &error_fatal);
->>>> +    vmstate_register_ram_global(ddr);
->>>> +    memory_region_add_subregion(system_memory, DDR_BASE_ADDRESS, ddr);
->>>> +
->>>> +    memory_region_init_ram(sram, NULL, "MSF2.sram", SRAM_SIZE,
->>>> +                           &error_fatal);
->>>> +    vmstate_register_ram_global(sram);
->>>> +    memory_region_add_subregion(system_memory, SRAM_BASE_ADDRESS, sram);
->>>> +
->>>> +    armv7m = DEVICE(&s->armv7m);
->>>> +    qdev_prop_set_uint32(armv7m, "num-irq", 96);
->>>> +    qdev_prop_set_string(armv7m, "cpu-model", s->cpu_model);
->>>> +    object_property_set_link(OBJECT(&s->armv7m), OBJECT(get_system_memory()),
->>>> +                                     "memory", &error_abort);
->>>> +    object_property_set_bool(OBJECT(&s->armv7m), true, "realized", &err);
->>>> +    if (err != NULL) {
->>>> +        error_propagate(errp, err);
->>>> +        return;
->>>> +    }
->>>> +
->>>> +    for (i = 0; i < MSF2_NUM_UARTS; i++) {
->>>> +        if (serial_hds[i]) {
->>>> +            serial_mm_init(get_system_memory(), uart_addr[i], 2,
->>>> +                           qdev_get_gpio_in(armv7m, uart_irq[i]),
->>>> +                           115200, serial_hds[i], DEVICE_NATIVE_ENDIAN);
->>>> +        }
->>>> +    }
->>>> +
->>>> +    dev = DEVICE(&s->timer);
->>>> +    qdev_prop_set_uint32(dev, "clock-frequency", 83 * 1000000);
->>>
->>> Macro for the frequency.
->>>
->> Yeah will change.
->>
->>>> +    object_property_set_bool(OBJECT(&s->timer), true, "realized", &err);
->>>> +    if (err != NULL) {
->>>> +        error_propagate(errp, err);
->>>> +        return;
->>>> +    }
->>>> +    busdev = SYS_BUS_DEVICE(dev);
->>>> +    sysbus_mmio_map(busdev, 0, MSF2_TIMER_BASE);
->>>> +    sysbus_connect_irq(busdev, 0,
->>>> +                           qdev_get_gpio_in(armv7m, MSF2_TIMER_IRQ0));
->>>> +    sysbus_connect_irq(busdev, 1,
->>>> +                           qdev_get_gpio_in(armv7m, MSF2_TIMER_IRQ1));
->>>> +
->>>> +    dev = DEVICE(&s->sysreg);
->>>> +    object_property_set_bool(OBJECT(&s->sysreg), true, "realized", &err);
->>>> +    if (err != NULL) {
->>>> +        error_propagate(errp, err);
->>>> +        return;
->>>> +    }
->>>> +    busdev = SYS_BUS_DEVICE(dev);
->>>> +    sysbus_mmio_map(busdev, 0, MSF2_SYSREG_BASE);
->>>> +
->>>> +    for (i = 0; i < MSF2_NUM_SPIS; i++) {
->>>> +        gchar *bus_name = g_strdup_printf("spi%d", i);
->>>> +
->>>> +        object_property_set_bool(OBJECT(&s->spi[i]), true, "realized", &err);
->>>> +        if (err != NULL) {
->>>> +            g_free(bus_name);
->>>> +            error_propagate(errp, err);
->>>> +            return;
->>>> +        }
->>>> +
->>>> +        sysbus_mmio_map(SYS_BUS_DEVICE(&s->spi[i]), 0, spi_addr[i]);
->>>> +        sysbus_connect_irq(SYS_BUS_DEVICE(&s->spi[i]), 0,
->>>> +                           qdev_get_gpio_in(armv7m, spi_irq[i]));
->>>> +
->>>> +        /* Alias controller SPI bus to the SoC itself */
->>>> +        object_property_add_alias(OBJECT(s), bus_name,
->>>> +                                  OBJECT(&s->spi[i]), "spi0",
->>>> +                                  &error_abort);
->>>> +        g_free(bus_name);
->>>> +    }
->>>> +}
->>>> +
->>>> +static Property msf2_soc_properties[] = {
->>>> +    DEFINE_PROP_STRING("cpu-model", MSF2State, cpu_model),
->>>
->>> Does this actually change?
->>>
->> No. I will remove the property.
->>
->>> This looks pretty good, just a few things to fix up.
->>>
->>
->> Thank you,
->> Sundeep
->>
->>> Thanks,
->>>
->>> Alistair
->>>
->>>> +    DEFINE_PROP_END_OF_LIST(),
->>>> +};
->>>> +
->>>> +static void msf2_soc_class_init(ObjectClass *klass, void *data)
->>>> +{
->>>> +    DeviceClass *dc = DEVICE_CLASS(klass);
->>>> +
->>>> +    dc->realize = msf2_soc_realize;
->>>> +    dc->props = msf2_soc_properties;
->>>> +}
->>>> +
->>>> +static const TypeInfo msf2_soc_info = {
->>>> +    .name          = TYPE_MSF2_SOC,
->>>> +    .parent        = TYPE_SYS_BUS_DEVICE,
->>>> +    .instance_size = sizeof(MSF2State),
->>>> +    .instance_init = msf2_soc_initfn,
->>>> +    .class_init    = msf2_soc_class_init,
->>>> +};
->>>> +
->>>> +static void msf2_soc_types(void)
->>>> +{
->>>> +    type_register_static(&msf2_soc_info);
->>>> +}
->>>> +
->>>> +type_init(msf2_soc_types)
->>>> diff --git a/include/hw/arm/msf2_soc.h b/include/hw/arm/msf2_soc.h
->>>> new file mode 100644
->>>> index 0000000..1184d9a
->>>> --- /dev/null
->>>> +++ b/include/hw/arm/msf2_soc.h
->>>> @@ -0,0 +1,62 @@
->>>> +/*
->>>> + * Microsemi Smartfusion2 SoC
->>>> + *
->>>> + * Copyright (c) 2017 Subbaraya Sundeep <sundeep.lkml@gmail.com>
->>>> + *
->>>> + * Permission is hereby granted, free of charge, to any person obtaining a copy
->>>> + * of this software and associated documentation files (the "Software"), to deal
->>>> + * in the Software without restriction, including without limitation the rights
->>>> + * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
->>>> + * copies of the Software, and to permit persons to whom the Software is
->>>> + * furnished to do so, subject to the following conditions:
->>>> + *
->>>> + * The above copyright notice and this permission notice shall be included in
->>>> + * all copies or substantial portions of the Software.
->>>> + *
->>>> + * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
->>>> + * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
->>>> + * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
->>>> + * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
->>>> + * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
->>>> + * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
->>>> + * THE SOFTWARE.
->>>> + */
->>>> +
->>>> +#ifndef HW_ARM_MSF2_SOC_H
->>>> +#define HW_ARM_MSF2_SOC_H
->>>> +
->>>> +#include "hw/misc/msf2_sysreg.h"
->>>> +#include "hw/timer/msf2_timer.h"
->>>> +#include "hw/ssi/msf2_spi.h"
->>>> +#include "hw/arm/armv7m.h"
->>>> +
->>>> +#define TYPE_MSF2_SOC     "msf2-soc"
->>>> +#define MSF2_SOC(obj)     OBJECT_CHECK(MSF2State, (obj), TYPE_MSF2_SOC)
->>>> +
->>>> +#define MSF2_NUM_SPIS         2
->>>> +#define MSF2_NUM_UARTS        2
->>>> +
->>>> +#define ENVM_BASE_ADDRESS     0x60000000
->>>> +#define ENVM_SIZE             (128 * 1024)
->>>> +
->>>> +#define DDR_BASE_ADDRESS      0xA0000000
->>>> +#define DDR_SIZE              (64 * 1024 * 1024)
->>>> +
->>>> +#define SRAM_BASE_ADDRESS     0x20000000
->>>> +#define SRAM_SIZE             (64 * 1024)
->>>> +
->>>> +typedef struct MSF2State {
->>>> +    /*< private >*/
->>>> +    SysBusDevice parent_obj;
->>>> +    /*< public >*/
->>>> +
->>>> +    char *cpu_model;
->>>> +
->>>> +    ARMv7MState armv7m;
->>>> +
->>>> +    MSF2SysregState sysreg;
->>>> +    MSF2TimerState timer;
->>>> +    MSF2SpiState spi[MSF2_NUM_SPIS];
->>>> +} MSF2State;
->>>> +
->>>> +#endif
->>>> --
->>>> 2.5.0
->>>>

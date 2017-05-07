@@ -1,122 +1,148 @@
-Received: by 10.25.0.198 with SMTP id 189csp931996lfa;
-        Sun, 7 May 2017 04:36:12 -0700 (PDT)
-X-Received: by 10.200.42.29 with SMTP id k29mr53430905qtk.186.1494156971972;
-        Sun, 07 May 2017 04:36:11 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1494156971; cv=none;
+Received: by 10.25.0.198 with SMTP id 189csp1047843lfa;
+        Sun, 7 May 2017 11:16:47 -0700 (PDT)
+X-Received: by 10.237.48.66 with SMTP id 60mr57226320qte.25.1494181007195;
+        Sun, 07 May 2017 11:16:47 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1494181007; cv=none;
         d=google.com; s=arc-20160816;
-        b=qdPxgYPIVeeNBjQ4DyPY2k1sU8k8r3PdlgTEA6/ypX/XsrYYyFzCThDx1Mcb+ITWCX
-         FxJtSiWYA336c+2AHEqDbTU+tTxDfMeC1LDvy+89BMNPAANvXPAbmHQf3CkwmIISOnUD
-         WOVh9LVtGib+nn3jdXYxe43qxiZ/2HE3VUa91H2s24kXgDHCqRZunKtlRuGw3LfvBk1Y
-         VbRS66SuCKiPV5GwRvod885XOgXSlpbOTOMAPmyHMOkbNoEkSU82rFEDetro8Td6TWgj
-         9d4dTJA9xte5lAAgD1tbPEpZlLQ5xj/KIO8VCt3NUBQTABEXtwfX+pQiJg9MSUVgcE9e
-         YxOg==
+        b=ByzxxG2WyNpdvaNzadbuekFaeQyeXYlDO9cBh6+RgDnmGUdh71iLQIpJaIovm5mlNM
+         EIqdwFohOsS2DxxBzPD9B5xT94/PRn/thKwwr/MXOW46+rmrSfEs7HW8brnQh7Zb/HuR
+         ojv6vYu8QDoMqjs3uJ7h68sTgOEPXmTWSgT6bP5EdQpiO2pBuIrg+EdRlXnQYyMynE6u
+         eaGSvLlQK5VuCvFHHK/ZP4FkLCjGpQFnX1pu9TRnL2MofZ3VavzyTZBGjHIoKOoDkOtW
+         70d4egHpW5MKsAXUlwDlxkE8R9jgUBbWq8eeho43BNVarMOtQLM001vTtDswxpDyaetB
+         4x7w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
-         :message-id:date:to:from:arc-authentication-results;
-        bh=tkcMP5nxh4jQ1piel9givoTZrJ/k8FaWxwirVSeJmwg=;
-        b=Dcx8HSOkb2kYUJwF7C3f+nDPkR1eLmeYVuH3IX9oq16aFFDdd/TgY9KVCYuFa0ZuAw
-         NeQroUfrj9Ao3Z/Vi5PC60dg8dim8Bllm3MjxEbsqHD5Jx4gBxthdsDK44FYIf2by40r
-         R1uRVJBbp9MGiYMpm7S32uupsdRWdy+E+hT9EiCdyqlimJ32hHooyNFZ2NM8NCOx83NS
-         5qc70JfyFyXd3wv6DIfTsHLOI9juUTZWteYF0ZX4DznBGRXZFjtHr0kyzQHvHe0JlHiR
-         Iz/loEhUtn5rqDT8KgC3RcMIy+RQYjpmqwURXQe8tacVlrJXGxvFeS1e1cnyEmd+A5xg
-         pdDQ==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:dkim-signature
+         :arc-authentication-results;
+        bh=sORFrDai0vzBESgba2Vjke9B9k/Tdpe9+SNHhvXdqS4=;
+        b=wF9Uq0eWMzS9nAO0wpa6bU0N39QazH/xrCjvk3O6U80ZB/LRWcki2PBqeaw8RmrQap
+         Vr1+P2r5MM2vi6BI/BqJVAnOXVKfJwFqJTvjJIvxQMRCsE1j6AyLZoaGqU/hHEcsBoOr
+         q2pgWzBBcvNxQlJEqiQbJd3tL4Kiq+EcQmlu2UDAm1h+xrC5PRtfd5/34QmeWgRbYJ9V
+         wPF+sXKbiAaaB5RRO5TDr93qZW+EB72hZ3E7dINVEP1naqAxBsVL37PhUZTr1ewd3wGL
+         Y9DR2ifOLLACNLx+nKZOGY2n4jQhSvsKaUxQ0VKMUyAHbmfxbHZvQB0pcA9Q81mABth6
+         Vz+Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id r36si9619034qte.315.2017.05.07.04.36.11
+        by mx.google.com with ESMTPS id 50si9927927qtq.112.2017.05.07.11.16.47
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sun, 07 May 2017 04:36:11 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Sun, 07 May 2017 11:16:47 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:54549 helo=lists.gnu.org)
+       dkim=fail header.i=@gmail.com;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:56351 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1d7KTx-0007gR-96
-	for alex.bennee@linaro.org; Sun, 07 May 2017 07:36:09 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:53865)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1d7Qje-0007mk-Ij
+	for alex.bennee@linaro.org; Sun, 07 May 2017 14:16:46 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:52175)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <krzk@kernel.org>) id 1d7KTk-0007eG-DA
-	for qemu-arm@nongnu.org; Sun, 07 May 2017 07:35:57 -0400
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1d7QiS-0007O2-6m
+	for qemu-devel@nongnu.org; Sun, 07 May 2017 14:15:32 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <krzk@kernel.org>) id 1d7KTh-0004Uh-Tr
-	for qemu-arm@nongnu.org; Sun, 07 May 2017 07:35:56 -0400
-Received: from mail.kernel.org ([198.145.29.136]:56202)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <krzk@kernel.org>)
-	id 1d7KTh-0004Ub-O8; Sun, 07 May 2017 07:35:53 -0400
-Received: from mail.kernel.org (localhost [127.0.0.1])
-	by mail.kernel.org (Postfix) with ESMTP id 870122037F;
-	Sun,  7 May 2017 11:35:51 +0000 (UTC)
-Received: from kozik-lap.dzcmts001-cpe-001.datazug.ch
-	(pub082136089155.dh-hfc.datazug.ch [82.136.89.155])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
-	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPSA id F01DB20377;
-	Sun,  7 May 2017 11:35:48 +0000 (UTC)
-From: Krzysztof Kozlowski <krzk@kernel.org>
-To: Igor Mitsyanko <i.mitsyanko@gmail.com>,
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1d7QiP-000719-3U
+	for qemu-devel@nongnu.org; Sun, 07 May 2017 14:15:32 -0400
+Received: from mail-qt0-x242.google.com ([2607:f8b0:400d:c0d::242]:35216)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1d7QiO-000711-U9; Sun, 07 May 2017 14:15:29 -0400
+Received: by mail-qt0-x242.google.com with SMTP id r58so7043674qtb.2;
+	Sun, 07 May 2017 11:15:28 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=sender:subject:to:references:from:message-id:date:user-agent
+	:mime-version:in-reply-to:content-transfer-encoding;
+	bh=sORFrDai0vzBESgba2Vjke9B9k/Tdpe9+SNHhvXdqS4=;
+	b=girdLA/ZfXfTs/djG7+uKJeOw/nvOJit+wU3/WQQsMGnCz1hne6pxGPXrMoHksejFK
+	ti7iWHQzKeB6CQs38a5wQWRvtCPYffOqkarSw8kFfv4ZWJpReZxsg5cg9hOYbtI39S5W
+	ki4M7nGJexjYZ9Txrmnu6ekFu4MklN9WUiBALL4qU9rvr01YZ7u8quCAo0I0HOyvlbhw
+	9KLmwvyCvu/eS5Irr3kfeiCJHvj1TVjJMs2QpfaRnDsgw/4C8fILD7RlzE4k9FVD1tFg
+	zTEB50CHkTzvg9O4xJkrSmCFuIv7lImbQE13AyB6ckkIWFpKhKap4aNCiflRGGdXR9Kf
+	pc1g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:sender:subject:to:references:from:message-id
+	:date:user-agent:mime-version:in-reply-to:content-transfer-encoding;
+	bh=sORFrDai0vzBESgba2Vjke9B9k/Tdpe9+SNHhvXdqS4=;
+	b=TGwFw/QEaebCErBeW/T7biQg7I+QFTDruAtF3ESn4XBE/i6BnjOD3AfVPxpACUMNbU
+	XPBRFU7WnY8sIxIuz/PF0V+Z38lFgrndyrFVqQtno7DiwAEwZrL9hstk5ot0dlgbbpld
+	9X3fmlV5swU0mkQsHxAwI4hMT7FoRHHEBqMwNOMoNDKeM8II0OXetzjYrTG2sVTfef8t
+	rLpY7hwuX1xZjdrps89CbBD6YidJkIAn7UXn4GZX4vXtRDpSdzpSYxDSu9rt7bWjqTsE
+	UdsH7fwHrvSQzsvteGQrKhWVosEAWaN2X9LW/jcCJZh3JFL0tlcorbanTypMVeEsNyX1
+	Stgg==
+X-Gm-Message-State: AODbwcAW7uV3LgcH1WiUHx452ZP00sHQ/0V0ITcXYLFYGt6IQ2HY48dw
+	rojrjOj8PSPyjjO5sIw=
+X-Received: by 10.200.49.229 with SMTP id i34mr11214658qte.113.1494180927833; 
+	Sun, 07 May 2017 11:15:27 -0700 (PDT)
+Received: from [192.168.1.10] ([138.117.48.226])
+	by smtp.gmail.com with ESMTPSA id 83sm9080760qkq.26.2017.05.07.11.15.25
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Sun, 07 May 2017 11:15:26 -0700 (PDT)
+To: Krzysztof Kozlowski <krzk@kernel.org>,
+	Igor Mitsyanko <i.mitsyanko@gmail.com>,
 	Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Date: Sun,  7 May 2017 13:35:38 +0200
-Message-Id: <20170507113540.8687-2-krzk@kernel.org>
-X-Mailer: git-send-email 2.9.3
-In-Reply-To: <20170507113540.8687-1-krzk@kernel.org>
 References: <20170507113540.8687-1-krzk@kernel.org>
-X-Virus-Scanned: ClamAV using ClamSMTP
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
-X-Received-From: 198.145.29.136
-Subject: [Qemu-arm] [PATCH 1/3] hw/arm/exynos: Use type define instead of
- hard-coded a9mpcore_priv string
-X-BeenThere: qemu-arm@nongnu.org
+	<20170507113540.8687-3-krzk@kernel.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Message-ID: <b672980d-c714-2e11-636a-331f566e9bb6@amsat.org>
+Date: Sun, 7 May 2017 15:15:24 -0300
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
+	Thunderbird/45.8.0
+MIME-Version: 1.0
+In-Reply-To: <20170507113540.8687-3-krzk@kernel.org>
+Content-Type: text/plain; charset=windows-1252; format=flowed
+Content-Transfer-Encoding: 8bit
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:400d:c0d::242
+Subject: Re: [Qemu-devel] [Qemu-arm] [PATCH 2/3] hw/intc/exynos: Constify
+ array of combiner interrupts
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
-	Krzysztof Kozlowski <krzk@kernel.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: vcvh/eqNE2sq
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: WHbln+vkiT4o
 
-Use a define for a9mpcore_priv device type name instead of hard-coded
-string.
+On 05/07/2017 08:35 AM, Krzysztof Kozlowski wrote:
+> The static array of interrupt combiner mappings is not modified so it
+> can be made const for code safeness.
+>
+> Signed-off-by: Krzysztof Kozlowski <krzk@kernel.org>
 
-Signed-off-by: Krzysztof Kozlowski <krzk@kernel.org>
----
- hw/arm/exynos4210.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 
-diff --git a/hw/arm/exynos4210.c b/hw/arm/exynos4210.c
-index 034fc8be9d76..a9e221c5b7fe 100644
---- a/hw/arm/exynos4210.c
-+++ b/hw/arm/exynos4210.c
-@@ -26,6 +26,7 @@
- #include "qemu-common.h"
- #include "qemu/log.h"
- #include "cpu.h"
-+#include "hw/cpu/a9mpcore.h"
- #include "hw/boards.h"
- #include "sysemu/sysemu.h"
- #include "hw/sysbus.h"
-@@ -212,7 +213,7 @@ static void exynos4210_init(Object *obj)
-     }
- 
-     /* Private memory region and Internal GIC */
--    dev = qdev_create(NULL, "a9mpcore_priv");
-+    dev = qdev_create(NULL, TYPE_A9MPCORE_PRIV);
-     qdev_prop_set_uint32(dev, "num-cpu", EXYNOS4210_NCPUS);
-     qdev_init_nofail(dev);
-     busdev = SYS_BUS_DEVICE(dev);
--- 
-2.9.3
-
+> ---
+>  hw/intc/exynos4210_gic.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+>
+> diff --git a/hw/intc/exynos4210_gic.c b/hw/intc/exynos4210_gic.c
+> index 222cfd6c6387..636dc6dbc1f9 100644
+> --- a/hw/intc/exynos4210_gic.c
+> +++ b/hw/intc/exynos4210_gic.c
+> @@ -116,7 +116,7 @@ enum ExtInt {
+>   * which is INTG16 in Internal Interrupt Combiner.
+>   */
+>
+> -static uint32_t
+> +static const uint32_t
+>  combiner_grp_to_gic_id[64-EXYNOS4210_MAX_EXT_COMBINER_OUT_IRQ][8] = {
+>      /* int combiner groups 16-19 */
+>      { }, { }, { }, { },
+>

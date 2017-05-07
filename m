@@ -1,76 +1,76 @@
-Received: by 10.25.0.198 with SMTP id 189csp932017lfa;
-        Sun, 7 May 2017 04:36:16 -0700 (PDT)
-X-Received: by 10.55.128.198 with SMTP id b189mr19730119qkd.301.1494156976890;
-        Sun, 07 May 2017 04:36:16 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1494156976; cv=none;
+Received: by 10.25.0.198 with SMTP id 189csp932086lfa;
+        Sun, 7 May 2017 04:36:32 -0700 (PDT)
+X-Received: by 10.55.40.226 with SMTP id o95mr19168513qko.312.1494156991997;
+        Sun, 07 May 2017 04:36:31 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1494156991; cv=none;
         d=google.com; s=arc-20160816;
-        b=OPZk3In05HP/mqDu0ubnoVcnN3IDqR2jexM0BS+4NRVrQuNh/wHlDhpoG8uhX+9+ay
-         BXITtDpXew7v8WckMZRpN/lWYLNOXOIX7+eGokzA/4Bl/SPTvNcqiyggvQ/Cjoo2bIFf
-         M84+pI/+G8UxaShp/W0g0pa/tHuvY3pm2MtBqgKNRkwCn6LUV+MLsQWrLEj2nbspOLbk
-         S68bIsAl9F12og3yLfO1GNXUR60+wELQGQgjPdlgq0JlNkCfOmjSdMqTUAKg18Ix7Jvx
-         jVV1j/G1ahMFFprC2Wg+5Ooorot/RNl1o2CTtJlbWvVLa57AX649TxgCEf09jVurRS2S
-         z+SA==
+        b=AkuNXI/wADx8DXSRbIAcw4OPA89oOV4l5sEZrVlX8lGs8FXy5XhckCA70ET8iIldgd
+         ohRTCGJYJsZ3BSDCrTHjtbx+YzivFo2sU8HrrflzX6h60jC+kRU8ZEvHkbSbU0LgZMwM
+         EZ+cI1eiJs3GwulLw8G+WV/+PbtrwCA7mtpwn11T5TJJgtbx4R8CAP/JtSgfQ6TgThRD
+         0l+EJorGqwlkYfLy5KbRZxKQwHDCcHQ5hdlMSey+Up3gQh6WndsiSunNwTB+5yc1dgQm
+         nz9LdE31EYXW/G9sELDtbyVFg/GZT7HKVNqDuF9hdon4AOAMlfGgKnnbzS7kJ8PS0rMJ
+         aQoQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
          :message-id:date:to:from:arc-authentication-results;
-        bh=yRsRZWEbOQwp9XRufFNMEDXfbm7TuzISBN3DfJBXsU0=;
-        b=uzAWhK1awhWts5/SdLxti30MAXZ5tCniX4wlswB5LVaColKJmfu1cBJS7auQ5O2WWf
-         hFNZzmzTDuYhqXpo7JJ+AFqM7r4qQseeBHrIe+JkmhxAMGX+HjrxMJ3bMD6n/+Hz3cIr
-         1F2kcQ9eG0x8WtUhrY4kFhGhIYtuSPay+BXdi2rj3Wb1JDPXCtz3mJUVOI7WWWCCdmcM
-         HglL+TkcCPZaLDo//WbpbF0vNM1NUN6iGh6/uF1q7b1PQKfQFw1zp5D8kujKYHnqVkVW
-         0tSLrgyy8FHms3R1bo46P03qh6Kr09Ln/jcQ/17JghasXHGi71ZpJb0PP7bEwAKvYFvN
-         asOg==
+        bh=zB6Qg9BxxafzF1aJu2qJ2rkaM2tcH+ZpJEStp/X2fa4=;
+        b=x0UUlygzT3xCpfWXn3NKohFzq6rCDln+ctfqtu2c6u2Hi8AObkiYh2h20gqZqk0cfr
+         VPp1huSVNzE/Oq6pfUTlK8qFy8TmGsaBMZyTDpzLs2I4ElH9VEgGUQEDsMR0KgOHk8S2
+         k2+/ICIsxjZzTouKxjZX1dvhgarO/HQ2eSFzkCabtEifCEXGRPHav9biyx0UpF2K9Prn
+         pkXESLc7zZVHHageSfi3282kJyCIbZppUfOrzpf3QiH1slyAejKxEhbbe0rD1PGXSp+t
+         Jbx2tFibVquz1G/BhsBUm5V4WeV07aAmCcn97GdnoZunxkoQOG0Z49SIraYnRpJEBD20
+         N9gg==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id b77si9945753qka.58.2017.05.07.04.36.16
+        by mx.google.com with ESMTPS id m17si9496530qki.34.2017.05.07.04.36.31
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sun, 07 May 2017 04:36:16 -0700 (PDT)
+        Sun, 07 May 2017 04:36:31 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:54551 helo=lists.gnu.org)
+Received: from localhost ([::1]:54554 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1d7KU2-0007pm-7e
-	for alex.bennee@linaro.org; Sun, 07 May 2017 07:36:14 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:53873)
+	id 1d7KUH-0007zv-2b
+	for alex.bennee@linaro.org; Sun, 07 May 2017 07:36:29 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:53957)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <krzk@kernel.org>) id 1d7KTk-0007eS-Lb
-	for qemu-arm@nongnu.org; Sun, 07 May 2017 07:35:57 -0400
+	(envelope-from <krzk@kernel.org>) id 1d7KTn-0007gx-O0
+	for qemu-arm@nongnu.org; Sun, 07 May 2017 07:36:00 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <krzk@kernel.org>) id 1d7KTj-0004V8-Ti
-	for qemu-arm@nongnu.org; Sun, 07 May 2017 07:35:56 -0400
-Received: from mail.kernel.org ([198.145.29.136]:56228)
+	(envelope-from <krzk@kernel.org>) id 1d7KTm-0004X2-Kw
+	for qemu-arm@nongnu.org; Sun, 07 May 2017 07:35:59 -0400
+Received: from mail.kernel.org ([198.145.29.136]:56278)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <krzk@kernel.org>)
-	id 1d7KTj-0004Uy-Mm; Sun, 07 May 2017 07:35:55 -0400
+	id 1d7KTm-0004WI-D0; Sun, 07 May 2017 07:35:58 -0400
 Received: from mail.kernel.org (localhost [127.0.0.1])
-	by mail.kernel.org (Postfix) with ESMTP id 2964420361;
-	Sun,  7 May 2017 11:35:54 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTP id 9F7F420392;
+	Sun,  7 May 2017 11:35:56 +0000 (UTC)
 Received: from kozik-lap.dzcmts001-cpe-001.datazug.ch
 	(pub082136089155.dh-hfc.datazug.ch [82.136.89.155])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPSA id 0AAAB20392;
-	Sun,  7 May 2017 11:35:51 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPSA id 9348220373;
+	Sun,  7 May 2017 11:35:54 +0000 (UTC)
 From: Krzysztof Kozlowski <krzk@kernel.org>
 To: Igor Mitsyanko <i.mitsyanko@gmail.com>,
 	Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Date: Sun,  7 May 2017 13:35:39 +0200
-Message-Id: <20170507113540.8687-3-krzk@kernel.org>
+Date: Sun,  7 May 2017 13:35:40 +0200
+Message-Id: <20170507113540.8687-4-krzk@kernel.org>
 X-Mailer: git-send-email 2.9.3
 In-Reply-To: <20170507113540.8687-1-krzk@kernel.org>
 References: <20170507113540.8687-1-krzk@kernel.org>
 X-Virus-Scanned: ClamAV using ClamSMTP
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
 X-Received-From: 198.145.29.136
-Subject: [Qemu-arm] [PATCH 2/3] hw/intc/exynos: Constify array of combiner
- interrupts
+Subject: [Qemu-arm] [PATCH 3/3] hw/arm/exynos: Add support for system
+ poweroff
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -86,29 +86,70 @@ Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
 	Krzysztof Kozlowski <krzk@kernel.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 7ekSdZitBS4s
+X-TUID: jpaLQU0dYfmg
 
-The static array of interrupt combiner mappings is not modified so it
-can be made const for code safeness.
+On all Exynos-based boards, the system powers down itself by driving
+PS_HOLD signal low.  Handle writing to respective PMU register to fix
+power off failure:
+
+    reboot: Power down
+    Unable to poweroff system
+    shutdown: 31 output lines suppressed due to ratelimiting
+    Kernel panic - not syncing: Attempted to kill init! exitcode=0x00000000
+
+    CPU: 0 PID: 1 Comm: shutdown Not tainted 4.11.0-rc8 #846
+    Hardware name: SAMSUNG EXYNOS (Flattened Device Tree)
+    [<c031050c>] (unwind_backtrace) from [<c030ba6c>] (show_stack+0x10/0x14)
+    [<c030ba6c>] (show_stack) from [<c05b2800>] (dump_stack+0x88/0x9c)
+    [<c05b2800>] (dump_stack) from [<c03d3140>] (panic+0xdc/0x268)
+    [<c03d3140>] (panic) from [<c0343614>] (do_exit+0xa90/0xab4)
+    [<c0343614>] (do_exit) from [<c035f2dc>] (SyS_reboot+0x164/0x1d0)
+    [<c035f2dc>] (SyS_reboot) from [<c0307c80>] (ret_fast_syscall+0x0/0x3c)
 
 Signed-off-by: Krzysztof Kozlowski <krzk@kernel.org>
 ---
- hw/intc/exynos4210_gic.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ hw/misc/exynos4210_pmu.c | 14 ++++++++++++++
+ 1 file changed, 14 insertions(+)
 
-diff --git a/hw/intc/exynos4210_gic.c b/hw/intc/exynos4210_gic.c
-index 222cfd6c6387..636dc6dbc1f9 100644
---- a/hw/intc/exynos4210_gic.c
-+++ b/hw/intc/exynos4210_gic.c
-@@ -116,7 +116,7 @@ enum ExtInt {
-  * which is INTG16 in Internal Interrupt Combiner.
-  */
+diff --git a/hw/misc/exynos4210_pmu.c b/hw/misc/exynos4210_pmu.c
+index 63a8ccd35559..2046e6313f10 100644
+--- a/hw/misc/exynos4210_pmu.c
++++ b/hw/misc/exynos4210_pmu.c
+@@ -26,6 +26,7 @@
  
--static uint32_t
-+static const uint32_t
- combiner_grp_to_gic_id[64-EXYNOS4210_MAX_EXT_COMBINER_OUT_IRQ][8] = {
-     /* int combiner groups 16-19 */
-     { }, { }, { }, { },
+ #include "qemu/osdep.h"
+ #include "hw/sysbus.h"
++#include "sysemu/sysemu.h"
+ 
+ #ifndef DEBUG_PMU
+ #define DEBUG_PMU           0
+@@ -397,6 +398,12 @@ typedef struct Exynos4210PmuState {
+     uint32_t reg[PMU_NUM_OF_REGISTERS];
+ } Exynos4210PmuState;
+ 
++static void exynos4210_pmu_poweroff(void)
++{
++    PRINT_DEBUG("QEMU PMU: PS_HOLD bit down, powering off\n");
++    qemu_system_shutdown_request();
++}
++
+ static uint64_t exynos4210_pmu_read(void *opaque, hwaddr offset,
+                                     unsigned size)
+ {
+@@ -428,6 +435,13 @@ static void exynos4210_pmu_write(void *opaque, hwaddr offset,
+             PRINT_DEBUG_EXTEND("%s <0x%04x> <- 0x%04x\n", reg_p->name,
+                     (uint32_t)offset, (uint32_t)val);
+             s->reg[i] = val;
++            if ((offset == PS_HOLD_CONTROL) && ((val & BIT(8)) == 0)) {
++                /*
++                 * We are interested only in setting data bit
++                 * of PS_HOLD_CONTROL register to indicate power off request.
++                 */
++                exynos4210_pmu_poweroff();
++            }
+             return;
+         }
+         reg_p++;
 -- 
 2.9.3
 

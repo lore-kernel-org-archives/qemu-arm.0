@@ -1,73 +1,76 @@
-Received: by 10.25.0.198 with SMTP id 189csp920301lfa;
-        Sun, 7 May 2017 03:56:08 -0700 (PDT)
-X-Received: by 10.55.140.65 with SMTP id o62mr21497102qkd.270.1494154568702;
-        Sun, 07 May 2017 03:56:08 -0700 (PDT)
+Received: by 10.25.0.198 with SMTP id 189csp932017lfa;
+        Sun, 7 May 2017 04:36:16 -0700 (PDT)
+X-Received: by 10.55.128.198 with SMTP id b189mr19730119qkd.301.1494156976890;
+        Sun, 07 May 2017 04:36:16 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1494156976; cv=none;
+        d=google.com; s=arc-20160816;
+        b=OPZk3In05HP/mqDu0ubnoVcnN3IDqR2jexM0BS+4NRVrQuNh/wHlDhpoG8uhX+9+ay
+         BXITtDpXew7v8WckMZRpN/lWYLNOXOIX7+eGokzA/4Bl/SPTvNcqiyggvQ/Cjoo2bIFf
+         M84+pI/+G8UxaShp/W0g0pa/tHuvY3pm2MtBqgKNRkwCn6LUV+MLsQWrLEj2nbspOLbk
+         S68bIsAl9F12og3yLfO1GNXUR60+wELQGQgjPdlgq0JlNkCfOmjSdMqTUAKg18Ix7Jvx
+         jVV1j/G1ahMFFprC2Wg+5Ooorot/RNl1o2CTtJlbWvVLa57AX649TxgCEf09jVurRS2S
+         z+SA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
+         :message-id:date:to:from:arc-authentication-results;
+        bh=yRsRZWEbOQwp9XRufFNMEDXfbm7TuzISBN3DfJBXsU0=;
+        b=uzAWhK1awhWts5/SdLxti30MAXZ5tCniX4wlswB5LVaColKJmfu1cBJS7auQ5O2WWf
+         hFNZzmzTDuYhqXpo7JJ+AFqM7r4qQseeBHrIe+JkmhxAMGX+HjrxMJ3bMD6n/+Hz3cIr
+         1F2kcQ9eG0x8WtUhrY4kFhGhIYtuSPay+BXdi2rj3Wb1JDPXCtz3mJUVOI7WWWCCdmcM
+         HglL+TkcCPZaLDo//WbpbF0vNM1NUN6iGh6/uF1q7b1PQKfQFw1zp5D8kujKYHnqVkVW
+         0tSLrgyy8FHms3R1bo46P03qh6Kr09Ln/jcQ/17JghasXHGi71ZpJb0PP7bEwAKvYFvN
+         asOg==
+ARC-Authentication-Results: i=1; mx.google.com;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id s186si9318077qkb.12.2017.05.07.03.56.08
+        by mx.google.com with ESMTPS id b77si9945753qka.58.2017.05.07.04.36.16
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sun, 07 May 2017 03:56:08 -0700 (PDT)
+        Sun, 07 May 2017 04:36:16 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:54449 helo=lists.gnu.org)
+Received: from localhost ([::1]:54551 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1d7JrC-0007vH-7A
-	for alex.bennee@linaro.org; Sun, 07 May 2017 06:56:06 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:49977)
+	id 1d7KU2-0007pm-7e
+	for alex.bennee@linaro.org; Sun, 07 May 2017 07:36:14 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:53873)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <k.kozlowski.k@gmail.com>) id 1d7Jr7-0007v7-If
-	for qemu-arm@nongnu.org; Sun, 07 May 2017 06:56:02 -0400
+	(envelope-from <krzk@kernel.org>) id 1d7KTk-0007eS-Lb
+	for qemu-arm@nongnu.org; Sun, 07 May 2017 07:35:57 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <k.kozlowski.k@gmail.com>) id 1d7Jr4-0003tU-EH
-	for qemu-arm@nongnu.org; Sun, 07 May 2017 06:56:01 -0400
-Received: from mail-wm0-f66.google.com ([74.125.82.66]:33748)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <k.kozlowski.k@gmail.com>)
-	id 1d7Jr4-0003tQ-6h; Sun, 07 May 2017 06:55:58 -0400
-Received: by mail-wm0-f66.google.com with SMTP id y10so9368746wmh.0;
-	Sun, 07 May 2017 03:55:57 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:date:from:to:cc:subject:message-id:references
-	:mime-version:content-disposition:content-transfer-encoding
-	:in-reply-to:user-agent;
-	bh=5VBM/52RPIp+q3uO0tc23J0xfOe8mQhRTwW348F3+F8=;
-	b=NGvpVvk5eqD5K2DQpQqLVeCZQULiSdXclHseOJMU7K6dMJXNMMFB8UorudHJrp0CuW
-	hnG8/6kJwOAXMmsqyhShdK2UQ1gW/UQ602BNTaK5wJAGAyRMYnEd0CWGAma/k6D9x26m
-	odPg48XqscVrOcUJOXVEXz/neKbGs5gcsQELD7K7onMkE8XRqGj3ZLpKtfORA9yXHOaS
-	Z3f/EZfe4yt0OnE/3JE8aeEA4EjJ0l8MPgRsPtIbPdzXMuPb+Z7DuWsyyTnRz8Z2uxTj
-	px+Eft3cEWFvPvRA2bOUUghFCFIYATlakKEhcHkXWo6ptULnaSOZ9tuUvs3PZd5QgClt
-	OR3A==
-X-Gm-Message-State: AN3rC/7Yob8W6crthX+/DlFqnnlFB3or/aVFde4NSd/yTeKOgYeo0sPj
-	EpMZI3vO/+wuWg==
-X-Received: by 10.80.174.131 with SMTP id e3mr12451013edd.166.1494154556796;
-	Sun, 07 May 2017 03:55:56 -0700 (PDT)
-Received: from kozik-lap (pub082136089155.dh-hfc.datazug.ch. [82.136.89.155])
-	by smtp.googlemail.com with ESMTPSA id
-	w15sm829164edw.27.2017.05.07.03.55.55
-	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-	Sun, 07 May 2017 03:55:55 -0700 (PDT)
-Date: Sun, 7 May 2017 12:55:53 +0200
+	(envelope-from <krzk@kernel.org>) id 1d7KTj-0004V8-Ti
+	for qemu-arm@nongnu.org; Sun, 07 May 2017 07:35:56 -0400
+Received: from mail.kernel.org ([198.145.29.136]:56228)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <krzk@kernel.org>)
+	id 1d7KTj-0004Uy-Mm; Sun, 07 May 2017 07:35:55 -0400
+Received: from mail.kernel.org (localhost [127.0.0.1])
+	by mail.kernel.org (Postfix) with ESMTP id 2964420361;
+	Sun,  7 May 2017 11:35:54 +0000 (UTC)
+Received: from kozik-lap.dzcmts001-cpe-001.datazug.ch
+	(pub082136089155.dh-hfc.datazug.ch [82.136.89.155])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+	(No client certificate requested)
+	by mail.kernel.org (Postfix) with ESMTPSA id 0AAAB20392;
+	Sun,  7 May 2017 11:35:51 +0000 (UTC)
 From: Krzysztof Kozlowski <krzk@kernel.org>
-To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-Message-ID: <20170507105553.4xoq7obdc2bjx26x@kozik-lap>
-References: <20170313180432.7067-1-krzk@kernel.org>
-	<20170313180432.7067-2-krzk@kernel.org>
-	<cf23c2b4-c4c1-bb46-626e-a54851b25cbb@amsat.org>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-In-Reply-To: <cf23c2b4-c4c1-bb46-626e-a54851b25cbb@amsat.org>
-User-Agent: Mutt/1.6.2-neo (2016-08-21)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 74.125.82.66
-Subject: Re: [Qemu-arm] [PATCH v2 1/5] hw/intc/exynos4210_gic: Fix GIC
- memory mappings for secondary CPU
+To: Igor Mitsyanko <i.mitsyanko@gmail.com>,
+	Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Date: Sun,  7 May 2017 13:35:39 +0200
+Message-Id: <20170507113540.8687-3-krzk@kernel.org>
+X-Mailer: git-send-email 2.9.3
+In-Reply-To: <20170507113540.8687-1-krzk@kernel.org>
+References: <20170507113540.8687-1-krzk@kernel.org>
+X-Virus-Scanned: ClamAV using ClamSMTP
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
+X-Received-From: 198.145.29.136
+Subject: [Qemu-arm] [PATCH 2/3] hw/intc/exynos: Constify array of combiner
+ interrupts
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -79,65 +82,33 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Igor Mitsyanko <i.mitsyanko@gmail.com>,
-	Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
+Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+	Krzysztof Kozlowski <krzk@kernel.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: g7dKiyoqfjki
+X-TUID: 7ekSdZitBS4s
 
-On Mon, Mar 13, 2017 at 04:32:40PM -0300, Philippe Mathieu-Daud=C3=A9 wrote:
-> On 03/13/2017 03:04 PM, Krzysztof Kozlowski wrote:
-> > Recent Linux kernel (tested next-20170224) was complaining about missing
-> > GIC mask and was unable to bring up secondary CPU:
-> >=20
-> >     [    0.000000] NR_IRQS:16 nr_irqs:16 16
-> >     [    0.000000] GIC CPU mask not found - kernel will fail to boot.
-> >     ...
-> >     [    0.400492] smp: Bringing up secondary CPUs ...
-> >     [    1.413184] CPU1: failed to boot: -110
-> >     [    1.423981] smp: Brought up 1 node, 1 CPU
-> >=20
-> > In its instance_init() call, the Exynos GIC driver was setting GIC
-> > memory mappings for each CPU, from 1 up to "num-cpu" property.  The
-> > Exynos4210 machine init call on the other hand, first created Exynos GIC
-> > device and then set the "num-cpu" property which was too late.  The init
-> > already happened with default "num-cpu" value of 1 thus GIC mappings
-> > were created only for the first CPU.
-> >=20
-> > Split the Exynos GIC init code into realize function so the code will
-> > see updated "num-cpu" property.  This fixes the warning and brings
-> > second CPU:
-> >     [    0.435780] CPU1: thread -1, cpu 1, socket 9, mpidr 80000901
-> >     [    0.451838] smp: Brought up 1 node, 2 CPUs
-> >=20
-> > Signed-off-by: Krzysztof Kozlowski <krzk@kernel.org>
-> > Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
->=20
-> Reviewed-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+The static array of interrupt combiner mappings is not modified so it
+can be made const for code safeness.
 
-Beside bringing secondary CPU, this patch fixes also Software Generated
-Interrupts. Without it, none of the SGIs are coming (except CPU wakeup):
-  IPI0: =C2=A0 =C2=A0 =C2=A0 6281 =C2=A0CPU wakeup interrupts
-  IPI1: =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A00 =C2=A0Timer broadcast interrupts
-  IPI2: =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A00 =C2=A0Rescheduling interrupts
-  IPI3: =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A00 =C2=A0Function call interrupts
-  IPI4: =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A00 =C2=A0CPU stop interrupts
-  IPI5: =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A00 =C2=A0IRQ work interrupts
-  IPI6: =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A00 =C2=A0completion interrupts
+Signed-off-by: Krzysztof Kozlowski <krzk@kernel.org>
+---
+ hw/intc/exynos4210_gic.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-This is pretty annoying because lack of SGIs means lack of IPIs thus for
-example IRQ work cannot be executed. Without IRQ work, the kernel hangs
-on power down on cpufreq shutdown because in cpufreq_dbs_governor_stop()
-there is irq_work_sync() but none of irq_work interrupts were handled.
-
-I still did not solve the issue with cpuidle (AFTR). I am trying to
-implement CPU power off (needed for AFTR) but it is one-way so far (no
-wakeup). Anyway the workaround is to just disable cpuidle.
-
-Overall, what is the status of this patch? Should I resend? I can also
-extend the commit description with paragraph about SGI/IPI.
-
-Best regards,
-Krzysztof
+diff --git a/hw/intc/exynos4210_gic.c b/hw/intc/exynos4210_gic.c
+index 222cfd6c6387..636dc6dbc1f9 100644
+--- a/hw/intc/exynos4210_gic.c
++++ b/hw/intc/exynos4210_gic.c
+@@ -116,7 +116,7 @@ enum ExtInt {
+  * which is INTG16 in Internal Interrupt Combiner.
+  */
+ 
+-static uint32_t
++static const uint32_t
+ combiner_grp_to_gic_id[64-EXYNOS4210_MAX_EXT_COMBINER_OUT_IRQ][8] = {
+     /* int combiner groups 16-19 */
+     { }, { }, { }, { },
+-- 
+2.9.3
 

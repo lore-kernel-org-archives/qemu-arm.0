@@ -1,228 +1,1224 @@
-Received: by 10.25.0.198 with SMTP id 189csp1396501lfa;
-        Mon, 8 May 2017 07:47:17 -0700 (PDT)
-X-Received: by 10.55.58.199 with SMTP id h190mr25008769qka.262.1494254837637;
-        Mon, 08 May 2017 07:47:17 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1494254837; cv=none;
+Received: by 10.25.0.198 with SMTP id 189csp1548577lfa;
+        Mon, 8 May 2017 14:20:20 -0700 (PDT)
+X-Received: by 10.84.168.4 with SMTP id e4mr86637689plb.138.1494278420056;
+        Mon, 08 May 2017 14:20:20 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1494278420; cv=none;
         d=google.com; s=arc-20160816;
-        b=K8BtmHV13oLizkMSsXOAc1N5KzN4PAgWKLRp2EohNUD3OUg6Qcsbdkm6aSCfQOVfDl
-         qz0m0NGlfEmm2QF0NpR4q0U9i8BgdRUNMPjJDG3H/zBg2IgRcDYG/A2fELchKXvmAf37
-         BTVLOy++1uE8ojEzd95J4kk179TBLj88gswglXFVHE+LdULLTUJIlRk0A0scVGG8cx5/
-         zDZ8+6QRuGpdfcEW7LJBcJmQfXsS312AvMgqmrCjvY/ZTiT92tTxgVNHvfPCU6bgJQK9
-         cEXuPodlPH62E7cGvYGIHvMaBGm4qAFp/de1D91SDq1BfVCB7TFNcXd2nnyjx4smrvSG
-         QzyA==
+        b=msZqjOGDshTf8ejvHJEVbM8cLg91Tjc52hZNIj5Eti5LgK+SNfC1TaGA0j8Q9EJBi+
+         ctTWYe4YAXPbY1Av1q+d1PQsG+698IhD7zWEE+ekp+1hCmMLeVyReL6hhwypXQPoSWvU
+         IzwiWGGy5SgFqE0Q8F+A4kUNfdDjGZ4i26WYFuAVZDM0NoOFSctCKQyg2AZ9MbuPIi1E
+         kvFs9SzQZ863Y9O8LAeNCdkcJKRUZoTNI1wOI0DBod6ANs944fExIDUyX2Xm6B1KZtxj
+         MkuTy2rJkAuu7H/m1OjQfGZn0TY3ogSpSCdCfjvOl0yBBnuoYIrit+Pue7T0QtPQqT0o
+         zYiA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
-         :content-disposition:mime-version:references:message-id:to:from:date
+        h=list-id:precedence:sender:content-transfer-encoding:mime-version
+         :references:in-reply-to:message-id:date:subject:cc:to:from
          :dkim-filter:dmarc-filter:arc-authentication-results;
-        bh=715QtUMjAsGElgPZRZnHudOogT30NuEoqoI0pJbf6R0=;
-        b=bNatHrUo4ArpYPbq9ncLwDXAi9n5VABOWw5jZa46Hra8+cLsa+BU5T18ceH8nVl8WD
-         493daEhoz32Oo9OX7MguvMKxuq6MQQxeoyOxkN6btD46MTXSlLEpIQC1WkUbopK1XfSN
-         Pc0stAj+nyf0YK2hQVPT2oR11zrwlqu6Fr3m0Qo25qgii1yzI4yXEZx4SeFJrdksU/5u
-         ORiaQSagM5IClxtwLPpVltjUVM1imw9HpQXzhmgO1PnRmq06ZjG6PzxXDc69rU+XL9Ts
-         0edJnERTiPzftGO06UFH1lFtNmhMbiIqn0lWPfuZN/qH7JxDsP11xewnD7T0Vs8BEIPt
-         9MBA==
+        bh=OHFzEsge2sw/BAEo8s8oBlqCIUfBWhfN3JwJ9kefXJo=;
+        b=U0RxA14tKiVjmR5+znrTScekNtYHtpFS9O+8EQ7RDy3wo6a19hdfCh68SkTSVNnzgI
+         DNAc2nX7Vv6Ja0e6zJM3ybH1qMO/AQk8dP7GNzEc3RPTKrASevsv8o5TrUrD2Xf7xkfi
+         Tvk67uX8GRghdMX6bgjAZurk+kHmfHI0hJJGYFVkKe39CtN4Z3TfomwSyvMdQGPPl8p2
+         8on9r/YEshN2GovZhwGnZGEDY/xYNc5r4TfAV2xM9U553lYCWM3D/T84IAkSeJAR8p7o
+         VEf47cXi6SKObKpTeILOsaZOYXx2hj3LbKZC7DUsh05iMdjIifqNn8Iu7VWlKqfeQXJ9
+         LyuQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id r187si12161941qkd.247.2017.05.08.07.47.17
-        for <alex.bennee@linaro.org>
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 08 May 2017 07:47:17 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+Return-Path: <kvm-owner@vger.kernel.org>
+Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
+        by mx.google.com with ESMTP id u65si7310224pfb.94.2017.05.08.14.20.19;
+        Mon, 08 May 2017 14:20:20 -0700 (PDT)
+Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:59879 helo=lists.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1d7jwT-0008E9-3K
-	for alex.bennee@linaro.org; Mon, 08 May 2017 10:47:17 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:40219)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <ehabkost@redhat.com>) id 1d7jwM-0008D4-SP
-	for qemu-arm@nongnu.org; Mon, 08 May 2017 10:47:13 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <ehabkost@redhat.com>) id 1d7jwJ-0007uM-JS
-	for qemu-arm@nongnu.org; Mon, 08 May 2017 10:47:10 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:44226)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <ehabkost@redhat.com>)
-	id 1d7jwJ-0007uI-9x; Mon, 08 May 2017 10:47:07 -0400
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
-	[10.5.11.14])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 7452C80C09;
-	Mon,  8 May 2017 14:47:05 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 7452C80C09
-Authentication-Results: ext-mx02.extmail.prod.ext.phx2.redhat.com;
-	dmarc=none (p=none dis=none) header.from=redhat.com
-Authentication-Results: ext-mx02.extmail.prod.ext.phx2.redhat.com;
-	spf=pass smtp.mailfrom=ehabkost@redhat.com
-DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com 7452C80C09
-Received: from localhost (ovpn-116-2.gru2.redhat.com [10.97.116.2])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id A3CDC87444;
-	Mon,  8 May 2017 14:47:04 +0000 (UTC)
-Date: Mon, 8 May 2017 11:47:02 -0300
-From: Eduardo Habkost <ehabkost@redhat.com>
-To: David Gibson <david@gibson.dropbear.id.au>
-Message-ID: <20170508144702.GT3482@thinpad.lan.raisama.net>
-References: <1493816238-33120-1-git-send-email-imammedo@redhat.com>
-	<1493816238-33120-24-git-send-email-imammedo@redhat.com>
-	<20170508054004.GE25748@umbus.fritz.box>
+Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
+        id S1751259AbdEHVUS (ORCPT <rfc822;francois.ozog@linaro.org>
+        + 6 others); Mon, 8 May 2017 17:20:18 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:49606 "EHLO mx1.redhat.com"
+        rhost-flags-OK-OK-OK-OK) by vger.kernel.org with ESMTP
+        id S1751061AbdEHVUP (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Mon, 8 May 2017 17:20:15 -0400
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com [10.5.11.13])
+        (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+        (No client certificate requested)
+        by mx1.redhat.com (Postfix) with ESMTPS id 64BCE80E7C;
+        Mon,  8 May 2017 21:20:14 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 64BCE80E7C
+Authentication-Results: ext-mx01.extmail.prod.ext.phx2.redhat.com; dmarc=none (p=none dis=none) header.from=redhat.com
+Authentication-Results: ext-mx01.extmail.prod.ext.phx2.redhat.com; spf=pass smtp.mailfrom=eblake@redhat.com
+DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com 64BCE80E7C
+Received: from red.redhat.com (ovpn-122-86.rdu2.redhat.com [10.10.122.86])
+        by smtp.corp.redhat.com (Postfix) with ESMTP id 11B3F9F9AF;
+        Mon,  8 May 2017 21:20:06 +0000 (UTC)
+From:   Eric Blake <eblake@redhat.com>
+To:     qemu-devel@nongnu.org
+Cc:     armbru@redhat.com, berrange@redhat.com,
+        alistair.francis@xilinx.com, "Michael S. Tsirkin" <mst@redhat.com>,
+        Igor Mammedov <imammedo@redhat.com>,
+        Rob Herring <robh@kernel.org>,
+        Peter Maydell <peter.maydell@linaro.org>,
+        Jan Kiszka <jan.kiszka@web.de>,
+        Andrzej Zaborowski <balrogg@gmail.com>,
+        Paolo Bonzini <pbonzini@redhat.com>,
+        Richard Henderson <rth@twiddle.net>,
+        Eduardo Habkost <ehabkost@redhat.com>,
+        Stefano Stabellini <sstabellini@kernel.org>,
+        Anthony Perard <anthony.perard@citrix.com>,
+        Paul Burton <paul.burton@imgtec.com>,
+        Aurelien Jarno <aurelien@aurel32.net>,
+        Yongbok Kim <yongbok.kim@imgtec.com>,
+        Alexander Graf <agraf@suse.de>,
+        Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+        "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+        David Gibson <david@gibson.dropbear.id.au>,
+        Cornelia Huck <cornelia.huck@de.ibm.com>,
+        Christian Borntraeger <borntraeger@de.ibm.com>,
+        Magnus Damm <magnus.damm@gmail.com>,
+        Michael Walle <michael@walle.cc>,
+        Max Filippov <jcmvbkbc@gmail.com>,
+        Stefan Weil <sw@weilnetz.de>,
+        Pavel Dovgalyuk <pavel.dovgaluk@ispras.ru>,
+        Marcelo Tosatti <mtosatti@redhat.com>,
+        Artyom Tarasenko <atar4qemu@gmail.com>,
+        Gerd Hoffmann <kraxel@redhat.com>,
+        qemu-arm@nongnu.org (open list:Calxeda Highbank),
+        xen-devel@lists.xenproject.org (open list:X86),
+        qemu-ppc@nongnu.org (open list:Old World),
+        kvm@vger.kernel.org (open list:Overall)
+Subject: [PATCH v7 3/5] shutdown: Add source information to SHUTDOWN and RESET
+Date:   Mon,  8 May 2017 16:19:51 -0500
+Message-Id: <20170508211953.28017-4-eblake@redhat.com>
+In-Reply-To: <20170508211953.28017-1-eblake@redhat.com>
+References: <20170508211953.28017-1-eblake@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20170508054004.GE25748@umbus.fritz.box>
-X-Fnord: you can see the fnord
-User-Agent: Mutt/1.8.0 (2017-02-23)
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.26]);
-	Mon, 08 May 2017 14:47:06 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [PATCH v2 23/24] numa: add '-numa cpu,
- ...' option for property based node mapping
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.21
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jones <drjones@redhat.com>,
-	Shannon Zhao <zhaoshenglong@huawei.com>, qemu-devel@nongnu.org,
-	qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
-	Paolo Bonzini <pbonzini@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
-	Eric Blake <eblake@redhat.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: IijAPAmYAi9h
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.5.110.25]); Mon, 08 May 2017 21:20:15 +0000 (UTC)
+Sender: kvm-owner@vger.kernel.org
+Precedence: bulk
+List-ID: <kvm.vger.kernel.org>
+X-Mailing-List: kvm@vger.kernel.org
+X-TUID: F7e1J4dpcqk3
 
-On Mon, May 08, 2017 at 03:40:04PM +1000, David Gibson wrote:
-> On Wed, May 03, 2017 at 02:57:17PM +0200, Igor Mammedov wrote:
-> > legacy cpu to node mapping is using cpu index values to map
-> > VCPU to node with help of '-numa node,nodeid=node,cpus=x[-y]'
-> > option. However cpu index is internal concept and QEMU users
-> > have to guess /reimplement qemu's logic/ to map it to
-> > a concrete cpu socket/core/thread to make sane CPUs
-> > placement across numa nodes.
-> > 
-> > This patch allows to map cpu objects to numa nodes using
-> > the same properties as used for cpus with -device/device_add
-> > (socket-id/core-id/thread-id/node-id).
-> > 
-> > At present valid properties/values to address CPUs could be
-> > fetched using hotpluggable-cpus monitor/qmp command, it will
-> > require user to start qemu twice when creating domain to fetch
-> > possible CPUs for a machine type/-smp layout first and
-> > then the second time with numa explicit mapping for actual
-> > usage. The first step results could be saved and reused to
-> > set/change mapping later as far as machine type/-smp stays
-> > the same.
-> > 
-> > Proposed impl. supports exact and wildcard matching to
-> > simplify CLI and allow to set mapping for a specific cpu
-> > or group of cpu objects specified by matched properties.
-> > 
-> > For example:
-> > 
-> >    # exact mapping x86
-> >    -numa cpu,node-id=x,socket-id=y,core-id=z,thread-id=n
-> > 
-> >    # exact mapping SPAPR
-> >    -numa cpu,node-id=x,core-id=y
-> > 
-> >    # wildcard mapping, all cpu objects that match socket-id=y
-> >    # are mapped to node-id=x
-> >    -numa cpu,node-id=x,socket-id=y
-> > 
-> > Signed-off-by: Igor Mammedov <imammedo@redhat.com>
-> > ---
-> > v2:
-> >   - use new NumaCpuOptions instead of CpuInstanceProperties in
-> >     NumaOptions, so that in future we could decouple both
-> >     if needed. (Eduardo Habkost <ehabkost@redhat.com>)
-> >   - clarify effect of NumaCpuOptions.node-id in qapi-schema.json
-> > ---
-> >  numa.c           | 25 +++++++++++++++++++++++++
-> >  qapi-schema.json | 21 +++++++++++++++++++--
-> >  qemu-options.hx  | 23 ++++++++++++++++++++++-
-> >  3 files changed, 66 insertions(+), 3 deletions(-)
-> > 
-> > diff --git a/numa.c b/numa.c
-> > index 40e9f44..61521f5 100644
-> > --- a/numa.c
-> > +++ b/numa.c
-> > @@ -227,6 +227,7 @@ static int parse_numa(void *opaque, QemuOpts *opts, Error **errp)
-> >      NumaOptions *object = NULL;
-> >      MachineState *ms = opaque;
-> >      Error *err = NULL;
-> > +    CpuInstanceProperties cpu;
-> >  
-> >      {
-> >          Visitor *v = opts_visitor_new(opts);
-> > @@ -246,6 +247,30 @@ static int parse_numa(void *opaque, QemuOpts *opts, Error **errp)
-> >          }
-> >          nb_numa_nodes++;
-> >          break;
-> > +    case NUMA_OPTIONS_TYPE_CPU:
-> > +        if (!object->u.cpu.has_node_id) {
-> > +            error_setg(&err, "Missing mandatory node-id property");
-> > +            goto end;
-> > +        }
-> > +        if (!numa_info[object->u.cpu.node_id].present) {
-> > +            error_setg(&err, "Invalid node-id=%" PRId64 ", NUMA node must be "
-> > +                "defined with -numa node,nodeid=ID before it's used with "
-> > +                "-numa cpu,node-id=ID", object->u.cpu.node_id);
-> > +            goto end;
-> > +        }
-> > +
-> > +        memset(&cpu, 0, sizeof(cpu));
-> > +        cpu.has_node_id = object->u.cpu.has_node_id;
-> > +        cpu.node_id = object->u.cpu.node_id;
-> > +        cpu.has_socket_id = object->u.cpu.has_socket_id;
-> > +        cpu.socket_id = object->u.cpu.socket_id;
-> > +        cpu.has_core_id = object->u.cpu.has_core_id;
-> > +        cpu.core_id = object->u.cpu.core_id;
-> > +        cpu.has_thread_id = object->u.cpu.has_thread_id;
-> > +        cpu.thread_id = object->u.cpu.thread_id;
-> > +
-> > +        machine_set_cpu_numa_node(ms, &cpu, &err);
-> 
-> It's possible I've confused myself by not looking at this whole series
-> at once.
-> 
-> But, would it be possible to make a single machine hook which maps a
-> constructed cpu property set to a "canonical" cpu property set from
-> the table of CPU slots (or errors, of course).  That would let you do
-> what you need here, and I suspect in other places, without multiple
-> hooks.
+Time to wire up all the call sites that request a shutdown or
+reset to use the enum added in the previous patch.
 
-I think I understand your point, but I don't see where any
-opportunities to reuse a more generic hook in the current series.
+It would have been less churn to keep the common case with no
+arguments as meaning guest-triggered, and only modified the
+host-triggered code paths, via a wrapper function, but then we'd
+still have to audit that I didn't miss any host-triggered spots;
+changing the signature forces us to double-check that I correctly
+categorized all callers.
 
-I see only two new hooks added by this series:
-1) MachineClass::cpu_index_to_instance_props()
-2) machine_set_cpu_numa_node()
+Since command line options can change whether a guest reset request
+causes an actual reset vs. a shutdown, it's easy to also add the
+information to reset requests.
 
-The former takes only one cpu_index argument as input. As it
-needs to be a machine-specific hook, I think it's good to keep
-its input as simple and specific as possible.
+Replay adds a FIXME to preserve the cause across the replay stream,
+that will be tackled in the next patch.
 
-The latter could use a generic lookup function to map
-CpuInstanceProperties to a set of CPU slots. But I don't see any
-case where that logic would be reused by now, so I don't think
-it's worth the extra complexity.
+Signed-off-by: Eric Blake <eblake@redhat.com>
+Acked-by: David Gibson <david@gibson.dropbear.id.au> [ppc parts]
+Reviewed-by: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk> [SPARC part]
+
+---
+v7: no change
+v6: defer event additions to later, add reviews of unchanged portions
+v5: drop accidental addition of unrelated files
+v4: s/ShutdownType/ShutdownCause/, no thanks to mingw header pollution
+v3: retitle again, fix qemu-iotests, use enum rather than raw bool
+in all callers
+v2: retitle (was "event: Add signal information to SHUTDOWN"),
+completely rework to post bool based on whether it is guest-initiated
+v1: initial submission, exposing just Unix signals from host
+---
+ include/sysemu/sysemu.h     |  4 ++--
+ vl.c                        | 17 ++++++++---------
+ hw/acpi/core.c              |  4 ++--
+ hw/arm/highbank.c           |  4 ++--
+ hw/arm/integratorcp.c       |  2 +-
+ hw/arm/musicpal.c           |  2 +-
+ hw/arm/omap1.c              | 10 ++++++----
+ hw/arm/omap2.c              |  2 +-
+ hw/arm/spitz.c              |  2 +-
+ hw/arm/stellaris.c          |  2 +-
+ hw/arm/tosa.c               |  2 +-
+ hw/i386/pc.c                |  2 +-
+ hw/i386/xen/xen-hvm.c       |  2 +-
+ hw/input/pckbd.c            |  4 ++--
+ hw/ipmi/ipmi.c              |  4 ++--
+ hw/isa/lpc_ich9.c           |  2 +-
+ hw/mips/boston.c            |  2 +-
+ hw/mips/mips_malta.c        |  2 +-
+ hw/mips/mips_r4k.c          |  4 ++--
+ hw/misc/arm_sysctl.c        |  8 ++++----
+ hw/misc/cbus.c              |  2 +-
+ hw/misc/macio/cuda.c        |  4 ++--
+ hw/misc/slavio_misc.c       |  4 ++--
+ hw/misc/zynq_slcr.c         |  2 +-
+ hw/pci-host/apb.c           |  4 ++--
+ hw/pci-host/bonito.c        |  2 +-
+ hw/pci-host/piix.c          |  2 +-
+ hw/ppc/e500.c               |  2 +-
+ hw/ppc/mpc8544_guts.c       |  2 +-
+ hw/ppc/ppc.c                |  2 +-
+ hw/ppc/ppc405_uc.c          |  2 +-
+ hw/ppc/spapr_hcall.c        |  2 +-
+ hw/ppc/spapr_rtas.c         |  4 ++--
+ hw/s390x/ipl.c              |  2 +-
+ hw/sh4/r2d.c                |  2 +-
+ hw/timer/etraxfs_timer.c    |  2 +-
+ hw/timer/m48t59.c           |  4 ++--
+ hw/timer/milkymist-sysctl.c |  4 ++--
+ hw/timer/pxa2xx_timer.c     |  2 +-
+ hw/watchdog/watchdog.c      |  2 +-
+ hw/xenpv/xen_domainbuild.c  |  2 +-
+ hw/xtensa/xtfpga.c          |  2 +-
+ kvm-all.c                   |  6 +++---
+ os-win32.c                  |  2 +-
+ qmp.c                       |  4 ++--
+ replay/replay.c             |  3 ++-
+ target/alpha/sys_helper.c   |  4 ++--
+ target/arm/psci.c           |  4 ++--
+ target/i386/excp_helper.c   |  2 +-
+ target/i386/hax-all.c       |  6 +++---
+ target/i386/helper.c        |  2 +-
+ target/i386/kvm.c           |  2 +-
+ target/s390x/helper.c       |  2 +-
+ target/s390x/kvm.c          |  4 ++--
+ target/s390x/misc_helper.c  |  4 ++--
+ target/sparc/int32_helper.c |  2 +-
+ ui/sdl.c                    |  2 +-
+ ui/sdl2.c                   |  4 ++--
+ trace-events                |  2 +-
+ ui/cocoa.m                  |  2 +-
+ 60 files changed, 98 insertions(+), 96 deletions(-)
+
+diff --git a/include/sysemu/sysemu.h b/include/sysemu/sysemu.h
+index 98b3274..fe197aa 100644
+--- a/include/sysemu/sysemu.h
++++ b/include/sysemu/sysemu.h
+@@ -61,13 +61,13 @@ typedef enum WakeupReason {
+     QEMU_WAKEUP_REASON_OTHER,
+ } WakeupReason;
+
+-void qemu_system_reset_request(void);
++void qemu_system_reset_request(ShutdownCause reason);
+ void qemu_system_suspend_request(void);
+ void qemu_register_suspend_notifier(Notifier *notifier);
+ void qemu_system_wakeup_request(WakeupReason reason);
+ void qemu_system_wakeup_enable(WakeupReason reason, bool enabled);
+ void qemu_register_wakeup_notifier(Notifier *notifier);
+-void qemu_system_shutdown_request(void);
++void qemu_system_shutdown_request(ShutdownCause reason);
+ void qemu_system_powerdown_request(void);
+ void qemu_register_powerdown_notifier(Notifier *notifier);
+ void qemu_system_debug_request(void);
+diff --git a/vl.c b/vl.c
+index 8df886e..2d546460 100644
+--- a/vl.c
++++ b/vl.c
+@@ -1724,7 +1724,7 @@ void qemu_system_guest_panicked(GuestPanicInformation *info)
+     if (!no_shutdown) {
+         qapi_event_send_guest_panicked(GUEST_PANIC_ACTION_POWEROFF,
+                                        !!info, info, &error_abort);
+-        qemu_system_shutdown_request();
++        qemu_system_shutdown_request(SHUTDOWN_CAUSE_GUEST_PANIC);
+     }
+
+     if (info) {
+@@ -1741,13 +1741,12 @@ void qemu_system_guest_panicked(GuestPanicInformation *info)
+     }
+ }
+
+-void qemu_system_reset_request(void)
++void qemu_system_reset_request(ShutdownCause reason)
+ {
+     if (no_reboot) {
+-        /* FIXME - add a parameter to allow callers to specify reason */
+-        shutdown_requested = SHUTDOWN_CAUSE_HOST_ERROR;
++        shutdown_requested = reason;
+     } else {
+-        reset_requested = SHUTDOWN_CAUSE_HOST_ERROR;
++        reset_requested = reason;
+     }
+     cpu_stop_current();
+     qemu_notify_event();
+@@ -1818,12 +1817,12 @@ void qemu_system_killed(int signal, pid_t pid)
+     qemu_notify_event();
+ }
+
+-void qemu_system_shutdown_request(void)
++void qemu_system_shutdown_request(ShutdownCause reason)
+ {
+-    trace_qemu_system_shutdown_request();
++    trace_qemu_system_shutdown_request(reason);
++    /* FIXME - add a parameter to let replay preserve reason */
+     replay_shutdown_request();
+-    /* FIXME - add a parameter to allow callers to specify reason */
+-    shutdown_requested = SHUTDOWN_CAUSE_HOST_ERROR;
++    shutdown_requested = reason;
+     qemu_notify_event();
+ }
+
+diff --git a/hw/acpi/core.c b/hw/acpi/core.c
+index e890a5d..95fcac9 100644
+--- a/hw/acpi/core.c
++++ b/hw/acpi/core.c
+@@ -561,7 +561,7 @@ static void acpi_pm1_cnt_write(ACPIREGS *ar, uint16_t val)
+         uint16_t sus_typ = (val >> 10) & 7;
+         switch(sus_typ) {
+         case 0: /* soft power off */
+-            qemu_system_shutdown_request();
++            qemu_system_shutdown_request(SHUTDOWN_CAUSE_GUEST_SHUTDOWN);
+             break;
+         case 1:
+             qemu_system_suspend_request();
+@@ -569,7 +569,7 @@ static void acpi_pm1_cnt_write(ACPIREGS *ar, uint16_t val)
+         default:
+             if (sus_typ == ar->pm1.cnt.s4_val) { /* S4 request */
+                 qapi_event_send_suspend_disk(&error_abort);
+-                qemu_system_shutdown_request();
++                qemu_system_shutdown_request(SHUTDOWN_CAUSE_GUEST_SHUTDOWN);
+             }
+             break;
+         }
+diff --git a/hw/arm/highbank.c b/hw/arm/highbank.c
+index 0a4508c..d209b97 100644
+--- a/hw/arm/highbank.c
++++ b/hw/arm/highbank.c
+@@ -108,9 +108,9 @@ static void hb_regs_write(void *opaque, hwaddr offset,
+
+     if (offset == 0xf00) {
+         if (value == 1 || value == 2) {
+-            qemu_system_reset_request();
++            qemu_system_reset_request(SHUTDOWN_CAUSE_GUEST_RESET);
+         } else if (value == 3) {
+-            qemu_system_shutdown_request();
++            qemu_system_shutdown_request(SHUTDOWN_CAUSE_GUEST_SHUTDOWN);
+         }
+     }
+
+diff --git a/hw/arm/integratorcp.c b/hw/arm/integratorcp.c
+index 5610ffc..ca3eca1 100644
+--- a/hw/arm/integratorcp.c
++++ b/hw/arm/integratorcp.c
+@@ -158,7 +158,7 @@ static void integratorcm_do_remap(IntegratorCMState *s)
+ static void integratorcm_set_ctrl(IntegratorCMState *s, uint32_t value)
+ {
+     if (value & 8) {
+-        qemu_system_reset_request();
++        qemu_system_reset_request(SHUTDOWN_CAUSE_GUEST_RESET);
+     }
+     if ((s->cm_ctrl ^ value) & 1) {
+         /* (value & 1) != 0 means the green "MISC LED" is lit.
+diff --git a/hw/arm/musicpal.c b/hw/arm/musicpal.c
+index cbbca4e..9c710f7 100644
+--- a/hw/arm/musicpal.c
++++ b/hw/arm/musicpal.c
+@@ -898,7 +898,7 @@ static void mv88w8618_pit_write(void *opaque, hwaddr offset,
+
+     case MP_BOARD_RESET:
+         if (value == MP_BOARD_RESET_MAGIC) {
+-            qemu_system_reset_request();
++            qemu_system_reset_request(SHUTDOWN_CAUSE_GUEST_RESET);
+         }
+         break;
+     }
+diff --git a/hw/arm/omap1.c b/hw/arm/omap1.c
+index b3cf0ec..54582bd 100644
+--- a/hw/arm/omap1.c
++++ b/hw/arm/omap1.c
+@@ -355,7 +355,7 @@ static void omap_wd_timer_write(void *opaque, hwaddr addr,
+                 /* XXX: on T|E hardware somehow this has no effect,
+                  * on Zire 71 it works as specified.  */
+                 s->reset = 1;
+-                qemu_system_reset_request();
++                qemu_system_reset_request(SHUTDOWN_CAUSE_GUEST_RESET);
+             }
+         }
+         s->last_wr = value & 0xff;
+@@ -1545,8 +1545,10 @@ static inline void omap_clkm_idlect1_update(struct omap_mpu_state_s *s,
+     if (value & (1 << 11)) {                            /* SETARM_IDLE */
+         cpu_interrupt(CPU(s->cpu), CPU_INTERRUPT_HALT);
+     }
+-    if (!(value & (1 << 10)))				/* WKUP_MODE */
+-        qemu_system_shutdown_request();	/* XXX: disable wakeup from IRQ */
++    if (!(value & (1 << 10))) {                         /* WKUP_MODE */
++        /* XXX: disable wakeup from IRQ */
++        qemu_system_shutdown_request(SHUTDOWN_CAUSE_GUEST_SHUTDOWN);
++    }
+
+ #define SET_CANIDLE(clock, bit)				\
+     if (diff & (1 << bit)) {				\
+@@ -1693,7 +1695,7 @@ static void omap_clkm_write(void *opaque, hwaddr addr,
+         diff = s->clkm.arm_rstct1 ^ value;
+         s->clkm.arm_rstct1 = value & 0x0007;
+         if (value & 9) {
+-            qemu_system_reset_request();
++            qemu_system_reset_request(SHUTDOWN_CAUSE_GUEST_RESET);
+             s->clkm.cold_start = 0xa;
+         }
+         if (diff & ~value & 4) {				/* DSP_RST */
+diff --git a/hw/arm/omap2.c b/hw/arm/omap2.c
+index cf1b4ba..8afb854 100644
+--- a/hw/arm/omap2.c
++++ b/hw/arm/omap2.c
+@@ -1610,7 +1610,7 @@ static void omap_prcm_write(void *opaque, hwaddr addr,
+     case 0x450:	/* RM_RSTCTRL_WKUP */
+         /* TODO: reset */
+         if (value & 2)
+-            qemu_system_reset_request();
++            qemu_system_reset_request(SHUTDOWN_CAUSE_GUEST_RESET);
+         break;
+     case 0x454:	/* RM_RSTTIME_WKUP */
+         s->rsttime_wkup = value & 0x1fff;
+diff --git a/hw/arm/spitz.c b/hw/arm/spitz.c
+index fe2d5a7..7e9f579 100644
+--- a/hw/arm/spitz.c
++++ b/hw/arm/spitz.c
+@@ -848,7 +848,7 @@ static void spitz_lcd_hsync_handler(void *opaque, int line, int level)
+ static void spitz_reset(void *opaque, int line, int level)
+ {
+     if (level) {
+-        qemu_system_reset_request();
++        qemu_system_reset_request(SHUTDOWN_CAUSE_GUEST_RESET);
+     }
+ }
+
+diff --git a/hw/arm/stellaris.c b/hw/arm/stellaris.c
+index ea7a809..cf6e7be 100644
+--- a/hw/arm/stellaris.c
++++ b/hw/arm/stellaris.c
+@@ -1197,7 +1197,7 @@ static
+ void do_sys_reset(void *opaque, int n, int level)
+ {
+     if (level) {
+-        qemu_system_reset_request();
++        qemu_system_reset_request(SHUTDOWN_CAUSE_GUEST_RESET);
+     }
+ }
+
+diff --git a/hw/arm/tosa.c b/hw/arm/tosa.c
+index 9f58a23..2421b81 100644
+--- a/hw/arm/tosa.c
++++ b/hw/arm/tosa.c
+@@ -90,7 +90,7 @@ static void tosa_out_switch(void *opaque, int line, int level)
+ static void tosa_reset(void *opaque, int line, int level)
+ {
+     if (level) {
+-        qemu_system_reset_request();
++        qemu_system_reset_request(SHUTDOWN_CAUSE_GUEST_RESET);
+     }
+ }
+
+diff --git a/hw/i386/pc.c b/hw/i386/pc.c
+index f3b372a..427f123 100644
+--- a/hw/i386/pc.c
++++ b/hw/i386/pc.c
+@@ -519,7 +519,7 @@ static void port92_write(void *opaque, hwaddr addr, uint64_t val,
+     s->outport = val;
+     qemu_set_irq(s->a20_out, (val >> 1) & 1);
+     if ((val & 1) && !(oldval & 1)) {
+-        qemu_system_reset_request();
++        qemu_system_reset_request(SHUTDOWN_CAUSE_GUEST_RESET);
+     }
+ }
+
+diff --git a/hw/i386/xen/xen-hvm.c b/hw/i386/xen/xen-hvm.c
+index 222d89a..919f09b 100644
+--- a/hw/i386/xen/xen-hvm.c
++++ b/hw/i386/xen/xen-hvm.c
+@@ -1398,7 +1398,7 @@ void xen_shutdown_fatal_error(const char *fmt, ...)
+     va_end(ap);
+     fprintf(stderr, "Will destroy the domain.\n");
+     /* destroy the domain */
+-    qemu_system_shutdown_request();
++    qemu_system_shutdown_request(SHUTDOWN_CAUSE_HOST_ERROR);
+ }
+
+ void xen_hvm_modified_memory(ram_addr_t start, ram_addr_t length)
+diff --git a/hw/input/pckbd.c b/hw/input/pckbd.c
+index d414288..c479f82 100644
+--- a/hw/input/pckbd.c
++++ b/hw/input/pckbd.c
+@@ -226,7 +226,7 @@ static void outport_write(KBDState *s, uint32_t val)
+     s->outport = val;
+     qemu_set_irq(s->a20_out, (val >> 1) & 1);
+     if (!(val & 1)) {
+-        qemu_system_reset_request();
++        qemu_system_reset_request(SHUTDOWN_CAUSE_GUEST_RESET);
+     }
+ }
+
+@@ -301,7 +301,7 @@ static void kbd_write_command(void *opaque, hwaddr addr,
+         s->outport &= ~KBD_OUT_A20;
+         break;
+     case KBD_CCMD_RESET:
+-        qemu_system_reset_request();
++        qemu_system_reset_request(SHUTDOWN_CAUSE_GUEST_RESET);
+         break;
+     case KBD_CCMD_NO_OP:
+         /* ignore that */
+diff --git a/hw/ipmi/ipmi.c b/hw/ipmi/ipmi.c
+index 5cf1caa..afafe14 100644
+--- a/hw/ipmi/ipmi.c
++++ b/hw/ipmi/ipmi.c
+@@ -44,14 +44,14 @@ static int ipmi_do_hw_op(IPMIInterface *s, enum ipmi_op op, int checkonly)
+         if (checkonly) {
+             return 0;
+         }
+-        qemu_system_reset_request();
++        qemu_system_reset_request(SHUTDOWN_CAUSE_GUEST_RESET);
+         return 0;
+
+     case IPMI_POWEROFF_CHASSIS:
+         if (checkonly) {
+             return 0;
+         }
+-        qemu_system_shutdown_request();
++        qemu_system_shutdown_request(SHUTDOWN_CAUSE_GUEST_SHUTDOWN);
+         return 0;
+
+     case IPMI_SEND_NMI:
+diff --git a/hw/isa/lpc_ich9.c b/hw/isa/lpc_ich9.c
+index a0866c3..2b09354 100644
+--- a/hw/isa/lpc_ich9.c
++++ b/hw/isa/lpc_ich9.c
+@@ -606,7 +606,7 @@ static void ich9_rst_cnt_write(void *opaque, hwaddr addr, uint64_t val,
+     ICH9LPCState *lpc = opaque;
+
+     if (val & 4) {
+-        qemu_system_reset_request();
++        qemu_system_reset_request(SHUTDOWN_CAUSE_GUEST_RESET);
+         return;
+     }
+     lpc->rst_cnt = val & 0xA; /* keep FULL_RST (bit 3) and SYS_RST (bit 1) */
+diff --git a/hw/mips/boston.c b/hw/mips/boston.c
+index 83f7b82..53d1e0c 100644
+--- a/hw/mips/boston.c
++++ b/hw/mips/boston.c
+@@ -232,7 +232,7 @@ static void boston_platreg_write(void *opaque, hwaddr addr,
+         break;
+     case PLAT_SOFTRST_CTL:
+         if (val & PLAT_SOFTRST_CTL_SYSRESET) {
+-            qemu_system_reset_request();
++            qemu_system_reset_request(SHUTDOWN_CAUSE_GUEST_RESET);
+         }
+         break;
+     default:
+diff --git a/hw/mips/mips_malta.c b/hw/mips/mips_malta.c
+index 5dd177e..7814c39 100644
+--- a/hw/mips/mips_malta.c
++++ b/hw/mips/mips_malta.c
+@@ -470,7 +470,7 @@ static void malta_fpga_write(void *opaque, hwaddr addr,
+     /* SOFTRES Register */
+     case 0x00500:
+         if (val == 0x42)
+-            qemu_system_reset_request ();
++            qemu_system_reset_request(SHUTDOWN_CAUSE_GUEST_RESET);
+         break;
+
+     /* BRKRES Register */
+diff --git a/hw/mips/mips_r4k.c b/hw/mips/mips_r4k.c
+index 748586e..f4de9fc 100644
+--- a/hw/mips/mips_r4k.c
++++ b/hw/mips/mips_r4k.c
+@@ -53,9 +53,9 @@ static void mips_qemu_write (void *opaque, hwaddr addr,
+                              uint64_t val, unsigned size)
+ {
+     if ((addr & 0xffff) == 0 && val == 42)
+-        qemu_system_reset_request ();
++        qemu_system_reset_request(SHUTDOWN_CAUSE_GUEST_RESET);
+     else if ((addr & 0xffff) == 4 && val == 42)
+-        qemu_system_shutdown_request ();
++        qemu_system_shutdown_request(SHUTDOWN_CAUSE_GUEST_SHUTDOWN);
+ }
+
+ static uint64_t mips_qemu_read (void *opaque, hwaddr addr,
+diff --git a/hw/misc/arm_sysctl.c b/hw/misc/arm_sysctl.c
+index 8524008..b20b44e 100644
+--- a/hw/misc/arm_sysctl.c
++++ b/hw/misc/arm_sysctl.c
+@@ -351,13 +351,13 @@ static bool vexpress_cfgctrl_write(arm_sysctl_state *s, unsigned int dcc,
+         break;
+     case SYS_CFG_SHUTDOWN:
+         if (site == SYS_CFG_SITE_MB && device == 0) {
+-            qemu_system_shutdown_request();
++            qemu_system_shutdown_request(SHUTDOWN_CAUSE_GUEST_SHUTDOWN);
+             return true;
+         }
+         break;
+     case SYS_CFG_REBOOT:
+         if (site == SYS_CFG_SITE_MB && device == 0) {
+-            qemu_system_reset_request();
++            qemu_system_reset_request(SHUTDOWN_CAUSE_GUEST_RESET);
+             return true;
+         }
+         break;
+@@ -429,7 +429,7 @@ static void arm_sysctl_write(void *opaque, hwaddr offset,
+             if (s->lockval == LOCK_VALUE) {
+                 s->resetlevel = val;
+                 if (val & 0x100) {
+-                    qemu_system_reset_request();
++                    qemu_system_reset_request(SHUTDOWN_CAUSE_GUEST_RESET);
+                 }
+             }
+             break;
+@@ -438,7 +438,7 @@ static void arm_sysctl_write(void *opaque, hwaddr offset,
+             if (s->lockval == LOCK_VALUE) {
+                 s->resetlevel = val;
+                 if (val & 0x04) {
+-                    qemu_system_reset_request();
++                    qemu_system_reset_request(SHUTDOWN_CAUSE_GUEST_RESET);
+                 }
+             }
+             break;
+diff --git a/hw/misc/cbus.c b/hw/misc/cbus.c
+index 0c207e3..677274c 100644
+--- a/hw/misc/cbus.c
++++ b/hw/misc/cbus.c
+@@ -356,7 +356,7 @@ static inline void retu_write(CBusRetu *s, int reg, uint16_t val)
+
+     case RETU_REG_WATCHDOG:
+         if (val == 0 && (s->cc[0] & 2))
+-            qemu_system_shutdown_request();
++            qemu_system_shutdown_request(SHUTDOWN_CAUSE_GUEST_SHUTDOWN);
+         break;
+
+     case RETU_REG_TXCR:
+diff --git a/hw/misc/macio/cuda.c b/hw/misc/macio/cuda.c
+index 05c02fb..008d8bd 100644
+--- a/hw/misc/macio/cuda.c
++++ b/hw/misc/macio/cuda.c
+@@ -612,7 +612,7 @@ static bool cuda_cmd_powerdown(CUDAState *s,
+         return false;
+     }
+
+-    qemu_system_shutdown_request();
++    qemu_system_shutdown_request(SHUTDOWN_CAUSE_GUEST_SHUTDOWN);
+     return true;
+ }
+
+@@ -624,7 +624,7 @@ static bool cuda_cmd_reset_system(CUDAState *s,
+         return false;
+     }
+
+-    qemu_system_reset_request();
++    qemu_system_reset_request(SHUTDOWN_CAUSE_GUEST_RESET);
+     return true;
+ }
+
+diff --git a/hw/misc/slavio_misc.c b/hw/misc/slavio_misc.c
+index edd5de0..18ff677 100644
+--- a/hw/misc/slavio_misc.c
++++ b/hw/misc/slavio_misc.c
+@@ -258,7 +258,7 @@ static void slavio_aux2_mem_writeb(void *opaque, hwaddr addr,
+         val &= AUX2_PWROFF;
+     s->aux2 = val;
+     if (val & AUX2_PWROFF)
+-        qemu_system_shutdown_request();
++        qemu_system_shutdown_request(SHUTDOWN_CAUSE_GUEST_SHUTDOWN);
+     slavio_misc_update_irq(s);
+ }
+
+@@ -338,7 +338,7 @@ static void slavio_sysctrl_mem_writel(void *opaque, hwaddr addr,
+     case 0:
+         if (val & SYS_RESET) {
+             s->sysctrl = SYS_RESETSTAT;
+-            qemu_system_reset_request();
++            qemu_system_reset_request(SHUTDOWN_CAUSE_GUEST_RESET);
+         }
+         break;
+     default:
+diff --git a/hw/misc/zynq_slcr.c b/hw/misc/zynq_slcr.c
+index 7891219..44304d4 100644
+--- a/hw/misc/zynq_slcr.c
++++ b/hw/misc/zynq_slcr.c
+@@ -405,7 +405,7 @@ static void zynq_slcr_write(void *opaque, hwaddr offset,
+     switch (offset) {
+     case PSS_RST_CTRL:
+         if (val & R_PSS_RST_CTRL_SOFT_RST) {
+-            qemu_system_reset_request();
++            qemu_system_reset_request(SHUTDOWN_CAUSE_GUEST_RESET);
+         }
+         break;
+     }
+diff --git a/hw/pci-host/apb.c b/hw/pci-host/apb.c
+index 653e711..83fc6a9 100644
+--- a/hw/pci-host/apb.c
++++ b/hw/pci-host/apb.c
+@@ -482,9 +482,9 @@ static void apb_config_writel (void *opaque, hwaddr addr,
+             s->reset_control |= val & RESET_WMASK;
+             if (val & SOFT_POR) {
+                 s->nr_resets = 0;
+-                qemu_system_reset_request();
++                qemu_system_reset_request(SHUTDOWN_CAUSE_GUEST_RESET);
+             } else if (val & SOFT_XIR) {
+-                qemu_system_reset_request();
++                qemu_system_reset_request(SHUTDOWN_CAUSE_GUEST_RESET);
+             }
+         }
+         break;
+diff --git a/hw/pci-host/bonito.c b/hw/pci-host/bonito.c
+index 1999ece..b1d41d0 100644
+--- a/hw/pci-host/bonito.c
++++ b/hw/pci-host/bonito.c
+@@ -269,7 +269,7 @@ static void bonito_writel(void *opaque, hwaddr addr,
+         }
+         s->regs[saddr] = val;
+         if (reset) {
+-            qemu_system_reset_request();
++            qemu_system_reset_request(SHUTDOWN_CAUSE_GUEST_RESET);
+         }
+         break;
+     case BONITO_INTENSET:
+diff --git a/hw/pci-host/piix.c b/hw/pci-host/piix.c
+index f9218aa..c1d6a85 100644
+--- a/hw/pci-host/piix.c
++++ b/hw/pci-host/piix.c
+@@ -638,7 +638,7 @@ static void rcr_write(void *opaque, hwaddr addr, uint64_t val, unsigned len)
+     PIIX3State *d = opaque;
+
+     if (val & 4) {
+-        qemu_system_reset_request();
++        qemu_system_reset_request(SHUTDOWN_CAUSE_GUEST_RESET);
+         return;
+     }
+     d->rcr = val & 2; /* keep System Reset type only */
+diff --git a/hw/ppc/e500.c b/hw/ppc/e500.c
+index f7df238..62f1857 100644
+--- a/hw/ppc/e500.c
++++ b/hw/ppc/e500.c
+@@ -774,7 +774,7 @@ static qemu_irq *ppce500_init_mpic(MachineState *machine, PPCE500Params *params,
+ static void ppce500_power_off(void *opaque, int line, int on)
+ {
+     if (on) {
+-        qemu_system_shutdown_request();
++        qemu_system_shutdown_request(SHUTDOWN_CAUSE_GUEST_SHUTDOWN);
+     }
+ }
+
+diff --git a/hw/ppc/mpc8544_guts.c b/hw/ppc/mpc8544_guts.c
+index ba69178..ce1254b 100644
+--- a/hw/ppc/mpc8544_guts.c
++++ b/hw/ppc/mpc8544_guts.c
+@@ -98,7 +98,7 @@ static void mpc8544_guts_write(void *opaque, hwaddr addr,
+     switch (addr) {
+     case MPC8544_GUTS_ADDR_RSTCR:
+         if (value & MPC8544_GUTS_RSTCR_RESET) {
+-            qemu_system_reset_request();
++            qemu_system_reset_request(SHUTDOWN_CAUSE_GUEST_RESET);
+         }
+         break;
+     default:
+diff --git a/hw/ppc/ppc.c b/hw/ppc/ppc.c
+index 5f93083..224184d 100644
+--- a/hw/ppc/ppc.c
++++ b/hw/ppc/ppc.c
+@@ -412,7 +412,7 @@ static void ppce500_set_irq(void *opaque, int pin, int level)
+             if (level) {
+                 LOG_IRQ("%s: reset the PowerPC system\n",
+                             __func__);
+-                qemu_system_reset_request();
++                qemu_system_reset_request(SHUTDOWN_CAUSE_GUEST_RESET);
+             }
+             break;
+         case PPCE500_INPUT_RESET_CORE:
+diff --git a/hw/ppc/ppc405_uc.c b/hw/ppc/ppc405_uc.c
+index d5df94a..fc32e96 100644
+--- a/hw/ppc/ppc405_uc.c
++++ b/hw/ppc/ppc405_uc.c
+@@ -1807,7 +1807,7 @@ void ppc40x_chip_reset(PowerPCCPU *cpu)
+ void ppc40x_system_reset(PowerPCCPU *cpu)
+ {
+     printf("Reset PowerPC system\n");
+-    qemu_system_reset_request();
++    qemu_system_reset_request(SHUTDOWN_CAUSE_GUEST_RESET);
+ }
+
+ void store_40x_dbcr0 (CPUPPCState *env, uint32_t val)
+diff --git a/hw/ppc/spapr_hcall.c b/hw/ppc/spapr_hcall.c
+index 9f18f75..2735fe9 100644
+--- a/hw/ppc/spapr_hcall.c
++++ b/hw/ppc/spapr_hcall.c
+@@ -1166,7 +1166,7 @@ static target_ulong h_client_architecture_support(PowerPCCPU *cpu,
+     spapr_ovec_cleanup(ov5_updates);
+
+     if (spapr->cas_reboot) {
+-        qemu_system_reset_request();
++        qemu_system_reset_request(SHUTDOWN_CAUSE_GUEST_RESET);
+     } else {
+         /* If ppc_spapr_reset() did not set up a HPT but one is necessary
+          * (because the guest isn't going to use radix) then set it up here. */
+diff --git a/hw/ppc/spapr_rtas.c b/hw/ppc/spapr_rtas.c
+index 619f32c..128d993 100644
+--- a/hw/ppc/spapr_rtas.c
++++ b/hw/ppc/spapr_rtas.c
+@@ -110,7 +110,7 @@ static void rtas_power_off(PowerPCCPU *cpu, sPAPRMachineState *spapr,
+         rtas_st(rets, 0, RTAS_OUT_PARAM_ERROR);
+         return;
+     }
+-    qemu_system_shutdown_request();
++    qemu_system_shutdown_request(SHUTDOWN_CAUSE_GUEST_SHUTDOWN);
+     cpu_stop_current();
+     rtas_st(rets, 0, RTAS_OUT_SUCCESS);
+ }
+@@ -124,7 +124,7 @@ static void rtas_system_reboot(PowerPCCPU *cpu, sPAPRMachineState *spapr,
+         rtas_st(rets, 0, RTAS_OUT_PARAM_ERROR);
+         return;
+     }
+-    qemu_system_reset_request();
++    qemu_system_reset_request(SHUTDOWN_CAUSE_GUEST_RESET);
+     rtas_st(rets, 0, RTAS_OUT_SUCCESS);
+ }
+
+diff --git a/hw/s390x/ipl.c b/hw/s390x/ipl.c
+index 75d3c68..4e6469d 100644
+--- a/hw/s390x/ipl.c
++++ b/hw/s390x/ipl.c
+@@ -396,7 +396,7 @@ void s390_reipl_request(void)
+     S390IPLState *ipl = get_ipl_device();
+
+     ipl->reipl_requested = true;
+-    qemu_system_reset_request();
++    qemu_system_reset_request(SHUTDOWN_CAUSE_GUEST_RESET);
+ }
+
+ void s390_ipl_prepare_cpu(S390CPU *cpu)
+diff --git a/hw/sh4/r2d.c b/hw/sh4/r2d.c
+index 8f520ce..e6fc74e 100644
+--- a/hw/sh4/r2d.c
++++ b/hw/sh4/r2d.c
+@@ -164,7 +164,7 @@ r2d_fpga_write(void *opaque, hwaddr addr, uint64_t value, unsigned int size)
+ 	break;
+     case PA_POWOFF:
+         if (value & 1) {
+-            qemu_system_shutdown_request();
++            qemu_system_shutdown_request(SHUTDOWN_CAUSE_GUEST_SHUTDOWN);
+         }
+         break;
+     case PA_VERREG:
+diff --git a/hw/timer/etraxfs_timer.c b/hw/timer/etraxfs_timer.c
+index 8e18236..d13bc30 100644
+--- a/hw/timer/etraxfs_timer.c
++++ b/hw/timer/etraxfs_timer.c
+@@ -207,7 +207,7 @@ static void watchdog_hit(void *opaque)
+         qemu_irq_raise(t->nmi);
+     }
+     else
+-        qemu_system_reset_request();
++        qemu_system_reset_request(SHUTDOWN_CAUSE_GUEST_RESET);
+
+     t->wd_hits++;
+ }
+diff --git a/hw/timer/m48t59.c b/hw/timer/m48t59.c
+index 474981a..4a064fb 100644
+--- a/hw/timer/m48t59.c
++++ b/hw/timer/m48t59.c
+@@ -1,7 +1,7 @@
+ /*
+  * QEMU M48T59 and M48T08 NVRAM emulation for PPC PREP and Sparc platforms
+  *
+- * Copyright (c) 2003-2005, 2007 Jocelyn Mayer
++ * Copyright (c) 2003-2005, 2007, 2017 Jocelyn Mayer
+  * Copyright (c) 2013 Hervé Poussineau
+  *
+  * Permission is hereby granted, free of charge, to any person obtaining a copy
+@@ -159,7 +159,7 @@ static void watchdog_cb (void *opaque)
+ 	NVRAM->buffer[0x1FF7] = 0x00;
+ 	NVRAM->buffer[0x1FFC] &= ~0x40;
+         /* May it be a hw CPU Reset instead ? */
+-        qemu_system_reset_request();
++        qemu_system_reset_request(SHUTDOWN_CAUSE_GUEST_RESET);
+     } else {
+ 	qemu_set_irq(NVRAM->IRQ, 1);
+ 	qemu_set_irq(NVRAM->IRQ, 0);
+diff --git a/hw/timer/milkymist-sysctl.c b/hw/timer/milkymist-sysctl.c
+index 4488590..93bc6e17 100644
+--- a/hw/timer/milkymist-sysctl.c
++++ b/hw/timer/milkymist-sysctl.c
+@@ -90,7 +90,7 @@ static void sysctl_icap_write(MilkymistSysctlState *s, uint32_t value)
+     trace_milkymist_sysctl_icap_write(value);
+     switch (value & 0xffff) {
+     case 0x000e:
+-        qemu_system_shutdown_request();
++        qemu_system_shutdown_request(SHUTDOWN_CAUSE_GUEST_SHUTDOWN);
+         break;
+     }
+ }
+@@ -195,7 +195,7 @@ static void sysctl_write(void *opaque, hwaddr addr, uint64_t value,
+         s->regs[addr] = 1;
+         break;
+     case R_SYSTEM_ID:
+-        qemu_system_reset_request();
++        qemu_system_reset_request(SHUTDOWN_CAUSE_GUEST_RESET);
+         break;
+
+     case R_GPIO_IN:
+diff --git a/hw/timer/pxa2xx_timer.c b/hw/timer/pxa2xx_timer.c
+index 59002b4..68ba5a7 100644
+--- a/hw/timer/pxa2xx_timer.c
++++ b/hw/timer/pxa2xx_timer.c
+@@ -401,7 +401,7 @@ static void pxa2xx_timer_tick(void *opaque)
+     if (t->num == 3)
+         if (i->reset3 & 1) {
+             i->reset3 = 0;
+-            qemu_system_reset_request();
++            qemu_system_reset_request(SHUTDOWN_CAUSE_GUEST_RESET);
+         }
+ }
+
+diff --git a/hw/watchdog/watchdog.c b/hw/watchdog/watchdog.c
+index 2aeaf1f..0c5c9cd 100644
+--- a/hw/watchdog/watchdog.c
++++ b/hw/watchdog/watchdog.c
+@@ -110,7 +110,7 @@ void watchdog_perform_action(void)
+     switch (watchdog_action) {
+     case WDT_RESET:             /* same as 'system_reset' in monitor */
+         qapi_event_send_watchdog(WATCHDOG_EXPIRATION_ACTION_RESET, &error_abort);
+-        qemu_system_reset_request();
++        qemu_system_reset_request(SHUTDOWN_CAUSE_GUEST_RESET);
+         break;
+
+     case WDT_SHUTDOWN:          /* same as 'system_powerdown' in monitor */
+diff --git a/hw/xenpv/xen_domainbuild.c b/hw/xenpv/xen_domainbuild.c
+index 457a897..c89ced2 100644
+--- a/hw/xenpv/xen_domainbuild.c
++++ b/hw/xenpv/xen_domainbuild.c
+@@ -148,7 +148,7 @@ static void xen_domain_poll(void *opaque)
+     return;
+
+ quit:
+-    qemu_system_shutdown_request();
++    qemu_system_shutdown_request(SHUTDOWN_CAUSE_GUEST_SHUTDOWN);
+ }
+
+ static int xen_domain_watcher(void)
+diff --git a/hw/xtensa/xtfpga.c b/hw/xtensa/xtfpga.c
+index 11176e2..4636f8e 100644
+--- a/hw/xtensa/xtfpga.c
++++ b/hw/xtensa/xtfpga.c
+@@ -100,7 +100,7 @@ static void lx60_fpga_write(void *opaque, hwaddr addr,
+
+     case 0x10: /*board reset*/
+         if (val == 0xdead) {
+-            qemu_system_reset_request();
++            qemu_system_reset_request(SHUTDOWN_CAUSE_GUEST_RESET);
+         }
+         break;
+     }
+diff --git a/kvm-all.c b/kvm-all.c
+index 90b8573..7df27c8 100644
+--- a/kvm-all.c
++++ b/kvm-all.c
+@@ -2052,7 +2052,7 @@ int kvm_cpu_exec(CPUState *cpu)
+             break;
+         case KVM_EXIT_SHUTDOWN:
+             DPRINTF("shutdown\n");
+-            qemu_system_reset_request();
++            qemu_system_reset_request(SHUTDOWN_CAUSE_GUEST_RESET);
+             ret = EXCP_INTERRUPT;
+             break;
+         case KVM_EXIT_UNKNOWN:
+@@ -2066,11 +2066,11 @@ int kvm_cpu_exec(CPUState *cpu)
+         case KVM_EXIT_SYSTEM_EVENT:
+             switch (run->system_event.type) {
+             case KVM_SYSTEM_EVENT_SHUTDOWN:
+-                qemu_system_shutdown_request();
++                qemu_system_shutdown_request(SHUTDOWN_CAUSE_GUEST_SHUTDOWN);
+                 ret = EXCP_INTERRUPT;
+                 break;
+             case KVM_SYSTEM_EVENT_RESET:
+-                qemu_system_reset_request();
++                qemu_system_reset_request(SHUTDOWN_CAUSE_GUEST_RESET);
+                 ret = EXCP_INTERRUPT;
+                 break;
+             case KVM_SYSTEM_EVENT_CRASH:
+diff --git a/os-win32.c b/os-win32.c
+index ae98574..586a7c7 100644
+--- a/os-win32.c
++++ b/os-win32.c
+@@ -52,7 +52,7 @@ int setenv(const char *name, const char *value, int overwrite)
+
+ static BOOL WINAPI qemu_ctrl_handler(DWORD type)
+ {
+-    qemu_system_shutdown_request();
++    qemu_system_shutdown_request(SHUTDOWN_CAUSE_HOST_SIGNAL);
+     /* Windows 7 kills application when the function returns.
+        Sleep here to give QEMU a try for closing.
+        Sleep period is 10000ms because Windows kills the program
+diff --git a/qmp.c b/qmp.c
+index ab74cd7..95949d0 100644
+--- a/qmp.c
++++ b/qmp.c
+@@ -84,7 +84,7 @@ UuidInfo *qmp_query_uuid(Error **errp)
+ void qmp_quit(Error **errp)
+ {
+     no_shutdown = 0;
+-    qemu_system_shutdown_request();
++    qemu_system_shutdown_request(SHUTDOWN_CAUSE_HOST_QMP);
+ }
+
+ void qmp_stop(Error **errp)
+@@ -105,7 +105,7 @@ void qmp_stop(Error **errp)
+
+ void qmp_system_reset(Error **errp)
+ {
+-    qemu_system_reset_request();
++    qemu_system_reset_request(SHUTDOWN_CAUSE_HOST_QMP);
+ }
+
+ void qmp_system_powerdown(Error **erp)
+diff --git a/replay/replay.c b/replay/replay.c
+index f810628..604fa4f 100644
+--- a/replay/replay.c
++++ b/replay/replay.c
+@@ -51,7 +51,8 @@ bool replay_next_event_is(int event)
+         switch (replay_state.data_kind) {
+         case EVENT_SHUTDOWN:
+             replay_finish_event();
+-            qemu_system_shutdown_request();
++            /* FIXME - store actual reason */
++            qemu_system_shutdown_request(SHUTDOWN_CAUSE_HOST_ERROR);
+             break;
+         default:
+             /* clock, time_t, checkpoint and other events */
+diff --git a/target/alpha/sys_helper.c b/target/alpha/sys_helper.c
+index 652195d..ac22323 100644
+--- a/target/alpha/sys_helper.c
++++ b/target/alpha/sys_helper.c
+@@ -60,9 +60,9 @@ void helper_tb_flush(CPUAlphaState *env)
+ void helper_halt(uint64_t restart)
+ {
+     if (restart) {
+-        qemu_system_reset_request();
++        qemu_system_reset_request(SHUTDOWN_CAUSE_GUEST_RESET);
+     } else {
+-        qemu_system_shutdown_request();
++        qemu_system_shutdown_request(SHUTDOWN_CAUSE_GUEST_SHUTDOWN);
+     }
+ }
+
+diff --git a/target/arm/psci.c b/target/arm/psci.c
+index ade9fe2..fc34b26 100644
+--- a/target/arm/psci.c
++++ b/target/arm/psci.c
+@@ -137,7 +137,7 @@ void arm_handle_psci_call(ARMCPU *cpu)
+         }
+         break;
+     case QEMU_PSCI_0_2_FN_SYSTEM_RESET:
+-        qemu_system_reset_request();
++        qemu_system_reset_request(SHUTDOWN_CAUSE_GUEST_RESET);
+         /* QEMU reset and shutdown are async requests, but PSCI
+          * mandates that we never return from the reset/shutdown
+          * call, so power the CPU off now so it doesn't execute
+@@ -145,7 +145,7 @@ void arm_handle_psci_call(ARMCPU *cpu)
+          */
+         goto cpu_off;
+     case QEMU_PSCI_0_2_FN_SYSTEM_OFF:
+-        qemu_system_shutdown_request();
++        qemu_system_shutdown_request(SHUTDOWN_CAUSE_GUEST_SHUTDOWN);
+         goto cpu_off;
+     case QEMU_PSCI_0_1_FN_CPU_ON:
+     case QEMU_PSCI_0_2_FN_CPU_ON:
+diff --git a/target/i386/excp_helper.c b/target/i386/excp_helper.c
+index ee596c6..b769772 100644
+--- a/target/i386/excp_helper.c
++++ b/target/i386/excp_helper.c
+@@ -59,7 +59,7 @@ static int check_exception(CPUX86State *env, int intno, int *error_code,
+
+         qemu_log_mask(CPU_LOG_RESET, "Triple fault\n");
+
+-        qemu_system_reset_request();
++        qemu_system_reset_request(SHUTDOWN_CAUSE_GUEST_RESET);
+         return EXCP_HLT;
+     }
+ #endif
+diff --git a/target/i386/hax-all.c b/target/i386/hax-all.c
+index ef13015..7346931 100644
+--- a/target/i386/hax-all.c
++++ b/target/i386/hax-all.c
+@@ -540,14 +540,14 @@ static int hax_vcpu_hax_exec(CPUArchState *env)
+         /* Guest state changed, currently only for shutdown */
+         case HAX_EXIT_STATECHANGE:
+             fprintf(stdout, "VCPU shutdown request\n");
+-            qemu_system_shutdown_request();
++            qemu_system_shutdown_request(SHUTDOWN_CAUSE_GUEST_SHUTDOWN);
+             hax_vcpu_sync_state(env, 0);
+             ret = 1;
+             break;
+         case HAX_EXIT_UNKNOWN_VMEXIT:
+             fprintf(stderr, "Unknown VMX exit %x from guest\n",
+                     ht->_exit_reason);
+-            qemu_system_reset_request();
++            qemu_system_reset_request(SHUTDOWN_CAUSE_GUEST_RESET);
+             hax_vcpu_sync_state(env, 0);
+             cpu_dump_state(cpu, stderr, fprintf, 0);
+             ret = -1;
+@@ -578,7 +578,7 @@ static int hax_vcpu_hax_exec(CPUArchState *env)
+             break;
+         default:
+             fprintf(stderr, "Unknown exit %x from HAX\n", ht->_exit_status);
+-            qemu_system_reset_request();
++            qemu_system_reset_request(SHUTDOWN_CAUSE_GUEST_RESET);
+             hax_vcpu_sync_state(env, 0);
+             cpu_dump_state(cpu, stderr, fprintf, 0);
+             ret = 1;
+diff --git a/target/i386/helper.c b/target/i386/helper.c
+index f11cac6..ee7eff2 100644
+--- a/target/i386/helper.c
++++ b/target/i386/helper.c
+@@ -1212,7 +1212,7 @@ static void do_inject_x86_mce(CPUState *cs, run_on_cpu_data data)
+                            " triple fault\n",
+                            cs->cpu_index);
+             qemu_log_mask(CPU_LOG_RESET, "Triple fault\n");
+-            qemu_system_reset_request();
++            qemu_system_reset_request(SHUTDOWN_CAUSE_GUEST_RESET);
+             return;
+         }
+         if (banks[1] & MCI_STATUS_VAL) {
+diff --git a/target/i386/kvm.c b/target/i386/kvm.c
+index 55865db..cfd7695 100644
+--- a/target/i386/kvm.c
++++ b/target/i386/kvm.c
+@@ -2930,7 +2930,7 @@ int kvm_arch_process_async_events(CPUState *cs)
+
+         if (env->exception_injected == EXCP08_DBLE) {
+             /* this means triple fault */
+-            qemu_system_reset_request();
++            qemu_system_reset_request(SHUTDOWN_CAUSE_GUEST_RESET);
+             cs->exit_request = 1;
+             return 0;
+         }
+diff --git a/target/s390x/helper.c b/target/s390x/helper.c
+index 68bd2f9..d2bb9aa 100644
+--- a/target/s390x/helper.c
++++ b/target/s390x/helper.c
+@@ -266,7 +266,7 @@ void load_psw(CPUS390XState *env, uint64_t mask, uint64_t addr)
+         S390CPU *cpu = s390_env_get_cpu(env);
+         if (s390_cpu_halt(cpu) == 0) {
+ #ifndef CONFIG_USER_ONLY
+-            qemu_system_shutdown_request();
++            qemu_system_shutdown_request(SHUTDOWN_CAUSE_GUEST_SHUTDOWN);
+ #endif
+         }
+     }
+diff --git a/target/s390x/kvm.c b/target/s390x/kvm.c
+index 1a249d8..284f5ef 100644
+--- a/target/s390x/kvm.c
++++ b/target/s390x/kvm.c
+@@ -1929,7 +1929,7 @@ static int handle_intercept(S390CPU *cpu)
+             cpu_synchronize_state(cs);
+             if (s390_cpu_halt(cpu) == 0) {
+                 if (is_special_wait_psw(cs)) {
+-                    qemu_system_shutdown_request();
++                    qemu_system_shutdown_request(SHUTDOWN_CAUSE_GUEST_SHUTDOWN);
+                 } else {
+                     qemu_system_guest_panicked(NULL);
+                 }
+@@ -1938,7 +1938,7 @@ static int handle_intercept(S390CPU *cpu)
+             break;
+         case ICPT_CPU_STOP:
+             if (s390_cpu_set_state(CPU_STATE_STOPPED, cpu) == 0) {
+-                qemu_system_shutdown_request();
++                qemu_system_shutdown_request(SHUTDOWN_CAUSE_GUEST_SHUTDOWN);
+             }
+             if (cpu->env.sigp_order == SIGP_STOP_STORE_STATUS) {
+                 kvm_s390_store_status(cpu, KVM_S390_STORE_STATUS_DEF_ADDR,
+diff --git a/target/s390x/misc_helper.c b/target/s390x/misc_helper.c
+index eca8244..768043e 100644
+--- a/target/s390x/misc_helper.c
++++ b/target/s390x/misc_helper.c
+@@ -533,11 +533,11 @@ uint32_t HELPER(sigp)(CPUS390XState *env, uint64_t order_code, uint32_t r1,
+         break;
+ #if !defined(CONFIG_USER_ONLY)
+     case SIGP_RESTART:
+-        qemu_system_reset_request();
++        qemu_system_reset_request(SHUTDOWN_CAUSE_GUEST_RESET);
+         cpu_loop_exit(CPU(s390_env_get_cpu(env)));
+         break;
+     case SIGP_STOP:
+-        qemu_system_shutdown_request();
++        qemu_system_shutdown_request(SHUTDOWN_CAUSE_GUEST_SHUTDOWN);
+         cpu_loop_exit(CPU(s390_env_get_cpu(env)));
+         break;
+ #endif
+diff --git a/target/sparc/int32_helper.c b/target/sparc/int32_helper.c
+index 09afe13..eec9a4d 100644
+--- a/target/sparc/int32_helper.c
++++ b/target/sparc/int32_helper.c
+@@ -109,7 +109,7 @@ void sparc_cpu_do_interrupt(CPUState *cs)
+     if (env->psret == 0) {
+         if (cs->exception_index == 0x80 &&
+             env->def->features & CPU_FEATURE_TA0_SHUTDOWN) {
+-            qemu_system_shutdown_request();
++            qemu_system_shutdown_request(SHUTDOWN_CAUSE_GUEST_SHUTDOWN);
+         } else {
+             cpu_abort(cs, "Trap 0x%02x while interrupts disabled, Error state",
+                       cs->exception_index);
+diff --git a/ui/sdl.c b/ui/sdl.c
+index 37c21a0..bd51ffd 100644
+--- a/ui/sdl.c
++++ b/ui/sdl.c
+@@ -837,7 +837,7 @@ static void sdl_refresh(DisplayChangeListener *dcl)
+         case SDL_QUIT:
+             if (!no_quit) {
+                 no_shutdown = 0;
+-                qemu_system_shutdown_request();
++                qemu_system_shutdown_request(SHUTDOWN_CAUSE_HOST_UI);
+             }
+             break;
+         case SDL_MOUSEMOTION:
+diff --git a/ui/sdl2.c b/ui/sdl2.c
+index faf9bdf..e092636 100644
+--- a/ui/sdl2.c
++++ b/ui/sdl2.c
+@@ -568,7 +568,7 @@ static void handle_windowevent(SDL_Event *ev)
+     case SDL_WINDOWEVENT_CLOSE:
+         if (!no_quit) {
+             no_shutdown = 0;
+-            qemu_system_shutdown_request();
++            qemu_system_shutdown_request(SHUTDOWN_CAUSE_HOST_UI);
+         }
+         break;
+     case SDL_WINDOWEVENT_SHOWN:
+@@ -611,7 +611,7 @@ void sdl2_poll_events(struct sdl2_console *scon)
+         case SDL_QUIT:
+             if (!no_quit) {
+                 no_shutdown = 0;
+-                qemu_system_shutdown_request();
++                qemu_system_shutdown_request(SHUTDOWN_CAUSE_HOST_UI);
+             }
+             break;
+         case SDL_MOUSEMOTION:
+diff --git a/trace-events b/trace-events
+index e582d63..433865f 100644
+--- a/trace-events
++++ b/trace-events
+@@ -38,7 +38,7 @@ vm_state_notify(int running, int reason) "running %d reason %d"
+ load_file(const char *name, const char *path) "name %s location %s"
+ runstate_set(int new_state) "new state %d"
+ system_wakeup_request(int reason) "reason=%d"
+-qemu_system_shutdown_request(void) ""
++qemu_system_shutdown_request(int reason) "reason=%d"
+ qemu_system_powerdown_request(void) ""
+
+ # spice-qemu-char.c
+diff --git a/ui/cocoa.m b/ui/cocoa.m
+index 207555e..f89f686 100644
+--- a/ui/cocoa.m
++++ b/ui/cocoa.m
+@@ -934,7 +934,7 @@ QemuCocoaView *cocoaView;
+ {
+     COCOA_DEBUG("QemuCocoaAppController: applicationWillTerminate\n");
+
+-    qemu_system_shutdown_request();
++    qemu_system_shutdown_request(SHUTDOWN_CAUSE_HOST_UI);
+     exit(0);
+ }
 
 -- 
-Eduardo
+2.9.3

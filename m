@@ -1,132 +1,115 @@
-Received: by 10.25.0.198 with SMTP id 189csp1487507lfa;
-        Mon, 8 May 2017 11:22:40 -0700 (PDT)
-X-Received: by 10.55.76.69 with SMTP id z66mr26099814qka.1.1494267759962;
-        Mon, 08 May 2017 11:22:39 -0700 (PDT)
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id y5si13404642qkc.328.2017.05.08.11.22.39
-        for <alex.bennee@linaro.org>
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 08 May 2017 11:22:39 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+Received: by 10.25.0.198 with SMTP id 189csp1568929lfa;
+        Mon, 8 May 2017 15:18:26 -0700 (PDT)
+X-Received: by 10.55.90.2 with SMTP id o2mr29031743qkb.251.1494281906858;
+        Mon, 08 May 2017 15:18:26 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1494281906; cv=none;
+        d=google.com; s=arc-20160816;
+        b=QvkxZmx19QYOImmcOsNIHNEE+K4Puq9MQt0bshAlFwhS+YmW8uS4JjPjMWi6yw75Bx
+         FXCE03d7jL4k13KAQEfnAUOGp+YsasLJy6YC3IpXFTwVqEbkpR4xBZRgSDAcOUHNhHtD
+         lZr9gLkFyIO0l64K7TvmYoF3AzBQ5pAug+wkHL+nNqMBRS0TDankamIKg9PB2S3xS3+m
+         Sbcyl2zm8X42/TQKBhSq47QLfW4jx230rBooGttUP1qr8yMgxvF4tLEU12RZy7keRQwe
+         74y2/Dh72jancTtLjhM50SeCVmCiuPj3/059FqaraEvcn8Kb03lds5pAnxygYwNSqttd
+         VipA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:sender:dkim-signature
+         :arc-authentication-results;
+        bh=OWQ21K7rPF2QixI26gHJN2iZ/ErYgXaZUgsuB2jgmF0=;
+        b=SxFu15Wg0Msrc0IXu1oabVcd8WW3q9/htSHSDFW59QSEgxzpcIvU4JWa6HYv7d7b4b
+         d3wUJQOFsZlhx21LUmWZFSUz4h6RaFj19zYV/vmdNU7HYVcdDQTzg15XIDJPRM3Zj5bY
+         T1ovfmgCMbzneewXhePaAKAlRXM7i6nsTzAeZHIHCugw0068RdCX6oTcP42q9tldUtRg
+         VkO2ARyrjeiELqhydvIzEnEHPqP6+jpfvGtddyaBQEos4i8UA33nw24uAfUSrkE6jkWL
+         RNGmmKtBD0mD3kLek9bRMw5kwHr8zDBioBV2MT30L42oEjwxvuUQTi0mmIbOLErAztqu
+         8m9g==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@gmail.com;
+       spf=pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 2607:f8b0:400d:c0d::241 as permitted sender) smtp.mailfrom=philippe.mathieu.daude@gmail.com
+Return-Path: <philippe.mathieu.daude@gmail.com>
+Received: from mail-qt0-x241.google.com (mail-qt0-x241.google.com. [2607:f8b0:400d:c0d::241])
+        by mx.google.com with ESMTPS id h132si14744822qka.56.2017.05.08.15.18.26
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 08 May 2017 15:18:26 -0700 (PDT)
+Received-SPF: pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 2607:f8b0:400d:c0d::241 as permitted sender) client-ip=2607:f8b0:400d:c0d::241;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:60863 helo=lists.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1d7nIt-0008Az-AT
-	for alex.bennee@linaro.org; Mon, 08 May 2017 14:22:39 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:37154)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <k.kozlowski.k@gmail.com>) id 1d7nIl-0008Aa-4L
-	for qemu-arm@nongnu.org; Mon, 08 May 2017 14:22:32 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <k.kozlowski.k@gmail.com>) id 1d7nIh-0001IB-U4
-	for qemu-arm@nongnu.org; Mon, 08 May 2017 14:22:31 -0400
-Received: from mail-wm0-f68.google.com ([74.125.82.68]:35693)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <k.kozlowski.k@gmail.com>)
-	id 1d7nIh-0001GW-Na; Mon, 08 May 2017 14:22:27 -0400
-Received: by mail-wm0-f68.google.com with SMTP id v4so12389683wmb.2;
-	Mon, 08 May 2017 11:22:27 -0700 (PDT)
+       dkim=pass header.i=@gmail.com;
+       spf=pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 2607:f8b0:400d:c0d::241 as permitted sender) smtp.mailfrom=philippe.mathieu.daude@gmail.com
+Received: by mail-qt0-x241.google.com with SMTP id a46so11472141qte.0;
+        Mon, 08 May 2017 15:18:26 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
+         :mime-version:content-transfer-encoding;
+        bh=OWQ21K7rPF2QixI26gHJN2iZ/ErYgXaZUgsuB2jgmF0=;
+        b=e4IhsxXWWvFxTUfSZHlzs3pvfMOjcUvOGCZObdXb5uModJr/iKdezpt3iDpWkFtIpt
+         qjw/y4SfCPkiydKbaHpL6ejgV63y4ncjLYtsE8vsjDfHJ6tidrFSr2hXahenrt4o9qSF
+         Al6i/+V8FAcxE16eaaV2sN60g/ZCVLMaaDVO5Z1jxdZ0NgLwHsKOaqRlH71AbSeFUcf4
+         M1Cf7zfEvmHYtV7AODmHUw3J0YQgtW696MNSEDhcz7bMj6q5Ae/JTCuBmLQS89Uh+XzH
+         fwb/JAIShcW7HjOhYC9c7kBOkJSjvQKKnPq8CkWFLkB47qWNmnKIq7YUhLGQtbXZ+IHv
+         r1pA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:date:from:to:cc:subject:message-id:references
-	:mime-version:content-disposition:in-reply-to:user-agent;
-	bh=f9nNlv+skx6pzGAiC8gOxieYYRLEVhAYXdE1JK0oZkg=;
-	b=DoTwIil6udvH/j9AFyw2M5xIIVPPTfilt8ZQgnLkayC1mqhnjfwiI2bmb947PdHMg7
-	fkVBphYc6P1tPWtzep9lQRTbnIaSIM9Ms6LzP6pbF/InMTNJ3x2gXjcWekaMiQ12yn2k
-	ls9vvB9afsNdHWdOwODTjhuMl/IJriTOdJR+LW9TT6uffiznNyeeDpIm7z4jYBz+6Y8J
-	mm/IzXAYMfxclA8ntccauyx1XlTUqetPVf6vXU0y2uidTM530IO7VCSyUQylPb8W9XPz
-	+iVLBX+y80b6pVzYRHLl9lOEhHMXnVEhgNsZqX6scZEj9/qlSJCa7MF7s+88KDqV70Ky
-	DTpw==
-X-Gm-Message-State: AN3rC/7eYipOhjHN5D68EN2Ur86l6CgZvUqFiG3UrdyyaFI5YqEoQLx/
-	twJZszH+tZ/+gbmszcM=
-X-Received: by 10.80.214.25 with SMTP id x25mr19969824edi.13.1494267746543;
-	Mon, 08 May 2017 11:22:26 -0700 (PDT)
-Received: from kozik-lap (pub082136089155.dh-hfc.datazug.ch. [82.136.89.155])
-	by smtp.googlemail.com with ESMTPSA id
-	i28sm4525530ede.38.2017.05.08.11.22.25
-	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-	Mon, 08 May 2017 11:22:26 -0700 (PDT)
-Date: Mon, 8 May 2017 20:22:24 +0200
-From: Krzysztof Kozlowski <krzk@kernel.org>
-To: Eric Blake <eblake@redhat.com>
-Message-ID: <20170508182224.dfbvmfb4fxfbe3ys@kozik-lap>
-References: <20170507113540.8687-1-krzk@kernel.org>
-	<20170507113540.8687-4-krzk@kernel.org>
-	<f8b021fa-e3f8-50d7-8013-d67e66e25ce6@redhat.com>
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
+         :in-reply-to:references:mime-version:content-transfer-encoding;
+        bh=OWQ21K7rPF2QixI26gHJN2iZ/ErYgXaZUgsuB2jgmF0=;
+        b=Utl/7oVplzGzCgksjuMr0RWKuCngsBp9uwhhXCnFgDC96+4aLiGBGWFanoWIXkdJ5R
+         +bAU5tyGa0jg5egyxPNSy9mdpIpSCRVxzvGYOpW3TpN0lQ2NKAhQd9CBZ1UEIxb1bK3V
+         AUBXQ6CZulzfmscfKj5+mypXOxV20oc3eRtRH/R2gLwiNf3HX4FizRCGKVzi3yGvqtfj
+         E5uqI3cxkAewO80wcRmVmScY9PCT/EQsHqETq3OZRCFRCENyB3zznQuDKBMhUjuv/RMZ
+         KihlMSthS5+iTyrjufe5sUj5GZluF/b6wTf+fJ6KY2NVgCg1734NLXUgdeY01X04rRcE
+         sOCw==
+X-Gm-Message-State: AODbwcCTbP1Kerdu2lsknBU+C4/1eQo+24Vya1ST264/A1r39Dl41Xmo
+	n6gKKMlMz9dR8g==
+X-Received: by 10.200.55.193 with SMTP id e1mr8827798qtc.198.1494281906462;
+        Mon, 08 May 2017 15:18:26 -0700 (PDT)
+Return-Path: <philippe.mathieu.daude@gmail.com>
+Received: from localhost.localdomain ([138.117.48.226])
+        by smtp.gmail.com with ESMTPSA id k65sm10157286qkf.18.2017.05.08.15.18.23
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 08 May 2017 15:18:25 -0700 (PDT)
+Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philippe.mathieu.daude@gmail.com>
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+To: qemu-devel@nongnu.org,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	Fam Zheng <famz@redhat.com>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	qemu-arm@nongnu.org
+Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+Subject: [PATCH v2 06/21] docker: compact debian armhf
+Date: Mon,  8 May 2017 19:17:44 -0300
+Message-Id: <20170508221759.15616-7-f4bug@amsat.org>
+X-Mailer: git-send-email 2.11.0
+In-Reply-To: <20170508221759.15616-1-f4bug@amsat.org>
+References: <20170508221759.15616-1-f4bug@amsat.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-In-Reply-To: <f8b021fa-e3f8-50d7-8013-d67e66e25ce6@redhat.com>
-User-Agent: Mutt/1.6.2-neo (2016-08-21)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 74.125.82.68
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH 3/3] hw/arm/exynos: Add support
- for system poweroff
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.21
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Igor Mitsyanko <i.mitsyanko@gmail.com>,
-	Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org,
-	Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: GuhtKrOZ77yt
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-TUID: lFLG/eK0v/io
 
-On Mon, May 08, 2017 at 09:21:40AM -0500, Eric Blake wrote:
-> On 05/07/2017 06:35 AM, Krzysztof Kozlowski wrote:
-> > On all Exynos-based boards, the system powers down itself by driving
-> > PS_HOLD signal low.  Handle writing to respective PMU register to fix
-> > power off failure:
-> > 
-> >     reboot: Power down
-> >     Unable to poweroff system
-> >     shutdown: 31 output lines suppressed due to ratelimiting
-> >     Kernel panic - not syncing: Attempted to kill init! exitcode=0x00000000
-> > 
-> >     CPU: 0 PID: 1 Comm: shutdown Not tainted 4.11.0-rc8 #846
-> >     Hardware name: SAMSUNG EXYNOS (Flattened Device Tree)
-> >     [<c031050c>] (unwind_backtrace) from [<c030ba6c>] (show_stack+0x10/0x14)
-> >     [<c030ba6c>] (show_stack) from [<c05b2800>] (dump_stack+0x88/0x9c)
-> >     [<c05b2800>] (dump_stack) from [<c03d3140>] (panic+0xdc/0x268)
-> >     [<c03d3140>] (panic) from [<c0343614>] (do_exit+0xa90/0xab4)
-> >     [<c0343614>] (do_exit) from [<c035f2dc>] (SyS_reboot+0x164/0x1d0)
-> >     [<c035f2dc>] (SyS_reboot) from [<c0307c80>] (ret_fast_syscall+0x0/0x3c)
-> > 
-> > Signed-off-by: Krzysztof Kozlowski <krzk@kernel.org>
-> > ---
-> >  hw/misc/exynos4210_pmu.c | 14 ++++++++++++++
-> >  1 file changed, 14 insertions(+)
-> 
-> > @@ -397,6 +398,12 @@ typedef struct Exynos4210PmuState {
-> >      uint32_t reg[PMU_NUM_OF_REGISTERS];
-> >  } Exynos4210PmuState;
-> >  
-> > +static void exynos4210_pmu_poweroff(void)
-> > +{
-> > +    PRINT_DEBUG("QEMU PMU: PS_HOLD bit down, powering off\n");
-> > +    qemu_system_shutdown_request();
-> 
-> Depending on whether your patch lands before or after mine, we'll have
-> to update this. It sounds like it is a guest-triggered reset, so my
-> patch would have this use SHUTDOWN_CAUSE_GUEST_SHUTDOWN.
-> 
-> https://lists.gnu.org/archive/html/qemu-devel/2017-05/msg01380.html
+Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+---
+ tests/docker/dockerfiles/debian-armhf-cross.docker | 10 ++++++----
+ 1 file changed, 6 insertions(+), 4 deletions(-)
 
-Sure, I can rebase and fix the difference once your patchset gets in.
-
-Best regards,
-Krzysztof
-
+diff --git a/tests/docker/dockerfiles/debian-armhf-cross.docker b/tests/docker/dockerfiles/debian-armhf-cross.docker
+index 668d60aeb3..533e525971 100644
+--- a/tests/docker/dockerfiles/debian-armhf-cross.docker
++++ b/tests/docker/dockerfiles/debian-armhf-cross.docker
+@@ -6,10 +6,12 @@
+ FROM qemu:debian
+ 
+ # Add the foreign architecture we want and install dependencies
+-RUN dpkg --add-architecture armhf
+-RUN apt update
+-RUN apt install -yy crossbuild-essential-armhf
+-RUN apt-get build-dep -yy -a armhf qemu
++RUN dpkg --add-architecture armhf && \
++    apt-get update && \
++    DEBIAN_FRONTEND=noninteractive eatmydata apt-get install -y --no-install-recommends \
++        crossbuild-essential-armhf
+ 
+ # Specify the cross prefix for this image (see tests/docker/common.rc)
+ ENV QEMU_CONFIGURE_OPTS --cross-prefix=arm-linux-gnueabihf-
++
++RUN DEBIAN_FRONTEND=noninteractive eatmydata apt-get build-dep -yy -a armhf qemu
+-- 
+2.11.0

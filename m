@@ -1,266 +1,218 @@
-Received: by 10.25.0.6 with SMTP id 6csp151432lfa;
-        Tue, 9 May 2017 07:07:42 -0700 (PDT)
-X-Received: by 10.99.177.8 with SMTP id r8mr288224pgf.109.1494338862707;
-        Tue, 09 May 2017 07:07:42 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1494338862; cv=none;
+Received: by 10.25.0.6 with SMTP id 6csp164547lfa;
+        Tue, 9 May 2017 07:34:38 -0700 (PDT)
+X-Received: by 10.200.1.142 with SMTP id x14mr500473qtf.26.1494340478615;
+        Tue, 09 May 2017 07:34:38 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1494340478; cv=none;
         d=google.com; s=arc-20160816;
-        b=eQVDLwOzCyyKFoL7ve6BJRb29d62V72yNCQwKpcgGJW+d6AMmYUJtgvFGYssdjoKXT
-         eFURuTljVKV1uOIFU35ZA1ZPy5Ozw1YMcSvOqLwOtiK6rUuCJdA9dvu+TnsRIkzs3y9f
-         2N15TQ6YDIe5h0V0iALVH1OUXdIZOFQlvGFeTl2F0/XvHMoYvE0NgMGalQDbI7LXUc99
-         BjP3sjbFu4SqCPv+CRGz0MG7MNgRuMZTI/q8C3vcKKtMmcmqC/TaC9H92UKeb9FGf4bo
-         0yXzUBAOT3LSc9jnGZaLzdqDdR9jdnbXApB/k7m7dP9SVuHTsKAO6U93mdnWMcDrKu+O
-         gjlA==
+        b=O7e+LNBQKyD7yTHQXmoEaDqv15PPrV5dqS+f7/3YDxJ/KvDL3L8qNWRlNLPLSjjcvw
+         pbnJOqrSq1GnEbcGV7jMZi0ocqCdkvSdCLDN5Rzf5mdLDW4oAdIzwoawZudLL7tRXlwi
+         DowSNATmzrId3gaETzevKqbIkTIRC3uiGEBIgm+qtsUyMAw6/RSk3dxdqvjbfp2XBLXv
+         2R2F6GyL7bS4vVyOygirkxUf0SvdGSMgn6YT+DNSaQ+wFxh9M2yy3cejPvmQMsHbPmqg
+         pduKU1Ou8lgdYD1TZ6BY4W753CumChFf4T4CJ9UhShYdJGhAm3t1w5qJV736VXQ1yM0W
+         J9yg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-id:precedence:sender:in-reply-to:mime-version:user-agent:date
-         :message-id:organization:openpgp:from:references:cc:to:subject
-         :dkim-filter:dmarc-filter:arc-authentication-results;
-        bh=TNoX1DbZ1As5QJ4/x0zVrOHJI3tKJ1IDYEADwBjNSXk=;
-        b=eJTSEFL6Vp1iXrh7bjHoHkx0o2CrEWEUMQk5OLWqwnrMBMVldXaKw1fjdwtnzfipMP
-         yEQvFsBDgB2Wbzsna1gDoC6eXWu8M87jWkbpFb3e13eIGuuS75WEOZ/EefqPlxy3xKfS
-         JHP0VXc1RR4Y7wBIo3d3utAMoxeF+QThONYg6rGTbuMPnMQtm2b6yCmyjg7Rihujs+aG
-         3SefDAFtX5F28cIi3djNa+qzYuWFOHR6FMju7nKuKA7FCPnWyfGrhd3eRcrtIxspGCD7
-         /OdfEoUhjmyRsBWEFA/1r972/Cj2eeYlHzV0i3/XexYuz3qTyt77hlxxHzm2y+mJKnOT
-         wDtQ==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject:mime-version:message-id
+         :user-agent:references:lines:date:in-reply-to:to:from
+         :arc-authentication-results;
+        bh=aLeCVBJY8JNKwiSKqKvQ8elJH247QLpE4e7zIFWqWt4=;
+        b=afchbBEAFNXlGPskZg1KEk/CNWBuKcxCIyLM6WsvTa/HRatL7MNh2eZRDzW4QPt7P+
+         fjk7rboH3Kte881UIyg84lVwfg5ZXYiUninG9r+Of6LGHpLuM9pg68R8z41k52RIqH3X
+         9nhBu2X/fWaAtupFconq6gX9yNM6VcWFhLh/cYjEX+oXYi05wagEJDaKXgsmuWA166oj
+         Z93DJPc693aJQYXw/C/sBOmwLIVYEvPrGH/DE/SO9EkQ6IRFDsiLvdrDnKXJM5ajDrZO
+         OPfOUmMPltKczAgGrIlU6ic6QOAQlzNjC7Ev2SgeNWr4AtZvN9GI76DwVD+PpagyO38X
+         OwMg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <kvm-owner@vger.kernel.org>
-Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
-        by mx.google.com with ESMTP id d72si31799pfb.202.2017.05.09.07.07.42;
-        Tue, 09 May 2017 07:07:42 -0700 (PDT)
-Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
+        by mx.google.com with ESMTPS id b4si174270qkd.303.2017.05.09.07.34.38
+        for <alex.bennee@linaro.org>
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Tue, 09 May 2017 07:34:38 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S1753635AbdEIOHk (ORCPT <rfc822;francois.ozog@linaro.org>
-        + 6 others); Tue, 9 May 2017 10:07:40 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:35056 "EHLO mx1.redhat.com"
-        rhost-flags-OK-OK-OK-OK) by vger.kernel.org with ESMTP
-        id S1752689AbdEIOHj (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Tue, 9 May 2017 10:07:39 -0400
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com [10.5.11.13])
-        (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-        (No client certificate requested)
-        by mx1.redhat.com (Postfix) with ESMTPS id ACC2F83F3E;
-        Tue,  9 May 2017 14:07:37 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com ACC2F83F3E
-Authentication-Results: ext-mx03.extmail.prod.ext.phx2.redhat.com; dmarc=none (p=none dis=none) header.from=redhat.com
-Authentication-Results: ext-mx03.extmail.prod.ext.phx2.redhat.com; spf=pass smtp.mailfrom=eblake@redhat.com
-DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com ACC2F83F3E
-Received: from [10.10.123.147] (ovpn-123-147.rdu2.redhat.com [10.10.123.147])
-        by smtp.corp.redhat.com (Postfix) with ESMTP id 1286A783C4;
-        Tue,  9 May 2017 14:07:27 +0000 (UTC)
-Subject: Re: [Qemu-devel] [PATCH v7 3/5] shutdown: Add source information to
- SHUTDOWN and RESET
-To:     Markus Armbruster <armbru@redhat.com>
-Cc:     qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
-        "open list:Overall" <kvm@vger.kernel.org>,
-        "Michael S. Tsirkin" <mst@redhat.com>,
-        Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
-        Alexander Graf <agraf@suse.de>,
-        Yongbok Kim <yongbok.kim@imgtec.com>,
-        Gerd Hoffmann <kraxel@redhat.com>,
-        "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
-        Rob Herring <robh@kernel.org>,
-        Stefano Stabellini <sstabellini@kernel.org>,
-        Magnus Damm <magnus.damm@gmail.com>,
-        Christian Borntraeger <borntraeger@de.ibm.com>,
-        Anthony Perard <anthony.perard@citrix.com>,
-        "open list:X86" <xen-devel@lists.xenproject.org>,
-        Richard Henderson <rth@twiddle.net>,
-        Artyom Tarasenko <atar4qemu@gmail.com>,
-        Eduardo Habkost <ehabkost@redhat.com>,
-        Stefan Weil <sw@weilnetz.de>, alistair.francis@xilinx.com,
-        "open list:Calxeda Highbank" <qemu-arm@nongnu.org>,
-        Jan Kiszka <jan.kiszka@web.de>,
-        Pavel Dovgalyuk <pavel.dovgaluk@ispras.ru>,
-        Igor Mammedov <imammedo@redhat.com>,
-        Cornelia Huck <"corneli a.huck"@de.ibm.com>,
-        David Gibson <david@gibson.dropbear.id.au>,
-        Paul Burton <paul.burton@imgtec.com>,
-        Max Filippov <jcmvbkbc@gmail.com>,
-        Marcelo Tosatti <mtosatti@redhat.com>,
-        Michael Walle <michael@walle.cc>,
-        "open list:Old World" <qemu-ppc@nongnu.org>,
-        Paolo Bonzini <pbonzini@redhat.com>,
-        Aurelien Jarno <aurelien@aurel32.net>
+Received: from localhost ([::1]:37570 helo=lists.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1d86Dm-0002Dh-5A
+	for alex.bennee@linaro.org; Tue, 09 May 2017 10:34:38 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:47279)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <armbru@pond.sub.org>) id 1d86Dg-0002Db-8V
+	for qemu-arm@nongnu.org; Tue, 09 May 2017 10:34:33 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+	(envelope-from <armbru@pond.sub.org>) id 1d86Db-0002hl-Ua
+	for qemu-arm@nongnu.org; Tue, 09 May 2017 10:34:32 -0400
+Received: from oxygen.pond.sub.org ([144.76.244.19]:46288)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <armbru@pond.sub.org>)
+	id 1d86Db-0002bt-H2; Tue, 09 May 2017 10:34:27 -0400
+Received: from blackfin.pond.sub.org
+	(p2003007F8F538500DACB8AFFFEE0C842.dip0.t-ipconnect.de
+	[IPv6:2003:7f:8f53:8500:dacb:8aff:fee0:c842])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(Client did not present a certificate)
+	by oxygen.pond.sub.org (Postfix) with ESMTPSA id B17672C450;
+	Tue,  9 May 2017 16:34:15 +0200 (CEST)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+	id 160AF11385E2; Tue,  9 May 2017 16:34:15 +0200 (CEST)
+From: Markus Armbruster <armbru@redhat.com>
+To: Eric Blake <eblake@redhat.com>
+In-Reply-To: <20170508211953.28017-4-eblake@redhat.com> (Eric Blake's message
+	of "Mon, 8 May 2017 16:19:51 -0500")
+Date: Tue, 09 May 2017 13:56:46 +0200
 References: <20170508211953.28017-1-eblake@redhat.com>
- <20170508211953.28017-4-eblake@redhat.com>
- <87inlap7k1.fsf@dusky.pond.sub.org>
-From:   Eric Blake <eblake@redhat.com>
-Openpgp: url=http://people.redhat.com/eblake/eblake.gpg
-Organization: Red Hat, Inc.
-Message-ID: <81782139-d66d-72d4-c228-9dd9073a33b9@redhat.com>
-Date:   Tue, 9 May 2017 09:07:26 -0500
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
- Thunderbird/52.1.0
+	<20170508211953.28017-4-eblake@redhat.com>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/25.1 (gnu/linux)
+Message-ID: <87efvyhzfc.fsf@dusky.pond.sub.org>
 MIME-Version: 1.0
-In-Reply-To: <87inlap7k1.fsf@dusky.pond.sub.org>
-Content-Type: multipart/signed; micalg=pgp-sha256;
- protocol="application/pgp-signature";
- boundary="SDeGOvGBIsueVrhobMIU2OhkcpkGsK3W9"
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.5.110.27]); Tue, 09 May 2017 14:07:38 +0000 (UTC)
-Sender: kvm-owner@vger.kernel.org
-Precedence: bulk
-List-ID: <kvm.vger.kernel.org>
-X-Mailing-List: kvm@vger.kernel.org
-X-TUID: EEhaFFh7RMg5
+Content-Type: text/plain
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 144.76.244.19
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v7 3/5] shutdown: Add source
+ information to SHUTDOWN and RESET
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.21
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+	"open list:Overall" <kvm@vger.kernel.org>,
+	"Michael S. Tsirkin" <mst@redhat.com>,
+	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+	qemu-devel@nongnu.org, Cornelia Huck <cornelia.huck@de.ibm.com>,
+	Gerd Hoffmann <kraxel@redhat.com>, Rob Herring <robh@kernel.org>,
+	Stefano Stabellini <sstabellini@kernel.org>,
+	Magnus Damm <magnus.damm@gmail.com>, Alexander Graf <agraf@suse.de>,
+	Christian Borntraeger <borntraeger@de.ibm.com>,
+	Anthony Perard <anthony.perard@citrix.com>,
+	"open list:X86" <xen-devel@lists.xenproject.org>,
+	David Gibson <david@gibson.dropbear.id.au>,
+	Artyom Tarasenko <atar4qemu@gmail.com>,
+	Eduardo Habkost <ehabkost@redhat.com>,
+	Stefan Weil <sw@weilnetz.de>, alistair.francis@xilinx.com,
+	"open list:Calxeda Highbank" <qemu-arm@nongnu.org>,
+	Jan Kiszka <jan.kiszka@web.de>, Pavel Dovgalyuk <pavel.dovgaluk@ispras.ru>,
+	Paolo Bonzini <pbonzini@redhat.com>, Yongbok Kim <yongbok.kim@imgtec.com>,
+	Richard Henderson <rth@twiddle.net>, Paul Burton <paul.burton@imgtec.com>,
+	Max Filippov <jcmvbkbc@gmail.com>, Marcelo Tosatti <mtosatti@redhat.com>,
+	Michael Walle <michael@walle.cc>,
+	"open list:Old World" <qemu-ppc@nongnu.org>,
+	Igor Mammedov <imammedo@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 9BW59TvrkDaX
 
-This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
---SDeGOvGBIsueVrhobMIU2OhkcpkGsK3W9
-Content-Type: multipart/mixed; boundary="n9FR9W8MqPB7xigxR1tdNAv5tHnh2nWLa";
- protected-headers="v1"
-From: Eric Blake <eblake@redhat.com>
-To: Markus Armbruster <armbru@redhat.com>
-Cc: qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
- "open list:Overall" <kvm@vger.kernel.org>,
- "Michael S. Tsirkin" <mst@redhat.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- Alexander Graf <agraf@suse.de>, Yongbok Kim <yongbok.kim@imgtec.com>,
- Gerd Hoffmann <kraxel@redhat.com>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, Rob Herring
- <robh@kernel.org>, Stefano Stabellini <sstabellini@kernel.org>,
- Magnus Damm <magnus.damm@gmail.com>,
- Christian Borntraeger <borntraeger@de.ibm.com>,
- Anthony Perard <anthony.perard@citrix.com>,
- "open list:X86" <xen-devel@lists.xenproject.org>,
- Richard Henderson <rth@twiddle.net>, Artyom Tarasenko <atar4qemu@gmail.com>,
- Eduardo Habkost <ehabkost@redhat.com>, Stefan Weil <sw@weilnetz.de>,
- alistair.francis@xilinx.com, "open list:Calxeda Highbank"
- <qemu-arm@nongnu.org>, Jan Kiszka <jan.kiszka@web.de>,
- Pavel Dovgalyuk <pavel.dovgaluk@ispras.ru>,
- Igor Mammedov <imammedo@redhat.com>,
- Cornelia Huck <"corneli a.huck"@de.ibm.com>,
- David Gibson <david@gibson.dropbear.id.au>,
- Paul Burton <paul.burton@imgtec.com>, Max Filippov <jcmvbkbc@gmail.com>,
- Marcelo Tosatti <mtosatti@redhat.com>, Michael Walle <michael@walle.cc>,
- "open list:Old World" <qemu-ppc@nongnu.org>,
- Paolo Bonzini <pbonzini@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
-Message-ID: <81782139-d66d-72d4-c228-9dd9073a33b9@redhat.com>
-Subject: Re: [Qemu-devel] [PATCH v7 3/5] shutdown: Add source information to
- SHUTDOWN and RESET
-References: <20170508211953.28017-1-eblake@redhat.com>
- <20170508211953.28017-4-eblake@redhat.com>
- <87inlap7k1.fsf@dusky.pond.sub.org>
-In-Reply-To: <87inlap7k1.fsf@dusky.pond.sub.org>
+Resending because first send didn't get through to some recipients...
 
---n9FR9W8MqPB7xigxR1tdNAv5tHnh2nWLa
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: quoted-printable
+Eric Blake <eblake@redhat.com> writes:
 
-On 05/09/2017 06:56 AM, Markus Armbruster wrote:
-> Eric Blake <eblake@redhat.com> writes:
->=20
->> Time to wire up all the call sites that request a shutdown or
->> reset to use the enum added in the previous patch.
->>
->> It would have been less churn to keep the common case with no
->> arguments as meaning guest-triggered, and only modified the
->> host-triggered code paths, via a wrapper function, but then we'd
->> still have to audit that I didn't miss any host-triggered spots;
->> changing the signature forces us to double-check that I correctly
->> categorized all callers.
->>
->> Since command line options can change whether a guest reset request
->> causes an actual reset vs. a shutdown, it's easy to also add the
->> information to reset requests.
->>
->> Replay adds a FIXME to preserve the cause across the replay stream,
->> that will be tackled in the next patch.
->>
+> Time to wire up all the call sites that request a shutdown or
+> reset to use the enum added in the previous patch.
+>
+> It would have been less churn to keep the common case with no
+> arguments as meaning guest-triggered, and only modified the
+> host-triggered code paths, via a wrapper function, but then we'd
+> still have to audit that I didn't miss any host-triggered spots;
+> changing the signature forces us to double-check that I correctly
+> categorized all callers.
+>
+> Since command line options can change whether a guest reset request
+> causes an actual reset vs. a shutdown, it's easy to also add the
+> information to reset requests.
+>
+> Replay adds a FIXME to preserve the cause across the replay stream,
+> that will be tackled in the next patch.
+>
+> Signed-off-by: Eric Blake <eblake@redhat.com>
+> Acked-by: David Gibson <david@gibson.dropbear.id.au> [ppc parts]
+> Reviewed-by: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk> [SPARC part]
+[...]
+> diff --git a/hw/acpi/core.c b/hw/acpi/core.c
+> index e890a5d..95fcac9 100644
+> --- a/hw/acpi/core.c
+> +++ b/hw/acpi/core.c
+> @@ -561,7 +561,7 @@ static void acpi_pm1_cnt_write(ACPIREGS *ar, uint16_t val)
+>          uint16_t sus_typ = (val >> 10) & 7;
+>          switch(sus_typ) {
+>          case 0: /* soft power off */
+> -            qemu_system_shutdown_request();
+> +            qemu_system_shutdown_request(SHUTDOWN_CAUSE_GUEST_SHUTDOWN);
+>              break;
+>          case 1:
+>              qemu_system_suspend_request();
+> @@ -569,7 +569,7 @@ static void acpi_pm1_cnt_write(ACPIREGS *ar, uint16_t val)
+>          default:
+>              if (sus_typ == ar->pm1.cnt.s4_val) { /* S4 request */
+>                  qapi_event_send_suspend_disk(&error_abort);
+> -                qemu_system_shutdown_request();
+> +                qemu_system_shutdown_request(SHUTDOWN_CAUSE_GUEST_SHUTDOWN);
 
->> @@ -569,7 +569,7 @@ static void acpi_pm1_cnt_write(ACPIREGS *ar, uint1=
-6_t val)
->>          default:
->>              if (sus_typ =3D=3D ar->pm1.cnt.s4_val) { /* S4 request */=
+I'm fine with using SHUTDOWN_CAUSE_GUEST_SHUTDOWN for suspend, but have
+you considered SHUTDOWN_CAUSE_GUEST_SUSPEND?
 
->>                  qapi_event_send_suspend_disk(&error_abort);
->> -                qemu_system_shutdown_request();
->> +                qemu_system_shutdown_request(SHUTDOWN_CAUSE_GUEST_SHU=
-TDOWN);
->=20
-> I'm fine with using SHUTDOWN_CAUSE_GUEST_SHUTDOWN for suspend, but have=
+>              }
+>              break;
+>          }
+[...]
+> diff --git a/qmp.c b/qmp.c
+> index ab74cd7..95949d0 100644
+> --- a/qmp.c
+> +++ b/qmp.c
+> @@ -84,7 +84,7 @@ UuidInfo *qmp_query_uuid(Error **errp)
+>  void qmp_quit(Error **errp)
+>  {
+>      no_shutdown = 0;
+> -    qemu_system_shutdown_request();
+> +    qemu_system_shutdown_request(SHUTDOWN_CAUSE_HOST_QMP);
+>  }
+>
+>  void qmp_stop(Error **errp)
+> @@ -105,7 +105,7 @@ void qmp_stop(Error **errp)
+>
+>  void qmp_system_reset(Error **errp)
+>  {
+> -    qemu_system_reset_request();
+> +    qemu_system_reset_request(SHUTDOWN_CAUSE_HOST_QMP);
 
-> you considered SHUTDOWN_CAUSE_GUEST_SUSPEND?
+This is the only place where we pass something other than
+SHUTDOWN_CAUSE_GUEST_RESET.  We could avoid churn the obvious way, but I
+guess having the churn eases patch review.  Okay.
 
-It was easy to do
-s/qemu_system_shutdown_request()/qemu_system_shutdown_request(SHUTDOWN_CA=
-USE_GUEST_SHUTDOWN)/
-for all hw/ files.  Harder would be picking a difference between
-_SHUTDOWN and a new _SUSPEND. I can do it if hardware owners want the
-distinction; but remember that this series will intentionally NOT expose
-that distinction to QMP, so I don't know how much it will buy us.
+>  }
+>
+>  void qmp_system_powerdown(Error **erp)
+> diff --git a/replay/replay.c b/replay/replay.c
+> index f810628..604fa4f 100644
+> --- a/replay/replay.c
+> +++ b/replay/replay.c
+> @@ -51,7 +51,8 @@ bool replay_next_event_is(int event)
+>          switch (replay_state.data_kind) {
+>          case EVENT_SHUTDOWN:
+>              replay_finish_event();
+> -            qemu_system_shutdown_request();
+> +            /* FIXME - store actual reason */
+> +            qemu_system_shutdown_request(SHUTDOWN_CAUSE_HOST_ERROR);
 
+The temporary replay breakage is no big deal.  Still, can we avoid it by
+extending replay first, using a dummy value like
+SHUTDOWN_CAUSE_HOST_ERROR until the real cause becomes available?  Not
+sure it's worth a respin, though.
 
->>  void qmp_stop(Error **errp)
->> @@ -105,7 +105,7 @@ void qmp_stop(Error **errp)
->>
->>  void qmp_system_reset(Error **errp)
->>  {
->> -    qemu_system_reset_request();
->> +    qemu_system_reset_request(SHUTDOWN_CAUSE_HOST_QMP);
->=20
-> This is the only place where we pass something other than
-> SHUTDOWN_CAUSE_GUEST_RESET.  We could avoid churn the obvious way, but =
-I
-> guess having the churn eases patch review.  Okay.
+>              break;
+>          default:
+>              /* clock, time_t, checkpoint and other events */
+[...]
 
-Yes, and that was the comment I made in the commit message about
-changing the signature everywhere instead of adding wrappers that make
-the common case become the default.
-
-
->> +++ b/replay/replay.c
->> @@ -51,7 +51,8 @@ bool replay_next_event_is(int event)
->>          switch (replay_state.data_kind) {
->>          case EVENT_SHUTDOWN:
->>              replay_finish_event();
->> -            qemu_system_shutdown_request();
->> +            /* FIXME - store actual reason */
->> +            qemu_system_shutdown_request(SHUTDOWN_CAUSE_HOST_ERROR);
->=20
-> The temporary replay breakage is no big deal.  Still, can we avoid it b=
-y
-> extending replay first, using a dummy value like
-> SHUTDOWN_CAUSE_HOST_ERROR until the real cause becomes available?  Not
-> sure it's worth a respin, though.
->=20
->>              break;
->>          default:
->>              /* clock, time_t, checkpoint and other events */
-> [...]
->=20
-> Reviewed-by: Markus Armbruster <armbru@redhat.com>
->=20
-
---=20
-Eric Blake, Principal Software Engineer
-Red Hat, Inc.           +1-919-301-3266
-Virtualization:  qemu.org | libvirt.org
-
-
---n9FR9W8MqPB7xigxR1tdNAv5tHnh2nWLa--
-
---SDeGOvGBIsueVrhobMIU2OhkcpkGsK3W9
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: OpenPGP digital signature
-Content-Disposition: attachment; filename="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v2
-Comment: Public key at http://people.redhat.com/eblake/eblake.gpg
-Comment: Using GnuPG with Thunderbird - http://www.enigmail.net/
-
-iQEcBAEBCAAGBQJZEc0fAAoJEKeha0olJ0NqgSYH/i+v6CJcwzlmUHcGVg6DcqRO
-tRa/xL25R5FrC+HOREOYVvVkukTZcEsA/ai2nACEi1upKF8IWHFzRjc/6XolbHWl
-vHKmcF7n9BcNZi8dqRu3abstD3bcNIiGexPEYTptFaMFiXQq96lHz7R68Ht59bI/
-12LEVwf0VAvN+DGm/+9xNGgszRc/Yd6JenZJ4+VbPwJzubU4XVCX5tTSvRt7dfrZ
-ZVOAT52aX46iN5C+awgEYAy1hE1GojIEm4yy6PEBDcPw6twodOLYDg4vwAxqbvcK
-HVtxkc5Xa1E3WsxjwT1QFos6LGWrlZx8ZMS1y0BlsygxQ/nGEIkb0TwbJqHdKTY=
-=fwyb
------END PGP SIGNATURE-----
-
---SDeGOvGBIsueVrhobMIU2OhkcpkGsK3W9--
+Reviewed-by: Markus Armbruster <armbru@redhat.com>

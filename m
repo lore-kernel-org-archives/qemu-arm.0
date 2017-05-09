@@ -1,81 +1,92 @@
-Received: by 10.25.0.6 with SMTP id 6csp164547lfa;
-        Tue, 9 May 2017 07:34:38 -0700 (PDT)
-X-Received: by 10.200.1.142 with SMTP id x14mr500473qtf.26.1494340478615;
-        Tue, 09 May 2017 07:34:38 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1494340478; cv=none;
+Received: by 10.25.0.6 with SMTP id 6csp204579lfa;
+        Tue, 9 May 2017 08:58:47 -0700 (PDT)
+X-Received: by 10.237.53.23 with SMTP id a23mr839918qte.171.1494345526923;
+        Tue, 09 May 2017 08:58:46 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1494345526; cv=none;
         d=google.com; s=arc-20160816;
-        b=O7e+LNBQKyD7yTHQXmoEaDqv15PPrV5dqS+f7/3YDxJ/KvDL3L8qNWRlNLPLSjjcvw
-         pbnJOqrSq1GnEbcGV7jMZi0ocqCdkvSdCLDN5Rzf5mdLDW4oAdIzwoawZudLL7tRXlwi
-         DowSNATmzrId3gaETzevKqbIkTIRC3uiGEBIgm+qtsUyMAw6/RSk3dxdqvjbfp2XBLXv
-         2R2F6GyL7bS4vVyOygirkxUf0SvdGSMgn6YT+DNSaQ+wFxh9M2yy3cejPvmQMsHbPmqg
-         pduKU1Ou8lgdYD1TZ6BY4W753CumChFf4T4CJ9UhShYdJGhAm3t1w5qJV736VXQ1yM0W
-         J9yg==
+        b=LcPerXdTDjaUcprE0S+LBSHiSfRaYhpyXokKwvRL63oAwKcNrzSRGWFIN/+ToWamaJ
+         2QRg+BwhG+RQRiTg/8rjUVH2xvHc05KaKHdN7agLwKjGbAqS484jd7O6QhWyU8fk3IBk
+         Q+23FxZI5jDLd1fj28b10JUtSKQMk5iSmPo7ZLF9JbJ7gBM491IC3GEuMPUA1A8q3PG+
+         C1YP0gdH+gBQakuq7JJ4eiHTFKvvTtDo+5HVDXHk4vW7pu8PR401LSDBdt+Rn9S4QUHT
+         fizil85Iy4vVluzV6g+/AZPyLwe5Z+e6TocC0tyibIGE/E9FcYL5QKLD/NbCdcmbDM41
+         Nv1w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:mime-version:message-id
-         :user-agent:references:lines:date:in-reply-to:to:from
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:to:from:date:dkim-filter:dmarc-filter
          :arc-authentication-results;
-        bh=aLeCVBJY8JNKwiSKqKvQ8elJH247QLpE4e7zIFWqWt4=;
-        b=afchbBEAFNXlGPskZg1KEk/CNWBuKcxCIyLM6WsvTa/HRatL7MNh2eZRDzW4QPt7P+
-         fjk7rboH3Kte881UIyg84lVwfg5ZXYiUninG9r+Of6LGHpLuM9pg68R8z41k52RIqH3X
-         9nhBu2X/fWaAtupFconq6gX9yNM6VcWFhLh/cYjEX+oXYi05wagEJDaKXgsmuWA166oj
-         Z93DJPc693aJQYXw/C/sBOmwLIVYEvPrGH/DE/SO9EkQ6IRFDsiLvdrDnKXJM5ajDrZO
-         OPfOUmMPltKczAgGrIlU6ic6QOAQlzNjC7Ev2SgeNWr4AtZvN9GI76DwVD+PpagyO38X
-         OwMg==
+        bh=V+rYSzhPYZocluZDm19DtIQIOv1NqOWQgwngOJjDT8o=;
+        b=NjTNHsKoOEm86fwsZu1BWZKnqgdaig4Mw1wbpkQIwCqIqA3phXRyDMviMVrf4/84Do
+         cJ5Ks2lB3Qek/1hLzxdzToRaBfj4dwzl9/P17T+o6KHZyXlq8rHSPDgmUu2hQzRPVacE
+         r6Dapm3Qs6JEuYRyOPB438s//eLksVV4ejl7o+79sYIlMemTBFlOLoxoDfXlynpH44Ti
+         fKCw+riUsXFMPq/CW8kFpLhbAjX6fQPwOQMiYdMYwH9DX+hrLDAoiHSBHwR/znmkXrl+
+         s67gfwir1AILk8UZJzWtbv8YNXF5TsPgRfWEvRuvVznavU/lj7VWdj+0wwfIuPy4RhPu
+         qz2Q==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id b4si174270qkd.303.2017.05.09.07.34.38
+        by mx.google.com with ESMTPS id f68si308727qtb.41.2017.05.09.08.58.46
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 09 May 2017 07:34:38 -0700 (PDT)
+        Tue, 09 May 2017 08:58:46 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:37570 helo=lists.gnu.org)
+Received: from localhost ([::1]:37880 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1d86Dm-0002Dh-5A
-	for alex.bennee@linaro.org; Tue, 09 May 2017 10:34:38 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:47279)
+	id 1d87XC-00042r-Bw
+	for alex.bennee@linaro.org; Tue, 09 May 2017 11:58:46 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:42849)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@pond.sub.org>) id 1d86Dg-0002Db-8V
-	for qemu-arm@nongnu.org; Tue, 09 May 2017 10:34:33 -0400
+	(envelope-from <imammedo@redhat.com>) id 1d87X5-00041Z-Ki
+	for qemu-arm@nongnu.org; Tue, 09 May 2017 11:58:41 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <armbru@pond.sub.org>) id 1d86Db-0002hl-Ua
-	for qemu-arm@nongnu.org; Tue, 09 May 2017 10:34:32 -0400
-Received: from oxygen.pond.sub.org ([144.76.244.19]:46288)
+	(envelope-from <imammedo@redhat.com>) id 1d87X1-000838-5E
+	for qemu-arm@nongnu.org; Tue, 09 May 2017 11:58:39 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:57316)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <armbru@pond.sub.org>)
-	id 1d86Db-0002bt-H2; Tue, 09 May 2017 10:34:27 -0400
-Received: from blackfin.pond.sub.org
-	(p2003007F8F538500DACB8AFFFEE0C842.dip0.t-ipconnect.de
-	[IPv6:2003:7f:8f53:8500:dacb:8aff:fee0:c842])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(Client did not present a certificate)
-	by oxygen.pond.sub.org (Postfix) with ESMTPSA id B17672C450;
-	Tue,  9 May 2017 16:34:15 +0200 (CEST)
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
-	id 160AF11385E2; Tue,  9 May 2017 16:34:15 +0200 (CEST)
-From: Markus Armbruster <armbru@redhat.com>
-To: Eric Blake <eblake@redhat.com>
-In-Reply-To: <20170508211953.28017-4-eblake@redhat.com> (Eric Blake's message
-	of "Mon, 8 May 2017 16:19:51 -0500")
-Date: Tue, 09 May 2017 13:56:46 +0200
-References: <20170508211953.28017-1-eblake@redhat.com>
-	<20170508211953.28017-4-eblake@redhat.com>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/25.1 (gnu/linux)
-Message-ID: <87efvyhzfc.fsf@dusky.pond.sub.org>
+	(Exim 4.71) (envelope-from <imammedo@redhat.com>)
+	id 1d87X0-00081U-S8; Tue, 09 May 2017 11:58:35 -0400
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
+	[10.5.11.16])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id AA3F980F8E;
+	Tue,  9 May 2017 15:58:33 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com AA3F980F8E
+Authentication-Results: ext-mx03.extmail.prod.ext.phx2.redhat.com;
+	dmarc=none (p=none dis=none) header.from=redhat.com
+Authentication-Results: ext-mx03.extmail.prod.ext.phx2.redhat.com;
+	spf=pass smtp.mailfrom=imammedo@redhat.com
+DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com AA3F980F8E
+Received: from nial.brq.redhat.com (dhcp-1-118.brq.redhat.com [10.34.1.118])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id B1EE25C881;
+	Tue,  9 May 2017 15:58:31 +0000 (UTC)
+Date: Tue, 9 May 2017 17:58:29 +0200
+From: Igor Mammedov <imammedo@redhat.com>
+To: David Gibson <david@gibson.dropbear.id.au>
+Message-ID: <20170509175829.23fcc112@nial.brq.redhat.com>
+In-Reply-To: <20170508054004.GE25748@umbus.fritz.box>
+References: <1493816238-33120-1-git-send-email-imammedo@redhat.com>
+	<1493816238-33120-24-git-send-email-imammedo@redhat.com>
+	<20170508054004.GE25748@umbus.fritz.box>
 MIME-Version: 1.0
-Content-Type: text/plain
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.27]);
+	Tue, 09 May 2017 15:58:33 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 144.76.244.19
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v7 3/5] shutdown: Add source
- information to SHUTDOWN and RESET
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v2 23/24] numa: add '-numa cpu,
+ ...' option for property based node mapping
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -87,132 +98,129 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
-	"open list:Overall" <kvm@vger.kernel.org>,
-	"Michael S. Tsirkin" <mst@redhat.com>,
-	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
-	qemu-devel@nongnu.org, Cornelia Huck <cornelia.huck@de.ibm.com>,
-	Gerd Hoffmann <kraxel@redhat.com>, Rob Herring <robh@kernel.org>,
-	Stefano Stabellini <sstabellini@kernel.org>,
-	Magnus Damm <magnus.damm@gmail.com>, Alexander Graf <agraf@suse.de>,
-	Christian Borntraeger <borntraeger@de.ibm.com>,
-	Anthony Perard <anthony.perard@citrix.com>,
-	"open list:X86" <xen-devel@lists.xenproject.org>,
-	David Gibson <david@gibson.dropbear.id.au>,
-	Artyom Tarasenko <atar4qemu@gmail.com>,
-	Eduardo Habkost <ehabkost@redhat.com>,
-	Stefan Weil <sw@weilnetz.de>, alistair.francis@xilinx.com,
-	"open list:Calxeda Highbank" <qemu-arm@nongnu.org>,
-	Jan Kiszka <jan.kiszka@web.de>, Pavel Dovgalyuk <pavel.dovgaluk@ispras.ru>,
-	Paolo Bonzini <pbonzini@redhat.com>, Yongbok Kim <yongbok.kim@imgtec.com>,
-	Richard Henderson <rth@twiddle.net>, Paul Burton <paul.burton@imgtec.com>,
-	Max Filippov <jcmvbkbc@gmail.com>, Marcelo Tosatti <mtosatti@redhat.com>,
-	Michael Walle <michael@walle.cc>,
-	"open list:Old World" <qemu-ppc@nongnu.org>,
-	Igor Mammedov <imammedo@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
+Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jones <drjones@redhat.com>,
+	Eduardo Habkost <ehabkost@redhat.com>, qemu-devel@nongnu.org,
+	qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
+	Shannon Zhao <zhaoshenglong@huawei.com>,
+	Paolo Bonzini <pbonzini@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 9BW59TvrkDaX
+X-TUID: mJ/toHe1jHBJ
 
-Resending because first send didn't get through to some recipients...
+On Mon, 8 May 2017 15:40:04 +1000
+David Gibson <david@gibson.dropbear.id.au> wrote:
 
-Eric Blake <eblake@redhat.com> writes:
+> On Wed, May 03, 2017 at 02:57:17PM +0200, Igor Mammedov wrote:
+> > legacy cpu to node mapping is using cpu index values to map
+> > VCPU to node with help of '-numa node,nodeid=node,cpus=x[-y]'
+> > option. However cpu index is internal concept and QEMU users
+> > have to guess /reimplement qemu's logic/ to map it to
+> > a concrete cpu socket/core/thread to make sane CPUs
+> > placement across numa nodes.
+> > 
+> > This patch allows to map cpu objects to numa nodes using
+> > the same properties as used for cpus with -device/device_add
+> > (socket-id/core-id/thread-id/node-id).
+> > 
+> > At present valid properties/values to address CPUs could be
+> > fetched using hotpluggable-cpus monitor/qmp command, it will
+> > require user to start qemu twice when creating domain to fetch
+> > possible CPUs for a machine type/-smp layout first and
+> > then the second time with numa explicit mapping for actual
+> > usage. The first step results could be saved and reused to
+> > set/change mapping later as far as machine type/-smp stays
+> > the same.
+> > 
+> > Proposed impl. supports exact and wildcard matching to
+> > simplify CLI and allow to set mapping for a specific cpu
+> > or group of cpu objects specified by matched properties.
+> > 
+> > For example:
+> > 
+> >    # exact mapping x86
+> >    -numa cpu,node-id=x,socket-id=y,core-id=z,thread-id=n
+> > 
+> >    # exact mapping SPAPR
+> >    -numa cpu,node-id=x,core-id=y
+> > 
+> >    # wildcard mapping, all cpu objects that match socket-id=y
+> >    # are mapped to node-id=x
+> >    -numa cpu,node-id=x,socket-id=y
+> > 
+> > Signed-off-by: Igor Mammedov <imammedo@redhat.com>
+> > ---
+> > v2:
+> >   - use new NumaCpuOptions instead of CpuInstanceProperties in
+> >     NumaOptions, so that in future we could decouple both
+> >     if needed. (Eduardo Habkost <ehabkost@redhat.com>)
+> >   - clarify effect of NumaCpuOptions.node-id in qapi-schema.json
+> > ---
+> >  numa.c           | 25 +++++++++++++++++++++++++
+> >  qapi-schema.json | 21 +++++++++++++++++++--
+> >  qemu-options.hx  | 23 ++++++++++++++++++++++-
+> >  3 files changed, 66 insertions(+), 3 deletions(-)
+> > 
+> > diff --git a/numa.c b/numa.c
+> > index 40e9f44..61521f5 100644
+> > --- a/numa.c
+> > +++ b/numa.c
+> > @@ -227,6 +227,7 @@ static int parse_numa(void *opaque, QemuOpts *opts, Error **errp)
+> >      NumaOptions *object = NULL;
+> >      MachineState *ms = opaque;
+> >      Error *err = NULL;
+> > +    CpuInstanceProperties cpu;
+> >  
+> >      {
+> >          Visitor *v = opts_visitor_new(opts);
+> > @@ -246,6 +247,30 @@ static int parse_numa(void *opaque, QemuOpts *opts, Error **errp)
+> >          }
+> >          nb_numa_nodes++;
+> >          break;
+> > +    case NUMA_OPTIONS_TYPE_CPU:
+> > +        if (!object->u.cpu.has_node_id) {
+> > +            error_setg(&err, "Missing mandatory node-id property");
+> > +            goto end;
+> > +        }
+> > +        if (!numa_info[object->u.cpu.node_id].present) {
+> > +            error_setg(&err, "Invalid node-id=%" PRId64 ", NUMA node must be "
+> > +                "defined with -numa node,nodeid=ID before it's used with "
+> > +                "-numa cpu,node-id=ID", object->u.cpu.node_id);
+> > +            goto end;
+> > +        }
+> > +
+> > +        memset(&cpu, 0, sizeof(cpu));
+> > +        cpu.has_node_id = object->u.cpu.has_node_id;
+> > +        cpu.node_id = object->u.cpu.node_id;
+> > +        cpu.has_socket_id = object->u.cpu.has_socket_id;
+> > +        cpu.socket_id = object->u.cpu.socket_id;
+> > +        cpu.has_core_id = object->u.cpu.has_core_id;
+> > +        cpu.core_id = object->u.cpu.core_id;
+> > +        cpu.has_thread_id = object->u.cpu.has_thread_id;
+> > +        cpu.thread_id = object->u.cpu.thread_id;
+> > +
+> > +        machine_set_cpu_numa_node(ms, &cpu, &err);  
+> 
+> It's possible I've confused myself by not looking at this whole series
+> at once.
+> 
+> But, would it be possible to make a single machine hook which maps a
+> constructed cpu property set to a "canonical" cpu property set from
+> the table of CPU slots (or errors, of course).  That would let you do
+> what you need here, and I suspect in other places, without multiple
+> hooks.
+Not sure that get question.
 
-> Time to wire up all the call sites that request a shutdown or
-> reset to use the enum added in the previous patch.
->
-> It would have been less churn to keep the common case with no
-> arguments as meaning guest-triggered, and only modified the
-> host-triggered code paths, via a wrapper function, but then we'd
-> still have to audit that I didn't miss any host-triggered spots;
-> changing the signature forces us to double-check that I correctly
-> categorized all callers.
->
-> Since command line options can change whether a guest reset request
-> causes an actual reset vs. a shutdown, it's easy to also add the
-> information to reset requests.
->
-> Replay adds a FIXME to preserve the cause across the replay stream,
-> that will be tackled in the next patch.
->
-> Signed-off-by: Eric Blake <eblake@redhat.com>
-> Acked-by: David Gibson <david@gibson.dropbear.id.au> [ppc parts]
-> Reviewed-by: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk> [SPARC part]
-[...]
-> diff --git a/hw/acpi/core.c b/hw/acpi/core.c
-> index e890a5d..95fcac9 100644
-> --- a/hw/acpi/core.c
-> +++ b/hw/acpi/core.c
-> @@ -561,7 +561,7 @@ static void acpi_pm1_cnt_write(ACPIREGS *ar, uint16_t val)
->          uint16_t sus_typ = (val >> 10) & 7;
->          switch(sus_typ) {
->          case 0: /* soft power off */
-> -            qemu_system_shutdown_request();
-> +            qemu_system_shutdown_request(SHUTDOWN_CAUSE_GUEST_SHUTDOWN);
->              break;
->          case 1:
->              qemu_system_suspend_request();
-> @@ -569,7 +569,7 @@ static void acpi_pm1_cnt_write(ACPIREGS *ar, uint16_t val)
->          default:
->              if (sus_typ == ar->pm1.cnt.s4_val) { /* S4 request */
->                  qapi_event_send_suspend_disk(&error_abort);
-> -                qemu_system_shutdown_request();
-> +                qemu_system_shutdown_request(SHUTDOWN_CAUSE_GUEST_SHUTDOWN);
+if it's about machine_set_cpu_numa_node() than it's a single generic
+setter of MachineState::possible_cpus(node-id) from non machine code
+and the only place it's supposed to be used is from numa configuration
+code. I don't see any need to reuse it for something/somewhere else
+so far.
 
-I'm fine with using SHUTDOWN_CAUSE_GUEST_SHUTDOWN for suspend, but have
-you considered SHUTDOWN_CAUSE_GUEST_SUSPEND?
+More over it's not 1:1 mapping wrt input:affected slots,
+it's 1:[1-n] where input could affect multiple slots.
 
->              }
->              break;
->          }
-[...]
-> diff --git a/qmp.c b/qmp.c
-> index ab74cd7..95949d0 100644
-> --- a/qmp.c
-> +++ b/qmp.c
-> @@ -84,7 +84,7 @@ UuidInfo *qmp_query_uuid(Error **errp)
->  void qmp_quit(Error **errp)
->  {
->      no_shutdown = 0;
-> -    qemu_system_shutdown_request();
-> +    qemu_system_shutdown_request(SHUTDOWN_CAUSE_HOST_QMP);
->  }
->
->  void qmp_stop(Error **errp)
-> @@ -105,7 +105,7 @@ void qmp_stop(Error **errp)
->
->  void qmp_system_reset(Error **errp)
->  {
-> -    qemu_system_reset_request();
-> +    qemu_system_reset_request(SHUTDOWN_CAUSE_HOST_QMP);
-
-This is the only place where we pass something other than
-SHUTDOWN_CAUSE_GUEST_RESET.  We could avoid churn the obvious way, but I
-guess having the churn eases patch review.  Okay.
-
->  }
->
->  void qmp_system_powerdown(Error **erp)
-> diff --git a/replay/replay.c b/replay/replay.c
-> index f810628..604fa4f 100644
-> --- a/replay/replay.c
-> +++ b/replay/replay.c
-> @@ -51,7 +51,8 @@ bool replay_next_event_is(int event)
->          switch (replay_state.data_kind) {
->          case EVENT_SHUTDOWN:
->              replay_finish_event();
-> -            qemu_system_shutdown_request();
-> +            /* FIXME - store actual reason */
-> +            qemu_system_shutdown_request(SHUTDOWN_CAUSE_HOST_ERROR);
-
-The temporary replay breakage is no big deal.  Still, can we avoid it by
-extending replay first, using a dummy value like
-SHUTDOWN_CAUSE_HOST_ERROR until the real cause becomes available?  Not
-sure it's worth a respin, though.
-
->              break;
->          default:
->              /* clock, time_t, checkpoint and other events */
-[...]
-
-Reviewed-by: Markus Armbruster <armbru@redhat.com>
+I think I've tried to get machine return a list of cpu slots
+and then deal with them in numa.c but result looked messy and
+not to my liking.
+Eventually I stopped on machine_set_cpu_numa_node() variant
+as the cleanest for now.

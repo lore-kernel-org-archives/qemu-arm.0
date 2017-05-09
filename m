@@ -1,199 +1,175 @@
-Received: by 10.25.0.6 with SMTP id 6csp122585lfa;
-        Tue, 9 May 2017 06:14:36 -0700 (PDT)
-X-Received: by 10.200.52.85 with SMTP id v21mr17110713qtb.45.1494335676474;
-        Tue, 09 May 2017 06:14:36 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1494335676; cv=none;
+Received: by 10.25.0.6 with SMTP id 6csp144339lfa;
+        Tue, 9 May 2017 06:57:21 -0700 (PDT)
+X-Received: by 10.99.147.67 with SMTP id w3mr181001pgm.145.1494338241733;
+        Tue, 09 May 2017 06:57:21 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1494338241; cv=none;
         d=google.com; s=arc-20160816;
-        b=jWUHd51zXjS7WEP50K2XygjoquJ3bxs3lZpDJXhb/gOMknuQGipkCEEShcrajuErq3
-         d3qUSng798EAi4dsIfmegDSEFroeUPxtK3tWMJ23gIFjmyN0MgRwC00q26U2lIK26ZWp
-         jpBLPFGh3qplSbfbBfnaV6/WKQacjc4IJpxn77eQQyBlAlRwSMtuhPcF0IOvT0abaBEa
-         dVg1Pa9UHIioK4aprnsZs0dltylAtY2IRub9d9ZYvPYmjsuW/VsFEm2PWBd4cBNxCynT
-         pecmHKGb8X6eBakX7kRcBWY+I9ycz/ZL1k1UuhTZo4qHMne9BXPT7Om55HBFvGL+eWUk
-         4Lnw==
+        b=Xo2VJpjSMqQaJQVwiarmvxYQkPUkulQ6OBLBtFhYJ9mAQSaUVPicuD3QGqRs5dFozc
+         kTjU6ADgABfRAptb/1RV85HjF6Vf6NIAPETr+cSK/AzAo3TroeC7sf/KFKy+wGyhgjMe
+         G1NqQYdFUQI2vs93VyLdem5G5N3NvvK640OyoV+LSaTwDwkZ5RgWYr8jL9jBqKelyoI0
+         XgAp5NGtnJL/Efw/m3F7e5W+gcSCJKEjUZfA4DAkdY81GHFIcIn/wTCMeNDDHcw4Vl+3
+         XRKFep003J00BETlJqAJLnFqZ8W4SqPivg5a/ZL1QW8UtPq+ctxHvG+FIVPcuBTUYPJ1
+         AFFg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:to:from:date:dkim-filter:dmarc-filter
-         :arc-authentication-results;
-        bh=tv0aa//iOrK6Mz60VGvrRhS/jVc1Sv/jAhhVEOjyn/Y=;
-        b=fHcUZKzbNZbpY77cnSmZRQeGwmlQLLz9s4qwarCYRayTUrXN1XbmdahbJbJnqJKesN
-         ZalFYUbxo37k3K4IMf0QGY94hSZ5OsAMElzEsTevwqdyBg3G6G5lw3SHyvNBs5j6Wk8l
-         0Tar2p6p7YwIfuAoHQT31B347mcLKQK8Qs8cu78Is3PClNajkSFRvQocu3Frzc5D/4Z9
-         7eLwWNgE1hsPIa6ysC/axsikdooeG0kubhMtj2njdSalQNm84sElkSS7y+Ogt+tTKzKQ
-         Wi7NtcODDRuPy0zQGzapabgcSCSllW6dtPiY6r2lK45Om/Rg7eLdUxwLVxpSnsr+3rFg
-         5ERg==
+        h=list-id:precedence:sender:message-id:content-transfer-encoding
+         :mime-version:organization:references:in-reply-to:subject:cc:to:from
+         :date:arc-authentication-results;
+        bh=9pCMoXGfeVGd9l49I8fArOfkMmw1KDPbzJZeMBAsm0U=;
+        b=yhqtkpT+tDDA0m4B5lQsYC2T7EJRVvjkxzyHfd62z/raYaxKEkJ2P7YgZwbEpHqXJs
+         jUnAIs6SCgGYJ6JKeueS6HY/JD0J7lP7e/FQszeE7ddeBdd2U4kZaweqqtTlI210dZQK
+         /ZhKtVsKlh0YfAyzGxM2+oQsmNIxOHdmomDG230ioqr6ZgxjI425kBWzMC06rPrKSxfP
+         bCi7IqIisGtYO2C1vBi9+kp+NevL7od/d61I7xXCCq9TjcgcwqD25qNiGwHxilzrIQgW
+         jR0ohe01/ecUO43MdoII6n5u24ALaRzkqdDJuQo6X/74WAYnQ0fu8ie4b0QmsW15xPQN
+         gevw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id t1si14220945qtc.9.2017.05.09.06.14.35
-        for <alex.bennee@linaro.org>
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 09 May 2017 06:14:35 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=ibm.com
+Return-Path: <kvm-owner@vger.kernel.org>
+Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
+        by mx.google.com with ESMTP id z78si9027448pfj.313.2017.05.09.06.57.21;
+        Tue, 09 May 2017 06:57:21 -0700 (PDT)
+Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:37194 helo=lists.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1d84yI-0001Li-VZ
-	for alex.bennee@linaro.org; Tue, 09 May 2017 09:14:34 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:54125)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <imammedo@redhat.com>) id 1d84yF-0001IK-MW
-	for qemu-arm@nongnu.org; Tue, 09 May 2017 09:14:32 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <imammedo@redhat.com>) id 1d84yC-00031n-FT
-	for qemu-arm@nongnu.org; Tue, 09 May 2017 09:14:31 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:43200)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <imammedo@redhat.com>)
-	id 1d84yC-00031S-4e; Tue, 09 May 2017 09:14:28 -0400
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
-	[10.5.11.15])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id EF583C059740;
-	Tue,  9 May 2017 13:14:25 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com EF583C059740
-Authentication-Results: ext-mx08.extmail.prod.ext.phx2.redhat.com;
-	dmarc=none (p=none dis=none) header.from=redhat.com
-Authentication-Results: ext-mx08.extmail.prod.ext.phx2.redhat.com;
-	spf=pass smtp.mailfrom=imammedo@redhat.com
-DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com EF583C059740
-Received: from nial.brq.redhat.com (dhcp-1-118.brq.redhat.com [10.34.1.118])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id C854D87F9D;
-	Tue,  9 May 2017 13:14:23 +0000 (UTC)
-Date: Tue, 9 May 2017 15:14:21 +0200
-From: Igor Mammedov <imammedo@redhat.com>
-To: Eduardo Habkost <ehabkost@redhat.com>
-Message-ID: <20170509151421.0b51e1f2@nial.brq.redhat.com>
-In-Reply-To: <20170505202923.GM3482@thinpad.lan.raisama.net>
-References: <1493816238-33120-1-git-send-email-imammedo@redhat.com>
-	<1493816238-33120-8-git-send-email-imammedo@redhat.com>
-	<20170505202923.GM3482@thinpad.lan.raisama.net>
+       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=ibm.com
+Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
+        id S1752054AbdEIN5T (ORCPT <rfc822;francois.ozog@linaro.org>
+        + 6 others); Tue, 9 May 2017 09:57:19 -0400
+Received: from mx0b-001b2d01.pphosted.com ([148.163.158.5]:38129 "EHLO
+        mx0a-001b2d01.pphosted.com" rhost-flags-OK-OK-OK-FAIL)
+        by vger.kernel.org with ESMTP id S1751210AbdEIN5S (ORCPT
+        <rfc822;kvm@vger.kernel.org>); Tue, 9 May 2017 09:57:18 -0400
+Received: from pps.filterd (m0098419.ppops.net [127.0.0.1])
+        by mx0b-001b2d01.pphosted.com (8.16.0.20/8.16.0.20) with SMTP id v49DrWqq048061
+        for <kvm@vger.kernel.org>; Tue, 9 May 2017 09:57:18 -0400
+Received: from e06smtp14.uk.ibm.com (e06smtp14.uk.ibm.com [195.75.94.110])
+        by mx0b-001b2d01.pphosted.com with ESMTP id 2abea0ahb3-1
+        (version=TLSv1.2 cipher=AES256-SHA bits=256 verify=NOT)
+        for <kvm@vger.kernel.org>; Tue, 09 May 2017 09:57:17 -0400
+Received: from localhost
+        by e06smtp14.uk.ibm.com with IBM ESMTP SMTP Gateway: Authorized Use Only! Violators will be prosecuted
+        for <kvm@vger.kernel.org> from <cornelia.huck@de.ibm.com>;
+        Tue, 9 May 2017 14:57:15 +0100
+Received: from b06cxnps4076.portsmouth.uk.ibm.com (9.149.109.198)
+        by e06smtp14.uk.ibm.com (192.168.101.144) with IBM ESMTP SMTP Gateway: Authorized Use Only! Violators will be prosecuted;
+        Tue, 9 May 2017 14:57:05 +0100
+Received: from d06av21.portsmouth.uk.ibm.com (d06av21.portsmouth.uk.ibm.com [9.149.105.232])
+        by b06cxnps4076.portsmouth.uk.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id v49Dv4gR39125108;
+        Tue, 9 May 2017 13:57:04 GMT
+Received: from d06av21.portsmouth.uk.ibm.com (unknown [127.0.0.1])
+        by IMSVA (Postfix) with ESMTP id 5208652041;
+        Tue,  9 May 2017 13:54:28 +0100 (BST)
+Received: from gondolin (unknown [9.152.224.119])
+        by d06av21.portsmouth.uk.ibm.com (Postfix) with ESMTP id 6C81F52043;
+        Tue,  9 May 2017 13:54:27 +0100 (BST)
+Date:   Tue, 9 May 2017 15:57:02 +0200
+From:   Cornelia Huck <cornelia.huck@de.ibm.com>
+To:     Eric Blake <eblake@redhat.com>
+Cc:     qemu-devel@nongnu.org, armbru@redhat.com, berrange@redhat.com,
+        alistair.francis@xilinx.com, "Michael S. Tsirkin" <mst@redhat.com>,
+        Igor Mammedov <imammedo@redhat.com>,
+        Rob Herring <robh@kernel.org>,
+        Peter Maydell <peter.maydell@linaro.org>,
+        Jan Kiszka <jan.kiszka@web.de>,
+        Andrzej Zaborowski <balrogg@gmail.com>,
+        Paolo Bonzini <pbonzini@redhat.com>,
+        Richard Henderson <rth@twiddle.net>,
+        Eduardo Habkost <ehabkost@redhat.com>,
+        Stefano Stabellini <sstabellini@kernel.org>,
+        Anthony Perard <anthony.perard@citrix.com>,
+        Paul Burton <paul.burton@imgtec.com>,
+        Aurelien Jarno <aurelien@aurel32.net>,
+        Yongbok Kim <yongbok.kim@imgtec.com>,
+        Alexander Graf <agraf@suse.de>,
+        Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+        "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+        David Gibson <david@gibson.dropbear.id.au>,
+        Christian Borntraeger <borntraeger@de.ibm.com>,
+        Magnus Damm <magnus.damm@gmail.com>,
+        Michael Walle <michael@walle.cc>,
+        Max Filippov <jcmvbkbc@gmail.com>,
+        Stefan Weil <sw@weilnetz.de>,
+        Pavel Dovgalyuk <pavel.dovgaluk@ispras.ru>,
+        Marcelo Tosatti <mtosatti@redhat.com>,
+        Artyom Tarasenko <atar4qemu@gmail.com>,
+        Gerd Hoffmann <kraxel@redhat.com>,
+        qemu-arm@nongnu.org (open list:Calxeda Highbank),
+        xen-devel@lists.xenproject.org (open list:X86),
+        qemu-ppc@nongnu.org (open list:Old World),
+        kvm@vger.kernel.org (open list:Overall)
+Subject: Re: [PATCH v7 3/5] shutdown: Add source information to SHUTDOWN and
+ RESET
+In-Reply-To: <20170508211953.28017-4-eblake@redhat.com>
+References: <20170508211953.28017-1-eblake@redhat.com>
+        <20170508211953.28017-4-eblake@redhat.com>
+Organization: IBM Deutschland Research & Development GmbH Vorsitzende des
+ Aufsichtsrats: Martina Koederitz =?UTF-8?B?R2VzY2jDpGZ0c2bDvGhydW5nOg==?=
+ Dirk Wittkopp Sitz der Gesellschaft: =?UTF-8?B?QsO2Ymxpbmdlbg==?=
+ Registergericht: Amtsgericht Stuttgart, HRB 243294
+X-Mailer: Claws Mail 3.11.1 (GTK+ 2.24.23; x86_64-pc-linux-gnu)
 MIME-Version: 1.0
 Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.32]);
-	Tue, 09 May 2017 13:14:26 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [PATCH v2 07/24] pc: add node-id property to CPU
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.21
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jones <drjones@redhat.com>,
-	qemu-devel@nongnu.org, qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
-	Shannon Zhao <zhaoshenglong@huawei.com>,
-	Paolo Bonzini <pbonzini@redhat.com>, Eric Blake <eblake@redhat.com>,
-	David Gibson <david@gibson.dropbear.id.au>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: apXlqIHFBh7m
+X-TM-AS-GCONF: 00
+x-cbid: 17050913-0016-0000-0000-0000049729AB
+X-IBM-AV-DETECTION: SAVI=unused REMOTE=unused XFE=unused
+x-cbparentid: 17050913-0017-0000-0000-00002795E9F2
+Message-Id: <20170509155702.0d7cb606.cornelia.huck@de.ibm.com>
+X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10432:,, definitions=2017-05-09_11:,,
+ signatures=0
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 spamscore=0 suspectscore=0
+ malwarescore=0 phishscore=0 adultscore=0 bulkscore=0 classifier=spam
+ adjust=0 reason=mlx scancount=1 engine=8.0.1-1703280000
+ definitions=main-1705090074
+Sender: kvm-owner@vger.kernel.org
+Precedence: bulk
+List-ID: <kvm.vger.kernel.org>
+X-Mailing-List: kvm@vger.kernel.org
+X-TUID: Narq8CnSJnXs
 
-On Fri, 5 May 2017 17:29:23 -0300
-Eduardo Habkost <ehabkost@redhat.com> wrote:
+On Mon,  8 May 2017 16:19:51 -0500
+Eric Blake <eblake@redhat.com> wrote:
 
-> On Wed, May 03, 2017 at 02:57:01PM +0200, Igor Mammedov wrote:
-> > it will allow switching from cpu_index to property based
-> > numa mapping in follow up patches.
-> > 
-> > Signed-off-by: Igor Mammedov <imammedo@redhat.com>
-> > ---
-> >  hw/i386/pc.c      | 17 +++++++++++++++++
-> >  target/i386/cpu.c |  1 +
-> >  2 files changed, 18 insertions(+)
-> > 
-> > diff --git a/hw/i386/pc.c b/hw/i386/pc.c
-> > index 9cec0c1..4a4fb1c 100644
-> > --- a/hw/i386/pc.c
-> > +++ b/hw/i386/pc.c
-> > @@ -1893,6 +1893,7 @@ static void pc_cpu_pre_plug(HotplugHandler *hotplug_dev,
-> >                              DeviceState *dev, Error **errp)
-> >  {
-> >      int idx;
-> > +    int node_id;
-> >      CPUState *cs;
-> >      CPUArchId *cpu_slot;
-> >      X86CPUTopoInfo topo;
-> > @@ -1982,6 +1983,22 @@ static void pc_cpu_pre_plug(HotplugHandler *hotplug_dev,
-> >  
-> >      cs = CPU(cpu);
-> >      cs->cpu_index = idx;
-> > +
-> > +    node_id = numa_get_node_for_cpu(cs->cpu_index);
-> > +    if (node_id == nb_numa_nodes) {
-> > +        /* by default CPUState::numa_node was 0 if it's not set via CLI
-> > +         * keep it this way for now but in future we probably should
-> > +         * refuse to start up with incomplete numa mapping */
-> > +        node_id = 0;
-> > +    }
-> > +    if (cs->numa_node == CPU_UNSET_NUMA_NODE_ID) {
-> > +        cs->numa_node = node_id;  
+> Time to wire up all the call sites that request a shutdown or
+> reset to use the enum added in the previous patch.
 > 
-> I suggest moving the above lines to cpu_common_realizefn(), and
-> deleting the code in numa_post_machine_init().
+> It would have been less churn to keep the common case with no
+> arguments as meaning guest-triggered, and only modified the
+> host-triggered code paths, via a wrapper function, but then we'd
+> still have to audit that I didn't miss any host-triggered spots;
+> changing the signature forces us to double-check that I correctly
+> categorized all callers.
 > 
-> If you want to do this in v3 of this series, or as a follow-up
-> patch, it's up to you.
-maybe not to realize time, but yep I'm thinking about moving
-this whole hunk into a helper function that could be reused
-by pc/arm/spapr without duplicating.
-I'd do it as follow-up.
-
-
-> > +    } else if (cs->numa_node != node_id) {
-> > +            error_setg(errp, "node-id %d must match numa node specified"
-> > +                "with -numa option for cpu-index %d",
-> > +                cs->numa_node, cs->cpu_index);
-> > +            return;
-> > +    }
-> >  }
-> >  
-> >  static void pc_machine_device_pre_plug_cb(HotplugHandler *hotplug_dev,
-> > diff --git a/target/i386/cpu.c b/target/i386/cpu.c
-> > index 13c0985..007a5bd 100644
-> > --- a/target/i386/cpu.c
-> > +++ b/target/i386/cpu.c
-> > @@ -3982,6 +3982,7 @@ static Property x86_cpu_properties[] = {
-> >      DEFINE_PROP_INT32("core-id", X86CPU, core_id, -1),
-> >      DEFINE_PROP_INT32("socket-id", X86CPU, socket_id, -1),
-> >  #endif
-> > +    DEFINE_PROP_INT32("node-id", CPUState, numa_node, CPU_UNSET_NUMA_NODE_ID),  
+> Since command line options can change whether a guest reset request
+> causes an actual reset vs. a shutdown, it's easy to also add the
+> information to reset requests.
 > 
-> This changes the default from 0 to CPU_UNSET_NUMA_NODE_ID, but it
-> looks like there's no existing i386 or PC code that ever looks at
-> CPUState::numa_node. Maybe worth mentioning in the commit
-> message.
-In preceding hunk there is code which still effectively keeps it 0 by default
-with comment explaining that it's so for legacy reasons.
-I can copy comment in commit message as well if that's what you've meant.
-
-for PC it would affect only HMP 'info numa' output,
-but pc_cpu_pre_plug() in this patch takes care of it
-to ensure that old behavior is preserved.
-
+> Replay adds a FIXME to preserve the cause across the replay stream,
+> that will be tackled in the next patch.
 > 
-> >      DEFINE_PROP_BOOL("pmu", X86CPU, enable_pmu, false),
-> >      { .name  = "hv-spinlocks", .info  = &qdev_prop_spinlocks },
-> >      DEFINE_PROP_BOOL("hv-relaxed", X86CPU, hyperv_relaxed_timing, false),
-> > -- 
-> > 2.7.4
-> >   
-> 
+> Signed-off-by: Eric Blake <eblake@redhat.com>
+> Acked-by: David Gibson <david@gibson.dropbear.id.au> [ppc parts]
+> Reviewed-by: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk> [SPARC part]
 
+> diff --git a/target/s390x/helper.c b/target/s390x/helper.c
+> index 68bd2f9..d2bb9aa 100644
+> --- a/target/s390x/helper.c
+> +++ b/target/s390x/helper.c
+> @@ -266,7 +266,7 @@ void load_psw(CPUS390XState *env, uint64_t mask, uint64_t addr)
+>          S390CPU *cpu = s390_env_get_cpu(env);
+>          if (s390_cpu_halt(cpu) == 0) {
+>  #ifndef CONFIG_USER_ONLY
+> -            qemu_system_shutdown_request();
+> +            qemu_system_shutdown_request(SHUTDOWN_CAUSE_GUEST_SHUTDOWN);
+
+Looking at this, I think the non-kvm code path might want some panic
+handling for disabled wait, but that would be an orthogonal change and
+this transformation looks reasonable.
+
+>  #endif
+>          }
+>      }
+
+s390x parts:
+
+Reviewed-by: Cornelia Huck <cornelia.huck@de.ibm.com>

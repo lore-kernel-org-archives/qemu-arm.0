@@ -1,109 +1,109 @@
-Received: by 10.25.0.6 with SMTP id 6csp212345lfa;
-        Wed, 10 May 2017 03:35:05 -0700 (PDT)
-X-Received: by 10.55.72.147 with SMTP id v141mr4962493qka.208.1494412505371;
-        Wed, 10 May 2017 03:35:05 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1494412505; cv=none;
+Received: by 10.25.0.6 with SMTP id 6csp231158lfa;
+        Wed, 10 May 2017 04:16:50 -0700 (PDT)
+X-Received: by 10.237.36.219 with SMTP id u27mr5238207qtc.197.1494415009973;
+        Wed, 10 May 2017 04:16:49 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1494415009; cv=none;
         d=google.com; s=arc-20160816;
-        b=gnsxbPG0mdjybI/bOGPHw5bb2M9mUPCna1Mc8Avqra49i67ovis9h9medzLRKdN9+J
-         7IdZgEo95rrRzVrnvtOV8tqcyNb1i8U7YEhEg+8remdAYO3DyCgHZghaFjlnofOmfzFR
-         E2r32VEGcouhXK8Lq5wON5anh3KIOYxN6l/tVujhWJOyHca/OguTkOVWFNNFjRKWgolZ
-         Bt2KAV+QXsgIKf93N6vOhYkW4u6uYBiQosRlSaKna1w5CL4OBlu35+3OkLTKYDUMGNnS
-         dDSqkWQUBnfc2TG3cPadDiF+dAMx60hhok4pxV2x7oi251aBJiaS24KM5jTHb+q/+WMQ
-         W2iw==
+        b=NeyxCTSGZBDtlbhlTwnBm02eyUJb//DjsQTXhlypPpVBPRUjHVtvr0ggea7mg1QHxw
+         uwBgmLINGzru2vrkp/bD4QtS1pNRBTjsmblxAwbpViWLYBQYrqBH5839aGLTIyhCGbpX
+         cA7kXCHng9tX0sPBLW1L2MRKv28O2kJam4zmIiXwYljegOUKccWFRjFkuawkGYKExV5W
+         jq9g7oRfqtG62vDqEdlu+FvvVLx8SJQTCLk741mzew6szNsBrnj5eEire4Zt49prc6Fg
+         yL/wcX5zq8aO4qPUKgovhG0adW/fUKv5CHM98Ml6+qRxCKGVfZx0JSAoqDV4EyvzGsr6
+         VGhw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
          :message-id:from:references:to:dkim-signature
          :arc-authentication-results;
-        bh=djM90JtJMQi3vsUUrBFtv1GId7nzYqVh++0LVP+mCOE=;
-        b=VsHe2zdFB6FYeSnQzJGm3zVeRj606XTwEb1lhLFdLYcvBaG32SQMAeBhPs2A3AAsNX
-         Fu5+YQWulyXJXqEIfZl6NYbqfUIhCccFs2+4kYYluBXm2NO6eNPWOetqIQFDaWoxyqwr
-         qxisEWcQfowFI7VXvjcPsiCUWekX7GuPV90Ffb97ylopfK0h3jZKL5amlAc2+uGsREfp
-         bLY9yejoquwI3Cwy5U8yTCjectNjWRYSp8NkdH01ZcEkQPjxPm0IQX8ytDxvHtcOkhKi
-         mxKPxyFFl9M3HyzdTnrF7FHwBFJG/C/E2HqRZ977J2o7j0/lX5Nx2gp0R8XRpINkywVI
-         mTHg==
+        bh=eNFG5dhAWNeCRQsERn5KL0r0aR79ZtbHo6Nmv4vMTXg=;
+        b=CYY5CaeQCEbeLgfrZjQVi7k9obumGvg+868ESJJMYo7luSZko8ZX1Jq6ii0mElEyUq
+         V09MFNMrfMQ0WRNhza+0gYYdTOs4WfUkebX3MnKOyrmEhJH8fNZybAAYLTlGUa+mFzBE
+         Y+btruiUweX6LdphV93pW8f63AysQU+2RUI0BSfGi3ck96cxjHJOPGfdUAwRilsnYCdj
+         Q46kCUCJtavikFwKP3lPtBBk2KxukQBYwrik0BGzZzpIL69oMQsuG86zSqgvuGUUwd8E
+         R/xRoGC7pGXHKzc5aveprX5qm1zr2Pwat1bFfPJnU9grxwKD5Zq1w0N6BkqW0lvXYklS
+         IUXA==
 ARC-Authentication-Results: i=1; mx.google.com;
        dkim=fail header.i=@gmail.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id n3si2857678qkb.31.2017.05.10.03.35.05
+        by mx.google.com with ESMTPS id 15si2773783qtu.248.2017.05.10.04.16.49
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 10 May 2017 03:35:05 -0700 (PDT)
+        Wed, 10 May 2017 04:16:49 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        dkim=fail header.i=@gmail.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:41698 helo=lists.gnu.org)
+Received: from localhost ([::1]:41873 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1d8OxU-0007dX-Pa
-	for alex.bennee@linaro.org; Wed, 10 May 2017 06:35:04 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:49593)
+	id 1d8Pbt-0004ox-El
+	for alex.bennee@linaro.org; Wed, 10 May 2017 07:16:49 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:32896)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1d8OxP-0007dA-Br
-	for qemu-arm@nongnu.org; Wed, 10 May 2017 06:35:01 -0400
+	id 1d8Pbl-0004nu-KW
+	for qemu-arm@nongnu.org; Wed, 10 May 2017 07:16:43 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1d8OxK-0007vN-EQ
-	for qemu-arm@nongnu.org; Wed, 10 May 2017 06:34:59 -0400
-Received: from mail-qk0-x241.google.com ([2607:f8b0:400d:c09::241]:34882)
+	id 1d8Pbg-0005lX-DY
+	for qemu-arm@nongnu.org; Wed, 10 May 2017 07:16:41 -0400
+Received: from mail-qk0-x244.google.com ([2607:f8b0:400d:c09::244]:36836)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1d8OxK-0007vD-5Z; Wed, 10 May 2017 06:34:54 -0400
-Received: by mail-qk0-x241.google.com with SMTP id k74so3971610qke.2;
-	Wed, 10 May 2017 03:34:54 -0700 (PDT)
+	id 1d8Pbg-0005lT-8X; Wed, 10 May 2017 07:16:36 -0400
+Received: by mail-qk0-x244.google.com with SMTP id y128so4141471qka.3;
+	Wed, 10 May 2017 04:16:36 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
 	h=sender:subject:to:references:cc:from:message-id:date:user-agent
 	:mime-version:in-reply-to:content-transfer-encoding;
-	bh=djM90JtJMQi3vsUUrBFtv1GId7nzYqVh++0LVP+mCOE=;
-	b=RRsrpNC350ilBR6UEmaI+qg3ZogoiXI77mJekxpwkzg2gOa1CO5GSfrs31nwWayIH8
-	lPIGVyjRk0ZeVxfZ23fmAPVTDNtSDZ3wFbA9fN1XacG5ZEpTTZLN0+IlqV5kV90MVgv0
-	/kFDyiTiyS+yLvmWWu/edCBQaHrACQPdc0BgKPYHhkBHOVxnubrWIJI5NUNFNIVV+XiG
-	jhYI+Vl0DKRrUmXilM0rELJJLUPm1ikzeBl9A2vwRYjRdjm1e5hKaQZUsyXbM9m5ZM31
-	Pa2paXWyXWeKNjQh9+JLcOTo27KCNo/vk875Re0+Pz8z+gIJaC2XNVihcN3WUTDxb8ql
-	AIsQ==
+	bh=eNFG5dhAWNeCRQsERn5KL0r0aR79ZtbHo6Nmv4vMTXg=;
+	b=T9eW+xFll3ceGxW9J1y9gLqVnw4scU/E21ncsJ52vG3LbYpNS+E9tzRd/u+gevlFTG
+	IX7V3bnEa0undeNct2l0+uxjsJSOqqI6WpX1KaxlZJuiXW/4q5ArWNzQqhcguJXqRarv
+	bOsrYmZIGHqL4WDORIaU543wsn0QsRPKgNtaQGIRp+lsxzx37o4cYvdkJTvdRZEvsKw1
+	kxlxUJt9JjmDH7Yo3bolKCXdsGFI6caCtTv07yMq/yUsDan1ccAF2cn+X3nGxdD4/9KP
+	H9pPiiKrbmzd4hvYv3wrRR+7Zn8tchBRm0HLBVJmf35I4+VQfDskrNtXy843AdPDHfPB
+	mYOw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:sender:subject:to:references:cc:from:message-id
 	:date:user-agent:mime-version:in-reply-to:content-transfer-encoding;
-	bh=djM90JtJMQi3vsUUrBFtv1GId7nzYqVh++0LVP+mCOE=;
-	b=PactxRYb7RjQxhtjSmtLFjr1uHWuQ80a7LLPjsVuOf4UkCcY++8xK2hhd0PtA9HliE
-	pYTl4Lzhs8sDIHUDGVdhRQtWs288xsm6HQ2HmUIbLZU0X+8iFpLkea/wLAN1JBYl8JjD
-	a7/8GXBYuf3xfYtTzGAXELowPagOrpJjW7Ra58QDMLJ0jtRFEwV4xkjzrEAgx3S/n2j2
-	jBgOSCAtxPnGKLqvP0i7pbro8EQGXFYdxz5kG2n6Liq25mM7TN3GvgnyQfvrKFRnziL0
-	T66Y2gVVbXiQ9ksueLUVd9cXcCE6aHSg7xqYOvQVrfXVACj4S44htojPxl2yhOWxOnYC
-	trEA==
-X-Gm-Message-State: AODbwcBwgNLjPhSwrebZquP32Q9dDULlprhq9eBGwe8kb/k0Fyh1wSGy
-	2rZ5T/E2znyqnA==
-X-Received: by 10.55.102.8 with SMTP id a8mr4458648qkc.66.1494412493465;
-	Wed, 10 May 2017 03:34:53 -0700 (PDT)
+	bh=eNFG5dhAWNeCRQsERn5KL0r0aR79ZtbHo6Nmv4vMTXg=;
+	b=hnd0FHaThTCteUVSj2S62ZDztLTucWx0p+6/noYydII6yBL+Z3LgdXlQgeN2OKT5W7
+	L0zYL9A17sfEnBabTnjQGB7qaup0HuCuouaHDYHSN+FHSRbnMGDAsIEgIg46k6PmzgD3
+	alq8RGt4vuFvbu76gFEg9ZQx3suRR3uMFGWaSVPlxeOtkoquDESK93/YZKfGqSNpBgcC
+	IGzArUs0wFLHWPT1NCghr60BizUEkUy3NedKd5z37VKtnSE38sLme0xkypOBOHKjol0V
+	P0bVDKLFQj2tlJNYj2nbL45FbVwoQMQxcFxhGpU5RcFlK7B6n9HwoHSEDY3PcGi2IWte
+	AK5Q==
+X-Gm-Message-State: AODbwcDTLVuIkHyKkx6Mju/4KP26w3v3D7AWVEzZOgT6tI239Nf6NTFX
+	i4yrs888MBTrEA==
+X-Received: by 10.55.50.204 with SMTP id y195mr4614681qky.264.1494414995620;
+	Wed, 10 May 2017 04:16:35 -0700 (PDT)
 Received: from [192.168.1.10] ([138.117.48.226])
 	by smtp.gmail.com with ESMTPSA id
-	s21sm1770263qtc.58.2017.05.10.03.34.51
+	f203sm1990446qka.11.2017.05.10.04.16.33
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Wed, 10 May 2017 03:34:52 -0700 (PDT)
+	Wed, 10 May 2017 04:16:35 -0700 (PDT)
 To: Subbaraya Sundeep <sundeep.lkml@gmail.com>, qemu-devel@nongnu.org,
 	qemu-arm@nongnu.org
 References: <1494348286-10253-1-git-send-email-sundeep.lkml@gmail.com>
-	<1494348286-10253-3-git-send-email-sundeep.lkml@gmail.com>
+	<1494348286-10253-6-git-send-email-sundeep.lkml@gmail.com>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <fffd61b7-bc45-f7da-aa91-5eed1b0d7519@amsat.org>
-Date: Wed, 10 May 2017 07:34:49 -0300
+Message-ID: <640edc6d-0a7c-49c2-5bf1-e13468662e88@amsat.org>
+Date: Wed, 10 May 2017 08:16:31 -0300
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
 	Thunderbird/45.8.0
 MIME-Version: 1.0
-In-Reply-To: <1494348286-10253-3-git-send-email-sundeep.lkml@gmail.com>
+In-Reply-To: <1494348286-10253-6-git-send-email-sundeep.lkml@gmail.com>
 Content-Type: text/plain; charset=windows-1252; format=flowed
 Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400d:c09::241
-Subject: Re: [Qemu-arm] [Qemu-devel] [Qemu-devel PATCH 2/5] msf2: Microsemi
- Smartfusion2 System Register block.
+X-Received-From: 2607:f8b0:400d:c09::244
+Subject: Re: [Qemu-arm] [Qemu-devel] [Qemu-devel PATCH 5/5] msf2: Add
+ Emcraft's Smartfusion2 SOM kit.
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -118,184 +118,41 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: peter.maydell@linaro.org, alistair23@gmail.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: SVop5kWxLrv0
+X-TUID: +BeVNPMqqoba
 
 Hi Subbaraya,
 
 On 05/09/2017 01:44 PM, Subbaraya Sundeep wrote:
-> Added Sytem register block of Smartfusion2.
-> This block has PLL registers which are accessed by guest.
+> Emulated Emcraft's Smartfusion2 System On Module starter
+> kit.
 >
 > Signed-off-by: Subbaraya Sundeep <sundeep.lkml@gmail.com>
 > ---
->  hw/misc/Makefile.objs         |   1 +
->  hw/misc/msf2-sysreg.c         | 131 ++++++++++++++++++++++++++++++++++++++++++
->  include/hw/misc/msf2-sysreg.h |  80 ++++++++++++++++++++++++++
->  3 files changed, 212 insertions(+)
->  create mode 100644 hw/misc/msf2-sysreg.c
->  create mode 100644 include/hw/misc/msf2-sysreg.h
+>  hw/arm/Makefile.objs |  1 +
+>  hw/arm/msf2-som.c    | 67 ++++++++++++++++++++++++++++++++++++++++++++++++++++
+>  2 files changed, 68 insertions(+)
+>  create mode 100644 hw/arm/msf2-som.c
 >
-> diff --git a/hw/misc/Makefile.objs b/hw/misc/Makefile.objs
-> index c8b4893..0f52354 100644
-> --- a/hw/misc/Makefile.objs
-> +++ b/hw/misc/Makefile.objs
-> @@ -56,3 +56,4 @@ obj-$(CONFIG_EDU) += edu.o
->  obj-$(CONFIG_HYPERV_TESTDEV) += hyperv_testdev.o
->  obj-$(CONFIG_AUX) += auxbus.o
->  obj-$(CONFIG_ASPEED_SOC) += aspeed_scu.o aspeed_sdmc.o
-> +obj-$(CONFIG_MSF2) += msf2-sysreg.o
-> diff --git a/hw/misc/msf2-sysreg.c b/hw/misc/msf2-sysreg.c
+> diff --git a/hw/arm/Makefile.objs b/hw/arm/Makefile.objs
+> index ae5e4a3..b626a43 100644
+> --- a/hw/arm/Makefile.objs
+> +++ b/hw/arm/Makefile.objs
+> @@ -5,6 +5,7 @@ obj-y += omap_sx1.o palm.o realview.o spitz.o stellaris.o msf2-soc.o
+>  obj-y += tosa.o versatilepb.o vexpress.o virt.o xilinx_zynq.o z2.o
+>  obj-$(CONFIG_ACPI) += virt-acpi-build.o
+>  obj-y += netduino2.o
+> +obj-y += msf2-som.o
+>  obj-y += sysbus-fdt.o
+>
+>  obj-y += armv7m.o exynos4210.o pxa2xx.o pxa2xx_gpio.o pxa2xx_pic.o
+> diff --git a/hw/arm/msf2-som.c b/hw/arm/msf2-som.c
 > new file mode 100644
-> index 0000000..53e9cba
+> index 0000000..bc44169
 > --- /dev/null
-> +++ b/hw/misc/msf2-sysreg.c
-> @@ -0,0 +1,131 @@
+> +++ b/hw/arm/msf2-som.c
+> @@ -0,0 +1,67 @@
 > +/*
-> + * System Register block model of Microsemi SmartFusion2.
-> + *
-> + * Copyright (c) 2017 Subbaraya Sundeep <sundeep.lkml@gmail.com>
-> + *
-> + * This program is free software; you can redistribute it and/or
-> + * modify it under the terms of the GNU General Public License
-> + * as published by the Free Software Foundation; either version
-> + * 2 of the License, or (at your option) any later version.
-> + *
-> + * You should have received a copy of the GNU General Public License along
-> + * with this program; if not, see <http://www.gnu.org/licenses/>.
-> + */
-> +
-> +#include "hw/misc/msf2-sysreg.h"
-> +
-> +#ifndef MSF2_SYSREG_ERR_DEBUG
-> +#define MSF2_SYSREG_ERR_DEBUG  0
-> +#endif
-> +
-> +#define DB_PRINT_L(lvl, fmt, args...) do { \
-> +    if (MSF2_SYSREG_ERR_DEBUG >= lvl) { \
-> +        qemu_log("%s: " fmt, __func__, ## args); \
-> +    } \
-> +} while (0);
-> +
-> +#define DB_PRINT(fmt, args...) DB_PRINT_L(1, fmt, ## args)
-> +
-> +static void msf2_sysreg_reset(DeviceState *d)
-> +{
-> +    MSF2SysregState *s = MSF2_SYSREG(d);
-> +
-> +    DB_PRINT("RESET\n");
-> +
-> +    s->regs[MSSDDR_PLL_STATUS_LOW_CR] = 0x02420041;
-> +    s->regs[MSSDDR_FACC1_CR] = 0x0A482124;
-> +    s->regs[MSSDDR_PLL_STATUS] = 0x3;
-> +}
-> +
-> +static uint64_t msf2_sysreg_read(void *opaque, hwaddr offset,
-> +    unsigned size)
-> +{
-> +    MSF2SysregState *s = opaque;
-> +    offset /= 4;
-> +    uint32_t ret = 0;
-> +
-> +    if (offset < ARRAY_SIZE(s->regs)) {
-> +        ret = s->regs[offset];
-> +        DB_PRINT("addr: 0x%08" HWADDR_PRIx " data: 0x%08" PRIx32 "\n",
-> +                    offset * 4, ret);
-> +    } else {
-> +        qemu_log_mask(LOG_GUEST_ERROR,
-> +                    "%s: Bad offset 0x%08" HWADDR_PRIx "\n", __func__,
-> +                    offset * 4);
-> +    }
-> +
-> +    return ret;
-> +}
-> +
-> +static void msf2_sysreg_write(void *opaque, hwaddr offset,
-> +                          uint64_t val, unsigned size)
-> +{
-> +    MSF2SysregState *s = (MSF2SysregState *)opaque;
-> +    offset /= 4;
-> +
-> +    DB_PRINT("addr: 0x%08" HWADDR_PRIx " data: 0x%08" PRIx64 "\n",
-> +            offset * 4, val);
-> +
-> +    switch (offset) {
-> +    case MSSDDR_PLL_STATUS:
-> +        break;
-> +
-> +    default:
-> +        if (offset < ARRAY_SIZE(s->regs)) {
-> +            s->regs[offset] = val;
-
-I think this is pretty unsafe for the guest to continue if those 
-registers are accessed in your current implementation.
-
-I'd at least somehow abort for few of them (RESET, REMAP*), what do you 
-think?
-
-> +        } else {
-> +            qemu_log_mask(LOG_GUEST_ERROR,
-> +                        "%s: Bad offset 0x%08" HWADDR_PRIx "\n", __func__,
-> +                        offset * 4);
-> +        }
-> +        break;
-> +    }
-> +}
-> +
-> +static const MemoryRegionOps sysreg_ops = {
-> +    .read = msf2_sysreg_read,
-> +    .write = msf2_sysreg_write,
-> +    .endianness = DEVICE_NATIVE_ENDIAN,
-> +};
-> +
-> +static void msf2_sysreg_init(Object *obj)
-> +{
-> +    MSF2SysregState *s = MSF2_SYSREG(obj);
-> +
-> +    memory_region_init_io(&s->iomem, obj, &sysreg_ops, s, TYPE_MSF2_SYSREG,
-> +                          MSF2_SYSREG_MMIO_SIZE);
-> +    sysbus_init_mmio(SYS_BUS_DEVICE(obj), &s->iomem);
-> +}
-> +
-> +static const VMStateDescription vmstate_msf2_sysreg = {
-> +    .name = TYPE_MSF2_SYSREG,
-> +    .version_id = 1,
-> +    .minimum_version_id = 1,
-> +    .fields = (VMStateField[]) {
-> +        VMSTATE_UINT32_ARRAY(regs, MSF2SysregState, MSF2_SYSREG_NUM_REGS),
-> +        VMSTATE_END_OF_LIST()
-> +    }
-> +};
-> +
-> +static void msf2_sysreg_class_init(ObjectClass *klass, void *data)
-> +{
-> +    DeviceClass *dc = DEVICE_CLASS(klass);
-> +
-> +    dc->vmsd = &vmstate_msf2_sysreg;
-> +    dc->reset = msf2_sysreg_reset;
-> +}
-> +
-> +static const TypeInfo msf2_sysreg_info = {
-> +    .name  = TYPE_MSF2_SYSREG,
-> +    .parent = TYPE_SYS_BUS_DEVICE,
-> +    .class_init = msf2_sysreg_class_init,
-> +    .instance_size  = sizeof(MSF2SysregState),
-> +    .instance_init = msf2_sysreg_init,
-> +};
-> +
-> +static void msf2_sysreg_register_types(void)
-> +{
-> +    type_register_static(&msf2_sysreg_info);
-> +}
-> +
-> +type_init(msf2_sysreg_register_types)
-> diff --git a/include/hw/misc/msf2-sysreg.h b/include/hw/misc/msf2-sysreg.h
-> new file mode 100644
-> index 0000000..a485ed6
-> --- /dev/null
-> +++ b/include/hw/misc/msf2-sysreg.h
-> @@ -0,0 +1,80 @@
-> +/*
-> + * Microsemi SmartFusion2 SYSREG
+> + * SmartFusion2 SOM starter kit(from Emcraft) emulation.
 > + *
 > + * Copyright (c) 2017 Subbaraya Sundeep <sundeep.lkml@gmail.com>
 > + *
@@ -318,60 +175,55 @@ think?
 > + * THE SOFTWARE.
 > + */
 > +
-> +#ifndef HW_MSF2_SYSREG_H
-> +#define HW_MSF2_SYSREG_H
-> +
 > +#include "qemu/osdep.h"
-> +#include "hw/sysbus.h"
-> +#include "hw/hw.h"
-> +#include "sysemu/sysemu.h"
-> +#include "qemu/log.h"
+> +#include "qapi/error.h"
+> +#include "hw/boards.h"
+> +#include "hw/arm/msf2-soc.h"
+> +#include "hw/arm/arm.h"
 > +
-> +enum {
-> +    ESRAM_CR        = 0x00 / 4,
-> +    ESRAM_MAX_LAT,
-> +    DDR_CR,
-> +    ENVM_CR,
-> +    ENVM_REMAP_BASE_CR,
-> +    ENVM_REMAP_FAB_CR,
-> +    CC_CR,
-> +    CC_REGION_CR,
-> +    CC_LOCK_BASE_ADDR_CR,
-> +    CC_FLUSH_INDX_CR,
-> +    DDRB_BUF_TIMER_CR,
-> +    DDRB_NB_ADDR_CR,
-> +    DDRB_NB_SIZE_CR,
-> +    DDRB_CR,
+> +static void msf2_init(MachineState *machine)
+> +{
+> +    DeviceState *dev;
+> +    DeviceState *spi_flash;
+> +    MSF2State *soc;
+> +    DriveInfo *dinfo = drive_get_next(IF_MTD);
+> +    qemu_irq cs_line;
+> +    SSIBus *spi_bus;
 > +
-> +    SOFT_RESET_CR  = 0x48 / 4,
-> +    M3_CR,
+> +    dev = qdev_create(NULL, TYPE_MSF2_SOC);
+> +    object_property_set_bool(OBJECT(dev), true, "realized", &error_fatal);
 > +
-> +    GPIO_SYSRESET_SEL_CR = 0x58 / 4,
+> +    soc = MSF2_SOC(dev);
 > +
-> +    MDDR_CR = 0x60 / 4,
+> +    /* Attach SPI flash to SPI0 controller */
+> +    spi_bus = (SSIBus *)qdev_get_child_bus(dev, "spi0");
+> +    spi_flash = ssi_create_slave_no_init(spi_bus, "s25sl12801");
+> +    qdev_prop_set_uint8(spi_flash, "spansion-cr2nv", 1);
+> +    if (dinfo) {
+> +        qdev_prop_set_drive(spi_flash, "drive", blk_by_legacy_dinfo(dinfo),
+> +                                    &error_fatal);
+> +    }
+> +    qdev_init_nofail(spi_flash);
+> +    cs_line = qdev_get_gpio_in_named(spi_flash, SSI_GPIO_CS, 0);
+> +    sysbus_connect_irq(SYS_BUS_DEVICE(&soc->spi[0]), 1, cs_line);
 > +
-> +    MSSDDR_PLL_STATUS_LOW_CR = 0x90 / 4,
-> +    MSSDDR_PLL_STATUS_HIGH_CR,
-> +    MSSDDR_FACC1_CR,
-> +    MSSDDR_FACC2_CR,
+> +    armv7m_load_kernel(ARM_CPU(first_cpu), machine->kernel_filename,
+> +                       ENVM_SIZE);
+> +}
 > +
-> +    MSSDDR_PLL_STATUS = 0x150 / 4,
+> +static void msf2_machine_init(MachineClass *mc)
+> +{
+> +    mc->desc = "SmartFusion2 SOM kit from Emcraft";
+> +    mc->init = msf2_init;
+> +}
 > +
-> +};
-> +
-> +#define MSF2_SYSREG_MMIO_SIZE     0x300
-> +#define MSF2_SYSREG_NUM_REGS      (MSF2_SYSREG_MMIO_SIZE / 4)
-> +
-> +#define TYPE_MSF2_SYSREG          "msf2-sysreg"
-> +#define MSF2_SYSREG(obj)  OBJECT_CHECK(MSF2SysregState, (obj), TYPE_MSF2_SYSREG)
-> +
-> +typedef struct MSF2SysregState {
-> +    SysBusDevice parent_obj;
-> +
-> +    MemoryRegion iomem;
-> +
-> +    uint32_t regs[MSF2_SYSREG_NUM_REGS];
-> +} MSF2SysregState;
-> +
-> +#endif /* HW_MSF2_SYSREG_H */
->
+> +DEFINE_MACHINE("smartfusion2-som", msf2_machine_init)
+
+This is not the only SoM existing using a SF2, what about beeing more 
+specific, like "emcraft-sf2"?
+Likewise I'd rename the functions with a pattern such 'emcraft_sf2_*()' 
+although the filename is correct.
+
+Regards,
+
+Phil.

@@ -1,87 +1,86 @@
-Received: by 10.25.0.6 with SMTP id 6csp237815lfa;
-        Wed, 10 May 2017 04:30:52 -0700 (PDT)
-X-Received: by 10.55.131.198 with SMTP id f189mr984585qkd.187.1494415852508;
-        Wed, 10 May 2017 04:30:52 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1494415852; cv=none;
+Received: by 10.25.0.6 with SMTP id 6csp238987lfa;
+        Wed, 10 May 2017 04:33:13 -0700 (PDT)
+X-Received: by 10.237.37.55 with SMTP id v52mr5316329qtc.31.1494415993760;
+        Wed, 10 May 2017 04:33:13 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1494415993; cv=none;
         d=google.com; s=arc-20160816;
-        b=eijA4otV8+/ndHGG4MJSmJOYI7KrnS4Dx55/FyWtBGy74hpLqJRIhrstSwvltFDlar
-         flD2qOKAu6lNEQkJQlUe5Sj+0qhLaZnfgqq+D+d6F6NFH/GuWbaiknFuxy1mjoxFyV5T
-         vtVIJ8uNWVhwceUry06GpjSbo/T8yELbsrUEAi5M/7mNsnGecbflgOrUlW55V/gTQ/EL
-         KHjtjVfHfjyL319rDieNxaDsWnub12AQ9b2oLIJoV8nDQ4I6s6wt6MmobwNMe4G2LING
-         Jx1m9yVlNwnADPcPsqlELR+QP+o/qVwmz0x/j5pQdy13FG4BPyscodIGXUlURWDHAYAP
-         rfwQ==
+        b=USqXI9whQfxpvTBRvuKW7wtiQMvNIqj9O9i4cqv1Qa6/+Ljcgzqli9FPzhROsew1gV
+         0GZXF/uMnrBO4aIWa1ZW5s1/Heuc1ju1D3zQpjertNkOa/r1AHiKTb85DL91kGle/3Rl
+         dcPVYZcxY+7oG0Xt1jWqjI7//gnhOXr/oJB7Nt95y9ME84mT5XsKrojTXzW8hts5wxLm
+         meyjVi1hI/H+erYrtD8bWNSrGwHJ7iK359odAajdU67YQC8gu3fIll1fwC32bqJTRH0Q
+         7/pcEdfhgeIkdYmedCD6RxHcKLM/KnOHoFOTlF7TR+JcrD1ww5BsVjf3I+NALlKWuH/4
+         OFbw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
          :message-id:date:to:from:dkim-filter:dmarc-filter
          :arc-authentication-results;
-        bh=Er+Kkkno7yg57xK9Q6A3whYbO8j+xI547opyGf4yTTY=;
-        b=v8WKFx8ZDAcQ8jQnzLksdy55d/ujLIhRVLHKFdvWyuczw7orCOrWrFj1Ha7n5vSJfG
-         Lq/Hm8VXOnlYNWo+sNVcEGRIFGMCLUFuNZWxitQ0trpJtcYcvweruhCgfX0UQOGeOBNh
-         pYI/wY0C4Fgj/90KAVjDk/EbS2EXg5FbDHW9yuvj1k+e3UqGCWpbEDREKVy2NvYHKpyv
-         YQ4zn6uSCjX9p/L92PLzyTtYlpdYZ/2HhlYEF2+UMNqSChvg7EhusuM81ZCTeNa5PSCA
-         rf3SqbHuNDuKhOPMy/JDH7uWmTnQWaDl4zd3PcuiAya/xMV8zv54HzxKV0xhTecUY5xZ
-         pO4A==
+        bh=Cbaf7WOGELf5SDedb22RUkJcED/w/lLCtPp8aQI/nu8=;
+        b=rJw+X2iuVQ+YxCxXYAMhxDJtHzAwAq5NF7lX+T3+q9yg4MoE6tHK1tvgLPjdlOKbUD
+         WncZ4X1iCFPHWVMfyl/iyZTsGoS4wCgyZJwG+HaYkzgurCAT5ax+QxvZ4VZJVN3U6R8i
+         TXCaZ50bB2eyfaUykk2buf1nWSJIJMLZO5pvFtJpFZdcVIKmMkh1zaAUFYPWgjOziTa5
+         +n9sHWozF8M+KcXOuOsy4HjXPMKGy02LONE1slmQRQ5yIc/fb/5SLKUovb26e3SWUInU
+         LOUbaYr05MYo8gtgfXO70G2YToRg5e3eG/TF+xDm7tn5oFnYWi7Tdgs4L8LLBXA9SFiE
+         iWaA==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id x38si2847450qta.208.2017.05.10.04.30.52
+        by mx.google.com with ESMTPS id l128si2816386qkd.276.2017.05.10.04.33.13
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 10 May 2017 04:30:52 -0700 (PDT)
+        Wed, 10 May 2017 04:33:13 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:41917 helo=lists.gnu.org)
+Received: from localhost ([::1]:41926 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1d8PpT-0007pv-RW
-	for alex.bennee@linaro.org; Wed, 10 May 2017 07:30:51 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:35134)
+	id 1d8Prl-0001gl-4X
+	for alex.bennee@linaro.org; Wed, 10 May 2017 07:33:13 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:35289)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <imammedo@redhat.com>) id 1d8Pov-0007R5-70
-	for qemu-arm@nongnu.org; Wed, 10 May 2017 07:30:23 -0400
+	(envelope-from <imammedo@redhat.com>) id 1d8Pp6-0007Zd-5U
+	for qemu-arm@nongnu.org; Wed, 10 May 2017 07:30:29 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <imammedo@redhat.com>) id 1d8Pot-0001fu-Be
-	for qemu-arm@nongnu.org; Wed, 10 May 2017 07:30:17 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:52240)
+	(envelope-from <imammedo@redhat.com>) id 1d8Pp0-0001hR-9A
+	for qemu-arm@nongnu.org; Wed, 10 May 2017 07:30:28 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:35090)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <imammedo@redhat.com>)
-	id 1d8Pot-0001fp-36; Wed, 10 May 2017 07:30:15 -0400
+	id 1d8Pp0-0001h4-30; Wed, 10 May 2017 07:30:22 -0400
 Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
 	[10.5.11.15])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id D98EA19D39C;
-	Wed, 10 May 2017 11:30:13 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com D98EA19D39C
-Authentication-Results: ext-mx05.extmail.prod.ext.phx2.redhat.com;
+	by mx1.redhat.com (Postfix) with ESMTPS id 02163C059738;
+	Wed, 10 May 2017 11:30:21 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 02163C059738
+Authentication-Results: ext-mx08.extmail.prod.ext.phx2.redhat.com;
 	dmarc=none (p=none dis=none) header.from=redhat.com
-Authentication-Results: ext-mx05.extmail.prod.ext.phx2.redhat.com;
+Authentication-Results: ext-mx08.extmail.prod.ext.phx2.redhat.com;
 	spf=pass smtp.mailfrom=imammedo@redhat.com
-DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com D98EA19D39C
+DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com 02163C059738
 Received: from dell-r430-03.lab.eng.brq.redhat.com
 	(dell-r430-03.lab.eng.brq.redhat.com [10.34.112.60])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 864658853C;
-	Wed, 10 May 2017 11:30:11 +0000 (UTC)
+	by smtp.corp.redhat.com (Postfix) with ESMTP id ED2947DFF5;
+	Wed, 10 May 2017 11:30:18 +0000 (UTC)
 From: Igor Mammedov <imammedo@redhat.com>
 To: qemu-devel@nongnu.org
-Date: Wed, 10 May 2017 13:29:45 +0200
-Message-Id: <1494415802-227633-2-git-send-email-imammedo@redhat.com>
+Date: Wed, 10 May 2017 13:29:48 +0200
+Message-Id: <1494415802-227633-5-git-send-email-imammedo@redhat.com>
 In-Reply-To: <1494415802-227633-1-git-send-email-imammedo@redhat.com>
 References: <1494415802-227633-1-git-send-email-imammedo@redhat.com>
 X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.29]);
-	Wed, 10 May 2017 11:30:14 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.32]);
+	Wed, 10 May 2017 11:30:21 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 209.132.183.28
-Subject: [Qemu-arm] [PATCH v3 01/18] numa: move source of default CPUs to
- NUMA node mapping into boards
+Subject: [Qemu-arm] [PATCH v3 04/18] virt-arm: add node-id property to CPU
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -100,306 +99,63 @@ Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jones <drjones@redhat.com>,
 	David Gibson <david@gibson.dropbear.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: iGwEi6U4+85R
+X-TUID: qUrAxNugkk9o
 
-Originally CPU threads were by default assigned in
-round-robin fashion. However it was causing issues in
-guest since CPU threads from the same socket/core could
-be placed on different NUMA nodes.
-Commit fb43b73b (pc: fix default VCPU to NUMA node mapping)
-fixed it by grouping threads within a socket on the same node
-introducing cpu_index_to_socket_id() callback and commit
-20bb648d (spapr: Fix default NUMA node allocation for threads)
-reused callback to fix similar issues for SPAPR machine
-even though socket doesn't make much sense there.
-
-As result QEMU ended up having 3 default distribution rules
-used by 3 targets /virt-arm, spapr, pc/.
-
-In effort of moving NUMA mapping for CPUs into possible_cpus,
-generalize default mapping in numa.c by making boards decide
-on default mapping and let them explicitly tell generic
-numa code to which node a CPU thread belongs to by replacing
-cpu_index_to_socket_id() with @cpu_index_to_instance_props()
-which provides default node_id assigned by board to specified
-cpu_index.
+it will allow switching from cpu_index to property based
+numa mapping in follow up patches.
 
 Signed-off-by: Igor Mammedov <imammedo@redhat.com>
-Reviewed-by: Eduardo Habkost <ehabkost@redhat.com>
+Reviewed-by: Andrew Jones <drjones@redhat.com>
 ---
-Patch only moves source of default mapping to possible_cpus[]
-and leaves the rest of NUMA handling to numa_info[node_id].node_cpu
-bitmaps. It's up to follow up patches to replace bitmaps
-with possible_cpus[] internally.
+ hw/arm/virt.c    | 15 +++++++++++++++
+ target/arm/cpu.c |  1 +
+ 2 files changed, 16 insertions(+)
 
-v3:
-  - drop duplicate ';' (Drew)
-  - add comment to spapr_cpu_index_to_props() explaining why
-    cpu_index can't used as index in possible_cpus[] (Eduardo)
-  - remove obsolete comment in parse_numa_opts() (Eduardo)
-
-v2:
-  - use cpu_index instead of core_id directly in spapr_cpu_index_to_props()
-       (David Gibson)
-  - ammend comment message s/board/numa init code/
-       (David Gibson)
----
- include/hw/boards.h   |  8 ++++++--
- include/sysemu/numa.h |  2 +-
- hw/arm/virt.c         | 20 ++++++++++++++++++--
- hw/i386/pc.c          | 23 +++++++++++++++++------
- hw/ppc/spapr.c        | 28 +++++++++++++++++++++-------
- numa.c                | 24 +++++++++++-------------
- vl.c                  |  2 +-
- 7 files changed, 75 insertions(+), 32 deletions(-)
-
-diff --git a/include/hw/boards.h b/include/hw/boards.h
-index 99458eb..3ffa255 100644
---- a/include/hw/boards.h
-+++ b/include/hw/boards.h
-@@ -74,7 +74,10 @@ typedef struct {
-  *    of HotplugHandler object, which handles hotplug operation
-  *    for a given @dev. It may return NULL if @dev doesn't require
-  *    any actions to be performed by hotplug handler.
-- * @cpu_index_to_socket_id:
-+ * @cpu_index_to_instance_props:
-+ *    used to provide @cpu_index to socket/core/thread number mapping, allowing
-+ *    legacy code to perform maping from cpu_index to topology properties
-+ *    Returns: tuple of socket/core/thread ids given cpu_index belongs to.
-  *    used to provide @cpu_index to socket number mapping, allowing
-  *    a machine to group CPU threads belonging to the same socket/package
-  *    Returns: socket number given cpu_index belongs to.
-@@ -141,7 +144,8 @@ struct MachineClass {
- 
-     HotplugHandler *(*get_hotplug_handler)(MachineState *machine,
-                                            DeviceState *dev);
--    unsigned (*cpu_index_to_socket_id)(unsigned cpu_index);
-+    CpuInstanceProperties (*cpu_index_to_instance_props)(MachineState *machine,
-+                                                         unsigned cpu_index);
-     const CPUArchIdList *(*possible_cpu_arch_ids)(MachineState *machine);
- };
- 
-diff --git a/include/sysemu/numa.h b/include/sysemu/numa.h
-index 70e5621..027830c 100644
---- a/include/sysemu/numa.h
-+++ b/include/sysemu/numa.h
-@@ -26,7 +26,7 @@ struct node_info {
- };
- 
- extern NodeInfo numa_info[MAX_NODES];
--void parse_numa_opts(MachineClass *mc);
-+void parse_numa_opts(MachineState *ms);
- void numa_post_machine_init(void);
- void query_numa_node_mem(uint64_t node_mem[]);
- extern QemuOptsList qemu_numa_opts;
 diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index acc748e..dfd6fd4 100644
+index dfd6fd4..653b4d7 100644
 --- a/hw/arm/virt.c
 +++ b/hw/arm/virt.c
-@@ -1539,6 +1539,16 @@ static void virt_set_gic_version(Object *obj, const char *value, Error **errp)
-     }
- }
+@@ -1350,6 +1350,7 @@ static void machvirt_init(MachineState *machine)
+     for (n = 0; n < possible_cpus->len; n++) {
+         Object *cpuobj;
+         CPUState *cs;
++        int node_id;
  
-+static CpuInstanceProperties
-+virt_cpu_index_to_props(MachineState *ms, unsigned cpu_index)
-+{
-+    MachineClass *mc = MACHINE_GET_CLASS(ms);
-+    const CPUArchIdList *possible_cpus = mc->possible_cpu_arch_ids(ms);
-+
-+    assert(cpu_index < possible_cpus->len);
-+    return possible_cpus->cpus[cpu_index].props;
-+}
-+
- static const CPUArchIdList *virt_possible_cpu_arch_ids(MachineState *ms)
- {
-     int n;
-@@ -1558,8 +1568,13 @@ static const CPUArchIdList *virt_possible_cpu_arch_ids(MachineState *ms)
-         ms->possible_cpus->cpus[n].props.has_thread_id = true;
-         ms->possible_cpus->cpus[n].props.thread_id = n;
+         if (n >= smp_cpus) {
+             break;
+@@ -1362,6 +1363,20 @@ static void machvirt_init(MachineState *machine)
+         cs = CPU(cpuobj);
+         cs->cpu_index = n;
  
--        /* TODO: add 'has_node/node' here to describe
--           to which node core belongs */
-+        /* default distribution of CPUs over NUMA nodes */
-+        if (nb_numa_nodes) {
-+            /* preset values but do not enable them i.e. 'has_node_id = false',
-+             * numa init code will enable them later if manual mapping wasn't
-+             * present on CLI */
-+            ms->possible_cpus->cpus[n].props.node_id = n % nb_numa_nodes;
++        node_id = numa_get_node_for_cpu(cs->cpu_index);
++        if (node_id == nb_numa_nodes) {
++            /* by default CPUState::numa_node was 0 if it's not set via CLI
++             * keep it this way for now but in future we probably should
++             * refuse to start up with incomplete numa mapping */
++             node_id = 0;
 +        }
-     }
-     return ms->possible_cpus;
- }
-@@ -1581,6 +1596,7 @@ static void virt_machine_class_init(ObjectClass *oc, void *data)
-     /* We know we will never create a pre-ARMv7 CPU which needs 1K pages */
-     mc->minimum_page_bits = 12;
-     mc->possible_cpu_arch_ids = virt_possible_cpu_arch_ids;
-+    mc->cpu_index_to_instance_props = virt_cpu_index_to_props;
- }
- 
- static const TypeInfo virt_machine_info = {
-diff --git a/hw/i386/pc.c b/hw/i386/pc.c
-index f3b372a..01693d5 100644
---- a/hw/i386/pc.c
-+++ b/hw/i386/pc.c
-@@ -2243,12 +2243,14 @@ static void pc_machine_reset(void)
-     }
- }
- 
--static unsigned pc_cpu_index_to_socket_id(unsigned cpu_index)
-+static CpuInstanceProperties
-+pc_cpu_index_to_props(MachineState *ms, unsigned cpu_index)
- {
--    X86CPUTopoInfo topo;
--    x86_topo_ids_from_idx(smp_cores, smp_threads, cpu_index,
--                          &topo);
--    return topo.pkg_id;
-+    MachineClass *mc = MACHINE_GET_CLASS(ms);
-+    const CPUArchIdList *possible_cpus = mc->possible_cpu_arch_ids(ms);
-+
-+    assert(cpu_index < possible_cpus->len);
-+    return possible_cpus->cpus[cpu_index].props;
- }
- 
- static const CPUArchIdList *pc_possible_cpu_arch_ids(MachineState *ms)
-@@ -2280,6 +2282,15 @@ static const CPUArchIdList *pc_possible_cpu_arch_ids(MachineState *ms)
-         ms->possible_cpus->cpus[i].props.core_id = topo.core_id;
-         ms->possible_cpus->cpus[i].props.has_thread_id = true;
-         ms->possible_cpus->cpus[i].props.thread_id = topo.smt_id;
-+
-+        /* default distribution of CPUs over NUMA nodes */
-+        if (nb_numa_nodes) {
-+            /* preset values but do not enable them i.e. 'has_node_id = false',
-+             * numa init code will enable them later if manual mapping wasn't
-+             * present on CLI */
-+            ms->possible_cpus->cpus[i].props.node_id =
-+                topo.pkg_id % nb_numa_nodes;
++        if (cs->numa_node == CPU_UNSET_NUMA_NODE_ID) {
++            cs->numa_node = node_id;
++        } else {
++            /* CPU isn't device_add compatible yet, this shouldn't happen */
++            error_setg(&error_abort, "user set node-id not implemented");
 +        }
-     }
-     return ms->possible_cpus;
- }
-@@ -2322,7 +2333,7 @@ static void pc_machine_class_init(ObjectClass *oc, void *data)
-     pcmc->acpi_data_size = 0x20000 + 0x8000;
-     pcmc->save_tsc_khz = true;
-     mc->get_hotplug_handler = pc_get_hotpug_handler;
--    mc->cpu_index_to_socket_id = pc_cpu_index_to_socket_id;
-+    mc->cpu_index_to_instance_props = pc_cpu_index_to_props;
-     mc->possible_cpu_arch_ids = pc_possible_cpu_arch_ids;
-     mc->has_hotpluggable_cpus = true;
-     mc->default_boot_order = "cad";
-diff --git a/hw/ppc/spapr.c b/hw/ppc/spapr.c
-index bdc31ce..2077e4b 100644
---- a/hw/ppc/spapr.c
-+++ b/hw/ppc/spapr.c
-@@ -2981,11 +2981,18 @@ static HotplugHandler *spapr_get_hotplug_handler(MachineState *machine,
-     return NULL;
- }
- 
--static unsigned spapr_cpu_index_to_socket_id(unsigned cpu_index)
-+static CpuInstanceProperties
-+spapr_cpu_index_to_props(MachineState *machine, unsigned cpu_index)
- {
--    /* Allocate to NUMA nodes on a "socket" basis (not that concept of
--     * socket means much for the paravirtualized PAPR platform) */
--    return cpu_index / smp_threads / smp_cores;
-+    CPUArchId *core_slot;
-+    MachineClass *mc = MACHINE_GET_CLASS(machine);
 +
-+    /* make sure possible_cpu are intialized */
-+    mc->possible_cpu_arch_ids(machine);
-+    /* get CPU core slot containing thread that matches cpu_index */
-+    core_slot = spapr_find_cpu_slot(machine, cpu_index, NULL);
-+    assert(core_slot);
-+    return core_slot->props;
- }
- 
- static const CPUArchIdList *spapr_possible_cpu_arch_ids(MachineState *machine)
-@@ -3012,8 +3019,15 @@ static const CPUArchIdList *spapr_possible_cpu_arch_ids(MachineState *machine)
-         machine->possible_cpus->cpus[i].arch_id = core_id;
-         machine->possible_cpus->cpus[i].props.has_core_id = true;
-         machine->possible_cpus->cpus[i].props.core_id = core_id;
--        /* TODO: add 'has_node/node' here to describe
--           to which node core belongs */
-+
-+        /* default distribution of CPUs over NUMA nodes */
-+        if (nb_numa_nodes) {
-+            /* preset values but do not enable them i.e. 'has_node_id = false',
-+             * numa init code will enable them later if manual mapping wasn't
-+             * present on CLI */
-+            machine->possible_cpus->cpus[i].props.node_id =
-+                core_id / smp_threads / smp_cores % nb_numa_nodes;
-+        }
-     }
-     return machine->possible_cpus;
- }
-@@ -3138,7 +3152,7 @@ static void spapr_machine_class_init(ObjectClass *oc, void *data)
-     hc->pre_plug = spapr_machine_device_pre_plug;
-     hc->plug = spapr_machine_device_plug;
-     hc->unplug = spapr_machine_device_unplug;
--    mc->cpu_index_to_socket_id = spapr_cpu_index_to_socket_id;
-+    mc->cpu_index_to_instance_props = spapr_cpu_index_to_props;
-     mc->possible_cpu_arch_ids = spapr_possible_cpu_arch_ids;
-     hc->unplug_request = spapr_machine_device_unplug_request;
- 
-diff --git a/numa.c b/numa.c
-index d753687..bcdfca2 100644
---- a/numa.c
-+++ b/numa.c
-@@ -443,9 +443,10 @@ void numa_default_auto_assign_ram(MachineClass *mc, NodeInfo *nodes,
-     nodes[i].node_mem = size - usedmem;
- }
- 
--void parse_numa_opts(MachineClass *mc)
-+void parse_numa_opts(MachineState *ms)
- {
-     int i;
-+    MachineClass *mc = MACHINE_GET_CLASS(ms);
- 
-     for (i = 0; i < MAX_NODES; i++) {
-         numa_info[i].node_cpu = bitmap_new(max_cpus);
-@@ -511,21 +512,18 @@ void parse_numa_opts(MachineClass *mc)
-                 break;
-             }
+         if (!vms->secure) {
+             object_property_set_bool(cpuobj, false, "has_el3", NULL);
          }
--        /* Historically VCPUs were assigned in round-robin order to NUMA
--         * nodes. However it causes issues with guest not handling it nice
--         * in case where cores/threads from a multicore CPU appear on
--         * different nodes. So allow boards to override default distribution
--         * rule grouping VCPUs by socket so that VCPUs from the same socket
--         * would be on the same node.
--         */
-+
-+        /* assign CPUs to nodes using board provided default mapping */
-+        if (!mc->cpu_index_to_instance_props) {
-+            error_report("default CPUs to NUMA node mapping isn't supported");
-+            exit(1);
-+        }
-         if (i == nb_numa_nodes) {
-             for (i = 0; i < max_cpus; i++) {
--                unsigned node_id = i % nb_numa_nodes;
--                if (mc->cpu_index_to_socket_id) {
--                    node_id = mc->cpu_index_to_socket_id(i) % nb_numa_nodes;
--                }
-+                CpuInstanceProperties props;
-+                props = mc->cpu_index_to_instance_props(ms, i);
+diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+index ee1406d..c185eb1 100644
+--- a/target/arm/cpu.c
++++ b/target/arm/cpu.c
+@@ -1573,6 +1573,7 @@ static Property arm_cpu_properties[] = {
+     DEFINE_PROP_UINT32("midr", ARMCPU, midr, 0),
+     DEFINE_PROP_UINT64("mp-affinity", ARMCPU,
+                         mp_affinity, ARM64_AFFINITY_INVALID),
++    DEFINE_PROP_INT32("node-id", CPUState, numa_node, CPU_UNSET_NUMA_NODE_ID),
+     DEFINE_PROP_END_OF_LIST()
+ };
  
--                set_bit(i, numa_info[node_id].node_cpu);
-+                set_bit(i, numa_info[props.node_id].node_cpu);
-             }
-         }
- 
-diff --git a/vl.c b/vl.c
-index f46e070..c63f4d5 100644
---- a/vl.c
-+++ b/vl.c
-@@ -4506,7 +4506,7 @@ int main(int argc, char **argv, char **envp)
-     default_drive(default_floppy, snapshot, IF_FLOPPY, 0, FD_OPTS);
-     default_drive(default_sdcard, snapshot, IF_SD, 0, SD_OPTS);
- 
--    parse_numa_opts(machine_class);
-+    parse_numa_opts(current_machine);
- 
-     if (qemu_opts_foreach(qemu_find_opts("mon"),
-                           mon_init_func, NULL, NULL)) {
 -- 
 2.7.4
 

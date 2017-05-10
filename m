@@ -1,90 +1,82 @@
-Received: by 10.25.0.6 with SMTP id 6csp204579lfa;
-        Tue, 9 May 2017 08:58:47 -0700 (PDT)
-X-Received: by 10.237.53.23 with SMTP id a23mr839918qte.171.1494345526923;
-        Tue, 09 May 2017 08:58:46 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1494345526; cv=none;
+Received: by 10.25.0.6 with SMTP id 6csp15959lfa;
+        Tue, 9 May 2017 19:40:11 -0700 (PDT)
+X-Received: by 10.200.46.157 with SMTP id h29mr3655707qta.39.1494384010991;
+        Tue, 09 May 2017 19:40:10 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1494384010; cv=none;
         d=google.com; s=arc-20160816;
-        b=LcPerXdTDjaUcprE0S+LBSHiSfRaYhpyXokKwvRL63oAwKcNrzSRGWFIN/+ToWamaJ
-         2QRg+BwhG+RQRiTg/8rjUVH2xvHc05KaKHdN7agLwKjGbAqS484jd7O6QhWyU8fk3IBk
-         Q+23FxZI5jDLd1fj28b10JUtSKQMk5iSmPo7ZLF9JbJ7gBM491IC3GEuMPUA1A8q3PG+
-         C1YP0gdH+gBQakuq7JJ4eiHTFKvvTtDo+5HVDXHk4vW7pu8PR401LSDBdt+Rn9S4QUHT
-         fizil85Iy4vVluzV6g+/AZPyLwe5Z+e6TocC0tyibIGE/E9FcYL5QKLD/NbCdcmbDM41
-         Nv1w==
+        b=L1mVuP30GZYe8SEdWqtYCB1WRdFzSF3loTzKSzDDJ3r2Uo3U7iQEJq1UB3EwDb0cld
+         Qf6ogHXrzrpyBLdaEXn46Laks6KauI2VATEMk9Yivvh9Hd3euV/UD1M3jDYK+J+U2L/G
+         MrSGCYjuz3UEStevB4MPuZEsh4zp7B47sM0lrmflBBDVK9O35okKRa5Vd5PoRD5MY2za
+         SdbEgfeFVgiDdhBP0FhP3nHQELIbfHHb18e8Fi5pwHXobzi/JSZ1QWHYyzCTO4xuuqso
+         cYzo03xaokOdky7bx/b5Lg+PRvudQcGpDW2AcaTbyiFhHKxqY65dw6RGz9DtqJgD+Bfz
+         Jgug==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:to:from:date:dkim-filter:dmarc-filter
-         :arc-authentication-results;
-        bh=V+rYSzhPYZocluZDm19DtIQIOv1NqOWQgwngOJjDT8o=;
-        b=NjTNHsKoOEm86fwsZu1BWZKnqgdaig4Mw1wbpkQIwCqIqA3phXRyDMviMVrf4/84Do
-         cJ5Ks2lB3Qek/1hLzxdzToRaBfj4dwzl9/P17T+o6KHZyXlq8rHSPDgmUu2hQzRPVacE
-         r6Dapm3Qs6JEuYRyOPB438s//eLksVV4ejl7o+79sYIlMemTBFlOLoxoDfXlynpH44Ti
-         fKCw+riUsXFMPq/CW8kFpLhbAjX6fQPwOQMiYdMYwH9DX+hrLDAoiHSBHwR/znmkXrl+
-         s67gfwir1AILk8UZJzWtbv8YNXF5TsPgRfWEvRuvVznavU/lj7VWdj+0wwfIuPy4RhPu
-         qz2Q==
+         :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
+         :content-disposition:mime-version:references:message-id:to:from:date
+         :dkim-signature:arc-authentication-results;
+        bh=7K5T4L2bF8tiMQ+RbHny16suk93MIvM6ztezXtkZlRA=;
+        b=E0+xnioaKmSbj2TBPPl8MWGBp6uSsP6aagdZxPoAs3XWrHsBVbE9/Yde9cZ3qA2OCR
+         EgSpMZlZrgmR4fCfVKNbua1AG9H/zzgVmpaVRh0hlbleCDpwXPdUE3G+F7EXPyG2Jo5O
+         916O0tJDkBV5e1cKgtad06Py3jGBvflLZvP6sW8/qlPeS3nexnRMv19InO3wA2kz29NV
+         wsEDbzG4VOcrTcvMSDW9E2yQ8867wJGj/3rPYwaqP+PVUKYxQIeFkJ0cl/pfJYo+T51/
+         kdAmysYlg8gz0Dli8AWbCfIj/Fpmb6Qs0os74X0mkn/xmlT6ldnrbBoNDQxoCaz5rv9a
+         sKlw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dkim=fail header.i=@gibson.dropbear.id.au;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id f68si308727qtb.41.2017.05.09.08.58.46
+        by mx.google.com with ESMTPS id n187si1785327qkc.126.2017.05.09.19.40.10
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 09 May 2017 08:58:46 -0700 (PDT)
+        Tue, 09 May 2017 19:40:10 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:37880 helo=lists.gnu.org)
+       dkim=fail header.i=@gibson.dropbear.id.au;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:40144 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1d87XC-00042r-Bw
-	for alex.bennee@linaro.org; Tue, 09 May 2017 11:58:46 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:42849)
+	id 1d8HXu-0008FQ-C3
+	for alex.bennee@linaro.org; Tue, 09 May 2017 22:40:10 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:55480)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <imammedo@redhat.com>) id 1d87X5-00041Z-Ki
-	for qemu-arm@nongnu.org; Tue, 09 May 2017 11:58:41 -0400
+	(envelope-from <dgibson@ozlabs.org>) id 1d8HXo-0008Ej-Af
+	for qemu-arm@nongnu.org; Tue, 09 May 2017 22:40:05 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <imammedo@redhat.com>) id 1d87X1-000838-5E
-	for qemu-arm@nongnu.org; Tue, 09 May 2017 11:58:39 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:57316)
+	(envelope-from <dgibson@ozlabs.org>) id 1d8HXn-0008Lo-2q
+	for qemu-arm@nongnu.org; Tue, 09 May 2017 22:40:04 -0400
+Received: from ozlabs.org ([2401:3900:2:1::2]:50529)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <imammedo@redhat.com>)
-	id 1d87X0-00081U-S8; Tue, 09 May 2017 11:58:35 -0400
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
-	[10.5.11.16])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id AA3F980F8E;
-	Tue,  9 May 2017 15:58:33 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com AA3F980F8E
-Authentication-Results: ext-mx03.extmail.prod.ext.phx2.redhat.com;
-	dmarc=none (p=none dis=none) header.from=redhat.com
-Authentication-Results: ext-mx03.extmail.prod.ext.phx2.redhat.com;
-	spf=pass smtp.mailfrom=imammedo@redhat.com
-DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com AA3F980F8E
-Received: from nial.brq.redhat.com (dhcp-1-118.brq.redhat.com [10.34.1.118])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id B1EE25C881;
-	Tue,  9 May 2017 15:58:31 +0000 (UTC)
-Date: Tue, 9 May 2017 17:58:29 +0200
-From: Igor Mammedov <imammedo@redhat.com>
-To: David Gibson <david@gibson.dropbear.id.au>
-Message-ID: <20170509175829.23fcc112@nial.brq.redhat.com>
-In-Reply-To: <20170508054004.GE25748@umbus.fritz.box>
+	(Exim 4.71) (envelope-from <dgibson@ozlabs.org>)
+	id 1d8HXm-0008Jc-8e; Tue, 09 May 2017 22:40:03 -0400
+Received: by ozlabs.org (Postfix, from userid 1007)
+	id 3wN0nj1Zk9z9ryb; Wed, 10 May 2017 12:39:53 +1000 (AEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+	d=gibson.dropbear.id.au; s=201602; t=1494383993;
+	bh=yq7ztYkdDJrkyR6TfGDaiVzlkOBAc4vqJbWwC7klFB4=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=hvTvJ2D1PiOJZjkPN9os42BtQsRkwgGy+KiiPBYPGjss0HdoFwJVp45ayq2eI/t/V
+	6kfUHKSIHxXnTh4OKJ+F+UCflfqiYFAZkk2K5woIigy1VhkBIAqBOUYjzwWI7j+8tA
+	CV7le9smKdmH5MyFDaYM4YuiunrM6JV742020pm0=
+Date: Wed, 10 May 2017 11:15:26 +1000
+From: David Gibson <david@gibson.dropbear.id.au>
+To: Igor Mammedov <imammedo@redhat.com>
+Message-ID: <20170510011526.GR25748@umbus.fritz.box>
 References: <1493816238-33120-1-git-send-email-imammedo@redhat.com>
 	<1493816238-33120-24-git-send-email-imammedo@redhat.com>
 	<20170508054004.GE25748@umbus.fritz.box>
+	<20170509175829.23fcc112@nial.brq.redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.27]);
-	Tue, 09 May 2017 15:58:33 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.132.183.28
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="teKjxxMjPsACTz/N"
+Content-Disposition: inline
+In-Reply-To: <20170509175829.23fcc112@nial.brq.redhat.com>
+User-Agent: Mutt/1.8.0 (2017-02-23)
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2401:3900:2:1::2
 Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v2 23/24] numa: add '-numa cpu,
  ...' option for property based node mapping
 X-BeenThere: qemu-arm@nongnu.org
@@ -105,122 +97,166 @@ Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jones <drjones@redhat.com>,
 	Paolo Bonzini <pbonzini@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: mJ/toHe1jHBJ
+X-TUID: Ytgmt7UMj7uN
 
-On Mon, 8 May 2017 15:40:04 +1000
-David Gibson <david@gibson.dropbear.id.au> wrote:
 
-> On Wed, May 03, 2017 at 02:57:17PM +0200, Igor Mammedov wrote:
-> > legacy cpu to node mapping is using cpu index values to map
-> > VCPU to node with help of '-numa node,nodeid=node,cpus=x[-y]'
-> > option. However cpu index is internal concept and QEMU users
-> > have to guess /reimplement qemu's logic/ to map it to
-> > a concrete cpu socket/core/thread to make sane CPUs
-> > placement across numa nodes.
-> > 
-> > This patch allows to map cpu objects to numa nodes using
-> > the same properties as used for cpus with -device/device_add
-> > (socket-id/core-id/thread-id/node-id).
-> > 
-> > At present valid properties/values to address CPUs could be
-> > fetched using hotpluggable-cpus monitor/qmp command, it will
-> > require user to start qemu twice when creating domain to fetch
-> > possible CPUs for a machine type/-smp layout first and
-> > then the second time with numa explicit mapping for actual
-> > usage. The first step results could be saved and reused to
-> > set/change mapping later as far as machine type/-smp stays
-> > the same.
-> > 
-> > Proposed impl. supports exact and wildcard matching to
-> > simplify CLI and allow to set mapping for a specific cpu
-> > or group of cpu objects specified by matched properties.
-> > 
-> > For example:
-> > 
-> >    # exact mapping x86
-> >    -numa cpu,node-id=x,socket-id=y,core-id=z,thread-id=n
-> > 
-> >    # exact mapping SPAPR
-> >    -numa cpu,node-id=x,core-id=y
-> > 
-> >    # wildcard mapping, all cpu objects that match socket-id=y
-> >    # are mapped to node-id=x
-> >    -numa cpu,node-id=x,socket-id=y
-> > 
-> > Signed-off-by: Igor Mammedov <imammedo@redhat.com>
-> > ---
-> > v2:
-> >   - use new NumaCpuOptions instead of CpuInstanceProperties in
-> >     NumaOptions, so that in future we could decouple both
-> >     if needed. (Eduardo Habkost <ehabkost@redhat.com>)
-> >   - clarify effect of NumaCpuOptions.node-id in qapi-schema.json
-> > ---
-> >  numa.c           | 25 +++++++++++++++++++++++++
-> >  qapi-schema.json | 21 +++++++++++++++++++--
-> >  qemu-options.hx  | 23 ++++++++++++++++++++++-
-> >  3 files changed, 66 insertions(+), 3 deletions(-)
-> > 
-> > diff --git a/numa.c b/numa.c
-> > index 40e9f44..61521f5 100644
-> > --- a/numa.c
-> > +++ b/numa.c
-> > @@ -227,6 +227,7 @@ static int parse_numa(void *opaque, QemuOpts *opts, Error **errp)
-> >      NumaOptions *object = NULL;
-> >      MachineState *ms = opaque;
-> >      Error *err = NULL;
-> > +    CpuInstanceProperties cpu;
-> >  
-> >      {
-> >          Visitor *v = opts_visitor_new(opts);
-> > @@ -246,6 +247,30 @@ static int parse_numa(void *opaque, QemuOpts *opts, Error **errp)
-> >          }
-> >          nb_numa_nodes++;
-> >          break;
-> > +    case NUMA_OPTIONS_TYPE_CPU:
-> > +        if (!object->u.cpu.has_node_id) {
-> > +            error_setg(&err, "Missing mandatory node-id property");
-> > +            goto end;
-> > +        }
-> > +        if (!numa_info[object->u.cpu.node_id].present) {
-> > +            error_setg(&err, "Invalid node-id=%" PRId64 ", NUMA node must be "
-> > +                "defined with -numa node,nodeid=ID before it's used with "
-> > +                "-numa cpu,node-id=ID", object->u.cpu.node_id);
-> > +            goto end;
-> > +        }
-> > +
-> > +        memset(&cpu, 0, sizeof(cpu));
-> > +        cpu.has_node_id = object->u.cpu.has_node_id;
-> > +        cpu.node_id = object->u.cpu.node_id;
-> > +        cpu.has_socket_id = object->u.cpu.has_socket_id;
-> > +        cpu.socket_id = object->u.cpu.socket_id;
-> > +        cpu.has_core_id = object->u.cpu.has_core_id;
-> > +        cpu.core_id = object->u.cpu.core_id;
-> > +        cpu.has_thread_id = object->u.cpu.has_thread_id;
-> > +        cpu.thread_id = object->u.cpu.thread_id;
-> > +
-> > +        machine_set_cpu_numa_node(ms, &cpu, &err);  
-> 
-> It's possible I've confused myself by not looking at this whole series
-> at once.
-> 
-> But, would it be possible to make a single machine hook which maps a
-> constructed cpu property set to a "canonical" cpu property set from
-> the table of CPU slots (or errors, of course).  That would let you do
-> what you need here, and I suspect in other places, without multiple
-> hooks.
-Not sure that get question.
+--teKjxxMjPsACTz/N
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-if it's about machine_set_cpu_numa_node() than it's a single generic
-setter of MachineState::possible_cpus(node-id) from non machine code
-and the only place it's supposed to be used is from numa configuration
-code. I don't see any need to reuse it for something/somewhere else
-so far.
+On Tue, May 09, 2017 at 05:58:29PM +0200, Igor Mammedov wrote:
+> On Mon, 8 May 2017 15:40:04 +1000
+> David Gibson <david@gibson.dropbear.id.au> wrote:
+>=20
+> > On Wed, May 03, 2017 at 02:57:17PM +0200, Igor Mammedov wrote:
+> > > legacy cpu to node mapping is using cpu index values to map
+> > > VCPU to node with help of '-numa node,nodeid=3Dnode,cpus=3Dx[-y]'
+> > > option. However cpu index is internal concept and QEMU users
+> > > have to guess /reimplement qemu's logic/ to map it to
+> > > a concrete cpu socket/core/thread to make sane CPUs
+> > > placement across numa nodes.
+> > >=20
+> > > This patch allows to map cpu objects to numa nodes using
+> > > the same properties as used for cpus with -device/device_add
+> > > (socket-id/core-id/thread-id/node-id).
+> > >=20
+> > > At present valid properties/values to address CPUs could be
+> > > fetched using hotpluggable-cpus monitor/qmp command, it will
+> > > require user to start qemu twice when creating domain to fetch
+> > > possible CPUs for a machine type/-smp layout first and
+> > > then the second time with numa explicit mapping for actual
+> > > usage. The first step results could be saved and reused to
+> > > set/change mapping later as far as machine type/-smp stays
+> > > the same.
+> > >=20
+> > > Proposed impl. supports exact and wildcard matching to
+> > > simplify CLI and allow to set mapping for a specific cpu
+> > > or group of cpu objects specified by matched properties.
+> > >=20
+> > > For example:
+> > >=20
+> > >    # exact mapping x86
+> > >    -numa cpu,node-id=3Dx,socket-id=3Dy,core-id=3Dz,thread-id=3Dn
+> > >=20
+> > >    # exact mapping SPAPR
+> > >    -numa cpu,node-id=3Dx,core-id=3Dy
+> > >=20
+> > >    # wildcard mapping, all cpu objects that match socket-id=3Dy
+> > >    # are mapped to node-id=3Dx
+> > >    -numa cpu,node-id=3Dx,socket-id=3Dy
+> > >=20
+> > > Signed-off-by: Igor Mammedov <imammedo@redhat.com>
+> > > ---
+> > > v2:
+> > >   - use new NumaCpuOptions instead of CpuInstanceProperties in
+> > >     NumaOptions, so that in future we could decouple both
+> > >     if needed. (Eduardo Habkost <ehabkost@redhat.com>)
+> > >   - clarify effect of NumaCpuOptions.node-id in qapi-schema.json
+> > > ---
+> > >  numa.c           | 25 +++++++++++++++++++++++++
+> > >  qapi-schema.json | 21 +++++++++++++++++++--
+> > >  qemu-options.hx  | 23 ++++++++++++++++++++++-
+> > >  3 files changed, 66 insertions(+), 3 deletions(-)
+> > >=20
+> > > diff --git a/numa.c b/numa.c
+> > > index 40e9f44..61521f5 100644
+> > > --- a/numa.c
+> > > +++ b/numa.c
+> > > @@ -227,6 +227,7 @@ static int parse_numa(void *opaque, QemuOpts *opt=
+s, Error **errp)
+> > >      NumaOptions *object =3D NULL;
+> > >      MachineState *ms =3D opaque;
+> > >      Error *err =3D NULL;
+> > > +    CpuInstanceProperties cpu;
+> > > =20
+> > >      {
+> > >          Visitor *v =3D opts_visitor_new(opts);
+> > > @@ -246,6 +247,30 @@ static int parse_numa(void *opaque, QemuOpts *op=
+ts, Error **errp)
+> > >          }
+> > >          nb_numa_nodes++;
+> > >          break;
+> > > +    case NUMA_OPTIONS_TYPE_CPU:
+> > > +        if (!object->u.cpu.has_node_id) {
+> > > +            error_setg(&err, "Missing mandatory node-id property");
+> > > +            goto end;
+> > > +        }
+> > > +        if (!numa_info[object->u.cpu.node_id].present) {
+> > > +            error_setg(&err, "Invalid node-id=3D%" PRId64 ", NUMA no=
+de must be "
+> > > +                "defined with -numa node,nodeid=3DID before it's use=
+d with "
+> > > +                "-numa cpu,node-id=3DID", object->u.cpu.node_id);
+> > > +            goto end;
+> > > +        }
+> > > +
+> > > +        memset(&cpu, 0, sizeof(cpu));
+> > > +        cpu.has_node_id =3D object->u.cpu.has_node_id;
+> > > +        cpu.node_id =3D object->u.cpu.node_id;
+> > > +        cpu.has_socket_id =3D object->u.cpu.has_socket_id;
+> > > +        cpu.socket_id =3D object->u.cpu.socket_id;
+> > > +        cpu.has_core_id =3D object->u.cpu.has_core_id;
+> > > +        cpu.core_id =3D object->u.cpu.core_id;
+> > > +        cpu.has_thread_id =3D object->u.cpu.has_thread_id;
+> > > +        cpu.thread_id =3D object->u.cpu.thread_id;
+> > > +
+> > > +        machine_set_cpu_numa_node(ms, &cpu, &err); =20
+> >=20
+> > It's possible I've confused myself by not looking at this whole series
+> > at once.
+> >=20
+> > But, would it be possible to make a single machine hook which maps a
+> > constructed cpu property set to a "canonical" cpu property set from
+> > the table of CPU slots (or errors, of course).  That would let you do
+> > what you need here, and I suspect in other places, without multiple
+> > hooks.
+> Not sure that get question.
+>=20
+> if it's about machine_set_cpu_numa_node() than it's a single generic
+> setter of MachineState::possible_cpus(node-id) from non machine code
+> and the only place it's supposed to be used is from numa configuration
+> code. I don't see any need to reuse it for something/somewhere else
+> so far.
+>=20
+> More over it's not 1:1 mapping wrt input:affected slots,
+> it's 1:[1-n] where input could affect multiple slots.
 
-More over it's not 1:1 mapping wrt input:affected slots,
-it's 1:[1-n] where input could affect multiple slots.
+Ah, good point.
 
-I think I've tried to get machine return a list of cpu slots
-and then deal with them in numa.c but result looked messy and
-not to my liking.
-Eventually I stopped on machine_set_cpu_numa_node() variant
-as the cleanest for now.
+> I think I've tried to get machine return a list of cpu slots
+> and then deal with them in numa.c but result looked messy and
+> not to my liking.
+> Eventually I stopped on machine_set_cpu_numa_node() variant
+> as the cleanest for now.
+
+Ok, makes sense.
+
+--=20
+David Gibson			| I'll have my music baroque, and my code
+david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
+				| _way_ _around_!
+http://www.ozlabs.org/~dgibson
+
+--teKjxxMjPsACTz/N
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v2
+
+iQIcBAEBCAAGBQJZEmmrAAoJEGw4ysog2bOSezQQAKjQBG5/QXs1IJ3n/AgpSiv/
+ef1UKIcy4bWGJpaPdpDC6sJ1z3PrtjB3fkEmY8upJFLkjMDGnOVorS2vZnPDaimT
+iCKJRrjYqB/0c9EGWWJIkrpIw4yqCypjvB6zk9pEl896jyzJH7gjtw4cKJM9XvyA
+Rq4O193GV1qPKd2Oylv7vb+kmcEApAIelduFIZJ/fl+BydjDTyYx5tniADez/kGT
+X37U9nq9AHRkww9WA10aAP2i4fu6wOAKS0nDBwruwXPMyXQymOp6/vQo4Rz9trHv
+W/P1EVHSWrhsYwKX2ODnssZdSlC04Kfz7/SZ0Wd3QC67KBLi88vWOf+SKrzTmywg
+b2IiYyKZQKw4NXfXypGoyjXAJkhHqaa9hXIWRoZabi5N/Ay+7b7+ISpxD4tS4Gqr
+i7Pw6bTgCTSfNT7RcejwPFmvlSrr5sZpR3QbAHRCPWqJRRcKk40sVlZyK+L7vyQe
+vLGFTXJIxrWibDwpWxpqWMfe4VMARzuSWjAKrcRBRc2zoVURCaagec9dZUci0AZr
+SQX6vXVtWzPIWyK+Emjhit17Cn85G5fXIbMarO0L8JgOP5SrbKIL3vo6VIMy4TM8
+qgjcd5EPX6+KTIRCqcU6kXySLe/yQBv8e7Vg0sHnKF5ofBJx/KUzMvGbH8bcLE43
+Ad33qqQk423AX7bo/BtA
+=/ILG
+-----END PGP SIGNATURE-----
+
+--teKjxxMjPsACTz/N--

@@ -1,236 +1,199 @@
-Received: by 10.25.0.6 with SMTP id 6csp15959lfa;
-        Tue, 9 May 2017 19:40:11 -0700 (PDT)
-X-Received: by 10.200.46.157 with SMTP id h29mr3655707qta.39.1494384010991;
-        Tue, 09 May 2017 19:40:10 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1494384010; cv=none;
+Received: by 10.25.0.6 with SMTP id 6csp139601lfa;
+        Wed, 10 May 2017 00:33:23 -0700 (PDT)
+X-Received: by 10.99.103.7 with SMTP id b7mr4917584pgc.2.1494401602934;
+        Wed, 10 May 2017 00:33:22 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1494401602; cv=none;
         d=google.com; s=arc-20160816;
-        b=L1mVuP30GZYe8SEdWqtYCB1WRdFzSF3loTzKSzDDJ3r2Uo3U7iQEJq1UB3EwDb0cld
-         Qf6ogHXrzrpyBLdaEXn46Laks6KauI2VATEMk9Yivvh9Hd3euV/UD1M3jDYK+J+U2L/G
-         MrSGCYjuz3UEStevB4MPuZEsh4zp7B47sM0lrmflBBDVK9O35okKRa5Vd5PoRD5MY2za
-         SdbEgfeFVgiDdhBP0FhP3nHQELIbfHHb18e8Fi5pwHXobzi/JSZ1QWHYyzCTO4xuuqso
-         cYzo03xaokOdky7bx/b5Lg+PRvudQcGpDW2AcaTbyiFhHKxqY65dw6RGz9DtqJgD+Bfz
-         Jgug==
+        b=Mz84KWH9MUbsp2qWc3ttIRMhFPcG8rUKGTRIgl7SrTkHDCfhTf+f9zGB8u3SeUZwCU
+         yB62XxGIpfVHInE8Liz7QhPTwgOf5bU+IJcpylQqPQPRvtpQRtZ3+XCynudZrRqa4emZ
+         eekcwwsNuvTM+xGsi+umhGR5Wu2wJ744QMFcqbTT8Yc+ENBoSRJ//yWMzY1bvkyE9g9f
+         vR++LX7rskMu3TOBHEoiNmIl9efesBoXSeChKsv2q8e+trGalowo4zAsGnd2OSzRjdeG
+         CTQtE3KWd7d1U5mVyndq2/l0Nly3AMH9Km9tfDKS2I1X2qL9QzVpAMrnvj1iLc5Z1hqR
+         E9CQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
-         :content-disposition:mime-version:references:message-id:to:from:date
-         :dkim-signature:arc-authentication-results;
-        bh=7K5T4L2bF8tiMQ+RbHny16suk93MIvM6ztezXtkZlRA=;
-        b=E0+xnioaKmSbj2TBPPl8MWGBp6uSsP6aagdZxPoAs3XWrHsBVbE9/Yde9cZ3qA2OCR
-         EgSpMZlZrgmR4fCfVKNbua1AG9H/zzgVmpaVRh0hlbleCDpwXPdUE3G+F7EXPyG2Jo5O
-         916O0tJDkBV5e1cKgtad06Py3jGBvflLZvP6sW8/qlPeS3nexnRMv19InO3wA2kz29NV
-         wsEDbzG4VOcrTcvMSDW9E2yQ8867wJGj/3rPYwaqP+PVUKYxQIeFkJ0cl/pfJYo+T51/
-         kdAmysYlg8gz0Dli8AWbCfIj/Fpmb6Qs0os74X0mkn/xmlT6ldnrbBoNDQxoCaz5rv9a
-         sKlw==
+        h=list-id:precedence:sender:user-agent:in-reply-to
+         :content-disposition:mime-version:references:message-id:subject:cc
+         :to:from:date:dkim-signature:arc-authentication-results;
+        bh=8Oa7BDibavp6PNV4ZrV2ZfQHR4ucGVUbOHIMCiJvtik=;
+        b=jNlZPg5Aj0GNTYTwOq0gUOSJ6Qqfc4AkvAP/pXgc6xeo5WI2wH9yc9tT35jn40uwuW
+         TF3SAa9jQeeNvsPH1QkrVWUyzO6DZwWd4ZbpVpWNe4Yd+aCczuF9FXqeqKn8gsF2jeUo
+         hjkhVUOI6Jxj/OxfDBHvYjFioSXdpRd9rkWWkmMIchQhVOwMVxxBr8/OdBMVOoE3vI3q
+         S+zUrpSz2ZrdUj1cFyxVraKANT+L0+jJ7jZovvALsrXPpKn4SQ4LpWiHynuE1kPhTziq
+         78Q0nm3anAjvsscdbmS/zp0tFrsghnEjP0pKlt8z30aym+8SqmUh/mpf+gmOzr16NOBj
+         0wxQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gibson.dropbear.id.au;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id n187si1785327qkc.126.2017.05.09.19.40.10
-        for <alex.bennee@linaro.org>
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 09 May 2017 19:40:10 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+       dkim=pass header.i=@gibson.dropbear.id.au;
+       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
+Return-Path: <kvm-owner@vger.kernel.org>
+Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
+        by mx.google.com with ESMTP id 192si2339836pfu.99.2017.05.10.00.33.22;
+        Wed, 10 May 2017 00:33:22 -0700 (PDT)
+Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gibson.dropbear.id.au;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:40144 helo=lists.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1d8HXu-0008FQ-C3
-	for alex.bennee@linaro.org; Tue, 09 May 2017 22:40:10 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:55480)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <dgibson@ozlabs.org>) id 1d8HXo-0008Ej-Af
-	for qemu-arm@nongnu.org; Tue, 09 May 2017 22:40:05 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <dgibson@ozlabs.org>) id 1d8HXn-0008Lo-2q
-	for qemu-arm@nongnu.org; Tue, 09 May 2017 22:40:04 -0400
-Received: from ozlabs.org ([2401:3900:2:1::2]:50529)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <dgibson@ozlabs.org>)
-	id 1d8HXm-0008Jc-8e; Tue, 09 May 2017 22:40:03 -0400
+       dkim=pass header.i=@gibson.dropbear.id.au;
+       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
+Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
+        id S1751200AbdEJHdU (ORCPT <rfc822;francois.ozog@linaro.org>
+        + 6 others); Wed, 10 May 2017 03:33:20 -0400
+Received: from ozlabs.org ([103.22.144.67]:52815 "EHLO ozlabs.org"
+        rhost-flags-OK-OK-OK-OK) by vger.kernel.org with ESMTP
+        id S1751081AbdEJHdT (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Wed, 10 May 2017 03:33:19 -0400
 Received: by ozlabs.org (Postfix, from userid 1007)
-	id 3wN0nj1Zk9z9ryb; Wed, 10 May 2017 12:39:53 +1000 (AEST)
+        id 3wN7JF4WXCz9s1h; Wed, 10 May 2017 17:33:17 +1000 (AEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-	d=gibson.dropbear.id.au; s=201602; t=1494383993;
-	bh=yq7ztYkdDJrkyR6TfGDaiVzlkOBAc4vqJbWwC7klFB4=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=hvTvJ2D1PiOJZjkPN9os42BtQsRkwgGy+KiiPBYPGjss0HdoFwJVp45ayq2eI/t/V
-	6kfUHKSIHxXnTh4OKJ+F+UCflfqiYFAZkk2K5woIigy1VhkBIAqBOUYjzwWI7j+8tA
-	CV7le9smKdmH5MyFDaYM4YuiunrM6JV742020pm0=
-Date: Wed, 10 May 2017 11:15:26 +1000
-From: David Gibson <david@gibson.dropbear.id.au>
-To: Igor Mammedov <imammedo@redhat.com>
-Message-ID: <20170510011526.GR25748@umbus.fritz.box>
-References: <1493816238-33120-1-git-send-email-imammedo@redhat.com>
-	<1493816238-33120-24-git-send-email-imammedo@redhat.com>
-	<20170508054004.GE25748@umbus.fritz.box>
-	<20170509175829.23fcc112@nial.brq.redhat.com>
+        d=gibson.dropbear.id.au; s=201602; t=1494401597;
+        bh=WmgjyEL7JZ5x755wu8dOHVMgVRe+ZvS2h7JGEsCxmh4=;
+        h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+        b=A/yH+n7eRf+2NzKC7GHHahF8+sjuQQ39VAhh3BgUU3usTiscz23qPLQhL+qtcnKM0
+         A1GnTx5rcQCYyj/T/4b3x/oheTBotm1RXsUvVWRijpfA8pqQ4Y0TOOKx1DEqDcSafg
+         UEZ5j1j9bap4VqDQNv4LcrREYdvTvnM9F0yxXchI=
+Date:   Wed, 10 May 2017 17:33:12 +1000
+From:   David Gibson <david@gibson.dropbear.id.au>
+To:     Eric Blake <eblake@redhat.com>
+Cc:     qemu-devel@nongnu.org, armbru@redhat.com, berrange@redhat.com,
+        alistair.francis@xilinx.com, "Michael S. Tsirkin" <mst@redhat.com>,
+        Igor Mammedov <imammedo@redhat.com>,
+        Rob Herring <robh@kernel.org>,
+        Peter Maydell <peter.maydell@linaro.org>,
+        Jan Kiszka <jan.kiszka@web.de>,
+        Andrzej Zaborowski <balrogg@gmail.com>,
+        Paolo Bonzini <pbonzini@redhat.com>,
+        Richard Henderson <rth@twiddle.net>,
+        Eduardo Habkost <ehabkost@redhat.com>,
+        Stefano Stabellini <sstabellini@kernel.org>,
+        Anthony Perard <anthony.perard@citrix.com>,
+        Paul Burton <paul.burton@imgtec.com>,
+        Aurelien Jarno <aurelien@aurel32.net>,
+        Yongbok Kim <yongbok.kim@imgtec.com>,
+        Alexander Graf <agraf@suse.de>,
+        Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+        "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+        Cornelia Huck <cornelia.huck@de.ibm.com>,
+        Christian Borntraeger <borntraeger@de.ibm.com>,
+        Magnus Damm <magnus.damm@gmail.com>,
+        Michael Walle <michael@walle.cc>,
+        Max Filippov <jcmvbkbc@gmail.com>,
+        Stefan Weil <sw@weilnetz.de>,
+        Pavel Dovgalyuk <pavel.dovgaluk@ispras.ru>,
+        Marcelo Tosatti <mtosatti@redhat.com>,
+        Artyom Tarasenko <atar4qemu@gmail.com>,
+        Gerd Hoffmann <kraxel@redhat.com>,
+        "open list:Calxeda Highbank" <qemu-arm@nongnu.org>,
+        "open list:X86" <xen-devel@lists.xenproject.org>,
+        "open list:Old World" <qemu-ppc@nongnu.org>,
+        "open list:Overall" <kvm@vger.kernel.org>
+Subject: Re: [PATCH v6 3/5] shutdown: Add source information to SHUTDOWN and
+ RESET
+Message-ID: <20170510073312.GX25748@umbus.fritz.box>
+References: <20170505193810.2934-1-eblake@redhat.com>
+ <20170505193810.2934-4-eblake@redhat.com>
+ <20170508052617.GC25748@umbus.fritz.box>
+ <117db2fa-302b-362a-738c-0c114439f8af@redhat.com>
 MIME-Version: 1.0
 Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="teKjxxMjPsACTz/N"
+        protocol="application/pgp-signature"; boundary="0btr6/5+bhBdui6J"
 Content-Disposition: inline
-In-Reply-To: <20170509175829.23fcc112@nial.brq.redhat.com>
+In-Reply-To: <117db2fa-302b-362a-738c-0c114439f8af@redhat.com>
 User-Agent: Mutt/1.8.0 (2017-02-23)
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2401:3900:2:1::2
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v2 23/24] numa: add '-numa cpu,
- ...' option for property based node mapping
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.21
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jones <drjones@redhat.com>,
-	Eduardo Habkost <ehabkost@redhat.com>, qemu-devel@nongnu.org,
-	qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
-	Shannon Zhao <zhaoshenglong@huawei.com>,
-	Paolo Bonzini <pbonzini@redhat.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Ytgmt7UMj7uN
+Sender: kvm-owner@vger.kernel.org
+Precedence: bulk
+List-ID: <kvm.vger.kernel.org>
+X-Mailing-List: kvm@vger.kernel.org
+X-TUID: aIXV7g245uj8
 
 
---teKjxxMjPsACTz/N
+--0btr6/5+bhBdui6J
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
-On Tue, May 09, 2017 at 05:58:29PM +0200, Igor Mammedov wrote:
-> On Mon, 8 May 2017 15:40:04 +1000
-> David Gibson <david@gibson.dropbear.id.au> wrote:
->=20
-> > On Wed, May 03, 2017 at 02:57:17PM +0200, Igor Mammedov wrote:
-> > > legacy cpu to node mapping is using cpu index values to map
-> > > VCPU to node with help of '-numa node,nodeid=3Dnode,cpus=3Dx[-y]'
-> > > option. However cpu index is internal concept and QEMU users
-> > > have to guess /reimplement qemu's logic/ to map it to
-> > > a concrete cpu socket/core/thread to make sane CPUs
-> > > placement across numa nodes.
-> > >=20
-> > > This patch allows to map cpu objects to numa nodes using
-> > > the same properties as used for cpus with -device/device_add
-> > > (socket-id/core-id/thread-id/node-id).
-> > >=20
-> > > At present valid properties/values to address CPUs could be
-> > > fetched using hotpluggable-cpus monitor/qmp command, it will
-> > > require user to start qemu twice when creating domain to fetch
-> > > possible CPUs for a machine type/-smp layout first and
-> > > then the second time with numa explicit mapping for actual
-> > > usage. The first step results could be saved and reused to
-> > > set/change mapping later as far as machine type/-smp stays
-> > > the same.
-> > >=20
-> > > Proposed impl. supports exact and wildcard matching to
-> > > simplify CLI and allow to set mapping for a specific cpu
-> > > or group of cpu objects specified by matched properties.
-> > >=20
-> > > For example:
-> > >=20
-> > >    # exact mapping x86
-> > >    -numa cpu,node-id=3Dx,socket-id=3Dy,core-id=3Dz,thread-id=3Dn
-> > >=20
-> > >    # exact mapping SPAPR
-> > >    -numa cpu,node-id=3Dx,core-id=3Dy
-> > >=20
-> > >    # wildcard mapping, all cpu objects that match socket-id=3Dy
-> > >    # are mapped to node-id=3Dx
-> > >    -numa cpu,node-id=3Dx,socket-id=3Dy
-> > >=20
-> > > Signed-off-by: Igor Mammedov <imammedo@redhat.com>
-> > > ---
-> > > v2:
-> > >   - use new NumaCpuOptions instead of CpuInstanceProperties in
-> > >     NumaOptions, so that in future we could decouple both
-> > >     if needed. (Eduardo Habkost <ehabkost@redhat.com>)
-> > >   - clarify effect of NumaCpuOptions.node-id in qapi-schema.json
-> > > ---
-> > >  numa.c           | 25 +++++++++++++++++++++++++
-> > >  qapi-schema.json | 21 +++++++++++++++++++--
-> > >  qemu-options.hx  | 23 ++++++++++++++++++++++-
-> > >  3 files changed, 66 insertions(+), 3 deletions(-)
-> > >=20
-> > > diff --git a/numa.c b/numa.c
-> > > index 40e9f44..61521f5 100644
-> > > --- a/numa.c
-> > > +++ b/numa.c
-> > > @@ -227,6 +227,7 @@ static int parse_numa(void *opaque, QemuOpts *opt=
-s, Error **errp)
-> > >      NumaOptions *object =3D NULL;
-> > >      MachineState *ms =3D opaque;
-> > >      Error *err =3D NULL;
-> > > +    CpuInstanceProperties cpu;
-> > > =20
-> > >      {
-> > >          Visitor *v =3D opts_visitor_new(opts);
-> > > @@ -246,6 +247,30 @@ static int parse_numa(void *opaque, QemuOpts *op=
-ts, Error **errp)
-> > >          }
-> > >          nb_numa_nodes++;
-> > >          break;
-> > > +    case NUMA_OPTIONS_TYPE_CPU:
-> > > +        if (!object->u.cpu.has_node_id) {
-> > > +            error_setg(&err, "Missing mandatory node-id property");
-> > > +            goto end;
-> > > +        }
-> > > +        if (!numa_info[object->u.cpu.node_id].present) {
-> > > +            error_setg(&err, "Invalid node-id=3D%" PRId64 ", NUMA no=
-de must be "
-> > > +                "defined with -numa node,nodeid=3DID before it's use=
-d with "
-> > > +                "-numa cpu,node-id=3DID", object->u.cpu.node_id);
-> > > +            goto end;
-> > > +        }
-> > > +
-> > > +        memset(&cpu, 0, sizeof(cpu));
-> > > +        cpu.has_node_id =3D object->u.cpu.has_node_id;
-> > > +        cpu.node_id =3D object->u.cpu.node_id;
-> > > +        cpu.has_socket_id =3D object->u.cpu.has_socket_id;
-> > > +        cpu.socket_id =3D object->u.cpu.socket_id;
-> > > +        cpu.has_core_id =3D object->u.cpu.has_core_id;
-> > > +        cpu.core_id =3D object->u.cpu.core_id;
-> > > +        cpu.has_thread_id =3D object->u.cpu.has_thread_id;
-> > > +        cpu.thread_id =3D object->u.cpu.thread_id;
-> > > +
-> > > +        machine_set_cpu_numa_node(ms, &cpu, &err); =20
+On Mon, May 08, 2017 at 09:32:42AM -0500, Eric Blake wrote:
+> On 05/08/2017 12:26 AM, David Gibson wrote:
+> > On Fri, May 05, 2017 at 02:38:08PM -0500, Eric Blake wrote:
+> >> Time to wire up all the call sites that request a shutdown or
+> >> reset to use the enum added in the previous patch.
+> >>
+> >> It would have been less churn to keep the common case with no
+> >> arguments as meaning guest-triggered, and only modified the
+> >> host-triggered code paths, via a wrapper function, but then we'd
+> >> still have to audit that I didn't miss any host-triggered spots;
+> >> changing the signature forces us to double-check that I correctly
+> >> categorized all callers.
+> >>
+> >> Since command line options can change whether a guest reset request
+> >> causes an actual reset vs. a shutdown, it's easy to also add the
+> >> information to reset requests.
+> >>
+> >> Replay adds a FIXME to preserve the cause across the replay stream,
+> >> that will be tackled in the next patch.
+> >>
+> >> Signed-off-by: Eric Blake <eblake@redhat.com>
+> >> Acked-by: David Gibson <david@gibson.dropbear.id.au> [ppc parts]
+> >> Reviewed-by: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk> [SPARC p=
+art]
 > >=20
-> > It's possible I've confused myself by not looking at this whole series
-> > at once.
+> > [snip]
 > >=20
-> > But, would it be possible to make a single machine hook which maps a
-> > constructed cpu property set to a "canonical" cpu property set from
-> > the table of CPU slots (or errors, of course).  That would let you do
-> > what you need here, and I suspect in other places, without multiple
-> > hooks.
-> Not sure that get question.
+> >> diff --git a/hw/ppc/spapr_hcall.c b/hw/ppc/spapr_hcall.c
+> >> index 9f18f75..2735fe9 100644
+> >> --- a/hw/ppc/spapr_hcall.c
+> >> +++ b/hw/ppc/spapr_hcall.c
+> >> @@ -1166,7 +1166,7 @@ static target_ulong h_client_architecture_suppor=
+t(PowerPCCPU *cpu,
+> >>      spapr_ovec_cleanup(ov5_updates);
+> >>
+> >>      if (spapr->cas_reboot) {
+> >> -        qemu_system_reset_request();
+> >> +        qemu_system_reset_request(SHUTDOWN_CAUSE_GUEST_RESET);
+> >=20
+> > I'm not 100% sure about this one, since I'm not sure 100% of how the
+> > different enum values are defined.  This one is tripped when feature
+> > negotiation between firmware and guest can't be satisfied without
+> > rebooting (next time round the firmware will use some different
+> > options).
 >=20
-> if it's about machine_set_cpu_numa_node() than it's a single generic
-> setter of MachineState::possible_cpus(node-id) from non machine code
-> and the only place it's supposed to be used is from numa configuration
-> code. I don't see any need to reuse it for something/somewhere else
-> so far.
+> Patch 2/5 introduced the enum.  The biggest part of the patch (for now)
+> is that anything SHUTDOWN_CAUSE_HOST_ will be exposed to the QMP client
+> as host-triggered, anything SHUTDOWN_CAUSE_GUEST_ will be exposed as
+> guest-triggered.  I basically used SHUTDOWN_CAUSE_GUEST_RESET for any
+> call to qemu_system_reset_requst() underneath the hw/ tree, because the
+> hw/ tree is emulating guest behavior and therefore it is presumably a
+> reset caused by a guest request.
+
+Ok.
+
+> > So it's essentially a firmware/hypervisor triggered reset, but one
+> > that should only ever be tripped during early guest boot.  Is
+> > CAUSE_GUEST_RESET correct for that?
 >=20
-> More over it's not 1:1 mapping wrt input:affected slots,
-> it's 1:[1-n] where input could affect multiple slots.
+> Of course, I'm not an export on SPAPR, so I'll happily change it to
+> anything else if you think that is more appropriate. But the rule of
+> thumb I went by is whether this is qemu emulating a bare-metal
+> reset/shutdown, vs. qemu killing the guest without waiting for guest
+> instructions to reach some magic
+> memory/register/ACPI/who-knows-what-else request.  While it may happen
+> only early during guest boot, it is still the guest firmware that is
+> requesting it, and not qemu causing a unilateral death.
 
-Ah, good point.
+So, I think GUEST_RESET is the right choice here.  The distinctions
+are blurry, because PAPR is built as a paravirtualized platform -
+there is no bare metal equivalent.  For example, on PowerVM this
+really would be initiated by guest firmware, but it's working in
+communication with the hypervisor.  But with qemu and KVM, we actually
+implement all this negotiation logic in qemu directly (this is easier
+than having complex communication channels between guest firware and
+qemu).
 
-> I think I've tried to get machine return a list of cpu slots
-> and then deal with them in numa.c but result looked messy and
-> not to my liking.
-> Eventually I stopped on machine_set_cpu_numa_node() variant
-> as the cleanest for now.
+But I guess the point is that this is a "business as usual" reboot and
+the guest is expected to continue booting at some point after this,
+rather than being killed by qemu.
 
-Ok, makes sense.
+Things get more complicated still if we think about what happens if
+this feature negotiation fails - then we can't boot the guest OS.  At
+the moment the few cases where this happens, I think we just exit
+qemu, but notifying this as a host caused shutdown might be
+appropriate.
 
 --=20
 David Gibson			| I'll have my music baroque, and my code
@@ -238,25 +201,25 @@ david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
 				| _way_ _around_!
 http://www.ozlabs.org/~dgibson
 
---teKjxxMjPsACTz/N
+--0btr6/5+bhBdui6J
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 Version: GnuPG v2
 
-iQIcBAEBCAAGBQJZEmmrAAoJEGw4ysog2bOSezQQAKjQBG5/QXs1IJ3n/AgpSiv/
-ef1UKIcy4bWGJpaPdpDC6sJ1z3PrtjB3fkEmY8upJFLkjMDGnOVorS2vZnPDaimT
-iCKJRrjYqB/0c9EGWWJIkrpIw4yqCypjvB6zk9pEl896jyzJH7gjtw4cKJM9XvyA
-Rq4O193GV1qPKd2Oylv7vb+kmcEApAIelduFIZJ/fl+BydjDTyYx5tniADez/kGT
-X37U9nq9AHRkww9WA10aAP2i4fu6wOAKS0nDBwruwXPMyXQymOp6/vQo4Rz9trHv
-W/P1EVHSWrhsYwKX2ODnssZdSlC04Kfz7/SZ0Wd3QC67KBLi88vWOf+SKrzTmywg
-b2IiYyKZQKw4NXfXypGoyjXAJkhHqaa9hXIWRoZabi5N/Ay+7b7+ISpxD4tS4Gqr
-i7Pw6bTgCTSfNT7RcejwPFmvlSrr5sZpR3QbAHRCPWqJRRcKk40sVlZyK+L7vyQe
-vLGFTXJIxrWibDwpWxpqWMfe4VMARzuSWjAKrcRBRc2zoVURCaagec9dZUci0AZr
-SQX6vXVtWzPIWyK+Emjhit17Cn85G5fXIbMarO0L8JgOP5SrbKIL3vo6VIMy4TM8
-qgjcd5EPX6+KTIRCqcU6kXySLe/yQBv8e7Vg0sHnKF5ofBJx/KUzMvGbH8bcLE43
-Ad33qqQk423AX7bo/BtA
-=/ILG
+iQIcBAEBCAAGBQJZEsI2AAoJEGw4ysog2bOSrZQQAONQcDrk+8XBHkJ+cjUrLJmD
+GvWf8otaUn05Y8BqwzsDqav4jUGX9hlt1nyamQVXRGrjjOoWx3vGO3n3n6E9rqkj
+iNnEHqnXgvYn8JgGBpYQ1pawEsCuq+NpQa9wLu9SDsg9WEFpu0kA/SjXqSQAsej2
+RSCn39/UvO/3h2uDKCxntQ1UiMW9+hywaxfTNX8r1+n4h10LRcD3OhvqdN3v4wlw
+nzU81CXhM3XHVkMD5nG7T/Deg7BrmR0aaogvJmDvhsqIqa+KnLLZw2f8R4mclOEA
+A25e9xG8sze0J2yFyS2TDTuQuQzp/r0fnvH5A9b49S51gn2rHgZ3xIVs8rz+KUGa
+uAkmYzyEtXoLKfZyf+lHjVfJRhGpINu9JzhRBlR+0GRwm9a10Onzeo27cDRFc5CM
+E50UVmIecjfWO9x0CAemez6YqfXuqLIBB408+Y4WkOLoWHiwGqZjEHRNtzGY3tI9
+4g2t17iHfhkhMw5Eq6B3pBtEQOY21d+PODL93iwfuAq1RmAcUhjmUD1+mRM3GdcA
+pBNZNAE/5k3r3VzA10DRd3ebmJ6UDOWefUWOHIqK2fZsf/tNHhJBo0k3WPOlmq+m
+MTCMqSkqIsOpDYK7YHvLWZNxk+jymMTf9albzjCX202C77zbpmQa0Y59o03HMbDf
+mrS9Yc16j48Dox+nzqwT
+=IB2R
 -----END PGP SIGNATURE-----
 
---teKjxxMjPsACTz/N--
+--0btr6/5+bhBdui6J--

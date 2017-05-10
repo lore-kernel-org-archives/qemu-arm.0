@@ -1,185 +1,182 @@
-Received: by 10.25.0.6 with SMTP id 6csp239723lfa;
-        Wed, 10 May 2017 04:34:39 -0700 (PDT)
-X-Received: by 10.55.136.3 with SMTP id k3mr4609723qkd.283.1494416079371;
-        Wed, 10 May 2017 04:34:39 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1494416079; cv=none;
+Received: by 10.25.0.6 with SMTP id 6csp240670lfa;
+        Wed, 10 May 2017 04:36:40 -0700 (PDT)
+X-Received: by 10.200.33.240 with SMTP id 45mr5329020qtz.111.1494416200874;
+        Wed, 10 May 2017 04:36:40 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1494416200; cv=none;
         d=google.com; s=arc-20160816;
-        b=dopaHbdbNRuytjuS79HLD7vMIVDEz94nNP6O583A4opIAIOTOGUAeHLV5EGyHvf9iR
-         uGP22MmVdn1nXZgML5hQddyWIQKy9PF308tLoENn5Giz3Trqq2VuAsT/6O2419fA4evR
-         W+GryV18epnFp9cM+pBL7FXLXi/paihgEIGdjBg7maNUpU185jHxBNqPXPW18e167Za7
-         5jZqVfCdVATc438f0HBitLYmnBukpREN2h5KqQ+5ZAJ8bvd0hnNoep4cTJcQprGQDSmV
-         TPTaxd6XizSftf144pLjKKiw9odI1R8FB+0K0sY3LwcaFyV+8B6sjNcpWCc+hrvtoDqz
-         UwgQ==
+        b=uCA26I1TNevYvKbJrAa7RjpxmvF+qjIuL12bLAEFLmRxH2+pxZf5CQdj1E9DSrheMc
+         RQFNQFl+J0ztkp6jU1zionyQPWFiX7oQWgPmf4OPZHOC1+IiHYNRAtzpQ3+MfVus02Nh
+         PErdN3uFSdvXvv6iWjiULOgYbaroHKtmkGCxIco5lTrm6gWJ41XkQk7A0DHpHStcr5HT
+         uUe1GimU3aSCnnr7+AqaPAE7+U0sok6dp7AbHaEBQpFEp1QD/kqEp8sHfejybsQByILT
+         sk09H+C59ceon4WFjIiI8R4cWS959vYV6Gxl65l3pJ+wR04SbEpEu+mJ+TEg8lC/zrod
+         pbAA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
          :message-id:date:to:from:dkim-filter:dmarc-filter
          :arc-authentication-results;
-        bh=psJBJFSShvAJHj3Pg5hEkiN+noOIyqeJaqyCIRUxCPs=;
-        b=tJXzmGj9W49DNVrLJcfLQgYlXxkCz3w8M/3iGpannOgC/GZ6kZUW/kgEQpoTg5ELaU
-         U+Qi01Ak4UdBTE5h+YU1dMPrb3GqrgIuav1gJJb11SmjWszAhZ+4xyZkpKZcZ81HV2Zb
-         ZDQohHm8qqIfbUeU5Pq1UbCkXWdEev6BHdq8pGxyr1dbLFjKgrbSczMgMmgBwG0VqbpB
-         HkmAvtNIFTeN9ALGJnmkOVLvTCPEjLEh+xT+IfuM7CoJClqQjf74TG4cMQFg8qwlAzqG
-         XMCySKS9a4e4h0MAkWs9EaxzHAnjJ+qmU3n5FSvsOA3g4qR/9orA7a7kGptXtr/0D1bp
-         jxnQ==
+        bh=nSNZJLkNqmwFFawrqcjrqOTsUmGMWZcS92dQGnwVUVI=;
+        b=grEqWyqAkh1p0ubT9MA//aaLFhGOwlXQCqGdVhQOrEGh6IoxbCaYznVc0cMTWVczvq
+         kzF1cfGUHNJa6zN0x9mNaaqnsoZp1BO51u+ZDvmhFe5SxoZM3pCqzR2OJTwVZy892cih
+         NdyeLyYVn1SPgUsb3CJn7vYtPYom7omnLOmhsxQcJBUTy9XwoNXQE8v2Ws8ug/olCABV
+         muq5OzdUtCUlQrzESKeHb0eZivLWMfDV5yXks5l6lmORNMXRuv5r/0ZxLwUnwHZgVZdQ
+         XP5g4jbvenIXx8P5HzC087QwuY9Qy1l8BF4nWqzLYHF1ziMkq7phnQORLcfHG+OL10PH
+         aJoQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id k18si2844625qtc.300.2017.05.10.04.34.39
+        by mx.google.com with ESMTPS id c65si2910543qkf.138.2017.05.10.04.36.40
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 10 May 2017 04:34:39 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Wed, 10 May 2017 04:36:40 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:41938 helo=lists.gnu.org)
+Received: from localhost ([::1]:41954 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1d8Pt8-0002pw-OC
-	for alex.bennee@linaro.org; Wed, 10 May 2017 07:34:38 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:35488)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1d8Pv6-0004BX-7z
+	for alex.bennee@linaro.org; Wed, 10 May 2017 07:36:40 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:35593)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <imammedo@redhat.com>) id 1d8PpG-0007ka-PW
-	for qemu-arm@nongnu.org; Wed, 10 May 2017 07:30:39 -0400
+	(envelope-from <imammedo@redhat.com>) id 1d8PpO-0007tB-8B
+	for qemu-devel@nongnu.org; Wed, 10 May 2017 07:30:47 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <imammedo@redhat.com>) id 1d8PpF-0001n5-Vf
-	for qemu-arm@nongnu.org; Wed, 10 May 2017 07:30:38 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:52538)
+	(envelope-from <imammedo@redhat.com>) id 1d8PpN-0001pO-CC
+	for qemu-devel@nongnu.org; Wed, 10 May 2017 07:30:46 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:49646)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <imammedo@redhat.com>)
-	id 1d8PpF-0001mq-NM; Wed, 10 May 2017 07:30:37 -0400
+	id 1d8PpL-0001oE-5d; Wed, 10 May 2017 07:30:43 -0400
 Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
 	[10.5.11.15])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 98A2037EEF;
-	Wed, 10 May 2017 11:30:36 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 98A2037EEF
-Authentication-Results: ext-mx05.extmail.prod.ext.phx2.redhat.com;
+	by mx1.redhat.com (Postfix) with ESMTPS id 12C6765D04;
+	Wed, 10 May 2017 11:30:42 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 12C6765D04
+Authentication-Results: ext-mx09.extmail.prod.ext.phx2.redhat.com;
 	dmarc=none (p=none dis=none) header.from=redhat.com
-Authentication-Results: ext-mx05.extmail.prod.ext.phx2.redhat.com;
+Authentication-Results: ext-mx09.extmail.prod.ext.phx2.redhat.com;
 	spf=pass smtp.mailfrom=imammedo@redhat.com
-DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com 98A2037EEF
+DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com 12C6765D04
 Received: from dell-r430-03.lab.eng.brq.redhat.com
 	(dell-r430-03.lab.eng.brq.redhat.com [10.34.112.60])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id A78967DFF5;
-	Wed, 10 May 2017 11:30:34 +0000 (UTC)
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 2A0F17DFF5;
+	Wed, 10 May 2017 11:30:39 +0000 (UTC)
 From: Igor Mammedov <imammedo@redhat.com>
 To: qemu-devel@nongnu.org
-Date: Wed, 10 May 2017 13:29:55 +0200
-Message-Id: <1494415802-227633-12-git-send-email-imammedo@redhat.com>
+Date: Wed, 10 May 2017 13:29:57 +0200
+Message-Id: <1494415802-227633-14-git-send-email-imammedo@redhat.com>
 In-Reply-To: <1494415802-227633-1-git-send-email-imammedo@redhat.com>
 References: <1494415802-227633-1-git-send-email-imammedo@redhat.com>
 X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.29]);
-	Wed, 10 May 2017 11:30:36 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.38]);
+	Wed, 10 May 2017 11:30:42 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 209.132.183.28
-Subject: [Qemu-arm] [PATCH v3 11/18] QMP: include CpuInstanceProperties into
- query_cpus output output
-X-BeenThere: qemu-arm@nongnu.org
+Subject: [Qemu-devel] [PATCH v3 13/18] numa: remove no longer need
+ numa_post_machine_init()
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jones <drjones@redhat.com>,
 	Eduardo Habkost <ehabkost@redhat.com>, qemu-arm@nongnu.org,
 	qemu-ppc@nongnu.org, Shannon Zhao <zhaoshenglong@huawei.com>,
-	Paolo Bonzini <pbonzini@redhat.com>, Eric Blake <eblake@redhat.com>,
+	Paolo Bonzini <pbonzini@redhat.com>,
 	David Gibson <david@gibson.dropbear.id.au>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: cz1DBt/GNOKS
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 7+Rj2fp2U6tK
 
-if board supports CpuInstanceProperties, report them for
-each CPU thread listed. Main motivation for this is to
-provide these properties introspection via QMP interface
-for using in test cases to verify numa node to cpu mapping,
-which includes not only boards that support cpu hotplug
-and have this info in query-hotpluggable-cpus (pc/spapr)
-but also for boards that don't not support hotpluggable-cpus
-but support numa mapping (virt-arm).
+CPUState::numa_node is still in use but now it's set by
+board when it creates CPU objects. So there isn't any
+need to set it again after all CPU's are created,
+since it's been already set.
 
 Signed-off-by: Igor Mammedov <imammedo@redhat.com>
-Reviewed-by: Eric Blake <eblake@redhat.com>
+Reviewed-by: David Gibson <david@gibson.dropbear.id.au>
+Reviewed-by: Andrew Jones <drjones@redhat.com>
 ---
-v2:
-  * fix checkpatch error and remove extra space after = (Eric)
----
- cpus.c           | 10 ++++++++++
- qapi-schema.json |  6 +++++-
- 2 files changed, 15 insertions(+), 1 deletion(-)
+ include/sysemu/numa.h |  6 ------
+ numa.c                | 15 ---------------
+ vl.c                  |  2 --
+ 3 files changed, 23 deletions(-)
 
-diff --git a/cpus.c b/cpus.c
-index 740b8dc..4f91d25 100644
---- a/cpus.c
-+++ b/cpus.c
-@@ -50,6 +50,7 @@
- #include "qapi-event.h"
- #include "hw/nmi.h"
- #include "sysemu/replay.h"
-+#include "hw/boards.h"
+diff --git a/include/sysemu/numa.h b/include/sysemu/numa.h
+index 027830c..8cb3ebc 100644
+--- a/include/sysemu/numa.h
++++ b/include/sysemu/numa.h
+@@ -27,7 +27,6 @@ struct node_info {
  
- #ifdef CONFIG_LINUX
- 
-@@ -1859,6 +1860,8 @@ void list_cpus(FILE *f, fprintf_function cpu_fprintf, const char *optarg)
- 
- CpuInfoList *qmp_query_cpus(Error **errp)
- {
-+    MachineState *ms = MACHINE(qdev_get_machine());
-+    MachineClass *mc = MACHINE_GET_CLASS(ms);
-     CpuInfoList *head = NULL, *cur_item = NULL;
-     CPUState *cpu;
- 
-@@ -1909,6 +1912,13 @@ CpuInfoList *qmp_query_cpus(Error **errp)
- #else
-         info->value->arch = CPU_INFO_ARCH_OTHER;
+ extern NodeInfo numa_info[MAX_NODES];
+ void parse_numa_opts(MachineState *ms);
+-void numa_post_machine_init(void);
+ void query_numa_node_mem(uint64_t node_mem[]);
+ extern QemuOptsList qemu_numa_opts;
+ void numa_set_mem_node_id(ram_addr_t addr, uint64_t size, uint32_t node);
+@@ -37,9 +36,4 @@ void numa_legacy_auto_assign_ram(MachineClass *mc, NodeInfo *nodes,
+                                  int nb_nodes, ram_addr_t size);
+ void numa_default_auto_assign_ram(MachineClass *mc, NodeInfo *nodes,
+                                   int nb_nodes, ram_addr_t size);
+-
+-
+-/* on success returns node index in numa_info,
+- * on failure returns nb_numa_nodes */
+-int numa_get_node_for_cpu(int idx);
  #endif
-+        info->value->has_props = !!mc->cpu_index_to_instance_props;
-+        if (info->value->has_props) {
-+            CpuInstanceProperties *props;
-+            props = g_malloc0(sizeof(*props));
-+            *props = mc->cpu_index_to_instance_props(ms, cpu->cpu_index);
-+            info->value->props = props;
-+        }
+diff --git a/numa.c b/numa.c
+index f16a6a8..dc739ea 100644
+--- a/numa.c
++++ b/numa.c
+@@ -572,21 +572,6 @@ void parse_numa_opts(MachineState *ms)
+     }
+ }
  
-         /* XXX: waiting for the qapi to support GSList */
-         if (!cur_item) {
-diff --git a/qapi-schema.json b/qapi-schema.json
-index bf48873..f1bcebe 100644
---- a/qapi-schema.json
-+++ b/qapi-schema.json
-@@ -1325,6 +1325,9 @@
- #
- # @thread_id: ID of the underlying host thread
- #
-+# @props: properties describing to which node/socket/core/thread
-+#         virtual CPU belongs to, provided if supported by board (since 2.10)
-+#
- # @arch: architecture of the cpu, which determines which additional fields
- #        will be listed (since 2.6)
- #
-@@ -1335,7 +1338,8 @@
- ##
- { 'union': 'CpuInfo',
-   'base': {'CPU': 'int', 'current': 'bool', 'halted': 'bool',
--           'qom_path': 'str', 'thread_id': 'int', 'arch': 'CpuInfoArch' },
-+           'qom_path': 'str', 'thread_id': 'int',
-+           '*props': 'CpuInstanceProperties', 'arch': 'CpuInfoArch' },
-   'discriminator': 'arch',
-   'data': { 'x86': 'CpuInfoX86',
-             'sparc': 'CpuInfoSPARC',
+-void numa_post_machine_init(void)
+-{
+-    CPUState *cpu;
+-    int i;
+-
+-    CPU_FOREACH(cpu) {
+-        for (i = 0; i < nb_numa_nodes; i++) {
+-            assert(cpu->cpu_index < max_cpus);
+-            if (test_bit(cpu->cpu_index, numa_info[i].node_cpu)) {
+-                cpu->numa_node = i;
+-            }
+-        }
+-    }
+-}
+-
+ static void allocate_system_memory_nonnuma(MemoryRegion *mr, Object *owner,
+                                            const char *name,
+                                            uint64_t ram_size)
+diff --git a/vl.c b/vl.c
+index c63f4d5..fe4741d 100644
+--- a/vl.c
++++ b/vl.c
+@@ -4595,8 +4595,6 @@ int main(int argc, char **argv, char **envp)
+ 
+     cpu_synchronize_all_post_init();
+ 
+-    numa_post_machine_init();
+-
+     rom_reset_order_override();
+ 
+     /*
 -- 
 2.7.4
 

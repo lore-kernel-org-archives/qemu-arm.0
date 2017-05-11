@@ -1,110 +1,82 @@
-Received: by 10.25.0.6 with SMTP id 6csp476153lfa;
-        Wed, 10 May 2017 13:32:50 -0700 (PDT)
-X-Received: by 10.55.180.197 with SMTP id d188mr7778643qkf.318.1494448370133;
-        Wed, 10 May 2017 13:32:50 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1494448370; cv=none;
+Received: by 10.25.0.6 with SMTP id 6csp608647lfa;
+        Wed, 10 May 2017 21:54:31 -0700 (PDT)
+X-Received: by 10.200.46.239 with SMTP id i44mr1903528qta.89.1494478471466;
+        Wed, 10 May 2017 21:54:31 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1494478471; cv=none;
         d=google.com; s=arc-20160816;
-        b=y8LyMhgXAJcEqYpHPjI5l6gtHcvVI6iI8mpdrIduUj0pLXH3qXGVwNBQEsKWTHhG0/
-         tCEyjOVg+C4dbuQfSKhTJNK3kAIWBor6gR1Nz8I4zr5iBCOn/JvJlFrYNbFecBLxFchJ
-         qqs2JjaaCL+iNBpJbqhaHpd1wNopePbwbZYRRVeNQ/zsnrK7jHGxpajWZRMDv3RUByJn
-         5tYD3CfYwg+ST7eVrpAzTbgt2ULi4Ym04tICUmkR03fgOdcc98nvkQm9GD/QDX0NX2O8
-         PHSjMmj3dGJ2Z0dihqTkqGjLxNkHBWLdJP0HaTVqo5ZqozyFjO6cAeoNZfWco6vpL9sv
-         uUtA==
+        b=D4FPmiAOKn2+sY9s6j3eI/O2eAHTzCXJLp2gCFMl/QjM+r/hrjYZ+t5SPwbBWE2Jhm
+         HDiscFXBgiArCwh6VTtT3JuIr1El5jRI9h5ODxBglJc7q0pWExowIdpglt087pqRpwZp
+         Bdse48Xu8u1EvZ9NWPuvv1Ap1bP5xm3+PvVTeEJ3RrK5h1ziKGNu/F28zVRtcC/7Q1Tk
+         dZWGtd9GbTAENzBAxZ+21T18Go40OhV+GA9n3C1/DGO1Rg3mX3Oo4ZRZpnsMulzOD3IU
+         Afq4TNxq1AQgkC+4TgtPf7IT4NP0r80NwoLzdz8ffyIErvc0pe6VC3f7H1N2UI67Oy0C
+         uOqg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:dkim-signature
-         :arc-authentication-results;
-        bh=VuRVKHLKE9qDo0KnFxw1+Sl5Kh1BPj1yH38eHWYVlkY=;
-        b=SAqB7xLnbCWAaKYLlvQkhixoL+nDl33gZo0eGvqJTf6ChzB3/KhhHRJc3x6NKG8lxp
-         t5TQtv+JQqE5hS+PsyPnkU8HrnTB90mEQ4y28/6+kK1Kt3myHGZOVyeRSTCx2Wu3AdL1
-         sg5Youdd/t2n97z9yWsNrmeLmeOiP1BeMB9UV5eJ5CQJAin2nU84CNd9GdYuYoCUGNWc
-         0urOqc09jeflCGSN74b58i12mvoYNH6N/6/CoHKjdFSuF4ybWmdHcRnzGj5qIrtS90B0
-         7t7CWnILYcIkwr+EIv8fOjpr1T5bT1kMGRIVBMfmyrvPn3bn6a6ooXD+iKYWVkrxmCml
-         D7yQ==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
+         :content-disposition:mime-version:references:message-id:to:from:date
+         :dkim-signature:arc-authentication-results;
+        bh=lGVHmyrFrCWvafasw5Hee2yHUnz1K0bB993KlLfsqQ8=;
+        b=EgHd0v6laTgFi1ropsjzMpAIRF7jkq+/R7AEp6wubulvKmX3LdUvnFIioKH8bmNhL5
+         BtIBtlThFLEluv/KPoxuQB+wGPO/qsZnTOVJ82Mq/ZUi5djsTfnpzAH0bfgyqqHOeeMa
+         5UjRrTXyajMZHQqfLPq6jPfj0LPlXw7VHp20Ed+yIkX8RNgMEsW1AQx/qzmzihyYxziF
+         tdQ62JGEdTjHqf/ftMvcCYNge+nYH8lSxsJakweOTRVwciUUIZ+YbJ0XCNT+4U8ykOMR
+         RDx2pPxMUdJl+ImPI8avh4dWwpMWp3uAUTvjjOdrRleEGmfksBs6NKLCr1+GzxAhfVLt
+         0KIA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com;
+       dkim=fail header.i=@gibson.dropbear.id.au;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id j30si61328qtf.36.2017.05.10.13.32.49
+        by mx.google.com with ESMTPS id l187si796504qkc.143.2017.05.10.21.54.31
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 10 May 2017 13:32:50 -0700 (PDT)
+        Wed, 10 May 2017 21:54:31 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com;
+       dkim=fail header.i=@gibson.dropbear.id.au;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:44719 helo=lists.gnu.org)
+Received: from localhost ([::1]:45994 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1d8YHx-0004Kk-I9
-	for alex.bennee@linaro.org; Wed, 10 May 2017 16:32:49 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:43158)
+	id 1d8g7S-0006zO-Ux
+	for alex.bennee@linaro.org; Thu, 11 May 2017 00:54:31 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:42978)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1d8YHr-0004Kc-CC
-	for qemu-arm@nongnu.org; Wed, 10 May 2017 16:32:44 -0400
+	(envelope-from <dgibson@ozlabs.org>) id 1d8g7N-0006zC-BL
+	for qemu-arm@nongnu.org; Thu, 11 May 2017 00:54:26 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1d8YHm-0001C6-Gp
-	for qemu-arm@nongnu.org; Wed, 10 May 2017 16:32:43 -0400
-Received: from mail-qk0-x22a.google.com ([2607:f8b0:400d:c09::22a]:34270)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1d8YHm-0001Bq-BR; Wed, 10 May 2017 16:32:38 -0400
-Received: by mail-qk0-x22a.google.com with SMTP id k74so6652195qke.1;
-	Wed, 10 May 2017 13:32:38 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=sender:subject:to:references:from:message-id:date:user-agent
-	:mime-version:in-reply-to:content-transfer-encoding;
-	bh=VuRVKHLKE9qDo0KnFxw1+Sl5Kh1BPj1yH38eHWYVlkY=;
-	b=hZ61HAl4P9MH9rbyw4oBUJ9jwGPwrt6weYh1FugQwrtrzqJeRwd4T7rHOI3/2QCJyl
-	/B1UKbr936Cg4OZ0/B371RygzNWsqYDYT0tcVpKuPXWvQYUifLnsRrbsKyf33KhHhcHZ
-	Rz0KY5O9tlAhTzcpfZY3avMEFc7T+2DIfv9m31WWXyTNBIWRlhwLa6i08GwugwEtiDvz
-	+gWx2oka+Z8fd7QvbonZTZuaQuUB559ff5Zdwo6YQyLql7Ouiesxj4LOprhFAinTVoX+
-	lWLqsy+1On1SBZ+kglSyFpE55p/O9uavGOhfqBUdZrCoB5E5UegetFG6HEVLzKYU+oUp
-	NuVg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:sender:subject:to:references:from:message-id
-	:date:user-agent:mime-version:in-reply-to:content-transfer-encoding;
-	bh=VuRVKHLKE9qDo0KnFxw1+Sl5Kh1BPj1yH38eHWYVlkY=;
-	b=rDsalOAmkJG4Cwz14mvPdGP8JCmXmX8BZ+CNLEkQYhBkOqSgrlY4EYCvbD1TLamQ9h
-	NA7kMFHhUITwWx2TAKc+RDWPq3iXaqfyXw8k2G8XK6prpJSF+S7/AL9sLRYW1zYOM16h
-	oghW8usU+TIw6Ta0AF26UaoziLuy/PD9JsL58G+/6Y94vKHL7WNBq/aW0RZnMSKjUCrV
-	MaoI6vU+nPC019rPWcrzY3sAi0P+HdI2dQ16P5CJ9fs/ABK1s2N69CSiSMEWYreelq0y
-	5Vf3o1r/eebkUX4JCbGUsC2zFdrseROPDwY+T/GfO0ZghMUjch+ldD9nBswJmgFTtTM2
-	mMhA==
-X-Gm-Message-State: AODbwcCTFY3DeXCZBHyLCgCLGCdhKUxo6myW9vlXYrKXnLuaXpE5SHkP
-	8IYR/IWI9xzytw==
-X-Received: by 10.55.168.86 with SMTP id r83mr6949072qke.97.1494448357827;
-	Wed, 10 May 2017 13:32:37 -0700 (PDT)
-Received: from [192.168.1.10] ([138.117.48.226])
-	by smtp.gmail.com with ESMTPSA id k36sm42535qtc.10.2017.05.10.13.32.35
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Wed, 10 May 2017 13:32:37 -0700 (PDT)
-To: Richard Henderson <rth@twiddle.net>, qemu-devel@nongnu.org,
-	Peter Maydell <peter.maydell@linaro.org>,
-	Aurelien Jarno <aurelien@aurel32.net>, qemu-arm@nongnu.org
-References: <20170510200535.13268-1-f4bug@amsat.org>
-	<20170510200535.13268-3-f4bug@amsat.org>
-	<b258b01d-74f9-e412-5367-d8e1d72eb159@twiddle.net>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <c58cdae9-5043-2506-9a91-f35f2da51e20@amsat.org>
-Date: Wed, 10 May 2017 17:32:34 -0300
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
-	Thunderbird/45.8.0
+	(envelope-from <dgibson@ozlabs.org>) id 1d8g7K-0006ll-9A
+	for qemu-arm@nongnu.org; Thu, 11 May 2017 00:54:25 -0400
+Received: from ozlabs.org ([103.22.144.67]:45365)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <dgibson@ozlabs.org>)
+	id 1d8g7J-0006i0-FW; Thu, 11 May 2017 00:54:22 -0400
+Received: by ozlabs.org (Postfix, from userid 1007)
+	id 3wNgkK2t7gz9s7q; Thu, 11 May 2017 14:54:17 +1000 (AEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+	d=gibson.dropbear.id.au; s=201602; t=1494478457;
+	bh=/Fs+LGNXw3IVMfp/mKjjYbGJCIsfXhFxmiYsZpgaPPs=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=LnkFfzbkSQJTFEXrzuzy8ibeh2dmowQIgarJYCjZoOzn3qTGXBuQjrmEIwm6jtsxY
+	DiqpH7eNxRDXuZmvd+tVnrPbveskXp7cK1pYzeTdszPhjWat6gBz/UTqiZ8YwkPe57
+	3/8Dy+gWcVHlDQAxWK9cufax4W9ntrISe5qJ6qsE=
+Date: Thu, 11 May 2017 14:36:25 +1000
+From: David Gibson <david@gibson.dropbear.id.au>
+To: Igor Mammedov <imammedo@redhat.com>
+Message-ID: <20170511043625.GG14408@umbus.fritz.box>
+References: <1494415802-227633-1-git-send-email-imammedo@redhat.com>
+	<1494415802-227633-2-git-send-email-imammedo@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <b258b01d-74f9-e412-5367-d8e1d72eb159@twiddle.net>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:400d:c09::22a
-Subject: Re: [Qemu-arm] [PATCH 2/8] target/arm: optimize smul_dual() and
- neon_trn_u8() using extract op
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="tvOENZuN7d6HfOWU"
+Content-Disposition: inline
+In-Reply-To: <1494415802-227633-2-git-send-email-imammedo@redhat.com>
+User-Agent: Mutt/1.8.0 (2017-02-23)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 103.22.144.67
+Subject: Re: [Qemu-arm] [PATCH v3 01/18] numa: move source of default CPUs
+ to NUMA node mapping into boards
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -116,26 +88,89 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jones <drjones@redhat.com>,
+	Eduardo Habkost <ehabkost@redhat.com>, qemu-devel@nongnu.org,
+	qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
+	Shannon Zhao <zhaoshenglong@huawei.com>,
+	Paolo Bonzini <pbonzini@redhat.com>, Eric Blake <eblake@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: fV2fMionQFS9
+X-TUID: TrARe7Dr/M2W
 
-On 05/10/2017 05:20 PM, Richard Henderson wrote:
-> On 05/10/2017 01:05 PM, Philippe Mathieu-Daudé wrote:
->> -    tcg_gen_shri_i32(t1, t1, 8);
->> -    tcg_gen_andi_i32(t1, t1, 0x00ff00ff);
->> +    tcg_gen_extract_i32(t1, t1, 8, 0x00ff00ff);
->
-> This is very wrong.  See my previous comment.
 
-Arghhh I see, I checked manually and though I had it...
+--tvOENZuN7d6HfOWU
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-I'll first check with the cocci script if it can handles this better 
-then review the serie manually before bother you again.
+On Wed, May 10, 2017 at 01:29:45PM +0200, Igor Mammedov wrote:
+> Originally CPU threads were by default assigned in
+> round-robin fashion. However it was causing issues in
+> guest since CPU threads from the same socket/core could
+> be placed on different NUMA nodes.
+> Commit fb43b73b (pc: fix default VCPU to NUMA node mapping)
+> fixed it by grouping threads within a socket on the same node
+> introducing cpu_index_to_socket_id() callback and commit
+> 20bb648d (spapr: Fix default NUMA node allocation for threads)
+> reused callback to fix similar issues for SPAPR machine
+> even though socket doesn't make much sense there.
+>=20
+> As result QEMU ended up having 3 default distribution rules
+> used by 3 targets /virt-arm, spapr, pc/.
+>=20
+> In effort of moving NUMA mapping for CPUs into possible_cpus,
+> generalize default mapping in numa.c by making boards decide
+> on default mapping and let them explicitly tell generic
+> numa code to which node a CPU thread belongs to by replacing
+> cpu_index_to_socket_id() with @cpu_index_to_instance_props()
+> which provides default node_id assigned by board to specified
+> cpu_index.
+>=20
+> Signed-off-by: Igor Mammedov <imammedo@redhat.com>
+> Reviewed-by: Eduardo Habkost <ehabkost@redhat.com>
 
-Thinking about it, this should be quite easy unit-testable somehow ... 
-Not sure if I want to start this path although.
+Reviewed-by: David Gibson <david@gibson.dropbear.id.au>
 
-Sorry for the noise and thank a lot for the review!
+[snip]
+> +static CpuInstanceProperties
+> +virt_cpu_index_to_props(MachineState *ms, unsigned cpu_index)
+> +{
+> +    MachineClass *mc =3D MACHINE_GET_CLASS(ms);
+> +    const CPUArchIdList *possible_cpus =3D mc->possible_cpu_arch_ids(ms);
+> +
+> +    assert(cpu_index < possible_cpus->len);
+> +    return possible_cpus->cpus[cpu_index].props;
+> +}
 
-Phil.
+Suggested follow up patch: Since this function is identical for x86
+and ARM, we could have a "thread_granularity_cpu_index_to_props"
+helper they could both reference.  M
+
+--=20
+David Gibson			| I'll have my music baroque, and my code
+david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
+				| _way_ _around_!
+http://www.ozlabs.org/~dgibson
+
+--tvOENZuN7d6HfOWU
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v2
+
+iQIcBAEBCAAGBQJZE+pHAAoJEGw4ysog2bOSLPgQAIyJGzDhAyIkImQZUy98cPyI
+V5qGylXIdfWRodb+qXDUpf0N9/pjGiU5W7EmURVEQSXOV4wbyZlxf5zR1wANx0Ik
+GCJNh9VXE+pnEyv1cxj6aq4QT5xc/fM52AXe5Hu6yadsAmHrZ6mV/VuZa5eD8nXh
+JJtnZWOFe1pRywdMmSYGXDR+Iom9u2MD16+qjo1o6RbdbBetW9A2ku4j7VpIYIuK
+KJek1bKvOJQoMnCuasP9dtqxE4CZ6jf6/YZK3DVDYxOVJDe2JvLQAHYhKhaCV3LD
+IxHrkIsEbH0FLfi9iEqbBJchu9QimZIQmXwGfYtU/JhhqcUNH9hKfSw09yYymi0G
+wq7R1lhIqPQAT3bv8E4hBes8cnghRGchv8IHOpegxANT52ZWcZzWweyKHUT02MY8
+y0zjR/u0WHIu/9IcR6vM+ONnFITICp0GlERAmijnku07OrHABvXF+E9tSUYxPuAT
+x6Hc7pt892dU4ynACR/EuIzN8QDvvMJR3vxLx+ggkCz1O9b3j//9EAcm0+0M3iJC
+ODV/MiXZDBJHEjCt1oHhhySaoPkJFKMEXs9jiw3d0+6+bgqsJVNgSNaqt7rLfoPm
+qwNc9yQgYrjY/8iXWI0waplW0CrtfZmM2SVI19E2eG6ABgG/GJh0dyww/ZhZyIPK
+8XWp/Ul6LL2k/YglM3rJ
+=EJL6
+-----END PGP SIGNATURE-----
+
+--tvOENZuN7d6HfOWU--

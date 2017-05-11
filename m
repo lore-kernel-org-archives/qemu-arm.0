@@ -1,82 +1,82 @@
-Received: by 10.25.0.6 with SMTP id 6csp608661lfa;
-        Wed, 10 May 2017 21:54:35 -0700 (PDT)
-X-Received: by 10.200.47.46 with SMTP id j43mr2113662qta.255.1494478475570;
-        Wed, 10 May 2017 21:54:35 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1494478475; cv=none;
+Received: by 10.25.0.6 with SMTP id 6csp617575lfa;
+        Wed, 10 May 2017 22:29:05 -0700 (PDT)
+X-Received: by 10.55.54.204 with SMTP id d195mr8682568qka.255.1494480545238;
+        Wed, 10 May 2017 22:29:05 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1494480545; cv=none;
         d=google.com; s=arc-20160816;
-        b=roLOUuZUvwO9hAfLtjb1LwiiP90HbxKS1skAfz1lT0ratawZ95UW+EILe0aidugzh2
-         oHcUeFoXxEYYL3dz3UwXBnnt83tjwvNeV60FHzPUecNqy4S1ff6BEsaQ/Whm6QNtfMev
-         CW4s7FZR4NV1veTe59+U5FN1KUsBp5XbfkNotJQ0xDPD7iPhOqjB0rbBS6M7LHHedtf6
-         +avJx3PCigLN3kXkXfRpcBl0SByF3tCtzlOBdRhyzxJOqzkfMPHuTn55+BkKzHTWGfHC
-         ryFO0D3F+S6wTIYXm/0TgEgs9wIEYBlnHHiHIu4haXpVSgLdYLF6QEXEHjVCYheXwfUT
-         EXqQ==
+        b=E0wwIOTNi/CL1QAsqeVl6n42qyQ4caodRZCf6SI6jYBnUh9dUxk2RVGn7tBkp/LyN8
+         MKESGDk5ZWWT6aT887OsedS1Gcyu6kqliYC9wbdzJJReYVrKYt3+XSOjdk+Z0SV66F1x
+         +QuflM8sh57DjM6Cpcg+zxfDvy6H+Z18ONogkPZbCoXQE/Q8cjCSjHXjdCK6HzFGC8f9
+         cEx6jC33qvlgWO39pfdQ9FzAGIcVZdi3c4dCd5DuAUs78ZuHk35+qy1F9VGB/slmxza9
+         oEJLDA4W42Ea9ogvIX/ZO+vvBU5HDAWtQqdRhdAkXzqyq5a5dHC8yQtdq1KhULqtYTgE
+         6qkw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
          :content-disposition:mime-version:references:message-id:to:from:date
          :dkim-signature:arc-authentication-results;
-        bh=/Vt8cx9dYF/kTuZGUQF3lihiH84C2sB+qG0+kVjuDBs=;
-        b=DUnzXvmym4gnkQjrQ/Yn8T62fTPjFKjVhCMOYDQNHClEHZx7F5iIF9dQCcunKK3MGp
-         EqCdtalSm9ywaPGLhNYGzG9N3JaOci8lxA4a8wZqCep9Ry+OdAMCuqzUf4ZJIJulHF3J
-         sGG1EdaT+vbor93W48S3sB8bxa/1n3KRxTpEPeZev67jeXlFW0RJbFn6xgAn6iZ2Os7u
-         3NWTX3C8Axos/6tcPd6V7xOaZTZXyWX3P0Sw9fQvzdobXJPUj79IWkA55EItjCfP1FLq
-         Nr7CN+khkPNxVrZ7zR/6ogj3qfGuqifoe9ZWoaoiCNGdeItnzgdFasszKNDDqP9CZcp6
-         aS7w==
+        bh=o/tvzMKTJIef69ixj+WxdlZnrKPdJARGHxAui0xp/kI=;
+        b=ptfbaxbBVVGj8ma8YmeUzFltQIyRPQjCgKvtOyrWEhOArY6hxPZTzZbIaIen7rESaQ
+         bhWlBDrFbwLWYPrUQ+h4lAV6vH7QsncnIVwwRuf6Du9Snj2pO0YzmKRNt4san5rfjw2N
+         ocT5MHGCg97koKKbtm7kUY1xbaJb8StUZtZrktb1RNzvap3Y7isFJrIeK1SLETmHw6eb
+         K5XHgdK1i7gW/p4R4c45eb2+o8Kr+3XZ76rz0j+gwQmEHH0VADYOpG2Ku6uHAnNkaQKd
+         sRMNQUqZkUwujEG7tYMCpc6dMfcrKRtwbNLafKYNBMDNDTduuCEVOuepI7IkMucYYy0f
+         dexQ==
 ARC-Authentication-Results: i=1; mx.google.com;
        dkim=fail header.i=@gibson.dropbear.id.au;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id r76si784596qkl.163.2017.05.10.21.54.35
+        by mx.google.com with ESMTPS id b4si869323qkd.303.2017.05.10.22.29.05
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 10 May 2017 21:54:35 -0700 (PDT)
+        Wed, 10 May 2017 22:29:05 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        dkim=fail header.i=@gibson.dropbear.id.au;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:45993 helo=lists.gnu.org)
+Received: from localhost ([::1]:46278 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1d8g7W-0006zN-Tw
-	for alex.bennee@linaro.org; Thu, 11 May 2017 00:54:35 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:42979)
+	id 1d8geu-0007ln-Mj
+	for alex.bennee@linaro.org; Thu, 11 May 2017 01:29:04 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:58945)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <dgibson@ozlabs.org>) id 1d8g7N-0006zB-BL
-	for qemu-arm@nongnu.org; Thu, 11 May 2017 00:54:26 -0400
+	(envelope-from <dgibson@ozlabs.org>) id 1d8gep-0007ld-Et
+	for qemu-arm@nongnu.org; Thu, 11 May 2017 01:29:01 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <dgibson@ozlabs.org>) id 1d8g7K-0006lp-9l
-	for qemu-arm@nongnu.org; Thu, 11 May 2017 00:54:25 -0400
-Received: from ozlabs.org ([103.22.144.67]:52051)
+	(envelope-from <dgibson@ozlabs.org>) id 1d8gen-0000iB-TN
+	for qemu-arm@nongnu.org; Thu, 11 May 2017 01:28:59 -0400
+Received: from ozlabs.org ([2401:3900:2:1::2]:56269)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <dgibson@ozlabs.org>)
-	id 1d8g7J-0006i1-FZ; Thu, 11 May 2017 00:54:22 -0400
+	id 1d8gem-0000gj-Kv; Thu, 11 May 2017 01:28:57 -0400
 Received: by ozlabs.org (Postfix, from userid 1007)
-	id 3wNgkK4GtCz9sCZ; Thu, 11 May 2017 14:54:17 +1000 (AEST)
+	id 3wNhVB2cqyz9sDB; Thu, 11 May 2017 15:28:50 +1000 (AEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-	d=gibson.dropbear.id.au; s=201602; t=1494478457;
-	bh=GJlYhM/9xZ452Guek/QaWFivWE0YdK84Ds0dpVvhygY=;
+	d=gibson.dropbear.id.au; s=201602; t=1494480530;
+	bh=ZtqnvYLemfq7VIM6yJYL4KGlaeqOKqx6dm0PVaHwlZo=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=Q215WL03vhs7zQCbWx7acSOhGHVGnyQh5V1RJjUSV+AENfDJF2TSGtH2rPRhnFiDw
-	/jBi9dlonrjAvLlH6QL8DVdOB8Fwdv4s7sdZKfVXNfhazNiKUcKR9i4wA7CQPUc7mk
-	VoJZvJUaNGPho06wvC1EquDmhHvob9EFiyX195tg=
-Date: Thu, 11 May 2017 14:39:30 +1000
+	b=Hiv4y5DNb5nN5CfQSs+aE/ExBnIOwdw2hvNthtjAgft4sZDrfn+DuUdutAIkjs6FT
+	nCZXB2AUnrlA1bQGzq8/+fH4P6uv94aIscK8jOYW2eHj0YLzFs5mEZKGBp1PKu9TTT
+	Cy5ce7z3RCRvcIP5az6oUi/8t+6Ukbpmrneq70xg=
+Date: Thu, 11 May 2017 15:23:32 +1000
 From: David Gibson <david@gibson.dropbear.id.au>
 To: Igor Mammedov <imammedo@redhat.com>
-Message-ID: <20170511043930.GH14408@umbus.fritz.box>
+Message-ID: <20170511052332.GK14408@umbus.fritz.box>
 References: <1494415802-227633-1-git-send-email-imammedo@redhat.com>
-	<1494415802-227633-12-git-send-email-imammedo@redhat.com>
+	<1494415802-227633-18-git-send-email-imammedo@redhat.com>
 MIME-Version: 1.0
 Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="vtJ+CqYNzKB4ukR4"
+	protocol="application/pgp-signature"; boundary="k18oBAwMkTg3OUap"
 Content-Disposition: inline
-In-Reply-To: <1494415802-227633-12-git-send-email-imammedo@redhat.com>
+In-Reply-To: <1494415802-227633-18-git-send-email-imammedo@redhat.com>
 User-Agent: Mutt/1.8.0 (2017-02-23)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 103.22.144.67
-Subject: Re: [Qemu-arm] [PATCH v3 11/18] QMP: include CpuInstanceProperties
- into query_cpus output output
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2401:3900:2:1::2
+Subject: Re: [Qemu-arm] [PATCH v3 17/18] numa: add '-numa cpu,
+ ...' option for property based node mapping
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -95,101 +95,195 @@ Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jones <drjones@redhat.com>,
 	Paolo Bonzini <pbonzini@redhat.com>, Eric Blake <eblake@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Lj1YOAjCUtlU
+X-TUID: I2nqBdaqxyIc
 
 
---vtJ+CqYNzKB4ukR4
+--k18oBAwMkTg3OUap
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
-On Wed, May 10, 2017 at 01:29:55PM +0200, Igor Mammedov wrote:
-> if board supports CpuInstanceProperties, report them for
-> each CPU thread listed. Main motivation for this is to
-> provide these properties introspection via QMP interface
-> for using in test cases to verify numa node to cpu mapping,
-> which includes not only boards that support cpu hotplug
-> and have this info in query-hotpluggable-cpus (pc/spapr)
-> but also for boards that don't not support hotpluggable-cpus
-> but support numa mapping (virt-arm).
+On Wed, May 10, 2017 at 01:30:01PM +0200, Igor Mammedov wrote:
+> legacy cpu to node mapping is using cpu index values to map
+> VCPU to node with help of '-numa node,nodeid=3Dnode,cpus=3Dx[-y]'
+> option. However cpu index is internal concept and QEMU users
+> have to guess /reimplement qemu's logic/ to map it to
+> a concrete cpu socket/core/thread to make sane CPUs
+> placement across numa nodes.
+>=20
+> This patch allows to map cpu objects to numa nodes using
+> the same properties as used for cpus with -device/device_add
+> (socket-id/core-id/thread-id/node-id).
+>=20
+> At present valid properties/values to address CPUs could be
+> fetched using hotpluggable-cpus monitor/qmp command, it will
+> require user to start qemu twice when creating domain to fetch
+> possible CPUs for a machine type/-smp layout first and
+> then the second time with numa explicit mapping for actual
+> usage. The first step results could be saved and reused to
+> set/change mapping later as far as machine type/-smp stays
+> the same.
+>=20
+> Proposed impl. supports exact and wildcard matching to
+> simplify CLI and allow to set mapping for a specific cpu
+> or group of cpu objects specified by matched properties.
+>=20
+> For example:
+>=20
+>    # exact mapping x86
+>    -numa cpu,node-id=3Dx,socket-id=3Dy,core-id=3Dz,thread-id=3Dn
+>=20
+>    # exact mapping SPAPR
+>    -numa cpu,node-id=3Dx,core-id=3Dy
+>=20
+>    # wildcard mapping, all cpu objects that match socket-id=3Dy
+>    # are mapped to node-id=3Dx
+>    -numa cpu,node-id=3Dx,socket-id=3Dy
 >=20
 > Signed-off-by: Igor Mammedov <imammedo@redhat.com>
-> Reviewed-by: Eric Blake <eblake@redhat.com>
 
 Reviewed-by: David Gibson <david@gibson.dropbear.id.au>
 
 > ---
+> v3:
+>   - use qapi_NumaCpuOptions_base() instead of copying fields manually
+>     (Eduardo)
 > v2:
->   * fix checkpatch error and remove extra space after =3D (Eric)
+>   - use new NumaCpuOptions instead of CpuInstanceProperties in
+>     NumaOptions, so that in future we could decouple both
+>     if needed. (Eduardo Habkost <ehabkost@redhat.com>)
+>   - clarify effect of NumaCpuOptions.node-id in qapi-schema.json
 > ---
->  cpus.c           | 10 ++++++++++
->  qapi-schema.json |  6 +++++-
->  2 files changed, 15 insertions(+), 1 deletion(-)
+>  numa.c           | 15 +++++++++++++++
+>  qapi-schema.json | 21 +++++++++++++++++++--
+>  qemu-options.hx  | 20 ++++++++++++++++++++
+>  3 files changed, 54 insertions(+), 2 deletions(-)
 >=20
-> diff --git a/cpus.c b/cpus.c
-> index 740b8dc..4f91d25 100644
-> --- a/cpus.c
-> +++ b/cpus.c
-> @@ -50,6 +50,7 @@
->  #include "qapi-event.h"
->  #include "hw/nmi.h"
->  #include "sysemu/replay.h"
-> +#include "hw/boards.h"
-> =20
->  #ifdef CONFIG_LINUX
-> =20
-> @@ -1859,6 +1860,8 @@ void list_cpus(FILE *f, fprintf_function cpu_fprint=
-f, const char *optarg)
-> =20
->  CpuInfoList *qmp_query_cpus(Error **errp)
->  {
-> +    MachineState *ms =3D MACHINE(qdev_get_machine());
-> +    MachineClass *mc =3D MACHINE_GET_CLASS(ms);
->      CpuInfoList *head =3D NULL, *cur_item =3D NULL;
->      CPUState *cpu;
-> =20
-> @@ -1909,6 +1912,13 @@ CpuInfoList *qmp_query_cpus(Error **errp)
->  #else
->          info->value->arch =3D CPU_INFO_ARCH_OTHER;
->  #endif
-> +        info->value->has_props =3D !!mc->cpu_index_to_instance_props;
-> +        if (info->value->has_props) {
-> +            CpuInstanceProperties *props;
-> +            props =3D g_malloc0(sizeof(*props));
-> +            *props =3D mc->cpu_index_to_instance_props(ms, cpu->cpu_inde=
-x);
-> +            info->value->props =3D props;
+> diff --git a/numa.c b/numa.c
+> index ca122cc..84ce2af 100644
+> --- a/numa.c
+> +++ b/numa.c
+> @@ -290,6 +290,21 @@ static int parse_numa(void *opaque, QemuOpts *opts, =
+Error **errp)
+>              goto end;
+>          }
+>          break;
+> +    case NUMA_OPTIONS_TYPE_CPU:
+> +        if (!object->u.cpu.has_node_id) {
+> +            error_setg(&err, "Missing mandatory node-id property");
+> +            goto end;
 > +        }
-> =20
->          /* XXX: waiting for the qapi to support GSList */
->          if (!cur_item) {
+> +        if (!numa_info[object->u.cpu.node_id].present) {
+> +            error_setg(&err, "Invalid node-id=3D%" PRId64 ", NUMA node m=
+ust be "
+> +                "defined with -numa node,nodeid=3DID before it's used wi=
+th "
+> +                "-numa cpu,node-id=3DID", object->u.cpu.node_id);
+> +            goto end;
+> +        }
+> +
+> +        machine_set_cpu_numa_node(ms, qapi_NumaCpuOptions_base(&object->=
+u.cpu),
+> +                                  &err);
+> +        break;
+>      default:
+>          abort();
+>      }
 > diff --git a/qapi-schema.json b/qapi-schema.json
-> index bf48873..f1bcebe 100644
+> index f1bcebe..c9fdbc3 100644
 > --- a/qapi-schema.json
 > +++ b/qapi-schema.json
-> @@ -1325,6 +1325,9 @@
+> @@ -5684,10 +5684,12 @@
 >  #
->  # @thread_id: ID of the underlying host thread
+>  # @dist: NUMA distance configuration (since 2.10)
 >  #
-> +# @props: properties describing to which node/socket/core/thread
-> +#         virtual CPU belongs to, provided if supported by board (since =
-2.10)
+> +# @cpu: property based CPU(s) to node mapping (Since: 2.10)
 > +#
->  # @arch: architecture of the cpu, which determines which additional fiel=
-ds
->  #        will be listed (since 2.6)
->  #
-> @@ -1335,7 +1338,8 @@
+>  # Since: 2.1
 >  ##
->  { 'union': 'CpuInfo',
->    'base': {'CPU': 'int', 'current': 'bool', 'halted': 'bool',
-> -           'qom_path': 'str', 'thread_id': 'int', 'arch': 'CpuInfoArch' =
-},
-> +           'qom_path': 'str', 'thread_id': 'int',
-> +           '*props': 'CpuInstanceProperties', 'arch': 'CpuInfoArch' },
->    'discriminator': 'arch',
->    'data': { 'x86': 'CpuInfoX86',
->              'sparc': 'CpuInfoSPARC',
+>  { 'enum': 'NumaOptionsType',
+> -  'data': [ 'node', 'dist' ] }
+> +  'data': [ 'node', 'dist', 'cpu' ] }
+> =20
+>  ##
+>  # @NumaOptions:
+> @@ -5701,7 +5703,8 @@
+>    'discriminator': 'type',
+>    'data': {
+>      'node': 'NumaNodeOptions',
+> -    'dist': 'NumaDistOptions' }}
+> +    'dist': 'NumaDistOptions',
+> +    'cpu': 'NumaCpuOptions' }}
+> =20
+>  ##
+>  # @NumaNodeOptions:
+> @@ -5751,6 +5754,20 @@
+>     'val': 'uint8' }}
+> =20
+>  ##
+> +# @NumaCpuOptions:
+> +#
+> +# Option "-numa cpu" overrides default cpu to node mapping.
+> +# It accepts the same set of cpu properties as returned by
+> +# query-hotpluggable-cpus[].props, where node-id could be used to
+> +# override default node mapping.
+> +#
+> +# Since: 2.10
+> +##
+> +{ 'struct': 'NumaCpuOptions',
+> +   'base': 'CpuInstanceProperties',
+> +   'data' : {} }
+> +
+> +##
+>  # @HostMemPolicy:
+>  #
+>  # Host memory policy types
+> diff --git a/qemu-options.hx b/qemu-options.hx
+> index cfe4dc3..731f1bd 100644
+> --- a/qemu-options.hx
+> +++ b/qemu-options.hx
+> @@ -145,10 +145,12 @@ STEXI
+>  @item -numa node[,mem=3D@var{size}][,cpus=3D@var{firstcpu}[-@var{lastcpu=
+}]][,nodeid=3D@var{node}]
+>  @itemx -numa node[,memdev=3D@var{id}][,cpus=3D@var{firstcpu}[-@var{lastc=
+pu}]][,nodeid=3D@var{node}]
+>  @itemx -numa dist,src=3D@var{source},dst=3D@var{destination},val=3D@var{=
+distance}
+> +@itemx -numa cpu,node-id=3D@var{node}[,socket-id=3D@var{x}][,core-id=3D@=
+var{y}][,thread-id=3D@var{z}]
+>  @findex -numa
+>  Define a NUMA node and assign RAM and VCPUs to it.
+>  Set the NUMA distance from a source node to a destination node.
+> =20
+> +Legacy VCPU assignment uses @samp{cpus} option where
+>  @var{firstcpu} and @var{lastcpu} are CPU indexes. Each
+>  @samp{cpus} option represent a contiguous range of CPU indexes
+>  (or a single VCPU if @var{lastcpu} is omitted). A non-contiguous
+> @@ -162,6 +164,24 @@ a NUMA node:
+>  -numa node,cpus=3D0-2,cpus=3D5
+>  @end example
+> =20
+> +@samp{cpu} option is a new alternative to @samp{cpus} option
+> +which uses @samp{socket-id|core-id|thread-id} properties to assign
+> +CPU objects to a @var{node} using topology layout properties of CPU.
+> +The set of properties is machine specific, and depends on used
+> +machine type/@samp{smp} options. It could be queried with
+> +@samp{hotpluggable-cpus} monitor command.
+> +@samp{node-id} property specifies @var{node} to which CPU object
+> +will be assigned, it's required for @var{node} to be declared
+> +with @samp{node} option before it's used with @samp{cpu} option.
+> +
+> +For example:
+> +@example
+> +-M pc \
+> +-smp 1,sockets=3D2,maxcpus=3D2 \
+> +-numa node,nodeid=3D0 -numa node,nodeid=3D1 \
+> +-numa cpu,node-id=3D0,socket-id=3D0 -numa cpu,node-id=3D1,socket-id=3D1
+> +@end example
+> +
+>  @samp{mem} assigns a given RAM amount to a node. @samp{memdev}
+>  assigns RAM from a given memory backend device to a node. If
+>  @samp{mem} and @samp{memdev} are omitted in all nodes, RAM is
 
 --=20
 David Gibson			| I'll have my music baroque, and my code
@@ -197,25 +291,25 @@ david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
 				| _way_ _around_!
 http://www.ozlabs.org/~dgibson
 
---vtJ+CqYNzKB4ukR4
+--k18oBAwMkTg3OUap
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 Version: GnuPG v2
 
-iQIcBAEBCAAGBQJZE+sCAAoJEGw4ysog2bOSp60QAJ9NhVZZcYbkgm2HOu0LyXyl
-995TwhAkv6VRO5b2sfqi5MxUhWGNh0fi6yYoD0bF1cREwc9uJ8aTGMLuil+pIFQy
-YX3JkS9y1wXtB4vhB577VH9iPJcmsANlLBPW24g6VUWmmg5Soc9Gsqo7ECRDtt3V
-P4Mn4ntyDctaljsrhjiiowZHJUlHb0qE5m3gASZaCAknt5qcMF2AWm/yZTc7CYDU
-FTznJkIZju22J3ED6klUWbvyoVoBQZgYegKCDGBw0qH0nj9jkknE8VrV5zZ4yxaQ
-VxOVKriIYccByrlIOGvFZsBUxBXFwEchysBOeBPn3kpKXcV1pFYJ6up4Mv3ssSc3
-TgaMp6HFT+q9zYuF4IB/YTCc4yo3DO1id20LEeHSehrFbgzfDQ7J7zN6td+AwJmp
-e/rBT+CqhYiFDd0oi8n7AVOulrVjOQuar3v4oE6LES99xRBQ4v4n0XCqDPtU9nGz
-p0rnLDLPd5R3L91rinXPFECeq1+44e3BSXQuX6SbRqw61M7BuW2CgLZw0PcROfWv
-pJVvgQbOBDpRJahbS8hjCxx9gWi7G9C7TPBtrorkZv9vOJmhClS13GjMZpCIUeaz
-/3Y6Y+mzT5R5/0DajhHw+o5A239s0KIPn2OElY8oeU0a6XGobDKbqaLoDPIVq2jP
-2svn3w80KozS9ewQA/PP
-=dQP1
+iQIcBAEBCAAGBQJZE/VUAAoJEGw4ysog2bOSBWsP/RUTVPEOhe3ZvD3TvVctjLUD
+ui6kjMASwxY0z0wTaTo3g8n6YkEpEtOBZiaqEauYyIudHWjP+V5T+89EoYL71UP+
+3DoF9xqdsN2dmJyxwaPN78qPcOE+kxxBTbXN6NUVotfZ4oRwP8uZA3XiMjLqHBil
+Q8rlzDVuikkStiX6Po/EK7i1NbNbvecSKzoqOyj83u98PMPQlgYkosWmpL+5lBZL
+ILH9ETr6PU/20rXbXI4wfA8YdYPnOm44gP4uqzPWRGtKDFFv8sQ7k09ZUgxPaId9
+ERy99PwZrtAesFn/G8MHGr4GVvwcy3t4yhTzi1TY3IiuHtL35NB/xuNNajZkvod/
+6Tj7aEzx/TF5T3WYlZ9ITNeZn4w4+wOuSWF6C61oLCeANzHVbeWmQeIuEeK0nQWa
+06Zyct9pkl4Asuq6eX5b6s10GZ++G7UG+7mXazrIoKpCs40d0Gtm//1k/nTYm1sm
+NAaycsBMQVNEcwwvlTkIz+bCGgqRGK50F3bp+bIR94WFv+MzdHlrP4NaGbzG2nYU
+zO9XoXiAB+uIOwktRGjfXwFd9bx+vkIAdkbuZdQpzTuvUHWBdXqkxQ90pkNVd3W1
+ckjfQJEQzAmCBuEbdf0pMU14Ayk32IM2ALKYkufH087lzYmbuLBHMUXl+19aJodb
+8FEF9sEmDpJ0B1XEn86R
+=ZLg7
 -----END PGP SIGNATURE-----
 
---vtJ+CqYNzKB4ukR4--
+--k18oBAwMkTg3OUap--

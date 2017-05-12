@@ -1,110 +1,113 @@
-Received: by 10.25.0.6 with SMTP id 6csp62740lfa;
-        Thu, 11 May 2017 21:38:37 -0700 (PDT)
-X-Received: by 10.200.51.172 with SMTP id c41mr1990180qtb.71.1494563917582;
-        Thu, 11 May 2017 21:38:37 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1494563917; cv=none;
+Received: by 10.25.0.6 with SMTP id 6csp68529lfa;
+        Thu, 11 May 2017 22:02:53 -0700 (PDT)
+X-Received: by 10.55.178.132 with SMTP id b126mr1865355qkf.315.1494565373242;
+        Thu, 11 May 2017 22:02:53 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1494565373; cv=none;
         d=google.com; s=arc-20160816;
-        b=q9ttgwYgxaW5TYEapbigt+Hb4y6h1qmcBP9EC5Cd6tJ2oLZDqg+2OT9/5sJlnMMQjN
-         7ns+wDbCjDfIGHcdEZ88KyYCdAlfFe9+Rhw1R/thmdt7mXSBMFfyPbXHO5gRJovajz7W
-         T17NrSt9nWvVbfy8gv7QmfxcZD4ODYHuXzBpq9nS5bAvYr2XrMAuHDa2zEUj6DA3uxGR
-         n9YgIvotpzVEZA0omEy83NGEwaVxUIirGTHptUKz7i9aPhGICzX3Es7gmgekflbfeBjj
-         UWnPHms8Hyb2R1Qn8ozlGNlgEORM2DU41vhRLzLsBf6P7pyeKUSBKP3uSGLxx9fLe1GG
-         POcw==
+        b=idtvZXkTT5XeO1bp7/mQt3dtp5syYKXoT9C+paIMdiGr91Z9ny9gUR4kxxfcPZWiWK
+         +Lp8YOYv5a8sD1/TogTgCOJCtUVuzoJRYHixw2BvAeYxP3+3C2nEZU5YEJA8IxCIQZzv
+         nd94N+i+vkLoamZpICAiWhGE+lLqPKJYFnleoQ7xOvhqPJw/aNlHT6+1E8JrTHR+fwKy
+         n5ebCDzXzV3HuHEe2x3xdozBAgMDSmkES/cnezgWTW3RUsiiCHWXt/naSr4efqgxZGDx
+         x2ROpn2RVqeEycUgTcyQ7+GjYJB2/RqmxZdjqmfBKWLE5kW5WFzuJ/mCl9NDJdustDkJ
+         oMQA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
          :message-id:from:references:to:dkim-signature
          :arc-authentication-results;
-        bh=eqPTHDLr3wFogrWd901z5lY3B0PUGPdelh3VdNSAxOk=;
-        b=FVVtw8zu4Xqv9Qx9Pky/0HFmFbW45O+TuoLwV+6Vg1EOPuxB0tSN4On3KBu69HOH/P
-         XBQZ7ve1akZ75uAXJ7we/UNu3NcRTTK+FClnece17f00ZZZkZAVRa2ZfVvi0sUpYuOgT
-         8lfcHZUmqcz3AXtBG4UZsxdXffXdagHYjF3EG2rUUIF2W1PuRKtu3mE9qlhHuAGzKi/z
-         xVV7C00cnHaxx1EysOJieuju4io4r63zQ8qoMfCKopxN4lpNtCmbQXf0qOxWK/ED7Gw4
-         ePN+VcPpui5ihE0VCV2jzgQDny12Tlh4XNvkQNinAORQe6K2W3EWl2vcK/wV65y/xQaQ
-         6p0w==
+        bh=sxC29dl72wD3f3hDNcV8jIDBM7uJWI8QQsrSrNl/Ht8=;
+        b=cln55/6QOSwOfMHCZ2walj4bWZdk68HN9vPvV68k1PO8bC1J1ljMxW/qa/frmdsNyY
+         l8MjykRlinqGxuTNO2/C6r4AX692DVBfrMC8KRUUQztcXILLVGdJSEzezkRHH9vwz1H2
+         INzcvLP+cIB8r7TmDU3PWawNjazRGBuyFN1Z4BC+MRE65phNAFj+5tD7LBhR2P927Hbu
+         2MCF1Hrv7DcdVVuQGZiY2vwrVHInRb97kAERTPbe+BcqLUDFNfEWMyNHoC+NWStpqBo/
+         g7oUOGIg+iCDwkrTqaguNO9pxA5pqh4WqrmgfLwrYBJlxA0bhCjbjSmvmvEyJN5ZgTR0
+         oPXg==
 ARC-Authentication-Results: i=1; mx.google.com;
        dkim=fail header.i=@gmail.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id t37si2152061qtg.295.2017.05.11.21.38.37
+        by mx.google.com with ESMTPS id t31si2356724qtb.285.2017.05.11.22.02.53
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 11 May 2017 21:38:37 -0700 (PDT)
+        Thu, 11 May 2017 22:02:53 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        dkim=fail header.i=@gmail.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:51283 helo=lists.gnu.org)
+Received: from localhost ([::1]:51323 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1d92Ld-0007hw-1A
-	for alex.bennee@linaro.org; Fri, 12 May 2017 00:38:37 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:56047)
+	id 1d92j6-0003Kj-OO
+	for alex.bennee@linaro.org; Fri, 12 May 2017 01:02:52 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:58642)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1d92LW-0007hf-Dt
-	for qemu-arm@nongnu.org; Fri, 12 May 2017 00:38:31 -0400
+	id 1d92j0-0003KT-AU
+	for qemu-arm@nongnu.org; Fri, 12 May 2017 01:02:48 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1d92LT-00038z-AX
-	for qemu-arm@nongnu.org; Fri, 12 May 2017 00:38:30 -0400
-Received: from mail-qt0-x241.google.com ([2607:f8b0:400d:c0d::241]:35796)
+	id 1d92ix-0006UU-6h
+	for qemu-arm@nongnu.org; Fri, 12 May 2017 01:02:46 -0400
+Received: from mail-qk0-x244.google.com ([2607:f8b0:400d:c09::244]:36831)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1d92LT-00038q-2Y; Fri, 12 May 2017 00:38:27 -0400
-Received: by mail-qt0-x241.google.com with SMTP id r58so5476854qtb.2;
-	Thu, 11 May 2017 21:38:26 -0700 (PDT)
+	id 1d92ix-0006U9-07; Fri, 12 May 2017 01:02:43 -0400
+Received: by mail-qk0-x244.google.com with SMTP id y128so6473182qka.3;
+	Thu, 11 May 2017 22:02:42 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
 	h=sender:subject:to:references:cc:from:message-id:date:user-agent
 	:mime-version:in-reply-to:content-transfer-encoding;
-	bh=eqPTHDLr3wFogrWd901z5lY3B0PUGPdelh3VdNSAxOk=;
-	b=bwQobgtlf7j7LfhtEqE7TFaLAil+zP8Ass961YJkrPpcg2qGlNrJtS3qyIXp/k1xs9
-	uzTV0dAC44cL+UjlDEmJ/IujCX43jYFkWVYCkh3pVKYSTBWFQTQRZITsYubbgsmZodKD
-	QB3lfAaxlkzlOWi+8wOnwpHYFD8IFhTY1zY4XtrsrNXtEPo6oGQdtT0Xkohd0yVzNNZR
-	7Z2Y2wjfrHlwxaZuaYb9K7f4LQtU0ncRHMBinYoTg+VQUpNQHMspyFq18Q3vTarETwRo
-	fBndUPuwr2Aye+w061kXlZshWSxpCn5KdDn6kYHfzVt42zqTUx/i0P3+aQMOsIVtduHx
-	U0aQ==
+	bh=sxC29dl72wD3f3hDNcV8jIDBM7uJWI8QQsrSrNl/Ht8=;
+	b=EVeGVnSRDYQ7+gpK6z9ubFb1qPKCJJqIiNKUc+oBTCoVEEVggDpXlVPx7og/DlAQP9
+	hg1VL/4VW3Ibu9iQ2L4BUlZ7PXYjvAlB/AB7kBWeen3UugptQLHAis/HWPNVledrrdgk
+	Fp86qmguyd0PGQbdRFlrqTxJi62z2NcjLsifP1Na8N5V11qgLQb99uuJ2zHDFGvOtzj1
+	vGreUaAaPTa9vOW/juK8ZSc/m8QFz+QbFESf5yiP1kyakWDQYGN561YAvLNGmPu/nn9g
+	71qTDJP+XA7PHMyplFNBmLu1Gl3oAzZJ1X4w/D1eT1TzUkDysAkR1hB5DMvkHi6Lwdn8
+	DR8g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:sender:subject:to:references:cc:from:message-id
 	:date:user-agent:mime-version:in-reply-to:content-transfer-encoding;
-	bh=eqPTHDLr3wFogrWd901z5lY3B0PUGPdelh3VdNSAxOk=;
-	b=DckuI9fTOfKy5nAdQCnq3yqAOM5CoyBSphEls9ttNuOXa7/gX1+KYCgW/TpcTJdhj9
-	9Hyszwlu6/0P/V2rRn6icVIzFqn09n3ofQVwCgQDHkSTP7TL8k4oZw8mcXrI4QJYjocd
-	9KX2CZw9mUTTfVvH07ErH1tdePJJeI9LjFLjUzBUOC3pF32n8+bLslPtZLPFQJrLClLH
-	cEG8/KnLIqjRa0a4i1Vkt+3M3O9I+D7Pk3Hi/pDK7NtGidCGT8TQNZDV5iPbtD+VLoo2
-	2UVg/K2iryO12pxMu7TiZUA7FvijbF4p4YfKwmtOAWk+EaWC6OHWiWAJqjU0504sLyNg
-	e9hQ==
-X-Gm-Message-State: AODbwcAUY7dYIouDUDaR9vxB504bJK2gpNUPxlMibw36oGMuSKHbpnk4
-	z0lTNHsCsx7UoA==
-X-Received: by 10.200.38.76 with SMTP id v12mr2095554qtv.257.1494563906304;
-	Thu, 11 May 2017 21:38:26 -0700 (PDT)
+	bh=sxC29dl72wD3f3hDNcV8jIDBM7uJWI8QQsrSrNl/Ht8=;
+	b=If1GldTYpIG7NfVDgnRi/qYo7snoLp1NMqREKOaF/qpw84LTSaBh0l/ZmlmMqMFgAw
+	Vo+8MTF1KMnS2nFuZJg37W/Wiory7mtcieC01OcfkOkw/KaILNe60hKu7el0xIqHk2Xl
+	7y+2r6mnA8vmgnbqF/Ca5TPtsnEVgG2XwWJw2QUEOfDvNpkxBA5HJfnkqS2HO/j2aowD
+	sdUAD8KRcq/1LTqwhq3UglYmNmaRUFomRQVde50LIinc/uP4enBP3UWG0Ekokf2oS7eu
+	dijupdTWSQXiEL1VLS+JW/pKzsyTGYeuET9Ra51q102U7I9s0lxCyJ7mNg8XEe4WvQBc
+	+hiA==
+X-Gm-Message-State: AODbwcCMOonZKoL9jJLDzFrnT6t/JJzDn3TRij6+LxqRVLUHWCPR0Ir8
+	gcMA4BkqKOql5A==
+X-Received: by 10.55.149.130 with SMTP id x124mr1755057qkd.99.1494565362180;
+	Thu, 11 May 2017 22:02:42 -0700 (PDT)
 Received: from [192.168.1.10] ([138.117.48.226])
 	by smtp.gmail.com with ESMTPSA id
-	r19sm1544867qkl.54.2017.05.11.21.38.23
+	r40sm1684269qkr.13.2017.05.11.22.02.39
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Thu, 11 May 2017 21:38:25 -0700 (PDT)
-To: sundeep subbaraya <sundeep.lkml@gmail.com>
+	Thu, 11 May 2017 22:02:41 -0700 (PDT)
+To: sundeep subbaraya <sundeep.lkml@gmail.com>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	QEMU Developers <qemu-devel@nongnu.org>,
+	Alistair Francis <alistair23@gmail.com>
 References: <1494348286-10253-1-git-send-email-sundeep.lkml@gmail.com>
-	<1494348286-10253-2-git-send-email-sundeep.lkml@gmail.com>
-	<e87597ba-4759-76a5-7b0d-3297d2eb8f79@amsat.org>
-	<CALHRZuqfqjEWszkvVQSWAKR5zVbhD36=+Qt_DsVykk41cihO1Q@mail.gmail.com>
+	<1494348286-10253-5-git-send-email-sundeep.lkml@gmail.com>
+	<b913e666-8df3-714f-3ff9-e8f4ff9e7098@amsat.org>
+	<CALHRZuptHwyzu0Y98VWnNd785W80AZ=+1cr_rfegvDo5amh+3g@mail.gmail.com>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <1dc2ee8a-be60-c276-5529-a666223bfc2b@amsat.org>
-Date: Fri, 12 May 2017 01:38:22 -0300
+Message-ID: <7ee4c347-4502-863a-8c9f-faaf8fab17f3@amsat.org>
+Date: Fri, 12 May 2017 02:02:37 -0300
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
 	Thunderbird/45.8.0
 MIME-Version: 1.0
-In-Reply-To: <CALHRZuqfqjEWszkvVQSWAKR5zVbhD36=+Qt_DsVykk41cihO1Q@mail.gmail.com>
+In-Reply-To: <CALHRZuptHwyzu0Y98VWnNd785W80AZ=+1cr_rfegvDo5amh+3g@mail.gmail.com>
 Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400d:c0d::241
-Subject: Re: [Qemu-arm] [Qemu-devel PATCH 1/5] msf2: Add Smartfusion2 System
- timer
+X-Received-From: 2607:f8b0:400d:c09::244
+Subject: Re: [Qemu-arm] [Qemu-devel] [Qemu-devel PATCH 4/5] msf2: Add
+ Smartfusion2 SoC.
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -116,177 +119,244 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm <qemu-arm@nongnu.org>,
-	QEMU Developers <qemu-devel@nongnu.org>,
-	Alistair Francis <alistair23@gmail.com>
+Cc: qemu-arm <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: EMAf72KT+V1a
+X-TUID: CteNBFZUg1Sy
 
-On 05/10/2017 09:37 AM, sundeep subbaraya wrote:
-> Hi Phil,
+On 05/12/2017 12:17 AM, sundeep subbaraya wrote:
+> Hi Philippe,
 >
-> On Wed, May 10, 2017 at 3:11 PM, Philippe Mathieu-Daudé <f4bug@amsat.org
-> <mailto:f4bug@amsat.org>> wrote:
->> Hi Subbaraya, nice work!
->>
->> The timer you are modeling is the mss_timer, which is in particular
-> used in
->> the smartfusion2, I'd rather name it mss_timer.c so it can be reused by
->> other SoC models.
->>
-> Ok I will change all other file names also to mss. Do I need to change
-> type names
-> also to mss?
-
-As you wish :) Actel/Microsemi keep changing how they name it, MSS, 
-M2S... What I mean is this timer is valid for a Actel SmartFusion and 
-for the MicroSemi SmartFusion2, naming it "msf2-timer" seems to restrict 
-it to the SF2 only.
-
->> I added few comments.
+> On Wed, May 10, 2017 at 5:20 PM, Philippe Mathieu-Daudé <f4bug@amsat.org>
+> wrote:
+>
+>> Hi Subbaraya,
 >>
 >>
 >> On 05/09/2017 01:44 PM, Subbaraya Sundeep wrote:
+>>
+>>> Smartfusion2 SoC has hardened Microcontroller subsystem
+>>> and flash based FPGA fabric. This patch adds support for
+>>> Microcontroller subsystem in the SoC.
 >>>
->>> Modelled System Timer in Microsemi's Smartfusion2 Soc.
->>> Timer has two 32bit down counters and two interrupts.
->>>
->>> Signed-off-by: Subbaraya Sundeep <sundeep.lkml@gmail.com
-> <mailto:sundeep.lkml@gmail.com>>
+>>> Signed-off-by: Subbaraya Sundeep <sundeep.lkml@gmail.com>
 >>> ---
->>>  hw/timer/Makefile.objs        |   1 +
->>>  hw/timer/msf2-timer.c         | 252
->>> ++++++++++++++++++++++++++++++++++++++++++
->>>  include/hw/timer/msf2-timer.h |  85 ++++++++++++++
->>>  3 files changed, 338 insertions(+)
->>>  create mode 100644 hw/timer/msf2-timer.c
->>>  create mode 100644 include/hw/timer/msf2-timer.h
+>>>  default-configs/arm-softmmu.mak |   1 +
+>>>  hw/arm/Makefile.objs            |   2 +-
+>>>  hw/arm/msf2-soc.c               | 188 ++++++++++++++++++++++++++++++
+>>> ++++++++++
+>>>  include/hw/arm/msf2-soc.h       |  60 +++++++++++++
+>>>  4 files changed, 250 insertions(+), 1 deletion(-)
+>>>  create mode 100644 hw/arm/msf2-soc.c
+>>>  create mode 100644 include/hw/arm/msf2-soc.h
 >>>
+>>> diff --git a/default-configs/arm-softmmu.mak
+>>> b/default-configs/arm-softmmu.mak
+>>> index 78d7af0..7062512 100644
+>>> --- a/default-configs/arm-softmmu.mak
+>>> +++ b/default-configs/arm-softmmu.mak
+>>> @@ -122,3 +122,4 @@ CONFIG_ACPI=y
+>>>  CONFIG_SMBIOS=y
+>>>  CONFIG_ASPEED_SOC=y
+>>>  CONFIG_GPIO_KEY=y
+>>> +CONFIG_MSF2=y
+>>> diff --git a/hw/arm/Makefile.objs b/hw/arm/Makefile.objs
+>>> index 4c5c4ee..ae5e4a3 100644
+>>> --- a/hw/arm/Makefile.objs
+>>> +++ b/hw/arm/Makefile.objs
+>>> @@ -1,7 +1,7 @@
+>>>  obj-y += boot.o collie.o exynos4_boards.o gumstix.o highbank.o
+>>>  obj-$(CONFIG_DIGIC) += digic_boards.o
+>>>  obj-y += integratorcp.o mainstone.o musicpal.o nseries.o
+>>> -obj-y += omap_sx1.o palm.o realview.o spitz.o stellaris.o
+>>> +obj-y += omap_sx1.o palm.o realview.o spitz.o stellaris.o msf2-soc.o
+>>>
+>>
+>> Not a big deal, but since you added CONFIG_MSF2 why not using it here and
+>> the Makefiles you touched (misc/ssi/timer)?
+>>
+>> obj-$(CONFIG_MSF2) += msf2-soc.o
+>>
+>>   OK. Will change it.
+>
+>>
+>>  obj-y += tosa.o versatilepb.o vexpress.o virt.o xilinx_zynq.o z2.o
+>>>  obj-$(CONFIG_ACPI) += virt-acpi-build.o
+>>>  obj-y += netduino2.o
 [...]
->>> +        if (addr < ARRAY_SIZE(st->regs)) {
->>> +            st->regs[addr] = value;
->>> +        } else {
->>> +            qemu_log_mask(LOG_GUEST_ERROR,
->>> +                         "%s: Bad offset 0x%" HWADDR_PRIx "\n",
-> __func__,
->>> +                         addr * 4);
->>> +        }
->>> +        break;
->>> +    }
->>> +    timer_update_irq(st);
->>
->>
->> Here if addr >= (NUM_TIMERS * R_TIM1_MAX) you still update Timer1 IRQ,
-> while
->> this is unharmful right now this is likely to be break later.
->>
-> As long as Interrupt status register and Interrupt enable register are not
-> modified calling timer_update_irq will not harm. Am I missing something
-> here?
-
-Indeed, this is unharmful. It just surprised me when I follow the 
-control flow.
-
->>> +}
+>>> +    MemoryRegion *system_memory = get_system_memory();
+>>> +    MemoryRegion *nvm = g_new(MemoryRegion, 1);
+>>> +    MemoryRegion *nvm_alias = g_new(MemoryRegion, 1);
+>>> +    MemoryRegion *sram = g_new(MemoryRegion, 1);
+>>> +    MemoryRegion *ddr = g_new(MemoryRegion, 1);
 >>> +
->>> +static const MemoryRegionOps timer_ops = {
->>> +    .read = timer_read,
->>> +    .write = timer_write,
->>> +    .endianness = DEVICE_NATIVE_ENDIAN,
->>> +    .valid = {
->>> +        .min_access_size = 4,
+>>> +    memory_region_init_ram(nvm, NULL, "MSF2.envm", ENVM_SIZE,
+>>> +                           &error_fatal);
+>>>
 >>
+>> Maybe you can name it "eNVM" to match the documentation.
 >>
->> I believe min_access_size = 1 is valid for any APB device.
+>> Also envm_size should be a per-model property.
 >>
+>
+> Ok.
+>
 >>
-> Ok. I followed Xilinx soft IP models while writing this. I am really not
-> sure it is mandatory to put access_size. Can i remove it?
+>> +    memory_region_init_alias(nvm_alias, NULL, "MSF2.flash.alias",
+>>> +                             nvm, 0, ENVM_SIZE);
+>>>
+>>
+>> Hmmm well this would be the "Cache Matrix Remap" which happens to be
+>> mapped by default to eNVM on cold reset.
+>> Naming it "MSF2.flash.alias" is pretty confusing.
+>>
+>
+> Exactly it is Cache Matrix Remap.
+> AFAIK currently we cannot remap memory during runtime in Qemu.
+> So I handled default remap with alias.
+> Please suggest the name. MSF2.eNVM.alias sounds fine?
 
-checking the datasheet "UG0331: SmartFusion2 Microcontroller Subsystem":
+Hmm Peter, Francis?
 
-'''
-CMSIS Data types:
+Personally I prefer "bus_remap.alias" which is explicit.
 
-The [Cortex-M3] processor:
-* supports the following data types:
-- 32-bit words
-- 16-bit halfwords
-- 8-bit bytes.
-* manages all data memory accesses as little-endian or big-endian. 
-Instruction memory and Private Peripheral Bus (PPB) accesses are always 
-performed as little-endian. The Cortex-M3 processor configured for 
-SmartFusion2 SoC FPGA MSS uses only little-endian.
-'''
+"eNVM.alias" is only true on Cold Reset.
 
-So Yes, ".min_access_size = 1" is correct for this Cortex-M3.
-
-If you remove it memory_region_access_valid() will do:
-
-     access_size_min = mr->ops->valid.min_access_size;
-     if (!mr->ops->valid.min_access_size) {
-         access_size_min = 1;
-     }
-
-So that is the same, personally I prefer it to be explicit (not removed).
-
->>> +        .max_access_size = 4
->>> +    }
->>> +};
+>>
+>> +    vmstate_register_ram_global(nvm);
 >>> +
->>> +static void timer_hit(void *opaque)
->>> +{
->>> +    struct Msf2Timer *st = opaque;
+>>> +    memory_region_set_readonly(nvm, true);
+>>> +    memory_region_set_readonly(nvm_alias, true);
 >>> +
->>> +    st->regs[R_TIM_RIS] |= TIMER_RIS_ACK;
+>>> +    memory_region_add_subregion(system_memory, ENVM_BASE_ADDRESS, nvm);
+>>> +    memory_region_add_subregion(system_memory, 0, nvm_alias);
 >>> +
->>> +    if (!(st->regs[R_TIM_CTRL] & TIMER_CTRL_ONESHOT)) {
->>> +        timer_update(st);
->>> +    }
->>> +    timer_update_irq(st);
->>> +}
+>>> +    memory_region_init_ram(ddr, NULL, "MSF2.ddr", DDR_SIZE,
+>>> +                           &error_fatal);
+>>>
+>>
+>> Wrong, there is no DDR on this SoC.
+>>
+> DDR controller is there in Smartfusion2 (different from Smartfusion). As
+> you said below this
+> should be in board file.
+
+There IS a DDRC in this SoC, but here you are registering a DDR 'ram' 
+memory region, not a controller. This SoC can be used without any DDR, 
+enough using embedded eNVM and eSRAM.
+
+Now it happens your SoM board provides a DDR chip connected to this SoC.
+
+>>
+>> +    vmstate_register_ram_global(ddr);
+>>> +    memory_region_add_subregion(system_memory, DDR_BASE_ADDRESS, ddr);
+>>> +
+>>> +    memory_region_init_ram(sram, NULL, "MSF2.sram", SRAM_SIZE,
+>>> +                           &error_fatal);
+>>>
+>>
+>> I'd rather like to see it named "eSRAM" somehow, so there is no confusion
+>> possible with external SRAM a SoM/board can map at 0x60000000.
+>>
+>> Same comment than envm_size, sram_size should be a per-model property.
+>>
+>> OK
+>
+>> +    vmstate_register_ram_global(sram);
+>>> +    memory_region_add_subregion(system_memory, SRAM_BASE_ADDRESS, sram);
+>>> +
+>>> +    armv7m = DEVICE(&s->armv7m);
+>>> +    qdev_prop_set_uint32(armv7m, "num-irq", 96);
+>>>
+>>
+>> Can you point me to your datasheet? I thought the SF2 had 240 IRQs.
+>
+>
+> Please go to link:
+> https://www.microsemi.com/document-portal/search_form
+> and provide search keyword as "UG0331". You can the download the spec.
+> It has 81 irqs I remember when I have given 81 qemu complained not multiple
+> of 4.
+> I checked again with 81 and it is fine. I will change it to 81.
+
+Ok :)
+
+> +    qdev_prop_set_string(armv7m, "cpu-model", "cortex-m3");
+>>> +    object_property_set_link(OBJECT(&s->armv7m),
+>>> OBJECT(get_system_memory()),
+>>> +                                     "memory", &error_abort);
 [...]
->>> +/*
->>> + * There are two 32-bit down counting timers.
->>> + * Timers 1 and 2 can be concatenated into a single 64-bit Timer
->>> + * that operates either in Periodic mode or in One-shot mode.
->>> + * Writing 1 to the TIM64_MODE register bit 0 sets the Timers in 64-bit
->>> mode.
->>> + * In 64-bit mode, writing to the 32-bit registers has no effect.
->>> + * Similarly, in 32-bit mode, writing to the 64-bit mode registers
->>> + * has no effect. Only two 32-bit timers are supported currently.
->>> + */
->>> +#define NUM_TIMERS        2
+>>> +#define MSF2_NUM_SPIS         2
+>>> +#define MSF2_NUM_UARTS        2
 >>> +
->>> +#define MSF2_TIMER_FREQ   (83 * 1000000)
+>>> +#define ENVM_BASE_ADDRESS     0x60000000
+>>> +#define ENVM_SIZE             (128 * 1024)
+>>>
 >>
+>> The SoC design ENVM_SIZE is 1MB, 128K seems your particular model.
 >>
->> I can not find this value, can you point me to the datasheet? It seems SoC
->> specific to me.
+>
+>  M2S010 SoC device has 256K eNMV. My bad it should be 256 instead of 128.
+>  The board I have contains M2S010 device in SOM.
+>
+
+What I mean here is on the SF2 the eNVM "region size" (as seen by the 
+AHB Bus) is 1MB. Now your SoC M2S010 provides 256KB in this dedicated 1M 
+region.
+
+I find your #define confusing, what about:
+
+#define ENVM_REGION_SIZE      (1 * M_BYTE)
+#define M2S010_ENVM_SIZE      (256 * K_BYTE)
+
+(?_BYTE from "qemu/cutils.h")
+
+I wanted to clarify this because you named your functions as it can 
+models any SF2 but actually you restrict it to your M2S010.
+
+Maybe to start you can rename msf2_soc_x() -> m2s010_sf2_soc_x() then if 
+needed this can be generalized to other SoCs from SF2 family?
+
+>> +
+>>> +#define DDR_BASE_ADDRESS      0xA0000000
+>>> +#define DDR_SIZE              (64 * 1024 * 1024)
+>>>
 >>
-> It is configured in Microsemi Libero. The SOM kit from Emcraft comes
-> with this default setting.
-> I guess this property should be set and passed from board file and not
-> from SoC.
-> Am I correct?
+>> This belongs to the SoM.
+>> Yes will change it.
+>>
+>>> +
+>>> +#define SRAM_BASE_ADDRESS     0x20000000
+>>> +#define SRAM_SIZE             (64 * 1024)
+>>>
+>>
+>> Indeed this SoC is designed to have up to 64K of SRAM.
+>> Luckily your model provides 64K.
+>>
+>
+>
+> Yes it is 64k :)
+>
 
-It seems an option configurable in Libero before synthesizing, so that 
-would be SoM/bitfile specific?
+Same here, what you have is:
 
-What I mean here is I don't think this is a fixed value for a mss_timer 
-and I'd rather have it configurable (but ok to default 83MHz in your SoM).
+#define ESRAM_REGION_SIZE     (64 * K_BYTE)
+#define M2S010_ESRAM_SIZE     (64 * K_BYTE)
 
- > Can I attach the datasheet to this thread?
+which happens to be equal but does not mean the same, do you see the 
+difference?
 
-Isn't this datasheet publicly available?
-
-Eventually can you upload a binary (like your Linux patches) somewhere? 
-So it would be easier to test this patchset.
-
-> Thank you,
-> Sundeep
-
-Good luck!
-
-Phil.
+> +
+>>> +typedef struct MSF2State {
+>>> +    /*< private >*/
+>>> +    SysBusDevice parent_obj;
+>>> +    /*< public >*/
+>>> +
+>>> +    ARMv7MState armv7m;
+>>> +
+>>> +    MSF2SysregState sysreg;
+>>> +    MSF2TimerState timer;
+>>> +    MSF2SpiState spi[MSF2_NUM_SPIS];
+>>> +} MSF2State;
+>>> +
+>>> +#endif

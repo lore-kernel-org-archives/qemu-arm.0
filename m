@@ -1,156 +1,967 @@
-Received: by 10.25.0.6 with SMTP id 6csp396346lfa;
-        Fri, 12 May 2017 12:38:48 -0700 (PDT)
-X-Received: by 10.55.209.3 with SMTP id s3mr5170164qki.256.1494617928653;
-        Fri, 12 May 2017 12:38:48 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1494617928; cv=none;
+Received: by 10.25.0.6 with SMTP id 6csp424125lfa;
+        Fri, 12 May 2017 14:00:24 -0700 (PDT)
+X-Received: by 10.55.200.214 with SMTP id t83mr5255050qkl.24.1494622824561;
+        Fri, 12 May 2017 14:00:24 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1494622824; cv=none;
         d=google.com; s=arc-20160816;
-        b=JEzdlHZb9zaSRNHwx5ksiv7mhVfBVEQnH12AfNp+ZRVGb3fXTisduMzNzHbXjUNSHL
-         VrRXo8lnrRk644muXKLZFuSj1fT/iSP/jHlKyMb/mVg1P2DiuMAa3R9ETFZB5xIKnn7R
-         7EvAb9AnpBRir6emAGmfJrUw0ni/2cGZdH+1ts7oZiYWbLRKc6mtdHVhd6wcFTVvJhIl
-         VGEYRp5dR4GA36fr2YoXhd8TlkVErocG4bmFXMUmnv2jwlFmaqwZi5eN4xjDsm1M2qRd
-         sYDrueVpTXumrPpq5gv52YPBiOeWiVqy3tHlbTfY1n0jMDZjDlh5NnhI6FrWDIybnA96
-         MS2A==
+        b=HcIdKnmSkNvYH4qjukTlqaqpC8ooynq9HkyyeJuYpvVd8ZTov4SoIVSE/KJxy+Ci56
+         9VlsDTP8vpf/dBofqgoNFWi+I5u4KrHY1uZHbM4Dl7Lwbkq+Id/SrlUgtE+m1DiWmJYg
+         oR32iQn8jCo23FWU87x7Ikod4L+0YG6WXnBTwG2JsT7njKMKtn0EB/h9qZPiHFtsNHDU
+         +XZ4b+LsIcErp2jpZUPgkuSYqJl2RRLCjDqQpW2FyovuLUq9mcFPhU4CGsiZA4tYKvng
+         q1CpTTQYV1cdJaNZn4qVhj6HLq+qjmQ2P6OWSNpjh921fBvhMxa35G37Z+DE7CuVdlir
+         CoOA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:to:dkim-signature
+        h=sender:errors-to:content-transfer-encoding:list-subscribe:list-help
+         :list-post:list-archive:list-unsubscribe:list-id:precedence:cc
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:references:to:subject:from:dkim-filter:dmarc-filter
          :arc-authentication-results;
-        bh=ouLktLHAJc9IZsMX4/J6HSt41nypB1DpR8qmX0zD2qc=;
-        b=IBAQPO4Z7NUk2jJGuawbr6VwEGlLUBRc+Da+S/GCHgE4TTAx0x0ZrrsHYrtvQQz+Xd
-         deD2SDljoSi1zkGU1kXqzTEzjmM4CRmA+jEB0T5Izs9ymNLrKzajv3oJgmzi8WZrFqFm
-         JXkIyzqOyhlm87qwI0Zdt7J+7t6S3sByS3K/mBuALnHDlEw8nCAX0uFa0wFpsuWMsHYX
-         BjWSVMmaWkSZa5IlD8mHlIaFu59LUtfl6NkQVhfl2ViTanTXv1Oqwndyn4zTi56T1ww4
-         szQ8S1QbvuolYaVb6KJTn2qaAc2Jb6SwsGL2U8tGu46ZT9wqUPCbWEBO1wCjyFZzkUwo
-         /TDQ==
+        bh=TEpAY+oIBBvCPTspj2kNzBO6XcKDgl7rr3NvlPUmWrQ=;
+        b=LLfgEWK1XDZR6Pn2Yot01dTOeUWyeokl++3j+BPKAGi1pdmqr/iM60UovMn53LWivd
+         0jlX4b4aeYsygN9HqBf8yqyIArytscUq1L7l/zJKycD5n0jJFW3jJlO8Qi45MfR/lvy1
+         cJYyPm9bMG6l6G7rBUTrJMedDzPHhW5ltnE8K9FlOczqHB2K68z89vX73b0YY1XYi6uT
+         HKmc84O9BsaUAaqSKKz88Rx//U+SaxUL7pBrWB15PJT17NNi8RjYxBJMmdZG6o7Mxfvo
+         DX5wpA1YJqFILVbjICsUYfCElmBLHgTNUgUC/gHIfH+hy2Kag7h2BnH/z4r/q0qopXvU
+         nb7Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id i129si4182110qkd.260.2017.05.12.12.38.47
-        for <alex.bennee@linaro.org>
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 12 May 2017 12:38:48 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <kvmarm-bounces@lists.cs.columbia.edu>
+Received: from mm01.cs.columbia.edu (mm01.cs.columbia.edu. [128.59.11.253])
+        by mx.google.com with ESMTP id q9si4378117qta.240.2017.05.12.14.00.24;
+        Fri, 12 May 2017 14:00:24 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) client-ip=128.59.11.253;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:55050 helo=lists.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1d9GOj-0008Mz-Uc
-	for alex.bennee@linaro.org; Fri, 12 May 2017 15:38:45 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:46428)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <rth7680@gmail.com>) id 1d9GOf-0008Ll-SP
-	for qemu-arm@nongnu.org; Fri, 12 May 2017 15:38:42 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <rth7680@gmail.com>) id 1d9GOf-0005QW-6j
-	for qemu-arm@nongnu.org; Fri, 12 May 2017 15:38:41 -0400
-Received: from mail-qk0-x242.google.com ([2607:f8b0:400d:c09::242]:36175)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <rth7680@gmail.com>)
-	id 1d9GOf-0005QP-2d; Fri, 12 May 2017 15:38:41 -0400
-Received: by mail-qk0-x242.google.com with SMTP id y128so9122737qka.3;
-	Fri, 12 May 2017 12:38:40 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=sender:subject:to:cc:references:from:message-id:date:user-agent
-	:mime-version:in-reply-to:content-language:content-transfer-encoding;
-	bh=ouLktLHAJc9IZsMX4/J6HSt41nypB1DpR8qmX0zD2qc=;
-	b=DRDPGCKfmrVJVmm8AyXtiYiHET8v17RdqO96OFIFFAXPcg0nRxClYMkJCblepn0/LW
-	Id+HEnbKXOQPNTpsEobzgoUfqtbIy34ljNces17I+PZnbukxdBZdrT9goVvtRfQBvv2l
-	1MjUUmX4c/dYLytFWxhQt4lFnXSXSBIppclHBQ5ZVJfZKYoafa5EdgDE0JU7cjEw5MYv
-	fJOFq2soG92fkB0STeNLhHKGHK75lo5rj5u/NAuXFlrqQXfNNc+zsJ5YxcOFBVq5vNfI
-	RXT8EkRohzX0FmkeCozrbP/G7wzcDrjV4bjIdiJ6d8+2OmHG5KQoEZck5u8bL2YajHii
-	zx+A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
-	:date:user-agent:mime-version:in-reply-to:content-language
-	:content-transfer-encoding;
-	bh=ouLktLHAJc9IZsMX4/J6HSt41nypB1DpR8qmX0zD2qc=;
-	b=ou1046Vpqyx8/7q7k9oGYqNxRjFeUp1AVi2Jcbimq9P+uBt2IE9u8clhg4lVI3kBM/
-	em4zIvhjG/LYGQkU+E6CXDWMKSyw7jt9VoiuFkOu9RVOCA3XNOO9N5nOqmZyWZeROwvR
-	roaCFB4y42eP+ubqmJIKLkyh8+2235CORiydWKXXSj6F6XRFzp5Yd4SF1j17656IZm8q
-	Pattf2QY+Nidr/o8nuYIOFDt2cTBg6jyCsCN368W+vNQnMX9t2yWAfc40knrM4gLi4ST
-	Nu5y8Xg5PpsRYseNvSWmPsoLtycXfSpCaX+xqiImOuEI0tBXhjBYQvlJJksBykJahMoq
-	cCVQ==
-X-Gm-Message-State: AODbwcB1aetQm455dlEJc0dYZEJvTLnaC2YMeTcWSsulSdHKgArG2TvJ
-	ZC3s9Yk0tuqM3A==
-X-Received: by 10.55.165.85 with SMTP id o82mr5018652qke.82.1494617920442;
-	Fri, 12 May 2017 12:38:40 -0700 (PDT)
-Received: from bigtime.twiddle.net ([2602:47:d954:1500:5e51:4fff:fe40:9c64])
-	by smtp.googlemail.com with ESMTPSA id
-	q5sm2906918qtb.52.2017.05.12.12.38.38
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Fri, 12 May 2017 12:38:39 -0700 (PDT)
-To: Aurelien Jarno <aurelien@aurel32.net>
-References: <20170512033543.6789-1-f4bug@amsat.org>
-	<20170512033543.6789-3-f4bug@amsat.org>
-	<f447c23f-f63c-f3bb-a1b9-f63e5aff4063@twiddle.net>
-	<20170512182132.jdw4g2pd5gvf2dti@aurel32.net>
-	<aaa04be5-78d6-311b-609b-d02f18e9ef96@twiddle.net>
-	<20170512192252.hgtpgqfn5vtba362@aurel32.net>
-From: Richard Henderson <rth@twiddle.net>
-Message-ID: <6c18b1e3-cc1b-ed98-bb2b-8eacaa719aee@twiddle.net>
-Date: Fri, 12 May 2017 12:38:36 -0700
+       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost (localhost [127.0.0.1])
+	by mm01.cs.columbia.edu (Postfix) with ESMTP id 93AED40BBC;
+	Fri, 12 May 2017 16:57:02 -0400 (EDT)
+X-Virus-Scanned: at lists.cs.columbia.edu
+X-Spam-Flag: NO
+X-Spam-Score: -4.202
+X-Spam-Level: 
+X-Spam-Status: No, score=-4.202 required=6.1 tests=[BAYES_00=-1.9,
+	DNS_FROM_AHBL_RHSBL=2.699, RCVD_IN_DNSWL_HI=-5, SPF_HELO_PASS=-0.001]
+	autolearn=unavailable
+Received: from mm01.cs.columbia.edu ([127.0.0.1])
+	by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id qucN6ssWNbv8; Fri, 12 May 2017 16:57:00 -0400 (EDT)
+Received: from mm01.cs.columbia.edu (localhost [127.0.0.1])
+	by mm01.cs.columbia.edu (Postfix) with ESMTP id 6964740C28;
+	Fri, 12 May 2017 16:57:00 -0400 (EDT)
+Received: from localhost (localhost [127.0.0.1])
+ by mm01.cs.columbia.edu (Postfix) with ESMTP id C9EEE40BBC
+ for <kvmarm@lists.cs.columbia.edu>; Fri, 12 May 2017 16:56:58 -0400 (EDT)
+X-Virus-Scanned: at lists.cs.columbia.edu
+Received: from mm01.cs.columbia.edu ([127.0.0.1])
+ by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 6EgG2n1II6jm for <kvmarm@lists.cs.columbia.edu>;
+ Fri, 12 May 2017 16:56:56 -0400 (EDT)
+Received: from mx1.redhat.com (mx1.redhat.com [209.132.183.28])
+ by mm01.cs.columbia.edu (Postfix) with ESMTPS id 6C5904095A
+ for <kvmarm@lists.cs.columbia.edu>; Fri, 12 May 2017 16:56:56 -0400 (EDT)
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+ [10.5.11.13])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mx1.redhat.com (Postfix) with ESMTPS id D04DB80C28;
+ Fri, 12 May 2017 21:00:15 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com D04DB80C28
+Authentication-Results: ext-mx02.extmail.prod.ext.phx2.redhat.com;
+ dmarc=none (p=none dis=none) header.from=redhat.com
+Authentication-Results: ext-mx02.extmail.prod.ext.phx2.redhat.com;
+ spf=pass smtp.mailfrom=lersek@redhat.com
+DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com D04DB80C28
+Received: from lacos-laptop-7.usersys.redhat.com (ovpn-116-241.phx2.redhat.com
+ [10.3.116.241])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id A960AD01EA;
+ Fri, 12 May 2017 21:00:06 +0000 (UTC)
+From: Laszlo Ersek <lersek@redhat.com>
+Subject: Re: [Qemu-devel] [PATCH v3 1/4] ACPI: Add APEI GHES Table Generation
+ support
+To: Dongjiu Geng <gengdongjiu@huawei.com>, james.morse@arm.com,
+ marc.zyngier@arm.com, christoffer.dall@linaro.org, rkrcmar@redhat.com,
+ linux@armlinux.org.uk, tbaicar@codeaurora.org, imammedo@redhat.com,
+ zhaoshenglong@huawei.com, peter.maydell@linaro.org, pbonzini@redhat.com,
+ qemu-devel@nongnu.org, qemu-arm@nongnu.org, ard.biesheuvel@linaro.org,
+ mtsirkin@redhat.com, drjones@redhat.com, ben@skyportsystems.com,
+ kvm@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ kvmarm@lists.cs.columbia.edu
+References: <1493530506-26833-1-git-send-email-gengdongjiu@huawei.com>
+Message-ID: <4dde45bb-a730-82b1-dc49-ad00a6b73d85@redhat.com>
+Date: Fri, 12 May 2017 23:00:05 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.1.0
+ Thunderbird/52.1.0
 MIME-Version: 1.0
-In-Reply-To: <20170512192252.hgtpgqfn5vtba362@aurel32.net>
-Content-Type: text/plain; charset=utf-8; format=flowed
+In-Reply-To: <1493530506-26833-1-git-send-email-gengdongjiu@huawei.com>
 Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:400d:c09::242
-Subject: Re: [Qemu-arm] [PATCH v3 2/5] target/arm: optimize rev16() using
- extract op
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.21
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+ (mx1.redhat.com [10.5.110.26]); Fri, 12 May 2017 21:00:16 +0000 (UTC)
+Cc: songwenjun@huawei.com, wuquanming@huawei.com, huangshaoyu@huawei.com,
+ wangxiongfeng2@huawei.com
+X-BeenThere: kvmarm@lists.cs.columbia.edu
+X-Mailman-Version: 2.1.14
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
-	=?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
-	qemu-devel@nongnu.org
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: eeqzq/igW7Pn
+List-Id: Where KVM/ARM decisions are made <kvmarm.lists.cs.columbia.edu>
+List-Unsubscribe: <https://lists.cs.columbia.edu/mailman/options/kvmarm>,
+ <mailto:kvmarm-request@lists.cs.columbia.edu?subject=unsubscribe>
+List-Archive: <https://lists.cs.columbia.edu/pipermail/kvmarm>
+List-Post: <mailto:kvmarm@lists.cs.columbia.edu>
+List-Help: <mailto:kvmarm-request@lists.cs.columbia.edu?subject=help>
+List-Subscribe: <https://lists.cs.columbia.edu/mailman/listinfo/kvmarm>,
+ <mailto:kvmarm-request@lists.cs.columbia.edu?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Errors-To: kvmarm-bounces@lists.cs.columbia.edu
+Sender: kvmarm-bounces@lists.cs.columbia.edu
+X-TUID: W7Tzsqe1IhU4
 
-On 05/12/2017 12:22 PM, Aurelien Jarno wrote:
-> On 2017-05-12 12:05, Richard Henderson wrote:
->> On 05/12/2017 11:21 AM, Aurelien Jarno wrote:
->>> +    uint64_t mask1 = sf ? 0x00ff00ff00ff00ffull : 0x00ff00ff;
->>> +    uint64_t mask2 = sf ? 0xff00ff00ff00ff00ull : 0xff00ff00;
->>> +
->>> +    tcg_gen_shri_i64(tcg_tmp, tcg_rn, 8);
->>> +    tcg_gen_andi_i64(tcg_tmp, tcg_tmp, mask1);
->>> +    tcg_gen_shli_i64(tcg_rd, tcg_rn, 8);
->>> +    tcg_gen_andi_i64(tcg_rd, tcg_rd, mask2);
->>
->> It would probably be better to use a single mask, since they're not free to
->> instantiate in a register.  So e.g.
->>
->>    TCGv mask = tcg_const_i64(sf ? 0x00ff00ff00ff00ffull : 0x00ff00ff);
->>    tcg_gen_shri_i64(tcg_tmp, tcg_rn, 8);
->>    tcg_gen_and_i64(tcg_rd, tcg_rn, mask);
->>    tcg_gen_and_i64(tcg_tmp, tcg_tmp, mask);
->>    tcg_gen_shli_i64(tcg_rd, tcg_rd, 8);
-> 
-> Indeed that improves things a bit for sf=1. For sf=0 though the
-> constant is never loaded into a register, it is passed to the and
-> instructions as an immediate.
-> 
-For x86 (and sometimes s390) it isn't, but it certainly would be for all other 
-hosts.
+On 04/30/17 07:35, Dongjiu Geng wrote:
+> This implements APEI GHES Table by passing the error cper info
+> to the guest via a fw_cfg_blob. After a CPER info is added, an
+> SEA/SEI exception will be injected into the guest OS.
+>
+> Below is the table layout, the max number of error soure is 11,
+> which is classified by notification type.
+>
+> etc/acpi/tables                 etc/hardware_errors
+> ================     ==========================================
+>                      +-----------+
+> +--------------+     | address   |         +-> +--------------+
+> |    HEST      +     | registers |         |   | Error Status |
+> + +------------+     | +---------+         |   | Data Block 1 |
+> | | GHES1      | --> | |address1 | --------+   | +------------+
+> | | GHES2      | --> | |address2 | ------+     | |  CPER      |
+> | | GHES3      | --> | |address3 | ----+ |     | |  CPER      |
+> | |  ....      | --> | | ....... |     | |     | |  CPER      |
+> | | GHES10     | --> | |address10| -+  | |     | |  CPER      |
+> +-+------------+     +-+---------+  |  | |     +-+------------+
+>                                     |  | |
+>                                     |  | +---> +--------------+
+>                                     |  |       | Error Status |
+>                                     |  |       | Data Block 2 |
+>                                     |  |       | +------------+
+>                                     |  |       | |  CPER      |
+>                                     |  |       | |  CPER      |
+>                                     |  |       +-+------------+
+>                                     |  |
+>                                     |  +-----> +--------------+
+>                                     |          | Error Status |
+>                                     |          | Data Block 3 |
+>                                     |          | +------------+
+>                                     |          | |  CPER      |
+>                                     |          +-+------------+
+>                                     |            ...........
+>                                     +--------> +--------------+
+>                                                | Error Status |
+>                                                | Data Block 10|
+>                                                | +------------+
+>                                                | |  CPER      |
+>                                                | |  CPER      |
+>                                                | |  CPER      |
+>                                                +-+------------+
+>
+> Signed-off-by: Dongjiu Geng <gengdongjiu@huawei.com>
+> ---
+>  default-configs/arm-softmmu.mak |   1 +
+>  hw/acpi/Makefile.objs           |   1 +
+>  hw/acpi/aml-build.c             |   2 +
+>  hw/acpi/hest_ghes.c             | 203 +++++++++++++++++++++++++++++++++++
+>  hw/arm/virt-acpi-build.c        |   6 ++
+>  include/hw/acpi/acpi-defs.h     | 227 ++++++++++++++++++++++++++++++++++++++++
+>  include/hw/acpi/aml-build.h     |   1 +
+>  include/hw/acpi/hest_ghes.h     |  43 ++++++++
+>  8 files changed, 484 insertions(+)
+>  create mode 100644 hw/acpi/hest_ghes.c
+>  create mode 100644 include/hw/acpi/hest_ghes.h
 
+Disclaimer: I'm not an ACPI (or any kind of) QEMU maintainer, so I can
+only share my personal opinion.
 
-r~
+(1) This patch is too big. It should be split in two parts at least.
+
+The first patch should contain the new ACPI structures and macros. The
+second patch should contain the generation feature.
+
+I'll reorder the diff in my response.
+
+> diff --git a/include/hw/acpi/acpi-defs.h b/include/hw/acpi/acpi-defs.h
+> index 4cc3630..27adede 100644
+> --- a/include/hw/acpi/acpi-defs.h
+> +++ b/include/hw/acpi/acpi-defs.h
+> @@ -295,6 +295,58 @@ typedef struct AcpiMultipleApicTable AcpiMultipleApicTable;
+>  #define ACPI_APIC_GENERIC_TRANSLATOR    15
+>  #define ACPI_APIC_RESERVED              16   /* 16 and greater are reserved */
+>
+
+(2) Please add a comment above the following macros: they come from the
+UEFI Spec 2.6, "N.2.5 Memory Error Section".
+
+> +#define CPER_MEM_VALID_ERROR_STATUS     0x0001
+> +#define CPER_MEM_VALID_PA               0x0002
+> +#define CPER_MEM_VALID_PA_MASK          0x0004
+> +#define CPER_MEM_VALID_NODE             0x0008
+> +#define CPER_MEM_VALID_CARD             0x0010
+> +#define CPER_MEM_VALID_MODULE           0x0020
+> +#define CPER_MEM_VALID_BANK             0x0040
+> +#define CPER_MEM_VALID_DEVICE           0x0080
+> +#define CPER_MEM_VALID_ROW              0x0100
+> +#define CPER_MEM_VALID_COLUMN           0x0200
+> +#define CPER_MEM_VALID_BIT_POSITION     0x0400
+> +#define CPER_MEM_VALID_REQUESTOR_ID     0x0800
+> +#define CPER_MEM_VALID_RESPONDER_ID     0x1000
+> +#define CPER_MEM_VALID_TARGET_ID        0x2000
+
+(3) _ID should be dropped.
+
+> +#define CPER_MEM_VALID_ERROR_TYPE       0x4000
+> +#define CPER_MEM_VALID_RANK_NUMBER      0x8000
+> +#define CPER_MEM_VALID_CARD_HANDLE      0x10000
+> +#define CPER_MEM_VALID_MODULE_HANDLE    0x20000
+
+(4) I think if you are padding the first 16 macros with zeroes on the
+left, then they should be padded to five nibbles, given that you have 18
+macros.
+
+(5) Please prefix all of the macro names with "UEFI_".
+
+> +
+> +typedef struct {
+> +    uint8_t b[16];
+> +} uuid_le;
+> +
+> +#define UUID_LE(a, b, c, d0, d1, d2, d3, d4, d5, d6, d7)        \
+> +((uuid_le)                              \
+> +{{ (a) & 0xff, ((a) >> 8) & 0xff, ((a) >> 16) & 0xff, ((a) >> 24) & 0xff, \
+> +    (b) & 0xff, ((b) >> 8) & 0xff,                   \
+> +    (c) & 0xff, ((c) >> 8) & 0xff,                   \
+> +    (d0), (d1), (d2), (d3), (d4), (d5), (d6), (d7) } })
+
+(6) This shouldn't be necessary -- or at least not here. We already have
+"include/qemu/uuid.h".
+
+If you need this macro, then in my opinion it should be moved to
+"include/qemu/uuid.h" (in a separate patch), and the macro should
+produce a compound literal of the QemuUUID structure type.
+
+And, as documented for QemuUUID, it should be in big endian byte order.
+For little-endian use, it should be byte-swapped with qemu_uuid_bswap().
+
+> +
+> +/* Platform Memory */
+> +#define CPER_SEC_PLATFORM_MEM                   \
+> +    UUID_LE(0xA5BC1114, 0x6F64, 0x4EDE, 0xB8, 0x63, 0x3E, 0x83, \
+> +        0xED, 0x7C, 0x83, 0xB1)
+
+(7) Please add a comment this is from UEFI 2.6 "N.2.2 Section
+Descriptor".
+
+(8) Please prefix the macro with UEFI_.
+
+> +
+> +/* Values for Notify Type field above */
+> +
+> +enum acpi_hest_notify_types {
+> +    ACPI_HEST_NOTIFY_POLLED = 0,
+> +    ACPI_HEST_NOTIFY_EXTERNAL = 1,
+> +    ACPI_HEST_NOTIFY_LOCAL = 2,
+> +    ACPI_HEST_NOTIFY_SCI = 3,
+> +    ACPI_HEST_NOTIFY_NMI = 4,
+> +    ACPI_HEST_NOTIFY_CMCI = 5,  /* ACPI 5.0 */
+> +    ACPI_HEST_NOTIFY_MCE = 6,   /* ACPI 5.0 */
+> +    ACPI_HEST_NOTIFY_GPIO = 7,  /* ACPI 6.0 */
+> +    ACPI_HEST_NOTIFY_SEA = 8,   /* ACPI 6.1 */
+> +    ACPI_HEST_NOTIFY_SEI = 9,   /* ACPI 6.1 */
+> +    ACPI_HEST_NOTIFY_GSIV = 10, /* ACPI 6.1 */
+> +    ACPI_HEST_NOTIFY_RESERVED = 11  /* 11 and greater are reserved */
+> +};
+> +
+
+(9) Please add a comment that this is from the ACPI 6.1 spec, "18.3.2.9
+Hardware Error Notification".
+
+(10) For better or worse, type names and struct tags in this header file
+use CamelCase, and generally start with the prefix Acpi. So I think the
+above should be called "AcpiHestNotifyType" (singular).
+
+The enum constants look good.
+
+>  /*
+>   * MADT sub-structures (Follow MULTIPLE_APIC_DESCRIPTION_TABLE)
+>   */
+> @@ -475,6 +527,181 @@ struct AcpiSystemResourceAffinityTable
+>  } QEMU_PACKED;
+>  typedef struct AcpiSystemResourceAffinityTable AcpiSystemResourceAffinityTable;
+>
+> +#define ACPI_ADR_SPACE_SYSTEM_MEMORY    (uint8_t) 0
+> +#define ACPI_ADR_SPACE_SYSTEM_IO        (uint8_t) 1
+> +#define ACPI_ADR_SPACE_PCI_CONFIG       (uint8_t) 2
+> +#define ACPI_ADR_SPACE_EC               (uint8_t) 3
+> +#define ACPI_ADR_SPACE_SMBUS            (uint8_t) 4
+> +#define ACPI_ADR_SPACE_CMOS             (uint8_t) 5
+> +#define ACPI_ADR_SPACE_PCI_BAR_TARGET   (uint8_t) 6
+> +#define ACPI_ADR_SPACE_IPMI             (uint8_t) 7
+> +#define ACPI_ADR_SPACE_GPIO             (uint8_t) 8
+> +#define ACPI_ADR_SPACE_GSBUS            (uint8_t) 9
+> +#define ACPI_ADR_SPACE_PLATFORM_COMM    (uint8_t) 10
+
+(11) These macros are not necessary. Instead, please extend the
+AmlRegionSpace enum type in "include/hw/acpi/aml-build.h".
+
+(12) Additionally, where do the values 5 through 9 come from? ACPI 6.1
+"5.2.3.2 Generic Address Structure" leaves them reserved.
+
+> +
+> +/* GAS - Generic Address Structure */
+> +struct acpi_generic_address {
+> +    uint8_t space_id;       /* Address space where
+> +                             *struct or register exists
+> +                             */
+> +    uint8_t bit_width;      /* Size in bits of given register */
+> +    uint8_t bit_offset;     /* Bit offset within the register */
+> +    uint8_t access_width;   /* Minimum Access size (ACPI 3.0) */
+> +    uint64_t address;       /* 64-bit address of struct or register */
+> +} __attribute__ ((packed));
+> +
+
+(13) This structure is already defined, see AcpiGenericAddress.
+
+> +/* Hardware Error Notification */
+> +struct acpi_hest_notify {
+> +    uint8_t type;
+> +    uint8_t length;
+> +    uint16_t config_write_enable;
+> +    uint32_t poll_interval;
+> +    uint32_t vector;
+> +    uint32_t polling_threshold_value;
+> +    uint32_t polling_threshold_window;
+> +    uint32_t error_threshold_value;
+> +    uint32_t error_threshold_window;
+> +};
+
+(14) Please add a comment that this is from the ACPI 6.1 spec, "18.3.2.9
+Hardware Error Notification".
+
+(15) The structure should be called AcpiHestNotify. Please also add a
+direct typedef for it, similarly to the other struct AcpiXxxx types seen
+in this header.
+
+(16) To the "type" field, please append a comment that the values come
+from AcpiHestNotifyType.
+
+(17) This structure should be packed. Please add QEMU_PACKED between the
+closing brace and the semicolon.
+
+> +
+> +enum acpi_hest_types {
+> +    ACPI_HEST_TYPE_IA32_CHECK = 0,
+> +    ACPI_HEST_TYPE_IA32_CORRECTED_CHECK = 1,
+> +    ACPI_HEST_TYPE_IA32_NMI = 2,
+> +    ACPI_HEST_TYPE_NOT_USED3 = 3,
+> +    ACPI_HEST_TYPE_NOT_USED4 = 4,
+> +    ACPI_HEST_TYPE_NOT_USED5 = 5,
+> +    ACPI_HEST_TYPE_AER_ROOT_PORT = 6,
+> +    ACPI_HEST_TYPE_AER_ENDPOINT = 7,
+> +    ACPI_HEST_TYPE_AER_BRIDGE = 8,
+> +    ACPI_HEST_TYPE_GENERIC_ERROR = 9,
+> +    ACPI_HEST_TYPE_GENERIC_ERROR_V2 = 10,
+> +    ACPI_HEST_TYPE_RESERVED = 11    /* 11 and greater are reserved */
+> +};
+
+(18) Please add a comment that these are from ACPI 6.1, sections
+"18.3.2.1 IA-32 Architecture Machine Check Exception" through "18.3.2.8
+Generic Hardware Error Source version 2".
+
+(19) The type name should be "AcpiHestSourceType" (singular).
+
+(20) I think the enum constants should be renamed to
+ACPI_HEST_SOURCE_xxx, from ACPI_HEST_TYPE_xxx.
+
+(21) I think the NOT_USED{3,4,5} enum constants should be removed.
+
+> +
+> +/* Values for block_status flags above */
+
+(22) Here I think we should only say, 'Block Status bitmasks from ACPI
+6.1, "18.3.2.7.1 Generic Error Data"'. The block_status field that you
+refer to is not above, it comes later.
+
+> +#define ACPI_BERT_UNCORRECTABLE             (1)
+> +#define ACPI_BERT_CORRECTABLE               (1 << 1)
+> +#define ACPI_BERT_MULTIPLE_UNCORRECTABLE    (1 << 2)
+> +#define ACPI_BERT_MULTIPLE_CORRECTABLE      (1 << 3)
+> +/* 8 bits, error count */
+> +#define ACPI_BERT_ERROR_ENTRY_COUNT         (0xFF << 4)
+>
+
+(23) Any particular reason to call these BERT? The "Boot Error Record
+Table" is specified in "18.3.1 Boot Error Source", but the block status
+bitmasks don't look related.
+
+To me ACPI_GEBS_xxx ("generic error block status") seems like a more
+fitting prefix.
+
++
+> +/* Generic Hardware Error Source Structure */
+> +struct AcpiGenericHardwareErrorSource {
+> +    uint16_t type;
+> +    uint16_t source_id;
+> +    uint16_t related_source_id;
+> +    uint8_t flags;
+> +    uint8_t enabled;
+> +    uint32_t number_of_records;
+> +    uint32_t max_sections_per_record;
+> +    uint32_t max_raw_data_length;
+> +    struct acpi_generic_address error_status_address;
+> +    struct acpi_hest_notify notify;
+> +    uint32_t error_status_block_length;
+> +} QEMU_PACKED;
+> +typedef struct AcpiGenericHardwareErrorSource AcpiGenericHardwareErrorSource;
+
+(24) This looks good to me in general.
+
+I suggest adding a reference to ACPI 6.1 "18.3.2.7 Generic Hardware
+Error Source". Also, I think we should mention that "type" has to be
+ACPI_HEST_SOURCE_GENERIC_ERROR.
+
+> +
+> +/* Generic Hardware Error Source , version 2 */
+> +struct AcpiGenericHardwareErrorSourceV2 {
+> +    uint16_t type;
+> +    uint16_t source_id;
+> +    uint16_t related_source_id;
+> +    uint8_t flags;
+> +    uint8_t enabled;
+> +    uint32_t number_of_records;
+> +    uint32_t max_sections_per_record;
+> +    uint32_t max_raw_data_length;
+> +    struct acpi_generic_address error_status_address;
+> +    struct acpi_hest_notify notify;
+> +    uint32_t error_status_block_length;
+> +    struct acpi_generic_address read_ack_register;
+> +    uint64_t read_ack_preserve;
+> +    uint64_t read_ack_write;
+> +} QEMU_PACKED;
+> +typedef struct AcpiGenericHardwareErrorSourceV2
+> +            AcpiGenericHardwareErrorSourceV2;
+
+(25) Same comments; I suggest adding a reference to "18.3.2.8 Generic
+Hardware Error Source version 2", and mentioning
+ACPI_HEST_SOURCE_GENERIC_ERROR_V2 for the "type" field.
+
+> +
+> +/* Generic Error Status block */
+> +
+> +struct AcpiGenericErrorStatus {
+> +    uint32_t block_status;
+> +    uint32_t raw_data_offset;
+> +    uint32_t raw_data_length;
+> +    uint32_t data_length;
+> +    uint32_t error_severity;
+> +};
+> +typedef struct AcpiGenericErrorStatus AcpiGenericErrorStatus;
+> +
+
+(26) Please mention that this is from ACPI 6.1, "18.3.2.7.1 Generic
+Error Data".
+
+(27) Near the block_status field, we should point out that it is a
+bitmask composed of ACPI_GEBS_xxx macros.
+
+(28) QEMU_PACKED is missing. (It will make no difference in practice,
+but I recommend it for consistency and documentation purposes.)
+
+> +/* Generic Error Data entry */
+> +
+> +struct AcpiGenericErrorData {
+> +    uint8_t section_type[16];
+> +    uint32_t error_severity;
+> +    uint16_t revision;
+> +    uint8_t validation_bits;
+> +    uint8_t flags;
+> +    uint32_t error_data_length;
+> +    uint8_t fru_id[16];
+> +    uint8_t fru_text[20];
+> +};
+> +typedef struct AcpiGenericErrorData AcpiGenericErrorData;
+
+(29) Please point to ACPI 6.1, "18.3.2.7.1 Generic Error Data" again, in
+the leading comment.
+
+(30) QEMU_PACKED is missing.
+
+(31) I think we should use the QemuUUID type for the "section_type"
+field. And, in order to make it clear that it has little endian
+encoding, let's call it "section_type_le".
+
+An added benefit is that in the code, the field can be set with a simple
+structure assignment from UEFI_CPER_SEC_PLATFORM_MEM (and then can be
+byte-swapped in place, for little endiannes, with qemu_uuid_bswap()).
+
+> +
+> +/* Extension for revision 0x0300  */
+> +struct AcpiGenericErrorDataV300 {
+> +    uint8_t section_type[16];
+> +    uint32_t error_severity;
+> +    uint16_t revision;
+> +    uint8_t validation_bits;
+> +    uint8_t flags;
+> +    uint32_t error_data_length;
+> +    uint8_t fru_id[16];
+> +    uint8_t fru_text[20];
+> +    uint64_t time_stamp;
+> +};
+> +typedef struct AcpiGenericErrorDataV300 AcpiGenericErrorDataV300;
+> +
+
+(32) Same comments as (29), (30), (31) above.
+
+(33) Actually, do we need both AcpiGenericErrorData and
+AcpiGenericErrorDataV300? In the code we seem to be using only the
+former. On the other hand, in the spec I can see only the latter. Where
+does AcpiGenericErrorData come from?
+
+> +enum {
+> +    CPER_SEV_RECOVERABLE,
+> +    CPER_SEV_FATAL,
+> +    CPER_SEV_CORRECTED,
+> +    CPER_SEV_INFORMATIONAL,
+> +};
+
+(34) I suggest giving a name to this type, for example
+AcpiGenericErrorSeverity.
+
+(35) The enumeration constants should start with ACPI_.
+
+(36) I suggest moving this type above AcpiGenericErrorData and
+AcpiGenericErrorDataV300, and remarking on the "error_severity" fields
+that they take their values from AcpiGenericErrorSeverity.
+
+(37) Where does "INFORMATIONAL" come from? In ACPI 6.1, "18.3.2.7.1
+Generic Error Data", I see "None" for value 3.
+
+> +
+> +/* Memory Error Section */
+> +struct cper_sec_mem_err {
+> +    uint64_t    validation_bits;
+> +    uint64_t    error_status;
+> +    uint64_t    physical_addr;
+> +    uint64_t    physical_addr_mask;
+> +    uint16_t    node;
+> +    uint16_t    card;
+> +    uint16_t    module;
+> +    uint16_t    bank;
+> +    uint16_t    device;
+> +    uint16_t    row;
+> +    uint16_t    column;
+> +    uint16_t    bit_pos;
+> +    uint64_t    requestor_id;
+> +    uint64_t    responder_id;
+> +    uint64_t    target_id;
+> +    uint8_t     error_type;
+> +    uint8_t     reserved;
+> +    uint16_t    rank;
+> +    uint16_t    mem_array_handle;   /* card handle in UEFI 2.4 */
+> +    uint16_t    mem_dev_handle;     /* module handle in UEFI 2.4 */
+> +};
+> + typedef struct cper_sec_mem_err cper_sec_mem_err;
+
+(38) Please add a comment that is is from UEFI 2.6, "N.2.5 Memory Error
+Section".
+
+(39) The structure and the typedef should be called "UefiCperSecMemErr".
+
+(40) I suggest adding a comment to "validation_bits" that it is a
+bitmask composed of CPER_MEM_VALID_xxx macros.
+
+(41) QEMU_PACKED is missing.
+
+> +
+> +/*
+> + * HEST Description Table
+> + */
+> +struct AcpiHardwareErrorSourceTable {
+> +    ACPI_TABLE_HEADER_DEF                    /* ACPI common table header */
+> +    uint32_t           error_source_count;
+> +} QEMU_PACKED;
+> +typedef struct AcpiHardwareErrorSourceTable AcpiHardwareErrorSourceTable;
+> +
+>  #define ACPI_SRAT_PROCESSOR_APIC     0
+>  #define ACPI_SRAT_MEMORY             1
+>  #define ACPI_SRAT_PROCESSOR_x2APIC   2
+
+Next file:
+
+> diff --git a/include/hw/acpi/hest_ghes.h b/include/hw/acpi/hest_ghes.h
+> new file mode 100644
+> index 0000000..0cadc2b
+> --- /dev/null
+> +++ b/include/hw/acpi/hest_ghes.h
+> @@ -0,0 +1,43 @@
+> +#ifndef ACPI_GHES_H
+> +#define ACPI_GHES_H
+> +
+> +#include "hw/acpi/bios-linker-loader.h"
+> +
+> +#define GHES_ERRORS_FW_CFG_FILE      "etc/hardware_errors"
+> +#define GHES_DATA_ADDR_FW_CFG_FILE      "etc/hardware_errors_addr"
+> +
+> +#define GAS_ADDRESS_OFFSET              4
+> +#define ERROR_STATUS_ADDRESS_OFFSET     20
+> +#define NOTIFICATION_STRUCTURE          32
+> +
+> +#define BFAPEI_OK   0
+> +#define BFAPEI_FAIL 1
+> +
+> +/* The max number of error source, the error sources
+> + * are classified by notification type, below is the definition
+> + * 0 - Polled
+> + * 1 - External Interrupt
+> + * 2 - Local Interrupt
+> + * 3 - SCI
+> + * 4 - NMI
+> + * 5 - CMCI
+> + * 6 - MCE
+> + * 7 - GPIO-Signal
+> + * 8 - ARMv8 SEA
+> + * 9 - ARMv8 SEI
+> + * 10 - External Interrupt - GSIV
+> + */
+> +#define MAX_ERROR_SOURCE_COUNT_V6           11
+
+I'll have to review this header file more thoroughly, once I see the
+code that references these macros. For now, I have one comment:
+
+(42) I think the notification type list should be removed from this
+location. Also, the open-coded value 11 should be replaced with
+the ACPI_HEST_NOTIFY_RESERVED enumeration constant.
+
+I will try to continue reviewing this patch sometime next week (second
+half of the week at the earliest, I think).
+
+Please feel free to disagree with my comments; I prefer to write down
+everything that crosses my mind. It's encouraged to raise
+counter-arguments.
+
+Thanks
+Laszlo
+
+> +/* The max size in Bytes for one error block */
+> +#define MAX_RAW_DATA_LENGTH                 0x1000
+> +
+> +typedef struct GhesErrorState {
+> +    uint64_t physical_addr;
+> +    uint64_t ghes_addr_le[8];
+> +} GhesErrorState;
+> +
+> +void ghes_build_acpi(GArray *table_data, GArray *hardware_error,
+> +                            BIOSLinker *linker);
+> +void ghes_add_fw_cfg(FWCfgState *s, GArray *guid);
+> +void ghes_update_guest(uint32_t notify, uint64_t physical_address);
+> +#endif
+>
+
+> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+> index 0835e59..e7ab5dc 100644
+> --- a/hw/arm/virt-acpi-build.c
+> +++ b/hw/arm/virt-acpi-build.c
+> @@ -45,6 +45,8 @@
+>  #include "hw/arm/virt.h"
+>  #include "sysemu/numa.h"
+>  #include "kvm_arm.h"
+> +#include "hw/acpi/vmgenid.h"
+> +#include "hw/acpi/hest_ghes.h"
+>
+>  #define ARM_SPI_BASE 32
+>  #define ACPI_POWER_BUTTON_DEVICE "PWRB"
+> @@ -778,6 +780,9 @@ void virt_acpi_build(VirtMachineState *vms, AcpiBuildTables *tables)
+>      acpi_add_table(table_offsets, tables_blob);
+>      build_spcr(tables_blob, tables->linker, vms);
+>
+> +    acpi_add_table(table_offsets, tables_blob);
+> +    ghes_build_acpi(tables_blob, tables->hardware_errors, tables->linker);
+> +
+>      if (nb_numa_nodes > 0) {
+>          acpi_add_table(table_offsets, tables_blob);
+>          build_srat(tables_blob, tables->linker, vms);
+> @@ -892,6 +897,7 @@ void virt_acpi_setup(VirtMachineState *vms)
+>
+>      build_state->rsdp_mr = acpi_add_rom_blob(build_state, tables.rsdp,
+>                                                ACPI_BUILD_RSDP_FILE, 0);
+> +    ghes_add_fw_cfg(vms->fw_cfg, tables.hardware_errors);
+>
+>      qemu_register_reset(virt_acpi_build_reset, build_state);
+>      virt_acpi_build_reset(build_state);
+
+> diff --git a/default-configs/arm-softmmu.mak b/default-configs/arm-softmmu.mak
+> index 1e3bd2b..d5f1552 100644
+> --- a/default-configs/arm-softmmu.mak
+> +++ b/default-configs/arm-softmmu.mak
+> @@ -121,3 +121,4 @@ CONFIG_ACPI=y
+>  CONFIG_SMBIOS=y
+>  CONFIG_ASPEED_SOC=y
+>  CONFIG_GPIO_KEY=y
+> +CONFIG_ACPI_APEI_GENERATION=y
+
+> diff --git a/hw/acpi/Makefile.objs b/hw/acpi/Makefile.objs
+> index 11c35bc..776b46e 100644
+> --- a/hw/acpi/Makefile.objs
+> +++ b/hw/acpi/Makefile.objs
+> @@ -6,6 +6,7 @@ common-obj-$(CONFIG_ACPI_MEMORY_HOTPLUG) += memory_hotplug.o
+>  common-obj-$(CONFIG_ACPI_CPU_HOTPLUG) += cpu.o
+>  common-obj-$(CONFIG_ACPI_NVDIMM) += nvdimm.o
+>  common-obj-$(CONFIG_ACPI_VMGENID) += vmgenid.o
+> +common-obj-$(CONFIG_ACPI_APEI_GENERATION) += hest_ghes.o
+>  common-obj-$(call lnot,$(CONFIG_ACPI_X86)) += acpi-stub.o
+>
+>  common-obj-y += acpi_interface.o
+
+> diff --git a/hw/acpi/aml-build.c b/hw/acpi/aml-build.c
+> index c6f2032..802b98d 100644
+> --- a/hw/acpi/aml-build.c
+> +++ b/hw/acpi/aml-build.c
+> @@ -1560,6 +1560,7 @@ void acpi_build_tables_init(AcpiBuildTables *tables)
+>      tables->table_data = g_array_new(false, true /* clear */, 1);
+>      tables->tcpalog = g_array_new(false, true /* clear */, 1);
+>      tables->vmgenid = g_array_new(false, true /* clear */, 1);
+> +    tables->hardware_errors = g_array_new(false, true /* clear */, 1);
+>      tables->linker = bios_linker_loader_init();
+>  }
+>
+> @@ -1570,6 +1571,7 @@ void acpi_build_tables_cleanup(AcpiBuildTables *tables, bool mfre)
+>      g_array_free(tables->table_data, true);
+>      g_array_free(tables->tcpalog, mfre);
+>      g_array_free(tables->vmgenid, mfre);
+> +    g_array_free(tables->hardware_errors, mfre);
+>  }
+>
+>  /* Build rsdt table */
+
+> diff --git a/hw/acpi/hest_ghes.c b/hw/acpi/hest_ghes.c
+> new file mode 100644
+> index 0000000..91d382e
+> --- /dev/null
+> +++ b/hw/acpi/hest_ghes.c
+> @@ -0,0 +1,203 @@
+> +/*
+> + *  APEI GHES table Generation
+> + *
+> + *  Copyright (C) 2017 huawei.
+> + *
+> + *  Author: Dongjiu Geng <gengdongjiu@huawei.com>
+> + *
+> + * This work is licensed under the terms of the GNU GPL, version 2 or later.
+> + * See the COPYING file in the top-level directory.
+> + *
+> + */
+> +
+> +#include "qemu/osdep.h"
+> +#include "qmp-commands.h"
+> +#include "hw/acpi/acpi.h"
+> +#include "hw/acpi/aml-build.h"
+> +#include "hw/acpi/hest_ghes.h"
+> +#include "hw/nvram/fw_cfg.h"
+> +#include "sysemu/sysemu.h"
+> +
+> +static int ghes_generate_cper_record(uint64_t block_error_address,
+> +                                    uint64_t error_physical_addr)
+> +{
+> +    AcpiGenericErrorStatus block;
+> +    AcpiGenericErrorData *gdata;
+> +    struct cper_sec_mem_err *mem_err;
+> +    uint64_t block_data_length;
+> +    unsigned char *buffer;
+> +
+> +    cpu_physical_memory_read(block_error_address, &block,
+> +                                sizeof(AcpiGenericErrorStatus));
+> +
+> +    block_data_length = sizeof(AcpiGenericErrorStatus) + block.data_length;
+> +
+> +    /* If the Generic Error Status Block is NULL, update
+> +     * the block header
+> +     */
+> +    if (!block.block_status) {
+> +        block.block_status = ACPI_BERT_UNCORRECTABLE;
+> +        block.error_severity = CPER_SEV_FATAL;
+> +    }
+> +
+> +    block.data_length += sizeof(AcpiGenericErrorData);
+> +    block.data_length += sizeof(struct cper_sec_mem_err);
+> +
+> +    /* Write back the Generic Error Status Block to guest memory */
+> +    cpu_physical_memory_write(block_error_address, &block,
+> +                        sizeof(AcpiGenericErrorStatus));
+> +
+> +    /* Fill in Generic Error Data Entry */
+> +    buffer = g_malloc(sizeof(AcpiGenericErrorData) + sizeof(cper_sec_mem_err));
+> +    memset(buffer, 0, sizeof(AcpiGenericErrorData) + sizeof(cper_sec_mem_err));
+> +    gdata = (AcpiGenericErrorData *)buffer;
+> +
+> +    memcpy(gdata->section_type, (void *) &CPER_SEC_PLATFORM_MEM,
+> +                sizeof(uuid_le));
+> +    gdata->error_data_length = sizeof(struct cper_sec_mem_err);
+> +
+> +    mem_err = (struct cper_sec_mem_err *) (gdata + 1);
+> +
+> +    /* In order to simplify simulation, hardcode the CPER section to memory
+> +     * section.
+> +     */
+> +    mem_err->validation_bits |= CPER_MEM_VALID_ERROR_TYPE;
+> +    mem_err->error_type = 3;
+> +
+> +    mem_err->validation_bits |= CPER_MEM_VALID_PA;
+> +    mem_err->physical_addr = error_physical_addr;
+> +
+> +    mem_err->validation_bits |= CPER_MEM_VALID_CARD | CPER_MEM_VALID_MODULE |
+> +            CPER_MEM_VALID_BANK | CPER_MEM_VALID_ROW |
+> +            CPER_MEM_VALID_COLUMN | CPER_MEM_VALID_BIT_POSITION;
+> +    mem_err->card = 1;
+> +    mem_err->module = 2;
+> +    mem_err->bank = 3;
+> +    mem_err->row = 1;
+> +    mem_err->column = 2;
+> +    mem_err->bit_pos = 5;
+> +
+> +    mem_err->validation_bits |= CPER_MEM_VALID_ERROR_STATUS;
+> +    mem_err->error_status = 4 << 8;
+> +
+> +    /* Write back the Generic Error Data Entry to guest memory */
+> +    cpu_physical_memory_write(block_error_address + block_data_length, buffer,
+> +                    sizeof(AcpiGenericErrorData) + sizeof(cper_sec_mem_err));
+> +
+> +    g_free(buffer);
+> +    return BFAPEI_OK;
+> +}
+> +
+> +void ghes_build_acpi(GArray *table_data, GArray *hardware_error,
+> +                                            BIOSLinker *linker)
+> +{
+> +    Aml *hest;
+> +    uint32_t address_registers_offset;
+> +    AcpiTableHeader *header;
+> +    AcpiGenericHardwareErrorSource *error_source;
+> +    int i;
+> +
+> +    int block_reqr_size = sizeof(uint64_t) + MAX_RAW_DATA_LENGTH;
+> +
+> +    /* New address register and Error status block table size*/
+> +    g_array_set_size(hardware_error, MAX_ERROR_SOURCE_COUNT_V6
+> +                                        * block_reqr_size);
+> +
+> +    /* Put this in a HEST table */
+> +    hest = init_aml_allocator();
+> +    address_registers_offset = table_data->len
+> +                                + sizeof(AcpiHardwareErrorSourceTable)
+> +                                + ERROR_STATUS_ADDRESS_OFFSET
+> +                                + GAS_ADDRESS_OFFSET;
+> +    /* Reserve space for HEST table size*/
+> +    acpi_data_push(hest->buf, sizeof(AcpiHardwareErrorSourceTable)
+> +                                + MAX_ERROR_SOURCE_COUNT_V6
+> +                                * sizeof(AcpiGenericHardwareErrorSource));
+> +
+> +    g_array_append_vals(table_data, hest->buf->data, hest->buf->len);
+> +    /* Allocate guest memory for the Data fw_cfg blob */
+> +    bios_linker_loader_alloc(linker, GHES_ERRORS_FW_CFG_FILE,
+> +                            hardware_error, 4096,
+> +                            false /* page boundary, high memory */);
+> +    header = (AcpiTableHeader *)(table_data->data
+> +                        + table_data->len - hest->buf->len);
+> +    *(uint32_t *)(header + 1) = MAX_ERROR_SOURCE_COUNT_V6;
+> +    error_source = (AcpiGenericHardwareErrorSource *)((char *)header
+> +                                    + sizeof(AcpiHardwareErrorSourceTable));
+> +
+> +    for (i = 0; i < MAX_ERROR_SOURCE_COUNT_V6; i++) {
+> +        error_source->type = ACPI_HEST_TYPE_GENERIC_ERROR;
+> +        error_source->source_id = 0;
+> +        error_source->related_source_id = 0xffff;
+> +        error_source->flags = 0;
+> +        error_source->enabled = 1;
+> +        error_source->number_of_records = 1;
+> +        error_source->max_sections_per_record = 1;
+> +        error_source->max_raw_data_length = MAX_RAW_DATA_LENGTH;
+> +        error_source->error_status_address.space_id =
+> +                                    ACPI_ADR_SPACE_SYSTEM_MEMORY;
+> +        error_source->error_status_address.bit_width = 64;
+> +        error_source->error_status_address.bit_offset = 0;
+> +        error_source->error_status_address.access_width = 4;
+> +        error_source->notify.type = i;
+> +        error_source->notify.length = sizeof(AcpiGenericHardwareErrorSource);
+> +
+> +        bios_linker_loader_add_pointer(linker, GHES_ERRORS_FW_CFG_FILE,
+> +                                sizeof(uint64_t) * i, sizeof(uint64_t),
+> +                                GHES_ERRORS_FW_CFG_FILE,
+> +                                MAX_ERROR_SOURCE_COUNT_V6 * sizeof(uint64_t) +
+> +                                i * MAX_RAW_DATA_LENGTH);
+> +        bios_linker_loader_add_pointer(linker, ACPI_BUILD_TABLE_FILE,
+> +                    address_registers_offset
+> +                    + i * sizeof(AcpiGenericHardwareErrorSource),
+> +                    sizeof(uint32_t), GHES_ERRORS_FW_CFG_FILE,
+> +                    i * sizeof(uint64_t));
+> +
+> +        bios_linker_loader_write_pointer(linker, GHES_DATA_ADDR_FW_CFG_FILE,
+> +                                i * sizeof(uint64_t), sizeof(uint64_t),
+> +                                GHES_ERRORS_FW_CFG_FILE,
+> +                                MAX_ERROR_SOURCE_COUNT_V6 * sizeof(uint64_t) +
+> +                                i * MAX_RAW_DATA_LENGTH);
+> +         error_source++;
+> +    }
+> +
+> +     build_header(linker, table_data,
+> +        (void *)header, "HEST", hest->buf->len, 1, NULL, "GHES");
+> +
+> +    free_aml_allocator();
+> +}
+> +
+> +static GhesErrorState ges;
+> +void ghes_add_fw_cfg(FWCfgState *s, GArray *hardware_error)
+> +{
+> +
+> +    int block_reqr_size = sizeof(uint64_t) + MAX_RAW_DATA_LENGTH;
+> +    int size = MAX_ERROR_SOURCE_COUNT_V6 * block_reqr_size;
+> +
+> +    /* Create a read-only fw_cfg file for GHES */
+> +    fw_cfg_add_file(s, GHES_ERRORS_FW_CFG_FILE, hardware_error->data,
+> +                    size);
+> +    /* Create a read-write fw_cfg file for Address */
+> +    fw_cfg_add_file_callback(s, GHES_DATA_ADDR_FW_CFG_FILE, NULL, NULL,
+> +                            &(ges.ghes_addr_le[0]),
+> +                            sizeof(uint64_t) * MAX_ERROR_SOURCE_COUNT_V6,
+> +                            false);
+> +}
+> +
+> +void ghes_update_guest(uint32_t notify, uint64_t physical_address)
+> +{
+> +    uint64_t block_error_addr;
+> +
+> +    if (physical_address) {
+> +        ges.physical_addr = physical_address;
+> +        block_error_addr = ges.ghes_addr_le[notify];
+> +        block_error_addr = le32_to_cpu(block_error_addr);
+> +
+> +        /* A zero value in ghes_addr means that BIOS has not yet written
+> +         * the address
+> +         */
+> +        if (block_error_addr) {
+> +            ghes_generate_cper_record(block_error_addr, physical_address);
+> +        }
+> +    }
+> +}
+
+> diff --git a/include/hw/acpi/aml-build.h b/include/hw/acpi/aml-build.h
+> index 00c21f1..c1d15b3 100644
+> --- a/include/hw/acpi/aml-build.h
+> +++ b/include/hw/acpi/aml-build.h
+> @@ -211,6 +211,7 @@ struct AcpiBuildTables {
+>      GArray *rsdp;
+>      GArray *tcpalog;
+>      GArray *vmgenid;
+> +    GArray *hardware_errors;
+>      BIOSLinker *linker;
+>  } AcpiBuildTables;
+>
+_______________________________________________
+kvmarm mailing list
+kvmarm@lists.cs.columbia.edu
+https://lists.cs.columbia.edu/mailman/listinfo/kvmarm

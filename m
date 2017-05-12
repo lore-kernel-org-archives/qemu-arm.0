@@ -1,110 +1,107 @@
-Received: by 2002:adf:b2b8:0:0:0:0:0 with SMTP id g53-v6csp538950wrd;
-        Sat, 1 Sep 2018 05:48:01 -0700 (PDT)
-X-Google-Smtp-Source: ANB0VdZp5gXCfyL6l28uQSv/fbSZdfKWS1qvRMxpbzVmYZgAu8oEGdjBkivW8/IXE9vSnj1734pO
-X-Received: by 2002:ae9:c109:: with SMTP id z9-v6mr18845867qki.290.1535806081476;
-        Sat, 01 Sep 2018 05:48:01 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1535806081; cv=none;
+Received: by 10.25.0.6 with SMTP id 6csp48140lfa;
+        Thu, 11 May 2017 20:36:26 -0700 (PDT)
+X-Received: by 10.200.43.169 with SMTP id m38mr1677834qtm.281.1494560186092;
+        Thu, 11 May 2017 20:36:26 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1494560186; cv=none;
         d=google.com; s=arc-20160816;
-        b=d6NkXoiWEzQCAKB43veE1Wv95R759VKN0ranEoX5T9r/d5DGvnZBthLp+rvx64jGQM
-         FzczALqrKtQZFM6XfHKwZEuWBiRclwm5hyVCtpYWCCsvRJXK7R850eVa+MIZJQQAc7am
-         Ahunlrr3lO1yDKVRHSW07hdAoxHwYcpf3V7Jv9068hss9UciG68xnimvB9WYkmaN/Q1I
-         tMJUC7quCKDhMP6CYRHIiV5T09amySDboJfkwX2apsVhSddQ4L8iLT8fqTuCK2g7YyDT
-         hHEEjwVCK2UZZ5egT3oegPt5qrdK5BPotrZtStalfmw0WX6wqYAA5KqDUFvyUIu4ZItR
-         XByA==
+        b=nUatsf3TM7NCOKW3TLLlwawRZPQAvGlZGtsOrlJFYRQud/4QddnlNJIgBvUAYDfel1
+         bfGJzH48G+Tj5prJeFl6j0x7U00TnA1Cj75ZlMXCcCoRQ9KdMZSDCYSlfuLVu60QLXhb
+         AzGCR8nl7AgKUbCcm2AbgYxdgcqhmm575bz90OwX4l3rBsMFMXwZ6ZjOji9gZ1Yna/qx
+         Xno0nEl50D0pLA9dmWqI4auVDyMuNMBmqSihNGsK1WSfEbaJK5HXO6eD6gemzr8dfEnk
+         OOVGtepBGKeOyrUAv2MsaHroa/ODMaBTCWFJUVHCcR/Nf+SamTRm/XhaiTigzSPIgJ72
+         GsXw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:message-id:date:to:from
-         :dkim-signature:dkim-signature:dkim-signature
-         :arc-authentication-results;
-        bh=MqftgHEzUjC8EVhRTtGPlKLKGmzb2SGJSIkSVB9XsGQ=;
-        b=OmD6XF5g3r8GBqneoLt+CB1nf/W8aVHoVXJ+E+nRH8LVnFN0csUCQeserwSvWFEer3
-         EtWgRLpFTtfADdj5NSyfDj1Lz98KafhDNoyNKnncrLhzTQTYjz84wef6aA0LqsygjtPn
-         v43BKQCIvryBtjwvh6RFMzGP4wPglJ+zbrhHLwjQYdVJY0UWWt7in/NWBEG2k4l42AUg
-         KLA0yq9jHhgiQ+JbQ/i/7H357CqhIudZWUxezzGh+2hu1jS3hXo1kv+sc5Roiab6FWjV
-         YJ35pqD/6rRgPjvu3DjEtgnTJC3gKeDET4+Vo14awxR/Tp8Y+l70+7a/l9zNwWeubiwY
-         7hCw==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:to:from:dkim-signature:arc-authentication-results;
+        bh=nhTGRxVfoJ7Ah/YLU6COAHFDl7Y4Ci8qhe51bjgzQXc=;
+        b=MgrWM2jBR4fR5c2BCd6igPFVp+3jyI0OhYFwIeNd2EgoY/vXgvjpro5TihalDz4ApZ
+         Me2mxYGyn2/a448hvtrbmp6btopBYlEpbc+r6gun7wDwVXtXcx8NntgiNzMEE+C8PIkF
+         +ohGRvgdFCkpgeDBsARtjs834crvHsqN7L5l+8ly1/SlejLtVbsIOpsGYDnu1Sx9JLKH
+         j/Nb1P6IdIboxqsNA3fesgbNuB6szHN44+idAK6FTE6W6gTNhXGNztO4bmmohTrEz5CH
+         W3iWLKu8mifo/8owuZMs9qqATSpshHaM1lpnIsR3cdWcfX3yO/CggzOShJ9oYY/pPofz
+         rLuQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@greensocs.com header.s=mail header.b=oOjJScln;
-       dkim=fail header.i=@greensocs.com header.s=mail header.b="V/wfnJBO";
-       dkim=fail header.i=@greensocs.com header.s=mail header.b="V/wfnJBO";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=fail header.i=@gmail.com;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id a34-v6si3834403qtk.192.2018.09.01.05.48.01
+        by mx.google.com with ESMTPS id 15si2152971qtu.248.2017.05.11.20.36.25
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sat, 01 Sep 2018 05:48:01 -0700 (PDT)
+        Thu, 11 May 2017 20:36:26 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@greensocs.com header.s=mail header.b=oOjJScln;
-       dkim=fail header.i=@greensocs.com header.s=mail header.b="V/wfnJBO";
-       dkim=fail header.i=@greensocs.com header.s=mail header.b="V/wfnJBO";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:37021 helo=lists.gnu.org)
+       dkim=fail header.i=@gmail.com;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:51151 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fw5Jp-00066V-1G
-	for alex.bennee@linaro.org; Sat, 01 Sep 2018 08:48:01 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:35371)
+	id 1d91NR-0006c9-HG
+	for alex.bennee@linaro.org; Thu, 11 May 2017 23:36:25 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:47283)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <luc.michel@greensocs.com>) id 1fw5JB-0004g9-FB
-	for qemu-arm@nongnu.org; Sat, 01 Sep 2018 08:47:22 -0400
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1d91NK-0006Zs-Tt
+	for qemu-arm@nongnu.org; Thu, 11 May 2017 23:36:19 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <luc.michel@greensocs.com>) id 1fw5J6-0007jn-5Q
-	for qemu-arm@nongnu.org; Sat, 01 Sep 2018 08:47:21 -0400
-Received: from greensocs.com ([193.104.36.180]:40587)
-	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <luc.michel@greensocs.com>)
-	id 1fw5J5-0007hS-Lx; Sat, 01 Sep 2018 08:47:16 -0400
-Received: from localhost (localhost [127.0.0.1])
-	by greensocs.com (Postfix) with ESMTP id 16B4D521AB3;
-	Sat,  1 Sep 2018 14:47:05 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=greensocs.com;
-	s=mail; t=1535806025;
-	bh=SxJ+P3Shu8JvHfqWoN5GPgmL2ptTLaABfMjruhHEDbM=;
-	h=From:To:Cc:Subject:Date;
-	b=oOjJSclnl5ukpkL/7ndvsFw91xdvUkb5/u8CAfSD+yNMvZ0m1oPWxdZAS4JFVjotq
-	zKnMBEWqa6CtvmGSwIq4282+TdJAgXkx177Dsa0lXARA/HtYVgvXi0lbhqrzQ2rC/n
-	RRoqX575bJ8cnDkpoXixVRVigW56h22G4Jz8rYVE=
-X-Virus-Scanned: amavisd-new at greensocs.com
-Authentication-Results: gs-01.greensocs.com (amavisd-new);
-	dkim=pass (1024-bit key) header.d=greensocs.com header.b=V/wfnJBO;
-	dkim=pass (1024-bit key) header.d=greensocs.com header.b=V/wfnJBO
-Received: from greensocs.com ([127.0.0.1])
-	by localhost (gs-01.greensocs.com [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id sVGN7o-fCghE; Sat,  1 Sep 2018 14:47:04 +0200 (CEST)
-Received: by greensocs.com (Postfix, from userid 998)
-	id 506E1521AAD; Sat,  1 Sep 2018 14:47:04 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=greensocs.com;
-	s=mail; t=1535806024;
-	bh=SxJ+P3Shu8JvHfqWoN5GPgmL2ptTLaABfMjruhHEDbM=;
-	h=From:To:Cc:Subject:Date;
-	b=V/wfnJBOPGsWvj9qo7s+eA/0mCV//YLTVRN0yKPKCfcNVHxtN3NiatofrarSwEsBS
-	ucRaBZC8MZ7x9KHfJH0ts2aRc11GHP/QU18Z2KQeewbco2CtVCdfg3oK0l6XDAb1YA
-	kNxoXV4gYSpgyYHxjWymd481FM+g4AXB8XiT9IlM=
-Received: from michell-laptop.home.lmichel.fr
-	(LFbn-LYO-1-488-36.w2-7.abo.wanadoo.fr [2.7.77.36])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
-	(No client certificate requested)
-	(Authenticated sender: luc.michel@greensocs.com)
-	by greensocs.com (Postfix) with ESMTPSA id D2144521A9F;
-	Sat,  1 Sep 2018 14:47:03 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=greensocs.com;
-	s=mail; t=1535806024;
-	bh=SxJ+P3Shu8JvHfqWoN5GPgmL2ptTLaABfMjruhHEDbM=;
-	h=From:To:Cc:Subject:Date;
-	b=V/wfnJBOPGsWvj9qo7s+eA/0mCV//YLTVRN0yKPKCfcNVHxtN3NiatofrarSwEsBS
-	ucRaBZC8MZ7x9KHfJH0ts2aRc11GHP/QU18Z2KQeewbco2CtVCdfg3oK0l6XDAb1YA
-	kNxoXV4gYSpgyYHxjWymd481FM+g4AXB8XiT9IlM=
-From: Luc Michel <luc.michel@greensocs.com>
-To: qemu-devel@nongnu.org
-Date: Sat,  1 Sep 2018 14:46:24 +0200
-Message-Id: <20180901124639.19735-1-luc.michel@greensocs.com>
-X-Mailer: git-send-email 2.18.0
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 193.104.36.180
-Subject: [Qemu-arm] [PATCH 00/15] gdbstub: support for the multiprocess
- extension
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1d91NK-0003eh-4G
+	for qemu-arm@nongnu.org; Thu, 11 May 2017 23:36:18 -0400
+Received: from mail-qt0-x241.google.com ([2607:f8b0:400d:c0d::241]:35437)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1d91NE-0003cp-TK; Thu, 11 May 2017 23:36:12 -0400
+Received: by mail-qt0-x241.google.com with SMTP id r58so5366380qtb.2;
+	Thu, 11 May 2017 20:36:12 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
+	:mime-version:content-transfer-encoding;
+	bh=nhTGRxVfoJ7Ah/YLU6COAHFDl7Y4Ci8qhe51bjgzQXc=;
+	b=saq/o/O9iOxF4meuv42d7hLJHLuPQuyhgUdSNspUlyDYoXb80FUKFZ8sPpsEAcFvMS
+	Dnt1/ThvckOroxFmrkxHML+cuZ5Yyb2uy0DX3dg7VKUUOyT8+kqp3YGr6lcLHN8hZwRW
+	Wc9VvVCbRVad2PoSNia0sVY6WnewB8dJkvfeZE/QrcZf300IUitCSUv2nm2Fc6+XpIQg
+	dlwAKI7irrzAsNRMwKfEpCBKN5rcvZt+emjDOLMMUwqKNuX2sOXArw1YPrxrB6waIRIe
+	GeN1D/m/Tzp+ERL85K9uZ5PUN5WYLG1etZucqJdG2Kfv34VxcEeB/C7az1m8kEel4rhe
+	t1pQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
+	:in-reply-to:references:mime-version:content-transfer-encoding;
+	bh=nhTGRxVfoJ7Ah/YLU6COAHFDl7Y4Ci8qhe51bjgzQXc=;
+	b=h5SZbx+r++4hXUXCmVbcH9YUlamM/UiMYJqtld5riOf6GI8rS5Xfa0nNPirEexSvWX
+	n0gHtLWmJGShK84kfSePsxCmrdEYip4BxGZuaJ96smsX5yZ6/M8c7vUqCBI0ye7l4pDo
+	8As6uVmRdxfwjayqo6xNWe9Jv5MnF44JhjKu/oBW0scWA4tDyJtGEDsanqyvHkaaSmks
+	NqDk+livS1oJ7EZQGYaq7iIERNZ2ZnIADg2nYG6gh9/KoEfHI1eP5im9iVWCDVunOGox
+	tnOFZLpszKNek/5m+TkNq48hroPjUaE5Xw8Y/ZkS22r5xqvCmzb84R/s4fFfyguKivgV
+	prvw==
+X-Gm-Message-State: AODbwcB4phSmvdva3zl0F0356oIg/qE527MOCtQl7Z0BFwkzmHTAOfVH
+	XfYzcp5Ys1JyPg==
+X-Received: by 10.237.53.149 with SMTP id c21mr1831176qte.191.1494560172376;
+	Thu, 11 May 2017 20:36:12 -0700 (PDT)
+Received: from localhost.localdomain ([138.117.48.226])
+	by smtp.gmail.com with ESMTPSA id
+	m188sm1443267qkc.5.2017.05.11.20.36.10
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Thu, 11 May 2017 20:36:11 -0700 (PDT)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+To: qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
+	Aurelien Jarno <aurelien@aurel32.net>, Richard Henderson <rth@twiddle.net>,
+	qemu-arm@nongnu.org
+Date: Fri, 12 May 2017 00:35:40 -0300
+Message-Id: <20170512033543.6789-3-f4bug@amsat.org>
+X-Mailer: git-send-email 2.11.0
+In-Reply-To: <20170512033543.6789-1-f4bug@amsat.org>
+References: <20170512033543.6789-1-f4bug@amsat.org>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:400d:c0d::241
+Subject: [Qemu-arm] [PATCH v3 2/5] target/arm: optimize rev16() using
+ extract op
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -116,72 +113,42 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, alistair@alistair23.me,
-	mark.burton@greensocs.com, saipava@xilinx.com, edgari@xilinx.com,
-	qemu-arm@nongnu.org, Luc Michel <luc.michel@greensocs.com>
+Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: FbizoiStUFjq
+X-TUID: mKbncOSaYEhy
 
-This series adds support for the multiprocess extension of the GDB
-remote protocol in the QEMU GDB stub.
+Patch created mechanically using Coccinelle script via:
 
-This extension is useful to split QEMU emulated CPUs in different
-processes from the point of view of the GDB client. It adds the
-possibility to debug different kind of processors (e.g. an AArch64 and
-an ARMv7 CPU) at the same time (it is not possible otherwise since GDB
-expects an SMP view at the thread granularity.
+    $ spatch --macro-file scripts/cocci-macro-file.h --in-place \
+        --sp-file scripts/coccinelle/tcg_gen_extract.cocci --dir target
 
-CPUs are grouped using specially named QOM containers. CPUs that are
-children of such a container are grouped under the same GDB process.
+Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+---
+ target/arm/translate-a64.c | 6 ++----
+ 1 file changed, 2 insertions(+), 4 deletions(-)
 
-The last patch groups the CPUs of different model in the zynqmp machines
-into separate processes.
-
-To test this patchset, you can use the following commands:
-
-(Note that this requires a recent enough GDB, I think GDB 7.2 is OK.
-Also, it must be compiled to support both ARM and AArch64 architectures)
-
-Run QEMU: (-smp 6 in xlnx-zcu102 enables both cortex-a53 and cortex-r5
-CPUs)
-
-qemu-system-aarch64 -M xlnx-zcu102 -gdb tcp::1234 -S -smp 6
-
-Run the following commands in GDB:
-
-target extended :1234
-add-inferior
-inferior 2
-attach 2
-info threads
-
-I want to thanks the Xilinx's QEMU team who sponsored this work for
-their collaboration and their prototype implementation.
-
-Luc Michel (15):
-  gdbstub: introduce GDB processes
-  gdbstub: add multiprocess support to '?' packets
-  gdbstub: add multiprocess support to 'H' and 'T' packets
-  gdbstub: add multiprocess support to vCont packets
-  gdbstub: add multiprocess support to 'sC' packets
-  gdbstub: add multiprocess support to (f|s)ThreadInfo and
-    ThreadExtraInfo
-  gdbstub: add multiprocess support to Xfer:features:read:
-  gdbstub: add multiprocess support to gdb_vm_state_change()
-  gdbstub: add multiprocess support to 'D' packets
-  gdbstub: add support for extended mode packet
-  gdbstub: add support for vAttach packets
-  gdbstub: processes initialization on new peer connection
-  gdbstub: gdb_set_stop_cpu: ignore request when process is not attached
-  gdbstub: add multiprocess extension support
-  arm/xlnx-zynqmp: put APUs and RPUs in separate GDB groups
-
- include/exec/gdbstub.h |   8 +
- gdbstub.c              | 584 +++++++++++++++++++++++++++++++++++------
- hw/arm/xlnx-zynqmp.c   |   7 +-
- 3 files changed, 521 insertions(+), 78 deletions(-)
-
+diff --git a/target/arm/translate-a64.c b/target/arm/translate-a64.c
+index 24de30d92c..7ea130107e 100644
+--- a/target/arm/translate-a64.c
++++ b/target/arm/translate-a64.c
+@@ -4038,14 +4038,12 @@ static void handle_rev16(DisasContext *s, unsigned int sf,
+     tcg_gen_andi_i64(tcg_tmp, tcg_rn, 0xffff);
+     tcg_gen_bswap16_i64(tcg_rd, tcg_tmp);
+ 
+-    tcg_gen_shri_i64(tcg_tmp, tcg_rn, 16);
+-    tcg_gen_andi_i64(tcg_tmp, tcg_tmp, 0xffff);
++    tcg_gen_extract_i64(tcg_tmp, tcg_rn, 16, 0xffff);
+     tcg_gen_bswap16_i64(tcg_tmp, tcg_tmp);
+     tcg_gen_deposit_i64(tcg_rd, tcg_rd, tcg_tmp, 16, 16);
+ 
+     if (sf) {
+-        tcg_gen_shri_i64(tcg_tmp, tcg_rn, 32);
+-        tcg_gen_andi_i64(tcg_tmp, tcg_tmp, 0xffff);
++        tcg_gen_extract_i64(tcg_tmp, tcg_rn, 32, 0xffff);
+         tcg_gen_bswap16_i64(tcg_tmp, tcg_tmp);
+         tcg_gen_deposit_i64(tcg_rd, tcg_rd, tcg_tmp, 32, 16);
+ 
 -- 
-2.18.0
+2.11.0
 

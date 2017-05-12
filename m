@@ -1,72 +1,111 @@
-Received: by 2002:a5d:6782:0:0:0:0:0 with SMTP id v2-v6csp4030190wru;
-        Tue, 14 Aug 2018 05:43:42 -0700 (PDT)
-X-Google-Smtp-Source: AA+uWPzllHVSKYVAXcI85sHxpP1CaDgutvrQSUSulwrLH+7/410k8EkXSnof70vn830PdWqrkRn4
-X-Received: by 2002:ac8:5188:: with SMTP id c8-v6mr21637624qtn.35.1534250622640;
-        Tue, 14 Aug 2018 05:43:42 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1534250622; cv=none;
+Received: by 10.25.0.6 with SMTP id 6csp472232lfa;
+        Fri, 12 May 2017 16:51:10 -0700 (PDT)
+X-Received: by 10.237.60.77 with SMTP id u13mr6104295qte.18.1494633070671;
+        Fri, 12 May 2017 16:51:10 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1494633070; cv=none;
         d=google.com; s=arc-20160816;
-        b=p9vM+lSG69SHWnccYfykNIBDx1ijfoQ64h2eje8RdTri63gSLsxa/xs1lK+IzFU3+V
-         umRD7iQ7q2yS7MJbEmA0+g8k/wypVpstWbDzIFQbUOcCbUUGiJpWaMLUc5tn3v0rypXV
-         BxlkxcVo6Q/9LS5OCMNoNJRx7qawqx3MLxD6wPXu+rTZcSIhsLKDo6+gsApggBU8mWeq
-         NHV4IabYN8ksruWi752dHQVPzGQ4Kg5NhFbbEIm3Y0Bg1BfKJFGq9HQf5FXPKwDH9rsz
-         ccUlpZ2vCFjJn+QSWjM0Bzz1dlvd/VaHU8R+tJPO2EgXkVBpwSm4WHem6YWsA1n54QEH
-         //sA==
+        b=GBaQ/GaseBX9qibkPvs2GRW6Mb7a/E4vAln0EeR3KfeOXs4xPP/PVplUwfdsCljzI8
+         m07Bw9FOG5zn4Rf/DjWzOvzgurZqCLyMZih9RiD0vcix1/5F7dbha/2t660WsRbcAwog
+         DkMb6TZHqhT9pgrgr2wW7MzH2UO+uf720IdTFZEmknocy8Tkj+cHdVKlICf9pgrGx/iP
+         beU7MEstkEjWVdV9brzvlYDuqObGDqK6S14AerZoztQ0m99kARCNkkz4Vm3BCMNBY3rA
+         WD0g/ZhkPDMmfxNMhsld9ql9xkdauV/FL901ydsRPguQMvP3NDb2BXref12famSwE+1A
+         5TIw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
-         :message-id:date:to:from:arc-authentication-results;
-        bh=OEsBL3DieiJtZRMaFhV8SI3KRZGrsLCyyFDRJIPWfN0=;
-        b=OT6hpzRaMXYJqQQuzomekOIj2Vmlw/qtkpha2MjDevX7iyuYmOo973u7F7qdA0COQ/
-         G7TxmG3b+VvXeOR4XhnQfdrKlxuaGVMkdzSZfAMluAMjjnQG9oZBwGl/rgovYIkCXm9W
-         7sasvPYDFPYXrJHMf5v29Yp/gp9TBTu207o8VV9rSHhUjKU+EIsh+8CWJoh5vWNkRzaj
-         98AUmOEFa0tuUAh0wZ5C7UAna4Iz3RXNRXG7Kq1Rrfb3rpWqZc1RO3O/xqg5Wt6DnBzM
-         L3sciqXxekQ89szCvVWqP1F4m1CvFFEoxTp6FRsHefmgqoKjbaFiTP2mOMAKA+7gq0Vn
-         HeMg==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:dkim-signature
+         :arc-authentication-results;
+        bh=r3+ZYTg9dgodJHEWz2cXFGS6Vo47X08BKn3Onvl2r2E=;
+        b=LzMnmnMpTZu2a9wXw7lleyythlzwREEO8anyG5US3BG79WyV1NMPksxF1JCHnJ9S9N
+         VEx3pJKpZ2bCLy4DI4X17i4RVFVoYKp4wwIBz1Or8Yd6aptZCsJdCixYLfTz9LK2kHC+
+         ALfdeV/n5GnHZE8n64//0BV/9BNn5OoHLtFftio6QEJWfLau/ALagKObntpmy5IJed8R
+         A1CRcCbTahHlx4UagDIRsdHGMLRtlP/MpjDFSQMliUtTttO/P1N5dPUjNmqTdJSW7U22
+         r1nOpgzQ3m1kg56v/MQ8YjdaaX6z7GOSy+LParzyxy+2iUa9f5bPgnlYEg8952UMHiM6
+         285g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dkim=fail header.i=@gmail.com;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id u33-v6si42345qvh.150.2018.08.14.05.43.42
+        by mx.google.com with ESMTPS id s19si4645303qts.284.2017.05.12.16.51.10
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 14 Aug 2018 05:43:42 -0700 (PDT)
+        Fri, 12 May 2017 16:51:10 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:44159 helo=lists.gnu.org)
+       dkim=fail header.i=@gmail.com;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:55739 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fpYfm-0005p3-3k
-	for alex.bennee@linaro.org; Tue, 14 Aug 2018 08:43:42 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:43818)
+	id 1d9KKy-0001x2-1q
+	for alex.bennee@linaro.org; Fri, 12 May 2017 19:51:08 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:50105)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1fpYfI-0005WH-QF
-	for qemu-arm@nongnu.org; Tue, 14 Aug 2018 08:43:13 -0400
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1d9KKr-0001v5-EX
+	for qemu-arm@nongnu.org; Fri, 12 May 2017 19:51:02 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1fpYfH-0002K2-Ok
-	for qemu-arm@nongnu.org; Tue, 14 Aug 2018 08:43:12 -0400
-Received: from orth.archaic.org.uk ([2001:8b0:1d0::2]:44302)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <pm215@archaic.org.uk>)
-	id 1fpYfH-0001z2-Fm; Tue, 14 Aug 2018 08:43:11 -0400
-Received: from pm215 by orth.archaic.org.uk with local (Exim 4.89)
-	(envelope-from <pm215@archaic.org.uk>)
-	id 1fpYfF-0006rR-Fk; Tue, 14 Aug 2018 13:43:09 +0100
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Date: Tue, 14 Aug 2018 13:42:53 +0100
-Message-Id: <20180814124254.5229-10-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20180814124254.5229-1-peter.maydell@linaro.org>
-References: <20180814124254.5229-1-peter.maydell@linaro.org>
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1d9KKn-0004ib-GJ
+	for qemu-arm@nongnu.org; Fri, 12 May 2017 19:51:01 -0400
+Received: from mail-qt0-x232.google.com ([2607:f8b0:400d:c0d::232]:34046)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1d9KKn-0004hv-5w; Fri, 12 May 2017 19:50:57 -0400
+Received: by mail-qt0-x232.google.com with SMTP id l7so17810948qte.1;
+	Fri, 12 May 2017 16:50:57 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=sender:subject:to:references:from:message-id:date:user-agent
+	:mime-version:in-reply-to:content-transfer-encoding;
+	bh=r3+ZYTg9dgodJHEWz2cXFGS6Vo47X08BKn3Onvl2r2E=;
+	b=NdL59/nAhkhfj6XxOE2jmXlkz/eSa/Fa9z7pNOK/cQIRt2vXqR1ArjvBH9r4gFLYi/
+	uiqSqnPkWF2MHqRR0+wST35bdmOD1G6wjBJUqik4RKH6v1eiJyc/ti3vwxj6JtiQ6Jgs
+	QwNOI4ZxboU49LZAjuU0v0QRxx4jmXcz8cyF4Z33dpNYDnNZIOtigseqsD2E2+v06yjz
+	OAeCfkSP+Fts2EhLJ5rWuRPHTWUqmkuArYVL5izTHEG1unj+Xm1iRzJIs0EmLww1iGQS
+	QbLkOICJbtL/PR2EDnJ6uIyeo7sFwp0sNjdkh1xZuu1/fvz70SbpSHpfD2Ggna4CV/aD
+	58iw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:sender:subject:to:references:from:message-id
+	:date:user-agent:mime-version:in-reply-to:content-transfer-encoding;
+	bh=r3+ZYTg9dgodJHEWz2cXFGS6Vo47X08BKn3Onvl2r2E=;
+	b=ICwfxVziv+5hoFxU/Ss8L0jiog9GkLJT5UOBXp8HYNkQKOcZZQ6yFQasSind6GqSWp
+	rwdaae56r5HLUABe1z32i1pW3fzPZ/BKTJapTR3eWV1LasYBwlyswJtafT5hXsqnzNvv
+	OVU2SUWA43SgsEeQ3M8wXcV1qrOFHsrte8yy0uC85hby9BzduDNgoXMk4NzAiGfe+OS/
+	ePq6u1f1SE6pwE61rGjYuRfOsntehhw4LSa/+ly4BEkgHYLtuSGXbajetHy0cfBHTIy1
+	8fF/vjlFw7MB6yd0hRViCMv+NfwQFUyoVr17gjih+kdd0H7bKsAaxKDWH0MvOp8JgXWF
+	vt9g==
+X-Gm-Message-State: AODbwcAsnMg1SH4QvFlVbrOk/sZSMRu+a2pPHoBY4JSV3CcbgkVvOC12
+	KyCpfQSTzqikNg==
+X-Received: by 10.200.38.132 with SMTP id 4mr5953411qto.99.1494633056587;
+	Fri, 12 May 2017 16:50:56 -0700 (PDT)
+Received: from [192.168.1.10] ([138.117.48.226])
+	by smtp.gmail.com with ESMTPSA id
+	k86sm3518924qkh.12.2017.05.12.16.50.54
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Fri, 12 May 2017 16:50:56 -0700 (PDT)
+To: Richard Henderson <rth@twiddle.net>, qemu-devel@nongnu.org,
+	Peter Maydell <peter.maydell@linaro.org>,
+	Aurelien Jarno <aurelien@aurel32.net>, qemu-arm@nongnu.org
+References: <20170512033543.6789-1-f4bug@amsat.org>
+	<20170512033543.6789-3-f4bug@amsat.org>
+	<f447c23f-f63c-f3bb-a1b9-f63e5aff4063@twiddle.net>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Message-ID: <e897850a-a1af-e11e-158b-de428dc6726b@amsat.org>
+Date: Fri, 12 May 2017 20:50:53 -0300
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
+	Thunderbird/45.8.0
+MIME-Version: 1.0
+In-Reply-To: <f447c23f-f63c-f3bb-a1b9-f63e5aff4063@twiddle.net>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2001:8b0:1d0::2
-Subject: [Qemu-arm] [PATCH 09/10] target/arm: Implement AArch32 ERET
- instruction
+X-Received-From: 2607:f8b0:400d:c0d::232
+Subject: Re: [Qemu-arm] [PATCH v3 2/5] target/arm: optimize rev16() using
+ extract op
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -78,72 +117,22 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: edgari@xilinx.com, Luc Michel <luc.michel@greensocs.com>,
-	patches@linaro.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: yZsW8Slr6wUr
+X-TUID: DRMpdrkneSJp
 
-ARMv7VE introduced the ERET instruction, which is necessary to
-return from an exception taken to Hyp mode. Implement this.
-In A32 encoding it is a completely new encoding; in T32 it
-is an adjustment of the behaviour of the existing
-"SUBS PC, LR, #<imm8>" instruction.
+On 05/12/2017 01:50 PM, Richard Henderson wrote:
+> On 05/11/2017 08:35 PM, Philippe Mathieu-Daudé wrote:
+>> -    tcg_gen_shri_i64(tcg_tmp, tcg_rn, 16);
+>> -    tcg_gen_andi_i64(tcg_tmp, tcg_tmp, 0xffff);
+>> +    tcg_gen_extract_i64(tcg_tmp, tcg_rn, 16, 0xffff);
+>
+> So your new script didn't work then?  This should be "..., 16, 16);".
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
- target/arm/translate.c | 31 +++++++++++++++++++++++++++++--
- 1 file changed, 29 insertions(+), 2 deletions(-)
+Yeah this is wrong :(
 
-diff --git a/target/arm/translate.c b/target/arm/translate.c
-index 3f5751d4826..5ecc24f12fb 100644
---- a/target/arm/translate.c
-+++ b/target/arm/translate.c
-@@ -8887,6 +8887,25 @@ static void disas_arm_insn(DisasContext *s, unsigned int insn)
-             tcg_temp_free_i32(tmp2);
-             store_reg(s, rd, tmp);
-             break;
-+        case 0x6: /* ERET */
-+            if (op1 != 3) {
-+                goto illegal_op;
-+            }
-+            if (!arm_dc_feature(s, ARM_FEATURE_V7VE)) {
-+                goto illegal_op;
-+            }
-+            if ((insn & 0x000fff0f) != 0x0000000e) {
-+                /* UNPREDICTABLE; we choose to UNDEF */
-+                goto illegal_op;
-+            }
-+
-+            if (s->current_el == 2) {
-+                tmp = load_cpu_field(elr_el[2]);
-+            } else {
-+                tmp = load_reg(s, 14);
-+            }
-+            gen_exception_return(s, tmp);
-+            break;
-         case 7:
-         {
-             int imm16 = extract32(insn, 0, 4) | (extract32(insn, 8, 12) << 4);
-@@ -11144,8 +11163,16 @@ static void disas_thumb2_insn(DisasContext *s, uint32_t insn)
-                         if (rn != 14 || rd != 15) {
-                             goto illegal_op;
-                         }
--                        tmp = load_reg(s, rn);
--                        tcg_gen_subi_i32(tmp, tmp, insn & 0xff);
-+                        if (s->current_el == 2) {
-+                            /* ERET from Hyp uses ELR_Hyp, not LR */
-+                            if (insn & 0xff) {
-+                                goto illegal_op;
-+                            }
-+                            tmp = load_cpu_field(elr_el[2]);
-+                        } else {
-+                            tmp = load_reg(s, rn);
-+                            tcg_gen_subi_i32(tmp, tmp, insn & 0xff);
-+                        }
-                         gen_exception_return(s, tmp);
-                         break;
-                     case 6: /* MRS */
--- 
-2.18.0
+I hope I got it in the last patchset (v4).
 
+Thank for the review,
+
+Phil.

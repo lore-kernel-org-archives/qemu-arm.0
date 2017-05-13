@@ -1,128 +1,166 @@
-Received: by 10.25.0.6 with SMTP id 6csp824092lfa;
-        Sat, 13 May 2017 15:37:56 -0700 (PDT)
-X-Received: by 10.237.39.195 with SMTP id m3mr9768909qtg.164.1494715076796;
-        Sat, 13 May 2017 15:37:56 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1494715076; cv=none;
+Received: by 10.25.0.6 with SMTP id 6csp824360lfa;
+        Sat, 13 May 2017 15:39:16 -0700 (PDT)
+X-Received: by 10.200.45.204 with SMTP id q12mr10572457qta.235.1494715156223;
+        Sat, 13 May 2017 15:39:16 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1494715156; cv=none;
         d=google.com; s=arc-20160816;
-        b=SUlwqKttNWio9NXo4y8Ni8WkiVp1BMzSFPLHHmPOjc+BAkRN2rUURqnYnKKIQRimUF
-         SyVuU3ZDyurSVUKpeTcNDxECjQdOLdOlr8bZMeM71h+8PqnL8NJYs/D+m4hzrhpAWgCZ
-         kEz/6LaoYfYAklFYX7VXYOwz55BzeLITd+uNfZdZNGQizgL27wr1JrWImOkMXZQ9a2ME
-         AvuQ7U2AMq5+hK9FmXKmR+Kc+2I6a5flPFQUr493AKPgDiUGkLaOu/B/GWnJRfwtiO3A
-         +OcJUoy7KfoIdiycssZEoqFKJ2Rk+cyAnME0kQweKLvGUCZR/1sKnv6KvxzFu6RjHaPz
-         iZYg==
+        b=hM5/18kIl6wb10MT7v0yZI/1LnxWyeEW8rtxFHw4IpXAJnnNwHAkig7dHk7w+QBNNk
+         ZJ7xPm0U9SrXQwPAj7i6zHngyePQFId6qzlanPGDOqJrsj3fvV5hRZbVnfbCnDkU9BaZ
+         XySEHurFL/bpxyGQRlRUlKQPMosd2kbixblSkffn8d1zkZiwKVbTK1x/LtIcKzjtiLBx
+         Q6XFJGguLulZpewFtbUlQ1HLmlB0fQ7SFEVkg8VpvZP9oXtxcLT23baQr4zSRp9owVev
+         jKKkc+yFaTrMP9E7ouroK08bB2akfHhCSvQXXAbYoDb7I9MklyC8l7UGdCSwfAUYO3QH
+         QaLA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:in-reply-to:mime-version:user-agent:date
-         :message-id:from:cc:references:to:subject:sender:dkim-signature
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:dkim-signature
          :arc-authentication-results;
-        bh=/wwRknpPTl+M7yeyMSHWGJv5zR0AMVD4dJUoPBjjY0c=;
-        b=grwoLQNIilk2jJALdGGoE6YcOD2TFIib5vO7q9L+cqBCJpa9DcewhNaHJGmq1rovvQ
-         Ipfy0uecZoBj7DktVNE+8qhneHQrG2IaSpmz/dDq0BK55YdOstSdLGmKVIdfarzeXSqM
-         scdjBX4fwIDR0DgpjpvrHIYsTN10QxWTDon71jo4dX6vTfh0P2NGcSNN6lABh1pJzP8T
-         jReDeAlYDvTRdCEqdfZ9NWUQw/ARp+Ly88krp+9pNnN8D+ry97PC1BoXWl/mUAUACwBt
-         Nd5snhZCF6x2qK9P/LZkcTywMnK0OguTm2ie9tjzD5emsY3PXJ8g5St85MleeoJ5s8Wy
-         RkPg==
+        bh=y3BNiiWa3TzdyvWIM+RUxt4wpMT/JCpF2Co048osrkY=;
+        b=zghGrbYnTF6B9cDFVFQcyo2lBvMAfwh3s+pQ+RD/lEvHsczVBTe47OZgceGCOBPOXU
+         WsvSQ0yaymvBr+doZloni5b386RlYKE7to0zLheuobsAw1j3NGCmUfDAXM9PA3T/OLdD
+         ymwkSu5f9gGdooHB+tqjJxsHXP6qxpbu8Fz9vACQct6CxvsAXs7hpGS8+QfXoTOzO2vL
+         NFXx29YMhLXMBbJoKR/Tjzc7Xe/UzObaSkCI7znf4SDuXdSczWIFEX0f7q1+fXVW6lPf
+         LntwgxuxMe5S9LjBVLMO8Krjbjte+Hv3AXk/cHe3IDAC12c8ARHXryfwTUgC1MumrBaM
+         wxlw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 2607:f8b0:400d:c0d::243 as permitted sender) smtp.mailfrom=philippe.mathieu.daude@gmail.com
-Return-Path: <philippe.mathieu.daude@gmail.com>
-Received: from mail-qt0-x243.google.com (mail-qt0-x243.google.com. [2607:f8b0:400d:c0d::243])
-        by mx.google.com with ESMTPS id o84si6848402qkl.198.2017.05.13.15.37.56
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 13 May 2017 15:37:56 -0700 (PDT)
-Received-SPF: pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 2607:f8b0:400d:c0d::243 as permitted sender) client-ip=2607:f8b0:400d:c0d::243;
+       dkim=fail header.i=@gmail.com;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
+        by mx.google.com with ESMTPS id s1si7061068qks.2.2017.05.13.15.39.15
+        for <alex.bennee@linaro.org>
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Sat, 13 May 2017 15:39:16 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 2607:f8b0:400d:c0d::243 as permitted sender) smtp.mailfrom=philippe.mathieu.daude@gmail.com
-Received: by mail-qt0-x243.google.com with SMTP id r58so11161103qtb.2;
-        Sat, 13 May 2017 15:37:56 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=sender:subject:to:references:cc:from:message-id:date:user-agent
-         :mime-version:in-reply-to:content-transfer-encoding;
-        bh=/wwRknpPTl+M7yeyMSHWGJv5zR0AMVD4dJUoPBjjY0c=;
-        b=EE49v6mrrQwXtOyHRpLo9NsqNh7INtZWj4xDDWGQURgrecxLWe1eMxg+SNuVsut5oD
-         fdutXSTgUa38OCekR6X73ZdA63RQqf22m4prw5Z75ntiMwbLHHpBQmyr/fB4XAlq/u3Y
-         xW341/x0uxVY8veGbF1TK7KdVmI6g/shWeV0ENBPIgti8z3Bj4DSgZokgToT08Or+ddy
-         aySt+xuTi8wxxac0OgZujl86aJbaly/GILh+z1tjT6JsdakNU17yE5f0BIzGmF8GyXv1
-         hiSkKKtSD4wI97C8VU4PQ7aIbkSIX6j0Z7aYXvpfsvAjT4dk14iJHPnxAfZJdKAoULp5
-         icQA==
+       dkim=fail header.i=@gmail.com;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:59009 helo=lists.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1d9fgv-0003rc-LZ
+	for alex.bennee@linaro.org; Sat, 13 May 2017 18:39:13 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:37982)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1d9fgm-0003pz-ER
+	for qemu-arm@nongnu.org; Sat, 13 May 2017 18:39:05 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1d9fgl-0006Uw-NH
+	for qemu-arm@nongnu.org; Sat, 13 May 2017 18:39:04 -0400
+Received: from mail-qt0-x242.google.com ([2607:f8b0:400d:c0d::242]:35249)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1d9fgh-0006S0-PX; Sat, 13 May 2017 18:38:59 -0400
+Received: by mail-qt0-x242.google.com with SMTP id r58so11163010qtb.2;
+	Sat, 13 May 2017 15:38:59 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=sender:subject:to:references:cc:from:message-id:date:user-agent
+	:mime-version:in-reply-to:content-transfer-encoding;
+	bh=y3BNiiWa3TzdyvWIM+RUxt4wpMT/JCpF2Co048osrkY=;
+	b=m/kTRQB1wZnMc6kR9WjRpXnZJt8awpO6KndRjNpyeJRkDYAi5ozGEIAT2f4c8C+9FT
+	ih/nkAXOey4i4KKo5oKcVAqZiOGPxHr9S8AfoOfMPWu8h0TwlD9iaWQRVCKBMFmkxnIq
+	OH8T0M2JEYJ/o4uZzoZvQ/R0JwmaK/bDX9tkr33iSPHQAxQ40Afe8+U484GfGAZMj01I
+	G/cb6AVLV7yNmNyfgOmAzPUwtmeHumx9fgMdc8f1AJDzWze3+2WnkoIqi47rGyZnrYaD
+	KOrABf3LihcDpKQ+thXP0RgtTnE8GKjfa6pAdo4MvdqaK8FnlTLu21D1SCtV3SUZjE9M
+	2R2w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:sender:subject:to:references:cc:from:message-id
-         :date:user-agent:mime-version:in-reply-to:content-transfer-encoding;
-        bh=/wwRknpPTl+M7yeyMSHWGJv5zR0AMVD4dJUoPBjjY0c=;
-        b=qTVRfFaF1zQHpNLPW1TuRfIfnsc37ZfONS/sYP4P+lRvumFuoDJtZqChal2b6uXp6h
-         ydu/OucicNmMjSmoXHE6H8vTWNk5kVyyzA2eDiU4+VnUA+YXyKVC34io2dO/EriFu2eV
-         psFqPI++vYiLBxw3sLPuqhl3t4WI2RVxegx/3dM1pQqPprMffMH54K2QMnc0hmtsmbtY
-         QLLlTPpzerNc+M9pzefEvodfxenKt06b959P+PozPJGLuSnM1oihzbwY7zn7+rshAb4i
-         x3fxQaNSKLGnh9xENihweJ12BrWm4zogUuJMV+zBjLyzrmW05Xy3dqqk+vq6ccrUrbN9
-         tEQg==
-X-Gm-Message-State: AODbwcA5BZnXGzzGXdSwqULpPje02IsuCx2n7t7KUHUk1LVHsfaOmn3u
-	TNjsNAjwfLYE+cA9bnF+oQ==
-X-Received: by 10.200.51.70 with SMTP id u6mr9804827qta.122.1494715076281;
-        Sat, 13 May 2017 15:37:56 -0700 (PDT)
-Return-Path: <philippe.mathieu.daude@gmail.com>
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:sender:subject:to:references:cc:from:message-id
+	:date:user-agent:mime-version:in-reply-to:content-transfer-encoding;
+	bh=y3BNiiWa3TzdyvWIM+RUxt4wpMT/JCpF2Co048osrkY=;
+	b=oOo7xSBh2Le3/r4zfKzBtOQ5BxpuHLFVsQv/YGypPnLY+KMJ13uF/Rye1qyz3GVo0p
+	xXLGEvil9SHU6O9ZHwPptapzkqafD06QBxPrO+Q4k91qKogxX/h1a95rE+5etc2eGgdO
+	lh/t0r05GVgG+Dp4+DwI/cCYSSc1OoyfFjG2ixDDs7hnzqoZMTUrhu1A0NJu9xSLPf1x
+	SdZ27BcrK9P1ObJSi5xyAPTxSRp4NbJ7cahep3EXlRN0Gswyh9FB/GGb6Cvuyju/Dyq/
+	0F5E0BFz0qJKJs9CZE9/a4CkxcJvno8xdL7RxCxZCQ6AzCYmCgldLyVzf4UWTDEz/eo5
+	DsOA==
+X-Gm-Message-State: AODbwcCL2clPziY29AT6dISphXBOnGdKIXFUjLZn9T7KwFl0CXZFUORK
+	k7JwW0L3b41y2g==
+X-Received: by 10.237.60.77 with SMTP id u13mr9639742qte.18.1494715139304;
+	Sat, 13 May 2017 15:38:59 -0700 (PDT)
 Received: from [192.168.1.10] ([138.117.48.226])
-        by smtp.gmail.com with ESMTPSA id n17sm5261651qtb.6.2017.05.13.15.37.53
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 13 May 2017 15:37:55 -0700 (PDT)
-Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philippe.mathieu.daude@gmail.com>
-Subject: Re: [Qemu-devel] [PATCH 05/13] arm: Don't clear ARM_FEATURE_PMSA for
- no-mpu configs
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
+	by smtp.gmail.com with ESMTPSA id 31sm5238333qtw.5.2017.05.13.15.38.56
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Sat, 13 May 2017 15:38:58 -0700 (PDT)
+To: Alistair Francis <alistair.francis@xilinx.com>,
+	Peter Maydell <peter.maydell@linaro.org>
 References: <1493122030-32191-1-git-send-email-peter.maydell@linaro.org>
- <1493122030-32191-6-git-send-email-peter.maydell@linaro.org>
-Cc: Alistair Francis <alistair.francis@xilinx.com>,
- =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>, patches@linaro.org
+	<1493122030-32191-7-git-send-email-peter.maydell@linaro.org>
+	<CAKmqyKNfzT3P_=CuNhCfXG-_LnJnaZGri+sWqpLk3RAgr_OJqA@mail.gmail.com>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <82878b52-ee9d-e427-f1f3-d112c693cc49@amsat.org>
-Date: Sat, 13 May 2017 19:37:52 -0300
+Message-ID: <3d8c50d6-64fe-6c4b-35c2-3e923c2fe698@amsat.org>
+Date: Sat, 13 May 2017 19:38:55 -0300
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
- Thunderbird/45.8.0
+	Thunderbird/45.8.0
 MIME-Version: 1.0
-In-Reply-To: <1493122030-32191-6-git-send-email-peter.maydell@linaro.org>
-Content-Type: text/plain; charset=windows-1252; format=flowed
+In-Reply-To: <CAKmqyKNfzT3P_=CuNhCfXG-_LnJnaZGri+sWqpLk3RAgr_OJqA@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-TUID: 2CRrwbcDn626
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:400d:c0d::242
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH 06/13] arm: Don't let no-MPU
+ PMSA cores write to SCTLR.M
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.21
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: qemu-arm <qemu-arm@nongnu.org>,
+	"qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
+	Patch Tracking <patches@linaro.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 44VVlQoAgXPa
 
-On 04/25/2017 09:07 AM, Peter Maydell wrote:
-> Fix the handling of QOM properties for PMSA CPUs with no MPU:
+On 05/03/2017 06:30 PM, Alistair Francis wrote:
+> On Tue, Apr 25, 2017 at 5:07 AM, Peter Maydell <peter.maydell@linaro.org> wrote:
+>> If the CPU is a PMSA config with no MPU implemented, then the
+>> SCTLR.M bit should be RAZ/WI, so that the guest can never
+>> turn on the non-existent MPU.
+>>
+>> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 >
-> Allow no-MPU to be specified by either:
->  * has-mpu = false
->  * pmsav7_dregion = 0
-> and make setting one imply the other. Don't clear the PMSA
-> feature bit in this situation.
->
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> ---
->  target/arm/cpu.c | 8 +++++++-
->  1 file changed, 7 insertions(+), 1 deletion(-)
->
-> diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-> index f17e279..8e57498 100644
-> --- a/target/arm/cpu.c
-> +++ b/target/arm/cpu.c
-> @@ -757,8 +757,14 @@ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
->          cpu->id_pfr1 &= ~0xf000;
->      }
->
-> +    /* MPU can be configured out of a PMSA CPU either by setting has-mpu
-> +     * to false or by setting pmsav7-dregion to 0.
-> +     */
->      if (!cpu->has_mpu) {
-> -        unset_feature(ARM_FEATURE_PMSA);
+> Reviewed-by: Alistair Francis <alistair.francis@xilinx.com>
 
-Oh, fixed here.
+Reviewed-by: Philippe Mathieu-DaudÃ© <f4bug@amsat.org>
 
-> +        cpu->pmsav7_dregion = 0;
-> +    }
-> +    if (cpu->pmsav7_dregion == 0) {
-> +        cpu->has_mpu = false;
->      }
 >
->      if (arm_feature(env, ARM_FEATURE_PMSA) &&
+> Thanks,
 >
-
-Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+> Alistair
+>
+>> ---
+>>  target/arm/helper.c | 5 +++++
+>>  1 file changed, 5 insertions(+)
+>>
+>> diff --git a/target/arm/helper.c b/target/arm/helper.c
+>> index 404bfdb..f0f25c8 100644
+>> --- a/target/arm/helper.c
+>> +++ b/target/arm/helper.c
+>> @@ -3258,6 +3258,11 @@ static void sctlr_write(CPUARMState *env, const ARMCPRegInfo *ri,
+>>          return;
+>>      }
+>>
+>> +    if (arm_feature(env, ARM_FEATURE_PMSA) && !cpu->has_mpu) {
+>> +        /* M bit is RAZ/WI for PMSA with no MPU implemented */
+>> +        value &= ~SCTLR_M;
+>> +    }
+>> +
+>>      raw_write(env, ri, value);
+>>      /* ??? Lots of these bits are not implemented.  */
+>>      /* This may enable/disable the MMU, so do a TLB flush.  */
+>> --
+>> 2.7.4
+>>
+>>
+>

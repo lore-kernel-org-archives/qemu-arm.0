@@ -1,221 +1,233 @@
-Received: by 10.25.0.6 with SMTP id 6csp369511lfa;
-        Fri, 12 May 2017 11:22:50 -0700 (PDT)
-X-Received: by 10.200.57.103 with SMTP id t36mr4846100qtb.291.1494613370597;
-        Fri, 12 May 2017 11:22:50 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1494613370; cv=none;
+Received: by 10.25.0.6 with SMTP id 6csp753349lfa;
+        Sat, 13 May 2017 10:43:43 -0700 (PDT)
+X-Received: by 10.55.71.150 with SMTP id u144mr8530081qka.233.1494697423117;
+        Sat, 13 May 2017 10:43:43 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1494697423; cv=none;
         d=google.com; s=arc-20160816;
-        b=0V4AStS6x4MFv40zBLu7Fg1ZsaxZ8toOonrHreA11j8gkuc5hSPRt2HxsWUuicCkaw
-         DwDftN4l82jEGVPMY8DXQPPTdehXCogsuBbUxzteG9Ysiv9yI+IyqaGCZqW540m+agzB
-         +MXpLBoCjx9SO816v6KxlcgiOK5smbJ9ygnNBMGVPYi3uIlEVSeibYL6k76v82WgGXXH
-         +n3crqFQVGL3/2VvpZGOsCL+RLtoxjyuGkxXMqfI+oGlAExnjuq7kHtk35WT4pRKZA/Y
-         MMSOZbFwOdwEEpummQ+yNrfPDWQfIFFkNkJcDPe8QeCRq3mEgJweLGKngRdqVGq1hHnh
-         JFHA==
+        b=u9rHDGfME1qLBRO2y3ZCPNJr6sqq0CyqXDf/fb1SFCkkbMdbsKJL+tX5vYGYDJIEIc
+         dent+yPaAW5saA+KJ4YcVH7XYEQI1ko+VGct89F6IX/pQzZhkA36gqERbXuTeY71GQ8r
+         FtO4Zjqk9jwK2koo23UWqzItK1vmD1g2tCywe8ktirlIPCigWSioTDt1MpG7Q4tmikR9
+         mTpRlC6mwsDhLYZ+MGwWm7vD4ma/T5sZfIBuoRPLhhrJm+v4eCwICfbEaOyZiAz2FgpT
+         k2k0CJArm3e1P/0zkUVtvJCrxA9kN+HAOlkcuDUPRxK2/Rw+R/Gn2w9Pqna0C7aKx0+A
+         nzfg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
-         :content-transfer-encoding:content-disposition:mime-version
-         :references:message-id:to:from:date:arc-authentication-results;
-        bh=ApEMMPUg/P8LoG1B6wlOaU6W3OCqESe3JWyFGbtnFCg=;
-        b=l4eSRzjG/Ar4M1C+lIAwhsQUfigYF0Fo0ioYxAL6uN+BfytYL8rpWymqfDycEkdp10
-         MHTcpoFzD4pWZb4dUR7ZAGUA1E/4Fpby2KsfBGNCwUOoiOYHR95PsHnUZQTTMQG5ZTZ5
-         3A155Vxi8kXDAzC+mW6dgnaGlLk/n1yVeKEYkoRuItdmdfVJUP6O9oowmdMII8xEvIyS
-         cNLu2MZ61hTjF2FtcD7vs1nyQwJfjjflcP0r5mzNaWwyEJ4mOCyGWUp2OAZO+6r/FfUn
-         cKRQk/gsv/62Qh87+aWsRhfzSa67QBL2ryQorbB5YoBYPCWtdS2AlH/M0nlg8MM++KwH
-         dFQw==
+         :list-unsubscribe:list-id:precedence:subject:message-id:date:to:from
+         :dkim-filter:dmarc-filter:arc-authentication-results;
+        bh=VSR3qjq0lySlou36pf6ibsW6t4KI2hPYxR0TkCICtHQ=;
+        b=g90rENFDYCg19bH5qUhWvYbGDwR+vVk6b/dNTnPy0OszEN8VWXCrUagi0yUr4FGR6r
+         fnGU/c4C4R6iAxIUq6/n0JW2SolHUdVYOjVpjzUOteU9p7a+0nqKhHteTSZwq9V1GkKA
+         074FSGoF9uwICjFc7p/9wLA+opafg3JLJHI9ZZEP10RLaFrwCkTJ6HiodohFf3YUATBw
+         mNFMsnuPWaXAZKlNlhujUW2UM7FCRWu/HYNNw4QQHq7zl1UcJ/hpdgSOgLDt2cs4tfwM
+         k/09JpSHvx12NRlLmtdxRAi2CrZeZMsa9ocvsrvydenxzRWtkWSBJnW1lZUSfaIBLL+X
+         VhQA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id s18si4038393qta.121.2017.05.12.11.22.49
+        by mx.google.com with ESMTPS id 52si6615241qtt.290.2017.05.13.10.43.42
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 12 May 2017 11:22:50 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Sat, 13 May 2017 10:43:43 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:54853 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:58409 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1d9FDD-00050L-Uc
-	for alex.bennee@linaro.org; Fri, 12 May 2017 14:22:47 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:51452)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1d9b4t-00089M-BB
+	for alex.bennee@linaro.org; Sat, 13 May 2017 13:43:39 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:57489)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <aurelien@aurel32.net>) id 1d9FCJ-0004gd-Di
-	for qemu-devel@nongnu.org; Fri, 12 May 2017 14:21:52 -0400
+	(envelope-from <eric.auger@redhat.com>) id 1d9b4p-00089E-Q8
+	for qemu-arm@nongnu.org; Sat, 13 May 2017 13:43:37 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <aurelien@aurel32.net>) id 1d9FCI-0007l2-0L
-	for qemu-devel@nongnu.org; Fri, 12 May 2017 14:21:51 -0400
-Received: from hall.aurel32.net ([2001:bc8:30d7:100::1]:38856)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <aurelien@aurel32.net>)
-	id 1d9FCH-0007gY-Qc; Fri, 12 May 2017 14:21:49 -0400
-Received: from [2001:bc8:30d7:120:9bb5:8936:7e6a:9e36] (helo=ohm.rr44.fr)
-	by hall.aurel32.net with esmtpsa
-	(TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256) (Exim 4.89)
-	(envelope-from <aurelien@aurel32.net>)
-	id 1d9FC3-0003of-UJ; Fri, 12 May 2017 20:21:36 +0200
-Received: from aurel32 by ohm.rr44.fr with local (Exim 4.89)
-	(envelope-from <aurelien@aurel32.net>)
-	id 1d9FC0-00075N-Dj; Fri, 12 May 2017 20:21:32 +0200
-Date: Fri, 12 May 2017 20:21:32 +0200
-From: Aurelien Jarno <aurelien@aurel32.net>
-To: Richard Henderson <rth@twiddle.net>
-Message-ID: <20170512182132.jdw4g2pd5gvf2dti@aurel32.net>
-References: <20170512033543.6789-1-f4bug@amsat.org>
-	<20170512033543.6789-3-f4bug@amsat.org>
-	<f447c23f-f63c-f3bb-a1b9-f63e5aff4063@twiddle.net>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-15
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-In-Reply-To: <f447c23f-f63c-f3bb-a1b9-f63e5aff4063@twiddle.net>
-User-Agent: NeoMutt/20170113 (1.7.2)
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2001:bc8:30d7:100::1
-Subject: Re: [Qemu-devel] [PATCH v3 2/5] target/arm: optimize rev16() using
- extract op
-X-BeenThere: qemu-devel@nongnu.org
+	(envelope-from <eric.auger@redhat.com>) id 1d9b4m-0003lP-Kk
+	for qemu-arm@nongnu.org; Sat, 13 May 2017 13:43:35 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:45768)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <eric.auger@redhat.com>)
+	id 1d9b4m-0003kl-BX; Sat, 13 May 2017 13:43:32 -0400
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+	[10.5.11.13])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 3C61A37EEB;
+	Sat, 13 May 2017 17:43:30 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 3C61A37EEB
+Authentication-Results: ext-mx05.extmail.prod.ext.phx2.redhat.com;
+	dmarc=none (p=none dis=none) header.from=redhat.com
+Authentication-Results: ext-mx05.extmail.prod.ext.phx2.redhat.com;
+	spf=pass smtp.mailfrom=eric.auger@redhat.com
+DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com 3C61A37EEB
+Received: from localhost.localdomain.com (ovpn-116-214.ams2.redhat.com
+	[10.36.116.214])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 49E12D0210;
+	Sat, 13 May 2017 17:43:25 +0000 (UTC)
+From: Eric Auger <eric.auger@redhat.com>
+To: eric.auger.pro@gmail.com, eric.auger@redhat.com, peter.maydell@linaro.org,
+	edgar.iglesias@gmail.com, qemu-arm@nongnu.org, qemu-devel@nongnu.org,
+	prem.mallappa@gmail.com
+Date: Sat, 13 May 2017 19:43:14 +0200
+Message-Id: <1494697399-352-1-git-send-email-eric.auger@redhat.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.29]);
+	Sat, 13 May 2017 17:43:30 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.132.183.28
+Subject: [Qemu-arm] [RFC v4 0/5] ARM SMMUv3 Emulation Support
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
-	Philippe =?iso-8859-15?Q?Mathieu-Daud=E9?= <f4bug@amsat.org>,
-	qemu-devel@nongnu.org
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: KMgjBDMS3rWA
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: mohun106@gmail.com, drjones@redhat.com, tcain@qti.qualcomm.com,
+	Radha.Chintakuntla@cavium.com, Sunil.Goutham@cavium.com,
+	christoffer.dall@linaro.org
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: tArnp2Whs0p9
 
-On 2017-05-12 09:50, Richard Henderson wrote:
-> On 05/11/2017 08:35 PM, Philippe Mathieu-Daud=E9 wrote:
-> > -    tcg_gen_shri_i64(tcg_tmp, tcg_rn, 16);
-> > -    tcg_gen_andi_i64(tcg_tmp, tcg_tmp, 0xffff);
-> > +    tcg_gen_extract_i64(tcg_tmp, tcg_rn, 16, 0xffff);
->=20
-> So your new script didn't work then?  This should be "..., 16, 16);".
+This series introduces the emulation code for ARM SMMUv3.
+This is the continuation of Prem's work [1].
 
-Indeed that should be ..., 16, 16). That said looking a bit at the=20
-actual code, it looks like rev16 is not implemented efficiently. Instead
-of byteswapping individual 16-bit words one by one, it would be better
-to work on the whole register at the same time using shifts and mask.
-This is actually how rev16 is implemented for aarch32 (and a few other
-targets). Something like that (i can send a proper patch later):
+This v4 is yet another visibility step as many restrictions apply
+to the model at the moment:
+- only VMSAv8-64 is supported (no VMSAv8-32)
+- only stage 1 has been tested (Block PTE still needs to be
+  implemented and tested though)
+- no integration with VFIO. We are missing some quirks to force
+  the guest to invalidate TLBs when updating the page tables.
+  But replay will be easily implemented upon new page table scan.
+- stage 2 is not supported. There is partial support when decoding
+  configuration information but no support at page table walk level.
+  This is my next step.
+- at the moment I don't plan to support nested S1 + S2 as I
+  understand no SW stack uses it at the moment.
+- no support for HYP mappings
+- register fine emulation, commands, interrupts and errors were
+  not accurately tested. Handling is sufficient to run a guest
+  with a virtio-net-pci device using dma ops.
+- At the moment no change to the PCIe instantiation (further
+  discussions about SMMUv2 TBUs versus SMMUv3 TLBs needed).
 
-diff --git a/target/arm/translate-a64.c b/target/arm/translate-a64.c
-index 24de30d92c..ccb276417b 100644
---- a/target/arm/translate-a64.c
-+++ b/target/arm/translate-a64.c
-@@ -4034,25 +4034,14 @@ static void handle_rev16(DisasContext *s, unsigned =
-int sf,
-     TCGv_i64 tcg_rd =3D cpu_reg(s, rd);
-     TCGv_i64 tcg_tmp =3D tcg_temp_new_i64();
-     TCGv_i64 tcg_rn =3D read_cpu_reg(s, rn, sf);
--
--    tcg_gen_andi_i64(tcg_tmp, tcg_rn, 0xffff);
--    tcg_gen_bswap16_i64(tcg_rd, tcg_tmp);
--
--    tcg_gen_shri_i64(tcg_tmp, tcg_rn, 16);
--    tcg_gen_andi_i64(tcg_tmp, tcg_tmp, 0xffff);
--    tcg_gen_bswap16_i64(tcg_tmp, tcg_tmp);
--    tcg_gen_deposit_i64(tcg_rd, tcg_rd, tcg_tmp, 16, 16);
--
--    if (sf) {
--        tcg_gen_shri_i64(tcg_tmp, tcg_rn, 32);
--        tcg_gen_andi_i64(tcg_tmp, tcg_tmp, 0xffff);
--        tcg_gen_bswap16_i64(tcg_tmp, tcg_tmp);
--        tcg_gen_deposit_i64(tcg_rd, tcg_rd, tcg_tmp, 32, 16);
--
--        tcg_gen_shri_i64(tcg_tmp, tcg_rn, 48);
--        tcg_gen_bswap16_i64(tcg_tmp, tcg_tmp);
--        tcg_gen_deposit_i64(tcg_rd, tcg_rd, tcg_tmp, 48, 16);
--    }
-+    uint64_t mask1 =3D sf ? 0x00ff00ff00ff00ffull : 0x00ff00ff;
-+    uint64_t mask2 =3D sf ? 0xff00ff00ff00ff00ull : 0xff00ff00;
-+
-+    tcg_gen_shri_i64(tcg_tmp, tcg_rn, 8);
-+    tcg_gen_andi_i64(tcg_tmp, tcg_tmp, mask1);
-+    tcg_gen_shli_i64(tcg_rd, tcg_rn, 8);
-+    tcg_gen_andi_i64(tcg_rd, tcg_rd, mask2);
-+    tcg_gen_or_i64(tcg_rd, tcg_rd, tcg_tmp);
-=20
-     tcg_temp_free_i64(tcg_tmp);
- }
+- In ACPI mode, the guest must feature the IOMMU probe deferral
+  series wich fixes streamid multiple lookup
 
-This makes the generated x86-64 code much shorter, especially with sf=3D1:
+The smmu is instantiated when passing the smmu option to machvirt:
+"-M virt-2.10,smmu"
 
+Best Regards
 
-* rev16 with sf =3D 0
+Eric
 
-before:
-    0x5631ecfda582:  movzwl %bx,%r12d
-    0x5631ecfda586:  rol    $0x8,%r12w
-    0x5631ecfda58b:  shr    $0x10,%rbx
-    0x5631ecfda58f:  rol    $0x8,%bx
-    0x5631ecfda593:  movzwl %bx,%ebx
-    0x5631ecfda596:  shl    $0x10,%rbx
-    0x5631ecfda59a:  mov    $0xffffffff0000ffff,%r13
-    0x5631ecfda5a4:  and    %r13,%r12
-    0x5631ecfda5a7:  or     %rbx,%r12
-   =20
-after:
-    0x559f7aeae5f2:  mov    %rbx,%r12
-    0x559f7aeae5f5:  shr    $0x8,%r12
-    0x559f7aeae5f9:  and    $0xff00ff,%r12d
-    0x559f7aeae600:  shl    $0x8,%rbx
-    0x559f7aeae604:  and    $0xff00ff00,%ebx
-    0x559f7aeae60a:  or     %r12,%rbx
-   =20
-   =20
-* rev16 with sf =3D 1
-   =20
-before:
-    0x5631ecfe5380:  mov    %rbx,%r12
-    0x5631ecfe5383:  movzwl %bx,%ebx
-    0x5631ecfe5386:  rol    $0x8,%bx
-    0x5631ecfe538a:  mov    %r12,%r13
-    0x5631ecfe538d:  shr    $0x10,%r13
-    0x5631ecfe5391:  movzwl %r13w,%r13d
-    0x5631ecfe5395:  rol    $0x8,%r13w
-    0x5631ecfe539a:  movzwl %r13w,%r13d
-    0x5631ecfe539e:  shl    $0x10,%r13
-    0x5631ecfe53a2:  mov    $0xffffffff0000ffff,%r15
-    0x5631ecfe53ac:  and    %r15,%rbx
-    0x5631ecfe53af:  or     %r13,%rbx
-    0x5631ecfe53b2:  mov    %r12,%r13
-    0x5631ecfe53b5:  shr    $0x20,%r13
-    0x5631ecfe53b9:  movzwl %r13w,%r13d
-    0x5631ecfe53bd:  rol    $0x8,%r13w
-    0x5631ecfe53c2:  movzwl %r13w,%r13d
-    0x5631ecfe53c6:  shl    $0x20,%r13
-    0x5631ecfe53ca:  mov    $0xffff0000ffffffff,%r15
-    0x5631ecfe53d4:  and    %r15,%rbx
-    0x5631ecfe53d7:  or     %r13,%rbx
-    0x5631ecfe53da:  shr    $0x30,%r12
-    0x5631ecfe53de:  rol    $0x8,%r12w
-    0x5631ecfe53e3:  shl    $0x30,%r12
-    0x5631ecfe53e7:  mov    $0xffffffffffff,%r13
-    0x5631ecfe53f1:  and    %r13,%rbx
-    0x5631ecfe53f4:  or     %r12,%rbx
-   =20
-after:
-    0x559f7aeb93e0:  mov    %rbx,%r12
-    0x559f7aeb93e3:  shr    $0x8,%r12
-    0x559f7aeb93e7:  mov    $0xff00ff00ff00ff,%r13
-    0x559f7aeb93f1:  and    %r13,%r12
-    0x559f7aeb93f4:  shl    $0x8,%rbx
-    0x559f7aeb93f8:  mov    $0xff00ff00ff00ff00,%r13
-    0x559f7aeb9402:  and    %r13,%rbx
-    0x559f7aeb9405:  or     %r12,%rbx
+This series can be found at:
+v4: https://github.com/eauger/qemu/tree/v2.9-SMMU-v4
 
-Aurelien
+Testing:
+- booted a 4.11 guest in dt and acpi mode with an iommu_platform
+  virtio-net-pci device (using dma ops). Tested with the following
+  guest combinations: 4K page - 39 bit VA, 4K - 48b, 64K - 39b,
+  64K - 48b.
+- Also Prem's unit test environment was rebased (available upon
+  demand)
 
---=20
-Aurelien Jarno                          GPG: 4096R/1DDD8C9B
-aurelien@aurel32.net                 http://www.aurel32.net
+References:
+[1] Prem's last iteration:
+- https://lists.gnu.org/archive/html/qemu-devel/2016-08/msg03531.html
+
+History:
+v3 -> v4 [Eric]:
+- page table walk rewritten to allow scan of the page table within a
+  range of IOVA. This prepares for VFIO integration and replay.
+- configuration parsing partially reworked.
+- do not advertise unsupported/untested features: S2, S1 + S2, HYP,
+  PRI, ATS, ..
+- added ACPI table generation
+- migrated to dynamic traces
+- mingw compilation fix
+
+v2 -> v3 [Eric]:
+- rebased on 2.9
+- mostly code and patch reorganization to ease the review process
+- optional patches removed. They may be handled separately. I am currently
+  working on ACPI enablement.
+- optional instantiation of the smmu in mach-virt
+- removed [2/9] (fdt functions) since not mandated
+- start splitting main patch into base and derived object
+- no new function feature added
+
+v1 -> v2 [Prem]:
+- Adopted review comments from Eric Auger
+        - Make SMMU_DPRINTF to internally call qemu_log
+            (since translation requests are too many, we need control
+             on the type of log we want)
+        - SMMUTransCfg modified to suite simplicity
+        - Change RegInfo to uint64 register array
+        - Code cleanup
+        - Test cleanups
+- Reshuffled patches
+
+v0 -> v1 [Prem]:
+- As per SMMUv3 spec 16.0 (only is_ste_consistant() is noticeable)
+- Reworked register access/update logic
+- Factored out translation code for
+        - single point bug fix
+        - sharing/removal in future
+- (optional) Unit tests added, with PCI test device
+        - S1 with 4k/64k, S1+S2 with 4k/64k
+        - (S1 or S2) only can be verified by Linux 4.7 driver
+        - (optional) Priliminary ACPI support
+
+v0 [Prem]:
+- Implements SMMUv3 spec 11.0
+- Supported for PCIe devices,
+- Command Queue and Event Queue supported
+- LPAE only, S1 is supported and Tested, S2 not tested
+- BE mode Translation not supported
+- IRQ support (legacy, no MSI)
+- Tested with DPDK and e1000
+
+Eric Auger (2):
+  hw/arm/smmu-common: smmu base class
+  hw/arm/virt: Add 2.10 machine type
+
+Prem Mallappa (3):
+  hw/arm/smmuv3: smmuv3 emulation model
+  hw/arm/virt: Add SMMUv3 to the virt board
+  hw/arm/virt-acpi-build: add smmuv3 node in IORT table
+
+ default-configs/aarch64-softmmu.mak |    1 +
+ hw/arm/Makefile.objs                |    1 +
+ hw/arm/smmu-common.c                |  419 +++++++++++++
+ hw/arm/smmu-internal.h              |   97 +++
+ hw/arm/smmuv3-internal.h            |  603 +++++++++++++++++++
+ hw/arm/smmuv3.c                     | 1134 +++++++++++++++++++++++++++++++++++
+ hw/arm/trace-events                 |   44 ++
+ hw/arm/virt-acpi-build.c            |   56 +-
+ hw/arm/virt.c                       |  109 +++-
+ include/hw/acpi/acpi-defs.h         |   15 +
+ include/hw/arm/smmu-common.h        |  125 ++++
+ include/hw/arm/smmuv3.h             |   87 +++
+ include/hw/arm/virt.h               |    5 +
+ 13 files changed, 2687 insertions(+), 9 deletions(-)
+ create mode 100644 hw/arm/smmu-common.c
+ create mode 100644 hw/arm/smmu-internal.h
+ create mode 100644 hw/arm/smmuv3-internal.h
+ create mode 100644 hw/arm/smmuv3.c
+ create mode 100644 include/hw/arm/smmu-common.h
+ create mode 100644 include/hw/arm/smmuv3.h
+
+-- 
+2.5.5
+

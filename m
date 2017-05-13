@@ -1,142 +1,106 @@
-Received: by 10.25.0.6 with SMTP id 6csp827204lfa;
-        Sat, 13 May 2017 15:53:12 -0700 (PDT)
-X-Received: by 10.55.59.139 with SMTP id i133mr9272141qka.248.1494715992681;
-        Sat, 13 May 2017 15:53:12 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1494715992; cv=none;
+Received: by 10.25.0.6 with SMTP id 6csp827482lfa;
+        Sat, 13 May 2017 15:54:31 -0700 (PDT)
+X-Received: by 10.237.58.227 with SMTP id o90mr3398703qte.134.1494716071283;
+        Sat, 13 May 2017 15:54:31 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1494716071; cv=none;
         d=google.com; s=arc-20160816;
-        b=kMBBFoAJWpSf53FlfSZya7CeqP51xcZ1tP8C0mRx9PXH7FtdY5x3JJ6S/u0WlHbhAB
-         aw4qdJuBgBrAG1gy5KiUHLJRvJGm9Jw0i/GnCcl4GFz/N3bfUkVN1iJnJw1bn3+uegAb
-         zhe+nkeyoVbbjd8Wh7/5GBfPcwVv59/sh2/aF2fgzSUZ/fo5/vqPe5KjSswMYOBEqqD4
-         BX49XBNR9LYV46HCXWMj/FKDSM6wtInQI3xSiKWRXNecrQ8qpLSuqIwtPEJUaXCeD+3Y
-         Iyoq9EcQWKPGbccRbQXQwGZ2xHeS7rwXvZm09zSSBvg7fDyit4G1zt9H8ZTX9FLv2Nk4
-         RSvw==
+        b=P/ohmiFiKA41CalYiafFmeq1rBIfMP2ypqnPWurJ03TM1DHU0mLeLPcrTSa7XeX0MU
+         3khZBH6BUvAjehPBVDKNeb2T6FvDRs8AZToe6BjFsnoSl+GkYb5xbNA95d0gsiH9gJ/W
+         3DR4AmPQY/haRQbI+LnNZnqdrQdHGzkVXcc4Hm1gNnn4rCW+7rCmqI7yJLLX/OVKr8Qi
+         vZaq7MzO/aMC48w0Q5GjsGGDqXwWu4lKweZS39buOcS2ootyJ7fWLtXkFVirUp6d6sEE
+         O0cYfJ9C6xhiIWnoAdfBEHng8plUhc8MKCMkqIYeMXuDdj4szVzbxIoUWqxl4XERpE0i
+         0YtQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:dkim-signature
+        h=content-transfer-encoding:in-reply-to:mime-version:user-agent:date
+         :message-id:from:cc:references:to:subject:sender:dkim-signature
          :arc-authentication-results;
-        bh=j3Co+HmKOO7S9Xft1ZaftgVxQNiwxig14A86CS65Qlk=;
-        b=KoJZhZ6Cwqi6gSUNz67fEAVxo5zfkv5+7b1nGybBI35bfFf4Lr7wj4lNcK+MDQzM84
-         Ett1BzlY6/eUNdHaAyQ0dbhEW8P8+6eAQjQUpGPU/yYZrI/xbakDcnaLsNeSYU+i3vab
-         oIFxNRC38zemwUnIaff/OWLEMbNo77vWfSNvrCW7pcOZ67t7DGRYlUK9vv6oWkbxF/gl
-         rZ8RcpoSZL8bRCCzuB6eo4N+5huqBD3agWG1MtY6Zrg+z5jhM8ADhAJl7G/3htO0p9Ce
-         4IA2TgdCjPvdmpnYnFHI69JzXUSGVKqmXV9/6cTVoRdjZP9vVvc6UHA3wG3E/kYfX0jH
-         ErRg==
+        bh=sYf2UKEh42Yh/YksFAWTAZfy5pXOexdhsHJIAbZFhQQ=;
+        b=rdAoMQHSjtSNA2bMg8c2LH0S+9IU+EwMTW8JheN4YuRsKQGkVrIxkrAlCGl3r2lMv5
+         LrBsx6AKwx0MgjaO6iDSMpetE9p9cevPm/tXrFK5k8EXj6uS60hNnP37AvQpmOdtzJJr
+         3Lnoe+ZyKPuec7ThSUqL/UmQ7Oz3OqepQ4SoCtrD2rjAGq/CPQy1XGaHfZfiLHPn6wtl
+         Cxuv+1zvMGoAVUkZl8NiAyb4S7nv4Ye/X7S3qP/Jarb8k/bdVN3W7dhxLKDskENjKxhP
+         HzMKgQyzuNjlm++oTy/ho7ZTcovAT4WddjjxU2CeZNbaW2sFEHBdwzYpBnBlFQnoN7Lt
+         Hk1A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id s17si7127423qta.320.2017.05.13.15.53.12
-        for <alex.bennee@linaro.org>
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sat, 13 May 2017 15:53:12 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+       dkim=pass header.i=@gmail.com;
+       spf=pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 2607:f8b0:400d:c0d::242 as permitted sender) smtp.mailfrom=philippe.mathieu.daude@gmail.com
+Return-Path: <philippe.mathieu.daude@gmail.com>
+Received: from mail-qt0-x242.google.com (mail-qt0-x242.google.com. [2607:f8b0:400d:c0d::242])
+        by mx.google.com with ESMTPS id p123si7161743qkf.234.2017.05.13.15.54.31
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Sat, 13 May 2017 15:54:31 -0700 (PDT)
+Received-SPF: pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 2607:f8b0:400d:c0d::242 as permitted sender) client-ip=2607:f8b0:400d:c0d::242;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:59049 helo=lists.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1d9fuP-0000jk-T4
-	for alex.bennee@linaro.org; Sat, 13 May 2017 18:53:09 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:39683)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1d9fuJ-0000ia-7u
-	for qemu-arm@nongnu.org; Sat, 13 May 2017 18:53:04 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1d9fuI-00023R-Ah
-	for qemu-arm@nongnu.org; Sat, 13 May 2017 18:53:03 -0400
-Received: from mail-qt0-x243.google.com ([2607:f8b0:400d:c0d::243]:36183)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1d9fuD-0001rj-LC; Sat, 13 May 2017 18:52:57 -0400
-Received: by mail-qt0-x243.google.com with SMTP id j13so11168195qta.3;
-	Sat, 13 May 2017 15:52:57 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=sender:subject:to:references:cc:from:message-id:date:user-agent
-	:mime-version:in-reply-to:content-transfer-encoding;
-	bh=j3Co+HmKOO7S9Xft1ZaftgVxQNiwxig14A86CS65Qlk=;
-	b=OwgrRvwu/BWOJrCGdE/J+D91WLKZ7BVeHoIWU0CQAdr1BLtEFNYki3Wlhe3uBxXb36
-	ujD/AsH8XXXHY8vyCkJmLuDph4WBn1R4H+JKWNf4HeHGtv3lnHMnlOnmh+HlcaOJtdJI
-	lq/tljwHEYot2hbCBNDggaDfgCsGatGblndLEbRyPggmTGpJ3b4nPd25RUGOonjr2EIO
-	rAFsHOogZLQI6Igo/5SASntSdRiRgU3FSfQLK8XmqzMSvpTMi52iOkm6/njaCH49JyG7
-	0xNdcm4T5StdXW0Uz8aQRpQV6meyWNkOudqueiHbbrtt1SbkNRo2Ot67rjiPEvYsoBsA
-	wyTw==
+       dkim=pass header.i=@gmail.com;
+       spf=pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 2607:f8b0:400d:c0d::242 as permitted sender) smtp.mailfrom=philippe.mathieu.daude@gmail.com
+Received: by mail-qt0-x242.google.com with SMTP id r58so11187503qtb.2;
+        Sat, 13 May 2017 15:54:31 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=sender:subject:to:references:cc:from:message-id:date:user-agent
+         :mime-version:in-reply-to:content-transfer-encoding;
+        bh=sYf2UKEh42Yh/YksFAWTAZfy5pXOexdhsHJIAbZFhQQ=;
+        b=dTQPixyaezX/5WpdUuhNs+a9CnaljYYm3rB5RhgEFuGF0rKQx+M2gH5m22zQZABpdT
+         lvFcbAggdwxNC8UhR2Hn+Fz2+odWGqz/K5y9kR+Nt5NfLxuUsrsoV7gQ9C+Cv/OsuRpZ
+         Q/uD0KKPsa1TxlWPj+sdZ54gbR0igDjcudXu9gXHITfG1zMxIL0A6ETJEs4wWrYHG8Ew
+         juRFOLt42XeR7zMdJfJAFqCqHfsc2lTqKH6ZayLS7mqhJF9hZKZ6q+DoOFOafc8zcm50
+         JdXNMIhmNMH1jqPLWMKBxN4Ee7pfGz7kEhv1OqnkvAFm+2oA8Fazh23E+7qkRro/g2RD
+         QBig==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:sender:subject:to:references:cc:from:message-id
-	:date:user-agent:mime-version:in-reply-to:content-transfer-encoding;
-	bh=j3Co+HmKOO7S9Xft1ZaftgVxQNiwxig14A86CS65Qlk=;
-	b=ndLL5gMhJxxVHvrz5dUyZdEjI76q9MsyF/027Jt6CkRZb2fY/2aql3dOEBaMoe67cC
-	nJE4HijT1vj5XoiWaV8/0hwe9hB6yAEGd0HS9oWvzD/D2TYVxY5tRs6XtT4TPZdkkaVg
-	XStqO8C2dkd6sE+1bLjQslPoiBCyV6igNcvIfd6wzfN88dYpSX2I1CxgL86Zu+Vld/CT
-	+YV/6h0lVFjfa5WbElR+cSGlKApIhrwB+2Ve11L/5Gnug+exLZ6c2a63wE+vBMFsk7Xu
-	izZ2H6qb+JC3vLWvGhQzshTpM8ue6ZaKmE+RvNOPYor0jxLxWJr8zJu6ecKlKtSozs6y
-	8rlw==
-X-Gm-Message-State: AODbwcC7cRTZKb+ucgM4gGQXySDvnRxUUub9M3OCm3ZaRFf7I7fTNO5f
-	kCkNOZnm8mR6kw==
-X-Received: by 10.200.55.184 with SMTP id d53mr9773278qtc.94.1494715976941;
-	Sat, 13 May 2017 15:52:56 -0700 (PDT)
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:sender:subject:to:references:cc:from:message-id
+         :date:user-agent:mime-version:in-reply-to:content-transfer-encoding;
+        bh=sYf2UKEh42Yh/YksFAWTAZfy5pXOexdhsHJIAbZFhQQ=;
+        b=PVRTcngEOicJIU68kKLnNyidqJ++/O4/XVlpe0cD2bu18A9v/x6tI0DDLA2EbW0lCs
+         VjKO1qIRJKZyE5jkgiefQOY4rGipqUEPy6ZZLfp1K/B7A4bVOPKCgbesfuLoA4tCUVP2
+         xaXsYe0HfG7lVqboyD5Kb5U9sbKBTXT8MuW16VHR6o9lYUp5dICGK9HRx+9s8Rdu4gHj
+         GYr1mcnBP3ni9Fi7mJioIA0aT+HrO4zWGwNZcB+Jojgpt5TIH7S5Pj06oJgeRcACrdtd
+         Wc15PW4MDXPnMp+NnITeWexB3TxORqXRg2nhUQNFU3Wuocndc3kepMQeqXUL595tdE2V
+         QtSg==
+X-Gm-Message-State: AODbwcDzB30QMK08Wbacz8ZllqXJ/997KT3VB3ZA/1Igc6Gc1Rz5DPGo
+	NQvhkmgk4dJnXFeNJA1rPg==
+X-Received: by 10.237.55.98 with SMTP id i89mr9804927qtb.162.1494716070766;
+        Sat, 13 May 2017 15:54:30 -0700 (PDT)
+Return-Path: <philippe.mathieu.daude@gmail.com>
 Received: from [192.168.1.10] ([138.117.48.226])
-	by smtp.gmail.com with ESMTPSA id d5sm5026147qkf.4.2017.05.13.15.52.54
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Sat, 13 May 2017 15:52:55 -0700 (PDT)
+        by smtp.gmail.com with ESMTPSA id s21sm5059613qtc.58.2017.05.13.15.54.28
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Sat, 13 May 2017 15:54:29 -0700 (PDT)
+Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philippe.mathieu.daude@gmail.com>
+Subject: Re: [Qemu-devel] [PATCH 01/13] arm: Use the mmu_idx we're passed in
+ arm_cpu_do_unaligned_access()
 To: Alistair Francis <alistair.francis@xilinx.com>,
-	Peter Maydell <peter.maydell@linaro.org>
+ Peter Maydell <peter.maydell@linaro.org>
 References: <1493122030-32191-1-git-send-email-peter.maydell@linaro.org>
-	<1493122030-32191-9-git-send-email-peter.maydell@linaro.org>
-	<CAKmqyKPTXPZUkWsTzTV7rZ02QNAC2j9h_1eWqNs67KHM1Jkgrw@mail.gmail.com>
+ <1493122030-32191-2-git-send-email-peter.maydell@linaro.org>
+ <CAKmqyKMPX+=acJqRKkncy=s4G3C04Q8grD9PdSiPs8f1RuVRxg@mail.gmail.com>
+Cc: qemu-arm <qemu-arm@nongnu.org>, =?UTF-8?Q?Alex_Benn=c3=a9e?=
+ <alex.bennee@linaro.org>,
+ "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
+ Patch Tracking <patches@linaro.org>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <cd57310d-a047-00b7-c8fb-76faa4ba5f8f@amsat.org>
-Date: Sat, 13 May 2017 19:52:52 -0300
+Message-ID: <85907ff4-9947-d5b2-5ec4-7d64fbd6c3e8@amsat.org>
+Date: Sat, 13 May 2017 19:54:26 -0300
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
-	Thunderbird/45.8.0
+ Thunderbird/45.8.0
 MIME-Version: 1.0
-In-Reply-To: <CAKmqyKPTXPZUkWsTzTV7rZ02QNAC2j9h_1eWqNs67KHM1Jkgrw@mail.gmail.com>
+In-Reply-To: <CAKmqyKMPX+=acJqRKkncy=s4G3C04Q8grD9PdSiPs8f1RuVRxg@mail.gmail.com>
 Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:400d:c0d::243
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH 08/13] armv7m: Improve "-d mmu"
- tracing for PMSAv7 MPU
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.21
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>,
-	"qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
-	Patch Tracking <patches@linaro.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: FtdOKI3mvFUd
+X-TUID: vZoEGZFGvd8L
 
-On 05/03/2017 06:30 PM, Alistair Francis wrote:
-> On Tue, Apr 25, 2017 at 5:07 AM, Peter Maydell <peter.maydell@linaro.org> wrote:
->> From: Michael Davidsaver <mdavidsaver@gmail.com>
+On 05/02/2017 07:05 PM, Alistair Francis wrote:
+> On Tue, Apr 25, 2017 at 5:06 AM, Peter Maydell <peter.maydell@linaro.org> wrote:
+>> When identifying the DFSR format for an alignment fault, use
+>> the mmu index that we are passed, rather than calling cpu_mmu_index()
+>> to get the mmu index for the current CPU state. This doesn't actually
+>> make any difference since the only cases where the current MMU index
+>> differs from the index used for the load are the "unprivileged
+>> load/store" instructions, and in that case the mmu index may
+>> differ but the translation regime is the same (apart from the
+>> "use from Hyp mode" case which is UNPREDICTABLE).
+>> However it's the more logical thing to do.
 >>
->> Improve the "-d mmu" tracing for the PMSAv7 MPU translation
->> process as an aid in debugging guest MPU configurations:
->>  * fix a missing newline for a guest-error log
->>  * report the region number with guest-error or unimp
->>    logs of bad region register values
->>  * add a log message for the overall result of the lookup
->>  * print "0x" prefix for hex values
->>
->> Signed-off-by: Michael Davidsaver <mdavidsaver@gmail.com>
->> [PMM: a little tidyup, report region number in all messages
->>  rather than just one]
 >> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 >
 > Reviewed-by: Alistair Francis <alistair.francis@xilinx.com>
@@ -148,95 +112,22 @@ Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 > Alistair
 >
 >> ---
->>  target/arm/helper.c | 39 +++++++++++++++++++++++++++------------
->>  1 file changed, 27 insertions(+), 12 deletions(-)
+>>  target/arm/op_helper.c | 2 +-
+>>  1 file changed, 1 insertion(+), 1 deletion(-)
 >>
->> diff --git a/target/arm/helper.c b/target/arm/helper.c
->> index 5c044d0..9e1ed1c 100644
->> --- a/target/arm/helper.c
->> +++ b/target/arm/helper.c
->> @@ -8169,16 +8169,18 @@ static bool get_phys_addr_pmsav7(CPUARMState *env, uint32_t address,
->>              }
->>
->>              if (!rsize) {
->> -                qemu_log_mask(LOG_GUEST_ERROR, "DRSR.Rsize field can not be 0");
->> +                qemu_log_mask(LOG_GUEST_ERROR,
->> +                              "DRSR[%d]: Rsize field cannot be 0\n", n);
->>                  continue;
->>              }
->>              rsize++;
->>              rmask = (1ull << rsize) - 1;
->>
->>              if (base & rmask) {
->> -                qemu_log_mask(LOG_GUEST_ERROR, "DRBAR %" PRIx32 " misaligned "
->> -                              "to DRSR region size, mask = %" PRIx32,
->> -                              base, rmask);
->> +                qemu_log_mask(LOG_GUEST_ERROR,
->> +                              "DRBAR[%d]: 0x%" PRIx32 " misaligned "
->> +                              "to DRSR region size, mask = 0x%" PRIx32 "\n",
->> +                              n, base, rmask);
->>                  continue;
->>              }
->>
->> @@ -8215,9 +8217,10 @@ static bool get_phys_addr_pmsav7(CPUARMState *env, uint32_t address,
->>                  }
->>              }
->>              if (rsize < TARGET_PAGE_BITS) {
->> -                qemu_log_mask(LOG_UNIMP, "No support for MPU (sub)region"
->> +                qemu_log_mask(LOG_UNIMP,
->> +                              "DRSR[%d]: No support for MPU (sub)region "
->>                                "alignment of %" PRIu32 " bits. Minimum is %d\n",
->> -                              rsize, TARGET_PAGE_BITS);
->> +                              n, rsize, TARGET_PAGE_BITS);
->>                  continue;
->>              }
->>              if (srdis) {
->> @@ -8251,8 +8254,8 @@ static bool get_phys_addr_pmsav7(CPUARMState *env, uint32_t address,
->>                      break;
->>                  default:
->>                      qemu_log_mask(LOG_GUEST_ERROR,
->> -                                  "Bad value for AP bits in DRACR %"
->> -                                  PRIx32 "\n", ap);
->> +                                  "DRACR[%d]: Bad value for AP bits: 0x%"
->> +                                  PRIx32 "\n", n, ap);
->>                  }
->>              } else { /* Priv. mode AP bits decoding */
->>                  switch (ap) {
->> @@ -8269,8 +8272,8 @@ static bool get_phys_addr_pmsav7(CPUARMState *env, uint32_t address,
->>                      break;
->>                  default:
->>                      qemu_log_mask(LOG_GUEST_ERROR,
->> -                                  "Bad value for AP bits in DRACR %"
->> -                                  PRIx32 "\n", ap);
->> +                                  "DRACR[%d]: Bad value for AP bits: 0x%"
->> +                                  PRIx32 "\n", n, ap);
->>                  }
->>              }
->>
->> @@ -8448,9 +8451,21 @@ static bool get_phys_addr(CPUARMState *env, target_ulong address,
+>> diff --git a/target/arm/op_helper.c b/target/arm/op_helper.c
+>> index 156b825..de24815 100644
+>> --- a/target/arm/op_helper.c
+>> +++ b/target/arm/op_helper.c
+>> @@ -208,7 +208,7 @@ void arm_cpu_do_unaligned_access(CPUState *cs, vaddr vaddr,
+>>      /* the DFSR for an alignment fault depends on whether we're using
+>>       * the LPAE long descriptor format, or the short descriptor format
 >>       */
->>      if (arm_feature(env, ARM_FEATURE_PMSA) &&
->>          arm_feature(env, ARM_FEATURE_V7)) {
->> +        bool ret;
->>          *page_size = TARGET_PAGE_SIZE;
->> -        return get_phys_addr_pmsav7(env, address, access_type, mmu_idx,
->> -                                    phys_ptr, prot, fsr);
->> +        ret = get_phys_addr_pmsav7(env, address, access_type, mmu_idx,
->> +                                   phys_ptr, prot, fsr);
->> +        qemu_log_mask(CPU_LOG_MMU, "PMSAv7 MPU lookup for %s at 0x%08" PRIx32
->> +                      " mmu_idx %u -> %s (prot %c%c%c)\n",
->> +                      access_type == 1 ? "reading" :
->> +                      (access_type == 2 ? "writing" : "execute"),
->> +                      (uint32_t)address, mmu_idx,
->> +                      ret ? "Miss" : "Hit",
->> +                      *prot & PAGE_READ ? 'r' : '-',
->> +                      *prot & PAGE_WRITE ? 'w' : '-',
->> +                      *prot & PAGE_EXEC ? 'x' : '-');
->> +
->> +        return ret;
->>      }
->>
->>      if (regime_translation_disabled(env, mmu_idx)) {
+>> -    if (arm_s1_regime_using_lpae_format(env, cpu_mmu_index(env, false))) {
+>> +    if (arm_s1_regime_using_lpae_format(env, mmu_idx)) {
+>>          env->exception.fsr = (1 << 9) | 0x21;
+>>      } else {
+>>          env->exception.fsr = 0x1;
 >> --
 >> 2.7.4
 >>

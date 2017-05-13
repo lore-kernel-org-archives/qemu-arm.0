@@ -1,233 +1,262 @@
-Received: by 10.25.0.6 with SMTP id 6csp753349lfa;
-        Sat, 13 May 2017 10:43:43 -0700 (PDT)
-X-Received: by 10.55.71.150 with SMTP id u144mr8530081qka.233.1494697423117;
-        Sat, 13 May 2017 10:43:43 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1494697423; cv=none;
+Received: by 10.25.0.6 with SMTP id 6csp823685lfa;
+        Sat, 13 May 2017 15:36:00 -0700 (PDT)
+X-Received: by 10.233.235.12 with SMTP id b12mr9847555qkg.75.1494714960654;
+        Sat, 13 May 2017 15:36:00 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1494714960; cv=none;
         d=google.com; s=arc-20160816;
-        b=u9rHDGfME1qLBRO2y3ZCPNJr6sqq0CyqXDf/fb1SFCkkbMdbsKJL+tX5vYGYDJIEIc
-         dent+yPaAW5saA+KJ4YcVH7XYEQI1ko+VGct89F6IX/pQzZhkA36gqERbXuTeY71GQ8r
-         FtO4Zjqk9jwK2koo23UWqzItK1vmD1g2tCywe8ktirlIPCigWSioTDt1MpG7Q4tmikR9
-         mTpRlC6mwsDhLYZ+MGwWm7vD4ma/T5sZfIBuoRPLhhrJm+v4eCwICfbEaOyZiAz2FgpT
-         k2k0CJArm3e1P/0zkUVtvJCrxA9kN+HAOlkcuDUPRxK2/Rw+R/Gn2w9Pqna0C7aKx0+A
-         nzfg==
+        b=TXhGxRPEOAqjZ18cH1aT5AvjYdrAVZshCEZ6J0ywB4Ib+424BbmLbdSwjLRTSFO2mx
+         z+hqA/3p2nnyJM3yQDgwy3YUlMY/s8T6IDcVMEJDHo6cXJhHqbOXx9+xGZCpRQqjyxRr
+         TMVrvDCmKMUvVIPQjIeFmHGpn+wOrjVjMjFkNP6szTL07PCY/R6gYgfj8PfYhBKFt4XO
+         7TlWPwJLw5IqYUeEtpfkwFruQzPo8mmdXGbBTHoHRgAVTtJmr0t18TsezZkIBmbzTK4W
+         sMO/OAvXqBJ5CllalyUr0hi1AjOaIRSqd+R8+QsMQ2k/HwNpIkbomCzxUBIGP4UNFHBo
+         De7Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:message-id:date:to:from
-         :dkim-filter:dmarc-filter:arc-authentication-results;
-        bh=VSR3qjq0lySlou36pf6ibsW6t4KI2hPYxR0TkCICtHQ=;
-        b=g90rENFDYCg19bH5qUhWvYbGDwR+vVk6b/dNTnPy0OszEN8VWXCrUagi0yUr4FGR6r
-         fnGU/c4C4R6iAxIUq6/n0JW2SolHUdVYOjVpjzUOteU9p7a+0nqKhHteTSZwq9V1GkKA
-         074FSGoF9uwICjFc7p/9wLA+opafg3JLJHI9ZZEP10RLaFrwCkTJ6HiodohFf3YUATBw
-         mNFMsnuPWaXAZKlNlhujUW2UM7FCRWu/HYNNw4QQHq7zl1UcJ/hpdgSOgLDt2cs4tfwM
-         k/09JpSHvx12NRlLmtdxRAi2CrZeZMsa9ocvsrvydenxzRWtkWSBJnW1lZUSfaIBLL+X
-         VhQA==
+        h=content-transfer-encoding:in-reply-to:mime-version:user-agent:date
+         :message-id:from:cc:references:to:subject:sender:dkim-signature
+         :arc-authentication-results;
+        bh=lnOKEE1BW0uLN7rHJL7MIXK/Kq7hG++fsjREozF3Lh0=;
+        b=bqq/sXRuby2WttAr0MzHRIJwzJ4iT/ONezS2FLS1AEAm2ogjLTCa9E4NeEnQEQBjCF
+         UIsScCTkcCNPM8BwcZXM8kRdA7vRI0REMi8T0cdJ01B5lUOJJjgO6j167vHXkaEYcIKR
+         x0DL0iDjiUbQtNNdcBiF7fNICUa08RL4QcDi2OtBNfdFG0/ci1lfnSAFzsOIbbZsHjqV
+         hMo/rRPXotPv1lBsPn2NeiGbJWp7NkkjxIPVCgh8CCS2kDIe6gBotcqPBr9jbRu9vTfb
+         FQKuRfjMvX8tM72RGcflEnr25fcdhGKtL2vnROAgN9ui0xlsuictqmOJIHf0xN326KGr
+         7o6g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id 52si6615241qtt.290.2017.05.13.10.43.42
-        for <alex.bennee@linaro.org>
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sat, 13 May 2017 10:43:43 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+       dkim=pass header.i=@gmail.com;
+       spf=pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 2607:f8b0:400d:c0d::241 as permitted sender) smtp.mailfrom=philippe.mathieu.daude@gmail.com
+Return-Path: <philippe.mathieu.daude@gmail.com>
+Received: from mail-qt0-x241.google.com (mail-qt0-x241.google.com. [2607:f8b0:400d:c0d::241])
+        by mx.google.com with ESMTPS id h51si6347461qth.65.2017.05.13.15.36.00
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Sat, 13 May 2017 15:36:00 -0700 (PDT)
+Received-SPF: pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 2607:f8b0:400d:c0d::241 as permitted sender) client-ip=2607:f8b0:400d:c0d::241;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:58409 helo=lists.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1d9b4t-00089M-BB
-	for alex.bennee@linaro.org; Sat, 13 May 2017 13:43:39 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:57489)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1d9b4p-00089E-Q8
-	for qemu-arm@nongnu.org; Sat, 13 May 2017 13:43:37 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1d9b4m-0003lP-Kk
-	for qemu-arm@nongnu.org; Sat, 13 May 2017 13:43:35 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:45768)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <eric.auger@redhat.com>)
-	id 1d9b4m-0003kl-BX; Sat, 13 May 2017 13:43:32 -0400
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
-	[10.5.11.13])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 3C61A37EEB;
-	Sat, 13 May 2017 17:43:30 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 3C61A37EEB
-Authentication-Results: ext-mx05.extmail.prod.ext.phx2.redhat.com;
-	dmarc=none (p=none dis=none) header.from=redhat.com
-Authentication-Results: ext-mx05.extmail.prod.ext.phx2.redhat.com;
-	spf=pass smtp.mailfrom=eric.auger@redhat.com
-DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com 3C61A37EEB
-Received: from localhost.localdomain.com (ovpn-116-214.ams2.redhat.com
-	[10.36.116.214])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 49E12D0210;
-	Sat, 13 May 2017 17:43:25 +0000 (UTC)
-From: Eric Auger <eric.auger@redhat.com>
-To: eric.auger.pro@gmail.com, eric.auger@redhat.com, peter.maydell@linaro.org,
-	edgar.iglesias@gmail.com, qemu-arm@nongnu.org, qemu-devel@nongnu.org,
-	prem.mallappa@gmail.com
-Date: Sat, 13 May 2017 19:43:14 +0200
-Message-Id: <1494697399-352-1-git-send-email-eric.auger@redhat.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.29]);
-	Sat, 13 May 2017 17:43:30 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: [Qemu-arm] [RFC v4 0/5] ARM SMMUv3 Emulation Support
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.21
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: mohun106@gmail.com, drjones@redhat.com, tcain@qti.qualcomm.com,
-	Radha.Chintakuntla@cavium.com, Sunil.Goutham@cavium.com,
-	christoffer.dall@linaro.org
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: tArnp2Whs0p9
+       dkim=pass header.i=@gmail.com;
+       spf=pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 2607:f8b0:400d:c0d::241 as permitted sender) smtp.mailfrom=philippe.mathieu.daude@gmail.com
+Received: by mail-qt0-x241.google.com with SMTP id j13so11140693qta.3;
+        Sat, 13 May 2017 15:36:00 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=sender:subject:to:references:cc:from:message-id:date:user-agent
+         :mime-version:in-reply-to:content-transfer-encoding;
+        bh=lnOKEE1BW0uLN7rHJL7MIXK/Kq7hG++fsjREozF3Lh0=;
+        b=GF9WLqEJm38cJJw3NzBFmdokoIwlYpffihwpAzFnn2ecNlqH/7Bi74m7IvGmlAIuYh
+         qXaDVNBT125yOpDRFi24ZyJSI8YxAt+HKTQlHEdoN3GFb/HYW20Kv4/9Jy67Vk4k2Yhb
+         aAYgqa7mMIOZ7fcgT3DiPhWVtrdbsnSMee8sLEWaN+3JKfqwVxofo4t2oU140QD1A2Fv
+         XkWl6MLtu6X3e3Rqxh/kWiDyDhIFdnHns8oT7AGi/Lxz6U5bxbKExB2RSvhILg/UEDrQ
+         0A0paQg0Plm3tcdfJL3QEbzGPnNQP5NHCbhu7vorQCvwy36YNmaD69YJHARkkNzTdsRp
+         PK4A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:sender:subject:to:references:cc:from:message-id
+         :date:user-agent:mime-version:in-reply-to:content-transfer-encoding;
+        bh=lnOKEE1BW0uLN7rHJL7MIXK/Kq7hG++fsjREozF3Lh0=;
+        b=IiPhO3tdwqEGEt4IYda7j9kxoxRE3qToBKUGSPqe7n7MxF6/QzgqUjfLtAjkFKvqsH
+         P2yW/iemlaxjBEyZk+7UMe6gckH6b19o+MySjGFsPBBa+u0erTYf2BJUTGtxf60S47lE
+         UCSWQagmMvthV3GWgulkGXBHNlnXA1sXQ3BaIzZSBiHCf7dj+9Xl4jvHoq74ol7IUKo+
+         7Z2dAwzWY+dhxWGeDXOGGuUozYVy0I04JxW4eidIYtc+VF/qOAPT7k2rmYDnpjhgUTXN
+         5QT/9dB8+kl+PbvFLfBgrkwjDRuPhLTd+71HMQu97L8x0/F7ZDfoyfyN6OXtt1yupZhV
+         EACA==
+X-Gm-Message-State: AODbwcBXc5gk7/ttVvDV+p/WqsKoRw8QpZHA2DrOtk2TYhiOXm7FTw/M
+	mkA9SlpNh77rvA==
+X-Received: by 10.200.35.177 with SMTP id q46mr10931693qtq.158.1494714959958;
+        Sat, 13 May 2017 15:35:59 -0700 (PDT)
+Return-Path: <philippe.mathieu.daude@gmail.com>
+Received: from [192.168.1.10] ([138.117.48.226])
+        by smtp.gmail.com with ESMTPSA id q30sm5442616qkh.39.2017.05.13.15.35.56
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Sat, 13 May 2017 15:35:59 -0700 (PDT)
+Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philippe.mathieu.daude@gmail.com>
+Subject: Re: [Qemu-devel] [PATCH 04/13] arm: Clean up handling of no-MPU PMSA
+ CPUs
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+References: <1493122030-32191-1-git-send-email-peter.maydell@linaro.org>
+ <1493122030-32191-5-git-send-email-peter.maydell@linaro.org>
+Cc: Alistair Francis <alistair.francis@xilinx.com>,
+ =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>, patches@linaro.org
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Message-ID: <2ad8e931-12e0-2f7d-2141-402c20ccb463@amsat.org>
+Date: Sat, 13 May 2017 19:35:50 -0300
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
+ Thunderbird/45.8.0
+MIME-Version: 1.0
+In-Reply-To: <1493122030-32191-5-git-send-email-peter.maydell@linaro.org>
+Content-Type: text/plain; charset=windows-1252; format=flowed
+Content-Transfer-Encoding: 8bit
+X-TUID: XVoBsFMqF50p
 
-This series introduces the emulation code for ARM SMMUv3.
-This is the continuation of Prem's work [1].
+Hi Peter,
 
-This v4 is yet another visibility step as many restrictions apply
-to the model at the moment:
-- only VMSAv8-64 is supported (no VMSAv8-32)
-- only stage 1 has been tested (Block PTE still needs to be
-  implemented and tested though)
-- no integration with VFIO. We are missing some quirks to force
-  the guest to invalidate TLBs when updating the page tables.
-  But replay will be easily implemented upon new page table scan.
-- stage 2 is not supported. There is partial support when decoding
-  configuration information but no support at page table walk level.
-  This is my next step.
-- at the moment I don't plan to support nested S1 + S2 as I
-  understand no SW stack uses it at the moment.
-- no support for HYP mappings
-- register fine emulation, commands, interrupts and errors were
-  not accurately tested. Handling is sufficient to run a guest
-  with a virtio-net-pci device using dma ops.
-- At the moment no change to the PCIe instantiation (further
-  discussions about SMMUv2 TBUs versus SMMUv3 TLBs needed).
+On 04/25/2017 09:07 AM, Peter Maydell wrote:
+> ARM CPUs come in two flavours:
+>  * proper MMU ("VMSA")
+>  * only an MPU ("PMSA")
+> For PMSA, the MPU may be implemented, or not (in which case there
+> is default "always acts the same" behaviour, but it isn't guest
+> programmable).
+>
+> QEMU is a bit confused about how we indicate this: we have an
+> ARM_FEATURE_MPU, but it's not clear whether this indicates
+> "PMSA, not VMSA" or "PMSA and MPU present" , and sometimes we
+> use it for one purpose and sometimes the other.
+>
+> Currently trying to implement a PMSA-without-MPU core won't
+> work correctly because we turn off the ARM_FEATURE_MPU bit
+> and then a lot of things which should still exist get
+> turned off too.
+>
+> As the first step in cleaning this up, rename the feature
+> bit to ARM_FEATURE_PMSA, which indicates a PMSA CPU (with
+> or without MPU).
+>
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> ---
+>  target/arm/cpu.h     |  2 +-
+>  target/arm/cpu.c     | 12 ++++++------
+>  target/arm/helper.c  | 12 ++++++------
+>  target/arm/machine.c |  2 +-
+>  4 files changed, 14 insertions(+), 14 deletions(-)
+>
+> diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+> index 253565b..0718955 100644
+> --- a/target/arm/cpu.h
+> +++ b/target/arm/cpu.h
+> @@ -1179,7 +1179,7 @@ enum arm_features {
+>      ARM_FEATURE_V6K,
+>      ARM_FEATURE_V7,
+>      ARM_FEATURE_THUMB2,
+> -    ARM_FEATURE_MPU,    /* Only has Memory Protection Unit, not full MMU.  */
+> +    ARM_FEATURE_PMSA,   /* no MMU; may have Memory Protection Unit */
+>      ARM_FEATURE_VFP3,
+>      ARM_FEATURE_VFP_FP16,
+>      ARM_FEATURE_NEON,
+> diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+> index b357aee..f17e279 100644
+> --- a/target/arm/cpu.c
+> +++ b/target/arm/cpu.c
+> @@ -586,7 +586,7 @@ static void arm_cpu_post_init(Object *obj)
+>                                   &error_abort);
+>      }
+>
+> -    if (arm_feature(&cpu->env, ARM_FEATURE_MPU)) {
+> +    if (arm_feature(&cpu->env, ARM_FEATURE_PMSA)) {
+>          qdev_property_add_static(DEVICE(obj), &arm_cpu_has_mpu_property,
+>                                   &error_abort);
+>          if (arm_feature(&cpu->env, ARM_FEATURE_V7)) {
+> @@ -682,7 +682,7 @@ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
+>
+>      if (arm_feature(env, ARM_FEATURE_V7) &&
+>          !arm_feature(env, ARM_FEATURE_M) &&
+> -        !arm_feature(env, ARM_FEATURE_MPU)) {
+> +        !arm_feature(env, ARM_FEATURE_PMSA)) {
+>          /* v7VMSA drops support for the old ARMv5 tiny pages, so we
+>           * can use 4K pages.
+>           */
+> @@ -758,10 +758,10 @@ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
+>      }
+>
+>      if (!cpu->has_mpu) {
+> -        unset_feature(env, ARM_FEATURE_MPU);
+> +        unset_feature(ARM_FEATURE_PMSA);
 
-- In ACPI mode, the guest must feature the IOMMU probe deferral
-  series wich fixes streamid multiple lookup
+With the missing 'env' argument:
+Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 
-The smmu is instantiated when passing the smmu option to machvirt:
-"-M virt-2.10,smmu"
-
-Best Regards
-
-Eric
-
-This series can be found at:
-v4: https://github.com/eauger/qemu/tree/v2.9-SMMU-v4
-
-Testing:
-- booted a 4.11 guest in dt and acpi mode with an iommu_platform
-  virtio-net-pci device (using dma ops). Tested with the following
-  guest combinations: 4K page - 39 bit VA, 4K - 48b, 64K - 39b,
-  64K - 48b.
-- Also Prem's unit test environment was rebased (available upon
-  demand)
-
-References:
-[1] Prem's last iteration:
-- https://lists.gnu.org/archive/html/qemu-devel/2016-08/msg03531.html
-
-History:
-v3 -> v4 [Eric]:
-- page table walk rewritten to allow scan of the page table within a
-  range of IOVA. This prepares for VFIO integration and replay.
-- configuration parsing partially reworked.
-- do not advertise unsupported/untested features: S2, S1 + S2, HYP,
-  PRI, ATS, ..
-- added ACPI table generation
-- migrated to dynamic traces
-- mingw compilation fix
-
-v2 -> v3 [Eric]:
-- rebased on 2.9
-- mostly code and patch reorganization to ease the review process
-- optional patches removed. They may be handled separately. I am currently
-  working on ACPI enablement.
-- optional instantiation of the smmu in mach-virt
-- removed [2/9] (fdt functions) since not mandated
-- start splitting main patch into base and derived object
-- no new function feature added
-
-v1 -> v2 [Prem]:
-- Adopted review comments from Eric Auger
-        - Make SMMU_DPRINTF to internally call qemu_log
-            (since translation requests are too many, we need control
-             on the type of log we want)
-        - SMMUTransCfg modified to suite simplicity
-        - Change RegInfo to uint64 register array
-        - Code cleanup
-        - Test cleanups
-- Reshuffled patches
-
-v0 -> v1 [Prem]:
-- As per SMMUv3 spec 16.0 (only is_ste_consistant() is noticeable)
-- Reworked register access/update logic
-- Factored out translation code for
-        - single point bug fix
-        - sharing/removal in future
-- (optional) Unit tests added, with PCI test device
-        - S1 with 4k/64k, S1+S2 with 4k/64k
-        - (S1 or S2) only can be verified by Linux 4.7 driver
-        - (optional) Priliminary ACPI support
-
-v0 [Prem]:
-- Implements SMMUv3 spec 11.0
-- Supported for PCIe devices,
-- Command Queue and Event Queue supported
-- LPAE only, S1 is supported and Tested, S2 not tested
-- BE mode Translation not supported
-- IRQ support (legacy, no MSI)
-- Tested with DPDK and e1000
-
-Eric Auger (2):
-  hw/arm/smmu-common: smmu base class
-  hw/arm/virt: Add 2.10 machine type
-
-Prem Mallappa (3):
-  hw/arm/smmuv3: smmuv3 emulation model
-  hw/arm/virt: Add SMMUv3 to the virt board
-  hw/arm/virt-acpi-build: add smmuv3 node in IORT table
-
- default-configs/aarch64-softmmu.mak |    1 +
- hw/arm/Makefile.objs                |    1 +
- hw/arm/smmu-common.c                |  419 +++++++++++++
- hw/arm/smmu-internal.h              |   97 +++
- hw/arm/smmuv3-internal.h            |  603 +++++++++++++++++++
- hw/arm/smmuv3.c                     | 1134 +++++++++++++++++++++++++++++++++++
- hw/arm/trace-events                 |   44 ++
- hw/arm/virt-acpi-build.c            |   56 +-
- hw/arm/virt.c                       |  109 +++-
- include/hw/acpi/acpi-defs.h         |   15 +
- include/hw/arm/smmu-common.h        |  125 ++++
- include/hw/arm/smmuv3.h             |   87 +++
- include/hw/arm/virt.h               |    5 +
- 13 files changed, 2687 insertions(+), 9 deletions(-)
- create mode 100644 hw/arm/smmu-common.c
- create mode 100644 hw/arm/smmu-internal.h
- create mode 100644 hw/arm/smmuv3-internal.h
- create mode 100644 hw/arm/smmuv3.c
- create mode 100644 include/hw/arm/smmu-common.h
- create mode 100644 include/hw/arm/smmuv3.h
-
--- 
-2.5.5
-
+>      }
+>
+> -    if (arm_feature(env, ARM_FEATURE_MPU) &&
+> +    if (arm_feature(env, ARM_FEATURE_PMSA) &&
+>          arm_feature(env, ARM_FEATURE_V7)) {
+>          uint32_t nr = cpu->pmsav7_dregion;
+>
+> @@ -861,7 +861,7 @@ static void arm946_initfn(Object *obj)
+>
+>      cpu->dtb_compatible = "arm,arm946";
+>      set_feature(&cpu->env, ARM_FEATURE_V5);
+> -    set_feature(&cpu->env, ARM_FEATURE_MPU);
+> +    set_feature(&cpu->env, ARM_FEATURE_PMSA);
+>      set_feature(&cpu->env, ARM_FEATURE_DUMMY_C15_REGS);
+>      cpu->midr = 0x41059461;
+>      cpu->ctr = 0x0f004006;
+> @@ -1073,7 +1073,7 @@ static void cortex_r5_initfn(Object *obj)
+>      set_feature(&cpu->env, ARM_FEATURE_THUMB_DIV);
+>      set_feature(&cpu->env, ARM_FEATURE_ARM_DIV);
+>      set_feature(&cpu->env, ARM_FEATURE_V7MP);
+> -    set_feature(&cpu->env, ARM_FEATURE_MPU);
+> +    set_feature(&cpu->env, ARM_FEATURE_PMSA);
+>      cpu->midr = 0x411fc153; /* r1p3 */
+>      cpu->id_pfr0 = 0x0131;
+>      cpu->id_pfr1 = 0x001;
+> diff --git a/target/arm/helper.c b/target/arm/helper.c
+> index 791332c..404bfdb 100644
+> --- a/target/arm/helper.c
+> +++ b/target/arm/helper.c
+> @@ -485,7 +485,7 @@ static void contextidr_write(CPUARMState *env, const ARMCPRegInfo *ri,
+>  {
+>      ARMCPU *cpu = arm_env_get_cpu(env);
+>
+> -    if (raw_read(env, ri) != value && !arm_feature(env, ARM_FEATURE_MPU)
+> +    if (raw_read(env, ri) != value && !arm_feature(env, ARM_FEATURE_PMSA)
+>          && !extended_addresses_enabled(env)) {
+>          /* For VMSA (when not using the LPAE long descriptor page table
+>           * format) this register includes the ASID, so do a TLB flush.
+> @@ -4615,7 +4615,7 @@ void register_cp_regs_for_features(ARMCPU *cpu)
+>          define_arm_cp_regs(cpu, v6k_cp_reginfo);
+>      }
+>      if (arm_feature(env, ARM_FEATURE_V7MP) &&
+> -        !arm_feature(env, ARM_FEATURE_MPU)) {
+> +        !arm_feature(env, ARM_FEATURE_PMSA)) {
+>          define_arm_cp_regs(cpu, v7mp_cp_reginfo);
+>      }
+>      if (arm_feature(env, ARM_FEATURE_V7)) {
+> @@ -4969,7 +4969,7 @@ void register_cp_regs_for_features(ARMCPU *cpu)
+>          }
+>      }
+>
+> -    if (arm_feature(env, ARM_FEATURE_MPU)) {
+> +    if (arm_feature(env, ARM_FEATURE_PMSA)) {
+>          if (arm_feature(env, ARM_FEATURE_V6)) {
+>              /* PMSAv6 not implemented */
+>              assert(arm_feature(env, ARM_FEATURE_V7));
+> @@ -5131,7 +5131,7 @@ void register_cp_regs_for_features(ARMCPU *cpu)
+>              define_arm_cp_regs(cpu, id_pre_v8_midr_cp_reginfo);
+>          }
+>          define_arm_cp_regs(cpu, id_cp_reginfo);
+> -        if (!arm_feature(env, ARM_FEATURE_MPU)) {
+> +        if (!arm_feature(env, ARM_FEATURE_PMSA)) {
+>              define_one_arm_cp_reg(cpu, &id_tlbtr_reginfo);
+>          } else if (arm_feature(env, ARM_FEATURE_V7)) {
+>              define_one_arm_cp_reg(cpu, &id_mpuir_reginfo);
+> @@ -8442,7 +8442,7 @@ static bool get_phys_addr(CPUARMState *env, target_ulong address,
+>      /* pmsav7 has special handling for when MPU is disabled so call it before
+>       * the common MMU/MPU disabled check below.
+>       */
+> -    if (arm_feature(env, ARM_FEATURE_MPU) &&
+> +    if (arm_feature(env, ARM_FEATURE_PMSA) &&
+>          arm_feature(env, ARM_FEATURE_V7)) {
+>          *page_size = TARGET_PAGE_SIZE;
+>          return get_phys_addr_pmsav7(env, address, access_type, mmu_idx,
+> @@ -8457,7 +8457,7 @@ static bool get_phys_addr(CPUARMState *env, target_ulong address,
+>          return 0;
+>      }
+>
+> -    if (arm_feature(env, ARM_FEATURE_MPU)) {
+> +    if (arm_feature(env, ARM_FEATURE_PMSA)) {
+>          /* Pre-v7 MPU */
+>          *page_size = TARGET_PAGE_SIZE;
+>          return get_phys_addr_pmsav5(env, address, access_type, mmu_idx,
+> diff --git a/target/arm/machine.c b/target/arm/machine.c
+> index d8094a8..ac6b758 100644
+> --- a/target/arm/machine.c
+> +++ b/target/arm/machine.c
+> @@ -142,7 +142,7 @@ static bool pmsav7_needed(void *opaque)
+>      ARMCPU *cpu = opaque;
+>      CPUARMState *env = &cpu->env;
+>
+> -    return arm_feature(env, ARM_FEATURE_MPU) &&
+> +    return arm_feature(env, ARM_FEATURE_PMSA) &&
+>             arm_feature(env, ARM_FEATURE_V7);
+>  }
+>
+>

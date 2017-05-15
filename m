@@ -1,97 +1,96 @@
-Received: by 10.25.0.6 with SMTP id 6csp1503284lfa;
-        Mon, 15 May 2017 09:49:27 -0700 (PDT)
-X-Received: by 10.200.2.159 with SMTP id p31mr6920499qtg.55.1494866967119;
-        Mon, 15 May 2017 09:49:27 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1494866967; cv=none;
+Received: by 10.25.0.6 with SMTP id 6csp1601559lfa;
+        Mon, 15 May 2017 14:44:14 -0700 (PDT)
+X-Received: by 10.55.192.145 with SMTP id v17mr6661422qkv.96.1494884654577;
+        Mon, 15 May 2017 14:44:14 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1494884654; cv=none;
         d=google.com; s=arc-20160816;
-        b=RYWW6OBxNqD0yntu2MhPFpTUQRR/5XYptIY2/UiZvXEoaa8+sA2pW1M+6ivHcq8gEI
-         9dWP9HX7luFABdKxIerICiWm84t38T5RYRDqz/FeRqERi3IX/g0jUCTQebRDZbBDGczw
-         E82V6b+prH2JsPVR7RHZrZLa2XtWsCEUMmXV/RGskirmvRSHUpL+y9s+EP3nZcuT/6B3
-         uZaNAQ2Ie9C6TsSojsetImnsnSdMPSOLCWyx6f9HOZw6nF6eelKJMaemVrOnXiBbsce+
-         +aat7wfJXacElHn/KHXC3YVbY8aDF12Y7XtIA3AuddX9VJZ057vE9yyDfe6fhbuCvnP4
-         /FyA==
+        b=r1KU/TlaGafHw2/VStqg5GUcIzqmoM/v80EQDLYh1478BcemsP4TH93Zmte4eUiNFq
+         PYxdIQiXuLjIZctuK1j70U51hOWOyacjA48IYPkIKg2cpDY2JOD8kV2SooXm6DVc27sI
+         R07wvS5KRF+SCigCg9mwn0cpyE4D0uI0Iu0YqUuxMKVe2KuDLhdlzAEp7e3y3ZGwzucH
+         PmfQ8RFfwXO6HpKlHJkg8fSitlUxBMmzNXGlG4Skiru2VPFIU+jAVPlgu8MfQoF2N+x+
+         Bquco/qU37VOta4clOAfeqSZnWSN5b4hK0W3ab6fdWIURsEU3nqPhztSvfeE6zOmxRSL
+         bRWg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
-         :references:in-reply-to:mime-version:dkim-signature
+        h=sender:errors-to:cc:reply-to:from:list-subscribe:list-help
+         :list-post:list-archive:list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:content-length:mime-version:references
+         :in-reply-to:message-id:to:date:dkim-signature
          :arc-authentication-results;
-        bh=gxwJdj7TjNsal0v6PB0WDC5EI8wMug7Lm59YP5MkDnA=;
-        b=ZoDvL9ILvSuOrnKD+dxeWmTGORP6KNlqahYP9aSoQ0iYvi2LEI5gpRhcHNYfF9uXBJ
-         WlMmLF9msTUaFJdHJ/ntQl2Og5MKsSyYlEx9rb7XZvSXDwZWUFhS3Lt5khF5yJ90ELmD
-         7C5tw/RM5ueLeDBEUH5GlMO1Nn9qd+S3uCU3VnHfnqcab8PiliURBG2/vmN9ju3ya1QF
-         pFPDwfKSD2oX5O1R1iFELBQDnJ/YBMOr1IoZeRrg6Sqnaej5caMUgfiEMdyWatk6fUeQ
-         Yc3iKM00PYSgAOZlxkUizdcWp4P0mX6SyBHeY250jblnWb2+Hmqy2uyzhAg3ey/aN+E8
-         uoAA==
+        bh=aybs/bIRS1xMuYUlFy1EqrQxIqmOYbMLKwUMofagV3s=;
+        b=ARka6dj92WDjDkV4XNKOGRclQA6alVtHbjjsbiilc02j6AsSepgUrDmdPuhQ3c1Ndy
+         Wwxdy/yiAenT0vt8aB3C034fZiLWEECjL4WQskNdXwvvdN4sEdfQptZyBOTjI5JnMkHV
+         s/64E8UnPhEIWjQSEHEwEJCSPcTZ9AbFs14kXR0phhgXLsHQlUlXPrD1SshnS4EcWA6T
+         PuBFFMhrCV3Vst/pKZecrZpeaWYV+xb5AnrJ05D1YJ/Mif4V12wxY1noqQauoq+8qltY
+         c0OKTZNRci9GdCabdHQUCHYXyrCwGuMXdx9+sO6iXNbPVo9ccyeuJEkXUOPZd/pIFVzv
+         k2Ig==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com;
+       dkim=neutral (body hash did not verify) header.i=@yahoo.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id p67si5648640qkc.235.2017.05.15.09.49.26
+        by mx.google.com with ESMTPS id 58si7405744qtt.218.2017.05.15.14.44.14
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 15 May 2017 09:49:27 -0700 (PDT)
+        Mon, 15 May 2017 14:44:14 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com;
+       dkim=neutral (body hash did not verify) header.i=@yahoo.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:37784 helo=lists.gnu.org)
+Received: from localhost ([::1]:38939 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1dAJBW-0001sH-KM
-	for alex.bennee@linaro.org; Mon, 15 May 2017 12:49:26 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:35739)
+	id 1dANmn-0006tH-VC
+	for alex.bennee@linaro.org; Mon, 15 May 2017 17:44:14 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:51396)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alistair23@gmail.com>) id 1dAJ9e-0000hS-Bd
-	for qemu-devel@nongnu.org; Mon, 15 May 2017 12:47:31 -0400
+	(envelope-from <flypie1@yahoo.com>) id 1dAK96-0004oJ-QU
+	for qemu-devel@nongnu.org; Mon, 15 May 2017 13:51:02 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <alistair23@gmail.com>) id 1dAJ9d-0002VZ-6f
-	for qemu-devel@nongnu.org; Mon, 15 May 2017 12:47:30 -0400
-Received: from mail-oi0-x243.google.com ([2607:f8b0:4003:c06::243]:35399)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <alistair23@gmail.com>)
-	id 1dAJ9d-0002UP-1S; Mon, 15 May 2017 12:47:29 -0400
-Received: by mail-oi0-x243.google.com with SMTP id m17so19788957oik.2;
-	Mon, 15 May 2017 09:47:28 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=mime-version:sender:in-reply-to:references:from:date:message-id
-	:subject:to:cc;
-	bh=gxwJdj7TjNsal0v6PB0WDC5EI8wMug7Lm59YP5MkDnA=;
-	b=DkBz88FMwpCFcdt/gdIXBoH2gaXUw5RW6CidswTfIMZn8QOIyIIKM5cOPlH1QpMLIh
-	oDX5/o+493c1Dy4l+wKCBzpUw7JlecJVi1yvdcTS4s2odxzVC67gAC5XqAWxkcdioEX1
-	ZDddPmCbnZ5ZI9lWHO2QSmPZjMVV2O233J/gMhWAgLZvWQviU2ijZkrMnLodEkeHIybU
-	/15EUZlCw/EKoT9GmryjAVFlpfkQDdXcf+9C9VFVUOEjkRzTtjl7BocQgK/oYqKh087V
-	Jrph7aObdOiNKNYYEvLmNkZ1Dd7lsJW3sS5nO/+ahh2/O5Anxc7Sxds6qBIAdWHodJtY
-	FN8w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:sender:in-reply-to:references:from
-	:date:message-id:subject:to:cc;
-	bh=gxwJdj7TjNsal0v6PB0WDC5EI8wMug7Lm59YP5MkDnA=;
-	b=CNAsy/+8ObI2yS3vO/r6BWdrwSAAJxg8vGaIMAU5MPlENE9cNnSOiSw3rre731DvqO
-	MVYdvOTkhh//RayXq2BTI7wFFtcfwoIobc5CVRChI5ejmJeUnLbqxLcVhdXuukEKoays
-	vKBk/xsO0OmIgAsctyLYoJgMfzYGI7W4ZhHJZ2bT8t2Cu9Ae/8mJYLLJ2KFED71GzT/+
-	+5dcu60k+GEJCY1vi6MceKsKJ1Sh4xhU5AdcIlfcMPXeiQC4jSd09I8eFTJYlHEmZze7
-	GKzyB+QmZupiPjo4MENmz2NJ9IC3sshflf1pROt956pWF0lxxBdRfSSN4H1tyE3Wrkvt
-	ncNA==
-X-Gm-Message-State: AODbwcC+67Iht+Gg27KUoz5A2JXXXkRoqxODYgqlssaiL7zy/UIcaev0
-	YVDZAc9xzaQWCf5cxz5CTxzbBj2tWw==
-X-Received: by 10.157.84.38 with SMTP id j38mr3676258oth.183.1494866847651;
-	Mon, 15 May 2017 09:47:27 -0700 (PDT)
-MIME-Version: 1.0
-Received: by 10.182.16.163 with HTTP; Mon, 15 May 2017 09:46:57 -0700 (PDT)
-In-Reply-To: <757990479.60759.1494722527715@mail.yahoo.com>
+	(envelope-from <flypie1@yahoo.com>) id 1dAK92-0004mv-OU
+	for qemu-devel@nongnu.org; Mon, 15 May 2017 13:51:00 -0400
+Received: from nm10-vm8.bullet.mail.ir2.yahoo.com ([212.82.96.160]:45306)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_ARCFOUR_SHA1:16) (Exim 4.71)
+	(envelope-from <flypie1@yahoo.com>) id 1dAK92-0004lP-3w
+	for qemu-devel@nongnu.org; Mon, 15 May 2017 13:50:56 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=yahoo.com; s=s2048;
+	t=1494870654; bh=Fy4RWb2Lf+zaoJp4+Pd5N0Vy8YLseMHJKF4VcKH5kBM=;
+	h=Date:From:Reply-To:To:Cc:In-Reply-To:References:Subject:From:Subject;
+	b=XVnTrIoShRGoMonsRQjROsnn55UXaUaUZl9Nyq7xFcWxIpm1KGu025wAYi6B0973tzHR64LsIgadX9a+H0dtJB7HcmaaoGzk0QipwN8uH8v7p3D78qKVqagXB36GIC8+zIpbR3C/IByFStre3/ka07u1pKT/oP2+jFNMYYMiSMdcVABxIqXCp3+1F3aNpPueGDG/zq/aj9Oojp3kAwR0tw3bUdzgXllKLlesnVPBNwrdvddadT/OD2uAgDVXp0s4twDzqI6XDCANAoAZ8rNik4UaWfOuFdjkd+Bgo60m6GjRSo/TXM9YNkLFjntkfdlDtSEjuT/qv6mxmeXCSgW0XQ==
+Received: from [212.82.98.52] by nm10.bullet.mail.ir2.yahoo.com with NNFMP;
+	15 May 2017 17:50:54 -0000
+Received: from [212.82.98.102] by tm5.bullet.mail.ir2.yahoo.com with NNFMP;
+	15 May 2017 17:50:54 -0000
+Received: from [127.0.0.1] by omp1039.mail.ir2.yahoo.com with NNFMP;
+	15 May 2017 17:50:54 -0000
+X-Yahoo-Newman-Property: ymail-4
+X-Yahoo-Newman-Id: 419905.66471.bm@omp1039.mail.ir2.yahoo.com
+X-YMail-OSG: 4tUyVLQVM1lJviQVfehHLZOrVcBJvsRRNlLdcQctAtIefQ4OJIFxtX_v6VxvRXg
+	KDRW64f7tUFrQTsBIfHnjx_isTJWJuBbtgykk6azoL4FknbI7oL1ftq7o9TSBlIR4emk5kFFHDBf
+	uXbtX93J1X38pCyBNF1Veb6jdq6LuFqPxjAWw16GZ5QEzdX.YJlc1SdrVWj6o_oCqAnfc4QG.6YF
+	e5SEoN3KoqE8dlpxGWhOPEodUqO2a499i3BQxvoPhh2cr40r_kymZ_G.6V5KM9UBkeJjSNJ7tfz2
+	AZs_wi7EZyXNAOUqts_UXHpl6k3EnifCl1s27px8xBll5kqI6ECKcxiTHVXd1vS5aADlkdKS1us8
+	CHHBJGBUdGefsGqPGXUfCPxmiPt0HF0yaymd2Ch_kMRnU5pdveYfxzBhLcMK_0u8N_JbUg8UHZQP
+	cTJLUn0UndoohpLRwDXOtNuPLVbQbCAMlVhC3_Fzt43MvitwmMeI8HwdyKmqrq4Z8jcVr.hdg3nW
+	oRZbZPjf1I.do2n0MNCX9anZwQOy7m947x7PGi0nJAuqXHE9xknsq1g8-
+Received: from jws700026.mail.ir2.yahoo.com by
+	sendmailws168.mail.ir2.yahoo.com;
+	Mon, 15 May 2017 17:50:53 +0000; 1494870653.854
+Date: Mon, 15 May 2017 17:50:47 +0000 (UTC)
+To: Alistair Francis <alistair.francis@xilinx.com>
+Message-ID: <1337329283.3100470.1494870647989@mail.yahoo.com>
+In-Reply-To: <CAKmqyKPy35OuMkixGnDXOvApAu82uXrtQStSz4GzHNRStdFFNA@mail.gmail.com>
 References: <757990479.60759.1494722527715.ref@mail.yahoo.com>
 	<757990479.60759.1494722527715@mail.yahoo.com>
-From: Alistair Francis <alistair.francis@xilinx.com>
-Date: Mon, 15 May 2017 09:46:57 -0700
-X-Google-Sender-Auth: zZmxWfC1YGJBqBVfpX7c64cS18Q
-Message-ID: <CAKmqyKPy35OuMkixGnDXOvApAu82uXrtQStSz4GzHNRStdFFNA@mail.gmail.com>
-To: John Bradley <flypie1@yahoo.com>
-Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:4003:c06::243
+	<CAKmqyKPy35OuMkixGnDXOvApAu82uXrtQStSz4GzHNRStdFFNA@mail.gmail.com>
+MIME-Version: 1.0
+X-Mailer: WebService/1.1.9641 YahooMailNeo Mozilla/5.0 (Windows NT 10.0; WOW64;
+	rv:53.0) Gecko/20100101 Firefox/53.0
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
+X-Received-From: 212.82.96.160
+X-Mailman-Approved-At: Mon, 15 May 2017 17:42:10 -0400
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+X-Content-Filtered-By: Mailman/MimeDel 2.1.21
 Subject: Re: [Qemu-devel] Changes to Broadcom(BCM) files and Raspberry Pi
  files. Addition of PanelEmu
 X-BeenThere: qemu-devel@nongnu.org
@@ -105,18 +104,28 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
 	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+From: John Bradley via Qemu-devel <qemu-devel@nongnu.org>
+Reply-To: John Bradley <flypie1@yahoo.com>
 Cc: Laurent Vivier <lvivier@redhat.com>,
 	Peter Maydell <peter.maydell@linaro.org>,
 	John Bradley <flypie@rocketmail.com>,
 	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
 	Markus Armbruster <armbru@redhat.com>,
-	"qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
-	Alistair Francis <alistair.francis@xilinx.com>
+	"qemu-arm@nongnu.org" <qemu-arm@nongnu.org>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: pIcnF4vDy6Dz
+X-TUID: 4cnx2iXPvTLn
 
-On Sat, May 13, 2017 at 5:42 PM, John Bradley via Qemu-devel
+Hi,
+That is going to be very difficult as a lot of the changes are interlinked =
+the vast majority of the patch is new files.=C2=A0John BradleyTel: 07896 83=
+9635Skype: flypie125 125B Grove StreetEdge Hill Liverpool L7 7AF=20
+
+    On Monday, 15 May 2017, 17:54, Alistair Francis <alistair.francis@xilin=
+x.com> wrote:
+=20
+
+ On Sat, May 13, 2017 at 5:42 PM, John Bradley via Qemu-devel
 <qemu-devel@nongnu.org> wrote:
 > From 7f74f048f135d9c9c230a9e90f72451c841c6d35 Mon Sep 17 00:00:00 2001
 > From: John Bradley <flypie@rocketmail.com>
@@ -154,36 +163,56 @@ Thanks,
 Alistair
 
 > ---
-> .gitignore                           |   54 ++
-> hw/arm/Makefile.objs                 |    2 +-
-> hw/arm/bcm2835.c                     |  114 ++++
-> hw/arm/bcm2835_peripherals.c         |  104 ++++
-> hw/arm/bcm2836.c                     |    3 +-
-> hw/arm/raspi.c                       |   77 ++-
-> hw/gpio/bcm2835_gpio.c               |  333 ++++++-----
-> hw/misc/Makefile.objs                |    2 +
-> hw/misc/bcm2835_mphi.c               |  163 ++++++
-> hw/misc/bcm2835_power.c              |  106 ++++
-> hw/timer/Makefile.objs               |    2 +
-> hw/timer/bcm2835_st.c                |  202 +++++++
-> hw/timer/bcm2835_timer.c             |  224 +++++++
-> hw/usb/Makefile.objs                 |    4 +-
-> hw/usb/bcm2835_usb.c                 |  604 +++++++++++++++++++
-> hw/usb/bcm2835_usb_regs.h            | 1061 ++++++++++++++++++++++++++++++++++
-> hw/usb/dev-network.c                 |    2 +-
-> include/hw/arm/bcm2835.h             |   37 ++
-> include/hw/arm/bcm2835_peripherals.h |   10 +
-> include/hw/gpio/bcm2835_gpio.h       |    5 +
-> include/hw/intc/bcm2835_control.h    |   53 ++
-> include/hw/intc/bcm2836_control.h    |    2 +
-> include/hw/misc/bcm2835_mphi.h       |   28 +
-> include/hw/misc/bcm2835_power.h      |   22 +
-> include/hw/timer/bcm2835_st.h        |   25 +
-> include/hw/timer/bcm2835_timer.h     |   32 +
-> include/hw/usb/bcm2835_usb.h         |   78 +++
-> include/qemu/PanelEmu.h              |   53 ++
-> util/Makefile.objs                   |    1 +
-> util/PanelEmu.c                      |  293 ++++++++++
+> .gitignore=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 |=C2=A0 54 ++
+> hw/arm/Makefile.objs=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 |=C2=A0 =C2=A0 2 +-
+> hw/arm/bcm2835.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 |=C2=A0 114 ++++
+> hw/arm/bcm2835_peripherals.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 |=C2=A0 104 ++++
+> hw/arm/bcm2836.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 |=C2=A0 =C2=A0 3 +-
+> hw/arm/raspi.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 |=C2=A0 77 ++-
+> hw/gpio/bcm2835_gpio.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 |=
+=C2=A0 333 ++++++-----
+> hw/misc/Makefile.objs=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 |=C2=A0 =C2=A0 2 +
+> hw/misc/bcm2835_mphi.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 |=
+=C2=A0 163 ++++++
+> hw/misc/bcm2835_power.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 |=
+=C2=A0 106 ++++
+> hw/timer/Makefile.objs=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 |=
+=C2=A0 =C2=A0 2 +
+> hw/timer/bcm2835_st.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 |=C2=A0 202 +++++++
+> hw/timer/bcm2835_timer.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 |=C2=A0=
+ 224 +++++++
+> hw/usb/Makefile.objs=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 |=C2=A0 =C2=A0 4 +-
+> hw/usb/bcm2835_usb.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 |=C2=A0 604 +++++++++++++++++++
+> hw/usb/bcm2835_usb_regs.h=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 | 1061=
+ ++++++++++++++++++++++++++++++++++
+> hw/usb/dev-network.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 |=C2=A0 =C2=A0 2 +-
+> include/hw/arm/bcm2835.h=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 |=C2=A0=
+ 37 ++
+> include/hw/arm/bcm2835_peripherals.h |=C2=A0 10 +
+> include/hw/gpio/bcm2835_gpio.h=C2=A0 =C2=A0 =C2=A0 |=C2=A0 =C2=A0 5 +
+> include/hw/intc/bcm2835_control.h=C2=A0 =C2=A0 |=C2=A0 53 ++
+> include/hw/intc/bcm2836_control.h=C2=A0 =C2=A0 |=C2=A0 =C2=A0 2 +
+> include/hw/misc/bcm2835_mphi.h=C2=A0 =C2=A0 =C2=A0 |=C2=A0 28 +
+> include/hw/misc/bcm2835_power.h=C2=A0 =C2=A0 =C2=A0 |=C2=A0 22 +
+> include/hw/timer/bcm2835_st.h=C2=A0 =C2=A0 =C2=A0 =C2=A0 |=C2=A0 25 +
+> include/hw/timer/bcm2835_timer.h=C2=A0 =C2=A0 |=C2=A0 32 +
+> include/hw/usb/bcm2835_usb.h=C2=A0 =C2=A0 =C2=A0 =C2=A0 |=C2=A0 78 +++
+> include/qemu/PanelEmu.h=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 |=
+=C2=A0 53 ++
+> util/Makefile.objs=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ =C2=A0 |=C2=A0 =C2=A0 1 +
+> util/PanelEmu.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 |=C2=A0 293 ++++++++++
 > 30 files changed, 3547 insertions(+), 149 deletions(-)
 > create mode 100644 hw/arm/bcm2835.c
 > create mode 100644 hw/misc/bcm2835_mphi.c
@@ -202,3 +231,6 @@ Alistair
 > create mode 100644 include/qemu/PanelEmu.h
 > create mode 100644 util/PanelEmu.c
 >
+
+
+  =20

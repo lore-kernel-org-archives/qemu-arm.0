@@ -1,56 +1,56 @@
-Received: by 10.25.0.6 with SMTP id 6csp1565409lfa;
-        Mon, 15 May 2017 12:42:58 -0700 (PDT)
-X-Received: by 10.98.222.133 with SMTP id h127mr7840691pfg.63.1494877378464;
-        Mon, 15 May 2017 12:42:58 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1494877378; cv=none;
+Received: by 10.25.0.6 with SMTP id 6csp1601188lfa;
+        Mon, 15 May 2017 14:42:41 -0700 (PDT)
+X-Received: by 10.99.176.15 with SMTP id h15mr8427510pgf.19.1494884561337;
+        Mon, 15 May 2017 14:42:41 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1494884561; cv=none;
         d=google.com; s=arc-20160816;
-        b=L/5w6M/Tz+5XZaQlkVzgxoZKVqex6KuBU77PMjuHi2xEkocwTSkhIGlxZQ6IZ8GLoE
-         5f+ssyhxW4y6kBfT98yVNmF91m/dJNxObOH1lbSRpEiCMW7bvnwI7ZbzWBoSQ2bHcHlO
-         mYzyJ8XQVzdwdhRM902XbWu8vePQTq1pEBPyaA8wU+N6CfZzk7g7XyRL+Ygm1YhRs0Qh
-         Cmb8B2ydO8JvCRGlequsvSMyHycdjbXUEhzsYFUWCaQ3ln9eQsmL0n5vj0nL2JP1bBug
-         gQi651bbGToSSmVIfeseE4wmpAT43wkVqafKSpLDva++3q3NxV6p5diC77qDoQtdtc1W
-         YsUg==
+        b=sgzvYG/e8nRGW/niJLVALLaZm2AdV2T/7ME9xb0XEhIEHzOFL0K2Ispt5QAxOo0WbF
+         NR5d4cbBSPcHYgE0F+CJ+8GSDB9wRdZ3oquo6qVt5y+hZlatiUPzlKD3jco+M/Yd49RG
+         c7BknIrDGsdBexlcL2Ef1rjOaj5As0okKUa+vakPd5UwrvKfCK1ukfWz3tCFVXnJQLuY
+         6B+jWxdt8rr3HtYgq7Shn2VhNyncjO+E5mZcQbeRfGtJjYtVpBQSZB/hlz1xjUM7Yl+j
+         CUcmAV7V1vj3DZHnDlXZZN0/AVFi2iv93mGjT9jd7JtOMp7jXFx743JbXRe3LdlXFG90
+         O/kQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-id:precedence:sender:content-transfer-encoding:mime-version
          :references:in-reply-to:message-id:date:subject:cc:to:from
          :dkim-filter:dmarc-filter:arc-authentication-results;
-        bh=RHWohm7PWS52Q5U4VqqI1cEMi2fYgW5HrbUELn9n608=;
-        b=01tvbbaKrpfB3psAAXnmyX4GhSvFXMi0kVyFJsJLbf9lBlQgNecCZaFipByiPK8A2E
-         o0W2NNKjFam8niJ0atmVzfWXrCHdH8NsTvpzxPoVZihFUM22HFDpuWfDz+al96hWN+0D
-         hPB1a00KXcGMwjIjqQvwnPXpw/geSimnpclZmPSHGr0hyJ7X9I6Ej7voewcxaAHUO4Qs
-         7eyHMO8NSiAWokEGxdw1/4JIS/wNLnqVinmQ5ethBimZIwTjVQVYqZAtvPzyFjLUuvq5
-         HWmUFM47mC3NuB1ydG/Rj95ulqYbMQA4ZYfsjGV1UFaCGrKkAJ46k5Ery6XiKW9hmOkz
-         d0ag==
+        bh=DmXKR4dkbzawbAimKy/AUojnPknGrCmlVAA/wHVvRNQ=;
+        b=KCBlMJoHqPGuBlsUVtXO9dON7XYp2bCEJqtKePPRR0TWarX5ZytY3jUe+aFR43ryzF
+         zbAMqSbQoHqffbBoKnFrHLoyUnQ1cwTlWSmGRRCkc/z7A4+9yKZeIDBUbnIo4rVUK8zv
+         pDrmRtKy/0u/9USgVstlPnZ3fWXqQ3AavwxgioTDbSeTpk69OAnFkmDFfaKPE21xJV7a
+         xiGAu5qa4y8ecB29j5EFwtZlAIn1c6RZYXxpYjHENBL1lFnKlVLlQgdpvESKlFCsGMvB
+         v+F4UuHH+xLukWFfNRkcgqm/vteT4Iv8RyJFGdlRP6xV2/HGDgaQn3/nWO6pDodc46hY
+         0m0Q==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <kvm-owner@vger.kernel.org>
 Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
-        by mx.google.com with ESMTP id m9si11471923pge.272.2017.05.15.12.42.58;
-        Mon, 15 May 2017 12:42:58 -0700 (PDT)
+        by mx.google.com with ESMTP id f10si3078064pfh.152.2017.05.15.14.42.41;
+        Mon, 15 May 2017 14:42:41 -0700 (PDT)
 Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S965046AbdEOTm4 (ORCPT <rfc822;francois.ozog@linaro.org>
-        + 6 others); Mon, 15 May 2017 15:42:56 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:47788 "EHLO mx1.redhat.com"
+        id S1750759AbdEOVmi (ORCPT <rfc822;francois.ozog@linaro.org>
+        + 6 others); Mon, 15 May 2017 17:42:38 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:35222 "EHLO mx1.redhat.com"
         rhost-flags-OK-OK-OK-OK) by vger.kernel.org with ESMTP
-        id S965403AbdEOTmw (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Mon, 15 May 2017 15:42:52 -0400
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com [10.5.11.12])
+        id S1750710AbdEOVmc (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Mon, 15 May 2017 17:42:32 -0400
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com [10.5.11.15])
         (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
         (No client certificate requested)
-        by mx1.redhat.com (Postfix) with ESMTPS id BCB693DBD3;
-        Mon, 15 May 2017 19:42:18 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com BCB693DBD3
-Authentication-Results: ext-mx06.extmail.prod.ext.phx2.redhat.com; dmarc=none (p=none dis=none) header.from=redhat.com
-Authentication-Results: ext-mx06.extmail.prod.ext.phx2.redhat.com; spf=pass smtp.mailfrom=eblake@redhat.com
-DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com BCB693DBD3
+        by mx1.redhat.com (Postfix) with ESMTPS id 752302EF198;
+        Mon, 15 May 2017 21:42:10 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 752302EF198
+Authentication-Results: ext-mx05.extmail.prod.ext.phx2.redhat.com; dmarc=none (p=none dis=none) header.from=redhat.com
+Authentication-Results: ext-mx05.extmail.prod.ext.phx2.redhat.com; spf=pass smtp.mailfrom=eblake@redhat.com
+DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com 752302EF198
 Received: from red.redhat.com (ovpn-123-244.rdu2.redhat.com [10.10.123.244])
-        by smtp.corp.redhat.com (Postfix) with ESMTP id C211F86C69;
-        Mon, 15 May 2017 19:42:03 +0000 (UTC)
+        by smtp.corp.redhat.com (Postfix) with ESMTP id 0201362926;
+        Mon, 15 May 2017 21:41:51 +0000 (UTC)
 From:   Eric Blake <eblake@redhat.com>
 To:     qemu-devel@nongnu.org
 Cc:     armbru@redhat.com, berrange@redhat.com,
@@ -86,21 +86,21 @@ Cc:     armbru@redhat.com, berrange@redhat.com,
         xen-devel@lists.xenproject.org (open list:X86),
         qemu-ppc@nongnu.org (open list:Old World),
         kvm@vger.kernel.org (open list:Overall)
-Subject: [PATCH v8 4/5] shutdown: Add source information to SHUTDOWN and RESET
-Date:   Mon, 15 May 2017 14:41:48 -0500
-Message-Id: <20170515194149.16288-5-eblake@redhat.com>
-In-Reply-To: <20170515194149.16288-1-eblake@redhat.com>
-References: <20170515194149.16288-1-eblake@redhat.com>
+Subject: [PATCH v9 4/5] shutdown: Add source information to SHUTDOWN and RESET
+Date:   Mon, 15 May 2017 16:41:13 -0500
+Message-Id: <20170515214114.15442-5-eblake@redhat.com>
+In-Reply-To: <20170515214114.15442-1-eblake@redhat.com>
+References: <20170515214114.15442-1-eblake@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.5.110.30]); Mon, 15 May 2017 19:42:46 +0000 (UTC)
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.5.110.29]); Mon, 15 May 2017 21:42:27 +0000 (UTC)
 Sender: kvm-owner@vger.kernel.org
 Precedence: bulk
 List-ID: <kvm.vger.kernel.org>
 X-Mailing-List: kvm@vger.kernel.org
-X-TUID: lrEqZ3tpj1YI
+X-TUID: 6Jj+IDe4BN1x
 
 Time to wire up all the call sites that request a shutdown or
 reset to use the enum added in the previous patch.
@@ -216,7 +216,7 @@ index 52102fd..e540e6f 100644
  void qemu_register_powerdown_notifier(Notifier *notifier);
  void qemu_system_debug_request(void);
 diff --git a/vl.c b/vl.c
-index 4641fdf..808c67b 100644
+index 51ed60f..bc5c1be 100644
 --- a/vl.c
 +++ b/vl.c
 @@ -1724,7 +1724,7 @@ void qemu_system_guest_panicked(GuestPanicInformation *info)

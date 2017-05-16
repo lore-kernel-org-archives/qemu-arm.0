@@ -1,187 +1,133 @@
-Received: by 10.25.0.6 with SMTP id 6csp1735367lfa;
-        Mon, 15 May 2017 23:42:00 -0700 (PDT)
-X-Received: by 10.200.56.243 with SMTP id g48mr10080887qtc.79.1494916920195;
-        Mon, 15 May 2017 23:42:00 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1494916920; cv=none;
+Received: by 10.25.0.6 with SMTP id 6csp1769066lfa;
+        Tue, 16 May 2017 01:47:22 -0700 (PDT)
+X-Received: by 10.84.217.28 with SMTP id o28mr14397414pli.37.1494924442739;
+        Tue, 16 May 2017 01:47:22 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1494924442; cv=none;
         d=google.com; s=arc-20160816;
-        b=VvaJzkUEj9bXbONV9TvlzJoNqs6cUNKi/h3q55ZsGJ5e5MTucG+rwFRk2vAPm3gDRA
-         l3SDNEpedzeSRg1TYf8eWajbq40kjWB9T6Jg2ivioytQqMQfzmdpYYJ5o/iy1jrwRYJq
-         Lv/zyjm4Vk74I1cThR73dXQ1WP12iJoqd2x48/p43PyGPS4tZzXgW8ZkPyl5n+44LG8i
-         pRJH+j1Trb+tXHk3IVG7bQ9rvNdlLf4PBFUxF3cwCOGaWcvsBxGIYiB2Qg2zevX/+LQc
-         GsRSQXv3z7B92TcuvG1UmseVPQSSnt/HbuW1PwMLW5hiKZ2XfnekNFHmXeIulBPlQB3/
-         h0pg==
+        b=F3TgQgC0XQ/3dCGIFzBKKivfDSfgyNlA0iVFW77HSC27hBvmPJGiBEH/3IJfyZlesL
+         Xe0lRy7/W29onjN38bUu7YF+38Wz9U8KNBBJW7T/+wkVsdcXsMrJO/6DVtPnex1Htg5R
+         YyTmVKlU5i0OzmafjkY9p9acTy0Akrt3Lm1E5OWUl/IWBEsueGc52H+wSwQDj8OKPVAR
+         g9Wtn1PVyiDhgiO5NvKomSwoDAa5/eyXuP2xX+KBRZ+gnEvhxLSQ8opnAD25iwXSg+F4
+         RnPXj9obxnwfTHnUrQd4PODR2PdI4ONWNxsB3e5v8nOJ30OVhu1+u3dzY4xOOReSWdSf
+         XJXw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
-         :references:in-reply-to:mime-version:dkim-signature
-         :arc-authentication-results;
-        bh=6vAkV352Gi4rp42xIUkf+E4XmrBfAdr0TawbUvcPck0=;
-        b=bKrontUdebhgIglxKmQfGy5GJfOz7LEcOjmspHhR0hdzHUR86EBfOHXVchj6X0TqHP
-         +dNTE5hTsIhODEez+URDimE3OezJKyPVc+WVtnDRLWsgxpuo9Swo4rzcUrES8wqzURqX
-         w4UaMewfwB5LFVGiiuuP2Sg26PJA3V49VP4Y1sASEE3foCHmhBt5RyG2zPZm0n6YL+a6
-         Mx6cwgaq5jK1T+VVbIMWt29aGHvH3QuA9K9Y+cRRWB0uxaOwiXlnepPDoK0S+oWrIO/+
-         Y2ngfUNm0tYuEpD/b1TAGki7MJW1CHXE3L7k1jItNl8QtrCG5j8MUHbjT+78sbK/tIxh
-         Y8zA==
+        h=list-id:precedence:sender:mime-version:user-agent:message-id
+         :in-reply-to:date:references:subject:cc:to:from:dkim-filter
+         :dmarc-filter:arc-authentication-results;
+        bh=niY2ptuvQOMyt2XWEWiKS1uDyZ27drFOsu5OtQV6Lc0=;
+        b=kSNNXSK+2gVmXVAXFtq3VGTVeqLvn7Uj5BgsBaps5x0ST/DcjphDpN4YPHGxA2i2ZN
+         9wV2hiynwO1LgYoV5j5M7jNHPkvB5FXX9Y3jSc0lbk1BKohW9gFu8YBtm9N+nLkku7ss
+         KZCadnJ1OdmNDsiPWRSZfk/ZuyraODr0jgBw2XKAM4gJofknk2ftBpbZA+3kQDO9I/UM
+         SD7q00HxeI1cPKJZN/WdTpxMbpd7ModdEdp7PTRIB4cxvaCVEbYYdkDMeCsmgZeuhJUr
+         4Qg1+oimoUXESw8AJpRpZ/FEGCVMSriVUMLPT53Hh1svtEMht/5cqbz5IcssjTH5GB6H
+         SbJA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id r66si12823892qkb.243.2017.05.15.23.41.59
-        for <alex.bennee@linaro.org>
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 15 May 2017 23:42:00 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <kvm-owner@vger.kernel.org>
+Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
+        by mx.google.com with ESMTP id x11si12994257pls.74.2017.05.16.01.47.22;
+        Tue, 16 May 2017 01:47:22 -0700 (PDT)
+Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:40100 helo=lists.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1dAWBC-0001Vn-BB
-	for alex.bennee@linaro.org; Tue, 16 May 2017 02:41:58 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:37153)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <sundeep.lkml@gmail.com>) id 1dAWB2-0001UW-1q
-	for qemu-arm@nongnu.org; Tue, 16 May 2017 02:41:48 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <sundeep.lkml@gmail.com>) id 1dAWB1-0005jV-AU
-	for qemu-arm@nongnu.org; Tue, 16 May 2017 02:41:48 -0400
-Received: from mail-yb0-x229.google.com ([2607:f8b0:4002:c09::229]:33657)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <sundeep.lkml@gmail.com>)
-	id 1dAWAw-0005eE-B9; Tue, 16 May 2017 02:41:42 -0400
-Received: by mail-yb0-x229.google.com with SMTP id j17so33124433ybj.0;
-	Mon, 15 May 2017 23:41:42 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=6vAkV352Gi4rp42xIUkf+E4XmrBfAdr0TawbUvcPck0=;
-	b=n4FSUhrqxOd3orc3IzhfE+FybHfWfyWmqKRLPwbqF5lvtuMK6tR0nuWk8BWUpwAqlC
-	vkVuLVsXoEVxmAufmsD710T4AePm2q7G7ige6WBHW5B/7PSvBCSGxY33q+Q65vqWmXOI
-	/n+Yq8VU6AQKc4JIYcvYMhYC4Q9odi9++V9Y0/Ii30g7QfONPjbpdry1YFdlYiT226X6
-	fhlslik3+I+Vu9N7uTXGoVyS6DuGGjJhzdnGpMyJlixt5rdb/YR5JsdB6WlbPrBfYmvy
-	nipEJuHT+Lm5o/Fi2Ew6ceDei77+bWclPnbdGGhN8O8upfauHLIGUxihgGzklHyPbYI1
-	zCdg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=6vAkV352Gi4rp42xIUkf+E4XmrBfAdr0TawbUvcPck0=;
-	b=PPrWaxNrIaWlSeDvKt1bmSBTt9AQo7Tmw7QO8StUPQfKFYVkZglcY59kyC4kuTlfJJ
-	edM7/q+QzGzKPuk8N4bvra01m8jei8LlzpProlMwT75dxAP4mNyH24EcVBvICARmIhtd
-	hskZ+ObhV0LZucsPNLQD18nnu+JypxoS4EaMeNhqrfyvjLMExF5ZCsCKI/EZkOfx7apM
-	6iCGlvw0JlQU33G569x3I7dbHUb0PQ1Kdal5MNMbmtbMzVYNFLYpYB6BvODyDs+JlKrE
-	NK+hIJhCs4HX8VOvY85V/Gl/6vdIZFiBW/QFJIkhvUdGlhfcEnLAh0zYGS5VABZ6YT3g
-	1nNg==
-X-Gm-Message-State: AODbwcDm/NKBjkM037j6qjCumshV/dnVMTklKsHNONQQZibLrdmqbxR4
-	/mf9pTv4lntMcKFEVFojSoUyEst79w==
-X-Received: by 10.37.164.200 with SMTP id g66mr8321801ybi.147.1494916901696;
-	Mon, 15 May 2017 23:41:41 -0700 (PDT)
+       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
+        id S1751864AbdEPIrU (ORCPT <rfc822;francois.ozog@linaro.org>
+        + 6 others); Tue, 16 May 2017 04:47:20 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:54802 "EHLO mx1.redhat.com"
+        rhost-flags-OK-OK-OK-OK) by vger.kernel.org with ESMTP
+        id S1751300AbdEPIrR (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Tue, 16 May 2017 04:47:17 -0400
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com [10.5.11.12])
+        (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+        (No client certificate requested)
+        by mx1.redhat.com (Postfix) with ESMTPS id 8C181804FA;
+        Tue, 16 May 2017 08:47:12 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 8C181804FA
+Authentication-Results: ext-mx03.extmail.prod.ext.phx2.redhat.com; dmarc=none (p=none dis=none) header.from=redhat.com
+Authentication-Results: ext-mx03.extmail.prod.ext.phx2.redhat.com; spf=pass smtp.mailfrom=armbru@redhat.com
+DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com 8C181804FA
+Received: from blackfin.pond.sub.org (ovpn-116-54.ams2.redhat.com [10.36.116.54])
+        by smtp.corp.redhat.com (Postfix) with ESMTPS id D0BA5BF845;
+        Tue, 16 May 2017 08:46:58 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+        id 28EA01138647; Tue, 16 May 2017 10:46:57 +0200 (CEST)
+From:   Markus Armbruster <armbru@redhat.com>
+To:     Eric Blake <eblake@redhat.com>
+Cc:     qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
+        "open list\:Overall" <kvm@vger.kernel.org>,
+        "Michael S. Tsirkin" <mst@redhat.com>,
+        Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+        Alexander Graf <agraf@suse.de>,
+        Yongbok Kim <yongbok.kim@imgtec.com>,
+        Gerd Hoffmann <kraxel@redhat.com>,
+        "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+        Rob Herring <robh@kernel.org>,
+        Stefano Stabellini <sstabellini@kernel.org>,
+        Magnus Damm <magnus.damm@gmail.com>,
+        Christian Borntraeger <borntraeger@de.ibm.com>,
+        Anthony Perard <anthony.perard@citrix.com>,
+        "open list\:X86" <xen-devel@lists.xenproject.org>,
+        Richard Henderson <rth@twiddle.net>,
+        Artyom Tarasenko <atar4qemu@gmail.com>,
+        Eduardo Habkost <ehabkost@redhat.com>,
+        Stefan Weil <sw@weilnetz.de>, alistair.francis@xilinx.com,
+        "open list\:Calxeda Highbank" <qemu-arm@nongnu.org>,
+        Jan Kiszka <jan.kiszka@web.de>,
+        Pavel Dovgalyuk <pavel.dovgaluk@ispras.ru>,
+        Igor Mammedov <imammedo@redhat.com>,
+        Cornelia Huck <cornelia.huck@de.ibm.com>,
+        David Gibson <david@gibson.dropbear.id.au>,
+        Paul Burton <paul.burton@imgtec.com>,
+        Max Filippov <jcmvbkbc@gmail.com>,
+        Marcelo Tosatti <mtosatti@redhat.com>,
+        Michael Walle <michael@walle.cc>,
+        "open list\:Old World" <qemu-ppc@nongnu.org>,
+        Paolo Bonzini <pbonzini@redhat.com>,
+        Aurelien Jarno <aurelien@aurel32.net>
+Subject: Re: [Qemu-devel] [PATCH v9 4/5] shutdown: Add source information to SHUTDOWN and RESET
+References: <20170515214114.15442-1-eblake@redhat.com>
+        <20170515214114.15442-5-eblake@redhat.com>
+Date:   Tue, 16 May 2017 10:46:57 +0200
+In-Reply-To: <20170515214114.15442-5-eblake@redhat.com> (Eric Blake's message
+        of "Mon, 15 May 2017 16:41:13 -0500")
+Message-ID: <87y3txfata.fsf@dusky.pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/25.2 (gnu/linux)
 MIME-Version: 1.0
-Received: by 10.13.244.1 with HTTP; Mon, 15 May 2017 23:41:41 -0700 (PDT)
-In-Reply-To: <d82b2e7c-e983-b227-b300-ceea0bd8b2cb@amsat.org>
-References: <1494348286-10253-1-git-send-email-sundeep.lkml@gmail.com>
-	<1494348286-10253-2-git-send-email-sundeep.lkml@gmail.com>
-	<e87597ba-4759-76a5-7b0d-3297d2eb8f79@amsat.org>
-	<d82b2e7c-e983-b227-b300-ceea0bd8b2cb@amsat.org>
-From: sundeep subbaraya <sundeep.lkml@gmail.com>
-Date: Tue, 16 May 2017 12:11:41 +0530
-Message-ID: <CALHRZurDU8fS3GSKproqP83Un2mVnJ75ptydf4QsRZvyzsZz1Q@mail.gmail.com>
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
-Content-Type: multipart/alternative; boundary="94eb2c13ad1ee4fb85054f9e7665"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:4002:c09::229
-Subject: Re: [Qemu-arm] [Qemu-devel PATCH 1/5] msf2: Add Smartfusion2 System
- timer
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.21
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm <qemu-arm@nongnu.org>,
-	QEMU Developers <qemu-devel@nongnu.org>,
-	Alistair Francis <alistair23@gmail.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: XCgwl6TjPaU3
+Content-Type: text/plain
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.5.110.27]); Tue, 16 May 2017 08:47:16 +0000 (UTC)
+Sender: kvm-owner@vger.kernel.org
+Precedence: bulk
+List-ID: <kvm.vger.kernel.org>
+X-Mailing-List: kvm@vger.kernel.org
+X-TUID: ur34loQiway9
 
---94eb2c13ad1ee4fb85054f9e7665
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Eric Blake <eblake@redhat.com> writes:
 
-Hi Philippe,
-
-On Mon, May 15, 2017 at 5:22 PM, Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.o=
-rg>
-wrote:
-
-> Hi Subbaraya,
+> Time to wire up all the call sites that request a shutdown or
+> reset to use the enum added in the previous patch.
 >
-> +        if (value & TIMER_MODE) {
->>> +            qemu_log_mask(LOG_UNIMP, "64-bit mode not supported\n");
->>>
->>
->> No need of trailing '\n', be more specific, something like:
->>
->>     qemu_log_mask(LOG_UNIMP, TYPE_MSF2_TIMER ": 64-bit mode not
->> supported");
->>
+> It would have been less churn to keep the common case with no
+> arguments as meaning guest-triggered, and only modified the
+> host-triggered code paths, via a wrapper function, but then we'd
+> still have to audit that I didn't miss any host-triggered spots;
+> changing the signature forces us to double-check that I correctly
+> categorized all callers.
 >
-> I mistaken with error_report(), qemu_log_mask() does use trailing newline=
-,
-> sorry!
+> Since command line options can change whether a guest reset request
+> causes an actual reset vs. a shutdown, it's easy to also add the
+> information to reset requests.
 >
-
-thats ok :)
-
-Thanks,
-Sundeep
-
+> Signed-off-by: Eric Blake <eblake@redhat.com>
+> Acked-by: David Gibson <david@gibson.dropbear.id.au> [ppc parts]
+> Reviewed-by: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk> [SPARC part]
+> Reviewed-by: Cornelia Huck <cornelia.huck@de.ibm.com> [s390x parts]
 >
-> Phil.
->
+> ---
+> v8: rebase later in series
 
---94eb2c13ad1ee4fb85054f9e7665
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+That turned out nicely.  Thanks!
 
-<div dir=3D"ltr">Hi Philippe,<div class=3D"gmail_extra"><br><div class=3D"g=
-mail_quote">On Mon, May 15, 2017 at 5:22 PM, Philippe Mathieu-Daud=C3=A9 <s=
-pan dir=3D"ltr">&lt;<a href=3D"mailto:f4bug@amsat.org" target=3D"_blank">f4=
-bug@amsat.org</a>&gt;</span> wrote:<br><blockquote class=3D"gmail_quote" st=
-yle=3D"margin:0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex">Hi Su=
-bbaraya,<span class=3D""><br>
-<br>
-<blockquote class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border-left:1p=
-x #ccc solid;padding-left:1ex"><blockquote class=3D"gmail_quote" style=3D"m=
-argin:0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex">
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 if (value &amp; TIMER_MODE) {<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 qemu_log_mask(LOG_UNIMP, &quot;6=
-4-bit mode not supported\n&quot;);<br>
-</blockquote>
-<br>
-No need of trailing &#39;\n&#39;, be more specific, something like:<br>
-<br>
-=C2=A0 =C2=A0 qemu_log_mask(LOG_UNIMP, TYPE_MSF2_TIMER &quot;: 64-bit mode =
-not<br>
-supported&quot;);<br>
-</blockquote>
-<br></span>
-I mistaken with error_report(), qemu_log_mask() does use trailing newline, =
-sorry!<br></blockquote><div><br></div><div>thats ok :)</div><div><br></div>=
-<div>Thanks,</div><div>Sundeep=C2=A0</div><blockquote class=3D"gmail_quote"=
- style=3D"margin:0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex">
-<br>
-Phil.<br>
-</blockquote></div><br></div></div>
-
---94eb2c13ad1ee4fb85054f9e7665--
+Reviewed-by: Markus Armbruster <armbru@redhat.com>

@@ -1,402 +1,148 @@
-Received: by 10.25.0.6 with SMTP id 6csp1933848lfa;
-        Tue, 16 May 2017 08:39:43 -0700 (PDT)
-X-Received: by 10.55.166.137 with SMTP id p131mr11436621qke.132.1494949182951;
-        Tue, 16 May 2017 08:39:42 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1494949182; cv=none;
+Received: by 10.25.0.6 with SMTP id 6csp1934726lfa;
+        Tue, 16 May 2017 08:41:42 -0700 (PDT)
+X-Received: by 10.55.217.93 with SMTP id u90mr10306929qki.277.1494949302689;
+        Tue, 16 May 2017 08:41:42 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1494949302; cv=none;
         d=google.com; s=arc-20160816;
-        b=sT7qnA+Po8E2SBm/BO0kbUsPk7fspWbPd48SnlRKK8GYS6D8MVX/ywFVTQnEeqNI/1
-         F2WnvrgA5OQxYzNhpySBJzp1eiDzHMGdnpJbaFhfh7Os098EkoEsuWlEnbhsEb4Oa9dX
-         UZmrDqf5oMH1LW6e6oOYi1vulGpX8YDMvk4R2IC39DtkkkioJ75834xB0706ydxXoMD8
-         KzL4s8MB4YcCx3r5+HVWpsPC5dn4idOwxgRjY6WABJWhGqROqEYwNF2zXAO5d7NB9lgJ
-         2/hM0zHjShT5ivi9SuxZZJf5gH19O2kyvX8QKqI6pT7pXdS1/RLTuPPKg458biKIQru6
-         /Vbg==
+        b=smFHu0ActimOZg5SYXh/JV+pVQjusWhShUzhPIrsMOy29iq7zeiNjNyBaL0tJOGD5V
+         Dd6HLVhM3IE98+AZLpxXsJlaV3MVe91+/ZARsnHqP2fsHC7lrYNVWId0ygu95jUs1CNA
+         KodVdYu5kXnc9SmJKJpU3tMtkwj23bVfLcGhFcw9QI7RIwvnaLN64fbJIAUeXoH5y+/b
+         WfLNH3+zDojY/MPU2eCeV2ysyxTCkeaY72iv+YQLEWNmJr7wx8qODO+tgyZAudryzPbu
+         3KVIPW321+TLdsY06nN7xz8oQhSkdCE3/v1qj7kZOy8T5wvqM0/mHAn4UBJ7sNzgye1E
+         N6AA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
          :message-id:date:to:from:dkim-signature:arc-authentication-results;
-        bh=uVIXKKG3rSIAYq9JHnA59qmlPozqI15rCmuIpRIh8HE=;
-        b=fvrqQ4i59pac4bH+3nteO/kufjJI9ZRN0WAPOC0hvArq069/JH6lww7ZZGy0fr0Iqo
-         oCOc7Y+eoZlxlxpFZiaqRbKhIwm3lQ8GZgA06aRB/X3O8Dw1lW1aLMe/EazkJT8gUID9
-         Fnkg2dWxxuIHdo8up14FHZqwh8OqmZwdcy6vvvWcpfuXPt+PnbUu9BWUZolSXCn53DCE
-         vikXKKr1EU1vuJQ9ZSnnhV2lkGOXfGUwoz6l83pb4tU3vxV/Rvq7VsFTURWIXX0ZzrGo
-         XN983H0ZtG8mFxLEclfoSD7sgLkOi2xWG0pOboUgoZ3fFXWCR8wWwshzoLgJ2ucG9UVt
-         Ya1w==
+        bh=aywxKvK/yIN6/uD5W+MJ5laPhT1Atki/l/dyC9AM01M=;
+        b=j+UDaTz7gIfFgpchKP1wu9N32FFwnVTmuHXI8b0OiY5VRyYqYFNLNJOpyPQc206wm3
+         3q8OkAfSEtHk9wufHFWPjhNtU/HU8IH3sGjL4/VkzGKA2v27aS2rQlh0nPqWOWB5gPeY
+         4udZQg3bIxbNGjb8NbCHOnumtvvBaIn3u31f3Dxve5j9m26gEJ4y/IWnOwHo1teEZAzz
+         BWS6rkAWJ3LfmqI0STZvNCrX6o7Ed605anjsZvvWgh8jcgN7CYauegEqBixbi2XUQbeh
+         ltIHXS1agloQUCslIbDFqeT9JtFT4CN6E6v5p6wewZOIvOrNQXTMGEYMgcArVJiCzdmp
+         uMjg==
 ARC-Authentication-Results: i=1; mx.google.com;
        dkim=fail header.i=@gmail.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id v2si13784097qkd.12.2017.05.16.08.39.42
+        by mx.google.com with ESMTPS id 44si13709566qtn.173.2017.05.16.08.41.42
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 16 May 2017 08:39:42 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Tue, 16 May 2017 08:41:42 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        dkim=fail header.i=@gmail.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:42805 helo=lists.gnu.org)
+Received: from localhost ([::1]:42815 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1dAeZa-0002a1-C0
-	for alex.bennee@linaro.org; Tue, 16 May 2017 11:39:42 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:42161)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1dAebW-00040g-0H
+	for alex.bennee@linaro.org; Tue, 16 May 2017 11:41:42 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:42264)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <sundeep.lkml@gmail.com>) id 1dAeZS-0002Vg-RW
-	for qemu-arm@nongnu.org; Tue, 16 May 2017 11:39:36 -0400
+	(envelope-from <sundeep.lkml@gmail.com>) id 1dAeZZ-0002ch-AT
+	for qemu-devel@nongnu.org; Tue, 16 May 2017 11:39:42 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <sundeep.lkml@gmail.com>) id 1dAeZR-0001YD-6k
-	for qemu-arm@nongnu.org; Tue, 16 May 2017 11:39:34 -0400
-Received: from mail-pg0-x243.google.com ([2607:f8b0:400e:c05::243]:33239)
+	(envelope-from <sundeep.lkml@gmail.com>) id 1dAeZW-0001bu-5Y
+	for qemu-devel@nongnu.org; Tue, 16 May 2017 11:39:41 -0400
+Received: from mail-pg0-x243.google.com ([2607:f8b0:400e:c05::243]:35585)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <sundeep.lkml@gmail.com>)
-	id 1dAeZK-0001Vj-So; Tue, 16 May 2017 11:39:27 -0400
-Received: by mail-pg0-x243.google.com with SMTP id s62so21858212pgc.0;
-	Tue, 16 May 2017 08:39:26 -0700 (PDT)
+	id 1dAeZV-0001bB-U1; Tue, 16 May 2017 11:39:38 -0400
+Received: by mail-pg0-x243.google.com with SMTP id i63so21845124pgd.2;
+	Tue, 16 May 2017 08:39:37 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
 	h=from:to:cc:subject:date:message-id:in-reply-to:references;
-	bh=uVIXKKG3rSIAYq9JHnA59qmlPozqI15rCmuIpRIh8HE=;
-	b=AmNUZ8j0uc+khjwYGmcENZZJQJVxvwkBTgTWMalYGkoQnFHwFe3rYW31r+CpmTpIDK
-	aDaFAkwdY7NYPZlWYhFvj+XcrwXjXNKaPowlyZt4J1LPZfhzZ6T/mNMRBkXjsTxgYAkp
-	T167sq+eS/SaKIjx5i/LZvLoQEvl55c/Dni7y3v2nMuLJPnYAlWX02fC8nnKkREGxGAk
-	o/WDcPdtxDZyDEpxJ20YSLbVzIwKOuRFbE2tvH2NrHhl7Ick6AUmIMk3VBQQjBKq3B2n
-	CPo/0jttu3+D/0TOLD/Q3In1P0jCVi+/2OyZ/7BxOmBUFFlyO+3TBS8yaKu562tHMste
-	TgYg==
+	bh=aywxKvK/yIN6/uD5W+MJ5laPhT1Atki/l/dyC9AM01M=;
+	b=kIOYkmQJ9ZMU0uEELBJDdNU4DIJFxwGWcX3jHRGAFM5xUMTDhA5AZ1u79T0JkQnXgn
+	NP525+TTIh80tMx5iPRt+ca9koUvgJeVLsjbJ2VTSUwkX4cVcYPUPBEXkTalTw6yBdWq
+	1FVD6/pVwXfUgkVRImWM5QpmPJGnhiyRb3YdvZ0bbv/DeAwGatmz73Ee844A8FgSlOrn
+	eGQA1ZVZK9HZ9jWKNeGQt0sST6tXG7KLCZihtxA/02njADCx14imYyIpgTX0T+Byy4R1
+	woot0HGXyBm57Kz9nv8iDxUQNEjkOqPp/xJJ8TkEdlXtYV6rr6Zvt8IViNBrx21BOIts
+	6HwQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
 	:references;
-	bh=uVIXKKG3rSIAYq9JHnA59qmlPozqI15rCmuIpRIh8HE=;
-	b=KPLTN3audRVXMGfiY1g2DOnLh6ZCfPWInZbwa7vgNg0dnJoa99dGCFcEqESkXiOqhw
-	MplAKgKFMVQgPMeaVcuANzUFyUQ1izdXa+ditEDbOudDU3cBSdzUWaZJR6jTX5QQg2Sr
-	ODal1Yz7Eii+ziYhUD//sYobF5F+d+XPCKkX/lvxK+ICKzgn3tvekELAMzEPJ7eIqCoU
-	Kxw0Q89lCUUwkrt4YsA5GRQvkcZ652U+/D2fBYPo3pJ/P+L0/cLsd5n1kt4mRTLXlAp8
-	uBmOsGX/umgeI3vSwLAayCJJcjM/zLmU1B+plSuA4KpSmMed23pzrhyBOIt5rrlvjaQg
-	45Uw==
-X-Gm-Message-State: AODbwcCnEghpKYANJrLRxoaJvSRLwuXuwI8xRTSVYb0MtkHPYE8K/pQF
-	ERB7WYK9jIqgWg==
-X-Received: by 10.84.213.2 with SMTP id f2mr16675399pli.22.1494949165521;
-	Tue, 16 May 2017 08:39:25 -0700 (PDT)
+	bh=aywxKvK/yIN6/uD5W+MJ5laPhT1Atki/l/dyC9AM01M=;
+	b=dB22MQZjKFdbmZvXa7o+ZLBewy9nq0o1U41mW3pzX0o9Ghdup0xO/2kWqSqDJs7ek0
+	JZ1V1VWjlBhVfCvLJj6tDRC6yCM+rNDNMveE/wwNV0BqBdkhtDlOp/R1Z8w2RX/RS0C1
+	K/VvXl5Wc5yj5ikCDOvgrzNaf/cMk5i2QfIv905pIo/VRDmPANHZVM1mfQkFoZYFCQRN
+	UmpN1rqHKWZvSkdxrIbaemvYYzPRvjI/k6Q8xk+GVmLMzI99fVdK809XksGDeHoq6aal
+	nwV0u+vY1cTavTrFHCWyl/2qepATFW6fM36xIqucJWaX6huSOpknt3cmesrqSAI/CWal
+	1UYA==
+X-Gm-Message-State: AODbwcARzRJrjh8A0HnR3X6M+vzI2WXabiQeqUetp3PQ/hacXRDvY4Kc
+	dNIIpOtBu9Eb4g==
+X-Received: by 10.98.65.216 with SMTP id g85mr13205260pfd.187.1494949177022;
+	Tue, 16 May 2017 08:39:37 -0700 (PDT)
 Received: from localhost.localdomain ([124.123.70.3])
 	by smtp.gmail.com with ESMTPSA id
-	d86sm27874895pfj.75.2017.05.16.08.39.22
+	d86sm27874895pfj.75.2017.05.16.08.39.34
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-	Tue, 16 May 2017 08:39:24 -0700 (PDT)
+	Tue, 16 May 2017 08:39:36 -0700 (PDT)
 From: Subbaraya Sundeep <sundeep.lkml@gmail.com>
 To: qemu-devel@nongnu.org,
 	qemu-arm@nongnu.org
-Date: Tue, 16 May 2017 21:08:49 +0530
-Message-Id: <1494949133-2202-2-git-send-email-sundeep.lkml@gmail.com>
+Date: Tue, 16 May 2017 21:08:53 +0530
+Message-Id: <1494949133-2202-6-git-send-email-sundeep.lkml@gmail.com>
 X-Mailer: git-send-email 2.5.0
 In-Reply-To: <1494949133-2202-1-git-send-email-sundeep.lkml@gmail.com>
 References: <1494949133-2202-1-git-send-email-sundeep.lkml@gmail.com>
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
 X-Received-From: 2607:f8b0:400e:c05::243
-Subject: [Qemu-arm] [Qemu devel v5 PATCH 1/5] msf2: Add Smartfusion2 System
- timer
-X-BeenThere: qemu-arm@nongnu.org
+Subject: [Qemu-devel] [Qemu devel v5 PATCH 5/5] msf2: Add Emcraft's
+ Smartfusion2 SOM kit.
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: peter.maydell@linaro.org, Subbaraya Sundeep <sundeep.lkml@gmail.com>,
-	f4bug@amsat.org, alistair23@gmail.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 7tRO0+xjfcv5
+	f4bug@amsat.org, alistair23@gmail.com, crosthwaite.peter@gmail.com
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: MVCaFl/9ou14
 
-Modelled System Timer in Microsemi's Smartfusion2 Soc.
-Timer has two 32bit down counters and two interrupts.
+Emulated Emcraft's Smartfusion2 System On Module starter
+kit.
 
 Signed-off-by: Subbaraya Sundeep <sundeep.lkml@gmail.com>
 ---
- hw/timer/Makefile.objs       |   1 +
- hw/timer/mss-timer.c         | 249 +++++++++++++++++++++++++++++++++++++++++++
- include/hw/timer/mss-timer.h |  80 ++++++++++++++
- 3 files changed, 330 insertions(+)
- create mode 100644 hw/timer/mss-timer.c
- create mode 100644 include/hw/timer/mss-timer.h
+ hw/arm/Makefile.objs |  1 +
+ hw/arm/msf2-som.c    | 89 ++++++++++++++++++++++++++++++++++++++++++++++++++++
+ 2 files changed, 90 insertions(+)
+ create mode 100644 hw/arm/msf2-som.c
 
-diff --git a/hw/timer/Makefile.objs b/hw/timer/Makefile.objs
-index dd6f27e..fc4d2da 100644
---- a/hw/timer/Makefile.objs
-+++ b/hw/timer/Makefile.objs
-@@ -41,3 +41,4 @@ common-obj-$(CONFIG_STM32F2XX_TIMER) += stm32f2xx_timer.o
- common-obj-$(CONFIG_ASPEED_SOC) += aspeed_timer.o
+diff --git a/hw/arm/Makefile.objs b/hw/arm/Makefile.objs
+index c828061..4b02093 100644
+--- a/hw/arm/Makefile.objs
++++ b/hw/arm/Makefile.objs
+@@ -5,6 +5,7 @@ obj-y += omap_sx1.o palm.o realview.o spitz.o stellaris.o
+ obj-y += tosa.o versatilepb.o vexpress.o virt.o xilinx_zynq.o z2.o
+ obj-$(CONFIG_ACPI) += virt-acpi-build.o
+ obj-y += netduino2.o
++obj-y += msf2-som.o
+ obj-y += sysbus-fdt.o
  
- common-obj-$(CONFIG_SUN4V_RTC) += sun4v-rtc.o
-+common-obj-$(CONFIG_MSF2) += mss-timer.o
-diff --git a/hw/timer/mss-timer.c b/hw/timer/mss-timer.c
+ obj-y += armv7m.o exynos4210.o pxa2xx.o pxa2xx_gpio.o pxa2xx_pic.o
+diff --git a/hw/arm/msf2-som.c b/hw/arm/msf2-som.c
 new file mode 100644
-index 0000000..7041965
+index 0000000..cd2b759
 --- /dev/null
-+++ b/hw/timer/mss-timer.c
-@@ -0,0 +1,249 @@
++++ b/hw/arm/msf2-som.c
+@@ -0,0 +1,89 @@
 +/*
-+ * Block model of System timer present in
-+ * Microsemi's SmartFusion2 and SmartFusion SoCs.
-+ *
-+ * Copyright (c) 2017 Subbaraya Sundeep <sundeep.lkml@gmail.com>.
-+ *
-+ * Permission is hereby granted, free of charge, to any person obtaining a copy
-+ * of this software and associated documentation files (the "Software"), to deal
-+ * in the Software without restriction, including without limitation the rights
-+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-+ * copies of the Software, and to permit persons to whom the Software is
-+ * furnished to do so, subject to the following conditions:
-+ *
-+ * The above copyright notice and this permission notice shall be included in
-+ * all copies or substantial portions of the Software.
-+ *
-+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
-+ * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-+ * THE SOFTWARE.
-+ */
-+
-+#include "hw/timer/mss-timer.h"
-+
-+#ifndef MSS_TIMER_ERR_DEBUG
-+#define MSS_TIMER_ERR_DEBUG  0
-+#endif
-+
-+#define DB_PRINT_L(lvl, fmt, args...) do { \
-+    if (MSS_TIMER_ERR_DEBUG >= lvl) { \
-+        qemu_log("%s: " fmt, __func__, ## args); \
-+    } \
-+} while (0);
-+
-+#define DB_PRINT(fmt, args...) DB_PRINT_L(1, fmt, ## args)
-+
-+static void timer_update_irq(struct Msf2Timer *st)
-+{
-+    bool isr, ier;
-+
-+    isr = !!(st->regs[R_TIM_RIS] & TIMER_RIS_ACK);
-+    ier = !!(st->regs[R_TIM_CTRL] & TIMER_CTRL_INTR);
-+
-+    qemu_set_irq(st->irq, (ier && isr));
-+}
-+
-+static void timer_update(struct Msf2Timer *st)
-+{
-+    uint64_t count;
-+
-+    if (!(st->regs[R_TIM_CTRL] & TIMER_CTRL_ENBL)) {
-+        ptimer_stop(st->ptimer);
-+        return;
-+    }
-+
-+    count = st->regs[R_TIM_LOADVAL];
-+    ptimer_set_limit(st->ptimer, count, 1);
-+    ptimer_run(st->ptimer, 1);
-+}
-+
-+static uint64_t
-+timer_read(void *opaque, hwaddr offset, unsigned int size)
-+{
-+    MSSTimerState *t = opaque;
-+    hwaddr addr;
-+    struct Msf2Timer *st;
-+    uint32_t ret = 0;
-+    int timer = 0;
-+    int isr;
-+    int ier;
-+
-+    addr = offset >> 2;
-+    /*
-+     * Two independent timers has same base address.
-+     * Based on address passed figure out which timer is being used.
-+     */
-+    if ((addr >= R_TIM1_MAX) && (addr < NUM_TIMERS * R_TIM1_MAX)) {
-+        timer = 1;
-+        addr -= R_TIM1_MAX;
-+    }
-+
-+    st = &t->timers[timer];
-+
-+    switch (addr) {
-+    case R_TIM_VAL:
-+        ret = ptimer_get_count(st->ptimer);
-+        break;
-+
-+    case R_TIM_MIS:
-+        isr = !!(st->regs[R_TIM_RIS] & TIMER_RIS_ACK);
-+        ier = !!(st->regs[R_TIM_CTRL] & TIMER_CTRL_INTR);
-+        ret = ier & isr;
-+        break;
-+
-+    default:
-+        if (addr < NUM_TIMERS * R_TIM1_MAX) {
-+            ret = st->regs[addr];
-+        } else {
-+            qemu_log_mask(LOG_GUEST_ERROR,
-+                        TYPE_MSS_TIMER": 64-bit mode not supported\n");
-+        }
-+        break;
-+    }
-+
-+    DB_PRINT("timer=%d 0x%" HWADDR_PRIx "=0x%" PRIx32 "\n", timer, offset,
-+            ret);
-+    return ret;
-+}
-+
-+static void
-+timer_write(void *opaque, hwaddr offset,
-+            uint64_t val64, unsigned int size)
-+{
-+    MSSTimerState *t = opaque;
-+    hwaddr addr;
-+    struct Msf2Timer *st;
-+    int timer = 0;
-+    uint32_t value = val64;
-+
-+    addr = offset >> 2;
-+    /*
-+     * Two independent timers has same base address.
-+     * Based on addr passed figure out which timer is being used.
-+     */
-+    if ((addr >= R_TIM1_MAX) && (addr < NUM_TIMERS * R_TIM1_MAX)) {
-+        timer = 1;
-+        addr -= R_TIM1_MAX;
-+    }
-+
-+    st = &t->timers[timer];
-+
-+    DB_PRINT("addr=0x%" HWADDR_PRIx " val=0x%" PRIx32 " (timer=%d)\n", offset,
-+            value, timer);
-+
-+    switch (addr) {
-+    case R_TIM_CTRL:
-+        st->regs[R_TIM_CTRL] = value;
-+        timer_update(st);
-+        break;
-+
-+    case R_TIM_RIS:
-+        if (value & TIMER_RIS_ACK) {
-+            st->regs[R_TIM_RIS] &= ~TIMER_RIS_ACK;
-+        }
-+        break;
-+
-+    case R_TIM_LOADVAL:
-+        st->regs[R_TIM_LOADVAL] = value;
-+        if (st->regs[R_TIM_CTRL] & TIMER_CTRL_ENBL) {
-+            timer_update(st);
-+        }
-+        break;
-+
-+    case R_TIM_BGLOADVAL:
-+        st->regs[R_TIM_BGLOADVAL] = value;
-+        st->regs[R_TIM_LOADVAL] = value;
-+        break;
-+
-+    case R_TIM_VAL:
-+    case R_TIM_MIS:
-+        break;
-+
-+    default:
-+        if (addr < NUM_TIMERS * R_TIM1_MAX) {
-+            st->regs[addr] = value;
-+        } else {
-+            qemu_log_mask(LOG_GUEST_ERROR,
-+                        TYPE_MSS_TIMER": 64-bit mode not supported\n");
-+            return;
-+        }
-+        break;
-+    }
-+    timer_update_irq(st);
-+}
-+
-+static const MemoryRegionOps timer_ops = {
-+    .read = timer_read,
-+    .write = timer_write,
-+    .endianness = DEVICE_NATIVE_ENDIAN,
-+    .valid = {
-+        .min_access_size = 1,
-+        .max_access_size = 4
-+    }
-+};
-+
-+static void timer_hit(void *opaque)
-+{
-+    struct Msf2Timer *st = opaque;
-+
-+    st->regs[R_TIM_RIS] |= TIMER_RIS_ACK;
-+
-+    if (!(st->regs[R_TIM_CTRL] & TIMER_CTRL_ONESHOT)) {
-+        timer_update(st);
-+    }
-+    timer_update_irq(st);
-+}
-+
-+static void mss_timer_init(Object *obj)
-+{
-+    MSSTimerState *t = MSS_TIMER(obj);
-+    int i;
-+
-+    /* Init all the ptimers.  */
-+    t->timers = g_malloc0((sizeof t->timers[0]) * NUM_TIMERS);
-+    for (i = 0; i < NUM_TIMERS; i++) {
-+        struct Msf2Timer *st = &t->timers[i];
-+
-+        st->bh = qemu_bh_new(timer_hit, st);
-+        st->ptimer = ptimer_init(st->bh, PTIMER_POLICY_DEFAULT);
-+        ptimer_set_freq(st->ptimer, t->freq_hz);
-+        sysbus_init_irq(SYS_BUS_DEVICE(obj), &st->irq);
-+    }
-+
-+    memory_region_init_io(&t->mmio, OBJECT(t), &timer_ops, t, TYPE_MSS_TIMER,
-+                          NUM_TIMERS * R_TIM1_MAX * 4);
-+    sysbus_init_mmio(SYS_BUS_DEVICE(obj), &t->mmio);
-+}
-+
-+static Property mss_timer_properties[] = {
-+    /* Libero GUI shows 100Mhz as default for clocks */
-+    DEFINE_PROP_UINT32("clock-frequency", MSSTimerState, freq_hz,
-+                      100 * 1000000),
-+    DEFINE_PROP_END_OF_LIST(),
-+};
-+
-+static void mss_timer_class_init(ObjectClass *klass, void *data)
-+{
-+    DeviceClass *dc = DEVICE_CLASS(klass);
-+
-+    dc->props = mss_timer_properties;
-+}
-+
-+static const TypeInfo mss_timer_info = {
-+    .name          = TYPE_MSS_TIMER,
-+    .parent        = TYPE_SYS_BUS_DEVICE,
-+    .instance_size = sizeof(MSSTimerState),
-+    .instance_init = mss_timer_init,
-+    .class_init    = mss_timer_class_init,
-+};
-+
-+static void mss_timer_register_types(void)
-+{
-+    type_register_static(&mss_timer_info);
-+}
-+
-+type_init(mss_timer_register_types)
-diff --git a/include/hw/timer/mss-timer.h b/include/hw/timer/mss-timer.h
-new file mode 100644
-index 0000000..4caacfd
---- /dev/null
-+++ b/include/hw/timer/mss-timer.h
-@@ -0,0 +1,80 @@
-+/*
-+ * Microsemi SmartFusion2 Timer.
++ * SmartFusion2 SOM starter kit(from Emcraft) emulation.
 + *
 + * Copyright (c) 2017 Subbaraya Sundeep <sundeep.lkml@gmail.com>
 + *
@@ -419,62 +165,71 @@ index 0000000..4caacfd
 + * THE SOFTWARE.
 + */
 +
-+#ifndef HW_MSS_TIMER_H
-+#define HW_MSS_TIMER_H
-+
 +#include "qemu/osdep.h"
-+#include "hw/sysbus.h"
-+#include "hw/ptimer.h"
-+#include "sysemu/sysemu.h"
-+#include "qemu/log.h"
++#include "qapi/error.h"
++#include "hw/boards.h"
++#include "hw/arm/msf2-soc.h"
++#include "hw/arm/arm.h"
++#include "exec/address-spaces.h"
 +
-+#define TYPE_MSS_TIMER     "mss-timer"
-+#define MSS_TIMER(obj)     OBJECT_CHECK(MSSTimerState, \
-+                              (obj), TYPE_MSS_TIMER)
++#define DDR_BASE_ADDRESS      0xA0000000
++#define DDR_SIZE              (64 * M_BYTE)
 +
-+/*
-+ * There are two 32-bit down counting timers.
-+ * Timers 1 and 2 can be concatenated into a single 64-bit Timer
-+ * that operates either in Periodic mode or in One-shot mode.
-+ * Writing 1 to the TIM64_MODE register bit 0 sets the Timers in 64-bit mode.
-+ * In 64-bit mode, writing to the 32-bit registers has no effect.
-+ * Similarly, in 32-bit mode, writing to the 64-bit mode registers
-+ * has no effect. Only two 32-bit timers are supported currently.
-+ */
-+#define NUM_TIMERS        2
++static void emcraft_sf2_init(MachineState *machine)
++{
++    DeviceState *dev;
++    DeviceState *spi_flash;
++    MSF2State *soc;
++    DriveInfo *dinfo = drive_get_next(IF_MTD);
++    qemu_irq cs_line;
++    SSIBus *spi_bus;
++    MemoryRegion *sysmem = get_system_memory();
++    MemoryRegion *ddr = g_new(MemoryRegion, 1);
 +
-+#define R_TIM_VAL         0
-+#define R_TIM_LOADVAL     1
-+#define R_TIM_BGLOADVAL   2
-+#define R_TIM_CTRL        3
-+#define R_TIM_RIS         4
-+#define R_TIM_MIS         5
-+#define R_TIM1_MAX        6
++    memory_region_init_ram(ddr, NULL, "ddr-ram", DDR_SIZE,
++                           &error_fatal);
++    vmstate_register_ram_global(ddr);
++    memory_region_add_subregion(sysmem, DDR_BASE_ADDRESS, ddr);
 +
-+#define TIMER_CTRL_ENBL     (1 << 0)
-+#define TIMER_CTRL_ONESHOT  (1 << 1)
-+#define TIMER_CTRL_INTR     (1 << 2)
-+#define TIMER_RIS_ACK       (1 << 0)
-+#define TIMER_RST_CLR       (1 << 6)
-+#define TIMER_MODE          (1 << 0)
++    dev = qdev_create(NULL, TYPE_MSF2_SOC);
++    qdev_prop_set_string(dev, "part-name", "M2S010");
++    qdev_prop_set_uint64(dev, "eNVM-size", M2S010_ENVM_SIZE);
++    qdev_prop_set_uint64(dev, "eSRAM-size", M2S010_ESRAM_SIZE);
 +
-+struct Msf2Timer {
-+    QEMUBH *bh;
-+    ptimer_state *ptimer;
++    /*
++     * pclk0 and pclk1 are configurable in Libero.
++     * Emcraft's SoM kit comes with these settings by default.
++     */
++    qdev_prop_set_uint32(dev, "pclk0", 71 * 1000000);
++    qdev_prop_set_uint32(dev, "pclk1", 71 * 1000000);
 +
-+    uint32_t regs[NUM_TIMERS * R_TIM1_MAX];
-+    qemu_irq irq;
-+};
++    object_property_set_bool(OBJECT(dev), true, "realized", &error_fatal);
 +
-+typedef struct MSSTimerState {
-+    SysBusDevice parent_obj;
++    soc = MSF2_SOC(dev);
 +
-+    MemoryRegion mmio;
-+    uint32_t freq_hz;
-+    struct Msf2Timer *timers;
-+} MSSTimerState;
++    /* Attach SPI flash to SPI0 controller */
++    spi_bus = (SSIBus *)qdev_get_child_bus(dev, "spi0");
++    spi_flash = ssi_create_slave_no_init(spi_bus, "s25sl12801");
++    qdev_prop_set_uint8(spi_flash, "spansion-cr2nv", 1);
++    if (dinfo) {
++        qdev_prop_set_drive(spi_flash, "drive", blk_by_legacy_dinfo(dinfo),
++                                    &error_fatal);
++    }
++    qdev_init_nofail(spi_flash);
++    cs_line = qdev_get_gpio_in_named(spi_flash, SSI_GPIO_CS, 0);
++    sysbus_connect_irq(SYS_BUS_DEVICE(&soc->spi[0]), 1, cs_line);
 +
-+#endif /* HW_MSS_TIMER_H */
++    armv7m_load_kernel(ARM_CPU(first_cpu), machine->kernel_filename,
++                       soc->envm_size);
++}
++
++static void emcraft_sf2_machine_init(MachineClass *mc)
++{
++    mc->desc = "SmartFusion2 SOM kit from Emcraft";
++    mc->init = emcraft_sf2_init;
++}
++
++DEFINE_MACHINE("smartfusion2-som", emcraft_sf2_machine_init)
 -- 
 2.5.0
 

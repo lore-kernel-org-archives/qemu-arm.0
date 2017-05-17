@@ -1,257 +1,139 @@
-Received: by 10.25.0.6 with SMTP id 6csp1882159lfa;
-        Tue, 16 May 2017 06:57:50 -0700 (PDT)
-X-Received: by 10.55.27.101 with SMTP id b98mr11032261qkb.282.1494943070321;
-        Tue, 16 May 2017 06:57:50 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1494943070; cv=none;
+Received: by 10.25.0.6 with SMTP id 6csp237500lfa;
+        Wed, 17 May 2017 07:06:54 -0700 (PDT)
+X-Received: by 10.55.178.5 with SMTP id b5mr3101320qkf.258.1495030014701;
+        Wed, 17 May 2017 07:06:54 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1495030014; cv=none;
         d=google.com; s=arc-20160816;
-        b=irGm7i9cJ2GFHfxB2YRCt9Sp22IglN6PLkxotOMOwUErPUE59z96DlSVnSgvgJe4MH
-         kMdaZvIUtIFXm4G3ODTjT5lHuDEF2Q7pUJT4ir8+bfizwFO3KsuPTan24xTCtVwZ70gN
-         yBxvCRXd1z0qTQHAuD31RsnChCZIt8Xf3AQLTcHAgALcyivsvm3T2IdU4cHH0r04WFFG
-         ZRXfJkzZLZ9RAaNFO2cM82Sj3EE3eh0IdsYFnSt/w5mUkOrbWbEYRepfAEDCI/gX6iRy
-         WPabhI8mPSB563nHRganpNAnwuH5Odg8ZN2jGhPgmciTYPLmFehFBrdYJFhrjkquHfw7
-         pPTA==
+        b=piTQjDPT2kMvp6Ewq/CTlMDZcmUjiLnC0yzC/PiRSDHAwRzsrJIHsTOsEL50GLEO6J
+         2HLl3FT3EA5V/ZAgAI4xSkFDNZbGLmp/7gi1vq+Khg3VStEDrhDYlWr0pEPQ2MqyxpF4
+         y/PKsn1+5pTwatPhANo+0uRopX0LXXXQz07fTds8not2ZQkwwAwmgQ1dHpdRgDOzOQXx
+         B7GN3gVTR+dl7WaBNB+KOgBvggovVaVBtHZNC3Xx8o8DD8Dbxe2t82ii2caPq5clDp4W
+         BGmW9fIRNuZGFUQwEXXCtzYPQcK5RTHi5XsgBujqfKbYJX9KwWUlgGFFgyg3Oiwpvxwn
+         28pQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:reply-to:from:list-subscribe:list-help
-         :list-post:list-archive:list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-length:mime-version:references
-         :in-reply-to:message-id:to:date:dkim-signature
-         :arc-authentication-results;
-        bh=noDzO9PanLwU12/totvhQQ2X7LMHuKd5Fircw61FJhY=;
-        b=IxJHSOdzOHMWugc1oADJbDPA3XwQhRNCaOBwkzhpVV5YH6kRqkzer3F4BMKExCGOzp
-         Xa5EKfYFSTG9tlohLRKO0kjKRU8gTq2hq/RHXkg7lByJNj788zw2EIk4p7qoa4lItKIo
-         kXJhX7HjuE6SCo+PZgkgiy+CetpHVNoNiddFEjoKvVFU3a77qFkW3Ii/CjCzwnCXffXE
-         3JA1GQNjpzDLC++HIYY4WlyXEVy9fgguZLPB+3llAJBeNQqn4XNAoVmrSLIHRJb+bl/W
-         UGAq6oGwViXpPq5c3W4u4Lq2ygYjfiXK3tFyFwIdaaJnXVqF0N4XBkxam2eFJeNtKSkR
-         qqoA==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:to:mime-version:user-agent:from:date
+         :message-id:arc-authentication-results;
+        bh=/TERmfl/KRyoIrPQcBVYwi6UCfzW6l1JlPLGU2amByE=;
+        b=gg22wU3EPr5i+Nq3siR2umxveKXem1O8j7Hran1JA1SLoqYO6jm244Z9Poun5Aesxp
+         P8W1C6h4skSMSIhmwJymPUsgD/RblOjiQB1mx7xOIFrjBwq/0FzRnCwTAc7A8aIWMtvP
+         BadmeLGXxBBn9JE8nLdNxfQHpMtreFwPoxx8L+umlnRBT4WslLwi/O2bNtb9oJWxWJC9
+         QsERpgDSI6H21HdXhAbfR3RxuI//UeSS8WEvslSl9uxVSJWm+765dN0Ce29ICP4j3re4
+         CKmiYsCpPWe8rmFKv1Xwk3JoeLUPH2tpdzF7rsz0Q5pWs4qpoRhJHkZHyXjDtmIIP5Pv
+         XwTw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=neutral (body hash did not verify) header.i=@yahoo.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id y9si13768725qty.276.2017.05.16.06.57.50
+        by mx.google.com with ESMTPS id b16si2209033qkj.311.2017.05.17.07.06.54
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 16 May 2017 06:57:50 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Wed, 17 May 2017 07:06:54 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=neutral (body hash did not verify) header.i=@yahoo.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:42358 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:49154 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1dAcyz-0008Oi-PA
-	for alex.bennee@linaro.org; Tue, 16 May 2017 09:57:49 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:39312)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1dAzbK-000627-4f
+	for alex.bennee@linaro.org; Wed, 17 May 2017 10:06:54 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:36688)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <flypie1@yahoo.com>) id 1dAcwx-00075e-Ut
-	for qemu-devel@nongnu.org; Tue, 16 May 2017 09:55:45 -0400
+	(envelope-from <smolov@ispras.ru>) id 1dAzWT-000451-Ng
+	for qemu-arm@nongnu.org; Wed, 17 May 2017 10:01:57 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <flypie1@yahoo.com>) id 1dAcwu-0004ZT-17
-	for qemu-devel@nongnu.org; Tue, 16 May 2017 09:55:44 -0400
-Received: from sonic303-47.consmr.mail.ir2.yahoo.com ([77.238.178.228]:38547)
+	(envelope-from <smolov@ispras.ru>) id 1dAzWO-0002ZQ-PR
+	for qemu-arm@nongnu.org; Wed, 17 May 2017 10:01:53 -0400
+Received: from bran.ispras.ru ([83.149.199.196]:46564 helo=smtp.ispras.ru)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <flypie1@yahoo.com>) id 1dAcwt-0004YQ-KL
-	for qemu-devel@nongnu.org; Tue, 16 May 2017 09:55:39 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=yahoo.com; s=s2048;
-	t=1494942938; bh=nok3Xvlry8cZuBPvGBfIpbT1GKgHd1yPHfnJFeZ2DNY=;
-	h=Date:From:Reply-To:To:Cc:In-Reply-To:References:Subject:From:Subject;
-	b=UWQ95M241gKduUykxD8wRno16ZAhtq4OLxzXsDc26iUzTMHp9Q8RCCTkQKmdrCrv2FQSe3OdRYKt0L5e9KsyjDQfhEczYgvKqh4ZC4cjhYK8eLIyrBW8Dbn1O6OfafHdZzlzx+qdol+E/UPG7rpTj0GuHm9pjNIMgz9tWRO3nhAAIY1jpnvKDcyFfO4bcKZCDOb+rU8w5kXNnnmuFfL2Q5OJfMt99ZLZrocOIvfVW2U/e1qXjSIQ1RaZGg8QctX7K79JgOhtp3ViJeWz2bAHbz5DxF06AZb0IkyKbg1DVEe7y/Qcvhw26t80WYOJCE+F0tb2r84DoKMWCsolbbFVlg==
-X-YMail-OSG: 69LP8gcVM1kxWCf4a0.eaK_3AAHv.MhfQB0Y4sikJn4EI3dLTjbefBXLdoHXoXc
-	dAL6pMWoAIH16HiRrCoaYITf5lYsAEgnvtoGVTOwQIqLQdPikgGRiPCHMQ8lAjqgLJqkC6D9QSCt
-	ZzPIJtDpNbPBZWNkG58Tfen4Ok7xNtnyb_939W6ZyxzGG4oYuLgL4dG1KHVhJaHeD90S6TNMlzHj
-	VLc.7VCm6kaC5CWGa5wK3e7P4y7AMFsuUUjDn4.dI3csK8PKA_selJB0xYJBHCEig0gIPoveENgU
-	u_pH_BmcGNvs1hE5pwFKrJic5yXwhlC_OEY0hzR_XyFR4zQBOLjPL1jzXT41vlcsckN3_mIzP8X.
-	TGbQQDDaf5xIFcozRnr_ILVUgbYDQfIa4AzQNA8k9inKHd0wT9qXtJqYFBZUvv7fJ1figjlAX.pP
-	uipzTQAMOAmqA3Te7ymU0YIxcxpSU_0oHcfjLXI9CTJTyNOY0KzDjsgEvl0vffuvf8MhCqR338Yo
-	mxaJjHbjwPI_0e5z8trIxXYz2uFQxgBekBnElv1iTfw7XUASfLTKt8Nfo
-Received: from sonic.gate.mail.ne1.yahoo.com by
-	sonic303.consmr.mail.ir2.yahoo.com with HTTP;
-	Tue, 16 May 2017 13:55:38 +0000
-Date: Tue, 16 May 2017 13:51:36 +0000 (UTC)
-To: Geert Martin Ijewski <gm.ijewski@web.de>, 
-	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
-Message-ID: <1288208690.891235.1494942696952@mail.yahoo.com>
-In-Reply-To: <79d5c7a2-c5be-a4b3-3cc3-85c3e572d062@web.de>
-References: <757990479.60759.1494722527715.ref@mail.yahoo.com>
-	<757990479.60759.1494722527715@mail.yahoo.com>
-	<79d5c7a2-c5be-a4b3-3cc3-85c3e572d062@web.de>
+	(envelope-from <smolov@ispras.ru>) id 1dAzWO-0002X1-H7
+	for qemu-arm@nongnu.org; Wed, 17 May 2017 10:01:48 -0400
+Received: from [10.10.2.131] (castle.intra.ispras.ru [10.10.2.131])
+	by smtp.ispras.ru (Postfix) with ESMTP id 6845960E77
+	for <qemu-arm@nongnu.org>; Wed, 17 May 2017 17:01:45 +0300 (MSK)
+Message-ID: <591C57C9.6070202@ispras.ru>
+Date: Wed, 17 May 2017 17:01:45 +0300
+From: Sergey Smolov <smolov@ispras.ru>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	rv:14.0) Gecko/20120713 Thunderbird/14.0
 MIME-Version: 1.0
-X-Mailer: WebService/1.1.9552 YahooMailNeo Mozilla/5.0 (Windows NT 10.0; WOW64;
-	rv:53.0) Gecko/20100101 Firefox/53.0
+To: qemu-arm@nongnu.org
+Content-Type: text/plain; charset=ISO-8859-1; format=flowed
+Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
-X-Received-From: 77.238.178.228
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-X-Content-Filtered-By: Mailman/MimeDel 2.1.21
-Subject: Re: [Qemu-devel] Changes to Broadcom(BCM) files and Raspberry Pi
- files. Addition of PanelEmu
-X-BeenThere: qemu-devel@nongnu.org
+X-Received-From: 83.149.199.196
+X-Mailman-Approved-At: Wed, 17 May 2017 10:06:44 -0400
+Subject: [Qemu-arm] [aarch64] how to get the value is stored by MSR insn
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-From: John Bradley via Qemu-devel <qemu-devel@nongnu.org>
-Reply-To: John Bradley <flypie1@yahoo.com>
-Cc: Laurent Vivier <lvivier@redhat.com>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	John Bradley <flypie@rocketmail.com>,
-	Markus Armbruster <armbru@redhat.com>,
-	Alistair Francis <alistair.francis@xilinx.com>,
-	"qemu-arm@nongnu.org" <qemu-arm@nongnu.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: vmG17guCMbMt
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: SJAaR1oBOAkb
 
-"I think that should be #ifdef _WIN32.
-Maybe in the far future QEMU could also be compiled with Visual Studio=20
-or any other windows compiler"
-The reason for doing it this way is that MINGW64, which is the dev platform=
- I uses on Windows10, does not include a port of the GNU Socket library so =
-I have to use the native Win Sock Library.
-=C2=A0
-"Why not something like
-typedef struct
+Hello, List!
+
+I'm running an Aarch64 assembler program on QEMU. The program starts 
+from the following instructions:
+
+movz x0, #0x50, LSL #0
+msr vbar_el1, x0
+
+My task is to print the value is stored into the vbar_el1 register to 
+the console (it should be equal to 0x50, I think).
+
+Here is what I have in target/arm/translate-a64.c that is related to MSR 
+instruction simulation:
+
+[code]
+/* C5.6.129 MRS - move from system register
+  * C5.6.131 MSR (register) - move to system register
+  * C5.6.204 SYS
+  * C5.6.205 SYSL
+  * These are all essentially the same insn in 'read' and 'write'
+  * versions, with varying op0 fields.
+  */
+static void handle_sys(DisasContext *s, uint32_t insn, bool isread,
+                        unsigned int op0, unsigned int op1, unsigned int 
+op2,
+                        unsigned int crn, unsigned int crm, unsigned int rt)
 {
-=C2=A0 =C2=A0 uint8_t len;
-=C2=A0 =C2=A0 uint8_t type;
-=C2=A0 =C2=A0 union {
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 struct {
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 uint8_t cnt;
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 } pinCount;
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 struct {
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 uint16_t pin0to15;
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 uint16_t pin16to31;
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 uint16_t pin32to47;
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 uint16_t pin48to63;
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 } dataUpdate;
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 /* todo: other packet types */
-=C2=A0 =C2=A0 };
-} CommandPacket;"
+....
+if (isread) {
+...
+} else {
+if (ri->type & ARM_CP_CONST) {
+             /* If not forbidden by access permissions, treat as WI */
+             return;
+         } else if (ri->writefn) {
+             qemu_log("is-writefn\n");
+             TCGv_ptr tmpptr;
+             tmpptr = tcg_const_ptr(ri);
+             gen_helper_set_cp_reg64(cpu_env, tmpptr, tcg_rt);
+             tcg_temp_free_ptr(tmpptr);
+         } else {
+             tcg_gen_st_i64(tcg_rt, cpu_env, ri->fieldoffset);
+         }
+}
+[code]
 
-The problem with that is packing. I tried to do it that way but the differe=
-nt compilers I am using for QEMU and GDummyPanel pack and align in differen=
-t way and no collection of pragmas and directives could make them pack the =
-same. While writing this I have also noticed I have made an implicit assump=
-tion about the endedness of the data, which is not good. Also keep in mind =
-someone may write a client in any language from Fortran, Forth to Python.
+In my case the branch "else if (ri->writefn)" is executed. I've tried to 
+take the value that is stored to vbar_el1 from tcg_rt variable with the 
+help of GET_TCGV_I64 macro, but it returns the value (0x19) that is 
+different from the right one (0x50).
 
-"what's the use of this pointer aritmethic instead of just 6?"
+In what direction should I dig?
 
-This is a similar attempt at robustness across compilers.
+-- 
+Sincerely yours,
+Sergey Smolov
 
-John BradleyTel: 07896 839635Skype: flypie125 125B Grove StreetEdge Hill Li=
-verpool L7 7AF=20
-
-    On Tuesday, 16 May 2017, 9:56, Geert Martin Ijewski <gm.ijewski@web.de>=
- wrote:
-=20
-
- Am 14.05.2017 um 02:42 schrieb John Bradley via Qemu-devel:
->>>From 7f74f048f135d9c9c230a9e90f72451c841c6d35 Mon Sep 17 00:00:00 2001
-> From: John Bradley <flypie@rocketmail.com>
-> Date: Sat, 13 May 2017 23:07:47 +0100
-> Subject: [PATCH] Changes to Broadcom(BCM) files and Raspberry Pi files.
-> Addition of PanelEmu
->
-> The files add the ability to attach, via TCP, a panel emulator
-> The include a unification of several PD Raspberry PI additions
-> A modification to dev-network to all circle SDK WWW client to work
-> The DummyPanel is not included but available at
-> https://github.com/flypie/GDummyPanel.git
->
-> Signed-off-by: John Bradley <flypie@rocketmail.com>
-> ---
-> [ ... snip ... ]
-> diff --git a/util/PanelEmu.c b/util/PanelEmu.c
-> new file mode 100644
-> index 0000000000..59c87d2747
-> --- /dev/null
-> +++ b/util/PanelEmu.c
-> @@ -0,0 +1,293 @@
-> +/*
-> + * Emulation for Rasp PI GPIO via Server connected to via Socket
-> + *
-> + */
-> +#include "qemu/osdep.h"
-> +
-> +#include <stdio.h>
-> +#include <stdlib.h>
-> +#include <memory.h>
-> +#include <errno.h>
-> +#include <string.h>
-> +#include <sys/types.h>
-> +#ifdef __MINGW32__
-I think that should be #ifdef _WIN32.
-Maybe in the far future QEMU could also be compiled with Visual Studio=20
-or any other windows compiler
-> +#include <winsock2.h>
-> +#else
-> +#include <sys/socket.h>
-> +#include <arpa/inet.h>
-> +#include <netinet/in.h>
-> +#endif
-> +
-> +
-> +#include "qemu/PanelEmu.h"
-> +
-> +typedef enum
-> +{
-> +=C2=A0 =C2=A0 MACHINEDESC =3D 0,
-> +=C2=A0 =C2=A0 PINSTOPANEL =3D 1,
-> +=C2=A0 =C2=A0 READREQ =3D 2,
-> +=C2=A0 =C2=A0 PINCOUNT =3D 3,
-> +=C2=A0 =C2=A0 ENABLEMAP =3D 4,
-> +=C2=A0 =C2=A0 INPUTMAP =3D 5,
-> +=C2=A0 =C2=A0 OUTPUTMAP =3D 6,
-> +=C2=A0 =C2=A0 PINSTOQEMU =3D 7
-> +} PacketType;
-> +
-> +#define MAXPACKET=C2=A0 255
-> +
-> +#define PACKETLEN=C2=A0 0=C2=A0 //Includes Packet Length
-> +#define PACKETTYPE=C2=A0 1
-> +
-> +typedef struct
-> +{
-> +=C2=A0 =C2=A0 unsigned short int Data[MAXPACKET];
-> +} CommandPacket;
-
-Why not something like
-typedef struct
-{
-=C2=A0 =C2=A0 uint8_t len;
-=C2=A0 =C2=A0 uint8_t type;
-=C2=A0 =C2=A0 union {
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 struct {
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 uint8_t cnt;
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 } pinCount;
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 struct {
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 uint16_t pin0to15;
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 uint16_t pin16to31;
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 uint16_t pin32to47;
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 uint16_t pin48to63;
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 } dataUpdate;
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 /* todo: other packet types */
-=C2=A0 =C2=A0 };
-} CommandPacket;
-> [ ... snip ... ]
-> +/* Set a pin to a specified value */
-> +void senddatatopanel(panel_connection_t* h, uint64_t pin, bool val)
-> +{
-> +=C2=A0 =C2=A0 CommandPacket Pkt;
-> +
-> +=C2=A0 =C2=A0 Pkt.Data[PACKETLEN] =3D (char *) &Pkt.Data[6 + 1]-(char *)=
- &Pkt.Data[0];
-what's the use of this pointer aritmethic instead of just 6?
-
-Geert
-
-
-
-  =20

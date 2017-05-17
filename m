@@ -1,73 +1,106 @@
-Received: by 10.25.0.6 with SMTP id 6csp2084816lfa;
-        Tue, 16 May 2017 16:06:05 -0700 (PDT)
-X-Received: by 10.55.156.11 with SMTP id f11mr447528qke.8.1494975965651;
-        Tue, 16 May 2017 16:06:05 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1494975965; cv=none;
+Received: by 10.25.0.6 with SMTP id 6csp7478lfa;
+        Tue, 16 May 2017 17:56:22 -0700 (PDT)
+X-Received: by 10.55.181.194 with SMTP id e185mr622832qkf.195.1494982582484;
+        Tue, 16 May 2017 17:56:22 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1494982582; cv=none;
         d=google.com; s=arc-20160816;
-        b=xuLz9hpSevNL/ebUQD4SjyWEoog4L6N7dOxgLPbSZFcZXHAyhh2YbSUbpPtr57go11
-         khJtzD41gzvYuWmyb3ktyZspG350ji+tLStyv0BN1u8tmgETR7ZUlp/8611ZZhzoR8iV
-         PSubhRC40e+KhLyhBwEj8BYY7rCLuCYS0GzLAOupQiesMLlNGArZJpyVpE4sxNl+hdpY
-         Df0gWQZzD3SoELU78xQfiQJgFaRLPeBNoKbCd0od9CorCV2Xtp/DUuzBW+Kv9LIx4Scx
-         GO5VbZml6GvykvBckO2Qwu0lZlStcXoe/CuJBMnLNGR4SgCuC7SxAqxbm2z671Bqgngk
-         dMiw==
+        b=vuY/P/M1chLVDFuzu+BUT1peU8FBPuC3cQ83G7c+be11eyGBTRB5MtYUXH7CAQwT+f
+         Y391XMeFeddWnk7zofh25Wk2jwWfLmIqtlABoKh9TEnfdkbrCnDuut3T5mNTup3Vog0w
+         WgjHr5f+b9913bZT/OwbMGaHffvuvsVrzaaUHH0Ra2BJFWAvwhzXhhV0tA31LKV4dyxP
+         odwmg5j/Ca1z0/loSFE7jdD5c6g9GK41ixDUZ1XCRLr2+W8eAEbC6swrOrbdy6e1lafo
+         /XL7Wt21ahuFqSsHymTrNsEQSe6QkygbOelBretKqOJsg4JipHE3lwDJ/mChLFohRGom
+         TEcw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
-         :message-id:date:to:from:arc-authentication-results;
-        bh=JwlHWtoa3ozRL+FRj8fx6VfFjhaSXjDiFPiP3DjHZxI=;
-        b=xF4HBsDkV6+JRIO7Td041UtW/nPO66xXumOa/Y2kfOnPvLmiir1Itp1SJtVWZZkPNB
-         uf2f4FiQ2EwT+bRkqgNF0Ul2c2MVbdrEC10LBp3se8dT1/e2uNFnUGIQTPm7QcJMmJJ1
-         OpzpV95mfIS3M7gNDD7PBH5at0oa5BVCFR/22Of1kUjOfi019t71G0OCGtDDq0n0jcnJ
-         UaG5W1IZZpcKKciLv/zhym2E3EKdNajGmdDsBFgSWxCU0FsDnbuUt4H6BmhhrzR9J1HH
-         gUr34oYPjK0dwSk/+pv2JLbPv6OCYWCKoRH6/i+7Pit/WPA4GfdxEyT7WzsgeX4RWRoS
-         Kk4A==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:dkim-signature
+         :arc-authentication-results;
+        bh=iczegOoD/VtGFJPUALQqUjDWO1bYDU8CQNZ4Tpsin4Q=;
+        b=JU+qvPY+OG7B05Xqhe1eyoyAiDx3eK0K+6zw+foD8eVt4+yWzEHTdwVqlSlfxFl1ma
+         OlyRmw0hssP6ZUCrhvl8kJWuckJNtwa6/mzoz8+ubGRWrZqhrTXjMfm1RifajmEFlQr+
+         ArCEJfKaXr8iS86DjWhGYcj8xDPipwuyGUBTAQTfgdUu3duolzJqB42/7vHPGbpzwI4o
+         r7b3GHWCuon4mb1igwFs/w/ZqGLaia23tVggKUieoLXrdHn0kTIUoUiiqqLaCfrHvNsa
+         Q1Atma+cbqgRC7C0IdtG5Wdsekem06RgaA5kL/Wt6vaDzCbCeRXUBkkqz/E3PqQJ7Xya
+         Zxhg==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@gmail.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id 44si237255qtx.185.2017.05.16.16.06.05
+        by mx.google.com with ESMTPS id q23si486049qkq.30.2017.05.16.17.56.22
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 16 May 2017 16:06:05 -0700 (PDT)
+        Tue, 16 May 2017 17:56:22 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
+       dkim=fail header.i=@gmail.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:44507 helo=lists.gnu.org)
+Received: from localhost ([::1]:44843 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1dAlXZ-00029u-3b
-	for alex.bennee@linaro.org; Tue, 16 May 2017 19:06:05 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:50562)
+	id 1dAnGH-0000RI-Sj
+	for alex.bennee@linaro.org; Tue, 16 May 2017 20:56:21 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:52298)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <aurelien@aurel32.net>) id 1dAlTs-00081B-2v
-	for qemu-arm@nongnu.org; Tue, 16 May 2017 19:02:16 -0400
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1dAnGB-0000Pr-JB
+	for qemu-arm@nongnu.org; Tue, 16 May 2017 20:56:17 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <aurelien@aurel32.net>) id 1dAlTr-0002fd-79
-	for qemu-arm@nongnu.org; Tue, 16 May 2017 19:02:16 -0400
-Received: from hall.aurel32.net ([2001:bc8:30d7:100::1]:45190)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <aurelien@aurel32.net>)
-	id 1dAlTn-0002dA-35; Tue, 16 May 2017 19:02:11 -0400
-Received: from [2001:bc8:30d7:120:9bb5:8936:7e6a:9e36] (helo=ohm.rr44.fr)
-	by hall.aurel32.net with esmtpsa
-	(TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256) (Exim 4.89)
-	(envelope-from <aurelien@aurel32.net>)
-	id 1dAlTk-00021L-C0; Wed, 17 May 2017 01:02:08 +0200
-Received: from aurel32 by ohm.rr44.fr with local (Exim 4.89)
-	(envelope-from <aurelien@aurel32.net>)
-	id 1dAlTj-00022A-Ja; Wed, 17 May 2017 01:02:07 +0200
-From: Aurelien Jarno <aurelien@aurel32.net>
-To: qemu-devel@nongnu.org
-Date: Wed, 17 May 2017 01:01:57 +0200
-Message-Id: <20170516230159.4195-3-aurelien@aurel32.net>
-X-Mailer: git-send-email 2.11.0
-In-Reply-To: <20170516230159.4195-1-aurelien@aurel32.net>
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1dAnG7-0004zG-Bf
+	for qemu-arm@nongnu.org; Tue, 16 May 2017 20:56:15 -0400
+Received: from mail-qk0-x243.google.com ([2607:f8b0:400d:c09::243]:34050)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1dAnG7-0004z8-7m; Tue, 16 May 2017 20:56:11 -0400
+Received: by mail-qk0-x243.google.com with SMTP id u75so25152425qka.1;
+	Tue, 16 May 2017 17:56:10 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=sender:subject:to:references:cc:from:message-id:date:user-agent
+	:mime-version:in-reply-to:content-transfer-encoding;
+	bh=iczegOoD/VtGFJPUALQqUjDWO1bYDU8CQNZ4Tpsin4Q=;
+	b=dFxd7oCmJutrgX4oWDuKHEAadzHIjnZaxyudt/taufDvwbeGIFa9csvegwn9CIL0CI
+	Kx0piZLN/JCswt/9KbsBpacshj55cNaMWgEw14QVMjQh5XrDMnH+OqixMdghV+YYeFyH
+	RSTOFHtPpoZ00YbWK8IUd8Hn6T/pyelAoOL2dLQ0nLL8juG3TKziJm/gv7dsAsWKNb5H
+	NiZ9ON/8S6p4BbS8mMml/MG221o0YY9ISNZeTBJFhyi1RmFa8zfNm1VnNdKE7UC7HwKN
+	bAn72jZsyqZpzTMLkSX1+MdfR3xuVDIGLNL7f0GwB8v4qv5rFhBC+q7AFW0mmcSG1fvX
+	zPlw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:sender:subject:to:references:cc:from:message-id
+	:date:user-agent:mime-version:in-reply-to:content-transfer-encoding;
+	bh=iczegOoD/VtGFJPUALQqUjDWO1bYDU8CQNZ4Tpsin4Q=;
+	b=WwFRyfezMhOPcWsgjGuBLns1c50ZT4sPLHQWKUAZJ28YxNFubKUtR1CUkE4c8PQ4oE
+	KPZtpVx6AnXMfhRjPd1uH7+BDarJXL8C4Bufq8aiCLBT4jD0mVVIvpsMBLknP7/o2h1l
+	Ris6sNe1LEZzlHov8u7lRK/ba626CXA1yB6PNcy/BxWk2mMahyCBo/ZmvVkKElKaVQhQ
+	0baqWjn+fk1ZTpbhAtBT26HzGuZg/LEHA1rBCj4x1ADzQRWWEaACRAM3PgoSzFzJLLiu
+	jSzAisjilKbsyoeugEW7Zn8n0vFe+yFLXYbUoXPoaGDdS4SqRYCCdM8ntycP1TBJuFXr
+	mQPQ==
+X-Gm-Message-State: AODbwcA61YlaqDxiK5t5+xquE6XCmom7loIgNRjxO3RHhzQEolltIbF5
+	zLVv9lxOmgoXmQ==
+X-Received: by 10.55.7.138 with SMTP id 132mr640044qkh.274.1494982570472;
+	Tue, 16 May 2017 17:56:10 -0700 (PDT)
+Received: from [192.168.1.10] ([138.117.48.226])
+	by smtp.gmail.com with ESMTPSA id d5sm355216qkf.4.2017.05.16.17.56.07
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Tue, 16 May 2017 17:56:09 -0700 (PDT)
+To: Aurelien Jarno <aurelien@aurel32.net>, qemu-devel@nongnu.org
 References: <20170516230159.4195-1-aurelien@aurel32.net>
+	<20170516230159.4195-2-aurelien@aurel32.net>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Message-ID: <f476c3cd-3c61-4c9c-dc69-f9fa9ac502f8@amsat.org>
+Date: Tue, 16 May 2017 21:56:06 -0300
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
+	Thunderbird/45.8.0
+MIME-Version: 1.0
+In-Reply-To: <20170516230159.4195-2-aurelien@aurel32.net>
+Content-Type: text/plain; charset=windows-1252; format=flowed
+Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2001:bc8:30d7:100::1
-Subject: [Qemu-arm] [PATCH 2/4] target/arm: simplify and optimize aarch64
- rev16
+X-Received-From: 2607:f8b0:400d:c09::243
+Subject: Re: [Qemu-arm] [PATCH 1/4] target/arm: optimize aarch32 rev16
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -80,57 +113,47 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>,
-	"open list:ARM" <qemu-arm@nongnu.org>,
-	Aurelien Jarno <aurelien@aurel32.net>, Richard Henderson <rth@twiddle.net>
+	"open list:ARM" <qemu-arm@nongnu.org>, Richard Henderson <rth@twiddle.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: CuZvGDdxRVDD
+X-TUID: wvURc9aAH+cG
 
-Instead of byteswapping individual 16-bit words one by one, work on the
-whole register at the same time using shifts and mask. This is the same
-strategy than the aarch32 version of rev16 and is much more efficient
-in the case sf=1.
+Hi Aurelien,
 
-Signed-off-by: Aurelien Jarno <aurelien@aurel32.net>
----
- target/arm/translate-a64.c | 24 ++++++------------------
- 1 file changed, 6 insertions(+), 18 deletions(-)
+On 05/16/2017 08:01 PM, Aurelien Jarno wrote:
+> Use the same mask to avoid having to load two different constants, as
 
-diff --git a/target/arm/translate-a64.c b/target/arm/translate-a64.c
-index 24de30d92c..ed15d21655 100644
---- a/target/arm/translate-a64.c
-+++ b/target/arm/translate-a64.c
-@@ -4035,24 +4035,12 @@ static void handle_rev16(DisasContext *s, unsigned int sf,
-     TCGv_i64 tcg_tmp = tcg_temp_new_i64();
-     TCGv_i64 tcg_rn = read_cpu_reg(s, rn, sf);
- 
--    tcg_gen_andi_i64(tcg_tmp, tcg_rn, 0xffff);
--    tcg_gen_bswap16_i64(tcg_rd, tcg_tmp);
--
--    tcg_gen_shri_i64(tcg_tmp, tcg_rn, 16);
--    tcg_gen_andi_i64(tcg_tmp, tcg_tmp, 0xffff);
--    tcg_gen_bswap16_i64(tcg_tmp, tcg_tmp);
--    tcg_gen_deposit_i64(tcg_rd, tcg_rd, tcg_tmp, 16, 16);
--
--    if (sf) {
--        tcg_gen_shri_i64(tcg_tmp, tcg_rn, 32);
--        tcg_gen_andi_i64(tcg_tmp, tcg_tmp, 0xffff);
--        tcg_gen_bswap16_i64(tcg_tmp, tcg_tmp);
--        tcg_gen_deposit_i64(tcg_rd, tcg_rd, tcg_tmp, 32, 16);
--
--        tcg_gen_shri_i64(tcg_tmp, tcg_rn, 48);
--        tcg_gen_bswap16_i64(tcg_tmp, tcg_tmp);
--        tcg_gen_deposit_i64(tcg_rd, tcg_rd, tcg_tmp, 48, 16);
--    }
-+    TCGv mask = tcg_const_i64(sf ? 0x00ff00ff00ff00ffull : 0x00ff00ff);
-+    tcg_gen_shri_i64(tcg_tmp, tcg_rn, 8);
-+    tcg_gen_and_i64(tcg_rd, tcg_rn, mask);
-+    tcg_gen_and_i64(tcg_tmp, tcg_tmp, mask);
-+    tcg_gen_shli_i64(tcg_rd, tcg_rd, 8);
-+    tcg_gen_or_i64(tcg_rd, tcg_rd, tcg_tmp);
- 
-     tcg_temp_free_i64(tcg_tmp);
- }
--- 
-2.11.0
+> suggested by Richard Henderson.
 
+What about
+Suggested-by: Richard Henderson <rth@twiddle.net> ?
+
+> Signed-off-by: Aurelien Jarno <aurelien@aurel32.net>
+
+Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+
+> ---
+>  target/arm/translate.c | 6 ++++--
+>  1 file changed, 4 insertions(+), 2 deletions(-)
+>
+> diff --git a/target/arm/translate.c b/target/arm/translate.c
+> index 0b5a0bca06..5becb2bb89 100644
+> --- a/target/arm/translate.c
+> +++ b/target/arm/translate.c
+> @@ -339,11 +339,13 @@ static void gen_smul_dual(TCGv_i32 a, TCGv_i32 b)
+>  static void gen_rev16(TCGv_i32 var)
+>  {
+>      TCGv_i32 tmp = tcg_temp_new_i32();
+> +    TCGv_i32 mask = tcg_const_i32(0x00ff00ff);
+>      tcg_gen_shri_i32(tmp, var, 8);
+> -    tcg_gen_andi_i32(tmp, tmp, 0x00ff00ff);
+> +    tcg_gen_and_i32(tmp, tmp, mask);
+> +    tcg_gen_and_i32(var, var, mask);
+>      tcg_gen_shli_i32(var, var, 8);
+> -    tcg_gen_andi_i32(var, var, 0xff00ff00);
+>      tcg_gen_or_i32(var, var, tmp);
+> +    tcg_temp_free_i32(mask);
+>      tcg_temp_free_i32(tmp);
+>  }
+>
+>

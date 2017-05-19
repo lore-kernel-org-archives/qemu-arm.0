@@ -1,92 +1,82 @@
-Received: by 10.25.0.6 with SMTP id 6csp868794lfa;
-        Thu, 18 May 2017 11:51:15 -0700 (PDT)
-X-Received: by 10.200.36.10 with SMTP id c10mr5377278qtc.160.1495133475335;
-        Thu, 18 May 2017 11:51:15 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1495133475; cv=none;
+Received: by 10.25.0.6 with SMTP id 6csp89694lfa;
+        Thu, 18 May 2017 19:32:41 -0700 (PDT)
+X-Received: by 10.55.162.136 with SMTP id l130mr7033197qke.275.1495161161026;
+        Thu, 18 May 2017 19:32:41 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1495161161; cv=none;
         d=google.com; s=arc-20160816;
-        b=lNQToHBvzq7eGDkdsvx0KtM2W0byhz6hhOjjpglwnBaYGpuXyIRdqiMiQIR8C2sYbV
-         clRWQGxh+/+Ym7IcAs1b2ZWxZSJhPy1EFJPTUDITHQjqn1zcjfHeoqWPRWOt11kEg/Pt
-         Vn6s7kzThFTU5DjZg4F+mgR44rktu3p8CYBfNNPEE3ZcsXWVUDJCf4CR/hAa8k0UZ3qI
-         QlVtB4mRFESUgcrk14xA0PuRXRR+PtJk0jewF67B5gon8yoeOOA9aedXSXvdhxNBw73q
-         sjn3QoGi2RYOK2YHc6gVmSLqjkNL/IIOhn54xrNwZHAtEjMTKq0vzpmaptWkXQDQ9OSn
-         7DeQ==
+        b=LpzrTvMqLOo3MWmloQGyUipKFc8DFvjLTDSbhJjfS6uKnVywFzfzEGgNcw4oDscDlZ
+         ULUNhVESnlhelWl3MMQv+AtQ1JbfQ5hSgg/217rJc/beD45zvoF/K14nfzUXciPZggM5
+         XXtM/pTgXm4CXwOI+32j2NEroo9fbGodGXC+IRCjhhZFSdHJXiRwaPIDAslP9FosdLlF
+         nCiECw79EH/Ri0VS9xVj5lbNg9mFnL82jhTJDYA1Z78HbY94kIB1qzjNAFiI1Jzgyl3f
+         y8D2TeWlpNCkLpKpwdFg+g5FnYb2RpbF6sVeJDQH1ZlKrjJp9Emw8lSNKVG57Mhh0NJH
+         8Gqg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
          :content-disposition:mime-version:references:message-id:to:from:date
-         :dkim-filter:dmarc-filter:arc-authentication-results;
-        bh=MCFZZpLU9LrmbDDfQZcuOtM3gZU7s3yDOiScVCaUk3U=;
-        b=bMeMQRyVFsB1FG7inpR6DwH3NTVhIaOO9I53ZLuoin+cZajHL/QmffqMv+81emA0GH
-         qgL9XgbjYSVuebQHers4+rmfaoKLq/JQAYjw/3rtTMEuBt6dnoCB9NzRAPbePsrEXDEq
-         HFfQTBmKu3PXIIw8G2CkPMM3y/nrwkqC92hWTOMetvw1QrBiKXJb/e759alYXRAxOfBU
-         GxYhE9C05BK7bMxicAG8DFWes1vi3LprJnx6GjDQGgH4FPhPY04bxdfWfaN327XNFF9U
-         yTedr7Q7xHfdbfj/RE4NZUenJqRje6rYlYhiAXmexQpMtPJGsq6Atgweqt6goyExevHV
-         RPSg==
+         :dkim-signature:arc-authentication-results;
+        bh=Ka8sdRXkF9cvUi25YgM/0Tp+ZF8JGs4UOpE/hsmEPGA=;
+        b=y2C1Eraxk37+ySnAGHsLm6sW51MwHf+Z8JyHvgecZN5q5Xk4N6SviOsQVAXVfGxLM7
+         +7ZjQaGSG0tP7jWLfJ5h72UU9INTZZsJPBtdsb+T/mXztYLquE2Lp9107Dw8R/ojd+BB
+         onQNromDm9d1vzTj90CqXwmlAwPKqL/IrhodmWS4W0vK9wXJyeD6pwLe28Pop3zNpsi9
+         ujIhi3l5owe9b2/99CTL1dySkGRYaayHna95fA7hEweYow0QJ1V4hPze9X6Di2IcplTu
+         cW4pVBDWKVM9ZgP9fXFCsqqXp0SAbAWi1JYZtxmwWKxkAhbO5bF1jW8EnBWMZLLJYQ4/
+         AKVA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dkim=fail header.i=@gibson.dropbear.id.au;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id s32si3443826qts.244.2017.05.18.11.51.15
+        by mx.google.com with ESMTPS id p30si7636778qtd.207.2017.05.18.19.32.40
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 18 May 2017 11:51:15 -0700 (PDT)
+        Thu, 18 May 2017 19:32:41 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:55156 helo=lists.gnu.org)
+       dkim=fail header.i=@gibson.dropbear.id.au;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:56211 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1dBQW2-0002wN-R9
-	for alex.bennee@linaro.org; Thu, 18 May 2017 14:51:14 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:48910)
+	id 1dBXia-0001Yu-E7
+	for alex.bennee@linaro.org; Thu, 18 May 2017 22:32:40 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:46263)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <ehabkost@redhat.com>) id 1dBQVu-0002wC-JV
-	for qemu-arm@nongnu.org; Thu, 18 May 2017 14:51:07 -0400
+	(envelope-from <dgibson@ozlabs.org>) id 1dBXiP-0001Ye-Ss
+	for qemu-arm@nongnu.org; Thu, 18 May 2017 22:32:31 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <ehabkost@redhat.com>) id 1dBQVr-0000pO-9N
-	for qemu-arm@nongnu.org; Thu, 18 May 2017 14:51:06 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:60616)
+	(envelope-from <dgibson@ozlabs.org>) id 1dBXiM-00026p-Po
+	for qemu-arm@nongnu.org; Thu, 18 May 2017 22:32:29 -0400
+Received: from ozlabs.org ([103.22.144.67]:41903)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <ehabkost@redhat.com>)
-	id 1dBQVq-0000p5-Qh; Thu, 18 May 2017 14:51:03 -0400
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
-	[10.5.11.14])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 6211F804FC;
-	Thu, 18 May 2017 18:51:01 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 6211F804FC
-Authentication-Results: ext-mx03.extmail.prod.ext.phx2.redhat.com;
-	dmarc=none (p=none dis=none) header.from=redhat.com
-Authentication-Results: ext-mx03.extmail.prod.ext.phx2.redhat.com;
-	spf=pass smtp.mailfrom=ehabkost@redhat.com
-DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com 6211F804FC
-Received: from localhost (ovpn-116-71.gru2.redhat.com [10.97.116.71])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 9E11B18225;
-	Thu, 18 May 2017 18:50:59 +0000 (UTC)
-Date: Thu, 18 May 2017 15:50:58 -0300
-From: Eduardo Habkost <ehabkost@redhat.com>
+	(Exim 4.71) (envelope-from <dgibson@ozlabs.org>)
+	id 1dBXiL-00025O-S9; Thu, 18 May 2017 22:32:26 -0400
+Received: by ozlabs.org (Postfix, from userid 1007)
+	id 3wTXBs6fpTz9s4s; Fri, 19 May 2017 12:32:21 +1000 (AEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+	d=gibson.dropbear.id.au; s=201602; t=1495161141;
+	bh=NaeD2u8TaECXgSoUi1+7Krl80zH03U//+FFG0/PSK64=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=LlaDk4vTpCxQLASMDOLcVhFfNWl8EoYnTz8r//9wzqoQ/k+w39+kgiIhvNfYTm4TD
+	fT0nk41OXZJz4giioO6pyHEDxufxxmHZmhRWC6NHseSoZMXCPmrIiZ+eVUpAtkpHkI
+	fE0wJhr9YPcUlJtjk9vTHexw8wG241+XfXWp2oTE=
+Date: Fri, 19 May 2017 12:20:20 +1000
+From: David Gibson <david@gibson.dropbear.id.au>
 To: Igor Mammedov <imammedo@redhat.com>
-Message-ID: <20170518185058.GP4748@thinpad.lan.raisama.net>
+Message-ID: <20170519022020.GB12284@umbus.fritz.box>
 References: <1495094971-177754-1-git-send-email-imammedo@redhat.com>
-	<1495094971-177754-3-git-send-email-imammedo@redhat.com>
+	<1495094971-177754-2-git-send-email-imammedo@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="rS8CxjVDS/+yyDmU"
 Content-Disposition: inline
-In-Reply-To: <1495094971-177754-3-git-send-email-imammedo@redhat.com>
-X-Fnord: you can see the fnord
+In-Reply-To: <1495094971-177754-2-git-send-email-imammedo@redhat.com>
 User-Agent: Mutt/1.8.0 (2017-02-23)
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.27]);
-	Thu, 18 May 2017 18:51:01 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [PATCH 2/3] numa: move default mapping init to
- machine
+X-Received-From: 103.22.144.67
+Subject: Re: [Qemu-arm] [PATCH 1/3] numa: consolidate cpu_preplug
+ fixups/checks for pc/arm/spapr
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -99,171 +89,222 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Andrew Jones <drjones@redhat.com>, qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
-	qemu-devel@nongnu.org, David Gibson <david@gibson.dropbear.id.au>
+	qemu-devel@nongnu.org, Eduardo Habkost <ehabkost@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: aJZ5UGHD3RZA
+X-TUID: jSj/hijojah5
 
-On Thu, May 18, 2017 at 10:09:30AM +0200, Igor Mammedov wrote:
-> there is no need use cpu_index_to_instance_props() for setting
-> default cpu -> node mapping. Generic machine code can do it
-> without cpu_index by just enabling already preset defaults
-> in possible_cpus.
-> 
-> PS:
-> as bonus it makes one less user of cpu_index_to_instance_props()
-> 
+
+--rS8CxjVDS/+yyDmU
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+On Thu, May 18, 2017 at 10:09:29AM +0200, Igor Mammedov wrote:
 > Signed-off-by: Igor Mammedov <imammedo@redhat.com>
+
+Reviewed-by: David Gibson <david@gibson.dropbear.id.au>
+
 > ---
->  hw/core/machine.c | 32 +++++++++++++++++++++-----------
->  numa.c            | 26 --------------------------
->  2 files changed, 21 insertions(+), 37 deletions(-)
-> 
-> diff --git a/hw/core/machine.c b/hw/core/machine.c
-> index fd6a436..2e91aa9 100644
-> --- a/hw/core/machine.c
-> +++ b/hw/core/machine.c
-> @@ -700,26 +700,36 @@ static char *cpu_slot_to_string(const CPUArchId *cpu)
->      return g_string_free(s, false);
->  }
->  
-> -static void machine_numa_validate(MachineState *machine)
-> +static void machine_numa_finish_init(MachineState *machine)
+>  include/sysemu/numa.h |  1 +
+>  hw/arm/virt.c         | 16 ++--------------
+>  hw/i386/pc.c          | 17 +----------------
+>  hw/ppc/spapr.c        | 17 +----------------
+>  numa.c                | 22 ++++++++++++++++++++++
+>  5 files changed, 27 insertions(+), 46 deletions(-)
+>=20
+> diff --git a/include/sysemu/numa.h b/include/sysemu/numa.h
+> index 7ffde5b..610eece 100644
+> --- a/include/sysemu/numa.h
+> +++ b/include/sysemu/numa.h
+> @@ -35,4 +35,5 @@ void numa_legacy_auto_assign_ram(MachineClass *mc, Node=
+Info *nodes,
+>                                   int nb_nodes, ram_addr_t size);
+>  void numa_default_auto_assign_ram(MachineClass *mc, NodeInfo *nodes,
+>                                    int nb_nodes, ram_addr_t size);
+> +void numa_cpu_pre_plug(const CPUArchId *slot, DeviceState *dev, Error **=
+errp);
+>  #endif
+> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+> index c7c8159..ce676df 100644
+> --- a/hw/arm/virt.c
+> +++ b/hw/arm/virt.c
+> @@ -1351,7 +1351,6 @@ static void machvirt_init(MachineState *machine)
+>      for (n =3D 0; n < possible_cpus->len; n++) {
+>          Object *cpuobj;
+>          CPUState *cs;
+> -        int node_id;
+> =20
+>          if (n >=3D smp_cpus) {
+>              break;
+> @@ -1364,19 +1363,8 @@ static void machvirt_init(MachineState *machine)
+>          cs =3D CPU(cpuobj);
+>          cs->cpu_index =3D n;
+> =20
+> -        node_id =3D possible_cpus->cpus[cs->cpu_index].props.node_id;
+> -        if (!possible_cpus->cpus[cs->cpu_index].props.has_node_id) {
+> -            /* by default CPUState::numa_node was 0 if it's not set via =
+CLI
+> -             * keep it this way for now but in future we probably should
+> -             * refuse to start up with incomplete numa mapping */
+> -             node_id =3D 0;
+> -        }
+> -        if (cs->numa_node =3D=3D CPU_UNSET_NUMA_NODE_ID) {
+> -            cs->numa_node =3D node_id;
+> -        } else {
+> -            /* CPU isn't device_add compatible yet, this shouldn't happe=
+n */
+> -            error_setg(&error_abort, "user set node-id not implemented");
+> -        }
+> +        numa_cpu_pre_plug(&possible_cpus->cpus[cs->cpu_index], DEVICE(cp=
+uobj),
+> +                          &error_fatal);
+> =20
+>          if (!vms->secure) {
+>              object_property_set_bool(cpuobj, false, "has_el3", NULL);
+> diff --git a/hw/i386/pc.c b/hw/i386/pc.c
+> index e36a375..d83c158 100644
+> --- a/hw/i386/pc.c
+> +++ b/hw/i386/pc.c
+> @@ -1895,7 +1895,6 @@ static void pc_cpu_pre_plug(HotplugHandler *hotplug=
+_dev,
+>                              DeviceState *dev, Error **errp)
 >  {
-> -    int i;
-> +    int i, default_mapping;
-
-I suggest bool instead of int.
-
->      GString *s = g_string_new(NULL);
->      MachineClass *mc = MACHINE_GET_CLASS(machine);
->      const CPUArchIdList *possible_cpus = mc->possible_cpu_arch_ids(machine);
->  
->      assert(nb_numa_nodes);
-> +    for (i = possible_cpus->len;
-> +         i && !possible_cpus->cpus[i - 1].props.has_node_id;
-> +         i--)
-> +        ;;
-
-I believe the original code was more readable, and it had only 1
-more line than this version. i.e.:
-
-    for (i = 0; i < possible_cpus->len; i++) {
-        if (possible_cpus->cpus[i].props.has_node_id) {
-            break;
-        }
-    }
-    default_mapping = (i == possible_cpus->len);
-
-> +    default_mapping = !i; /* i == 0 : no explicit mapping provided by user */
-> +
->      for (i = 0; i < possible_cpus->len; i++) {
->          const CPUArchId *cpu_slot = &possible_cpus->cpus[i];
->  
-> -        /* at this point numa mappings are initilized by CLI options
-> -         * or with default mappings so it's sufficient to list
-> -         * all not yet mapped CPUs here */
-> -        /* TODO: make it hard error in future */
-
-Did we change our mind about making it a hard error in the
-future?
-
->          if (!cpu_slot->props.has_node_id) {
-> -            char *cpu_str = cpu_slot_to_string(cpu_slot);
-> -            g_string_append_printf(s, "%sCPU %d [%s]", s->len ? ", " : "", i,
-> -                                   cpu_str);
-> -            g_free(cpu_str);
-> +            if (default_mapping) {
-> +                /* fetch default mapping from board and enable it */
-> +                CpuInstanceProperties props = cpu_slot->props;
-> +                props.has_node_id = true;
-> +                machine_set_cpu_numa_node(machine, &props, &error_fatal);
-
-Is a machine_set_cpu_numa_node() call really necessary here, if
-we are already looking at cpu_slot->props directly?
-
-> +            } else {
-> +                /* record slots with not set mapping */
-> +                char *cpu_str = cpu_slot_to_string(cpu_slot);
-> +                g_string_append_printf(s, "%sCPU %d [%s]",
-> +                                       s->len ? ", " : "", i, cpu_str);
-> +                g_free(cpu_str);
-> +            }
->          }
-
-What about doing this instead:
-
-        if (default_mapping) {
-            /*
-             * Default mapping was already set by board at
-             * cpu_slot->props.node_id, just enable it
-             */
-            cpu_slot->props.has_node_id = true;
-        } else if (!cpu_slot->props.has_node_id) {
-            char *cpu_str = cpu_slot_to_string(cpu_slot);
-            g_string_append_printf(s, "%sCPU %d [%s]", s->len ? ", " : "", i,
-                                   cpu_str);
-            g_free(cpu_str);
-        }
-
->      }
->      if (s->len) {
-> @@ -737,7 +747,7 @@ void machine_run_board_init(MachineState *machine)
->      MachineClass *machine_class = MACHINE_GET_CLASS(machine);
->  
->      if (nb_numa_nodes) {
-> -        machine_numa_validate(machine);
-> +        machine_numa_finish_init(machine);
->      }
->      machine_class->init(machine);
+>      int idx;
+> -    int node_id;
+>      CPUState *cs;
+>      CPUArchId *cpu_slot;
+>      X86CPUTopoInfo topo;
+> @@ -1986,21 +1985,7 @@ static void pc_cpu_pre_plug(HotplugHandler *hotplu=
+g_dev,
+>      cs =3D CPU(cpu);
+>      cs->cpu_index =3D idx;
+> =20
+> -    node_id =3D cpu_slot->props.node_id;
+> -    if (!cpu_slot->props.has_node_id) {
+> -        /* by default CPUState::numa_node was 0 if it's not set via CLI
+> -         * keep it this way for now but in future we probably should
+> -         * refuse to start up with incomplete numa mapping */
+> -        node_id =3D 0;
+> -    }
+> -    if (cs->numa_node =3D=3D CPU_UNSET_NUMA_NODE_ID) {
+> -        cs->numa_node =3D node_id;
+> -    } else if (cs->numa_node !=3D node_id) {
+> -            error_setg(errp, "node-id %d must match numa node specified"
+> -                "with -numa option for cpu-index %d",
+> -                cs->numa_node, cs->cpu_index);
+> -            return;
+> -    }
+> +    numa_cpu_pre_plug(cpu_slot, dev, errp);
 >  }
+> =20
+>  static void pc_machine_device_pre_plug_cb(HotplugHandler *hotplug_dev,
+> diff --git a/hw/ppc/spapr.c b/hw/ppc/spapr.c
+> index 0980d73..c7fee8b 100644
+> --- a/hw/ppc/spapr.c
+> +++ b/hw/ppc/spapr.c
+> @@ -2831,11 +2831,9 @@ static void spapr_core_pre_plug(HotplugHandler *ho=
+tplug_dev, DeviceState *dev,
+>      MachineClass *mc =3D MACHINE_GET_CLASS(hotplug_dev);
+>      Error *local_err =3D NULL;
+>      CPUCore *cc =3D CPU_CORE(dev);
+> -    sPAPRCPUCore *sc =3D SPAPR_CPU_CORE(dev);
+>      char *base_core_type =3D spapr_get_cpu_core_type(machine->cpu_model);
+>      const char *type =3D object_get_typename(OBJECT(dev));
+>      CPUArchId *core_slot;
+> -    int node_id;
+>      int index;
+> =20
+>      if (dev->hotplugged && !mc->has_hotpluggable_cpus) {
+> @@ -2870,20 +2868,7 @@ static void spapr_core_pre_plug(HotplugHandler *ho=
+tplug_dev, DeviceState *dev,
+>          goto out;
+>      }
+> =20
+> -    node_id =3D core_slot->props.node_id;
+> -    if (!core_slot->props.has_node_id) {
+> -        /* by default CPUState::numa_node was 0 if it's not set via CLI
+> -         * keep it this way for now but in future we probably should
+> -         * refuse to start up with incomplete numa mapping */
+> -        node_id =3D 0;
+> -    }
+> -    if (sc->node_id =3D=3D CPU_UNSET_NUMA_NODE_ID) {
+> -        sc->node_id =3D node_id;
+> -    } else if (sc->node_id !=3D node_id) {
+> -        error_setg(&local_err, "node-id %d must match numa node specifie=
+d"
+> -            "with -numa option for cpu-index %d", sc->node_id, cc->core_=
+id);
+> -        goto out;
+> -    }
+> +    numa_cpu_pre_plug(core_slot, dev, &local_err);
+> =20
+>  out:
+>      g_free(base_core_type);
 > diff --git a/numa.c b/numa.c
-> index 0115bfd..796cd7d 100644
+> index ca73145..0115bfd 100644
 > --- a/numa.c
 > +++ b/numa.c
-> @@ -427,7 +427,6 @@ void numa_default_auto_assign_ram(MachineClass *mc, NodeInfo *nodes,
->  void parse_numa_opts(MachineState *ms)
->  {
->      int i;
-> -    const CPUArchIdList *possible_cpus;
->      MachineClass *mc = MACHINE_GET_CLASS(ms);
->  
->      if (qemu_opts_foreach(qemu_find_opts("numa"), parse_numa, ms, NULL)) {
-> @@ -485,31 +484,6 @@ void parse_numa_opts(MachineState *ms)
->  
->          numa_set_mem_ranges();
->  
-> -        /* assign CPUs to nodes using board provided default mapping */
-> -        if (!mc->cpu_index_to_instance_props || !mc->possible_cpu_arch_ids) {
-> -            error_report("default CPUs to NUMA node mapping isn't supported");
-> -            exit(1);
-> -        }
-> -
-> -        possible_cpus = mc->possible_cpu_arch_ids(ms);
-> -        for (i = 0; i < possible_cpus->len; i++) {
-> -            if (possible_cpus->cpus[i].props.has_node_id) {
-> -                break;
-> -            }
-> -        }
-> -
-> -        /* no CPUs are assigned to NUMA nodes */
-> -        if (i == possible_cpus->len) {
-> -            for (i = 0; i < max_cpus; i++) {
-> -                CpuInstanceProperties props;
-> -                /* fetch default mapping from board and enable it */
-> -                props = mc->cpu_index_to_instance_props(ms, i);
-> -                props.has_node_id = true;
-> -
-> -                machine_set_cpu_numa_node(ms, &props, &error_fatal);
-> -            }
-> -        }
-> -
->          /* QEMU needs at least all unique node pair distances to build
->           * the whole NUMA distance table. QEMU treats the distance table
->           * as symmetric by default, i.e. distance A->B == distance B->A.
-> -- 
-> 2.7.4
-> 
+> @@ -534,6 +534,28 @@ void parse_numa_opts(MachineState *ms)
+>      }
+>  }
+> =20
+> +void numa_cpu_pre_plug(const CPUArchId *slot, DeviceState *dev, Error **=
+errp)
+> +{
+> +    int node_id =3D object_property_get_int(OBJECT(dev), "node-id", errp=
+);
+> +
+> +    if (node_id =3D=3D CPU_UNSET_NUMA_NODE_ID) {
+> +        /* by default CPUState::numa_node was 0 if it wasn't set explici=
+tly
+> +         * TODO: make it error when incomplete numa mapping support is r=
+emoved
+> +         */
+> +        node_id =3D 0;
+> +
+> +        /* due to bug in libvirt, it doesn't pass node-id from props on
+> +         * device_add as expected, so we have to fix it up here */
+> +        if (slot->props.has_node_id) {
+> +            node_id =3D slot->props.node_id;
+> +        }
+> +        object_property_set_int(OBJECT(dev), node_id, "node-id", errp);
+> +    } else if (node_id !=3D slot->props.node_id) {
+> +        error_setg(errp, "node-id=3D%d must match numa node specified "
+> +                   "with -numa option", node_id);
+> +    }
+> +}
+> +
+>  static void allocate_system_memory_nonnuma(MemoryRegion *mr, Object *own=
+er,
+>                                             const char *name,
+>                                             uint64_t ram_size)
 
--- 
-Eduardo
+--=20
+David Gibson			| I'll have my music baroque, and my code
+david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
+				| _way_ _around_!
+http://www.ozlabs.org/~dgibson
+
+--rS8CxjVDS/+yyDmU
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v2
+
+iQIcBAEBCAAGBQJZHlZiAAoJEGw4ysog2bOSEtYP/RNvOSPJHGw7Eph/vSwG0cAa
+0qH6qwybcR17o1tbC2eoUgmHLBT+cKPsEV1KnuoXLj/1872Pinx9SXvTAcwlH+lz
+JaCrwQH7hsBaAdnkt6hI6RN3quRNMBMi7sJuqV3aAkrwU+SdGHDr624oCz/0Ur9x
+F9heJbgb5dyaMlNchuIcMq2yXQAX2ddlBDht0ozm7+a9wahWmwawm5zbcRlX4uIS
+F/KDEPLo8NnOFvy1h1WLDCK6VHsdog9D7fBVkYiMs1YqzJt0i/75+LttWZqo+Lvo
+jxZEt059BXx2vZRglwJeCsyuneRvMJAHUd5ALx3aN3u1INhuWZllSZ7NfuD4mnSQ
+uztlGPmSxzi6HqfMvT8FfEnXDxMlRoAJ0WSlwOUhLQ82JpaFCoStCJvACJ8cOKOH
+wLqaJMavBpmjLZRpWfVvuyJwj3z4KXOD1oJFywHMkaG8b0ybx0rMs5vONeDrUMoR
+urQVhrg3bcYPhV51KjSbF7Hc9BKlWhfI3SN0hAoTmG0TV8y5VZPjz1aO7F1E+HKR
+FN2rY9A/PHPOex0eiYs8G+CIDuWdwtmNLnshUr7hc9leCwhMIdcsD0+TaiN/AXCm
+C39RgKnv3lD6BTvlPSvjzc6PFTM0tyz2yrP18iz73u+Csq/s3JnhIscyYjGtOQJ3
+yGs0B9jxkU0XBlz/8ATz
+=DVLI
+-----END PGP SIGNATURE-----
+
+--rS8CxjVDS/+yyDmU--

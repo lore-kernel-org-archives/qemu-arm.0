@@ -1,1032 +1,180 @@
-Received: by 10.25.0.6 with SMTP id 6csp553035lfa;
-        Wed, 17 May 2017 22:22:44 -0700 (PDT)
-X-Received: by 10.55.103.203 with SMTP id b194mr2052640qkc.55.1495084964452;
-        Wed, 17 May 2017 22:22:44 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1495084964; cv=none;
+Received: by 10.25.0.6 with SMTP id 6csp309371lfa;
+        Fri, 19 May 2017 07:06:25 -0700 (PDT)
+X-Received: by 10.55.140.134 with SMTP id o128mr9602198qkd.21.1495202785679;
+        Fri, 19 May 2017 07:06:25 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1495202785; cv=none;
         d=google.com; s=arc-20160816;
-        b=tVx+Vbwutvr+SGcK80sntz0XR/2YOQBbWC+QVgwt0GijhKU+91u84sBwKQcolQIBey
-         w67iNMpPYpmq5J1ZwPcvtXncbDoxyJ2VLlLKuyHgdK0If6IuorHm5EtW+4VJ/04zrFKQ
-         NaaaOEO01omHTvc26lEn6iG/liQNF6ajj6ok+6BxnarJ44ZJfp7hrplEh7lHYRznGvbs
-         y5V6mL1jwUhUzTl/RnIWWuGOjwFMXZ7GRz0hTe7v8KwM1+op+vJM+RHwvGKeXAB4ebXM
-         ikjmuDPoQ28t2rBT89BnkGtgF5Tt0lUFG6PbIlMwkr+nOqnDuT+P/wJjSlJrtgAvD03U
-         xSMA==
+        b=aYSC/U2jGtQD2RnfzHZ9xlczoWIoNGLAlqjA//WFp0LM/NVC0r3mLFz7cvIh2HWFBV
+         AtKjyyoYWZN3bf3le2ATKtIZRz0bqOmg1fhf0Bv6Z5hr5UH7fLJCPa3W34AnKEMS5BzQ
+         m6k6lohKqtbkf3GPLD6KehWZUx1SMIja2sxBvkMTN1XkY9Y0tDHT4xRD6rjnYlZcXmqp
+         o0ORWXnd/waULpgRet0cc74JVP93WxXGgRyQZQ0HS5NkjEcuxxUi6elwSHlcqmYCej+S
+         PpUiT+XjtSuttnpo1jHzpeW60rkdDWfH+JqKn1roLkRQ++aUDJeX+w00oA56+G7YljDT
+         ly9g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:mime-version:message-id
-         :to:from:date:dkim-signature:arc-authentication-results;
-        bh=0LdQNcZRgPe6R3k9kRtYNqydl8yYqhN0OI9DasRyVC8=;
-        b=LlQI/F86BbZq/c1u1NFOKZ86/AsaDvN7vsRyygouBbABLqOY4H6FYeiO0RSdG5J9+h
-         1cjanld6aX3YI0MHwIOulRuX0cdEpH6v80cZbsmFpuSzc29xVofWtLS58N3o61cxxaaA
-         ulsZDGAex8D52uSGJspQiHyU/LjoR6/NFfE23n9tbwIPAN08w+2MhGZQoNAugEYNSW86
-         5kzzi7IqXXGC8L3Nzs9rTyq0UgDToSqIAE5zngwY5ZNQVRVPvO0VsMOeXBOEOsTiFYtd
-         DTmhaK7v6jroq6o9bF7fQDu72d701TtRmByAYfbF83wIsnt33s8Ce8S5jrtnqHI+YxhG
-         HRzw==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
+         :mime-version:dkim-signature:arc-authentication-results;
+        bh=hF0kY6UvI4c3eepgt8XVsPnLVow7HNEkXID20Q8XdMg=;
+        b=HQ2gCJsbXJ3VwLyjUVFjlmXfT+UqHlRWCjCvUOqNjPF+STYWiXH0FmuKPybfmVtcxf
+         krTgu2f0PUWHjlWH+Qtjca7j87voND2A4pe59hh9tG7w9yucm7qQag8cCm1hCw/zkGY7
+         8B6b2FHYrh8A/M65jsdn0aXmmM6FLnSMxaoKdD1YpK3oSRLdO3YVO+rhhTYEU1Zvhz8Z
+         r/f4c4O+PkhC2IC0zOA1ciNRysRC5q44HUU6mW9LiOj11EP82tbKFyph26VrQc9p4Kua
+         l0Y/8aczq22iSyXTMLwF1bgsC9tuX+U/KnNIhZ7+gaItklu5VTn5sSd+AO5EWgdYZ6oJ
+         YfYw==
 ARC-Authentication-Results: i=1; mx.google.com;
        dkim=fail header.i=@gmail.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id y22si4376850qth.159.2017.05.17.22.22.44
+        by mx.google.com with ESMTPS id 14si9091324qkr.151.2017.05.19.07.06.25
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 17 May 2017 22:22:44 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Fri, 19 May 2017 07:06:25 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        dkim=fail header.i=@gmail.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:51793 helo=lists.gnu.org)
+Received: from localhost ([::1]:58958 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1dBDtb-0002yH-W1
-	for alex.bennee@linaro.org; Thu, 18 May 2017 01:22:44 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:57416)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1dBiXx-0000lk-3r
+	for alex.bennee@linaro.org; Fri, 19 May 2017 10:06:25 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:57140)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <flytart@gmail.com>) id 1dB7dz-0002RT-3r
-	for qemu-devel@nongnu.org; Wed, 17 May 2017 18:42:14 -0400
+	(envelope-from <zhlcindy@gmail.com>) id 1dBakS-00037k-WF
+	for qemu-arm@nongnu.org; Fri, 19 May 2017 01:46:49 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <flytart@gmail.com>) id 1dB7dw-0007V2-01
-	for qemu-devel@nongnu.org; Wed, 17 May 2017 18:42:11 -0400
-Received: from mail-wr0-x243.google.com ([2a00:1450:400c:c0c::243]:33393)
+	(envelope-from <zhlcindy@gmail.com>) id 1dBakS-00070A-7c
+	for qemu-arm@nongnu.org; Fri, 19 May 2017 01:46:49 -0400
+Received: from mail-wm0-x22c.google.com ([2a00:1450:400c:c09::22c]:36809)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <flytart@gmail.com>) id 1dB7dv-0007Ub-Jg
-	for qemu-devel@nongnu.org; Wed, 17 May 2017 18:42:07 -0400
-Received: by mail-wr0-x243.google.com with SMTP id w50so3791670wrc.0
-	for <qemu-devel@nongnu.org>; Wed, 17 May 2017 15:42:07 -0700 (PDT)
+	(Exim 4.71) (envelope-from <zhlcindy@gmail.com>)
+	id 1dBakQ-0006zv-0w; Fri, 19 May 2017 01:46:46 -0400
+Received: by mail-wm0-x22c.google.com with SMTP id 70so68768357wmq.1;
+	Thu, 18 May 2017 22:46:45 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=date:from:cc:to:subject:message-id:mime-version;
-	bh=0LdQNcZRgPe6R3k9kRtYNqydl8yYqhN0OI9DasRyVC8=;
-	b=eBVvNEFtfncXFS/mBvFV12mB2cd/pHYGcZmk+J6pDGK2mxutq8eVviflJK8idqfj7o
-	kQq02GXuTL/shdM05abar9i/FN+OB+YsoAHg+3sAQMv43LMc+57YLPE5DvWnJ3ce2liZ
-	1RyoABeaWgKuqSLDapqa8L6t7v/iMHmB3gF9+Q/1qJzkxAcGx21WmTDxWcQTKYusGC/2
-	68rJ/aa9ac+x8DX50xLHf58IaCk2+PADqr9p3jlSoN+wtRNL0/2qN7QQPXx9YnKQtkwT
-	xuIiJd4zhg4wuzAyJuA4JLF82AdvNzupqmg9StzcFndSrSpYpitqCpjpb2PLoJmQsqbt
-	694Q==
+	h=mime-version:from:date:message-id:subject:to;
+	bh=hF0kY6UvI4c3eepgt8XVsPnLVow7HNEkXID20Q8XdMg=;
+	b=IJRlUP64S4sbXxdUtzt4AfKZFfkeQXzf4TUiywD4XRSmXAXkYpMLSPtuomSD16teoh
+	8uj6E2whKL3Z38/IgIeKZfEwPc/xMIAuzkKFjmN932ilZ9HtUH26Ou0ijwHDaqR64d05
+	DhgW7DHS/5BFDex9VjdKOo/VSNzvGRAk1KY7upV3y9DJSlWLjlWqzUD7kXRDWq36Ra5q
+	Iu+jHVQ/We6fxkiyi/CKkBzJ0ErCQzfjV/C0m6PFq+En9He78X01xOykAL1pZ6dRIHWp
+	Flz6ETcKeLu4IQ7/Y+86N3lOM+LRg2B1Vrg/MwNdXjQ3CvilSrD/hj89zBX6Gpbsd0jV
+	hC0g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:date:from:cc:to:subject:message-id:mime-version;
-	bh=0LdQNcZRgPe6R3k9kRtYNqydl8yYqhN0OI9DasRyVC8=;
-	b=axJWpGjAJQEdiy0GGkdH9lO0muZue2rbIUmic5YMhlJ29FDZ4iWgEi4RXqToJKcvb5
-	evlrS2KoKT0Mqefbkislk9dDmtxKX+6u2rn8hJcdyNmOrwsuv3/4ooXo9E+iL1BkC/sw
-	RKTQDs35ez6JgJ7h1uT4l20de8tjdGaYmCLBzJ1c8TZcIG1IhkQmiWyFxbt35cD65p+M
-	fTtnq76AAuBLyD+0mSibC1VfToX/h//z24HmZXYtYZ/JZIrPq0YRDyarJKKwX3RaWiyy
-	8htWqBrYjpQi6CqJkyqjuNsqBAy+atrAJlBrQUXYr8DevoewsuEHrspEQ4SuKwklfi7k
-	kFiA==
-X-Gm-Message-State: AODbwcBZ4cE3zdNp6O7shoyNHSoTBJ9KVF9HvM/u3ol3DcTdjhYuTijC
-	qzs6vpV8IlKHFQ==
-X-Received: by 10.223.136.131 with SMTP id f3mr656812wrf.70.1495060925892;
-	Wed, 17 May 2017 15:42:05 -0700 (PDT)
-Received: from ONE.local ([2.25.106.94])
-	by smtp.gmail.com with SMTPSA id i11sm2916680wrb.44.2017.05.17.15.42.04
-	(version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-	Wed, 17 May 2017 15:42:04 -0700 (PDT)
-Date: Wed, 17 May 2017 15:42:04 -0700 (PDT)
-X-Google-Original-Date: Wen, 17 May 2017 23:41:58 +0000
-From: John Bradley <flytart@gmail.com>
-X-Google-Original-From: John Bradley <flypie@rocketmail.com>
-To: <qemu-devel@nongnu.org>
-Message-ID: <536fb79a-5753-4143-a5a6-7a189ef5137e@ONE.local>
-X-Mailer: TortoiseGit
+	h=x-gm-message-state:mime-version:from:date:message-id:subject:to;
+	bh=hF0kY6UvI4c3eepgt8XVsPnLVow7HNEkXID20Q8XdMg=;
+	b=T2DkGpZ1+KpdqTwNhEmLMmg5ZMSQP9lBxJA7ocCGvVLJ+/zl7rUH2UpN+94re0isov
+	ygqMrhafugcYBNLq2CQE/FyBfCkm8ww8lbeRMUZJOzfNYqroFcpEA53Ck10xqJlzWDig
+	bjLpSws3rlRXPcke/OOJrhoFxWOCTdOhTgiaW9HR8KqkUh+H1HSuu8ITmtAqrj69rWjE
+	0aionfpolTB06rP9sX+rAs99g7a5HgP9UpkSzY5u5hPCVVh/jUv9iEjmmJekmr/aTkHQ
+	IWrVXuYCzJKlFwtm/jQaUj/HEIDRo7865hfIVruFCXHOTaIwNACDkamvLzU2qsXpk2aC
+	LzEA==
+X-Gm-Message-State: AODbwcBrDqHzwC/LgkbFZZBFeIKkp6dZ1jzitCxjvfrNMYiD88RZZpOJ
+	gOWPVPa4Xs2DaUIOFDa/N6uB2rpmItHT
+X-Received: by 10.80.178.228 with SMTP id p91mr5860637edd.131.1495172804430;
+	Thu, 18 May 2017 22:46:44 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; 
+Received: by 10.80.149.13 with HTTP; Thu, 18 May 2017 22:46:44 -0700 (PDT)
+From: Li Zhang <zhlcindy@gmail.com>
+Date: Fri, 19 May 2017 13:46:44 +0800
+Message-ID: <CAD8of+qgOQyU3QBk6YmPd4RnXQV0W-T4AE868q6y7TkCwu1K2A@mail.gmail.com>
+To: "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, qemu-arm@nongnu.org,
+	kvm@vger.kernel.org
+Content-Type: multipart/alternative; boundary="f403045c7f4ee2d370054fda0b84"
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2a00:1450:400c:c0c::243
-X-Mailman-Approved-At: Thu, 18 May 2017 01:20:53 -0400
-Subject: [Qemu-devel] (no subject)
-X-BeenThere: qemu-devel@nongnu.org
+X-Received-From: 2a00:1450:400c:c09::22c
+X-Mailman-Approved-At: Fri, 19 May 2017 10:06:14 -0400
+Subject: [Qemu-arm] A problem of IRQchip in QEMU and KVM for ARM
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: flypie@rocketmail.com, peter.maydell@linaro.org, qemu-arm@nongnu.org
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: yVom+PKEWk5+
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: W03sM/5xHTMp
 
-From 836daaff38940535548043f2e8f2e3df7a62d473 Mon Sep 17 00:00:00 2001
-From: John Bradley <flypie@rocketmail.com>
-Date: Wed, 17 May 2017 18:57:21 +0100
-Subject: [PATCH] [PATCH] Add code to connect with
- https://github.com/flypie/GDummyPanel The code uses GNU Sockets & Windows
- sockets as on MINGW GNU no available. This is inteded as a Demo for RFC.
+--f403045c7f4ee2d370054fda0b84
+Content-Type: text/plain; charset="UTF-8"
 
-Signed-off-by: John Bradley <flypie@rocketmail.com>
----
- hw/gpio/bcm2835_gpio.c         | 330 +++++++++++++++++++++++------------------
- include/hw/gpio/bcm2835_gpio.h |   5 +
- include/qemu/PanelEmu.h        |  54 +++++++
- util/Makefile.objs             |   1 +
- util/PanelEmu.c                | 329 ++++++++++++++++++++++++++++++++++++++++
- 5 files changed, 577 insertions(+), 142 deletions(-)
- create mode 100644 include/qemu/PanelEmu.h
- create mode 100644 util/PanelEmu.c
+Hi,
 
-diff --git a/hw/gpio/bcm2835_gpio.c b/hw/gpio/bcm2835_gpio.c
-index acc2e3cf9e..14bd059861 100644
---- a/hw/gpio/bcm2835_gpio.c
-+++ b/hw/gpio/bcm2835_gpio.c
-@@ -19,6 +19,8 @@
- #include "hw/sd/sd.h"
- #include "hw/gpio/bcm2835_gpio.h"
- 
-+
-+
- #define GPFSEL0   0x00
- #define GPFSEL1   0x04
- #define GPFSEL2   0x08
-@@ -53,9 +55,9 @@ static uint32_t gpfsel_get(BCM2835GpioState *s, uint8_t reg)
- {
-     int i;
-     uint32_t value = 0;
--    for (i = 0; i < 10; i++) {
-+    for (i = 0; i < 10; i ++) {
-         uint32_t index = 10 * reg + i;
--        if (index < sizeof(s->fsel)) {
-+        if (index < sizeof (s->fsel)) {
-             value |= (s->fsel[index] & 0x7) << (3 * i);
-         }
-     }
-@@ -65,9 +67,9 @@ static uint32_t gpfsel_get(BCM2835GpioState *s, uint8_t reg)
- static void gpfsel_set(BCM2835GpioState *s, uint8_t reg, uint32_t value)
- {
-     int i;
--    for (i = 0; i < 10; i++) {
-+    for (i = 0; i < 10; i ++) {
-         uint32_t index = 10 * reg + i;
--        if (index < sizeof(s->fsel)) {
-+        if (index < sizeof (s->fsel)) {
-             int fsel = (value >> (3 * i)) & 0x7;
-             s->fsel[index] = fsel;
-         }
-@@ -75,24 +77,24 @@ static void gpfsel_set(BCM2835GpioState *s, uint8_t reg, uint32_t value)
- 
-     /* SD controller selection (48-53) */
-     if (s->sd_fsel != 0
--            && (s->fsel[48] == 0) /* SD_CLK_R */
--            && (s->fsel[49] == 0) /* SD_CMD_R */
--            && (s->fsel[50] == 0) /* SD_DATA0_R */
--            && (s->fsel[51] == 0) /* SD_DATA1_R */
--            && (s->fsel[52] == 0) /* SD_DATA2_R */
--            && (s->fsel[53] == 0) /* SD_DATA3_R */
--            ) {
-+        && (s->fsel[48] == 0) /* SD_CLK_R */
-+        && (s->fsel[49] == 0) /* SD_CMD_R */
-+        && (s->fsel[50] == 0) /* SD_DATA0_R */
-+        && (s->fsel[51] == 0) /* SD_DATA1_R */
-+        && (s->fsel[52] == 0) /* SD_DATA2_R */
-+        && (s->fsel[53] == 0) /* SD_DATA3_R */
-+        ) {
-         /* SDHCI controller selected */
-         sdbus_reparent_card(s->sdbus_sdhost, s->sdbus_sdhci);
-         s->sd_fsel = 0;
-     } else if (s->sd_fsel != 4
--            && (s->fsel[48] == 4) /* SD_CLK_R */
--            && (s->fsel[49] == 4) /* SD_CMD_R */
--            && (s->fsel[50] == 4) /* SD_DATA0_R */
--            && (s->fsel[51] == 4) /* SD_DATA1_R */
--            && (s->fsel[52] == 4) /* SD_DATA2_R */
--            && (s->fsel[53] == 4) /* SD_DATA3_R */
--            ) {
-+               && (s->fsel[48] == 4) /* SD_CLK_R */
-+               && (s->fsel[49] == 4) /* SD_CMD_R */
-+               && (s->fsel[50] == 4) /* SD_DATA0_R */
-+               && (s->fsel[51] == 4) /* SD_DATA1_R */
-+               && (s->fsel[52] == 4) /* SD_DATA2_R */
-+               && (s->fsel[53] == 4) /* SD_DATA3_R */
-+               ) {
-         /* SDHost controller selected */
-         sdbus_reparent_card(s->sdbus_sdhci, s->sdbus_sdhost);
-         s->sd_fsel = 4;
-@@ -108,13 +110,13 @@ static int gpfsel_is_out(BCM2835GpioState *s, int index)
- }
- 
- static void gpset(BCM2835GpioState *s,
--        uint32_t val, uint8_t start, uint8_t count, uint32_t *lev)
-+                  uint32_t val, uint8_t start, uint8_t count, uint32_t *lev)
- {
--    uint32_t changes = val & ~*lev;
-+    uint32_t changes = val & ~ *lev;
-     uint32_t cur = 1;
- 
-     int i;
--    for (i = 0; i < count; i++) {
-+    for (i = 0; i < count; i ++) {
-         if ((changes & cur) && (gpfsel_is_out(s, start + i))) {
-             qemu_set_irq(s->out[start + i], 1);
-         }
-@@ -125,132 +127,165 @@ static void gpset(BCM2835GpioState *s,
- }
- 
- static void gpclr(BCM2835GpioState *s,
--        uint32_t val, uint8_t start, uint8_t count, uint32_t *lev)
-+                  uint32_t val, uint8_t start, uint8_t count, uint32_t *lev)
- {
-     uint32_t changes = val & *lev;
-     uint32_t cur = 1;
- 
-     int i;
--    for (i = 0; i < count; i++) {
-+    for (i = 0; i < count; i ++) {
-         if ((changes & cur) && (gpfsel_is_out(s, start + i))) {
-             qemu_set_irq(s->out[start + i], 0);
-         }
-         cur <<= 1;
-     }
- 
--    *lev &= ~val;
-+    *lev &= ~ val;
- }
- 
--static uint64_t bcm2835_gpio_read(void *opaque, hwaddr offset,
--        unsigned size)
-+static uint64_t bcm2835_gpio_read(void *opaque, hwaddr offset, unsigned size)
- {
--    BCM2835GpioState *s = (BCM2835GpioState *)opaque;
-+    BCM2835GpioState *s = (BCM2835GpioState *) opaque;
-+
-+    uint64_t Data;
- 
-     switch (offset) {
--    case GPFSEL0:
--    case GPFSEL1:
--    case GPFSEL2:
--    case GPFSEL3:
--    case GPFSEL4:
--    case GPFSEL5:
--        return gpfsel_get(s, offset / 4);
--    case GPSET0:
--    case GPSET1:
--        /* Write Only */
--        return 0;
--    case GPCLR0:
--    case GPCLR1:
--        /* Write Only */
--        return 0;
--    case GPLEV0:
--        return s->lev0;
--    case GPLEV1:
--        return s->lev1;
--    case GPEDS0:
--    case GPEDS1:
--    case GPREN0:
--    case GPREN1:
--    case GPFEN0:
--    case GPFEN1:
--    case GPHEN0:
--    case GPHEN1:
--    case GPLEN0:
--    case GPLEN1:
--    case GPAREN0:
--    case GPAREN1:
--    case GPAFEN0:
--    case GPAFEN1:
--    case GPPUD:
--    case GPPUDCLK0:
--    case GPPUDCLK1:
--        /* Not implemented */
--        return 0;
--    default:
--        qemu_log_mask(LOG_GUEST_ERROR, "%s: Bad offset %"HWADDR_PRIx"\n",
--                __func__, offset);
--        break;
-+        case GPFSEL0:
-+        case GPFSEL1:
-+        case GPFSEL2:
-+        case GPFSEL3:
-+        case GPFSEL4:
-+        case GPFSEL5:
-+            return gpfsel_get(s, offset / 4);
-+        case GPSET0:
-+        case GPSET1:
-+            /* Write Only */
-+            return 0;
-+        case GPCLR0:
-+        case GPCLR1:
-+            /* Write Only */
-+            return 0;
-+        case GPLEV0:
-+            if (s->panel.socket != - 1) {
-+                if (panel_read(&s->panel, &Data)) {
-+                    s->lev0 = (uint32_t) Data;
-+                    s->lev1 = (uint32_t) (Data >> 32);
-+                }
-+            }
-+            return s->lev0;
-+        case GPLEV1:
-+            if (s->panel.socket != - 1) {
-+                if (panel_read(&s->panel, &Data)) {
-+                    s->lev0 = (uint32_t) Data;
-+                    s->lev1 = (uint32_t) (Data >> 32);
-+                }
-+            }
-+            return s->lev1;
-+        case GPEDS0:
-+        case GPEDS1:
-+        case GPREN0:
-+        case GPREN1:
-+        case GPFEN0:
-+        case GPFEN1:
-+        case GPHEN0:
-+        case GPHEN1:
-+        case GPLEN0:
-+        case GPLEN1:
-+        case GPAREN0:
-+        case GPAREN1:
-+        case GPAFEN0:
-+        case GPAFEN1:
-+        case GPPUD:
-+        case GPPUDCLK0:
-+        case GPPUDCLK1:
-+            /* Not implemented */
-+            return 0;
-+        default:
-+            qemu_log_mask(LOG_GUEST_ERROR, "%s: Bad offset %"HWADDR_PRIx"\n",
-+                          __func__, offset);
-+            break;
-     }
- 
-     return 0;
- }
- 
- static void bcm2835_gpio_write(void *opaque, hwaddr offset,
--        uint64_t value, unsigned size)
-+                               uint64_t value, unsigned size)
- {
--    BCM2835GpioState *s = (BCM2835GpioState *)opaque;
-+    BCM2835GpioState *s = (BCM2835GpioState *) opaque;
-+    uint64_t Data;
-+
- 
-     switch (offset) {
--    case GPFSEL0:
--    case GPFSEL1:
--    case GPFSEL2:
--    case GPFSEL3:
--    case GPFSEL4:
--    case GPFSEL5:
--        gpfsel_set(s, offset / 4, value);
--        break;
--    case GPSET0:
--        gpset(s, value, 0, 32, &s->lev0);
--        break;
--    case GPSET1:
--        gpset(s, value, 32, 22, &s->lev1);
--        break;
--    case GPCLR0:
--        gpclr(s, value, 0, 32, &s->lev0);
--        break;
--    case GPCLR1:
--        gpclr(s, value, 32, 22, &s->lev1);
--        break;
--    case GPLEV0:
--    case GPLEV1:
--        /* Read Only */
--        break;
--    case GPEDS0:
--    case GPEDS1:
--    case GPREN0:
--    case GPREN1:
--    case GPFEN0:
--    case GPFEN1:
--    case GPHEN0:
--    case GPHEN1:
--    case GPLEN0:
--    case GPLEN1:
--    case GPAREN0:
--    case GPAREN1:
--    case GPAFEN0:
--    case GPAFEN1:
--    case GPPUD:
--    case GPPUDCLK0:
--    case GPPUDCLK1:
--        /* Not implemented */
--        break;
--    default:
--        goto err_out;
-+        case GPFSEL0:
-+        case GPFSEL1:
-+        case GPFSEL2:
-+        case GPFSEL3:
-+        case GPFSEL4:
-+        case GPFSEL5:
-+            gpfsel_set(s, offset / 4, value);
-+            break;
-+        case GPSET0:
-+            gpset(s, value, 0, 32, &s->lev0);
-+            if (s->panel.socket != - 1) {
-+                Data = value;
-+                senddatatopanel(&s->panel, Data, true); //John Bradley dummy GPIO Panel
-+            }
-+            break;
-+        case GPSET1:
-+            gpset(s, value, 32, 22, &s->lev1);
-+            if (s->panel.socket != - 1) {
-+                Data = value;
-+                Data <<= 32;
-+                senddatatopanel(&s->panel, Data, true); //John Bradley dummy GPIO Panel
-+            }
-+            break;
-+        case GPCLR0:
-+            gpclr(s, value, 0, 32, &s->lev0);
-+            if (s->panel.socket != - 1) {
-+                Data = value;
-+                senddatatopanel(&s->panel, Data, false); //John Bradley dummy GPIO Panel
-+            }
-+            break;
-+        case GPCLR1:
-+            gpclr(s, value, 32, 22, &s->lev1);
-+            if (s->panel.socket != - 1) {
-+                Data = value;
-+                Data <<= 32;
-+                senddatatopanel(&s->panel, Data, false); //John Bradley dummy GPIO Panel
-+            }
-+            break;
-+        case GPLEV0:
-+        case GPLEV1:
-+            /* Read Only */
-+            break;
-+        case GPEDS0:
-+        case GPEDS1:
-+        case GPREN0:
-+        case GPREN1:
-+        case GPFEN0:
-+        case GPFEN1:
-+        case GPHEN0:
-+        case GPHEN1:
-+        case GPLEN0:
-+        case GPLEN1:
-+        case GPAREN0:
-+        case GPAREN1:
-+        case GPAFEN0:
-+        case GPAFEN1:
-+        case GPPUD:
-+        case GPPUDCLK0:
-+        case GPPUDCLK1:
-+            /* Not implemented */
-+            break;
-+        default:
-+            goto err_out;
-     }
-     return;
- 
- err_out:
-     qemu_log_mask(LOG_GUEST_ERROR, "%s: Bad offset %"HWADDR_PRIx"\n",
--            __func__, offset);
-+                  __func__, offset);
- }
- 
- static void bcm2835_gpio_reset(DeviceState *dev)
-@@ -258,7 +293,7 @@ static void bcm2835_gpio_reset(DeviceState *dev)
-     BCM2835GpioState *s = BCM2835_GPIO(dev);
- 
-     int i;
--    for (i = 0; i < 6; i++) {
-+    for (i = 0; i < 6; i ++) {
-         gpfsel_set(s, i, 0);
-     }
- 
-@@ -272,21 +307,22 @@ static void bcm2835_gpio_reset(DeviceState *dev)
- }
- 
- static const MemoryRegionOps bcm2835_gpio_ops = {
--    .read = bcm2835_gpio_read,
--    .write = bcm2835_gpio_write,
--    .endianness = DEVICE_NATIVE_ENDIAN,
-+                                                 .read = bcm2835_gpio_read,
-+                                                 .write = bcm2835_gpio_write,
-+                                                 .endianness = DEVICE_NATIVE_ENDIAN,
- };
- 
- static const VMStateDescription vmstate_bcm2835_gpio = {
--    .name = "bcm2835_gpio",
--    .version_id = 1,
--    .minimum_version_id = 1,
--    .fields = (VMStateField[]) {
--        VMSTATE_UINT8_ARRAY(fsel, BCM2835GpioState, 54),
--        VMSTATE_UINT32(lev0, BCM2835GpioState),
--        VMSTATE_UINT32(lev1, BCM2835GpioState),
--        VMSTATE_UINT8(sd_fsel, BCM2835GpioState),
--        VMSTATE_END_OF_LIST()
-+                                                        .name = "bcm2835_gpio",
-+                                                        .version_id = 1,
-+                                                        .minimum_version_id = 1,
-+                                                        .fields = (VMStateField[])
-+    {
-+     VMSTATE_UINT8_ARRAY(fsel, BCM2835GpioState, 54),
-+     VMSTATE_UINT32(lev0, BCM2835GpioState),
-+     VMSTATE_UINT32(lev1, BCM2835GpioState),
-+     VMSTATE_UINT8(sd_fsel, BCM2835GpioState),
-+     VMSTATE_END_OF_LIST()
-     }
- };
- 
-@@ -296,13 +332,23 @@ static void bcm2835_gpio_init(Object *obj)
-     DeviceState *dev = DEVICE(obj);
-     SysBusDevice *sbd = SYS_BUS_DEVICE(obj);
- 
--    qbus_create_inplace(&s->sdbus, sizeof(s->sdbus),
-+    qbus_create_inplace(&s->sdbus, sizeof (s->sdbus),
-                         TYPE_SD_BUS, DEVICE(s), "sd-bus");
- 
-     memory_region_init_io(&s->iomem, obj,
--            &bcm2835_gpio_ops, s, "bcm2835_gpio", 0x1000);
-+                          &bcm2835_gpio_ops, s, "bcm2835_gpio", 0x1000);
-     sysbus_init_mmio(sbd, &s->iomem);
-     qdev_init_gpio_out(dev, s->out, 54);
-+
-+    /* Get access to the GPIO panel, program will quit on fail */
-+    if (panel_open(&s->panel)) {
-+        sendpincount(&s->panel, 54); //PI Has 54 Pins
-+        sendenabledmap(&s->panel, 0x003FFFFFFFFFFFFC); //Pins 0 & 1 are I2C so disable
-+        sendinputmap(&s->panel, 0x0000000000000000); //There are no dedicated input pins I know off
-+        sendoutputmap(&s->panel, 0x0000800000000000); //Pin 53 is dedicated output LED
-+    } else {
-+        printf("Couldn't connect to a GPIO panel\n"); //John Bradley dummy GPIO Panel
-+    }
- }
- 
- static void bcm2835_gpio_realize(DeviceState *dev, Error **errp)
-@@ -314,7 +360,7 @@ static void bcm2835_gpio_realize(DeviceState *dev, Error **errp)
-     obj = object_property_get_link(OBJECT(dev), "sdbus-sdhci", &err);
-     if (obj == NULL) {
-         error_setg(errp, "%s: required sdhci link not found: %s",
--                __func__, error_get_pretty(err));
-+                   __func__, error_get_pretty(err));
-         return;
-     }
-     s->sdbus_sdhci = SD_BUS(obj);
-@@ -322,7 +368,7 @@ static void bcm2835_gpio_realize(DeviceState *dev, Error **errp)
-     obj = object_property_get_link(OBJECT(dev), "sdbus-sdhost", &err);
-     if (obj == NULL) {
-         error_setg(errp, "%s: required sdhost link not found: %s",
--                __func__, error_get_pretty(err));
-+                   __func__, error_get_pretty(err));
-         return;
-     }
-     s->sdbus_sdhost = SD_BUS(obj);
-@@ -332,17 +378,17 @@ static void bcm2835_gpio_class_init(ObjectClass *klass, void *data)
- {
-     DeviceClass *dc = DEVICE_CLASS(klass);
- 
--    dc->vmsd = &vmstate_bcm2835_gpio;
--    dc->realize = &bcm2835_gpio_realize;
--    dc->reset = &bcm2835_gpio_reset;
-+    dc->vmsd = & vmstate_bcm2835_gpio;
-+    dc->realize = & bcm2835_gpio_realize;
-+    dc->reset = & bcm2835_gpio_reset;
- }
- 
- static const TypeInfo bcm2835_gpio_info = {
--    .name          = TYPE_BCM2835_GPIO,
--    .parent        = TYPE_SYS_BUS_DEVICE,
--    .instance_size = sizeof(BCM2835GpioState),
--    .instance_init = bcm2835_gpio_init,
--    .class_init    = bcm2835_gpio_class_init,
-+                                           .name = TYPE_BCM2835_GPIO,
-+                                           .parent = TYPE_SYS_BUS_DEVICE,
-+                                           .instance_size = sizeof (BCM2835GpioState),
-+                                           .instance_init = bcm2835_gpio_init,
-+                                           .class_init = bcm2835_gpio_class_init,
- };
- 
- static void bcm2835_gpio_register_types(void)
-diff --git a/include/hw/gpio/bcm2835_gpio.h b/include/hw/gpio/bcm2835_gpio.h
-index 9f8e0c720c..73cfda6a6b 100644
---- a/include/hw/gpio/bcm2835_gpio.h
-+++ b/include/hw/gpio/bcm2835_gpio.h
-@@ -16,6 +16,8 @@
- 
- #include "hw/sd/sd.h"
- 
-+#include "qemu/PanelEmu.h"
-+
- typedef struct BCM2835GpioState {
-     SysBusDevice parent_obj;
- 
-@@ -30,6 +32,9 @@ typedef struct BCM2835GpioState {
-     uint32_t lev0, lev1;
-     uint8_t sd_fsel;
-     qemu_irq out[54];
-+
-+    panel_connection_t panel;
-+
- } BCM2835GpioState;
- 
- #define TYPE_BCM2835_GPIO "bcm2835_gpio"
-diff --git a/include/qemu/PanelEmu.h b/include/qemu/PanelEmu.h
-new file mode 100644
-index 0000000000..eb9bf053d0
---- /dev/null
-+++ b/include/qemu/PanelEmu.h
-@@ -0,0 +1,54 @@
-+/*
-+ * To change this license header, choose License Headers in Project Properties.
-+ * To change this template file, choose Tools | Templates
-+ * and open the template in the editor.
-+ */
-+
-+/*
-+ * File:   PanelEmu.h
-+ * Author: John Bradley
-+ *
-+ * Created on 22 April 2017, 22:26
-+ */
-+
-+#ifndef PANELEMU_H
-+#define PANELEMU_H
-+
-+#ifdef __cplusplus
-+extern "C" {
-+#endif
-+
-+
-+#define DRIVER_NAME "RDC-GPIO: "
-+#define PANEL_NAME "GPIO panel: "
-+
-+
-+#define DEFAULT_PORT 0xb1ff       //45567
-+
-+#define PANEL_PINS 54
-+
-+    typedef struct panel_connection {
-+        int socket; /* socket we'll connect to the panel with */
-+        fd_set fds; /* list of descriptors (only the above socket */
-+        char last[PANEL_PINS / 8]; /* we don't want to send updates to the panel
-+	                       unless something changed */
-+        int ProtocolInUse;  //What version of the protocol are we using.
-+    } panel_connection_t;
-+
-+    bool panel_open(panel_connection_t* h);
-+
-+    bool panel_read(panel_connection_t* h, uint64_t *pinS);
-+    void senddatatopanel(panel_connection_t* h, uint64_t pinS, bool Value);
-+    void panel_send_read_command(panel_connection_t* h);
-+    void sendpincount(panel_connection_t* h, int Num);
-+    void sendenabledmap(panel_connection_t* h, uint64_t pins);
-+    void sendinputmap(panel_connection_t* h, uint64_t pins);
-+    void sendoutputmap(panel_connection_t* h, uint64_t pins);
-+
-+
-+#ifdef __cplusplus
-+}
-+#endif
-+
-+#endif /* PANELEMU_H */
-+
-diff --git a/util/Makefile.objs b/util/Makefile.objs
-index c6205ebf86..8316ed79ba 100644
---- a/util/Makefile.objs
-+++ b/util/Makefile.objs
-@@ -43,3 +43,4 @@ util-obj-y += qdist.o
- util-obj-y += qht.o
- util-obj-y += range.o
- util-obj-y += systemd.o
-+util-obj-y += PanelEmu.o
-\ No newline at end of file
-diff --git a/util/PanelEmu.c b/util/PanelEmu.c
-new file mode 100644
-index 0000000000..d428dd7b53
---- /dev/null
-+++ b/util/PanelEmu.c
-@@ -0,0 +1,329 @@
-+/*
-+ * Emulation for Rasp PI GPIO via Server connected to via Socket
-+ *
-+ */
-+#include "qemu/osdep.h"
-+
-+#include <stdio.h>
-+#include <stdlib.h>
-+#include <memory.h>
-+#include <errno.h>
-+#include <string.h>
-+#include <sys/types.h>
-+#ifdef __MINGW32__
-+#include <winsock2.h>
-+#else
-+#include <sys/socket.h>
-+#include <arpa/inet.h>
-+#include <netinet/in.h>
-+#endif
-+
-+
-+#include "qemu/PanelEmu.h"
-+
-+typedef enum
-+{
-+    PROTOCOLDESCFROMQEMU = 0,
-+    PROTOCOLDESCFROMPANEL = 1,
-+    PINSTOPANEL = 2,
-+    READREQ = 3,
-+    PINCOUNT = 4,
-+    ENABLEMAP = 5,
-+    INPUTMAP = 6,
-+    OUTPUTMAP = 7,
-+    PINSTOQEMU = 8
-+} PacketType;
-+
-+#define MINPROTOCOL 0
-+#define MAXPROTOCOL 0
-+
-+#define MAXPACKET   255
-+
-+#define PACKETLEN   0  //Includes Packet Length
-+#define PACKETTYPE  1
-+
-+typedef struct
-+{
-+    unsigned short int Data[MAXPACKET];
-+} CommandPacket;
-+
-+static void panel_command(panel_connection_t *h, CommandPacket *Pkt);
-+
-+static void panel_send_protocol_command(panel_connection_t* h)
-+{
-+    CommandPacket Pkt;
-+
-+    Pkt.Data[PACKETLEN] = 8;
-+    Pkt.Data[PACKETTYPE] = PROTOCOLDESCFROMQEMU;
-+    Pkt.Data[2] = MINPROTOCOL;
-+    Pkt.Data[3] = MAXPROTOCOL;
-+
-+    panel_command(h, &Pkt);
-+}
-+
-+void panel_send_read_command(panel_connection_t* h)
-+{
-+    CommandPacket Pkt;
-+
-+    Pkt.Data[PACKETLEN] = 4;
-+    Pkt.Data[PACKETTYPE] = READREQ;
-+
-+    panel_command(h, &Pkt);
-+}
-+
-+/* Set a pin to a specified value */
-+void senddatatopanel(panel_connection_t* h, uint64_t pin, bool val)
-+{
-+    CommandPacket Pkt;
-+
-+    Pkt.Data[PACKETLEN] = (char *) &Pkt.Data[6 + 1]-(char *) &Pkt.Data[0];
-+    Pkt.Data[PACKETTYPE] = PINSTOPANEL;
-+    Pkt.Data[2] = (unsigned short int) (pin & 0xFFFF);
-+    Pkt.Data[3] = (unsigned short int) ((pin >> 16)&0xFFFF);
-+    Pkt.Data[4] = (unsigned short int) (pin >> 32 & 0xFFFF);
-+    Pkt.Data[5] = (unsigned short int) ((pin >> 48)&0xFFFF);
-+    Pkt.Data[6] = val;
-+
-+    panel_command(h, &Pkt);
-+}
-+
-+void sendpincount(panel_connection_t* h, int val)
-+{
-+    CommandPacket Pkt;
-+
-+    Pkt.Data[PACKETLEN] = (char *) &Pkt.Data[2 + 1]-(char *) &Pkt.Data[0];
-+    Pkt.Data[PACKETTYPE] = PINCOUNT;
-+    Pkt.Data[2] = val;
-+
-+    panel_command(h, &Pkt);
-+}
-+
-+void sendenabledmap(panel_connection_t* h, uint64_t pin)
-+{
-+    CommandPacket Pkt;
-+
-+    Pkt.Data[PACKETLEN] = (char *) &Pkt.Data[5 + 1]-(char *) &Pkt.Data[0];
-+    Pkt.Data[PACKETTYPE] = ENABLEMAP;
-+    Pkt.Data[2] = (unsigned short int) (pin & 0xFFFF);
-+    Pkt.Data[3] = (unsigned short int) ((pin >> 16)&0xFFFF);
-+    Pkt.Data[4] = (unsigned short int) (pin >> 32 & 0xFFFF);
-+    Pkt.Data[5] = (unsigned short int) ((pin >> 48)&0xFFFF);
-+
-+    panel_command(h, &Pkt);
-+}
-+
-+void sendinputmap(panel_connection_t* h, uint64_t pin)
-+{
-+    CommandPacket Pkt;
-+
-+    Pkt.Data[PACKETLEN] = (char *) &Pkt.Data[5 + 1]-(char *) &Pkt.Data[0];
-+    Pkt.Data[PACKETTYPE] = INPUTMAP;
-+    Pkt.Data[2] = (unsigned short int) (pin & 0xFFFF);
-+    Pkt.Data[3] = (unsigned short int) ((pin >> 16)&0xFFFF);
-+    Pkt.Data[4] = (unsigned short int) (pin >> 32 & 0xFFFF);
-+    Pkt.Data[5] = (unsigned short int) ((pin >> 48)&0xFFFF);
-+
-+    panel_command(h, &Pkt);
-+}
-+
-+void sendoutputmap(panel_connection_t* h, uint64_t pin)
-+{
-+    CommandPacket Pkt;
-+
-+    Pkt.Data[PACKETLEN] = (char *) &Pkt.Data[5 + 1]-(char *) &Pkt.Data[0];
-+    Pkt.Data[PACKETTYPE] = OUTPUTMAP;
-+    Pkt.Data[2] = (unsigned short int) (pin & 0xFFFF);
-+    Pkt.Data[3] = (unsigned short int) ((pin >> 16)&0xFFFF);
-+    Pkt.Data[4] = (unsigned short int) (pin >> 32 & 0xFFFF);
-+    Pkt.Data[5] = (unsigned short int) ((pin >> 48)&0xFFFF);
-+
-+    panel_command(h, &Pkt);
-+}
-+
-+static void panel_command(panel_connection_t *h, CommandPacket *Pkt)
-+{
-+    if (send(h->socket, (char *) Pkt, Pkt->Data[PACKETLEN], 0) == - 1) {
-+        perror(PANEL_NAME "send");
-+#ifdef __MINGW32__
-+        closesocket(h->socket);
-+#else
-+        close(h->socket);
-+#endif
-+        h->socket = - 1; /* act like we never connected */
-+    }
-+}
-+
-+/* Wait for values to be read back from panel */
-+bool panel_read(panel_connection_t* h, uint64_t* Data)
-+{
-+    fd_set rfds, efds;
-+    int LengthInBuffer;
-+    int select_res = 0;
-+
-+    CommandPacket *PktPtr = (CommandPacket *) malloc(sizeof (CommandPacket));
-+    CommandPacket *Pkt;
-+    bool NoError = true;
-+    bool NewData = false;
-+    bool NoData = false;
-+    struct timeval timeout;
-+
-+    int ReadStart = 0;
-+
-+    timeout.tv_sec = 0;
-+    timeout.tv_usec = 0;
-+
-+    if (h->socket != - 1) {
-+        rfds = h->fds;
-+        efds = h->fds;
-+
-+//      printf(PANEL_NAME "panel_read\n");
-+
-+        Pkt = PktPtr;
-+        while (NoError&&! NoData) {
-+            select_res = select(h->socket + 1, &rfds, NULL, &efds, &timeout);
-+            if (select_res > 0) {
-+                if (FD_ISSET(h->socket, &rfds)) {
-+                    /* receive more data */
-+                    if ((LengthInBuffer = recv(h->socket, (char *) &Pkt[ReadStart], sizeof (*Pkt) - ReadStart, 0)) > 0) {
-+                        LengthInBuffer += ReadStart;
-+                        for (int i = 0; LengthInBuffer > 0; i ++) {
-+                            if (LengthInBuffer >= Pkt->Data[i + PACKETLEN]) {
-+                                switch (Pkt->Data[i + PACKETTYPE])
-+                                {
-+                                    case PINSTOQEMU:
-+                                        *Data = (uint64_t) Pkt->Data[i + 2];
-+                                        *Data |= ((uint64_t) Pkt->Data[i + 3]) << 16;
-+                                        *Data |= ((uint64_t) Pkt->Data[i + 4]) << 32;
-+                                        *Data |= ((uint64_t) Pkt->Data[i + 5]) << 48;
-+
-+                                        NewData = true;
-+                                        break;
-+
-+                                    case PROTOCOLDESCFROMPANEL:
-+                                        h->ProtocolInUse = (int) Pkt->Data[i + 2];
-+                                        if(h->ProtocolInUse!=-1)
-+                                        {
-+                                            printf(PANEL_NAME "Protocol %d in used\n",h->ProtocolInUse);
-+                                        }
-+                                        else
-+                                        {
-+                                            printf(PANEL_NAME "No Common Protocol\n");                                            
-+                                        }
-+                                        break;
-+
-+                                    default:
-+                                        printf(PANEL_NAME "Invalid data received\n");
-+                                        break;
-+                                }
-+                                LengthInBuffer -= Pkt->Data[PACKETLEN];
-+                                i += Pkt->Data[PACKETLEN]; //								Pkt=(CommandPacket *)&(Pkt->Data[Pkt->Data[PACKETLEN]]);
-+                            } else {
-+                                ReadStart = LengthInBuffer;
-+                                for (int j = 0; j < LengthInBuffer; j ++) {
-+                                    Pkt->Data[j] = Pkt->Data[i + j];
-+                                }
-+                                printf(PANEL_NAME "Partial Packet Read");
-+                            }
-+                        }
-+                    } else {
-+                        if (LengthInBuffer < 0) {
-+                            if (errno != EINTR) {
-+                                printf(PANEL_NAME "recv");
-+                                NoError = FALSE;
-+                            }
-+                        } else {
-+                            printf(PANEL_NAME "closed connection\n");
-+                            NoError = FALSE;
-+                        }
-+                    }
-+                }
-+            } else if (select_res == 0) {
-+                NoData = true;
-+            } else if (errno != EINTR) {
-+#ifdef __MINGW32__
-+                closesocket(h->socket);
-+#else
-+                close(h->socket);
-+#endif
-+                h->socket = - 1; /* act like we never connected */
-+                perror(PANEL_NAME "select error");
-+                NoError = FALSE;
-+            }
-+        }
-+    }
-+
-+    free(PktPtr);
-+
-+    return NewData;
-+}
-+
-+bool panel_open(panel_connection_t* h)
-+{
-+    int rv;
-+#ifdef __MINGW32__    
-+    struct sockaddr_in remote;
-+#else
-+    struct sockaddr_in remote;    
-+#endif
-+    
-+    bool returnval = false;
-+
-+#ifdef __MINGW32__    
-+    printf("__MINGW32__\n");
-+#else
-+    printf("NOT __MINGW32__\n");   
-+#endif    
-+    
-+    h->socket=-1;
-+    h->ProtocolInUse=-1;
-+    
-+#ifdef __MINGW32__
-+    WSADATA wsadata;
-+    if (WSAStartup(MAKEWORD(1, 1), &wsadata) == SOCKET_ERROR) {
-+        printf("Error creating socket.\n");
-+    }
-+    else
-+#endif
-+    {
-+        if ((h->socket = socket(AF_INET, SOCK_STREAM, 0)) != - 1) {
-+#ifdef __MINGW32__
-+            memset((char *)&remote, 0, sizeof(remote));
-+            remote.sin_family = AF_INET;
-+            remote.sin_port = htons(DEFAULT_PORT);
-+            remote.sin_addr.s_addr = inet_addr("127.0.0.1");            
-+#else
-+            bzero((char *)&remote, sizeof(remote));
-+            remote.sin_family = AF_INET;
-+            remote.sin_port = htons(DEFAULT_PORT);
-+            remote.sin_addr.s_addr = inet_addr("127.0.0.1");
-+#endif
-+            if ((rv=connect(h->socket, (struct sockaddr *) &remote, sizeof (remote))) != - 1) {
-+#ifdef __MINGW32__
-+                char value = 1;
-+                setsockopt(h->socket, IPPROTO_TCP, TCP_NODELAY, &value, sizeof ( value));
-+
-+#endif
-+                FD_ZERO(&h->fds);
-+
-+                /* Set our connected socket */
-+                FD_SET(h->socket, &h->fds);
-+
-+                printf(PANEL_NAME "Connected OK %d\n",rv);
-+
-+                panel_send_protocol_command(h);
-+                
-+                returnval=true;
-+            } else {
-+                printf(PANEL_NAME "connection Failes %d\n",rv);
-+#ifdef __MINGW32__
-+                closesocket(h->socket);
-+#else
-+                close(h->socket);
-+#endif
-+                h->socket = - 1;
-+            }
-+        }
-+    }
-+    return returnval;
-+}
-+
+I am looking into QEMU code in ARM recently and trying to add add_hot_cpu
+in QEMU for ARM,
+but it doesn't work when enabling KVM. It reports error:
+
+"kvm_init_vcpu failed: Device or resourc busy."
+
+By debugging QEMU with gdb, it failed on ioctl. In kernel soruce code
+arch/arm/kvm/arm.c,
+vcpu is created by this following function, it will report -EBUSY if
+irqchip_in_kernel.
+
+struct kvm_vcpu *kvm_arch_vcpu_create(struct kvm *kvm, unsigned int id)
+{
+        int err;
+        struct kvm_vcpu *vcpu;
+
+        if (irqchip_in_kernel(kvm) && vgic_initialized(kvm)) {
+                err = -EBUSY;
+                goto out;
+        }
+
+  ....
+}
+
+I set virt machine with kernel_irqchip = off, it can execute cpu-add
+interface correctly with qmp-shell
+commands. But VMs still can't work well with kernel_irqchip=off when
+executing "info cpus" in qemu monitor.
+
+My question is that:
+1) Can we change this error status in kvm_arch_vcpu_create?
+2) Is it that irqchip_kernel=off  isn't supported with KVM enabled on ARM?
+
 -- 
-2.13.0.windows.1
 
+Best Regards
+-Li
 
+--f403045c7f4ee2d370054fda0b84
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div>Hi, <br><br>I am looking into QEMU code in ARM recent=
+ly and trying to add add_hot_cpu in QEMU for ARM, <br>but it doesn&#39;t wo=
+rk when enabling KVM. It reports error: <br><br>&quot;kvm_init_vcpu failed:=
+ Device or resourc busy.&quot;<br><br></div><div>By debugging QEMU with gdb=
+, it failed on ioctl. In kernel soruce code arch/arm/kvm/arm.c, <br></div><=
+div>vcpu is created by this following function, it will report -EBUSY if ir=
+qchip_in_kernel. <br><br>struct kvm_vcpu *kvm_arch_vcpu_create(struct kvm *=
+kvm, unsigned int id)<br>{<br>=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 in=
+t err;<br>=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 struct kvm_vcpu *vcpu;=
+<br><br>=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 if (irqchip_in_kernel(kv=
+m) &amp;&amp; vgic_initialized(kvm)) {<br>=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 err =3D -EBUSY;<b=
+r>=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0 goto out;<br>=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 =
+}<br>=C2=A0<br></div><div>=C2=A0 ....<br>}<br><br></div><div>I set virt mac=
+hine with kernel_irqchip =3D off, it can execute cpu-add interface correctl=
+y with qmp-shell<br></div><div>commands. But VMs still can&#39;t work well =
+with kernel_irqchip=3Doff when executing &quot;info cpus&quot; in qemu moni=
+tor. <br><br></div><div>My question is that: <br></div><div>1) Can we chang=
+e this error status in kvm_arch_vcpu_create?=C2=A0 <br></div><div>2) Is it =
+that irqchip_kernel=3Doff=C2=A0 isn&#39;t supported with KVM enabled on ARM=
+? <br></div><div><br>-- <br><div class=3D"gmail_signature"><div><br></div>B=
+est Regards<div>-Li</div></div>
+</div></div>
+
+--f403045c7f4ee2d370054fda0b84--

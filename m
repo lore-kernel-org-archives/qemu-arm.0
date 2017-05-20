@@ -1,86 +1,95 @@
-Received: by 10.25.0.6 with SMTP id 6csp227600lfa;
-        Fri, 19 May 2017 03:40:30 -0700 (PDT)
-X-Received: by 10.237.55.98 with SMTP id i89mr8065601qtb.162.1495190430829;
-        Fri, 19 May 2017 03:40:30 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1495190430; cv=none;
+Received: by 10.103.124.15 with SMTP id x15csp523222vsc;
+        Fri, 19 May 2017 17:27:51 -0700 (PDT)
+X-Received: by 10.55.169.193 with SMTP id s184mr11002774qke.118.1495240071008;
+        Fri, 19 May 2017 17:27:51 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1495240071; cv=none;
         d=google.com; s=arc-20160816;
-        b=ARQYH7AwB52XXU4pv8+AsL8pMSVK9VYgkiSgQ5qorU8sq6Wn8JglY3zjGNMbhrq09r
-         vTeWIiY00ec0rM7hwp0J6S45Ox8vb3RuAAHui1ER4OTUC2y+i7+UQcqizD7igmuIcHBe
-         uF2wBe4rS3L30u3C8Fc9jOuWfBsjoXfOZHNxAbDaoSukmtpPu5Thi8jXRS5wCeCt9ZRd
-         LwjNo8QDu02FWZVyJfCTVaUlBmeO61T5zoh4z6e08LkDpKQf9BlXj3sI8RC4B49ylaAq
-         dSWtDehTkDKP30i/fTGotQ98c8WOkcsWhAWow5/BtvJBi3oh4/S7atLV/D7Wk9NjmGYp
-         9Cjg==
+        b=RDxNuaxy1exgDQCUAXf+YwfbZcCaP5IT1nuHBlQ7LCJANHIaItnr+n7Qdpt+uaGMbf
+         BV3drL8TTpp0yf5+a3ooyjidoHjQzWCVJgoreTsDviUTWQfxvtnmBgkPtTMpV8jwdlP5
+         PVgH/WnWkTHw+0ZCpBvlHz2ge5EJ+G8lLgdLIGGuh51OIJ/f77VJy7UXVUZRR+Ggd7DG
+         IYYNnZOpjZbX8g4d8lV6gPyTQceKCjTOl9OhUgLtjqolXenQNw/hOkCpU9T6JDUxu81i
+         llp12wq6HGRzf4VN8siy9bGFa6I3zTH+DkN4WglPVozu+wKFDPBBNvu4t+mk8k9zRVM0
+         WPsg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:in-reply-to:references:to:mime-version
-         :user-agent:from:date:message-id:arc-authentication-results;
-        bh=bhDQuWT8wYSsU6jowJ5o6rhbhksjdCR/id1b8LHVwJY=;
-        b=Ggu7Wh6vjNp7Yo2KDTlHtHDs7Tiqk4szdGhA1qJjnXoQ7m9MstHB8XfESx4njxI8i1
-         sgVcnTAHUTs1CDAQMYX9opUPPWMeIkUD8AppYUVgl4Nb0Bd5XY3zWqLZpBUX3e2CYtWG
-         rz2SmxY4iXEBLWtcTwLY2KL4zON3ANPJ63sPRgUuBJRAF6X4Jz3Bvwz7nFe11DUgrW6j
-         3n34hfof1N+8FO3GRDqhubFwng2MAIlq9VVa8k2msZn+N97JARmBkTFDg7ybpe1p6V83
-         IT00PGN5e0EHVOtSWfozyiWN1M1lpDbf0qB1WrFwSdfLGe1ykept5jTUtPr9+PzkoMPl
-         TJ1A==
+         :list-unsubscribe:list-id:precedence:subject:message-id:date:to:from
+         :dkim-signature:dkim-signature:arc-authentication-results;
+        bh=0ACV8jdnWDm+hHfq7xhTj2kXHbSkwrlTtv1KPUsD/vk=;
+        b=fwxECoKB7GLs1+qPvnBi+aFhEvUDhkvCnmSSnYsuL0Klog332l9m1G/Z/5HZ4/HwMQ
+         k8m/kpVGTZF0LwgK1VK1SBWakmfyhlm6N0n+EVYxnfyAYHZ6PzIr8YvmtNd/z8UTKAuO
+         +vTE4t0L2KtMMu1peqH9MAuE0GIRw1M/4yPn2oukTkKAH7aomML+jjXYQlTqcqrUVlya
+         /IkeuDWx9Gs4KyAY6xH1+1NsaQDb+5M7AshFtEQHXQQayyxAR6b9VFjpcCNsRQA84HYt
+         DNqwqGkZDzHCm6WV79UXa+jeGYuI9F8ePjr5fbb1kaAXPWZNfGFlubCwoauPzj+N9e1p
+         D0XQ==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@aj.id.au;
+       dkim=fail header.i=@messagingengine.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id d46si8261966qtc.150.2017.05.19.03.40.30
+        by mx.google.com with ESMTPS id k65si10098372qte.111.2017.05.19.17.27.50
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 19 May 2017 03:40:30 -0700 (PDT)
+        Fri, 19 May 2017 17:27:50 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
+       dkim=fail header.i=@aj.id.au;
+       dkim=fail header.i=@messagingengine.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:57718 helo=lists.gnu.org)
+Received: from localhost ([::1]:60718 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1dBfKg-0007K6-7A
-	for alex.bennee@linaro.org; Fri, 19 May 2017 06:40:30 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:34962)
+	id 1dBsFK-000499-Jl
+	for alex.bennee@linaro.org; Fri, 19 May 2017 20:27:50 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:58921)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <zhaoshenglong@huawei.com>) id 1dBfI1-00055d-UO
-	for qemu-arm@nongnu.org; Fri, 19 May 2017 06:37:46 -0400
+	(envelope-from <andrew@aj.id.au>) id 1dBsFD-00048r-V1
+	for qemu-arm@nongnu.org; Fri, 19 May 2017 20:27:44 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <zhaoshenglong@huawei.com>) id 1dBfHy-0000uU-N9
-	for qemu-arm@nongnu.org; Fri, 19 May 2017 06:37:45 -0400
-Received: from szxga01-in.huawei.com ([45.249.212.187]:3997)
-	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <zhaoshenglong@huawei.com>)
-	id 1dBfHx-0000lF-Rt; Fri, 19 May 2017 06:37:42 -0400
-Received: from 172.30.72.57 (EHLO DGGEML401-HUB.china.huawei.com)
-	([172.30.72.57])
-	by dggrg01-dlp.huawei.com (MOS 4.4.6-GA FastPath queued)
-	with ESMTP id AOW40094; Fri, 19 May 2017 18:34:11 +0800 (CST)
-Received: from [127.0.0.1] (10.177.16.142) by DGGEML401-HUB.china.huawei.com
-	(10.3.17.32) with Microsoft SMTP Server id 14.3.301.0; Fri, 19 May 2017
-	18:34:06 +0800
-Message-ID: <591EC943.2020603@huawei.com>
-Date: Fri, 19 May 2017 18:30:27 +0800
-From: Shannon Zhao <zhaoshenglong@huawei.com>
-User-Agent: Mozilla/5.0 (Windows NT 6.1;
-	rv:24.0) Gecko/20100101 Thunderbird/24.4.0
-MIME-Version: 1.0
-To: Eric Auger <eric.auger@redhat.com>, <eric.auger.pro@gmail.com>,
-	<peter.maydell@linaro.org>, <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>
-References: <1492173995-14140-1-git-send-email-eric.auger@redhat.com>
-	<1492173995-14140-5-git-send-email-eric.auger@redhat.com>
-In-Reply-To: <1492173995-14140-5-git-send-email-eric.auger@redhat.com>
-Content-Type: text/plain; charset="ISO-8859-1"
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.177.16.142]
-X-CFilter-Loop: Reflected
-X-Mirapoint-Virus-RAPID-Raw: score=unknown(0),
-	refid=str=0001.0A020205.591ECA25.0083, ss=1, re=0.000, recu=0.000,
-	reip=0.000, cl=1, cld=1, fgs=0, ip=0.0.0.0,
-	so=2014-11-16 11:51:01, dmn=2013-03-21 17:37:32
-X-Mirapoint-Loop-Id: a3aea6cdb9e45c4eb68d02c041e0545d
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
+	(envelope-from <andrew@aj.id.au>) id 1dBsFA-0001Yf-RP
+	for qemu-arm@nongnu.org; Fri, 19 May 2017 20:27:43 -0400
+Received: from out1-smtp.messagingengine.com ([66.111.4.25]:59125)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <andrew@aj.id.au>)
+	id 1dBsFA-0001X6-Hz; Fri, 19 May 2017 20:27:40 -0400
+Received: from compute4.internal (compute4.nyi.internal [10.202.2.44])
+	by mailout.nyi.internal (Postfix) with ESMTP id 99CBB207D8;
+	Fri, 19 May 2017 20:27:38 -0400 (EDT)
+Received: from frontend2 ([10.202.2.161])
+	by compute4.internal (MEProxy); Fri, 19 May 2017 20:27:38 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=aj.id.au; h=cc
+	:date:from:message-id:subject:to:x-me-sender:x-me-sender
+	:x-sasl-enc:x-sasl-enc; s=fm1; bh=0ACV8jdnWDm+hHfq7xhTj2kXHbSkwr
+	lTtv1KPUsD/vk=; b=blb5GJqWiFrzKRPZ+5WF3EIadg7mKa/Q+UwdVcmv7nGgMg
+	N4mBgBwJjOIzKltXsuy0rrKTuDlvxAupqzynmF3LKlishjst1MW4Hr6Q6d69LEbL
+	fqTnOV5oHxYZXRN17g3q5rwy8UcVLu+ohAq7EvLvZKeZ3/276cc1uCOWzlubHsUM
+	FJfraSru1cMzJKIMIrruRbdjPiO4SUvVV5KwC/HVJRuYlJEVSJkn+KuoJSLvczy3
+	0QdeM6L/AO/aO2II0WPW47GlB+QKDE189Ypc2eZcBnIXXxD3ppwlcmPdMD1iwhnX
+	6AfTaY84W8/jSqzD9z0XXP0eGEgUdOLKmCdIwq5g==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+	messagingengine.com; h=cc:date:from:message-id:subject:to
+	:x-me-sender:x-me-sender:x-sasl-enc:x-sasl-enc; s=fm1; bh=0ACV8j
+	dnWDm+hHfq7xhTj2kXHbSkwrlTtv1KPUsD/vk=; b=msKimy4yIBuiS41Gc26b3i
+	JBegC2B/1bJy4+vH6S7b2BzjEhwJhAP53U5bz0OLfqQeKl8rOm+gRLjGceKMIJNw
+	yvdZiMqn82Kbv9vNoN2ARW9gSnT+tNgzSwbvhGZ+d9po9OC7BrJX1MGa8U+3yiZM
+	/fogt9wlJ4sxQvSFAlIvUoLipZoZv4oJyL/IgjxemAKKw+d1zAjqX4/6Xfm3Ew12
+	+RYvFLcaqMbriE11es8xblFRbUbeyLL2ib1w2ntUy9feq1Gj2qjyMySXqfmxDNbN
+	78qKJMr2B59kN81oeSNoU7vPwIcYVrsF9yzI8vzvgEvu4J7QXKqoTA8WKqdeY12g
+	==
+X-ME-Sender: <xms:eo0fWXVishbp62t4yr7FlbB0osKuOv0eZpmwDHq7izRHOAGjEFncwg>
+X-Sasl-enc: syU65ZysGI2MUTyiPDHi7XtGk3fEad2V6HSnBgmlvpvy 1495240057
+Received: from keelia.au.ibm.com (unknown [202.90.207.97])
+	by mail.messagingengine.com (Postfix) with ESMTPA id 2A1C9241E3;
+	Fri, 19 May 2017 20:27:31 -0400 (EDT)
+From: Andrew Jeffery <andrew@aj.id.au>
+To: qemu-arm@nongnu.org
+Date: Sat, 20 May 2017 08:26:51 +0800
+Message-Id: <20170520002653.20213-1-andrew@aj.id.au>
+X-Mailer: git-send-email 2.9.3
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 45.249.212.187
-Subject: Re: [Qemu-arm] [Qemu-devel] [RFC v5 4/4] hw/intc/arm_gicv3_its:
- Allow save/restore
+X-Received-From: 66.111.4.25
+Subject: [Qemu-arm] [PATCH 0/2] hw/adc: Implement a basic Aspeed ADC model
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -92,121 +101,49 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: drjones@redhat.com, vijay.kilari@gmail.com, quintela@redhat.com,
-	dgilbert@redhat.com, Vijaya.Kumar@cavium.com, christoffer.dall@linaro.org
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+	Ryan Chen <ryan_chen@aspeedtech.com>, Andrew Jeffery <andrew@aj.id.au>,
+	Alistair Francis <alistair@alistair23.me>, qemu-devel@nongnu.org,
+	=?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
+	Joel Stanley <joel@jms.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: PwKrQedkv0LB
+X-TUID: 8NswrbYTsUKN
 
+Hello,
 
+This short series introduces a basic model for the Aspeed ADC and glues it into
+the generic Aspeed SoC definition. The register interface is enhanced slightly
+from the AST2400 to the AST2500, but in a backwards-compatible way by making
+use of reserved bits. As such I haven't made any effort to differentiate the
+two.
 
-On 2017/4/14 20:46, Eric Auger wrote:
-> We change the restoration priority of both the GICv3 and ITS. The
-> GICv3 must be restored before the ITS and the ITS needs to be restored
-> before PCIe devices since it translates their MSI transactions.
-> 
-> Signed-off-by: Eric Auger <eric.auger@redhat.com>
-> Reviewed-by: Juan Quintela <quintela@redhat.com>
-> 
-> ---
-> v2 -> v3:
-> - reword migration blocker message
-> - remove unmigratable setting to false
-> 
-> v1 -> v2:
-> - handle case where migrate_add_blocker fails
-> - add comments along with ITS and GICv3 migration priorities
-> ---
->  hw/intc/arm_gicv3_common.c     |  1 +
->  hw/intc/arm_gicv3_its_common.c |  2 +-
->  hw/intc/arm_gicv3_its_kvm.c    | 24 ++++++++++++------------
->  include/migration/vmstate.h    |  2 ++
->  4 files changed, 16 insertions(+), 13 deletions(-)
-> 
-> diff --git a/hw/intc/arm_gicv3_common.c b/hw/intc/arm_gicv3_common.c
-> index c6493d6..4228b7c 100644
-> --- a/hw/intc/arm_gicv3_common.c
-> +++ b/hw/intc/arm_gicv3_common.c
-> @@ -145,6 +145,7 @@ static const VMStateDescription vmstate_gicv3 = {
->      .minimum_version_id = 1,
->      .pre_save = gicv3_pre_save,
->      .post_load = gicv3_post_load,
-> +    .priority = MIG_PRI_GICV3,
->      .fields = (VMStateField[]) {
->          VMSTATE_UINT32(gicd_ctlr, GICv3State),
->          VMSTATE_UINT32_ARRAY(gicd_statusr, GICv3State, 2),
-> diff --git a/hw/intc/arm_gicv3_its_common.c b/hw/intc/arm_gicv3_its_common.c
-> index efab8c7..22ce4c4 100644
-> --- a/hw/intc/arm_gicv3_its_common.c
-> +++ b/hw/intc/arm_gicv3_its_common.c
-> @@ -48,7 +48,7 @@ static const VMStateDescription vmstate_its = {
->      .name = "arm_gicv3_its",
->      .pre_save = gicv3_its_pre_save,
->      .post_load = gicv3_its_post_load,
-> -    .unmigratable = true,
-> +    .priority = MIG_PRI_GICV3_ITS,
->      .fields = (VMStateField[]) {
->          VMSTATE_UINT32(ctlr, GICv3ITSState),
->          VMSTATE_UINT32(iidr, GICv3ITSState),
-> diff --git a/hw/intc/arm_gicv3_its_kvm.c b/hw/intc/arm_gicv3_its_kvm.c
-> index 7c5502c..8401d2f 100644
-> --- a/hw/intc/arm_gicv3_its_kvm.c
-> +++ b/hw/intc/arm_gicv3_its_kvm.c
-> @@ -77,18 +77,6 @@ static void kvm_arm_its_realize(DeviceState *dev, Error **errp)
->      GICv3ITSState *s = ARM_GICV3_ITS_COMMON(dev);
->      Error *local_err = NULL;
->  
-> -    /*
-> -     * Block migration of a KVM GICv3 ITS device: the API for saving and
-> -     * restoring the state in the kernel is not yet available
-> -     */
-> -    error_setg(&s->migration_blocker, "vITS migration is not implemented");
-> -    migrate_add_blocker(s->migration_blocker, &local_err);
-> -    if (local_err) {
-> -        error_propagate(errp, local_err);
-> -        error_free(s->migration_blocker);
-> -        return;
-> -    }
-> -
->      s->dev_fd = kvm_create_device(kvm_state, KVM_DEV_TYPE_ARM_VGIC_ITS, false);
->      if (s->dev_fd < 0) {
->          error_setg_errno(errp, -s->dev_fd, "error creating in-kernel ITS");
-> @@ -105,6 +93,18 @@ static void kvm_arm_its_realize(DeviceState *dev, Error **errp)
->  
->      gicv3_its_init_mmio(s, NULL);
->  
-> +    if (!kvm_device_check_attr(s->dev_fd, KVM_DEV_ARM_VGIC_GRP_ITS_REGS,
-> +        GITS_CTLR)) {
-> +        error_setg(&s->migration_blocker, "This operating system kernel "
-> +                   "does not support vGICv3 migration");
-s/vGICv3/vITS
-> +        migrate_add_blocker(s->migration_blocker, &local_err);
-> +        if (local_err) {
-> +            error_propagate(errp, local_err);
-> +            error_free(s->migration_blocker);
-> +            return;
-> +        }
-> +    }
-> +
->      kvm_msi_use_devid = true;
->      kvm_gsi_direct_mapping = false;
->      kvm_msi_via_irqfd_allowed = kvm_irqfds_enabled();
-> diff --git a/include/migration/vmstate.h b/include/migration/vmstate.h
-> index f2dbf84..8dab9c7 100644
-> --- a/include/migration/vmstate.h
-> +++ b/include/migration/vmstate.h
-> @@ -198,6 +198,8 @@ enum VMStateFlags {
->  typedef enum {
->      MIG_PRI_DEFAULT = 0,
->      MIG_PRI_IOMMU,              /* Must happen before PCI devices */
-> +    MIG_PRI_GICV3_ITS,          /* Must happen before PCI devices */
-> +    MIG_PRI_GICV3,              /* Must happen before the ITS */
->      MIG_PRI_MAX,
->  } MigrationPriority;
->  
-> 
+The addition of a basic ADC model allows the Aspeed SDK kernel to boot under
+QEMU's ast2500-evb machine. The upstream kernel driver doesn't test the
+initialisation bit before completing its probe(), and thus doesn't get stuck if
+the bit is not set. This is in contrast to the SDK kernel which spins on the
+initialisation bit, never making forward progress in the absence of the ADC
+model.
 
-Thanks,
+Tested with both Aspeed's SDK kernel and upstream Linux.
+
+Cheers,
+
+Andrew
+
+Andrew Jeffery (2):
+  hw/adc: Add basic Aspeed ADC model
+  hw/arm: Integrate ADC model into Aspeed SoC
+
+ hw/adc/Makefile.objs        |   1 +
+ hw/adc/aspeed_adc.c         | 246 ++++++++++++++++++++++++++++++++++++++++++++
+ hw/arm/aspeed_soc.c         |  15 +++
+ include/hw/adc/aspeed_adc.h |  33 ++++++
+ include/hw/arm/aspeed_soc.h |   2 +
+ 5 files changed, 297 insertions(+)
+ create mode 100644 hw/adc/aspeed_adc.c
+ create mode 100644 include/hw/adc/aspeed_adc.h
+
 -- 
-Shannon
+2.9.3
 

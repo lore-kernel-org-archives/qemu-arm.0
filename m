@@ -1,99 +1,102 @@
-Received: by 10.25.0.6 with SMTP id 6csp1160046lfa;
-        Sun, 21 May 2017 17:24:22 -0700 (PDT)
-X-Received: by 10.31.153.18 with SMTP id b18mr6874657vke.73.1495412662419;
-        Sun, 21 May 2017 17:24:22 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1495412662; cv=none;
+Received: by 10.103.124.15 with SMTP id x15csp1229197vsc;
+        Sun, 21 May 2017 22:14:22 -0700 (PDT)
+X-Received: by 10.176.2.47 with SMTP id 44mr10654220uas.111.1495430062697;
+        Sun, 21 May 2017 22:14:22 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1495430062; cv=none;
         d=google.com; s=arc-20160816;
-        b=U4fpYI/2dt1kS1XxhbtlcIotoZ5AoPH0m1PXHglAuNLuN/mJFbr5yXt77eRzCPkqad
-         +bBgNnu8lZJNXvSLq8SHm9nswxX03Yh/VuWDD96A3yw6DPBW9s+G8pQx3+1q6HVJTjp/
-         Xiyvkxb+nmXRf+U8KahwfZPvVKXHtrVlpZQNcMoziCa+f69OKFtD3p1qWwAUvfxpnNbm
-         HLDdfvYIJAuSYFlymh3uHVXtiMpby92DLXS5gwojz2R+dGJqy7ogvOu1R0rV+xiZ8BM4
-         6uRvjcI7R/yba7bsHLALdID6w7FXxfz6pS8IUtijoPJrZLlY9UIgLN+TRWUVsnYFCPHd
-         8eBg==
+        b=fKq6B+liAgI7W7n3Pj+kP/MXjmmKFCPc3N6tv4rNXnEU1Bdfe1FVJh1eY0qJVRh5r1
+         ff9zuKOgQntaXOdOXmdX374aqfwVgZMjWms3ljfosNFPtEhAJMP2bXDxNvq+gozEA/NK
+         uSnTOIGPsFpP4FmDoou+ocvoxU+oH3JRYqnP+m0CIFgl0EUDpKlchTMuisD3+HfEzJpC
+         8LOJhB2Ujej1rCay7PmL3pWTAYly/MJlw3O/TtCRlWXxomxGUgDE9ZGCEpcMVxNj3Z1S
+         VbwPKLK2c7DCVOtUjngrQ9Xno9dwsV7D5o5JM9NmXFeJc5vxF0IIPjvSCuT5YPVNx0pC
+         tEkg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:mime-version:references
          :in-reply-to:date:to:from:message-id:dkim-signature:dkim-signature
          :arc-authentication-results;
-        bh=SibdnNTPvC7tnWpfaW/mDuVrjyw6knEeJ7BAro7B/uU=;
-        b=kHLGZzK84m3SgU4XrdybY7H78YJ/R5yUMjKscDOG0U/yVJRAuDVVNarVzxrcxx+Q43
-         JUBEiGStcmEjnVYObYc/ydW/DE1giT7vkmWHf5yGWEkXh1AZvtpNJZI8t5paAfo3rQWl
-         yaD3vvziWVMzuKog+BAkBUCpfQADL3ExB/rGEHAnF1w50m3ytpmBCAM9MrzngizretLX
-         Ku4FVhOyMbJcERpOQr5ewPe41HfmaAv7O+aEHYTCPVt8dIcSEfzrMW+sEUwlOt6k05iB
-         /m0pQ9d/INudXyuewjTZ3+oRHUWn81nreks69IAo55UiF3loVqj6tqKSSkYTZeETSUgj
-         PLkA==
+        bh=pwIWYKi6m0pjLq5FjhrRMGYcO3sjE65RzpN+FITuGE0=;
+        b=gP0v11wRCgz44SSyRVQ+GMm+i8qPvJG6L838jGwveJC+EnLaDyxRX5gK3eaHsUT+/4
+         GuA4XG/sVCnCf7htZid+i68II55TndGi90mkIB0Zp9/9T59cctGKkhbfpiB+6lkJXr92
+         aERIiuxiyEV45zPaObn57zyDapUtNW6by7CrxQ955BkFp1NZnPOWWo+EITVbHSxW2+Hz
+         /6Di5U1lSC+AN1IqKMqlrNP99dBw2NfegC0MNfcgyjEURIrm2BfqQaVv6m9l6GpTQmp/
+         zaDz7Jb6M8X0Nm8lBWOoW2aIozHyEdo4HeKBQ+aOL1KtI59ypwZaC+mzE1mDlANFWW5x
+         9dog==
 ARC-Authentication-Results: i=1; mx.google.com;
        dkim=fail header.i=@aj.id.au;
        dkim=fail header.i=@messagingengine.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id e190si5598764vkd.150.2017.05.21.17.24.22
+        by mx.google.com with ESMTPS id j66si6396760uad.63.2017.05.21.22.14.22
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sun, 21 May 2017 17:24:22 -0700 (PDT)
+        Sun, 21 May 2017 22:14:22 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        dkim=fail header.i=@aj.id.au;
        dkim=fail header.i=@messagingengine.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:39709 helo=lists.gnu.org)
+Received: from localhost ([::1]:40390 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1dCb93-0001Ca-Qw
-	for alex.bennee@linaro.org; Sun, 21 May 2017 20:24:21 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:34397)
+	id 1dCffi-0004T3-4V
+	for alex.bennee@linaro.org; Mon, 22 May 2017 01:14:22 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:48376)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <andrew@aj.id.au>) id 1dCb8u-0001CN-Fe
-	for qemu-arm@nongnu.org; Sun, 21 May 2017 20:24:17 -0400
+	(envelope-from <andrew@aj.id.au>) id 1dCffc-0004Sm-Cv
+	for qemu-arm@nongnu.org; Mon, 22 May 2017 01:14:18 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <andrew@aj.id.au>) id 1dCb8r-0006G9-88
-	for qemu-arm@nongnu.org; Sun, 21 May 2017 20:24:12 -0400
-Received: from out1-smtp.messagingengine.com ([66.111.4.25]:38267)
+	(envelope-from <andrew@aj.id.au>) id 1dCffY-0000n0-9U
+	for qemu-arm@nongnu.org; Mon, 22 May 2017 01:14:16 -0400
+Received: from out1-smtp.messagingengine.com ([66.111.4.25]:36055)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <andrew@aj.id.au>)
-	id 1dCb8q-0006Fb-SF; Sun, 21 May 2017 20:24:09 -0400
+	id 1dCffX-0000mY-Q1; Mon, 22 May 2017 01:14:12 -0400
 Received: from compute4.internal (compute4.nyi.internal [10.202.2.44])
-	by mailout.nyi.internal (Postfix) with ESMTP id 12FC9208D9;
-	Sun, 21 May 2017 20:24:05 -0400 (EDT)
+	by mailout.nyi.internal (Postfix) with ESMTP id 3C527206F6;
+	Mon, 22 May 2017 01:14:10 -0400 (EDT)
 Received: from frontend1 ([10.202.2.160])
-	by compute4.internal (MEProxy); Sun, 21 May 2017 20:24:05 -0400
+	by compute4.internal (MEProxy); Mon, 22 May 2017 01:14:10 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=aj.id.au; h=cc
 	:content-type:date:from:in-reply-to:message-id:mime-version
 	:references:subject:to:x-me-sender:x-me-sender:x-sasl-enc
-	:x-sasl-enc; s=fm1; bh=SibdnNTPvC7tnWpfaW/mDuVrjyw6knEeJ7BAro7B/
-	uU=; b=Cm2AyFUHxUsT+RDjHylTeZFgeAhUgzypAGKYHfxbmlFUr2ubb4QdQOa86
-	9PsEI2kToOdEIwPIar9JpklDMdaQGuB4lH9GSncWUsnJHIPoGaw24CfaMvqgkWtE
-	uRjx7PWGiV0PYsVKICRcVs4v1zfzW7k4mltDJl4RoaUHt3R/1v/ZzGN2JjRHh2Pj
-	AIrEBEP9JeT/vqZO3prI007+lwOtU9UUybb9muwpZVflo6IKe1MZaBbWjF4ntNxe
-	Cq5HSKh9fbhyxH7XlAHSVYQAMJnLORPFgtt0MIy6qk4ZRQCobsC/amJMZaR7wITV
-	WE7HW4S3tQfr7OXysq/aHaZG2Mzsw==
+	:x-sasl-enc; s=fm1; bh=pwIWYKi6m0pjLq5FjhrRMGYcO3sjE65RzpN+FITuG
+	E0=; b=aVPcsHkJOgfjV8r2wkethGEhJdCp8d7UvC3aYXRbuQW8vLAQY30+DVv2t
+	MOmbCFVnAq/+rwxe/9M0QX5+3mHsolM4n+haHlY3umuEvFwXjGCjVPF2diz1L+07
+	2EUI4oOdbyi7tas3O0UpPTqlv9CvDd/ycwaEfnfPNn4uSmpEZ6P/XVn+6v0yrjy6
+	0FZa1kH1vj86fglM/QJIeW0W0QGxKLc9Os72x//cI6s2VSkAolafnU9gREJHvxmX
+	y15bVA2RHR8TxedGZ/k919ZdF+PYhRpwHlpiK/szlShQaFBFgGrYbldjc8cxHaYU
+	z3Mwc3hJxySCDOYE7dZPQ02qV85Tg==
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
 	messagingengine.com; h=cc:content-type:date:from:in-reply-to
 	:message-id:mime-version:references:subject:to:x-me-sender
-	:x-me-sender:x-sasl-enc:x-sasl-enc; s=fm1; bh=SibdnNTPvC7tnWpfaW
-	/mDuVrjyw6knEeJ7BAro7B/uU=; b=VBWCwJJoLTKJhIRAZS3sOo0QnsSTb56EV5
-	uIGECWz93+M6KVn/vaz7VbDY/9zJIVO1c/lG35Zw2/oY5JYgOCL6MguNrdvunvvn
-	hbOKmPXqf4acaQzHjwwmEmVedgWzGoEkbMM6iCn/d7glju8wTP7T3jUKWbP6nE5V
-	LSaG11sEti7q6b2JHppTIWZNwBK2vOKxC/z0aZEQQ54Hy61fNv7Z4NSKgZ8Fe9ud
-	QMeBV9avIChPOVKwH0Q17+Fl28b4D6k9VCy5+yeuutaHJ4ejkaM1ZT/A+QF04/97
-	VKBy5tL/rZazsFrwCl7AEo1DXCg5zMmiMdKyTtECxVZ2oKYQHJHw==
-X-ME-Sender: <xms:pC8iWWj6ciFZQgrySawawh9RPA7zSnU3uYXzA_pi6mWHuqcFZpAMcQ>
-X-Sasl-enc: Z/m633yvpcJE32dLpLoK/enh0lGC/tZ+Kl4g0QlNSsHt 1495412644
-Received: from keelia.au.ibm.com (bh02i525f01.au.ibm.com [202.81.18.30])
-	by mail.messagingengine.com (Postfix) with ESMTPA id 0C9C67E794;
-	Sun, 21 May 2017 20:24:01 -0400 (EDT)
-Message-ID: <1495412633.23485.3.camel@aj.id.au>
+	:x-me-sender:x-sasl-enc:x-sasl-enc; s=fm1; bh=pwIWYKi6m0pjLq5Fjh
+	rRMGYcO3sjE65RzpN+FITuGE0=; b=ryyQ+XkiB78VTXaLMJgw/wIYq7mk8MLVb4
+	OJOoMiVDaVD6G4se4itjTMqLDjGtjLHjSvO6DQKLw0xqRoZD9gReYU4KyBuJKc55
+	Za9VGfJgsfn0GoJ9zzsywOiojWuRtBqbtkWFG12acy1Q3mcvUogqn1cV9TidteOv
+	VeoPX2hhHH6v8zZRf1MItYECPLZVykODDQ/fbP0PGLlCncLxVXmtm8BJIHGFXtY8
+	nPfybc0JeacZLmg0gqrAfUMor/e3qzJbMKWrzEG0tBFhhUCC7S8lvEcDPz33YfaM
+	wb/ohReKAY6UtLNKhkA5MuWNcOl7KznfjTRxkDhkQFzGDW16vKQA==
+X-ME-Sender: <xms:onMiWU14qAhUIWNQsRwZ4lFch9QxSahkHeQoOQGzow2wJJ_15IknBg>
+X-Sasl-enc: t4aYgA2MAfa91vLpMpYtKioVC9mtIFSMioFwwserHdc2 1495430049
+Received: from [10.61.2.103] (unknown [122.99.82.10])
+	by mail.messagingengine.com (Postfix) with ESMTPA id 8E6FD7E84B;
+	Mon, 22 May 2017 01:14:07 -0400 (EDT)
+Message-ID: <1495430041.22806.1.camel@aj.id.au>
 From: Andrew Jeffery <andrew@aj.id.au>
-To: Philippe =?ISO-8859-1?Q?Mathieu-Daud=E9?= <f4bug@amsat.org>, 
-	qemu-arm@nongnu.org
-Date: Mon, 22 May 2017 09:53:53 +0930
-In-Reply-To: <59538b3b-2936-cdc7-f582-9d473c72ce09@amsat.org>
+To: Ryan Chen <ryan_chen@aspeedtech.com>, Philippe
+	=?ISO-8859-1?Q?Mathieu-Daud=E9?=
+	<f4bug@amsat.org>, "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>
+Date: Mon, 22 May 2017 15:14:01 +1000
+In-Reply-To: <660ee5968bc04bc7a318835d53f331ba@TWMBX01.aspeed.com>
 References: <20170520002653.20213-1-andrew@aj.id.au>
 	<20170520002653.20213-2-andrew@aj.id.au>
 	<59538b3b-2936-cdc7-f582-9d473c72ce09@amsat.org>
+	<1495412633.23485.3.camel@aj.id.au>
+	<660ee5968bc04bc7a318835d53f331ba@TWMBX01.aspeed.com>
 Content-Type: multipart/signed; micalg="pgp-sha512";
-	protocol="application/pgp-signature"; boundary="=-+a8fcybBgKkHxXr3xe2p"
+	protocol="application/pgp-signature"; boundary="=-6uxB/B5lwJbkw1Dp3FMi"
 X-Mailer: Evolution 3.22.6-0ubuntu0.1 
 Mime-Version: 1.0
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
@@ -112,273 +115,542 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>,
-	Ryan Chen <ryan_chen@aspeedtech.com>,
-	Alistair Francis <alistair@alistair23.me>, qemu-devel@nongnu.org,
-	Joel Stanley <joel@jms.id.au>,
+	Alistair Francis <alistair@alistair23.me>, Joel Stanley <joel@jms.id.au>,
+	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
 	=?ISO-8859-1?Q?C=E9dric?= Le Goater <clg@kaod.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 1XCHFHisUsYr
+X-TUID: YNooSZcy1G6W
 
 
---=-+a8fcybBgKkHxXr3xe2p
+--=-6uxB/B5lwJbkw1Dp3FMi
 Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: base64
+Content-Transfer-Encoding: quoted-printable
 
-SGkgUGhpbCwKCk9uIFNhdCwgMjAxNy0wNS0yMCBhdCAwMDoyMSAtMDMwMCwgUGhpbGlwcGUgTWF0
-aGlldS1EYXVkw6kgd3JvdGU6Cj4gSGkgQW5kcmV3LAo+IAo+IE9uIDA1LzE5LzIwMTcgMDk6MjYg
-UE0sIEFuZHJldyBKZWZmZXJ5IHdyb3RlOgo+ID4gVGhpcyBtb2RlbCBpbXBsZW1lbnRzIGVub3Vn
-aCBiZWhhdmlvdXIgdG8gZG8gYmFzaWMgZnVuY3Rpb25hbGl0eSB0ZXN0cwo+ID4gc3VjaCBhcyBk
-ZXZpY2UgaW5pdGlhbGlzYXRpb24gYW5kIHJlYWQgb3V0IG9mIGR1bW15IHNhbXBsZSB2YWx1ZXMu
-IFRoZQo+ID4gc2FtcGxlIHZhbHVlIGdlbmVyYXRpb24gc3RyYXRlZ3kgaXMgc2ltaWxhciB0byB0
-aGUgU1RNIEFEQyBhbHJlYWR5IGluCj4gPiB0aGUgdHJlZS4KPiA+IAo+ID4gPiA+IFNpZ25lZC1v
-ZmYtYnk6IEFuZHJldyBKZWZmZXJ5IDxhbmRyZXdAYWouaWQuYXU+Cj4gPiAtLS0KPiA+IMKgaHcv
-YWRjL01ha2VmaWxlLm9ianPCoMKgwqDCoMKgwqDCoMKgfMKgwqDCoDEgKwo+ID4gwqBody9hZGMv
-YXNwZWVkX2FkYy5jwqDCoMKgwqDCoMKgwqDCoMKgfCAyNDYgKysrKysrKysrKysrKysrKysrKysr
-KysrKysrKysrKysrKysrKysrKysrKysKPiA+IMKgaW5jbHVkZS9ody9hZGMvYXNwZWVkX2FkYy5o
-IHzCoMKgMzMgKysrKysrCj4gPiDCoDMgZmlsZXMgY2hhbmdlZCwgMjgwIGluc2VydGlvbnMoKykK
-PiA+IMKgY3JlYXRlIG1vZGUgMTAwNjQ0IGh3L2FkYy9hc3BlZWRfYWRjLmMKPiA+IMKgY3JlYXRl
-IG1vZGUgMTAwNjQ0IGluY2x1ZGUvaHcvYWRjL2FzcGVlZF9hZGMuaAo+ID4gCj4gPiBkaWZmIC0t
-Z2l0IGEvaHcvYWRjL01ha2VmaWxlLm9ianMgYi9ody9hZGMvTWFrZWZpbGUub2Jqcwo+ID4gaW5k
-ZXggM2Y2ZGZkZWRhZWM3Li4yYmY5MzYyYmEzYzQgMTAwNjQ0Cj4gPiAtLS0gYS9ody9hZGMvTWFr
-ZWZpbGUub2Jqcwo+ID4gKysrIGIvaHcvYWRjL01ha2VmaWxlLm9ianMKPiA+IEBAIC0xICsxLDIg
-QEAKPiA+IMKgb2JqLSQoQ09ORklHX1NUTTMyRjJYWF9BREMpICs9IHN0bTMyZjJ4eF9hZGMubwo+
-ID4gK29iai0kKENPTkZJR19BU1BFRURfU09DKSArPSBhc3BlZWRfYWRjLm8KPiA+IGRpZmYgLS1n
-aXQgYS9ody9hZGMvYXNwZWVkX2FkYy5jIGIvaHcvYWRjL2FzcGVlZF9hZGMuYwo+ID4gbmV3IGZp
-bGUgbW9kZSAxMDA2NDQKPiA+IGluZGV4IDAwMDAwMDAwMDAwMC4uZDA4ZjE2ODRmN2JjCj4gPiAt
-LS0gL2Rldi9udWxsCj4gPiArKysgYi9ody9hZGMvYXNwZWVkX2FkYy5jCj4gPiBAQCAtMCwwICsx
-LDI0NiBAQAo+ID4gKy8qCj4gPiArICogQXNwZWVkIEFEQwo+ID4gKyAqCj4gPiA+ID4gKyAqIEFu
-ZHJldyBKZWZmZXJ5IDxhbmRyZXdAYWouaWQuYXU+Cj4gPiArICoKPiA+ICsgKiBDb3B5cmlnaHQg
-MjAxNyBJQk0gQ29ycC4KPiA+ICsgKgo+ID4gKyAqIFRoaXMgY29kZSBpcyBsaWNlbnNlZCB1bmRl
-ciB0aGUgR1BMIHZlcnNpb24gMiBvciBsYXRlci7CoMKgU2VlCj4gPiArICogdGhlIENPUFlJTkcg
-ZmlsZSBpbiB0aGUgdG9wLWxldmVsIGRpcmVjdG9yeS4KPiA+ICsgKi8KPiA+ICsKPiA+ICsjaW5j
-bHVkZSAicWVtdS9vc2RlcC5oIgo+ID4gKyNpbmNsdWRlICJody9hZGMvYXNwZWVkX2FkYy5oIgo+
-ID4gKyNpbmNsdWRlICJxYXBpL2Vycm9yLmgiCj4gPiArI2luY2x1ZGUgInFlbXUvbG9nLmgiCj4g
-PiArCj4gPiArI2RlZmluZSBBU1BFRURfQURDX0VOR0lORV9DVFJMwqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgMHgwMAo+ID4gKyNkZWZpbmXCoMKgQVNQRUVEX0FEQ19FTkdJTkVf
-Q0hfRU5fTUFTS8KgwqDCoMKgwqDCoMKgwqDCoMKgwqAweGZmZmYwMDAwCj4gPiArI2RlZmluZcKg
-wqDCoEFTUEVFRF9BRENfRU5HSU5FX0NIX0VOKHgpwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgKChC
-SVQoeCkpIDw8IDE2KQo+ID4gKyNkZWZpbmXCoMKgQVNQRUVEX0FEQ19FTkdJTkVfSU5JVMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqBCSVQoOCkKPiA+ICsjZGVmaW5lwqDCoEFTUEVF
-RF9BRENfRU5HSU5FX0FVVE9fQ09NUMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoEJJVCg1KQo+ID4g
-KyNkZWZpbmXCoMKgQVNQRUVEX0FEQ19FTkdJTkVfQ09NUMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgwqBCSVQoNCkKPiA+ICsjZGVmaW5lwqDCoEFTUEVFRF9BRENfRU5HSU5FX01PREVf
-TUFTS8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoDB4MDAwMDAwMGUKPiA+ICsjZGVmaW5lwqDCoMKg
-QVNQRUVEX0FEQ19FTkdJTkVfTU9ERV9PRkbCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAoMGIwMDAg
-PDwgMSkKPiA+ICsjZGVmaW5lwqDCoMKgQVNQRUVEX0FEQ19FTkdJTkVfTU9ERV9TVEFOREJZwqDC
-oMKgwqDCoMKgwqDCoCgwYjAwMSA8PCAxKQo+ID4gKyNkZWZpbmXCoMKgwqBBU1BFRURfQURDX0VO
-R0lORV9NT0RFX05PUk1BTMKgwqDCoMKgwqDCoMKgwqDCoCgwYjExMSA8PCAxKQo+ID4gKyNkZWZp
-bmXCoMKgQVNQRUVEX0FEQ19FTkdJTkVfRU7CoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoEJJVCgwKQo+ID4gKwo+ID4gKyNkZWZpbmUgQVNQRUVEX0FEQ19MX01BU0vCoMKgwqDC
-oMKgwqDCoCgoMSA8PCAxMCkgLSAxKQo+ID4gKyNkZWZpbmUgQVNQRUVEX0FEQ19MKHgpwqDCoMKg
-wqDCoMKgwqDCoMKgKCh4KSAmIEFTUEVFRF9BRENfTF9NQVNLKQo+ID4gKyNkZWZpbmUgQVNQRUVE
-X0FEQ19IKHgpwqDCoMKgwqDCoMKgwqDCoMKgKCgoeCkgPj4gMTYpICYgQVNQRUVEX0FEQ19MX01B
-U0spCj4gPiArI2RlZmluZSBBU1BFRURfQURDX0xIX01BU0vCoMKgwqDCoMKgwqAoQVNQRUVEX0FE
-Q19MX01BU0sgPDwgMTYgfCBBU1BFRURfQURDX0xfTUFTSykKPiA+ICsKPiA+ICtzdGF0aWMgaW5s
-aW5lIHVpbnQzMl90IHVwZGF0ZV9jaGFubmVscyh1aW50MzJfdCBjdXJyZW50KQo+ID4gK3sKPiA+
-ICvCoMKgwqDCoGNvbnN0IHVpbnQzMl90IG5leHQgPSAoY3VycmVudCArIDcpICYgMHgzZmY7Cj4g
-PiArCj4gPiArwqDCoMKgwqByZXR1cm4gKG5leHQgPDwgMTYpIHwgbmV4dDsKPiA+ICt9Cj4gPiAr
-Cj4gPiArc3RhdGljIGJvb2wgYnJlYWtzX3RocmVzaG9sZChBc3BlZWRBRENTdGF0ZSAqcywgaW50
-IGNoX29mZikKPiA+ICt7Cj4gPiArwqDCoMKgwqBjb25zdCB1aW50MzJfdCBhID0gQVNQRUVEX0FE
-Q19MKHMtPmNoYW5uZWxzW2NoX29mZl0pOwo+ID4gK8KgwqDCoMKgY29uc3QgdWludDMyX3QgYV9s
-b3dlciA9IEFTUEVFRF9BRENfTChzLT5ib3VuZHNbMiAqIGNoX29mZl0pOwo+ID4gK8KgwqDCoMKg
-Y29uc3QgdWludDMyX3QgYV91cHBlciA9IEFTUEVFRF9BRENfSChzLT5ib3VuZHNbMiAqIGNoX29m
-Zl0pOwo+ID4gK8KgwqDCoMKgY29uc3QgdWludDMyX3QgYiA9IEFTUEVFRF9BRENfSChzLT5jaGFu
-bmVsc1tjaF9vZmZdKTsKPiA+ICvCoMKgwqDCoGNvbnN0IHVpbnQzMl90IGJfbG93ZXIgPSBBU1BF
-RURfQURDX0wocy0+Ym91bmRzWzIgKiBjaF9vZmYgKyAxXSk7Cj4gPiArwqDCoMKgwqBjb25zdCB1
-aW50MzJfdCBiX3VwcGVyID0gQVNQRUVEX0FEQ19IKHMtPmJvdW5kc1syICogY2hfb2ZmICsgMV0p
-Owo+ID4gKwo+ID4gK8KgwqDCoMKgcmV0dXJuICgoYSA8IGFfbG93ZXIgfHwgYSA+IGFfdXBwZXIp
-KSB8fAo+ID4gK8KgwqDCoMKgwqDCoMKgwqDCoMKgwqAoKGIgPCBiX2xvd2VyIHx8IGIgPiBiX3Vw
-cGVyKSk7Cj4gPiArfQo+ID4gKwo+ID4gK3N0YXRpYyB1aW50MzJfdCByZWFkX2NoYW5uZWxfc2Ft
-cGxlKEFzcGVlZEFEQ1N0YXRlICpzLCBpbnQgY2hfb2ZmKQo+ID4gK3sKPiA+ICvCoMKgwqDCoHVp
-bnQzMl90IHJldDsKPiA+ICsKPiA+ICvCoMKgwqDCoC8qIFBvb3IgbWFuJ3Mgc2FtcGxpbmcgKi8K
-PiA+ICvCoMKgwqDCoHJldCA9IHMtPmNoYW5uZWxzW2NoX29mZl07Cj4gPiArwqDCoMKgwqBzLT5j
-aGFubmVsc1tjaF9vZmZdID0gdXBkYXRlX2NoYW5uZWxzKHMtPmNoYW5uZWxzW2NoX29mZl0pOwo+
-ID4gKwo+ID4gK8KgwqDCoMKgaWYgKGJyZWFrc190aHJlc2hvbGQocywgY2hfb2ZmKSkgewo+ID4g
-K8KgwqDCoMKgwqDCoMKgwqBxZW11X2lycV9yYWlzZShzLT5pcnEpOwo+ID4gK8KgwqDCoMKgfQo+
-ID4gKwo+ID4gK8KgwqDCoMKgcmV0dXJuIHJldDsKPiA+ICt9Cj4gPiArCj4gPiArI2RlZmluZSBU
-T19JTkRFWChhZGRyLCBiYXNlKSAoKChhZGRyKSAtIChiYXNlKSkgPj4gMikKPiA+ICsKPiA+ICtz
-dGF0aWMgdWludDY0X3QgYXNwZWVkX2FkY19yZWFkKHZvaWQgKm9wYXF1ZSwgaHdhZGRyIGFkZHIs
-Cj4gPiArwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqB1bnNpZ25lZCBpbnQgc2l6ZSkKPiA+ICt7Cj4gPiArwqDC
-oMKgwqBBc3BlZWRBRENTdGF0ZSAqcyA9IEFTUEVFRF9BREMob3BhcXVlKTsKPiA+ICvCoMKgwqDC
-oHVpbnQ2NF90IHJldDsKPiA+ICsKPiA+ICvCoMKgwqDCoHN3aXRjaCAoYWRkcikgewo+ID4gK8Kg
-wqDCoMKgY2FzZSAweDAwOgo+ID4gK8KgwqDCoMKgwqDCoMKgwqByZXQgPSBzLT5lbmdpbmVfY3Ry
-bDsKPiA+ICvCoMKgwqDCoMKgwqDCoMKgYnJlYWs7Cj4gPiArwqDCoMKgwqBjYXNlIDB4MDQ6Cj4g
-PiArwqDCoMKgwqDCoMKgwqDCoHJldCA9IHMtPmlycV9jdHJsOwo+ID4gK8KgwqDCoMKgwqDCoMKg
-wqBicmVhazsKPiA+ICvCoMKgwqDCoGNhc2UgMHgwODoKPiA+ICvCoMKgwqDCoMKgwqDCoMKgcmV0
-ID0gcy0+dmdhX2RldGVjdF9jdHJsOwo+ID4gK8KgwqDCoMKgwqDCoMKgwqBicmVhazsKPiA+ICvC
-oMKgwqDCoGNhc2UgMHgwYzoKPiA+ICvCoMKgwqDCoMKgwqDCoMKgcmV0ID0gcy0+YWRjX2Nsa19j
-dHJsOwo+ID4gK8KgwqDCoMKgwqDCoMKgwqBicmVhazsKPiA+ICvCoMKgwqDCoGNhc2UgMHgxMCAu
-Li4gMHgyZToKPiA+ICvCoMKgwqDCoMKgwqDCoMKgcmV0ID0gcmVhZF9jaGFubmVsX3NhbXBsZShz
-LCBUT19JTkRFWChhZGRyLCAweDEwKSk7Cj4gPiArwqDCoMKgwqDCoMKgwqDCoGJyZWFrOwo+ID4g
-K8KgwqDCoMKgY2FzZSAweDMwIC4uLiAweDZlOgo+ID4gK8KgwqDCoMKgwqDCoMKgwqByZXQgPSBz
-LT5ib3VuZHNbVE9fSU5ERVgoYWRkciwgMHgzMCldOwo+ID4gK8KgwqDCoMKgwqDCoMKgwqBicmVh
-azsKPiA+ICvCoMKgwqDCoGNhc2UgMHg3MCAuLi4gMHhhZToKPiA+ICvCoMKgwqDCoMKgwqDCoMKg
-cmV0ID0gcy0+aHlzdGVyZXNpc1tUT19JTkRFWChhZGRyLCAweDcwKV07Cj4gPiArwqDCoMKgwqDC
-oMKgwqDCoGJyZWFrOwo+ID4gK8KgwqDCoMKgY2FzZSAweGMwOgo+ID4gK8KgwqDCoMKgwqDCoMKg
-wqByZXQgPSBzLT5pcnFfc3JjOwo+ID4gK8KgwqDCoMKgwqDCoMKgwqBicmVhazsKPiA+ICvCoMKg
-wqDCoGNhc2UgMHhjNDoKPiA+ICvCoMKgwqDCoMKgwqDCoMKgcmV0ID0gcy0+Y29tcF90cmltOwo+
-ID4gK8KgwqDCoMKgwqDCoMKgwqBicmVhazsKPiA+ICvCoMKgwqDCoGRlZmF1bHQ6Cj4gPiArwqDC
-oMKgwqDCoMKgwqDCoHFlbXVfbG9nX21hc2soTE9HX1VOSU1QLCAiJXM6IGFkZHI6IDB4JWx4LCBz
-aXplOiAldVxuIiwgX19mdW5jX18sIGFkZHIsCj4gPiArwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgwqBzaXplKTsKPiA+ICvCoMKgwqDCoMKgwqDCoMKgcmV0ID0gMDsKPiA+ICvCoMKgwqDC
-oMKgwqDCoMKgYnJlYWs7Cj4gPiArwqDCoMKgwqB9Cj4gPiArCj4gPiArwqDCoMKgwqByZXR1cm4g
-cmV0Owo+ID4gK30KPiA+ICsKPiA+ICtzdGF0aWMgdm9pZCBhc3BlZWRfYWRjX3dyaXRlKHZvaWQg
-Km9wYXF1ZSwgaHdhZGRyIGFkZHIsCj4gPiArwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoHVpbnQ2NF90IHZhbCwgdW5zaWduZWQgaW50IHNpemUpCj4gPiArewo+
-ID4gK8KgwqDCoMKgQXNwZWVkQURDU3RhdGUgKnMgPSBBU1BFRURfQURDKG9wYXF1ZSk7Cj4gPiAr
-Cj4gPiArwqDCoMKgwqBzd2l0Y2ggKGFkZHIpIHsKPiA+ICvCoMKgwqDCoGNhc2UgMHgwMDoKPiA+
-ICvCoMKgwqDCoMKgwqDCoMKgewo+ID4gK8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoHVpbnQzMl90
-IGluaXQ7Cj4gPiArCj4gPiArwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgaW5pdCA9ICEhKHZhbCAm
-IEFTUEVFRF9BRENfRU5HSU5FX0VOKTsKPiA+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqBpbml0
-ICo9IEFTUEVFRF9BRENfRU5HSU5FX0lOSVQ7Cj4gPiArCj4gPiArwqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgdmFsICY9IH5BU1BFRURfQURDX0VOR0lORV9JTklUOwo+ID4gK8KgwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoHZhbCB8PSBpbml0Owo+ID4gK8KgwqDCoMKgwqDCoMKgwqB9Cj4gPiArCj4gPiAr
-wqDCoMKgwqDCoMKgwqDCoHZhbCAmPSB+QVNQRUVEX0FEQ19FTkdJTkVfQVVUT19DT01QOwo+ID4g
-K8KgwqDCoMKgwqDCoMKgwqBzLT5lbmdpbmVfY3RybCA9IHZhbDsKPiA+ICsKPiA+ICvCoMKgwqDC
-oMKgwqDCoMKgYnJlYWs7Cj4gPiArwqDCoMKgwqBjYXNlIDB4MDQ6Cj4gPiArwqDCoMKgwqDCoMKg
-wqDCoHMtPmlycV9jdHJsID0gdmFsOwo+ID4gK8KgwqDCoMKgwqDCoMKgwqBicmVhazsKPiA+ICvC
-oMKgwqDCoGNhc2UgMHgwODoKPiA+ICvCoMKgwqDCoMKgwqDCoMKgcy0+dmdhX2RldGVjdF9jdHJs
-ID0gdmFsOwo+ID4gK8KgwqDCoMKgwqDCoMKgwqBicmVhazsKPiA+ICvCoMKgwqDCoGNhc2UgMHgw
-YzoKPiA+ICvCoMKgwqDCoMKgwqDCoMKgcy0+YWRjX2Nsa19jdHJsID0gdmFsOwo+ID4gK8KgwqDC
-oMKgwqDCoMKgwqBicmVhazsKPiA+ICvCoMKgwqDCoGNhc2UgMHgxMCAuLi4gMHgyZToKPiA+ICvC
-oMKgwqDCoMKgwqDCoMKgcy0+Y2hhbm5lbHNbVE9fSU5ERVgoYWRkciwgMHgxMCldID0gdmFsOwo+
-ID4gK8KgwqDCoMKgwqDCoMKgwqBicmVhazsKPiA+ICvCoMKgwqDCoGNhc2UgMHgzMCAuLi4gMHg2
-ZToKPiA+ICvCoMKgwqDCoMKgwqDCoMKgcy0+Ym91bmRzW1RPX0lOREVYKGFkZHIsIDB4MzApXSA9
-ICh2YWwgJiBBU1BFRURfQURDX0xIX01BU0spOwo+ID4gK8KgwqDCoMKgwqDCoMKgwqBicmVhazsK
-PiA+ICvCoMKgwqDCoGNhc2UgMHg3MCAuLi4gMHhhZToKPiA+ICvCoMKgwqDCoMKgwqDCoMKgcy0+
-aHlzdGVyZXNpc1tUT19JTkRFWChhZGRyLCAweDcwKV0gPQo+ID4gK8KgwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoCh2YWwgJiAoQklUKDMxKSB8IEFTUEVFRF9BRENfTEhfTUFTSykpOwo+IAo+IENhbiB5
-b3UgYWRkIGEgI2RlZmluZSBmb3IgdGhpcyBCSVQoMzEpPwoKU29ycnksIHRoYXQgd2FzIGFuIG92
-ZXJzaWdodCEKCj4gCj4gPiArwqDCoMKgwqDCoMKgwqDCoGJyZWFrOwo+ID4gK8KgwqDCoMKgY2Fz
-ZSAweGMwOgo+ID4gK8KgwqDCoMKgwqDCoMKgwqBzLT5pcnFfc3JjID0gKHZhbCAmIDB4ZmZmZik7
-Cj4gPiArwqDCoMKgwqDCoMKgwqDCoGJyZWFrOwo+ID4gK8KgwqDCoMKgY2FzZSAweGM0Ogo+ID4g
-K8KgwqDCoMKgwqDCoMKgwqBzLT5jb21wX3RyaW0gPSAodmFsICYgMHhmKTsKPiA+ICvCoMKgwqDC
-oMKgwqDCoMKgYnJlYWs7Cj4gPiArwqDCoMKgwqBkZWZhdWx0Ogo+ID4gK8KgwqDCoMKgwqDCoMKg
-wqBxZW11X2xvZ19tYXNrKExPR19VTklNUCwgIiVzOiAlbHVcbiIsIF9fZnVuY19fLCBhZGRyKTsK
-PiA+ICvCoMKgwqDCoMKgwqDCoMKgYnJlYWs7Cj4gPiArwqDCoMKgwqB9Cj4gPiArfQo+ID4gKwo+
-ID4gK3N0YXRpYyBjb25zdCBNZW1vcnlSZWdpb25PcHMgYXNwZWVkX2FkY19vcHMgPSB7Cj4gPiAr
-wqDCoMKgwqAucmVhZCA9IGFzcGVlZF9hZGNfcmVhZCwKPiA+ICvCoMKgwqDCoC53cml0ZSA9IGFz
-cGVlZF9hZGNfd3JpdGUsCj4gPiArwqDCoMKgwqAuZW5kaWFubmVzcyA9IERFVklDRV9MSVRUTEVf
-RU5ESUFOLAo+ID4gK8KgwqDCoMKgLnZhbGlkLm1pbl9hY2Nlc3Nfc2l6ZSA9IDQsCj4gCj4gWW91
-IHN1cmUgYWJvdXQgdGhhdD8gSG93IHRoZSByZWdpc3RlcnMgYXJlIGFsaWduZWQgaXQgc2VlbXMg
-dGhpcyBkZXZpY2XCoAo+IGNhbiBhbHNvIGJlIGFjY2Vzc2VkIDItYnl0ZSB3aWRlLgoKSSdsbCBh
-ZGRyZXNzIHRoaXMgYmVsb3cuCgo+IAo+ID4gK8KgwqDCoMKgLnZhbGlkLm1heF9hY2Nlc3Nfc2l6
-ZSA9IDQsCj4gPiArwqDCoMKgwqAudmFsaWQudW5hbGlnbmVkID0gZmFsc2UsCj4gPiArfTsKPiA+
-ICsKPiA+ICtzdGF0aWMgdm9pZCBhc3BlZWRfYWRjX3Jlc2V0KERldmljZVN0YXRlICpkZXYpCj4g
-PiArewo+ID4gK8KgwqDCoMKgc3RydWN0IEFzcGVlZEFEQ1N0YXRlICpzID0gQVNQRUVEX0FEQyhk
-ZXYpOwo+ID4gKwo+ID4gK8KgwqDCoMKgcy0+ZW5naW5lX2N0cmwgPSAwOwo+ID4gK8KgwqDCoMKg
-cy0+aXJxX2N0cmwgPSAwOwo+ID4gK8KgwqDCoMKgcy0+dmdhX2RldGVjdF9jdHJsID0gMHgwMDAw
-MDAwZjsKPiA+ICvCoMKgwqDCoHMtPmFkY19jbGtfY3RybCA9IDB4MDAwMDAwMGY7Cj4gPiArwqDC
-oMKgwqBtZW1zZXQocy0+Y2hhbm5lbHMsIDAsIHNpemVvZihzLT5jaGFubmVscykpOwo+ID4gK8Kg
-wqDCoMKgbWVtc2V0KHMtPmJvdW5kcywgMCwgc2l6ZW9mKHMtPmJvdW5kcykpOwo+ID4gK8KgwqDC
-oMKgbWVtc2V0KHMtPmh5c3RlcmVzaXMsIDAsIHNpemVvZihzLT5oeXN0ZXJlc2lzKSk7Cj4gPiAr
-wqDCoMKgwqBzLT5pcnFfc3JjID0gMDsKPiA+ICvCoMKgwqDCoHMtPmNvbXBfdHJpbSA9IDA7Cj4g
-PiArfQo+ID4gKwo+ID4gK3N0YXRpYyB2b2lkIGFzcGVlZF9hZGNfcmVhbGl6ZShEZXZpY2VTdGF0
-ZSAqZGV2LCBFcnJvciAqKmVycnApCj4gPiArewo+ID4gK8KgwqDCoMKgQXNwZWVkQURDU3RhdGUg
-KnMgPSBBU1BFRURfQURDKGRldik7Cj4gPiArwqDCoMKgwqBTeXNCdXNEZXZpY2UgKnNiZCA9IFNZ
-U19CVVNfREVWSUNFKGRldik7Cj4gPiArCj4gPiArwqDCoMKgwqBzeXNidXNfaW5pdF9pcnEoc2Jk
-LCAmcy0+aXJxKTsKPiA+ICsKPiA+ICvCoMKgwqDCoG1lbW9yeV9yZWdpb25faW5pdF9pbygmcy0+
-bW1pbywgT0JKRUNUKHMpLCAmYXNwZWVkX2FkY19vcHMsIHMsCj4gPiArwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgVFlQRV9BU1BFRURfQURDLCAweDEwMDApOwo+ID4gKwo+ID4gK8KgwqDCoMKgc3lz
-YnVzX2luaXRfbW1pbyhzYmQsICZzLT5tbWlvKTsKPiA+ICt9Cj4gPiArCj4gPiArc3RhdGljIGNv
-bnN0IFZNU3RhdGVEZXNjcmlwdGlvbiB2bXN0YXRlX2FzcGVlZF9hZGMgPSB7Cj4gPiArwqDCoMKg
-wqAubmFtZSA9IFRZUEVfQVNQRUVEX0FEQywKPiA+ICvCoMKgwqDCoC52ZXJzaW9uX2lkID0gMSwK
-PiA+ICvCoMKgwqDCoC5taW5pbXVtX3ZlcnNpb25faWQgPSAxLAo+ID4gK8KgwqDCoMKgLmZpZWxk
-cyA9IChWTVN0YXRlRmllbGRbXSkgewo+ID4gK8KgwqDCoMKgwqDCoMKgwqBWTVNUQVRFX1VJTlQz
-MihlbmdpbmVfY3RybCwgQXNwZWVkQURDU3RhdGUpLAo+ID4gK8KgwqDCoMKgwqDCoMKgwqBWTVNU
-QVRFX1VJTlQzMihpcnFfY3RybCwgQXNwZWVkQURDU3RhdGUpLAo+ID4gK8KgwqDCoMKgwqDCoMKg
-wqBWTVNUQVRFX1VJTlQzMih2Z2FfZGV0ZWN0X2N0cmwsIEFzcGVlZEFEQ1N0YXRlKSwKPiA+ICvC
-oMKgwqDCoMKgwqDCoMKgVk1TVEFURV9VSU5UMzIoYWRjX2Nsa19jdHJsLCBBc3BlZWRBRENTdGF0
-ZSksCj4gPiArwqDCoMKgwqDCoMKgwqDCoFZNU1RBVEVfVUlOVDMyX0FSUkFZKGNoYW5uZWxzLCBB
-c3BlZWRBRENTdGF0ZSwKPiA+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoEFTUEVF
-RF9BRENfTlJfQ0hBTk5FTFMgLyAyKSwKPiA+ICvCoMKgwqDCoMKgwqDCoMKgVk1TVEFURV9VSU5U
-MzJfQVJSQVkoYm91bmRzLCBBc3BlZWRBRENTdGF0ZSwgQVNQRUVEX0FEQ19OUl9DSEFOTkVMUyks
-Cj4gPiArwqDCoMKgwqDCoMKgwqDCoFZNU1RBVEVfVUlOVDMyX0FSUkFZKGh5c3RlcmVzaXMsIEFz
-cGVlZEFEQ1N0YXRlLAo+ID4gK8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgQVNQRUVE
-X0FEQ19OUl9DSEFOTkVMUyksCj4gPiArwqDCoMKgwqDCoMKgwqDCoFZNU1RBVEVfVUlOVDMyKGly
-cV9zcmMsIEFzcGVlZEFEQ1N0YXRlKSwKPiA+ICvCoMKgwqDCoMKgwqDCoMKgVk1TVEFURV9VSU5U
-MzIoY29tcF90cmltLCBBc3BlZWRBRENTdGF0ZSksCj4gPiArwqDCoMKgwqDCoMKgwqDCoFZNU1RB
-VEVfRU5EX09GX0xJU1QoKSwKPiA+ICvCoMKgwqDCoH0KPiA+ICt9Owo+ID4gKwo+ID4gK3N0YXRp
-YyB2b2lkIGFzcGVlZF9hZGNfY2xhc3NfaW5pdChPYmplY3RDbGFzcyAqa2xhc3MsIHZvaWQgKmRh
-dGEpCj4gPiArewo+ID4gK8KgwqDCoMKgRGV2aWNlQ2xhc3MgKmRjID0gREVWSUNFX0NMQVNTKGts
-YXNzKTsKPiA+ICsKPiA+ICvCoMKgwqDCoGRjLT5yZWFsaXplID0gYXNwZWVkX2FkY19yZWFsaXpl
-Owo+ID4gK8KgwqDCoMKgZGMtPnJlc2V0ID0gYXNwZWVkX2FkY19yZXNldDsKPiA+ICvCoMKgwqDC
-oGRjLT5kZXNjID0gIkFzcGVlZCBBbmFsb2ctdG8tRGlnaXRhbCBDb252ZXJ0ZXIiLAo+ID4gK8Kg
-wqDCoMKgZGMtPnZtc2QgPSAmdm1zdGF0ZV9hc3BlZWRfYWRjOwo+ID4gK30KPiA+ICsKPiA+ICtz
-dGF0aWMgY29uc3QgVHlwZUluZm8gYXNwZWVkX2FkY19pbmZvID0gewo+ID4gK8KgwqDCoMKgLm5h
-bWUgPSBUWVBFX0FTUEVFRF9BREMsCj4gPiArwqDCoMKgwqAucGFyZW50ID0gVFlQRV9TWVNfQlVT
-X0RFVklDRSwKPiA+ICvCoMKgwqDCoC5pbnN0YW5jZV9zaXplID0gc2l6ZW9mKEFzcGVlZEFEQ1N0
-YXRlKSwKPiA+ICvCoMKgwqDCoC5jbGFzc19pbml0ID0gYXNwZWVkX2FkY19jbGFzc19pbml0LAo+
-ID4gK307Cj4gPiArCj4gPiArc3RhdGljIHZvaWQgYXNwZWVkX2FkY19yZWdpc3Rlcl90eXBlcyh2
-b2lkKQo+ID4gK3sKPiA+ICvCoMKgwqDCoHR5cGVfcmVnaXN0ZXJfc3RhdGljKCZhc3BlZWRfYWRj
-X2luZm8pOwo+ID4gK30KPiA+ICsKPiA+ICt0eXBlX2luaXQoYXNwZWVkX2FkY19yZWdpc3Rlcl90
-eXBlcyk7Cj4gPiBkaWZmIC0tZ2l0IGEvaW5jbHVkZS9ody9hZGMvYXNwZWVkX2FkYy5oIGIvaW5j
-bHVkZS9ody9hZGMvYXNwZWVkX2FkYy5oCj4gPiBuZXcgZmlsZSBtb2RlIDEwMDY0NAo+ID4gaW5k
-ZXggMDAwMDAwMDAwMDAwLi5hZTIwODlhYzYyY2EKPiA+IC0tLSAvZGV2L251bGwKPiA+ICsrKyBi
-L2luY2x1ZGUvaHcvYWRjL2FzcGVlZF9hZGMuaAo+ID4gQEAgLTAsMCArMSwzMyBAQAo+ID4gKyNp
-Zm5kZWYgX0FTUEVFRF9BRENfSF8KPiA+ICsjZGVmaW5lIF9BU1BFRURfQURDX0hfCj4gPiArCj4g
-Cj4gWW91IG1pc3NlZCB0aGUgbGljZW5zZS4KCldob29wcy4KCj4gCj4gQ2FuIHlvdSBhbHNvIGFk
-ZCBhIGNvbW1lbnQgYWJvdXQgd2hpY2ggQURDIGFyZSBtb2RlbGVkICgyNDAwLzI1MDAgbm/CoAo+
-IGRpZmZlcmVuY2UpIGFzIHlvdSBleHBsYWluIGluIHlvdXIgY292ZXIgbGV0dGVyPwoKWWVzLCB3
-aWxsIGFkZCB0aGlzLgoKPiAKPiA+ICsjaW5jbHVkZSA8c3RkaW50Lmg+Cj4gPiArCj4gPiArI2lu
-Y2x1ZGUgImh3L2h3LmgiCj4gPiArI2luY2x1ZGUgImh3L2lycS5oIgo+ID4gKyNpbmNsdWRlICJo
-dy9zeXNidXMuaCIKPiA+ICsKPiA+ICsjZGVmaW5lIFRZUEVfQVNQRUVEX0FEQyAiYXNwZWVkLmFk
-YyIKPiA+ICsjZGVmaW5lIEFTUEVFRF9BREMob2JqKSBPQkpFQ1RfQ0hFQ0soQXNwZWVkQURDU3Rh
-dGUsIChvYmopLCBUWVBFX0FTUEVFRF9BREMpCj4gPiArCj4gPiArI2RlZmluZSBBU1BFRURfQURD
-X05SX0NIQU5ORUxTIDE2Cj4gPiArCj4gPiArdHlwZWRlZiBzdHJ1Y3QgQXNwZWVkQURDU3RhdGUg
-ewo+ID4gK8KgwqDCoMKgLyogPHByaXZhdGU+ICovCj4gPiArwqDCoMKgwqBTeXNCdXNEZXZpY2Ug
-cGFyZW50Owo+ID4gKwo+ID4gK8KgwqDCoMKgTWVtb3J5UmVnaW9uIG1taW87Cj4gPiArwqDCoMKg
-wqBxZW11X2lycSBpcnE7Cj4gPiArCj4gPiArwqDCoMKgwqB1aW50MzJfdCBlbmdpbmVfY3RybDsK
-PiA+ICvCoMKgwqDCoHVpbnQzMl90IGlycV9jdHJsOwo+ID4gK8KgwqDCoMKgdWludDMyX3Qgdmdh
-X2RldGVjdF9jdHJsOwo+ID4gK8KgwqDCoMKgdWludDMyX3QgYWRjX2Nsa19jdHJsOwo+ID4gK8Kg
-wqDCoMKgdWludDMyX3QgY2hhbm5lbHNbQVNQRUVEX0FEQ19OUl9DSEFOTkVMUyAvIDJdOwo+IAo+
-IEkgY2FuJ3QgZmluZCB0aGUgZGF0YXNoZWV0CgpVbmZvcnR1bmF0ZWx5IHRoZSBkYXRhc2hlZXQg
-aXNuJ3QgcHVibGljbHkgYXZhaWxhYmxlLiBIb3dldmVyLCBSeWFuCihDYydlZCkgY2FuIGhlbHAg
-YW5zd2VyIHNwZWNpZmljIGhhcmR3YXJlIHF1ZXN0aW9ucy4KCj4gLCBidXQgaXQgc2VlbXMgdGhp
-cyBBREMgaGFzIGEgMTAtYml0wqAKPiByZXNvbHV0aW9uLCBzbyBhIGNoYW5uZWwgc2FtcGxlIGNh
-biBmaXQgaW50byBhIHVpbnQxNl90LgoKSW5kZWVkLiBJIHRoaW5rIEknbGwgYWRkIGEgYml0IG9m
-IGEgYmx1cmIgYWJvdXQgdGhlIGRldmljZSB0byBjb3Zlcgp0aGlzIG9mZi4KCj4gSXQgc291bmRz
-IHdlaXJkIHRvIHJlYWQgQVNQRUVEX0FEQ19OUl9DSEFOTkVMUz0xNiB0aGVuIHVzZcKgCj4gQVNQ
-RUVEX0FEQ19OUl9DSEFOTkVMUy8yIGNoYW5uZWxzLgo+IEkgdGhpbmsgdXNpbmcgYW4gdWludDE2
-X3QgYXJyYXkgeW91IGNhbiBnZXQgcmlkIG9mIHRoZSBBU1BFRURfQURDX0wvSMKgCj4gbWFjcm9z
-LgoKVGhpcyBpcyBzb21ldGhpbmcgSSB0cmllZCB0byBjbGFyaWZ5IHdpdGggUnlhbiBvbiBGcmlk
-YXkuwqBJIGFtIHVuZGVyCnRoZSBpbXByZXNzaW9uIHRoZSBoYXJkd2FyZSBvbmx5IHN1cHBvcnRz
-IDMyLWJpdCBhY2Nlc3Nlcy4gSW4gdGhlCmRhdGFzaGVldCB0aGUgcmVnaXN0ZXJzIGFyZSBkZWZp
-bmVkIGluIDMyLWJpdCBxdWFudGl0aWVzLCB3aGljaCBkcm92ZQp0aGlzIGFwcHJvYWNoLiBUaGUg
-ZHJpdmVyIGZyb20gdGhlIFNESydzIGtlcm5lbCBhbHNvIHVzZXMgMzItYml0CmFjY2Vzc2VzIGFu
-ZCBzaGlmdHMuCgpSeWFuOiBTbyB0byBjbGFyaWZ5IGhlcmUsIGNhbiB3ZSBkbyAxNi1iaXQgKGFs
-aWduZWQpIE1NSU8gYWNjZXNzZXMgb24KdGhlIGhhcmR3YXJlPyBPciBhcmUgd2UgcmVzdHJpY3Rl
-ZCB0byAzMi1iaXQgTU1JTyBhY2Nlc3MgYXMgSSd2ZQpzcGVjaWZpZWQgYWJvdmU/CgpDaGVlcnMs
-CgpBbmRyZXcKCj4gCj4gPiArwqDCoMKgwqB1aW50MzJfdCBib3VuZHNbQVNQRUVEX0FEQ19OUl9D
-SEFOTkVMU107Cj4gPiArwqDCoMKgwqB1aW50MzJfdCBoeXN0ZXJlc2lzW0FTUEVFRF9BRENfTlJf
-Q0hBTk5FTFNdOwo+ID4gK8KgwqDCoMKgdWludDMyX3QgaXJxX3NyYzsKPiA+ICvCoMKgwqDCoHVp
-bnQzMl90IGNvbXBfdHJpbTsKPiA+ICt9IEFzcGVlZEFEQ1N0YXRlOwo+ID4gKwo+ID4gKyNlbmRp
-ZiAvKiBfQVNQRUVEX0FEQ19IXyAqLwo+ID4gCj4gCj4gUmVnYXJkcywKPiAKPiBQaGlsLi==
+On Mon, 2017-05-22 at 03:15 +0000, Ryan Chen wrote:
+> In ASPEED SoC chip, all register access have following rule.=C2=A0
+> Most of controller write access is only support 32bit access.=C2=A0
+> Read is support 8bits/16bits/32bits.=C2=A0
 
+Thanks for clearing that up Ryan.
 
---=-+a8fcybBgKkHxXr3xe2p
+Phil: I'll rework the model so the reads are 16-bits.
+
+Thanks,
+
+Andrew
+
+>=20
+>=20
+>=20
+> Best Regards,
+> Ryan
+>=20
+> =E4=BF=A1=E9=A9=8A=E7=A7=91=E6=8A=80=E8=82=A1=E4=BB=BD=E6=9C=89=E9=99=90=
+=E5=85=AC=E5=8F=B8
+> ASPEED Technology Inc.
+> 2F,No.15,Industry East Road 4.,Hsinchu Science Park, Hsinchu City 30077, =
+Taiwan
+> Tel: 886-3-578-9568=C2=A0 #857
+> Fax: 886-3-578-9586
+> ************* Email Confidentiality Notice ********************
+> DISCLAIMER:
+> This message (and any attachments) may contain legally privileged and/or =
+other confidential information. If you have received it in error, please no=
+tify the sender by reply e-mail and immediately delete the e-mail and any a=
+ttachments without copying or disclosing the contents. Thank you.
+>=20
+> -----Original Message-----
+> > From: Andrew Jeffery [mailto:andrew@aj.id.au]=C2=A0
+> Sent: Monday, May 22, 2017 8:24 AM
+> > To: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>; qemu-arm@nongnu.org
+> > > > Cc: Peter Maydell <peter.maydell@linaro.org>; Ryan Chen <ryan_chen@=
+aspeedtech.com>; Alistair Francis <alistair@alistair23.me>; qemu-devel@nong=
+nu.org; C=C3=A9dric Le Goater <clg@kaod.org>; Joel Stanley <joel@jms.id.au>
+> Subject: Re: [Qemu-arm] [PATCH 1/2] hw/adc: Add basic Aspeed ADC model
+>=20
+> Hi Phil,
+>=20
+> On Sat, 2017-05-20 at 00:21 -0300, Philippe Mathieu-Daud=C3=A9 wrote:
+> > Hi Andrew,
+> >=20
+> > On 05/19/2017 09:26 PM, Andrew Jeffery wrote:
+> > > This model implements enough behaviour to do basic functionality=C2=
+=A0
+> > > tests such as device initialisation and read out of dummy sample=C2=
+=A0
+> > > values. The sample value generation strategy is similar to the STM=C2=
+=A0
+> > > ADC already in the tree.
+> > >=20
+> > > > > Signed-off-by: Andrew Jeffery <andrew@aj.id.au>
+> > >=20
+> > > ---
+> > > =C2=A0hw/adc/Makefile.objs=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0|=C2=A0=C2=A0=C2=A01 +
+> > > =C2=A0hw/adc/aspeed_adc.c=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0| 246=C2=A0
+> > > ++++++++++++++++++++++++++++++++++++++++++++
+> > > =C2=A0include/hw/adc/aspeed_adc.h |=C2=A0=C2=A033 ++++++
+> > > =C2=A03 files changed, 280 insertions(+)
+> > > =C2=A0create mode 100644 hw/adc/aspeed_adc.c
+> > > =C2=A0create mode 100644 include/hw/adc/aspeed_adc.h
+> > >=20
+> > > diff --git a/hw/adc/Makefile.objs b/hw/adc/Makefile.objs index=C2=A0
+> > > 3f6dfdedaec7..2bf9362ba3c4 100644
+> > > --- a/hw/adc/Makefile.objs
+> > > +++ b/hw/adc/Makefile.objs
+> > > @@ -1 +1,2 @@
+> > > =C2=A0obj-$(CONFIG_STM32F2XX_ADC) +=3D stm32f2xx_adc.o
+> > > +obj-$(CONFIG_ASPEED_SOC) +=3D aspeed_adc.o
+> > > diff --git a/hw/adc/aspeed_adc.c b/hw/adc/aspeed_adc.c new file mode=
+=C2=A0
+> > > 100644 index 000000000000..d08f1684f7bc
+> > > --- /dev/null
+> > > +++ b/hw/adc/aspeed_adc.c
+> > > @@ -0,0 +1,246 @@
+> > > +/*
+> > > + * Aspeed ADC
+> > > + *
+> > > > > + * Andrew Jeffery <andrew@aj.id.au>
+> > >=20
+> > > + *
+> > > + * Copyright 2017 IBM Corp.
+> > > + *
+> > > + * This code is licensed under the GPL version 2 or later.=C2=A0=C2=
+=A0See
+> > > + * the COPYING file in the top-level directory.
+> > > + */
+> > > +
+> > > +#include "qemu/osdep.h"
+> > > +#include "hw/adc/aspeed_adc.h"
+> > > +#include "qapi/error.h"
+> > > +#include "qemu/log.h"
+> > > +
+> > > +#define ASPEED_ADC_ENGINE_CTRL=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A00x0=
+0 #define=C2=A0=C2=A0
+> > > +ASPEED_ADC_ENGINE_CH_EN_MASK=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A00xffff0000 #define=C2=A0=C2=A0=C2=A0
+> > > +ASPEED_ADC_ENGINE_CH_EN(x)=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0((BIT(x)) << 16) #define=C2=A0=C2=A0
+> > > +ASPEED_ADC_ENGINE_INIT=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0BIT(8) #define=C2=
+=A0=C2=A0
+> > > +ASPEED_ADC_ENGINE_AUTO_COMP=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0BIT(5) #define=C2=A0=C2=A0
+> > > +ASPEED_ADC_ENGINE_COMP=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0BIT(4) #define=C2=
+=A0=C2=A0
+> > > +ASPEED_ADC_ENGINE_MODE_MASK=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A00x0000000e #define=C2=A0=C2=A0=C2=A0
+> > > +ASPEED_ADC_ENGINE_MODE_OFF=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0(0b000 << 1) #define=C2=A0=C2=A0=C2=A0
+> > > +ASPEED_ADC_ENGINE_MODE_STANDBY=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0(0b001 << 1) #define=C2=A0=C2=A0=C2=A0
+> > > +ASPEED_ADC_ENGINE_MODE_NORMAL=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0(0b111 << 1) #define=C2=A0=C2=A0
+> > > +ASPEED_ADC_ENGINE_EN=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0BIT(0)
+> > > +
+> > > +#define ASPEED_ADC_L_MASK=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0(=
+(1 << 10) - 1) #define=C2=A0
+> > > +ASPEED_ADC_L(x)=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0((x) & ASPEED_ADC_L_MASK) #define=C2=A0
+> > > +ASPEED_ADC_H(x)=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0(((x) >> 16) & ASPEED_ADC_L_MASK) #define=C2=A0
+> > > +ASPEED_ADC_LH_MASK=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0(ASPEED_ADC_L_=
+MASK << 16 |=C2=A0
+> > > +ASPEED_ADC_L_MASK)
+> > > +
+> > > +static inline uint32_t update_channels(uint32_t current) {
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0const uint32_t next =3D (current + 7) & 0x3f=
+f;
+> > > +
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0return (next << 16) | next;
+> > > +}
+> > > +
+> > > +static bool breaks_threshold(AspeedADCState *s, int ch_off) {
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0const uint32_t a =3D ASPEED_ADC_L(s->channel=
+s[ch_off]);
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0const uint32_t a_lower =3D ASPEED_ADC_L(s->b=
+ounds[2 * ch_off]);
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0const uint32_t a_upper =3D ASPEED_ADC_H(s->b=
+ounds[2 * ch_off]);
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0const uint32_t b =3D ASPEED_ADC_H(s->channel=
+s[ch_off]);
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0const uint32_t b_lower =3D ASPEED_ADC_L(s->b=
+ounds[2 * ch_off +=C2=A0
+> > > +1]);
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0const uint32_t b_upper =3D ASPEED_ADC_H(s->b=
+ounds[2 * ch_off +=C2=A0
+> > > +1]);
+> > > +
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0return ((a < a_lower || a > a_upper)) ||
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0((=
+b < b_lower || b > b_upper)); }
+> > > +
+> > > +static uint32_t read_channel_sample(AspeedADCState *s, int ch_off)=
+=C2=A0
+> > > +{
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0uint32_t ret;
+> > > +
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0/* Poor man's sampling */
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0ret =3D s->channels[ch_off];
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0s->channels[ch_off] =3D update_channels(s->c=
+hannels[ch_off]);
+> > > +
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0if (breaks_threshold(s, ch_off)) {
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0qemu_irq_raise(s->ir=
+q);
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0}
+> > > +
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0return ret;
+> > > +}
+> > > +
+> > > +#define TO_INDEX(addr, base) (((addr) - (base)) >> 2)
+> > > +
+> > > +static uint64_t aspeed_adc_read(void *opaque, hwaddr addr,
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0unsigned int size) {
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0AspeedADCState *s =3D ASPEED_ADC(opaque);
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0uint64_t ret;
+> > > +
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0switch (addr) {
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0case 0x00:
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0ret =3D s->engine_ct=
+rl;
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0break;
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0case 0x04:
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0ret =3D s->irq_ctrl;
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0break;
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0case 0x08:
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0ret =3D s->vga_detec=
+t_ctrl;
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0break;
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0case 0x0c:
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0ret =3D s->adc_clk_c=
+trl;
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0break;
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0case 0x10 ... 0x2e:
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0ret =3D read_channel=
+_sample(s, TO_INDEX(addr, 0x10));
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0break;
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0case 0x30 ... 0x6e:
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0ret =3D s->bounds[TO=
+_INDEX(addr, 0x30)];
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0break;
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0case 0x70 ... 0xae:
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0ret =3D s->hysteresi=
+s[TO_INDEX(addr, 0x70)];
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0break;
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0case 0xc0:
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0ret =3D s->irq_src;
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0break;
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0case 0xc4:
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0ret =3D s->comp_trim=
+;
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0break;
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0default:
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0qemu_log_mask(LOG_UN=
+IMP, "%s: addr: 0x%lx, size: %u\n",=C2=A0
+> > > +__func__, addr,
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0size);
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0ret =3D 0;
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0break;
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0}
+> > > +
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0return ret;
+> > > +}
+> > > +
+> > > +static void aspeed_adc_write(void *opaque, hwaddr addr,
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0uin=
+t64_t val, unsigned int size) {
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0AspeedADCState *s =3D ASPEED_ADC(opaque);
+> > > +
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0switch (addr) {
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0case 0x00:
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0{
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0uint32_t init;
+> > > +
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0init =3D !!(val & ASPEED_ADC_ENGINE_EN);
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0init *=3D ASPEED_ADC_ENGINE_INIT;
+> > > +
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0val &=3D ~ASPEED_ADC_ENGINE_INIT;
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0val |=3D init;
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0}
+> > > +
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0val &=3D ~ASPEED_ADC=
+_ENGINE_AUTO_COMP;
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0s->engine_ctrl =3D v=
+al;
+> > > +
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0break;
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0case 0x04:
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0s->irq_ctrl =3D val;
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0break;
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0case 0x08:
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0s->vga_detect_ctrl =
+=3D val;
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0break;
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0case 0x0c:
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0s->adc_clk_ctrl =3D =
+val;
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0break;
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0case 0x10 ... 0x2e:
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0s->channels[TO_INDEX=
+(addr, 0x10)] =3D val;
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0break;
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0case 0x30 ... 0x6e:
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0s->bounds[TO_INDEX(a=
+ddr, 0x30)] =3D (val &=C2=A0
+> > > +ASPEED_ADC_LH_MASK);
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0break;
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0case 0x70 ... 0xae:
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0s->hysteresis[TO_IND=
+EX(addr, 0x70)] =3D
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0(val & (BIT(31) | ASPEED_ADC_LH_MASK));
+> >=20
+> > Can you add a #define for this BIT(31)?
+>=20
+> Sorry, that was an oversight!
+>=20
+> >=20
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0break;
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0case 0xc0:
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0s->irq_src =3D (val =
+& 0xffff);
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0break;
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0case 0xc4:
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0s->comp_trim =3D (va=
+l & 0xf);
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0break;
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0default:
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0qemu_log_mask(LOG_UN=
+IMP, "%s: %lu\n", __func__, addr);
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0break;
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0}
+> > > +}
+> > > +
+> > > +static const MemoryRegionOps aspeed_adc_ops =3D {
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0.read =3D aspeed_adc_read,
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0.write =3D aspeed_adc_write,
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0.endianness =3D DEVICE_LITTLE_ENDIAN,
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0.valid.min_access_size =3D 4,
+> >=20
+> > You sure about that? How the registers are aligned it seems this=C2=A0
+> > device can also be accessed 2-byte wide.
+>=20
+> I'll address this below.
+>=20
+> >=20
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0.valid.max_access_size =3D 4,
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0.valid.unaligned =3D false,
+> > > +};
+> > > +
+> > > +static void aspeed_adc_reset(DeviceState *dev) {
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0struct AspeedADCState *s =3D ASPEED_ADC(dev)=
+;
+> > > +
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0s->engine_ctrl =3D 0;
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0s->irq_ctrl =3D 0;
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0s->vga_detect_ctrl =3D 0x0000000f;
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0s->adc_clk_ctrl =3D 0x0000000f;
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0memset(s->channels, 0, sizeof(s->channels));
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0memset(s->bounds, 0, sizeof(s->bounds));
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0memset(s->hysteresis, 0, sizeof(s->hysteresi=
+s));
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0s->irq_src =3D 0;
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0s->comp_trim =3D 0;
+> > > +}
+> > > +
+> > > +static void aspeed_adc_realize(DeviceState *dev, Error **errp) {
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0AspeedADCState *s =3D ASPEED_ADC(dev);
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0SysBusDevice *sbd =3D SYS_BUS_DEVICE(dev);
+> > > +
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0sysbus_init_irq(sbd, &s->irq);
+> > > +
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0memory_region_init_io(&s->mmio, OBJECT(s), &=
+aspeed_adc_ops, s,
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0TYPE_ASPEED_ADC, 0x1000);
+> > > +
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0sysbus_init_mmio(sbd, &s->mmio); }
+> > > +
+> > > +static const VMStateDescription vmstate_aspeed_adc =3D {
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0.name =3D TYPE_ASPEED_ADC,
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0.version_id =3D 1,
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0.minimum_version_id =3D 1,
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0.fields =3D (VMStateField[]) {
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0VMSTATE_UINT32(engin=
+e_ctrl, AspeedADCState),
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0VMSTATE_UINT32(irq_c=
+trl, AspeedADCState),
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0VMSTATE_UINT32(vga_d=
+etect_ctrl, AspeedADCState),
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0VMSTATE_UINT32(adc_c=
+lk_ctrl, AspeedADCState),
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0VMSTATE_UINT32_ARRAY=
+(channels, AspeedADCState,
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0ASPEED_ADC_NR_CHANNELS / 2),
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0VMSTATE_UINT32_ARRAY=
+(bounds, AspeedADCState,=C2=A0
+> > > +ASPEED_ADC_NR_CHANNELS),
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0VMSTATE_UINT32_ARRAY=
+(hysteresis, AspeedADCState,
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0ASPEED_ADC_NR_CHANNELS),
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0VMSTATE_UINT32(irq_s=
+rc, AspeedADCState),
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0VMSTATE_UINT32(comp_=
+trim, AspeedADCState),
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0VMSTATE_END_OF_LIST(=
+),
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0}
+> > > +};
+> > > +
+> > > +static void aspeed_adc_class_init(ObjectClass *klass, void *data) {
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0DeviceClass *dc =3D DEVICE_CLASS(klass);
+> > > +
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0dc->realize =3D aspeed_adc_realize;
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0dc->reset =3D aspeed_adc_reset;
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0dc->desc =3D "Aspeed Analog-to-Digital Conve=
+rter",
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0dc->vmsd =3D &vmstate_aspeed_adc; }
+> > > +
+> > > +static const TypeInfo aspeed_adc_info =3D {
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0.name =3D TYPE_ASPEED_ADC,
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0.parent =3D TYPE_SYS_BUS_DEVICE,
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0.instance_size =3D sizeof(AspeedADCState),
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0.class_init =3D aspeed_adc_class_init, };
+> > > +
+> > > +static void aspeed_adc_register_types(void) {
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0type_register_static(&aspeed_adc_info);
+> > > +}
+> > > +
+> > > +type_init(aspeed_adc_register_types);
+> > > diff --git a/include/hw/adc/aspeed_adc.h=C2=A0
+> > > b/include/hw/adc/aspeed_adc.h new file mode 100644 index=C2=A0
+> > > 000000000000..ae2089ac62ca
+> > > --- /dev/null
+> > > +++ b/include/hw/adc/aspeed_adc.h
+> > > @@ -0,0 +1,33 @@
+> > > +#ifndef _ASPEED_ADC_H_
+> > > +#define _ASPEED_ADC_H_
+> > > +
+> >=20
+> > You missed the license.
+>=20
+> Whoops.
+>=20
+> >=20
+> > Can you also add a comment about which ADC are modeled (2400/2500 no
+> > difference) as you explain in your cover letter?
+>=20
+> Yes, will add this.
+>=20
+> >=20
+> > > +#include <stdint.h>
+> > > +
+> > > +#include "hw/hw.h"
+> > > +#include "hw/irq.h"
+> > > +#include "hw/sysbus.h"
+> > > +
+> > > +#define TYPE_ASPEED_ADC "aspeed.adc"
+> > > +#define ASPEED_ADC(obj) OBJECT_CHECK(AspeedADCState, (obj),=C2=A0
+> > > +TYPE_ASPEED_ADC)
+> > > +
+> > > +#define ASPEED_ADC_NR_CHANNELS 16
+> > > +
+> > > +typedef struct AspeedADCState {
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0/* <private> */
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0SysBusDevice parent;
+> > > +
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0MemoryRegion mmio;
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0qemu_irq irq;
+> > > +
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0uint32_t engine_ctrl;
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0uint32_t irq_ctrl;
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0uint32_t vga_detect_ctrl;
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0uint32_t adc_clk_ctrl;
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0uint32_t channels[ASPEED_ADC_NR_CHANNELS / 2=
+];
+> >=20
+> > I can't find the datasheet
+>=20
+> Unfortunately the datasheet isn't publicly available. However, Ryan
+> (Cc'ed) can help answer specific hardware questions.
+>=20
+> > , but it seems this ADC has a 10-bit
+> > resolution, so a channel sample can fit into a uint16_t.
+>=20
+> Indeed. I think I'll add a bit of a blurb about the device to cover this =
+off.
+>=20
+> > It sounds weird to read ASPEED_ADC_NR_CHANNELS=3D16 then use
+> > ASPEED_ADC_NR_CHANNELS/2 channels.
+> > I think using an uint16_t array you can get rid of the ASPEED_ADC_L/H=
+=C2=A0
+> > macros.
+>=20
+> This is something I tried to clarify with Ryan on Friday.=C2=A0I am under=
+ the impression the hardware only supports 32-bit accesses. In the datashee=
+t the registers are defined in 32-bit quantities, which drove this approach=
+. The driver from the SDK's kernel also uses 32-bit accesses and shifts.
+>=20
+> Ryan: So to clarify here, can we do 16-bit (aligned) MMIO accesses on the=
+ hardware? Or are we restricted to 32-bit MMIO access as I've specified abo=
+ve?
+>=20
+> Cheers,
+>=20
+> Andrew
+>=20
+> >=20
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0uint32_t bounds[ASPEED_ADC_NR_CHANNELS];
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0uint32_t hysteresis[ASPEED_ADC_NR_CHANNELS];
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0uint32_t irq_src;
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0uint32_t comp_trim;
+> > > +} AspeedADCState;
+> > > +
+> > > +#endif /* _ASPEED_ADC_H_ */
+> > >=20
+> >=20
+> > Regards,
+> >=20
+> > Phil.
+--=-6uxB/B5lwJbkw1Dp3FMi
 Content-Type: application/pgp-signature; name="signature.asc"
 Content-Description: This is a digitally signed message part
 Content-Transfer-Encoding: 7bit
 
 -----BEGIN PGP SIGNATURE-----
 
-iQIcBAABCgAGBQJZIi+ZAAoJEJ0dnzgO5LT5GaAP/2z98k+ucd9Cmq6bPNLmJQrh
-EpwhjGV/7KPbHGi49xEc0LisXUV2RevZ5YOUgyK4CSahdnXa3Q4IkqKkxbtXPa9T
-pPGyHHmI2BxBYTQWcFzR/z9d8C4qPreMI3Q0fgzA52Nnv0G/oH4bQKmfWtj8w+cP
-WGxk5i4gvOC3ms/kW0HWYu5mf0+iem6uC7i3bSvZCFxVDg845LiEZG3CMEFzuWh3
-ogFuH16pEK/ko4gqBlsaCruX1uSsddKRNRAK0CFA/bwsO0zrNKZdYKIbISysWbuM
-8zb0RMXBcgKawHa88qTAVuUxnkTK8Gygq4r9w0124cS+1Oayex9gL8ojcl5lPQDm
-whuy0rdgQTN2v8g6rMf2zEOktxmefebUUgWy0UFElIXT82RmnkFxOKhmGnqitFit
-5d+XhQkgXIw1dvmdilI7zV80rfRXmk2WDFF2C6eUelzqLDc+2pwmAGWenDajVl1g
-WrP9NUFBeA3GgnarbPMHV0yHJOVQvIJkFtz1RDveHZIW8aVLQCA5+yQ00nK7Cp9F
-eqYvY6FSzde7FsSQuvNKojyX+/RjoCFZT9CsWB+iev3PK2oW8+67c/TP457D5yQJ
-vijKGLjnwyOa/2y+1ALGCW841yChMd49bVf8PmYhVTHTMjGVBCPNLgsTVqZQGOI9
-+AFHPEQc4URX+thqRptM
-=0Rtd
+iQIcBAABCgAGBQJZInOZAAoJEJ0dnzgO5LT5aTwP/jODFUBYmfCpxyTDbXChdmpV
+eOLLubJxcWvMdcZIhwQa4uyWQilB0LlyGFarkvq1cKhoLhJbIGmhIcRgxrWF3oWf
+w/gEUrGjQDBuqUtItD6KFxfUduSeat3Z7K8P/VtwUa0O1YBinOEvsVJ0/P/zxtnG
+16DR2jiruxKqQHDw2rEjn7FTKOUoCWX4wsXT7DfqQ9w9k2IM3HSqRLL+lyenifdf
++5Ms/1KxLExglw6kQWx6vFlVk0h//mMisIV2iEpANVkjTNaYnfQlsxsa4Qz9mRNV
+SjLRbYAALOjKMhA44xFS9y2yNgaofNyxu8DJn2WP1s2uf8/wnjn87F0CjJA5K7jr
+qWZDPM2YJWsUlnKNT86vRR5o8Y4A0QalU3ZKoDir+iBQrKq3uI1iQrOAhuAsQX8H
+A0nu1GMJ0Bcsum1rAaKhakZvcnnaCaMeBnF3TDx99ViEykq13mye9NJV3FTn466f
+FBUpbu1vF5x27s8MIT6IMIzCNl4NfhA2J1lhb8XgI1EJoJ+fQaEoBylRvwmX2Y/Y
+t8elnrx6h6uRnX29cd06c7k9mNoMCwdlhgY7vToIXS0a5gdNpZeIw8DJkwaMjdoK
+PTfBaUGegX7ZHM0xbLsosLRB5cmQE+5VXC9R9siolVN43EsrOXTchGLwTUJ5Gs6/
+VjX8JGO2Gl1oW7WHON7a
+=AZoH
 -----END PGP SIGNATURE-----
 
---=-+a8fcybBgKkHxXr3xe2p--
+--=-6uxB/B5lwJbkw1Dp3FMi--
 

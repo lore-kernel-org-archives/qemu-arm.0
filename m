@@ -1,136 +1,104 @@
-Received: by 10.25.0.6 with SMTP id 6csp1627919lfa;
-        Mon, 22 May 2017 19:11:08 -0700 (PDT)
-X-Received: by 10.98.0.8 with SMTP id 8mr17803510pfa.127.1495505468106;
-        Mon, 22 May 2017 19:11:08 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1495505468; cv=none;
+Received: by 10.25.0.6 with SMTP id 6csp1872695lfa;
+        Tue, 23 May 2017 07:51:57 -0700 (PDT)
+X-Received: by 10.55.22.159 with SMTP id 31mr24631230qkw.184.1495551117463;
+        Tue, 23 May 2017 07:51:57 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1495551117; cv=none;
         d=google.com; s=arc-20160816;
-        b=D4Zmpw9vVTmeVlyHYSD+WW95+iJm7loe9tR3uL/lrpteYaRYqTUr8BXYkAJqDSxyW5
-         PlyovyXVetytqiP0qrYu0N9VuklNDQRXNvql0KD1FCbbW0FCVnsPI/hQoDIV/LvtmoTm
-         VIPymSDHXgW+a98GfvEZygcn15qdQd0xdQNN7tyXFz1f+zwMOZq3H01gIBS0UlspcrQv
-         PHYy+2TnksVeTLtMt+wuzUJDlBkG++sSbDyscC+e0on42mXiuGOKVz1yhcuQLwLDHScv
-         SU9xCKRVU/GIizmTFndJeX++SpBBIdWAe8cnDL9l7zAa4DUTfR75qw7ZDT4oq1ClEUKt
-         +lyA==
+        b=jMgkKc6CvbMmliXvHVzT4GR31PtRjhBFe1gXAJLoagXL+3reiWl261HCg34oigV6Ux
+         J8XpfG3CD+Gr3FMJzu7UuwomjSUI6DPx1SeNr5RrosXXazLKWFL9kLxHYZtE7puFUpnB
+         vBpGda3jO2pIwMGlHg9ZThHgaV3mqjhXYk3Fy3Lg1vm7JAmSnQgoUVuu+kfJtkeRJQig
+         pOuV+pV/aiI2tQ2FrckeZeNv8BCQDuNXUneG68LOAINwrFjzF63IM+YpHhoHnXfOMQnR
+         CAachWpcr3oG/b24NVVmN5Pwf8GNhEFlH1mr3PJABlsxf499Usq3baEh81byjjuahXB7
+         pobg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-id:precedence:sender:to:subject:message-id:date:from
-         :references:in-reply-to:mime-version:dkim-signature
-         :arc-authentication-results;
-        bh=MmBQJZXWSvaI3Tnpztug2aSIWPchjgt8DDk9jAem620=;
-        b=DmI/a2DM7174tFZm8hC7ie9+cgyEqpHpsEhXo9uKUv1uxHdgDGOKNe6NsDwRHolV81
-         6Ztp0d+aazapN7B6e2fHXVWO/9HEO6HkECsytC0G/1rfcEYuaYat6FlSvZ5Pjbzz487C
-         sVdo9QwO1dxa2TLzmZ2YKG6HIY7nu806eCF0U5K4eNxvFklY0U1noo3bqv4NAvc0oju0
-         TUNiWP7rIHZXre1w1mr6RqPOssrl6WqBXk3iHoW2hqa/34bwoj5B4UDYqvt5F4qdqcSu
-         FQa+5U/1SrzMsVkRovXcNRpEFquBZnCPdnjLSyhG8r7E1lAlVpKnM4QJOh3dznZNoyVQ
-         Cdmw==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:arc-authentication-results;
+        bh=JopxQtT+Lk6fsNnYZfpbA+o4TFXibbkUMOcpOSHkMW4=;
+        b=PgGlDvjUBwkWpYVl1XfuYNWyVESpd8h1+VQEAAsTCY/yOC1kMTtxodGnJ1P54+v/9h
+         MeHaljkgDYUdGaCrc0RSGtoqpvv0kw8JtzM452RAmzwlSWtviaala9DpgekY2xzO+tdG
+         wZP01Zy9IsF/LKo2tfLYydRqBKGOmjsjW3G1OmpIlKal4hmbT/xCcS6GmLA942XlFgw4
+         CNBwooFeX4BcEWA+nxtm70RFiRdk3KrK7JRsxNEHznLk6K04pVV2WB1oEjAxMjyFX83b
+         wmWGuU/UCcfAVKzlxj387qwTZFya7jmEMNXgVrU4M7W2lZD5f9XfaS4PVL2Bn9v5G7ve
+         eDSA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Return-Path: <kvm-owner@vger.kernel.org>
-Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
-        by mx.google.com with ESMTP id h6si19986413plk.233.2017.05.22.19.11.07;
-        Mon, 22 May 2017 19:11:08 -0700 (PDT)
-Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
+        by mx.google.com with ESMTPS id y54si21417190qtc.329.2017.05.23.07.51.57
+        for <alex.bennee@linaro.org>
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Tue, 23 May 2017 07:51:57 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S935905AbdEWCLG (ORCPT <rfc822;francois.ozog@linaro.org>
-        + 6 others); Mon, 22 May 2017 22:11:06 -0400
-Received: from mail-wm0-f52.google.com ([74.125.82.52]:36624 "EHLO
-        mail-wm0-f52.google.com" rhost-flags-OK-OK-OK-OK) by vger.kernel.org
-        with ESMTP id S933119AbdEWCLF (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Mon, 22 May 2017 22:11:05 -0400
-Received: by mail-wm0-f52.google.com with SMTP id 7so10032346wmo.1
-        for <kvm@vger.kernel.org>; Mon, 22 May 2017 19:11:04 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=mime-version:in-reply-to:references:from:date:message-id:subject:to;
-        bh=MmBQJZXWSvaI3Tnpztug2aSIWPchjgt8DDk9jAem620=;
-        b=ALjiO6T719JB184a7aQeyrM/Hn9L/vQ31CXggCM9dYvLETsRcNYKBQLaliThJBU23O
-         nyJde2x5HQBT9db3xAfFrBnJc5r+DU5aVwPnl+/eAMHDt60w7jHU+z/ysuT+PdDZ3/YV
-         uXdg7yiAq60xY/IGhHPWk+tN3FNhqDzAp3kjMMNC3kZ9ol/xc4Nz0Vz26MSV32WthKoH
-         cVjptz0fca97VctasMBG/fNLnN9j2aXaDVZM/PyjhslUGA93iP+2Vk4ha5OTi0HWQ6rg
-         3NZG4ds5rE0YD8Vwhy20+Wgee1eKUSNSYMUw2/+k57cTcQHwI/roBLuYr1irZWGQN/WC
-         kf9Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-         :message-id:subject:to;
-        bh=MmBQJZXWSvaI3Tnpztug2aSIWPchjgt8DDk9jAem620=;
-        b=IStESF9TEHqpWV/vGVWc47+STPzAbBnVuPg84paP/podib19T9ypv6dhF+R2SSOtqy
-         fGY3kxifWJKJUszFOVGwIKrG6KmCzWIq7UCZwvlXh5M6ZAMXZocLLnv2H+UZMn3wNbWG
-         aWJETcjxJMKDbfok6ieHyGHGNQT+aPNfYT825x5OvMBm82QGEID0DiTvIsOIijSkI797
-         o/LI6cy3a9MAVjRa5S4eja0Shed2269/33M8JDxxAEvrS/2cY85fhUALI/t3VIXgZKl1
-         DdVeJUc5yrPdJIQTU0Vd3x52E59pbDSlw+3HTLstPBPBWLobV79OhbxqUJwxYmb6Ti2J
-         3jwA==
-X-Gm-Message-State: AODbwcCz2K94oStVeHiNwD69g9SF0smblvly+qdbpzbgLEU8wJnJXtj0
-        1BOb1hCyLGM/tGRVUrTquzrAxBu2pDue
-X-Received: by 10.80.143.227 with SMTP id y90mr12492994edy.131.1495505463979;
- Mon, 22 May 2017 19:11:03 -0700 (PDT)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:49511 helo=lists.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1dDBAC-0002lS-NK
+	for alex.bennee@linaro.org; Tue, 23 May 2017 10:51:56 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:53235)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <mjt@tls.msk.ru>) id 1dDB8h-0001YD-D9
+	for qemu-arm@nongnu.org; Tue, 23 May 2017 10:50:24 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+	(envelope-from <mjt@tls.msk.ru>) id 1dDB8d-0000Xs-GS
+	for qemu-arm@nongnu.org; Tue, 23 May 2017 10:50:23 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:51865)
+	by eggs.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <mjt@tls.msk.ru>)
+	id 1dDB8d-0000XV-8q; Tue, 23 May 2017 10:50:19 -0400
+Received: from tsrv.tls.msk.ru (tsrv.tls.msk.ru [192.168.177.2])
+	by isrv.corpit.ru (Postfix) with ESMTP id 7B9E74197F;
+	Tue, 23 May 2017 17:50:18 +0300 (MSK)
+Received: from [192.168.177.99] (mjt.vpn.tls.msk.ru [192.168.177.99])
+	by tsrv.tls.msk.ru (Postfix) with ESMTP id 60147437;
+	Tue, 23 May 2017 17:50:18 +0300 (MSK)
+To: Luc MICHEL <luc.michel@git.antfield.fr>, qemu-devel@nongnu.org
+References: <20170428125632.5704-1-luc.michel@git.antfield.fr>
+From: Michael Tokarev <mjt@tls.msk.ru>
+Message-ID: <57594c43-eed4-c7c2-2efd-05872dd67d5c@msgid.tls.msk.ru>
+Date: Tue, 23 May 2017 17:50:18 +0300
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
+	Thunderbird/45.8.0
 MIME-Version: 1.0
-Received: by 10.80.149.13 with HTTP; Mon, 22 May 2017 19:11:03 -0700 (PDT)
-In-Reply-To: <CAD8of+qgOQyU3QBk6YmPd4RnXQV0W-T4AE868q6y7TkCwu1K2A@mail.gmail.com>
-References: <CAD8of+qgOQyU3QBk6YmPd4RnXQV0W-T4AE868q6y7TkCwu1K2A@mail.gmail.com>
-From:   Li Zhang <zhlcindy@gmail.com>
-Date:   Tue, 23 May 2017 10:11:03 +0800
-Message-ID: <CAD8of+rqi28HsV+6UYEa_hV-0SmUH4u98RgCabN17yNquqJgFw@mail.gmail.com>
-Subject: Re: A problem of IRQchip in QEMU and KVM for ARM
-To:     "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
-        qemu-arm@nongnu.org, kvm@vger.kernel.org
-Content-Type: text/plain; charset="UTF-8"
-Sender: kvm-owner@vger.kernel.org
-Precedence: bulk
-List-ID: <kvm.vger.kernel.org>
-X-Mailing-List: kvm@vger.kernel.org
-X-TUID: syPVXXFwLqOl
+In-Reply-To: <20170428125632.5704-1-luc.michel@git.antfield.fr>
+Content-Type: text/plain; charset=windows-1251
+Content-Transfer-Encoding: 7bit
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 86.62.121.231
+Subject: Re: [Qemu-arm] [PATCH 0/1] target/arm: add data cache invalidation
+ cp15 instruction to cortex-r5
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.21
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: qemu-trivial@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
+	qemu-arm@nongnu.org
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: yANt9fTbCzt5
 
-Any idea?
+28.04.2017 15:56, Luc MICHEL wrote:
+> This patch adds the cp15, CRn=15, opc1=0, CRm=5, opc2=0 coprocessor instruction
+> to the cortex-r5. As stated in the TRM, this instruction invalidates all the
+> data cache. This trivial patch implements it as NOP as cache operations are not
+> implemented in QEMU.
+> 
+> The documentation is here:
+> http://infocenter.arm.com/help/index.jsp?topic=/com.arm.doc.ddi0460d/Bgbdbdjc.html
 
-Thanks.
+Applied to -trivial, since no one else picked it up so far :)
 
+Thanks,
 
-On Fri, May 19, 2017 at 1:46 PM, Li Zhang <zhlcindy@gmail.com> wrote:
->
-> Hi,
->
-> I am looking into QEMU code in ARM recently and trying to add add_hot_cpu in QEMU for ARM,
-> but it doesn't work when enabling KVM. It reports error:
->
-> "kvm_init_vcpu failed: Device or resourc busy."
->
-> By debugging QEMU with gdb, it failed on ioctl. In kernel soruce code arch/arm/kvm/arm.c,
-> vcpu is created by this following function, it will report -EBUSY if irqchip_in_kernel.
->
-> struct kvm_vcpu *kvm_arch_vcpu_create(struct kvm *kvm, unsigned int id)
-> {
->         int err;
->         struct kvm_vcpu *vcpu;
->
->         if (irqchip_in_kernel(kvm) && vgic_initialized(kvm)) {
->                 err = -EBUSY;
->                 goto out;
->         }
->
->   ....
-> }
->
-> I set virt machine with kernel_irqchip = off, it can execute cpu-add interface correctly with qmp-shell
-> commands. But VMs still can't work well with kernel_irqchip=off when executing "info cpus" in qemu monitor.
->
-> My question is that:
-> 1) Can we change this error status in kvm_arch_vcpu_create?
-> 2) Is it that irqchip_kernel=off  isn't supported with KVM enabled on ARM?
->
-> --
->
-> Best Regards
-> -Li
-
-
-
-
--- 
-
-Best Regards
--Li
+/mjt

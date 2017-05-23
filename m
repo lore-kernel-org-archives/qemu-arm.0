@@ -1,211 +1,982 @@
-Received: by 10.25.0.6 with SMTP id 6csp1593350lfa;
-        Mon, 22 May 2017 16:57:14 -0700 (PDT)
-X-Received: by 10.200.55.193 with SMTP id e1mr25680543qtc.198.1495497434008;
-        Mon, 22 May 2017 16:57:14 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1495497434; cv=none;
+Received: by 10.103.124.15 with SMTP id x15csp1613933vsc;
+        Mon, 22 May 2017 17:47:04 -0700 (PDT)
+X-Received: by 10.159.57.93 with SMTP id i29mr13910844uag.102.1495500424053;
+        Mon, 22 May 2017 17:47:04 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1495500424; cv=none;
         d=google.com; s=arc-20160816;
-        b=oR8C7Hia1m2xKbyexdTJeBuQ97Y/8iBE8HV2MlJlc+WjrTGpskzj3nEBuI7ymBRqaD
-         c50c0lMj/hzhYylQ+NcimNDrNNruzvRnK3SdIxV03Exbr4oJ9IlzD1zvaq/Rb7Y9nJyn
-         T/VuJxYoB91Odotxa4dFANY9WkJdCUpgfHdyICxifAUL3nnq1Ya9136kG5YuT8pP2hjV
-         eJmo8A7bG777iB43A8mccED5bNHkKKyN/zJ4uD9VY4trhXfYMPz1LpymS8i9V/vtYuS5
-         i1jrpD/GS2mwX1xiu3Rsg2BdOjq/DZgyLaCDh6FhQ6Su4TClO5pSKDQtYV97q+yvB2lZ
-         i6sA==
+        b=bztG+l7m1NDGsZ9yt3bDbbwhxt7RUqPy8hXISkJBAW7wuSBdWhj2Ls7dLiEVhP0xWG
+         7gheCA1fhCbJn1G2Djsg+2BPowhRj+dAGpjtRsDIZIJRBRT4182OVMULw32dQk0+OIP9
+         ttPuIMAtlgSKryHdM3VSLQ6MUjMSkiKBBs3DU2FOfqIyLa7V+OLYCz7dTQCGbnRcReFB
+         528WHaOfOSNFIc9LKgQ8AtVi2nxxB2WGytksAf8nsyTpefFb48xFCd+Y78rCYDi5UV0S
+         /aekKVEqRGrOCNZ1VHyrg1IoZbzx7/yr0DIvpLGM/GZqUIUhdff9C2HM5BvO88GbWrBI
+         K6IA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence:subject:date:to
-         :from:resent-from:content-transfer-encoding:mime-version:message-id
-         :in-reply-to:resent-message-id:resent-date
+        h=sender:errors-to:cc:reply-to:from:list-subscribe:list-help
+         :list-post:list-archive:list-unsubscribe:list-id:precedence:subject
+         :mime-version:message-id:to:date:dkim-signature
          :arc-authentication-results;
-        bh=ONf60ZvbNwgq9Aq9ayqk6v/bHSCTod96CbcXgqUdZbw=;
-        b=DpRgQrEt+GxKUNcShknF+U/uP/Rm5cvPHerzB3nt0ckoeOo5bgmX+kd3nRLv0W96TZ
-         maylv1fDRAWuleQc7gZcbf8Y9T4yZqpMa9ETASJOSeLRYYLIbSfM/LXMnd8XfKTv3vMb
-         yDyHhX4u7Xvsv20kBb0/N71ZpFOko0ICsfZUxzieCp7gZphaHStlaXlq2sUbX61H3N0z
-         L1oIxS1IRO7JA39PIBoQY/pdoimpOYJlqvVaJuheCe0VF4KAuLzIot3e9+c6wZ30sNq6
-         nrOEqmnrYjl+caOO9L1jaaqRLPYi9vMeO3f8GLWIZnQPmDYWeEtL9OZE45W/3hF5R+Nu
-         tg7w==
+        bh=nJtrfgI+8pziizBRmi3NBTg3sACPfNixsQ1ezHwUBC0=;
+        b=Bd6mh5JDrnmRSoMpG7Gl2tO6FKRpLre5oeJKpJxHdOhx5T1NS4Mqk/7clW8W5xAcOp
+         lGpsudtpkJiVcx/Dla1C394q+thOh5uzxYFhvjwm8QQQNTJJbQ8kuScqpRTBWsnCsXqE
+         gaYo9c9C6HjHmyTYe1igMOcLvSmOt7unuDYjmlrrQA+LQTpFPl65NIMFF99bNdscXSOx
+         jIYedYB6hKxLQgLaMV8vGgJMAxwr0qOKzgj72LNJYEpqMRoM67O6dJK8Ol3ft+kSTUSS
+         arb5/ztGA/Ru03OIvlFhDFmlDdatsCvQMrxMAzbF8Z3B/O7IZgHXCQ+8fsQlOh9uwFY6
+         6g1w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@rocketmail.com;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id g14si19805299qtb.1.2017.05.22.16.57.13
+        by mx.google.com with ESMTPS id 1si8805991uao.211.2017.05.22.17.47.03
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 22 May 2017 16:57:13 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Mon, 22 May 2017 17:47:04 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:45370 helo=lists.gnu.org)
+       dkim=fail header.i=@rocketmail.com;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:45476 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1dCxCJ-0000rD-5q
-	for alex.bennee@linaro.org; Mon, 22 May 2017 19:57:11 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:45569)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1dCxyZ-00011d-JE
+	for alex.bennee@linaro.org; Mon, 22 May 2017 20:47:03 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:55629)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <no-reply@patchew.org>) id 1dCxC8-0000o0-EL
-	for qemu-arm@nongnu.org; Mon, 22 May 2017 19:57:05 -0400
+	(envelope-from <flypie@rocketmail.com>) id 1dCxxQ-0000Y6-AH
+	for qemu-devel@nongnu.org; Mon, 22 May 2017 20:45:56 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <no-reply@patchew.org>) id 1dCxC6-00060B-Tl
-	for qemu-arm@nongnu.org; Mon, 22 May 2017 19:57:00 -0400
-Resent-Date: Mon, 22 May 2017 19:57:00 -0400
-Resent-Message-Id: <E1dCxC6-00060B-Tl@eggs.gnu.org>
-Received: from sender-of-o52.zoho.com ([135.84.80.217]:21488)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <no-reply@patchew.org>)
-	id 1dCxC3-0005y0-Dz; Mon, 22 May 2017 19:56:55 -0400
-Received: from [172.17.0.2] (23.253.156.214 [23.253.156.214]) by
-	mx.zohomail.com with SMTPS id 1495497408327814.1036486414732;
-	Mon, 22 May 2017 16:56:48 -0700 (PDT)
-In-Reply-To: <56fa8a79-fa90-4adc-aa0e-0527c9d96698@ONE.local>
-Message-ID: <149549740776.1032.14800499492068781152@c05f1edc8ed1>
+	(envelope-from <flypie@rocketmail.com>) id 1dCxxL-0004Kb-8J
+	for qemu-devel@nongnu.org; Mon, 22 May 2017 20:45:52 -0400
+Received: from nm36-vm3.bullet.mail.ir2.yahoo.com ([212.82.97.135]:35007)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_ARCFOUR_SHA1:16) (Exim 4.71)
+	(envelope-from <flypie@rocketmail.com>) id 1dCxxK-0004Iw-MT
+	for qemu-devel@nongnu.org; Mon, 22 May 2017 20:45:47 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=rocketmail.com; s=s2048;
+	t=1495500344; bh=nJtrfgI+8pziizBRmi3NBTg3sACPfNixsQ1ezHwUBC0=;
+	h=Date:From:CC:To:Subject:From:Subject;
+	b=IK2Z6I84LNMCzEBL6XLtOiacI8CdHogAIiX/HS4dYL1Lu6dfNln6gzxxY4Ybd/wa2ZQ3BKzJoauB8DH7TTrh9VJReRd5Sv3fqAGqO39OU0L66qocSZibFMjL4AcSbepzWhu6Hd4sRuqD/7EZIyIDH12EvTwCgiuFs4gmPSMmWnvdFTnOzAZsP4mIxU+upWD50/9/UKHYS/HxHjerDT0onguMmlxnqXnepwG1XNPugBI1c2uRNiRBFd/MgRxXqtuwqx1J124TF05DVQ7gFXeVyVftl7wmVD5Ekhn14GIHVLXcOAr85CUl4pvDDhx2bkKWOTpJr1uyoiUYwqfnfiJsvA==
+Received: from [212.82.98.49] by nm36.bullet.mail.ir2.yahoo.com with NNFMP;
+	23 May 2017 00:45:44 -0000
+Received: from [46.228.39.75] by tm2.bullet.mail.ir2.yahoo.com with NNFMP;
+	23 May 2017 00:45:44 -0000
+Received: from [127.0.0.1] by smtp112.mail.ir2.yahoo.com with NNFMP;
+	23 May 2017 00:45:44 -0000
+X-Yahoo-Newman-Id: 443051.58699.bm@smtp112.mail.ir2.yahoo.com
+X-Yahoo-Newman-Property: ymail-3
+X-YMail-OSG: P2gaHFoVM1nO0QIUP9rB2szcZZO6XjGNcrG1P0dLiPc6Hvz
+	jGK6fleSSDmh.zD1fVreejSR61I1M0ElTptew1ZTgLX3yfo9GlUg4roXS51E
+	B42MWV8VXClRCBkBkPLapkYebBQkqtqUO8FNUEi5nrOeaV3mctHBfQnN.nLr
+	T12oK46asCQPuNGJg_e.k.3fZ1xewqp1ukbemzl04qYUvazmtaaPVCmvS2XC
+	22rs1iCYggAIn4hiER1Tbd9XaqJQZn4fSBA.ZYZHF5bmQWen6ugX7hHUZPO5
+	edG7Aco_9ZQGyvvKJbkiXQbLGUtqvXoRVNqoqri_G414F94T8tCe81HdpZbn
+	8vHUuqKeDgGFW6FcAgT4O7BGBmxWdb55xtt9dpHJh4i4B9qSxXvwsqgmYnr5
+	p8TY5.TKSG0ifC5NDPAmDieKzrLhZidyYntgRW9qBc4yS_zfFalwRrut0tJZ
+	YRT.fPgxDPcKq5swuBJfZxc7KweJJpmLjyFJqoMncQzJavcZq5Etd2sHl2er
+	DQ6Dnbg2xtf6HjoHtZ2ZQ7nP1duR5PCwsaTD3ozjN84Hi8W3QRcKl7N0WHHB
+	vLn36IjLSsfmQaBYE
+X-Yahoo-SMTP: Zay5iG2swBBwBjVsWquSqCXzMrQnnj5rR6LdlZsQ7MCyug--
+Date: Tue, 23 May 2017 01:45:42 +0000
+To: <qemu-devel@nongnu.org>
+Message-ID: <1da30c06-46bd-47fa-b0ef-886ea9ab84e5@ONE.local>
+X-Mailer: TortoiseGit
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Resent-From: 
-From: no-reply@patchew.org
-To: qemu-devel@nongnu.org
-Date: Mon, 22 May 2017 16:56:48 -0700 (PDT)
-X-ZohoMailClient: External
+Content-Type: text/plain; 
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
-X-Received-From: 135.84.80.217
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH] [PATCH V2] GDummyPanel Fix
- formatingissues.
-X-BeenThere: qemu-arm@nongnu.org
+X-Received-From: 212.82.97.135
+Subject: [Qemu-devel] [PATCH] Add code to connect to external panel, for ARM
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: qemu-devel@nongnu.org
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+From: John Bradley via Qemu-devel <qemu-devel@nongnu.org>
+Reply-To: John Bradley <flypie@rocketmail.com>
 Cc: flypie@rocketmail.com, peter.maydell@linaro.org, qemu-arm@nongnu.org,
-	famz@redhat.com, qemu-devel@nongnu.org
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: aoR2GzwA/WYX
+	qemu-devel@nongnu.org
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 8l517FKReIUJ
 
-SGksCgpUaGlzIHNlcmllcyBzZWVtcyB0byBoYXZlIHNvbWUgY29kaW5nIHN0eWxlIHByb2JsZW1z
-LiBTZWUgb3V0cHV0IGJlbG93IGZvcgptb3JlIGluZm9ybWF0aW9uOgoKTWVzc2FnZS1pZDogNTZm
-YThhNzktZmE5MC00YWRjLWFhMGUtMDUyN2M5ZDk2Njk4QE9ORS5sb2NhbApTdWJqZWN0OiBbUWVt
-dS1kZXZlbF0gW1BBVENIXSBbUEFUQ0ggVjJdIEdEdW1teVBhbmVsIEZpeCBmb3JtYXRpbmdpc3N1
-ZXMuClR5cGU6IHNlcmllcwoKPT09IFRFU1QgU0NSSVBUIEJFR0lOID09PQojIS9iaW4vYmFzaAoK
-QkFTRT1iYXNlCm49MQp0b3RhbD0kKGdpdCBsb2cgLS1vbmVsaW5lICRCQVNFLi4gfCB3YyAtbCkK
-ZmFpbGVkPTAKCmdpdCBjb25maWcgLS1sb2NhbCBkaWZmLnJlbmFtZWxpbWl0IDAKZ2l0IGNvbmZp
-ZyAtLWxvY2FsIGRpZmYucmVuYW1lcyBUcnVlCgpjb21taXRzPSIkKGdpdCBsb2cgLS1mb3JtYXQ9
-JUggLS1yZXZlcnNlICRCQVNFLi4pIgpmb3IgYyBpbiAkY29tbWl0czsgZG8KICAgIGVjaG8gIkNo
-ZWNraW5nIFBBVENIICRuLyR0b3RhbDogJChnaXQgbG9nIC1uIDEgLS1mb3JtYXQ9JXMgJGMpLi4u
-IgogICAgaWYgISBnaXQgc2hvdyAkYyAtLWZvcm1hdD1lbWFpbCB8IC4vc2NyaXB0cy9jaGVja3Bh
-dGNoLnBsIC0tbWFpbGJhY2sgLTsgdGhlbgogICAgICAgIGZhaWxlZD0xCiAgICAgICAgZWNobwog
-ICAgZmkKICAgIG49JCgobisxKSkKZG9uZQoKZXhpdCAkZmFpbGVkCj09PSBURVNUIFNDUklQVCBF
-TkQgPT09CgpVcGRhdGluZyAzYzhjZjVhOWMyMWZmODc4MjE2NGQxZGVmN2Y0NGJkODg4NzEzMzg0
-ClN3aXRjaGVkIHRvIGEgbmV3IGJyYW5jaCAndGVzdCcKYzMzYTFmNyBHRHVtbXlQYW5lbCBGaXgg
-Zm9ybWF0aW5naXNzdWVzLgoKPT09IE9VVFBVVCBCRUdJTiA9PT0KQ2hlY2tpbmcgUEFUQ0ggMS8x
-OiBHRHVtbXlQYW5lbCBGaXggZm9ybWF0aW5naXNzdWVzLi4uLgpFUlJPUjogc3BhY2UgcHJvaGli
-aXRlZCBiZXR3ZWVuIGZ1bmN0aW9uIG5hbWUgYW5kIG9wZW4gcGFyZW50aGVzaXMgJygnCiMzNzog
-RklMRTogaHcvZ3Bpby9iY20yODM1X2dwaW8uYzo2MDoKKyAgICAgICAgaWYgKGluZGV4IDwgc2l6
-ZW9mIChzLT5mc2VsKSkgewoKRVJST1I6IHNwYWNlIHByb2hpYml0ZWQgYmV0d2VlbiBmdW5jdGlv
-biBuYW1lIGFuZCBvcGVuIHBhcmVudGhlc2lzICcoJwojNDY6IEZJTEU6IGh3L2dwaW8vYmNtMjgz
-NV9ncGlvLmM6NzI6CisgICAgICAgIGlmIChpbmRleCA8IHNpemVvZiAocy0+ZnNlbCkpIHsKCkVS
-Uk9SOiBzcGFjZSBwcm9oaWJpdGVkIGFmdGVyIHRoYXQgJ34nIChjdHg6V3hXKQojOTc6IEZJTEU6
-IGh3L2dwaW8vYmNtMjgzNV9ncGlvLmM6MTE1OgorICAgIHVpbnQzMl90IGNoYW5nZXMgPSB2YWwg
-JiB+ICpsZXY7CiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIF4KCkVSUk9SOiBzd2l0Y2gg
-YW5kIGNhc2Ugc2hvdWxkIGJlIGF0IHRoZSBzYW1lIGluZGVudAojMTIyOiBGSUxFOiBody9ncGlv
-L2JjbTI4MzVfZ3Bpby5jOjE1MjoKICAgICBzd2l0Y2ggKG9mZnNldCkgeworICAgICAgICBjYXNl
-IEdQRlNFTDA6CisgICAgICAgIGNhc2UgR1BGU0VMMToKKyAgICAgICAgY2FzZSBHUEZTRUwyOgor
-ICAgICAgICBjYXNlIEdQRlNFTDM6CisgICAgICAgIGNhc2UgR1BGU0VMNDoKKyAgICAgICAgY2Fz
-ZSBHUEZTRUw1OgpbLi4uXQorICAgICAgICBjYXNlIEdQU0VUMDoKKyAgICAgICAgY2FzZSBHUFNF
-VDE6ClsuLi5dCisgICAgICAgIGNhc2UgR1BDTFIwOgorICAgICAgICBjYXNlIEdQQ0xSMToKWy4u
-Ll0KKyAgICAgICAgY2FzZSBHUExFVjA6ClsuLi5dCisgICAgICAgIGNhc2UgR1BMRVYxOgpbLi4u
-XQorICAgICAgICBjYXNlIEdQRURTMDoKKyAgICAgICAgY2FzZSBHUEVEUzE6CisgICAgICAgIGNh
-c2UgR1BSRU4wOgorICAgICAgICBjYXNlIEdQUkVOMToKKyAgICAgICAgY2FzZSBHUEZFTjA6Cisg
-ICAgICAgIGNhc2UgR1BGRU4xOgorICAgICAgICBjYXNlIEdQSEVOMDoKKyAgICAgICAgY2FzZSBH
-UEhFTjE6CisgICAgICAgIGNhc2UgR1BMRU4wOgorICAgICAgICBjYXNlIEdQTEVOMToKKyAgICAg
-ICAgY2FzZSBHUEFSRU4wOgorICAgICAgICBjYXNlIEdQQVJFTjE6CisgICAgICAgIGNhc2UgR1BB
-RkVOMDoKKyAgICAgICAgY2FzZSBHUEFGRU4xOgorICAgICAgICBjYXNlIEdQUFVEOgorICAgICAg
-ICBjYXNlIEdQUFVEQ0xLMDoKKyAgICAgICAgY2FzZSBHUFBVRENMSzE6ClsuLi5dCisgICAgICAg
-IGRlZmF1bHQ6CgpFUlJPUjogc3dpdGNoIGFuZCBjYXNlIHNob3VsZCBiZSBhdCB0aGUgc2FtZSBp
-bmRlbnQKIzIzMjogRklMRTogaHcvZ3Bpby9iY20yODM1X2dwaW8uYzoyMTk6CiAgICAgc3dpdGNo
-IChvZmZzZXQpIHsKKyAgICAgICAgY2FzZSBHUEZTRUwwOgorICAgICAgICBjYXNlIEdQRlNFTDE6
-CisgICAgICAgIGNhc2UgR1BGU0VMMjoKKyAgICAgICAgY2FzZSBHUEZTRUwzOgorICAgICAgICBj
-YXNlIEdQRlNFTDQ6CisgICAgICAgIGNhc2UgR1BGU0VMNToKWy4uLl0KKyAgICAgICAgY2FzZSBH
-UFNFVDA6ClsuLi5dCisgICAgICAgIGNhc2UgR1BTRVQxOgpbLi4uXQorICAgICAgICBjYXNlIEdQ
-Q0xSMDoKWy4uLl0KKyAgICAgICAgY2FzZSBHUENMUjE6ClsuLi5dCisgICAgICAgIGNhc2UgR1BM
-RVYwOgorICAgICAgICBjYXNlIEdQTEVWMToKWy4uLl0KKyAgICAgICAgY2FzZSBHUEVEUzA6Cisg
-ICAgICAgIGNhc2UgR1BFRFMxOgorICAgICAgICBjYXNlIEdQUkVOMDoKKyAgICAgICAgY2FzZSBH
-UFJFTjE6CisgICAgICAgIGNhc2UgR1BGRU4wOgorICAgICAgICBjYXNlIEdQRkVOMToKKyAgICAg
-ICAgY2FzZSBHUEhFTjA6CisgICAgICAgIGNhc2UgR1BIRU4xOgorICAgICAgICBjYXNlIEdQTEVO
-MDoKKyAgICAgICAgY2FzZSBHUExFTjE6CisgICAgICAgIGNhc2UgR1BBUkVOMDoKKyAgICAgICAg
-Y2FzZSBHUEFSRU4xOgorICAgICAgICBjYXNlIEdQQUZFTjA6CisgICAgICAgIGNhc2UgR1BBRkVO
-MToKKyAgICAgICAgY2FzZSBHUFBVRDoKKyAgICAgICAgY2FzZSBHUFBVRENMSzA6CisgICAgICAg
-IGNhc2UgR1BQVURDTEsxOgpbLi4uXQorICAgICAgICBkZWZhdWx0OgoKV0FSTklORzogbGluZSBv
-dmVyIDgwIGNoYXJhY3RlcnMKIzM2NDogRklMRTogaHcvZ3Bpby9iY20yODM1X2dwaW8uYzozMTY6
-CisgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgLmVuZGlh
-bm5lc3MgPSBERVZJQ0VfTkFUSVZFX0VORElBTiwKCldBUk5JTkc6IGxpbmUgb3ZlciA4MCBjaGFy
-YWN0ZXJzCiMzODA6IEZJTEU6IGh3L2dwaW8vYmNtMjgzNV9ncGlvLmM6MzIzOgorICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAuZmllbGRzID0g
-KFZNU3RhdGVGaWVsZFtdKQoKRVJST1I6IHNwYWNlIHByb2hpYml0ZWQgYmV0d2VlbiBmdW5jdGlv
-biBuYW1lIGFuZCBvcGVuIHBhcmVudGhlc2lzICcoJwojMzk1OiBGSUxFOiBody9ncGlvL2JjbTI4
-MzVfZ3Bpby5jOjMzOToKKyAgICBxYnVzX2NyZWF0ZV9pbnBsYWNlKCZzLT5zZGJ1cywgc2l6ZW9m
-IChzLT5zZGJ1cyksCgpXQVJOSU5HOiBsaW5lIG92ZXIgODAgY2hhcmFjdGVycwojNDQ5OiBGSUxF
-OiBody9ncGlvL2JjbTI4MzVfZ3Bpby5jOjM5NzoKKyAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAuaW5zdGFuY2Vfc2l6ZSA9IHNpemVvZiAoQkNNMjgzNUdwaW9TdGF0
-ZSksCgpFUlJPUjogc3BhY2UgcHJvaGliaXRlZCBiZXR3ZWVuIGZ1bmN0aW9uIG5hbWUgYW5kIG9w
-ZW4gcGFyZW50aGVzaXMgJygnCiM0NDk6IEZJTEU6IGh3L2dwaW8vYmNtMjgzNV9ncGlvLmM6Mzk3
-OgorICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIC5pbnN0YW5jZV9z
-aXplID0gc2l6ZW9mIChCQ00yODM1R3Bpb1N0YXRlKSwKCldBUk5JTkc6IGxpbmUgb3ZlciA4MCBj
-aGFyYWN0ZXJzCiM0NTE6IEZJTEU6IGh3L2dwaW8vYmNtMjgzNV9ncGlvLmM6Mzk5OgorICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIC5jbGFzc19pbml0ID0gYmNtMjgz
-NV9ncGlvX2NsYXNzX2luaXQsCgpXQVJOSU5HOiBhcmNoaXRlY3R1cmUgc3BlY2lmaWMgZGVmaW5l
-cyBzaG91bGQgYmUgYXZvaWRlZAojNDk5OiBGSUxFOiBpbmNsdWRlL3FlbXUvUGFuZWxFbXUuaDox
-NzoKKyNpZmRlZiBfX2NwbHVzcGx1cwoKRVJST1I6IGNvZGUgaW5kZW50IHNob3VsZCBuZXZlciB1
-c2UgdGFicwojNTE2OiBGSUxFOiBpbmNsdWRlL3FlbXUvUGFuZWxFbXUuaDozNDoKK15JICAgICAg
-ICAgICAgICAgICAgICAgICB1bmxlc3Mgc29tZXRoaW5nIGNoYW5nZWQgKi8kCgpXQVJOSU5HOiBh
-cmNoaXRlY3R1cmUgc3BlY2lmaWMgZGVmaW5lcyBzaG91bGQgYmUgYXZvaWRlZAojNTMwOiBGSUxF
-OiBpbmNsdWRlL3FlbXUvUGFuZWxFbXUuaDo0ODoKKyNpZmRlZiBfX2NwbHVzcGx1cwoKV0FSTklO
-RzogYXJjaGl0ZWN0dXJlIHNwZWNpZmljIGRlZmluZXMgc2hvdWxkIGJlIGF2b2lkZWQKIzU2NDog
-RklMRTogdXRpbC9QYW5lbEVtdS5jOjEzOgorI2lmZGVmIF9fTUlOR1czMl9fCgpFUlJPUjogb3Bl
-biBicmFjZSAneycgZm9sbG93aW5nIGVudW0gZ28gb24gdGhlIHNhbWUgbGluZQojNTc1OiBGSUxF
-OiB1dGlsL1BhbmVsRW11LmM6MjQ6Cit0eXBlZGVmIGVudW0KK3sKCkVSUk9SOiBvcGVuIGJyYWNl
-ICd7JyBmb2xsb3dpbmcgc3RydWN0IGdvIG9uIHRoZSBzYW1lIGxpbmUKIzU5NjogRklMRTogdXRp
-bC9QYW5lbEVtdS5jOjQ1OgordHlwZWRlZiBzdHJ1Y3QKK3sKCldBUk5JTkc6IGFyY2hpdGVjdHVy
-ZSBzcGVjaWZpYyBkZWZpbmVzIHNob3VsZCBiZSBhdm9pZGVkCiM2OTc6IEZJTEU6IHV0aWwvUGFu
-ZWxFbXUuYzoxNDY6CisjaWZkZWYgX19NSU5HVzMyX18KCkVSUk9SOiBzcGFjZXMgcmVxdWlyZWQg
-YXJvdW5kIHRoYXQgJyYmJyAoY3R4OlZ4TykKIzczMDogRklMRTogdXRpbC9QYW5lbEVtdS5jOjE3
-OToKKyAgICAgICAgd2hpbGUgKE5vRXJyb3ImJiEgTm9EYXRhKSB7CiAgICAgICAgICAgICAgICAg
-ICAgICAgXgoKRVJST1I6IHNwYWNlIHByb2hpYml0ZWQgYWZ0ZXIgdGhhdCAnIScgKGN0eDpPeFcp
-CiM3MzA6IEZJTEU6IHV0aWwvUGFuZWxFbXUuYzoxNzk6CisgICAgICAgIHdoaWxlIChOb0Vycm9y
-JiYhIE5vRGF0YSkgewogICAgICAgICAgICAgICAgICAgICAgICAgXgoKRVJST1I6IHNwYWNlIHBy
-b2hpYml0ZWQgYmVmb3JlIHRoYXQgJysrJyAoY3R4Old4QikKIzczOTogRklMRTogdXRpbC9QYW5l
-bEVtdS5jOjE4ODoKKyAgICAgICAgICAgICAgICAgICAgICAgIGZvciAoaW50IGkgPSAwOyBMZW5n
-dGhJbkJ1ZmZlciA+IDA7IGkgKyspIHsKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgXgoKRVJST1I6IHNwYWNlIHByb2hpYml0ZWQg
-YmVmb3JlIHRoYXQgJysrJyAoY3R4Old4QikKIzc2OTogRklMRTogdXRpbC9QYW5lbEVtdS5jOjIx
-ODoKKyAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgZm9yIChpbnQgaiA9IDA7IGogPCBM
-ZW5ndGhJbkJ1ZmZlcjsgaiArKykgewogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIF4KCldBUk5JTkc6IGFyY2hpdGVj
-dHVyZSBzcGVjaWZpYyBkZWZpbmVzIHNob3VsZCBiZSBhdm9pZGVkCiM3OTA6IEZJTEU6IHV0aWwv
-UGFuZWxFbXUuYzoyMzk6CisjaWZkZWYgX19NSU5HVzMyX18KCldBUk5JTkc6IGFyY2hpdGVjdHVy
-ZSBzcGVjaWZpYyBkZWZpbmVzIHNob3VsZCBiZSBhdm9pZGVkCiM4MTA6IEZJTEU6IHV0aWwvUGFu
-ZWxFbXUuYzoyNTk6CisjaWZkZWYgX19NSU5HVzMyX18KCldBUk5JTkc6IGFyY2hpdGVjdHVyZSBz
-cGVjaWZpYyBkZWZpbmVzIHNob3VsZCBiZSBhdm9pZGVkCiM4MTg6IEZJTEU6IHV0aWwvUGFuZWxF
-bXUuYzoyNjc6CisjaWZkZWYgX19NSU5HVzMyX18KCldBUk5JTkc6IGFyY2hpdGVjdHVyZSBzcGVj
-aWZpYyBkZWZpbmVzIHNob3VsZCBiZSBhdm9pZGVkCiM4Mjc6IEZJTEU6IHV0aWwvUGFuZWxFbXUu
-YzoyNzY6CisjaWZkZWYgX19NSU5HVzMyX18KCldBUk5JTkc6IGFyY2hpdGVjdHVyZSBzcGVjaWZp
-YyBkZWZpbmVzIHNob3VsZCBiZSBhdm9pZGVkCiM4MzU6IEZJTEU6IHV0aWwvUGFuZWxFbXUuYzoy
-ODQ6CisjaWZkZWYgX19NSU5HVzMyX18KCldBUk5JTkc6IGFyY2hpdGVjdHVyZSBzcGVjaWZpYyBk
-ZWZpbmVzIHNob3VsZCBiZSBhdm9pZGVkCiM4NDk6IEZJTEU6IHV0aWwvUGFuZWxFbXUuYzoyOTg6
-CisjaWZkZWYgX19NSU5HVzMyX18KCldBUk5JTkc6IGFyY2hpdGVjdHVyZSBzcGVjaWZpYyBkZWZp
-bmVzIHNob3VsZCBiZSBhdm9pZGVkCiM4NjY6IEZJTEU6IHV0aWwvUGFuZWxFbXUuYzozMTU6Cisj
-aWZkZWYgX19NSU5HVzMyX18KCldBUk5JTkc6IGFyY2hpdGVjdHVyZSBzcGVjaWZpYyBkZWZpbmVz
-IHNob3VsZCBiZSBhdm9pZGVkCiM4NzQ6IEZJTEU6IHV0aWwvUGFuZWxFbXUuYzozMjM6CisjaWZk
-ZWYgX19NSU5HVzMyX18KCnRvdGFsOiAxNCBlcnJvcnMsIDE2IHdhcm5pbmdzLCA4MjAgbGluZXMg
-Y2hlY2tlZAoKWW91ciBwYXRjaCBoYXMgc3R5bGUgcHJvYmxlbXMsIHBsZWFzZSByZXZpZXcuICBJ
-ZiBhbnkgb2YgdGhlc2UgZXJyb3JzCmFyZSBmYWxzZSBwb3NpdGl2ZXMgcmVwb3J0IHRoZW0gdG8g
-dGhlIG1haW50YWluZXIsIHNlZQpDSEVDS1BBVENIIGluIE1BSU5UQUlORVJTLgoKPT09IE9VVFBV
-VCBFTkQgPT09CgpUZXN0IGNvbW1hbmQgZXhpdGVkIHdpdGggY29kZTogMQoKCi0tLQpFbWFpbCBn
-ZW5lcmF0ZWQgYXV0b21hdGljYWxseSBieSBQYXRjaGV3IFtodHRwOi8vcGF0Y2hldy5vcmcvXS4K
-UGxlYXNlIHNlbmQgeW91ciBmZWVkYmFjayB0byBwYXRjaGV3LWRldmVsQGZyZWVsaXN0cy5vcmc=
+From 9256c1450557ed67b4328761ab80b4e80be26e3e Mon Sep 17 00:00:00 2001
+From: John Bradley <flypie@rocketmail.com>
+Date: Tue, 23 May 2017 01:43:32 +0100
+Subject: [PATCH] Add code to connect to external panel, for ARM
+
+Has no effect if panel not found.
+
+GDummyPanel Fix formating issues.
+
+Add inital discussion of protocol version.
+
+Add code to connect with https://github.com/flypie/GDummyPanel The code uses GNU Sockets & Windows
+sockets as on MINGW GNU no available. This is inteded as a Demo for RFC.
+
+
+Signed-off-by: John Bradley <flypie@rocketmail.com>
+---
+ hw/arm/Makefile.objs           |   2 +-
+ hw/arm/bcm2835_peripherals.c   | 104 +++++++++++++
+ hw/gpio/bcm2835_gpio.c         | 136 +++++++++++------
+ include/hw/gpio/bcm2835_gpio.h |   4 +
+ include/qemu/PanelEmu.h        |  53 +++++++
+ util/PanelEmu.c                | 326 +++++++++++++++++++++++++++++++++++++++++
+ 6 files changed, 583 insertions(+), 42 deletions(-)
+ create mode 100644 include/qemu/PanelEmu.h
+ create mode 100644 util/PanelEmu.c
+
+diff --git a/hw/arm/Makefile.objs b/hw/arm/Makefile.objs
+index 4c5c4ee76c..35b2da24f5 100644
+--- a/hw/arm/Makefile.objs
++++ b/hw/arm/Makefile.objs
+@@ -11,7 +11,7 @@ obj-y += armv7m.o exynos4210.o pxa2xx.o pxa2xx_gpio.o pxa2xx_pic.o
+ obj-$(CONFIG_DIGIC) += digic.o
+ obj-y += omap1.o omap2.o strongarm.o
+ obj-$(CONFIG_ALLWINNER_A10) += allwinner-a10.o cubieboard.o
+-obj-$(CONFIG_RASPI) += bcm2835_peripherals.o bcm2836.o raspi.o
++obj-$(CONFIG_RASPI) += bcm2835.o bcm2835_peripherals.o bcm2836.o raspi.o
+ obj-$(CONFIG_STM32F205_SOC) += stm32f205_soc.o
+ obj-$(CONFIG_XLNX_ZYNQMP) += xlnx-zynqmp.o xlnx-ep108.o
+ obj-$(CONFIG_FSL_IMX25) += fsl-imx25.o imx25_pdk.o
+diff --git a/hw/arm/bcm2835_peripherals.c b/hw/arm/bcm2835_peripherals.c
+index 369ef1e3bd..0ca05ca685 100644
+--- a/hw/arm/bcm2835_peripherals.c
++++ b/hw/arm/bcm2835_peripherals.c
+@@ -56,6 +56,29 @@ static void bcm2835_peripherals_init(Object *obj)
+     object_property_add_child(obj, "aux", OBJECT(&s->aux), NULL);
+     qdev_set_parent_bus(DEVICE(&s->aux), sysbus_get_default());
+ 
++    /* System timer */
++    object_initialize(&s->st, sizeof(s->st), TYPE_BCM2835_ST);
++    object_property_add_child(obj, "systimer", OBJECT(&s->st), NULL);
++    qdev_set_parent_bus(DEVICE(&s->st), sysbus_get_default());
++
++    /* ARM timer */
++    object_initialize(&s->timer, sizeof(s->timer), TYPE_BCM2835_TIMER);
++    object_property_add_child(obj, "armtimer", OBJECT(&s->timer), NULL);
++    qdev_set_parent_bus(DEVICE(&s->timer), sysbus_get_default());
++
++    /* USB controller */
++    object_initialize(&s->usb, sizeof(s->usb), TYPE_BCM2835_USB);
++    object_property_add_child(obj, "usb", OBJECT(&s->usb), NULL);
++    qdev_set_parent_bus(DEVICE(&s->usb), sysbus_get_default());
++
++    object_property_add_const_link(OBJECT(&s->usb), "dma_mr",
++                                   OBJECT(&s->gpu_bus_mr), &error_abort);
++
++    /* MPHI - Message-based Parallel Host Interface */
++    object_initialize(&s->mphi, sizeof(s->mphi), TYPE_BCM2835_MPHI);
++    object_property_add_child(obj, "mphi", OBJECT(&s->mphi), NULL);
++    qdev_set_parent_bus(DEVICE(&s->mphi), sysbus_get_default());
++
+     /* Mailboxes */
+     object_initialize(&s->mboxes, sizeof(s->mboxes), TYPE_BCM2835_MBOX);
+     object_property_add_child(obj, "mbox", OBJECT(&s->mboxes), NULL);
+@@ -64,6 +87,11 @@ static void bcm2835_peripherals_init(Object *obj)
+     object_property_add_const_link(OBJECT(&s->mboxes), "mbox-mr",
+                                    OBJECT(&s->mbox_mr), &error_abort);
+ 
++    /* Power management */
++    object_initialize(&s->power, sizeof(s->power), TYPE_BCM2835_POWER);
++    object_property_add_child(obj, "power", OBJECT(&s->power), NULL);
++    qdev_set_parent_bus(DEVICE(&s->power), sysbus_get_default());
++
+     /* Framebuffer */
+     object_initialize(&s->fb, sizeof(s->fb), TYPE_BCM2835_FB);
+     object_property_add_child(obj, "fb", OBJECT(&s->fb), NULL);
+@@ -179,6 +207,7 @@ static void bcm2835_peripherals_realize(DeviceState *dev, Error **errp)
+     sysbus_connect_irq(s->uart0, 0,
+         qdev_get_gpio_in_named(DEVICE(&s->ic), BCM2835_IC_GPU_IRQ,
+                                INTERRUPT_UART));
++
+     /* AUX / UART1 */
+     qdev_prop_set_chr(DEVICE(&s->aux), "chardev", serial_hds[1]);
+ 
+@@ -194,6 +223,67 @@ static void bcm2835_peripherals_realize(DeviceState *dev, Error **errp)
+         qdev_get_gpio_in_named(DEVICE(&s->ic), BCM2835_IC_GPU_IRQ,
+                                INTERRUPT_AUX));
+ 
++    /* System timer */
++    object_property_set_bool(OBJECT(&s->st), true, "realized", &err);
++    if (err) {
++        error_propagate(errp, err);
++        return;
++    }
++
++    memory_region_add_subregion(&s->peri_mr, ST_OFFSET,
++                sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->st), 0));
++    sysbus_connect_irq(SYS_BUS_DEVICE(&s->st), 0,
++        qdev_get_gpio_in_named(DEVICE(&s->ic), BCM2835_IC_GPU_IRQ,
++                               INTERRUPT_TIMER0));
++    sysbus_connect_irq(SYS_BUS_DEVICE(&s->st), 1,
++        qdev_get_gpio_in_named(DEVICE(&s->ic), BCM2835_IC_GPU_IRQ,
++                               INTERRUPT_TIMER1));
++    sysbus_connect_irq(SYS_BUS_DEVICE(&s->st), 2,
++        qdev_get_gpio_in_named(DEVICE(&s->ic), BCM2835_IC_GPU_IRQ,
++                               INTERRUPT_TIMER2));
++    sysbus_connect_irq(SYS_BUS_DEVICE(&s->st), 3,
++        qdev_get_gpio_in_named(DEVICE(&s->ic), BCM2835_IC_GPU_IRQ,
++                               INTERRUPT_TIMER3));
++
++    /* ARM timer */
++    object_property_set_bool(OBJECT(&s->timer), true, "realized", &err);
++    if (err) {
++        error_propagate(errp, err);
++        return;
++    }
++
++    memory_region_add_subregion(&s->peri_mr, ARMCTRL_TIMER0_1_OFFSET,
++                sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->timer), 0));
++    sysbus_connect_irq(SYS_BUS_DEVICE(&s->timer), 0,
++        qdev_get_gpio_in_named(DEVICE(&s->ic), BCM2835_IC_ARM_IRQ,
++                               INTERRUPT_ARM_TIMER));
++
++    /* USB controller */
++    object_property_set_bool(OBJECT(&s->usb), true, "realized", &err);
++    if (err) {
++        error_propagate(errp, err);
++        return;
++    }
++
++    memory_region_add_subregion(&s->peri_mr, USB_OFFSET,
++                sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->usb), 0));
++    sysbus_connect_irq(SYS_BUS_DEVICE(&s->usb), 0,
++        qdev_get_gpio_in_named(DEVICE(&s->ic), BCM2835_IC_GPU_IRQ,
++                               INTERRUPT_USB));
++
++    /* MPHI - Message-based Parallel Host Interface */
++    object_property_set_bool(OBJECT(&s->mphi), true, "realized", &err);
++    if (err) {
++        error_propagate(errp, err);
++        return;
++    }
++
++    memory_region_add_subregion(&s->peri_mr, MPHI_OFFSET,
++                sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->mphi), 0));
++    sysbus_connect_irq(SYS_BUS_DEVICE(&s->mphi), 0,
++        qdev_get_gpio_in_named(DEVICE(&s->ic), BCM2835_IC_GPU_IRQ,
++                               INTERRUPT_HOSTPORT));
++
+     /* Mailboxes */
+     object_property_set_bool(OBJECT(&s->mboxes), true, "realized", &err);
+     if (err) {
+@@ -207,6 +297,18 @@ static void bcm2835_peripherals_realize(DeviceState *dev, Error **errp)
+         qdev_get_gpio_in_named(DEVICE(&s->ic), BCM2835_IC_ARM_IRQ,
+                                INTERRUPT_ARM_MAILBOX));
+ 
++    /* Power management */
++    object_property_set_bool(OBJECT(&s->power), true, "realized", &err);
++    if (err) {
++        error_propagate(errp, err);
++        return;
++    }
++
++    memory_region_add_subregion(&s->mbox_mr, MBOX_CHAN_POWER << MBOX_AS_CHAN_SHIFT,
++                sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->power), 0));
++    sysbus_connect_irq(SYS_BUS_DEVICE(&s->power), 0,
++                       qdev_get_gpio_in(DEVICE(&s->mboxes), MBOX_CHAN_POWER));
++
+     /* Framebuffer */
+     vcram_size = (uint32_t)object_property_get_int(OBJECT(s), "vcram-size",
+                                                    &err);
+@@ -338,6 +440,8 @@ static void bcm2835_peripherals_class_init(ObjectClass *oc, void *data)
+     DeviceClass *dc = DEVICE_CLASS(oc);
+ 
+     dc->realize = bcm2835_peripherals_realize;
++    /* Reason: realize() method uses qemu_char_get_next_serial() */
++    dc->user_creatable=false;
+ }
+ 
+ static const TypeInfo bcm2835_peripherals_type_info = {
+diff --git a/hw/gpio/bcm2835_gpio.c b/hw/gpio/bcm2835_gpio.c
+index acc2e3cf9e..5df3f4cddf 100644
+--- a/hw/gpio/bcm2835_gpio.c
++++ b/hw/gpio/bcm2835_gpio.c
+@@ -19,6 +19,8 @@
+ #include "hw/sd/sd.h"
+ #include "hw/gpio/bcm2835_gpio.h"
+ 
++
++
+ #define GPFSEL0   0x00
+ #define GPFSEL1   0x04
+ #define GPFSEL2   0x08
+@@ -75,24 +77,24 @@ static void gpfsel_set(BCM2835GpioState *s, uint8_t reg, uint32_t value)
+ 
+     /* SD controller selection (48-53) */
+     if (s->sd_fsel != 0
+-            && (s->fsel[48] == 0) /* SD_CLK_R */
+-            && (s->fsel[49] == 0) /* SD_CMD_R */
+-            && (s->fsel[50] == 0) /* SD_DATA0_R */
+-            && (s->fsel[51] == 0) /* SD_DATA1_R */
+-            && (s->fsel[52] == 0) /* SD_DATA2_R */
+-            && (s->fsel[53] == 0) /* SD_DATA3_R */
+-            ) {
++        && (s->fsel[48] == 0) /* SD_CLK_R */
++        && (s->fsel[49] == 0) /* SD_CMD_R */
++        && (s->fsel[50] == 0) /* SD_DATA0_R */
++        && (s->fsel[51] == 0) /* SD_DATA1_R */
++        && (s->fsel[52] == 0) /* SD_DATA2_R */
++        && (s->fsel[53] == 0) /* SD_DATA3_R */
++        ) {
+         /* SDHCI controller selected */
+         sdbus_reparent_card(s->sdbus_sdhost, s->sdbus_sdhci);
+         s->sd_fsel = 0;
+     } else if (s->sd_fsel != 4
+-            && (s->fsel[48] == 4) /* SD_CLK_R */
+-            && (s->fsel[49] == 4) /* SD_CMD_R */
+-            && (s->fsel[50] == 4) /* SD_DATA0_R */
+-            && (s->fsel[51] == 4) /* SD_DATA1_R */
+-            && (s->fsel[52] == 4) /* SD_DATA2_R */
+-            && (s->fsel[53] == 4) /* SD_DATA3_R */
+-            ) {
++               && (s->fsel[48] == 4) /* SD_CLK_R */
++               && (s->fsel[49] == 4) /* SD_CMD_R */
++               && (s->fsel[50] == 4) /* SD_DATA0_R */
++               && (s->fsel[51] == 4) /* SD_DATA1_R */
++               && (s->fsel[52] == 4) /* SD_DATA2_R */
++               && (s->fsel[53] == 4) /* SD_DATA3_R */
++               ) {
+         /* SDHost controller selected */
+         sdbus_reparent_card(s->sdbus_sdhci, s->sdbus_sdhost);
+         s->sd_fsel = 4;
+@@ -108,7 +110,7 @@ static int gpfsel_is_out(BCM2835GpioState *s, int index)
+ }
+ 
+ static void gpset(BCM2835GpioState *s,
+-        uint32_t val, uint8_t start, uint8_t count, uint32_t *lev)
++                  uint32_t val, uint8_t start, uint8_t count, uint32_t *lev)
+ {
+     uint32_t changes = val & ~*lev;
+     uint32_t cur = 1;
+@@ -125,7 +127,7 @@ static void gpset(BCM2835GpioState *s,
+ }
+ 
+ static void gpclr(BCM2835GpioState *s,
+-        uint32_t val, uint8_t start, uint8_t count, uint32_t *lev)
++                  uint32_t val, uint8_t start, uint8_t count, uint32_t *lev)
+ {
+     uint32_t changes = val & *lev;
+     uint32_t cur = 1;
+@@ -141,11 +143,12 @@ static void gpclr(BCM2835GpioState *s,
+     *lev &= ~val;
+ }
+ 
+-static uint64_t bcm2835_gpio_read(void *opaque, hwaddr offset,
+-        unsigned size)
++static uint64_t bcm2835_gpio_read(void *opaque, hwaddr offset, unsigned size)
+ {
+     BCM2835GpioState *s = (BCM2835GpioState *)opaque;
+ 
++    uint64_t Data;
++
+     switch (offset) {
+     case GPFSEL0:
+     case GPFSEL1:
+@@ -163,8 +166,20 @@ static uint64_t bcm2835_gpio_read(void *opaque, hwaddr offset,
+         /* Write Only */
+         return 0;
+     case GPLEV0:
++        if (s->panel.socket != -1) {
++            if (panel_read(&s->panel, &Data)) {
++                s->lev0 = (uint32_t)Data;
++                s->lev1 = (uint32_t)(Data >> 32);
++            }
++        }
+         return s->lev0;
+     case GPLEV1:
++        if (s->panel.socket != -1) {
++            if (panel_read(&s->panel, &Data)) {
++                s->lev0 = (uint32_t)Data;
++                s->lev1 = (uint32_t)(Data >> 32);
++            }
++        }
+         return s->lev1;
+     case GPEDS0:
+     case GPEDS1:
+@@ -187,7 +202,7 @@ static uint64_t bcm2835_gpio_read(void *opaque, hwaddr offset,
+         return 0;
+     default:
+         qemu_log_mask(LOG_GUEST_ERROR, "%s: Bad offset %"HWADDR_PRIx"\n",
+-                __func__, offset);
++                      __func__, offset);
+         break;
+     }
+ 
+@@ -195,9 +210,11 @@ static uint64_t bcm2835_gpio_read(void *opaque, hwaddr offset,
+ }
+ 
+ static void bcm2835_gpio_write(void *opaque, hwaddr offset,
+-        uint64_t value, unsigned size)
++                               uint64_t value, unsigned size)
+ {
+     BCM2835GpioState *s = (BCM2835GpioState *)opaque;
++    uint64_t Data;
++
+ 
+     switch (offset) {
+     case GPFSEL0:
+@@ -210,15 +227,37 @@ static void bcm2835_gpio_write(void *opaque, hwaddr offset,
+         break;
+     case GPSET0:
+         gpset(s, value, 0, 32, &s->lev0);
++        if (s->panel.socket != -1) {
++            Data = value;
++            /* John Bradley dummy GPIO Panel */
++            senddatatopanel(&s->panel, Data, true);
++        }
+         break;
+     case GPSET1:
+         gpset(s, value, 32, 22, &s->lev1);
++        if (s->panel.socket != -1) {
++            Data = value;
++            Data <<= 32;
++            /* John Bradley dummy GPIO Panel */
++            senddatatopanel(&s->panel, Data, true);
++        }
+         break;
+     case GPCLR0:
+         gpclr(s, value, 0, 32, &s->lev0);
++        if (s->panel.socket != -1) {
++            Data = value;
++            /* John Bradley dummy GPIO Panel */
++            senddatatopanel(&s->panel, Data, false);
++        }
+         break;
+     case GPCLR1:
+         gpclr(s, value, 32, 22, &s->lev1);
++        if (s->panel.socket != -1) {
++            Data = value;
++            Data <<= 32;
++            /* John Bradley dummy GPIO Panel */
++            senddatatopanel(&s->panel, Data, false);
++        }
+         break;
+     case GPLEV0:
+     case GPLEV1:
+@@ -250,7 +289,7 @@ static void bcm2835_gpio_write(void *opaque, hwaddr offset,
+ 
+ err_out:
+     qemu_log_mask(LOG_GUEST_ERROR, "%s: Bad offset %"HWADDR_PRIx"\n",
+-            __func__, offset);
++                  __func__, offset);
+ }
+ 
+ static void bcm2835_gpio_reset(DeviceState *dev)
+@@ -272,21 +311,22 @@ static void bcm2835_gpio_reset(DeviceState *dev)
+ }
+ 
+ static const MemoryRegionOps bcm2835_gpio_ops = {
+-    .read = bcm2835_gpio_read,
+-    .write = bcm2835_gpio_write,
+-    .endianness = DEVICE_NATIVE_ENDIAN,
++        .read = bcm2835_gpio_read,
++        .write = bcm2835_gpio_write,
++        .endianness = DEVICE_NATIVE_ENDIAN,
+ };
+ 
+ static const VMStateDescription vmstate_bcm2835_gpio = {
+-    .name = "bcm2835_gpio",
+-    .version_id = 1,
+-    .minimum_version_id = 1,
+-    .fields = (VMStateField[]) {
+-        VMSTATE_UINT8_ARRAY(fsel, BCM2835GpioState, 54),
+-        VMSTATE_UINT32(lev0, BCM2835GpioState),
+-        VMSTATE_UINT32(lev1, BCM2835GpioState),
+-        VMSTATE_UINT8(sd_fsel, BCM2835GpioState),
+-        VMSTATE_END_OF_LIST()
++        .name = "bcm2835_gpio",
++        .version_id = 1,
++        .minimum_version_id = 1,
++        .fields = (VMStateField[])
++    {
++     VMSTATE_UINT8_ARRAY(fsel, BCM2835GpioState, 54),
++     VMSTATE_UINT32(lev0, BCM2835GpioState),
++     VMSTATE_UINT32(lev1, BCM2835GpioState),
++     VMSTATE_UINT8(sd_fsel, BCM2835GpioState),
++     VMSTATE_END_OF_LIST()
+     }
+ };
+ 
+@@ -300,9 +340,23 @@ static void bcm2835_gpio_init(Object *obj)
+                         TYPE_SD_BUS, DEVICE(s), "sd-bus");
+ 
+     memory_region_init_io(&s->iomem, obj,
+-            &bcm2835_gpio_ops, s, "bcm2835_gpio", 0x1000);
++                          &bcm2835_gpio_ops, s, "bcm2835_gpio", 0x1000);
+     sysbus_init_mmio(sbd, &s->iomem);
+     qdev_init_gpio_out(dev, s->out, 54);
++
++    /* Get access to the GPIO panel, program will quit on fail */
++    if (panel_open(&s->panel)) {
++        /* PI Has 54 Pins */
++        sendpincount(&s->panel, 54);
++        /* Pins 0 & 1 are I2C so disable */
++        sendenabledmap(&s->panel, 0x003FFFFFFFFFFFFC);
++        /* There are no dedicated input pins I know of */
++        sendinputmap(&s->panel, 0x0000000000000000);
++        /* Pin 53 is dedicated output LED */
++        sendoutputmap(&s->panel, 0x0000800000000000);
++    } else {
++        printf("Couldn't connect to a GPIO panel\n");
++    }
+ }
+ 
+ static void bcm2835_gpio_realize(DeviceState *dev, Error **errp)
+@@ -314,7 +368,7 @@ static void bcm2835_gpio_realize(DeviceState *dev, Error **errp)
+     obj = object_property_get_link(OBJECT(dev), "sdbus-sdhci", &err);
+     if (obj == NULL) {
+         error_setg(errp, "%s: required sdhci link not found: %s",
+-                __func__, error_get_pretty(err));
++                   __func__, error_get_pretty(err));
+         return;
+     }
+     s->sdbus_sdhci = SD_BUS(obj);
+@@ -322,7 +376,7 @@ static void bcm2835_gpio_realize(DeviceState *dev, Error **errp)
+     obj = object_property_get_link(OBJECT(dev), "sdbus-sdhost", &err);
+     if (obj == NULL) {
+         error_setg(errp, "%s: required sdhost link not found: %s",
+-                __func__, error_get_pretty(err));
++                   __func__, error_get_pretty(err));
+         return;
+     }
+     s->sdbus_sdhost = SD_BUS(obj);
+@@ -338,11 +392,11 @@ static void bcm2835_gpio_class_init(ObjectClass *klass, void *data)
+ }
+ 
+ static const TypeInfo bcm2835_gpio_info = {
+-    .name          = TYPE_BCM2835_GPIO,
+-    .parent        = TYPE_SYS_BUS_DEVICE,
+-    .instance_size = sizeof(BCM2835GpioState),
+-    .instance_init = bcm2835_gpio_init,
+-    .class_init    = bcm2835_gpio_class_init,
++                                           .name = TYPE_BCM2835_GPIO,
++                                           .parent = TYPE_SYS_BUS_DEVICE,
++                                           .instance_size = sizeof(BCM2835GpioState),
++                                           .instance_init = bcm2835_gpio_init,
++                                           .class_init = bcm2835_gpio_class_init,
+ };
+ 
+ static void bcm2835_gpio_register_types(void)
+diff --git a/include/hw/gpio/bcm2835_gpio.h b/include/hw/gpio/bcm2835_gpio.h
+index 9f8e0c720c..f7d7c79aa2 100644
+--- a/include/hw/gpio/bcm2835_gpio.h
++++ b/include/hw/gpio/bcm2835_gpio.h
+@@ -15,6 +15,7 @@
+ #define BCM2835_GPIO_H
+ 
+ #include "hw/sd/sd.h"
++#include "qemu/PanelEmu.h"
+ 
+ typedef struct BCM2835GpioState {
+     SysBusDevice parent_obj;
+@@ -30,6 +31,9 @@ typedef struct BCM2835GpioState {
+     uint32_t lev0, lev1;
+     uint8_t sd_fsel;
+     qemu_irq out[54];
++
++    panel_connection_t panel;
++
+ } BCM2835GpioState;
+ 
+ #define TYPE_BCM2835_GPIO "bcm2835_gpio"
+diff --git a/include/qemu/PanelEmu.h b/include/qemu/PanelEmu.h
+new file mode 100644
+index 0000000000..35a0b2c3af
+--- /dev/null
++++ b/include/qemu/PanelEmu.h
+@@ -0,0 +1,53 @@
++/*
++ * To change this license header, choose License Headers in Project Properties.
++ * To change this template file, choose Tools | Templates
++ * and open the template in the editor.
++ */
++
++/*
++ * File:   PanelEmu.h
++ * Author: John Bradley
++ *
++ * Created on 22 April 2017, 22:26
++ */
++
++#ifndef PANELEMU_H
++#define PANELEMU_H
++
++#ifdef __cplusplus
++extern "C" {
++#endif
++
++
++#define DRIVER_NAME "RDC-GPIO: "
++#define PANEL_NAME "GPIO panel: "
++
++
++#define DEFAULT_PORT 0xb1ff       /*45567*/
++
++#define PANEL_PINS 54
++
++    typedef struct panel_connection {
++        int socket; /* socket we'll connect to the panel with */
++        fd_set fds; /* list of descriptors (only the above socket */
++        char last[PANEL_PINS / 8]; /* we don't want to send updates to the panel
++	                       unless something changed */
++        int ProtocolInUse; /*What version of the protocol are we using. */
++    } panel_connection_t;
++
++    bool panel_open(panel_connection_t *h);
++
++    bool panel_read(panel_connection_t *h, uint64_t *pinS);
++    void senddatatopanel(panel_connection_t *h, uint64_t pinS, bool Value);
++    void panel_send_read_command(panel_connection_t *h);
++    void sendpincount(panel_connection_t *h, int Num);
++    void sendenabledmap(panel_connection_t *h, uint64_t pins);
++    void sendinputmap(panel_connection_t *h, uint64_t pins);
++    void sendoutputmap(panel_connection_t *h, uint64_t pins);
++
++#ifdef __cplusplus
++}
++#endif
++
++#endif /* PANELEMU_H */
++
+diff --git a/util/PanelEmu.c b/util/PanelEmu.c
+new file mode 100644
+index 0000000000..275d781c71
+--- /dev/null
++++ b/util/PanelEmu.c
+@@ -0,0 +1,326 @@
++/*
++ * Emulation for Rasp PI GPIO via Server connected to via Socket
++ *
++ */
++#include "qemu/osdep.h"
++
++#include <stdio.h>
++#include <stdlib.h>
++#include <memory.h>
++#include <errno.h>
++#include <string.h>
++#include <sys/types.h>
++#ifdef __MINGW32__
++#include <winsock2.h>
++#else
++#include <sys/socket.h>
++#include <arpa/inet.h>
++#include <netinet/in.h>
++#endif
++
++#include "qemu/PanelEmu.h"
++
++typedef enum {
++    PROTOCOLDESCFROMQEMU = 0,
++    PROTOCOLDESCFROMPANEL = 1,
++    PINSTOPANEL = 2,
++    READREQ = 3,
++    PINCOUNT = 4,
++    ENABLEMAP = 5,
++    INPUTMAP = 6,
++    OUTPUTMAP = 7,
++    PINSTOQEMU = 8
++} PacketType;
++
++#define MINPROTOCOL 0
++#define MAXPROTOCOL 0
++
++#define MAXPACKET   255
++
++#define PACKETLEN   0  /* Includes Packet Length */
++#define PACKETTYPE  1
++
++typedef struct {
++    unsigned short int Data[MAXPACKET];
++} CommandPacket;
++
++static void panel_command(panel_connection_t *h, CommandPacket *Pkt);
++
++static void panel_send_protocol_command(panel_connection_t *h)
++{
++    CommandPacket Pkt;
++
++    Pkt.Data[PACKETLEN] = 8;
++    Pkt.Data[PACKETTYPE] = PROTOCOLDESCFROMQEMU;
++    Pkt.Data[2] = MINPROTOCOL;
++    Pkt.Data[3] = MAXPROTOCOL;
++
++    panel_command(h, &Pkt);
++}
++
++void panel_send_read_command(panel_connection_t *h)
++{
++    CommandPacket Pkt;
++
++    Pkt.Data[PACKETLEN] = 4;
++    Pkt.Data[PACKETTYPE] = READREQ;
++
++    panel_command(h, &Pkt);
++}
++
++/* Set a pin to a specified value */
++void senddatatopanel(panel_connection_t *h, uint64_t pin, bool val)
++{
++    CommandPacket Pkt;
++
++    Pkt.Data[PACKETLEN] = (char *)&Pkt.Data[6 + 1] - (char *)&Pkt.Data[0];
++    Pkt.Data[PACKETTYPE] = PINSTOPANEL;
++    Pkt.Data[2] = (unsigned short int)(pin & 0xFFFF);
++    Pkt.Data[3] = (unsigned short int)((pin >> 16) & 0xFFFF);
++    Pkt.Data[4] = (unsigned short int)(pin >> 32 & 0xFFFF);
++    Pkt.Data[5] = (unsigned short int)((pin >> 48) & 0xFFFF);
++    Pkt.Data[6] = val;
++
++    panel_command(h, &Pkt);
++}
++
++void sendpincount(panel_connection_t *h, int val)
++{
++    CommandPacket Pkt;
++
++    Pkt.Data[PACKETLEN] = (char *)&Pkt.Data[2 + 1] - (char *)&Pkt.Data[0];
++    Pkt.Data[PACKETTYPE] = PINCOUNT;
++    Pkt.Data[2] = val;
++
++    panel_command(h, &Pkt);
++}
++
++void sendenabledmap(panel_connection_t *h, uint64_t pin)
++{
++    CommandPacket Pkt;
++
++    Pkt.Data[PACKETLEN] = (char *)&Pkt.Data[5 + 1] - (char *)&Pkt.Data[0];
++    Pkt.Data[PACKETTYPE] = ENABLEMAP;
++    Pkt.Data[2] = (unsigned short int)(pin & 0xFFFF);
++    Pkt.Data[3] = (unsigned short int)((pin >> 16) & 0xFFFF);
++    Pkt.Data[4] = (unsigned short int)(pin >> 32 & 0xFFFF);
++    Pkt.Data[5] = (unsigned short int)((pin >> 48) & 0xFFFF);
++
++    panel_command(h, &Pkt);
++}
++
++void sendinputmap(panel_connection_t *h, uint64_t pin)
++{
++    CommandPacket Pkt;
++
++    Pkt.Data[PACKETLEN] = (char *)&Pkt.Data[5 + 1] - (char *)&Pkt.Data[0];
++    Pkt.Data[PACKETTYPE] = INPUTMAP;
++    Pkt.Data[2] = (unsigned short int)(pin & 0xFFFF);
++    Pkt.Data[3] = (unsigned short int)((pin >> 16) & 0xFFFF);
++    Pkt.Data[4] = (unsigned short int)(pin >> 32 & 0xFFFF);
++    Pkt.Data[5] = (unsigned short int)((pin >> 48) & 0xFFFF);
++
++    panel_command(h, &Pkt);
++}
++
++void sendoutputmap(panel_connection_t *h, uint64_t pin)
++{
++    CommandPacket Pkt;
++
++    Pkt.Data[PACKETLEN] = (char *)&Pkt.Data[5 + 1] - (char *)&Pkt.Data[0];
++    Pkt.Data[PACKETTYPE] = OUTPUTMAP;
++    Pkt.Data[2] = (unsigned short int)(pin & 0xFFFF);
++    Pkt.Data[3] = (unsigned short int)((pin >> 16) & 0xFFFF);
++    Pkt.Data[4] = (unsigned short int)(pin >> 32 & 0xFFFF);
++    Pkt.Data[5] = (unsigned short int)((pin >> 48) & 0xFFFF);
++
++    panel_command(h, &Pkt);
++}
++
++static void panel_command(panel_connection_t *h, CommandPacket *Pkt)
++{
++    if (send(h->socket, (char *)Pkt, Pkt->Data[PACKETLEN], 0) == -1) {
++        perror(PANEL_NAME "send");
++#ifdef __MINGW32__
++        closesocket(h->socket);
++#else
++        close(h->socket);
++#endif
++        h->socket = -1; /* act like we never connected */
++    }
++}
++
++/* Wait for values to be read back from panel */
++bool panel_read(panel_connection_t *h, uint64_t* Data)
++{
++    fd_set rfds, efds;
++    int LengthInBuffer;
++    int select_res = 0;
++
++    CommandPacket *PktPtr = (CommandPacket *)malloc(sizeof(CommandPacket));
++    CommandPacket *Pkt;
++    bool NoError = true;
++    bool NewData = false;
++    bool NoData = false;
++    struct timeval timeout;
++
++    int ReadStart = 0;
++    int i,j;
++
++    timeout.tv_sec = 0;
++    timeout.tv_usec = 0;
++
++    if (h->socket != -1) {
++        rfds = h->fds;
++        efds = h->fds;
++
++        Pkt = PktPtr;
++        while (NoError && !NoData) {
++            select_res = select(h->socket + 1, &rfds, NULL, &efds, &timeout);
++            if (select_res > 0) {
++                if (FD_ISSET(h->socket, &rfds)) {
++                    /* receive more data */
++                    LengthInBuffer = recv(h->socket, (char *)&Pkt[ReadStart],
++                                    sizeof(*Pkt) - ReadStart, 0);
++                    if (LengthInBuffer > 0) {
++                        LengthInBuffer += ReadStart;
++                        for (i = 0; LengthInBuffer > 0; i++) {
++                            if (LengthInBuffer >= Pkt->Data[i + PACKETLEN]) {
++                                switch (Pkt->Data[i + PACKETTYPE]) {
++                                case PINSTOQEMU:
++                                    *Data = (uint64_t)Pkt->Data[i + 2];
++                                    *Data |= ((uint64_t)Pkt->Data[i + 3]) << 16;
++                                    *Data |= ((uint64_t)Pkt->Data[i + 4]) << 32;
++                                    *Data |= ((uint64_t)Pkt->Data[i + 5]) << 48;
++
++                                    NewData = true;
++                                    break;
++
++                                case PROTOCOLDESCFROMPANEL:
++                                    h->ProtocolInUse = (int)Pkt->Data[i + 2];
++                                    if (h->ProtocolInUse != -1) {
++                                        printf(PANEL_NAME "Protocol %d\n",
++                                               h->ProtocolInUse);
++                                    } else {
++                                        printf(PANEL_NAME "No Common Pcol\n");
++                                    }
++                                    break;
++
++                                default:
++                                    printf(PANEL_NAME "Invalid data receive\n");
++                                    break;
++                                }
++                                LengthInBuffer -= Pkt->Data[PACKETLEN];
++                                i += Pkt->Data[PACKETLEN];
++                            } else {
++                                ReadStart = LengthInBuffer;
++                                for (j = 0; j < LengthInBuffer; j++) {
++                                    Pkt->Data[j] = Pkt->Data[i + j];
++                                }
++                                printf(PANEL_NAME "Partial Packet Read");
++                            }
++                        }
++                    } else {
++                        if (LengthInBuffer < 0) {
++                            if (errno != EINTR) {
++                                printf(PANEL_NAME "recv");
++                                NoError = FALSE;
++                            }
++                        } else {
++                            printf(PANEL_NAME "closed connection\n");
++                            NoError = FALSE;
++                        }
++                    }
++                }
++            } else if (select_res == 0) {
++                NoData = true;
++            } else if (errno != EINTR) {
++#ifdef __MINGW32__
++                closesocket(h->socket);
++#else
++                close(h->socket);
++#endif
++                h->socket = -1; /* act like we never connected */
++                perror(PANEL_NAME "select error");
++                NoError = FALSE;
++            }
++        }
++    }
++
++    free(PktPtr);
++
++    return NewData;
++}
++
++bool panel_open(panel_connection_t *h)
++{
++    int rv;
++#ifdef __MINGW32__
++    struct sockaddr_in remote;
++#else
++    struct sockaddr_in remote;
++#endif
++
++    bool returnval = false;
++
++#ifdef __MINGW32__
++    printf("__MINGW32__\n");
++#else
++    printf("NOT __MINGW32__\n");
++#endif
++
++    h->socket = -1;
++    h->ProtocolInUse = -1;
++
++#ifdef __MINGW32__
++    WSADATA wsadata;
++    if (WSAStartup(MAKEWORD(1, 1), &wsadata) == SOCKET_ERROR) {
++        printf("Error creating socket.\n");
++    } else {
++#endif
++        h->socket = socket(AF_INET, SOCK_STREAM, 0);
++        if (h->socket != -1) {
++#ifdef __MINGW32__
++            memset((char *)&remote, 0, sizeof(remote));
++            remote.sin_family = AF_INET;
++            remote.sin_port = htons(DEFAULT_PORT);
++            remote.sin_addr.s_addr = inet_addr("127.0.0.1");
++#else
++            memset((char *)&remote, 0, sizeof(remote));
++            remote.sin_family = AF_INET;
++            remote.sin_port = htons(DEFAULT_PORT);
++            remote.sin_addr.s_addr = inet_addr("127.0.0.1");
++#endif
++            rv = connect(h->socket,
++                            (struct sockaddr *)&remote, sizeof(remote));
++            if (rv != -1) {
++#ifdef __MINGW32__
++                char value = 1;
++                setsockopt(h->socket, IPPROTO_TCP, TCP_NODELAY,
++                           &value, sizeof(value));
++#endif
++                FD_ZERO(&h->fds);
++
++                /* Set our connected socket */
++                FD_SET(h->socket, &h->fds);
++
++                printf(PANEL_NAME "Connected OK %d\n", rv);
++
++                panel_send_protocol_command(h);
++
++                returnval = true;
++            } else {
++                printf(PANEL_NAME "connection Fails %d\n", rv);
++#ifdef __MINGW32__
++                closesocket(h->socket);
++#else
++                close(h->socket);
++#endif
++                h->socket = -1;
++            }
++        }
++#ifdef __MINGW32__
++    }
++#endif
++    return returnval;
++}
+-- 
+2.13.0.windows.1
+
 

@@ -1,153 +1,829 @@
-Received: by 10.103.124.15 with SMTP id x15csp1616290vsc;
-        Mon, 22 May 2017 17:57:10 -0700 (PDT)
-X-Received: by 10.31.138.84 with SMTP id m81mr10298262vkd.37.1495501030924;
-        Mon, 22 May 2017 17:57:10 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1495501030; cv=none;
+Received: by 10.25.0.6 with SMTP id 6csp1623312lfa;
+        Mon, 22 May 2017 18:52:45 -0700 (PDT)
+X-Received: by 10.31.238.143 with SMTP id m137mr7115777vkh.109.1495504365358;
+        Mon, 22 May 2017 18:52:45 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1495504365; cv=none;
         d=google.com; s=arc-20160816;
-        b=SZLy/aGSZb7ueVg9zx984aVTATF8TdSPn08SCwa9fQxQOxVsFUzax4yRd9aSO10yJl
-         rIqiGuG9W8W1Jz/U7g+BYb1ZhAYUGBbIquBmdAggT8slT9nWCX5LCVnH7E+6uux8gc4W
-         p5hcJSIwPFWBwQm57uEyuTtJyIrLDvZUL2UvXSGZXlqzlG7/DE7I0AdB9w0dSVgrMhgu
-         MHP2WcqsmaGwyhrD1TYzhaG5Ck9hOALh8KsCI684xmiTGr9rNkZO08AvCFCcZFCltEUn
-         zGOR1wGnwBZX9YJk8zAvzCpccbqlkjkV5MoymruL9/R9GO13QqP6El/0lqqCqJSOwSiG
-         Sjyw==
+        b=Bzuq4BL/zXxDgR/XBdJuISy2w6PngtEtqz8YUpeTz7E9oNcJ/BZbL89pC8OSX12lON
+         okaoPVJVedTLQC5Uiisj98slw6ZhCIJFH241TJ1gEQSsSv8mBliQ5DCfHaD8zJjPptHm
+         vt3DRzUTEKAqIOe3djnSEhOWcL8pSjlZPjuR1iBPaltr6udRHwNa0txH93TCFHnJa7kk
+         yjep9vlNxIPcyrzIp61SwK9A9vsRNamFHR4TRizadkiNTmoR8MST9KeYd1cUgYobjp/M
+         WhDvYaoHoyAuK8qVrOdcRf6ivc2CVBEDoDl92kvxPf1YpQIgzS+f9U0AB7OFYBpUJ9B4
+         nymw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence:subject:date:to
-         :from:resent-from:content-transfer-encoding:mime-version:message-id
-         :in-reply-to:resent-message-id:resent-date
+        h=sender:errors-to:cc:reply-to:from:list-subscribe:list-help
+         :list-post:list-archive:list-unsubscribe:list-id:precedence:subject
+         :mime-version:message-id:to:date:dkim-signature
          :arc-authentication-results;
-        bh=3IiWJhHfbhW+/16cggXByjzt7e+tcFTZtUuSuQa231w=;
-        b=si5cgbY11vF/Aeq9qGx548sgEfkGkgaxTlQEeSh8zuhKjlNjKAYaVUL48iSaJ2gk+P
-         NfUNbuYqZ1T8w1HfseYiQzRZkuTbJ7+YQMRO7TNum9kxRuGkmEh/pP2TRyTTZKcQhvbb
-         7R7jBAuVh2bD10cdHUjBy4bzu6Kn3HDYFvBXOaP/8MUQukJA8nlCuKJBo8idi7knT72R
-         eJSgEaDI/MKREZd+vFoUtdm1qmuvn7+vdZltTc6B7KELdDezQjFWqmQHRbKVYTsWrqDG
-         aujv80ql5bSQUyPrxytvcrQEtG04DPvKj4qoDMwK3qifraLVE9Ix0fghy9SnwaP/AsAN
-         J+xQ==
+        bh=+rFl87kmDerctivNqjQIrJkKOx6qJ2kooHT4acvbxtI=;
+        b=pdoOBTWBwImP/Pg0mhHqHobyPsRv1DVuthVq95KOtbi5jTKkX8I8SBWrkuIy7hh9JS
+         No9cYqYJPI9Njlmk4PBSeaLhh88xSt4cp3LFjgBwGN7R5RZYpSNJe8QXbh9j242rk+XV
+         bJ3WqkHx4pAKE45GztSgqWjZhKRl9kVJvXjgHv5qmQFF4LX3r8z15auikmPLmuBtUoef
+         K3Ncp7Bt3tdjQIdeJZVDangPjOtqJO2urVw3wvlX6dCbKOfTLuoydnQ5xLTXkOcx1gyI
+         z2/i2hImPs7VXYrBl9mrjlZHSeBA6lieiggpBHfPKt/aYfstfysWBYt89Kow06NW9d/w
+         ZeQQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@rocketmail.com;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id n1si8222391vka.222.2017.05.22.17.57.10
+        by mx.google.com with ESMTPS id l124si7222711vki.2.2017.05.22.18.52.45
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 22 May 2017 17:57:10 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Mon, 22 May 2017 18:52:45 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:45524 helo=lists.gnu.org)
+       dkim=fail header.i=@rocketmail.com;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:45627 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1dCy8M-0004uy-Gd
-	for alex.bennee@linaro.org; Mon, 22 May 2017 20:57:10 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:60054)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1dCz08-0004mP-PF
+	for alex.bennee@linaro.org; Mon, 22 May 2017 21:52:44 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:41123)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <no-reply@patchew.org>) id 1dCy8C-0004su-7F
-	for qemu-arm@nongnu.org; Mon, 22 May 2017 20:57:01 -0400
+	(envelope-from <flypie@rocketmail.com>) id 1dCyz7-0004Ci-FY
+	for qemu-devel@nongnu.org; Mon, 22 May 2017 21:51:44 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <no-reply@patchew.org>) id 1dCy8B-0001Sh-7z
-	for qemu-arm@nongnu.org; Mon, 22 May 2017 20:57:00 -0400
-Resent-Date: Mon, 22 May 2017 20:57:00 -0400
-Resent-Message-Id: <E1dCy8B-0001Sh-7z@eggs.gnu.org>
-Received: from sender-of-o52.zoho.com ([135.84.80.217]:21419)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <no-reply@patchew.org>)
-	id 1dCy85-0001NT-M5; Mon, 22 May 2017 20:56:53 -0400
-Received: from [172.17.0.2] (23.253.156.214 [23.253.156.214]) by
-	mx.zohomail.com with SMTPS id 149550100554689.77321959574283;
-	Mon, 22 May 2017 17:56:45 -0700 (PDT)
-In-Reply-To: <1da30c06-46bd-47fa-b0ef-886ea9ab84e5@ONE.local>
-Message-ID: <149550100498.1035.202486928967568753@c05f1edc8ed1>
+	(envelope-from <flypie@rocketmail.com>) id 1dCyz3-0002UT-HM
+	for qemu-devel@nongnu.org; Mon, 22 May 2017 21:51:41 -0400
+Received: from nm38-vm8.bullet.mail.ir2.yahoo.com ([212.82.97.158]:55004)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_ARCFOUR_SHA1:16) (Exim 4.71)
+	(envelope-from <flypie@rocketmail.com>) id 1dCyz3-0002UN-3B
+	for qemu-devel@nongnu.org; Mon, 22 May 2017 21:51:37 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=rocketmail.com; s=s2048;
+	t=1495504295; bh=+rFl87kmDerctivNqjQIrJkKOx6qJ2kooHT4acvbxtI=;
+	h=Date:From:CC:To:Subject:From:Subject;
+	b=HWHidvA6OjOXCxg26f6jlPAQCDejhfyHxjchuIQCUUGLUTZeo2tAN47zLyMYWu60i3UMX3pRSHm6dOyDC7phciBahDjMA0gUfx5jewJrg6NZB15qaHPv8YjBtmvJ+s0xltjfHFgfEQ6mMBodD6HyelTpYTlyDwRFp34iADmwbGmMsXaKdHIJc7gyks8HRtVf9R07LzvNhbxalLflBO/YnpskOocQILbcYAXRySl+/7fHku23JGP6hoQcjxRLBEeU1g8RZhInKFxmwGnXKijigtHVZVIRkSkBItKYtd1rbpZXSOjVakjbaGJ8kFNCRQaoifPxb4DYhr4VVhKBpQEtfQ==
+Received: from [212.82.98.52] by nm38.bullet.mail.ir2.yahoo.com with NNFMP;
+	23 May 2017 01:51:35 -0000
+Received: from [46.228.39.107] by tm5.bullet.mail.ir2.yahoo.com with NNFMP;
+	23 May 2017 01:51:35 -0000
+Received: from [127.0.0.1] by smtp144.mail.ir2.yahoo.com with NNFMP;
+	23 May 2017 01:51:35 -0000
+X-Yahoo-Newman-Id: 837729.54934.bm@smtp144.mail.ir2.yahoo.com
+X-Yahoo-Newman-Property: ymail-3
+X-YMail-OSG: Mctdqz0VM1mkfpRs4j0emakp4NnrJH8FlrTK6UkNidVqzqz
+	n9XF7c8hhRyrzf5XHx2G4m.CERh_Rmc7E1hkZ4k_ZY0wnCSM5d3EcrY61tsr
+	VHWHrcBmOQae8NVBXTehDu5W0vJP.Np_9NCj.u0mLohJhiQLItDfdG7l17Ov
+	MSprQsHlRm9VfSxI0kqUCuctlZZYL42dhaB1g4hj_WsaEaGnvgcEjT4ZQoMg
+	mh4Lvs2L0BxnazLqnVsShQCAgjA4xUA1clXklmFBNauXU.i14lBOGz9zRAgV
+	BvIPmOzNfVgzN0I.32meUbprALWbdUZiSLFOHB49OrhRyfCjrjcpxfcdsnV7
+	aNBsIAnOcqdre514N3tXNvwCQArKY9tNLQrxolSIhMlwkaaHfYV2qTi7KH1b
+	5NJ66pZ8eZxtpFqU6_kYytYG.8zBYXAC2ksvoQu2qRfoDzKiAbEQbg2Ql.Pz
+	6Ck2Ca.oMkuqJlsrTu_24ChFBviLdatDptycoU8eru5DLbMdEhzHQrUTfW3A
+	2j0h.WsGy83lVIgqmzmjzx8rJRyX7N4f.VeGYpRh8.Zd7ty.RnubWo5I.Idh
+	zTKlCHZpyhHDFtZ.d
+X-Yahoo-SMTP: Zay5iG2swBBwBjVsWquSqCXzMrQnnj5rR6LdlZsQ7MCyug--
+Date: Tue, 23 May 2017 02:51:34 +0000
+To: <qemu-devel@nongnu.org>
+Message-ID: <dde6f82b-d997-4645-b75e-61b80d76594b@ONE.local>
+X-Mailer: TortoiseGit
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Resent-From: 
-From: no-reply@patchew.org
-To: qemu-devel@nongnu.org
-Date: Mon, 22 May 2017 17:56:45 -0700 (PDT)
-X-ZohoMailClient: External
+Content-Type: text/plain; 
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
-X-Received-From: 135.84.80.217
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH] Add code to connect to external
- panel, for ARM
-X-BeenThere: qemu-arm@nongnu.org
+X-Received-From: 212.82.97.158
+Subject: [Qemu-devel] [PATCH V2] Add code to connect to external panel,
+ for ARM
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: qemu-devel@nongnu.org
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+From: John Bradley via Qemu-devel <qemu-devel@nongnu.org>
+Reply-To: John Bradley <flypie@rocketmail.com>
 Cc: flypie@rocketmail.com, peter.maydell@linaro.org, qemu-arm@nongnu.org,
-	famz@redhat.com, qemu-devel@nongnu.org
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ZNncEFAHrLwm
+	qemu-devel@nongnu.org
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: n0tNqXIhnL0i
 
-SGksCgpUaGlzIHNlcmllcyBzZWVtcyB0byBoYXZlIHNvbWUgY29kaW5nIHN0eWxlIHByb2JsZW1z
-LiBTZWUgb3V0cHV0IGJlbG93IGZvcgptb3JlIGluZm9ybWF0aW9uOgoKVHlwZTogc2VyaWVzClN1
-YmplY3Q6IFtRZW11LWRldmVsXSBbUEFUQ0hdIEFkZCBjb2RlIHRvIGNvbm5lY3QgdG8gZXh0ZXJu
-YWwgcGFuZWwsIGZvciBBUk0KTWVzc2FnZS1pZDogMWRhMzBjMDYtNDZiZC00N2ZhLWIwZWYtODg2
-ZWE5YWI4NGU1QE9ORS5sb2NhbAoKPT09IFRFU1QgU0NSSVBUIEJFR0lOID09PQojIS9iaW4vYmFz
-aAoKQkFTRT1iYXNlCm49MQp0b3RhbD0kKGdpdCBsb2cgLS1vbmVsaW5lICRCQVNFLi4gfCB3YyAt
-bCkKZmFpbGVkPTAKCmdpdCBjb25maWcgLS1sb2NhbCBkaWZmLnJlbmFtZWxpbWl0IDAKZ2l0IGNv
-bmZpZyAtLWxvY2FsIGRpZmYucmVuYW1lcyBUcnVlCgpjb21taXRzPSIkKGdpdCBsb2cgLS1mb3Jt
-YXQ9JUggLS1yZXZlcnNlICRCQVNFLi4pIgpmb3IgYyBpbiAkY29tbWl0czsgZG8KICAgIGVjaG8g
-IkNoZWNraW5nIFBBVENIICRuLyR0b3RhbDogJChnaXQgbG9nIC1uIDEgLS1mb3JtYXQ9JXMgJGMp
-Li4uIgogICAgaWYgISBnaXQgc2hvdyAkYyAtLWZvcm1hdD1lbWFpbCB8IC4vc2NyaXB0cy9jaGVj
-a3BhdGNoLnBsIC0tbWFpbGJhY2sgLTsgdGhlbgogICAgICAgIGZhaWxlZD0xCiAgICAgICAgZWNo
-bwogICAgZmkKICAgIG49JCgobisxKSkKZG9uZQoKZXhpdCAkZmFpbGVkCj09PSBURVNUIFNDUklQ
-VCBFTkQgPT09CgpVcGRhdGluZyAzYzhjZjVhOWMyMWZmODc4MjE2NGQxZGVmN2Y0NGJkODg4NzEz
-Mzg0ClN3aXRjaGVkIHRvIGEgbmV3IGJyYW5jaCAndGVzdCcKZDllN2U2YiBBZGQgY29kZSB0byBj
-b25uZWN0IHRvIGV4dGVybmFsIHBhbmVsLCBmb3IgQVJNCgo9PT0gT1VUUFVUIEJFR0lOID09PQpD
-aGVja2luZyBQQVRDSCAxLzE6IEFkZCBjb2RlIHRvIGNvbm5lY3QgdG8gZXh0ZXJuYWwgcGFuZWws
-IGZvciBBUk0uLi4KV0FSTklORzogbGluZSBvdmVyIDgwIGNoYXJhY3RlcnMKIzE2OTogRklMRTog
-aHcvYXJtL2JjbTI4MzVfcGVyaXBoZXJhbHMuYzozMDc6CisgICAgbWVtb3J5X3JlZ2lvbl9hZGRf
-c3VicmVnaW9uKCZzLT5tYm94X21yLCBNQk9YX0NIQU5fUE9XRVIgPDwgTUJPWF9BU19DSEFOX1NI
-SUZULAoKRVJST1I6IHNwYWNlcyByZXF1aXJlZCBhcm91bmQgdGhhdCAnPScgKGN0eDpWeFYpCiMx
-ODI6IEZJTEU6IGh3L2FybS9iY20yODM1X3BlcmlwaGVyYWxzLmM6NDQ0OgorICAgIGRjLT51c2Vy
-X2NyZWF0YWJsZT1mYWxzZTsKICAgICAgICAgICAgICAgICAgICAgICBeCgpXQVJOSU5HOiBsaW5l
-IG92ZXIgODAgY2hhcmFjdGVycwojNDUwOiBGSUxFOiBody9ncGlvL2JjbTI4MzVfZ3Bpby5jOjM5
-NzoKKyAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAuaW5zdGFuY2Vf
-c2l6ZSA9IHNpemVvZihCQ00yODM1R3Bpb1N0YXRlKSwKCldBUk5JTkc6IGxpbmUgb3ZlciA4MCBj
-aGFyYWN0ZXJzCiM0NTI6IEZJTEU6IGh3L2dwaW8vYmNtMjgzNV9ncGlvLmM6Mzk5OgorICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIC5jbGFzc19pbml0ID0gYmNtMjgz
-NV9ncGlvX2NsYXNzX2luaXQsCgpXQVJOSU5HOiBhcmNoaXRlY3R1cmUgc3BlY2lmaWMgZGVmaW5l
-cyBzaG91bGQgYmUgYXZvaWRlZAojNTAwOiBGSUxFOiBpbmNsdWRlL3FlbXUvUGFuZWxFbXUuaDox
-NzoKKyNpZmRlZiBfX2NwbHVzcGx1cwoKRVJST1I6IGNvZGUgaW5kZW50IHNob3VsZCBuZXZlciB1
-c2UgdGFicwojNTE3OiBGSUxFOiBpbmNsdWRlL3FlbXUvUGFuZWxFbXUuaDozNDoKK15JICAgICAg
-ICAgICAgICAgICAgICAgICB1bmxlc3Mgc29tZXRoaW5nIGNoYW5nZWQgKi8kCgpXQVJOSU5HOiBh
-cmNoaXRlY3R1cmUgc3BlY2lmaWMgZGVmaW5lcyBzaG91bGQgYmUgYXZvaWRlZAojNTMxOiBGSUxF
-OiBpbmNsdWRlL3FlbXUvUGFuZWxFbXUuaDo0ODoKKyNpZmRlZiBfX2NwbHVzcGx1cwoKV0FSTklO
-RzogYXJjaGl0ZWN0dXJlIHNwZWNpZmljIGRlZmluZXMgc2hvdWxkIGJlIGF2b2lkZWQKIzU1NTog
-RklMRTogdXRpbC9QYW5lbEVtdS5jOjEzOgorI2lmZGVmIF9fTUlOR1czMl9fCgpXQVJOSU5HOiBh
-cmNoaXRlY3R1cmUgc3BlY2lmaWMgZGVmaW5lcyBzaG91bGQgYmUgYXZvaWRlZAojNjg2OiBGSUxF
-OiB1dGlsL1BhbmVsRW11LmM6MTQ0OgorI2lmZGVmIF9fTUlOR1czMl9fCgpFUlJPUjogc3BhY2Ug
-cmVxdWlyZWQgYWZ0ZXIgdGhhdCAnLCcgKGN0eDpWeFYpCiM3MTA6IEZJTEU6IHV0aWwvUGFuZWxF
-bXUuYzoxNjg6CisgICAgaW50IGksajsKICAgICAgICAgIF4KCldBUk5JTkc6IGFyY2hpdGVjdHVy
-ZSBzcGVjaWZpYyBkZWZpbmVzIHNob3VsZCBiZSBhdm9pZGVkCiM3ODA6IEZJTEU6IHV0aWwvUGFu
-ZWxFbXUuYzoyMzg6CisjaWZkZWYgX19NSU5HVzMyX18KCldBUk5JTkc6IGFyY2hpdGVjdHVyZSBz
-cGVjaWZpYyBkZWZpbmVzIHNob3VsZCBiZSBhdm9pZGVkCiM4MDA6IEZJTEU6IHV0aWwvUGFuZWxF
-bXUuYzoyNTg6CisjaWZkZWYgX19NSU5HVzMyX18KCldBUk5JTkc6IGFyY2hpdGVjdHVyZSBzcGVj
-aWZpYyBkZWZpbmVzIHNob3VsZCBiZSBhdm9pZGVkCiM4MDg6IEZJTEU6IHV0aWwvUGFuZWxFbXUu
-YzoyNjY6CisjaWZkZWYgX19NSU5HVzMyX18KCldBUk5JTkc6IGFyY2hpdGVjdHVyZSBzcGVjaWZp
-YyBkZWZpbmVzIHNob3VsZCBiZSBhdm9pZGVkCiM4MTc6IEZJTEU6IHV0aWwvUGFuZWxFbXUuYzoy
-NzU6CisjaWZkZWYgX19NSU5HVzMyX18KCldBUk5JTkc6IGFyY2hpdGVjdHVyZSBzcGVjaWZpYyBk
-ZWZpbmVzIHNob3VsZCBiZSBhdm9pZGVkCiM4MjU6IEZJTEU6IHV0aWwvUGFuZWxFbXUuYzoyODM6
-CisjaWZkZWYgX19NSU5HVzMyX18KCldBUk5JTkc6IGFyY2hpdGVjdHVyZSBzcGVjaWZpYyBkZWZp
-bmVzIHNob3VsZCBiZSBhdm9pZGVkCiM4Mzk6IEZJTEU6IHV0aWwvUGFuZWxFbXUuYzoyOTc6Cisj
-aWZkZWYgX19NSU5HVzMyX18KCldBUk5JTkc6IGFyY2hpdGVjdHVyZSBzcGVjaWZpYyBkZWZpbmVz
-IHNob3VsZCBiZSBhdm9pZGVkCiM4NTY6IEZJTEU6IHV0aWwvUGFuZWxFbXUuYzozMTQ6CisjaWZk
-ZWYgX19NSU5HVzMyX18KCldBUk5JTkc6IGFyY2hpdGVjdHVyZSBzcGVjaWZpYyBkZWZpbmVzIHNo
-b3VsZCBiZSBhdm9pZGVkCiM4NjQ6IEZJTEU6IHV0aWwvUGFuZWxFbXUuYzozMjI6CisjaWZkZWYg
-X19NSU5HVzMyX18KCnRvdGFsOiAzIGVycm9ycywgMTUgd2FybmluZ3MsIDc5NCBsaW5lcyBjaGVj
-a2VkCgpZb3VyIHBhdGNoIGhhcyBzdHlsZSBwcm9ibGVtcywgcGxlYXNlIHJldmlldy4gIElmIGFu
-eSBvZiB0aGVzZSBlcnJvcnMKYXJlIGZhbHNlIHBvc2l0aXZlcyByZXBvcnQgdGhlbSB0byB0aGUg
-bWFpbnRhaW5lciwgc2VlCkNIRUNLUEFUQ0ggaW4gTUFJTlRBSU5FUlMuCgo9PT0gT1VUUFVUIEVO
-RCA9PT0KClRlc3QgY29tbWFuZCBleGl0ZWQgd2l0aCBjb2RlOiAxCgoKLS0tCkVtYWlsIGdlbmVy
-YXRlZCBhdXRvbWF0aWNhbGx5IGJ5IFBhdGNoZXcgW2h0dHA6Ly9wYXRjaGV3Lm9yZy9dLgpQbGVh
-c2Ugc2VuZCB5b3VyIGZlZWRiYWNrIHRvIHBhdGNoZXctZGV2ZWxAZnJlZWxpc3RzLm9yZw==
+From 5f5c186162ef5f56872095318106e9fe360ae310 Mon Sep 17 00:00:00 2001
+From: John Bradley <flypie@rocketmail.com>
+Date: Tue, 23 May 2017 01:43:32 +0100
+Subject: [PATCH] Add code to connect to external panel, for ARM
+
+Has no effect if panel not found.
+
+GDummyPanel Fix formating issues.
+
+Add inital discussion of protocol version.
+
+Add code to connect with https://github.com/flypie/GDummyPanel The code uses GNU Sockets & Windows
+sockets as on MINGW GNU no available. This is inteded as a Demo for RFC.
+
+
+Signed-off-by: John Bradley <flypie@rocketmail.com>
+---
+ hw/gpio/bcm2835_gpio.c         | 136 +++++++++++------
+ include/hw/gpio/bcm2835_gpio.h |   4 +
+ include/qemu/PanelEmu.h        |  53 +++++++
+ util/Makefile.objs             |   1 +
+ util/PanelEmu.c                | 326 +++++++++++++++++++++++++++++++++++++++++
+ 5 files changed, 479 insertions(+), 41 deletions(-)
+ create mode 100644 include/qemu/PanelEmu.h
+ create mode 100644 util/PanelEmu.c
+
+diff --git a/hw/gpio/bcm2835_gpio.c b/hw/gpio/bcm2835_gpio.c
+index acc2e3cf9e..5df3f4cddf 100644
+--- a/hw/gpio/bcm2835_gpio.c
++++ b/hw/gpio/bcm2835_gpio.c
+@@ -19,6 +19,8 @@
+ #include "hw/sd/sd.h"
+ #include "hw/gpio/bcm2835_gpio.h"
+ 
++
++
+ #define GPFSEL0   0x00
+ #define GPFSEL1   0x04
+ #define GPFSEL2   0x08
+@@ -75,24 +77,24 @@ static void gpfsel_set(BCM2835GpioState *s, uint8_t reg, uint32_t value)
+ 
+     /* SD controller selection (48-53) */
+     if (s->sd_fsel != 0
+-            && (s->fsel[48] == 0) /* SD_CLK_R */
+-            && (s->fsel[49] == 0) /* SD_CMD_R */
+-            && (s->fsel[50] == 0) /* SD_DATA0_R */
+-            && (s->fsel[51] == 0) /* SD_DATA1_R */
+-            && (s->fsel[52] == 0) /* SD_DATA2_R */
+-            && (s->fsel[53] == 0) /* SD_DATA3_R */
+-            ) {
++        && (s->fsel[48] == 0) /* SD_CLK_R */
++        && (s->fsel[49] == 0) /* SD_CMD_R */
++        && (s->fsel[50] == 0) /* SD_DATA0_R */
++        && (s->fsel[51] == 0) /* SD_DATA1_R */
++        && (s->fsel[52] == 0) /* SD_DATA2_R */
++        && (s->fsel[53] == 0) /* SD_DATA3_R */
++        ) {
+         /* SDHCI controller selected */
+         sdbus_reparent_card(s->sdbus_sdhost, s->sdbus_sdhci);
+         s->sd_fsel = 0;
+     } else if (s->sd_fsel != 4
+-            && (s->fsel[48] == 4) /* SD_CLK_R */
+-            && (s->fsel[49] == 4) /* SD_CMD_R */
+-            && (s->fsel[50] == 4) /* SD_DATA0_R */
+-            && (s->fsel[51] == 4) /* SD_DATA1_R */
+-            && (s->fsel[52] == 4) /* SD_DATA2_R */
+-            && (s->fsel[53] == 4) /* SD_DATA3_R */
+-            ) {
++               && (s->fsel[48] == 4) /* SD_CLK_R */
++               && (s->fsel[49] == 4) /* SD_CMD_R */
++               && (s->fsel[50] == 4) /* SD_DATA0_R */
++               && (s->fsel[51] == 4) /* SD_DATA1_R */
++               && (s->fsel[52] == 4) /* SD_DATA2_R */
++               && (s->fsel[53] == 4) /* SD_DATA3_R */
++               ) {
+         /* SDHost controller selected */
+         sdbus_reparent_card(s->sdbus_sdhci, s->sdbus_sdhost);
+         s->sd_fsel = 4;
+@@ -108,7 +110,7 @@ static int gpfsel_is_out(BCM2835GpioState *s, int index)
+ }
+ 
+ static void gpset(BCM2835GpioState *s,
+-        uint32_t val, uint8_t start, uint8_t count, uint32_t *lev)
++                  uint32_t val, uint8_t start, uint8_t count, uint32_t *lev)
+ {
+     uint32_t changes = val & ~*lev;
+     uint32_t cur = 1;
+@@ -125,7 +127,7 @@ static void gpset(BCM2835GpioState *s,
+ }
+ 
+ static void gpclr(BCM2835GpioState *s,
+-        uint32_t val, uint8_t start, uint8_t count, uint32_t *lev)
++                  uint32_t val, uint8_t start, uint8_t count, uint32_t *lev)
+ {
+     uint32_t changes = val & *lev;
+     uint32_t cur = 1;
+@@ -141,11 +143,12 @@ static void gpclr(BCM2835GpioState *s,
+     *lev &= ~val;
+ }
+ 
+-static uint64_t bcm2835_gpio_read(void *opaque, hwaddr offset,
+-        unsigned size)
++static uint64_t bcm2835_gpio_read(void *opaque, hwaddr offset, unsigned size)
+ {
+     BCM2835GpioState *s = (BCM2835GpioState *)opaque;
+ 
++    uint64_t Data;
++
+     switch (offset) {
+     case GPFSEL0:
+     case GPFSEL1:
+@@ -163,8 +166,20 @@ static uint64_t bcm2835_gpio_read(void *opaque, hwaddr offset,
+         /* Write Only */
+         return 0;
+     case GPLEV0:
++        if (s->panel.socket != -1) {
++            if (panel_read(&s->panel, &Data)) {
++                s->lev0 = (uint32_t)Data;
++                s->lev1 = (uint32_t)(Data >> 32);
++            }
++        }
+         return s->lev0;
+     case GPLEV1:
++        if (s->panel.socket != -1) {
++            if (panel_read(&s->panel, &Data)) {
++                s->lev0 = (uint32_t)Data;
++                s->lev1 = (uint32_t)(Data >> 32);
++            }
++        }
+         return s->lev1;
+     case GPEDS0:
+     case GPEDS1:
+@@ -187,7 +202,7 @@ static uint64_t bcm2835_gpio_read(void *opaque, hwaddr offset,
+         return 0;
+     default:
+         qemu_log_mask(LOG_GUEST_ERROR, "%s: Bad offset %"HWADDR_PRIx"\n",
+-                __func__, offset);
++                      __func__, offset);
+         break;
+     }
+ 
+@@ -195,9 +210,11 @@ static uint64_t bcm2835_gpio_read(void *opaque, hwaddr offset,
+ }
+ 
+ static void bcm2835_gpio_write(void *opaque, hwaddr offset,
+-        uint64_t value, unsigned size)
++                               uint64_t value, unsigned size)
+ {
+     BCM2835GpioState *s = (BCM2835GpioState *)opaque;
++    uint64_t Data;
++
+ 
+     switch (offset) {
+     case GPFSEL0:
+@@ -210,15 +227,37 @@ static void bcm2835_gpio_write(void *opaque, hwaddr offset,
+         break;
+     case GPSET0:
+         gpset(s, value, 0, 32, &s->lev0);
++        if (s->panel.socket != -1) {
++            Data = value;
++            /* John Bradley dummy GPIO Panel */
++            senddatatopanel(&s->panel, Data, true);
++        }
+         break;
+     case GPSET1:
+         gpset(s, value, 32, 22, &s->lev1);
++        if (s->panel.socket != -1) {
++            Data = value;
++            Data <<= 32;
++            /* John Bradley dummy GPIO Panel */
++            senddatatopanel(&s->panel, Data, true);
++        }
+         break;
+     case GPCLR0:
+         gpclr(s, value, 0, 32, &s->lev0);
++        if (s->panel.socket != -1) {
++            Data = value;
++            /* John Bradley dummy GPIO Panel */
++            senddatatopanel(&s->panel, Data, false);
++        }
+         break;
+     case GPCLR1:
+         gpclr(s, value, 32, 22, &s->lev1);
++        if (s->panel.socket != -1) {
++            Data = value;
++            Data <<= 32;
++            /* John Bradley dummy GPIO Panel */
++            senddatatopanel(&s->panel, Data, false);
++        }
+         break;
+     case GPLEV0:
+     case GPLEV1:
+@@ -250,7 +289,7 @@ static void bcm2835_gpio_write(void *opaque, hwaddr offset,
+ 
+ err_out:
+     qemu_log_mask(LOG_GUEST_ERROR, "%s: Bad offset %"HWADDR_PRIx"\n",
+-            __func__, offset);
++                  __func__, offset);
+ }
+ 
+ static void bcm2835_gpio_reset(DeviceState *dev)
+@@ -272,21 +311,22 @@ static void bcm2835_gpio_reset(DeviceState *dev)
+ }
+ 
+ static const MemoryRegionOps bcm2835_gpio_ops = {
+-    .read = bcm2835_gpio_read,
+-    .write = bcm2835_gpio_write,
+-    .endianness = DEVICE_NATIVE_ENDIAN,
++        .read = bcm2835_gpio_read,
++        .write = bcm2835_gpio_write,
++        .endianness = DEVICE_NATIVE_ENDIAN,
+ };
+ 
+ static const VMStateDescription vmstate_bcm2835_gpio = {
+-    .name = "bcm2835_gpio",
+-    .version_id = 1,
+-    .minimum_version_id = 1,
+-    .fields = (VMStateField[]) {
+-        VMSTATE_UINT8_ARRAY(fsel, BCM2835GpioState, 54),
+-        VMSTATE_UINT32(lev0, BCM2835GpioState),
+-        VMSTATE_UINT32(lev1, BCM2835GpioState),
+-        VMSTATE_UINT8(sd_fsel, BCM2835GpioState),
+-        VMSTATE_END_OF_LIST()
++        .name = "bcm2835_gpio",
++        .version_id = 1,
++        .minimum_version_id = 1,
++        .fields = (VMStateField[])
++    {
++     VMSTATE_UINT8_ARRAY(fsel, BCM2835GpioState, 54),
++     VMSTATE_UINT32(lev0, BCM2835GpioState),
++     VMSTATE_UINT32(lev1, BCM2835GpioState),
++     VMSTATE_UINT8(sd_fsel, BCM2835GpioState),
++     VMSTATE_END_OF_LIST()
+     }
+ };
+ 
+@@ -300,9 +340,23 @@ static void bcm2835_gpio_init(Object *obj)
+                         TYPE_SD_BUS, DEVICE(s), "sd-bus");
+ 
+     memory_region_init_io(&s->iomem, obj,
+-            &bcm2835_gpio_ops, s, "bcm2835_gpio", 0x1000);
++                          &bcm2835_gpio_ops, s, "bcm2835_gpio", 0x1000);
+     sysbus_init_mmio(sbd, &s->iomem);
+     qdev_init_gpio_out(dev, s->out, 54);
++
++    /* Get access to the GPIO panel, program will quit on fail */
++    if (panel_open(&s->panel)) {
++        /* PI Has 54 Pins */
++        sendpincount(&s->panel, 54);
++        /* Pins 0 & 1 are I2C so disable */
++        sendenabledmap(&s->panel, 0x003FFFFFFFFFFFFC);
++        /* There are no dedicated input pins I know of */
++        sendinputmap(&s->panel, 0x0000000000000000);
++        /* Pin 53 is dedicated output LED */
++        sendoutputmap(&s->panel, 0x0000800000000000);
++    } else {
++        printf("Couldn't connect to a GPIO panel\n");
++    }
+ }
+ 
+ static void bcm2835_gpio_realize(DeviceState *dev, Error **errp)
+@@ -314,7 +368,7 @@ static void bcm2835_gpio_realize(DeviceState *dev, Error **errp)
+     obj = object_property_get_link(OBJECT(dev), "sdbus-sdhci", &err);
+     if (obj == NULL) {
+         error_setg(errp, "%s: required sdhci link not found: %s",
+-                __func__, error_get_pretty(err));
++                   __func__, error_get_pretty(err));
+         return;
+     }
+     s->sdbus_sdhci = SD_BUS(obj);
+@@ -322,7 +376,7 @@ static void bcm2835_gpio_realize(DeviceState *dev, Error **errp)
+     obj = object_property_get_link(OBJECT(dev), "sdbus-sdhost", &err);
+     if (obj == NULL) {
+         error_setg(errp, "%s: required sdhost link not found: %s",
+-                __func__, error_get_pretty(err));
++                   __func__, error_get_pretty(err));
+         return;
+     }
+     s->sdbus_sdhost = SD_BUS(obj);
+@@ -338,11 +392,11 @@ static void bcm2835_gpio_class_init(ObjectClass *klass, void *data)
+ }
+ 
+ static const TypeInfo bcm2835_gpio_info = {
+-    .name          = TYPE_BCM2835_GPIO,
+-    .parent        = TYPE_SYS_BUS_DEVICE,
+-    .instance_size = sizeof(BCM2835GpioState),
+-    .instance_init = bcm2835_gpio_init,
+-    .class_init    = bcm2835_gpio_class_init,
++                                           .name = TYPE_BCM2835_GPIO,
++                                           .parent = TYPE_SYS_BUS_DEVICE,
++                                           .instance_size = sizeof(BCM2835GpioState),
++                                           .instance_init = bcm2835_gpio_init,
++                                           .class_init = bcm2835_gpio_class_init,
+ };
+ 
+ static void bcm2835_gpio_register_types(void)
+diff --git a/include/hw/gpio/bcm2835_gpio.h b/include/hw/gpio/bcm2835_gpio.h
+index 9f8e0c720c..f7d7c79aa2 100644
+--- a/include/hw/gpio/bcm2835_gpio.h
++++ b/include/hw/gpio/bcm2835_gpio.h
+@@ -15,6 +15,7 @@
+ #define BCM2835_GPIO_H
+ 
+ #include "hw/sd/sd.h"
++#include "qemu/PanelEmu.h"
+ 
+ typedef struct BCM2835GpioState {
+     SysBusDevice parent_obj;
+@@ -30,6 +31,9 @@ typedef struct BCM2835GpioState {
+     uint32_t lev0, lev1;
+     uint8_t sd_fsel;
+     qemu_irq out[54];
++
++    panel_connection_t panel;
++
+ } BCM2835GpioState;
+ 
+ #define TYPE_BCM2835_GPIO "bcm2835_gpio"
+diff --git a/include/qemu/PanelEmu.h b/include/qemu/PanelEmu.h
+new file mode 100644
+index 0000000000..1d97a80492
+--- /dev/null
++++ b/include/qemu/PanelEmu.h
+@@ -0,0 +1,53 @@
++/*
++ * To change this license header, choose License Headers in Project Properties.
++ * To change this template file, choose Tools | Templates
++ * and open the template in the editor.
++ */
++
++/*
++ * File:   PanelEmu.h
++ * Author: John Bradley
++ *
++ * Created on 22 April 2017, 22:26
++ */
++
++#ifndef PANELEMU_H
++#define PANELEMU_H
++
++#ifdef __cplusplus
++extern "C" {
++#endif
++
++
++#define DRIVER_NAME "RDC-GPIO: "
++#define PANEL_NAME "GPIO panel: "
++
++
++#define DEFAULT_PORT 0xb1ff       /*45567*/
++
++#define PANEL_PINS 54
++
++    typedef struct panel_connection {
++        int socket; /* socket we'll connect to the panel with */
++        fd_set fds; /* list of descriptors (only the above socket */
++        char last[PANEL_PINS / 8]; /* we don't want to send updates to the panel
++                                   unless something changed */
++        int ProtocolInUse; /*What version of the protocol are we using. */
++    } panel_connection_t;
++
++    bool panel_open(panel_connection_t *h);
++
++    bool panel_read(panel_connection_t *h, uint64_t *pinS);
++    void senddatatopanel(panel_connection_t *h, uint64_t pinS, bool Value);
++    void panel_send_read_command(panel_connection_t *h);
++    void sendpincount(panel_connection_t *h, int Num);
++    void sendenabledmap(panel_connection_t *h, uint64_t pins);
++    void sendinputmap(panel_connection_t *h, uint64_t pins);
++    void sendoutputmap(panel_connection_t *h, uint64_t pins);
++
++#ifdef __cplusplus
++}
++#endif
++
++#endif /* PANELEMU_H */
++
+diff --git a/util/Makefile.objs b/util/Makefile.objs
+index c6205ebf86..8316ed79ba 100644
+--- a/util/Makefile.objs
++++ b/util/Makefile.objs
+@@ -43,3 +43,4 @@ util-obj-y += qdist.o
+ util-obj-y += qht.o
+ util-obj-y += range.o
+ util-obj-y += systemd.o
++util-obj-y += PanelEmu.o
+\ No newline at end of file
+diff --git a/util/PanelEmu.c b/util/PanelEmu.c
+new file mode 100644
+index 0000000000..1aa29c6479
+--- /dev/null
++++ b/util/PanelEmu.c
+@@ -0,0 +1,326 @@
++/*
++ * Emulation for Rasp PI GPIO via Server connected to via Socket
++ *
++ */
++#include "qemu/osdep.h"
++
++#include <stdio.h>
++#include <stdlib.h>
++#include <memory.h>
++#include <errno.h>
++#include <string.h>
++#include <sys/types.h>
++#ifdef __MINGW32__
++#include <winsock2.h>
++#else
++#include <sys/socket.h>
++#include <arpa/inet.h>
++#include <netinet/in.h>
++#endif
++
++#include "qemu/PanelEmu.h"
++
++typedef enum {
++    PROTOCOLDESCFROMQEMU = 0,
++    PROTOCOLDESCFROMPANEL = 1,
++    PINSTOPANEL = 2,
++    READREQ = 3,
++    PINCOUNT = 4,
++    ENABLEMAP = 5,
++    INPUTMAP = 6,
++    OUTPUTMAP = 7,
++    PINSTOQEMU = 8
++} PacketType;
++
++#define MINPROTOCOL 0
++#define MAXPROTOCOL 0
++
++#define MAXPACKET   255
++
++#define PACKETLEN   0  /* Includes Packet Length */
++#define PACKETTYPE  1
++
++typedef struct {
++    unsigned short int Data[MAXPACKET];
++} CommandPacket;
++
++static void panel_command(panel_connection_t *h, CommandPacket *Pkt);
++
++static void panel_send_protocol_command(panel_connection_t *h)
++{
++    CommandPacket Pkt;
++
++    Pkt.Data[PACKETLEN] = 8;
++    Pkt.Data[PACKETTYPE] = PROTOCOLDESCFROMQEMU;
++    Pkt.Data[2] = MINPROTOCOL;
++    Pkt.Data[3] = MAXPROTOCOL;
++
++    panel_command(h, &Pkt);
++}
++
++void panel_send_read_command(panel_connection_t *h)
++{
++    CommandPacket Pkt;
++
++    Pkt.Data[PACKETLEN] = 4;
++    Pkt.Data[PACKETTYPE] = READREQ;
++
++    panel_command(h, &Pkt);
++}
++
++/* Set a pin to a specified value */
++void senddatatopanel(panel_connection_t *h, uint64_t pin, bool val)
++{
++    CommandPacket Pkt;
++
++    Pkt.Data[PACKETLEN] = (char *)&Pkt.Data[6 + 1] - (char *)&Pkt.Data[0];
++    Pkt.Data[PACKETTYPE] = PINSTOPANEL;
++    Pkt.Data[2] = (unsigned short int)(pin & 0xFFFF);
++    Pkt.Data[3] = (unsigned short int)((pin >> 16) & 0xFFFF);
++    Pkt.Data[4] = (unsigned short int)(pin >> 32 & 0xFFFF);
++    Pkt.Data[5] = (unsigned short int)((pin >> 48) & 0xFFFF);
++    Pkt.Data[6] = val;
++
++    panel_command(h, &Pkt);
++}
++
++void sendpincount(panel_connection_t *h, int val)
++{
++    CommandPacket Pkt;
++
++    Pkt.Data[PACKETLEN] = (char *)&Pkt.Data[2 + 1] - (char *)&Pkt.Data[0];
++    Pkt.Data[PACKETTYPE] = PINCOUNT;
++    Pkt.Data[2] = val;
++
++    panel_command(h, &Pkt);
++}
++
++void sendenabledmap(panel_connection_t *h, uint64_t pin)
++{
++    CommandPacket Pkt;
++
++    Pkt.Data[PACKETLEN] = (char *)&Pkt.Data[5 + 1] - (char *)&Pkt.Data[0];
++    Pkt.Data[PACKETTYPE] = ENABLEMAP;
++    Pkt.Data[2] = (unsigned short int)(pin & 0xFFFF);
++    Pkt.Data[3] = (unsigned short int)((pin >> 16) & 0xFFFF);
++    Pkt.Data[4] = (unsigned short int)(pin >> 32 & 0xFFFF);
++    Pkt.Data[5] = (unsigned short int)((pin >> 48) & 0xFFFF);
++
++    panel_command(h, &Pkt);
++}
++
++void sendinputmap(panel_connection_t *h, uint64_t pin)
++{
++    CommandPacket Pkt;
++
++    Pkt.Data[PACKETLEN] = (char *)&Pkt.Data[5 + 1] - (char *)&Pkt.Data[0];
++    Pkt.Data[PACKETTYPE] = INPUTMAP;
++    Pkt.Data[2] = (unsigned short int)(pin & 0xFFFF);
++    Pkt.Data[3] = (unsigned short int)((pin >> 16) & 0xFFFF);
++    Pkt.Data[4] = (unsigned short int)(pin >> 32 & 0xFFFF);
++    Pkt.Data[5] = (unsigned short int)((pin >> 48) & 0xFFFF);
++
++    panel_command(h, &Pkt);
++}
++
++void sendoutputmap(panel_connection_t *h, uint64_t pin)
++{
++    CommandPacket Pkt;
++
++    Pkt.Data[PACKETLEN] = (char *)&Pkt.Data[5 + 1] - (char *)&Pkt.Data[0];
++    Pkt.Data[PACKETTYPE] = OUTPUTMAP;
++    Pkt.Data[2] = (unsigned short int)(pin & 0xFFFF);
++    Pkt.Data[3] = (unsigned short int)((pin >> 16) & 0xFFFF);
++    Pkt.Data[4] = (unsigned short int)(pin >> 32 & 0xFFFF);
++    Pkt.Data[5] = (unsigned short int)((pin >> 48) & 0xFFFF);
++
++    panel_command(h, &Pkt);
++}
++
++static void panel_command(panel_connection_t *h, CommandPacket *Pkt)
++{
++    if (send(h->socket, (char *)Pkt, Pkt->Data[PACKETLEN], 0) == -1) {
++        perror(PANEL_NAME "send");
++#ifdef __MINGW32__
++        closesocket(h->socket);
++#else
++        close(h->socket);
++#endif
++        h->socket = -1; /* act like we never connected */
++    }
++}
++
++/* Wait for values to be read back from panel */
++bool panel_read(panel_connection_t *h, uint64_t* Data)
++{
++    fd_set rfds, efds;
++    int LengthInBuffer;
++    int select_res = 0;
++
++    CommandPacket *PktPtr = (CommandPacket *)malloc(sizeof(CommandPacket));
++    CommandPacket *Pkt;
++    bool NoError = true;
++    bool NewData = false;
++    bool NoData = false;
++    struct timeval timeout;
++
++    int ReadStart = 0;
++    int i , j;
++
++    timeout.tv_sec = 0;
++    timeout.tv_usec = 0;
++
++    if (h->socket != -1) {
++        rfds = h->fds;
++        efds = h->fds;
++
++        Pkt = PktPtr;
++        while (NoError && !NoData) {
++            select_res = select(h->socket + 1, &rfds, NULL, &efds, &timeout);
++            if (select_res > 0) {
++                if (FD_ISSET(h->socket, &rfds)) {
++                    /* receive more data */
++                    LengthInBuffer = recv(h->socket, (char *)&Pkt[ReadStart],
++                                    sizeof(*Pkt) - ReadStart, 0);
++                    if (LengthInBuffer > 0) {
++                        LengthInBuffer += ReadStart;
++                        for (i = 0; LengthInBuffer > 0; i++) {
++                            if (LengthInBuffer >= Pkt->Data[i + PACKETLEN]) {
++                                switch (Pkt->Data[i + PACKETTYPE]) {
++                                case PINSTOQEMU:
++                                    *Data = (uint64_t)Pkt->Data[i + 2];
++                                    *Data |= ((uint64_t)Pkt->Data[i + 3]) << 16;
++                                    *Data |= ((uint64_t)Pkt->Data[i + 4]) << 32;
++                                    *Data |= ((uint64_t)Pkt->Data[i + 5]) << 48;
++
++                                    NewData = true;
++                                    break;
++
++                                case PROTOCOLDESCFROMPANEL:
++                                    h->ProtocolInUse = (int)Pkt->Data[i + 2];
++                                    if (h->ProtocolInUse != -1) {
++                                        printf(PANEL_NAME "Protocol %d\n",
++                                               h->ProtocolInUse);
++                                    } else {
++                                        printf(PANEL_NAME "No Common Pcol\n");
++                                    }
++                                    break;
++
++                                default:
++                                    printf(PANEL_NAME "Invalid data receive\n");
++                                    break;
++                                }
++                                LengthInBuffer -= Pkt->Data[PACKETLEN];
++                                i += Pkt->Data[PACKETLEN];
++                            } else {
++                                ReadStart = LengthInBuffer;
++                                for (j = 0; j < LengthInBuffer; j++) {
++                                    Pkt->Data[j] = Pkt->Data[i + j];
++                                }
++                                printf(PANEL_NAME "Partial Packet Read");
++                            }
++                        }
++                    } else {
++                        if (LengthInBuffer < 0) {
++                            if (errno != EINTR) {
++                                printf(PANEL_NAME "recv");
++                                NoError = FALSE;
++                            }
++                        } else {
++                            printf(PANEL_NAME "closed connection\n");
++                            NoError = FALSE;
++                        }
++                    }
++                }
++            } else if (select_res == 0) {
++                NoData = true;
++            } else if (errno != EINTR) {
++#ifdef __MINGW32__
++                closesocket(h->socket);
++#else
++                close(h->socket);
++#endif
++                h->socket = -1; /* act like we never connected */
++                perror(PANEL_NAME "select error");
++                NoError = FALSE;
++            }
++        }
++    }
++
++    free(PktPtr);
++
++    return NewData;
++}
++
++bool panel_open(panel_connection_t *h)
++{
++    int rv;
++#ifdef __MINGW32__
++    struct sockaddr_in remote;
++#else
++    struct sockaddr_in remote;
++#endif
++
++    bool returnval = false;
++
++#ifdef __MINGW32__
++    printf("__MINGW32__\n");
++#else
++    printf("NOT __MINGW32__\n");
++#endif
++
++    h->socket = -1;
++    h->ProtocolInUse = -1;
++
++#ifdef __MINGW32__
++    WSADATA wsadata;
++    if (WSAStartup(MAKEWORD(1, 1), &wsadata) == SOCKET_ERROR) {
++        printf("Error creating socket.\n");
++    } else {
++#endif
++        h->socket = socket(AF_INET, SOCK_STREAM, 0);
++        if (h->socket != -1) {
++#ifdef __MINGW32__
++            memset((char *)&remote, 0, sizeof(remote));
++            remote.sin_family = AF_INET;
++            remote.sin_port = htons(DEFAULT_PORT);
++            remote.sin_addr.s_addr = inet_addr("127.0.0.1");
++#else
++            memset((char *)&remote, 0, sizeof(remote));
++            remote.sin_family = AF_INET;
++            remote.sin_port = htons(DEFAULT_PORT);
++            remote.sin_addr.s_addr = inet_addr("127.0.0.1");
++#endif
++            rv = connect(h->socket,
++                            (struct sockaddr *)&remote, sizeof(remote));
++            if (rv != -1) {
++#ifdef __MINGW32__
++                char value = 1;
++                setsockopt(h->socket, IPPROTO_TCP, TCP_NODELAY,
++                           &value, sizeof(value));
++#endif
++                FD_ZERO(&h->fds);
++
++                /* Set our connected socket */
++                FD_SET(h->socket, &h->fds);
++
++                printf(PANEL_NAME "Connected OK %d\n", rv);
++
++                panel_send_protocol_command(h);
++
++                returnval = true;
++            } else {
++                printf(PANEL_NAME "connection Fails %d\n", rv);
++#ifdef __MINGW32__
++                closesocket(h->socket);
++#else
++                close(h->socket);
++#endif
++                h->socket = -1;
++            }
++        }
++#ifdef __MINGW32__
++    }
++#endif
++    return returnval;
++}
+-- 
+2.13.0.windows.1
+
 

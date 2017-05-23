@@ -1,86 +1,83 @@
-Received: by 10.103.124.15 with SMTP id x15csp1865160vsc;
-        Tue, 23 May 2017 07:39:24 -0700 (PDT)
-X-Received: by 10.55.26.153 with SMTP id l25mr28131692qkh.9.1495550364092;
-        Tue, 23 May 2017 07:39:24 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1495550364; cv=none;
+Received: by 10.103.124.15 with SMTP id x15csp1865449vsc;
+        Tue, 23 May 2017 07:40:02 -0700 (PDT)
+X-Received: by 10.200.53.54 with SMTP id y51mr29269513qtb.98.1495550402882;
+        Tue, 23 May 2017 07:40:02 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1495550402; cv=none;
         d=google.com; s=arc-20160816;
-        b=oxgv/7sutffnvEOFMRSJpnjkr8nhUmwtch1SKx2XR4gV5lUP4WOa3wYG1swQu5LSCr
-         FmfZ+ql8a/2nM8bM4hfA0A7Jc9MIKTNZaTcMaKqR5kYnXUFoHeRsqOXtHo5QAAY38MhT
-         ux09Ja+1wBumLhCCvWcG20DcM40hZ/Gi1Fp10zv2ob2NGJrlwgUWPfj8lfGv18Q62zAl
-         4OJYuyv84ODrrFWK2eL/BLbd5eNRhvfpD2ljc0D1VtrtDmv4GHA4iUlEZEjNj+/Snb0B
-         xk8ir5BlW4fa/Si4UZG/j+jERmX5wsGkCdoEQZxd/V6gdNA6wTiMZdtkravW58FOmFI7
-         +X9A==
+        b=nIQtpdInyPcS4vlDXHpK5BhFHr+zFwC3d3Cv4M82Zt3ADVUGSimx/JWcSTgJhmO+4h
+         mlfqarYSE+61BmXBOrbcsvFKkgj7TmPYE/GF86UzFVpJgZfv4viagcYSxG6VRHpYPYdt
+         +5coCAO+2/vBqtmmK1fWcbf9nQ/uDpU+KuKVyc3IDzfW97rs2j05A48H9rCE2EwbTKs0
+         AGSEcYoLaH5ruIl/xaP7VkRdFUjNceBEFAzkQ4OvhDTDGMgzOYnEW9TrvPy3xvb5LOrV
+         5t0BiOgAfY9KyWLOb5fXTVCOWxqWE50yPKT3pvrTG8nise1TWVzyp6AH4pwqAQqi1qh7
+         j2Uw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
-         :message-id:date:to:from:dkim-filter:dmarc-filter
-         :arc-authentication-results;
-        bh=ImbYpNLkfYLoryZQjXSOfpVDhHNUEWTRUu2eIAraFMo=;
-        b=EdBzRqAM2xEDLLpCp0fFQ3d3mhPbezCk/SxATqeahYNYrGVGeYVs4wbDDxozWIVf4G
-         yiiaBo9vcqDifSYHO1xfUO8YWzxPF+HDM1uq4MzXovefS9CHwK/nFpl7jBaXIx0OtswD
-         aHWe6MoR4dYuRHuz+k9BpuK1P6+HR7HfzPYx0mkreNBNLbFGjlx21Mxkm07hLEhhP1cB
-         fXa8JUb1PYwu7G/XuWKVYaHMoEmjv1MFxXmEdVyfmeV/jzLiZnJ3Jbzwsig6ARO03whg
-         2bscFZfQY1bcjw/duxUeMkrN3lkonwJMGkdoEo9CCEzJKtu2jwU6+1n37mrY91quDJab
-         0kcw==
+         :list-unsubscribe:list-id:precedence:subject:message-id:date:to:from
+         :dkim-filter:dmarc-filter:arc-authentication-results;
+        bh=9EY9n+QMLxWbUEetCiCMy16cG4iTmcfKVrHC4nsbjYE=;
+        b=DBj2rDQPRDLgsbPjqGWCBjNPjlQDcqnPSs74ur+xPM6+0cb/yRZXO6CydWQ1oOAtfR
+         gSxp0Ek0Q7Y1OHjkEHQNzqcEXgXrFPi3+TkOHAkiWA8WHx1O+1qet2h6ouOux/260UC0
+         CXtZKTtjhFQP+sPVGNS3rfAaAxJQF35jSHCSWxwsC2QFORiVjWPEUxWEQroyUxoq1Mxw
+         vXD5XTWuUfSxRZioEP0LCZlqtjLl2Br7AvCtHQlDtimL5Lz8RCopNg5ii9ok/kYRKCzP
+         x5cNeYjHqNtvusJT0f6lqG58i3UzTR2gTo33XenGKLsHrVrpwDuncf6vK69tX+hvTyIW
+         sj/g==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id m55si22090298qtf.187.2017.05.23.07.39.23
+        by mx.google.com with ESMTPS id v6si22047763qth.300.2017.05.23.07.40.02
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 23 May 2017 07:39:24 -0700 (PDT)
+        Tue, 23 May 2017 07:40:02 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:49404 helo=lists.gnu.org)
+Received: from localhost ([::1]:49411 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1dDAy3-00006X-I2
-	for alex.bennee@linaro.org; Tue, 23 May 2017 10:39:23 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:48423)
+	id 1dDAyg-0000jo-Cf
+	for alex.bennee@linaro.org; Tue, 23 May 2017 10:40:02 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:48402)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <imammedo@redhat.com>) id 1dDAxe-0008HB-RG
-	for qemu-arm@nongnu.org; Tue, 23 May 2017 10:38:59 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <imammedo@redhat.com>) id 1dDAxd-0002Xr-OP
+	(envelope-from <imammedo@redhat.com>) id 1dDAxd-0008G1-MF
 	for qemu-arm@nongnu.org; Tue, 23 May 2017 10:38:58 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:49066)
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+	(envelope-from <imammedo@redhat.com>) id 1dDAxb-0002Us-DE
+	for qemu-arm@nongnu.org; Tue, 23 May 2017 10:38:57 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:40000)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <imammedo@redhat.com>)
-	id 1dDAxd-0002Wn-DS; Tue, 23 May 2017 10:38:57 -0400
+	id 1dDAxb-0002TK-4P; Tue, 23 May 2017 10:38:55 -0400
 Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
 	[10.5.11.14])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 5391985540;
-	Tue, 23 May 2017 14:38:56 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 5391985540
-Authentication-Results: ext-mx04.extmail.prod.ext.phx2.redhat.com;
+	by mx1.redhat.com (Postfix) with ESMTPS id 0B566C059729;
+	Tue, 23 May 2017 14:38:53 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 0B566C059729
+Authentication-Results: ext-mx08.extmail.prod.ext.phx2.redhat.com;
 	dmarc=none (p=none dis=none) header.from=redhat.com
-Authentication-Results: ext-mx04.extmail.prod.ext.phx2.redhat.com;
+Authentication-Results: ext-mx08.extmail.prod.ext.phx2.redhat.com;
 	spf=pass smtp.mailfrom=imammedo@redhat.com
-DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com 5391985540
+DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com 0B566C059729
 Received: from dell-r430-03.lab.eng.brq.redhat.com
 	(dell-r430-03.lab.eng.brq.redhat.com [10.34.112.60])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id DFBAA7814F;
-	Tue, 23 May 2017 14:38:54 +0000 (UTC)
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 7383F7B5FD;
+	Tue, 23 May 2017 14:38:51 +0000 (UTC)
 From: Igor Mammedov <imammedo@redhat.com>
 To: qemu-devel@nongnu.org
-Date: Tue, 23 May 2017 16:38:47 +0200
-Message-Id: <1495550330-34087-3-git-send-email-imammedo@redhat.com>
-In-Reply-To: <1495550330-34087-1-git-send-email-imammedo@redhat.com>
-References: <1495550330-34087-1-git-send-email-imammedo@redhat.com>
+Date: Tue, 23 May 2017 16:38:45 +0200
+Message-Id: <1495550330-34087-1-git-send-email-imammedo@redhat.com>
 X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.28]);
-	Tue, 23 May 2017 14:38:56 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.32]);
+	Tue, 23 May 2017 14:38:53 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 209.132.183.28
-Subject: [Qemu-arm] [PATCH v2 2/5] numa: move default mapping init to machine
+Subject: [Qemu-arm] [PATCH v2 0/5] numa: code consolidation and fixes
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -97,134 +94,55 @@ Cc: Andrew Jones <drjones@redhat.com>, qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
 	David Gibson <david@gibson.dropbear.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: XFrbNyfd72jD
+X-TUID: iTqNXENPp5kJ
 
-there is no need use cpu_index_to_instance_props() for setting
-default cpu -> node mapping. Generic machine code can do it
-without cpu_index by just enabling already preset defaults
-in possible_cpus.
+changelog since v1:
+  (Eduardo)
+     - user error_abort in numa_cpu_pre_plug()
+     - make default_mapping boolean
+     - redo default mapping detection loop as a combo of for/if
+     - return back lost TODO comment
+     - new patch removing numa_node from generic CPUState
+  - drop silence test patch as it's already in pull req on list
+  - new patch [3/5] to fix missing _PXM/fdt nodes for implicitly mapped CPUs
+  - new patch dropping fallback to node 0
 
-PS:
-as bonus it makes one less user of cpu_index_to_instance_props()
 
-Signed-off-by: Igor Mammedov <imammedo@redhat.com>
----
-v2:
-  - make default_mapping boolean, Eduardo Habkost <ehabkost@redhat.com>
-  - redo default mapping detection loop as a combo of
-    for/if, Eduardo Habkost <ehabkost@redhat.com>
-  - return back lost TODO comment, Eduardo Habkost <ehabkost@redhat.com>
----
- hw/core/machine.c | 33 +++++++++++++++++++++++----------
- numa.c            | 26 --------------------------
- 2 files changed, 23 insertions(+), 36 deletions(-)
+git repo for testing:
+   https://github.com/imammedo/qemu.git cphp_numa_cfg_follow_up_v3_cleanups_v2
 
-diff --git a/hw/core/machine.c b/hw/core/machine.c
-index fd6a436..aaf3cff 100644
---- a/hw/core/machine.c
-+++ b/hw/core/machine.c
-@@ -700,26 +700,39 @@ static char *cpu_slot_to_string(const CPUArchId *cpu)
-     return g_string_free(s, false);
- }
- 
--static void machine_numa_validate(MachineState *machine)
-+static void machine_numa_finish_init(MachineState *machine)
- {
-     int i;
-+    bool default_mapping;
-     GString *s = g_string_new(NULL);
-     MachineClass *mc = MACHINE_GET_CLASS(machine);
-     const CPUArchIdList *possible_cpus = mc->possible_cpu_arch_ids(machine);
- 
-     assert(nb_numa_nodes);
-     for (i = 0; i < possible_cpus->len; i++) {
-+        if (possible_cpus->cpus[i].props.has_node_id) {
-+            break;
-+        }
-+    }
-+    default_mapping = (i == possible_cpus->len);
-+
-+    for (i = 0; i < possible_cpus->len; i++) {
-         const CPUArchId *cpu_slot = &possible_cpus->cpus[i];
- 
--        /* at this point numa mappings are initilized by CLI options
--         * or with default mappings so it's sufficient to list
--         * all not yet mapped CPUs here */
--        /* TODO: make it hard error in future */
-         if (!cpu_slot->props.has_node_id) {
--            char *cpu_str = cpu_slot_to_string(cpu_slot);
--            g_string_append_printf(s, "%sCPU %d [%s]", s->len ? ", " : "", i,
--                                   cpu_str);
--            g_free(cpu_str);
-+            if (default_mapping) {
-+                /* fetch default mapping from board and enable it */
-+                CpuInstanceProperties props = cpu_slot->props;
-+                props.has_node_id = true;
-+                machine_set_cpu_numa_node(machine, &props, &error_fatal);
-+            } else {
-+                /* record slots with not set mapping,
-+                 * TODO: make it hard error in future */
-+                char *cpu_str = cpu_slot_to_string(cpu_slot);
-+                g_string_append_printf(s, "%sCPU %d [%s]",
-+                                       s->len ? ", " : "", i, cpu_str);
-+                g_free(cpu_str);
-+            }
-         }
-     }
-     if (s->len) {
-@@ -737,7 +750,7 @@ void machine_run_board_init(MachineState *machine)
-     MachineClass *machine_class = MACHINE_GET_CLASS(machine);
- 
-     if (nb_numa_nodes) {
--        machine_numa_validate(machine);
-+        machine_numa_finish_init(machine);
-     }
-     machine_class->init(machine);
- }
-diff --git a/numa.c b/numa.c
-index 723f5f8..e30702e 100644
---- a/numa.c
-+++ b/numa.c
-@@ -427,7 +427,6 @@ void numa_default_auto_assign_ram(MachineClass *mc, NodeInfo *nodes,
- void parse_numa_opts(MachineState *ms)
- {
-     int i;
--    const CPUArchIdList *possible_cpus;
-     MachineClass *mc = MACHINE_GET_CLASS(ms);
- 
-     if (qemu_opts_foreach(qemu_find_opts("numa"), parse_numa, ms, NULL)) {
-@@ -485,31 +484,6 @@ void parse_numa_opts(MachineState *ms)
- 
-         numa_set_mem_ranges();
- 
--        /* assign CPUs to nodes using board provided default mapping */
--        if (!mc->cpu_index_to_instance_props || !mc->possible_cpu_arch_ids) {
--            error_report("default CPUs to NUMA node mapping isn't supported");
--            exit(1);
--        }
--
--        possible_cpus = mc->possible_cpu_arch_ids(ms);
--        for (i = 0; i < possible_cpus->len; i++) {
--            if (possible_cpus->cpus[i].props.has_node_id) {
--                break;
--            }
--        }
--
--        /* no CPUs are assigned to NUMA nodes */
--        if (i == possible_cpus->len) {
--            for (i = 0; i < max_cpus; i++) {
--                CpuInstanceProperties props;
--                /* fetch default mapping from board and enable it */
--                props = mc->cpu_index_to_instance_props(ms, i);
--                props.has_node_id = true;
--
--                machine_set_cpu_numa_node(ms, &props, &error_fatal);
--            }
--        }
--
-         /* QEMU needs at least all unique node pair distances to build
-          * the whole NUMA distance table. QEMU treats the distance table
-          * as symmetric by default, i.e. distance A->B == distance B->A.
+CC: qemu-arm@nongnu.org
+CC: qemu-ppc@nongnu.org
+CC: Eduardo Habkost <ehabkost@redhat.com>
+CC: David Gibson <david@gibson.dropbear.id.au>
+CC: Andrew Jones <drjones@redhat.com>
+
+Igor Mammedov (5):
+  numa: consolidate cpu_preplug fixups/checks for pc/arm/spapr
+  numa: move default mapping init to machine
+  numa: make sure that all cpus in has has_node_id set if numa is
+    enabled
+  numa: fallback to default NUMA node instead of node 0
+  numa: move numa_node from CPUState into target specific classes
+
+ include/qom/cpu.h        |  2 --
+ include/sysemu/numa.h    |  1 +
+ target/arm/cpu.h         |  2 ++
+ target/i386/cpu.h        |  1 +
+ target/ppc/cpu.h         |  1 +
+ hw/arm/virt-acpi-build.c |  4 +---
+ hw/arm/virt.c            | 16 ++--------------
+ hw/core/machine.c        | 34 ++++++++++++++++++++++++----------
+ hw/i386/acpi-build.c     |  3 +--
+ hw/i386/pc.c             | 21 ++-------------------
+ hw/ppc/spapr.c           | 41 ++++++++++++-----------------------------
+ hw/ppc/spapr_cpu_core.c  |  4 +++-
+ monitor.c                | 11 +++++++----
+ numa.c                   | 43 +++++++++++++++++--------------------------
+ target/arm/cpu.c         |  2 +-
+ target/i386/cpu.c        |  2 +-
+ 16 files changed, 76 insertions(+), 112 deletions(-)
+
 -- 
 2.7.4
 

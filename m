@@ -1,98 +1,100 @@
-Received: by 10.25.0.6 with SMTP id 6csp215014lfa;
-        Fri, 26 May 2017 02:21:40 -0700 (PDT)
-X-Received: by 10.200.44.41 with SMTP id d38mr1075238qta.182.1495790500470;
-        Fri, 26 May 2017 02:21:40 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1495790500; cv=none;
+Received: by 10.25.0.6 with SMTP id 6csp215029lfa;
+        Fri, 26 May 2017 02:21:45 -0700 (PDT)
+X-Received: by 10.55.184.5 with SMTP id i5mr875730qkf.141.1495790505180;
+        Fri, 26 May 2017 02:21:45 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1495790505; cv=none;
         d=google.com; s=arc-20160816;
-        b=YHj4ejrYB4cbK/rasYe7yPEbrIZLbRPu5adM2ewomPMUT/U7kmfLjWZbRJpyoSxp4Q
-         LM4oRKbq8815G860x6TKByDoImvBwKvfiFhkd6C4znnxQydrxJuXO8/RPaAZti8B0r2a
-         nd3btG2+2zFCftFNKTsSHcUSyihzpbbc8kElKzQGTroW2ungn2NMv8nv/t3UN54vUnZ0
-         9p+peZqS+0zQj0SbNKWTqhS7eFyt2kcIflEbhkIBI59jy4itY/Edzn8HdL3zN+Sy/You
-         KOVfFMjhxtFU3q8YU58KNQVqfmdJ0fKbmkjqu3lxMYezgTXS10wFqUW+7KoH6hY1fh89
-         RfPA==
+        b=mhPAhr4NkgTf1es5aKiaxzF5baSPHCWrxUsFRRKRYX6Tsy3Hu9IPhy9kk3o4lu09J5
+         MstnGyAER8jYLl1ATYiq7AnHn9Lw5QnXEo9Oi3JiXrokGdj5sQWtsIJUtefYCe4+aN2m
+         XCMwyz/XKT+zy//B4m8hYLKbZo/IZMBLUXFR7uwjtULqggEfQuaOs3f1F7c0x2r5FCEA
+         c3jRhbsZL+uem9KPw8Yrt6oX4SAG0RqJDuWJc9ptIXDIauFGU/fVwli00SSVnbdFagrT
+         ZjmrRidcV2Bc821KdBXdmKDG1KmOMBv3v7sU+sDuyvcUxXMlOd+5XBPgNaEamqiuzT9T
+         ij0A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:message-id:date:to:from
-         :dkim-signature:arc-authentication-results;
-        bh=xmSOBugnzod5hsQ0IP0RULesJBbqU9Csmf3ydk8znJk=;
-        b=ugG3+w0D+zMre48D5yY3bj9VQQZ8J1lBkX1jh+ewO73oftT+ExI0Majg2Xgeu+FOTp
-         O9UlgiFbV7HIFbtNQIKO5pCUO/KknhJlqIbw4pWGs4Ky5ETmzE3dVYdwMce1ir5lI+t0
-         l1SApkIg5Bl5Ols/AxrwqGDmkXefc7QB2XyqmtiahdpAD3s/M+b6bqETUNlCpoq2/e2n
-         s78F3VFurLe20RBRLh0oeWwcJ5NCMwr3a+1Eo1dpbF9xiaBq1Gc3Oh70OgM5TbEBrfDV
-         Dx4svb2B88jgdzzhx1jW0a6m85NQfPvLqMe0yv/dNjjcKngeQtMWBDz5rDvAmcIxvMyI
-         sQsA==
+         :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
+         :message-id:date:to:from:dkim-signature:arc-authentication-results;
+        bh=ti3cMgCW5ys2hcfsEX6wrXBMUMwEfJMtKpFpA4/pWi4=;
+        b=PxlPMKPbnWPkWiUFMEtIORU9vvwamhTdlSOv5qUeUpm8QiO6fiQmltehPmqG/q/hRq
+         W0/eaGO4I+lMc5ZmrEkkTX8RsghD73+HOgGoarPLBXLAmxySSN/cJUnZrU0lfkYucjvH
+         H4DVaUcwC5BJjdKBgTkD0gE784FLB0ZOhF3MdGuAC2ITlomNu98hsIkYjudF/jEdhdfC
+         yarASU7Ip6IiLrN9//D3410eJ826a7VZYsuzKnsKQIFlzj/sQPY7fbJBa/2xaesG8E9x
+         OPWtTdAUIOpBEn6lGkik3jmVj8dOnPcXI/tRWTc43+1l+w6hK2pQAkhoZerknpCJXt/P
+         /jmw==
 ARC-Authentication-Results: i=1; mx.google.com;
        dkim=fail header.i=@gmail.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id y52si225582qty.173.2017.05.26.02.21.40
+        by mx.google.com with ESMTPS id u33si218201qth.169.2017.05.26.02.21.44
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 26 May 2017 02:21:40 -0700 (PDT)
+        Fri, 26 May 2017 02:21:45 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        dkim=fail header.i=@gmail.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:35646 helo=lists.gnu.org)
+Received: from localhost ([::1]:35649 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1dEBRD-0002dj-QA
-	for alex.bennee@linaro.org; Fri, 26 May 2017 05:21:39 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:45364)
+	id 1dEBRI-0002gY-IB
+	for alex.bennee@linaro.org; Fri, 26 May 2017 05:21:44 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:45425)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <zhlcindy@gmail.com>) id 1dEBR3-0002dV-4W
-	for qemu-arm@nongnu.org; Fri, 26 May 2017 05:21:29 -0400
+	(envelope-from <zhlcindy@gmail.com>) id 1dEBR6-0002f8-LL
+	for qemu-arm@nongnu.org; Fri, 26 May 2017 05:21:33 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <zhlcindy@gmail.com>) id 1dEBQy-0005Wm-Ak
-	for qemu-arm@nongnu.org; Fri, 26 May 2017 05:21:29 -0400
-Received: from mail-pf0-x241.google.com ([2607:f8b0:400e:c00::241]:35637)
+	(envelope-from <zhlcindy@gmail.com>) id 1dEBR5-0005Ys-TG
+	for qemu-arm@nongnu.org; Fri, 26 May 2017 05:21:32 -0400
+Received: from mail-pf0-x242.google.com ([2607:f8b0:400e:c00::242]:32807)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <zhlcindy@gmail.com>)
-	id 1dEBQy-0005WZ-5t; Fri, 26 May 2017 05:21:24 -0400
-Received: by mail-pf0-x241.google.com with SMTP id u26so1513347pfd.2;
-	Fri, 26 May 2017 02:21:23 -0700 (PDT)
+	id 1dEBR5-0005YT-NC; Fri, 26 May 2017 05:21:31 -0400
+Received: by mail-pf0-x242.google.com with SMTP id f27so1525371pfe.0;
+	Fri, 26 May 2017 02:21:31 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=from:to:cc:subject:date:message-id;
-	bh=xmSOBugnzod5hsQ0IP0RULesJBbqU9Csmf3ydk8znJk=;
-	b=p1dYRoNYNxZQ9O+h8qvuQCDBI1/CXP1DGhRS9oTmt5q/5sVSFIxRs97UgRgkZmF4RJ
-	7149GuBLMxbA+n4BnLR64llPw2xcWx7LV4wNjwDIFSllNm7TrODp1XZrFOKdnLKtI6Lb
-	f96Xqqdg6O0brxNEzLzlaADMbLxjZPAudjMAHWiIRI+o72QhgH84aYWJBWZLrDwdO2DA
-	P54pU4J1f7ECEnNvtTdibjHmEPOSpoiX5jq+nZVoFjWZIWw95RNA5QJ96tfyaxJ97zcE
-	xdLgrX7YhB6IWgaC3DAj+RDIENyg1+mjaIzgqlTAgEW11Zq05zI4dKHi0OAE6SXucjjx
-	tcBg==
+	h=from:to:cc:subject:date:message-id:in-reply-to:references;
+	bh=ti3cMgCW5ys2hcfsEX6wrXBMUMwEfJMtKpFpA4/pWi4=;
+	b=hxGYNef3eCHXrQDE/psND/9vSABwde+ebTvdDlx9T2DWwnXCBo6gWP9FA5udFguTIv
+	vsZWHS63oO/WGApbK/V002nCeO/R2ww/zpG98K3q5sCQ8BePRFvrI2mOkQHgvfW4Nz9O
+	rAO4n/VlquptJU0MTzla1oQ0jP+aj0fBu3NFXttc2oK4NtWnK8FHcgNHWm9cE9t6vLff
+	1bOMsc/zEyzjnaqpySdUtCMO2glaeyl+6SQIMm5SUPYoupzo0aQvLKTVTokMxp3P6H4h
+	nFaRqQe3JYu1asTYJ9ojdbonvv/r4G879DaiUQDvID20i7OQ/JSwA61W7dbtThliUsv9
+	9hAQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:from:to:cc:subject:date:message-id;
-	bh=xmSOBugnzod5hsQ0IP0RULesJBbqU9Csmf3ydk8znJk=;
-	b=ivNVegapYCm4fhKfrLmFnZRQUIxnzJqES8hd9sRcCLYdtjjWxBslX0PZNdpbiGuFHG
-	LKemLJppBbCFPxcjgHjeYYp6XfTupaeeVrUcLPHBzFLVgDnBfQaJnrvi3yG0jbxhNWfd
-	9IMEKTF+qnWvzGF+ilNE3VTB6cA4xaDXD6npsnUeWs2rYbVDBz9fpi0gVCmiY9kM/yEf
-	/Rx5KxLW1bG3ZNDF62o6kMmaEQhCJCbOBFLNABJISsOzrJrDQeSd3uxb9FJeExzVovLE
-	1F5acdyRKjNiGSItRslfx/DlPvwvy7gOAyNWxvqEo/UUKH8id1ny0zT/CBPOCkY7Tp7X
-	7lNw==
-X-Gm-Message-State: AODbwcA8Yco0auVTsiomJXfBlUcB+6mM73Zut31M9ZwNJ7FHPZcBXh4p
-	sVqw6XOPHSVLkg==
-X-Received: by 10.99.123.81 with SMTP id k17mr1181280pgn.125.1495790482847;
-	Fri, 26 May 2017 02:21:22 -0700 (PDT)
+	h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+	:references;
+	bh=ti3cMgCW5ys2hcfsEX6wrXBMUMwEfJMtKpFpA4/pWi4=;
+	b=RT27gWshu6hKnckoRX0hU54ll/jpSE94+2gur1GZUzyTt5dkES9O2RUttYCm/P2tZ9
+	b/iEp/MYFH4caPMEYuO+8152nSQkRXh1kNGppXzhrR/NnhjtPwC9FgC1mfprxTTXFSah
+	388TOg4sa9EL9SQWMjaon8UUNNBmEOHRVaOzmodnFzquXhch+Dymo2tfOG2jlwmeGoWZ
+	ONbyljFHUZ+sB4KMOuhwenNEQfY54OGqr4njYC1q5lXJHImtYCGhCJE/hpcBe5Lhqvr9
+	wE83aH3Hh93+vKtpHtyMWtXNw+8KgrQ2qSKtPhGd7vYOMhqEQL/lpdy/hqAqfo6iV+SF
+	Z1oA==
+X-Gm-Message-State: AODbwcAusniEQ8Tvt9k7XG2btEa4AwX/Z9PCx4Dt0GpJKTAZGbRCo3Eg
+	3YcLEsEbTiuD8Q==
+X-Received: by 10.99.110.200 with SMTP id j191mr1217162pgc.236.1495790490999; 
+	Fri, 26 May 2017 02:21:30 -0700 (PDT)
 Received: from control2.hxtcorp.net ([223.203.96.18])
-	by smtp.gmail.com with ESMTPSA id b2sm602187pgc.16.2017.05.26.02.21.19
+	by smtp.gmail.com with ESMTPSA id b2sm602187pgc.16.2017.05.26.02.21.28
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-	Fri, 26 May 2017 02:21:21 -0700 (PDT)
+	Fri, 26 May 2017 02:21:30 -0700 (PDT)
 From: Li Zhang <zhlcindy@gmail.com>
 To: peter.maydell@linaro.org,
 	qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Date: Fri, 26 May 2017 17:21:05 +0800
-Message-Id: <1495790468-23862-1-git-send-email-zhlcindy@gmail.com>
+Date: Fri, 26 May 2017 17:21:08 +0800
+Message-Id: <1495790468-23862-4-git-send-email-zhlcindy@gmail.com>
 X-Mailer: git-send-email 2.7.4
+In-Reply-To: <1495790468-23862-1-git-send-email-zhlcindy@gmail.com>
+References: <1495790468-23862-1-git-send-email-zhlcindy@gmail.com>
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400e:c00::241
-Subject: [Qemu-arm] [PATCH 0/3] arm/virt: refine virt.c code and implement
- hot_add_cpu interface
+X-Received-From: 2607:f8b0:400e:c00::242
+Subject: [Qemu-arm] [PATCH 3/3] arm/virt: Implement hot_add_cpu interface
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -107,33 +109,54 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: Li Zhang <li.zhang@hxt-semitech.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: l2j2iWUd/6RL
+X-TUID: 20CFZWyamIoR
 
 From: Li Zhang <li.zhang@hxt-semitech.com>
 
-virt machine doesn't support hot_add_cpu interface. This patchset is to implement
-hot_add_cpu interface. A CPU can be added by QMP command with QEMU monitor.
+This patch is to add add_hot_cpu interface.
 
-Here is command to add a CPU with QMP command.
+Signed-off-by: Li Zhang <li.zhang@hxt-semitech.com>
+---
+ hw/arm/virt.c | 19 +++++++++++++++++++
+ 1 file changed, 19 insertions(+)
 
-* qemu-system-aarch64 -machine virt -cpu cortex-a15 -smp 1,maxcpus=4 \
-    -monitor telnet:127.0.0.1:4444,server,nowait -nographic
-* connect monitor:      telnet 127.0.0.1 4444
-* execute qmp command:  cpu-add 1
-
-Currently, when KVM is enabled and add a CPU with QMP command, QEMU 
-reports error "kvm_init_vcpu failed: Device or resourc busy". KVM can't
-create a new CPU when vgic has been initialized and irqchip_in_kernel in
-function kvm_arch_vcpu_create. It needs to change KVM code in the future.
-
-Li Zhang (3):
-  arm/virt: Refine fdt_add_cpu_nodes code
-  arm/virt: Refine code of machvirt_init
-  arm/virt: Implement hot_add_cpu interface
-
- hw/arm/virt.c | 344 ++++++++++++++++++++++++++++++++++------------------------
- 1 file changed, 202 insertions(+), 142 deletions(-)
-
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index 31314c1..c7e8322 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -527,6 +527,24 @@ out:
+     error_propagate(errp, err);
+ }
+ 
++static void virt_hot_add_cpu(const int64_t id, Error **errp)
++{
++    MachineState *ms = MACHINE(qdev_get_machine());
++    VirtMachineState *vms = VIRT_MACHINE(ms);
++
++    if (id < 0 || id >= max_cpus) {
++        error_setg(errp, "Invalid CPU id: %" PRIi64, id);
++        return;
++    }
++
++    virt_new_cpu(ms, id, errp);
++    if (errp) {
++        return;
++    }
++
++    fdt_add_cpu_node(vms, id);
++}
++
+ static void fdt_add_its_gic_node(VirtMachineState *vms)
+ {
+     vms->msi_phandle = qemu_fdt_alloc_phandle(vms->fdt);
+@@ -1654,6 +1672,7 @@ static void virt_machine_class_init(ObjectClass *oc, void *data)
+     mc->minimum_page_bits = 12;
+     mc->possible_cpu_arch_ids = virt_possible_cpu_arch_ids;
+     mc->cpu_index_to_instance_props = virt_cpu_index_to_props;
++    mc->hot_add_cpu = virt_hot_add_cpu;
+ }
+ 
+ static const TypeInfo virt_machine_info = {
 -- 
 2.7.4
 

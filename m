@@ -1,92 +1,98 @@
-Received: by 10.25.0.6 with SMTP id 6csp425920lfa;
-        Fri, 26 May 2017 11:25:34 -0700 (PDT)
-X-Received: by 10.200.53.4 with SMTP id y4mr4071253qtb.136.1495823134637;
-        Fri, 26 May 2017 11:25:34 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1495823134; cv=none;
+Received: by 10.25.0.6 with SMTP id 6csp522260lfa;
+        Fri, 26 May 2017 16:48:47 -0700 (PDT)
+X-Received: by 10.200.0.136 with SMTP id c8mr5505269qtg.28.1495842527310;
+        Fri, 26 May 2017 16:48:47 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1495842527; cv=none;
         d=google.com; s=arc-20160816;
-        b=FNSzk2uqvDzqNSdEhd/+lcLjWeKAKyGdLkO6RZYwUgsGOe1OZiaFfl5+nHP3gnigdD
-         P6dREXGW9EjYGKrT5t/k8SbGiqSEYZgg670GjTiTbGxMELlxQL6I+/oulHKI8GNtPkEA
-         LqSh0L4HmizX/slqiEzcnxaNVx0xHfWM3c711/BlURzmDIUR3ghlhK9ZuOyX+4HKERUc
-         2OOHVlhTEDpibIuNyPAPYQ2FYxSEs/OuohkpothzWEYgjffBPht+kyJNSg2S+u6CaHvf
-         LqGDg30F9hgam1ocoRmax2PFNivHqXyXFWs4eO0IplAySC+1JOGsJeokgDVYk514neVv
-         /sxA==
+        b=YdeJvQWrqOa5D4o+wZ1CfUBblAF4nxBysnyi9oZaMeaH0ZG7S64zdmQ8tydGjJEsTB
+         zr7HkB1aUF++j2acSw9uYR4VqX7Qi/RgkNMfzaiRw9RL8T+yOvYnOzDiGQzMrjEpeh6e
+         XiLGujI5h9UwGi/Jzpml+6wWJZa3zIm+hxm9mfBoN/ARffofuSXlqy6CdQ7xFVmmIyws
+         JIVbHChAPEMDh9mRL5/2hjBCygWPHjylXA65t1ZN5Z09NgiftSTc399xbFiXt9Wv+B9k
+         4Lpm97E0O6B9PHIyt/6sIf8R5wWMsU4b7/9596xX5mcvR3DjoeJIaI6R0V8aNs8paE10
+         Zwbg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
-         :content-disposition:mime-version:references:message-id:to:from:date
-         :dkim-filter:dmarc-filter:arc-authentication-results;
-        bh=RdhQFDkXzjaaQFazKc3jbdc1QYDaITT1brNE5/wNs98=;
-        b=prQ7L09fbsnSf46yuJ/CJJ6TrFWL56mCr6yKvTZ7JpYN1M7e/B4axiauhL5m3/c6xi
-         nxLxUd9GPc9QEOmH87PmqjpnHdrZYIPoGU7ybS71JAV7yzDdtSrW0Q6IMzzVOxGNjRB4
-         cQ3dBGuIHEGvvMiOjy6IecBW/VEZ9LYCDi//9y3RKHJazef8EjVF4WSYddhk7rXiIDMb
-         3Aul+8ZWVieYtykzDzBT60N7yk7XvCF25atfxrZBJ5hnN52YZ8jV6CujupD2jmIPwVZo
-         GXBws30trfOx53sRVnhtIaPhO5wd8gBihW9IO7kad/gM5N0wmlb0Uu8R0UPvb3z+l+IT
-         HYlg==
+         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
+         :references:in-reply-to:mime-version:dkim-signature
+         :arc-authentication-results;
+        bh=Tah/dAdds/l5i2NNytHaQwYWVjHFm/+QelIEzeJf3h4=;
+        b=EyowajuP1nCHXez26nkKsOkCFzcd9OmDdL1olv8KpzI9N+wv+vNRvpaaNC/49KWfWf
+         iYQfLKikW1AvskudWmaSdPd0UBS2hhy259y+nfZ2rG0QU40Cb8QFNzGq10Cb7oST/7xt
+         eBeQIHPcEerWgGtjgPNV8G/TT6I4/V+SJz5IGSXRMR+v/tK8Q4md2BnQJUQbwOGh6YGk
+         9XQbAfCdXCh79l6CkMlFYmYO4hvrz+7PK/OvIt9jsfOOFTUizxy6+TGcPiExGcKrOrmF
+         wfPN6MZ+yCdlC4ZYeShUz49kWRyboM6keiNtbdCjVwPqcTc/BTGGKLksFK5Jl0+jdDDV
+         rgqA==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@gmail.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id z46si1407686qtg.63.2017.05.26.11.25.34
+        by mx.google.com with ESMTPS id h52si2229175qtb.296.2017.05.26.16.48.47
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 26 May 2017 11:25:34 -0700 (PDT)
+        Fri, 26 May 2017 16:48:47 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
+       dkim=fail header.i=@gmail.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:37885 helo=lists.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:38916 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1dEJva-00041b-5r
-	for alex.bennee@linaro.org; Fri, 26 May 2017 14:25:34 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:60389)
+	id 1dEOyM-00044i-Oc
+	for alex.bennee@linaro.org; Fri, 26 May 2017 19:48:46 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:33726)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <ehabkost@redhat.com>) id 1dEJvW-00041K-Ds
-	for qemu-arm@nongnu.org; Fri, 26 May 2017 14:25:31 -0400
+	(envelope-from <alistair23@gmail.com>) id 1dEOyH-00043G-Vg
+	for qemu-arm@nongnu.org; Fri, 26 May 2017 19:48:43 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <ehabkost@redhat.com>) id 1dEJvS-0000gX-As
-	for qemu-arm@nongnu.org; Fri, 26 May 2017 14:25:30 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:50016)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <ehabkost@redhat.com>)
-	id 1dEJvS-0000gT-19; Fri, 26 May 2017 14:25:26 -0400
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
-	[10.5.11.11])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 86E74448D98;
-	Fri, 26 May 2017 18:25:24 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 86E74448D98
-Authentication-Results: ext-mx05.extmail.prod.ext.phx2.redhat.com;
-	dmarc=none (p=none dis=none) header.from=redhat.com
-Authentication-Results: ext-mx05.extmail.prod.ext.phx2.redhat.com;
-	spf=pass smtp.mailfrom=ehabkost@redhat.com
-DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com 86E74448D98
-Received: from localhost (ovpn-116-57.gru2.redhat.com [10.97.116.57])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id AB31660462;
-	Fri, 26 May 2017 18:25:23 +0000 (UTC)
-Date: Fri, 26 May 2017 15:25:22 -0300
-From: Eduardo Habkost <ehabkost@redhat.com>
-To: Igor Mammedov <imammedo@redhat.com>
-Message-ID: <20170526182522.GV32274@thinpad.lan.raisama.net>
-References: <1495550330-34087-1-git-send-email-imammedo@redhat.com>
-	<1495550330-34087-6-git-send-email-imammedo@redhat.com>
+	(envelope-from <alistair23@gmail.com>) id 1dEOyF-0003u6-U4
+	for qemu-arm@nongnu.org; Fri, 26 May 2017 19:48:41 -0400
+Received: from mail-oi0-x244.google.com ([2607:f8b0:4003:c06::244]:36761)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <alistair23@gmail.com>)
+	id 1dEOyB-0003sB-Lj; Fri, 26 May 2017 19:48:35 -0400
+Received: by mail-oi0-x244.google.com with SMTP id w138so3930635oiw.3;
+	Fri, 26 May 2017 16:48:34 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=Tah/dAdds/l5i2NNytHaQwYWVjHFm/+QelIEzeJf3h4=;
+	b=IL1k9zHZnoayV1UKnW2yEUDM2fZ8jNDyPArdBtkCn0HyXlMqbW31vln1qGCJ57LKhN
+	5008wzeJU52q3wuHi+jjXUO+0oSKXrqiAJkezbRAWJ98oYhd8YLBustnEHFUEePJyg8E
+	JLt9z1ho8IPhbPz+97Y5NuoGB5kwJ6mkWEE92LIQaFPZR51KTXeRJysHgeQF0IIvNw3Q
+	cXxSKfz5Sc+rmsDBJHDYgH+xJKMU3CPTtLWJRqmp/9bbzmYLd1cgllkD1zzj6Y02vCH6
+	i3wj7i3qSrAQ1Vptod6Z0FyWc9Fk/Kx3WjFq0QQ3g7P3fFzuj0stiUFpcyZHYnbDV0DE
+	mvkA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=Tah/dAdds/l5i2NNytHaQwYWVjHFm/+QelIEzeJf3h4=;
+	b=ZYumWNQnbFSijqnxOPzlOz0/h4v01YMszi1l0rjbzCcvj0n7Y1Y2YYUzuKHmPGQ2EP
+	4mUCYYS+RGUbhl39aB6LAwntibESpLKOuWMseBFt4S6p6LSB87ZsZlc0lkNaR8hDg0B+
+	wznNwYh6rFHnzWCQ8NMCbcQ+qeh/2c2CRClir22Baj4obTZ3RPYX5al/WvNBMftfrF3I
+	C6qentLVNQejgRh/L4DglXEa7ACSPJJ+nZaatL2VCuNrVzi42mDapMRv2YHyaHB/FuV2
+	KMMix87/f7MALwlpSELFDRjLN+tuioEHWXdJOENrWgWK2HhK7hNc+tAfKNwDpkZ61Fpf
+	kB7w==
+X-Gm-Message-State: AODbwcAjy5t1ra1qyqVu2DSk9/9c6YT25nV9QwE20LcNGZ6DwXQyxAH2
+	KgF58ak4rBWUkRpKc9F7zmjHog0w2w==
+X-Received: by 10.202.80.142 with SMTP id e136mr2516016oib.40.1495842513308;
+	Fri, 26 May 2017 16:48:33 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <1495550330-34087-6-git-send-email-imammedo@redhat.com>
-X-Fnord: you can see the fnord
-User-Agent: Mutt/1.8.0 (2017-02-23)
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.29]);
-	Fri, 26 May 2017 18:25:24 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [PATCH v2 5/5] numa: move numa_node from CPUState
- into target specific classes
+Received: by 10.182.2.37 with HTTP; Fri, 26 May 2017 16:48:02 -0700 (PDT)
+In-Reply-To: <1494949133-2202-5-git-send-email-sundeep.lkml@gmail.com>
+References: <1494949133-2202-1-git-send-email-sundeep.lkml@gmail.com>
+	<1494949133-2202-5-git-send-email-sundeep.lkml@gmail.com>
+From: Alistair Francis <alistair23@gmail.com>
+Date: Fri, 26 May 2017 16:48:02 -0700
+Message-ID: <CAKmqyKPwu+2CdMkxgkiQacVbcxyERKtRd_Ysj_gy1oR4ecRk4g@mail.gmail.com>
+To: Subbaraya Sundeep <sundeep.lkml@gmail.com>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:4003:c06::244
+Subject: Re: [Qemu-arm] [Qemu devel v5 PATCH 4/5] msf2: Add Smartfusion2 SoC.
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -98,251 +104,339 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jones <drjones@redhat.com>, qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
-	qemu-devel@nongnu.org, David Gibson <david@gibson.dropbear.id.au>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+	=?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>,
+	qemu-arm <qemu-arm@nongnu.org>,
+	"qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 1Zdc9AFy6dfj
+X-TUID: CkcHFO8Pp6Ci
 
-On Tue, May 23, 2017 at 04:38:50PM +0200, Igor Mammedov wrote:
-> Move vcpu's assocciated numa_node field out of generic CPUState
-> into inherited classes that actually care about cpu<->numa mapping,
-> i.e: ARMCPU, PowerPCCPU, X86CPU.
-> 
-> Signed-off-by: Igor Mammedov <imammedo@redhat.com>
+On Tue, May 16, 2017 at 8:38 AM, Subbaraya Sundeep
+<sundeep.lkml@gmail.com> wrote:
+> Smartfusion2 SoC has hardened Microcontroller subsystem
+> and flash based FPGA fabric. This patch adds support for
+> Microcontroller subsystem in the SoC.
+>
+> Signed-off-by: Subbaraya Sundeep <sundeep.lkml@gmail.com>
 > ---
->  include/qom/cpu.h       |  2 --
->  target/arm/cpu.h        |  2 ++
->  target/i386/cpu.h       |  1 +
->  target/ppc/cpu.h        |  1 +
->  hw/ppc/spapr.c          | 24 +++++++++++-------------
->  hw/ppc/spapr_cpu_core.c |  4 +++-
->  monitor.c               | 11 +++++++----
->  target/arm/cpu.c        |  2 +-
->  target/i386/cpu.c       |  2 +-
->  9 files changed, 27 insertions(+), 22 deletions(-)
-> 
-> diff --git a/include/qom/cpu.h b/include/qom/cpu.h
-> index 55214ce..89ddb68 100644
-> --- a/include/qom/cpu.h
-> +++ b/include/qom/cpu.h
-> @@ -265,7 +265,6 @@ struct qemu_work_item;
->   * @cpu_index: CPU index (informative).
->   * @nr_cores: Number of cores within this CPU package.
->   * @nr_threads: Number of threads within this CPU.
-> - * @numa_node: NUMA node this CPU is belonging to.
->   * @host_tid: Host thread ID.
->   * @running: #true if CPU is currently running (lockless).
->   * @has_waiter: #true if a CPU is currently waiting for the cpu_exec_end;
-> @@ -314,7 +313,6 @@ struct CPUState {
->  
->      int nr_cores;
->      int nr_threads;
-> -    int numa_node;
->  
->      struct QemuThread *thread;
->  #ifdef _WIN32
-> diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-> index 048faed..5ffc9d8 100644
-> --- a/target/arm/cpu.h
-> +++ b/target/arm/cpu.h
-> @@ -703,6 +703,8 @@ struct ARMCPU {
->  
->      ARMELChangeHook *el_change_hook;
->      void *el_change_hook_opaque;
+>  default-configs/arm-softmmu.mak |   1 +
+>  hw/arm/Makefile.objs            |   1 +
+>  hw/arm/msf2-soc.c               | 201 ++++++++++++++++++++++++++++++++++++++++
+>  include/hw/arm/msf2-soc.h       |  69 ++++++++++++++
+>  4 files changed, 272 insertions(+)
+>  create mode 100644 hw/arm/msf2-soc.c
+>  create mode 100644 include/hw/arm/msf2-soc.h
+>
+> diff --git a/default-configs/arm-softmmu.mak b/default-configs/arm-softmmu.mak
+> index 78d7af0..7062512 100644
+> --- a/default-configs/arm-softmmu.mak
+> +++ b/default-configs/arm-softmmu.mak
+> @@ -122,3 +122,4 @@ CONFIG_ACPI=y
+>  CONFIG_SMBIOS=y
+>  CONFIG_ASPEED_SOC=y
+>  CONFIG_GPIO_KEY=y
+> +CONFIG_MSF2=y
+> diff --git a/hw/arm/Makefile.objs b/hw/arm/Makefile.objs
+> index 4c5c4ee..c828061 100644
+> --- a/hw/arm/Makefile.objs
+> +++ b/hw/arm/Makefile.objs
+> @@ -18,3 +18,4 @@ obj-$(CONFIG_FSL_IMX25) += fsl-imx25.o imx25_pdk.o
+>  obj-$(CONFIG_FSL_IMX31) += fsl-imx31.o kzm.o
+>  obj-$(CONFIG_FSL_IMX6) += fsl-imx6.o sabrelite.o
+>  obj-$(CONFIG_ASPEED_SOC) += aspeed_soc.o aspeed.o
+> +obj-$(CONFIG_MSF2) += msf2-soc.o
+> diff --git a/hw/arm/msf2-soc.c b/hw/arm/msf2-soc.c
+> new file mode 100644
+> index 0000000..329e30c
+> --- /dev/null
+> +++ b/hw/arm/msf2-soc.c
+> @@ -0,0 +1,201 @@
+> +/*
+> + * SmartFusion2 SoC emulation.
+> + *
+> + * Copyright (c) 2017 Subbaraya Sundeep <sundeep.lkml@gmail.com>
+> + *
+> + * Permission is hereby granted, free of charge, to any person obtaining a copy
+> + * of this software and associated documentation files (the "Software"), to deal
+> + * in the Software without restriction, including without limitation the rights
+> + * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+> + * copies of the Software, and to permit persons to whom the Software is
+> + * furnished to do so, subject to the following conditions:
+> + *
+> + * The above copyright notice and this permission notice shall be included in
+> + * all copies or substantial portions of the Software.
+> + *
+> + * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+> + * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+> + * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+> + * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+> + * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+> + * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+> + * THE SOFTWARE.
+> + */
 > +
-> +    int32_t node_id; /* NUMA node this CPU is belonging to */
->  };
->  
->  static inline ARMCPU *arm_env_get_cpu(CPUARMState *env)
-> diff --git a/target/i386/cpu.h b/target/i386/cpu.h
-> index c4602ca..00f35a0 100644
-> --- a/target/i386/cpu.h
-> +++ b/target/i386/cpu.h
-> @@ -1278,6 +1278,7 @@ struct X86CPU {
->      int32_t socket_id;
->      int32_t core_id;
->      int32_t thread_id;
-> +    int32_t node_id; /* NUMA node this CPU is belonging to */
-
-I suggest placing this before socket_id, so it follows the
-logical topology order: node, socket, core, thread.
-
->  };
->  
->  static inline X86CPU *x86_env_get_cpu(CPUX86State *env)
-> diff --git a/target/ppc/cpu.h b/target/ppc/cpu.h
-> index 401e10e..31c052d 100644
-> --- a/target/ppc/cpu.h
-> +++ b/target/ppc/cpu.h
-> @@ -1205,6 +1205,7 @@ struct PowerPCCPU {
->      uint32_t compat_pvr;
->      PPCVirtualHypervisor *vhyp;
->      Object *intc;
-> +    int32_t node_id; /* NUMA node this CPU is belonging to */
->  
->      /* Fields related to migration compatibility hacks */
->      bool pre_2_8_migration;
-> diff --git a/hw/ppc/spapr.c b/hw/ppc/spapr.c
-> index c7fee8b..96a2a74 100644
-> --- a/hw/ppc/spapr.c
-> +++ b/hw/ppc/spapr.c
-> @@ -178,25 +178,19 @@ static int spapr_fixup_cpu_smt_dt(void *fdt, int offset, PowerPCCPU *cpu,
->      return ret;
->  }
->  
-> -static int spapr_fixup_cpu_numa_dt(void *fdt, int offset, CPUState *cs)
-> +static int spapr_fixup_cpu_numa_dt(void *fdt, int offset, PowerPCCPU *cpu)
->  {
-> -    int ret = 0;
-> -    PowerPCCPU *cpu = POWERPC_CPU(cs);
->      int index = ppc_get_vcpu_dt_id(cpu);
->      uint32_t associativity[] = {cpu_to_be32(0x5),
->                                  cpu_to_be32(0x0),
->                                  cpu_to_be32(0x0),
->                                  cpu_to_be32(0x0),
-> -                                cpu_to_be32(cs->numa_node),
-> +                                cpu_to_be32(cpu->node_id),
->                                  cpu_to_be32(index)};
->  
->      /* Advertise NUMA via ibm,associativity */
-> -    if (nb_numa_nodes > 1) {
-> -        ret = fdt_setprop(fdt, offset, "ibm,associativity", associativity,
-
-Commit message says we're just moving fields to other structs.
-If you want to change the existing logic, please do it in a
-separate patch.
-
-> +    return fdt_setprop(fdt, offset, "ibm,associativity", associativity,
->                            sizeof(associativity));
-> -    }
-> -
-> -    return ret;
->  }
->  
->  /* Populate the "ibm,pa-features" property */
-> @@ -321,9 +315,11 @@ static int spapr_fixup_cpu_dt(void *fdt, sPAPRMachineState *spapr)
->              return ret;
->          }
->  
-> -        ret = spapr_fixup_cpu_numa_dt(fdt, offset, cs);
-> -        if (ret < 0) {
-> -            return ret;
-> +        if (nb_numa_nodes > 1) {
-> +            ret = spapr_fixup_cpu_numa_dt(fdt, offset, cpu);
-
-Ditto.
-
-> +            if (ret < 0) {
-> +                return ret;
-> +            }
->          }
->  
->          ret = spapr_fixup_cpu_smt_dt(fdt, offset, cpu, compat_smt);
-> @@ -538,7 +534,9 @@ static void spapr_populate_cpu_dt(CPUState *cs, void *fdt, int offset,
->      _FDT((fdt_setprop(fdt, offset, "ibm,pft-size",
->                        pft_size_prop, sizeof(pft_size_prop))));
->  
-> -    _FDT(spapr_fixup_cpu_numa_dt(fdt, offset, cs));
-> +    if (nb_numa_nodes > 1) {
-
-Ditto.
-
-> +        _FDT(spapr_fixup_cpu_numa_dt(fdt, offset, cpu));
+> +#include "qemu/osdep.h"
+> +#include "qapi/error.h"
+> +#include "qemu-common.h"
+> +#include "hw/arm/arm.h"
+> +#include "exec/address-spaces.h"
+> +#include "hw/char/serial.h"
+> +#include "hw/boards.h"
+> +#include "sysemu/block-backend.h"
+> +#include "hw/arm/msf2-soc.h"
+> +
+> +#define MSF2_TIMER_BASE     0x40004000
+> +#define MSF2_SYSREG_BASE    0x40038000
+> +
+> +#define MSF2_TIMER_IRQ0     14
+> +#define MSF2_TIMER_IRQ1     15
+> +
+> +static const uint32_t spi_addr[MSF2_NUM_SPIS] = { 0x40001000 , 0x40011000 };
+> +static const uint32_t uart_addr[MSF2_NUM_UARTS] = { 0x40000000 , 0x40010000 };
+> +
+> +static const int spi_irq[MSF2_NUM_SPIS] = { 2, 3 };
+> +static const int uart_irq[MSF2_NUM_UARTS] = { 10, 11 };
+> +
+> +static void m2sxxx_soc_initfn(Object *obj)
+> +{
+> +    MSF2State *s = MSF2_SOC(obj);
+> +    int i;
+> +
+> +    object_initialize(&s->armv7m, sizeof(s->armv7m), TYPE_ARMV7M);
+> +    qdev_set_parent_bus(DEVICE(&s->armv7m), sysbus_get_default());
+> +
+> +    object_initialize(&s->sysreg, sizeof(s->sysreg), TYPE_MSF2_SYSREG);
+> +    qdev_set_parent_bus(DEVICE(&s->sysreg), sysbus_get_default());
+> +
+> +    object_initialize(&s->timer, sizeof(s->timer), TYPE_MSS_TIMER);
+> +    qdev_set_parent_bus(DEVICE(&s->timer), sysbus_get_default());
+> +
+> +    for (i = 0; i < MSF2_NUM_SPIS; i++) {
+> +        object_initialize(&s->spi[i], sizeof(s->spi[i]),
+> +                          TYPE_MSS_SPI);
+> +        qdev_set_parent_bus(DEVICE(&s->spi[i]), sysbus_get_default());
 > +    }
->  
->      _FDT(spapr_fixup_cpu_smt_dt(fdt, offset, cpu, compat_smt));
->  
-> diff --git a/hw/ppc/spapr_cpu_core.c b/hw/ppc/spapr_cpu_core.c
-> index a17ea07..60baf02 100644
-> --- a/hw/ppc/spapr_cpu_core.c
-> +++ b/hw/ppc/spapr_cpu_core.c
-> @@ -183,15 +183,17 @@ static void spapr_cpu_core_realize(DeviceState *dev, Error **errp)
->      for (i = 0; i < cc->nr_threads; i++) {
->          char id[32];
->          CPUState *cs;
-> +        PowerPCCPU *cpu;
->  
->          obj = sc->threads + i * size;
->  
->          object_initialize(obj, size, typename);
->          cs = CPU(obj);
-> +        cpu = POWERPC_CPU(cs);
->          cs->cpu_index = cc->core_id + i;
->  
->          /* Set NUMA node for the threads belonged to core  */
-> -        cs->numa_node = sc->node_id;
-> +        cpu->node_id = sc->node_id;
->  
->          snprintf(id, sizeof(id), "thread[%d]", i);
->          object_property_add_child(OBJECT(sc), id, obj, &local_err);
-> diff --git a/monitor.c b/monitor.c
-> index afbacfe..b053c40 100644
-> --- a/monitor.c
-> +++ b/monitor.c
-> @@ -1697,23 +1697,26 @@ static void hmp_info_mtree(Monitor *mon, const QDict *qdict)
->  static void hmp_info_numa(Monitor *mon, const QDict *qdict)
->  {
->      int i;
-> -    CPUState *cpu;
->      uint64_t *node_mem;
-> +    CpuInfoList *cpu_list, *cpu;
->  
-> +    cpu_list = qmp_query_cpus(&error_abort);
->      node_mem = g_new0(uint64_t, nb_numa_nodes);
->      query_numa_node_mem(node_mem);
->      monitor_printf(mon, "%d nodes\n", nb_numa_nodes);
->      for (i = 0; i < nb_numa_nodes; i++) {
->          monitor_printf(mon, "node %d cpus:", i);
-> -        CPU_FOREACH(cpu) {
-> -            if (cpu->numa_node == i) {
-> -                monitor_printf(mon, " %d", cpu->cpu_index);
-> +        for (cpu = cpu_list; cpu; cpu = cpu->next) {
-> +            if (cpu->value->has_props && cpu->value->props->has_node_id &&
-> +                cpu->value->props->node_id == i) {
-> +                monitor_printf(mon, " %" PRIi64, cpu->value->CPU);
+> +}
+> +
+> +static void m2sxxx_soc_realize(DeviceState *dev_soc, Error **errp)
+> +{
+> +    MSF2State *s = MSF2_SOC(dev_soc);
+> +    DeviceState *dev, *armv7m;
+> +    SysBusDevice *busdev;
+> +    Error *err = NULL;
+> +    int i;
+> +
+> +    MemoryRegion *system_memory = get_system_memory();
+> +    MemoryRegion *nvm = g_new(MemoryRegion, 1);
+> +    MemoryRegion *nvm_alias = g_new(MemoryRegion, 1);
+> +    MemoryRegion *sram = g_new(MemoryRegion, 1);
+> +
+> +    memory_region_init_ram(nvm, NULL, "MSF2.eNVM", s->envm_size,
+> +                           &error_fatal);
+> +
+> +    /*
+> +     * On power-on, the eNVM region 0x60000000 is automatically
+> +     * remapped to the Cortex-M3 processor executable region
+> +     * start address (0x0). We do not support remapping other eNVM,
+> +     * eSRAM and DDR regions by guest(via Sysreg) currently.
+> +     */
+> +    memory_region_init_alias(nvm_alias, NULL, "MSF2.eNVM.alias",
+> +                             nvm, 0, s->envm_size);
+> +    vmstate_register_ram_global(nvm);
+> +
+> +    memory_region_set_readonly(nvm, true);
+> +    memory_region_set_readonly(nvm_alias, true);
+> +
+> +    memory_region_add_subregion(system_memory, ENVM_BASE_ADDRESS, nvm);
+> +    memory_region_add_subregion(system_memory, 0, nvm_alias);
+> +
+> +    memory_region_init_ram(sram, NULL, "MSF2.eSRAM", s->esram_size,
+> +                           &error_fatal);
+> +    vmstate_register_ram_global(sram);
+> +    memory_region_add_subregion(system_memory, SRAM_BASE_ADDRESS, sram);
+> +
+> +    armv7m = DEVICE(&s->armv7m);
+> +    qdev_prop_set_uint32(armv7m, "num-irq", 81);
+> +    qdev_prop_set_string(armv7m, "cpu-model", "cortex-m3");
+> +    object_property_set_link(OBJECT(&s->armv7m), OBJECT(get_system_memory()),
+> +                                     "memory", &error_abort);
+> +    object_property_set_bool(OBJECT(&s->armv7m), true, "realized", &err);
+> +    if (err != NULL) {
+> +        error_propagate(errp, err);
+> +        return;
+> +    }
+> +
+> +    for (i = 0; i < MSF2_NUM_UARTS; i++) {
+> +        if (serial_hds[i]) {
+> +            serial_mm_init(get_system_memory(), uart_addr[i], 2,
+> +                           qdev_get_gpio_in(armv7m, uart_irq[i]),
+> +                           115200, serial_hds[i], DEVICE_NATIVE_ENDIAN);
+> +        }
+> +    }
+> +
+> +    dev = DEVICE(&s->timer);
+> +    /* pclk0 is the timer input clock */
+> +    qdev_prop_set_uint32(dev, "clock-frequency", s->pclk0);
+> +    object_property_set_bool(OBJECT(&s->timer), true, "realized", &err);
+> +    if (err != NULL) {
+> +        error_propagate(errp, err);
+> +        return;
+> +    }
+> +    busdev = SYS_BUS_DEVICE(dev);
+> +    sysbus_mmio_map(busdev, 0, MSF2_TIMER_BASE);
+> +    sysbus_connect_irq(busdev, 0,
+> +                           qdev_get_gpio_in(armv7m, MSF2_TIMER_IRQ0));
+> +    sysbus_connect_irq(busdev, 1,
+> +                           qdev_get_gpio_in(armv7m, MSF2_TIMER_IRQ1));
+> +
+> +    dev = DEVICE(&s->sysreg);
+> +    object_property_set_bool(OBJECT(&s->sysreg), true, "realized", &err);
+> +    if (err != NULL) {
+> +        error_propagate(errp, err);
+> +        return;
+> +    }
+> +    busdev = SYS_BUS_DEVICE(dev);
+> +    sysbus_mmio_map(busdev, 0, MSF2_SYSREG_BASE);
+> +
+> +    for (i = 0; i < MSF2_NUM_SPIS; i++) {
+> +        gchar *bus_name = g_strdup_printf("spi%d", i);
+> +
+> +        object_property_set_bool(OBJECT(&s->spi[i]), true, "realized", &err);
+> +        if (err != NULL) {
+> +            g_free(bus_name);
+> +            error_propagate(errp, err);
+> +            return;
+> +        }
+> +
+> +        sysbus_mmio_map(SYS_BUS_DEVICE(&s->spi[i]), 0, spi_addr[i]);
+> +        sysbus_connect_irq(SYS_BUS_DEVICE(&s->spi[i]), 0,
+> +                           qdev_get_gpio_in(armv7m, spi_irq[i]));
+> +
+> +        /* Alias controller SPI bus to the SoC itself */
+> +        object_property_add_alias(OBJECT(s), bus_name,
+> +                                  OBJECT(&s->spi[i]), "spi0",
+> +                                  &error_abort);
+> +        g_free(bus_name);
+> +    }
+> +}
+> +
+> +static Property m2sxxx_soc_properties[] = {
+> +    DEFINE_PROP_STRING("part-name", MSF2State, part_name),
 
-I suggest moving this to a separate patch, too.
+This is never used, why have it here?
 
->              }
->          }
->          monitor_printf(mon, "\n");
->          monitor_printf(mon, "node %d size: %" PRId64 " MB\n", i,
->                         node_mem[i] >> 20);
->      }
-> +    qapi_free_CpuInfoList(cpu_list);
->      g_free(node_mem);
->  }
->  
-> diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-> index c185eb1..09ef3a6 100644
-> --- a/target/arm/cpu.c
-> +++ b/target/arm/cpu.c
-> @@ -1573,7 +1573,7 @@ static Property arm_cpu_properties[] = {
->      DEFINE_PROP_UINT32("midr", ARMCPU, midr, 0),
->      DEFINE_PROP_UINT64("mp-affinity", ARMCPU,
->                          mp_affinity, ARM64_AFFINITY_INVALID),
-> -    DEFINE_PROP_INT32("node-id", CPUState, numa_node, CPU_UNSET_NUMA_NODE_ID),
-> +    DEFINE_PROP_INT32("node-id", ARMCPU, node_id, CPU_UNSET_NUMA_NODE_ID),
->      DEFINE_PROP_END_OF_LIST()
->  };
->  
-> diff --git a/target/i386/cpu.c b/target/i386/cpu.c
-> index a41d595..ffb5267 100644
-> --- a/target/i386/cpu.c
-> +++ b/target/i386/cpu.c
-> @@ -3986,7 +3986,7 @@ static Property x86_cpu_properties[] = {
->      DEFINE_PROP_INT32("core-id", X86CPU, core_id, -1),
->      DEFINE_PROP_INT32("socket-id", X86CPU, socket_id, -1),
->  #endif
-> -    DEFINE_PROP_INT32("node-id", CPUState, numa_node, CPU_UNSET_NUMA_NODE_ID),
-> +    DEFINE_PROP_INT32("node-id", X86CPU, node_id, CPU_UNSET_NUMA_NODE_ID),
->      DEFINE_PROP_BOOL("pmu", X86CPU, enable_pmu, false),
->      { .name  = "hv-spinlocks", .info  = &qdev_prop_spinlocks },
->      DEFINE_PROP_BOOL("hv-relaxed", X86CPU, hyperv_relaxed_timing, false),
-> -- 
-> 2.7.4
-> 
+> +    DEFINE_PROP_UINT64("eNVM-size", MSF2State, envm_size, MSF2_ENVM_SIZE),
+> +    DEFINE_PROP_UINT64("eSRAM-size", MSF2State, esram_size, MSF2_ESRAM_SIZE),
+> +    /* Libero GUI shows 100Mhz as default for clocks */
+> +    DEFINE_PROP_UINT32("pclk0", MSF2State, pclk0, 100 * 1000000),
+> +    DEFINE_PROP_UINT32("pclk1", MSF2State, pclk1, 100 * 1000000),
 
--- 
-Eduardo
+Same with this one.
+
+Thanks,
+Alistair
+
+> +    DEFINE_PROP_END_OF_LIST(),
+> +};
+> +
+> +static void m2sxxx_soc_class_init(ObjectClass *klass, void *data)
+> +{
+> +    DeviceClass *dc = DEVICE_CLASS(klass);
+> +
+> +    dc->realize = m2sxxx_soc_realize;
+> +    dc->props = m2sxxx_soc_properties;
+> +}
+> +
+> +static const TypeInfo m2sxxx_soc_info = {
+> +    .name          = TYPE_MSF2_SOC,
+> +    .parent        = TYPE_SYS_BUS_DEVICE,
+> +    .instance_size = sizeof(MSF2State),
+> +    .instance_init = m2sxxx_soc_initfn,
+> +    .class_init    = m2sxxx_soc_class_init,
+> +};
+> +
+> +static void m2sxxx_soc_types(void)
+> +{
+> +    type_register_static(&m2sxxx_soc_info);
+> +}
+> +
+> +type_init(m2sxxx_soc_types)
+> diff --git a/include/hw/arm/msf2-soc.h b/include/hw/arm/msf2-soc.h
+> new file mode 100644
+> index 0000000..67adddb
+> --- /dev/null
+> +++ b/include/hw/arm/msf2-soc.h
+> @@ -0,0 +1,69 @@
+> +/*
+> + * Microsemi Smartfusion2 SoC
+> + *
+> + * Copyright (c) 2017 Subbaraya Sundeep <sundeep.lkml@gmail.com>
+> + *
+> + * Permission is hereby granted, free of charge, to any person obtaining a copy
+> + * of this software and associated documentation files (the "Software"), to deal
+> + * in the Software without restriction, including without limitation the rights
+> + * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+> + * copies of the Software, and to permit persons to whom the Software is
+> + * furnished to do so, subject to the following conditions:
+> + *
+> + * The above copyright notice and this permission notice shall be included in
+> + * all copies or substantial portions of the Software.
+> + *
+> + * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+> + * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+> + * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+> + * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+> + * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+> + * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+> + * THE SOFTWARE.
+> + */
+> +
+> +#ifndef HW_ARM_MSF2_SOC_H
+> +#define HW_ARM_MSF2_SOC_H
+> +
+> +#include "hw/misc/msf2-sysreg.h"
+> +#include "hw/timer/mss-timer.h"
+> +#include "hw/ssi/mss-spi.h"
+> +#include "hw/arm/armv7m.h"
+> +#include "qemu/cutils.h"
+> +
+> +#define TYPE_MSF2_SOC     "msf2-soc"
+> +#define MSF2_SOC(obj)     OBJECT_CHECK(MSF2State, (obj), TYPE_MSF2_SOC)
+> +
+> +#define MSF2_NUM_SPIS         2
+> +#define MSF2_NUM_UARTS        2
+> +
+> +#define ENVM_BASE_ADDRESS     0x60000000
+> +
+> +#define SRAM_BASE_ADDRESS     0x20000000
+> +
+> +#define MSF2_ENVM_SIZE        (512 * K_BYTE)
+> +#define MSF2_ESRAM_SIZE       (64 * K_BYTE)
+> +
+> +#define M2S010_ENVM_SIZE      (256 * K_BYTE)
+> +#define M2S010_ESRAM_SIZE     (64 * K_BYTE)
+> +
+> +typedef struct MSF2State {
+> +    /*< private >*/
+> +    SysBusDevice parent_obj;
+> +    /*< public >*/
+> +
+> +    ARMv7MState armv7m;
+> +
+> +    char *part_name;
+> +    uint64_t envm_size;
+> +    uint64_t esram_size;
+> +
+> +    uint32_t pclk0;
+> +    uint32_t pclk1;
+> +
+> +    MSF2SysregState sysreg;
+> +    MSSTimerState timer;
+> +    MSSSpiState spi[MSF2_NUM_SPIS];
+> +} MSF2State;
+> +
+> +#endif
+> --
+> 2.5.0
+>

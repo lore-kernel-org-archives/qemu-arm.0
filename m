@@ -1,71 +1,71 @@
-Received: by 10.25.0.6 with SMTP id 6csp766079lfa;
-        Sat, 27 May 2017 09:18:46 -0700 (PDT)
-X-Received: by 10.202.108.15 with SMTP id h15mr3076723oic.3.1495901926349;
-        Sat, 27 May 2017 09:18:46 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1495901926; cv=none;
+Received: by 10.25.0.6 with SMTP id 6csp766083lfa;
+        Sat, 27 May 2017 09:18:47 -0700 (PDT)
+X-Received: by 10.157.25.170 with SMTP id k39mr3943691otk.96.1495901927857;
+        Sat, 27 May 2017 09:18:47 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1495901927; cv=none;
         d=google.com; s=arc-20160816;
-        b=jhWFgrGD/a1jZm9qOAKjOwcqx+Fs4rh9vKV9AATZLi2lAAorHz+4E6aqpmpJnjpc5d
-         TTNizVM1KnuIZcqlyRWvfB1gVhYMluc3meOPCAUjtJyvZtYX2KCKbdb61NkwLfKHh5bh
-         3712NSaQx0qbsoB5Zq0BK51PqxDmgmZmJfgylcyar7VuD9Plt86tRx3HBi01jw5wWS5T
-         JQ/6/aa6qCPleI3yuq679crLt2qzkmMopjAwD2XFX/iJfLH6fhyblwnRggWqHxoOMOHB
-         DasdA3SdI0m1H7pB8lZtAK2nrov7gj6L2CxOnnA9wgUTgpO92sx3YQAq8FNXnKB93STw
-         xo1w==
+        b=fG7v1piIOJKknybg3G8z3JBabqPkuyEl2G0ankTkuI2l77Ix+ZxwO8sqXqYZnKQl+7
+         JmZIErE2VHmpgBTBp8043Vsy8us8+DJS/jdciFGB/AGgBjf5lqPqO4LOEK2KmOZzjU4o
+         R3v23/MgJIHcNa/FkNTdi5pvv5bg1vWbET1GVNHvOivh2N+sZKNxOr/++lXt4HC9AWZ0
+         SQVQyW/X2A3wXGQGuuZMUlZ+MV07J0T1c5enPL/8A/4o0gJ5mMmBnf59VZ690e5HjkIJ
+         DZ5wVIRcuN8uicGxWwphgmyRjOnFzDu+lmi3SHnzlne9J97YNc3xizvBtKdkEgzJ6xoV
+         DU5Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:sender:dkim-signature
          :arc-authentication-results;
-        bh=0cVv2qLYfQ6NyoPESo20qxxLLIpdfhIZxhlh1XqTQmM=;
-        b=cvwYMmHhTykTyJa1baD65CV+5QiXYUG82M8hWs6DpN+ESyWpuOsmYGcdzUzOWAysfi
-         kd7RxztXG7/hxL76YlJ6qySWeNmpwLi0sE3C77EqFqAGw24PuM/dbBVUBpk10FVzmlEX
-         XBrO7Sa3LAuSsP6WMjlGo3fd6b9YYb+0VWv8WoOPR4NsQCkjulvfeRHDcQvkfIbgvzT0
-         F32SwfqCp7rWYr1tRbJkPaRpkL4bnxe2Z+lBAxXAezFFOCDdF+76RC8J88GuP9BirQ6j
-         tLPzc+6PN+CKr73JruiM3ypatpLe8iSu3FFmYH6HcH6akSEybzGB73GFvf/An57sYIgc
-         PfbQ==
+        bh=wjBuKEZzU7ccGKXpm8Pl54S3KU6WaoUdkUFrVeWHnEA=;
+        b=vTENozoKdnS9V9kbcRxhgCzhggbdQBpeTqfuzX9QIhJ7UeHWFbhTj6IXjLuyR269aI
+         /kcs9o0KJzFv6e60LaqscqGBeKk4SSIbUv+hdScFoIjxo0nAXQRSsJQoxaDoynKxdwx5
+         47dDsrMXHwZwttr7NIr8VuWwIXrcOMYxeT9HUpMg6EUYngJRJLvx7zrnnhm5/qimzP/k
+         nT7UxoxVz5iQPvT+RCE10onrGPIGP2hIJQWe2LzCt1nhVEgm0byLBnZXbt2rJJ0A016i
+         QEnWH3RJ78+dRG2ZNVBSBcGHhsvcKXtqXs+m8E0YOTdRMsiQjOR+0awL0Ib4m+7xJRoS
+         2WxQ==
 ARC-Authentication-Results: i=1; mx.google.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 2607:f8b0:4003:c06::244 as permitted sender) smtp.mailfrom=philippe.mathieu.daude@gmail.com
+       spf=pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 2607:f8b0:4003:c06::241 as permitted sender) smtp.mailfrom=philippe.mathieu.daude@gmail.com
 Return-Path: <philippe.mathieu.daude@gmail.com>
-Received: from mail-oi0-x244.google.com (mail-oi0-x244.google.com. [2607:f8b0:4003:c06::244])
-        by mx.google.com with ESMTPS id w197si1709448oif.291.2017.05.27.09.18.46
+Received: from mail-oi0-x241.google.com (mail-oi0-x241.google.com. [2607:f8b0:4003:c06::241])
+        by mx.google.com with ESMTPS id h50si1801824otd.240.2017.05.27.09.18.47
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 27 May 2017 09:18:46 -0700 (PDT)
-Received-SPF: pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 2607:f8b0:4003:c06::244 as permitted sender) client-ip=2607:f8b0:4003:c06::244;
+        Sat, 27 May 2017 09:18:47 -0700 (PDT)
+Received-SPF: pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 2607:f8b0:4003:c06::241 as permitted sender) client-ip=2607:f8b0:4003:c06::241;
 Authentication-Results: mx.google.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 2607:f8b0:4003:c06::244 as permitted sender) smtp.mailfrom=philippe.mathieu.daude@gmail.com
-Received: by mail-oi0-x244.google.com with SMTP id w138so6020338oiw.3;
-        Sat, 27 May 2017 09:18:46 -0700 (PDT)
+       spf=pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 2607:f8b0:4003:c06::241 as permitted sender) smtp.mailfrom=philippe.mathieu.daude@gmail.com
+Received: by mail-oi0-x241.google.com with SMTP id v80so6022500oie.2;
+        Sat, 27 May 2017 09:18:47 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
          :mime-version:content-transfer-encoding;
-        bh=0cVv2qLYfQ6NyoPESo20qxxLLIpdfhIZxhlh1XqTQmM=;
-        b=MMY1FisIlcvbrt4rRdPHnOKT1WcZqgS8WPIu8efOK56i1GaFfJDU/8EB9SJEDLzoBY
-         Yj4w1tqFV8hoo52rJMzKuXpO5FaUdV5Vikq1CxTg20oTHIaqft7Hp8J93RniLdMfh1O6
-         LvBfJVn1h5T7SeggP0f8Vjci/LbYvhiXTF9xTbmi/+C2KVgz5XSiLRnyPKwNonddcYnu
-         ga8N/YnUbRPTGYTJ721t0DIErcf1I7eSpQ/kZvVOhaJH5B+p6uqnbmpCMQih1tAjct/J
-         fCK/bzJh8HgJYj9vAQfZACEIU9FKBZmd5dNqPkCathqYid2jUEGOEtm0d461CMo8vFx9
-         KcPQ==
+        bh=wjBuKEZzU7ccGKXpm8Pl54S3KU6WaoUdkUFrVeWHnEA=;
+        b=Q33unQjSEOuE+OMQLmxKTxuGBeWzpHcC2d5LgctzwRFJvS99r/jJdaj4KhK4w767in
+         HxGUBSt7QkPDBOlsE/2NlcGqsCkCKf2VWkeKqjXbYC6yAixhyl48Fr4poED4SOEZxfXr
+         7tQ/K6qUrdotLuU3sN+UOtNESHfSuj+BOO7lh3FU3vAbUssP01NswuEnPVDPfcl8Z6/d
+         WD4nNG5ZpJCRctNCQDYakSvd7tG+DiECd0mKMhU+RkDnMV4zplnlLFm+pmABmzTaL0h9
+         UnRQMN7nDcqsG/nhqWJjS00opBO6UcRT+X+cHfhZbtwK0jMuwGAs8LIagCOt7x8aMlqT
+         yMKw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
          :in-reply-to:references:mime-version:content-transfer-encoding;
-        bh=0cVv2qLYfQ6NyoPESo20qxxLLIpdfhIZxhlh1XqTQmM=;
-        b=h9lkq1w3PlMRwg6tBfcgbBGdzwj+TUuy2Hmu8AJwBH/Ja+gMC5yS3dJihAPf1cWX/T
-         9xHuxx2yQ9+j//yPmKPTUM0cGg+Q8Sdb5LXZPcAcHmTv98zTCiXw/kHHj+We56qa+PV+
-         JbfuU0d3Hjlqootn1jj+LmjmYAQoGKbHsOKjYc5ClEug/JEGUMdIhNrQq/KjDXS7xldV
-         BGBkHd9+f5DiDhJtbhxCabA0IdCxB9Gt5e61HPfWJWT9cuQLtNSRkP3Oua+0JblnudSv
-         HlfOuVe21MuiTMbhquSbTlmRy0qr4rs9E9JlOcsqd0xe71KPAaTZ6WkI9JIPqea/VE5t
-         9f5Q==
-X-Gm-Message-State: AODbwcBf06dkKPm8rWWU7P9AXU9BE0w20PjNX9M/tPQ3GmRdtfrq2vIb
-	qFVP//LNKYSXFQ==
-X-Received: by 10.157.26.13 with SMTP id a13mr4198366ote.212.1495901925847;
-        Sat, 27 May 2017 09:18:45 -0700 (PDT)
+        bh=wjBuKEZzU7ccGKXpm8Pl54S3KU6WaoUdkUFrVeWHnEA=;
+        b=H7w2Vf7IZZz14vNvIEyrjr6lToKWnBGBcjv9y+jeR7ov+T/D6/JoKhIFzKjB0OfO5w
+         CcLXbDU7vQ4eKMjk5zATHX6QwreYDGN3jr61QxxlN4YSIeb6TZKr8AC5ozPTlty9fJdo
+         K812y9Ernswrxvt0C2jCs3EntXxwY5RKXbVMtXXzBHY5ilTZ1XSk6uDhKIbvLjr9SS1o
+         LB6Aa6UspUTCKE+0SDOOYJIzvRqKmbAuuchtl8K1n4LDaNDWS8QORfovmk4/eRsrbOTG
+         lA2V5GDamx1oPUeouZClFAUqqBGGC/7JRmvLJ/uPxFYFBjOfOLJL2E54C5Wcq9lsqbxb
+         7iSQ==
+X-Gm-Message-State: AODbwcBMiOYlSrcZqrJy9A89j0q1/EOcEJptraM76WTyGIxwUXgVakt4
+	Z8vOBxaCW3pptQ==
+X-Received: by 10.157.47.70 with SMTP id h64mr3966978otb.23.1495901927377;
+        Sat, 27 May 2017 09:18:47 -0700 (PDT)
 Return-Path: <philippe.mathieu.daude@gmail.com>
 Received: from yoga.attlocal.net (162-231-236-127.lightspeed.miamfl.sbcglobal.net. [162.231.236.127])
-        by smtp.gmail.com with ESMTPSA id i32sm1953113otd.43.2017.05.27.09.18.44
+        by smtp.gmail.com with ESMTPSA id i32sm1953113otd.43.2017.05.27.09.18.46
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 27 May 2017 09:18:45 -0700 (PDT)
+        Sat, 27 May 2017 09:18:46 -0700 (PDT)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philippe.mathieu.daude@gmail.com>
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: qemu-devel@nongnu.org,
@@ -74,41 +74,41 @@ To: qemu-devel@nongnu.org,
 	Peter Maydell <peter.maydell@linaro.org>,
 	qemu-arm@nongnu.org
 Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-Subject: [PATCH v4 11/24] docker: add extra libs to armhf target to extend codebase coverage
-Date: Sat, 27 May 2017 13:17:42 -0300
-Message-Id: <20170527161755.7761-12-f4bug@amsat.org>
+Subject: [PATCH v4 12/24] docker: add extra libs to arm64 target to extend codebase coverage
+Date: Sat, 27 May 2017 13:17:43 -0300
+Message-Id: <20170527161755.7761-13-f4bug@amsat.org>
 X-Mailer: git-send-email 2.11.0
 In-Reply-To: <20170527161755.7761-1-f4bug@amsat.org>
 References: <20170527161755.7761-1-f4bug@amsat.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: KKKJNHRr6WH1
+X-TUID: vpEmZCx1dmjs
 
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- tests/docker/dockerfiles/debian-armhf-cross.docker | 11 +++++++++++
+ tests/docker/dockerfiles/debian-arm64-cross.docker | 11 +++++++++++
  1 file changed, 11 insertions(+)
 
-diff --git a/tests/docker/dockerfiles/debian-armhf-cross.docker b/tests/docker/dockerfiles/debian-armhf-cross.docker
-index ba8d5a5167..e67dfdccc5 100644
---- a/tests/docker/dockerfiles/debian-armhf-cross.docker
-+++ b/tests/docker/dockerfiles/debian-armhf-cross.docker
+diff --git a/tests/docker/dockerfiles/debian-arm64-cross.docker b/tests/docker/dockerfiles/debian-arm64-cross.docker
+index f3db7f4f55..45b891d57a 100644
+--- a/tests/docker/dockerfiles/debian-arm64-cross.docker
++++ b/tests/docker/dockerfiles/debian-arm64-cross.docker
 @@ -16,3 +16,14 @@ RUN DEBIAN_FRONTEND=noninteractive eatmydata \
  
  # Specify the cross prefix for this image (see tests/docker/common.rc)
- ENV QEMU_CONFIGURE_OPTS --cross-prefix=arm-linux-gnueabihf-
+ ENV QEMU_CONFIGURE_OPTS --cross-prefix=aarch64-linux-gnu-
 +
 +RUN DEBIAN_FRONTEND=noninteractive eatmydata \
 +    apt-get install -y --no-install-recommends \
-+        glusterfs-common:armhf \
-+        libbz2-dev:armhf \
-+        liblzo2-dev:armhf \
-+        libncursesw5-dev:armhf \
-+        libnfs-dev:armhf \
-+        librdmacm-dev:armhf \
-+        libsnappy-dev:armhf \
-+        libxen-dev:armhf
++        glusterfs-common:arm64 \
++        libbz2-dev:arm64 \
++        liblzo2-dev:arm64 \
++        libncursesw5-dev:arm64 \
++        libnfs-dev:arm64 \
++        librdmacm-dev:arm64 \
++        libsnappy-dev:arm64 \
++        libxen-dev:arm64
 -- 
 2.11.0

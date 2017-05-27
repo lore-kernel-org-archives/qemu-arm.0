@@ -1,71 +1,71 @@
-Received: by 10.25.0.6 with SMTP id 6csp766062lfa;
-        Sat, 27 May 2017 09:18:41 -0700 (PDT)
-X-Received: by 10.202.234.70 with SMTP id i67mr2995162oih.142.1495901921836;
-        Sat, 27 May 2017 09:18:41 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1495901921; cv=none;
+Received: by 10.25.0.6 with SMTP id 6csp766073lfa;
+        Sat, 27 May 2017 09:18:44 -0700 (PDT)
+X-Received: by 10.157.23.10 with SMTP id i10mr3321590ota.221.1495901924507;
+        Sat, 27 May 2017 09:18:44 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1495901924; cv=none;
         d=google.com; s=arc-20160816;
-        b=SsiXwkq8ttt+w3/7ktlzIswg9tGE92M/bjk+V5jycCXDD3HDsRpbY4R0u+Fdooh42K
-         4v703S3mqhWPrwu7iuE7cXSfokRC44ZfyghbBg+QVrIb8usA1iSmGS0osakRpiPVTsOP
-         eVktP8Mfgh6frvqI4WOfU+HuzX+WUSNna32l1mxnqNtJunFCs1dHipkLW4v848FlGJk5
-         pUkPQpbAFXDFvse72UsvA/WV/241fJqY7+RvDK1e5YehQq/puYyxtrgensMkYrSSPFe/
-         WGJwE3uVaOr0ku0UIJlQh+UBQVO0i3cBuVphC1waaKlL6rnMHxGna2zcJaKhtD6JbftL
-         h+Rw==
+        b=P5cu5r2D2cI0tgZ/meZBsOUGkM+JnGy8UwJO7ZxBbUmuLV0gz4UtHbiRw0zbIP9qfE
+         WXdLMGzr5lWrxpD9Rvr5K6XWBp6CkoubKvw+2iNJjQ9JpU+FC1oy/OETS7DFyrcJ+cR7
+         7clrXCjpYzr+1dtMPeXPkUkNpBneZiuKDdFSFvgmi1prGCVVXTbpTn3nQD5CaAErkpJh
+         40jqTlkal4yo8pMMcjxUbIO32P3GvNO+qHkTEriFQFJ67m13+0gdZRbCzKxGp+8a6fVu
+         JaHoGaGf3+pQ5pIF1FkRN9gzNRe6BHuJcbdFYRY+epmGBmnm/F+jXXnLe6/flQ5p9Vd7
+         KpZg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:sender:dkim-signature
          :arc-authentication-results;
-        bh=ynoPM1xg0NdogXCZoNg5KOH9hIqSa+9Rx+kdtXU2xbk=;
-        b=qhWHesi95AExflEjN7fqfo2R2I2xN753Tr02J+JR4W2/XmREoyW2wHRpEDYduXPly0
-         A2wt7ep89G6TgEgMuxix94P7AWkHkRpuz0DSwN3FXk7x96SiNwgk92qF2KNE+vM7IYx1
-         zOMetORztzVLMwBFFP+a2CiLGK2e+nCu4/9tcfY/X7z/1kCbqmNrT+D9VIow4PQdYFN/
-         yFy4dZi2zp5FcczQcszDOysV0tabFiBTu6TZBExFDMeohp5k/uB/fZM1Ks5OtNcHDZXW
-         jppqHe5gy0aYju/yfdePv12DvRm7gKvw2h5PufjEvOMf2h+EHh9Jx8LrweJWoX5K9SV3
-         aZOg==
+        bh=IkSRrsQnhJCWBzt8g6nuTGt+TAdaHWR1pI+cLextw8E=;
+        b=bSei3UylRqqfGrKxiJzbgiUKOljEWvcxGze0VfyMR8eJxqL0bvU8rCr9oFIANaXIsZ
+         3MlV6VBen5+33hIRxWppDCtCDyU7SUukVrpntqF+O1BvX20BHQI2S0Lt0gMA0ZU/Vv0q
+         y3+Ar9ViYZluDCUME3JOyxwKlHiI1Qnzk0HKL4ZM7/7Ts5PTgnAndctOXI7FoXQLxPW5
+         YnQJtKV002un8eVgbGa5IxYKxhWFHaHjweocPHfhZFsI1UjZKcDhhDbQGzKKh+u6SkK4
+         fMmFj1IRzSpvT3J4wT2QSlOQJssjNj0oNOPEBnigQlzSGD/pyzZOlcyL4AaNRr9crDpo
+         jSCA==
 ARC-Authentication-Results: i=1; mx.google.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 2607:f8b0:4003:c06::242 as permitted sender) smtp.mailfrom=philippe.mathieu.daude@gmail.com
+       spf=pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 2607:f8b0:4003:c06::241 as permitted sender) smtp.mailfrom=philippe.mathieu.daude@gmail.com
 Return-Path: <philippe.mathieu.daude@gmail.com>
-Received: from mail-oi0-x242.google.com (mail-oi0-x242.google.com. [2607:f8b0:4003:c06::242])
-        by mx.google.com with ESMTPS id d21si1171338otd.216.2017.05.27.09.18.41
+Received: from mail-oi0-x241.google.com (mail-oi0-x241.google.com. [2607:f8b0:4003:c06::241])
+        by mx.google.com with ESMTPS id h38si1658219otb.40.2017.05.27.09.18.44
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 27 May 2017 09:18:41 -0700 (PDT)
-Received-SPF: pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 2607:f8b0:4003:c06::242 as permitted sender) client-ip=2607:f8b0:4003:c06::242;
+        Sat, 27 May 2017 09:18:44 -0700 (PDT)
+Received-SPF: pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 2607:f8b0:4003:c06::241 as permitted sender) client-ip=2607:f8b0:4003:c06::241;
 Authentication-Results: mx.google.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 2607:f8b0:4003:c06::242 as permitted sender) smtp.mailfrom=philippe.mathieu.daude@gmail.com
-Received: by mail-oi0-x242.google.com with SMTP id w10so6038934oif.1;
-        Sat, 27 May 2017 09:18:41 -0700 (PDT)
+       spf=pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 2607:f8b0:4003:c06::241 as permitted sender) smtp.mailfrom=philippe.mathieu.daude@gmail.com
+Received: by mail-oi0-x241.google.com with SMTP id v80so6022358oie.2;
+        Sat, 27 May 2017 09:18:44 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
          :mime-version:content-transfer-encoding;
-        bh=ynoPM1xg0NdogXCZoNg5KOH9hIqSa+9Rx+kdtXU2xbk=;
-        b=DWygCdDJvXP+2UmDZYk3EAXe8rjvaNLVFWFzjWkgGx7WQ+Fg/W83eV6SXFXcxvaGzy
-         3kCkEbH7Y6Qs8acgL4rvlWGaLgmHeSpqIU5lHl1dfn68SKrR8x9M/TyAZ2gbxFu6sKqw
-         tTp0ArsEafgT3WHSEsv/rnCYgE64KhFL43uMhUMOzcGuXgtAf1+zWSTbU3jSjIxGaWxt
-         9PMfd1RdILBibeBGRgXGYJoVVl/Imuc5xOM7xnDNPrAO+Ey+W3KEFSnMj7+3Da3R2hCk
-         ypJy77RfimeieFQbJv0oKeFZeICZ7nQCcJIdTiA3boA4N6UmTQkKXIL25K0WW1Gfvx0A
-         KX8g==
+        bh=IkSRrsQnhJCWBzt8g6nuTGt+TAdaHWR1pI+cLextw8E=;
+        b=SJrQdpC6BCPJ9Mg3HCsMANyHtS+IiItOz8FCnk30K+Df2XxbUcNus5TPkiOjhMzDCR
+         zYG/Eu/skA2ojzdxoyB1o3+BVFx/T/dPt/14lS09xSlhjRBr8a/7LSDlOHNebauU+Zwt
+         T6zt3e3qgldL10bycPhPL401DPD0znjjGBko72yQ1k/fuuSf3B6kkYB/t8/dqgO2n5S0
+         4aDQ3LxV4nbnL7PQjznOt77mesLA7w8n834TLvMBqkxpxsjCE0XsG6CyEu56BToeRlsJ
+         3Xk4brX6pv5VPeHnrHe+2XC2yeH8DdJgl2ZWxYdxjfTX32kypa9G2UWSz6R/Rw+UeU/a
+         VhxA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
          :in-reply-to:references:mime-version:content-transfer-encoding;
-        bh=ynoPM1xg0NdogXCZoNg5KOH9hIqSa+9Rx+kdtXU2xbk=;
-        b=Za0lSp3eef8agSDWte68mX//nMJI8FAs/w3VeIluvU2V5N2oVK47ZFi6IFzNlAPsnu
-         o37TR5RF839oCI9ZjB3i/ekPoVeZYA7sGiTZo55ULpKQuIYAqXdNtZ4L2bKiEnDxXCAh
-         zNoRbua4CkuIkxEFO1+epsLM+WAZyZ1jmpdKh8DPVUb2M7jADcjBPprVexjvnaPL4g6g
-         CoxnTex7zgat9A34ulNz/XR8dqB8+icMpINkePZTkx7stndEfIAHB2jfs2A+XtG+MyeJ
-         g09P0YZLgmKgG1Y6qP2rGPK8ISl8zkx3BNv+PkPIqUxDqbZqf/mixRzebQD4EIenOA5h
-         RGlg==
-X-Gm-Message-State: AODbwcD3g+DbgaJFaRMki79Rqwb5u/RYUTcpIr+dea8G3r+FwU3rgyj2
-	BZ+xB6pjpPJy8Q==
-X-Received: by 10.157.50.163 with SMTP id u32mr3423599otb.188.1495901921401;
-        Sat, 27 May 2017 09:18:41 -0700 (PDT)
+        bh=IkSRrsQnhJCWBzt8g6nuTGt+TAdaHWR1pI+cLextw8E=;
+        b=uGDJcjIxCyhaFSKn8OYYPRIMj2WntC2bMUTy/1tyxBpk5JWdAMt8opRdbwzqdwSwTF
+         NKGmTPM2ULDkKn946v9MCFuIXQtsaKGWXJ6ks/fR0Exa8KUaO4uQshEzxd82ivLgDO3R
+         0M1oTeO/I1eQwPOvl4u+soyX35hJJZ9eS3/7LlHuqNQUrgvVfMAdvzijm+JmCJFRpR+S
+         yba/yrf7wn3jwNI+OFqGOCkGIPqgrrT2SyzBlq3nwhK4CBCRizKZY/HTKV7rc2zMzW+A
+         mH7zvGsWz8UvvL2NzN+6TR69PjoWJCoW9uZgvgH30vN9bHqFge+rQQFpsbaiKqsmXdy1
+         PoIw==
+X-Gm-Message-State: AODbwcDXYKpFabUi7J3nCTe4HkWsEkEekSS0vF8sRIxamTZUXV9kdFor
+	Y0+TmcdtNhFBXw==
+X-Received: by 10.157.46.169 with SMTP id w38mr1325494ota.78.1495901924010;
+        Sat, 27 May 2017 09:18:44 -0700 (PDT)
 Return-Path: <philippe.mathieu.daude@gmail.com>
 Received: from yoga.attlocal.net (162-231-236-127.lightspeed.miamfl.sbcglobal.net. [162.231.236.127])
-        by smtp.gmail.com with ESMTPSA id i32sm1953113otd.43.2017.05.27.09.18.38
+        by smtp.gmail.com with ESMTPSA id i32sm1953113otd.43.2017.05.27.09.18.41
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 27 May 2017 09:18:40 -0700 (PDT)
+        Sat, 27 May 2017 09:18:43 -0700 (PDT)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philippe.mathieu.daude@gmail.com>
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: qemu-devel@nongnu.org,
@@ -74,40 +74,40 @@ To: qemu-devel@nongnu.org,
 	Peter Maydell <peter.maydell@linaro.org>,
 	qemu-arm@nongnu.org
 Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-Subject: [PATCH v4 09/24] docker: use eatmydata in debian armhf image
-Date: Sat, 27 May 2017 13:17:40 -0300
-Message-Id: <20170527161755.7761-10-f4bug@amsat.org>
+Subject: [PATCH v4 10/24] docker: use eatmydata in debian arm64 image
+Date: Sat, 27 May 2017 13:17:41 -0300
+Message-Id: <20170527161755.7761-11-f4bug@amsat.org>
 X-Mailer: git-send-email 2.11.0
 In-Reply-To: <20170527161755.7761-1-f4bug@amsat.org>
 References: <20170527161755.7761-1-f4bug@amsat.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: ODhLOYDuoXai
+X-TUID: xau8Os5gd/fW
 
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- tests/docker/dockerfiles/debian-armhf-cross.docker | 7 +++++--
+ tests/docker/dockerfiles/debian-arm64-cross.docker | 7 +++++--
  1 file changed, 5 insertions(+), 2 deletions(-)
 
-diff --git a/tests/docker/dockerfiles/debian-armhf-cross.docker b/tests/docker/dockerfiles/debian-armhf-cross.docker
-index 668d60aeb3..ba8d5a5167 100644
---- a/tests/docker/dockerfiles/debian-armhf-cross.docker
-+++ b/tests/docker/dockerfiles/debian-armhf-cross.docker
+diff --git a/tests/docker/dockerfiles/debian-arm64-cross.docker b/tests/docker/dockerfiles/debian-arm64-cross.docker
+index 592b5d7055..f3db7f4f55 100644
+--- a/tests/docker/dockerfiles/debian-arm64-cross.docker
++++ b/tests/docker/dockerfiles/debian-arm64-cross.docker
 @@ -8,8 +8,11 @@ FROM qemu:debian
  # Add the foreign architecture we want and install dependencies
- RUN dpkg --add-architecture armhf
+ RUN dpkg --add-architecture arm64
  RUN apt update
--RUN apt install -yy crossbuild-essential-armhf
--RUN apt-get build-dep -yy -a armhf qemu
+-RUN apt install -yy crossbuild-essential-arm64
+-RUN apt-get build-dep -yy -a arm64 qemu
 +RUN DEBIAN_FRONTEND=noninteractive eatmydata \
 +    apt-get install -y --no-install-recommends \
-+        crossbuild-essential-armhf
++        crossbuild-essential-arm64
 +RUN DEBIAN_FRONTEND=noninteractive eatmydata \
-+    apt-get build-dep -yy -a armhf qemu
++    apt-get build-dep -yy -a arm64 qemu
  
  # Specify the cross prefix for this image (see tests/docker/common.rc)
- ENV QEMU_CONFIGURE_OPTS --cross-prefix=arm-linux-gnueabihf-
+ ENV QEMU_CONFIGURE_OPTS --cross-prefix=aarch64-linux-gnu-
 -- 
 2.11.0

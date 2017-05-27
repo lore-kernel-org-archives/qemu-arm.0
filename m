@@ -1,121 +1,113 @@
-Received: by 10.103.124.15 with SMTP id x15csp1873009vsc;
-        Tue, 23 May 2017 07:59:56 -0700 (PDT)
-X-Received: by 10.237.63.168 with SMTP id s37mr29357507qth.61.1495551596237;
-        Tue, 23 May 2017 07:59:56 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1495551596; cv=none;
+Received: by 10.25.0.6 with SMTP id 6csp766062lfa;
+        Sat, 27 May 2017 09:18:41 -0700 (PDT)
+X-Received: by 10.202.234.70 with SMTP id i67mr2995162oih.142.1495901921836;
+        Sat, 27 May 2017 09:18:41 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1495901921; cv=none;
         d=google.com; s=arc-20160816;
-        b=DDBgJh49HKNR0IIYd2O5Voxl8KKTaV3IzWcYICmge3zRKPe4u6zkXM6sM5QQL4XQhO
-         e9xNkNKdC/vZmX6hbiIe3WS2M5HTHd48KE2SQutNPhAqhL6TSLbokW23VpBAFJk3kQ/j
-         /YsB6TPq1CiM7UruT+3QHhCjEUGejKCuUq2t/chBOYYDxcfziUBVtZl2ED3CQaHkH4d2
-         M/AFkXE/5IlGAdy/XPi+REjyMk7dRkfDmrvnb8MVizzHVFxwROE2l4C2PmccaR6C56jp
-         Zi2ohUxpMWR3BrH/kdbR9YB96Tdq/tg+RtAXbV9yt2N80gToOlnvWhEa5PXNs5BmRDrJ
-         E2FQ==
+        b=SsiXwkq8ttt+w3/7ktlzIswg9tGE92M/bjk+V5jycCXDD3HDsRpbY4R0u+Fdooh42K
+         4v703S3mqhWPrwu7iuE7cXSfokRC44ZfyghbBg+QVrIb8usA1iSmGS0osakRpiPVTsOP
+         eVktP8Mfgh6frvqI4WOfU+HuzX+WUSNna32l1mxnqNtJunFCs1dHipkLW4v848FlGJk5
+         pUkPQpbAFXDFvse72UsvA/WV/241fJqY7+RvDK1e5YehQq/puYyxtrgensMkYrSSPFe/
+         WGJwE3uVaOr0ku0UIJlQh+UBQVO0i3cBuVphC1waaKlL6rnMHxGna2zcJaKhtD6JbftL
+         h+Rw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:arc-authentication-results;
-        bh=6O5ogU0T+Uelklqp6HjXJQ28iUykeq4/XUaljEIyYuc=;
-        b=V+/Ly/68eBrPn34B/BKd0yb6gjtFqiVXExRZjyT9eB6vCkriiiC7bJv3etIv86sFzS
-         L2j9RoPJVuQeGjR93G2G1m7pPmkflZkt0mnFkjy15OP68HlwXjz5T/WviLjnT6W4ug9G
-         XcAG6JQgHbFbEfWKt0SKOGKAiZXQ3LIQq/9bHOwLqUrX2jJkNpI2qfteHP+gbdhn5Gm5
-         LIvmH+UnD95Ck96VceqGmC9t3iPLzcpMkGboW/j4OLuzds2ObzZ8qaYavwGsj50XLZhe
-         8dmoRV4iwpSz42KN+MIWdnEKISVq8O7DZyqC5oghjz9UO2RuI0bo4BzwoWcicQaIgnHo
-         QYUg==
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:sender:dkim-signature
+         :arc-authentication-results;
+        bh=ynoPM1xg0NdogXCZoNg5KOH9hIqSa+9Rx+kdtXU2xbk=;
+        b=qhWHesi95AExflEjN7fqfo2R2I2xN753Tr02J+JR4W2/XmREoyW2wHRpEDYduXPly0
+         A2wt7ep89G6TgEgMuxix94P7AWkHkRpuz0DSwN3FXk7x96SiNwgk92qF2KNE+vM7IYx1
+         zOMetORztzVLMwBFFP+a2CiLGK2e+nCu4/9tcfY/X7z/1kCbqmNrT+D9VIow4PQdYFN/
+         yFy4dZi2zp5FcczQcszDOysV0tabFiBTu6TZBExFDMeohp5k/uB/fZM1Ks5OtNcHDZXW
+         jppqHe5gy0aYju/yfdePv12DvRm7gKvw2h5PufjEvOMf2h+EHh9Jx8LrweJWoX5K9SV3
+         aZOg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id l31si22093172qtf.186.2017.05.23.07.59.56
-        for <alex.bennee@linaro.org>
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 23 May 2017 07:59:56 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+       dkim=pass header.i=@gmail.com;
+       spf=pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 2607:f8b0:4003:c06::242 as permitted sender) smtp.mailfrom=philippe.mathieu.daude@gmail.com
+Return-Path: <philippe.mathieu.daude@gmail.com>
+Received: from mail-oi0-x242.google.com (mail-oi0-x242.google.com. [2607:f8b0:4003:c06::242])
+        by mx.google.com with ESMTPS id d21si1171338otd.216.2017.05.27.09.18.41
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Sat, 27 May 2017 09:18:41 -0700 (PDT)
+Received-SPF: pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 2607:f8b0:4003:c06::242 as permitted sender) client-ip=2607:f8b0:4003:c06::242;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:49574 helo=lists.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1dDBHv-0000l5-SG
-	for alex.bennee@linaro.org; Tue, 23 May 2017 10:59:55 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:56506)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1dDBGW-0008KU-Jm
-	for qemu-devel@nongnu.org; Tue, 23 May 2017 10:58:29 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1dDBGV-00057b-Ro
-	for qemu-devel@nongnu.org; Tue, 23 May 2017 10:58:28 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:41337)
-	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>)
-	id 1dDBGS-0004wm-1r; Tue, 23 May 2017 10:58:24 -0400
-Received: from tsrv.tls.msk.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id 32C33418EB;
-	Tue, 23 May 2017 17:58:23 +0300 (MSK)
-Received: from [192.168.177.99] (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.tls.msk.ru (Postfix) with ESMTP id 1D033437;
-	Tue, 23 May 2017 17:58:23 +0300 (MSK)
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
-	qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
-	Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org
-References: <20170508233918.9043-1-f4bug@amsat.org>
-	<20170508233918.9043-7-f4bug@amsat.org>
-From: Michael Tokarev <mjt@tls.msk.ru>
-Message-ID: <79598bed-714f-7c3b-a806-3bf1a4968fd2@msgid.tls.msk.ru>
-Date: Tue, 23 May 2017 17:58:23 +0300
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
-	Thunderbird/45.8.0
+       dkim=pass header.i=@gmail.com;
+       spf=pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 2607:f8b0:4003:c06::242 as permitted sender) smtp.mailfrom=philippe.mathieu.daude@gmail.com
+Received: by mail-oi0-x242.google.com with SMTP id w10so6038934oif.1;
+        Sat, 27 May 2017 09:18:41 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
+         :mime-version:content-transfer-encoding;
+        bh=ynoPM1xg0NdogXCZoNg5KOH9hIqSa+9Rx+kdtXU2xbk=;
+        b=DWygCdDJvXP+2UmDZYk3EAXe8rjvaNLVFWFzjWkgGx7WQ+Fg/W83eV6SXFXcxvaGzy
+         3kCkEbH7Y6Qs8acgL4rvlWGaLgmHeSpqIU5lHl1dfn68SKrR8x9M/TyAZ2gbxFu6sKqw
+         tTp0ArsEafgT3WHSEsv/rnCYgE64KhFL43uMhUMOzcGuXgtAf1+zWSTbU3jSjIxGaWxt
+         9PMfd1RdILBibeBGRgXGYJoVVl/Imuc5xOM7xnDNPrAO+Ey+W3KEFSnMj7+3Da3R2hCk
+         ypJy77RfimeieFQbJv0oKeFZeICZ7nQCcJIdTiA3boA4N6UmTQkKXIL25K0WW1Gfvx0A
+         KX8g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
+         :in-reply-to:references:mime-version:content-transfer-encoding;
+        bh=ynoPM1xg0NdogXCZoNg5KOH9hIqSa+9Rx+kdtXU2xbk=;
+        b=Za0lSp3eef8agSDWte68mX//nMJI8FAs/w3VeIluvU2V5N2oVK47ZFi6IFzNlAPsnu
+         o37TR5RF839oCI9ZjB3i/ekPoVeZYA7sGiTZo55ULpKQuIYAqXdNtZ4L2bKiEnDxXCAh
+         zNoRbua4CkuIkxEFO1+epsLM+WAZyZ1jmpdKh8DPVUb2M7jADcjBPprVexjvnaPL4g6g
+         CoxnTex7zgat9A34ulNz/XR8dqB8+icMpINkePZTkx7stndEfIAHB2jfs2A+XtG+MyeJ
+         g09P0YZLgmKgG1Y6qP2rGPK8ISl8zkx3BNv+PkPIqUxDqbZqf/mixRzebQD4EIenOA5h
+         RGlg==
+X-Gm-Message-State: AODbwcD3g+DbgaJFaRMki79Rqwb5u/RYUTcpIr+dea8G3r+FwU3rgyj2
+	BZ+xB6pjpPJy8Q==
+X-Received: by 10.157.50.163 with SMTP id u32mr3423599otb.188.1495901921401;
+        Sat, 27 May 2017 09:18:41 -0700 (PDT)
+Return-Path: <philippe.mathieu.daude@gmail.com>
+Received: from yoga.attlocal.net (162-231-236-127.lightspeed.miamfl.sbcglobal.net. [162.231.236.127])
+        by smtp.gmail.com with ESMTPSA id i32sm1953113otd.43.2017.05.27.09.18.38
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Sat, 27 May 2017 09:18:40 -0700 (PDT)
+Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philippe.mathieu.daude@gmail.com>
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+To: qemu-devel@nongnu.org,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	Fam Zheng <famz@redhat.com>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	qemu-arm@nongnu.org
+Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+Subject: [PATCH v4 09/24] docker: use eatmydata in debian armhf image
+Date: Sat, 27 May 2017 13:17:40 -0300
+Message-Id: <20170527161755.7761-10-f4bug@amsat.org>
+X-Mailer: git-send-email 2.11.0
+In-Reply-To: <20170527161755.7761-1-f4bug@amsat.org>
+References: <20170527161755.7761-1-f4bug@amsat.org>
 MIME-Version: 1.0
-In-Reply-To: <20170508233918.9043-7-f4bug@amsat.org>
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 86.62.121.231
-Subject: Re: [Qemu-devel] [PATCH 06/11] hw/arm: removed unnecessary include
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.21
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: h1g7+T+7s4i+
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-TUID: ODhLOYDuoXai
 
-09.05.2017 02:39, Philippe Mathieu-Daud=C3=A9 wrote:
-> "exec/memory.h" already includes it.
+Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
+---
+ tests/docker/dockerfiles/debian-armhf-cross.docker | 7 +++++--
+ 1 file changed, 5 insertions(+), 2 deletions(-)
 
-I think this sort of include cleanups isn't really necessary.
-For a regular include file, it's better to include it if the
-.c file in question uses definitions from there, no matter if
-other .h files include that header already or not.
-
-Thanks,
-
-/mjt
-
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
-> ---
->  include/hw/arm/arm.h | 1 -
->  1 file changed, 1 deletion(-)
->=20
-> diff --git a/include/hw/arm/arm.h b/include/hw/arm/arm.h
-> index a3f79d3379..b9c11d3fb8 100644
-> --- a/include/hw/arm/arm.h
-> +++ b/include/hw/arm/arm.h
-> @@ -14,7 +14,6 @@
->  #include "exec/memory.h"
->  #include "target/arm/cpu-qom.h"
->  #include "hw/irq.h"
-> -#include "qemu/notify.h"
-> =20
->  typedef enum {
->      ARM_ENDIANNESS_UNKNOWN =3D 0,
->=20
-
+diff --git a/tests/docker/dockerfiles/debian-armhf-cross.docker b/tests/docker/dockerfiles/debian-armhf-cross.docker
+index 668d60aeb3..ba8d5a5167 100644
+--- a/tests/docker/dockerfiles/debian-armhf-cross.docker
++++ b/tests/docker/dockerfiles/debian-armhf-cross.docker
+@@ -8,8 +8,11 @@ FROM qemu:debian
+ # Add the foreign architecture we want and install dependencies
+ RUN dpkg --add-architecture armhf
+ RUN apt update
+-RUN apt install -yy crossbuild-essential-armhf
+-RUN apt-get build-dep -yy -a armhf qemu
++RUN DEBIAN_FRONTEND=noninteractive eatmydata \
++    apt-get install -y --no-install-recommends \
++        crossbuild-essential-armhf
++RUN DEBIAN_FRONTEND=noninteractive eatmydata \
++    apt-get build-dep -yy -a armhf qemu
+ 
+ # Specify the cross prefix for this image (see tests/docker/common.rc)
+ ENV QEMU_CONFIGURE_OPTS --cross-prefix=arm-linux-gnueabihf-
+-- 
+2.11.0

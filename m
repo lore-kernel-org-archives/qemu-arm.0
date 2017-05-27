@@ -1,99 +1,99 @@
-Received: by 10.25.0.6 with SMTP id 6csp525049lfa;
-        Fri, 26 May 2017 17:00:47 -0700 (PDT)
-X-Received: by 10.55.43.93 with SMTP id r90mr4792902qkh.196.1495843247728;
-        Fri, 26 May 2017 17:00:47 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1495843247; cv=none;
+Received: by 10.25.0.6 with SMTP id 6csp559845lfa;
+        Fri, 26 May 2017 19:32:44 -0700 (PDT)
+X-Received: by 10.200.45.247 with SMTP id q52mr6409793qta.177.1495852364576;
+        Fri, 26 May 2017 19:32:44 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1495852364; cv=none;
         d=google.com; s=arc-20160816;
-        b=LYKDPEdScUI17FGKt8Y+pzjdXimzuxPR2bH9dVAPNH0ugRww9VprLS1GwS46fAhT7O
-         pJTQTOXWsUwkqRcWdyts+wG4yMhlXrIIy32kDIdhNMGOmK7ukICV4PVf+ytwdOnpH771
-         MgZiT3+FmwlBl3MiaAGpTwLmi75Bd4H7O08r1ocr2eX2b8AcEqiWUwqH+T+AWyCpNhL+
-         PoH4YBkjgPa0wrftiddn4T6Va2uCUKyhSzJt0iRYByFNhbNcteO/g54J1nY3lEkY0SE8
-         jOQ4b6njoPigRSSg2rbUvuUxxFppLk01GdF6mQyhRQFyc5QNZ1SbXkIzXjUoP6WGW7nV
-         eh1Q==
+        b=0UG8QyrjLkYOXDw3i1UsYn1WFeWQGyrANqYjQlKChz8aRyoAoUvOBL09P1VjIfCG+R
+         ZIkwLS5M0bxugTezHkIlCCAXIcAhANwG81q7CtA/RVXNv2NKw75xS0OdwDy5AR2QOB2V
+         eaHkg5dgCo8a+V3DxQU+Q/+INTTgy7j4cTq43fVnRMl/6wxZOjCik/ULcNLKKx4y19lk
+         ja6S8zGK+eLdqcLTtuqOFzGtXPdc8b9jJVHN+UWGQX80mG4y8O6Gma+jptxSpTzpfq6M
+         GsKd3xXj5z1RVyH98IcvbSS/Bqr0ngOMk25yB5bp2yb3uQcEAd7QjVCbCp5pds/txQ22
+         IO9g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
          :references:in-reply-to:mime-version:dkim-signature
          :arc-authentication-results;
-        bh=qqpJw1OIIzsZ5wdm8WhabN3iETKz9xvclzYgSbnSjeQ=;
-        b=i5fieKvSkGFb4uinDA+eZnhfkPayHELoqKQzCn+o/NM6NxJiCNK16rccBbGaYsk3pT
-         Q+Ey5k0Q4i7F8ifSRo1LA86jpRMG36oAs1ScMOSXTH0H7wEtW9971XmkZ1xo5daKI6JX
-         LtVNJkQ2aLuNzTpNk02qfMpoLXYl3B0swst2w4qAmEVL3WQFqnxhxnLPDUJLWOQZcyAv
-         I3t6kmhzXjrvDNQa4K4mUYZLWiCadHx8v72jp+rKeZ7MFzOM49IAaURhs2arW2mb4vVo
-         vnq+YUi9FDltU/7Q0dUl9cVcA6iuCahy4+dXu9amyHlqT2YZcvFbJNcIZ5dkLsKFsR3B
-         IK0Q==
+        bh=jtr+igeV/hHu8+ZSfF8KcXGjTlMy5nR8D0FoLmT1ex8=;
+        b=XfARnq+ETnXJhM03AOwP8+eBKMzLDwQF59W0V88A3CVJ85QGAXNtGlxJpjK++KzO1B
+         22cOnmKfNtAS0yetj0t3K3ytEx8HsTtcXbwsYeGlB4Ey8I/iv4k6hAu8xKFPkl1hVnru
+         7mu1NwC6Qk3pyFaGHtHPjsmvbEyU/VzBluYR5C4q1PS8vPxb+6YgJvyroVviKtkYDxHn
+         Gb+BXyiP8fkLSsxgnK1aFQfpU1CoS0b7CgrCFMciAO7iXJET7CDh/G1CkmB7gQ8Mnfso
+         a5hVgN6fkG2VEi5FDQ2Q8wqEbbU/VzLqYAScfUIO8TJE1jiv9BTQFaL3yuFy5+NX/5QF
+         sARQ==
 ARC-Authentication-Results: i=1; mx.google.com;
        dkim=fail header.i=@gmail.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id u44si2162383qth.5.2017.05.26.17.00.47
+        by mx.google.com with ESMTPS id l64si2539535qkb.277.2017.05.26.19.32.44
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 26 May 2017 17:00:47 -0700 (PDT)
+        Fri, 26 May 2017 19:32:44 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        dkim=fail header.i=@gmail.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:38941 helo=lists.gnu.org)
+Received: from localhost ([::1]:39211 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1dEP9z-00012R-7Q
-	for alex.bennee@linaro.org; Fri, 26 May 2017 20:00:47 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:35015)
+	id 1dERX2-0001jH-2c
+	for alex.bennee@linaro.org; Fri, 26 May 2017 22:32:44 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:56067)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alistair23@gmail.com>) id 1dEP9o-00010r-2z
-	for qemu-arm@nongnu.org; Fri, 26 May 2017 20:00:37 -0400
+	(envelope-from <zhlcindy@gmail.com>) id 1dERWu-0001iy-LH
+	for qemu-arm@nongnu.org; Fri, 26 May 2017 22:32:37 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <alistair23@gmail.com>) id 1dEP9m-00084X-Qo
-	for qemu-arm@nongnu.org; Fri, 26 May 2017 20:00:36 -0400
-Received: from mail-oi0-x244.google.com ([2607:f8b0:4003:c06::244]:35452)
+	(envelope-from <zhlcindy@gmail.com>) id 1dERWt-0003YL-GF
+	for qemu-arm@nongnu.org; Fri, 26 May 2017 22:32:36 -0400
+Received: from mail-wm0-x244.google.com ([2a00:1450:400c:c09::244]:36746)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <alistair23@gmail.com>)
-	id 1dEP9j-00083m-UP; Fri, 26 May 2017 20:00:32 -0400
-Received: by mail-oi0-x244.google.com with SMTP id v80so3957069oie.2;
-	Fri, 26 May 2017 17:00:31 -0700 (PDT)
+	(Exim 4.71) (envelope-from <zhlcindy@gmail.com>)
+	id 1dERWt-0003YC-8a; Fri, 26 May 2017 22:32:35 -0400
+Received: by mail-wm0-x244.google.com with SMTP id k15so6625215wmh.3;
+	Fri, 26 May 2017 19:32:35 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
 	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=qqpJw1OIIzsZ5wdm8WhabN3iETKz9xvclzYgSbnSjeQ=;
-	b=ah7htupm2XCNXbWVYVK4Al74PggMKEV46uiMFX7PEjA2Li9ETxW0zpXchazPIFIK7M
-	qqa0BFS2YaCaHxJ1iHTrEf//P+6w+IiVjGhn/WfksGxgQWKCaxJEvGeyO+OoJEi+oryQ
-	EpuN9ROsoclQFOm4czLrzo11lUMnp9/0TnboWHKBVXniHcxge9KMQ1dck5U7PwgIWMdP
-	2bSqKldfGxs4xbFLXyKlIw0thR5Y3Z+GBCaNVNY6CISoXNZupo/Jwad/OQg45uJCiXHR
-	HZU1fQPPdH1dyj27QntNRrEakG4qGoLLOZ1K/zeBh4xcJ6s7ziRqjwRs3u24DD3tBY4U
-	BoGg==
+	:cc; bh=jtr+igeV/hHu8+ZSfF8KcXGjTlMy5nR8D0FoLmT1ex8=;
+	b=a1t8Cc5WpmwBu9Gw9WSY7P+AC6ZxqrLjBcdz3r/DN70xNFpwxlyahDmFjy6L2maLC5
+	X4ei3OePseccjBF/mNx24Cjl7RdSz7/5HGXNqckBmzy2+f6EydSa4QxOUDAn07XGWfLQ
+	262p1Y2DL78xraCAHZg/FqcKNWAX16a7U0yC8o0FRUVTd6oD3MKG16BXoHOV5RJ/SrGZ
+	AgyKgL+SGT5dOVuTwVbDNXM8yfCsQ2KsBDBRDuEap05bZ5UEaSY04WdJ3+ujkFXxitIO
+	pGlFMethlo9GjADMfyA3R7j+OXb1aaxpTQUEfkc6s5bJdYlaePEKH75bLHwf253NPzUh
+	Idtw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
 	:message-id:subject:to:cc;
-	bh=qqpJw1OIIzsZ5wdm8WhabN3iETKz9xvclzYgSbnSjeQ=;
-	b=VCXDq7+WTh60jhtT1B93A131cgSPnZZSX8nrf6LnE905/wUo5lUreQqd5pSRed6aFl
-	qEXqZ+Ftw5DyPy2yQS1dAIRn6XYM1Z4tbksVHwoR42vknQRch3zMeqdANc3uUXM7Rzzj
-	qvkSKRpQlZJQJxb0JC0QLYg0/k1Hzqkd4AajYC7CLGR3vLKkcX0L5j2xLE8HledfExb/
-	F1paYZ7teS2RB/szEHAx7OEYeM/cU+RSSlCdA9KQXCmSP5b9JtzzV3IxUvuBaRL7Yt+H
-	RvpH/JsyNs7AbIlwQfooPDT1n9zKcE/JOAiYF2wlaGMfWb3cwQXcxXYp9T0A60JSwBLj
-	GBWg==
-X-Gm-Message-State: AODbwcCZPHQ4Z0ikNXAtmY3rqi+xxBTsyS8xv3QETp8QTz73S4ladoN7
-	W1az8xsORs9XQB+hfr3qRu6nfB21qA==
-X-Received: by 10.202.170.12 with SMTP id t12mr2286217oie.44.1495843230863;
-	Fri, 26 May 2017 17:00:30 -0700 (PDT)
+	bh=jtr+igeV/hHu8+ZSfF8KcXGjTlMy5nR8D0FoLmT1ex8=;
+	b=Edy43dXzAU6sQkEe37Dc1yWT1Ye3VoXlTrdM4CoqDzhhyhMfya5mFbpRkF1l7yCaG0
+	28XyChSyGVknwNricQwx+Dozip4cbFEmw9TBdcALOOYNFYOzOdRpmheXc3DH5XuLw2Xq
+	gCLIF4I+1mI5LbKFSA1Angb6vh1boxJn4g7mbWdLJ5QGqBjKCzGxtmnIiuzkMljnhR+R
+	diZVbLWXrdd01r6xlPgX6Y1Ulbt+7YDcHg3TMPSTjXfx29UdI80TCZzCBVdGJ/Q7POmS
+	xlMRQ0NZa/TKofyUMWiy7YbqYRrSCccH1whFys2f22qDJdG5dnuDUNIFwAzVJUlvONrY
+	KY5A==
+X-Gm-Message-State: AODbwcAKuhWqUCnTYQQsqVnKQUkMJkAOXkswZyrS4sG5954f+ML7EANP
+	DGncavy/C3rc++k0X8B9LuFkbEJ02A==
+X-Received: by 10.80.185.3 with SMTP id m3mr4426196ede.41.1495852354114; Fri,
+	26 May 2017 19:32:34 -0700 (PDT)
 MIME-Version: 1.0
-Received: by 10.182.2.37 with HTTP; Fri, 26 May 2017 17:00:00 -0700 (PDT)
-In-Reply-To: <1494949133-2202-6-git-send-email-sundeep.lkml@gmail.com>
-References: <1494949133-2202-1-git-send-email-sundeep.lkml@gmail.com>
-	<1494949133-2202-6-git-send-email-sundeep.lkml@gmail.com>
-From: Alistair Francis <alistair23@gmail.com>
-Date: Fri, 26 May 2017 17:00:00 -0700
-Message-ID: <CAKmqyKPwRaXsgcuGC28x_pA9CYA-tcCnSBGNX1Qv3d3cXX8rsg@mail.gmail.com>
-To: Subbaraya Sundeep <sundeep.lkml@gmail.com>
+Received: by 10.80.149.13 with HTTP; Fri, 26 May 2017 19:32:33 -0700 (PDT)
+In-Reply-To: <20170526132114.6edc006e@nial.brq.redhat.com>
+References: <1495790468-23862-1-git-send-email-zhlcindy@gmail.com>
+	<20170526132114.6edc006e@nial.brq.redhat.com>
+From: Li Zhang <zhlcindy@gmail.com>
+Date: Sat, 27 May 2017 10:32:33 +0800
+Message-ID: <CAD8of+pw5Nh4oSkTuYX4fbJvA8=-CTmn6dgdXHPLERAcQM+Oyw@mail.gmail.com>
+To: Igor Mammedov <imammedo@redhat.com>
 Content-Type: text/plain; charset="UTF-8"
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:4003:c06::244
-Subject: Re: [Qemu-arm] [Qemu devel v5 PATCH 5/5] msf2: Add Emcraft's
- Smartfusion2 SOM kit.
+X-Received-From: 2a00:1450:400c:c09::244
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH 0/3] arm/virt: refine virt.c
+ code and implement hot_add_cpu interface
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -105,151 +105,77 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
-	=?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>,
-	qemu-arm <qemu-arm@nongnu.org>,
-	"qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>
+Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org,
+	Li Zhang <li.zhang@hxt-semitech.com>,
+	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: nAQi8899dCkp
+X-TUID: oaVVqaQvf3gb
 
-On Tue, May 16, 2017 at 8:38 AM, Subbaraya Sundeep
-<sundeep.lkml@gmail.com> wrote:
-> Emulated Emcraft's Smartfusion2 System On Module starter
-> kit.
+On Fri, May 26, 2017 at 7:21 PM, Igor Mammedov <imammedo@redhat.com> wrote:
+> On Fri, 26 May 2017 17:21:05 +0800
+> Li Zhang <zhlcindy@gmail.com> wrote:
 >
-> Signed-off-by: Subbaraya Sundeep <sundeep.lkml@gmail.com>
-> ---
->  hw/arm/Makefile.objs |  1 +
->  hw/arm/msf2-som.c    | 89 ++++++++++++++++++++++++++++++++++++++++++++++++++++
->  2 files changed, 90 insertions(+)
->  create mode 100644 hw/arm/msf2-som.c
+>> From: Li Zhang <li.zhang@hxt-semitech.com>
+>>
+>> virt machine doesn't support hot_add_cpu interface. This patchset is to implement
+>> hot_add_cpu interface. A CPU can be added by QMP command with QEMU monitor.
+>>
+>> Here is command to add a CPU with QMP command.
+>>
+>> * qemu-system-aarch64 -machine virt -cpu cortex-a15 -smp 1,maxcpus=4 \
+>>     -monitor telnet:127.0.0.1:4444,server,nowait -nographic
+>> * connect monitor:      telnet 127.0.0.1 4444
+>> * execute qmp command:  cpu-add 1
+> cpu-add command shouldn't be used for new cpu hotplug,
+> pls use generic device_add for that.
+
+Ok,  I will drop this command and look at device_add.
+
 >
-> diff --git a/hw/arm/Makefile.objs b/hw/arm/Makefile.objs
-> index c828061..4b02093 100644
-> --- a/hw/arm/Makefile.objs
-> +++ b/hw/arm/Makefile.objs
-> @@ -5,6 +5,7 @@ obj-y += omap_sx1.o palm.o realview.o spitz.o stellaris.o
->  obj-y += tosa.o versatilepb.o vexpress.o virt.o xilinx_zynq.o z2.o
->  obj-$(CONFIG_ACPI) += virt-acpi-build.o
->  obj-y += netduino2.o
-> +obj-y += msf2-som.o
+> The last time I looked at it, virt machine needed quite a bit of
+> re-factoring of the way it creates/wires up CPUs.
 
-This should be obj-$(CONFIG_MSF2).
+ Yes, I am looking into it and see if I can do something:)
 
->  obj-y += sysbus-fdt.o
 >
->  obj-y += armv7m.o exynos4210.o pxa2xx.o pxa2xx_gpio.o pxa2xx_pic.o
-> diff --git a/hw/arm/msf2-som.c b/hw/arm/msf2-som.c
-> new file mode 100644
-> index 0000000..cd2b759
-> --- /dev/null
-> +++ b/hw/arm/msf2-som.c
-> @@ -0,0 +1,89 @@
-> +/*
-> + * SmartFusion2 SOM starter kit(from Emcraft) emulation.
-> + *
-> + * Copyright (c) 2017 Subbaraya Sundeep <sundeep.lkml@gmail.com>
-> + *
-> + * Permission is hereby granted, free of charge, to any person obtaining a copy
-> + * of this software and associated documentation files (the "Software"), to deal
-> + * in the Software without restriction, including without limitation the rights
-> + * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-> + * copies of the Software, and to permit persons to whom the Software is
-> + * furnished to do so, subject to the following conditions:
-> + *
-> + * The above copyright notice and this permission notice shall be included in
-> + * all copies or substantial portions of the Software.
-> + *
-> + * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-> + * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-> + * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
-> + * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-> + * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-> + * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-> + * THE SOFTWARE.
-> + */
-> +
-> +#include "qemu/osdep.h"
-> +#include "qapi/error.h"
-> +#include "hw/boards.h"
-> +#include "hw/arm/msf2-soc.h"
-> +#include "hw/arm/arm.h"
-> +#include "exec/address-spaces.h"
-> +
-> +#define DDR_BASE_ADDRESS      0xA0000000
-> +#define DDR_SIZE              (64 * M_BYTE)
-> +
-> +static void emcraft_sf2_init(MachineState *machine)
-> +{
-> +    DeviceState *dev;
-> +    DeviceState *spi_flash;
-> +    MSF2State *soc;
-> +    DriveInfo *dinfo = drive_get_next(IF_MTD);
-> +    qemu_irq cs_line;
-> +    SSIBus *spi_bus;
-> +    MemoryRegion *sysmem = get_system_memory();
-> +    MemoryRegion *ddr = g_new(MemoryRegion, 1);
-> +
-> +    memory_region_init_ram(ddr, NULL, "ddr-ram", DDR_SIZE,
-> +                           &error_fatal);
-> +    vmstate_register_ram_global(ddr);
-> +    memory_region_add_subregion(sysmem, DDR_BASE_ADDRESS, ddr);
-
-The user can use -m to specify the amount of RAM to create in the
-machine. Unless this board only ever includes 64MB of RAM you should
-use that option (you will need to sanity check it though). If the
-board only ever has 64MB it might be worth printing a warning to the
-user if they specify an something. Although there might be a default
-if they don't use -m, which makes it hard to print out a warning
-message.
-
-> +
-> +    dev = qdev_create(NULL, TYPE_MSF2_SOC);
-> +    qdev_prop_set_string(dev, "part-name", "M2S010");
-> +    qdev_prop_set_uint64(dev, "eNVM-size", M2S010_ENVM_SIZE);
-> +    qdev_prop_set_uint64(dev, "eSRAM-size", M2S010_ESRAM_SIZE);
-> +
-> +    /*
-> +     * pclk0 and pclk1 are configurable in Libero.
-> +     * Emcraft's SoM kit comes with these settings by default.
-> +     */
-> +    qdev_prop_set_uint32(dev, "pclk0", 71 * 1000000);
-> +    qdev_prop_set_uint32(dev, "pclk1", 71 * 1000000);
-> +
-> +    object_property_set_bool(OBJECT(dev), true, "realized", &error_fatal);
-> +
-> +    soc = MSF2_SOC(dev);
-> +
-> +    /* Attach SPI flash to SPI0 controller */
-> +    spi_bus = (SSIBus *)qdev_get_child_bus(dev, "spi0");
-> +    spi_flash = ssi_create_slave_no_init(spi_bus, "s25sl12801");
-> +    qdev_prop_set_uint8(spi_flash, "spansion-cr2nv", 1);
-> +    if (dinfo) {
-> +        qdev_prop_set_drive(spi_flash, "drive", blk_by_legacy_dinfo(dinfo),
-> +                                    &error_fatal);
-> +    }
-> +    qdev_init_nofail(spi_flash);
-
-Can you just set realized instead?
-
-Thanks,
-Alistair
-
-> +    cs_line = qdev_get_gpio_in_named(spi_flash, SSI_GPIO_CS, 0);
-> +    sysbus_connect_irq(SYS_BUS_DEVICE(&soc->spi[0]), 1, cs_line);
-> +
-> +    armv7m_load_kernel(ARM_CPU(first_cpu), machine->kernel_filename,
-> +                       soc->envm_size);
-> +}
-> +
-> +static void emcraft_sf2_machine_init(MachineClass *mc)
-> +{
-> +    mc->desc = "SmartFusion2 SOM kit from Emcraft";
-> +    mc->init = emcraft_sf2_init;
-> +}
-> +
-> +DEFINE_MACHINE("smartfusion2-som", emcraft_sf2_machine_init)
-> --
-> 2.5.0
+> Pls see usage of following callbacks for example on how to implement
+> device_add based cpu hotplug:
 >
+>   get_hotplug_handler
+>   pc_cpu_pre_plug
+>   pc_cpu_plug
+>   pc_possible_cpu_arch_ids
+>
+> and pc_cpus_init() for initial cpu creation with above callbacks in use
+>
+Thanks, I will see it. :)
+
+>>
+>> Currently, when KVM is enabled and add a CPU with QMP command, QEMU
+>> reports error "kvm_init_vcpu failed: Device or resourc busy". KVM can't
+>> create a new CPU when vgic has been initialized and irqchip_in_kernel in
+>> function kvm_arch_vcpu_create. It needs to change KVM code in the future.
+> if KVM isn't capable do it yet, then qemu should refuse cpu hotplug if running
+> with KVM accelarator and allow it only in TCG mode.
+
+OK, I will add an assertion to allow hotplug only in TCG mode.
+
+>
+>>
+>> Li Zhang (3):
+>>   arm/virt: Refine fdt_add_cpu_nodes code
+>>   arm/virt: Refine code of machvirt_init
+>>   arm/virt: Implement hot_add_cpu interface
+>>
+>>  hw/arm/virt.c | 344 ++++++++++++++++++++++++++++++++++------------------------
+>>  1 file changed, 202 insertions(+), 142 deletions(-)
+>>
+>
+
+
+
+-- 
+
+Best Regards
+-Li

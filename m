@@ -1,92 +1,94 @@
-Received: by 10.25.0.6 with SMTP id 6csp1395202lfa;
-        Mon, 29 May 2017 06:14:54 -0700 (PDT)
-X-Received: by 10.237.39.195 with SMTP id m3mr17139125qtg.164.1496063694761;
-        Mon, 29 May 2017 06:14:54 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1496063694; cv=none;
+Received: by 10.25.0.6 with SMTP id 6csp1398447lfa;
+        Mon, 29 May 2017 06:22:55 -0700 (PDT)
+X-Received: by 10.237.54.2 with SMTP id e2mr19182522qtb.218.1496064174917;
+        Mon, 29 May 2017 06:22:54 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1496064174; cv=none;
         d=google.com; s=arc-20160816;
-        b=lE+4l48+4DuL9K2OIKniab2E1bHF9HmrE2sKDgou2L12VzUjLO+vdpTaS9SK9yOqJw
-         DQlQI+KfmRTlw1YgBNK1kHB7opw2jBJLGSKscwK1LdqpxzFY9F4/XiLOlLB9aiF6Xlu4
-         1niK0siZYtlQHpE3W+BD5RIrgWEqA7hNibOhvay8paZnPE5yeHj2qkrHbayW7MPgXnLC
-         /kqXA11wko2M0YoibZ1EiusTbkJRHrnVdEtFxjbieiIDjVGfh2RIZSq/shKXaG3i0sBD
-         k1nEdO8DHrLuSz5Pb+nTVwLFf3BgcbALxvbIhlDyKtlAolTXGVBVgXmiuTsCT7lBAGZi
-         f0Sg==
+        b=XZP0l08jvfUYj03Dvg64mNQ7mPdjxr2UqiRxA7LevChyoBGUsGKtiXPBt6mM98VPC/
+         jFaSzNl2ftJHl6BR2jlYvbStAeQ5Bqce9qKk72A7XqAOe8ut8PZchVNRN18pHPRxs98u
+         gwIHRw7o+UBp1xH03xQIEIjTBwdAa+xwmOQjlshtpiyfO1M2ETvp/cVk9t6aQCQaZ+3m
+         vfsHGglRtiNiPcHlCp3AU1an34NFmlOsHm4XG5qqeQtT64lIHDKdUIEsztHFhZ0pAQhX
+         aoidbowgeJfxdpLVbIG27UlOi0JsRu3itQs/n41oLwiaK0YYC/CGMD8s3UoVi67gAKS1
+         AFJQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:to:from:date:dkim-filter:dmarc-filter
-         :arc-authentication-results;
-        bh=r8tpy9ulYFXH+qFnuvErcENHLnZmtfKnOkAznK98EbU=;
-        b=NzUhuvzy4ME0vvCtp3ywXf52kZTJ4WS7pB1VYikYv4npo4a/RWZffLR8yG7ZyKbg90
-         iEfJyR9TJg6UV7qKJ5XTrLpkZbiQnPERIF1XpZzX72Ag3IkmVEbPjE5KtQY7Kwj+9Adf
-         /s/1wqZ6sekOM/DMyDodJm1ML8MfIguwHef0dNX4gXki1zAlTUOcGIFI4vJXozln0M4H
-         V75d449Nxua6BpEuKLMoJnJqqWbInadyXMQkv58b+1ZjdnPTzxo54Db5YUxwuY6T8+5R
-         +8jMPC7DXIIDvGktEJeaI3/3J0pIMG0K/A8IpFqfuvnlJVe9CIwcsVvpzlggqzBYLmzd
-         97NQ==
+         :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
+         :content-disposition:mime-version:references:message-id:to:from:date
+         :dkim-filter:dmarc-filter:arc-authentication-results;
+        bh=ceYfGQ7qz1P9l2MF6gih3ZY6yYdaSKvaSiRx0AL08wM=;
+        b=VaNb/v79bhtpy2NwXiNcasE4DVZj9E3TtFWwoLwU0Do3UkxxqD0Ln0Pm9qmHSfOHjH
+         Bnw3bw9xK9TtKqBw5vSDFHJfLZpKAlU2TlgZIkH1cJTVU8cxl8Nr1D4M9afoiyF4+rfC
+         EHibTHXCav7tk56BiJLpIGl8lRq3EzWcHZPUvgvsfQwsU7imAvw4ZEXzCrtu6VFP/y37
+         7b07OFmYQGvMrVT18meB2sYfor73nClYfauj6xHMq68kE1CPlSz0GkYGrhkUO0PGfw8I
+         Dw86em8uzWRque1nlrwrwYgLoCIuPXY3qML//y38901EVp+sqI8ovIr2DjLL4ZSPl9OY
+         28Wg==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id r83si2072076qkl.309.2017.05.29.06.14.54
+        by mx.google.com with ESMTPS id e34si9298052qtb.220.2017.05.29.06.22.54
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 29 May 2017 06:14:54 -0700 (PDT)
+        Mon, 29 May 2017 06:22:54 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:48727 helo=lists.gnu.org)
+Received: from localhost ([::1]:48759 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1dFKVa-0003Q0-7p
-	for alex.bennee@linaro.org; Mon, 29 May 2017 09:14:54 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:54958)
+	id 1dFKdK-0007Xk-9K
+	for alex.bennee@linaro.org; Mon, 29 May 2017 09:22:54 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:56692)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <imammedo@redhat.com>) id 1dFKTb-0001pf-Qu
-	for qemu-arm@nongnu.org; Mon, 29 May 2017 09:12:52 -0400
+	(envelope-from <ehabkost@redhat.com>) id 1dFKdF-0007Xb-61
+	for qemu-arm@nongnu.org; Mon, 29 May 2017 09:22:50 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <imammedo@redhat.com>) id 1dFKTa-0002a1-ST
-	for qemu-arm@nongnu.org; Mon, 29 May 2017 09:12:51 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:57218)
+	(envelope-from <ehabkost@redhat.com>) id 1dFKdC-00053q-08
+	for qemu-arm@nongnu.org; Mon, 29 May 2017 09:22:49 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:50896)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <imammedo@redhat.com>)
-	id 1dFKTa-0002Zw-J3; Mon, 29 May 2017 09:12:50 -0400
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
-	[10.5.11.11])
+	(Exim 4.71) (envelope-from <ehabkost@redhat.com>)
+	id 1dFKdB-00050z-K3; Mon, 29 May 2017 09:22:45 -0400
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+	[10.5.11.14])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 3F0B0C056820;
-	Mon, 29 May 2017 13:12:49 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 3F0B0C056820
-Authentication-Results: ext-mx08.extmail.prod.ext.phx2.redhat.com;
+	by mx1.redhat.com (Postfix) with ESMTPS id 97EC39D0DB;
+	Mon, 29 May 2017 13:22:43 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 97EC39D0DB
+Authentication-Results: ext-mx10.extmail.prod.ext.phx2.redhat.com;
 	dmarc=none (p=none dis=none) header.from=redhat.com
-Authentication-Results: ext-mx08.extmail.prod.ext.phx2.redhat.com;
-	spf=pass smtp.mailfrom=imammedo@redhat.com
-DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com 3F0B0C056820
-Received: from nial.brq.redhat.com (dhcp-1-118.brq.redhat.com [10.34.1.118])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 47809189B5;
-	Mon, 29 May 2017 13:12:47 +0000 (UTC)
-Date: Mon, 29 May 2017 15:12:45 +0200
-From: Igor Mammedov <imammedo@redhat.com>
-To: Eduardo Habkost <ehabkost@redhat.com>
-Message-ID: <20170529151245.3fba6db4@nial.brq.redhat.com>
-In-Reply-To: <20170526154625.GI22043@thinpad.lan.raisama.net>
-References: <1494415802-227633-1-git-send-email-imammedo@redhat.com>
-	<1494415802-227633-7-git-send-email-imammedo@redhat.com>
-	<20170526154625.GI22043@thinpad.lan.raisama.net>
+Authentication-Results: ext-mx10.extmail.prod.ext.phx2.redhat.com;
+	spf=pass smtp.mailfrom=ehabkost@redhat.com
+DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com 97EC39D0DB
+Received: from localhost (ovpn-116-57.gru2.redhat.com [10.97.116.57])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 29454179D5;
+	Mon, 29 May 2017 13:22:42 +0000 (UTC)
+Date: Mon, 29 May 2017 10:22:41 -0300
+From: Eduardo Habkost <ehabkost@redhat.com>
+To: Igor Mammedov <imammedo@redhat.com>
+Message-ID: <20170529132241.GC32274@thinpad.lan.raisama.net>
+References: <1495550330-34087-1-git-send-email-imammedo@redhat.com>
+	<1495550330-34087-4-git-send-email-imammedo@redhat.com>
+	<20170526160630.GT32274@thinpad.lan.raisama.net>
+	<20170529134536.6a558835@nial.brq.redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20170529134536.6a558835@nial.brq.redhat.com>
+X-Fnord: you can see the fnord
+User-Agent: Mutt/1.8.0 (2017-02-23)
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.32]);
-	Mon, 29 May 2017 13:12:49 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.39]);
+	Mon, 29 May 2017 13:22:43 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v3 06/18] numa: mirror cpu to
- node mapping in MachineState::possible_cpus
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v2 3/5] numa: make sure that all
+ cpus in has has_node_id set if numa is enabled
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -98,84 +100,248 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jones <drjones@redhat.com>,
-	qemu-devel@nongnu.org, qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
-	Shannon Zhao <zhaoshenglong@huawei.com>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	David Gibson <david@gibson.dropbear.id.au>
+Cc: Andrew Jones <drjones@redhat.com>, qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
+	qemu-devel@nongnu.org, David Gibson <david@gibson.dropbear.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Mmde3rtZmfCT
+X-TUID: VEP7Jxisi2WJ
 
-On Fri, 26 May 2017 12:46:25 -0300
-Eduardo Habkost <ehabkost@redhat.com> wrote:
-
-> On Wed, May 10, 2017 at 01:29:50PM +0200, Igor Mammedov wrote:
-> [...]
-> > diff --git a/hw/core/machine.c b/hw/core/machine.c
-> > index 2482c63..420c8c4 100644
-> > --- a/hw/core/machine.c
-> > +++ b/hw/core/machine.c
-> > @@ -389,6 +389,102 @@ HotpluggableCPUList *machine_query_hotpluggable_cpus(MachineState *machine)  
-> [...]
-> > +void machine_set_cpu_numa_node(MachineState *machine,
-> > +                               const CpuInstanceProperties *props, Error **errp)
-> > +{  
-> [...]
-> > +    /* force board to initialize possible_cpus if it hasn't been done yet */
-> > +    mc->possible_cpu_arch_ids(machine);  
-> [...]
-> > diff --git a/numa.c b/numa.c
-> > index 7182481..7db5dde 100644
-> > --- a/numa.c
-> > +++ b/numa.c
-> > @@ -170,6 +170,7 @@ static void parse_numa_node(MachineState *ms, NumaNodeOptions *node,
-> >          exit(1);
-> >      }
-> >      for (cpus = node->cpus; cpus; cpus = cpus->next) {
-> > +        CpuInstanceProperties props;
-> >          if (cpus->value >= max_cpus) {
-> >              error_setg(errp,
-> >                         "CPU index (%" PRIu16 ")"
-> > @@ -178,6 +179,10 @@ static void parse_numa_node(MachineState *ms, NumaNodeOptions *node,
-> >              return;
-> >          }
-> >          bitmap_set(numa_info[nodenr].node_cpu, cpus->value, 1);
-> > +        props = mc->cpu_index_to_instance_props(ms, cpus->value);
-> > +        props.node_id = nodenr;
-> > +        props.has_node_id = true;
-> > +        machine_set_cpu_numa_node(ms, &props, &error_fatal);  
+On Mon, May 29, 2017 at 01:45:36PM +0200, Igor Mammedov wrote:
+> On Fri, 26 May 2017 13:06:30 -0300
+> Eduardo Habkost <ehabkost@redhat.com> wrote:
 > 
-> This triggers a call to possible_cpu_arch_ids() before
-> nb_numa_nodes is set to the actual number of NUMA nodes in the
-> machine, breaking the "node_id = ... % nb_numa_nodes"
-> initialization logic in pc, virt, and spapr.
+> > On Tue, May 23, 2017 at 04:38:48PM +0200, Igor Mammedov wrote:
+> > > It fixes/add missing _PXM object for non mapped CPU (x86)
+> > > and missing fdt node (virt-arm).
+> > > 
+> > > It ensures that possible_cpus contains complete mapping if
+> > > numa is enabled by the time machine_init() is executed.
+> > > 
+> > > As result non completely mapped CPUs:
+> > >  1) appear in ACPI/fdt blobs
+> > >  2) QMP query-hotpluggable-cpus command shows bound nodes for such CPUs
+> > >  3) allows to drop checks for has_node_id in numa only code,
+> > >    reducing number of invariants incomplete mapping could produce
+> > >  4) moves fixup/implicit node init from runtime numa_cpu_pre_plug()
+> > >    (when CPU object is created) to machine_numa_finish_init() which
+> > >    helps to fix [1, 2] and make possible_cpus complete source
+> > >    of numa mapping available even before CPUs are created.
+> > > 
+> > > Signed-off-by: Igor Mammedov <imammedo@redhat.com>  
+> > 
+> > Code that will be affected, but will keep the same behavior:
+> > 
+> > * pre_plug handler when node-id is omitted on device_add: it
+> >   already sets node_id=0 if !has_node_id
+> >   * However, pre_plug behavior is being changed when node-id is
+> >     set. See below.
+> > * build_srat() (both x86 and arm): already sets node_id = 0 if
+> >   !has_node_id
+> > * bochs_bios_init(): already uses g_new0(), so already had
+> >   omitted entries set to 0.
+> > 
+> > Affected code that will change behavior with this patch:
+> > 
+> > * pre_plug handler when node-id is set:
+> >   * See my reply to patch 1/5.  This patch restores the old
+> >     behavior that rejected node-id != 0 on omitted CPUs.
+> I'll look into it.
 > 
-> The initialization ordering between possible_cpus and NUMA data
-> structures looks very subtle and fragile.  I still don't see an
-> obvious way to untangle that.
-It's unfixable unless we require specific ordering on CLI,
-i.e. first go all '-numa node,nodeid=[...]' options and only then
-the rest of [-numa node,cpus|cpu].
-We can do that for '-numa cpu' (probably should do enforce it for
-this new option anyway for saner CLI)
+> > * ACPI _PXM initialization
+> > * arm/virt.c: numa-node-id will now be set for all CPUs
+> > * QMP/HMP query-hotpluggable-cpus output
+> >   * Desirable change, as now the QMP command will reflect what
+> >     the guest is really seeing
+> > 
+> > Due to the _PXM and FDT changes, I have the same objection I have
+> > for patch 4/5: if we are going to break user expectations when
+> > using incomplete NUMA mappings, let's do that only once (when we
+> > start rejecting incomplete NUMA mappings).
+> 
+> FDT/PXM change is bugfix to firmware that I insist on.
+> Firmware should properly describe all CPUs instead of repeating
+> partial CPU mapping nonsense.
+> 
+> Wrt _PXM change see
+> (27111931 acpi: provide _PXM method for CPU devices if QEMU is started numa enabled)
+> provided we keep 0 node fallback by dropping 4/5
+> linux guest will behave the same as without _PXM.
 
-but not for '-numa node,cpus' as it will break existing users
-that do not declare nodes first.
+If it is a bug fix, then I agree with it.  Also, this doesn't
+change the topology of the virtual hardware, so it shouldn't
+break user expectations anyway.
 
-> I suggest moving the default-NUMA-mapping code to a separate
-> machine class method, instead of relying on
-> possible_cpu_arch_ids() to initialize node_id.
-So as you suggest we have to postpone default values initialization
-till all the options are parsed:
+> 
+> And again there wasn't any compat code around that
+> and guest saw node-id change when it's been restarted.
+> 
+> Wrt FDT change, it's the same and I also talked with
+> Drew about it, his reply was that for ARM target
+> they don't care much about NUMA as not all pieces are
+> there to make pinning work on host side yet.
+> 
+> PS:
+> There wasn't any promise made to keep firmware side
+> bug compatible or versioned so users should not have
+> expectations about it in the first place.
 
-1: strait-forward additional machine callback called from
-   machine_run_board_init()
+You are right about this.
 
-or:
+> 
+> Pls don't push for bug compat stuff in the firmware
+> as it will rise false expectations (at least until
+> we decide to care about it by default).
 
-2: save extra callback and recalculate not yet set props.node_id-s
-   in possible_cpu_arch_ids() if nb_numa_nodes is changed since
-   the last invocation of possible_cpu_arch_ids()
+I won't.  Patch 4/5 is different because it makes firmware
+describe different hardware.  But this one is firmware-only, so
+you are right.
 
-which one would you prefer?
+> 
+> (I'd use firmware compat stuff only in cases where
+> it breaks guest horribly, i.e. crash/fail boot)
+> 
+> 
+> > A few extra comments about the has_node_id checks below:
+> > 
+> > > ---
+> > >  hw/arm/virt-acpi-build.c |  4 +---
+> > >  hw/core/machine.c        | 16 ++++++++++------
+> > >  hw/i386/acpi-build.c     |  3 +--
+> > >  hw/i386/pc.c             |  4 +---
+> > >  numa.c                   |  7 +------
+> > >  5 files changed, 14 insertions(+), 20 deletions(-)
+> > > 
+> > > diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+> > > index e585206..977a794 100644
+> > > --- a/hw/arm/virt-acpi-build.c
+> > > +++ b/hw/arm/virt-acpi-build.c
+> > > @@ -496,12 +496,10 @@ build_srat(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+> > >      srat->reserved1 = cpu_to_le32(1);
+> > >  
+> > >      for (i = 0; i < cpu_list->len; ++i) {
+> > > -        int node_id = cpu_list->cpus[i].props.has_node_id ?
+> > > -            cpu_list->cpus[i].props.node_id : 0;
+> > >          core = acpi_data_push(table_data, sizeof(*core));
+> > >          core->type = ACPI_SRAT_PROCESSOR_GICC;
+> > >          core->length = sizeof(*core);
+> > > -        core->proximity = cpu_to_le32(node_id);
+> > > +        core->proximity = cpu_to_le32(cpu_list->cpus[i].props.node_id);
+> > >          core->acpi_processor_uid = cpu_to_le32(i);
+> > >          core->flags = cpu_to_le32(1);
+> > >      }
+> > > diff --git a/hw/core/machine.c b/hw/core/machine.c
+> > > index aaf3cff..964b75d 100644
+> > > --- a/hw/core/machine.c
+> > > +++ b/hw/core/machine.c
+> > > @@ -720,19 +720,23 @@ static void machine_numa_finish_init(MachineState *machine)
+> > >          const CPUArchId *cpu_slot = &possible_cpus->cpus[i];
+> > >  
+> > >          if (!cpu_slot->props.has_node_id) {
+> > > -            if (default_mapping) {
+> > > -                /* fetch default mapping from board and enable it */
+> > > -                CpuInstanceProperties props = cpu_slot->props;
+> > > -                props.has_node_id = true;
+> > > -                machine_set_cpu_numa_node(machine, &props, &error_fatal);
+> > > -            } else {
+> > > +            /* fetch default mapping from board and enable it */
+> > > +            CpuInstanceProperties props = cpu_slot->props;
+> > > +
+> > > +            if (!default_mapping) {
+> > >                  /* record slots with not set mapping,
+> > >                   * TODO: make it hard error in future */
+> > >                  char *cpu_str = cpu_slot_to_string(cpu_slot);
+> > >                  g_string_append_printf(s, "%sCPU %d [%s]",
+> > >                                         s->len ? ", " : "", i, cpu_str);
+> > >                  g_free(cpu_str);
+> > > +
+> > > +                /* non mapped cpus used to fallback to node 0 */
+> > > +                props.node_id = 0;
+> > >              }
+> > > +
+> > > +            props.has_node_id = true;
+> > > +            machine_set_cpu_numa_node(machine, &props, &error_fatal);
+> > >          }
+> > >      }
+> > >      if (s->len) {
+> > > diff --git a/hw/i386/acpi-build.c b/hw/i386/acpi-build.c
+> > > index afcadac..873880d 100644
+> > > --- a/hw/i386/acpi-build.c
+> > > +++ b/hw/i386/acpi-build.c
+> > > @@ -2335,8 +2335,7 @@ build_srat(GArray *table_data, BIOSLinker *linker, MachineState *machine)
+> > >      srat->reserved1 = cpu_to_le32(1);
+> > >  
+> > >      for (i = 0; i < apic_ids->len; i++) {
+> > > -        int node_id = apic_ids->cpus[i].props.has_node_id ?
+> > > -            apic_ids->cpus[i].props.node_id : 0;
+> > > +        int node_id = apic_ids->cpus[i].props.node_id;  
+> > 
+> > What about an assert(props.has_node_id) here?
+> I considered it but dropped idea, as it's mostly useless
+> since build_srat() is called only when numa is enabled.
+
+I just suggested it because I would be more confident that the
+new code that ensures has_node_id is set for all slots is working
+and won't break if we refactor it.  But not a big deal.
+
+> 
+> and sticking asserts in every place just in case doesn't
+> seem to me like good idea as it would lead to absurd 
+> asserts after every line.
+> 
+> Considering the new code behaves the same in case !has_node_id
+> I don't see any reason to put assert here, the same goes
+> for 'Ditto" comment in the next hunk.
+> 
+> But if you insist I can' add assert().
+
+I won't mind if you decide to not add it.
+
+> 
+[...]
+> > >      }
+> > >      for (i = 0; i < nb_numa_nodes; i++) {
+> > >          numa_fw_cfg[pcms->apic_id_limit + 1 + i] =
+> > > diff --git a/numa.c b/numa.c
+> > > index e30702e..4ef6dea 100644
+> > > --- a/numa.c
+> > > +++ b/numa.c
+> > > @@ -513,17 +513,12 @@ void numa_cpu_pre_plug(const CPUArchId *slot, DeviceState *dev, Error **errp)
+> > >      int node_id = object_property_get_int(OBJECT(dev), "node-id", &error_abort);
+> > >  
+> > >      if (node_id == CPU_UNSET_NUMA_NODE_ID) {
+> > > -        /* by default CPUState::numa_node was 0 if it wasn't set explicitly
+> > > -         * TODO: make it error when incomplete numa mapping support is removed
+> > > -         */
+> > > -        node_id = 0;
+> > > -
+> > >          /* due to bug in libvirt, it doesn't pass node-id from props on
+> > >           * device_add as expected, so we have to fix it up here */
+> > >          if (slot->props.has_node_id) {
+> > >              node_id = slot->props.node_id;
+> > > +            object_property_set_int(OBJECT(dev), node_id, "node-id", errp);
+> > >          }
+> > > -        object_property_set_int(OBJECT(dev), node_id, "node-id", errp);  
+> > 
+> > Why not removing the has_node_id check completely, here?
+> because numa_cpu_pre_plug() is called unconditionally
+> As alternative, I can replace has_node_id check with assert
+> and do following from callers:
+> 
+>  if (nb_numa_nodes) {
+>      numa_cpu_pre_plug()
+>  }
+> 
+> 
+> > In case this patch get respun, I suggest also removing the
+> > has_node_id check at: build_cpus_aml() _PXM code.
+> that would be wrong, build_cpus_aml() is called for both
+> numa and non numa use-cases, there shouldn't be _PXM
+> object if numa is not enabled, hence the check.
+> 
+>  
+
+Oh, I forgot about the non-NUMA cases.  You're right.
+
+
+-- 
+Eduardo

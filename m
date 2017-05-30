@@ -1,180 +1,144 @@
-Received: by 10.25.0.6 with SMTP id 6csp1836145lfa;
-        Tue, 30 May 2017 07:08:58 -0700 (PDT)
-X-Received: by 10.200.57.57 with SMTP id s54mr24678754qtb.53.1496153338352;
-        Tue, 30 May 2017 07:08:58 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1496153338; cv=none;
+Received: by 10.25.0.6 with SMTP id 6csp1874601lfa;
+        Tue, 30 May 2017 08:37:41 -0700 (PDT)
+X-Received: by 10.55.24.201 with SMTP id 70mr20169765qky.171.1496158661368;
+        Tue, 30 May 2017 08:37:41 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1496158661; cv=none;
         d=google.com; s=arc-20160816;
-        b=aul65jQpMn4LocY+/CgRr0TzHlzlzAiVj8ylckKVqzAdggckiwxFegYnYjyMvYCTzG
-         /fagGhzORwkXB2fY4FFPqAeU0HWSWfnfu2dpPAh62vwiMacV02fszgEouRRwxdnGAUyc
-         ir6XcPwcvIVQ/TWRYZ4MDaX5UoTpQH0e+8sxfDxUNLhWxTaK9p9YlfB+3Q9XYxefNqQj
-         WP06IYSdq858VDTDsm0NDaz3fP9bYyDl9Oe5afEmK40kJDJ1fJ2lMrdSWC9zCRaTcIxL
-         QMaN8zaewleV0G/e31kAoxc55WnV7iCq0abWYmOcDP3osgNTMjx+M70NIVxf7mcNcdtr
-         yDJw==
+        b=yuPVVoNp2eidkSuNr79GM9+lqQSFN5H5R8ILs0tzjWwRYqOtKpRa4H9wkLgvvBmfrW
+         MugWF/eXwXR+ys+/+ZFaa4fYdkCuoVihejiHXsQjhIen09/FND153Ib8zWcCfIHXv/ER
+         X5zDHrV1iSDE4fileKNC1fmx+P0qhEZM/3Siib5Isw/8qj4nU8p+ByIhXs7Y0VDjncLU
+         edDW4zHfv6rraWOESe2tSV9vidh+EIZNnyP5d2AFW5Vk1KyNIoZ1T1y8SP+4iNqJ+O77
+         UJ28tpbovXfax/jDKlPFjDSoN09DS0DaZj5TDruzIOoae0bGvoo5Mc+R4YaBIb4YoDEB
+         G1Aw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
-         :content-disposition:mime-version:references:message-id:to:from:date
-         :dkim-filter:dmarc-filter:arc-authentication-results;
-        bh=Yv6Wr2c3Lh2E3ur1dKq87lfSQzacDHriex7RLtPh5Sg=;
-        b=vSahjUY1/BodUu/+Fb2FjwQfWgsMMxJ9xWg+DVCXyxLTMmAXcUUl7KcDPZlM05OI3M
-         2QIq7g86haRan2H9ZWPpWQVEd+E6Mojfy6c+VC7xp3lYW7E7DRIuwly9Yne6bh/JMTc1
-         gG6/Qqa3RoW1s0vJL0xOZSFmSPrOkE+XH8S2tYXn9kvh46yKdBczujf1UVpzICEDH/CI
-         hghLkg4mUL2u4xM9yhIzG8/HpZkOgLXdn4VXRK40noQL8aHW1bVPfS61NZnp+aDY1+aY
-         SeUhyLdYIGkvRWaTsqofPe6xPTpv5zl8+EXUmh8vhXfKW2KWmjb5oUvxG60uVxgtcP8n
-         9vsA==
+         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
+         :references:in-reply-to:mime-version:dkim-signature
+         :arc-authentication-results;
+        bh=jclx/V+kaZHsvc3pIkRCbC7ZLCbsDiEinz2b2WHvOVQ=;
+        b=Ox3/ePPiXNURznciKpnYR1Xowcjq8WPf5uBdOaTKdJCDlFH3PNTgxS2NJ8NGVdVQ04
+         vl0+or2Km4NUhM7X91KlJbW6oxk2RqeZbb40g6x8KNPJgkideUaLgWEMQH/P4JL/xtzI
+         my1H4dJyf+qFEypeCsSCze7NeEymtMwHZTWeHiuGocSiC+o+OuiT4LaKDeAo+InbWxcu
+         9j2JwEEICjaie7C1Az1aMURmi94xGMC4QQMCRdOSaCYkuAI+kikQH0bO1DGyHT1pu3qy
+         n/OQxEtQemRrDW9IutR2HvEQ4oXSy/ucDlB0gZbQ30B/LyijE+djRihKzp5SXjkWtm4L
+         pLvg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@linaro.org;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id d1si12208849qtg.163.2017.05.30.07.08.58
+        by mx.google.com with ESMTPS id z51si13115975qta.165.2017.05.30.08.37.41
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 30 May 2017 07:08:58 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Tue, 30 May 2017 08:37:41 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:54035 helo=lists.gnu.org)
+       dkim=fail header.i=@linaro.org;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:54578 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1dFhpR-00053v-LY
-	for alex.bennee@linaro.org; Tue, 30 May 2017 10:08:57 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:47597)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1dFjDI-0006LW-Qz
+	for alex.bennee@linaro.org; Tue, 30 May 2017 11:37:40 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:47706)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <ehabkost@redhat.com>) id 1dFhkx-0001aJ-CT
-	for qemu-devel@nongnu.org; Tue, 30 May 2017 10:04:24 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1dFjD8-0006Jv-O5
+	for qemu-arm@nongnu.org; Tue, 30 May 2017 11:37:31 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <ehabkost@redhat.com>) id 1dFhkp-0000Qn-Mn
-	for qemu-devel@nongnu.org; Tue, 30 May 2017 10:04:19 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:33850)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <ehabkost@redhat.com>)
-	id 1dFhkj-0000PF-1l; Tue, 30 May 2017 10:04:05 -0400
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
-	[10.5.11.11])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id DC51880F96;
-	Tue, 30 May 2017 14:04:03 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com DC51880F96
-Authentication-Results: ext-mx03.extmail.prod.ext.phx2.redhat.com;
-	dmarc=none (p=none dis=none) header.from=redhat.com
-Authentication-Results: ext-mx03.extmail.prod.ext.phx2.redhat.com;
-	spf=pass smtp.mailfrom=ehabkost@redhat.com
-DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com DC51880F96
-Received: from localhost (ovpn-116-43.gru2.redhat.com [10.97.116.43])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 07F559D99C;
-	Tue, 30 May 2017 14:04:02 +0000 (UTC)
-Date: Tue, 30 May 2017 11:04:01 -0300
-From: Eduardo Habkost <ehabkost@redhat.com>
-To: Igor Mammedov <imammedo@redhat.com>
-Message-ID: <20170530140401.GJ32274@thinpad.lan.raisama.net>
-References: <1494415802-227633-1-git-send-email-imammedo@redhat.com>
-	<1494415802-227633-7-git-send-email-imammedo@redhat.com>
-	<20170526154625.GI22043@thinpad.lan.raisama.net>
-	<20170530141329.60d728c6@nial.brq.redhat.com>
+	(envelope-from <peter.maydell@linaro.org>) id 1dFjD7-0007PZ-Vc
+	for qemu-arm@nongnu.org; Tue, 30 May 2017 11:37:30 -0400
+Received: from mail-wm0-x22a.google.com ([2a00:1450:400c:c09::22a]:35045)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1dFjD7-0007PJ-O5
+	for qemu-arm@nongnu.org; Tue, 30 May 2017 11:37:29 -0400
+Received: by mail-wm0-x22a.google.com with SMTP id b84so95569852wmh.0
+	for <qemu-arm@nongnu.org>; Tue, 30 May 2017 08:37:29 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=jclx/V+kaZHsvc3pIkRCbC7ZLCbsDiEinz2b2WHvOVQ=;
+	b=NHXyz9xraM7dgwVHgyLcFeDgGBKiwA+d4o70oBE94IrcALi7JRj3LIcU48T04BH2ID
+	8C9urrhPy+ez49Nvt3YwygC2QcgSPZvAMbjRxix8gXTELlo6murjYN28FtfRHSnJBbh/
+	kBX6X+4VZuYMRd4vXvD3r9d+GQuBYI82EOeiQ=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=jclx/V+kaZHsvc3pIkRCbC7ZLCbsDiEinz2b2WHvOVQ=;
+	b=pwivwSFw7V9GeFT/JlBHzpVzaXZGpp47WsQhdu/eh7mPUDAUCWRsqTRfiyuUTe4XvR
+	HmGcqK5sKvxN1z7fJnQGhJ96AWjmmd4mfqsxAwDIylyOkdVdLeJ6E9+XWvLvOpNC9L5R
+	JidNF/yv5OOfhizqTo4upSWY4LfeW2UHyfyRbOnSgJFAox7FO7BHKwwmrZ5kr+C8MUet
+	YvmXe5pb07/ierASdUV0I4bV68s+hIXOqFOVuUPd23uS6c/epWryyZlHyL42TJ8sdQdq
+	yOUZLDBaS6vDDXJokMVXFekoRdSoS4c9iS8fGtNuZbpw5FUtmQwMPIZ+oqGzoaOSVXco
+	ghFw==
+X-Gm-Message-State: AODbwcAkg/LfdKEcD975gsRVq9+09tpLb7YCzUS7+FVeBZ1OEoUvIyGX
+	g4RBNhCU0uGQrjcbPDtO9vSUHVYidm2Y
+X-Received: by 10.28.72.68 with SMTP id v65mr2081908wma.41.1496158648559; Tue,
+	30 May 2017 08:37:28 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20170530141329.60d728c6@nial.brq.redhat.com>
-X-Fnord: you can see the fnord
-User-Agent: Mutt/1.8.0 (2017-02-23)
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.27]);
-	Tue, 30 May 2017 14:04:04 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-devel] [PATCH v3 06/18] numa: mirror cpu to node mapping
- in MachineState::possible_cpus
-X-BeenThere: qemu-devel@nongnu.org
+Received: by 10.223.135.82 with HTTP; Tue, 30 May 2017 08:37:07 -0700 (PDT)
+In-Reply-To: <1495123889-32301-1-git-send-email-wei@redhat.com>
+References: <1495123889-32301-1-git-send-email-wei@redhat.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 30 May 2017 16:37:07 +0100
+Message-ID: <CAFEAcA_FiqcFz_8o-Mavgq8sfkr6dRv3fnRzytaQsr5pJ4Dagg@mail.gmail.com>
+To: Wei Huang <wei@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2a00:1450:400c:c09::22a
+Subject: Re: [Qemu-arm] [PATCH 1/1] target/arm: clear PMUVER field of
+ AA64DFR0 when vPMU=off
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jones <drjones@redhat.com>,
-	qemu-devel@nongnu.org, qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
-	Shannon Zhao <zhaoshenglong@huawei.com>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	David Gibson <david@gibson.dropbear.id.au>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: NXy/ORnXK07u
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: ZxDMFVkK+uTL
 
-On Tue, May 30, 2017 at 02:13:29PM +0200, Igor Mammedov wrote:
-> On Fri, 26 May 2017 12:46:25 -0300
-> Eduardo Habkost <ehabkost@redhat.com> wrote:
-> 
-> > On Wed, May 10, 2017 at 01:29:50PM +0200, Igor Mammedov wrote:
-> > [...]
-> > > diff --git a/hw/core/machine.c b/hw/core/machine.c
-> > > index 2482c63..420c8c4 100644
-> > > --- a/hw/core/machine.c
-> > > +++ b/hw/core/machine.c
-> > > @@ -389,6 +389,102 @@ HotpluggableCPUList *machine_query_hotpluggable_cpus(MachineState *machine)  
-> > [...]
-> > > +void machine_set_cpu_numa_node(MachineState *machine,
-> > > +                               const CpuInstanceProperties *props, Error **errp)
-> > > +{  
-> > [...]
-> > > +    /* force board to initialize possible_cpus if it hasn't been done yet */
-> > > +    mc->possible_cpu_arch_ids(machine);  
-> > [...]
-> > > diff --git a/numa.c b/numa.c
-> > > index 7182481..7db5dde 100644
-> > > --- a/numa.c
-> > > +++ b/numa.c
-> > > @@ -170,6 +170,7 @@ static void parse_numa_node(MachineState *ms, NumaNodeOptions *node,
-> > >          exit(1);
-> > >      }
-> > >      for (cpus = node->cpus; cpus; cpus = cpus->next) {
-> > > +        CpuInstanceProperties props;
-> > >          if (cpus->value >= max_cpus) {
-> > >              error_setg(errp,
-> > >                         "CPU index (%" PRIu16 ")"
-> > > @@ -178,6 +179,10 @@ static void parse_numa_node(MachineState *ms, NumaNodeOptions *node,
-> > >              return;
-> > >          }
-> > >          bitmap_set(numa_info[nodenr].node_cpu, cpus->value, 1);
-> > > +        props = mc->cpu_index_to_instance_props(ms, cpus->value);
-> > > +        props.node_id = nodenr;
-> > > +        props.has_node_id = true;
-> > > +        machine_set_cpu_numa_node(ms, &props, &error_fatal);  
-> > 
-> > This triggers a call to possible_cpu_arch_ids() before
-> > nb_numa_nodes is set to the actual number of NUMA nodes in the
-> > machine, breaking the "node_id = ... % nb_numa_nodes"
-> > initialization logic in pc, virt, and spapr.
-> Looking at it more, in current code this problem theoretically
-> affects only partial mapping case. And even there it's masked by 
-> fixup to 0 node for non explicitly mapped CPUs and the bug which
->  *) "[PATCH v2 3/5] numa: make sure that all cpus in has  has_node_id set if numa is enabled"
-> fixes. So invalid default values for non mapped cpus are stored
-> in possible_cpus but not used nor visible elsewhere.
-> 
-> [*] as side effect fixes invalid defaults in possible_cpus as well
-> by fixup to 0 node that's moved from pre_plug handler.
-> 
-> In future we are going to remove partial mapping with fixup to 0
-> and fetch default mappings from possible_cpus where these wrong
-> defaults won't exists (or matter) as CPUs are going to either
->  1) be all explicitly mapped (so all node_id values are overwritten)
-> or
->  2) all default mapped (where defaults will be correct since no
->     -numa cpu=/-numa node,cpus= were called), but that's fragile
->     so I'd add calculate defaults at machine_run_board_init()
->     time anyway.
+On 18 May 2017 at 17:11, Wei Huang <wei@redhat.com> wrote:
+> The PMUv3 driver of linux kernel (in arch/arm64/kernel/perf_event.c)
+> relies on the PMUVER field of id_aa64dfr0_el1 to decide if PMU support
+> is present or not. This patch clears the PMUVER field under TCG mode
+> when vPMU=off. Without it, PMUv3 will init insider guest VMs even
+> with vPMU=off. This patch also removes a redundant line inside the
+> if-statement.
+>
+> Signed-off-by: Wei Huang <wei@redhat.com>
+> ---
+>  target/arm/cpu.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+>
+> diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+> index c185eb1..4e8fe1c 100644
+> --- a/target/arm/cpu.c
+> +++ b/target/arm/cpu.c
+> @@ -750,8 +750,8 @@ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
+>      }
+>
+>      if (!cpu->has_pmu) {
+> -        cpu->has_pmu = false;
+>          unset_feature(env, ARM_FEATURE_PMU);
+> +        cpu->id_aa64dfr0 &= ~0xf00;
+>      }
+>
+>      if (!arm_feature(env, ARM_FEATURE_EL2)) {
+> --
+> 1.8.3.1
 
-Your analysis seems correct: it looks like just a case of fragile
-code, not a bug that can be triggered with the current code.
 
--- 
-Eduardo
+
+Applied to target-arm.next, thanks.
+
+-- PMM

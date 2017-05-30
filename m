@@ -1,109 +1,100 @@
-Received: by 10.25.0.6 with SMTP id 6csp1856708lfa;
-        Tue, 30 May 2017 07:58:44 -0700 (PDT)
-X-Received: by 10.200.50.45 with SMTP id x42mr26052472qta.23.1496156324804;
-        Tue, 30 May 2017 07:58:44 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1496156324; cv=none;
+Received: by 10.25.0.6 with SMTP id 6csp1863686lfa;
+        Tue, 30 May 2017 08:12:06 -0700 (PDT)
+X-Received: by 10.233.223.196 with SMTP id t187mr24225282qkf.31.1496157126134;
+        Tue, 30 May 2017 08:12:06 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1496157126; cv=none;
         d=google.com; s=arc-20160816;
-        b=eqB8O86V30SfoBAg8Mc9mHmuTsZJHO1a4tO/6ZXLDHNGRbD45opgPtNw3KZEwGzjMU
-         is0pOlx4DP6E+eFjQYMgedfunt1SJuVQuF71lCmuIehSkOuwoIl6Ma0W+UbBMr63nrTL
-         Ezi+mwYEpdPQzIfl+bVuW40ZRIZGMHjmbsLUxLbSf0Vd0npfz9NeHQ+DN3nTN2p4P6yw
-         Wx2vh/dTNN3ilRsSfx7VUN0Hit4q03ASAw0PowLT1IjocnTX4aFOGCt1Br8heoUuGTXT
-         LsMGRG+DzaKSyF3oU2cXsDmo22eBPi2wYHwxoOtyQnmI4+eovoakSxjfstd+zBb0bInT
-         v7fQ==
+        b=ChW5Q+BEwSu7Ak0BNjVb5eay0FYPcya4NrLqkmrO1T9ZkyehiQDHiqXV8mBXo6Depk
+         ZcFjB/jFGsGOf7R2J1aGB3+vadBfPno+dG3KegzoLf1sU/7++qtnBJu7uz4CM0Ev7vFJ
+         MCbNE+pR64vEr7gqY85VpvvdgvFAKi+7OsmWoImAQCHgsO8Mz592/ckHSmpjNeUa3bHs
+         qkoH1ZEF/YPEXmIvyQbIJAfMAz0lbC+2H98gJmk4aJWzJ28ERn7kJ0CoFqt+e4aC2oTT
+         Q1nLsrQOIP/2+7QzUiXsZHKpMKStIF3QKE5VLLuij9oJ5DoIAr4wBKfFtvciizFHTON1
+         5BRQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:dkim-signature
-         :arc-authentication-results;
-        bh=Vh357P40tWZEMSveW17djWH3pQLRDAMCGkRyLXzgj9U=;
-        b=GHlAF1Y6OvFN00FJM0W0g9a9pnahl/DDZRtxOwRknn1FNtMFKO+LRDOb6AB8zcNLYy
-         SHVVJP83bu9Vdu/4MMJUbZUk+zuS7n5NMiOZRK5ZBhxrHPukakqwyr73RfHzBXDp/6R6
-         O/Kx5r+7YrwcoB+P/upAWu0f24/si7LyUEIuygDMWnbmKv4vcFTegOOtFr1B0bBcoZzq
-         U+cwR0YYcHA/p9m6aXRzvmrqn1OgxWiQpYMduXh400ikXHwj3AuBVeeSpXD5R1UvxtsL
-         FN4CVufWhl6KErTeRz1lQ/9kz1oYv8s3hxGKfpawqQMYAJExN1WA+eLl45nhq2Sn5K1/
-         Qbbw==
+         :content-transfer-encoding:to:message-id:date:from:references
+         :in-reply-to:mime-version:dkim-signature:arc-authentication-results;
+        bh=LzCLTMK1/vKtoaTwJiIMuE+1/dCLbcWDtZipkZk5eMs=;
+        b=TThCtBFWKImbWLVpWS3OBV4WMgbcFFkUkV2B2QWE8ip3cqwfVyzPsv4BWXPPtwTaS8
+         3djXwHWwpquKAB4+8EsOIdfWZ0zXL3c3e5R2adi1x8FFuNqBMGbM+2acFGNOU6+qmHKb
+         2IiSPlPA1veo4Q90bda9vkGb3S8mAVx4kdJARnTcVP5zYoP4SL9Pw8AJ5/Y/QLPrF0u7
+         YfxVOWOC0+/Y++4e5sRmCnzflMl5epTZfOrmgACmYY3TrISpZXvrEAQvf6r96VDbcRY1
+         l15XHu5CtMC9b4EC+5K9isiTamiqixpNxFIk5P6Gooas0sa+TXA1ah6rsV6oikjOSA2F
+         nclA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+       dkim=fail header.i=@linaro.org;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id w124si12821219qkc.185.2017.05.30.07.58.44
+        by mx.google.com with ESMTPS id v32si12952878qta.337.2017.05.30.08.12.05
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 30 May 2017 07:58:44 -0700 (PDT)
+        Tue, 30 May 2017 08:12:06 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:54322 helo=lists.gnu.org)
+       dkim=fail header.i=@linaro.org;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:54402 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1dFibc-0001X1-8Y
-	for alex.bennee@linaro.org; Tue, 30 May 2017 10:58:44 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:33869)
+	id 1dFioX-0007xQ-Hu
+	for alex.bennee@linaro.org; Tue, 30 May 2017 11:12:05 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:38248)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1dFibU-0001VR-Ch
-	for qemu-arm@nongnu.org; Tue, 30 May 2017 10:58:37 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1dFioS-0007vv-Hv
+	for qemu-arm@nongnu.org; Tue, 30 May 2017 11:12:01 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1dFibT-0001vS-DW
-	for qemu-arm@nongnu.org; Tue, 30 May 2017 10:58:36 -0400
-Received: from mail-oi0-x242.google.com ([2607:f8b0:4003:c06::242]:34849)
+	(envelope-from <peter.maydell@linaro.org>) id 1dFioO-00072I-CC
+	for qemu-arm@nongnu.org; Tue, 30 May 2017 11:12:00 -0400
+Received: from mail-wm0-x22c.google.com ([2a00:1450:400c:c09::22c]:37738)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1dFibO-0001sw-Mr; Tue, 30 May 2017 10:58:30 -0400
-Received: by mail-oi0-x242.google.com with SMTP id v80so16192481oie.2;
-	Tue, 30 May 2017 07:58:30 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=sender:subject:to:references:cc:from:message-id:date:user-agent
-	:mime-version:in-reply-to:content-transfer-encoding;
-	bh=Vh357P40tWZEMSveW17djWH3pQLRDAMCGkRyLXzgj9U=;
-	b=bhE5qaD4gnGIHYSzNoeIsZCSnp1mr8WGM25592qeBEY85M8etQzRTQOtgCnv4FLcLR
-	qctrwufKNhmnez8xtQKewi4ihMYUf0jdb8DfzJb4pzlx11KCW2WV3HJ/5+7a0rl1oja7
-	OlTAVIX7Xl4zhTpi7KA2467So97EALF+bylBHWGYMRvcgAEY4BzLXyYfR6GcVG3h/YKW
-	538G9mM7TP111eGlZdFY/Nfk4DlE0mNvE4SiMr2wQZyS6nyv0OE4vOd5RHitj1bTCaEK
-	NB32t8MOsj5K9ypEsU2PcB5gd9WSD//y0Rc384bPwGSBrTsNGVLp+nIes/8ktbxjdzXz
-	6fig==
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1dFioO-00071u-2N
+	for qemu-arm@nongnu.org; Tue, 30 May 2017 11:11:56 -0400
+Received: by mail-wm0-x22c.google.com with SMTP id d127so100724264wmf.0
+	for <qemu-arm@nongnu.org>; Tue, 30 May 2017 08:11:56 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc:content-transfer-encoding;
+	bh=LzCLTMK1/vKtoaTwJiIMuE+1/dCLbcWDtZipkZk5eMs=;
+	b=BqWoy2yzj6uSERkdr8YJcEeDPrVI639vKGn1OAf/cN7maknCI6Gz6QmmSMvE+nohWa
+	8uptgkBYITmxrHydGv852Ei7uX1x3Ga/SUxQrZQPI/5kErDoFP34hg62qKJ4seL/2mha
+	NLtGz0eB5vyGJko8BXtYDCCKMj7zEpWPeaWA8=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:sender:subject:to:references:cc:from:message-id
-	:date:user-agent:mime-version:in-reply-to:content-transfer-encoding;
-	bh=Vh357P40tWZEMSveW17djWH3pQLRDAMCGkRyLXzgj9U=;
-	b=O0rTQwTOUNm5rbcpxPv2Bo6PnxWUCxV/RdwrghWYxjUFkaeQRaC9mIi4VGS2XCGnIW
-	XA1VMzFAjpHKp3xGsH7gEUaXzycYMb83J4L+7ZqOSppX54/idENGpjDANhe7dXnoVijC
-	rOn0zMGY+5+bfrU6xIPd+vsRMsS8u+8KZ4ERFvPzKSg1ev56t9OcknZMaOWZZFS93paB
-	2jFkGMVcXbNQLwh1982gZZD1xp4WK8M2hcCf84bdihxax/njwLFl4ZIprOpF/RmCT70Q
-	IQ2uOTv80HN9uu3fuOB7vNIP27bCkboasNydIMplVn9BZQQNL0fGMvwk0j0AqOQzDS07
-	ghLw==
-X-Gm-Message-State: AODbwcAQLl7mZyVCtDDIQ2HmKQEj/NkPRVT9r5p1GEdG044u06p6C2Zw
-	g62o/Cfm3IA2dQ==
-X-Received: by 10.157.14.236 with SMTP id 99mr9006630otj.164.1496156309902;
-	Tue, 30 May 2017 07:58:29 -0700 (PDT)
-Received: from [192.168.1.107]
-	(162-231-236-127.lightspeed.miamfl.sbcglobal.net. [162.231.236.127])
-	by smtp.gmail.com with ESMTPSA id 59sm5779475oth.49.2017.05.30.07.58.28
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Tue, 30 May 2017 07:58:28 -0700 (PDT)
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-References: <1493122030-32191-1-git-send-email-peter.maydell@linaro.org>
-	<1493122030-32191-12-git-send-email-peter.maydell@linaro.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <39de1197-c522-843d-eb2c-9774e9a2ca74@amsat.org>
-Date: Tue, 30 May 2017 11:58:27 -0300
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
-	Thunderbird/45.8.0
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc:content-transfer-encoding;
+	bh=LzCLTMK1/vKtoaTwJiIMuE+1/dCLbcWDtZipkZk5eMs=;
+	b=M2afQlS8QwxAHHjqp2EovvElw0udENtao6OAwBu/tSWhFwA1CRD33A0zVl5JodZXhV
+	6Xe43dZEl3ehRgGoS5vjrgcgIQcOxDl+7hqDtRfTS5Bk0uch0hZeQ5WC1g34lxBH5/hP
+	MpO6nyrkhQ6wwezT0RnCQcc1XglGQIHmp2YaCSpQQUHjlU9l4DDabRgoYe/0BNO/ES+E
+	y9+S1Yvpv8C0c6CWgKznYQ7U0gJa1xJTrrFpk6aeWmssD82zteHdxb8251mIhD877BaN
+	7/dnEa2AkfsVdJCawaI2oTuR8GezRqv2hsMBkHWBL0uetcatBMuZ/9z8Kgm58i3FpvLe
+	YVxw==
+X-Gm-Message-State: AODbwcA2py3CMGCjt8XnVvYUeGpTy/SivIhdnXPTFQwAnpHNlaYwfZd6
+	G7oiP3IhBP6O46VH1wwWo6NgGvX7xbp6
+X-Received: by 10.28.24.202 with SMTP id 193mr2223457wmy.125.1496157114866;
+	Tue, 30 May 2017 08:11:54 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <1493122030-32191-12-git-send-email-peter.maydell@linaro.org>
-Content-Type: text/plain; charset=windows-1252; format=flowed
-Content-Transfer-Encoding: 8bit
+Received: by 10.223.135.82 with HTTP; Tue, 30 May 2017 08:11:34 -0700 (PDT)
+In-Reply-To: <c9954451-ad9b-2365-5ed7-bc4c29f40abe@amsat.org>
+References: <1493122030-32191-1-git-send-email-peter.maydell@linaro.org>
+	<1493122030-32191-10-git-send-email-peter.maydell@linaro.org>
+	<c9954451-ad9b-2365-5ed7-bc4c29f40abe@amsat.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 30 May 2017 16:11:34 +0100
+Message-ID: <CAFEAcA8aAwM-_9h1L23kjmfoabvivYdbKcC5e6YEkMXyUfTt5w@mail.gmail.com>
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:4003:c06::242
-Subject: Re: [Qemu-arm] [PATCH 11/13] armv7m: Classify faults as MemManage
- or BusFault
+X-Received-From: 2a00:1450:400c:c09::22c
+Subject: Re: [Qemu-arm] [PATCH 09/13] armv7m: Implement M profile default
+ memory map
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -115,86 +106,143 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: patches@linaro.org, Alistair Francis <alistair.francis@xilinx.com>
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
+	"patches@linaro.org" <patches@linaro.org>,
+	Alistair Francis <alistair.francis@xilinx.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: cBAgdMMUQdk0
+X-TUID: NLY1vHTG/7lm
 
-On 04/25/2017 09:07 AM, Peter Maydell wrote:
-> From: Michael Davidsaver <mdavidsaver@gmail.com>
+On 30 May 2017 at 15:56, Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> wrot=
+e:
+> Hi Peter,
 >
-> General logic is that operations stopped by the MPU are MemManage,
-> and those which go through the MPU and are caught by the unassigned
-> handle are BusFault. Distinguish these by looking at the
-> exception.fsr values, and set the CFSR bits and (if appropriate)
-> fill in the BFAR or MMFAR with the exception address.
+> On 04/25/2017 09:07 AM, Peter Maydell wrote:
+>>
+>> From: Michael Davidsaver <mdavidsaver@gmail.com>
+>>
+>> Add support for the M profile default memory map which is used
+>> if the MPU is not present or disabled.
+>>
+>> The main differences in behaviour from implementing this
+>> correctly are that we set the PAGE_EXEC attribute on
+>> the right regions of memory, such that device regions
+>> are not executable.
+>>
+>> Signed-off-by: Michael Davidsaver <mdavidsaver@gmail.com>
+>> [PMM: rephrased comment and commit message; don't mark
+>>  the flash memory region as not-writable]
 >
-> Signed-off-by: Michael Davidsaver <mdavidsaver@gmail.com>
-> [PMM: i-side faults do not set BFAR/MMFAR, only d-side;
->  added some CPU_LOG_INT logging]
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+>
+> "not-writable by system caches" maybe to clarify?
 
-Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+(Note that this is a comment describing something I
+deleted from Michael's original patch.)
+No, by 'not-writable' here I mean "not writeable by the CPU".
 
-> ---
->  target/arm/helper.c | 45 ++++++++++++++++++++++++++++++++++++++++++---
->  1 file changed, 42 insertions(+), 3 deletions(-)
 >
-> diff --git a/target/arm/helper.c b/target/arm/helper.c
-> index 51662ad..49b6d01 100644
-> --- a/target/arm/helper.c
-> +++ b/target/arm/helper.c
-> @@ -6342,10 +6342,49 @@ void arm_v7m_cpu_do_interrupt(CPUState *cs)
->          break;
->      case EXCP_PREFETCH_ABORT:
->      case EXCP_DATA_ABORT:
-> -        /* TODO: if we implemented the MPU registers, this is where we
-> -         * should set the MMFAR, etc from exception.fsr and exception.vaddress.
-> +        /* Note that for M profile we don't have a guest facing FSR, but
-> +         * the env->exception.fsr will be populated by the code that
-> +         * raises the fault, in the A profile short-descriptor format.
->           */
-> -        armv7m_nvic_set_pending(env->nvic, ARMV7M_EXCP_MEM);
-> +        switch (env->exception.fsr & 0xf) {
-> +        case 0x8: /* External Abort */
-> +            switch (cs->exception_index) {
-> +            case EXCP_PREFETCH_ABORT:
-> +                env->v7m.cfsr |= R_V7M_CFSR_PRECISERR_MASK;
-> +                qemu_log_mask(CPU_LOG_INT, "...with CFSR.PRECISERR\n");
-> +                break;
-> +            case EXCP_DATA_ABORT:
-> +                env->v7m.cfsr |=
-> +                    (R_V7M_CFSR_IBUSERR_MASK | R_V7M_CFSR_BFARVALID_MASK);
-> +                env->v7m.bfar = env->exception.vaddress;
-> +                qemu_log_mask(CPU_LOG_INT,
-> +                              "...with CFSR.IBUSERR and BFAR 0x%x\n",
-> +                              env->v7m.bfar);
-> +                break;
-> +            }
-> +            armv7m_nvic_set_pending(env->nvic, ARMV7M_EXCP_BUS);
-> +            break;
-> +        default:
-> +            /* All other FSR values are either MPU faults or "can't happen
-> +             * for M profile" cases.
-> +             */
-> +            switch (cs->exception_index) {
-> +            case EXCP_PREFETCH_ABORT:
-> +                env->v7m.cfsr |= R_V7M_CFSR_IACCVIOL_MASK;
-> +                qemu_log_mask(CPU_LOG_INT, "...with CFSR.IACCVIOL\n");
-> +                break;
-> +            case EXCP_DATA_ABORT:
-> +                env->v7m.cfsr |=
-> +                    (R_V7M_CFSR_DACCVIOL_MASK | R_V7M_CFSR_MMARVALID_MASK);
-> +                env->v7m.mmfar = env->exception.vaddress;
-> +                qemu_log_mask(CPU_LOG_INT,
-> +                              "...with CFSR.DACCVIOL and MMFAR 0x%x\n",
-> +                              env->v7m.mmfar);
-> +                break;
-> +            }
-> +            armv7m_nvic_set_pending(env->nvic, ARMV7M_EXCP_MEM);
-> +            break;
-> +        }
->          break;
->      case EXCP_BKPT:
->          if (semihosting_enabled()) {
+>> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+>> ---
+>>  target/arm/helper.c | 35 ++++++++++++++++++++++++++---------
+>>  1 file changed, 26 insertions(+), 9 deletions(-)
+>>
+>> diff --git a/target/arm/helper.c b/target/arm/helper.c
+>> index 9e1ed1c..51662ad 100644
+>> --- a/target/arm/helper.c
+>> +++ b/target/arm/helper.c
+>> @@ -8129,18 +8129,35 @@ static inline void
+>> get_phys_addr_pmsav7_default(CPUARMState *env,
+>>                                                  ARMMMUIdx mmu_idx,
+>>                                                  int32_t address, int
+>> *prot)
+>>  {
+>> -    *prot =3D PAGE_READ | PAGE_WRITE;
+>> -    switch (address) {
+>> -    case 0xF0000000 ... 0xFFFFFFFF:
+>> -        if (regime_sctlr(env, mmu_idx) & SCTLR_V) { /* hivecs execing i=
+s
+>> ok */
+>> +    if (!arm_feature(env, ARM_FEATURE_M)) {
+>> +        *prot =3D PAGE_READ | PAGE_WRITE;
+>> +        switch (address) {
+>> +        case 0xF0000000 ... 0xFFFFFFFF:
+>> +            if (regime_sctlr(env, mmu_idx) & SCTLR_V) {
+>> +                /* hivecs execing is ok */
+>> +                *prot |=3D PAGE_EXEC;
+>> +            }
+>> +            break;
+>> +        case 0x00000000 ... 0x7FFFFFFF:
 >
+>>              *prot |=3D PAGE_EXEC;
+>
+> I checked at Table B3-1 on the ARMv7-M Architecture Reference Manual I go=
+t
+> at https://static.docs.arm.com/ddi0403/e/DDI0403E_B_armv7m_arm.pdf and th=
+e
+> on-chip peripheral address space at 0x40000000 is eXecute Never.
+
+This is the arm of the if() that deals with R profile, and R profile's
+background region is completely different to M profile. (In any
+case the patch shouldn't change the behaviour there.)
+
+>> +            break;
+>> +        }
+>> +    } else {
+>> +        /* Default system address map for M profile cores.
+>> +         * The architecture specifies which regions are execute-never;
+>> +         * at the MPU level no other checks are defined.
+>> +         */
+>> +        switch (address) {
+>> +        case 0x00000000 ... 0x1fffffff: /* ROM */
+>> +        case 0x20000000 ... 0x3fffffff: /* SRAM */
+>> +        case 0x60000000 ... 0x7fffffff: /* RAM */
+>> +        case 0x80000000 ... 0x9fffffff: /* RAM */
+>> +            *prot =3D PAGE_READ | PAGE_WRITE | PAGE_EXEC;
+>> +            break;
+>> +        default: /* Peripheral, 2x Device, and System */
+>> +            *prot =3D PAGE_READ | PAGE_WRITE;
+>
+>
+> This body is correct, however what do you think about using cases with
+> comments instead of 'default'? This would be clearer.
+
+Yeah, we could do that. I think this is one of those cases where
+I opted to go with how Michael had already written the code rather
+than rewriting it.
+
+        /* Default system address map for M profile cores.
+         * The architecture specifies which regions are execute-never;
+         * at the MPU level no other checks are defined.
+         */
+        switch (address) {
+        case 0x00000000 ... 0x1fffffff: /* ROM */
+        case 0x20000000 ... 0x3fffffff: /* SRAM */
+        case 0x60000000 ... 0x7fffffff: /* RAM */
+        case 0x80000000 ... 0x9fffffff: /* RAM */
+            *prot =3D PAGE_READ | PAGE_WRITE | PAGE_EXEC;
+            break;
+        case 0x40000000 ... 0x5fffffff: /* Peripheral */
+        case 0xa0000000 ... 0xbfffffff: /* Device */
+        case 0xc0000000 ... 0xdfffffff: /* Device */
+        case 0xe0000000 ... 0xffffffff: /* System */
+            *prot =3D PAGE_READ | PAGE_WRITE;
+            break;
+        default:
+            g_assert_not_reached();
+        }
+
+would be the explicit version.
+
+>>          }
+>> -        break;
+>> -    case 0x00000000 ... 0x7FFFFFFF:
+>> -        *prot |=3D PAGE_EXEC;
+>> -        break;
+>>      }
+>> -
+>>  }
+>>
+>>  static bool get_phys_addr_pmsav7(CPUARMState *env, uint32_t address,
+
+thanks
+-- PMM

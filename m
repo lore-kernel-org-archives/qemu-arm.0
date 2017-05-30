@@ -1,108 +1,132 @@
-Received: by 10.25.0.6 with SMTP id 6csp766173lfa;
-        Sat, 27 May 2017 09:19:03 -0700 (PDT)
-X-Received: by 10.157.35.125 with SMTP id k58mr3434598otd.214.1495901943760;
-        Sat, 27 May 2017 09:19:03 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1495901943; cv=none;
+Received: by 10.25.0.6 with SMTP id 6csp1683157lfa;
+        Mon, 29 May 2017 23:58:19 -0700 (PDT)
+X-Received: by 10.237.44.129 with SMTP id g1mr22855281qtd.212.1496127498922;
+        Mon, 29 May 2017 23:58:18 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1496127498; cv=none;
         d=google.com; s=arc-20160816;
-        b=ClSer0cKv2gbGPvQ7t0rbSuK8R0Skizt+WfvlpaNufnfNZm54iYcl58l2x5Ywz6L07
-         kPzLbIMcRBrKs6QBbOieOzTsZOW5P/Esv7tLeNBgAchHzFUUeQHq77l9ZUpVhZzl1ZUv
-         ngqxezcfkPvHF1Fzh5vfDxrncjsXdNfMFaKJxllz4q7jE5cSIwiwlWP2enOtCBEzmZxS
-         318uC3HqUwIs44zmIPtJNz9xso0PaMEj78p5AN+BmWfhpnyBeKIIDyc5mQ8lNiHPSPL1
-         zFLutKmq/9oZlUFzcCLZrdAkeskou7pUX24EYJoEU2+yoReLRMIjwJe0KGlKehHVXTGR
-         MDzw==
+        b=HRZfr6GWUqrKYdcbnbtbenUj0Ovjl/X3rq5VdwRmCOcn2tQPE68dwmFMtPcygz7PQ6
+         eOPnzritThWH1XhYHhXl2YJYX5DsvE6iK3pGn609pcbWL+dN0wP5QBDNPNF74XnEL1BJ
+         mg/GgIctKOSrE1VagUQjMd2qqMs7SjwIl+RIzJ2A3Bzou+FVjtxIuOrhr+VoOH8NHSop
+         WeFf1Jfjkx2h4jM8RuQ0yGBlVbcCs/M8qvpeu+UAi182Ta7UnTEfdEFuWNYX5WpeQNdP
+         8DBphM2kbNsCR0k0HSHzZ8nKY7zAzV9CqORlLs6BNRl3syth4K+tt0ji8AXTxGWsVnDS
+         lIdg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:sender:dkim-signature
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:to:from:date:dkim-filter:dmarc-filter
          :arc-authentication-results;
-        bh=87atvG3AV6unUT90kiFvXQK+VSsTwf++HlAEYy1L0WA=;
-        b=zO0UqhHSbdASyUZDWkOlATVOtlwF9QWJrcCimUTjomYqG1mqtOU5+Vvj5tNJzY8sQE
-         3Gm+TBHfNaORlJp321tw/t1Jp5EnTGi0SBPjtfhFeR2AuflJ/inQ6+yF/6v2Hyc0JdmK
-         wIg8/W9SEpzFVdK2xBYpfoP5A31rxoog/IB21I9Y/0HJPeOcEep0I17IF2+2vsfMH86K
-         Ci1XnEhIZVOeSzMGF31zV8TDPJPC5DlBVAlfhj4tj2f/m3IZkX7tYplviFOYSNk1V2fB
-         2hPXVYH7uLNrTnQk87gjePFJ6hnRtfeHUPDLx4TgQ9vTTuQtvj/DSK1PidGgn09dEUNG
-         UUww==
+        bh=Y7NJo3FS9YTGnZRGDEFEtfDCxFEROsZX1gUQPn4Ft6o=;
+        b=wq+9i0c72jF3VK/z4DbVCztVcQlZ1m9iYTSMRud+rPFlftBXM2LPO/blKwdbPIp8ln
+         O2O8xw1gEZosm5qRwYAy4CRpherUXdkNbOqIPE9xLGRCpO5vMvPqucFWdLDh/0xIQT53
+         +ZZzHV0zFqzzw0nhN6lJ8LLMNn2ob3MvNPKOxjVR4SmLu8RmXwMjXYIAYNS2uB52WeZn
+         UVq8MGSZ7eoEshmPksp8/6lUyiIHq76qAhz78kIpnTQnZi2QkNhIjyS5jl2Ygbt025IL
+         NMoH+9xJ00em2XHT1B6VawZlm4nq/2HkL9S4+dGt1NHBS/AHQwva8T3zPAJK+NoyF7oH
+         O1+g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 2607:f8b0:4003:c06::243 as permitted sender) smtp.mailfrom=philippe.mathieu.daude@gmail.com
-Return-Path: <philippe.mathieu.daude@gmail.com>
-Received: from mail-oi0-x243.google.com (mail-oi0-x243.google.com. [2607:f8b0:4003:c06::243])
-        by mx.google.com with ESMTPS id o101si1705839ota.19.2017.05.27.09.19.03
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 27 May 2017 09:19:03 -0700 (PDT)
-Received-SPF: pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 2607:f8b0:4003:c06::243 as permitted sender) client-ip=2607:f8b0:4003:c06::243;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
+        by mx.google.com with ESMTPS id a78si11416727qkh.64.2017.05.29.23.58.18
+        for <alex.bennee@linaro.org>
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Mon, 29 May 2017 23:58:18 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 2607:f8b0:4003:c06::243 as permitted sender) smtp.mailfrom=philippe.mathieu.daude@gmail.com
-Received: by mail-oi0-x243.google.com with SMTP id w138so6020941oiw.3;
-        Sat, 27 May 2017 09:19:03 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
-         :mime-version:content-transfer-encoding;
-        bh=87atvG3AV6unUT90kiFvXQK+VSsTwf++HlAEYy1L0WA=;
-        b=imBa+rVEATROqWFSAnkDlxxC/61kEkTI7spbWSf4J8v5FD+Ye9b55SpA50csB5RY5p
-         k7IHkUkzKGv/TssDHTamAX0ix0K+bOQpabinWqtqpiV46aC2rsNvxPe9f5fjnFkFHX1N
-         xXjz1aTduiuPmurB6L6W8AxoWMRZH8G7HlwyC4GtyTI4IV+5cxnh6dp+doeODuLfc06A
-         MgJ7MOi7RxrEW2s8iMDtaJpekSg7wYPEr19XdgMdmotSndmYUFy1v3vSm+LFZJ1WPMpT
-         kHkr3W1TQSip2ZCI1MHS1RuDDzGAR5HVHdM/22uxbqyPA9SxHYnqmO6HJhUiagrRtfIz
-         hqcg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
-         :in-reply-to:references:mime-version:content-transfer-encoding;
-        bh=87atvG3AV6unUT90kiFvXQK+VSsTwf++HlAEYy1L0WA=;
-        b=B92cV/oLAYATU5c1epYnKB2lyUhX2lkul/hnvgGtI6JHW+2XleF7eloKh7Y8tO5hUi
-         PqLyqhale62Xtx75HY63IL1sTLZXM75eMPSsvAqz4PcmIt4FTfW0LNMl/kieIat/X1B/
-         94gXgFmS/BGI1XtTbrw51RFupushxOlHVAeqFDaeYr12lVpmSgsAmn9eBkuOnrxHknWv
-         ThNtMTukWItHTXOYcw4Uo1oaw39R3canXWdTBT2eGfz0cGKGV4Rb43Ok9JBbrMwNFg0u
-         FbNL5ohIf1b0Ou2BWyC5OBMLOMh+LRehA2WzYelFCoKzH1MCEhyU+7d8x+E6in0Yv7Mk
-         2NMw==
-X-Gm-Message-State: AODbwcDb7kJPTLD+trWsf2TGd65g7x5pbyT9trJIzih8LwNZUnzkYEWV
-	/2xcITm9c1unqY/hYbo=
-X-Received: by 10.202.230.8 with SMTP id d8mr3516242oih.206.1495901943413;
-        Sat, 27 May 2017 09:19:03 -0700 (PDT)
-Return-Path: <philippe.mathieu.daude@gmail.com>
-Received: from yoga.attlocal.net (162-231-236-127.lightspeed.miamfl.sbcglobal.net. [162.231.236.127])
-        by smtp.gmail.com with ESMTPSA id i32sm1953113otd.43.2017.05.27.09.19.01
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 27 May 2017 09:19:02 -0700 (PDT)
-Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philippe.mathieu.daude@gmail.com>
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-To: qemu-devel@nongnu.org,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Fam Zheng <famz@redhat.com>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	qemu-arm@nongnu.org
-Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-Subject: [PATCH v4 20/24] shippable: add armeb-linux-user target
-Date: Sat, 27 May 2017 13:17:51 -0300
-Message-Id: <20170527161755.7761-21-f4bug@amsat.org>
-X-Mailer: git-send-email 2.11.0
-In-Reply-To: <20170527161755.7761-1-f4bug@amsat.org>
-References: <20170527161755.7761-1-f4bug@amsat.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:51791 helo=lists.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1dFb6g-0000HX-8x
+	for alex.bennee@linaro.org; Tue, 30 May 2017 02:58:18 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:59593)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <imammedo@redhat.com>) id 1dFb6b-0000G0-5o
+	for qemu-arm@nongnu.org; Tue, 30 May 2017 02:58:14 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+	(envelope-from <imammedo@redhat.com>) id 1dFb6Y-0004vq-6Q
+	for qemu-arm@nongnu.org; Tue, 30 May 2017 02:58:13 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:59072)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <imammedo@redhat.com>)
+	id 1dFb6Y-0004vQ-13; Tue, 30 May 2017 02:58:10 -0400
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
+	[10.5.11.11])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 2DFDE37E72;
+	Tue, 30 May 2017 06:58:08 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 2DFDE37E72
+Authentication-Results: ext-mx05.extmail.prod.ext.phx2.redhat.com;
+	dmarc=none (p=none dis=none) header.from=redhat.com
+Authentication-Results: ext-mx05.extmail.prod.ext.phx2.redhat.com;
+	spf=pass smtp.mailfrom=imammedo@redhat.com
+DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com 2DFDE37E72
+Received: from nial.brq.redhat.com (dhcp-1-118.brq.redhat.com [10.34.1.118])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id C379E189EF;
+	Tue, 30 May 2017 06:58:06 +0000 (UTC)
+Date: Tue, 30 May 2017 08:58:02 +0200
+From: Igor Mammedov <imammedo@redhat.com>
+To: Andrew Jones <drjones@redhat.com>
+Message-ID: <20170530085802.578dc4b3@nial.brq.redhat.com>
+In-Reply-To: <20170529173751.3443-2-drjones@redhat.com>
+References: <20170529173751.3443-1-drjones@redhat.com>
+	<20170529173751.3443-2-drjones@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-TUID: s7kUNP/lN1CJ
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.29]);
+	Tue, 30 May 2017 06:58:08 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH 1/2] hw/arm/virt-acpi-build:
+ build SLIT when needed
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.21
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org, qemu-devel@nongnu.org,
+	zhaoshenglong@huawei.com
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: WUiVlbRk6YMK
 
-Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
----
- .shippable.yml | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+On Mon, 29 May 2017 19:37:50 +0200
+Andrew Jones <drjones@redhat.com> wrote:
 
-diff --git a/.shippable.yml b/.shippable.yml
-index fe360f85cb..2070c4d827 100644
---- a/.shippable.yml
-+++ b/.shippable.yml
-@@ -6,7 +6,7 @@ env:
-     - LC_ALL=C
-   matrix:
-     - IMAGE=debian-armhf-cross
--      TARGET_LIST=arm-softmmu,arm-linux-user
-+      TARGET_LIST=arm-softmmu,arm-linux-user,armeb-linux-user
-     - IMAGE=debian-arm64-cross
-       TARGET_LIST=aarch64-softmmu,aarch64-linux-user
-     - IMAGE=debian-s390x-cross
--- 
-2.11.0
+> Cc: Shannon Zhao <zhaoshenglong@huawei.com>
+> Signed-off-by: Andrew Jones <drjones@redhat.com>
+Reviewed-by: Igor Mammedov <imammedo@redhat.com>
+
+> ---
+>  hw/arm/virt-acpi-build.c | 4 ++++
+>  1 file changed, 4 insertions(+)
+> 
+> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+> index e5852067f5bd..2079828c22a4 100644
+> --- a/hw/arm/virt-acpi-build.c
+> +++ b/hw/arm/virt-acpi-build.c
+> @@ -776,6 +776,10 @@ void virt_acpi_build(VirtMachineState *vms, AcpiBuildTables *tables)
+>      if (nb_numa_nodes > 0) {
+>          acpi_add_table(table_offsets, tables_blob);
+>          build_srat(tables_blob, tables->linker, vms);
+> +        if (have_numa_distance) {
+> +            acpi_add_table(table_offsets, tables_blob);
+> +            build_slit(tables_blob, tables->linker);
+> +        }
+>      }
+>  
+>      if (its_class_name() && !vmc->no_its) {
+

@@ -1,111 +1,123 @@
-Received: by 10.25.0.6 with SMTP id 6csp1829881lfa;
-        Tue, 30 May 2017 06:57:00 -0700 (PDT)
-X-Received: by 10.223.173.140 with SMTP id w12mr8331145wrc.125.1496152620468;
-        Tue, 30 May 2017 06:57:00 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1496152620; cv=none;
+Received: by 10.25.0.6 with SMTP id 6csp1831407lfa;
+        Tue, 30 May 2017 07:00:39 -0700 (PDT)
+X-Received: by 10.28.92.135 with SMTP id q129mr1963468wmb.109.1496152838669;
+        Tue, 30 May 2017 07:00:38 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1496152838; cv=none;
         d=google.com; s=arc-20160816;
-        b=uavGBnF+K8MNkA2LxhmSMduEjOYOG4FnLYuizk4iwmMysPrHd1oG65q9S7t2TwJr99
-         LW/EPBfsZiRzfyenvmHrXyAV2wrVOOVE4tY7H2esAMx79k+U2HR7W3EyGGPfpPEwjSe8
-         NnH/p8ZS+eflu9r2KVq1Jalog9SOpnQFFIR1n6mlQVSy5b6JHg5vRBE3r/2+UowCd86P
-         mVNNkLDRY+6ECuw567nk/O0+Ms4vJAqrV80LtmmS6C7JpXTGUWDchSLAN2CNcxwc4/+M
-         FZf/C8lP5v5zAtGah3CQelDbQj664U+9Et2nPNzDm3HEI+38hSi2ypgi8QXXQIN2oav9
-         OI6w==
+        b=g1B1DVaZzIYRDXvKcDX9gm89EjScXU/sk4G+zUImO6Y41L9JVnz8GeAha5Rg0GP187
+         Vb0AGyvXBaH8BUKT5Sxi8Iy/H4GaBwCxs+ooAiwElpgbmeAa7IQRWwia8drekdCcZBoQ
+         /YfFbdiUqU8P0TG/OajjGp/+k35Fdl43VIWvEJLJNC3phEKoAn0QJlLlGhgsw9VM1z21
+         yIeZ1PqutHFsSh1SeuV7RJoWyEYE5neQsytPB/smcW6CHuDhLWS5pKcGWFkZ7bMOn+W4
+         DQthkfKiBb0a6TUElTxqsqWIu71fiFKQ2k5IztO9wqtjy/ZJlZxHFKYMe8y53H+nNvMw
+         fZcg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=cc:to:subject:message-id:date:from:references:in-reply-to
-         :mime-version:dkim-signature:arc-authentication-results;
-        bh=sXPbn1PQO4zvR7t9MPiJ0mLvbtta8+tHmw0GWingtRQ=;
-        b=AXo4yrhs01eZT8PJ8Zd58SHj2PdCfog3FP/ngoyLd431M7+eaL3Psdb18Y6gs9mmgN
-         SW1zHkmXwLRLF4veM00Wt7qlbYdQlK5/cNz55zkzPMP4KtCKbqeSwsgKwc2T8CWf/C4K
-         xYfcV6Nxp3Fghr3ir5UiXFgamN7XW0WvsgbyaYMkixyEqLkIZ4don4nXnQnH4NJ7lPMV
-         aFNG+r5VjQ7JJ1wbCjsl4zX05UCeaz4VDT3pZvqHKdiUEA33RV2QexLm3C+R4gl1thh1
-         vnTPqRaiQ50x9CVNGfDXmy3WdurtwtQ4p0Ks54woMEu1OwuDB7tUiLKkmc3mEaWPDihd
-         bPkg==
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :references:in-reply-to:mime-version:dkim-signature
+         :arc-authentication-results;
+        bh=945HZ8I3w5Ij+CEx0HCyqAaws++RgwCzdqIJzsVKX0E=;
+        b=olAS6nu445ztDC8FWqkk0zLMTZyuze5ZZ4cWUyNrd4Lw/DrpDmHXsBJwnVTybVQsDX
+         QRcLSaNLKc7PHCBLwukT7rYISxVnVF4Q1KRIZEAq6bKS7iyzuIZCTr93m2EFFfa0lmZI
+         Kp7UKjlB/5mRBpi2JmfkAs2eBUdC5RYRLlLXxLWnTR8HKDEQb92bTXr6pREheYkygy6w
+         h6QWumskfXbL1qq3E87nnmo3a8BvAxEws4CWeCxNRER5dqnczTrQDUvJj5pXdijP9IZz
+         fQfGt+KxbsR12Xg43IN0kj9cexDibNhvTwhQCt6pFTCSqAZM4WOcUegyxOHTVJHOZCfJ
+         VN+A==
 ARC-Authentication-Results: i=1; mx.google.com;
        dkim=pass header.i=@linaro.org;
        spf=pass (google.com: domain of peter.maydell@linaro.org designates 2a00:1450:400c:c0c::235 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <peter.maydell@linaro.org>
 Received: from mail-wr0-x235.google.com (mail-wr0-x235.google.com. [2a00:1450:400c:c0c::235])
-        by mx.google.com with ESMTPS id l2si7200781wrl.226.2017.05.30.06.57.00
+        by mx.google.com with ESMTPS id q184si26563679wmg.165.2017.05.30.07.00.38
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 30 May 2017 06:57:00 -0700 (PDT)
+        Tue, 30 May 2017 07:00:38 -0700 (PDT)
 Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 2a00:1450:400c:c0c::235 as permitted sender) client-ip=2a00:1450:400c:c0c::235;
 Authentication-Results: mx.google.com;
        dkim=pass header.i=@linaro.org;
        spf=pass (google.com: domain of peter.maydell@linaro.org designates 2a00:1450:400c:c0c::235 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: by mail-wr0-x235.google.com with SMTP id v104so1124031wrb.0
-        for <alex.bennee@linaro.org>; Tue, 30 May 2017 06:57:00 -0700 (PDT)
+Received: by mail-wr0-x235.google.com with SMTP id v104so1189900wrb.0
+        for <alex.bennee@linaro.org>; Tue, 30 May 2017 07:00:38 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
         h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-         :cc;
-        bh=sXPbn1PQO4zvR7t9MPiJ0mLvbtta8+tHmw0GWingtRQ=;
-        b=by/NXz3s5+D6H9sAu6ad1T2tdpMPDoyVs7olsTFB4lHjsNTDUKR5q5tQWJ86ZwrDda
-         YLe1PhYubzRj9ZcyMeguPnj/wy/ptraakzTCKctzfJ6p1OPR+YltideryvsSsYnlFoEl
-         TFljFfGzCaowwFZUmJUPFym4YzWRcdVpEnrCE=
+         :cc:content-transfer-encoding;
+        bh=945HZ8I3w5Ij+CEx0HCyqAaws++RgwCzdqIJzsVKX0E=;
+        b=TsAWML5U2VLeNOAIzbXClDG6R4HF7KjbNqGTDFTyZ0LLzQXDkqasFQM49vmAnR+ccV
+         Q+Cs+uRRer/P8HXrb1OB4viayHTS8kT0ABlOWgfj6UXqGfRib8vqxFOKhBtUA0OZ93CQ
+         k3m6+6uQyMbsow9xw5hgutDeyt7lNGLa5TuW0=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-         :message-id:subject:to:cc;
-        bh=sXPbn1PQO4zvR7t9MPiJ0mLvbtta8+tHmw0GWingtRQ=;
-        b=aqMZ0XX606DoNcQxwYHHXAUBejwGOFEUOV4xYrKMtYE8E1gXaTvqcxfDR1AlhwyLsr
-         NbUSwts/EtE6qraV/w3vX9lstxCNWpFqu3kj7AEx9kFtBhyMepkpNZ6Vpyf523j0EwMr
-         HNM/5y8DoQ7tKhVwx4ylj8hIWJ93WcC1w2VhCzeqxVOD3Klame0J8EtgkrbABlv2wY1Z
-         mC7cD2B1eFkGeXCE4TSgKL9R91yRBM6PUZaB4VqwgTUHUSCBwCDIgWKPQYrg+3ejjWWe
-         jra2Un9ExZ76HDNEeZR04w5iFOPXwlCpNVLzl0Qd6llRlshN55u/48fCHmr73Z+QTvwW
-         SlxQ==
-X-Gm-Message-State: AODbwcCKEYut4ltSfvp/BaZuJ1gP43yj0GeSpyAbkMpInuTjaWqnlqAW
-	v2PORS9XwvODw9h1X7tIUdNNbyXdYIBKsC4=
-X-Received: by 10.223.150.139 with SMTP id u11mr11372994wrb.195.1496152620024;
- Tue, 30 May 2017 06:57:00 -0700 (PDT)
+         :message-id:subject:to:cc:content-transfer-encoding;
+        bh=945HZ8I3w5Ij+CEx0HCyqAaws++RgwCzdqIJzsVKX0E=;
+        b=V7JOtCRqB/la9EgusVrbJVe+I5P8oW+B8v2GYVDSM74cTC8apLwcZQFy3J5y7azS7O
+         Vq4bQ7bGwDcPUYUzW+XJPI9Na31+0oVgLH9yWP4GcV4umOeFhPR6Tf+RIDu74w0qUw64
+         D/2A4usk+9u2BHFpmvFtJPGHyX2X5T4Ip8kOHCfodPwYiZydSZw1ufmevdx61tZ1SxN1
+         wvOCkmcHq/4Hlm18mQXUwS3zzr9GVUrsiaQCoGGZDLrR2OcbcBjY36mHq6EqJSsZIxuG
+         aAR/N1O5RvSvWzyyqwcprPUGC99QPyo+kHW+A8B7TlJNWPrbzaiZ54RVQVQDYZTHw3pt
+         Ra4Q==
+X-Gm-Message-State: AODbwcB/awzqYO2hPnfwMbmwe3A3RT848MTcqFaV8Um1eq4XXRbmp5bg
+	YZw5u30NKZw0CPdR6A8XT6opREm9xhDTOZQ=
+X-Received: by 10.223.152.227 with SMTP id w90mr7779715wrb.151.1496152835621;
+ Tue, 30 May 2017 07:00:35 -0700 (PDT)
 MIME-Version: 1.0
-Received: by 10.223.135.82 with HTTP; Tue, 30 May 2017 06:56:39 -0700 (PDT)
-In-Reply-To: <CAKmqyKPBYyhT5NFRks8Z4VX=mCdQuVk5+cX4s4qPpO9PQvMMZQ@mail.gmail.com>
+Received: by 10.223.135.82 with HTTP; Tue, 30 May 2017 07:00:15 -0700 (PDT)
+In-Reply-To: <82878b52-ee9d-e427-f1f3-d112c693cc49@amsat.org>
 References: <1493122030-32191-1-git-send-email-peter.maydell@linaro.org>
- <1493122030-32191-3-git-send-email-peter.maydell@linaro.org> <CAKmqyKPBYyhT5NFRks8Z4VX=mCdQuVk5+cX4s4qPpO9PQvMMZQ@mail.gmail.com>
+ <1493122030-32191-6-git-send-email-peter.maydell@linaro.org> <82878b52-ee9d-e427-f1f3-d112c693cc49@amsat.org>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 30 May 2017 14:56:39 +0100
-Message-ID: <CAFEAcA_NvX4=zXehU4yTdwnWCyPOddB81Que3UDsM0yVhCaFLQ@mail.gmail.com>
-Subject: Re: [Qemu-devel] [PATCH 02/13] arm: Add support for M profile CPUs
- having different MMU index semantics
-To: Alistair Francis <alistair.francis@xilinx.com>
-Cc: qemu-arm <qemu-arm@nongnu.org>, 
-	"qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>, =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
-	Patch Tracking <patches@linaro.org>
+Date: Tue, 30 May 2017 15:00:15 +0100
+Message-ID: <CAFEAcA94KvkXXzhnnhEKK=YswGc7qa7VGMwHZjuM2hXWAHXxvw@mail.gmail.com>
+Subject: Re: [Qemu-devel] [PATCH 05/13] arm: Don't clear ARM_FEATURE_PMSA for
+ no-mpu configs
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>, 
+	Alistair Francis <alistair.francis@xilinx.com>, =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
+	"patches@linaro.org" <patches@linaro.org>
 Content-Type: text/plain; charset="UTF-8"
-X-TUID: NuGf4hjUl8Ni
+Content-Transfer-Encoding: quoted-printable
+X-TUID: Z+GPwhqALFN0
 
-On 2 May 2017 at 23:23, Alistair Francis <alistair.francis@xilinx.com> wrote:
-> On Tue, Apr 25, 2017 at 5:06 AM, Peter Maydell <peter.maydell@linaro.org> wrote:
->> The M profile CPU's MPU has an awkward corner case which we
->> would like to implement with a different MMU index.
+On 13 May 2017 at 23:37, Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> wrot=
+e:
+> On 04/25/2017 09:07 AM, Peter Maydell wrote:
 >>
->> We can avoid having to bump the number of MMU modes ARM
->> uses, because some of our existing MMU indexes are only
->> used by non-M-profile CPUs, so we can borrow one.
->> To avoid that getting too confusing, clean up the code
->> to try to keep the two meanings of the index separate.
+>> Fix the handling of QOM properties for PMSA CPUs with no MPU:
 >>
->> Instead of ARMMMUIdx enum values being identical to core QEMU
->> MMU index values, they are now the core index values with some
->> high bits set. Any particular CPU always uses the same high
->> bits (so eventually A profile cores and M profile cores will
->> use different bits). New functions arm_to_core_mmu_idx()
->> and core_to_arm_mmu_idx() convert between the two.
->>
->> In general core index values are stored in 'int' types, and
->> ARM values are stored in ARMMMUIdx types.
+>> Allow no-MPU to be specified by either:
+>>  * has-mpu =3D false
+>>  * pmsav7_dregion =3D 0
+>> and make setting one imply the other. Don't clear the PMSA
+>> feature bit in this situation.
 >>
 >> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+>> ---
+>>  target/arm/cpu.c | 8 +++++++-
+>>  1 file changed, 7 insertions(+), 1 deletion(-)
+>>
+>> diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+>> index f17e279..8e57498 100644
+>> --- a/target/arm/cpu.c
+>> +++ b/target/arm/cpu.c
+>> @@ -757,8 +757,14 @@ static void arm_cpu_realizefn(DeviceState *dev, Err=
+or
+>> **errp)
+>>          cpu->id_pfr1 &=3D ~0xf000;
+>>      }
+>>
+>> +    /* MPU can be configured out of a PMSA CPU either by setting has-mp=
+u
+>> +     * to false or by setting pmsav7-dregion to 0.
+>> +     */
+>>      if (!cpu->has_mpu) {
+>> -        unset_feature(ARM_FEATURE_PMSA);
 >
-> This looks ok to me. I'm a little worried it will make SMMU or some
-> ARMv9 (or whatever the next thing is) work more complicated as we have
-> this.
+>
+> Oh, fixed here.
 
-Mmm, that's always a risk, but I think it will be pretty
-easy to undo this if we need to.
+Ah, yes, I was wondering why I hadn't noticed an obvious
+compile error. I'll fix up patch 4 so we don't break bisection.
 
 thanks
 -- PMM

@@ -1,100 +1,94 @@
-Received: by 10.25.0.6 with SMTP id 6csp1828013lfa;
-        Tue, 30 May 2017 06:52:23 -0700 (PDT)
-X-Received: by 10.237.42.102 with SMTP id k35mr24172770qtf.58.1496152343227;
-        Tue, 30 May 2017 06:52:23 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1496152343; cv=none;
+Received: by 10.25.0.6 with SMTP id 6csp1836145lfa;
+        Tue, 30 May 2017 07:08:58 -0700 (PDT)
+X-Received: by 10.200.57.57 with SMTP id s54mr24678754qtb.53.1496153338352;
+        Tue, 30 May 2017 07:08:58 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1496153338; cv=none;
         d=google.com; s=arc-20160816;
-        b=0xt3KGSMkATMRGyeDF1Mqn1gkoPH4BggEIxiajaA/PBfGdn5a/oTC4LzRb+SUOJZLx
-         7SfKT/mDJ27/9Jo0ZBpCyLmzsxO0zp0+589dYxp469Lhg3+TTbuIWsC+QZ6hdpddrMj9
-         eiyfe9vj/C2j1bNP5MFeatpwBRBtB6cphQSZlCsTn+q5qNZ0fgYFGgJnuqub5nf93gVe
-         QgKm7A4WSi/K99lkAKmVkar0PzY2cpqjeA9iJ3rDy8oKshv8z+XZWgT669QTTs89aW/c
-         RyN0A5s2yfLR4E2Q2jSRdxDjaVEshSNHF8Ih00ace83zS/6qWPYCh3th3A5tlXeq+7Gl
-         EhCg==
+        b=aul65jQpMn4LocY+/CgRr0TzHlzlzAiVj8ylckKVqzAdggckiwxFegYnYjyMvYCTzG
+         /fagGhzORwkXB2fY4FFPqAeU0HWSWfnfu2dpPAh62vwiMacV02fszgEouRRwxdnGAUyc
+         ir6XcPwcvIVQ/TWRYZ4MDaX5UoTpQH0e+8sxfDxUNLhWxTaK9p9YlfB+3Q9XYxefNqQj
+         WP06IYSdq858VDTDsm0NDaz3fP9bYyDl9Oe5afEmK40kJDJ1fJ2lMrdSWC9zCRaTcIxL
+         QMaN8zaewleV0G/e31kAoxc55WnV7iCq0abWYmOcDP3osgNTMjx+M70NIVxf7mcNcdtr
+         yDJw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:to:message-id:date:from:references
-         :in-reply-to:mime-version:dkim-signature:arc-authentication-results;
-        bh=SEI9qKx5kzKhcjebaRdmc7YFjEAmsfvT+rHgJmEFQGc=;
-        b=T+/OM+aumMCLwIkPMKnufwN97kRPJ1u7y1za02FQYyWqIEAhrcrwPt3GMYahArUvJG
-         zHCSiS2dLhb8HhKoethIYGhkKm1yVvDA5W5jLTeI2LpEM3PRbF85DWKSixJdBRiydD+k
-         3u0vED9kwsjGJ4/uXtsdUy04J8apOvBu3wRHLkUEPLDPKUBoWm5c1+1NORMMBxdcRQbG
-         woUa+5oImhHM1UAcVuaZfRIY+/gg9MJByrn4Cc8T0Vab9XlrHUDWNqNrDeOyREDlUQpa
-         yd1TP/96xkLzkTzay9gSjHVFlC3hc0DbZJObUqHq8sED/d51hM9FUSsz5KuaQkul+Ey8
-         N/3A==
+         :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
+         :content-disposition:mime-version:references:message-id:to:from:date
+         :dkim-filter:dmarc-filter:arc-authentication-results;
+        bh=Yv6Wr2c3Lh2E3ur1dKq87lfSQzacDHriex7RLtPh5Sg=;
+        b=vSahjUY1/BodUu/+Fb2FjwQfWgsMMxJ9xWg+DVCXyxLTMmAXcUUl7KcDPZlM05OI3M
+         2QIq7g86haRan2H9ZWPpWQVEd+E6Mojfy6c+VC7xp3lYW7E7DRIuwly9Yne6bh/JMTc1
+         gG6/Qqa3RoW1s0vJL0xOZSFmSPrOkE+XH8S2tYXn9kvh46yKdBczujf1UVpzICEDH/CI
+         hghLkg4mUL2u4xM9yhIzG8/HpZkOgLXdn4VXRK40noQL8aHW1bVPfS61NZnp+aDY1+aY
+         SeUhyLdYIGkvRWaTsqofPe6xPTpv5zl8+EXUmh8vhXfKW2KWmjb5oUvxG60uVxgtcP8n
+         9vsA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id y78si12564072qka.94.2017.05.30.06.52.23
+        by mx.google.com with ESMTPS id d1si12208849qtg.163.2017.05.30.07.08.58
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 30 May 2017 06:52:23 -0700 (PDT)
+        Tue, 30 May 2017 07:08:58 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:53881 helo=lists.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:54035 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1dFhZO-0007a9-Nj
-	for alex.bennee@linaro.org; Tue, 30 May 2017 09:52:22 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:42750)
+	id 1dFhpR-00053v-LY
+	for alex.bennee@linaro.org; Tue, 30 May 2017 10:08:57 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:47597)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1dFhXs-0006gK-0Y
-	for qemu-devel@nongnu.org; Tue, 30 May 2017 09:50:48 -0400
+	(envelope-from <ehabkost@redhat.com>) id 1dFhkx-0001aJ-CT
+	for qemu-devel@nongnu.org; Tue, 30 May 2017 10:04:24 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1dFhXr-0004kG-Aq
-	for qemu-devel@nongnu.org; Tue, 30 May 2017 09:50:48 -0400
-Received: from mail-wm0-x230.google.com ([2a00:1450:400c:c09::230]:34970)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1dFhXr-0004k6-30
-	for qemu-devel@nongnu.org; Tue, 30 May 2017 09:50:47 -0400
-Received: by mail-wm0-x230.google.com with SMTP id b84so92791856wmh.0
-	for <qemu-devel@nongnu.org>; Tue, 30 May 2017 06:50:46 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc:content-transfer-encoding;
-	bh=SEI9qKx5kzKhcjebaRdmc7YFjEAmsfvT+rHgJmEFQGc=;
-	b=aPdj+XThVg32VWGPCdpRj29b7uQQ2X/q/+67m5x/KeMLujVtBUix633oXF7ubG6nWK
-	CERm4SwtDrSOhhUW6QjApJOlDqXPYuJJAUUVE+h2tqDKof8yTuHGDSZYvhPjbMlfxPm2
-	frZ35jT7y7mHranK6dvM6PriO+71mSsmP7jEw=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc:content-transfer-encoding;
-	bh=SEI9qKx5kzKhcjebaRdmc7YFjEAmsfvT+rHgJmEFQGc=;
-	b=Iu5Q5FxQj71Oxse+DGDvAR5kq4jArb0dh61QMIvn8nqNDOJL13jihPebfMmNgzsd1u
-	9ovb+nroWncXE0Kary/GgEGinlhwdTYyHYKK3lcNgxWfbAF0sMNpphy5NlxCyCoD53D4
-	LnBWkueDMYC02eqm+KISTwsM+gu9ccVCPpsVfIgw+ShztGXxCiuekyoqwDMCGdyaOaBx
-	9ykN/PayNj81LYvLK6PYtNbEYqorDKJBYl7JpSfvnQRUQtpPMOpjzVE2ySxrbGHNq3Pn
-	MyNiT1pIIebc7FsYjocrpOmGXbJA7bWSxtFCrcrRzXYnjeWysYCv307EZr/iULG5tzsn
-	icDg==
-X-Gm-Message-State: AODbwcDKMdcU2YsfSLtSmGCnXhFO2Q5k7/sJhr8A+v9KULoj5HJJWjpT
-	UX0HBVUych/UeA+/EG8E/hz9n/MHoq/C
-X-Received: by 10.28.24.202 with SMTP id 193mr1927087wmy.125.1496152245940;
-	Tue, 30 May 2017 06:50:45 -0700 (PDT)
+	(envelope-from <ehabkost@redhat.com>) id 1dFhkp-0000Qn-Mn
+	for qemu-devel@nongnu.org; Tue, 30 May 2017 10:04:19 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:33850)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <ehabkost@redhat.com>)
+	id 1dFhkj-0000PF-1l; Tue, 30 May 2017 10:04:05 -0400
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
+	[10.5.11.11])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id DC51880F96;
+	Tue, 30 May 2017 14:04:03 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com DC51880F96
+Authentication-Results: ext-mx03.extmail.prod.ext.phx2.redhat.com;
+	dmarc=none (p=none dis=none) header.from=redhat.com
+Authentication-Results: ext-mx03.extmail.prod.ext.phx2.redhat.com;
+	spf=pass smtp.mailfrom=ehabkost@redhat.com
+DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com DC51880F96
+Received: from localhost (ovpn-116-43.gru2.redhat.com [10.97.116.43])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 07F559D99C;
+	Tue, 30 May 2017 14:04:02 +0000 (UTC)
+Date: Tue, 30 May 2017 11:04:01 -0300
+From: Eduardo Habkost <ehabkost@redhat.com>
+To: Igor Mammedov <imammedo@redhat.com>
+Message-ID: <20170530140401.GJ32274@thinpad.lan.raisama.net>
+References: <1494415802-227633-1-git-send-email-imammedo@redhat.com>
+	<1494415802-227633-7-git-send-email-imammedo@redhat.com>
+	<20170526154625.GI22043@thinpad.lan.raisama.net>
+	<20170530141329.60d728c6@nial.brq.redhat.com>
 MIME-Version: 1.0
-Received: by 10.223.135.82 with HTTP; Tue, 30 May 2017 06:50:25 -0700 (PDT)
-In-Reply-To: <fa2c7203-644e-9209-91d8-e37c345b8240@amsat.org>
-References: <1493226792-3237-1-git-send-email-peter.maydell@linaro.org>
-	<1493226792-3237-4-git-send-email-peter.maydell@linaro.org>
-	<fa2c7203-644e-9209-91d8-e37c345b8240@amsat.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 30 May 2017 14:50:25 +0100
-Message-ID: <CAFEAcA9T_JHBu=vw6ohVj6YwqcC5GMQKB0HJA+ZPo746j+db8Q@mail.gmail.com>
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2a00:1450:400c:c09::230
-Subject: Re: [Qemu-devel] [Qemu-arm] [PATCH 3/3] hw/intc/arm_gicv3_cpuif:
- Fix priority masking for NS BPR1
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20170530141329.60d728c6@nial.brq.redhat.com>
+X-Fnord: you can see the fnord
+User-Agent: Mutt/1.8.0 (2017-02-23)
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.27]);
+	Tue, 30 May 2017 14:04:04 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-devel] [PATCH v3 06/18] numa: mirror cpu to node mapping
+ in MachineState::possible_cpus
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -106,21 +100,81 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
 	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
-	"patches@linaro.org" <patches@linaro.org>
+Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jones <drjones@redhat.com>,
+	qemu-devel@nongnu.org, qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
+	Shannon Zhao <zhaoshenglong@huawei.com>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	David Gibson <david@gibson.dropbear.id.au>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Q1N8i/0PHh5n
+X-TUID: NXy/ORnXK07u
 
-On 14 May 2017 at 06:21, Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> wrot=
-e:
-> If you agree with upgrading those comments:
-> Reviewed-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+On Tue, May 30, 2017 at 02:13:29PM +0200, Igor Mammedov wrote:
+> On Fri, 26 May 2017 12:46:25 -0300
+> Eduardo Habkost <ehabkost@redhat.com> wrote:
+> 
+> > On Wed, May 10, 2017 at 01:29:50PM +0200, Igor Mammedov wrote:
+> > [...]
+> > > diff --git a/hw/core/machine.c b/hw/core/machine.c
+> > > index 2482c63..420c8c4 100644
+> > > --- a/hw/core/machine.c
+> > > +++ b/hw/core/machine.c
+> > > @@ -389,6 +389,102 @@ HotpluggableCPUList *machine_query_hotpluggable_cpus(MachineState *machine)  
+> > [...]
+> > > +void machine_set_cpu_numa_node(MachineState *machine,
+> > > +                               const CpuInstanceProperties *props, Error **errp)
+> > > +{  
+> > [...]
+> > > +    /* force board to initialize possible_cpus if it hasn't been done yet */
+> > > +    mc->possible_cpu_arch_ids(machine);  
+> > [...]
+> > > diff --git a/numa.c b/numa.c
+> > > index 7182481..7db5dde 100644
+> > > --- a/numa.c
+> > > +++ b/numa.c
+> > > @@ -170,6 +170,7 @@ static void parse_numa_node(MachineState *ms, NumaNodeOptions *node,
+> > >          exit(1);
+> > >      }
+> > >      for (cpus = node->cpus; cpus; cpus = cpus->next) {
+> > > +        CpuInstanceProperties props;
+> > >          if (cpus->value >= max_cpus) {
+> > >              error_setg(errp,
+> > >                         "CPU index (%" PRIu16 ")"
+> > > @@ -178,6 +179,10 @@ static void parse_numa_node(MachineState *ms, NumaNodeOptions *node,
+> > >              return;
+> > >          }
+> > >          bitmap_set(numa_info[nodenr].node_cpu, cpus->value, 1);
+> > > +        props = mc->cpu_index_to_instance_props(ms, cpus->value);
+> > > +        props.node_id = nodenr;
+> > > +        props.has_node_id = true;
+> > > +        machine_set_cpu_numa_node(ms, &props, &error_fatal);  
+> > 
+> > This triggers a call to possible_cpu_arch_ids() before
+> > nb_numa_nodes is set to the actual number of NUMA nodes in the
+> > machine, breaking the "node_id = ... % nb_numa_nodes"
+> > initialization logic in pc, virt, and spapr.
+> Looking at it more, in current code this problem theoretically
+> affects only partial mapping case. And even there it's masked by 
+> fixup to 0 node for non explicitly mapped CPUs and the bug which
+>  *) "[PATCH v2 3/5] numa: make sure that all cpus in has  has_node_id set if numa is enabled"
+> fixes. So invalid default values for non mapped cpus are stored
+> in possible_cpus but not used nor visible elsewhere.
+> 
+> [*] as side effect fixes invalid defaults in possible_cpus as well
+> by fixup to 0 node that's moved from pre_plug handler.
+> 
+> In future we are going to remove partial mapping with fixup to 0
+> and fetch default mappings from possible_cpus where these wrong
+> defaults won't exists (or matter) as CPUs are going to either
+>  1) be all explicitly mapped (so all node_id values are overwritten)
+> or
+>  2) all default mapped (where defaults will be correct since no
+>     -numa cpu=/-numa node,cpus= were called), but that's fragile
+>     so I'd add calculate defaults at machine_run_board_init()
+>     time anyway.
 
-Yes, I agree with all those comment changes. Since they
-were the only changes I've put the updated patchset
-straight into target-arm.next.
+Your analysis seems correct: it looks like just a case of fragile
+code, not a bug that can be triggered with the current code.
 
-Thanks for the careful review!
-
--- PMM
+-- 
+Eduardo

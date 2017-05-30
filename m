@@ -1,97 +1,96 @@
-Received: by 10.25.0.6 with SMTP id 6csp1878067lfa;
-        Tue, 30 May 2017 08:46:13 -0700 (PDT)
-X-Received: by 10.200.58.130 with SMTP id x2mr24278298qte.110.1496159173836;
-        Tue, 30 May 2017 08:46:13 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1496159173; cv=none;
+Received: by 10.25.0.6 with SMTP id 6csp1882074lfa;
+        Tue, 30 May 2017 08:56:35 -0700 (PDT)
+X-Received: by 10.55.33.163 with SMTP id f35mr21052986qki.51.1496159795473;
+        Tue, 30 May 2017 08:56:35 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1496159795; cv=none;
         d=google.com; s=arc-20160816;
-        b=hxswqAoaPS7FNvjbX5XLfi8uAJCm1DTX9Hp4UOB0oMA3ay/aJa5oyRdR/f50bAuYk3
-         kd9XE/vCAdWzrjhc0yet4MI3v3Q8nPWsBTdXgFsT7P35fwFIbuKf0UDlSkbZC9vHjtV6
-         b0ZyYU3sw0HXCxQfHwl15/D/J4IDJfeiZqsnMr7LXKoFF438+ROyIQCsP1PjP+iBC8Tz
-         rynd6PZY9tSQ3pY+LDOg/7H0oUDTL9Bh55/L/zGnmE/eDqTgfiRDPfJKwZH0vP44nRn4
-         yNNUzqu0umMzDMwf3DIausWuKv1XLZ57KWcFgNOylDSmb3KZ0YNAfwFZ74SssAAwgLO+
-         hlUg==
+        b=PxSE2ahQwhKq1i1zVv7ne3yLNKWVRIGUAZqv+nJ6/QSeaBNZRnhVSHHV2IUaiT+mmE
+         g/nUl7ArZlw9Jrnzi9IRtUVutzFWBLUfsYywC3G6OKDDUCpdV2juLoO7lJRDf3Yjfr5L
+         DPnKWaMuVePU5xZfw41MY90Q+rgvvbjX1yBa5uWeeHshE5+h/QqYpf2aVoX/+G6km0ad
+         yLlJbW6uT8wyNdlGcAVETNvfD1rlbHk+fYWBlJDHJof3PtfCIEuwZNwJNlipEaGU+EsZ
+         0MvGwUpsRh1BXsBzir1DXr+rMR0a4RcY5UViDYf2KAAkordHMfxyvZQS3vxBkfRr1SMe
+         5c8A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
          :references:in-reply-to:mime-version:dkim-signature
          :arc-authentication-results;
-        bh=3iwBB2i5JddIxvad4xrdBimuCFDG+xXTMoYGkjaBUGc=;
-        b=pYC5QBfbLJZytd5rnQQWrzjHkH5sid+8zD95YtcUyf8nXurjGXs30zrRM1xYNE3Abb
-         S4eeZHV+YXOwAiatYTu6I1+DkbiQh3kbdNoVFtkPZNzH1FtLabsk6TqQHHlUzccNVqt5
-         bBiN4U4aSz3XSXSBxqyqrm88lJhG1/ykB/TDJtOuBarl7ugYZxtYOiEAFUxzw+WArEd2
-         CcGPA/Cu31EzdzhlBjBoHyvEi5Gt5URDxGABBCf+Vul3LtO5X6WzOR2zzL8KiGDbg/M/
-         3B/gpItgeiwmJKuMRihWTgrB5XxV0xfkqL3gOT6a2fIJWaqB3sHqwFOH3S/tK+GDYz8K
-         FGfw==
+        bh=tuXKp79pl9fLVxUYnQ+NV0QRhZKzGkuLkhOtk/NjBoI=;
+        b=HNoJDqOPYw7nHkCp+DoXd4R+aNxDho3MKHANgJ/SQSUSntXS7lZQrmlKlvAAc9A/ro
+         xC3HvUtdtzRQH4U38oQRx9vWLqrvIy2FxFstE4pRcqXWRJxIpUWqu/KHpZmyIhDOqftF
+         jsuNbSrE0YDSarUHGOjYZb5j7Eu3jRlb9O8pu/0eYxIqKDHhgilgyljzfF5JlfwP+IlI
+         o1HqRv13gHr9pu1sMCLcsc2lf+9dVTLDXuuqcVZ5U9/Uclm7rZxqdby4WCq5bjRxCM10
+         oJnHDAh9HkuUUKFKQbrGSprSwAHTSKhyKNJNqJtMJ35Q8kqviqvqu/FAZ57XxCrhud+C
+         G28g==
 ARC-Authentication-Results: i=1; mx.google.com;
        dkim=fail header.i=@linaro.org;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id q1si13259733qte.107.2017.05.30.08.46.13
+        by mx.google.com with ESMTPS id j17si13314471qtc.142.2017.05.30.08.56.35
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 30 May 2017 08:46:13 -0700 (PDT)
+        Tue, 30 May 2017 08:56:35 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        dkim=fail header.i=@linaro.org;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:54630 helo=lists.gnu.org)
+Received: from localhost ([::1]:54671 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1dFjLZ-0002O9-AT
-	for alex.bennee@linaro.org; Tue, 30 May 2017 11:46:13 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:49952)
+	id 1dFjVa-0006KM-VF
+	for alex.bennee@linaro.org; Tue, 30 May 2017 11:56:34 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:52688)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1dFjLR-0002Nv-7p
-	for qemu-arm@nongnu.org; Tue, 30 May 2017 11:46:06 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1dFjVX-0006KC-8Q
+	for qemu-arm@nongnu.org; Tue, 30 May 2017 11:56:32 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1dFjLQ-0001jT-4R
-	for qemu-arm@nongnu.org; Tue, 30 May 2017 11:46:05 -0400
-Received: from mail-wr0-x22d.google.com ([2a00:1450:400c:c0c::22d]:36702)
+	(envelope-from <peter.maydell@linaro.org>) id 1dFjVW-0004QI-Bc
+	for qemu-arm@nongnu.org; Tue, 30 May 2017 11:56:31 -0400
+Received: from mail-wm0-x232.google.com ([2a00:1450:400c:c09::232]:38183)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1dFjLP-0001iy-Lv
-	for qemu-arm@nongnu.org; Tue, 30 May 2017 11:46:03 -0400
-Received: by mail-wr0-x22d.google.com with SMTP id j27so3058287wre.3
-	for <qemu-arm@nongnu.org>; Tue, 30 May 2017 08:46:03 -0700 (PDT)
+	id 1dFjVW-0004Q2-5p
+	for qemu-arm@nongnu.org; Tue, 30 May 2017 11:56:30 -0400
+Received: by mail-wm0-x232.google.com with SMTP id e127so104689264wmg.1
+	for <qemu-arm@nongnu.org>; Tue, 30 May 2017 08:56:29 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
 	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=3iwBB2i5JddIxvad4xrdBimuCFDG+xXTMoYGkjaBUGc=;
-	b=iYH+E5znbTQRokHY3Zpam+nPtVr4czw6LsmTouBvq6L3K55/fMg07ihQITmFoyHLuT
-	539R/a3DgxTWuY4T3K17v89Xh+K7lhrcrowr6ZZw5auUeL1MNno3polNOMRQ21e/0mhX
-	xOwFQjwENG8XSRL1LzZqrv9iEXpZAbntZCxlw=
+	:cc; bh=tuXKp79pl9fLVxUYnQ+NV0QRhZKzGkuLkhOtk/NjBoI=;
+	b=KIl1UBSBV7vO4Ed3egxKs714aJKHCzrwhPrw1Fmi3QlBPlOrjMLQOJrtGfLFwsTbky
+	dc8izhgiQHWL053T/t6Sx02Qu8v8aSboQ0Tk4sdXIsUW/dvl+N5XF5MufytrAVE/GCOO
+	YiPTXUxXhAwczBn+A06mgvzTM3BF5vv7FRlW4=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
 	:message-id:subject:to:cc;
-	bh=3iwBB2i5JddIxvad4xrdBimuCFDG+xXTMoYGkjaBUGc=;
-	b=Eqsj7euzaBjmn0BeSZOfUaYMNG7HPeFPgtsatCBOe3JZZDCNePkA2h7r0PL6KT3F5u
-	GhFDzBytST8IMc3VDHHUezhOcCcX/zFG3naO/ZJwSFGwmMwAffUzPFeeMTQuMQq+RyBi
-	VjNpsivHXNhvw+6briPI1sEjkOsRO3aol7yuhYehn+N6zBVMcMS/UBHMCS8hBn2MQaaW
-	3XnRIt9GlvD6szqLa1+aAu42FKnGncjkftcvaV2zdCoGHS05qPs6YXZjduyguywsAcfk
-	E6wjT35OL9VNXzbj7fb8+z9tO0IamvHuA5ERMAS+VclOaBzYMJOQO6LhNeAoZWhS6R1l
-	PlIw==
-X-Gm-Message-State: AODbwcD3SNQzyuapO6fhduqYdjPgScpsSnA3PCBG+4zikEI+eue3gyOY
-	/ruBwn5m3MAss/cFOf4sEguKW546h7X8
-X-Received: by 10.223.152.227 with SMTP id w90mr8217567wrb.151.1496159162500; 
-	Tue, 30 May 2017 08:46:02 -0700 (PDT)
+	bh=tuXKp79pl9fLVxUYnQ+NV0QRhZKzGkuLkhOtk/NjBoI=;
+	b=GRrELoM6+X88c4xi0aGvy0J2cp1bFN06QoWDY35+BdteMUHvJCVrGcQ1N4gXcnOJDx
+	7i0r0StJYkJWWvZMibnhTySqZqyoIb1emAitIMkUomu+AR5m15Hn9peTlST3/uwfgUZD
+	jCXXaJCh0iV/tEtp7L1o80Dbz3D66ktlXo3ice6gn4lrBN+OueYAJ8gEYLljbz5FOLHU
+	xpvBgXkCT9QRc31IKtRY+V64ZzGcmfqx0Azmxg/IWEDriWk3rCoMp9KrCZcWR76MVNhz
+	UTPVT+vmEq0njTIMJMNqQli12lHzCw1jtJbbIqXZSqpdgiDyQJKTGvgRYINlpMBsbhgr
+	V3Ng==
+X-Gm-Message-State: AODbwcBXw9EtYdAjI5TaV8pkXX0plsVFcWwT8FsKCjx43Q1DlcSaEt10
+	w7AJJYdwQ3AnmKaqbLT8HV04dI6bWjAb
+X-Received: by 10.28.136.83 with SMTP id k80mr2142339wmd.38.1496159788993;
+	Tue, 30 May 2017 08:56:28 -0700 (PDT)
 MIME-Version: 1.0
-Received: by 10.223.135.82 with HTTP; Tue, 30 May 2017 08:45:41 -0700 (PDT)
-In-Reply-To: <20170507113540.8687-4-krzk@kernel.org>
-References: <20170507113540.8687-1-krzk@kernel.org>
-	<20170507113540.8687-4-krzk@kernel.org>
+Received: by 10.223.135.82 with HTTP; Tue, 30 May 2017 08:56:08 -0700 (PDT)
+In-Reply-To: <1494697399-352-2-git-send-email-eric.auger@redhat.com>
+References: <1494697399-352-1-git-send-email-eric.auger@redhat.com>
+	<1494697399-352-2-git-send-email-eric.auger@redhat.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 30 May 2017 16:45:41 +0100
-Message-ID: <CAFEAcA9Erpv3x2x6eRtJL7tSHv+Fm9Tmomi18n8QwmkWU5sJcw@mail.gmail.com>
-To: Krzysztof Kozlowski <krzk@kernel.org>
+Date: Tue, 30 May 2017 16:56:08 +0100
+Message-ID: <CAFEAcA8SHP+=+hXB2D3XsCdeFg5NMSqTxtjH9aEU0bE5bL-2Dw@mail.gmail.com>
+To: Eric Auger <eric.auger@redhat.com>
 Content-Type: text/plain; charset="UTF-8"
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2a00:1450:400c:c0c::22d
-Subject: Re: [Qemu-arm] [PATCH 3/3] hw/arm/exynos: Add support for system
- poweroff
+X-Received-From: 2a00:1450:400c:c09::232
+Subject: Re: [Qemu-arm] [RFC v4 1/5] hw/arm/smmu-common: smmu base class
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -103,37 +102,77 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Igor Mitsyanko <i.mitsyanko@gmail.com>, qemu-arm <qemu-arm@nongnu.org>,
-	QEMU Developers <qemu-devel@nongnu.org>,
-	=?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
+Cc: Radha Mohan <mohun106@gmail.com>, Andrew Jones <drjones@redhat.com>,
+	Trey Cain <tcain@qti.qualcomm.com>,
+	Radha.Chintakuntla@cavium.com, Sunil.Goutham@cavium.com,
+	QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
+	Christoffer Dall <christoffer.dall@linaro.org>,
+	prem.mallappa@gmail.com, eric.auger.pro@gmail.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: tnVu1Z7LOZuk
+X-TUID: bOroFzIfmgTk
 
-On 7 May 2017 at 12:35, Krzysztof Kozlowski <krzk@kernel.org> wrote:
-> On all Exynos-based boards, the system powers down itself by driving
-> PS_HOLD signal low.  Handle writing to respective PMU register to fix
-> power off failure:
+On 13 May 2017 at 18:43, Eric Auger <eric.auger@redhat.com> wrote:
+> Introduces the base device and class for the ARM smmu.
+> Implements VMSAv8-64 table lookup and translation. VMSAv8-32
+> is not yet implemented.
 >
->     reboot: Power down
->     Unable to poweroff system
->     shutdown: 31 output lines suppressed due to ratelimiting
->     Kernel panic - not syncing: Attempted to kill init! exitcode=0x00000000
+> For VFIO integration we will need to notify mapping changes
+> of an input range and skipped unmapped regions. table walk
+> helper allows.
 >
->     CPU: 0 PID: 1 Comm: shutdown Not tainted 4.11.0-rc8 #846
->     Hardware name: SAMSUNG EXYNOS (Flattened Device Tree)
->     [<c031050c>] (unwind_backtrace) from [<c030ba6c>] (show_stack+0x10/0x14)
->     [<c030ba6c>] (show_stack) from [<c05b2800>] (dump_stack+0x88/0x9c)
->     [<c05b2800>] (dump_stack) from [<c03d3140>] (panic+0xdc/0x268)
->     [<c03d3140>] (panic) from [<c0343614>] (do_exit+0xa90/0xab4)
->     [<c0343614>] (do_exit) from [<c035f2dc>] (SyS_reboot+0x164/0x1d0)
->     [<c035f2dc>] (SyS_reboot) from [<c0307c80>] (ret_fast_syscall+0x0/0x3c)
+> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+> Signed-off-by: Prem Mallappa <prem.mallappa@broadcom.com>
 >
-> Signed-off-by: Krzysztof Kozlowski <krzk@kernel.org>
+> +/**
+> + * smmu_page_walk_level_64 - Walk an IOVA range from a specific level
+> + * @baseaddr: table base address corresponding to @level
+> + * @level: level
+> + * @cfg: translation config
+> + * @start: end of the IOVA range
+> + * @end: end of the IOVA range
+> + * @hook_fn: the hook that to be called for each detected area
+> + * @private: private data for the hook function
+> + * @read: whether parent level has read permission
+> + * @write: whether parent level has write permission
+> + * @must_translate: indicates whether each iova of the range
+> + *  must be translated or whether failure is allowed
+> + * @notify_unmap: whether we should notify invalid entries
+> + *
+> + * Return 0 on success, < 0 on errors not related to translation
+> + * process, > 1 on errors related to translation process (only
+> + * if must_translate is set)
+> + */
+> +static int
+> +smmu_page_walk_level_64(dma_addr_t baseaddr, int level,
+> +                        SMMUTransCfg *cfg, uint64_t start, uint64_t end,
+> +                        smmu_page_walk_hook hook_fn, void *private,
+> +                        bool read, bool write, bool must_translate,
+> +                        bool notify_unmap)
+> +{
 
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+> +        /* table pte */
+> +        next_table_baseaddr = get_table_pte_address(pte, granule_sz);
+> +        trace_smmu_page_walk_level_table_pte(pte, next_table_baseaddr);
+> +        ret = smmu_page_walk_level_64(next_table_baseaddr, level + 1, cfg,
+> +                                      iova, MIN(iova_next, end),
+> +                                      hook_fn, private, read_cur, write_cur,
+> +                                      must_translate, notify_unmap);
+> +        if (!ret) {
+> +            return ret;
+> +        }
+> +
+> +next:
+> +        iova = iova_next;
+> +    }
+> +
+> +    return SMMU_TRANS_ERR_NONE;
+> +}
 
-give or take the minor change mentioned by Eric if needed.
+It seems a bit odd that this function is recursive -- I was
+expecting it just to loop through for each successive level
+until it hits a block/page entry, as the LPAE table walk
+code in target/arm/helper.c does...
 
 thanks
 -- PMM

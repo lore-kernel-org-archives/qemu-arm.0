@@ -1,74 +1,93 @@
-Received: by 10.25.0.6 with SMTP id 6csp1934421lfa;
-        Tue, 30 May 2017 11:08:37 -0700 (PDT)
-X-Received: by 10.233.216.194 with SMTP id u185mr22892998qkf.105.1496167717749;
-        Tue, 30 May 2017 11:08:37 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1496167717; cv=none;
+Received: by 10.25.0.6 with SMTP id 6csp3443lfa;
+        Tue, 30 May 2017 12:47:57 -0700 (PDT)
+X-Received: by 10.237.36.219 with SMTP id u27mr28835515qtc.197.1496173677551;
+        Tue, 30 May 2017 12:47:57 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1496173677; cv=none;
         d=google.com; s=arc-20160816;
-        b=jGJu/RhCVCuqmVsnvMeeaoPzb0HdrM1Ri8I8y754XOE/guCf+zIPfkAvRt+rRoe5dI
-         6u1lMobRsZdOrRQOuSLyVdY+zhW55W7ho2pfVQ5GtqX/FAVNveZusULnS1nwj/aw8eeC
-         2sdBPHQrBWGT/B7vI+1nWoz4orF7aTkGthDUqzPDY7R/G9Els0xm6Rmkwheq+Ch8JZP4
-         1Vjv8uG5/7Y6O2lUGRd9I5sSi+TYpJpBSCt9ccO8zlmQP2IRGHmnmYXX/7aP3d5A3Duk
-         MrheZP6ITxbBg7InpPr2vXrBOflHYZluQyIDZTtapE4NhBbrMhs+tB7KCHz6ZKOWC6Kn
-         w27Q==
+        b=dqr9mJ2OBPJBV9YHovUnEWguRaSdsEOjpsnN6xuoOM7kBQxRclkJTEsRFAvh8LaWJJ
+         0T1ARhVoVjhKxrSpF8zqPYjJTuGiDmSsB/Oi6M7zZoWOOPygFkxuyltUR353Nz6PCRLv
+         gxrnl7D22sjx5us60o4gw8xG8uYcuVyfP2WbO2eAX7Gazsfydv/oISi6ouddznlTzeIn
+         Pd7iu/zTkdh51luMeiAwj6h8GeN4P9WTI475xoQveED6fixQORC9GMx5227ITTK6Cdm+
+         uzly1Dh5gpwkK1eOHULLCYYQzRiL7WMT4SIXRUF92lVW1u1SwzER9UA0lo5e+De7h7T8
+         bmzA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence:subject:date:to
-         :from:resent-from:content-transfer-encoding:mime-version:message-id
-         :in-reply-to:resent-message-id:resent-date
-         :arc-authentication-results;
-        bh=JDATYc2RTf4/5f4xDJN6cRm4KtASGe0YjWlSmXeSam8=;
-        b=XwZtkjOcb+R7tWf9aMwNZh/O10wkxPcX9eMqAPIqRbRWldeU1YaIRATuQLIBRPOSJ8
-         jtVMqLoOL7kZdE24nWPZ+IT8TRgzMpViuCZ3OSxSD8TyBoVtGmr7XoLGauptb6yQd8FV
-         oX/QQWgbsy6UFf0cWy9oECWWDq6AiU0JdxQHNWSUuereNqqYyg3Eec+wxtz9fNkjRwNH
-         LwTPJXp6ceHQu2c6xtOquFNn1Z4mB8qcgUxgnt3C5fGCanqq3hIHKOdUGY2pVBaVTadF
-         7TmgwbAbl26b2eMdmRL3+8lSxBPRd8q2HQ2ZrQlWHQnf3UBriKNzMN7P4DzxVMhjvWPB
-         XbEw==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
+         :content-disposition:mime-version:references:message-id:to:from:date
+         :dkim-filter:dmarc-filter:arc-authentication-results;
+        bh=xEm4RwsEzVgzXPmw0dMQvm2DXCzguFROMoqp019z8Hk=;
+        b=N9EcOTW2rik5imC/W3SmnANrw4gDdz5hQK8A+ochGPjHRVFPeLKJrhp6Iy1BLctI6Q
+         KbW7oyAd7NAIQVMNXlSc+XZS+rgwu9eArCB77+6RRWo6Rz01cFa+ZnTJoLcnj7EJbUOw
+         TMAWFy5jZlmVmVqq+GIZELRAH4Y1KxSoUTxCHMZt6ZK7Fh7bs7gkqCqf+/ygOACIv3jC
+         ptXQMTo/A3OBp6ORKByfowU0McFqHZAQ5LTWMgsM6A1ZudHrZraPWUPdRYiSv7u4eP06
+         KILa6Jwd/Jws2ivQeEkTiofM3UKsCjXicBomRoasY5vRgdqbMiay+7epx2lMFiMNBEd3
+         a4dw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id z139si1942566qkb.21.2017.05.30.11.08.37
+        by mx.google.com with ESMTPS id k62si6210923qkl.337.2017.05.30.12.47.57
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 30 May 2017 11:08:37 -0700 (PDT)
+        Tue, 30 May 2017 12:47:57 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:55651 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:55982 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1dFlZN-0003cv-4q
-	for alex.bennee@linaro.org; Tue, 30 May 2017 14:08:37 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:38564)
+	id 1dFn7V-00025f-19
+	for alex.bennee@linaro.org; Tue, 30 May 2017 15:47:57 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:35395)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <no-reply@patchew.org>) id 1dFlZE-0003ao-OF
-	for qemu-arm@nongnu.org; Tue, 30 May 2017 14:08:30 -0400
+	(envelope-from <ehabkost@redhat.com>) id 1dFn7O-00025Z-Qp
+	for qemu-arm@nongnu.org; Tue, 30 May 2017 15:47:51 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <no-reply@patchew.org>) id 1dFlZ9-0001In-P3
-	for qemu-arm@nongnu.org; Tue, 30 May 2017 14:08:28 -0400
-Resent-Date: Tue, 30 May 2017 14:08:28 -0400
-Resent-Message-Id: <E1dFlZ9-0001In-P3@eggs.gnu.org>
-Received: from sender-of-o53.zoho.com ([135.84.80.218]:21830)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <no-reply@patchew.org>)
-	id 1dFlYy-0001F4-Es; Tue, 30 May 2017 14:08:12 -0400
-Received: from [172.17.0.2] (23.253.156.214 [23.253.156.214]) by
-	mx.zohomail.com with SMTPS id 1496167677377728.1187151008601;
-	Tue, 30 May 2017 11:07:57 -0700 (PDT)
-In-Reply-To: <1496161442-96665-1-git-send-email-imammedo@redhat.com>
-Message-ID: <149616767669.206.10154808044371479020@f98a8425f76e>
+	(envelope-from <ehabkost@redhat.com>) id 1dFn7J-0008K1-Ov
+	for qemu-arm@nongnu.org; Tue, 30 May 2017 15:47:50 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:36700)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <ehabkost@redhat.com>)
+	id 1dFn7J-0008Jw-Ik; Tue, 30 May 2017 15:47:45 -0400
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
+	[10.5.11.16])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 7C38680C11;
+	Tue, 30 May 2017 19:47:44 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 7C38680C11
+Authentication-Results: ext-mx02.extmail.prod.ext.phx2.redhat.com;
+	dmarc=none (p=none dis=none) header.from=redhat.com
+Authentication-Results: ext-mx02.extmail.prod.ext.phx2.redhat.com;
+	spf=pass smtp.mailfrom=ehabkost@redhat.com
+DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com 7C38680C11
+Received: from localhost (ovpn-116-43.gru2.redhat.com [10.97.116.43])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 879EA5C8A7;
+	Tue, 30 May 2017 19:47:43 +0000 (UTC)
+Date: Tue, 30 May 2017 16:47:42 -0300
+From: Eduardo Habkost <ehabkost@redhat.com>
+To: Eric Blake <eblake@redhat.com>
+Message-ID: <20170530194742.GO32274@thinpad.lan.raisama.net>
+References: <1496161442-96665-1-git-send-email-imammedo@redhat.com>
+	<1496161442-96665-6-git-send-email-imammedo@redhat.com>
+	<554eca2d-3c94-c341-299f-d71bcb020edd@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Resent-From: 
-From: no-reply@patchew.org
-To: imammedo@redhat.com
-Date: Tue, 30 May 2017 11:07:57 -0700 (PDT)
-X-ZohoMailClient: External
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
-X-Received-From: 135.84.80.218
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v3 0/7] numa: code consolidation
- and fixes
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <554eca2d-3c94-c341-299f-d71bcb020edd@redhat.com>
+X-Fnord: you can see the fnord
+User-Agent: Mutt/1.8.0 (2017-02-23)
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.26]);
+	Tue, 30 May 2017 19:47:44 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v3 5/7] numa: move numa_node
+ from CPUState into target specific classes
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -80,56 +99,37 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: qemu-devel@nongnu.org
-Cc: drjones@redhat.com, famz@redhat.com, ehabkost@redhat.com,
-	qemu-devel@nongnu.org, qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
-	david@gibson.dropbear.id.au
+Cc: Andrew Jones <drjones@redhat.com>, qemu-devel@nongnu.org,
+	qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
+	Igor Mammedov <imammedo@redhat.com>,
+	David Gibson <david@gibson.dropbear.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 4D+tGjSvjv/D
+X-TUID: OruP2/bb11hp
 
-SGksCgpUaGlzIHNlcmllcyBzZWVtcyB0byBoYXZlIHNvbWUgY29kaW5nIHN0eWxlIHByb2JsZW1z
-LiBTZWUgb3V0cHV0IGJlbG93IGZvcgptb3JlIGluZm9ybWF0aW9uOgoKTWVzc2FnZS1pZDogMTQ5
-NjE2MTQ0Mi05NjY2NS0xLWdpdC1zZW5kLWVtYWlsLWltYW1tZWRvQHJlZGhhdC5jb20KU3ViamVj
-dDogW1FlbXUtZGV2ZWxdIFtQQVRDSCB2MyAwLzddIG51bWE6IGNvZGUgY29uc29saWRhdGlvbiBh
-bmQgZml4ZXMKVHlwZTogc2VyaWVzCgo9PT0gVEVTVCBTQ1JJUFQgQkVHSU4gPT09CiMhL2Jpbi9i
-YXNoCgpCQVNFPWJhc2UKbj0xCnRvdGFsPSQoZ2l0IGxvZyAtLW9uZWxpbmUgJEJBU0UuLiB8IHdj
-IC1sKQpmYWlsZWQ9MAoKZ2l0IGNvbmZpZyAtLWxvY2FsIGRpZmYucmVuYW1lbGltaXQgMApnaXQg
-Y29uZmlnIC0tbG9jYWwgZGlmZi5yZW5hbWVzIFRydWUKCmNvbW1pdHM9IiQoZ2l0IGxvZyAtLWZv
-cm1hdD0lSCAtLXJldmVyc2UgJEJBU0UuLikiCmZvciBjIGluICRjb21taXRzOyBkbwogICAgZWNo
-byAiQ2hlY2tpbmcgUEFUQ0ggJG4vJHRvdGFsOiAkKGdpdCBsb2cgLW4gMSAtLWZvcm1hdD0lcyAk
-YykuLi4iCiAgICBpZiAhIGdpdCBzaG93ICRjIC0tZm9ybWF0PWVtYWlsIHwgLi9zY3JpcHRzL2No
-ZWNrcGF0Y2gucGwgLS1tYWlsYmFjayAtOyB0aGVuCiAgICAgICAgZmFpbGVkPTEKICAgICAgICBl
-Y2hvCiAgICBmaQogICAgbj0kKChuKzEpKQpkb25lCgpleGl0ICRmYWlsZWQKPT09IFRFU1QgU0NS
-SVBUIEVORCA9PT0KClVwZGF0aW5nIDNjOGNmNWE5YzIxZmY4NzgyMTY0ZDFkZWY3ZjQ0YmQ4ODg3
-MTMzODQKU3dpdGNoZWQgdG8gYSBuZXcgYnJhbmNoICd0ZXN0Jwo5MTM2YTk3IG51bWE6IGNwdTog
-Y2FsY3VsYXRlL3NldCBkZWZhdWx0IG5vZGUtaWRzIGFmdGVyIGFsbCAtbnVtYSBDTEkgb3B0aW9u
-cyBhcmUgcGFyc2VkCjRkNzU1NzQgc3BhcHI6IGNsZWFudXAgc3BhcHJfZml4dXBfY3B1X251bWFf
-ZHQoKSB1c2FnZQpiOTQ2ODQ1IG51bWE6IG1vdmUgbnVtYV9ub2RlIGZyb20gQ1BVU3RhdGUgaW50
-byB0YXJnZXQgc3BlY2lmaWMgY2xhc3Nlcwo2MDkzNDdlIG51bWE6IG1ha2UgaG1wICdpbmZvIG51
-bWEnIGZldGNoIG51bWEgbm9kZXMgZnJvbSBxbXBfcXVlcnlfY3B1cygpIHJlc3VsdAo5ZDJiNTk3
-IG51bWE6IG1ha2Ugc3VyZSB0aGF0IGFsbCBjcHVzIGhhdmUgaGFzX25vZGVfaWQgc2V0IGlmIG51
-bWEgaXMgZW5hYmxlZApjMGQxYWFkIG51bWE6IG1vdmUgZGVmYXVsdCBtYXBwaW5nIGluaXQgdG8g
-bWFjaGluZQo2YzZhZmJmIG51bWE6IGNvbnNvbGlkYXRlIGNwdV9wcmVwbHVnIGZpeHVwcy9jaGVj
-a3MgZm9yIHBjL2FybS9zcGFwcgoKPT09IE9VVFBVVCBCRUdJTiA9PT0KQ2hlY2tpbmcgUEFUQ0gg
-MS83OiBudW1hOiBjb25zb2xpZGF0ZSBjcHVfcHJlcGx1ZyBmaXh1cHMvY2hlY2tzIGZvciBwYy9h
-cm0vc3BhcHIuLi4KRVJST1I6IHN1c3BlY3QgY29kZSBpbmRlbnQgZm9yIGNvbmRpdGlvbmFsIHN0
-YXRlbWVudHMgKDQsIDkpCiMxNDQ6IEZJTEU6IG51bWEuYzo1NDY6CisgICAgaWYgKCFzbG90LT5w
-cm9wcy5oYXNfbm9kZV9pZCkgeworICAgICAgICAgbWFwcGVkX25vZGVfaWQgPSAwOwoKdG90YWw6
-IDEgZXJyb3JzLCAwIHdhcm5pbmdzLCAxMjMgbGluZXMgY2hlY2tlZAoKWW91ciBwYXRjaCBoYXMg
-c3R5bGUgcHJvYmxlbXMsIHBsZWFzZSByZXZpZXcuICBJZiBhbnkgb2YgdGhlc2UgZXJyb3JzCmFy
-ZSBmYWxzZSBwb3NpdGl2ZXMgcmVwb3J0IHRoZW0gdG8gdGhlIG1haW50YWluZXIsIHNlZQpDSEVD
-S1BBVENIIGluIE1BSU5UQUlORVJTLgoKQ2hlY2tpbmcgUEFUQ0ggMi83OiBudW1hOiBtb3ZlIGRl
-ZmF1bHQgbWFwcGluZyBpbml0IHRvIG1hY2hpbmUuLi4KQ2hlY2tpbmcgUEFUQ0ggMy83OiBudW1h
-OiBtYWtlIHN1cmUgdGhhdCBhbGwgY3B1cyBoYXZlIGhhc19ub2RlX2lkIHNldCBpZiBudW1hIGlz
-IGVuYWJsZWQuLi4KQ2hlY2tpbmcgUEFUQ0ggNC83OiBudW1hOiBtYWtlIGhtcCAnaW5mbyBudW1h
-JyBmZXRjaCBudW1hIG5vZGVzIGZyb20gcW1wX3F1ZXJ5X2NwdXMoKSByZXN1bHQuLi4KQ2hlY2tp
-bmcgUEFUQ0ggNS83OiBudW1hOiBtb3ZlIG51bWFfbm9kZSBmcm9tIENQVVN0YXRlIGludG8gdGFy
-Z2V0IHNwZWNpZmljIGNsYXNzZXMuLi4KQ2hlY2tpbmcgUEFUQ0ggNi83OiBzcGFwcjogY2xlYW51
-cCBzcGFwcl9maXh1cF9jcHVfbnVtYV9kdCgpIHVzYWdlLi4uCkNoZWNraW5nIFBBVENIIDcvNzog
-bnVtYTogY3B1OiBjYWxjdWxhdGUvc2V0IGRlZmF1bHQgbm9kZS1pZHMgYWZ0ZXIgYWxsIC1udW1h
-IENMSSBvcHRpb25zIGFyZSBwYXJzZWQuLi4KPT09IE9VVFBVVCBFTkQgPT09CgpUZXN0IGNvbW1h
-bmQgZXhpdGVkIHdpdGggY29kZTogMQoKCi0tLQpFbWFpbCBnZW5lcmF0ZWQgYXV0b21hdGljYWxs
-eSBieSBQYXRjaGV3IFtodHRwOi8vcGF0Y2hldy5vcmcvXS4KUGxlYXNlIHNlbmQgeW91ciBmZWVk
-YmFjayB0byBwYXRjaGV3LWRldmVsQGZyZWVsaXN0cy5vcmc=
+On Tue, May 30, 2017 at 11:30:27AM -0500, Eric Blake wrote:
+> On 05/30/2017 11:24 AM, Igor Mammedov wrote:
+> > Move vcpu's assocciated numa_node field out of generic CPUState
+> 
+> s/assocciated/associated/
+> 
+> > into inherited classes that actually care about cpu<->numa mapping,
+> > i.e: ARMCPU, PowerPCCPU, X86CPU.
+> > 
+> > Signed-off-by: Igor Mammedov <imammedo@redhat.com>
+> > ---
+> 
+> > +++ b/target/arm/cpu.h
+> > @@ -703,6 +703,8 @@ struct ARMCPU {
+> >  
+> >      ARMELChangeHook *el_change_hook;
+> >      void *el_change_hook_opaque;
+> > +
+> > +    int32_t node_id; /* NUMA node this CPU is belonging to */
+> 
+> s/is belonging/belongs/  (multiple places in the patch)
 
+I have fixed those while applying the patch.  Thanks!
+
+-- 
+Eduardo

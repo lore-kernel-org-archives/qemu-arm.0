@@ -1,91 +1,100 @@
-Received: by 10.25.0.6 with SMTP id 6csp1683157lfa;
-        Mon, 29 May 2017 23:58:19 -0700 (PDT)
-X-Received: by 10.237.44.129 with SMTP id g1mr22855281qtd.212.1496127498922;
-        Mon, 29 May 2017 23:58:18 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1496127498; cv=none;
+Received: by 10.25.0.6 with SMTP id 6csp1736967lfa;
+        Tue, 30 May 2017 02:48:15 -0700 (PDT)
+X-Received: by 10.55.143.198 with SMTP id r189mr19792312qkd.150.1496137695669;
+        Tue, 30 May 2017 02:48:15 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1496137695; cv=none;
         d=google.com; s=arc-20160816;
-        b=HRZfr6GWUqrKYdcbnbtbenUj0Ovjl/X3rq5VdwRmCOcn2tQPE68dwmFMtPcygz7PQ6
-         eOPnzritThWH1XhYHhXl2YJYX5DsvE6iK3pGn609pcbWL+dN0wP5QBDNPNF74XnEL1BJ
-         mg/GgIctKOSrE1VagUQjMd2qqMs7SjwIl+RIzJ2A3Bzou+FVjtxIuOrhr+VoOH8NHSop
-         WeFf1Jfjkx2h4jM8RuQ0yGBlVbcCs/M8qvpeu+UAi182Ta7UnTEfdEFuWNYX5WpeQNdP
-         8DBphM2kbNsCR0k0HSHzZ8nKY7zAzV9CqORlLs6BNRl3syth4K+tt0ji8AXTxGWsVnDS
-         lIdg==
+        b=P1qMNfoTSBsj9wsM6Kqky013V3ESGuAi1t6oxhYHKGOT8PJ9TzNwqylZcjHWzlun+5
+         LVl7iU4vkO8vvzGo0urY5bY7Ph30HA114w6F4AoajjZ3Hn7L+X4bQy6G5twzHzhsYx5h
+         9fiBTGR1Wx2Op5wze1g63LOlC71VZ8xcyoD8hkP9A7H28am8oyZMeNKPeTiWF6pM9veK
+         AfxzSUyzXSSJJ7X6e1DayVFWt3hDFAopgrePx4aWw/7ybLOVtzdswaq48GEa/kD8Rhth
+         6QR0NS2fAF4QiVS/w2+iZ2jusffeChhdQLj5Jqrf9AQYWXIoSCDK6kWZTjgPGwiPJPGX
+         SUHw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:to:from:date:dkim-filter:dmarc-filter
-         :arc-authentication-results;
-        bh=Y7NJo3FS9YTGnZRGDEFEtfDCxFEROsZX1gUQPn4Ft6o=;
-        b=wq+9i0c72jF3VK/z4DbVCztVcQlZ1m9iYTSMRud+rPFlftBXM2LPO/blKwdbPIp8ln
-         O2O8xw1gEZosm5qRwYAy4CRpherUXdkNbOqIPE9xLGRCpO5vMvPqucFWdLDh/0xIQT53
-         +ZZzHV0zFqzzw0nhN6lJ8LLMNn2ob3MvNPKOxjVR4SmLu8RmXwMjXYIAYNS2uB52WeZn
-         UVq8MGSZ7eoEshmPksp8/6lUyiIHq76qAhz78kIpnTQnZi2QkNhIjyS5jl2Ygbt025IL
-         NMoH+9xJ00em2XHT1B6VawZlm4nq/2HkL9S4+dGt1NHBS/AHQwva8T3zPAJK+NoyF7oH
-         O1+g==
+         :content-transfer-encoding:to:message-id:date:from:references
+         :in-reply-to:mime-version:dkim-signature:arc-authentication-results;
+        bh=siyQ1A3vIi16QgQjtsQPIicndwWp1XpZgMaZ35FImHU=;
+        b=ncEHnLUHXWlblS3dIJ8Kctr/YNhsA4xd4hpErZ1ojippvKF5aLqNbIpCb00wygHaSx
+         hunMfheutD99vvjyBQj1tbOq5QVfadZK/tr6EBZw1Pw7obNRLaOS7HhjQsGlNdFb7Byx
+         QDw+ezqJHHBH/zN+oLdJEqzVUR8iWlfW7h1COrjyP40g6POnJC1qktOUleI7l8CLs4pa
+         tAtqLJQUt+Xul/r+ZJUxCg8oUq8/wc8/+nuWMhyCXPH+PMlC+jP5cTnJAoFN9IdosPGN
+         LMa9aHt9q6XEc4nb/RZlYaICDnFIpoUieZeWHUtd+53S+IMFdDpblYVJx+n5Qe5wb0Pr
+         kM0Q==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@linaro.org;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id a78si11416727qkh.64.2017.05.29.23.58.18
+        by mx.google.com with ESMTPS id u14si12426437qtb.74.2017.05.30.02.48.15
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 29 May 2017 23:58:18 -0700 (PDT)
+        Tue, 30 May 2017 02:48:15 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
+       dkim=fail header.i=@linaro.org;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:51791 helo=lists.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:52571 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1dFb6g-0000HX-8x
-	for alex.bennee@linaro.org; Tue, 30 May 2017 02:58:18 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:59593)
+	id 1dFdl9-0004qf-3f
+	for alex.bennee@linaro.org; Tue, 30 May 2017 05:48:15 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:47930)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <imammedo@redhat.com>) id 1dFb6b-0000G0-5o
-	for qemu-arm@nongnu.org; Tue, 30 May 2017 02:58:14 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1dFdl1-0004nV-Ac
+	for qemu-arm@nongnu.org; Tue, 30 May 2017 05:48:08 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <imammedo@redhat.com>) id 1dFb6Y-0004vq-6Q
-	for qemu-arm@nongnu.org; Tue, 30 May 2017 02:58:13 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:59072)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <imammedo@redhat.com>)
-	id 1dFb6Y-0004vQ-13; Tue, 30 May 2017 02:58:10 -0400
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
-	[10.5.11.11])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 2DFDE37E72;
-	Tue, 30 May 2017 06:58:08 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 2DFDE37E72
-Authentication-Results: ext-mx05.extmail.prod.ext.phx2.redhat.com;
-	dmarc=none (p=none dis=none) header.from=redhat.com
-Authentication-Results: ext-mx05.extmail.prod.ext.phx2.redhat.com;
-	spf=pass smtp.mailfrom=imammedo@redhat.com
-DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com 2DFDE37E72
-Received: from nial.brq.redhat.com (dhcp-1-118.brq.redhat.com [10.34.1.118])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id C379E189EF;
-	Tue, 30 May 2017 06:58:06 +0000 (UTC)
-Date: Tue, 30 May 2017 08:58:02 +0200
-From: Igor Mammedov <imammedo@redhat.com>
-To: Andrew Jones <drjones@redhat.com>
-Message-ID: <20170530085802.578dc4b3@nial.brq.redhat.com>
-In-Reply-To: <20170529173751.3443-2-drjones@redhat.com>
-References: <20170529173751.3443-1-drjones@redhat.com>
-	<20170529173751.3443-2-drjones@redhat.com>
+	(envelope-from <peter.maydell@linaro.org>) id 1dFdl0-0003ni-DQ
+	for qemu-arm@nongnu.org; Tue, 30 May 2017 05:48:07 -0400
+Received: from mail-wm0-x235.google.com ([2a00:1450:400c:c09::235]:38019)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1dFdl0-0003nS-7r
+	for qemu-arm@nongnu.org; Tue, 30 May 2017 05:48:06 -0400
+Received: by mail-wm0-x235.google.com with SMTP id e127so92370078wmg.1
+	for <qemu-arm@nongnu.org>; Tue, 30 May 2017 02:48:06 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc:content-transfer-encoding;
+	bh=siyQ1A3vIi16QgQjtsQPIicndwWp1XpZgMaZ35FImHU=;
+	b=CkLhpiumXoebIV4DgInC3497cNu/NwSlv7ZnOkZzijL5xekp48hVhYa9YFpg7P3T8d
+	ek7utQdNJMU9ru3sFzN/UBNNlBD9XtstfYVNJ/e8VWsYoFH0HAU06Rkjmqq9kyxrdMje
+	iZzyUJVJj8ZrAowR3aQNtNQdZxEJ1mMel5V5w=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc:content-transfer-encoding;
+	bh=siyQ1A3vIi16QgQjtsQPIicndwWp1XpZgMaZ35FImHU=;
+	b=hngYnM4BKKffHiIOOlx5bvAM5gFF9gFMm/DKyaaDNTdoDEVTAxCpMR1LTJQ5L+Fs1J
+	KWZWP4hd38W3TU79tMoIonkvrx6tabT7ghD2sXMdNadbNxtJz0aEpYglE9OcPBVQ7Iw1
+	aJkFPkYb7zDHT5Pi8/CdBZNhm5UP7fHhqy3pBiQq/1rTD6V7O000p6gKE1EB729cEgYl
+	8Jm6JWoWQcbmvdh901WpXGZxMNwtXBwHhUlT/uel1XcK5QAO6JvkCXMtXeXey3uUUcEF
+	JvFlugZuT9Jr4g3kwQME+uzNnj+KtS9ga7FvLQ7TEjQnwLiKo6mnKp7PO1R6SBGPrm9R
+	A6TQ==
+X-Gm-Message-State: AODbwcBzvXz4AmQW/ZgsANtvv9ZU7z2oDXvuVhE0/lGu1YklWPcDcrub
+	yTcSbeY8CDhRn7zGW4/LcjsgrgxVLp3j
+X-Received: by 10.223.150.139 with SMTP id u11mr10512253wrb.195.1496137685120; 
+	Tue, 30 May 2017 02:48:05 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.29]);
-	Tue, 30 May 2017 06:58:08 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH 1/2] hw/arm/virt-acpi-build:
- build SLIT when needed
+Received: by 10.223.135.82 with HTTP; Tue, 30 May 2017 02:47:44 -0700 (PDT)
+In-Reply-To: <ce532829-b11b-7992-3fc4-3e21210c66f0@amsat.org>
+References: <1493226792-3237-1-git-send-email-peter.maydell@linaro.org>
+	<1493226792-3237-3-git-send-email-peter.maydell@linaro.org>
+	<ce532829-b11b-7992-3fc4-3e21210c66f0@amsat.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 30 May 2017 10:47:44 +0100
+Message-ID: <CAFEAcA-d1oZazep6-HbKDJ7dY-gAZYf+MXghDPcKSHGKWLTnEw@mail.gmail.com>
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2a00:1450:400c:c09::235
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH 2/3] hw/intc/arm_gicv3_cpuif:
+ Don't let BPR be set below its minimum
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -97,36 +106,31 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org, qemu-devel@nongnu.org,
-	zhaoshenglong@huawei.com
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
+	"patches@linaro.org" <patches@linaro.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: WUiVlbRk6YMK
+X-TUID: mRq2ySv1mf8p
 
-On Mon, 29 May 2017 19:37:50 +0200
-Andrew Jones <drjones@redhat.com> wrote:
+On 14 May 2017 at 06:31, Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> wrot=
+e:
+> On 04/26/2017 02:13 PM, Peter Maydell wrote:
+>> +    minval =3D (grp =3D=3D GICV3_G1NS) ? GIC_MIN_BPR_NS : GIC_MIN_BPR;
+>> +    if (value < minval) {
+>> +        value =3D minval;
+>> +    }
+>> +
+>
+>
+> which is:
+>
+>     if (grp =3D=3D GICV3_G1NS) {
+>         value =3D MAX(value, GIC_MIN_BPR_NS);
+>     }
 
-> Cc: Shannon Zhao <zhaoshenglong@huawei.com>
-> Signed-off-by: Andrew Jones <drjones@redhat.com>
-Reviewed-by: Igor Mammedov <imammedo@redhat.com>
+Only if you assume GIC_MIN_BPR must always be 0, which isn't
+necessarily the case. (One day we might need to update it to
+be a per-device configurable parameter, like the VBPR min.)
 
-> ---
->  hw/arm/virt-acpi-build.c | 4 ++++
->  1 file changed, 4 insertions(+)
-> 
-> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-> index e5852067f5bd..2079828c22a4 100644
-> --- a/hw/arm/virt-acpi-build.c
-> +++ b/hw/arm/virt-acpi-build.c
-> @@ -776,6 +776,10 @@ void virt_acpi_build(VirtMachineState *vms, AcpiBuildTables *tables)
->      if (nb_numa_nodes > 0) {
->          acpi_add_table(table_offsets, tables_blob);
->          build_srat(tables_blob, tables->linker, vms);
-> +        if (have_numa_distance) {
-> +            acpi_add_table(table_offsets, tables_blob);
-> +            build_slit(tables_blob, tables->linker);
-> +        }
->      }
->  
->      if (its_class_name() && !vmc->no_its) {
-
+thanks
+-- PMM

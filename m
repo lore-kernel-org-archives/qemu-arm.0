@@ -1,100 +1,86 @@
-Received: by 10.25.0.6 with SMTP id 6csp57355lfa;
-        Tue, 30 May 2017 15:34:47 -0700 (PDT)
-X-Received: by 10.200.39.215 with SMTP id x23mr26793228qtx.155.1496183687666;
-        Tue, 30 May 2017 15:34:47 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1496183687; cv=none;
+Received: by 10.25.0.6 with SMTP id 6csp103523lfa;
+        Tue, 30 May 2017 18:23:47 -0700 (PDT)
+X-Received: by 10.200.56.56 with SMTP id q53mr28895744qtb.36.1496193827287;
+        Tue, 30 May 2017 18:23:47 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1496193827; cv=none;
         d=google.com; s=arc-20160816;
-        b=y3C1hPCpk0oSbGTuOimfIaRd88Qx13W5GeEzl2XB0owfvljnUBuErrFvdCoyGtDdeS
-         nwTUm3i/vkdu7Ob4yxkts8v6G2aJZL+rivkRGvl0lZyMrk6jy1tPiyLxhoscHABeK094
-         kOTQ9muetqXJ7LZmnanFbmuuckZm1q1jdQePe94KHKSMXSLX6YqPJ/MJm0E5kME5ybu9
-         FIU+FUgEnrA7bCkz1cCn5zAKgfko5IT+nsAjYLltFm1YfVOhmznwtJE6G4ohZFuHAHKW
-         T3xNbr7/fev7EvmyMx/PyFZAqM9yWBX7VjRxo65SNxWrzv0RLdsabJrCPTCs9YzapPDA
-         neiA==
+        b=O5++E/twrjG5KDeGiAMfC2Xgfm3sWprRxE0SG6hfuadb4j5q/p61glOLusXpCf7nHE
+         i07aTKIBbESDgb66i6fahEKkdAWTVIvW0+roBoo8M8NE5zS16AcnRzbtosHvHziRmXFT
+         qQCxd3nQb+Hd7Leu+7ddZ5v3SUiF6XHUdNQ4luK8CndKQ4yrI7mGMY12P3qDtUxn+tQW
+         CJPr6/JkBKPiG+P7SQaTRnZKKtJwHddAA9JG1UEDNRpNAuoe8Ho6p2EEdigC6XKDAjrP
+         Z8MGtVD6iKUcsHs/L+CwKU5njfUjdF4zh/AjoShl5fI8yEr/L7KZED9ydeCgf4cwfrUp
+         yRWA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
-         :references:in-reply-to:mime-version:dkim-signature
-         :arc-authentication-results;
-        bh=0Lerz7oi2sC6989dzYrFAGqz7AWkkFcU+6gdLwNkZno=;
-        b=eKrvrSOjy88F3xkzzx2Tgjbek1xOw52NZuyMGhvz1AdZfw8zY0aOcwY2/tBcbB92uZ
-         vXBsj7waSqDCYJjBoZYVXlVsQccfEVB8UavwNc+tlBxHOPMIX7CMd3t0Wh26m3as1+BZ
-         SdBZv94ad/hjbzhmqROoZE6d5p1il7UN9OTPbwBClh9Jn21x7TKqwKZ5GwPfm1q3Jf5M
-         yIPLTric4bOc2t6Zt1sZ+WmSGJqslNSchM/7qYcIblkq9OtDaqNSfTsWXy42yGDNaoCQ
-         0RrPTA8iM41TxUXIiET+OMjMR9rk6ZK4V9cegvxgTFEEFODC/8EYoDPV+TGTNKuqojA1
-         LJag==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:in-reply-to:references:to:mime-version
+         :user-agent:from:date:message-id:arc-authentication-results;
+        bh=COC2926Uf6uCCY5KiLg82kM6IqltYwiXp9gBay0HzvA=;
+        b=u1/6mrAApYbnQ6PnnBUlRyf/f0RhXJ9WdBCm4znm/1LkiBl61T5jXkstjcvXeY+ef3
+         RKB01XAfrjPqPcesgzeXy+HNTlq6CIhXPcxwlR8lno4DN/2l3iUgPHsWRmJ/gpfWXpeV
+         5ZtMfktzRnsid5zzPht71TYAcfZmznrKSiF5NpMUM1+Hb5o/RQK/4o/ZJZxjowWccVvA
+         u4huyGJ2jalTV/YrQdEZ/xQmdQbXhx2QCuPwU0665IA1A5pU7U9EkBf/YpVkNgz1MT5r
+         HgwSCYrXZhzkfSonl51Ln3xUNiV/9GIAppE3Y/TsfBnZm12xOelhJA2UYzqkaOLNAi6W
+         2L1g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id o186si14233389qkf.6.2017.05.30.15.34.46
+        by mx.google.com with ESMTPS id o191si9151493qke.59.2017.05.30.18.23.46
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 30 May 2017 15:34:47 -0700 (PDT)
+        Tue, 30 May 2017 18:23:47 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:56607 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:56910 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1dFpiu-0000i9-R9
-	for alex.bennee@linaro.org; Tue, 30 May 2017 18:34:44 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:45162)
+	id 1dFsMS-0000Nu-KS
+	for alex.bennee@linaro.org; Tue, 30 May 2017 21:23:44 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:41546)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alistair23@gmail.com>) id 1dFpij-0000fw-6F
-	for qemu-arm@nongnu.org; Tue, 30 May 2017 18:34:35 -0400
+	(envelope-from <zhaoshenglong@huawei.com>) id 1dFsMO-0000NW-Pm
+	for qemu-arm@nongnu.org; Tue, 30 May 2017 21:23:41 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <alistair23@gmail.com>) id 1dFpih-0000Yk-DG
-	for qemu-arm@nongnu.org; Tue, 30 May 2017 18:34:33 -0400
-Received: from mail-oi0-x244.google.com ([2607:f8b0:4003:c06::244]:32859)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <alistair23@gmail.com>)
-	id 1dFpid-0000Xx-5d; Tue, 30 May 2017 18:34:27 -0400
-Received: by mail-oi0-x244.google.com with SMTP id h4so18103023oib.0;
-	Tue, 30 May 2017 15:34:27 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=0Lerz7oi2sC6989dzYrFAGqz7AWkkFcU+6gdLwNkZno=;
-	b=M9AB+LsnJdQ/rT9GZUlHSDmQcshUB4NW9xk/iMif2PduB1s3OhD2aZ/6rJJvDo+UE3
-	0N+6r4cELJ2DLnJ5EwzKOuBRZQipK15/WbNuvyDDG/Wz7UTTHQqUmf5YO/dfsBKoVXCy
-	zvAZsjKutHJu9Oekt+E/v6bfA5neIJASFykhj5YlAE/Kxt/3fh/hrcbpqU4hGtRk9YkL
-	gZ1IKKi72hjoyic+rKDj24BUL7i30ufGJKBuPOb9XhfMuENVtvYuIZuEyE0AuSIJJg86
-	WKAGo8NTI+hQOR5LKVjbINklLPaVfhyNrrhURtu1oeGQF4TuYRww0YmI9qR9uaLZuYki
-	tb/w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=0Lerz7oi2sC6989dzYrFAGqz7AWkkFcU+6gdLwNkZno=;
-	b=Wa0aW5dLLUdyFHNsSSVQl8q1VKUGqo06rMkqxYvBaJ1LSPkcSrq/3CqkOhtiYBGuwg
-	8pxkGoY4HHsX90CYChvVmdvn1SS3NDIqUE9Gvac+pNsuTu6fwcHiJavwQdaHbDDfZE/D
-	+/d9Y6Oaxfw9YqTF7osEToSLDC+T8i1lDcCTRlvD5TwqTx+Wcdkl52ZNIBpKgLR93HHH
-	ploAJUKTp2TE3pYnlqdFefnjzQabMOTZ6sx62h/cclUP72Vr2ieF+XxCzn7zx5y9+W0+
-	FHgjPYrZprun3+F0pxR/YAfigVbpCIYPsEZeuN0PcOZJsrHytKijoESRcWKn6nIywcCY
-	ONQA==
-X-Gm-Message-State: AODbwcANmLKsgYT5oDc2c7DBS0UbIfV/6LnLWcKG6T80QF/Z6jk1eZYw
-	5oUK4LqVMX2l0XZxfJOEmkAc6yeH+A==
-X-Received: by 10.157.6.198 with SMTP id 64mr11021515otx.177.1496183666298;
-	Tue, 30 May 2017 15:34:26 -0700 (PDT)
+	(envelope-from <zhaoshenglong@huawei.com>) id 1dFsML-0000jz-Gq
+	for qemu-arm@nongnu.org; Tue, 30 May 2017 21:23:40 -0400
+Received: from szxga03-in.huawei.com ([45.249.212.189]:3886)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_ARCFOUR_SHA1:16) (Exim 4.71)
+	(envelope-from <zhaoshenglong@huawei.com>)
+	id 1dFsMK-0000j0-Tg; Tue, 30 May 2017 21:23:37 -0400
+Received: from 172.30.72.53 (EHLO DGGEML404-HUB.china.huawei.com)
+	([172.30.72.53])
+	by dggrg03-dlp.huawei.com (MOS 4.4.6-GA FastPath queued)
+	with ESMTP id AOO04852; Wed, 31 May 2017 09:16:48 +0800 (CST)
+Received: from [127.0.0.1] (10.177.16.142) by DGGEML404-HUB.china.huawei.com
+	(10.3.17.39) with Microsoft SMTP Server id 14.3.301.0; Wed, 31 May 2017
+	09:16:38 +0800
+Message-ID: <592E1971.8000008@huawei.com>
+Date: Wed, 31 May 2017 09:16:33 +0800
+From: Shannon Zhao <zhaoshenglong@huawei.com>
+User-Agent: Mozilla/5.0 (Windows NT 6.1;
+	rv:24.0) Gecko/20100101 Thunderbird/24.4.0
 MIME-Version: 1.0
-Received: by 10.182.2.37 with HTTP; Tue, 30 May 2017 15:33:55 -0700 (PDT)
-In-Reply-To: <CALHRZuq7g6jvq1WTk1ontT2fuH8cP89Q3Eq2ggsZ6psobhAuUg@mail.gmail.com>
-References: <1494949133-2202-1-git-send-email-sundeep.lkml@gmail.com>
-	<1494949133-2202-5-git-send-email-sundeep.lkml@gmail.com>
-	<CAKmqyKPwu+2CdMkxgkiQacVbcxyERKtRd_Ysj_gy1oR4ecRk4g@mail.gmail.com>
-	<CALHRZuq7g6jvq1WTk1ontT2fuH8cP89Q3Eq2ggsZ6psobhAuUg@mail.gmail.com>
-From: Alistair Francis <alistair23@gmail.com>
-Date: Tue, 30 May 2017 15:33:55 -0700
-Message-ID: <CAKmqyKOBQJC2EoEn07-7z_705ua+mPK3qTAs7j20oHHa41TTdA@mail.gmail.com>
-To: sundeep subbaraya <sundeep.lkml@gmail.com>
-Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:4003:c06::244
-Subject: Re: [Qemu-arm] [Qemu devel v5 PATCH 4/5] msf2: Add Smartfusion2 SoC.
+To: Andrew Jones <drjones@redhat.com>, <qemu-devel@nongnu.org>,
+	<qemu-arm@nongnu.org>
+References: <20170529173751.3443-1-drjones@redhat.com>
+	<20170529173751.3443-3-drjones@redhat.com>
+In-Reply-To: <20170529173751.3443-3-drjones@redhat.com>
+Content-Type: text/plain; charset="ISO-8859-1"
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.177.16.142]
+X-CFilter-Loop: Reflected
+X-Mirapoint-Virus-RAPID-Raw: score=unknown(0),
+	refid=str=0001.0A020203.592E1981.00CA, ss=1, re=0.000, recu=0.000,
+	reip=0.000, cl=1, cld=1, fgs=0, ip=0.0.0.0,
+	so=2014-11-16 11:51:01, dmn=2013-03-21 17:37:32
+X-Mirapoint-Loop-Id: 5ed3f6b770d82da20b347fff74e339a9
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
+	[fuzzy]
+X-Received-From: 45.249.212.189
+Subject: Re: [Qemu-arm] [PATCH 2/2] hw/arm/virt: fdt: generate distance-map
+ when needed
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -106,408 +92,58 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
-	=?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>,
-	qemu-arm <qemu-arm@nongnu.org>,
-	"qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>
+Cc: peter.maydell@linaro.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: cluorUG6s297
+X-TUID: 4HayWplzdN6k
 
-On Sun, May 28, 2017 at 10:17 PM, sundeep subbaraya
-<sundeep.lkml@gmail.com> wrote:
-> Hi Alistair,
->
-> On Sat, May 27, 2017 at 5:18 AM, Alistair Francis <alistair23@gmail.com>
-> wrote:
->>
->> On Tue, May 16, 2017 at 8:38 AM, Subbaraya Sundeep
->> <sundeep.lkml@gmail.com> wrote:
->> > Smartfusion2 SoC has hardened Microcontroller subsystem
->> > and flash based FPGA fabric. This patch adds support for
->> > Microcontroller subsystem in the SoC.
->> >
->> > Signed-off-by: Subbaraya Sundeep <sundeep.lkml@gmail.com>
->> > ---
->> >  default-configs/arm-softmmu.mak |   1 +
->> >  hw/arm/Makefile.objs            |   1 +
->> >  hw/arm/msf2-soc.c               | 201
->> > ++++++++++++++++++++++++++++++++++++++++
->> >  include/hw/arm/msf2-soc.h       |  69 ++++++++++++++
->> >  4 files changed, 272 insertions(+)
->> >  create mode 100644 hw/arm/msf2-soc.c
->> >  create mode 100644 include/hw/arm/msf2-soc.h
->> >
->> > diff --git a/default-configs/arm-softmmu.mak
->> > b/default-configs/arm-softmmu.mak
->> > index 78d7af0..7062512 100644
->> > --- a/default-configs/arm-softmmu.mak
->> > +++ b/default-configs/arm-softmmu.mak
->> > @@ -122,3 +122,4 @@ CONFIG_ACPI=y
->> >  CONFIG_SMBIOS=y
->> >  CONFIG_ASPEED_SOC=y
->> >  CONFIG_GPIO_KEY=y
->> > +CONFIG_MSF2=y
->> > diff --git a/hw/arm/Makefile.objs b/hw/arm/Makefile.objs
->> > index 4c5c4ee..c828061 100644
->> > --- a/hw/arm/Makefile.objs
->> > +++ b/hw/arm/Makefile.objs
->> > @@ -18,3 +18,4 @@ obj-$(CONFIG_FSL_IMX25) += fsl-imx25.o imx25_pdk.o
->> >  obj-$(CONFIG_FSL_IMX31) += fsl-imx31.o kzm.o
->> >  obj-$(CONFIG_FSL_IMX6) += fsl-imx6.o sabrelite.o
->> >  obj-$(CONFIG_ASPEED_SOC) += aspeed_soc.o aspeed.o
->> > +obj-$(CONFIG_MSF2) += msf2-soc.o
->> > diff --git a/hw/arm/msf2-soc.c b/hw/arm/msf2-soc.c
->> > new file mode 100644
->> > index 0000000..329e30c
->> > --- /dev/null
->> > +++ b/hw/arm/msf2-soc.c
->> > @@ -0,0 +1,201 @@
->> > +/*
->> > + * SmartFusion2 SoC emulation.
->> > + *
->> > + * Copyright (c) 2017 Subbaraya Sundeep <sundeep.lkml@gmail.com>
->> > + *
->> > + * Permission is hereby granted, free of charge, to any person
->> > obtaining a copy
->> > + * of this software and associated documentation files (the
->> > "Software"), to deal
->> > + * in the Software without restriction, including without limitation
->> > the rights
->> > + * to use, copy, modify, merge, publish, distribute, sublicense, and/or
->> > sell
->> > + * copies of the Software, and to permit persons to whom the Software
->> > is
->> > + * furnished to do so, subject to the following conditions:
->> > + *
->> > + * The above copyright notice and this permission notice shall be
->> > included in
->> > + * all copies or substantial portions of the Software.
->> > + *
->> > + * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
->> > EXPRESS OR
->> > + * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
->> > MERCHANTABILITY,
->> > + * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT
->> > SHALL
->> > + * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR
->> > OTHER
->> > + * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
->> > ARISING FROM,
->> > + * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
->> > DEALINGS IN
->> > + * THE SOFTWARE.
->> > + */
->> > +
->> > +#include "qemu/osdep.h"
->> > +#include "qapi/error.h"
->> > +#include "qemu-common.h"
->> > +#include "hw/arm/arm.h"
->> > +#include "exec/address-spaces.h"
->> > +#include "hw/char/serial.h"
->> > +#include "hw/boards.h"
->> > +#include "sysemu/block-backend.h"
->> > +#include "hw/arm/msf2-soc.h"
->> > +
->> > +#define MSF2_TIMER_BASE     0x40004000
->> > +#define MSF2_SYSREG_BASE    0x40038000
->> > +
->> > +#define MSF2_TIMER_IRQ0     14
->> > +#define MSF2_TIMER_IRQ1     15
->> > +
->> > +static const uint32_t spi_addr[MSF2_NUM_SPIS] = { 0x40001000 ,
->> > 0x40011000 };
->> > +static const uint32_t uart_addr[MSF2_NUM_UARTS] = { 0x40000000 ,
->> > 0x40010000 };
->> > +
->> > +static const int spi_irq[MSF2_NUM_SPIS] = { 2, 3 };
->> > +static const int uart_irq[MSF2_NUM_UARTS] = { 10, 11 };
->> > +
->> > +static void m2sxxx_soc_initfn(Object *obj)
->> > +{
->> > +    MSF2State *s = MSF2_SOC(obj);
->> > +    int i;
->> > +
->> > +    object_initialize(&s->armv7m, sizeof(s->armv7m), TYPE_ARMV7M);
->> > +    qdev_set_parent_bus(DEVICE(&s->armv7m), sysbus_get_default());
->> > +
->> > +    object_initialize(&s->sysreg, sizeof(s->sysreg), TYPE_MSF2_SYSREG);
->> > +    qdev_set_parent_bus(DEVICE(&s->sysreg), sysbus_get_default());
->> > +
->> > +    object_initialize(&s->timer, sizeof(s->timer), TYPE_MSS_TIMER);
->> > +    qdev_set_parent_bus(DEVICE(&s->timer), sysbus_get_default());
->> > +
->> > +    for (i = 0; i < MSF2_NUM_SPIS; i++) {
->> > +        object_initialize(&s->spi[i], sizeof(s->spi[i]),
->> > +                          TYPE_MSS_SPI);
->> > +        qdev_set_parent_bus(DEVICE(&s->spi[i]), sysbus_get_default());
->> > +    }
->> > +}
->> > +
->> > +static void m2sxxx_soc_realize(DeviceState *dev_soc, Error **errp)
->> > +{
->> > +    MSF2State *s = MSF2_SOC(dev_soc);
->> > +    DeviceState *dev, *armv7m;
->> > +    SysBusDevice *busdev;
->> > +    Error *err = NULL;
->> > +    int i;
->> > +
->> > +    MemoryRegion *system_memory = get_system_memory();
->> > +    MemoryRegion *nvm = g_new(MemoryRegion, 1);
->> > +    MemoryRegion *nvm_alias = g_new(MemoryRegion, 1);
->> > +    MemoryRegion *sram = g_new(MemoryRegion, 1);
->> > +
->> > +    memory_region_init_ram(nvm, NULL, "MSF2.eNVM", s->envm_size,
->> > +                           &error_fatal);
->> > +
->> > +    /*
->> > +     * On power-on, the eNVM region 0x60000000 is automatically
->> > +     * remapped to the Cortex-M3 processor executable region
->> > +     * start address (0x0). We do not support remapping other eNVM,
->> > +     * eSRAM and DDR regions by guest(via Sysreg) currently.
->> > +     */
->> > +    memory_region_init_alias(nvm_alias, NULL, "MSF2.eNVM.alias",
->> > +                             nvm, 0, s->envm_size);
->> > +    vmstate_register_ram_global(nvm);
->> > +
->> > +    memory_region_set_readonly(nvm, true);
->> > +    memory_region_set_readonly(nvm_alias, true);
->> > +
->> > +    memory_region_add_subregion(system_memory, ENVM_BASE_ADDRESS, nvm);
->> > +    memory_region_add_subregion(system_memory, 0, nvm_alias);
->> > +
->> > +    memory_region_init_ram(sram, NULL, "MSF2.eSRAM", s->esram_size,
->> > +                           &error_fatal);
->> > +    vmstate_register_ram_global(sram);
->> > +    memory_region_add_subregion(system_memory, SRAM_BASE_ADDRESS,
->> > sram);
->> > +
->> > +    armv7m = DEVICE(&s->armv7m);
->> > +    qdev_prop_set_uint32(armv7m, "num-irq", 81);
->> > +    qdev_prop_set_string(armv7m, "cpu-model", "cortex-m3");
->> > +    object_property_set_link(OBJECT(&s->armv7m),
->> > OBJECT(get_system_memory()),
->> > +                                     "memory", &error_abort);
->> > +    object_property_set_bool(OBJECT(&s->armv7m), true, "realized",
->> > &err);
->> > +    if (err != NULL) {
->> > +        error_propagate(errp, err);
->> > +        return;
->> > +    }
->> > +
->> > +    for (i = 0; i < MSF2_NUM_UARTS; i++) {
->> > +        if (serial_hds[i]) {
->> > +            serial_mm_init(get_system_memory(), uart_addr[i], 2,
->> > +                           qdev_get_gpio_in(armv7m, uart_irq[i]),
->> > +                           115200, serial_hds[i],
->> > DEVICE_NATIVE_ENDIAN);
->> > +        }
->> > +    }
->> > +
->> > +    dev = DEVICE(&s->timer);
->> > +    /* pclk0 is the timer input clock */
->> > +    qdev_prop_set_uint32(dev, "clock-frequency", s->pclk0);
->> > +    object_property_set_bool(OBJECT(&s->timer), true, "realized",
->> > &err);
->> > +    if (err != NULL) {
->> > +        error_propagate(errp, err);
->> > +        return;
->> > +    }
->> > +    busdev = SYS_BUS_DEVICE(dev);
->> > +    sysbus_mmio_map(busdev, 0, MSF2_TIMER_BASE);
->> > +    sysbus_connect_irq(busdev, 0,
->> > +                           qdev_get_gpio_in(armv7m, MSF2_TIMER_IRQ0));
->> > +    sysbus_connect_irq(busdev, 1,
->> > +                           qdev_get_gpio_in(armv7m, MSF2_TIMER_IRQ1));
->> > +
->> > +    dev = DEVICE(&s->sysreg);
->> > +    object_property_set_bool(OBJECT(&s->sysreg), true, "realized",
->> > &err);
->> > +    if (err != NULL) {
->> > +        error_propagate(errp, err);
->> > +        return;
->> > +    }
->> > +    busdev = SYS_BUS_DEVICE(dev);
->> > +    sysbus_mmio_map(busdev, 0, MSF2_SYSREG_BASE);
->> > +
->> > +    for (i = 0; i < MSF2_NUM_SPIS; i++) {
->> > +        gchar *bus_name = g_strdup_printf("spi%d", i);
->> > +
->> > +        object_property_set_bool(OBJECT(&s->spi[i]), true, "realized",
->> > &err);
->> > +        if (err != NULL) {
->> > +            g_free(bus_name);
->> > +            error_propagate(errp, err);
->> > +            return;
->> > +        }
->> > +
->> > +        sysbus_mmio_map(SYS_BUS_DEVICE(&s->spi[i]), 0, spi_addr[i]);
->> > +        sysbus_connect_irq(SYS_BUS_DEVICE(&s->spi[i]), 0,
->> > +                           qdev_get_gpio_in(armv7m, spi_irq[i]));
->> > +
->> > +        /* Alias controller SPI bus to the SoC itself */
->> > +        object_property_add_alias(OBJECT(s), bus_name,
->> > +                                  OBJECT(&s->spi[i]), "spi0",
->> > +                                  &error_abort);
->> > +        g_free(bus_name);
->> > +    }
->> > +}
->> > +
->> > +static Property m2sxxx_soc_properties[] = {
->> > +    DEFINE_PROP_STRING("part-name", MSF2State, part_name),
->>
->> This is never used, why have it here?
->
-> Just for information purpose as there are many variants. I thought it would
-> be good to
-> show this in qtree to user.
 
-Aw, cool. That is fine with me. Just add a comment saying that,
-otherwise it is confusing why it isn't used.
 
->>
->>
->> > +    DEFINE_PROP_UINT64("eNVM-size", MSF2State, envm_size,
->> > MSF2_ENVM_SIZE),
->> > +    DEFINE_PROP_UINT64("eSRAM-size", MSF2State, esram_size,
->> > MSF2_ESRAM_SIZE),
->> > +    /* Libero GUI shows 100Mhz as default for clocks */
->> > +    DEFINE_PROP_UINT32("pclk0", MSF2State, pclk0, 100 * 1000000),
->> > +    DEFINE_PROP_UINT32("pclk1", MSF2State, pclk1, 100 * 1000000),
->>
->> Same with this one.
->
-> Yeah currently not used maybe it will be useful in future. I will remove it
-> for now.
+On 2017/5/30 1:37, Andrew Jones wrote:
+> This is based on patch Shannon Zhao originally posted.
+> 
+> Cc: Shannon Zhao <zhaoshenglong@huawei.com>
+> Signed-off-by: Andrew Jones <drjones@redhat.com>
+Reviewed-by: Shannon Zhao <shannon.zhao@linaro.org>
 
-I think that is best, if you end up using it in the future you can add
-it back in.
+> ---
+>  hw/arm/virt.c | 21 +++++++++++++++++++++
+>  1 file changed, 21 insertions(+)
+> 
+> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+> index c7c8159dfd59..4db2d4207cf2 100644
+> --- a/hw/arm/virt.c
+> +++ b/hw/arm/virt.c
+> @@ -219,6 +219,27 @@ static void create_fdt(VirtMachineState *vms)
+>                                  "clk24mhz");
+>      qemu_fdt_setprop_cell(fdt, "/apb-pclk", "phandle", vms->clock_phandle);
+>  
+> +    if (have_numa_distance) {
+> +        int size = nb_numa_nodes * nb_numa_nodes * 3 * sizeof(uint32_t);
+> +        uint32_t *matrix = g_malloc0(size);
+> +        int idx, i, j;
+> +
+> +        for (i = 0; i < nb_numa_nodes; i++) {
+> +            for (j = 0; j < nb_numa_nodes; j++) {
+> +                idx = (i * nb_numa_nodes + j) * 3;
+> +                matrix[idx + 0] = cpu_to_be32(i);
+> +                matrix[idx + 1] = cpu_to_be32(j);
+> +                matrix[idx + 2] = cpu_to_be32(numa_info[i].distance[j]);
+> +            }
+> +        }
+> +
+> +        qemu_fdt_add_subnode(fdt, "/distance-map");
+> +        qemu_fdt_setprop_string(fdt, "/distance-map", "compatible",
+> +                                "numa-distance-map-v1");
+> +        qemu_fdt_setprop(fdt, "/distance-map", "distance-matrix",
+> +                         matrix, size);
+> +        g_free(matrix);
+> +    }
+>  }
+>  
+>  static void fdt_add_psci_node(const VirtMachineState *vms)
+> 
 
-Thanks,
-Alistair
+-- 
+Shannon
 
->
-> Thanks,
-> Sundeep
->>
->>
->> Thanks,
->> Alistair
->>
->> > +    DEFINE_PROP_END_OF_LIST(),
->> > +};
->> > +
->> > +static void m2sxxx_soc_class_init(ObjectClass *klass, void *data)
->> > +{
->> > +    DeviceClass *dc = DEVICE_CLASS(klass);
->> > +
->> > +    dc->realize = m2sxxx_soc_realize;
->> > +    dc->props = m2sxxx_soc_properties;
->> > +}
->> > +
->> > +static const TypeInfo m2sxxx_soc_info = {
->> > +    .name          = TYPE_MSF2_SOC,
->> > +    .parent        = TYPE_SYS_BUS_DEVICE,
->> > +    .instance_size = sizeof(MSF2State),
->> > +    .instance_init = m2sxxx_soc_initfn,
->> > +    .class_init    = m2sxxx_soc_class_init,
->> > +};
->> > +
->> > +static void m2sxxx_soc_types(void)
->> > +{
->> > +    type_register_static(&m2sxxx_soc_info);
->> > +}
->> > +
->> > +type_init(m2sxxx_soc_types)
->> > diff --git a/include/hw/arm/msf2-soc.h b/include/hw/arm/msf2-soc.h
->> > new file mode 100644
->> > index 0000000..67adddb
->> > --- /dev/null
->> > +++ b/include/hw/arm/msf2-soc.h
->> > @@ -0,0 +1,69 @@
->> > +/*
->> > + * Microsemi Smartfusion2 SoC
->> > + *
->> > + * Copyright (c) 2017 Subbaraya Sundeep <sundeep.lkml@gmail.com>
->> > + *
->> > + * Permission is hereby granted, free of charge, to any person
->> > obtaining a copy
->> > + * of this software and associated documentation files (the
->> > "Software"), to deal
->> > + * in the Software without restriction, including without limitation
->> > the rights
->> > + * to use, copy, modify, merge, publish, distribute, sublicense, and/or
->> > sell
->> > + * copies of the Software, and to permit persons to whom the Software
->> > is
->> > + * furnished to do so, subject to the following conditions:
->> > + *
->> > + * The above copyright notice and this permission notice shall be
->> > included in
->> > + * all copies or substantial portions of the Software.
->> > + *
->> > + * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
->> > EXPRESS OR
->> > + * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
->> > MERCHANTABILITY,
->> > + * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT
->> > SHALL
->> > + * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR
->> > OTHER
->> > + * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
->> > ARISING FROM,
->> > + * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
->> > DEALINGS IN
->> > + * THE SOFTWARE.
->> > + */
->> > +
->> > +#ifndef HW_ARM_MSF2_SOC_H
->> > +#define HW_ARM_MSF2_SOC_H
->> > +
->> > +#include "hw/misc/msf2-sysreg.h"
->> > +#include "hw/timer/mss-timer.h"
->> > +#include "hw/ssi/mss-spi.h"
->> > +#include "hw/arm/armv7m.h"
->> > +#include "qemu/cutils.h"
->> > +
->> > +#define TYPE_MSF2_SOC     "msf2-soc"
->> > +#define MSF2_SOC(obj)     OBJECT_CHECK(MSF2State, (obj), TYPE_MSF2_SOC)
->> > +
->> > +#define MSF2_NUM_SPIS         2
->> > +#define MSF2_NUM_UARTS        2
->> > +
->> > +#define ENVM_BASE_ADDRESS     0x60000000
->> > +
->> > +#define SRAM_BASE_ADDRESS     0x20000000
->> > +
->> > +#define MSF2_ENVM_SIZE        (512 * K_BYTE)
->> > +#define MSF2_ESRAM_SIZE       (64 * K_BYTE)
->> > +
->> > +#define M2S010_ENVM_SIZE      (256 * K_BYTE)
->> > +#define M2S010_ESRAM_SIZE     (64 * K_BYTE)
->> > +
->> > +typedef struct MSF2State {
->> > +    /*< private >*/
->> > +    SysBusDevice parent_obj;
->> > +    /*< public >*/
->> > +
->> > +    ARMv7MState armv7m;
->> > +
->> > +    char *part_name;
->> > +    uint64_t envm_size;
->> > +    uint64_t esram_size;
->> > +
->> > +    uint32_t pclk0;
->> > +    uint32_t pclk1;
->> > +
->> > +    MSF2SysregState sysreg;
->> > +    MSSTimerState timer;
->> > +    MSSSpiState spi[MSF2_NUM_SPIS];
->> > +} MSF2State;
->> > +
->> > +#endif
->> > --
->> > 2.5.0
->> >
->
->

@@ -1,86 +1,111 @@
-Received: by 10.25.0.6 with SMTP id 6csp104439lfa;
-        Tue, 30 May 2017 18:27:17 -0700 (PDT)
-X-Received: by 10.55.15.26 with SMTP id z26mr16858915qkg.114.1496194036984;
-        Tue, 30 May 2017 18:27:16 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1496194036; cv=none;
+Received: by 10.25.0.6 with SMTP id 6csp164764lfa;
+        Tue, 30 May 2017 22:36:35 -0700 (PDT)
+X-Received: by 10.233.221.129 with SMTP id r123mr25390255qkf.36.1496208995353;
+        Tue, 30 May 2017 22:36:35 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1496208995; cv=none;
         d=google.com; s=arc-20160816;
-        b=0SOfGFp9z9jXnGr8C2D68rWXIPmh+Se2Gt+Hh5Q9RbWXIJBEzilBA/V9c3t7l8dH+7
-         6VPPahksqAYyWcbIFhGxtKD3J5TueOSze6Kc5D0zFEukd1AkQdVgpQKuemYMf6VMG3pe
-         YTQlChqMEcW4kB9mo/bMA6GfCp0BFwopcyo+rQ3GNNKbmqtytean750z5N23Jzph3IEW
-         2I2IvpJJdt788Rg/xQ3qCbOxeVLTEOasmrpwz2PLwznYC7WflkaQkvdHgDBYqT+t5ISE
-         oJiBHsgcTReBcO/rD//mLsHgP/QxZSjZQO3httHyjelG71g6p5paMa0Y6AHzgH6Q3m8F
-         ZjDg==
+        b=hfRKJ6dtm1iR86kvkCGbtLXvcPAufy8HE5M6O5Rhnf2v0dKKreqHNZmX9UagPjRpRx
+         7AANJ0jjk9geA/ZN/mAbOAKQeuQJnRKy3h18LVOJUT3PE0iQ0vgeWYE9+J/vcK70t2Ym
+         TSsA8+Hr4R4v69pMUUtRLufssaYbpRU5teCiJW1uXU05ZZOTZBUtj7Y+TtNI9JKsMCGS
+         Z4PdIBqh1mV5QK9HvhSjgEdB6GfEbPkP+lBLLEpo8Rpyy/BOSturTtxlIj5Z3IALL9jb
+         HCrTf4lzJ5uQDeeO+FHxJTFuQugC5/fIbr5mRisVhp6LWyhF60Abkudwb8E8IsFWbHUn
+         CbtA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:in-reply-to:references:to:mime-version
-         :user-agent:from:date:message-id:arc-authentication-results;
-        bh=y1Q8NQ70WQ4mOJ+pAB2ke44dyyC4NqK8T1aOi6IPx7Q=;
-        b=FGN8dUweFSnyuGtWlgF+N73X5rGZPOpV1hNOkzkL9X6FG1hhI9ykLOKD59E0xHjk5R
-         Dlb5HW85V0EoCRuaPBpHYxEv2Fzkrzr2WRlLDFKOUb3ASId+NqLA3PhTRWO5jqdtjphn
-         OnF3QndaiiLVfl6uwP9Qmy3w8pstwZKKCltR9kyKzN6A5GuB6+2jklQ93oPLkvUkYclK
-         wsoIhHLIBM/GpFlzaHqHroU64C00oX3K4JEUJ/aK3wIu14V4XJyyxTWMzlGWUsG06rGA
-         PG/ColZFIVKcA9m7hZmQgSUk7Anqt2XxN+6bS3yJMSNXgq0jfvKKddTRK4ztpeu+ny+R
-         kFMw==
+         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:dkim-signature
+         :arc-authentication-results;
+        bh=KMB6O04PzfVOSvIeq80E28+MQCmljgAvZnSdVlmwwKw=;
+        b=VWm01JUBFFFTWqtytmovWu4ySB7koeoPiaB35VVVoiyINc0vxXh4BEAWF8tDuaMFJM
+         Su74l/uFnHGdrRGX15z3wPMMCp1bHKiECvHauhzM6Rx7sYFVIliKPJNfuA2G1xO7q0j/
+         FILXRCdIug+s/VhfCS7M/8oIIGJs9kMGDGxmY0KCZ/Oan5C0Ri9SqHT7eTAPn62QM156
+         rXTGW3uvvS8K+OnfINrUTdzkM5sy5XgoDfU+SYJZgpmL6m49xIo0KAbVbtaO/48RZg4s
+         QfTUKL40Z0E4iiWt40ri2lrF9zzHqPsfBD5BAPSS6Qmru3NIg1mJZz762PeBcSwTlrcF
+         qUKA==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@gmail.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id c189si14525445qkf.60.2017.05.30.18.27.16
+        by mx.google.com with ESMTPS id g15si14854885qtc.100.2017.05.30.22.36.34
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 30 May 2017 18:27:16 -0700 (PDT)
+        Tue, 30 May 2017 22:36:35 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
+       dkim=fail header.i=@gmail.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:56918 helo=lists.gnu.org)
+Received: from localhost ([::1]:57367 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1dFsPq-0001Bp-Ee
-	for alex.bennee@linaro.org; Tue, 30 May 2017 21:27:14 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:42007)
+	id 1dFwJ6-00018F-En
+	for alex.bennee@linaro.org; Wed, 31 May 2017 01:36:32 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:46530)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <zhaoshenglong@huawei.com>) id 1dFsPn-00017G-8X
-	for qemu-arm@nongnu.org; Tue, 30 May 2017 21:27:12 -0400
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1dFwJ2-000185-EC
+	for qemu-arm@nongnu.org; Wed, 31 May 2017 01:36:29 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <zhaoshenglong@huawei.com>) id 1dFsPk-0001tA-0h
-	for qemu-arm@nongnu.org; Tue, 30 May 2017 21:27:11 -0400
-Received: from szxga02-in.huawei.com ([45.249.212.188]:3940)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_ARCFOUR_SHA1:16) (Exim 4.71)
-	(envelope-from <zhaoshenglong@huawei.com>)
-	id 1dFsPj-0001t3-Jw; Tue, 30 May 2017 21:27:07 -0400
-Received: from 172.30.72.56 (EHLO DGGEML404-HUB.china.huawei.com)
-	([172.30.72.56])
-	by dggrg02-dlp.huawei.com (MOS 4.4.6-GA FastPath queued)
-	with ESMTP id AOM14375; Wed, 31 May 2017 09:17:28 +0800 (CST)
-Received: from [127.0.0.1] (10.177.16.142) by DGGEML404-HUB.china.huawei.com
-	(10.3.17.39) with Microsoft SMTP Server id 14.3.301.0; Wed, 31 May 2017
-	09:17:20 +0800
-Message-ID: <592E199C.1040602@huawei.com>
-Date: Wed, 31 May 2017 09:17:16 +0800
-From: Shannon Zhao <zhaoshenglong@huawei.com>
-User-Agent: Mozilla/5.0 (Windows NT 6.1;
-	rv:24.0) Gecko/20100101 Thunderbird/24.4.0
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1dFwIz-0000Zt-A8
+	for qemu-arm@nongnu.org; Wed, 31 May 2017 01:36:28 -0400
+Received: from mail-oi0-x244.google.com ([2607:f8b0:4003:c06::244]:35617)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1dFwIz-0000Zl-35; Wed, 31 May 2017 01:36:25 -0400
+Received: by mail-oi0-x244.google.com with SMTP id v80so394056oie.2;
+	Tue, 30 May 2017 22:36:24 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=sender:subject:to:references:cc:from:message-id:date:user-agent
+	:mime-version:in-reply-to:content-transfer-encoding;
+	bh=KMB6O04PzfVOSvIeq80E28+MQCmljgAvZnSdVlmwwKw=;
+	b=sBUY+4Y+uDdcxmOHsDuiWDsTFNSHkgXeDqNnq7+skDx7Wtcq6StyP5LLIbJV0+LQHS
+	8y34t6T9JdRwCQwHhL46CKCkuGu3VAdWgwg1Xs5tjAF1+pom9vCZPPyRTSm0/HYvOJPy
+	8XI8PXn96L/IfRigmvRl7FMfMFrXkurAdVrzUDUMVamY32w8yy6zr9LpXMOZeS/ntRLv
+	6y1QBjkOwneyVPoY3JajIX5NcUIYKe7DHkIasPgnAwR8yByZfih9acI1eeG4F6SzDvBS
+	tgEJU6SAtXO5P06+sD9obtosuublbSCe8GIfRZT5F5FxOHGyc5wZIkWPbgBxyowR4lxL
+	215w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:sender:subject:to:references:cc:from:message-id
+	:date:user-agent:mime-version:in-reply-to:content-transfer-encoding;
+	bh=KMB6O04PzfVOSvIeq80E28+MQCmljgAvZnSdVlmwwKw=;
+	b=OoRMIdafMAs9g20SDjP9QCzFKflQNTYvFtHogz0bThX9Yt3UWnP7YxFh0qSGw+Z+e6
+	MDjGCixbNBFCk5WIYwkIiOwfMaW4vKmXyQA0cxb0i3Q2qCItAmN9hSm5OevcwYfVhHY4
+	3LHBkynh6rOcABSXBhLAaDI5LVU+qQZEN80I6q6isQUQo+/QYPV+4TZSf58eR6x8mAew
+	BIVe46xaUm5+t36d0KgIQ2cJNuohWYdVQPAF0KhyrVfJWKPTnT0tZaSDhAYCWgKaCHML
+	pnorR1oiHn+ary5T4Uu819H4WWHLOgKQ7TdP/6kDrpHOE54KvzSbrzfZUNnNsUrRTElB
+	e64Q==
+X-Gm-Message-State: AODbwcBOumqLdRFzT/faTKVWc0D87CZ7IiQXcFYun7rp6phHhOL1l8YC
+	pK8Gydps5zbIdQ==
+X-Received: by 10.202.8.13 with SMTP id 13mr9422028oii.109.1496208984185;
+	Tue, 30 May 2017 22:36:24 -0700 (PDT)
+Received: from [192.168.1.107]
+	(162-231-236-127.lightspeed.miamfl.sbcglobal.net. [162.231.236.127])
+	by smtp.gmail.com with ESMTPSA id
+	w79sm6909155oiw.13.2017.05.30.22.36.23
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Tue, 30 May 2017 22:36:23 -0700 (PDT)
+To: sundeep subbaraya <sundeep.lkml@gmail.com>
+References: <1494949133-2202-1-git-send-email-sundeep.lkml@gmail.com>
+	<d403f33f-647e-a142-4265-7d856d8be6aa@amsat.org>
+	<CALHRZur8Uh0JCnOoY-_mUU_fyzbUgxbmWKtfOoB-GTYR5UcEnQ@mail.gmail.com>
+	<CALHRZuoVHFOYV345JmvSkfJHsVjS7Wv_ySzAUtwo1D7eyoS_XQ@mail.gmail.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Message-ID: <648515bf-ba1e-3d7f-d5bd-51b243f8c29f@amsat.org>
+Date: Wed, 31 May 2017 02:36:22 -0300
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
+	Thunderbird/45.8.0
 MIME-Version: 1.0
-To: Andrew Jones <drjones@redhat.com>, <qemu-devel@nongnu.org>,
-	<qemu-arm@nongnu.org>
-References: <20170529173751.3443-1-drjones@redhat.com>
-	<20170529173751.3443-2-drjones@redhat.com>
-In-Reply-To: <20170529173751.3443-2-drjones@redhat.com>
-Content-Type: text/plain; charset="ISO-8859-1"
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.177.16.142]
-X-CFilter-Loop: Reflected
-X-Mirapoint-Virus-RAPID-Raw: score=unknown(0),
-	refid=str=0001.0A020206.592E19A8.0164, ss=1, re=0.000, recu=0.000,
-	reip=0.000, cl=1, cld=1, fgs=0, ip=0.0.0.0,
-	so=2014-11-16 11:51:01, dmn=2013-03-21 17:37:32
-X-Mirapoint-Loop-Id: 808c5ac649df91573d2feafbbe663c89
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
-	[fuzzy]
-X-Received-From: 45.249.212.188
-Subject: Re: [Qemu-arm] [PATCH 1/2] hw/arm/virt-acpi-build: build SLIT when
- needed
+In-Reply-To: <CALHRZuoVHFOYV345JmvSkfJHsVjS7Wv_ySzAUtwo1D7eyoS_XQ@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:4003:c06::244
+Subject: Re: [Qemu-arm] [Qemu devel v5 PATCH 0/5] Add support for
+ Smartfusion2 SoC
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -92,39 +117,196 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm <qemu-arm@nongnu.org>,
+	QEMU Developers <qemu-devel@nongnu.org>,
+	Alistair Francis <alistair23@gmail.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: kExc/I5rw+h9
+X-TUID: TQNPuLZV41Gt
 
+Hi Sundeep,
 
+On 05/29/2017 02:28 AM, sundeep subbaraya wrote:
+> Hi Philippe,
+>
+> Any update on this? I will wait for your comments too
+> and send next iteration fixing Alistair comments.
 
-On 2017/5/30 1:37, Andrew Jones wrote:
-> Cc: Shannon Zhao <zhaoshenglong@huawei.com>
-> Signed-off-by: Andrew Jones <drjones@redhat.com>
-Reviewed-by: Shannon Zhao <shannon.zhao@linaro.org>
+Sorry I'm supposed to be in holidays ;)
 
-> ---
->  hw/arm/virt-acpi-build.c | 4 ++++
->  1 file changed, 4 insertions(+)
-> 
-> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-> index e5852067f5bd..2079828c22a4 100644
-> --- a/hw/arm/virt-acpi-build.c
-> +++ b/hw/arm/virt-acpi-build.c
-> @@ -776,6 +776,10 @@ void virt_acpi_build(VirtMachineState *vms, AcpiBuildTables *tables)
->      if (nb_numa_nodes > 0) {
->          acpi_add_table(table_offsets, tables_blob);
->          build_srat(tables_blob, tables->linker, vms);
-> +        if (have_numa_distance) {
-> +            acpi_add_table(table_offsets, tables_blob);
-> +            build_slit(tables_blob, tables->linker);
-> +        }
->      }
->  
->      if (its_class_name() && !vmc->no_its) {
-> 
+>
+> Thanks,
+> Sundeep
+>
+> On Wed, May 17, 2017 at 3:09 PM, sundeep subbaraya
+> <sundeep.lkml@gmail.com <mailto:sundeep.lkml@gmail.com>> wrote:
+>
+>     Hi Philippe,
+>
+>     On Wed, May 17, 2017 at 9:57 AM, Philippe Mathieu-Daudé
+>     <f4bug@amsat.org <mailto:f4bug@amsat.org>> wrote:
+>
+>         Hi Sundeep,
+>
+>         This patchset is way cleaner!
+>         I had a fast look and I like it, I'll try to make some time soon
+>         to review details and test it.
+>
+>
+>     Thank you
+>
+>
+>
+>
+>         Is your work interested on U-Boot or more focused in Linux kernel?
+>
+>
+>     I am interested more in kernel. I had to look into u-boot for first
+>     time for Qemu only.
+>     I worked only on FPGAs(load kernel with debugger) till now so never
+>     got a chance to look into u-boot.
+>
+>
+>         If you compile QEMU with libfdt support you can use the -dtb
+>         option to pass the blob to the kernel directly, bypassing the
+>         bootloader.
+>
+>     Yeah for armv7m I could not find any thing like that in tree.
+>
+>
+>         If you need a bootloader you may give a look at coreboot which
+>         supports dts well, see how Vladimir Serbinenko used Linux's dt
+>         to boot a QEMU Versatile Express board:
+>         https://mail.coreboot.org/pipermail/coreboot-gerrit/2016-February/040899.html
+>         <https://mail.coreboot.org/pipermail/coreboot-gerrit/2016-February/040899.html>
+>
+>     Cool. I will look into it.
+>
+>     Thanks,
+>     Sundeep
+>
+>
+>         Regards,
+>
+>         Phil.
+>
+>
+>         On 05/16/2017 12:38 PM, Subbaraya Sundeep wrote:
+>
+>             Hi Qemu-devel,
+>
+>             I am trying to add Smartfusion2 SoC.
+>             SoC is from Microsemi and System on Module(SOM)
+>             board is from Emcraft systems. Smartfusion2 has hardened
+>             Microcontroller(Cortex-M3)based Sub System and FPGA fabric.
+>             At the moment only system timer, sysreg and SPI
+>             controller are modelled.
+>
+>             Testing:
+>             ./arm-softmmu/qemu-system-arm -M smartfusion2-som -serial
+>             mon:stdio \
+>             -kernel u-boot.bin -display none -drive
+>             file=spi.bin,if=mtd,format=raw
 
--- 
-Shannon
+I'm not sure the timer is working correctly, U-Boot loops with this pattern:
 
+msf2_sysreg_read: addr: 0x00000048 data: 0x00000220
+msf2_sysreg_write: addr: 0x00000048 data: 0x00000220
+msf2_sysreg_read: addr: 0x00000048 data: 0x00000220
+msf2_sysreg_write: addr: 0x00000048 data: 0x00000020
+msf2_sysreg_read: addr: 0x00000048 data: 0x00000020
+msf2_sysreg_write: addr: 0x00000048 data: 0x00000000
+msf2_sysreg_read: addr: 0x00000048 data: 0x00000000
+msf2_sysreg_write: addr: 0x00000048 data: 0x00000020
+msf2_sysreg_read: addr: 0x00000048 data: 0x00000020
+msf2_sysreg_write: addr: 0x00000048 data: 0x00000220
+
+>
+>             Binaries u-boot.bin and spi.bin are at:
+
+you can compress spi.bin!
+
+can you share u-boot.elf with debug symbols too?
+
+Regards,
+
+Phil.
+
+>             https://github.com/Subbaraya-Sundeep/qemu-test-binaries.git
+>             <https://github.com/Subbaraya-Sundeep/qemu-test-binaries.git>
+>
+>             U-boot is from Emcraft with modified
+>                 - SPI driver not to use PDMA.
+>                 - ugly hack to pass dtb to kernel in r1.
+>             @
+>             https://github.com/Subbaraya-Sundeep/emcraft-uboot-sf2.git
+>             <https://github.com/Subbaraya-Sundeep/emcraft-uboot-sf2.git>
+>
+>             Linux is 4.5 linux with Smartfusion2 SoC dts and clocksource
+>             driver added by myself @
+>             https://github.com/Subbaraya-Sundeep/linux.git
+>             <https://github.com/Subbaraya-Sundeep/linux.git>
+>
+>             v5
+>                 As per Philippe comments:
+>                     Added abort in Sysreg if guest tries to remap memory
+>                     other than default mapping.
+>                     Use of CONFIG_MSF2 in Makefile for soc.c
+>                     Fixed incorrect logic in timer model.
+>                     Renamed msf2-timer.c -> mss-timer.c
+>                             msf2-spi.c -> mss-spi.c also type names
+>                     Renamed function msf2_init->emcraft_sf2_init in
+>             msf2-som.c
+>                     Added part-name,eNVM-size,eSRAM-size,pclk0 and pclk1
+>                         properties to soc.
+>                     Pass soc part-name,memory size and clock rate
+>             properties from som.
+>             v4:
+>                 Fixed build failure by using PRIx macros.
+>             v3:
+>                 Added SoC file and board file as per Alistair comments.
+>             v2:
+>                 Added SPI controller so that u-boot loads kernel from
+>             spi flash.
+>             v1:
+>                 Initial patch set with timer and sysreg
+>
+>             Thanks,
+>             Sundeep
+>
+>             Subbaraya Sundeep (5):
+>               msf2: Add Smartfusion2 System timer
+>               msf2: Microsemi Smartfusion2 System Register block.
+>               msf2: Add Smartfusion2 SPI controller
+>               msf2: Add Smartfusion2 SoC.
+>               msf2: Add Emcraft's Smartfusion2 SOM kit.
+>
+>              default-configs/arm-softmmu.mak |   1 +
+>              hw/arm/Makefile.objs            |   2 +
+>              hw/arm/msf2-soc.c               | 201 +++++++++++++++++++++
+>              hw/arm/msf2-som.c               |  89 ++++++++++
+>              hw/misc/Makefile.objs           |   1 +
+>              hw/misc/msf2-sysreg.c           | 161 +++++++++++++++++
+>              hw/ssi/Makefile.objs            |   1 +
+>              hw/ssi/mss-spi.c                | 378
+>             ++++++++++++++++++++++++++++++++++++++++
+>              hw/timer/Makefile.objs          |   1 +
+>              hw/timer/mss-timer.c            | 249
+>             ++++++++++++++++++++++++++
+>              include/hw/arm/msf2-soc.h       |  69 ++++++++
+>              include/hw/misc/msf2-sysreg.h   |  80 +++++++++
+>              include/hw/ssi/mss-spi.h        | 104 +++++++++++
+>              include/hw/timer/mss-timer.h    |  80 +++++++++
+>              14 files changed, 1417 insertions(+)
+>              create mode 100644 hw/arm/msf2-soc.c
+>              create mode 100644 hw/arm/msf2-som.c
+>              create mode 100644 hw/misc/msf2-sysreg.c
+>              create mode 100644 hw/ssi/mss-spi.c
+>              create mode 100644 hw/timer/mss-timer.c
+>              create mode 100644 include/hw/arm/msf2-soc.h
+>              create mode 100644 include/hw/misc/msf2-sysreg.h
+>              create mode 100644 include/hw/ssi/mss-spi.h
+>              create mode 100644 include/hw/timer/mss-timer.h
+>
+>
+>

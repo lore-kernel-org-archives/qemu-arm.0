@@ -1,96 +1,98 @@
-Received: by 10.25.0.6 with SMTP id 6csp876523lfa;
-        Thu, 1 Jun 2017 09:29:26 -0700 (PDT)
-X-Received: by 10.55.17.11 with SMTP id b11mr2981150qkh.5.1496334566083;
-        Thu, 01 Jun 2017 09:29:26 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1496334566; cv=none;
+Received: by 10.25.0.6 with SMTP id 6csp877809lfa;
+        Thu, 1 Jun 2017 09:32:13 -0700 (PDT)
+X-Received: by 10.200.34.132 with SMTP id f4mr2904341qta.183.1496334733195;
+        Thu, 01 Jun 2017 09:32:13 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1496334733; cv=none;
         d=google.com; s=arc-20160816;
-        b=AfJYn+h+7V+lA/dbu3gZjZxmHsecqIxtQYm9c3x+OhOyB5oneIX9xZfxddxCTeH1t7
-         28muYooAyS0yh5s5NS9EwETW1WHzXoUR9rdlpOdaFua4qmRWkVdVKoEmSOaSFSGs8tkh
-         4mHmBDUUc0bDREKVSkJyEH7F/rtg2H0YvWbcOda6ZZQ5dbPvJuy5JM+loXDAvmElWFxP
-         teM7M5/egWVknlRBZQth46c8AHexIVvDwjJZZaKQ2/MIuzyPimdp3veMP/1htqyiQt7J
-         usVmFgjpAG4u4MZy/iBibsILSEIi4a8Ym7XGSSA7teq6e/PEFDZf+ZA5N29YQpaBNVvC
-         Zn8w==
+        b=e+tFIMJ5K5dIZlMfJRN5MF7eBdhPM2tPNndLoD6alG7TXxj813E/TyVPk2/dzyMTaZ
+         Nvko5gJ9+SHJK8czj2jtq8Mw1yEab6VkfJJ+hy1pSWEmZnfJBAHaxkzyPHuUvl9NtqUT
+         VV6r0Ys0ElURmNiGS5J3YMzBfilfZIDT5glm+Kr+v9/pwrJ7AwTIT2gbSWz0F5G6fbI9
+         1YY88pF868+5AU/CKuvmsg6C8Hy7vBmqDlqV7/VWAIPdaSWGvb7yEKkOijwLxyNCim2F
+         KUfiPFLVBpSEc0zdYW2JCoQGlRcrn06o60ZSkJrEhJ+LvGnsu8j9sjtcKRTBTM0RCEo5
+         1/Ng==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
          :references:in-reply-to:mime-version:dkim-signature
          :arc-authentication-results;
-        bh=rWgUzR2yAckzIMzr1JnnA4ATNXGO8XGjvfR2riUWvSg=;
-        b=ZpCZQFx6fPwCJQMAEfamcVs0Q4uCX+8QTKfbSlRM1Hsfnk4GlPDfnvMoclLn2HmWAh
-         +jbsxlyz1TLQQLxMd3cS9HaN+1rURccsLbzOd4z1Bw0y0XSSqC5ZT7zy1ZvlWY1DA1fc
-         pbv3XaCJH5PPL66sxM8HpkUr+n5Ci/Uy1TDEhfwfbWc7NTcsRvH0dwfbN8veAf8F807E
-         UONrk0Q6i0c/HCaI2DmRJMXLwfSBPfjpuHHuCePGDE8PM+nlq/o9BLSm+ldN+sZxHQrj
-         Xu1O6rVUA/pwNbHahYFmkp0yJ7phM39iLKBiRuYMMKjcXaJx7MIuJ/j03wYgvcttOdcy
-         Y64g==
+        bh=fsO5xwpaXF8D4YY0ps0ffK8Ih7NCLP6+NW8gpmDYlpY=;
+        b=C9kOB0IYNhbKGVrbrORDf5aI0s2G34j18Frhx+aFOqT/KZng5YqAnGHHmozsByHLmS
+         YwUfIcyRhBewls6qal4JBgpDcwz9z0hD2BfHnBaY7TBdRvUi104pjSTXGTxfJvWi79WF
+         uzm/zCLNtsvVf+bQqbrHpOs+iih+nSLwMLym+K2I/gLqqvFaeMcccnFl0gjVd1pVd/ti
+         bNc14768Fn8ZELcxeKjFaE7zLy+zAuOFOauu5lQZA+gO0NJdQKRkdpzD2hf3acfa9O/W
+         wz76Aq0DWpf72tR1MtTtNv1naYkFahzizdHH5VNOzufsy6YxBzOI2T/D4mBfXgiDhxcT
+         XKFw==
 ARC-Authentication-Results: i=1; mx.google.com;
        dkim=fail header.i=@linaro.org;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id d34si20475226qtd.201.2017.06.01.09.29.25
+        by mx.google.com with ESMTPS id f24si20266807qtf.317.2017.06.01.09.32.12
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 01 Jun 2017 09:29:26 -0700 (PDT)
+        Thu, 01 Jun 2017 09:32:13 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        dkim=fail header.i=@linaro.org;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:45660 helo=lists.gnu.org)
+Received: from localhost ([::1]:45681 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1dGSyR-0005Dk-9e
-	for alex.bennee@linaro.org; Thu, 01 Jun 2017 12:29:23 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:50642)
+	id 1dGT18-0006xZ-M0
+	for alex.bennee@linaro.org; Thu, 01 Jun 2017 12:32:10 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:51419)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1dGSyM-0005CW-Ps
-	for qemu-arm@nongnu.org; Thu, 01 Jun 2017 12:29:19 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1dGT13-0006xF-57
+	for qemu-arm@nongnu.org; Thu, 01 Jun 2017 12:32:05 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1dGSyM-0004ix-1t
-	for qemu-arm@nongnu.org; Thu, 01 Jun 2017 12:29:18 -0400
-Received: from mail-wm0-x22f.google.com ([2a00:1450:400c:c09::22f]:34974)
+	(envelope-from <peter.maydell@linaro.org>) id 1dGT12-0005ID-4v
+	for qemu-arm@nongnu.org; Thu, 01 Jun 2017 12:32:05 -0400
+Received: from mail-wm0-x22b.google.com ([2a00:1450:400c:c09::22b]:36890)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1dGSyL-0004ii-QZ
-	for qemu-arm@nongnu.org; Thu, 01 Jun 2017 12:29:17 -0400
-Received: by mail-wm0-x22f.google.com with SMTP id b84so165328131wmh.0
-	for <qemu-arm@nongnu.org>; Thu, 01 Jun 2017 09:29:17 -0700 (PDT)
+	id 1dGT11-0005I4-Uo
+	for qemu-arm@nongnu.org; Thu, 01 Jun 2017 12:32:04 -0400
+Received: by mail-wm0-x22b.google.com with SMTP id d127so67187614wmf.0
+	for <qemu-arm@nongnu.org>; Thu, 01 Jun 2017 09:32:03 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
 	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=rWgUzR2yAckzIMzr1JnnA4ATNXGO8XGjvfR2riUWvSg=;
-	b=V+L2F8Fj4egb3ZpfA29zJYYpoC4txgWHPYoQ+C2p0WpD1AkyBI/ePKiPUToHL9K4Ta
-	Q1fmkqnlQcsECQ0dlwczoGCe20VhLZNkeTTMguvyxkLkTKwxy6Yeh41j59vKsaxsGSSN
-	yvnFOO5shG8JHY/JeORgQQos5HjnobAu878Ws=
+	:cc; bh=fsO5xwpaXF8D4YY0ps0ffK8Ih7NCLP6+NW8gpmDYlpY=;
+	b=H5krO0UKbAulMcjUD0sLVTuzo29VjoyxI22mpsco+T7TweasIpBdKMeQdNHL6/6N9L
+	+xR/fdLL7L4WmucMro2K7iUuj6cKIQT8nNbB/QK2/u+dK/An4TaVuB9Mez2IyekH7RkI
+	ZbmeaA2kUGq+Fy+mTUINO93mnKedLoYmJVTQ0=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
 	:message-id:subject:to:cc;
-	bh=rWgUzR2yAckzIMzr1JnnA4ATNXGO8XGjvfR2riUWvSg=;
-	b=QCI0miYDgW6UW3otYWFqT3stYcCsvGu4ldaAvLmTPhUYhifAqe1AQpP9neamWbb9Af
-	gEm4gfLq5hBBhcAAhTt1uASJVtXF2Pdvr6vCkZsf8g6IwTnwNWBw/5H1w2IiligQdUtp
-	SNBoCAI3aanJPIxnisEmT7pSE68Hogq9IF/hGtyvPu7GqYoQFRPwWvCL9id+DI5Yvr5V
-	ofVZo5Y71HZMsL/6mQ6JznDWMOe6lT1RSPJe8fzFZIpyYmghCdx41ts4g54y6iSKqTFl
-	V92t5ZGQWWYPFejSHtUXvvGfhFKKVZpIOCgEXSDIvzda9xHzTv4yM5D3/Az2OVhBa+0U
-	mWJQ==
-X-Gm-Message-State: AODbwcAoODozVGiJ4WnkJCEtnCQN0lsKQQgmg5Jp602y9et7SgiZXCmY
-	20NDr9Mfo3SUPZKWiBk8hMg7z7D3CTsl
-X-Received: by 10.223.136.131 with SMTP id f3mr2310339wrf.151.1496334556735;
-	Thu, 01 Jun 2017 09:29:16 -0700 (PDT)
+	bh=fsO5xwpaXF8D4YY0ps0ffK8Ih7NCLP6+NW8gpmDYlpY=;
+	b=uU29G/lEdP/J0/0URpuwihn6UQdXnE51IGF//6Bjy3NjyCZma2rwYLGEk/AXDcU7F4
+	a4I+UkCkw27JReQ6BTTHyUZ7TMOBw4ZyqzVNtXMNLOamgqwMdQoSefUCiAIZDMY3t47L
+	RprUmE1mjAzG3ep6e64znYzFpPCk7xAAM4Dup7UM77b1oPsV8CMgzkkDlNNLnnJlOKkQ
+	ikScbLTtlubxuCXaQAgMQoHhW2fnnvyg8OLaC4hhv12Vf/dpi0p40A8kMc08HNoT3UxJ
+	trgXFwl3VKWVvWzW00qqQ2w9ypE3mR7y1fakuN5Y4z1CvpYPk9kRfH34BRh6izT+miuK
+	CVxw==
+X-Gm-Message-State: AODbwcAkCaWtMNkk9vvXenXUf1tzDn6J2kWesNEtyPf2Bxm0+18PAQNe
+	X2EFo84Xv4zwuGpghCt87aVJoSNZwLIl
+X-Received: by 10.223.150.139 with SMTP id u11mr1924421wrb.195.1496334722692; 
+	Thu, 01 Jun 2017 09:32:02 -0700 (PDT)
 MIME-Version: 1.0
-Received: by 10.223.178.66 with HTTP; Thu, 1 Jun 2017 09:28:56 -0700 (PDT)
-In-Reply-To: <20170529173751.3443-1-drjones@redhat.com>
-References: <20170529173751.3443-1-drjones@redhat.com>
+Received: by 10.223.178.66 with HTTP; Thu, 1 Jun 2017 09:31:41 -0700 (PDT)
+In-Reply-To: <CAJKOXPebX4GFh06NmAfkt3Vt5D-xwbeJ3UPA-Z+vMc8BtQZcZw@mail.gmail.com>
+References: <20170521152949.15338-1-krzk@kernel.org>
+	<CAFEAcA8qYBAgHWPGdSTry7Rmt1Ai9gmKXdKs+f_x_jQU0+7c5Q@mail.gmail.com>
+	<CAJKOXPebX4GFh06NmAfkt3Vt5D-xwbeJ3UPA-Z+vMc8BtQZcZw@mail.gmail.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 1 Jun 2017 17:28:56 +0100
-Message-ID: <CAFEAcA-fEFnLuKsAxqbCeRFXf_EtQWLT+UfyBBYF2UsOLM4xhw@mail.gmail.com>
-To: Andrew Jones <drjones@redhat.com>
+Date: Thu, 1 Jun 2017 17:31:41 +0100
+Message-ID: <CAFEAcA8Q8-U9aocQgbUTt2WP4S9Tj_K_iXZuP08x9Ck0LszS3Q@mail.gmail.com>
+To: Krzysztof Kozlowski <krzk@kernel.org>
 Content-Type: text/plain; charset="UTF-8"
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2a00:1450:400c:c09::22f
-Subject: Re: [Qemu-arm] [PATCH 0/2] hw/arm/virt: numa: provide distance info
- when needed
+X-Received-From: 2a00:1450:400c:c09::22b
+Subject: Re: [Qemu-arm] [PATCH v3 00/11] hw: arm: exynos: Bring up secondary
+ CPU, QOM-ify Soc, other improvements
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -102,23 +104,40 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
-	Shannon Zhao <zhaoshenglong@huawei.com>
+Cc: Igor Mitsyanko <i.mitsyanko@gmail.com>, qemu-arm <qemu-arm@nongnu.org>,
+	QEMU Developers <qemu-devel@nongnu.org>,
+	=?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: qkNIKqYPowmp
+X-TUID: 0k51dPXf4jQV
 
-On 29 May 2017 at 18:37, Andrew Jones <drjones@redhat.com> wrote:
-> Andrew Jones (2):
->   hw/arm/virt-acpi-build: build SLIT when needed
->   hw/arm/virt: fdt: generate distance-map when needed
+On 31 May 2017 at 09:58, Krzysztof Kozlowski <krzk@kernel.org> wrote:
+> On Tue, May 30, 2017 at 2:04 PM, Peter Maydell <peter.maydell@linaro.org> wrote:
+>> So is this a regression compared to our current model? I was
+>> under the impression from the previous thread that it was,
+>> which is why I didn't apply that patchset.
 >
->  hw/arm/virt-acpi-build.c |  4 ++++
->  hw/arm/virt.c            | 21 +++++++++++++++++++++
->  2 files changed, 25 insertions(+)
+> It depends how wide understanding of regression you have. :)
+> 1. Before this patch, second CPU could not boot. System was usable but
+> worked on only one CPU.
+> 2. Before this patch, kernel's IRQ work is broken. None of IRQ work
+> are executed which is mostly visible during poweroff - system hangs on
+> syncing IRQ works.
+> 3. With this patch, second CPU boots and IRQ works properly (so
+> poweroff is possible).
+> 4. However with this patch, Linux kernel with cpuidle enabled (which
+> is also included in many kernel defconfigs), the system is very
+> unresponsive.
+>
+> So overall... a lot of things were broken already. This patches fixes
+> them... but breaks different thing.
 
+It sounds like it breaks a key thing, ie "boot a single cpu kernel
+built from a defconfig", though. That's a regression I'd rather
+not have. If there's a subset of these patches which don't break
+that I'm happy to take those. Otherwise we need to investigate
+and fix whatever the problem is that causes that unresponsiveness
+before we can apply them.
 
-
-Applied to target-arm.next, thanks.
-
+thanks
 -- PMM

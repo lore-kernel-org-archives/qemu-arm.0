@@ -1,61 +1,60 @@
-Received: by 10.25.0.23 with SMTP id 23csp25254lfa;
-        Fri, 2 Jun 2017 09:41:33 -0700 (PDT)
-X-Received: by 10.200.52.165 with SMTP id w34mr9656683qtb.77.1496421693858;
-        Fri, 02 Jun 2017 09:41:33 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1496421693; cv=none;
+Received: by 10.25.0.23 with SMTP id 23csp25628lfa;
+        Fri, 2 Jun 2017 09:42:29 -0700 (PDT)
+X-Received: by 10.200.41.119 with SMTP id z52mr9232174qtz.240.1496421748992;
+        Fri, 02 Jun 2017 09:42:28 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1496421748; cv=none;
         d=google.com; s=arc-20160816;
-        b=tLU4fEquSELrbfiieiyMh21GQnbRVSWOtmSPccCql4r9/OgdfQHyOtkuwxbAZFqIE6
-         vEYzoKkOhgzvoXCRQHm4cSvQvjlqir4uFQdXIoztAFnGfXW1f9jRswROrmlmWzUT77+W
-         XdSb9jrWy4iCYcHnt0DD8L4mvH/CyCqe5WSCDfTWshY3c2xTXIojMvy29pscNPbJjjT2
-         f1b2eYFIb9gS1Z2pafNmkkGqIF0N2KCREeBxX4Ox67On8yK3m8T+IJ/ZhXkv9l4P0OB5
-         fsflnR0QujGUqf928GElogTtWuqzrdZt8AIipL4OR9MNeshNrgUTKerjACKKtlIZUXuN
-         wmkg==
+        b=incsxKsMdjBLSb+K8uEDa6PvpG3IKvBpvuzXEs5zosrcgN9vKEgRl17z0eQzJiX4oi
+         kktMGtq/OlnxsMZJzidtUihkIlCOebsuMe2/nSwKHEBY2yeN9IEf/O9lGsV/r6xuh+vm
+         0N/67s9QheAdStmMXEPFccoyc3jibOIKfSxYYz2pG1RpYBN0+PMKBQ5/QW1HpbCwk5bx
+         bEizev8kLHL/mshV4pQSHbp0jmrOBh5g106likd+YihYDZ085/uL7u2LkNhgoTwtwzTQ
+         kogLa5J/ifCSgCBz8H1Q/NjDBqTx6D1AUmhrq8pqsYg+a7uvgkHUbfJUGliDVXHgPZ1r
+         HpVA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:references:in-reply-to
+         :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
          :message-id:date:to:from:dmarc-filter:arc-authentication-results;
-        bh=Foupl2r4M2j/aunGPbqTN9g5JVXYUScX/fqtP0sj8KQ=;
-        b=nECWTVXoXA3dl4Yva7gyHQqRawQuYSGRuRelD06uuoiBx1dBIclEkjXFD3fYgB8zhu
-         LLN6F95u/95TTPuaXyar1UmwJxmWycvIl3XY4r5g3AhKDXk8vIrKon9FXin9srAHkELL
-         dBST81hMUrykgRyYIDEHprZVk8O6BqBfa3SqGarP/ZFgQvZhzJNHJ/PM6aIpSw5h+lQq
-         7512M/OqOliBmwsKxB61gx6cnAHVYfkCkrt4MkV7nlvFCWB4+MZ/czN82j6iQPHCV0Le
-         0w8otBN9uT131a0iR0ce0EW+mk5aCjCOhNFRT4dGsGXGeSD5pniTbTBKjGRdKQE0WA+p
-         +l5w==
+        bh=6W+mbuaFUGnAU9EmPOFsnYHKr5iRuP6hbEwk9f/B2sc=;
+        b=rLSFNaK4RvjMOz6GzFy5Ba4DysRdVCR8fAcPlnfsGUsQJnpll/Slffvm0icETS1Kfz
+         pZJ/28u1BzAnLzoM+fHwhT2nEc2A96EwbgXiBoFp84xVMKs0nzfE5+d8J5ze4MtOa/44
+         ZuL97LUD2fm8mXIb/rQncoipcDiTrCr51bPZhV16cDS3DxyhFJ4JLk7tQDoBs0dsXXwi
+         wfBEC0Nnh9T73nvRoAHSreJK+PBHCypFW+5/cPg79YQ8wttqyQfg7hkvGfmEkI51Blxd
+         6sSorxK6cSeHtb2j2C1zwwnK8s+huj9mCmToCA7Me5WLNjia00P7vejGPRMIBX4Hf++c
+         PoVw==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id u64si23275153qku.52.2017.06.02.09.41.33
+        by mx.google.com with ESMTPS id o186si23514367qkf.6.2017.06.02.09.42.28
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 02 Jun 2017 09:41:33 -0700 (PDT)
+        Fri, 02 Jun 2017 09:42:28 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:50743 helo=lists.gnu.org)
+Received: from localhost ([::1]:50747 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1dGpdj-0005sS-9s
-	for alex.bennee@linaro.org; Fri, 02 Jun 2017 12:41:31 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:35229)
+	id 1dGpec-000751-BM
+	for alex.bennee@linaro.org; Fri, 02 Jun 2017 12:42:26 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:35113)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <krzk@kernel.org>) id 1dGpZ9-0001Az-4N
-	for qemu-arm@nongnu.org; Fri, 02 Jun 2017 12:36:47 -0400
+	(envelope-from <krzk@kernel.org>) id 1dGpZ2-00015H-Dl
+	for qemu-arm@nongnu.org; Fri, 02 Jun 2017 12:36:41 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <krzk@kernel.org>) id 1dGpZ6-0007gE-Nt
-	for qemu-arm@nongnu.org; Fri, 02 Jun 2017 12:36:47 -0400
-Received: from mail.kernel.org ([198.145.29.99]:53910)
+	(envelope-from <krzk@kernel.org>) id 1dGpZ1-0007b5-D1
+	for qemu-arm@nongnu.org; Fri, 02 Jun 2017 12:36:40 -0400
+Received: from mail.kernel.org ([198.145.29.99]:53870)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <krzk@kernel.org>)
-	id 1dGpZ6-0007fg-H0; Fri, 02 Jun 2017 12:36:44 -0400
+	id 1dGpZ1-0007Zs-31; Fri, 02 Jun 2017 12:36:39 -0400
 Received: from kozik-lap.dzcmts001-cpe-001.datazug.ch
 	(pub082136089155.dh-hfc.datazug.ch [82.136.89.155])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPSA id 105FB23A09;
-	Fri,  2 Jun 2017 16:36:41 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 105FB23A09
+	by mail.kernel.org (Postfix) with ESMTPSA id 8114C23A24;
+	Fri,  2 Jun 2017 16:36:36 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8114C23A24
 Authentication-Results: mail.kernel.org;
 	dmarc=none (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=krzk@kernel.org
@@ -63,20 +62,17 @@ From: Krzysztof Kozlowski <krzk@kernel.org>
 To: Igor Mitsyanko <i.mitsyanko@gmail.com>,
 	Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Date: Fri,  2 Jun 2017 18:36:15 +0200
-Message-Id: <20170602163618.6369-6-krzk@kernel.org>
+Date: Fri,  2 Jun 2017 18:36:12 +0200
+Message-Id: <20170602163618.6369-3-krzk@kernel.org>
 X-Mailer: git-send-email 2.9.3
 In-Reply-To: <20170602163618.6369-1-krzk@kernel.org>
 References: <20170602162857.6065-1-krzk@kernel.org>
 	<20170602163618.6369-1-krzk@kernel.org>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 198.145.29.99
-Subject: [Qemu-arm] [PATCH v4 6/9] hw/arm/exynos: Declare local variables in
- some order
+Subject: [Qemu-arm] [PATCH v4 3/9] hw/timer/exynos4210_mct: Cleanup
+ indentation and empty new lines
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -93,36 +89,122 @@ Cc: Eric Blake <eblake@redhat.com>,
 	Krzysztof Kozlowski <krzk@kernel.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: +28TEmwyxWr5
+X-TUID: X+UYEPuSUAuQ
 
-Bring some more readability by declaring local function variables: first
-initialized ones and then the rest (with reversed-christmas-tree order).
+Statements under 'case' were in some places wrongly indented bringing
+confusion and making the code less readable.  Remove also few unneeded
+blank lines.  No functional changes.
 
 Signed-off-by: Krzysztof Kozlowski <krzk@kernel.org>
-Reviewed-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- hw/arm/exynos4210.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ hw/timer/exynos4210_mct.c | 45 ++++++++++++++++++++-------------------------
+ 1 file changed, 20 insertions(+), 25 deletions(-)
 
-diff --git a/hw/arm/exynos4210.c b/hw/arm/exynos4210.c
-index 0da877f8db0a..27a7bf28a5a9 100644
---- a/hw/arm/exynos4210.c
-+++ b/hw/arm/exynos4210.c
-@@ -162,12 +162,12 @@ static uint64_t exynos4210_calc_affinity(int cpu)
-=20
- Exynos4210State *exynos4210_init(MemoryRegion *system_mem)
- {
--    int i, n;
-     Exynos4210State *s =3D g_new(Exynos4210State, 1);
-     qemu_irq gate_irq[EXYNOS4210_NCPUS][EXYNOS4210_IRQ_GATE_NINPUTS];
--    DeviceState *dev;
-     SysBusDevice *busdev;
-     ObjectClass *cpu_oc;
-+    DeviceState *dev;
-+    int i, n;
-=20
-     cpu_oc =3D cpu_class_by_name(TYPE_ARM_CPU, "cortex-a9");
-     assert(cpu_oc);
---=20
+diff --git a/hw/timer/exynos4210_mct.c b/hw/timer/exynos4210_mct.c
+index 2404fb737ac4..ea5f99d9a41b 100644
+--- a/hw/timer/exynos4210_mct.c
++++ b/hw/timer/exynos4210_mct.c
+@@ -1016,9 +1016,9 @@ static uint64_t exynos4210_mct_read(void *opaque, hwaddr offset,
+ 
+     case G_COMP_L(0): case G_COMP_L(1): case G_COMP_L(2): case G_COMP_L(3):
+     case G_COMP_U(0): case G_COMP_U(1): case G_COMP_U(2): case G_COMP_U(3):
+-    index = GET_G_COMP_IDX(offset);
+-    shift = 8 * (offset & 0x4);
+-    value = UINT32_MAX & (s->g_timer.reg.comp[index] >> shift);
++        index = GET_G_COMP_IDX(offset);
++        shift = 8 * (offset & 0x4);
++        value = UINT32_MAX & (s->g_timer.reg.comp[index] >> shift);
+     break;
+ 
+     case G_TCON:
+@@ -1067,7 +1067,6 @@ static uint64_t exynos4210_mct_read(void *opaque, hwaddr offset,
+         lt_i = GET_L_TIMER_IDX(offset);
+ 
+         value = exynos4210_lfrc_get_count(&s->l_timer[lt_i]);
+-
+         break;
+ 
+     case L0_TCON: case L1_TCON:
+@@ -1153,23 +1152,23 @@ static void exynos4210_mct_write(void *opaque, hwaddr offset,
+ 
+     case G_COMP_L(0): case G_COMP_L(1): case G_COMP_L(2): case G_COMP_L(3):
+     case G_COMP_U(0): case G_COMP_U(1): case G_COMP_U(2): case G_COMP_U(3):
+-    index = GET_G_COMP_IDX(offset);
+-    shift = 8 * (offset & 0x4);
+-    s->g_timer.reg.comp[index] =
+-            (s->g_timer.reg.comp[index] &
+-            (((uint64_t)UINT32_MAX << 32) >> shift)) +
+-            (value << shift);
++        index = GET_G_COMP_IDX(offset);
++        shift = 8 * (offset & 0x4);
++        s->g_timer.reg.comp[index] =
++                (s->g_timer.reg.comp[index] &
++                (((uint64_t)UINT32_MAX << 32) >> shift)) +
++                (value << shift);
+ 
+-    DPRINTF("comparator %d write 0x%llx val << %d\n", index, value, shift);
++        DPRINTF("comparator %d write 0x%llx val << %d\n", index, value, shift);
+ 
+-    if (offset & 0x4) {
+-        s->g_timer.reg.wstat |= G_WSTAT_COMP_U(index);
+-    } else {
+-        s->g_timer.reg.wstat |= G_WSTAT_COMP_L(index);
+-    }
++        if (offset & 0x4) {
++            s->g_timer.reg.wstat |= G_WSTAT_COMP_U(index);
++        } else {
++            s->g_timer.reg.wstat |= G_WSTAT_COMP_L(index);
++        }
+ 
+-    exynos4210_gfrc_restart(s);
+-    break;
++        exynos4210_gfrc_restart(s);
++        break;
+ 
+     case G_TCON:
+         old_val = s->g_timer.reg.tcon;
+@@ -1207,7 +1206,6 @@ static void exynos4210_mct_write(void *opaque, hwaddr offset,
+         break;
+ 
+     case G_INT_ENB:
+-
+         /* Raise IRQ if transition from disabled to enabled and CSTAT pending */
+         for (i = 0; i < MCT_GT_CMP_NUM; i++) {
+             if ((value & G_INT_ENABLE(i)) > (s->g_timer.reg.tcon &
+@@ -1288,7 +1286,6 @@ static void exynos4210_mct_write(void *opaque, hwaddr offset,
+         break;
+ 
+     case L0_TCNTB: case L1_TCNTB:
+-
+         lt_i = GET_L_TIMER_IDX(offset);
+         index = GET_L_TIMER_CNT_REG_IDX(offset, lt_i);
+ 
+@@ -1316,7 +1313,6 @@ static void exynos4210_mct_write(void *opaque, hwaddr offset,
+         break;
+ 
+     case L0_ICNTB: case L1_ICNTB:
+-
+         lt_i = GET_L_TIMER_IDX(offset);
+         index = GET_L_TIMER_CNT_REG_IDX(offset, lt_i);
+ 
+@@ -1353,13 +1349,12 @@ static void exynos4210_mct_write(void *opaque, hwaddr offset,
+         if (icntb_max[lt_i] < value) {
+             icntb_max[lt_i] = value;
+         }
+-DPRINTF("local timer[%d] ICNTB write %llx; max=%x, min=%x\n\n",
+-        lt_i, value, icntb_max[lt_i], icntb_min[lt_i]);
++        DPRINTF("local timer[%d] ICNTB write %llx; max=%x, min=%x\n\n",
++                lt_i, value, icntb_max[lt_i], icntb_min[lt_i]);
+ #endif
+-break;
++        break;
+ 
+     case L0_FRCNTB: case L1_FRCNTB:
+-
+         lt_i = GET_L_TIMER_IDX(offset);
+         index = GET_L_TIMER_CNT_REG_IDX(offset, lt_i);
+ 
+-- 
 2.9.3
 

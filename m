@@ -1,111 +1,112 @@
-Received: by 10.25.0.23 with SMTP id 23csp71945lfa;
-        Fri, 2 Jun 2017 11:36:52 -0700 (PDT)
-X-Received: by 10.237.37.154 with SMTP id x26mr10632876qtc.133.1496428612814;
-        Fri, 02 Jun 2017 11:36:52 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1496428612; cv=none;
+Received: by 10.25.0.23 with SMTP id 23csp72383lfa;
+        Fri, 2 Jun 2017 11:38:09 -0700 (PDT)
+X-Received: by 10.237.33.107 with SMTP id 98mr4468300qtc.116.1496428688946;
+        Fri, 02 Jun 2017 11:38:08 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1496428688; cv=none;
         d=google.com; s=arc-20160816;
-        b=lbBUfLK6b++CBBlWPEXfjaCIyRfnw/ZTNeFFCBGZ8HAdsp0l6/SfhNFzVVe+eFwYRS
-         V5ZtV3rO5Tow9zVAn/dvv39GvNUm14DoM7iUalfu9qucYqijZwiizLN8AN+aNqQdlSKF
-         ZeXK8igg7l05hgTkVlfUe6EbrFtuuzsMHxbaVWQMffte8t5zN/dxko/eHdSD1fR2kYG0
-         RxPenJELCyG7we5pVONcxpHO2PGZGH6oocjBTH0l92x0fwSrMI8pCBU61Jc+0ARTmZje
-         HIW/a9kDzUvaIjfc6oojMS2BQogVYC9SGvm1Cw7CRGxdJbyYVAP5yL3B6vwepx2bTHL6
-         pgDg==
+        b=tuxpuwftSFuqLVgyUGUBMWK4qYi7soAhsvBBKcNIgUOQsnGYxdyTXQ4Jm0hOAi/Lm7
+         OdV2uKbC8bHizgW01mg8YE6faUB70kx2L9j7NN2uTB/15G0lB0+FfHEkJGQ3MLNdMdT1
+         FuVrsNGLyYZbW8GyfPiw5MfQG9WfgaKSbVwkYSXu9F5xdryqE/IkgzUlBiIPzEi3vknP
+         SQ67He5kGwpXOm4WsVXl+ca6Pvff+a5RRVgck1jcDMfw9Rw48V9ZErf4rIQ8PEHuGe+r
+         jA4f3D4qwZq3//RBPxR8uOQBaE5FRp4ITMneDSOgkUuNTysplezFj7la56OTkFFEu5cI
+         p6HQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
          :message-id:from:references:to:dkim-signature
          :arc-authentication-results;
-        bh=Bdcs07OApcBdt17OvO2sFE1gL7nVL/CxebJyYcOMEJE=;
-        b=K/dtZDqI7kkkZuAKeYnvF28OMQnovkDL2OKpRwC7rti+xnPiG28ZGX8FAMaV7S4XEr
-         X2I/WqCR94GJgKhotZ5VbNvDWmchFwMWlReNDMdT0sGyJ5kl4ilO+bnXMmw0/BZbmCiV
-         QZoGbjLuTHSVqBhnQRZy2uS20BTgO9tdlHa2dIwFxJ+uUtCsxbUo1KyGT2gO9EgQMkm5
-         Jw6Mkte84lvqCYjIp1Ikpbdwm0TJwAR/5W4uri1jWyICkxfGTzDdVxBJ40lKoTKYFS6B
-         q8qp/q/J6yOXD/e5SSacFt1ZUFNgiG/ZdBK2udR02T44Abwls4B4arMkd96fJNhQ6Bif
-         3VNA==
+        bh=xS9Gel9TpPce36uE1RVx1b/95i1X44JGlriLEaoU1Nw=;
+        b=vJuu1YHrZdrbyAxA4hC8DaV6nq0iJ7m32LDvsAwf1JpLjFMh9ZP1S2g1JPEgZLYy0O
+         HOWBGWlFWU2561moWfmC6ZbJo0CT67fIXaWyUDVpvIEiFNRwiuVMXHr9+6xpUxuhcuRv
+         J5l1iB8wl2k7d04fQX5w97ZZmTjmXAqHAJ2Z77T/z5vyepKz0EL2kUkAAK4tm7HKOA9e
+         LnIwCAQg16LyJUZoNVuwt6QfgQ7uJRSDQIn5fDK6msVEyp9AGjHBnSXG+IOAbyZ0G0bo
+         nqFCEZa5r79+Be4QRK73Za8w0Q8wb0eOJlbE1GuFd+OZdchHdpJL8UE21Foindu3s+Op
+         nG+g==
 ARC-Authentication-Results: i=1; mx.google.com;
        dkim=fail header.i=@gmail.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id f75si12873860qkh.13.2017.06.02.11.36.52
+        by mx.google.com with ESMTPS id 23si23649220qtr.324.2017.06.02.11.38.08
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 02 Jun 2017 11:36:52 -0700 (PDT)
+        Fri, 02 Jun 2017 11:38:08 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        dkim=fail header.i=@gmail.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:51086 helo=lists.gnu.org)
+Received: from localhost ([::1]:51090 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1dGrRK-0003Lm-3r
-	for alex.bennee@linaro.org; Fri, 02 Jun 2017 14:36:50 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:34919)
+	id 1dGrSY-0004oD-A2
+	for alex.bennee@linaro.org; Fri, 02 Jun 2017 14:38:06 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:35268)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1dGrQL-000313-8Z
-	for qemu-devel@nongnu.org; Fri, 02 Jun 2017 14:35:50 -0400
+	id 1dGrRI-0003RN-Oq
+	for qemu-devel@nongnu.org; Fri, 02 Jun 2017 14:36:50 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1dGrQK-00040L-BR
-	for qemu-devel@nongnu.org; Fri, 02 Jun 2017 14:35:49 -0400
-Received: from mail-it0-x241.google.com ([2607:f8b0:4001:c0b::241]:34723)
+	id 1dGrRH-0004qR-NW
+	for qemu-devel@nongnu.org; Fri, 02 Jun 2017 14:36:48 -0400
+Received: from mail-it0-x242.google.com ([2607:f8b0:4001:c0b::242]:35615)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1dGrQK-0003yl-6K; Fri, 02 Jun 2017 14:35:48 -0400
-Received: by mail-it0-x241.google.com with SMTP id d68so12510418ita.1;
-	Fri, 02 Jun 2017 11:35:46 -0700 (PDT)
+	id 1dGrRH-0004q5-Hk; Fri, 02 Jun 2017 14:36:47 -0400
+Received: by mail-it0-x242.google.com with SMTP id 67so12504139itx.2;
+	Fri, 02 Jun 2017 11:36:47 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
 	h=sender:subject:to:references:cc:from:message-id:date:user-agent
 	:mime-version:in-reply-to:content-transfer-encoding;
-	bh=Bdcs07OApcBdt17OvO2sFE1gL7nVL/CxebJyYcOMEJE=;
-	b=RL3lOmAIpDOEq7oZMXP8PP1DeK9NuyfJI4MsBL5mwxwLkhYTH65sDFM40h0SBPEDVU
-	0ow2rnsMF2RiEWSvdcjsDYRXP1RaIC3FixvdN+h90bn45wBcHIDRXmIuhO+T0ZEu3EPS
-	icgUiSLNkdkqtI/ypqra5/zbUky0UgIJk++CikEk3lDaMRoz+CVadPkRSAwymAM8zYHn
-	7pS1GchV0ptn853crmlO2dDswV37DlDte5YOv4e9eQf3umgfpITP4/mzgqxLRw/9Zxso
-	3ga4pyDGakXMH13lq2JYBvtRf0kp9/tbSCJ8p0ZUeN1z5hBCzH4eNtAyt38Ux3rbBq/B
-	nDqA==
+	bh=xS9Gel9TpPce36uE1RVx1b/95i1X44JGlriLEaoU1Nw=;
+	b=eK4rabKwPYEJWB8rpvF/FTrDVT/ubUj+M1BvALLcqu+GhGG+sbcpdryswbCshGvG9J
+	+st3z3FwozWuLjsv2XrQhNogXVhX3e4kYDedYJ90IHPF8VnNqNPBfGhlDMAQvoTHIF9g
+	0HgdlqacL4KZusTdtlBj+RiPLPBsdGTjsd6B/Pk+FCON1NAq2NNYMKZ0k15rcS6kg82J
+	+CAoeGJ/KfOGoScPtP+ZlaAl7nr12En3ujoAXud4rsDR9FXjmnYQp+ULC5gvc+QJ4qXu
+	KdI5cJ/lAjEQFxKvgT+HVLCCpOXH32Pc2FM4ku8x244+O4xy6/jcSlSj0UQY1nVLUCbc
+	Or0w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:sender:subject:to:references:cc:from:message-id
 	:date:user-agent:mime-version:in-reply-to:content-transfer-encoding;
-	bh=Bdcs07OApcBdt17OvO2sFE1gL7nVL/CxebJyYcOMEJE=;
-	b=fsyAuuNXLgjRrcuUxyQrAGuuz0JqWp0re0gfkbaL32glAvksa9r2kO2Qe2bbTmyWAV
-	/9lTwHYxcwpJMlZqb5eRmtduSrm87k4sk8tdncgM96NIg/EKljyy71YoTf0fgNmJpoa1
-	2XkFvY+A0C2VdzLRAxvAixy5Iayjba6Q4zEdN3I2rOeVnhv/eNTniR/f5IYx4Mx+3bwp
-	U346Hv6KS/rJ41tgkJPgZlMq0e3vQhuZNTmz8myH0X3Edcq5Ta3JmJj1Qq+1KcoIFPXd
-	fV3oSO+bxdDFZx7u1y/6L4L8o5dlxPvu0eAPtTZaZKS7PVwuCM/tHuW2zMl/O8pchpOr
-	v4Bg==
-X-Gm-Message-State: AODbwcAxZ1MQD0tCB5J+R9Zr5Zvm1r91Zep+MgpQhQTywjWHVAXWpMuz
-	JvA8RrZGVxnfwA==
-X-Received: by 10.36.35.201 with SMTP id u192mr773289itu.40.1496428546027;
-	Fri, 02 Jun 2017 11:35:46 -0700 (PDT)
+	bh=xS9Gel9TpPce36uE1RVx1b/95i1X44JGlriLEaoU1Nw=;
+	b=W2rO4ZnOkFPVPwGb4us+jEYpFngFuBgbyyX9P1j77tVubV4Jy3V0gpK7Gd8agLTuTc
+	rNM1oNEaa38dxdl1cUqKm+C9UbReHa17vB7rWTvlQGMAdin2lMQRcmBkZY93a4QPcDqu
+	jjDkbrhx4MJ9e1eAjlycKbZUcURi2SNSoZLFrTJle/uATLqqwfpSvwFOM0HmKXbJsXAW
+	OdyKkpV85hrMSu4HhtnL5/3PWIZqwDiZaGA/UVLfg2UUY0BnFOWWyFV0SR37UbOBK9Bp
+	YTNIM45RHBc3JItpdCOVfDVAYIOANmHiqEH88Sh/F2OdvWl9eTadra/KnMkCTPxvoSgE
+	haag==
+X-Gm-Message-State: AODbwcDDTbiJLONl136/6H/mqIpeUIP8GcmmQU+IxjQFa5yUeZQqBkLz
+	IiSK3E+tAwaLGA==
+X-Received: by 10.36.94.134 with SMTP id h128mr752304itb.92.1496428606779;
+	Fri, 02 Jun 2017 11:36:46 -0700 (PDT)
 Received: from ?IPv6:2602:30a:2c37:1a00::43? ([2602:30a:2c37:1a00::43])
 	by smtp.gmail.com with ESMTPSA id
-	c10sm10281365ioj.48.2017.06.02.11.35.43
+	u32sm10272977ioi.51.2017.06.02.11.36.45
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Fri, 02 Jun 2017 11:35:44 -0700 (PDT)
+	Fri, 02 Jun 2017 11:36:45 -0700 (PDT)
 To: Krzysztof Kozlowski <krzk@kernel.org>,
 	Igor Mitsyanko <i.mitsyanko@gmail.com>,
 	Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
 References: <20170602162857.6065-1-krzk@kernel.org>
 	<20170602163618.6369-1-krzk@kernel.org>
+	<20170602163618.6369-3-krzk@kernel.org>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <f6e9e185-14b8-64bf-e295-803a1c0d1dae@amsat.org>
-Date: Fri, 2 Jun 2017 15:35:43 -0300
+Message-ID: <bda550c9-b9e1-83d0-9cdb-e198cb754a2f@amsat.org>
+Date: Fri, 2 Jun 2017 15:36:44 -0300
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
 	Thunderbird/45.8.0
 MIME-Version: 1.0
-In-Reply-To: <20170602163618.6369-1-krzk@kernel.org>
+In-Reply-To: <20170602163618.6369-3-krzk@kernel.org>
 Content-Type: text/plain; charset=windows-1252; format=flowed
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:4001:c0b::241
-Subject: Re: [Qemu-devel] [PATCH v4 1/9] hw/intc/exynos4210_gic: Use more
- meaningful name for local variable
+X-Received-From: 2607:f8b0:4001:c0b::242
+Subject: Re: [Qemu-devel] [PATCH v4 3/9] hw/timer/exynos4210_mct: Cleanup
+ indentation and empty new lines
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -119,16 +120,12 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
 	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: UQGWnXnSheH8
+X-TUID: EwYBGlOlGwlI
 
 On 06/02/2017 01:36 PM, Krzysztof Kozlowski wrote:
-> There are to SysBusDevice variables in exynos4210_gic_realize()
-> function: one for the device itself and second for arm_gic device.  Add
-> a prefix "gic" to the second one so it will be easier to understand the
-> code.
->
-> While at it, put local uninitialized 'i' variable at the end, next to
-> other uninitialized ones.
+> Statements under 'case' were in some places wrongly indented bringing
+> confusion and making the code less readable.  Remove also few unneeded
+> blank lines.  No functional changes.
 >
 > Signed-off-by: Krzysztof Kozlowski <krzk@kernel.org>
 > Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
@@ -136,55 +133,111 @@ On 06/02/2017 01:36 PM, Krzysztof Kozlowski wrote:
 Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 
 > ---
->  hw/intc/exynos4210_gic.c | 12 ++++++------
->  1 file changed, 6 insertions(+), 6 deletions(-)
+>  hw/timer/exynos4210_mct.c | 45 ++++++++++++++++++++-------------------------
+>  1 file changed, 20 insertions(+), 25 deletions(-)
 >
-> diff --git a/hw/intc/exynos4210_gic.c b/hw/intc/exynos4210_gic.c
-> index 2a55817b7660..62acede72f62 100644
-> --- a/hw/intc/exynos4210_gic.c
-> +++ b/hw/intc/exynos4210_gic.c
-> @@ -286,21 +286,21 @@ static void exynos4210_gic_init(Object *obj)
->      DeviceState *dev = DEVICE(obj);
->      Exynos4210GicState *s = EXYNOS4210_GIC(obj);
->      SysBusDevice *sbd = SYS_BUS_DEVICE(obj);
-> -    uint32_t i;
->      const char cpu_prefix[] = "exynos4210-gic-alias_cpu";
->      const char dist_prefix[] = "exynos4210-gic-alias_dist";
->      char cpu_alias_name[sizeof(cpu_prefix) + 3];
->      char dist_alias_name[sizeof(cpu_prefix) + 3];
-> -    SysBusDevice *busdev;
-> +    SysBusDevice *gicbusdev;
-> +    uint32_t i;
+> diff --git a/hw/timer/exynos4210_mct.c b/hw/timer/exynos4210_mct.c
+> index 2404fb737ac4..ea5f99d9a41b 100644
+> --- a/hw/timer/exynos4210_mct.c
+> +++ b/hw/timer/exynos4210_mct.c
+> @@ -1016,9 +1016,9 @@ static uint64_t exynos4210_mct_read(void *opaque, hwaddr offset,
 >
->      s->gic = qdev_create(NULL, "arm_gic");
->      qdev_prop_set_uint32(s->gic, "num-cpu", s->num_cpu);
->      qdev_prop_set_uint32(s->gic, "num-irq", EXYNOS4210_GIC_NIRQ);
->      qdev_init_nofail(s->gic);
-> -    busdev = SYS_BUS_DEVICE(s->gic);
-> +    gicbusdev = SYS_BUS_DEVICE(s->gic);
+>      case G_COMP_L(0): case G_COMP_L(1): case G_COMP_L(2): case G_COMP_L(3):
+>      case G_COMP_U(0): case G_COMP_U(1): case G_COMP_U(2): case G_COMP_U(3):
+> -    index = GET_G_COMP_IDX(offset);
+> -    shift = 8 * (offset & 0x4);
+> -    value = UINT32_MAX & (s->g_timer.reg.comp[index] >> shift);
+> +        index = GET_G_COMP_IDX(offset);
+> +        shift = 8 * (offset & 0x4);
+> +        value = UINT32_MAX & (s->g_timer.reg.comp[index] >> shift);
+>      break;
 >
->      /* Pass through outbound IRQ lines from the GIC */
-> -    sysbus_pass_irq(sbd, busdev);
-> +    sysbus_pass_irq(sbd, gicbusdev);
+>      case G_TCON:
+> @@ -1067,7 +1067,6 @@ static uint64_t exynos4210_mct_read(void *opaque, hwaddr offset,
+>          lt_i = GET_L_TIMER_IDX(offset);
 >
->      /* Pass through inbound GPIO lines to the GIC */
->      qdev_init_gpio_in(dev, exynos4210_gic_set_irq,
-> @@ -316,7 +316,7 @@ static void exynos4210_gic_init(Object *obj)
->          sprintf(cpu_alias_name, "%s%x", cpu_prefix, i);
->          memory_region_init_alias(&s->cpu_alias[i], obj,
->                                   cpu_alias_name,
-> -                                 sysbus_mmio_get_region(busdev, 1),
-> +                                 sysbus_mmio_get_region(gicbusdev, 1),
->                                   0,
->                                   EXYNOS4210_GIC_CPU_REGION_SIZE);
->          memory_region_add_subregion(&s->cpu_container,
-> @@ -326,7 +326,7 @@ static void exynos4210_gic_init(Object *obj)
->          sprintf(dist_alias_name, "%s%x", dist_prefix, i);
->          memory_region_init_alias(&s->dist_alias[i], obj,
->                                   dist_alias_name,
-> -                                 sysbus_mmio_get_region(busdev, 0),
-> +                                 sysbus_mmio_get_region(gicbusdev, 0),
->                                   0,
->                                   EXYNOS4210_GIC_DIST_REGION_SIZE);
->          memory_region_add_subregion(&s->dist_container,
+>          value = exynos4210_lfrc_get_count(&s->l_timer[lt_i]);
+> -
+>          break;
+>
+>      case L0_TCON: case L1_TCON:
+> @@ -1153,23 +1152,23 @@ static void exynos4210_mct_write(void *opaque, hwaddr offset,
+>
+>      case G_COMP_L(0): case G_COMP_L(1): case G_COMP_L(2): case G_COMP_L(3):
+>      case G_COMP_U(0): case G_COMP_U(1): case G_COMP_U(2): case G_COMP_U(3):
+> -    index = GET_G_COMP_IDX(offset);
+> -    shift = 8 * (offset & 0x4);
+> -    s->g_timer.reg.comp[index] =
+> -            (s->g_timer.reg.comp[index] &
+> -            (((uint64_t)UINT32_MAX << 32) >> shift)) +
+> -            (value << shift);
+> +        index = GET_G_COMP_IDX(offset);
+> +        shift = 8 * (offset & 0x4);
+> +        s->g_timer.reg.comp[index] =
+> +                (s->g_timer.reg.comp[index] &
+> +                (((uint64_t)UINT32_MAX << 32) >> shift)) +
+> +                (value << shift);
+>
+> -    DPRINTF("comparator %d write 0x%llx val << %d\n", index, value, shift);
+> +        DPRINTF("comparator %d write 0x%llx val << %d\n", index, value, shift);
+>
+> -    if (offset & 0x4) {
+> -        s->g_timer.reg.wstat |= G_WSTAT_COMP_U(index);
+> -    } else {
+> -        s->g_timer.reg.wstat |= G_WSTAT_COMP_L(index);
+> -    }
+> +        if (offset & 0x4) {
+> +            s->g_timer.reg.wstat |= G_WSTAT_COMP_U(index);
+> +        } else {
+> +            s->g_timer.reg.wstat |= G_WSTAT_COMP_L(index);
+> +        }
+>
+> -    exynos4210_gfrc_restart(s);
+> -    break;
+> +        exynos4210_gfrc_restart(s);
+> +        break;
+>
+>      case G_TCON:
+>          old_val = s->g_timer.reg.tcon;
+> @@ -1207,7 +1206,6 @@ static void exynos4210_mct_write(void *opaque, hwaddr offset,
+>          break;
+>
+>      case G_INT_ENB:
+> -
+>          /* Raise IRQ if transition from disabled to enabled and CSTAT pending */
+>          for (i = 0; i < MCT_GT_CMP_NUM; i++) {
+>              if ((value & G_INT_ENABLE(i)) > (s->g_timer.reg.tcon &
+> @@ -1288,7 +1286,6 @@ static void exynos4210_mct_write(void *opaque, hwaddr offset,
+>          break;
+>
+>      case L0_TCNTB: case L1_TCNTB:
+> -
+>          lt_i = GET_L_TIMER_IDX(offset);
+>          index = GET_L_TIMER_CNT_REG_IDX(offset, lt_i);
+>
+> @@ -1316,7 +1313,6 @@ static void exynos4210_mct_write(void *opaque, hwaddr offset,
+>          break;
+>
+>      case L0_ICNTB: case L1_ICNTB:
+> -
+>          lt_i = GET_L_TIMER_IDX(offset);
+>          index = GET_L_TIMER_CNT_REG_IDX(offset, lt_i);
+>
+> @@ -1353,13 +1349,12 @@ static void exynos4210_mct_write(void *opaque, hwaddr offset,
+>          if (icntb_max[lt_i] < value) {
+>              icntb_max[lt_i] = value;
+>          }
+> -DPRINTF("local timer[%d] ICNTB write %llx; max=%x, min=%x\n\n",
+> -        lt_i, value, icntb_max[lt_i], icntb_min[lt_i]);
+> +        DPRINTF("local timer[%d] ICNTB write %llx; max=%x, min=%x\n\n",
+> +                lt_i, value, icntb_max[lt_i], icntb_min[lt_i]);
+>  #endif
+> -break;
+> +        break;
+>
+>      case L0_FRCNTB: case L1_FRCNTB:
+> -
+>          lt_i = GET_L_TIMER_IDX(offset);
+>          index = GET_L_TIMER_CNT_REG_IDX(offset, lt_i);
+>
 >

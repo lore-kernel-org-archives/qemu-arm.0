@@ -1,212 +1,148 @@
-Received: by 10.25.0.23 with SMTP id 23csp72749lfa;
-        Fri, 2 Jun 2017 11:39:10 -0700 (PDT)
-X-Received: by 10.237.42.228 with SMTP id t91mr9503971qtd.197.1496428749897;
-        Fri, 02 Jun 2017 11:39:09 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1496428749; cv=none;
+Received: by 10.25.0.23 with SMTP id 23csp356225lfa;
+        Sat, 3 Jun 2017 05:02:12 -0700 (PDT)
+X-Received: by 10.98.16.215 with SMTP id 84mr11352229pfq.210.1496491332106;
+        Sat, 03 Jun 2017 05:02:12 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1496491332; cv=none;
         d=google.com; s=arc-20160816;
-        b=bkj3txoZDLS7dMV4jtgxoqxFyf6a8B1qep2HMr/X0run+2nsZt7IycFkAK0Uguv3vv
-         zpNFGDrQB8jcfQGj5iV/fAqCmcy7rff+7++CjTQCyKTuysNEvBTNz/WsB7jYm4FapUMy
-         zGFtT42mrKUqN9NSszIzIcWhuHLq1tSKBUbkc4XAYjvQt7fpxIErYwGbcwH2gZHyXahU
-         IgH/+IoxDCVkGqsKgXO8QVB3caRIoZIYhvoH3QoZBL5ThcVU0lWo7/V26U7NqjiNmR01
-         +mMV8CvWmiRVIEpx2vUtQcPOdzbzuGaHt2LX6Typ9VMmpat6Yi5uYUOoggZ/G4bsxxl5
-         stuw==
+        b=TTqtn5Fw7whWyFvboo2cXQ98Q9ZPlMNLDzxgmRPrDDo0QKFPQnMUkOX1yjyQaZxIjJ
+         nOZoGar/rqhrcrxCTEiVhMeLiX9mo0038oj3bktCInvP0bF8iKo4gK3rLZCt3dax9P00
+         MSo6i1Fmx4hv3baC1we3lNdqJMt0ljGAVUWMwpDF31l2RtDw9Gg7sEI1SAZU9aHq3LbP
+         +jjb10XszmGyYlQ8IswzYBhRvqHWY1MtMccsu/3qTnZUQYZv65NQM0FyZ/hTuC3rvA+g
+         ytt75AZMV+mRuTYwYklS38nNkNLUishkYmP93A5A7Rmz/n2Kg3ABvF7DUMTB79zJFssr
+         ngHQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:dkim-signature
+        h=list-id:precedence:sender:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:references:cc:to:from:subject:dkim-filter:dmarc-filter
          :arc-authentication-results;
-        bh=xK2lf2hkqTepuQzpdG9v1L3FiSIh2MXoPYmdjQsZ1jc=;
-        b=DZ62WTf7i8r0+xOrXh8HoAndkOsuG7/FpzRswQIwCvYMZxO7LUObJa9uWeONyrBgup
-         OQe8XW98uKh3l7ah344O7KkOI6N8/8hV0/pakkRjarw9m2f3IUGJ48+xwLuSPC7LrAb7
-         LTL+2IlZiyMNXn9ZRHFvNjWEzt9G+XQYvQLVCX0o/XOlL3+9bbkSdW/O6Wb8i9qDHAij
-         o7FdPX0NWls2SzeqmrvZSc6HVKJypoUuwn+4cydP1R+fBtgHBUvU1x8o379TNDsT4agI
-         0YDqGIa3t5VKb6koZtX+kBTwYWaPSClFXlL7LISBibpyu7sTuNK8Ku9tVbvuyeG2uyVW
-         oWBw==
+        bh=nlmyinwvBbW8nALNGNmZra3RyiKvKztCwSQpZ7BuXY0=;
+        b=Q8I6ohuzZPPm/gQlEcL33EbSM626xzrJmAMRnZ0E3PfFKCmNNF7MmTnAgyT9K2ffkb
+         YGJ5ZH+P+EGxvSPCVzETg+H9vhI2wkKZsr/u2bHC2cRuvjgaabQyKpcVGN8O0nLxCy4a
+         RtGcU78cPDSDMtYl3cNRhhXE3azofgqiVBxhpeD8y6GPyBWfhmkAaVo8OkLi8PduRXyX
+         s2cAKAWFt8ADOMP5GKDbj9PxEaywppECU2iXQWhxgbvq24u1msQvERRAqMk16zwtXoXU
+         Y9qZePJ8LVMAFYskQLra6Juj8Z9pCQHZWqDkT0vNQ05EIvl69DPk/SHOJTe214odp1lR
+         W8ZA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id n41si5275307qtb.246.2017.06.02.11.39.09
-        for <alex.bennee@linaro.org>
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 02 Jun 2017 11:39:09 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <kvm-owner@vger.kernel.org>
+Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
+        by mx.google.com with ESMTP id b2si25451105pgc.211.2017.06.03.05.02.11;
+        Sat, 03 Jun 2017 05:02:12 -0700 (PDT)
+Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:51095 helo=lists.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1dGrTX-0005WQ-2X
-	for alex.bennee@linaro.org; Fri, 02 Jun 2017 14:39:07 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:35863)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1dGrTR-0005Ui-Ly
-	for qemu-arm@nongnu.org; Fri, 02 Jun 2017 14:39:02 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1dGrTQ-0006mt-Ln
-	for qemu-arm@nongnu.org; Fri, 02 Jun 2017 14:39:01 -0400
-Received: from mail-oi0-x241.google.com ([2607:f8b0:4003:c06::241]:33761)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1dGrTO-0006he-77; Fri, 02 Jun 2017 14:38:58 -0400
-Received: by mail-oi0-x241.google.com with SMTP id h4so13053550oib.0;
-	Fri, 02 Jun 2017 11:38:57 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=sender:subject:to:references:cc:from:message-id:date:user-agent
-	:mime-version:in-reply-to:content-transfer-encoding;
-	bh=xK2lf2hkqTepuQzpdG9v1L3FiSIh2MXoPYmdjQsZ1jc=;
-	b=mUvITLAq70nF/PcHmjXXAmjAY1txxRjpboH4+yvTMbIGfFptNCjp+Wx60OhPfq9yZg
-	mXKjJjUTSdY8DvOlzMTHfW/xMq0s6ITr+MM8OrTKpCu+rmYcrH8lUXBxusYyYixBFkpv
-	wyTe9Uh0maoixAYtXEbp8osvBmdq8wb2zBSJ01nAs/dNMtYYJvJHkItMet+V5Eh23dFv
-	Y4csTOHrCKFU/3b7fD/HII7isM1i6g4W1kpnO8upPqL8Jmo+iOssaWw7N27ricvLJH3K
-	AyxsVf+budaVbTTNxV2XYT/gG6TQvrOsbUb/sYB+D3M97xJI/4ojdFZTHxA5+fr04Rfl
-	xZrQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:sender:subject:to:references:cc:from:message-id
-	:date:user-agent:mime-version:in-reply-to:content-transfer-encoding;
-	bh=xK2lf2hkqTepuQzpdG9v1L3FiSIh2MXoPYmdjQsZ1jc=;
-	b=Pw4fyRRJ/ee+/BClK4NrzjFv2eUH8hMg6uevY+l89JVyzsyq3gWZzEnV3ytKhiBTQ2
-	6hb1/5e94ju5LDb/Dd2eJBLYInha8tLftds+InsyxGNsdPm9NitFsJ4BrrOONjySWnsY
-	un1JsM3nW6w4r/Qe9+dPJh+k3EpiPXgiPFs+HGcgPDgnPNcUlSBTxqIbBtm0NaX1iKHw
-	mG/rlY2J9SgaDTipVQkOUGBDaplWJ+52KcMYgX84jdrESaCULP0VbY6Tii6/aBJ2tWW3
-	fYIK3qAmqUpCrhZInuMV5Nb6oO/giD4YKKLISg/CqQ7g/1kx+6QTTOv4exAHa30Zf314
-	QQPg==
-X-Gm-Message-State: AODbwcAl4XqTBDZjD+XZOXcrHNpJ22F/amcGA7zI2klNVFyP+qbVyyKy
-	536yWvlDCAHAHw==
-X-Received: by 10.157.60.119 with SMTP id j52mr5532364ote.31.1496428737268;
-	Fri, 02 Jun 2017 11:38:57 -0700 (PDT)
-Received: from ?IPv6:2602:30a:2c37:1a00::43? ([2602:30a:2c37:1a00::43])
-	by smtp.gmail.com with ESMTPSA id
-	l197sm362806oib.11.2017.06.02.11.38.55
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Fri, 02 Jun 2017 11:38:56 -0700 (PDT)
-To: Krzysztof Kozlowski <krzk@kernel.org>,
-	Igor Mitsyanko <i.mitsyanko@gmail.com>,
-	Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-References: <20170602162857.6065-1-krzk@kernel.org>
-	<20170602163618.6369-1-krzk@kernel.org>
-	<20170602163618.6369-9-krzk@kernel.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <81d64387-003a-2b21-9229-37b3c0feb676@amsat.org>
-Date: Fri, 2 Jun 2017 15:38:55 -0300
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
-	Thunderbird/45.8.0
+       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
+        id S1751149AbdFCMCI (ORCPT <rfc822;francois.ozog@linaro.org>
+        + 6 others); Sat, 3 Jun 2017 08:02:08 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:55862 "EHLO mx1.redhat.com"
+        rhost-flags-OK-OK-OK-OK) by vger.kernel.org with ESMTP
+        id S1750832AbdFCMCH (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Sat, 3 Jun 2017 08:02:07 -0400
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com [10.5.11.14])
+        (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+        (No client certificate requested)
+        by mx1.redhat.com (Postfix) with ESMTPS id 9BBB8C04B939;
+        Sat,  3 Jun 2017 12:02:06 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 9BBB8C04B939
+Authentication-Results: ext-mx07.extmail.prod.ext.phx2.redhat.com; dmarc=none (p=none dis=none) header.from=redhat.com
+Authentication-Results: ext-mx07.extmail.prod.ext.phx2.redhat.com; spf=pass smtp.mailfrom=lersek@redhat.com
+DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com 9BBB8C04B939
+Received: from lacos-laptop-7.usersys.redhat.com (ovpn-116-19.phx2.redhat.com [10.3.116.19])
+        by smtp.corp.redhat.com (Postfix) with ESMTP id 0BDE27BAE2;
+        Sat,  3 Jun 2017 12:01:52 +0000 (UTC)
+Subject: Re: [Qemu-devel] [PATCH v3 1/4] ACPI: Add APEI GHES Table Generation
+ support
+From:   Laszlo Ersek <lersek@redhat.com>
+To:     Dongjiu Geng <gengdongjiu@huawei.com>
+Cc:     james.morse@arm.com, marc.zyngier@arm.com,
+        christoffer.dall@linaro.org, rkrcmar@redhat.com,
+        linux@armlinux.org.uk, tbaicar@codeaurora.org, imammedo@redhat.com,
+        zhaoshenglong@huawei.com, peter.maydell@linaro.org,
+        pbonzini@redhat.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+        ard.biesheuvel@linaro.org, mtsirkin@redhat.com, drjones@redhat.com,
+        ben@skyportsystems.com, kvm@vger.kernel.org,
+        linux-arm-kernel@lists.infradead.org, kvmarm@lists.cs.columbia.edu,
+        songwenjun@huawei.com, wuquanming@huawei.com,
+        huangshaoyu@huawei.com, wangxiongfeng2@huawei.com,
+        xiexiuqi@huawei.com
+References: <1493530506-26833-1-git-send-email-gengdongjiu@huawei.com>
+ <4dde45bb-a730-82b1-dc49-ad00a6b73d85@redhat.com>
+ <accf8880-f4b0-85f1-9f33-4103c8c26d7a@redhat.com>
+Message-ID: <e90c5fb8-e68b-a620-9023-f4fcfdd68e97@redhat.com>
+Date:   Sat, 3 Jun 2017 14:01:45 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+ Thunderbird/52.1.1
 MIME-Version: 1.0
-In-Reply-To: <20170602163618.6369-9-krzk@kernel.org>
-Content-Type: text/plain; charset=windows-1252; format=flowed
-Content-Transfer-Encoding: 8bit
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:4003:c06::241
-Subject: Re: [Qemu-arm] [PATCH v4 9/9] hw/misc/exynos4210_pmu: Add support
- for system poweroff
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.21
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Eric Blake <eblake@redhat.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: /SioENDNPD6i
+In-Reply-To: <accf8880-f4b0-85f1-9f33-4103c8c26d7a@redhat.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.5.110.31]); Sat, 03 Jun 2017 12:02:07 +0000 (UTC)
+Sender: kvm-owner@vger.kernel.org
+Precedence: bulk
+List-ID: <kvm.vger.kernel.org>
+X-Mailing-List: kvm@vger.kernel.org
+X-TUID: qxdfyG8/hWHo
 
-On 06/02/2017 01:36 PM, Krzysztof Kozlowski wrote:
-> On all Exynos-based boards, the system powers down itself by driving
-> PS_HOLD signal low - eight bit in PS_HOLD_CONTROL register of PMU.
-> Handle writing to respective PMU register to fix power off failure:
->
->     reboot: Power down
->     Unable to poweroff system
->     shutdown: 31 output lines suppressed due to ratelimiting
->     Kernel panic - not syncing: Attempted to kill init! exitcode=0x00000000
->
->     CPU: 0 PID: 1 Comm: shutdown Not tainted 4.11.0-rc8 #846
->     Hardware name: SAMSUNG EXYNOS (Flattened Device Tree)
->     [<c031050c>] (unwind_backtrace) from [<c030ba6c>] (show_stack+0x10/0x14)
->     [<c030ba6c>] (show_stack) from [<c05b2800>] (dump_stack+0x88/0x9c)
->     [<c05b2800>] (dump_stack) from [<c03d3140>] (panic+0xdc/0x268)
->     [<c03d3140>] (panic) from [<c0343614>] (do_exit+0xa90/0xab4)
->     [<c0343614>] (do_exit) from [<c035f2dc>] (SyS_reboot+0x164/0x1d0)
->     [<c035f2dc>] (SyS_reboot) from [<c0307c80>] (ret_fast_syscall+0x0/0x3c)
->
-> Additionally the initial value of PS_HOLD has to be changed because
-> recent Linux kernel (v4.12-rc1) uses regmap cache for this access.
-> When the register is kept at reset value, the kernel will not issue a
-> write to it.  Usually the bootloader sets the eight bit of PS_HOLD high
-> so mimic its existence here.
->
-> Signed-off-by: Krzysztof Kozlowski <krzk@kernel.org>
-> Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+On 05/22/17 16:23, Laszlo Ersek wrote:
+> Keeping some context:
+> 
+> On 05/12/17 23:00, Laszlo Ersek wrote:
+>> On 04/30/17 07:35, Dongjiu Geng wrote:
 
-Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+> (68) In the code below, you are not taking an "OVMF header probe
+> suppressor" into account.
+> 
+> But, we have already planned to replace that quirk with a separate,
+> dedicated allocation hint or command, so I'm not going to describe what
+> an "OVMF header probe suppressor" is; instead, I'll describe the
+> replacement for it.
+> 
+> [...]
 
-> ---
->  hw/misc/exynos4210_pmu.c | 20 +++++++++++++++++++-
->  1 file changed, 19 insertions(+), 1 deletion(-)
->
-> diff --git a/hw/misc/exynos4210_pmu.c b/hw/misc/exynos4210_pmu.c
-> index 63a8ccd35559..0d7b64c5b3a3 100644
-> --- a/hw/misc/exynos4210_pmu.c
-> +++ b/hw/misc/exynos4210_pmu.c
-> @@ -26,6 +26,7 @@
->
->  #include "qemu/osdep.h"
->  #include "hw/sysbus.h"
-> +#include "sysemu/sysemu.h"
->
->  #ifndef DEBUG_PMU
->  #define DEBUG_PMU           0
-> @@ -350,7 +351,11 @@ static const Exynos4210PmuReg exynos4210_pmu_regs[] = {
->      {"PAD_RETENTION_MMCB_OPTION", PAD_RETENTION_MMCB_OPTION, 0x00000000},
->      {"PAD_RETENTION_EBIA_OPTION", PAD_RETENTION_EBIA_OPTION, 0x00000000},
->      {"PAD_RETENTION_EBIB_OPTION", PAD_RETENTION_EBIB_OPTION, 0x00000000},
-> -    {"PS_HOLD_CONTROL", PS_HOLD_CONTROL, 0x00005200},
-> +    /*
-> +     * PS_HOLD_CONTROL: reset value and manually toggle high the DATA bit.
-> +     * DATA bit high, set usually by bootloader, keeps system on.
-> +     */
-> +    {"PS_HOLD_CONTROL", PS_HOLD_CONTROL, 0x00005200 | BIT(8)},
->      {"XUSBXTI_CONFIGURATION", XUSBXTI_CONFIGURATION, 0x00000001},
->      {"XUSBXTI_STATUS", XUSBXTI_STATUS, 0x00000001},
->      {"XUSBXTI_DURATION", XUSBXTI_DURATION, 0xFFF00000},
-> @@ -397,6 +402,12 @@ typedef struct Exynos4210PmuState {
->      uint32_t reg[PMU_NUM_OF_REGISTERS];
->  } Exynos4210PmuState;
->
-> +static void exynos4210_pmu_poweroff(void)
-> +{
-> +    PRINT_DEBUG("QEMU PMU: PS_HOLD bit down, powering off\n");
-> +    qemu_system_shutdown_request(SHUTDOWN_CAUSE_GUEST_SHUTDOWN);
-> +}
-> +
->  static uint64_t exynos4210_pmu_read(void *opaque, hwaddr offset,
->                                      unsigned size)
->  {
-> @@ -428,6 +439,13 @@ static void exynos4210_pmu_write(void *opaque, hwaddr offset,
->              PRINT_DEBUG_EXTEND("%s <0x%04x> <- 0x%04x\n", reg_p->name,
->                      (uint32_t)offset, (uint32_t)val);
->              s->reg[i] = val;
-> +            if ((offset == PS_HOLD_CONTROL) && ((val & BIT(8)) == 0)) {
-> +                /*
-> +                 * We are interested only in setting data bit
-> +                 * of PS_HOLD_CONTROL register to indicate power off request.
-> +                 */
-> +                exynos4210_pmu_poweroff();
-> +            }
->              return;
->          }
->          reg_p++;
->
+So, the NOACPI allocation hint is a no-go at the moment, based on the
+discussion in the following threads:
+
+http://mid.mail-archive.com/20170601112241.2580-1-ard.biesheuvel@linaro.org
+
+http://mid.mail-archive.com/c76b36de-ebf9-c662-d454-0a95b43901e8@redhat.com
+
+Therefore the header probe suppression remains necessary.
+
+In this case, it is not hard to do, you just have to reorder the
+following two ADD_POINTER additions a bit:
+
+>>> +
+>>> +        bios_linker_loader_add_pointer(linker, GHES_ERRORS_FW_CFG_FILE,
+>>> +                                sizeof(uint64_t) * i, sizeof(uint64_t),
+>>> +                                GHES_ERRORS_FW_CFG_FILE,
+>>> +                                MAX_ERROR_SOURCE_COUNT_V6 * sizeof(uint64_t) +
+>>> +                                i * MAX_RAW_DATA_LENGTH);
+
+This one should be moved out to a separate loop, after the current loop.
+
+>>> +        bios_linker_loader_add_pointer(linker, ACPI_BUILD_TABLE_FILE,
+>>> +                    address_registers_offset
+>>> +                    + i * sizeof(AcpiGenericHardwareErrorSource),
+>>> +                    sizeof(uint32_t), GHES_ERRORS_FW_CFG_FILE,
+>>> +                    i * sizeof(uint64_t));
+
+This one should be kept in the first (i.e., current) loop.
+
+The idea is, when you first point the HEST/GHES_n entries in
+ACPI_BUILD_TABLE_FILE to the "address registers" in
+GHES_ERRORS_FW_CFG_FILE, all those address registers will still be
+zero-filled. This will fail the ACPI table header probe in
+OvmfPkg/AcpiPlatformDxe, which is what we want.
+
+After this is done, the address registers in GHES_ERRORS_FW_CFG_FILE
+should be pointed to the error status data blocks in the same fw_cfg
+blob, in a separate loop. (Those error status data blocks will again be
+zero-filled, so no ACPI table headers will be mistakenly recognized in
+them.)
+
+Thanks
+Laszlo

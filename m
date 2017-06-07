@@ -1,96 +1,85 @@
-Received: by 10.25.0.23 with SMTP id 23csp1691779lfa;
-        Tue, 6 Jun 2017 10:14:57 -0700 (PDT)
-X-Received: by 10.55.150.71 with SMTP id y68mr33355891qkd.193.1496769297079;
-        Tue, 06 Jun 2017 10:14:57 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1496769297; cv=none;
+Received: by 10.25.0.23 with SMTP id 23csp1977308lfa;
+        Wed, 7 Jun 2017 01:36:28 -0700 (PDT)
+X-Received: by 10.55.94.4 with SMTP id s4mr23356333qkb.27.1496824588292;
+        Wed, 07 Jun 2017 01:36:28 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1496824588; cv=none;
         d=google.com; s=arc-20160816;
-        b=BZYNDi29bTU0uFurv5DgM4vMSliXdunX+W+JNb8+20YA1qnpR+OHvJ6+sza3T5GqcC
-         5d2Ytmmwc8GMYco3qOwMI+Hp+p+zoh532YRExXsvDbM20QDKExsOLwI4gzKfD+pxwlgx
-         aPjcQbufoal2gQlTuYfuddq6i/8Pcm8D0Pw3syhxAYo648zTi7gJFM7EH+kJ+qrFR3bi
-         kv+NGfnN0UQF8vggGKgtOJhNh9Y/JoYCgsDenFud31c5eThjVlZndzXMvrJvT6Mu82n2
-         eYP/PjjK/k5KYoaQEtsba35CGUkNPm0WEX4n2Sk5l2pDK7Oqacl7e17IkKdRHtAanPmu
-         /QwQ==
+        b=f/oulNsR4WRwvNUvEjH+bWd1uLL5OAPxqJvCOIYR0bo9PAHgQwJCEV1Tbf91r45MEc
+         R7KBOq1oaJ2EVDSt51G4tsWdunUitCgAbXdncKUbunsO1W/B9LfstfOB+fvEo5Ms1LxW
+         iL4SWCQQi84b+WI1qnfUecHO2O4wBXn/qIHsmCfrXoZy2/f361iQyNi2kgicUgyGXmWE
+         scGPDWjFf77JjXNyAVCkCxH73WDcZCamAAtjv/sX8yPr65a6ubqcvXYRXY60QKtWMVTS
+         lg5F2k9ciEuMG8HQjvdF/rdaHQqq4TxOkNPqBFEDmSQR8+Tkjc++R3AR/TqwpkO0NHet
+         Qs6g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
-         :references:in-reply-to:mime-version:dkim-signature
-         :arc-authentication-results;
-        bh=8eOvaFSarkEBdcSdxxrB6ghqHWxjjfv/hGDOZDPdWvw=;
-        b=xdXyvpq/zqO17mK5Q+zfGjP0KBXBNkCxM94NV22xbcIAovCEcT2MXHptKZOX42dWQy
-         B8kAJvgDDOw0ZF1LbTKqXijc1o1wd6iQjtDlLi5YVRhn7P+KgRZGHil8MPeORxCgzVtX
-         bLDveXWOy1nQyqEkYLREwVcu6iWHUOlbk76LLLdYXP7ylKpfIVfcVaWE1WKsJyugoD1x
-         Ou4/tlowJewtasVy+u53x1AHOY5hpggJ6ZVRxYixXhHSE1a1KCl9CIrzk8kgI+aiGF53
-         1OJzwA8EV3FRcWNSik6AIc8yS+Bb2VeiakR7T1yPkmezsXgy+dK5Y7VnX561PuzcIfHB
-         IATQ==
+         :list-unsubscribe:list-id:precedence:subject:message-id:date:to:from
+         :dkim-filter:dmarc-filter:arc-authentication-results;
+        bh=YLu+BQ+Z2epJbU5In2OfqaXiBITrznrJIV3DoZgsBa4=;
+        b=Ea+gj6PDeVpUGMGuXUkMvezEPTU+3VEuNHaieT6FrVE4QHwoczjZC9i6izL5upUpxc
+         qGa0vfBmD+PWh1P5nccuJGwdH885NS5UWA5H7II0ecIxRAb43zNhOGM7XqU6mjqS4Cep
+         5VwP9PKssZUlZ8EP0E9TdR+cunYo8tPCWi23qGKu9+wTJ4/ps5fvYJ3TG/4HRb5nwXka
+         uPHCRVMnUy+kPzQEmyKAPlC9ikCC0VUUqY2zpM+YJ3J1aQZTVGEB8a/HAuGsVWKOs0Gz
+         ltRlSW5aHPABPvtQvuYttuc6IYBk0sUTGvawN5XdPFCxouMDPXu003FzX6QmSeY/Jtmr
+         PsZA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id f63si29355197qka.10.2017.06.06.10.14.56
+        by mx.google.com with ESMTPS id p4si1283485qkf.144.2017.06.07.01.36.27
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 06 Jun 2017 10:14:57 -0700 (PDT)
+        Wed, 07 Jun 2017 01:36:28 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:39411 helo=lists.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:41967 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1dII4E-00021Y-7M
-	for alex.bennee@linaro.org; Tue, 06 Jun 2017 13:14:54 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:56720)
+	id 1dIWS1-0003Bs-HM
+	for alex.bennee@linaro.org; Wed, 07 Jun 2017 04:36:25 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:41197)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1dII44-000204-5y
-	for qemu-arm@nongnu.org; Tue, 06 Jun 2017 13:14:45 -0400
+	(envelope-from <eric.auger@redhat.com>) id 1dIWRx-0003BJ-Bo
+	for qemu-arm@nongnu.org; Wed, 07 Jun 2017 04:36:22 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1dII43-0005KD-Df
-	for qemu-arm@nongnu.org; Tue, 06 Jun 2017 13:14:44 -0400
-Received: from mail-wm0-x232.google.com ([2a00:1450:400c:c09::232]:36300)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1dII43-0005Jx-7C
-	for qemu-arm@nongnu.org; Tue, 06 Jun 2017 13:14:43 -0400
-Received: by mail-wm0-x232.google.com with SMTP id 7so102159367wmo.1
-	for <qemu-arm@nongnu.org>; Tue, 06 Jun 2017 10:14:43 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=8eOvaFSarkEBdcSdxxrB6ghqHWxjjfv/hGDOZDPdWvw=;
-	b=bM+YiyPW41NaUFRm3iKJIVHc2bBTZeo0wLYrWJXRmpHSzwov3T1nQEyIQ09ZMOA7vp
-	K3n8P08Bz8EhkaoT8XMJAyN1C1LqcCNAZTJz7uUbu5VHxXqjv/tBs8gc8Aaws7ppT6hn
-	yGXQobRURG4TSIJTgxX8TFmUAj4O26pQQCi9o=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=8eOvaFSarkEBdcSdxxrB6ghqHWxjjfv/hGDOZDPdWvw=;
-	b=ehaMOqYxaw92eSR+V4fp5w9ItOpFFaWj7jkBFSSUeRIEdEQdUJsEnOaxL4mpa7LoOh
-	i4Zj+nizULyGesxsUNIJ3MbbCb+V+YWLmlYaIOSBD5c46dpe3ZpBK3mVJxoY47P//jul
-	Fw+ke0mxfVqjHRkRo92pukyucZKZ21K7FGPTHXJWoiKXwgvwJSwln5+fA7IVXMmgfdOG
-	agib2iLHiwbzRvCj2GPWmFXJszGZbN4dB83JMVCmIn9P3G9MlSZULekrZDiu8dBtQ85n
-	Kd3JoUEJK0o9smSbmTir3pBE/tIG+VkPLIQ1V0tMDh3SsaG4h/OZg3CPyyRmHNYhsUO4
-	Nq6Q==
-X-Gm-Message-State: AODbwcBFZJOPlvENlLWQprWVW5SGuDjRR8WS5CNXWkMvhx1EzGpTbqhG
-	Ic+jeTTkCN8LU8bDPd5w9zgIcnB8YGxD
-X-Received: by 10.28.72.7 with SMTP id v7mr6188234wma.125.1496769282078; Tue,
-	06 Jun 2017 10:14:42 -0700 (PDT)
-MIME-Version: 1.0
-Received: by 10.223.134.55 with HTTP; Tue, 6 Jun 2017 10:14:21 -0700 (PDT)
-In-Reply-To: <20170602162857.6065-1-krzk@kernel.org>
-References: <20170602162857.6065-1-krzk@kernel.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 6 Jun 2017 18:14:21 +0100
-Message-ID: <CAFEAcA8MnUERMj4_KTu6RAw3bJBT63YkrAJj7eKU=oRxK2=mLw@mail.gmail.com>
-To: Krzysztof Kozlowski <krzk@kernel.org>
-Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2a00:1450:400c:c09::232
-Subject: Re: [Qemu-arm] [PATCH v4 0/9] hw: arm: exynos: Improvements and
- cleanups
+	(envelope-from <eric.auger@redhat.com>) id 1dIWRt-0000t2-4m
+	for qemu-arm@nongnu.org; Wed, 07 Jun 2017 04:36:21 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:57875)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <eric.auger@redhat.com>)
+	id 1dIWRs-0000st-Uh; Wed, 07 Jun 2017 04:36:17 -0400
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
+	[10.5.11.15])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 3B9E74E4D0;
+	Wed,  7 Jun 2017 08:36:15 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 3B9E74E4D0
+Authentication-Results: ext-mx09.extmail.prod.ext.phx2.redhat.com;
+	dmarc=none (p=none dis=none) header.from=redhat.com
+Authentication-Results: ext-mx09.extmail.prod.ext.phx2.redhat.com;
+	spf=pass smtp.mailfrom=eric.auger@redhat.com
+DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com 3B9E74E4D0
+Received: from localhost.localdomain.com (ovpn-116-222.ams2.redhat.com
+	[10.36.116.222])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id C852C176B2;
+	Wed,  7 Jun 2017 08:36:04 +0000 (UTC)
+From: Eric Auger <eric.auger@redhat.com>
+To: eric.auger.pro@gmail.com, eric.auger@redhat.com, peter.maydell@linaro.org,
+	alex.williamson@redhat.com, mst@redhat.com, qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org, jean-philippe.brucker@arm.com
+Date: Wed,  7 Jun 2017 10:35:48 +0200
+Message-Id: <1496824556-1883-1-git-send-email-eric.auger@redhat.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.38]);
+	Wed, 07 Jun 2017 08:36:15 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.132.183.28
+Subject: [Qemu-arm] [RFC 0/8] VIRTIO-IOMMU device
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -102,28 +91,65 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Igor Mitsyanko <i.mitsyanko@gmail.com>, qemu-arm <qemu-arm@nongnu.org>,
-	Eric Blake <eblake@redhat.com>, QEMU Developers <qemu-devel@nongnu.org>,
-	=?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
+Cc: kevin.tian@intel.com, bharat.bhushan@nxp.com, marc.zyngier@arm.com,
+	tn@semihalf.com, will.deacon@arm.com, drjones@redhat.com,
+	robin.murphy@arm.com, christoffer.dall@linaro.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: MUSEwJ7GTZGI
+X-TUID: sme4gelGMxT5
 
-On 2 June 2017 at 17:28, Krzysztof Kozlowski <krzk@kernel.org> wrote:
-> Hi,
->
-> I split non-intrusive changes from my previous attempts [1].
->
-> This patchset contains only cleanups, minor improvements and support for
-> power off. Power off itself will not happen because kernel will hang
-> before trying it, on syncing IRQ works (fix for this is [2], but this will
-> be separate).
->
-> Changes since v3:
-> 1. Rebase on current master (API for shutdown changed).
-> 2. Apply Peter's reviewed-by tag.
+This series implements the virtio-iommu device. This is a proof
+of concept based on the virtio-iommu specification written by
+Jean-Philippe Brucker [1]. This was tested with a guest using
+the virtio-iommu driver [2] and exposed with a virtio-net-pci
+using dma ops.
 
-Thanks for splitting these out.
-Applied to target-arm.next, thanks.
+The device gets instantiated using the "-device virtio-iommu-device"
+option. It currently works with ARM virt machine only as the machine
+must handle the dt binding between the virtio-mmio "iommu" node and
+the PCI host bridge node. ACPI booting is not yet supported.
 
--- PMM
+This should allow to start some benchmarking activities against
+pure emulated IOMMU (especially ARM SMMU).
+
+Best Regards
+
+Eric
+
+This series can be found at:
+https://github.com/eauger/qemu/tree/virtio-iommu-rfcv1
+
+References:
+[1] [RFC 0/3] virtio-iommu: a paravirtualized IOMMU,
+[2] [RFC PATCH linux] iommu: Add virtio-iommu driver
+[3] [RFC PATCH kvmtool 00/15] Add virtio-iommu
+
+Eric Auger (8):
+  update-linux-headers: import virtio_iommu.h
+  linux-headers: Update for virtio-iommu
+  virtio_iommu: add skeleton
+  virtio-iommu: Decode the command payload
+  virtio_iommu: Add the iommu regions
+  virtio-iommu: Implement the translation and commands
+  hw/arm/virt: Add 2.10 machine type
+  hw/arm/virt: Add virtio-iommu the virt board
+
+ hw/arm/virt.c                                 | 116 ++++-
+ hw/virtio/Makefile.objs                       |   1 +
+ hw/virtio/trace-events                        |  14 +
+ hw/virtio/virtio-iommu.c                      | 623 ++++++++++++++++++++++++++
+ include/hw/arm/virt.h                         |   5 +
+ include/hw/virtio/virtio-iommu.h              |  60 +++
+ include/standard-headers/linux/virtio_ids.h   |   1 +
+ include/standard-headers/linux/virtio_iommu.h | 142 ++++++
+ linux-headers/linux/virtio_iommu.h            |   1 +
+ scripts/update-linux-headers.sh               |   3 +
+ 10 files changed, 957 insertions(+), 9 deletions(-)
+ create mode 100644 hw/virtio/virtio-iommu.c
+ create mode 100644 include/hw/virtio/virtio-iommu.h
+ create mode 100644 include/standard-headers/linux/virtio_iommu.h
+ create mode 100644 linux-headers/linux/virtio_iommu.h
+
+-- 
+2.5.5
+

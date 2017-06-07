@@ -1,448 +1,437 @@
-Received: by 10.25.0.23 with SMTP id 23csp2161170lfa;
-        Wed, 7 Jun 2017 09:06:00 -0700 (PDT)
-X-Received: by 10.200.41.112 with SMTP id z45mr869503qtz.238.1496851560374;
-        Wed, 07 Jun 2017 09:06:00 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1496851560; cv=none;
+Received: by 10.25.0.23 with SMTP id 23csp2161742lfa;
+        Wed, 7 Jun 2017 09:07:12 -0700 (PDT)
+X-Received: by 10.237.43.227 with SMTP id e90mr22130763qtd.103.1496851632848;
+        Wed, 07 Jun 2017 09:07:12 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1496851632; cv=none;
         d=google.com; s=arc-20160816;
-        b=Dl2bW9zQmhO1QbtWn2/s7EgqNFEbVyG1ZAo9cgxSZO1IvI9AWTb9Kcvs0UeIihq1cj
-         nhsDasS4sGY3dtz+35fsHTyFDjV3Jrti/mivebO/6WUrmETFPDr4s+L7opPne6JpM/hV
-         S+iQE9zr45vxtabOHbpic/48YnA4w0ZkMTG9mPggUwdEw/CILra/eh0mUgmjw1i0UcbB
-         2MbKm2SNu/otMncBde0zvHVOxeLgUCUCKu5NOf2cr7WB0zomZYFZxlcyt8YKF8FobVrF
-         64AA1dtc/5OvN7NS31Z6L1UbwXWTcxubiHSqOMe3os/UEv0y759/Afg1GvjUEIppLc9H
-         7XIg==
+        b=sMazV0NWpGFtSfWUA6pkUOMeubwKmt6pNwDhw6gWBu5D5aBggqZ72F0RoEg3dOQ4OQ
+         JEi4dxwFIrNeuoryHdXowy010H/Bken5k5wqOuUGqXfEKbAXKu3IA9clR112MRnX6Bnx
+         c2z9G8zX8I2R6j3bK3yGqV3O6Wl5mBGIHIdE9l6PsPO4KmBqRcg9qCHHsATO61757W5W
+         7COKkxu6vKmk7NiVFn8n2alqJV90JAXsS3AIcJWBzgKY7IwyphYLxSHIABURM52twuR0
+         5mQERXfhr6MOCUgcotSYteHuCmHO8rcZRIf0JoqXYBGOEFB7rDByMdxSrai1/kE80LFb
+         2rog==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
          :message-id:date:to:from:dkim-filter:dmarc-filter
          :arc-authentication-results;
-        bh=qwY1d0z9Wyi+jQYvVZH5z7JNBu95w6cqMeVEpEReRdk=;
-        b=H+x1GUvhIS/zaibHTxpyyBNWCvbRWQlhhyUZ+4OI3rRvv+njuHpSbZQ7uR/l9oJbtq
-         UYm6GbOvYg4OdLW8s9/EhTN8TqA6URuXJNik5e06VYClX+YcVTRjwZwn+cq+r0RBcw2/
-         GV4ZRlOlRYCHi9e0R0izzW63HhWE61hFrr5+x6uQdoJTvOdrOG0hMfKOUXEBU+r+HhsM
-         qWnuy6CvvHVTY6+XzNbLDKzim6msNQY28YjMuN2agtYQMStV4wVt0yDX53BhsrceFCFp
-         uQy0mtX7BS82eJkuIkccg+FlWckvF6vzDWn2Mq4I304r56atNIRIOkItHg3fiWZxCXxz
-         83LQ==
+        bh=f/GN7W7f9SovjFzFVECNofdDukZEbZaO+TKQJDzGNNA=;
+        b=oSHM3byrNbn246p5yWWzRQID+IkpHKAm83ho8Qc3TJaiXQ9LiIXlsXuMf2wHiIUNKr
+         2pv+2q0hVwUKK0F+leKhx2ZVt/8XqAeAbYnXktn1cZJ+3OW6DkTSzSuGgQfHesa8UApC
+         ARJ1MgwfRan9/ODk69icwbK3NUmhE9skOg7E7aLiKyWOiw19ARL7PeSfwwz6f2fWMWVn
+         EvWsexS7PIWC4zgoDL4nonHv+90PiNzELQjsiTa7UL+biYCZ3hf0T4hshaP0IO0kc5F2
+         3UiIEC1IOOcmSzeFes7K7wW3Tb5iFMlqaoO/yaZJpxxSAFtM64Z/AZZWdE2FIfvGqxcd
+         5mjA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id a31si2422873qtb.176.2017.06.07.09.05.59
+        by mx.google.com with ESMTPS id c3si2383366qkb.54.2017.06.07.09.07.12
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 07 Jun 2017 09:06:00 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Wed, 07 Jun 2017 09:07:12 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:44942 helo=lists.gnu.org)
+Received: from localhost ([::1]:44949 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1dIdT3-0001o8-PP
-	for alex.bennee@linaro.org; Wed, 07 Jun 2017 12:05:57 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:50573)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1dIdUE-000354-2U
+	for alex.bennee@linaro.org; Wed, 07 Jun 2017 12:07:10 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:50702)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1dIdPP-0006KE-Du
-	for qemu-devel@nongnu.org; Wed, 07 Jun 2017 12:02:13 -0400
+	(envelope-from <eric.auger@redhat.com>) id 1dIdPb-0006VE-N2
+	for qemu-arm@nongnu.org; Wed, 07 Jun 2017 12:02:25 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1dIdPJ-000843-U6
-	for qemu-devel@nongnu.org; Wed, 07 Jun 2017 12:02:11 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:46914)
+	(envelope-from <eric.auger@redhat.com>) id 1dIdPZ-000882-OG
+	for qemu-arm@nongnu.org; Wed, 07 Jun 2017 12:02:23 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:52026)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <eric.auger@redhat.com>)
-	id 1dIdPE-00082H-7K; Wed, 07 Jun 2017 12:02:00 -0400
+	id 1dIdPZ-00087o-Fq; Wed, 07 Jun 2017 12:02:21 -0400
 Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
 	[10.5.11.11])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id F060283F3D;
-	Wed,  7 Jun 2017 16:01:58 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com F060283F3D
-Authentication-Results: ext-mx03.extmail.prod.ext.phx2.redhat.com;
+	by mx1.redhat.com (Postfix) with ESMTPS id 3CE7A33458E;
+	Wed,  7 Jun 2017 16:02:20 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 3CE7A33458E
+Authentication-Results: ext-mx05.extmail.prod.ext.phx2.redhat.com;
 	dmarc=none (p=none dis=none) header.from=redhat.com
-Authentication-Results: ext-mx03.extmail.prod.ext.phx2.redhat.com;
+Authentication-Results: ext-mx05.extmail.prod.ext.phx2.redhat.com;
 	spf=pass smtp.mailfrom=eric.auger@redhat.com
-DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com F060283F3D
+DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com 3CE7A33458E
 Received: from localhost.localdomain.com (ovpn-116-222.ams2.redhat.com
 	[10.36.116.222])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 41DEB189A9;
-	Wed,  7 Jun 2017 16:01:48 +0000 (UTC)
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 98EC55C46E;
+	Wed,  7 Jun 2017 16:02:08 +0000 (UTC)
 From: Eric Auger <eric.auger@redhat.com>
 To: eric.auger.pro@gmail.com, eric.auger@redhat.com, peter.maydell@linaro.org,
 	alex.williamson@redhat.com, mst@redhat.com, qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org, jean-philippe.brucker@arm.com
-Date: Wed,  7 Jun 2017 18:01:22 +0200
-Message-Id: <1496851287-9428-4-git-send-email-eric.auger@redhat.com>
+Date: Wed,  7 Jun 2017 18:01:25 +0200
+Message-Id: <1496851287-9428-7-git-send-email-eric.auger@redhat.com>
 In-Reply-To: <1496851287-9428-1-git-send-email-eric.auger@redhat.com>
 References: <1496851287-9428-1-git-send-email-eric.auger@redhat.com>
 X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.27]);
-	Wed, 07 Jun 2017 16:01:59 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.29]);
+	Wed, 07 Jun 2017 16:02:20 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 209.132.183.28
-Subject: [Qemu-devel] [RFC v2 3/8] virtio_iommu: add skeleton
-X-BeenThere: qemu-devel@nongnu.org
+Subject: [Qemu-arm] [RFC v2 6/8] virtio-iommu: Implement the translation and
+ commands
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: wei@redhat.com, kevin.tian@intel.com, bharat.bhushan@nxp.com,
-	marc.zyngier@arm.com, tn@semihalf.com, will.deacon@arm.com,
-	drjones@redhat.com, robin.murphy@arm.com, christoffer.dall@linaro.org
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: h2SAAWZyrfkI
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: kevin.tian@intel.com, bharat.bhushan@nxp.com, marc.zyngier@arm.com,
+	tn@semihalf.com, will.deacon@arm.com, drjones@redhat.com,
+	robin.murphy@arm.com, christoffer.dall@linaro.org
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: z5b9tUPVPfbr
 
-This patchs adds the skeleton for the virtio-iommu device.
+This patch adds the actual implementation for the translation routine
+and the virtio-iommu commands.
 
 Signed-off-by: Eric Auger <eric.auger@redhat.com>
----
- hw/virtio/Makefile.objs          |   1 +
- hw/virtio/virtio-iommu.c         | 247 +++++++++++++++++++++++++++++++++++++++
- include/hw/virtio/virtio-iommu.h |  60 ++++++++++
- 3 files changed, 308 insertions(+)
- create mode 100644 hw/virtio/virtio-iommu.c
- create mode 100644 include/hw/virtio/virtio-iommu.h
 
-diff --git a/hw/virtio/Makefile.objs b/hw/virtio/Makefile.objs
-index 765d363..8967a4a 100644
---- a/hw/virtio/Makefile.objs
-+++ b/hw/virtio/Makefile.objs
-@@ -6,6 +6,7 @@ common-obj-y += virtio-mmio.o
- 
- obj-y += virtio.o virtio-balloon.o 
- obj-$(CONFIG_LINUX) += vhost.o vhost-backend.o vhost-user.o
-+obj-$(CONFIG_LINUX) += virtio-iommu.o
- obj-$(CONFIG_VHOST_VSOCK) += vhost-vsock.o
- obj-y += virtio-crypto.o
- obj-$(CONFIG_VIRTIO_PCI) += virtio-crypto-pci.o
+---
+
+v1 -> v2:
+- fix compilation issue reported by autobuild system
+---
+ hw/virtio/trace-events   |   6 ++
+ hw/virtio/virtio-iommu.c | 202 +++++++++++++++++++++++++++++++++++++++++++++--
+ 2 files changed, 202 insertions(+), 6 deletions(-)
+
+diff --git a/hw/virtio/trace-events b/hw/virtio/trace-events
+index 341dbdf..9196b63 100644
+--- a/hw/virtio/trace-events
++++ b/hw/virtio/trace-events
+@@ -33,3 +33,9 @@ virtio_iommu_detach(uint32_t dev, uint32_t flags) "dev=%d flags=%d"
+ virtio_iommu_map(uint32_t as, uint64_t phys_addr, uint64_t virt_addr, uint64_t size, uint32_t flags) "as= %d phys_addr=0x%"PRIx64" virt_addr=0x%"PRIx64" size=0x%"PRIx64" flags=%d"
+ virtio_iommu_unmap(uint32_t as, uint64_t virt_addr, uint64_t size, uint32_t reserved) "as= %d virt_addr=0x%"PRIx64" size=0x%"PRIx64" reserved=%d"
+ virtio_iommu_translate(const char *name, uint32_t rid, uint64_t iova, int flag) "mr=%s rid=%d addr=0x%"PRIx64" flag=%d"
++virtio_iommu_new_asid(uint32_t asid) "Allocate a new asid=%d"
++virtio_iommu_new_devid(uint32_t devid) "Allocate a new devid=%d"
++virtio_iommu_unmap_left_interval(uint64_t low, uint64_t high, uint64_t next_low, uint64_t next_high) "Unmap left [0x%"PRIx64",0x%"PRIx64"], new interval=[0x%"PRIx64",0x%"PRIx64"]"
++virtio_iommu_unmap_right_interval(uint64_t low, uint64_t high, uint64_t next_low, uint64_t next_high) "Unmap right [0x%"PRIx64",0x%"PRIx64"], new interval=[0x%"PRIx64",0x%"PRIx64"]"
++virtio_iommu_unmap_inc_interval(uint64_t low, uint64_t high) "Unmap inc [0x%"PRIx64",0x%"PRIx64"]"
++virtio_iommu_translate_result(uint64_t virt_addr, uint64_t phys_addr, uint32_t sid) "0x%"PRIx64" -> 0x%"PRIx64 " for sid=%d"
 diff --git a/hw/virtio/virtio-iommu.c b/hw/virtio/virtio-iommu.c
-new file mode 100644
-index 0000000..86129ef
---- /dev/null
+index 902c779..cd188fc 100644
+--- a/hw/virtio/virtio-iommu.c
 +++ b/hw/virtio/virtio-iommu.c
-@@ -0,0 +1,247 @@
-+/*
-+ * virtio-iommu device
-+ *
-+ * Copyright (c) 2017 Red Hat, Inc.
-+ *
-+ * This program is free software; you can redistribute it and/or modify it
-+ * under the terms and conditions of the GNU General Public License,
-+ * version 2 or later, as published by the Free Software Foundation.
-+ *
-+ * This program is distributed in the hope it will be useful, but WITHOUT
-+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
-+ * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for
-+ * more details.
-+ *
-+ * You should have received a copy of the GNU General Public License along with
-+ * this program.  If not, see <http://www.gnu.org/licenses/>.
-+ *
-+ */
+@@ -32,10 +32,37 @@
+ #include "hw/virtio/virtio-bus.h"
+ #include "hw/virtio/virtio-access.h"
+ #include "hw/virtio/virtio-iommu.h"
++#include "hw/pci/pci_bus.h"
++#include "hw/pci/pci.h"
+ 
+ /* Max size */
+ #define VIOMMU_DEFAULT_QUEUE_SIZE 256
+ 
++typedef struct viommu_as viommu_as;
 +
-+#include "qemu/osdep.h"
-+#include "qemu/iov.h"
-+#include "qemu-common.h"
-+#include "hw/virtio/virtio.h"
-+#include "sysemu/kvm.h"
-+#include "qapi-event.h"
-+#include "trace.h"
++typedef struct viommu_mapping {
++    uint64_t virt_addr;
++    uint64_t phys_addr;
++    uint64_t size;
++    uint32_t flags;
++} viommu_mapping;
 +
-+#include "standard-headers/linux/virtio_ids.h"
-+#include <linux/virtio_iommu.h>
++typedef struct viommu_interval {
++    uint64_t low;
++    uint64_t high;
++} viommu_interval;
 +
-+#include "hw/virtio/virtio-bus.h"
-+#include "hw/virtio/virtio-access.h"
-+#include "hw/virtio/virtio-iommu.h"
++typedef struct viommu_dev {
++    uint32_t id;
++    viommu_as *as;
++} viommu_dev;
 +
-+/* Max size */
-+#define VIOMMU_DEFAULT_QUEUE_SIZE 256
++struct viommu_as {
++    uint32_t id;
++    uint32_t nr_devices;
++    GTree *mappings;
++};
 +
-+static int virtio_iommu_handle_attach(VirtIOIOMMU *s,
-+                                      struct iovec *iov,
-+                                      unsigned int iov_cnt)
+ static inline uint16_t smmu_get_sid(IOMMUDevice *dev)
+ {
+     return  ((pci_bus_num(dev->bus) & 0xff) << 8) | dev->devfn;
+@@ -88,6 +115,19 @@ static void virtio_iommu_init_as(VirtIOIOMMU *s)
+     }
+ }
+ 
++static gint interval_cmp(gconstpointer a, gconstpointer b, gpointer user_data)
 +{
-+    return -ENOENT;
-+}
-+static int virtio_iommu_handle_detach(VirtIOIOMMU *s,
-+                                      struct iovec *iov,
-+                                      unsigned int iov_cnt)
-+{
-+    return -ENOENT;
-+}
-+static int virtio_iommu_handle_map(VirtIOIOMMU *s,
-+                                   struct iovec *iov,
-+                                   unsigned int iov_cnt)
-+{
-+    return -ENOENT;
-+}
-+static int virtio_iommu_handle_unmap(VirtIOIOMMU *s,
-+                                     struct iovec *iov,
-+                                     unsigned int iov_cnt)
-+{
-+    return -ENOENT;
-+}
++    viommu_interval *inta = (viommu_interval *)a;
++    viommu_interval *intb = (viommu_interval *)b;
 +
-+static void virtio_iommu_handle_command(VirtIODevice *vdev, VirtQueue *vq)
-+{
-+    VirtIOIOMMU *s = VIRTIO_IOMMU(vdev);
-+    VirtQueueElement *elem;
-+    struct virtio_iommu_req_head head;
-+    struct virtio_iommu_req_tail tail;
-+    unsigned int iov_cnt;
-+    struct iovec *iov;
-+    size_t sz;
-+
-+    for (;;) {
-+        elem = virtqueue_pop(vq, sizeof(VirtQueueElement));
-+        if (!elem) {
-+            return;
-+        }
-+
-+        if (iov_size(elem->in_sg, elem->in_num) < sizeof(tail) ||
-+            iov_size(elem->out_sg, elem->out_num) < sizeof(head)) {
-+            virtio_error(vdev, "virtio-iommu erroneous head or tail");
-+            virtqueue_detach_element(vq, elem, 0);
-+            g_free(elem);
-+            break;
-+        }
-+
-+        iov_cnt = elem->out_num;
-+        iov = g_memdup(elem->out_sg, sizeof(struct iovec) * elem->out_num);
-+        sz = iov_to_buf(iov, iov_cnt, 0, &head, sizeof(head));
-+        if (sz != sizeof(head)) {
-+            tail.status = VIRTIO_IOMMU_S_UNSUPP;
-+        }
-+        qemu_mutex_lock(&s->mutex);
-+        switch (head.type) {
-+        case VIRTIO_IOMMU_T_ATTACH:
-+            tail.status = virtio_iommu_handle_attach(s, iov, iov_cnt);
-+            break;
-+        case VIRTIO_IOMMU_T_DETACH:
-+            tail.status = virtio_iommu_handle_detach(s, iov, iov_cnt);
-+            break;
-+        case VIRTIO_IOMMU_T_MAP:
-+            tail.status = virtio_iommu_handle_map(s, iov, iov_cnt);
-+            break;
-+        case VIRTIO_IOMMU_T_UNMAP:
-+            tail.status = virtio_iommu_handle_unmap(s, iov, iov_cnt);
-+            break;
-+        default:
-+            tail.status = VIRTIO_IOMMU_S_UNSUPP;
-+        }
-+        qemu_mutex_unlock(&s->mutex);
-+
-+        sz = iov_from_buf(elem->in_sg, elem->in_num, 0,
-+                          &tail, sizeof(tail));
-+        assert(sz == sizeof(tail));
-+
-+        virtqueue_push(vq, elem, sizeof(tail));
-+        virtio_notify(vdev, vq);
-+        g_free(elem);
++    if (inta->high <= intb->low) {
++        return -1;
++    } else if (intb->high <= inta->low) {
++        return 1;
++    } else {
++        return 0;
 +    }
 +}
+ 
+ static int virtio_iommu_attach(VirtIOIOMMU *s,
+                                struct virtio_iommu_req_attach *req)
+@@ -95,10 +135,34 @@ static int virtio_iommu_attach(VirtIOIOMMU *s,
+     uint32_t asid = le32_to_cpu(req->address_space);
+     uint32_t devid = le32_to_cpu(req->device);
+     uint32_t reserved = le32_to_cpu(req->reserved);
++    viommu_as *as;
++    viommu_dev *dev;
+ 
+     trace_virtio_iommu_attach(asid, devid, reserved);
+ 
+-    return VIRTIO_IOMMU_S_UNSUPP;
++    dev = g_tree_lookup(s->devices, GUINT_TO_POINTER(devid));
++    if (dev) {
++        return -1;
++    }
 +
-+static void virtio_iommu_get_config(VirtIODevice *vdev, uint8_t *config_data)
++    as = g_tree_lookup(s->address_spaces, GUINT_TO_POINTER(asid));
++    if (!as) {
++        as = g_malloc0(sizeof(*as));
++        as->id = asid;
++        as->mappings = g_tree_new_full((GCompareDataFunc)interval_cmp,
++                                         NULL, NULL, (GDestroyNotify)g_free);
++        g_tree_insert(s->address_spaces, GUINT_TO_POINTER(asid), as);
++        trace_virtio_iommu_new_asid(asid);
++    }
++
++    dev = g_malloc0(sizeof(*dev));
++    dev->as = as;
++    dev->id = devid;
++    as->nr_devices++;
++    trace_virtio_iommu_new_devid(devid);
++    g_tree_insert(s->devices, GUINT_TO_POINTER(devid), dev);
++
++    return VIRTIO_IOMMU_S_OK;
+ }
+ 
+ static int virtio_iommu_detach(VirtIOIOMMU *s,
+@@ -106,10 +170,13 @@ static int virtio_iommu_detach(VirtIOIOMMU *s,
+ {
+     uint32_t devid = le32_to_cpu(req->device);
+     uint32_t reserved = le32_to_cpu(req->reserved);
++    int ret;
+ 
+     trace_virtio_iommu_detach(devid, reserved);
+ 
+-    return VIRTIO_IOMMU_S_UNSUPP;
++    ret = g_tree_remove(s->devices, GUINT_TO_POINTER(devid));
++
++    return ret ? VIRTIO_IOMMU_S_OK : VIRTIO_IOMMU_S_INVAL;
+ }
+ 
+ static int virtio_iommu_map(VirtIOIOMMU *s,
+@@ -120,10 +187,37 @@ static int virtio_iommu_map(VirtIOIOMMU *s,
+     uint64_t virt_addr = le64_to_cpu(req->virt_addr);
+     uint64_t size = le64_to_cpu(req->size);
+     uint32_t flags = le32_to_cpu(req->flags);
++    viommu_as *as;
++    viommu_interval *interval;
++    viommu_mapping *mapping;
++
++    interval = g_malloc0(sizeof(*interval));
++
++    interval->low = virt_addr;
++    interval->high = virt_addr + size - 1;
++
++    as = g_tree_lookup(s->address_spaces, GUINT_TO_POINTER(asid));
++    if (!as) {
++        return VIRTIO_IOMMU_S_INVAL;
++    }
++
++    mapping = g_tree_lookup(as->mappings, (gpointer)interval);
++    if (mapping) {
++        g_free(interval);
++        return VIRTIO_IOMMU_S_INVAL;
++    }
+ 
+     trace_virtio_iommu_map(asid, phys_addr, virt_addr, size, flags);
+ 
+-    return VIRTIO_IOMMU_S_UNSUPP;
++    mapping = g_malloc0(sizeof(*mapping));
++    mapping->virt_addr = virt_addr;
++    mapping->phys_addr = phys_addr;
++    mapping->size = size;
++    mapping->flags = flags;
++
++    g_tree_insert(as->mappings, interval, mapping);
++
++    return VIRTIO_IOMMU_S_OK;
+ }
+ 
+ static int virtio_iommu_unmap(VirtIOIOMMU *s,
+@@ -133,10 +227,64 @@ static int virtio_iommu_unmap(VirtIOIOMMU *s,
+     uint64_t virt_addr = le64_to_cpu(req->virt_addr);
+     uint64_t size = le64_to_cpu(req->size);
+     uint32_t flags = le32_to_cpu(req->flags);
++    viommu_mapping *mapping;
++    viommu_interval interval;
++    viommu_as *as;
+ 
+     trace_virtio_iommu_unmap(asid, virt_addr, size, flags);
+ 
+-    return VIRTIO_IOMMU_S_UNSUPP;
++    as = g_tree_lookup(s->address_spaces, GUINT_TO_POINTER(asid));
++    if (!as) {
++        error_report("%s: no as", __func__);
++        return VIRTIO_IOMMU_S_INVAL;
++    }
++    interval.low = virt_addr;
++    interval.high = virt_addr + size - 1;
++
++    mapping = g_tree_lookup(as->mappings, (gpointer)&interval);
++
++    while (mapping) {
++        viommu_interval current;
++        uint64_t low  = mapping->virt_addr;
++        uint64_t high = mapping->virt_addr + mapping->size - 1;
++
++        current.low = low;
++        current.high = high;
++
++        if (low == interval.low && size >= mapping->size) {
++            g_tree_remove(as->mappings, (gpointer)&current);
++            interval.low = high + 1;
++            trace_virtio_iommu_unmap_left_interval(current.low, current.high,
++                interval.low, interval.high);
++        } else if (high == interval.high && size >= mapping->size) {
++            trace_virtio_iommu_unmap_right_interval(current.low, current.high,
++                interval.low, interval.high);
++            g_tree_remove(as->mappings, (gpointer)&current);
++            interval.high = low - 1;
++        } else if (low > interval.low && high < interval.high) {
++            trace_virtio_iommu_unmap_inc_interval(current.low, current.high);
++            g_tree_remove(as->mappings, (gpointer)&current);
++        } else {
++            break;
++        }
++        if (interval.low >= interval.high) {
++            return VIRTIO_IOMMU_S_OK;
++        } else {
++            mapping = g_tree_lookup(as->mappings, (gpointer)&interval);
++        }
++    }
++
++    if (mapping) {
++        error_report("****** %s: Unmap 0x%"PRIx64" size=0x%"PRIx64
++                     " from 0x%"PRIx64" size=0x%"PRIx64" is not supported",
++                     __func__, interval.low, size,
++                     mapping->virt_addr, mapping->size);
++    } else {
++        error_report("****** %s: no mapping for [0x%"PRIx64",0x%"PRIx64"]",
++                     __func__, interval.low, interval.high);
++    }
++
++    return VIRTIO_IOMMU_S_INVAL;
+ }
+ 
+ #define get_payload_size(req) (\
+@@ -266,19 +414,46 @@ static IOMMUTLBEntry virtio_iommu_translate(MemoryRegion *mr, hwaddr addr,
+                                             IOMMUAccessFlags flag)
+ {
+     IOMMUDevice *sdev = container_of(mr, IOMMUDevice, iommu_mr);
++    VirtIOIOMMU *s = sdev->viommu;
+     uint32_t sid;
++    viommu_dev *dev;
++    viommu_mapping *mapping;
++    viommu_interval interval;
++
++    interval.low = addr;
++    interval.high = addr + 1;
+ 
+     IOMMUTLBEntry entry = {
+         .target_as = &address_space_memory,
+         .iova = addr,
+         .translated_addr = addr,
+-        .addr_mask = ~(hwaddr)0,
+-        .perm = IOMMU_NONE,
++        .addr_mask = (1 << 12) - 1, /* TODO */
++        .perm = 3,
+     };
+ 
+     sid = smmu_get_sid(sdev);
+ 
+     trace_virtio_iommu_translate(mr->name, sid, addr, flag);
++    qemu_mutex_lock(&s->mutex);
++
++    dev = g_tree_lookup(s->devices, GUINT_TO_POINTER(sid));
++    if (!dev) {
++        /* device cannot be attached to another as */
++        printf("%s sid=%d is not known!!\n", __func__, sid);
++        goto unlock;
++    }
++
++    mapping = g_tree_lookup(dev->as->mappings, (gpointer)&interval);
++    if (!mapping) {
++        printf("%s no mapping for 0x%"PRIx64" for sid=%d\n", __func__,
++               addr, sid);
++        goto unlock;
++    }
++    entry.translated_addr = addr - mapping->virt_addr + mapping->phys_addr,
++    trace_virtio_iommu_translate_result(addr, entry.translated_addr, sid);
++
++unlock:
++    qemu_mutex_unlock(&s->mutex);
+     return entry;
+ }
+ 
+@@ -341,6 +516,12 @@ static inline guint as_uint64_hash(gconstpointer v)
+     return (guint)*(const uint64_t *)v;
+ }
+ 
++static gint int_cmp(gconstpointer a, gconstpointer b, gpointer user_data)
 +{
-+    VirtIOIOMMU *dev = VIRTIO_IOMMU(vdev);
-+
-+    memcpy(config_data, &dev->config, sizeof(struct virtio_iommu_config));
++    uint ua = GPOINTER_TO_UINT(a);
++    uint ub = GPOINTER_TO_UINT(b);
++    return (ua > ub) - (ua < ub);
 +}
+ 
+ static void virtio_iommu_device_realize(DeviceState *dev, Error **errp)
+ {
+@@ -362,12 +543,21 @@ static void virtio_iommu_device_realize(DeviceState *dev, Error **errp)
+                                             as_uint64_equal,
+                                             g_free, g_free);
+ 
++    s->address_spaces = g_tree_new_full((GCompareDataFunc)int_cmp,
++                                         NULL, NULL, (GDestroyNotify)g_free);
++    s->devices = g_tree_new_full((GCompareDataFunc)int_cmp,
++                                         NULL, NULL, (GDestroyNotify)g_free);
 +
-+static void virtio_iommu_set_config(VirtIODevice *vdev,
-+                                      const uint8_t *config_data)
-+{
-+    VirtIOIOMMU *dev = VIRTIO_IOMMU(vdev);
-+    struct virtio_iommu_config config;
-+
-+    memcpy(&config, config_data, sizeof(struct virtio_iommu_config));
-+
-+    dev->config.page_sizes = le64_to_cpu(config.page_sizes);
-+    dev->config.input_range.end = le64_to_cpu(config.input_range.end);
-+}
-+
-+static uint64_t virtio_iommu_get_features(VirtIODevice *vdev, uint64_t f,
-+                                            Error **errp)
-+{
-+    VirtIOIOMMU *dev = VIRTIO_IOMMU(vdev);
-+    f |= dev->host_features;
-+    virtio_add_feature(&f, VIRTIO_RING_F_EVENT_IDX);
-+    virtio_add_feature(&f, VIRTIO_RING_F_INDIRECT_DESC);
-+    virtio_add_feature(&f, VIRTIO_IOMMU_F_INPUT_RANGE);
-+    return f;
-+}
-+
-+static int virtio_iommu_post_load_device(void *opaque, int version_id)
-+{
-+    return 0;
-+}
-+
-+static const VMStateDescription vmstate_virtio_iommu_device = {
-+    .name = "virtio-iommu-device",
-+    .version_id = 1,
-+    .minimum_version_id = 1,
-+    .post_load = virtio_iommu_post_load_device,
-+    .fields = (VMStateField[]) {
-+        VMSTATE_END_OF_LIST()
-+    },
-+};
-+
-+static void virtio_iommu_device_realize(DeviceState *dev, Error **errp)
-+{
-+    VirtIODevice *vdev = VIRTIO_DEVICE(dev);
+     virtio_iommu_init_as(s);
+ }
+ 
+ static void virtio_iommu_device_unrealize(DeviceState *dev, Error **errp)
+ {
+     VirtIODevice *vdev = VIRTIO_DEVICE(dev);
 +    VirtIOIOMMU *s = VIRTIO_IOMMU(dev);
 +
-+    virtio_init(vdev, "virtio-iommu", VIRTIO_ID_IOMMU,
-+                sizeof(struct virtio_iommu_config));
-+
-+    s->vq = virtio_add_queue(vdev, VIOMMU_DEFAULT_QUEUE_SIZE,
-+                             virtio_iommu_handle_command);
-+
-+    s->config.page_sizes = ~((1ULL << 12) - 1);
-+    s->config.input_range.end = -1UL;
-+}
-+
-+static void virtio_iommu_device_unrealize(DeviceState *dev, Error **errp)
-+{
-+    VirtIODevice *vdev = VIRTIO_DEVICE(dev);
-+
-+    virtio_cleanup(vdev);
-+}
-+
-+static void virtio_iommu_device_reset(VirtIODevice *vdev)
-+{
-+}
-+
-+static void virtio_iommu_set_status(VirtIODevice *vdev, uint8_t status)
-+{
-+}
-+
-+static void virtio_iommu_instance_init(Object *obj)
-+{
-+}
-+
-+static const VMStateDescription vmstate_virtio_iommu = {
-+    .name = "virtio-iommu",
-+    .minimum_version_id = 1,
-+    .version_id = 1,
-+    .fields = (VMStateField[]) {
-+        VMSTATE_VIRTIO_DEVICE,
-+        VMSTATE_END_OF_LIST()
-+    },
-+};
-+
-+static Property virtio_iommu_properties[] = {
-+    DEFINE_PROP_END_OF_LIST(),
-+};
-+
-+static void virtio_iommu_class_init(ObjectClass *klass, void *data)
-+{
-+    DeviceClass *dc = DEVICE_CLASS(klass);
-+    VirtioDeviceClass *vdc = VIRTIO_DEVICE_CLASS(klass);
-+
-+    dc->props = virtio_iommu_properties;
-+    dc->vmsd = &vmstate_virtio_iommu;
-+
-+    set_bit(DEVICE_CATEGORY_MISC, dc->categories);
-+    vdc->realize = virtio_iommu_device_realize;
-+    vdc->unrealize = virtio_iommu_device_unrealize;
-+    vdc->reset = virtio_iommu_device_reset;
-+    vdc->get_config = virtio_iommu_get_config;
-+    vdc->set_config = virtio_iommu_set_config;
-+    vdc->get_features = virtio_iommu_get_features;
-+    vdc->set_status = virtio_iommu_set_status;
-+    vdc->vmsd = &vmstate_virtio_iommu_device;
-+}
-+
-+static const TypeInfo virtio_iommu_info = {
-+    .name = TYPE_VIRTIO_IOMMU,
-+    .parent = TYPE_VIRTIO_DEVICE,
-+    .instance_size = sizeof(VirtIOIOMMU),
-+    .instance_init = virtio_iommu_instance_init,
-+    .class_init = virtio_iommu_class_init,
-+};
-+
-+static void virtio_register_types(void)
-+{
-+    type_register_static(&virtio_iommu_info);
-+}
-+
-+type_init(virtio_register_types)
-diff --git a/include/hw/virtio/virtio-iommu.h b/include/hw/virtio/virtio-iommu.h
-new file mode 100644
-index 0000000..2259413
---- /dev/null
-+++ b/include/hw/virtio/virtio-iommu.h
-@@ -0,0 +1,60 @@
-+/*
-+ * virtio-iommu device
-+ *
-+ * Copyright (c) 2017 Red Hat, Inc.
-+ *
-+ * This program is free software; you can redistribute it and/or modify it
-+ * under the terms and conditions of the GNU General Public License,
-+ * version 2 or later, as published by the Free Software Foundation.
-+ *
-+ * This program is distributed in the hope it will be useful, but WITHOUT
-+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
-+ * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for
-+ * more details.
-+ *
-+ * You should have received a copy of the GNU General Public License along with
-+ * this program.  If not, see <http://www.gnu.org/licenses/>.
-+ *
-+ */
-+
-+#ifndef QEMU_VIRTIO_IOMMU_H
-+#define QEMU_VIRTIO_IOMMU_H
-+
-+#include "standard-headers/linux/virtio_iommu.h"
-+#include "hw/virtio/virtio.h"
-+#include "hw/pci/pci.h"
-+
-+#define TYPE_VIRTIO_IOMMU "virtio-iommu-device"
-+#define VIRTIO_IOMMU(obj) \
-+        OBJECT_CHECK(VirtIOIOMMU, (obj), TYPE_VIRTIO_IOMMU)
-+
-+#define IOMMU_PCI_BUS_MAX      256
-+#define IOMMU_PCI_DEVFN_MAX    256
-+
-+typedef struct IOMMUDevice {
-+    void         *viommu;
-+    PCIBus       *bus;
-+    int           devfn;
-+    MemoryRegion  iommu_mr;
-+    AddressSpace  as;
-+} IOMMUDevice;
-+
-+typedef struct IOMMUPciBus {
-+    PCIBus       *bus;
-+    IOMMUDevice  *pbdev[0]; /* Parent array is sparse, so dynamically alloc */
-+} IOMMUPciBus;
-+
-+typedef struct VirtIOIOMMU {
-+    VirtIODevice parent_obj;
-+    VirtQueue *vq;
-+    struct virtio_iommu_config config;
-+    MemoryRegionIOMMUOps iommu_ops;
-+    uint32_t host_features;
-+    GHashTable *as_by_busptr;
-+    IOMMUPciBus *as_by_bus_num[IOMMU_PCI_BUS_MAX];
-+    GTree *address_spaces;
-+    QemuMutex mutex;
-+    GTree *devices;
-+} VirtIOIOMMU;
-+
-+#endif
++    g_tree_destroy(s->address_spaces);
++    g_tree_destroy(s->devices);
+ 
+     virtio_cleanup(vdev);
+ }
 -- 
 2.5.5
 

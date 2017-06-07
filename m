@@ -1,63 +1,84 @@
-Return-Path: <alex.bennee@linaro.org>
-Received: from zen.linaro.local ([81.128.185.34])
-        by smtp.gmail.com with ESMTPSA id u141sm2698008wmd.28.2017.06.02.09.11.42
+Received: by 10.25.0.23 with SMTP id 23csp2145192lfa;
+        Wed, 7 Jun 2017 08:29:31 -0700 (PDT)
+X-Received: by 10.223.130.86 with SMTP id 80mr24797924wrb.111.1496849371713;
+        Wed, 07 Jun 2017 08:29:31 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1496849371; cv=none;
+        d=google.com; s=arc-20160816;
+        b=JicMSCD06PFFnvMSQa6Vip/n/obMEam3iF8w9rD69F/CFWIZll2S3cGe78LWkqSP5Q
+         MIBMHHLLi+RB1e9oiIXDARb3hoKS39BlJ+XH+nE1HshxuivcdjbwKEJtAkBHijTISq59
+         ZNUxC+a11fJ6Xi2zGZz4q+8dMbl1asjhMMVOcv0I7DbuXGgJpS4Z3heXL6i/r6cgXFAi
+         eiSlQDzuES2ZPGE8sNGW79SUtSQDBlrMekfUJFJBkmdbgsjUKkFEsitXoH4uPFdfKzdx
+         u5svoWw8ZWs6WdTihvJ2rFasj+PrcQQv63nFN487OddcIqYGWgPtVK5Kix5DlVyytGGk
+         mW4g==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:arc-authentication-results;
+        bh=L+CuRvHOG59xA/b+dmIFW2QokFj58phcC4v9TgKUFbA=;
+        b=uBdFuQDxCltI8RgkO7mgyjaiockUW0SwciqDqCY2l8K1JQdTr9fVtgvYMBCP0hUOH7
+         VkTK1h0paFAAgua61LYZKgg/XMdc0lkwBmeGzeIcnSZrFgVrFCIC4EdVuh9N1hK0g1Fw
+         mXtbhvwZh34/7JNE9g0Ujnk0n7jqHHAK124tiplYMWDJDty9tdqs+DgCdut77U/ZmpIE
+         sb6H9j9t/pgq4ijHMDYwZaQv+qeF3IIx8/uO4ShnGA4st6qYiMerGqymR/9WfwgT+QYE
+         26FyOmOUgEFzOMqMuapCSq63hpNKLRsbpthEQhT33kJi1MmiYFl7O/EEDyavRrZfgxwb
+         I+2w==
+ARC-Authentication-Results: i=1; mx.google.com;
+       spf=pass (google.com: best guess record for domain of pm215@archaic.org.uk designates 2001:8b0:1d0::2 as permitted sender) smtp.mailfrom=pm215@archaic.org.uk;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <pm215@archaic.org.uk>
+Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
+        by mx.google.com with ESMTPS id c22si2268783wre.34.2017.06.07.08.29.31
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 02 Jun 2017 09:11:42 -0700 (PDT)
-Received: from zen (localhost [127.0.0.1])
-	by zen.linaro.local (Postfix) with ESMTPS id 50B0D3E00B4;
-	Fri,  2 Jun 2017 17:12:02 +0100 (BST)
-References: <1493314727-6951-1-git-send-email-wei@redhat.com> <CAFEAcA-KKvhspYza=8TNNuFtqzco=ChhtS6Aa5hnn8=Cb036-Q@mail.gmail.com> <4dbaaea9-7576-9acf-5327-b22db6f00ed2@redhat.com> <CAFEAcA8K9DENSPqJD2Okqjqyi7T8RhSBmhCa3ztooJK5xdcZVg@mail.gmail.com> <8b782ee5-3545-3cb5-3b09-209fcffee7e4@redhat.com> <CAFEAcA8GY3yqZCVHihcFaFS-EkmEy+FRJ9+Kq_xRRdzD7+6DnQ@mail.gmail.com> <87k24us83w.fsf@linaro.org> <CAFEAcA8OgWtafU+9Jy02VLdfWhdA=LymQrHsR-1SKxGZQFPW0w@mail.gmail.com>
-User-agent: mu4e 0.9.19; emacs 25.2.50.2
-From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: Wei Huang <wei@redhat.com>, qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-devel] [PATCH 0/2] Fix compilation dependency issues of CONFIG_ARM_V7M
-In-reply-to: <CAFEAcA8OgWtafU+9Jy02VLdfWhdA=LymQrHsR-1SKxGZQFPW0w@mail.gmail.com>
-Date: Fri, 02 Jun 2017 17:12:02 +0100
-Message-ID: <87inkes71p.fsf@linaro.org>
+        Wed, 07 Jun 2017 08:29:31 -0700 (PDT)
+Received-SPF: pass (google.com: best guess record for domain of pm215@archaic.org.uk designates 2001:8b0:1d0::2 as permitted sender) client-ip=2001:8b0:1d0::2;
+Authentication-Results: mx.google.com;
+       spf=pass (google.com: best guess record for domain of pm215@archaic.org.uk designates 2001:8b0:1d0::2 as permitted sender) smtp.mailfrom=pm215@archaic.org.uk;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from pm215 by orth.archaic.org.uk with local (Exim 4.84_2)
+	(envelope-from <pm215@archaic.org.uk>)
+	id 1dIctm-0004hr-Bd; Wed, 07 Jun 2017 16:29:30 +0100
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Cc: patches@linaro.org,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+Subject: [PATCH] arm_gicv3: Fix ICC_BPR1 reset value when EL3 not implemented
+Date: Wed,  7 Jun 2017 16:29:29 +0100
+Message-Id: <1496849369-30282-1-git-send-email-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.7.4
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: dqrxSaBL4ct6
+X-TUID: /g3buxjE5nIC
 
+If EL3 is not implemented (ie only one security state) then the
+one and only ICC_BPR1 register behaves like the Non-secure
+ICC_BPR1 in an EL3-present configuration. In particular, its
+reset value is GIC_MIN_BPR_NS, not GIC_MIN_BPR.
 
-Peter Maydell <peter.maydell@linaro.org> writes:
+Correct the erroneous reset value; this fixes a problem where
+we might hit the assert added in commit a89ff39ee901.
 
-> On 2 June 2017 at 16:49, Alex Bennée <alex.bennee@linaro.org> wrote:
->> Peter Maydell <peter.maydell@linaro.org> writes:
->>> We seem to run into "CONFIG_FOO is defined for make but not
->>> for the C preprocessor" from time to time, so maybe we should
->>> fix that?
->>
->> Hmm is should be auto-generated from config-(host|target).mak but I've
->> never quite figured out why we need timestamps rather than a straight
->> dependency check in rules.mk:
->>
->>   # Generate timestamp files for .h include files
->>
->>   config-%.h: config-%.h-timestamp
->>           @cmp $< $@ >/dev/null 2>&1 || cp $< $@
->>
->>   config-%.h-timestamp: config-%.mak $(SRC_PATH)/scripts/create_config
->>           $(call quiet-command, sh $(SRC_PATH)/scripts/create_config < $< > $@,"GEN","$(TARGET_DIR)config-$*.h")
->>
->> This seems to be one of those things that goes away on a make clean && rebuild
->
-> Not the issue in this case -- what happens is that these CONFIG_*
-> defines are defined in config-devices.mak, but we don't have any
-> equivalent config-devices.h which would expose them to the C code.
+Reported-by: Alex Bennée <alex.bennee@linaro.org>
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+ hw/intc/arm_gicv3_cpuif.c | 6 +-----
+ 1 file changed, 1 insertion(+), 5 deletions(-)
 
-Ahh I see. So I guess once the relevant dependencies are added alongside:
-
-  %/config-devices.mak: default-configs/%.mak $(SRC_PATH)/scripts/make_device_config.sh
-
-The default rules should pick it up and generate the right things.
-
-> (I assume the rules.mak stuff is attempting to avoid having a
-> not-an-actual-change to the .h file result in rebuilding the whole
-> world.)
-
-OK that makes sense.
-
---
-Alex Bennée
+diff --git a/hw/intc/arm_gicv3_cpuif.c b/hw/intc/arm_gicv3_cpuif.c
+index 09d8ba0..5cbafaf 100644
+--- a/hw/intc/arm_gicv3_cpuif.c
++++ b/hw/intc/arm_gicv3_cpuif.c
+@@ -2039,11 +2039,7 @@ static void icc_reset(CPUARMState *env, const ARMCPRegInfo *ri)
+     cs->icc_pmr_el1 = 0;
+     cs->icc_bpr[GICV3_G0] = GIC_MIN_BPR;
+     cs->icc_bpr[GICV3_G1] = GIC_MIN_BPR;
+-    if (arm_feature(env, ARM_FEATURE_EL3)) {
+-        cs->icc_bpr[GICV3_G1NS] = GIC_MIN_BPR_NS;
+-    } else {
+-        cs->icc_bpr[GICV3_G1NS] = GIC_MIN_BPR;
+-    }
++    cs->icc_bpr[GICV3_G1NS] = GIC_MIN_BPR_NS;
+     memset(cs->icc_apr, 0, sizeof(cs->icc_apr));
+     memset(cs->icc_igrpen, 0, sizeof(cs->icc_igrpen));
+     cs->icc_ctlr_el3 = ICC_CTLR_EL3_NDS | ICC_CTLR_EL3_A3V |
+-- 
+2.7.4

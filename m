@@ -1,96 +1,87 @@
-Received: by 10.25.0.23 with SMTP id 23csp2591365lfa;
-        Thu, 8 Jun 2017 06:52:59 -0700 (PDT)
-X-Received: by 10.237.35.34 with SMTP id h31mr43104010qtc.148.1496929979806;
-        Thu, 08 Jun 2017 06:52:59 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1496929979; cv=none;
+Received: by 10.25.0.23 with SMTP id 23csp2706108lfa;
+        Thu, 8 Jun 2017 11:20:01 -0700 (PDT)
+X-Received: by 10.200.58.163 with SMTP id x32mr18383704qte.110.1496946001202;
+        Thu, 08 Jun 2017 11:20:01 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1496946001; cv=none;
         d=google.com; s=arc-20160816;
-        b=PTQa7bHups6ZxDz37e5mgFfWQCL56LXvKFLQ7iR5zZrsEVUbUzyVrqxxnDUQWNr5Ye
-         MdYfmut7U59+CPvj+z89M7RQhwZFVsk4FZaJHBJMO+HSti6rER63k6rAjs0uzV82lUiz
-         CvcL7TvTOEm4MGEEjgnfuu8hTxRh+ZEIdwOL0oJpZmxb/qLB34HEZDQilH8u+nPsghkt
-         0Lo8vsqY5PNFPQ3muw/xggFxw6zHTL3qtjQQZkoOR2elzMlLkCvF0Hb7IZ4+qNtrGqeO
-         akEwxAZAaNxjVCWJii8jmOSe4Oe5/hUnX6VYHY6yxGupsCahbqi9vuo5sdLYEn3p4H8T
-         R1hw==
+        b=bgpLYRkqBFU6Y0t51GRG0U1JlZE1JSl4UVNIr2w0nKviFFdb4NgCMrLxwDPwrHH0xc
+         jjG6wviuUZmer9dLWMkALaqeepc6ldquhz0xNaWwAmrIfE9IH9h4oWJR5DFODeumYxnH
+         XbLwlqo63kbbaeI53AHp3kMzYHr+kId9VrSzmLqFkXnd3W7ZRfBHT16WMj2KIB3ruoyP
+         TG1MvxoE3q/SN5V0xpTeBXWhsJAYO6KmFlM6stMgVzcAl09uHlDTjPyijgZh0HlHjMA2
+         bDADiilQqqV868tnSMTfe795K/wWLMXcy7up7D1iVMUoM96NsqTtkmlhPwZYfOTxLDQP
+         WZsw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:dkim-filter:dmarc-filter
-         :arc-authentication-results;
-        bh=RD8JF72NYzAEbnM1ZGm/fXRXjK3PwcLPL1LmMulpCa0=;
-        b=DRku98CR++Fpl2D/encBUfRb5fe13gxdYlj/9FOheBiryZQpHcZBwZQhQPVqx+IlSi
-         l0/QnMHQr6ONC8yQ95eX/LPn8F6uSIMk6B1lZ8jdQIGk5KGg+77h7jXYoLsGjbYdV41s
-         l6jSEQdywjmEUXIA7ucx6Dwx63jWwiIlwLjUqMJ/2TnGV4iBgP+omPQYIUVo0wMFhA24
-         GCKxk1CQwytVjvoYGCc2MmLVQiRfjHB2UgjBFAo7FytyS8I6ZRYredfaFccwAiMd74nR
-         1GXmtUbkl0FjXAIfHrMrnbY3eI+B6lF0QrL5JTu6Ql/Wp+1o3oootcbuJ1VUWX/ANluR
-         JyQg==
+         :content-transfer-encoding:content-language:mime-version:user-agent
+         :date:message-id:from:to:dkim-signature:arc-authentication-results;
+        bh=j3acF3XWa2v8gQJquwqD+QSdENyQ7xn+ICKNfkapLQk=;
+        b=VpJ+EZhSw/izw2v9SqhBFxzAsKMwAOvMu09/e3NRuuaPkI0ZX5+fI8PfoaDXNa4aLE
+         rWC02KnwAs/DxlkyGQGHOjRqGlxRafs4Nh/ef8fyZccl+lOePt2cvEGRKrQ0q+4x1ejj
+         gRHmKpXURsvc+b4Q/tg6FCbQRn/UrubsAaNOa3DajmLcWCztvtUCrPog1MnoBf6SdlTw
+         6MgB4qTwAYbi+mDffNy/wjOJxKVpcfvm20qvUUd4um4cqxC/Fs1bA/APyFjhInuqr8gk
+         ZCoByT9NymqSbsd0Wgwh5qxmoTkNcbzFMt9+ww399dFcHlPona/g/vuOJkn1JL3eXx4d
+         O7tA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dkim=fail header.i=@smartechhomes.com;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id s12si2611796qkl.270.2017.06.08.06.52.59
+        by mx.google.com with ESMTPS id s55si4136302qth.127.2017.06.08.11.20.00
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 08 Jun 2017 06:52:59 -0700 (PDT)
+        Thu, 08 Jun 2017 11:20:01 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:49751 helo=lists.gnu.org)
+       dkim=fail header.i=@smartechhomes.com;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:50943 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1dIxrt-0005xB-4p
-	for alex.bennee@linaro.org; Thu, 08 Jun 2017 09:52:57 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:51494)
+	id 1dJ22I-00031r-Ht
+	for alex.bennee@linaro.org; Thu, 08 Jun 2017 14:19:58 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:38631)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1dIxrj-0005t5-Ao
-	for qemu-arm@nongnu.org; Thu, 08 Jun 2017 09:52:53 -0400
+	(envelope-from <jerry@smartechhomes.com>) id 1dJ21M-0002Z2-Ba
+	for qemu-arm@nongnu.org; Thu, 08 Jun 2017 14:19:01 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1dIxrg-0003e0-7j
-	for qemu-arm@nongnu.org; Thu, 08 Jun 2017 09:52:47 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:48202)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <eric.auger@redhat.com>)
-	id 1dIxrf-0003d6-V6; Thu, 08 Jun 2017 09:52:44 -0400
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
-	[10.5.11.15])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id E3EFC7F746;
-	Thu,  8 Jun 2017 13:52:40 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com E3EFC7F746
-Authentication-Results: ext-mx03.extmail.prod.ext.phx2.redhat.com;
-	dmarc=none (p=none dis=none) header.from=redhat.com
-Authentication-Results: ext-mx03.extmail.prod.ext.phx2.redhat.com;
-	spf=pass smtp.mailfrom=eric.auger@redhat.com
-DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com E3EFC7F746
-Received: from localhost.localdomain (ovpn-116-222.ams2.redhat.com
-	[10.36.116.222])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 2B3028B2A6;
-	Thu,  8 Jun 2017 13:52:36 +0000 (UTC)
-To: Shannon Zhao <zhaoshenglong@huawei.com>, eric.auger.pro@gmail.com,
-	peter.maydell@linaro.org, qemu-arm@nongnu.org, qemu-devel@nongnu.org
-References: <1492173995-14140-1-git-send-email-eric.auger@redhat.com>
-	<1492173995-14140-5-git-send-email-eric.auger@redhat.com>
-	<591EC943.2020603@huawei.com>
-From: Auger Eric <eric.auger@redhat.com>
-Message-ID: <86440520-d2ab-200e-a9ae-629731db1577@redhat.com>
-Date: Thu, 8 Jun 2017 15:52:35 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
-	Thunderbird/45.4.0
+	(envelope-from <jerry@smartechhomes.com>) id 1dJ21J-0001RV-HN
+	for qemu-arm@nongnu.org; Thu, 08 Jun 2017 14:19:00 -0400
+Received: from smartechhomes.com ([66.246.75.169]:34204)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <jerry@smartechhomes.com>)
+	id 1dJ21J-0001O3-DW
+	for qemu-arm@nongnu.org; Thu, 08 Jun 2017 14:18:57 -0400
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=smartechhomes.com; s=20161214; 
+	h=Subject:Content-Transfer-Encoding:Content-Type:MIME-Version:Date:Message-ID:From:To;
+	bh=j3acF3XWa2v8gQJquwqD+QSdENyQ7xn+ICKNfkapLQk=; 
+	b=Ke0XxTXAidQsES/KIP6Xx9G7p9DNv4mtPmBmY7apHNRKpFDvrPMy2O5IrY374TBXun4FaSGcmzZlztCpYW8/nbRmtLkZCbMkyyjsewh9uKeY5usru/WrUrgPpnDzUTA9HAxJmmLab26vsoytAJhBw6q9NhWrRWPT4feT/1Zjc8w=;
+Received: from pool-173-73-25-174.washdc.fios.verizon.net ([173.73.25.174]
+	helo=[206.223.85.24])
+	by smartechhomes.com with esmtpa (Exim 4.80 #2 (Debian))
+	id 1dJ214-0001KP-B6
+	for <qemu-arm@nongnu.org>; Thu, 08 Jun 2017 14:18:47 -0400
+To: qemu-arm@nongnu.org
+From: Jerry Stuckle <jerry@smartechhomes.com>
+Message-ID: <2993d0a4-d0fd-7414-4a5d-8bb0c377565e@smartechhomes.com>
+Date: Thu, 8 Jun 2017 14:19:00 -0400
+User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64; rv:52.0) Gecko/20100101
+	Thunderbird/52.1.1
 MIME-Version: 1.0
-In-Reply-To: <591EC943.2020603@huawei.com>
-Content-Type: text/plain; charset=windows-1252
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.27]);
-	Thu, 08 Jun 2017 13:52:41 +0000 (UTC)
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+X-ACL-Warn: Your server announces itself ([206.223.85.24]) with a bare IP
+	address which is in breach of RFC2821
+X-SA-Exim-Connect-IP: 173.73.25.174
+X-SA-Exim-Mail-From: jerry@smartechhomes.com
+X-SA-Exim-Version: 4.2.1 (built Mon, 26 Dec 2011 16:57:07 +0000)
+X-SA-Exim-Scanned: Yes (on smartechhomes.com)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [Qemu-devel] [RFC v5 4/4] hw/intc/arm_gicv3_its:
- Allow save/restore
+X-Received-From: 66.246.75.169
+Subject: [Qemu-arm] Llist misconfiguration
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -102,126 +93,32 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: drjones@redhat.com, vijay.kilari@gmail.com, quintela@redhat.com,
-	dgilbert@redhat.com, Vijaya.Kumar@cavium.com, christoffer.dall@linaro.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: mi/SCu5hwc6n
+X-TUID: x8EOGb2pczBZ
 
-Hi Shannon,
-On 19/05/2017 12:30, Shannon Zhao wrote:
-> 
-> 
-> On 2017/4/14 20:46, Eric Auger wrote:
->> We change the restoration priority of both the GICv3 and ITS. The
->> GICv3 must be restored before the ITS and the ITS needs to be restored
->> before PCIe devices since it translates their MSI transactions.
->>
->> Signed-off-by: Eric Auger <eric.auger@redhat.com>
->> Reviewed-by: Juan Quintela <quintela@redhat.com>
->>
->> ---
->> v2 -> v3:
->> - reword migration blocker message
->> - remove unmigratable setting to false
->>
->> v1 -> v2:
->> - handle case where migrate_add_blocker fails
->> - add comments along with ITS and GICv3 migration priorities
->> ---
->>  hw/intc/arm_gicv3_common.c     |  1 +
->>  hw/intc/arm_gicv3_its_common.c |  2 +-
->>  hw/intc/arm_gicv3_its_kvm.c    | 24 ++++++++++++------------
->>  include/migration/vmstate.h    |  2 ++
->>  4 files changed, 16 insertions(+), 13 deletions(-)
->>
->> diff --git a/hw/intc/arm_gicv3_common.c b/hw/intc/arm_gicv3_common.c
->> index c6493d6..4228b7c 100644
->> --- a/hw/intc/arm_gicv3_common.c
->> +++ b/hw/intc/arm_gicv3_common.c
->> @@ -145,6 +145,7 @@ static const VMStateDescription vmstate_gicv3 = {
->>      .minimum_version_id = 1,
->>      .pre_save = gicv3_pre_save,
->>      .post_load = gicv3_post_load,
->> +    .priority = MIG_PRI_GICV3,
->>      .fields = (VMStateField[]) {
->>          VMSTATE_UINT32(gicd_ctlr, GICv3State),
->>          VMSTATE_UINT32_ARRAY(gicd_statusr, GICv3State, 2),
->> diff --git a/hw/intc/arm_gicv3_its_common.c b/hw/intc/arm_gicv3_its_common.c
->> index efab8c7..22ce4c4 100644
->> --- a/hw/intc/arm_gicv3_its_common.c
->> +++ b/hw/intc/arm_gicv3_its_common.c
->> @@ -48,7 +48,7 @@ static const VMStateDescription vmstate_its = {
->>      .name = "arm_gicv3_its",
->>      .pre_save = gicv3_its_pre_save,
->>      .post_load = gicv3_its_post_load,
->> -    .unmigratable = true,
->> +    .priority = MIG_PRI_GICV3_ITS,
->>      .fields = (VMStateField[]) {
->>          VMSTATE_UINT32(ctlr, GICv3ITSState),
->>          VMSTATE_UINT32(iidr, GICv3ITSState),
->> diff --git a/hw/intc/arm_gicv3_its_kvm.c b/hw/intc/arm_gicv3_its_kvm.c
->> index 7c5502c..8401d2f 100644
->> --- a/hw/intc/arm_gicv3_its_kvm.c
->> +++ b/hw/intc/arm_gicv3_its_kvm.c
->> @@ -77,18 +77,6 @@ static void kvm_arm_its_realize(DeviceState *dev, Error **errp)
->>      GICv3ITSState *s = ARM_GICV3_ITS_COMMON(dev);
->>      Error *local_err = NULL;
->>  
->> -    /*
->> -     * Block migration of a KVM GICv3 ITS device: the API for saving and
->> -     * restoring the state in the kernel is not yet available
->> -     */
->> -    error_setg(&s->migration_blocker, "vITS migration is not implemented");
->> -    migrate_add_blocker(s->migration_blocker, &local_err);
->> -    if (local_err) {
->> -        error_propagate(errp, local_err);
->> -        error_free(s->migration_blocker);
->> -        return;
->> -    }
->> -
->>      s->dev_fd = kvm_create_device(kvm_state, KVM_DEV_TYPE_ARM_VGIC_ITS, false);
->>      if (s->dev_fd < 0) {
->>          error_setg_errno(errp, -s->dev_fd, "error creating in-kernel ITS");
->> @@ -105,6 +93,18 @@ static void kvm_arm_its_realize(DeviceState *dev, Error **errp)
->>  
->>      gicv3_its_init_mmio(s, NULL);
->>  
->> +    if (!kvm_device_check_attr(s->dev_fd, KVM_DEV_ARM_VGIC_GRP_ITS_REGS,
->> +        GITS_CTLR)) {
->> +        error_setg(&s->migration_blocker, "This operating system kernel "
->> +                   "does not support vGICv3 migration");
-> s/vGICv3/vITS
-Done
+All,
 
-Thanks for reporting this!
+OK, I finally figured out why my server was bouncing some messages from
+this list (which lead to my having to renew my membership).
 
-Eric
->> +        migrate_add_blocker(s->migration_blocker, &local_err);
->> +        if (local_err) {
->> +            error_propagate(errp, local_err);
->> +            error_free(s->migration_blocker);
->> +            return;
->> +        }
->> +    }
->> +
->>      kvm_msi_use_devid = true;
->>      kvm_gsi_direct_mapping = false;
->>      kvm_msi_via_irqfd_allowed = kvm_irqfds_enabled();
->> diff --git a/include/migration/vmstate.h b/include/migration/vmstate.h
->> index f2dbf84..8dab9c7 100644
->> --- a/include/migration/vmstate.h
->> +++ b/include/migration/vmstate.h
->> @@ -198,6 +198,8 @@ enum VMStateFlags {
->>  typedef enum {
->>      MIG_PRI_DEFAULT = 0,
->>      MIG_PRI_IOMMU,              /* Must happen before PCI devices */
->> +    MIG_PRI_GICV3_ITS,          /* Must happen before PCI devices */
->> +    MIG_PRI_GICV3,              /* Must happen before the ITS */
->>      MIG_PRI_MAX,
->>  } MigrationPriority;
->>  
->>
-> 
-> Thanks,
-> 
+The bottom line is - the list is misconfigured, as alluded to in RFC6376.
+
+The problem lies when the originator of the message is from a domain
+which has implemented DKIM on their server.  On sending, the originating
+MTA creates a hash from the message and stores it in the header.
+
+When the mail list sends the message on, it keeps the from: as the
+originator.  However, it either does not send the hash or the hash has
+changed due to the message changing.  I can't tell which because our
+email servers reject invalid DKIM signatures.
+
+What other mailing lists have done (and the correct way) is to change
+the from: header to come from the list, and have the originator in a
+ReplyTo: field.
+
+Maybe it doesn't seem like a problem now, but I'm seeing more and more
+companies implementing DKIM and more and more of those are rejecting
+invalid DKIM signatures.
+
+Jerry

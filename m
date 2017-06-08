@@ -1,85 +1,98 @@
-Received: by 10.25.0.23 with SMTP id 23csp2586841lfa;
-        Thu, 8 Jun 2017 06:41:10 -0700 (PDT)
-X-Received: by 10.200.56.83 with SMTP id r19mr42389200qtb.174.1496929270768;
-        Thu, 08 Jun 2017 06:41:10 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1496929270; cv=none;
+Received: by 10.25.0.23 with SMTP id 23csp2661532lfa;
+        Thu, 8 Jun 2017 09:29:50 -0700 (PDT)
+X-Received: by 10.55.127.199 with SMTP id a190mr47780480qkd.100.1496939390478;
+        Thu, 08 Jun 2017 09:29:50 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1496939390; cv=none;
         d=google.com; s=arc-20160816;
-        b=nfekUE9qi2WyBcBDZraJCq5lXgW1JyK+uVstmJ89ef+2svXo/B9o9B7c4OQ7keOzoN
-         K2T0hrNm4X7nYltcyoM7oO4lL46t39HvuOj/XAUSFbSriSf4IfPfKUo/AWkLYhStXKn8
-         eZ5Vg0NHGRCwWmqGqR15ghx7UzTSRcM2CyhGsf/cPMWY1dROyF56nAxVPed0x9J2V0Ds
-         NlhqESROrqymd3blNTuAbqGJQ9DTQzi2dOPbaIO6rOKlvEl7gRX3NBgTtdORNBTf8+ny
-         fhlCHy+JCHQQl+LL9SfLuu1ovM3oFDJLmUv/fFSEl2abnrlxLD1ozPUcS4dcF+EdHxvl
-         EMkQ==
+        b=u1OjL3+pg2qnxMETN6fmF+muadewg7V4dlqUBxFu/YXgTNfrHQFhmXLJPNKqgZa8jT
+         Orex5zIxzkQc0R4vQYj4MYV4uMZOyrY6rTIY70nAbuDNeN0W/YJSJjTPncHV9cFuBooV
+         k2Vw4KBkO6um+Ltw8+Cy7QnqnL0gTXmvlpu+ol8BGJOC4BiBMJi8Sllh5xjLcQ4AgwIJ
+         cgt4lU6uOYoVoiu/LWZD+0eGaD+F4xc9AcUbxy8tx6T/5C2kperXipWK6YZOyRV1+r4e
+         OyrUgXRYL4DBHZS3JRYeJr6xKMKtV58qcqNgqUG3wBDprpu2IqMm/o4fyHLG3CDaJrSu
+         jo7w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
-         :message-id:date:to:from:dkim-filter:dmarc-filter
+         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
+         :references:in-reply-to:mime-version:dkim-signature
          :arc-authentication-results;
-        bh=kox13W7g23lJkvnSNn0Na0ofCRZtPpRTxOXhmR+sPdw=;
-        b=vLNjfR275b0ocLkrB2/vB0w6kA5fTWLXy7zyA6pHVvtpwztMWvdLzY7FIm0oKhyOmS
-         fikp/P9KAUx+2wwkXZ+84VA2pJ++uzEceDcfdQWAkAQcvVwwLN31FYiZy/InBkSByoxf
-         SQ3yjrcKCNl7gxlUVIJ7cXLQ7n9HpJgnTylyTnBi00I4ywhUmV0FAkWkjhT5ZkhDDxBi
-         5BlfPNxqrvJukaTtBlCrT4FSEWIKB+eVljohBnQExQDu30SMB7waNYQdfYDYAa96tvPL
-         oSeLh+HI85BCAFKeBMa/mSsqRf/ZFU1CQ7Jf33cKgHvvA3HZHeVFSx1sYs1S4QWtSrvg
-         Gu3A==
+        bh=7ZWmtjTkZijPZ+9dPQ79Z0ObsY+jWHket6m/W85rAdI=;
+        b=mxC2aPWGFRNCM5mMuYymLMw/NbRMt1XfEt+neCFRyqtasbuvQKuapd5+Han2kf84N8
+         5rIGdxH/Bie7P2Hjl+wi060XwGr+ynwQZdHlTsC4oF+3B9trNY8dl3IXoJo9LpiRrJn1
+         rCBzTMYznqYpo73DoKFXPMolQkt2l5BmsxuSxdlYOtV4tC7W1tOYZLGs+zzRKQO4ZmFZ
+         t6y6CwbTu1FeYT8filaWQH/VF+N0q0XD0VPYiaTQvDuAGEN/LiL9NL1R3ZZKJGYiQe6Y
+         2gZvTLxUUEqR9U5r8G0O9CZZs4FGuRwMdZrpNgatAXIn5h20Zm6x2Y+2Q/gB7gRfGx4h
+         x7GQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dkim=fail header.i=@gmail.com;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id g14si5402547qte.292.2017.06.08.06.41.10
+        by mx.google.com with ESMTPS id h134si5740453qke.104.2017.06.08.09.29.49
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 08 Jun 2017 06:41:10 -0700 (PDT)
+        Thu, 08 Jun 2017 09:29:50 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:49677 helo=lists.gnu.org)
+       dkim=fail header.i=@gmail.com;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:50581 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1dIxgR-0003M3-W7
-	for alex.bennee@linaro.org; Thu, 08 Jun 2017 09:41:08 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:46730)
+	id 1dJ0Jf-0007CI-Lv
+	for alex.bennee@linaro.org; Thu, 08 Jun 2017 12:29:47 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:40597)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <ehabkost@redhat.com>) id 1dIxed-0001bM-B3
-	for qemu-arm@nongnu.org; Thu, 08 Jun 2017 09:39:16 -0400
+	(envelope-from <alistair23@gmail.com>) id 1dJ0JX-0007AV-Fi
+	for qemu-arm@nongnu.org; Thu, 08 Jun 2017 12:29:40 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <ehabkost@redhat.com>) id 1dIxea-0005Nd-KW
-	for qemu-arm@nongnu.org; Thu, 08 Jun 2017 09:39:13 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:52154)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <ehabkost@redhat.com>)
-	id 1dIxea-0005Mi-Ex; Thu, 08 Jun 2017 09:39:12 -0400
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
-	[10.5.11.14])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 6DB46C04B955;
-	Thu,  8 Jun 2017 13:39:11 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 6DB46C04B955
-Authentication-Results: ext-mx07.extmail.prod.ext.phx2.redhat.com;
-	dmarc=none (p=none dis=none) header.from=redhat.com
-Authentication-Results: ext-mx07.extmail.prod.ext.phx2.redhat.com;
-	spf=pass smtp.mailfrom=ehabkost@redhat.com
-DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com 6DB46C04B955
-Received: from localhost (ovpn-116-27.gru2.redhat.com [10.97.116.27])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id C4BB98D1A1;
-	Thu,  8 Jun 2017 13:39:10 +0000 (UTC)
-From: Eduardo Habkost <ehabkost@redhat.com>
-To: qemu-devel@nongnu.org
-Date: Thu,  8 Jun 2017 10:39:02 -0300
-Message-Id: <20170608133906.12737-2-ehabkost@redhat.com>
-In-Reply-To: <20170608133906.12737-1-ehabkost@redhat.com>
+	(envelope-from <alistair23@gmail.com>) id 1dJ0JW-0005V7-MQ
+	for qemu-arm@nongnu.org; Thu, 08 Jun 2017 12:29:39 -0400
+Received: from mail-wm0-x241.google.com ([2a00:1450:400c:c09::241]:33605)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <alistair23@gmail.com>)
+	id 1dJ0JU-0005TX-Fc; Thu, 08 Jun 2017 12:29:36 -0400
+Received: by mail-wm0-x241.google.com with SMTP id x3so8140487wme.0;
+	Thu, 08 Jun 2017 09:29:36 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=mime-version:sender:in-reply-to:references:from:date:message-id
+	:subject:to:cc;
+	bh=7ZWmtjTkZijPZ+9dPQ79Z0ObsY+jWHket6m/W85rAdI=;
+	b=MwAKjmUYL8yembiVX1PANMm7nIv5Wkga8qSMp17lFe7IWd4jIDQ/dQERTiegJ2F64Z
+	nCVYc/ANQweQmI10TvE4KMjdKhpXk+XfS/qkwPJDJOcUB7E5Re4hWINnj0TyWx0wkHJt
+	Ot4xAdWnwuM5iwEQNPnSDROPdHn9WZ/EISpIKuTuIiY67BFrU/D+e/LiL73347Dbs4fG
+	oPiq3BF3iYSKapW9+3FerhG+TuL9drPA+QsRpuKf40IBKg+gIh/g+Me4eQFImhBxr5w8
+	WsQmFxkp0Xl6CCQcb10U8d/6v/Z6NIB2e4+gErEsw364FWPXB69/9EmRuho9xGKRtTPj
+	wFwQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:sender:in-reply-to:references:from
+	:date:message-id:subject:to:cc;
+	bh=7ZWmtjTkZijPZ+9dPQ79Z0ObsY+jWHket6m/W85rAdI=;
+	b=EcTaiwtKTGjRJClBOPp9U0lDcy+Uk2tZ1j65sM2bjt88q9zbLQILOSNeIaOTDsAfXf
+	6lzoBZl9jxpRCA8MFKrBVzF/fHSPvmrTtBttyhWgtgN21Htrf/iXz0NL7KNkE0gQ8FZm
+	D89NeoIXXpacc7KxYiCchxaBVyHYKBNY4jQkRNJb+MNs7bizg8/edqUQW235KjHeU8fz
+	5WYrCpY+ffBwL9hayV2eFtnIcGHhVsh+vpjc1K1ijQlXwu38EMU+iKlUiJpvGFLHukTN
+	Rvf9FcP7RRNuSmgl2AlcXs50JkATCNe14tcwFs6aXWc2fN2g+7U8aq1wShAnl6ZP9t9F
+	xcTQ==
+X-Gm-Message-State: AKS2vOw24JCqwrAwYvgbXKcOFZK10usHVTFqEX49WrL11F8asR0iyuDb
+	IXoIjvF0SWtCDbj29O1iIXut1qdiFQ==
+X-Received: by 10.28.15.67 with SMTP id 64mr4416020wmp.61.1496939375427; Thu,
+	08 Jun 2017 09:29:35 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.28.181.82 with HTTP; Thu, 8 Jun 2017 09:29:04 -0700 (PDT)
+In-Reply-To: <20170608133906.12737-2-ehabkost@redhat.com>
 References: <20170608133906.12737-1-ehabkost@redhat.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.31]);
-	Thu, 08 Jun 2017 13:39:11 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: [Qemu-arm] [PATCH 1/5] xilinx: Fix error handling
+	<20170608133906.12737-2-ehabkost@redhat.com>
+From: Alistair Francis <alistair.francis@xilinx.com>
+Date: Thu, 8 Jun 2017 09:29:04 -0700
+X-Google-Sender-Auth: yPNadpYrgHf48BNJLSV03hbVVCM
+Message-ID: <CAKmqyKN==edon2NC4wBNidsHChzbJ8CMvWgjvT2+LbjXOgwrOA@mail.gmail.com>
+To: Eduardo Habkost <ehabkost@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2a00:1450:400c:c09::241
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH 1/5] xilinx: Fix error handling
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -91,59 +104,68 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Jason Wang <jasowang@redhat.com>, qemu-arm@nongnu.org,
-	Markus Armbruster <armbru@redhat.com>,
-	Alistair Francis <alistair.francis@xilinx.com>
+Cc: Markus Armbruster <armbru@redhat.com>, Jason Wang <jasowang@redhat.com>,
+	"qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
+	Alistair Francis <alistair.francis@xilinx.com>,
+	qemu-arm <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 7/ID4YChjM2t
+X-TUID: a9PdWqCPpEod
 
-Assigning directly to *errp is not valid, as errp may be NULL,
-&error_fatal, or &error_abort.  Use error_propagate() instead.
+On Thu, Jun 8, 2017 at 6:39 AM, Eduardo Habkost <ehabkost@redhat.com> wrote:
+> Assigning directly to *errp is not valid, as errp may be NULL,
+> &error_fatal, or &error_abort.  Use error_propagate() instead.
+>
+> error_propagate() handles non-NULL *errp correctly, so the
+> "if (!*errp)" check can be removed.
+>
+> Cc: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
+> Cc: Alistair Francis <alistair.francis@xilinx.com>
+> Cc: Jason Wang <jasowang@redhat.com>
+> Cc: qemu-arm@nongnu.org
+> Signed-off-by: Eduardo Habkost <ehabkost@redhat.com>
 
-error_propagate() handles non-NULL *errp correctly, so the
-"if (!*errp)" check can be removed.
+Reviewed-by: Alistair Francis <alistair.francis@xilinx.com>
 
-Cc: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
-Cc: Alistair Francis <alistair.francis@xilinx.com>
-Cc: Jason Wang <jasowang@redhat.com>
-Cc: qemu-arm@nongnu.org
-Signed-off-by: Eduardo Habkost <ehabkost@redhat.com>
----
- hw/dma/xilinx_axidma.c  | 4 +---
- hw/net/xilinx_axienet.c | 4 +---
- 2 files changed, 2 insertions(+), 6 deletions(-)
+Thanks,
+Alistair
 
-diff --git a/hw/dma/xilinx_axidma.c b/hw/dma/xilinx_axidma.c
-index 6065689ad1..3987b5ff96 100644
---- a/hw/dma/xilinx_axidma.c
-+++ b/hw/dma/xilinx_axidma.c
-@@ -554,9 +554,7 @@ static void xilinx_axidma_realize(DeviceState *dev, Error **errp)
-     return;
- 
- xilinx_axidma_realize_fail:
--    if (!*errp) {
--        *errp = local_err;
--    }
-+    error_propagate(errp, local_err);
- }
- 
- static void xilinx_axidma_init(Object *obj)
-diff --git a/hw/net/xilinx_axienet.c b/hw/net/xilinx_axienet.c
-index b6701844d3..5ffa739f68 100644
---- a/hw/net/xilinx_axienet.c
-+++ b/hw/net/xilinx_axienet.c
-@@ -981,9 +981,7 @@ static void xilinx_enet_realize(DeviceState *dev, Error **errp)
-     return;
- 
- xilinx_enet_realize_fail:
--    if (!*errp) {
--        *errp = local_err;
--    }
-+    error_propagate(errp, local_err);
- }
- 
- static void xilinx_enet_init(Object *obj)
--- 
-2.11.0.259.g40922b1
-
+> ---
+>  hw/dma/xilinx_axidma.c  | 4 +---
+>  hw/net/xilinx_axienet.c | 4 +---
+>  2 files changed, 2 insertions(+), 6 deletions(-)
+>
+> diff --git a/hw/dma/xilinx_axidma.c b/hw/dma/xilinx_axidma.c
+> index 6065689ad1..3987b5ff96 100644
+> --- a/hw/dma/xilinx_axidma.c
+> +++ b/hw/dma/xilinx_axidma.c
+> @@ -554,9 +554,7 @@ static void xilinx_axidma_realize(DeviceState *dev, Error **errp)
+>      return;
+>
+>  xilinx_axidma_realize_fail:
+> -    if (!*errp) {
+> -        *errp = local_err;
+> -    }
+> +    error_propagate(errp, local_err);
+>  }
+>
+>  static void xilinx_axidma_init(Object *obj)
+> diff --git a/hw/net/xilinx_axienet.c b/hw/net/xilinx_axienet.c
+> index b6701844d3..5ffa739f68 100644
+> --- a/hw/net/xilinx_axienet.c
+> +++ b/hw/net/xilinx_axienet.c
+> @@ -981,9 +981,7 @@ static void xilinx_enet_realize(DeviceState *dev, Error **errp)
+>      return;
+>
+>  xilinx_enet_realize_fail:
+> -    if (!*errp) {
+> -        *errp = local_err;
+> -    }
+> +    error_propagate(errp, local_err);
+>  }
+>
+>  static void xilinx_enet_init(Object *obj)
+> --
+> 2.11.0.259.g40922b1
+>
+>

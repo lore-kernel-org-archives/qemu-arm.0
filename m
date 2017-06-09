@@ -1,102 +1,134 @@
-Received: by 10.25.0.23 with SMTP id 23csp2927007lfa;
-        Fri, 9 Jun 2017 00:21:45 -0700 (PDT)
-X-Received: by 10.55.37.210 with SMTP id l79mr44093769qkl.227.1496992905443;
-        Fri, 09 Jun 2017 00:21:45 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1496992905; cv=none;
+Received: by 10.25.0.23 with SMTP id 23csp3006192lfa;
+        Fri, 9 Jun 2017 04:30:51 -0700 (PDT)
+X-Received: by 10.200.54.56 with SMTP id m53mr40407812qtb.220.1497007851493;
+        Fri, 09 Jun 2017 04:30:51 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1497007851; cv=none;
         d=google.com; s=arc-20160816;
-        b=XvseMs9r4gcMOUIFjllOm8SR5Hq9XsnXH/UQ6hYIa8FtVEuJh9FN8ALKGa4ducc/hI
-         ++gH5w2zLBnBRPYfIwxKf6/goeRRaPNMLM9RMwl02LYe7KZquEf8Tinv8cxoptvy/880
-         KEvFo+NApl6Ag5idHvA+v9S01NzAP0/aTuN1Us+RkmRvaH829e3BY/ancmy/+NaOlg8h
-         RhtiQgcXgTgGzmLQ81ztbG068XFiImtGEoKjfVYJ61oxjYdcM6QemWvNIJcH7nFCx9Ak
-         6ozGpxXlFfCiQx3kwrqAP00w5biF+BdDPj6oa87qpRn+gKdiznLZW5XiUD2Kv62JU1GL
-         GVSQ==
+        b=hUipmFIkWFrsci/xzcNE9CmkW1vzOFWMWMb2Rchx3TbqjQzNfhnBhN3ec+VIjt05aG
+         5NbShQUoJr+RfoX+V4jbi1qQNx98tMw0kdwpouPHNs6A2Rg1QvWZrHoTGLdHDfaiyDkU
+         EK+lEdiY2gVtGkjmYG/okhP3bC0Wp6ThZOupCqPGCpYM2Kb9SDl0nXPyAMdOIvWyPhGQ
+         X7/60XtgCdz9kDc3HTPQO0kiwV03/MB7vTbsnG7byjvRTp7p911uHRaWEvoCm1qzVZZE
+         7S3GpYT/Yi4LONdw6i7g6fzsjUSBNqqLixoruEO2kdV+D/YWVNR2fWV6D8GG20Nh55o+
+         1xCQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
-         :references:in-reply-to:mime-version:dkim-signature
-         :arc-authentication-results;
-        bh=Dh56UVt8Cq0US+XMN0vLVAFMOzj1Qb6i8PQpiz/Wt5Q=;
-        b=Wt7xs8IvyXWkkbxViY8xYQqvTX9l9kDZ1PQSfI5QL1fIih2D/W2UT0mJhHCVdFj91+
-         GDF7z9NN8eYiR+S8LAyktCHPcpGJ7BezxRyufHxObKffsdVWFJbOkOSu0iaVLUKeV0de
-         Ljag+kWK8lemuWn90xAdFibwgtHwsk+qiMT1Yq/uuTXymBP2utqtMnWzmv/PPPHJyJKs
-         oQnfs1CQkYIZIkjVtekmQ3snLdbkhPcdfaYIXUQrgQ/j+lqGRku29z7W3CwWqpNBZE/Z
-         xlfjxJ5tA0lhlwKNHAyB192a9t5Hol9escMSu3GT15U3/5KeWCsrIhELoHZ6YFqpr5ko
-         OIDQ==
+         :list-unsubscribe:list-id:precedence:subject:mime-version
+         :content-transfer-encoding:spamdiagnosticmetadata
+         :spamdiagnosticoutput:content-language:accept-language:in-reply-to
+         :references:message-id:date:thread-index:thread-topic:to:from
+         :dkim-signature:arc-authentication-results;
+        bh=gBXIsCJoT7sQWKBDd32F7KVAWTHBcsPV8Xcs54a2fSo=;
+        b=eKjAR2Eio8ErtZWNQDmtj3CSO/hT0wa0n3+vU4GwW9m3Z9cmzXWeDhVSzZ2N89EAkQ
+         kUz/w2RVaoj9B9sjZ4C43aTA0GHZs6sjcp1cn+RY3Pfq2NntgLjU9CE2YnsOF3C3Um6x
+         uvOIOwA1nbNHwlqcL3Gx/Rf8vUpitYN7vFi+SGu9aL7iLGaJWQ+J1R/Jw+cLj9Eu8+Q0
+         vMLnk5eo59gtNq8bgtg5B8UtGYgSYCxDPVKU8HURuDOUQnaDRskG9A6ur8Cgjkwjgfn+
+         ziILawt7sXD6kLRIYLPTy7zTlbV/XpM2RoT2f7LKTiNB6J8JP8OhxwboHV50W+HU50++
+         Zj9g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com;
+       dkim=fail header.i=@nxp.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=nxp.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id s34si274240qta.167.2017.06.09.00.21.44
+        by mx.google.com with ESMTPS id a33si743848qtc.22.2017.06.09.04.30.50
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 09 Jun 2017 00:21:45 -0700 (PDT)
+        Fri, 09 Jun 2017 04:30:51 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com;
+       dkim=fail header.i=@nxp.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:53164 helo=lists.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=nxp.com
+Received: from localhost ([::1]:53919 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1dJEEo-0008Fp-Nk
-	for alex.bennee@linaro.org; Fri, 09 Jun 2017 03:21:42 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:41295)
+	id 1dJI7s-0007io-Ph
+	for alex.bennee@linaro.org; Fri, 09 Jun 2017 07:30:48 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:60123)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <sundeep.lkml@gmail.com>) id 1dJEEi-0008DJ-9y
-	for qemu-arm@nongnu.org; Fri, 09 Jun 2017 03:21:38 -0400
+	(envelope-from <bharat.bhushan@nxp.com>) id 1dJI7h-0007gJ-6o
+	for qemu-arm@nongnu.org; Fri, 09 Jun 2017 07:30:39 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <sundeep.lkml@gmail.com>) id 1dJEEg-00087S-DP
-	for qemu-arm@nongnu.org; Fri, 09 Jun 2017 03:21:36 -0400
-Received: from mail-yw0-x242.google.com ([2607:f8b0:4002:c05::242]:33707)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <sundeep.lkml@gmail.com>)
-	id 1dJEEb-00086Y-NV; Fri, 09 Jun 2017 03:21:29 -0400
-Received: by mail-yw0-x242.google.com with SMTP id y64so3075534ywe.0;
-	Fri, 09 Jun 2017 00:21:28 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=Dh56UVt8Cq0US+XMN0vLVAFMOzj1Qb6i8PQpiz/Wt5Q=;
-	b=rYbBoCAEXNfuqRBaJyPjYojfb6rn20+Mvc7VTpMXQuW3j0kHLAbPBVSQEa4iWqxboB
-	rNDvGO3ORxp2VUFX306OOLOezf1vbDTaXkfN2v2IZuNhm5VzgwsUly2n7xdjP6AeYEGY
-	9bFCpNKbue8nBgsJcA8iTzKcyQemaD2u+NWOj97BCAc+1+6/hrcbwh4pS7rtVBLkQ7w7
-	gWM2GTzyKb+ZgAbGmJRK5g6UTyhZ0Nh3HTAAkBJ3uWjZYgtC+6xuFD7uT/iHhVVtjJ0U
-	z1UQXoXnMpNA35chY/ld3l5Rxm1kal2SNST4pZM71Sq38nY1lgp1XnW77u/IvF6Qr5/6
-	xPfw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=Dh56UVt8Cq0US+XMN0vLVAFMOzj1Qb6i8PQpiz/Wt5Q=;
-	b=D5ke+o6ZQ+nFMytqxJEpr7BolgXeMIsjT0ZRZoc+eHDiZHbqXdI9T036peQuLZHB28
-	eUDsuR0E7TMkUGCJhen2mTgII6YJsl9JLMTrhvmdXYv5aZG9f3kyy51qmXMtu3Ot7NMD
-	HUxZ1lot4ezU570xZXkYRQBCrZIKrDH8873wM/u3UGCJpxsumMp9POkvt6pSysSe6mBZ
-	mICYITsz4UKO1UGMAMEBNvsN0iIvrQOizGtg4hDxtEEKpd8pBaUVK0ej6Jhhv2yNHdOy
-	pmSCKJeFYmmqAG1tsB0POjs2utKi2fXogiAWQuah/LXeZr2WCZ0Pc5/7aEhs4M1gOJFt
-	J8WQ==
-X-Gm-Message-State: AODbwcBK17jLSbyk1/Tb11Xx/977IJThCA1PW+FUtaDHKqTX6JbmzJCk
-	ABz+IeLtPsXpaQT1jthwm+w+k6F0Eg==
-X-Received: by 10.13.192.5 with SMTP id b5mr14587145ywd.52.1496992887394; Fri,
-	09 Jun 2017 00:21:27 -0700 (PDT)
+	(envelope-from <bharat.bhushan@nxp.com>) id 1dJI7d-0001zN-4V
+	for qemu-arm@nongnu.org; Fri, 09 Jun 2017 07:30:37 -0400
+Received: from mail-eopbgr10080.outbound.protection.outlook.com
+	([40.107.1.80]:53367
+	helo=EUR02-HE1-obe.outbound.protection.outlook.com)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <bharat.bhushan@nxp.com>)
+	id 1dJI7c-0001wi-Bn; Fri, 09 Jun 2017 07:30:33 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=nxp.com; s=selector1; 
+	h=From:Date:Subject:Message-ID:Content-Type:MIME-Version;
+	bh=gBXIsCJoT7sQWKBDd32F7KVAWTHBcsPV8Xcs54a2fSo=;
+	b=Zpc2Z1gKizTL5FOTnZextFcKEhIvpTFOcUKqcLx8W5OBm6/yE5Ea2kj+Wtn6kmoBMKzWZ7CH+HJAL4fRFHqQt6all+ODp7XYEbe4lznVbtHnNmlshM4x0WgKQXpyEONppsNFVe3Q/SpnmIkz3QXiv4XvJlPFiwv40NhB5ijZ0vA=
+Received: from AM5PR0401MB2545.eurprd04.prod.outlook.com (10.169.245.8) by
+	AM5PR0401MB2548.eurprd04.prod.outlook.com (10.169.245.11) with
+	Microsoft SMTP Server (version=TLS1_2,
+	cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id
+	15.1.1157.12; Fri, 9 Jun 2017 11:30:28 +0000
+Received: from AM5PR0401MB2545.eurprd04.prod.outlook.com
+	([fe80::50bc:c8c2:47cb:95da]) by
+	AM5PR0401MB2545.eurprd04.prod.outlook.com
+	([fe80::50bc:c8c2:47cb:95da%17]) with mapi id 15.01.1157.014;
+	Fri, 9 Jun 2017 11:30:28 +0000
+From: Bharat Bhushan <bharat.bhushan@nxp.com>
+To: Auger Eric <eric.auger@redhat.com>, "eric.auger.pro@gmail.com"
+	<eric.auger.pro@gmail.com>, "peter.maydell@linaro.org"
+	<peter.maydell@linaro.org>, "alex.williamson@redhat.com"
+	<alex.williamson@redhat.com>, "mst@redhat.com" <mst@redhat.com>,
+	"qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, "qemu-devel@nongnu.org"
+	<qemu-devel@nongnu.org>, "jean-philippe.brucker@arm.com"
+	<jean-philippe.brucker@arm.com>
+Thread-Topic: [RFC v2 0/8] VIRTIO-IOMMU device
+Thread-Index: AQHS36dbfM0cmMlk0UqAg6W7m9YdMaIcD2KwgAAIugCAAE8owA==
+Date: Fri, 9 Jun 2017 11:30:28 +0000
+Message-ID: <AM5PR0401MB2545C0E76C4BE6F82FE376D09ACE0@AM5PR0401MB2545.eurprd04.prod.outlook.com>
+References: <1496851287-9428-1-git-send-email-eric.auger@redhat.com>
+	<AM5PR0401MB2545AFD256A96420ACC44CD89ACE0@AM5PR0401MB2545.eurprd04.prod.outlook.com>
+	<14c83c14-1e7e-f142-77b0-fa8c873e2d41@redhat.com>
+In-Reply-To: <14c83c14-1e7e-f142-77b0-fa8c873e2d41@redhat.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: redhat.com; dkim=none (message not signed)
+	header.d=none;redhat.com; dmarc=none action=none header.from=nxp.com;
+x-originating-ip: [192.88.169.1]
+x-ms-publictraffictype: Email
+x-microsoft-exchange-diagnostics: 1; AM5PR0401MB2548;
+	7:OfgzwHpJOC1JYSLOVoIzg9y4bdTR2JKzUdEqSxxMhEW7L4QndU6BoPnILiMaBvKO9b3mqRF+ApjAJohl9WIhTIB7Hu+c1EmcWRV2pBTfZbeZUuwGEPqFb1kxg9qHvpCe2uQV5/USVaEQFF6gYMRPU8tzy9dy9Ytvt/Ie+xZQ2aFXYtpEbp4AVRzDFRv0U21fkXYEEpYR2pY2Y1ZnFgk9c4Xi28xvtRpt8kwIEVrjTSPKTYOyf1HPC36kB3ceSHQolNBYuynPGN7+7O1HDnbR3FZsiMjD1D1vlzWwROScujF3PPxb/gD6XPMcZwfeQORDRbjRxbw+9MGv9m/b1jVVKw==
+x-ms-traffictypediagnostic: AM5PR0401MB2548:
+x-ms-office365-filtering-correlation-id: e2220505-6973-4df1-c215-08d4af2aee41
+x-ms-office365-filtering-ht: Tenant
+x-microsoft-antispam: UriScan:; BCL:0; PCL:0;
+	RULEID:(22001)(2017030254075)(48565401081)(201703131423075)(201703031133081);
+	SRVR:AM5PR0401MB2548; 
+x-microsoft-antispam-prvs: <AM5PR0401MB2548EF79C8E80529B8A928B49ACE0@AM5PR0401MB2548.eurprd04.prod.outlook.com>
+x-exchange-antispam-report-test: UriScan:(180628864354917)(166708455590820)(185117386973197)(228905959029699);
+x-exchange-antispam-report-cfa-test: BCL:0; PCL:0;
+	RULEID:(100000700101)(100105000095)(100000701101)(100105300095)(100000702101)(100105100095)(6040450)(601004)(2401047)(5005006)(8121501046)(93006095)(93001095)(10201501046)(3002001)(100000703101)(100105400095)(6055026)(6041248)(20161123555025)(20161123558100)(20161123560025)(20161123562025)(20161123564025)(201703131423075)(201702281528075)(201703061421075)(201703061406153)(6072148)(100000704101)(100105200095)(100000705101)(100105500095);
+	SRVR:AM5PR0401MB2548; BCL:0; PCL:0;
+	RULEID:(100000800101)(100110000095)(100000801101)(100110300095)(100000802101)(100110100095)(100000803101)(100110400095)(100000804101)(100110200095)(100000805101)(100110500095);
+	SRVR:AM5PR0401MB2548; 
+x-forefront-prvs: 03333C607F
+x-forefront-antispam-report: SFV:NSPM;
+	SFS:(10009020)(6009001)(39400400002)(39410400002)(39450400003)(39850400002)(39840400002)(39860400002)(377454003)(24454002)(13464003)(8676002)(53546009)(7736002)(38730400002)(7696004)(6246003)(5250100002)(33656002)(2501003)(25786009)(5660300001)(4326008)(189998001)(9686003)(6306002)(39060400002)(3280700002)(66066001)(3660700001)(74316002)(53936002)(102836003)(2906002)(6116002)(3846002)(305945005)(7416002)(54906002)(99286003)(55016002)(478600001)(54356999)(76176999)(50986999)(229853002)(86362001)(81166006)(2900100001)(6436002)(8936002)(966005)(2201001)(6506006)(2950100002)(14454004);
+	DIR:OUT; SFP:1101; SCL:1; SRVR:AM5PR0401MB2548;
+	H:AM5PR0401MB2545.eurprd04.prod.outlook.com; FPR:; SPF:None;
+	MLV:ovrnspm; PTR:InfoNoRecords; LANG:en; 
+spamdiagnosticoutput: 1:99
+spamdiagnosticmetadata: NSPM
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
 MIME-Version: 1.0
-Received: by 10.13.244.199 with HTTP; Fri, 9 Jun 2017 00:21:26 -0700 (PDT)
-In-Reply-To: <648515bf-ba1e-3d7f-d5bd-51b243f8c29f@amsat.org>
-References: <1494949133-2202-1-git-send-email-sundeep.lkml@gmail.com>
-	<d403f33f-647e-a142-4265-7d856d8be6aa@amsat.org>
-	<CALHRZur8Uh0JCnOoY-_mUU_fyzbUgxbmWKtfOoB-GTYR5UcEnQ@mail.gmail.com>
-	<CALHRZuoVHFOYV345JmvSkfJHsVjS7Wv_ySzAUtwo1D7eyoS_XQ@mail.gmail.com>
-	<648515bf-ba1e-3d7f-d5bd-51b243f8c29f@amsat.org>
-From: sundeep subbaraya <sundeep.lkml@gmail.com>
-Date: Fri, 9 Jun 2017 12:51:26 +0530
-Message-ID: <CALHRZuoihb2Oiu9adm=2gPUf-LFdkBR9qw1iV+ohL6kp0t5d=A@mail.gmail.com>
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
-Content-Type: multipart/alternative; boundary="001a114e3f9848f18b055181d127"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:4002:c05::242
-Subject: Re: [Qemu-arm] [Qemu devel v5 PATCH 0/5] Add support for
- Smartfusion2 SoC
+X-OriginatorOrg: nxp.com
+X-MS-Exchange-CrossTenant-originalarrivaltime: 09 Jun 2017 11:30:28.5195 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 686ea1d3-bc2b-4c6f-a92c-d99c5c301635
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: AM5PR0401MB2548
+X-detected-operating-system: by eggs.gnu.org: Windows 7 or 8 [fuzzy]
+X-Received-From: 40.107.1.80
+Subject: Re: [Qemu-arm] [RFC v2 0/8] VIRTIO-IOMMU device
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -108,546 +140,168 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm <qemu-arm@nongnu.org>,
-	QEMU Developers <qemu-devel@nongnu.org>,
-	Alistair Francis <alistair23@gmail.com>
+Cc: "kevin.tian@intel.com" <kevin.tian@intel.com>,
+	"marc.zyngier@arm.com" <marc.zyngier@arm.com>,
+	"tn@semihalf.com" <tn@semihalf.com>,
+	"will.deacon@arm.com" <will.deacon@arm.com>,
+	"drjones@redhat.com" <drjones@redhat.com>,
+	"robin.murphy@arm.com" <robin.murphy@arm.com>,
+	"christoffer.dall@linaro.org" <christoffer.dall@linaro.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: hWvdUHsBAR/h
+X-TUID: cMdsr1jYodEk
 
---001a114e3f9848f18b055181d127
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Hi Eric,
 
-Hi Philippe,
+> -----Original Message-----
+> From: Auger Eric [mailto:eric.auger@redhat.com]
+> Sent: Friday, June 09, 2017 12:14 PM
+> To: Bharat Bhushan <bharat.bhushan@nxp.com>;
+> eric.auger.pro@gmail.com; peter.maydell@linaro.org;
+> alex.williamson@redhat.com; mst@redhat.com; qemu-arm@nongnu.org;
+> qemu-devel@nongnu.org; jean-philippe.brucker@arm.com
+> Cc: will.deacon@arm.com; robin.murphy@arm.com; kevin.tian@intel.com;
+> marc.zyngier@arm.com; christoffer.dall@linaro.org; drjones@redhat.com;
+> wei@redhat.com; tn@semihalf.com
+> Subject: Re: [RFC v2 0/8] VIRTIO-IOMMU device
+>=20
+> Hi Bharat,
+>=20
+> On 09/06/2017 08:16, Bharat Bhushan wrote:
+> > Hi Eric,
+> >
+> >> -----Original Message-----
+> >> From: Eric Auger [mailto:eric.auger@redhat.com]
+> >> Sent: Wednesday, June 07, 2017 9:31 PM
+> >> To: eric.auger.pro@gmail.com; eric.auger@redhat.com;
+> >> peter.maydell@linaro.org; alex.williamson@redhat.com;
+> mst@redhat.com;
+> >> qemu-arm@nongnu.org; qemu-devel@nongnu.org; jean-
+> >> philippe.brucker@arm.com
+> >> Cc: will.deacon@arm.com; robin.murphy@arm.com;
+> kevin.tian@intel.com;
+> >> marc.zyngier@arm.com; christoffer.dall@linaro.org;
+> >> drjones@redhat.com; wei@redhat.com; tn@semihalf.com; Bharat
+> Bhushan
+> >> <bharat.bhushan@nxp.com>
+> >> Subject: [RFC v2 0/8] VIRTIO-IOMMU device
+> >>
+> >> This series implements the virtio-iommu device. This is a proof of
+> >> concept based on the virtio-iommu specification written by Jean-Philip=
+pe
+> Brucker [1].
+> >> This was tested with a guest using the virtio-iommu driver [2] and
+> >> exposed with a virtio-net-pci using dma ops.
+> >>
+> >> The device gets instantiated using the "-device virtio-iommu-device"
+> >> option. It currently works with ARM virt machine only as the machine
+> >> must handle the dt binding between the virtio-mmio "iommu" node and
+> >> the PCI host bridge node. ACPI booting is not yet supported.
+> >>
+> >> This should allow to start some benchmarking activities against pure
+> >> emulated IOMMU (especially ARM SMMU).
+> >
+> > I am testing this on ARM64 and see below continuous error prints:
+> >
+> > 	virtio_iommu_translate sid=3D8 is not known!!
+> > 	virtio_iommu_translate sid=3D8 is not known!!
+> > 	virtio_iommu_translate sid=3D8 is not known!!
+> > 	virtio_iommu_translate sid=3D8 is not known!!
+> > 	virtio_iommu_translate sid=3D8 is not known!!
+> > 	virtio_iommu_translate sid=3D8 is not known!!
+> > 	virtio_iommu_translate sid=3D8 is not known!!
+> > 	virtio_iommu_translate sid=3D8 is not known!!
+> > 	virtio_iommu_translate sid=3D8 is not known!!
+> > 	virtio_iommu_translate sid=3D8 is not known!!
+> >
+> >
+> > Also in guest I do not see device-tree node with virtio-iommu.
+> do you mean the virtio-mmio with #iommu-cells property?
+>=20
+> This one is created statically by virt machine. I would be surprised if i=
+t were
+> not there. Are you using the virt =3D virt2.10 machine. Machines before d=
+o not
+> support its instantiation.
+>=20
+> Please can you add a printf in hw/arm/virt.c create_virtio_mmio() at the
+> moment when this node is created. Also you can add a printf in
+> bind_virtio_iommu_device() to make sure the binding with the PCI host
+> bridge is added on machine init done.
+>=20
+> Also worth to check, CONFIG_VIRTIO_IOMMU=3Dy on guest side.
 
-On Wed, May 31, 2017 at 11:06 AM, Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.=
-org>
-wrote:
+It works on my side. The driver config was disabled and also I was using gu=
+est kernel which was not have deferred-probing. Now after fixing it works o=
+n my side
+I placed some prints to see dma-map are mapping regions in virtio-iommu, it=
+ uses emulated iommu.
 
-> Hi Sundeep,
->
-> On 05/29/2017 02:28 AM, sundeep subbaraya wrote:
->
->> Hi Philippe,
->>
->> Any update on this? I will wait for your comments too
->> and send next iteration fixing Alistair comments.
->>
->
-> Sorry I'm supposed to be in holidays ;)
->
+I will continue to add VFIO support now on this and more testing !!
 
-Ohh sorry currently am in vacation :)
+Thanks
+-Bharat
 
->
->
->> Thanks,
->> Sundeep
->>
->> On Wed, May 17, 2017 at 3:09 PM, sundeep subbaraya
->> <sundeep.lkml@gmail.com <mailto:sundeep.lkml@gmail.com>> wrote:
->>
->>     Hi Philippe,
->>
->>     On Wed, May 17, 2017 at 9:57 AM, Philippe Mathieu-Daud=C3=A9
->>     <f4bug@amsat.org <mailto:f4bug@amsat.org>> wrote:
->>
->>         Hi Sundeep,
->>
->>         This patchset is way cleaner!
->>         I had a fast look and I like it, I'll try to make some time soon
->>         to review details and test it.
->>
->>
->>     Thank you
->>
->>
->>
->>
->>         Is your work interested on U-Boot or more focused in Linux kerne=
-l?
->>
->>
->>     I am interested more in kernel. I had to look into u-boot for first
->>     time for Qemu only.
->>     I worked only on FPGAs(load kernel with debugger) till now so never
->>     got a chance to look into u-boot.
->>
->>
->>         If you compile QEMU with libfdt support you can use the -dtb
->>         option to pass the blob to the kernel directly, bypassing the
->>         bootloader.
->>
->>     Yeah for armv7m I could not find any thing like that in tree.
->>
->>
->>         If you need a bootloader you may give a look at coreboot which
->>         supports dts well, see how Vladimir Serbinenko used Linux's dt
->>         to boot a QEMU Versatile Express board:
->>         https://mail.coreboot.org/pipermail/coreboot-gerrit/2016-
->> February/040899.html
->>         <https://mail.coreboot.org/pipermail/coreboot-gerrit/2016-
->> February/040899.html>
->>
->>     Cool. I will look into it.
->>
->>     Thanks,
->>     Sundeep
->>
->>
->>         Regards,
->>
->>         Phil.
->>
->>
->>         On 05/16/2017 12:38 PM, Subbaraya Sundeep wrote:
->>
->>             Hi Qemu-devel,
->>
->>             I am trying to add Smartfusion2 SoC.
->>             SoC is from Microsemi and System on Module(SOM)
->>             board is from Emcraft systems. Smartfusion2 has hardened
->>             Microcontroller(Cortex-M3)based Sub System and FPGA fabric.
->>             At the moment only system timer, sysreg and SPI
->>             controller are modelled.
->>
->>             Testing:
->>             ./arm-softmmu/qemu-system-arm -M smartfusion2-som -serial
->>             mon:stdio \
->>             -kernel u-boot.bin -display none -drive
->>             file=3Dspi.bin,if=3Dmtd,format=3Draw
->>
->
-> I'm not sure the timer is working correctly, U-Boot loops with this
-> pattern:
->
-> msf2_sysreg_read: addr: 0x00000048 data: 0x00000220
-> msf2_sysreg_write: addr: 0x00000048 data: 0x00000220
-> msf2_sysreg_read: addr: 0x00000048 data: 0x00000220
-> msf2_sysreg_write: addr: 0x00000048 data: 0x00000020
-> msf2_sysreg_read: addr: 0x00000048 data: 0x00000020
-> msf2_sysreg_write: addr: 0x00000048 data: 0x00000000
-> msf2_sysreg_read: addr: 0x00000048 data: 0x00000000
-> msf2_sysreg_write: addr: 0x00000048 data: 0x00000020
-> msf2_sysreg_read: addr: 0x00000048 data: 0x00000020
-> msf2_sysreg_write: addr: 0x00000048 data: 0x00000220
->
->
->>             Binaries u-boot.bin and spi.bin are at:
->>
->
-> you can compress spi.bin!
->
-> can you share u-boot.elf with debug symbols too?
->
-
-Sure. I have tested binaries before pushing. Did you compile the u-boot
-again?
-Please wait for a few days I will check and provide once am back.
-
-Thanks,
-Sundeep
-
->
-> Regards,
->
-> Phil.
->
->             https://github.com/Subbaraya-Sundeep/qemu-test-binaries.git
->>
->>             <https://github.com/Subbaraya-Sundeep/qemu-test-binaries.git=
->
->>
->>             U-boot is from Emcraft with modified
->>                 - SPI driver not to use PDMA.
->>                 - ugly hack to pass dtb to kernel in r1.
->>             @
->>             https://github.com/Subbaraya-Sundeep/emcraft-uboot-sf2.git
->>             <https://github.com/Subbaraya-Sundeep/emcraft-uboot-sf2.git>
->>
->>             Linux is 4.5 linux with Smartfusion2 SoC dts and clocksource
->>             driver added by myself @
->>             https://github.com/Subbaraya-Sundeep/linux.git
->>             <https://github.com/Subbaraya-Sundeep/linux.git>
->>
->>             v5
->>                 As per Philippe comments:
->>                     Added abort in Sysreg if guest tries to remap memory
->>                     other than default mapping.
->>                     Use of CONFIG_MSF2 in Makefile for soc.c
->>                     Fixed incorrect logic in timer model.
->>                     Renamed msf2-timer.c -> mss-timer.c
->>                             msf2-spi.c -> mss-spi.c also type names
->>                     Renamed function msf2_init->emcraft_sf2_init in
->>             msf2-som.c
->>                     Added part-name,eNVM-size,eSRAM-size,pclk0 and pclk1
->>                         properties to soc.
->>                     Pass soc part-name,memory size and clock rate
->>             properties from som.
->>             v4:
->>                 Fixed build failure by using PRIx macros.
->>             v3:
->>                 Added SoC file and board file as per Alistair comments.
->>             v2:
->>                 Added SPI controller so that u-boot loads kernel from
->>             spi flash.
->>             v1:
->>                 Initial patch set with timer and sysreg
->>
->>             Thanks,
->>             Sundeep
->>
->>             Subbaraya Sundeep (5):
->>               msf2: Add Smartfusion2 System timer
->>               msf2: Microsemi Smartfusion2 System Register block.
->>               msf2: Add Smartfusion2 SPI controller
->>               msf2: Add Smartfusion2 SoC.
->>               msf2: Add Emcraft's Smartfusion2 SOM kit.
->>
->>              default-configs/arm-softmmu.mak |   1 +
->>              hw/arm/Makefile.objs            |   2 +
->>              hw/arm/msf2-soc.c               | 201 +++++++++++++++++++++
->>              hw/arm/msf2-som.c               |  89 ++++++++++
->>              hw/misc/Makefile.objs           |   1 +
->>              hw/misc/msf2-sysreg.c           | 161 +++++++++++++++++
->>              hw/ssi/Makefile.objs            |   1 +
->>              hw/ssi/mss-spi.c                | 378
->>             ++++++++++++++++++++++++++++++++++++++++
->>              hw/timer/Makefile.objs          |   1 +
->>              hw/timer/mss-timer.c            | 249
->>             ++++++++++++++++++++++++++
->>              include/hw/arm/msf2-soc.h       |  69 ++++++++
->>              include/hw/misc/msf2-sysreg.h   |  80 +++++++++
->>              include/hw/ssi/mss-spi.h        | 104 +++++++++++
->>              include/hw/timer/mss-timer.h    |  80 +++++++++
->>              14 files changed, 1417 insertions(+)
->>              create mode 100644 hw/arm/msf2-soc.c
->>              create mode 100644 hw/arm/msf2-som.c
->>              create mode 100644 hw/misc/msf2-sysreg.c
->>              create mode 100644 hw/ssi/mss-spi.c
->>              create mode 100644 hw/timer/mss-timer.c
->>              create mode 100644 include/hw/arm/msf2-soc.h
->>              create mode 100644 include/hw/misc/msf2-sysreg.h
->>              create mode 100644 include/hw/ssi/mss-spi.h
->>              create mode 100644 include/hw/timer/mss-timer.h
->>
->>
->>
->>
-
---001a114e3f9848f18b055181d127
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr">Hi Philippe,<div class=3D"gmail_extra"><br><div class=3D"g=
-mail_quote">On Wed, May 31, 2017 at 11:06 AM, Philippe Mathieu-Daud=C3=A9 <=
-span dir=3D"ltr">&lt;<a href=3D"mailto:f4bug@amsat.org" target=3D"_blank">f=
-4bug@amsat.org</a>&gt;</span> wrote:<br><blockquote class=3D"gmail_quote" s=
-tyle=3D"margin:0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex">Hi S=
-undeep,<span class=3D""><br>
-<br>
-On 05/29/2017 02:28 AM, sundeep subbaraya wrote:<br>
-<blockquote class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border-left:1p=
-x #ccc solid;padding-left:1ex">
-Hi Philippe,<br>
-<br>
-Any update on this? I will wait for your comments too<br>
-and send next iteration fixing Alistair comments.<br>
-</blockquote>
-<br></span>
-Sorry I&#39;m supposed to be in holidays ;)<br></blockquote><div>=C2=A0</di=
-v><div>Ohh sorry currently am in vacation :) =C2=A0</div><blockquote class=
-=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border-left:1px #ccc solid;padd=
-ing-left:1ex">
-<br>
-<blockquote class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border-left:1p=
-x #ccc solid;padding-left:1ex"><span class=3D"">
-<br>
-Thanks,<br>
-Sundeep<br>
-<br>
-On Wed, May 17, 2017 at 3:09 PM, sundeep subbaraya<br></span><span class=3D=
-"">
-&lt;<a href=3D"mailto:sundeep.lkml@gmail.com" target=3D"_blank">sundeep.lkm=
-l@gmail.com</a> &lt;mailto:<a href=3D"mailto:sundeep.lkml@gmail.com" target=
-=3D"_blank">sundeep.lkml@gmail.com</a><wbr>&gt;&gt; wrote:<br>
-<br>
-=C2=A0 =C2=A0 Hi Philippe,<br>
-<br>
-=C2=A0 =C2=A0 On Wed, May 17, 2017 at 9:57 AM, Philippe Mathieu-Daud=C3=A9<=
-br></span><div><div class=3D"h5">
-=C2=A0 =C2=A0 &lt;<a href=3D"mailto:f4bug@amsat.org" target=3D"_blank">f4bu=
-g@amsat.org</a> &lt;mailto:<a href=3D"mailto:f4bug@amsat.org" target=3D"_bl=
-ank">f4bug@amsat.org</a>&gt;&gt; wrote:<br>
-<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 Hi Sundeep,<br>
-<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 This patchset is way cleaner!<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 I had a fast look and I like it, I&#39;ll try t=
-o make some time soon<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 to review details and test it.<br>
-<br>
-<br>
-=C2=A0 =C2=A0 Thank you<br>
-<br>
-<br>
-<br>
-<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 Is your work interested on U-Boot or more focus=
-ed in Linux kernel?<br>
-<br>
-<br>
-=C2=A0 =C2=A0 I am interested more in kernel. I had to look into u-boot for=
- first<br>
-=C2=A0 =C2=A0 time for Qemu only.<br>
-=C2=A0 =C2=A0 I worked only on FPGAs(load kernel with debugger) till now so=
- never<br>
-=C2=A0 =C2=A0 got a chance to look into u-boot.<br>
-<br>
-<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 If you compile QEMU with libfdt support you can=
- use the -dtb<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 option to pass the blob to the kernel directly,=
- bypassing the<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 bootloader.<br>
-<br>
-=C2=A0 =C2=A0 Yeah for armv7m I could not find any thing like that in tree.=
-<br>
-<br>
-<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 If you need a bootloader you may give a look at=
- coreboot which<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 supports dts well, see how Vladimir Serbinenko =
-used Linux&#39;s dt<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 to boot a QEMU Versatile Express board:<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 <a href=3D"https://mail.coreboot.org/pipermail/=
-coreboot-gerrit/2016-February/040899.html" rel=3D"noreferrer" target=3D"_bl=
-ank">https://mail.coreboot.org/pipe<wbr>rmail/coreboot-gerrit/2016-<wbr>Feb=
-ruary/040899.html</a><br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 &lt;<a href=3D"https://mail.coreboot.org/piperm=
-ail/coreboot-gerrit/2016-February/040899.html" rel=3D"noreferrer" target=3D=
-"_blank">https://mail.coreboot.org/pip<wbr>ermail/coreboot-gerrit/2016-<wbr=
->February/040899.html</a>&gt;<br>
-<br>
-=C2=A0 =C2=A0 Cool. I will look into it.<br>
-<br>
-=C2=A0 =C2=A0 Thanks,<br>
-=C2=A0 =C2=A0 Sundeep<br>
-<br>
-<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 Regards,<br>
-<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 Phil.<br>
-<br>
-<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 On 05/16/2017 12:38 PM, Subbaraya Sundeep wrote=
-:<br>
-<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 Hi Qemu-devel,<br>
-<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 I am trying to add Smartfusion2 S=
-oC.<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 SoC is from Microsemi and System =
-on Module(SOM)<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 board is from Emcraft systems. Sm=
-artfusion2 has hardened<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 Microcontroller(Cortex-M3)base<wb=
-r>d Sub System and FPGA fabric.<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 At the moment only system timer, =
-sysreg and SPI<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 controller are modelled.<br>
-<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 Testing:<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 ./arm-softmmu/qemu-system-arm -M =
-smartfusion2-som -serial<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 mon:stdio \<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 -kernel u-boot.bin -display none =
--drive<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 file=3Dspi.bin,if=3Dmtd,format=3D=
-raw<br>
-</div></div></blockquote>
-<br>
-I&#39;m not sure the timer is working correctly, U-Boot loops with this pat=
-tern:<br>
-<br>
-msf2_sysreg_read: addr: 0x00000048 data: 0x00000220<br>
-msf2_sysreg_write: addr: 0x00000048 data: 0x00000220<br>
-msf2_sysreg_read: addr: 0x00000048 data: 0x00000220<br>
-msf2_sysreg_write: addr: 0x00000048 data: 0x00000020<br>
-msf2_sysreg_read: addr: 0x00000048 data: 0x00000020<br>
-msf2_sysreg_write: addr: 0x00000048 data: 0x00000000<br>
-msf2_sysreg_read: addr: 0x00000048 data: 0x00000000<br>
-msf2_sysreg_write: addr: 0x00000048 data: 0x00000020<br>
-msf2_sysreg_read: addr: 0x00000048 data: 0x00000020<br>
-msf2_sysreg_write: addr: 0x00000048 data: 0x00000220<span class=3D""><br>
-<br>
-<blockquote class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border-left:1p=
-x #ccc solid;padding-left:1ex">
-<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 Binaries u-boot.bin and spi.bin a=
-re at:<br>
-</blockquote>
-<br></span>
-you can compress spi.bin!<br>
-<br>
-can you share u-boot.elf with debug symbols too?<br></blockquote><div><br><=
-/div><div>Sure. I have tested binaries before pushing. Did you compile the =
-u-boot again?</div><div>Please wait for a few days I will check and provide=
- once am back.</div><div><br></div><div>Thanks,</div><div>Sundeep</div><blo=
-ckquote class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border-left:1px #c=
-cc solid;padding-left:1ex">
-<br>
-Regards,<br>
-<br>
-Phil.<br>
-<br>
-<blockquote class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border-left:1p=
-x #ccc solid;padding-left:1ex">
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 <a href=3D"https://github.com/Sub=
-baraya-Sundeep/qemu-test-binaries.git" rel=3D"noreferrer" target=3D"_blank"=
->https://github.com/Subbaraya-S<wbr>undeep/qemu-test-binaries.git</a><div><=
-div class=3D"h5"><br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &lt;<a href=3D"https://github.com=
-/Subbaraya-Sundeep/qemu-test-binaries.git" rel=3D"noreferrer" target=3D"_bl=
-ank">https://github.com/Subbaraya-<wbr>Sundeep/qemu-test-binaries.git</a><w=
-br>&gt;<br>
-<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 U-boot is from Emcraft with modif=
-ied<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 - SPI driver not to=
- use PDMA.<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 - ugly hack to pass=
- dtb to kernel in r1.<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 @<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 <a href=3D"https://github.com/Sub=
-baraya-Sundeep/emcraft-uboot-sf2.git" rel=3D"noreferrer" target=3D"_blank">=
-https://github.com/Subbaraya-S<wbr>undeep/emcraft-uboot-sf2.git</a><br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &lt;<a href=3D"https://github.com=
-/Subbaraya-Sundeep/emcraft-uboot-sf2.git" rel=3D"noreferrer" target=3D"_bla=
-nk">https://github.com/Subbaraya-<wbr>Sundeep/emcraft-uboot-sf2.git</a>&gt;=
-<br>
-<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 Linux is 4.5 linux with Smartfusi=
-on2 SoC dts and clocksource<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 driver added by myself @<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 <a href=3D"https://github.com/Sub=
-baraya-Sundeep/linux.git" rel=3D"noreferrer" target=3D"_blank">https://gith=
-ub.com/Subbaraya-S<wbr>undeep/linux.git</a><br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &lt;<a href=3D"https://github.com=
-/Subbaraya-Sundeep/linux.git" rel=3D"noreferrer" target=3D"_blank">https://=
-github.com/Subbaraya-<wbr>Sundeep/linux.git</a>&gt;<br>
-<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 v5<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 As per Philippe com=
-ments:<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 Added=
- abort in Sysreg if guest tries to remap memory<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 other=
- than default mapping.<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 Use o=
-f CONFIG_MSF2 in Makefile for soc.c<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 Fixed=
- incorrect logic in timer model.<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 Renam=
-ed msf2-timer.c -&gt; mss-timer.c<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 msf2-spi.c -&gt; mss-spi.c also type names<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 Renam=
-ed function msf2_init-&gt;emcraft_sf2_init in<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 msf2-som.c<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 Added=
- part-name,eNVM-size,eSRAM-size<wbr>,pclk0 and pclk1<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 properties to soc.<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 Pass =
-soc part-name,memory size and clock rate<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 properties from som.<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 v4:<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 Fixed build failure=
- by using PRIx macros.<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 v3:<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 Added SoC file and =
-board file as per Alistair comments.<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 v2:<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 Added SPI controlle=
-r so that u-boot loads kernel from<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 spi flash.<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 v1:<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 Initial patch set w=
-ith timer and sysreg<br>
-<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 Thanks,<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 Sundeep<br>
-<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 Subbaraya Sundeep (5):<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 msf2: Add Smartfusion2 Sys=
-tem timer<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 msf2: Microsemi Smartfusio=
-n2 System Register block.<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 msf2: Add Smartfusion2 SPI=
- controller<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 msf2: Add Smartfusion2 SoC=
-.<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 msf2: Add Emcraft&#39;s Sm=
-artfusion2 SOM kit.<br>
-<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0default-configs/arm-softmmu=
-.m<wbr>ak |=C2=A0 =C2=A01 +<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0hw/arm/Makefile.objs=C2=A0 =
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 |=C2=A0 =C2=A02 +<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0hw/arm/msf2-soc.c=C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0| 201 +++++++++++++++++++++<br=
->
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0hw/arm/msf2-som.c=C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0|=C2=A0 89 ++++++++++<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0hw/misc/Makefile.objs=C2=A0=
- =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0|=C2=A0 =C2=A01 +<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0hw/misc/msf2-sysreg.c=C2=A0=
- =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0| 161 +++++++++++++++++<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0hw/ssi/Makefile.objs=C2=A0 =
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 |=C2=A0 =C2=A01 +<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0hw/ssi/mss-spi.c=C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 | 378<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 ++++++++++++++++++++++++++++++<wb=
-r>++++++++++<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0hw/timer/Makefile.objs=C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 |=C2=A0 =C2=A01 +<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0hw/timer/mss-timer.c=C2=A0 =
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 | 249<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 ++++++++++++++++++++++++++<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0include/hw/arm/msf2-soc.h=
-=C2=A0 =C2=A0 =C2=A0 =C2=A0|=C2=A0 69 ++++++++<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0include/hw/misc/msf2-sysreg=
-.<wbr>h=C2=A0 =C2=A0|=C2=A0 80 +++++++++<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0include/hw/ssi/mss-spi.h=C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 | 104 +++++++++++<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0include/hw/timer/mss-timer.=
-h=C2=A0 =C2=A0 |=C2=A0 80 +++++++++<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A014 files changed, 1417 inse=
-rtions(+)<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0create mode 100644 hw/arm/m=
-sf2-soc.c<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0create mode 100644 hw/arm/m=
-sf2-som.c<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0create mode 100644 hw/misc/=
-msf2-sysreg.c<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0create mode 100644 hw/ssi/m=
-ss-spi.c<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0create mode 100644 hw/timer=
-/mss-timer.c<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0create mode 100644 include/=
-hw/arm/msf2-soc.h<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0create mode 100644 include/=
-hw/misc/msf2-sysreg.h<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0create mode 100644 include/=
-hw/ssi/mss-spi.h<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0create mode 100644 include/=
-hw/timer/mss-timer.h<br>
-<br>
-<br>
-<br>
-</div></div></blockquote>
-</blockquote></div><br></div></div>
-
---001a114e3f9848f18b055181d127--
+>=20
+> Thanks
+>=20
+> Eric
+>=20
+> > I am using qemu-tree you mentioned below and iommu-driver patches
+> published by Jean-P.
+> > Qemu command line have additional ""-device virtio-iommu-device". What
+> I am missing ?
+>=20
+>=20
+> >
+> > Thanks
+> > -Bharat
+> >
+> >>
+> >> Best Regards
+> >>
+> >> Eric
+> >>
+> >> This series can be found at:
+> >> https://github.com/eauger/qemu/tree/virtio-iommu-rfcv2
+> >>
+> >> References:
+> >> [1] [RFC 0/3] virtio-iommu: a paravirtualized IOMMU, [2] [RFC PATCH
+> >> linux]
+> >> iommu: Add virtio-iommu driver [3] [RFC PATCH kvmtool 00/15] Add
+> >> virtio- iommu
+> >>
+> >> History:
+> >> v1 -> v2:
+> >> - fix redifinition of viommu_as typedef
+> >>
+> >> Eric Auger (8):
+> >>   update-linux-headers: import virtio_iommu.h
+> >>   linux-headers: Update for virtio-iommu
+> >>   virtio_iommu: add skeleton
+> >>   virtio-iommu: Decode the command payload
+> >>   virtio_iommu: Add the iommu regions
+> >>   virtio-iommu: Implement the translation and commands
+> >>   hw/arm/virt: Add 2.10 machine type
+> >>   hw/arm/virt: Add virtio-iommu the virt board
+> >>
+> >>  hw/arm/virt.c                                 | 116 ++++-
+> >>  hw/virtio/Makefile.objs                       |   1 +
+> >>  hw/virtio/trace-events                        |  14 +
+> >>  hw/virtio/virtio-iommu.c                      | 623
+> ++++++++++++++++++++++++++
+> >>  include/hw/arm/virt.h                         |   5 +
+> >>  include/hw/virtio/virtio-iommu.h              |  60 +++
+> >>  include/standard-headers/linux/virtio_ids.h   |   1 +
+> >>  include/standard-headers/linux/virtio_iommu.h | 142 ++++++
+> >>  linux-headers/linux/virtio_iommu.h            |   1 +
+> >>  scripts/update-linux-headers.sh               |   3 +
+> >>  10 files changed, 957 insertions(+), 9 deletions(-)  create mode
+> >> 100644 hw/virtio/virtio-iommu.c  create mode 100644
+> >> include/hw/virtio/virtio- iommu.h  create mode 100644
+> >> include/standard- headers/linux/virtio_iommu.h  create mode 100644
+> >> linux-headers/linux/virtio_iommu.h
+> >>
+> >> --
+> >> 2.5.5
+> >

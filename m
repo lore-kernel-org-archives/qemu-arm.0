@@ -1,192 +1,177 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaro.local ([81.128.185.34])
-        by smtp.gmail.com with ESMTPSA id 202sm1845717wmq.27.2017.06.09.03.53.40
+        by smtp.gmail.com with ESMTPSA id b8sm2423863wrb.7.2017.06.09.10.00.42
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 09 Jun 2017 03:53:40 -0700 (PDT)
-Received: from zen (localhost [127.0.0.1])
-	by zen.linaro.local (Postfix) with ESMTPS id BA6273E004E;
-	Fri,  9 Jun 2017 11:54:09 +0100 (BST)
-References: <20170609094812.GA2201@toto>
-User-agent: mu4e 0.9.19; emacs 25.2.50.3
-From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
-Cc: qemu-arm <qemu-arm@nongnu.org>, qemu-devel@nongnu.org, peter.maydell@linaro.org, "Emilio G. Cota" <cota@braap.org>, Richard Henderson <rth@twiddle.net>, fred.konrad@greensocs.com
-Subject: Re: AArch64 regression
-In-reply-to: <20170609094812.GA2201@toto>
-Date: Fri, 09 Jun 2017 11:54:09 +0100
-Message-ID: <87zidhbfe6.fsf@linaro.org>
+        Fri, 09 Jun 2017 10:00:44 -0700 (PDT)
+Received: from zen.linaroharston (localhost [127.0.0.1])
+	by zen.linaro.local (Postfix) with ESMTP id BC4E93E0464;
+	Fri,  9 Jun 2017 18:01:11 +0100 (BST)
+From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: peter.maydell@linaro.org,
+	pbonzini@redhat.com,
+	edgar.iglesias@xilinx.com,
+	cota@braap.org
+Cc: qemu-devel@nongnu.org,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	Peter Crosthwaite <crosthwaite.peter@gmail.com>,
+	Richard Henderson <rth@twiddle.net>,
+	qemu-arm@nongnu.org (open list:ARM)
+Subject: [RFC DEBUG PATCH 3/3] translate-a64: fix lookup_tb_ptr hang (DEBUG!)
+Date: Fri,  9 Jun 2017 18:01:00 +0100
+Message-Id: <20170609170100.3599-4-alex.bennee@linaro.org>
+X-Mailer: git-send-email 2.13.0
+In-Reply-To: <20170609170100.3599-1-alex.bennee@linaro.org>
+References: <20170609170100.3599-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: OAjEHUWiF2CG
+X-TUID: xXojmshJ2oH4
 
+THIS IS A DEBUG PATCH DO NOT MERGE
 
-Edgar E. Iglesias <edgar.iglesias@gmail.com> writes:
+I include all the comments to show my working. I was trying to
+isolate which instructions cause the problem. It turns out it is the
+RET instruction. I don't understand why because AFAICT it is a
+pretty much a BR instruction.
 
-> Hi,
->
-> I was running a bunch of tests in preparation for the MMIO/exec
-> series but am running into regressions on master.
-> I'm at commit 64175afc695c0672876fbbfc31b299c86d562cb4
->
-> On the xlnx-zcu102 I see lockups, the console goes unresponsive.
-> On one of my vexpress-a15 setups (with an a57), I see weird
-> segfaults in user-space.
->
-> I bisected this multiple times with each of the test cases
-> and all of the bisects bring me to this commit:
-> commit e75449a346bf558296966a44277bfd93412c6da6
-> Author: Emilio G. Cota <cota@braap.org>
-> Date:   Fri Apr 28 14:59:23 2017 -0400
->
->     target/aarch64: optimize indirect branches
->
->
-> Does this ring any bells? Are there any known issues at the moment?
-> I've copied a GDB backtrace form the ZynqMP lockup at the end
-> of this email.
+Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+---
+ include/exec/exec-all.h    |  2 ++
+ target/arm/translate-a64.c | 21 +++++++++++++++++----
+ target/arm/translate.h     |  2 ++
+ tcg-runtime.c              |  4 +++-
+ 4 files changed, 24 insertions(+), 5 deletions(-)
 
-Yes - see the PULL req thread when this got merged:
-
-  Message-ID: <87h8zrdh02.fsf@linaro.org>
-
-I'm currently trying to narrow it down. It's tricky as the problem goes
-away when I add fprintfs but it affects both single and multi-thread
-modes so I don't think its a race.
-
-It seems to only affect TB's looked up in lookup_tb_ptr via the htable
-which is odd.
-
->
-> Thanks,
-> Edgar
->
-> GDB backtrace:
-> (gdb) thread apply all bt
->
-> Thread 6 (Thread 0x7fff431fc700 (LWP 28586)):
-> #0  0x00007ffff5e2826d in __lll_lock_wait ()
->    from /lib/x86_64-linux-gnu/libpthread.so.0
-> #1  0x00007ffff5e21dbd in pthread_mutex_lock ()
->    from /lib/x86_64-linux-gnu/libpthread.so.0
-> #2  0x0000555555b5cc40 in qemu_mutex_lock (
->     mutex=mutex@entry=0x55555620be80 <qemu_global_mutex>)
->     at /home/edgar/src/c/qemu/qemu/util/qemu-thread-posix.c:61
-> #3  0x00005555557bc9cc in qemu_mutex_lock_iothread ()
->     at /home/edgar/src/c/qemu/qemu/cpus.c:1581
-> #4  0x000055555578e865 in cpu_handle_interrupt (last_tb=<synthetic pointer>,
->     cpu=0x5555566c40b0) at /home/edgar/src/c/qemu/qemu/cpu-exec.c:491
-> #5  cpu_exec (cpu=cpu@entry=0x7fffc543f4f8)
->     at /home/edgar/src/c/qemu/qemu/cpu-exec.c:670
-> #6  0x00005555557bcb9f in tcg_cpu_exec (cpu=0x7fffc543f4f8)
->     at /home/edgar/src/c/qemu/qemu/cpus.c:1270
-> #7  qemu_tcg_cpu_thread_fn (arg=0x7fffc543f4f8)
->     at /home/edgar/src/c/qemu/qemu/cpus.c:1473
-> #8  0x00007ffff5e1f6ba in start_thread ()
->    from /lib/x86_64-linux-gnu/libpthread.so.0
-> #9  0x00007ffff5b5582d in clone () from /lib/x86_64-linux-gnu/libc.so.6
->
-> Thread 5 (Thread 0x7fff439fd700 (LWP 28585)):
-> #0  0x00007ffff5e2826d in __lll_lock_wait ()
->    from /lib/x86_64-linux-gnu/libpthread.so.0
-> #1  0x00007ffff5e21dbd in pthread_mutex_lock ()
->    from /lib/x86_64-linux-gnu/libpthread.so.0
-> #2  0x0000555555b5cc40 in qemu_mutex_lock (
->     mutex=mutex@entry=0x55555620be80 <qemu_global_mutex>)
->     at /home/edgar/src/c/qemu/qemu/util/qemu-thread-posix.c:61
-> #3  0x00005555557bc9cc in qemu_mutex_lock_iothread ()
->     at /home/edgar/src/c/qemu/qemu/cpus.c:1581
-> #4  0x000055555578e865 in cpu_handle_interrupt (last_tb=<synthetic pointer>,
->     cpu=0x5555566c40b0) at /home/edgar/src/c/qemu/qemu/cpu-exec.c:491
-> #5  cpu_exec (cpu=cpu@entry=0x7fffc54208d0)
->     at /home/edgar/src/c/qemu/qemu/cpu-exec.c:670
-> #6  0x00005555557bcb9f in tcg_cpu_exec (cpu=0x7fffc54208d0)
->     at /home/edgar/src/c/qemu/qemu/cpus.c:1270
-> #7  qemu_tcg_cpu_thread_fn (arg=0x7fffc54208d0)
->     at /home/edgar/src/c/qemu/qemu/cpus.c:1473
-> #8  0x00007ffff5e1f6ba in start_thread ()
->    from /lib/x86_64-linux-gnu/libpthread.so.0
-> #9  0x00007ffff5b5582d in clone () from /lib/x86_64-linux-gnu/libc.so.6
->
-> Thread 4 (Thread 0x7fff441fe700 (LWP 28584)):
-> #0  0x00007ffff5e21dac in pthread_mutex_lock ()
->    from /lib/x86_64-linux-gnu/libpthread.so.0
-> #1  0x0000555555b5cc40 in qemu_mutex_lock (
->     mutex=mutex@entry=0x55555620be80 <qemu_global_mutex>)
->     at /home/edgar/src/c/qemu/qemu/util/qemu-thread-posix.c:61
-> #2  0x00005555557bc9cc in qemu_mutex_lock_iothread ()
->     at /home/edgar/src/c/qemu/qemu/cpus.c:1581
-> #3  0x000055555578e865 in cpu_handle_interrupt (last_tb=<synthetic pointer>,
->     cpu=0x5555566c40b0) at /home/edgar/src/c/qemu/qemu/cpu-exec.c:491
-> #4  cpu_exec (cpu=cpu@entry=0x7fffc5401ca8)
->     at /home/edgar/src/c/qemu/qemu/cpu-exec.c:670
-> #5  0x00005555557bcb9f in tcg_cpu_exec (cpu=0x7fffc5401ca8)
->     at /home/edgar/src/c/qemu/qemu/cpus.c:1270
-> #6  qemu_tcg_cpu_thread_fn (arg=0x7fffc5401ca8)
->     at /home/edgar/src/c/qemu/qemu/cpus.c:1473
-> #7  0x00007ffff5e1f6ba in start_thread ()
->    from /lib/x86_64-linux-gnu/libpthread.so.0
-> #8  0x00007ffff5b5582d in clone () from /lib/x86_64-linux-gnu/libc.so.6
->
-> Thread 3 (Thread 0x7fff449ff700 (LWP 28583)):
-> #0  0x00005555558c4c89 in regime_el (mmu_idx=ARMMMUIdx_S1NSE1,
->     env=0x7fffc53eb310) at /home/edgar/src/c/qemu/qemu/target/arm/helper.c:7028
-> #1  regime_tcr (mmu_idx=<optimized out>, env=0x7fffc53eb310)
->     at /home/edgar/src/c/qemu/qemu/target/arm/helper.c:7117
-> #2  arm_regime_tbi0 (env=env@entry=0x7fffc53eb310, mmu_idx=<optimized out>,
->     mmu_idx@entry=ARMMMUIdx_S12NSE1)
->     at /home/edgar/src/c/qemu/qemu/target/arm/helper.c:7142
-> #3  0x00005555557ba346 in cpu_get_tb_cpu_state (flags=<synthetic pointer>,
->     cs_base=<synthetic pointer>, pc=<synthetic pointer>, env=0x7fffc53eb310)
->     at /home/edgar/src/c/qemu/qemu/target/arm/cpu.h:2571
-> #4  helper_lookup_tb_ptr (env=0x7fffc53eb310, addr=18446743524088820436)
->     at /home/edgar/src/c/qemu/qemu/tcg-runtime.c:156
-> #5  0x00007fffcf2f7e53 in code_gen_buffer ()
-> #6  0x000055555578de7c in cpu_tb_exec (itb=<optimized out>,
->     itb=<optimized out>, cpu=0x7fffc5727478)
->     at /home/edgar/src/c/qemu/qemu/cpu-exec.c:166
-> #7  cpu_loop_exec_tb (tb_exit=<synthetic pointer>,
->     last_tb=<synthetic pointer>, tb=<optimized out>, cpu=0x7fffc5727478)
->     at /home/edgar/src/c/qemu/qemu/cpu-exec.c:574
-> #8  cpu_exec (cpu=cpu@entry=0x7fffc53e3080)
->     at /home/edgar/src/c/qemu/qemu/cpu-exec.c:672
-> #9  0x00005555557bcb9f in tcg_cpu_exec (cpu=0x7fffc53e3080)
->     at /home/edgar/src/c/qemu/qemu/cpus.c:1270
-> #10 qemu_tcg_cpu_thread_fn (arg=0x7fffc53e3080)
->     at /home/edgar/src/c/qemu/qemu/cpus.c:1473
-> #11 0x00007ffff5e1f6ba in start_thread ()
->    from /lib/x86_64-linux-gnu/libpthread.so.0
-> #12 0x00007ffff5b5582d in clone () from /lib/x86_64-linux-gnu/libc.so.6
->
-> Thread 2 (Thread 0x7fffef7b7700 (LWP 28582)):
-> #0  0x00007ffff5b4f8e9 in syscall () from /lib/x86_64-linux-gnu/libc.so.6
-> #1  0x0000555555b5d385 in qemu_futex_wait (val=<optimized out>,
->     f=<optimized out>) at /home/edgar/src/c/qemu/qemu/include/qemu/futex.h:26
-> #2  qemu_event_wait (ev=ev@entry=0x55555661bae4 <rcu_call_ready_event>)
->     at /home/edgar/src/c/qemu/qemu/util/qemu-thread-posix.c:415
-> #3  0x0000555555b6cc6e in call_rcu_thread (opaque=<optimized out>)
->     at /home/edgar/src/c/qemu/qemu/util/rcu.c:249
-> #4  0x00007ffff5e1f6ba in start_thread ()
->    from /lib/x86_64-linux-gnu/libpthread.so.0
-> #5  0x00007ffff5b5582d in clone () from /lib/x86_64-linux-gnu/libc.so.6
->
-> Thread 1 (Thread 0x7ffff7f31c00 (LWP 28578)):
-> #0  0x00007ffff5b49c21 in ppoll () from /lib/x86_64-linux-gnu/libc.so.6
-> #1  0x0000555555b58f39 in ppoll (__ss=0x0, __timeout=0x7fffffffd5f0,
->     __nfds=<optimized out>, __fds=<optimized out>)
->     at /usr/include/x86_64-linux-gnu/bits/poll2.h:77
-> #2  qemu_poll_ns (fds=<optimized out>, nfds=<optimized out>,
->     timeout=timeout@entry=9223371867734611302)
->     at /home/edgar/src/c/qemu/qemu/util/qemu-timer.c:334
-> #3  0x0000555555b59d6a in os_host_main_loop_wait (timeout=9223371867734611302)
->     at /home/edgar/src/c/qemu/qemu/util/main-loop.c:255
-> #4  main_loop_wait (nonblocking=<optimized out>)
->     at /home/edgar/src/c/qemu/qemu/util/main-loop.c:517
-> #5  0x0000555555779057 in main_loop () at /home/edgar/src/c/qemu/qemu/vl.c:1918
-> #6  main (argc=<optimized out>, argv=<optimized out>, envp=<optimized out>)
->     at /home/edgar/src/c/qemu/qemu/vl.c:4752
-> (gdb)
-
-
---
-Alex Bennée
+diff --git a/include/exec/exec-all.h b/include/exec/exec-all.h
+index 87ae10bcc9..6c0c4825aa 100644
+--- a/include/exec/exec-all.h
++++ b/include/exec/exec-all.h
+@@ -326,6 +326,8 @@ struct TranslationBlock {
+ 
+     uint16_t invalid;
+ 
++    bool is_magic;
++
+     void *tc_ptr;    /* pointer to the translated code */
+     uint8_t *tc_search;  /* pointer to search data */
+     /* original tb when cflags has CF_NOCACHE */
+diff --git a/target/arm/translate-a64.c b/target/arm/translate-a64.c
+index 860e279658..6dd6fd70d0 100644
+--- a/target/arm/translate-a64.c
++++ b/target/arm/translate-a64.c
+@@ -1394,6 +1394,7 @@ static void handle_sync(DisasContext *s, uint32_t insn,
+          * any pending interrupts immediately.
+          */
+         s->is_jmp = DISAS_UPDATE;
++        /* s->is_magic = true; */
+         return;
+     default:
+         unallocated_encoding(s);
+@@ -1423,6 +1424,7 @@ static void handle_msr_i(DisasContext *s, uint32_t insn,
+         tcg_temp_free_i32(tcg_imm);
+         tcg_temp_free_i32(tcg_op);
+         s->is_jmp = DISAS_UPDATE;
++        /* s->is_magic = true; */
+         break;
+     }
+     default:
+@@ -1592,12 +1594,14 @@ static void handle_sys(DisasContext *s, uint32_t insn, bool isread,
+         /* I/O operations must end the TB here (whether read or write) */
+         gen_io_end();
+         s->is_jmp = DISAS_UPDATE;
++        /* s->is_magic = true; */
+     } else if (!isread && !(ri->type & ARM_CP_SUPPRESS_TB_END)) {
+         /* We default to ending the TB on a coprocessor register write,
+          * but allow this to be suppressed by the register definition
+          * (usually only necessary to work around guest bugs).
+          */
+         s->is_jmp = DISAS_UPDATE;
++        /* s->is_magic = true; */
+     }
+ }
+ 
+@@ -1772,13 +1776,18 @@ static void disas_uncond_b_reg(DisasContext *s, uint32_t insn)
+ 
+     switch (opc) {
+     case 0: /* BR */
++        /* s->is_magic = true; */
++        gen_a64_set_pc(s, cpu_reg(s, rn));
++        break;
+     case 1: /* BLR */
+-    case 2: /* RET */
++        /* s->is_magic = true; */
+         gen_a64_set_pc(s, cpu_reg(s, rn));
+         /* BLR also needs to load return address */
+-        if (opc == 1) {
+-            tcg_gen_movi_i64(cpu_reg(s, 30), s->pc);
+-        }
++        tcg_gen_movi_i64(cpu_reg(s, 30), s->pc);
++        break;
++    case 2: /* RET */
++        s->is_magic = true;
++        gen_a64_set_pc(s, cpu_reg(s, rn));
+         break;
+     case 4: /* ERET */
+         if (s->current_el == 0) {
+@@ -1787,6 +1796,7 @@ static void disas_uncond_b_reg(DisasContext *s, uint32_t insn)
+         }
+         gen_helper_exception_return(cpu_env);
+         s->is_jmp = DISAS_JUMP;
++        /* s->is_magic = true; */
+         return;
+     case 5: /* DRPS */
+         if (rn != 0x1f) {
+@@ -11250,6 +11260,7 @@ void gen_intermediate_code_a64(ARMCPU *cpu, TranslationBlock *tb)
+     dc->pstate_ss = ARM_TBFLAG_PSTATE_SS(tb->flags);
+     dc->is_ldex = false;
+     dc->ss_same_el = (arm_debug_target_el(env) == dc->current_el);
++    dc->is_magic = false;
+ 
+     init_tmp_a64_array(dc);
+ 
+@@ -11281,6 +11292,7 @@ void gen_intermediate_code_a64(ARMCPU *cpu, TranslationBlock *tb)
+                         gen_helper_check_breakpoints(cpu_env);
+                         /* End the TB early; it likely won't be executed */
+                         dc->is_jmp = DISAS_UPDATE;
++                        /* dc->is_magic = true; */
+                     } else {
+                         gen_exception_internal_insn(dc, 0, EXCP_DEBUG);
+                         /* The address covered by the breakpoint must be
+@@ -11367,6 +11379,7 @@ void gen_intermediate_code_a64(ARMCPU *cpu, TranslationBlock *tb)
+             gen_a64_set_pc_im(dc->pc);
+             /* fall through */
+         case DISAS_JUMP:
++            tb->is_magic = dc->is_magic;
+             tcg_gen_lookup_and_goto_ptr(cpu_pc);
+             break;
+         case DISAS_TB_JUMP:
+diff --git a/target/arm/translate.h b/target/arm/translate.h
+index 15d383d9af..786eb19335 100644
+--- a/target/arm/translate.h
++++ b/target/arm/translate.h
+@@ -62,6 +62,8 @@ typedef struct DisasContext {
+     bool ss_same_el;
+     /* Bottom two bits of XScale c15_cpar coprocessor access control reg */
+     int c15_cpar;
++
++    bool is_magic;
+     /* TCG op index of the current insn_start.  */
+     int insn_start_idx;
+ #define TMP_A64_MAX 16
+diff --git a/tcg-runtime.c b/tcg-runtime.c
+index e987c1f6bb..d9d7c52ae9 100644
+--- a/tcg-runtime.c
++++ b/tcg-runtime.c
+@@ -168,7 +168,9 @@ void *HELPER(lookup_tb_ptr)(CPUArchState *env, target_ulong addr)
+             tb = tb_htable_lookup(cpu, addr, cs_base, flags);
+             if (likely(tb)) {
+                 atomic_set(&cpu->tb_jmp_cache[addr_hash], tb);
+-                code_ptr = tb->tc_ptr;
++                if (!tb->is_magic) {
++                    code_ptr = tb->tc_ptr;
++                }
+             }
+         }
+     }
+-- 
+2.13.0

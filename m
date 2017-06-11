@@ -1,158 +1,115 @@
-Received: by 10.25.0.23 with SMTP id 23csp219021lfa;
-        Sat, 10 Jun 2017 09:59:23 -0700 (PDT)
-X-Received: by 10.84.209.228 with SMTP id y91mr46989897plh.210.1497113963811;
-        Sat, 10 Jun 2017 09:59:23 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1497113963; cv=none;
+Received: by 10.25.0.23 with SMTP id 23csp366259lfa;
+        Sat, 10 Jun 2017 22:07:31 -0700 (PDT)
+X-Received: by 10.200.33.235 with SMTP id 40mr5266177qtz.189.1497157651467;
+        Sat, 10 Jun 2017 22:07:31 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1497157651; cv=none;
         d=google.com; s=arc-20160816;
-        b=VuCQvx75WMELtafjACoeUi1Icv8AeJaF7ebe7Chy2YaPUGmIonP7mhE9HtoEenbgs/
-         DtIG0/KwBKIOwW3qP924o+vhJ2a7Po+FxtMjqD/jd25GWZYTHt++mxyB962hkyzWoyuS
-         xTYBxXNmDy4pov9W9B0rP6QNE+TIthCkg15zksBJZZ6QGBMWSnYiK5A0GBl9Ww1ZzU+j
-         xdPvpa7amPi8WZxk++A++m8NZ6+Cm1487RlLXyBM/s4iPl8A5DhtnWwqAS6c9buy7thl
-         vxG77M7Dj5ALT1Yk3NBSYtRCwLP5ADoqJmpgXbJPUnr0mcLIJPp8BWV+WSK/8HJi01IO
-         wtwA==
+        b=eWMvNCsbTGqspnCbcax5rtpmE3fkj3zxipca965Zg2HuJ1bCadykvmYgnuypQlCbpK
+         008lLtzu9hBtguCN9AR7o2PboLUHuM1lW3tIh5JUxAZzl75ofz5UfuvAR1Mes96x8q39
+         tnxIx5fzbI9hwC+pyj5nKBFnyB+o2HUE8VZm3mCylAfbQ1QHd3Gl0j233aYdtZ7onW4b
+         gX/WwrULQ3qwZKcJ1cxJ2xpuJ9HBPTPq4WA0PDoxDC6nbzhGUKQTAECbGQxFnH01ivVM
+         +sbtm6er7+FtNIrygK6oavrrvlNkfxPeg5tc77ge83ebw7V4lS8A4TEmtbFBa7vvkyYd
+         1n/w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:cc:to:subject:sender
-         :dkim-signature:arc-authentication-results;
-        bh=ZnK72iCxkC8IDlI7fNIolO6IzrWw9hDtcuCyzHGTV3w=;
-        b=xwgIVBA2c4jGXfviVtBEWFr/w+WR9/7PgBSGiq36fJUqRMm+rT5nQW4w1YsF03nhJX
-         mxd6JXJXuSLAJBpJkSQAiwLs2CQpE7CTEo9WTt1N/dLHkUJ3o4VWznMmST/BU9oNMwCO
-         jMY8cCEDdEvcXcOpY4RKqKefr0f2ltd/Woo+jeYqO5ib8+RA5P464B7lYTt8fNfWVvlJ
-         QRtO5vxrHx71Ui40T96/0kIvYAdoUnDhZeuBEmYKw8ySWRXR87Jnf+/UJXfuf3kjMHyC
-         iIB8vQ1S//ZQbTv9vXZkfuz9p+pAdt8dTjQ7heGyHmoZq3qmuUdLKojz13WOtMHeNhyr
-         nV+A==
+        h=user-agent:in-reply-to:content-transfer-encoding
+         :content-disposition:mime-version:references:message-id:subject:cc
+         :to:from:date:dkim-signature:dkim-signature
+         :arc-authentication-results;
+        bh=emKsi7Vk7PJEGBYxDFh67vbBQ+DRgEmQHtQrBabuaE4=;
+        b=Us/sfrtqViRGk9NEUeuGTklBpa9Mxm+528xwuwqYpcuD3nTqAQoZGGUCBcoO/xXOXi
+         ubehrAJxSTUEm+7x+VGCkplJUfPgf1o4vcdfUumVuU25F7yMDP1Fux61X04acREt1Ml6
+         rEU8KixljgJClMXzO04NM9HRZswD/wV1HB3/p4INf/8fH540nLLZNGzf875pBlYjWLaP
+         fIOejLACbIfKZWg/c+oYIWC2eOpp5RZNzUsWH4hT6o7z51e3tvubXAiKgiti5N6lV6kB
+         wibm2MNfc2WdQli1OKizc5T1DVii7O+NsXzi0oMVjxQAZLqMRtdQDenVfAkc5eFXAZBT
+         7qwg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of rth7680@gmail.com designates 2607:f8b0:400e:c05::242 as permitted sender) smtp.mailfrom=rth7680@gmail.com
-Return-Path: <rth7680@gmail.com>
-Received: from mail-pg0-x242.google.com (mail-pg0-x242.google.com. [2607:f8b0:400e:c05::242])
-        by mx.google.com with ESMTPS id p12si9463749pgs.309.2017.06.10.09.59.23
+       dkim=pass header.i=@braap.org;
+       dkim=pass header.i=@messagingengine.com;
+       spf=pass (google.com: domain of cota@braap.org designates 66.111.4.25 as permitted sender) smtp.mailfrom=cota@braap.org
+Return-Path: <cota@braap.org>
+Received: from out1-smtp.messagingengine.com (out1-smtp.messagingengine.com. [66.111.4.25])
+        by mx.google.com with ESMTPS id y31si5455743qtb.221.2017.06.10.22.07.31
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 10 Jun 2017 09:59:23 -0700 (PDT)
-Received-SPF: pass (google.com: domain of rth7680@gmail.com designates 2607:f8b0:400e:c05::242 as permitted sender) client-ip=2607:f8b0:400e:c05::242;
+        Sat, 10 Jun 2017 22:07:31 -0700 (PDT)
+Received-SPF: pass (google.com: domain of cota@braap.org designates 66.111.4.25 as permitted sender) client-ip=66.111.4.25;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of rth7680@gmail.com designates 2607:f8b0:400e:c05::242 as permitted sender) smtp.mailfrom=rth7680@gmail.com
-Received: by mail-pg0-x242.google.com with SMTP id a70so10506978pge.0;
-        Sat, 10 Jun 2017 09:59:23 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=sender:subject:to:cc:references:from:message-id:date:user-agent
-         :mime-version:in-reply-to:content-language:content-transfer-encoding;
-        bh=ZnK72iCxkC8IDlI7fNIolO6IzrWw9hDtcuCyzHGTV3w=;
-        b=nbkJ2JnyMpqUMa9R+6J0cL/8kp+K5EvNChuQBMJd31rnW/bY2gRmgDUOp2fOlu37OV
-         7tpgD4QDgCo3pf029Fgwp8epxwzKf3N/oeHE2wSaZ/LViUNue5q+dmS7oZAMINqPUH/n
-         UFIdxqllYNF3n9btzYK2K/KKk+tOeQ2UxyLXJ+2VRNr+VUo5LVNZzIweTZKO3UC0qkQA
-         IbjWF9lAuQQWmDqPuAoZz5JYktRQoA5pMG+thljEohGhEdxGbfbjiaWl6QXSsag6ihxh
-         Y8x2Rr4OAeGwJ9NYwNhlDotLyukFFtEznPQyVxt+BZvGxhQWvwgrip4psPe1g02wdsGy
-         UP/A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
-         :date:user-agent:mime-version:in-reply-to:content-language
-         :content-transfer-encoding;
-        bh=ZnK72iCxkC8IDlI7fNIolO6IzrWw9hDtcuCyzHGTV3w=;
-        b=DvicvS9Y6lGgDH/UdbxavKiWMXA+0C6Rxl6uCbqCVWbpDdC6xhAKBlBfsj8H2klO5F
-         VnMPVSz3SYC5GKgDQh6GULk1EGNkcxI9+1/Y5CMgi0v66nu7lVjbCg6PkSmiexfd6yV1
-         v8W9qxIq19YJZox9682vO463A/xuGyi4jWyQ+DMTDRRqfZWxipwICcXmAlsLT30O7Weg
-         sKy06KtgmoYKElPAsove5T4H9Zy61gd2DngYfBegiHum/cOdpMTaOc/FRpydJzPh/eUi
-         s25aIoibQAaBCECKPKEPWpX4F50VybxldXofXHP5lgTuPGCkIm3/n9yGGs8vbO6lo6n6
-         sTcg==
-X-Gm-Message-State: AODbwcAKPk/QrNo0cDCfLqzcv5ZnY2U0mL08pQwpsrTu7jqgqq0y/OxH
-	+K7jLEzqwz5QIw==
-X-Received: by 10.84.210.33 with SMTP id z30mr47975609plh.235.1497113963297;
-        Sat, 10 Jun 2017 09:59:23 -0700 (PDT)
-Return-Path: <rth7680@gmail.com>
-Received: from bigtime.twiddle.net (97-113-165-157.tukw.qwest.net. [97.113.165.157])
-        by smtp.googlemail.com with ESMTPSA id e124sm8790830pgc.17.2017.06.10.09.59.21
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 10 Jun 2017 09:59:21 -0700 (PDT)
-Sender: Richard Henderson <rth7680@gmail.com>
+       dkim=pass header.i=@braap.org;
+       dkim=pass header.i=@messagingengine.com;
+       spf=pass (google.com: domain of cota@braap.org designates 66.111.4.25 as permitted sender) smtp.mailfrom=cota@braap.org
+Received: from compute4.internal (compute4.nyi.internal [10.202.2.44])
+	by mailout.nyi.internal (Postfix) with ESMTP id E08A920B31;
+	Sun, 11 Jun 2017 01:07:30 -0400 (EDT)
+Received: from frontend1 ([10.202.2.160])
+  by compute4.internal (MEProxy); Sun, 11 Jun 2017 01:07:30 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=braap.org; h=cc
+	:content-transfer-encoding:content-type:date:from:in-reply-to
+	:message-id:mime-version:references:subject:to:x-me-sender
+	:x-me-sender:x-sasl-enc:x-sasl-enc; s=mesmtp; bh=emKsi7Vk7PJEGBY
+	xDFh67vbBQ+DRgEmQHtQrBabuaE4=; b=nIst8cZssB0dmLh/DJ3wv3qpLyGohFZ
+	IMe0We8Y8jplU72xt89JIBKaZ1B6t8OPxIADNxtGpZwyeChbj1M2a84D7g2MkgRX
+	ZmWKIH4qWfBKtFn1kgB3iPVKkStDQmxffq+yrj5hXIT9WJSttlbHwZ+YzUeSCzM/
+	1ddwLWGWXAr4=
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+	messagingengine.com; h=cc:content-transfer-encoding:content-type
+	:date:from:in-reply-to:message-id:mime-version:references
+	:subject:to:x-me-sender:x-me-sender:x-sasl-enc:x-sasl-enc; s=
+	fm1; bh=emKsi7Vk7PJEGBYxDFh67vbBQ+DRgEmQHtQrBabuaE4=; b=EI+F5G1Y
+	ajqiuXsF7cc+At75mIia8m64mlUFy68QrLWOP8UoSjiEhvIqL/r9j0Q83oamJaNj
+	xiXUk+1qNZ2wnq0HutoNBkKtPgfZ3NfzVL9bkAOAZvy6qXZFc62Vy3gcJ9SRXbha
+	oYhwyDiwRa6mmwVNqppGD91o2wWWmzODExm+eSNzafWdNTywezTMR0G66Q01iYts
+	1GNbwQ44/tGv70GWm9DIH8I9J9Gqu91eM/5Dkp/3ux2gqCl3vuuJbXrvJ0Vu6YP1
+	VDlDoSZNhIJOU++5crMzQIkiyMdeuSijMI8ykgoU1QVzt2Rqmx9fgpJun6UckLkC
+	AgzUXtNPQ8WTxw==
+X-ME-Sender: <xms:EtA8WdoF6K2-EUdR867SXnmjlQuvRz_7nzzsiTmJXAbhiGziAxi2Gw>
+X-Sasl-enc: QQDEI6y6ZK4PNOA0bhEHOuJLGrwGLm/jVL+3fnBCvWH5 1497157650
+Received: from localhost (flamenco.cs.columbia.edu [128.59.20.216])
+	by mail.messagingengine.com (Postfix) with ESMTPA id 9F86D7E766;
+	Sun, 11 Jun 2017 01:07:30 -0400 (EDT)
+Date: Sun, 11 Jun 2017 01:07:30 -0400
+From: "Emilio G. Cota" <cota@braap.org>
+To: Richard Henderson <rth@twiddle.net>
+Cc: Alex =?iso-8859-1?Q?Benn=E9e?= <alex.bennee@linaro.org>,
+	peter.maydell@linaro.org, pbonzini@redhat.com,
+	edgar.iglesias@xilinx.com, qemu-devel@nongnu.org,
+	Peter Crosthwaite <crosthwaite.peter@gmail.com>,
+	"open list:ARM" <qemu-arm@nongnu.org>
 Subject: Re: [RFC DEBUG PATCH 3/3] translate-a64: fix lookup_tb_ptr hang
  (DEBUG!)
-To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>
-Cc: peter.maydell@linaro.org, pbonzini@redhat.com, edgar.iglesias@xilinx.com,
- cota@braap.org, qemu-devel@nongnu.org,
- Peter Crosthwaite <crosthwaite.peter@gmail.com>,
- "open list:ARM" <qemu-arm@nongnu.org>
+Message-ID: <20170611050730.GA12317@flamenco>
 References: <20170609170100.3599-1-alex.bennee@linaro.org>
  <20170609170100.3599-4-alex.bennee@linaro.org>
  <fc351edb-7c08-c341-d8ee-85f6768e4931@twiddle.net>
  <87vao4b4z5.fsf@linaro.org>
-From: Richard Henderson <rth@twiddle.net>
-Message-ID: <9776b437-90b4-f2c2-4a0c-c1c6585379bf@twiddle.net>
-Date: Sat, 10 Jun 2017 09:59:19 -0700
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
- Thunderbird/52.1.0
+ <9776b437-90b4-f2c2-4a0c-c1c6585379bf@twiddle.net>
 MIME-Version: 1.0
-In-Reply-To: <87vao4b4z5.fsf@linaro.org>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-X-TUID: bIrITIgfaXNr
+In-Reply-To: <9776b437-90b4-f2c2-4a0c-c1c6585379bf@twiddle.net>
+User-Agent: Mutt/1.5.24 (2015-08-30)
+X-TUID: Oete9DX05rYe
 
-On 06/10/2017 01:51 AM, Alex Bennée wrote:
+On Sat, Jun 10, 2017 at 09:59:19 -0700, Richard Henderson wrote:
+> On 06/10/2017 01:51 AM, Alex Benn�e wrote:
+> >I would agree with Emilio that we revert but I can't quite shake the
+> >feeling we are missing an underlying problem. Would just skipping the
+> >htable lookup (but keeping the tb_jmp_cache) be an OK fix for now?
 > 
-> Richard Henderson <rth@twiddle.net> writes:
+> I agree.  It seems like there's some real problem that this is uncovering.
 > 
->> On 06/09/2017 10:01 AM, Alex Bennée wrote:
->>> THIS IS A DEBUG PATCH DO NOT MERGE
->>>
->>> I include all the comments to show my working. I was trying to
->>> isolate which instructions cause the problem. It turns out it is the
->>> RET instruction. I don't understand why because AFAICT it is a
->>> pretty much a BR instruction.
->>
->> Yeah, same thing for Alpha.
->>
->> It has been my guess that not chaining through RET means that we get
->> back to the main loop regularly and often, letting interrupts be
->> recognized in a timely manner.
->>
->> I can't figure out why that would be, however, since interrupts
->> *ought* to be setting icount_decr, and the TB to which we chain *is*
->> checking that to return to the main loop.
-> 
-> Indeed - if that was broken a lot more stuff wouldn't work.
-> 
->> Since changing the timing affects the outcome (e.g. -d exec), it
->> follows that this *must* be some sort of race condition.  But since
->> this still happens with single-threaded mode, I can't imagine what
->> sort of race condition it might be.
-> 
-> Apart from timer expiry I can't think what other interactions the other
-> threads have on the main TCG thread. I guess there is IO but my test
-> hangs way before the kernel starts poking the disk. Is there an
-> interaction between IRQs and QEMU's serial driver?
+> Dropping the htable lookup is certainly ok by me.  If that's enough to
+> un-stick your regression testing for aarch64 guest.
 
-The Alpha hang appears to be timer expiry.  In that it happens as soon as the 
-kernel spawns some kthreads to finish up the boot process.  The kernel then 
-sits in the idle loop for an unreasonably long time.
+Unfortunately not checking the htable isn't enough to fix it for me.
 
-But, bizarrely, it will complete the boot eventually.  But it takes ~5 minutes 
-to do so, when we ought to be able to boot to prompt in seconds.
+I spent a few hours on Friday trying (and failing) to understand
+what's going on. Regarding interrupts, I see *more* TB_EXIT_INTERRUPT
+exits than without the patch, so my current best guess is that this is
+a livelock kind of thing.
 
->> More data points.  I removed the tb_htable_lookup, and that by itself
->> is enough to fix Alpha booting.  But it doesn't help the aarch64
->> kernel+image that I have.  Which does still boot with -d nochain
->> (which, along with disabling goto_tb chaining, also disables all
->> goto_ptr).
-> 
-> I wonder what is different about your aarch64 image and mine then?
-> Because mine works just with suppressing the chaining for RET.
+I'll keep digging, but regardless I think we should revert
+e75449a346 ("target/aarch64: optimize indirect branches") ASAP, and
+then reenable the feature ("revert the revert") once we get to the
+bottom of this.
 
-Oh I just tried -d nochain because it doesn't require source modification.
-
->> Not really sure where to go from here.
-> 
-> I would agree with Emilio that we revert but I can't quite shake the
-> feeling we are missing an underlying problem. Would just skipping the
-> htable lookup (but keeping the tb_jmp_cache) be an OK fix for now?
-
-I agree.  It seems like there's some real problem that this is uncovering.
-
-Dropping the htable lookup is certainly ok by me.  If that's enough to un-stick 
-your regression testing for aarch64 guest.
-
-
-r~
+		E.

@@ -1,105 +1,82 @@
-Received: by 10.25.0.23 with SMTP id 23csp144466lfa;
-        Mon, 12 Jun 2017 21:38:21 -0700 (PDT)
-X-Received: by 10.237.40.35 with SMTP id r32mr40109797qtd.105.1497328701815;
-        Mon, 12 Jun 2017 21:38:21 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1497328701; cv=none;
+Received: by 10.25.0.23 with SMTP id 23csp157462lfa;
+        Mon, 12 Jun 2017 22:28:41 -0700 (PDT)
+X-Received: by 10.237.34.233 with SMTP id q38mr29569309qtc.39.1497331721194;
+        Mon, 12 Jun 2017 22:28:41 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1497331721; cv=none;
         d=google.com; s=arc-20160816;
-        b=kqD7moZKzzzerV5uhCN2fsxVb2aTd5WhyGgXnph5RbUzqcCI6TjT4+XDzkWdl6fWtl
-         ew8+oKRB8bgoucEFJl0VTSio6R8wxbx+g+WDDbazaGxOczGJXdFSKClGYjE5nV4Od4lm
-         v3npF7UKP17jIgz5mmKIxVnx+JQ4iEqmlXw6eWRnw1l9RA1WCC/yWZsPb3T5pljIaQwF
-         1l69DjuWgQsgoNBHIgh9Pe9YGXVBWq7kdxy8Lmromz2GQIp35J9n16b4XV75t8sRcojD
-         GmSv9AtinPs8Ss+6uLquNXOpfC8gDEYhOWo17VUqNOuxk/mQ8tq7qAewrE2+P/FoDVqL
-         q5tA==
+        b=BO6N1tiNB3Nnj82GU82a2fZGFY5YiRBX6p0VgM1WblAdx5EX5TleCRyYIw1z+cZp54
+         /LyYhGtVB944l//r/EIvPkkJ8tL3AIUW+og4hQKhcXfXqaI7QxMSHklKQ8BYUQSU0YkF
+         rHn7MsbHo8p04iiHW4pmi5/UajMR8kAorGH3jTZdciRnWnDzoRmHjnkLdjqwWp+oLWoV
+         Ag8gUaFVLRpgTtKHyU5M3QDhvxlJYnXMlzlUfY/dtywFjVY0ugAJ50or4Wk7jR0mfuYJ
+         G62fLdTnM3qJGBDirCnYGxitb8MOjdOI0CWc+rksGznEiTlZ0p7Fy+0/0h/r65RykirW
+         GmQg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:mime-version:references
-         :in-reply-to:date:to:from:message-id:dkim-signature:dkim-signature
-         :arc-authentication-results;
-        bh=3XUW4UEmVS1ZD9VelN1pNXmVfqY9A/mf6Gs/M/TthLs=;
-        b=Ub4zF46qYe7Oi9h09QgUZlu9dK5IBEYghSYuDlybSutFOzj7PpKURVu1aHk1JRrA0N
-         s/LoNVKBYJACVUfAX4K4GMpfyC4EsJm3Kf4QkMCYVvXTBfGREb7CUoApD4tS68sSMw03
-         4DSVwAD25ZFb5nMIJp+leAqkcXZPJBCRwK5h3cAusR/CxaRfwRUqP/gVjg5KGVubxeYc
-         6T0aOvlfTNGQfO86goFiqlSqM+gUECVqPUaWnZwNia3pf74wK6kotYSh1I9o95xrtqH9
-         1DlIhfJ1OGt6hFS9s4OiO3bXop6WkUl/iZPY/Ne+94KUdNg2DhQR3rphQGa75C3wCdmC
-         l0og==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:arc-authentication-results;
+        bh=tYcpGH5E7t0yQZxSU74Iw3bmhPXOm8lK5jbRPiGV2x0=;
+        b=GQSDqp7LDfb1MhM+66Y/aYvXfCHO/+VT4cnr84oacnuIlynz6LA2rdxb9wauWE9H9g
+         psF00qZOK1DOsNLeHxf7RokbU1FECL+cKRSEmc/kPrDhAHGe/G5D5Y3GB1HRs1WKtb8F
+         lYaaU2OIKkssiqVVUxBHznXMX1+h4iDzAdSJS3MACxdj372XDB4f+TGiubZjJbMHtsi1
+         27iOWvA1CQv8ZQ4lyR51r8EWHkQN8dw6xQJVwFjg6dodIZp4xK1vX0OPgl/Oen3ESfRy
+         hIfVIHpU2BJVTKBPGQtN8nl8Xmg0VEdtTb+r/ho1cEuRGk6GQGo2+mgApEekA4ZpcZA1
+         MEAA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@aj.id.au;
-       dkim=fail header.i=@messagingengine.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id e16si10634842qtc.87.2017.06.12.21.38.21
+        by mx.google.com with ESMTPS id m57si10580318qtf.250.2017.06.12.22.28.40
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 12 Jun 2017 21:38:21 -0700 (PDT)
+        Mon, 12 Jun 2017 22:28:41 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@aj.id.au;
-       dkim=fail header.i=@messagingengine.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:41082 helo=lists.gnu.org)
+Received: from localhost ([::1]:41185 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1dKdat-0005kG-7d
-	for alex.bennee@linaro.org; Tue, 13 Jun 2017 00:38:19 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:44939)
+	id 1dKeNa-0001Nb-Dq
+	for alex.bennee@linaro.org; Tue, 13 Jun 2017 01:28:38 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:51119)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <andrew@aj.id.au>) id 1dKdan-0005jY-9D
-	for qemu-arm@nongnu.org; Tue, 13 Jun 2017 00:38:14 -0400
+	(envelope-from <clg@kaod.org>) id 1dKeNT-0001Kz-3r
+	for qemu-arm@nongnu.org; Tue, 13 Jun 2017 01:28:34 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <andrew@aj.id.au>) id 1dKdai-0001Qj-AJ
-	for qemu-arm@nongnu.org; Tue, 13 Jun 2017 00:38:13 -0400
-Received: from out4-smtp.messagingengine.com ([66.111.4.28]:44643)
+	(envelope-from <clg@kaod.org>) id 1dKeNP-0006SX-UA
+	for qemu-arm@nongnu.org; Tue, 13 Jun 2017 01:28:31 -0400
+Received: from 9.mo179.mail-out.ovh.net ([46.105.76.148]:37650)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <andrew@aj.id.au>)
-	id 1dKdah-0001KR-7X; Tue, 13 Jun 2017 00:38:08 -0400
-Received: from compute4.internal (compute4.nyi.internal [10.202.2.44])
-	by mailout.nyi.internal (Postfix) with ESMTP id C9D5B20843;
-	Tue, 13 Jun 2017 00:38:04 -0400 (EDT)
-Received: from frontend1 ([10.202.2.160])
-	by compute4.internal (MEProxy); Tue, 13 Jun 2017 00:38:04 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=aj.id.au; h=cc
-	:content-type:date:from:in-reply-to:message-id:mime-version
-	:references:subject:to:x-me-sender:x-me-sender:x-sasl-enc
-	:x-sasl-enc; s=fm1; bh=3XUW4UEmVS1ZD9VelN1pNXmVfqY9A/mf6Gs/M/Tth
-	Ls=; b=glpegdf7GKrah3BGJL6SwnNa1Dq3Py3i06ovkcgxxlr6Emamu08CFhRmR
-	SXVN9Ep39lmWJTrCGxyztpYL5fb7PYXUyigWZDqKk5WhWnsOmd4zQ41PdqeZ0q5i
-	trVOcyFxLyv7U5q5aVLHn8oDALpsdL9p/QcyN4hvyOqWUutg1csHlsHNPsUBfVc4
-	V4znUcYF50i+rC6a5Bkiv6Cd5b7VL3iy0rzuuWk0oq5u77qsmHxDQj3DzOvMy1Bj
-	4eHu9ul+q21zQykxxep0PMmlANsGa5ZPg/gDNjPy7Oir/QrllWYB+Eh56NjkTuIC
-	njfsUy5UhFCfK+gYp10jz2LEW4XgQ==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
-	messagingengine.com; h=cc:content-type:date:from:in-reply-to
-	:message-id:mime-version:references:subject:to:x-me-sender
-	:x-me-sender:x-sasl-enc:x-sasl-enc; s=fm1; bh=3XUW4UEmVS1ZD9VelN
-	1pNXmVfqY9A/mf6Gs/M/TthLs=; b=qqbPeoZvoZkPm3x+f3NpMD/nBPKNd8cnf4
-	tpxChy94B/uPlYnJhlv876/BDCbtzg905BIEEHTzSDo7jwRKVs/LQItbtRcWRWhS
-	YWNhepo13MIIqpCpG3TgAhdhFUTocCSmh0H8ffhop0wnQ3Eb2i82/QmyQOl4Ioqv
-	juKeBlmGuVx3IhPvwdmGXABVvTb/Lq0SAZSTGUdtIgSRZWiGNkx+XT4qp9Fgd3Li
-	1CYoknS3HHY70wHTSAVYFDuSl3QQfLUJU8GSA6Yt9bZ4gMmCucetpBd/lRSCdYa/
-	FxTWzDSRVl7/GlUt356R8lCRsZfyfT6Vk9GTKqNXhoudqu48+HcQ==
-X-ME-Sender: <xms:LGw_WdTwAqYGXyKlpLMklyLwcTwuGSV_ttrH6PpjjGJFLyx6Db4BNQ>
-X-Sasl-enc: VNCS54dWtPZs+/t/Izd7xC4Zn3cbR3tcPNqYdL7qzL3Z 1497328683
-Received: from keelia (ppp203-122-213-247.static.internode.on.net
-	[203.122.213.247])
-	by mail.messagingengine.com (Postfix) with ESMTPA id B8C407E96F;
-	Tue, 13 Jun 2017 00:38:02 -0400 (EDT)
-Message-ID: <1497328676.11158.1.camel@aj.id.au>
-From: Andrew Jeffery <andrew@aj.id.au>
-To: =?ISO-8859-1?Q?C=E9dric?= Le Goater <clg@kaod.org>, Peter Maydell
-	<peter.maydell@linaro.org>
-Date: Tue, 13 Jun 2017 14:07:56 +0930
-In-Reply-To: <bc98777b-e99d-3b55-3904-8f752a350b6c@kaod.org>
+	(Exim 4.71) (envelope-from <clg@kaod.org>) id 1dKeNP-0006Lo-L0
+	for qemu-arm@nongnu.org; Tue, 13 Jun 2017 01:28:27 -0400
+Received: from player716.ha.ovh.net (b6.ovh.net [213.186.33.56])
+	by mo179.mail-out.ovh.net (Postfix) with ESMTP id 6C75A4B6CA
+	for <qemu-arm@nongnu.org>; Tue, 13 Jun 2017 07:28:17 +0200 (CEST)
+Received: from zorba.kaod.org (LFbn-1-10652-153.w90-89.abo.wanadoo.fr
+	[90.89.238.153]) (Authenticated sender: postmaster@kaod.org)
+	by player716.ha.ovh.net (Postfix) with ESMTPSA id 528A3560075;
+	Tue, 13 Jun 2017 07:28:14 +0200 (CEST)
+To: Andrew Jeffery <andrew@aj.id.au>, Peter Maydell <peter.maydell@linaro.org>
 References: <1496739312-32304-1-git-send-email-clg@kaod.org>
 	<1496975205.23335.9.camel@aj.id.au>
 	<bc98777b-e99d-3b55-3904-8f752a350b6c@kaod.org>
-Content-Type: multipart/signed; micalg="pgp-sha512";
-	protocol="application/pgp-signature"; boundary="=-QV+O+a46wFWmkOwNTRAe"
-X-Mailer: Evolution 3.22.6-1ubuntu1 
-Mime-Version: 1.0
+	<1497328676.11158.1.camel@aj.id.au>
+From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
+Message-ID: <037b940c-a387-6d2e-b64b-ce22d1fe3d27@kaod.org>
+Date: Tue, 13 Jun 2017 07:28:08 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
+	Thunderbird/45.8.0
+MIME-Version: 1.0
+In-Reply-To: <1497328676.11158.1.camel@aj.id.au>
+Content-Type: text/plain; charset=utf-8
+X-Ovh-Tracer-Id: 8642689163142466368
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrfeeljedrjedvgddutdduucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddm
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 66.111.4.28
+X-Received-From: 46.105.76.148
 Subject: Re: [Qemu-arm] [PATCH] timer/aspeed: fix timer enablement when a
  reload is not set
 X-BeenThere: qemu-arm@nongnu.org
@@ -116,133 +93,169 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 83mbLRZGstNg
+X-TUID: spyVofcJlyRx
+
+On 06/13/2017 06:37 AM, Andrew Jeffery wrote:
+> On Fri, 2017-06-09 at 07:40 +0200, C=C3=A9dric Le Goater wrote:
+>> On 06/09/2017 04:26 AM, Andrew Jeffery wrote:
+>>> On Tue, 2017-06-06 at 10:55 +0200, C=C3=A9dric Le Goater wrote:
+>>>> When a timer is enabled before a reload value is set, the controller
+>>>> waits for a reload value to be set before starting decrementing. Thi=
+s
+>>>> fix tries to cover that case by changing the timer expiry only when
+>>>> a reload value is valid.
+>>>>
+>>>>> Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
+>>>>
+>>>> ---
+>>>>  hw/timer/aspeed_timer.c | 37 +++++++++++++++++++++++++++++--------
+>>>>  1 file changed, 29 insertions(+), 8 deletions(-)
+>>>>
+>>>> diff --git a/hw/timer/aspeed_timer.c b/hw/timer/aspeed_timer.c
+>>>> index 9b70ee09b07f..50acbf530a3a 100644
+>>>> --- a/hw/timer/aspeed_timer.c
+>>>> +++ b/hw/timer/aspeed_timer.c
+>>>> @@ -130,15 +130,26 @@ static uint64_t calculate_next(struct AspeedTi=
+mer *t)
+>>>>              next =3D seq[1];
+>>>>          } else if (now < seq[2]) {
+>>>>              next =3D seq[2];
+>>>> -        } else {
+>>>> +        } else if (t->reload) {
+>>>>              reload_ns =3D muldiv64(t->reload, NANOSECONDS_PER_SECON=
+D, rate);
+>>>>              t->start =3D now - ((now - t->start) % reload_ns);
+>>>> +        } else {
+>>>> +            /* no reload value, return 0 */
+>>>> +            break;
+>>>>          }
+>>>>      }
+>>>> =20
+>>>>      return next;
+>>>>  }
+>>>> =20
+>>>> +static void aspeed_timer_mod(AspeedTimer *t)
+>>>> +{
+>>>> +    uint64_t next =3D calculate_next(t);
+>>>> +    if (next) {
+>>>> +        timer_mod(&t->timer, next);
+>>>> +    }
+>>>> +}
+>>>> +
+>>>>  static void aspeed_timer_expire(void *opaque)
+>>>>  {
+>>>>      AspeedTimer *t =3D opaque;
+>>>> @@ -164,7 +175,7 @@ static void aspeed_timer_expire(void *opaque)
+>>>>          qemu_set_irq(t->irq, t->level);
+>>>>      }
+>>>> =20
+>>>> -    timer_mod(&t->timer, calculate_next(t));
+>>>> +    aspeed_timer_mod(t);
+>>>>  }
+>>>> =20
+>>>>  static uint64_t aspeed_timer_get_value(AspeedTimer *t, int reg)
+>>>> @@ -227,10 +238,23 @@ static void aspeed_timer_set_value(AspeedTimer=
+CtrlState *s, int timer, int reg,
+>>>>                                     uint32_t value)
+>>>>  {
+>>>>      AspeedTimer *t;
+>>>> +    uint32_t old_reload;
+>>>> =20
+>>>>      trace_aspeed_timer_set_value(timer, reg, value);
+>>>>      t =3D &s->timers[timer];
+>>>>      switch (reg) {
+>>>> +    case TIMER_REG_RELOAD:
+>>>> +        old_reload =3D t->reload;
+>>>> +        t->reload =3D value;
+>>>> +
+>>>> +        /* If the reload value was not previously set, or zero, and
+>>>> +         * the current value is valid, try to start the timer if it=
+ is
+>>>> +         * enabled.
+>>>> +         */
+>>>> +        if (old_reload || !t->reload) {
+>>>> +            break;
+>>>> +        }
+>>>
+>>> Maybe I need more caffeine, but I initially struggled to reconcile th=
+e
+>>> condition with the comment, as the condition checks the inverse in
+>>> order to break while the comment discusses the non-breaking case.=20
+>>
+>> I agree. The reload "value" is used in a hidden way to the activate th=
+e=20
+>> timer.
+>>
+>>> However, after trying for several minutes, I'm not sure there's an ea=
+sy
+>>> way to improve it.
+>>
+>> I tried a few things. May be, we could move the following code in=20
+>> its own routine and call it twice ?=20
+>=20
+> I don't think it's necessary. The comment serves as enough warning - it
+> should at least make people think before modifying the code.
+
+OK. Let it be.
 
 
---=-QV+O+a46wFWmkOwNTRAe
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: base64
+Peter,=20
 
-T24gRnJpLCAyMDE3LTA2LTA5IGF0IDA3OjQwICswMjAwLCBDw6lkcmljIExlIEdvYXRlciB3cm90
-ZToKPiBPbiAwNi8wOS8yMDE3IDA0OjI2IEFNLCBBbmRyZXcgSmVmZmVyeSB3cm90ZToKPiA+IE9u
-IFR1ZSwgMjAxNy0wNi0wNiBhdCAxMDo1NSArMDIwMCwgQ8OpZHJpYyBMZSBHb2F0ZXIgd3JvdGU6
-Cj4gPiA+IFdoZW4gYSB0aW1lciBpcyBlbmFibGVkIGJlZm9yZSBhIHJlbG9hZCB2YWx1ZSBpcyBz
-ZXQsIHRoZSBjb250cm9sbGVyCj4gPiA+IHdhaXRzIGZvciBhIHJlbG9hZCB2YWx1ZSB0byBiZSBz
-ZXQgYmVmb3JlIHN0YXJ0aW5nIGRlY3JlbWVudGluZy4gVGhpcwo+ID4gPiBmaXggdHJpZXMgdG8g
-Y292ZXIgdGhhdCBjYXNlIGJ5IGNoYW5naW5nIHRoZSB0aW1lciBleHBpcnkgb25seSB3aGVuCj4g
-PiA+IGEgcmVsb2FkIHZhbHVlIGlzIHZhbGlkLgo+ID4gPiAKPiA+ID4gPiBTaWduZWQtb2ZmLWJ5
-OiBDw6lkcmljIExlIEdvYXRlciA8Y2xnQGthb2Qub3JnPgo+ID4gPiAKPiA+ID4gLS0tCj4gPiA+
-IMKgaHcvdGltZXIvYXNwZWVkX3RpbWVyLmMgfCAzNyArKysrKysrKysrKysrKysrKysrKysrKysr
-KysrKy0tLS0tLS0tCj4gPiA+IMKgMSBmaWxlIGNoYW5nZWQsIDI5IGluc2VydGlvbnMoKyksIDgg
-ZGVsZXRpb25zKC0pCj4gPiA+IAo+ID4gPiBkaWZmIC0tZ2l0IGEvaHcvdGltZXIvYXNwZWVkX3Rp
-bWVyLmMgYi9ody90aW1lci9hc3BlZWRfdGltZXIuYwo+ID4gPiBpbmRleCA5YjcwZWUwOWIwN2Yu
-LjUwYWNiZjUzMGEzYSAxMDA2NDQKPiA+ID4gLS0tIGEvaHcvdGltZXIvYXNwZWVkX3RpbWVyLmMK
-PiA+ID4gKysrIGIvaHcvdGltZXIvYXNwZWVkX3RpbWVyLmMKPiA+ID4gQEAgLTEzMCwxNSArMTMw
-LDI2IEBAIHN0YXRpYyB1aW50NjRfdCBjYWxjdWxhdGVfbmV4dChzdHJ1Y3QgQXNwZWVkVGltZXIg
-KnQpCj4gPiA+IMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgbmV4dCA9IHNlcVsxXTsKPiA+ID4g
-wqDCoMKgwqDCoMKgwqDCoMKgfSBlbHNlIGlmIChub3cgPCBzZXFbMl0pIHsKPiA+ID4gwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqBuZXh0ID0gc2VxWzJdOwo+ID4gPiAtwqDCoMKgwqDCoMKgwqDC
-oH0gZWxzZSB7Cj4gPiA+ICvCoMKgwqDCoMKgwqDCoMKgfSBlbHNlIGlmICh0LT5yZWxvYWQpIHsK
-PiA+ID4gwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqByZWxvYWRfbnMgPSBtdWxkaXY2NCh0LT5y
-ZWxvYWQsIE5BTk9TRUNPTkRTX1BFUl9TRUNPTkQsIHJhdGUpOwo+ID4gPiDCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoHQtPnN0YXJ0ID0gbm93IC0gKChub3cgLSB0LT5zdGFydCkgJSByZWxvYWRf
-bnMpOwo+ID4gPiArwqDCoMKgwqDCoMKgwqDCoH0gZWxzZSB7Cj4gPiA+ICvCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgwqAvKiBubyByZWxvYWQgdmFsdWUsIHJldHVybiAwICovCj4gPiA+ICvCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqBicmVhazsKPiA+ID4gwqDCoMKgwqDCoMKgwqDCoMKgfQo+ID4gPiDC
-oMKgwqDCoMKgfQo+ID4gPiDCoAo+ID4gPiDCoMKgwqDCoMKgcmV0dXJuIG5leHQ7Cj4gPiA+IMKg
-fQo+ID4gPiDCoAo+ID4gPiArc3RhdGljIHZvaWQgYXNwZWVkX3RpbWVyX21vZChBc3BlZWRUaW1l
-ciAqdCkKPiA+ID4gK3sKPiA+ID4gK8KgwqDCoMKgdWludDY0X3QgbmV4dCA9IGNhbGN1bGF0ZV9u
-ZXh0KHQpOwo+ID4gPiArwqDCoMKgwqBpZiAobmV4dCkgewo+ID4gPiArwqDCoMKgwqDCoMKgwqDC
-oHRpbWVyX21vZCgmdC0+dGltZXIsIG5leHQpOwo+ID4gPiArwqDCoMKgwqB9Cj4gPiA+ICt9Cj4g
-PiA+ICsKPiA+ID4gwqBzdGF0aWMgdm9pZCBhc3BlZWRfdGltZXJfZXhwaXJlKHZvaWQgKm9wYXF1
-ZSkKPiA+ID4gwqB7Cj4gPiA+IMKgwqDCoMKgwqBBc3BlZWRUaW1lciAqdCA9IG9wYXF1ZTsKPiA+
-ID4gQEAgLTE2NCw3ICsxNzUsNyBAQCBzdGF0aWMgdm9pZCBhc3BlZWRfdGltZXJfZXhwaXJlKHZv
-aWQgKm9wYXF1ZSkKPiA+ID4gwqDCoMKgwqDCoMKgwqDCoMKgcWVtdV9zZXRfaXJxKHQtPmlycSwg
-dC0+bGV2ZWwpOwo+ID4gPiDCoMKgwqDCoMKgfQo+ID4gPiDCoAo+ID4gPiAtwqDCoMKgwqB0aW1l
-cl9tb2QoJnQtPnRpbWVyLCBjYWxjdWxhdGVfbmV4dCh0KSk7Cj4gPiA+ICvCoMKgwqDCoGFzcGVl
-ZF90aW1lcl9tb2QodCk7Cj4gPiA+IMKgfQo+ID4gPiDCoAo+ID4gPiDCoHN0YXRpYyB1aW50NjRf
-dCBhc3BlZWRfdGltZXJfZ2V0X3ZhbHVlKEFzcGVlZFRpbWVyICp0LCBpbnQgcmVnKQo+ID4gPiBA
-QCAtMjI3LDEwICsyMzgsMjMgQEAgc3RhdGljIHZvaWQgYXNwZWVkX3RpbWVyX3NldF92YWx1ZShB
-c3BlZWRUaW1lckN0cmxTdGF0ZSAqcywgaW50IHRpbWVyLCBpbnQgcmVnLAo+ID4gPiDCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgwqB1aW50MzJfdCB2YWx1ZSkKPiA+ID4gwqB7Cj4gPiA+IMKgwqDCoMKgwqBBc3BlZWRU
-aW1lciAqdDsKPiA+ID4gK8KgwqDCoMKgdWludDMyX3Qgb2xkX3JlbG9hZDsKPiA+ID4gwqAKPiA+
-ID4gwqDCoMKgwqDCoHRyYWNlX2FzcGVlZF90aW1lcl9zZXRfdmFsdWUodGltZXIsIHJlZywgdmFs
-dWUpOwo+ID4gPiDCoMKgwqDCoMKgdCA9ICZzLT50aW1lcnNbdGltZXJdOwo+ID4gPiDCoMKgwqDC
-oMKgc3dpdGNoIChyZWcpIHsKPiA+ID4gK8KgwqDCoMKgY2FzZSBUSU1FUl9SRUdfUkVMT0FEOgo+
-ID4gPiArwqDCoMKgwqDCoMKgwqDCoG9sZF9yZWxvYWQgPSB0LT5yZWxvYWQ7Cj4gPiA+ICvCoMKg
-wqDCoMKgwqDCoMKgdC0+cmVsb2FkID0gdmFsdWU7Cj4gPiA+ICsKPiA+ID4gK8KgwqDCoMKgwqDC
-oMKgwqAvKiBJZiB0aGUgcmVsb2FkIHZhbHVlIHdhcyBub3QgcHJldmlvdXNseSBzZXQsIG9yIHpl
-cm8sIGFuZAo+ID4gPiArwqDCoMKgwqDCoMKgwqDCoMKgKiB0aGUgY3VycmVudCB2YWx1ZSBpcyB2
-YWxpZCwgdHJ5IHRvIHN0YXJ0IHRoZSB0aW1lciBpZiBpdCBpcwo+ID4gPiArwqDCoMKgwqDCoMKg
-wqDCoMKgKiBlbmFibGVkLgo+ID4gPiArwqDCoMKgwqDCoMKgwqDCoMKgKi8KPiA+ID4gK8KgwqDC
-oMKgwqDCoMKgwqBpZiAob2xkX3JlbG9hZCB8fCAhdC0+cmVsb2FkKSB7Cj4gPiA+ICvCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqBicmVhazsKPiA+ID4gK8KgwqDCoMKgwqDCoMKgwqB9Cj4gPiAKPiA+
-IE1heWJlIEkgbmVlZCBtb3JlIGNhZmZlaW5lLCBidXQgSSBpbml0aWFsbHkgc3RydWdnbGVkIHRv
-IHJlY29uY2lsZSB0aGUKPiA+IGNvbmRpdGlvbiB3aXRoIHRoZSBjb21tZW50LCBhcyB0aGUgY29u
-ZGl0aW9uIGNoZWNrcyB0aGUgaW52ZXJzZSBpbgo+ID4gb3JkZXIgdG8gYnJlYWsgd2hpbGUgdGhl
-IGNvbW1lbnQgZGlzY3Vzc2VzIHRoZSBub24tYnJlYWtpbmcgY2FzZS7CoAo+IAo+IEkgYWdyZWUu
-IFRoZSByZWxvYWQgInZhbHVlIiBpcyB1c2VkIGluIGEgaGlkZGVuIHdheSB0byB0aGUgYWN0aXZh
-dGUgdGhlwqAKPiB0aW1lci4KPiAKPiA+IEhvd2V2ZXIsIGFmdGVyIHRyeWluZyBmb3Igc2V2ZXJh
-bCBtaW51dGVzLCBJJ20gbm90IHN1cmUgdGhlcmUncyBhbiBlYXN5Cj4gPiB3YXkgdG8gaW1wcm92
-ZSBpdC4KPiAKPiBJIHRyaWVkIGEgZmV3IHRoaW5ncy4gTWF5IGJlLCB3ZSBjb3VsZCBtb3ZlIHRo
-ZSBmb2xsb3dpbmcgY29kZSBpbsKgCj4gaXRzIG93biByb3V0aW5lIGFuZCBjYWxsIGl0IHR3aWNl
-ID/CoAoKSSBkb24ndCB0aGluayBpdCdzIG5lY2Vzc2FyeS4gVGhlIGNvbW1lbnQgc2VydmVzIGFz
-IGVub3VnaCB3YXJuaW5nIC0gaXQKc2hvdWxkIGF0IGxlYXN0IG1ha2UgcGVvcGxlIHRoaW5rIGJl
-Zm9yZSBtb2RpZnlpbmcgdGhlIGNvZGUuCgpDaGVlcnMsCgpBbmRyZXcKCj4gwqAKPiA+ID4gKwo+
-ID4gPiDCoMKgwqDCoMKgY2FzZSBUSU1FUl9SRUdfU1RBVFVTOgo+ID4gPiDCoMKgwqDCoMKgwqDC
-oMKgwqBpZiAodGltZXJfZW5hYmxlZCh0KSkgewo+ID4gPiDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoHVpbnQ2NF90IG5vdyA9IHFlbXVfY2xvY2tfZ2V0X25zKFFFTVVfQ0xPQ0tfVklSVFVBTCk7
-Cj4gPiA+IEBAIC0yMzgsMTcgKzI2MiwxNCBAQCBzdGF0aWMgdm9pZCBhc3BlZWRfdGltZXJfc2V0
-X3ZhbHVlKEFzcGVlZFRpbWVyQ3RybFN0YXRlICpzLCBpbnQgdGltZXIsIGludCByZWcsCj4gPiA+
-IMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgdWludDMyX3QgcmF0ZSA9IGNhbGN1bGF0ZV9yYXRl
-KHQpOwo+ID4gPiDCoAo+ID4gPiDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoHQtPnN0YXJ0ICs9
-IG11bGRpdjY0KGRlbHRhLCBOQU5PU0VDT05EU19QRVJfU0VDT05ELCByYXRlKTsKPiA+ID4gLcKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoHRpbWVyX21vZCgmdC0+dGltZXIsIGNhbGN1bGF0ZV9uZXh0
-KHQpKTsKPiA+ID4gK8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoGFzcGVlZF90aW1lcl9tb2QodCk7
-Cj4gPiA+IMKgwqDCoMKgwqDCoMKgwqDCoH0KPiA+ID4gwqDCoMKgwqDCoMKgwqDCoMKgYnJlYWs7
-Cj4gPiA+IC3CoMKgwqDCoGNhc2UgVElNRVJfUkVHX1JFTE9BRDoKPiA+ID4gLcKgwqDCoMKgwqDC
-oMKgwqB0LT5yZWxvYWQgPSB2YWx1ZTsKPiA+ID4gLcKgwqDCoMKgwqDCoMKgwqBicmVhazsKPiA+
-ID4gwqDCoMKgwqDCoGNhc2UgVElNRVJfUkVHX01BVENIX0ZJUlNUOgo+ID4gPiDCoMKgwqDCoMKg
-Y2FzZSBUSU1FUl9SRUdfTUFUQ0hfU0VDT05EOgo+ID4gPiDCoMKgwqDCoMKgwqDCoMKgwqB0LT5t
-YXRjaFtyZWcgLSAyXSA9IHZhbHVlOwo+ID4gPiDCoMKgwqDCoMKgwqDCoMKgwqBpZiAodGltZXJf
-ZW5hYmxlZCh0KSkgewo+ID4gPiAtwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgdGltZXJfbW9kKCZ0
-LT50aW1lciwgY2FsY3VsYXRlX25leHQodCkpOwo+ID4gPiArwqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgYXNwZWVkX3RpbWVyX21vZCh0KTsKPiA+ID4gwqDCoMKgwqDCoMKgwqDCoMKgfQo+ID4gPiDC
-oMKgwqDCoMKgwqDCoMKgwqBicmVhazsKPiA+ID4gwqDCoMKgwqDCoGRlZmF1bHQ6Cj4gPiA+IEBA
-IC0yNjgsNyArMjg5LDcgQEAgc3RhdGljIHZvaWQgYXNwZWVkX3RpbWVyX2N0cmxfZW5hYmxlKEFz
-cGVlZFRpbWVyICp0LCBib29sIGVuYWJsZSkKPiA+ID4gwqDCoMKgwqDCoHRyYWNlX2FzcGVlZF90
-aW1lcl9jdHJsX2VuYWJsZSh0LT5pZCwgZW5hYmxlKTsKPiA+ID4gwqDCoMKgwqDCoGlmIChlbmFi
-bGUpIHsKPiA+ID4gwqDCoMKgwqDCoMKgwqDCoMKgdC0+c3RhcnQgPSBxZW11X2Nsb2NrX2dldF9u
-cyhRRU1VX0NMT0NLX1ZJUlRVQUwpOwo+ID4gPiAtwqDCoMKgwqDCoMKgwqDCoHRpbWVyX21vZCgm
-dC0+dGltZXIsIGNhbGN1bGF0ZV9uZXh0KHQpKTsKPiA+ID4gK8KgwqDCoMKgwqDCoMKgwqBhc3Bl
-ZWRfdGltZXJfbW9kKHQpOwo+ID4gPiDCoMKgwqDCoMKgfSBlbHNlIHsKPiA+ID4gwqDCoMKgwqDC
-oMKgwqDCoMKgdGltZXJfZGVsKCZ0LT50aW1lcik7Cj4gPiA+IMKgwqDCoMKgwqB9Cj4gPiAKPiA+
-IFJldmlld2VkLWJ5OiBBbmRyZXcgSmVmZmVyeSA8YW5kcmV3QGFqLmlkLmF1Pgo+IAo+IFRoYW5r
-cywKPiAKPiBDLg==
+The Moxa Art timer driver was recently merged into the Faraday=20
+FTTMR010 driver and the initial setup is slightly different,=20
+it enables the timer before setting the reload value, which=20
+breaks the current QEMU model.
+
+Thanks,
+
+C.=20
 
 
---=-QV+O+a46wFWmkOwNTRAe
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: This is a digitally signed message part
-Content-Transfer-Encoding: 7bit
-
------BEGIN PGP SIGNATURE-----
-
-iQIcBAABCgAGBQJZP2wlAAoJEJ0dnzgO5LT5QY8P/2cuwzNPLb9RbzZ+i+BIjk0n
-eoiHTIUdlQs6QJDJ8WeiK2YOtxeyn7eZcGolKi2MzRY7avgjJmq8FMJ68pc9mNdH
-rEXqgWoMaTNbzKTDPXWZ27jbGG2GrHw8YupefbH9TO5xOQFgqSsIS0Jt24TB9pgl
-NkVg5mbawWxd9/nBtsjGTlBQNvZzPMYiA7PLu3fDRVp8L2dE+pxSSvpE02/zPV/d
-ByPP/cg0ZYoUhboVl5Yk3n7Bnb0EpsppdEJzi/jU1lv1vXTcuJgDAdtDMK2VgK2n
-vlzkQmBUyGoIutULMvs/n6WQU6IWJUw5LQFKG5xa600VwJD3kctfL5qwZoKFKckf
-cZZ+Fz8MV4BtXyvuNnBsLzzN3Iz6BW4k5s9H0WBfAM6MLSdO+w0XwXcJtJIo87Nj
-/Nq7n5RFBMTazoJ9a9h1zShv2zzO19mOpCKf7XTAQ+hwCTA0dtv+IrnDumsqmb45
-4nnifO5PPfQaT18RtSKPN1cbKUQu5HmWvXIEINdcva0CpoLHB1Iq68RBVoktbmq0
-PyWFyZlcWeGB4Pp/rwbGibgzsneMwIm7MQNbdVZcum288V2NFwcadeOlXXrCRsp2
-q7od0JmOcXxRUq1nDkFZ5O+V5LkE0qvgH0lKOVyw2LcDiOuLBacWWQgx0fQV5twT
-7+4uHW9Ds+o7jQKS4qT1
-=dgXJ
------END PGP SIGNATURE-----
-
---=-QV+O+a46wFWmkOwNTRAe--
+> Cheers,
+>=20
+> Andrew
+>=20
+>> =20
+>>>> +
+>>>>      case TIMER_REG_STATUS:
+>>>>          if (timer_enabled(t)) {
+>>>>              uint64_t now =3D qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL);
+>>>> @@ -238,17 +262,14 @@ static void aspeed_timer_set_value(AspeedTimer=
+CtrlState *s, int timer, int reg,
+>>>>              uint32_t rate =3D calculate_rate(t);
+>>>> =20
+>>>>              t->start +=3D muldiv64(delta, NANOSECONDS_PER_SECOND, r=
+ate);
+>>>> -            timer_mod(&t->timer, calculate_next(t));
+>>>> +            aspeed_timer_mod(t);
+>>>>          }
+>>>>          break;
+>>>> -    case TIMER_REG_RELOAD:
+>>>> -        t->reload =3D value;
+>>>> -        break;
+>>>>      case TIMER_REG_MATCH_FIRST:
+>>>>      case TIMER_REG_MATCH_SECOND:
+>>>>          t->match[reg - 2] =3D value;
+>>>>          if (timer_enabled(t)) {
+>>>> -            timer_mod(&t->timer, calculate_next(t));
+>>>> +            aspeed_timer_mod(t);
+>>>>          }
+>>>>          break;
+>>>>      default:
+>>>> @@ -268,7 +289,7 @@ static void aspeed_timer_ctrl_enable(AspeedTimer=
+ *t, bool enable)
+>>>>      trace_aspeed_timer_ctrl_enable(t->id, enable);
+>>>>      if (enable) {
+>>>>          t->start =3D qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL);
+>>>> -        timer_mod(&t->timer, calculate_next(t));
+>>>> +        aspeed_timer_mod(t);
+>>>>      } else {
+>>>>          timer_del(&t->timer);
+>>>>      }
+>>>
+>>> Reviewed-by: Andrew Jeffery <andrew@aj.id.au>
+>>
+>> Thanks,
+>>
+>> C.
 

@@ -1,182 +1,103 @@
-Received: by 10.25.0.23 with SMTP id 23csp482302lfa;
-        Wed, 14 Jun 2017 13:33:44 -0700 (PDT)
-X-Received: by 10.55.217.136 with SMTP id q8mr2276161qkl.220.1497472424495;
-        Wed, 14 Jun 2017 13:33:44 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1497472424; cv=none;
+Received: by 10.25.0.23 with SMTP id 23csp503146lfa;
+        Wed, 14 Jun 2017 14:35:15 -0700 (PDT)
+X-Received: by 10.55.156.193 with SMTP id f184mr2745216qke.102.1497476115272;
+        Wed, 14 Jun 2017 14:35:15 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1497476115; cv=none;
         d=google.com; s=arc-20160816;
-        b=SpHI1s6hV6g+O9tuhnx/8nM0rkPJqC5+ImWKzWRmjHPgBuwNVhpnJ6CuhhHfzc+e+o
-         094qD6rw92Q5dvcQOm0rnqiYSP9Rq0/9O65OX+sgWp8T/UTJ3nIXuNZtqdhNLKEZyEPT
-         QNP9YYZMOHf7r0Jhu/Lb7/wDuMzNFUpd+Kr3SX65j1JaN4B9gZsJx/HreaMy6SSCL8bm
-         o58NUGYMZ5IzYoUq8nUFORX64rtWByGnEmdKxhhcOctdtlu5NfFLCfRcHyJz4DFCVszs
-         c3kLuqHeDmkjBUd/n2X2GBnoaQJBXDzzj4wK3vTBfzFfQMhcqU+FcF5akfxGnJQvhgBj
-         kgMQ==
+        b=lCIA/O6To11hpXpsPbMhjcCUaUGG2fehgxs2ZfuUs3ygAPb385bMtLKB9F6G8nhLmy
+         r/r7kjQa16XnOMIFGPjWm3U4rh2aWega0/aCG+CwFDYscpjbp0LXgKJPP/qcGG30JdX7
+         4rDxSErEmKbLdfWKinPTtzvMEsg3xNSZKHIaR1n3t6P6g0Hyxllfc9a5aN4lJvm5B730
+         nfuQWJ1aY5FodWQzQDUkbew6BF1JzRQj8tmUe0eK+AU4izL+XYBZAbHGdlo9FIXDCNp9
+         TCc3TJ8khp9kQPHmGOTk5e2ZDSZeGwuXEWPIvJEWnomUpJXjnWplCWe8K0USbAkxP8aS
+         g9XA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=user-agent:in-reply-to:content-transfer-encoding
          :content-disposition:mime-version:references:message-id:subject:cc
-         :to:from:date:dkim-signature:dkim-signature
-         :arc-authentication-results;
-        bh=hpP1ds6EZfmJ5TcfFEzajWxyavCIjFS9MAUJGRraDQQ=;
-        b=wrABE+ZDceSGaOfj5MZi8sBqaKUUpcU8Yq6YCPpK+EfAi+vbHNopoWvPL/6UJK987U
-         V90+dXj7BqfaFai7/GHYxDAR+JZUE2vnI9tiPsK85zE7t+6FrqYE4bSRmhLvwFfbLIwj
-         rkDo6M9Sd1/Hd45ae9cUBp5EgmJJpeKj4n5K07hU+ylNRg6LPZKO6iyqY0Wm6R859UVi
-         UVVrbfdVTHv2OwEEhbhqG9mcgJd0fgoEM/lLxTGjbQIueJ8FGDcom1CXHv51Y+XiHqRb
-         4tBKIh+oJgEI6OA73IE2XyZXK8bhKgBRo6J/0JZQHFEhMf/WGM5QovbaOwANdVPeBFZB
-         DqrA==
+         :to:from:date:dkim-filter:dmarc-filter:arc-authentication-results;
+        bh=XrM6bC81JIqF+ob/sYrWw8JeZuiMb46Pu/zZ7cH7CEY=;
+        b=1HjVvecUlgjf5zeEMZTdK2cY688d0FgImNWAqSD+NPIkgfLUtaeQZTdZOmyuSDI5a5
+         wyerc//UMWlYiuG78TWiwDzhpI+2SKETPbh0+NB4U5ELAkE/WJNrShRsEhLON5w4QAF9
+         F3XfBpf1/Z3DDkpg53SqEjxdtW1/y0Xy9Ck2cxP7HWxp3wooEWRMkdvBnLZiIAa0QouC
+         cFpTndE/Q1ecgLcMrw2PqQgxhpxJKBZI4Pr5EEv+5AH/AQa2E/95JLEP7VZjT6luQWLR
+         cvPTC4I8n0EYaDEN3bYMILO9a2ICu0wtuBXvGWr3YhDHRRgwwtTxuf1sgnKhZ56daa9Q
+         4/Rg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@braap.org header.b=G9bmdJnw;
-       dkim=pass header.i=@messagingengine.com header.b=JAIZkl4z;
-       spf=pass (google.com: domain of cota@braap.org designates 66.111.4.28 as permitted sender) smtp.mailfrom=cota@braap.org
-Return-Path: <cota@braap.org>
-Received: from out4-smtp.messagingengine.com (out4-smtp.messagingengine.com. [66.111.4.28])
-        by mx.google.com with ESMTPS id v3si911885qki.103.2017.06.14.13.33.44
+       spf=pass (google.com: domain of ehabkost@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=ehabkost@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <ehabkost@redhat.com>
+Received: from mx1.redhat.com (mx1.redhat.com. [209.132.183.28])
+        by mx.google.com with ESMTPS id y31si1057223qtb.221.2017.06.14.14.35.15
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 14 Jun 2017 13:33:44 -0700 (PDT)
-Received-SPF: pass (google.com: domain of cota@braap.org designates 66.111.4.28 as permitted sender) client-ip=66.111.4.28;
+        Wed, 14 Jun 2017 14:35:15 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ehabkost@redhat.com designates 209.132.183.28 as permitted sender) client-ip=209.132.183.28;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@braap.org header.b=G9bmdJnw;
-       dkim=pass header.i=@messagingengine.com header.b=JAIZkl4z;
-       spf=pass (google.com: domain of cota@braap.org designates 66.111.4.28 as permitted sender) smtp.mailfrom=cota@braap.org
-Received: from compute4.internal (compute4.nyi.internal [10.202.2.44])
-	by mailout.nyi.internal (Postfix) with ESMTP id 1DF0F20CFF;
-	Wed, 14 Jun 2017 16:33:44 -0400 (EDT)
-Received: from frontend2 ([10.202.2.161])
-  by compute4.internal (MEProxy); Wed, 14 Jun 2017 16:33:44 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=braap.org; h=cc
-	:content-transfer-encoding:content-type:date:from:in-reply-to
-	:message-id:mime-version:references:subject:to:x-me-sender
-	:x-me-sender:x-sasl-enc:x-sasl-enc; s=mesmtp; bh=hpP1ds6EZfmJ5Tc
-	fFEzajWxyavCIjFS9MAUJGRraDQQ=; b=G9bmdJnw72jvxqzu75aWQ9U4gLRZ9uq
-	/krrxfFnilU9eUOGXqyM85gdJNp6D1K/bcWbJuzr1Ycev5CZf8ZKWM7T8tln+C19
-	Bx0VRYO9A0mi4SuIzBogcbJadWaAZfje0ONq5n97DNNS5deTJ9ksLaDPg3xZVibh
-	haFe4sVLTkhk=
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
-	messagingengine.com; h=cc:content-transfer-encoding:content-type
-	:date:from:in-reply-to:message-id:mime-version:references
-	:subject:to:x-me-sender:x-me-sender:x-sasl-enc:x-sasl-enc; s=
-	fm1; bh=hpP1ds6EZfmJ5TcfFEzajWxyavCIjFS9MAUJGRraDQQ=; b=JAIZkl4z
-	miyrVgJ7N7jGWtWIDQ1qfZ+0wYbwSTtmo00+AbfRSIJJkEKatRJVmZvEF6SLjoig
-	Q9WZHjsa0BonQKGEPWIj09nbH0jUNhISPYLVV7j9k0s506oKL1aLUJmSu+oBiTVc
-	z3kCEhtgSjrYKw+rm+kmQbTePuBpwgvv8nA/Qo0sK28LLheGex8FVbqpqL5SyDeQ
-	Z/B7NEhYNpPDIYeaiqsIZ7YycvQW3ravAcHIEc/Zz/GjPQTUTjT7LAU6sKzt4rIg
-	6t7CWyB+tlCMUhNWihcW+4stsIGJqhHFQ85TwZU2vu1VeBqvmyJKpyZrmZg144mF
-	2Jbp7AqO2adUww==
-X-ME-Sender: <xms:qJ1BWci3BPEeNrp9BSUkU1opCtq2QkpkhZOU8MAeb00IavUR8xNQpg>
-X-Sasl-enc: SSTxajjbPbqXLSIhfJHd2tlEs94Qu8iIBxQ7UHZtb4V+ 1497472423
-Received: from localhost (flamenco.cs.columbia.edu [128.59.20.216])
-	by mail.messagingengine.com (Postfix) with ESMTPA id D700F249CD;
-	Wed, 14 Jun 2017 16:33:43 -0400 (EDT)
-Date: Wed, 14 Jun 2017 16:33:43 -0400
-From: "Emilio G. Cota" <cota@braap.org>
-To: Richard Henderson <rth@twiddle.net>
-Cc: qemu-devel@nongnu.org, alex.bennee@linaro.org, pbonzini@redhat.com,
-	qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>
-Subject: [PATCH] target/aarch64: exit to main loop after 'msr daifclr'
-Message-ID: <20170614203343.GB8420@flamenco>
-References: <20170614194821.8754-1-rth@twiddle.net>
- <20170614194821.8754-6-rth@twiddle.net>
+       spf=pass (google.com: domain of ehabkost@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=ehabkost@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com [10.5.11.15])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 1D3D633458B;
+	Wed, 14 Jun 2017 21:35:13 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 1D3D633458B
+Authentication-Results: ext-mx05.extmail.prod.ext.phx2.redhat.com; dmarc=none (p=none dis=none) header.from=redhat.com
+Authentication-Results: ext-mx05.extmail.prod.ext.phx2.redhat.com; spf=pass smtp.mailfrom=ehabkost@redhat.com
+DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com 1D3D633458B
+Received: from localhost (ovpn-116-27.gru2.redhat.com [10.97.116.27])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id E2BEE8E533;
+	Wed, 14 Jun 2017 21:35:10 +0000 (UTC)
+Date: Wed, 14 Jun 2017 18:35:05 -0300
+From: Eduardo Habkost <ehabkost@redhat.com>
+To: =?iso-8859-1?Q?Llu=EDs?= Vilanova <vilanova@ac.upc.edu>
+Cc: qemu-devel@nongnu.org,
+	Alex =?iso-8859-1?Q?Benn=E9e?= <alex.bennee@linaro.org>,
+	Richard Henderson <rth@twiddle.net>,
+	Peter Crosthwaite <crosthwaite.peter@gmail.com>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+	Michael Walle <michael@walle.cc>,
+	Laurent Vivier <laurent@vivier.eu>,
+	Aurelien Jarno <aurelien@aurel32.net>,
+	Yongbok Kim <yongbok.kim@imgtec.com>,
+	Anthony Green <green@moxielogic.com>,
+	Stafford Horne <shorne@gmail.com>,
+	David Gibson <david@gibson.dropbear.id.au>,
+	Alexander Graf <agraf@suse.de>,
+	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+	Artyom Tarasenko <atar4qemu@gmail.com>,
+	Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
+	Guan Xuetao <gxt@mprc.pku.edu.cn>,
+	Max Filippov <jcmvbkbc@gmail.com>,
+	"open list:ARM" <qemu-arm@nongnu.org>,
+	"open list:PowerPC" <qemu-ppc@nongnu.org>
+Subject: Re: [PATCH v6 1/6] Pass generic CPUState to gen_intermediate_code()
+Message-ID: <20170614213505.GM5016@thinpad.lan.raisama.net>
+References: <149727922719.28532.11985025310576184920.stgit@frigg.lan>
+ <149727923488.28532.12388479748363447374.stgit@frigg.lan>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=iso-8859-1
 Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <20170614194821.8754-6-rth@twiddle.net>
-User-Agent: Mutt/1.5.24 (2015-08-30)
-X-TUID: cBuoj4MzqKR1
+In-Reply-To: <149727923488.28532.12388479748363447374.stgit@frigg.lan>
+X-Fnord: you can see the fnord
+User-Agent: Mutt/1.8.0 (2017-02-23)
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.5.110.29]); Wed, 14 Jun 2017 21:35:14 +0000 (UTC)
+X-TUID: ef8IpRoLvzUm
 
-On Wed, Jun 14, 2017 at 12:48:21 -0700, Richard Henderson wrote:
-> Exit to cpu loop so we reevaluate cpu_arm_hw_interrupts.
+On Mon, Jun 12, 2017 at 05:53:55PM +0300, Lluís Vilanova wrote:
+> Needed to implement a target-agnostic gen_intermediate_code() in the
+> future.
 > 
-> Cc: qemu-arm@nongnu.org
-> Cc: Peter Maydell <peter.maydell@linaro.org>
-> Signed-off-by: Richard Henderson <rth@twiddle.net>
-> ---
->  target/arm/translate-a64.c | 7 ++++++-
->  1 file changed, 6 insertions(+), 1 deletion(-)
-> 
-> diff --git a/target/arm/translate-a64.c b/target/arm/translate-a64.c
-> index 860e279..e55547d 100644
-> --- a/target/arm/translate-a64.c
-> +++ b/target/arm/translate-a64.c
-> @@ -1422,7 +1422,9 @@ static void handle_msr_i(DisasContext *s, uint32_t insn,
->          gen_helper_msr_i_pstate(cpu_env, tcg_op, tcg_imm);
->          tcg_temp_free_i32(tcg_imm);
->          tcg_temp_free_i32(tcg_op);
-> -        s->is_jmp = DISAS_UPDATE;
-> +        /* For DAIFClear, exit the cpu loop to re-evaluate pending IRQs.  */
-> +        gen_a64_set_pc_im(s->pc);
+> Signed-off-by: Lluís Vilanova <vilanova@ac.upc.edu>
+> Reviewed-by: David Gibson <david@gibson.dropbear.id.au>
+> Reviewed-by: Richard Henderson <rth@twiddle.net>
 
-For op != 0x1f we end up setting the pc twice (first here, then in
-the switch statement). It's still correct though.
+Acked-by: Eduardo Habkost <ehabkost@redhat.com>
 
-> +        s->is_jmp = (op == 0x1f ? DISAS_EXIT : DISAS_JUMP);
+For i386 parts:
 
-Could do without the parens.
+Reviewed-by: Eduardo Habkost <ehabkost@redhat.com>
 
->          break;
->      }
->      default:
-> @@ -11369,6 +11371,9 @@ void gen_intermediate_code_a64(ARMCPU *cpu, TranslationBlock *tb)
->          case DISAS_JUMP:
->              tcg_gen_lookup_and_goto_ptr(cpu_pc);
->              break;
-> +        case DISAS_EXIT:
-> +            tcg_gen_exit_tb(0);
-> +            break;
-
-We could also mention the regression in the commit log. In fact
-I just did that :-) feel free to reuse parts of the below.
-
-Thanks,
-
-		E.
-
---- 8< ---
-
-Commit e75449a3 ("target/aarch64: optimize indirect branches") causes
-a regression by which -smp > 1 freezes under TCG, even with
-`-accel accel=tcg,thread=single' (i.e. MTTCG disabled).
-
-The cause of the regression is well described here by Alex:
-On Wed, Jun 14, 2017 at 15:02:06 +0100, Alex Bennée wrote:
-> Fundamentally the problem was that an interrupt was pending
-> (interrupt_request was set) but the "msr daifclr" operations when the
-> kernel did local_irq/fiq_enable() never got handled because the
-> cpu_idle loop was being very efficiently chained. As a result we never
-> got around to exiting the TCG code and calling arm_cpu_do_interrupt
-> which would then raise the IRQ to move things on
-> [ Message-Id: <20170614140209.29847-1-alex.bennee@linaro.org> ]
-
-Fix it by enforcing an exit to the main loop right after 'msr daifclr'
-is executed.
-
-Signed-off-by: Emilio G. Cota <cota@braap.org>
----
- target/arm/translate-a64.c | 7 ++++++-
- 1 file changed, 6 insertions(+), 1 deletion(-)
-
-diff --git a/target/arm/translate-a64.c b/target/arm/translate-a64.c
-index 860e279..323e419 100644
---- a/target/arm/translate-a64.c
-+++ b/target/arm/translate-a64.c
-@@ -1422,7 +1422,8 @@ static void handle_msr_i(DisasContext *s, uint32_t insn,
-         gen_helper_msr_i_pstate(cpu_env, tcg_op, tcg_imm);
-         tcg_temp_free_i32(tcg_imm);
-         tcg_temp_free_i32(tcg_op);
--        s->is_jmp = DISAS_UPDATE;
-+        /* force exit to the main loop for DAIFClear */
-+        s->is_jmp = op == 0x1f ? DISAS_EXIT : DISAS_UPDATE;
-         break;
-     }
-     default:
-@@ -11362,6 +11363,10 @@ void gen_intermediate_code_a64(ARMCPU *cpu, TranslationBlock *tb)
-         case DISAS_NEXT:
-             gen_goto_tb(dc, 1, dc->pc);
-             break;
-+        case DISAS_EXIT:
-+            gen_a64_set_pc_im(dc->pc);
-+            tcg_gen_exit_tb(0);
-+            break;
-         default:
-         case DISAS_UPDATE:
-             gen_a64_set_pc_im(dc->pc);
 -- 
-2.7.4
+Eduardo

@@ -1,129 +1,152 @@
-Received: by 10.25.0.23 with SMTP id 23csp1034813lfa;
-        Thu, 15 Jun 2017 17:18:43 -0700 (PDT)
-X-Received: by 10.200.40.88 with SMTP id 24mr10130494qtr.37.1497572323131;
-        Thu, 15 Jun 2017 17:18:43 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1497572323; cv=none;
+Received: by 10.25.0.23 with SMTP id 23csp1080037lfa;
+        Thu, 15 Jun 2017 19:54:27 -0700 (PDT)
+X-Received: by 10.237.57.137 with SMTP id m9mr10554393qte.45.1497581667454;
+        Thu, 15 Jun 2017 19:54:27 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1497581667; cv=none;
         d=google.com; s=arc-20160816;
-        b=ynpg8afxPbQnDgNL6N1NmCoifmxoG029yIj5mQVJzqQnFKixzpS2iad8+gUhgPAo7S
-         4W63Ca3JSi+ac4vFowne5UIgjExEF6ACPvVbVJBVeY0PjSQ3Jiw7kD4ucH/q+YCk1gYw
-         ZeKCn+/qxlzmLs84ysxfky4FKXXvVViDXUSlPCdfInkmWFRjSjhCm+3lO8qQ9qjJ6Qqm
-         1YAZ/ICoPiHLlw+4xsve+AUNeohHCHpcqxP8/fPe1Mrr+tAiG7e00f1Z5oV1CtZMKeNy
-         /OlTgO05cwmq7KByHnjjSuPXmv0C3Wdo6JWpWv3t+Uj9CkY1wR3dEWVz0To6zh/WxUfj
-         zAeg==
+        b=aBclsTgnOAuwtdJLMEvAQwwTyxX6MRpJFyPvrQkLyBmV8ERlj1Im8gjdXUPmmqkvdU
+         9XF7p8z4xYk8eZPA0WaN1fsBcC/5FGyqrk+BsS1vyd+H2XmAV97pULtn9P1wwyynnLqa
+         aE76pQMQCo6xK3xcvOyEy39MQNrzs0TxfCGf9xJDO7LEK92clUbkpd1ZiU3jxuEEX5mi
+         PCly3xyej+bKRPvJRFMb7tORjYXkV++TiQ4zuLo2tnBIT2iP9oyFMLq15HX3JAbebY6E
+         Dr6Bm5q9ZsDXWQMaA1rLGXleKyjBsLpGaQ5SgMwvlt2eMftUHFZaPO2GML4TaZ6UvUDT
+         g29Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:in-reply-to:content-transfer-encoding
-         :content-disposition:mime-version:references:message-id:subject:cc
-         :to:from:date:dkim-signature:dkim-signature
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:to:dkim-signature
          :arc-authentication-results;
-        bh=oJrB+20pK//0mugNBVGKAk6dl0hkCvndPAGMOQNJxVs=;
-        b=bCWVxTJBBrUDjK4oZnAYfu0WVPrzo+sN+fnh8rssAnVlcEcI9a7QN9hbs8XiGLc+wf
-         73azNwG9kyg0E4k12wNToNS4T8hHQorT13e9rSdzH1tZ124tx7w/3gEnYMg8Dj/TC61E
-         nn//MjhWAoOO5jnD4TzMjujvJ+pyiHuNYdYXN5Jk/LteakHgCisVWVbkXbNbw9Zy6w+P
-         1i9J6dd7G20VaL0OS+J9EuOUJMdDbQCtOYIWwg/fpI5TpeGj9E3w2cEIABFxZhH0fjh+
-         BQfGENgzadS1ql1KI3WteVWaBgZMDFIFHFuMY9smvkZsTOkNegQWKfjCoax3lVRNrcUy
-         USpQ==
+        bh=0cpI0cfhd4YZE7ROQyyReIPfxwbLkjin+4UC6HWn8OU=;
+        b=ssrhDJ4kE+E1VT0jZ9tSp8PSIubEEQjnPx2hEX+ykBAXgiiOOeYiezXLwXYr0cVfjD
+         7W3LSaXFyzplp4FahEQhhFcqRTdB7qauSc36pd8mErcoN+DhAP9b2JtRBWlxLEroW3qn
+         9AF0u/+Wl5PAHYOYj2hXf4pady7qYwqZVsNXvRA5cL6OSO9YqfzESL/MRY4QG4gmVtZx
+         2KBKrPDJi+/CvcVUZqX+yn25tpfHZw0wjgQwWIoUdWAcQiWFBI0hRIqZEcqLFaGgPvSe
+         7AXnBTzdjtu89xJs/PxGTzU8IQkAQjdDpDmhdx0MagGxdHGR1lLAC5292Nq529lJPtos
+         io7Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@braap.org header.b=I5ziMj/I;
-       dkim=pass header.i=@messagingengine.com header.b=PIWBVcrE;
-       spf=pass (google.com: domain of cota@braap.org designates 66.111.4.27 as permitted sender) smtp.mailfrom=cota@braap.org
-Return-Path: <cota@braap.org>
-Received: from out3-smtp.messagingengine.com (out3-smtp.messagingengine.com. [66.111.4.27])
-        by mx.google.com with ESMTPS id r20si676571qkl.14.2017.06.15.17.18.42
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 15 Jun 2017 17:18:43 -0700 (PDT)
-Received-SPF: pass (google.com: domain of cota@braap.org designates 66.111.4.27 as permitted sender) client-ip=66.111.4.27;
+       dkim=fail header.i=@gmail.com header.b=aIMoQ3C9;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
+        by mx.google.com with ESMTPS id n88si933839qtd.390.2017.06.15.19.54.26
+        for <alex.bennee@linaro.org>
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Thu, 15 Jun 2017 19:54:27 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@braap.org header.b=I5ziMj/I;
-       dkim=pass header.i=@messagingengine.com header.b=PIWBVcrE;
-       spf=pass (google.com: domain of cota@braap.org designates 66.111.4.27 as permitted sender) smtp.mailfrom=cota@braap.org
-Received: from compute4.internal (compute4.nyi.internal [10.202.2.44])
-	by mailout.nyi.internal (Postfix) with ESMTP id A386C20B32;
-	Thu, 15 Jun 2017 20:18:42 -0400 (EDT)
-Received: from frontend2 ([10.202.2.161])
-  by compute4.internal (MEProxy); Thu, 15 Jun 2017 20:18:42 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=braap.org; h=cc
-	:content-transfer-encoding:content-type:date:from:in-reply-to
-	:message-id:mime-version:references:subject:to:x-me-sender
-	:x-me-sender:x-sasl-enc:x-sasl-enc; s=mesmtp; bh=oJrB+20pK//0mug
-	NBVGKAk6dl0hkCvndPAGMOQNJxVs=; b=I5ziMj/IGvonE3TYf3PD2rmsFLjRndr
-	bxuJvkGAH/5ZSDgbwFYILl4GtaQgZeaEYcuIOPxvQnWBZo27hriYmbXAgOVsTBXL
-	gO9LUHUWQF3mfgENbhl2nYgDMdIDV60rBbb2vfbcRALWLiiVvk31GZht/lZXUbKD
-	xOnt4HIC+3VM=
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
-	messagingengine.com; h=cc:content-transfer-encoding:content-type
-	:date:from:in-reply-to:message-id:mime-version:references
-	:subject:to:x-me-sender:x-me-sender:x-sasl-enc:x-sasl-enc; s=
-	fm1; bh=oJrB+20pK//0mugNBVGKAk6dl0hkCvndPAGMOQNJxVs=; b=PIWBVcrE
-	2KS/N8WYRbEL838S0dqX9tGz2+8V8+58x8UpuuRWtEHeBAE/EKw+HVnFxZnJjxtG
-	w9j3TWcMiW7dDqikBi5NuOkuXB0rTbaPHkQFCxgX6GDDPvIe47bMf0DvaN7NXkTl
-	/4pnhIyfXTxqC8G7WwQco563rbb3s8IzeGprXt2B0+7o+qBvglTb+8jcMRY+ZscK
-	8aXRx2IYHK6xfVDriYkUTRijnz0PwAGRa+hX2LSbtlmwzgZegBnUFnuvnV6xDjZ1
-	5JfJs1uRia3tnnbpA5fWfXbCztKRZW7jhQQvIc8cOcrrm9SWyHCvdhAI8yOer282
-	C9zgnJN59k7r9w==
-X-ME-Sender: <xms:4iNDWZbstYKMYihddDTdsa-57h3GjMRE73UVoRAf7lIb-UrIThQhmg>
-X-Sasl-enc: WlAipPtdtWHCjSu98GZWht3qCUG9X5duxiBHvLKMi66n 1497572322
-Received: from localhost (flamenco.cs.columbia.edu [128.59.20.216])
-	by mail.messagingengine.com (Postfix) with ESMTPA id 5DA0324767;
-	Thu, 15 Jun 2017 20:18:42 -0400 (EDT)
-Date: Thu, 15 Jun 2017 20:18:42 -0400
-From: "Emilio G. Cota" <cota@braap.org>
-To: =?iso-8859-1?Q?Llu=EDs?= Vilanova <vilanova@ac.upc.edu>
-Cc: qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
-	Peter Crosthwaite <crosthwaite.peter@gmail.com>,
-	"open list:ARM" <qemu-arm@nongnu.org>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	Alex =?iso-8859-1?Q?Benn=E9e?= <alex.bennee@linaro.org>,
-	Richard Henderson <rth@twiddle.net>
-Subject: Re: [Qemu-devel] [PATCH v6 6/6] target: [tcg, arm] Port to generic
- translation framework
-Message-ID: <20170616001842.GA25056@flamenco>
-References: <149727922719.28532.11985025310576184920.stgit@frigg.lan>
- <149727927074.28532.17986481795216498698.stgit@frigg.lan>
+       dkim=fail header.i=@gmail.com header.b=aIMoQ3C9;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:56892 helo=lists.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1dLhOy-0000Dm-Ox
+	for alex.bennee@linaro.org; Thu, 15 Jun 2017 22:54:24 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:45058)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <rth7680@gmail.com>) id 1dLhOu-0000CA-9E
+	for qemu-arm@nongnu.org; Thu, 15 Jun 2017 22:54:21 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+	(envelope-from <rth7680@gmail.com>) id 1dLhOt-0002xE-BC
+	for qemu-arm@nongnu.org; Thu, 15 Jun 2017 22:54:20 -0400
+Received: from mail-qt0-x243.google.com ([2607:f8b0:400d:c0d::243]:35485)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <rth7680@gmail.com>)
+	id 1dLhOp-0002sI-2D; Thu, 15 Jun 2017 22:54:15 -0400
+Received: by mail-qt0-x243.google.com with SMTP id x58so7291612qtc.2;
+	Thu, 15 Jun 2017 19:54:13 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=sender:subject:to:cc:references:from:message-id:date:user-agent
+	:mime-version:in-reply-to:content-language:content-transfer-encoding;
+	bh=0cpI0cfhd4YZE7ROQyyReIPfxwbLkjin+4UC6HWn8OU=;
+	b=aIMoQ3C9CXSwX7wOJByc+yUAUnfcNT8fTD9NNCptafo16bSFGyASwx+VT6n7qOtdnV
+	dpD27p3gmpJQWgt7pxiO2SRl0I+p95OafCDH6R11NNWGa0oCTyax71b+r5utFG1/KdiK
+	BYDqRFDt3pKT6CZgCDx+rJUM/lDhjVbZTjsmneBmBBt5eT3RDpeqqB50/HEmzURtAZew
+	Hz/NgZEP0CkhthRcEC9khTooITGqmyFIDTUOag+sjIXZ3Jkj3+RUPQXrfsEfEeRf/nxV
+	bokBZ0DMHe8wJX7NEq1w/AZCzuarDnU+yrVW9iC3IhJwA0BRnLz4MQKQDhjXyG7+yIPA
+	z/pw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+	:date:user-agent:mime-version:in-reply-to:content-language
+	:content-transfer-encoding;
+	bh=0cpI0cfhd4YZE7ROQyyReIPfxwbLkjin+4UC6HWn8OU=;
+	b=QSyrDcOLYP2sc0r4oaHsz/9S8c+p+x0NWoxkRjsRFln4Xf2p71uM1dKw7ooNLgbdrx
+	5Zpqnit53c3Ozw+1bE/1EizXvISaLsBHeXlw0SsOdSsfeIUIewy+TAfAGm3UVWqZaDqP
+	YYBXyVJUnlFeiQtSBUd73qxXZ3OC6rnjdCyrHJCAuaqfXpKhXksjhwte6Tq2I+WoDJQn
+	y8lR2Q6ctXk3cuk/AGTjOdpYcjuoUQtASaH89Rt/9I1DhiGUhy8h0e3b7kJ3Uzamtd9Z
+	kGnZ3BUn693Xm8EenvtMY4M0izvORYhrPAeELORQvzuqXlITlifcE29Efb8bVnUkytht
+	t48w==
+X-Gm-Message-State: AKS2vOxiWmXcOD79vIx445zW4+rD24mEE0LgeyZGATCOznrtT+Dpg3lf
+	GtKEc1Gk1Mu8iQ==
+X-Received: by 10.55.19.142 with SMTP id 14mr10278471qkt.78.1497581652990;
+	Thu, 15 Jun 2017 19:54:12 -0700 (PDT)
+Received: from bigtime.twiddle.net (97-113-165-157.tukw.qwest.net.
+	[97.113.165.157]) by smtp.googlemail.com with ESMTPSA id
+	m14sm333076qki.35.2017.06.15.19.54.09
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Thu, 15 Jun 2017 19:54:11 -0700 (PDT)
+To: "Emilio G. Cota" <cota@braap.org>, qemu-devel@nongnu.org
+References: <1497567879-13734-1-git-send-email-cota@braap.org>
+	<1497567879-13734-2-git-send-email-cota@braap.org>
+From: Richard Henderson <rth@twiddle.net>
+Message-ID: <8a6445d8-ce0f-55d9-b250-71ccb917baaa@twiddle.net>
+Date: Thu, 15 Jun 2017 19:54:07 -0700
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.1.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <149727927074.28532.17986481795216498698.stgit@frigg.lan>
-User-Agent: Mutt/1.5.24 (2015-08-30)
-X-TUID: pcilpJmfPK5/
+In-Reply-To: <1497567879-13734-2-git-send-email-cota@braap.org>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:400d:c0d::243
+Subject: Re: [Qemu-arm] [PATCH 2/2] gen-icount: pass cpu_env as a parameter
+ to gen_* inlines
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.21
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+	Anthony Green <green@moxielogic.com>,
+	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+	Max Filippov <jcmvbkbc@gmail.com>, Guan Xuetao <gxt@mprc.pku.edu.cn>,
+	=?UTF-8?Q?Llu=c3=ads_Vilanova?= <vilanova@ac.upc.edu>,
+	Marek Vasut <marex@denx.de>, Alexander Graf <agraf@suse.de>,
+	Artyom Tarasenko <atar4qemu@gmail.com>,
+	Eduardo Habkost <ehabkost@redhat.com>, qemu-arm@nongnu.org,
+	Yongbok Kim <yongbok.kim@imgtec.com>, Stafford Horne <shorne@gmail.com>,
+	David Gibson <david@gibson.dropbear.id.au>,
+	Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
+	Chris Wulff <crwulff@gmail.com>, Laurent Vivier <laurent@vivier.eu>,
+	Michael Walle <michael@walle.cc>, qemu-ppc@nongnu.org,
+	Paolo Bonzini <pbonzini@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: Rb/SxqD5AHym
 
-On Mon, Jun 12, 2017 at 17:54:30 +0300, Lluís Vilanova wrote:
-> Signed-off-by: Lluís Vilanova <vilanova@ac.upc.edu>
+On 06/15/2017 04:04 PM, Emilio G. Cota wrote:
+> We are relying on cpu_env being defined as a global, yet most
+> targets (i.e. all but arm/a64) have it defined as a local variable.
+> Luckily all of them use the same "cpu_env" name, but really
+> compilation shouldn't break if the name of that local variable
+> changed.
+> 
+> This patch fixes it by explicitly passing cpu_env to the gen_*
+> inlines that need it. This change also helps paving the way for
+> the upcoming "translation loop common to all targets" work.
+> 
+> Signed-off-by: Emilio G. Cota<cota@braap.org>
 > ---
->  target/arm/translate-a64.c |  346 ++++++++++-----------
->  target/arm/translate.c     |  720 ++++++++++++++++++++++----------------------
->  target/arm/translate.h     |   46 ++-
->  3 files changed, 560 insertions(+), 552 deletions(-)
 
-This one makes my arm-softmmu hang while booting debian. The last line
-I see is:
+Nack.  If you want to make a change, this should be tcg_ctx.tcg_env.
 
-> Freeing unused kernel memory: 300K (80669000 - 806b4000)
 
-Note that this happens even after disabling goto_ptr, so it shouldn't
-be related to that feature.
-
-The problem might be with the rebase. For instance, the
-hunk below was modified by commit 542b3478a ("armv7m: Replace armv7m.hack
-with unassigned_access handler"). Might be a good idea to go over
-the latest changes to arm/translate.c. What commit was your last working
-version based on?
-
-(snip)
-> diff --git a/target/arm/translate.c b/target/arm/translate.c
-> index 96272a9888..06f207a5f6 100644
-> --- a/target/arm/translate.c
-> +++ b/target/arm/translate.c
-> +#else
-> +    if (dc->base.pc_next >= 0xfffffff0 && arm_dc_feature(dc, ARM_FEATURE_M)) {
-> +        /* We always get here via a jump, so know we are not in a
-> +           conditional execution block.  */
-> +        gen_exception_internal(EXCP_EXCEPTION_EXIT);
-> +        dc->base.jmp_type = DJ_EXC;
-> +    }
-> +#endif
-> +}
-
-Thanks,
-
-		Emilio
+r~

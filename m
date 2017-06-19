@@ -1,107 +1,111 @@
-Received: by 10.25.0.23 with SMTP id 23csp499502lfa;
-        Sun, 18 Jun 2017 07:41:15 -0700 (PDT)
-X-Received: by 10.28.191.29 with SMTP id p29mr11695311wmf.60.1497796875458;
-        Sun, 18 Jun 2017 07:41:15 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1497796875; cv=none;
+Received: by 10.25.15.165 with SMTP id 37csp179982lfp;
+        Sun, 18 Jun 2017 21:22:18 -0700 (PDT)
+X-Received: by 10.237.55.228 with SMTP id j91mr26601594qtb.68.1497846137920;
+        Sun, 18 Jun 2017 21:22:17 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1497846137; cv=none;
         d=google.com; s=arc-20160816;
-        b=qNjuTa+89LpSbN3zZun6Inpu3MbDivNpJTmxt+EjP8QgaUQJ+mWaUVke9P63Lwjbts
-         r7dyY1JSvWANxB62OJYAJ8/aXBFKhHuL+UTuASgONUOYf/afB4FY2wiwpHBOdAUeYeak
-         0wfkt6sZqz5V6X+hvjxyEhtVZFw/+1ImbeTEnQrOc/q2xnnle4KlaZvow3ZkPEkRZnoV
-         5nQRjLAuE/5W/AVGEQVWR9Akfjbp9dSBxJ4MCZFRkzEsjtcmYjw3iNqoJvuGmjDK6Uf4
-         TnC7M/FsKsboCFPp7ZTgmkF+G7/QkomMq8rXxWgvOdg/cFPkZ/mZEky1Oyq80rfylEhY
-         6BWQ==
+        b=etOJMrna9+aI9PzPegmIvGUXtPjsh8Erl5fLAMCHZGIaGKhK1pozat4Z6N7+h2MZk7
+         VOPNZXNrUSJL6QjzYwGw0oh+XqPGDONYSygh6pAys+0RwGl271QWcTOG6BN0oZMmlLky
+         a5hGZ9Ap09oPXTHtP9WK90rDBfPCLd2QrwfR2fxdAlj8DGfctELz1eqzikYYOgBDlvi/
+         3r0kUVf5CMmjtbX8CWg1OuHh4We4qsicvEyVMk1fspTyXjUR9x+/jbt9ySWNonx7Fe2S
+         kxLKTCatPGKkmZzexM5YBwvdspay1GH5ASPDRmhtfMi89zVul+SbgcGilidseI5bojQi
+         YBVA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:user-agent:message-id
-         :in-reply-to:date:mail-followup-to:references:subject:cc:to:from
+        h=user-agent:in-reply-to:content-transfer-encoding
+         :content-disposition:mime-version:references:message-id:subject:cc
+         :to:from:date:dkim-signature:dkim-signature
          :arc-authentication-results;
-        bh=9yAdb/YwK4C6Z62WXaGQV3/ceRQjSy2nSKR+0kstNkU=;
-        b=gS+Pxve1fKc0b9ldmJK+ZZna0WkBo3xUzcipRRmj6Xb1q5Wu6yPVDHeo6TstH0yD6Y
-         Nz4vTSH88Y12aXHQs0MjMARSW3Xx58VsnpUfLWDAL49wiuiz/4j62MXEQU4M0tWB1bkV
-         YCEptEe97KpO6Ns8+HwmXFKk+GM07BdWr4xtaxFKQvJ4P7eXzH2nPRs5J8UKV9s/YwOB
-         XzeIrdps+4Lc6bXu7G8zV8ZH4B6A/a3XPAk0+Je+vqTx3ja+91+K/8vNOQnYC+9e2fAG
-         o0y8aITvduMZh17gHqdCwdvhGorxDIJzvD7ll2eQvm+ddt0ygE7kL0WZM6/26nETsjhN
-         fWIg==
+        bh=8Tlp1RHaMG0rbnirxziUmHGrUvO5NbTnSzMz1ZZDVJI=;
+        b=OLctpuh+xDt5BGflFTGznxTcoVlG8zFSjjDZ2SQy7F3mf6B/5l82Mkoz24i1Wo7qmK
+         UWju6e1HMBoOFWBEVCnxjCHE4N3GAagQDl/k6OvlKtOmN+teLYX002Mf9TSeUd/4XvAG
+         Blze80VXAtWsZaF7+wOZkhGhk7WEoe4ak/3AZ+FufA+6VmAkuHn4w1DWgmo9WYbRNYNm
+         XwxaRV1iaGxYKKzHMBf2FZNfAUBFGeCyECurzVgbO4pMY5K2odHPjjvlktLOT6H6l7Lw
+         DI6CeCMRZNgW/UDKwM2ORt+YHR4nrDd4Q6XNANCEVJAO1BhWjPOaswrarxd0ZMK/79ZX
+         mlHg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of vilanova@ac.upc.edu designates 147.83.33.10 as permitted sender) smtp.mailfrom=vilanova@ac.upc.edu
-Return-Path: <vilanova@ac.upc.edu>
-Received: from roura.ac.upc.es (roura.ac.upc.es. [147.83.33.10])
-        by mx.google.com with ESMTP id v15si7688951wrc.121.2017.06.18.07.41.15;
-        Sun, 18 Jun 2017 07:41:15 -0700 (PDT)
-Received-SPF: pass (google.com: domain of vilanova@ac.upc.edu designates 147.83.33.10 as permitted sender) client-ip=147.83.33.10;
+       dkim=pass header.i=@braap.org header.b=V2f3ZFSm;
+       dkim=pass header.i=@messagingengine.com header.b=OoRh61j1;
+       spf=pass (google.com: domain of cota@braap.org designates 66.111.4.27 as permitted sender) smtp.mailfrom=cota@braap.org
+Return-Path: <cota@braap.org>
+Received: from out3-smtp.messagingengine.com (out3-smtp.messagingengine.com. [66.111.4.27])
+        by mx.google.com with ESMTPS id b73si4052738qkc.260.2017.06.18.21.22.17
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Sun, 18 Jun 2017 21:22:17 -0700 (PDT)
+Received-SPF: pass (google.com: domain of cota@braap.org designates 66.111.4.27 as permitted sender) client-ip=66.111.4.27;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of vilanova@ac.upc.edu designates 147.83.33.10 as permitted sender) smtp.mailfrom=vilanova@ac.upc.edu
-Received: from correu-1.ac.upc.es (correu-1.ac.upc.es [147.83.30.91])
-	by roura.ac.upc.es (8.13.8/8.13.8) with ESMTP id v5IEf9J2024786;
-	Sun, 18 Jun 2017 16:41:09 +0200
-Received: from localhost (unknown [132.68.53.205])
-	by correu-1.ac.upc.es (Postfix) with ESMTPSA id 0824C3BD;
-	Sun, 18 Jun 2017 16:41:03 +0200 (CEST)
-From: =?utf-8?Q?Llu=C3=ADs_Vilanova?= <vilanova@ac.upc.edu>
-To: "Emilio G. Cota" <cota@braap.org>
+       dkim=pass header.i=@braap.org header.b=V2f3ZFSm;
+       dkim=pass header.i=@messagingengine.com header.b=OoRh61j1;
+       spf=pass (google.com: domain of cota@braap.org designates 66.111.4.27 as permitted sender) smtp.mailfrom=cota@braap.org
+Received: from compute4.internal (compute4.nyi.internal [10.202.2.44])
+	by mailout.nyi.internal (Postfix) with ESMTP id 75BE22088E;
+	Mon, 19 Jun 2017 00:22:17 -0400 (EDT)
+Received: from frontend1 ([10.202.2.160])
+  by compute4.internal (MEProxy); Mon, 19 Jun 2017 00:22:17 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=braap.org; h=cc
+	:content-transfer-encoding:content-type:date:from:in-reply-to
+	:message-id:mime-version:references:subject:to:x-me-sender
+	:x-me-sender:x-sasl-enc:x-sasl-enc; s=mesmtp; bh=8Tlp1RHaMG0rbni
+	rxziUmHGrUvO5NbTnSzMz1ZZDVJI=; b=V2f3ZFSmzIUdDIeVrBtDcPpcY/p9byH
+	6PK7rzTEDAhftC42Ctjq3wDpwDIjpxYe9scXPAVVTMb7/GVrMLGzbJ4jqd9iKqiz
+	hvjLd15lGS1VmGYujTYIqG8WfBDfH1LEY5rPGzEnoq3AQoPeAFzH76d5AB7SZ9SL
+	KzI1rNrATGvU=
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+	messagingengine.com; h=cc:content-transfer-encoding:content-type
+	:date:from:in-reply-to:message-id:mime-version:references
+	:subject:to:x-me-sender:x-me-sender:x-sasl-enc:x-sasl-enc; s=
+	fm1; bh=8Tlp1RHaMG0rbnirxziUmHGrUvO5NbTnSzMz1ZZDVJI=; b=OoRh61j1
+	TJX4Tbzjw6cK4E6ESRC5LSxXp6hUqYrDe79S02q+odIt27nbNuvMBEfh9HAr1Bnw
+	nNxG2ZPSSPnHXA+vnHoE4/cmjCT8FqPn/hIq5OBRbZeowhSZu6rHpR7LDis3heTs
+	XnYeqQLQH4b7Dt0soT6PhEmvPLjDTKDCFqo1/Lxwbk50p/sOkggDWXHwhUq2KarP
+	EGSA5K9OyrPOyx3T1QAJu5qOwFetaDzYQRAXDIIYooEwT5gsN2jBrIJzVPu6Dgsy
+	bPoU8384eULkiux4gX+YtfRL6/SQcaRV8sbGE9REDvnjyObnopOeYtKEJSYF422g
+	uWDKqK2BhRMf8Q==
+X-ME-Sender: <xms:eVFHWR2fjFdt6i7PdOwfoh5qkNHuaZzX11AMeqvSz27RXDAVnEMI-w>
+X-Sasl-enc: ebSbi+8B+bNfbxCj+3kpDPX/W0EDSdGSWfQQKJ/LFCvN 1497846137
+Received: from localhost (flamenco.cs.columbia.edu [128.59.20.216])
+	by mail.messagingengine.com (Postfix) with ESMTPA id 2BA627E887;
+	Mon, 19 Jun 2017 00:22:17 -0400 (EDT)
+Date: Mon, 19 Jun 2017 00:22:16 -0400
+From: "Emilio G. Cota" <cota@braap.org>
+To: =?iso-8859-1?Q?Llu=EDs?= Vilanova <vilanova@ac.upc.edu>
 Cc: qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
-        Peter
- Crosthwaite <crosthwaite.peter@gmail.com>,
-        "open list\:ARM"
- <qemu-arm@nongnu.org>,
-        Paolo Bonzini <pbonzini@redhat.com>,
-        Alex
- =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>,
-        Richard Henderson
- <rth@twiddle.net>
-Subject: Re: [Qemu-devel] [PATCH v6 6/6] target: [tcg, arm] Port to generic translation framework
+	Peter Crosthwaite <crosthwaite.peter@gmail.com>,
+	"open list:ARM" <qemu-arm@nongnu.org>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	Alex =?iso-8859-1?Q?Benn=E9e?= <alex.bennee@linaro.org>,
+	Richard Henderson <rth@twiddle.net>
+Subject: Re: [Qemu-devel] [PATCH v6 6/6] target: [tcg, arm] Port to generic
+ translation framework
+Message-ID: <20170619042216.GC10709@flamenco>
 References: <149727922719.28532.11985025310576184920.stgit@frigg.lan>
-	<149727927074.28532.17986481795216498698.stgit@frigg.lan>
-	<20170616001842.GA25056@flamenco>
-Mail-Followup-To: "Emilio G. Cota" <cota@braap.org>, qemu-devel@nongnu.org,
-	Peter Maydell <peter.maydell@linaro.org>, Peter Crosthwaite
-	<crosthwaite.peter@gmail.com>, "open list\:ARM" <qemu-arm@nongnu.org>,
-	Paolo Bonzini <pbonzini@redhat.com>, Alex =?utf-8?Q?Benn=C3=A9e?=
-	<alex.bennee@linaro.org>, Richard Henderson <rth@twiddle.net>
-Date: Sun, 18 Jun 2017 17:41:02 +0300
-In-Reply-To: <20170616001842.GA25056@flamenco> (Emilio G. Cota's message of
-	"Thu, 15 Jun 2017 20:18:42 -0400")
-Message-ID: <87mv95cq9t.fsf@frigg.lan>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/25.1 (gnu/linux)
+ <149727927074.28532.17986481795216498698.stgit@frigg.lan>
+ <20170616001842.GA25056@flamenco>
+ <87mv95cq9t.fsf@frigg.lan>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-TUID: 1Afg3CaH8NJs
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <87mv95cq9t.fsf@frigg.lan>
+User-Agent: Mutt/1.5.24 (2015-08-30)
+X-TUID: eWY/pXyDsfGo
 
-Emilio G Cota writes:
+On Sun, Jun 18, 2017 at 17:41:02 +0300, Lluís Vilanova wrote:
+> Is there any ready-made kernel or disk image I can test with?
 
-> On Mon, Jun 12, 2017 at 17:54:30 +0300, Llu=C3=ADs Vilanova wrote:
->> Signed-off-by: Llu=C3=ADs Vilanova <vilanova@ac.upc.edu>
->> ---
->> target/arm/translate-a64.c |  346 ++++++++++-----------
->> target/arm/translate.c     |  720 ++++++++++++++++++++++----------------=
-------
->> target/arm/translate.h     |   46 ++-
->> 3 files changed, 560 insertions(+), 552 deletions(-)
+I test ARM with:
 
-> This one makes my arm-softmmu hang while booting debian. The last line
-> I see is:
+$ qemu-system-arm -machine type=virt -nographic -smp 1 -m 4096 \
+	-netdev user,id=unet,hostfwd=tcp::2222-:22 \
+	-device virtio-net-device,netdev=unet \
+	-drive file=jessie-arm32-die-on-boot.qcow2,id=myblock,index=0,if=none \
+	-device virtio-blk-device,drive=myblock \
+	-kernel aarch32-current-linux-kernel-only.img \
+	-append 'console=ttyAMA0 root=/dev/vda1' \
+	-name arm,debug-threads=on -smp 1
 
->> Freeing unused kernel memory: 300K (80669000 - 806b4000)
+Grab the image & kernel from:
+  http://www.cs.columbia.edu/~cota/qemu/
+NB. The image shuts down without even asking for a username; it's convenient
+for testing/benchmarking.
 
-> Note that this happens even after disabling goto_ptr, so it shouldn't
-> be related to that feature.
-
-> The problem might be with the rebase. For instance, the
-> hunk below was modified by commit 542b3478a ("armv7m: Replace armv7m.hack
-> with unassigned_access handler"). Might be a good idea to go over
-> the latest changes to arm/translate.c. What commit was your last working
-> version based on?
-
-I didn't write it down on the series docs, so I don't really know. I'll bre=
-ak
-the patch down into multiple as you suggested, and review them manually to =
-see
-if I'm able to catch the error (all the exit reason code is quite burdensom=
-e to
-port to the new infrastructure).
-
-Is there any ready-made kernel or disk image I can test with?
-
-
-Thanks,
-  Lluis
+		E.

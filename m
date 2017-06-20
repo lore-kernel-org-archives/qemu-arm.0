@@ -1,88 +1,79 @@
-Received: by 10.25.15.165 with SMTP id 37csp281909lfp;
-        Mon, 19 Jun 2017 03:13:45 -0700 (PDT)
-X-Received: by 10.31.47.211 with SMTP id v202mr6931317vkv.4.1497867225724;
-        Mon, 19 Jun 2017 03:13:45 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1497867225; cv=none;
+Received: by 10.25.15.165 with SMTP id 37csp876229lfp;
+        Tue, 20 Jun 2017 07:03:16 -0700 (PDT)
+X-Received: by 10.202.204.207 with SMTP id c198mr16510799oig.71.1497967396266;
+        Tue, 20 Jun 2017 07:03:16 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1497967396; cv=none;
         d=google.com; s=arc-20160816;
-        b=goBBMW39KECPdbuHhsi5HtNgT+BuPKZtI46UhjF8wtgUf+DAb8+AYxvE82+aCED+ly
-         L2LWGC5nV5JUoUwSU6ej38Lw0uv5T2ghpWwYraUXLKfC9ZDy5y1aF91ESpz96xjjNpqm
-         3eUi1eBPZReLTalbV+j3VclTrAi/7vI7g6YdIBRWmp7krqlz4C9lLAREwHjo4LOhP90L
-         VoCfwOXfAomzuYUJ+aqzivQEIOobiJS88zxOPSUpp/N5Hi9LC5Ekz3kIT8nKmnJfiK9Z
-         U7+f5fU8mi5fgdVUBZM7Trxptx24X+aBlfxo21wovAg1j6llTSUi3I4FlZF5V4oEUsZ+
-         Wrpw==
+        b=qlhnXIRwK4wXzrn7KTZZhyzmikGOum5h161fMDNVuYLDGgazkSxkPAhty0MLKTI5aP
+         XYa+pMGSOc6nIDQ7IVZp302G53Q3l5DpclNavCysXq1z559diSpV+IdjLT5FQumtNKmF
+         EnGCshoxQNt68gkL6lJ+dBkkPlZTNjcuw8DVo9K+sc0Jcl3bGaF3cAVErfHJQmvV1hfM
+         gWJIBztWwHBUxRIZSJ9Jl8zNkJqbiRYtv9qO2k1BKtDuLIvJ3YyDHmDyaZM1mbBPkhOv
+         yRLpI+FoCjubOyqUyGhtVPwqppTyYQlMDrlfzroC+Crse8Sn8Nfwi6M98wxZzZUw/cI8
+         hJEg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:to
-         :arc-authentication-results;
-        bh=Odz/f9kmvcYYQkBwsxG1TNpGxwivPYuLTGvaNqjr1Pc=;
-        b=zKE6ycBglazOxKp0zqH2nKf6k+KmR+xbwDVL24Kh1xR5SNNI8b4Xi4OPS6hpwYKHpg
-         ny2iP1jZ76glGPdUZw7Dek+efi3KhARlIzUh/n8vV8JCJQTzIdoAma/wSFZlyh141rso
-         it+MZFMVR5ix8bmFjpuw2kr0/EIXyrs6m41caUMJeYFBYvms0ELdiDDaxJMTBPU8SOtw
-         SnJ3PFHRdMpyEvshGi6NnRKLqmmM+KbN8lYDilN/sJybqQYDGFywF1CDNUYTqTReHToO
-         qDMrxMdub1tJsYoliGDKXj3zlyMvR9vUTASL5jdv1z7bXruZP7bvvEu75hMWY2uYSm4S
-         iRZA==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject:mime-version
+         :content-language:accept-language:message-id:date:thread-index
+         :thread-topic:to:from:arc-authentication-results;
+        bh=/O65WCVVZAUGZINy95iRwjP1UfTAAQY+JjNtDiu/P68=;
+        b=FUnTybCCStdVyqLtF4AlX0oIbM0DzBPxDXm/RIX8ZXbaxVsVb7AQ+nSlcU4yAsKYt4
+         WnWMdU+VIW+iWwLJK4n7Drz6KAh25eeKnczNW38uV8wKGlAneZktSTbQPvkn9zH+PYiI
+         i3PkuHvQYFGVcZVFPqyfivUjVkIPwK12JkzUQQ1hA8of/yP63TASWG1PbUYGGjjejGRb
+         ey9IJskq3E+C93VmCH3PTTb/VuYhOaX/hB5OMQlVW5PnWXgDZU5KGkn5lqGLGMkb1OZF
+         Suur9WYBy5MwRTBFfjmzm6AeJXoSaCsoXMv/Ho4/FRWedM/WXuv2T/7dpK2o6Z8BmCzZ
+         fZ3g==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id g34si968970uag.63.2017.06.19.03.13.45
+        by mx.google.com with ESMTPS id d189si6057187vka.55.2017.06.20.07.03.16
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 19 Jun 2017 03:13:45 -0700 (PDT)
+        Tue, 20 Jun 2017 07:03:16 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:41530 helo=lists.gnu.org)
+Received: from localhost ([::1]:49011 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1dMtgn-00017u-4V
-	for alex.bennee@linaro.org; Mon, 19 Jun 2017 06:13:45 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:33490)
+	id 1dNJkR-0002nD-Mj
+	for alex.bennee@linaro.org; Tue, 20 Jun 2017 10:03:15 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:56690)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <jean-philippe.brucker@arm.com>) id 1dMtgh-00013u-Up
-	for qemu-arm@nongnu.org; Mon, 19 Jun 2017 06:13:41 -0400
+	(envelope-from <manuelgr@student.ethz.ch>) id 1dNHGp-0001oV-Ez
+	for qemu-arm@nongnu.org; Tue, 20 Jun 2017 07:24:32 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <jean-philippe.brucker@arm.com>) id 1dMtgd-0003z0-Uf
-	for qemu-arm@nongnu.org; Mon, 19 Jun 2017 06:13:39 -0400
-Received: from foss.arm.com ([217.140.101.70]:55558)
-	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <jean-philippe.brucker@arm.com>)
-	id 1dMtgd-0003xx-P1; Mon, 19 Jun 2017 06:13:35 -0400
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.72.51.249])
-	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 7F7E8344;
-	Mon, 19 Jun 2017 03:13:33 -0700 (PDT)
-Received: from [10.1.211.12] (e106794-lin.cambridge.arm.com [10.1.211.12])
-	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 67DBC3F557;
-	Mon, 19 Jun 2017 03:13:28 -0700 (PDT)
-To: Bharat Bhushan <bharat.bhushan@nxp.com>,
-	Auger Eric <eric.auger@redhat.com>,
-	"eric.auger.pro@gmail.com" <eric.auger.pro@gmail.com>,
-	"peter.maydell@linaro.org" <peter.maydell@linaro.org>,
-	"alex.williamson@redhat.com" <alex.williamson@redhat.com>,
-	"mst@redhat.com" <mst@redhat.com>, "qemu-arm@nongnu.org"
-	<qemu-arm@nongnu.org>, "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
-References: <1496851287-9428-1-git-send-email-eric.auger@redhat.com>
-	<AM5PR0401MB2545AFD256A96420ACC44CD89ACE0@AM5PR0401MB2545.eurprd04.prod.outlook.com>
-	<14c83c14-1e7e-f142-77b0-fa8c873e2d41@redhat.com>
-	<AM5PR0401MB2545C0E76C4BE6F82FE376D09ACE0@AM5PR0401MB2545.eurprd04.prod.outlook.com>
-	<6f22079e-4b4b-6476-77be-51ec83104c0d@redhat.com>
-	<AM5PR0401MB25459FDAA8C9AFA52503AAE99AC40@AM5PR0401MB2545.eurprd04.prod.outlook.com>
-From: Jean-Philippe Brucker <jean-philippe.brucker@arm.com>
-Message-ID: <589f1642-775c-4805-74ac-bf67eb504733@arm.com>
-Date: Mon, 19 Jun 2017 11:15:28 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.1.1
+	(envelope-from <manuelgr@student.ethz.ch>) id 1dNHGk-0001W9-H3
+	for qemu-arm@nongnu.org; Tue, 20 Jun 2017 07:24:31 -0400
+Received: from edge20.ethz.ch ([82.130.99.26]:57121)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <manuelgr@student.ethz.ch>)
+	id 1dNHGk-0001Vx-6l
+	for qemu-arm@nongnu.org; Tue, 20 Jun 2017 07:24:26 -0400
+Received: from CAS10.d.ethz.ch (172.31.38.210) by edge20.ethz.ch
+	(82.130.99.26) with Microsoft SMTP Server (TLS) id 14.3.319.2;
+	Tue, 20 Jun 2017 13:02:37 +0200
+Received: from MBX13.d.ethz.ch ([fe80::c4aa:956e:5014:ce66]) by
+	CAS10.d.ethz.ch ([fe80::cce:fc66:7b56:a06a%10]) with mapi id
+	14.03.0319.002; Tue, 20 Jun 2017 13:02:41 +0200
+From: "Grossmann  Manuel" <manuelgr@student.ethz.ch>
+To: "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>
+Thread-Topic: Error when running Go programs (QEMU ARM)
+Thread-Index: AQHS6bS7Dv7BE60xu0CpfbFzOjJHnw==
+Date: Tue, 20 Jun 2017 11:02:40 +0000
+Message-ID: <82094596CAFDB842B18EE1F7F37819CE354BC622@MBX13.d.ethz.ch>
+Accept-Language: de-CH, en-US
+Content-Language: de-CH
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-originating-ip: [217.162.50.8]
+Content-Type: multipart/alternative;
+	boundary="_000_82094596CAFDB842B18EE1F7F37819CE354BC622MBX13dethzch_"
 MIME-Version: 1.0
-In-Reply-To: <AM5PR0401MB25459FDAA8C9AFA52503AAE99AC40@AM5PR0401MB2545.eurprd04.prod.outlook.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 217.140.101.70
-Subject: Re: [Qemu-arm] [Qemu-devel] [RFC v2 0/8] VIRTIO-IOMMU device
+X-detected-operating-system: by eggs.gnu.org: Windows 7 or 8 [fuzzy]
+X-Received-From: 82.130.99.26
+X-Mailman-Approved-At: Tue, 20 Jun 2017 10:00:22 -0400
+Subject: [Qemu-arm] Error when running Go programs (QEMU ARM)
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -94,64 +85,74 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: "kevin.tian@intel.com" <kevin.tian@intel.com>,
-	"marc.zyngier@arm.com" <marc.zyngier@arm.com>,
-	"tn@semihalf.com" <tn@semihalf.com>,
-	"will.deacon@arm.com" <will.deacon@arm.com>,
-	"drjones@redhat.com" <drjones@redhat.com>,
-	"robin.murphy@arm.com" <robin.murphy@arm.com>,
-	"christoffer.dall@linaro.org" <christoffer.dall@linaro.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: jIYPSDk0AK0N
+X-TUID: NfGdU+ND7uyx
 
-On 19/06/17 08:54, Bharat Bhushan wrote:
-> Hi Eric,
-> 
-> I started added replay in virtio-iommu and came across how MSI interrupts with work with VFIO. 
-> I understand that on intel this works differently but vsmmu will have same requirement. 
-> kvm-msi-irq-route are added using the msi-address to be translated by viommu and not the final translated address.
-> While currently the irqfd framework does not know about emulated iommus (virtio-iommu, vsmmuv3/vintel-iommu).
-> So in my view we have following options:
-> - Programming with translated address when setting up kvm-msi-irq-route
-> - Route the interrupts via QEMU, which is bad from performance
-> - vhost-virtio-iommu may solve the problem in long term
-> 
-> Is there any other better option I am missing?
+--_000_82094596CAFDB842B18EE1F7F37819CE354BC622MBX13dethzch_
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 
-Since we're on the topic of MSIs... I'm currently trying to figure out how
-we'll handle MSIs in the nested translation mode, where the guest manages
-S1 page tables and the host doesn't know about GVA->GPA translation.
+Hi guys,
 
-I'm also wondering about the benefits of having SW-mapped MSIs in the
-guest. It seems unavoidable for vSMMU since that's what a physical system
-would do. But in a paravirtualized solution there doesn't seem to be any
-compelling reason for having the guest map MSI doorbells. These addresses
-are never accessed directly, they are only used for setting up IRQ routing
-(at least on kvmtool). So here's what I'd like to have. Note that I
-haven't investigated the feasibility in Qemu yet, I don't know how it
-deals with MSIs.
+I am currently writing my bachelor thesis about setting up SCION on ARM dev=
+ices. To do this, I create my own image of Ubuntu and customize it, that th=
+e image has installed everything when I flash it to the SD card.
 
-(1) Guest uses the guest-physical MSI doorbell when setting up MSIs. For
-ARM with GICv3 this would be GITS_TRANSLATER, for x86 it would be the
-fixed MSI doorbell. This way the host wouldn't need to inspect IOMMU
-mappings when handling writes to PCI MSI-X tables.
+The problem which I am having currently is, that I need to run Go programs =
+to install SCION. Unfortunately I get this error (https://github.com/golang=
+/go/issues/13024) when I want to do this.
 
-(2) In nested mode (with VFIO) on ARM, the pSMMU will still translate MSIs
-via S1+S2. Therefore the host needs to map MSIs at stage-1, and I'd like
-to use the (currently unused) TTB1 tables in that case. In addition, using
-TTB1 would be useful for SVM, when endpoints write MSIs with PASIDs and we
-don't want to map them in user address space.
+Is there any workaround or alternatives?
+Here is the Stackoverflow question I created, if you want to answer there (=
+as well).
+https://stackoverflow.com/questions/44635983/qemu-arm-user-emulation-error-=
+when-using-go?noredirect=3D1&lq=3D1
 
-This means that the host needs to use different doorbell addresses in
-nested mode, since it would be unable to map at S1 the same IOVA as S2
-(TTB1 manages negative addresses - 0xffff............, which are not
-representable as GPAs.) It also requires to use 32-bit page tables for
-endpoints that are not capable of using 64-bit MSI addresses.
+Thanks for your time!
 
+Best,
+Manuel
 
-Now (2) is entirely handled in the host kernel, so it's more a Linux
-question. But does (1) seem acceptable for virtio-iommu in Qemu?
+--_000_82094596CAFDB842B18EE1F7F37819CE354BC622MBX13dethzch_
+Content-Type: text/html; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 
-Thanks,
-Jean
+<html dir=3D"ltr">
+<head>
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Diso-8859-=
+1">
+<style type=3D"text/css" id=3D"owaParaStyle">P {margin-top:0;margin-bottom:=
+0;}</style>
+</head>
+<body fpstyle=3D"1" ocsi=3D"0">
+<div style=3D"direction: ltr;font-family: Tahoma;color: #000000;font-size: =
+10pt;">Hi guys,<br>
+<br>
+I am currently writing my bachelor thesis about setting up SCION on ARM dev=
+ices. To do this, I create my own image of Ubuntu and customize it, that th=
+e image has installed everything when I flash it to the SD card.<br>
+<br>
+The problem which I am having currently is, that I need to run Go programs =
+to install SCION. Unfortunately I get this error (<a href=3D"https://github=
+.com/golang/go/issues/13024" rel=3D"nofollow noreferrer">https://github.com=
+/golang/go/issues/13024</a>) when I
+ want to do this.<br>
+<br>
+Is there any workaround or alternatives?<br>
+Here is the Stackoverflow question I created, if you want to answer there (=
+as well).<br>
+<a href=3D"https://stackoverflow.com/questions/44635983/qemu-arm-user-emula=
+tion-error-when-using-go?noredirect=3D1&amp;lq=3D1" target=3D"_blank">https=
+://stackoverflow.com/questions/44635983/qemu-arm-user-emulation-error-when-=
+using-go?noredirect=3D1&amp;lq=3D1</a><br>
+<br>
+Thanks for your time!<br>
+<br>
+Best,<br>
+Manuel<br>
+</div>
+</body>
+</html>
+
+--_000_82094596CAFDB842B18EE1F7F37819CE354BC622MBX13dethzch_--

@@ -1,79 +1,96 @@
-Received: by 10.25.15.165 with SMTP id 37csp876229lfp;
-        Tue, 20 Jun 2017 07:03:16 -0700 (PDT)
-X-Received: by 10.202.204.207 with SMTP id c198mr16510799oig.71.1497967396266;
-        Tue, 20 Jun 2017 07:03:16 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1497967396; cv=none;
+Received: by 10.25.15.165 with SMTP id 37csp920158lfp;
+        Tue, 20 Jun 2017 08:35:29 -0700 (PDT)
+X-Received: by 10.176.17.26 with SMTP id e26mr5409466uab.94.1497972929855;
+        Tue, 20 Jun 2017 08:35:29 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1497972929; cv=none;
         d=google.com; s=arc-20160816;
-        b=qlhnXIRwK4wXzrn7KTZZhyzmikGOum5h161fMDNVuYLDGgazkSxkPAhty0MLKTI5aP
-         XYa+pMGSOc6nIDQ7IVZp302G53Q3l5DpclNavCysXq1z559diSpV+IdjLT5FQumtNKmF
-         EnGCshoxQNt68gkL6lJ+dBkkPlZTNjcuw8DVo9K+sc0Jcl3bGaF3cAVErfHJQmvV1hfM
-         gWJIBztWwHBUxRIZSJ9Jl8zNkJqbiRYtv9qO2k1BKtDuLIvJ3YyDHmDyaZM1mbBPkhOv
-         yRLpI+FoCjubOyqUyGhtVPwqppTyYQlMDrlfzroC+Crse8Sn8Nfwi6M98wxZzZUw/cI8
-         hJEg==
+        b=NpFNXSQpFVI+/J/kHvFA5ZgikWHGHYXtDxWuwS46vbwIjf2yt4PxZJmHjD/7CatlyP
+         4i9QiJo7cZhxRUN4sj8nA1DuUWAnevdeqBZNDZWPFx+K1XkHYAkKslmMADnHDsracbn5
+         4OSA1dZ9DZvq+e9yuNjOHHKa3AsVLOuOa1yIWZcyn47YnRxSDflitPxzGeRhfECjMyhE
+         ojrHjjzA1Kvt8YbE0lBFNJbSY1Zscoqqr28zFPG1VLBRibIopzIp0HNWGYKhiBM9cOHe
+         w0jjjWQwS+EImBLUUKEAC05yufhlk6eIKP/bQseyMfY+s+sslqjfcNZwrX8QfB4wK9C+
+         VO8Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:mime-version
-         :content-language:accept-language:message-id:date:thread-index
-         :thread-topic:to:from:arc-authentication-results;
-        bh=/O65WCVVZAUGZINy95iRwjP1UfTAAQY+JjNtDiu/P68=;
-        b=FUnTybCCStdVyqLtF4AlX0oIbM0DzBPxDXm/RIX8ZXbaxVsVb7AQ+nSlcU4yAsKYt4
-         WnWMdU+VIW+iWwLJK4n7Drz6KAh25eeKnczNW38uV8wKGlAneZktSTbQPvkn9zH+PYiI
-         i3PkuHvQYFGVcZVFPqyfivUjVkIPwK12JkzUQQ1hA8of/yP63TASWG1PbUYGGjjejGRb
-         ey9IJskq3E+C93VmCH3PTTb/VuYhOaX/hB5OMQlVW5PnWXgDZU5KGkn5lqGLGMkb1OZF
-         Suur9WYBy5MwRTBFfjmzm6AeJXoSaCsoXMv/Ho4/FRWedM/WXuv2T/7dpK2o6Z8BmCzZ
-         fZ3g==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
+         :references:in-reply-to:mime-version:dkim-signature
+         :arc-authentication-results;
+        bh=VPrQY+R6NjP2k7pvQkYuRvr17sBJ+KyeAZJelpjrtcs=;
+        b=zjrlo28QyVw1gwHSGQWIAOAD43DB5YRDsQmcyNs2Zdap32q4b5027q3zqJzUG8tl6U
+         YeVu3E2KzYFhGMkQbquMqYpWUgO0PRko6yjWQzhz9ldxpILDVYn2vG/LOGuhkDpx6z56
+         dTNcYgIyS8b7xDhJDuPgHWJilvvfW2Tabbz/gmZWKt1MftFQEHHM96cYcfZo+MDylNHJ
+         4fkFf7oQVE7xzLCCteXXr3Nb5Z5dLhCBT5MiB6UNr8rc8nWT4/OotPpNwZrO4HBQlJW8
+         YX0utPrNH1YxI3RNGKTplwla+60agt0R3AT8RoVu3YSHOGdI6nD/t6KpCbrO9U/GIV5z
+         pV1A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+       dkim=fail header.i=@linaro.org header.b=MdaRfsqi;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id d189si6057187vka.55.2017.06.20.07.03.16
+        by mx.google.com with ESMTPS id q15si6053601vkb.32.2017.06.20.08.35.29
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 20 Jun 2017 07:03:16 -0700 (PDT)
+        Tue, 20 Jun 2017 08:35:29 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:49011 helo=lists.gnu.org)
+       dkim=fail header.i=@linaro.org header.b=MdaRfsqi;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:49373 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1dNJkR-0002nD-Mj
-	for alex.bennee@linaro.org; Tue, 20 Jun 2017 10:03:15 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:56690)
+	id 1dNLBh-00064f-9f
+	for alex.bennee@linaro.org; Tue, 20 Jun 2017 11:35:29 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:34613)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <manuelgr@student.ethz.ch>) id 1dNHGp-0001oV-Ez
-	for qemu-arm@nongnu.org; Tue, 20 Jun 2017 07:24:32 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1dNLBc-00062y-D7
+	for qemu-arm@nongnu.org; Tue, 20 Jun 2017 11:35:25 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <manuelgr@student.ethz.ch>) id 1dNHGk-0001W9-H3
-	for qemu-arm@nongnu.org; Tue, 20 Jun 2017 07:24:31 -0400
-Received: from edge20.ethz.ch ([82.130.99.26]:57121)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <manuelgr@student.ethz.ch>)
-	id 1dNHGk-0001Vx-6l
-	for qemu-arm@nongnu.org; Tue, 20 Jun 2017 07:24:26 -0400
-Received: from CAS10.d.ethz.ch (172.31.38.210) by edge20.ethz.ch
-	(82.130.99.26) with Microsoft SMTP Server (TLS) id 14.3.319.2;
-	Tue, 20 Jun 2017 13:02:37 +0200
-Received: from MBX13.d.ethz.ch ([fe80::c4aa:956e:5014:ce66]) by
-	CAS10.d.ethz.ch ([fe80::cce:fc66:7b56:a06a%10]) with mapi id
-	14.03.0319.002; Tue, 20 Jun 2017 13:02:41 +0200
-From: "Grossmann  Manuel" <manuelgr@student.ethz.ch>
-To: "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>
-Thread-Topic: Error when running Go programs (QEMU ARM)
-Thread-Index: AQHS6bS7Dv7BE60xu0CpfbFzOjJHnw==
-Date: Tue, 20 Jun 2017 11:02:40 +0000
-Message-ID: <82094596CAFDB842B18EE1F7F37819CE354BC622@MBX13.d.ethz.ch>
-Accept-Language: de-CH, en-US
-Content-Language: de-CH
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-originating-ip: [217.162.50.8]
-Content-Type: multipart/alternative;
-	boundary="_000_82094596CAFDB842B18EE1F7F37819CE354BC622MBX13dethzch_"
+	(envelope-from <peter.maydell@linaro.org>) id 1dNLBY-0005F0-C3
+	for qemu-arm@nongnu.org; Tue, 20 Jun 2017 11:35:24 -0400
+Received: from mail-lf0-x231.google.com ([2a00:1450:4010:c07::231]:36368)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1dNLBY-0005DW-5h
+	for qemu-arm@nongnu.org; Tue, 20 Jun 2017 11:35:20 -0400
+Received: by mail-lf0-x231.google.com with SMTP id o83so76857777lff.3
+	for <qemu-arm@nongnu.org>; Tue, 20 Jun 2017 08:35:20 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=VPrQY+R6NjP2k7pvQkYuRvr17sBJ+KyeAZJelpjrtcs=;
+	b=MdaRfsqiG58DG6p5iLIqMmkAtaY+j2JI0h2gYms+aEhDX6Xpz8U3G4bXbtvEv1mfO+
+	aA/q62GK/YqjMEZYo+MB6vvwrCJD2pqHuJA9vKl+73IUYsi7N2WkvHx48Qn8zkxEIhCM
+	b0XKfnKy8OWqCldFvLvQnrET8xM44uV6FLzcs=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=VPrQY+R6NjP2k7pvQkYuRvr17sBJ+KyeAZJelpjrtcs=;
+	b=FA+1wnF1zlWctrypoCPkGOIyjjZPS1y4tLot2UXJEuOsMB+TF//EOU8ZtvKedpkX20
+	9FPXj4ZIrdzdon01iF3NiwN+DTMAYY3b8bDXTnyaHSQ7iWp99oWycAWd2WX3Q/5gMVP1
+	eslK0b/u/ZB41JpvVqCG5yY2znjpLID0m1IcOV1h6/YtGbodovmFrpBN6qDjgBC6DloG
+	+jlWDJp69y8hlJZqcGc8rWlEzgHaVE97j/v0AmRT732h7zDV2IY0okhoYpbvfoBLhgoO
+	lWR4SnvkrIjENpSTgba6nk0XehlBUMeK8H4b4IE0B2uc3BY9RnSx23YrhbpnPLYHdtz0
+	AXjA==
+X-Gm-Message-State: AKS2vOzu737ce0vcLm4sN5PfssKU09gsJOtkSZu7rY4HhsMgIzP7ZVQj
+	MUFJQxLx3MsJ+thn9eTnr57X9KOSewxV
+X-Received: by 10.28.66.23 with SMTP id p23mr3174008wma.38.1497972918451; Tue,
+	20 Jun 2017 08:35:18 -0700 (PDT)
 MIME-Version: 1.0
-X-detected-operating-system: by eggs.gnu.org: Windows 7 or 8 [fuzzy]
-X-Received-From: 82.130.99.26
-X-Mailman-Approved-At: Tue, 20 Jun 2017 10:00:22 -0400
-Subject: [Qemu-arm] Error when running Go programs (QEMU ARM)
+Received: by 10.223.134.2 with HTTP; Tue, 20 Jun 2017 08:34:57 -0700 (PDT)
+In-Reply-To: <20170425180609.11004-1-krzk@kernel.org>
+References: <20170425180609.11004-1-krzk@kernel.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 20 Jun 2017 16:34:57 +0100
+Message-ID: <CAFEAcA8PjjUk6QrAE6ppgyYsYAyh+0uqd=_EgH-g4K=--utdoA@mail.gmail.com>
+To: Krzysztof Kozlowski <krzk@kernel.org>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2a00:1450:4010:c07::231
+Subject: Re: [Qemu-arm] [PATCH v3] hw/misc: Add Exynos4210 Pseudo Random
+ Number Generator
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -85,74 +102,99 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Igor Mitsyanko <i.mitsyanko@gmail.com>, qemu-arm <qemu-arm@nongnu.org>,
+	QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: NfGdU+ND7uyx
+X-TUID: X7ySUWAvX1ue
 
---_000_82094596CAFDB842B18EE1F7F37819CE354BC622MBX13dethzch_
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+On 25 April 2017 at 19:06, Krzysztof Kozlowski <krzk@kernel.org> wrote:
+> Add emulation for Exynos4210 Pseudo Random Number Generator which could
+> work on fixed seeds or with seeds provided by True Random Number
+> Generator block inside the SoC.
+>
+> Implement only the fixed seeds part of it in polling mode (no
+> interrupts).
+>
+> Emulation tested with two independent Linux kernel exynos-rng drivers:
+> 1. New kcapi-rng interface (targeting Linux v4.12),
+> 2. Old hwrng inteface
+>    # echo "exynos" > /sys/class/misc/hw_random/rng_current
+>    # dd if=/dev/hwrng of=/dev/null bs=1 count=16
+>
+> Signed-off-by: Krzysztof Kozlowski <krzk@kernel.org>
+>
+> ---
+>
+> Changes since v2:
+> 1. Drop GRand in favor of qcrypto_random_bytes() after discussion with
+>    Peter Maydell.
+> 2. Because of above, ignore the seed value but mark if each one of five
+>    seed registers were seeded.
+> 3. Fix memset of s->randr_value (copy paste error, also shorter sizeof
+>    can be used).
+>
+> Changes since v1:
+> 1. Use GRand-like functions to fix build on MingW32 (this adds also
+>    finalize).
+> 2. Add DPRINTF macro.
+> 3. Use HWADDR_PRIx and family for printing values.
+> ---
 
-Hi guys,
+> +#define EXYNOS4210_RNG_STATUS_WRITE_MASK        (EXYNOS4210_RNG_STATUS_PRNG_DONE \
+> +                                                    | EXYNOS4210_RNG_STATUS_MSG_DONE \
+> +                                                    | EXYNOS4210_RNG_STATUS_PARTIAL_DONE)
+> +
+> +#define EXYNOS4210_RNG_CONTROL_1                  0x0
+> +#define EXYNOS4210_RNG_STATUS                    0x10
+> +#define EXYNOS4210_RNG_SEED_IN                  0x140
+> +#define EXYNOS4210_RNG_SEED_IN_OFFSET(n)        (EXYNOS4210_RNG_SEED_IN + (n * 0x4))
+> +#define EXYNOS4210_RNG_PRNG                     0x160
+> +#define EXYNOS4210_RNG_PRNG_OFFSET(n)           (EXYNOS4210_RNG_PRNG + (n * 0x4))
 
-I am currently writing my bachelor thesis about setting up SCION on ARM dev=
-ices. To do this, I create my own image of Ubuntu and customize it, that th=
-e image has installed everything when I flash it to the SD card.
+Some of these lines are slightly overlong.
 
-The problem which I am having currently is, that I need to run Go programs =
-to install SCION. Unfortunately I get this error (https://github.com/golang=
-/go/issues/13024) when I want to do this.
+> +
+> +#define EXYNOS4210_RNG_PRNG_NUM                 5
+> +
+> +#define EXYNOS4210_RNG_REGS_MEM_SIZE            0x200
+> +
+> +typedef struct Exynos4210RngState {
+> +    SysBusDevice parent_obj;
+> +    MemoryRegion iomem;
+> +
+> +    int32_t randr_value[EXYNOS4210_RNG_PRNG_NUM];
+> +    /* bits from 0 to EXYNOS4210_RNG_PRNG_NUM if given seed register was set */
+> +    uint32_t seed_set;
+> +
+> +    /* Register values */
+> +    uint32_t reg_control;
+> +    uint32_t reg_status;
+> +} Exynos4210RngState;
+> +
+> +static bool exynos4210_rng_seed_ready(const Exynos4210RngState *s)
+> +{
+> +    unsigned int i;
+> +
+> +    for (i = 0; i < EXYNOS4210_RNG_PRNG_NUM; i++) {
+> +        if ((s->seed_set & BIT(i)) == 0) {
+> +            return false;
+> +        }
+> +    }
+> +
+> +    return true;
 
-Is there any workaround or alternatives?
-Here is the Stackoverflow question I created, if you want to answer there (=
-as well).
-https://stackoverflow.com/questions/44635983/qemu-arm-user-emulation-error-=
-when-using-go?noredirect=3D1&lq=3D1
+This can be more efficiently written as:
 
-Thanks for your time!
+    uint32_t mask = MAKE_64BIT_MASK(0, EXYNOS4210_RNG_PRNG_NUM);
 
-Best,
-Manuel
+    /* Return true if all the seed-set bits are set. */
+    return (s->seed_set & mask) == mask;
 
---_000_82094596CAFDB842B18EE1F7F37819CE354BC622MBX13dethzch_
-Content-Type: text/html; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
 
-<html dir=3D"ltr">
-<head>
-<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Diso-8859-=
-1">
-<style type=3D"text/css" id=3D"owaParaStyle">P {margin-top:0;margin-bottom:=
-0;}</style>
-</head>
-<body fpstyle=3D"1" ocsi=3D"0">
-<div style=3D"direction: ltr;font-family: Tahoma;color: #000000;font-size: =
-10pt;">Hi guys,<br>
-<br>
-I am currently writing my bachelor thesis about setting up SCION on ARM dev=
-ices. To do this, I create my own image of Ubuntu and customize it, that th=
-e image has installed everything when I flash it to the SD card.<br>
-<br>
-The problem which I am having currently is, that I need to run Go programs =
-to install SCION. Unfortunately I get this error (<a href=3D"https://github=
-.com/golang/go/issues/13024" rel=3D"nofollow noreferrer">https://github.com=
-/golang/go/issues/13024</a>) when I
- want to do this.<br>
-<br>
-Is there any workaround or alternatives?<br>
-Here is the Stackoverflow question I created, if you want to answer there (=
-as well).<br>
-<a href=3D"https://stackoverflow.com/questions/44635983/qemu-arm-user-emula=
-tion-error-when-using-go?noredirect=3D1&amp;lq=3D1" target=3D"_blank">https=
-://stackoverflow.com/questions/44635983/qemu-arm-user-emulation-error-when-=
-using-go?noredirect=3D1&amp;lq=3D1</a><br>
-<br>
-Thanks for your time!<br>
-<br>
-Best,<br>
-Manuel<br>
-</div>
-</body>
-</html>
+Unless you object, I propose to make those minor tweaks
+locally and commit to target-arm.next, rather than making
+you spin another version of this.
 
---_000_82094596CAFDB842B18EE1F7F37819CE354BC622MBX13dethzch_--
+thanks
+-- PMM

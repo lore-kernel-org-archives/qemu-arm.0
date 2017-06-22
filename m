@@ -1,111 +1,93 @@
-Received: by 10.25.15.165 with SMTP id 37csp179982lfp;
-        Sun, 18 Jun 2017 21:22:18 -0700 (PDT)
-X-Received: by 10.237.55.228 with SMTP id j91mr26601594qtb.68.1497846137920;
-        Sun, 18 Jun 2017 21:22:17 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1497846137; cv=none;
-        d=google.com; s=arc-20160816;
-        b=etOJMrna9+aI9PzPegmIvGUXtPjsh8Erl5fLAMCHZGIaGKhK1pozat4Z6N7+h2MZk7
-         VOPNZXNrUSJL6QjzYwGw0oh+XqPGDONYSygh6pAys+0RwGl271QWcTOG6BN0oZMmlLky
-         a5hGZ9Ap09oPXTHtP9WK90rDBfPCLd2QrwfR2fxdAlj8DGfctELz1eqzikYYOgBDlvi/
-         3r0kUVf5CMmjtbX8CWg1OuHh4We4qsicvEyVMk1fspTyXjUR9x+/jbt9ySWNonx7Fe2S
-         kxLKTCatPGKkmZzexM5YBwvdspay1GH5ASPDRmhtfMi89zVul+SbgcGilidseI5bojQi
-         YBVA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:in-reply-to:content-transfer-encoding
-         :content-disposition:mime-version:references:message-id:subject:cc
-         :to:from:date:dkim-signature:dkim-signature
-         :arc-authentication-results;
-        bh=8Tlp1RHaMG0rbnirxziUmHGrUvO5NbTnSzMz1ZZDVJI=;
-        b=OLctpuh+xDt5BGflFTGznxTcoVlG8zFSjjDZ2SQy7F3mf6B/5l82Mkoz24i1Wo7qmK
-         UWju6e1HMBoOFWBEVCnxjCHE4N3GAagQDl/k6OvlKtOmN+teLYX002Mf9TSeUd/4XvAG
-         Blze80VXAtWsZaF7+wOZkhGhk7WEoe4ak/3AZ+FufA+6VmAkuHn4w1DWgmo9WYbRNYNm
-         XwxaRV1iaGxYKKzHMBf2FZNfAUBFGeCyECurzVgbO4pMY5K2odHPjjvlktLOT6H6l7Lw
-         DI6CeCMRZNgW/UDKwM2ORt+YHR4nrDd4Q6XNANCEVJAO1BhWjPOaswrarxd0ZMK/79ZX
-         mlHg==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@braap.org header.b=V2f3ZFSm;
-       dkim=pass header.i=@messagingengine.com header.b=OoRh61j1;
-       spf=pass (google.com: domain of cota@braap.org designates 66.111.4.27 as permitted sender) smtp.mailfrom=cota@braap.org
-Return-Path: <cota@braap.org>
-Received: from out3-smtp.messagingengine.com (out3-smtp.messagingengine.com. [66.111.4.27])
-        by mx.google.com with ESMTPS id b73si4052738qkc.260.2017.06.18.21.22.17
+Return-Path: <alex.bennee@linaro.org>
+Received: from zen.linaro.local ([81.128.185.34])
+        by smtp.gmail.com with ESMTPSA id q143sm1037423wmg.14.2017.06.22.04.18.10
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 18 Jun 2017 21:22:17 -0700 (PDT)
-Received-SPF: pass (google.com: domain of cota@braap.org designates 66.111.4.27 as permitted sender) client-ip=66.111.4.27;
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@braap.org header.b=V2f3ZFSm;
-       dkim=pass header.i=@messagingengine.com header.b=OoRh61j1;
-       spf=pass (google.com: domain of cota@braap.org designates 66.111.4.27 as permitted sender) smtp.mailfrom=cota@braap.org
-Received: from compute4.internal (compute4.nyi.internal [10.202.2.44])
-	by mailout.nyi.internal (Postfix) with ESMTP id 75BE22088E;
-	Mon, 19 Jun 2017 00:22:17 -0400 (EDT)
-Received: from frontend1 ([10.202.2.160])
-  by compute4.internal (MEProxy); Mon, 19 Jun 2017 00:22:17 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=braap.org; h=cc
-	:content-transfer-encoding:content-type:date:from:in-reply-to
-	:message-id:mime-version:references:subject:to:x-me-sender
-	:x-me-sender:x-sasl-enc:x-sasl-enc; s=mesmtp; bh=8Tlp1RHaMG0rbni
-	rxziUmHGrUvO5NbTnSzMz1ZZDVJI=; b=V2f3ZFSmzIUdDIeVrBtDcPpcY/p9byH
-	6PK7rzTEDAhftC42Ctjq3wDpwDIjpxYe9scXPAVVTMb7/GVrMLGzbJ4jqd9iKqiz
-	hvjLd15lGS1VmGYujTYIqG8WfBDfH1LEY5rPGzEnoq3AQoPeAFzH76d5AB7SZ9SL
-	KzI1rNrATGvU=
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
-	messagingengine.com; h=cc:content-transfer-encoding:content-type
-	:date:from:in-reply-to:message-id:mime-version:references
-	:subject:to:x-me-sender:x-me-sender:x-sasl-enc:x-sasl-enc; s=
-	fm1; bh=8Tlp1RHaMG0rbnirxziUmHGrUvO5NbTnSzMz1ZZDVJI=; b=OoRh61j1
-	TJX4Tbzjw6cK4E6ESRC5LSxXp6hUqYrDe79S02q+odIt27nbNuvMBEfh9HAr1Bnw
-	nNxG2ZPSSPnHXA+vnHoE4/cmjCT8FqPn/hIq5OBRbZeowhSZu6rHpR7LDis3heTs
-	XnYeqQLQH4b7Dt0soT6PhEmvPLjDTKDCFqo1/Lxwbk50p/sOkggDWXHwhUq2KarP
-	EGSA5K9OyrPOyx3T1QAJu5qOwFetaDzYQRAXDIIYooEwT5gsN2jBrIJzVPu6Dgsy
-	bPoU8384eULkiux4gX+YtfRL6/SQcaRV8sbGE9REDvnjyObnopOeYtKEJSYF422g
-	uWDKqK2BhRMf8Q==
-X-ME-Sender: <xms:eVFHWR2fjFdt6i7PdOwfoh5qkNHuaZzX11AMeqvSz27RXDAVnEMI-w>
-X-Sasl-enc: ebSbi+8B+bNfbxCj+3kpDPX/W0EDSdGSWfQQKJ/LFCvN 1497846137
-Received: from localhost (flamenco.cs.columbia.edu [128.59.20.216])
-	by mail.messagingengine.com (Postfix) with ESMTPA id 2BA627E887;
-	Mon, 19 Jun 2017 00:22:17 -0400 (EDT)
-Date: Mon, 19 Jun 2017 00:22:16 -0400
-From: "Emilio G. Cota" <cota@braap.org>
-To: =?iso-8859-1?Q?Llu=EDs?= Vilanova <vilanova@ac.upc.edu>
-Cc: qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
-	Peter Crosthwaite <crosthwaite.peter@gmail.com>,
-	"open list:ARM" <qemu-arm@nongnu.org>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	Alex =?iso-8859-1?Q?Benn=E9e?= <alex.bennee@linaro.org>,
-	Richard Henderson <rth@twiddle.net>
-Subject: Re: [Qemu-devel] [PATCH v6 6/6] target: [tcg, arm] Port to generic
- translation framework
-Message-ID: <20170619042216.GC10709@flamenco>
-References: <149727922719.28532.11985025310576184920.stgit@frigg.lan>
- <149727927074.28532.17986481795216498698.stgit@frigg.lan>
- <20170616001842.GA25056@flamenco>
- <87mv95cq9t.fsf@frigg.lan>
+        Thu, 22 Jun 2017 04:18:10 -0700 (PDT)
+Received: from zen.linaroharston (localhost [127.0.0.1])
+	by zen.linaro.local (Postfix) with ESMTP id 7BECC3E0201;
+	Thu, 22 Jun 2017 12:18:55 +0100 (BST)
+From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: peter.maydell@linaro.org
+Cc: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	Andre Przywara <andre.przywara@arm.com>,
+	Christoffer Dall <cdall@linaro.org>
+Subject: [PATCH] target/arm/helper: document potential CNTV register bear trap
+Date: Thu, 22 Jun 2017 12:18:45 +0100
+Message-Id: <20170622111845.5296-1-alex.bennee@linaro.org>
+X-Mailer: git-send-email 2.13.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <87mv95cq9t.fsf@frigg.lan>
-User-Agent: Mutt/1.5.24 (2015-08-30)
-X-TUID: eWY/pXyDsfGo
+X-TUID: 7gmMFA7mgdVj
 
-On Sun, Jun 18, 2017 at 17:41:02 +0300, LluÌs Vilanova wrote:
-> Is there any ready-made kernel or disk image I can test with?
+The ARM KVM encodings have been inadvertently switched for
+CNTV_CVAL_EL0/CNTVCT_EL0 in the register API since its introduction.
+Fortunately this doesn't currently mater as the reset values for both
+are the same. However if this ever changes things will break in
+interesting ways.
 
-I test ARM with:
+Migration is currently unaffected as we just use
+cpu->cpreg_vmstate_indexes/cpreg_vmstate_values verbatim. However this
+would break if we ever supported migration between KVM and TCG models.
 
-$ qemu-system-arm -machine type=virt -nographic -smp 1 -m 4096 \
-	-netdev user,id=unet,hostfwd=tcp::2222-:22 \
-	-device virtio-net-device,netdev=unet \
-	-drive file=jessie-arm32-die-on-boot.qcow2,id=myblock,index=0,if=none \
-	-device virtio-blk-device,drive=myblock \
-	-kernel aarch32-current-linux-kernel-only.img \
-	-append 'console=ttyAMA0 root=/dev/vda1' \
-	-name arm,debug-threads=on -smp 1
+For now we just warn future generations who may touch this code.
 
-Grab the image & kernel from:
-  http://www.cs.columbia.edu/~cota/qemu/
-NB. The image shuts down without even asking for a username; it's convenient
-for testing/benchmarking.
+Signed-off-by: Alex Benn√©e <alex.bennee@linaro.org>
+Cc: Andre Przywara <andre.przywara@arm.com>
+Cc: Christoffer Dall <cdall@linaro.org>
+---
+ target/arm/helper.c | 16 ++++++++++++++++
+ 1 file changed, 16 insertions(+)
 
-		E.
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index 2594faa9b8..e7a0e39583 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -211,6 +211,11 @@ static bool raw_accessors_invalid(const ARMCPRegInfo *ri)
+     return true;
+ }
+ 
++/*
++ * FIXME: the KVM API has switched encodings for
++ * CNTV_CVAL_EL0/CNTVCT_EL0 which need to be fixed if we want to
++ * change the reset values or support KVM<->TCG migration.
++ */
+ bool write_cpustate_to_list(ARMCPU *cpu)
+ {
+     /* Write the coprocessor state from cpu->env to the (index,value) list. */
+@@ -234,6 +239,7 @@ bool write_cpustate_to_list(ARMCPU *cpu)
+     return ok;
+ }
+ 
++/* FIXME: see above re:CNTV_CVAL_EL0/CNTVCT_EL0 encodings */
+ bool write_list_to_cpustate(ARMCPU *cpu)
+ {
+     int i;
+@@ -1961,6 +1967,11 @@ static const ARMCPRegInfo generic_timer_cp_reginfo[] = {
+                                    cp15.c14_timer[GTIMER_VIRT].ctl),
+       .writefn = gt_virt_ctl_write, .raw_writefn = raw_write,
+     },
++    /* WARNING! For *KVM only* the switched API encoding means this
++     * actually gets loaded in fresh VMs as CNTV_CVAL_EL0. This will
++     * need to be fixed in write_[cpustate_to_list|list_to_cpustate]
++     * if you want to change the reset value.
++     */
+     { .name = "CNTV_CTL_EL0", .state = ARM_CP_STATE_AA64,
+       .opc0 = 3, .opc1 = 3, .crn = 14, .crm = 3, .opc2 = 1,
+       .type = ARM_CP_IO, .access = PL1_RW | PL0_R,
+@@ -2053,6 +2064,11 @@ static const ARMCPRegInfo generic_timer_cp_reginfo[] = {
+       .accessfn = gt_vtimer_access,
+       .writefn = gt_virt_cval_write, .raw_writefn = raw_write,
+     },
++    /* WARNING! For *KVM only* the switched API encoding means this
++     * actually gets loaded in fresh VMs as CNTVCT_EL0. This will need
++     * to be fixed in write_[cpustate_to_list|list_to_cpustate] if you
++     * want to change the reset value.
++     */
+     { .name = "CNTV_CVAL_EL0", .state = ARM_CP_STATE_AA64,
+       .opc0 = 3, .opc1 = 3, .crn = 14, .crm = 3, .opc2 = 2,
+       .access = PL1_RW | PL0_R,
+-- 
+2.13.0

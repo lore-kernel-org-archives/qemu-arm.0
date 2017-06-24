@@ -1,100 +1,100 @@
-Received: by 10.25.15.197 with SMTP id 66csp515509lfp;
-        Sat, 24 Jun 2017 00:43:25 -0700 (PDT)
-X-Received: by 10.200.44.150 with SMTP id 22mr13564675qtw.173.1498290205118;
-        Sat, 24 Jun 2017 00:43:25 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1498290205; cv=none;
+Received: by 10.25.15.197 with SMTP id 66csp590831lfp;
+        Sat, 24 Jun 2017 05:25:24 -0700 (PDT)
+X-Received: by 10.237.37.193 with SMTP id y1mr14362244qtc.140.1498307124352;
+        Sat, 24 Jun 2017 05:25:24 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1498307124; cv=none;
         d=google.com; s=arc-20160816;
-        b=f1UVaEfKBLZkIPaw2I7O3TUfLy99U08JDVevTvQY67mQC3ZwuYrGtNFb19iEqjRrF2
-         WrbAgp78CQc05ez7xzGvhOhp2EhkFlxfoXJibysx8QOvBuWJjITE1LlfVbAUudR4vWKE
-         n5dLjePK/Y31JYNbJhVwrZ5Rk7B1rLwtPbWcmwHP2EHk6+mMsVe0Af+hjnTJW+H5q+SH
-         dWIyqjPbgAAvc3UcGCOFySNs1qtaZ5JHHcaSJgIkvJqi6Q4ErdZ3VftzrBUUoSSKqa84
-         O6HlNn6FvPb+WMOyeXaCy8+AGutZZps0WEDmvbh6k29FvS0apUYhDFiSF6e1+3RaXSLa
-         EdGA==
+        b=KF8Dc4jdoj0tLvNL9JwFSUc8P6/x460xbsVmNj25sJeXNIZ1qpfQReizwjY11AxSZE
+         bW2mlWe70l33VFoY5Q93RVeVe+670xWdm5GCXGs2WGb9yFwWljJLdHCvv4pyIjnw55AV
+         37jXHVvhz+JbJNfCxPFKqnit1EcWQ6jdXT1bkcO97eE0MlsIIa61IbOS/CBLExcdUDz8
+         PordqpvBuXogZPkJg9T+5fF0uWu2cDxSXv6DLs8CXb4svGPudEqU11yeb5Z6ETnWqANN
+         nYaxl08NF4zOHdhN1P0euEmq6eQqQWEx9dpytS3+jCuouNlEusmNaMSicnyr0fGr0Wtu
+         zMTg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
          :references:in-reply-to:mime-version:dkim-signature
          :arc-authentication-results;
-        bh=L677pGDkIdRpzRBq8KYzpJbZTEUDpCbGTmXPrdgI/lk=;
-        b=L1DBNylDbiBQvzI0+o11eVxfF+hIdtAnD9hWbe4EZi4tacbbDBSAoT41nmbGPVxnTw
-         BQ8P8F+aWeAcxlbmDSOn+zRfSgNzn/1iRfo15q1vV7llmCAQ9R4j4RxsYIarunT6hakD
-         4Jxo1r54wswpIcaAJYWDHBb60dqBdXv4qLpF4GXsnr4Dz7XSCMoEReEWd7RACfH0zI9H
-         G0HPNySoWfhTmk3Ip6C/gXC7ZSXzFRUkdOkBuECPJkGStCG2ynvpb4iVlybw0L7ov6M/
-         PJf29/F6N6bTKP5FHPNWY7PuVQAPNaZ+phrzDq+oIEWgx8JGAhfa9OrkHElGwVxjVHKs
-         68nw==
+        bh=4lHiKLqjahBq8cxeBOjYQFQQk4n+A1HNyf0ITFdgjS8=;
+        b=HfnpA5BmQL9AQOY718FNPVQccaeYTIiWtgTolKLarTdKuxXxMDd+tz42pwOYsdRzCU
+         /CnbpwqIVz3CR0eeOxM/fPYotc+5VNMMpDHv5o1m1hg648+58rM0akeIUENuJLxdGBgZ
+         tNZnXbMOstBeq29YOJmQ+c99VaHcYSkAj/sA/5KPGQBpcnp7e1IJ76++18OeyjlhOcEM
+         JR5pN4nD7tYuKKcZE2nm291oXJyXb/75J6UbD7tneNMYHz22iierVZ9s9axKDlV5Gw6z
+         h19yMaj2sb5mbUZO92Qp9harNdHFdwdg4sAro3ZM1OEDZ9KP2U/s3RXT3MnMxVE6d1JE
+         TmwA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.b=K0iJ13Y/;
+       dkim=fail header.i=@gmail.com header.b=lu8ICn+p;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id p51si6011087qtc.73.2017.06.24.00.43.24
+        by mx.google.com with ESMTPS id p43si8515qtg.361.2017.06.24.05.25.23
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sat, 24 Jun 2017 00:43:25 -0700 (PDT)
+        Sat, 24 Jun 2017 05:25:24 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.b=K0iJ13Y/;
+       dkim=fail header.i=@gmail.com header.b=lu8ICn+p;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:38472 helo=lists.gnu.org)
+Received: from localhost ([::1]:39276 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1dOfiz-0005Ln-Tj
-	for alex.bennee@linaro.org; Sat, 24 Jun 2017 03:43:21 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:33959)
+	id 1dOk7t-0002KL-AM
+	for alex.bennee@linaro.org; Sat, 24 Jun 2017 08:25:21 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:33859)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <sundeep.lkml@gmail.com>) id 1dOfik-0005IX-U2
-	for qemu-arm@nongnu.org; Sat, 24 Jun 2017 03:43:10 -0400
+	(envelope-from <sundeep.lkml@gmail.com>) id 1dOk7k-0002Hz-FC
+	for qemu-arm@nongnu.org; Sat, 24 Jun 2017 08:25:15 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <sundeep.lkml@gmail.com>) id 1dOfih-0000Ra-Gf
-	for qemu-arm@nongnu.org; Sat, 24 Jun 2017 03:43:06 -0400
-Received: from mail-yw0-x243.google.com ([2607:f8b0:4002:c05::243]:36166)
+	(envelope-from <sundeep.lkml@gmail.com>) id 1dOk7h-0003NM-JY
+	for qemu-arm@nongnu.org; Sat, 24 Jun 2017 08:25:12 -0400
+Received: from mail-yb0-x241.google.com ([2607:f8b0:4002:c09::241]:35136)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <sundeep.lkml@gmail.com>)
-	id 1dOfia-0000Nb-3r; Sat, 24 Jun 2017 03:42:56 -0400
-Received: by mail-yw0-x243.google.com with SMTP id s127so3866441ywg.3;
-	Sat, 24 Jun 2017 00:42:54 -0700 (PDT)
+	id 1dOk7b-0003J2-1f; Sat, 24 Jun 2017 08:25:03 -0400
+Received: by mail-yb0-x241.google.com with SMTP id g206so3151510yba.2;
+	Sat, 24 Jun 2017 05:25:02 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
 	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=L677pGDkIdRpzRBq8KYzpJbZTEUDpCbGTmXPrdgI/lk=;
-	b=K0iJ13Y/uI3XsirjEgl3Hc5cH9h5TrjruFNG4TzE8QTnOQvQumXVVZZDijyv/7/836
-	RAD3t3Tyd+54yhv53/rIV+KeLosEYBzXzac0tyMUwQ0+h76Rgw898SQFRkXSmllezmdP
-	79X4GB81pUMN8/OcMrOIotYQ+OeBUyRHnfvo7oEe4oHt5mvvgQW8szCC/deE6/AvapT0
-	JSBz8jRKK7B/xlM3CDpGKTa6ZH6HcVPLvQKDN6Jgs4y9fq99yGaBdF6GYeTL851Bdaqz
-	sU2Z8CQvPUk2xGCFDgOCT4AnSphubQywhmv5sLF5QUBSLj+5rQCmIuc5x58R0p8m8S6l
-	BhkQ==
+	:cc; bh=4lHiKLqjahBq8cxeBOjYQFQQk4n+A1HNyf0ITFdgjS8=;
+	b=lu8ICn+pRsIiqtTBxWd7v/03o/qvByFSTEds7W2mxUOhv89hnBLvz7iQIFOzxOUBcg
+	2++VyvzJYJvKAwf2RALBKC9yUeGuDhWP+qqi2s0pzA8FjrHGAFLjFyLY+07bGrADng+c
+	NC9UiVG2cYosUcPfYMdZW132tM5W9SnQfdvgxFK1gsRAV6YLeha7X54O3ICT4pRuEfJJ
+	G1M3x5giB/3ESS0Ew86DDbHVytSNTaOhOCijX9bZa9gP/R4Uk3yjFFPYDtI78XKDRHeR
+	6s0lGTvs2rivErLhzJdARo4CfGeGZo2XYpKGj8HEyLcFejjfF/npE/4+KJh9Sd4EFgjn
+	6/lg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
 	:message-id:subject:to:cc;
-	bh=L677pGDkIdRpzRBq8KYzpJbZTEUDpCbGTmXPrdgI/lk=;
-	b=h4dmF5PYjefIB+5hxPvs8pNZfFg0RWPlik4G98NgPcoA3yS0hbymgw/XW4mg2aMCfO
-	OpXqse5LXmQyFeGGmIEfhLOjHjU+IgMnQASJZu0gkd7VyTpQ70VJe7vpGc2OwuQgAM6l
-	Kg/+GeRR/lbZi7z7hN672hIbMIELa2DtV29AI9GZjvbAy0lLfhLgEg3ejkLX+CCDypnp
-	jZbN4YGGKfr1Im2kaOZbe+MI8dzCkBDyJt5SR6fuAFhv4L3gVstD5oOvILR8t9lpXxB8
-	oTkK5KmgG7gyxtwghWhxycGahJ/qflROSDyIEtfoiNJlCxSbl3FaQHKIajOlaoRecQ3l
-	Wcfg==
-X-Gm-Message-State: AKS2vOyenUWynzZ0OFWklXiatPGG3EI1KOJqpueoU1gebPCTjZO89eK5
-	j0RTFUVveJYQS7iHBLwriH4YOr1usg==
-X-Received: by 10.129.44.130 with SMTP id s124mr8453149yws.2.1498290173892;
-	Sat, 24 Jun 2017 00:42:53 -0700 (PDT)
+	bh=4lHiKLqjahBq8cxeBOjYQFQQk4n+A1HNyf0ITFdgjS8=;
+	b=RPPGeUAEH4QgbqDd2IflZtRxbRLJSXemiWHzJCjKmxKJHoNvrXV+dargN3OlYINLAU
+	FWbbrnNUrcFuvuaz/RdQpmRAdPnqX0WyjfdnR/0cuxACJJRWmrkLy2L0v7YsLZ/XXsFe
+	ihVAs2yCfJazAXbefmzu6MpbsyY+k9R1Xx9OBNbu5phh3HC+xrje7WgQhnckqKZ2tDoI
+	t/KCsvFa1BDiSvWChI6NSYkmQTkf294tC+QpYlag+XhyoiULcR405cEjTCa55aAG6kuL
+	FKRsl7EXugEIiZxKna7r3OOxNzvDv9cyzMdXvpFAzCsUXzDaOnYZWItSMS6RAIGrRgtk
+	EkHA==
+X-Gm-Message-State: AKS2vOx1JoHwP3cGIpAGbGmcHIhQMWQlAN8jFuPqadpm7z2no7J/cJXG
+	F5fEGktSKaBjytvFq1/w/3DFpZZ0tQ==
+X-Received: by 10.37.83.66 with SMTP id h63mr8909550ybb.169.1498307102369;
+	Sat, 24 Jun 2017 05:25:02 -0700 (PDT)
 MIME-Version: 1.0
-Received: by 10.13.244.65 with HTTP; Sat, 24 Jun 2017 00:42:53 -0700 (PDT)
-In-Reply-To: <88198632-0a9c-0768-dd1e-3ecf2472e2be@amsat.org>
+Received: by 10.13.244.65 with HTTP; Sat, 24 Jun 2017 05:25:01 -0700 (PDT)
+In-Reply-To: <791b5dbc-4a5d-71c7-cd4b-1609b164e648@amsat.org>
 References: <1494949133-2202-1-git-send-email-sundeep.lkml@gmail.com>
-	<1494949133-2202-4-git-send-email-sundeep.lkml@gmail.com>
-	<88198632-0a9c-0768-dd1e-3ecf2472e2be@amsat.org>
+	<1494949133-2202-2-git-send-email-sundeep.lkml@gmail.com>
+	<791b5dbc-4a5d-71c7-cd4b-1609b164e648@amsat.org>
 From: sundeep subbaraya <sundeep.lkml@gmail.com>
-Date: Sat, 24 Jun 2017 13:12:53 +0530
-Message-ID: <CALHRZuokB2CzMhv-0f1LegdcAwq2gWEzr53WdFrJc3RPRVqx1g@mail.gmail.com>
+Date: Sat, 24 Jun 2017 17:55:01 +0530
+Message-ID: <CALHRZuqdmhxOeMvN=y46t19c+muY18cN=s4-+L2uiWWBvUh=PA@mail.gmail.com>
 To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
-Content-Type: multipart/alternative; boundary="001a1140e0cc95e16e0552afddc3"
+Content-Type: multipart/alternative; boundary="001a113e688e99f2a00552b3ced6"
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:4002:c05::243
-Subject: Re: [Qemu-arm] [Qemu devel v5 PATCH 3/5] msf2: Add Smartfusion2 SPI
- controller
+X-Received-From: 2607:f8b0:4002:c09::241
+Subject: Re: [Qemu-arm] [Qemu devel v5 PATCH 1/5] msf2: Add Smartfusion2
+ System timer
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -111,57 +111,59 @@ Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm <qemu-arm@nongnu.org>,
 	Alistair Francis <alistair23@gmail.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: AbByuiEwmx6T
+X-TUID: GiuIeim49UnF
 
---001a1140e0cc95e16e0552afddc3
+--001a113e688e99f2a00552b3ced6
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
 Hi Philippe,
 
-On Tue, May 30, 2017 at 6:45 PM, Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.o=
+On Tue, May 30, 2017 at 6:13 PM, Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.o=
 rg>
 wrote:
 
+> Hi Subbaraya,
+>
+> I have some comments, see inlined.
 >
 >
 > On 05/16/2017 12:38 PM, Subbaraya Sundeep wrote:
 >
->> Modelled Microsemi's Smartfusion2 SPI controller.
+>> Modelled System Timer in Microsemi's Smartfusion2 Soc.
+>> Timer has two 32bit down counters and two interrupts.
 >>
 >> Signed-off-by: Subbaraya Sundeep <sundeep.lkml@gmail.com>
 >> ---
->>  hw/ssi/Makefile.objs     |   1 +
->>  hw/ssi/mss-spi.c         | 378 ++++++++++++++++++++++++++++++
->> +++++++++++++++++
->>  include/hw/ssi/mss-spi.h | 104 +++++++++++++
->>  3 files changed, 483 insertions(+)
->>  create mode 100644 hw/ssi/mss-spi.c
->>  create mode 100644 include/hw/ssi/mss-spi.h
+>>  hw/timer/Makefile.objs       |   1 +
+>>  hw/timer/mss-timer.c         | 249 ++++++++++++++++++++++++++++++
+>> +++++++++++++
+>>  include/hw/timer/mss-timer.h |  80 ++++++++++++++
+>>  3 files changed, 330 insertions(+)
+>>  create mode 100644 hw/timer/mss-timer.c
+>>  create mode 100644 include/hw/timer/mss-timer.h
 >>
->> diff --git a/hw/ssi/Makefile.objs b/hw/ssi/Makefile.objs
->> index 487add2..f5bcc65 100644
->> --- a/hw/ssi/Makefile.objs
->> +++ b/hw/ssi/Makefile.objs
->> @@ -4,6 +4,7 @@ common-obj-$(CONFIG_XILINX_SPI) +=3D xilinx_spi.o
->>  common-obj-$(CONFIG_XILINX_SPIPS) +=3D xilinx_spips.o
->>  common-obj-$(CONFIG_ASPEED_SOC) +=3D aspeed_smc.o
->>  common-obj-$(CONFIG_STM32F2XX_SPI) +=3D stm32f2xx_spi.o
->> +common-obj-$(CONFIG_MSF2) +=3D mss-spi.o
+>> diff --git a/hw/timer/Makefile.objs b/hw/timer/Makefile.objs
+>> index dd6f27e..fc4d2da 100644
+>> --- a/hw/timer/Makefile.objs
+>> +++ b/hw/timer/Makefile.objs
+>> @@ -41,3 +41,4 @@ common-obj-$(CONFIG_STM32F2XX_TIMER) +=3D
+>> stm32f2xx_timer.o
+>>  common-obj-$(CONFIG_ASPEED_SOC) +=3D aspeed_timer.o
 >>
->>  obj-$(CONFIG_OMAP) +=3D omap_spi.o
->>  obj-$(CONFIG_IMX) +=3D imx_spi.o
->> diff --git a/hw/ssi/mss-spi.c b/hw/ssi/mss-spi.c
+>>  common-obj-$(CONFIG_SUN4V_RTC) +=3D sun4v-rtc.o
+>> +common-obj-$(CONFIG_MSF2) +=3D mss-timer.o
+>> diff --git a/hw/timer/mss-timer.c b/hw/timer/mss-timer.c
 >> new file mode 100644
->> index 0000000..0b88ec9
+>> index 0000000..7041965
 >> --- /dev/null
->> +++ b/hw/ssi/mss-spi.c
->> @@ -0,0 +1,378 @@
+>> +++ b/hw/timer/mss-timer.c
+>> @@ -0,0 +1,249 @@
 >> +/*
->> + * Block model of SPI controller present in
+>> + * Block model of System timer present in
 >> + * Microsemi's SmartFusion2 and SmartFusion SoCs.
 >> + *
->> + * Copyright (C) 2017 Subbaraya Sundeep <sundeep.lkml@gmail.com>
+>> + * Copyright (c) 2017 Subbaraya Sundeep <sundeep.lkml@gmail.com>.
 >> + *
 >> + * Permission is hereby granted, free of charge, to any person obtainin=
 g
@@ -197,400 +199,165 @@ s
 >> + * THE SOFTWARE.
 >> + */
 >> +
->> +#include "hw/ssi/mss-spi.h"
+>> +#include "hw/timer/mss-timer.h"
 >> +
->> +#ifndef MSS_SPI_ERR_DEBUG
->> +#define MSS_SPI_ERR_DEBUG   0
+>> +#ifndef MSS_TIMER_ERR_DEBUG
+>> +#define MSS_TIMER_ERR_DEBUG  0
 >> +#endif
 >> +
 >> +#define DB_PRINT_L(lvl, fmt, args...) do { \
->> +    if (MSS_SPI_ERR_DEBUG >=3D lvl) { \
+>> +    if (MSS_TIMER_ERR_DEBUG >=3D lvl) { \
 >> +        qemu_log("%s: " fmt, __func__, ## args); \
->>
->
-> Since you use newline in all your calls, you could move it here:
->
->     qemu_log("%s: " fmt "\n", __func__, ## args);
->
-> Ok
-
-> +    } \
+>> +    } \
 >> +} while (0);
 >> +
 >> +#define DB_PRINT(fmt, args...) DB_PRINT_L(1, fmt, ## args)
 >> +
->> +static void txfifo_reset(MSSSpiState *s)
+>> +static void timer_update_irq(struct Msf2Timer *st)
 >> +{
->> +    fifo32_reset(&s->tx_fifo);
+>> +    bool isr, ier;
 >> +
->> +    s->regs[R_SPI_STATUS] &=3D ~S_TXFIFOFUL;
->> +    s->regs[R_SPI_STATUS] |=3D S_TXFIFOEMP;
+>> +    isr =3D !!(st->regs[R_TIM_RIS] & TIMER_RIS_ACK);
+>> +    ier =3D !!(st->regs[R_TIM_CTRL] & TIMER_CTRL_INTR);
+>> +
+>> +    qemu_set_irq(st->irq, (ier && isr));
 >> +}
 >> +
->> +static void rxfifo_reset(MSSSpiState *s)
+>> +static void timer_update(struct Msf2Timer *st)
 >> +{
->> +    fifo32_reset(&s->rx_fifo);
+>> +    uint64_t count;
 >> +
->> +    s->regs[R_SPI_STATUS] &=3D ~S_RXFIFOFUL;
->> +    s->regs[R_SPI_STATUS] |=3D S_RXFIFOEMP;
->> +}
->> +
->> +static void set_fifodepth(MSSSpiState *s)
->> +{
->> +    int size =3D s->regs[R_SPI_DFSIZE] & FRAMESZ_MASK;
->>
->
-> This size is unsigned, isn't it?
-
-
-Yes will change it.
-
->
->
-> +
->> +    if (0 <=3D size && size <=3D 8) {
->>
->
-> So "if (size <=3D 8)"
->
-> +        s->fifo_depth =3D 32;
+>> +    if (!(st->regs[R_TIM_CTRL] & TIMER_CTRL_ENBL)) {
+>> +        ptimer_stop(st->ptimer);
+>> +        return;
 >> +    }
->> +    if (9 <=3D size && size <=3D 16) {
->>
->
-> "else if (size <=3D 16)"
->
-> +        s->fifo_depth =3D 16;
->> +    }
->> +    if (17 <=3D size && size <=3D 32) {
->>
->
-> else if
->
-> +        s->fifo_depth =3D 8;
->> +    }
->>
->
-> else
->
-> s->fifo_depth =3D 4;
->
-> ?
->
-> Ok will change it.
-
-> +}
 >> +
->> +static void mss_spi_do_reset(MSSSpiState *s)
->> +{
->> +    memset(s->regs, 0, sizeof s->regs);
->> +    s->regs[R_SPI_CONTROL] =3D 0x80000102;
->> +    s->regs[R_SPI_DFSIZE] =3D 0x4;
->> +    s->regs[R_SPI_STATUS] =3D 0x2440;
->>
->
-> " =3D S_SSEL | S_TXFIFOEMP | S_RXFIFOEMP;"
-
-
-OK.
-
->
->
-> +    s->regs[R_SPI_CLKGEN] =3D 0x7;
->> +    s->regs[R_SPI_RIS] =3D 0x0;
->> +
->> +    s->fifo_depth =3D 4;
->>
->
-> Resetting R_SPI_DFSIZE to 4, shouldn't fifo_depth be 32?
-
-
-FIFO depth is 4 by default and  it varies based on BIGFIFO bit in control
-register and frame size.
-
->
->
-> +    s->frame_count =3D 1;
->> +    s->enabled =3D false;
->> +
->> +    rxfifo_reset(s);
->> +    txfifo_reset(s);
->> +}
->> +
->> +static void update_mis(MSSSpiState *s)
->> +{
->> +    uint32_t reg =3D s->regs[R_SPI_CONTROL];
->> +    uint32_t tmp;
->> +
->> +    /*
->> +     * form the Control register interrupt enable bits
->> +     * same as RIS, MIS and Interrupt clear registers for simplicity
->> +     */
->> +    tmp =3D ((reg & C_INTRXOVRFLO) >> 4) | ((reg & C_INTRXDATA) >> 3) |
->> +           ((reg & C_INTTXDATA) >> 5);
->> +    s->regs[R_SPI_MIS] |=3D tmp & s->regs[R_SPI_RIS];
->> +}
->> +
->> +static void spi_update_irq(MSSSpiState *s)
->> +{
->> +    int irq;
->> +
->> +    update_mis(s);
->> +    irq =3D !!(s->regs[R_SPI_MIS]);
->> +
->> +    qemu_set_irq(s->irq, irq);
->> +}
->> +
->> +static void mss_spi_reset(DeviceState *d)
->> +{
->> +    mss_spi_do_reset(MSS_SPI(d));
+>> +    count =3D st->regs[R_TIM_LOADVAL];
+>> +    ptimer_set_limit(st->ptimer, count, 1);
+>> +    ptimer_run(st->ptimer, 1);
 >> +}
 >> +
 >> +static uint64_t
->> +spi_read(void *opaque, hwaddr addr, unsigned int size)
+>> +timer_read(void *opaque, hwaddr offset, unsigned int size)
 >> +{
->> +    MSSSpiState *s =3D opaque;
+>> +    MSSTimerState *t =3D opaque;
+>> +    hwaddr addr;
+>> +    struct Msf2Timer *st;
 >> +    uint32_t ret =3D 0;
+>> +    int timer =3D 0;
+>> +    int isr;
+>> +    int ier;
 >> +
->> +    addr >>=3D 2;
+>> +    addr =3D offset >> 2;
+>> +    /*
+>> +     * Two independent timers has same base address.
+>> +     * Based on address passed figure out which timer is being used.
+>> +     */
+>> +    if ((addr >=3D R_TIM1_MAX) && (addr < NUM_TIMERS * R_TIM1_MAX)) {
+>> +        timer =3D 1;
+>> +        addr -=3D R_TIM1_MAX;
+>> +    }
+>> +
+>> +    st =3D &t->timers[timer];
+>> +
 >> +    switch (addr) {
->> +    case R_SPI_RX:
->> +        s->regs[R_SPI_STATUS] &=3D ~S_RXFIFOFUL;
->> +        s->regs[R_SPI_STATUS] &=3D ~RXCHOVRF;
->> +        ret =3D fifo32_pop(&s->rx_fifo);
->> +        if (fifo32_is_empty(&s->rx_fifo)) {
->> +            s->regs[R_SPI_STATUS] |=3D S_RXFIFOEMP;
->> +        }
+>> +    case R_TIM_VAL:
+>> +        ret =3D ptimer_get_count(st->ptimer);
 >> +        break;
 >> +
->> +    case R_SPI_MIS:
->> +        update_mis(s);
->> +        ret =3D s->regs[R_SPI_MIS];
+>> +    case R_TIM_MIS:
+>> +        isr =3D !!(st->regs[R_TIM_RIS] & TIMER_RIS_ACK);
+>> +        ier =3D !!(st->regs[R_TIM_CTRL] & TIMER_CTRL_INTR);
+>> +        ret =3D ier & isr;
 >> +        break;
 >> +
 >> +    default:
->> +        if (addr < ARRAY_SIZE(s->regs)) {
->> +            ret =3D s->regs[addr];
+>> +        if (addr < NUM_TIMERS * R_TIM1_MAX) {
+>> +            ret =3D st->regs[addr];
 >> +        } else {
 >> +            qemu_log_mask(LOG_GUEST_ERROR,
->> +                         "%s: Bad offset 0x%" HWADDR_PRIx "\n", __func_=
-_,
->> +                         addr * 4);
+>> +                        TYPE_MSS_TIMER": 64-bit mode not supported\n");
 >> +        }
 >> +        break;
 >> +    }
 >> +
->> +    DB_PRINT("addr=3D0x%" HWADDR_PRIx " =3D 0x%" PRIx32 "\n", addr * 4,=
- ret);
->> +    spi_update_irq(s);
+>> +    DB_PRINT("timer=3D%d 0x%" HWADDR_PRIx "=3D0x%" PRIx32 "\n", timer,
+>> offset,
+>> +            ret);
 >> +    return ret;
 >> +}
 >> +
->> +static void assert_cs(MSSSpiState *s)
->> +{
->> +    qemu_set_irq(s->cs_line, 0);
->> +}
->> +
->> +static void deassert_cs(MSSSpiState *s)
->> +{
->> +    qemu_set_irq(s->cs_line, 1);
->> +}
->> +
->> +static void spi_flush_txfifo(MSSSpiState *s)
->> +{
->> +    uint32_t tx;
->> +    uint32_t rx;
->> +    bool sps =3D !!(s->regs[R_SPI_CONTROL] & C_SPS);
->> +
->> +    /*
->> +     * Chip Select(CS) is automatically controlled by this controller.
->> +     * If SPS bit is set in Control register then CS is asserted
->> +     * until all the frames set in frame count of Control register are
->> +     * transferred. If SPS is not set then CS pulses between frames.
->> +     * Note that Slave Select register specifies which of the CS line
->> +     * has to be controlled automatically by controller. Bits SS[7:1]
->> are for
->> +     * masters in FPGA fabric since we model only Microcontroller
->> subsystem
->> +     * of Smartfusion2 we control only one CS(SS[0]) line.
->> +     */
->> +    while (!fifo32_is_empty(&s->tx_fifo) && s->frame_count) {
->> +        assert_cs(s);
->> +
->> +        s->regs[R_SPI_STATUS] &=3D ~TXDONE;
->> +        s->regs[R_SPI_STATUS] &=3D ~RXRDY;
->>
->
-> You can simplify as "&=3D ~(S_TXDONE | S_RXRDY);"
-
-
-Ok.
-
->
->
-> +
->> +        tx =3D fifo32_pop(&s->tx_fifo);
->> +        DB_PRINT("data tx:0x%" PRIx32 "\n", tx);
->> +        rx =3D ssi_transfer(s->spi, tx);
->> +        DB_PRINT("data rx:0x%" PRIx32 "\n", rx);
->> +
->> +        if (fifo32_num_used(&s->rx_fifo) =3D=3D s->fifo_depth) {
->> +            s->regs[R_SPI_STATUS] |=3D RXCHOVRF;
->> +            s->regs[R_SPI_RIS] |=3D RXCHOVRF;
->> +        } else {
->> +            fifo32_push(&s->rx_fifo, rx);
->> +            s->regs[R_SPI_STATUS] &=3D ~S_RXFIFOEMP;
->> +            if (fifo32_num_used(&s->rx_fifo) =3D=3D (s->fifo_depth - 1)=
-) {
->> +                s->regs[R_SPI_STATUS] |=3D S_RXFIFOFULNXT;
->> +            }
->> +            if (fifo32_num_used(&s->rx_fifo) =3D=3D s->fifo_depth) {
->> +                s->regs[R_SPI_STATUS] |=3D S_RXFIFOFUL;
->> +            }
->> +        }
->> +        s->frame_count--;
->> +        if (!sps) {
->> +            deassert_cs(s);
->> +            assert_cs(s);
->> +        }
->> +    }
->> +
->> +    if (!sps) {
->> +        deassert_cs(s);
->> +    }
->> +
->> +    if (!s->frame_count) {
->> +        s->frame_count =3D (s->regs[R_SPI_CONTROL] & FMCOUNT_MASK) >>
->> +                            FMCOUNT_SHIFT;
->> +        if (sps) {
->> +            deassert_cs(s);
->> +        }
->> +        s->regs[R_SPI_RIS] |=3D TXDONE;
->> +        s->regs[R_SPI_RIS] |=3D RXRDY;
->>
->
-> Same, "|=3D S_TXDONE | S_RXDRY;"
-
-
-Ok.
-
->
->
-> +        s->regs[R_SPI_STATUS] |=3D TXDONE;
->> +        s->regs[R_SPI_STATUS] |=3D RXRDY;
->> +   }
->> +}
->> +
->> +static void spi_write(void *opaque, hwaddr addr,
+>> +static void
+>> +timer_write(void *opaque, hwaddr offset,
 >> +            uint64_t val64, unsigned int size)
 >> +{
->> +    MSSSpiState *s =3D opaque;
+>> +    MSSTimerState *t =3D opaque;
+>> +    hwaddr addr;
+>> +    struct Msf2Timer *st;
+>> +    int timer =3D 0;
 >> +    uint32_t value =3D val64;
 >> +
->> +    DB_PRINT("addr=3D0x%" HWADDR_PRIx " =3D0x%" PRIx32 "\n", addr, valu=
-e);
->> +    addr >>=3D 2;
+>> +    addr =3D offset >> 2;
+>> +    /*
+>> +     * Two independent timers has same base address.
+>> +     * Based on addr passed figure out which timer is being used.
+>> +     */
+>> +    if ((addr >=3D R_TIM1_MAX) && (addr < NUM_TIMERS * R_TIM1_MAX)) {
+>> +        timer =3D 1;
+>> +        addr -=3D R_TIM1_MAX;
+>> +    }
+>> +
+>> +    st =3D &t->timers[timer];
+>> +
+>> +    DB_PRINT("addr=3D0x%" HWADDR_PRIx " val=3D0x%" PRIx32 " (timer=3D%d=
+)\n",
+>> offset,
+>> +            value, timer);
 >> +
 >> +    switch (addr) {
->> +    case R_SPI_TX:
->> +        /* adding to already full FIFO */
->> +        if (fifo32_num_used(&s->tx_fifo) =3D=3D s->fifo_depth) {
->> +            break;
->> +        }
->> +        s->regs[R_SPI_STATUS] &=3D ~S_TXFIFOEMP;
->> +        fifo32_push(&s->tx_fifo, value);
->> +        if (fifo32_num_used(&s->tx_fifo) =3D=3D (s->fifo_depth - 1)) {
->> +            s->regs[R_SPI_STATUS] |=3D S_TXFIFOFULNXT;
->> +        }
->> +        if (fifo32_num_used(&s->tx_fifo) =3D=3D s->fifo_depth) {
->> +            s->regs[R_SPI_STATUS] |=3D S_TXFIFOFUL;
->> +        }
->> +        if (s->enabled) {
->> +            spi_flush_txfifo(s);
+>> +    case R_TIM_CTRL:
+>> +        st->regs[R_TIM_CTRL] =3D value;
+>> +        timer_update(st);
+>> +        break;
+>> +
+>> +    case R_TIM_RIS:
+>> +        if (value & TIMER_RIS_ACK) {
+>> +            st->regs[R_TIM_RIS] &=3D ~TIMER_RIS_ACK;
 >> +        }
 >> +        break;
 >> +
->> +    case R_SPI_CONTROL:
->> +        s->regs[R_SPI_CONTROL] =3D value;
->> +        if (value & C_BIGFIFO) {
->> +            set_fifodepth(s);
->> +        } else {
->> +            s->fifo_depth =3D 4;
->> +        }
->> +        if (value & C_ENABLE) {
->> +            s->enabled =3D true;
->> +        } else {
->> +            s->enabled =3D false;
->> +        }
->>
->
-> "s->enabled =3D value & C_ENABLE;" ?
-
-
-Ok.
-
->
->
-> +        s->frame_count =3D (value & FMCOUNT_MASK) >> FMCOUNT_SHIFT;
->> +        if (value & C_RESET) {
->> +            mss_spi_do_reset(s);
+>> +    case R_TIM_LOADVAL:
+>> +        st->regs[R_TIM_LOADVAL] =3D value;
+>> +        if (st->regs[R_TIM_CTRL] & TIMER_CTRL_ENBL) {
+>> +            timer_update(st);
 >> +        }
 >> +        break;
 >> +
->> +    case R_SPI_DFSIZE:
->> +        if (s->enabled) {
->> +            break;
->> +        }
->> +        s->regs[R_SPI_DFSIZE] =3D value;
+>> +    case R_TIM_BGLOADVAL:
+>> +        st->regs[R_TIM_BGLOADVAL] =3D value;
+>> +        st->regs[R_TIM_LOADVAL] =3D value;
 >> +        break;
 >> +
->> +    case R_SPI_INTCLR:
->> +        s->regs[R_SPI_INTCLR] =3D value;
->> +        if (value & TXDONE) {
->> +            s->regs[R_SPI_RIS] &=3D ~TXDONE;
->> +        }
->> +        if (value & RXRDY) {
->> +            s->regs[R_SPI_RIS] &=3D ~RXRDY;
->> +        }
->> +        if (value & RXCHOVRF) {
->> +            s->regs[R_SPI_RIS] &=3D ~RXCHOVRF;
->> +        }
+>> +    case R_TIM_VAL:
+>> +    case R_TIM_MIS:
 >> +        break;
 >> +
->> +    case R_SPI_MIS:
->> +    case R_SPI_STATUS:
->> +    case R_SPI_RIS:
->> +        break;
->>
->
-> Those registers are read-only right? Maybe you should LOG_GUEST_ERROR her=
-e
-> too?
-
-
-Ok.
-
->
->
-> +
 >> +    default:
->> +        if (addr < ARRAY_SIZE(s->regs)) {
->> +            s->regs[addr] =3D value;
+>> +        if (addr < NUM_TIMERS * R_TIM1_MAX) {
+>> +            st->regs[addr] =3D value;
 >> +        } else {
 >> +            qemu_log_mask(LOG_GUEST_ERROR,
->> +                         "%s: Bad offset 0x%" HWADDR_PRIx "\n", __func_=
-_,
->> +                         addr * 4);
+>> +                        TYPE_MSS_TIMER": 64-bit mode not supported\n");
+>> +            return;
 >> +        }
 >> +        break;
 >> +    }
->> +
->> +    spi_update_irq(s);
+>> +    timer_update_irq(st);
 >> +}
 >> +
->> +static const MemoryRegionOps spi_ops =3D {
->> +    .read =3D spi_read,
->> +    .write =3D spi_write,
+>> +static const MemoryRegionOps timer_ops =3D {
+>> +    .read =3D timer_read,
+>> +    .write =3D timer_write,
 >> +    .endianness =3D DEVICE_NATIVE_ENDIAN,
 >> +    .valid =3D {
 >> +        .min_access_size =3D 1,
@@ -598,78 +365,76 @@ _,
 >> +    }
 >> +};
 >> +
->> +static void mss_spi_realize(DeviceState *dev, Error **errp)
+>> +static void timer_hit(void *opaque)
 >> +{
->> +    MSSSpiState *s =3D MSS_SPI(dev);
->> +    SysBusDevice *sbd =3D SYS_BUS_DEVICE(dev);
+>> +    struct Msf2Timer *st =3D opaque;
 >> +
->> +    DB_PRINT("\n");
+>> +    st->regs[R_TIM_RIS] |=3D TIMER_RIS_ACK;
 >> +
->> +    s->spi =3D ssi_create_bus(dev, "spi0");
->>
->
-> "0" is the Linux representation?
-
-
-Yeah will remove 0.
-
->
->
-> +
->> +    sysbus_init_irq(sbd, &s->irq);
->> +    ssi_auto_connect_slaves(dev, &s->cs_line, s->spi);
->> +    sysbus_init_irq(sbd, &s->cs_line);
->> +
->> +    memory_region_init_io(&s->mmio, OBJECT(s), &spi_ops, s,
->> +                          TYPE_MSS_SPI, R_SPI_MAX * 4);
->> +    sysbus_init_mmio(sbd, &s->mmio);
->> +
->> +    fifo32_create(&s->tx_fifo, FIFO_CAPACITY);
->> +    fifo32_create(&s->rx_fifo, FIFO_CAPACITY);
+>> +    if (!(st->regs[R_TIM_CTRL] & TIMER_CTRL_ONESHOT)) {
+>> +        timer_update(st);
+>> +    }
+>> +    timer_update_irq(st);
 >> +}
 >> +
->> +static const VMStateDescription vmstate_mss_spi =3D {
->> +    .name =3D TYPE_MSS_SPI,
->> +    .version_id =3D 1,
->> +    .minimum_version_id =3D 1,
->> +    .fields =3D (VMStateField[]) {
->> +        VMSTATE_FIFO32(tx_fifo, MSSSpiState),
->> +        VMSTATE_FIFO32(rx_fifo, MSSSpiState),
->> +        VMSTATE_UINT32_ARRAY(regs, MSSSpiState, R_SPI_MAX),
->> +        VMSTATE_END_OF_LIST()
+>> +static void mss_timer_init(Object *obj)
+>> +{
+>> +    MSSTimerState *t =3D MSS_TIMER(obj);
+>> +    int i;
+>> +
+>> +    /* Init all the ptimers.  */
+>> +    t->timers =3D g_malloc0((sizeof t->timers[0]) * NUM_TIMERS);
+>> +    for (i =3D 0; i < NUM_TIMERS; i++) {
+>> +        struct Msf2Timer *st =3D &t->timers[i];
+>> +
+>> +        st->bh =3D qemu_bh_new(timer_hit, st);
+>> +        st->ptimer =3D ptimer_init(st->bh, PTIMER_POLICY_DEFAULT);
+>> +        ptimer_set_freq(st->ptimer, t->freq_hz);
+>> +        sysbus_init_irq(SYS_BUS_DEVICE(obj), &st->irq);
 >> +    }
+>> +
+>> +    memory_region_init_io(&t->mmio, OBJECT(t), &timer_ops, t,
+>> TYPE_MSS_TIMER,
+>> +                          NUM_TIMERS * R_TIM1_MAX * 4);
+>> +    sysbus_init_mmio(SYS_BUS_DEVICE(obj), &t->mmio);
+>> +}
+>> +
+>> +static Property mss_timer_properties[] =3D {
+>> +    /* Libero GUI shows 100Mhz as default for clocks */
+>> +    DEFINE_PROP_UINT32("clock-frequency", MSSTimerState, freq_hz,
+>> +                      100 * 1000000),
+>> +    DEFINE_PROP_END_OF_LIST(),
 >> +};
 >> +
->> +static void mss_spi_class_init(ObjectClass *klass, void *data)
+>> +static void mss_timer_class_init(ObjectClass *klass, void *data)
 >> +{
 >> +    DeviceClass *dc =3D DEVICE_CLASS(klass);
 >> +
->> +    dc->realize =3D mss_spi_realize;
->> +    dc->reset =3D mss_spi_reset;
->> +    dc->vmsd =3D &vmstate_mss_spi;
+>> +    dc->props =3D mss_timer_properties;
 >> +}
 >> +
->> +static const TypeInfo mss_spi_info =3D {
->> +    .name           =3D TYPE_MSS_SPI,
->> +    .parent         =3D TYPE_SYS_BUS_DEVICE,
->> +    .instance_size  =3D sizeof(MSSSpiState),
->> +    .class_init     =3D mss_spi_class_init,
+>> +static const TypeInfo mss_timer_info =3D {
+>> +    .name          =3D TYPE_MSS_TIMER,
+>> +    .parent        =3D TYPE_SYS_BUS_DEVICE,
+>> +    .instance_size =3D sizeof(MSSTimerState),
+>> +    .instance_init =3D mss_timer_init,
+>> +    .class_init    =3D mss_timer_class_init,
 >> +};
 >> +
->> +static void mss_spi_register_types(void)
+>> +static void mss_timer_register_types(void)
 >> +{
->> +    type_register_static(&mss_spi_info);
+>> +    type_register_static(&mss_timer_info);
 >> +}
 >> +
->> +type_init(mss_spi_register_types)
->> diff --git a/include/hw/ssi/mss-spi.h b/include/hw/ssi/mss-spi.h
+>> +type_init(mss_timer_register_types)
+>> diff --git a/include/hw/timer/mss-timer.h b/include/hw/timer/mss-timer.h
 >> new file mode 100644
->> index 0000000..091307a
+>> index 0000000..4caacfd
 >> --- /dev/null
->> +++ b/include/hw/ssi/mss-spi.h
->> @@ -0,0 +1,104 @@
+>> +++ b/include/hw/timer/mss-timer.h
+>> @@ -0,0 +1,80 @@
 >> +/*
->> + * Microsemi SmartFusion2 SPI
+>> + * Microsemi SmartFusion2 Timer.
 >> + *
 >> + * Copyright (c) 2017 Subbaraya Sundeep <sundeep.lkml@gmail.com>
 >> + *
@@ -707,163 +472,164 @@ s
 >> + * THE SOFTWARE.
 >> + */
 >> +
->> +#ifndef HW_MSS_SPI_H
->> +#define HW_MSS_SPI_H
+>> +#ifndef HW_MSS_TIMER_H
+>> +#define HW_MSS_TIMER_H
 >> +
 >> +#include "qemu/osdep.h"
 >> +#include "hw/sysbus.h"
->> +#include "hw/hw.h"
->> +#include "hw/ssi/ssi.h"
->> +#include "qemu/fifo32.h"
+>> +#include "hw/ptimer.h"
 >> +#include "sysemu/sysemu.h"
 >> +#include "qemu/log.h"
 >> +
->> +#define FIFO_CAPACITY     32
->> +#define FIFO_CAPACITY     32
+>> +#define TYPE_MSS_TIMER     "mss-timer"
+>> +#define MSS_TIMER(obj)     OBJECT_CHECK(MSSTimerState, \
+>> +                              (obj), TYPE_MSS_TIMER)
 >> +
->> +#define R_SPI_CONTROL         0
->> +#define R_SPI_DFSIZE          1
->> +#define R_SPI_STATUS          2
->> +#define R_SPI_INTCLR          3
->> +#define R_SPI_RX              4
->> +#define R_SPI_TX              5
->> +#define R_SPI_CLKGEN          6
->> +#define R_SPI_SS              7
->> +#define R_SPI_MIS             8
->> +#define R_SPI_RIS             9
->> +#define R_SPI_MAX             16
+>> +/*
+>> + * There are two 32-bit down counting timers.
+>> + * Timers 1 and 2 can be concatenated into a single 64-bit Timer
+>> + * that operates either in Periodic mode or in One-shot mode.
+>> + * Writing 1 to the TIM64_MODE register bit 0 sets the Timers in 64-bit
+>> mode.
+>> + * In 64-bit mode, writing to the 32-bit registers has no effect.
+>> + * Similarly, in 32-bit mode, writing to the 64-bit mode registers
+>> + * has no effect. Only two 32-bit timers are supported currently.
+>> + */
+>> +#define NUM_TIMERS        2
 >> +
->> +#define S_RXFIFOFUL       (1 << 4)
->> +#define S_RXFIFOFULNXT    (1 << 5)
->> +#define S_RXFIFOEMP       (1 << 6)
->> +#define S_RXFIFOEMPNXT    (1 << 7)
->> +#define S_TXFIFOFUL       (1 << 8)
->> +#define S_TXFIFOFULNXT    (1 << 9)
->> +#define S_TXFIFOEMP       (1 << 10)
->> +#define S_TXFIFOEMPNXT    (1 << 11)
->> +#define S_FRAMESTART      (1 << 12)
->> +#define S_SSEL            (1 << 13)
->> +#define S_ACTIVE          (1 << 14)
->> +
->> +#define C_ENABLE          (1 << 0)
->> +#define C_MODE            (1 << 1)
->> +#define C_INTRXDATA       (1 << 4)
->> +#define C_INTTXDATA       (1 << 5)
->> +#define C_INTRXOVRFLO     (1 << 6)
->> +#define C_SPS             (1 << 26)
->> +#define C_BIGFIFO         (1 << 29)
->> +#define C_RESET           (1 << 31)
->> +
->> +#define FRAMESZ_MASK      0x1F
->> +#define FMCOUNT_MASK      0x00FFFF00
->> +#define FMCOUNT_SHIFT     8
+>> +#define R_TIM_VAL         0
+>> +#define R_TIM_LOADVAL     1
+>> +#define R_TIM_BGLOADVAL   2
+>> +#define R_TIM_CTRL        3
+>> +#define R_TIM_RIS         4
+>> +#define R_TIM_MIS         5
+>> +#define R_TIM1_MAX        6
 >> +
 >>
 >
-> Try to keep the previous definitions in the C source, since there are not
-> useful outside of it. Except R_SPI_MAX I think you can move all of them.
+> From here ...
 >
-> OK
+> +#define TIMER_CTRL_ENBL     (1 << 0)
+>> +#define TIMER_CTRL_ONESHOT  (1 << 1)
+>> +#define TIMER_CTRL_INTR     (1 << 2)
+>> +#define TIMER_RIS_ACK       (1 << 0)
+>> +#define TIMER_RST_CLR       (1 << 6)
+>> +#define TIMER_MODE          (1 << 0)
+>>
+>
+> .. to here, can go in the .c source file.
+>
+> I'd also move R_TIM_* to the source, only keeping R_TIM_MAX in this
+> header, or also moving it and exposing some TIMER_IO_SIZE of 0x30 instead=
+.
+>
 
-> +#define TXDONE            (1 << 0)
->> +#define RXRDY             (1 << 1)
->> +#define RXCHOVRF          (1 << 2)
+Ok will move to .c source file.
+
+>
+> +
+>> +struct Msf2Timer {
+>> +    QEMUBH *bh;
+>> +    ptimer_state *ptimer;
 >> +
+>> +    uint32_t regs[NUM_TIMERS * R_TIM1_MAX];
 >>
 >
-> These last 3 seems to be S_TXDONE, S_RXRDY, S_RXCHOVRF.
+> Beware, you are declaring 2 sets of register for each timer. I think it'd
+> be safer to declare these registers once in MSSTimerState, the code would
+> get easier.
 >
+
+Thanks for catching this. I will use regs[R_TIM1_MAX] so that Msf2Timer
+represents
+one timer block.
+
 >
-> Ok
+> +    qemu_irq irq;
+>> +};
+>> +
+>> +typedef struct MSSTimerState {
+>> +    SysBusDevice parent_obj;
+>> +
+>> +    MemoryRegion mmio;
+>> +    uint32_t freq_hz;
+>> +    struct Msf2Timer *timers;
+>>
+>
+> The number of timers is fixed (NUM_TIMERS), so you can declare it here an=
+d
+> avoid to use g_malloc0() in mss_timer_init(), this will get allocated
+> before mss_timer_init() using mss_timer_info.instance_size.
+>
+> This should simplify a bit.
+
+
+Yes will remove g_malloc and declare here in MSSTimerState.
 
 Thanks,
 Sundeep
 
 >
-> +#define TYPE_MSS_SPI   "mss-spi"
->> +#define MSS_SPI(obj)   OBJECT_CHECK(MSSSpiState, (obj), TYPE_MSS_SPI)
+>
+> +} MSSTimerState;
 >> +
->> +typedef struct MSSSpiState {
->> +    SysBusDevice parent_obj;
->> +
->> +    MemoryRegion mmio;
->> +
->> +    qemu_irq irq;
->> +
->> +    qemu_irq cs_line;
->> +
->> +    SSIBus *spi;
->> +
->> +    Fifo32 rx_fifo;
->> +    Fifo32 tx_fifo;
->> +
->> +    int fifo_depth;
->> +    uint32_t frame_count;
->> +    bool enabled;
->> +
->> +    uint32_t regs[R_SPI_MAX];
->> +} MSSSpiState;
->> +
->> +#endif /* HW_MSS_SPI_H */
+>> +#endif /* HW_MSS_TIMER_H */
 >>
 >>
-> Regards,
->
-> Phil.
->
 
---001a1140e0cc95e16e0552afddc3
+--001a113e688e99f2a00552b3ced6
 Content-Type: text/html; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
-<div dir=3D"ltr">Hi Philippe,<div class=3D"gmail_extra"><br><div class=3D"g=
-mail_quote">On Tue, May 30, 2017 at 6:45 PM, Philippe Mathieu-Daud=C3=A9 <s=
-pan dir=3D"ltr">&lt;<a href=3D"mailto:f4bug@amsat.org" target=3D"_blank">f4=
-bug@amsat.org</a>&gt;</span> wrote:<br><blockquote class=3D"gmail_quote" st=
-yle=3D"margin:0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex"><div =
-class=3D"m_4987516660966386481m_-6144861094152341240HOEnZb"><div class=3D"m=
-_4987516660966386481m_-6144861094152341240h5"><br>
+<div dir=3D"ltr">Hi Philippe,<br><div class=3D"gmail_extra"><br><div class=
+=3D"gmail_quote">On Tue, May 30, 2017 at 6:13 PM, Philippe Mathieu-Daud=C3=
+=A9 <span dir=3D"ltr">&lt;<a href=3D"mailto:f4bug@amsat.org" target=3D"_bla=
+nk">f4bug@amsat.org</a>&gt;</span> wrote:<br><blockquote class=3D"gmail_quo=
+te" style=3D"margin:0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex"=
+>Hi Subbaraya,<br>
+<br>
+I have some comments, see inlined.<div><div class=3D"h5"><br>
 <br>
 On 05/16/2017 12:38 PM, Subbaraya Sundeep wrote:<br>
 <blockquote class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border-left:1p=
 x #ccc solid;padding-left:1ex">
-Modelled Microsemi&#39;s Smartfusion2 SPI controller.<br>
+Modelled System Timer in Microsemi&#39;s Smartfusion2 Soc.<br>
+Timer has two 32bit down counters and two interrupts.<br>
 <br>
 Signed-off-by: Subbaraya Sundeep &lt;<a href=3D"mailto:sundeep.lkml@gmail.c=
 om" target=3D"_blank">sundeep.lkml@gmail.com</a>&gt;<br>
 ---<br>
-=C2=A0hw/ssi/Makefile.objs=C2=A0 =C2=A0 =C2=A0|=C2=A0 =C2=A01 +<br>
-=C2=A0hw/ssi/mss-spi.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0| 378 +++++++++++++=
-+++++++++++++++++<wbr>+++++++++++++++++<br>
-=C2=A0include/hw/ssi/mss-spi.h | 104 +++++++++++++<br>
-=C2=A03 files changed, 483 insertions(+)<br>
-=C2=A0create mode 100644 hw/ssi/mss-spi.c<br>
-=C2=A0create mode 100644 include/hw/ssi/mss-spi.h<br>
+=C2=A0hw/timer/Makefile.objs=C2=A0 =C2=A0 =C2=A0 =C2=A0|=C2=A0 =C2=A01 +<br=
+>
+=C2=A0hw/timer/mss-timer.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0| 249 +++++++++=
++++++++++++++++++++++<wbr>+++++++++++++<br>
+=C2=A0include/hw/timer/mss-timer.h |=C2=A0 80 ++++++++++++++<br>
+=C2=A03 files changed, 330 insertions(+)<br>
+=C2=A0create mode 100644 hw/timer/mss-timer.c<br>
+=C2=A0create mode 100644 include/hw/timer/mss-timer.h<br>
 <br>
-diff --git a/hw/ssi/Makefile.objs b/hw/ssi/Makefile.objs<br>
-index 487add2..f5bcc65 100644<br>
---- a/hw/ssi/Makefile.objs<br>
-+++ b/hw/ssi/Makefile.objs<br>
-@@ -4,6 +4,7 @@ common-obj-$(CONFIG_XILINX_SPI<wbr>) +=3D xilinx_spi.o<br>
-=C2=A0common-obj-$(CONFIG_XILINX_SP<wbr>IPS) +=3D xilinx_spips.o<br>
-=C2=A0common-obj-$(CONFIG_ASPEED_SO<wbr>C) +=3D aspeed_smc.o<br>
-=C2=A0common-obj-$(CONFIG_STM32F2XX<wbr>_SPI) +=3D stm32f2xx_spi.o<br>
-+common-obj-$(CONFIG_MSF2) +=3D mss-spi.o<br>
+diff --git a/hw/timer/Makefile.objs b/hw/timer/Makefile.objs<br>
+index dd6f27e..fc4d2da 100644<br>
+--- a/hw/timer/Makefile.objs<br>
++++ b/hw/timer/Makefile.objs<br>
+@@ -41,3 +41,4 @@ common-obj-$(CONFIG_STM32F2XX_<wbr>TIMER) +=3D stm32f2xx_=
+timer.o<br>
+=C2=A0common-obj-$(CONFIG_ASPEED_SO<wbr>C) +=3D aspeed_timer.o<br>
 <br>
-=C2=A0obj-$(CONFIG_OMAP) +=3D omap_spi.o<br>
-=C2=A0obj-$(CONFIG_IMX) +=3D imx_spi.o<br>
-diff --git a/hw/ssi/mss-spi.c b/hw/ssi/mss-spi.c<br>
+=C2=A0common-obj-$(CONFIG_SUN4V_<wbr>RTC) +=3D sun4v-rtc.o<br>
++common-obj-$(CONFIG_MSF2) +=3D mss-timer.o<br>
+diff --git a/hw/timer/mss-timer.c b/hw/timer/mss-timer.c<br>
 new file mode 100644<br>
-index 0000000..0b88ec9<br>
+index 0000000..7041965<br>
 --- /dev/null<br>
-+++ b/hw/ssi/mss-spi.c<br>
-@@ -0,0 +1,378 @@<br>
++++ b/hw/timer/mss-timer.c<br>
+@@ -0,0 +1,249 @@<br>
 +/*<br>
-+ * Block model of SPI controller present in<br>
++ * Block model of System timer present in<br>
 + * Microsemi&#39;s SmartFusion2 and SmartFusion SoCs.<br>
 + *<br>
-+ * Copyright (C) 2017 Subbaraya Sundeep &lt;<a href=3D"mailto:sundeep.lkml=
-@gmail.com" target=3D"_blank">sundeep.lkml@gmail.com</a>&gt;<br>
++ * Copyright (c) 2017 Subbaraya Sundeep &lt;<a href=3D"mailto:sundeep.lkml=
+@gmail.com" target=3D"_blank">sundeep.lkml@gmail.com</a>&gt;.<br>
 + *<br>
 + * Permission is hereby granted, free of charge, to any person obtaining a=
  copy<br>
@@ -896,454 +662,179 @@ IN<br>
 + * THE SOFTWARE.<br>
 + */<br>
 +<br>
-+#include &quot;hw/ssi/mss-spi.h&quot;<br>
++#include &quot;hw/timer/mss-timer.h&quot;<br>
 +<br>
-+#ifndef MSS_SPI_ERR_DEBUG<br>
-+#define MSS_SPI_ERR_DEBUG=C2=A0 =C2=A00<br>
++#ifndef MSS_TIMER_ERR_DEBUG<br>
++#define MSS_TIMER_ERR_DEBUG=C2=A0 0<br>
 +#endif<br>
 +<br>
 +#define DB_PRINT_L(lvl, fmt, args...) do { \<br>
-+=C2=A0 =C2=A0 if (MSS_SPI_ERR_DEBUG &gt;=3D lvl) { \<br>
++=C2=A0 =C2=A0 if (MSS_TIMER_ERR_DEBUG &gt;=3D lvl) { \<br>
 +=C2=A0 =C2=A0 =C2=A0 =C2=A0 qemu_log(&quot;%s: &quot; fmt, __func__, ## ar=
 gs); \<br>
-</blockquote>
-<br></div></div>
-Since you use newline in all your calls, you could move it here:<br>
-<br>
-=C2=A0 =C2=A0 qemu_log(&quot;%s: &quot; fmt &quot;\n&quot;, __func__, ## ar=
-gs);<span><br>
-<br></span></blockquote><div>Ok=C2=A0</div><blockquote class=3D"gmail_quote=
-" style=3D"margin:0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex"><=
-span>
-<blockquote class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border-left:1p=
-x #ccc solid;padding-left:1ex">
 +=C2=A0 =C2=A0 } \<br>
 +} while (0);<br>
 +<br>
 +#define DB_PRINT(fmt, args...) DB_PRINT_L(1, fmt, ## args)<br>
 +<br>
-+static void txfifo_reset(MSSSpiState *s)<br>
++static void timer_update_irq(struct Msf2Timer *st)<br>
 +{<br>
-+=C2=A0 =C2=A0 fifo32_reset(&amp;s-&gt;tx_fifo);<br>
++=C2=A0 =C2=A0 bool isr, ier;<br>
 +<br>
-+=C2=A0 =C2=A0 s-&gt;regs[R_SPI_STATUS] &amp;=3D ~S_TXFIFOFUL;<br>
-+=C2=A0 =C2=A0 s-&gt;regs[R_SPI_STATUS] |=3D S_TXFIFOEMP;<br>
++=C2=A0 =C2=A0 isr =3D !!(st-&gt;regs[R_TIM_RIS] &amp; TIMER_RIS_ACK);<br>
++=C2=A0 =C2=A0 ier =3D !!(st-&gt;regs[R_TIM_CTRL] &amp; TIMER_CTRL_INTR);<b=
+r>
++<br>
++=C2=A0 =C2=A0 qemu_set_irq(st-&gt;irq, (ier &amp;&amp; isr));<br>
 +}<br>
 +<br>
-+static void rxfifo_reset(MSSSpiState *s)<br>
++static void timer_update(struct Msf2Timer *st)<br>
 +{<br>
-+=C2=A0 =C2=A0 fifo32_reset(&amp;s-&gt;rx_fifo);<br>
++=C2=A0 =C2=A0 uint64_t count;<br>
 +<br>
-+=C2=A0 =C2=A0 s-&gt;regs[R_SPI_STATUS] &amp;=3D ~S_RXFIFOFUL;<br>
-+=C2=A0 =C2=A0 s-&gt;regs[R_SPI_STATUS] |=3D S_RXFIFOEMP;<br>
-+}<br>
-+<br>
-+static void set_fifodepth(MSSSpiState *s)<br>
-+{<br>
-+=C2=A0 =C2=A0 int size =3D s-&gt;regs[R_SPI_DFSIZE] &amp; FRAMESZ_MASK;<br=
->
-</blockquote>
-<br></span>
-This size is unsigned, isn&#39;t it?</blockquote><div><br></div><div>Yes wi=
-ll change it.=C2=A0</div><blockquote class=3D"gmail_quote" style=3D"margin:=
-0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex"><span><br>
-<br>
-<blockquote class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border-left:1p=
-x #ccc solid;padding-left:1ex">
-+<br>
-+=C2=A0 =C2=A0 if (0 &lt;=3D size &amp;&amp; size &lt;=3D 8) {<br>
-</blockquote>
-<br></span>
-So &quot;if (size &lt;=3D 8)&quot;<span><br>
-<br>
-<blockquote class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border-left:1p=
-x #ccc solid;padding-left:1ex">
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 s-&gt;fifo_depth =3D 32;<br>
++=C2=A0 =C2=A0 if (!(st-&gt;regs[R_TIM_CTRL] &amp; TIMER_CTRL_ENBL)) {<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 ptimer_stop(st-&gt;ptimer);<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 return;<br>
 +=C2=A0 =C2=A0 }<br>
-+=C2=A0 =C2=A0 if (9 &lt;=3D size &amp;&amp; size &lt;=3D 16) {<br>
-</blockquote>
-<br></span>
-&quot;else if (size &lt;=3D 16)&quot;<span><br>
-<br>
-<blockquote class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border-left:1p=
-x #ccc solid;padding-left:1ex">
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 s-&gt;fifo_depth =3D 16;<br>
-+=C2=A0 =C2=A0 }<br>
-+=C2=A0 =C2=A0 if (17 &lt;=3D size &amp;&amp; size &lt;=3D 32) {<br>
-</blockquote>
-<br></span>
-else if<span><br>
-<br>
-<blockquote class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border-left:1p=
-x #ccc solid;padding-left:1ex">
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 s-&gt;fifo_depth =3D 8;<br>
-+=C2=A0 =C2=A0 }<br>
-</blockquote>
-<br></span>
-else<br>
-<br>
-s-&gt;fifo_depth =3D 4;<br>
-<br>
-?<span><br>
-<br></span></blockquote><div>Ok will change it.=C2=A0</div><blockquote clas=
-s=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border-left:1px #ccc solid;pad=
-ding-left:1ex"><span>
-<blockquote class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border-left:1p=
-x #ccc solid;padding-left:1ex">
-+}<br>
 +<br>
-+static void mss_spi_do_reset(MSSSpiState *s)<br>
-+{<br>
-+=C2=A0 =C2=A0 memset(s-&gt;regs, 0, sizeof s-&gt;regs);<br>
-+=C2=A0 =C2=A0 s-&gt;regs[R_SPI_CONTROL] =3D 0x80000102;<br>
-+=C2=A0 =C2=A0 s-&gt;regs[R_SPI_DFSIZE] =3D 0x4;<br>
-+=C2=A0 =C2=A0 s-&gt;regs[R_SPI_STATUS] =3D 0x2440;<br>
-</blockquote>
-<br></span>
-&quot; =3D S_SSEL | S_TXFIFOEMP | S_RXFIFOEMP;&quot;</blockquote><div><br><=
-/div><div>OK.=C2=A0</div><blockquote class=3D"gmail_quote" style=3D"margin:=
-0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex"><span><br>
-<br>
-<blockquote class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border-left:1p=
-x #ccc solid;padding-left:1ex">
-+=C2=A0 =C2=A0 s-&gt;regs[R_SPI_CLKGEN] =3D 0x7;<br>
-+=C2=A0 =C2=A0 s-&gt;regs[R_SPI_RIS] =3D 0x0;<br>
-+<br>
-+=C2=A0 =C2=A0 s-&gt;fifo_depth =3D 4;<br>
-</blockquote>
-<br></span>
-Resetting R_SPI_DFSIZE to 4, shouldn&#39;t fifo_depth be 32?</blockquote><d=
-iv><br></div><div>FIFO depth is 4 by default and =C2=A0it varies based on B=
-IGFIFO bit in control</div><div>register and frame size.=C2=A0</div><blockq=
-uote class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border-left:1px #ccc =
-solid;padding-left:1ex"><div><div class=3D"m_4987516660966386481m_-61448610=
-94152341240h5"><br>
-<br>
-<blockquote class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border-left:1p=
-x #ccc solid;padding-left:1ex">
-+=C2=A0 =C2=A0 s-&gt;frame_count =3D 1;<br>
-+=C2=A0 =C2=A0 s-&gt;enabled =3D false;<br>
-+<br>
-+=C2=A0 =C2=A0 rxfifo_reset(s);<br>
-+=C2=A0 =C2=A0 txfifo_reset(s);<br>
-+}<br>
-+<br>
-+static void update_mis(MSSSpiState *s)<br>
-+{<br>
-+=C2=A0 =C2=A0 uint32_t reg =3D s-&gt;regs[R_SPI_CONTROL];<br>
-+=C2=A0 =C2=A0 uint32_t tmp;<br>
-+<br>
-+=C2=A0 =C2=A0 /*<br>
-+=C2=A0 =C2=A0 =C2=A0* form the Control register interrupt enable bits<br>
-+=C2=A0 =C2=A0 =C2=A0* same as RIS, MIS and Interrupt clear registers for s=
-implicity<br>
-+=C2=A0 =C2=A0 =C2=A0*/<br>
-+=C2=A0 =C2=A0 tmp =3D ((reg &amp; C_INTRXOVRFLO) &gt;&gt; 4) | ((reg &amp;=
- C_INTRXDATA) &gt;&gt; 3) |<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0((reg &amp; C_INTTXDATA) &gt;&gt;=
- 5);<br>
-+=C2=A0 =C2=A0 s-&gt;regs[R_SPI_MIS] |=3D tmp &amp; s-&gt;regs[R_SPI_RIS];<=
-br>
-+}<br>
-+<br>
-+static void spi_update_irq(MSSSpiState *s)<br>
-+{<br>
-+=C2=A0 =C2=A0 int irq;<br>
-+<br>
-+=C2=A0 =C2=A0 update_mis(s);<br>
-+=C2=A0 =C2=A0 irq =3D !!(s-&gt;regs[R_SPI_MIS]);<br>
-+<br>
-+=C2=A0 =C2=A0 qemu_set_irq(s-&gt;irq, irq);<br>
-+}<br>
-+<br>
-+static void mss_spi_reset(DeviceState *d)<br>
-+{<br>
-+=C2=A0 =C2=A0 mss_spi_do_reset(MSS_SPI(d));<br>
++=C2=A0 =C2=A0 count =3D st-&gt;regs[R_TIM_LOADVAL];<br>
++=C2=A0 =C2=A0 ptimer_set_limit(st-&gt;ptimer, count, 1);<br>
++=C2=A0 =C2=A0 ptimer_run(st-&gt;ptimer, 1);<br>
 +}<br>
 +<br>
 +static uint64_t<br>
-+spi_read(void *opaque, hwaddr addr, unsigned int size)<br>
++timer_read(void *opaque, hwaddr offset, unsigned int size)<br>
 +{<br>
-+=C2=A0 =C2=A0 MSSSpiState *s =3D opaque;<br>
++=C2=A0 =C2=A0 MSSTimerState *t =3D opaque;<br>
++=C2=A0 =C2=A0 hwaddr addr;<br>
++=C2=A0 =C2=A0 struct Msf2Timer *st;<br>
 +=C2=A0 =C2=A0 uint32_t ret =3D 0;<br>
++=C2=A0 =C2=A0 int timer =3D 0;<br>
++=C2=A0 =C2=A0 int isr;<br>
++=C2=A0 =C2=A0 int ier;<br>
 +<br>
-+=C2=A0 =C2=A0 addr &gt;&gt;=3D 2;<br>
++=C2=A0 =C2=A0 addr =3D offset &gt;&gt; 2;<br>
++=C2=A0 =C2=A0 /*<br>
++=C2=A0 =C2=A0 =C2=A0* Two independent timers has same base address.<br>
++=C2=A0 =C2=A0 =C2=A0* Based on address passed figure out which timer is be=
+ing used.<br>
++=C2=A0 =C2=A0 =C2=A0*/<br>
++=C2=A0 =C2=A0 if ((addr &gt;=3D R_TIM1_MAX) &amp;&amp; (addr &lt; NUM_TIME=
+RS * R_TIM1_MAX)) {<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 timer =3D 1;<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 addr -=3D R_TIM1_MAX;<br>
++=C2=A0 =C2=A0 }<br>
++<br>
++=C2=A0 =C2=A0 st =3D &amp;t-&gt;timers[timer];<br>
++<br>
 +=C2=A0 =C2=A0 switch (addr) {<br>
-+=C2=A0 =C2=A0 case R_SPI_RX:<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 s-&gt;regs[R_SPI_STATUS] &amp;=3D ~S_RXFIFOFUL=
-;<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 s-&gt;regs[R_SPI_STATUS] &amp;=3D ~RXCHOVRF;<b=
-r>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 ret =3D fifo32_pop(&amp;s-&gt;rx_fifo);<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 if (fifo32_is_empty(&amp;s-&gt;rx_fifo)) {<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 s-&gt;regs[R_SPI_STATUS] |=3D S_=
-RXFIFOEMP;<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 }<br>
++=C2=A0 =C2=A0 case R_TIM_VAL:<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 ret =3D ptimer_get_count(st-&gt;ptimer);<br>
 +=C2=A0 =C2=A0 =C2=A0 =C2=A0 break;<br>
 +<br>
-+=C2=A0 =C2=A0 case R_SPI_MIS:<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 update_mis(s);<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 ret =3D s-&gt;regs[R_SPI_MIS];<br>
++=C2=A0 =C2=A0 case R_TIM_MIS:<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 isr =3D !!(st-&gt;regs[R_TIM_RIS] &amp; TIMER_=
+RIS_ACK);<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 ier =3D !!(st-&gt;regs[R_TIM_CTRL] &amp; TIMER=
+_CTRL_INTR);<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 ret =3D ier &amp; isr;<br>
 +=C2=A0 =C2=A0 =C2=A0 =C2=A0 break;<br>
 +<br>
 +=C2=A0 =C2=A0 default:<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 if (addr &lt; ARRAY_SIZE(s-&gt;regs)) {<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 ret =3D s-&gt;regs[addr];<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 if (addr &lt; NUM_TIMERS * R_TIM1_MAX) {<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 ret =3D st-&gt;regs[addr];<br>
 +=C2=A0 =C2=A0 =C2=A0 =C2=A0 } else {<br>
 +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 qemu_log_mask(LOG_GUEST_ERROR,<b=
 r>
 +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0&quot;%s: Bad offset 0x%&quot; HWADDR_PRIx &quot;\n&quot;,=
- __func__,<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0addr * 4);<br>
+=A0 =C2=A0 TYPE_MSS_TIMER&quot;: 64-bit mode not supported\n&quot;);<br>
 +=C2=A0 =C2=A0 =C2=A0 =C2=A0 }<br>
 +=C2=A0 =C2=A0 =C2=A0 =C2=A0 break;<br>
 +=C2=A0 =C2=A0 }<br>
 +<br>
-+=C2=A0 =C2=A0 DB_PRINT(&quot;addr=3D0x%&quot; HWADDR_PRIx &quot; =3D 0x%&q=
-uot; PRIx32 &quot;\n&quot;, addr * 4, ret);<br>
-+=C2=A0 =C2=A0 spi_update_irq(s);<br>
++=C2=A0 =C2=A0 DB_PRINT(&quot;timer=3D%d 0x%&quot; HWADDR_PRIx &quot;=3D0x%=
+&quot; PRIx32 &quot;\n&quot;, timer, offset,<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 ret);<br>
 +=C2=A0 =C2=A0 return ret;<br>
 +}<br>
 +<br>
-+static void assert_cs(MSSSpiState *s)<br>
-+{<br>
-+=C2=A0 =C2=A0 qemu_set_irq(s-&gt;cs_line, 0);<br>
-+}<br>
-+<br>
-+static void deassert_cs(MSSSpiState *s)<br>
-+{<br>
-+=C2=A0 =C2=A0 qemu_set_irq(s-&gt;cs_line, 1);<br>
-+}<br>
-+<br>
-+static void spi_flush_txfifo(MSSSpiState *s)<br>
-+{<br>
-+=C2=A0 =C2=A0 uint32_t tx;<br>
-+=C2=A0 =C2=A0 uint32_t rx;<br>
-+=C2=A0 =C2=A0 bool sps =3D !!(s-&gt;regs[R_SPI_CONTROL] &amp; C_SPS);<br>
-+<br>
-+=C2=A0 =C2=A0 /*<br>
-+=C2=A0 =C2=A0 =C2=A0* Chip Select(CS) is automatically controlled by this =
-controller.<br>
-+=C2=A0 =C2=A0 =C2=A0* If SPS bit is set in Control register then CS is ass=
-erted<br>
-+=C2=A0 =C2=A0 =C2=A0* until all the frames set in frame count of Control r=
-egister are<br>
-+=C2=A0 =C2=A0 =C2=A0* transferred. If SPS is not set then CS pulses betwee=
-n frames.<br>
-+=C2=A0 =C2=A0 =C2=A0* Note that Slave Select register specifies which of t=
-he CS line<br>
-+=C2=A0 =C2=A0 =C2=A0* has to be controlled automatically by controller. Bi=
-ts SS[7:1] are for<br>
-+=C2=A0 =C2=A0 =C2=A0* masters in FPGA fabric since we model only Microcont=
-roller subsystem<br>
-+=C2=A0 =C2=A0 =C2=A0* of Smartfusion2 we control only one CS(SS[0]) line.<=
-br>
-+=C2=A0 =C2=A0 =C2=A0*/<br>
-+=C2=A0 =C2=A0 while (!fifo32_is_empty(&amp;s-&gt;tx_fifo) &amp;&amp; s-&gt=
-;frame_count) {<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 assert_cs(s);<br>
-+<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 s-&gt;regs[R_SPI_STATUS] &amp;=3D ~TXDONE;<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 s-&gt;regs[R_SPI_STATUS] &amp;=3D ~RXRDY;<br>
-</blockquote>
-<br></div></div>
-You can simplify as &quot;&amp;=3D ~(S_TXDONE | S_RXRDY);&quot;</blockquote=
-><div><br></div><div>Ok.</div><blockquote class=3D"gmail_quote" style=3D"ma=
-rgin:0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex"><div><div clas=
-s=3D"m_4987516660966386481m_-6144861094152341240h5"><br>
-<br>
-<blockquote class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border-left:1p=
-x #ccc solid;padding-left:1ex">
-+<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 tx =3D fifo32_pop(&amp;s-&gt;tx_fifo);<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 DB_PRINT(&quot;data tx:0x%&quot; PRIx32 &quot;=
-\n&quot;, tx);<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 rx =3D ssi_transfer(s-&gt;spi, tx);<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 DB_PRINT(&quot;data rx:0x%&quot; PRIx32 &quot;=
-\n&quot;, rx);<br>
-+<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 if (fifo32_num_used(&amp;s-&gt;rx_fifo) =3D=3D=
- s-&gt;fifo_depth) {<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 s-&gt;regs[R_SPI_STATUS] |=3D RX=
-CHOVRF;<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 s-&gt;regs[R_SPI_RIS] |=3D RXCHO=
-VRF;<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 } else {<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 fifo32_push(&amp;s-&gt;rx_fifo, =
-rx);<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 s-&gt;regs[R_SPI_STATUS] &amp;=
-=3D ~S_RXFIFOEMP;<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 if (fifo32_num_used(&amp;s-&gt;r=
-x_fifo) =3D=3D (s-&gt;fifo_depth - 1)) {<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 s-&gt;regs[R_SPI_S=
-TATUS] |=3D S_RXFIFOFULNXT;<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 }<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 if (fifo32_num_used(&amp;s-&gt;r=
-x_fifo) =3D=3D s-&gt;fifo_depth) {<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 s-&gt;regs[R_SPI_S=
-TATUS] |=3D S_RXFIFOFUL;<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 }<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 }<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 s-&gt;frame_count--;<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 if (!sps) {<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 deassert_cs(s);<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 assert_cs(s);<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 }<br>
-+=C2=A0 =C2=A0 }<br>
-+<br>
-+=C2=A0 =C2=A0 if (!sps) {<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 deassert_cs(s);<br>
-+=C2=A0 =C2=A0 }<br>
-+<br>
-+=C2=A0 =C2=A0 if (!s-&gt;frame_count) {<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 s-&gt;frame_count =3D (s-&gt;regs[R_SPI_CONTRO=
-L] &amp; FMCOUNT_MASK) &gt;&gt;<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 FMCOUNT_SHIFT;<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 if (sps) {<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 deassert_cs(s);<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 }<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 s-&gt;regs[R_SPI_RIS] |=3D TXDONE;<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 s-&gt;regs[R_SPI_RIS] |=3D RXRDY;<br>
-</blockquote>
-<br></div></div>
-Same, &quot;|=3D S_TXDONE | S_RXDRY;&quot;</blockquote><div><br></div><div>=
-Ok.=C2=A0</div><blockquote class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex=
-;border-left:1px #ccc solid;padding-left:1ex"><div><div class=3D"m_49875166=
-60966386481m_-6144861094152341240h5"><br>
-<br>
-<blockquote class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border-left:1p=
-x #ccc solid;padding-left:1ex">
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 s-&gt;regs[R_SPI_STATUS] |=3D TXDONE;<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 s-&gt;regs[R_SPI_STATUS] |=3D RXRDY;<br>
-+=C2=A0 =C2=A0}<br>
-+}<br>
-+<br>
-+static void spi_write(void *opaque, hwaddr addr,<br>
++static void<br>
++timer_write(void *opaque, hwaddr offset,<br>
 +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 uint64_t val64, unsigned int siz=
 e)<br>
 +{<br>
-+=C2=A0 =C2=A0 MSSSpiState *s =3D opaque;<br>
++=C2=A0 =C2=A0 MSSTimerState *t =3D opaque;<br>
++=C2=A0 =C2=A0 hwaddr addr;<br>
++=C2=A0 =C2=A0 struct Msf2Timer *st;<br>
++=C2=A0 =C2=A0 int timer =3D 0;<br>
 +=C2=A0 =C2=A0 uint32_t value =3D val64;<br>
 +<br>
-+=C2=A0 =C2=A0 DB_PRINT(&quot;addr=3D0x%&quot; HWADDR_PRIx &quot; =3D0x%&qu=
-ot; PRIx32 &quot;\n&quot;, addr, value);<br>
-+=C2=A0 =C2=A0 addr &gt;&gt;=3D 2;<br>
++=C2=A0 =C2=A0 addr =3D offset &gt;&gt; 2;<br>
++=C2=A0 =C2=A0 /*<br>
++=C2=A0 =C2=A0 =C2=A0* Two independent timers has same base address.<br>
++=C2=A0 =C2=A0 =C2=A0* Based on addr passed figure out which timer is being=
+ used.<br>
++=C2=A0 =C2=A0 =C2=A0*/<br>
++=C2=A0 =C2=A0 if ((addr &gt;=3D R_TIM1_MAX) &amp;&amp; (addr &lt; NUM_TIME=
+RS * R_TIM1_MAX)) {<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 timer =3D 1;<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 addr -=3D R_TIM1_MAX;<br>
++=C2=A0 =C2=A0 }<br>
++<br>
++=C2=A0 =C2=A0 st =3D &amp;t-&gt;timers[timer];<br>
++<br>
++=C2=A0 =C2=A0 DB_PRINT(&quot;addr=3D0x%&quot; HWADDR_PRIx &quot; val=3D0x%=
+&quot; PRIx32 &quot; (timer=3D%d)\n&quot;, offset,<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 value, timer);<br>
 +<br>
 +=C2=A0 =C2=A0 switch (addr) {<br>
-+=C2=A0 =C2=A0 case R_SPI_TX:<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 /* adding to already full FIFO */<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 if (fifo32_num_used(&amp;s-&gt;tx_fifo) =3D=3D=
- s-&gt;fifo_depth) {<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 break;<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 }<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 s-&gt;regs[R_SPI_STATUS] &amp;=3D ~S_TXFIFOEMP=
-;<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 fifo32_push(&amp;s-&gt;tx_fifo, value);<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 if (fifo32_num_used(&amp;s-&gt;tx_fifo) =3D=3D=
- (s-&gt;fifo_depth - 1)) {<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 s-&gt;regs[R_SPI_STATUS] |=3D S_=
-TXFIFOFULNXT;<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 }<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 if (fifo32_num_used(&amp;s-&gt;tx_fifo) =3D=3D=
- s-&gt;fifo_depth) {<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 s-&gt;regs[R_SPI_STATUS] |=3D S_=
-TXFIFOFUL;<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 }<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 if (s-&gt;enabled) {<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 spi_flush_txfifo(s);<br>
++=C2=A0 =C2=A0 case R_TIM_CTRL:<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 st-&gt;regs[R_TIM_CTRL] =3D value;<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 timer_update(st);<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 break;<br>
++<br>
++=C2=A0 =C2=A0 case R_TIM_RIS:<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 if (value &amp; TIMER_RIS_ACK) {<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 st-&gt;regs[R_TIM_RIS] &amp;=3D =
+~TIMER_RIS_ACK;<br>
 +=C2=A0 =C2=A0 =C2=A0 =C2=A0 }<br>
 +=C2=A0 =C2=A0 =C2=A0 =C2=A0 break;<br>
 +<br>
-+=C2=A0 =C2=A0 case R_SPI_CONTROL:<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 s-&gt;regs[R_SPI_CONTROL] =3D value;<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 if (value &amp; C_BIGFIFO) {<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 set_fifodepth(s);<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 } else {<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 s-&gt;fifo_depth =3D 4;<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 }<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 if (value &amp; C_ENABLE) {<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 s-&gt;enabled =3D true;<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 } else {<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 s-&gt;enabled =3D false;<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 }<br>
-</blockquote>
-<br></div></div>
-&quot;s-&gt;enabled =3D value &amp; C_ENABLE;&quot; ?</blockquote><div><br>=
-</div><div>Ok.=C2=A0</div><blockquote class=3D"gmail_quote" style=3D"margin=
-:0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex"><div><div class=3D=
-"m_4987516660966386481m_-6144861094152341240h5"><br>
-<br>
-<blockquote class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border-left:1p=
-x #ccc solid;padding-left:1ex">
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 s-&gt;frame_count =3D (value &amp; FMCOUNT_MAS=
-K) &gt;&gt; FMCOUNT_SHIFT;<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 if (value &amp; C_RESET) {<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 mss_spi_do_reset(s);<br>
++=C2=A0 =C2=A0 case R_TIM_LOADVAL:<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 st-&gt;regs[R_TIM_LOADVAL] =3D value;<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 if (st-&gt;regs[R_TIM_CTRL] &amp; TIMER_CTRL_E=
+NBL) {<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 timer_update(st);<br>
 +=C2=A0 =C2=A0 =C2=A0 =C2=A0 }<br>
 +=C2=A0 =C2=A0 =C2=A0 =C2=A0 break;<br>
 +<br>
-+=C2=A0 =C2=A0 case R_SPI_DFSIZE:<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 if (s-&gt;enabled) {<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 break;<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 }<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 s-&gt;regs[R_SPI_DFSIZE] =3D value;<br>
++=C2=A0 =C2=A0 case R_TIM_BGLOADVAL:<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 st-&gt;regs[R_TIM_BGLOADVAL] =3D value;<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 st-&gt;regs[R_TIM_LOADVAL] =3D value;<br>
 +=C2=A0 =C2=A0 =C2=A0 =C2=A0 break;<br>
 +<br>
-+=C2=A0 =C2=A0 case R_SPI_INTCLR:<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 s-&gt;regs[R_SPI_INTCLR] =3D value;<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 if (value &amp; TXDONE) {<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 s-&gt;regs[R_SPI_RIS] &amp;=3D ~=
-TXDONE;<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 }<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 if (value &amp; RXRDY) {<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 s-&gt;regs[R_SPI_RIS] &amp;=3D ~=
-RXRDY;<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 }<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 if (value &amp; RXCHOVRF) {<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 s-&gt;regs[R_SPI_RIS] &amp;=3D ~=
-RXCHOVRF;<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 }<br>
++=C2=A0 =C2=A0 case R_TIM_VAL:<br>
++=C2=A0 =C2=A0 case R_TIM_MIS:<br>
 +=C2=A0 =C2=A0 =C2=A0 =C2=A0 break;<br>
-+<br>
-+=C2=A0 =C2=A0 case R_SPI_MIS:<br>
-+=C2=A0 =C2=A0 case R_SPI_STATUS:<br>
-+=C2=A0 =C2=A0 case R_SPI_RIS:<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 break;<br>
-</blockquote>
-<br></div></div>
-Those registers are read-only right? Maybe you should LOG_GUEST_ERROR here =
-too?</blockquote><div><br></div><div>Ok.=C2=A0</div><blockquote class=3D"gm=
-ail_quote" style=3D"margin:0 0 0 .8ex;border-left:1px #ccc solid;padding-le=
-ft:1ex"><div><div class=3D"m_4987516660966386481m_-6144861094152341240h5"><=
-br>
-<br>
-<blockquote class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border-left:1p=
-x #ccc solid;padding-left:1ex">
 +<br>
 +=C2=A0 =C2=A0 default:<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 if (addr &lt; ARRAY_SIZE(s-&gt;regs)) {<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 s-&gt;regs[addr] =3D value;<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 if (addr &lt; NUM_TIMERS * R_TIM1_MAX) {<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 st-&gt;regs[addr] =3D value;<br>
 +=C2=A0 =C2=A0 =C2=A0 =C2=A0 } else {<br>
 +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 qemu_log_mask(LOG_GUEST_ERROR,<b=
 r>
 +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0&quot;%s: Bad offset 0x%&quot; HWADDR_PRIx &quot;\n&quot;,=
- __func__,<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0addr * 4);<br>
+=A0 =C2=A0 TYPE_MSS_TIMER&quot;: 64-bit mode not supported\n&quot;);<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 return;<br>
 +=C2=A0 =C2=A0 =C2=A0 =C2=A0 }<br>
 +=C2=A0 =C2=A0 =C2=A0 =C2=A0 break;<br>
 +=C2=A0 =C2=A0 }<br>
-+<br>
-+=C2=A0 =C2=A0 spi_update_irq(s);<br>
++=C2=A0 =C2=A0 timer_update_irq(st);<br>
 +}<br>
 +<br>
-+static const MemoryRegionOps spi_ops =3D {<br>
-+=C2=A0 =C2=A0 .read =3D spi_read,<br>
-+=C2=A0 =C2=A0 .write =3D spi_write,<br>
++static const MemoryRegionOps timer_ops =3D {<br>
++=C2=A0 =C2=A0 .read =3D timer_read,<br>
++=C2=A0 =C2=A0 .write =3D timer_write,<br>
 +=C2=A0 =C2=A0 .endianness =3D DEVICE_NATIVE_ENDIAN,<br>
 +=C2=A0 =C2=A0 .valid =3D {<br>
 +=C2=A0 =C2=A0 =C2=A0 =C2=A0 .min_access_size =3D 1,<br>
@@ -1351,84 +842,89 @@ r>
 +=C2=A0 =C2=A0 }<br>
 +};<br>
 +<br>
-+static void mss_spi_realize(DeviceState *dev, Error **errp)<br>
++static void timer_hit(void *opaque)<br>
 +{<br>
-+=C2=A0 =C2=A0 MSSSpiState *s =3D MSS_SPI(dev);<br>
-+=C2=A0 =C2=A0 SysBusDevice *sbd =3D SYS_BUS_DEVICE(dev);<br>
++=C2=A0 =C2=A0 struct Msf2Timer *st =3D opaque;<br>
 +<br>
-+=C2=A0 =C2=A0 DB_PRINT(&quot;\n&quot;);<br>
++=C2=A0 =C2=A0 st-&gt;regs[R_TIM_RIS] |=3D TIMER_RIS_ACK;<br>
 +<br>
-+=C2=A0 =C2=A0 s-&gt;spi =3D ssi_create_bus(dev, &quot;spi0&quot;);<br>
-</blockquote>
-<br></div></div>
-&quot;0&quot; is the Linux representation?</blockquote><div><br>Yeah will r=
-emove 0.<br></div><blockquote class=3D"gmail_quote" style=3D"margin:0 0 0 .=
-8ex;border-left:1px #ccc solid;padding-left:1ex"><div><div class=3D"m_49875=
-16660966386481m_-6144861094152341240h5"><br>
-<br>
-<blockquote class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border-left:1p=
-x #ccc solid;padding-left:1ex">
-+<br>
-+=C2=A0 =C2=A0 sysbus_init_irq(sbd, &amp;s-&gt;irq);<br>
-+=C2=A0 =C2=A0 ssi_auto_connect_slaves(dev, &amp;s-&gt;cs_line, s-&gt;spi);=
-<br>
-+=C2=A0 =C2=A0 sysbus_init_irq(sbd, &amp;s-&gt;cs_line);<br>
-+<br>
-+=C2=A0 =C2=A0 memory_region_init_io(&amp;s-&gt;mmio<wbr>, OBJECT(s), &amp;=
-spi_ops, s,<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 TYPE_MSS_SPI, R_SPI_MAX * 4);<br>
-+=C2=A0 =C2=A0 sysbus_init_mmio(sbd, &amp;s-&gt;mmio);<br>
-+<br>
-+=C2=A0 =C2=A0 fifo32_create(&amp;s-&gt;tx_fifo, FIFO_CAPACITY);<br>
-+=C2=A0 =C2=A0 fifo32_create(&amp;s-&gt;rx_fifo, FIFO_CAPACITY);<br>
++=C2=A0 =C2=A0 if (!(st-&gt;regs[R_TIM_CTRL] &amp; TIMER_CTRL_ONESHOT)) {<b=
+r>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 timer_update(st);<br>
++=C2=A0 =C2=A0 }<br>
++=C2=A0 =C2=A0 timer_update_irq(st);<br>
 +}<br>
 +<br>
-+static const VMStateDescription vmstate_mss_spi =3D {<br>
-+=C2=A0 =C2=A0 .name =3D TYPE_MSS_SPI,<br>
-+=C2=A0 =C2=A0 .version_id =3D 1,<br>
-+=C2=A0 =C2=A0 .minimum_version_id =3D 1,<br>
-+=C2=A0 =C2=A0 .fields =3D (VMStateField[]) {<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 VMSTATE_FIFO32(tx_fifo, MSSSpiState),<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 VMSTATE_FIFO32(rx_fifo, MSSSpiState),<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 VMSTATE_UINT32_ARRAY(regs, MSSSpiState, R_SPI_=
-MAX),<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 VMSTATE_END_OF_LIST()<br>
++static void mss_timer_init(Object *obj)<br>
++{<br>
++=C2=A0 =C2=A0 MSSTimerState *t =3D MSS_TIMER(obj);<br>
++=C2=A0 =C2=A0 int i;<br>
++<br>
++=C2=A0 =C2=A0 /* Init all the ptimers.=C2=A0 */<br>
++=C2=A0 =C2=A0 t-&gt;timers =3D g_malloc0((sizeof t-&gt;timers[0]) * NUM_TI=
+MERS);<br>
++=C2=A0 =C2=A0 for (i =3D 0; i &lt; NUM_TIMERS; i++) {<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 struct Msf2Timer *st =3D &amp;t-&gt;timers[i];=
+<br>
++<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 st-&gt;bh =3D qemu_bh_new(timer_hit, st);<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 st-&gt;ptimer =3D ptimer_init(st-&gt;bh, PTIME=
+R_POLICY_DEFAULT);<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 ptimer_set_freq(st-&gt;ptimer, t-&gt;freq_hz);=
+<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 sysbus_init_irq(SYS_BUS_DEVICE<wbr>(obj), &amp=
+;st-&gt;irq);<br>
 +=C2=A0 =C2=A0 }<br>
++<br>
++=C2=A0 =C2=A0 memory_region_init_io(&amp;t-&gt;mmio<wbr>, OBJECT(t), &amp;=
+timer_ops, t, TYPE_MSS_TIMER,<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 NUM_TIMERS * R_TIM1_MAX * 4);<br>
++=C2=A0 =C2=A0 sysbus_init_mmio(SYS_BUS_DEVIC<wbr>E(obj), &amp;t-&gt;mmio);=
+<br>
++}<br>
++<br>
++static Property mss_timer_properties[] =3D {<br>
++=C2=A0 =C2=A0 /* Libero GUI shows 100Mhz as default for clocks */<br>
++=C2=A0 =C2=A0 DEFINE_PROP_UINT32(&quot;clock-freq<wbr>uency&quot;, MSSTime=
+rState, freq_hz,<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 100 * 1000000),<br>
++=C2=A0 =C2=A0 DEFINE_PROP_END_OF_LIST(),<br>
 +};<br>
 +<br>
-+static void mss_spi_class_init(ObjectClass *klass, void *data)<br>
++static void mss_timer_class_init(ObjectCla<wbr>ss *klass, void *data)<br>
 +{<br>
 +=C2=A0 =C2=A0 DeviceClass *dc =3D DEVICE_CLASS(klass);<br>
 +<br>
-+=C2=A0 =C2=A0 dc-&gt;realize =3D mss_spi_realize;<br>
-+=C2=A0 =C2=A0 dc-&gt;reset =3D mss_spi_reset;<br>
-+=C2=A0 =C2=A0 dc-&gt;vmsd =3D &amp;vmstate_mss_spi;<br>
++=C2=A0 =C2=A0 dc-&gt;props =3D mss_timer_properties;<br>
 +}<br>
 +<br>
-+static const TypeInfo mss_spi_info =3D {<br>
-+=C2=A0 =C2=A0 .name=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=3D TYPE_MSS_S=
-PI,<br>
-+=C2=A0 =C2=A0 .parent=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=3D TYPE_SYS_BUS_DE=
-VICE,<br>
-+=C2=A0 =C2=A0 .instance_size=C2=A0 =3D sizeof(MSSSpiState),<br>
-+=C2=A0 =C2=A0 .class_init=C2=A0 =C2=A0 =C2=A0=3D mss_spi_class_init,<br>
++static const TypeInfo mss_timer_info =3D {<br>
++=C2=A0 =C2=A0 .name=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =3D TYPE_MSS_TIMER,<=
+br>
++=C2=A0 =C2=A0 .parent=C2=A0 =C2=A0 =C2=A0 =C2=A0 =3D TYPE_SYS_BUS_DEVICE,<=
+br>
++=C2=A0 =C2=A0 .instance_size =3D sizeof(MSSTimerState),<br>
++=C2=A0 =C2=A0 .instance_init =3D mss_timer_init,<br>
++=C2=A0 =C2=A0 .class_init=C2=A0 =C2=A0 =3D mss_timer_class_init,<br>
 +};<br>
 +<br>
-+static void mss_spi_register_types(void)<br>
++static void mss_timer_register_types(void)<br>
 +{<br>
-+=C2=A0 =C2=A0 type_register_static(&amp;mss_spi_<wbr>info);<br>
++=C2=A0 =C2=A0 type_register_static(&amp;mss_time<wbr>r_info);<br>
 +}<br>
 +<br>
-+type_init(mss_spi_register_ty<wbr>pes)<br>
-diff --git a/include/hw/ssi/mss-spi.h b/include/hw/ssi/mss-spi.h<br>
++type_init(mss_timer_register_<wbr>types)<br>
+diff --git a/include/hw/timer/mss-timer.h b/include/hw/timer/mss-timer.h<br=
+>
 new file mode 100644<br>
-index 0000000..091307a<br>
+index 0000000..4caacfd<br>
 --- /dev/null<br>
-+++ b/include/hw/ssi/mss-spi.h<br>
-@@ -0,0 +1,104 @@<br>
++++ b/include/hw/timer/mss-timer.h<br>
+@@ -0,0 +1,80 @@<br>
 +/*<br>
-+ * Microsemi SmartFusion2 SPI<br>
++ * Microsemi SmartFusion2 Timer.<br>
 + *<br>
 + * Copyright (c) 2017 Subbaraya Sundeep &lt;<a href=3D"mailto:sundeep.lkml=
 @gmail.com" target=3D"_blank">sundeep.lkml@gmail.com</a>&gt;<br>
@@ -1464,118 +960,111 @@ IN<br>
 + * THE SOFTWARE.<br>
 + */<br>
 +<br>
-+#ifndef HW_MSS_SPI_H<br>
-+#define HW_MSS_SPI_H<br>
++#ifndef HW_MSS_TIMER_H<br>
++#define HW_MSS_TIMER_H<br>
 +<br>
 +#include &quot;qemu/osdep.h&quot;<br>
 +#include &quot;hw/sysbus.h&quot;<br>
-+#include &quot;hw/hw.h&quot;<br>
-+#include &quot;hw/ssi/ssi.h&quot;<br>
-+#include &quot;qemu/fifo32.h&quot;<br>
++#include &quot;hw/ptimer.h&quot;<br>
 +#include &quot;sysemu/sysemu.h&quot;<br>
 +#include &quot;qemu/log.h&quot;<br>
 +<br>
-+#define FIFO_CAPACITY=C2=A0 =C2=A0 =C2=A032<br>
-+#define FIFO_CAPACITY=C2=A0 =C2=A0 =C2=A032<br>
-+<br>
-+#define R_SPI_CONTROL=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A00<br>
-+#define R_SPI_DFSIZE=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 1<br>
-+#define R_SPI_STATUS=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 2<br>
-+#define R_SPI_INTCLR=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 3<br>
-+#define R_SPI_RX=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 4<br>
-+#define R_SPI_TX=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 5<br>
-+#define R_SPI_CLKGEN=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 6<br>
-+#define R_SPI_SS=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 7<br>
-+#define R_SPI_MIS=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A08<br>
-+#define R_SPI_RIS=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A09<br>
-+#define R_SPI_MAX=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A016<br>
-+<br>
-+#define S_RXFIFOFUL=C2=A0 =C2=A0 =C2=A0 =C2=A0(1 &lt;&lt; 4)<br>
-+#define S_RXFIFOFULNXT=C2=A0 =C2=A0 (1 &lt;&lt; 5)<br>
-+#define S_RXFIFOEMP=C2=A0 =C2=A0 =C2=A0 =C2=A0(1 &lt;&lt; 6)<br>
-+#define S_RXFIFOEMPNXT=C2=A0 =C2=A0 (1 &lt;&lt; 7)<br>
-+#define S_TXFIFOFUL=C2=A0 =C2=A0 =C2=A0 =C2=A0(1 &lt;&lt; 8)<br>
-+#define S_TXFIFOFULNXT=C2=A0 =C2=A0 (1 &lt;&lt; 9)<br>
-+#define S_TXFIFOEMP=C2=A0 =C2=A0 =C2=A0 =C2=A0(1 &lt;&lt; 10)<br>
-+#define S_TXFIFOEMPNXT=C2=A0 =C2=A0 (1 &lt;&lt; 11)<br>
-+#define S_FRAMESTART=C2=A0 =C2=A0 =C2=A0 (1 &lt;&lt; 12)<br>
-+#define S_SSEL=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 (1 &lt;&lt; 13)<br=
++#define TYPE_MSS_TIMER=C2=A0 =C2=A0 =C2=A0&quot;mss-timer&quot;<br>
++#define MSS_TIMER(obj)=C2=A0 =C2=A0 =C2=A0OBJECT_CHECK(MSSTimerState, \<br=
 >
-+#define S_ACTIVE=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 (1 &lt;&lt; 14)<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 (obj), TYPE_MSS_TIMER)<br>
 +<br>
-+#define C_ENABLE=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 (1 &lt;&lt; 0)<br>
-+#define C_MODE=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 (1 &lt;&lt; 1)<br>
-+#define C_INTRXDATA=C2=A0 =C2=A0 =C2=A0 =C2=A0(1 &lt;&lt; 4)<br>
-+#define C_INTTXDATA=C2=A0 =C2=A0 =C2=A0 =C2=A0(1 &lt;&lt; 5)<br>
-+#define C_INTRXOVRFLO=C2=A0 =C2=A0 =C2=A0(1 &lt;&lt; 6)<br>
-+#define C_SPS=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0(1 &lt;&lt; 2=
-6)<br>
-+#define C_BIGFIFO=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0(1 &lt;&lt; 29)<br>
-+#define C_RESET=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0(1 &lt;&lt; 31)<br=
->
++/*<br>
++ * There are two 32-bit down counting timers.<br>
++ * Timers 1 and 2 can be concatenated into a single 64-bit Timer<br>
++ * that operates either in Periodic mode or in One-shot mode.<br>
++ * Writing 1 to the TIM64_MODE register bit 0 sets the Timers in 64-bit mo=
+de.<br>
++ * In 64-bit mode, writing to the 32-bit registers has no effect.<br>
++ * Similarly, in 32-bit mode, writing to the 64-bit mode registers<br>
++ * has no effect. Only two 32-bit timers are supported currently.<br>
++ */<br>
++#define NUM_TIMERS=C2=A0 =C2=A0 =C2=A0 =C2=A0 2<br>
 +<br>
-+#define FRAMESZ_MASK=C2=A0 =C2=A0 =C2=A0 0x1F<br>
-+#define FMCOUNT_MASK=C2=A0 =C2=A0 =C2=A0 0x00FFFF00<br>
-+#define FMCOUNT_SHIFT=C2=A0 =C2=A0 =C2=A08<br>
++#define R_TIM_VAL=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A00<br>
++#define R_TIM_LOADVAL=C2=A0 =C2=A0 =C2=A01<br>
++#define R_TIM_BGLOADVAL=C2=A0 =C2=A02<br>
++#define R_TIM_CTRL=C2=A0 =C2=A0 =C2=A0 =C2=A0 3<br>
++#define R_TIM_RIS=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A04<br>
++#define R_TIM_MIS=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A05<br>
++#define R_TIM1_MAX=C2=A0 =C2=A0 =C2=A0 =C2=A0 6<br>
 +<br>
 </blockquote>
 <br></div></div>
-Try to keep the previous definitions in the C source, since there are not u=
-seful outside of it. Except R_SPI_MAX I think you can move all of them.<spa=
-n><br>
-<br></span></blockquote><div>OK <br></div><blockquote class=3D"gmail_quote"=
- style=3D"margin:0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex"><s=
-pan>
-<blockquote class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border-left:1p=
-x #ccc solid;padding-left:1ex">
-+#define TXDONE=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 (1 &lt;&lt; 0)<br>
-+#define RXRDY=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0(1 &lt;&lt; 1=
-)<br>
-+#define RXCHOVRF=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 (1 &lt;&lt; 2)<br>
-+<br>
-</blockquote>
-<br></span>
-These last 3 seems to be S_TXDONE, S_RXRDY, S_RXCHOVRF.<div><div class=3D"m=
-_4987516660966386481m_-6144861094152341240h5"><br>
-<br></div></div></blockquote><div>Ok<br><br></div><div>Thanks,<br></div><di=
-v>Sundeep <br></div><blockquote class=3D"gmail_quote" style=3D"margin:0 0 0=
- .8ex;border-left:1px #ccc solid;padding-left:1ex"><div><div class=3D"m_498=
-7516660966386481m_-6144861094152341240h5">
+From here ...<span class=3D""><br>
 <br>
 <blockquote class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border-left:1p=
 x #ccc solid;padding-left:1ex">
-+#define TYPE_MSS_SPI=C2=A0 =C2=A0&quot;mss-spi&quot;<br>
-+#define MSS_SPI(obj)=C2=A0 =C2=A0OBJECT_CHECK(MSSSpiState, (obj), TYPE_MSS=
-_SPI)<br>
++#define TIMER_CTRL_ENBL=C2=A0 =C2=A0 =C2=A0(1 &lt;&lt; 0)<br>
++#define TIMER_CTRL_ONESHOT=C2=A0 (1 &lt;&lt; 1)<br>
++#define TIMER_CTRL_INTR=C2=A0 =C2=A0 =C2=A0(1 &lt;&lt; 2)<br>
++#define TIMER_RIS_ACK=C2=A0 =C2=A0 =C2=A0 =C2=A0(1 &lt;&lt; 0)<br>
++#define TIMER_RST_CLR=C2=A0 =C2=A0 =C2=A0 =C2=A0(1 &lt;&lt; 6)<br>
++#define TIMER_MODE=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 (1 &lt;&lt; 0)<br>
+</blockquote>
+<br></span>
+.. to here, can go in the .c source file.<br>
+<br>
+I&#39;d also move R_TIM_* to the source, only keeping R_TIM_MAX in this hea=
+der, or also moving it and exposing some TIMER_IO_SIZE of 0x30 instead.<spa=
+n class=3D""><br></span></blockquote><div><br></div><div>Ok will move to .c=
+ source file. <br></div><blockquote class=3D"gmail_quote" style=3D"margin:0=
+ 0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex"><span class=3D"">
+<br>
+<blockquote class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border-left:1p=
+x #ccc solid;padding-left:1ex">
 +<br>
-+typedef struct MSSSpiState {<br>
++struct Msf2Timer {<br>
++=C2=A0 =C2=A0 QEMUBH *bh;<br>
++=C2=A0 =C2=A0 ptimer_state *ptimer;<br>
++<br>
++=C2=A0 =C2=A0 uint32_t regs[NUM_TIMERS * R_TIM1_MAX];<br>
+</blockquote>
+<br></span>
+Beware, you are declaring 2 sets of register for each timer. I think it&#39=
+;d be safer to declare these registers once in MSSTimerState, the code woul=
+d get easier.<span class=3D""><br></span></blockquote><div><br></div><div>T=
+hanks for catching this. I will use regs[R_TIM1_MAX] so that Msf2Timer repr=
+esents<br></div><div>one timer block.<br></div><blockquote class=3D"gmail_q=
+uote" style=3D"margin:0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1e=
+x"><span class=3D"">
+<br>
+<blockquote class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border-left:1p=
+x #ccc solid;padding-left:1ex">
++=C2=A0 =C2=A0 qemu_irq irq;<br>
++};<br>
++<br>
++typedef struct MSSTimerState {<br>
 +=C2=A0 =C2=A0 SysBusDevice parent_obj;<br>
 +<br>
 +=C2=A0 =C2=A0 MemoryRegion mmio;<br>
++=C2=A0 =C2=A0 uint32_t freq_hz;<br>
++=C2=A0 =C2=A0 struct Msf2Timer *timers;<br>
+</blockquote>
+<br></span>
+The number of timers is fixed (NUM_TIMERS), so you can declare it here and =
+avoid to use g_malloc0() in mss_timer_init(), this will get allocated befor=
+e mss_timer_init() using mss_timer_info.instance_size.<br>
+<br>
+This should simplify a bit.</blockquote><div><br></div><div>Yes will remove=
+ g_malloc and declare here in MSSTimerState.<br><br></div><div>Thanks,<br><=
+/div><div>Sundeep <br></div><blockquote class=3D"gmail_quote" style=3D"marg=
+in:0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex"><div class=3D"HO=
+EnZb"><div class=3D"h5"><br>
+<br>
+<blockquote class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border-left:1p=
+x #ccc solid;padding-left:1ex">
++} MSSTimerState;<br>
 +<br>
-+=C2=A0 =C2=A0 qemu_irq irq;<br>
-+<br>
-+=C2=A0 =C2=A0 qemu_irq cs_line;<br>
-+<br>
-+=C2=A0 =C2=A0 SSIBus *spi;<br>
-+<br>
-+=C2=A0 =C2=A0 Fifo32 rx_fifo;<br>
-+=C2=A0 =C2=A0 Fifo32 tx_fifo;<br>
-+<br>
-+=C2=A0 =C2=A0 int fifo_depth;<br>
-+=C2=A0 =C2=A0 uint32_t frame_count;<br>
-+=C2=A0 =C2=A0 bool enabled;<br>
-+<br>
-+=C2=A0 =C2=A0 uint32_t regs[R_SPI_MAX];<br>
-+} MSSSpiState;<br>
-+<br>
-+#endif /* HW_MSS_SPI_H */<br>
++#endif /* HW_MSS_TIMER_H */<br>
 <br>
 </blockquote>
-<br></div></div>
-Regards,<br>
-<br>
-Phil.<br>
-</blockquote></div><br></div></div>
+</div></div></blockquote></div><br></div></div>
 
---001a1140e0cc95e16e0552afddc3--
+--001a113e688e99f2a00552b3ced6--

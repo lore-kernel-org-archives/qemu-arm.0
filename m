@@ -1,849 +1,1186 @@
-Received: by 10.25.15.197 with SMTP id 66csp597890lfp;
-        Sat, 24 Jun 2017 05:48:35 -0700 (PDT)
-X-Received: by 10.55.138.66 with SMTP id m63mr4432108qkd.26.1498308515260;
-        Sat, 24 Jun 2017 05:48:35 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1498308515; cv=none;
+Received: by 10.25.15.197 with SMTP id 66csp896881lfp;
+        Sun, 25 Jun 2017 01:48:41 -0700 (PDT)
+X-Received: by 10.84.229.78 with SMTP id d14mr17969006pln.212.1498380521118;
+        Sun, 25 Jun 2017 01:48:41 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1498380521; cv=none;
         d=google.com; s=arc-20160816;
-        b=oGVoHmjjvAd1HZD4dvo2aMOBMrFCrVk+3JT423OgOmw7VL47soHp2LC42qLUzIXGrb
-         e0XXi6+zSIy+QUmGGYVVsWSk+eRsi5D40NWriWOL+K5/SGX6XmFdGetb5NBeJQjl7Y8D
-         pP9hJwrRfW7sjqOHWxfeeoneMYwRPxD6Yo7EntFF6RW8Af52clmbdqPUoy3PniVy1imW
-         6HXFBeIhSGPs6dhK2gUXymd+n0jTuWVhb+Qn66KYpIfYcxgV1apfrbmTnAI9uEVEzJrh
-         1OLxm2utNa66bri6JlBcP9wCvoaN00j5nPvQFIyVaL4g7X2TULNSPBLLyDmwv+2RqNZV
-         KDdg==
+        b=atIADN1SLlXd84lT5QwvqcG+fyrVyWsMAU0a4l4Hk37flpA9h62uf7EPvWX9TCRjFb
+         ejnejeIzaxtnqWJYXvw8T50YBU7JClGfo9QJSC4r3RuD56kHVKWIIcJcKuGz4JeaflmY
+         U/T/o3I5WACrEpOaf+3Fz1IOHc0ot8YNL6rwQVbcRHBRbsVDV3Yn1e8r01rIJPdlvgtr
+         cfBN3gA9vrwDqgMplOtu6ldXe4e9Xy0qugII6vSewu/co9Ro6lPyDs88OOzNSE9E+2/h
+         wbsBlZ0gBBfkqOpvb3RFCVbgILmqpOnLtjxVnE74XGvJX+ug7S0auK9ihMxF2HlXScna
+         PsRQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
-         :references:in-reply-to:mime-version:dkim-signature
+        h=content-transfer-encoding:mime-version:user-agent:references
+         :in-reply-to:message-id:date:subject:cc:to:from
          :arc-authentication-results;
-        bh=AoGeMs8ZTJfNGE+SxYI0Q7cC27Z+JSiIyDx0tJHREa4=;
-        b=GX8Qx/oaYc1QONI64Buw/JqNACzHSoNzZtcn4RA3loW2CdgsP6Mqx6uxwiuG09QTcH
-         IDRUwesNSv8RbMamvMiZUZkb81kkQh5gEbCuJkhKH6/Vd6kR0EyXGMj0xiWfbZt3503x
-         32ub569yg+IJsuQS1atwgUphYlOLsuN1FvzcGf8bARiUnVHwqD7uRTV3xvC0sZeyxD9g
-         v5qAVrbPwYVu6CIkw0rhuZ+HSZMznRBTktdGWBgTrR5dBn+VV71x9RkqFFfUetO8gUEx
-         yo1A5hv5wDtBH3P30FjN9po3hrMqutUdpW2PDbqExRXLVXq2MFmRFwUVn6pAtDy1vXOI
-         gJUg==
+        bh=tbBZHEZrDhmOFpi7+tiw3sbEFcq8nZLGjYR57u6ND0s=;
+        b=Qlj+X/8YHlNRkgBEgouJccsGmMRzmhbewd073UEai5CvcDMBugEcO6bEcEFKLvwC3U
+         iKWY/4rYPZRuhZtgSP3KDAdrRMD+S54redTA0RtLXJR9hTN692G//u2nCYcS28evJsic
+         m0Om3GK8yGmVTQYfKC0u3tTei+Yw6d1XOQfQDcaic+GY4rMFEMmpHuVD0zuEd0YhyZch
+         aQph1RbFTN8toj+1WWj9/AEAWNgha+mO9PCg1foD6egLiJK+rDrWAQPEdCw9mvCjHYvw
+         LRMIuA9ReJKI0uoK0baqo1OApYVooaB04sJFBCciM80ey6cy22SO3gVOCaCbHKn0BsnC
+         yWOA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.b=GZG2kiUi;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id v3si6376008qtv.343.2017.06.24.05.48.34
-        for <alex.bennee@linaro.org>
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sat, 24 Jun 2017 05:48:35 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+       spf=pass (google.com: domain of vilanova@ac.upc.edu designates 147.83.33.10 as permitted sender) smtp.mailfrom=vilanova@ac.upc.edu
+Return-Path: <vilanova@ac.upc.edu>
+Received: from roura.ac.upc.es (roura.ac.upc.es. [147.83.33.10])
+        by mx.google.com with ESMTP id 33si215239ply.619.2017.06.25.01.48.38;
+        Sun, 25 Jun 2017 01:48:41 -0700 (PDT)
+Received-SPF: pass (google.com: domain of vilanova@ac.upc.edu designates 147.83.33.10 as permitted sender) client-ip=147.83.33.10;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.b=GZG2kiUi;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:39332 helo=lists.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1dOkUK-0007Wz-D4
-	for alex.bennee@linaro.org; Sat, 24 Jun 2017 08:48:32 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:36184)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <sundeep.lkml@gmail.com>) id 1dOkU6-0007V2-D2
-	for qemu-arm@nongnu.org; Sat, 24 Jun 2017 08:48:23 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <sundeep.lkml@gmail.com>) id 1dOkU4-0002WI-0F
-	for qemu-arm@nongnu.org; Sat, 24 Jun 2017 08:48:18 -0400
-Received: from mail-yw0-x244.google.com ([2607:f8b0:4002:c05::244]:36831)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <sundeep.lkml@gmail.com>)
-	id 1dOkTw-0002J7-17; Sat, 24 Jun 2017 08:48:08 -0400
-Received: by mail-yw0-x244.google.com with SMTP id s127so4105013ywg.3;
-	Sat, 24 Jun 2017 05:48:07 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=AoGeMs8ZTJfNGE+SxYI0Q7cC27Z+JSiIyDx0tJHREa4=;
-	b=GZG2kiUi3xiVhsZ48xULh2ulSc2B+ieIC02T2EdYuzUFLOT5XPF9KzWgjO6HBxRdPd
-	7aU7iD5llHZi+VINAWDObqc4Dkc86gAqQZE65jqDBPN5rCif4oJxLd61GxDK3fsx+KJQ
-	enUH/SVoqUKnGP751zabc1S+drrXutDRKOKFv0MgJHGzlqRjiNfMTQToSdzAxGPBYokh
-	+hK2BN1Lp36cKqfvWOdqv145zFMY83EcMbRGajc7OKDJsDXNDyNzMiPb2N5sn0WelqyE
-	LoNjlEvGeVQZ7UWqE2pk9LnR+ljhZ4tSDDgb2xaY47/EspPR8otAMDyDRMpFLfkdez7F
-	qS8w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=AoGeMs8ZTJfNGE+SxYI0Q7cC27Z+JSiIyDx0tJHREa4=;
-	b=nLqZpOEEt0hQf4F9iH1yW833iLk2wcyY+n7MNBoYKx88WD0Y9iiGWYG6uOT0xeE7j7
-	7ViYbQ0YS0rpqUVRCxBEm8l+aiAp1SYCpvBqAK21pO8LRWvHUP/mXsFoX6CVfvMx2Nra
-	LzIXmIQ6D+Qi/P4LgWGLwWi5vMhjjoL7OsSNa1qvtHoUOtdVq5f1ma+Ufg6t8veXvgWJ
-	PHRoc7TzGbwHNgPhbvw1GEVLu+7OWN1YgI0iNg+MhNSZK1RHRMZpfXagbxYTd28236+F
-	m6PL2V4SSKmTv6ho9tmk7iiEoDKa6ArlYj4HNox1Kn1OTW/dsGrq63dH/c0pzymwBJII
-	vPrg==
-X-Gm-Message-State: AKS2vOyFBvG14R8dNh0Vh7tKKsKBACB7ArLPNRThASy4WVf3UuwRSvA1
-	SlTsAZTpF8ebjKO5316jAJgEZ6PyRg==
-X-Received: by 10.13.209.194 with SMTP id t185mr8961057ywd.167.1498308487199; 
-	Sat, 24 Jun 2017 05:48:07 -0700 (PDT)
+       spf=pass (google.com: domain of vilanova@ac.upc.edu designates 147.83.33.10 as permitted sender) smtp.mailfrom=vilanova@ac.upc.edu
+Received: from correu-1.ac.upc.es (correu-1.ac.upc.es [147.83.30.91])
+	by roura.ac.upc.es (8.13.8/8.13.8) with ESMTP id v5P8lsn6018911;
+	Sun, 25 Jun 2017 10:47:54 +0200
+Received: from localhost (unknown [132.68.53.125])
+	by correu-1.ac.upc.es (Postfix) with ESMTPSA id ECF085E;
+	Sun, 25 Jun 2017 10:47:48 +0200 (CEST)
+From: =?utf-8?b?TGx1w61z?= Vilanova <vilanova@ac.upc.edu>
+To: qemu-devel@nongnu.org
+Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+        Richard Henderson <rth@twiddle.net>,
+        Peter Crosthwaite <crosthwaite.peter@gmail.com>,
+        Paolo Bonzini <pbonzini@redhat.com>,
+        Peter Maydell <peter.maydell@linaro.org>,
+        "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+        Eduardo Habkost <ehabkost@redhat.com>,
+        Michael Walle <michael@walle.cc>, Laurent Vivier <laurent@vivier.eu>,
+        Aurelien Jarno <aurelien@aurel32.net>,
+        Yongbok Kim <yongbok.kim@imgtec.com>,
+        Anthony Green <green@moxielogic.com>,
+        Stafford Horne <shorne@gmail.com>,
+        David Gibson <david@gibson.dropbear.id.au>,
+        Alexander Graf <agraf@suse.de>,
+        Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+        Artyom Tarasenko <atar4qemu@gmail.com>,
+        Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
+        Guan Xuetao <gxt@mprc.pku.edu.cn>, Max Filippov <jcmvbkbc@gmail.com>,
+        qemu-arm@nongnu.org (open list:ARM),
+        qemu-ppc@nongnu.org (open list:PowerPC)
+Subject: [PATCH v9 01/26] Pass generic CPUState to gen_intermediate_code()
+Date: Sun, 25 Jun 2017 11:47:46 +0300
+Message-Id: <149838046604.6497.6648018844505723967.stgit@frigg.lan>
+X-Mailer: git-send-email 2.11.0
+In-Reply-To: <149838022308.6497.2104916050645246693.stgit@frigg.lan>
+References: <149838022308.6497.2104916050645246693.stgit@frigg.lan>
+User-Agent: StGit/0.17.1-dirty
 MIME-Version: 1.0
-Received: by 10.13.244.65 with HTTP; Sat, 24 Jun 2017 05:48:06 -0700 (PDT)
-In-Reply-To: <0fcc007c-c308-38bc-02c8-045ad1330dc1@amsat.org>
-References: <1494949133-2202-1-git-send-email-sundeep.lkml@gmail.com>
-	<1494949133-2202-3-git-send-email-sundeep.lkml@gmail.com>
-	<0fcc007c-c308-38bc-02c8-045ad1330dc1@amsat.org>
-From: sundeep subbaraya <sundeep.lkml@gmail.com>
-Date: Sat, 24 Jun 2017 18:18:06 +0530
-Message-ID: <CALHRZur0p6TGQ3CG3kFFK9SXPECPhesP59sEXKDgB47AwS8MhA@mail.gmail.com>
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
-Content-Type: multipart/alternative; boundary="001a114e3f4e24e8af0552b421c6"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:4002:c05::244
-Subject: Re: [Qemu-arm] [Qemu devel v5 PATCH 2/5] msf2: Microsemi
- Smartfusion2 System Register block.
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.21
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm <qemu-arm@nongnu.org>,
-	QEMU Developers <qemu-devel@nongnu.org>,
-	Alistair Francis <alistair23@gmail.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: zW72ZC/UmUwI
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+X-TUID: Vwcvq2yV8Tz3
 
---001a114e3f4e24e8af0552b421c6
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Needed to implement a target-agnostic gen_intermediate_code() in the
+future.
 
-Hi Philippe,
+Signed-off-by: Lluís Vilanova <vilanova@ac.upc.edu>
+Reviewed-by: David Gibson <david@gibson.dropbear.id.au>
+Reviewed-by: Richard Henderson <rth@twiddle.net>
+---
+ include/exec/exec-all.h       |    2 +-
+ target/alpha/translate.c      |   11 +++++------
+ target/arm/translate.c        |   20 ++++++++++----------
+ target/cris/translate.c       |   17 ++++++++---------
+ target/i386/translate.c       |   13 ++++++-------
+ target/lm32/translate.c       |   22 +++++++++++-----------
+ target/m68k/translate.c       |   15 +++++++--------
+ target/microblaze/translate.c |   22 +++++++++++-----------
+ target/mips/translate.c       |   15 +++++++--------
+ target/moxie/translate.c      |   14 +++++++-------
+ target/openrisc/translate.c   |   19 ++++++++++---------
+ target/ppc/translate.c        |   15 +++++++--------
+ target/s390x/translate.c      |   13 ++++++-------
+ target/sh4/translate.c        |   15 +++++++--------
+ target/sparc/translate.c      |   11 +++++------
+ target/tilegx/translate.c     |    7 +++----
+ target/tricore/translate.c    |    9 ++++-----
+ target/unicore32/translate.c  |   17 ++++++++---------
+ target/xtensa/translate.c     |   13 ++++++-------
+ translate-all.c               |    2 +-
+ 20 files changed, 130 insertions(+), 142 deletions(-)
 
-On Tue, May 30, 2017 at 6:21 PM, Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.o=
-rg>
-wrote:
-
-> Hi Subbaraya,
->
-> This patch looks good.
->
->
-> On 05/16/2017 12:38 PM, Subbaraya Sundeep wrote:
->
->> Added Sytem register block of Smartfusion2.
->> This block has PLL registers which are accessed by guest.
->>
->> Signed-off-by: Subbaraya Sundeep <sundeep.lkml@gmail.com>
->> ---
->>  hw/misc/Makefile.objs         |   1 +
->>  hw/misc/msf2-sysreg.c         | 161 ++++++++++++++++++++++++++++++
->> ++++++++++++
->>  include/hw/misc/msf2-sysreg.h |  80 +++++++++++++++++++++
->>  3 files changed, 242 insertions(+)
->>  create mode 100644 hw/misc/msf2-sysreg.c
->>  create mode 100644 include/hw/misc/msf2-sysreg.h
->>
->> diff --git a/hw/misc/Makefile.objs b/hw/misc/Makefile.objs
->> index c8b4893..0f52354 100644
->> --- a/hw/misc/Makefile.objs
->> +++ b/hw/misc/Makefile.objs
->> @@ -56,3 +56,4 @@ obj-$(CONFIG_EDU) +=3D edu.o
->>  obj-$(CONFIG_HYPERV_TESTDEV) +=3D hyperv_testdev.o
->>  obj-$(CONFIG_AUX) +=3D auxbus.o
->>  obj-$(CONFIG_ASPEED_SOC) +=3D aspeed_scu.o aspeed_sdmc.o
->> +obj-$(CONFIG_MSF2) +=3D msf2-sysreg.o
->> diff --git a/hw/misc/msf2-sysreg.c b/hw/misc/msf2-sysreg.c
->> new file mode 100644
->> index 0000000..8d3118f
->> --- /dev/null
->> +++ b/hw/misc/msf2-sysreg.c
->> @@ -0,0 +1,161 @@
->> +/*
->> + * System Register block model of Microsemi SmartFusion2.
->> + *
->> + * Copyright (c) 2017 Subbaraya Sundeep <sundeep.lkml@gmail.com>
->> + *
->> + * This program is free software; you can redistribute it and/or
->> + * modify it under the terms of the GNU General Public License
->> + * as published by the Free Software Foundation; either version
->> + * 2 of the License, or (at your option) any later version.
->> + *
->> + * You should have received a copy of the GNU General Public License
->> along
->> + * with this program; if not, see <http://www.gnu.org/licenses/>.
->> + */
->> +
->> +#include "hw/misc/msf2-sysreg.h"
->> +
->> +#ifndef MSF2_SYSREG_ERR_DEBUG
->> +#define MSF2_SYSREG_ERR_DEBUG  0
->> +#endif
->> +
->> +#define DB_PRINT_L(lvl, fmt, args...) do { \
->> +    if (MSF2_SYSREG_ERR_DEBUG >=3D lvl) { \
->> +        qemu_log("%s: " fmt, __func__, ## args); \
->> +    } \
->> +} while (0);
->> +
->> +#define DB_PRINT(fmt, args...) DB_PRINT_L(1, fmt, ## args)
->> +
->> +static void msf2_sysreg_reset(DeviceState *d)
->> +{
->> +    MSF2SysregState *s =3D MSF2_SYSREG(d);
->> +
->> +    DB_PRINT("RESET\n");
->> +
->> +    s->regs[MSSDDR_PLL_STATUS_LOW_CR] =3D 0x021A2358;
->> +    s->regs[MSSDDR_FACC1_CR] =3D 0x0B800124;
->> +    s->regs[MSSDDR_PLL_STATUS] =3D 0x3;
->>
->
-> I'll have a closer look a those values.
-
-
-I just used values from real hardware board.
-
->
->
-> +}
->> +
->> +static uint64_t msf2_sysreg_read(void *opaque, hwaddr offset,
->> +    unsigned size)
->> +{
->> +    MSF2SysregState *s =3D opaque;
->> +    offset /=3D 4;
->> +    uint32_t ret =3D 0;
->> +
->> +    if (offset < ARRAY_SIZE(s->regs)) {
->> +        ret =3D s->regs[offset];
->> +        DB_PRINT("addr: 0x%08" HWADDR_PRIx " data: 0x%08" PRIx32 "\n",
->> +                    offset * 4, ret);
->> +    } else {
->> +        qemu_log_mask(LOG_GUEST_ERROR,
->> +                    "%s: Bad offset 0x%08" HWADDR_PRIx "\n", __func__,
->> +                    offset * 4);
->> +    }
->> +
->> +    return ret;
->> +}
->> +
->> +static void msf2_sysreg_write(void *opaque, hwaddr offset,
->> +                          uint64_t val, unsigned size)
->> +{
->> +    MSF2SysregState *s =3D (MSF2SysregState *)opaque;
->> +    uint32_t newval =3D val;
->> +    uint32_t oldval;
->> +
->> +    offset /=3D 4;
->> +
->> +    DB_PRINT("addr: 0x%08" HWADDR_PRIx " data: 0x%08" PRIx64 "\n",
->> +            offset * 4, val);
->> +
->> +    switch (offset) {
->> +    case MSSDDR_PLL_STATUS:
->> +        break;
->> +
->> +    case ESRAM_CR:
->> +        oldval =3D s->regs[ESRAM_CR];
->> +        if (oldval ^ newval) {
->> +            qemu_log_mask(LOG_GUEST_ERROR,
->> +                       TYPE_MSF2_SYSREG": eSRAM remapping not
->> supported\n");
->> +            abort();
->> +        }
->> +        break;
->> +
->> +    case DDR_CR:
->> +        oldval =3D s->regs[DDR_CR];
->> +        if (oldval ^ newval) {
->> +            qemu_log_mask(LOG_GUEST_ERROR,
->> +                       TYPE_MSF2_SYSREG": DDR remapping not
->> supported\n");
->> +            abort();
->> +        }
->> +        break;
->> +
->> +    case ENVM_REMAP_BASE_CR:
->> +        oldval =3D s->regs[ENVM_REMAP_BASE_CR];
->> +        if (oldval ^ newval) {
->> +            qemu_log_mask(LOG_GUEST_ERROR,
->> +                       TYPE_MSF2_SYSREG": eNVM remapping not
->> supported\n");
->> +            abort();
->> +        }
->> +        break;
->>
->
-> Thanks for adding the remap checks :)
->
-> :)
-
->
-> +
->> +    default:
->> +        if (offset < ARRAY_SIZE(s->regs)) {
->> +            s->regs[offset] =3D val;
->> +        } else {
->> +            qemu_log_mask(LOG_GUEST_ERROR,
->> +                        "%s: Bad offset 0x%08" HWADDR_PRIx "\n",
->> __func__,
->> +                        offset * 4);
->> +        }
->> +        break;
->> +    }
->> +}
->> +
->> +static const MemoryRegionOps sysreg_ops =3D {
->> +    .read =3D msf2_sysreg_read,
->> +    .write =3D msf2_sysreg_write,
->> +    .endianness =3D DEVICE_NATIVE_ENDIAN,
->> +};
->> +
->> +static void msf2_sysreg_init(Object *obj)
->> +{
->> +    MSF2SysregState *s =3D MSF2_SYSREG(obj);
->> +
->> +    memory_region_init_io(&s->iomem, obj, &sysreg_ops, s,
->> TYPE_MSF2_SYSREG,
->> +                          MSF2_SYSREG_MMIO_SIZE);
->> +    sysbus_init_mmio(SYS_BUS_DEVICE(obj), &s->iomem);
->> +}
->> +
->> +static const VMStateDescription vmstate_msf2_sysreg =3D {
->> +    .name =3D TYPE_MSF2_SYSREG,
->> +    .version_id =3D 1,
->> +    .minimum_version_id =3D 1,
->> +    .fields =3D (VMStateField[]) {
->> +        VMSTATE_UINT32_ARRAY(regs, MSF2SysregState,
->> MSF2_SYSREG_NUM_REGS),
->> +        VMSTATE_END_OF_LIST()
->> +    }
->> +};
->> +
->> +static void msf2_sysreg_class_init(ObjectClass *klass, void *data)
->> +{
->> +    DeviceClass *dc =3D DEVICE_CLASS(klass);
->> +
->> +    dc->vmsd =3D &vmstate_msf2_sysreg;
->> +    dc->reset =3D msf2_sysreg_reset;
->> +}
->> +
->> +static const TypeInfo msf2_sysreg_info =3D {
->> +    .name  =3D TYPE_MSF2_SYSREG,
->> +    .parent =3D TYPE_SYS_BUS_DEVICE,
->> +    .class_init =3D msf2_sysreg_class_init,
->> +    .instance_size  =3D sizeof(MSF2SysregState),
->> +    .instance_init =3D msf2_sysreg_init,
->> +};
->> +
->> +static void msf2_sysreg_register_types(void)
->> +{
->> +    type_register_static(&msf2_sysreg_info);
->> +}
->> +
->> +type_init(msf2_sysreg_register_types)
->> diff --git a/include/hw/misc/msf2-sysreg.h b/include/hw/misc/msf2-sysreg=
-.
->> h
->> new file mode 100644
->> index 0000000..a485ed6
->> --- /dev/null
->> +++ b/include/hw/misc/msf2-sysreg.h
->> @@ -0,0 +1,80 @@
->> +/*
->> + * Microsemi SmartFusion2 SYSREG
->> + *
->> + * Copyright (c) 2017 Subbaraya Sundeep <sundeep.lkml@gmail.com>
->> + *
->> + * Permission is hereby granted, free of charge, to any person obtainin=
-g
->> a copy
->> + * of this software and associated documentation files (the "Software")=
-,
->> to deal
->> + * in the Software without restriction, including without limitation th=
-e
->> rights
->> + * to use, copy, modify, merge, publish, distribute, sublicense, and/or
->> sell
->> + * copies of the Software, and to permit persons to whom the Software i=
-s
->> + * furnished to do so, subject to the following conditions:
->> + *
->> + * The above copyright notice and this permission notice shall be
->> included in
->> + * all copies or substantial portions of the Software.
->> + *
->> + * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
->> EXPRESS OR
->> + * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
->> MERCHANTABILITY,
->> + * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT
->> SHALL
->> + * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR
->> OTHER
->> + * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
->> ARISING FROM,
->> + * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
->> DEALINGS IN
->> + * THE SOFTWARE.
->> + */
->> +
->> +#ifndef HW_MSF2_SYSREG_H
->> +#define HW_MSF2_SYSREG_H
->> +
->> +#include "qemu/osdep.h"
->> +#include "hw/sysbus.h"
->> +#include "hw/hw.h"
->> +#include "sysemu/sysemu.h"
->> +#include "qemu/log.h"
->> +
->> +enum {
->> +    ESRAM_CR        =3D 0x00 / 4,
->> +    ESRAM_MAX_LAT,
->> +    DDR_CR,
->> +    ENVM_CR,
->> +    ENVM_REMAP_BASE_CR,
->> +    ENVM_REMAP_FAB_CR,
->> +    CC_CR,
->> +    CC_REGION_CR,
->> +    CC_LOCK_BASE_ADDR_CR,
->> +    CC_FLUSH_INDX_CR,
->> +    DDRB_BUF_TIMER_CR,
->> +    DDRB_NB_ADDR_CR,
->> +    DDRB_NB_SIZE_CR,
->> +    DDRB_CR,
->> +
->> +    SOFT_RESET_CR  =3D 0x48 / 4,
->> +    M3_CR,
->> +
->> +    GPIO_SYSRESET_SEL_CR =3D 0x58 / 4,
->> +
->> +    MDDR_CR =3D 0x60 / 4,
->> +
->> +    MSSDDR_PLL_STATUS_LOW_CR =3D 0x90 / 4,
->> +    MSSDDR_PLL_STATUS_HIGH_CR,
->> +    MSSDDR_FACC1_CR,
->> +    MSSDDR_FACC2_CR,
->> +
->> +    MSSDDR_PLL_STATUS =3D 0x150 / 4,
->> +
->> +};
->> +
->> +#define MSF2_SYSREG_MMIO_SIZE     0x300
->> +#define MSF2_SYSREG_NUM_REGS      (MSF2_SYSREG_MMIO_SIZE / 4)
->>
->
-> I don't think this define is very useful.
->
-
-It is used in VMSTATE_UINT32_ARRAY(regs, MSF2SysregState,
-MSF2_SYSREG_NUM_REGS).
-Ok I will use MSF2_SYSREG_MMIO_SIZE / 4 directly instead.
-
->
-> +
->> +#define TYPE_MSF2_SYSREG          "msf2-sysreg"
->> +#define MSF2_SYSREG(obj)  OBJECT_CHECK(MSF2SysregState, (obj),
->> TYPE_MSF2_SYSREG)
->> +
->> +typedef struct MSF2SysregState {
->> +    SysBusDevice parent_obj;
->> +
->> +    MemoryRegion iomem;
->> +
->> +    uint32_t regs[MSF2_SYSREG_NUM_REGS];
->> +} MSF2SysregState;
->> +
->> +#endif /* HW_MSF2_SYSREG_H */
->>
->>
-> Thanks,
-Sundeep
-
-
-> Regards,
->
-> Phil.
->
-
---001a114e3f4e24e8af0552b421c6
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr">Hi Philippe,<br><div class=3D"gmail_extra"><br><div class=
-=3D"gmail_quote">On Tue, May 30, 2017 at 6:21 PM, Philippe Mathieu-Daud=C3=
-=A9 <span dir=3D"ltr">&lt;<a href=3D"mailto:f4bug@amsat.org" target=3D"_bla=
-nk">f4bug@amsat.org</a>&gt;</span> wrote:<br><blockquote class=3D"gmail_quo=
-te" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204=
-);padding-left:1ex">Hi Subbaraya,<br>
-<br>
-This patch looks good.<div><div class=3D"gmail-h5"><br>
-<br>
-On 05/16/2017 12:38 PM, Subbaraya Sundeep wrote:<br>
-<blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-=
-left:1px solid rgb(204,204,204);padding-left:1ex">
-Added Sytem register block of Smartfusion2.<br>
-This block has PLL registers which are accessed by guest.<br>
-<br>
-Signed-off-by: Subbaraya Sundeep &lt;<a href=3D"mailto:sundeep.lkml@gmail.c=
-om" target=3D"_blank">sundeep.lkml@gmail.com</a>&gt;<br>
----<br>
-=C2=A0hw/misc/Makefile.objs=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0|=C2=A0 =C2=A0=
-1 +<br>
-=C2=A0hw/misc/msf2-sysreg.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0| 161 ++++++++=
-++++++++++++++++++++++<wbr>++++++++++++<br>
-=C2=A0include/hw/misc/msf2-sysreg.h |=C2=A0 80 +++++++++++++++++++++<br>
-=C2=A03 files changed, 242 insertions(+)<br>
-=C2=A0create mode 100644 hw/misc/msf2-sysreg.c<br>
-=C2=A0create mode 100644 include/hw/misc/msf2-sysreg.h<br>
-<br>
-diff --git a/hw/misc/Makefile.objs b/hw/misc/Makefile.objs<br>
-index c8b4893..0f52354 100644<br>
---- a/hw/misc/Makefile.objs<br>
-+++ b/hw/misc/Makefile.objs<br>
-@@ -56,3 +56,4 @@ obj-$(CONFIG_EDU) +=3D edu.o<br>
-=C2=A0obj-$(CONFIG_HYPERV_TESTDEV) +=3D hyperv_testdev.o<br>
-=C2=A0obj-$(CONFIG_AUX) +=3D auxbus.o<br>
-=C2=A0obj-$(CONFIG_ASPEED_SOC) +=3D aspeed_scu.o aspeed_sdmc.o<br>
-+obj-$(CONFIG_MSF2) +=3D msf2-sysreg.o<br>
-diff --git a/hw/misc/msf2-sysreg.c b/hw/misc/msf2-sysreg.c<br>
-new file mode 100644<br>
-index 0000000..8d3118f<br>
---- /dev/null<br>
-+++ b/hw/misc/msf2-sysreg.c<br>
-@@ -0,0 +1,161 @@<br>
-+/*<br>
-+ * System Register block model of Microsemi SmartFusion2.<br>
-+ *<br>
-+ * Copyright (c) 2017 Subbaraya Sundeep &lt;<a href=3D"mailto:sundeep.lkml=
-@gmail.com" target=3D"_blank">sundeep.lkml@gmail.com</a>&gt;<br>
-+ *<br>
-+ * This program is free software; you can redistribute it and/or<br>
-+ * modify it under the terms of the GNU General Public License<br>
-+ * as published by the Free Software Foundation; either version<br>
-+ * 2 of the License, or (at your option) any later version.<br>
-+ *<br>
-+ * You should have received a copy of the GNU General Public License along=
-<br>
-+ * with this program; if not, see &lt;<a href=3D"http://www.gnu.org/licens=
-es/" rel=3D"noreferrer" target=3D"_blank">http://www.gnu.org/licenses/</a>&=
-gt;<wbr>.<br>
-+ */<br>
-+<br>
-+#include &quot;hw/misc/msf2-sysreg.h&quot;<br>
-+<br>
-+#ifndef MSF2_SYSREG_ERR_DEBUG<br>
-+#define MSF2_SYSREG_ERR_DEBUG=C2=A0 0<br>
-+#endif<br>
-+<br>
-+#define DB_PRINT_L(lvl, fmt, args...) do { \<br>
-+=C2=A0 =C2=A0 if (MSF2_SYSREG_ERR_DEBUG &gt;=3D lvl) { \<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 qemu_log(&quot;%s: &quot; fmt, __func__, ## ar=
-gs); \<br>
-+=C2=A0 =C2=A0 } \<br>
-+} while (0);<br>
-+<br>
-+#define DB_PRINT(fmt, args...) DB_PRINT_L(1, fmt, ## args)<br>
-+<br>
-+static void msf2_sysreg_reset(DeviceState *d)<br>
-+{<br>
-+=C2=A0 =C2=A0 MSF2SysregState *s =3D MSF2_SYSREG(d);<br>
-+<br>
-+=C2=A0 =C2=A0 DB_PRINT(&quot;RESET\n&quot;);<br>
-+<br>
-+=C2=A0 =C2=A0 s-&gt;regs[MSSDDR_PLL_STATUS_LOW_<wbr>CR] =3D 0x021A2358;<br=
->
-+=C2=A0 =C2=A0 s-&gt;regs[MSSDDR_FACC1_CR] =3D 0x0B800124;<br>
-+=C2=A0 =C2=A0 s-&gt;regs[MSSDDR_PLL_STATUS] =3D 0x3;<br>
-</blockquote>
-<br></div></div>
-I&#39;ll have a closer look a those values.</blockquote><div><br></div><div=
->I just used values from real hardware board. <br></div><blockquote class=
-=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rg=
-b(204,204,204);padding-left:1ex"><div><div class=3D"gmail-h5"><br>
-<br>
-<blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-=
-left:1px solid rgb(204,204,204);padding-left:1ex">
-+}<br>
-+<br>
-+static uint64_t msf2_sysreg_read(void *opaque, hwaddr offset,<br>
-+=C2=A0 =C2=A0 unsigned size)<br>
-+{<br>
-+=C2=A0 =C2=A0 MSF2SysregState *s =3D opaque;<br>
-+=C2=A0 =C2=A0 offset /=3D 4;<br>
-+=C2=A0 =C2=A0 uint32_t ret =3D 0;<br>
-+<br>
-+=C2=A0 =C2=A0 if (offset &lt; ARRAY_SIZE(s-&gt;regs)) {<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 ret =3D s-&gt;regs[offset];<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 DB_PRINT(&quot;addr: 0x%08&quot; HWADDR_PRIx &=
-quot; data: 0x%08&quot; PRIx32 &quot;\n&quot;,<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 offs=
-et * 4, ret);<br>
-+=C2=A0 =C2=A0 } else {<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 qemu_log_mask(LOG_GUEST_ERROR,<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &quo=
-t;%s: Bad offset 0x%08&quot; HWADDR_PRIx &quot;\n&quot;, __func__,<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 offs=
-et * 4);<br>
-+=C2=A0 =C2=A0 }<br>
-+<br>
-+=C2=A0 =C2=A0 return ret;<br>
-+}<br>
-+<br>
-+static void msf2_sysreg_write(void *opaque, hwaddr offset,<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 uint64_t val, unsigned size)<br>
-+{<br>
-+=C2=A0 =C2=A0 MSF2SysregState *s =3D (MSF2SysregState *)opaque;<br>
-+=C2=A0 =C2=A0 uint32_t newval =3D val;<br>
-+=C2=A0 =C2=A0 uint32_t oldval;<br>
-+<br>
-+=C2=A0 =C2=A0 offset /=3D 4;<br>
-+<br>
-+=C2=A0 =C2=A0 DB_PRINT(&quot;addr: 0x%08&quot; HWADDR_PRIx &quot; data: 0x=
-%08&quot; PRIx64 &quot;\n&quot;,<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 offset * 4, val);<br>
-+<br>
-+=C2=A0 =C2=A0 switch (offset) {<br>
-+=C2=A0 =C2=A0 case MSSDDR_PLL_STATUS:<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 break;<br>
-+<br>
-+=C2=A0 =C2=A0 case ESRAM_CR:<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 oldval =3D s-&gt;regs[ESRAM_CR];<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 if (oldval ^ newval) {<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 qemu_log_mask(LOG_GUEST_ERROR,<b=
-r>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0TYPE_MSF2_SYSREG&quot;: eSRAM remapping not supported\n&quot;);<b=
-r>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 abort();<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 }<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 break;<br>
-+<br>
-+=C2=A0 =C2=A0 case DDR_CR:<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 oldval =3D s-&gt;regs[DDR_CR];<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 if (oldval ^ newval) {<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 qemu_log_mask(LOG_GUEST_ERROR,<b=
-r>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0TYPE_MSF2_SYSREG&quot;: DDR remapping not supported\n&quot;);<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 abort();<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 }<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 break;<br>
-+<br>
-+=C2=A0 =C2=A0 case ENVM_REMAP_BASE_CR:<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 oldval =3D s-&gt;regs[ENVM_REMAP_BASE_CR];<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 if (oldval ^ newval) {<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 qemu_log_mask(LOG_GUEST_ERROR,<b=
-r>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0TYPE_MSF2_SYSREG&quot;: eNVM remapping not supported\n&quot;);<br=
->
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 abort();<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 }<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 break;<br>
-</blockquote>
-<br></div></div>
-Thanks for adding the remap checks :)<div><div class=3D"gmail-h5"><br></div=
-></div></blockquote><div>:) <br></div><blockquote class=3D"gmail_quote" sty=
-le=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);paddi=
-ng-left:1ex"><div><div class=3D"gmail-h5">
-<br>
-<blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-=
-left:1px solid rgb(204,204,204);padding-left:1ex">
-+<br>
-+=C2=A0 =C2=A0 default:<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 if (offset &lt; ARRAY_SIZE(s-&gt;regs)) {<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 s-&gt;regs[offset] =3D val;<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 } else {<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 qemu_log_mask(LOG_GUEST_ERROR,<b=
-r>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 &quot;%s: Bad offset 0x%08&quot; HWADDR_PRIx &quot;\n&quot;, __f=
-unc__,<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 offset * 4);<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 }<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 break;<br>
-+=C2=A0 =C2=A0 }<br>
-+}<br>
-+<br>
-+static const MemoryRegionOps sysreg_ops =3D {<br>
-+=C2=A0 =C2=A0 .read =3D msf2_sysreg_read,<br>
-+=C2=A0 =C2=A0 .write =3D msf2_sysreg_write,<br>
-+=C2=A0 =C2=A0 .endianness =3D DEVICE_NATIVE_ENDIAN,<br>
-+};<br>
-+<br>
-+static void msf2_sysreg_init(Object *obj)<br>
-+{<br>
-+=C2=A0 =C2=A0 MSF2SysregState *s =3D MSF2_SYSREG(obj);<br>
-+<br>
-+=C2=A0 =C2=A0 memory_region_init_io(&amp;s-&gt;iome<wbr>m, obj, &amp;sysre=
-g_ops, s, TYPE_MSF2_SYSREG,<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 MSF2_SYSREG_MMIO_SIZE);<br>
-+=C2=A0 =C2=A0 sysbus_init_mmio(SYS_BUS_DEVIC<wbr>E(obj), &amp;s-&gt;iomem)=
-;<br>
-+}<br>
-+<br>
-+static const VMStateDescription vmstate_msf2_sysreg =3D {<br>
-+=C2=A0 =C2=A0 .name =3D TYPE_MSF2_SYSREG,<br>
-+=C2=A0 =C2=A0 .version_id =3D 1,<br>
-+=C2=A0 =C2=A0 .minimum_version_id =3D 1,<br>
-+=C2=A0 =C2=A0 .fields =3D (VMStateField[]) {<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 VMSTATE_UINT32_ARRAY(regs, MSF2SysregState, MS=
-F2_SYSREG_NUM_REGS),<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 VMSTATE_END_OF_LIST()<br>
-+=C2=A0 =C2=A0 }<br>
-+};<br>
-+<br>
-+static void msf2_sysreg_class_init(ObjectC<wbr>lass *klass, void *data)<br=
->
-+{<br>
-+=C2=A0 =C2=A0 DeviceClass *dc =3D DEVICE_CLASS(klass);<br>
-+<br>
-+=C2=A0 =C2=A0 dc-&gt;vmsd =3D &amp;vmstate_msf2_sysreg;<br>
-+=C2=A0 =C2=A0 dc-&gt;reset =3D msf2_sysreg_reset;<br>
-+}<br>
-+<br>
-+static const TypeInfo msf2_sysreg_info =3D {<br>
-+=C2=A0 =C2=A0 .name=C2=A0 =3D TYPE_MSF2_SYSREG,<br>
-+=C2=A0 =C2=A0 .parent =3D TYPE_SYS_BUS_DEVICE,<br>
-+=C2=A0 =C2=A0 .class_init =3D msf2_sysreg_class_init,<br>
-+=C2=A0 =C2=A0 .instance_size=C2=A0 =3D sizeof(MSF2SysregState),<br>
-+=C2=A0 =C2=A0 .instance_init =3D msf2_sysreg_init,<br>
-+};<br>
-+<br>
-+static void msf2_sysreg_register_types(voi<wbr>d)<br>
-+{<br>
-+=C2=A0 =C2=A0 type_register_static(&amp;msf2_sys<wbr>reg_info);<br>
-+}<br>
-+<br>
-+type_init(msf2_sysreg_registe<wbr>r_types)<br>
-diff --git a/include/hw/misc/msf2-sysreg.<wbr>h b/include/hw/misc/msf2-sysr=
-eg.<wbr>h<br>
-new file mode 100644<br>
-index 0000000..a485ed6<br>
---- /dev/null<br>
-+++ b/include/hw/misc/msf2-sysreg.<wbr>h<br>
-@@ -0,0 +1,80 @@<br>
-+/*<br>
-+ * Microsemi SmartFusion2 SYSREG<br>
-+ *<br>
-+ * Copyright (c) 2017 Subbaraya Sundeep &lt;<a href=3D"mailto:sundeep.lkml=
-@gmail.com" target=3D"_blank">sundeep.lkml@gmail.com</a>&gt;<br>
-+ *<br>
-+ * Permission is hereby granted, free of charge, to any person obtaining a=
- copy<br>
-+ * of this software and associated documentation files (the &quot;Software=
-&quot;), to deal<br>
-+ * in the Software without restriction, including without limitation the r=
-ights<br>
-+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or se=
-ll<br>
-+ * copies of the Software, and to permit persons to whom the Software is<b=
-r>
-+ * furnished to do so, subject to the following conditions:<br>
-+ *<br>
-+ * The above copyright notice and this permission notice shall be included=
- in<br>
-+ * all copies or substantial portions of the Software.<br>
-+ *<br>
-+ * THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIN=
-D, EXPRESS OR<br>
-+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY=
-,<br>
-+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL=
-<br>
-+ * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OT=
-HER<br>
-+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING=
- FROM,<br>
-+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS =
-IN<br>
-+ * THE SOFTWARE.<br>
-+ */<br>
-+<br>
-+#ifndef HW_MSF2_SYSREG_H<br>
-+#define HW_MSF2_SYSREG_H<br>
-+<br>
-+#include &quot;qemu/osdep.h&quot;<br>
-+#include &quot;hw/sysbus.h&quot;<br>
-+#include &quot;hw/hw.h&quot;<br>
-+#include &quot;sysemu/sysemu.h&quot;<br>
-+#include &quot;qemu/log.h&quot;<br>
-+<br>
-+enum {<br>
-+=C2=A0 =C2=A0 ESRAM_CR=C2=A0 =C2=A0 =C2=A0 =C2=A0 =3D 0x00 / 4,<br>
-+=C2=A0 =C2=A0 ESRAM_MAX_LAT,<br>
-+=C2=A0 =C2=A0 DDR_CR,<br>
-+=C2=A0 =C2=A0 ENVM_CR,<br>
-+=C2=A0 =C2=A0 ENVM_REMAP_BASE_CR,<br>
-+=C2=A0 =C2=A0 ENVM_REMAP_FAB_CR,<br>
-+=C2=A0 =C2=A0 CC_CR,<br>
-+=C2=A0 =C2=A0 CC_REGION_CR,<br>
-+=C2=A0 =C2=A0 CC_LOCK_BASE_ADDR_CR,<br>
-+=C2=A0 =C2=A0 CC_FLUSH_INDX_CR,<br>
-+=C2=A0 =C2=A0 DDRB_BUF_TIMER_CR,<br>
-+=C2=A0 =C2=A0 DDRB_NB_ADDR_CR,<br>
-+=C2=A0 =C2=A0 DDRB_NB_SIZE_CR,<br>
-+=C2=A0 =C2=A0 DDRB_CR,<br>
-+<br>
-+=C2=A0 =C2=A0 SOFT_RESET_CR=C2=A0 =3D 0x48 / 4,<br>
-+=C2=A0 =C2=A0 M3_CR,<br>
-+<br>
-+=C2=A0 =C2=A0 GPIO_SYSRESET_SEL_CR =3D 0x58 / 4,<br>
-+<br>
-+=C2=A0 =C2=A0 MDDR_CR =3D 0x60 / 4,<br>
-+<br>
-+=C2=A0 =C2=A0 MSSDDR_PLL_STATUS_LOW_CR =3D 0x90 / 4,<br>
-+=C2=A0 =C2=A0 MSSDDR_PLL_STATUS_HIGH_CR,<br>
-+=C2=A0 =C2=A0 MSSDDR_FACC1_CR,<br>
-+=C2=A0 =C2=A0 MSSDDR_FACC2_CR,<br>
-+<br>
-+=C2=A0 =C2=A0 MSSDDR_PLL_STATUS =3D 0x150 / 4,<br>
-+<br>
-+};<br>
-+<br>
-+#define MSF2_SYSREG_MMIO_SIZE=C2=A0 =C2=A0 =C2=A00x300<br>
-+#define MSF2_SYSREG_NUM_REGS=C2=A0 =C2=A0 =C2=A0 (MSF2_SYSREG_MMIO_SIZE / =
-4)<br>
-</blockquote>
-<br></div></div>
-I don&#39;t think this define is very useful.<span class=3D"gmail-"><br></s=
-pan></blockquote><div><br></div><div>It is used in VMSTATE_UINT32_ARRAY(reg=
-s, MSF2SysregState, MSF2_SYSREG_NUM_REGS).<br></div><div>Ok I will use MSF2=
-_SYSREG_MMIO_SIZE / 4 directly instead. </div><blockquote class=3D"gmail_qu=
-ote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,20=
-4);padding-left:1ex"><span class=3D"gmail-">
-<br>
-<blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-=
-left:1px solid rgb(204,204,204);padding-left:1ex">
-+<br>
-+#define TYPE_MSF2_SYSREG=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &quot;msf2-sysr=
-eg&quot;<br>
-+#define MSF2_SYSREG(obj)=C2=A0 OBJECT_CHECK(MSF2SysregState, (obj), TYPE_M=
-SF2_SYSREG)<br>
-+<br>
-+typedef struct MSF2SysregState {<br>
-+=C2=A0 =C2=A0 SysBusDevice parent_obj;<br>
-+<br>
-+=C2=A0 =C2=A0 MemoryRegion iomem;<br>
-+<br>
-+=C2=A0 =C2=A0 uint32_t regs[MSF2_SYSREG_NUM_REGS];<br>
-+} MSF2SysregState;<br>
-+<br>
-+#endif /* HW_MSF2_SYSREG_H */<br>
-<br>
-</blockquote>
-<br></span></blockquote><div>Thanks,<br></div><div>Sundeep<br>=C2=A0<br></d=
-iv><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;bord=
-er-left:1px solid rgb(204,204,204);padding-left:1ex"><span class=3D"gmail-"=
-></span>
-Regards,<br>
-<br>
-Phil.<br>
-</blockquote></div><br></div></div>
-
---001a114e3f4e24e8af0552b421c6--
+diff --git a/include/exec/exec-all.h b/include/exec/exec-all.h
+index 87ae10bcc9..1ec7637170 100644
+--- a/include/exec/exec-all.h
++++ b/include/exec/exec-all.h
+@@ -43,7 +43,7 @@ typedef ram_addr_t tb_page_addr_t;
+ 
+ #include "qemu/log.h"
+ 
+-void gen_intermediate_code(CPUArchState *env, struct TranslationBlock *tb);
++void gen_intermediate_code(CPUState *env, struct TranslationBlock *tb);
+ void restore_state_to_opc(CPUArchState *env, struct TranslationBlock *tb,
+                           target_ulong *data);
+ 
+diff --git a/target/alpha/translate.c b/target/alpha/translate.c
+index 7c45ae360c..9b60680454 100644
+--- a/target/alpha/translate.c
++++ b/target/alpha/translate.c
+@@ -2900,10 +2900,9 @@ static ExitStatus translate_one(DisasContext *ctx, uint32_t insn)
+     return ret;
+ }
+ 
+-void gen_intermediate_code(CPUAlphaState *env, struct TranslationBlock *tb)
++void gen_intermediate_code(CPUState *cpu, struct TranslationBlock *tb)
+ {
+-    AlphaCPU *cpu = alpha_env_get_cpu(env);
+-    CPUState *cs = CPU(cpu);
++    CPUAlphaState *env = cpu->env_ptr;
+     DisasContext ctx, *ctxp = &ctx;
+     target_ulong pc_start;
+     target_ulong pc_mask;
+@@ -2918,7 +2917,7 @@ void gen_intermediate_code(CPUAlphaState *env, struct TranslationBlock *tb)
+     ctx.pc = pc_start;
+     ctx.mem_idx = cpu_mmu_index(env, false);
+     ctx.implver = env->implver;
+-    ctx.singlestep_enabled = cs->singlestep_enabled;
++    ctx.singlestep_enabled = cpu->singlestep_enabled;
+ 
+ #ifdef CONFIG_USER_ONLY
+     ctx.ir = cpu_std_ir;
+@@ -2961,7 +2960,7 @@ void gen_intermediate_code(CPUAlphaState *env, struct TranslationBlock *tb)
+         tcg_gen_insn_start(ctx.pc);
+         num_insns++;
+ 
+-        if (unlikely(cpu_breakpoint_test(cs, ctx.pc, BP_ANY))) {
++        if (unlikely(cpu_breakpoint_test(cpu, ctx.pc, BP_ANY))) {
+             ret = gen_excp(&ctx, EXCP_DEBUG, 0);
+             /* The address covered by the breakpoint must be included in
+                [tb->pc, tb->pc + tb->size) in order to for it to be
+@@ -3030,7 +3029,7 @@ void gen_intermediate_code(CPUAlphaState *env, struct TranslationBlock *tb)
+         && qemu_log_in_addr_range(pc_start)) {
+         qemu_log_lock();
+         qemu_log("IN: %s\n", lookup_symbol(pc_start));
+-        log_target_disas(cs, pc_start, ctx.pc - pc_start, 1);
++        log_target_disas(cpu, pc_start, ctx.pc - pc_start, 1);
+         qemu_log("\n");
+         qemu_log_unlock();
+     }
+diff --git a/target/arm/translate.c b/target/arm/translate.c
+index 0862f9e4aa..96272a9888 100644
+--- a/target/arm/translate.c
++++ b/target/arm/translate.c
+@@ -11787,10 +11787,10 @@ static bool insn_crosses_page(CPUARMState *env, DisasContext *s)
+ }
+ 
+ /* generate intermediate code for basic block 'tb'.  */
+-void gen_intermediate_code(CPUARMState *env, TranslationBlock *tb)
++void gen_intermediate_code(CPUState *cpu, TranslationBlock *tb)
+ {
+-    ARMCPU *cpu = arm_env_get_cpu(env);
+-    CPUState *cs = CPU(cpu);
++    CPUARMState *env = cpu->env_ptr;
++    ARMCPU *arm_cpu = arm_env_get_cpu(env);
+     DisasContext dc1, *dc = &dc1;
+     target_ulong pc_start;
+     target_ulong next_page_start;
+@@ -11804,7 +11804,7 @@ void gen_intermediate_code(CPUARMState *env, TranslationBlock *tb)
+      * the A32/T32 complexity to do with conditional execution/IT blocks/etc.
+      */
+     if (ARM_TBFLAG_AARCH64_STATE(tb->flags)) {
+-        gen_intermediate_code_a64(cpu, tb);
++        gen_intermediate_code_a64(arm_cpu, tb);
+         return;
+     }
+ 
+@@ -11814,7 +11814,7 @@ void gen_intermediate_code(CPUARMState *env, TranslationBlock *tb)
+ 
+     dc->is_jmp = DISAS_NEXT;
+     dc->pc = pc_start;
+-    dc->singlestep_enabled = cs->singlestep_enabled;
++    dc->singlestep_enabled = cpu->singlestep_enabled;
+     dc->condjmp = 0;
+ 
+     dc->aarch64 = 0;
+@@ -11840,7 +11840,7 @@ void gen_intermediate_code(CPUARMState *env, TranslationBlock *tb)
+     dc->vec_stride = ARM_TBFLAG_VECSTRIDE(tb->flags);
+     dc->c15_cpar = ARM_TBFLAG_XSCALE_CPAR(tb->flags);
+     dc->v7m_handler_mode = ARM_TBFLAG_HANDLER(tb->flags);
+-    dc->cp_regs = cpu->cp_regs;
++    dc->cp_regs = arm_cpu->cp_regs;
+     dc->features = env->features;
+ 
+     /* Single step state. The code-generation logic here is:
+@@ -11941,9 +11941,9 @@ void gen_intermediate_code(CPUARMState *env, TranslationBlock *tb)
+         }
+ #endif
+ 
+-        if (unlikely(!QTAILQ_EMPTY(&cs->breakpoints))) {
++        if (unlikely(!QTAILQ_EMPTY(&cpu->breakpoints))) {
+             CPUBreakpoint *bp;
+-            QTAILQ_FOREACH(bp, &cs->breakpoints, entry) {
++            QTAILQ_FOREACH(bp, &cpu->breakpoints, entry) {
+                 if (bp->pc == dc->pc) {
+                     if (bp->flags & BP_CPU) {
+                         gen_set_condexec(dc);
+@@ -12042,7 +12042,7 @@ void gen_intermediate_code(CPUARMState *env, TranslationBlock *tb)
+         if (dc->condjmp) {
+             /* FIXME:  This can theoretically happen with self-modifying
+                code.  */
+-            cpu_abort(cs, "IO on conditional branch instruction");
++            cpu_abort(cpu, "IO on conditional branch instruction");
+         }
+         gen_io_end();
+     }
+@@ -12156,7 +12156,7 @@ done_generating:
+         qemu_log_lock();
+         qemu_log("----------------\n");
+         qemu_log("IN: %s\n", lookup_symbol(pc_start));
+-        log_target_disas(cs, pc_start, dc->pc - pc_start,
++        log_target_disas(cpu, pc_start, dc->pc - pc_start,
+                          dc->thumb | (dc->sctlr_b << 1));
+         qemu_log("\n");
+         qemu_log_unlock();
+diff --git a/target/cris/translate.c b/target/cris/translate.c
+index 0ee05ca02d..35931e7061 100644
+--- a/target/cris/translate.c
++++ b/target/cris/translate.c
+@@ -3080,10 +3080,9 @@ static unsigned int crisv32_decoder(CPUCRISState *env, DisasContext *dc)
+  */
+ 
+ /* generate intermediate code for basic block 'tb'.  */
+-void gen_intermediate_code(CPUCRISState *env, struct TranslationBlock *tb)
++void gen_intermediate_code(CPUState *cpu, struct TranslationBlock *tb)
+ {
+-    CRISCPU *cpu = cris_env_get_cpu(env);
+-    CPUState *cs = CPU(cpu);
++    CPUCRISState *env = cpu->env_ptr;
+     uint32_t pc_start;
+     unsigned int insn_len;
+     struct DisasContext ctx;
+@@ -3105,13 +3104,13 @@ void gen_intermediate_code(CPUCRISState *env, struct TranslationBlock *tb)
+      * delayslot, like in real hw.
+      */
+     pc_start = tb->pc & ~1;
+-    dc->cpu = cpu;
++    dc->cpu = cris_env_get_cpu(env);
+     dc->tb = tb;
+ 
+     dc->is_jmp = DISAS_NEXT;
+     dc->ppc = pc_start;
+     dc->pc = pc_start;
+-    dc->singlestep_enabled = cs->singlestep_enabled;
++    dc->singlestep_enabled = cpu->singlestep_enabled;
+     dc->flags_uptodate = 1;
+     dc->flagx_known = 1;
+     dc->flags_x = tb->flags & X_FLAG;
+@@ -3151,7 +3150,7 @@ void gen_intermediate_code(CPUCRISState *env, struct TranslationBlock *tb)
+                            ? dc->ppc | 1 : dc->pc);
+         num_insns++;
+ 
+-        if (unlikely(cpu_breakpoint_test(cs, dc->pc, BP_ANY))) {
++        if (unlikely(cpu_breakpoint_test(cpu, dc->pc, BP_ANY))) {
+             cris_evaluate_flags(dc);
+             tcg_gen_movi_tl(env_pc, dc->pc);
+             t_gen_raise_exception(EXCP_DEBUG);
+@@ -3225,7 +3224,7 @@ void gen_intermediate_code(CPUCRISState *env, struct TranslationBlock *tb)
+ 
+         /* If we are rexecuting a branch due to exceptions on
+            delay slots don't break.  */
+-        if (!(tb->pc & 1) && cs->singlestep_enabled) {
++        if (!(tb->pc & 1) && cpu->singlestep_enabled) {
+             break;
+         }
+     } while (!dc->is_jmp && !dc->cpustate_changed
+@@ -3258,7 +3257,7 @@ void gen_intermediate_code(CPUCRISState *env, struct TranslationBlock *tb)
+ 
+     cris_evaluate_flags(dc);
+ 
+-    if (unlikely(cs->singlestep_enabled)) {
++    if (unlikely(cpu->singlestep_enabled)) {
+         if (dc->is_jmp == DISAS_NEXT) {
+             tcg_gen_movi_tl(env_pc, npc);
+         }
+@@ -3293,7 +3292,7 @@ void gen_intermediate_code(CPUCRISState *env, struct TranslationBlock *tb)
+         qemu_log_lock();
+         qemu_log("--------------\n");
+         qemu_log("IN: %s\n", lookup_symbol(pc_start));
+-        log_target_disas(cs, pc_start, dc->pc - pc_start,
++        log_target_disas(cpu, pc_start, dc->pc - pc_start,
+                          env->pregs[PR_VR]);
+         qemu_log("\nisize=%d osize=%d\n",
+                  dc->pc - pc_start, tcg_op_buf_count());
+diff --git a/target/i386/translate.c b/target/i386/translate.c
+index ed3b896db4..b94303ff10 100644
+--- a/target/i386/translate.c
++++ b/target/i386/translate.c
+@@ -8378,10 +8378,9 @@ void tcg_x86_init(void)
+ }
+ 
+ /* generate intermediate code for basic block 'tb'.  */
+-void gen_intermediate_code(CPUX86State *env, TranslationBlock *tb)
++void gen_intermediate_code(CPUState *cpu, TranslationBlock *tb)
+ {
+-    X86CPU *cpu = x86_env_get_cpu(env);
+-    CPUState *cs = CPU(cpu);
++    CPUX86State *env = cpu->env_ptr;
+     DisasContext dc1, *dc = &dc1;
+     target_ulong pc_ptr;
+     uint32_t flags;
+@@ -8404,7 +8403,7 @@ void gen_intermediate_code(CPUX86State *env, TranslationBlock *tb)
+     dc->cpl = (flags >> HF_CPL_SHIFT) & 3;
+     dc->iopl = (flags >> IOPL_SHIFT) & 3;
+     dc->tf = (flags >> TF_SHIFT) & 1;
+-    dc->singlestep_enabled = cs->singlestep_enabled;
++    dc->singlestep_enabled = cpu->singlestep_enabled;
+     dc->cc_op = CC_OP_DYNAMIC;
+     dc->cc_op_dirty = false;
+     dc->cs_base = cs_base;
+@@ -8426,7 +8425,7 @@ void gen_intermediate_code(CPUX86State *env, TranslationBlock *tb)
+     dc->code64 = (flags >> HF_CS64_SHIFT) & 1;
+ #endif
+     dc->flags = flags;
+-    dc->jmp_opt = !(dc->tf || cs->singlestep_enabled ||
++    dc->jmp_opt = !(dc->tf || cpu->singlestep_enabled ||
+                     (flags & HF_INHIBIT_IRQ_MASK));
+     /* Do not optimize repz jumps at all in icount mode, because
+        rep movsS instructions are execured with different paths
+@@ -8475,7 +8474,7 @@ void gen_intermediate_code(CPUX86State *env, TranslationBlock *tb)
+         num_insns++;
+ 
+         /* If RF is set, suppress an internally generated breakpoint.  */
+-        if (unlikely(cpu_breakpoint_test(cs, pc_ptr,
++        if (unlikely(cpu_breakpoint_test(cpu, pc_ptr,
+                                          tb->flags & HF_RF_MASK
+                                          ? BP_GDB : BP_ANY))) {
+             gen_debug(dc, pc_ptr - dc->cs_base);
+@@ -8551,7 +8550,7 @@ done_generating:
+         else
+ #endif
+             disas_flags = !dc->code32;
+-        log_target_disas(cs, pc_start, pc_ptr - pc_start, disas_flags);
++        log_target_disas(cpu, pc_start, pc_ptr - pc_start, disas_flags);
+         qemu_log("\n");
+         qemu_log_unlock();
+     }
+diff --git a/target/lm32/translate.c b/target/lm32/translate.c
+index 692882f447..0ac34fc620 100644
+--- a/target/lm32/translate.c
++++ b/target/lm32/translate.c
+@@ -1044,10 +1044,10 @@ static inline void decode(DisasContext *dc, uint32_t ir)
+ }
+ 
+ /* generate intermediate code for basic block 'tb'.  */
+-void gen_intermediate_code(CPULM32State *env, struct TranslationBlock *tb)
++void gen_intermediate_code(CPUState *cpu, struct TranslationBlock *tb)
+ {
+-    LM32CPU *cpu = lm32_env_get_cpu(env);
+-    CPUState *cs = CPU(cpu);
++    CPULM32State *env = cpu->env_ptr;
++    LM32CPU *lm32_cpu = lm32_env_get_cpu(env);
+     struct DisasContext ctx, *dc = &ctx;
+     uint32_t pc_start;
+     uint32_t next_page_start;
+@@ -1055,14 +1055,14 @@ void gen_intermediate_code(CPULM32State *env, struct TranslationBlock *tb)
+     int max_insns;
+ 
+     pc_start = tb->pc;
+-    dc->features = cpu->features;
+-    dc->num_breakpoints = cpu->num_breakpoints;
+-    dc->num_watchpoints = cpu->num_watchpoints;
++    dc->features = lm32_cpu->features;
++    dc->num_breakpoints = lm32_cpu->num_breakpoints;
++    dc->num_watchpoints = lm32_cpu->num_watchpoints;
+     dc->tb = tb;
+ 
+     dc->is_jmp = DISAS_NEXT;
+     dc->pc = pc_start;
+-    dc->singlestep_enabled = cs->singlestep_enabled;
++    dc->singlestep_enabled = cpu->singlestep_enabled;
+ 
+     if (pc_start & 3) {
+         qemu_log_mask(LOG_GUEST_ERROR,
+@@ -1085,7 +1085,7 @@ void gen_intermediate_code(CPULM32State *env, struct TranslationBlock *tb)
+         tcg_gen_insn_start(dc->pc);
+         num_insns++;
+ 
+-        if (unlikely(cpu_breakpoint_test(cs, dc->pc, BP_ANY))) {
++        if (unlikely(cpu_breakpoint_test(cpu, dc->pc, BP_ANY))) {
+             tcg_gen_movi_tl(cpu_pc, dc->pc);
+             t_gen_raise_exception(dc, EXCP_DEBUG);
+             dc->is_jmp = DISAS_UPDATE;
+@@ -1108,7 +1108,7 @@ void gen_intermediate_code(CPULM32State *env, struct TranslationBlock *tb)
+         dc->pc += 4;
+     } while (!dc->is_jmp
+          && !tcg_op_buf_full()
+-         && !cs->singlestep_enabled
++         && !cpu->singlestep_enabled
+          && !singlestep
+          && (dc->pc < next_page_start)
+          && num_insns < max_insns);
+@@ -1117,7 +1117,7 @@ void gen_intermediate_code(CPULM32State *env, struct TranslationBlock *tb)
+         gen_io_end();
+     }
+ 
+-    if (unlikely(cs->singlestep_enabled)) {
++    if (unlikely(cpu->singlestep_enabled)) {
+         if (dc->is_jmp == DISAS_NEXT) {
+             tcg_gen_movi_tl(cpu_pc, dc->pc);
+         }
+@@ -1150,7 +1150,7 @@ void gen_intermediate_code(CPULM32State *env, struct TranslationBlock *tb)
+         && qemu_log_in_addr_range(pc_start)) {
+         qemu_log_lock();
+         qemu_log("\n");
+-        log_target_disas(cs, pc_start, dc->pc - pc_start, 0);
++        log_target_disas(cpu, pc_start, dc->pc - pc_start, 0);
+         qemu_log("\nisize=%d osize=%d\n",
+                  dc->pc - pc_start, tcg_op_buf_count());
+         qemu_log_unlock();
+diff --git a/target/m68k/translate.c b/target/m68k/translate.c
+index ad4d4efb8d..0a3372818c 100644
+--- a/target/m68k/translate.c
++++ b/target/m68k/translate.c
+@@ -5039,10 +5039,9 @@ static void disas_m68k_insn(CPUM68KState * env, DisasContext *s)
+ }
+ 
+ /* generate intermediate code for basic block 'tb'.  */
+-void gen_intermediate_code(CPUM68KState *env, TranslationBlock *tb)
++void gen_intermediate_code(CPUState *cpu, TranslationBlock *tb)
+ {
+-    M68kCPU *cpu = m68k_env_get_cpu(env);
+-    CPUState *cs = CPU(cpu);
++    CPUM68KState *env = cpu->env_ptr;
+     DisasContext dc1, *dc = &dc1;
+     target_ulong pc_start;
+     int pc_offset;
+@@ -5059,7 +5058,7 @@ void gen_intermediate_code(CPUM68KState *env, TranslationBlock *tb)
+     dc->pc = pc_start;
+     dc->cc_op = CC_OP_DYNAMIC;
+     dc->cc_op_synced = 1;
+-    dc->singlestep_enabled = cs->singlestep_enabled;
++    dc->singlestep_enabled = cpu->singlestep_enabled;
+     dc->fpcr = env->fpcr;
+     dc->user = (env->sr & SR_S) == 0;
+     dc->done_mac = 0;
+@@ -5080,7 +5079,7 @@ void gen_intermediate_code(CPUM68KState *env, TranslationBlock *tb)
+         tcg_gen_insn_start(dc->pc, dc->cc_op);
+         num_insns++;
+ 
+-        if (unlikely(cpu_breakpoint_test(cs, dc->pc, BP_ANY))) {
++        if (unlikely(cpu_breakpoint_test(cpu, dc->pc, BP_ANY))) {
+             gen_exception(dc, dc->pc, EXCP_DEBUG);
+             dc->is_jmp = DISAS_JUMP;
+             /* The address covered by the breakpoint must be included in
+@@ -5098,14 +5097,14 @@ void gen_intermediate_code(CPUM68KState *env, TranslationBlock *tb)
+         dc->insn_pc = dc->pc;
+ 	disas_m68k_insn(env, dc);
+     } while (!dc->is_jmp && !tcg_op_buf_full() &&
+-             !cs->singlestep_enabled &&
++             !cpu->singlestep_enabled &&
+              !singlestep &&
+              (pc_offset) < (TARGET_PAGE_SIZE - 32) &&
+              num_insns < max_insns);
+ 
+     if (tb->cflags & CF_LAST_IO)
+         gen_io_end();
+-    if (unlikely(cs->singlestep_enabled)) {
++    if (unlikely(cpu->singlestep_enabled)) {
+         /* Make sure the pc is updated, and raise a debug exception.  */
+         if (!dc->is_jmp) {
+             update_cc_op(dc);
+@@ -5138,7 +5137,7 @@ void gen_intermediate_code(CPUM68KState *env, TranslationBlock *tb)
+         qemu_log_lock();
+         qemu_log("----------------\n");
+         qemu_log("IN: %s\n", lookup_symbol(pc_start));
+-        log_target_disas(cs, pc_start, dc->pc - pc_start, 0);
++        log_target_disas(cpu, pc_start, dc->pc - pc_start, 0);
+         qemu_log("\n");
+         qemu_log_unlock();
+     }
+diff --git a/target/microblaze/translate.c b/target/microblaze/translate.c
+index 0bb609513c..d5f499658d 100644
+--- a/target/microblaze/translate.c
++++ b/target/microblaze/translate.c
+@@ -1594,10 +1594,10 @@ static inline void decode(DisasContext *dc, uint32_t ir)
+ }
+ 
+ /* generate intermediate code for basic block 'tb'.  */
+-void gen_intermediate_code(CPUMBState *env, struct TranslationBlock *tb)
++void gen_intermediate_code(CPUState *cpu, struct TranslationBlock *tb)
+ {
+-    MicroBlazeCPU *cpu = mb_env_get_cpu(env);
+-    CPUState *cs = CPU(cpu);
++    CPUMBState *env = cpu->env_ptr;
++    MicroBlazeCPU *mb_cpu = mb_env_get_cpu(env);
+     uint32_t pc_start;
+     struct DisasContext ctx;
+     struct DisasContext *dc = &ctx;
+@@ -1607,7 +1607,7 @@ void gen_intermediate_code(CPUMBState *env, struct TranslationBlock *tb)
+     int max_insns;
+ 
+     pc_start = tb->pc;
+-    dc->cpu = cpu;
++    dc->cpu = mb_cpu;
+     dc->tb = tb;
+     org_flags = dc->synced_flags = dc->tb_flags = tb->flags;
+ 
+@@ -1618,13 +1618,13 @@ void gen_intermediate_code(CPUMBState *env, struct TranslationBlock *tb)
+         dc->jmp = JMP_INDIRECT;
+     }
+     dc->pc = pc_start;
+-    dc->singlestep_enabled = cs->singlestep_enabled;
++    dc->singlestep_enabled = cpu->singlestep_enabled;
+     dc->cpustate_changed = 0;
+     dc->abort_at_next_insn = 0;
+     dc->nr_nops = 0;
+ 
+     if (pc_start & 3) {
+-        cpu_abort(cs, "Microblaze: unaligned PC=%x\n", pc_start);
++        cpu_abort(cpu, "Microblaze: unaligned PC=%x\n", pc_start);
+     }
+ 
+     next_page_start = (pc_start & TARGET_PAGE_MASK) + TARGET_PAGE_SIZE;
+@@ -1650,7 +1650,7 @@ void gen_intermediate_code(CPUMBState *env, struct TranslationBlock *tb)
+         }
+ #endif
+ 
+-        if (unlikely(cpu_breakpoint_test(cs, dc->pc, BP_ANY))) {
++        if (unlikely(cpu_breakpoint_test(cpu, dc->pc, BP_ANY))) {
+             t_gen_raise_exception(dc, EXCP_DEBUG);
+             dc->is_jmp = DISAS_UPDATE;
+             /* The address covered by the breakpoint must be included in
+@@ -1707,7 +1707,7 @@ void gen_intermediate_code(CPUMBState *env, struct TranslationBlock *tb)
+                 break;
+             }
+         }
+-        if (cs->singlestep_enabled) {
++        if (cpu->singlestep_enabled) {
+             break;
+         }
+     } while (!dc->is_jmp && !dc->cpustate_changed
+@@ -1728,7 +1728,7 @@ void gen_intermediate_code(CPUMBState *env, struct TranslationBlock *tb)
+ 
+     if (tb->cflags & CF_LAST_IO)
+         gen_io_end();
+-    /* Force an update if the per-tb cpu state has changed.  */
++    /* Force an update if the per-tb mb_cpu state has changed.  */
+     if (dc->is_jmp == DISAS_NEXT
+         && (dc->cpustate_changed || org_flags != dc->tb_flags)) {
+         dc->is_jmp = DISAS_UPDATE;
+@@ -1736,7 +1736,7 @@ void gen_intermediate_code(CPUMBState *env, struct TranslationBlock *tb)
+     }
+     t_sync_flags(dc);
+ 
+-    if (unlikely(cs->singlestep_enabled)) {
++    if (unlikely(cpu->singlestep_enabled)) {
+         TCGv_i32 tmp = tcg_const_i32(EXCP_DEBUG);
+ 
+         if (dc->is_jmp != DISAS_JUMP) {
+@@ -1773,7 +1773,7 @@ void gen_intermediate_code(CPUMBState *env, struct TranslationBlock *tb)
+         qemu_log_lock();
+         qemu_log("--------------\n");
+ #if DISAS_GNU
+-        log_target_disas(cs, pc_start, dc->pc - pc_start, 0);
++        log_target_disas(cpu, pc_start, dc->pc - pc_start, 0);
+ #endif
+         qemu_log("\nisize=%d osize=%d\n",
+                  dc->pc - pc_start, tcg_op_buf_count());
+diff --git a/target/mips/translate.c b/target/mips/translate.c
+index 559f8fed89..1f9e02f426 100644
+--- a/target/mips/translate.c
++++ b/target/mips/translate.c
+@@ -19878,10 +19878,9 @@ static void decode_opc(CPUMIPSState *env, DisasContext *ctx)
+     }
+ }
+ 
+-void gen_intermediate_code(CPUMIPSState *env, struct TranslationBlock *tb)
++void gen_intermediate_code(CPUState *cpu, struct TranslationBlock *tb)
+ {
+-    MIPSCPU *cpu = mips_env_get_cpu(env);
+-    CPUState *cs = CPU(cpu);
++    CPUMIPSState *env = cpu->env_ptr;
+     DisasContext ctx;
+     target_ulong pc_start;
+     target_ulong next_page_start;
+@@ -19894,7 +19893,7 @@ void gen_intermediate_code(CPUMIPSState *env, struct TranslationBlock *tb)
+     next_page_start = (pc_start & TARGET_PAGE_MASK) + TARGET_PAGE_SIZE;
+     ctx.pc = pc_start;
+     ctx.saved_pc = -1;
+-    ctx.singlestep_enabled = cs->singlestep_enabled;
++    ctx.singlestep_enabled = cpu->singlestep_enabled;
+     ctx.insn_flags = env->insn_flags;
+     ctx.CP0_Config1 = env->CP0_Config1;
+     ctx.tb = tb;
+@@ -19941,7 +19940,7 @@ void gen_intermediate_code(CPUMIPSState *env, struct TranslationBlock *tb)
+         tcg_gen_insn_start(ctx.pc, ctx.hflags & MIPS_HFLAG_BMASK, ctx.btarget);
+         num_insns++;
+ 
+-        if (unlikely(cpu_breakpoint_test(cs, ctx.pc, BP_ANY))) {
++        if (unlikely(cpu_breakpoint_test(cpu, ctx.pc, BP_ANY))) {
+             save_cpu_state(&ctx, 1);
+             ctx.bstate = BS_BRANCH;
+             gen_helper_raise_exception_debug(cpu_env);
+@@ -19996,7 +19995,7 @@ void gen_intermediate_code(CPUMIPSState *env, struct TranslationBlock *tb)
+            This is what GDB expects and is consistent with what the
+            hardware does (e.g. if a delay slot instruction faults, the
+            reported PC is the PC of the branch).  */
+-        if (cs->singlestep_enabled && (ctx.hflags & MIPS_HFLAG_BMASK) == 0) {
++        if (cpu->singlestep_enabled && (ctx.hflags & MIPS_HFLAG_BMASK) == 0) {
+             break;
+         }
+ 
+@@ -20017,7 +20016,7 @@ void gen_intermediate_code(CPUMIPSState *env, struct TranslationBlock *tb)
+     if (tb->cflags & CF_LAST_IO) {
+         gen_io_end();
+     }
+-    if (cs->singlestep_enabled && ctx.bstate != BS_BRANCH) {
++    if (cpu->singlestep_enabled && ctx.bstate != BS_BRANCH) {
+         save_cpu_state(&ctx, ctx.bstate != BS_EXCP);
+         gen_helper_raise_exception_debug(cpu_env);
+     } else {
+@@ -20049,7 +20048,7 @@ done_generating:
+         && qemu_log_in_addr_range(pc_start)) {
+         qemu_log_lock();
+         qemu_log("IN: %s\n", lookup_symbol(pc_start));
+-        log_target_disas(cs, pc_start, ctx.pc - pc_start, 0);
++        log_target_disas(cpu, pc_start, ctx.pc - pc_start, 0);
+         qemu_log("\n");
+         qemu_log_unlock();
+     }
+diff --git a/target/moxie/translate.c b/target/moxie/translate.c
+index 0660b44c08..176063a1de 100644
+--- a/target/moxie/translate.c
++++ b/target/moxie/translate.c
+@@ -822,10 +822,10 @@ static int decode_opc(MoxieCPU *cpu, DisasContext *ctx)
+ }
+ 
+ /* generate intermediate code for basic block 'tb'.  */
+-void gen_intermediate_code(CPUMoxieState *env, struct TranslationBlock *tb)
++void gen_intermediate_code(CPUState *cpu, struct TranslationBlock *tb)
+ {
+-    MoxieCPU *cpu = moxie_env_get_cpu(env);
+-    CPUState *cs = CPU(cpu);
++    CPUMoxieState *env = cpu->env_ptr;
++    MoxieCPU *moxie_cpu = moxie_env_get_cpu(env);
+     DisasContext ctx;
+     target_ulong pc_start;
+     int num_insns, max_insns;
+@@ -851,7 +851,7 @@ void gen_intermediate_code(CPUMoxieState *env, struct TranslationBlock *tb)
+         tcg_gen_insn_start(ctx.pc);
+         num_insns++;
+ 
+-        if (unlikely(cpu_breakpoint_test(cs, ctx.pc, BP_ANY))) {
++        if (unlikely(cpu_breakpoint_test(cpu, ctx.pc, BP_ANY))) {
+             tcg_gen_movi_i32(cpu_pc, ctx.pc);
+             gen_helper_debug(cpu_env);
+             ctx.bstate = BS_EXCP;
+@@ -864,12 +864,12 @@ void gen_intermediate_code(CPUMoxieState *env, struct TranslationBlock *tb)
+         }
+ 
+         ctx.opcode = cpu_lduw_code(env, ctx.pc);
+-        ctx.pc += decode_opc(cpu, &ctx);
++        ctx.pc += decode_opc(moxie_cpu, &ctx);
+ 
+         if (num_insns >= max_insns) {
+             break;
+         }
+-        if (cs->singlestep_enabled) {
++        if (cpu->singlestep_enabled) {
+             break;
+         }
+         if ((ctx.pc & (TARGET_PAGE_SIZE - 1)) == 0) {
+@@ -877,7 +877,7 @@ void gen_intermediate_code(CPUMoxieState *env, struct TranslationBlock *tb)
+         }
+     } while (ctx.bstate == BS_NONE && !tcg_op_buf_full());
+ 
+-    if (cs->singlestep_enabled) {
++    if (cpu->singlestep_enabled) {
+         tcg_gen_movi_tl(cpu_pc, ctx.pc);
+         gen_helper_debug(cpu_env);
+     } else {
+diff --git a/target/openrisc/translate.c b/target/openrisc/translate.c
+index e49518e893..aaac359d5b 100644
+--- a/target/openrisc/translate.c
++++ b/target/openrisc/translate.c
+@@ -1518,9 +1518,10 @@ static void disas_openrisc_insn(DisasContext *dc, OpenRISCCPU *cpu)
+     }
+ }
+ 
+-void gen_intermediate_code(CPUOpenRISCState *env, struct TranslationBlock *tb)
++void gen_intermediate_code(CPUState *cpu, struct TranslationBlock *tb)
+ {
+-    OpenRISCCPU *cpu = openrisc_env_get_cpu(env);
++    OpenRISCState *env = cpu->env_ptr;
++    OpenRISCCPU *or_cpu = openrisc_env_get_cpu(env);
+     CPUState *cs = CPU(cpu);
+     struct DisasContext ctx, *dc = &ctx;
+     uint32_t pc_start;
+@@ -1533,10 +1534,10 @@ void gen_intermediate_code(CPUOpenRISCState *env, struct TranslationBlock *tb)
+ 
+     dc->is_jmp = DISAS_NEXT;
+     dc->pc = pc_start;
+-    dc->mem_idx = cpu_mmu_index(&cpu->env, false);
++    dc->mem_idx = cpu_mmu_index(&or_cpu->env, false);
+     dc->tb_flags = tb->flags;
+     dc->delayed_branch = (dc->tb_flags & TB_FLAGS_DFLAG) != 0;
+-    dc->singlestep_enabled = cs->singlestep_enabled;
++    dc->singlestep_enabled = cpu->singlestep_enabled;
+ 
+     next_page_start = (pc_start & TARGET_PAGE_MASK) + TARGET_PAGE_SIZE;
+     num_insns = 0;
+@@ -1571,7 +1572,7 @@ void gen_intermediate_code(CPUOpenRISCState *env, struct TranslationBlock *tb)
+ 			   | (num_insns ? 2 : 0));
+         num_insns++;
+ 
+-        if (unlikely(cpu_breakpoint_test(cs, dc->pc, BP_ANY))) {
++        if (unlikely(cpu_breakpoint_test(cpu, dc->pc, BP_ANY))) {
+             tcg_gen_movi_tl(cpu_pc, dc->pc);
+             gen_exception(dc, EXCP_DEBUG);
+             dc->is_jmp = DISAS_UPDATE;
+@@ -1586,7 +1587,7 @@ void gen_intermediate_code(CPUOpenRISCState *env, struct TranslationBlock *tb)
+         if (num_insns == max_insns && (tb->cflags & CF_LAST_IO)) {
+             gen_io_start();
+         }
+-        disas_openrisc_insn(dc, cpu);
++        disas_openrisc_insn(dc, or_cpu);
+         dc->pc = dc->pc + 4;
+ 
+         /* delay slot */
+@@ -1601,7 +1602,7 @@ void gen_intermediate_code(CPUOpenRISCState *env, struct TranslationBlock *tb)
+         }
+     } while (!dc->is_jmp
+              && !tcg_op_buf_full()
+-             && !cs->singlestep_enabled
++             && !cpu->singlestep_enabled
+              && !singlestep
+              && (dc->pc < next_page_start)
+              && num_insns < max_insns);
+@@ -1619,7 +1620,7 @@ void gen_intermediate_code(CPUOpenRISCState *env, struct TranslationBlock *tb)
+         dc->is_jmp = DISAS_UPDATE;
+         tcg_gen_movi_tl(cpu_pc, dc->pc);
+     }
+-    if (unlikely(cs->singlestep_enabled)) {
++    if (unlikely(cpu->singlestep_enabled)) {
+         gen_exception(dc, EXCP_DEBUG);
+     } else {
+         switch (dc->is_jmp) {
+@@ -1647,7 +1648,7 @@ void gen_intermediate_code(CPUOpenRISCState *env, struct TranslationBlock *tb)
+ 
+     if (qemu_loglevel_mask(CPU_LOG_TB_IN_ASM)
+         && qemu_log_in_addr_range(pc_start)) {
+-        log_target_disas(cs, pc_start, tb->size, 0);
++        log_target_disas(cpu, pc_start, tb->size, 0);
+         qemu_log("\n");
+         qemu_log_unlock();
+     }
+diff --git a/target/ppc/translate.c b/target/ppc/translate.c
+index c0cd64d927..9a934117d8 100644
+--- a/target/ppc/translate.c
++++ b/target/ppc/translate.c
+@@ -7203,10 +7203,9 @@ void ppc_cpu_dump_statistics(CPUState *cs, FILE*f,
+ }
+ 
+ /*****************************************************************************/
+-void gen_intermediate_code(CPUPPCState *env, struct TranslationBlock *tb)
++void gen_intermediate_code(CPUState *cpu, struct TranslationBlock *tb)
+ {
+-    PowerPCCPU *cpu = ppc_env_get_cpu(env);
+-    CPUState *cs = CPU(cpu);
++    CPUPPCState *env = cpu->env_ptr;
+     DisasContext ctx, *ctxp = &ctx;
+     opc_handler_t **table, *handler;
+     target_ulong pc_start;
+@@ -7267,7 +7266,7 @@ void gen_intermediate_code(CPUPPCState *env, struct TranslationBlock *tb)
+         ctx.singlestep_enabled = 0;
+     if ((env->flags & POWERPC_FLAG_BE) && msr_be)
+         ctx.singlestep_enabled |= CPU_BRANCH_STEP;
+-    if (unlikely(cs->singlestep_enabled)) {
++    if (unlikely(cpu->singlestep_enabled)) {
+         ctx.singlestep_enabled |= GDBSTUB_SINGLE_STEP;
+     }
+ #if defined (DO_SINGLE_STEP) && 0
+@@ -7290,7 +7289,7 @@ void gen_intermediate_code(CPUPPCState *env, struct TranslationBlock *tb)
+         tcg_gen_insn_start(ctx.nip);
+         num_insns++;
+ 
+-        if (unlikely(cpu_breakpoint_test(cs, ctx.nip, BP_ANY))) {
++        if (unlikely(cpu_breakpoint_test(cpu, ctx.nip, BP_ANY))) {
+             gen_debug_exception(ctxp);
+             /* The address covered by the breakpoint must be included in
+                [tb->pc, tb->pc + tb->size) in order to for it to be
+@@ -7369,7 +7368,7 @@ void gen_intermediate_code(CPUPPCState *env, struct TranslationBlock *tb)
+                      ctx.exception != POWERPC_EXCP_BRANCH)) {
+             gen_exception_nip(ctxp, POWERPC_EXCP_TRACE, ctx.nip);
+         } else if (unlikely(((ctx.nip & (TARGET_PAGE_SIZE - 1)) == 0) ||
+-                            (cs->singlestep_enabled) ||
++                            (cpu->singlestep_enabled) ||
+                             singlestep ||
+                             num_insns >= max_insns)) {
+             /* if we reach a page boundary or are single stepping, stop
+@@ -7389,7 +7388,7 @@ void gen_intermediate_code(CPUPPCState *env, struct TranslationBlock *tb)
+     if (ctx.exception == POWERPC_EXCP_NONE) {
+         gen_goto_tb(&ctx, 0, ctx.nip);
+     } else if (ctx.exception != POWERPC_EXCP_BRANCH) {
+-        if (unlikely(cs->singlestep_enabled)) {
++        if (unlikely(cpu->singlestep_enabled)) {
+             gen_debug_exception(ctxp);
+         }
+         /* Generate the return instruction */
+@@ -7408,7 +7407,7 @@ void gen_intermediate_code(CPUPPCState *env, struct TranslationBlock *tb)
+         flags |= ctx.le_mode << 16;
+         qemu_log_lock();
+         qemu_log("IN: %s\n", lookup_symbol(pc_start));
+-        log_target_disas(cs, pc_start, ctx.nip - pc_start, flags);
++        log_target_disas(cpu, pc_start, ctx.nip - pc_start, flags);
+         qemu_log("\n");
+         qemu_log_unlock();
+     }
+diff --git a/target/s390x/translate.c b/target/s390x/translate.c
+index 8c055b7bb7..684ae4ce2f 100644
+--- a/target/s390x/translate.c
++++ b/target/s390x/translate.c
+@@ -5708,10 +5708,9 @@ static ExitStatus translate_one(CPUS390XState *env, DisasContext *s)
+     return ret;
+ }
+ 
+-void gen_intermediate_code(CPUS390XState *env, struct TranslationBlock *tb)
++void gen_intermediate_code(CPUState *cpu, struct TranslationBlock *tb)
+ {
+-    S390CPU *cpu = s390_env_get_cpu(env);
+-    CPUState *cs = CPU(cpu);
++    CPUS390XState *env = cpu->env_ptr;
+     DisasContext dc;
+     target_ulong pc_start;
+     uint64_t next_page_start;
+@@ -5730,7 +5729,7 @@ void gen_intermediate_code(CPUS390XState *env, struct TranslationBlock *tb)
+     dc.pc = pc_start;
+     dc.cc_op = CC_OP_DYNAMIC;
+     dc.ex_value = tb->cs_base;
+-    do_debug = dc.singlestep_enabled = cs->singlestep_enabled;
++    do_debug = dc.singlestep_enabled = cpu->singlestep_enabled;
+ 
+     next_page_start = (pc_start & TARGET_PAGE_MASK) + TARGET_PAGE_SIZE;
+ 
+@@ -5749,7 +5748,7 @@ void gen_intermediate_code(CPUS390XState *env, struct TranslationBlock *tb)
+         tcg_gen_insn_start(dc.pc, dc.cc_op);
+         num_insns++;
+ 
+-        if (unlikely(cpu_breakpoint_test(cs, dc.pc, BP_ANY))) {
++        if (unlikely(cpu_breakpoint_test(cpu, dc.pc, BP_ANY))) {
+             status = EXIT_PC_STALE;
+             do_debug = true;
+             /* The address covered by the breakpoint must be included in
+@@ -5773,7 +5772,7 @@ void gen_intermediate_code(CPUS390XState *env, struct TranslationBlock *tb)
+                 || tcg_op_buf_full()
+                 || num_insns >= max_insns
+                 || singlestep
+-                || cs->singlestep_enabled
++                || cpu->singlestep_enabled
+                 || dc.ex_value)) {
+             status = EXIT_PC_STALE;
+         }
+@@ -5823,7 +5822,7 @@ void gen_intermediate_code(CPUS390XState *env, struct TranslationBlock *tb)
+             qemu_log("IN: EXECUTE %016" PRIx64 "\n", dc.ex_value);
+         } else {
+             qemu_log("IN: %s\n", lookup_symbol(pc_start));
+-            log_target_disas(cs, pc_start, dc.pc - pc_start, 1);
++            log_target_disas(cpu, pc_start, dc.pc - pc_start, 1);
+             qemu_log("\n");
+         }
+         qemu_log_unlock();
+diff --git a/target/sh4/translate.c b/target/sh4/translate.c
+index 8bc132b27b..6a797072d4 100644
+--- a/target/sh4/translate.c
++++ b/target/sh4/translate.c
+@@ -1815,10 +1815,9 @@ static void decode_opc(DisasContext * ctx)
+     }
+ }
+ 
+-void gen_intermediate_code(CPUSH4State * env, struct TranslationBlock *tb)
++void gen_intermediate_code(CPUState *cpu, struct TranslationBlock *tb)
+ {
+-    SuperHCPU *cpu = sh_env_get_cpu(env);
+-    CPUState *cs = CPU(cpu);
++    CPUSH4State *env = cpu->env_ptr;
+     DisasContext ctx;
+     target_ulong pc_start;
+     int num_insns;
+@@ -1834,7 +1833,7 @@ void gen_intermediate_code(CPUSH4State * env, struct TranslationBlock *tb)
+        so assume it is a dynamic branch.  */
+     ctx.delayed_pc = -1; /* use delayed pc from env pointer */
+     ctx.tb = tb;
+-    ctx.singlestep_enabled = cs->singlestep_enabled;
++    ctx.singlestep_enabled = cpu->singlestep_enabled;
+     ctx.features = env->features;
+     ctx.has_movcal = (ctx.tbflags & TB_FLAG_PENDING_MOVCA);
+ 
+@@ -1852,7 +1851,7 @@ void gen_intermediate_code(CPUSH4State * env, struct TranslationBlock *tb)
+         tcg_gen_insn_start(ctx.pc, ctx.envflags);
+         num_insns++;
+ 
+-        if (unlikely(cpu_breakpoint_test(cs, ctx.pc, BP_ANY))) {
++        if (unlikely(cpu_breakpoint_test(cpu, ctx.pc, BP_ANY))) {
+             /* We have hit a breakpoint - make sure PC is up-to-date */
+             gen_save_cpu_state(&ctx, true);
+             gen_helper_debug(cpu_env);
+@@ -1874,7 +1873,7 @@ void gen_intermediate_code(CPUSH4State * env, struct TranslationBlock *tb)
+ 	ctx.pc += 2;
+ 	if ((ctx.pc & (TARGET_PAGE_SIZE - 1)) == 0)
+ 	    break;
+-        if (cs->singlestep_enabled) {
++        if (cpu->singlestep_enabled) {
+ 	    break;
+         }
+         if (num_insns >= max_insns)
+@@ -1884,7 +1883,7 @@ void gen_intermediate_code(CPUSH4State * env, struct TranslationBlock *tb)
+     }
+     if (tb->cflags & CF_LAST_IO)
+         gen_io_end();
+-    if (cs->singlestep_enabled) {
++    if (cpu->singlestep_enabled) {
+         gen_save_cpu_state(&ctx, true);
+         gen_helper_debug(cpu_env);
+     } else {
+@@ -1915,7 +1914,7 @@ void gen_intermediate_code(CPUSH4State * env, struct TranslationBlock *tb)
+         && qemu_log_in_addr_range(pc_start)) {
+         qemu_log_lock();
+ 	qemu_log("IN:\n");	/* , lookup_symbol(pc_start)); */
+-        log_target_disas(cs, pc_start, ctx.pc - pc_start, 0);
++        log_target_disas(cpu, pc_start, ctx.pc - pc_start, 0);
+ 	qemu_log("\n");
+         qemu_log_unlock();
+     }
+diff --git a/target/sparc/translate.c b/target/sparc/translate.c
+index aa6734d54e..90c43e4460 100644
+--- a/target/sparc/translate.c
++++ b/target/sparc/translate.c
+@@ -5747,10 +5747,9 @@ static void disas_sparc_insn(DisasContext * dc, unsigned int insn)
+     }
+ }
+ 
+-void gen_intermediate_code(CPUSPARCState * env, TranslationBlock * tb)
++void gen_intermediate_code(CPUState *cpu, TranslationBlock * tb)
+ {
+-    SPARCCPU *cpu = sparc_env_get_cpu(env);
+-    CPUState *cs = CPU(cpu);
++    CPUSPARCState *env = cpu->env_ptr;
+     target_ulong pc_start, last_pc;
+     DisasContext dc1, *dc = &dc1;
+     int num_insns;
+@@ -5768,7 +5767,7 @@ void gen_intermediate_code(CPUSPARCState * env, TranslationBlock * tb)
+     dc->def = env->def;
+     dc->fpu_enabled = tb_fpu_enabled(tb->flags);
+     dc->address_mask_32bit = tb_am_enabled(tb->flags);
+-    dc->singlestep = (cs->singlestep_enabled || singlestep);
++    dc->singlestep = (cpu->singlestep_enabled || singlestep);
+ #ifndef CONFIG_USER_ONLY
+     dc->supervisor = (tb->flags & TB_FLAG_SUPER) != 0;
+ #endif
+@@ -5800,7 +5799,7 @@ void gen_intermediate_code(CPUSPARCState * env, TranslationBlock * tb)
+         num_insns++;
+         last_pc = dc->pc;
+ 
+-        if (unlikely(cpu_breakpoint_test(cs, dc->pc, BP_ANY))) {
++        if (unlikely(cpu_breakpoint_test(cpu, dc->pc, BP_ANY))) {
+             if (dc->pc != pc_start) {
+                 save_state(dc);
+             }
+@@ -5864,7 +5863,7 @@ void gen_intermediate_code(CPUSPARCState * env, TranslationBlock * tb)
+         qemu_log_lock();
+         qemu_log("--------------\n");
+         qemu_log("IN: %s\n", lookup_symbol(pc_start));
+-        log_target_disas(cs, pc_start, last_pc + 4 - pc_start, 0);
++        log_target_disas(cpu, pc_start, last_pc + 4 - pc_start, 0);
+         qemu_log("\n");
+         qemu_log_unlock();
+     }
+diff --git a/target/tilegx/translate.c b/target/tilegx/translate.c
+index ff2ef7b63d..a86e9e9d22 100644
+--- a/target/tilegx/translate.c
++++ b/target/tilegx/translate.c
+@@ -2370,12 +2370,11 @@ static void translate_one_bundle(DisasContext *dc, uint64_t bundle)
+     }
+ }
+ 
+-void gen_intermediate_code(CPUTLGState *env, struct TranslationBlock *tb)
++void gen_intermediate_code(CPUState *cpu, struct TranslationBlock *tb)
+ {
+-    TileGXCPU *cpu = tilegx_env_get_cpu(env);
++    CPUTLGState *env = cpu->env_ptr;
+     DisasContext ctx;
+     DisasContext *dc = &ctx;
+-    CPUState *cs = CPU(cpu);
+     uint64_t pc_start = tb->pc;
+     uint64_t next_page_start = (pc_start & TARGET_PAGE_MASK) + TARGET_PAGE_SIZE;
+     int num_insns = 0;
+@@ -2397,7 +2396,7 @@ void gen_intermediate_code(CPUTLGState *env, struct TranslationBlock *tb)
+     if (!max_insns) {
+         max_insns = CF_COUNT_MASK;
+     }
+-    if (cs->singlestep_enabled || singlestep) {
++    if (cpu->singlestep_enabled || singlestep) {
+         max_insns = 1;
+     }
+     if (max_insns > TCG_MAX_INSNS) {
+diff --git a/target/tricore/translate.c b/target/tricore/translate.c
+index ddd2dd07dd..1930da2f2a 100644
+--- a/target/tricore/translate.c
++++ b/target/tricore/translate.c
+@@ -8782,10 +8782,9 @@ static void decode_opc(CPUTriCoreState *env, DisasContext *ctx, int *is_branch)
+     }
+ }
+ 
+-void gen_intermediate_code(CPUTriCoreState *env, struct TranslationBlock *tb)
++void gen_intermediate_code(CPUState *cpu, struct TranslationBlock *tb)
+ {
+-    TriCoreCPU *cpu = tricore_env_get_cpu(env);
+-    CPUState *cs = CPU(cpu);
++    CPUTriCoreState *env = cpu->env_ptr;
+     DisasContext ctx;
+     target_ulong pc_start;
+     int num_insns, max_insns;
+@@ -8806,7 +8805,7 @@ void gen_intermediate_code(CPUTriCoreState *env, struct TranslationBlock *tb)
+     ctx.pc = pc_start;
+     ctx.saved_pc = -1;
+     ctx.tb = tb;
+-    ctx.singlestep_enabled = cs->singlestep_enabled;
++    ctx.singlestep_enabled = cpu->singlestep_enabled;
+     ctx.bstate = BS_NONE;
+     ctx.mem_idx = cpu_mmu_index(env, false);
+ 
+@@ -8840,7 +8839,7 @@ void gen_intermediate_code(CPUTriCoreState *env, struct TranslationBlock *tb)
+         && qemu_log_in_addr_range(pc_start)) {
+         qemu_log_lock();
+         qemu_log("IN: %s\n", lookup_symbol(pc_start));
+-        log_target_disas(cs, pc_start, ctx.pc - pc_start, 0);
++        log_target_disas(cpu, pc_start, ctx.pc - pc_start, 0);
+         qemu_log("\n");
+         qemu_log_unlock();
+     }
+diff --git a/target/unicore32/translate.c b/target/unicore32/translate.c
+index 666a2016a8..494ed58c10 100644
+--- a/target/unicore32/translate.c
++++ b/target/unicore32/translate.c
+@@ -1869,10 +1869,9 @@ static void disas_uc32_insn(CPUUniCore32State *env, DisasContext *s)
+ }
+ 
+ /* generate intermediate code for basic block 'tb'.  */
+-void gen_intermediate_code(CPUUniCore32State *env, TranslationBlock *tb)
++void gen_intermediate_code(CPUState *cpu, TranslationBlock *tb)
+ {
+-    UniCore32CPU *cpu = uc32_env_get_cpu(env);
+-    CPUState *cs = CPU(cpu);
++    CPUUniCore32State *env = cpu->env_ptr;
+     DisasContext dc1, *dc = &dc1;
+     target_ulong pc_start;
+     uint32_t next_page_start;
+@@ -1888,7 +1887,7 @@ void gen_intermediate_code(CPUUniCore32State *env, TranslationBlock *tb)
+ 
+     dc->is_jmp = DISAS_NEXT;
+     dc->pc = pc_start;
+-    dc->singlestep_enabled = cs->singlestep_enabled;
++    dc->singlestep_enabled = cpu->singlestep_enabled;
+     dc->condjmp = 0;
+     cpu_F0s = tcg_temp_new_i32();
+     cpu_F1s = tcg_temp_new_i32();
+@@ -1917,7 +1916,7 @@ void gen_intermediate_code(CPUUniCore32State *env, TranslationBlock *tb)
+         tcg_gen_insn_start(dc->pc);
+         num_insns++;
+ 
+-        if (unlikely(cpu_breakpoint_test(cs, dc->pc, BP_ANY))) {
++        if (unlikely(cpu_breakpoint_test(cpu, dc->pc, BP_ANY))) {
+             gen_set_pc_im(dc->pc);
+             gen_exception(EXCP_DEBUG);
+             dc->is_jmp = DISAS_JUMP;
+@@ -1949,7 +1948,7 @@ void gen_intermediate_code(CPUUniCore32State *env, TranslationBlock *tb)
+          * Also stop translation when a page boundary is reached.  This
+          * ensures prefetch aborts occur at the right place.  */
+     } while (!dc->is_jmp && !tcg_op_buf_full() &&
+-             !cs->singlestep_enabled &&
++             !cpu->singlestep_enabled &&
+              !singlestep &&
+              dc->pc < next_page_start &&
+              num_insns < max_insns);
+@@ -1958,7 +1957,7 @@ void gen_intermediate_code(CPUUniCore32State *env, TranslationBlock *tb)
+         if (dc->condjmp) {
+             /* FIXME:  This can theoretically happen with self-modifying
+                code.  */
+-            cpu_abort(cs, "IO on conditional branch instruction");
++            cpu_abort(cpu, "IO on conditional branch instruction");
+         }
+         gen_io_end();
+     }
+@@ -1966,7 +1965,7 @@ void gen_intermediate_code(CPUUniCore32State *env, TranslationBlock *tb)
+     /* At this stage dc->condjmp will only be set when the skipped
+        instruction was a conditional branch or trap, and the PC has
+        already been written.  */
+-    if (unlikely(cs->singlestep_enabled)) {
++    if (unlikely(cpu->singlestep_enabled)) {
+         /* Make sure the pc is updated, and raise a debug exception.  */
+         if (dc->condjmp) {
+             if (dc->is_jmp == DISAS_SYSCALL) {
+@@ -2027,7 +2026,7 @@ done_generating:
+         qemu_log_lock();
+         qemu_log("----------------\n");
+         qemu_log("IN: %s\n", lookup_symbol(pc_start));
+-        log_target_disas(cs, pc_start, dc->pc - pc_start, 0);
++        log_target_disas(cpu, pc_start, dc->pc - pc_start, 0);
+         qemu_log("\n");
+         qemu_log_unlock();
+     }
+diff --git a/target/xtensa/translate.c b/target/xtensa/translate.c
+index 263002486c..63e4f25c08 100644
+--- a/target/xtensa/translate.c
++++ b/target/xtensa/translate.c
+@@ -3117,10 +3117,9 @@ static void gen_ibreak_check(CPUXtensaState *env, DisasContext *dc)
+     }
+ }
+ 
+-void gen_intermediate_code(CPUXtensaState *env, TranslationBlock *tb)
++void gen_intermediate_code(CPUState *cpu, TranslationBlock *tb)
+ {
+-    XtensaCPU *cpu = xtensa_env_get_cpu(env);
+-    CPUState *cs = CPU(cpu);
++    CPUXtensaState *env = cpu->env_ptr;
+     DisasContext dc;
+     int insn_count = 0;
+     int max_insns = tb->cflags & CF_COUNT_MASK;
+@@ -3136,7 +3135,7 @@ void gen_intermediate_code(CPUXtensaState *env, TranslationBlock *tb)
+     }
+ 
+     dc.config = env->config;
+-    dc.singlestep_enabled = cs->singlestep_enabled;
++    dc.singlestep_enabled = cpu->singlestep_enabled;
+     dc.tb = tb;
+     dc.pc = pc_start;
+     dc.ring = tb->flags & XTENSA_TBFLAG_RING_MASK;
+@@ -3179,7 +3178,7 @@ void gen_intermediate_code(CPUXtensaState *env, TranslationBlock *tb)
+         tcg_gen_insn_start(dc.pc);
+         ++insn_count;
+ 
+-        if (unlikely(cpu_breakpoint_test(cs, dc.pc, BP_ANY))) {
++        if (unlikely(cpu_breakpoint_test(cpu, dc.pc, BP_ANY))) {
+             tcg_gen_movi_i32(cpu_pc, dc.pc);
+             gen_exception(&dc, EXCP_DEBUG);
+             dc.is_jmp = DISAS_UPDATE;
+@@ -3215,7 +3214,7 @@ void gen_intermediate_code(CPUXtensaState *env, TranslationBlock *tb)
+         if (dc.icount) {
+             tcg_gen_mov_i32(cpu_SR[ICOUNT], dc.next_icount);
+         }
+-        if (cs->singlestep_enabled) {
++        if (cpu->singlestep_enabled) {
+             tcg_gen_movi_i32(cpu_pc, dc.pc);
+             gen_exception(&dc, EXCP_DEBUG);
+             break;
+@@ -3247,7 +3246,7 @@ done:
+         qemu_log_lock();
+         qemu_log("----------------\n");
+         qemu_log("IN: %s\n", lookup_symbol(pc_start));
+-        log_target_disas(cs, pc_start, dc.pc - pc_start, 0);
++        log_target_disas(cpu, pc_start, dc.pc - pc_start, 0);
+         qemu_log("\n");
+         qemu_log_unlock();
+     }
+diff --git a/translate-all.c b/translate-all.c
+index b3ee876526..e5de5cace9 100644
+--- a/translate-all.c
++++ b/translate-all.c
+@@ -1292,7 +1292,7 @@ TranslationBlock *tb_gen_code(CPUState *cpu,
+     tcg_func_start(&tcg_ctx);
+ 
+     tcg_ctx.cpu = ENV_GET_CPU(env);
+-    gen_intermediate_code(env, tb);
++    gen_intermediate_code(cpu, tb);
+     tcg_ctx.cpu = NULL;
+ 
+     trace_translate_block(tb, tb->pc, tb->tc_ptr);

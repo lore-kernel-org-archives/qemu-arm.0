@@ -1,146 +1,238 @@
-Received: by 10.25.15.197 with SMTP id 66csp1728576lfp;
-        Mon, 26 Jun 2017 14:08:05 -0700 (PDT)
-X-Received: by 10.55.159.8 with SMTP id i8mr2721809qke.27.1498511285456;
-        Mon, 26 Jun 2017 14:08:05 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1498511285; cv=none;
+Received: by 10.25.15.197 with SMTP id 66csp1746488lfp;
+        Mon, 26 Jun 2017 14:30:37 -0700 (PDT)
+X-Received: by 10.99.247.83 with SMTP id f19mr2053646pgk.190.1498512637586;
+        Mon, 26 Jun 2017 14:30:37 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1498512637; cv=none;
         d=google.com; s=arc-20160816;
-        b=AtQ14x4p33itidR5RVvcWKqQS/WakGl9OKEvSNqpSH3Xi3NOxN1WvnM4m67OhDc0u4
-         Lkj4MgfjVBCj1wUtrcDRoqntLLyIT8qTRmJNcEfFTySlphGSFKYTxB2LZOD7GNJhhYYB
-         rj4VOZKRAKwC7QcQp1r92eFOzWhRL0DZD8GoxW6kR44MjYlgWDAsy7AGaBWwY4syPqEt
-         yDTUtZZfHOklCKdFSyIBBIatO5hHmjip3HNxFb66Wz8Lf3O3rksBix+aVx5bNgy1znOo
-         Q8M9pYKQO+QH1GFvefLy+CDv2WfzIfJqZJliR47odKVWgnxGqsICDCNQ2D8uWLxRpDGZ
-         kQ4Q==
+        b=OLIVFqePx55du7tooMT0xc3Uu8gQzJeo+dg+JiLaNf1bBaBvyGaEZ4l81m/PUEXGzx
+         JiQfqQt8Rs+zNgHb96e0yXdfmghPS2tEWm4XLTKB/8PBifY3gNau8N6KVjO/FvChI2y7
+         sw/HlnQALZoKoRptwOINzOUCFhnhL+iXmTeUfXtw8GV0L9DnbMn7cK1fiGHwteY61FeR
+         N1iZ0VhiXb8DTaelh0n7OkgJwb7aLMQtvvb0RTSFBM0CPxY9hYwK5kmTnnFbYAiv4M7r
+         VexHZUiG+KsWfR5pQEI58Ao1YrQFbeNlNdIL5O7s+i2b+hgGlZk6QXqY7oYswRkHfjql
+         1dBg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:to:dkim-signature
+        h=list-id:precedence:sender:message-id:date:subject:cc:to:from
          :arc-authentication-results;
-        bh=81r4OwjB5XDB6IfwuRKiSZDeni4EatqFnphCkYWUPV8=;
-        b=lCed6by1kinkAszuWxA+CPie/i1PBcLoYJSm++OGwFys0Mv1BbCwxmAj4wghew2Ylt
-         IWIorih5f0/xB8ClSip74xqh/nPMN5a2hY0ch+eAXJ9ZPYjdIGXuDXtGQ391VuVLQ4PJ
-         xlYIRZoSqbJHl3ErNQkyyuqSpJpAmO+VBY/wfGnNhmaZ0L/2OJCxNhorh+eHNml3Tulc
-         txWAsWmo/Dy4gWnUfLbcPcK5gY1BpqUlv8OozuvxfTxjDj5SgfTanlo7XwM/iCmqFr4S
-         KltuLTGKOTtnh1pWa8bZ/0ClxM9gqAs4vBd0+sdfVUo7Dnj1rEZ6XwfBtPYy93bN05pY
-         bq6Q==
+        bh=WOKDhk3V5tKJVaBNsKLSUBiAaXay5rlNS+PADza9FVE=;
+        b=vw7dypMd+1oyMOFcszctYWcaOVBk9yuwGeLJ4SYGeXVOlSPShOmf8xDSsAFUvFO68x
+         PP1AnuytXhP+B5+usDZGo1Jzl9WTuxl4CS5IXfqg21O4tjOStBKXf1Ohwymdp6WmF39p
+         w9sNHTpFpZVdtbOnkf1He03ExJ9ueu9Z9lCCeF9HklxGk6rz7Yl6IMz3vhGzL8H/kldj
+         gQDP4ySoQ/hQHyyoqe4Q1+IR+ryhh3ADcQHjfzDiPI7Ig0O2wQccY+AYhU3szZXReX+0
+         ynCi/yGljG6CApWHHoLXz5jafK5S8Gk5eoLrKIOQbHIQP57QS84IqO5ZNkNuHOfusXF3
+         EyaQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.b=bdjcLi1z;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id l2si243299qkd.274.2017.06.26.14.08.04
-        for <alex.bennee@linaro.org>
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 26 Jun 2017 14:08:05 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
+Return-Path: <kvm-owner@vger.kernel.org>
+Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
+        by mx.google.com with ESMTP id n12si672614pgs.521.2017.06.26.14.30.37;
+        Mon, 26 Jun 2017 14:30:37 -0700 (PDT)
+Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.b=bdjcLi1z;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:48562 helo=lists.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1dPbEo-0002Lt-PB
-	for alex.bennee@linaro.org; Mon, 26 Jun 2017 17:08:02 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:37844)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <rth7680@gmail.com>) id 1dPbEg-0002K0-5Z
-	for qemu-arm@nongnu.org; Mon, 26 Jun 2017 17:07:55 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <rth7680@gmail.com>) id 1dPbEf-0007C5-DM
-	for qemu-arm@nongnu.org; Mon, 26 Jun 2017 17:07:54 -0400
-Received: from mail-qk0-x243.google.com ([2607:f8b0:400d:c09::243]:32972)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <rth7680@gmail.com>)
-	id 1dPbEa-00078V-7c; Mon, 26 Jun 2017 17:07:48 -0400
-Received: by mail-qk0-x243.google.com with SMTP id p21so1706195qke.0;
-	Mon, 26 Jun 2017 14:07:46 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=sender:subject:to:cc:references:from:message-id:date:user-agent
-	:mime-version:in-reply-to:content-language:content-transfer-encoding;
-	bh=81r4OwjB5XDB6IfwuRKiSZDeni4EatqFnphCkYWUPV8=;
-	b=bdjcLi1zQe9HmnvtYEJa2qStq/52YGGTzI7SC4+zU1SblNI/14X9enDujvYtcBtqfn
-	fO1qoKU5kpaUNbL0FxNG40FF9Hne7MomUZEQtAyDBnIC+29DiAKkQ6kWWVLJfIzgANvw
-	Y954yyS4fgddPdv67PO4YjcnLL306KaiSVtk7P++QhPxl5/y106g9GutlEe0pzvcg0fb
-	AbtfpU1FahaW6d8q6bAUDJdW4U9NoofS4wXJz+L/AIrvflp/JGlGIIDYNPr1Tgs9V7oc
-	ORgMJYxSlUEyo8pdsDRh/ESeNWBo3IJTL+gDHFZso1h+llqmWK5R62R1TXSzmJniGmnG
-	gXdQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
-	:date:user-agent:mime-version:in-reply-to:content-language
-	:content-transfer-encoding;
-	bh=81r4OwjB5XDB6IfwuRKiSZDeni4EatqFnphCkYWUPV8=;
-	b=WUrIeon30vBXsOu+YcBh3ZFRxcnuk8K6iHCRozjq681LiMOQTX0oIRyTNDgpSQ3KIq
-	N+E26ivyqezXiBOPC+cLlWjqcqq36k2G2KEjN/C61gQKmlsYR/sAVn+vgu6RDAOM/5dx
-	x8gcyDxmVWdwYCvwV3oD2MEUsbRAzi4O8ZT62PGlzDcVvbM1t0cf9YwCrrvNlOIolvI5
-	5I/u6EqB9nHElNLR59L5NvtJGaPMsEz8d+UH0G9x/nECHWdRiuBa3FPoN7d+FABgOIxx
-	egDvFzOh+VtPidOxwAGEMOVeY0ug4NSd+ghAmqBUlRJjW92A/MxAHukg3ST1Y2FGFXzk
-	m7CA==
-X-Gm-Message-State: AKS2vOyKacuQEWhgw/AJmBn6evtrEQ3h7Xor/mRikh1PUmBDNKTKloEL
-	FHEHSKHVNrO1dA==
-X-Received: by 10.55.220.133 with SMTP id v127mr2835952qki.42.1498511266251;
-	Mon, 26 Jun 2017 14:07:46 -0700 (PDT)
-Received: from bigtime.twiddle.net (97-113-165-157.tukw.qwest.net.
-	[97.113.165.157]) by smtp.googlemail.com with ESMTPSA id
-	h68sm844593qkb.47.2017.06.26.14.07.42
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Mon, 26 Jun 2017 14:07:44 -0700 (PDT)
-To: "Emilio G. Cota" <cota@braap.org>, qemu-devel@nongnu.org
-References: <1497639397-19453-1-git-send-email-cota@braap.org>
-From: Richard Henderson <rth@twiddle.net>
-Message-ID: <ee142dc2-9d34-169a-af1e-f24d2e211286@twiddle.net>
-Date: Mon, 26 Jun 2017 14:07:40 -0700
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.2.0
-MIME-Version: 1.0
-In-Reply-To: <1497639397-19453-1-git-send-email-cota@braap.org>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:400d:c09::243
-Subject: Re: [Qemu-arm] [PATCH v2 0/2] cpu_env in gen-icount
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.21
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
-	Anthony Green <green@moxielogic.com>,
-	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
-	Max Filippov <jcmvbkbc@gmail.com>, Guan Xuetao <gxt@mprc.pku.edu.cn>,
-	=?UTF-8?Q?Llu=c3=ads_Vilanova?= <vilanova@ac.upc.edu>,
-	Marek Vasut <marex@denx.de>, Alexander Graf <agraf@suse.de>,
-	Artyom Tarasenko <atar4qemu@gmail.com>,
-	Eduardo Habkost <ehabkost@redhat.com>, qemu-arm@nongnu.org,
-	Yongbok Kim <yongbok.kim@imgtec.com>, Stafford Horne <shorne@gmail.com>,
-	David Gibson <david@gibson.dropbear.id.au>,
-	Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
-	Chris Wulff <crwulff@gmail.com>, Laurent Vivier <laurent@vivier.eu>,
-	Michael Walle <michael@walle.cc>, qemu-ppc@nongnu.org,
-	Paolo Bonzini <pbonzini@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: D3C7nY2SK3yU
+       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
+Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
+        id S1751493AbdFZVaf (ORCPT <rfc822;francois.ozog@linaro.org>
+        + 6 others); Mon, 26 Jun 2017 17:30:35 -0400
+Received: from mx2.suse.de ([195.135.220.15]:42952 "EHLO mx1.suse.de"
+        rhost-flags-OK-OK-OK-FAIL) by vger.kernel.org with ESMTP
+        id S1751381AbdFZVae (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Mon, 26 Jun 2017 17:30:34 -0400
+X-Virus-Scanned: by amavisd-new at test-mx.suse.de
+Received: from relay2.suse.de (charybdis-ext.suse.de [195.135.220.254])
+        by mx1.suse.de (Postfix) with ESMTP id 70566AC2F;
+        Mon, 26 Jun 2017 21:30:33 +0000 (UTC)
+From:   Alexander Graf <agraf@suse.de>
+To:     qemu-devel@nongnu.org
+Cc:     qemu-arm@nongnu.org, kvm@vger.kernel.org,
+        Peter Maydell <peter.maydell@linaro.org>,
+        Andrew Jones <drjones@redhat.com>, cdall@linaro.org,
+        Paolo Bonzini <pbonzini@redhat.com>
+Subject: [PATCH] ARM: KVM: Enable in-kernel timers with user space gic
+Date:   Mon, 26 Jun 2017 23:30:56 +0200
+Message-Id: <1498512656-75289-1-git-send-email-agraf@suse.de>
+X-Mailer: git-send-email 1.8.5.6
+Sender: kvm-owner@vger.kernel.org
+Precedence: bulk
+List-ID: <kvm.vger.kernel.org>
+X-Mailing-List: kvm@vger.kernel.org
+X-TUID: SbJN29a76wys
 
-On 06/16/2017 11:56 AM, Emilio G. Cota wrote:
-> v1: https://lists.gnu.org/archive/html/qemu-devel/2017-06/msg03771.html
-> 
-> Changes from v1:
-> 
-> - Use tcg_ctx.tcg_env instead of passing cpu_env around as suggested
->    by Richard.
-> - Added Richard's R-b tag to patch 1.
+When running with KVM enabled, you can choose between emulating the
+gic in kernel or user space. If the kernel supports in-kernel virtualization
+of the interrupt controller, it will default to that. If not, if will
+default to user space emulation.
 
-Applied to the tcg queue.
+Unfortunately when running in user mode gic emulation, we miss out on
+interrupt events which are only available from kernel space, such as the timer.
+This patch leverages the new kernel/user space pending line synchronization for
+timer events. It does not handle PMU events yet.
 
+Signed-off-by: Alexander Graf <agraf@suse.de>
+---
+ accel/kvm/kvm-all.c    |  5 +++++
+ accel/stubs/kvm-stub.c |  5 +++++
+ hw/intc/arm_gic.c      |  7 +++++++
+ include/sysemu/kvm.h   | 11 +++++++++++
+ target/arm/cpu.h       |  3 +++
+ target/arm/kvm.c       | 49 +++++++++++++++++++++++++++++++++++++++++++++++++
+ 6 files changed, 80 insertions(+)
 
-r~
-
+diff --git a/accel/kvm/kvm-all.c b/accel/kvm/kvm-all.c
+index 75feffa..ade32ea 100644
+--- a/accel/kvm/kvm-all.c
++++ b/accel/kvm/kvm-all.c
+@@ -2285,6 +2285,11 @@ int kvm_has_intx_set_mask(void)
+     return kvm_state->intx_set_mask;
+ }
+ 
++bool kvm_arm_supports_user_irq(void)
++{
++    return kvm_check_extension(kvm_state, KVM_CAP_ARM_USER_IRQ);
++}
++
+ #ifdef KVM_CAP_SET_GUEST_DEBUG
+ struct kvm_sw_breakpoint *kvm_find_sw_breakpoint(CPUState *cpu,
+                                                  target_ulong pc)
+diff --git a/accel/stubs/kvm-stub.c b/accel/stubs/kvm-stub.c
+index ef0c734..3965c52 100644
+--- a/accel/stubs/kvm-stub.c
++++ b/accel/stubs/kvm-stub.c
+@@ -155,4 +155,9 @@ void kvm_init_cpu_signals(CPUState *cpu)
+ {
+     abort();
+ }
++
++bool kvm_arm_supports_user_irq(void)
++{
++    return false;
++}
+ #endif
+diff --git a/hw/intc/arm_gic.c b/hw/intc/arm_gic.c
+index b305d90..4ffd905 100644
+--- a/hw/intc/arm_gic.c
++++ b/hw/intc/arm_gic.c
+@@ -25,6 +25,7 @@
+ #include "qom/cpu.h"
+ #include "qemu/log.h"
+ #include "trace.h"
++#include "sysemu/kvm.h"
+ 
+ /* #define DEBUG_GIC */
+ 
+@@ -1412,6 +1413,12 @@ static void arm_gic_realize(DeviceState *dev, Error **errp)
+         return;
+     }
+ 
++    if (kvm_enabled() && !kvm_arm_supports_user_irq()) {
++            error_setg(errp, "KVM with user space irqchip only works when the "
++                             "host kernel supports KVM_CAP_ARM_USER_IRQ");
++            return;
++    }
++
+     /* This creates distributor and main CPU interface (s->cpuiomem[0]) */
+     gic_init_irqs_and_mmio(s, gic_set_irq, gic_ops);
+ 
+diff --git a/include/sysemu/kvm.h b/include/sysemu/kvm.h
+index 1e91613..9f11fc0 100644
+--- a/include/sysemu/kvm.h
++++ b/include/sysemu/kvm.h
+@@ -227,6 +227,17 @@ int kvm_init_vcpu(CPUState *cpu);
+ int kvm_cpu_exec(CPUState *cpu);
+ int kvm_destroy_vcpu(CPUState *cpu);
+ 
++/**
++ * kvm_arm_supports_user_irq
++ *
++ * Not all KVM implementations support notifications for kernel generated
++ * interrupt events to user space. This function indicates whether the current
++ * KVM implementation does support them.
++ *
++ * Returns: true if KVM supports using kernel generated IRQs from user space
++ */
++bool kvm_arm_supports_user_irq(void);
++
+ #ifdef NEED_CPU_H
+ #include "cpu.h"
+ 
+diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+index 16a1e59..88ec3ee 100644
+--- a/target/arm/cpu.h
++++ b/target/arm/cpu.h
+@@ -706,6 +706,9 @@ struct ARMCPU {
+     void *el_change_hook_opaque;
+ 
+     int32_t node_id; /* NUMA node this CPU belongs to */
++
++    /* Used to synchronize KVM and QEMU timer levels */
++    uint8_t device_irq_level;
+ };
+ 
+ static inline ARMCPU *arm_env_get_cpu(CPUARMState *env)
+diff --git a/target/arm/kvm.c b/target/arm/kvm.c
+index 4555468..29ee72d 100644
+--- a/target/arm/kvm.c
++++ b/target/arm/kvm.c
+@@ -174,6 +174,12 @@ int kvm_arch_init(MachineState *ms, KVMState *s)
+      */
+     kvm_async_interrupts_allowed = true;
+ 
++    /*
++     * PSCI wakes up secondary cores, so we always need to
++     * have vCPUs waiting in kernel space
++     */
++    kvm_halt_in_kernel_allowed = true;
++
+     cap_has_mp_state = kvm_check_extension(s, KVM_CAP_MP_STATE);
+ 
+     type_register_static(&host_arm_cpu_type_info);
+@@ -528,6 +534,49 @@ void kvm_arch_pre_run(CPUState *cs, struct kvm_run *run)
+ 
+ MemTxAttrs kvm_arch_post_run(CPUState *cs, struct kvm_run *run)
+ {
++    ARMCPU *cpu;
++    uint32_t switched_level;
++
++    if (kvm_irqchip_in_kernel()) {
++        /*
++         * We only need to sync timer states with user-space interrupt
++         * controllers, so return early and save cycles if we don't.
++         */
++        return MEMTXATTRS_UNSPECIFIED;
++    }
++
++    cpu = ARM_CPU(cs);
++
++    /* Synchronize our internal timer irq lines with the kvm ones */
++    if (run->s.regs.device_irq_level != cpu->device_irq_level) {
++        switched_level = cpu->device_irq_level ^ run->s.regs.device_irq_level;
++
++        qemu_mutex_lock_iothread();
++
++        if (switched_level & KVM_ARM_DEV_EL1_VTIMER) {
++            qemu_set_irq(cpu->gt_timer_outputs[GTIMER_VIRT],
++                         run->s.regs.device_irq_level & KVM_ARM_DEV_EL1_VTIMER);
++            switched_level &= ~KVM_ARM_DEV_EL1_VTIMER;
++        }
++
++        if (switched_level & KVM_ARM_DEV_EL1_PTIMER) {
++            qemu_set_irq(cpu->gt_timer_outputs[GTIMER_PHYS],
++                         run->s.regs.device_irq_level & KVM_ARM_DEV_EL1_PTIMER);
++            switched_level &= ~KVM_ARM_DEV_EL1_PTIMER;
++        }
++
++        /* XXX PMU IRQ is missing */
++
++        if (switched_level) {
++            qemu_log_mask(LOG_UNIMP, "%s: unhandled device IRQ %x\n",
++                          __func__, switched_level);
++        }
++
++        /* We also mark unknown levels as processed to not waste cycles */
++        cpu->device_irq_level = run->s.regs.device_irq_level;
++        qemu_mutex_unlock_iothread();
++    }
++
+     return MEMTXATTRS_UNSPECIFIED;
+ }
+ 
+-- 
+1.8.5.6

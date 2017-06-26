@@ -1,171 +1,340 @@
-Received: by 10.25.15.197 with SMTP id 66csp631191lfp;
-        Sat, 24 Jun 2017 07:20:13 -0700 (PDT)
-X-Received: by 10.84.140.133 with SMTP id 5mr14906782plt.224.1498314013315;
-        Sat, 24 Jun 2017 07:20:13 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1498314013; cv=none;
+Received: by 10.25.15.197 with SMTP id 66csp1260619lfp;
+        Mon, 26 Jun 2017 00:55:06 -0700 (PDT)
+X-Received: by 10.237.51.6 with SMTP id u6mr5578552qtd.181.1498463706538;
+        Mon, 26 Jun 2017 00:55:06 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1498463706; cv=none;
         d=google.com; s=arc-20160816;
-        b=0xUSKHkUz54mUFu/QKCMW6lHW/wWyDCWUpWYsaf6FgMrJd/2srHh94Hqk2A0+SnYOe
-         WT9od/T/OvfW+kByki6a7lBeVUVoL2scdPA0oQqjkiusYpmJbVDYkpCSnOR+5ExJgz/o
-         /wad9jNSAw6lQuoKyx3TD8iVmG6RyXZc9vKlkjeFCrxDwfXQrzS1e1jq6l89qUm7RddO
-         PQtdVRUYg7cXHdQr/rCa0gnBBgdrYw56OMntSYrdS7DpYM+nmbtUEY08WwgdMXMtgBCQ
-         9AeOadYeWxe3hmB3kROjkqAOIgNzFyAFf5Btwrne1aYvp0V+h+8VLFh8oHxgb8w1jm4m
-         C9IQ==
+        b=rZFWO32YnX18pUiKZDDOZPsRLUDj8gelZ09Feb+knK2R6wi9lu1xuMPFzBjOky+tlq
+         TlrVZM3sgPxqFaLB61Gb1k9/Hn8TrD3VLN34oPIUR9R9CDxC/Jr/vkNjwQcudHid+x4l
+         XacTD7dQ943kAGYKMJ9si80M5cnRdF53f1mTwCzVuRL2xhLbf7GLHPt3fYdfilckHRjr
+         ZfBuARzB5S1z1+l/y/JHurl0g51hNJxHWIgYAfmjTdpK29fOVEIdr3/g/dUPFCpBFBN9
+         rSjQrgQIVaEOKkRn9ViEeVq0J8e6c+WN7anqCo/xCyi1xT363TSn8G2evgtz2hwYuF1i
+         01Pw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-id:precedence:sender:cc:to:subject:message-id:date:from
-         :references:in-reply-to:mime-version:dkim-signature
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:dkim-filter:dmarc-filter
          :arc-authentication-results;
-        bh=eKM7YItq6Na7E7Y1XY8np2Oefjx0SyI86VJBEIhSEOA=;
-        b=vMV2I3q3TxaS32qNCCwjHNWWe5UdglzJstrO0il6lrS1r6JlS38pLaj/9IOESy6jwK
-         nWyVHMfQCxU/99ozcGQcn2MhVm3zkbn4zbmiFpsTUbYVyw7o0udNNitLQBBuBXMi5/Fe
-         ATolyXfjbV/ikLSqB1OSH9N4bm5nXxUiPREDGjm0OkoRdXdhtXyMOrP7i2Lh6a6+jDqE
-         rlPhWfVmD6u4usVNwFQV7ujTCq4XXDzIbq1aTZqYAwtJfiiCpGv2LXKEGa2irzUHAyMA
-         UONLSRnvlZ61c9pDw06Nm236GLKmjOLuT5sLonTSlfTzsxZK6BTGrvKtnbEP18/iDQRT
-         vWJQ==
+        bh=WQuRykMwwEzTd7NuGBS+4mG4JFHEWZYvO3ZkGzN6uNc=;
+        b=UKsW7ctmPAl/9OEjWX1vBlEkpM/tEYhQ92U2CMlZr9QHev9roap2unhiqkCE5f0CDi
+         fXaaC2+QW1EkZGoYax/hvhNl25xtgIEcgrW2fnEQQdgbpQfN+tDOPBGT4mtjkpxR0Qke
+         jUUE5J752ENGJGOHIl0xzcdsWQby0U+glkT1473fQMED82szvTunfc8dmQnCL2HX8Jwk
+         /EFdhvFObbBFHr0oNiEuqW9vh7vVMtZZWRX5hklsCjdoASv/CgOCEKiDc7QtqieUGzEI
+         r57tN9luDalYYiLZFojw5Nj8VLc21qTV/e/darPD+LLb/KjN2bVtCudQ/pn1+guaRUsG
+         on3g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.b=Z4DW9g7B;
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Return-Path: <kvm-owner@vger.kernel.org>
-Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
-        by mx.google.com with ESMTP id u3si6043027plb.242.2017.06.24.07.20.12;
-        Sat, 24 Jun 2017 07:20:13 -0700 (PDT)
-Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
+        by mx.google.com with ESMTPS id u18si10866570qtu.232.2017.06.26.00.55.05
+        for <alex.bennee@linaro.org>
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Mon, 26 Jun 2017 00:55:06 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.b=Z4DW9g7B;
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S1751384AbdFXOUK (ORCPT <rfc822;francois.ozog@linaro.org>
-        + 6 others); Sat, 24 Jun 2017 10:20:10 -0400
-Received: from mail-yb0-f194.google.com ([209.85.213.194]:34637 "EHLO
-        mail-yb0-f194.google.com" rhost-flags-OK-OK-OK-OK) by vger.kernel.org
-        with ESMTP id S1751313AbdFXOUJ (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Sat, 24 Jun 2017 10:20:09 -0400
-Received: by mail-yb0-f194.google.com with SMTP id b189so181962yba.1
-        for <kvm@vger.kernel.org>; Sat, 24 Jun 2017 07:20:09 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-         :cc;
-        bh=eKM7YItq6Na7E7Y1XY8np2Oefjx0SyI86VJBEIhSEOA=;
-        b=Z4DW9g7BN/7LgKj0FsH3wVz9Q+oPjR1NclK1MWJBISDp4KLS2PsZOzPIcWKvjDAB8I
-         1m2fZa0z5oboovl0bxFfpKewooIzilyvw+eIL8gDGCPDHLnJndinLHFcLOIPej4sMdwJ
-         eM/e3uwnigsTUjI613BVdQq+24T9c3ROXM1ceNTC8cw16xTfqR/dDHE9H63LC+IUWgBL
-         7sQxW1GCuwhonKfS7y5aftg7k/Yp1PF7oy7bvsSs1ggfUj16FM9y13LNi8wLcZwgYAet
-         tJSszxb+q1SjL9PftC1/q62t6rnmYLK9SJHW44vEpyhgMu2WIax9BH01ooRHtIlMA0Uv
-         x61g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-         :message-id:subject:to:cc;
-        bh=eKM7YItq6Na7E7Y1XY8np2Oefjx0SyI86VJBEIhSEOA=;
-        b=L8OuMWGsFRiE4xJ1w7sBZ3TWZ3luVZ6AOSGz3cJcDYyY8Ju23fde8zG2Gzmb3pDnYr
-         c/O4TT6PlSJzSyliCXIxI+Oa4X5cgsm1Uw053ePE/IfysTDJ1YB5aNN6xBfcSgNcSrJG
-         U7LtNK75CSTlYOj2qsa3qCo1UA1i523YOA7f6Wj+wNh52cWGNe+JZ87PqXxVdWDRMw+q
-         agCnI+BT+u12/ANgIiDXz2U3ObBAaHaPjcR41WFozz4WpvpajQObNruzB4ZIZoy0+TLL
-         Gna/HZbwmJxHWkBWX7MFj31gM797y8aBtZ3o1mLwZ1j4RVils/0EP7yhbA3X61JlzRGl
-         91/w==
-X-Gm-Message-State: AKS2vOwTvWiEQx8tvQhNxP6YI2ZqKHg636kJfG/SfV/yyyjsbAUc6g/D
-        ughxGNxDZUyqc7DBtXK5djCHr5leGQ==
-X-Received: by 10.37.204.138 with SMTP id l132mr9278932ybf.176.1498314008438;
- Sat, 24 Jun 2017 07:20:08 -0700 (PDT)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:45114 helo=lists.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1dPOrP-0006GP-KR
+	for alex.bennee@linaro.org; Mon, 26 Jun 2017 03:55:03 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:59835)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <eric.auger@redhat.com>) id 1dPOrF-0006G8-Qe
+	for qemu-arm@nongnu.org; Mon, 26 Jun 2017 03:54:55 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+	(envelope-from <eric.auger@redhat.com>) id 1dPOrC-0004hm-M3
+	for qemu-arm@nongnu.org; Mon, 26 Jun 2017 03:54:53 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:32900)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <eric.auger@redhat.com>)
+	id 1dPOrC-0004gt-Bl; Mon, 26 Jun 2017 03:54:50 -0400
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
+	[10.5.11.12])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id C538F81241;
+	Mon, 26 Jun 2017 07:54:47 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com C538F81241
+Authentication-Results: ext-mx01.extmail.prod.ext.phx2.redhat.com;
+	dmarc=none (p=none dis=none) header.from=redhat.com
+Authentication-Results: ext-mx01.extmail.prod.ext.phx2.redhat.com;
+	spf=pass smtp.mailfrom=eric.auger@redhat.com
+DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com C538F81241
+Received: from localhost.localdomain (ovpn-116-31.ams2.redhat.com
+	[10.36.116.31])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 10BC47FCDA;
+	Mon, 26 Jun 2017 07:54:36 +0000 (UTC)
+To: Bharat Bhushan <bharat.bhushan@nxp.com>,
+	"eric.auger.pro@gmail.com" <eric.auger.pro@gmail.com>,
+	"peter.maydell@linaro.org" <peter.maydell@linaro.org>,
+	"alex.williamson@redhat.com" <alex.williamson@redhat.com>,
+	"mst@redhat.com" <mst@redhat.com>, "qemu-arm@nongnu.org"
+	<qemu-arm@nongnu.org>, "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, 
+	"jean-philippe.brucker@arm.com" <jean-philippe.brucker@arm.com>
+References: <1496851287-9428-1-git-send-email-eric.auger@redhat.com>
+	<AM5PR0401MB2545AFD256A96420ACC44CD89ACE0@AM5PR0401MB2545.eurprd04.prod.outlook.com>
+	<14c83c14-1e7e-f142-77b0-fa8c873e2d41@redhat.com>
+	<AM5PR0401MB2545C0E76C4BE6F82FE376D09ACE0@AM5PR0401MB2545.eurprd04.prod.outlook.com>
+	<6f22079e-4b4b-6476-77be-51ec83104c0d@redhat.com>
+	<AM5PR0401MB25459FDAA8C9AFA52503AAE99AC40@AM5PR0401MB2545.eurprd04.prod.outlook.com>
+From: Auger Eric <eric.auger@redhat.com>
+Message-ID: <c80977c4-1955-4e9d-3fc8-4d884562fd28@redhat.com>
+Date: Mon, 26 Jun 2017 09:54:35 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
+	Thunderbird/45.4.0
 MIME-Version: 1.0
-Received: by 10.129.156.205 with HTTP; Sat, 24 Jun 2017 07:20:07 -0700 (PDT)
-In-Reply-To: <e90c5fb8-e68b-a620-9023-f4fcfdd68e97@redhat.com>
-References: <1493530506-26833-1-git-send-email-gengdongjiu@huawei.com>
- <4dde45bb-a730-82b1-dc49-ad00a6b73d85@redhat.com> <accf8880-f4b0-85f1-9f33-4103c8c26d7a@redhat.com>
- <e90c5fb8-e68b-a620-9023-f4fcfdd68e97@redhat.com>
-From:   gengdongjiu <gengdj.1984@gmail.com>
-Date:   Sat, 24 Jun 2017 22:20:07 +0800
-Message-ID: <CAMj-D2DvCXd9TLM5+6OT=aUN1fV3vt1Uyni0PDFQstJmf+HiRg@mail.gmail.com>
-Subject: Re: [Qemu-devel] [PATCH v3 1/4] ACPI: Add APEI GHES Table Generation support
-To:     Laszlo Ersek <lersek@redhat.com>
-Cc:     Dongjiu Geng <gengdongjiu@huawei.com>, mtsirkin@redhat.com,
-        kvm@vger.kernel.org, tbaicar@codeaurora.org, qemu-devel@nongnu.org,
-        kvmarm@lists.cs.columbia.edu, ben@skyportsystems.com,
-        linux@armlinux.org.uk, wangxiongfeng2@huawei.com,
-        huangshaoyu@huawei.com, songwenjun@huawei.com,
-        wuquanming@huawei.com, marc.zyngier@arm.com, qemu-arm@nongnu.org,
-        imammedo@redhat.com, linux-arm-kernel@lists.infradead.org,
-        ard.biesheuvel@linaro.org, pbonzini@redhat.com
-Content-Type: text/plain; charset="UTF-8"
-Sender: kvm-owner@vger.kernel.org
-Precedence: bulk
-List-ID: <kvm.vger.kernel.org>
-X-Mailing-List: kvm@vger.kernel.org
-X-TUID: gHdTzpp5N40p
+In-Reply-To: <AM5PR0401MB25459FDAA8C9AFA52503AAE99AC40@AM5PR0401MB2545.eurprd04.prod.outlook.com>
+Content-Type: text/plain; charset=windows-1252
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.25]);
+	Mon, 26 Jun 2017 07:54:48 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-arm] [Qemu-devel] [RFC v2 0/8] VIRTIO-IOMMU device
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.21
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: "kevin.tian@intel.com" <kevin.tian@intel.com>,
+	"marc.zyngier@arm.com" <marc.zyngier@arm.com>,
+	"tn@semihalf.com" <tn@semihalf.com>,
+	"will.deacon@arm.com" <will.deacon@arm.com>,
+	"drjones@redhat.com" <drjones@redhat.com>,
+	"robin.murphy@arm.com" <robin.murphy@arm.com>,
+	"christoffer.dall@linaro.org" <christoffer.dall@linaro.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 7nrRml16+8kZ
 
-Laszlo,
+Hi Bharat,
 
-  Thank you very much  for your carefully review again and again. I am
-following your suggestion.
+On 19/06/2017 09:54, Bharat Bhushan wrote:
+> Hi Eric,
+> 
+> I started added replay in virtio-iommu and came across how MSI interrupts with work with VFIO. 
+> I understand that on intel this works differently but vsmmu will have same requirement. 
+> kvm-msi-irq-route are added using the msi-address to be translated by viommu and not the final translated address.
+> While currently the irqfd framework does not know about emulated iommus (virtio-iommu, vsmmuv3/vintel-iommu).
+> So in my view we have following options:
+> - Programming with translated address when setting up kvm-msi-irq-route
+> - Route the interrupts via QEMU, which is bad from performance
+> - vhost-virtio-iommu may solve the problem in long term
 
+Sorry for the delay. With regard to the vsmmuv3/vfio integration I think
+we need to use the guest physical address otherwise the MSI address will
+not be recognized as an MSI doorbell.
 
-2017-06-03 20:01 GMT+08:00, Laszlo Ersek <lersek@redhat.com>:
-> On 05/22/17 16:23, Laszlo Ersek wrote:
->> Keeping some context:
->>
->> On 05/12/17 23:00, Laszlo Ersek wrote:
->>> On 04/30/17 07:35, Dongjiu Geng wrote:
->
->> (68) In the code below, you are not taking an "OVMF header probe
->> suppressor" into account.
->>
->> But, we have already planned to replace that quirk with a separate,
->> dedicated allocation hint or command, so I'm not going to describe what
->> an "OVMF header probe suppressor" is; instead, I'll describe the
->> replacement for it.
->>
->> [...]
->
-> So, the NOACPI allocation hint is a no-go at the moment, based on the
-> discussion in the following threads:
->
-> http://mid.mail-archive.com/20170601112241.2580-1-ard.biesheuvel@linaro.org
->
-> http://mid.mail-archive.com/c76b36de-ebf9-c662-d454-0a95b43901e8@redhat.com
->
-> Therefore the header probe suppression remains necessary.
->
-> In this case, it is not hard to do, you just have to reorder the
-> following two ADD_POINTER additions a bit:
->
->>>> +
->>>> +        bios_linker_loader_add_pointer(linker,
->>>> GHES_ERRORS_FW_CFG_FILE,
->>>> +                                sizeof(uint64_t) * i,
->>>> sizeof(uint64_t),
->>>> +                                GHES_ERRORS_FW_CFG_FILE,
->>>> +                                MAX_ERROR_SOURCE_COUNT_V6 *
->>>> sizeof(uint64_t) +
->>>> +                                i * MAX_RAW_DATA_LENGTH);
->
-> This one should be moved out to a separate loop, after the current loop.
->
->>>> +        bios_linker_loader_add_pointer(linker, ACPI_BUILD_TABLE_FILE,
->>>> +                    address_registers_offset
->>>> +                    + i * sizeof(AcpiGenericHardwareErrorSource),
->>>> +                    sizeof(uint32_t), GHES_ERRORS_FW_CFG_FILE,
->>>> +                    i * sizeof(uint64_t));
->
-> This one should be kept in the first (i.e., current) loop.
->
-> The idea is, when you first point the HEST/GHES_n entries in
-> ACPI_BUILD_TABLE_FILE to the "address registers" in
-> GHES_ERRORS_FW_CFG_FILE, all those address registers will still be
-> zero-filled. This will fail the ACPI table header probe in
-> OvmfPkg/AcpiPlatformDxe, which is what we want.
->
-> After this is done, the address registers in GHES_ERRORS_FW_CFG_FILE
-> should be pointed to the error status data blocks in the same fw_cfg
-> blob, in a separate loop. (Those error status data blocks will again be
-> zero-filled, so no ACPI table headers will be mistakenly recognized in
-> them.)
->
+Also the fact on ARM we map the MSI doorbell causes an assert in
+vfio_get_vaddr() as the vITS doorbell is not a RAM region. We will need
+to handle this specifically.
+
+Besides I have not looked specifically at the virtio-iommu/vfio
+integration yet.
+
+Thanks
+
+Eric
+> 
+> Is there any other better option I am missing?
+> 
 > Thanks
-> Laszlo
-> _______________________________________________
-> kvmarm mailing list
-> kvmarm@lists.cs.columbia.edu
-> https://lists.cs.columbia.edu/mailman/listinfo/kvmarm
->
+> -Bharat
+> 
+>> -----Original Message-----
+>> From: Auger Eric [mailto:eric.auger@redhat.com]
+>> Sent: Friday, June 09, 2017 5:24 PM
+>> To: Bharat Bhushan <bharat.bhushan@nxp.com>;
+>> eric.auger.pro@gmail.com; peter.maydell@linaro.org;
+>> alex.williamson@redhat.com; mst@redhat.com; qemu-arm@nongnu.org;
+>> qemu-devel@nongnu.org; jean-philippe.brucker@arm.com
+>> Cc: wei@redhat.com; kevin.tian@intel.com; marc.zyngier@arm.com;
+>> tn@semihalf.com; will.deacon@arm.com; drjones@redhat.com;
+>> robin.murphy@arm.com; christoffer.dall@linaro.org
+>> Subject: Re: [Qemu-devel] [RFC v2 0/8] VIRTIO-IOMMU device
+>>
+>> Hi Bharat,
+>>
+>> On 09/06/2017 13:30, Bharat Bhushan wrote:
+>>> Hi Eric,
+>>>
+>>>> -----Original Message-----
+>>>> From: Auger Eric [mailto:eric.auger@redhat.com]
+>>>> Sent: Friday, June 09, 2017 12:14 PM
+>>>> To: Bharat Bhushan <bharat.bhushan@nxp.com>;
+>>>> eric.auger.pro@gmail.com; peter.maydell@linaro.org;
+>>>> alex.williamson@redhat.com; mst@redhat.com; qemu-arm@nongnu.org;
+>>>> qemu-devel@nongnu.org; jean-philippe.brucker@arm.com
+>>>> Cc: will.deacon@arm.com; robin.murphy@arm.com;
+>> kevin.tian@intel.com;
+>>>> marc.zyngier@arm.com; christoffer.dall@linaro.org;
+>>>> drjones@redhat.com; wei@redhat.com; tn@semihalf.com
+>>>> Subject: Re: [RFC v2 0/8] VIRTIO-IOMMU device
+>>>>
+>>>> Hi Bharat,
+>>>>
+>>>> On 09/06/2017 08:16, Bharat Bhushan wrote:
+>>>>> Hi Eric,
+>>>>>
+>>>>>> -----Original Message-----
+>>>>>> From: Eric Auger [mailto:eric.auger@redhat.com]
+>>>>>> Sent: Wednesday, June 07, 2017 9:31 PM
+>>>>>> To: eric.auger.pro@gmail.com; eric.auger@redhat.com;
+>>>>>> peter.maydell@linaro.org; alex.williamson@redhat.com;
+>>>> mst@redhat.com;
+>>>>>> qemu-arm@nongnu.org; qemu-devel@nongnu.org; jean-
+>>>>>> philippe.brucker@arm.com
+>>>>>> Cc: will.deacon@arm.com; robin.murphy@arm.com;
+>>>> kevin.tian@intel.com;
+>>>>>> marc.zyngier@arm.com; christoffer.dall@linaro.org;
+>>>>>> drjones@redhat.com; wei@redhat.com; tn@semihalf.com; Bharat
+>>>> Bhushan
+>>>>>> <bharat.bhushan@nxp.com>
+>>>>>> Subject: [RFC v2 0/8] VIRTIO-IOMMU device
+>>>>>>
+>>>>>> This series implements the virtio-iommu device. This is a proof of
+>>>>>> concept based on the virtio-iommu specification written by
+>>>>>> Jean-Philippe
+>>>> Brucker [1].
+>>>>>> This was tested with a guest using the virtio-iommu driver [2] and
+>>>>>> exposed with a virtio-net-pci using dma ops.
+>>>>>>
+>>>>>> The device gets instantiated using the "-device virtio-iommu-device"
+>>>>>> option. It currently works with ARM virt machine only as the
+>>>>>> machine must handle the dt binding between the virtio-mmio "iommu"
+>>>>>> node and the PCI host bridge node. ACPI booting is not yet supported.
+>>>>>>
+>>>>>> This should allow to start some benchmarking activities against
+>>>>>> pure emulated IOMMU (especially ARM SMMU).
+>>>>>
+>>>>> I am testing this on ARM64 and see below continuous error prints:
+>>>>>
+>>>>> 	virtio_iommu_translate sid=8 is not known!!
+>>>>> 	virtio_iommu_translate sid=8 is not known!!
+>>>>> 	virtio_iommu_translate sid=8 is not known!!
+>>>>> 	virtio_iommu_translate sid=8 is not known!!
+>>>>> 	virtio_iommu_translate sid=8 is not known!!
+>>>>> 	virtio_iommu_translate sid=8 is not known!!
+>>>>> 	virtio_iommu_translate sid=8 is not known!!
+>>>>> 	virtio_iommu_translate sid=8 is not known!!
+>>>>> 	virtio_iommu_translate sid=8 is not known!!
+>>>>> 	virtio_iommu_translate sid=8 is not known!!
+>>>>>
+>>>>>
+>>>>> Also in guest I do not see device-tree node with virtio-iommu.
+>>>> do you mean the virtio-mmio with #iommu-cells property?
+>>>>
+>>>> This one is created statically by virt machine. I would be surprised
+>>>> if it were not there. Are you using the virt = virt2.10 machine.
+>>>> Machines before do not support its instantiation.
+>>>>
+>>>> Please can you add a printf in hw/arm/virt.c create_virtio_mmio() at
+>>>> the moment when this node is created. Also you can add a printf in
+>>>> bind_virtio_iommu_device() to make sure the binding with the PCI host
+>>>> bridge is added on machine init done.
+>>>>
+>>>> Also worth to check, CONFIG_VIRTIO_IOMMU=y on guest side.
+>>>
+>>> It works on my side.
+>> Great.
+>>
+>>  The driver config was disabled and also I was using guest kernel which was
+>> not have deferred-probing.
+>> Yes I did not mention in my cover letter the guest I have been using is based
+>> on Jean-Philippe's branch, featuring deferred IOMMU probing. I I have not
+>> tried yet with an upstream guest.
+>>  Now after fixing it works on my side
+>>> I placed some prints to see dma-map are mapping regions in virtio-iommu,
+>> it uses emulated iommu.
+>>>
+>>> I will continue to add VFIO support now on this and more testing !!
+>>
+>> OK. I will do the VFIO integration first on the vsmmuv3 device as I already
+>> prepared the VFIO replay and hopefully we will sync ;-)
+>>
+>> Thanks
+>>
+>> Eric
+>>>
+>>> Thanks
+>>> -Bharat
+>>>
+>>>>
+>>>> Thanks
+>>>>
+>>>> Eric
+>>>>
+>>>>> I am using qemu-tree you mentioned below and iommu-driver patches
+>>>> published by Jean-P.
+>>>>> Qemu command line have additional ""-device virtio-iommu-device".
+>>>>> What
+>>>> I am missing ?
+>>>>
+>>>>
+>>>>>
+>>>>> Thanks
+>>>>> -Bharat
+>>>>>
+>>>>>>
+>>>>>> Best Regards
+>>>>>>
+>>>>>> Eric
+>>>>>>
+>>>>>> This series can be found at:
+>>>>>> https://github.com/eauger/qemu/tree/virtio-iommu-rfcv2
+>>>>>>
+>>>>>> References:
+>>>>>> [1] [RFC 0/3] virtio-iommu: a paravirtualized IOMMU, [2] [RFC PATCH
+>>>>>> linux]
+>>>>>> iommu: Add virtio-iommu driver [3] [RFC PATCH kvmtool 00/15] Add
+>>>>>> virtio- iommu
+>>>>>>
+>>>>>> History:
+>>>>>> v1 -> v2:
+>>>>>> - fix redifinition of viommu_as typedef
+>>>>>>
+>>>>>> Eric Auger (8):
+>>>>>>   update-linux-headers: import virtio_iommu.h
+>>>>>>   linux-headers: Update for virtio-iommu
+>>>>>>   virtio_iommu: add skeleton
+>>>>>>   virtio-iommu: Decode the command payload
+>>>>>>   virtio_iommu: Add the iommu regions
+>>>>>>   virtio-iommu: Implement the translation and commands
+>>>>>>   hw/arm/virt: Add 2.10 machine type
+>>>>>>   hw/arm/virt: Add virtio-iommu the virt board
+>>>>>>
+>>>>>>  hw/arm/virt.c                                 | 116 ++++-
+>>>>>>  hw/virtio/Makefile.objs                       |   1 +
+>>>>>>  hw/virtio/trace-events                        |  14 +
+>>>>>>  hw/virtio/virtio-iommu.c                      | 623
+>>>> ++++++++++++++++++++++++++
+>>>>>>  include/hw/arm/virt.h                         |   5 +
+>>>>>>  include/hw/virtio/virtio-iommu.h              |  60 +++
+>>>>>>  include/standard-headers/linux/virtio_ids.h   |   1 +
+>>>>>>  include/standard-headers/linux/virtio_iommu.h | 142 ++++++
+>>>>>>  linux-headers/linux/virtio_iommu.h            |   1 +
+>>>>>>  scripts/update-linux-headers.sh               |   3 +
+>>>>>>  10 files changed, 957 insertions(+), 9 deletions(-)  create mode
+>>>>>> 100644 hw/virtio/virtio-iommu.c  create mode 100644
+>>>>>> include/hw/virtio/virtio- iommu.h  create mode 100644
+>>>>>> include/standard- headers/linux/virtio_iommu.h  create mode 100644
+>>>>>> linux-headers/linux/virtio_iommu.h
+>>>>>>
+>>>>>> --
+>>>>>> 2.5.5
+>>>>>
+>>>
+> 

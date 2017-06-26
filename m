@@ -1,219 +1,165 @@
-Received: by 10.25.0.6 with SMTP id 6csp936857lfa;
-        Sun, 21 May 2017 02:08:20 -0700 (PDT)
-X-Received: by 10.200.56.93 with SMTP id r29mr16566754qtb.259.1495357700330;
-        Sun, 21 May 2017 02:08:20 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1495357700; cv=none;
+Received: by 10.25.15.197 with SMTP id 66csp1220409lfp;
+        Sun, 25 Jun 2017 22:30:09 -0700 (PDT)
+X-Received: by 10.55.221.77 with SMTP id n74mr15643340qki.173.1498455008922;
+        Sun, 25 Jun 2017 22:30:08 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1498455008; cv=none;
         d=google.com; s=arc-20160816;
-        b=LI/UYYzgtoKnCqShF9B1iaOsnE6y1xGml3SD2BbPMikWK5/LKGYDsxw498dUqmNIHD
-         7VMDO/wxBDNJ1MyJ9WBfCbC2dchIwcrqV670E/uWrt7g67hNewxFG8SQSznTAT/rPH7r
-         Vi8v/hl/pq/XqNBMNMB5/LGm7DwDHX7EZlcUbOvLmYpqLB9LEblLF6FvdBxWS2ahErfF
-         qn/rfiGq+vpBU+X46nnm8OV9tsZ9/97+sCZBvTKXNZrxkrI5LXEJhwIg4zW6rbsF7OuY
-         bW17AKX2CBOwWHB/l83Qd2p8E5m/9DKQIDkDYRnXdIl8GJC13+yNXM6qjORtDJb8bsDV
-         NrpQ==
+        b=hViGhmTud60PV26lQ1AfsqkuVbhLw4CQ42wEYwl6kadyWDUssT0ubM5TZ1a4bPfiGq
+         RG2XlN1ni64HF/azLEmdN4pw4oUhaED4Uqol//hpfgccv8xUkFgsfwYEP3x9fmqBbbPK
+         LUFwTAaXkrFihq08EANidykgs3NaEVDsFpnIoOevPxI6e1gYJsTrErR3pWNwz5OF5+cw
+         vdUNQF/zEGvilBeqx+pqLTAkwM6SH4zL9tOCm89YWGAWgQEcM0JMxfmZ9qbeKeEm8eRG
+         kdYJnBoU50L19FHMdCznQ3nlY3ocT6frvF4tBWVfH5AYc0PZVjDEoMkFnKe40NPWhYOk
+         5aWw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:content-transfer-encoding:list-subscribe:list-help
-         :list-post:list-archive:list-unsubscribe:list-id:precedence:cc:to
-         :subject:message-id:date:from:references:in-reply-to:mime-version
-         :dkim-signature:arc-authentication-results;
-        bh=/WlydUsGEInwsmluKk9pHDLFdG3eOLDsdEiJ32hXyOs=;
-        b=tTEpsZjVk7Utsq4jkqCwWXZSc+GhCN7R0X0MaR1EnpqTZR6pWQQ5Wy/5By/6IaWTaa
-         u+fyuU8gf4jtbJvDo6wsbjEd5IfXcOa4izP/j6huo3JYGc/eAT32N5R2rhPSB4N3H009
-         rG1Pow7jAPVMaHQD8YIgZ7e4ozzRpIn7ANjEJH2vRRu3CCFpnBYi7PhCQh0DFLVBZwtx
-         8/aa0dfh9qk3VF9Qb4MRue/EyZkJnAnD6CWKxXw07NTIRBT8TyXkqoZ9HzvLvaXJHQ0j
-         wwrnh2nDCx4eDMM7LtE6rB/Y8CvlUZ72eMmohifzTREhfrqfeISPbemf43cMEvwWeEON
-         pzFQ==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:arc-authentication-results;
+        bh=wnqruYCyIoLF7NxirOGZACCe2sgEZF8SG8hj+EWf8EM=;
+        b=AITttIKRruKmFJSF6WFFv3pCnfESVpEgB+G9rrlzejZbpH5+8x4Eg9PEDT/d7LYPFZ
+         bTPIZCz58P4ifoRE8teE/GgqMCQUeA6iDg/edsi6EVAXZPo7gjwg7K+vqVPdAPDjBtL9
+         j5OgW5br5UGvqO5r3SdSMKB8dcxtOiqjN/LTk7UZ8lP670Yf8L2okPRfgmDdtwS5iiIi
+         cgzdF8otyyYGDKG4riZV/Lbgq+z1prvG2GbPTwewp/BqoRI4nRb4Qe3SChPqFDG5AyWq
+         Ntn87jYmItyCvAzZZlooBJbPaSKw6ZWBS39oA+pSu/Hq1luNjS7taijvYeLjYUHiJQb+
+         csXw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=neutral (body hash did not verify) header.i=@gmail.com;
-       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Return-Path: <kvmarm-bounces@lists.cs.columbia.edu>
-Received: from mm01.cs.columbia.edu (mm01.cs.columbia.edu. [128.59.11.253])
-        by mx.google.com with ESMTP id l1si7753764qtd.80.2017.05.21.02.08.20;
-        Sun, 21 May 2017 02:08:20 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) client-ip=128.59.11.253;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
+        by mx.google.com with ESMTPS id f30si10685118qta.14.2017.06.25.22.30.08
+        for <alex.bennee@linaro.org>
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Sun, 25 Jun 2017 22:30:08 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=neutral (body hash did not verify) header.i=@gmail.com;
-       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: from localhost (localhost [127.0.0.1])
-	by mm01.cs.columbia.edu (Postfix) with ESMTP id 2426E4095A;
-	Sun, 21 May 2017 05:04:43 -0400 (EDT)
-X-Virus-Scanned: at lists.cs.columbia.edu
-X-Spam-Flag: NO
-X-Spam-Score: 0.911
-X-Spam-Level: 
-X-Spam-Status: No, score=0.911 required=6.1 tests=[BAYES_00=-1.9,
-	DKIM_ADSP_CUSTOM_MED=0.001, DKIM_SIGNED=0.1,
-	DNS_FROM_AHBL_RHSBL=2.699, FREEMAIL_FROM=0.001,
-	RCVD_IN_DNSWL_NONE=-0.0001, T_DKIM_INVALID=0.01] autolearn=no
-Authentication-Results: mm01.cs.columbia.edu (amavisd-new); dkim=softfail
-	(fail, message has been altered) header.i=@gmail.com
-Received: from mm01.cs.columbia.edu ([127.0.0.1])
-	by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id TqlzAtJlOVCv; Sun, 21 May 2017 05:04:42 -0400 (EDT)
-Received: from mm01.cs.columbia.edu (localhost [127.0.0.1])
-	by mm01.cs.columbia.edu (Postfix) with ESMTP id 2278140C4C;
-	Sun, 21 May 2017 05:04:42 -0400 (EDT)
-Received: from localhost (localhost [127.0.0.1])
- by mm01.cs.columbia.edu (Postfix) with ESMTP id 3E8F840960
- for <kvmarm@lists.cs.columbia.edu>; Sun, 21 May 2017 05:04:41 -0400 (EDT)
-X-Virus-Scanned: at lists.cs.columbia.edu
-Received: from mm01.cs.columbia.edu ([127.0.0.1])
- by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id g7td2VAk-O9v for <kvmarm@lists.cs.columbia.edu>;
- Sun, 21 May 2017 05:04:40 -0400 (EDT)
-Received: from mail-yb0-f196.google.com (mail-yb0-f196.google.com
- [209.85.213.196])
- by mm01.cs.columbia.edu (Postfix) with ESMTPS id 314254095A
- for <kvmarm@lists.cs.columbia.edu>; Sun, 21 May 2017 05:04:39 -0400 (EDT)
-Received: by mail-yb0-f196.google.com with SMTP id d72so3699044ybh.0
- for <kvmarm@lists.cs.columbia.edu>; Sun, 21 May 2017 02:08:16 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:in-reply-to:references:from:date:message-id:subject:to
- :cc; bh=ZV95PraDDpQV8ZKrswqkG4kFhZ40sZ0TWIYq3L57CzQ=;
- b=ECm1IWPbn/GluvztP7/Tdm8ikWZGXQ4o+FOOVQg1w5+YcRM30iaTlIzIh6bYarKAmw
- ggQ29+eqCfL7N8x1fLflb+7p5lKRv45R/7MRaL7ijSDV+GS/9P/ip7E2INW1FSjwJW3B
- ENnVZwu/v13C6d3GTBrkGUz4pDBDFdKv4oIcMCyk1xjQKG4oSSLE+expiNy0pvn6Hypu
- mVXCbLOIi30PChwxSd9SwS7mG40ud/BmXfBdbqKkUiXVry7hSkZSiL2ehOKAXKIwJrer
- uK+wUMG9Rs2ec5hocmMjQ3jAtq2hOpQgfki40OHWk+wQobP8rv+GKcz385G/3ImF6l05
- hwTg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:in-reply-to:references:from:date
- :message-id:subject:to:cc;
- bh=ZV95PraDDpQV8ZKrswqkG4kFhZ40sZ0TWIYq3L57CzQ=;
- b=NGgPnNqXEJHFqUm3qbFWZ8mFJZVliwlyXtjZMaSaSrQRr4oFdMcVaJOZVYol+Xa0oa
- FjwRWK8jffp7sVOubX565dBsiNJJpU52Qe05QXupa8s3lZAZMs3BkcIDe+fC/Fl6g3mU
- t2f8dJ/dSwBG9OlaDNkm+utFxp5QERiuMyWECSmGKkWQZ3g6OZRdd45AB/6dn6fq6H5R
- t2OIrzaEcsK4EfdNtdRTYNIfILPt/hzp7N1ypCgPwfxtuwgIOrYe2UpOd/aC7marQJr/
- aZYoytmY9NvfQNDSDWqKt06XriA1oJaGw2J65zDRYHm2hCig+j7QQTUpPV3BzViPHAbL
- e+dg==
-X-Gm-Message-State: AODbwcDYbelitd1prd6j+H0NTSmsxZPhFTYUVWVaDXgI21gRdwFJnATq
- HLPdmFkViKXooLOOTMcOwCvkKtWcZA==
-X-Received: by 10.37.79.5 with SMTP id d5mr14848016ybb.6.1495357696172; Sun,
- 21 May 2017 02:08:16 -0700 (PDT)
-MIME-Version: 1.0
-Received: by 10.129.172.99 with HTTP; Sun, 21 May 2017 02:08:15 -0700 (PDT)
-In-Reply-To: <5915EFCE.7070202@arm.com>
-References: <1493530677-4919-1-git-send-email-gengdongjiu@huawei.com>
- <1493530677-4919-2-git-send-email-gengdongjiu@huawei.com>
- <5908A7CE.7030008@arm.com>
- <bbceff7a-1ebf-e6de-abc6-e35b71c939f1@huawei.com> <5915EFCE.7070202@arm.com>
-From: gengdongjiu <gengdj.1984@gmail.com>
-Date: Sun, 21 May 2017 17:08:15 +0800
-Message-ID: <CAMj-D2Cyj=1TthEko=Z-Nq7ntsm5hdUYUzSuPJ5YgBM+mHL_BA@mail.gmail.com>
-Subject: Re: [PATCH v3 2/3] arm64: kvm: inject SError with virtual syndrome
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:44763 helo=lists.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1dPMb8-00011U-Ag
+	for alex.bennee@linaro.org; Mon, 26 Jun 2017 01:30:06 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:36649)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <gengdongjiu@huawei.com>) id 1dPMb2-000111-Js
+	for qemu-arm@nongnu.org; Mon, 26 Jun 2017 01:30:01 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+	(envelope-from <gengdongjiu@huawei.com>) id 1dPMay-0000KM-Kl
+	for qemu-arm@nongnu.org; Mon, 26 Jun 2017 01:30:00 -0400
+Received: from szxga02-in.huawei.com ([45.249.212.188]:3952)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_ARCFOUR_SHA1:16) (Exim 4.71)
+	(envelope-from <gengdongjiu@huawei.com>)
+	id 1dPMay-0000Hv-15; Mon, 26 Jun 2017 01:29:56 -0400
+Received: from 172.30.72.54 (EHLO dggeml405-hub.china.huawei.com)
+	([172.30.72.54])
+	by dggrg02-dlp.huawei.com (MOS 4.4.6-GA FastPath queued)
+	with ESMTP id APZ86254; Mon, 26 Jun 2017 13:23:02 +0800 (CST)
+Received: from [127.0.0.1] (10.142.68.147) by dggeml405-hub.china.huawei.com
+	(10.3.17.49) with Microsoft SMTP Server id 14.3.301.0; Mon, 26 Jun 2017
+	13:22:52 +0800
 To: James Morse <james.morse@arm.com>
-Cc: songwenjun@huawei.com, mtsirkin@redhat.com, ben@skyportsystems.com,
- kvm@vger.kernel.org, imammedo@redhat.com, marc.zyngier@arm.com,
- pbonzini@redhat.com, tbaicar@codeaurora.org, qemu-devel@nongnu.org,
- gengdongjiu <gengdongjiu@huawei.com>, ard.biesheuvel@linaro.org,
- wuquanming@huawei.com, kvmarm@lists.cs.columbia.edu, qemu-arm@nongnu.org,
- huangshaoyu@huawei.com, linux@armlinux.org.uk, lersek@redhat.com,
- wangxiongfeng2@huawei.com, linux-arm-kernel@lists.infradead.org
-X-BeenThere: kvmarm@lists.cs.columbia.edu
-X-Mailman-Version: 2.1.14
-Precedence: list
-List-Id: Where KVM/ARM decisions are made <kvmarm.lists.cs.columbia.edu>
-List-Unsubscribe: <https://lists.cs.columbia.edu/mailman/options/kvmarm>,
- <mailto:kvmarm-request@lists.cs.columbia.edu?subject=unsubscribe>
-List-Archive: <https://lists.cs.columbia.edu/pipermail/kvmarm>
-List-Post: <mailto:kvmarm@lists.cs.columbia.edu>
-List-Help: <mailto:kvmarm-request@lists.cs.columbia.edu?subject=help>
-List-Subscribe: <https://lists.cs.columbia.edu/mailman/listinfo/kvmarm>,
- <mailto:kvmarm-request@lists.cs.columbia.edu?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
+References: <1493530677-4919-1-git-send-email-gengdongjiu@huawei.com>
+	<5908A5BC.1060202@arm.com>
+From: gengdongjiu <gengdongjiu@huawei.com>
+Message-ID: <9e94c06f-f438-7106-ac96-67e021dcf729@huawei.com>
+Date: Mon, 26 Jun 2017 13:22:27 +0800
+User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64; rv:45.0) Gecko/20100101
+	Thunderbird/45.7.1
+MIME-Version: 1.0
+In-Reply-To: <5908A5BC.1060202@arm.com>
+Content-Type: text/plain; charset="windows-1252"
 Content-Transfer-Encoding: 7bit
-Errors-To: kvmarm-bounces@lists.cs.columbia.edu
-Sender: kvmarm-bounces@lists.cs.columbia.edu
-X-TUID: gA6jotcpIhEi
+X-Originating-IP: [10.142.68.147]
+X-CFilter-Loop: Reflected
+X-Mirapoint-Virus-RAPID-Raw: score=unknown(0),
+	refid=str=0001.0A020206.59509A39.0108, ss=1, re=0.000, recu=0.000,
+	reip=0.000, cl=1, cld=1, fgs=0, ip=0.0.0.0,
+	so=2014-11-16 11:51:01, dmn=2013-03-21 17:37:32
+X-Mirapoint-Loop-Id: 29ff11dbc02fc2cfc505e5889d3955c1
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
+	[fuzzy]
+X-Received-From: 45.249.212.188
+Subject: Re: [Qemu-arm] [PATCH v3 1/3] arm64: kvm: support kvmtool to detect
+ RAS extension feature
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.21
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: peter.maydell@linaro.org, mtsirkin@redhat.com, kvm@vger.kernel.org,
+	rkrcmar@redhat.com, tbaicar@codeaurora.org,
+	qemu-devel@nongnu.org, wangxiongfeng2@huawei.com,
+	ben@skyportsystems.com, linux@armlinux.org.uk,
+	kvmarm@lists.cs.columbia.edu, huangshaoyu@huawei.com,
+	zhaoshenglong@huawei.com, lersek@redhat.com,
+	songwenjun@huawei.com, drjones@redhat.com, wuquanming@huawei.com,
+	xiexiuqi@huawei.com, marc.zyngier@arm.com, qemu-arm@nongnu.org,
+	imammedo@redhat.com, linux-arm-kernel@lists.infradead.org,
+	ard.biesheuvel@linaro.org, pbonzini@redhat.com, christoffer.dall@linaro.org
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: /cAXTjp3A/Fj
 
-2017-05-13 1:24 GMT+08:00, James Morse <james.morse@arm.com>:
-> Hi gengdongjiu,
->
-> On 05/05/17 14:19, gengdongjiu wrote:
->> On 2017/5/2 23:37, James Morse wrote:
->> > ... I think you expect an SError to arrive at EL2 and have its ESR
->> > recorded in
->> > vcpu->arch.fault.vsesr_el2. Some time later KVM decides to inject an
->> > SError into
->> > the guest, and this ESR is reused...
->> >
->> > We shouldn't do this. Qemu/kvmtool may want to inject a virtual-SError
->> > that
->> > never started as a physical-SError. Qemu/kvmtool may choose to notify
->> > the guest
->> > of RAS events via another mechanism, or not at all.
->> >
->> > KVM should not give the guest an ESR value of its choice. For SError the
->> > ESR
->> > describes whether the error is corrected, correctable or fatal.
->> > Qemu/kvmtool
->> > must choose this.
->
->> Below is my previous solution:
->> For the SError, CPU will firstly trap to EL3 firmware and records the
->> syndrome to ESR_EL3.
->> Before jumping to El2 hypervisors, it will copy the esr_el3 to esr_el2.
->
-> (Copying the ESR value won't always be the right thing to do.)
-  James,  thanks for your kindly explanation, understand you  thought.
+Hi James,
 
->
->
->> so in order to pass this syndrome to vsesr_el2, using the esr_el2 value to
->> assign it.
->
->> If Qemu/kvmtool chooses the ESR value and ESR only describes whether the
->> error is corrected/correctable/fatal,
->> whether the information is not enough for the guest?
->
-> So the API should specify which of these three severities to use? I think
-> this
-> is too specific. The API should be useful for anything the VSE/VSESR
-> hardware
-> can do.
->
-> VSESR_EL2 is described in the RAS spec: 4.4.12 [0], its a 64 bit register.
-> I
-> think we should let Qemu/kvmtool specify any 64bit value here, but KVM
-> should
-> reject values that try to set bits described as RES0.
->
-> This would let Qemu/kvmtool specify any SError ISS, either setting
-> ESR_ELx.IDS
-> and some virtual-machine specific value, or encoding any severity in AET
-> and
-> choosing the DFSC/EA bits appropriately.
-   it sounds reasonable
+   I have changed the SEA/SEI injection method according you suggestion, but I think this patch may also be needed.
+Now for the  SEI, the virtual ESR value is specified by the userspace. only RAS extension support to set the virtual ESR value. so user space will check it to decide whether pass the virtual ESR value.
+At the same time, reserve this interface for other possible usage by user space. what do you think about this patch?
 
->
->
->>> > I think we need an API that allows Qemu/kvmtool to inject SError into a
->>> > guest,
->>> > but that isn't quite what you have here.
->
->> KVM provides APIs to inject the SError, Qemu/kvmtool call the API though
->> IOCTL, may be OK?
->
-> (just the one API call), yes.
-   Ok, have added.
 
->
->
+
+On 2017/5/2 23:29, James Morse wrote:
+> Hi Dongjiu Geng,
+> 
+> On 30/04/17 06:37, Dongjiu Geng wrote:
+>> Handle kvmtool's detection for RAS extension, because sometimes
+>> the APP needs to know the CPU's capacity
+> 
+>> diff --git a/arch/arm64/kvm/reset.c b/arch/arm64/kvm/reset.c
+>> index d9e9697..1004039 100644
+>> --- a/arch/arm64/kvm/reset.c
+>> +++ b/arch/arm64/kvm/reset.c
+>> @@ -64,6 +64,14 @@ static bool cpu_has_32bit_el1(void)
+>>  	return !!(pfr0 & 0x20);
+>>  }
+>>  
+>> +static bool kvm_arm_support_ras_extension(void)
+>> +{
+>> +	u64 pfr0;
+>> +
+>> +	pfr0 = read_system_reg(SYS_ID_AA64PFR0_EL1);
+>> +	return !!(pfr0 & 0x10000000);
+>> +}
+> 
+> Why are we telling user-space that the CPU has RAS extensions? EL0 can't do
+> anything with this and the guest EL1 can detect it from the id registers.
+> 
+> 
+> Are you using this to decide whether or not to generate a HEST for the guest?
+> 
+> If Qemu/kvmtool supports handling memory-failure notifications from signals you
+> should always generate a HEST. The GHES notification method could be anything
+> Qemu can deliver to the guest using the KVM APIs. Notifications from Qemu to the
+> guest don't depend on the RAS extensions. KVM has APIs for IRQ and SEA (you can
+> use KVM_SET_ONE_REG).
+> 
+> 
+> I think we need a new API for injecting SError for SEI from Qemu/kvmtool, but it
+> shouldn't be related to the RAS extensions. All v8.0 CPUs have HCR_EL2.VSE, so
+> we need to know KVM supports this API.
+> 
+> Your later patch adds code to set VSESR to make virtual RAS SErrors work, I
+> think we need to expose that to user-space.
+> 
+> 
 > Thanks,
->
+> 
 > James
->
-> [0]
-> https://static.docs.arm.com/ddi0587/a/RAS%20Extension-release%20candidate_march_29.pdf
->
-> _______________________________________________
-> kvmarm mailing list
-> kvmarm@lists.cs.columbia.edu
-> https://lists.cs.columbia.edu/mailman/listinfo/kvmarm
->
-_______________________________________________
-kvmarm mailing list
-kvmarm@lists.cs.columbia.edu
-https://lists.cs.columbia.edu/mailman/listinfo/kvmarm
+> .
+> 
+

@@ -1,252 +1,370 @@
-Received: by 10.25.15.197 with SMTP id 66csp1475451lfp;
-        Mon, 26 Jun 2017 09:11:15 -0700 (PDT)
-X-Received: by 10.200.35.168 with SMTP id q37mr1308311qtq.129.1498493475832;
-        Mon, 26 Jun 2017 09:11:15 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1498493475; cv=none;
+Received: by 10.25.15.197 with SMTP id 66csp1477666lfp;
+        Mon, 26 Jun 2017 09:13:58 -0700 (PDT)
+X-Received: by 10.55.20.95 with SMTP id e92mr1227633qkh.74.1498493638096;
+        Mon, 26 Jun 2017 09:13:58 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1498493638; cv=none;
         d=google.com; s=arc-20160816;
-        b=K6zgNPaL4RBKBVAdwmEC7VF5slQdoy9SZJMDVY3i4XcOWIFJ/UVLYmjhncU0lyw52g
-         DJc0uwrWtwOtYssqCtg/mroKV/45B3kSoaO1mR2LyNJ0LuEYhGYDm6o35WQmItF4KdWf
-         qGUinfWdRn6V4ZU9wS7SKPt2AbnGfeOBQnP2n3+1lbV2mSfKyRyGe5EyCZHyYF2M7EzO
-         GJUAqaDugbt/7W1a43TnTMQG6gjKXFPpIfcVkMnopPNZEbJAimN8h3Ir5RdvRqIAd8ZS
-         pUBrWFdPPeiQcnFPkGIJidpoNK5VkKUO5GfjAq8dZcYPRlzh8deIgYjy0F2UD487UO2T
-         QUXA==
+        b=KvUBRMfAiUB0u9LdXa/IBvMR5ex9mdJUDRFJoETGbIFKw8ViMD760nKRUTBJcIrGOS
+         AK9kJISjDZYuwm00XMcRV+IjPne0BJS5x+8L40UJD6gj7gL2LRtRW6kc4vlgfZXUQcBT
+         HmJCrUnRH0w3xLn7bpLurUp90jlkg9wK5K7Ta6or81yJYf8b5YN+XYPICQOU1nqi1xOH
+         6ffoXmud13BtEtGfRn63AwrB1Y7Rbc1Ej1qNYDzDTPu363n5zJ2eOeqJ2U8MZkTIe5gc
+         hh5lwKKjPq6NwWnzco561sr2m+eMaf0SZKJY4Aw1CUujJ8YNhpITz66Fo7ZqPISy5Ivr
+         YNYA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:to
-         :arc-authentication-results;
-        bh=u3RBReS1sjTMPHVESS2OnRuhnRCw4xjJ88gtXRFVTZk=;
-        b=w6A/cU4oUhcLwWkYEEMrolny7lFsudXv4kXBH3XctQupsXh71c+Ob4kpdwoSGzfrbX
-         ESX3FJlYSO0Hxh0johGjOqeab7tKcZVHn4+S/Hbz+N1xoUyhJZBHI6TIqnE1zLbl/hFh
-         ytc4hqfjAa8c6dAJlaHum8DNI7+SmapYrRHdTeowKcyN8gtBZ58seK7lHTS/7FPeGmvW
-         uAzp40J0QuDfhSyhtEFmxJhS3Ig51DclPpqgcOCY2Laf2RhVe7XKqXkX8NQc1QYbB0HT
-         jTtyx4U1CNgEZ8uo5mVjnQnt0Jtfj+WczLB8uJ3Q76t/djQofIq0vnVaQUir5htrZKb8
-         Bumg==
+         :content-transfer-encoding:to:message-id:date:from:references
+         :in-reply-to:mime-version:dkim-signature:arc-authentication-results;
+        bh=C4RxOCIR11VN7aJoLIDZ4GOKTVNeF4hDcpvVtwdukIo=;
+        b=IYXMZq0olJGvc6UbAfulYN5RZpey0ILFeflasg5RKFLWDN/hqTooWN31GfLZC7e/8q
+         CoOWh+psXOFzIKEupXaw9S8BmFpiQIJ4awUl4K30zMgIglrAMwlarg0Q8ndUjX1LfUzG
+         kA0ZTJHXTiUED05j6CYyPZJCFsu2QMTiZ4Wc3hn7Vyk9fCQLgA2ozYXeE/p+IMs1TjqI
+         GulrBAyKeRaFFuauoCYepocPIWL55sIdSPEL9nldiO78GOo6n+JJR0KuG5NevAmARM5i
+         m9bdxDLnDNAZNQb0ugTZ4YAR5cEISIGhR9l/ExAgBEYgcbmMlfhCJdhSoApcX/FsAP2z
+         /CmQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=neutral (body hash did not verify) header.i=@gmail.com header.b=C3E9JmkA;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id e35si396398qtd.48.2017.06.26.09.11.15
+        by mx.google.com with ESMTPS id k16si391059qkk.171.2017.06.26.09.13.57
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 26 Jun 2017 09:11:15 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Mon, 26 Jun 2017 09:13:58 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:47490 helo=lists.gnu.org)
+       dkim=neutral (body hash did not verify) header.i=@gmail.com header.b=C3E9JmkA;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:47502 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1dPWbZ-0002YE-7N
-	for alex.bennee@linaro.org; Mon, 26 Jun 2017 12:11:13 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:44651)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1dPWeB-0004qM-BN
+	for alex.bennee@linaro.org; Mon, 26 Jun 2017 12:13:55 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:44789)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <jean-philippe.brucker@arm.com>) id 1dPWbU-0002Y4-PF
-	for qemu-arm@nongnu.org; Mon, 26 Jun 2017 12:11:10 -0400
+	(envelope-from <sundeep.lkml@gmail.com>) id 1dPWcD-0002uk-B2
+	for qemu-devel@nongnu.org; Mon, 26 Jun 2017 12:11:55 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <jean-philippe.brucker@arm.com>) id 1dPWbQ-0003Tx-LX
-	for qemu-arm@nongnu.org; Mon, 26 Jun 2017 12:11:08 -0400
-Received: from foss.arm.com ([217.140.101.70]:53864)
-	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <jean-philippe.brucker@arm.com>)
-	id 1dPWbQ-0003TP-8T; Mon, 26 Jun 2017 12:11:04 -0400
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.72.51.249])
-	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id C0BE680D;
-	Mon, 26 Jun 2017 09:11:01 -0700 (PDT)
-Received: from [10.1.211.12] (e106794-lin.cambridge.arm.com [10.1.211.12])
-	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 4D0633F4FF;
-	Mon, 26 Jun 2017 09:10:59 -0700 (PDT)
-To: Auger Eric <eric.auger@redhat.com>,
-	Bharat Bhushan <bharat.bhushan@nxp.com>,
-	"eric.auger.pro@gmail.com" <eric.auger.pro@gmail.com>,
-	"peter.maydell@linaro.org" <peter.maydell@linaro.org>,
-	"alex.williamson@redhat.com" <alex.williamson@redhat.com>,
-	"mst@redhat.com" <mst@redhat.com>, "qemu-arm@nongnu.org"
-	<qemu-arm@nongnu.org>, "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
-References: <1496851287-9428-1-git-send-email-eric.auger@redhat.com>
-	<AM5PR0401MB2545AFD256A96420ACC44CD89ACE0@AM5PR0401MB2545.eurprd04.prod.outlook.com>
-	<14c83c14-1e7e-f142-77b0-fa8c873e2d41@redhat.com>
-	<AM5PR0401MB2545C0E76C4BE6F82FE376D09ACE0@AM5PR0401MB2545.eurprd04.prod.outlook.com>
-	<6f22079e-4b4b-6476-77be-51ec83104c0d@redhat.com>
-	<AM5PR0401MB25459FDAA8C9AFA52503AAE99AC40@AM5PR0401MB2545.eurprd04.prod.outlook.com>
-	<589f1642-775c-4805-74ac-bf67eb504733@arm.com>
-	<5f47e723-1d3e-433b-cdaf-a56d16ba377e@redhat.com>
-From: Jean-Philippe Brucker <jean-philippe.brucker@arm.com>
-Message-ID: <d4277d93-d29d-7150-7962-bdfdd1c2a275@arm.com>
-Date: Mon, 26 Jun 2017 17:13:18 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.1.1
+	(envelope-from <sundeep.lkml@gmail.com>) id 1dPWcB-0003nr-18
+	for qemu-devel@nongnu.org; Mon, 26 Jun 2017 12:11:53 -0400
+Received: from mail-yw0-x244.google.com ([2607:f8b0:4002:c05::244]:35735)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <sundeep.lkml@gmail.com>)
+	id 1dPWcA-0003ng-Pp; Mon, 26 Jun 2017 12:11:50 -0400
+Received: by mail-yw0-x244.google.com with SMTP id z21so326093ywz.2;
+	Mon, 26 Jun 2017 09:11:50 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=qRnqx4DGTFlJ8GS6o1ipUbA1ejbtpaxodD+CjBegA14=;
+	b=C3E9JmkAmEEHQPSVWArKpGLiCzmy4oF6ACGks7X5BzCnV1xmI+iOfRE1xtjZEZydi8
+	NfR1P1xwJ/cFO7nR1OThZmIY6jjg6TpOMlYRBIL38aKHjnSPKGWXVn02UHMPUfQ6NeUx
+	He3kJPrEZHW2bVF/JMd48AaCeYqBUIy90G0dPMoHKBvBtIrZxJoUMmLQ7baV0YBfV7Uj
+	2q+48hg5nlRurRIk1RZP/rylnKs6PNSpdHqCz7iXkzJvJ1ElNVvlzw9LbsGodmRYeLUL
+	g6UraToWKHXLnS6XieEUr+Q+P49vOxWBhMjihy60NVtZ+akf7T5hOUFS3xA8RxrT//wk
+	4aLQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=qRnqx4DGTFlJ8GS6o1ipUbA1ejbtpaxodD+CjBegA14=;
+	b=AnLuJdwQlPvOsJk1h678l8j7i9OcDaY7ESBpU6LSAnYH4dk47EMhnDyBK/COKWlrQZ
+	3UtGRhx9llokBXr+roDDxUgD3f1qLPVNk3/pXC8CJVjPy+yqC60OvFIIMCGE3WDO/I1v
+	az3cHxE/bI4f3qWcl/rbUeI8vixhCteG7uqkm+U92rFgfdE/OPpw1RycArN19Toi22xT
+	hR43R9KKQoM1yolP3IqwUK+YYb90t0usnbutuYNPmeby54DNkbnGZ2ZsUSoyg9C1n0JP
+	PRTXFiXj5UILML2V3V+xXH3g0kYRdwY5nJkKv6Fl6aiRwfOWxyRRiMJeHzYlfYVf6+i9
+	+BSQ==
+X-Gm-Message-State: AKS2vOxGXzrcW3ThNsyXAHpWOrS05p97eH8Fc2OCig6WdOOyf5xhykvo
+	kNe/T0BjRrAbti13xMgGwAa286f9Vg==
+X-Received: by 10.129.44.130 with SMTP id s124mr710646yws.2.1498493509682;
+	Mon, 26 Jun 2017 09:11:49 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <5f47e723-1d3e-433b-cdaf-a56d16ba377e@redhat.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 217.140.101.70
-Subject: Re: [Qemu-arm] [Qemu-devel] [RFC v2 0/8] VIRTIO-IOMMU device
-X-BeenThere: qemu-arm@nongnu.org
+Received: by 10.13.244.65 with HTTP; Mon, 26 Jun 2017 09:11:49 -0700 (PDT)
+In-Reply-To: <CALHRZuoihb2Oiu9adm=2gPUf-LFdkBR9qw1iV+ohL6kp0t5d=A@mail.gmail.com>
+References: <1494949133-2202-1-git-send-email-sundeep.lkml@gmail.com>
+	<d403f33f-647e-a142-4265-7d856d8be6aa@amsat.org>
+	<CALHRZur8Uh0JCnOoY-_mUU_fyzbUgxbmWKtfOoB-GTYR5UcEnQ@mail.gmail.com>
+	<CALHRZuoVHFOYV345JmvSkfJHsVjS7Wv_ySzAUtwo1D7eyoS_XQ@mail.gmail.com>
+	<648515bf-ba1e-3d7f-d5bd-51b243f8c29f@amsat.org>
+	<CALHRZuoihb2Oiu9adm=2gPUf-LFdkBR9qw1iV+ohL6kp0t5d=A@mail.gmail.com>
+From: sundeep subbaraya <sundeep.lkml@gmail.com>
+Date: Mon, 26 Jun 2017 21:41:49 +0530
+Message-ID: <CALHRZuoFU6vmnEBobVEqesApB6qm6cmNQfm9oVMG2RaooNEh7Q@mail.gmail.com>
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:4002:c05::244
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-Content-Filtered-By: Mailman/MimeDel 2.1.21
+Subject: Re: [Qemu-devel] [Qemu devel v5 PATCH 0/5] Add support for
+ Smartfusion2 SoC
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: "kevin.tian@intel.com" <kevin.tian@intel.com>,
-	"marc.zyngier@arm.com" <marc.zyngier@arm.com>,
-	"tn@semihalf.com" <tn@semihalf.com>,
-	"will.deacon@arm.com" <will.deacon@arm.com>,
-	"drjones@redhat.com" <drjones@redhat.com>,
-	"robin.murphy@arm.com" <robin.murphy@arm.com>,
-	"christoffer.dall@linaro.org" <christoffer.dall@linaro.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ojVdaAlD44gb
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm <qemu-arm@nongnu.org>,
+	QEMU Developers <qemu-devel@nongnu.org>,
+	Alistair Francis <alistair23@gmail.com>,
+	Peter Crosthwaite <crosthwaite.peter@gmail.com>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: KdEBBbr345bm
 
-On 26/06/17 09:22, Auger Eric wrote:
-> Hi Jean-Philippe,
-> 
-> On 19/06/2017 12:15, Jean-Philippe Brucker wrote:
->> On 19/06/17 08:54, Bharat Bhushan wrote:
->>> Hi Eric,
->>>
->>> I started added replay in virtio-iommu and came across how MSI interrupts with work with VFIO. 
->>> I understand that on intel this works differently but vsmmu will have same requirement. 
->>> kvm-msi-irq-route are added using the msi-address to be translated by viommu and not the final translated address.
->>> While currently the irqfd framework does not know about emulated iommus (virtio-iommu, vsmmuv3/vintel-iommu).
->>> So in my view we have following options:
->>> - Programming with translated address when setting up kvm-msi-irq-route
->>> - Route the interrupts via QEMU, which is bad from performance
->>> - vhost-virtio-iommu may solve the problem in long term
->>>
->>> Is there any other better option I am missing?
+Hi Philippe,
+
+On Fri, Jun 9, 2017 at 12:51 PM, sundeep subbaraya <sundeep.lkml@gmail.com>
+wrote:
+
+> Hi Philippe,
+>
+> On Wed, May 31, 2017 at 11:06 AM, Philippe Mathieu-Daud=C3=A9 <f4bug@amsa=
+t.org>
+> wrote:
+>
+>> Hi Sundeep,
 >>
->> Since we're on the topic of MSIs... I'm currently trying to figure out how
->> we'll handle MSIs in the nested translation mode, where the guest manages
->> S1 page tables and the host doesn't know about GVA->GPA translation.
-> 
-> I have a question about the "nested translation mode" terminology. Do
-> you mean in that case you use stage 1 + stage 2 of the physical IOMMU
-> (which the ARM spec normally advises or was meant for) or do you mean
-> stage 1 implemented in vIOMMU and stage 2 implemented in pIOMMU. At the
-> moment my understanding is for VFIO integration the pIOMMU uses a single
-> stage combining both the stage 1 and stage2 mappings but the host is not
-> aware of those 2 stages.
+>> On 05/29/2017 02:28 AM, sundeep subbaraya wrote:
+>>
+>>> Hi Philippe,
+>>>
+>>> Any update on this? I will wait for your comments too
+>>> and send next iteration fixing Alistair comments.
+>>>
+>>
+>> Sorry I'm supposed to be in holidays ;)
+>>
+>
+> Ohh sorry currently am in vacation :)
+>
+>>
+>>
+>>> Thanks,
+>>> Sundeep
+>>>
+>>> On Wed, May 17, 2017 at 3:09 PM, sundeep subbaraya
+>>> <sundeep.lkml@gmail.com <mailto:sundeep.lkml@gmail.com>> wrote:
+>>>
+>>>     Hi Philippe,
+>>>
+>>>     On Wed, May 17, 2017 at 9:57 AM, Philippe Mathieu-Daud=C3=A9
+>>>     <f4bug@amsat.org <mailto:f4bug@amsat.org>> wrote:
+>>>
+>>>         Hi Sundeep,
+>>>
+>>>         This patchset is way cleaner!
+>>>         I had a fast look and I like it, I'll try to make some time soo=
+n
+>>>         to review details and test it.
+>>>
+>>>
+>>>     Thank you
+>>>
+>>>
+>>>
+>>>
+>>>         Is your work interested on U-Boot or more focused in Linux
+>>> kernel?
+>>>
+>>>
+>>>     I am interested more in kernel. I had to look into u-boot for first
+>>>     time for Qemu only.
+>>>     I worked only on FPGAs(load kernel with debugger) till now so never
+>>>     got a chance to look into u-boot.
+>>>
+>>>
+>>>         If you compile QEMU with libfdt support you can use the -dtb
+>>>         option to pass the blob to the kernel directly, bypassing the
+>>>         bootloader.
+>>>
+>>>     Yeah for armv7m I could not find any thing like that in tree.
+>>>
+>>>
+>>>         If you need a bootloader you may give a look at coreboot which
+>>>         supports dts well, see how Vladimir Serbinenko used Linux's dt
+>>>         to boot a QEMU Versatile Express board:
+>>>         https://mail.coreboot.org/pipermail/coreboot-gerrit/2016-Feb
+>>> ruary/040899.html
+>>>         <https://mail.coreboot.org/pipermail/coreboot-gerrit/2016-Fe
+>>> bruary/040899.html>
+>>>
+>>>     Cool. I will look into it.
+>>>
+>>>     Thanks,
+>>>     Sundeep
+>>>
+>>>
+>>>         Regards,
+>>>
+>>>         Phil.
+>>>
+>>>
+>>>         On 05/16/2017 12:38 PM, Subbaraya Sundeep wrote:
+>>>
+>>>             Hi Qemu-devel,
+>>>
+>>>             I am trying to add Smartfusion2 SoC.
+>>>             SoC is from Microsemi and System on Module(SOM)
+>>>             board is from Emcraft systems. Smartfusion2 has hardened
+>>>             Microcontroller(Cortex-M3)based Sub System and FPGA fabric.
+>>>             At the moment only system timer, sysreg and SPI
+>>>             controller are modelled.
+>>>
+>>>             Testing:
+>>>             ./arm-softmmu/qemu-system-arm -M smartfusion2-som -serial
+>>>             mon:stdio \
+>>>             -kernel u-boot.bin -display none -drive
+>>>             file=3Dspi.bin,if=3Dmtd,format=3Draw
+>>>
+>>
+>> I'm not sure the timer is working correctly, U-Boot loops with this
+>> pattern:
+>>
+>> msf2_sysreg_read: addr: 0x00000048 data: 0x00000220
+>> msf2_sysreg_write: addr: 0x00000048 data: 0x00000220
+>> msf2_sysreg_read: addr: 0x00000048 data: 0x00000220
+>> msf2_sysreg_write: addr: 0x00000048 data: 0x00000020
+>> msf2_sysreg_read: addr: 0x00000048 data: 0x00000020
+>> msf2_sysreg_write: addr: 0x00000048 data: 0x00000000
+>> msf2_sysreg_read: addr: 0x00000048 data: 0x00000000
+>> msf2_sysreg_write: addr: 0x00000048 data: 0x00000020
+>> msf2_sysreg_read: addr: 0x00000048 data: 0x00000020
+>> msf2_sysreg_write: addr: 0x00000048 data: 0x00000220
+>>
+>> I checked the images and Linux is booting. But as you mentioned I change=
+d
+u-boot
+for boot delay and have seen this issue. Actually it is taking too long for
+a second.
+Smartfusion2 timer is working fine(Linux) whereas u-boot is using Systick
+for auto-boot
+timer. I did not understand quite correctly about ARM Systick in Qemu. How
+do we
+specify frequency of the Systick timer? How Systick is configured to use
+CPU frequency
+since qemu cpu speed is not constant? How frequency has to be specified for
+using external clock as Systick input?
 
-Yes at the moment the VMM merges stage-1 (GVA->GPA) from the guest with
-its stage-2 mappings (GPA->HPA) and creates a stage-2 mapping (GVA->HPA)
-in the pIOMMU via VFIO_IOMMU_MAP_DMA. stage-1 is disabled in the pIOMMU.
-
-What I mean by "nested mode" is stage 1 + stage 2 in the physical IOMMU.
-I'm referring to the "Page Table Sharing" bit of the Future Work in the
-initial RFC for virtio-iommu [1], and also PASID table binding [2] in the
-case of vSMMU. In that mode, stage-1 page tables in the pIOMMU are managed
-by the guest, and the VMM only maps GPA->HPA.
-
-Since both s1 and s2 are then enabled in the pIOMMU, MSIs reaching the
-pIOMMU will be translated at s1 then s2. To create nested translation for
-MSIs, I see two solutions:
-
-A. The GPA of the doorbell that is exposed to the guest is mapped by the
-VMM at S2. This mapping is GPA->(PA of the doorbell) with Dev-nGnRE memory
-attributes. The guest creates a GVA->GPA mapping, then writes GVA in the
-MSI-X tables.
-- If the MSI-X table is emulated (as we currently do), VMM has to force
-  the host to rewrite the physical MSIX entry with the GVA.
-- If the MSI-X table is mapped (see [3]), then the guest writes
-  the GVA into the physical MSI-X entry. (How does this work with lazy MSI
-  routing setup, that is based on trapping MSIX table?)
-
-B. The VMM exposes a fake doorbell. Hardware MSI vectors are programmed
-upfront by the host. Since TTB0 is assigned to the guest, then host must
-use TTB1 to create the GVA->GPA mapping.
-
-Solution B was my proposal (2) below, but I didn't take vSMMU into account
-at the time. I think that for virtual SVM with the vSMMU, the VMM has to
-hand the whole PASID table over to the guest. This is what Intel seems to
-do [2]. Even if we emulated the PASID table instead of handing it over, we
-wouldn't have a way to hide TTB1 from the guest. So with vSMMU we loose
-control over TTB1 and (2) doesn't work.
-
-I don't really like A, but it might be the only way with vSMMU:
-- Guest maps doorbell at S1,
-- Guest writes the GVA in its virtual MSI-X tables,
-- Host handles the GVA write and reprograms the hardware MSI-X tables,
-- Device issues an MSI, which gets translated at S1+S2, then hits the
-  doorbell,
-- VFIO handles the IRQ, which is forwarded to KVM via IRQFD, finds the
-  corresponding irqchip by GPA, then injects the MSI.
-
->> I'm also wondering about the benefits of having SW-mapped MSIs in the
->> guest. It seems unavoidable for vSMMU since that's what a physical system
->> would do. But in a paravirtualized solution there doesn't seem to be any
->> compelling reason for having the guest map MSI doorbells.
-> 
-> If I understand correctly the virtio-iommu would not expose MSI reserved
-> regions (saying it does not translates MSIs). In that case he VFIO
-> kernel code will not check the irq_domain_check_msi_remap() but will
-> check iommu_capable(bus, IOMMU_CAP_INTR_REMAP) instead. Would the
-> virtio-iommu expose this capability? How would it isolate MSI
-> transactions from different devices?
-
-Yes, the virtio-iommu would expose IOMMU_CAP_INTR_REMAP to keep VFIO
-happy. But the virtio-iommu device wouldn't do any MSI isolation. We have
-software-mapped doorbell on ARM because MSI transactions are translated by
-the SMMU before reaching the GIC, which then performs device isolation.
-With virtio-iommu on ARM, the address translation stage seems unnecessary
-if you already have a vGIC handling device isolation. So maybe MSIs could
-bypass the vIOMMU in that case.
-
-However on x86, I think we will need to handle MSI remapping in the
-virtio-iommu itself, since that's what x86 platforms expect. In this case
-the guest doesn't have to create an IOMMU mapping for doorbell addresses
-either, but might need to manage some form of IRQ remapping table (on
-which I still have a tonne of research to do.)
+Please help me understand this.
 
 Thanks,
-Jean
+Sundeep
 
-[1] https://www.spinics.net/lists/kvm/msg147993.html
-[2] https://www.spinics.net/lists/kvm/msg148798.html
-[3] https://lkml.org/lkml/2017/6/15/34
 
-> Thanks
-> 
-> Eric
-> 
-> 
->  These addresses
->> are never accessed directly, they are only used for setting up IRQ routing
->> (at least on kvmtool). So here's what I'd like to have. Note that I
->> haven't investigated the feasibility in Qemu yet, I don't know how it
->> deals with MSIs.
+>
+>>>             Binaries u-boot.bin and spi.bin are at:
+>>>
 >>
->> (1) Guest uses the guest-physical MSI doorbell when setting up MSIs. For
->> ARM with GICv3 this would be GITS_TRANSLATER, for x86 it would be the
->> fixed MSI doorbell. This way the host wouldn't need to inspect IOMMU
->> mappings when handling writes to PCI MSI-X tables.
+>> you can compress spi.bin!
 >>
->> (2) In nested mode (with VFIO) on ARM, the pSMMU will still translate MSIs
->> via S1+S2. Therefore the host needs to map MSIs at stage-1, and I'd like
->> to use the (currently unused) TTB1 tables in that case. In addition, using
->> TTB1 would be useful for SVM, when endpoints write MSIs with PASIDs and we
->> don't want to map them in user address space.
+>> can you share u-boot.elf with debug symbols too?
 >>
->> This means that the host needs to use different doorbell addresses in
->> nested mode, since it would be unable to map at S1 the same IOVA as S2
->> (TTB1 manages negative addresses - 0xffff............, which are not
->> representable as GPAs.) It also requires to use 32-bit page tables for
->> endpoints that are not capable of using 64-bit MSI addresses.
+>
+> Sure. I have tested binaries before pushing. Did you compile the u-boot
+> again?
+> Please wait for a few days I will check and provide once am back.
+>
+> Thanks,
+> Sundeep
+>
 >>
+>> Regards,
 >>
->> Now (2) is entirely handled in the host kernel, so it's more a Linux
->> question. But does (1) seem acceptable for virtio-iommu in Qemu?
+>> Phil.
 >>
->> Thanks,
->> Jean
->>
-
+>>             https://github.com/Subbaraya-Sundeep/qemu-test-binaries.git
+>>>
+>>>             <https://github.com/Subbaraya-Sundeep/qemu-test-binaries.gi=
+t
+>>> >
+>>>
+>>>             U-boot is from Emcraft with modified
+>>>                 - SPI driver not to use PDMA.
+>>>                 - ugly hack to pass dtb to kernel in r1.
+>>>             @
+>>>             https://github.com/Subbaraya-Sundeep/emcraft-uboot-sf2.git
+>>>             <https://github.com/Subbaraya-Sundeep/emcraft-uboot-sf2.git=
+>
+>>>
+>>>             Linux is 4.5 linux with Smartfusion2 SoC dts and clocksourc=
+e
+>>>             driver added by myself @
+>>>             https://github.com/Subbaraya-Sundeep/linux.git
+>>>             <https://github.com/Subbaraya-Sundeep/linux.git>
+>>>
+>>>             v5
+>>>                 As per Philippe comments:
+>>>                     Added abort in Sysreg if guest tries to remap memor=
+y
+>>>                     other than default mapping.
+>>>                     Use of CONFIG_MSF2 in Makefile for soc.c
+>>>                     Fixed incorrect logic in timer model.
+>>>                     Renamed msf2-timer.c -> mss-timer.c
+>>>                             msf2-spi.c -> mss-spi.c also type names
+>>>                     Renamed function msf2_init->emcraft_sf2_init in
+>>>             msf2-som.c
+>>>                     Added part-name,eNVM-size,eSRAM-size,pclk0 and pclk=
+1
+>>>                         properties to soc.
+>>>                     Pass soc part-name,memory size and clock rate
+>>>             properties from som.
+>>>             v4:
+>>>                 Fixed build failure by using PRIx macros.
+>>>             v3:
+>>>                 Added SoC file and board file as per Alistair comments.
+>>>             v2:
+>>>                 Added SPI controller so that u-boot loads kernel from
+>>>             spi flash.
+>>>             v1:
+>>>                 Initial patch set with timer and sysreg
+>>>
+>>>             Thanks,
+>>>             Sundeep
+>>>
+>>>             Subbaraya Sundeep (5):
+>>>               msf2: Add Smartfusion2 System timer
+>>>               msf2: Microsemi Smartfusion2 System Register block.
+>>>               msf2: Add Smartfusion2 SPI controller
+>>>               msf2: Add Smartfusion2 SoC.
+>>>               msf2: Add Emcraft's Smartfusion2 SOM kit.
+>>>
+>>>              default-configs/arm-softmmu.mak |   1 +
+>>>              hw/arm/Makefile.objs            |   2 +
+>>>              hw/arm/msf2-soc.c               | 201 ++++++++++++++++++++=
++
+>>>              hw/arm/msf2-som.c               |  89 ++++++++++
+>>>              hw/misc/Makefile.objs           |   1 +
+>>>              hw/misc/msf2-sysreg.c           | 161 +++++++++++++++++
+>>>              hw/ssi/Makefile.objs            |   1 +
+>>>              hw/ssi/mss-spi.c                | 378
+>>>             ++++++++++++++++++++++++++++++++++++++++
+>>>              hw/timer/Makefile.objs          |   1 +
+>>>              hw/timer/mss-timer.c            | 249
+>>>             ++++++++++++++++++++++++++
+>>>              include/hw/arm/msf2-soc.h       |  69 ++++++++
+>>>              include/hw/misc/msf2-sysreg.h   |  80 +++++++++
+>>>              include/hw/ssi/mss-spi.h        | 104 +++++++++++
+>>>              include/hw/timer/mss-timer.h    |  80 +++++++++
+>>>              14 files changed, 1417 insertions(+)
+>>>              create mode 100644 hw/arm/msf2-soc.c
+>>>              create mode 100644 hw/arm/msf2-som.c
+>>>              create mode 100644 hw/misc/msf2-sysreg.c
+>>>              create mode 100644 hw/ssi/mss-spi.c
+>>>              create mode 100644 hw/timer/mss-timer.c
+>>>              create mode 100644 include/hw/arm/msf2-soc.h
+>>>              create mode 100644 include/hw/misc/msf2-sysreg.h
+>>>              create mode 100644 include/hw/ssi/mss-spi.h
+>>>              create mode 100644 include/hw/timer/mss-timer.h
+>>>
+>>>
+>>>
+>>>
+>

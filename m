@@ -1,94 +1,119 @@
-Received: by 10.25.227.6 with SMTP id a6csp1259917lfh;
-        Mon, 26 Jun 2017 19:33:52 -0700 (PDT)
-X-Received: by 10.237.41.132 with SMTP id o4mr3901433qtd.242.1498530832076;
-        Mon, 26 Jun 2017 19:33:52 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1498530832; cv=none;
+Received: by 10.25.227.6 with SMTP id a6csp1303482lfh;
+        Mon, 26 Jun 2017 20:33:12 -0700 (PDT)
+X-Received: by 10.55.102.203 with SMTP id a194mr4040693qkc.180.1498534392885;
+        Mon, 26 Jun 2017 20:33:12 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1498534392; cv=none;
         d=google.com; s=arc-20160816;
-        b=VPFjkemvzTLdZUilgoLxUfc9lZ5XToRGaBB8xHJHEXJeM9ZZn17J+CnKc7AlO0MGt1
-         06gzblfVNz5a0i5HrT2RnnZhYZqB16mNPTzW2ZJkwyHAHpJ6tx/1/7d8ilnPiQokuudr
-         fp/PTrc8MXZPsxBoUQw6slJywjU6Esc+WcEtcGXSDEJxk94tgk9eIKbfhajsDUr1qrTx
-         gcjopG8PKaVQguurBnMnSt4pUnQ6gdwAZmhN0w5dTytFq1UbPKyLgTINnz4NyjZQoxyT
-         2EsdnHbJ1LNcor1X45uWWnUC9o+icFXXmj3KgCTQyH/PxPZCPRte1d9oPeMIidxQmvGi
-         4s/w==
+        b=cQrijkAmn0AksoZM5Yl20cX6gcptIv2L3Eeg4O3VPLZRCulYpnmhba92E6IEqsTGwm
+         sM6UK4uR5Fc1voMXIvlmvnKBlaLDgGW363SD9qtmO6oldDdoWqUB57YO/2DxfmsbLiZ0
+         9zbtCC4KJekpwh1adwXJ47YN/vlKLCOvwnXBqqifBMcIz0QH4MaPTE3KzO6htTzzfn5n
+         NpKoUwhNmeZAB8tDMoDb0u9ogejVi0U67FoJOYrmztgt13ck04r8bedo7cGOgoEXHazd
+         9X87PXPkdOlO+GJ6qbICpN2PCPdho7ZhTFMVolYwA21L6Xc7RAkdsgQQ1EnyS1bgodo+
+         zRlA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:in-reply-to:content-transfer-encoding
-         :content-disposition:mime-version:references:message-id:subject:cc
-         :to:from:date:dkim-filter:dmarc-filter:arc-authentication-results;
-        bh=jt3h1LQkXeNbyrfiurFmVWaelmyO0FQU1z3N3DoUrkQ=;
-        b=zTtguQkDVuEn1NxXOIq36hYKhheP7+ydiNd2dpeLvjStGzH6JHi/Idi8o6zHhdiEhv
-         1T29lnzksznti4vi2TxNm2LR/Sdwc1Vm1HKeYQiRyt1g5ag6E0jeW+41n1LXyDp/ZmxN
-         eZ/hSNbD5xLhxdz7CjY+RRixGUnvXLy98iS1JIOD3Qf3hGR/CcwNAjyuMWO2y/S58C8V
-         m5Y4tykOPByMVb+sDRj19u9Qcb9zvgMxkAvcu8W5tsy9g/3+6r5Az4PHMmiYHWNvAhJ6
-         UZuKyrRUv5nK6o0Lfi9+a5cbuSdJ7p8cXEKeuYezHhqRYAfJTepMeVrxIqg6nVzB1jpw
-         ezrg==
+        h=content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:cc:to:subject:sender
+         :dkim-signature:arc-authentication-results;
+        bh=jQNYsz6Es8pclXeFSlfaEzA6REsFHVueHL3IK3WORyw=;
+        b=hTrwp48iUiba4ii2/FYAVcRGY43LCeJ6WXVdNXpVU4LoPVO7dZJdMRDE3kGk/oypmw
+         zajb5qpsVh5FdgpL6J8AL6ZGj8pCZC2+6fI8pIV6+0RByTVpLwh1R9tcrJskmvaUZrcc
+         xwbMlwpZoZvZCODf3SFFZ6lsbJ/dI5txTR6EtAQah1aSVaf002pt0AH8anIZTDFgq6GA
+         MMIFB9pT04fYe4AMRnHUIK2wsfJGOfoFNyF9YcTnsm9Iwr4baO6kteVxT2+Md3qAkJSI
+         achZu0s/jmz55w5GMHQ9FgNQLUUR9FymhAzxpfTHKVyn6d+xIQ5gUyL2Lj0i98MPlxRr
+         fTBQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of ehabkost@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=ehabkost@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <ehabkost@redhat.com>
-Received: from mx1.redhat.com (mx1.redhat.com. [209.132.183.28])
-        by mx.google.com with ESMTPS id 51si1625485qtr.72.2017.06.26.19.33.51
+       dkim=pass header.i=@gmail.com header.b=WX05P8Fb;
+       spf=pass (google.com: domain of rth7680@gmail.com designates 2607:f8b0:400d:c0d::244 as permitted sender) smtp.mailfrom=rth7680@gmail.com
+Return-Path: <rth7680@gmail.com>
+Received: from mail-qt0-x244.google.com (mail-qt0-x244.google.com. [2607:f8b0:400d:c0d::244])
+        by mx.google.com with ESMTPS id t46si1723303qtc.261.2017.06.26.20.33.12
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 26 Jun 2017 19:33:52 -0700 (PDT)
-Received-SPF: pass (google.com: domain of ehabkost@redhat.com designates 209.132.183.28 as permitted sender) client-ip=209.132.183.28;
+        Mon, 26 Jun 2017 20:33:12 -0700 (PDT)
+Received-SPF: pass (google.com: domain of rth7680@gmail.com designates 2607:f8b0:400d:c0d::244 as permitted sender) client-ip=2607:f8b0:400d:c0d::244;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of ehabkost@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=ehabkost@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com [10.5.11.13])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 013E07F6AC;
-	Tue, 27 Jun 2017 02:33:51 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 013E07F6AC
-Authentication-Results: ext-mx01.extmail.prod.ext.phx2.redhat.com; dmarc=none (p=none dis=none) header.from=redhat.com
-Authentication-Results: ext-mx01.extmail.prod.ext.phx2.redhat.com; spf=pass smtp.mailfrom=ehabkost@redhat.com
-DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com 013E07F6AC
-Received: from localhost (ovpn-116-2.gru2.redhat.com [10.97.116.2])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 7FD2E7EDCD;
-	Tue, 27 Jun 2017 02:33:50 +0000 (UTC)
-Date: Mon, 26 Jun 2017 23:33:48 -0300
-From: Eduardo Habkost <ehabkost@redhat.com>
-To: Alex =?iso-8859-1?Q?Benn=E9e?= <alex.bennee@linaro.org>
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org, patches@linaro.org
-Subject: Re: [Qemu-arm] [PATCH 0/4] cpu: Implement cpu_generic_new()
-Message-ID: <20170627023348.GU12152@localhost.localdomain>
-References: <1486996099-15820-1-git-send-email-peter.maydell@linaro.org>
- <87a84uyj2q.fsf@linaro.org>
+       dkim=pass header.i=@gmail.com header.b=WX05P8Fb;
+       spf=pass (google.com: domain of rth7680@gmail.com designates 2607:f8b0:400d:c0d::244 as permitted sender) smtp.mailfrom=rth7680@gmail.com
+Received: by mail-qt0-x244.google.com with SMTP id v31so2467168qtb.3;
+        Mon, 26 Jun 2017 20:33:12 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=sender:subject:to:cc:references:from:message-id:date:user-agent
+         :mime-version:in-reply-to:content-language:content-transfer-encoding;
+        bh=jQNYsz6Es8pclXeFSlfaEzA6REsFHVueHL3IK3WORyw=;
+        b=WX05P8FbQmaPxv066xvdvO/Hf0O+ca8Ue+yyqHHJMmwa+PeK2SzSIaYaLlDXf1Xcqw
+         X1rizjgRtncpf+1lLOxlGEbcAR9pdCjDrwTYgzCi8COy8+oelbKW33+Aa6y8Rv9vZ1yL
+         Qd8KxEeGABRR7rJ8jE55OnQxS+aZWip7Sj5pSWQ4TE3J8xLqUlkSelTB1/07n2Twc/QL
+         An7lm+YyyjTRnR2A03D9EIeIySJWeqn/p7uBO/5JdAME8vJCFU7BCSJHMQbybp1xLbAe
+         pK5HLUUFWiYoTvcsS947MUBxHFNPcndurlUcfbk/z3AYsO/KhxIGLGWSUn1d7XWOqdgE
+         rU7g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+         :date:user-agent:mime-version:in-reply-to:content-language
+         :content-transfer-encoding;
+        bh=jQNYsz6Es8pclXeFSlfaEzA6REsFHVueHL3IK3WORyw=;
+        b=a5P1ZZlZIL97A+ktwm2gFfbQ3PhGcKr6siob3ULtBi6fmsJhM9TGrFT0p9AMb7AbDr
+         lyXFAflyyYvH61UzpekQx6HklHGD+bIJ9pmLcdoFMJyNv8JRTNdv/b+yi/a6klx2Xl22
+         F/brNOB86WWTouCnS6OKxhoPg3oXqeuOwKKRXnLUZzRRTAaDymYpYXGBL7dtyyiB3+7O
+         YJlml1nwu1q4wsYSwE4gCYbf6TSJED/hCYAE8JOGzcoZlxK6ABeqloAT1LTMiLL8zI6/
+         H6Zzfg72li/L9Y83t+K7sBkAHISnOjEJxE+NtxYmtpZM6meoWssHrciBk7vJgMtvAVvD
+         F41Q==
+X-Gm-Message-State: AKS2vOw8RanJM5xgLAJy84bON0n6Lh7fzLZu1MEtQTk7246SxRNQGl8t
+	uB6t8nyBw6Fyg2l9DIc=
+X-Received: by 10.237.36.143 with SMTP id t15mr4082365qtc.180.1498534392313;
+        Mon, 26 Jun 2017 20:33:12 -0700 (PDT)
+Return-Path: <rth7680@gmail.com>
+Received: from bigtime.twiddle.net (97-113-165-157.tukw.qwest.net. [97.113.165.157])
+        by smtp.googlemail.com with ESMTPSA id c7sm1432732qke.27.2017.06.26.20.33.10
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 26 Jun 2017 20:33:11 -0700 (PDT)
+Sender: Richard Henderson <rth7680@gmail.com>
+Subject: Re: [Qemu-devel] [PATCH v9 21/26] target: [tcg, arm] Port to
+ insn_start
+To: =?UTF-8?Q?Llu=c3=ads_Vilanova?= <vilanova@ac.upc.edu>,
+ qemu-devel@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Peter Crosthwaite <crosthwaite.peter@gmail.com>,
+ "open list:ARM" <qemu-arm@nongnu.org>, Paolo Bonzini <pbonzini@redhat.com>,
+ =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>
+References: <149838022308.6497.2104916050645246693.stgit@frigg.lan>
+ <149838531005.6497.12362377034456580175.stgit@frigg.lan>
+From: Richard Henderson <rth@twiddle.net>
+Message-ID: <c43f4c84-debd-ffbe-7d48-97c74a0b8bd0@twiddle.net>
+Date: Mon, 26 Jun 2017 20:33:08 -0700
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+ Thunderbird/52.2.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
+In-Reply-To: <149838531005.6497.12362377034456580175.stgit@frigg.lan>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <87a84uyj2q.fsf@linaro.org>
-X-Fnord: you can see the fnord
-User-Agent: Mutt/1.8.0 (2017-02-23)
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.5.110.25]); Tue, 27 Jun 2017 02:33:51 +0000 (UTC)
-X-TUID: D+64EqDgsvG3
+X-TUID: 1kLvs+gclVdI
 
-On Mon, Jun 26, 2017 at 02:28:13PM +0100, Alex Bennée wrote:
-> 
-> Peter Maydell <peter.maydell@linaro.org> writes:
-> 
-> > This patchset adds a new function cpu_generic_new()
-> > which is similar to cpu_generic_init() except that it
-> > does not realize the created CPU object. This means that
-> > board code can do a "new cpu; set QOM properties; realize"
-> > sequence without having to do all the work of splitting
-> > the CPU model string and calling parse_features by hand.
-> 
-> 
-> Just going through my review queue and I see this needs re-basing. Is
-> there going to be another rev or was a different approach suggested?
+On 06/25/2017 03:08 AM, LluÃ­s Vilanova wrote:
+> +static void arm_trblock_insn_start(DisasContextBase *db, CPUState *cpu)
+> +{
+> +    DisasContext *dc = container_of(db, DisasContext, base);
+> +
+> +    dc->insn_start_idx = tcg_op_buf_count();
+> +    tcg_gen_insn_start(dc->pc,
+> +                       (dc->condexec_cond << 4) | (dc->condexec_mask >> 1),
+> +                       0);
+> +
+> +#ifdef CONFIG_USER_ONLY
+> +    /* Intercept jump to the magic kernel page.  */
+> +    if (dc->pc >= 0xffff0000) {
+> +        /* We always get here via a jump, so know we are not in a
+> +           conditional execution block.  */
+> +        gen_exception_internal(EXCP_KERNEL_TRAP);
+> +        dc->is_jmp = DJ_EXC;
+> +    }
+> +#endif
+> +}
 
-The right way to go is not clear.  We know we want to remove duplication
-of CPU creation code, but probably we should first refactor the -cpu
-parsing code, so parsing happens: 1) only once; 2) earlier in main(),
-preferably before machine->init() runs; 3) inside generic code instead
-of arch-specific code; 4) preferably using the QemuOpts parser instead
-of the current strtok()-based custom parsers.
+I think this DJ_EXC block is better placed at the start of disas_insn.
 
-After the parsing code mess is sorted out, writing a generic CPU
-creation wrapper will probably be easier (and safer).
+It is, however, the answer to one of my questions re patch 4/26.
 
--- 
-Eduardo
+
+r~

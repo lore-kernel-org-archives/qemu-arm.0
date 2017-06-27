@@ -1,105 +1,94 @@
-Received: by 10.25.15.197 with SMTP id 66csp1573447lfp;
-        Mon, 26 Jun 2017 11:08:40 -0700 (PDT)
-X-Received: by 10.237.57.227 with SMTP id m90mr1952675qte.45.1498500520170;
-        Mon, 26 Jun 2017 11:08:40 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1498500520; cv=none;
+Received: by 10.25.227.6 with SMTP id a6csp1259917lfh;
+        Mon, 26 Jun 2017 19:33:52 -0700 (PDT)
+X-Received: by 10.237.41.132 with SMTP id o4mr3901433qtd.242.1498530832076;
+        Mon, 26 Jun 2017 19:33:52 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1498530832; cv=none;
         d=google.com; s=arc-20160816;
-        b=RYMovGUO851QwSqXdOrpxI6xqCR55ZdN0I8pBFJ4aDPY/kShyyocslmpP/0WB0IuEe
-         SVZ3U1OWrMc2ZPK1lBtqAZ2vEvFPZ6gytugbgwjCuC66vGAreVW8x/mhqnhiFBuRlitc
-         48+N7r4P24vDRI/4YnAfB0dhbgsEb0VttF0vNpxYcCjRnXHXauODPjo3i9JQe91Fqmfb
-         xqoAwcevzGxQsQvPaTQbIOE9Lo92G0ZqTLWUfjYdHa3PYwrZL3YsAhk9YmAUCA2sIXRM
-         /RFsagCRUZc5Y7AxAH6JMVtt48xwtAuV/2eobOHmwLdgUklZTeePxmVDper1g7MTphJ7
-         Td2w==
+        b=VPFjkemvzTLdZUilgoLxUfc9lZ5XToRGaBB8xHJHEXJeM9ZZn17J+CnKc7AlO0MGt1
+         06gzblfVNz5a0i5HrT2RnnZhYZqB16mNPTzW2ZJkwyHAHpJ6tx/1/7d8ilnPiQokuudr
+         fp/PTrc8MXZPsxBoUQw6slJywjU6Esc+WcEtcGXSDEJxk94tgk9eIKbfhajsDUr1qrTx
+         gcjopG8PKaVQguurBnMnSt4pUnQ6gdwAZmhN0w5dTytFq1UbPKyLgTINnz4NyjZQoxyT
+         2EsdnHbJ1LNcor1X45uWWnUC9o+icFXXmj3KgCTQyH/PxPZCPRte1d9oPeMIidxQmvGi
+         4s/w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=user-agent:in-reply-to:content-transfer-encoding
          :content-disposition:mime-version:references:message-id:subject:cc
-         :to:from:date:dkim-signature:dkim-signature
-         :arc-authentication-results;
-        bh=vcYnwabnMUc5xFNQ5caZxz4dqW9kKoP1O5gSdcCj2Jo=;
-        b=QFdffpOWNhyvm9b9VJCEtTvE4wmoTgNs2j7CpydSB60eF29D/2GqzfESoWjgthMJ8c
-         fJVZLNrfQX69PfuYC0wEnj4IGQYOniRyjpx+2CtyPGWzI2om8hBFxE/uEA2jbtKJwmKW
-         e4n8br43Bev6MIUBGQhQ2twt6s2TSODiuNT6+zMI0cQvygCCDSStpNOho7b4RPmk/wSP
-         kQixru9YXXvFStUBgNWKsbSPsznwVU4JF86xeDtiTkbp1ZTfRd7LZAf4YYDEYWxKTO0I
-         qdjVUy/fAQIQZ/7wpnd657HsX09H5bcD1sKiGvl0uME+Fjm1ko+Ui7tjxGkxNwsVm74F
-         YqyQ==
+         :to:from:date:dkim-filter:dmarc-filter:arc-authentication-results;
+        bh=jt3h1LQkXeNbyrfiurFmVWaelmyO0FQU1z3N3DoUrkQ=;
+        b=zTtguQkDVuEn1NxXOIq36hYKhheP7+ydiNd2dpeLvjStGzH6JHi/Idi8o6zHhdiEhv
+         1T29lnzksznti4vi2TxNm2LR/Sdwc1Vm1HKeYQiRyt1g5ag6E0jeW+41n1LXyDp/ZmxN
+         eZ/hSNbD5xLhxdz7CjY+RRixGUnvXLy98iS1JIOD3Qf3hGR/CcwNAjyuMWO2y/S58C8V
+         m5Y4tykOPByMVb+sDRj19u9Qcb9zvgMxkAvcu8W5tsy9g/3+6r5Az4PHMmiYHWNvAhJ6
+         UZuKyrRUv5nK6o0Lfi9+a5cbuSdJ7p8cXEKeuYezHhqRYAfJTepMeVrxIqg6nVzB1jpw
+         ezrg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@braap.org header.b=j9dJ0n+q;
-       dkim=pass header.i=@messagingengine.com header.b=qMrGL1u1;
-       spf=pass (google.com: domain of cota@braap.org designates 66.111.4.27 as permitted sender) smtp.mailfrom=cota@braap.org
-Return-Path: <cota@braap.org>
-Received: from out3-smtp.messagingengine.com (out3-smtp.messagingengine.com. [66.111.4.27])
-        by mx.google.com with ESMTPS id n188si615079qkb.292.2017.06.26.11.08.39
+       spf=pass (google.com: domain of ehabkost@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=ehabkost@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <ehabkost@redhat.com>
+Received: from mx1.redhat.com (mx1.redhat.com. [209.132.183.28])
+        by mx.google.com with ESMTPS id 51si1625485qtr.72.2017.06.26.19.33.51
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 26 Jun 2017 11:08:40 -0700 (PDT)
-Received-SPF: pass (google.com: domain of cota@braap.org designates 66.111.4.27 as permitted sender) client-ip=66.111.4.27;
+        Mon, 26 Jun 2017 19:33:52 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ehabkost@redhat.com designates 209.132.183.28 as permitted sender) client-ip=209.132.183.28;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@braap.org header.b=j9dJ0n+q;
-       dkim=pass header.i=@messagingengine.com header.b=qMrGL1u1;
-       spf=pass (google.com: domain of cota@braap.org designates 66.111.4.27 as permitted sender) smtp.mailfrom=cota@braap.org
-Received: from compute4.internal (compute4.nyi.internal [10.202.2.44])
-	by mailout.nyi.internal (Postfix) with ESMTP id BFF5720B63;
-	Mon, 26 Jun 2017 14:08:39 -0400 (EDT)
-Received: from frontend2 ([10.202.2.161])
-  by compute4.internal (MEProxy); Mon, 26 Jun 2017 14:08:39 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=braap.org; h=cc
-	:content-transfer-encoding:content-type:date:from:in-reply-to
-	:message-id:mime-version:references:subject:to:x-me-sender
-	:x-me-sender:x-sasl-enc:x-sasl-enc; s=mesmtp; bh=vcYnwabnMUc5xFN
-	Q5caZxz4dqW9kKoP1O5gSdcCj2Jo=; b=j9dJ0n+qNGJmUt8P7xHqR5Dr7wtB6I9
-	u97keTHfOIW4RIX7sMWGjcN6hfzGB8nh4IzUKWatVQVriBnGXYf00v5JthoDvIIX
-	dQ7oQ6OfVzRrKyX4sc1FtiRn0Fh/BZ5rVm4cM18RgLFbSiJJg4J7ABd+oBnpRnN/
-	VWDdvruYkWww=
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
-	messagingengine.com; h=cc:content-transfer-encoding:content-type
-	:date:from:in-reply-to:message-id:mime-version:references
-	:subject:to:x-me-sender:x-me-sender:x-sasl-enc:x-sasl-enc; s=
-	fm1; bh=vcYnwabnMUc5xFNQ5caZxz4dqW9kKoP1O5gSdcCj2Jo=; b=qMrGL1u1
-	VwTR/KiH5DElm8RGpnwThH6PyxgY8BGkv0nanB0sNuCEFeS4fB6pRoSAWnkPTo2q
-	KtyrZjvTonSoK8IaxaKt3PMmM+Y91BbKElR4WveUKb82udaj2F0PzEX+LtgcMQvG
-	eI38Bhcn7oa7Kt/GlOuFglE3fffawvx9j4BH3EtMoCs2ToNnq+ulmoostneNfatM
-	3lQa1cnKPuQC6+375RhBQA6Vnal5PChByETQiG5ISeB+PJnW05jZtEInHCSKB7a9
-	GNW4sz4L9R2xKfkFbutrX2dlA4jJby/DdEotbSrYg4I+efnYKb3Wqw+X5cv1x4SF
-	qFBGeb7wFU3b6A==
-X-ME-Sender: <xms:p01RWdPMg8eRBlHfC70rJSuG-R1IRlJEgUVhbECwPBaagwUpkALSeA>
-X-Sasl-enc: zyJx+bqHXzw5ER3Scwu/ro8SaxfdlIt/sGzgq7t9nb0c 1498500519
-Received: from localhost (flamenco.cs.columbia.edu [128.59.20.216])
-	by mail.messagingengine.com (Postfix) with ESMTPA id 7589F247E8;
-	Mon, 26 Jun 2017 14:08:39 -0400 (EDT)
-Date: Mon, 26 Jun 2017 14:08:39 -0400
-From: "Emilio G. Cota" <cota@braap.org>
-To: =?iso-8859-1?Q?Llu=EDs?= Vilanova <vilanova@ac.upc.edu>
-Cc: qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
-	Peter Crosthwaite <crosthwaite.peter@gmail.com>,
-	"open list:ARM" <qemu-arm@nongnu.org>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	Alex =?iso-8859-1?Q?Benn=E9e?= <alex.bennee@linaro.org>,
-	Richard Henderson <rth@twiddle.net>
-Subject: Re: [Qemu-devel] [PATCH v9 16/26] target: [tcg, arm] Replace DISAS_*
- with DJ_*
-Message-ID: <20170626180839.GF17935@flamenco>
-References: <149838022308.6497.2104916050645246693.stgit@frigg.lan>
- <149838409778.6497.16277162983730521098.stgit@frigg.lan>
+       spf=pass (google.com: domain of ehabkost@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=ehabkost@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com [10.5.11.13])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 013E07F6AC;
+	Tue, 27 Jun 2017 02:33:51 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 013E07F6AC
+Authentication-Results: ext-mx01.extmail.prod.ext.phx2.redhat.com; dmarc=none (p=none dis=none) header.from=redhat.com
+Authentication-Results: ext-mx01.extmail.prod.ext.phx2.redhat.com; spf=pass smtp.mailfrom=ehabkost@redhat.com
+DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com 013E07F6AC
+Received: from localhost (ovpn-116-2.gru2.redhat.com [10.97.116.2])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 7FD2E7EDCD;
+	Tue, 27 Jun 2017 02:33:50 +0000 (UTC)
+Date: Mon, 26 Jun 2017 23:33:48 -0300
+From: Eduardo Habkost <ehabkost@redhat.com>
+To: Alex =?iso-8859-1?Q?Benn=E9e?= <alex.bennee@linaro.org>
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org, patches@linaro.org
+Subject: Re: [Qemu-arm] [PATCH 0/4] cpu: Implement cpu_generic_new()
+Message-ID: <20170627023348.GU12152@localhost.localdomain>
+References: <1486996099-15820-1-git-send-email-peter.maydell@linaro.org>
+ <87a84uyj2q.fsf@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=iso-8859-1
 Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <149838409778.6497.16277162983730521098.stgit@frigg.lan>
-User-Agent: Mutt/1.5.24 (2015-08-30)
-X-TUID: Dynkt6tpdTH9
+In-Reply-To: <87a84uyj2q.fsf@linaro.org>
+X-Fnord: you can see the fnord
+User-Agent: Mutt/1.8.0 (2017-02-23)
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.5.110.25]); Tue, 27 Jun 2017 02:33:51 +0000 (UTC)
+X-TUID: D+64EqDgsvG3
 
-On Sun, Jun 25, 2017 at 12:48:17 +0300, Lluís Vilanova wrote:
-> Incrementally paves the way towards using the generic instruction translation
-> loop.
+On Mon, Jun 26, 2017 at 02:28:13PM +0100, Alex Bennée wrote:
 > 
-> Signed-off-by: Lluís Vilanova <vilanova@ac.upc.edu>
-> ---
->  target/arm/translate-a64.c |   58 ++++++++++++++--------------
->  target/arm/translate.c     |   90 ++++++++++++++++++++++----------------------
->  target/arm/translate.h     |   24 ++++++------
->  3 files changed, 87 insertions(+), 85 deletions(-)
+> Peter Maydell <peter.maydell@linaro.org> writes:
+> 
+> > This patchset adds a new function cpu_generic_new()
+> > which is similar to cpu_generic_init() except that it
+> > does not realize the created CPU object. This means that
+> > board code can do a "new cpu; set QOM properties; realize"
+> > sequence without having to do all the work of splitting
+> > the CPU model string and calling parse_features by hand.
+> 
+> 
+> Just going through my review queue and I see this needs re-basing. Is
+> there going to be another rev or was a different approach suggested?
 
-I'd do arm and a64 patches separately; much better for bisectability.
+The right way to go is not clear.  We know we want to remove duplication
+of CPU creation code, but probably we should first refactor the -cpu
+parsing code, so parsing happens: 1) only once; 2) earlier in main(),
+preferably before machine->init() runs; 3) inside generic code instead
+of arch-specific code; 4) preferably using the QemuOpts parser instead
+of the current strtok()-based custom parsers.
 
-The DisasContextBase patch cannot be split up, obviously.
+After the parsing code mess is sorted out, writing a generic CPU
+creation wrapper will probably be easier (and safer).
 
-		E.
+-- 
+Eduardo

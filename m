@@ -1,127 +1,223 @@
-Received: by 10.25.227.6 with SMTP id a6csp2955675lfh;
-        Wed, 28 Jun 2017 04:51:17 -0700 (PDT)
-X-Received: by 10.99.185.28 with SMTP id z28mr10292706pge.123.1498650677062;
-        Wed, 28 Jun 2017 04:51:17 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1498650677; cv=none;
+Received: by 10.25.227.6 with SMTP id a6csp2961821lfh;
+        Wed, 28 Jun 2017 04:57:22 -0700 (PDT)
+X-Received: by 10.55.104.81 with SMTP id d78mr12554676qkc.24.1498651042489;
+        Wed, 28 Jun 2017 04:57:22 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1498651042; cv=none;
         d=google.com; s=arc-20160816;
-        b=txqb9MM3XhuUQmz2JuOEhrmpsuSBnnlMm69J8u6HuT1oWqEUQIoNAXypGFdGPzTLJV
-         laV/io/Z5MmMXNGedrx6r/jfppusUYhe7CUSaf6qWsIeB9pQSdkxNXYt8cQYIwjkZrQ+
-         q4ne17kFSgEyyeHgLJCXLJG7B2xkJb5h0sMwnBueEOP+/y42uupb7+U1HNard7oJ2A8O
-         FTEgP5esmDhKKspMCoRxhQaTJiIeDTQeSS8TDAPpjYDvN4Zzy/u+px1YMo/uh3i8rA6l
-         k6RLlhFNWQRaBV9lS39wKuzDz8K65URbEacnJBfQ38XmZ5xivrlKANQ4JnUYkWEBY6LZ
-         +T3w==
+        b=jgXgi71d0KIipRRiNsKtyx9kbNnxe6wWoQO4AO2wcGfQ7oqmJ4SUTwWEdle3Kvtt3k
+         YchS05Oxu2rkS9Ed7NngYPwdxNASWSbca/KSBzrmoPaD5Z7l6nUhvRwT8Dih1f+EzuXo
+         WcWUlPvmyODTcR0rsy6TEX3SNFXLG1oPYUMJbcOfxZ/lxT2tHKGu0I/l61SUtKccHiUc
+         HKO0KcEU+g9nDWQmTTABTHOm+0wL/nUB2AFHzbXUwXkHGDswSsPPfy8ZwoiDizFB3xzG
+         tmx39Gw04Cr7fcZWWbUr4F+Q6Li5cSYXuZlkEROB1pgxpUujCjH7bsDdiTIV+D+KVuxZ
+         zppg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-id:precedence:sender:user-agent:in-reply-to
-         :content-disposition:mime-version:references:message-id:subject:cc
-         :to:from:date:dkim-filter:dmarc-filter:arc-authentication-results;
-        bh=ccaYucwfmHyp/lScL07OaG1bAAmYHsc6QsZq+dNmFd8=;
-        b=oi6eNpVeJgp6pwoC8Ex4taa24FRb/EQk5PL8fD9dQ9TogcPxq/CGjGLOFCHnOrzueh
-         7VoxilbISG784lBAHBUlYVkgnOmzGuWo76ymP8vzwWmKo30h6mM8Su5mkotQX8MGvc9o
-         bq6FBFsZ++zxODxPKxdFCW1kR/Yxytk6f0pnzM3rAFHUoGayZ9bgMuN5HMuPQjItZdrH
-         5XEVbwX26MJgqpLr6oCxTL/vB19qcoizBIfZ2HrNthS+NoPIfWD6AMIsRKcGUMGmwTTG
-         /pzafRw5k091TAA2nQZ/+zKasbS8B6csugjCqn4POeONgkkLPgKUMWF4A/XIEnThiZ4P
-         UD+g==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:arc-authentication-results;
+        bh=Vr3jAA7YWw29HpNXm/wEUw+vs8nYoKQQZc4R3dQzHy4=;
+        b=pxJ2vl2idxPFF9ukLcGDtmI6phf7V4SDPU4Nlq/bLVqYgqTg6zmGeCcVvR39JNzk1e
+         k2+mlqGuwwxNrkwmcCCYEhjIzm/WT3uNxIg/k/opQlT6Bp9bh3N2Dau54TbtqCPNUxZ9
+         5njpkH4Djb09roma+PSswkF8GkBJzwGhS8SsowCR/ySzrV98am5qriRumoNUqmQ2BW2o
+         y+GCabPJnq9JIQOUFbsBIH+Eul9McV2KzbVMwM/IXw8iKuZP1UfiRWKG8PCSc+YRCkl3
+         QSgaFnNsvMTarR0GGG+blFRvaIXd8i/k59tFWmWoXHV6Y9Ni5921QqofFAHcgpbpaHqi
+         sQIw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <kvm-owner@vger.kernel.org>
-Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
-        by mx.google.com with ESMTP id d197si1397185pga.104.2017.06.28.04.51.16;
-        Wed, 28 Jun 2017 04:51:17 -0700 (PDT)
-Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
+        by mx.google.com with ESMTPS id 35si1809908qtt.80.2017.06.28.04.57.21
+        for <alex.bennee@linaro.org>
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Wed, 28 Jun 2017 04:57:22 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S1751526AbdF1LvP (ORCPT <rfc822;francois.ozog@linaro.org>
-        + 6 others); Wed, 28 Jun 2017 07:51:15 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:2420 "EHLO mx1.redhat.com"
-        rhost-flags-OK-OK-OK-OK) by vger.kernel.org with ESMTP
-        id S1751513AbdF1LvO (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Wed, 28 Jun 2017 07:51:14 -0400
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com [10.5.11.11])
-        (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-        (No client certificate requested)
-        by mx1.redhat.com (Postfix) with ESMTPS id DD0BE7A163;
-        Wed, 28 Jun 2017 11:51:13 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com DD0BE7A163
-Authentication-Results: ext-mx04.extmail.prod.ext.phx2.redhat.com; dmarc=none (p=none dis=none) header.from=redhat.com
-Authentication-Results: ext-mx04.extmail.prod.ext.phx2.redhat.com; spf=pass smtp.mailfrom=drjones@redhat.com
-DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com DD0BE7A163
-Received: from kamzik.brq.redhat.com (unknown [10.43.2.160])
-        by smtp.corp.redhat.com (Postfix) with ESMTPS id 6936D89E55;
-        Wed, 28 Jun 2017 11:51:12 +0000 (UTC)
-Date:   Wed, 28 Jun 2017 13:51:10 +0200
-From:   Andrew Jones <drjones@redhat.com>
-To:     Alexander Graf <agraf@suse.de>
-Cc:     qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
-        kvm@vger.kernel.org, cdall@linaro.org, qemu-arm@nongnu.org,
-        Paolo Bonzini <pbonzini@redhat.com>
-Subject: Re: [PATCH v3] ARM: KVM: Enable in-kernel timers with user space gic
-Message-ID: <20170628115110.nq7wdsrhxxjelzq6@kamzik.brq.redhat.com>
-References: <1498577737-130264-1-git-send-email-agraf@suse.de>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:60753 helo=lists.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1dQBax-00027U-Re
+	for alex.bennee@linaro.org; Wed, 28 Jun 2017 07:57:19 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:57299)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <clg@kaod.org>) id 1dQBaq-00027G-8P
+	for qemu-arm@nongnu.org; Wed, 28 Jun 2017 07:57:13 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+	(envelope-from <clg@kaod.org>) id 1dQBan-0006Pk-52
+	for qemu-arm@nongnu.org; Wed, 28 Jun 2017 07:57:12 -0400
+Received: from 9.mo4.mail-out.ovh.net ([46.105.40.176]:35108)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <clg@kaod.org>) id 1dQBam-0006PA-Ri
+	for qemu-arm@nongnu.org; Wed, 28 Jun 2017 07:57:09 -0400
+Received: from player759.ha.ovh.net (b9.ovh.net [213.186.33.59])
+	by mo4.mail-out.ovh.net (Postfix) with ESMTP id D405D7D435
+	for <qemu-arm@nongnu.org>; Wed, 28 Jun 2017 13:57:06 +0200 (CEST)
+Received: from zorba.kaod.org (LFbn-1-10652-153.w90-89.abo.wanadoo.fr
+	[90.89.238.153]) (Authenticated sender: postmaster@kaod.org)
+	by player759.ha.ovh.net (Postfix) with ESMTPSA id EC68E6400A4;
+	Wed, 28 Jun 2017 13:57:01 +0200 (CEST)
+To: Joel Stanley <joel@jms.id.au>, Peter Maydell <peter.maydell@linaro.org>
+References: <20170628114717.22349-1-joel@jms.id.au>
+From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
+Message-ID: <6c9540fe-9acb-c1ab-9f19-b59682b8fd4c@kaod.org>
+Date: Wed, 28 Jun 2017 13:57:01 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
+	Thunderbird/45.8.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <1498577737-130264-1-git-send-email-agraf@suse.de>
-User-Agent: Mutt/1.6.0.1 (2016-04-01)
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.5.110.28]); Wed, 28 Jun 2017 11:51:14 +0000 (UTC)
-Sender: kvm-owner@vger.kernel.org
-Precedence: bulk
-List-ID: <kvm.vger.kernel.org>
-X-Mailing-List: kvm@vger.kernel.org
-X-TUID: +6q4CT7h7Ffq
+In-Reply-To: <20170628114717.22349-1-joel@jms.id.au>
+Content-Type: text/plain; charset=windows-1252
+X-Ovh-Tracer-Id: 11065907238211849024
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrfeelkedrtddvgdegkecutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmd
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 46.105.40.176
+Subject: Re: [Qemu-arm] [PATCH] aspeed: Register all watchdogs
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.21
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Andrew Jeffery <andrew@aj.id.au>, qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: i75qEADHQ7wc
 
-On Tue, Jun 27, 2017 at 05:35:37PM +0200, Alexander Graf wrote:
-> When running with KVM enabled, you can choose between emulating the
-> gic in kernel or user space. If the kernel supports in-kernel virtualization
-> of the interrupt controller, it will default to that. If not, if will
-> default to user space emulation.
-> 
-> Unfortunately when running in user mode gic emulation, we miss out on
-> interrupt events which are only available from kernel space, such as the timer.
-> This patch leverages the new kernel/user space pending line synchronization for
-> timer events. It does not handle PMU events yet.
-> 
-> Signed-off-by: Alexander Graf <agraf@suse.de>
-> Reviewed-by: Andrew Jones <drjones@redhat.com>
-> 
-> ---
-> 
-> v1 -> v2:
-> 
->   - whitespace fixes
->   - use !! to determine whether bit is set
->   - call in-kernel device IRQs out by their name everywhere
-> 
-> v2 -> v3:
-> 
->   - fix last occurence of calling out timer IRQs explicitly
-> ---
->  accel/kvm/kvm-all.c    |  5 +++++
->  accel/stubs/kvm-stub.c |  5 +++++
->  hw/intc/arm_gic.c      |  7 +++++++
->  include/sysemu/kvm.h   | 11 +++++++++++
->  target/arm/cpu.h       |  3 +++
->  target/arm/kvm.c       | 51 ++++++++++++++++++++++++++++++++++++++++++++++++++
->  6 files changed, 82 insertions(+)
->
+On 06/28/2017 01:47 PM, Joel Stanley wrote:
+> The ast2400 contains two and the ast2500 contains three watchdogs.
+> Add this information to the AspeedSoCInfo and realise the correct numbe=
+r
+> of watchdogs for that each SoC type.
+>=20
+> Signed-off-by: Joel Stanley <joel@jms.id.au>
 
-Tried testing this on a gicv3 machine, a ThunderX2. The guest kernel
-complains with
-
- GICv3: GIC: unable to set SRE (disabled at EL2), panic ahead
-
-but no panic occurs. Instead it hangs in cpu_do_idle(), waiting forever
-for an interrupt.
-
-AAVMF also complains about SRE support, actually it asserts it.
-
- ASSERT [ArmGicDxe] /builddir/build/BUILD/ovmf-c325e41585e3/ArmVirtPkg/Library/ArmVirtGicArchLib/ArmVirtGicArchLib.c(113): IccSre & (1 << 0)
-
-
-I still haven't seen any problems with gicv2 though.
+Reviewed-and-tested-by: C=E9dric Le Goater <clg@kaod.org>
 
 Thanks,
-drew
+
+C.
+
+> ---
+>  hw/arm/aspeed_soc.c         | 25 +++++++++++++++++--------
+>  include/hw/arm/aspeed_soc.h |  4 +++-
+>  2 files changed, 20 insertions(+), 9 deletions(-)
+>=20
+> diff --git a/hw/arm/aspeed_soc.c b/hw/arm/aspeed_soc.c
+> index 4937e2bc8323..3034849c80bf 100644
+> --- a/hw/arm/aspeed_soc.c
+> +++ b/hw/arm/aspeed_soc.c
+> @@ -62,6 +62,7 @@ static const AspeedSoCInfo aspeed_socs[] =3D {
+>          .spi_bases    =3D aspeed_soc_ast2400_spi_bases,
+>          .fmc_typename =3D "aspeed.smc.fmc",
+>          .spi_typename =3D aspeed_soc_ast2400_typenames,
+> +        .wdts_num     =3D 2,
+>      }, {
+>          .name         =3D "ast2400-a1",
+>          .cpu_model    =3D "arm926",
+> @@ -72,6 +73,7 @@ static const AspeedSoCInfo aspeed_socs[] =3D {
+>          .spi_bases    =3D aspeed_soc_ast2400_spi_bases,
+>          .fmc_typename =3D "aspeed.smc.fmc",
+>          .spi_typename =3D aspeed_soc_ast2400_typenames,
+> +        .wdts_num     =3D 2,
+>      }, {
+>          .name         =3D "ast2400",
+>          .cpu_model    =3D "arm926",
+> @@ -82,6 +84,7 @@ static const AspeedSoCInfo aspeed_socs[] =3D {
+>          .spi_bases    =3D aspeed_soc_ast2400_spi_bases,
+>          .fmc_typename =3D "aspeed.smc.fmc",
+>          .spi_typename =3D aspeed_soc_ast2400_typenames,
+> +        .wdts_num     =3D 2,
+>      }, {
+>          .name         =3D "ast2500-a1",
+>          .cpu_model    =3D "arm1176",
+> @@ -92,6 +95,7 @@ static const AspeedSoCInfo aspeed_socs[] =3D {
+>          .spi_bases    =3D aspeed_soc_ast2500_spi_bases,
+>          .fmc_typename =3D "aspeed.smc.ast2500-fmc",
+>          .spi_typename =3D aspeed_soc_ast2500_typenames,
+> +        .wdts_num     =3D 3,
+>      },
+>  };
+> =20
+> @@ -175,9 +179,11 @@ static void aspeed_soc_init(Object *obj)
+>      object_property_add_alias(obj, "ram-size", OBJECT(&s->sdmc),
+>                                "ram-size", &error_abort);
+> =20
+> -    object_initialize(&s->wdt, sizeof(s->wdt), TYPE_ASPEED_WDT);
+> -    object_property_add_child(obj, "wdt", OBJECT(&s->wdt), NULL);
+> -    qdev_set_parent_bus(DEVICE(&s->wdt), sysbus_get_default());
+> +    for (i =3D 0; i < sc->info->wdts_num; i++) {
+> +        object_initialize(&s->wdt[i], sizeof(s->wdt[i]), TYPE_ASPEED_W=
+DT);
+> +        object_property_add_child(obj, "wdt[*]", OBJECT(&s->wdt[i]), N=
+ULL);
+> +        qdev_set_parent_bus(DEVICE(&s->wdt[i]), sysbus_get_default());
+> +    }
+> =20
+>      object_initialize(&s->ftgmac100, sizeof(s->ftgmac100), TYPE_FTGMAC=
+100);
+>      object_property_add_child(obj, "ftgmac100", OBJECT(&s->ftgmac100),=
+ NULL);
+> @@ -300,12 +306,15 @@ static void aspeed_soc_realize(DeviceState *dev, =
+Error **errp)
+>      sysbus_mmio_map(SYS_BUS_DEVICE(&s->sdmc), 0, ASPEED_SOC_SDMC_BASE)=
+;
+> =20
+>      /* Watch dog */
+> -    object_property_set_bool(OBJECT(&s->wdt), true, "realized", &err);
+> -    if (err) {
+> -        error_propagate(errp, err);
+> -        return;
+> +    for (i =3D 0; i < sc->info->wdts_num; i++) {
+> +        object_property_set_bool(OBJECT(&s->wdt[i]), true, "realized",=
+ &err);
+> +        if (err) {
+> +            error_propagate(errp, err);
+> +            return;
+> +        }
+> +        sysbus_mmio_map(SYS_BUS_DEVICE(&s->wdt[i]), 0,
+> +                        ASPEED_SOC_WDT_BASE + i * 0x20);
+>      }
+> -    sysbus_mmio_map(SYS_BUS_DEVICE(&s->wdt), 0, ASPEED_SOC_WDT_BASE);
+> =20
+>      /* Net */
+>      qdev_set_nic_properties(DEVICE(&s->ftgmac100), &nd_table[0]);
+> diff --git a/include/hw/arm/aspeed_soc.h b/include/hw/arm/aspeed_soc.h
+> index 4c5fc66a1ee0..0b88baaad00e 100644
+> --- a/include/hw/arm/aspeed_soc.h
+> +++ b/include/hw/arm/aspeed_soc.h
+> @@ -23,6 +23,7 @@
+>  #include "hw/net/ftgmac100.h"
+> =20
+>  #define ASPEED_SPIS_NUM  2
+> +#define ASPEED_WDTS_NUM  3
+> =20
+>  typedef struct AspeedSoCState {
+>      /*< private >*/
+> @@ -39,7 +40,7 @@ typedef struct AspeedSoCState {
+>      AspeedSMCState fmc;
+>      AspeedSMCState spi[ASPEED_SPIS_NUM];
+>      AspeedSDMCState sdmc;
+> -    AspeedWDTState wdt;
+> +    AspeedWDTState wdt[ASPEED_WDTS_NUM];
+>      FTGMAC100State ftgmac100;
+>  } AspeedSoCState;
+> =20
+> @@ -56,6 +57,7 @@ typedef struct AspeedSoCInfo {
+>      const hwaddr *spi_bases;
+>      const char *fmc_typename;
+>      const char **spi_typename;
+> +    int wdts_num;
+>  } AspeedSoCInfo;
+> =20
+>  typedef struct AspeedSoCClass {
+>=20
+

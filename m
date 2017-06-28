@@ -1,41 +1,41 @@
-Received: by 10.25.227.6 with SMTP id a6csp3053715lfh;
-        Wed, 28 Jun 2017 06:21:25 -0700 (PDT)
-X-Received: by 10.84.217.152 with SMTP id p24mr12134871pli.276.1498656084998;
-        Wed, 28 Jun 2017 06:21:24 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1498656084; cv=none;
+Received: by 10.25.227.6 with SMTP id a6csp3057763lfh;
+        Wed, 28 Jun 2017 06:25:29 -0700 (PDT)
+X-Received: by 10.98.23.3 with SMTP id 3mr10861175pfx.55.1498656329074;
+        Wed, 28 Jun 2017 06:25:29 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1498656329; cv=none;
         d=google.com; s=arc-20160816;
-        b=HpQZEiSQzI2/LJOErvGSoUCo5t6tHkfsJID1N2LV1LujBDUTVxVpG4Cq2gfCBfrmsx
-         ZKujfb/DYuEwRjEkN4jirrAksl5/X4SiyBSXBIwKDvrErjBXkfT/ltAbcI6zAs6n1133
-         3JrYUhJQqSaHOOR0Senu/hH3PZpyTlDOoXULOyXtSPssroThFFyxY7Qsh5j/nwQrdcWe
-         2XX+HEfAEXNrVm3+q6vg+IEvjH4RWunijbbJFftCBtPAfCy2a4OJ+0Hs3n5fZ91x5tcp
-         mzSN0CJjXoPuKYzKhSmc73og6fuZ3eB5XFYBaC/SMziwGCgQNQXtHBAYDu0kd8TXKklu
-         jxJw==
+        b=XH7AU0H63mSbqpzUitbFBLbu5qPoQLVC769BUa0+R7xU/BnUzDm7Q4356s3XJL1vjP
+         zPb8FvjkbndzAEbBn+9caLZVsjHKK7Vh8iPyj8P/W2ZucLKojcMu5knq150FTlvKrO8p
+         MZXQeW3GW5tgWcHQ5dOdjb05n/5hafZziRy6mpWJkm7hUiINE+JJyPU8U9Hyllmyfoz3
+         sPyL/JjqdorQHfph+blMq7ZYkMRD6k8LqNnNP1Vml+S2VNxg4D9uwFo3jdBXgmC0lMpv
+         LKoP8B8Mw0MIJF/GIJ1S8NTIQolLcFsI80xKHXDFuYDT+xW9ip5PUY0++QemTl/nBstN
+         94nA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:user-agent:references
          :in-reply-to:message-id:date:subject:cc:to:from
          :arc-authentication-results;
-        bh=MaNe93kdcGKdVBDja+XzT0othLd7B/0YuNCi4H6d5v0=;
-        b=Hf+B7N8lt92kANDD9PioI6//HIDCRYn04xumUf551asSMmwXmBzueMSRUISctLwR1O
-         0ef6AzsPbVyMKhFzbsdYdlE5gZ8+LYB3sLe15a2mWZ4L1OWJaj8DtxA+QBm9MKMDDuE5
-         wDRlPrI8391L+xcwGF46q65A3ypSeCkUjY9B1OKQKEMzw1A8Q7Bt6ZtNe/E2quZ1tljS
-         XAtdtpp/SReOm6YYqcZr1Gek1odpUA/blfjfNuS18FQVwRvf4GmQJC/1pB/L/4dJDB6J
-         lTKKuiOKrnN/THl02AUbPDclb9hEGnKSfMJvGbkCFwDqoM4Yp5Rj2aABgagCjAmQirnR
-         P37w==
+        bh=Jso59IOns5ZHa6q8rmlYlzbQSuppSwmIsCX5gmggNNM=;
+        b=Quv/JNkS2I/DOM4248FfX/jeAaxCxAddPikiTb1feEqUvSrItDuuqI4J8hO2PRZBIZ
+         NqV1CfFeBGyUzNgF22mcmowMwbptLCa0F1rYj+Q/smEaDYkIvhsN5PIkC6z8Zopz1RrX
+         sMJSk2BJwp4OOW76vCIAhrM5N24QSzvndSMI0LjORTmIuVGqnCnMvBkckul7BehyKxBv
+         X2C6c9d0m93KfUnyJg8rnZeuapCzPajypE4A0aZI1Cfk005qtp4q9BVqmULZdWZwjBLo
+         gwalIZmOH1YlwPz0NPTdCYjEddF06UjtGU+gEaCu4cayH7IPZU7SuxXQusV876+H/jFM
+         AM4A==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of vilanova@ac.upc.edu designates 147.83.33.10 as permitted sender) smtp.mailfrom=vilanova@ac.upc.edu
 Return-Path: <vilanova@ac.upc.edu>
 Received: from roura.ac.upc.es (roura.ac.upc.edu. [147.83.33.10])
-        by mx.google.com with ESMTP id 63si1711741plf.50.2017.06.28.06.21.23;
-        Wed, 28 Jun 2017 06:21:24 -0700 (PDT)
+        by mx.google.com with ESMTP id w64si1584530pgd.208.2017.06.28.06.25.27;
+        Wed, 28 Jun 2017 06:25:29 -0700 (PDT)
 Received-SPF: pass (google.com: domain of vilanova@ac.upc.edu designates 147.83.33.10 as permitted sender) client-ip=147.83.33.10;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of vilanova@ac.upc.edu designates 147.83.33.10 as permitted sender) smtp.mailfrom=vilanova@ac.upc.edu
 Received: from correu-2.ac.upc.es (correu-2.ac.upc.es [147.83.30.92])
-	by roura.ac.upc.es (8.13.8/8.13.8) with ESMTP id v5SDLJmS027342;
-	Wed, 28 Jun 2017 15:21:19 +0200
+	by roura.ac.upc.es (8.13.8/8.13.8) with ESMTP id v5SDPL7r027456;
+	Wed, 28 Jun 2017 15:25:21 +0200
 Received: from localhost (unknown [132.68.50.243])
-	by correu-2.ac.upc.es (Postfix) with ESMTPSA id C3B511E0;
-	Wed, 28 Jun 2017 15:21:13 +0200 (CEST)
+	by correu-2.ac.upc.es (Postfix) with ESMTPSA id CBA081E3;
+	Wed, 28 Jun 2017 15:25:15 +0200 (CEST)
 From: =?utf-8?b?TGx1w61z?= Vilanova <vilanova@ac.upc.edu>
 To: qemu-devel@nongnu.org
 Cc: "Emilio G. Cota" <cota@braap.org>,
@@ -45,9 +45,9 @@ Cc: "Emilio G. Cota" <cota@braap.org>,
         Paolo Bonzini <pbonzini@redhat.com>,
         Peter Maydell <peter.maydell@linaro.org>,
         qemu-arm@nongnu.org (open list:ARM)
-Subject: [PATCH v11 16/29] target/arm: [tcg,a64] Port to init_disas_context
-Date: Wed, 28 Jun 2017 16:21:12 +0300
-Message-Id: <149865607253.17063.18194249796068858104.stgit@frigg.lan>
+Subject: [PATCH v11 17/29] target/arm: [tcg] Port to init_globals
+Date: Wed, 28 Jun 2017 16:25:14 +0300
+Message-Id: <149865631443.17063.7093785957776924619.stgit@frigg.lan>
 X-Mailer: git-send-email 2.11.0
 In-Reply-To: <149865219962.17063.10630533069463266646.stgit@frigg.lan>
 References: <149865219962.17063.10630533069463266646.stgit@frigg.lan>
@@ -55,76 +55,52 @@ User-Agent: StGit/0.17.1-dirty
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-X-TUID: j/0ehogG5asO
+X-TUID: WQ421eBd53rd
 
 Incrementally paves the way towards using the generic instruction translation
 loop.
 
 Signed-off-by: Lluís Vilanova <vilanova@ac.upc.edu>
 ---
- target/arm/translate-a64.c |   36 ++++++++++++++++++++++--------------
- 1 file changed, 22 insertions(+), 14 deletions(-)
+ target/arm/translate.c |   21 +++++++++++++--------
+ 1 file changed, 13 insertions(+), 8 deletions(-)
 
-diff --git a/target/arm/translate-a64.c b/target/arm/translate-a64.c
-index 4270ac3847..88624a726d 100644
---- a/target/arm/translate-a64.c
-+++ b/target/arm/translate-a64.c
-@@ -11190,21 +11190,12 @@ static void disas_a64_insn(CPUARMState *env, DisasContext *s)
-     free_tmp_a64(s);
+diff --git a/target/arm/translate.c b/target/arm/translate.c
+index 23a07fc2c6..fc28cd45f7 100644
+--- a/target/arm/translate.c
++++ b/target/arm/translate.c
+@@ -11843,6 +11843,18 @@ static void arm_trblock_init_disas_context(DisasContextBase *dcbase,
+     dc->ss_same_el = false; /* Can't be true since EL_d must be AArch64 */
  }
  
--void gen_intermediate_code_a64(DisasContextBase *dcbase, CPUState *cs,
--                               TranslationBlock *tb)
-+static void aarch64_trblock_init_disas_context(DisasContextBase *dcbase,
-+                                               CPUState *cpu)
- {
--    CPUARMState *env = cs->env_ptr;
--    ARMCPU *cpu = arm_env_get_cpu(env);
-     DisasContext *dc = container_of(dcbase, DisasContext, base);
--    target_ulong next_page_start;
--    int max_insns;
--
--    dc->base.tb = tb;
--    dc->base.pc_first = dc->base.tb->pc;
--    dc->base.pc_next = dc->base.pc_first;
--    dc->base.is_jmp = DISAS_NEXT;
--    dc->base.num_insns = 0;
--    dc->base.singlestep_enabled = cs->singlestep_enabled;
-+    CPUARMState *env = cpu->env_ptr;
-+    ARMCPU *arm_cpu = arm_env_get_cpu(env);
- 
-     dc->pc = dc->base.pc_first;
-     dc->condjmp = 0;
-@@ -11230,7 +11221,7 @@ void gen_intermediate_code_a64(DisasContextBase *dcbase, CPUState *cs,
-     dc->fp_excp_el = ARM_TBFLAG_FPEXC_EL(dc->base.tb->flags);
-     dc->vec_len = 0;
-     dc->vec_stride = 0;
--    dc->cp_regs = cpu->cp_regs;
-+    dc->cp_regs = arm_cpu->cp_regs;
-     dc->features = env->features;
- 
-     /* Single step state. The code-generation logic here is:
-@@ -11254,6 +11245,23 @@ void gen_intermediate_code_a64(DisasContextBase *dcbase, CPUState *cs,
-     dc->ss_same_el = (arm_debug_target_el(env) == dc->current_el);
- 
-     init_tmp_a64_array(dc);
++static void arm_trblock_init_globals(DisasContextBase *dcbase, CPUState *cpu)
++{
++    cpu_F0s = tcg_temp_new_i32();
++    cpu_F1s = tcg_temp_new_i32();
++    cpu_F0d = tcg_temp_new_i64();
++    cpu_F1d = tcg_temp_new_i64();
++    cpu_V0 = cpu_F0d;
++    cpu_V1 = cpu_F1d;
++    /* FIXME: cpu_M0 can probably be the same as cpu_V0.  */
++    cpu_M0 = tcg_temp_new_i64();
 +}
 +
-+void gen_intermediate_code_a64(DisasContextBase *dcbase, CPUState *cs,
-+                               TranslationBlock *tb)
-+{
-+    CPUARMState *env = cs->env_ptr;
-+    DisasContext *dc = container_of(dcbase, DisasContext, base);
-+    target_ulong next_page_start;
-+    int max_insns;
-+
-+    dc->base.tb = tb;
-+    dc->base.pc_first = dc->base.tb->pc;
-+    dc->base.pc_next = dc->base.pc_first;
-+    dc->base.is_jmp = DISAS_NEXT;
-+    dc->base.num_insns = 0;
-+    dc->base.singlestep_enabled = cs->singlestep_enabled;
-+    aarch64_trblock_init_disas_context(&dc->base, cs);
+ /* generate intermediate code for basic block 'tb'.  */
+ void gen_intermediate_code(CPUState *cpu, TranslationBlock *tb)
+ {
+@@ -11871,14 +11883,7 @@ void gen_intermediate_code(CPUState *cpu, TranslationBlock *tb)
+     arm_trblock_init_disas_context(&dc->base, cpu);
  
+ 
+-    cpu_F0s = tcg_temp_new_i32();
+-    cpu_F1s = tcg_temp_new_i32();
+-    cpu_F0d = tcg_temp_new_i64();
+-    cpu_F1d = tcg_temp_new_i64();
+-    cpu_V0 = cpu_F0d;
+-    cpu_V1 = cpu_F1d;
+-    /* FIXME: cpu_M0 can probably be the same as cpu_V0.  */
+-    cpu_M0 = tcg_temp_new_i64();
++    arm_trblock_init_globals(&dc->base, cpu);
      next_page_start = (dc->base.pc_first & TARGET_PAGE_MASK) + TARGET_PAGE_SIZE;
-     max_insns = dc->base.tb->cflags & CF_COUNT_MASK;
+     max_insns = tb->cflags & CF_COUNT_MASK;
+     if (max_insns == 0) {

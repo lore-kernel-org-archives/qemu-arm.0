@@ -1,41 +1,41 @@
-Received: by 10.25.227.6 with SMTP id a6csp3071336lfh;
-        Wed, 28 Jun 2017 06:37:40 -0700 (PDT)
-X-Received: by 10.25.198.71 with SMTP id w68mr3601887lff.4.1498657060021;
-        Wed, 28 Jun 2017 06:37:40 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1498657060; cv=none;
+Received: by 10.25.227.6 with SMTP id a6csp3075562lfh;
+        Wed, 28 Jun 2017 06:41:35 -0700 (PDT)
+X-Received: by 10.46.20.14 with SMTP id u14mr3026992ljd.111.1498657295536;
+        Wed, 28 Jun 2017 06:41:35 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1498657295; cv=none;
         d=google.com; s=arc-20160816;
-        b=u+ACmB56a3X7CiapadMBxFPwf8byh6vnaI03mgoXlHonk+r6CUGS8H77HdgT+VamRx
-         bz8yurdnDNwa4Q2FkawEMP5gvW6idaKGtaXJVYa0ILMCNW/mT3NMsypBwF4cuSLUM+Lp
-         05iG+gSqRzGDHw9cU6kzD5bwU3crNvDifoZqGOXKFK9m3DjIxKXWY+hn6Yu+uHNWG5pq
-         cOxSi8Qyyw+nUI9Ij9D8Ja0SD1npUzi9wrZwetfT3aVyMJ77TqcoyPITGmrRsKNDDOqA
-         hzFMuwuNZuA88f4ey2tmLkzYg+Z+CCX0gWrHrKwhdY4wGD8VTfpRTV8eNF8K5yLvh5VP
-         GVCg==
+        b=ESzPW+XIIiHWhIKF6ofxbeO7lmcCOx+qN56Zn1ixHr4xx9nlYHIOXR/E8BqK8XkSd0
+         Xbq0aE3c7kHjO+NpScM8kXO0hr6ETzbI0bD/7SGHr8KtPJPmcTZ+5KZoYIjPFYfhjtSj
+         zh0dFEBfXI6jTxEAgBghrLhvIZUkADK1YSWVpdC49PO1n0g0+Y4eQjahxJYFYrnw+K/X
+         zarxQwgpVQOa1mUyoKx006GqAjcW3DHtffoJ6t0pg6H3a52f9lmtXOve5rNAERFbF8/6
+         T+KcKi0WUsG3B25lEQmH0jOq8k+I0e3Uocjhf2TlmLx6q6sDOMu+Dlc7hBOkW95igAUQ
+         rOMw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:user-agent:references
          :in-reply-to:message-id:date:subject:cc:to:from
          :arc-authentication-results;
-        bh=/NKvqANq3MUD7Zcsk23A9KfVlI6KBItvfni4ZcyGIQE=;
-        b=re/rEnWaeye7L5rRM5DuWqnGyMmmgUifFiSvYJ9/UNiNWOgdvkjTyH/02dXpWruo4H
-         CPrtGw9SWyTa+lnPG9+8zVuZH3e/3GGZqTCX0epSbr90q5PXPm/3by9hBMu78XomRpob
-         PXhcsF2X69iF+hWLO0maGaLEraz0ItlSNc1XHutM8rHXWTWHAs2C4q5ts+kuiHAQVOz/
-         Try7Q1uTrBtHCqEVNhylfuAfg57tZ5bWV/SYumrbGLQESwKuoQyIUNomAWs0wLT9Cdn+
-         Y8waMagU27Zg+9CG4y/dCfAUktorkMJCZj1JmHwbn81dspawu6wleP3k7O9XPhXCL1QG
-         uyJg==
+        bh=kXzvmK7ZIwIsKZYuQ9GGmeuI+jNi/Fa5QXmBogtCKqY=;
+        b=yic4raV2za4YrAJwVsD/pjmQ9qBk3WpycgHXKn+ruNodsiE8G5e0VSCRdrm+xFpVCB
+         grITFV+IngJCkTegHT0COOAhjTJWwYKcLeKhO9LTTergZVNUw7EFQgQN87NE98fp1b1N
+         4BuAjcWM099a6ZyTpMnxNq+FfkU2WndjhTKm8LG4jseeQDzR9v8q7j1Fw6oa7c6byrBg
+         0eY3P3c26HypfUh5lFHUdVTMYP3KefvIV/KvQL8Ex9+0Cu0d3t5NFSEXvA8a6L7iNcra
+         UGRjDPwmaEA8aL+t3WR5539ysctt+d12FWB7Rri4U0zzD/6vf7nHYtreOhvL5TaWRGSx
+         Zy+w==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of vilanova@ac.upc.edu designates 147.83.33.10 as permitted sender) smtp.mailfrom=vilanova@ac.upc.edu
 Return-Path: <vilanova@ac.upc.edu>
 Received: from roura.ac.upc.es (roura.ac.upc.es. [147.83.33.10])
-        by mx.google.com with ESMTP id u10si1096143lff.453.2017.06.28.06.37.39;
-        Wed, 28 Jun 2017 06:37:40 -0700 (PDT)
+        by mx.google.com with ESMTP id r193si1101880lff.417.2017.06.28.06.41.35;
+        Wed, 28 Jun 2017 06:41:35 -0700 (PDT)
 Received-SPF: pass (google.com: domain of vilanova@ac.upc.edu designates 147.83.33.10 as permitted sender) client-ip=147.83.33.10;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of vilanova@ac.upc.edu designates 147.83.33.10 as permitted sender) smtp.mailfrom=vilanova@ac.upc.edu
-Received: from correu-2.ac.upc.es (correu-2.ac.upc.es [147.83.30.92])
-	by roura.ac.upc.es (8.13.8/8.13.8) with ESMTP id v5SDbVuA027772;
-	Wed, 28 Jun 2017 15:37:36 +0200
+Received: from correu-1.ac.upc.es (correu-1.ac.upc.es [147.83.30.91])
+	by roura.ac.upc.es (8.13.8/8.13.8) with ESMTP id v5SDfWei027919;
+	Wed, 28 Jun 2017 15:41:32 +0200
 Received: from localhost (unknown [132.68.50.243])
-	by correu-2.ac.upc.es (Postfix) with ESMTPSA id 201791E0;
-	Wed, 28 Jun 2017 15:37:25 +0200 (CEST)
+	by correu-1.ac.upc.es (Postfix) with ESMTPSA id 0EBE6165;
+	Wed, 28 Jun 2017 15:41:26 +0200 (CEST)
 From: =?utf-8?b?TGx1w61z?= Vilanova <vilanova@ac.upc.edu>
 To: qemu-devel@nongnu.org
 Cc: "Emilio G. Cota" <cota@braap.org>,
@@ -45,9 +45,9 @@ Cc: "Emilio G. Cota" <cota@braap.org>,
         Paolo Bonzini <pbonzini@redhat.com>,
         Peter Maydell <peter.maydell@linaro.org>,
         qemu-arm@nongnu.org (open list:ARM)
-Subject: [PATCH v11 20/29] target/arm: [tcg,a64] Port to insn_start
-Date: Wed, 28 Jun 2017 16:37:23 +0300
-Message-Id: <149865704378.17063.12646195470292499503.stgit@frigg.lan>
+Subject: [PATCH v11 21/29] target/arm: [tcg] Port to breakpoint_check
+Date: Wed, 28 Jun 2017 16:41:26 +0300
+Message-Id: <149865728578.17063.13455172137587126808.stgit@frigg.lan>
 X-Mailer: git-send-email 2.11.0
 In-Reply-To: <149865219962.17063.10630533069463266646.stgit@frigg.lan>
 References: <149865219962.17063.10630533069463266646.stgit@frigg.lan>
@@ -55,42 +55,107 @@ User-Agent: StGit/0.17.1-dirty
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-X-TUID: eqbUXwLR/9V+
+X-TUID: mcSG3m2cr3fv
 
 Incrementally paves the way towards using the generic instruction translation
 loop.
 
 Signed-off-by: Lluís Vilanova <vilanova@ac.upc.edu>
 ---
- target/arm/translate-a64.c |   11 +++++++++--
- 1 file changed, 9 insertions(+), 2 deletions(-)
+ target/arm/translate.c |   68 ++++++++++++++++++++++++++++++++----------------
+ 1 file changed, 46 insertions(+), 22 deletions(-)
 
-diff --git a/target/arm/translate-a64.c b/target/arm/translate-a64.c
-index 88624a726d..5784620642 100644
---- a/target/arm/translate-a64.c
-+++ b/target/arm/translate-a64.c
-@@ -11247,6 +11247,14 @@ static void aarch64_trblock_init_disas_context(DisasContextBase *dcbase,
-     init_tmp_a64_array(dc);
+diff --git a/target/arm/translate.c b/target/arm/translate.c
+index c7e188b50e..790eaa2164 100644
+--- a/target/arm/translate.c
++++ b/target/arm/translate.c
+@@ -11918,6 +11918,32 @@ static void arm_trblock_insn_start(DisasContextBase *dcbase, CPUState *cpu)
+ #endif
  }
  
-+static void aarch64_trblock_insn_start(DisasContextBase *dcbase, CPUState *cpu)
++static BreakpointCheckType arm_trblock_breakpoint_check(
++    DisasContextBase *dcbase, CPUState *cpu, const CPUBreakpoint *bp)
 +{
 +    DisasContext *dc = container_of(dcbase, DisasContext, base);
 +
-+    dc->insn_start_idx = tcg_op_buf_count();
-+    tcg_gen_insn_start(dc->pc, 0, 0);
++    if (bp->flags & BP_CPU) {
++        gen_set_condexec(dc);
++        gen_set_pc_im(dc, dc->pc);
++        gen_helper_check_breakpoints(cpu_env);
++        /* End the TB early; it's likely not going to be executed */
++        dc->base.is_jmp = DISAS_UPDATE;
++        return BC_HIT_INSN;
++    } else {
++        gen_exception_internal_insn(dc, 0, EXCP_DEBUG);
++        /* The address covered by the breakpoint must be
++           included in [tb->pc, tb->pc + tb->size) in order
++           to for it to be properly cleared -- thus we
++           increment the PC here so that the logic setting
++           tb->size below does the right thing.  */
++        /* TODO: Advance PC by correct instruction length to
++         * avoid disassembler error messages */
++        dc->pc += 2;
++        return BC_HIT_TB;
++    }
 +}
 +
- void gen_intermediate_code_a64(DisasContextBase *dcbase, CPUState *cs,
-                                TranslationBlock *tb)
+ /* generate intermediate code for basic block 'tb'.  */
+ void gen_intermediate_code(CPUState *cpu, TranslationBlock *tb)
  {
-@@ -11278,8 +11286,7 @@ void gen_intermediate_code_a64(DisasContextBase *dcbase, CPUState *cs,
- 
-     do {
+@@ -11965,36 +11991,34 @@ void gen_intermediate_code(CPUState *cpu, TranslationBlock *tb)
          dc->base.num_insns++;
--        dc->insn_start_idx = tcg_op_buf_count();
--        tcg_gen_insn_start(dc->pc, 0, 0);
-+        aarch64_trblock_insn_start(&dc->base, cs);
+         arm_trblock_insn_start(&dc->base, cpu);
  
-         if (unlikely(!QTAILQ_EMPTY(&cs->breakpoints))) {
+-        if (unlikely(dc->base.is_jmp > DISAS_NEXT)) {
+-            break;
+-        }
+-
+         if (unlikely(!QTAILQ_EMPTY(&cpu->breakpoints))) {
              CPUBreakpoint *bp;
+             QTAILQ_FOREACH(bp, &cpu->breakpoints, entry) {
+-                if (bp->pc == dc->pc) {
+-                    if (bp->flags & BP_CPU) {
+-                        gen_set_condexec(dc);
+-                        gen_set_pc_im(dc, dc->pc);
+-                        gen_helper_check_breakpoints(cpu_env);
+-                        /* End the TB early; it's likely not going to be executed */
+-                        dc->base.is_jmp = DISAS_UPDATE;
+-                    } else {
+-                        gen_exception_internal_insn(dc, 0, EXCP_DEBUG);
+-                        /* The address covered by the breakpoint must be
+-                           included in [tb->pc, tb->pc + tb->size) in order
+-                           to for it to be properly cleared -- thus we
+-                           increment the PC here so that the logic setting
+-                           tb->size below does the right thing.  */
+-                        /* TODO: Advance PC by correct instruction length to
+-                         * avoid disassembler error messages */
+-                        dc->pc += 2;
++                if (bp->pc == dc->base.pc_next) {
++                    BreakpointCheckType bp_check =
++                        arm_trblock_breakpoint_check(&dc->base, cpu, bp);
++                    switch (bp_check) {
++                    case BC_MISS:
++                        /* Target ignored this breakpoint, go to next */
++                        break;
++                    case BC_HIT_INSN:
++                        /* Hit, keep translating */
++                        /*
++                         * TODO: if we're never going to have more than one
++                         *       BP in a single address, we can simply use a
++                         *       bool here.
++                         */
++                        goto done_breakpoints;
++                    case BC_HIT_TB:
++                        /* Hit, end TB */
+                         goto done_generating;
++                    default:
++                        g_assert_not_reached();
+                     }
+-                    break;
+                 }
+             }
+         }
++    done_breakpoints:
+ 
+         if (dc->base.num_insns == max_insns && (tb->cflags & CF_LAST_IO)) {
+             gen_io_start();

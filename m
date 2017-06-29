@@ -1,133 +1,275 @@
-Received: by 10.25.227.6 with SMTP id a6csp3077689lfh;
-        Wed, 28 Jun 2017 06:43:35 -0700 (PDT)
-X-Received: by 10.99.134.199 with SMTP id x190mr10658424pgd.127.1498657415632;
-        Wed, 28 Jun 2017 06:43:35 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1498657415; cv=none;
+Received: by 10.25.227.6 with SMTP id a6csp4219837lfh;
+        Thu, 29 Jun 2017 04:14:49 -0700 (PDT)
+X-Received: by 10.55.137.6 with SMTP id l6mr18827135qkd.83.1498734889073;
+        Thu, 29 Jun 2017 04:14:49 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1498734889; cv=none;
         d=google.com; s=arc-20160816;
-        b=zNIjevss5V7PzbAnPzSZIhFvy2fhf7TNP2uw7M4dMcShffHU32IAY2/ALi8mvf0D62
-         OSGRIMmFMeL23Lza4srw3XTe/nfkzEQ5owwsaxy9Nc696PHOHUAszcbB25pHnP2N8WKl
-         7CB2d5JXioSw9/vbrI8Ke51pXn2A33r0zIvyl/thDmIFprLNZU9gvty7RL9eXxNNCgCj
-         GA9IfYWMpVEDKWJpN4Oa200TsHC1K/wnF9QoBTy2rgq+iPIB1dpFaDxq2/N1cp2QmjXW
-         OcC/gugnYB16ZpIfM8E8o4wdN1bbg9CDeG15OoCkgmwuhDNK9AqRBV2ZfOKLx7JxCZrv
-         +Vpg==
+        b=Y7R/uXXE6NUgUpKsX0gZU0TuuH8RMQ4H8tgECD60wzqUiFaAelbtpAIdlWzeBAFYNZ
+         EPFw0HF24JDD/gWe4yFOgEbeeexWh2SgI+3AY/Ti+2JS1ukQd2FhjqbSPvROeOJ/4Uus
+         aGcMnbx6mR8o4fcXKbezz0KSFW01rfdZHpcU6w10iKefG5p5jYizeS/E2RD9z6KnENqt
+         zcKVxavNxW5xwTUGp3ipLuiZwJg04sholb+G1J//xTgvmN7KTodwIAZs6UEfl08npUAr
+         v4Gitz1qUDzi7ALOIl3vLUNPn3350ANSsiXLpa0sU2GbENjabsKc+mCgIxd8h25Bo8x+
+         YxjA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-id:precedence:sender:user-agent:in-reply-to
-         :content-disposition:mime-version:references:message-id:subject:cc
-         :to:from:date:dkim-filter:dmarc-filter:arc-authentication-results;
-        bh=4dCdGH6LkKvmuki83MlrMK7QxRsHRCe1uQ129TfBaOs=;
-        b=MN7wGjKFGeaVXhjqDRaZFd5wSK982sGbHSzKFed4zxXzsD15dr0RTuhycSHnHZptWb
-         jOBLIPWTUvnx273bFN9D4vSOYOW/LU7ewdo82VN4/rqoeNSIYmmx0GgADbXEVFTzlsUR
-         1C0QXrcweRxi914hiZ80KSUlv15RPxY6/ryl6qfz39kdzDv/IljIZ/YVhxpg/BIv4DKn
-         YlbIEyxmjn2LCcTPiyMcr9SE8+TPYw8u+tBRsd+/yzPyWErhLZ6Fb/gX+KrDPWa8wVAz
-         cg5FU4ZHXceBA95//GyG0QrZmYgvho3VZo/pFDNJ71Ls+yePJqYnx5i8rlZHpPEqPJ2m
-         gRaQ==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject:message-id:date:to:from
+         :dkim-filter:dmarc-filter:arc-authentication-results;
+        bh=Fsa3k/WAPpgIHyfoHFP85fQWY3AvBCMHrsSHmiTzZx0=;
+        b=i5LreoS9MWMn6dz+ocSBtNqMBRGlXUnFcLV/N6dweu2NzwC2E7KoB9i2rT3NrvzsKv
+         altht8ShHKjKU+VeSdPwHx3o+yzERA9qz2R8kLRGvdQTT2lH4yDVV+PHvg8tEjbNXIte
+         PkEkKM3egukj5ELmZ2lgRoN6TXJQcZ/jEmvp/RA73/z5AjlYaoYFgadjl9HB7f76JegG
+         A8XT+mume0+uah7E5gYGsWVUd9RUojCw7dG3bTMBin+B9UfNxQdpbLKjVGyEcSTkS4IC
+         484gZXWyQkWmfJRIeNq+jtAKxeAnK20gmYrOK9dVHdwanx7+DMobuahquKmIrT62pfBA
+         8quw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <kvm-owner@vger.kernel.org>
-Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
-        by mx.google.com with ESMTP id v61si1755906plb.389.2017.06.28.06.43.35;
-        Wed, 28 Jun 2017 06:43:35 -0700 (PDT)
-Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
+        by mx.google.com with ESMTPS id 36si4578228qts.94.2017.06.29.04.14.48
+        for <alex.bennee@linaro.org>
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Thu, 29 Jun 2017 04:14:49 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S1751910AbdF1NnJ (ORCPT <rfc822;francois.ozog@linaro.org>
-        + 6 others); Wed, 28 Jun 2017 09:43:09 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:60108 "EHLO mx1.redhat.com"
-        rhost-flags-OK-OK-OK-OK) by vger.kernel.org with ESMTP
-        id S1751745AbdF1NnF (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Wed, 28 Jun 2017 09:43:05 -0400
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com [10.5.11.16])
-        (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-        (No client certificate requested)
-        by mx1.redhat.com (Postfix) with ESMTPS id C7F4EC05B1E6;
-        Wed, 28 Jun 2017 13:43:04 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com C7F4EC05B1E6
-Authentication-Results: ext-mx08.extmail.prod.ext.phx2.redhat.com; dmarc=none (p=none dis=none) header.from=redhat.com
-Authentication-Results: ext-mx08.extmail.prod.ext.phx2.redhat.com; spf=pass smtp.mailfrom=drjones@redhat.com
-DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com C7F4EC05B1E6
-Received: from kamzik.brq.redhat.com (unknown [10.43.2.160])
-        by smtp.corp.redhat.com (Postfix) with ESMTPS id 2124C5C3FB;
-        Wed, 28 Jun 2017 13:43:02 +0000 (UTC)
-Date:   Wed, 28 Jun 2017 15:43:00 +0200
-From:   Andrew Jones <drjones@redhat.com>
-To:     Alexander Graf <agraf@suse.de>
-Cc:     Peter Maydell <peter.maydell@linaro.org>, kvm@vger.kernel.org,
-        cdall@linaro.org, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
-        Paolo Bonzini <pbonzini@redhat.com>
-Subject: Re: [Qemu-devel] [PATCH v3] ARM: KVM: Enable in-kernel timers with
- user space gic
-Message-ID: <20170628134300.att7dnov44aiidoe@kamzik.brq.redhat.com>
-References: <1498577737-130264-1-git-send-email-agraf@suse.de>
- <20170628115110.nq7wdsrhxxjelzq6@kamzik.brq.redhat.com>
- <9e3a0693-d69b-4ae7-c449-457f7428fbff@suse.de>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <9e3a0693-d69b-4ae7-c449-457f7428fbff@suse.de>
-User-Agent: Mutt/1.6.0.1 (2016-04-01)
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.5.110.32]); Wed, 28 Jun 2017 13:43:05 +0000 (UTC)
-Sender: kvm-owner@vger.kernel.org
-Precedence: bulk
-List-ID: <kvm.vger.kernel.org>
-X-Mailing-List: kvm@vger.kernel.org
-X-TUID: 7wG4HZdwkPFQ
+Received: from localhost ([::1]:38368 helo=lists.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1dQXPK-0000RD-Ii
+	for alex.bennee@linaro.org; Thu, 29 Jun 2017 07:14:46 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:59430)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <imammedo@redhat.com>) id 1dQXPF-0000Qi-Gu
+	for qemu-arm@nongnu.org; Thu, 29 Jun 2017 07:14:42 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+	(envelope-from <imammedo@redhat.com>) id 1dQXPB-0004SU-Gx
+	for qemu-arm@nongnu.org; Thu, 29 Jun 2017 07:14:41 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:42334)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <imammedo@redhat.com>)
+	id 1dQXPB-0004SE-7E; Thu, 29 Jun 2017 07:14:37 -0400
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+	[10.5.11.13])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id B5BA3D648F;
+	Thu, 29 Jun 2017 11:14:32 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com B5BA3D648F
+Authentication-Results: ext-mx02.extmail.prod.ext.phx2.redhat.com;
+	dmarc=none (p=none dis=none) header.from=redhat.com
+Authentication-Results: ext-mx02.extmail.prod.ext.phx2.redhat.com;
+	spf=pass smtp.mailfrom=imammedo@redhat.com
+DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com B5BA3D648F
+Received: from dell-r430-03.lab.eng.brq.redhat.com
+	(dell-r430-03.lab.eng.brq.redhat.com [10.34.112.60])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 2DF5817978;
+	Thu, 29 Jun 2017 11:14:26 +0000 (UTC)
+From: Igor Mammedov <imammedo@redhat.com>
+To: qemu-devel@nongnu.org
+Date: Thu, 29 Jun 2017 13:14:23 +0200
+Message-Id: <1498734863-164338-1-git-send-email-imammedo@redhat.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.26]);
+	Thu, 29 Jun 2017 11:14:32 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.132.183.28
+Subject: [Qemu-arm] [PATCH] qom: enforce readonly nature of link's check
+ callback
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.21
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: famz@redhat.com, mst@redhat.com, alistair.francis@xilinx.com,
+	qemu-arm@nongnu.org, pbonzini@redhat.com, afaerber@suse.de
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: wcQ5F25wtHRM
 
-On Wed, Jun 28, 2017 at 02:36:17PM +0200, Alexander Graf wrote:
-> 
-> 
-> On 28.06.17 13:51, Andrew Jones wrote:
-> > On Tue, Jun 27, 2017 at 05:35:37PM +0200, Alexander Graf wrote:
-> > > When running with KVM enabled, you can choose between emulating the
-> > > gic in kernel or user space. If the kernel supports in-kernel virtualization
-> > > of the interrupt controller, it will default to that. If not, if will
-> > > default to user space emulation.
-> > > 
-> > > Unfortunately when running in user mode gic emulation, we miss out on
-> > > interrupt events which are only available from kernel space, such as the timer.
-> > > This patch leverages the new kernel/user space pending line synchronization for
-> > > timer events. It does not handle PMU events yet.
-> > > 
-> > > Signed-off-by: Alexander Graf <agraf@suse.de>
-> > > Reviewed-by: Andrew Jones <drjones@redhat.com>
-> > > 
-> > > ---
-> > > 
-> > > v1 -> v2:
-> > > 
-> > >    - whitespace fixes
-> > >    - use !! to determine whether bit is set
-> > >    - call in-kernel device IRQs out by their name everywhere
-> > > 
-> > > v2 -> v3:
-> > > 
-> > >    - fix last occurence of calling out timer IRQs explicitly
-> > > ---
-> > >   accel/kvm/kvm-all.c    |  5 +++++
-> > >   accel/stubs/kvm-stub.c |  5 +++++
-> > >   hw/intc/arm_gic.c      |  7 +++++++
-> > >   include/sysemu/kvm.h   | 11 +++++++++++
-> > >   target/arm/cpu.h       |  3 +++
-> > >   target/arm/kvm.c       | 51 ++++++++++++++++++++++++++++++++++++++++++++++++++
-> > >   6 files changed, 82 insertions(+)
-> > > 
-> > 
-> > Tried testing this on a gicv3 machine, a ThunderX2. The guest kernel
-> 
-> Did you patch QEMU to automatically choose the gic version?
+link's check callback is supposed to verify/permit setting it,
+however currently nothing restricts it from misusing it
+and modifying target object from within.
+Make sure that readonly semantics are checked by compiler
+to prevent callback's misuse.
 
-Nope, I was just trying to use a pre-existing guest config on that host,
-which had gic-version=3 on its command line.
+Signed-off-by: Igor Mammedov <imammedo@redhat.com>
+---
+Fam,
+ it probably conflicts with yours DEFINE_PROP_LINK series,
+ feel free to include this patch if you'll have to respin
 
-> The upstream
-> default is to have gicv2 as the guest gic type. And gicv2 should work just
-> fine.
+---
+ include/hw/qdev-properties.h | 3 ++-
+ include/qom/object.h         | 6 +++---
+ hw/core/qdev-properties.c    | 3 ++-
+ hw/display/xlnx_dp.c         | 2 +-
+ hw/ipmi/ipmi.c               | 2 +-
+ hw/mem/pc-dimm.c             | 2 +-
+ hw/misc/ivshmem.c            | 2 +-
+ qom/object.c                 | 8 ++++----
+ 8 files changed, 15 insertions(+), 13 deletions(-)
 
-Yup, works for me now (with its limitations - had to reduce the number of
-cpus the pre-existing guest config had configured to 8.)
+diff --git a/include/hw/qdev-properties.h b/include/hw/qdev-properties.h
+index 306bbab..6dfe16e 100644
+--- a/include/hw/qdev-properties.h
++++ b/include/hw/qdev-properties.h
+@@ -234,7 +234,8 @@ void qdev_prop_set_after_realize(DeviceState *dev, const char *name,
+  * This function should be used as the check() argument to
+  * object_property_add_link().
+  */
+-void qdev_prop_allow_set_link_before_realize(Object *obj, const char *name,
++void qdev_prop_allow_set_link_before_realize(const Object *obj,
++                                             const char *name,
+                                              Object *val, Error **errp);
+ 
+ #endif
+diff --git a/include/qom/object.h b/include/qom/object.h
+index 5ecc2d1..5223692 100644
+--- a/include/qom/object.h
++++ b/include/qom/object.h
+@@ -788,7 +788,7 @@ ObjectClass *object_get_class(Object *obj);
+  *
+  * Returns: The QOM typename of @obj.
+  */
+-const char *object_get_typename(Object *obj);
++const char *object_get_typename(const Object *obj);
+ 
+ /**
+  * type_register_static:
+@@ -1320,7 +1320,7 @@ typedef enum {
+  * callback function.  It allows the link property to be set and never returns
+  * an error.
+  */
+-void object_property_allow_set_link(Object *, const char *,
++void object_property_allow_set_link(const Object *, const char *,
+                                     Object *, Error **);
+ 
+ /**
+@@ -1353,7 +1353,7 @@ void object_property_allow_set_link(Object *, const char *,
+  */
+ void object_property_add_link(Object *obj, const char *name,
+                               const char *type, Object **child,
+-                              void (*check)(Object *obj, const char *name,
++                              void (*check)(const Object *obj, const char *name,
+                                             Object *val, Error **errp),
+                               ObjectPropertyLinkFlags flags,
+                               Error **errp);
+diff --git a/hw/core/qdev-properties.c b/hw/core/qdev-properties.c
+index 2a82768..95e5fdb 100644
+--- a/hw/core/qdev-properties.c
++++ b/hw/core/qdev-properties.c
+@@ -25,7 +25,8 @@ void qdev_prop_set_after_realize(DeviceState *dev, const char *name,
+     }
+ }
+ 
+-void qdev_prop_allow_set_link_before_realize(Object *obj, const char *name,
++void qdev_prop_allow_set_link_before_realize(const Object *obj,
++                                             const char *name,
+                                              Object *val, Error **errp)
+ {
+     DeviceState *dev = DEVICE(obj);
+diff --git a/hw/display/xlnx_dp.c b/hw/display/xlnx_dp.c
+index f43eb09..3ed81ff 100644
+--- a/hw/display/xlnx_dp.c
++++ b/hw/display/xlnx_dp.c
+@@ -515,7 +515,7 @@ static void xlnx_dp_aux_set_command(XlnxDPState *s, uint32_t value)
+     s->core_registers[DP_INTERRUPT_SIGNAL_STATE] |= 0x04;
+ }
+ 
+-static void xlnx_dp_set_dpdma(Object *obj, const char *name, Object *val,
++static void xlnx_dp_set_dpdma(const Object *obj, const char *name, Object *val,
+                               Error **errp)
+ {
+     XlnxDPState *s = XLNX_DP(obj);
+diff --git a/hw/ipmi/ipmi.c b/hw/ipmi/ipmi.c
+index 5cf1caa..a2fd1eb 100644
+--- a/hw/ipmi/ipmi.c
++++ b/hw/ipmi/ipmi.c
+@@ -90,7 +90,7 @@ static TypeInfo ipmi_interface_type_info = {
+     .class_init = ipmi_interface_class_init,
+ };
+ 
+-static void isa_ipmi_bmc_check(Object *obj, const char *name,
++static void isa_ipmi_bmc_check(const Object *obj, const char *name,
+                                Object *val, Error **errp)
+ {
+     IPMIBmc *bmc = IPMI_BMC(val);
+diff --git a/hw/mem/pc-dimm.c b/hw/mem/pc-dimm.c
+index 9e8dab0..380cb30 100644
+--- a/hw/mem/pc-dimm.c
++++ b/hw/mem/pc-dimm.c
+@@ -366,7 +366,7 @@ static void pc_dimm_get_size(Object *obj, Visitor *v, const char *name,
+     visit_type_int(v, name, &value, errp);
+ }
+ 
+-static void pc_dimm_check_memdev_is_busy(Object *obj, const char *name,
++static void pc_dimm_check_memdev_is_busy(const Object *obj, const char *name,
+                                       Object *val, Error **errp)
+ {
+     Error *local_err = NULL;
+diff --git a/hw/misc/ivshmem.c b/hw/misc/ivshmem.c
+index abeaf3d..e25016c 100644
+--- a/hw/misc/ivshmem.c
++++ b/hw/misc/ivshmem.c
+@@ -1005,7 +1005,7 @@ static const TypeInfo ivshmem_common_info = {
+     .class_init    = ivshmem_common_class_init,
+ };
+ 
+-static void ivshmem_check_memdev_is_busy(Object *obj, const char *name,
++static void ivshmem_check_memdev_is_busy(const Object *obj, const char *name,
+                                          Object *val, Error **errp)
+ {
+     if (host_memory_backend_is_mapped(MEMORY_BACKEND(val))) {
+diff --git a/qom/object.c b/qom/object.c
+index 7a05e35..a429e64 100644
+--- a/qom/object.c
++++ b/qom/object.c
+@@ -735,7 +735,7 @@ out:
+     return ret;
+ }
+ 
+-const char *object_get_typename(Object *obj)
++const char *object_get_typename(const Object *obj)
+ {
+     return obj->class->type->name;
+ }
+@@ -1395,7 +1395,7 @@ out:
+     g_free(type);
+ }
+ 
+-void object_property_allow_set_link(Object *obj, const char *name,
++void object_property_allow_set_link(const Object *obj, const char *name,
+                                     Object *val, Error **errp)
+ {
+     /* Allow the link to be set, always */
+@@ -1403,7 +1403,7 @@ void object_property_allow_set_link(Object *obj, const char *name,
+ 
+ typedef struct {
+     Object **child;
+-    void (*check)(Object *, const char *, Object *, Error **);
++    void (*check)(const Object *, const char *, Object *, Error **);
+     ObjectPropertyLinkFlags flags;
+ } LinkProperty;
+ 
+@@ -1519,7 +1519,7 @@ static void object_release_link_property(Object *obj, const char *name,
+ 
+ void object_property_add_link(Object *obj, const char *name,
+                               const char *type, Object **child,
+-                              void (*check)(Object *, const char *,
++                              void (*check)(const Object *, const char *,
+                                             Object *, Error **),
+                               ObjectPropertyLinkFlags flags,
+                               Error **errp)
+-- 
+2.7.4
 
-Thanks,
-drew

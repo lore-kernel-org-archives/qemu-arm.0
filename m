@@ -1,96 +1,91 @@
-Received: by 10.25.227.6 with SMTP id a6csp5650841lfh;
-        Fri, 30 Jun 2017 06:56:44 -0700 (PDT)
-X-Received: by 10.55.115.69 with SMTP id o66mr24709642qkc.120.1498831004780;
-        Fri, 30 Jun 2017 06:56:44 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1498831004; cv=none;
+Received: by 10.25.227.6 with SMTP id a6csp5683768lfh;
+        Fri, 30 Jun 2017 07:22:10 -0700 (PDT)
+X-Received: by 10.55.142.67 with SMTP id q64mr24997820qkd.99.1498832530433;
+        Fri, 30 Jun 2017 07:22:10 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1498832530; cv=none;
         d=google.com; s=arc-20160816;
-        b=F7DjadupNITnPQpRMsQiGtnosRYOClibei7DH7wltUgLLzHJgcOWsErskv7yn8ZHvY
-         qh420krCzQebwtcYCPBhB2OVn37ClPdB/FFrL3Kv6HvW4IFB6SnwUi6WgKcJlrzqpyzo
-         bvqNdLVg6Em4B8F/LlDEOxslYWr0aYWeuMClSdwHcif1fcjxi7C/EAANiK2oo0qilRd3
-         wSZ5zWqgwV69p4FUQQWypyg5er/GyO7t43mz3EhLpgSHdk4u+wTL32TWk65mdaq1EAjb
-         gBfQgW9g8LwOCm0BpbgT56dyx0x79OYzmVixfQFoXx838x3lHDaufYu4eU/x+6rl39aQ
-         SHKw==
+        b=EgPgJ012ldhdjXBe3ztY6ot6Wlnwl9zGLZBZe6GvFgX57NoGhY3A9wilalKtWvmQ9e
+         jl3grKWWWtYmzqjFGruqJ1Uhiv4yK0sgByrcaRfsASZ62sFXQ/5qMMY8l+iWs9CUeC4f
+         LcKIaqZPxqq3Ac758T1vjbgUor4iYKFk918ZoqfYOGOSa2efnQFrzUxYZC7UwqPEPDmJ
+         KF04iJPy19TqkX4/1K/zCq/uunHlNQQ7ZrnQiZeDMRwir3hBokrewRJfFnc5RcozyX8R
+         FznLXg5tdXHNsqYoYlMJVa7jNRUGrAQy9JxOykCPWai5jFNk5niaruZL2er4eVZXv57Z
+         L/Yg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:message-id:date:to:from
-         :dkim-signature:arc-authentication-results;
-        bh=lE4sYugzm1a+N25UdQOeAs+6tDwjKPaweoqmYRnNCyE=;
-        b=ZS/KQWmGO5q05SGZq+vw3p7v3AR+0n+Q/hs40Fc3VzM6mqk/sx/kwYeJMzpAsMJL2E
-         jB+Ze0LWRKh3uDAW+d9BPw0oundfjz1LiNEnnJPNAmAYb0tsxqZcZ+rAjWEhYjdI30V4
-         g1VtRP2jh7oBDORTTSRUqB8bjqRUOT6IV0y4s+7n3xfRSvCLsH01TbC93F7IGatpbhjk
-         8E1PZsw+BWQ0Umd+2lnRbETNMl6fGZH3yBApfEl1loYZgHHFsBcIaOgsN3T3D2TpP5hx
-         YzAoZNJ9K2sGHNmoC3BNGPT0Q7t8GPOruCe/V7sf1zOCX+mVNH5rMELVDVmrWiQFTBuJ
-         sf/Q==
+         :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
+         :content-disposition:mime-version:references:message-id:to:from:date
+         :dkim-filter:dmarc-filter:arc-authentication-results;
+        bh=j6UZQ798OBa9a6MePnCr7BlNjHotnU5q0Y6sLdOBlpI=;
+        b=xjrQ12sr+WiJ7OTyP8EdtCCxCXIyicrETQQXx70xQDjRG9PMx60uTACrpaHv3eTb72
+         Q92hKsx6f1VpyBobIIZ1+y0kJRSmU5uFU7oDz1IzOwDr3AuP5eiUcB8TwG68SsOYfYHp
+         YDBPkSxTGzzlFsWaJkfgbwIGDhAAJNwc9lIK8rueCfkKlSbWzUFM17+Os6oV3waHBHJJ
+         Pua6u9nK0tPEiVyfJfRfYi8Zo9Z4OL01bwCK3kwUoXfAo0LPCzVaTqIC0GGWMWtdFAhF
+         nl37qlL4gvD8s3IZXXGVPj0dQ1bOO9fJ590mK+VVhsYmJo2R9htEsSjBotgS98s9MMSW
+         to+g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.b=n4FopeoG;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id c185si7373610qka.342.2017.06.30.06.56.44
+        by mx.google.com with ESMTPS id b128si7483989qkf.321.2017.06.30.07.22.09
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 30 Jun 2017 06:56:44 -0700 (PDT)
+        Fri, 30 Jun 2017 07:22:10 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.b=n4FopeoG;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:44662 helo=lists.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:44756 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1dQwPa-0007t2-2g
-	for alex.bennee@linaro.org; Fri, 30 Jun 2017 09:56:42 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:54092)
+	id 1dQwoB-0002oG-RJ
+	for alex.bennee@linaro.org; Fri, 30 Jun 2017 10:22:07 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:59570)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <edgar.iglesias@gmail.com>) id 1dQwOm-0007My-Nf
-	for qemu-arm@nongnu.org; Fri, 30 Jun 2017 09:55:53 -0400
+	(envelope-from <famz@redhat.com>) id 1dQwo5-0002o4-Us
+	for qemu-arm@nongnu.org; Fri, 30 Jun 2017 10:22:02 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <edgar.iglesias@gmail.com>) id 1dQwOl-0005iQ-Uu
-	for qemu-arm@nongnu.org; Fri, 30 Jun 2017 09:55:52 -0400
-Received: from mail-lf0-x241.google.com ([2a00:1450:4010:c07::241]:34055)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <edgar.iglesias@gmail.com>)
-	id 1dQwOh-0005bW-6r; Fri, 30 Jun 2017 09:55:47 -0400
-Received: by mail-lf0-x241.google.com with SMTP id g21so10145588lfk.1;
-	Fri, 30 Jun 2017 06:55:46 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=from:to:cc:subject:date:message-id;
-	bh=lE4sYugzm1a+N25UdQOeAs+6tDwjKPaweoqmYRnNCyE=;
-	b=n4FopeoGRWbZwfH8+XvdWVT3SupOiyuEnP9/PcID14vQVBi5QmYE9/LDTaoZ9FkrkA
-	DJVIf3q9dU5o9GQitOCxdBm/Cw/ji9SB/jNmaVGhtI+t/0MOyfyi1I0Bxr4Bo0pu5a3w
-	MEMKF5HD67aIGhs1gIBlqzC+Vb6nKYWWqwJgxTGT6PHjMPIiYyUeojGn4MonQAmjBJ26
-	eKxqESHmN+5+Cu4NeQdVRLDet1XecOZ3LvhwCNdTO9Axlbv5RcZaNNWOO0JpLcN9nJsr
-	HnNhKLjtGkRJqdWphme1Tf/+g98ghQGJPp1CGiYoz51zyX4k+eQl0LF+TWwpaCQkqYZK
-	MXAA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:from:to:cc:subject:date:message-id;
-	bh=lE4sYugzm1a+N25UdQOeAs+6tDwjKPaweoqmYRnNCyE=;
-	b=QAmeaVAEhDD4B5nfM/lmCkf6Jh5fNCcuhrrUtJE5DfFKN45pzovwLM71/5hiu7d1e5
-	Ho6QCOjeObu/khY0LZV/Ow37Ib54YDSASnxBsLn+qeKGv0BHolZ8H2w37V05hRSEXtlN
-	XryvJ2VZ/lqSpgNmtnNBILK12rB1ACA7UL3llTWnoXeROlrD58LGhz6+rGy9bDW9Y5oq
-	X88NwjnjvTPRrMTz1aRWucA8zaaH9cRGt0lGQrGAn6sxMGG7Qx/JVhXHCuWOIK2xSmi7
-	zGTQ99/kFNHHf31JySBtqo7ah9fu8Mfqi2C9zQ05w3ALdZeqR9G6xl3wznolvvKWWp42
-	0zcg==
-X-Gm-Message-State: AKS2vOy4h9XStTh8leQMO661lX/O/9gpJvM7Ywh2mugsVpmoylaUgWhs
-	2Aaw48L/Qtwfrsad
-X-Received: by 10.25.209.2 with SMTP id i2mr2655327lfg.119.1498830945537;
-	Fri, 30 Jun 2017 06:55:45 -0700 (PDT)
-Received: from localhost (81-231-233-234-no56.tbcn.telia.com. [81.231.233.234])
-	by smtp.gmail.com with ESMTPSA id z25sm1632710lja.2.2017.06.30.06.55.44
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Fri, 30 Jun 2017 06:55:44 -0700 (PDT)
-From: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
-To: qemu-devel@nongnu.org
-Date: Fri, 30 Jun 2017 15:55:44 +0200
-Message-Id: <1498830944-26857-1-git-send-email-edgar.iglesias@gmail.com>
-X-Mailer: git-send-email 2.7.4
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2a00:1450:4010:c07::241
-Subject: [Qemu-arm] [PATCH v1 1/1] xilinx-dp: Add support for the yuy2 video
- format
+	(envelope-from <famz@redhat.com>) id 1dQwo2-0006RS-RB
+	for qemu-arm@nongnu.org; Fri, 30 Jun 2017 10:22:01 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:42740)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <famz@redhat.com>)
+	id 1dQwo2-0006Qt-KH; Fri, 30 Jun 2017 10:21:58 -0400
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+	[10.5.11.13])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 6855D49003;
+	Fri, 30 Jun 2017 14:21:57 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 6855D49003
+Authentication-Results: ext-mx09.extmail.prod.ext.phx2.redhat.com;
+	dmarc=none (p=none dis=none) header.from=redhat.com
+Authentication-Results: ext-mx09.extmail.prod.ext.phx2.redhat.com;
+	spf=pass smtp.mailfrom=famz@redhat.com
+DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com 6855D49003
+Received: from localhost (ovpn-12-32.pek2.redhat.com [10.72.12.32])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id EDDC8187A3;
+	Fri, 30 Jun 2017 14:21:54 +0000 (UTC)
+Date: Fri, 30 Jun 2017 22:21:53 +0800
+From: Fam Zheng <famz@redhat.com>
+To: Paolo Bonzini <pbonzini@redhat.com>
+Message-ID: <20170630142153.GA26114@lemon>
+References: <1498734863-164338-1-git-send-email-imammedo@redhat.com>
+	<41be440c-e158-fb83-15dd-e9853460d5a3@redhat.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <41be440c-e158-fb83-15dd-e9853460d5a3@redhat.com>
+User-Agent: Mutt/1.8.0 (2017-02-23)
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.38]);
+	Fri, 30 Jun 2017 14:21:57 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-arm] [PATCH] qom: enforce readonly nature of link's check
+ callback
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -102,36 +97,30 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: sai.pavan.boddu@xilinx.com, edgar.iglesias@xilinx.com, qemu-arm@nongnu.org,
-	alistai@xilinx.com
+Cc: mst@redhat.com, qemu-devel@nongnu.org, alistair.francis@xilinx.com,
+	qemu-arm@nongnu.org, Igor Mammedov <imammedo@redhat.com>, afaerber@suse.de
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 1ON8r6+WMwUC
+X-TUID: DaXn+r094lnG
 
-From: "Edgar E. Iglesias" <edgar.iglesias@xilinx.com>
+On Fri, 06/30 12:41, Paolo Bonzini wrote:
+> 
+> 
+> On 29/06/2017 13:14, Igor Mammedov wrote:
+> > link's check callback is supposed to verify/permit setting it,
+> > however currently nothing restricts it from misusing it
+> > and modifying target object from within.
+> > Make sure that readonly semantics are checked by compiler
+> > to prevent callback's misuse.
+> > 
+> > Signed-off-by: Igor Mammedov <imammedo@redhat.com>
+> > ---
+> > Fam,
+> >  it probably conflicts with yours DEFINE_PROP_LINK series,
+> >  feel free to include this patch if you'll have to respin
+> 
+> Since there will be a respin, I'm _not_ queuing this patch.
 
-Add support for the yuy2 video format.
+I am going to include this in my next version of DEFINE_PROP_LINK series.
 
-Signed-off-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
-Acked-by: Sai Pavan Boddu <saipava@xilinx.com>
----
- hw/display/xlnx_dp.c | 3 +++
- 1 file changed, 3 insertions(+)
-
-diff --git a/hw/display/xlnx_dp.c b/hw/display/xlnx_dp.c
-index f7b7b80..a77d7db 100644
---- a/hw/display/xlnx_dp.c
-+++ b/hw/display/xlnx_dp.c
-@@ -624,6 +624,9 @@ static void xlnx_dp_change_graphic_fmt(XlnxDPState *s)
-     case 0:
-         s->v_plane.format = PIXMAN_x8b8g8r8;
-         break;
-+    case DP_NL_VID_Y0_CB_Y1_CR:
-+        s->v_plane.format = PIXMAN_yuy2;
-+        break;
-     case DP_NL_VID_RGBA8880:
-         s->v_plane.format = PIXMAN_x8b8g8r8;
-         break;
--- 
-2.7.4
-
+Fam

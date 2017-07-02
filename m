@@ -1,75 +1,75 @@
-Received: by 10.25.227.6 with SMTP id a6csp480320lfh;
-        Sat, 1 Jul 2017 18:13:27 -0700 (PDT)
-X-Received: by 10.237.62.201 with SMTP id o9mr34355289qtf.4.1498958007720;
-        Sat, 01 Jul 2017 18:13:27 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1498958007; cv=none;
+Received: by 10.25.227.6 with SMTP id a6csp481089lfh;
+        Sat, 1 Jul 2017 18:14:28 -0700 (PDT)
+X-Received: by 10.55.79.80 with SMTP id d77mr31618296qkb.155.1498958068860;
+        Sat, 01 Jul 2017 18:14:28 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1498958068; cv=none;
         d=google.com; s=arc-20160816;
-        b=yeZHUNIQzgD0NKq8MorKWNPtnKqbC5Tb3Tx5yCBn8JNMIXbpV/FasX5KuegDCWwydc
-         /OsNWgZFDXcPGgtkH1EBjfbgcfG5e+cAc5m18zFy43tRbrkXjfdVVmYMfbP2Tg4bMvjP
-         LcNz4+AvNL9PqvXiQ0ni0RYuc8G86XN4MmHHAcGVEmxnm+qLftyJ2FNHWsYtSCQ5ydx5
-         oZhcT+ghQOfqZrkBSA2zOH7zUdwTIpPfJ7GYDU8lhJ4FKiXs9MRd62kJTG6CgyKdJgvr
-         xAJJy6HsLL+Ny3M0P5TIoN93voRy0o7ENX0Fk0yO/1qFml7JMRNXIfu/KCo6hRdaT5P9
-         mZsQ==
+        b=HwbE+rwqpZvwHfrmfgsFlGnPdPC7BN1S4ag23hARRypnmJNUBZwT1BL7RQBZ+6Bsb4
+         RtLLrWqIQ51A+cuX32GCPSO/OXEovgWgNpMfPb9vjYmA7A0zv0CZKVsQrFZ8QYIdTjeZ
+         zVjKLJXrkgkwG4PanWKw7yTeidPjChLEnBwxNfM8a6GYyYDi59IdPxwue1+ztJ7R3PYw
+         dn0Ok6P4yBYHOU0AZUt9bD4zr4iKVHcEf6i3dIRSoXWtTz6NTftcdUtdRF21kE7oE0O6
+         O4hjVBe01WqUufocOFgxR7V99d3HHuBeMciECv9RYztSeDRNW6/4wI1+5zR8Hs2kI9kl
+         TMxA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:content-language:in-reply-to:mime-version
          :user-agent:date:message-id:from:references:cc:to:subject:sender
          :dkim-signature:arc-authentication-results;
-        bh=bCPJmaqI2TS1fcbEFY23BGpTNPFr0Tm90+a94Y2JhGQ=;
-        b=kc1dHCJxV0aGUtgSQ86TosukujpGpbnwg/nhB54SwxKhEHkV7rqz7i7FX4EKkJ0qPH
-         PiRflkTZuJZQmW4x8TieD3VtuQ8MJzSXXcqdBTuCOk4SNdWNLcQhwTDu+WXYB1/UJ9Rw
-         4KtErXfkKDNw28O7Kc4MSLdOT6R99v6qjD0RD8PyJlBRD9UqxiJcHJ8U5x10xsDNSRgr
-         QaT1AB930tqmxPr6E1StYTSSRCFvlRTB+qyH8v+LefMhjFiUdEIRb69M+4kvHlEJKmHL
-         3/44v/tLe9pfF1ZFO/J4qUaFzOx52QFTa5+xOUL01x/A1hnkGp2HmQrTXBItmuQFk5Um
-         G4Bg==
+        bh=djUH/rFAHl+7prnysqs3k1L+OYhVv+KiZHuGpYawmYs=;
+        b=s897IFgUqo7xncV284QGiX4znE4lPuLf1nxYPmgt21qMuNXz+DxNW56qItG4GINN9D
+         FGFkznqvSFHn4GGRfAFPnEZktYI6B7PECRl08tvJ89LeGpTuAe8nVwmHX8/LRWAjAHjw
+         Tit4CLy+5gEzpBsizMLw68Nh52G+lvk7G7UVYL+HkOfFFv50flZXf1gd5+4UqD14MkqO
+         xEcOwHOBdQpgB+TnwK+sSBwD/rQV7nuCpu13Lrne+RYkOZ3J7ALNDNqhHR6ss0gbcHXu
+         NrLvAl390o6rvl6K0FjVD9gqA+255eRMwsqFgIVxI6845NsbPumLHoAsMWD1S0Sl63mv
+         bGdg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.b=gyT3olOl;
-       spf=pass (google.com: domain of rth7680@gmail.com designates 2607:f8b0:400d:c09::242 as permitted sender) smtp.mailfrom=rth7680@gmail.com
+       dkim=pass header.i=@gmail.com header.b=MzNTJ7o1;
+       spf=pass (google.com: domain of rth7680@gmail.com designates 2607:f8b0:400d:c09::244 as permitted sender) smtp.mailfrom=rth7680@gmail.com
 Return-Path: <rth7680@gmail.com>
-Received: from mail-qk0-x242.google.com (mail-qk0-x242.google.com. [2607:f8b0:400d:c09::242])
-        by mx.google.com with ESMTPS id i16si11265744qtf.90.2017.07.01.18.13.27
+Received: from mail-qk0-x244.google.com (mail-qk0-x244.google.com. [2607:f8b0:400d:c09::244])
+        by mx.google.com with ESMTPS id w5si11325356qkc.373.2017.07.01.18.14.28
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 01 Jul 2017 18:13:27 -0700 (PDT)
-Received-SPF: pass (google.com: domain of rth7680@gmail.com designates 2607:f8b0:400d:c09::242 as permitted sender) client-ip=2607:f8b0:400d:c09::242;
+        Sat, 01 Jul 2017 18:14:28 -0700 (PDT)
+Received-SPF: pass (google.com: domain of rth7680@gmail.com designates 2607:f8b0:400d:c09::244 as permitted sender) client-ip=2607:f8b0:400d:c09::244;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.b=gyT3olOl;
-       spf=pass (google.com: domain of rth7680@gmail.com designates 2607:f8b0:400d:c09::242 as permitted sender) smtp.mailfrom=rth7680@gmail.com
-Received: by mail-qk0-x242.google.com with SMTP id 91so20069935qkq.1;
-        Sat, 01 Jul 2017 18:13:27 -0700 (PDT)
+       dkim=pass header.i=@gmail.com header.b=MzNTJ7o1;
+       spf=pass (google.com: domain of rth7680@gmail.com designates 2607:f8b0:400d:c09::244 as permitted sender) smtp.mailfrom=rth7680@gmail.com
+Received: by mail-qk0-x244.google.com with SMTP id 91so20071539qkq.1;
+        Sat, 01 Jul 2017 18:14:28 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=sender:subject:to:cc:references:from:message-id:date:user-agent
          :mime-version:in-reply-to:content-language:content-transfer-encoding;
-        bh=bCPJmaqI2TS1fcbEFY23BGpTNPFr0Tm90+a94Y2JhGQ=;
-        b=gyT3olOlw8uSVWFice2k9tubXpUQA4JbrnU89nbUXeA0RNkzSJwGtETHoQn2e7gxBX
-         myUt6ylhpd10FWGTSvQJxKSH17S321oMeswrZVXFMxFfgsj3dqHQwtKSkTqxm3mKxLA/
-         F/keCKX/nXLA3QIjo/wWI8XR9KpA4pnhbP+BIeRrJiUmNtfYHu6Vt6R3sCXdrfXiUY4V
-         fgE33DtMRRtzjEAjh89TO0M7XQVgo4H+dEOgb6WDS7EBY/x3e8YjARpa1jFJHZmMBtOP
-         HO0OJMId5lhW7cg0c0WHewu5pk0ALMgHooa24/OSfjSMAWCNMAIvcu7fQbGiXTiYt6oG
-         DU+g==
+        bh=djUH/rFAHl+7prnysqs3k1L+OYhVv+KiZHuGpYawmYs=;
+        b=MzNTJ7o1eOiFm2M9A1EHSEHjnhUJ/iD+9eNDyzC1SNoSS0w6QHHvRp3a1AdSX3zjFF
+         GQsByQ5I2B0MdBwbEqdgw/FMnZUZHe6G5+LB1sleji0MkF0dk9tdVjplWX0VTvjkieSO
+         sv8mWAnQ3Xnmt4qOCQ9+kQtiDMWg8MVOpTE6OQnb2YHQK0Lk/Y/C/gjQCXbEiwor0hUE
+         E2uqJTNdfhcTn3M1l7HHoZ3MXosJMcMRa63qrBRUh/E8PZhfXYMbjZygUQjP+C8G/W4O
+         XIgVzdbtk+QfbXW3GKXXEFOu2SHsmKvfh8jATm5axFCWHixlKVc/ec1/YYIpGBj7eW0O
+         Y3oA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
          :date:user-agent:mime-version:in-reply-to:content-language
          :content-transfer-encoding;
-        bh=bCPJmaqI2TS1fcbEFY23BGpTNPFr0Tm90+a94Y2JhGQ=;
-        b=pVK/dXnMzSizdKfDlq9S0yX2m55CnKtltk60N7mJ0mREJ4Pwg/mdFP7k6XZeUsMAgw
-         78oLA4wq7yynKqbHvZupiz9tX/AvgAnPd9/g8SujwubYB2q+8y7P/az24FVW3VbhOYcJ
-         OtzVQDmYhyk2gS9ZcYww6gpYK9fznXIgK0cKzgMTGUyBFEgVZ5OfpK2zA/cv07e2xMDw
-         6VTQqWjUsmrkgQtzCSBhREPKDjfIwBgtVEcDug3MMWipRP/Dzn/YO55va4JdfgiB5PR7
-         Vk+FbYtiyxUdAkdjPkJwgmGuXHv/sVBETsUgpMduioKOlOewtKrmcMCAd0gLfTE3kSwv
-         heaQ==
-X-Gm-Message-State: AKS2vOzdCAj+tpx2VFg0/WMlwWu1HoNPOBLo4vsmxlqbnIPfK9cLBdSx
-	zDJmR+4Mh/t4edehz+w=
-X-Received: by 10.55.103.194 with SMTP id b185mr31605429qkc.55.1498958007178;
-        Sat, 01 Jul 2017 18:13:27 -0700 (PDT)
+        bh=djUH/rFAHl+7prnysqs3k1L+OYhVv+KiZHuGpYawmYs=;
+        b=m27NOJQWpPgk0OVXh1jKbJ3jMJwNJVepdG+QSwqjKeAAZgBJiIiRFZM7Je3Ys11HT6
+         VDJZ0F3DqNXuSpGhQb+oEDFzNpkyHZIq3pEBS+6Bkc1uRrxOzNJnY5uzfZYhkTnhT+1F
+         U7tW1e5KspfXdrniRfJwQeWmHO+okeV37Kt51Y/TtUuAy0R9sVmEVkkKqGnsreuopWQw
+         7rHBOAcFb8AlmZIfmD7MyLa422GSqGoYtHFqsuUPfWH9JoNsSaHe/vJnB9K4pV9azGHl
+         s6M5ZZo1Yg6/fI0CG5EnER2Ojs7uyGCie1nmPKgb6UjDcnjqMRvqfKQZ923EiUQgVEWQ
+         Q+mg==
+X-Gm-Message-State: AKS2vOwv8dblNbKCpcHFs67jHLucQuoYrmtfJrRPUR3sqqehK44Jn6Rj
+	KYl02q7ICUKAyVqN+2s=
+X-Received: by 10.55.188.69 with SMTP id m66mr32139832qkf.63.1498958068303;
+        Sat, 01 Jul 2017 18:14:28 -0700 (PDT)
 Return-Path: <rth7680@gmail.com>
 Received: from bigtime.twiddle.net (97-113-165-157.tukw.qwest.net. [97.113.165.157])
-        by smtp.googlemail.com with ESMTPSA id o39sm10546945qto.10.2017.07.01.18.13.25
+        by smtp.googlemail.com with ESMTPSA id 79sm9697049qky.50.2017.07.01.18.14.26
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 01 Jul 2017 18:13:26 -0700 (PDT)
+        Sat, 01 Jul 2017 18:14:27 -0700 (PDT)
 Sender: Richard Henderson <rth7680@gmail.com>
-Subject: Re: [Qemu-devel] [PATCH v11 16/29] target/arm: [tcg, a64] Port to
- init_disas_context
+Subject: Re: [Qemu-devel] [PATCH v11 17/29] target/arm: [tcg] Port to
+ init_globals
 To: =?UTF-8?Q?Llu=c3=ads_Vilanova?= <vilanova@ac.upc.edu>,
  qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>,
@@ -78,27 +78,27 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  Paolo Bonzini <pbonzini@redhat.com>, =?UTF-8?Q?Alex_Benn=c3=a9e?=
  <alex.bennee@linaro.org>
 References: <149865219962.17063.10630533069463266646.stgit@frigg.lan>
- <149865607253.17063.18194249796068858104.stgit@frigg.lan>
+ <149865631443.17063.7093785957776924619.stgit@frigg.lan>
 From: Richard Henderson <rth@twiddle.net>
-Message-ID: <0a119583-3110-d3a7-4c2c-c2b0ad9d5798@twiddle.net>
-Date: Sat, 1 Jul 2017 18:13:24 -0700
+Message-ID: <6892be07-cc3e-485e-0f26-8569b1ca3a1b@twiddle.net>
+Date: Sat, 1 Jul 2017 18:14:25 -0700
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
  Thunderbird/52.2.0
 MIME-Version: 1.0
-In-Reply-To: <149865607253.17063.18194249796068858104.stgit@frigg.lan>
+In-Reply-To: <149865631443.17063.7093785957776924619.stgit@frigg.lan>
 Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-X-TUID: R+0cjzshLj8Z
+X-TUID: gdSArJspoxqa
 
-On 06/28/2017 06:21 AM, Lluís Vilanova wrote:
+On 06/28/2017 06:25 AM, Lluís Vilanova wrote:
 > Incrementally paves the way towards using the generic instruction translation
 > loop.
 > 
 > Signed-off-by: Lluís Vilanova<vilanova@ac.upc.edu>
 > ---
->   target/arm/translate-a64.c |   36 ++++++++++++++++++++++--------------
->   1 file changed, 22 insertions(+), 14 deletions(-)
+>   target/arm/translate.c |   21 +++++++++++++--------
+>   1 file changed, 13 insertions(+), 8 deletions(-)
 
 Reviewed-by: Richard Henderson <rth@twiddle.net>
 

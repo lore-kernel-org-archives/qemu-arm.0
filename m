@@ -1,124 +1,205 @@
-Received: by 10.25.227.6 with SMTP id a6csp511298lfh;
-        Sat, 1 Jul 2017 18:54:09 -0700 (PDT)
-X-Received: by 10.200.39.196 with SMTP id x4mr30288178qtx.80.1498960449164;
-        Sat, 01 Jul 2017 18:54:09 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1498960449; cv=none;
+Received: by 10.25.227.6 with SMTP id a6csp1804925lfh;
+        Sun, 2 Jul 2017 21:46:10 -0700 (PDT)
+X-Received: by 10.200.55.44 with SMTP id o41mr39883059qtb.120.1499057169996;
+        Sun, 02 Jul 2017 21:46:09 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1499057169; cv=none;
         d=google.com; s=arc-20160816;
-        b=bJKhjaasQaqewe6WnOLMwS5cMv0oV361R/3HDuO4TyDd7pQO3mO3r0JKw2+xdoOaR2
-         pBTmddatwbBvZfSgxmi2WsqfwJEC9vzMcGi497l+IQa/m/zIIOTmYuxm3rKEXxxs9Ic2
-         PZhVl4FDtvJ2/nVWdzzJGBIV8AFll29m3lSodUeeqzeu8t4bqdHVu0Ou5sXEtWQ4OhUB
-         wwjNdCVytzoibaFlXC1+n7QSWd2k/sh/o7K/pRJfmDTZjW1Tr/p67LXZxCHo/t4TH44y
-         W2ScOHYmUlVg7BkJ+R83Nm+HrkiWFCndqNteN7hXD9IIg4wLmX67fz/GQ43octdiwfSR
-         j62g==
+        b=D3vZbch3Lf5A/UetmekHYLGk2Vn420a52LzOyJNpOoOWWUvGKjnSIVIKtMrr0yB/iA
+         /4kKd8h5IU99bY0/VpwM/oVhh6QkdWXV01NSte9C/1AOzk2Vw9HnCnM202ZqRBDiScXW
+         8nRA/6Cs7M8hJ8WtguZvhZnO0W4psXOsP7guN9g2nDWC1jmbUleJr3smm1bXYi5qFYaE
+         dK47tjz1TlrtRy1YpDt7rRkV0vWctq/aHq42xkUNPJAxaj7sefbFV+eknfULfmqDGniJ
+         8g9jlWPa7+wUoZiwpVk1h74YCjpv2v/dVn35BCkFEPZ7iXb66P+0VFStPdH3w5/EFXuk
+         +wRA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:cc:to:subject:sender
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject:message-id:date:to:from
          :dkim-signature:arc-authentication-results;
-        bh=zuTTir2I3n2R+tcRrA4vWXQlr4U2+CiFvwWIy+8YY+A=;
-        b=v5i7eGSUSReL8uCa21nYmFUAubcUhoS6nzB0Sf0z0wsope4sR8CHdzjpLrMnNvj6Qd
-         nJarMnVadl/1+zJnlO70um1ah7Hi7NAKyi5MU0aiFPz9iEMtZrGMrdZscFG4zYROkVtX
-         UolIzvAD+y0CMOtYtLNb0MmCbuv5H5CviZAAoSV+bWdOt4Uf4goULwR7d85WpaFccfKR
-         Y3fu3yK/KcV8hm9ucu9SQa5ZSGb6Wq3Ww6GhYaUmcMvcZm0RRyvKM/q/ehQjK7KUxsIb
-         shEGO1fJcQqXZeEA+jx1G10cTS2H9JFjZUbKoHsOFibBonhhj3ikni7dh1wlezCwmjI6
-         K/CQ==
+        bh=Dq1hrHKAuhOlF3y6hHLrOkNaDPeF1D/iwWYan8wj7rY=;
+        b=nvkxoCfNJbZi+eQMh7YyGBCp0VOu15oVNJwdEqvb4xD7f29RrJiRZlFuoeQrBzoz+j
+         yG8OjOhKpdTMiJ968p49nNLIn3mt6GRGClggQVu3a2k230ngGZez3twcedwbgA1CYhio
+         uATYYlnEmuZjH9IIk95Vr9O9CUEbKic8ipDFnd4ZIOQnr4yxfFwmGkSwZvXblM79tCTW
+         kZXA+wCGw2phFkVlBIPYEBnhcrSfMlF2+oOx/jSqluMQDw+4FJBBHuoDnlkvvulZhqgv
+         tobpZU6ImPedQDsmvmrAMRcuGD2LrLuBNK6Dh5bQdi5Irxzsb51qgKJBqt1WVUkhJUv5
+         X6Cg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.b=JtsRe21G;
-       spf=pass (google.com: domain of rth7680@gmail.com designates 2607:f8b0:400d:c0d::241 as permitted sender) smtp.mailfrom=rth7680@gmail.com
-Return-Path: <rth7680@gmail.com>
-Received: from mail-qt0-x241.google.com (mail-qt0-x241.google.com. [2607:f8b0:400d:c0d::241])
-        by mx.google.com with ESMTPS id n10si11357365qte.262.2017.07.01.18.54.09
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 01 Jul 2017 18:54:09 -0700 (PDT)
-Received-SPF: pass (google.com: domain of rth7680@gmail.com designates 2607:f8b0:400d:c0d::241 as permitted sender) client-ip=2607:f8b0:400d:c0d::241;
+       dkim=fail header.i=@gmail.com header.b=ppLpNzrH;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
+        by mx.google.com with ESMTPS id h42si14105276qta.179.2017.07.02.21.46.09
+        for <alex.bennee@linaro.org>
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Sun, 02 Jul 2017 21:46:09 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.b=JtsRe21G;
-       spf=pass (google.com: domain of rth7680@gmail.com designates 2607:f8b0:400d:c0d::241 as permitted sender) smtp.mailfrom=rth7680@gmail.com
-Received: by mail-qt0-x241.google.com with SMTP id v31so19722122qtb.3;
-        Sat, 01 Jul 2017 18:54:08 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=sender:subject:to:cc:references:from:message-id:date:user-agent
-         :mime-version:in-reply-to:content-language:content-transfer-encoding;
-        bh=zuTTir2I3n2R+tcRrA4vWXQlr4U2+CiFvwWIy+8YY+A=;
-        b=JtsRe21GRehxRhsve4LOplUj7au64YhZu9mfzQ1vFjvMrfj9S8JE2pk0XUKq231oLO
-         kIqPVMyWRAnWilTIIKzeHFi8PjsZ973QbPX/t9VX02IADLRrqzzBZ5Le1pk6ZjHOP+UM
-         KsyQiPVIhYj4TiU59y3hXMA/VgrwC/SL/tHHAupI9ymc/65eWAnsycIbA8wOtoHIPq/W
-         IIU65MYyvmk3bOmgH3n0jsB1FUcTb9yjAosW6EOJKm8XgPpL+OwT7f675sntB8dHRCvO
-         EiuH79a5DbFda7Ndz03+uhAX3gz6PdtcSq09+jk9+07WRfYL+sa7Zq35Q/QU5Uo8R350
-         8HGA==
+       dkim=fail header.i=@gmail.com header.b=ppLpNzrH;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:60297 helo=lists.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1dRtFP-00082A-DT
+	for alex.bennee@linaro.org; Mon, 03 Jul 2017 00:46:07 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:40587)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <sundeep.lkml@gmail.com>) id 1dRtFE-00080Z-GD
+	for qemu-arm@nongnu.org; Mon, 03 Jul 2017 00:45:57 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+	(envelope-from <sundeep.lkml@gmail.com>) id 1dRtFD-000839-CQ
+	for qemu-arm@nongnu.org; Mon, 03 Jul 2017 00:45:56 -0400
+Received: from mail-pg0-x241.google.com ([2607:f8b0:400e:c05::241]:33761)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <sundeep.lkml@gmail.com>)
+	id 1dRtF6-0007jj-Up; Mon, 03 Jul 2017 00:45:49 -0400
+Received: by mail-pg0-x241.google.com with SMTP id u62so21811898pgb.0;
+	Sun, 02 Jul 2017 21:45:48 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=from:to:cc:subject:date:message-id;
+	bh=Dq1hrHKAuhOlF3y6hHLrOkNaDPeF1D/iwWYan8wj7rY=;
+	b=ppLpNzrHPYXnJT2wbOJiPwpiViGNtrs5u+LXGj91T94pRTyoBJpOaUNiCTXmOEwvkM
+	FdWXEH/ya5dkLeyFT4++ok8deN0y9EdMWtTpXOeTn0J+anV+Qj8hUK99UZ3B4Hsjbo/n
+	fBHtpoAket0HzJ/X6mC5O/h2OXpKQeEk98hpSv6F/tYnL3SvHAXNpZrD0HHUjtmVSPxp
+	us9DV6ERXib13NumNNqt2MbCjiJY/lKORKCPV40FBPRMN1Bexss5r1bNVGUzAZ8YpClu
+	yl5W3TiBKVsc0SuC/X/Fz5iMMOQBWLJ5w0gc63jwhx/L3APG6C/xcOz+e0VngPj8Y+e1
+	L/5w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
-         :date:user-agent:mime-version:in-reply-to:content-language
-         :content-transfer-encoding;
-        bh=zuTTir2I3n2R+tcRrA4vWXQlr4U2+CiFvwWIy+8YY+A=;
-        b=FOi9q2GeCsZj2ZooiwwbWDdbL/neZKGROYVkFIoUlbpTTSJDGAc+2jnMr0PEdV4XIg
-         ihDCP0LVNBjfzbzMveRakFMw3N5c18hjFcAGf9IS9MskcvUbeOsbYhZkuNo9OV4+sQ0w
-         JKvaokqVsnufHB27qQWtkXUYC/Uv+MopHyGqnkEfuHBfM7bDZZ7MAxxjx579qeN5X3B7
-         KX7V5MoPYi9Kefotu69mJykBDFOzU/mY3XoVxRKb+0guAp3hcff96f1UFSu7Y/9Ps6JJ
-         jCFp7qU1tBpoipHonkcNBlqF43p2GOHg70vMgtZuxZIO4BYgy9uZjX5JInBV6CigqbWu
-         L/bA==
-X-Gm-Message-State: AIVw1111lOLDRVkfCan3JswMm5+lIi/l54pt8yKoVcYdSrOunMnpTe1m
-	VHDXtf9iFl8YMkoQNbE=
-X-Received: by 10.237.34.149 with SMTP id p21mr3680075qtc.90.1498960448615;
-        Sat, 01 Jul 2017 18:54:08 -0700 (PDT)
-Return-Path: <rth7680@gmail.com>
-Received: from bigtime.twiddle.net (97-113-165-157.tukw.qwest.net. [97.113.165.157])
-        by smtp.googlemail.com with ESMTPSA id w43sm10242789qtc.48.2017.07.01.18.54.06
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 01 Jul 2017 18:54:07 -0700 (PDT)
-Sender: Richard Henderson <rth7680@gmail.com>
-Subject: Re: [Qemu-devel] [PATCH v11 29/29] target/arm: [tcg] Port to generic
- translation framework
-To: =?UTF-8?Q?Llu=c3=ads_Vilanova?= <vilanova@ac.upc.edu>,
- qemu-devel@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Peter Crosthwaite <crosthwaite.peter@gmail.com>,
- "Emilio G. Cota" <cota@braap.org>, "open list:ARM" <qemu-arm@nongnu.org>,
- Paolo Bonzini <pbonzini@redhat.com>, =?UTF-8?Q?Alex_Benn=c3=a9e?=
- <alex.bennee@linaro.org>
-References: <149865219962.17063.10630533069463266646.stgit@frigg.lan>
- <149865922142.17063.17637554632892697681.stgit@frigg.lan>
-From: Richard Henderson <rth@twiddle.net>
-Message-ID: <5e3f1bec-5597-172b-1ec0-0a823a4960b0@twiddle.net>
-Date: Sat, 1 Jul 2017 18:54:05 -0700
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
- Thunderbird/52.2.0
-MIME-Version: 1.0
-In-Reply-To: <149865922142.17063.17637554632892697681.stgit@frigg.lan>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-TUID: SOy7/Iun/cI1
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:from:to:cc:subject:date:message-id;
+	bh=Dq1hrHKAuhOlF3y6hHLrOkNaDPeF1D/iwWYan8wj7rY=;
+	b=PdFKqYMcG3q5ZKj8ZWEjvZdtzMjYDpHD4gFJ5X5mOcId0JjxEirNrhwuj6PhS12HTw
+	whxk2rEKs8uNhDF26fiwfmCkZDJ/Whni5sAt51lWt88uQ0Xxs+jUJ/xJtODKmkViGIwM
+	mymdfDe/gLIigHogbsBoHY7nKJHeJMIo3XFmRdQK9sYpEhkOKPMTUAAs/D9NN5wAHCcM
+	F4+N6VH+sRae/x0/PPn12sLhfta1fY7/I9irqIew33JBGRtln6dK4P65ULTub+7Ej6VM
+	aKTTqBgdR+nLWi7iEi39pEvQ0D3T03ZvJ2mkf/Ek8Mhqp5rbpFK2ceE+2/djwnPmVxvK
+	jKSg==
+X-Gm-Message-State: AIVw112rjLVpTBYIubxnDlFbxi07gzKaDd3OJin4O/l9uIf45JNj9hcO
+	qwuL0DH/ZuUspd84
+X-Received: by 10.98.148.25 with SMTP id m25mr8072473pfe.7.1499057147551;
+	Sun, 02 Jul 2017 21:45:47 -0700 (PDT)
+Received: from localhost.localdomain ([124.123.70.3])
+	by smtp.gmail.com with ESMTPSA id
+	v70sm9324145pfi.110.2017.07.02.21.45.44
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+	Sun, 02 Jul 2017 21:45:46 -0700 (PDT)
+From: Subbaraya Sundeep <sundeep.lkml@gmail.com>
+To: qemu-devel@nongnu.org,
+	qemu-arm@nongnu.org
+Date: Mon,  3 Jul 2017 10:15:10 +0530
+Message-Id: <1499057115-6773-1-git-send-email-sundeep.lkml@gmail.com>
+X-Mailer: git-send-email 2.5.0
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:400e:c05::241
+Subject: [Qemu-arm] [Qemu devel v6 PATCH 0/5] Add support for Smartfusion2
+ SoC
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.21
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: peter.maydell@linaro.org, Subbaraya Sundeep <sundeep.lkml@gmail.com>,
+	f4bug@amsat.org, alistair23@gmail.com
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 2G4o3NRjbcdz
 
-On 06/28/2017 07:13 AM, Lluís Vilanova wrote:
-> @@ -11377,6 +11385,9 @@ static void aarch64_trblock_tb_stop(DisasContextBase *dcbase, CPUState *cpu)
->               break;
->           }
->       }
-> +
-> +    /* Functions above can change dc->pc, so re-align db->pc_next */
-> +    dc->base.pc_next = dc->pc;
->   }
->   
->   static void aarch64_trblock_disas_log(const DisasContextBase *dcbase,
+Hi Qemu-devel,
 
-Surely this belonged in a previous patch.
+I am trying to add Smartfusion2 SoC.
+SoC is from Microsemi and System on Module(SOM)
+board is from Emcraft systems. Smartfusion2 has hardened
+Microcontroller(Cortex-M3)based Sub System and FPGA fabric.
+At the moment only system timer, sysreg and SPI
+controller are modelled.
 
+Testing:
+./arm-softmmu/qemu-system-arm -M smartfusion2-som -serial mon:stdio \
+-kernel u-boot.bin -display none -drive file=spi.bin,if=mtd,format=raw
 
->      DisasContext dc1, *dc = &dc1;
+Binaries u-boot.bin and spi.bin are at:
+https://github.com/Subbaraya-Sundeep/qemu-test-binaries.git
 
-Drop the dc1 thing.
+U-boot is from Emcraft with modified
+    - SPI driver not to use PDMA.
+    - ugly hack to pass dtb to kernel in r1.
+@
+https://github.com/Subbaraya-Sundeep/emcraft-uboot-sf2.git
 
-> +    translate_block(
-> +#ifdef TARGET_AARCH64
-> +        ARM_TBFLAG_AARCH64_STATE(tb->flags) ?
-> +        &aarch64_translator_ops :
->  #endif
-> +        &arm_translator_ops,
+Linux is 4.5 linux with Smartfusion2 SoC dts and clocksource
+driver added by myself @
+https://github.com/Subbaraya-Sundeep/linux.git
 
-It would be nicer to avoid the ifdef within the parameter list.
-Maybe pull the ops pointer computation to a separate statement.
+v6:
+    Moved some defines from header files to source files
+    Added properties m3clk, apb0div, apb0div1 properties
+    to soc.
+    Added properties apb0divisor, apb1divisor to sysreg
+    Update system_clock_source in msf2-soc.c
+    Changed machine name smartfusion2-som->emcraft-sf2
 
+v5
+    As per Philippe comments:
+        Added abort in Sysreg if guest tries to remap memory
+        other than default mapping.
+        Use of CONFIG_MSF2 in Makefile for soc.c
+        Fixed incorrect logic in timer model.
+        Renamed msf2-timer.c -> mss-timer.c
+                msf2-spi.c -> mss-spi.c also type names
+        Renamed function msf2_init->emcraft_sf2_init in msf2-som.c
+        Added part-name,eNVM-size,eSRAM-size,pclk0 and pclk1
+            properties to soc.
+        Pass soc part-name,memory size and clock rate properties from som.
+v4:
+    Fixed build failure by using PRIx macros.
+v3:
+    Added SoC file and board file as per Alistair comments.
+v2:
+    Added SPI controller so that u-boot loads kernel from spi flash.
+v1:
+    Initial patch set with timer and sysreg
 
-r~
+Thanks,
+Sundeep
+
+Subbaraya Sundeep (5):
+  msf2: Add Smartfusion2 System timer
+  msf2: Microsemi Smartfusion2 System Register block.
+  msf2: Add Smartfusion2 SPI controller
+  msf2: Add Smartfusion2 SoC.
+  msf2: Add Emcraft's Smartfusion2 SOM kit.
+
+ default-configs/arm-softmmu.mak |   1 +
+ hw/arm/Makefile.objs            |   2 +
+ hw/arm/msf2-soc.c               | 216 +++++++++++++++++++++
+ hw/arm/msf2-som.c               |  94 +++++++++
+ hw/misc/Makefile.objs           |   1 +
+ hw/misc/msf2-sysreg.c           | 200 +++++++++++++++++++
+ hw/ssi/Makefile.objs            |   1 +
+ hw/ssi/mss-spi.c                | 415 ++++++++++++++++++++++++++++++++++++++++
+ hw/timer/Makefile.objs          |   1 +
+ hw/timer/mss-timer.c            | 261 +++++++++++++++++++++++++
+ include/hw/arm/msf2-soc.h       |  67 +++++++
+ include/hw/misc/msf2-sysreg.h   |  82 ++++++++
+ include/hw/ssi/mss-spi.h        |  62 ++++++
+ include/hw/timer/mss-timer.h    |  67 +++++++
+ 14 files changed, 1470 insertions(+)
+ create mode 100644 hw/arm/msf2-soc.c
+ create mode 100644 hw/arm/msf2-som.c
+ create mode 100644 hw/misc/msf2-sysreg.c
+ create mode 100644 hw/ssi/mss-spi.c
+ create mode 100644 hw/timer/mss-timer.c
+ create mode 100644 include/hw/arm/msf2-soc.h
+ create mode 100644 include/hw/misc/msf2-sysreg.h
+ create mode 100644 include/hw/ssi/mss-spi.h
+ create mode 100644 include/hw/timer/mss-timer.h
+
+-- 
+2.5.0
+

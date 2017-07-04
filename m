@@ -1,76 +1,109 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaro.local ([81.128.185.34])
-        by smtp.gmail.com with ESMTPSA id u187sm3301025wmd.26.2017.07.04.07.48.09
+        by smtp.gmail.com with ESMTPSA id 5sm14935900wrq.60.2017.07.04.07.48.09
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
         Tue, 04 Jul 2017 07:48:09 -0700 (PDT)
 Received: from zen.linaroharston (localhost [127.0.0.1])
-	by zen.linaro.local (Postfix) with ESMTP id C1A583E0C85;
+	by zen.linaro.local (Postfix) with ESMTP id CBAD03E19E2;
 	Tue,  4 Jul 2017 15:49:10 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: peter.maydell@linaro.org
 Cc: qemu-devel@nongnu.org,
 	qemu-arm@nongnu.org,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-Subject: [RISU PATCH 00/11] Misc fixes, documentation and patterns
-Date: Tue,  4 Jul 2017 15:48:48 +0100
-Message-Id: <20170704144859.17644-1-alex.bennee@linaro.org>
+Subject: [RISU PATCH 01/11] risu: make match status take tracing into account
+Date: Tue,  4 Jul 2017 15:48:49 +0100
+Message-Id: <20170704144859.17644-2-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.13.0
+In-Reply-To: <20170704144859.17644-1-alex.bennee@linaro.org>
+References: <20170704144859.17644-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: DxI7XFjQZf6+
+X-TUID: a3NgQKcUab+v
 
-Hi Peter,
+Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+---
+ reginfo.c | 14 +++++++++-----
+ risu.c    |  4 ++--
+ risu.h    |  2 +-
+ 3 files changed, 12 insertions(+), 8 deletions(-)
 
-A bit of a mixed set of patches here for you to pick from as you
-will. The first 2 are additional tracing fixes including a fix for
-segfaulting when generating a trace.
-
-The next two are documentation patches as requested.
-
-Then two minor tweaks, one to risu.el and a indent failure of risugen.
-
-While I've been working through the half-precision stuff I've been
-finding the --pattern approach a bit inflexible as you basically end
-up eyeballing the risu file to build up the regexs. I've added a
-little syntactic suger to the risu file to enable grouping. This makes
-slicing a subset a lot easier, e.g.:
-
-  ./risugen --group AdvSIMDAcrossVector --not-pattern ".*_RES" aarch64.risu
-
-You can specify multiple groups in the risu file as the matching is
-string based, e.g.:
-
-  @Integer,Logic,Immediate
-
-And then:
-
-  ./risugen --group Logic aarch64.risu foo.bin
-
-What do you think?
-
-Alex Bennée (11):
-  risu: make match status take tracing into account
-  reginfo.c: always return 1 on OP_TESTEND
-  README: document --static builds
-  README: document record/replay support
-  risu.el: derive from text-mode
-  risugen: fix bad indent
-  risugen: support @GroupName in risu files
-  aarch64.risu: document naming conventions
-  aarch64.risu: remove duplicate AdvSIMD Scalar 3 same block
-  aarch64.risu: remove duplicate AdvSIMD scalar 2 reg misc block
-  aarch64.risu: update AdvancedSIMD across lanes
-
- README         |  40 ++++++++--
- aarch64.risu   | 241 ++++++++++++++++++++++++---------------------------------
- reginfo.c      |  19 +++--
- risu.c         |   4 +-
- risu.el        |   2 +-
- risu.h         |   2 +-
- risugen        |  17 +++-
- risugen_arm.pm |   7 ++
- 8 files changed, 175 insertions(+), 157 deletions(-)
-
+diff --git a/reginfo.c b/reginfo.c
+index 13879d5..d9d37b3 100644
+--- a/reginfo.c
++++ b/reginfo.c
+@@ -138,7 +138,7 @@ int recv_and_compare_register_info(read_fn read_fn,
+  * Should return 0 if it was a good match (ie end of test)
+  * and 1 for a mismatch.
+  */
+-int report_match_status(void)
++int report_match_status(int trace)
+ {
+     int resp = 0;
+     fprintf(stderr, "match status...\n");
+@@ -148,7 +148,7 @@ int report_match_status(void)
+         /* We don't have valid reginfo from the apprentice side
+          * so stop now rather than printing anything about it.
+          */
+-        fprintf(stderr, "master reginfo:\n");
++        fprintf(stderr, "%s reginfo:\n", trace ? "this":"master");
+         reginfo_dump(&master_ri, stderr);
+         return 1;
+     }
+@@ -166,11 +166,15 @@ int report_match_status(void)
+         return 0;
+     }
+ 
+-    fprintf(stderr, "master reginfo:\n");
++    fprintf(stderr, "%s reginfo:\n", trace ? "this":"master");
+     reginfo_dump(&master_ri, stderr);
+-    fprintf(stderr, "apprentice reginfo:\n");
++    fprintf(stderr, "%s reginfo:\n", trace ? "trace":"apprentice");
+     reginfo_dump(&apprentice_ri, stderr);
+ 
+-    reginfo_dump_mismatch(&master_ri, &apprentice_ri, stderr);
++    if (trace) {
++        reginfo_dump_mismatch(&apprentice_ri, &master_ri, stderr);
++    } else {
++        reginfo_dump_mismatch(&master_ri, &apprentice_ri, stderr);
++    }
+     return resp;
+ }
+diff --git a/risu.c b/risu.c
+index 6f213dc..47471c6 100644
+--- a/risu.c
++++ b/risu.c
+@@ -228,7 +228,7 @@ int master(void)
+                     signal_count);
+             return 0;
+         } else {
+-            return report_match_status();
++            return report_match_status(0);
+         }
+     }
+     set_sigill_handler(&master_sigill);
+@@ -250,7 +250,7 @@ int apprentice(void)
+ #endif
+         close(apprentice_fd);
+         fprintf(stderr, "finished early after %zd checkpoints\n", signal_count);
+-        return report_match_status();
++        return report_match_status(1);
+     }
+     set_sigill_handler(&apprentice_sigill);
+     fprintf(stderr, "starting apprentice image at 0x%"PRIxPTR"\n",
+diff --git a/risu.h b/risu.h
+index 9f15662..1c8ecee 100644
+--- a/risu.h
++++ b/risu.h
+@@ -91,7 +91,7 @@ int recv_and_compare_register_info(read_fn read_fn,
+  * Should return 0 if it was a good match (ie end of test)
+  * and 1 for a mismatch.
+  */
+-int report_match_status(void);
++int report_match_status(int trace);
+ 
+ /* Interface provided by CPU-specific code: */
+ 
 -- 
 2.13.0

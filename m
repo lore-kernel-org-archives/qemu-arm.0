@@ -1,137 +1,76 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaro.local ([81.128.185.34])
-        by smtp.gmail.com with ESMTPSA id d1sm24500266wra.43.2017.07.04.07.48.11
+        by smtp.gmail.com with ESMTPSA id t62sm662005wmb.24.2017.07.04.07.48.12
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
         Tue, 04 Jul 2017 07:48:15 -0700 (PDT)
 Received: from zen.linaroharston (localhost [127.0.0.1])
-	by zen.linaro.local (Postfix) with ESMTP id 17DDE3E21FC;
+	by zen.linaro.local (Postfix) with ESMTP id 2C4BB3E21FE;
 	Tue,  4 Jul 2017 15:49:11 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: peter.maydell@linaro.org
 Cc: qemu-devel@nongnu.org,
 	qemu-arm@nongnu.org,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-Subject: [RISU PATCH 07/11] risugen: support @GroupName in risu files
-Date: Tue,  4 Jul 2017 15:48:55 +0100
-Message-Id: <20170704144859.17644-8-alex.bennee@linaro.org>
+Subject: [RISU PATCH 09/11] aarch64.risu: remove duplicate AdvSIMD Scalar 3 same block
+Date: Tue,  4 Jul 2017 15:48:57 +0100
+Message-Id: <20170704144859.17644-10-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.13.0
 In-Reply-To: <20170704144859.17644-1-alex.bennee@linaro.org>
 References: <20170704144859.17644-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: 7rslOvpUSkVO
+X-TUID: v2q3UMaJDvhD
 
-The existing pattern support is useful but it does get a little
-tedious when faced with large groups of instructions. This introduces
-the concept of a @GroupName which can be sprinkled in the risu
-definition and is attached to all instructions following its
-definition until the next group or an empty group "@" is specified.
-
-It can be combined with the existing pattern support to do things
-like:
-
-  ./risugen --group AdvSIMDAcrossVector --not-pattern ".*_RES" aarch64.risu foo.bin
+A chunk of the AArch64 definitions repeat themselves. Clean that up.
 
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- risugen        | 15 +++++++++++++++
- risugen_arm.pm |  7 +++++++
- 2 files changed, 22 insertions(+)
+ aarch64.risu | 25 +++----------------------
+ 1 file changed, 3 insertions(+), 22 deletions(-)
 
-diff --git a/risugen b/risugen
-index 347cf12..97ffa83 100755
---- a/risugen
-+++ b/risugen
-@@ -30,7 +30,10 @@ my %insn_details;
- 
- # The arch will be selected based on .mode directive defined in risu file.
- my $arch = "";
-+# Current group, updated by @GroupName
-+my $insn_group = "";
- 
-+my @group = ();                 # include groups
- my @pattern_re = ();            # include pattern
- my @not_pattern_re = ();        # exclude pattern
- 
-@@ -118,6 +121,11 @@ sub parse_config_file($)
-             exit(1);
-         }
- 
-+        if ($tokens[0] =~ /^@(.*)/ ) {
-+            $insn_group = $1;
-+            next;
-+        }
+diff --git a/aarch64.risu b/aarch64.risu
+index bfca45f..609021a 100644
+--- a/aarch64.risu
++++ b/aarch64.risu
+@@ -2130,6 +2130,8 @@ SQDMULL_S3D A64_V 0 1 U 11110 size:2 1 rm:5 1101 00 rn:5 rd:5
+ # 31 30 29 28 27 26 25 24 23 22 21 20    16 15      11 10  9    5   4    0
+ #  0  1 U   1  1  1  1  0  size  1 [  Rm  ] [ opcode ]  1 [  Rn  ] [  Rd  ]
+ #
++@AdvSIMDScalar3Same
 +
-         if ($tokens[0] =~ /^\./) {
-             parse_risu_directive($file, $seen_pattern, @tokens);
-             next;
-@@ -235,6 +243,9 @@ sub parse_config_file($)
-         $insnrec->{fixedbits} = $fixedbits;
-         $insnrec->{fixedbitmask} = $fixedbitmask;
-         $insnrec->{fields} = [ @fields ];
-+        if (length $insn_group) {
-+            $insnrec->{group} = $insn_group;
-+        }
-         $insn_details{$insnname} = $insnrec;
-     }
-     close(CFILE) or die "can't close $file: $!";
-@@ -253,6 +264,7 @@ Valid options:
-     --fpscr n    : set initial FPSCR (arm) or FPCR (aarch64) value (default is 0)
-     --condprob p : [ARM only] make instructions conditional with probability p
-                    (default is 0, ie all instructions are always executed)
-+    --group name[,name..]: only use instructions in defined groups
-     --pattern re[,re...] : only use instructions matching regular expression
-                    Each re must match a full word (that is, we match on
-                    the perl regex '\\b((re)|(re))\\b'). This means that
-@@ -281,6 +293,7 @@ sub main()
-     GetOptions( "help" => sub { usage(); exit(0); },
-                 "numinsns=i" => \$numinsns,
-                 "fpscr=o" => \$fpscr,
-+                "group=s" => \@group,
-                 "pattern=s" => \@pattern_re,
-                 "not-pattern=s" => \@not_pattern_re,
-                 "condprob=f" => sub {
-@@ -295,6 +308,7 @@ sub main()
-     # allow "--pattern re,re" and "--pattern re --pattern re"
-     @pattern_re = split(/,/,join(',',@pattern_re));
-     @not_pattern_re = split(/,/,join(',',@not_pattern_re));
-+    @group = split(/,/,join(',',@group));
+ SQADD    A64_V   01 0 11110 size:2 1 rm:5 00001 1 rn:5 rd:5
+ SQSUB    A64_V   01 0 11110 size:2 1 rm:5 00101 1 rn:5 rd:5
+ CMGT     A64_V   01 0 11110 size:2 1 rm:5 00110 1 rn:5 rd:5
+@@ -2167,28 +2169,7 @@ FCMGT    A64_V   01 1 11110 1 size:1 1 rm:5 11100 1 rn:5 rd:5
+ FACGT    A64_V   01 1 11110 1 size:1 1 rm:5 11101 1 rn:5 rd:5 \
+ !constraints { $size != 11; }
  
-     if ($#ARGV != 1) {
-         usage();
-@@ -316,6 +330,7 @@ sub main()
-         'numinsns' => $numinsns,
-         'fp_enabled' => $fp_enabled,
-         'outfile' => $outfile,
-+        'group' => \@group,
-         'pattern_re' => \@pattern_re,
-         'not_pattern_re' => \@not_pattern_re,
-         'details' => \%insn_details,
-diff --git a/risugen_arm.pm b/risugen_arm.pm
-index 1024660..8ad208a 100644
---- a/risugen_arm.pm
-+++ b/risugen_arm.pm
-@@ -895,6 +895,7 @@ sub write_test_code($$$$$$$$)
-     my $fp_enabled = $params->{ 'fp_enabled' };
-     my $outfile = $params->{ 'outfile' };
+-CMTST    A64_v   01 0 11110 size:2 1 rm:5 10001 1 rn:5 rd:5
+-SQDMULH  A64_v   01 0 11110 size:2 1 rm:5 10110 1 rn:5 rd:5
+-FMULX    A64_v   01 0 11110 0 size:1 1 rm:5 11011 1 rn:5 rd:5
+-FCMEQ    A64_v   01 0 11110 0 size:1 1 rm:5 11100 1 rn:5 rd:5
+-FRECPS   A64_v   01 0 11110 0 size:1 1 rm:5 11111 1 rn:5 rd:5
+-FRSQRTS  A64_v   01 0 11110 1 size:1 1 rm:5 11111 1 rn:5 rd:5
+-UQADD    A64_v   01 1 11110 size:2 1 rm:5 00001 1 rn:5 rd:5
+-UQSUB    A64_v   01 1 11110 size:2 1 rm:5 00101 1 rn:5 rd:5
+-CMHI     A64_v   01 1 11110 size:2 1 rm:5 00110 1 rn:5 rd:5
+-CMHS     A64_v   01 1 11110 size:2 1 rm:5 00111 1 rn:5 rd:5
+-USHL     A64_v   01 1 11110 size:2 1 rm:5 01000 1 rn:5 rd:5
+-UQSHL    A64_v   01 1 11110 size:2 1 rm:5 01001 1 rn:5 rd:5
+-URSHL    A64_v   01 1 11110 size:2 1 rm:5 01010 1 rn:5 rd:5
+-UQRSHL   A64_v   01 1 11110 size:2 1 rm:5 01011 1 rn:5 rd:5
+-SUBv     A64_v   01 1 11110 size:2 1 rm:5 10000 1 rn:5 rd:5
+-CMEQ     A64_v   01 1 11110 size:2 1 rm:5 10001 1 rn:5 rd:5
+-SQRDMULH A64_v   01 1 11110 size:2 1 rm:5 10110 1 rn:5 rd:5
+-FCMGE    A64_v   01 1 11110 0 size:1 1 rm:5 11100 1 rn:5 rd:5
+-FACGE    A64_v   01 1 11110 0 size:1 1 rm:5 11101 1 rn:5 rd:5
+-FABD     A64_v   01 1 11110 1 size:1 1 rm:5 11010 1 rn:5 rd:5
+-FCMGT    A64_v   01 1 11110 1 size:1 1 rm:5 11100 1 rn:5 rd:5
+-FACGT    A64_v   01 1 11110 1 size:1 1 rm:5 11101 1 rn:5 rd:5
++@
  
-+    my @group = @{ $params->{ 'group' } };
-     my @pattern_re = @{ $params->{ 'pattern_re' } };
-     my @not_pattern_re = @{ $params->{ 'not_pattern_re' } };
-     my %insn_details = %{ $params->{ 'details' } };
-@@ -910,6 +911,12 @@ sub write_test_code($$$$$$$$)
- 
-     # Get a list of the insn keys which are permitted by the re patterns
-     my @keys = sort keys %insn_details;
-+    if (@group) {
-+        my $re = join("|",@group);
-+        @keys = grep {
-+            defined($insn_details{$_}->{group}) &&
-+                grep /$re/, $insn_details{$_}->{group}} @keys
-+    }
-     if (@pattern_re) {
-         my $re = '\b((' . join(')|(',@pattern_re) . '))\b';
-         @keys = grep /$re/, @keys;
+ # C3.6.12 AdvSIMD scalar 2reg misc
+ CMGTzero A64_V      01 0 11110 size:2 10000 01000 10 rn:5 rd:5
 -- 
 2.13.0

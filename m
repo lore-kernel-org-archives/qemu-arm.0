@@ -1,64 +1,63 @@
-Received: by 10.25.44.15 with SMTP id s15csp684539lfs;
-        Wed, 5 Jul 2017 05:42:06 -0700 (PDT)
-X-Received: by 10.55.14.85 with SMTP id 82mr57475549qko.193.1499258526659;
-        Wed, 05 Jul 2017 05:42:06 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1499258526; cv=none;
+Received: by 10.25.44.15 with SMTP id s15csp685416lfs;
+        Wed, 5 Jul 2017 05:42:56 -0700 (PDT)
+X-Received: by 10.55.148.70 with SMTP id w67mr42003736qkd.160.1499258576420;
+        Wed, 05 Jul 2017 05:42:56 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1499258576; cv=none;
         d=google.com; s=arc-20160816;
-        b=JWaOXaZPDUWR4TAoi8OXrLOjBHkUE2KxWMsk0aPNzydVbpRnkRKdqA3Gbqlzu9+B/q
-         ewhWpoMQ54OW+XmZfjNiabrHroCNvitno1+tOoNigN+FW1DuhgWXaKK10qDSDlSsCgtU
-         c/ISIYkUpWjvd42R1mt8kO5yQQNH5nKbdwAPvsuJq1kmt2Ald9vEanBPZ6N76tqEl5kh
-         VdPy0+MSMOqqOCapKKSTHOtvH7Gmwu6XQD4lepOp7q4oZFiMm5tsZmz+r/XipbgSkPy1
-         o3DMUejp+rpNaRUAwgDRWHhHOekXq2SLvjxftvTVlEoQS4jrcTrI6LZwu6kdeMSrrGRH
-         0v8Q==
+        b=u16SOeN20w6ft8IC9oKOhm/PSqbZ3EguLqMTpoQBhTWqmm5pU5LLqj74UTwFgGN6xc
+         rQJz9DH0pTA0SlS5kLLG6pahy1Jgn+/BiM2mdNmpDn5OHU3PdJ7qycdTs3gMpOOUoSec
+         6ErszHyAH9+bl3x9SZDwiEfndqanI7JcxIS4Rcmjt/NQZcIv6buyBbvLCFN3h0+oM3dk
+         LCWKZwjqhV2kjpAc6Y8RcuoJ6MNLFQD4FkOTbHZoyFnLIFF2Vp4La7OBRxw2FIcynF6u
+         IahBJG7BzpZ7xRRl/hy8+xLEvVIG0cfGqfMQN6lOyATS3eGYg+S3jA/Ud7airPpF/+Ce
+         EIdQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:content-language:in-reply-to:mime-version
          :user-agent:date:message-id:from:references:to
          :arc-authentication-results;
-        bh=Czv5dtd9460YR074BDpibhOUlh8RnGyAnuxec0V5J2o=;
-        b=kiMcS+VnIMMFDhtAEMLJQlhiZ8mMESkQAkMT2KUoskQTwhbO7j2n2JJ4qPzpbIMN77
-         dxQV0WAPOjDZtOyfOOyQAahCoiWZvAZRaS3chavlIPaf+cHpt+qDXWX1poie1KMRfLYh
-         ec83sjr0EU5AGDLn8nyO8SP8+NmSngleP/XbSlQs613kuUTCw8XEg2PVv1jJP0tNo8Wp
-         USRNxx1VIJpiTAEhsZw6ycDZRwD1s5zyGdubtrPer7DlG8SW+35mIQTrU2/hOEef6q7a
-         1JRDMPu4u9R+XlMFfg1OxoiMFfm6PUH9Qu0zaYxYZtNNtGXIuNCzvSJ9gUMI9LO82H9W
-         g2UQ==
+        bh=3DNge7U81JTnaE0v1kDOFZhDa4AwHBIbBQVmkpmZMIk=;
+        b=ViwEGc4uihCVHYTNnMYfXsWagomlISiqtG3JRzUTukzHLuweRc1z4wRWuckNWQFeUG
+         Tg9eeFixPC/hVQ/Jrge5WFblaNm/M6xPJunq1w4a8PPugDIfrZEKSLZbngVOuji17Kv9
+         93HBt9IGJcyPQ0f60vPOGngGrHX4A4Hm/WQYb91fF7csd8baiGvlson/x4GyPv+8ORwV
+         Eqs1d0QNxemCzKLciwtjg161b+bcw8KXBe/UOta+ZfLS5sTrUcexMq7RxqmNq7eA1vi1
+         fzOgU+HVwY3jE7j1b9HG2DTmGrfMizcrBDuPdLVyZyrqUTG51mUkQXiGQOFcaHH5m3B5
+         uUIw==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id z24si21113086qth.247.2017.07.05.05.42.06
+        by mx.google.com with ESMTPS id t44si21616962qth.124.2017.07.05.05.42.55
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 05 Jul 2017 05:42:06 -0700 (PDT)
+        Wed, 05 Jul 2017 05:42:56 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:46038 helo=lists.gnu.org)
+Received: from localhost ([::1]:46041 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1dSjd6-0006R5-5E
-	for alex.bennee@linaro.org; Wed, 05 Jul 2017 08:42:04 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:56825)
+	id 1dSjdt-00072s-K7
+	for alex.bennee@linaro.org; Wed, 05 Jul 2017 08:42:53 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:56869)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <jean-philippe.brucker@arm.com>) id 1dSjd1-0006Pb-Lj
-	for qemu-arm@nongnu.org; Wed, 05 Jul 2017 08:42:00 -0400
+	(envelope-from <jean-philippe.brucker@arm.com>) id 1dSjdI-0006bY-7X
+	for qemu-arm@nongnu.org; Wed, 05 Jul 2017 08:42:17 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <jean-philippe.brucker@arm.com>) id 1dSjcw-0005wO-QJ
-	for qemu-arm@nongnu.org; Wed, 05 Jul 2017 08:41:59 -0400
-Received: from foss.arm.com ([217.140.101.70]:34972)
+	(envelope-from <jean-philippe.brucker@arm.com>) id 1dSjdD-00061e-Br
+	for qemu-arm@nongnu.org; Wed, 05 Jul 2017 08:42:16 -0400
+Received: from foss.arm.com ([217.140.101.70]:34988)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <jean-philippe.brucker@arm.com>)
-	id 1dSjcw-0005vy-H3; Wed, 05 Jul 2017 08:41:54 -0400
+	id 1dSjdD-00061X-2l; Wed, 05 Jul 2017 08:42:11 -0400
 Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.72.51.249])
-	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id A37AB2B;
-	Wed,  5 Jul 2017 05:41:53 -0700 (PDT)
+	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 774F52B;
+	Wed,  5 Jul 2017 05:42:10 -0700 (PDT)
 Received: from [10.1.211.12] (e106794-lin.cambridge.arm.com [10.1.211.12])
-	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 0AB1B3F557;
-	Wed,  5 Jul 2017 05:41:50 -0700 (PDT)
-To: "Tian, Kevin" <kevin.tian@intel.com>,
+	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 59F4A3F557;
+	Wed,  5 Jul 2017 05:42:07 -0700 (PDT)
+To: "Tian, Kevin" <kevin.tian@intel.com>, Auger Eric <eric.auger@redhat.com>, 
 	Bharat Bhushan <bharat.bhushan@nxp.com>,
-	Auger Eric <eric.auger@redhat.com>, 
 	"eric.auger.pro@gmail.com" <eric.auger.pro@gmail.com>,
 	"peter.maydell@linaro.org" <peter.maydell@linaro.org>,
 	"alex.williamson@redhat.com" <alex.williamson@redhat.com>,
@@ -71,14 +70,16 @@ References: <1496851287-9428-1-git-send-email-eric.auger@redhat.com>
 	<6f22079e-4b4b-6476-77be-51ec83104c0d@redhat.com>
 	<AM5PR0401MB25459FDAA8C9AFA52503AAE99AC40@AM5PR0401MB2545.eurprd04.prod.outlook.com>
 	<589f1642-775c-4805-74ac-bf67eb504733@arm.com>
-	<AADFC41AFE54684AB9EE6CBC0274A5D190D25AEB@SHSMSX101.ccr.corp.intel.com>
+	<5f47e723-1d3e-433b-cdaf-a56d16ba377e@redhat.com>
+	<d4277d93-d29d-7150-7962-bdfdd1c2a275@arm.com>
+	<AADFC41AFE54684AB9EE6CBC0274A5D190D25B77@SHSMSX101.ccr.corp.intel.com>
 From: Jean-Philippe Brucker <jean-philippe.brucker@arm.com>
-Message-ID: <19a85866-1e72-58b9-d120-8b5e5b809e90@arm.com>
-Date: Wed, 5 Jul 2017 13:44:33 +0100
+Message-ID: <311754cd-a4cf-7bf4-4099-a81e63402137@arm.com>
+Date: Wed, 5 Jul 2017 13:44:50 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
 	Thunderbird/52.1.1
 MIME-Version: 1.0
-In-Reply-To: <AADFC41AFE54684AB9EE6CBC0274A5D190D25AEB@SHSMSX101.ccr.corp.intel.com>
+In-Reply-To: <AADFC41AFE54684AB9EE6CBC0274A5D190D25B77@SHSMSX101.ccr.corp.intel.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 7bit
@@ -105,84 +106,81 @@ Cc: "drjones@redhat.com" <drjones@redhat.com>,
 	"christoffer.dall@linaro.org" <christoffer.dall@linaro.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: PCBIqjYsKm/v
+X-TUID: 0hAc08ZQUgLj
 
-On 05/07/17 08:14, Tian, Kevin wrote:
+On 05/07/17 08:25, Tian, Kevin wrote:
 >> From: Jean-Philippe Brucker [mailto:jean-philippe.brucker@arm.com]
->> Sent: Monday, June 19, 2017 6:15 PM
+>> Sent: Tuesday, June 27, 2017 12:13 AM
 >>
->> On 19/06/17 08:54, Bharat Bhushan wrote:
->>> Hi Eric,
+>> On 26/06/17 09:22, Auger Eric wrote:
+>>> Hi Jean-Philippe,
 >>>
->>> I started added replay in virtio-iommu and came across how MSI interrupts
->> with work with VFIO.
->>> I understand that on intel this works differently but vsmmu will have same
->> requirement.
->>> kvm-msi-irq-route are added using the msi-address to be translated by
+>>> On 19/06/2017 12:15, Jean-Philippe Brucker wrote:
+>>>> On 19/06/17 08:54, Bharat Bhushan wrote:
+>>>>> Hi Eric,
+>>>>>
+>>>>> I started added replay in virtio-iommu and came across how MSI
+>> interrupts with work with VFIO.
+>>>>> I understand that on intel this works differently but vsmmu will have
+>> same requirement.
+>>>>> kvm-msi-irq-route are added using the msi-address to be translated by
 >> viommu and not the final translated address.
->>> While currently the irqfd framework does not know about emulated
+>>>>> While currently the irqfd framework does not know about emulated
 >> iommus (virtio-iommu, vsmmuv3/vintel-iommu).
->>> So in my view we have following options:
->>> - Programming with translated address when setting up kvm-msi-irq-route
->>> - Route the interrupts via QEMU, which is bad from performance
->>> - vhost-virtio-iommu may solve the problem in long term
+>>>>> So in my view we have following options:
+>>>>> - Programming with translated address when setting up kvm-msi-irq-
+>> route
+>>>>> - Route the interrupts via QEMU, which is bad from performance
+>>>>> - vhost-virtio-iommu may solve the problem in long term
+>>>>>
+>>>>> Is there any other better option I am missing?
+>>>>
+>>>> Since we're on the topic of MSIs... I'm currently trying to figure out how
+>>>> we'll handle MSIs in the nested translation mode, where the guest
+>> manages
+>>>> S1 page tables and the host doesn't know about GVA->GPA translation.
 >>>
->>> Is there any other better option I am missing?
+>>> I have a question about the "nested translation mode" terminology. Do
+>>> you mean in that case you use stage 1 + stage 2 of the physical IOMMU
+>>> (which the ARM spec normally advises or was meant for) or do you mean
+>>> stage 1 implemented in vIOMMU and stage 2 implemented in pIOMMU. At
+>> the
+>>> moment my understanding is for VFIO integration the pIOMMU uses a
+>> single
+>>> stage combining both the stage 1 and stage2 mappings but the host is not
+>>> aware of those 2 stages.
 >>
->> Since we're on the topic of MSIs... I'm currently trying to figure out how
->> we'll handle MSIs in the nested translation mode, where the guest manages
->> S1 page tables and the host doesn't know about GVA->GPA translation.
->>
->> I'm also wondering about the benefits of having SW-mapped MSIs in the
->> guest. It seems unavoidable for vSMMU since that's what a physical system
->> would do. But in a paravirtualized solution there doesn't seem to be any
->> compelling reason for having the guest map MSI doorbells. These addresses
->> are never accessed directly, they are only used for setting up IRQ routing
->> (at least on kvmtool). So here's what I'd like to have. Note that I
->> haven't investigated the feasibility in Qemu yet, I don't know how it
->> deals with MSIs.
->>
->> (1) Guest uses the guest-physical MSI doorbell when setting up MSIs. For
->> ARM with GICv3 this would be GITS_TRANSLATER, for x86 it would be the
->> fixed MSI doorbell. This way the host wouldn't need to inspect IOMMU
->> mappings when handling writes to PCI MSI-X tables.
+>> Yes at the moment the VMM merges stage-1 (GVA->GPA) from the guest with
+>> its stage-2 mappings (GPA->HPA) and creates a stage-2 mapping (GVA->HPA)
+>> in the pIOMMU via VFIO_IOMMU_MAP_DMA. stage-1 is disabled in the
+>> pIOMMU.
 >>
 > 
-> What do you mean by "fixed MSI doorbell"? PCI MSI-X table is part of
-> PCI MMIO bar. Accessing to it is just a memory virtualization issue (e.g.
-> trap by KVM and then emulated in Qemu) on x86. It's not a IOMMU
-> problem. I guess you may mean same thing but want to double confirm
-> here given the terminology confusion. Or do you mean the interrupt
-> triggered by IOMMU itself?
+> Curious whether you are describing current smmu status or general
+> vIOMMU status also applying to other vendors...
 
-Yes I didn't mean access to the MSI-X table, but how we interpret the
-address in the MSI message. In kvmtool I create MSI routes for VFIO
-devices when the guest accesses the MSI-X tables. And on ARM the tables
-contains an IOVA that needs to be translated into a PA, so handling a
-write to an MSI-X entry might mean doing the IOVA->PA translation of the
-doorbell.
-
-On x86 the MSI address is 0xfee...., whether there is an IOMMU or not.
-That's what I meant by fixed. And it is the IOMMU that performs IRQ remapping.
-
-On physical ARM systems, the SMMU doesn't treat any special address range
-as "MSI window". For the SMMU, an MSI is simply a memory transaction. MSI
-addresses are arbitrary IOVAs that get translated into PAs by the SMMU.
-The SMMU doesn't perform any IRQ remapping, only address translation. This
-PA is a doorbell register in the irqchip, which performs IRQ remapping and
-triggers an interrupt.
-
-Therefore in an emulated ARM system, when the guest writes the MSI-X
-table, it writes an IOVA. In a strict emulation the MSI would have to
-first go through the vIOMMU, and then into the irqchip. I was wondering if
-with virtio-iommu we could skip the address translation and go to the MSI
-remapping component immediately, effectively implementing a "hardware MSI
-window". This is what x86 does, the difference being that MSI remapping is
-done by the IOMMU on x86, and by the irqchip on ARM.
-
-My current take is that we should keep the current behavior, but I will
-try to sort out the different ways of implementing MSIs with virtio-iommu
-in the next specification draft.
+This particular paragraph was about the non-SVM state of things. The rest
+was about stage-1 + stage-2 (what I call nested), which would indeed be
+required for SVM. I don't think SVM can work with software merging.
 
 Thanks,
 Jean
+
+> the usage what you described is about svm, while svm requires PASID.
+> At least PASID is tied to stage-1 on Intel VT-d. Only DMA w/o PASID
+> or nested translation from stage-1 will go through stage-2. Unless
+> ARM smmu has a completely different implementation, I'm not sure
+> how svm can be virtualized w/ stage-1 translation disabled. There
+> are multiple stage-1 page tables while only one stage-2 page table per
+> device. Could merging actually work here?
+> 
+> The only case with merging happen today is for guest stage-2 usage
+> or so-called GIOVA usage. Guest programs GIOVA->GPA to vIOMMU 
+> stage-2. Then vIOMMU invokes vfio map/unmap APIs to translate/
+> merge to GIOVA->HPA to pIOMMU stage-2. Maybe what you
+> actually meant is this one?
+> 
+> Thanks
+> Kevin
+> 
+

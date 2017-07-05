@@ -1,501 +1,166 @@
-Received: by 10.25.44.15 with SMTP id s15csp344153lfs;
-        Tue, 4 Jul 2017 23:40:37 -0700 (PDT)
-X-Received: by 10.200.42.181 with SMTP id b50mr19080619qta.122.1499236836998;
-        Tue, 04 Jul 2017 23:40:36 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1499236836; cv=none;
+Received: by 10.25.44.15 with SMTP id s15csp373688lfs;
+        Wed, 5 Jul 2017 00:16:02 -0700 (PDT)
+X-Received: by 10.200.35.21 with SMTP id a21mr22807975qta.56.1499238962490;
+        Wed, 05 Jul 2017 00:16:02 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1499238962; cv=none;
         d=google.com; s=arc-20160816;
-        b=OyH6rqrSLtfaPrRSU/8eAG1TGOKYZG94UrUCDLYDNz6XXpJXQFQlcaqirNcC6l4IHJ
-         yEKHzdYtrYHA3hjCVW6eWzAuxkWG3S13Vt7aQWz7XudiCkZ5L94+hMHp1bj3KF8stJ4f
-         P+Y5z/1CZ36IneDmsGjNZTYnwcr107/5gC6qiv8EXwOgGfCvBVUKQYpx9D7QqDrlDLRU
-         4KS+DBDVFqsotMG2qHwXM/nGkmecklC2y3QMG+8Quzb5ZCY4lU3kn6uXApcjt3rLLQ8b
-         YxqA4qTfnZlv02TFhKWBrboatBrE2EY+Tx8yGR+rxUuS84MUpQr5hmXANGdIPC7sV8lY
-         FKag==
+        b=S8CHToBg8UVIMSNPzO63UCRlRt2o08AiPPGdWJq/b0w7KW0KVsAZ99Ul27XPhM2h8s
+         j/s6/+/lk/IHNdhDBmSrCECmaqmKBxwqCATogAvEE7f/6yFBRULKpjDo5obTaYWEea6l
+         1MeznYFTx+1ILMtneTe/9esJjvt/AvLG6jJ1COkz7eOWfS759SivQHcIW+uIg16w5Lde
+         B3hI1KfWhlYIijZ3FN2KhqhM55laKqVAkKd4Cm5uWoPh2ANUog/Rpiw81GVyvA6SOOvX
+         jphw9YbXRcjpmzoQmW0r/DBw/D7rsDi9tbdv4pi3LB+RC0nm1nKxFKnBPR3deXVkGq0K
+         0dVQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:dkim-filter:dmarc-filter
-         :arc-authentication-results;
-        bh=UvCqJxTkf84OxV6xExbZf1Wo/f3Ly0VPLGBaRAuDnOQ=;
-        b=pByBaGcG+Urk6n2u4EzceF3H42/MmfACM5hPkcnWsAcEsH615qPyOBO0E7fgOsKIua
-         0WmYmexZ0f9N0hNStgm2Ug394lUrGfjNXG9QT7iZ9UXwICGGHXX4R0QHmfWZ7OPtIbJc
-         PIvpnwglWrXTSoCm9FcFQrNTMDxMhfefOpBD7Lbt1TRewqdR6RhCoYf4oD2YqeOH9jbU
-         zrqZUW3bz2lWQ1GzoGFge1IeyQPN7FRNEVU/liOS/2QdPNlZX3ya3fMojxi78PSVgw4h
-         68BPUbxpWZTMEBT7KyjY4yQhnxCCBFhJ3Clas9PCp4Bo4XQuUyHWj4MwKPTYAjYzdKud
-         Qwlg==
+         :list-unsubscribe:list-id:precedence:subject:mime-version
+         :content-transfer-encoding:dlp-reaction:dlp-version:dlp-product
+         :content-language:accept-language:in-reply-to:references:message-id
+         :date:thread-index:thread-topic:to:from:arc-authentication-results;
+        bh=LtKqKqb5+vsf9JgOrlcuXiiyZHvjUPUlNo+9agEI3ww=;
+        b=IUFjfsNQAmJ1z/mw52gDHdAGpniDyPkhItbI8I0t2zYeMmbAMR6ky/OFzE4S9p6Pnj
+         KCb3NZgI4dS9isHoGJ16H9OIryvpEuhA/OQxSfAilh6eyHQUJZvaJ5mehuRZYCPCDwXk
+         QHYbv1Xcd9/eWxAQBh+OA3F2uhiEaBRrLJm9U0aMQ+wW1aQBoeKLtSZk0e1ZZOZB4Hng
+         iEn4EazyXz6JKUkzHEz1CQQEE6aMJqMxRQjFB+nmwiTCeUNnpIstczvUa4NqQ2AW2HBE
+         92Lu1DnXAPJYRPCCwAM+kcnfWLr7HSYAOZ3fxjbjqKr4QFVn2Zrj6QAb2tKWfBKH/cXd
+         JK/Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id d46si20537258qtd.51.2017.07.04.23.40.36
+        by mx.google.com with ESMTPS id n10si19465435qtn.149.2017.07.05.00.16.01
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 04 Jul 2017 23:40:36 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Wed, 05 Jul 2017 00:16:02 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:44342 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:44486 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1dSdzG-0001zb-8P
-	for alex.bennee@linaro.org; Wed, 05 Jul 2017 02:40:34 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:36611)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1dSeXX-0004vY-Sq
+	for alex.bennee@linaro.org; Wed, 05 Jul 2017 03:15:59 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:46004)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1dSdzA-0001zF-2L
-	for qemu-arm@nongnu.org; Wed, 05 Jul 2017 02:40:29 -0400
+	(envelope-from <kevin.tian@intel.com>) id 1dSeW8-00048J-BB
+	for qemu-devel@nongnu.org; Wed, 05 Jul 2017 03:14:33 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1dSdz6-0002Bf-AP
-	for qemu-arm@nongnu.org; Wed, 05 Jul 2017 02:40:28 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:41184)
+	(envelope-from <kevin.tian@intel.com>) id 1dSeW3-0007DW-B9
+	for qemu-devel@nongnu.org; Wed, 05 Jul 2017 03:14:32 -0400
+Received: from mga09.intel.com ([134.134.136.24]:1089)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <eric.auger@redhat.com>)
-	id 1dSdz5-0002BH-Vo; Wed, 05 Jul 2017 02:40:24 -0400
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
-	[10.5.11.12])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id A5D024E4CB;
-	Wed,  5 Jul 2017 06:40:21 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com A5D024E4CB
-Authentication-Results: ext-mx09.extmail.prod.ext.phx2.redhat.com;
-	dmarc=none (p=none dis=none) header.from=redhat.com
-Authentication-Results: ext-mx09.extmail.prod.ext.phx2.redhat.com;
-	spf=pass smtp.mailfrom=eric.auger@redhat.com
-DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com A5D024E4CB
-Received: from localhost.localdomain (ovpn-116-31.ams2.redhat.com
-	[10.36.116.31])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 029C77E8EE;
-	Wed,  5 Jul 2017 06:40:04 +0000 (UTC)
-To: Bharat Bhushan <bharat.bhushan@nxp.com>,
+	(Exim 4.71) (envelope-from <kevin.tian@intel.com>)
+	id 1dSeW2-0007Ck-IZ; Wed, 05 Jul 2017 03:14:27 -0400
+Received: from orsmga005.jf.intel.com ([10.7.209.41])
+	by orsmga102.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+	05 Jul 2017 00:14:23 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.40,310,1496127600"; d="scan'208";a="120961988"
+Received: from fmsmsx107.amr.corp.intel.com ([10.18.124.205])
+	by orsmga005.jf.intel.com with ESMTP; 05 Jul 2017 00:14:23 -0700
+Received: from shsmsx152.ccr.corp.intel.com (10.239.6.52) by
+	fmsmsx107.amr.corp.intel.com (10.18.124.205) with Microsoft SMTP Server
+	(TLS) id 14.3.319.2; Wed, 5 Jul 2017 00:14:22 -0700
+Received: from shsmsx101.ccr.corp.intel.com ([169.254.1.197]) by
+	SHSMSX152.ccr.corp.intel.com ([169.254.6.122]) with mapi id
+	14.03.0319.002; Wed, 5 Jul 2017 15:14:21 +0800
+From: "Tian, Kevin" <kevin.tian@intel.com>
+To: Jean-Philippe Brucker <jean-philippe.brucker@arm.com>, Bharat Bhushan
+	<bharat.bhushan@nxp.com>, Auger Eric <eric.auger@redhat.com>,
 	"eric.auger.pro@gmail.com" <eric.auger.pro@gmail.com>,
 	"peter.maydell@linaro.org" <peter.maydell@linaro.org>,
-	"alex.williamson@redhat.com" <alex.williamson@redhat.com>,
-	"mst@redhat.com" <mst@redhat.com>, "qemu-arm@nongnu.org"
-	<qemu-arm@nongnu.org>, "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, 
-	"jean-philippe.brucker@arm.com" <jean-philippe.brucker@arm.com>
+	"alex.williamson@redhat.com" <alex.williamson@redhat.com>, "mst@redhat.com"
+	<mst@redhat.com>, "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
+Thread-Topic: [Qemu-devel] [RFC v2 0/8] VIRTIO-IOMMU device
+Thread-Index: AQHS36do183zMA3/M0Kso3taEJsBQaIbilEAgAAHrwCAAFArAIAABoaAgA90XgCAACd4AIAZdvaw
+Date: Wed, 5 Jul 2017 07:14:20 +0000
+Message-ID: <AADFC41AFE54684AB9EE6CBC0274A5D190D25AEB@SHSMSX101.ccr.corp.intel.com>
 References: <1496851287-9428-1-git-send-email-eric.auger@redhat.com>
-	<1496851287-9428-7-git-send-email-eric.auger@redhat.com>
-	<AM5PR0401MB2545DC8F3114607C77E57AF19AD70@AM5PR0401MB2545.eurprd04.prod.outlook.com>
-From: Auger Eric <eric.auger@redhat.com>
-Message-ID: <0d5076bf-fb7c-7b17-671e-643b36564250@redhat.com>
-Date: Wed, 5 Jul 2017 08:40:02 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
-	Thunderbird/45.4.0
+	<AM5PR0401MB2545AFD256A96420ACC44CD89ACE0@AM5PR0401MB2545.eurprd04.prod.outlook.com>
+	<14c83c14-1e7e-f142-77b0-fa8c873e2d41@redhat.com>
+	<AM5PR0401MB2545C0E76C4BE6F82FE376D09ACE0@AM5PR0401MB2545.eurprd04.prod.outlook.com>
+	<6f22079e-4b4b-6476-77be-51ec83104c0d@redhat.com>
+	<AM5PR0401MB25459FDAA8C9AFA52503AAE99AC40@AM5PR0401MB2545.eurprd04.prod.outlook.com>
+	<589f1642-775c-4805-74ac-bf67eb504733@arm.com>
+In-Reply-To: <589f1642-775c-4805-74ac-bf67eb504733@arm.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-ctpclassification: CTP_IC
+x-titus-metadata-40: eyJDYXRlZ29yeUxhYmVscyI6IiIsIk1ldGFkYXRhIjp7Im5zIjoiaHR0cDpcL1wvd3d3LnRpdHVzLmNvbVwvbnNcL0ludGVsMyIsImlkIjoiNzkzMjc0YzktNzc1Yy00MWVhLWIzZmUtZDdjMzVlOTk3MDE5IiwicHJvcHMiOlt7Im4iOiJDVFBDbGFzc2lmaWNhdGlvbiIsInZhbHMiOlt7InZhbHVlIjoiQ1RQX0lDIn1dfV19LCJTdWJqZWN0TGFiZWxzIjpbXSwiVE1DVmVyc2lvbiI6IjE2LjUuOS4zIiwiVHJ1c3RlZExhYmVsSGFzaCI6InVaUTJWa0hJeTVsNEdlTWdrS1ZoODFuMnVrRFJUblJDaWFUR2R3eE1SaXM9In0=
+dlp-product: dlpe-windows
+dlp-version: 10.0.102.7
+dlp-reaction: no-action
+x-originating-ip: [10.239.127.40]
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 MIME-Version: 1.0
-In-Reply-To: <AM5PR0401MB2545DC8F3114607C77E57AF19AD70@AM5PR0401MB2545.eurprd04.prod.outlook.com>
-Content-Type: text/plain; charset=windows-1252
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.38]);
-	Wed, 05 Jul 2017 06:40:21 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [Qemu-devel] [RFC v2 6/8] virtio-iommu: Implement
- the translation and commands
-X-BeenThere: qemu-arm@nongnu.org
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 134.134.136.24
+Subject: Re: [Qemu-devel] [RFC v2 0/8] VIRTIO-IOMMU device
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: "kevin.tian@intel.com" <kevin.tian@intel.com>,
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: "wei@redhat.com" <wei@redhat.com>,
+	"drjones@redhat.com" <drjones@redhat.com>,
 	"marc.zyngier@arm.com" <marc.zyngier@arm.com>,
 	"tn@semihalf.com" <tn@semihalf.com>,
 	"will.deacon@arm.com" <will.deacon@arm.com>,
-	"drjones@redhat.com" <drjones@redhat.com>,
 	"robin.murphy@arm.com" <robin.murphy@arm.com>,
 	"christoffer.dall@linaro.org" <christoffer.dall@linaro.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: puvd0ApHuu8R
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: qeXGcFbTp+K1
 
-Hi Bharat,
-
-On 04/07/2017 11:13, Bharat Bhushan wrote:
-> Hi Eric,
-> 
->> -----Original Message-----
->> From: Eric Auger [mailto:eric.auger@redhat.com]
->> Sent: Wednesday, June 07, 2017 9:31 PM
->> To: eric.auger.pro@gmail.com; eric.auger@redhat.com;
->> peter.maydell@linaro.org; alex.williamson@redhat.com; mst@redhat.com;
->> qemu-arm@nongnu.org; qemu-devel@nongnu.org; jean-
->> philippe.brucker@arm.com
->> Cc: will.deacon@arm.com; robin.murphy@arm.com; kevin.tian@intel.com;
->> marc.zyngier@arm.com; christoffer.dall@linaro.org; drjones@redhat.com;
->> wei@redhat.com; tn@semihalf.com; Bharat Bhushan
->> <bharat.bhushan@nxp.com>
->> Subject: [RFC v2 6/8] virtio-iommu: Implement the translation and
->> commands
->>
->> This patch adds the actual implementation for the translation routine
->> and the virtio-iommu commands.
->>
->> Signed-off-by: Eric Auger <eric.auger@redhat.com>
->>
->> ---
->>
->> v1 -> v2:
->> - fix compilation issue reported by autobuild system
->> ---
->>  hw/virtio/trace-events   |   6 ++
->>  hw/virtio/virtio-iommu.c | 202
->> +++++++++++++++++++++++++++++++++++++++++++++--
->>  2 files changed, 202 insertions(+), 6 deletions(-)
->>
->> diff --git a/hw/virtio/trace-events b/hw/virtio/trace-events
->> index 341dbdf..9196b63 100644
->> --- a/hw/virtio/trace-events
->> +++ b/hw/virtio/trace-events
->> @@ -33,3 +33,9 @@ virtio_iommu_detach(uint32_t dev, uint32_t flags)
->> "dev=%d flags=%d"
->>  virtio_iommu_map(uint32_t as, uint64_t phys_addr, uint64_t virt_addr,
->> uint64_t size, uint32_t flags) "as= %d phys_addr=0x%"PRIx64"
->> virt_addr=0x%"PRIx64" size=0x%"PRIx64" flags=%d"
->>  virtio_iommu_unmap(uint32_t as, uint64_t virt_addr, uint64_t size, uint32_t
->> reserved) "as= %d virt_addr=0x%"PRIx64" size=0x%"PRIx64" reserved=%d"
->>  virtio_iommu_translate(const char *name, uint32_t rid, uint64_t iova, int
->> flag) "mr=%s rid=%d addr=0x%"PRIx64" flag=%d"
->> +virtio_iommu_new_asid(uint32_t asid) "Allocate a new asid=%d"
->> +virtio_iommu_new_devid(uint32_t devid) "Allocate a new devid=%d"
->> +virtio_iommu_unmap_left_interval(uint64_t low, uint64_t high, uint64_t
->> next_low, uint64_t next_high) "Unmap left [0x%"PRIx64",0x%"PRIx64"],
->> new interval=[0x%"PRIx64",0x%"PRIx64"]"
->> +virtio_iommu_unmap_right_interval(uint64_t low, uint64_t high, uint64_t
->> next_low, uint64_t next_high) "Unmap right [0x%"PRIx64",0x%"PRIx64"],
->> new interval=[0x%"PRIx64",0x%"PRIx64"]"
->> +virtio_iommu_unmap_inc_interval(uint64_t low, uint64_t high) "Unmap inc
->> [0x%"PRIx64",0x%"PRIx64"]"
->> +virtio_iommu_translate_result(uint64_t virt_addr, uint64_t phys_addr,
->> uint32_t sid) "0x%"PRIx64" -> 0x%"PRIx64 " for sid=%d"
->> diff --git a/hw/virtio/virtio-iommu.c b/hw/virtio/virtio-iommu.c
->> index 902c779..cd188fc 100644
->> --- a/hw/virtio/virtio-iommu.c
->> +++ b/hw/virtio/virtio-iommu.c
->> @@ -32,10 +32,37 @@
->>  #include "hw/virtio/virtio-bus.h"
->>  #include "hw/virtio/virtio-access.h"
->>  #include "hw/virtio/virtio-iommu.h"
->> +#include "hw/pci/pci_bus.h"
->> +#include "hw/pci/pci.h"
->>
->>  /* Max size */
->>  #define VIOMMU_DEFAULT_QUEUE_SIZE 256
->>
->> +typedef struct viommu_as viommu_as;
->> +
->> +typedef struct viommu_mapping {
->> +    uint64_t virt_addr;
->> +    uint64_t phys_addr;
->> +    uint64_t size;
->> +    uint32_t flags;
->> +} viommu_mapping;
->> +
->> +typedef struct viommu_interval {
->> +    uint64_t low;
->> +    uint64_t high;
->> +} viommu_interval;
->> +
->> +typedef struct viommu_dev {
->> +    uint32_t id;
->> +    viommu_as *as;
->> +} viommu_dev;
->> +
->> +struct viommu_as {
->> +    uint32_t id;
->> +    uint32_t nr_devices;
->> +    GTree *mappings;
->> +};
->> +
->>  static inline uint16_t smmu_get_sid(IOMMUDevice *dev)
->>  {
->>      return  ((pci_bus_num(dev->bus) & 0xff) << 8) | dev->devfn;
->> @@ -88,6 +115,19 @@ static void virtio_iommu_init_as(VirtIOIOMMU *s)
->>      }
->>  }
->>
->> +static gint interval_cmp(gconstpointer a, gconstpointer b, gpointer
->> user_data)
->> +{
->> +    viommu_interval *inta = (viommu_interval *)a;
->> +    viommu_interval *intb = (viommu_interval *)b;
->> +
->> +    if (inta->high <= intb->low) {
->> +        return -1;
->> +    } else if (intb->high <= inta->low) {
->> +        return 1;
->> +    } else {
->> +        return 0;
->> +    }
->> +}
->>
->>  static int virtio_iommu_attach(VirtIOIOMMU *s,
->>                                 struct virtio_iommu_req_attach *req)
->> @@ -95,10 +135,34 @@ static int virtio_iommu_attach(VirtIOIOMMU *s,
->>      uint32_t asid = le32_to_cpu(req->address_space);
->>      uint32_t devid = le32_to_cpu(req->device);
->>      uint32_t reserved = le32_to_cpu(req->reserved);
->> +    viommu_as *as;
->> +    viommu_dev *dev;
->>
->>      trace_virtio_iommu_attach(asid, devid, reserved);
->>
->> -    return VIRTIO_IOMMU_S_UNSUPP;
->> +    dev = g_tree_lookup(s->devices, GUINT_TO_POINTER(devid));
->> +    if (dev) {
->> +        return -1;
->> +    }
->> +
->> +    as = g_tree_lookup(s->address_spaces, GUINT_TO_POINTER(asid));
->> +    if (!as) {
->> +        as = g_malloc0(sizeof(*as));
->> +        as->id = asid;
->> +        as->mappings = g_tree_new_full((GCompareDataFunc)interval_cmp,
->> +                                         NULL, NULL, (GDestroyNotify)g_free);
-> 
-> Created the tree here but seems like missed destroy tree on detach.
-Sure, I will fix that.
-
-Thanks!
-
-Eric
-> 
-> Thanks
-> -Bharat
-> 
->> +        g_tree_insert(s->address_spaces, GUINT_TO_POINTER(asid), as);
->> +        trace_virtio_iommu_new_asid(asid);
->> +    }
->> +
->> +    dev = g_malloc0(sizeof(*dev));
->> +    dev->as = as;
->> +    dev->id = devid;
->> +    as->nr_devices++;
->> +    trace_virtio_iommu_new_devid(devid);
->> +    g_tree_insert(s->devices, GUINT_TO_POINTER(devid), dev);
->> +
->> +    return VIRTIO_IOMMU_S_OK;
->>  }
->>
->>  static int virtio_iommu_detach(VirtIOIOMMU *s,
->> @@ -106,10 +170,13 @@ static int virtio_iommu_detach(VirtIOIOMMU *s,
->>  {
->>      uint32_t devid = le32_to_cpu(req->device);
->>      uint32_t reserved = le32_to_cpu(req->reserved);
->> +    int ret;
->>
->>      trace_virtio_iommu_detach(devid, reserved);
->>
->> -    return VIRTIO_IOMMU_S_UNSUPP;
->> +    ret = g_tree_remove(s->devices, GUINT_TO_POINTER(devid));
->> +
->> +    return ret ? VIRTIO_IOMMU_S_OK : VIRTIO_IOMMU_S_INVAL;
->>  }
->>
->>  static int virtio_iommu_map(VirtIOIOMMU *s,
->> @@ -120,10 +187,37 @@ static int virtio_iommu_map(VirtIOIOMMU *s,
->>      uint64_t virt_addr = le64_to_cpu(req->virt_addr);
->>      uint64_t size = le64_to_cpu(req->size);
->>      uint32_t flags = le32_to_cpu(req->flags);
->> +    viommu_as *as;
->> +    viommu_interval *interval;
->> +    viommu_mapping *mapping;
->> +
->> +    interval = g_malloc0(sizeof(*interval));
->> +
->> +    interval->low = virt_addr;
->> +    interval->high = virt_addr + size - 1;
->> +
->> +    as = g_tree_lookup(s->address_spaces, GUINT_TO_POINTER(asid));
->> +    if (!as) {
->> +        return VIRTIO_IOMMU_S_INVAL;
->> +    }
->> +
->> +    mapping = g_tree_lookup(as->mappings, (gpointer)interval);
->> +    if (mapping) {
->> +        g_free(interval);
->> +        return VIRTIO_IOMMU_S_INVAL;
->> +    }
->>
->>      trace_virtio_iommu_map(asid, phys_addr, virt_addr, size, flags);
->>
->> -    return VIRTIO_IOMMU_S_UNSUPP;
->> +    mapping = g_malloc0(sizeof(*mapping));
->> +    mapping->virt_addr = virt_addr;
->> +    mapping->phys_addr = phys_addr;
->> +    mapping->size = size;
->> +    mapping->flags = flags;
->> +
->> +    g_tree_insert(as->mappings, interval, mapping);
->> +
->> +    return VIRTIO_IOMMU_S_OK;
->>  }
->>
->>  static int virtio_iommu_unmap(VirtIOIOMMU *s,
->> @@ -133,10 +227,64 @@ static int virtio_iommu_unmap(VirtIOIOMMU *s,
->>      uint64_t virt_addr = le64_to_cpu(req->virt_addr);
->>      uint64_t size = le64_to_cpu(req->size);
->>      uint32_t flags = le32_to_cpu(req->flags);
->> +    viommu_mapping *mapping;
->> +    viommu_interval interval;
->> +    viommu_as *as;
->>
->>      trace_virtio_iommu_unmap(asid, virt_addr, size, flags);
->>
->> -    return VIRTIO_IOMMU_S_UNSUPP;
->> +    as = g_tree_lookup(s->address_spaces, GUINT_TO_POINTER(asid));
->> +    if (!as) {
->> +        error_report("%s: no as", __func__);
->> +        return VIRTIO_IOMMU_S_INVAL;
->> +    }
->> +    interval.low = virt_addr;
->> +    interval.high = virt_addr + size - 1;
->> +
->> +    mapping = g_tree_lookup(as->mappings, (gpointer)&interval);
->> +
->> +    while (mapping) {
->> +        viommu_interval current;
->> +        uint64_t low  = mapping->virt_addr;
->> +        uint64_t high = mapping->virt_addr + mapping->size - 1;
->> +
->> +        current.low = low;
->> +        current.high = high;
->> +
->> +        if (low == interval.low && size >= mapping->size) {
->> +            g_tree_remove(as->mappings, (gpointer)&current);
->> +            interval.low = high + 1;
->> +            trace_virtio_iommu_unmap_left_interval(current.low, current.high,
->> +                interval.low, interval.high);
->> +        } else if (high == interval.high && size >= mapping->size) {
->> +            trace_virtio_iommu_unmap_right_interval(current.low, current.high,
->> +                interval.low, interval.high);
->> +            g_tree_remove(as->mappings, (gpointer)&current);
->> +            interval.high = low - 1;
->> +        } else if (low > interval.low && high < interval.high) {
->> +            trace_virtio_iommu_unmap_inc_interval(current.low, current.high);
->> +            g_tree_remove(as->mappings, (gpointer)&current);
->> +        } else {
->> +            break;
->> +        }
->> +        if (interval.low >= interval.high) {
->> +            return VIRTIO_IOMMU_S_OK;
->> +        } else {
->> +            mapping = g_tree_lookup(as->mappings, (gpointer)&interval);
->> +        }
->> +    }
->> +
->> +    if (mapping) {
->> +        error_report("****** %s: Unmap 0x%"PRIx64" size=0x%"PRIx64
->> +                     " from 0x%"PRIx64" size=0x%"PRIx64" is not supported",
->> +                     __func__, interval.low, size,
->> +                     mapping->virt_addr, mapping->size);
->> +    } else {
->> +        error_report("****** %s: no mapping for
->> [0x%"PRIx64",0x%"PRIx64"]",
->> +                     __func__, interval.low, interval.high);
->> +    }
->> +
->> +    return VIRTIO_IOMMU_S_INVAL;
->>  }
->>
->>  #define get_payload_size(req) (\
->> @@ -266,19 +414,46 @@ static IOMMUTLBEntry
->> virtio_iommu_translate(MemoryRegion *mr, hwaddr addr,
->>                                              IOMMUAccessFlags flag)
->>  {
->>      IOMMUDevice *sdev = container_of(mr, IOMMUDevice, iommu_mr);
->> +    VirtIOIOMMU *s = sdev->viommu;
->>      uint32_t sid;
->> +    viommu_dev *dev;
->> +    viommu_mapping *mapping;
->> +    viommu_interval interval;
->> +
->> +    interval.low = addr;
->> +    interval.high = addr + 1;
->>
->>      IOMMUTLBEntry entry = {
->>          .target_as = &address_space_memory,
->>          .iova = addr,
->>          .translated_addr = addr,
->> -        .addr_mask = ~(hwaddr)0,
->> -        .perm = IOMMU_NONE,
->> +        .addr_mask = (1 << 12) - 1, /* TODO */
->> +        .perm = 3,
->>      };
->>
->>      sid = smmu_get_sid(sdev);
->>
->>      trace_virtio_iommu_translate(mr->name, sid, addr, flag);
->> +    qemu_mutex_lock(&s->mutex);
->> +
->> +    dev = g_tree_lookup(s->devices, GUINT_TO_POINTER(sid));
->> +    if (!dev) {
->> +        /* device cannot be attached to another as */
->> +        printf("%s sid=%d is not known!!\n", __func__, sid);
->> +        goto unlock;
->> +    }
->> +
->> +    mapping = g_tree_lookup(dev->as->mappings, (gpointer)&interval);
->> +    if (!mapping) {
->> +        printf("%s no mapping for 0x%"PRIx64" for sid=%d\n", __func__,
->> +               addr, sid);
->> +        goto unlock;
->> +    }
->> +    entry.translated_addr = addr - mapping->virt_addr + mapping-
->>> phys_addr,
->> +    trace_virtio_iommu_translate_result(addr, entry.translated_addr, sid);
->> +
->> +unlock:
->> +    qemu_mutex_unlock(&s->mutex);
->>      return entry;
->>  }
->>
->> @@ -341,6 +516,12 @@ static inline guint as_uint64_hash(gconstpointer v)
->>      return (guint)*(const uint64_t *)v;
->>  }
->>
->> +static gint int_cmp(gconstpointer a, gconstpointer b, gpointer user_data)
->> +{
->> +    uint ua = GPOINTER_TO_UINT(a);
->> +    uint ub = GPOINTER_TO_UINT(b);
->> +    return (ua > ub) - (ua < ub);
->> +}
->>
->>  static void virtio_iommu_device_realize(DeviceState *dev, Error **errp)
->>  {
->> @@ -362,12 +543,21 @@ static void
->> virtio_iommu_device_realize(DeviceState *dev, Error **errp)
->>                                              as_uint64_equal,
->>                                              g_free, g_free);
->>
->> +    s->address_spaces = g_tree_new_full((GCompareDataFunc)int_cmp,
->> +                                         NULL, NULL, (GDestroyNotify)g_free);
->> +    s->devices = g_tree_new_full((GCompareDataFunc)int_cmp,
->> +                                         NULL, NULL, (GDestroyNotify)g_free);
->> +
->>      virtio_iommu_init_as(s);
->>  }
->>
->>  static void virtio_iommu_device_unrealize(DeviceState *dev, Error **errp)
->>  {
->>      VirtIODevice *vdev = VIRTIO_DEVICE(dev);
->> +    VirtIOIOMMU *s = VIRTIO_IOMMU(dev);
->> +
->> +    g_tree_destroy(s->address_spaces);
->> +    g_tree_destroy(s->devices);
->>
->>      virtio_cleanup(vdev);
->>  }
->> --
->> 2.5.5
-> 
-> 
+PiBGcm9tOiBKZWFuLVBoaWxpcHBlIEJydWNrZXIgW21haWx0bzpqZWFuLXBoaWxpcHBlLmJydWNr
+ZXJAYXJtLmNvbV0NCj4gU2VudDogTW9uZGF5LCBKdW5lIDE5LCAyMDE3IDY6MTUgUE0NCj4gDQo+
+IE9uIDE5LzA2LzE3IDA4OjU0LCBCaGFyYXQgQmh1c2hhbiB3cm90ZToNCj4gPiBIaSBFcmljLA0K
+PiA+DQo+ID4gSSBzdGFydGVkIGFkZGVkIHJlcGxheSBpbiB2aXJ0aW8taW9tbXUgYW5kIGNhbWUg
+YWNyb3NzIGhvdyBNU0kgaW50ZXJydXB0cw0KPiB3aXRoIHdvcmsgd2l0aCBWRklPLg0KPiA+IEkg
+dW5kZXJzdGFuZCB0aGF0IG9uIGludGVsIHRoaXMgd29ya3MgZGlmZmVyZW50bHkgYnV0IHZzbW11
+IHdpbGwgaGF2ZSBzYW1lDQo+IHJlcXVpcmVtZW50Lg0KPiA+IGt2bS1tc2ktaXJxLXJvdXRlIGFy
+ZSBhZGRlZCB1c2luZyB0aGUgbXNpLWFkZHJlc3MgdG8gYmUgdHJhbnNsYXRlZCBieQ0KPiB2aW9t
+bXUgYW5kIG5vdCB0aGUgZmluYWwgdHJhbnNsYXRlZCBhZGRyZXNzLg0KPiA+IFdoaWxlIGN1cnJl
+bnRseSB0aGUgaXJxZmQgZnJhbWV3b3JrIGRvZXMgbm90IGtub3cgYWJvdXQgZW11bGF0ZWQNCj4g
+aW9tbXVzICh2aXJ0aW8taW9tbXUsIHZzbW11djMvdmludGVsLWlvbW11KS4NCj4gPiBTbyBpbiBt
+eSB2aWV3IHdlIGhhdmUgZm9sbG93aW5nIG9wdGlvbnM6DQo+ID4gLSBQcm9ncmFtbWluZyB3aXRo
+IHRyYW5zbGF0ZWQgYWRkcmVzcyB3aGVuIHNldHRpbmcgdXAga3ZtLW1zaS1pcnEtcm91dGUNCj4g
+PiAtIFJvdXRlIHRoZSBpbnRlcnJ1cHRzIHZpYSBRRU1VLCB3aGljaCBpcyBiYWQgZnJvbSBwZXJm
+b3JtYW5jZQ0KPiA+IC0gdmhvc3QtdmlydGlvLWlvbW11IG1heSBzb2x2ZSB0aGUgcHJvYmxlbSBp
+biBsb25nIHRlcm0NCj4gPg0KPiA+IElzIHRoZXJlIGFueSBvdGhlciBiZXR0ZXIgb3B0aW9uIEkg
+YW0gbWlzc2luZz8NCj4gDQo+IFNpbmNlIHdlJ3JlIG9uIHRoZSB0b3BpYyBvZiBNU0lzLi4uIEkn
+bSBjdXJyZW50bHkgdHJ5aW5nIHRvIGZpZ3VyZSBvdXQgaG93DQo+IHdlJ2xsIGhhbmRsZSBNU0lz
+IGluIHRoZSBuZXN0ZWQgdHJhbnNsYXRpb24gbW9kZSwgd2hlcmUgdGhlIGd1ZXN0IG1hbmFnZXMN
+Cj4gUzEgcGFnZSB0YWJsZXMgYW5kIHRoZSBob3N0IGRvZXNuJ3Qga25vdyBhYm91dCBHVkEtPkdQ
+QSB0cmFuc2xhdGlvbi4NCj4gDQo+IEknbSBhbHNvIHdvbmRlcmluZyBhYm91dCB0aGUgYmVuZWZp
+dHMgb2YgaGF2aW5nIFNXLW1hcHBlZCBNU0lzIGluIHRoZQ0KPiBndWVzdC4gSXQgc2VlbXMgdW5h
+dm9pZGFibGUgZm9yIHZTTU1VIHNpbmNlIHRoYXQncyB3aGF0IGEgcGh5c2ljYWwgc3lzdGVtDQo+
+IHdvdWxkIGRvLiBCdXQgaW4gYSBwYXJhdmlydHVhbGl6ZWQgc29sdXRpb24gdGhlcmUgZG9lc24n
+dCBzZWVtIHRvIGJlIGFueQ0KPiBjb21wZWxsaW5nIHJlYXNvbiBmb3IgaGF2aW5nIHRoZSBndWVz
+dCBtYXAgTVNJIGRvb3JiZWxscy4gVGhlc2UgYWRkcmVzc2VzDQo+IGFyZSBuZXZlciBhY2Nlc3Nl
+ZCBkaXJlY3RseSwgdGhleSBhcmUgb25seSB1c2VkIGZvciBzZXR0aW5nIHVwIElSUSByb3V0aW5n
+DQo+IChhdCBsZWFzdCBvbiBrdm10b29sKS4gU28gaGVyZSdzIHdoYXQgSSdkIGxpa2UgdG8gaGF2
+ZS4gTm90ZSB0aGF0IEkNCj4gaGF2ZW4ndCBpbnZlc3RpZ2F0ZWQgdGhlIGZlYXNpYmlsaXR5IGlu
+IFFlbXUgeWV0LCBJIGRvbid0IGtub3cgaG93IGl0DQo+IGRlYWxzIHdpdGggTVNJcy4NCj4gDQo+
+ICgxKSBHdWVzdCB1c2VzIHRoZSBndWVzdC1waHlzaWNhbCBNU0kgZG9vcmJlbGwgd2hlbiBzZXR0
+aW5nIHVwIE1TSXMuIEZvcg0KPiBBUk0gd2l0aCBHSUN2MyB0aGlzIHdvdWxkIGJlIEdJVFNfVFJB
+TlNMQVRFUiwgZm9yIHg4NiBpdCB3b3VsZCBiZSB0aGUNCj4gZml4ZWQgTVNJIGRvb3JiZWxsLiBU
+aGlzIHdheSB0aGUgaG9zdCB3b3VsZG4ndCBuZWVkIHRvIGluc3BlY3QgSU9NTVUNCj4gbWFwcGlu
+Z3Mgd2hlbiBoYW5kbGluZyB3cml0ZXMgdG8gUENJIE1TSS1YIHRhYmxlcy4NCj4gDQoNCldoYXQg
+ZG8geW91IG1lYW4gYnkgImZpeGVkIE1TSSBkb29yYmVsbCI/IFBDSSBNU0ktWCB0YWJsZSBpcyBw
+YXJ0IG9mDQpQQ0kgTU1JTyBiYXIuIEFjY2Vzc2luZyB0byBpdCBpcyBqdXN0IGEgbWVtb3J5IHZp
+cnR1YWxpemF0aW9uIGlzc3VlIChlLmcuDQp0cmFwIGJ5IEtWTSBhbmQgdGhlbiBlbXVsYXRlZCBp
+biBRZW11KSBvbiB4ODYuIEl0J3Mgbm90IGEgSU9NTVUNCnByb2JsZW0uIEkgZ3Vlc3MgeW91IG1h
+eSBtZWFuIHNhbWUgdGhpbmcgYnV0IHdhbnQgdG8gZG91YmxlIGNvbmZpcm0NCmhlcmUgZ2l2ZW4g
+dGhlIHRlcm1pbm9sb2d5IGNvbmZ1c2lvbi4gT3IgZG8geW91IG1lYW4gdGhlIGludGVycnVwdA0K
+dHJpZ2dlcmVkIGJ5IElPTU1VIGl0c2VsZj8NCg0KVGhhbmtzDQpLZXZpbg0K

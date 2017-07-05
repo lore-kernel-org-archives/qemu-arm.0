@@ -1,458 +1,525 @@
-Received: by 10.25.44.15 with SMTP id s15csp1062096lfs;
-        Wed, 5 Jul 2017 11:25:59 -0700 (PDT)
-X-Received: by 10.200.43.58 with SMTP id 55mr26619260qtu.202.1499279159257;
-        Wed, 05 Jul 2017 11:25:59 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1499279159; cv=none;
+Received: by 10.25.44.15 with SMTP id s15csp1346322lfs;
+        Wed, 5 Jul 2017 16:53:01 -0700 (PDT)
+X-Received: by 10.28.13.138 with SMTP id 132mr34393254wmn.23.1499298781633;
+        Wed, 05 Jul 2017 16:53:01 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1499298781; cv=none;
         d=google.com; s=arc-20160816;
-        b=w+PufDXJYD0hWMx1DqaITBccmKBg8F2uS8ZSzuSZDuv9gTfcg2h+yoO0pOKhNx7ree
-         XtK8s4mvQjtsXU4cvD1hDN8p0l2xAaEBJgxDNgqoa+P9UCER0SG8D1ZSrbJ1Dz0I3wyf
-         RFCf9AUyhnfs50Yxx6Fg04kGwni12JJb+SJpEYJyvBvV9IISYkA4c6ljW4GDY4CYbpSi
-         fE2WOCElRyIbpqQG8wn3v3jKcYPpQEew0I+y+Yr5Lnbanyh+bVWycgLBNxjCqoEIAm6B
-         SGI2a9Bh1s7YfA4aq9uYClcyPZ/99ev2K5q2Hec5sf5TaHkHKr5Fe6EAVYmolr5s4OTx
-         /IJA==
+        b=KhonTdpu6Xedl0KHVshvX6G1tV3+35/Ye8GiMrbfIkfraMmB3O6BuZ1Ujg5BPmW4RF
+         3krzQ3dkW4nPgsTQpQTpSh2/tZV22hsYiWaMihxMA4/86G/mV30ThUwtSxAdcC7vJ+0s
+         iQhUc31FOPo9ihP7c3GctnAOmXdEMSUx+ghv+S/GcWAc72m8uTRBNkTqktC/kQXfsMWS
+         /YKwg0a3ouuZLnUH+2jDbTiVSa5dRnv02xUzIo8Lg7ZOahmuLjVgQ+lwuaZRtwSPwuTL
+         8F7hQP/G3u+RoS3MvBcT+jZkYc0uDtL4Xf2ku5tm/Uphi7WSmX88i6dOnMbh8FSJE8rt
+         FHmw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
-         :references:in-reply-to:mime-version:dkim-signature
-         :arc-authentication-results;
-        bh=ewkxoQe2hnIqiGthM6XgWP7Tl75otIN7sSrA7XmO4Hs=;
-        b=XlZUNscyK/aKTrg4D2hTVqd+6O/p5xAi0UtMW+i3mbW+uY3GwYGF42s9xFGljTvtmN
-         6w9bTsQgmEUOZAP1H8/diDH0W8MCTkKje/vtde35I1oZ02Eup8NynO7i2G5IsqIsv0bA
-         F0eQNCViTH6SZJs61wmKLKL0KXCPAIZHBJEo/qGWSf2dqHgNolgN4CKuOpFUnFvarlVh
-         sIOiAVxHTt91o4zZYLs+qICHdj2GhYDiJMeCG0QzXHp+2g6YUnLzhy1Mu7oUz81TBTct
-         cEVxCmrkLqJn6MeTRkfpoIeFEisWJH87QXlJQVY9RNq/46RbKgYaTVkyPo+fXUH1u6A0
-         UBJw==
+        h=cc:to:subject:message-id:date:from:references:in-reply-to
+         :mime-version:dkim-signature:arc-authentication-results;
+        bh=ecXxrgUqE7xZujzLZ3kOB9H80R5T1xEeoCzZsBVtNBM=;
+        b=ZFTwxWLAjRH0ZmOHMJMHaplx8Gpso1y/3wdkyo4RpVfADb8vEdCq0bIlsod/fAq1Jo
+         ewD1JLyizkCv1k1aRZmSThNOWA7bgMBUgk9kSlF2JUkz6/8FCi9ETEhMYLhltCN3jB+f
+         b5g4zK/jUubADApjzKN/hSi0d2xJy5yWW21hm+UUKT8e2z++elccmU9YJQthwsoHCCwR
+         +hnzVrkbvkGQtB5TCuEor/7duvUab/WqmvYM2UkNoOrxfEFWezWtgKxJ5DFco+QxCyOo
+         X7LHgxf69P86XgWmt9S+DsThzDm8PyN1Xp0j1ikon0mDkfWyUOZjGi4jjx2jLhibamMp
+         sRgg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.b=nB+3vhY0;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id n68si21510781qkn.62.2017.07.05.11.25.58
-        for <alex.bennee@linaro.org>
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 05 Jul 2017 11:25:59 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+       dkim=pass header.i=@gmail.com header.b=QJweeXw2;
+       spf=pass (google.com: domain of alistair23@gmail.com designates 2a00:1450:400c:c0c::241 as permitted sender) smtp.mailfrom=alistair23@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Return-Path: <alistair23@gmail.com>
+Received: from mail-wr0-x241.google.com (mail-wr0-x241.google.com. [2a00:1450:400c:c0c::241])
+        by mx.google.com with ESMTPS id x5si273578wrd.8.2017.07.05.16.53.01
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 05 Jul 2017 16:53:01 -0700 (PDT)
+Received-SPF: pass (google.com: domain of alistair23@gmail.com designates 2a00:1450:400c:c0c::241 as permitted sender) client-ip=2a00:1450:400c:c0c::241;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.b=nB+3vhY0;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:47593 helo=lists.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1dSozs-000475-BC
-	for alex.bennee@linaro.org; Wed, 05 Jul 2017 14:25:56 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:32979)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alistair23@gmail.com>) id 1dSozm-00044S-Ao
-	for qemu-arm@nongnu.org; Wed, 05 Jul 2017 14:25:52 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <alistair23@gmail.com>) id 1dSozk-0006Zq-6O
-	for qemu-arm@nongnu.org; Wed, 05 Jul 2017 14:25:50 -0400
-Received: from mail-wr0-x243.google.com ([2a00:1450:400c:c0c::243]:35274)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <alistair23@gmail.com>)
-	id 1dSozg-0006YM-1v; Wed, 05 Jul 2017 14:25:44 -0400
-Received: by mail-wr0-x243.google.com with SMTP id z45so50914340wrb.2;
-	Wed, 05 Jul 2017 11:25:43 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=ewkxoQe2hnIqiGthM6XgWP7Tl75otIN7sSrA7XmO4Hs=;
-	b=nB+3vhY0J6Et/TvmYEh6HAKa3N4yLDtlwab4jWwp8STE9IWlIAHKwYxIqN+98At+Rv
-	cQHX2CIHhSxDLeRIZujUaLVJVKQovGBgRXO4iS0i8Fk/53mga4pCxYqFm44RkARRqtks
-	YFvpFTX40HyjIqiqzyQFMm+QY8jCLtI4I4ccLQ5RUuhRKbSqRqApBJSsGOAvFl1VxoMN
-	3/QKddEsobe1EWv0Y6bbDo206lSmAaPisNmNRJA1GLc31T3sepnej2HSjqBsW2V1IE/K
-	epoGqcyn4TjGngF3Q8vbXvvkP5aqEYflZmasqe2Bkklgx0tntn0o5H2ARh6LE6SlzecG
-	r0Pg==
+       dkim=pass header.i=@gmail.com header.b=QJweeXw2;
+       spf=pass (google.com: domain of alistair23@gmail.com designates 2a00:1450:400c:c0c::241 as permitted sender) smtp.mailfrom=alistair23@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Received: by mail-wr0-x241.google.com with SMTP id z45so1042200wrb.2;
+        Wed, 05 Jul 2017 16:53:01 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+         :cc;
+        bh=ecXxrgUqE7xZujzLZ3kOB9H80R5T1xEeoCzZsBVtNBM=;
+        b=QJweeXw2HnJ3IglxRuCEa84Z1ChMxscvPTI/mlndrklJBI1Si0DBeo0Fbx2LxmPSIJ
+         Oo0rA+jUX1SvESnPavxTEIZlrdxT70wvBAOnuCgSk9sC+8G+z+22DCAERKaL6YtfSak0
+         qOux9pf73iqU4IO+h8eMCzKe/Alc6CtL/tFUME9kjWZKY5GSqNQ5XbV2MXo1njTdItH3
+         HQgU4/hLOQxdhqlZ1iBr6hcTmlhE4dlJn2SDkoiQDOXdOAoEy5RI7r/TuMSizrUdtFw0
+         cEA0xD5dFYhy3+xIV5eIhc94w/My4lmfAlKFODhkdZsUvOHWpDROhSp7QQawpjd649w6
+         NIOg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=ewkxoQe2hnIqiGthM6XgWP7Tl75otIN7sSrA7XmO4Hs=;
-	b=C1AEspxFuwAhp/XobxjfUteRKsS7HQTRZeKuUICILSijWn3h4kP2g0pJCezKywMb2V
-	XbrtzpN75qLbsdO8/PgVYMT8jFl0sr/pSW9CjEPRB0LQZuoWOL7mQrCXyc98VLnL4med
-	NTXaI6fzu4zR0Ip0HjcfO1X/IxEsZ+mp9i5lngVmLgDf9xhmAL2Ft0tt8kDzfhsc6bnb
-	s694EAjXm8Q6DAUpvEnNhSSu8ZUoi9yndl6gOrcj7iULqafSLzUNDXfNINM0ROzKOU33
-	tovLe0g0X3rEUSEicEbw8aQerhQoNi0b7zNqAP2WDvgT/dxeM4Xi6t6UKRP2OKGNp9ML
-	3D1g==
-X-Gm-Message-State: AKS2vOyf5EZ5NzSTJ08XPvHsce1BTMJpx3izfPXx1O6HoZ8jpvK8j9k1
-	ZOM8q7vGz3d8yMSZSBJ6OqYWEMfh5g==
-X-Received: by 10.223.163.197 with SMTP id m5mr39102016wrb.128.1499279142972; 
-	Wed, 05 Jul 2017 11:25:42 -0700 (PDT)
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+         :message-id:subject:to:cc;
+        bh=ecXxrgUqE7xZujzLZ3kOB9H80R5T1xEeoCzZsBVtNBM=;
+        b=Yju8HkBRISjVvNyI7q2UgG4rOZrUGADy/hiYkeVISyFI8/CPyb+SLrtdl1GNeotjGZ
+         0MT0gW3XkTUXaBEQDqQSzWeZQjtz9OI3PciNVN/XjgGgzdAxuAkLJxFcDldGkBphdCZd
+         eIF67BGvQBk2xMeblvqC9qMsaMEOpvFreHUnrB8HeYMdSgIKXGov2sm97DX36r7HSznP
+         A6k+RlXhbIxWjiASRJwjDDJU1zifybKhOAO5L5QKAPM9DkywwIsPqbjJnc5Pk/dSooES
+         Mlj2RPqNRMperaBz4U3rMmsF0SVW0AIpU9Eqlcp5gYO6AN7FMBWfE8kSMGJ5WZozjPmb
+         GyZA==
+X-Gm-Message-State: AKS2vOyu7RosaRRfPTBmcXdkftyaXLeEM9NgOu3bxhvZ84xEV3nKONrI
+	J/aXGecESK2MVwKZHfdSf0kdHqiP9g==
+X-Received: by 10.28.213.205 with SMTP id m196mr34663502wmg.61.1499298781205;
+ Wed, 05 Jul 2017 16:53:01 -0700 (PDT)
 MIME-Version: 1.0
-Received: by 10.28.191.88 with HTTP; Wed, 5 Jul 2017 11:25:12 -0700 (PDT)
-In-Reply-To: <1499057115-6773-5-git-send-email-sundeep.lkml@gmail.com>
-References: <1499057115-6773-1-git-send-email-sundeep.lkml@gmail.com>
-	<1499057115-6773-5-git-send-email-sundeep.lkml@gmail.com>
+Received: by 10.28.191.88 with HTTP; Wed, 5 Jul 2017 16:52:30 -0700 (PDT)
+In-Reply-To: <1498830302-19274-2-git-send-email-edgar.iglesias@gmail.com>
+References: <1498830302-19274-1-git-send-email-edgar.iglesias@gmail.com> <1498830302-19274-2-git-send-email-edgar.iglesias@gmail.com>
 From: Alistair Francis <alistair23@gmail.com>
-Date: Wed, 5 Jul 2017 11:25:12 -0700
-Message-ID: <CAKmqyKOnzqUS7_r7skYWFANg3TiAqcN0Hax+=9rxYh7KDAUsdw@mail.gmail.com>
-To: Subbaraya Sundeep <sundeep.lkml@gmail.com>
+Date: Wed, 5 Jul 2017 16:52:30 -0700
+Message-ID: <CAKmqyKNwa9UNxMJ0yQjiUa374bD6MY3hO63gSCk7cP_21RFGmg@mail.gmail.com>
+Subject: Re: [Qemu-devel] [PATCH v1 1/2] target-arm: Move the regime_xxx helpers
+To: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
+Cc: "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>, Peter Maydell <peter.maydell@linaro.org>, 
+	Edgar Iglesias <edgar.iglesias@xilinx.com>, qemu-arm <qemu-arm@nongnu.org>, 
+	=?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
 Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2a00:1450:400c:c0c::243
-Subject: Re: [Qemu-arm] [Qemu devel v6 PATCH 4/5] msf2: Add Smartfusion2 SoC.
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.21
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
-	=?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>,
-	qemu-arm <qemu-arm@nongnu.org>,
-	"qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: eidhB+qK39q5
+X-TUID: vsIwBUetH8MO
 
-On Sun, Jul 2, 2017 at 9:45 PM, Subbaraya Sundeep
-<sundeep.lkml@gmail.com> wrote:
-
-The patch title shouldn't end in a full stop.
-
-> Smartfusion2 SoC has hardened Microcontroller subsystem
-> and flash based FPGA fabric. This patch adds support for
-> Microcontroller subsystem in the SoC.
+On Fri, Jun 30, 2017 at 6:45 AM, Edgar E. Iglesias
+<edgar.iglesias@gmail.com> wrote:
+> From: "Edgar E. Iglesias" <edgar.iglesias@xilinx.com>
 >
-> Signed-off-by: Subbaraya Sundeep <sundeep.lkml@gmail.com>
-
-Once you have fixed up the title.
+> Move the regime_xxx helpers in preparation for future code
+> that will reuse them.
+>
+> No functional change.
+>
+> Signed-off-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
 
 Reviewed-by: Alistair Francis <alistair.francis@xilinx.com>
 
 Thanks,
 Alistair
 
-
 > ---
->  default-configs/arm-softmmu.mak |   1 +
->  hw/arm/Makefile.objs            |   1 +
->  hw/arm/msf2-soc.c               | 216 ++++++++++++++++++++++++++++++++++++++++
->  include/hw/arm/msf2-soc.h       |  67 +++++++++++++
->  4 files changed, 285 insertions(+)
->  create mode 100644 hw/arm/msf2-soc.c
->  create mode 100644 include/hw/arm/msf2-soc.h
+>  target/arm/helper.c | 404 ++++++++++++++++++++++++++--------------------------
+>  1 file changed, 202 insertions(+), 202 deletions(-)
 >
-> diff --git a/default-configs/arm-softmmu.mak b/default-configs/arm-softmmu.mak
-> index 78d7af0..7062512 100644
-> --- a/default-configs/arm-softmmu.mak
-> +++ b/default-configs/arm-softmmu.mak
-> @@ -122,3 +122,4 @@ CONFIG_ACPI=y
->  CONFIG_SMBIOS=y
->  CONFIG_ASPEED_SOC=y
->  CONFIG_GPIO_KEY=y
-> +CONFIG_MSF2=y
-> diff --git a/hw/arm/Makefile.objs b/hw/arm/Makefile.objs
-> index 4c5c4ee..c828061 100644
-> --- a/hw/arm/Makefile.objs
-> +++ b/hw/arm/Makefile.objs
-> @@ -18,3 +18,4 @@ obj-$(CONFIG_FSL_IMX25) += fsl-imx25.o imx25_pdk.o
->  obj-$(CONFIG_FSL_IMX31) += fsl-imx31.o kzm.o
->  obj-$(CONFIG_FSL_IMX6) += fsl-imx6.o sabrelite.o
->  obj-$(CONFIG_ASPEED_SOC) += aspeed_soc.o aspeed.o
-> +obj-$(CONFIG_MSF2) += msf2-soc.o
-> diff --git a/hw/arm/msf2-soc.c b/hw/arm/msf2-soc.c
-> new file mode 100644
-> index 0000000..d45827f
-> --- /dev/null
-> +++ b/hw/arm/msf2-soc.c
-> @@ -0,0 +1,216 @@
-> +/*
-> + * SmartFusion2 SoC emulation.
-> + *
-> + * Copyright (c) 2017 Subbaraya Sundeep <sundeep.lkml@gmail.com>
-> + *
-> + * Permission is hereby granted, free of charge, to any person obtaining a copy
-> + * of this software and associated documentation files (the "Software"), to deal
-> + * in the Software without restriction, including without limitation the rights
-> + * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-> + * copies of the Software, and to permit persons to whom the Software is
-> + * furnished to do so, subject to the following conditions:
-> + *
-> + * The above copyright notice and this permission notice shall be included in
-> + * all copies or substantial portions of the Software.
-> + *
-> + * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-> + * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-> + * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
-> + * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-> + * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-> + * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-> + * THE SOFTWARE.
-> + */
+> diff --git a/target/arm/helper.c b/target/arm/helper.c
+> index 2594faa..fd1027e 100644
+> --- a/target/arm/helper.c
+> +++ b/target/arm/helper.c
+> @@ -35,6 +35,208 @@ static bool get_phys_addr_lpae(CPUARMState *env, target_ulong address,
+>  #define PMCRD   0x8
+>  #define PMCRC   0x4
+>  #define PMCRE   0x1
 > +
-> +#include "qemu/osdep.h"
-> +#include "qapi/error.h"
-> +#include "qemu-common.h"
-> +#include "hw/arm/arm.h"
-> +#include "exec/address-spaces.h"
-> +#include "hw/char/serial.h"
-> +#include "hw/boards.h"
-> +#include "sysemu/block-backend.h"
-> +#include "hw/arm/msf2-soc.h"
-> +
-> +#define MSF2_TIMER_BASE     0x40004000
-> +#define MSF2_SYSREG_BASE    0x40038000
-> +
-> +#define ENVM_BASE_ADDRESS     0x60000000
-> +
-> +#define SRAM_BASE_ADDRESS     0x20000000
-> +
-> +#define MSF2_ENVM_SIZE        (512 * K_BYTE)
-> +#define MSF2_ESRAM_SIZE       (64 * K_BYTE)
-> +
-> +static const uint32_t spi_addr[MSF2_NUM_SPIS] = { 0x40001000 , 0x40011000 };
-> +static const uint32_t uart_addr[MSF2_NUM_UARTS] = { 0x40000000 , 0x40010000 };
-> +
-> +static const int spi_irq[MSF2_NUM_SPIS] = { 2, 3 };
-> +static const int uart_irq[MSF2_NUM_UARTS] = { 10, 11 };
-> +static const int timer_irq[MSF2_NUM_TIMERS] = { 14, 15 };
-> +
-> +static void m2sxxx_soc_initfn(Object *obj)
+> +/* Return the exception level which controls this address translation regime */
+> +static inline uint32_t regime_el(CPUARMState *env, ARMMMUIdx mmu_idx)
 > +{
-> +    MSF2State *s = MSF2_SOC(obj);
-> +    int i;
-> +
-> +    object_initialize(&s->armv7m, sizeof(s->armv7m), TYPE_ARMV7M);
-> +    qdev_set_parent_bus(DEVICE(&s->armv7m), sysbus_get_default());
-> +
-> +    object_initialize(&s->sysreg, sizeof(s->sysreg), TYPE_MSF2_SYSREG);
-> +    qdev_set_parent_bus(DEVICE(&s->sysreg), sysbus_get_default());
-> +
-> +    object_initialize(&s->timer, sizeof(s->timer), TYPE_MSS_TIMER);
-> +    qdev_set_parent_bus(DEVICE(&s->timer), sysbus_get_default());
-> +
-> +    for (i = 0; i < MSF2_NUM_SPIS; i++) {
-> +        object_initialize(&s->spi[i], sizeof(s->spi[i]),
-> +                          TYPE_MSS_SPI);
-> +        qdev_set_parent_bus(DEVICE(&s->spi[i]), sysbus_get_default());
+> +    switch (mmu_idx) {
+> +    case ARMMMUIdx_S2NS:
+> +    case ARMMMUIdx_S1E2:
+> +        return 2;
+> +    case ARMMMUIdx_S1E3:
+> +        return 3;
+> +    case ARMMMUIdx_S1SE0:
+> +        return arm_el_is_aa64(env, 3) ? 1 : 3;
+> +    case ARMMMUIdx_S1SE1:
+> +    case ARMMMUIdx_S1NSE0:
+> +    case ARMMMUIdx_S1NSE1:
+> +    case ARMMMUIdx_MPriv:
+> +    case ARMMMUIdx_MNegPri:
+> +    case ARMMMUIdx_MUser:
+> +        return 1;
+> +    default:
+> +        g_assert_not_reached();
 > +    }
 > +}
 > +
-> +static void m2sxxx_soc_realize(DeviceState *dev_soc, Error **errp)
+> +/* Return true if this address translation regime is secure */
+> +static inline bool regime_is_secure(CPUARMState *env, ARMMMUIdx mmu_idx)
 > +{
-> +    MSF2State *s = MSF2_SOC(dev_soc);
-> +    DeviceState *dev, *armv7m;
-> +    SysBusDevice *busdev;
-> +    Error *err = NULL;
-> +    int i;
-> +
-> +    MemoryRegion *system_memory = get_system_memory();
-> +    MemoryRegion *nvm = g_new(MemoryRegion, 1);
-> +    MemoryRegion *nvm_alias = g_new(MemoryRegion, 1);
-> +    MemoryRegion *sram = g_new(MemoryRegion, 1);
-> +
-> +    memory_region_init_ram(nvm, NULL, "MSF2.eNVM", s->envm_size,
-> +                           &error_fatal);
-> +
-> +    /*
-> +     * On power-on, the eNVM region 0x60000000 is automatically
-> +     * remapped to the Cortex-M3 processor executable region
-> +     * start address (0x0). We do not support remapping other eNVM,
-> +     * eSRAM and DDR regions by guest(via Sysreg) currently.
-> +     */
-> +    memory_region_init_alias(nvm_alias, NULL, "MSF2.eNVM.alias",
-> +                             nvm, 0, s->envm_size);
-> +    vmstate_register_ram_global(nvm);
-> +
-> +    memory_region_set_readonly(nvm, true);
-> +    memory_region_set_readonly(nvm_alias, true);
-> +
-> +    memory_region_add_subregion(system_memory, ENVM_BASE_ADDRESS, nvm);
-> +    memory_region_add_subregion(system_memory, 0, nvm_alias);
-> +
-> +    memory_region_init_ram(sram, NULL, "MSF2.eSRAM", s->esram_size,
-> +                           &error_fatal);
-> +    vmstate_register_ram_global(sram);
-> +    memory_region_add_subregion(system_memory, SRAM_BASE_ADDRESS, sram);
-> +
-> +    armv7m = DEVICE(&s->armv7m);
-> +    qdev_prop_set_uint32(armv7m, "num-irq", 81);
-> +    qdev_prop_set_string(armv7m, "cpu-model", "cortex-m3");
-> +    object_property_set_link(OBJECT(&s->armv7m), OBJECT(get_system_memory()),
-> +                                     "memory", &error_abort);
-> +    object_property_set_bool(OBJECT(&s->armv7m), true, "realized", &err);
-> +    if (err != NULL) {
-> +        error_propagate(errp, err);
-> +        return;
+> +    switch (mmu_idx) {
+> +    case ARMMMUIdx_S12NSE0:
+> +    case ARMMMUIdx_S12NSE1:
+> +    case ARMMMUIdx_S1NSE0:
+> +    case ARMMMUIdx_S1NSE1:
+> +    case ARMMMUIdx_S1E2:
+> +    case ARMMMUIdx_S2NS:
+> +    case ARMMMUIdx_MPriv:
+> +    case ARMMMUIdx_MNegPri:
+> +    case ARMMMUIdx_MUser:
+> +        return false;
+> +    case ARMMMUIdx_S1E3:
+> +    case ARMMMUIdx_S1SE0:
+> +    case ARMMMUIdx_S1SE1:
+> +        return true;
+> +    default:
+> +        g_assert_not_reached();
 > +    }
+> +}
 > +
-> +    system_clock_scale = NANOSECONDS_PER_SECOND / s->m3clk;
+> +/* Return the SCTLR value which controls this address translation regime */
+> +static inline uint32_t regime_sctlr(CPUARMState *env, ARMMMUIdx mmu_idx)
+> +{
+> +    return env->cp15.sctlr_el[regime_el(env, mmu_idx)];
+> +}
 > +
-> +    for (i = 0; i < MSF2_NUM_UARTS; i++) {
-> +        if (serial_hds[i]) {
-> +            serial_mm_init(get_system_memory(), uart_addr[i], 2,
-> +                           qdev_get_gpio_in(armv7m, uart_irq[i]),
-> +                           115200, serial_hds[i], DEVICE_NATIVE_ENDIAN);
+> +/* Return true if the specified stage of address translation is disabled */
+> +static inline bool regime_translation_disabled(CPUARMState *env,
+> +                                               ARMMMUIdx mmu_idx)
+> +{
+> +    if (arm_feature(env, ARM_FEATURE_M)) {
+> +        switch (env->v7m.mpu_ctrl &
+> +                (R_V7M_MPU_CTRL_ENABLE_MASK | R_V7M_MPU_CTRL_HFNMIENA_MASK)) {
+> +        case R_V7M_MPU_CTRL_ENABLE_MASK:
+> +            /* Enabled, but not for HardFault and NMI */
+> +            return mmu_idx == ARMMMUIdx_MNegPri;
+> +        case R_V7M_MPU_CTRL_ENABLE_MASK | R_V7M_MPU_CTRL_HFNMIENA_MASK:
+> +            /* Enabled for all cases */
+> +            return false;
+> +        case 0:
+> +        default:
+> +            /* HFNMIENA set and ENABLE clear is UNPREDICTABLE, but
+> +             * we warned about that in armv7m_nvic.c when the guest set it.
+> +             */
+> +            return true;
 > +        }
 > +    }
 > +
-> +    dev = DEVICE(&s->timer);
-> +    /* APB0 clock is the timer input clock */
-> +    qdev_prop_set_uint32(dev, "clock-frequency", s->m3clk / s->apb0div);
-> +    object_property_set_bool(OBJECT(&s->timer), true, "realized", &err);
-> +    if (err != NULL) {
-> +        error_propagate(errp, err);
-> +        return;
+> +    if (mmu_idx == ARMMMUIdx_S2NS) {
+> +        return (env->cp15.hcr_el2 & HCR_VM) == 0;
 > +    }
-> +    busdev = SYS_BUS_DEVICE(dev);
-> +    sysbus_mmio_map(busdev, 0, MSF2_TIMER_BASE);
-> +    sysbus_connect_irq(busdev, 0,
-> +                           qdev_get_gpio_in(armv7m, timer_irq[0]));
-> +    sysbus_connect_irq(busdev, 1,
-> +                           qdev_get_gpio_in(armv7m, timer_irq[1]));
-> +
-> +    dev = DEVICE(&s->sysreg);
-> +    qdev_prop_set_uint32(dev, "apb0divisor", s->apb0div);
-> +    qdev_prop_set_uint32(dev, "apb1divisor", s->apb1div);
-> +    object_property_set_bool(OBJECT(&s->sysreg), true, "realized", &err);
-> +    if (err != NULL) {
-> +        error_propagate(errp, err);
-> +        return;
-> +    }
-> +    busdev = SYS_BUS_DEVICE(dev);
-> +    sysbus_mmio_map(busdev, 0, MSF2_SYSREG_BASE);
-> +
-> +    for (i = 0; i < MSF2_NUM_SPIS; i++) {
-> +        gchar *bus_name = g_strdup_printf("spi%d", i);
-> +
-> +        object_property_set_bool(OBJECT(&s->spi[i]), true, "realized", &err);
-> +        if (err != NULL) {
-> +            g_free(bus_name);
-> +            error_propagate(errp, err);
-> +            return;
-> +        }
-> +
-> +        sysbus_mmio_map(SYS_BUS_DEVICE(&s->spi[i]), 0, spi_addr[i]);
-> +        sysbus_connect_irq(SYS_BUS_DEVICE(&s->spi[i]), 0,
-> +                           qdev_get_gpio_in(armv7m, spi_irq[i]));
-> +
-> +        /* Alias controller SPI bus to the SoC itself */
-> +        object_property_add_alias(OBJECT(s), bus_name,
-> +                                  OBJECT(&s->spi[i]), "spi",
-> +                                  &error_abort);
-> +        g_free(bus_name);
-> +    }
+> +    return (regime_sctlr(env, mmu_idx) & SCTLR_M) == 0;
 > +}
 > +
-> +static Property m2sxxx_soc_properties[] = {
-> +    /*
-> +     * part name specifies the type of SmartFusion2 device variant(this
-> +     * property is for information purpose only.
+> +static inline bool regime_translation_big_endian(CPUARMState *env,
+> +                                                 ARMMMUIdx mmu_idx)
+> +{
+> +    return (regime_sctlr(env, mmu_idx) & SCTLR_EE) != 0;
+> +}
+> +
+> +/* Return the TCR controlling this translation regime */
+> +static inline TCR *regime_tcr(CPUARMState *env, ARMMMUIdx mmu_idx)
+> +{
+> +    if (mmu_idx == ARMMMUIdx_S2NS) {
+> +        return &env->cp15.vtcr_el2;
+> +    }
+> +    return &env->cp15.tcr_el[regime_el(env, mmu_idx)];
+> +}
+> +
+> +/* Convert a possible stage1+2 MMU index into the appropriate
+> + * stage 1 MMU index
+> + */
+> +static inline ARMMMUIdx stage_1_mmu_idx(ARMMMUIdx mmu_idx)
+> +{
+> +    if (mmu_idx == ARMMMUIdx_S12NSE0 || mmu_idx == ARMMMUIdx_S12NSE1) {
+> +        mmu_idx += (ARMMMUIdx_S1NSE0 - ARMMMUIdx_S12NSE0);
+> +    }
+> +    return mmu_idx;
+> +}
+> +
+> +/* Returns TBI0 value for current regime el */
+> +uint32_t arm_regime_tbi0(CPUARMState *env, ARMMMUIdx mmu_idx)
+> +{
+> +    TCR *tcr;
+> +    uint32_t el;
+> +
+> +    /* For EL0 and EL1, TBI is controlled by stage 1's TCR, so convert
+> +     * a stage 1+2 mmu index into the appropriate stage 1 mmu index.
 > +     */
-> +    DEFINE_PROP_STRING("part-name", MSF2State, part_name),
-> +    DEFINE_PROP_UINT64("eNVM-size", MSF2State, envm_size, MSF2_ENVM_SIZE),
-> +    DEFINE_PROP_UINT64("eSRAM-size", MSF2State, esram_size, MSF2_ESRAM_SIZE),
-> +    /* Libero GUI shows 100Mhz as default for clocks */
-> +    DEFINE_PROP_UINT32("m3clk", MSF2State, m3clk, 100 * 1000000),
-> +    /* default divisors in Libero GUI */
-> +    DEFINE_PROP_UINT32("apb0div", MSF2State, apb0div, 2),
-> +    DEFINE_PROP_UINT32("apb1div", MSF2State, apb1div, 2),
-> +    DEFINE_PROP_END_OF_LIST(),
-> +};
+> +    mmu_idx = stage_1_mmu_idx(mmu_idx);
 > +
-> +static void m2sxxx_soc_class_init(ObjectClass *klass, void *data)
-> +{
-> +    DeviceClass *dc = DEVICE_CLASS(klass);
+> +    tcr = regime_tcr(env, mmu_idx);
+> +    el = regime_el(env, mmu_idx);
 > +
-> +    dc->realize = m2sxxx_soc_realize;
-> +    dc->props = m2sxxx_soc_properties;
+> +    if (el > 1) {
+> +        return extract64(tcr->raw_tcr, 20, 1);
+> +    } else {
+> +        return extract64(tcr->raw_tcr, 37, 1);
+> +    }
 > +}
 > +
-> +static const TypeInfo m2sxxx_soc_info = {
-> +    .name          = TYPE_MSF2_SOC,
-> +    .parent        = TYPE_SYS_BUS_DEVICE,
-> +    .instance_size = sizeof(MSF2State),
-> +    .instance_init = m2sxxx_soc_initfn,
-> +    .class_init    = m2sxxx_soc_class_init,
-> +};
-> +
-> +static void m2sxxx_soc_types(void)
+> +/* Returns TBI1 value for current regime el */
+> +uint32_t arm_regime_tbi1(CPUARMState *env, ARMMMUIdx mmu_idx)
 > +{
-> +    type_register_static(&m2sxxx_soc_info);
+> +    TCR *tcr;
+> +    uint32_t el;
+> +
+> +    /* For EL0 and EL1, TBI is controlled by stage 1's TCR, so convert
+> +     * a stage 1+2 mmu index into the appropriate stage 1 mmu index.
+> +     */
+> +    mmu_idx = stage_1_mmu_idx(mmu_idx);
+> +
+> +    tcr = regime_tcr(env, mmu_idx);
+> +    el = regime_el(env, mmu_idx);
+> +
+> +    if (el > 1) {
+> +        return 0;
+> +    } else {
+> +        return extract64(tcr->raw_tcr, 38, 1);
+> +    }
 > +}
 > +
-> +type_init(m2sxxx_soc_types)
-> diff --git a/include/hw/arm/msf2-soc.h b/include/hw/arm/msf2-soc.h
-> new file mode 100644
-> index 0000000..9ed677a
-> --- /dev/null
-> +++ b/include/hw/arm/msf2-soc.h
-> @@ -0,0 +1,67 @@
-> +/*
-> + * Microsemi Smartfusion2 SoC
-> + *
-> + * Copyright (c) 2017 Subbaraya Sundeep <sundeep.lkml@gmail.com>
-> + *
-> + * Permission is hereby granted, free of charge, to any person obtaining a copy
-> + * of this software and associated documentation files (the "Software"), to deal
-> + * in the Software without restriction, including without limitation the rights
-> + * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-> + * copies of the Software, and to permit persons to whom the Software is
-> + * furnished to do so, subject to the following conditions:
-> + *
-> + * The above copyright notice and this permission notice shall be included in
-> + * all copies or substantial portions of the Software.
-> + *
-> + * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-> + * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-> + * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
-> + * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-> + * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-> + * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-> + * THE SOFTWARE.
-> + */
+> +/* Return the TTBR associated with this translation regime */
+> +static inline uint64_t regime_ttbr(CPUARMState *env, ARMMMUIdx mmu_idx,
+> +                                   int ttbrn)
+> +{
+> +    if (mmu_idx == ARMMMUIdx_S2NS) {
+> +        return env->cp15.vttbr_el2;
+> +    }
+> +    if (ttbrn == 0) {
+> +        return env->cp15.ttbr0_el[regime_el(env, mmu_idx)];
+> +    } else {
+> +        return env->cp15.ttbr1_el[regime_el(env, mmu_idx)];
+> +    }
+> +}
 > +
-> +#ifndef HW_ARM_MSF2_SOC_H
-> +#define HW_ARM_MSF2_SOC_H
+> +/* Return true if the translation regime is using LPAE format page tables */
+> +static bool regime_using_lpae_format(CPUARMState *env,
+> +                                     ARMMMUIdx mmu_idx)
+> +{
+> +    int el = regime_el(env, mmu_idx);
+> +    if (el == 2 || arm_el_is_aa64(env, el)) {
+> +        return true;
+> +    }
+> +    if (arm_feature(env, ARM_FEATURE_LPAE)
+> +        && (regime_tcr(env, mmu_idx)->raw_tcr & TTBCR_EAE)) {
+> +        return true;
+> +    }
+> +    return false;
+> +}
 > +
-> +#include "hw/misc/msf2-sysreg.h"
-> +#include "hw/timer/mss-timer.h"
-> +#include "hw/ssi/mss-spi.h"
-> +#include "hw/arm/armv7m.h"
-> +#include "qemu/cutils.h"
+> +/* Returns true if the stage 1 translation regime is using LPAE format page
+> + * tables. Used when raising alignment exceptions, whose FSR changes depending
+> + * on whether the long or short descriptor format is in use. */
+> +bool arm_s1_regime_using_lpae_format(CPUARMState *env, ARMMMUIdx mmu_idx)
+> +{
+> +    mmu_idx = stage_1_mmu_idx(mmu_idx);
 > +
-> +#define TYPE_MSF2_SOC     "msf2-soc"
-> +#define MSF2_SOC(obj)     OBJECT_CHECK(MSF2State, (obj), TYPE_MSF2_SOC)
+> +    return regime_using_lpae_format(env, mmu_idx);
+> +}
 > +
-> +#define MSF2_NUM_SPIS         2
-> +#define MSF2_NUM_UARTS        2
-> +
-> +/*
-> + * System timer consists of two programmable 32-bit
-> + * decrementing counters that generate individual interrupts to
-> + * the Cortex-M3 processor
-> + */
-> +#define MSF2_NUM_TIMERS       2
-> +
-> +typedef struct MSF2State {
-> +    /*< private >*/
-> +    SysBusDevice parent_obj;
-> +    /*< public >*/
-> +
-> +    ARMv7MState armv7m;
-> +
-> +    char *part_name;
-> +    uint64_t envm_size;
-> +    uint64_t esram_size;
-> +
-> +    uint32_t m3clk;
-> +    uint32_t apb0div;
-> +    uint32_t apb1div;
-> +
-> +    MSF2SysregState sysreg;
-> +    MSSTimerState timer;
-> +    MSSSpiState spi[MSF2_NUM_SPIS];
-> +} MSF2State;
-> +
-> +#endif
+> +static inline bool regime_is_user(CPUARMState *env, ARMMMUIdx mmu_idx)
+> +{
+> +    switch (mmu_idx) {
+> +    case ARMMMUIdx_S1SE0:
+> +    case ARMMMUIdx_S1NSE0:
+> +    case ARMMMUIdx_MUser:
+> +        return true;
+> +    default:
+> +        return false;
+> +    case ARMMMUIdx_S12NSE0:
+> +    case ARMMMUIdx_S12NSE1:
+> +        g_assert_not_reached();
+> +    }
+> +}
+>  #endif
+>
+>  static int vfp_gdb_get_reg(CPUARMState *env, uint8_t *buf, int reg)
+> @@ -7022,208 +7224,6 @@ void arm_cpu_do_interrupt(CPUState *cs)
+>      }
+>  }
+>
+> -/* Return the exception level which controls this address translation regime */
+> -static inline uint32_t regime_el(CPUARMState *env, ARMMMUIdx mmu_idx)
+> -{
+> -    switch (mmu_idx) {
+> -    case ARMMMUIdx_S2NS:
+> -    case ARMMMUIdx_S1E2:
+> -        return 2;
+> -    case ARMMMUIdx_S1E3:
+> -        return 3;
+> -    case ARMMMUIdx_S1SE0:
+> -        return arm_el_is_aa64(env, 3) ? 1 : 3;
+> -    case ARMMMUIdx_S1SE1:
+> -    case ARMMMUIdx_S1NSE0:
+> -    case ARMMMUIdx_S1NSE1:
+> -    case ARMMMUIdx_MPriv:
+> -    case ARMMMUIdx_MNegPri:
+> -    case ARMMMUIdx_MUser:
+> -        return 1;
+> -    default:
+> -        g_assert_not_reached();
+> -    }
+> -}
+> -
+> -/* Return true if this address translation regime is secure */
+> -static inline bool regime_is_secure(CPUARMState *env, ARMMMUIdx mmu_idx)
+> -{
+> -    switch (mmu_idx) {
+> -    case ARMMMUIdx_S12NSE0:
+> -    case ARMMMUIdx_S12NSE1:
+> -    case ARMMMUIdx_S1NSE0:
+> -    case ARMMMUIdx_S1NSE1:
+> -    case ARMMMUIdx_S1E2:
+> -    case ARMMMUIdx_S2NS:
+> -    case ARMMMUIdx_MPriv:
+> -    case ARMMMUIdx_MNegPri:
+> -    case ARMMMUIdx_MUser:
+> -        return false;
+> -    case ARMMMUIdx_S1E3:
+> -    case ARMMMUIdx_S1SE0:
+> -    case ARMMMUIdx_S1SE1:
+> -        return true;
+> -    default:
+> -        g_assert_not_reached();
+> -    }
+> -}
+> -
+> -/* Return the SCTLR value which controls this address translation regime */
+> -static inline uint32_t regime_sctlr(CPUARMState *env, ARMMMUIdx mmu_idx)
+> -{
+> -    return env->cp15.sctlr_el[regime_el(env, mmu_idx)];
+> -}
+> -
+> -/* Return true if the specified stage of address translation is disabled */
+> -static inline bool regime_translation_disabled(CPUARMState *env,
+> -                                               ARMMMUIdx mmu_idx)
+> -{
+> -    if (arm_feature(env, ARM_FEATURE_M)) {
+> -        switch (env->v7m.mpu_ctrl &
+> -                (R_V7M_MPU_CTRL_ENABLE_MASK | R_V7M_MPU_CTRL_HFNMIENA_MASK)) {
+> -        case R_V7M_MPU_CTRL_ENABLE_MASK:
+> -            /* Enabled, but not for HardFault and NMI */
+> -            return mmu_idx == ARMMMUIdx_MNegPri;
+> -        case R_V7M_MPU_CTRL_ENABLE_MASK | R_V7M_MPU_CTRL_HFNMIENA_MASK:
+> -            /* Enabled for all cases */
+> -            return false;
+> -        case 0:
+> -        default:
+> -            /* HFNMIENA set and ENABLE clear is UNPREDICTABLE, but
+> -             * we warned about that in armv7m_nvic.c when the guest set it.
+> -             */
+> -            return true;
+> -        }
+> -    }
+> -
+> -    if (mmu_idx == ARMMMUIdx_S2NS) {
+> -        return (env->cp15.hcr_el2 & HCR_VM) == 0;
+> -    }
+> -    return (regime_sctlr(env, mmu_idx) & SCTLR_M) == 0;
+> -}
+> -
+> -static inline bool regime_translation_big_endian(CPUARMState *env,
+> -                                                 ARMMMUIdx mmu_idx)
+> -{
+> -    return (regime_sctlr(env, mmu_idx) & SCTLR_EE) != 0;
+> -}
+> -
+> -/* Return the TCR controlling this translation regime */
+> -static inline TCR *regime_tcr(CPUARMState *env, ARMMMUIdx mmu_idx)
+> -{
+> -    if (mmu_idx == ARMMMUIdx_S2NS) {
+> -        return &env->cp15.vtcr_el2;
+> -    }
+> -    return &env->cp15.tcr_el[regime_el(env, mmu_idx)];
+> -}
+> -
+> -/* Convert a possible stage1+2 MMU index into the appropriate
+> - * stage 1 MMU index
+> - */
+> -static inline ARMMMUIdx stage_1_mmu_idx(ARMMMUIdx mmu_idx)
+> -{
+> -    if (mmu_idx == ARMMMUIdx_S12NSE0 || mmu_idx == ARMMMUIdx_S12NSE1) {
+> -        mmu_idx += (ARMMMUIdx_S1NSE0 - ARMMMUIdx_S12NSE0);
+> -    }
+> -    return mmu_idx;
+> -}
+> -
+> -/* Returns TBI0 value for current regime el */
+> -uint32_t arm_regime_tbi0(CPUARMState *env, ARMMMUIdx mmu_idx)
+> -{
+> -    TCR *tcr;
+> -    uint32_t el;
+> -
+> -    /* For EL0 and EL1, TBI is controlled by stage 1's TCR, so convert
+> -     * a stage 1+2 mmu index into the appropriate stage 1 mmu index.
+> -     */
+> -    mmu_idx = stage_1_mmu_idx(mmu_idx);
+> -
+> -    tcr = regime_tcr(env, mmu_idx);
+> -    el = regime_el(env, mmu_idx);
+> -
+> -    if (el > 1) {
+> -        return extract64(tcr->raw_tcr, 20, 1);
+> -    } else {
+> -        return extract64(tcr->raw_tcr, 37, 1);
+> -    }
+> -}
+> -
+> -/* Returns TBI1 value for current regime el */
+> -uint32_t arm_regime_tbi1(CPUARMState *env, ARMMMUIdx mmu_idx)
+> -{
+> -    TCR *tcr;
+> -    uint32_t el;
+> -
+> -    /* For EL0 and EL1, TBI is controlled by stage 1's TCR, so convert
+> -     * a stage 1+2 mmu index into the appropriate stage 1 mmu index.
+> -     */
+> -    mmu_idx = stage_1_mmu_idx(mmu_idx);
+> -
+> -    tcr = regime_tcr(env, mmu_idx);
+> -    el = regime_el(env, mmu_idx);
+> -
+> -    if (el > 1) {
+> -        return 0;
+> -    } else {
+> -        return extract64(tcr->raw_tcr, 38, 1);
+> -    }
+> -}
+> -
+> -/* Return the TTBR associated with this translation regime */
+> -static inline uint64_t regime_ttbr(CPUARMState *env, ARMMMUIdx mmu_idx,
+> -                                   int ttbrn)
+> -{
+> -    if (mmu_idx == ARMMMUIdx_S2NS) {
+> -        return env->cp15.vttbr_el2;
+> -    }
+> -    if (ttbrn == 0) {
+> -        return env->cp15.ttbr0_el[regime_el(env, mmu_idx)];
+> -    } else {
+> -        return env->cp15.ttbr1_el[regime_el(env, mmu_idx)];
+> -    }
+> -}
+> -
+> -/* Return true if the translation regime is using LPAE format page tables */
+> -static inline bool regime_using_lpae_format(CPUARMState *env,
+> -                                            ARMMMUIdx mmu_idx)
+> -{
+> -    int el = regime_el(env, mmu_idx);
+> -    if (el == 2 || arm_el_is_aa64(env, el)) {
+> -        return true;
+> -    }
+> -    if (arm_feature(env, ARM_FEATURE_LPAE)
+> -        && (regime_tcr(env, mmu_idx)->raw_tcr & TTBCR_EAE)) {
+> -        return true;
+> -    }
+> -    return false;
+> -}
+> -
+> -/* Returns true if the stage 1 translation regime is using LPAE format page
+> - * tables. Used when raising alignment exceptions, whose FSR changes depending
+> - * on whether the long or short descriptor format is in use. */
+> -bool arm_s1_regime_using_lpae_format(CPUARMState *env, ARMMMUIdx mmu_idx)
+> -{
+> -    mmu_idx = stage_1_mmu_idx(mmu_idx);
+> -
+> -    return regime_using_lpae_format(env, mmu_idx);
+> -}
+> -
+> -static inline bool regime_is_user(CPUARMState *env, ARMMMUIdx mmu_idx)
+> -{
+> -    switch (mmu_idx) {
+> -    case ARMMMUIdx_S1SE0:
+> -    case ARMMMUIdx_S1NSE0:
+> -    case ARMMMUIdx_MUser:
+> -        return true;
+> -    default:
+> -        return false;
+> -    case ARMMMUIdx_S12NSE0:
+> -    case ARMMMUIdx_S12NSE1:
+> -        g_assert_not_reached();
+> -    }
+> -}
+> -
+>  /* Translate section/page access permissions to page
+>   * R/W protection flags
+>   *
 > --
-> 2.5.0
+> 2.7.4
+>
 >

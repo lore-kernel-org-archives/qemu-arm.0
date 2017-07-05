@@ -1,93 +1,99 @@
-Received: by 10.25.44.15 with SMTP id s15csp625146lfs;
-        Wed, 5 Jul 2017 04:44:53 -0700 (PDT)
-X-Received: by 10.237.53.164 with SMTP id c33mr58789299qte.191.1499255093170;
-        Wed, 05 Jul 2017 04:44:53 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1499255093; cv=none;
+Received: by 10.25.44.15 with SMTP id s15csp1031890lfs;
+        Wed, 5 Jul 2017 10:56:46 -0700 (PDT)
+X-Received: by 10.55.198.156 with SMTP id s28mr55011969qkl.222.1499277405922;
+        Wed, 05 Jul 2017 10:56:45 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1499277405; cv=none;
         d=google.com; s=arc-20160816;
-        b=qjo48P+PfiECw+1xM7myEWTPvPR2RXBbrPQKyxAsJWE2V0qSkjJaMo6hFXaiHtViQK
-         kaCE6+xRZZ8J2zmyEG2jfPP0dcrlAPwOP3kibe+c3XKFHSH25aMCIMduhlOrm1tod2KA
-         4Kzd/aY6aTspUHzJT4ORF8LUk1vacFVsBcfR//n1NtQG+oHSXssO8SFfw3e/qgeryC/2
-         6SpCcsabv1FXgd3XQOuvFbgRBexK6KFB/t0RvIv65dzvdsLIQ/Ym7qOEBLEDhkTLY3hO
-         zMGRZlYoZXDS1Bhf2uNVieI9C32c6pmjEToccH+/RB/z5AkASJQI6YiCr2vgfncvRV1t
-         qsSA==
+        b=Xheit4xoUmbG2YDvvjiUcTtJ+JDXIXBKopmoN4W1onSj3pvtvbvWCmz/JMPRxQCkT1
+         q4isEOn/uQ3jtRhoAVGkl71ARjVnfGSKnZ7Q7YATr7jVuVtdpfYyv9wdGgU6+e2K8QlE
+         Mca2zkiBzxjm3Ti9OFBmkhQiZv/EHTAbFW8uxRgRI79jTXIE/Omdd8ZP5YBXGeQ4yv6A
+         XM0noS/Fqi/pv7bl8PCBz+rskHvv63gfQPNdJ1sORNXVHSsraqzEB1n78oGoJaNQsN3J
+         16PdeMFFbAO5fRPz0JfS9YntHyRIta/JvhZL1CUIN0czySKF36b76N9LH8BpcXPMR3BN
+         Ov7w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:mime-version:user-agent
-         :message-id:in-reply-to:date:references:to:from:dkim-filter
-         :dmarc-filter:arc-authentication-results;
-        bh=6q1faRdHHs5A7xGOnq/NQTpCMQFr8x1ZILwJlN6galc=;
-        b=ixCqB/boja5RJ4cHfl/Yp/B6C+dQdOihing1BiAMm/N89A2QeTbt3qI9KbJ0MNhIde
-         HKKwDv4Tnx+0mbahLrrxGc7haiofwnM5SP1cc7Gcj5dL47ODlU0gc1KmbxuwfQAqpsXP
-         xM7TEiUQU1TKQUhuOUuBgc5RgVs1zd+YqZngTG5Ia2XOeeGEf24sJvfrcsU82GWeow0l
-         iL1Su102SqFfIDbA83hUwqM+Cjx1da0GM404toZ4JvztxSyw5a7W1TLi4hwPGl3RTLvm
-         KSGpy1nezvIInVR6giQv7XY6DNzl67oiJ8xzRlpt7BK47EdBrV503V7htuK7bInRm8so
-         f2DA==
+         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
+         :references:in-reply-to:mime-version:dkim-signature
+         :arc-authentication-results;
+        bh=oA6Cpv7Fd8syPCJy0bIlK/Ba2XdpwjG/0jMnJpNK/rc=;
+        b=mX2NzZoR3YBBt719lbJUCXFyHgitJnQWmuxMTSPyKeNlJtvlZGOO8GzkPIPEUVmiya
+         PanngWdjOe/AyUefjPnq21rXGDGo6e+d0npLXPqU+/AiJDYw/JdIh6TF2o2pBGHN2Y+h
+         uYcjR9nBMVMrw+ClquOBnP7Sg0NuQTuRYVGqLjIJOQTr1S8jglZ39nB3tNCTsPuKZJAI
+         4CPKnwbSWMxph/29yvt5gy+qWBBlRWHlcHYj77qk7jOkkcbwFFOG+AvOlalM60wcwl0H
+         zeSv7QPrjNNPNmeK/wPR1t8ML9gyDRnil+J4eFL44OcKflT520tam4mpla1MyrgqEwk2
+         dJrA==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@gmail.com header.b=Ak0PvO2c;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id t41si20557238qtg.226.2017.07.05.04.44.52
+        by mx.google.com with ESMTPS id h5si21463150qtf.378.2017.07.05.10.56.45
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 05 Jul 2017 04:44:53 -0700 (PDT)
+        Wed, 05 Jul 2017 10:56:45 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
+       dkim=fail header.i=@gmail.com header.b=Ak0PvO2c;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:45551 helo=lists.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:47488 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1dSiji-0001wX-Gy
-	for alex.bennee@linaro.org; Wed, 05 Jul 2017 07:44:50 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:46936)
+	id 1dSoXb-0000wC-8p
+	for alex.bennee@linaro.org; Wed, 05 Jul 2017 13:56:43 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:54311)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1dSijc-0001uk-12
-	for qemu-arm@nongnu.org; Wed, 05 Jul 2017 07:44:44 -0400
+	(envelope-from <alistair23@gmail.com>) id 1dSoXX-0000uy-JO
+	for qemu-arm@nongnu.org; Wed, 05 Jul 2017 13:56:40 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1dSijX-0008IJ-I3
-	for qemu-arm@nongnu.org; Wed, 05 Jul 2017 07:44:44 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:60192)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <armbru@redhat.com>)
-	id 1dSijX-0008FA-6n; Wed, 05 Jul 2017 07:44:39 -0400
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
-	[10.5.11.13])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 8C92161B85;
-	Wed,  5 Jul 2017 11:44:37 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 8C92161B85
-Authentication-Results: ext-mx10.extmail.prod.ext.phx2.redhat.com;
-	dmarc=none (p=none dis=none) header.from=redhat.com
-Authentication-Results: ext-mx10.extmail.prod.ext.phx2.redhat.com;
-	spf=pass smtp.mailfrom=armbru@redhat.com
-DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com 8C92161B85
-Received: from blackfin.pond.sub.org (ovpn-116-60.ams2.redhat.com
-	[10.36.116.60])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 2B72D60A99;
-	Wed,  5 Jul 2017 11:44:37 +0000 (UTC)
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
-	id 6C3921138619; Wed,  5 Jul 2017 13:44:35 +0200 (CEST)
-From: Markus Armbruster <armbru@redhat.com>
-To: Eduardo Habkost <ehabkost@redhat.com>
-References: <20170608133906.12737-1-ehabkost@redhat.com>
-	<20170608133906.12737-2-ehabkost@redhat.com>
-Date: Wed, 05 Jul 2017 13:44:35 +0200
-In-Reply-To: <20170608133906.12737-2-ehabkost@redhat.com> (Eduardo Habkost's
-	message of "Thu, 8 Jun 2017 10:39:02 -0300")
-Message-ID: <87fuebrtuk.fsf@dusky.pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/25.2 (gnu/linux)
+	(envelope-from <alistair23@gmail.com>) id 1dSoXW-0008HB-3f
+	for qemu-arm@nongnu.org; Wed, 05 Jul 2017 13:56:39 -0400
+Received: from mail-wm0-x243.google.com ([2a00:1450:400c:c09::243]:33795)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <alistair23@gmail.com>)
+	id 1dSoXS-0008Er-ST; Wed, 05 Jul 2017 13:56:35 -0400
+Received: by mail-wm0-x243.google.com with SMTP id p204so34160801wmg.1;
+	Wed, 05 Jul 2017 10:56:34 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=oA6Cpv7Fd8syPCJy0bIlK/Ba2XdpwjG/0jMnJpNK/rc=;
+	b=Ak0PvO2cgpzhgaFESTOB6XdEeTnNhpyW0mDbNDkmAFmRHteUXXR26ZknW+aQI2tKUQ
+	21I1gkp2IH089IChvFr2hh4oLeWzpKrHC0YILEsulPaNcVulA1U/erPdqkOfg9WakwS+
+	9xQkGnnxm616CpKiHBB4ZGlakU+iWTHHSojMQ26CuvBCZLUrN2eJZf4Wjra4gAkOIVL3
+	x6YYN5jHCBcXi1N/arZtYSIOPxXD1Y7lQ3c2oTw5Yi+MSw9Z4Zw90jTNq0tgiEeuDLu+
+	2rJFI8gBMBMzjZvWM8VwD60i4+7A4WF7z1CgnYPzsmMCXoUINUc6AkVEhtbBjn4FQjKo
+	YenA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=oA6Cpv7Fd8syPCJy0bIlK/Ba2XdpwjG/0jMnJpNK/rc=;
+	b=jGYM/xhKqEa8JrsZb58/q4dZzjX38iMW4BBobwvJo7OucOdtnlHFJZJRR42C6Qa4fE
+	rOv5UorbkASFnTiiJL9+V1XH6osewZAY5ZRSYfYAeFcQc0dfqYq7FEyqBUAv+9lCzO4K
+	GqVL9RUbLjd4USdWXM8kK4oQWCWpQy/HjYKjMuI+/JfGdppYaxCCSzKaMZ57PgRYBE9T
+	Fj1Slc6QCHqxZVuz6L2hmojPE1I/n+o1vM5VSvAJQK79wi2Tnt+LoqhAbFmWE83z0Dmu
+	6xjOn4MhNmC6JIukq9BhA4dXWW5mkBHU13qWHnwUZuDohiS/LdPRWRbQROn0NPDc1ckg
+	BttA==
+X-Gm-Message-State: AKS2vOwx+Ccw2iRHW2ZZKq2NoA/4kP6Ta9Bh4LzuYyM0MuMpecAh4Cc7
+	vgV7BenNKvI5cd1yjcBQMV68g4eF+A==
+X-Received: by 10.28.203.79 with SMTP id b76mr24467686wmg.81.1499277393525;
+	Wed, 05 Jul 2017 10:56:33 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.39]);
-	Wed, 05 Jul 2017 11:44:37 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH 1/5] xilinx: Fix error handling
+Received: by 10.28.191.88 with HTTP; Wed, 5 Jul 2017 10:56:02 -0700 (PDT)
+In-Reply-To: <1499057115-6773-2-git-send-email-sundeep.lkml@gmail.com>
+References: <1499057115-6773-1-git-send-email-sundeep.lkml@gmail.com>
+	<1499057115-6773-2-git-send-email-sundeep.lkml@gmail.com>
+From: Alistair Francis <alistair23@gmail.com>
+Date: Wed, 5 Jul 2017 10:56:02 -0700
+Message-ID: <CAKmqyKOyaJQKOmGK=+jgUOJ5vKeUXJH2OEQmxU-qsD8ftC-25Q@mail.gmail.com>
+To: Subbaraya Sundeep <sundeep.lkml@gmail.com>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2a00:1450:400c:c09::243
+Subject: Re: [Qemu-arm] [Qemu devel v6 PATCH 1/5] msf2: Add Smartfusion2
+ System timer
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -99,82 +105,248 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Jason Wang <jasowang@redhat.com>, qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org, Alistair Francis <alistair.francis@xilinx.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+	=?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>,
+	qemu-arm <qemu-arm@nongnu.org>,
+	"qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: zdc+LezyK3Aw
+X-TUID: lXPnb9lISOkG
 
-Eduardo Habkost <ehabkost@redhat.com> writes:
-
-> Assigning directly to *errp is not valid, as errp may be NULL,
-> &error_fatal, or &error_abort.  Use error_propagate() instead.
+On Sun, Jul 2, 2017 at 9:45 PM, Subbaraya Sundeep
+<sundeep.lkml@gmail.com> wrote:
+> Modelled System Timer in Microsemi's Smartfusion2 Soc.
+> Timer has two 32bit down counters and two interrupts.
 >
-> error_propagate() handles non-NULL *errp correctly, so the
-> "if (!*errp)" check can be removed.
->
-> Cc: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
-> Cc: Alistair Francis <alistair.francis@xilinx.com>
-> Cc: Jason Wang <jasowang@redhat.com>
-> Cc: qemu-arm@nongnu.org
-> Signed-off-by: Eduardo Habkost <ehabkost@redhat.com>
+> Signed-off-by: Subbaraya Sundeep <sundeep.lkml@gmail.com>
 > ---
->  hw/dma/xilinx_axidma.c  | 4 +---
->  hw/net/xilinx_axienet.c | 4 +---
->  2 files changed, 2 insertions(+), 6 deletions(-)
+>  hw/timer/Makefile.objs       |   1 +
+>  hw/timer/mss-timer.c         | 261 +++++++++++++++++++++++++++++++++++++++++++
+>  include/hw/timer/mss-timer.h |  67 +++++++++++
+>  3 files changed, 329 insertions(+)
+>  create mode 100644 hw/timer/mss-timer.c
+>  create mode 100644 include/hw/timer/mss-timer.h
 >
-> diff --git a/hw/dma/xilinx_axidma.c b/hw/dma/xilinx_axidma.c
-> index 6065689ad1..3987b5ff96 100644
-> --- a/hw/dma/xilinx_axidma.c
-> +++ b/hw/dma/xilinx_axidma.c
-> @@ -554,9 +554,7 @@ static void xilinx_axidma_realize(DeviceState *dev, Error **errp)
->      return;
->  
->  xilinx_axidma_realize_fail:
-> -    if (!*errp) {
-> -        *errp = local_err;
-> -    }
-> +    error_propagate(errp, local_err);
->  }
->  
->  static void xilinx_axidma_init(Object *obj)
-> diff --git a/hw/net/xilinx_axienet.c b/hw/net/xilinx_axienet.c
-> index b6701844d3..5ffa739f68 100644
-> --- a/hw/net/xilinx_axienet.c
-> +++ b/hw/net/xilinx_axienet.c
-> @@ -981,9 +981,7 @@ static void xilinx_enet_realize(DeviceState *dev, Error **errp)
->      return;
->  
->  xilinx_enet_realize_fail:
-> -    if (!*errp) {
-> -        *errp = local_err;
-> -    }
-> +    error_propagate(errp, local_err);
->  }
->  
->  static void xilinx_enet_init(Object *obj)
+> diff --git a/hw/timer/Makefile.objs b/hw/timer/Makefile.objs
+> index dd6f27e..fc4d2da 100644
+> --- a/hw/timer/Makefile.objs
+> +++ b/hw/timer/Makefile.objs
+> @@ -41,3 +41,4 @@ common-obj-$(CONFIG_STM32F2XX_TIMER) += stm32f2xx_timer.o
+>  common-obj-$(CONFIG_ASPEED_SOC) += aspeed_timer.o
+>
+>  common-obj-$(CONFIG_SUN4V_RTC) += sun4v-rtc.o
+> +common-obj-$(CONFIG_MSF2) += mss-timer.o
+> diff --git a/hw/timer/mss-timer.c b/hw/timer/mss-timer.c
+> new file mode 100644
+> index 0000000..e46d118
+> --- /dev/null
+> +++ b/hw/timer/mss-timer.c
+> @@ -0,0 +1,261 @@
+> +/*
+> + * Block model of System timer present in
+> + * Microsemi's SmartFusion2 and SmartFusion SoCs.
+> + *
+> + * Copyright (c) 2017 Subbaraya Sundeep <sundeep.lkml@gmail.com>.
+> + *
+> + * Permission is hereby granted, free of charge, to any person obtaining a copy
+> + * of this software and associated documentation files (the "Software"), to deal
+> + * in the Software without restriction, including without limitation the rights
+> + * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+> + * copies of the Software, and to permit persons to whom the Software is
+> + * furnished to do so, subject to the following conditions:
+> + *
+> + * The above copyright notice and this permission notice shall be included in
+> + * all copies or substantial portions of the Software.
+> + *
+> + * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+> + * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+> + * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+> + * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+> + * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+> + * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+> + * THE SOFTWARE.
+> + */
+> +
+> +#include "hw/timer/mss-timer.h"
+> +
+> +#ifndef MSS_TIMER_ERR_DEBUG
+> +#define MSS_TIMER_ERR_DEBUG  0
+> +#endif
+> +
+> +#define DB_PRINT_L(lvl, fmt, args...) do { \
+> +    if (MSS_TIMER_ERR_DEBUG >= lvl) { \
+> +        qemu_log("%s: " fmt "\n", __func__, ## args); \
+> +    } \
+> +} while (0);
+> +
+> +#define DB_PRINT(fmt, args...) DB_PRINT_L(1, fmt, ## args)
+> +
+> +#define R_TIM_VAL         0
+> +#define R_TIM_LOADVAL     1
+> +#define R_TIM_BGLOADVAL   2
+> +#define R_TIM_CTRL        3
+> +#define R_TIM_RIS         4
+> +#define R_TIM_MIS         5
+> +
+> +#define TIMER_CTRL_ENBL     (1 << 0)
+> +#define TIMER_CTRL_ONESHOT  (1 << 1)
+> +#define TIMER_CTRL_INTR     (1 << 2)
+> +#define TIMER_RIS_ACK       (1 << 0)
+> +#define TIMER_RST_CLR       (1 << 6)
+> +#define TIMER_MODE          (1 << 0)
+> +
+> +static void timer_update_irq(struct Msf2Timer *st)
+> +{
+> +    bool isr, ier;
+> +
+> +    isr = !!(st->regs[R_TIM_RIS] & TIMER_RIS_ACK);
+> +    ier = !!(st->regs[R_TIM_CTRL] & TIMER_CTRL_INTR);
+> +    qemu_set_irq(st->irq, (ier && isr));
+> +}
+> +
+> +static void timer_update(struct Msf2Timer *st)
+> +{
+> +    uint64_t count;
+> +
+> +    if (!(st->regs[R_TIM_CTRL] & TIMER_CTRL_ENBL)) {
+> +        ptimer_stop(st->ptimer);
+> +        return;
+> +    }
+> +
+> +    count = st->regs[R_TIM_LOADVAL];
+> +    ptimer_set_limit(st->ptimer, count, 1);
+> +    ptimer_run(st->ptimer, 1);
+> +}
+> +
+> +static uint64_t
+> +timer_read(void *opaque, hwaddr offset, unsigned int size)
+> +{
+> +    MSSTimerState *t = opaque;
+> +    hwaddr addr;
+> +    struct Msf2Timer *st;
+> +    uint32_t ret = 0;
+> +    int timer = 0;
+> +    int isr;
+> +    int ier;
+> +
+> +    addr = offset >> 2;
+> +    /*
+> +     * Two independent timers has same base address.
+> +     * Based on address passed figure out which timer is being used.
+> +     */
+> +    if ((addr >= R_TIM1_MAX) && (addr < NUM_TIMERS * R_TIM1_MAX)) {
+> +        timer = 1;
+> +        addr -= R_TIM1_MAX;
+> +    }
+> +
+> +    st = &t->timers[timer];
+> +
+> +    switch (addr) {
+> +    case R_TIM_VAL:
+> +        ret = ptimer_get_count(st->ptimer);
+> +        break;
+> +
+> +    case R_TIM_MIS:
+> +        isr = !!(st->regs[R_TIM_RIS] & TIMER_RIS_ACK);
+> +        ier = !!(st->regs[R_TIM_CTRL] & TIMER_CTRL_INTR);
+> +        ret = ier & isr;
+> +        break;
+> +
+> +    default:
+> +        if (addr < NUM_TIMERS * R_TIM1_MAX) {
 
-The qdev core always passes &err.  So this is "merely" a fix for a
-latent bug.
+Shouldn't this just be: addr < R_TIM1_MAX?
 
-If it could pass null, you'd fix a crash bug.
+At this point you have already subjected the offset for multiple timers.
 
-If it could pass pointer to non-null (&error_fatal, &error_abort), you'd
-plug a memory leak.
+> +            ret = st->regs[addr];
+> +        } else {
+> +            qemu_log_mask(LOG_GUEST_ERROR,
+> +                        TYPE_MSS_TIMER": 64-bit mode not supported\n");
 
-Suggest to rephrase the commit message:
+Maybe add a return here so you don't print the other debug message after this.
 
-    xilinx: Fix latent error handling bug
+> +        }
+> +        break;
+> +    }
+> +
+> +    DB_PRINT("timer=%d 0x%" HWADDR_PRIx "=0x%" PRIx32, timer, offset,
+> +            ret);
+> +    return ret;
+> +}
+> +
+> +static void
+> +timer_write(void *opaque, hwaddr offset,
+> +            uint64_t val64, unsigned int size)
+> +{
+> +    MSSTimerState *t = opaque;
+> +    hwaddr addr;
+> +    struct Msf2Timer *st;
+> +    int timer = 0;
+> +    uint32_t value = val64;
+> +
+> +    addr = offset >> 2;
+> +    /*
+> +     * Two independent timers has same base address.
+> +     * Based on addr passed figure out which timer is being used.
+> +     */
+> +    if ((addr >= R_TIM1_MAX) && (addr < NUM_TIMERS * R_TIM1_MAX)) {
+> +        timer = 1;
+> +        addr -= R_TIM1_MAX;
+> +    }
+> +
+> +    st = &t->timers[timer];
+> +
+> +    DB_PRINT("addr=0x%" HWADDR_PRIx " val=0x%" PRIx32 " (timer=%d)", offset,
+> +            value, timer);
+> +
+> +    switch (addr) {
+> +    case R_TIM_CTRL:
+> +        st->regs[R_TIM_CTRL] = value;
+> +        timer_update(st);
+> +        break;
+> +
+> +    case R_TIM_RIS:
+> +        if (value & TIMER_RIS_ACK) {
+> +            st->regs[R_TIM_RIS] &= ~TIMER_RIS_ACK;
+> +        }
+> +        break;
+> +
+> +    case R_TIM_LOADVAL:
+> +        st->regs[R_TIM_LOADVAL] = value;
+> +        if (st->regs[R_TIM_CTRL] & TIMER_CTRL_ENBL) {
+> +            timer_update(st);
+> +        }
+> +        break;
+> +
+> +    case R_TIM_BGLOADVAL:
+> +        st->regs[R_TIM_BGLOADVAL] = value;
+> +        st->regs[R_TIM_LOADVAL] = value;
+> +        break;
+> +
+> +    case R_TIM_VAL:
+> +    case R_TIM_MIS:
+> +        break;
+> +
+> +    default:
+> +        if (addr < NUM_TIMERS * R_TIM1_MAX) {
 
-    Assigning directly to *errp is not valid, as errp may be null,
-    &error_fatal, or &error_abort.  The !*errp conditional protects
-    against the latter two, but we then leak @local_err.  Fortunately,
-    the qdev core always passes pointer to null, so this is "merely" a
-    latent bug.
+Same comment as above.
 
-    Use error_propagate() instead.
+> +            st->regs[addr] = value;
+> +        } else {
+> +            qemu_log_mask(LOG_GUEST_ERROR,
+> +                        TYPE_MSS_TIMER": 64-bit mode not supported\n");
+> +            return;
+> +        }
+> +        break;
+> +    }
+> +    timer_update_irq(st);
+> +}
 
-What do you think?
+Once those comments above are addressed:
 
-With something like that:
-Reviewed-by: Markus Armbruster <armbru@redhat.com>
+Reviewed-by: Alistair Francis <alistair.francis@xilinx.com>
+
+Thanks,
+Alistair

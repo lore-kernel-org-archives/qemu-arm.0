@@ -1,525 +1,188 @@
-Received: by 10.25.44.15 with SMTP id s15csp1346322lfs;
-        Wed, 5 Jul 2017 16:53:01 -0700 (PDT)
-X-Received: by 10.28.13.138 with SMTP id 132mr34393254wmn.23.1499298781633;
-        Wed, 05 Jul 2017 16:53:01 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1499298781; cv=none;
+Received: by 10.25.44.15 with SMTP id s15csp2091715lfs;
+        Thu, 6 Jul 2017 07:08:56 -0700 (PDT)
+X-Received: by 10.200.3.213 with SMTP id z21mr58410900qtg.185.1499350136616;
+        Thu, 06 Jul 2017 07:08:56 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1499350136; cv=none;
         d=google.com; s=arc-20160816;
-        b=KhonTdpu6Xedl0KHVshvX6G1tV3+35/Ye8GiMrbfIkfraMmB3O6BuZ1Ujg5BPmW4RF
-         3krzQ3dkW4nPgsTQpQTpSh2/tZV22hsYiWaMihxMA4/86G/mV30ThUwtSxAdcC7vJ+0s
-         iQhUc31FOPo9ihP7c3GctnAOmXdEMSUx+ghv+S/GcWAc72m8uTRBNkTqktC/kQXfsMWS
-         /YKwg0a3ouuZLnUH+2jDbTiVSa5dRnv02xUzIo8Lg7ZOahmuLjVgQ+lwuaZRtwSPwuTL
-         8F7hQP/G3u+RoS3MvBcT+jZkYc0uDtL4Xf2ku5tm/Uphi7WSmX88i6dOnMbh8FSJE8rt
-         FHmw==
+        b=YR98TzzHQBZ1Y4SfIHsF3KniYnhH0DJMcGglHOB/SSypuHrQkAXh197L4ofQVpQvuG
+         ufW9fpFRQZ8VEWWuWr7JfkM15QX3NHlZNDYL9in8p9CjshWBgUOmGENgu4iSGSYb6+Rr
+         Auw7zd0YZ6bOZF4KeKcoZzjgHIM1L3yApZFRyUxig0CV2UMYNUkfsodVNJJdLo4E1KB2
+         mLmunxQIpjuhPnI06KtkbzjlP4Dy2F7oj7lUP6xOZuD2nldr8r3hq3junfdQP9GN3Xy2
+         1bHAILMSX9ghsq5zAaHtxnFpnRxkzVzaWpTmVJQzOIBF9vz6kSXSpptod0OBn4nmKsgo
+         PrVw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=cc:to:subject:message-id:date:from:references:in-reply-to
-         :mime-version:dkim-signature:arc-authentication-results;
-        bh=ecXxrgUqE7xZujzLZ3kOB9H80R5T1xEeoCzZsBVtNBM=;
-        b=ZFTwxWLAjRH0ZmOHMJMHaplx8Gpso1y/3wdkyo4RpVfADb8vEdCq0bIlsod/fAq1Jo
-         ewD1JLyizkCv1k1aRZmSThNOWA7bgMBUgk9kSlF2JUkz6/8FCi9ETEhMYLhltCN3jB+f
-         b5g4zK/jUubADApjzKN/hSi0d2xJy5yWW21hm+UUKT8e2z++elccmU9YJQthwsoHCCwR
-         +hnzVrkbvkGQtB5TCuEor/7duvUab/WqmvYM2UkNoOrxfEFWezWtgKxJ5DFco+QxCyOo
-         X7LHgxf69P86XgWmt9S+DsThzDm8PyN1Xp0j1ikon0mDkfWyUOZjGi4jjx2jLhibamMp
-         sRgg==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
+         :content-disposition:mime-version:references:message-id:to:from:date
+         :dkim-filter:dmarc-filter:arc-authentication-results;
+        bh=6F+h+DWbw2ebQp1ySwVuPeVEAOnKijwJgQg0I2ZyojY=;
+        b=wa4AUWIZU3M6xPNd6RKq1ZrVAtW1qJxIwJNB3ckNAj2yvpDWZ8LXSm1zM8iZQItEh5
+         yvTMgX/VaYyVjLx8f3qaczXNCCPBJVcqnYiXzrFG7hfa7sfjDlzG0E3byRoRCM19J+tF
+         hr9/p8bicpct8Z3LyuLIsT4zXK6HRBWuOD4g9jbeACSbGXSEFx3p6/HNj5oGsPOUcSjL
+         JuR7pSmwON9A1jhb+kZ3ZqHJ7H6Xar18zh2Ej/OtZZ/qGRrzfRcYdlT+1TKY58Ulp4B5
+         RpLmkCuq0rIhBBVxX21Gf9CxveiCRS/QsDAy9p6N6s7uCyBGA0fsRbfS5aoAJ7xgnVY+
+         /DiQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.b=QJweeXw2;
-       spf=pass (google.com: domain of alistair23@gmail.com designates 2a00:1450:400c:c0c::241 as permitted sender) smtp.mailfrom=alistair23@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Return-Path: <alistair23@gmail.com>
-Received: from mail-wr0-x241.google.com (mail-wr0-x241.google.com. [2a00:1450:400c:c0c::241])
-        by mx.google.com with ESMTPS id x5si273578wrd.8.2017.07.05.16.53.01
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 05 Jul 2017 16:53:01 -0700 (PDT)
-Received-SPF: pass (google.com: domain of alistair23@gmail.com designates 2a00:1450:400c:c0c::241 as permitted sender) client-ip=2a00:1450:400c:c0c::241;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
+        by mx.google.com with ESMTPS id x123si253356qkc.143.2017.07.06.07.08.55
+        for <alex.bennee@linaro.org>
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Thu, 06 Jul 2017 07:08:56 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.b=QJweeXw2;
-       spf=pass (google.com: domain of alistair23@gmail.com designates 2a00:1450:400c:c0c::241 as permitted sender) smtp.mailfrom=alistair23@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wr0-x241.google.com with SMTP id z45so1042200wrb.2;
-        Wed, 05 Jul 2017 16:53:01 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-         :cc;
-        bh=ecXxrgUqE7xZujzLZ3kOB9H80R5T1xEeoCzZsBVtNBM=;
-        b=QJweeXw2HnJ3IglxRuCEa84Z1ChMxscvPTI/mlndrklJBI1Si0DBeo0Fbx2LxmPSIJ
-         Oo0rA+jUX1SvESnPavxTEIZlrdxT70wvBAOnuCgSk9sC+8G+z+22DCAERKaL6YtfSak0
-         qOux9pf73iqU4IO+h8eMCzKe/Alc6CtL/tFUME9kjWZKY5GSqNQ5XbV2MXo1njTdItH3
-         HQgU4/hLOQxdhqlZ1iBr6hcTmlhE4dlJn2SDkoiQDOXdOAoEy5RI7r/TuMSizrUdtFw0
-         cEA0xD5dFYhy3+xIV5eIhc94w/My4lmfAlKFODhkdZsUvOHWpDROhSp7QQawpjd649w6
-         NIOg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-         :message-id:subject:to:cc;
-        bh=ecXxrgUqE7xZujzLZ3kOB9H80R5T1xEeoCzZsBVtNBM=;
-        b=Yju8HkBRISjVvNyI7q2UgG4rOZrUGADy/hiYkeVISyFI8/CPyb+SLrtdl1GNeotjGZ
-         0MT0gW3XkTUXaBEQDqQSzWeZQjtz9OI3PciNVN/XjgGgzdAxuAkLJxFcDldGkBphdCZd
-         eIF67BGvQBk2xMeblvqC9qMsaMEOpvFreHUnrB8HeYMdSgIKXGov2sm97DX36r7HSznP
-         A6k+RlXhbIxWjiASRJwjDDJU1zifybKhOAO5L5QKAPM9DkywwIsPqbjJnc5Pk/dSooES
-         Mlj2RPqNRMperaBz4U3rMmsF0SVW0AIpU9Eqlcp5gYO6AN7FMBWfE8kSMGJ5WZozjPmb
-         GyZA==
-X-Gm-Message-State: AKS2vOyu7RosaRRfPTBmcXdkftyaXLeEM9NgOu3bxhvZ84xEV3nKONrI
-	J/aXGecESK2MVwKZHfdSf0kdHqiP9g==
-X-Received: by 10.28.213.205 with SMTP id m196mr34663502wmg.61.1499298781205;
- Wed, 05 Jul 2017 16:53:01 -0700 (PDT)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:51677 helo=lists.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1dT7Sf-00069j-S3
+	for alex.bennee@linaro.org; Thu, 06 Jul 2017 10:08:53 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:37900)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <ehabkost@redhat.com>) id 1dT7SV-00066T-4v
+	for qemu-arm@nongnu.org; Thu, 06 Jul 2017 10:08:46 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+	(envelope-from <ehabkost@redhat.com>) id 1dT7SU-0003gV-1K
+	for qemu-arm@nongnu.org; Thu, 06 Jul 2017 10:08:43 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:36000)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <ehabkost@redhat.com>)
+	id 1dT7ST-0003ec-ON; Thu, 06 Jul 2017 10:08:41 -0400
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
+	[10.5.11.15])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id D68027D0E4;
+	Thu,  6 Jul 2017 14:08:39 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com D68027D0E4
+Authentication-Results: ext-mx03.extmail.prod.ext.phx2.redhat.com;
+	dmarc=none (p=none dis=none) header.from=redhat.com
+Authentication-Results: ext-mx03.extmail.prod.ext.phx2.redhat.com;
+	spf=pass smtp.mailfrom=ehabkost@redhat.com
+DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com D68027D0E4
+Received: from localhost (ovpn-116-61.gru2.redhat.com [10.97.116.61])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 552A677FE0;
+	Thu,  6 Jul 2017 14:08:38 +0000 (UTC)
+Date: Thu, 6 Jul 2017 11:08:37 -0300
+From: Eduardo Habkost <ehabkost@redhat.com>
+To: Markus Armbruster <armbru@redhat.com>
+Message-ID: <20170706140837.GE12152@localhost.localdomain>
+References: <20170608133906.12737-1-ehabkost@redhat.com>
+	<20170608133906.12737-2-ehabkost@redhat.com>
+	<87fuebrtuk.fsf@dusky.pond.sub.org>
 MIME-Version: 1.0
-Received: by 10.28.191.88 with HTTP; Wed, 5 Jul 2017 16:52:30 -0700 (PDT)
-In-Reply-To: <1498830302-19274-2-git-send-email-edgar.iglesias@gmail.com>
-References: <1498830302-19274-1-git-send-email-edgar.iglesias@gmail.com> <1498830302-19274-2-git-send-email-edgar.iglesias@gmail.com>
-From: Alistair Francis <alistair23@gmail.com>
-Date: Wed, 5 Jul 2017 16:52:30 -0700
-Message-ID: <CAKmqyKNwa9UNxMJ0yQjiUa374bD6MY3hO63gSCk7cP_21RFGmg@mail.gmail.com>
-Subject: Re: [Qemu-devel] [PATCH v1 1/2] target-arm: Move the regime_xxx helpers
-To: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
-Cc: "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>, Peter Maydell <peter.maydell@linaro.org>, 
-	Edgar Iglesias <edgar.iglesias@xilinx.com>, qemu-arm <qemu-arm@nongnu.org>, 
-	=?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
-X-TUID: vsIwBUetH8MO
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <87fuebrtuk.fsf@dusky.pond.sub.org>
+X-Fnord: you can see the fnord
+User-Agent: Mutt/1.8.0 (2017-02-23)
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.27]);
+	Thu, 06 Jul 2017 14:08:40 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH 1/5] xilinx: Fix error handling
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.21
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Jason Wang <jasowang@redhat.com>, qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org, Alistair Francis <alistair.francis@xilinx.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: S3gQ1h268Ybp
 
-On Fri, Jun 30, 2017 at 6:45 AM, Edgar E. Iglesias
-<edgar.iglesias@gmail.com> wrote:
-> From: "Edgar E. Iglesias" <edgar.iglesias@xilinx.com>
->
-> Move the regime_xxx helpers in preparation for future code
-> that will reuse them.
->
-> No functional change.
->
-> Signed-off-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
+On Wed, Jul 05, 2017 at 01:44:35PM +0200, Markus Armbruster wrote:
+> Eduardo Habkost <ehabkost@redhat.com> writes:
+> 
+> > Assigning directly to *errp is not valid, as errp may be NULL,
+> > &error_fatal, or &error_abort.  Use error_propagate() instead.
+> >
+> > error_propagate() handles non-NULL *errp correctly, so the
+> > "if (!*errp)" check can be removed.
+> >
+> > Cc: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
+> > Cc: Alistair Francis <alistair.francis@xilinx.com>
+> > Cc: Jason Wang <jasowang@redhat.com>
+> > Cc: qemu-arm@nongnu.org
+> > Signed-off-by: Eduardo Habkost <ehabkost@redhat.com>
+> > ---
+> >  hw/dma/xilinx_axidma.c  | 4 +---
+> >  hw/net/xilinx_axienet.c | 4 +---
+> >  2 files changed, 2 insertions(+), 6 deletions(-)
+> >
+> > diff --git a/hw/dma/xilinx_axidma.c b/hw/dma/xilinx_axidma.c
+> > index 6065689ad1..3987b5ff96 100644
+> > --- a/hw/dma/xilinx_axidma.c
+> > +++ b/hw/dma/xilinx_axidma.c
+> > @@ -554,9 +554,7 @@ static void xilinx_axidma_realize(DeviceState *dev, Error **errp)
+> >      return;
+> >  
+> >  xilinx_axidma_realize_fail:
+> > -    if (!*errp) {
+> > -        *errp = local_err;
+> > -    }
+> > +    error_propagate(errp, local_err);
+> >  }
+> >  
+> >  static void xilinx_axidma_init(Object *obj)
+> > diff --git a/hw/net/xilinx_axienet.c b/hw/net/xilinx_axienet.c
+> > index b6701844d3..5ffa739f68 100644
+> > --- a/hw/net/xilinx_axienet.c
+> > +++ b/hw/net/xilinx_axienet.c
+> > @@ -981,9 +981,7 @@ static void xilinx_enet_realize(DeviceState *dev, Error **errp)
+> >      return;
+> >  
+> >  xilinx_enet_realize_fail:
+> > -    if (!*errp) {
+> > -        *errp = local_err;
+> > -    }
+> > +    error_propagate(errp, local_err);
+> >  }
+> >  
+> >  static void xilinx_enet_init(Object *obj)
+> 
+> The qdev core always passes &err.  So this is "merely" a fix for a
+> latent bug.
+> 
+> If it could pass null, you'd fix a crash bug.
+> 
+> If it could pass pointer to non-null (&error_fatal, &error_abort), you'd
+> plug a memory leak.
+> 
+> Suggest to rephrase the commit message:
+> 
+>     xilinx: Fix latent error handling bug
+> 
+>     Assigning directly to *errp is not valid, as errp may be null,
+>     &error_fatal, or &error_abort.  The !*errp conditional protects
+>     against the latter two, but we then leak @local_err.  Fortunately,
+>     the qdev core always passes pointer to null, so this is "merely" a
+>     latent bug.
+> 
+>     Use error_propagate() instead.
+> 
+> What do you think?
 
-Reviewed-by: Alistair Francis <alistair.francis@xilinx.com>
+Looks good to me.  Do you want to fix it when applying?
 
-Thanks,
-Alistair
+> 
+> With something like that:
+> Reviewed-by: Markus Armbruster <armbru@redhat.com>
 
-> ---
->  target/arm/helper.c | 404 ++++++++++++++++++++++++++--------------------------
->  1 file changed, 202 insertions(+), 202 deletions(-)
->
-> diff --git a/target/arm/helper.c b/target/arm/helper.c
-> index 2594faa..fd1027e 100644
-> --- a/target/arm/helper.c
-> +++ b/target/arm/helper.c
-> @@ -35,6 +35,208 @@ static bool get_phys_addr_lpae(CPUARMState *env, target_ulong address,
->  #define PMCRD   0x8
->  #define PMCRC   0x4
->  #define PMCRE   0x1
-> +
-> +/* Return the exception level which controls this address translation regime */
-> +static inline uint32_t regime_el(CPUARMState *env, ARMMMUIdx mmu_idx)
-> +{
-> +    switch (mmu_idx) {
-> +    case ARMMMUIdx_S2NS:
-> +    case ARMMMUIdx_S1E2:
-> +        return 2;
-> +    case ARMMMUIdx_S1E3:
-> +        return 3;
-> +    case ARMMMUIdx_S1SE0:
-> +        return arm_el_is_aa64(env, 3) ? 1 : 3;
-> +    case ARMMMUIdx_S1SE1:
-> +    case ARMMMUIdx_S1NSE0:
-> +    case ARMMMUIdx_S1NSE1:
-> +    case ARMMMUIdx_MPriv:
-> +    case ARMMMUIdx_MNegPri:
-> +    case ARMMMUIdx_MUser:
-> +        return 1;
-> +    default:
-> +        g_assert_not_reached();
-> +    }
-> +}
-> +
-> +/* Return true if this address translation regime is secure */
-> +static inline bool regime_is_secure(CPUARMState *env, ARMMMUIdx mmu_idx)
-> +{
-> +    switch (mmu_idx) {
-> +    case ARMMMUIdx_S12NSE0:
-> +    case ARMMMUIdx_S12NSE1:
-> +    case ARMMMUIdx_S1NSE0:
-> +    case ARMMMUIdx_S1NSE1:
-> +    case ARMMMUIdx_S1E2:
-> +    case ARMMMUIdx_S2NS:
-> +    case ARMMMUIdx_MPriv:
-> +    case ARMMMUIdx_MNegPri:
-> +    case ARMMMUIdx_MUser:
-> +        return false;
-> +    case ARMMMUIdx_S1E3:
-> +    case ARMMMUIdx_S1SE0:
-> +    case ARMMMUIdx_S1SE1:
-> +        return true;
-> +    default:
-> +        g_assert_not_reached();
-> +    }
-> +}
-> +
-> +/* Return the SCTLR value which controls this address translation regime */
-> +static inline uint32_t regime_sctlr(CPUARMState *env, ARMMMUIdx mmu_idx)
-> +{
-> +    return env->cp15.sctlr_el[regime_el(env, mmu_idx)];
-> +}
-> +
-> +/* Return true if the specified stage of address translation is disabled */
-> +static inline bool regime_translation_disabled(CPUARMState *env,
-> +                                               ARMMMUIdx mmu_idx)
-> +{
-> +    if (arm_feature(env, ARM_FEATURE_M)) {
-> +        switch (env->v7m.mpu_ctrl &
-> +                (R_V7M_MPU_CTRL_ENABLE_MASK | R_V7M_MPU_CTRL_HFNMIENA_MASK)) {
-> +        case R_V7M_MPU_CTRL_ENABLE_MASK:
-> +            /* Enabled, but not for HardFault and NMI */
-> +            return mmu_idx == ARMMMUIdx_MNegPri;
-> +        case R_V7M_MPU_CTRL_ENABLE_MASK | R_V7M_MPU_CTRL_HFNMIENA_MASK:
-> +            /* Enabled for all cases */
-> +            return false;
-> +        case 0:
-> +        default:
-> +            /* HFNMIENA set and ENABLE clear is UNPREDICTABLE, but
-> +             * we warned about that in armv7m_nvic.c when the guest set it.
-> +             */
-> +            return true;
-> +        }
-> +    }
-> +
-> +    if (mmu_idx == ARMMMUIdx_S2NS) {
-> +        return (env->cp15.hcr_el2 & HCR_VM) == 0;
-> +    }
-> +    return (regime_sctlr(env, mmu_idx) & SCTLR_M) == 0;
-> +}
-> +
-> +static inline bool regime_translation_big_endian(CPUARMState *env,
-> +                                                 ARMMMUIdx mmu_idx)
-> +{
-> +    return (regime_sctlr(env, mmu_idx) & SCTLR_EE) != 0;
-> +}
-> +
-> +/* Return the TCR controlling this translation regime */
-> +static inline TCR *regime_tcr(CPUARMState *env, ARMMMUIdx mmu_idx)
-> +{
-> +    if (mmu_idx == ARMMMUIdx_S2NS) {
-> +        return &env->cp15.vtcr_el2;
-> +    }
-> +    return &env->cp15.tcr_el[regime_el(env, mmu_idx)];
-> +}
-> +
-> +/* Convert a possible stage1+2 MMU index into the appropriate
-> + * stage 1 MMU index
-> + */
-> +static inline ARMMMUIdx stage_1_mmu_idx(ARMMMUIdx mmu_idx)
-> +{
-> +    if (mmu_idx == ARMMMUIdx_S12NSE0 || mmu_idx == ARMMMUIdx_S12NSE1) {
-> +        mmu_idx += (ARMMMUIdx_S1NSE0 - ARMMMUIdx_S12NSE0);
-> +    }
-> +    return mmu_idx;
-> +}
-> +
-> +/* Returns TBI0 value for current regime el */
-> +uint32_t arm_regime_tbi0(CPUARMState *env, ARMMMUIdx mmu_idx)
-> +{
-> +    TCR *tcr;
-> +    uint32_t el;
-> +
-> +    /* For EL0 and EL1, TBI is controlled by stage 1's TCR, so convert
-> +     * a stage 1+2 mmu index into the appropriate stage 1 mmu index.
-> +     */
-> +    mmu_idx = stage_1_mmu_idx(mmu_idx);
-> +
-> +    tcr = regime_tcr(env, mmu_idx);
-> +    el = regime_el(env, mmu_idx);
-> +
-> +    if (el > 1) {
-> +        return extract64(tcr->raw_tcr, 20, 1);
-> +    } else {
-> +        return extract64(tcr->raw_tcr, 37, 1);
-> +    }
-> +}
-> +
-> +/* Returns TBI1 value for current regime el */
-> +uint32_t arm_regime_tbi1(CPUARMState *env, ARMMMUIdx mmu_idx)
-> +{
-> +    TCR *tcr;
-> +    uint32_t el;
-> +
-> +    /* For EL0 and EL1, TBI is controlled by stage 1's TCR, so convert
-> +     * a stage 1+2 mmu index into the appropriate stage 1 mmu index.
-> +     */
-> +    mmu_idx = stage_1_mmu_idx(mmu_idx);
-> +
-> +    tcr = regime_tcr(env, mmu_idx);
-> +    el = regime_el(env, mmu_idx);
-> +
-> +    if (el > 1) {
-> +        return 0;
-> +    } else {
-> +        return extract64(tcr->raw_tcr, 38, 1);
-> +    }
-> +}
-> +
-> +/* Return the TTBR associated with this translation regime */
-> +static inline uint64_t regime_ttbr(CPUARMState *env, ARMMMUIdx mmu_idx,
-> +                                   int ttbrn)
-> +{
-> +    if (mmu_idx == ARMMMUIdx_S2NS) {
-> +        return env->cp15.vttbr_el2;
-> +    }
-> +    if (ttbrn == 0) {
-> +        return env->cp15.ttbr0_el[regime_el(env, mmu_idx)];
-> +    } else {
-> +        return env->cp15.ttbr1_el[regime_el(env, mmu_idx)];
-> +    }
-> +}
-> +
-> +/* Return true if the translation regime is using LPAE format page tables */
-> +static bool regime_using_lpae_format(CPUARMState *env,
-> +                                     ARMMMUIdx mmu_idx)
-> +{
-> +    int el = regime_el(env, mmu_idx);
-> +    if (el == 2 || arm_el_is_aa64(env, el)) {
-> +        return true;
-> +    }
-> +    if (arm_feature(env, ARM_FEATURE_LPAE)
-> +        && (regime_tcr(env, mmu_idx)->raw_tcr & TTBCR_EAE)) {
-> +        return true;
-> +    }
-> +    return false;
-> +}
-> +
-> +/* Returns true if the stage 1 translation regime is using LPAE format page
-> + * tables. Used when raising alignment exceptions, whose FSR changes depending
-> + * on whether the long or short descriptor format is in use. */
-> +bool arm_s1_regime_using_lpae_format(CPUARMState *env, ARMMMUIdx mmu_idx)
-> +{
-> +    mmu_idx = stage_1_mmu_idx(mmu_idx);
-> +
-> +    return regime_using_lpae_format(env, mmu_idx);
-> +}
-> +
-> +static inline bool regime_is_user(CPUARMState *env, ARMMMUIdx mmu_idx)
-> +{
-> +    switch (mmu_idx) {
-> +    case ARMMMUIdx_S1SE0:
-> +    case ARMMMUIdx_S1NSE0:
-> +    case ARMMMUIdx_MUser:
-> +        return true;
-> +    default:
-> +        return false;
-> +    case ARMMMUIdx_S12NSE0:
-> +    case ARMMMUIdx_S12NSE1:
-> +        g_assert_not_reached();
-> +    }
-> +}
->  #endif
->
->  static int vfp_gdb_get_reg(CPUARMState *env, uint8_t *buf, int reg)
-> @@ -7022,208 +7224,6 @@ void arm_cpu_do_interrupt(CPUState *cs)
->      }
->  }
->
-> -/* Return the exception level which controls this address translation regime */
-> -static inline uint32_t regime_el(CPUARMState *env, ARMMMUIdx mmu_idx)
-> -{
-> -    switch (mmu_idx) {
-> -    case ARMMMUIdx_S2NS:
-> -    case ARMMMUIdx_S1E2:
-> -        return 2;
-> -    case ARMMMUIdx_S1E3:
-> -        return 3;
-> -    case ARMMMUIdx_S1SE0:
-> -        return arm_el_is_aa64(env, 3) ? 1 : 3;
-> -    case ARMMMUIdx_S1SE1:
-> -    case ARMMMUIdx_S1NSE0:
-> -    case ARMMMUIdx_S1NSE1:
-> -    case ARMMMUIdx_MPriv:
-> -    case ARMMMUIdx_MNegPri:
-> -    case ARMMMUIdx_MUser:
-> -        return 1;
-> -    default:
-> -        g_assert_not_reached();
-> -    }
-> -}
-> -
-> -/* Return true if this address translation regime is secure */
-> -static inline bool regime_is_secure(CPUARMState *env, ARMMMUIdx mmu_idx)
-> -{
-> -    switch (mmu_idx) {
-> -    case ARMMMUIdx_S12NSE0:
-> -    case ARMMMUIdx_S12NSE1:
-> -    case ARMMMUIdx_S1NSE0:
-> -    case ARMMMUIdx_S1NSE1:
-> -    case ARMMMUIdx_S1E2:
-> -    case ARMMMUIdx_S2NS:
-> -    case ARMMMUIdx_MPriv:
-> -    case ARMMMUIdx_MNegPri:
-> -    case ARMMMUIdx_MUser:
-> -        return false;
-> -    case ARMMMUIdx_S1E3:
-> -    case ARMMMUIdx_S1SE0:
-> -    case ARMMMUIdx_S1SE1:
-> -        return true;
-> -    default:
-> -        g_assert_not_reached();
-> -    }
-> -}
-> -
-> -/* Return the SCTLR value which controls this address translation regime */
-> -static inline uint32_t regime_sctlr(CPUARMState *env, ARMMMUIdx mmu_idx)
-> -{
-> -    return env->cp15.sctlr_el[regime_el(env, mmu_idx)];
-> -}
-> -
-> -/* Return true if the specified stage of address translation is disabled */
-> -static inline bool regime_translation_disabled(CPUARMState *env,
-> -                                               ARMMMUIdx mmu_idx)
-> -{
-> -    if (arm_feature(env, ARM_FEATURE_M)) {
-> -        switch (env->v7m.mpu_ctrl &
-> -                (R_V7M_MPU_CTRL_ENABLE_MASK | R_V7M_MPU_CTRL_HFNMIENA_MASK)) {
-> -        case R_V7M_MPU_CTRL_ENABLE_MASK:
-> -            /* Enabled, but not for HardFault and NMI */
-> -            return mmu_idx == ARMMMUIdx_MNegPri;
-> -        case R_V7M_MPU_CTRL_ENABLE_MASK | R_V7M_MPU_CTRL_HFNMIENA_MASK:
-> -            /* Enabled for all cases */
-> -            return false;
-> -        case 0:
-> -        default:
-> -            /* HFNMIENA set and ENABLE clear is UNPREDICTABLE, but
-> -             * we warned about that in armv7m_nvic.c when the guest set it.
-> -             */
-> -            return true;
-> -        }
-> -    }
-> -
-> -    if (mmu_idx == ARMMMUIdx_S2NS) {
-> -        return (env->cp15.hcr_el2 & HCR_VM) == 0;
-> -    }
-> -    return (regime_sctlr(env, mmu_idx) & SCTLR_M) == 0;
-> -}
-> -
-> -static inline bool regime_translation_big_endian(CPUARMState *env,
-> -                                                 ARMMMUIdx mmu_idx)
-> -{
-> -    return (regime_sctlr(env, mmu_idx) & SCTLR_EE) != 0;
-> -}
-> -
-> -/* Return the TCR controlling this translation regime */
-> -static inline TCR *regime_tcr(CPUARMState *env, ARMMMUIdx mmu_idx)
-> -{
-> -    if (mmu_idx == ARMMMUIdx_S2NS) {
-> -        return &env->cp15.vtcr_el2;
-> -    }
-> -    return &env->cp15.tcr_el[regime_el(env, mmu_idx)];
-> -}
-> -
-> -/* Convert a possible stage1+2 MMU index into the appropriate
-> - * stage 1 MMU index
-> - */
-> -static inline ARMMMUIdx stage_1_mmu_idx(ARMMMUIdx mmu_idx)
-> -{
-> -    if (mmu_idx == ARMMMUIdx_S12NSE0 || mmu_idx == ARMMMUIdx_S12NSE1) {
-> -        mmu_idx += (ARMMMUIdx_S1NSE0 - ARMMMUIdx_S12NSE0);
-> -    }
-> -    return mmu_idx;
-> -}
-> -
-> -/* Returns TBI0 value for current regime el */
-> -uint32_t arm_regime_tbi0(CPUARMState *env, ARMMMUIdx mmu_idx)
-> -{
-> -    TCR *tcr;
-> -    uint32_t el;
-> -
-> -    /* For EL0 and EL1, TBI is controlled by stage 1's TCR, so convert
-> -     * a stage 1+2 mmu index into the appropriate stage 1 mmu index.
-> -     */
-> -    mmu_idx = stage_1_mmu_idx(mmu_idx);
-> -
-> -    tcr = regime_tcr(env, mmu_idx);
-> -    el = regime_el(env, mmu_idx);
-> -
-> -    if (el > 1) {
-> -        return extract64(tcr->raw_tcr, 20, 1);
-> -    } else {
-> -        return extract64(tcr->raw_tcr, 37, 1);
-> -    }
-> -}
-> -
-> -/* Returns TBI1 value for current regime el */
-> -uint32_t arm_regime_tbi1(CPUARMState *env, ARMMMUIdx mmu_idx)
-> -{
-> -    TCR *tcr;
-> -    uint32_t el;
-> -
-> -    /* For EL0 and EL1, TBI is controlled by stage 1's TCR, so convert
-> -     * a stage 1+2 mmu index into the appropriate stage 1 mmu index.
-> -     */
-> -    mmu_idx = stage_1_mmu_idx(mmu_idx);
-> -
-> -    tcr = regime_tcr(env, mmu_idx);
-> -    el = regime_el(env, mmu_idx);
-> -
-> -    if (el > 1) {
-> -        return 0;
-> -    } else {
-> -        return extract64(tcr->raw_tcr, 38, 1);
-> -    }
-> -}
-> -
-> -/* Return the TTBR associated with this translation regime */
-> -static inline uint64_t regime_ttbr(CPUARMState *env, ARMMMUIdx mmu_idx,
-> -                                   int ttbrn)
-> -{
-> -    if (mmu_idx == ARMMMUIdx_S2NS) {
-> -        return env->cp15.vttbr_el2;
-> -    }
-> -    if (ttbrn == 0) {
-> -        return env->cp15.ttbr0_el[regime_el(env, mmu_idx)];
-> -    } else {
-> -        return env->cp15.ttbr1_el[regime_el(env, mmu_idx)];
-> -    }
-> -}
-> -
-> -/* Return true if the translation regime is using LPAE format page tables */
-> -static inline bool regime_using_lpae_format(CPUARMState *env,
-> -                                            ARMMMUIdx mmu_idx)
-> -{
-> -    int el = regime_el(env, mmu_idx);
-> -    if (el == 2 || arm_el_is_aa64(env, el)) {
-> -        return true;
-> -    }
-> -    if (arm_feature(env, ARM_FEATURE_LPAE)
-> -        && (regime_tcr(env, mmu_idx)->raw_tcr & TTBCR_EAE)) {
-> -        return true;
-> -    }
-> -    return false;
-> -}
-> -
-> -/* Returns true if the stage 1 translation regime is using LPAE format page
-> - * tables. Used when raising alignment exceptions, whose FSR changes depending
-> - * on whether the long or short descriptor format is in use. */
-> -bool arm_s1_regime_using_lpae_format(CPUARMState *env, ARMMMUIdx mmu_idx)
-> -{
-> -    mmu_idx = stage_1_mmu_idx(mmu_idx);
-> -
-> -    return regime_using_lpae_format(env, mmu_idx);
-> -}
-> -
-> -static inline bool regime_is_user(CPUARMState *env, ARMMMUIdx mmu_idx)
-> -{
-> -    switch (mmu_idx) {
-> -    case ARMMMUIdx_S1SE0:
-> -    case ARMMMUIdx_S1NSE0:
-> -    case ARMMMUIdx_MUser:
-> -        return true;
-> -    default:
-> -        return false;
-> -    case ARMMMUIdx_S12NSE0:
-> -    case ARMMMUIdx_S12NSE1:
-> -        g_assert_not_reached();
-> -    }
-> -}
-> -
->  /* Translate section/page access permissions to page
->   * R/W protection flags
->   *
-> --
-> 2.7.4
->
->
+Thanks!
+
+-- 
+Eduardo

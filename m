@@ -1,90 +1,109 @@
-Received: by 10.25.44.15 with SMTP id s15csp1340157lfs;
-        Wed, 5 Jul 2017 16:44:58 -0700 (PDT)
-X-Received: by 10.55.102.201 with SMTP id a192mr9184122qkc.26.1499298298484;
-        Wed, 05 Jul 2017 16:44:58 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1499298298; cv=none;
+Received: by 10.25.44.15 with SMTP id s15csp1516167lfs;
+        Wed, 5 Jul 2017 20:33:25 -0700 (PDT)
+X-Received: by 10.200.51.172 with SMTP id c41mr56536600qtb.71.1499312005061;
+        Wed, 05 Jul 2017 20:33:25 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1499312005; cv=none;
         d=google.com; s=arc-20160816;
-        b=aG38vs0KAzz6uOQz2J8ke+DOyNHhCJ8gga4+ib1aJFBHHiCeov0WCF9OV74/UrbI0X
-         tT3d/lwZVqmmb8Hmv7sndk2qVlJ1TjlteTmdUQN3Xm0ZZIvynUmZl+x6dhWSk9V16bS7
-         9MIVmoBgqQTcOylcD5z+XNr38BjE4kEG/4kv8MggfKHeIod7yr074XDkhpbjJ7ExnETh
-         moJcTd27CB1fD5UPIltBgLVj2W0SaJbxUa96zo2CnJBg5MCf/p6ZcJgyliqbr/HQqp00
-         fRy8tbpPG3EN5yLh9xyBKYvxSD7gl2459GwtYM4qOxxyb+XFM9X5XFy6zt3WigtMdTUy
-         gN6Q==
+        b=qdNdhGociGgY0hGSTKIRyg6SWlIVzSzAF0h8TCwOzcTDzIl+161vTbAXEn9gp7PWX4
+         WDoTjqdQJX+FK3DmYvD/vANbp3jcXGpLZ8F0j9t/WoOa/1K699TvfL6qInmV6yAXhWKq
+         XFWIohi9DeDuGUNMqjcY/YA14uHPRu9jW6vOVZZE8cMz0UHpyXNiS1aCihzKLoUqClml
+         0sNDsuZtPETLpDIWYxOq2sWHkG2lnwLTy3R2X9YUZlK9dnDQD+RuP8xo3LzpiV/r6TFp
+         MwvvJbIQyDUWMAXAdCkGhA3CCA4VYX0oX9wp3KBUmTLflCfgnJdNB1zIvxpjrvujQRtw
+         gZiw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:in-reply-to
-         :content-disposition:mime-version:references:message-id:to:from:date
-         :dkim-filter:dmarc-filter:arc-authentication-results;
-        bh=cRHgg6JBR5FCrC2v9t0E3Zw1Fo7nV4zTjIr+QqgpA78=;
-        b=tJ39RVt/K2D4mUMH2U3qu1wYB9u5iadWRMYUNcm+pFIDABadqwpQKdg0YiGwXGkrkM
-         J9h7gGV/8x2FrQJF6pBzbqDVNMbyz0irfw5VQZ0vw86Vfmeyhq4YALFD/CFLRBWEpPDf
-         mHVqpNHRz8Z7Fd8rNN6W/tQ4tDvINupphPZf4Aua8BRqjiZ3KiPo0vv+vh3bxkU6cFGl
-         1GugHKUzkHjW9EqtHGqKNFMA4Ml54NHxCTBsnV1kprFyBWul4lEAn+AENdc2HIC1nSiP
-         iHuQ3h1S3OzKGRIFCcJW0fvSAN+CyapctXZ7M2k/k371QcamotpylqD9BE9DEXNguW3q
-         S1zQ==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:to:dkim-signature
+         :arc-authentication-results;
+        bh=bXoh1vJKzb7FUMyOssNUpJDyAqWcf3ZFBijQItN2TZA=;
+        b=nDCIs/7aiwtO+tfCC9LhKxjmfEkLjwcqPK1lfqW1d/YO90Gpn3CXHd8bGFBWoSfP7v
+         HrjEyJ2a7G63ANe1sfSC1NkC2NRcckdgzDhTie+NKLYsDtc6UTJscMyHpoDpX1oUjeqJ
+         MtSTsQc6HUVQI4Y5TmNyNxAW7nKpuwoyMP2Bl+1wwVQdnGiULF2WsJbNISY0J+dSbZvn
+         uKw3BM9pgIn69IrkMwmwTRH1qQzhnCes5jxHRPmJCiMFjSypUjYkbqaN++Mb/UAjWIFz
+         RIfS2IlHgf6NHRT/l4RvmntlJaCKKF1M71LEKlRH0uG6VMRy2mBDxUMIVpNVRUBShgCF
+         gdLQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dkim=fail header.i=@gmail.com header.b=A+ZAcfRC;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id 67si248347qkv.175.2017.07.05.16.44.57
+        by mx.google.com with ESMTPS id a39si856193qtb.176.2017.07.05.20.33.24
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 05 Jul 2017 16:44:57 -0700 (PDT)
+        Wed, 05 Jul 2017 20:33:25 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:48536 helo=lists.gnu.org)
+       dkim=fail header.i=@gmail.com header.b=A+ZAcfRC;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:49049 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1dStyZ-0005Dx-72
-	for alex.bennee@linaro.org; Wed, 05 Jul 2017 19:44:55 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:50111)
+	id 1dSxXe-0000KF-8K
+	for alex.bennee@linaro.org; Wed, 05 Jul 2017 23:33:22 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:59460)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mst@redhat.com>) id 1dStyU-0005Dl-OU
-	for qemu-arm@nongnu.org; Wed, 05 Jul 2017 19:44:51 -0400
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1dSxXW-0000HT-Cs
+	for qemu-arm@nongnu.org; Wed, 05 Jul 2017 23:33:15 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mst@redhat.com>) id 1dStyQ-0005RG-OX
-	for qemu-arm@nongnu.org; Wed, 05 Jul 2017 19:44:50 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:58818)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <mst@redhat.com>)
-	id 1dStyQ-0005Qn-Fd; Wed, 05 Jul 2017 19:44:46 -0400
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
-	[10.5.11.14])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 25B8CC057FA5;
-	Wed,  5 Jul 2017 23:44:45 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 25B8CC057FA5
-Authentication-Results: ext-mx08.extmail.prod.ext.phx2.redhat.com;
-	dmarc=none (p=none dis=none) header.from=redhat.com
-Authentication-Results: ext-mx08.extmail.prod.ext.phx2.redhat.com;
-	spf=pass smtp.mailfrom=mst@redhat.com
-DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com 25B8CC057FA5
-Received: from redhat.com (ovpn-120-237.rdu2.redhat.com [10.10.120.237])
-	by smtp.corp.redhat.com (Postfix) with SMTP id BA7F45D960;
-	Wed,  5 Jul 2017 23:44:40 +0000 (UTC)
-Date: Thu, 6 Jul 2017 02:44:40 +0300
-From: "Michael S. Tsirkin" <mst@redhat.com>
-To: Diana Madalina Craciun <diana.craciun@nxp.com>
-Message-ID: <20170706023845-mutt-send-email-mst@kernel.org>
-References: <1495537965-4187-1-git-send-email-diana.craciun@nxp.com>
-	<20170525011034-mutt-send-email-mst@kernel.org>
-	<AM3PR04MB061619F6FDC53F7FD4C1DAE4FFF10@AM3PR04MB0616.eurprd04.prod.outlook.com>
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1dSxXV-0007bC-Ka
+	for qemu-arm@nongnu.org; Wed, 05 Jul 2017 23:33:14 -0400
+Received: from mail-qt0-x242.google.com ([2607:f8b0:400d:c0d::242]:35403)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1dSxXP-0007Zp-Ks; Wed, 05 Jul 2017 23:33:07 -0400
+Received: by mail-qt0-x242.google.com with SMTP id w12so1025203qta.2;
+	Wed, 05 Jul 2017 20:33:07 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=sender:subject:to:cc:references:from:message-id:date:user-agent
+	:mime-version:in-reply-to:content-language:content-transfer-encoding;
+	bh=bXoh1vJKzb7FUMyOssNUpJDyAqWcf3ZFBijQItN2TZA=;
+	b=A+ZAcfRCMurlh6mCt7mXyaRwKAPFR6rJQR2+xmr0U2AlpO4MLS1x4k5Gj8TlVsp0Qh
+	1a3873MzfQE88crLimoUNW6ZhoHl+u3MiYCbZvEWoE0SGaHSer1aej+1GiW+gZvUJ5Us
+	4HVyrkytv4hUTbakonkSzMB6GrD198RUCgqwOZ5vZqVOOsHr3nqBKENa3pwMzf51ob10
+	qIoFewg5iLoGiEAmIZ8CzzjLlaIGzgFihY5Tw9OTbQ4BQXQTB2KxApXcxmyBnF4lGH60
+	AYZL4RQj4t7OM3ofh8haWHTsJEx3Px8d+KW8dOnF+VYbrly8S+h2Vwygd2DchjNGED5t
+	AWFw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+	:date:user-agent:mime-version:in-reply-to:content-language
+	:content-transfer-encoding;
+	bh=bXoh1vJKzb7FUMyOssNUpJDyAqWcf3ZFBijQItN2TZA=;
+	b=JFMhexLxVkfE7pfkwIuHS8xQ+tlj7bGtnfQH+azCbwI3tiyXS5Sag/04XDvc8Z8JJj
+	0jKP8rO0AX2duRpYMixtEKtU86oERI1ahYwwWCHtG/I2Y2UPtM1XMt5tUfjZoyx6BEgP
+	Whjk7XShdglY8z/GRent8JRPS10JxVdDyxiuCzkKEuwTLPEpjhxdj7ih0ca+5An5hdOJ
+	mrK9H2QPMXFCQI5ZXPOkV6HXWAl97povGbEIdperFqgkoZeBJEIStBMVDcRuyxliBhgd
+	Jt9DAoElyysQRvUUc/BNx6+oa5XiIszSxcyeuPyvlrNXEQioNf0gtzOtUE27vML2fTVY
+	MxZA==
+X-Gm-Message-State: AKS2vOxMn6sCV79mrAGxSfz6oFrn7u+8fP9Ga3jlYz+OcGLdTZh1xftT
+	2WNGTAxEojSklA==
+X-Received: by 10.200.58.161 with SMTP id x30mr56450038qte.69.1499311986988;
+	Wed, 05 Jul 2017 20:33:06 -0700 (PDT)
+Received: from [192.168.1.240] ([138.117.48.226])
+	by smtp.gmail.com with ESMTPSA id 79sm685622qky.50.2017.07.05.20.33.04
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Wed, 05 Jul 2017 20:33:06 -0700 (PDT)
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+References: <1498820791-8130-1-git-send-email-peter.maydell@linaro.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Message-ID: <dcf0bab4-8bf1-a21f-c4b6-05ac081d37f7@amsat.org>
+Date: Thu, 6 Jul 2017 00:33:03 -0300
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.2.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <AM3PR04MB061619F6FDC53F7FD4C1DAE4FFF10@AM3PR04MB0616.eurprd04.prod.outlook.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.32]);
-	Wed, 05 Jul 2017 23:44:45 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [PATCH v2 0/2] Add global device ID in virt machine
+In-Reply-To: <1498820791-8130-1-git-send-email-peter.maydell@linaro.org>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:400d:c0d::242
+Subject: Re: [Qemu-arm] [PATCH] target-arm: v7M: ignore writes to
+ CONTROL.SPSEL from Thread mode
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -96,88 +115,62 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
-	"eric.auger@redhat.com" <eric.auger@redhat.com>,
-	Mike Caraman <mike.caraman@nxp.com>,
-	"qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
-	"marcel@redhat.com" <marcel@redhat.com>,
-	Bharat Bhushan <bharat.bhushan@nxp.com>,
-	"christoffer.dall@linaro.org" <christoffer.dall@linaro.org>,
-	Laurentiu Tudor <laurentiu.tudor@nxp.com>
+Cc: patches@linaro.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: EaPw/NZZ43Tu
+X-TUID: cSOoHKKrXANr
 
-On Wed, May 31, 2017 at 12:02:56PM +0000, Diana Madalina Craciun wrote:
-> On 05/25/2017 01:12 AM, Michael S. Tsirkin wrote:
-> > On Tue, May 23, 2017 at 02:12:43PM +0300, Diana Craciun wrote:
-> >> The NXP DPAA2 is a hardware architecture designed for high-speeed network
-> >> packet processing. The DPAA2 hardware components are managed by a hardware
-> >> component called the Management Complex (or MC) which provides an
-> >> object-base abstraction for software drivers to use the DPAA2 hardware.
-> >> For more details you can see: 
-> >> https://emea01.safelinks.protection.outlook.com/?url=https%3A%2F%2Fgit.kernel.org%2Fpub%2Fscm%2Flinux%2Fkernel%2Fgit%2Ftorvalds%2Flinux.git%2Ftree%2Fdrivers%2Fstaging%2Ffsl-mc%2FREADME.txt%3Fh%3Dv4.10&data=01%7C01%7Cdiana.craciun%40nxp.com%7Cce2cc4d066944ce2759308d4a2f1f3f8%7C686ea1d3bc2b4c6fa92cd99c5c301635%7C0&sdata=CJAiTF6Qnq4gklSqon7xcRby0O1HQvytTUSdPwaHuSE%3D&reserved=0
-> >>
-> >> The interrupts generated by the DPAA2 hardware components are MSIs. We will add
-> >> support for direct assigning these DPAA2 components/objects to a virtual 
-> >> machine. However, this will add the need to expand the MSI usage in QEMU.
-> >>
-> >> Currently the MSIs in QEMU are pretty much tied to PCI. For ARM the
-> >> GIC ITS is using a device ID for interrupt translation. Currently, for
-> >> PCI, the requester ID is used as device ID. This will not work when
-> >> we add another entity that needs also a device ID which is supposed to
-> >> be unique across the system.
-> >>
-> >> My proposal is to add a static allocation in the virt machine. I considered
-> >> that this allocation is specific to each machine/platform. Currently only
-> >> virt machine has it, but other implementations may use the same mechanism
-> >> as well.
-> >> So, I used a static allocation with this formula:
-> >>
-> >> DeviceID = zero_extend( RequesterID[15:0] ) + 0x10000 * Constant
-> >>
-> >> This formula was taken from SBSA spec (Appendix I: DeviceID generation and
-> >> ITS groups). In case of QEMU the constant will be different for each entity.
-> >> In this way a unique DeviceID will be generated and the device ID will be
-> >> derived from a requesterID (in case of PCI) or other means in case of other
-> >> entities.
-> >>
-> >> The implementation is generic as there might be in the future other non-pci devices
-> >> that are using MSIs or IOMMU. Any architecture can use it, though currently
-> >> only the ARM architecture is using the function that retrieves the stream ID. I
-> >> did not change all the replacements of the pci_requester_id (with pci_stream_id)
-> >> in the code (although if the constant is 0, the stream_id is equal with requester_id).
-> >> The other architectures (e.g. intel iommu code) assume that the ID is the
-> >> requester ID.
-> >>
-> >> Tested on NXP LS2080 platform.
-> >>
-> >> History:
-> > I am confused. I get it that non-PCI things want something else
-> > in their requester ID, but why require it for PCI devices?
-> > How about using Constant == 0 for PCI? This way you do
-> > not need to touch PCI at all as DeviceID == RequesterID ...
-> 
-> It is not that other devices need something else in the requester ID,
-> but more about finding a way to provide an unique ID across the system
-> (more precisely it should be unique for all devices connected to the
-> same IOMMU/ITS). The DT already offers support to describe the
-> translation between stream IDs/device IDs to requester ID for PCI
-> devices (iommu-map for IOMMU ([1]) and msi-map for MSIs ([2]). It will
-> not change the way the requester ID is used in PCI in general, but only
-> the places that need a unique ID (which are the MSIs and IOMMU).
-> 
-> If we are to use a value of 0 for the constant in case of PCI devices,
-> what happens if we have multiple PCI controllers?
+Hi Peter,
 
-I guess we'd use the PCI Segment number for that?
+On 06/30/2017 08:06 AM, Peter Maydell wrote:
+> For v7M, writes to the CONTROL register are only permitted for
+> privileged code. However even if the code is privileged, the
+> write must not affect the SPSEL bit in the CONTROL register
+> if the CPU is in Thread mode (as documented in the pseudocode
+> for the MSR instruction). Implement this, instead of permitting
+> SPSEL to be written in all cases.
+> 
+> This was causing mbed applications not to run, because the
+> RTX RTOS they use relies on this behaviour.
+> 
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org> > ---
+>   target/arm/helper.c | 13 ++++++++++---
+>   1 file changed, 10 insertions(+), 3 deletions(-)
+> 
+> diff --git a/target/arm/helper.c b/target/arm/helper.c
+> index 2594faa..4ed32c5 100644
+> --- a/target/arm/helper.c
+> +++ b/target/arm/helper.c
+> @@ -8768,9 +8768,16 @@ void HELPER(v7m_msr)(CPUARMState *env, uint32_t maskreg, uint32_t val)
+>           }
+>           break;
+>       case 20: /* CONTROL */
+> -        switch_v7m_sp(env, (val & R_V7M_CONTROL_SPSEL_MASK) != 0);
+> -        env->v7m.control = val & (R_V7M_CONTROL_SPSEL_MASK |
+> -                                  R_V7M_CONTROL_NPRIV_MASK);
+> +        /* Writing to the SPSEL bit only has an effect if we are in
+> +         * thread mode; other bits can be updated by any privileged code.
+> +         * switch_v7m_sp() deals with updating the SPSEL bit in
+> +         * env->v7m.control, so we only need update the others.
+> +         */
 
-> [1]
-> https://www.kernel.org/doc/Documentation/devicetree/bindings/pci/pci-iommu.txt
-> [2]
-> https://www.kernel.org/doc/Documentation/devicetree/bindings/pci/pci-msi.txt
+I'v been thinking about adding some function like v7m_is_privileged() 
+v7m_is_thread_mode() !v7m_exception_pending() to ease code readability, 
+like armv7m_nvic_can_take_pending_exception() or is_singlestepping().
+Not much inspired yet :(
+
+> +        if (env->v7m.exception == 0) {
+> +            switch_v7m_sp(env, (val & R_V7M_CONTROL_SPSEL_MASK) != 0);
+> +        }
+> +        env->v7m.control &= ~R_V7M_CONTROL_NPRIV_MASK;
+> +        env->v7m.control |= val & R_V7M_CONTROL_NPRIV_MASK;
+>           break;
+>       default:
+>           qemu_log_mask(LOG_GUEST_ERROR, "Attempt to write unknown special"
 > 
-> Thanks,
-> 
-> Diana
-> 
+
+Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+
+Regards,
+
+Phil.

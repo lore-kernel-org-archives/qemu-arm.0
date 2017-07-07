@@ -1,222 +1,211 @@
-Received: by 10.25.44.15 with SMTP id s15csp3006805lfs;
-        Fri, 7 Jul 2017 00:31:51 -0700 (PDT)
-X-Received: by 10.55.104.85 with SMTP id d82mr59670748qkc.165.1499412711384;
-        Fri, 07 Jul 2017 00:31:51 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1499412711; cv=none;
+Received: by 10.25.44.15 with SMTP id s15csp3055037lfs;
+        Fri, 7 Jul 2017 01:32:55 -0700 (PDT)
+X-Received: by 10.200.50.93 with SMTP id y29mr68651013qta.108.1499416375180;
+        Fri, 07 Jul 2017 01:32:55 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1499416375; cv=none;
         d=google.com; s=arc-20160816;
-        b=yssbvX1ca4xeQm3+VeoDFBsQRNaPjeCGPtXSwQskPYMrzexZl63oEYj/dY+hTh9REb
-         PFglLg5XkaOe7l3k7zlFtLv8pl1rGe3TRm7kMAIr67CR5yy5Gojjz5EL1OSdMWMGwyx+
-         XaNI3B+VWASb2IMlw3LMZ+i/W+QrNPii8LyhQZaqIAef6cRZmToGuWfBYBpm8lLJHIbF
-         PY+KKPHkloqHgJcsZjEm+IXFULVxNX375Ji8pSF4V61PZfxqA4Yzle76QZPfjqTkfpZW
-         gTz27A7EVeEL40uSVYnlpnD2HW/nW6eoWE2/SBef9J1Qot4NRnw1qskMSvJ//7dqmZoW
-         eIIw==
+        b=Saz50FngmQociplHxU+OC1l/jBzBz3gulcNnXRSTNyQUcJD2IIFZ14Fzy/N5yyKHDA
+         ApYEUN+2CwF8vObQg1eKvXK4C1wsPM+l33dYZs7kFe/be61OdEa8w0Fdk2Fi23mqSbG1
+         Sf1pYx/R960K1WnwHI6AAYNCaIrSSloJc11USdDu+23bQqwwPrIBgTAWUzsSj52e3/Yh
+         sPIDQpVy+oti71NS6I9+t199GCXfTofPXKe8rsH0x/4kFdJChX3S/qG1NBNHSlW9sOf0
+         xlnPzHXUKqxme6y4UsE/zL0wzdyVaAD048+9x3ahBJlgEFXBJJTzH12xMfjRbiXzJybC
+         8l5Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:dkim-filter:dmarc-filter
-         :arc-authentication-results;
-        bh=+9kF3BwK6DeRh/C9kPPrBei5w9vxd3zQ1919JiZ7QQo=;
-        b=lwo3+jA2X3u8gHvj3XBxKzwE+9wPL6hXXsDrxMJLjHE0+7IVZZKyV8c+kL39mNOfeJ
-         dizgVVpcHiILL7dyqQPboTYOh2XSRMfQ3v4CENhteW+/h9f/fOJONkmd8+6wDmyj6O7O
-         npOqULURaQeOjanMeVzBpkwk+uioemkbhYzmzAPCZ2ioUQ4VCHyHsco+KGHlJOkUJUfI
-         9gF1juiWdM16TlrIaA6HClOynlIKTYxfZoz1/Oz0/utMcvBvpr7sgGUgi3eI3EF7rhF4
-         bY0ZFhAwLgIkE6iCfsNbrSdCEOmuTOJqjefZOaSNiniHXyTXn9GzbB/14F8nYWAUSNA3
-         D8tg==
+        h=sender:errors-to:content-transfer-encoding:list-subscribe:list-help
+         :list-post:list-archive:list-unsubscribe:list-id:precedence:cc
+         :in-reply-to:mime-version:user-agent:date:message-id:from:references
+         :to:subject:arc-authentication-results;
+        bh=d5ctj7DVZab9YITiIX0LAnJvp2DrOmOYHuWoAoZODrs=;
+        b=APyes+WS/skxsPC1iDdZ98ou4Snp0VhiM1/uCVbQW0KufyNLy26ns6jyHMuobJNhwj
+         hFNEt8BeuaI0e9Q/MmWCFreAQidhVtUOUJ4jeZExyvuIdx7qI3w3Y16D44kHmOxK5nGY
+         rpiSvaG++CYj46H753HddJSbxiCqhr6fdxuA5iZUINCag+oPrGJVdoEi+KjIuldZacDy
+         fexnL1uRHZMRnUy6wm6dT5Uf8du6DaVX255Q88eEIO6n/XaSjL8sCqitjX1uFNsrCj4o
+         OTqIJo+DdfhHCJtBz659KclpcRYUyA2ZgQF1oY3GG98KCiP14CR2fsqTHS++/iGRzqXr
+         G9KQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id n132si2464648qka.278.2017.07.07.00.31.50
-        for <alex.bennee@linaro.org>
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 07 Jul 2017 00:31:51 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu
+Return-Path: <kvmarm-bounces@lists.cs.columbia.edu>
+Received: from mm01.cs.columbia.edu (mm01.cs.columbia.edu. [128.59.11.253])
+        by mx.google.com with ESMTP id d197si2553699qkg.242.2017.07.07.01.32.54;
+        Fri, 07 Jul 2017 01:32:55 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) client-ip=128.59.11.253;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:54975 helo=lists.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1dTNjw-0004FS-Sm
-	for alex.bennee@linaro.org; Fri, 07 Jul 2017 03:31:48 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:59296)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1dTNjn-0004E1-Pi
-	for qemu-arm@nongnu.org; Fri, 07 Jul 2017 03:31:40 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1dTNji-0001WH-R6
-	for qemu-arm@nongnu.org; Fri, 07 Jul 2017 03:31:39 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:60962)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <eric.auger@redhat.com>)
-	id 1dTNji-0001Ve-HY; Fri, 07 Jul 2017 03:31:34 -0400
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
-	[10.5.11.11])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 4D1BA4DD49;
-	Fri,  7 Jul 2017 07:31:33 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 4D1BA4DD49
-Authentication-Results: ext-mx09.extmail.prod.ext.phx2.redhat.com;
-	dmarc=none (p=none dis=none) header.from=redhat.com
-Authentication-Results: ext-mx09.extmail.prod.ext.phx2.redhat.com;
-	spf=pass smtp.mailfrom=eric.auger@redhat.com
-DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com 4D1BA4DD49
-Received: from localhost.localdomain (ovpn-116-31.ams2.redhat.com
-	[10.36.116.31])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 20B545C311;
-	Fri,  7 Jul 2017 07:31:23 +0000 (UTC)
-To: Jean-Philippe Brucker <jean-philippe.brucker@arm.com>,
-	Bharat Bhushan <bharat.bhushan@nxp.com>,
-	"eric.auger.pro@gmail.com" <eric.auger.pro@gmail.com>,
-	"peter.maydell@linaro.org" <peter.maydell@linaro.org>,
-	"alex.williamson@redhat.com" <alex.williamson@redhat.com>,
-	"mst@redhat.com" <mst@redhat.com>, "qemu-arm@nongnu.org"
-	<qemu-arm@nongnu.org>, "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
-References: <1496851287-9428-1-git-send-email-eric.auger@redhat.com>
-	<AM5PR0401MB2545AFD256A96420ACC44CD89ACE0@AM5PR0401MB2545.eurprd04.prod.outlook.com>
-	<14c83c14-1e7e-f142-77b0-fa8c873e2d41@redhat.com>
-	<AM5PR0401MB2545C0E76C4BE6F82FE376D09ACE0@AM5PR0401MB2545.eurprd04.prod.outlook.com>
-	<6f22079e-4b4b-6476-77be-51ec83104c0d@redhat.com>
-	<AM5PR0401MB25459FDAA8C9AFA52503AAE99AC40@AM5PR0401MB2545.eurprd04.prod.outlook.com>
-	<c80977c4-1955-4e9d-3fc8-4d884562fd28@redhat.com>
-	<HE1PR0401MB2556D19D91F25DCE96FE7B199AD40@HE1PR0401MB2556.eurprd04.prod.outlook.com>
-	<8a7fb667-e6c0-2412-6dca-a8233dd27836@redhat.com>
-	<HE1PR0401MB255696A487DFEB2B8972980F9AD40@HE1PR0401MB2556.eurprd04.prod.outlook.com>
-	<e9ea564a-f02b-0ed5-e700-b7b1dfd89722@arm.com>
-	<444508ab-3a69-6c12-cb72-42c0e20fb5d7@redhat.com>
-From: Auger Eric <eric.auger@redhat.com>
-Message-ID: <8ee34a60-6096-1988-c0f0-637aac5e8be2@redhat.com>
-Date: Fri, 7 Jul 2017 09:31:22 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
-	Thunderbird/45.4.0
+       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu
+Received: from localhost (localhost [127.0.0.1])
+	by mm01.cs.columbia.edu (Postfix) with ESMTP id 39BFE40D5E;
+	Fri,  7 Jul 2017 04:32:28 -0400 (EDT)
+X-Virus-Scanned: at lists.cs.columbia.edu
+X-Spam-Flag: NO
+X-Spam-Score: 0.799
+X-Spam-Level: 
+X-Spam-Status: No, score=0.799 required=6.1 tests=[BAYES_00=-1.9,
+	DNS_FROM_AHBL_RHSBL=2.699] autolearn=no
+Received: from mm01.cs.columbia.edu ([127.0.0.1])
+	by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id nhDxco5iqGrV; Fri,  7 Jul 2017 04:32:27 -0400 (EDT)
+Received: from mm01.cs.columbia.edu (localhost [127.0.0.1])
+	by mm01.cs.columbia.edu (Postfix) with ESMTP id 3E4FD40CE6;
+	Fri,  7 Jul 2017 04:32:27 -0400 (EDT)
+Received: from localhost (localhost [127.0.0.1])
+ by mm01.cs.columbia.edu (Postfix) with ESMTP id A3D1F40CE6
+ for <kvmarm@lists.cs.columbia.edu>; Fri,  7 Jul 2017 04:32:25 -0400 (EDT)
+X-Virus-Scanned: at lists.cs.columbia.edu
+Received: from mm01.cs.columbia.edu ([127.0.0.1])
+ by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id FGohKL4LVjLc for <kvmarm@lists.cs.columbia.edu>;
+ Fri,  7 Jul 2017 04:32:24 -0400 (EDT)
+Received: from szxga03-in.huawei.com (szxga03-in.huawei.com [45.249.212.189])
+ by mm01.cs.columbia.edu (Postfix) with ESMTPS id 88AC640427
+ for <kvmarm@lists.cs.columbia.edu>; Fri,  7 Jul 2017 04:32:22 -0400 (EDT)
+Received: from 172.30.72.56 (EHLO dggeml405-hub.china.huawei.com)
+ ([172.30.72.56])
+ by dggrg03-dlp.huawei.com (MOS 4.4.6-GA FastPath queued)
+ with ESMTP id AQS87433; Fri, 07 Jul 2017 16:32:24 +0800 (CST)
+Received: from [127.0.0.1] (10.142.68.147) by dggeml405-hub.china.huawei.com
+ (10.3.17.49) with Microsoft SMTP Server id 14.3.301.0; Fri, 7 Jul 2017
+ 16:32:14 +0800
+Subject: Re: [Qemu-devel] [PATCH v3 1/4] ACPI: Add APEI GHES Table Generation
+ support
+To: Laszlo Ersek <lersek@redhat.com>
+References: <1493530506-26833-1-git-send-email-gengdongjiu@huawei.com>
+ <4dde45bb-a730-82b1-dc49-ad00a6b73d85@redhat.com>
+ <accf8880-f4b0-85f1-9f33-4103c8c26d7a@redhat.com>
+ <e90c5fb8-e68b-a620-9023-f4fcfdd68e97@redhat.com>
+From: gengdongjiu <gengdongjiu@huawei.com>
+Message-ID: <dbbab7f6-18c4-9b6c-799e-8267797a31bd@huawei.com>
+Date: Fri, 7 Jul 2017 16:32:09 +0800
+User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64; rv:45.0) Gecko/20100101
+ Thunderbird/45.7.1
 MIME-Version: 1.0
-In-Reply-To: <444508ab-3a69-6c12-cb72-42c0e20fb5d7@redhat.com>
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.38]);
-	Fri, 07 Jul 2017 07:31:33 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [Qemu-devel] [RFC v2 0/8] VIRTIO-IOMMU device
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.21
+In-Reply-To: <e90c5fb8-e68b-a620-9023-f4fcfdd68e97@redhat.com>
+X-Originating-IP: [10.142.68.147]
+X-CFilter-Loop: Reflected
+X-Mirapoint-Virus-RAPID-Raw: score=unknown(0),
+ refid=str=0001.0A090206.595F471B.0084, ss=1, re=0.000, recu=0.000, reip=0.000,
+ cl=1, cld=1, fgs=0, ip=0.0.0.0,
+ so=2014-11-16 11:51:01, dmn=2013-03-21 17:37:32
+X-Mirapoint-Loop-Id: b8887e803ab9a5af467713e6f3a41e2a
+Cc: mtsirkin@redhat.com, kvm@vger.kernel.org, tbaicar@codeaurora.org,
+ qemu-devel@nongnu.org, wangxiongfeng2@huawei.com, ben@skyportsystems.com,
+ linux@armlinux.org.uk, kvmarm@lists.cs.columbia.edu, huangshaoyu@huawei.com,
+ songwenjun@huawei.com, wuquanming@huawei.com, marc.zyngier@arm.com,
+ qemu-arm@nongnu.org, pbonzini@redhat.com, linux-arm-kernel@lists.infradead.org,
+ ard.biesheuvel@linaro.org, imammedo@redhat.com
+X-BeenThere: kvmarm@lists.cs.columbia.edu
+X-Mailman-Version: 2.1.14
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: "kevin.tian@intel.com" <kevin.tian@intel.com>,
-	"marc.zyngier@arm.com" <marc.zyngier@arm.com>,
-	"tn@semihalf.com" <tn@semihalf.com>,
-	"will.deacon@arm.com" <will.deacon@arm.com>,
-	"drjones@redhat.com" <drjones@redhat.com>,
-	"robin.murphy@arm.com" <robin.murphy@arm.com>,
-	"christoffer.dall@linaro.org" <christoffer.dall@linaro.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: aHq9kGlPrlbA
+List-Id: Where KVM/ARM decisions are made <kvmarm.lists.cs.columbia.edu>
+List-Unsubscribe: <https://lists.cs.columbia.edu/mailman/options/kvmarm>,
+ <mailto:kvmarm-request@lists.cs.columbia.edu?subject=unsubscribe>
+List-Archive: <https://lists.cs.columbia.edu/pipermail/kvmarm>
+List-Post: <mailto:kvmarm@lists.cs.columbia.edu>
+List-Help: <mailto:kvmarm-request@lists.cs.columbia.edu?subject=help>
+List-Subscribe: <https://lists.cs.columbia.edu/mailman/listinfo/kvmarm>,
+ <mailto:kvmarm-request@lists.cs.columbia.edu?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Errors-To: kvmarm-bounces@lists.cs.columbia.edu
+Sender: kvmarm-bounces@lists.cs.columbia.edu
+X-TUID: 3eFVnd12TaI0
 
-Hi,
+Hi Laszlo,
+   sorry for my late response.
 
-On 06/07/2017 23:11, Auger Eric wrote:
-> Hello Bharat, Jean-Philippe,
-> On 06/07/2017 12:02, Jean-Philippe Brucker wrote:
->> On 05/07/17 09:49, Bharat Bhushan wrote:>>> Also when setup msi-route
->> kvm_irqchip_add_msi_route() we needed to
->>>> provide the translated address.
->>>>> According to my understanding this is required because kernel does no go
->>>> through viommu translation when generating interrupt, no?
->>>>
->>>> yes this is needed when KVM MSI routes are set up, ie. along with GICV3 ITS.
->>>> With GICv2M, qemu direct gsi mapping is used and this is not needed.
->>>>
->>>> So I do not understand your previous sentence saying "MSI interrupts works
->>>> without any change".
->>>
->>> I have almost completed vfio integration with virtio-iommu and now testing the changes by assigning e1000 device to VM. For this I have changed virtio-iommu driver to use IOMMU_RESV_MSI rather than sw-msi and this does not need changed in vfio_get_addr()  and kvm_irqchip_add_msi_route()
+On 2017/6/3 20:01, Laszlo Ersek wrote:
+> On 05/22/17 16:23, Laszlo Ersek wrote:
+>> Keeping some context:
 >>
->> I understand you're reserving region 0x08000000-0x08100000 as
->> IOMMU_RESV_MSI instead of IOMMU_RESV_SW_MSI? I think this only works
->> because Qemu places the vgic in that area as well (in hw/arm/virt.c). It's
->> not a coincidence if the addresses are the same, because Eric chose them
->> for the Linux SMMU drivers and I copied them.
+>> On 05/12/17 23:00, Laszlo Ersek wrote:
+>>> On 04/30/17 07:35, Dongjiu Geng wrote:
 > 
-> Yes I chose this region because it does not overlap with any guest RAM
-> region
-> 
+>> (68) In the code below, you are not taking an "OVMF header probe
+>> suppressor" into account.
 >>
->> We can't rely on that behavior, though, it will break MSIs in emulated
->> devices. And if Qemu happens to move the MSI doorbell in future machine
->> revisions, then it would also break VFIO.
+>> But, we have already planned to replace that quirk with a separate,
+>> dedicated allocation hint or command, so I'm not going to describe what
+>> an "OVMF header probe suppressor" is; instead, I'll describe the
+>> replacement for it.
 >>
->> Just for my own understanding -- what happens, I think, is that in Linux
->> iova_reserve_iommu_regions initially reserves the guest-physical doorbell
->> 0x08000000-0x08100000. Then much later, when the device driver requests an
->> MSI, the irqchip driver calls iommu_dma_map_msi_msg with the
->> guest-physical gicv2m address 0x08020000. The function finds the right
->> page in msi_page_list, which was added by cookie_init_hw_msi_region,
->> therefore bypassing the viommu and the GPA gets written in the MSI-X table.
+>> [...]
 > 
-> I share Jean's understanding. To me using IOMMU_RESV_MSI in the
-> virtio-iommu means this region is not translated by the IOMMU. as
-> cookie_init_hw_msi_region() pre-allocates the msi_page array,
-> iommu_dma_get_msi_page() does not do any IOMMU mapping.
+> So, the NOACPI allocation hint is a no-go at the moment, based on the
+> discussion in the following threads:
 > 
->>
->> If an emulated device such as virtio-net-pci were to generate an MSI, then
->> Qemu would attempt to access the doorbell written by Linux into the MSI-X
->> table, 0x08020000, and fault because that address wasn't mapped in the viommu.
-> Yes so I am confused, how can it work with a virtio-net-pci or
-> passthrough'ed e1000e device using MSIs?
->>
->> So for VFIO, you either need to translate the MSI-X entry using the
->> viommu,
+> http://mid.mail-archive.com/20170601112241.2580-1-ard.biesheuvel@linaro.org
 > 
-> For the vsmmuv3 I created a dedicated IOMMUNotifier to handle the fact
-> the MSI doorbell is translated and MSI routes need to be updated. This
-> seems to work.
+> http://mid.mail-archive.com/c76b36de-ebf9-c662-d454-0a95b43901e8@redhat.com
 > 
->  or just assume that the vaddr corresponds to the only MSI doorbell
->> accessible by this device (because how can we be certain that the guest
->> already mapped the doorbell before writing the entry?)
->>
->> For ARM machines it's probably best to stick with IOMMU_RESV_SW_MSI.
->> However, a nice way to use IOMMU_RESV_MSI would be for the virtio-iommu
->> device to advertise identity-mapped/reserved regions, and bypass
->> translation on these regions. Then the driver could reserve those with
->> IOMMU_RESV_MSI.
+> Therefore the header probe suppression remains necessary.
 > 
-> At least we may need to configure the virtio-iommu to either bypass MSIs
-> (x86) or translate MSIs (ARM)?
+> In this case, it is not hard to do, you just have to reorder the
+> following two ADD_POINTER additions a bit:
+ Ok, it is no problem.
 
-Actually on x86 no MSI controller will attempt to map MSIs, as opposed
-to ARM GICv2M & ITS. So the only problem exposing IOMMU_RESV_SW_MSI
-regions is vfio_iommu_type1 will assess the IRQ assignment safety using
-irq_domain_check_msi_remap() and not with the IOMMU IOMMU_CAP_INTR_REMAP
-capability.
+> 
+>>>> +
+>>>> +        bios_linker_loader_add_pointer(linker, GHES_ERRORS_FW_CFG_FILE,
+>>>> +                                sizeof(uint64_t) * i, sizeof(uint64_t),
+>>>> +                                GHES_ERRORS_FW_CFG_FILE,
+>>>> +                                MAX_ERROR_SOURCE_COUNT_V6 * sizeof(uint64_t) +
+>>>> +                                i * MAX_RAW_DATA_LENGTH);
+> 
+> This one should be moved out to a separate loop, after the current loop.
+> 
+>>>> +        bios_linker_loader_add_pointer(linker, ACPI_BUILD_TABLE_FILE,
+>>>> +                    address_registers_offset
+>>>> +                    + i * sizeof(AcpiGenericHardwareErrorSource),
+>>>> +                    sizeof(uint32_t), GHES_ERRORS_FW_CFG_FILE,
+>>>> +                    i * sizeof(uint64_t));
+> 
+> This one should be kept in the first (i.e., current) loop.
+> 
+> The idea is, when you first point the HEST/GHES_n entries in
+> ACPI_BUILD_TABLE_FILE to the "address registers" in
+> GHES_ERRORS_FW_CFG_FILE, all those address registers will still be
+> zero-filled. This will fail the ACPI table header probe in
+> OvmfPkg/AcpiPlatformDxe, which is what we want.
+> 
+> After this is done, the address registers in GHES_ERRORS_FW_CFG_FILE
+> should be pointed to the error status data blocks in the same fw_cfg
+> blob, in a separate loop. (Those error status data blocks will again be
+> zero-filled, so no ACPI table headers will be mistakenly recognized in
+> them.)
+I understand your idear. but I have a question:
+how about we exchange the two function's place, such as shown below:
+then it still meets ours needs, the change is easy.
+For every loop:
+(1)when patch address in ACPI_BUILD_TABLE_FILE to the "address registers", the address register is zero-filed.
+(2)when patch address in GHES_ERRORS_FW_CFG_FILE to the error status data blocks, the error status data block is still zero-filed.
 
-Thanks
+    for (i = 0; i < GHES_ACPI_HEST_NOTIFY_RESERVED; i++) {
+        .....................................
+        bios_linker_loader_add_pointer(linker, ACPI_BUILD_TABLE_FILE,
+                    address_registers_offset
+                    + i * sizeof(AcpiGenericHardwareErrorSource),
+                    sizeof(uint32_t), GHES_ERRORS_FW_CFG_FILE,
+                    i * sizeof(uint64_t));
 
-Eric
->  For x86 we will need such a system, with an added IRQ
->> remapping feature.
-> Meaning this must live along with vIR, is that what you mean? Also on
-> ARM this must live with vITS anyway. This is an orthogonal feature, right?
+
+        bios_linker_loader_add_pointer(linker, GHES_ERRORS_FW_CFG_FILE,
+                                sizeof(uint64_t) * i, sizeof(uint64_t),
+                                GHES_ERRORS_FW_CFG_FILE,
+                                MAX_ERROR_SOURCE_COUNT_V6 * sizeof(uint64_t) +
+                                i * MAX_RAW_DATA_LENGTH);
+	.........................................
+
+     }
+
+thanks
+
 > 
 > Thanks
+> Laszlo
 > 
-> Eric
->>
->> Thanks,
->> Jean
->>
+> 
+> .
+> 
+
+_______________________________________________
+kvmarm mailing list
+kvmarm@lists.cs.columbia.edu
+https://lists.cs.columbia.edu/mailman/listinfo/kvmarm

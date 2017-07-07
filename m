@@ -1,103 +1,113 @@
-Received: by 10.25.44.15 with SMTP id s15csp363202lfs;
-        Fri, 7 Jul 2017 10:37:01 -0700 (PDT)
-X-Received: by 10.223.154.141 with SMTP id a13mr1498138wrc.139.1499449021866;
-        Fri, 07 Jul 2017 10:37:01 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1499449021; cv=none;
+Received: by 10.25.44.15 with SMTP id s15csp364775lfs;
+        Fri, 7 Jul 2017 10:38:45 -0700 (PDT)
+X-Received: by 10.55.160.12 with SMTP id j12mr64024343qke.87.1499449125152;
+        Fri, 07 Jul 2017 10:38:45 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1499449125; cv=none;
         d=google.com; s=arc-20160816;
-        b=FZwPLDq1Pb4qSHZi6sKGW1FZ4d6X8S9dCs4mmCoLeiuq1Sv1IJvWbcY9QgocZuB/8i
-         gFrepyrvddNXDXqJLD05A29O84xckVtIFINekCHGnSfvnKUWEFgPqrX8iNkLtu82azdk
-         YpT3bgq1NN61CC+PmvfmZhMTJPE/qrbUy611+KcLDX6Ez068hYAho1KbZx7roAlXl/+S
-         oHbcmQ/dn0ZcViVEg5hiqiGwPk6Fz+lSbMeO9eCrm68Vntm15kj9eGaFZGLbJ+++dvki
-         wOphYvctY5Ns0OGwaGE+qy/aTrX+nAEnvPLgXjEzzJX/5CVY0stxjYrh/m1gEQvSiLvn
-         /KSg==
+        b=aT1T0xxK/YaJmRSdPxOBx2Ybvc0zu1zxugxM1XKjO0RMAJg85hDTH8X/v1rmdadS6F
+         T4PSRYy3tCdsYI3OfMAk2APhwrcs4iKh8DhFbvK8x3McPHwQSqYkpY1syVp9SI2ntld2
+         t5/tur+gAwhYULkxRC0QM25hN4J+X6y9pOY2I0w5V5Fd/eRBJWcoVVFR+fGwnQLrw2VF
+         NwuyWYue6AtWEHNR3TShHno2QUJFpUf0+ydz6th9tkQvyt1OAa+fY/CSDI5Bc/aSzAh/
+         SjFcV1gbfgXmTl3WGUCXmQ0Gw27HjIXJ8e3VMTi2yxl4FrZY9eX2oPZOc70Q2/Q/ggcz
+         Q51A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :references:in-reply-to:mime-version:dkim-signature
-         :arc-authentication-results;
-        bh=W83NwN1n0Roou8a7YCo5+8yq3RZIhdQao0rWtcJ8UQA=;
-        b=gGglArH449UC2AZClpUBoxYxCYnTxRDek0uN0vKBlbtfmw6hMqigyFORH701YiwhHP
-         2y+SDX8aNzYvyA8lrFI+8auFHibe6fQCEJub5cs/XIXYtzyb2KdgJ4bm6yzW7Y5sXJDQ
-         UGocnAaucqGv/XpVGL+WN50924DHhCmBWzjVDzlACSwqkCDNbTKw5DLa3BKqA+YHibnk
-         MfxotAkJVA5giCwAU2uYOR68zmm9Sy8BaPXi1hT3oZoN67du7mP2DZXGBdHt5mqtQWb7
-         h6iGjKIDTSoAv75YMsKAEujbhnPkxoPWeNZ7U3627iTOB/Glw5pH77DCpucXiFEWU0tk
-         33iA==
+        h=content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:to:subject:sender
+         :dkim-signature:arc-authentication-results;
+        bh=SwQ86m9WTr3GILnnM3uYnVwGt/1ptFSIw/1z6Rm+jKA=;
+        b=ZrdFbvzEJffffAQDmdkRuiB0EVjuSVBS9pjd8DcdxzUwYBnWfzy+4slnH90FoZ/EnV
+         JnPtK1xYNXgZtNtcCcRRIDXwd/xjbYQT9egFsreCDdcVMpoDWF+nPj4EXYv4heUm5ses
+         XhCwHI2nTPTmlpPjuu8qtvcoBGTvo2tF9VYBHrEHK5X4oAyc6Q6Gkfv4Snzij2bxwtdQ
+         TYI0l+2JAanBx9GKH7LEnoD514x/ZMTNW+vGZTAq7c3FKyVKVC53dQLy8vmeI/fp6ech
+         fP9CT5y8e2XwE/sZ/92vc9F/xzc5BehKArq0FhU4QSaWFocxVkVQyoaYI1/jiwiTW4EE
+         NJ2w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.b=Epi13lRT;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 2a00:1450:400c:c0c::234 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <peter.maydell@linaro.org>
-Received: from mail-wr0-x234.google.com (mail-wr0-x234.google.com. [2a00:1450:400c:c0c::234])
-        by mx.google.com with ESMTPS id s184si15962wmb.85.2017.07.07.10.37.01
-        for <alex.bennee@linaro.org>
+       dkim=pass header.i=@gmail.com header.b=MggxrzPB;
+       spf=pass (google.com: domain of rth7680@gmail.com designates 2607:f8b0:400d:c09::242 as permitted sender) smtp.mailfrom=rth7680@gmail.com
+Return-Path: <rth7680@gmail.com>
+Received: from mail-qk0-x242.google.com (mail-qk0-x242.google.com. [2607:f8b0:400d:c09::242])
+        by mx.google.com with ESMTPS id s78si3649775qki.35.2017.07.07.10.38.44
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 07 Jul 2017 10:37:01 -0700 (PDT)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 2a00:1450:400c:c0c::234 as permitted sender) client-ip=2a00:1450:400c:c0c::234;
+        Fri, 07 Jul 2017 10:38:45 -0700 (PDT)
+Received-SPF: pass (google.com: domain of rth7680@gmail.com designates 2607:f8b0:400d:c09::242 as permitted sender) client-ip=2607:f8b0:400d:c09::242;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.b=Epi13lRT;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 2a00:1450:400c:c0c::234 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: by mail-wr0-x234.google.com with SMTP id k67so55988231wrc.2
-        for <alex.bennee@linaro.org>; Fri, 07 Jul 2017 10:37:01 -0700 (PDT)
+       dkim=pass header.i=@gmail.com header.b=MggxrzPB;
+       spf=pass (google.com: domain of rth7680@gmail.com designates 2607:f8b0:400d:c09::242 as permitted sender) smtp.mailfrom=rth7680@gmail.com
+Received: by mail-qk0-x242.google.com with SMTP id 16so5154059qkg.2;
+        Fri, 07 Jul 2017 10:38:44 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-         :cc:content-transfer-encoding;
-        bh=W83NwN1n0Roou8a7YCo5+8yq3RZIhdQao0rWtcJ8UQA=;
-        b=Epi13lRT5BdEK3Jpv1WZIBJGuu8OwKO8laKBz2wyzy+ET4rnLyHcUUsZE08thum/jh
-         QYaQ/10FXOmkMFk71Y2p/7PiCw7I/LqiYTsaKUx08Y+z9vi8jGjjSVyzT8tKAjklSuVl
-         KGxAhv6ws1VTCRiwUqt4/nUDhCZpDqBzVo370=
+        d=gmail.com; s=20161025;
+        h=sender:subject:to:references:from:message-id:date:user-agent
+         :mime-version:in-reply-to:content-language:content-transfer-encoding;
+        bh=SwQ86m9WTr3GILnnM3uYnVwGt/1ptFSIw/1z6Rm+jKA=;
+        b=MggxrzPBZRN6YNqPiFUOZOi8ONCO5tVDNqCEpH2vqdDoKo1rHm+ffOhBCsAnyKmZ3N
+         Bb2fUNhkwsn79umcXfi3FhgLwDObjmM314dby7WfZbohnEnHvhGjPKWsyaMu6mV39Doj
+         qppYrRNweyuF9OdYPHzHsfEx5yPzs9sdWuFwarV3DQsmmwsW1ybv3EEy2f/txHiQVb/3
+         j6+RKUmjkGB06tKWfN6xgvjil9QpKujtd3sR2rnN7znd7NdJCsfAc5ri4Kq4jkM3n6LO
+         YwU2v0lggOXTdSmC+e0zjFupsysbJjiuttBd4jIsbZV/o7/miO+OwTiRKSYqA0a0Zilh
+         7XKw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-         :message-id:subject:to:cc:content-transfer-encoding;
-        bh=W83NwN1n0Roou8a7YCo5+8yq3RZIhdQao0rWtcJ8UQA=;
-        b=V/3fNeZ+3qziYPgZoV3jJuLQ/ir64BkKrASqBPqOad0RzRApQEgTBSpPkpkc1BUrDA
-         Q6U2A+23hq7kjYdNmDV25A5gTLim7VJLdH0yoTLMJ5dHZbGhl2tKMNqhwCYO/9VTbWlD
-         MkPqJ+0UvXbc/Xou04CsP99qCdv7lUzsXpfHxwjJ0Tv7MJmsYSbcyw7LYvYcAMZk5nhV
-         NIx2ccTv6Z0jZ3XDvPVKDSkmiAz8KhkHyPRMf8JdUZOnR+tBnpxzCQxCwvFUUtHgLtxh
-         GcymB8KU5NPpI2QBzmN/umhhuPQK1L99WiikHpiVF6U2C7D4F7eTpUsP0ZdyDR9oIEha
-         qsNA==
-X-Gm-Message-State: AIVw111EOfFHTOd2oloKPCAiLayRCmC0vuc2m8mVCVdp79GLvIMvsno3
-	B3JApF/5stjcj2FBwJ/Qm6zXjBeuqZgtGSgIKQ==
-X-Received: by 10.28.129.205 with SMTP id c196mr5353wmd.120.1499449021357;
- Fri, 07 Jul 2017 10:37:01 -0700 (PDT)
+        h=x-gm-message-state:sender:subject:to:references:from:message-id
+         :date:user-agent:mime-version:in-reply-to:content-language
+         :content-transfer-encoding;
+        bh=SwQ86m9WTr3GILnnM3uYnVwGt/1ptFSIw/1z6Rm+jKA=;
+        b=ZKDlAvGwnpsu9bZTxj9/lJELcQeXzNUNxDwkIZE7rJv8ZgdxCKBVysSvP620E+GC3k
+         7pkBR98UVg/46PYIdqQ8hHp4xaiCD7YddXc7wiJQcVcNu3M2ZN6omOxOIQsLQKAttf9I
+         MOlXC3wwyiHuqMHENfm7uorzZaDfR7NG+U53x397txbkAZlyqU1SWeuwPiIEFk7scI4Z
+         SNdv++PyWlzpP6O6CJfF7SwM0k3vLn17nLqNhZG+vY+c/ZjvsGurIhywHxxuBR9psVsq
+         6JmY5H2azM/GTgQuApZS5m4G2TNcCDTuA1XS8+wfQ0uFfeKwRdsW+HsQfJjAcbxRDgDM
+         7z0g==
+X-Gm-Message-State: AKS2vOzK1tJB56HLzSN8rjj8L8R5/RA1KuP/jbzxMIlIFNyNXO8SN6IR
+	iaZWM5EHWGekWO3ikIE=
+X-Received: by 10.55.150.134 with SMTP id y128mr65548351qkd.29.1499449124559;
+        Fri, 07 Jul 2017 10:38:44 -0700 (PDT)
+Return-Path: <rth7680@gmail.com>
+Received: from bigtime.twiddle.net (rrcs-66-91-136-156.west.biz.rr.com. [66.91.136.156])
+        by smtp.googlemail.com with ESMTPSA id w72sm2827742qka.63.2017.07.07.10.38.35
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 07 Jul 2017 10:38:43 -0700 (PDT)
+Sender: Richard Henderson <rth7680@gmail.com>
+Subject: Re: [Qemu-devel] [PATCH v11 23/29] target/arm: [tcg] Port to
+ translate_insn
+To: qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
+ Peter Crosthwaite <crosthwaite.peter@gmail.com>,
+ "Emilio G. Cota" <cota@braap.org>, "open list:ARM" <qemu-arm@nongnu.org>,
+ Paolo Bonzini <pbonzini@redhat.com>, =?UTF-8?Q?Alex_Benn=c3=a9e?=
+ <alex.bennee@linaro.org>
+References: <149865219962.17063.10630533069463266646.stgit@frigg.lan>
+ <149865776960.17063.4875279139522061160.stgit@frigg.lan>
+ <2bfdb883-f19b-7fcf-c28b-7ce39115937e@twiddle.net> <87podcebyi.fsf@frigg.lan>
+ <3745ae02-3fb0-1503-9c99-98dce369f697@twiddle.net> <87lgo0cgij.fsf@frigg.lan>
+From: Richard Henderson <rth@twiddle.net>
+Message-ID: <260addd5-45fe-ad10-5208-35906fd3f197@twiddle.net>
+Date: Fri, 7 Jul 2017 07:38:26 -1000
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+ Thunderbird/52.2.1
 MIME-Version: 1.0
-Received: by 10.223.134.2 with HTTP; Fri, 7 Jul 2017 10:36:40 -0700 (PDT)
-In-Reply-To: <87inj49mr1.fsf@linaro.org>
-References: <20170707161822.29659-1-alex.bennee@linaro.org> <87inj49mr1.fsf@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 7 Jul 2017 18:36:40 +0100
-Message-ID: <CAFEAcA_YvS8OQVTPnvRtWyVuAKO2bccyNALOs1Oq7snTO1WwkA@mail.gmail.com>
-Subject: Re: [RFC PATCH] target/arm: ensure eret exits the run-loop
-To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
-Cc: QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>, 
-	Etienne Carriere <etienne.carriere@linaro.org>, Joakim Bech <joakim.bech@linaro.org>, 
-	"Emilio G . Cota" <cota@braap.org>, Richard Henderson <rth@twiddle.net>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-TUID: ZgQLyUYLY+ua
+In-Reply-To: <87lgo0cgij.fsf@frigg.lan>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+X-TUID: hnMzREliUyxL
 
-On 7 July 2017 at 18:32, Alex Benn=C3=A9e <alex.bennee@linaro.org> wrote:
-> Given the wording of:
->
-> /* is_jmp field values */
-> #define DISAS_NEXT    0 /* next instruction can be analyzed */
-> #define DISAS_JUMP    1 /* only pc was modified dynamically */
-> #define DISAS_UPDATE  2 /* cpu state was modified dynamically */
-> #define DISAS_TB_JUMP 3 /* only pc was modified statically */
->
-> I'm thinking that really these DISAS_JUMP's should be DISAS_UPDATEs and
-> we need to disable the TB chaining optimisations for this. I'll prepare
-> a more comprehensive series next week. However testing this patch for
-> known failure modes will be useful.
+On 07/07/2017 07:18 AM, Lluís Vilanova wrote:
+> There was no code being generated after this specific case, but I haven't
+> checked if DISAS_EXC is set in any other place that is not immediately followed
+> by a "goto done_generating".
 
-The problem I think is that a lot of our current code assumes
-that DISAS_UPDATE means "go back to the top loop".
+Typically we haven't actually done a goto, but simply exit the loop and emit 
+nothing within the final cleanup (tb_stop?).
 
-In any case I think you are right that DISAS_UPDATE should not
-allow chaining to the next TB, because it implies that perhaps
-a TB flags bit got changed, so you need to look in the hash
-table again.
+> Does this mean DISAS_EXC should be on the generic code and do a "goto
+> done_generating" whenever it is found? And if so, what are the correct places to
+> check for this? After ops->insn_start, ops->translate_insn, ops->tb_stop?
 
-thanks
--- PMM
+Yes, this should be handled generically, since all targets need it.
+
+That said, I would prefer a better name like DISAS_NORETURN, which does not 
+imply that an actual exception has been raised, but explicitly says that all 
+following code is dead.
+
+
+r~

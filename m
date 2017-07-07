@@ -1,41 +1,41 @@
-Received: by 10.25.44.15 with SMTP id s15csp103072lfs;
-        Fri, 7 Jul 2017 06:23:16 -0700 (PDT)
-X-Received: by 10.28.93.1 with SMTP id r1mr2292733wmb.26.1499433796539;
-        Fri, 07 Jul 2017 06:23:16 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1499433796; cv=none;
+Received: by 10.25.44.15 with SMTP id s15csp107497lfs;
+        Fri, 7 Jul 2017 06:27:23 -0700 (PDT)
+X-Received: by 10.223.150.74 with SMTP id c10mr823110wra.124.1499434043223;
+        Fri, 07 Jul 2017 06:27:23 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1499434043; cv=none;
         d=google.com; s=arc-20160816;
-        b=C5iszsNOR5zLh7eqrS3Pg/nZTXb01Tw0PKe4iN1r9yumwdmX7S6RVjBLL9GTi8B5u6
-         OGg8qJTw1/9ddjkA9v33slJAUzqmtVb5mIHXgcwtj9oR/vJIfRjKOYPNRy0q9n74VjK0
-         IZeLCNBEkPmtyNg1CFqrCHduekLr7b6zad3/2KbzusewV2x368GRHwdU4oDHzEdgcxsn
-         3sOgq/C8Io2NrcxqFt6be+o3A8et+eHl2OWaEbvL+huHZOnLqxnf65DNdPLs2a0TjyyF
-         PLxyji18KI9RFW7fCE6cNUT4g+gcFZRnvVturY502S+nFDBP8qlqi2Leu1aC3kmUuZ/A
-         g8Tg==
+        b=nzuhO/nKkC/yMlSgRKtsHkFaR3HHJGy6Tclpn8fyRDC4Yw3xnqKfLU12epXluUyaWt
+         f1UPjT5FpokvLyt2Y46HcvjjQkviv1dDFTheURa/c/+3u7jMUBCyKrJ7KImJtm6t5WUW
+         DKqCpyLjFFU85EIL9RSD2FlLU8WjwL/DioXYsH28LGqcm52i6r5qZM2hdtRbSQWXh/1w
+         uceQ42wSFYPggVtkcdLhUdKtB+EbltGHdPPXASrcPqDvzqFr+NqKtZAPp/3OJSH+U/GA
+         PYno4eSxnJmxjznNvxNDIrB8V4R+MAFvNuk9i8x88FrnVPnusCaMVCIZv+bMjieXzOoW
+         kaKg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:user-agent:references
          :in-reply-to:message-id:date:subject:cc:to:from
          :arc-authentication-results;
-        bh=C6E4FwyDi71wjeGFzg3BuAn7MvKXTsio/vlJ+8vugpY=;
-        b=S4P1+2pBYvPl/lCnk8nasQ3qoeTIaE+JMxTtMeqlzAI/Zj5B9vxCSJAI5/ROxC3JvQ
-         mPGBFQo9SzN79AyzhVw85eYhMy8gCEnTTtIMxiJIRDvIuQwpfq402u4hY9TSO/qmJaj4
-         WAlQgyeWBWJXXPG5HCxyf/uG9ZTDTo7LSdMIKIF/j58KLDEIh9Z3VCNKTxthZm/mGcp2
-         mavm0Hu+Y/+OZOPXC5lmAwfOUqfh4cKK9ui9Q92G+8r7kC4SrlIb5sGIBPz4PRzJOqea
-         b2POZ6aRagHJJ4FmLkTuJtB54XDkp8D8RGr3OvuHfbmEgN6hHfs+bWnUe1xTCRudNLzd
-         hhwQ==
+        bh=lECBMuSlVjzuDdTq22QrN4Xgo5bnnhNgT363W+XOz3A=;
+        b=lJ176WYRNMjdaIoudoYv3QycELNE/Oe1IIqsJ1q/zNmje7UqvCIqQshSatAfZWPeBU
+         d2Q7kGhqD+sR+PH8x6m2Nb1xFvmCtSubS/aNqjx/a6Z/KQkw2FYwnToWCpdmDwiSmWob
+         /0QHjbqzvhnHoeDB5ZeS80b6Lc9oet2Khh81BQQeiMHSCEMcAeVNzdjhoMbHpLuEVq8k
+         9qwv3u8gCvUAgKCLWAxFsmyVD0p7ECYzi/zxdDh0ER9h0TVtpfNrS9Hd41d/IQDbQafQ
+         fu23HDzHfELFkJYZwqRvuP+ipcQCQFsmA69Zb4Pn20Pil2KK1Rd4LYSr9amRGF7UnT3w
+         8s6A==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of vilanova@ac.upc.edu designates 147.83.33.10 as permitted sender) smtp.mailfrom=vilanova@ac.upc.edu
 Return-Path: <vilanova@ac.upc.edu>
 Received: from roura.ac.upc.es (roura.ac.upc.edu. [147.83.33.10])
-        by mx.google.com with ESMTP id t140si3009970wme.143.2017.07.07.06.23.16;
-        Fri, 07 Jul 2017 06:23:16 -0700 (PDT)
+        by mx.google.com with ESMTP id b66si2980800wmg.165.2017.07.07.06.27.23;
+        Fri, 07 Jul 2017 06:27:23 -0700 (PDT)
 Received-SPF: pass (google.com: domain of vilanova@ac.upc.edu designates 147.83.33.10 as permitted sender) client-ip=147.83.33.10;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of vilanova@ac.upc.edu designates 147.83.33.10 as permitted sender) smtp.mailfrom=vilanova@ac.upc.edu
-Received: from correu-2.ac.upc.es (correu-2.ac.upc.es [147.83.30.92])
-	by roura.ac.upc.es (8.13.8/8.13.8) with ESMTP id v67DND8S022779;
-	Fri, 7 Jul 2017 15:23:13 +0200
+Received: from correu-1.ac.upc.es (correu-1.ac.upc.es [147.83.30.91])
+	by roura.ac.upc.es (8.13.8/8.13.8) with ESMTP id v67DRKVn022880;
+	Fri, 7 Jul 2017 15:27:20 +0200
 Received: from localhost (63.red-83-51-187.dynamicip.rima-tde.net [83.51.187.63])
-	by correu-2.ac.upc.es (Postfix) with ESMTPSA id 4BAFD269;
-	Fri,  7 Jul 2017 15:23:08 +0200 (CEST)
+	by correu-1.ac.upc.es (Postfix) with ESMTPSA id D6EBF456;
+	Fri,  7 Jul 2017 15:27:14 +0200 (CEST)
 From: =?utf-8?b?TGx1w61z?= Vilanova <vilanova@ac.upc.edu>
 To: qemu-devel@nongnu.org
 Cc: "Emilio G. Cota" <cota@braap.org>,
@@ -45,9 +45,9 @@ Cc: "Emilio G. Cota" <cota@braap.org>,
         Paolo Bonzini <pbonzini@redhat.com>,
         Peter Maydell <peter.maydell@linaro.org>,
         qemu-arm@nongnu.org (open list:ARM)
-Subject: [PATCH v12 25/27] target/arm: [tcg] Port to disas_log
-Date: Fri,  7 Jul 2017 15:23:02 +0200
-Message-Id: <149943378206.8972.1141843062606418973.stgit@frigg.lan>
+Subject: [PATCH v12 26/27] target/arm: [tcg,a64] Port to disas_log
+Date: Fri,  7 Jul 2017 15:27:08 +0200
+Message-Id: <149943402876.8972.12271214453548015446.stgit@frigg.lan>
 X-Mailer: git-send-email 2.13.2
 In-Reply-To: <149942760788.8972.474351671751194003.stgit@frigg.lan>
 References: <149942760788.8972.474351671751194003.stgit@frigg.lan>
@@ -55,7 +55,7 @@ User-Agent: StGit/0.17.1-dirty
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-X-TUID: XK1SuRdVYtVd
+X-TUID: xnATNqBdF27J
 
 Incrementally paves the way towards using the generic instruction translation
 loop.
@@ -63,37 +63,38 @@ loop.
 Signed-off-by: Lluís Vilanova <vilanova@ac.upc.edu>
 Reviewed-by: Richard Henderson <rth@twiddle.net>
 ---
- target/arm/translate.c |   13 ++++++++++---
- 1 file changed, 10 insertions(+), 3 deletions(-)
+ target/arm/translate-a64.c |   14 +++++++++++---
+ 1 file changed, 11 insertions(+), 3 deletions(-)
 
-diff --git a/target/arm/translate.c b/target/arm/translate.c
-index 00cac01d66..5db381491f 100644
---- a/target/arm/translate.c
-+++ b/target/arm/translate.c
-@@ -12133,6 +12133,15 @@ static void arm_tr_tb_stop(DisasContextBase *dcbase, CPUState *cpu)
+diff --git a/target/arm/translate-a64.c b/target/arm/translate-a64.c
+index cead9d382c..ea60d43a95 100644
+--- a/target/arm/translate-a64.c
++++ b/target/arm/translate-a64.c
+@@ -11379,6 +11379,16 @@ static void aarch64_tr_tb_stop(DisasContextBase *dcbase, CPUState *cpu)
      }
  }
  
-+static void arm_tr_disas_log(const DisasContextBase *dcbase, CPUState *cpu)
++static void aarch64_tr_disas_log(const DisasContextBase *dcbase,
++                                      CPUState *cpu)
 +{
 +    DisasContext *dc = container_of(dcbase, DisasContext, base);
 +
 +    qemu_log("IN: %s\n", lookup_symbol(dc->base.pc_first));
 +    log_target_disas(cpu, dc->base.pc_first, dc->pc - dc->base.pc_first,
-+                     dc->thumb | (dc->sctlr_b << 1));
++                     4 | (bswap_code(dc->sctlr_b) ? 2 : 0));
 +}
 +
- /* generate intermediate code for basic block 'tb'.  */
- void gen_intermediate_code(CPUState *cs, TranslationBlock *tb)
+ void gen_intermediate_code_a64(DisasContextBase *dcbase, CPUState *cs,
+                                TranslationBlock *tb)
  {
-@@ -12236,9 +12245,7 @@ done_generating:
+@@ -11475,9 +11485,7 @@ done_generating:
          qemu_log_in_addr_range(dc->base.pc_first)) {
          qemu_log_lock();
          qemu_log("----------------\n");
 -        qemu_log("IN: %s\n", lookup_symbol(dc->base.pc_first));
 -        log_target_disas(cs, dc->base.pc_first, dc->pc - dc->base.pc_first,
--                         dc->thumb | (dc->sctlr_b << 1));
-+        arm_tr_disas_log(&dc->base, cs);
+-                         4 | (bswap_code(dc->sctlr_b) ? 2 : 0));
++        aarch64_tr_disas_log(&dc->base, cs);
          qemu_log("\n");
          qemu_log_unlock();
      }

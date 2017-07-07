@@ -1,432 +1,715 @@
-Received: by 10.25.44.15 with SMTP id s15csp5006lfs;
-        Fri, 7 Jul 2017 04:52:45 -0700 (PDT)
-X-Received: by 10.28.194.137 with SMTP id s131mr2021390wmf.111.1499428365080;
-        Fri, 07 Jul 2017 04:52:45 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1499428365; cv=none;
+Received: by 10.25.44.15 with SMTP id s15csp17567lfs;
+        Fri, 7 Jul 2017 05:04:34 -0700 (PDT)
+X-Received: by 10.237.34.52 with SMTP id n49mr45615102qtc.29.1499429074384;
+        Fri, 07 Jul 2017 05:04:34 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1499429074; cv=none;
         d=google.com; s=arc-20160816;
-        b=VDvJB9kkkffvtMf3KqPBq/tqr6uVWCDbIqBgj20cOxffFLKL+DTr3pluSKOaZThxDF
-         2b0j2VXT+WDjwvpeuccuom4KhWQ9cekMmdUTMXtVIi4sgoQin9tMuCmO0E6BWoAgqQ6z
-         I8K9gAQA7W4xhYy0CTqkhfCcIA8CtVjZVh7biCFiT5mb+CtZFieNN6i/M6tz3DYDMPgQ
-         IZ0rxDIvMi4Ew83lui8/oj55JGF+RFZfuKN9tYWGRRphBu0/r/m+lCW1Z2nc/fevpARV
-         ftZE/3i63XZzWssQhSg0ZZuXmHz0rvZtorIZ3ujW0L7eCtbXSN1Lj+f0DS4NAc07A3fj
-         1WYA==
+        b=Fzxchw9X75RJHh9eD8tbJ8jTYbO8djf7ZScA1eBJ+iIEJYgPAJh6tE/EeG3k+APovQ
+         //gRs6qVz5zp5s/h1MTsPQdF8GmizxyzxFXGcnlAF0R1pvqDah+Iz8y1dJKkM1bfK6zL
+         Q9ycZaQE36pGLjbkJdq8qYoa2FpBXj9VZGaz9YnaXTfIeIqk4jEXU2BmnJmSaPXyOhyx
+         ZM4d4isIHDr7Y09m6DeKt0ArE6SgfrH8UNQ/GvpJoPmNLZmVyL8Bw5jhWeRzd6ivh0Dz
+         nDPhyqbBjdP9eTgFgr6A39VETKl4etDzphf5/bzkOEnmh0kyMLvTAlS1BkS2rn4xPl2/
+         tnIA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:user-agent:references
-         :in-reply-to:message-id:date:subject:cc:to:from
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
+         :references:in-reply-to:mime-version:dkim-signature
          :arc-authentication-results;
-        bh=AVd6hTom4kkFP+/OmXqeqEzU0s/Vxe+9/5qIxgRds5g=;
-        b=hOlq2rwlb+SNaGQiqnSPY0Tf/Z1rKueZLfE6U0xXnsdDcidKdoRtxmM1IXJJrz6GuM
-         h0WfS/W60QkSgeMWif9EZwPRKsSOvDD1KfU+2a7OGp1aOstC3KscjBpJSCLymqekqFlS
-         atncTdJT/o72LGZUIVHo2wtMSC93GTCStxgw+ZTtfBKOejuN+XAzNWSVwihORnPE1L63
-         dPjWj/nAu6HHcDqrggpGVF3M+UW8NIvYc2GNADVV2JXIAkr4C2XJkz6AdQbz8bVxpeek
-         dV7Nzty6IkypuJmGZOG9hSRMnDgpn6m4WDO+4xDvIIBBFIiK22UrcxupRcFz303638KE
-         viRw==
+        bh=MMNVZWSKlENS7UvTEmRtBLLIznAzeA88T3eJq2ZFzLY=;
+        b=pKBfOLaPb0qGzd8kh0ezFHI/lDkx4NdgZu0kRoGgPxT6fCvuMKdzx1jXeLkzWJF/nq
+         MTcHyOdoQ0qC+/hWB4DxTLxAcSm7gzFL7FXKkbrSyuOcWlFHPZydm0qm4PuMnNqgpaaY
+         qbakotgTbeajavurxfVXnpuSUaZZoCTBpbmHtmFj/QCbvwtouRuVvFt9aV6HF3THsJuM
+         dWVrY9jKjLAPxC2X1F3JVIjers64kHm3yuE9sRXyx6wBTBMvCZ9G4u2y7EC/rueqkzHr
+         o+r5z0UZdMcDw+1OwHAE/J/tbF//DqIrD8ktDGC7MOjSH1nAakR0Fq58FT+VEECzS68f
+         5ffQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of vilanova@ac.upc.edu designates 147.83.33.10 as permitted sender) smtp.mailfrom=vilanova@ac.upc.edu
-Return-Path: <vilanova@ac.upc.edu>
-Received: from roura.ac.upc.es (roura.ac.upc.es. [147.83.33.10])
-        by mx.google.com with ESMTP id t29si1892448wra.201.2017.07.07.04.52.44;
-        Fri, 07 Jul 2017 04:52:45 -0700 (PDT)
-Received-SPF: pass (google.com: domain of vilanova@ac.upc.edu designates 147.83.33.10 as permitted sender) client-ip=147.83.33.10;
+       dkim=neutral (body hash did not verify) header.i=@gmail.com header.b=pK+DLYNx;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
+        by mx.google.com with ESMTPS id w58si2927532qtb.322.2017.07.07.05.04.33
+        for <alex.bennee@linaro.org>
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Fri, 07 Jul 2017 05:04:34 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of vilanova@ac.upc.edu designates 147.83.33.10 as permitted sender) smtp.mailfrom=vilanova@ac.upc.edu
-Received: from correu-1.ac.upc.es (correu-1.ac.upc.es [147.83.30.91])
-	by roura.ac.upc.es (8.13.8/8.13.8) with ESMTP id v67Bqec2020321;
-	Fri, 7 Jul 2017 13:52:40 +0200
-Received: from localhost (63.red-83-51-187.dynamicip.rima-tde.net [83.51.187.63])
-	by correu-1.ac.upc.es (Postfix) with ESMTPSA id 02FEF23D;
-	Fri,  7 Jul 2017 13:52:34 +0200 (CEST)
-From: =?utf-8?b?TGx1w61z?= Vilanova <vilanova@ac.upc.edu>
-To: qemu-devel@nongnu.org
-Cc: "Emilio G. Cota" <cota@braap.org>,
-        =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-        Richard Henderson <rth@twiddle.net>,
-        Peter Crosthwaite <crosthwaite.peter@gmail.com>,
-        Paolo Bonzini <pbonzini@redhat.com>,
-        Peter Maydell <peter.maydell@linaro.org>,
-        "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
-        Eduardo Habkost <ehabkost@redhat.com>,
-        Michael Walle <michael@walle.cc>, Laurent Vivier <laurent@vivier.eu>,
-        Chris Wulff <crwulff@gmail.com>, Marek Vasut <marex@denx.de>,
-        Stafford Horne <shorne@gmail.com>, Alexander Graf <agraf@suse.de>,
-        Guan Xuetao <gxt@mprc.pku.edu.cn>, Max Filippov <jcmvbkbc@gmail.com>,
-        qemu-arm@nongnu.org (open list:ARM)
-Subject: [PATCH v12 03/27] target: [tcg] Use a generic enum for DISAS_ values
-Date: Fri,  7 Jul 2017 13:52:29 +0200
-Message-Id: <149942834870.8972.2146924083027836035.stgit@frigg.lan>
-X-Mailer: git-send-email 2.13.2
-In-Reply-To: <149942760788.8972.474351671751194003.stgit@frigg.lan>
-References: <149942760788.8972.474351671751194003.stgit@frigg.lan>
-User-Agent: StGit/0.17.1-dirty
+       dkim=neutral (body hash did not verify) header.i=@gmail.com header.b=pK+DLYNx;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:56065 helo=lists.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1dTRzr-0007IG-J8
+	for alex.bennee@linaro.org; Fri, 07 Jul 2017 08:04:31 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:58957)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <sundeep.lkml@gmail.com>) id 1dTRyg-0006Z1-Lm
+	for qemu-devel@nongnu.org; Fri, 07 Jul 2017 08:03:22 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+	(envelope-from <sundeep.lkml@gmail.com>) id 1dTRyc-00062a-PS
+	for qemu-devel@nongnu.org; Fri, 07 Jul 2017 08:03:18 -0400
+Received: from mail-yb0-x241.google.com ([2607:f8b0:4002:c09::241]:35509)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <sundeep.lkml@gmail.com>)
+	id 1dTRyc-00062E-Gt; Fri, 07 Jul 2017 08:03:14 -0400
+Received: by mail-yb0-x241.google.com with SMTP id p203so1291151yba.2;
+	Fri, 07 Jul 2017 05:03:14 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=U8zpjKGnQjFBkv8bPfoSGeMhO+4KlLYTytFfY9sINb0=;
+	b=pK+DLYNxFfxWiC7gwVG9+NQfYKIzuI3nGkS+B0pnloDTqI2rdGaoElkTBoru4BOnIZ
+	XQTGY/+Eaiwn1hHk7vSgdM7XjpdlQ48qZGHdIPmNKw1Y1DmgKthvVKSKWtyG6YpjkIhC
+	BebDPALPWu7skISeDfoiyi7wyzsfmvfedMmKbJtYvJ/7wKVX3jYMCj8UiURVVAIlAvXF
+	hj9CxHZGSOWmOHdtyIXS1gglJ9ww0KYVfZ174+btHpYrytUtTdh8XGdVq7TbOauhlLQh
+	V+jqzCiUIbYww1kgiAD/wBq1YaMrnjGNzN4aTTFzEiQiKwpxDOB+UyWFIKDS0GmpkhSE
+	RR6Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=U8zpjKGnQjFBkv8bPfoSGeMhO+4KlLYTytFfY9sINb0=;
+	b=l/Ro1G7ry7V0Pcg3yOZE0H/e5I9TcihW5uIb14OTFaDQrJvsq7x7iYdluM/T8jb5p1
+	V32FovF8tg+uCKWplWSWSD09Tuqi2AkE3ZNjEJgKG/IKB+vqZ7j6UOabODlJoFzEbzhT
+	xWOJyRvQNStx9yrp/t04XqWxRAMsePKplr4a8QiA8x1Cs336Zj7R/9kEAu900guzY2oX
+	iBW8Yx5/ju0Y2BPV/Or0JOfsOztkcO1vMRGIH1mMJuB1IblGDxx4aMivrg0dPgh6kc+H
+	mCg5n5CfB0YSMOwJahjIWU7jCZghQnnJL06VuF/c1Ra1XTvt3jXouwiBJ8R50StDDemn
+	PxfA==
+X-Gm-Message-State: AIVw1127l+hyLFJLI8wxXG2d7qSk9UxYuHU0hVkya8AVMEPeCVAMPlAf
+	QfdC3XebOEHHwQ2DqLKGKzBndQNsJQ==
+X-Received: by 10.37.32.193 with SMTP id g184mr3843794ybg.198.1499428993676;
+	Fri, 07 Jul 2017 05:03:13 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
-X-TUID: 28NIDIKUBD8f
+Received: by 10.129.233.5 with HTTP; Fri, 7 Jul 2017 05:03:13 -0700 (PDT)
+In-Reply-To: <CAKmqyKPnM0ofCY0rLEuo1LW9nXJeCxwVHds+AX4jU7ooMk-TiQ@mail.gmail.com>
+References: <1499057115-6773-1-git-send-email-sundeep.lkml@gmail.com>
+	<1499057115-6773-4-git-send-email-sundeep.lkml@gmail.com>
+	<CAKmqyKPnM0ofCY0rLEuo1LW9nXJeCxwVHds+AX4jU7ooMk-TiQ@mail.gmail.com>
+From: sundeep subbaraya <sundeep.lkml@gmail.com>
+Date: Fri, 7 Jul 2017 17:33:13 +0530
+Message-ID: <CALHRZuqhN+UOnXuuB0u9bXX4d14NAK_GZ--iJXQTr0DwQSS33g@mail.gmail.com>
+To: Alistair Francis <alistair23@gmail.com>
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:4002:c09::241
+Content-Type: text/plain; charset="UTF-8"
+X-Content-Filtered-By: Mailman/MimeDel 2.1.21
+Subject: Re: [Qemu-devel] [Qemu devel v6 PATCH 3/5] msf2: Add Smartfusion2
+ SPI controller
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.21
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+	=?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>,
+	qemu-arm <qemu-arm@nongnu.org>,
+	"qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
+	Peter Crosthwaite <crosthwaite.peter@gmail.com>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: iOA0LuLjS9uR
 
-Used later. An enum makes expected values explicit and bounds the value space of
-switches.
+Hi Alistair,
 
-Signed-off-by: Lluís Vilanova <vilanova@ac.upc.edu>
-Reviewed-by: Emilio G. Cota <cota@braap.org>
-Reviewed-by: Richard Henderson <rth@twiddle.net>
----
- include/exec/exec-all.h       |    6 ------
- include/exec/translator.h     |   39 +++++++++++++++++++++++++++++++++++++++
- target/arm/translate.h        |   26 ++++++++++++++++----------
- target/cris/translate.c       |    7 ++++++-
- target/i386/translate.c       |    4 ++++
- target/lm32/translate.c       |    6 ++++++
- target/m68k/translate.c       |    7 ++++++-
- target/microblaze/translate.c |    6 ++++++
- target/nios2/translate.c      |    6 ++++++
- target/openrisc/translate.c   |    6 ++++++
- target/s390x/translate.c      |    3 ++-
- target/unicore32/translate.c  |    7 ++++++-
- target/xtensa/translate.c     |    4 ++++
- 13 files changed, 107 insertions(+), 20 deletions(-)
- create mode 100644 include/exec/translator.h
+On Wed, Jul 5, 2017 at 11:48 PM, Alistair Francis <alistair23@gmail.com>
+wrote:
 
-diff --git a/include/exec/exec-all.h b/include/exec/exec-all.h
-index 0826894ec5..27498cf740 100644
---- a/include/exec/exec-all.h
-+++ b/include/exec/exec-all.h
-@@ -35,12 +35,6 @@ typedef abi_ulong tb_page_addr_t;
- typedef ram_addr_t tb_page_addr_t;
- #endif
- 
--/* is_jmp field values */
--#define DISAS_NEXT    0 /* next instruction can be analyzed */
--#define DISAS_JUMP    1 /* only pc was modified dynamically */
--#define DISAS_UPDATE  2 /* cpu state was modified dynamically */
--#define DISAS_TB_JUMP 3 /* only pc was modified statically */
--
- #include "qemu/log.h"
- 
- void gen_intermediate_code(CPUState *cpu, struct TranslationBlock *tb);
-diff --git a/include/exec/translator.h b/include/exec/translator.h
-new file mode 100644
-index 0000000000..1f9697dd31
---- /dev/null
-+++ b/include/exec/translator.h
-@@ -0,0 +1,39 @@
-+/*
-+ * Generic intermediate code generation.
-+ *
-+ * Copyright (C) 2016-2017 Lluís Vilanova <vilanova@ac.upc.edu>
-+ *
-+ * This work is licensed under the terms of the GNU GPL, version 2 or later.
-+ * See the COPYING file in the top-level directory.
-+ */
-+
-+#ifndef EXEC__TRANSLATOR_H
-+#define EXEC__TRANSLATOR_H
-+
-+/**
-+ * DisasJumpType:
-+ * @DISAS_NEXT: Next instruction in program order.
-+ * @DISAS_TOO_MANY: Too many instructions translated.
-+ * @DISAS_TARGET: Start of target-specific conditions.
-+ *
-+ * What instruction to disassemble next.
-+ */
-+typedef enum DisasJumpType {
-+    DISAS_NEXT,
-+    DISAS_TOO_MANY,
-+    DISAS_TARGET_0,
-+    DISAS_TARGET_1,
-+    DISAS_TARGET_2,
-+    DISAS_TARGET_3,
-+    DISAS_TARGET_4,
-+    DISAS_TARGET_5,
-+    DISAS_TARGET_6,
-+    DISAS_TARGET_7,
-+    DISAS_TARGET_8,
-+    DISAS_TARGET_9,
-+    DISAS_TARGET_10,
-+    DISAS_TARGET_11,
-+    DISAS_TARGET_12,
-+} DisasJumpType;
-+
-+#endif  /* EXEC__TRANSLATOR_H */
-diff --git a/target/arm/translate.h b/target/arm/translate.h
-index e5da614db5..aba3f44c9f 100644
---- a/target/arm/translate.h
-+++ b/target/arm/translate.h
-@@ -1,6 +1,9 @@
- #ifndef TARGET_ARM_TRANSLATE_H
- #define TARGET_ARM_TRANSLATE_H
- 
-+#include "exec/translator.h"
-+
-+
- /* internal defines */
- typedef struct DisasContext {
-     target_ulong pc;
-@@ -119,30 +122,33 @@ static void disas_set_insn_syndrome(DisasContext *s, uint32_t syn)
-     s->insn_start_idx = 0;
- }
- 
--/* target-specific extra values for is_jmp */
-+/* is_jmp field values */
-+#define DISAS_JUMP    DISAS_TARGET_0 /* only pc was modified dynamically */
-+#define DISAS_UPDATE  DISAS_TARGET_1 /* cpu state was modified dynamically */
-+#define DISAS_TB_JUMP DISAS_TARGET_2 /* only pc was modified statically */
- /* These instructions trap after executing, so the A32/T32 decoder must
-  * defer them until after the conditional execution state has been updated.
-  * WFI also needs special handling when single-stepping.
-  */
--#define DISAS_WFI 4
--#define DISAS_SWI 5
-+#define DISAS_WFI DISAS_TARGET_3
-+#define DISAS_SWI DISAS_TARGET_4
- /* For instructions which unconditionally cause an exception we can skip
-  * emitting unreachable code at the end of the TB in the A64 decoder
-  */
--#define DISAS_EXC 6
-+#define DISAS_EXC DISAS_TARGET_5
- /* WFE */
--#define DISAS_WFE 7
--#define DISAS_HVC 8
--#define DISAS_SMC 9
--#define DISAS_YIELD 10
-+#define DISAS_WFE DISAS_TARGET_6
-+#define DISAS_HVC DISAS_TARGET_7
-+#define DISAS_SMC DISAS_TARGET_8
-+#define DISAS_YIELD DISAS_TARGET_9
- /* M profile branch which might be an exception return (and so needs
-  * custom end-of-TB code)
-  */
--#define DISAS_BX_EXCRET 11
-+#define DISAS_BX_EXCRET DISAS_TARGET_10
- /* For instructions which want an immediate exit to the main loop,
-  * as opposed to attempting to use lookup_and_goto_ptr.
-  */
--#define DISAS_EXIT 12
-+#define DISAS_EXIT DISAS_TARGET_11
- 
- #ifdef TARGET_AARCH64
- void a64_translate_init(void);
-diff --git a/target/cris/translate.c b/target/cris/translate.c
-index 12b96eb68f..38a999e6f1 100644
---- a/target/cris/translate.c
-+++ b/target/cris/translate.c
-@@ -31,6 +31,7 @@
- #include "exec/helper-proto.h"
- #include "mmu.h"
- #include "exec/cpu_ldst.h"
-+#include "exec/translator.h"
- #include "crisv32-decode.h"
- 
- #include "exec/helper-gen.h"
-@@ -50,7 +51,11 @@
- #define BUG() (gen_BUG(dc, __FILE__, __LINE__))
- #define BUG_ON(x) ({if (x) BUG();})
- 
--#define DISAS_SWI 5
-+/* is_jmp field values */
-+#define DISAS_JUMP    DISAS_TARGET_0 /* only pc was modified dynamically */
-+#define DISAS_UPDATE  DISAS_TARGET_1 /* cpu state was modified dynamically */
-+#define DISAS_TB_JUMP DISAS_TARGET_2 /* only pc was modified statically */
-+#define DISAS_SWI     DISAS_TARGET_3
- 
- /* Used by the decoder.  */
- #define EXTRACT_FIELD(src, start, end) \
-diff --git a/target/i386/translate.c b/target/i386/translate.c
-index cab9e32f91..b118fcb834 100644
---- a/target/i386/translate.c
-+++ b/target/i386/translate.c
-@@ -24,6 +24,7 @@
- #include "exec/exec-all.h"
- #include "tcg-op.h"
- #include "exec/cpu_ldst.h"
-+#include "exec/translator.h"
- 
- #include "exec/helper-proto.h"
- #include "exec/helper-gen.h"
-@@ -71,6 +72,9 @@
- 
- //#define MACRO_TEST   1
- 
-+/* is_jmp field values */
-+#define DISAS_TB_JUMP DISAS_TARGET_0 /* only pc was modified statically */
-+
- /* global register indexes */
- static TCGv_env cpu_env;
- static TCGv cpu_A0;
-diff --git a/target/lm32/translate.c b/target/lm32/translate.c
-index f68f372f15..65bc9c0bf6 100644
---- a/target/lm32/translate.c
-+++ b/target/lm32/translate.c
-@@ -22,6 +22,7 @@
- #include "disas/disas.h"
- #include "exec/helper-proto.h"
- #include "exec/exec-all.h"
-+#include "exec/translator.h"
- #include "tcg-op.h"
- 
- #include "exec/cpu_ldst.h"
-@@ -47,6 +48,11 @@
- 
- #define MEM_INDEX 0
- 
-+/* is_jmp field values */
-+#define DISAS_JUMP    DISAS_TARGET_0 /* only pc was modified dynamically */
-+#define DISAS_UPDATE  DISAS_TARGET_1 /* cpu state was modified dynamically */
-+#define DISAS_TB_JUMP DISAS_TARGET_2 /* only pc was modified statically */
-+
- static TCGv_env cpu_env;
- static TCGv cpu_R[32];
- static TCGv cpu_pc;
-diff --git a/target/m68k/translate.c b/target/m68k/translate.c
-index af19872e0b..af08a5c959 100644
---- a/target/m68k/translate.c
-+++ b/target/m68k/translate.c
-@@ -25,6 +25,7 @@
- #include "tcg-op.h"
- #include "qemu/log.h"
- #include "exec/cpu_ldst.h"
-+#include "exec/translator.h"
- 
- #include "exec/helper-proto.h"
- #include "exec/helper-gen.h"
-@@ -173,7 +174,11 @@ static void do_writebacks(DisasContext *s)
-     }
- }
- 
--#define DISAS_JUMP_NEXT 4
-+/* is_jmp field values */
-+#define DISAS_JUMP      DISAS_TARGET_0 /* only pc was modified dynamically */
-+#define DISAS_UPDATE    DISAS_TARGET_1 /* cpu state was modified dynamically */
-+#define DISAS_TB_JUMP   DISAS_TARGET_2 /* only pc was modified statically */
-+#define DISAS_JUMP_NEXT DISAS_TARGET_3
- 
- #if defined(CONFIG_USER_ONLY)
- #define IS_USER(s) 1
-diff --git a/target/microblaze/translate.c b/target/microblaze/translate.c
-index a180bc78ae..e050c694d8 100644
---- a/target/microblaze/translate.c
-+++ b/target/microblaze/translate.c
-@@ -27,6 +27,7 @@
- #include "microblaze-decode.h"
- #include "exec/cpu_ldst.h"
- #include "exec/helper-gen.h"
-+#include "exec/translator.h"
- 
- #include "trace-tcg.h"
- #include "exec/log.h"
-@@ -46,6 +47,11 @@
- #define EXTRACT_FIELD(src, start, end) \
-             (((src) >> start) & ((1 << (end - start + 1)) - 1))
- 
-+/* is_jmp field values */
-+#define DISAS_JUMP    DISAS_TARGET_0 /* only pc was modified dynamically */
-+#define DISAS_UPDATE  DISAS_TARGET_1 /* cpu state was modified dynamically */
-+#define DISAS_TB_JUMP DISAS_TARGET_2 /* only pc was modified statically */
-+
- static TCGv env_debug;
- static TCGv_env cpu_env;
- static TCGv cpu_R[32];
-diff --git a/target/nios2/translate.c b/target/nios2/translate.c
-index 8b97d6585f..6b0961837d 100644
---- a/target/nios2/translate.c
-+++ b/target/nios2/translate.c
-@@ -29,6 +29,12 @@
- #include "exec/helper-gen.h"
- #include "exec/log.h"
- #include "exec/cpu_ldst.h"
-+#include "exec/translator.h"
-+
-+/* is_jmp field values */
-+#define DISAS_JUMP    DISAS_TARGET_0 /* only pc was modified dynamically */
-+#define DISAS_UPDATE  DISAS_TARGET_1 /* cpu state was modified dynamically */
-+#define DISAS_TB_JUMP DISAS_TARGET_2 /* only pc was modified statically */
- 
- #define INSTRUCTION_FLG(func, flags) { (func), (flags) }
- #define INSTRUCTION(func)                  \
-diff --git a/target/openrisc/translate.c b/target/openrisc/translate.c
-index a01413113b..112db1ad0f 100644
---- a/target/openrisc/translate.c
-+++ b/target/openrisc/translate.c
-@@ -27,6 +27,7 @@
- #include "qemu/log.h"
- #include "qemu/bitops.h"
- #include "exec/cpu_ldst.h"
-+#include "exec/translator.h"
- 
- #include "exec/helper-proto.h"
- #include "exec/helper-gen.h"
-@@ -37,6 +38,11 @@
- #define LOG_DIS(str, ...) \
-     qemu_log_mask(CPU_LOG_TB_IN_ASM, "%08x: " str, dc->pc, ## __VA_ARGS__)
- 
-+/* is_jmp field values */
-+#define DISAS_JUMP    DISAS_TARGET_0 /* only pc was modified dynamically */
-+#define DISAS_UPDATE  DISAS_TARGET_1 /* cpu state was modified dynamically */
-+#define DISAS_TB_JUMP DISAS_TARGET_2 /* only pc was modified statically */
-+
- typedef struct DisasContext {
-     TranslationBlock *tb;
-     target_ulong pc;
-diff --git a/target/s390x/translate.c b/target/s390x/translate.c
-index cd8c38d6d5..6ed38371a1 100644
---- a/target/s390x/translate.c
-+++ b/target/s390x/translate.c
-@@ -76,7 +76,8 @@ typedef struct {
-     } u;
- } DisasCompare;
- 
--#define DISAS_EXCP 4
-+/* is_jmp field values */
-+#define DISAS_EXCP DISAS_TARGET_0
- 
- #ifdef DEBUG_INLINE_BRANCHES
- static uint64_t inline_branch_hit[CC_OP_MAX];
-diff --git a/target/unicore32/translate.c b/target/unicore32/translate.c
-index 8f30cff932..6c094d59d7 100644
---- a/target/unicore32/translate.c
-+++ b/target/unicore32/translate.c
-@@ -16,6 +16,7 @@
- #include "tcg-op.h"
- #include "qemu/log.h"
- #include "exec/cpu_ldst.h"
-+#include "exec/translator.h"
- 
- #include "exec/helper-proto.h"
- #include "exec/helper-gen.h"
-@@ -45,9 +46,13 @@ typedef struct DisasContext {
- #define IS_USER(s)      1
- #endif
- 
-+/* is_jmp field values */
-+#define DISAS_JUMP    DISAS_TARGET_0 /* only pc was modified dynamically */
-+#define DISAS_UPDATE  DISAS_TARGET_1 /* cpu state was modified dynamically */
-+#define DISAS_TB_JUMP DISAS_TARGET_2 /* only pc was modified statically */
- /* These instructions trap after executing, so defer them until after the
-    conditional executions state has been updated.  */
--#define DISAS_SYSCALL 5
-+#define DISAS_SYSCALL DISAS_TARGET_3
- 
- static TCGv_env cpu_env;
- static TCGv_i32 cpu_R[32];
-diff --git a/target/xtensa/translate.c b/target/xtensa/translate.c
-index f3f0ff589c..d7bf07e8e6 100644
---- a/target/xtensa/translate.c
-+++ b/target/xtensa/translate.c
-@@ -38,6 +38,7 @@
- #include "sysemu/sysemu.h"
- #include "exec/cpu_ldst.h"
- #include "exec/semihost.h"
-+#include "exec/translator.h"
- 
- #include "exec/helper-proto.h"
- #include "exec/helper-gen.h"
-@@ -46,6 +47,9 @@
- #include "exec/log.h"
- 
- 
-+/* is_jmp field values */
-+#define DISAS_UPDATE  DISAS_TARGET_0 /* cpu state was modified dynamically */
-+
- typedef struct DisasContext {
-     const XtensaConfig *config;
-     TranslationBlock *tb;
+> On Sun, Jul 2, 2017 at 9:45 PM, Subbaraya Sundeep
+> <sundeep.lkml@gmail.com> wrote:
+> > Modelled Microsemi's Smartfusion2 SPI controller.
+> >
+> > Signed-off-by: Subbaraya Sundeep <sundeep.lkml@gmail.com>
+> > ---
+> >  hw/ssi/Makefile.objs     |   1 +
+> >  hw/ssi/mss-spi.c         | 414 ++++++++++++++++++++++++++++++
+> +++++++++++++++++
+> >  include/hw/ssi/mss-spi.h |  62 +++++++
+> >  3 files changed, 477 insertions(+)
+> >  create mode 100644 hw/ssi/mss-spi.c
+> >  create mode 100644 include/hw/ssi/mss-spi.h
+> >
+> > diff --git a/hw/ssi/Makefile.objs b/hw/ssi/Makefile.objs
+> > index 487add2..f5bcc65 100644
+> > --- a/hw/ssi/Makefile.objs
+> > +++ b/hw/ssi/Makefile.objs
+> > @@ -4,6 +4,7 @@ common-obj-$(CONFIG_XILINX_SPI) += xilinx_spi.o
+> >  common-obj-$(CONFIG_XILINX_SPIPS) += xilinx_spips.o
+> >  common-obj-$(CONFIG_ASPEED_SOC) += aspeed_smc.o
+> >  common-obj-$(CONFIG_STM32F2XX_SPI) += stm32f2xx_spi.o
+> > +common-obj-$(CONFIG_MSF2) += mss-spi.o
+> >
+> >  obj-$(CONFIG_OMAP) += omap_spi.o
+> >  obj-$(CONFIG_IMX) += imx_spi.o
+> > diff --git a/hw/ssi/mss-spi.c b/hw/ssi/mss-spi.c
+> > new file mode 100644
+> > index 0000000..a572abc
+> > --- /dev/null
+> > +++ b/hw/ssi/mss-spi.c
+> > @@ -0,0 +1,414 @@
+> > +/*
+> > + * Block model of SPI controller present in
+> > + * Microsemi's SmartFusion2 and SmartFusion SoCs.
+> > + *
+> > + * Copyright (C) 2017 Subbaraya Sundeep <sundeep.lkml@gmail.com>
+> > + *
+> > + * Permission is hereby granted, free of charge, to any person
+> obtaining a copy
+> > + * of this software and associated documentation files (the
+> "Software"), to deal
+> > + * in the Software without restriction, including without limitation
+> the rights
+> > + * to use, copy, modify, merge, publish, distribute, sublicense, and/or
+> sell
+> > + * copies of the Software, and to permit persons to whom the Software is
+> > + * furnished to do so, subject to the following conditions:
+> > + *
+> > + * The above copyright notice and this permission notice shall be
+> included in
+> > + * all copies or substantial portions of the Software.
+> > + *
+> > + * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+> EXPRESS OR
+> > + * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+> MERCHANTABILITY,
+> > + * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT
+> SHALL
+> > + * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR
+> OTHER
+> > + * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
+> ARISING FROM,
+> > + * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+> DEALINGS IN
+> > + * THE SOFTWARE.
+> > + */
+> > +
+> > +#include "hw/ssi/mss-spi.h"
+>
+> Same comment as earlier patches.
+>
+
+Ok will fix it.
+
+>
+> > +
+> > +#ifndef MSS_SPI_ERR_DEBUG
+> > +#define MSS_SPI_ERR_DEBUG   0
+> > +#endif
+> > +
+> > +#define DB_PRINT_L(lvl, fmt, args...) do { \
+> > +    if (MSS_SPI_ERR_DEBUG >= lvl) { \
+> > +        qemu_log("%s: " fmt "\n", __func__, ## args); \
+> > +    } \
+> > +} while (0);
+> > +
+> > +#define DB_PRINT(fmt, args...) DB_PRINT_L(1, fmt, ## args)
+> > +
+> > +#define FIFO_CAPACITY         32
+> > +#define FIFO_CAPACITY         32
+> > +
+> > +#define R_SPI_CONTROL         0
+> > +#define R_SPI_DFSIZE          1
+> > +#define R_SPI_STATUS          2
+> > +#define R_SPI_INTCLR          3
+> > +#define R_SPI_RX              4
+> > +#define R_SPI_TX              5
+> > +#define R_SPI_CLKGEN          6
+> > +#define R_SPI_SS              7
+> > +#define R_SPI_MIS             8
+> > +#define R_SPI_RIS             9
+> > +
+> > +#define S_TXDONE             (1 << 0)
+> > +#define S_RXRDY              (1 << 1)
+> > +#define S_RXCHOVRF           (1 << 2)
+> > +#define S_RXFIFOFUL          (1 << 4)
+> > +#define S_RXFIFOFULNXT       (1 << 5)
+> > +#define S_RXFIFOEMP          (1 << 6)
+> > +#define S_RXFIFOEMPNXT       (1 << 7)
+> > +#define S_TXFIFOFUL          (1 << 8)
+> > +#define S_TXFIFOFULNXT       (1 << 9)
+> > +#define S_TXFIFOEMP          (1 << 10)
+> > +#define S_TXFIFOEMPNXT       (1 << 11)
+> > +#define S_FRAMESTART         (1 << 12)
+> > +#define S_SSEL               (1 << 13)
+> > +#define S_ACTIVE             (1 << 14)
+> > +
+> > +#define C_ENABLE             (1 << 0)
+> > +#define C_MODE               (1 << 1)
+> > +#define C_INTRXDATA          (1 << 4)
+> > +#define C_INTTXDATA          (1 << 5)
+> > +#define C_INTRXOVRFLO        (1 << 6)
+> > +#define C_SPS                (1 << 26)
+> > +#define C_BIGFIFO            (1 << 29)
+> > +#define C_RESET              (1 << 31)
+> > +
+> > +#define FRAMESZ_MASK         0x1F
+> > +#define FMCOUNT_MASK         0x00FFFF00
+> > +#define FMCOUNT_SHIFT        8
+> > +
+> > +static void txfifo_reset(MSSSpiState *s)
+> > +{
+> > +    fifo32_reset(&s->tx_fifo);
+> > +
+> > +    s->regs[R_SPI_STATUS] &= ~S_TXFIFOFUL;
+> > +    s->regs[R_SPI_STATUS] |= S_TXFIFOEMP;
+> > +}
+> > +
+> > +static void rxfifo_reset(MSSSpiState *s)
+> > +{
+> > +    fifo32_reset(&s->rx_fifo);
+> > +
+> > +    s->regs[R_SPI_STATUS] &= ~S_RXFIFOFUL;
+> > +    s->regs[R_SPI_STATUS] |= S_RXFIFOEMP;
+> > +}
+> > +
+> > +static void set_fifodepth(MSSSpiState *s)
+> > +{
+> > +    unsigned int size = s->regs[R_SPI_DFSIZE] & FRAMESZ_MASK;
+> > +
+> > +    if (size <= 8) {
+> > +        s->fifo_depth = 32;
+> > +    } else if (size <= 16) {
+> > +        s->fifo_depth = 16;
+> > +    } else if (size <= 32) {
+> > +        s->fifo_depth = 8;
+> > +    } else {
+> > +        s->fifo_depth = 4;
+> > +    }
+> > +}
+> > +
+> > +static void mss_spi_do_reset(MSSSpiState *s)
+> > +{
+> > +    memset(s->regs, 0, sizeof s->regs);
+> > +    s->regs[R_SPI_CONTROL] = 0x80000102;
+> > +    s->regs[R_SPI_DFSIZE] = 0x4;
+> > +    s->regs[R_SPI_STATUS] = S_SSEL | S_TXFIFOEMP | S_RXFIFOEMP;
+> > +    s->regs[R_SPI_CLKGEN] = 0x7;
+> > +    s->regs[R_SPI_RIS] = 0x0;
+> > +
+> > +    s->fifo_depth = 4;
+> > +    s->frame_count = 1;
+> > +    s->enabled = false;
+> > +
+> > +    rxfifo_reset(s);
+> > +    txfifo_reset(s);
+> > +}
+> > +
+> > +static void update_mis(MSSSpiState *s)
+> > +{
+> > +    uint32_t reg = s->regs[R_SPI_CONTROL];
+> > +    uint32_t tmp;
+> > +
+> > +    /*
+> > +     * form the Control register interrupt enable bits
+> > +     * same as RIS, MIS and Interrupt clear registers for simplicity
+> > +     */
+> > +    tmp = ((reg & C_INTRXOVRFLO) >> 4) | ((reg & C_INTRXDATA) >> 3) |
+> > +           ((reg & C_INTTXDATA) >> 5);
+> > +    s->regs[R_SPI_MIS] |= tmp & s->regs[R_SPI_RIS];
+> > +}
+> > +
+> > +static void spi_update_irq(MSSSpiState *s)
+> > +{
+> > +    int irq;
+> > +
+> > +    update_mis(s);
+> > +    irq = !!(s->regs[R_SPI_MIS]);
+> > +
+> > +    qemu_set_irq(s->irq, irq);
+> > +}
+> > +
+> > +static void mss_spi_reset(DeviceState *d)
+> > +{
+> > +    mss_spi_do_reset(MSS_SPI(d));
+> > +}
+> > +
+> > +static uint64_t
+> > +spi_read(void *opaque, hwaddr addr, unsigned int size)
+> > +{
+> > +    MSSSpiState *s = opaque;
+> > +    uint32_t ret = 0;
+> > +
+> > +    addr >>= 2;
+> > +    switch (addr) {
+> > +    case R_SPI_RX:
+> > +        s->regs[R_SPI_STATUS] &= ~S_RXFIFOFUL;
+> > +        s->regs[R_SPI_STATUS] &= ~S_RXCHOVRF;
+> > +        ret = fifo32_pop(&s->rx_fifo);
+> > +        if (fifo32_is_empty(&s->rx_fifo)) {
+> > +            s->regs[R_SPI_STATUS] |= S_RXFIFOEMP;
+> > +        }
+> > +        break;
+> > +
+> > +    case R_SPI_MIS:
+> > +        update_mis(s);
+> > +        ret = s->regs[R_SPI_MIS];
+> > +        break;
+> > +
+> > +    default:
+> > +        if (addr < ARRAY_SIZE(s->regs)) {
+> > +            ret = s->regs[addr];
+> > +        } else {
+> > +            qemu_log_mask(LOG_GUEST_ERROR,
+> > +                         "%s: Bad offset 0x%" HWADDR_PRIx "\n",
+> __func__,
+> > +                         addr * 4);
+>
+> I think return here to avoid the next print statement and irq update.
+>
+
+Ok will fix it.
+
+>
+> > +        }
+> > +        break;
+> > +    }
+> > +
+> > +    DB_PRINT("addr=0x%" HWADDR_PRIx " = 0x%" PRIx32, addr * 4, ret);
+> > +    spi_update_irq(s);
+> > +    return ret;
+> > +}
+> > +
+> > +static void assert_cs(MSSSpiState *s)
+> > +{
+> > +    qemu_set_irq(s->cs_line, 0);
+> > +}
+> > +
+> > +static void deassert_cs(MSSSpiState *s)
+> > +{
+> > +    qemu_set_irq(s->cs_line, 1);
+> > +}
+> > +
+> > +static void spi_flush_txfifo(MSSSpiState *s)
+> > +{
+> > +    uint32_t tx;
+> > +    uint32_t rx;
+> > +    bool sps = !!(s->regs[R_SPI_CONTROL] & C_SPS);
+> > +
+> > +    /*
+> > +     * Chip Select(CS) is automatically controlled by this controller.
+> > +     * If SPS bit is set in Control register then CS is asserted
+> > +     * until all the frames set in frame count of Control register are
+> > +     * transferred. If SPS is not set then CS pulses between frames.
+> > +     * Note that Slave Select register specifies which of the CS line
+> > +     * has to be controlled automatically by controller. Bits SS[7:1]
+> are for
+> > +     * masters in FPGA fabric since we model only Microcontroller
+> subsystem
+> > +     * of Smartfusion2 we control only one CS(SS[0]) line.
+> > +     */
+> > +    while (!fifo32_is_empty(&s->tx_fifo) && s->frame_count) {
+> > +        assert_cs(s);
+> > +
+> > +        s->regs[R_SPI_STATUS] &= ~(S_TXDONE | S_RXRDY);
+> > +
+> > +        tx = fifo32_pop(&s->tx_fifo);
+> > +        DB_PRINT("data tx:0x%" PRIx32, tx);
+> > +        rx = ssi_transfer(s->spi, tx);
+> > +        DB_PRINT("data rx:0x%" PRIx32, rx);
+> > +
+> > +        if (fifo32_num_used(&s->rx_fifo) == s->fifo_depth) {
+> > +            s->regs[R_SPI_STATUS] |= S_RXCHOVRF;
+> > +            s->regs[R_SPI_RIS] |= S_RXCHOVRF;
+> > +        } else {
+> > +            fifo32_push(&s->rx_fifo, rx);
+> > +            s->regs[R_SPI_STATUS] &= ~S_RXFIFOEMP;
+> > +            if (fifo32_num_used(&s->rx_fifo) == (s->fifo_depth - 1)) {
+> > +                s->regs[R_SPI_STATUS] |= S_RXFIFOFULNXT;
+> > +            }
+> > +            if (fifo32_num_used(&s->rx_fifo) == s->fifo_depth) {
+>
+> I'd use an else if to indicate that both can't happen at the same time.
+>
+
+Ok will add else statement.
+
+>
+> > +                s->regs[R_SPI_STATUS] |= S_RXFIFOFUL;
+> > +            }
+> > +        }
+> > +        s->frame_count--;
+> > +        if (!sps) {
+> > +            deassert_cs(s);
+> > +            assert_cs(s);
+>
+> Do you need the asert here? Can't you just wait for it to hit the
+> start of the loop?
+>
+> Does it deassert assert and deassert after a transfer has finished?
+
+
+You are right. I guess I have written like that to indicate a pulse in the
+loop :).
+I will remove the assert.
+
+>
+
+
+> > +        }
+> > +    }
+> > +
+> > +    if (!sps) {
+> > +        deassert_cs(s);
+> > +    }
+> > +
+> > +    if (!s->frame_count) {
+> > +        s->frame_count = (s->regs[R_SPI_CONTROL] & FMCOUNT_MASK) >>
+> > +                            FMCOUNT_SHIFT;
+> > +        if (sps) {
+> > +            deassert_cs(s);
+> > +        }
+> > +        s->regs[R_SPI_RIS] |= S_TXDONE | S_RXRDY;
+> > +        s->regs[R_SPI_STATUS] |= S_TXDONE | S_RXRDY;
+> > +   }
+> > +}
+> > +
+> > +static void spi_write(void *opaque, hwaddr addr,
+> > +            uint64_t val64, unsigned int size)
+> > +{
+> > +    MSSSpiState *s = opaque;
+> > +    uint32_t value = val64;
+> > +
+> > +    DB_PRINT("addr=0x%" HWADDR_PRIx " =0x%" PRIx32, addr, value);
+> > +    addr >>= 2;
+> > +
+> > +    switch (addr) {
+> > +    case R_SPI_TX:
+> > +        /* adding to already full FIFO */
+> > +        if (fifo32_num_used(&s->tx_fifo) == s->fifo_depth) {
+> > +            break;
+> > +        }
+> > +        s->regs[R_SPI_STATUS] &= ~S_TXFIFOEMP;
+> > +        fifo32_push(&s->tx_fifo, value);
+> > +        if (fifo32_num_used(&s->tx_fifo) == (s->fifo_depth - 1)) {
+> > +            s->regs[R_SPI_STATUS] |= S_TXFIFOFULNXT;
+> > +        }
+>
+> else if here as well
+>
+> Ok will add else if.
+
+Thanks,
+Sundeep
+
+
+> Thanks,
+> Alistair
+>
+> > +        if (fifo32_num_used(&s->tx_fifo) == s->fifo_depth) {
+> > +            s->regs[R_SPI_STATUS] |= S_TXFIFOFUL;
+> > +        }
+> > +        if (s->enabled) {
+> > +            spi_flush_txfifo(s);
+> > +        }
+> > +        break;
+> > +
+> > +    case R_SPI_CONTROL:
+> > +        s->regs[R_SPI_CONTROL] = value;
+> > +        if (value & C_BIGFIFO) {
+> > +            set_fifodepth(s);
+> > +        } else {
+> > +            s->fifo_depth = 4;
+> > +        }
+> > +        s->enabled = value & C_ENABLE;
+> > +        s->frame_count = (value & FMCOUNT_MASK) >> FMCOUNT_SHIFT;
+> > +        if (value & C_RESET) {
+> > +            mss_spi_do_reset(s);
+> > +        }
+> > +        break;
+> > +
+> > +    case R_SPI_DFSIZE:
+> > +        if (s->enabled) {
+> > +            break;
+> > +        }
+> > +        s->regs[R_SPI_DFSIZE] = value;
+> > +        break;
+> > +
+> > +    case R_SPI_INTCLR:
+> > +        s->regs[R_SPI_INTCLR] = value;
+> > +        if (value & S_TXDONE) {
+> > +            s->regs[R_SPI_RIS] &= ~S_TXDONE;
+> > +        }
+> > +        if (value & S_RXRDY) {
+> > +            s->regs[R_SPI_RIS] &= ~S_RXRDY;
+> > +        }
+> > +        if (value & S_RXCHOVRF) {
+> > +            s->regs[R_SPI_RIS] &= ~S_RXCHOVRF;
+> > +        }
+> > +        break;
+> > +
+> > +    case R_SPI_MIS:
+> > +    case R_SPI_STATUS:
+> > +    case R_SPI_RIS:
+> > +            qemu_log_mask(LOG_GUEST_ERROR,
+> > +                         "%s: Write to read only register 0x%"
+> HWADDR_PRIx "\n",
+> > +                         __func__, addr * 4);
+> > +        break;
+> > +
+> > +    default:
+> > +        if (addr < ARRAY_SIZE(s->regs)) {
+> > +            s->regs[addr] = value;
+> > +        } else {
+> > +            qemu_log_mask(LOG_GUEST_ERROR,
+> > +                         "%s: Bad offset 0x%" HWADDR_PRIx "\n",
+> __func__,
+> > +                         addr * 4);
+> > +        }
+> > +        break;
+> > +    }
+> > +
+> > +    spi_update_irq(s);
+> > +}
+> > +
+> > +static const MemoryRegionOps spi_ops = {
+> > +    .read = spi_read,
+> > +    .write = spi_write,
+> > +    .endianness = DEVICE_NATIVE_ENDIAN,
+> > +    .valid = {
+> > +        .min_access_size = 1,
+> > +        .max_access_size = 4
+> > +    }
+> > +};
+> > +
+> > +static void mss_spi_realize(DeviceState *dev, Error **errp)
+> > +{
+> > +    MSSSpiState *s = MSS_SPI(dev);
+> > +    SysBusDevice *sbd = SYS_BUS_DEVICE(dev);
+> > +
+> > +    s->spi = ssi_create_bus(dev, "spi");
+> > +
+> > +    sysbus_init_irq(sbd, &s->irq);
+> > +    ssi_auto_connect_slaves(dev, &s->cs_line, s->spi);
+> > +    sysbus_init_irq(sbd, &s->cs_line);
+> > +
+> > +    memory_region_init_io(&s->mmio, OBJECT(s), &spi_ops, s,
+> > +                          TYPE_MSS_SPI, R_SPI_MAX * 4);
+> > +    sysbus_init_mmio(sbd, &s->mmio);
+> > +
+> > +    fifo32_create(&s->tx_fifo, FIFO_CAPACITY);
+> > +    fifo32_create(&s->rx_fifo, FIFO_CAPACITY);
+> > +}
+> > +
+> > +static const VMStateDescription vmstate_mss_spi = {
+> > +    .name = TYPE_MSS_SPI,
+> > +    .version_id = 1,
+> > +    .minimum_version_id = 1,
+> > +    .fields = (VMStateField[]) {
+> > +        VMSTATE_FIFO32(tx_fifo, MSSSpiState),
+> > +        VMSTATE_FIFO32(rx_fifo, MSSSpiState),
+> > +        VMSTATE_UINT32_ARRAY(regs, MSSSpiState, R_SPI_MAX),
+> > +        VMSTATE_END_OF_LIST()
+> > +    }
+> > +};
+> > +
+> > +static void mss_spi_class_init(ObjectClass *klass, void *data)
+> > +{
+> > +    DeviceClass *dc = DEVICE_CLASS(klass);
+> > +
+> > +    dc->realize = mss_spi_realize;
+> > +    dc->reset = mss_spi_reset;
+> > +    dc->vmsd = &vmstate_mss_spi;
+> > +}
+> > +
+> > +static const TypeInfo mss_spi_info = {
+> > +    .name           = TYPE_MSS_SPI,
+> > +    .parent         = TYPE_SYS_BUS_DEVICE,
+> > +    .instance_size  = sizeof(MSSSpiState),
+> > +    .class_init     = mss_spi_class_init,
+> > +};
+> > +
+> > +static void mss_spi_register_types(void)
+> > +{
+> > +    type_register_static(&mss_spi_info);
+> > +}
+> > +
+> > +type_init(mss_spi_register_types)
+> > diff --git a/include/hw/ssi/mss-spi.h b/include/hw/ssi/mss-spi.h
+> > new file mode 100644
+> > index 0000000..6c8c0b1
+> > --- /dev/null
+> > +++ b/include/hw/ssi/mss-spi.h
+> > @@ -0,0 +1,62 @@
+> > +/*
+> > + * Microsemi SmartFusion2 SPI
+> > + *
+> > + * Copyright (c) 2017 Subbaraya Sundeep <sundeep.lkml@gmail.com>
+> > + *
+> > + * Permission is hereby granted, free of charge, to any person
+> obtaining a copy
+> > + * of this software and associated documentation files (the
+> "Software"), to deal
+> > + * in the Software without restriction, including without limitation
+> the rights
+> > + * to use, copy, modify, merge, publish, distribute, sublicense, and/or
+> sell
+> > + * copies of the Software, and to permit persons to whom the Software is
+> > + * furnished to do so, subject to the following conditions:
+> > + *
+> > + * The above copyright notice and this permission notice shall be
+> included in
+> > + * all copies or substantial portions of the Software.
+> > + *
+> > + * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+> EXPRESS OR
+> > + * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+> MERCHANTABILITY,
+> > + * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT
+> SHALL
+> > + * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR
+> OTHER
+> > + * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
+> ARISING FROM,
+> > + * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+> DEALINGS IN
+> > + * THE SOFTWARE.
+> > + */
+> > +
+> > +#ifndef HW_MSS_SPI_H
+> > +#define HW_MSS_SPI_H
+> > +
+> > +#include "qemu/osdep.h"
+> > +#include "hw/sysbus.h"
+> > +#include "hw/hw.h"
+> > +#include "hw/ssi/ssi.h"
+> > +#include "qemu/fifo32.h"
+> > +#include "sysemu/sysemu.h"
+> > +#include "qemu/log.h"
+> > +
+> > +#define TYPE_MSS_SPI   "mss-spi"
+> > +#define MSS_SPI(obj)   OBJECT_CHECK(MSSSpiState, (obj), TYPE_MSS_SPI)
+> > +
+> > +#define R_SPI_MAX             16
+> > +
+> > +typedef struct MSSSpiState {
+> > +    SysBusDevice parent_obj;
+> > +
+> > +    MemoryRegion mmio;
+> > +
+> > +    qemu_irq irq;
+> > +
+> > +    qemu_irq cs_line;
+> > +
+> > +    SSIBus *spi;
+> > +
+> > +    Fifo32 rx_fifo;
+> > +    Fifo32 tx_fifo;
+> > +
+> > +    int fifo_depth;
+> > +    uint32_t frame_count;
+> > +    bool enabled;
+> > +
+> > +    uint32_t regs[R_SPI_MAX];
+> > +} MSSSpiState;
+> > +
+> > +#endif /* HW_MSS_SPI_H */
+> > --
+> > 2.5.0
+> >
+>

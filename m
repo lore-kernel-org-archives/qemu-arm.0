@@ -1,169 +1,108 @@
-Received: by 10.25.44.15 with SMTP id s15csp359235lfs;
-        Fri, 7 Jul 2017 10:32:43 -0700 (PDT)
-X-Received: by 10.223.130.36 with SMTP id 33mr1436342wrb.111.1499448763716;
-        Fri, 07 Jul 2017 10:32:43 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1499448763; cv=none;
+Received: by 10.25.44.15 with SMTP id s15csp359862lfs;
+        Fri, 7 Jul 2017 10:33:21 -0700 (PDT)
+X-Received: by 10.28.88.8 with SMTP id m8mr3068104wmb.128.1499448801489;
+        Fri, 07 Jul 2017 10:33:21 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1499448801; cv=none;
         d=google.com; s=arc-20160816;
-        b=a1nYBDp75B2AjMM+xNjgqqIYX9xzB6S57bgQS15LVu3+1HEoVriC/KP19ZMwne+7xT
-         8H04KN7B0rhmoZDBQOZCMsBbfUtuniwFOkCpHvE57gJfGudpU13La/IucGbeySTSzcuV
-         qkLFO327Ke27X6b/fKSnlrGywdck3BtQesoQo0KWJmM6A/kHSolIHR1MWHAXCCG7L7Ju
-         03/mhYApN5rxlvW11yYx1r+XS83d9tjxK4XGT3u+BOdjZnIts1mGH1Ho8YMPvezMBRpz
-         LisRA3CBdrus+MDA5q5Un1iCNU710Wdx9PVRZHG5iW7NYavFSXB5E42P1SM8pO0hO2ca
-         vrFg==
+        b=U+pIF4MYreqlRFTjj5MqXzy31LV8G7lWvbcX2thsaUWK1Dfh1Okl2b7J8IDJmC7t/o
+         ke0D2ru5YbDbjSNvMY4hZzYmSToFeEP4Oll1PM01TD/0+neWLNWIHOdRJ82jRpWS1FaK
+         SC1tOkBXCm1c2TX1Nds1n3iWmPH2yoIvGCqgcEhHTtz1W7zMeP+SZRafpgq84yknsE8Q
+         boM133UQuHjtqTpciq63R2quuY0BAK+Zz8/eCR4tNgb7+TfZ8EKnSY1pwXYBu2wAvLfF
+         j/z+253X3boGgc7cxCa9Nq9f7xHEsPryoOe0YEVzq146J94RSMph2Xkn3v34RrMOtciN
+         BZPQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:user-agent:message-id
-         :in-reply-to:date:mail-followup-to:references:subject:cc:to:from
-         :arc-authentication-results;
-        bh=ulSHCXsrP8n0gzaAf0Fk+w3RldgNS0ZtWo1VUzYuLys=;
-        b=dEa/N0RQ0ylNUdQBMANnk6z3L+0XF2g5Z6SC+Rpi8yWi6zFZQb8ozkLme38IRheLW0
-         aVLGqj7AGIqMbpqjXAMF+zADhi7WixozCGYhkMI73hqy7fglmSL5vxacB8pLHafUrSMy
-         kdCcc0IDcoYeDOTfj8nmmPt9lfqw7G4+vXdcMBGlZPkpcSdoJ/HbDMPNcRvXkKOJdHow
-         pVG1zO96SLgkGS3mlqKkEGZlwy4q9l1Zew/XxqTcQbCxNueYS9y+rQnz25Zh5mNts+gZ
-         +PIgXZOGRASrLqbBDA6VgLjhMWI2WeHjPUCpzqv9w2MDQF1GA7dUvqm3vnlghUkhcO8l
-         wXlw==
+        h=cc:to:subject:message-id:date:from:references:in-reply-to
+         :mime-version:dkim-signature:arc-authentication-results;
+        bh=4VBRQw8kE8ysO2036sj6NKYu29OrirXOc34W3PtGOoY=;
+        b=kSb5Siarm1UPBYUlGPIBHap2oIQ12Z2sl8EHsN1xiE/lEGLmBJLZ7BXyrhGRZCixGQ
+         RJJPLkcDZpfkW/OmHSA18xIVfsEyW4jsyBo6eLw0ca0bq+uEfa826yLe+vhK1sZijkOT
+         pGBnjVKAcK/V80YHhfBpaQDsgic9LeKjCXaBOABOyyZfDTfBWhGRYcEg87BaLko7nt/A
+         +yzWeDPuWSrEPcyAapms1jEdL9uMjbuIH57qxJ8aNrzxsu3Gj/JR76qJwP/F9qlHJkhu
+         jpWiTrsZ1NRNpD+ORpCRPR++QPaUmminbzep4sNA0Bv8NKg02eW8fGzZYyZb9LyzOXV5
+         uONQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of vilanova@ac.upc.edu designates 147.83.33.10 as permitted sender) smtp.mailfrom=vilanova@ac.upc.edu
-Return-Path: <vilanova@ac.upc.edu>
-Received: from roura.ac.upc.es (roura.ac.upc.es. [147.83.33.10])
-        by mx.google.com with ESMTP id 12si2635353wru.267.2017.07.07.10.32.43;
-        Fri, 07 Jul 2017 10:32:43 -0700 (PDT)
-Received-SPF: pass (google.com: domain of vilanova@ac.upc.edu designates 147.83.33.10 as permitted sender) client-ip=147.83.33.10;
+       dkim=pass header.i=@linaro.org header.b=MqvTpZfw;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 2a00:1450:400c:c0c::233 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <peter.maydell@linaro.org>
+Received: from mail-wr0-x233.google.com (mail-wr0-x233.google.com. [2a00:1450:400c:c0c::233])
+        by mx.google.com with ESMTPS id y70si18253wmh.28.2017.07.07.10.33.21
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 07 Jul 2017 10:33:21 -0700 (PDT)
+Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 2a00:1450:400c:c0c::233 as permitted sender) client-ip=2a00:1450:400c:c0c::233;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of vilanova@ac.upc.edu designates 147.83.33.10 as permitted sender) smtp.mailfrom=vilanova@ac.upc.edu
-Received: from correu-2.ac.upc.es (correu-2.ac.upc.es [147.83.30.92])
-	by roura.ac.upc.es (8.13.8/8.13.8) with ESMTP id v67HWeHa029490;
-	Fri, 7 Jul 2017 19:32:40 +0200
-Received: from localhost (63.red-83-51-187.dynamicip.rima-tde.net [83.51.187.63])
-	by correu-2.ac.upc.es (Postfix) with ESMTPSA id 1CBA3E9;
-	Fri,  7 Jul 2017 19:32:35 +0200 (CEST)
-From: =?utf-8?Q?Llu=C3=ADs_Vilanova?= <vilanova@ac.upc.edu>
-To: Richard Henderson <rth@twiddle.net>
-Cc: qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
-        Peter
- Crosthwaite <crosthwaite.peter@gmail.com>,
-        "Emilio G. Cota"
- <cota@braap.org>,
-        "open list\:ARM" <qemu-arm@nongnu.org>,
-        Paolo Bonzini
- <pbonzini@redhat.com>,
-        Alex =?utf-8?Q?Benn=C3=A9e?=
- <alex.bennee@linaro.org>
-Subject: Re: [Qemu-devel] [PATCH v11 24/29] target/arm: [tcg, a64] Port to translate_insn
-References: <149865219962.17063.10630533069463266646.stgit@frigg.lan>
-	<149865801156.17063.15618379976159104550.stgit@frigg.lan>
-	<244b5aab-8863-3139-f252-09cc02333eda@twiddle.net>
-	<87inj4ebqn.fsf@frigg.lan>
-	<c35a41d9-4c9d-3daf-2759-17a784b8711b@twiddle.net>
-Mail-Followup-To: Richard Henderson <rth@twiddle.net>,
- qemu-devel@nongnu.org,
-	Peter Maydell <peter.maydell@linaro.org>, Peter Crosthwaite
-	<crosthwaite.peter@gmail.com>, "Emilio G. Cota" <cota@braap.org>,
-	"open list\:ARM" <qemu-arm@nongnu.org>, Paolo Bonzini
-	<pbonzini@redhat.com>, Alex =?utf-8?Q?Benn=C3=A9e?=
- <alex.bennee@linaro.org>
-Date: Fri, 07 Jul 2017 19:32:29 +0200
-In-Reply-To: <c35a41d9-4c9d-3daf-2759-17a784b8711b@twiddle.net> (Richard
-	Henderson's message of "Fri, 7 Jul 2017 05:46:19 -1000")
-Message-ID: <87a84gcfv6.fsf@frigg.lan>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/25.1 (gnu/linux)
+       dkim=pass header.i=@linaro.org header.b=MqvTpZfw;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 2a00:1450:400c:c0c::233 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: by mail-wr0-x233.google.com with SMTP id c11so56057140wrc.3
+        for <alex.bennee@linaro.org>; Fri, 07 Jul 2017 10:33:21 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+         :cc;
+        bh=4VBRQw8kE8ysO2036sj6NKYu29OrirXOc34W3PtGOoY=;
+        b=MqvTpZfwrjUMB+2/R/xPA7LVhC8yMvwfXfv0KlhnIlUSCUJIQkikewV88LPv34s5MQ
+         jaY9Oi/0nzH4ET4L3vXH5lLjDIxXvxgr0QnuOSGCp2w8NgQ7DdVG8kS33WpHA1oXylXe
+         pYDlmjRIakfRqrWAsdR+xG3S+HBdFz/0vpXRw=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+         :message-id:subject:to:cc;
+        bh=4VBRQw8kE8ysO2036sj6NKYu29OrirXOc34W3PtGOoY=;
+        b=p47c1JooD5HI4wVAAtBpd2i8TR9cAYPCffIibqxnS4RxfIRihl9jD8+7Q8XePxeRi8
+         2py++SJh/sOwJhdb8Rhw+/YJ9dt2YIZ7M5I48nktEmORd4ks5KoX4HoprLGT1L3ol33Y
+         0W/QFRikkPcxPfSKjmdpN9Rx5mMeHQ6qxNQD+JUcKJSbTirDxQMcH0Led52LC/ArrF19
+         G8aLPTOXQ7F9osU3TXS6ZtFhiEU6mrwxjPxm574TeuqdqKG/jn34AqEZ2cDXK74uhlai
+         +RxeqQCTXdiVU10zkLVHEHjyAxYELQAKtpuGLTUv5vyMKtxPEuwvy0aMKL/qcFzI8Uhs
+         qGmg==
+X-Gm-Message-State: AIVw110i7D6beBKZjiPLAAk0JXpKczSxIQeQNyXfwKwUbLZe9TuFQt94
+	Ypu7SLzG2euiuCSuN2TWrWacIms2Lb/HoXQ=
+X-Received: by 10.223.172.67 with SMTP id v61mr1504817wrc.112.1499448801220;
+ Fri, 07 Jul 2017 10:33:21 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-TUID: NUeot5lq+PSi
+Received: by 10.223.134.2 with HTTP; Fri, 7 Jul 2017 10:33:00 -0700 (PDT)
+In-Reply-To: <3745ae02-3fb0-1503-9c99-98dce369f697@twiddle.net>
+References: <149865219962.17063.10630533069463266646.stgit@frigg.lan>
+ <149865776960.17063.4875279139522061160.stgit@frigg.lan> <2bfdb883-f19b-7fcf-c28b-7ce39115937e@twiddle.net>
+ <87podcebyi.fsf@frigg.lan> <3745ae02-3fb0-1503-9c99-98dce369f697@twiddle.net>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 7 Jul 2017 18:33:00 +0100
+Message-ID: <CAFEAcA_tKBtOOc8XCHYRGFT7qN3FmDD7awfvZrZA+2kbQNp82Q@mail.gmail.com>
+Subject: Re: [Qemu-devel] [PATCH v11 23/29] target/arm: [tcg] Port to translate_insn
+To: Richard Henderson <rth@twiddle.net>
+Cc: QEMU Developers <qemu-devel@nongnu.org>, Peter Crosthwaite <crosthwaite.peter@gmail.com>, 
+	"Emilio G. Cota" <cota@braap.org>, "open list:ARM" <qemu-arm@nongnu.org>, 
+	Paolo Bonzini <pbonzini@redhat.com>, =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+X-TUID: VLUp+2dtCHcm
 
-Richard Henderson writes:
+On 7 July 2017 at 16:26, Richard Henderson <rth@twiddle.net> wrote:
+> That is the purpose of DISAS_EXC too.  We've called a noreturn helper to
+> raise an exception and all following code is unreached.  If there *was* any
+> code being emitted afterward, that is arguably a bug.
 
-> On 07/07/2017 01:18 AM, Llu=C3=ADs Vilanova wrote:
->>>> diff --git a/target/arm/translate-a64.c b/target/arm/translate-a64.c
->>>> index 9c870f6d07..586a01a2de 100644
->>>> --- a/target/arm/translate-a64.c
->>>> +++ b/target/arm/translate-a64.c
->>>> @@ -11244,6 +11244,9 @@ static void aarch64_trblock_init_disas_context=
-(DisasContextBase *dcbase,
-dc-> is_ldex =3D false;
-dc-> ss_same_el =3D (arm_debug_target_el(env) =3D=3D dc->current_el);
->>>> +    dc->next_page_start =3D
->>>> +        (dc->base.pc_first & TARGET_PAGE_MASK) + TARGET_PAGE_SIZE;
->>=20
->>> I think a better solution for a fixed-length ISA is to adjust max_insns=
-. Perhaps
->>> the init_disas_context hook should be able to modify it?
->>=20
->> ARM has the thumb instructions, so it really isn't a fixed-length ISA.
+One exception to that is a conditionally executed
+exception generating exception -- there will in that
+case be a following label for the condfail case to branch
+to and the code for the condfail path.
 
-> From the filename above we're talking about AArch64 here.
-> Whcih is most definitely a fixed-width ISA.
+The distinction in the case that this code fragment is touching
+is that the cases handled in current master via 'goto
+done_generating' and in Lluis' patch as
+DISAS_SKIP are the "this insn is going to generate an
+exception without even thinking about conditional
+exception" (ie breakpoints, singlestep); DISAS_EXC
+is for "the instruction itself generates an exception,
+so don't bother with emitting too much unreachable
+code to update the PC etc, but we still need to handle
+the usual end-of-insn condfail path".
 
+We do a few things in the DISAS_EXC codepath
+(like calling gen_set_condexec()) which strictly speaking
+are pointless but which it didn't seem worth trying to
+avoid just to avoid generating a few extra bytes in the
+generated code in a not-terribly-likely case.
 
-> That said, even for AArch32 we know by the TB flags whether or not we're =
-going
-> to be generating arm or thumb code.  I think that these hooks will allow =
-arm and
-> thumb mode to finally be split apart cleanly, instead of the tangle that =
-they
-> are now.
-
-> I see arm's gen_intermediate_code eventually looking like
-
->   const TranslatorOps *ops =3D &arm_translator_ops;
->   if (ARM_TBFLAG_THUMB(tb->flags)) {
->     ops =3D &thumb_translator_ops;
->   }
-> #ifdef TARGET_AARCH64
->   if (ARM_TBFLAG_AARCH64_STATE(tb->flags)) {
->     ops =3D &aarch64_translator_ops;
->   }
-> #endif
->   translator_loop(ops, &dc.base, cpu, tb);
-
-> There would certainly be some amount of shared code, but it would also al=
-low
-> quite a few of the existing dc->thumb checks to be eliminated.
-
-Does this really need to be addressed on this series?
-
-
->>> And, while I'm thinking of it -- why is the init_globals hook separate?=
- There's
->>> nothing in between the two hook calls, and the more modern target front=
- ends
->>> won't need it.
->>=20
->> You mean merging init_disas_context and init_globals? I wanted to keep
->> semantically different code on separate hooks, but I can pull the init_g=
-lobals
->> code into init_disas_context (hoping that as targets get modernized, the=
-y won't
->> initialize any global there).
-
-> I suppose you can leave the two hooks separate for now.  It doesn't hurt,=
- and
-> it's kind of a reminder of things that need cleaning up.
-
-Well, I've sent a (too rushed) v12 that features the merge. Since I'll have=
- to
-send a v13, I can split them again if you want.
-
-
-> I do wonder if we should provide a generic empty hook, so that a target t=
-hat
-> does not need a particular hook need not define an empty function.  It co=
-uld
-> just put e.g. "translator_noop" into the structure.  Ok, maybe a better n=
-ame
-> than that...
-
-I'm not really sure it's worth the effort. The original version trated NULL=
-s as
-a "skip this operation" (as Emilio suggests to revive), but after discussin=
-g the
-approach it was decided that defining an empty function was not too much ef=
-fort,
-so that's what I went for.
-
-I can restore the NULL approach or add a default empty hook implementation
-(translator_ignored_op?) if there's a strong feeling to change it.
-
-
-Cheers,
-  Lluis
+thanks
+-- PMM

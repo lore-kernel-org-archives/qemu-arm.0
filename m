@@ -1,383 +1,122 @@
-Received: by 10.25.44.15 with SMTP id s15csp111815lfs;
-        Fri, 7 Jul 2017 06:31:30 -0700 (PDT)
-X-Received: by 10.28.35.201 with SMTP id j192mr2339292wmj.26.1499434290142;
-        Fri, 07 Jul 2017 06:31:30 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1499434290; cv=none;
+Received: by 10.25.44.15 with SMTP id s15csp235281lfs;
+        Fri, 7 Jul 2017 08:26:09 -0700 (PDT)
+X-Received: by 10.55.165.200 with SMTP id o191mr68044234qke.47.1499441169282;
+        Fri, 07 Jul 2017 08:26:09 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1499441169; cv=none;
         d=google.com; s=arc-20160816;
-        b=gdm9Etal1mtb6as5u+MJ62DRovY7kvbCTyaEwAtWbzy3oBVjAMIFWAjlagWyq5X40U
-         O8K5+6Ik5kUKgEo8KndJ/bGnJcspD2maLvR2QXERwul/OxVwoUCrxhtaqqpoqIFFvygI
-         lyZ40cvDsoWwAL04NPiRXd832r6ruu8rHLeA3zPdEL4wEfwg+wojJl8F3A/Uq1oNThiu
-         xIMPbazoCrrNM78klTIE0KT+pFUV95GLKIEsx6mGhVt7IMBPQXXHgTFumu3gwYaVW1kj
-         Blgnt9DsKrGIH3+Xe4mKuR8W3B7b32MMVrI6heJeLvJBgYNf55KtODZIPIlsAZYcd1zA
-         e52Q==
+        b=N1dyko7tgE+JirMt44oIx7mH6HAwzhBjt7ja96MxkSPBpJMwUTnaJ/YAWTYoIYuOOR
+         TpednBNAnrMnLsIZewKngbeIuqBafJp7az4WAuR/9Qzz+Kcyz9PF5HFaB1eEotD1CpMb
+         5Lfc9MmYmIFk+BSgWr8PWBUcepWh2S/svqTeX6caqfreOz0PtODMDKpjuscy1Jej61v1
+         Ai6Qpda3gD5c7WAbPggzLgBU6ku6GRfsnDPkBHiR1mQo0ymYsqCRnSZgNfGMWlQZAqzM
+         wJKBczfQR/s5WFMeZlbUINZYtv+ZpmIGR0NnzGxAvHHZlXn4oLwphOHwM3Im7S2IEosG
+         8fDg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:user-agent:references
-         :in-reply-to:message-id:date:subject:cc:to:from
-         :arc-authentication-results;
-        bh=8nIbL+lxyDq2A1hZys0GsjqJX0bhLWLoubLWOCoztZM=;
-        b=gVIP819jqDlcQFxkB5QYMXzGEGmfcuFxICKzMAnoGDD0spBGqReotrgRTBYRjodlK4
-         +RcLhKoZEDZ3qHbNhMNAAqLuLt2GQ6Nmzupj1/yGmkWZYbNKyzv4LunBUybKpMUG8ms5
-         DcKRR8ImED3yNEbQEGKGtRzbuRehZy4W/k5ItYOB7wxBEs8NZwRifhe211hSwJDoQIHM
-         XQOFjps9+h8o/qbkqoMN29GgaBZwISwtcC+RPTsAc2l5Q0L5LiFasPeGS++7j8wJQyaK
-         9XOrXG26w2eNQi0dizw67TDEQATYwg28UmvFGECujCYssVRG2DB/iMkSuLOpHgyuBthQ
-         OLPQ==
+        h=content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:to:subject:sender
+         :dkim-signature:arc-authentication-results;
+        bh=xnuT1PjozIyTMYDdw0rDzxC16HtC+VbxhrQnmfXERSA=;
+        b=0T0SHdjigQunYOFzSRW3cbevDPH8kS+rakcYsqkXjzrbIOZxaQOLWun7ZtyPQ1r/02
+         q8D3pO1/8d+EzKT2Flgo1ZjbtGiRjg8n9fzAEHw6K3jZ/ada3WF5j6aZv/h8wLmR0fwr
+         IKT0cu09KxHwsZTgsOt/WP9ZVwNgronSfjGZB4MKCai8aLTvu9Us3NVuKqOJMTV2zwlx
+         Yu50AwkbNZMM0o8vhAemAR/VCcXMmp4r3D7Ywev7TYM/+tmuWnJ2l8yx3EMHRCrW5xBC
+         ZoMOeo6gwn/VXPQjE9vCDDZOhJvu+z/U5jpcEXXQHcZYsnrcQIpvYAN4ka0ZLK/zeQqw
+         S24w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of vilanova@ac.upc.edu designates 147.83.33.10 as permitted sender) smtp.mailfrom=vilanova@ac.upc.edu
-Return-Path: <vilanova@ac.upc.edu>
-Received: from roura.ac.upc.es (roura.ac.upc.edu. [147.83.33.10])
-        by mx.google.com with ESMTP id i13si2959635wmd.88.2017.07.07.06.31.29;
-        Fri, 07 Jul 2017 06:31:30 -0700 (PDT)
-Received-SPF: pass (google.com: domain of vilanova@ac.upc.edu designates 147.83.33.10 as permitted sender) client-ip=147.83.33.10;
+       dkim=pass header.i=@gmail.com header.b=PLkKxB1P;
+       spf=pass (google.com: domain of rth7680@gmail.com designates 2607:f8b0:400d:c0d::241 as permitted sender) smtp.mailfrom=rth7680@gmail.com
+Return-Path: <rth7680@gmail.com>
+Received: from mail-qt0-x241.google.com (mail-qt0-x241.google.com. [2607:f8b0:400d:c0d::241])
+        by mx.google.com with ESMTPS id k7si3438940qkb.124.2017.07.07.08.26.09
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 07 Jul 2017 08:26:09 -0700 (PDT)
+Received-SPF: pass (google.com: domain of rth7680@gmail.com designates 2607:f8b0:400d:c0d::241 as permitted sender) client-ip=2607:f8b0:400d:c0d::241;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of vilanova@ac.upc.edu designates 147.83.33.10 as permitted sender) smtp.mailfrom=vilanova@ac.upc.edu
-Received: from correu-1.ac.upc.es (correu-1.ac.upc.es [147.83.30.91])
-	by roura.ac.upc.es (8.13.8/8.13.8) with ESMTP id v67DVRkX022994;
-	Fri, 7 Jul 2017 15:31:27 +0200
-Received: from localhost (63.red-83-51-187.dynamicip.rima-tde.net [83.51.187.63])
-	by correu-1.ac.upc.es (Postfix) with ESMTPSA id 72AF4258;
-	Fri,  7 Jul 2017 15:31:21 +0200 (CEST)
-From: =?utf-8?b?TGx1w61z?= Vilanova <vilanova@ac.upc.edu>
-To: qemu-devel@nongnu.org
-Cc: "Emilio G. Cota" <cota@braap.org>,
-        =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-        Richard Henderson <rth@twiddle.net>,
-        Peter Crosthwaite <crosthwaite.peter@gmail.com>,
-        Paolo Bonzini <pbonzini@redhat.com>,
-        Peter Maydell <peter.maydell@linaro.org>,
-        qemu-arm@nongnu.org (open list:ARM)
-Subject: [PATCH v12 27/27] target/arm: [tcg] Port to generic translation framework
-Date: Fri,  7 Jul 2017 15:31:15 +0200
-Message-Id: <149943427534.8972.12180811037907145821.stgit@frigg.lan>
-X-Mailer: git-send-email 2.13.2
-In-Reply-To: <149942760788.8972.474351671751194003.stgit@frigg.lan>
-References: <149942760788.8972.474351671751194003.stgit@frigg.lan>
-User-Agent: StGit/0.17.1-dirty
+       dkim=pass header.i=@gmail.com header.b=PLkKxB1P;
+       spf=pass (google.com: domain of rth7680@gmail.com designates 2607:f8b0:400d:c0d::241 as permitted sender) smtp.mailfrom=rth7680@gmail.com
+Received: by mail-qt0-x241.google.com with SMTP id c20so4642687qte.0;
+        Fri, 07 Jul 2017 08:26:09 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=sender:subject:to:references:from:message-id:date:user-agent
+         :mime-version:in-reply-to:content-language:content-transfer-encoding;
+        bh=xnuT1PjozIyTMYDdw0rDzxC16HtC+VbxhrQnmfXERSA=;
+        b=PLkKxB1PrhV9OTNCWn/yBzDSSvQwpcko/sifI4JpXglrYPdT+7oxqAvkttVYqE+0Qu
+         UL5jBmjPMWApfjRMBhyREAxkJbNUwN/kdaKAdsew/gawFcJ2iCLv9eDNHA5cuBjS420f
+         pJ34XGuhXO3lB1dgTdVnYePO7BsucDZUrgl311u7RAiQgbqo76/PZDte4UamBpoxlhcw
+         uCWgFUMkl2d0rLnQrwvIUyqOsmg+CLo+5jvjt25K/qCRSTkGPy3VvbmdAnSD0GfpO0K6
+         O4y0i4+Mi/WtSEG9jHZo2Yk5dOzzYC0fJAbFL8hOvzLMCTQ2Rk6AJ1h1RAL3ZEDg61Iz
+         +OhA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:sender:subject:to:references:from:message-id
+         :date:user-agent:mime-version:in-reply-to:content-language
+         :content-transfer-encoding;
+        bh=xnuT1PjozIyTMYDdw0rDzxC16HtC+VbxhrQnmfXERSA=;
+        b=cgo5XAZu38H4fHfYnzIpQaqlv2rcybzwh4AxuQkznFwru22P0+WpnqgUidREj0chHK
+         vncdz+4w3yKPmrrtSIA3xjx4b/BAyRRe4AFQP7b0ojKQhZK8gUBZjT295irj3+U8ISGB
+         p7BGCo/+fCwOxPiTeOSJH7fIsek9wHkrqQXGdQcqaJD4gPCBsc7Vqx40lZ7zpu3fd2BT
+         HJbO44W6jl6X0HV931RUt15HMhjHXNSb76oLkjTj3UTRvy31G5VEUdgwLhsfMNyi3jfV
+         zQVPYSZwUkoLSnJHTeKKw5/Kohnqb3hfjhNd+JJHkLjZMCm5nO6TmA8v05zxuJkh85nL
+         Gx1g==
+X-Gm-Message-State: AIVw111WKFyQm3vUPIU2pML6yvH+GNxnoICHDbTZb6ros+9U7Brh5DnM
+	4q8+baJafZPwyVeYGlI=
+X-Received: by 10.237.56.135 with SMTP id k7mr34590061qte.134.1499441168683;
+        Fri, 07 Jul 2017 08:26:08 -0700 (PDT)
+Return-Path: <rth7680@gmail.com>
+Received: from bigtime.twiddle.net (rrcs-66-91-136-156.west.biz.rr.com. [66.91.136.156])
+        by smtp.googlemail.com with ESMTPSA id a62sm2499157qkd.14.2017.07.07.08.26.05
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 07 Jul 2017 08:26:07 -0700 (PDT)
+Sender: Richard Henderson <rth7680@gmail.com>
+Subject: Re: [Qemu-devel] [PATCH v11 23/29] target/arm: [tcg] Port to
+ translate_insn
+To: qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
+ Peter Crosthwaite <crosthwaite.peter@gmail.com>,
+ "Emilio G. Cota" <cota@braap.org>, "open list:ARM" <qemu-arm@nongnu.org>,
+ Paolo Bonzini <pbonzini@redhat.com>, =?UTF-8?Q?Alex_Benn=c3=a9e?=
+ <alex.bennee@linaro.org>
+References: <149865219962.17063.10630533069463266646.stgit@frigg.lan>
+ <149865776960.17063.4875279139522061160.stgit@frigg.lan>
+ <2bfdb883-f19b-7fcf-c28b-7ce39115937e@twiddle.net> <87podcebyi.fsf@frigg.lan>
+From: Richard Henderson <rth@twiddle.net>
+Message-ID: <3745ae02-3fb0-1503-9c99-98dce369f697@twiddle.net>
+Date: Fri, 7 Jul 2017 05:26:03 -1000
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+ Thunderbird/52.2.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
+In-Reply-To: <87podcebyi.fsf@frigg.lan>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-X-TUID: rWf2ivnYJQvt
+X-TUID: QzSI3E4w8SLZ
 
-Signed-off-by: Lluís Vilanova <vilanova@ac.upc.edu>
----
- target/arm/translate-a64.c |  120 ++++++-------------------------------------
- target/arm/translate.c     |  124 +++++++-------------------------------------
- target/arm/translate.h     |    8 ---
- 3 files changed, 37 insertions(+), 215 deletions(-)
+On 07/07/2017 01:13 AM, Lluís Vilanova wrote:
+>>> +    if (dc->ss_active && !dc->pstate_ss) {
+>>> +        /* Singlestep state is Active-pending.
+>>> +         * If we're in this state at the start of a TB then either
+>>> +         *  a) we just took an exception to an EL which is being debugged
+>>> +         *     and this is the first insn in the exception handler
+>>> +         *  b) debug exceptions were masked and we just unmasked them
+>>> +         *     without changing EL (eg by clearing PSTATE.D)
+>>> +         * In either case we're going to take a swstep exception in the
+>>> +         * "did not step an insn" case, and so the syndrome ISV and EX
+>>> +         * bits should be zero.
+>>> +         */
+>>> +        assert(dc->base.num_insns == 1);
+>>> +        gen_exception(EXCP_UDEF, syn_swstep(dc->ss_same_el, 0, 0),
+>>> +                      default_exception_el(dc));
+>>> +        dc->base.is_jmp = DISAS_SKIP;
+> 
+>> This is surely DISAS_EXC -- see gen_step_complete_exception.
+>> Why introduce a new name?
+> 
+> The original code goes straight to done_generating here, and that's the purpose
+> of DISAS_SKIP (skip the code executed between the end of the loop and the
+> done_generating label).
 
-diff --git a/target/arm/translate-a64.c b/target/arm/translate-a64.c
-index ea60d43a95..b569144ed9 100644
---- a/target/arm/translate-a64.c
-+++ b/target/arm/translate-a64.c
-@@ -11250,6 +11250,10 @@ static void aarch64_tr_init_disas_context(DisasContextBase *dcbase,
-     init_tmp_a64_array(dc);
- }
- 
-+static void aarch64_tr_tb_start(DisasContextBase *db, CPUState *cpu)
-+{
-+}
-+
- static void aarch64_tr_insn_start(DisasContextBase *dcbase, CPUState *cpu)
- {
-     DisasContext *dc = container_of(dcbase, DisasContext, base);
-@@ -11377,6 +11381,9 @@ static void aarch64_tr_tb_stop(DisasContextBase *dcbase, CPUState *cpu)
-             break;
-         }
-     }
-+
-+    /* Functions above can change dc->pc, so re-align db->pc_next */
-+    dc->base.pc_next = dc->pc;
- }
- 
- static void aarch64_tr_disas_log(const DisasContextBase *dcbase,
-@@ -11389,107 +11396,12 @@ static void aarch64_tr_disas_log(const DisasContextBase *dcbase,
-                      4 | (bswap_code(dc->sctlr_b) ? 2 : 0));
- }
- 
--void gen_intermediate_code_a64(DisasContextBase *dcbase, CPUState *cs,
--                               TranslationBlock *tb)
--{
--    DisasContext *dc = container_of(dcbase, DisasContext, base);
--    int max_insns;
--
--    dc->base.tb = tb;
--    dc->base.pc_first = dc->base.tb->pc;
--    dc->base.pc_next = dc->base.pc_first;
--    dc->base.is_jmp = DISAS_NEXT;
--    dc->base.num_insns = 0;
--    dc->base.singlestep_enabled = cs->singlestep_enabled;
--    aarch64_tr_init_disas_context(&dc->base, cs);
--
--    max_insns = dc->base.tb->cflags & CF_COUNT_MASK;
--    if (max_insns == 0) {
--        max_insns = CF_COUNT_MASK;
--    }
--    if (max_insns > TCG_MAX_INSNS) {
--        max_insns = TCG_MAX_INSNS;
--    }
--
--    gen_tb_start(tb);
--
--    tcg_clear_temp_count();
--
--    do {
--        dc->base.num_insns++;
--        aarch64_tr_insn_start(&dc->base, cs);
--
--        if (unlikely(!QTAILQ_EMPTY(&cs->breakpoints))) {
--            CPUBreakpoint *bp;
--            QTAILQ_FOREACH(bp, &cs->breakpoints, entry) {
--                if (bp->pc == dc->base.pc_next) {
--                    BreakpointCheckType bp_check =
--                        aarch64_tr_breakpoint_check(&dc->base, cs, bp);
--                    switch (bp_check) {
--                    case BC_MISS:
--                        /* Target ignored this breakpoint, go to next */
--                        break;
--                    case BC_HIT_INSN:
--                        /* Hit, keep translating */
--                        /*
--                         * TODO: if we're never going to have more than one
--                         *       BP in a single address, we can simply use a
--                         *       bool here.
--                         */
--                        goto done_breakpoints;
--                    case BC_HIT_TB:
--                        /* Hit, end TB */
--                        goto done_generating;
--                    default:
--                        g_assert_not_reached();
--                    }
--                }
--            }
--        }
--    done_breakpoints:
--
--        if (dc->base.num_insns == max_insns && (dc->base.tb->cflags & CF_LAST_IO)) {
--            gen_io_start();
--        }
--
--        dc->base.pc_next = aarch64_tr_translate_insn(&dc->base, cs);
--
--        if (tcg_check_temp_count()) {
--            fprintf(stderr, "TCG temporary leak before "TARGET_FMT_lx"\n",
--                    dc->pc);
--        }
--
--        if (!dc->base.is_jmp && (tcg_op_buf_full() || cs->singlestep_enabled ||
--                            singlestep || dc->base.num_insns >= max_insns)) {
--            dc->base.is_jmp = DISAS_TOO_MANY;
--        }
--
--        /* Translation stops when a conditional branch is encountered.
--         * Otherwise the subsequent code could get translated several times.
--         * Also stop translation when a page boundary is reached.  This
--         * ensures prefetch aborts occur at the right place.
--         */
--    } while (!dc->base.is_jmp);
--
--    aarch64_tr_tb_stop(&dc->base, cs);
--
--    if (dc->base.tb->cflags & CF_LAST_IO) {
--        gen_io_end();
--    }
--
--done_generating:
--    gen_tb_end(tb, dc->base.num_insns);
--
--#ifdef DEBUG_DISAS
--    if (qemu_loglevel_mask(CPU_LOG_TB_IN_ASM) &&
--        qemu_log_in_addr_range(dc->base.pc_first)) {
--        qemu_log_lock();
--        qemu_log("----------------\n");
--        aarch64_tr_disas_log(&dc->base, cs);
--        qemu_log("\n");
--        qemu_log_unlock();
--    }
--#endif
--    dc->base.tb->size = dc->pc - dc->base.pc_first;
--    dc->base.tb->icount = dc->base.num_insns;
--}
-+const TranslatorOps aarch64_translator_ops = {
-+    .init_disas_context = aarch64_tr_init_disas_context,
-+    .tb_start = aarch64_tr_tb_start,
-+    .insn_start = aarch64_tr_insn_start,
-+    .breakpoint_check = aarch64_tr_breakpoint_check,
-+    .translate_insn = aarch64_tr_translate_insn,
-+    .tb_stop = aarch64_tr_tb_stop,
-+    .disas_log = aarch64_tr_disas_log,
-+};
-diff --git a/target/arm/translate.c b/target/arm/translate.c
-index 5db381491f..bb6be76696 100644
---- a/target/arm/translate.c
-+++ b/target/arm/translate.c
-@@ -12131,6 +12131,9 @@ static void arm_tr_tb_stop(DisasContextBase *dcbase, CPUState *cpu)
-             gen_goto_tb(dc, 1, dc->pc);
-         }
-     }
-+
-+    /* Functions above can change dc->pc, so re-align db->pc_next */
-+    dc->base.pc_next = dc->pc;
- }
- 
- static void arm_tr_disas_log(const DisasContextBase *dcbase, CPUState *cpu)
-@@ -12142,116 +12145,29 @@ static void arm_tr_disas_log(const DisasContextBase *dcbase, CPUState *cpu)
-                      dc->thumb | (dc->sctlr_b << 1));
- }
- 
-+static const TranslatorOps arm_translator_ops = {
-+    .init_disas_context = arm_tr_init_disas_context,
-+    .tb_start = arm_tr_tb_start,
-+    .insn_start = arm_tr_insn_start,
-+    .breakpoint_check = arm_tr_breakpoint_check,
-+    .translate_insn = arm_tr_translate_insn,
-+    .tb_stop = arm_tr_tb_stop,
-+    .disas_log = arm_tr_disas_log,
-+};
-+
- /* generate intermediate code for basic block 'tb'.  */
--void gen_intermediate_code(CPUState *cs, TranslationBlock *tb)
-+void gen_intermediate_code(CPUState *cpu, TranslationBlock *tb)
- {
--    DisasContext dc1, *dc = &dc1;
--    int max_insns;
-+    DisasContext dc;
-+    const TranslatorOps *ops = &arm_translator_ops;
- 
--    /* generate intermediate code */
--
--    /* The A64 decoder has its own top level loop, because it doesn't need
--     * the A32/T32 complexity to do with conditional execution/IT blocks/etc.
--     */
-+#ifdef TARGET_AARCH64
-     if (ARM_TBFLAG_AARCH64_STATE(tb->flags)) {
--        gen_intermediate_code_a64(&dc->base, cs, tb);
--        return;
--    }
--
--    dc->base.tb = tb;
--    dc->base.pc_first = dc->base.tb->pc;
--    dc->base.pc_next = dc->base.pc_first;
--    dc->base.is_jmp = DISAS_NEXT;
--    dc->base.num_insns = 0;
--    dc->base.singlestep_enabled = cs->singlestep_enabled;
--    arm_tr_init_disas_context(&dc->base, cs);
--
--
--    arm_tr_init_globals(&dc->base, cs);
--    max_insns = tb->cflags & CF_COUNT_MASK;
--    if (max_insns == 0) {
--        max_insns = CF_COUNT_MASK;
--    }
--    if (max_insns > TCG_MAX_INSNS) {
--        max_insns = TCG_MAX_INSNS;
--    }
--
--    gen_tb_start(tb);
--
--    tcg_clear_temp_count();
--    arm_tr_tb_start(&dc->base, cs);
--
--    do {
--        dc->base.num_insns++;
--        arm_tr_insn_start(&dc->base, cs);
--
--        if (unlikely(!QTAILQ_EMPTY(&cs->breakpoints))) {
--            CPUBreakpoint *bp;
--            QTAILQ_FOREACH(bp, &cs->breakpoints, entry) {
--                if (bp->pc == dc->base.pc_next) {
--                    BreakpointCheckType bp_check =
--                        arm_tr_breakpoint_check(&dc->base, cs, bp);
--                    switch (bp_check) {
--                    case BC_MISS:
--                        /* Target ignored this breakpoint, go to next */
--                        break;
--                    case BC_HIT_INSN:
--                        /* Hit, keep translating */
--                        /*
--                         * TODO: if we're never going to have more than one
--                         *       BP in a single address, we can simply use a
--                         *       bool here.
--                         */
--                        goto done_breakpoints;
--                    case BC_HIT_TB:
--                        /* Hit, end TB */
--                        goto done_generating;
--                    default:
--                        g_assert_not_reached();
--                    }
--                }
--            }
--        }
--    done_breakpoints:
--
--        if (dc->base.num_insns == max_insns && (tb->cflags & CF_LAST_IO)) {
--            gen_io_start();
--        }
--
--        dc->base.pc_next = arm_tr_translate_insn(&dc->base, cs);
--
--        if (tcg_check_temp_count()) {
--            fprintf(stderr, "TCG temporary leak before "TARGET_FMT_lx"\n",
--                    dc->pc);
--        }
--
--        if (!dc->base.is_jmp && (tcg_op_buf_full() || singlestep ||
--                            dc->base.num_insns >= max_insns)) {
--            dc->base.is_jmp = DISAS_TOO_MANY;
--        }
--    } while (!dc->base.is_jmp);
--
--    arm_tr_tb_stop(&dc->base, cs);
--
--    if (dc->base.tb->cflags & CF_LAST_IO) {
--        gen_io_end();
--    }
--
--done_generating:
--    gen_tb_end(tb, dc->base.num_insns);
--
--#ifdef DEBUG_DISAS
--    if (qemu_loglevel_mask(CPU_LOG_TB_IN_ASM) &&
--        qemu_log_in_addr_range(dc->base.pc_first)) {
--        qemu_log_lock();
--        qemu_log("----------------\n");
--        arm_tr_disas_log(&dc->base, cs);
--        qemu_log("\n");
--        qemu_log_unlock();
-+        ops = &aarch64_translator_ops;
-     }
- #endif
--    tb->size = dc->pc - dc->base.pc_first;
--    tb->icount = dc->base.num_insns;
-+
-+    translator_loop(ops, &dc.base, cpu, tb);
- }
- 
- static const char *cpu_mode_names[16] = {
-diff --git a/target/arm/translate.h b/target/arm/translate.h
-index 83e56dcb08..69d4b2f082 100644
---- a/target/arm/translate.h
-+++ b/target/arm/translate.h
-@@ -153,21 +153,15 @@ static void disas_set_insn_syndrome(DisasContext *s, uint32_t syn)
- 
- #ifdef TARGET_AARCH64
- void a64_translate_init(void);
--void gen_intermediate_code_a64(DisasContextBase *db, CPUState *cpu,
--                               TranslationBlock *tb);
- void gen_a64_set_pc_im(uint64_t val);
- void aarch64_cpu_dump_state(CPUState *cs, FILE *f,
-                             fprintf_function cpu_fprintf, int flags);
-+extern const TranslatorOps aarch64_translator_ops;
- #else
- static inline void a64_translate_init(void)
- {
- }
- 
--static inline void gen_intermediate_code_a64(DisasContextBase *db, CPUState *cpu,
--                                             TranslationBlock *tb)
--{
--}
--
- static inline void gen_a64_set_pc_im(uint64_t val)
- {
- }
+That is the purpose of DISAS_EXC too.  We've called a noreturn helper to raise 
+an exception and all following code is unreached.  If there *was* any code 
+being emitted afterward, that is arguably a bug.
+
+
+r~

@@ -1,75 +1,75 @@
-Received: by 10.25.44.15 with SMTP id s15csp3002022lfs;
-        Fri, 7 Jul 2017 00:26:21 -0700 (PDT)
-X-Received: by 10.237.32.141 with SMTP id 13mr35948822qtb.41.1499412381431;
-        Fri, 07 Jul 2017 00:26:21 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1499412381; cv=none;
+Received: by 10.25.44.15 with SMTP id s15csp3006805lfs;
+        Fri, 7 Jul 2017 00:31:51 -0700 (PDT)
+X-Received: by 10.55.104.85 with SMTP id d82mr59670748qkc.165.1499412711384;
+        Fri, 07 Jul 2017 00:31:51 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1499412711; cv=none;
         d=google.com; s=arc-20160816;
-        b=q7aKh48gffj02E6ALSnujYzOrkJM7iXWdbnKkKXwqvIMkBn4U1fHy+rZ6kqn3i4PD4
-         mspzOtdPYds5Vqzs6IpRBOALR3Ax7q7hgI3fA1TYBXY23Lx3tsnGtiOsF6WJYKX4YFs6
-         tMYAqAsppuq/hCvPNgt90CbUVAWGC21yAcW5TVjz1kO+9BCyAa0ROLUQDTUmo7jkgf9b
-         XG4SI/mgbq0ndTWWm7ZJh2YAFJtbwljXGdKgBRwwbup/vc/8S8t2t2FZXsgPvsBw895b
-         svqQQBdN6StGr9GL4ZqlxIWMG1f4I6mtgIIVnxplkgXUSpOPR7OC7bscjOtr5zasVpNQ
-         ugBQ==
+        b=yssbvX1ca4xeQm3+VeoDFBsQRNaPjeCGPtXSwQskPYMrzexZl63oEYj/dY+hTh9REb
+         PFglLg5XkaOe7l3k7zlFtLv8pl1rGe3TRm7kMAIr67CR5yy5Gojjz5EL1OSdMWMGwyx+
+         XaNI3B+VWASb2IMlw3LMZ+i/W+QrNPii8LyhQZaqIAef6cRZmToGuWfBYBpm8lLJHIbF
+         PY+KKPHkloqHgJcsZjEm+IXFULVxNX375Ji8pSF4V61PZfxqA4Yzle76QZPfjqTkfpZW
+         gTz27A7EVeEL40uSVYnlpnD2HW/nW6eoWE2/SBef9J1Qot4NRnw1qskMSvJ//7dqmZoW
+         eIIw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
          :message-id:from:references:to:dkim-filter:dmarc-filter
          :arc-authentication-results;
-        bh=FifiJeFIYQ2Rcr79xLCugUxh69yOWCPmvmMpQLPc2vs=;
-        b=SmVNzbKbZIjhuC9p19qInZdvw27DBrEZgAlE9homeg3iGbn3lpfgiAEZZ9YGM1Ryhd
-         6DMfh6Wpi4JhcKrldFonsezY1RjSCixOYTFUAH0K2vPXi1qs5q2FCo8CkoFrYnJgUE94
-         SaHcdMCNAI0YbJHDZtqm/78Mt2aDZAqjEgGZNP2Umg2V6qmaejAn2xeQHthQHPHjPQJn
-         og6HDNRtgYL7cOLItd2Bz0eEi40jq5G1W0DebnPTH/iFpUQDgl+C/Xpo8yzRNhCAaS+R
-         S63MsMX509rZhM5FFTsE53WAyGNu1mNbBgUvoU7+rjMasHt/YjQKF7a7dTNQDVe2w62l
-         T+mg==
+        bh=+9kF3BwK6DeRh/C9kPPrBei5w9vxd3zQ1919JiZ7QQo=;
+        b=lwo3+jA2X3u8gHvj3XBxKzwE+9wPL6hXXsDrxMJLjHE0+7IVZZKyV8c+kL39mNOfeJ
+         dizgVVpcHiILL7dyqQPboTYOh2XSRMfQ3v4CENhteW+/h9f/fOJONkmd8+6wDmyj6O7O
+         npOqULURaQeOjanMeVzBpkwk+uioemkbhYzmzAPCZ2ioUQ4VCHyHsco+KGHlJOkUJUfI
+         9gF1juiWdM16TlrIaA6HClOynlIKTYxfZoz1/Oz0/utMcvBvpr7sgGUgi3eI3EF7rhF4
+         bY0ZFhAwLgIkE6iCfsNbrSdCEOmuTOJqjefZOaSNiniHXyTXn9GzbB/14F8nYWAUSNA3
+         D8tg==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id l186si2573142qkb.73.2017.07.07.00.26.20
+        by mx.google.com with ESMTPS id n132si2464648qka.278.2017.07.07.00.31.50
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 07 Jul 2017 00:26:21 -0700 (PDT)
+        Fri, 07 Jul 2017 00:31:51 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:54960 helo=lists.gnu.org)
+Received: from localhost ([::1]:54975 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1dTNec-0001u8-SV
-	for alex.bennee@linaro.org; Fri, 07 Jul 2017 03:26:18 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:58355)
+	id 1dTNjw-0004FS-Sm
+	for alex.bennee@linaro.org; Fri, 07 Jul 2017 03:31:48 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:59296)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1dTNeU-0001sN-L1
-	for qemu-arm@nongnu.org; Fri, 07 Jul 2017 03:26:12 -0400
+	(envelope-from <eric.auger@redhat.com>) id 1dTNjn-0004E1-Pi
+	for qemu-arm@nongnu.org; Fri, 07 Jul 2017 03:31:40 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1dTNeP-00080O-Uw
-	for qemu-arm@nongnu.org; Fri, 07 Jul 2017 03:26:09 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:32896)
+	(envelope-from <eric.auger@redhat.com>) id 1dTNji-0001WH-R6
+	for qemu-arm@nongnu.org; Fri, 07 Jul 2017 03:31:39 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:60962)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <eric.auger@redhat.com>)
-	id 1dTNeP-0007zw-Lu; Fri, 07 Jul 2017 03:26:05 -0400
+	id 1dTNji-0001Ve-HY; Fri, 07 Jul 2017 03:31:34 -0400
 Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
 	[10.5.11.11])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 5779CC0467C4;
-	Fri,  7 Jul 2017 07:26:04 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 5779CC0467C4
-Authentication-Results: ext-mx07.extmail.prod.ext.phx2.redhat.com;
+	by mx1.redhat.com (Postfix) with ESMTPS id 4D1BA4DD49;
+	Fri,  7 Jul 2017 07:31:33 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 4D1BA4DD49
+Authentication-Results: ext-mx09.extmail.prod.ext.phx2.redhat.com;
 	dmarc=none (p=none dis=none) header.from=redhat.com
-Authentication-Results: ext-mx07.extmail.prod.ext.phx2.redhat.com;
+Authentication-Results: ext-mx09.extmail.prod.ext.phx2.redhat.com;
 	spf=pass smtp.mailfrom=eric.auger@redhat.com
-DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com 5779CC0467C4
+DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com 4D1BA4DD49
 Received: from localhost.localdomain (ovpn-116-31.ams2.redhat.com
 	[10.36.116.31])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 8882E5C311;
-	Fri,  7 Jul 2017 07:25:55 +0000 (UTC)
-To: Bharat Bhushan <bharat.bhushan@nxp.com>,
-	Jean-Philippe Brucker <jean-philippe.brucker@arm.com>,
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 20B545C311;
+	Fri,  7 Jul 2017 07:31:23 +0000 (UTC)
+To: Jean-Philippe Brucker <jean-philippe.brucker@arm.com>,
+	Bharat Bhushan <bharat.bhushan@nxp.com>,
 	"eric.auger.pro@gmail.com" <eric.auger.pro@gmail.com>,
 	"peter.maydell@linaro.org" <peter.maydell@linaro.org>,
 	"alex.williamson@redhat.com" <alex.williamson@redhat.com>,
@@ -86,22 +86,20 @@ References: <1496851287-9428-1-git-send-email-eric.auger@redhat.com>
 	<8a7fb667-e6c0-2412-6dca-a8233dd27836@redhat.com>
 	<HE1PR0401MB255696A487DFEB2B8972980F9AD40@HE1PR0401MB2556.eurprd04.prod.outlook.com>
 	<e9ea564a-f02b-0ed5-e700-b7b1dfd89722@arm.com>
-	<AM5PR0401MB25459345E9533FFC3BBE00289AD50@AM5PR0401MB2545.eurprd04.prod.outlook.com>
-	<15b631c8-5708-1426-90a2-9be51a796614@redhat.com>
-	<AM5PR0401MB2545C23F66D6D0E096DCB0369AAA0@AM5PR0401MB2545.eurprd04.prod.outlook.com>
+	<444508ab-3a69-6c12-cb72-42c0e20fb5d7@redhat.com>
 From: Auger Eric <eric.auger@redhat.com>
-Message-ID: <a67cb139-e1b6-02fc-d451-4001bcbfceb3@redhat.com>
-Date: Fri, 7 Jul 2017 09:25:54 +0200
+Message-ID: <8ee34a60-6096-1988-c0f0-637aac5e8be2@redhat.com>
+Date: Fri, 7 Jul 2017 09:31:22 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
 	Thunderbird/45.4.0
 MIME-Version: 1.0
-In-Reply-To: <AM5PR0401MB2545C23F66D6D0E096DCB0369AAA0@AM5PR0401MB2545.eurprd04.prod.outlook.com>
+In-Reply-To: <444508ab-3a69-6c12-cb72-42c0e20fb5d7@redhat.com>
 Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
 X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.31]);
-	Fri, 07 Jul 2017 07:26:04 +0000 (UTC)
-Content-Transfer-Encoding: quoted-printable
+	(mx1.redhat.com [10.5.110.38]);
+	Fri, 07 Jul 2017 07:31:33 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 209.132.183.28
@@ -126,212 +124,99 @@ Cc: "kevin.tian@intel.com" <kevin.tian@intel.com>,
 	"christoffer.dall@linaro.org" <christoffer.dall@linaro.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 1EfpXQyx99tX
+X-TUID: aHq9kGlPrlbA
 
+Hi,
 
+On 06/07/2017 23:11, Auger Eric wrote:
+> Hello Bharat, Jean-Philippe,
+> On 06/07/2017 12:02, Jean-Philippe Brucker wrote:
+>> On 05/07/17 09:49, Bharat Bhushan wrote:>>> Also when setup msi-route
+>> kvm_irqchip_add_msi_route() we needed to
+>>>> provide the translated address.
+>>>>> According to my understanding this is required because kernel does no go
+>>>> through viommu translation when generating interrupt, no?
+>>>>
+>>>> yes this is needed when KVM MSI routes are set up, ie. along with GICV3 ITS.
+>>>> With GICv2M, qemu direct gsi mapping is used and this is not needed.
+>>>>
+>>>> So I do not understand your previous sentence saying "MSI interrupts works
+>>>> without any change".
+>>>
+>>> I have almost completed vfio integration with virtio-iommu and now testing the changes by assigning e1000 device to VM. For this I have changed virtio-iommu driver to use IOMMU_RESV_MSI rather than sw-msi and this does not need changed in vfio_get_addr()  and kvm_irqchip_add_msi_route()
+>>
+>> I understand you're reserving region 0x08000000-0x08100000 as
+>> IOMMU_RESV_MSI instead of IOMMU_RESV_SW_MSI? I think this only works
+>> because Qemu places the vgic in that area as well (in hw/arm/virt.c). It's
+>> not a coincidence if the addresses are the same, because Eric chose them
+>> for the Linux SMMU drivers and I copied them.
+> 
+> Yes I chose this region because it does not overlap with any guest RAM
+> region
+> 
+>>
+>> We can't rely on that behavior, though, it will break MSIs in emulated
+>> devices. And if Qemu happens to move the MSI doorbell in future machine
+>> revisions, then it would also break VFIO.
+>>
+>> Just for my own understanding -- what happens, I think, is that in Linux
+>> iova_reserve_iommu_regions initially reserves the guest-physical doorbell
+>> 0x08000000-0x08100000. Then much later, when the device driver requests an
+>> MSI, the irqchip driver calls iommu_dma_map_msi_msg with the
+>> guest-physical gicv2m address 0x08020000. The function finds the right
+>> page in msi_page_list, which was added by cookie_init_hw_msi_region,
+>> therefore bypassing the viommu and the GPA gets written in the MSI-X table.
+> 
+> I share Jean's understanding. To me using IOMMU_RESV_MSI in the
+> virtio-iommu means this region is not translated by the IOMMU. as
+> cookie_init_hw_msi_region() pre-allocates the msi_page array,
+> iommu_dma_get_msi_page() does not do any IOMMU mapping.
+> 
+>>
+>> If an emulated device such as virtio-net-pci were to generate an MSI, then
+>> Qemu would attempt to access the doorbell written by Linux into the MSI-X
+>> table, 0x08020000, and fault because that address wasn't mapped in the viommu.
+> Yes so I am confused, how can it work with a virtio-net-pci or
+> passthrough'ed e1000e device using MSIs?
+>>
+>> So for VFIO, you either need to translate the MSI-X entry using the
+>> viommu,
+> 
+> For the vsmmuv3 I created a dedicated IOMMUNotifier to handle the fact
+> the MSI doorbell is translated and MSI routes need to be updated. This
+> seems to work.
+> 
+>  or just assume that the vaddr corresponds to the only MSI doorbell
+>> accessible by this device (because how can we be certain that the guest
+>> already mapped the doorbell before writing the entry?)
+>>
+>> For ARM machines it's probably best to stick with IOMMU_RESV_SW_MSI.
+>> However, a nice way to use IOMMU_RESV_MSI would be for the virtio-iommu
+>> device to advertise identity-mapped/reserved regions, and bypass
+>> translation on these regions. Then the driver could reserve those with
+>> IOMMU_RESV_MSI.
+> 
+> At least we may need to configure the virtio-iommu to either bypass MSIs
+> (x86) or translate MSIs (ARM)?
 
-On 07/07/2017 08:25, Bharat Bhushan wrote:
-> Hi Eric,
->=20
->> -----Original Message-----
->> From: Auger Eric [mailto:eric.auger@redhat.com]
->> Sent: Friday, July 07, 2017 2:47 AM
->> To: Bharat Bhushan <bharat.bhushan@nxp.com>; Jean-Philippe Brucker
->> <jean-philippe.brucker@arm.com>; eric.auger.pro@gmail.com;
->> peter.maydell@linaro.org; alex.williamson@redhat.com; mst@redhat.com;
->> qemu-arm@nongnu.org; qemu-devel@nongnu.org
->> Cc: wei@redhat.com; kevin.tian@intel.com; marc.zyngier@arm.com;
->> tn@semihalf.com; will.deacon@arm.com; drjones@redhat.com;
->> robin.murphy@arm.com; christoffer.dall@linaro.org
->> Subject: Re: [Qemu-devel] [RFC v2 0/8] VIRTIO-IOMMU device
->>
->> Hi Bharat,
->>
->> On 06/07/2017 13:24, Bharat Bhushan wrote:
->>>
->>>
->>>> -----Original Message-----
->>>> From: Jean-Philippe Brucker [mailto:jean-philippe.brucker@arm.com]
->>>> Sent: Thursday, July 06, 2017 3:33 PM
->>>> To: Bharat Bhushan <bharat.bhushan@nxp.com>; Auger Eric
->>>> <eric.auger@redhat.com>; eric.auger.pro@gmail.com;
->>>> peter.maydell@linaro.org; alex.williamson@redhat.com;
->> mst@redhat.com;
->>>> qemu-arm@nongnu.org; qemu-devel@nongnu.org
->>>> Cc: wei@redhat.com; kevin.tian@intel.com; marc.zyngier@arm.com;
->>>> tn@semihalf.com; will.deacon@arm.com; drjones@redhat.com;
->>>> robin.murphy@arm.com; christoffer.dall@linaro.org
->>>> Subject: Re: [Qemu-devel] [RFC v2 0/8] VIRTIO-IOMMU device
->>>>
->>>> On 05/07/17 09:49, Bharat Bhushan wrote:>>> Also when setup msi-rout=
-e
->>>> kvm_irqchip_add_msi_route() we needed to
->>>>>> provide the translated address.
->>>>>>> According to my understanding this is required because kernel doe=
-s
->>>>>>> no go
->>>>>> through viommu translation when generating interrupt, no?
->>>>>>
->>>>>> yes this is needed when KVM MSI routes are set up, ie. along with
->>>>>> GICV3
->>>> ITS.
->>>>>> With GICv2M, qemu direct gsi mapping is used and this is not neede=
-d.
->>>>>>
->>>>>> So I do not understand your previous sentence saying "MSI
->>>>>> interrupts works without any change".
->>>>>
->>>>> I have almost completed vfio integration with virtio-iommu and now
->>>>> testing the changes by assigning e1000 device to VM. For this I hav=
-e
->>>>> changed virtio-iommu driver to use IOMMU_RESV_MSI rather than sw-
->> msi
->>>>> and this does not need changed in vfio_get_addr()  and
->>>>> kvm_irqchip_add_msi_route()
->>>>
->>>> I understand you're reserving region 0x08000000-0x08100000 as
->>>> IOMMU_RESV_MSI instead of IOMMU_RESV_SW_MSI? I think this only
->> works
->>>> because Qemu places the vgic in that area as well (in hw/arm/virt.c)=
-.
->>>> It's not a coincidence if the addresses are the same, because Eric
->>>> chose them for the Linux SMMU drivers and I copied them.
->>>>
->>>> We can't rely on that behavior, though, it will break MSIs in
->>>> emulated devices. And if Qemu happens to move the MSI doorbell in
->>>> future machine revisions, then it would also break VFIO.
->>>
->>> Yes, make sense to me
->>>
->>>>
->>>> Just for my own understanding -- what happens, I think, is that in
->>>> Linux iova_reserve_iommu_regions initially reserves the
->>>> guest-physical doorbell 0x08000000-0x08100000. Then much later, when
->>>> the device driver requests an MSI, the irqchip driver calls
->>>> iommu_dma_map_msi_msg with the guest- physical gicv2m address
->>>> 0x08020000. The function finds the right page in msi_page_list, whic=
-h
->>>> was added by cookie_init_hw_msi_region, therefore bypassing the
->> viommu and the GPA gets written in the MSI-X table.
->>>
->>> This means in case tomorrow when qemu changes virt machine address
->> map and vgic-its (its-translator register address) address range does =
-not fall
->> in the msi_page_list then it will allocate a new iova, create mapping =
-in
->> iommu. So this will no longer be identity mapped and fail to work with=
- new
->> qemu?
->>>
->> Yes that's correct.
->>>>
->>>> If an emulated device such as virtio-net-pci were to generate an MSI=
-,
->>>> then Qemu would attempt to access the doorbell written by Linux into
->>>> the MSI-X table, 0x08020000, and fault because that address wasn't
->>>> mapped in the viommu.
->>>>
->>>> So for VFIO, you either need to translate the MSI-X entry using the
->>>> viommu, or just assume that the vaddr corresponds to the only MSI
->>>> doorbell accessible by this device (because how can we be certain
->>>> that the guest already mapped the doorbell before writing the entry?=
-)
->>>>
->>>> For ARM machines it's probably best to stick with
->> IOMMU_RESV_SW_MSI.
->>>> However, a nice way to use IOMMU_RESV_MSI would be for the virtio-
->>>> iommu device to advertise identity-mapped/reserved regions, and
->>>> bypass translation on these regions. Then the driver could reserve
->>>> those with IOMMU_RESV_MSI.
->>>
->>> Correct me if I did not understood you correctly, today iommu-driver
->> decides msi-reserved region, what if we change this and virtio-iommu d=
-evice
->> will provide the reserved msi region as per the emulated machine (virt=
-/intel).
->> So virtio-iommu driver will use the address advertised by virtio-iommu=
- device
->> as IOMMU_RESV_MSI. In this case msi-page-list will always have the
->> reserved region for MSI.
->>> On qemu side, for emulated devices we will let virtio-iommu return sa=
-me
->> address as translated address as it falls in MSI-reserved page already=
- known
->> to it.
->>
->> I think what you're proposing here corresponds to the 1st approach tha=
-t was
->> followed for PCIe passthrough/MSI on ARM, ie. the userspace was provid=
-ing
->> the reserved region base address & size.
->>  This was ruled out and now this
->> region is arbitrarily set by the smmu-driver. At the moment this means=
- this
->> region cannot contain guest RAM.
->=20
-> In rejected proposal, user-space used to choose a reserve region and pr=
-ovide that to Host Linux. Host Linux uses that MSI mapping. Just for my u=
-nderstanding if tomorrow QEMU changes its address space then it may not w=
-ork without changing SMMU msi-reserved-iova in host driver, right? For ex=
-ample if emulated machine have RAM at this address then it will not work?
-Yes that's correct. Note MSI reserved regions are now exposed to
-userspace through /sys/kernel/iommu_groups/<>/reserved_regions
->=20
-> In this proposal, QEMU reserves a iova-range for guest (not host) and g=
-uest kernel will use this as msi-iova untranslated (IOMMU_RESV_MSI). Whil=
-e this does not change host interface and it will continue to use host re=
-served mapping for actual interrupt generation, no?
-But then userspace needs to provide IOMMU_RESV_MSI range to guest
-kernel, right? What would be the proposed manner? Looks weird to me to
-have different MSI handling on host and guest. Also I still don't get
-how you handle the case where virtio-net-pci emits accesses to the MSI
-doorbell while this latter is not mapped.
+Actually on x86 no MSI controller will attempt to map MSIs, as opposed
+to ARM GICv2M & ITS. So the only problem exposing IOMMU_RESV_SW_MSI
+regions is vfio_iommu_type1 will assess the IRQ assignment safety using
+irq_domain_check_msi_remap() and not with the IOMMU IOMMU_CAP_INTR_REMAP
+capability.
 
 Thanks
 
 Eric
->=20
+>  For x86 we will need such a system, with an added IRQ
+>> remapping feature.
+> Meaning this must live along with vIR, is that what you mean? Also on
+> ARM this must live with vITS anyway. This is an orthogonal feature, right?
+> 
 > Thanks
-> -Bharat
->=20
+> 
+> Eric
 >>
->>>
->>>
->>>> For x86 we will need such a system, with an added IRQ remapping
->>>> feature.
->>>
->>> I do not understand x86 MSI interrupt generation, but If above unders=
-tand
->> is correct, then why we need IRQ remapping for x86?
->> To me x86 IR corresponds simply corresponds to the ITS MSI controller
->> modality on ARM. So as you still need vITS along with virtio-iommu on =
-ARM,
->> you need vIRQ alongs with virtio-iommu on Intel. Does that make sense?
+>> Thanks,
+>> Jean
 >>
->> So in any case we need to make sure the guest uses a vITS or vIR to ma=
-ke
->> sure MSIs are correctly isolated.
->>
->>
->>> Will the x86 machine emulated in QEMU provides a big address range fo=
-r
->> MSIs and when actually generating MSI it needed some extra processing
->> (IRQ-remapping processing) before actually generating write transactio=
-n for
->> MSI interrupt ?
->> My understanding is on x86, the MSI window is fixed and matches
->> [FEE0_0000h =E2=80=93 FEF0_000h]. MSIs are conveyed on a separate addr=
-ess space
->> than usual DMA accesses. And yes they end up in IR if supported in the=
- HW.
->>
->> Thanks
->>
->> Eric
->>>
->>> Thanks
->>> -Bharat
->>>
->>>>
->>>> Thanks,
->>>> Jean

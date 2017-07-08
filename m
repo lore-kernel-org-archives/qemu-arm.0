@@ -1,98 +1,110 @@
-Received: by 10.25.44.15 with SMTP id s15csp807544lfs;
-        Fri, 7 Jul 2017 19:53:18 -0700 (PDT)
-X-Received: by 10.200.38.244 with SMTP id 49mr60495136qtp.236.1499482398039;
-        Fri, 07 Jul 2017 19:53:18 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1499482398; cv=none;
+Received: by 10.25.44.15 with SMTP id s15csp1478123lfs;
+        Sat, 8 Jul 2017 10:12:21 -0700 (PDT)
+X-Received: by 10.200.41.85 with SMTP id z21mr71019497qtz.238.1499533941257;
+        Sat, 08 Jul 2017 10:12:21 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1499533941; cv=none;
         d=google.com; s=arc-20160816;
-        b=WIqCiyNIBcFeP3S/kcJDsCnGePxL7yEo58Pfkh5hMxEkfkMrFkfv5efwZ5+ibtfjJI
-         m/QDNTHT43usm3GFvOCokgrDhP5eiZaXoKswjOOvP2GemUMtQpDDnAHVtVKhQFnxeV6J
-         35CMqNrb63XYvlCRwOa1j/9+ADi2Eh0kR4VVtGfofMf6eJ3T2rOGDYx6gtpYtlSC0CpW
-         ii3SVSVLMTyj4jUV0ODPin2xgkj1TxmUv5UdnLGn/6xh7o524osdDm9c15W5WWloK7i6
-         Fwtyj8XpJT7/dVCwFy85eLgl/EZVxulD6MEYq0CRga5Vg9qYIpURxpdnkSy+twv6ffGC
-         zJbg==
+        b=iehKbEx/ehJ/bRXxW2ieEvlZgDhz/B1ush3mwDsaFzzuRVLlKQ/a2FfUr6HeABVu7R
+         PI6SJye6+QZgK2Au8UkWBI/oL8Ggpvdish0zrPpqJIdWsTiPa39N8A30azlYzlczSH1X
+         2FhNu3319vu/WLg1lEkS/t0MuQLRXlLfT5ezzTwgSe93DEblrPoL8e+yzPAplP8VvQif
+         42ABD7GW7VdYwDLPYTBWxUVhy4+dsInXng7sa4RijpcOZmgUPps0opKSyAR3klqC3YDy
+         3BumsQ+6iZrQYzzkmD2h474TasZvQBnhAb0PoFXpDRX4aNBjZZ+7MIVBRair3WZ74/oH
+         MTRg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
-         :message-id:date:to:from:dkim-signature:arc-authentication-results;
-        bh=x0B4mLaLsw+VQCgKtBesMCfDp7aZy9g1E3kvsYp90rQ=;
-        b=Fa/0+KA4BASfkklyaLNBfpFzwGOVLlP7aStQONz+aBDhPnaHwZpGrd1t/dBNSpZYII
-         7ARD5WXD/pLJjvg/eVv5tvc5nAJIgkYsMTD7GcQe7NKoQInLgxQXOaGyYpX0vuy76paP
-         zjfw8ZLB2bTnyOYXV9PIv4blneA+kPtWvoy+vdwcGYWRbwJEJ7LtlhG24ePMnDX7PjTT
-         DRYKl1V1/5ihU5CEGzJL5nLBayucoZv/VmpoPC3xh6dkmRjfpECU6Dejua3tBid8/c/e
-         lIiCOpm80OEtOoi+dUd1CpulYzHAlffQgILYUQEJDXXsjYNloB5qZy4dghHsP0D2osqo
-         vwSA==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:to:dkim-signature
+         :arc-authentication-results;
+        bh=8JtIMu1dSQbm8MUBxtSphHuXwZKkOQD4ReGoEzQW6Rc=;
+        b=mCjFHFk8PKJ0lk3YfUdX7nb6jiVDMalfjy8ZOuxdNSL1ymksCoq+TUu0rwbDOxlqIm
+         69CLq6MxClQrmf58cms1dKbu9lCfdaGkKHbyFRlq7OFxXCG174hmMDFXtIBCPwHznETU
+         Ceh8uZW63/GXIKBSrWPlt7P8q1EnRt58Km0HQCy2Fa6PrLkgVQr733WRTJTKdYaiss/r
+         MpVPCYTlV7OEx9XSwWNvXqMyAbqOX/OPpVf59wsRm8AQdv1ixaWFYfbECpL+N20mu8Am
+         3vF/IwJBMN1TOo8J2KYGuXXuGpn1ABde/RkPBY/quqk2rKPvNu2yHOthcG30uPbn9NMb
+         7zpg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.b=VY2W6oFu;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+       dkim=fail header.i=@gmail.com header.b=FwdU7ZdM;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id s35si5016751qtd.218.2017.07.07.19.53.17
+Received: from lists.gnu.org (lists.gnu.org. [208.118.235.17])
+        by mx.google.com with ESMTPS id a39si6555604qtb.176.2017.07.08.10.12.20
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 07 Jul 2017 19:53:18 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Sat, 08 Jul 2017 10:12:21 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) client-ip=208.118.235.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.b=VY2W6oFu;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:59566 helo=lists.gnu.org)
+       dkim=fail header.i=@gmail.com header.b=FwdU7ZdM;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:33576 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1dTfrv-0003BB-BG
-	for alex.bennee@linaro.org; Fri, 07 Jul 2017 22:53:15 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:43728)
+	id 1dTtGv-00077w-Oq
+	for alex.bennee@linaro.org; Sat, 08 Jul 2017 13:11:57 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:35329)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <rth7680@gmail.com>) id 1dTfpq-0001cU-F1
-	for qemu-arm@nongnu.org; Fri, 07 Jul 2017 22:51:07 -0400
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1dTtGr-00077o-Jr
+	for qemu-arm@nongnu.org; Sat, 08 Jul 2017 13:11:54 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <rth7680@gmail.com>) id 1dTfpp-00055f-NS
-	for qemu-arm@nongnu.org; Fri, 07 Jul 2017 22:51:06 -0400
-Received: from mail-qt0-x243.google.com ([2607:f8b0:400d:c0d::243]:34402)
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1dTtGo-0007DP-FK
+	for qemu-arm@nongnu.org; Sat, 08 Jul 2017 13:11:53 -0400
+Received: from mail-qk0-f195.google.com ([209.85.220.195]:34748)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <rth7680@gmail.com>)
-	id 1dTfpm-000531-Fq; Fri, 07 Jul 2017 22:51:02 -0400
-Received: by mail-qt0-x243.google.com with SMTP id m54so6452869qtb.1;
-	Fri, 07 Jul 2017 19:51:02 -0700 (PDT)
+	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1dTtGo-0007DG-AT; Sat, 08 Jul 2017 13:11:50 -0400
+Received: by mail-qk0-f195.google.com with SMTP id 91so8059448qkq.1;
+	Sat, 08 Jul 2017 10:11:50 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=sender:from:to:cc:subject:date:message-id:in-reply-to:references;
-	bh=x0B4mLaLsw+VQCgKtBesMCfDp7aZy9g1E3kvsYp90rQ=;
-	b=VY2W6oFufWceuAYVeuns0aUvdvku568ir8jnmctnVPp7VIIc5XiLr/KZCg5jy7iheJ
-	ctyR68TbBD3DOyBUSk+l7Sh2OIaDZnwd1zMz2qDcr5FlbkbfpVZxm+35GYuAd1LV7Edv
-	h/GKghjPmMATAM0QI0jEKjHWCcD9iytNfLL6IVAJI5FPA+Qfy2uWkX+fS3bYtBqnp0J2
-	jqk3qUYI6X6So7mOloiuvomrwZl72Raz424ZmhdmaT6N8DtJRQ3Osbg66GPynt5Zw8Na
-	8FfgRnc60PeiFAy2GjUNF6f09AU51/xBqXJjTeXZv4/tEIDvdWAYbgzrDfoHfJD34UHp
-	65gA==
+	h=sender:subject:to:cc:references:from:message-id:date:user-agent
+	:mime-version:in-reply-to:content-language:content-transfer-encoding;
+	bh=8JtIMu1dSQbm8MUBxtSphHuXwZKkOQD4ReGoEzQW6Rc=;
+	b=FwdU7ZdMCeHIBa9h4KB4Fho2l/v8928O8vpsf73LGyVLJoPgMiSMrUepgzWWATyF8r
+	03HRAuZY8XGCieriaktnXDydoRdOvDLo3yDuvBWYtDNMQhnnJ9G5ppuTuom0/3PId43c
+	3+lQVm4dwXDkH5veMrrSXYhfEusxnmWkYbGEj00Yq/X9ZNgYZB7Re0m8ymQAum9uREuH
+	Kq6gEeakolTUrX0uyBJrVp0gQcKemchAbE41xg+CMYSZy0Ro+ZsaGLypPUBg1QSylJSl
+	imnwi4Qgu/OQCppCXqF+a7fK92BEXG+hd37cbw7f/HwBTwsh5fcZDlCTRGnFKd/jbEpK
+	Hi8Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
-	:in-reply-to:references;
-	bh=x0B4mLaLsw+VQCgKtBesMCfDp7aZy9g1E3kvsYp90rQ=;
-	b=nucCpGcnk07aTECFuOmes2LOHteqPlXt2AvZfu2lXQdRujDcoZHYTeF+fUiPuyYzx7
-	XRNiNYLw+4N3GVmy4uM6bSG1CONQDLRTmEUOvcDjgPxbsemug7oQqI10xJZI/z/UGLjc
-	PB19pnUAnAmVK36aApW21l+yoA+Qy8QRercuCsohRV6mLOq7GSefDx7xYHRz5o0N/XOi
-	4c/Ynd/SBqGUgX9aTlDIQK2m47F5ep0YmnNB0NZks6pcxk9diJTMzenZqOXZYdW9fPWa
-	kBWSHJ2c18h+8o6fMhGXOw8SR3oCZa+jFfq3HtxpDw+fsLN8V+NE7+vrot6Jjmi4yL8a
-	VlYg==
-X-Gm-Message-State: AKS2vOzpVbd5T1TAcNAWKt8AciFXZEKpEAM1Nw2vE6Ta4KGDnxAW4XCp
-	ENJ2xCxDAkseEEQkJWA=
-X-Received: by 10.200.50.249 with SMTP id a54mr69633899qtb.91.1499482261748;
-	Fri, 07 Jul 2017 19:51:01 -0700 (PDT)
-Received: from bigtime.twiddle.net.com (rrcs-66-91-136-156.west.biz.rr.com.
-	[66.91.136.156]) by smtp.gmail.com with ESMTPSA id
-	q90sm3793925qki.11.2017.07.07.19.50.58
+	h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+	:date:user-agent:mime-version:in-reply-to:content-language
+	:content-transfer-encoding;
+	bh=8JtIMu1dSQbm8MUBxtSphHuXwZKkOQD4ReGoEzQW6Rc=;
+	b=Xg+c18IJ1cx+DMDEPxuaTbiGLe+26K8Lx2NQ1HCCmOi8sR0RxWuU3uC0QOYUOKkK5b
+	b8uFSff4m9thBAqN4FTBpC/KGwP2fUIRbB1cPfzNBMcI8l6bc7VsPvTRqIC8V4SXwb1D
+	oCVMhC8T4HDEMAB+EF2qWefYwVwIpEMIeNFLlrmmYRRZBL/v1SMHUanM9fmnaPvso3kX
+	7xpGyLgjZcTo40QBaq03Tw9rUGPua7YjKY0/qcOWoxOfV4urGfRCEtbEdD+okMWAz/xu
+	YCDdMOc/xjZzwK8SDD+Xxu5N8HZj+Sgner88dB/UUxy9qWjWG+ulb9HO/OVpk5veCuLQ
+	FtRw==
+X-Gm-Message-State: AKS2vOyBccuniK0acuJFpWdlI04Tor60OudRGmUTFe2SjZZV+PHT+WVI
+	GV4jor9dMRvlCmsPSqo=
+X-Received: by 10.55.37.205 with SMTP id l74mr68660133qkl.157.1499533849395;
+	Sat, 08 Jul 2017 10:10:49 -0700 (PDT)
+Received: from [192.168.1.240] ([138.117.48.223])
+	by smtp.gmail.com with ESMTPSA id
+	q22sm5197283qte.65.2017.07.08.10.10.46
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Fri, 07 Jul 2017 19:51:01 -0700 (PDT)
-From: Richard Henderson <rth@twiddle.net>
-To: qemu-devel@nongnu.org
-Date: Fri,  7 Jul 2017 16:50:30 -1000
-Message-Id: <20170708025030.15845-4-rth@twiddle.net>
-X-Mailer: git-send-email 2.9.4
-In-Reply-To: <20170708025030.15845-1-rth@twiddle.net>
+	Sat, 08 Jul 2017 10:10:48 -0700 (PDT)
+To: Richard Henderson <rth@twiddle.net>, qemu-devel@nongnu.org
 References: <20170708025030.15845-1-rth@twiddle.net>
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:400d:c0d::243
-Subject: [Qemu-arm] [PATCH 3/3] linux-user/sh4: Reduce
- TARGET_VIRT_ADDR_SPACE_BITS to 31
+	<20170708025030.15845-2-rth@twiddle.net>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Message-ID: <66bdbcf1-dd15-1e7e-bc30-d80ae6e88ffb@amsat.org>
+Date: Sat, 8 Jul 2017 14:10:45 -0300
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.2.1
+MIME-Version: 1.0
+In-Reply-To: <20170708025030.15845-2-rth@twiddle.net>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.85.220.195
+Subject: Re: [Qemu-arm] [PATCH 1/3] tcg: Fix off-by-one in assert in
+ page_set_flags
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -104,37 +116,44 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: aurelien@aurel32.net, riku.voipio@iki.fi, laurent@vivier.eu,
-	qemu-arm@nongnu.org
+Cc: riku.voipio@iki.fi, qemu-arm@nongnu.org, laurent@vivier.eu,
+	aurelien@aurel32.net
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: CilEjjEuHMmE
+X-TUID: NM2/2pHKM/8J
 
-The real kernel has TASK_SIZE as 0x7c000000, due to quirks with
-a couple of SH parts.  But nominally user-space is limited to 2GB.
+On 07/07/2017 11:50 PM, Richard Henderson wrote:
+> Most of the users of page_set_flags offset (page, page + len) as
+> the end points.  One might consider this an error, since the other
+> users do supply an endpoint as the last byte of the region.
+> 
+> However, the first thing that page_set_flags does is round end UP
+> to the start of the next page.  Which means computing page + len - 1
+> is in the end pointless.  Therefore, accept this usage and do not
+> assert when given the exact size of the vm as the endpoint.
+> 
+> Signed-off-by: Richard Henderson <rth@twiddle.net>
+> ---
+>   accel/tcg/translate-all.c | 2 +-
+>   1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/accel/tcg/translate-all.c b/accel/tcg/translate-all.c
+> index dfb9f0d..57578a4 100644
+> --- a/accel/tcg/translate-all.c
+> +++ b/accel/tcg/translate-all.c
+> @@ -2068,7 +2068,7 @@ void page_set_flags(target_ulong start, target_ulong end, int flags)
+>          guest address space.  If this assert fires, it probably indicates
+>          a missing call to h2g_valid.  */
+>   #if TARGET_ABI_BITS > L1_MAP_ADDR_SPACE_BITS
+> -    assert(end < ((target_ulong)1 << L1_MAP_ADDR_SPACE_BITS));
+> +    assert(end <= ((target_ulong)1 << L1_MAP_ADDR_SPACE_BITS));
 
-Signed-off-by: Richard Henderson <rth@twiddle.net>
----
- target/sh4/cpu.h | 6 +++++-
- 1 file changed, 5 insertions(+), 1 deletion(-)
+worth adding a comment /* end rounded up */ ?
 
-diff --git a/target/sh4/cpu.h b/target/sh4/cpu.h
-index e3abb6a..3121d1e 100644
---- a/target/sh4/cpu.h
-+++ b/target/sh4/cpu.h
-@@ -45,7 +45,11 @@
- #define TARGET_PAGE_BITS 12	/* 4k XXXXX */
- 
- #define TARGET_PHYS_ADDR_SPACE_BITS 32
--#define TARGET_VIRT_ADDR_SPACE_BITS 32
-+#ifdef CONFIG_USER_ONLY
-+# define TARGET_VIRT_ADDR_SPACE_BITS 31
-+#else
-+# define TARGET_VIRT_ADDR_SPACE_BITS 32
-+#endif
- 
- #define SR_MD 30
- #define SR_RB 29
--- 
-2.9.4
+anyway for this tricky catch:
+Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 
+>   #endif
+>       assert(start < end);
+>       assert_memory_lock();
+> 

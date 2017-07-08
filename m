@@ -1,176 +1,129 @@
-Received: by 10.25.44.15 with SMTP id s15csp807241lfs;
-        Fri, 7 Jul 2017 19:52:51 -0700 (PDT)
-X-Received: by 10.200.43.208 with SMTP id n16mr27741404qtn.190.1499482371018;
-        Fri, 07 Jul 2017 19:52:51 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1499482371; cv=none;
+Received: by 10.25.44.15 with SMTP id s15csp807544lfs;
+        Fri, 7 Jul 2017 19:53:18 -0700 (PDT)
+X-Received: by 10.200.38.244 with SMTP id 49mr60495136qtp.236.1499482398039;
+        Fri, 07 Jul 2017 19:53:18 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1499482398; cv=none;
         d=google.com; s=arc-20160816;
-        b=Z0z+76Ti9booZT9Q2uoFJ/t+Eh2YYhaR4zv9KOaBhy4juJWUG/69ClzeHPI2wP0l+v
-         61HLCj7lpZWfJpLknDsk8qbHdZlXu5R5bb4AxTrJUSGUJo9+5ON0Mit9uAunYhNVVCbB
-         BZOsQpVn4UUcXuKztQJ7W27vaY8QMogDWRFFYzO9INNNEk0QpSp5KopL4F26eOMExluQ
-         6y40baAp3y/5p9U7v+RiJefS0HeQwngyhztiduERiA35+Sp9NMz0DuSIBCPYZG6zbuTS
-         Ep3wBOXuPpVmh1KSFpXkVnnvTraLDaiKYUiboGtubyL9Jq9UbbeEVoLNAUJYjxDJ7NhV
-         oWKw==
+        b=WIqCiyNIBcFeP3S/kcJDsCnGePxL7yEo58Pfkh5hMxEkfkMrFkfv5efwZ5+ibtfjJI
+         m/QDNTHT43usm3GFvOCokgrDhP5eiZaXoKswjOOvP2GemUMtQpDDnAHVtVKhQFnxeV6J
+         35CMqNrb63XYvlCRwOa1j/9+ADi2Eh0kR4VVtGfofMf6eJ3T2rOGDYx6gtpYtlSC0CpW
+         ii3SVSVLMTyj4jUV0ODPin2xgkj1TxmUv5UdnLGn/6xh7o524osdDm9c15W5WWloK7i6
+         Fwtyj8XpJT7/dVCwFy85eLgl/EZVxulD6MEYq0CRga5Vg9qYIpURxpdnkSy+twv6ffGC
+         zJbg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
          :message-id:date:to:from:dkim-signature:arc-authentication-results;
-        bh=vK/P+XmBotxamGKAbyPmNTlVdfzn5UKNPl+nyZGjC6Q=;
-        b=x1ZFDTHUH7a0S8ZBgwBe4jmS7xDpevd3rGu4tyja02AUiJpTVwvEMLUMCtUUdwV60p
-         fYDoPQ0Gn6YciHy1D2L9DW1pSv4FoGOaAxiaGJbuxz3pYrEayArcVicLi1c2tv1RkZY3
-         u+fEfctjIyO409auwbzLdchp7PD7iQzLPuYKNIzX1wqzm2tUOLcIRuXpXgJYP4sk/Yn6
-         GiC5aPBiZ5dNSaqOPBejGVIXYJssaaQ2zsEUMw+kI9idDDKHA8+ExCbaHijRhB5wx/Ef
-         w532gsqb6quRDsIEweL4+YN+Yjc0QLpX5BG6m4ldIJx/Qx8bW648EWu+HkQ+9u5c+hXL
-         kvYA==
+        bh=x0B4mLaLsw+VQCgKtBesMCfDp7aZy9g1E3kvsYp90rQ=;
+        b=Fa/0+KA4BASfkklyaLNBfpFzwGOVLlP7aStQONz+aBDhPnaHwZpGrd1t/dBNSpZYII
+         7ARD5WXD/pLJjvg/eVv5tvc5nAJIgkYsMTD7GcQe7NKoQInLgxQXOaGyYpX0vuy76paP
+         zjfw8ZLB2bTnyOYXV9PIv4blneA+kPtWvoy+vdwcGYWRbwJEJ7LtlhG24ePMnDX7PjTT
+         DRYKl1V1/5ihU5CEGzJL5nLBayucoZv/VmpoPC3xh6dkmRjfpECU6Dejua3tBid8/c/e
+         lIiCOpm80OEtOoi+dUd1CpulYzHAlffQgILYUQEJDXXsjYNloB5qZy4dghHsP0D2osqo
+         vwSA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.b=ZoQOfS2v;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.b=VY2W6oFu;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id n4si4904262qte.232.2017.07.07.19.52.50
+        by mx.google.com with ESMTPS id s35si5016751qtd.218.2017.07.07.19.53.17
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 07 Jul 2017 19:52:51 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Fri, 07 Jul 2017 19:53:18 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.b=ZoQOfS2v;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:59563 helo=lists.gnu.org)
+       dkim=fail header.i=@gmail.com header.b=VY2W6oFu;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:59566 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1dTfrU-0002YB-9l
-	for alex.bennee@linaro.org; Fri, 07 Jul 2017 22:52:48 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:43663)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1dTfrv-0003BB-BG
+	for alex.bennee@linaro.org; Fri, 07 Jul 2017 22:53:15 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:43728)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <rth7680@gmail.com>) id 1dTfpj-0001W3-U6
-	for qemu-devel@nongnu.org; Fri, 07 Jul 2017 22:51:01 -0400
+	(envelope-from <rth7680@gmail.com>) id 1dTfpq-0001cU-F1
+	for qemu-arm@nongnu.org; Fri, 07 Jul 2017 22:51:07 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <rth7680@gmail.com>) id 1dTfpi-00050b-PT
-	for qemu-devel@nongnu.org; Fri, 07 Jul 2017 22:51:00 -0400
-Received: from mail-qk0-x243.google.com ([2607:f8b0:400d:c09::243]:33297)
+	(envelope-from <rth7680@gmail.com>) id 1dTfpp-00055f-NS
+	for qemu-arm@nongnu.org; Fri, 07 Jul 2017 22:51:06 -0400
+Received: from mail-qt0-x243.google.com ([2607:f8b0:400d:c0d::243]:34402)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <rth7680@gmail.com>)
-	id 1dTfpi-00050M-Ki; Fri, 07 Jul 2017 22:50:58 -0400
-Received: by mail-qk0-x243.google.com with SMTP id p21so6558521qke.0;
-	Fri, 07 Jul 2017 19:50:58 -0700 (PDT)
+	id 1dTfpm-000531-Fq; Fri, 07 Jul 2017 22:51:02 -0400
+Received: by mail-qt0-x243.google.com with SMTP id m54so6452869qtb.1;
+	Fri, 07 Jul 2017 19:51:02 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
 	h=sender:from:to:cc:subject:date:message-id:in-reply-to:references;
-	bh=vK/P+XmBotxamGKAbyPmNTlVdfzn5UKNPl+nyZGjC6Q=;
-	b=ZoQOfS2vK+BHjZHNTYl+OUbenUNnmHAO4m2MeuL0b1FnfmyYhnNVXM3D7AKUq6mVxh
-	LcGld8B3/BIwG6cGkrS2IKHo9SD00Uav038zw6aKhPlpO+idgJyYtqlwOD+PMXHIdwRE
-	fQwiwtG4FcYYS4anWDZoi/bzFVipPQozUwKgRYZpA7ylxavm8nfc2ucIafaxGe04O631
-	SSqQIhf2FoxgK9X5d8rOgjmWioWKkwNbsMdq6arGEqotEgHiM0BMSzUtSo3e0p9e6sXj
-	UHeFxf1ZRx2teQXYCoX3IKz6jbupRYvc2AU2O8jpb726YISaNm70jCti9yW1wXL8ozw9
-	QGdw==
+	bh=x0B4mLaLsw+VQCgKtBesMCfDp7aZy9g1E3kvsYp90rQ=;
+	b=VY2W6oFufWceuAYVeuns0aUvdvku568ir8jnmctnVPp7VIIc5XiLr/KZCg5jy7iheJ
+	ctyR68TbBD3DOyBUSk+l7Sh2OIaDZnwd1zMz2qDcr5FlbkbfpVZxm+35GYuAd1LV7Edv
+	h/GKghjPmMATAM0QI0jEKjHWCcD9iytNfLL6IVAJI5FPA+Qfy2uWkX+fS3bYtBqnp0J2
+	jqk3qUYI6X6So7mOloiuvomrwZl72Raz424ZmhdmaT6N8DtJRQ3Osbg66GPynt5Zw8Na
+	8FfgRnc60PeiFAy2GjUNF6f09AU51/xBqXJjTeXZv4/tEIDvdWAYbgzrDfoHfJD34UHp
+	65gA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
 	:in-reply-to:references;
-	bh=vK/P+XmBotxamGKAbyPmNTlVdfzn5UKNPl+nyZGjC6Q=;
-	b=WWn2/f4EwTSyagihpHEB3E3OBhqJknUCdF08UDMfwq77zVxC6FEpkzLPq3a0STWB49
-	YxAslfNzQZdDb1qtMH2H7AwncgUxR6MPH50IL2F6417bzjxwyybkcYgpA5lflx4eUeXn
-	xrIEVQsJTjpc1Ct5PJDKDRpjQFJ2GANn7is60FQVWncL5MxKx+2paarHHsISDXI9NXtl
-	06Kn7VhVxOPSBAVuIEXlzK/B9I4yjLZDDbCuFGp2hsV5DneqwffwjZlcIRjmV5EUf2xS
-	4RASmoF1ZlLkLUFF2XghXqbGUUOVS2pz/gKdkFpy6ffqALR0jjz6l3Txy5n352sXFbAD
-	I/sQ==
-X-Gm-Message-State: AKS2vOx4VdXzxd38xhZNubAZNttHU4+asg9C1cJ5rDfK08CqE3FJZaYD
-	hrjMF4oPhmC6/Psk3VI=
-X-Received: by 10.55.1.65 with SMTP id 62mr65811070qkb.210.1499482257754;
-	Fri, 07 Jul 2017 19:50:57 -0700 (PDT)
+	bh=x0B4mLaLsw+VQCgKtBesMCfDp7aZy9g1E3kvsYp90rQ=;
+	b=nucCpGcnk07aTECFuOmes2LOHteqPlXt2AvZfu2lXQdRujDcoZHYTeF+fUiPuyYzx7
+	XRNiNYLw+4N3GVmy4uM6bSG1CONQDLRTmEUOvcDjgPxbsemug7oQqI10xJZI/z/UGLjc
+	PB19pnUAnAmVK36aApW21l+yoA+Qy8QRercuCsohRV6mLOq7GSefDx7xYHRz5o0N/XOi
+	4c/Ynd/SBqGUgX9aTlDIQK2m47F5ep0YmnNB0NZks6pcxk9diJTMzenZqOXZYdW9fPWa
+	kBWSHJ2c18h+8o6fMhGXOw8SR3oCZa+jFfq3HtxpDw+fsLN8V+NE7+vrot6Jjmi4yL8a
+	VlYg==
+X-Gm-Message-State: AKS2vOzpVbd5T1TAcNAWKt8AciFXZEKpEAM1Nw2vE6Ta4KGDnxAW4XCp
+	ENJ2xCxDAkseEEQkJWA=
+X-Received: by 10.200.50.249 with SMTP id a54mr69633899qtb.91.1499482261748;
+	Fri, 07 Jul 2017 19:51:01 -0700 (PDT)
 Received: from bigtime.twiddle.net.com (rrcs-66-91-136-156.west.biz.rr.com.
 	[66.91.136.156]) by smtp.gmail.com with ESMTPSA id
-	q90sm3793925qki.11.2017.07.07.19.50.53
+	q90sm3793925qki.11.2017.07.07.19.50.58
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Fri, 07 Jul 2017 19:50:57 -0700 (PDT)
+	Fri, 07 Jul 2017 19:51:01 -0700 (PDT)
 From: Richard Henderson <rth@twiddle.net>
 To: qemu-devel@nongnu.org
-Date: Fri,  7 Jul 2017 16:50:29 -1000
-Message-Id: <20170708025030.15845-3-rth@twiddle.net>
+Date: Fri,  7 Jul 2017 16:50:30 -1000
+Message-Id: <20170708025030.15845-4-rth@twiddle.net>
 X-Mailer: git-send-email 2.9.4
 In-Reply-To: <20170708025030.15845-1-rth@twiddle.net>
 References: <20170708025030.15845-1-rth@twiddle.net>
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400d:c09::243
-Subject: [Qemu-devel] [PATCH 2/3] linux-user: Tidy and enforce reserved_va
- initialization
-X-BeenThere: qemu-devel@nongnu.org
+X-Received-From: 2607:f8b0:400d:c0d::243
+Subject: [Qemu-arm] [PATCH 3/3] linux-user/sh4: Reduce
+ TARGET_VIRT_ADDR_SPACE_BITS to 31
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: aurelien@aurel32.net, riku.voipio@iki.fi, laurent@vivier.eu,
 	qemu-arm@nongnu.org
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: T+erX9fL8LKn
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: CilEjjEuHMmE
 
-We had a check using TARGET_VIRT_ADDR_SPACE_BITS to make sure
-that the allocation coming in from the command-line option was
-not too large, but that didn't include target-specific knowledge
-about other restrictions on user-space.
-
-Remove several target-specific hacks in linux-user/main.c.
-
-For MIPS and Nios, we can replace them with proper adjustments
-to the respective target's TARGET_VIRT_ADDR_SPACE_BITS definition.
-
-For ARM, we had no existing ifdef but I suspect that the current
-default value of 0xf7000000 was chosen with this in mind.  Define
-a workable value in linux-user/arm/, and also document why the
-special case is required.
+The real kernel has TASK_SIZE as 0x7c000000, due to quirks with
+a couple of SH parts.  But nominally user-space is limited to 2GB.
 
 Signed-off-by: Richard Henderson <rth@twiddle.net>
 ---
- linux-user/arm/target_cpu.h |  4 ++++
- target/mips/mips-defs.h     |  6 +++++-
- target/nios2/cpu.h          |  6 +++++-
- linux-user/main.c           | 38 +++++++++++++++++++++++++-------------
- 4 files changed, 39 insertions(+), 15 deletions(-)
+ target/sh4/cpu.h | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
 
-diff --git a/linux-user/arm/target_cpu.h b/linux-user/arm/target_cpu.h
-index d888219..c4f79eb 100644
---- a/linux-user/arm/target_cpu.h
-+++ b/linux-user/arm/target_cpu.h
-@@ -19,6 +19,10 @@
- #ifndef ARM_TARGET_CPU_H
- #define ARM_TARGET_CPU_H
- 
-+/* We need to be able to map the commpage.
-+   See validate_guest_space in linux-user/elfload.c.  */
-+#define MAX_RESERVED_VA  0xfff00000ul
-+
- static inline void cpu_clone_regs(CPUARMState *env, target_ulong newsp)
- {
-     if (newsp) {
-diff --git a/target/mips/mips-defs.h b/target/mips/mips-defs.h
-index 047554e..d239069 100644
---- a/target/mips/mips-defs.h
-+++ b/target/mips/mips-defs.h
-@@ -15,7 +15,11 @@
- #else
- #define TARGET_LONG_BITS 32
- #define TARGET_PHYS_ADDR_SPACE_BITS 40
--#define TARGET_VIRT_ADDR_SPACE_BITS 32
-+# ifdef CONFIG_USER_ONLY
-+#  define TARGET_VIRT_ADDR_SPACE_BITS 31
-+# else
-+#  define TARGET_VIRT_ADDR_SPACE_BITS 32
-+#endif
- #endif
- 
- /* Masks used to mark instructions to indicate which ISA level they
-diff --git a/target/nios2/cpu.h b/target/nios2/cpu.h
-index 13931f3..da3f637 100644
---- a/target/nios2/cpu.h
-+++ b/target/nios2/cpu.h
-@@ -227,7 +227,11 @@ qemu_irq *nios2_cpu_pic_init(Nios2CPU *cpu);
- void nios2_check_interrupts(CPUNios2State *env);
+diff --git a/target/sh4/cpu.h b/target/sh4/cpu.h
+index e3abb6a..3121d1e 100644
+--- a/target/sh4/cpu.h
++++ b/target/sh4/cpu.h
+@@ -45,7 +45,11 @@
+ #define TARGET_PAGE_BITS 12	/* 4k XXXXX */
  
  #define TARGET_PHYS_ADDR_SPACE_BITS 32
 -#define TARGET_VIRT_ADDR_SPACE_BITS 32
@@ -180,73 +133,8 @@ index 13931f3..da3f637 100644
 +# define TARGET_VIRT_ADDR_SPACE_BITS 32
 +#endif
  
- #define cpu_init(cpu_model) CPU(cpu_nios2_init(cpu_model))
- 
-diff --git a/linux-user/main.c b/linux-user/main.c
-index ad03c9e..e000533 100644
---- a/linux-user/main.c
-+++ b/linux-user/main.c
-@@ -60,23 +60,38 @@ do {                                                                    \
-     }                                                                   \
- } while (0)
- 
--#if (TARGET_LONG_BITS == 32) && (HOST_LONG_BITS == 64)
- /*
-  * When running 32-on-64 we should make sure we can fit all of the possible
-  * guest address space into a contiguous chunk of virtual host memory.
-  *
-  * This way we will never overlap with our own libraries or binaries or stack
-  * or anything else that QEMU maps.
-+ *
-+ * Many cpus reserve the high bit (or more than one for some 64-bit cpus)
-+ * of the address for the kernel.  Some cpus rely on this and user space
-+ * uses the high bit(s) for pointer tagging and the like.  For them, we
-+ * must preserve the expected address space.
-  */
--# if defined(TARGET_MIPS) || defined(TARGET_NIOS2)
--/*
-- * MIPS only supports 31 bits of virtual address space for user space.
-- * Nios2 also only supports 31 bits.
-- */
--unsigned long reserved_va = 0x77000000;
-+#ifndef MAX_RESERVED_VA
-+# if HOST_LONG_BITS > TARGET_VIRT_ADDR_SPACE_BITS
-+#  if TARGET_VIRT_ADDR_SPACE_BITS == 32 && \
-+      (TARGET_LONG_BITS == 32 || defined(TARGET_ABI32))
-+/* There are a number of places where we assign reserved_va to a variable
-+   of type abi_ulong and expect it to fit.  Avoid the last page.  */
-+#   define MAX_RESERVED_VA  (0xfffffffful & TARGET_PAGE_MASK)
-+#  else
-+#   define MAX_RESERVED_VA  (1ul << TARGET_VIRT_ADDR_SPACE_BITS)
-+#  endif
- # else
--unsigned long reserved_va = 0xf7000000;
-+#  define MAX_RESERVED_VA  0
- # endif
-+#endif
-+
-+/* That said, reserving *too* much vm space via mmap can run into problems
-+   with rlimits, oom due to page table creation, etc.  We will still try it,
-+   if directed by the command-line option, but not by default.  */
-+#if HOST_LONG_BITS == 64 && TARGET_VIRT_ADDR_SPACE_BITS <= 32
-+unsigned long reserved_va = MAX_RESERVED_VA;
- #else
- unsigned long reserved_va;
- #endif
-@@ -3975,11 +3990,8 @@ static void handle_arg_reserved_va(const char *arg)
-         unsigned long unshifted = reserved_va;
-         p++;
-         reserved_va <<= shift;
--        if (((reserved_va >> shift) != unshifted)
--#if HOST_LONG_BITS > TARGET_VIRT_ADDR_SPACE_BITS
--            || (reserved_va > (1ul << TARGET_VIRT_ADDR_SPACE_BITS))
--#endif
--            ) {
-+        if (reserved_va >> shift != unshifted
-+            || (MAX_RESERVED_VA && reserved_va > MAX_RESERVED_VA)) {
-             fprintf(stderr, "Reserved virtual address too big\n");
-             exit(EXIT_FAILURE);
-         }
+ #define SR_MD 30
+ #define SR_RB 29
 -- 
 2.9.4
 

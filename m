@@ -1,153 +1,307 @@
-Received: by 10.25.44.15 with SMTP id s15csp1478937lfs;
-        Sat, 8 Jul 2017 10:13:23 -0700 (PDT)
-X-Received: by 10.55.98.17 with SMTP id w17mr68423541qkb.106.1499534003424;
-        Sat, 08 Jul 2017 10:13:23 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1499534003; cv=none;
+Received: by 10.25.44.15 with SMTP id s15csp1899277lfs;
+        Sat, 8 Jul 2017 20:41:19 -0700 (PDT)
+X-Received: by 10.237.49.133 with SMTP id 5mr78822110qth.53.1499571679356;
+        Sat, 08 Jul 2017 20:41:19 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1499571679; cv=none;
         d=google.com; s=arc-20160816;
-        b=YkctxztiXj//hli42CB27BkGXU3EM+6qO9B8+TyPTqc4AUcLYKKFzj0h7364nu1id3
-         Q/2GISPF/PaY1KATbt4CyLTY9DbO7eIWayZxtYQQD7o22N16/rh0tLTzHza2RkG6ard8
-         jFqZpNOOGdoADjxPNSQNAdPIp7lhGE7Kh25PB5wvMtq4lFy08sEYv1jvFBuTSL4vozEp
-         qlYJuSAAZGwQ+TqNC5xJ6wR8ueTZnRJnHeFsDgLjCYjLkoHNx0/77Dt9wFHP1nuYy0t7
-         m2LiudrYIIGagnnRAdWYEeZ39EqmLfTZGpWfhHbNtBqu5ewMZlQnXNt1J1vwzmdzfxdV
-         WzIQ==
+        b=SvGIaZfhScKUaWfusl5MmHmCWWTEeZlY8lq3kRt/AYzRMMASd1OdI8NFBtwUU1Kn/m
+         mAh5wQwhajX8PAhr1UgsX4Z7z1d3sJzqca856Rw78FgouqE2wXsTdR/arIFDOqmeEtV0
+         yXgK8WB3abdhuEmOsBedgEV6ItlasFAAEN5whQpVHe40JrJ3wJu7J97L6hSExGw4mQu0
+         qJkYxmWAm+mcnBVXSSrforW6BfTu8ldJeTzyb+2Vx/NYTt2wt22VjlQgjpgVgoqCKNk1
+         dn3j8M9f9ELt921OyGUvCJIRNlDqkO23fzyDpjkWwKYIJ5qRyVkLxViG6XPVsGgi72nH
+         sTaw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:to:dkim-signature
-         :arc-authentication-results;
-        bh=8JKQgrIuA3Q40rQhQ8l3U2zIRrYBj0zzlvF1gEAXmXg=;
-        b=FuQPf2CqreMjp1XQvsUKfZBIm9VDRz48mGeHGDCQmRWpxGmZgkCfW9QBOe1aUWK1ZV
-         FYAH5+ZFiqocojXB1LO5TjA/aqspiPRzBIv8AOX6+Xtl1ljdiw9s1NQ5NpwGXpaSFCn1
-         cdID9uXrrxj94HMJRnrarjMgLwtQ10hrpGBGKgTmbGOtrTiUU6rQrDLulW7ifyjaqMer
-         goaM5p6VLEQuREhYuAaF62J0JWD6qjYmpgcNsGO3dlfjX1NAuwkbkW6XS2FhsEqapBd1
-         E77IQnLeyc85rBuTwewmFthfWJKKNLoUTJOpQVN+YPfJ0xBdwJEzUHm+phFrgQgMnyso
-         bxPg==
+        h=sender:errors-to:content-transfer-encoding:list-subscribe:list-help
+         :list-post:list-archive:list-unsubscribe:list-id:precedence:cc:to
+         :subject:message-id:date:from:references:in-reply-to:mime-version
+         :dkim-signature:arc-authentication-results;
+        bh=Yv3CnlO64A6qUgaUvPirW6ZlUCow1L4osnMKqebM1m8=;
+        b=O0fkAHl1y14MNLIuw9otYcuJgunAcXZDEG2xqAKMRfyIzvfJDYUJL2kKA0kppPGnkt
+         Ani/ZhmQU+OkLPMQK5qGV8cnFm3bXLvMk79Qvls/HacZJAUqqLqXNwP8iBX5wRyvTJi4
+         T8wHYmwkYhYmMRJPP5BpQ01ix2nqyJjKbneCLWyXVIpzu79MehVlrm9BCtN39Z9NZ+3L
+         Qv1dMPQnCMF97G4MMWnT9SfEnAsbDowbS7Ps8q6TVmbBWzOQqrGJa/QGQYFj91x9I9s8
+         dfQfWZo2IGME3PNVY0yJDDeG98SZv3jJQk7T6NUzESfF/iXQeYFKFcUCiyx8YL0KffVF
+         6LDQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.b=mHDH855r;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [208.118.235.17])
-        by mx.google.com with ESMTPS id f97si6563308qkf.386.2017.07.08.10.13.22
-        for <alex.bennee@linaro.org>
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sat, 08 Jul 2017 10:13:23 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) client-ip=208.118.235.17;
+       dkim=neutral (body hash did not verify) header.i=@gmail.com header.b=E1/nubsd;
+       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Return-Path: <kvmarm-bounces@lists.cs.columbia.edu>
+Received: from mm01.cs.columbia.edu (mm01.cs.columbia.edu. [128.59.11.253])
+        by mx.google.com with ESMTP id s6si7358429qtd.316.2017.07.08.20.41.18;
+        Sat, 08 Jul 2017 20:41:19 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) client-ip=128.59.11.253;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.b=mHDH855r;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:33580 helo=lists.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1dTtIG-0007iN-Sw
-	for alex.bennee@linaro.org; Sat, 08 Jul 2017 13:13:20 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:35555)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1dTtIC-0007iF-Oq
-	for qemu-arm@nongnu.org; Sat, 08 Jul 2017 13:13:17 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1dTtI9-0007Z7-LF
-	for qemu-arm@nongnu.org; Sat, 08 Jul 2017 13:13:16 -0400
-Received: from mail-qt0-f194.google.com ([209.85.216.194]:34000)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1dTtI9-0007Yb-GS; Sat, 08 Jul 2017 13:13:13 -0400
-Received: by mail-qt0-f194.google.com with SMTP id m54so7928869qtb.1;
-	Sat, 08 Jul 2017 10:13:13 -0700 (PDT)
+       dkim=neutral (body hash did not verify) header.i=@gmail.com header.b=E1/nubsd;
+       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Received: from localhost (localhost [127.0.0.1])
+	by mm01.cs.columbia.edu (Postfix) with ESMTP id EDA9F41015;
+	Sat,  8 Jul 2017 23:40:47 -0400 (EDT)
+X-Virus-Scanned: at lists.cs.columbia.edu
+X-Spam-Flag: NO
+X-Spam-Score: 0.911
+X-Spam-Level: 
+X-Spam-Status: No, score=0.911 required=6.1 tests=[BAYES_00=-1.9,
+	DKIM_ADSP_CUSTOM_MED=0.001, DKIM_SIGNED=0.1,
+	DNS_FROM_AHBL_RHSBL=2.699, FREEMAIL_FROM=0.001,
+	RCVD_IN_DNSWL_NONE=-0.0001, T_DKIM_INVALID=0.01] autolearn=no
+Authentication-Results: mm01.cs.columbia.edu (amavisd-new); dkim=softfail
+	(fail, message has been altered) header.i=@gmail.com
+Received: from mm01.cs.columbia.edu ([127.0.0.1])
+	by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id YBG5gC1qqFjs; Sat,  8 Jul 2017 23:40:46 -0400 (EDT)
+Received: from mm01.cs.columbia.edu (localhost [127.0.0.1])
+	by mm01.cs.columbia.edu (Postfix) with ESMTP id B29B140D31;
+	Sat,  8 Jul 2017 23:40:46 -0400 (EDT)
+Received: from localhost (localhost [127.0.0.1])
+ by mm01.cs.columbia.edu (Postfix) with ESMTP id B065040CE6
+ for <kvmarm@lists.cs.columbia.edu>; Sat,  8 Jul 2017 23:40:44 -0400 (EDT)
+X-Virus-Scanned: at lists.cs.columbia.edu
+Received: from mm01.cs.columbia.edu ([127.0.0.1])
+ by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 15-Hbi2gOVz3 for <kvmarm@lists.cs.columbia.edu>;
+ Sat,  8 Jul 2017 23:40:42 -0400 (EDT)
+Received: from mail-yw0-f193.google.com (mail-yw0-f193.google.com
+ [209.85.161.193])
+ by mm01.cs.columbia.edu (Postfix) with ESMTPS id C48BC40CE4
+ for <kvmarm@lists.cs.columbia.edu>; Sat,  8 Jul 2017 23:40:42 -0400 (EDT)
+Received: by mail-yw0-f193.google.com with SMTP id f200so3671251ywb.0
+ for <kvmarm@lists.cs.columbia.edu>; Sat, 08 Jul 2017 20:41:12 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=sender:subject:to:cc:references:from:message-id:date:user-agent
-	:mime-version:in-reply-to:content-language:content-transfer-encoding;
-	bh=8JKQgrIuA3Q40rQhQ8l3U2zIRrYBj0zzlvF1gEAXmXg=;
-	b=mHDH855r2Z0heLS5w5TDrCiaWvbpo09xfUfErm7K3JyZqDLQiEHC5i1JDPIq0mEyZC
-	xs7hTXw06fnbpzpak96lIBZEyB7Qsbp35xwkVogH5RojegSNLrKGpvPUEDyWen0fZEAL
-	wKws5Jg7cnpdpkpe6NTpQEBZCSPIrQXFrSDESBdWYveYhbk3+MTBl9U0AsMx0ZD5RFqW
-	FXUL74r10GvtEbE/hQhQwtmHax7gBF8wMywA+JQ/cAQa5EFAu1O/VRq5AUCFAhFga9p+
-	55IrOYQW8pIUH7ZDhw60gpPeXI9r5sFpmpCIn/L7WeFY7KRgUv9k8oSvP91T5lDIdFFi
-	XkMg==
+ h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+ :cc; bh=6SfSoKvpbrtTpYBiU7nHGyUMNMss1NcbpQlELgEZi5c=;
+ b=E1/nubsdDddARHwoSlT41P25cqlr0JeHGXwhEs1EkUgE7emZjoT9R6sqewAV/sxVPJ
+ NIb2TV0jK2FypfDZyyVzYlSCSkCEHf8Q7uWZ6phy5ngis8rq/MpW5ZcNBMln9oQlkB15
+ /H/5ot8HMMhEs3JZd84cNt3DzNsZIn8rmg9ZTrbIa1nIlIMfmZipYRQmaOoIuKDjdxP4
+ mzGYMe+Iek9r8VU8/K4DaTFSAJW/Un478r9x9WHWPFRa/Lc3BG02J47YrBVLAetMNj84
+ tTaK9TTRzWuhkrjL/F3AqRL9zs4HxgqC1h/uojBW8ycNNLJlSnkPs50F4zyzy+AU6WUA
+ WIuQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
-	:date:user-agent:mime-version:in-reply-to:content-language
-	:content-transfer-encoding;
-	bh=8JKQgrIuA3Q40rQhQ8l3U2zIRrYBj0zzlvF1gEAXmXg=;
-	b=An7j2tHWFQTTdOLOPp10nSu+wPv17jbQ0006VAV2iXGZfjMhvv7REZb9OTI5IoULrQ
-	CWVM2Vlo8hgRpPEZZFg6OpBksTnzcDQExVOUFVDDLEqgnnHuzYrkdmyYGypTytXJQHpU
-	gHb5gJMN756IF3dPzbPKh3cmkl2JzKOnylpUyTqu13zvIq7Hu2BeCeBTjOvgCzbiTZNi
-	FQnldn051S2BvJZaVlx7BZpHTECmFECMkJlLtEWFDbxAscAQH2kUjCiAPnWDwZWmfB5/
-	Y91hksFYD5F390phYWHPilF9IViv1P3/V4wGOuCtnQrk6HJ1vsboRxe9/xPsASufrqOz
-	Pw5A==
-X-Gm-Message-State: AKS2vOxAY+kW3TRnznoHOF0DUaRANnkgLRbPVAb1mPjMoehS/3eyAzrJ
-	FPCY5mWk6ejzlb//kpo=
-X-Received: by 10.200.42.81 with SMTP id l17mr81842547qtl.32.1499533931957;
-	Sat, 08 Jul 2017 10:12:11 -0700 (PDT)
-Received: from [192.168.1.240] ([138.117.48.223])
-	by smtp.gmail.com with ESMTPSA id e15sm5327228qte.3.2017.07.08.10.12.09
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Sat, 08 Jul 2017 10:12:11 -0700 (PDT)
-To: Richard Henderson <rth@twiddle.net>, qemu-devel@nongnu.org
-References: <20170708025030.15845-1-rth@twiddle.net>
-	<20170708025030.15845-4-rth@twiddle.net>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <f2ea7f49-10f3-520c-4a0e-456a11934410@amsat.org>
-Date: Sat, 8 Jul 2017 14:12:08 -0300
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.2.1
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+ :message-id:subject:to:cc;
+ bh=6SfSoKvpbrtTpYBiU7nHGyUMNMss1NcbpQlELgEZi5c=;
+ b=cdgYCPya4x2xxZF3Wws+RA/vBu+DVpISH8BTS5WtbLx2taxWBXf33fYTXiBBkl/w7m
+ /iE0zqF8s/dyEoMAGuAhHgBrzJsIECaLS2mxVxG5iCLtYjjN1/Kbn+u43dfXpMhqDkmO
+ hK2eo0OrG9Dlg9lEvSw6tMrUPo6YEXMMZAH4aFTmGiVym1OIPe6ThVTorWAa3QosxfW+
+ vO+Ya9EYYkjhwzuFCt8nx3jvJtD26Q/x+NNwlwZ6hURsvjCTHpMhvNbnfGzwJG5OE4xl
+ 1kXszSsN86mSJ1uu2qTTFR5Npt+7JRdJEEFQqDvg4diROAT8kpi0eVOFaYCMBJbqyXV6
+ IpIw==
+X-Gm-Message-State: AIVw1109iRdjzoj7gO190v3QmCK/3g0Cs4CTNKnMIxRlA4AcG4a+Jqad
+ OxP/rSWtfv/QLYJOi+QHO19QgNq5BA==
+X-Received: by 10.129.56.84 with SMTP id f81mr7094612ywa.75.1499571671866;
+ Sat, 08 Jul 2017 20:41:11 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <20170708025030.15845-4-rth@twiddle.net>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.85.216.194
-Subject: Re: [Qemu-arm] [PATCH 3/3] linux-user/sh4: Reduce
- TARGET_VIRT_ADDR_SPACE_BITS to 31
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.21
+Received: by 10.129.199.4 with HTTP; Sat, 8 Jul 2017 20:41:11 -0700 (PDT)
+In-Reply-To: <d3443cbe-8752-0943-95b8-185d436de2fd@redhat.com>
+References: <1493530506-26833-1-git-send-email-gengdongjiu@huawei.com>
+ <4dde45bb-a730-82b1-dc49-ad00a6b73d85@redhat.com>
+ <accf8880-f4b0-85f1-9f33-4103c8c26d7a@redhat.com>
+ <e90c5fb8-e68b-a620-9023-f4fcfdd68e97@redhat.com>
+ <dbbab7f6-18c4-9b6c-799e-8267797a31bd@huawei.com>
+ <d3443cbe-8752-0943-95b8-185d436de2fd@redhat.com>
+From: gengdongjiu <gengdj.1984@gmail.com>
+Date: Sun, 9 Jul 2017 11:41:11 +0800
+Message-ID: <CAMj-D2DQDFcuMO7aaqWQhMC4u7fgd9GHR6=i9J86tqEDZ+=Nag@mail.gmail.com>
+Subject: Re: [Qemu-devel] [PATCH v3 1/4] ACPI: Add APEI GHES Table Generation
+ support
+To: Laszlo Ersek <lersek@redhat.com>
+Cc: songwenjun@huawei.com, mtsirkin@redhat.com, ben@skyportsystems.com,
+ kvm@vger.kernel.org, ard.biesheuvel@linaro.org, marc.zyngier@arm.com,
+ pbonzini@redhat.com, tbaicar@codeaurora.org, qemu-devel@nongnu.org,
+ gengdongjiu <gengdongjiu@huawei.com>, imammedo@redhat.com,
+ wuquanming@huawei.com, kvmarm@lists.cs.columbia.edu, qemu-arm@nongnu.org,
+ huangshaoyu@huawei.com, linux@armlinux.org.uk, wangxiongfeng2@huawei.com,
+ linux-arm-kernel@lists.infradead.org
+X-BeenThere: kvmarm@lists.cs.columbia.edu
+X-Mailman-Version: 2.1.14
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: riku.voipio@iki.fi, qemu-arm@nongnu.org, laurent@vivier.eu,
-	aurelien@aurel32.net
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: OQc5btrhzWqh
+List-Id: Where KVM/ARM decisions are made <kvmarm.lists.cs.columbia.edu>
+List-Unsubscribe: <https://lists.cs.columbia.edu/mailman/options/kvmarm>,
+ <mailto:kvmarm-request@lists.cs.columbia.edu?subject=unsubscribe>
+List-Archive: <https://lists.cs.columbia.edu/pipermail/kvmarm>
+List-Post: <mailto:kvmarm@lists.cs.columbia.edu>
+List-Help: <mailto:kvmarm-request@lists.cs.columbia.edu?subject=help>
+List-Subscribe: <https://lists.cs.columbia.edu/mailman/listinfo/kvmarm>,
+ <mailto:kvmarm-request@lists.cs.columbia.edu?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Errors-To: kvmarm-bounces@lists.cs.columbia.edu
+Sender: kvmarm-bounces@lists.cs.columbia.edu
+X-TUID: Jd1B9CKOGUf9
 
-On 07/07/2017 11:50 PM, Richard Henderson wrote:
-> The real kernel has TASK_SIZE as 0x7c000000, due to quirks with
-> a couple of SH parts.  But nominally user-space is limited to 2GB.
-> 
-> Signed-off-by: Richard Henderson <rth@twiddle.net>
+Laszlo,
+  thanks for your clear and detailed answer. I completely understand
+what you mean.
 
-Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+2017-07-07 17:43 GMT+08:00, Laszlo Ersek <lersek@redhat.com>:
+> On 07/07/17 10:32, gengdongjiu wrote:
+>> Hi Laszlo,
+>>    sorry for my late response.
+>>
+>> On 2017/6/3 20:01, Laszlo Ersek wrote:
+>>> On 05/22/17 16:23, Laszlo Ersek wrote:
+>>>> Keeping some context:
+>>>>
+>>>> On 05/12/17 23:00, Laszlo Ersek wrote:
+>>>>> On 04/30/17 07:35, Dongjiu Geng wrote:
+>>>
+>>>> (68) In the code below, you are not taking an "OVMF header probe
+>>>> suppressor" into account.
+>>>>
+>>>> But, we have already planned to replace that quirk with a separate,
+>>>> dedicated allocation hint or command, so I'm not going to describe what
+>>>> an "OVMF header probe suppressor" is; instead, I'll describe the
+>>>> replacement for it.
+>>>>
+>>>> [...]
+>>>
+>>> So, the NOACPI allocation hint is a no-go at the moment, based on the
+>>> discussion in the following threads:
+>>>
+>>> http://mid.mail-archive.com/20170601112241.2580-1-ard.biesheuvel@linaro.org
+>>>
+>>> http://mid.mail-archive.com/c76b36de-ebf9-c662-d454-0a95b43901e8@redhat.com
+>>>
+>>> Therefore the header probe suppression remains necessary.
+>>>
+>>> In this case, it is not hard to do, you just have to reorder the
+>>> following two ADD_POINTER additions a bit:
+>>  Ok, it is no problem.
+>>
+>>>
+>>>>>> +
+>>>>>> +        bios_linker_loader_add_pointer(linker,
+>>>>>> GHES_ERRORS_FW_CFG_FILE,
+>>>>>> +                                sizeof(uint64_t) * i,
+>>>>>> sizeof(uint64_t),
+>>>>>> +                                GHES_ERRORS_FW_CFG_FILE,
+>>>>>> +                                MAX_ERROR_SOURCE_COUNT_V6 *
+>>>>>> sizeof(uint64_t) +
+>>>>>> +                                i * MAX_RAW_DATA_LENGTH);
+>>>
+>>> This one should be moved out to a separate loop, after the current loop.
+>>>
+>>>>>> +        bios_linker_loader_add_pointer(linker,
+>>>>>> ACPI_BUILD_TABLE_FILE,
+>>>>>> +                    address_registers_offset
+>>>>>> +                    + i * sizeof(AcpiGenericHardwareErrorSource),
+>>>>>> +                    sizeof(uint32_t), GHES_ERRORS_FW_CFG_FILE,
+>>>>>> +                    i * sizeof(uint64_t));
+>>>
+>>> This one should be kept in the first (i.e., current) loop.
+>>>
+>>> The idea is, when you first point the HEST/GHES_n entries in
+>>> ACPI_BUILD_TABLE_FILE to the "address registers" in
+>>> GHES_ERRORS_FW_CFG_FILE, all those address registers will still be
+>>> zero-filled. This will fail the ACPI table header probe in
+>>> OvmfPkg/AcpiPlatformDxe, which is what we want.
+>>>
+>>> After this is done, the address registers in GHES_ERRORS_FW_CFG_FILE
+>>> should be pointed to the error status data blocks in the same fw_cfg
+>>> blob, in a separate loop. (Those error status data blocks will again be
+>>> zero-filled, so no ACPI table headers will be mistakenly recognized in
+>>> them.)
+>> I understand your idear. but I have a question:
+>> how about we exchange the two function's place, such as shown below:
+>> then it still meets ours needs, the change is easy.
+>> For every loop:
+>> (1)when patch address in ACPI_BUILD_TABLE_FILE to the "address registers",
+>> the address register is zero-filed.
+>> (2)when patch address in GHES_ERRORS_FW_CFG_FILE to the error status data
+>> blocks, the error status data block is still zero-filed.
+>>
+>>     for (i = 0; i < GHES_ACPI_HEST_NOTIFY_RESERVED; i++) {
+>>         .....................................
+>>         bios_linker_loader_add_pointer(linker, ACPI_BUILD_TABLE_FILE,
+>>                     address_registers_offset
+>>                     + i * sizeof(AcpiGenericHardwareErrorSource),
+>>                     sizeof(uint32_t), GHES_ERRORS_FW_CFG_FILE,
+>>                     i * sizeof(uint64_t));
+>>
+>>
+>>         bios_linker_loader_add_pointer(linker, GHES_ERRORS_FW_CFG_FILE,
+>>                                 sizeof(uint64_t) * i, sizeof(uint64_t),
+>>                                 GHES_ERRORS_FW_CFG_FILE,
+>>                                 MAX_ERROR_SOURCE_COUNT_V6 *
+>> sizeof(uint64_t) +
+>>                                 i * MAX_RAW_DATA_LENGTH);
+>> 	.........................................
+>>
+>>      }
+>
+> Your suggestion seems to do the same, but there is a subtle difference.
+>
+> When the firmware scans the targets of the ADD_POINTER commands for byte
+> sequences that "look like" an ACPI table header, in order to suppress
+> that probe, we should keep 36 bytes (i.e., the size of the ACPI table
+> header structure) zeroed at the target location.
+>
+> * In the patch, as posted, this was not the case, because it first
+> filled in the address register inside the GHES_ERRORS_FW_CFG_FILE blob,
+> and then pointed a GHES pointer field in the HEST table to the *now*
+> nonzero address register.
+>
+> * My suggestion was to first fill in all the GHES pointers (when still
+> all the pointed-to address registers are zero), and then the address
+> registers themselves should be patched.
+>
+> Under this scheme, it is irrelevant whether both loops are incrementing
+> or decrementing loops.
+>
+> * Your suggestion would preserve the safe patching order between any
+> given GHES field and its corresponding (pointed-to) address register. So
+> that's great.
+>
+> However, consider the following case:
+>
+> - Assume that the loop is decrementing, and not incrementing.
+>
+> - First, the last GHES pointer field, GHES[9].<whatever> is patched. It
+> is pointed to the last address register in "etc/hardware_errors", which
+> is still zero-filled. Also, the last address register in
+> "etc/hardware_errors" is immediately followed by the first Error Status
+> Data Block, which is also filled with zero. This means that when the
+> header probe will look at the *target* of GHES[9].<whatever>, it will
+> definitely fail (which is what we want), because all consecutive 36
+> bytes that start at the last address register in "etc/hardware_errors"
+> are zero.
+>
+> - Second, the last address register, address[9], is patched. It is
+> pointed to the last Error Status Data Block, which is zero filled, so
+> the header probe in the firmware fails -- great.
+>
+> - Third, GHES[8].<whatever> is patched. It is set to &address[8].
+> However, at this point, the 36 consecutive bytes starting at &address[8]
+> are *not* all zero, because at relative offset 8, we have the already
+> patched address[9] register, which is nonzero. I'm not saying that this
+> would necessarily cause a problem, but we'd better be safe than sorry.
 
-> ---
->   target/sh4/cpu.h | 6 +++++-
->   1 file changed, 5 insertions(+), 1 deletion(-)
-> 
-> diff --git a/target/sh4/cpu.h b/target/sh4/cpu.h
-> index e3abb6a..3121d1e 100644
-> --- a/target/sh4/cpu.h
-> +++ b/target/sh4/cpu.h
-> @@ -45,7 +45,11 @@
->   #define TARGET_PAGE_BITS 12	/* 4k XXXXX */
->   
->   #define TARGET_PHYS_ADDR_SPACE_BITS 32
-> -#define TARGET_VIRT_ADDR_SPACE_BITS 32
-> +#ifdef CONFIG_USER_ONLY
-> +# define TARGET_VIRT_ADDR_SPACE_BITS 31
-> +#else
-> +# define TARGET_VIRT_ADDR_SPACE_BITS 32
-> +#endif
->   
->   #define SR_MD 30
->   #define SR_RB 29
-> 
+yes, it it. when the loop is  decrementing, my suggested method will
+have problem.
+
+
+>
+>
+> In other words, your suggestion is OK, because the loop we have is
+> incrementing, not decrementing. But, if you decide to go with your idea,
+> please add a comment before the "for" instruction, "this loop must
+> remain an incrementing loop, to safely suppress the ACPI SDT header
+> probe in the firmware".
+Laszlo, I will use your method that separated them into different loop
+to avoid the potential problem, thanks.
+
+
+>
+> Thanks
+> Laszlo
+> _______________________________________________
+> kvmarm mailing list
+> kvmarm@lists.cs.columbia.edu
+> https://lists.cs.columbia.edu/mailman/listinfo/kvmarm
+>
+_______________________________________________
+kvmarm mailing list
+kvmarm@lists.cs.columbia.edu
+https://lists.cs.columbia.edu/mailman/listinfo/kvmarm

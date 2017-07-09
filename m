@@ -1,307 +1,257 @@
-Received: by 10.25.44.15 with SMTP id s15csp1899277lfs;
-        Sat, 8 Jul 2017 20:41:19 -0700 (PDT)
-X-Received: by 10.237.49.133 with SMTP id 5mr78822110qth.53.1499571679356;
-        Sat, 08 Jul 2017 20:41:19 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1499571679; cv=none;
+Received: by 10.25.44.15 with SMTP id s15csp2622184lfs;
+        Sun, 9 Jul 2017 13:52:06 -0700 (PDT)
+X-Received: by 10.237.63.141 with SMTP id s13mr672829qth.61.1499633526071;
+        Sun, 09 Jul 2017 13:52:06 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1499633526; cv=none;
         d=google.com; s=arc-20160816;
-        b=SvGIaZfhScKUaWfusl5MmHmCWWTEeZlY8lq3kRt/AYzRMMASd1OdI8NFBtwUU1Kn/m
-         mAh5wQwhajX8PAhr1UgsX4Z7z1d3sJzqca856Rw78FgouqE2wXsTdR/arIFDOqmeEtV0
-         yXgK8WB3abdhuEmOsBedgEV6ItlasFAAEN5whQpVHe40JrJ3wJu7J97L6hSExGw4mQu0
-         qJkYxmWAm+mcnBVXSSrforW6BfTu8ldJeTzyb+2Vx/NYTt2wt22VjlQgjpgVgoqCKNk1
-         dn3j8M9f9ELt921OyGUvCJIRNlDqkO23fzyDpjkWwKYIJ5qRyVkLxViG6XPVsGgi72nH
-         sTaw==
+        b=hf4zLe7I48CY9RWhOts0A1CZKqIihBOeLbtYArJilHl+mp7BTEoBjCGNELcXKqvbe+
+         Y5EK0y/csod9liQH4YuY856TTxrsixqkxcbj3FmVimrA3u/sA/lt/1JWvUi3Zs59dn8e
+         VGqxnFHL2GZ2SJyQzf5HHvBmkcQdubpymwqCP/difyEmXgoYqb00Q8ZuQ0t3UrkCbjL2
+         lIVukO/Pik19DI/tGcd6XdQ39f54BSnymdKjMYJuSh/tA5GKkP60ZBe06ZvbMjI529U6
+         j/594WKY1GDTPoRGak5GlcURf2vYfAcpeVd+aqVEwt3vfrR4HujCqmGfyC2QYJPiKykB
+         E/Ew==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:content-transfer-encoding:list-subscribe:list-help
-         :list-post:list-archive:list-unsubscribe:list-id:precedence:cc:to
-         :subject:message-id:date:from:references:in-reply-to:mime-version
-         :dkim-signature:arc-authentication-results;
-        bh=Yv3CnlO64A6qUgaUvPirW6ZlUCow1L4osnMKqebM1m8=;
-        b=O0fkAHl1y14MNLIuw9otYcuJgunAcXZDEG2xqAKMRfyIzvfJDYUJL2kKA0kppPGnkt
-         Ani/ZhmQU+OkLPMQK5qGV8cnFm3bXLvMk79Qvls/HacZJAUqqLqXNwP8iBX5wRyvTJi4
-         T8wHYmwkYhYmMRJPP5BpQ01ix2nqyJjKbneCLWyXVIpzu79MehVlrm9BCtN39Z9NZ+3L
-         Qv1dMPQnCMF97G4MMWnT9SfEnAsbDowbS7Ps8q6TVmbBWzOQqrGJa/QGQYFj91x9I9s8
-         dfQfWZo2IGME3PNVY0yJDDeG98SZv3jJQk7T6NUzESfF/iXQeYFKFcUCiyx8YL0KffVF
-         6LDQ==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject:message-id:date:to:from
+         :dkim-filter:dmarc-filter:arc-authentication-results;
+        bh=xCN9lyTTyrsqJi8m/XEfWLBRwVZhqXyE04+Y+3nyuXo=;
+        b=YF5a8ZRG681IH/rQT0XdQjfK2wDmSytvCMGIM54rBtUfj9NqA/qgw4Q5la1hCJzxR/
+         0OL/iPOMAKuFndiJvhY9p0bBMz+b2fAIgMUi3KiXTXIvUcGoEsmwHedjZvbzHf9gG+nd
+         L3a7CCDjC/i3OeUfjhepPjb0znL765qRg5dJ91uH9NLeiV6OWiIf0cGt5XxMkRJmMuWq
+         zWrFSrAySblJqE+ao+gNwWcGiGylpXPRMpBezew5296yeVg5QrVJ4hdCfgCJaPlWzw2O
+         obDRz1hRMNRa/1FLEPpqOI6Pq/zufCf6C2kW915yKorTDzyXb1x/ETcutlZVNgfISYSZ
+         /D7Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=neutral (body hash did not verify) header.i=@gmail.com header.b=E1/nubsd;
-       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Return-Path: <kvmarm-bounces@lists.cs.columbia.edu>
-Received: from mm01.cs.columbia.edu (mm01.cs.columbia.edu. [128.59.11.253])
-        by mx.google.com with ESMTP id s6si7358429qtd.316.2017.07.08.20.41.18;
-        Sat, 08 Jul 2017 20:41:19 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) client-ip=128.59.11.253;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [208.118.235.17])
+        by mx.google.com with ESMTPS id b82si2488722qkh.366.2017.07.09.13.52.05
+        for <alex.bennee@linaro.org>
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Sun, 09 Jul 2017 13:52:06 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) client-ip=208.118.235.17;
 Authentication-Results: mx.google.com;
-       dkim=neutral (body hash did not verify) header.i=@gmail.com header.b=E1/nubsd;
-       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: from localhost (localhost [127.0.0.1])
-	by mm01.cs.columbia.edu (Postfix) with ESMTP id EDA9F41015;
-	Sat,  8 Jul 2017 23:40:47 -0400 (EDT)
-X-Virus-Scanned: at lists.cs.columbia.edu
-X-Spam-Flag: NO
-X-Spam-Score: 0.911
-X-Spam-Level: 
-X-Spam-Status: No, score=0.911 required=6.1 tests=[BAYES_00=-1.9,
-	DKIM_ADSP_CUSTOM_MED=0.001, DKIM_SIGNED=0.1,
-	DNS_FROM_AHBL_RHSBL=2.699, FREEMAIL_FROM=0.001,
-	RCVD_IN_DNSWL_NONE=-0.0001, T_DKIM_INVALID=0.01] autolearn=no
-Authentication-Results: mm01.cs.columbia.edu (amavisd-new); dkim=softfail
-	(fail, message has been altered) header.i=@gmail.com
-Received: from mm01.cs.columbia.edu ([127.0.0.1])
-	by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id YBG5gC1qqFjs; Sat,  8 Jul 2017 23:40:46 -0400 (EDT)
-Received: from mm01.cs.columbia.edu (localhost [127.0.0.1])
-	by mm01.cs.columbia.edu (Postfix) with ESMTP id B29B140D31;
-	Sat,  8 Jul 2017 23:40:46 -0400 (EDT)
-Received: from localhost (localhost [127.0.0.1])
- by mm01.cs.columbia.edu (Postfix) with ESMTP id B065040CE6
- for <kvmarm@lists.cs.columbia.edu>; Sat,  8 Jul 2017 23:40:44 -0400 (EDT)
-X-Virus-Scanned: at lists.cs.columbia.edu
-Received: from mm01.cs.columbia.edu ([127.0.0.1])
- by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 15-Hbi2gOVz3 for <kvmarm@lists.cs.columbia.edu>;
- Sat,  8 Jul 2017 23:40:42 -0400 (EDT)
-Received: from mail-yw0-f193.google.com (mail-yw0-f193.google.com
- [209.85.161.193])
- by mm01.cs.columbia.edu (Postfix) with ESMTPS id C48BC40CE4
- for <kvmarm@lists.cs.columbia.edu>; Sat,  8 Jul 2017 23:40:42 -0400 (EDT)
-Received: by mail-yw0-f193.google.com with SMTP id f200so3671251ywb.0
- for <kvmarm@lists.cs.columbia.edu>; Sat, 08 Jul 2017 20:41:12 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:in-reply-to:references:from:date:message-id:subject:to
- :cc; bh=6SfSoKvpbrtTpYBiU7nHGyUMNMss1NcbpQlELgEZi5c=;
- b=E1/nubsdDddARHwoSlT41P25cqlr0JeHGXwhEs1EkUgE7emZjoT9R6sqewAV/sxVPJ
- NIb2TV0jK2FypfDZyyVzYlSCSkCEHf8Q7uWZ6phy5ngis8rq/MpW5ZcNBMln9oQlkB15
- /H/5ot8HMMhEs3JZd84cNt3DzNsZIn8rmg9ZTrbIa1nIlIMfmZipYRQmaOoIuKDjdxP4
- mzGYMe+Iek9r8VU8/K4DaTFSAJW/Un478r9x9WHWPFRa/Lc3BG02J47YrBVLAetMNj84
- tTaK9TTRzWuhkrjL/F3AqRL9zs4HxgqC1h/uojBW8ycNNLJlSnkPs50F4zyzy+AU6WUA
- WIuQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:in-reply-to:references:from:date
- :message-id:subject:to:cc;
- bh=6SfSoKvpbrtTpYBiU7nHGyUMNMss1NcbpQlELgEZi5c=;
- b=cdgYCPya4x2xxZF3Wws+RA/vBu+DVpISH8BTS5WtbLx2taxWBXf33fYTXiBBkl/w7m
- /iE0zqF8s/dyEoMAGuAhHgBrzJsIECaLS2mxVxG5iCLtYjjN1/Kbn+u43dfXpMhqDkmO
- hK2eo0OrG9Dlg9lEvSw6tMrUPo6YEXMMZAH4aFTmGiVym1OIPe6ThVTorWAa3QosxfW+
- vO+Ya9EYYkjhwzuFCt8nx3jvJtD26Q/x+NNwlwZ6hURsvjCTHpMhvNbnfGzwJG5OE4xl
- 1kXszSsN86mSJ1uu2qTTFR5Npt+7JRdJEEFQqDvg4diROAT8kpi0eVOFaYCMBJbqyXV6
- IpIw==
-X-Gm-Message-State: AIVw1109iRdjzoj7gO190v3QmCK/3g0Cs4CTNKnMIxRlA4AcG4a+Jqad
- OxP/rSWtfv/QLYJOi+QHO19QgNq5BA==
-X-Received: by 10.129.56.84 with SMTP id f81mr7094612ywa.75.1499571671866;
- Sat, 08 Jul 2017 20:41:11 -0700 (PDT)
-MIME-Version: 1.0
-Received: by 10.129.199.4 with HTTP; Sat, 8 Jul 2017 20:41:11 -0700 (PDT)
-In-Reply-To: <d3443cbe-8752-0943-95b8-185d436de2fd@redhat.com>
-References: <1493530506-26833-1-git-send-email-gengdongjiu@huawei.com>
- <4dde45bb-a730-82b1-dc49-ad00a6b73d85@redhat.com>
- <accf8880-f4b0-85f1-9f33-4103c8c26d7a@redhat.com>
- <e90c5fb8-e68b-a620-9023-f4fcfdd68e97@redhat.com>
- <dbbab7f6-18c4-9b6c-799e-8267797a31bd@huawei.com>
- <d3443cbe-8752-0943-95b8-185d436de2fd@redhat.com>
-From: gengdongjiu <gengdj.1984@gmail.com>
-Date: Sun, 9 Jul 2017 11:41:11 +0800
-Message-ID: <CAMj-D2DQDFcuMO7aaqWQhMC4u7fgd9GHR6=i9J86tqEDZ+=Nag@mail.gmail.com>
-Subject: Re: [Qemu-devel] [PATCH v3 1/4] ACPI: Add APEI GHES Table Generation
- support
-To: Laszlo Ersek <lersek@redhat.com>
-Cc: songwenjun@huawei.com, mtsirkin@redhat.com, ben@skyportsystems.com,
- kvm@vger.kernel.org, ard.biesheuvel@linaro.org, marc.zyngier@arm.com,
- pbonzini@redhat.com, tbaicar@codeaurora.org, qemu-devel@nongnu.org,
- gengdongjiu <gengdongjiu@huawei.com>, imammedo@redhat.com,
- wuquanming@huawei.com, kvmarm@lists.cs.columbia.edu, qemu-arm@nongnu.org,
- huangshaoyu@huawei.com, linux@armlinux.org.uk, wangxiongfeng2@huawei.com,
- linux-arm-kernel@lists.infradead.org
-X-BeenThere: kvmarm@lists.cs.columbia.edu
-X-Mailman-Version: 2.1.14
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:37419 helo=lists.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1dUJBT-0001aL-Dn
+	for alex.bennee@linaro.org; Sun, 09 Jul 2017 16:52:03 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:58615)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <eric.auger@redhat.com>) id 1dUJBP-0001Yv-09
+	for qemu-arm@nongnu.org; Sun, 09 Jul 2017 16:52:00 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+	(envelope-from <eric.auger@redhat.com>) id 1dUJBL-0005jG-Tv
+	for qemu-arm@nongnu.org; Sun, 09 Jul 2017 16:51:59 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:48066)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <eric.auger@redhat.com>)
+	id 1dUJBL-0005iw-KH; Sun, 09 Jul 2017 16:51:55 -0400
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+	[10.5.11.13])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 52243285B6;
+	Sun,  9 Jul 2017 20:51:53 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 52243285B6
+Authentication-Results: ext-mx06.extmail.prod.ext.phx2.redhat.com;
+	dmarc=none (p=none dis=none) header.from=redhat.com
+Authentication-Results: ext-mx06.extmail.prod.ext.phx2.redhat.com;
+	spf=pass smtp.mailfrom=eric.auger@redhat.com
+DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com 52243285B6
+Received: from localhost.localdomain.com (ovpn-116-31.ams2.redhat.com
+	[10.36.116.31])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id E96A617DC6;
+	Sun,  9 Jul 2017 20:51:39 +0000 (UTC)
+From: Eric Auger <eric.auger@redhat.com>
+To: eric.auger.pro@gmail.com, eric.auger@redhat.com, peter.maydell@linaro.org,
+	qemu-arm@nongnu.org, qemu-devel@nongnu.org, alex.williamson@redhat.com,
+	prem.mallappa@gmail.com
+Date: Sun,  9 Jul 2017 22:51:25 +0200
+Message-Id: <1499633493-19865-1-git-send-email-eric.auger@redhat.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.30]);
+	Sun, 09 Jul 2017 20:51:53 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.132.183.28
+Subject: [Qemu-arm] [RFC v5 0/8] ARM SMMUv3 Emulation Support
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: Where KVM/ARM decisions are made <kvmarm.lists.cs.columbia.edu>
-List-Unsubscribe: <https://lists.cs.columbia.edu/mailman/options/kvmarm>,
- <mailto:kvmarm-request@lists.cs.columbia.edu?subject=unsubscribe>
-List-Archive: <https://lists.cs.columbia.edu/pipermail/kvmarm>
-List-Post: <mailto:kvmarm@lists.cs.columbia.edu>
-List-Help: <mailto:kvmarm-request@lists.cs.columbia.edu?subject=help>
-List-Subscribe: <https://lists.cs.columbia.edu/mailman/listinfo/kvmarm>,
- <mailto:kvmarm-request@lists.cs.columbia.edu?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Errors-To: kvmarm-bounces@lists.cs.columbia.edu
-Sender: kvmarm-bounces@lists.cs.columbia.edu
-X-TUID: Jd1B9CKOGUf9
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: mohun106@gmail.com, drjones@redhat.com, tcain@qti.qualcomm.com,
+	Radha.Chintakuntla@cavium.com, Sunil.Goutham@cavium.com,
+	mst@redhat.com, jean-philippe.brucker@arm.com, tn@semihalf.com,
+	will.deacon@arm.com, robin.murphy@arm.com, peterx@redhat.com,
+	bharat.bhushan@nxp.com, christoffer.dall@linaro.org
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: oxUinak3btbr
 
-Laszlo,
-  thanks for your clear and detailed answer. I completely understand
-what you mean.
+This series implements the emulation code for ARM SMMUv3.
+This is the continuation of Prem's work [1].
 
-2017-07-07 17:43 GMT+08:00, Laszlo Ersek <lersek@redhat.com>:
-> On 07/07/17 10:32, gengdongjiu wrote:
->> Hi Laszlo,
->>    sorry for my late response.
->>
->> On 2017/6/3 20:01, Laszlo Ersek wrote:
->>> On 05/22/17 16:23, Laszlo Ersek wrote:
->>>> Keeping some context:
->>>>
->>>> On 05/12/17 23:00, Laszlo Ersek wrote:
->>>>> On 04/30/17 07:35, Dongjiu Geng wrote:
->>>
->>>> (68) In the code below, you are not taking an "OVMF header probe
->>>> suppressor" into account.
->>>>
->>>> But, we have already planned to replace that quirk with a separate,
->>>> dedicated allocation hint or command, so I'm not going to describe what
->>>> an "OVMF header probe suppressor" is; instead, I'll describe the
->>>> replacement for it.
->>>>
->>>> [...]
->>>
->>> So, the NOACPI allocation hint is a no-go at the moment, based on the
->>> discussion in the following threads:
->>>
->>> http://mid.mail-archive.com/20170601112241.2580-1-ard.biesheuvel@linaro.org
->>>
->>> http://mid.mail-archive.com/c76b36de-ebf9-c662-d454-0a95b43901e8@redhat.com
->>>
->>> Therefore the header probe suppression remains necessary.
->>>
->>> In this case, it is not hard to do, you just have to reorder the
->>> following two ADD_POINTER additions a bit:
->>  Ok, it is no problem.
->>
->>>
->>>>>> +
->>>>>> +        bios_linker_loader_add_pointer(linker,
->>>>>> GHES_ERRORS_FW_CFG_FILE,
->>>>>> +                                sizeof(uint64_t) * i,
->>>>>> sizeof(uint64_t),
->>>>>> +                                GHES_ERRORS_FW_CFG_FILE,
->>>>>> +                                MAX_ERROR_SOURCE_COUNT_V6 *
->>>>>> sizeof(uint64_t) +
->>>>>> +                                i * MAX_RAW_DATA_LENGTH);
->>>
->>> This one should be moved out to a separate loop, after the current loop.
->>>
->>>>>> +        bios_linker_loader_add_pointer(linker,
->>>>>> ACPI_BUILD_TABLE_FILE,
->>>>>> +                    address_registers_offset
->>>>>> +                    + i * sizeof(AcpiGenericHardwareErrorSource),
->>>>>> +                    sizeof(uint32_t), GHES_ERRORS_FW_CFG_FILE,
->>>>>> +                    i * sizeof(uint64_t));
->>>
->>> This one should be kept in the first (i.e., current) loop.
->>>
->>> The idea is, when you first point the HEST/GHES_n entries in
->>> ACPI_BUILD_TABLE_FILE to the "address registers" in
->>> GHES_ERRORS_FW_CFG_FILE, all those address registers will still be
->>> zero-filled. This will fail the ACPI table header probe in
->>> OvmfPkg/AcpiPlatformDxe, which is what we want.
->>>
->>> After this is done, the address registers in GHES_ERRORS_FW_CFG_FILE
->>> should be pointed to the error status data blocks in the same fw_cfg
->>> blob, in a separate loop. (Those error status data blocks will again be
->>> zero-filled, so no ACPI table headers will be mistakenly recognized in
->>> them.)
->> I understand your idear. but I have a question:
->> how about we exchange the two function's place, such as shown below:
->> then it still meets ours needs, the change is easy.
->> For every loop:
->> (1)when patch address in ACPI_BUILD_TABLE_FILE to the "address registers",
->> the address register is zero-filed.
->> (2)when patch address in GHES_ERRORS_FW_CFG_FILE to the error status data
->> blocks, the error status data block is still zero-filed.
->>
->>     for (i = 0; i < GHES_ACPI_HEST_NOTIFY_RESERVED; i++) {
->>         .....................................
->>         bios_linker_loader_add_pointer(linker, ACPI_BUILD_TABLE_FILE,
->>                     address_registers_offset
->>                     + i * sizeof(AcpiGenericHardwareErrorSource),
->>                     sizeof(uint32_t), GHES_ERRORS_FW_CFG_FILE,
->>                     i * sizeof(uint64_t));
->>
->>
->>         bios_linker_loader_add_pointer(linker, GHES_ERRORS_FW_CFG_FILE,
->>                                 sizeof(uint64_t) * i, sizeof(uint64_t),
->>                                 GHES_ERRORS_FW_CFG_FILE,
->>                                 MAX_ERROR_SOURCE_COUNT_V6 *
->> sizeof(uint64_t) +
->>                                 i * MAX_RAW_DATA_LENGTH);
->> 	.........................................
->>
->>      }
->
-> Your suggestion seems to do the same, but there is a subtle difference.
->
-> When the firmware scans the targets of the ADD_POINTER commands for byte
-> sequences that "look like" an ACPI table header, in order to suppress
-> that probe, we should keep 36 bytes (i.e., the size of the ACPI table
-> header structure) zeroed at the target location.
->
-> * In the patch, as posted, this was not the case, because it first
-> filled in the address register inside the GHES_ERRORS_FW_CFG_FILE blob,
-> and then pointed a GHES pointer field in the HEST table to the *now*
-> nonzero address register.
->
-> * My suggestion was to first fill in all the GHES pointers (when still
-> all the pointed-to address registers are zero), and then the address
-> registers themselves should be patched.
->
-> Under this scheme, it is irrelevant whether both loops are incrementing
-> or decrementing loops.
->
-> * Your suggestion would preserve the safe patching order between any
-> given GHES field and its corresponding (pointed-to) address register. So
-> that's great.
->
-> However, consider the following case:
->
-> - Assume that the loop is decrementing, and not incrementing.
->
-> - First, the last GHES pointer field, GHES[9].<whatever> is patched. It
-> is pointed to the last address register in "etc/hardware_errors", which
-> is still zero-filled. Also, the last address register in
-> "etc/hardware_errors" is immediately followed by the first Error Status
-> Data Block, which is also filled with zero. This means that when the
-> header probe will look at the *target* of GHES[9].<whatever>, it will
-> definitely fail (which is what we want), because all consecutive 36
-> bytes that start at the last address register in "etc/hardware_errors"
-> are zero.
->
-> - Second, the last address register, address[9], is patched. It is
-> pointed to the last Error Status Data Block, which is zero filled, so
-> the header probe in the firmware fails -- great.
->
-> - Third, GHES[8].<whatever> is patched. It is set to &address[8].
-> However, at this point, the 36 consecutive bytes starting at &address[8]
-> are *not* all zero, because at relative offset 8, we have the already
-> patched address[9] register, which is nonzero. I'm not saying that this
-> would necessarily cause a problem, but we'd better be safe than sorry.
+This v5 mainly brings VFIO integration in DT mode. On guest kernel
+side, this requires a quirk [1] to force TLB invalidation on map.
 
-yes, it it. when the loop is  decrementing, my suggested method will
-have problem.
+The following changes also are noticeable:
+- fix SMMU_CMDQ_CONS offset
+- adds dma-coherent dt property which fixes the unhandled command
+  opcode bug.
+- implements block PTE
+
+The smmu is instantiated when passing the smmu option to machvirt:
+"-M virt-2.10,smmu"
+
+As I haven't split the code yet so that it can be easily reviewable
+I don't expect deep reviews at this stage. Also the implementation may
+be largely sub-optimal.
+
+Tested Use Cases:
+- booted a guest in dt and acpi mode with an iommu_platform
+  virtio-net-pci device (using dma ops). Tested with the following
+  guest combinations: 4K page - 39 bit VA, 4K - 48b, 64K - 39b,
+  64K - 48b.
+- booted a guest (featuring [1]) with PCIe passthrough'ed PCIe devices:
+  - AMD Overdrive and igbvf passthrough (using gsi direct mapping)
+  - Cavium ThunderX and ixgbevf passthrough (using KVM MSI routing)
+
+Unfortunately I have not been able to run DPDK testpmd yet on guest side.
+The problem I see is the user space driver dma-maps a huge area
+and this causes plenty of CMDQ_OP_TLBI_NH_VA commands to be sent
+(tlbi-on-map) which are sent for each page whereas the dma-map covers a
+huge page. I will work on this issue for next version.
+
+Known limitations:
+- no VMSAv8-32 suport
+- no nested stage support (S1 + S2)
+- no support for HYP mappings
+- register fine emulation, commands, interrupts and errors were
+  not accurately tested. Handling is sufficient to run use cases
+  described hereafter though.
+
+Best Regards
+
+Eric
+
+This series can be found at:
+v5: https://github.com/eauger/qemu/tree/v2.9-SMMU-v5
+v4: https://github.com/eauger/qemu/tree/v2.9-SMMU-v4
+
+References:
+[1] [RFC 0/2] arm-smmu-v3 tlbi-on-map option
+[2] Prem's last iteration:
+- https://lists.gnu.org/archive/html/qemu-devel/2016-08/msg03531.html
+
+History:
+v4 -> v5:
+- initial_level now part of SMMUTransCfg
+- smmu_page_walk_64 takes into account the max input size
+- implement sys->iommu_ops.replay and sys->iommu_ops.notify_flag_changed
+- smmuv3_translate: bug fix: don't walk on bypass
+- smmu_update_qreg: fix PROD index update
+- I did not yet address Peter's comments as the code is not mature enough
+  to be split into sub patches.
+
+v3 -> v4 [Eric]:
+- page table walk rewritten to allow scan of the page table within a
+  range of IOVA. This prepares for VFIO integration and replay.
+- configuration parsing partially reworked.
+- do not advertise unsupported/untested features: S2, S1 + S2, HYP,
+  PRI, ATS, ..
+- added ACPI table generation
+- migrated to dynamic traces
+- mingw compilation fix
+
+v2 -> v3 [Eric]:
+- rebased on 2.9
+- mostly code and patch reorganization to ease the review process
+- optional patches removed. They may be handled separately. I am currently
+  working on ACPI enablement.
+- optional instantiation of the smmu in mach-virt
+- removed [2/9] (fdt functions) since not mandated
+- start splitting main patch into base and derived object
+- no new function feature added
+
+v1 -> v2 [Prem]:
+- Adopted review comments from Eric Auger
+        - Make SMMU_DPRINTF to internally call qemu_log
+            (since translation requests are too many, we need control
+             on the type of log we want)
+        - SMMUTransCfg modified to suite simplicity
+        - Change RegInfo to uint64 register array
+        - Code cleanup
+        - Test cleanups
+- Reshuffled patches
+
+v0 -> v1 [Prem]:
+- As per SMMUv3 spec 16.0 (only is_ste_consistant() is noticeable)
+- Reworked register access/update logic
+- Factored out translation code for
+        - single point bug fix
+        - sharing/removal in future
+- (optional) Unit tests added, with PCI test device
+        - S1 with 4k/64k, S1+S2 with 4k/64k
+        - (S1 or S2) only can be verified by Linux 4.7 driver
+        - (optional) Priliminary ACPI support
+
+v0 [Prem]:
+- Implements SMMUv3 spec 11.0
+- Supported for PCIe devices,
+- Command Queue and Event Queue supported
+- LPAE only, S1 is supported and Tested, S2 not tested
+- BE mode Translation not supported
+- IRQ support (legacy, no MSI)
+- Tested with DPDK and e1000
 
 
->
->
-> In other words, your suggestion is OK, because the loop we have is
-> incrementing, not decrementing. But, if you decide to go with your idea,
-> please add a comment before the "for" instruction, "this loop must
-> remain an incrementing loop, to safely suppress the ACPI SDT header
-> probe in the firmware".
-Laszlo, I will use your method that separated them into different loop
-to avoid the potential problem, thanks.
+Eric Auger (5):
+  hw/arm/smmu-common: smmu base class
+  hw/arm/virt: Add 2.10 machine type
+  hw/arm/virt: Add tlbi-on-map property to the smmuv3 node
+  target/arm/kvm: Translate the MSI doorbell in kvm_arch_fixup_msi_route
+  hw/arm/smmuv3: VFIO integration
 
+Prem Mallappa (3):
+  hw/arm/smmuv3: smmuv3 emulation model
+  hw/arm/virt: Add SMMUv3 to the virt board
+  hw/arm/virt-acpi-build: Add smmuv3 node in IORT table
 
->
-> Thanks
-> Laszlo
-> _______________________________________________
-> kvmarm mailing list
-> kvmarm@lists.cs.columbia.edu
-> https://lists.cs.columbia.edu/mailman/listinfo/kvmarm
->
-_______________________________________________
-kvmarm mailing list
-kvmarm@lists.cs.columbia.edu
-https://lists.cs.columbia.edu/mailman/listinfo/kvmarm
+ default-configs/aarch64-softmmu.mak |    1 +
+ hw/arm/Makefile.objs                |    1 +
+ hw/arm/smmu-common.c                |  474 +++++++++++++
+ hw/arm/smmu-internal.h              |   89 +++
+ hw/arm/smmuv3-internal.h            |  651 ++++++++++++++++++
+ hw/arm/smmuv3.c                     | 1256 +++++++++++++++++++++++++++++++++++
+ hw/arm/trace-events                 |   54 ++
+ hw/arm/virt-acpi-build.c            |   56 +-
+ hw/arm/virt.c                       |  111 +++-
+ include/hw/acpi/acpi-defs.h         |   15 +
+ include/hw/arm/smmu-common.h        |  127 ++++
+ include/hw/arm/smmuv3.h             |   87 +++
+ include/hw/arm/virt.h               |    5 +
+ target/arm/kvm.c                    |   28 +
+ target/arm/trace-events             |    3 +
+ 15 files changed, 2949 insertions(+), 9 deletions(-)
+ create mode 100644 hw/arm/smmu-common.c
+ create mode 100644 hw/arm/smmu-internal.h
+ create mode 100644 hw/arm/smmuv3-internal.h
+ create mode 100644 hw/arm/smmuv3.c
+ create mode 100644 include/hw/arm/smmu-common.h
+ create mode 100644 include/hw/arm/smmuv3.h
+
+-- 
+2.5.5
+

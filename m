@@ -1,83 +1,83 @@
-Received: by 10.25.44.15 with SMTP id s15csp3130994lfs;
-        Mon, 10 Jul 2017 02:07:03 -0700 (PDT)
-X-Received: by 10.200.56.177 with SMTP id f46mr2899634qtc.234.1499677623236;
-        Mon, 10 Jul 2017 02:07:03 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1499677623; cv=none;
+Received: by 10.25.44.15 with SMTP id s15csp3131723lfs;
+        Mon, 10 Jul 2017 02:07:48 -0700 (PDT)
+X-Received: by 10.200.43.58 with SMTP id 55mr3085803qtu.202.1499677668623;
+        Mon, 10 Jul 2017 02:07:48 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1499677668; cv=none;
         d=google.com; s=arc-20160816;
-        b=DXsecqVjYwqusRXxrtZ8oQtQ8wT3/uEUMPSYfZqqJ8V1LcLQbF2KxZ7KuMct+HtNpY
-         iAz3gJEFPGHrLz6fka4hWJXgOIsPgdb2V7lplyp47wVHcwUhbzrLzmVNdqZICXqWmjDS
-         HjfMnvyHFekQkrDxQrnramByrKrhruURz3YWL4aBkB+zmy/y4v7Kp6+o6LL8PfjYBMb+
-         AL0nzfvscodV8kIIZYZls7xZTQZ96UffYFyAKOHP3+tTAToqwaHmMf123b9ZOPbZAOd7
-         nJLLKGrrfMVssKjngn6LgGBeKGjJKb3X9lEAWkDfeGUy5CtCqI+yLdfu1wC37UO24Yup
-         hUrA==
+        b=E4KaPd/T62EQKJlMv1bAF7eOEqzHcadcVDvCPdu9v0IZThMLsYo7l/f11REpAWFW3T
+         Fq+yUzPVr2McsaFr9eXcg5s3akHMUaaeXte2Iwg1gjT5NuGe+kYpaYnAlYcYz/XgHf7v
+         M+0//Jd/Eu9sCT17hc9KmZSkI3kvPqi/SRS9Nkk38+NzLh/kQmJdVjmjyYtgXLfl2hA7
+         wTNmOCafbFfp2zIzw6XWmpYtncKDF7tdeGEbCJBTKakYVY9R3RRr9p6DEhyjeqG1RdpR
+         z5TMqgoPl7J5kuBCTS4l197m4bHsRaakBdiwxhPQGB84SYHuPmxO/fKcf7Lbz5pltY3C
+         nFbw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:mime-version:message-id
          :date:to:from:arc-authentication-results;
-        bh=mG4mn5JqJ55ztviXxA3rj9094xRm867bAElp5ujkw/M=;
-        b=zo1eab4aShpW4ZXc0oL5htn222rHfVyQ02kaSkGCMNyu9Ff2ZkgvZ13HwtOfA78FGv
-         +Pu+Po+iFJVoqCw6cH/KU9bWwm/xU6d+epbvAULJLUVtudLLpwSMjRXFRx88jhqbGuD7
-         yEMsRkToxUd4ECMHgz55mNlS/zsTa/CL3DV02G2u1BTsvCcUem4hreRB93tIweDGmCOA
-         +7fmsTLr1mNO5gj+pIK/ZpqXJKCIjs3aKU0d+podHgNnD2Eq50J6kfrA/DX5HSdbwtXk
-         beGAQXqMJiIyo3evwuCsM7fZ8jDAHGk3odMfOSmjMVyFGF/AhDeWRw4cbtuKK1cfsXIH
-         efcQ==
+        bh=mXxofg21RBKwpU6dgG8Yq+YFi8bRhYKSjNub5NW+thk=;
+        b=X6DpQi7NICrXWiQBGnTaf7Y3AxqBuGtRTu3av+Vm4htdIDttLarSiMRTYKgRocaD/z
+         RVlgPbJ7bHFu1lEtCCbveoUOQfbWPvpAEWtHWQYch0Ks7YzIjsfsWcUM6dmZSI5SAndP
+         Fkll9vSWgUmEDhkN67Rcve314jiroZHsZF3GzArjSymFFM+eYkT+XX43rXhvJ3DJElH9
+         SpBtGx6lhHoY2NPc+tpfjBnZV0DDJmz48fi9C9dbaoY4Yz7pmecrVpAwJZhadmbsbEyF
+         rvS65UYMUeUTAk/zUi8I3kRlGWyjwgk3lBHN+woFaJqcHHSKn+BmVXN1DHLS+t3/mxcT
+         BJNw==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [208.118.235.17])
-        by mx.google.com with ESMTPS id 2si10146118qtz.240.2017.07.10.02.07.02
+        by mx.google.com with ESMTPS id q7si10495275qtd.274.2017.07.10.02.07.48
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 10 Jul 2017 02:07:03 -0700 (PDT)
+        Mon, 10 Jul 2017 02:07:48 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) client-ip=208.118.235.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:39360 helo=lists.gnu.org)
+Received: from localhost ([::1]:39363 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1dUUei-0005hV-99
-	for alex.bennee@linaro.org; Mon, 10 Jul 2017 05:07:00 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:58841)
+	id 1dUUfR-0006Kd-Rv
+	for alex.bennee@linaro.org; Mon, 10 Jul 2017 05:07:45 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:59071)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <gengdongjiu@huawei.com>) id 1dUUcp-0004Xv-7K
-	for qemu-devel@nongnu.org; Mon, 10 Jul 2017 05:05:07 -0400
+	(envelope-from <gengdongjiu@huawei.com>) id 1dUUdN-00051p-Qf
+	for qemu-devel@nongnu.org; Mon, 10 Jul 2017 05:05:38 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <gengdongjiu@huawei.com>) id 1dUUcl-0000kH-4i
-	for qemu-devel@nongnu.org; Mon, 10 Jul 2017 05:05:03 -0400
-Received: from szxga03-in.huawei.com ([45.249.212.189]:3902)
+	(envelope-from <gengdongjiu@huawei.com>) id 1dUUdJ-00011x-Mo
+	for qemu-devel@nongnu.org; Mon, 10 Jul 2017 05:05:37 -0400
+Received: from szxga01-in.huawei.com ([45.249.212.187]:4024)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_ARCFOUR_SHA1:16) (Exim 4.71)
 	(envelope-from <gengdongjiu@huawei.com>)
-	id 1dUUck-0000bP-Hm; Mon, 10 Jul 2017 05:04:59 -0400
+	id 1dUUdJ-00010I-2j; Mon, 10 Jul 2017 05:05:33 -0400
 Received: from 172.30.72.55 (EHLO DGGEML402-HUB.china.huawei.com)
 	([172.30.72.55])
-	by dggrg03-dlp.huawei.com (MOS 4.4.6-GA FastPath queued)
-	with ESMTP id AQW57283; Mon, 10 Jul 2017 17:04:46 +0800 (CST)
+	by dggrg01-dlp.huawei.com (MOS 4.4.6-GA FastPath queued)
+	with ESMTP id ARU58044; Mon, 10 Jul 2017 17:05:26 +0800 (CST)
 Received: from linux.huawei.com (10.67.187.203) by
 	DGGEML402-HUB.china.huawei.com (10.3.17.38) with Microsoft SMTP Server
-	id 14.3.301.0; Mon, 10 Jul 2017 17:04:35 +0800
+	id 14.3.301.0; Mon, 10 Jul 2017 17:05:18 +0800
 From: Dongjiu Geng <gengdongjiu@huawei.com>
 To: <lersek@redhat.com>, <mst@redhat.com>, <imammedo@redhat.com>,
 	<famz@redhat.com>, <qemu-devel@nongnu.org>, <zhaoshenglong@huawei.com>, 
 	<peter.maydell@linaro.org>, <qemu-arm@nongnu.org>,
 	<zhengqiang10@huawei.com>, <huangshaoyu@huawei.com>,
 	<wuquanming@huawei.com>, <zhihui.gao@huawei.com>
-Date: Mon, 10 Jul 2017 17:25:36 +0800
-Message-ID: <1499678736-5244-1-git-send-email-gengdongjiu@huawei.com>
+Date: Mon, 10 Jul 2017 17:26:25 +0800
+Message-ID: <1499678785-6057-1-git-send-email-gengdongjiu@huawei.com>
 X-Mailer: git-send-email 1.7.7
 MIME-Version: 1.0
 Content-Type: text/plain
 X-Originating-IP: [10.67.187.203]
 X-CFilter-Loop: Reflected
 X-Mirapoint-Virus-RAPID-Raw: score=unknown(0),
-	refid=str=0001.0A090203.59634330.0010, ss=1, re=0.000, recu=0.000,
+	refid=str=0001.0A020202.5963435A.0076, ss=1, re=0.000, recu=0.000,
 	reip=0.000, cl=1, cld=1, fgs=0, ip=0.0.0.0,
 	so=2014-11-16 11:51:01, dmn=2013-03-21 17:37:32
-X-Mirapoint-Loop-Id: 0481ff6947c247aa8eb8ba303b8f689c
+X-Mirapoint-Loop-Id: 2d65973ac249e283b8ca08b9d4316214
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
 	[fuzzy]
-X-Received-From: 45.249.212.189
-Subject: [Qemu-devel] [PATCH v4 0/3] Generate APEI GHES table and
- dynamically record CPER
+X-Received-From: 45.249.212.187
+Subject: [Qemu-devel] [PATCH v4 3/3] ACPI: build and enable APEI GHES in the
+ Makefile and configuration
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -92,106 +92,45 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
 Cc: gengdongjiu@huawei.com
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: kWHek1M+NOP3
+X-TUID: oIbCN6gLL+2a
 
+Add CONFIG_ACPI_APEI configuration in the Makefile and
+enable it in the arm-softmmu.mak
 
-how to test:
-1. In the guest OS, use this command to dump the APEI table: 
-	"iasl -p ./HEST -d /sys/firmware/acpi/tables/HEST"
-2. And find the address for the generic error status block
-   according to the notification type
-3. then find the CPER record through the generic error status block.
+Signed-off-by: Dongjiu Geng <gengdongjiu@huawei.com>
 
-For example(notification type is SEA):
+---
+thanks a lot Laszlo's review and comments: 
 
-(1) root@genericarmv8:~# iasl -p ./HEST -d /sys/firmware/acpi/tables/HEST
-(2) root@genericarmv8:~# cat HEST.dsl
-	/*
-	 * Intel ACPI Component Architecture
-	 * AML/ASL+ Disassembler version 20170303 (64-bit version)
-	 * Copyright (c) 2000 - 2017 Intel Corporation
-	 *
-	 * Disassembly of /sys/firmware/acpi/tables/HEST, Mon Dec 12 07:19:43 2016
-	 *
-	 * ACPI Data Table [HEST]
-	 *
-	 * Format: [HexOffset DecimalOffset ByteLength]  FieldName : FieldValue
-	 */
-    ..................................................................................
-    [228h 0552   2]                Subtable Type : 0009 [Generic Hardware Error Source]
-	[22Ah 0554   2]                    Source Id : 0008
-	[22Ch 0556   2]            Related Source Id : FFFF
-	[22Eh 0558   1]                     Reserved : 00
-	[22Fh 0559   1]                      Enabled : 01
-	[230h 0560   4]       Records To Preallocate : 00000001
-	[234h 0564   4]      Max Sections Per Record : 00000001
-	[238h 0568   4]          Max Raw Data Length : 00001000
+change since v3:
+(1) change name to "CONFIG_ACPI_APEI" from CONFIG_ACPI_APEI_GENERATION
 
-	[23Ch 0572  12]         Error Status Address : [Generic Address Structure]
-	[23Ch 0572   1]                     Space ID : 00 [SystemMemory]
-	[23Dh 0573   1]                    Bit Width : 40
-	[23Eh 0574   1]                   Bit Offset : 00
-	[23Fh 0575   1]         Encoded Access Width : 04 [QWord Access:64]
-	[240h 0576   8]                      Address : 00000000785D0040
+---
+ default-configs/arm-softmmu.mak | 1 +
+ hw/acpi/Makefile.objs           | 1 +
+ 2 files changed, 2 insertions(+)
 
-	[248h 0584  28]                       Notify : [Hardware Error Notification Structure]
-	[248h 0584   1]                  Notify Type : 08 [SEA]
-	[249h 0585   1]                Notify Length : 1C
-	[24Ah 0586   2]   Configuration Write Enable : 0000
-	[24Ch 0588   4]                 PollInterval : 00000000
-	[250h 0592   4]                       Vector : 00000000
-	[254h 0596   4]      Polling Threshold Value : 00000000
-	[258h 0600   4]     Polling Threshold Window : 00000000
-	[25Ch 0604   4]        Error Threshold Value : 00000000
-	[260h 0608   4]       Error Threshold Window : 00000000
-
-	[264h 0612   4]    Error Status Block Length : 00001000
-    .....................................................................................
-(3) according to above table, the address that contains the physical address of a block
-    of memory that holds the error status data for SEA notification error source is 0x00000000785D0040
-(4) the address for SEA notification error source is 0x785d8058
-	(qemu) xp /2x 0x00000000785D0040
-	00000000785d0040: 0x785d8058 0x00000000
-(5) check the content of generic error status block and generic error data entry
-    (qemu) xp /100x 0x785d8058
-    00000000785d8058: 0x00000001 0x00000000 0x00000000 0x00000098
-    00000000785d8068: 0x00000001 0xa5bc1114 0x4ede6f64 0x833e63b8
-	00000000785d8078: 0xb1837ced 0x00000000 0x00000000 0x00000050
-	00000000785d8088: 0x00000000 0x00000000 0x00000000 0x00000000
-	00000000785d8098: 0x00000000 0x00000000 0x00000000 0x00000000
-	00000000785d80a8: 0x00000000 0x00000000 0x00000000 0x00004002
-	00000000785d80b8: 0x00000000 0x00000000 0x00000000 0x00001111
-	00000000785d80c8: 0x00000000 0x00000000 0x00000000 0x00000000
-	00000000785d80d8: 0x00000000 0x00000000 0x00000000 0x00000000
-	00000000785d80e8: 0x00000000 0x00000000 0x00000000 0x00000000
-	00000000785d80f8: 0x00000000 0x00000003 0x00000000 0x00000000
-	00000000785d8108: 0x00000000 0x00000000 0x00000000 0x00000000
-	00000000785d8118: 0x00000000 0x00000000 0x00000000 0x00000000
-	00000000785d8128: 0x00000000 0x00000000 0x00000000 0x00000000
-	00000000785d8138: 0x00000000 0x00000000 0x00000000 0x00000000
-
-
-
-*** BLURB HERE ***
-
-Dongjiu Geng (3):
-  ACPI: Add new ACPI structures and macros
-  ACPI: Add APEI GHES Table Generation support 1
-  ACPI: build and enable APEI GHES in the Makefile and configuration
-
- default-configs/arm-softmmu.mak |   1 +
- hw/acpi/Makefile.objs           |   1 +
- hw/acpi/aml-build.c             |   2 +
- hw/acpi/hest_ghes.c             | 219 ++++++++++++++++++++++++++++++++++++++++
- hw/arm/virt-acpi-build.c        |   6 ++
- include/hw/acpi/acpi-defs.h     | 194 +++++++++++++++++++++++++++++++++++
- include/hw/acpi/aml-build.h     |   1 +
- include/hw/acpi/hest_ghes.h     |  47 +++++++++
- include/qemu/uuid.h             |  11 ++
- 9 files changed, 482 insertions(+)
- create mode 100644 hw/acpi/hest_ghes.c
- create mode 100644 include/hw/acpi/hest_ghes.h
-
+diff --git a/default-configs/arm-softmmu.mak b/default-configs/arm-softmmu.mak
+index 1e3bd2b..ee6f5fc 100644
+--- a/default-configs/arm-softmmu.mak
++++ b/default-configs/arm-softmmu.mak
+@@ -121,3 +121,4 @@ CONFIG_ACPI=y
+ CONFIG_SMBIOS=y
+ CONFIG_ASPEED_SOC=y
+ CONFIG_GPIO_KEY=y
++CONFIG_ACPI_APEI=y
+diff --git a/hw/acpi/Makefile.objs b/hw/acpi/Makefile.objs
+index 11c35bc..bafb148 100644
+--- a/hw/acpi/Makefile.objs
++++ b/hw/acpi/Makefile.objs
+@@ -6,6 +6,7 @@ common-obj-$(CONFIG_ACPI_MEMORY_HOTPLUG) += memory_hotplug.o
+ common-obj-$(CONFIG_ACPI_CPU_HOTPLUG) += cpu.o
+ common-obj-$(CONFIG_ACPI_NVDIMM) += nvdimm.o
+ common-obj-$(CONFIG_ACPI_VMGENID) += vmgenid.o
++common-obj-$(CONFIG_ACPI_APEI) += hest_ghes.o
+ common-obj-$(call lnot,$(CONFIG_ACPI_X86)) += acpi-stub.o
+ 
+ common-obj-y += acpi_interface.o
 -- 
 2.10.1
 

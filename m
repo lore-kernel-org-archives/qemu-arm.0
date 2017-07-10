@@ -1,141 +1,336 @@
-Received: by 10.25.44.15 with SMTP id s15csp1433330lfs;
-        Sat, 8 Jul 2017 09:21:14 -0700 (PDT)
-X-Received: by 10.55.207.5 with SMTP id e5mr68208131qkj.34.1499530873922;
-        Sat, 08 Jul 2017 09:21:13 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1499530873; cv=none;
+Received: by 10.25.44.15 with SMTP id s15csp3096405lfs;
+        Mon, 10 Jul 2017 01:28:15 -0700 (PDT)
+X-Received: by 10.223.129.6 with SMTP id 6mr6220357wrm.23.1499675295903;
+        Mon, 10 Jul 2017 01:28:15 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1499675295; cv=none;
         d=google.com; s=arc-20160816;
-        b=wntQgrnKlnrGLcHtlL9B5wQCA3wE+3S938fYEyKANWl5rZi9gHj0ZYQxuuniB4ydxq
-         OigRCpNwWzHK7mb9QtAfvsAu41rQr0cPFVHcCTqOmgC3PYLwR+aCWLg9RwIQb21d1XaW
-         Ik76DnfJKQ6O9wwFoJ++aIIywdohPS3Oaiy7o3BLWVxIMGa3XYRwuAAPE3fLPLqeGTjk
-         IrZs98JlbevVj8AFv02XyfPpLBf9Bxvjkcgy0UEaRzqbIrPCmiK6zBZIVIFzUWaa5A36
-         axaKIQovuLsKzqwlJnFdznlRpMeWpLSvWIbvbRutXMKOrbiJp5qNU72H+TIoKcAeQVV2
-         XP5g==
+        b=X+xC1+5jMf0flDX8AVeNku4LQGQcYEFJ5q8oeeiKdNmrrG4lZDtoJGbs2VHVzn81qK
+         BklWaC+pnZLSfO6HnGNDScAs3v5f3JEZN/vacBejZUPdDCXdmf7LA9Pr2MFZs01P2T4N
+         EiWndThRp4ROVxGFOmrLySQ4KxukhZr+rHWtvkdHofecC8CX8ZZfAtSjZ+nK6dj7FO4e
+         usMhkjaZzOls7YjIeVCbU7V5xnRR176V2GnXQoGfNeoilU/ag5QGK3aSGNt1k7jmuJIk
+         v8eNuibeR4BcQQEqKD/NnbiPoXGHsmepJT9Z7kklSHK4wfBemVCdLxlef480BSUkrKJx
+         IEwA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:cc:to:subject:sender
-         :dkim-signature:arc-authentication-results;
-        bh=voe8+IX8tsz8ik0ZdqxNidVNCI+dlqngU00ibwKhtZQ=;
-        b=KLwzUWSrbTAr+x/Uu78saFeSAJ8bgfnmGGoW9O8hZyPwpHqEdUN3FUKCxnZtXxtAqa
-         QsG2i3jlP8d++QwH1pmEt6wM/09qOebVphmU58QU3yiqvSvz0LZBryWMUCMJ9+uebajJ
-         Q1o41kMalqiFF646qEme6pbrlBCSVnKs7bPWxtVe8z21i/aupnLBYpr7XEPyKvclXpO3
-         jBXA1YB0dLv0mwRM0ygqW1N25ZtmAvAgo9Lix24jBfAQ2RD4a2OgDHFAYUi19a2bB1zt
-         H6hBIo+4eqlSm7m4CMCXT7x2aHtTSkFvVgK8yZrv2JuLFF2TQpSieEMk4R7hFKRF2l9I
-         iHZQ==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
+         :references:in-reply-to:mime-version:dkim-signature
+         :arc-authentication-results;
+        bh=AW6Er+8yd0Pm8UDE4hJDpksmpRCnKR/83AGw4xnRTEU=;
+        b=owjfsGnGZU2GQercXT3p2hZ6ZpA4MRSoV+RiSk1qiTg4er5IooAVq79tsWbdlTb3Pg
+         BgnvJ/QYIFUIakIJLl6//VouTX9OsqDlyjTrqpiZ+T3/Nwh0fEzi+O4Ev0ovmN1GQ2Bw
+         YXtPlci53AL44HJA99OFlqPO0ku8VR29Ry6Wql2pW4Dwn8naRAuxD9CxEJXn2za9h0DM
+         FF5ECxYfkbSHkojVvWqcexzFCq7nKKgBQUx6FpIYEdjbCuIOI4QFZSx5vgvlhZuda90u
+         QVrnz0eZNCxGvK1Zaf9JIVWVdNSDfXOlc4NOwPM8nGuO2aMBBJMmYCG/5L06UJ8h2cwv
+         DbFw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.b=mqF2idQs;
-       spf=pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 2607:f8b0:400d:c0d::22d as permitted sender) smtp.mailfrom=philippe.mathieu.daude@gmail.com
-Return-Path: <philippe.mathieu.daude@gmail.com>
-Received: from mail-qt0-x22d.google.com (mail-qt0-x22d.google.com. [2607:f8b0:400d:c0d::22d])
-        by mx.google.com with ESMTPS id p10si6223225qke.174.2017.07.08.09.21.13
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 08 Jul 2017 09:21:13 -0700 (PDT)
-Received-SPF: pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 2607:f8b0:400d:c0d::22d as permitted sender) client-ip=2607:f8b0:400d:c0d::22d;
+       dkim=neutral (body hash did not verify) header.i=@gmail.com header.b=tTxdJWJS;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [208.118.235.17])
+        by mx.google.com with ESMTPS id s8si5830762wmf.75.2017.07.10.01.28.15
+        for <alex.bennee@linaro.org>
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Mon, 10 Jul 2017 01:28:15 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) client-ip=208.118.235.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.b=mqF2idQs;
-       spf=pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 2607:f8b0:400d:c0d::22d as permitted sender) smtp.mailfrom=philippe.mathieu.daude@gmail.com
-Received: by mail-qt0-x22d.google.com with SMTP id r30so47206410qtc.0;
-        Sat, 08 Jul 2017 09:21:13 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=sender:subject:to:cc:references:from:message-id:date:user-agent
-         :mime-version:in-reply-to:content-language:content-transfer-encoding;
-        bh=voe8+IX8tsz8ik0ZdqxNidVNCI+dlqngU00ibwKhtZQ=;
-        b=mqF2idQsne0A8FyQQNdWEN9migJUAzIWArdrl5NILuw/v/iB4Tzksc8oNM6SI3SJhp
-         O2QV+QuCBj9FvFa8LluFX+lsInhVeDshhOql4h03alQ/z7w0/yvDKKJHB3fUvkPIJPAZ
-         byVSmrIODMhpD6ZzSpj8ERnnwHYGLW9p4KcZbn7SkcsoxIczJlOEN8Z5CqHZy3I2jTSQ
-         8x6ufaGQFnVhBQBUl4/QxthvgKTbgGfgGHTiRV4gH3htJvWQI9smePsAJLpwXCluW5Xl
-         Qh0+4TRAaQieax5GRSQT2c0IIxgrPdKms9VIkvb161fKn0Tltb8RedA9HiI73GJAz5Zx
-         O7nw==
+       dkim=neutral (body hash did not verify) header.i=@gmail.com header.b=tTxdJWJS;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:39214 helo=lists.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1dUU3C-0001EP-MF
+	for alex.bennee@linaro.org; Mon, 10 Jul 2017 04:28:14 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:48964)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <sundeep.lkml@gmail.com>) id 1dUU1z-0000e0-Qn
+	for qemu-devel@nongnu.org; Mon, 10 Jul 2017 04:27:02 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+	(envelope-from <sundeep.lkml@gmail.com>) id 1dUU1w-0007pg-KL
+	for qemu-devel@nongnu.org; Mon, 10 Jul 2017 04:26:59 -0400
+Received: from mail-yb0-f193.google.com ([209.85.213.193]:33049)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <sundeep.lkml@gmail.com>)
+	id 1dUU1w-0007Jt-Dg; Mon, 10 Jul 2017 04:26:56 -0400
+Received: by mail-yb0-f193.google.com with SMTP id 84so3859192ybe.0;
+	Mon, 10 Jul 2017 01:26:32 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=rhYDs9zhVtkT/UzftWFXad41kF++RVIKhN+zPR+KozY=;
+	b=tTxdJWJSCcu1u4ze+/Gg0ZCFJOoGE6hETx1rVLriGA+ET0dFyWJzO50qnE4XtqTXbG
+	+lbL6l0qe9uHxoa/conBKi1PPoCyx/EqKEKjQ0VQ5zKBfDw4BDT/BY6yBG9oQWN1neiB
+	cQIdj1hWHQ1Q3kl2KXWIgz3peYb+hfulj5ikGsZb46ZsVLlO5V2Rx6J7kfqsOY+L+8kB
+	w3tIvS+OXgUE0ZnAkBdVDq55WJPqxuFOi4g/ZxuiGqxrgbCALyaDFGQdCCqe81EKMuJq
+	9OMsD+AmeVQ0CPt4VXe+0EHaXQAb+o2sKOErf0UfZi3keuUj+xYz1qhF9KJu9vdmEoMU
+	Iriw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
-         :date:user-agent:mime-version:in-reply-to:content-language
-         :content-transfer-encoding;
-        bh=voe8+IX8tsz8ik0ZdqxNidVNCI+dlqngU00ibwKhtZQ=;
-        b=Q7oAO+JB021zFisdA7RW7Tot7znL4lD+ed1M4igoamzUdWYscTeMmS0sOuWcUgI7mv
-         C5i4w8vQU5c/yex0HT4eLWpgZ/yBl3hhJBf6x0c7f7Yu9tnoeUKSwY/+0OmZ23kkNENR
-         Q48u+xhJC7dWO0B35Wbruf8ezhqWrvTkCgUlA+5I6HZxMbbXcH5k8v+pUrx64JLmfPmc
-         cbTqFsE8rUNr3I2/ILPSzSfQw6Bs597tJtm3b4UGIxej4+W1pYYd21W+A59J4lycUqYZ
-         0pB8KE8gpPNfVAd/4ouXic39RnZjNyN0zeekIWNqWM00DT9fGRgDE+t/MCYqOFfFG9SQ
-         C3Pg==
-X-Gm-Message-State: AKS2vOzn/O/m1k1ytmSE6hPN9SJvnh9ds6eNuvYGzpQn4H0iHhKyH/Aq
-	SEi7SO67NgUA8ltvOkA=
-X-Received: by 10.237.50.132 with SMTP id z4mr79157554qtd.31.1499530872924;
-        Sat, 08 Jul 2017 09:21:12 -0700 (PDT)
-Return-Path: <philippe.mathieu.daude@gmail.com>
-Received: from [192.168.1.240] ([138.117.48.223])
-        by smtp.gmail.com with ESMTPSA id g13sm5170919qkh.3.2017.07.08.09.21.08
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 08 Jul 2017 09:21:11 -0700 (PDT)
-Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philippe.mathieu.daude@gmail.com>
-Subject: Re: [Qemu-arm] [RFC PATCH] target/arm: ensure eret exits the run-loop
-To: Richard Henderson <rth@twiddle.net>, =?UTF-8?Q?Alex_Benn=c3=a9e?=
- <alex.bennee@linaro.org>
-Cc: Peter Maydell <peter.maydell@linaro.org>, "Emilio G . Cota"
- <cota@braap.org>, QEMU Developers <qemu-devel@nongnu.org>,
- qemu-arm <qemu-arm@nongnu.org>, Joakim Bech <joakim.bech@linaro.org>,
- Etienne Carriere <etienne.carriere@linaro.org>
-References: <20170707161822.29659-1-alex.bennee@linaro.org>
- <87inj49mr1.fsf@linaro.org>
- <CAFEAcA_YvS8OQVTPnvRtWyVuAKO2bccyNALOs1Oq7snTO1WwkA@mail.gmail.com>
- <a391e7e5-0be9-0863-bfb7-88d9168484f3@twiddle.net>
- <87h8yo9k2n.fsf@linaro.org>
- <638cda88-5bd8-2a86-d720-04005fa1c1c8@twiddle.net>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <dfd89c2b-8ed6-0a78-93df-51fb442f0adb@amsat.org>
-Date: Sat, 8 Jul 2017 13:21:08 -0300
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
- Thunderbird/52.2.1
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=rhYDs9zhVtkT/UzftWFXad41kF++RVIKhN+zPR+KozY=;
+	b=GCD6ioht3zHObgh0nQOTKXUob/ilwMixXyNJuCxT2P8wK2VYKVskyWQ7MB4/BC00iY
+	bEqIvxQMsMzhJNNnZgF+kfTp+2lHKKC7MfdfmM5pvkGIgUkirWl+29eQemTYo/lpSSgf
+	4S9fytfuljUVpQSInixFlRIRJlwsaptEo7UuIB9sdRsdaxvN7/3TQP81qRkXMlGsLmbm
+	ZhF8LP6HjBeApDNBU73Djnznzo/0CPPpqW57XDYx1I8dSzoMLMPl+lbCKetC2krvjrXt
+	Em8l3cLF7dD26Cjcbb69Bsfp8qniX6k7VlrhBNBsw9LXti4+POC//TfZhKyNNDhn9eUL
+	PRdA==
+X-Gm-Message-State: AIVw110+wA6pnaXhmDXZyj/35f2dTLlUtvYIIMUF8a/vhyZqX4SbtIsL
+	3eWU7lFAFObPaumn8/yiYMEb0692eQ==
+X-Received: by 10.37.75.198 with SMTP id y189mr7204564yba.47.1499675132112;
+	Mon, 10 Jul 2017 01:25:32 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <638cda88-5bd8-2a86-d720-04005fa1c1c8@twiddle.net>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-TUID: gMPf7/ce72sl
+Received: by 10.129.233.5 with HTTP; Mon, 10 Jul 2017 01:25:31 -0700 (PDT)
+In-Reply-To: <CAKmqyKM7WGg30=TNtPotC-Vr7uYFxZmAuYXWRDjXHDxMM1vhbA@mail.gmail.com>
+References: <1499057115-6773-1-git-send-email-sundeep.lkml@gmail.com>
+	<1499057115-6773-3-git-send-email-sundeep.lkml@gmail.com>
+	<CAKmqyKORKWWOUSAQ8_GtF6rOspE0mtJOEhJTvfuJ6h7JAru74A@mail.gmail.com>
+	<CALHRZuo7Y2RpS3EWnd55_Te_p2YSo03JcdTYB31MDz7p07bSGA@mail.gmail.com>
+	<CAKmqyKM7WGg30=TNtPotC-Vr7uYFxZmAuYXWRDjXHDxMM1vhbA@mail.gmail.com>
+From: sundeep subbaraya <sundeep.lkml@gmail.com>
+Date: Mon, 10 Jul 2017 13:55:31 +0530
+Message-ID: <CALHRZurJgf3r8_pA=vx0=N8L6oo_ZnaQO==yRxtCHhoFZ-pG7w@mail.gmail.com>
+To: Alistair Francis <alistair23@gmail.com>
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.85.213.193
+Content-Type: text/plain; charset="UTF-8"
+X-Content-Filtered-By: Mailman/MimeDel 2.1.21
+Subject: Re: [Qemu-devel] [Qemu devel v6 PATCH 2/5] msf2: Microsemi
+ Smartfusion2 System Register block.
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.21
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+	=?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>,
+	qemu-arm <qemu-arm@nongnu.org>,
+	"qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
+	Peter Crosthwaite <crosthwaite.peter@gmail.com>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: DtGRkytqyZqC
 
-Hi Alex,
+Hi Alistair,
 
-On 07/07/2017 03:52 PM, Richard Henderson wrote:
-> On 07/07/2017 08:29 AM, Alex Bennée wrote:
->>> Naming all of these different exit conditions is certainly
->>> non-trivial.
->>
->> Given the variation of usage this is something that should probably be
->> done after Lluís common run loop goes in and we can beef up the
->> semantics of the various exit conditions.
-> 
-> Definitely.
-> 
->> One thing I have noticed in the ARM translator is DISAS_UPDATE does a:
->>
->>      gen_a64_set_pc_im(dc->pc);
->>
->> I think this is to deal with handling exceptions either side of various
->> instructions. Am I right in thinking this is superfluous now as we can
->> derive the PC from the translated code address?
-> 
-> Yes and no.
-> 
-> We have typically distinguished between two kinds of exceptions: those 
-> that are dynamic (fp state, page permissions) and those that are static 
-> (illegal opcodes).
-> 
-> For the dynamic, we used to pessimistically save state, but now use the 
-> unwinder to restore it.  The unwinding is expensive but is used 
-> infrequently (especially compared to the number of load/store insns 
-> executed).
-> 
-> For the static, we know the exception must be raised, and we know the 
-> state that must be saved.  By doing that, we save the expense of the 
-> unwinding.
-> 
-> So, for the static case you're talking about, we could get the PC (and 
-> other state) back, and remove the explicit stores, but we shouldn't.
+On Fri, Jul 7, 2017 at 10:03 PM, Alistair Francis <alistair23@gmail.com>
+wrote:
 
-While doing changes in this file, can you add a comment around 
-DISAS_UPDATE about Richard explanation?
+> On Fri, Jul 7, 2017 at 12:08 AM, sundeep subbaraya
+> <sundeep.lkml@gmail.com> wrote:
+> > Hi Alistair,
+> >
+> > On Wed, Jul 5, 2017 at 11:36 PM, Alistair Francis <alistair23@gmail.com>
+> > wrote:
+> >>
+> >> On Sun, Jul 2, 2017 at 9:45 PM, Subbaraya Sundeep
+> >> <sundeep.lkml@gmail.com> wrote:
+> >> > Added Sytem register block of Smartfusion2.
+> >> > This block has PLL registers which are accessed by guest.
+> >> >
+> >> > Signed-off-by: Subbaraya Sundeep <sundeep.lkml@gmail.com>
+> >> > ---
+> >> >  hw/misc/Makefile.objs         |   1 +
+> >> >  hw/misc/msf2-sysreg.c         | 200
+> >> > ++++++++++++++++++++++++++++++++++++++++++
+> >> >  include/hw/misc/msf2-sysreg.h |  82 +++++++++++++++++
+> >> >  3 files changed, 283 insertions(+)
+> >> >  create mode 100644 hw/misc/msf2-sysreg.c
+> >> >  create mode 100644 include/hw/misc/msf2-sysreg.h
+> >> >
+> >> > diff --git a/hw/misc/Makefile.objs b/hw/misc/Makefile.objs
+> >> > index c8b4893..0f52354 100644
+> >> > --- a/hw/misc/Makefile.objs
+> >> > +++ b/hw/misc/Makefile.objs
+> >> > @@ -56,3 +56,4 @@ obj-$(CONFIG_EDU) += edu.o
+> >> >  obj-$(CONFIG_HYPERV_TESTDEV) += hyperv_testdev.o
+> >> >  obj-$(CONFIG_AUX) += auxbus.o
+> >> >  obj-$(CONFIG_ASPEED_SOC) += aspeed_scu.o aspeed_sdmc.o
+> >> > +obj-$(CONFIG_MSF2) += msf2-sysreg.o
+> >> > diff --git a/hw/misc/msf2-sysreg.c b/hw/misc/msf2-sysreg.c
+> >> > new file mode 100644
+> >> > index 0000000..64ee141
+> >> > --- /dev/null
+> >> > +++ b/hw/misc/msf2-sysreg.c
+> >> > @@ -0,0 +1,200 @@
+> >> > +/*
+> >> > + * System Register block model of Microsemi SmartFusion2.
+> >> > + *
+> >> > + * Copyright (c) 2017 Subbaraya Sundeep <sundeep.lkml@gmail.com>
+> >> > + *
+> >> > + * This program is free software; you can redistribute it and/or
+> >> > + * modify it under the terms of the GNU General Public License
+> >> > + * as published by the Free Software Foundation; either version
+> >> > + * 2 of the License, or (at your option) any later version.
+> >> > + *
+> >> > + * You should have received a copy of the GNU General Public License
+> >> > along
+> >> > + * with this program; if not, see <http://www.gnu.org/licenses/>.
+> >> > + */
+> >> > +
+> >> > +#include "hw/misc/msf2-sysreg.h"
+> >>
+> >> Same #include comment from patch 1.
+> >
+> >
+> > Ok will change.
+> >>
+> >>
+> >> > +
+> >> > +#ifndef MSF2_SYSREG_ERR_DEBUG
+> >> > +#define MSF2_SYSREG_ERR_DEBUG  0
+> >> > +#endif
+> >> > +
+> >> > +#define DB_PRINT_L(lvl, fmt, args...) do { \
+> >> > +    if (MSF2_SYSREG_ERR_DEBUG >= lvl) { \
+> >> > +        qemu_log("%s: " fmt "\n", __func__, ## args); \
+> >> > +    } \
+> >> > +} while (0);
+> >> > +
+> >> > +#define DB_PRINT(fmt, args...) DB_PRINT_L(1, fmt, ## args)
+> >> > +
+> >> > +static inline int msf2_divbits(uint32_t div)
+> >> > +{
+> >> > +    int ret = 0;
+> >> > +
+> >> > +    switch (div) {
+> >> > +    case 1:
+> >> > +        ret = 0;
+> >> > +        break;
+> >> > +    case 2:
+> >> > +        ret = 1;
+> >> > +        break;
+> >> > +    case 4:
+> >> > +        ret = 2;
+> >> > +        break;
+> >> > +    case 8:
+> >> > +        ret = 4;
+> >> > +        break;
+> >> > +    case 16:
+> >> > +        ret = 5;
+> >> > +        break;
+> >> > +    case 32:
+> >> > +        ret = 6;
+> >> > +        break;
+> >> > +    default:
+> >> > +        break;
+> >> > +    }
+> >> > +
+> >> > +    return ret;
+> >> > +}
+> >> > +
+> >> > +static void msf2_sysreg_reset(DeviceState *d)
+> >> > +{
+> >> > +    MSF2SysregState *s = MSF2_SYSREG(d);
+> >> > +
+> >> > +    DB_PRINT("RESET");
+> >> > +
+> >> > +    s->regs[MSSDDR_PLL_STATUS_LOW_CR] = 0x021A2358;
+> >> > +    s->regs[MSSDDR_PLL_STATUS] = 0x3;
+> >> > +    s->regs[MSSDDR_FACC1_CR] = msf2_divbits(s->apb0div) << 5 |
+> >> > +                               msf2_divbits(s->apb1div) << 2;
+> >> > +}
+> >> > +
+> >> > +static uint64_t msf2_sysreg_read(void *opaque, hwaddr offset,
+> >> > +    unsigned size)
+> >> > +{
+> >> > +    MSF2SysregState *s = opaque;
+> >> > +    offset /= 4;
+> >>
+> >> Probably best to use a bitshift.
+> >
+> >
+> > Ok will change.
+> >>
+> >>
+> >> > +    uint32_t ret = 0;
+> >> > +
+> >> > +    if (offset < ARRAY_SIZE(s->regs)) {
+> >> > +        ret = s->regs[offset];
+> >> > +        DB_PRINT("addr: 0x%08" HWADDR_PRIx " data: 0x%08" PRIx32,
+> >> > +                    offset * 4, ret);
+> >>
+> >> Bitshift here as well.
+> >
+> >
+> > Ok will change.
+> >>
+> >>
+> >> > +    } else {
+> >> > +        qemu_log_mask(LOG_GUEST_ERROR,
+> >> > +                    "%s: Bad offset 0x%08" HWADDR_PRIx "\n",
+> __func__,
+> >> > +                    offset * 4);
+> >> > +    }
+> >> > +
+> >> > +    return ret;
+> >> > +}
+> >> > +
+> >> > +static void msf2_sysreg_write(void *opaque, hwaddr offset,
+> >> > +                          uint64_t val, unsigned size)
+> >> > +{
+> >> > +    MSF2SysregState *s = (MSF2SysregState *)opaque;
+> >> > +    uint32_t newval = val;
+> >> > +    uint32_t oldval;
+> >> > +
+> >> > +    DB_PRINT("addr: 0x%08" HWADDR_PRIx " data: 0x%08" PRIx64,
+> >> > +            offset, val);
+> >> > +
+> >> > +    offset /= 4;
+> >>
+> >> Same here
+> >
+> >
+> > Ok will change
+> >>
+> >>
+> >> > +
+> >> > +    switch (offset) {
+> >> > +    case MSSDDR_PLL_STATUS:
+> >> > +        break;
+> >> > +
+> >> > +    case ESRAM_CR:
+> >> > +        oldval = s->regs[ESRAM_CR];
+> >> > +        if (oldval ^ newval) {
+> >> > +            qemu_log_mask(LOG_GUEST_ERROR,
+> >> > +                       TYPE_MSF2_SYSREG": eSRAM remapping not
+> >> > supported\n");
+> >> > +            abort();
+> >>
+> >> The guest should not be able to kill QEMU, a guest error should never
+> >> result in an abort.
+> >
+> >
+> > Philippe suggested to abort because:
+> > If guest tries to remap since firmware do a remap, the code flow will be
+> > completely wrong.
+> > Reporting a GUEST_ERROR here is not enough since code flow continuing
+> would
+> > be
+> > pretty hard to understand/debug.
+>
+> I don't see how it will be that hard to debug as QEMU will tell you
+> that the guest is doing something wrong.
+>
+> You can't allow the guest to abort or exit QEMU. It's a security
+> liability issue and specifically mentioned as not allowed:
+> https://github.com/qemu/qemu/blob/master/HACKING#L230
+>
+> Ok. Lets hear from Philippe. Philippe?
 
-> 
-> 
-> r~
-> 
+Thanks,
+Sundeep
+
+
+> Thanks,
+> Alistair
+>
+> > We decided to abort for now.
+>

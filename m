@@ -1,100 +1,97 @@
-Received: by 10.25.44.15 with SMTP id s15csp3448161lfs;
-        Mon, 10 Jul 2017 07:04:45 -0700 (PDT)
-X-Received: by 10.176.9.73 with SMTP id c9mr8716438uah.145.1499695485240;
-        Mon, 10 Jul 2017 07:04:45 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1499695485; cv=none;
+Received: by 10.25.44.15 with SMTP id s15csp3550185lfs;
+        Mon, 10 Jul 2017 08:28:28 -0700 (PDT)
+X-Received: by 10.55.2.68 with SMTP id 65mr4875013qkc.73.1499700507975;
+        Mon, 10 Jul 2017 08:28:27 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1499700507; cv=none;
         d=google.com; s=arc-20160816;
-        b=KA4v4MZ3vfT4RviklctEM+BKJZv68oYIjkA3eJuMQnhKgTkRxjPiQLnl4fNTGn+vfD
-         p2HxYyzP1YBEDMRiOQOhoEcS1/jP8MEB2/tVrza37gNoaYmVqhaCH4xhyCIPmbk46zyu
-         DvTU9aB5jh5F8OzjL7lvkiLNjJj4O23yUZgh44Wg6EkdxBx+WZCG/E7LsbwAthnidiYT
-         lIkUb/p29hkTmp7p6KdbCMivSUoS76YSaw5Z1FXMBZaOXmxzm3qnAVpCS+xDLlmN+Z8L
-         b6skAjG0H6fytTHR9rZAO1e+qS16CeXe6ZNaaE5/1r9o6Zq9+1bieHrpVRmo3lrf971h
-         v7RA==
+        b=J8XpvUWIcnuLpUtg4M5uZZ7Tf4i+aFMLtADvwnXUxsx3U0yUJchNB6Y2GWuP5BOt6c
+         KFxNd0opznLEN6rWR6f9uBd9dvs+1sKvJULIzwNyJNmV+jn/U7MGxPaqyx5kd4nGnsJ4
+         bfxqhcJx4HcjBcatjLARdrMpQ4XTEFEr2GBnNUtDNZvO0oOw4qBa0BQYvjBRNi5yKh8K
+         wWPr+HhIbIzPutIKWt40iJfrY6u5gNrAqM4Q/V1+EWgH1KBD5Fu2OttT5W9fyFMUowy4
+         nBlrK+QmYaSrbBEXFTcTR51PNGjqQY9HB0GIgZk/B3ILoP1DT96mO71bLtTIOZi3XRSN
+         sW/w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:to:dkim-filter
-         :dmarc-filter:arc-authentication-results;
-        bh=gynFEmT6TvniM/h2mSkAFPvQKXMP7U8E1oWEprKyCNo=;
-        b=EWiGJWmiGH3aSxp9Aci21IJOdqMJf28QU2StcICYJYHp77HVsN0XbFUWpAFPs1328x
-         EUDgjikC2S/C4S6TSfkDoqVpVIQzsI8tiTCEjuzmBj7SZ8mZxMv/jB4jQIHkJbJUOf1T
-         I8joKQxkgrD84MJOq0qLK8fTNinA4P+0Ip8W7SQQ4UDX9F6naqSpPXc57ucuXrWB8oQH
-         WdWVvvijbQnQ4+gqaI2j76W8CHW4ao5o+9LY05GsT+9FIiOrlGJP9jA/b7f9Jszys637
-         HZ2C6EEkYOHZKhw/P+DZcKlrvFBMroVeBocYuDBiYwGdhzKwI3DQRD9kPUWNtkpAg//I
-         YlIg==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
+         :references:in-reply-to:mime-version:dkim-signature
+         :arc-authentication-results;
+        bh=6w8NOwkSFGZGq4MzneSK+BkQPX6r9LiT27SbomsKHo4=;
+        b=Tai7muG2liUZhKXa0BjXBlG9jAI2ptSKmJg4uX1HOtFM4JLwOMfqga+Lyz81WxKoCi
+         8hUSVm+tq/gsVBw+DRh5xQEuEzFS7qm3CrdITVbxpc89/YV8oQVNZwF8F0b7CyX6wIeh
+         NrVUypPmN+Z+y5vL2dBniZef/t5BUBh4oqN5Q71O2BY4XYK4cBo6ZWzBzK3bEHDQQtE3
+         CXYXWCrCD08uat4VbMn34hN1rO551/p9kTFsj6nTB5vEgwXtxY9lUA7L3jKq5nybS+gK
+         0FeK/g6sY0kD1ECLAGhPPw+BManAQKnRItRWEA8d+yt2dEdSWZDW9Uw/sXtsqn6zAFb0
+         8e4A==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@linaro.org header.b=hhODQSeF;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [208.118.235.17])
-        by mx.google.com with ESMTPS id x1si5740471uai.222.2017.07.10.07.04.44
+        by mx.google.com with ESMTPS id s78si10566792qki.35.2017.07.10.08.28.27
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 10 Jul 2017 07:04:45 -0700 (PDT)
+        Mon, 10 Jul 2017 08:28:27 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) client-ip=208.118.235.17;
 Authentication-Results: mx.google.com;
+       dkim=fail header.i=@linaro.org header.b=hhODQSeF;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:40989 helo=lists.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:41383 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1dUZIo-00005L-Lv
-	for alex.bennee@linaro.org; Mon, 10 Jul 2017 10:04:42 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:56475)
+	id 1dUabU-0002bu-AA
+	for alex.bennee@linaro.org; Mon, 10 Jul 2017 11:28:04 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:53177)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <lersek@redhat.com>) id 1dUZId-0008VZ-Mg
-	for qemu-arm@nongnu.org; Mon, 10 Jul 2017 10:04:32 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1dUabO-0002be-NK
+	for qemu-arm@nongnu.org; Mon, 10 Jul 2017 11:27:59 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <lersek@redhat.com>) id 1dUZIZ-0003Qr-Mh
-	for qemu-arm@nongnu.org; Mon, 10 Jul 2017 10:04:31 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:54790)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <lersek@redhat.com>)
-	id 1dUZIZ-0003QR-H2; Mon, 10 Jul 2017 10:04:27 -0400
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
-	[10.5.11.14])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id B04487F6A2;
-	Mon, 10 Jul 2017 14:04:25 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com B04487F6A2
-Authentication-Results: ext-mx01.extmail.prod.ext.phx2.redhat.com;
-	dmarc=none (p=none dis=none) header.from=redhat.com
-Authentication-Results: ext-mx01.extmail.prod.ext.phx2.redhat.com;
-	spf=pass smtp.mailfrom=lersek@redhat.com
-DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com B04487F6A2
-Received: from lacos-laptop-7.usersys.redhat.com (ovpn-116-146.phx2.redhat.com
-	[10.3.116.146])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id EE9E25DC1D;
-	Mon, 10 Jul 2017 14:04:17 +0000 (UTC)
-To: Eric Blake <eblake@redhat.com>, Dongjiu Geng <gengdongjiu@huawei.com>,
-	mst@redhat.com, imammedo@redhat.com, famz@redhat.com,
-	qemu-devel@nongnu.org, 
-	zhaoshenglong@huawei.com, peter.maydell@linaro.org, qemu-arm@nongnu.org,
-	zhengqiang10@huawei.com, huangshaoyu@huawei.com, wuquanming@huawei.com, 
-	zhihui.gao@huawei.com
-References: <1499678755-5633-1-git-send-email-gengdongjiu@huawei.com>
-	<df74267a-3f6f-b6f5-432f-40f8c04ab1f1@redhat.com>
-From: Laszlo Ersek <lersek@redhat.com>
-Message-ID: <d48ec6cf-03b6-bf2b-1bed-1e2c34aaf5f0@redhat.com>
-Date: Mon, 10 Jul 2017 16:04:16 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.2.1
+	(envelope-from <peter.maydell@linaro.org>) id 1dUabN-00079v-Ua
+	for qemu-arm@nongnu.org; Mon, 10 Jul 2017 11:27:58 -0400
+Received: from mail-wr0-x235.google.com ([2a00:1450:400c:c0c::235]:35220)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1dUabN-000797-My
+	for qemu-arm@nongnu.org; Mon, 10 Jul 2017 11:27:57 -0400
+Received: by mail-wr0-x235.google.com with SMTP id k67so142862684wrc.2
+	for <qemu-arm@nongnu.org>; Mon, 10 Jul 2017 08:27:57 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=6w8NOwkSFGZGq4MzneSK+BkQPX6r9LiT27SbomsKHo4=;
+	b=hhODQSeFF53h975/JfZ0TlMb4xVnr4oQhhDIb42JDsFknZh3ftibEmQ8F8eVDj3Hwm
+	QQQxyLUjzzDPuLujWFHRZ6Vcm271Y0X8zvy6jP26ujIHFvBgu+z7ed6/A2TGo13zO4U1
+	L+65FFMrD7X7CXFBqv4YGdo8C7iHAE+/U0u6Y=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=6w8NOwkSFGZGq4MzneSK+BkQPX6r9LiT27SbomsKHo4=;
+	b=mj3g/uY4lnWpO2j946VESY2EX0Fba2b4zwkfJFQiFw/wDRV2uA2cYHIPoOoG0wyJA0
+	iw8VEcbJa7onxGqsmhnyceKDmv/0JLwp0us337waak6WQilrgZDcZWcv1RPpbHq4Imk6
+	4yyQxU8BHm8gO50K326AoGRxr+GqxS17Qm7PQoiA2ZcZAKza7e4rf1OHw13K2R7H6EW5
+	xFSuwCmjf39simozKpE0+i/93McdnwoaliPupdvrfFoY+kjwhpxYz8UKY4xFj8vT8c40
+	in+6Ib3ZiDrdZPSanQG1gQzjLwMZP6N1bJDqn5VlBa0gMUbWD06ZP7ocMnCCfrlM8ZBq
+	eY3g==
+X-Gm-Message-State: AIVw1113Ann2XbxJmNHbOpp1Poq71YhFTPyCXgYE59KVNI6LTS+CwZt6
+	ouhcLIXpqB1e5fr0lWCGxXiGRjnumv4j
+X-Received: by 10.28.129.203 with SMTP id c194mr2843054wmd.120.1499700476465; 
+	Mon, 10 Jul 2017 08:27:56 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <df74267a-3f6f-b6f5-432f-40f8c04ab1f1@redhat.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.25]);
-	Mon, 10 Jul 2017 14:04:25 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v4 1/3] ACPI: Add new ACPI
- structures and macros
+Received: by 10.223.134.2 with HTTP; Mon, 10 Jul 2017 08:27:35 -0700 (PDT)
+In-Reply-To: <1498927637-14496-3-git-send-email-drjones@redhat.com>
+References: <1498927637-14496-1-git-send-email-drjones@redhat.com>
+	<1498927637-14496-3-git-send-email-drjones@redhat.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 10 Jul 2017 16:27:35 +0100
+Message-ID: <CAFEAcA-CQm1FuF7eyveSbSchRD1PkB-PDVNyMQhVny+bmWWAvg@mail.gmail.com>
+To: Andrew Jones <drjones@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2a00:1450:400c:c0c::235
+Subject: Re: [Qemu-arm] [PATCH 2/3] target/arm/kvm: split pmu init from
+ creation
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -106,31 +103,24 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
+	Alexander Graf <agraf@suse.de>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: HQ/DsHYqo3L/
+X-TUID: MGd7hWFAOiTi
 
-On 07/10/17 15:54, Eric Blake wrote:
-> On 07/10/2017 04:25 AM, Dongjiu Geng wrote:
->> (1) Add related APEI/HEST table structures and  macros, these
->>     definition refer to ACPI 6.1 and UEFI 2.6 spec.
-> 
-> Your mail is missing In-Reply-To: and References: headers, which makes
-> it appear as a new top-level thread for each patch.  You'll want to
-> figure out why you didn't properly link back to your 0/3 cover letter
-> with Message-ID: <1499678736-5244-1-git-send-email-gengdongjiu@huawei.com>
-> 
+On 1 July 2017 at 17:47, Andrew Jones <drjones@redhat.com> wrote:
+> When adding a PMU with a userspace irqchip we only do the INIT
+> stage of the device creation.
 
-Yes, the git-send-email options to use are:
+Can you explain why? My assumption would be that either
+(a) we don't need the kernel's PMU, in which case don't
+create it at all, or
+(b) we do need the kernel's PMU, so we should both create
+and INIT it.
 
-  --thread --no-chain-reply-to
+If we do one but not the other then we've left a half
+created and unusable PMU device in the kernel, haven't we?
 
-Best to set them permanently in one's qemu clone,
-
-$ git config --bool sendemail.thread       true
-$ git config --bool sendemail.chainreplyto false
-
-This is called "shallow threading" (see git-send-email(1)).
-
-Thanks
-Laszlo
+thanks
+-- PMM

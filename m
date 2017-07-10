@@ -1,121 +1,135 @@
-Received: by 10.25.44.15 with SMTP id s15csp3656151lfs;
-        Mon, 10 Jul 2017 09:55:48 -0700 (PDT)
-X-Received: by 10.55.60.13 with SMTP id j13mr5579050qka.71.1499705748435;
-        Mon, 10 Jul 2017 09:55:48 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1499705748; cv=none;
+Received: by 10.25.44.15 with SMTP id s15csp3657939lfs;
+        Mon, 10 Jul 2017 09:57:28 -0700 (PDT)
+X-Received: by 10.28.105.28 with SMTP id e28mr8647993wmc.42.1499705848509;
+        Mon, 10 Jul 2017 09:57:28 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1499705848; cv=none;
         d=google.com; s=arc-20160816;
-        b=Z3q0n8tYTEqKC8yu4ipteUoIuJrOlz8/1QZaXOkcAx0SqYHLL9itbRDbwhuhg2b2SA
-         d6eF381Z86ej1vMrpfpRrTX3xFtfpubDH+CRkwTV3f1XxB1XMxIdFrquz0mUao6acefv
-         6DLpUkz+na3P9UdnESo/Y+ktBWLCrxY6GtVQRmuA5RN55ULBXjVxjJiHruW08XTtm8cx
-         RZ9o5R83J5DwkgQwnINinnXWMyYb5XAARGvMFAeD6t90g3mtJnHTYAyJT3azztrJp677
-         f5Aag7nHb3qTElMOMgSrwsU0MAkycPxUISYZR1yIOJErXZObwEzB/HRMN0tE7FtrTDA2
-         EMYw==
+        b=jqm0bX/9i/+6g1/qDaiISMW+XN6xA7ywzBKf9r02Cwex1KDUUwIrxcnJLWYqWJBWC/
+         VBpZTZoxMDsTSlfnI2gRw9wFZQ2WcHD3Gw60+UvwmESIdMCMH99dRndUOvrlsvpRtndi
+         ukDN2hV2zuW8WMWiIgNJ2xOSujwYSd2/Bcv10lvI8vOfSYs/8Rov/+XwYDpiDh//9fis
+         D53IsKTZVEOxlPKfT1N7+ZfYNetPcv9rz6zcNMJhFHiVFRzMVlCGeOc3LS9SbVXfWZxR
+         thV63KwHMOjcAUtm0vuYTVPlCmK5P8+YwOrOIcLLQAD5z5Fw/OjBHUrprkY8ZzJAA4UO
+         wMEw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:cc:to:subject:sender
-         :dkim-signature:arc-authentication-results;
-        bh=W/Qur14zB6VBPyK2pDzQwRhPa3i3CbsLBY4QS0CwdDY=;
-        b=W3gNSvgs2NIstD07EAk5NGnWGLAkeXEwIZuuTJkHCny9tvyL+MFMrQKrsI1VWiBqgu
-         LkaVkgD1mWcT8D36cI9ny7O+GuaSrF6f6MMb1FoEdhho9UgAW+vWhyajCfk3bDCOotee
-         yflh4ziIl9XTO/Fagnvzuunrb0ZvL2EulB6M33URu3zTOuPNWskYe2LXRcD908BUye0Q
-         qTdUKobB6+u6/Wg/qkxtKEnxImY4PLv2XFTquu1rQhqo3C0FgaaCNFx0fYitpFgotZ8k
-         k2tjn7aoEPJtyRqR06cYqngHBIv6xVfhJdtxG3MaBqlsrCcdU7DQbjoYUZ0jm77PwYLL
-         oNqw==
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :references:in-reply-to:mime-version:dkim-signature
+         :arc-authentication-results;
+        bh=2q5Y614PfJlkOQN/NUpWgQJ6SoceXObNDpf6lU7/q7g=;
+        b=bqOkBEU9z4zXTrvekgFJRwtYL5c6wpu9xMZwsWTlkkPjDU/g2EP67b2WfL+iFh7Rqw
+         lJY1iYT7RxwlAw/9XhJqMQqevOWYf+BjMLClud/L0QITjL6LKdKyWALFQ2WmIR1cIyNs
+         LNt0xCUcUoLc33W+Cm7aPx4YNwhTcJq5737HhHsO8VSKpOn6abPfgWI/M8ocJ/IiQbcU
+         luuMmqTwzwJVjV7gouDY9rx5gRHhh2J2EUc06JvkdLdadvOTKAlMxviuNjGy5I0ADSkl
+         HO9/pcIJMgoJbrVMb0x0qkitY2CfQV2mAFcYvW1X2ETZ3HWmCReLW2DySRFv7suMBXnz
+         g5CQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.b=sLnOfbgR;
-       spf=pass (google.com: domain of rth7680@gmail.com designates 2607:f8b0:400d:c09::244 as permitted sender) smtp.mailfrom=rth7680@gmail.com
-Return-Path: <rth7680@gmail.com>
-Received: from mail-qk0-x244.google.com (mail-qk0-x244.google.com. [2607:f8b0:400d:c09::244])
-        by mx.google.com with ESMTPS id m37si12163288qtf.131.2017.07.10.09.55.48
+       dkim=pass header.i=@linaro.org header.b=fK+xW6oA;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 2a00:1450:400c:c0c::22c as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <peter.maydell@linaro.org>
+Received: from mail-wr0-x22c.google.com (mail-wr0-x22c.google.com. [2a00:1450:400c:c0c::22c])
+        by mx.google.com with ESMTPS id y19si1635270wmd.94.2017.07.10.09.57.28
+        for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 10 Jul 2017 09:55:48 -0700 (PDT)
-Received-SPF: pass (google.com: domain of rth7680@gmail.com designates 2607:f8b0:400d:c09::244 as permitted sender) client-ip=2607:f8b0:400d:c09::244;
+        Mon, 10 Jul 2017 09:57:28 -0700 (PDT)
+Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 2a00:1450:400c:c0c::22c as permitted sender) client-ip=2a00:1450:400c:c0c::22c;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.b=sLnOfbgR;
-       spf=pass (google.com: domain of rth7680@gmail.com designates 2607:f8b0:400d:c09::244 as permitted sender) smtp.mailfrom=rth7680@gmail.com
-Received: by mail-qk0-x244.google.com with SMTP id p21so13587123qke.0;
-        Mon, 10 Jul 2017 09:55:48 -0700 (PDT)
+       dkim=pass header.i=@linaro.org header.b=fK+xW6oA;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 2a00:1450:400c:c0c::22c as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: by mail-wr0-x22c.google.com with SMTP id k67so146115474wrc.2
+        for <alex.bennee@linaro.org>; Mon, 10 Jul 2017 09:57:28 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=sender:subject:to:cc:references:from:message-id:date:user-agent
-         :mime-version:in-reply-to:content-language:content-transfer-encoding;
-        bh=W/Qur14zB6VBPyK2pDzQwRhPa3i3CbsLBY4QS0CwdDY=;
-        b=sLnOfbgRnlCoWZSd3P5ju3IWJsaJYhT71tiD/40bZ/c5FuTMtBsL2GOdG2WTwAIGnt
-         av/05RBNQ0vGDZKbLq48IIZHWnUWWt6YdjFsTONDSLtTkWV+yqyVy9oxV3gQekyfFf+1
-         g1vC1/NBSLhJp4MoMfUwuvcQ1wZt5Dm0gIFsMRSt0VIcEX2BKA3h7Ms0e5NYWYhqhRku
-         DqxB4HYNIB/I7nX26UGW3XL0o/6x9eqtkKWDpWOfox3+d/3mverx14BwkVvZUARU2L2c
-         QQ7bQKf4EM0wl9EqW0h0MrMzFuItAji6yB9QuKWCCGCwuMnxjWCxPBvshqJ2YRRKzEuu
-         Jy/w==
+        d=linaro.org; s=google;
+        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+         :cc:content-transfer-encoding;
+        bh=2q5Y614PfJlkOQN/NUpWgQJ6SoceXObNDpf6lU7/q7g=;
+        b=fK+xW6oA7BFC7NG127/7CEa1/WNtooAvOx+TQvCbeZZg1fmsM3CeKSz1Ippqe0iFEW
+         y+0EeHX8vbH+snTXVBJtWuFA3KOhJ1gSC4aSvnsYHYr8Mm4vlsJxcPZnVEdzPUwR0Foq
+         2+ssVMrc8LSz7spMDsAMamacPpfiSQSg1Gw7U=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
-         :date:user-agent:mime-version:in-reply-to:content-language
-         :content-transfer-encoding;
-        bh=W/Qur14zB6VBPyK2pDzQwRhPa3i3CbsLBY4QS0CwdDY=;
-        b=XacG5QGuhCMZv3idd4LWoAyzZZ8BG8rt8ZVR8iYQTD4dA9Rtz9T48FJiU98LlcxUqc
-         A/AlAMRtGVTQWCn3zCQ6kDgCnn/11MHpcoMX8v1mmnhg9PIUcFW7a7mn4lhqQCmyIqKy
-         ZLdojKFWsBFbt+TOnlglbneHQhQPkIyqifZpKxha0p90r8VoLB9B6JAtjHTNgRaAclFP
-         5sX4MSZLKZYVLsA6lyU+0A78pNcMJDUa+Ls2FjJ8rkRom0y2BzeH8ecHrqfog9aFHxw9
-         5SMDPA4TksYNgWj+d6ygiBq9gBl73lOji6AjGkQgKPYK5SVOyNDVi8MLwZ9uDZy+TXK8
-         BUmQ==
-X-Gm-Message-State: AIVw1128LYGKuN4WWzpF48JbLSWu/bPYxZJU28qO7p9+Yla4vp+RT+tr
-	jzAn8RNx3BdYiA==
-X-Received: by 10.55.79.198 with SMTP id d189mr4971500qkb.37.1499705747948;
-        Mon, 10 Jul 2017 09:55:47 -0700 (PDT)
-Return-Path: <rth7680@gmail.com>
-Received: from bigtime.twiddle.net (rrcs-173-197-98-123.west.biz.rr.com. [173.197.98.123])
-        by smtp.googlemail.com with ESMTPSA id c18sm10107212qtd.62.2017.07.10.09.55.45
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 10 Jul 2017 09:55:47 -0700 (PDT)
-Sender: Richard Henderson <rth7680@gmail.com>
-Subject: Re: [RFC PATCH] include/exec/cpu-defs.h: try and make SoftMMU page
- size match target
-To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
- peter.maydell@linaro.org, bobby.prani@gmail.com
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
- Paolo Bonzini <pbonzini@redhat.com>,
- Peter Crosthwaite <crosthwaite.peter@gmail.com>
-References: <20170710142850.10468-1-alex.bennee@linaro.org>
-From: Richard Henderson <rth@twiddle.net>
-Message-ID: <1e34d387-753b-14ff-dcc0-226515ff0124@twiddle.net>
-Date: Mon, 10 Jul 2017 06:55:42 -1000
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
- Thunderbird/52.2.1
+        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+         :message-id:subject:to:cc:content-transfer-encoding;
+        bh=2q5Y614PfJlkOQN/NUpWgQJ6SoceXObNDpf6lU7/q7g=;
+        b=TTlhzbGZfRIaDBzNqsVc86qsxY8wtsuCSxii658QfT2Lq9keUtEDDjC0+Q7uT51VMv
+         8qv5NCsHg/ZS1SmBJxnfQPrFHO05jccMo+Wu4Phl8FS3AKa7+J6bI0xOaO6JL15klq2v
+         s936+KjIwVsFFOtWLtJpv+teuGUWCUPF81Ifyldo8MEy+qbtlgXEN6HrD7tSBXM1AP9X
+         u8QD61JBGgBta2XZOrHZrRL3H7XoA9M1UCBDsq4Wr/fXIn6pl6tGNdzljy9l6cHuq/sb
+         2zQlEfj0CBqusJLQlEPU7G0FmorPKAdY2tIDvP5O1RJKxSudAQwIYDJMvTTcehjQFk39
+         bCqg==
+X-Gm-Message-State: AIVw113uEUFBtyHPCi39pril1WGI1eP7GGWo6+eVqwB1jQPTFBKcwY9Z
+	fff2P8AGsoTIarFoDAqH7aODun6r9OpdPnHB8A==
+X-Received: by 10.223.173.143 with SMTP id w15mr8587748wrc.113.1499705847952;
+ Mon, 10 Jul 2017 09:57:27 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <20170710142850.10468-1-alex.bennee@linaro.org>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-TUID: pieEHcC7Tzxc
+Received: by 10.223.134.2 with HTTP; Mon, 10 Jul 2017 09:57:07 -0700 (PDT)
+In-Reply-To: <20170704144859.17644-1-alex.bennee@linaro.org>
+References: <20170704144859.17644-1-alex.bennee@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 10 Jul 2017 17:57:07 +0100
+Message-ID: <CAFEAcA-HtfOXe-w74YOGD51-Cso9U5uXHm8==_3QpjxqY79X1Q@mail.gmail.com>
+Subject: Re: [RISU PATCH 00/11] Misc fixes, documentation and patterns
+To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
+Cc: QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-TUID: S28kBeWe6Oif
 
-On 07/10/2017 04:28 AM, Alex Bennée wrote:
-> While the SoftMMU is not emulating the target MMU of a system there is
-> a relationship between its page size and that of the target. If the
-> target MMU is full featured the functions called to re-fill the
-> entries in the SoftMMU entries start moving up the perf profiles. If
-> we can we should try and prevent too much thrashing around by having
-> the page sizes the same.
+On 4 July 2017 at 15:48, Alex Benn=C3=A9e <alex.bennee@linaro.org> wrote:
+> Hi Peter,
+>
+> A bit of a mixed set of patches here for you to pick from as you
+> will. The first 2 are additional tracing fixes including a fix for
+> segfaulting when generating a trace.
+>
+> The next two are documentation patches as requested.
+>
+> Then two minor tweaks, one to risu.el and a indent failure of risugen.
+>
+> While I've been working through the half-precision stuff I've been
+> finding the --pattern approach a bit inflexible as you basically end
+> up eyeballing the risu file to build up the regexs. I've added a
+> little syntactic suger to the risu file to enable grouping. This makes
+> slicing a subset a lot easier, e.g.:
+>
+>   ./risugen --group AdvSIMDAcrossVector --not-pattern ".*_RES" aarch64.ri=
+su
+>
+> You can specify multiple groups in the risu file as the matching is
+> string based, e.g.:
+>
+>   @Integer,Logic,Immediate
+>
+> And then:
+>
+>   ./risugen --group Logic aarch64.risu foo.bin
+>
+> What do you think?
+>
+> Alex Benn=C3=A9e (11):
+>   risu: make match status take tracing into account
+>   reginfo.c: always return 1 on OP_TESTEND
+>   README: document --static builds
+>   README: document record/replay support
+>   risu.el: derive from text-mode
+>   risugen: fix bad indent
 
-What you are changing has absolutely nothing to do with page size.  Mentioning 
-page sizes just confuses the issue.
+I've pushed these first six to risu master.
 
-What you're changing is the number of entries in the TLB, and the mapping 
-between pages and TLB entries.  And I'm quite certain that you saw a 
-performance increase by increasing the size of the TLB.
+>   risugen: support @GroupName in risu files
 
+I think this is OK, but can we document the change in
+risu file syntax in the readme, please?
 
->   #define CPU_TLB_BITS                                             \
-> -    MIN(8,                                                       \
-> +    MIN(10,                                                      \
+>   aarch64.risu: document naming conventions
+>   aarch64.risu: remove duplicate AdvSIMD Scalar 3 same block
+>   aarch64.risu: remove duplicate AdvSIMD scalar 2 reg misc block
+>   aarch64.risu: update AdvancedSIMD across lanes
 
-You will find this has broken tcg/arm, because the operand to an armv6 AND 
-(immediate) instruction is only 8 bits.
+Some of these seem to be doing multiple things at once,
+which in some cases makes them a bit confusing (eg the
+first one says it's removing a duplicate block, but it's
+also adding a group name.)
 
-I will grant you that we could do a better job of configuring this across the 
-tcg backends.
-
-It also possibly warrants some work in the tcg/arm backend so that armv7 makes 
-use of UBFX so that not-ancient arm is not so constrained.
-
-
-r~
+thanks
+-- PMM

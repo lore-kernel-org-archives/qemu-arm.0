@@ -1,104 +1,121 @@
-Received: by 10.25.44.15 with SMTP id s15csp3636726lfs;
-        Mon, 10 Jul 2017 09:37:17 -0700 (PDT)
-X-Received: by 10.200.48.38 with SMTP id f35mr5756485qte.88.1499704637809;
-        Mon, 10 Jul 2017 09:37:17 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1499704637; cv=none;
+Received: by 10.25.44.15 with SMTP id s15csp3656151lfs;
+        Mon, 10 Jul 2017 09:55:48 -0700 (PDT)
+X-Received: by 10.55.60.13 with SMTP id j13mr5579050qka.71.1499705748435;
+        Mon, 10 Jul 2017 09:55:48 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1499705748; cv=none;
         d=google.com; s=arc-20160816;
-        b=HSM4hDueOIE4s9S8p8rM2LserTRZ/VH2KHaAc4kw4GRVP++Zcc1Mh1rXyGylKfGKm8
-         IvJndSdMAnLeLwn1SZ3/5XZUZoPzbO5pNIBh9kp+E1KwpeZYJBQtEjBfFhBM54qrz+gL
-         pY/XBya4s0EwLDxPfRkpCVU/JnMU666TL6/SgETOsT8n3wDnq9/smFG41xKuJXwXVH9u
-         jmJINxLvv+j9JCGqjzj2wo4sqvL7RUaeO1T8OFl9INVmViriXTTcd3UZgNTYGCpuw2Or
-         GCd2Ag/QruQA7is+9e5X62R4rKFH/4HTDXvQ/0PvC70mOjNa7paaCkySaK6lJsSKV5+A
-         Zl6w==
+        b=Z3q0n8tYTEqKC8yu4ipteUoIuJrOlz8/1QZaXOkcAx0SqYHLL9itbRDbwhuhg2b2SA
+         d6eF381Z86ej1vMrpfpRrTX3xFtfpubDH+CRkwTV3f1XxB1XMxIdFrquz0mUao6acefv
+         6DLpUkz+na3P9UdnESo/Y+ktBWLCrxY6GtVQRmuA5RN55ULBXjVxjJiHruW08XTtm8cx
+         RZ9o5R83J5DwkgQwnINinnXWMyYb5XAARGvMFAeD6t90g3mtJnHTYAyJT3azztrJp677
+         f5Aag7nHb3qTElMOMgSrwsU0MAkycPxUISYZR1yIOJErXZObwEzB/HRMN0tE7FtrTDA2
+         EMYw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:content-language:in-reply-to:mime-version
          :user-agent:date:message-id:from:references:cc:to:subject:sender
          :dkim-signature:arc-authentication-results;
-        bh=Kf3nvL5hR579uzfFNtk7En3nQWkfG+mIPNRatIb1auo=;
-        b=DiDZ57qEps4i/yGh+kHiWbjKNtCyU83xTo+UiTnrJCtFSz5xW5Sa1xUC5KB7MQTboE
-         CfJXzXZzeD8B8bwFqKJ4EjIz2Duyb5/rBWkTz/n6z8ItC+mbA4QkDHSbLJYl8iYFw4Jg
-         WfMoqVFT4hOywWlSI1rC8rAcdyz83eNHzOlSiDPYjTFcQka3EkLJSWAoD4fdQIOniMi8
-         m16td2a5g98ei+fNwx+SHFq3195wk292YLFuNF6U8Llbpqn1Bpv6MosRqEaYHIM2zz5V
-         A6YqX8ZMG7loylWdQdPxCkhD6dsLFKaoCKh4uQrXPf1WBx7j/vW8zachWYxJc2FI/kh/
-         hPPg==
+        bh=W/Qur14zB6VBPyK2pDzQwRhPa3i3CbsLBY4QS0CwdDY=;
+        b=W3gNSvgs2NIstD07EAk5NGnWGLAkeXEwIZuuTJkHCny9tvyL+MFMrQKrsI1VWiBqgu
+         LkaVkgD1mWcT8D36cI9ny7O+GuaSrF6f6MMb1FoEdhho9UgAW+vWhyajCfk3bDCOotee
+         yflh4ziIl9XTO/Fagnvzuunrb0ZvL2EulB6M33URu3zTOuPNWskYe2LXRcD908BUye0Q
+         qTdUKobB6+u6/Wg/qkxtKEnxImY4PLv2XFTquu1rQhqo3C0FgaaCNFx0fYitpFgotZ8k
+         k2tjn7aoEPJtyRqR06cYqngHBIv6xVfhJdtxG3MaBqlsrCcdU7DQbjoYUZ0jm77PwYLL
+         oNqw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.b=V1QZ9kEZ;
-       spf=pass (google.com: domain of rth7680@gmail.com designates 2607:f8b0:400d:c0d::242 as permitted sender) smtp.mailfrom=rth7680@gmail.com
+       dkim=pass header.i=@gmail.com header.b=sLnOfbgR;
+       spf=pass (google.com: domain of rth7680@gmail.com designates 2607:f8b0:400d:c09::244 as permitted sender) smtp.mailfrom=rth7680@gmail.com
 Return-Path: <rth7680@gmail.com>
-Received: from mail-qt0-x242.google.com (mail-qt0-x242.google.com. [2607:f8b0:400d:c0d::242])
-        by mx.google.com with ESMTPS id n188si10998124qkb.292.2017.07.10.09.37.17
+Received: from mail-qk0-x244.google.com (mail-qk0-x244.google.com. [2607:f8b0:400d:c09::244])
+        by mx.google.com with ESMTPS id m37si12163288qtf.131.2017.07.10.09.55.48
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 10 Jul 2017 09:37:17 -0700 (PDT)
-Received-SPF: pass (google.com: domain of rth7680@gmail.com designates 2607:f8b0:400d:c0d::242 as permitted sender) client-ip=2607:f8b0:400d:c0d::242;
+        Mon, 10 Jul 2017 09:55:48 -0700 (PDT)
+Received-SPF: pass (google.com: domain of rth7680@gmail.com designates 2607:f8b0:400d:c09::244 as permitted sender) client-ip=2607:f8b0:400d:c09::244;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.b=V1QZ9kEZ;
-       spf=pass (google.com: domain of rth7680@gmail.com designates 2607:f8b0:400d:c0d::242 as permitted sender) smtp.mailfrom=rth7680@gmail.com
-Received: by mail-qt0-x242.google.com with SMTP id w12so13322891qta.2;
-        Mon, 10 Jul 2017 09:37:17 -0700 (PDT)
+       dkim=pass header.i=@gmail.com header.b=sLnOfbgR;
+       spf=pass (google.com: domain of rth7680@gmail.com designates 2607:f8b0:400d:c09::244 as permitted sender) smtp.mailfrom=rth7680@gmail.com
+Received: by mail-qk0-x244.google.com with SMTP id p21so13587123qke.0;
+        Mon, 10 Jul 2017 09:55:48 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=sender:subject:to:cc:references:from:message-id:date:user-agent
          :mime-version:in-reply-to:content-language:content-transfer-encoding;
-        bh=Kf3nvL5hR579uzfFNtk7En3nQWkfG+mIPNRatIb1auo=;
-        b=V1QZ9kEZaeyZxABu8PDF8uvxQMHykdVvDiRG9+p184dVhjD8Ow5F9cQq4BCBlQBzKj
-         Ndl13HVNGl2IpAP8SiSblyf2czXbqCw/jQat8arR5qAI3bULy96he7I3Pf7wN7lOCwR8
-         G/+JdxFTrBvmZrF2G23q6p87Np9N66J4ACKEnkIGQ1FSeeVxbYHs5y8Xyvxgv/onmzyz
-         VLkBXsQq5v8P4cDxCdjvhz7gi+BNtaQ6RCw0GkWIwGCoqqocx/03AGvt0OwWq70kimp/
-         BFPrGpi80DWQuTnNXWje/Ezx0Ix1JyNlZ6flrTKKn5DGOcVUxobze7YWenGZexlSjLzt
-         KpMg==
+        bh=W/Qur14zB6VBPyK2pDzQwRhPa3i3CbsLBY4QS0CwdDY=;
+        b=sLnOfbgRnlCoWZSd3P5ju3IWJsaJYhT71tiD/40bZ/c5FuTMtBsL2GOdG2WTwAIGnt
+         av/05RBNQ0vGDZKbLq48IIZHWnUWWt6YdjFsTONDSLtTkWV+yqyVy9oxV3gQekyfFf+1
+         g1vC1/NBSLhJp4MoMfUwuvcQ1wZt5Dm0gIFsMRSt0VIcEX2BKA3h7Ms0e5NYWYhqhRku
+         DqxB4HYNIB/I7nX26UGW3XL0o/6x9eqtkKWDpWOfox3+d/3mverx14BwkVvZUARU2L2c
+         QQ7bQKf4EM0wl9EqW0h0MrMzFuItAji6yB9QuKWCCGCwuMnxjWCxPBvshqJ2YRRKzEuu
+         Jy/w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
          :date:user-agent:mime-version:in-reply-to:content-language
          :content-transfer-encoding;
-        bh=Kf3nvL5hR579uzfFNtk7En3nQWkfG+mIPNRatIb1auo=;
-        b=ERPm9i4l255XAHP3MKzQZxAh4vZUERvrcpVA531lA7SXREaSyR9GQ98rBov9F0mKYd
-         XmkzUBGOSGr8q7YX6tdHiOJ3LIEtVvu/ltZLJMfKMJYzs1W/0Xy35GuWlnpYzCIJ8XaU
-         wSnYuRbrpgV4JeIqd7F7DkBbq00aoLEUjOmnhTircOd2rsmUkJCz7li+RQQ5YpB6cpc0
-         DkyJ6idbv7q0F56bAuWLmMSLrBeljYvjchGteQMRAUt7isGju1eHyYX3uBCbuMHkFy1Z
-         Y9u3xSHjH6NZ5uwuOGGUA24Onk7bmRy2bRaHWxPHIbFQMDCTNTd7SZHINj2SC+QwSZEW
-         v6aA==
-X-Gm-Message-State: AIVw1128Ya9kQaezoZuVchzLUF0GwVynDRq8dww6BfmuLTE45/3C3h9Q
-	TyodfI0vUsmiEzHxM7g=
-X-Received: by 10.237.42.226 with SMTP id t89mr5844171qtd.73.1499704637197;
-        Mon, 10 Jul 2017 09:37:17 -0700 (PDT)
+        bh=W/Qur14zB6VBPyK2pDzQwRhPa3i3CbsLBY4QS0CwdDY=;
+        b=XacG5QGuhCMZv3idd4LWoAyzZZ8BG8rt8ZVR8iYQTD4dA9Rtz9T48FJiU98LlcxUqc
+         A/AlAMRtGVTQWCn3zCQ6kDgCnn/11MHpcoMX8v1mmnhg9PIUcFW7a7mn4lhqQCmyIqKy
+         ZLdojKFWsBFbt+TOnlglbneHQhQPkIyqifZpKxha0p90r8VoLB9B6JAtjHTNgRaAclFP
+         5sX4MSZLKZYVLsA6lyU+0A78pNcMJDUa+Ls2FjJ8rkRom0y2BzeH8ecHrqfog9aFHxw9
+         5SMDPA4TksYNgWj+d6ygiBq9gBl73lOji6AjGkQgKPYK5SVOyNDVi8MLwZ9uDZy+TXK8
+         BUmQ==
+X-Gm-Message-State: AIVw1128LYGKuN4WWzpF48JbLSWu/bPYxZJU28qO7p9+Yla4vp+RT+tr
+	jzAn8RNx3BdYiA==
+X-Received: by 10.55.79.198 with SMTP id d189mr4971500qkb.37.1499705747948;
+        Mon, 10 Jul 2017 09:55:47 -0700 (PDT)
 Return-Path: <rth7680@gmail.com>
 Received: from bigtime.twiddle.net (rrcs-173-197-98-123.west.biz.rr.com. [173.197.98.123])
-        by smtp.googlemail.com with ESMTPSA id z5sm8726619qkz.53.2017.07.10.09.37.14
+        by smtp.googlemail.com with ESMTPSA id c18sm10107212qtd.62.2017.07.10.09.55.45
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 10 Jul 2017 09:37:16 -0700 (PDT)
+        Mon, 10 Jul 2017 09:55:47 -0700 (PDT)
 Sender: Richard Henderson <rth7680@gmail.com>
-Subject: Re: [PATCH v1 4/6] target/arm/translate-a64: get rid of DISAS_EXIT
+Subject: Re: [RFC PATCH] include/exec/cpu-defs.h: try and make SoftMMU page
+ size match target
 To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
- peter.maydell@linaro.org, cota@braap.org
-Cc: qemu-devel@nongnu.org, "open list:ARM" <qemu-arm@nongnu.org>
-References: <20170710154749.13624-1-alex.bennee@linaro.org>
- <20170710154749.13624-5-alex.bennee@linaro.org>
+ peter.maydell@linaro.org, bobby.prani@gmail.com
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ Peter Crosthwaite <crosthwaite.peter@gmail.com>
+References: <20170710142850.10468-1-alex.bennee@linaro.org>
 From: Richard Henderson <rth@twiddle.net>
-Message-ID: <1e6a695b-92b1-578d-5467-569ec28b6a30@twiddle.net>
-Date: Mon, 10 Jul 2017 06:37:11 -1000
+Message-ID: <1e34d387-753b-14ff-dcc0-226515ff0124@twiddle.net>
+Date: Mon, 10 Jul 2017 06:55:42 -1000
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
  Thunderbird/52.2.1
 MIME-Version: 1.0
-In-Reply-To: <20170710154749.13624-5-alex.bennee@linaro.org>
+In-Reply-To: <20170710142850.10468-1-alex.bennee@linaro.org>
 Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-X-TUID: F2u12xBAxGJz
+X-TUID: pieEHcC7Tzxc
 
-On 07/10/2017 05:47 AM, Alex Bennée wrote:
-> We already have an exit condition that declares we should exit to the
-> run-loop because wider CPU state changes have been made. Use
-> DISAS_UPDATE and kill the architecture specific DISAS_EXIT.
-> 
-> Signed-off-by: Alex Bennée<alex.bennee@linaro.org>
-> ---
->   target/arm/translate-a64.c | 3 +--
->   target/arm/translate.c     | 6 ++++--
->   target/arm/translate.h     | 4 ----
->   3 files changed, 5 insertions(+), 8 deletions(-)
+On 07/10/2017 04:28 AM, Alex Bennée wrote:
+> While the SoftMMU is not emulating the target MMU of a system there is
+> a relationship between its page size and that of the target. If the
+> target MMU is full featured the functions called to re-fill the
+> entries in the SoftMMU entries start moving up the perf profiles. If
+> we can we should try and prevent too much thrashing around by having
+> the page sizes the same.
 
-I really thought it was clearer the other way around.
+What you are changing has absolutely nothing to do with page size.  Mentioning 
+page sizes just confuses the issue.
+
+What you're changing is the number of entries in the TLB, and the mapping 
+between pages and TLB entries.  And I'm quite certain that you saw a 
+performance increase by increasing the size of the TLB.
+
+
+>   #define CPU_TLB_BITS                                             \
+> -    MIN(8,                                                       \
+> +    MIN(10,                                                      \
+
+You will find this has broken tcg/arm, because the operand to an armv6 AND 
+(immediate) instruction is only 8 bits.
+
+I will grant you that we could do a better job of configuring this across the 
+tcg backends.
+
+It also possibly warrants some work in the tcg/arm backend so that armv7 makes 
+use of UBFX so that not-ancient arm is not so constrained.
 
 
 r~

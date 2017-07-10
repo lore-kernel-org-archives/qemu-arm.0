@@ -1,93 +1,95 @@
-Received: by 10.25.44.15 with SMTP id s15csp3435148lfs;
-        Mon, 10 Jul 2017 06:54:38 -0700 (PDT)
-X-Received: by 10.55.106.66 with SMTP id f63mr3897872qkc.167.1499694878539;
-        Mon, 10 Jul 2017 06:54:38 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1499694878; cv=none;
+Received: by 10.25.44.15 with SMTP id s15csp3448161lfs;
+        Mon, 10 Jul 2017 07:04:45 -0700 (PDT)
+X-Received: by 10.176.9.73 with SMTP id c9mr8716438uah.145.1499695485240;
+        Mon, 10 Jul 2017 07:04:45 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1499695485; cv=none;
         d=google.com; s=arc-20160816;
-        b=n1THd0qq4CP9aeNDqUeAVjF7Tw+AOB3jn9YOiu4XXckO9KGDcGptqAdq7X7iDj3pNS
-         Utt3TInW/jE+zEWY1iYW8LlWUupioBexC69HpyoqhAZZmNM/sEKHZk5PXm9uI1S1VfMz
-         LehRJi9a2YzqSMMSgpx7u1GPvAzLh/KJ1x/nieCEU9uGJFWt26MX/nfmdPnuqhHW0KdT
-         bG1eiJyJtjGskohK3H330yqUXgHbiu1u74g++HPwE7FCboDjS15YRglQCTBEvzUbcTXP
-         5sSzYXt9dHw3dXwGGtKCwsQluxnYHse9npaXlVnzLeXVm4TlqMy5lUKvSiYhewJ5Vy66
-         MgAQ==
+        b=KA4v4MZ3vfT4RviklctEM+BKJZv68oYIjkA3eJuMQnhKgTkRxjPiQLnl4fNTGn+vfD
+         p2HxYyzP1YBEDMRiOQOhoEcS1/jP8MEB2/tVrza37gNoaYmVqhaCH4xhyCIPmbk46zyu
+         DvTU9aB5jh5F8OzjL7lvkiLNjJj4O23yUZgh44Wg6EkdxBx+WZCG/E7LsbwAthnidiYT
+         lIkUb/p29hkTmp7p6KdbCMivSUoS76YSaw5Z1FXMBZaOXmxzm3qnAVpCS+xDLlmN+Z8L
+         b6skAjG0H6fytTHR9rZAO1e+qS16CeXe6ZNaaE5/1r9o6Zq9+1bieHrpVRmo3lrf971h
+         v7RA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:in-reply-to
-         :mime-version:user-agent:date:message-id:organization:openpgp:from
-         :references:to:dkim-filter:dmarc-filter:arc-authentication-results;
-        bh=ONyriSSc2bdjrcVFXVeSt/fXuVTWVRAVC+VkMmAUaEc=;
-        b=lqcsUsGoIqZWgRr4Y6RZFJqWSQCfYRIjChBIN1N/3sIMo6FT+LRK1isb/5bkWPetQm
-         t4p7LTqes/FF2rLL4ak2Upgq56YE5+2BcAHGVN5EtM7a7SqnESjMSTYqlR67n03c8jM/
-         BjEvkei+LAcuJ8ojcKDtKYNanUXEG5Vo04/ZJYEIxudY9m2Y6EWmVWw2LdMDW5+0od5x
-         1re/WVwhh6i5Fds9oesHPy9vUvPuEC9ewUbLl6eIV3U/6peA9XtD1BYDrVNGCV5815Pi
-         2q7eZdI1Qmun3+46p4qamb0WaGVpj7yfJP9zEsMrmtqMD2QL43s1bnWhI8MGbq9OeV5u
-         VK2A==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:to:dkim-filter
+         :dmarc-filter:arc-authentication-results;
+        bh=gynFEmT6TvniM/h2mSkAFPvQKXMP7U8E1oWEprKyCNo=;
+        b=EWiGJWmiGH3aSxp9Aci21IJOdqMJf28QU2StcICYJYHp77HVsN0XbFUWpAFPs1328x
+         EUDgjikC2S/C4S6TSfkDoqVpVIQzsI8tiTCEjuzmBj7SZ8mZxMv/jB4jQIHkJbJUOf1T
+         I8joKQxkgrD84MJOq0qLK8fTNinA4P+0Ip8W7SQQ4UDX9F6naqSpPXc57ucuXrWB8oQH
+         WdWVvvijbQnQ4+gqaI2j76W8CHW4ao5o+9LY05GsT+9FIiOrlGJP9jA/b7f9Jszys637
+         HZ2C6EEkYOHZKhw/P+DZcKlrvFBMroVeBocYuDBiYwGdhzKwI3DQRD9kPUWNtkpAg//I
+         YlIg==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [208.118.235.17])
-        by mx.google.com with ESMTPS id a39si11070824qtb.176.2017.07.10.06.54.37
+        by mx.google.com with ESMTPS id x1si5740471uai.222.2017.07.10.07.04.44
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 10 Jul 2017 06:54:38 -0700 (PDT)
+        Mon, 10 Jul 2017 07:04:45 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) client-ip=208.118.235.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:40935 helo=lists.gnu.org)
+Received: from localhost ([::1]:40989 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1dUZ91-0002jw-Pg
-	for alex.bennee@linaro.org; Mon, 10 Jul 2017 09:54:35 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:52548)
+	id 1dUZIo-00005L-Lv
+	for alex.bennee@linaro.org; Mon, 10 Jul 2017 10:04:42 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:56475)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1dUZ8p-0002fc-TV
-	for qemu-arm@nongnu.org; Mon, 10 Jul 2017 09:54:28 -0400
+	(envelope-from <lersek@redhat.com>) id 1dUZId-0008VZ-Mg
+	for qemu-arm@nongnu.org; Mon, 10 Jul 2017 10:04:32 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1dUZ8j-0006zg-QZ
-	for qemu-arm@nongnu.org; Mon, 10 Jul 2017 09:54:23 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:33614)
+	(envelope-from <lersek@redhat.com>) id 1dUZIZ-0003Qr-Mh
+	for qemu-arm@nongnu.org; Mon, 10 Jul 2017 10:04:31 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:54790)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <eblake@redhat.com>)
-	id 1dUZ8j-0006zA-GZ; Mon, 10 Jul 2017 09:54:17 -0400
+	(Exim 4.71) (envelope-from <lersek@redhat.com>)
+	id 1dUZIZ-0003QR-H2; Mon, 10 Jul 2017 10:04:27 -0400
 Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
 	[10.5.11.14])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id CB2663D95D;
-	Mon, 10 Jul 2017 13:54:15 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com CB2663D95D
-Authentication-Results: ext-mx06.extmail.prod.ext.phx2.redhat.com;
+	by mx1.redhat.com (Postfix) with ESMTPS id B04487F6A2;
+	Mon, 10 Jul 2017 14:04:25 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com B04487F6A2
+Authentication-Results: ext-mx01.extmail.prod.ext.phx2.redhat.com;
 	dmarc=none (p=none dis=none) header.from=redhat.com
-Authentication-Results: ext-mx06.extmail.prod.ext.phx2.redhat.com;
-	spf=pass smtp.mailfrom=eblake@redhat.com
-DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com CB2663D95D
-Received: from [10.10.121.60] (ovpn-121-60.rdu2.redhat.com [10.10.121.60])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 543E817DBD;
-	Mon, 10 Jul 2017 13:54:08 +0000 (UTC)
-To: Dongjiu Geng <gengdongjiu@huawei.com>, lersek@redhat.com, mst@redhat.com, 
-	imammedo@redhat.com, famz@redhat.com, qemu-devel@nongnu.org,
+Authentication-Results: ext-mx01.extmail.prod.ext.phx2.redhat.com;
+	spf=pass smtp.mailfrom=lersek@redhat.com
+DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com B04487F6A2
+Received: from lacos-laptop-7.usersys.redhat.com (ovpn-116-146.phx2.redhat.com
+	[10.3.116.146])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id EE9E25DC1D;
+	Mon, 10 Jul 2017 14:04:17 +0000 (UTC)
+To: Eric Blake <eblake@redhat.com>, Dongjiu Geng <gengdongjiu@huawei.com>,
+	mst@redhat.com, imammedo@redhat.com, famz@redhat.com,
+	qemu-devel@nongnu.org, 
 	zhaoshenglong@huawei.com, peter.maydell@linaro.org, qemu-arm@nongnu.org,
 	zhengqiang10@huawei.com, huangshaoyu@huawei.com, wuquanming@huawei.com, 
 	zhihui.gao@huawei.com
 References: <1499678755-5633-1-git-send-email-gengdongjiu@huawei.com>
-From: Eric Blake <eblake@redhat.com>
-Openpgp: url=http://people.redhat.com/eblake/eblake.gpg
-Organization: Red Hat, Inc.
-Message-ID: <df74267a-3f6f-b6f5-432f-40f8c04ab1f1@redhat.com>
-Date: Mon, 10 Jul 2017 08:54:07 -0500
+	<df74267a-3f6f-b6f5-432f-40f8c04ab1f1@redhat.com>
+From: Laszlo Ersek <lersek@redhat.com>
+Message-ID: <d48ec6cf-03b6-bf2b-1bed-1e2c34aaf5f0@redhat.com>
+Date: Mon, 10 Jul 2017 16:04:16 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
 	Thunderbird/52.2.1
 MIME-Version: 1.0
-In-Reply-To: <1499678755-5633-1-git-send-email-gengdongjiu@huawei.com>
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature";
-	boundary="nSRXmSWLuCdkvscAGtpPira2xBW0Wgg3L"
+In-Reply-To: <df74267a-3f6f-b6f5-432f-40f8c04ab1f1@redhat.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
 X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.30]);
-	Mon, 10 Jul 2017 13:54:16 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.25]);
+	Mon, 10 Jul 2017 14:04:25 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 209.132.183.28
@@ -106,64 +108,29 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 5U9qHJ25K+ek
+X-TUID: HQ/DsHYqo3L/
 
-This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
---nSRXmSWLuCdkvscAGtpPira2xBW0Wgg3L
-Content-Type: multipart/mixed; boundary="rVALXhrMRg6tcFqEfbici6JK7LiJ8wAOL";
- protected-headers="v1"
-From: Eric Blake <eblake@redhat.com>
-To: Dongjiu Geng <gengdongjiu@huawei.com>, lersek@redhat.com, mst@redhat.com,
- imammedo@redhat.com, famz@redhat.com, qemu-devel@nongnu.org,
- zhaoshenglong@huawei.com, peter.maydell@linaro.org, qemu-arm@nongnu.org,
- zhengqiang10@huawei.com, huangshaoyu@huawei.com, wuquanming@huawei.com,
- zhihui.gao@huawei.com
-Message-ID: <df74267a-3f6f-b6f5-432f-40f8c04ab1f1@redhat.com>
-Subject: Re: [Qemu-devel] [PATCH v4 1/3] ACPI: Add new ACPI structures and
- macros
-References: <1499678755-5633-1-git-send-email-gengdongjiu@huawei.com>
-In-Reply-To: <1499678755-5633-1-git-send-email-gengdongjiu@huawei.com>
+On 07/10/17 15:54, Eric Blake wrote:
+> On 07/10/2017 04:25 AM, Dongjiu Geng wrote:
+>> (1) Add related APEI/HEST table structures and  macros, these
+>>     definition refer to ACPI 6.1 and UEFI 2.6 spec.
+> 
+> Your mail is missing In-Reply-To: and References: headers, which makes
+> it appear as a new top-level thread for each patch.  You'll want to
+> figure out why you didn't properly link back to your 0/3 cover letter
+> with Message-ID: <1499678736-5244-1-git-send-email-gengdongjiu@huawei.com>
+> 
 
---rVALXhrMRg6tcFqEfbici6JK7LiJ8wAOL
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: quoted-printable
+Yes, the git-send-email options to use are:
 
-On 07/10/2017 04:25 AM, Dongjiu Geng wrote:
-> (1) Add related APEI/HEST table structures and  macros, these
->     definition refer to ACPI 6.1 and UEFI 2.6 spec.
+  --thread --no-chain-reply-to
 
-Your mail is missing In-Reply-To: and References: headers, which makes
-it appear as a new top-level thread for each patch.  You'll want to
-figure out why you didn't properly link back to your 0/3 cover letter
-with Message-ID: <1499678736-5244-1-git-send-email-gengdongjiu@huawei.com=
->
+Best to set them permanently in one's qemu clone,
 
---=20
-Eric Blake, Principal Software Engineer
-Red Hat, Inc.           +1-919-301-3266
-Virtualization:  qemu.org | libvirt.org
+$ git config --bool sendemail.thread       true
+$ git config --bool sendemail.chainreplyto false
 
+This is called "shallow threading" (see git-send-email(1)).
 
---rVALXhrMRg6tcFqEfbici6JK7LiJ8wAOL--
-
---nSRXmSWLuCdkvscAGtpPira2xBW0Wgg3L
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: OpenPGP digital signature
-Content-Disposition: attachment; filename="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v2
-Comment: Public key at http://people.redhat.com/eblake/eblake.gpg
-Comment: Using GnuPG with Thunderbird - http://www.enigmail.net/
-
-iQEcBAEBCAAGBQJZY4b/AAoJEKeha0olJ0NqWPIH/2JbCVFv1B+pecf/vB2+xpoU
-/zckPX5LTHmCqyy9Q6ygPLuBZvwNZAS0c8vOxOQzM2a/lRVrU5gd1edik8QZctUH
-PGN7yulnpA0TpdB7XwV5WjjRJ5OqizGvso1wSsBED9hTtmpr5BcN4lcm4KsqQlxK
-vrHk08en3vxysN60+lgxE/EmnNEMlpp3IOzpWOzVokskBpVGvsjFIym5UzXgfJB8
-XW6QqmcYomVKvUjd6VOALjJqIqCvV88Ip/2qjJtasN56aYv8+OCvGbMBPHwrAa9s
-1qYu2VHUKgL6EQtPPidLwokWNDtLNboF2izi2dbG9fu8k1aNtWg37pk9bDoCnTY=
-=z3js
------END PGP SIGNATURE-----
-
---nSRXmSWLuCdkvscAGtpPira2xBW0Wgg3L--
+Thanks
+Laszlo

@@ -1,70 +1,97 @@
-Received: by 10.25.44.15 with SMTP id s15csp4684096lfs;
-        Tue, 11 Jul 2017 04:20:39 -0700 (PDT)
-X-Received: by 10.200.39.24 with SMTP id g24mr10834122qtg.163.1499772038930;
-        Tue, 11 Jul 2017 04:20:38 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1499772038; cv=none;
+Received: by 10.25.44.15 with SMTP id s15csp4692758lfs;
+        Tue, 11 Jul 2017 04:28:31 -0700 (PDT)
+X-Received: by 10.200.56.40 with SMTP id q37mr9727577qtb.36.1499772511220;
+        Tue, 11 Jul 2017 04:28:31 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1499772511; cv=none;
         d=google.com; s=arc-20160816;
-        b=nFtbqMdfgl+gIMDutD67mJQD39fbyPQegNU1+enYBSTZV/jP+tXuUpt1wC8EJArnAs
-         b/f1tvMq7Ul/LdScU6+W16T0Gae9HBpnS/0nbg+bDVQR95GRH1v28hzK6b/PUhR7KIZl
-         FK+EDWhBKqZ2kBn7wijxS5S4BYTodttwjr1ep5mAZNarvGgT5u7ILtYehZ2ZEeW1bfDV
-         sYWysRn9RzjLlqahi27hkfMFh29xu0t8kgd3nIWYhjn14b5lA1CttG7lfTkF4+AfHTmx
-         3ellyV3GF6ZtqbNxEwv9iknK+sQ12teCSveTMRfS8uQ2TMFFW60l/P6m67fbj017obNM
-         5DsA==
+        b=TOzDU+yANdvr4bIl6UkxuHx1aLARiWd840Q+cgNtnCygyYqtHf1T+M0UuLZvVhF4TH
+         GdITOOCz0tP76ZPAg9/8ctbMvd6uuVi8TacmBte1SgiWyfSU0io+VlFtBJ2b7MAcIYYS
+         yBcItJsIRSCEp/xBJrOXVZVv3Y88YNwsrllsKdWr1NDlLzMmMbeNfqW3pyzEU9yfFeEL
+         s1bVPRH0px2cFpkj/SgbvfPeRD16WQsryzTXtDp06xwZUaKxatnSkJsdf1lnc3X3Hqum
+         c320vQQM/01ag6Zk2FcQJaSWnSMSlXCshvpTRe+1FuaCGLB7WoQvMWtVgf/3FmwE8kaN
+         Lf8g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
-         :message-id:date:to:from:arc-authentication-results;
-        bh=Id1pdC/V+CBTEy03dG6SfDjNuDUBdLCY0kw4bF03yyc=;
-        b=A3FvLTyhnvaf/GX0FNNfNTu+8cwOOElRPc+Fnb4AvP0xt7/iBGCxzonQZm3SQKt8Yp
-         jnNix8+Db8HOUuK/UTqT1jgTDWtzM9ScNZkbePXQUNDyy6PpbzvHRnVBVPZSB5IOix4E
-         9hiFu9JSrKSeFtpP8k0OC2OGrMY/fSMNKA99C3UhpNsxwN/bkQI+lbTXe7dX9iLK/0rU
-         iCwpz8BQr7WWeuHAqB1dvAJVbvAz6rCrdnu7nUIUx3QGSwNC6ojRFIzJoaB0pNlIzUAk
-         LB/j7o3aBMF37HB1LiNtHRcm9yexby/v97xo3f/lcqmbRvk+SJToEhn9Dlw0dC38pu0x
-         zpzw==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:to
+         :arc-authentication-results;
+        bh=abhdvBOtPzxU8bMV412jXPO3MlUoWOI6GfdkSMNPGhs=;
+        b=A/2HfFEfmI9WEyulDlP5gAw3eO9Mx0A3iwHjcIdgJ/lQqCG7nKKlXukST628UHQVm+
+         75UsBFZnoRPipm6xL36JDmaeb1nz3FHJX5zmAuLcYvPs0rGANn/DrNvI+QMCPTeRkQZM
+         DqjLk27aw6Fna1cViwM+il8HWu2GiDdU+cd7nM6Wgi7/ZpqqETJlDdbxx7Gk3DICwdMH
+         oPaC6vUIdJZZhALJsRoIlkMJEmYeYFORI9LUYVj4DSWMHXcYmeDuTKz5qfq1S1KFI8Iw
+         6lgy55Ol9C26hNo8EvWWaOaKzOA2RJDDaO3wM/zPmoL/vPoc7QKgpvS/UwgpDbovdzNE
+         h28A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [208.118.235.17])
-        by mx.google.com with ESMTPS id 145si13271238qkl.155.2017.07.11.04.20.38
+        by mx.google.com with ESMTPS id u48si13532966qtu.388.2017.07.11.04.28.30
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 11 Jul 2017 04:20:38 -0700 (PDT)
+        Tue, 11 Jul 2017 04:28:31 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) client-ip=208.118.235.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:45542 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:45591 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1dUtDY-0001dv-1t
-	for alex.bennee@linaro.org; Tue, 11 Jul 2017 07:20:36 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:39420)
+	id 1dUtLA-0007Lx-Du
+	for alex.bennee@linaro.org; Tue, 11 Jul 2017 07:28:28 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:42569)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1dUtAZ-0007Cz-F4
-	for qemu-arm@nongnu.org; Tue, 11 Jul 2017 07:17:33 -0400
+	(envelope-from <jean-philippe.brucker@arm.com>) id 1dUtL6-0007Lr-8h
+	for qemu-arm@nongnu.org; Tue, 11 Jul 2017 07:28:25 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1dUtAX-00085i-AU
-	for qemu-arm@nongnu.org; Tue, 11 Jul 2017 07:17:31 -0400
-Received: from orth.archaic.org.uk ([2001:8b0:1d0::2]:37515)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <pm215@archaic.org.uk>)
-	id 1dUtAX-00081N-0h; Tue, 11 Jul 2017 07:17:29 -0400
-Received: from pm215 by orth.archaic.org.uk with local (Exim 4.84_2)
-	(envelope-from <pm215@archaic.org.uk>)
-	id 1dUtAO-00032R-C8; Tue, 11 Jul 2017 12:17:20 +0100
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Date: Tue, 11 Jul 2017 12:17:13 +0100
-Message-Id: <1499771839-32518-2-git-send-email-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.7.4
-In-Reply-To: <1499771839-32518-1-git-send-email-peter.maydell@linaro.org>
-References: <1499771839-32518-1-git-send-email-peter.maydell@linaro.org>
+	(envelope-from <jean-philippe.brucker@arm.com>) id 1dUtL3-0005Cr-3E
+	for qemu-arm@nongnu.org; Tue, 11 Jul 2017 07:28:24 -0400
+Received: from usa-sjc-mx-foss1.foss.arm.com ([217.140.101.70]:51210
+	helo=foss.arm.com) by eggs.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <jean-philippe.brucker@arm.com>)
+	id 1dUtL2-0005Bt-QP; Tue, 11 Jul 2017 07:28:21 -0400
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.72.51.249])
+	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id E4E0613D5;
+	Tue, 11 Jul 2017 04:28:17 -0700 (PDT)
+Received: from [10.1.211.12] (e106794-lin.cambridge.arm.com [10.1.211.12])
+	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 679FC3F5B0;
+	Tue, 11 Jul 2017 04:28:14 -0700 (PDT)
+To: "Kalra, Ashish" <Ashish.Kalra@cavium.com>,
+	"Tian, Kevin" <kevin.tian@intel.com>, Auger Eric <eric.auger@redhat.com>,
+	Bharat Bhushan <bharat.bhushan@nxp.com>,
+	"eric.auger.pro@gmail.com" <eric.auger.pro@gmail.com>,
+	"peter.maydell@linaro.org" <peter.maydell@linaro.org>,
+	"alex.williamson@redhat.com" <alex.williamson@redhat.com>,
+	"mst@redhat.com" <mst@redhat.com>, "qemu-arm@nongnu.org"
+	<qemu-arm@nongnu.org>, "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
+References: <1496851287-9428-1-git-send-email-eric.auger@redhat.com>
+	<6f22079e-4b4b-6476-77be-51ec83104c0d@redhat.com>
+	<AM5PR0401MB25459FDAA8C9AFA52503AAE99AC40@AM5PR0401MB2545.eurprd04.prod.outlook.com>
+	<c80977c4-1955-4e9d-3fc8-4d884562fd28@redhat.com>
+	<HE1PR0401MB2556D19D91F25DCE96FE7B199AD40@HE1PR0401MB2556.eurprd04.prod.outlook.com>
+	<8a7fb667-e6c0-2412-6dca-a8233dd27836@redhat.com>
+	<HE1PR0401MB255696A487DFEB2B8972980F9AD40@HE1PR0401MB2556.eurprd04.prod.outlook.com>
+	<e9ea564a-f02b-0ed5-e700-b7b1dfd89722@arm.com>
+	<AM5PR0401MB25459345E9533FFC3BBE00289AD50@AM5PR0401MB2545.eurprd04.prod.outlook.com>
+	<15b631c8-5708-1426-90a2-9be51a796614@redhat.com>
+	<BN4PR07MB2161B5CCE84496804B848326E3D50@BN4PR07MB2161.namprd07.prod.outlook.com>
+	<AADFC41AFE54684AB9EE6CBC0274A5D190D28807@SHSMSX101.ccr.corp.intel.com>
+	<67cb3a84-9aa7-2b4f-43b6-be6dea15b66f@arm.com>
+	<BN4PR07MB21615F830FCA5445EF4B7974E3AA0@BN4PR07MB2161.namprd07.prod.outlook.com>
+From: Jean-Philippe Brucker <jean-philippe.brucker@arm.com>
+Message-ID: <8933b36d-c552-c6d5-e4de-e4955f63fec3@arm.com>
+Date: Tue, 11 Jul 2017 12:31:08 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.1.1
+MIME-Version: 1.0
+In-Reply-To: <BN4PR07MB21615F830FCA5445EF4B7974E3AA0@BN4PR07MB2161.namprd07.prod.outlook.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2001:8b0:1d0::2
-Subject: [Qemu-arm] [PATCH 1/7] hw/arm/mps2: Implement skeleton mps2-an385
- and mps2-an511 board models
+	[fuzzy]
+X-Received-From: 217.140.101.70
+Subject: Re: [Qemu-arm] [Qemu-devel] [RFC v2 0/8] VIRTIO-IOMMU device
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -76,333 +103,80 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: patches@linaro.org
+Cc: "drjones@redhat.com" <drjones@redhat.com>,
+	"marc.zyngier@arm.com" <marc.zyngier@arm.com>,
+	"tn@semihalf.com" <tn@semihalf.com>,
+	"will.deacon@arm.com" <will.deacon@arm.com>,
+	"robin.murphy@arm.com" <robin.murphy@arm.com>,
+	"christoffer.dall@linaro.org" <christoffer.dall@linaro.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: gHwtVJ45FJR8
+X-TUID: IqWgS4wrqfXD
 
-Model the ARM MPS2/MPS2+ FPGA based development board.
+On 07/07/17 23:11, Kalra, Ashish wrote:
+> Hello Jean,
+> 
+> Thanks for the information.
+> 
+> Is someone already working on implementing this, or is this something I can look into and implementing ?
 
-The MPS2 and MPS2+ dev boards are FPGA based (the 2+ has a bigger
-FPGA but is otherwise the same as the 2). Since the CPU itself
-and most of the devices are in the FPGA, the details of the board
-as seen by the guest depend significantly on the FPGA image.
+I'm still working on the specification, along with a prototype for the
+Linux driver and the kvmtool device. I don't want to rush it because it's
+a complicated subject, and we're barely supporting SVM in the host.
+Supporting IO page faults is only part of the problem, we also need to
+hand page tables over to the guest, which requires a new interface for
+virtio-iommu. For the moment, my priority is on consolidating the base
+device specification.
 
-We model the following FPGA images:
- "mps2_an385" -- Cortex-M3 as documented in ARM Application Note AN385
- "mps2_an511" -- Cortex-M3 'DesignStart' as documented in AN511
+> Also, as Michael mentioned and I looked in the vfio iommu (type1) driver implementation that it supports mainly
+> static mappings of user-space processes with  user-space pages pinned/locked in memory, so a generic support
+> for ATS/PRI extensions needs to be added in VFIO too.
 
-They are fairly similar but differ in the details for some
-peripherals.
+That's also in progress. As far as I know the latest version for fault
+reporting is http://www.spinics.net/lists/kvm/msg146615.html
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
- hw/arm/Makefile.objs            |   1 +
- hw/arm/mps2.c                   | 273 ++++++++++++++++++++++++++++++++++++++++
- default-configs/arm-softmmu.mak |   1 +
- 3 files changed, 275 insertions(+)
- create mode 100644 hw/arm/mps2.c
+Thanks,
+Jean
 
-diff --git a/hw/arm/Makefile.objs b/hw/arm/Makefile.objs
-index 4c5c4ee..a2e56ec 100644
---- a/hw/arm/Makefile.objs
-+++ b/hw/arm/Makefile.objs
-@@ -18,3 +18,4 @@ obj-$(CONFIG_FSL_IMX25) += fsl-imx25.o imx25_pdk.o
- obj-$(CONFIG_FSL_IMX31) += fsl-imx31.o kzm.o
- obj-$(CONFIG_FSL_IMX6) += fsl-imx6.o sabrelite.o
- obj-$(CONFIG_ASPEED_SOC) += aspeed_soc.o aspeed.o
-+obj-$(CONFIG_MPS2) += mps2.o
-diff --git a/hw/arm/mps2.c b/hw/arm/mps2.c
-new file mode 100644
-index 0000000..28838bc
---- /dev/null
-+++ b/hw/arm/mps2.c
-@@ -0,0 +1,273 @@
-+/*
-+ * ARM V2M MPS2 board emulation.
-+ *
-+ * Copyright (c) 2017 Linaro Limited
-+ * Written by Peter Maydell
-+ *
-+ *  This program is free software; you can redistribute it and/or modify
-+ *  it under the terms of the GNU General Public License version 2 or
-+ *  (at your option) any later version.
-+ */
-+
-+/* The MPS2 and MPS2+ dev boards are FPGA based (the 2+ has a bigger
-+ * FPGA but is otherwise the same as the 2). Since the CPU itself
-+ * and most of the devices are in the FPGA, the details of the board
-+ * as seen by the guest depend significantly on the FPGA image.
-+ * We model the following FPGA images:
-+ *  "mps2_an385" -- Cortex-M3 as documented in ARM Application Note AN385
-+ *  "mps2_an511" -- Cortex-M3 'DesignStart' as documented in AN511
-+ *
-+ * Links to the TRM for the board itself and to the various Application
-+ * Notes which document the FPGA images can be found here:
-+ *   https://developer.arm.com/products/system-design/development-boards/cortex-m-prototyping-system
-+ */
-+
-+#include "qemu/osdep.h"
-+#include "qapi/error.h"
-+#include "qemu/error-report.h"
-+#include "hw/arm/arm.h"
-+#include "hw/arm/armv7m.h"
-+#include "hw/boards.h"
-+#include "exec/address-spaces.h"
-+#include "hw/misc/unimp.h"
-+
-+typedef enum MPS2FPGAType {
-+    FPGA_AN385,
-+    FPGA_AN511,
-+} MPS2FPGAType;
-+
-+typedef struct {
-+    MachineClass parent;
-+    MPS2FPGAType fpga_type;
-+    const char *cpu_model;
-+} MPS2MachineClass;
-+
-+typedef struct {
-+    MachineState parent;
-+
-+    ARMv7MState armv7m;
-+    MemoryRegion psram;
-+    MemoryRegion ssram1;
-+    MemoryRegion ssram1_m;
-+    MemoryRegion ssram23;
-+    MemoryRegion ssram23_m;
-+    MemoryRegion blockram;
-+    MemoryRegion blockram_m1;
-+    MemoryRegion blockram_m2;
-+    MemoryRegion blockram_m3;
-+    MemoryRegion sram;
-+} MPS2MachineState;
-+
-+#define TYPE_MPS2_MACHINE "mps2"
-+#define TYPE_MPS2_AN385_MACHINE MACHINE_TYPE_NAME("mps2-an385")
-+#define TYPE_MPS2_AN511_MACHINE MACHINE_TYPE_NAME("mps2-an511")
-+
-+#define MPS2_MACHINE(obj)                                       \
-+    OBJECT_CHECK(MPS2MachineState, obj, TYPE_MPS2_MACHINE)
-+#define MPS2_MACHINE_GET_CLASS(obj) \
-+    OBJECT_GET_CLASS(MPS2MachineClass, obj, TYPE_MPS2_MACHINE)
-+#define MPS2_MACHINE_CLASS(klass) \
-+    OBJECT_CLASS_CHECK(MPS2MachineClass, klass, TYPE_MPS2_MACHINE)
-+
-+/* Main SYSCLK frequency in Hz */
-+#define SYSCLK_FRQ 25000000
-+
-+/* Initialize the auxiliary RAM region @mr and map it into
-+ * the memory map at @base.
-+ */
-+static void make_ram(MemoryRegion *mr, const char *name,
-+                     hwaddr base, hwaddr size)
-+{
-+    memory_region_init_ram(mr, NULL, name, size, &error_fatal);
-+    vmstate_register_ram_global(mr);
-+    memory_region_add_subregion(get_system_memory(), base, mr);
-+}
-+
-+/* Create an alias of an entire original MemoryRegion @orig
-+ * located at @base in the memory map.
-+ */
-+static void make_ram_alias(MemoryRegion *mr, const char *name,
-+                           MemoryRegion *orig, hwaddr base)
-+{
-+    memory_region_init_alias(mr, NULL, name, orig, 0,
-+                             memory_region_size(orig));
-+    memory_region_add_subregion(get_system_memory(), base, mr);
-+}
-+
-+static void mps2_common_init(MachineState *machine)
-+{
-+    MPS2MachineState *mms = MPS2_MACHINE(machine);
-+    MPS2MachineClass *mmc = MPS2_MACHINE_GET_CLASS(machine);
-+
-+    if (!machine->cpu_model) {
-+        machine->cpu_model = mmc->cpu_model;
-+    }
-+
-+    if (strcmp(machine->cpu_model, mmc->cpu_model) != 0) {
-+        error_report("This board can only be used with CPU %s", mmc->cpu_model);
-+        exit(1);
-+    }
-+
-+    MemoryRegion *system_memory = get_system_memory();
-+
-+    DeviceState *armv7m;
-+
-+    /* The FPGA images have an odd combination of different RAMs,
-+     * because in hardware they are different implementations and
-+     * connected to different buses, giving varying performance/size
-+     * tradeoffs. For QEMU they're all just RAM, though. We arbitrarily
-+     * call the 16MB our "system memory", as it's the largest lump.
-+     *
-+     * Common to both boards:
-+     *  0x21000000..0x21ffffff : PSRAM (16MB)
-+     * AN385 only:
-+     *  0x00000000 .. 0x003fffff : ZBT SSRAM1
-+     *  0x00400000 .. 0x007fffff : mirror of ZBT SSRAM1
-+     *  0x20000000 .. 0x203fffff : ZBT SSRAM 2&3
-+     *  0x20400000 .. 0x207fffff : mirror of ZBT SSRAM 2&3
-+     *  0x01000000 .. 0x01003fff : block RAM (16K)
-+     *  0x01004000 .. 0x01007fff : mirror of above
-+     *  0x01008000 .. 0x0100bfff : mirror of above
-+     *  0x0100c000 .. 0x0100ffff : mirror of above
-+     * AN511 only:
-+     *  0x00000000 .. 0x0003ffff : FPGA block RAM
-+     *  0x00400000 .. 0x007fffff : ZBT SSRAM1
-+     *  0x20000000 .. 0x2001ffff : SRAM
-+     *  0x20400000 .. 0x207fffff : ZBT SSRAM 2&3
-+     *
-+     * The AN385 has a feature where the lowest 16K can be mapped
-+     * either to the bottom of the ZBT SSRAM1 or to the block RAM.
-+     * This is of no use for QEMU so we don't implement it (as if
-+     * zbt_boot_ctrl is always zero).
-+     */
-+    memory_region_allocate_system_memory(&mms->psram,
-+                                         NULL, "mps.ram", 0x1000000);
-+    memory_region_add_subregion(system_memory, 0x21000000, &mms->psram);
-+
-+    switch (mmc->fpga_type) {
-+    case FPGA_AN385:
-+        make_ram(&mms->ssram1, "mps.ssram1", 0x0, 0x400000);
-+        make_ram_alias(&mms->ssram1_m, "mps.ssram1_m", &mms->ssram1, 0x400000);
-+        make_ram(&mms->ssram23, "mps.ssram23", 0x20000000, 0x400000);
-+        make_ram_alias(&mms->ssram23_m, "mps.ssram23_m",
-+                       &mms->ssram23, 0x20400000);
-+        make_ram(&mms->blockram, "mps.blockram", 0x01000000, 0x4000);
-+        make_ram_alias(&mms->blockram_m1, "mps.blockram_m1",
-+                       &mms->blockram, 0x01004000);
-+        make_ram_alias(&mms->blockram_m2, "mps.blockram_m2",
-+                       &mms->blockram, 0x01008000);
-+        make_ram_alias(&mms->blockram_m3, "mps.blockram_m3",
-+                       &mms->blockram, 0x0100c000);
-+        break;
-+    case FPGA_AN511:
-+        make_ram(&mms->blockram, "mps.blockram", 0x0, 0x40000);
-+        make_ram(&mms->ssram1, "mps.ssram1", 0x00400000, 0x00800000);
-+        make_ram(&mms->sram, "mps.sram", 0x20000000, 0x20000);
-+        make_ram(&mms->ssram23, "mps.ssram23", 0x20400000, 0x400000);
-+        break;
-+    default:
-+        g_assert_not_reached();
-+    }
-+
-+    object_initialize(&mms->armv7m, sizeof(mms->armv7m), TYPE_ARMV7M);
-+    armv7m = DEVICE(&mms->armv7m);
-+    qdev_set_parent_bus(armv7m, sysbus_get_default());
-+    switch (mmc->fpga_type) {
-+    case FPGA_AN385:
-+        qdev_prop_set_uint32(armv7m, "num-irq", 32);
-+        break;
-+    case FPGA_AN511:
-+        qdev_prop_set_uint32(armv7m, "num-irq", 64);
-+        break;
-+    default:
-+        g_assert_not_reached();
-+    }
-+    qdev_prop_set_string(armv7m, "cpu-model", machine->cpu_model);
-+    object_property_set_link(OBJECT(&mms->armv7m), OBJECT(system_memory),
-+                             "memory", &error_abort);
-+    object_property_set_bool(OBJECT(&mms->armv7m), true, "realized",
-+                             &error_fatal);
-+
-+    create_unimplemented_device("zbtsmram mirror", 0x00400000, 0x00400000);
-+    create_unimplemented_device("RESERVED 1", 0x00800000, 0x00800000);
-+    create_unimplemented_device("Block RAM", 0x01000000, 0x00010000);
-+    create_unimplemented_device("RESERVED 2", 0x01010000, 0x1EFF0000);
-+    create_unimplemented_device("RESERVED 3", 0x20800000, 0x00800000);
-+    create_unimplemented_device("PSRAM", 0x21000000, 0x01000000);
-+    /* These three ranges all cover multiple devices; we may implement
-+     * some of them below (in which case the real device takes precedence
-+     * over the unimplemented-region mapping).
-+     */
-+    create_unimplemented_device("CMSDK APB peripheral region @0x40000000",
-+                                0x40000000, 0x00010000);
-+    create_unimplemented_device("CMSDK peripheral region @0x40010000",
-+                                0x40010000, 0x00010000);
-+    create_unimplemented_device("Extra peripheral region @0x40020000",
-+                                0x40020000, 0x00010000);
-+    create_unimplemented_device("RESERVED 4", 0x40030000, 0x001D0000);
-+    create_unimplemented_device("Ethernet", 0x40200000, 0x00100000);
-+    create_unimplemented_device("VGA", 0x41000000, 0x0200000);
-+
-+    system_clock_scale = NANOSECONDS_PER_SECOND / SYSCLK_FRQ;
-+
-+    armv7m_load_kernel(ARM_CPU(first_cpu), machine->kernel_filename,
-+                       0x400000);
-+}
-+
-+static void mps2_class_init(ObjectClass *oc, void *data)
-+{
-+    MachineClass *mc = MACHINE_CLASS(oc);
-+
-+    mc->init = mps2_common_init;
-+    mc->max_cpus = 1;
-+}
-+
-+static void mps2_an385_class_init(ObjectClass *oc, void *data)
-+{
-+    MachineClass *mc = MACHINE_CLASS(oc);
-+    MPS2MachineClass *mmc = MPS2_MACHINE_CLASS(oc);
-+
-+    mc->desc = "ARM MPS2 with AN385 FPGA image for Cortex-M3";
-+    mmc->fpga_type = FPGA_AN385;
-+    mmc->cpu_model = "cortex-m3";
-+}
-+
-+static void mps2_an511_class_init(ObjectClass *oc, void *data)
-+{
-+    MachineClass *mc = MACHINE_CLASS(oc);
-+    MPS2MachineClass *mmc = MPS2_MACHINE_CLASS(oc);
-+
-+    mc->desc = "ARM MPS2 with AN511 DesignStart FPGA image for Cortex-M3";
-+    mmc->fpga_type = FPGA_AN511;
-+    mmc->cpu_model = "cortex-m3";
-+}
-+
-+static const TypeInfo mps2_info = {
-+    .name = TYPE_MPS2_MACHINE,
-+    .parent = TYPE_MACHINE,
-+    .abstract = true,
-+    .instance_size = sizeof(MPS2MachineState),
-+    .class_size = sizeof(MPS2MachineClass),
-+    .class_init = mps2_class_init,
-+};
-+
-+static const TypeInfo mps2_an385_info = {
-+    .name = TYPE_MPS2_AN385_MACHINE,
-+    .parent = TYPE_MPS2_MACHINE,
-+    .class_init = mps2_an385_class_init,
-+};
-+
-+static const TypeInfo mps2_an511_info = {
-+    .name = TYPE_MPS2_AN511_MACHINE,
-+    .parent = TYPE_MPS2_MACHINE,
-+    .class_init = mps2_an511_class_init,
-+};
-+
-+static void mps2_machine_init(void)
-+{
-+    type_register_static(&mps2_info);
-+    type_register_static(&mps2_an385_info);
-+    type_register_static(&mps2_an511_info);
-+}
-+
-+type_init(mps2_machine_init);
-diff --git a/default-configs/arm-softmmu.mak b/default-configs/arm-softmmu.mak
-index 93e995d..bfd2a88 100644
---- a/default-configs/arm-softmmu.mak
-+++ b/default-configs/arm-softmmu.mak
-@@ -83,6 +83,7 @@ CONFIG_ONENAND=y
- CONFIG_TUSB6010=y
- CONFIG_IMX=y
- CONFIG_MAINSTONE=y
-+CONFIG_MPS2=y
- CONFIG_NSERIES=y
- CONFIG_RASPI=y
- CONFIG_REALVIEW=y
--- 
-2.7.4
+> Thanks,
+> Ashish
+> 
+> -----Original Message-----
+> From: Jean-Philippe Brucker [mailto:jean-philippe.brucker@arm.com] 
+> Sent: Friday, July 07, 2017 8:45 PM
+> To: Tian, Kevin; Kalra, Ashish; Auger Eric; Bharat Bhushan; eric.auger.pro@gmail.com; peter.maydell@linaro.org; alex.williamson@redhat.com; mst@redhat.com; qemu-arm@nongnu.org; qemu-devel@nongnu.org
+> Cc: marc.zyngier@arm.com; tn@semihalf.com; will.deacon@arm.com; drjones@redhat.com; robin.murphy@arm.com; christoffer.dall@linaro.org
+> Subject: Re: [Qemu-arm] [Qemu-devel] [RFC v2 0/8] VIRTIO-IOMMU device
+> 
+> Hi Ashish,
+> 
+> On 07/07/17 00:33, Tian, Kevin wrote:
+>>> From: Kalra, Ashish [mailto:Ashish.Kalra@cavium.com]
+>>> Sent: Friday, July 7, 2017 7:24 AM
+>>>
+>>> I have a generic question on vIOMMU support, is there any 
+>>> proposal/plan to add ATS/PRI extension support to vIOMMUs and allow 
+>>> handling for end to end (v)IOMMU Page faults (w/t the device side 
+>>> implementation on Vhost) ?
+>>>
+>>> Again, the motivation will be to do DMA on paged guest memory and 
+>>> potentially avoiding the requirement of pinned/locked guest physical 
+>>> memory for DMA.
+>>
+>> yes, that's a necessary part to support SVM in both virtio-iommu 
+>> approach and fully emulated approach (e.g. for Intel VTd). There are 
+>> already patches and discussions in other thread about how to propagate 
+>> IOMMU page fault to vIOMMU. Then after it is done vIOMMU page fault 
+>> emulation will be further added.
+>>
+>> https://lkml.org/lkml/2017/6/27/964
+> 
+> For virtio-iommu, I'd like to add an event virtqueue for the device to send page faults to the driver, in a format similar to a PRI Page Request.
+> The driver would then send a reply via the request virtqueue in a format similar to a PRG Response.
+> 
+> In Qemu the device implementation would hopefully be based on the same mechanism as VTd. The vhost implementation would receive IO Page Faults from VFIO and forward them on the event virtqueue similarly to the userspace implementation.
+> 
+> Thanks,
+> Jean
+> 
 

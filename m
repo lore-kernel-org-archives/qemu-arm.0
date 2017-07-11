@@ -1,100 +1,94 @@
-Received: by 10.25.44.15 with SMTP id s15csp4815523lfs;
-        Tue, 11 Jul 2017 06:10:43 -0700 (PDT)
-X-Received: by 10.200.51.172 with SMTP id c41mr11497101qtb.71.1499778643131;
-        Tue, 11 Jul 2017 06:10:43 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1499778643; cv=none;
+Received: by 10.25.44.15 with SMTP id s15csp4855788lfs;
+        Tue, 11 Jul 2017 06:44:15 -0700 (PDT)
+X-Received: by 10.80.218.135 with SMTP id q7mr2609376edj.85.1499780654672;
+        Tue, 11 Jul 2017 06:44:14 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1499780654; cv=none;
         d=google.com; s=arc-20160816;
-        b=cXIkrEi1YnZi5futPgVV9en5nQdzk6egs5QgWdX74UYMkAhHuqa8ieHYwLDY45YgSG
-         Ej29tu4hYMnmcXgzgjsyyy/k+2kYQcdhBksGn3T07YM+XGLTSXgz9gQXOOWgF0Yz6FQe
-         t9UmAOtNYzeab92u+xfsncMhP6ubVsbqMUzv5LPZghN88s8UvcAH3PfnTvnuz2QQ5TRu
-         vGbuuxhLrDh/C+OoZFqf/FVJIUWZwIipj+GN/jT7EZXWWS8en459IAAXr5FsG3FIFJBs
-         qCrsvGrArNIJWTj3vf46DDU68FCxllr/vUU8JkcB+IBhLuOHOnxhWhdjqW2t9ujqq1cl
-         XPxg==
+        b=zSoDcV4oFLnen7V1nR+NwF8QU2+bCIokr2E4Vss663mJnPRFXuqiN6wvZMw2t4CZgO
+         bnP4j5E57MA1jh7WgRyXelmDzbJPSDOKg/SGHLW7j0MG6XDg12BGZwgVwCtJcWfimOpv
+         LgSGTv1y+dskPQ7d1WcT8tlLnh/F4LHmOWgFg7Mf8nFDztZoYERZPa57+QzqLRtDePSo
+         6iDQP8AsCgk4Ws7UOEjRa6AMarbqspFz8m4nHcW7+7TBb14DIUhCgi7b4fBsGh4JJ9Ki
+         Hehdsr9SH69hx6dZOu8xOZNfzo9ZQ6ceSNrQ3z+EqZ51Psqrm6mD+JcM1iaUTOJhUjP3
+         sG6A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:to:message-id:date:from:references
-         :in-reply-to:mime-version:dkim-signature:arc-authentication-results;
-        bh=YSNex5T6OdXqL7lFT/5KfvQ5r9DDjdRUDPLus5viEFc=;
-        b=PVy4MZSVsjUW7aNxCY7NoGs0FQ8BvJ2RhztztWARRM9DTs27f/m2G1EKQkznDIU7V1
-         ZgsAaBMEU/fq0lP7rZKOUcMySh6/+wL1/OcBuyMOgPYMEfKw0wxgOzwcrv7JwRURP+Zn
-         vAqJE9HY+fagSrxU1NAbUv7rl/mvNisn+S5B104rNn4A0twR8qRs/Q9vCjDx15RW3G+s
-         kYANvjP3h5RVY1m+EKuDY48fqUgqMdwst5B7cMLcLq28NKD9SC9dlYBv5Vqbs0Qm4oEx
-         7WU2Wz2deg3+Dx5BxLdvLTjOxgAp5LuroZ2PbF9rH7+wwIAnKZOUu5Ydl9LV1hJ6U8Sv
-         SDjQ==
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:to:dkim-filter
+         :dmarc-filter:arc-authentication-results;
+        bh=O3oxw9MhjxD8t3zKZWMmWGs1pm/Mh5A1YxEzZmRewXg=;
+        b=MiAe3K0s3WOPgh1BHXP3sEkkR4bwc8FNfVmWAgc2KE3zQjqzKfsrH7WzNF2d+tdp28
+         7/pGxtv8vb0oq1Dm7xdc2sDvGBH0voPnKF7b5fJcjVZHB6SaMI997jK0Hw69vzDac2Lh
+         kbyU4B/2pvHyZY+jZOTrK9kZSCS8rkojLSkwDumDToLhjsSpyVB9Z+DHmnZtUd6UT6LD
+         N9jsp5C0NzDeJyBFpDQNiTPBxBIUyJE7lFMZUj8hQtjc7ADnQzjw+ycomuPpd598QaxW
+         GbmkXwM12pC6iyXrOTDXV8nJMt9Np8zbiYHNTR8RfZDkTA/CTRzuIdGyJHaXIN+r8ewC
+         cOqQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.b=a5Lb7VQN;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [208.118.235.17])
-        by mx.google.com with ESMTPS id h16si9358074qke.283.2017.07.11.06.10.42
+        by mx.google.com with ESMTPS id o26si1595711edf.391.2017.07.11.06.44.14
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 11 Jul 2017 06:10:43 -0700 (PDT)
+        Tue, 11 Jul 2017 06:44:14 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) client-ip=208.118.235.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.b=a5Lb7VQN;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:46321 helo=lists.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:46450 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1dUuw4-00070r-Ay
-	for alex.bennee@linaro.org; Tue, 11 Jul 2017 09:10:40 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:42509)
+	id 1dUvSX-0007fh-LG
+	for alex.bennee@linaro.org; Tue, 11 Jul 2017 09:44:13 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:51191)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1dUuw0-00070j-5r
-	for qemu-arm@nongnu.org; Tue, 11 Jul 2017 09:10:37 -0400
+	(envelope-from <lersek@redhat.com>) id 1dUvSR-0007cY-4M
+	for qemu-arm@nongnu.org; Tue, 11 Jul 2017 09:44:08 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1dUuvv-00010q-O3
-	for qemu-arm@nongnu.org; Tue, 11 Jul 2017 09:10:36 -0400
-Received: from mail-wr0-f180.google.com ([209.85.128.180]:36424)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1dUuvv-00010M-G7
-	for qemu-arm@nongnu.org; Tue, 11 Jul 2017 09:10:31 -0400
-Received: by mail-wr0-f180.google.com with SMTP id c11so182972877wrc.3
-	for <qemu-arm@nongnu.org>; Tue, 11 Jul 2017 06:10:31 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc:content-transfer-encoding;
-	bh=YSNex5T6OdXqL7lFT/5KfvQ5r9DDjdRUDPLus5viEFc=;
-	b=a5Lb7VQNinY/3KhyZIHAJmCIan6YXOAbumKVc1hHrisIdHzFmiaSwW7Pqlblt2g/b2
-	yp8vRDI5r/Yf9EOQ9rhl4vMubgQtSfYjxC4U/DNv/cuCdTbRFc2ddKQwKkWOJKQwgr27
-	Rhqzss+DcRYtj1n0bx+m55tq4lsmhuUWojZlM=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc:content-transfer-encoding;
-	bh=YSNex5T6OdXqL7lFT/5KfvQ5r9DDjdRUDPLus5viEFc=;
-	b=phMegNpTMKCRSzjq8wa9FNoD8Qh/py3Dxmwd5uB1NlhSG5sG0hT8vsbXGpDQT9j++p
-	bltJMbx/hcpPI2SLuKCLByxcsun6XPrnvSy6E5Ib842XEQt5VSSvWXzxMPz74fWpnSFY
-	5uZuPoy23u99W1mezdrqBUNK3nHow8AyxUSXNQdtvLLAU/VKtbVj6SKUzLSIg13HJNNf
-	DRLxCfWQ7zgPFwPnghXnc6BD8E+M4FmjNTf8vTc2gga7+9OjiLGqdfm91XvUoLXgA8zT
-	qg4EzIAzl4dprjWfeUOIc4RkWIjiXTOV/bQRyz9RrsOscfgvzn+nfSwkvo2aPbMMplF0
-	d8zw==
-X-Gm-Message-State: AIVw110tfEtqdga+CsWf1ZCvfxZhB72fnAQ+hfyucwdejwLUA28iYlxp
-	6Gk1yQax9RmUXvCwXq+Jh9KGbB2yjSyqs4Y=
-X-Received: by 10.28.129.203 with SMTP id c194mr6199736wmd.120.1499778570442; 
-	Tue, 11 Jul 2017 06:09:30 -0700 (PDT)
+	(envelope-from <lersek@redhat.com>) id 1dUvSN-0006WM-Tq
+	for qemu-arm@nongnu.org; Tue, 11 Jul 2017 09:44:07 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:59448)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <lersek@redhat.com>)
+	id 1dUvSN-0006Vv-NE; Tue, 11 Jul 2017 09:44:03 -0400
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
+	[10.5.11.15])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 46D3A158AA9;
+	Tue, 11 Jul 2017 13:44:02 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 46D3A158AA9
+Authentication-Results: ext-mx09.extmail.prod.ext.phx2.redhat.com;
+	dmarc=none (p=none dis=none) header.from=redhat.com
+Authentication-Results: ext-mx09.extmail.prod.ext.phx2.redhat.com;
+	spf=pass smtp.mailfrom=lersek@redhat.com
+DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com 46D3A158AA9
+Received: from lacos-laptop-7.usersys.redhat.com (ovpn-116-201.phx2.redhat.com
+	[10.3.116.201])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id D63F85D6A6;
+	Tue, 11 Jul 2017 13:43:52 +0000 (UTC)
+To: Dongjiu Geng <gengdongjiu@huawei.com>
+References: <1499755579-31262-1-git-send-email-gengdongjiu@huawei.com>
+From: Laszlo Ersek <lersek@redhat.com>
+Message-ID: <366f019e-50e8-03f4-9b8f-946ef318ca79@redhat.com>
+Date: Tue, 11 Jul 2017 15:43:51 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.2.1
 MIME-Version: 1.0
-Received: by 10.223.134.2 with HTTP; Tue, 11 Jul 2017 06:09:09 -0700 (PDT)
-In-Reply-To: <b3cd94f2-8a32-9b09-54b1-0cfa6eff0c36@amsat.org>
-References: <1499771839-32518-1-git-send-email-peter.maydell@linaro.org>
-	<1499771839-32518-7-git-send-email-peter.maydell@linaro.org>
-	<b3cd94f2-8a32-9b09-54b1-0cfa6eff0c36@amsat.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 11 Jul 2017 14:09:09 +0100
-Message-ID: <CAFEAcA8cxuj04T5qDE7xPjTEXOcGZdhnZvaGOdmb08KjyjsE3w@mail.gmail.com>
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+In-Reply-To: <1499755579-31262-1-git-send-email-gengdongjiu@huawei.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.38]);
+	Tue, 11 Jul 2017 13:44:02 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 209.85.128.180
-Subject: Re: [Qemu-arm] [PATCH 6/7] hw/misc/mps2_scc: Implement MPS2 Serial
- Communication Controller
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-arm] [PATCH resend v4 0/3] Generate APEI GHES table and
+ dynamically record CPER
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -106,103 +100,65 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
-	"patches@linaro.org" <patches@linaro.org>
+Cc: peter.maydell@linaro.org, wuquanming@huawei.com, famz@redhat.com,
+	mst@redhat.com, Eric Blake <eblake@redhat.com>,
+	qemu-devel@nongnu.org, zhihui.gao@huawei.com,
+	qemu-arm@nongnu.org, huangshaoyu@huawei.com,
+	zhaoshenglong@huawei.com, imammedo@redhat.com, zhengqiang10@huawei.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: hGsmk3g4E43o
+X-TUID: 5IpUIPVp4hZp
 
-On 11 July 2017 at 13:53, Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> wro=
-te:
-> I Peter,
+Hi Dongjiu,
+
+On 07/11/17 08:46, Dongjiu Geng wrote:
+> [...]
+
+So my followup is off-topic, but I'd like to point out that the patch /
+email threading in this series is still incorrect.
+
+These are the "sent" timestamps on the messages:
+
+Date: Tue, 11 Jul 2017 14:46:19 +0800
+Date: Tue, 11 Jul 2017 14:46:31 +0800 (+12 seconds)
+Date: Tue, 11 Jul 2017 14:46:41 +0800 (+10 seconds)
+Date: Tue, 11 Jul 2017 14:47:00 +0800 (+19 seconds)
+
+This tells me that you are mailing out the patches one by one. That's
+not how most people post their patches.
+
+(Side remark: while git-send-email can still get the threading right
+with individual posting, for that you would have to provide the first
+email's Message-Id individually to all the subsequent commands, and the
+emails show that this didn't happen.)
+
+Instead, you should invoke git-send-email with all the messages *at
+once*. Then git-send-email can set up the threading automatically. From
+git-send-email(1):
+
+> GIT-SEND-EMAIL(1)            Git Manual            GIT-SEND-EMAIL(1)
 >
-> On 07/11/2017 08:17 AM, Peter Maydell wrote:
->>
->> Implement a model of the Serial Communication Controller (SCC) found
->> in MPS2 FPGA images.
->>
->> The primary purpose of this device is to communicate with the
->> Motherboard Configuration Controller (MCC) which is located on
->> the MPS board itself, outside the FPGA image. This is used
->> for programming the MPS clock generators. The SCC also has
->> some basic ID registers and an output for the board LEDs.
->>
->> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
->> ---
->>   hw/misc/Makefile.objs           |   1 +
->>   include/hw/misc/mps2-scc.h      |  43 ++++++
->>   hw/misc/mps2-scc.c              | 310
->> ++++++++++++++++++++++++++++++++++++++++
+> NAME
+>        git-send-email - Send a collection of patches as emails
 >
+> SYNOPSIS
+>        git send-email [options] <file|directory|rev-list options>...
+>        git send-email --dump-aliases
 >
-> Hmm I understand hw/ssi is for Synchronous Serial Interface, this interfa=
-ce
-> doesn't belong there?
+> DESCRIPTION
+>        Takes the patches given on the command line and emails them
+>        out. Patches can be specified as files, directories (which
+>        will send all files in the directory), or directly as a
+>        revision list. In the last case, any format accepted by git-
+>        format-patch(1) can be passed to git send-email.
 
-No, it's not an SSI bus -- that's a standardized clocked
-point-to-point serial interface. This is just a fairly
-ad-hoc communication channel.
+So send the patches with
 
->> +++ b/include/hw/misc/mps2-scc.h
->> @@ -0,0 +1,43 @@
->> +/*
->> + * ARM CMSDK APB timer emulation
->
->
-> ARM MPS2 SCC emulation
+  git send-email *.patch
 
-Oops; fixed.
+or put all the patches into a temporary directory, and run
 
->> +static uint64_t mps2_scc_read(void *opaque, hwaddr offset, unsigned siz=
-e)
->> +{
->> +    MPS2SCC *s =3D MPS2_SCC(opaque);
->> +    uint64_t r;
->> +
->> +    switch (offset) {
->> +    case A_CFG0:
->> +        r =3D s->cfg0;
->> +        break;
->> +    case A_CFG1:
->> +        r =3D s->cfg1;
->> +        break;
->> +    case A_CFG3:
->> +        /* These are user-settable DIP switches on the board. We don't
->> +         * model that, so just return zeroes.
->> +         */
->
->
-> Shouldn't be hard to have a property (thinking about having multiple boar=
-ds
-> and using those switches to have some board unique ID, not switches one
-> might toggle at runtime).
+  git send-email patch-dir/
 
-No, on the board these are wired up to user-toggled switches.
-Board ID information is in the ID/AID/CFG4 registers, which we have
-properties for.
-
-
->> +    case A_CFG1:
->> +        /* CFG1 bits [7:0] control the board LEDs. We don't currently
->> have
->> +         * a mechanism for displaying this graphically, so use a trace
->> event.
->> +         */
->
->
-> Well MIPS Jazz uses hw/display/jazz_led.c which is kinda nice :)
->
-> Now than there is interest in simulating IoT boards and so, we might thin=
-k
-> about a generic LED display.
-
-Yeah, if we do this at all we should have generic support (and
-ideally you might want to see both the LED output and the
-LCD screen output at the same time). This tracepoint is a
-low-effort placeholder because I don't want to get into trying
-to define and implement a generic LED-and-switches kind of UI.
-
-> Reviewed-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
-
-thanks
--- PMM
+Thanks,
+Laszlo

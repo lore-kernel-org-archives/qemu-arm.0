@@ -1,164 +1,173 @@
-Received: by 10.25.44.15 with SMTP id s15csp4855788lfs;
-        Tue, 11 Jul 2017 06:44:15 -0700 (PDT)
-X-Received: by 10.80.218.135 with SMTP id q7mr2609376edj.85.1499780654672;
-        Tue, 11 Jul 2017 06:44:14 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1499780654; cv=none;
+Received: by 10.25.44.15 with SMTP id s15csp4873632lfs;
+        Tue, 11 Jul 2017 07:00:40 -0700 (PDT)
+X-Received: by 10.223.136.216 with SMTP id g24mr7207wrg.199.1499781640637;
+        Tue, 11 Jul 2017 07:00:40 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1499781640; cv=none;
         d=google.com; s=arc-20160816;
-        b=zSoDcV4oFLnen7V1nR+NwF8QU2+bCIokr2E4Vss663mJnPRFXuqiN6wvZMw2t4CZgO
-         bnP4j5E57MA1jh7WgRyXelmDzbJPSDOKg/SGHLW7j0MG6XDg12BGZwgVwCtJcWfimOpv
-         LgSGTv1y+dskPQ7d1WcT8tlLnh/F4LHmOWgFg7Mf8nFDztZoYERZPa57+QzqLRtDePSo
-         6iDQP8AsCgk4Ws7UOEjRa6AMarbqspFz8m4nHcW7+7TBb14DIUhCgi7b4fBsGh4JJ9Ki
-         Hehdsr9SH69hx6dZOu8xOZNfzo9ZQ6ceSNrQ3z+EqZ51Psqrm6mD+JcM1iaUTOJhUjP3
-         sG6A==
+        b=FL4ZoORBqJc9XvWuCOMQGT853reKM2HjO7840i9H1O9+q9g9w/y0GAkw9y+eOwQILz
+         orVpczy9EZEQNJ2MFvdfttBAWlDNJH44lTZ3UjOeAIObKzJfshC9/3rEL82LHalHCaZR
+         eAbBIkt6WBZm0C4pAL9ammT5ObVEZsJkh4yTMotvH+WfC1rP1AoXVFsUOGb2Jpg5xsvg
+         MFXTQATe43Gn/2neYHpu7PZJCcPPzKIuN0ep3oBJCproHVJhIzelqK3oJCdVoBKPJzpl
+         buyVN0/lblzDTsx6O/Jn7TsnHv6OMNSbQV/YghZDbp53TWSU1rhQwMlmTHpZpuhAVfph
+         S8Ww==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:to:dkim-filter
-         :dmarc-filter:arc-authentication-results;
-        bh=O3oxw9MhjxD8t3zKZWMmWGs1pm/Mh5A1YxEzZmRewXg=;
-        b=MiAe3K0s3WOPgh1BHXP3sEkkR4bwc8FNfVmWAgc2KE3zQjqzKfsrH7WzNF2d+tdp28
-         7/pGxtv8vb0oq1Dm7xdc2sDvGBH0voPnKF7b5fJcjVZHB6SaMI997jK0Hw69vzDac2Lh
-         kbyU4B/2pvHyZY+jZOTrK9kZSCS8rkojLSkwDumDToLhjsSpyVB9Z+DHmnZtUd6UT6LD
-         N9jsp5C0NzDeJyBFpDQNiTPBxBIUyJE7lFMZUj8hQtjc7ADnQzjw+ycomuPpd598QaxW
-         GbmkXwM12pC6iyXrOTDXV8nJMt9Np8zbiYHNTR8RfZDkTA/CTRzuIdGyJHaXIN+r8ewC
-         cOqQ==
+         :list-unsubscribe:list-id:precedence:subject:in-reply-to
+         :mime-version:user-agent:date:message-id:organization:openpgp:from
+         :references:to:dkim-filter:dmarc-filter:arc-authentication-results;
+        bh=kmuXy+IE4R1EDSSyJ4HDKaDIPkBeRYkec1rD8Pjd+is=;
+        b=k2GceiQxVtU2TqGxkRB3CyymjnjyG88oOCUObWcANSEEmDHqbdxeQk2UAmhHdrjmw2
+         T/asvsE0+KDHtSG8Jk13Ra1YpHZvYP+Vz6Ih4y7v4rKUHMglgsaVpQrsaS8K2Wv0ArAY
+         3uOtCpcsoplyrguuI4c3uzO+sTTcpD99S6GuJtoZw5dHv3W0Sw88AOW1rPVS2SwvKtrt
+         W6kbs4bvxaVA9HBbJrUSUptZH2uSCX64jOw5h5Qr/6qUpiWNP32KoJ5wBRWIRuRsNeQQ
+         T4HxeyKDKB60ija3RwcWaif8XnKLFUPUZnF4kVtP3DLCCyHbMohWFfbCKakb399BPhFs
+         Ju/w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [208.118.235.17])
-        by mx.google.com with ESMTPS id o26si1595711edf.391.2017.07.11.06.44.14
+        by mx.google.com with ESMTPS id 191si9426035wmw.153.2017.07.11.07.00.40
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 11 Jul 2017 06:44:14 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) client-ip=208.118.235.17;
+        Tue, 11 Jul 2017 07:00:40 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) client-ip=208.118.235.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:46450 helo=lists.gnu.org)
+Received: from localhost ([::1]:46507 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1dUvSX-0007fh-LG
-	for alex.bennee@linaro.org; Tue, 11 Jul 2017 09:44:13 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:51191)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1dUviR-0007tu-JG
+	for alex.bennee@linaro.org; Tue, 11 Jul 2017 10:00:39 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:55100)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <lersek@redhat.com>) id 1dUvSR-0007cY-4M
-	for qemu-arm@nongnu.org; Tue, 11 Jul 2017 09:44:08 -0400
+	(envelope-from <eblake@redhat.com>) id 1dUvgb-0006Zx-5r
+	for qemu-devel@nongnu.org; Tue, 11 Jul 2017 09:58:46 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <lersek@redhat.com>) id 1dUvSN-0006WM-Tq
-	for qemu-arm@nongnu.org; Tue, 11 Jul 2017 09:44:07 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:59448)
+	(envelope-from <eblake@redhat.com>) id 1dUvga-00059w-6c
+	for qemu-devel@nongnu.org; Tue, 11 Jul 2017 09:58:45 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:43758)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <lersek@redhat.com>)
-	id 1dUvSN-0006Vv-NE; Tue, 11 Jul 2017 09:44:03 -0400
+	(Exim 4.71) (envelope-from <eblake@redhat.com>)
+	id 1dUvgW-00056h-0B; Tue, 11 Jul 2017 09:58:40 -0400
 Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
 	[10.5.11.15])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 46D3A158AA9;
-	Tue, 11 Jul 2017 13:44:02 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 46D3A158AA9
+	by mx1.redhat.com (Postfix) with ESMTPS id 20C2A4E4CA;
+	Tue, 11 Jul 2017 13:58:38 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 20C2A4E4CA
 Authentication-Results: ext-mx09.extmail.prod.ext.phx2.redhat.com;
 	dmarc=none (p=none dis=none) header.from=redhat.com
 Authentication-Results: ext-mx09.extmail.prod.ext.phx2.redhat.com;
-	spf=pass smtp.mailfrom=lersek@redhat.com
-DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com 46D3A158AA9
-Received: from lacos-laptop-7.usersys.redhat.com (ovpn-116-201.phx2.redhat.com
-	[10.3.116.201])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id D63F85D6A6;
-	Tue, 11 Jul 2017 13:43:52 +0000 (UTC)
-To: Dongjiu Geng <gengdongjiu@huawei.com>
+	spf=pass smtp.mailfrom=eblake@redhat.com
+DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com 20C2A4E4CA
+Received: from [10.10.121.60] (ovpn-121-60.rdu2.redhat.com [10.10.121.60])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id CA4EE5D6A6;
+	Tue, 11 Jul 2017 13:58:29 +0000 (UTC)
+To: Laszlo Ersek <lersek@redhat.com>, Dongjiu Geng <gengdongjiu@huawei.com>
 References: <1499755579-31262-1-git-send-email-gengdongjiu@huawei.com>
-From: Laszlo Ersek <lersek@redhat.com>
-Message-ID: <366f019e-50e8-03f4-9b8f-946ef318ca79@redhat.com>
-Date: Tue, 11 Jul 2017 15:43:51 +0200
+	<366f019e-50e8-03f4-9b8f-946ef318ca79@redhat.com>
+From: Eric Blake <eblake@redhat.com>
+Openpgp: url=http://people.redhat.com/eblake/eblake.gpg
+Organization: Red Hat, Inc.
+Message-ID: <d18b0a8d-5c34-ae4a-a60c-c451c8df9872@redhat.com>
+Date: Tue, 11 Jul 2017 08:58:28 -0500
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
 	Thunderbird/52.2.1
 MIME-Version: 1.0
-In-Reply-To: <1499755579-31262-1-git-send-email-gengdongjiu@huawei.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
+In-Reply-To: <366f019e-50e8-03f4-9b8f-946ef318ca79@redhat.com>
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature";
+	boundary="X7RUiSILkwpBBk3FE2Bnfwt9vaKtIpo77"
 X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
 	(mx1.redhat.com [10.5.110.38]);
-	Tue, 11 Jul 2017 13:44:02 +0000 (UTC)
+	Tue, 11 Jul 2017 13:58:38 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [PATCH resend v4 0/3] Generate APEI GHES table and
+X-Content-Filtered-By: Mailman/MimeDel 2.1.21
+Subject: Re: [Qemu-devel] [PATCH resend v4 0/3] Generate APEI GHES table and
  dynamically record CPER
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: peter.maydell@linaro.org, wuquanming@huawei.com, famz@redhat.com,
-	mst@redhat.com, Eric Blake <eblake@redhat.com>,
-	qemu-devel@nongnu.org, zhihui.gao@huawei.com,
+	mst@redhat.com, qemu-devel@nongnu.org, zhihui.gao@huawei.com,
 	qemu-arm@nongnu.org, huangshaoyu@huawei.com,
 	zhaoshenglong@huawei.com, imammedo@redhat.com, zhengqiang10@huawei.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 5IpUIPVp4hZp
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 7d7UStHMBtUY
 
-Hi Dongjiu,
+This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
+--X7RUiSILkwpBBk3FE2Bnfwt9vaKtIpo77
+From: Eric Blake <eblake@redhat.com>
+To: Laszlo Ersek <lersek@redhat.com>, Dongjiu Geng <gengdongjiu@huawei.com>
+Cc: mst@redhat.com, imammedo@redhat.com, famz@redhat.com,
+ qemu-devel@nongnu.org, zhaoshenglong@huawei.com, peter.maydell@linaro.org,
+ qemu-arm@nongnu.org, zhengqiang10@huawei.com, huangshaoyu@huawei.com,
+ wuquanming@huawei.com, zhihui.gao@huawei.com
+Message-ID: <d18b0a8d-5c34-ae4a-a60c-c451c8df9872@redhat.com>
+Subject: Re: [PATCH resend v4 0/3] Generate APEI GHES table and dynamically
+ record CPER
+References: <1499755579-31262-1-git-send-email-gengdongjiu@huawei.com>
+ <366f019e-50e8-03f4-9b8f-946ef318ca79@redhat.com>
+In-Reply-To: <366f019e-50e8-03f4-9b8f-946ef318ca79@redhat.com>
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
 
-On 07/11/17 08:46, Dongjiu Geng wrote:
-> [...]
+On 07/11/2017 08:43 AM, Laszlo Ersek wrote:
+> So send the patches with
+>=20
+>   git send-email *.patch
+>=20
+> or put all the patches into a temporary directory, and run
+>=20
+>   git send-email patch-dir/
 
-So my followup is off-topic, but I'd like to point out that the patch /
-email threading in this series is still incorrect.
+Or you can even skip patch files, and directly send things with one lass
+chance in your editor:
 
-These are the "sent" timestamps on the messages:
+git send-email -v5 -3 --annotate --cover-letter
 
-Date: Tue, 11 Jul 2017 14:46:19 +0800
-Date: Tue, 11 Jul 2017 14:46:31 +0800 (+12 seconds)
-Date: Tue, 11 Jul 2017 14:46:41 +0800 (+10 seconds)
-Date: Tue, 11 Jul 2017 14:47:00 +0800 (+19 seconds)
+[send the top three commits in my current git branch as a version 5
+patch series, where I get to write the cover letter and tweak any of the
+patches in my preferred $EDITOR before sending anything]
 
-This tells me that you are mailing out the patches one by one. That's
-not how most people post their patches.
+--=20
+Eric Blake, Principal Software Engineer
+Red Hat, Inc.           +1-919-301-3266
+Virtualization:  qemu.org | libvirt.org
 
-(Side remark: while git-send-email can still get the threading right
-with individual posting, for that you would have to provide the first
-email's Message-Id individually to all the subsequent commands, and the
-emails show that this didn't happen.)
 
-Instead, you should invoke git-send-email with all the messages *at
-once*. Then git-send-email can set up the threading automatically. From
-git-send-email(1):
+--X7RUiSILkwpBBk3FE2Bnfwt9vaKtIpo77
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: OpenPGP digital signature
+Content-Disposition: attachment; filename="signature.asc"
 
-> GIT-SEND-EMAIL(1)            Git Manual            GIT-SEND-EMAIL(1)
->
-> NAME
->        git-send-email - Send a collection of patches as emails
->
-> SYNOPSIS
->        git send-email [options] <file|directory|rev-list options>...
->        git send-email --dump-aliases
->
-> DESCRIPTION
->        Takes the patches given on the command line and emails them
->        out. Patches can be specified as files, directories (which
->        will send all files in the directory), or directly as a
->        revision list. In the last case, any format accepted by git-
->        format-patch(1) can be passed to git send-email.
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v2
+Comment: Public key at http://people.redhat.com/eblake/eblake.gpg
+Comment: Using GnuPG with Thunderbird - http://www.enigmail.net/
 
-So send the patches with
+iQEcBAEBCAAGBQJZZNmEAAoJEKeha0olJ0NqhF0H/31M+z6ICVFuXEDGNaZJAYAS
+ToSGNkYIhgDTQA5QKrg3/Efm2rYR2CN8vxWDR/ax4MdF2CRUnPXCxSvTb/cSfBhe
+vC7PXDoMdaJ5uzYccQkGoNG7g97v/kUNF2cvnxeA5U6jv3FyxPUJrupJvCuUAGI7
+c1IkKQ68/5bxXM+FSHtk6A3aX0ddcEj6sUUbeiU7N3Qq9I2tWBQEMitVXbw3/LTs
+UYyoH8guyhFJlh1ZsqvrSMPDmcEn+L7y+OuVLzzET/ZZtSNWSA/4EtwHJ5gw5edc
+KlAcuaK/68i9MhlH2haBZ6UO36oegDVCAykKTX0aN5vCJVkeELUxIDLGIE7DR/E=
+=hLRO
+-----END PGP SIGNATURE-----
 
-  git send-email *.patch
-
-or put all the patches into a temporary directory, and run
-
-  git send-email patch-dir/
-
-Thanks,
-Laszlo
+--X7RUiSILkwpBBk3FE2Bnfwt9vaKtIpo77--

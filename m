@@ -1,96 +1,73 @@
-Received: by 10.25.44.15 with SMTP id s15csp4873632lfs;
-        Tue, 11 Jul 2017 07:00:40 -0700 (PDT)
-X-Received: by 10.223.136.216 with SMTP id g24mr7207wrg.199.1499781640637;
-        Tue, 11 Jul 2017 07:00:40 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1499781640; cv=none;
+Received: by 10.25.44.15 with SMTP id s15csp4885200lfs;
+        Tue, 11 Jul 2017 07:08:49 -0700 (PDT)
+X-Received: by 10.176.86.86 with SMTP id z22mr89293uaa.6.1499782129342;
+        Tue, 11 Jul 2017 07:08:49 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1499782129; cv=none;
         d=google.com; s=arc-20160816;
-        b=FL4ZoORBqJc9XvWuCOMQGT853reKM2HjO7840i9H1O9+q9g9w/y0GAkw9y+eOwQILz
-         orVpczy9EZEQNJ2MFvdfttBAWlDNJH44lTZ3UjOeAIObKzJfshC9/3rEL82LHalHCaZR
-         eAbBIkt6WBZm0C4pAL9ammT5ObVEZsJkh4yTMotvH+WfC1rP1AoXVFsUOGb2Jpg5xsvg
-         MFXTQATe43Gn/2neYHpu7PZJCcPPzKIuN0ep3oBJCproHVJhIzelqK3oJCdVoBKPJzpl
-         buyVN0/lblzDTsx6O/Jn7TsnHv6OMNSbQV/YghZDbp53TWSU1rhQwMlmTHpZpuhAVfph
-         S8Ww==
+        b=DCTTNk2E5NgoOTh0bq+ftWw4lsCAWAXdsGl8AEbt5he0ZyBjfJIaJ8Oth1qlKDNE+y
+         +89Q+kdcdpbZl0tQIc9kKFTPPKPB85SWN9AoocIi9mTz1MMEt1EPfa0AaU5yhQBVNiYC
+         78Br+gFSrNRiIZr/kpzNN4YSpxJcbspLeTqB4gSmD+tzKo/OhSvyZGS/Yn6ODRida8IY
+         THbWcNn4NWxuTFSTE1sRLmpQ2/DleusimZsoCRAN38vfb2qfsBBbpwAx6Gi1aj9GXyEh
+         rzj0SWJvtiX0+74Fet8ScEoLi56Qf2rhzPPQ+tV3i5qH6lHzbjFDUDKrd8nKXgb47NNM
+         eH+w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:in-reply-to
-         :mime-version:user-agent:date:message-id:organization:openpgp:from
-         :references:to:dkim-filter:dmarc-filter:arc-authentication-results;
-        bh=kmuXy+IE4R1EDSSyJ4HDKaDIPkBeRYkec1rD8Pjd+is=;
-        b=k2GceiQxVtU2TqGxkRB3CyymjnjyG88oOCUObWcANSEEmDHqbdxeQk2UAmhHdrjmw2
-         T/asvsE0+KDHtSG8Jk13Ra1YpHZvYP+Vz6Ih4y7v4rKUHMglgsaVpQrsaS8K2Wv0ArAY
-         3uOtCpcsoplyrguuI4c3uzO+sTTcpD99S6GuJtoZw5dHv3W0Sw88AOW1rPVS2SwvKtrt
-         W6kbs4bvxaVA9HBbJrUSUptZH2uSCX64jOw5h5Qr/6qUpiWNP32KoJ5wBRWIRuRsNeQQ
-         T4HxeyKDKB60ija3RwcWaif8XnKLFUPUZnF4kVtP3DLCCyHbMohWFfbCKakb399BPhFs
-         Ju/w==
+        h=sender:errors-to:cc:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence:subject:date:to
+         :from:resent-from:content-transfer-encoding:mime-version:in-reply-to
+         :message-id:resent-message-id:resent-date:arc-authentication-results;
+        bh=BtwIV0hWMTI4PYZrN3I6y6wsbPFuivjbvI7eJ8fiP/s=;
+        b=EJyoGQ2La9ydgr2oX6ESZ2wnvNFxyf8bX5fHxfgVuGM04PqLbYOaaliTy3t/UNMpzR
+         JBrpuXSvjlGAwrADw7KwB82+59CK6ipC7EyXOE9gsGjshEy1E83CUSfqAT5mW+Xi9ngV
+         XckqJft1ZkBDL2Npw6sDVzz6v6aRDNPZDf/XwCCMT/+5C6i4NrZisXf8UKV54VfZgbtX
+         wb2uumBK0JQA3dn2JR+lF/gnWHiYD8v3BiBz9/i92oMk9k2RM9jN+3LbWvlRChtEChld
+         5l0ujaeN7FmzQS+tGRsXqaqo64blCrdF7a9DnJqBT0EBMCcMNZm80ctGcF1Irencv2Qr
+         XjIw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [208.118.235.17])
-        by mx.google.com with ESMTPS id 191si9426035wmw.153.2017.07.11.07.00.40
+        by mx.google.com with ESMTPS id s88si14455uas.273.2017.07.11.07.08.48
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 11 Jul 2017 07:00:40 -0700 (PDT)
+        Tue, 11 Jul 2017 07:08:49 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) client-ip=208.118.235.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:46507 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:46549 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1dUviR-0007tu-JG
-	for alex.bennee@linaro.org; Tue, 11 Jul 2017 10:00:39 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:55100)
+	id 1dUvqI-00062W-OK
+	for alex.bennee@linaro.org; Tue, 11 Jul 2017 10:08:46 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:55771)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1dUvgb-0006Zx-5r
-	for qemu-devel@nongnu.org; Tue, 11 Jul 2017 09:58:46 -0400
+	(envelope-from <no-reply@patchew.org>) id 1dUvif-00007o-HH
+	for qemu-devel@nongnu.org; Tue, 11 Jul 2017 10:00:59 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1dUvga-00059w-6c
-	for qemu-devel@nongnu.org; Tue, 11 Jul 2017 09:58:45 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:43758)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <eblake@redhat.com>)
-	id 1dUvgW-00056h-0B; Tue, 11 Jul 2017 09:58:40 -0400
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
-	[10.5.11.15])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 20C2A4E4CA;
-	Tue, 11 Jul 2017 13:58:38 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 20C2A4E4CA
-Authentication-Results: ext-mx09.extmail.prod.ext.phx2.redhat.com;
-	dmarc=none (p=none dis=none) header.from=redhat.com
-Authentication-Results: ext-mx09.extmail.prod.ext.phx2.redhat.com;
-	spf=pass smtp.mailfrom=eblake@redhat.com
-DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com 20C2A4E4CA
-Received: from [10.10.121.60] (ovpn-121-60.rdu2.redhat.com [10.10.121.60])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id CA4EE5D6A6;
-	Tue, 11 Jul 2017 13:58:29 +0000 (UTC)
-To: Laszlo Ersek <lersek@redhat.com>, Dongjiu Geng <gengdongjiu@huawei.com>
-References: <1499755579-31262-1-git-send-email-gengdongjiu@huawei.com>
-	<366f019e-50e8-03f4-9b8f-946ef318ca79@redhat.com>
-From: Eric Blake <eblake@redhat.com>
-Openpgp: url=http://people.redhat.com/eblake/eblake.gpg
-Organization: Red Hat, Inc.
-Message-ID: <d18b0a8d-5c34-ae4a-a60c-c451c8df9872@redhat.com>
-Date: Tue, 11 Jul 2017 08:58:28 -0500
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.2.1
+	(envelope-from <no-reply@patchew.org>) id 1dUvic-0006JA-Vv
+	for qemu-devel@nongnu.org; Tue, 11 Jul 2017 10:00:53 -0400
+Resent-Date: Tue, 11 Jul 2017 10:00:53 -0400
+Resent-Message-Id: <E1dUvic-0006JA-Vv@eggs.gnu.org>
+Received: from sender-of-o53.zoho.com ([135.84.80.218]:21704)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <no-reply@patchew.org>)
+	id 1dUvic-0006Il-NP; Tue, 11 Jul 2017 10:00:50 -0400
+Received: from [172.17.0.2] (23.253.156.214 [23.253.156.214]) by
+	mx.zohomail.com with SMTPS id 1499781640306337.01930451315764;
+	Tue, 11 Jul 2017 07:00:40 -0700 (PDT)
+Message-ID: <149978163979.30.9098193331451925339@5d477a5b5989>
+In-Reply-To: <1499771839-32518-1-git-send-email-peter.maydell@linaro.org>
 MIME-Version: 1.0
-In-Reply-To: <366f019e-50e8-03f4-9b8f-946ef318ca79@redhat.com>
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature";
-	boundary="X7RUiSILkwpBBk3FE2Bnfwt9vaKtIpo77"
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.38]);
-	Tue, 11 Jul 2017 13:58:38 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.132.183.28
-X-Content-Filtered-By: Mailman/MimeDel 2.1.21
-Subject: Re: [Qemu-devel] [PATCH resend v4 0/3] Generate APEI GHES table and
- dynamically record CPER
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Resent-From: 
+From: no-reply@patchew.org
+To: peter.maydell@linaro.org
+Date: Tue, 11 Jul 2017 07:00:40 -0700 (PDT)
+X-ZohoMailClient: External
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
+X-Received-From: 135.84.80.218
+Subject: Re: [Qemu-devel] [PATCH 0/7] ARM: implement MPS2 board (with 2 FPGA
+ flavours)
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -102,72 +79,74 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
 	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, wuquanming@huawei.com, famz@redhat.com,
-	mst@redhat.com, qemu-devel@nongnu.org, zhihui.gao@huawei.com,
-	qemu-arm@nongnu.org, huangshaoyu@huawei.com,
-	zhaoshenglong@huawei.com, imammedo@redhat.com, zhengqiang10@huawei.com
+Reply-To: qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org, famz@redhat.com, qemu-devel@nongnu.org,
+	patches@linaro.org
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 7d7UStHMBtUY
+X-TUID: Ug1uGSvON/8f
 
-This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
---X7RUiSILkwpBBk3FE2Bnfwt9vaKtIpo77
-From: Eric Blake <eblake@redhat.com>
-To: Laszlo Ersek <lersek@redhat.com>, Dongjiu Geng <gengdongjiu@huawei.com>
-Cc: mst@redhat.com, imammedo@redhat.com, famz@redhat.com,
- qemu-devel@nongnu.org, zhaoshenglong@huawei.com, peter.maydell@linaro.org,
- qemu-arm@nongnu.org, zhengqiang10@huawei.com, huangshaoyu@huawei.com,
- wuquanming@huawei.com, zhihui.gao@huawei.com
-Message-ID: <d18b0a8d-5c34-ae4a-a60c-c451c8df9872@redhat.com>
-Subject: Re: [PATCH resend v4 0/3] Generate APEI GHES table and dynamically
- record CPER
-References: <1499755579-31262-1-git-send-email-gengdongjiu@huawei.com>
- <366f019e-50e8-03f4-9b8f-946ef318ca79@redhat.com>
-In-Reply-To: <366f019e-50e8-03f4-9b8f-946ef318ca79@redhat.com>
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
+SGksCgpUaGlzIHNlcmllcyBzZWVtcyB0byBoYXZlIHNvbWUgY29kaW5nIHN0eWxlIHByb2JsZW1z
+LiBTZWUgb3V0cHV0IGJlbG93IGZvcgptb3JlIGluZm9ybWF0aW9uOgoKTWVzc2FnZS1pZDogMTQ5
+OTc3MTgzOS0zMjUxOC0xLWdpdC1zZW5kLWVtYWlsLXBldGVyLm1heWRlbGxAbGluYXJvLm9yZwpU
+eXBlOiBzZXJpZXMKU3ViamVjdDogW1FlbXUtZGV2ZWxdIFtQQVRDSCAwLzddIEFSTTogaW1wbGVt
+ZW50IE1QUzIgYm9hcmQgKHdpdGggMiBGUEdBIGZsYXZvdXJzKQoKPT09IFRFU1QgU0NSSVBUIEJF
+R0lOID09PQojIS9iaW4vYmFzaAoKQkFTRT1iYXNlCm49MQp0b3RhbD0kKGdpdCBsb2cgLS1vbmVs
+aW5lICRCQVNFLi4gfCB3YyAtbCkKZmFpbGVkPTAKCmdpdCBjb25maWcgLS1sb2NhbCBkaWZmLnJl
+bmFtZWxpbWl0IDAKZ2l0IGNvbmZpZyAtLWxvY2FsIGRpZmYucmVuYW1lcyBUcnVlCgpjb21taXRz
+PSIkKGdpdCBsb2cgLS1mb3JtYXQ9JUggLS1yZXZlcnNlICRCQVNFLi4pIgpmb3IgYyBpbiAkY29t
+bWl0czsgZG8KICAgIGVjaG8gIkNoZWNraW5nIFBBVENIICRuLyR0b3RhbDogJChnaXQgbG9nIC1u
+IDEgLS1mb3JtYXQ9JXMgJGMpLi4uIgogICAgaWYgISBnaXQgc2hvdyAkYyAtLWZvcm1hdD1lbWFp
+bCB8IC4vc2NyaXB0cy9jaGVja3BhdGNoLnBsIC0tbWFpbGJhY2sgLTsgdGhlbgogICAgICAgIGZh
+aWxlZD0xCiAgICAgICAgZWNobwogICAgZmkKICAgIG49JCgobisxKSkKZG9uZQoKZXhpdCAkZmFp
+bGVkCj09PSBURVNUIFNDUklQVCBFTkQgPT09CgpVcGRhdGluZyAzYzhjZjVhOWMyMWZmODc4MjE2
+NGQxZGVmN2Y0NGJkODg4NzEzMzg0ClN3aXRjaGVkIHRvIGEgbmV3IGJyYW5jaCAndGVzdCcKMTFj
+NjI0NiBody9hcm0vbXBzMjogQWRkIFNDQwo4OGVlNzgwIGh3L21pc2MvbXBzMl9zY2M6IEltcGxl
+bWVudCBNUFMyIFNlcmlhbCBDb21tdW5pY2F0aW9uIENvbnRyb2xsZXIKMTMyYWE4NyBody9hcm0v
+bXBzMjogQWRkIHRpbWVycwo0NzQ4OTNkIGh3L2NoYXIvY21zZGstYXBiLXRpbWVyOiBJbXBsZW1l
+bnQgQ01TREsgQVBCIHRpbWVyIGRldmljZQo1YmU1ZTBlIGh3L2FybS9tcHMyOiBBZGQgVUFSVHMK
+ZGUwNTRmOSBody9jaGFyL2Ntc2RrLWFwYi11YXJ0LmM6IEltcGxlbWVudCBDTVNESyBBUEIgVUFS
+VAowYTRkNTQ4IGh3L2FybS9tcHMyOiBJbXBsZW1lbnQgc2tlbGV0b24gbXBzMi1hbjM4NSBhbmQg
+bXBzMi1hbjUxMSBib2FyZCBtb2RlbHMKCj09PSBPVVRQVVQgQkVHSU4gPT09CkNoZWNraW5nIFBB
+VENIIDEvNzogaHcvYXJtL21wczI6IEltcGxlbWVudCBza2VsZXRvbiBtcHMyLWFuMzg1IGFuZCBt
+cHMyLWFuNTExIGJvYXJkIG1vZGVscy4uLgpFUlJPUjogbGluZSBvdmVyIDkwIGNoYXJhY3RlcnMK
+IzcyOiBGSUxFOiBody9hcm0vbXBzMi5jOjIyOgorICogICBodHRwczovL2RldmVsb3Blci5hcm0u
+Y29tL3Byb2R1Y3RzL3N5c3RlbS1kZXNpZ24vZGV2ZWxvcG1lbnQtYm9hcmRzL2NvcnRleC1tLXBy
+b3RvdHlwaW5nLXN5c3RlbQoKdG90YWw6IDEgZXJyb3JzLCAwIHdhcm5pbmdzLCAyODQgbGluZXMg
+Y2hlY2tlZAoKWW91ciBwYXRjaCBoYXMgc3R5bGUgcHJvYmxlbXMsIHBsZWFzZSByZXZpZXcuICBJ
+ZiBhbnkgb2YgdGhlc2UgZXJyb3JzCmFyZSBmYWxzZSBwb3NpdGl2ZXMgcmVwb3J0IHRoZW0gdG8g
+dGhlIG1haW50YWluZXIsIHNlZQpDSEVDS1BBVENIIGluIE1BSU5UQUlORVJTLgoKQ2hlY2tpbmcg
+UEFUQ0ggMi83OiBody9jaGFyL2Ntc2RrLWFwYi11YXJ0LmM6IEltcGxlbWVudCBDTVNESyBBUEIg
+VUFSVC4uLgpFUlJPUjogbGluZSBvdmVyIDkwIGNoYXJhY3RlcnMKIzU3OiBGSUxFOiBody9jaGFy
+L2Ntc2RrLWFwYi11YXJ0LmM6MTU6CisgKiBodHRwczovL2RldmVsb3Blci5hcm0uY29tL3Byb2R1
+Y3RzL3N5c3RlbS1kZXNpZ24vc3lzdGVtLWRlc2lnbi1raXRzL2NvcnRleC1tLXN5c3RlbS1kZXNp
+Z24ta2l0Cgp0b3RhbDogMSBlcnJvcnMsIDAgd2FybmluZ3MsIDQ5NSBsaW5lcyBjaGVja2VkCgpZ
+b3VyIHBhdGNoIGhhcyBzdHlsZSBwcm9ibGVtcywgcGxlYXNlIHJldmlldy4gIElmIGFueSBvZiB0
+aGVzZSBlcnJvcnMKYXJlIGZhbHNlIHBvc2l0aXZlcyByZXBvcnQgdGhlbSB0byB0aGUgbWFpbnRh
+aW5lciwgc2VlCkNIRUNLUEFUQ0ggaW4gTUFJTlRBSU5FUlMuCgpDaGVja2luZyBQQVRDSCAzLzc6
+IGh3L2FybS9tcHMyOiBBZGQgVUFSVHMuLi4KQ2hlY2tpbmcgUEFUQ0ggNC83OiBody9jaGFyL2Nt
+c2RrLWFwYi10aW1lcjogSW1wbGVtZW50IENNU0RLIEFQQiB0aW1lciBkZXZpY2UuLi4KRVJST1I6
+IGxpbmUgb3ZlciA5MCBjaGFyYWN0ZXJzCiM1MjogRklMRTogaHcvdGltZXIvY21zZGstYXBiLXRp
+bWVyLmM6MTU6CisgKiBodHRwczovL2RldmVsb3Blci5hcm0uY29tL3Byb2R1Y3RzL3N5c3RlbS1k
+ZXNpZ24vc3lzdGVtLWRlc2lnbi1raXRzL2NvcnRleC1tLXN5c3RlbS1kZXNpZ24ta2l0Cgp0b3Rh
+bDogMSBlcnJvcnMsIDAgd2FybmluZ3MsIDMzMSBsaW5lcyBjaGVja2VkCgpZb3VyIHBhdGNoIGhh
+cyBzdHlsZSBwcm9ibGVtcywgcGxlYXNlIHJldmlldy4gIElmIGFueSBvZiB0aGVzZSBlcnJvcnMK
+YXJlIGZhbHNlIHBvc2l0aXZlcyByZXBvcnQgdGhlbSB0byB0aGUgbWFpbnRhaW5lciwgc2VlCkNI
+RUNLUEFUQ0ggaW4gTUFJTlRBSU5FUlMuCgpDaGVja2luZyBQQVRDSCA1Lzc6IGh3L2FybS9tcHMy
+OiBBZGQgdGltZXJzLi4uCkNoZWNraW5nIFBBVENIIDYvNzogaHcvbWlzYy9tcHMyX3NjYzogSW1w
+bGVtZW50IE1QUzIgU2VyaWFsIENvbW11bmljYXRpb24gQ29udHJvbGxlci4uLgpFUlJPUjogbGlu
+ZSBvdmVyIDkwIGNoYXJhY3RlcnMKIzY5OiBGSUxFOiBody9taXNjL21wczItc2NjLmM6MTY6Cisg
+KiBodHRwOi8vaW5mb2NlbnRlci5hcm0uY29tL2hlbHAvaW5kZXguanNwP3RvcGljPS9jb20uYXJt
+LmRvYy4xMDAxMTJfMDEwMF8wM19lbi9pbmRleC5odG1sCgpFUlJPUjogc3BhY2VzIHJlcXVpcmVk
+IGFyb3VuZCB0aGF0ICcqJyAoY3R4Old4VikKIzEwNDogRklMRTogaHcvbWlzYy9tcHMyLXNjYy5j
+OjUxOgorc3RhdGljIGJvb2wgc2NjX2NmZ193cml0ZShNUFMyU0NDICpzLCB1bnNpZ25lZCBmdW5j
+dGlvbiwKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBeCgp0b3RhbDogMiBlcnJv
+cnMsIDAgd2FybmluZ3MsIDM3OSBsaW5lcyBjaGVja2VkCgpZb3VyIHBhdGNoIGhhcyBzdHlsZSBw
+cm9ibGVtcywgcGxlYXNlIHJldmlldy4gIElmIGFueSBvZiB0aGVzZSBlcnJvcnMKYXJlIGZhbHNl
+IHBvc2l0aXZlcyByZXBvcnQgdGhlbSB0byB0aGUgbWFpbnRhaW5lciwgc2VlCkNIRUNLUEFUQ0gg
+aW4gTUFJTlRBSU5FUlMuCgpDaGVja2luZyBQQVRDSCA3Lzc6IGh3L2FybS9tcHMyOiBBZGQgU0ND
+Li4uCj09PSBPVVRQVVQgRU5EID09PQoKVGVzdCBjb21tYW5kIGV4aXRlZCB3aXRoIGNvZGU6IDEK
+CgotLS0KRW1haWwgZ2VuZXJhdGVkIGF1dG9tYXRpY2FsbHkgYnkgUGF0Y2hldyBbaHR0cDovL3Bh
+dGNoZXcub3JnL10uClBsZWFzZSBzZW5kIHlvdXIgZmVlZGJhY2sgdG8gcGF0Y2hldy1kZXZlbEBm
+cmVlbGlzdHMub3Jn
 
-On 07/11/2017 08:43 AM, Laszlo Ersek wrote:
-> So send the patches with
->=20
->   git send-email *.patch
->=20
-> or put all the patches into a temporary directory, and run
->=20
->   git send-email patch-dir/
-
-Or you can even skip patch files, and directly send things with one lass
-chance in your editor:
-
-git send-email -v5 -3 --annotate --cover-letter
-
-[send the top three commits in my current git branch as a version 5
-patch series, where I get to write the cover letter and tweak any of the
-patches in my preferred $EDITOR before sending anything]
-
---=20
-Eric Blake, Principal Software Engineer
-Red Hat, Inc.           +1-919-301-3266
-Virtualization:  qemu.org | libvirt.org
-
-
---X7RUiSILkwpBBk3FE2Bnfwt9vaKtIpo77
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: OpenPGP digital signature
-Content-Disposition: attachment; filename="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v2
-Comment: Public key at http://people.redhat.com/eblake/eblake.gpg
-Comment: Using GnuPG with Thunderbird - http://www.enigmail.net/
-
-iQEcBAEBCAAGBQJZZNmEAAoJEKeha0olJ0NqhF0H/31M+z6ICVFuXEDGNaZJAYAS
-ToSGNkYIhgDTQA5QKrg3/Efm2rYR2CN8vxWDR/ax4MdF2CRUnPXCxSvTb/cSfBhe
-vC7PXDoMdaJ5uzYccQkGoNG7g97v/kUNF2cvnxeA5U6jv3FyxPUJrupJvCuUAGI7
-c1IkKQ68/5bxXM+FSHtk6A3aX0ddcEj6sUUbeiU7N3Qq9I2tWBQEMitVXbw3/LTs
-UYyoH8guyhFJlh1ZsqvrSMPDmcEn+L7y+OuVLzzET/ZZtSNWSA/4EtwHJ5gw5edc
-KlAcuaK/68i9MhlH2haBZ6UO36oegDVCAykKTX0aN5vCJVkeELUxIDLGIE7DR/E=
-=hLRO
------END PGP SIGNATURE-----
-
---X7RUiSILkwpBBk3FE2Bnfwt9vaKtIpo77--

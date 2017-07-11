@@ -1,184 +1,119 @@
-Received: by 10.25.44.15 with SMTP id s15csp3675593lfs;
-        Mon, 10 Jul 2017 10:11:44 -0700 (PDT)
-X-Received: by 10.237.39.135 with SMTP id a7mr5479706qtd.164.1499706704594;
-        Mon, 10 Jul 2017 10:11:44 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1499706704; cv=none;
+Received: by 10.25.44.15 with SMTP id s15csp4167216lfs;
+        Mon, 10 Jul 2017 18:55:27 -0700 (PDT)
+X-Received: by 10.237.38.195 with SMTP id q61mr8494646qtd.245.1499738127169;
+        Mon, 10 Jul 2017 18:55:27 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1499738127; cv=none;
         d=google.com; s=arc-20160816;
-        b=lhvS5gpHC4VA9jaFa57zul95Kecc+9b4j50Mhhbq29LwDBl2Y2pUPhstBhIq7nzNlb
-         6AJFyzRxWes1gqeI1tl1rTCFqMabNk3ec+6uaTvfvPwPm/KhnAV1OrRYMd1q3MTluQIy
-         4THpJVTLSRb174VzGoDSPt0GCtxePju4GKcSvAewaz37ijMH8QOnCmVt679GVupqXnDz
-         PyB2D5veR4xkz/JhUc5SVx9/IL1g2X3xChUl5bHF8/+UMJd4ZtMeIDlqSlIaB1BLW41h
-         C3Uy637IhJF3C8j69QSe1Qyx7BHAUXho52Kcic/8hvKyhG51PZKil9VNjBgt6ZNNq2Wh
-         U5ZA==
+        b=v2VXmB8Jn/cPrv3eCZg8dd2ICw7TzwmcV7rrKSaSFXTrC1kGjtP8lXWrGprldnnobX
+         k7zLyFn4wfdixBBpu7DWYV9F5egF/Frn6AXYBchsM59gHbn1cqyNBjwxMidrDxMsHXIk
+         T6/1eqO9DkjOnz3vCUnJ7jt4W4+gIUqh7TdeB9vkC8p1sKC6hjg5X7Q9lkSqR35Owch8
+         mbPrwJ76C8uQ4xDHOkzrO2DI7MBnPUAAENPDSVuFbTdRKS2jGdHVkzfClD6N8APdyQAa
+         CKry3W5cDT/0g1qZ9CUpastby49DSPw+gZ/Ht5fsKjaG5M8CrIbFSIwJNqnnv8Vse7uG
+         T3NQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
-         :references:in-reply-to:mime-version:dkim-signature
-         :arc-authentication-results;
-        bh=2ZUKx30a4RpNTaO51RUr+gYtXSpUm0kGD5+Vlcqr37s=;
-        b=C7RjIy1VOcOA+A+fBgERxzHJuuEs1hBuGS4zYngN1giZTxQPd7e9aZh9WQXDU75kHA
-         etVk5Q6zimNotIuYjJwRl2dHRyjcaT+IKbHz7ZAg3eSIlfxnLQudx0s9DN2FW9dLCFxC
-         fkXfSeByTqwlRd4Nnk2YOsElCjHNp49qpWscJckjfbo5WK+W3Rqu4jLBVgT9Egq+fh9T
-         mBWylL/bly3LG/mwbFYZNrhVRRE/sOmwdJHAH8H7/wcjevIe85NJfUFShETePoVWG4Qd
-         rec8QSnX+fvQ2rZTEJI2cqPRDDX2DpcOORxq4xTCze0ch1fvNDeEzqeDxjYKmaEB1Xs5
-         tyXg==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:arc-authentication-results;
+        bh=ygYL4CEsnxbaJz8v9JeHRjgwcY31gr2xbgqGLxy5IsQ=;
+        b=niqtE1Nv7td/+96yN8ApfXX5w6pl3H/sMQ0tdODrUDre5pBKjSC4gbEaXQOeSDwtv3
+         dGGaJm9GjT+5rZC6Rii0ygJsfSrEe1Fd2HRB+oD9NdFn5a4+UVk2fWtG7E6gcD9sipda
+         cHPdptchdVIFTVlTtsEzgOz4Kfts7O/z3qzYzIfRRXXTFK6IYDAKBDbsgrfeWGzyYkak
+         aetzqFZXLYGQ1F1kv6WmqhAdehsNzsm3Kl8r5OXnqWXsmYFR9DtwxCoYY06dejwMvhux
+         UsWpxceylU8Gd2dL+RHa7rkpQzwlXQiqFR4J67+6MHkIkj3oIyRXUfGVyyuUOacYH3NX
+         PboQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.b=iZ+0GYsF;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [208.118.235.17])
-        by mx.google.com with ESMTPS id u185si11143278qkd.28.2017.07.10.10.11.43
+        by mx.google.com with ESMTPS id q36si12547534qte.136.2017.07.10.18.55.26
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 10 Jul 2017 10:11:44 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) client-ip=208.118.235.17;
+        Mon, 10 Jul 2017 18:55:27 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) client-ip=208.118.235.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.b=iZ+0GYsF;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:42171 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:43733 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1dUcDl-00057F-QX
-	for alex.bennee@linaro.org; Mon, 10 Jul 2017 13:11:41 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:35382)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1dUkOa-0002Ac-Hj
+	for alex.bennee@linaro.org; Mon, 10 Jul 2017 21:55:24 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:40277)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1dUcCW-0004bH-TB
-	for qemu-devel@nongnu.org; Mon, 10 Jul 2017 13:10:26 -0400
+	(envelope-from <gengdongjiu@huawei.com>) id 1dUkOW-0002AR-On
+	for qemu-arm@nongnu.org; Mon, 10 Jul 2017 21:55:21 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1dUcCV-00084O-Mo
-	for qemu-devel@nongnu.org; Mon, 10 Jul 2017 13:10:24 -0400
-Received: from mail-wr0-x236.google.com ([2a00:1450:400c:c0c::236]:33159)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1dUcCV-00082a-Ct
-	for qemu-devel@nongnu.org; Mon, 10 Jul 2017 13:10:23 -0400
-Received: by mail-wr0-x236.google.com with SMTP id r103so147259527wrb.0
-	for <qemu-devel@nongnu.org>; Mon, 10 Jul 2017 10:10:23 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=2ZUKx30a4RpNTaO51RUr+gYtXSpUm0kGD5+Vlcqr37s=;
-	b=iZ+0GYsF7Dk6TgDlx1ES9Qk7d3+gwzr83u2Ey4xo3do2Ko8W92xerhkQvhb6/JsmZZ
-	+tYOZTaQGhLlOv67GRheMlcPte7ycyZXBlG2rXcN412hZN1L4KeItUOIBqQ8Ucvm2+t6
-	0aa94qBBd97FdvvQ+83d+RcjkVLfjxRo8EP4U=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=2ZUKx30a4RpNTaO51RUr+gYtXSpUm0kGD5+Vlcqr37s=;
-	b=SsE+AG3D4rn5fgyH9GYjHCjYNT40aU3LwIOJMc508GEy5kafJZbH5qiaqjQaFhYexl
-	wgl9d26vOu+9aGwWbHwDmhurt0gWvR3Oc1dfiIUM/2fbUG8oHwBXoAtUmpJ3JoiKPb+n
-	IRHANgGfCdF5Agby6hB5r5v/ouQD2Uq1466rZ9vu8tvUNiFlGUn622kWyurrzZ6cN6Bt
-	YZGl91mUWXd8fZL6yKsCmN1q4doRcQjpwnpzW8gX8Iiz54R8XR8GKvSN3hg0IWP+dRQO
-	r1OEPkHBBT2bvxb0in4x0JjofOAmKU1ZR8+lzi81fD9ScvC2RwWulk5OVRYs+kkz6ZJO
-	0E2Q==
-X-Gm-Message-State: AIVw110gzwc52r1SkL7uwNoauaHcNUMB5B3HFwUuxvxIp4DZ+akX8J3V
-	ewsz/sQUAvh972IaAgbpREEsFhVE9w8X
-X-Received: by 10.28.129.203 with SMTP id c194mr3163637wmd.120.1499706622200; 
-	Mon, 10 Jul 2017 10:10:22 -0700 (PDT)
+	(envelope-from <gengdongjiu@huawei.com>) id 1dUkOT-0000dN-PF
+	for qemu-arm@nongnu.org; Mon, 10 Jul 2017 21:55:20 -0400
+Received: from szxga02-in.huawei.com ([45.249.212.188]:3961)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_ARCFOUR_SHA1:16) (Exim 4.71)
+	(envelope-from <gengdongjiu@huawei.com>)
+	id 1dUkOT-0000cO-EL; Mon, 10 Jul 2017 21:55:17 -0400
+Received: from 172.30.72.54 (EHLO DGGEML402-HUB.china.huawei.com)
+	([172.30.72.54])
+	by dggrg02-dlp.huawei.com (MOS 4.4.6-GA FastPath queued)
+	with ESMTP id AQV51544; Tue, 11 Jul 2017 09:55:03 +0800 (CST)
+Received: from [127.0.0.1] (10.142.68.147) by DGGEML402-HUB.china.huawei.com
+	(10.3.17.38) with Microsoft SMTP Server id 14.3.301.0; Tue, 11 Jul 2017
+	09:54:23 +0800
+To: Laszlo Ersek <lersek@redhat.com>, Eric Blake <eblake@redhat.com>,
+	<mst@redhat.com>, <imammedo@redhat.com>, <famz@redhat.com>,
+	<qemu-devel@nongnu.org>, <zhaoshenglong@huawei.com>,
+	<peter.maydell@linaro.org>, <qemu-arm@nongnu.org>,
+	<zhengqiang10@huawei.com>, <huangshaoyu@huawei.com>,
+	<wuquanming@huawei.com>, <zhihui.gao@huawei.com>
+References: <1499678755-5633-1-git-send-email-gengdongjiu@huawei.com>
+	<df74267a-3f6f-b6f5-432f-40f8c04ab1f1@redhat.com>
+	<d48ec6cf-03b6-bf2b-1bed-1e2c34aaf5f0@redhat.com>
+From: gengdongjiu <gengdongjiu@huawei.com>
+Message-ID: <f37c8504-905b-5971-a487-e30870b19227@huawei.com>
+Date: Tue, 11 Jul 2017 09:54:18 +0800
+User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64; rv:45.0) Gecko/20100101
+	Thunderbird/45.7.1
 MIME-Version: 1.0
-Received: by 10.223.134.2 with HTTP; Mon, 10 Jul 2017 10:10:01 -0700 (PDT)
-In-Reply-To: <1495537965-4187-1-git-send-email-diana.craciun@nxp.com>
-References: <1495537965-4187-1-git-send-email-diana.craciun@nxp.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 10 Jul 2017 18:10:01 +0100
-Message-ID: <CAFEAcA_Zd1kFdv11Pbh9=_Hu2uBvULxPHbk15ot-uKGpzw4s3A@mail.gmail.com>
-To: Diana Craciun <diana.craciun@nxp.com>
-Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2a00:1450:400c:c0c::236
-Subject: Re: [Qemu-devel] [PATCH v2 0/2] Add global device ID in virt machine
-X-BeenThere: qemu-devel@nongnu.org
+In-Reply-To: <d48ec6cf-03b6-bf2b-1bed-1e2c34aaf5f0@redhat.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.142.68.147]
+X-CFilter-Loop: Reflected
+X-Mirapoint-Virus-RAPID-Raw: score=unknown(0),
+	refid=str=0001.0A020202.59642FF7.0190, ss=1, re=0.000, recu=0.000,
+	reip=0.000, cl=1, cld=1, fgs=0, ip=0.0.0.0,
+	so=2014-11-16 11:51:01, dmn=2013-03-21 17:37:32
+X-Mirapoint-Loop-Id: 4063c23db1b65703667f0df4e455952f
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
+	[fuzzy]
+X-Received-From: 45.249.212.188
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v4 1/3] ACPI: Add new ACPI
+ structures and macros
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: "Michael S. Tsirkin" <mst@redhat.com>,
-	QEMU Developers <qemu-devel@nongnu.org>,
-	Eric Auger <eric.auger@redhat.com>,
-	Mihai Claudiu Caraman <mike.caraman@nxp.com>,
-	qemu-arm <qemu-arm@nongnu.org>,
-	Marcel Apfelbaum <marcel@redhat.com>, bharat.bhushan@nxp.com,
-	Christoffer Dall <christoffer.dall@linaro.org>, laurentiu.tudor@nxp.com
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ZGwyEX73FR+9
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: gqf3U1+Jz44U
 
-On 23 May 2017 at 12:12, Diana Craciun <diana.craciun@nxp.com> wrote:
-> The NXP DPAA2 is a hardware architecture designed for high-speeed network
-> packet processing. The DPAA2 hardware components are managed by a hardware
-> component called the Management Complex (or MC) which provides an
-> object-base abstraction for software drivers to use the DPAA2 hardware.
-> For more details you can see:
-> https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/drivers/staging/fsl-mc/README.txt?h=v4.10
->
-> The interrupts generated by the DPAA2 hardware components are MSIs. We will add
-> support for direct assigning these DPAA2 components/objects to a virtual
-> machine. However, this will add the need to expand the MSI usage in QEMU.
->
-> Currently the MSIs in QEMU are pretty much tied to PCI. For ARM the
-> GIC ITS is using a device ID for interrupt translation. Currently, for
-> PCI, the requester ID is used as device ID. This will not work when
-> we add another entity that needs also a device ID which is supposed to
-> be unique across the system.
->
-> My proposal is to add a static allocation in the virt machine. I considered
-> that this allocation is specific to each machine/platform. Currently only
-> virt machine has it, but other implementations may use the same mechanism
-> as well.
-> So, I used a static allocation with this formula:
->
-> DeviceID = zero_extend( RequesterID[15:0] ) + 0x10000 * Constant
->
-> This formula was taken from SBSA spec (Appendix I: DeviceID generation and
-> ITS groups). In case of QEMU the constant will be different for each entity.
-> In this way a unique DeviceID will be generated and the device ID will be
-> derived from a requesterID (in case of PCI) or other means in case of other
-> entities.
->
-> The implementation is generic as there might be in the future other non-pci devices
-> that are using MSIs or IOMMU. Any architecture can use it, though currently
-> only the ARM architecture is using the function that retrieves the stream ID. I
-> did not change all the replacements of the pci_requester_id (with pci_stream_id)
-> in the code (although if the constant is 0, the stream_id is equal with requester_id).
-> The other architectures (e.g. intel iommu code) assume that the ID is the
-> requester ID.
->
-> Tested on NXP LS2080 platform.
+Dear,Laszlo
 
-So I'm still a bit confused about what this is for and what the
-relationship is with how the equivalent task would be performed
-in real hardware. Can you explain how that works, please?
-Would there be a system MMU involved somewhere that would be
-allocating these IDs somehow?
+On 2017/7/10 22:04, Laszlo Ersek wrote:
+> Yes, the git-send-email options to use are:
+> 
+>   --thread --no-chain-reply-to
+> 
+> Best to set them permanently in one's qemu clone,
+> 
+> $ git config --bool sendemail.thread       true
+> $ git config --bool sendemail.chainreplyto false
+> 
+> This is called "shallow threading" (see git-send-email(1)).
 
-The patchset also seems to be introducing a fair amount of
-mechanism without also implementing the actual use for it -- yes,
-if we had two PCI controllers in the virt board we would need to
-sort something out I guess, but we don't, we only have one.
-Evaluating whether the mechanism makes sense without its major
-user is always trickier.
+great, thanks for your suggestion.
 
-Essentially, I know very little about this use case, but my
-default position is that if in doubt we should aim to match
-how real hardware handles something. Virtualization-specific
-code, and especially something specific to a niche use case like
-this, is something I'd really prefer to avoid. The ideal is to
-have something like PCI device passthrough, where the guest can
-automatically probe for things and QEMU doesn't need to get
-involved.
-
-I was hoping Eric would review this, since he's more up to speed
-on direct hardware passthrough than I am, but I think he's just
-gone off on holiday...
-
-thanks
--- PMM

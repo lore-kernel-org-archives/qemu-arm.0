@@ -1,349 +1,115 @@
-Received: by 10.25.44.15 with SMTP id s15csp652148lfs;
-        Wed, 12 Jul 2017 04:06:02 -0700 (PDT)
-X-Received: by 10.28.170.8 with SMTP id t8mr2222628wme.111.1499857562087;
-        Wed, 12 Jul 2017 04:06:02 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1499857562; cv=none;
+Received: by 10.25.44.15 with SMTP id s15csp1045744lfs;
+        Wed, 12 Jul 2017 09:53:33 -0700 (PDT)
+X-Received: by 10.55.105.130 with SMTP id e124mr6987946qkc.117.1499878413621;
+        Wed, 12 Jul 2017 09:53:33 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1499878413; cv=none;
         d=google.com; s=arc-20160816;
-        b=glsakon+UvFIwTxAvDjpYrefCX1HSaU0Dqk709D76AWjHr6RiwbCuCvxhaXl5JxFtC
-         qGxChInMDwGpp1DdPfDy/MboBODojW2hkTVs9n+PMGjj0z1SyWCV07RmJL2Egz2/A1Ge
-         wb26DorR3EsiZ/imsY9IN0Dib6OVRimIYgzYdiB4AGCpfV1zTezc5Uu3RQeIfcqkUvU8
-         c46os9+oosDtD3CKo4+Q6QcB/RS9CQIjzas73MfgwpyrjoloRKdvoJmJUzNRvZRtRZda
-         QPJENHqoLH2pTBGbfpn7JAiTy0PvlV4GoTTYMyEarSZHMKel2rRCa8no8JoCT6YjQ7Nv
-         44Yg==
+        b=U9w2ww641BNc1dV9N2uIGkt3qyls7da+UnqttZL1X7a0lWjknaHJtsjwbf4/GzPwLo
+         duKy2Pof+kVK1I7WM8XKP7VPXpCLCR4fM+REmlqyLNwAk8pL0IdCd68aPcpcjuqAluQl
+         u9wxksUK3VkgUVbRTPCfuPW6UjkkARe2QGAQXleHlb3Am1QKf/e9WTH+muUQPf+08W5A
+         bkPLkgyBS9LeKtUG314XxqNhZymF2awmPcGpL1HUvAJ+zF8cP3X63SOUXkRttDbIz9mb
+         aVCJSIFPr2HSg5fM90Grq0lBIvPDlhCvZ5j15x69s3anJVms8+UUBrFkZObrhxsvKaHs
+         yIJQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:user-agent:message-id
-         :in-reply-to:date:mail-followup-to:references:subject:cc:to:from
-         :arc-authentication-results;
-        bh=X8NAnnsJo68efYOK+CpulBroMGu4j/EdII48jtbiMVc=;
-        b=cldm9aPxjHcaol/KF+xVsIuIjVa1RZ7A/6/0JryXllyr1kzALO4JHV3FplodzAX7Jr
-         +WsYqWGT0SVC6L8i+7+sNr3UWlj5jRhxNJMrRMqBYYOF7BR0u5iPdOb6MK+F3qQnJih1
-         4Re2TQ0KCseQmMjBHsDVcUsCSVzoGS0tPwUBHAm/GF6y3j7RvGNeQgkpTYb0HPGHm9DC
-         zZndnso3MpB6Kaa6TP0zZCbg9/vj9gW/bcQnNkiiBfFfgsQXnYw/ye11sZMWTBQjgzBH
-         um6FuqrDcFUTeyweBiiHJXja4uJTg5+nzit4Kmq1YWdzFtZ9U3QovMBM177QcgTTVUTq
-         ouDw==
+        h=content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:cc:to:subject:sender
+         :dkim-signature:arc-authentication-results;
+        bh=zBbNoW8os4Q0hp3va9BkXN0KyF21zTh1YmQndIjhDcc=;
+        b=eX5GHR/dugKmcAdn5uNmxkrJ82yUDU3pgy6BI5BA26eLMeRSLe8IvWy1IQTT1gnzcC
+         ejJObeFfrd/wv66MaZeAe4eTMGB/j+l7aDffY+UJx5JpqKVaCpTen+U0g7T3KRRtwsgD
+         Nb8z2I0Yj138T99LvEcsIdtLnjL3jRzWCQbIiItgP1iHiCedHpEp+dN3lq04AlBiXHvj
+         O6a/NguKz05OiOz8nJG2wMoNiHwOBmVlkOdJ99LDdd2qP153tIUqpiX8X+dUcJG2/LyG
+         l/1FFUZVKO7jRXMVHrURgEahkBeT+sYl2StHqhmm7Thf5zSUFONZ2SygA/E63pCLUEsG
+         ty7Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of vilanova@ac.upc.edu designates 147.83.33.10 as permitted sender) smtp.mailfrom=vilanova@ac.upc.edu
-Return-Path: <vilanova@ac.upc.edu>
-Received: from roura.ac.upc.es (roura.ac.upc.edu. [147.83.33.10])
-        by mx.google.com with ESMTP id x72si1947650wmf.47.2017.07.12.04.06.01;
-        Wed, 12 Jul 2017 04:06:02 -0700 (PDT)
-Received-SPF: pass (google.com: domain of vilanova@ac.upc.edu designates 147.83.33.10 as permitted sender) client-ip=147.83.33.10;
+       dkim=pass header.i=@gmail.com header.b=U0uogcQT;
+       spf=pass (google.com: domain of rth7680@gmail.com designates 2607:f8b0:400d:c09::241 as permitted sender) smtp.mailfrom=rth7680@gmail.com
+Return-Path: <rth7680@gmail.com>
+Received: from mail-qk0-x241.google.com (mail-qk0-x241.google.com. [2607:f8b0:400d:c09::241])
+        by mx.google.com with ESMTPS id 35si2749870qtr.317.2017.07.12.09.53.33
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 12 Jul 2017 09:53:33 -0700 (PDT)
+Received-SPF: pass (google.com: domain of rth7680@gmail.com designates 2607:f8b0:400d:c09::241 as permitted sender) client-ip=2607:f8b0:400d:c09::241;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of vilanova@ac.upc.edu designates 147.83.33.10 as permitted sender) smtp.mailfrom=vilanova@ac.upc.edu
-Received: from correu-1.ac.upc.es (correu-1.ac.upc.es [147.83.30.91])
-	by roura.ac.upc.es (8.13.8/8.13.8) with ESMTP id v6CB5rWB007395;
-	Wed, 12 Jul 2017 13:05:53 +0200
-Received: from localhost (unknown [132.68.137.33])
-	by correu-1.ac.upc.es (Postfix) with ESMTPSA id 0D5143AF;
-	Wed, 12 Jul 2017 13:05:47 +0200 (CEST)
-From: =?utf-8?Q?Llu=C3=ADs_Vilanova?= <vilanova@ac.upc.edu>
-To: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
-        Peter Crosthwaite <crosthwaite.peter@gmail.com>, qemu-devel@nongnu.org,
-        "Emilio G. Cota" <cota@braap.org>,
-        "open list\:ARM" <qemu-arm@nongnu.org>,
-        Paolo Bonzini <pbonzini@redhat.com>,
-        Richard Henderson <rth@twiddle.net>
-Subject: Re: [Qemu-devel] [PATCH v12 21/27] target/arm: [tcg] Port to translate_insn
+       dkim=pass header.i=@gmail.com header.b=U0uogcQT;
+       spf=pass (google.com: domain of rth7680@gmail.com designates 2607:f8b0:400d:c09::241 as permitted sender) smtp.mailfrom=rth7680@gmail.com
+Received: by mail-qk0-x241.google.com with SMTP id q66so4793366qki.1;
+        Wed, 12 Jul 2017 09:53:33 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=sender:subject:to:cc:references:from:message-id:date:user-agent
+         :mime-version:in-reply-to:content-language:content-transfer-encoding;
+        bh=zBbNoW8os4Q0hp3va9BkXN0KyF21zTh1YmQndIjhDcc=;
+        b=U0uogcQTTrogxPjCCIDT3Kl5MHuPe5a8tvKAheKM5XJ4M4AAIsgHRyd463Li14wgBf
+         ahMxwHqdq3QZhDMVn5HuRXCeVlaUgYVu0DXAaRLopONcM6iQVIWhXaQQPbiQiXrRRTRV
+         Db5HFdj4PJmUKRZvniJn/mNuw93SOKsizCPRKZ1Y5mByWhNQad5g+iIcIYKWRCWXhOJT
+         lD80YUcYP5FGQLEy3x44LYubkRVxSjxK75u3xr3ypveazvzjAChrFjgTNrGMn2TREOoG
+         6z1mqt/jVQ9IE+JvcBF+SqbtymVLMC1xf5/qeD4P4LAbMtqugFrGMwclDU4nqPqmVFhT
+         RqBg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+         :date:user-agent:mime-version:in-reply-to:content-language
+         :content-transfer-encoding;
+        bh=zBbNoW8os4Q0hp3va9BkXN0KyF21zTh1YmQndIjhDcc=;
+        b=ngW+mauyju1ASmHppUJ4ThiqKBRH5GHK+rFLoceRJZYSo+eooA104oT4/bBdvc3S2V
+         0Yyf6h3XO6+jvS9h/gHS6llBgP7Cq7gCGczxNSL1QCSJ1Nx2jCHSntw04tiZvq8AFaHg
+         O9hl26265pLFftLFfSUCMYplreeoRsMYeg0YHJRCM9QOLwm29nN+GwQnYHbNxAQrzb8/
+         ZZvEAo4dz8J61KIuCl36Shf0Il7H+0saWLwziJosoDeBZd8usNEJEQcSz5DkHBtFu50J
+         r8RD5hLg/f+0Jdgz/iF/cbmofCntmQyMHJDDhfly4Rd1RfCGKDK+XzsEUlJh0dmgM7a9
+         bNsA==
+X-Gm-Message-State: AIVw112bbB+O7m9pIwqzUSrFPRQlRAQOCtikbxDwpj7ZvGtY9uFbMa/4
+	zPq/3EgEwyaO3A==
+X-Received: by 10.55.42.104 with SMTP id q101mr6988452qkh.84.1499878413103;
+        Wed, 12 Jul 2017 09:53:33 -0700 (PDT)
+Return-Path: <rth7680@gmail.com>
+Received: from bigtime.twiddle.net (rrcs-173-197-98-123.west.biz.rr.com. [173.197.98.123])
+        by smtp.googlemail.com with ESMTPSA id 143sm2105003qkf.8.2017.07.12.09.53.28
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 12 Jul 2017 09:53:32 -0700 (PDT)
+Sender: Richard Henderson <rth7680@gmail.com>
+Subject: Re: [PATCH v12 03/27] target: [tcg] Use a generic enum for DISAS_
+ values
+To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
+ =?UTF-8?Q?Llu=c3=ads_Vilanova?= <vilanova@ac.upc.edu>
+Cc: qemu-devel@nongnu.org, "Emilio G. Cota" <cota@braap.org>,
+ Peter Crosthwaite <crosthwaite.peter@gmail.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, Peter Maydell
+ <peter.maydell@linaro.org>, "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ Eduardo Habkost <ehabkost@redhat.com>, Michael Walle <michael@walle.cc>,
+ Laurent Vivier <laurent@vivier.eu>, Chris Wulff <crwulff@gmail.com>,
+ Marek Vasut <marex@denx.de>, Stafford Horne <shorne@gmail.com>,
+ Alexander Graf <agraf@suse.de>, Guan Xuetao <gxt@mprc.pku.edu.cn>,
+ Max Filippov <jcmvbkbc@gmail.com>, "open list:ARM" <qemu-arm@nongnu.org>
 References: <149942760788.8972.474351671751194003.stgit@frigg.lan>
-	<149943279497.8972.16033572732296843579.stgit@frigg.lan>
-	<87vamy804n.fsf@linaro.org>
-Mail-Followup-To: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>,
- Peter Maydell
-	<peter.maydell@linaro.org>, Peter Crosthwaite
-	<crosthwaite.peter@gmail.com>, qemu-devel@nongnu.org, "Emilio G. Cota"
-	<cota@braap.org>, "open list\:ARM" <qemu-arm@nongnu.org>, Paolo Bonzini
-	<pbonzini@redhat.com>, Richard Henderson <rth@twiddle.net>
-Date: Wed, 12 Jul 2017 14:05:46 +0300
-In-Reply-To: <87vamy804n.fsf@linaro.org> ("Alex =?utf-8?Q?Benn=C3=A9e=22's?=
- message of "Wed, 12
-	Jul 2017 10:39:36 +0100")
-Message-ID: <87inixewz9.fsf@frigg.lan>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/25.1 (gnu/linux)
+ <149942834870.8972.2146924083027836035.stgit@frigg.lan>
+ <87bmoq9g13.fsf@linaro.org>
+From: Richard Henderson <rth@twiddle.net>
+Message-ID: <c3e23be8-17f2-1fc8-5e4f-9aba38b1c1a7@twiddle.net>
+Date: Wed, 12 Jul 2017 06:53:25 -1000
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+ Thunderbird/52.2.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-TUID: 5B1p0X6LSyVw
+In-Reply-To: <87bmoq9g13.fsf@linaro.org>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+X-TUID: TtJGYejAVjQI
 
-Alex Benn=C3=A9e writes:
+On 07/11/2017 11:10 PM, Alex Bennée wrote:
+>> +typedef enum DisasJumpType {
+>> +    DISAS_NEXT,
+>> +    DISAS_TOO_MANY,
+> 
+> Is DISAS_TOO_MANY really a useful distinction. Sure we have ended the
+> loop because of an instruction limit but the more important information
+> is what it means for the epilogue code and how we go to the next block.
 
-> Llu=C3=ADs Vilanova <vilanova@ac.upc.edu> writes:
+Yes. I think it is.
 
->> Incrementally paves the way towards using the generic instruction transl=
-ation
->> loop.
->>=20
->> Signed-off-by: Llu=C3=ADs Vilanova <vilanova@ac.upc.edu>
->> ---
->> target/arm/translate.c |  148 ++++++++++++++++++++++++++++--------------=
-------
->> target/arm/translate.h |    2 +
->> 2 files changed, 87 insertions(+), 63 deletions(-)
->>=20
->> diff --git a/target/arm/translate.c b/target/arm/translate.c
->> index 29428b2920..9d033f2fb7 100644
->> --- a/target/arm/translate.c
->> +++ b/target/arm/translate.c
->> @@ -11842,6 +11842,9 @@ static void arm_tr_init_disas_context(DisasConte=
-xtBase *dcbase,
-dc-> is_ldex =3D false;
-dc-> ss_same_el =3D false; /* Can't be true since EL_d must be AArch64 */
->>=20
->> +    dc->next_page_start =3D
->> +        (dc->base.pc_first & TARGET_PAGE_MASK) + TARGET_PAGE_SIZE;
->> +
->>=20
->> cpu_F0s =3D tcg_temp_new_i32();
->> cpu_F1s =3D tcg_temp_new_i32();
->> @@ -11942,14 +11945,83 @@ static BreakpointCheckType arm_tr_breakpoint_c=
-heck(
->> }
->> }
->>=20
->> +static target_ulong arm_tr_translate_insn(DisasContextBase *dcbase,
->> +                                               CPUState *cpu)
->> +{
->> +    DisasContext *dc =3D container_of(dcbase, DisasContext, base);
->> +    CPUARMState *env =3D cpu->env_ptr;
->> +
->> +    if (dc->ss_active && !dc->pstate_ss) {
->> +        /* Singlestep state is Active-pending.
->> +         * If we're in this state at the start of a TB then either
->> +         *  a) we just took an exception to an EL which is being debugg=
-ed
->> +         *     and this is the first insn in the exception handler
->> +         *  b) debug exceptions were masked and we just unmasked them
->> +         *     without changing EL (eg by clearing PSTATE.D)
->> +         * In either case we're going to take a swstep exception in the
->> +         * "did not step an insn" case, and so the syndrome ISV and EX
->> +         * bits should be zero.
->> +         */
->> +        assert(dc->base.num_insns =3D=3D 1);
->> +        gen_exception(EXCP_UDEF, syn_swstep(dc->ss_same_el, 0, 0),
->> +                      default_exception_el(dc));
->> +        dc->base.is_jmp =3D DISAS_SKIP;
->> +        return dc->pc;
->> +    }
->> +
->> +    if (dc->thumb) {
->> +        disas_thumb_insn(env, dc);
->> +        if (dc->condexec_mask) {
->> +            dc->condexec_cond =3D (dc->condexec_cond & 0xe)
->> +                | ((dc->condexec_mask >> 4) & 1);
->> +            dc->condexec_mask =3D (dc->condexec_mask << 1) & 0x1f;
->> +            if (dc->condexec_mask =3D=3D 0) {
->> +                dc->condexec_cond =3D 0;
->> +            }
->> +        }
->> +    } else {
->> +        unsigned int insn =3D arm_ldl_code(env, dc->pc, dc->sctlr_b);
->> +        dc->pc +=3D 4;
->> +        disas_arm_insn(dc, insn);
->> +    }
->> +
->> +    if (dc->condjmp && !dc->base.is_jmp) {
->> +        gen_set_label(dc->condlabel);
->> +        dc->condjmp =3D 0;
->> +    }
->> +
->> +    if (dc->base.is_jmp =3D=3D DISAS_NEXT) {
->> +        /* Translation stops when a conditional branch is encountered.
->> +         * Otherwise the subsequent code could get translated several t=
-imes.
->> +         * Also stop translation when a page boundary is reached.  This
->> +         * ensures prefetch aborts occur at the right place.  */
->> +
->> +        if (is_singlestepping(dc)) {
->> +            dc->base.is_jmp =3D DISAS_TOO_MANY;
->> +        } else if ((dc->pc >=3D dc->next_page_start) ||
->> +                   ((dc->pc >=3D dc->next_page_start - 3) &&
->> +                    insn_crosses_page(env, dc))) {
->> +            /* We want to stop the TB if the next insn starts in a new =
-page,
->> +             * or if it spans between this page and the next. This mean=
-s that
->> +             * if we're looking at the last halfword in the page we nee=
-d to
->> +             * see if it's a 16-bit Thumb insn (which will fit in this =
-TB)
->> +             * or a 32-bit Thumb insn (which won't).
->> +             * This is to avoid generating a silly TB with a single 16-=
-bit insn
->> +             * in it at the end of this page (which would execute corre=
-ctly
->> +             * but isn't very efficient).
->> +             */
->> +            dc->base.is_jmp =3D DISAS_TOO_MANY;
->> +        }
->> +    }
->> +
->> +    return dc->pc;
->> +}
->> +
->> /* generate intermediate code for basic block 'tb'.  */
->> void gen_intermediate_code(CPUState *cs, TranslationBlock *tb)
->> {
->> -    CPUARMState *env =3D cs->env_ptr;
->> DisasContext dc1, *dc =3D &dc1;
->> -    target_ulong next_page_start;
->> int max_insns;
->> -    bool end_of_page;
->>=20
->> /* generate intermediate code */
->>=20
->> @@ -11969,7 +12041,6 @@ void gen_intermediate_code(CPUState *cs, Transla=
-tionBlock *tb)
-dc-> base.singlestep_enabled =3D cs->singlestep_enabled;
->> arm_tr_init_disas_context(&dc->base, cs);
->>=20
->> -    next_page_start =3D (dc->base.pc_first & TARGET_PAGE_MASK) + TARGET=
-_PAGE_SIZE;
->> max_insns =3D tb->cflags & CF_COUNT_MASK;
->> if (max_insns =3D=3D 0) {
->> max_insns =3D CF_COUNT_MASK;
->> @@ -12020,72 +12091,20 @@ void gen_intermediate_code(CPUState *cs, Trans=
-lationBlock *tb)
->> gen_io_start();
->> }
->>=20
->> -        if (dc->ss_active && !dc->pstate_ss) {
->> -            /* Singlestep state is Active-pending.
->> -             * If we're in this state at the start of a TB then either
->> -             *  a) we just took an exception to an EL which is being de=
-bugged
->> -             *     and this is the first insn in the exception handler
->> -             *  b) debug exceptions were masked and we just unmasked th=
-em
->> -             *     without changing EL (eg by clearing PSTATE.D)
->> -             * In either case we're going to take a swstep exception in=
- the
->> -             * "did not step an insn" case, and so the syndrome ISV and=
- EX
->> -             * bits should be zero.
->> -             */
->> -            assert(dc->base.num_insns =3D=3D 1);
->> -            gen_exception(EXCP_UDEF, syn_swstep(dc->ss_same_el, 0, 0),
->> -                          default_exception_el(dc));
->> -            goto done_generating;
->> -        }
->> -
->> -        if (dc->thumb) {
->> -            disas_thumb_insn(env, dc);
->> -            if (dc->condexec_mask) {
->> -                dc->condexec_cond =3D (dc->condexec_cond & 0xe)
->> -                                   | ((dc->condexec_mask >> 4) & 1);
->> -                dc->condexec_mask =3D (dc->condexec_mask << 1) & 0x1f;
->> -                if (dc->condexec_mask =3D=3D 0) {
->> -                    dc->condexec_cond =3D 0;
->> -                }
->> -            }
->> -        } else {
->> -            unsigned int insn =3D arm_ldl_code(env, dc->pc, dc->sctlr_b=
-);
->> -            dc->pc +=3D 4;
->> -            disas_arm_insn(dc, insn);
->> -        }
->> -
->> -        if (dc->condjmp && !dc->base.is_jmp) {
->> -            gen_set_label(dc->condlabel);
->> -            dc->condjmp =3D 0;
->> -        }
->> +        dc->base.pc_next =3D arm_tr_translate_insn(&dc->base, cs);
->>=20
->> if (tcg_check_temp_count()) {
->> fprintf(stderr, "TCG temporary leak before "TARGET_FMT_lx"\n",
-dc-> pc);
->> }
->>=20
->> -        /* Translation stops when a conditional branch is encountered.
->> -         * Otherwise the subsequent code could get translated several t=
-imes.
->> -         * Also stop translation when a page boundary is reached.  This
->> -         * ensures prefetch aborts occur at the right place.  */
->> -
->> -        /* We want to stop the TB if the next insn starts in a new page,
->> -         * or if it spans between this page and the next. This means th=
-at
->> -         * if we're looking at the last halfword in the page we need to
->> -         * see if it's a 16-bit Thumb insn (which will fit in this TB)
->> -         * or a 32-bit Thumb insn (which won't).
->> -         * This is to avoid generating a silly TB with a single 16-bit =
-insn
->> -         * in it at the end of this page (which would execute correctly
->> -         * but isn't very efficient).
->> -         */
->> -        end_of_page =3D (dc->pc >=3D next_page_start) ||
->> -            ((dc->pc >=3D next_page_start - 3) && insn_crosses_page(env=
-, dc));
->> -
->> -    } while (!dc->base.is_jmp && !tcg_op_buf_full() &&
->> -             !is_singlestepping(dc) &&
->> -             !singlestep &&
->> -             !end_of_page &&
->> -             dc->base.num_insns < max_insns);
->> +        if (!dc->base.is_jmp && (tcg_op_buf_full() || singlestep ||
->> +                            dc->base.num_insns >=3D max_insns)) {
->> +            dc->base.is_jmp =3D DISAS_TOO_MANY;
->> +        }
->> +    } while (!dc->base.is_jmp);
->>=20
->> +    if (dc->base.is_jmp !=3D DISAS_SKIP) {
->> if (tb->cflags & CF_LAST_IO) {
->> if (dc->condjmp) {
->> /* FIXME:  This can theoretically happen with self-modifying
->> @@ -12123,6 +12142,7 @@ void gen_intermediate_code(CPUState *cs, Transla=
-tionBlock *tb)
->> gen_exception(EXCP_SMC, syn_aa32_smc(), 3);
->> break;
->> case DISAS_NEXT:
->> +        case DISAS_TOO_MANY:
->> case DISAS_UPDATE:
->> gen_set_pc_im(dc, dc->pc);
->> /* fall through */
->> @@ -12141,6 +12161,7 @@ void gen_intermediate_code(CPUState *cs, Transla=
-tionBlock *tb)
->> */
->> switch(dc->base.is_jmp) {
->> case DISAS_NEXT:
->> +        case DISAS_TOO_MANY:
->> gen_goto_tb(dc, 1, dc->pc);
->> break;
->> case DISAS_UPDATE:
->> @@ -12194,6 +12215,7 @@ void gen_intermediate_code(CPUState *cs, Transla=
-tionBlock *tb)
->> gen_goto_tb(dc, 1, dc->pc);
->> }
->> }
->> +    }
->>=20
->> done_generating:
->> gen_tb_end(tb, dc->base.num_insns);
->> diff --git a/target/arm/translate.h b/target/arm/translate.h
->> index 6fe40a344a..83e56dcb08 100644
->> --- a/target/arm/translate.h
->> +++ b/target/arm/translate.h
->> @@ -9,6 +9,7 @@ typedef struct DisasContext {
->> DisasContextBase base;
->>=20
->> target_ulong pc;
->> +    target_ulong next_page_start;
->> uint32_t insn;
->> /* Nonzero if this instruction has been conditionally skipped.  */
->> int condjmp;
->> @@ -148,6 +149,7 @@ static void disas_set_insn_syndrome(DisasContext *s,=
- uint32_t syn)
->> * as opposed to attempting to use lookup_and_goto_ptr.
->> */
->> #define DISAS_EXIT DISAS_TARGET_11
->> +#define DISAS_SKIP DISAS_TARGET_12
+The reason is that it is the way that the generic loop can tell the target hook 
+that it terminated the instruction fetch loop.  There may (or may not) be 
+something special that the target needs to do for that specific case.
 
-> What are the semantics of this new exit condition? This seems a case
-> that should be covered a well defined common exit condition rather than
-> yet-another-architecture specific one.
 
-Right. As per Richard's suggestion, this is now the generic DISAS_NORETURN =
-(on
-the future v13).
-
-Cheers,
-  Lluis
+r~

@@ -1,24 +1,24 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaro.local ([81.128.185.34])
-        by smtp.gmail.com with ESMTPSA id j31sm950224wre.67.2017.07.12.02.30.25
+        by smtp.gmail.com with ESMTPSA id g83sm1429762wmf.29.2017.07.12.02.31.44
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 12 Jul 2017 02:30:26 -0700 (PDT)
+        Wed, 12 Jul 2017 02:31:44 -0700 (PDT)
 Received: from zen (localhost [127.0.0.1])
-	by zen.linaro.local (Postfix) with ESMTPS id 6A7D93E01BB;
-	Wed, 12 Jul 2017 10:30:25 +0100 (BST)
-References: <149942760788.8972.474351671751194003.stgit@frigg.lan> <149943131289.8972.14899352517803578316.stgit@frigg.lan>
+	by zen.linaro.local (Postfix) with ESMTPS id 9EB9A3E01BB;
+	Wed, 12 Jul 2017 10:31:43 +0100 (BST)
+References: <149942760788.8972.474351671751194003.stgit@frigg.lan> <149943155988.8972.13072889393603458854.stgit@frigg.lan>
 User-agent: mu4e 0.9.19; emacs 25.2.50.3
 From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: =?utf-8?Q?Llu=C3=ADs?= Vilanova <vilanova@ac.upc.edu>
 Cc: qemu-devel@nongnu.org, "Emilio G. Cota" <cota@braap.org>, Richard Henderson <rth@twiddle.net>, Peter Crosthwaite <crosthwaite.peter@gmail.com>, Paolo Bonzini <pbonzini@redhat.com>, Peter Maydell <peter.maydell@linaro.org>, "open list\:ARM" <qemu-arm@nongnu.org>
-Subject: Re: [PATCH v12 15/27] target/arm: [tcg,a64] Port to init_disas_context
-In-reply-to: <149943131289.8972.14899352517803578316.stgit@frigg.lan>
-Date: Wed, 12 Jul 2017 10:30:25 +0100
-Message-ID: <871spm9f4e.fsf@linaro.org>
+Subject: Re: [PATCH v12 16/27] target/arm: [tcg] Port to tb_start
+In-reply-to: <149943155988.8972.13072889393603458854.stgit@frigg.lan>
+Date: Wed, 12 Jul 2017 10:31:43 +0100
+Message-ID: <87zica80hs.fsf@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 8bit
-X-TUID: vJCb/ibJrS0h
+X-TUID: AqK2lL0EueS6
 
 
 Lluís Vilanova <vilanova@ac.upc.edu> writes:
@@ -32,72 +32,110 @@ Lluís Vilanova <vilanova@ac.upc.edu> writes:
 Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
 
 > ---
->  target/arm/translate-a64.c |   36 ++++++++++++++++++++++--------------
->  1 file changed, 22 insertions(+), 14 deletions(-)
+>  target/arm/translate.c |   82 ++++++++++++++++++++++++++----------------------
+>  1 file changed, 44 insertions(+), 38 deletions(-)
 >
-> diff --git a/target/arm/translate-a64.c b/target/arm/translate-a64.c
-> index 4270ac3847..5c04ff3d8b 100644
-> --- a/target/arm/translate-a64.c
-> +++ b/target/arm/translate-a64.c
-> @@ -11190,21 +11190,12 @@ static void disas_a64_insn(CPUARMState *env, DisasContext *s)
->      free_tmp_a64(s);
+> diff --git a/target/arm/translate.c b/target/arm/translate.c
+> index 0179b1ce79..22af4e372a 100644
+> --- a/target/arm/translate.c
+> +++ b/target/arm/translate.c
+> @@ -11853,6 +11853,49 @@ static void arm_tr_init_disas_context(DisasContextBase *dcbase,
+>      cpu_M0 = tcg_temp_new_i64();
 >  }
 >
-> -void gen_intermediate_code_a64(DisasContextBase *dcbase, CPUState *cs,
-> -                               TranslationBlock *tb)
-> +static void aarch64_tr_init_disas_context(DisasContextBase *dcbase,
-> +                                               CPUState *cpu)
->  {
-> -    CPUARMState *env = cs->env_ptr;
-> -    ARMCPU *cpu = arm_env_get_cpu(env);
->      DisasContext *dc = container_of(dcbase, DisasContext, base);
-> -    target_ulong next_page_start;
-> -    int max_insns;
-> -
-> -    dc->base.tb = tb;
-> -    dc->base.pc_first = dc->base.tb->pc;
-> -    dc->base.pc_next = dc->base.pc_first;
-> -    dc->base.is_jmp = DISAS_NEXT;
-> -    dc->base.num_insns = 0;
-> -    dc->base.singlestep_enabled = cs->singlestep_enabled;
-> +    CPUARMState *env = cpu->env_ptr;
-> +    ARMCPU *arm_cpu = arm_env_get_cpu(env);
->
->      dc->pc = dc->base.pc_first;
->      dc->condjmp = 0;
-> @@ -11230,7 +11221,7 @@ void gen_intermediate_code_a64(DisasContextBase *dcbase, CPUState *cs,
->      dc->fp_excp_el = ARM_TBFLAG_FPEXC_EL(dc->base.tb->flags);
->      dc->vec_len = 0;
->      dc->vec_stride = 0;
-> -    dc->cp_regs = cpu->cp_regs;
-> +    dc->cp_regs = arm_cpu->cp_regs;
->      dc->features = env->features;
->
->      /* Single step state. The code-generation logic here is:
-> @@ -11254,6 +11245,23 @@ void gen_intermediate_code_a64(DisasContextBase *dcbase, CPUState *cs,
->      dc->ss_same_el = (arm_debug_target_el(env) == dc->current_el);
->
->      init_tmp_a64_array(dc);
+> +static void arm_tr_tb_start(DisasContextBase *dcbase, CPUState *cpu)
+> +{
+> +    DisasContext *dc = container_of(dcbase, DisasContext, base);
+> +
+> +    /* A note on handling of the condexec (IT) bits:
+> +     *
+> +     * We want to avoid the overhead of having to write the updated condexec
+> +     * bits back to the CPUARMState for every instruction in an IT block. So:
+> +     * (1) if the condexec bits are not already zero then we write
+> +     * zero back into the CPUARMState now. This avoids complications trying
+> +     * to do it at the end of the block. (For example if we don't do this
+> +     * it's hard to identify whether we can safely skip writing condexec
+> +     * at the end of the TB, which we definitely want to do for the case
+> +     * where a TB doesn't do anything with the IT state at all.)
+> +     * (2) if we are going to leave the TB then we call gen_set_condexec()
+> +     * which will write the correct value into CPUARMState if zero is wrong.
+> +     * This is done both for leaving the TB at the end, and for leaving
+> +     * it because of an exception we know will happen, which is done in
+> +     * gen_exception_insn(). The latter is necessary because we need to
+> +     * leave the TB with the PC/IT state just prior to execution of the
+> +     * instruction which caused the exception.
+> +     * (3) if we leave the TB unexpectedly (eg a data abort on a load)
+> +     * then the CPUARMState will be wrong and we need to reset it.
+> +     * This is handled in the same way as restoration of the
+> +     * PC in these situations; we save the value of the condexec bits
+> +     * for each PC via tcg_gen_insn_start(), and restore_state_to_opc()
+> +     * then uses this to restore them after an exception.
+> +     *
+> +     * Note that there are no instructions which can read the condexec
+> +     * bits, and none which can write non-static values to them, so
+> +     * we don't need to care about whether CPUARMState is correct in the
+> +     * middle of a TB.
+> +     */
+> +
+> +    /* Reset the conditional execution bits immediately. This avoids
+> +       complications trying to do it at the end of the block.  */
+> +    if (dc->condexec_mask || dc->condexec_cond) {
+> +        TCGv_i32 tmp = tcg_temp_new_i32();
+> +        tcg_gen_movi_i32(tmp, 0);
+> +        store_cpu_field(tmp, condexec_bits);
+> +    }
 > +}
 > +
-> +void gen_intermediate_code_a64(DisasContextBase *dcbase, CPUState *cs,
-> +                               TranslationBlock *tb)
-> +{
-> +    CPUARMState *env = cs->env_ptr;
-> +    DisasContext *dc = container_of(dcbase, DisasContext, base);
-> +    target_ulong next_page_start;
-> +    int max_insns;
-> +
-> +    dc->base.tb = tb;
-> +    dc->base.pc_first = dc->base.tb->pc;
-> +    dc->base.pc_next = dc->base.pc_first;
-> +    dc->base.is_jmp = DISAS_NEXT;
-> +    dc->base.num_insns = 0;
-> +    dc->base.singlestep_enabled = cs->singlestep_enabled;
-> +    aarch64_tr_init_disas_context(&dc->base, cs);
+>  /* generate intermediate code for basic block 'tb'.  */
+>  void gen_intermediate_code(CPUState *cs, TranslationBlock *tb)
+>  {
+> @@ -11892,45 +11935,8 @@ void gen_intermediate_code(CPUState *cs, TranslationBlock *tb)
+>      gen_tb_start(tb);
 >
->      next_page_start = (dc->base.pc_first & TARGET_PAGE_MASK) + TARGET_PAGE_SIZE;
->      max_insns = dc->base.tb->cflags & CF_COUNT_MASK;
+>      tcg_clear_temp_count();
+> +    arm_tr_tb_start(&dc->base, cs);
+>
+> -    /* A note on handling of the condexec (IT) bits:
+> -     *
+> -     * We want to avoid the overhead of having to write the updated condexec
+> -     * bits back to the CPUARMState for every instruction in an IT block. So:
+> -     * (1) if the condexec bits are not already zero then we write
+> -     * zero back into the CPUARMState now. This avoids complications trying
+> -     * to do it at the end of the block. (For example if we don't do this
+> -     * it's hard to identify whether we can safely skip writing condexec
+> -     * at the end of the TB, which we definitely want to do for the case
+> -     * where a TB doesn't do anything with the IT state at all.)
+> -     * (2) if we are going to leave the TB then we call gen_set_condexec()
+> -     * which will write the correct value into CPUARMState if zero is wrong.
+> -     * This is done both for leaving the TB at the end, and for leaving
+> -     * it because of an exception we know will happen, which is done in
+> -     * gen_exception_insn(). The latter is necessary because we need to
+> -     * leave the TB with the PC/IT state just prior to execution of the
+> -     * instruction which caused the exception.
+> -     * (3) if we leave the TB unexpectedly (eg a data abort on a load)
+> -     * then the CPUARMState will be wrong and we need to reset it.
+> -     * This is handled in the same way as restoration of the
+> -     * PC in these situations; we save the value of the condexec bits
+> -     * for each PC via tcg_gen_insn_start(), and restore_state_to_opc()
+> -     * then uses this to restore them after an exception.
+> -     *
+> -     * Note that there are no instructions which can read the condexec
+> -     * bits, and none which can write non-static values to them, so
+> -     * we don't need to care about whether CPUARMState is correct in the
+> -     * middle of a TB.
+> -     */
+> -
+> -    /* Reset the conditional execution bits immediately. This avoids
+> -       complications trying to do it at the end of the block.  */
+> -    if (dc->condexec_mask || dc->condexec_cond)
+> -      {
+> -        TCGv_i32 tmp = tcg_temp_new_i32();
+> -        tcg_gen_movi_i32(tmp, 0);
+> -        store_cpu_field(tmp, condexec_bits);
+> -      }
+>      do {
+>          dc->base.num_insns++;
+>          dc->insn_start_idx = tcg_op_buf_count();
 
 
 --

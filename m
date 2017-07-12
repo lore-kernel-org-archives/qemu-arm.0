@@ -1,91 +1,69 @@
-Received: by 10.25.44.15 with SMTP id s15csp613988lfs;
-        Wed, 12 Jul 2017 03:27:52 -0700 (PDT)
-X-Received: by 10.55.215.26 with SMTP id m26mr5066994qki.95.1499855272367;
-        Wed, 12 Jul 2017 03:27:52 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1499855272; cv=none;
+Received: by 10.25.44.15 with SMTP id s15csp641704lfs;
+        Wed, 12 Jul 2017 03:57:02 -0700 (PDT)
+X-Received: by 10.55.73.131 with SMTP id w125mr5048490qka.264.1499857022797;
+        Wed, 12 Jul 2017 03:57:02 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1499857022; cv=none;
         d=google.com; s=arc-20160816;
-        b=x0rpxWpbFuL6tp3OhK2Cmmvf8qNOuKso9p8CqnrKh2utiEruLQ8oPSejEdSuhoSUl2
-         CJDwLFRx6Q6pCvWzMzqFn9abRwgA/C3GCJmKBW5ir8qGsy5NJ6VWKk0hS4rSH/BmQcQN
-         MVtwbN9X7PbuFYWtXX9JO8aEE/OfEyC2NqP4T0kbKDqXkcIGJZcAys18+3oZdFy3tvoV
-         dhP6KHHlzc1679bDwWCa9UOUl+mXebvWBc+tefBsfeHw/4e7esbJbOlMG4VnWCY2KEDS
-         bpts+3u7Rc3LlEBgTpQFrq3ogCSbxWvv5MHmbeqdlQdi2moWC6UbW8fhdfRpsC2pfQ0/
-         J5rg==
+        b=vFEotlNIUh1tycviSB4JhOn2AZVOkJbJ3fBYtJeUIDXM8Q85c5FYycZyMde/mXdTSq
+         GYz8OX64nUu9q0UdHMP4i+N31zGbNHyDWuHENysAvHO9drgPIjux0e94R6HI0Kj59bnh
+         9w4FIINdKOZo7CFBq6i9Qqu6haBoyNwPMUG7rYJdi1CCRSVcP3P0JALGCltFp5GPCgbx
+         NYdVsa3BxOf1ev9uRhTTZ7Ga0PiyV1dA9lfCnmxLwg9np2h56IF0UX8iHDY9NUq/MVRa
+         pleGqih/miZ4KmwikleVXEPrxPMxXPwPgfrNy64YNAz6tv7DPSX+/6p/5de9GIpNPC8O
+         xTCw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:mime-version
-         :content-transfer-encoding:spamdiagnosticmetadata
-         :spamdiagnosticoutput:content-language:accept-language:in-reply-to
-         :references:message-id:date:thread-index:thread-topic:to:from
-         :dkim-signature:arc-authentication-results;
-        bh=8+RQzYTlid3NZuOS65HZDcFbXPgAXMSFLmgENkb4V0g=;
-        b=bY+mXUb0Bxw+DF5G4TgR7jOOnBGHNzqbxdKy/ducqWK8dwpWMrEo4BPmWdKmU1ax6n
-         j2rd7oW2Vrl0eXc2zqbRoqa16MO5jEK1LL1+cN6XxJLZWOL1pytj53z6JBUILxHAiqgB
-         kLlXTWTJYWYCY+o2svUB/kGWmGAKjqw7QwkdVF+Z4qjIV1BpRUnJCN1oZI4RmputJ8W/
-         OtQ28bkJavbKyjTDVuhZ1ITtBPJ0kcoAXX5glQF9QFdF0kyleIYB1H2VZaDL8iFK2v6z
-         IKsPhfTDYH/aALa+rf5getI2tjRIN+lqnC9/OY7A+LjVR0kgfbT2Ty2uHyUckxVodKDj
-         G3HQ==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:to
+         :arc-authentication-results;
+        bh=xQe1FJbLXeN8k7ILWZox+DNDL3FmpS51runaVCrwEBk=;
+        b=hgL40bbB6EOcGR5KeLZhMjtBEvTMWcwEkxGKWkK9duV9DOJv8hRzTbnWO+TbAa0OTj
+         04c2e7ptwt3y3o2/9gUuyhFd9wOkw2phEA3chGMP64O445qmgELoIpTZNJv8v5ZDZufs
+         a34CzeVXBceo1dEKtuKuBGc07fc2J/N+sWUtAXTCVvDoYkyJS418oIftP6cRRdKEkT2a
+         NwWgMNrCyXCMe2sYRzc+GeDmM2k7LMG/oSqqXbDQKkNT+qcgZNGI8z3sPxh9YqsXzo/h
+         B4s+bviOaUoFDGMTDMi8w1/0dtiNg13BolHtfT592rTuQhcnPpcK6VlY4hIqtiX8rBzO
+         GfWg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@nxp.com header.b=P5IYFkq8;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=nxp.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [208.118.235.17])
-        by mx.google.com with ESMTPS id p10si1928537qke.174.2017.07.12.03.27.51
+        by mx.google.com with ESMTPS id x46si1973401qth.258.2017.07.12.03.57.01
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 12 Jul 2017 03:27:52 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) client-ip=208.118.235.17;
+        Wed, 12 Jul 2017 03:57:02 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) client-ip=208.118.235.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@nxp.com header.b=P5IYFkq8;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=nxp.com
-Received: from localhost ([::1]:51572 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:51712 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1dVEs1-0008TZ-Ew
-	for alex.bennee@linaro.org; Wed, 12 Jul 2017 06:27:49 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:54421)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1dVFKF-0007lD-Oh
+	for alex.bennee@linaro.org; Wed, 12 Jul 2017 06:56:59 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:33496)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <bharat.bhushan@nxp.com>) id 1dVErv-0008TQ-2T
-	for qemu-arm@nongnu.org; Wed, 12 Jul 2017 06:27:44 -0400
+	(envelope-from <jean-philippe.brucker@arm.com>) id 1dVFIV-0006YB-3B
+	for qemu-devel@nongnu.org; Wed, 12 Jul 2017 06:55:13 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <bharat.bhushan@nxp.com>) id 1dVErq-00056M-OD
-	for qemu-arm@nongnu.org; Wed, 12 Jul 2017 06:27:43 -0400
-Received: from mail-he1eur01on0085.outbound.protection.outlook.com
-	([104.47.0.85]:19168
-	helo=EUR01-HE1-obe.outbound.protection.outlook.com)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <bharat.bhushan@nxp.com>)
-	id 1dVErp-00053o-Dx; Wed, 12 Jul 2017 06:27:38 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=nxp.com; s=selector1; 
-	h=From:Date:Subject:Message-ID:Content-Type:MIME-Version;
-	bh=8+RQzYTlid3NZuOS65HZDcFbXPgAXMSFLmgENkb4V0g=;
-	b=P5IYFkq8bPhxDgPFkClavuoX341aDH92GFCnXg399qrhmrl2JMhz4Xb1CE0okGVoZ6U5WRWNYvO7kS1fi8syBSFKCWYnkzP8EFiXCduMDX+KE9n8y6YybeJmuVhlZbO1Pw/nDkq+3NuDACYT4foNuH/ku6fLISFQohCoQhVYw+A=
-Received: from HE1PR0401MB2556.eurprd04.prod.outlook.com (10.168.148.10) by
-	HE1PR0401MB2554.eurprd04.prod.outlook.com (10.168.148.8) with Microsoft
-	SMTP Server (version=TLS1_2,
-	cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id
-	15.1.1240.13; Wed, 12 Jul 2017 10:27:31 +0000
-Received: from HE1PR0401MB2556.eurprd04.prod.outlook.com
-	([fe80::d985:38ae:fd1:4e88]) by
-	HE1PR0401MB2556.eurprd04.prod.outlook.com
-	([fe80::d985:38ae:fd1:4e88%18]) with mapi id 15.01.1240.018;
-	Wed, 12 Jul 2017 10:27:31 +0000
-From: Bharat Bhushan <bharat.bhushan@nxp.com>
-To: Jean-Philippe Brucker <jean-philippe.brucker@arm.com>, Auger Eric
-	<eric.auger@redhat.com>, "eric.auger.pro@gmail.com"
-	<eric.auger.pro@gmail.com>, "peter.maydell@linaro.org"
-	<peter.maydell@linaro.org>, "alex.williamson@redhat.com"
-	<alex.williamson@redhat.com>, "mst@redhat.com" <mst@redhat.com>,
-	"qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, "qemu-devel@nongnu.org"
-	<qemu-devel@nongnu.org>
-Thread-Topic: [Qemu-devel] [RFC v2 0/8] VIRTIO-IOMMU device
-Thread-Index: AQHS36dbfM0cmMlk0UqAg6W7m9YdMaIcD2KwgAAIugCAAE8owIAAB4qAgA9wB1CACwTDgIAOGkuAgAAYhwCAAABHwIABqBOAgAAO8rCAAK1NgIAAlZ9ggAAUmACAAEJWMIAAQhWAgAWiB3CAAH22AIAA+W8QgABuLgCAAAA+4A==
-Date: Wed, 12 Jul 2017 10:27:31 +0000
-Message-ID: <HE1PR0401MB25560018AA040A0B6A97BF599AAF0@HE1PR0401MB2556.eurprd04.prod.outlook.com>
+	(envelope-from <jean-philippe.brucker@arm.com>) id 1dVFIT-0002gZ-FS
+	for qemu-devel@nongnu.org; Wed, 12 Jul 2017 06:55:11 -0400
+Received: from usa-sjc-mx-foss1.foss.arm.com ([217.140.101.70]:32942
+	helo=foss.arm.com) by eggs.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <jean-philippe.brucker@arm.com>)
+	id 1dVFIO-0002bQ-30; Wed, 12 Jul 2017 06:55:04 -0400
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.72.51.249])
+	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 284C82B;
+	Wed, 12 Jul 2017 03:55:02 -0700 (PDT)
+Received: from [10.1.211.12] (e106794-lin.cambridge.arm.com [10.1.211.12])
+	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id B4F803F5B0;
+	Wed, 12 Jul 2017 03:54:59 -0700 (PDT)
+To: Bharat Bhushan <bharat.bhushan@nxp.com>,
+	Auger Eric <eric.auger@redhat.com>,
+	"eric.auger.pro@gmail.com" <eric.auger.pro@gmail.com>,
+	"peter.maydell@linaro.org" <peter.maydell@linaro.org>,
+	"alex.williamson@redhat.com" <alex.williamson@redhat.com>,
+	"mst@redhat.com" <mst@redhat.com>, "qemu-arm@nongnu.org"
+	<qemu-arm@nongnu.org>, "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
 References: <1496851287-9428-1-git-send-email-eric.auger@redhat.com>
-	<HE1PR0401MB2556D19D91F25DCE96FE7B199AD40@HE1PR0401MB2556.eurprd04.prod.outlook.com>
-	<8a7fb667-e6c0-2412-6dca-a8233dd27836@redhat.com>
 	<HE1PR0401MB255696A487DFEB2B8972980F9AD40@HE1PR0401MB2556.eurprd04.prod.outlook.com>
 	<e9ea564a-f02b-0ed5-e700-b7b1dfd89722@arm.com>
 	<AM5PR0401MB25459345E9533FFC3BBE00289AD50@AM5PR0401MB2545.eurprd04.prod.outlook.com>
@@ -98,235 +76,316 @@ References: <1496851287-9428-1-git-send-email-eric.auger@redhat.com>
 	<9cdd8947-2c8a-4106-1a1a-56c2238843d6@arm.com>
 	<AM5PR0401MB25457988FA1531A684FF0DC09AAF0@AM5PR0401MB2545.eurprd04.prod.outlook.com>
 	<659fc660-9f3b-7ef4-a041-8ba6d49e8345@arm.com>
-In-Reply-To: <659fc660-9f3b-7ef4-a041-8ba6d49e8345@arm.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: arm.com; dkim=none (message not signed)
-	header.d=none;arm.com; dmarc=none action=none header.from=nxp.com;
-x-originating-ip: [192.88.169.1]
-x-ms-publictraffictype: Email
-x-microsoft-exchange-diagnostics: 1; HE1PR0401MB2554;
-	7:h3Qpjj8vhxqf4/CpgqETClF2uISzO3Wyv5gVC83Y9/hRx4UwhjoH3VMLwiN+emGsgkK32BPYgQDENaXpc0n9yQA7XmlLFUFCZ6g39407Hkf3XA6i1AfPtD/BYHI92tEgQm2q4KfQWfgXszRBrQ3YUH3gEBdmfeRB7RgVZ6HGvUOCZrZlvZOaDq35S300hpV+gEziO1ThueFyiF+UJzCwZQqP8szMVbMy9GAzYlZXcmqCHSrURWmAZkyBgaM6EgIEk9P2Pm5G5bxLWnHJXzzQRea6bXI90IB1c3O/vlNirz4t/Zhc6gj7AFMPlVofMola4f7SG2vqKNPr++5/KeQD3r35zCZvC/6stkUl1hDinXFMXoVmbssijeDz7WBrLjXRc+W2FfKaV+TGFMR9ZFU/CWRm+zJcnPKiu2T/cBbKCawhB16kgwGipVvrvowU0uxLczkwcKEu2Zjz03sWNiLR6tBNAZA5g+KgmV7Vz/EWTuecZmKDux9r7eyBgXSzO8IG+GFDQgr35RXUDviBgWShllaRcqX2E5LRFN3oomQ12U+mfEflLzXeN7SOu/Gwew6eq+WA4NOUhdO4Frah+spGm8ZCBesDx0f3YVXQziIuvNg8Qky7M4kurS42I8qzVzMGS3+0/zAsXWnmgj3pFLJp7u3h8KXmzP5NQn1D5iOYA7chBbJfnS+1YKkemPBjjwd3w0nYZsbvLv4HnTDS73m9WBNFNbcIxxL56AlzO//dMo+X7q+2AOWuR2aeUDnK9iaGOgROqjGfNVC9c4SzkIzMFfgmFyzNQaXxHSRNmrFWdmQ=
-x-ms-office365-filtering-correlation-id: 5ef20af3-1b35-40df-5427-08d4c9109a9e
-x-ms-office365-filtering-ht: Tenant
-x-microsoft-antispam: UriScan:; BCL:0; PCL:0;
-	RULEID:(300000500095)(300135000095)(300000501095)(300135300095)(22001)(300000502095)(300135100095)(2017030254075)(48565401081)(300000503095)(300135400095)(2017052603031)(201703131423075)(201703031133081)(300000504095)(300135200095)(300000505095)(300135600095)(300000506095)(300135500095);
-	SRVR:HE1PR0401MB2554; 
-x-ms-traffictypediagnostic: HE1PR0401MB2554:
-x-exchange-antispam-report-test: UriScan:(180628864354917)(236129657087228)(185117386973197)(148574349560750)(228905959029699)(247924648384137);
-x-microsoft-antispam-prvs: <HE1PR0401MB25547E5DDD769871064FC6099AAF0@HE1PR0401MB2554.eurprd04.prod.outlook.com>
-x-exchange-antispam-report-cfa-test: BCL:0; PCL:0;
-	RULEID:(100000700101)(100105000095)(100000701101)(100105300095)(100000702101)(100105100095)(6040450)(601004)(2401047)(5005006)(8121501046)(2017060910075)(3002001)(100000703101)(100105400095)(10201501046)(93006095)(93001095)(6055026)(6041248)(20161123564025)(20161123560025)(20161123555025)(20161123562025)(201703131423075)(201702281528075)(201703061421075)(201703061406153)(20161123558100)(6072148)(100000704101)(100105200095)(100000705101)(100105500095);
-	SRVR:HE1PR0401MB2554; BCL:0; PCL:0;
-	RULEID:(100000800101)(100110000095)(100000801101)(100110300095)(100000802101)(100110100095)(100000803101)(100110400095)(100000804101)(100110200095)(100000805101)(100110500095);
-	SRVR:HE1PR0401MB2554; 
-x-forefront-prvs: 036614DD9C
-x-forefront-antispam-report: SFV:NSPM;
-	SFS:(10009020)(979002)(6009001)(39850400002)(39410400002)(39840400002)(39400400002)(39450400003)(39860400002)(13464003)(24454002)(377454003)(38730400002)(74316002)(2950100002)(189998001)(478600001)(50986999)(6116002)(54356999)(76176999)(6246003)(6506006)(7736002)(551934003)(7696004)(39060400002)(53936002)(33656002)(5660300001)(55016002)(3846002)(14454004)(54906002)(99286003)(2906002)(66066001)(102836003)(7416002)(4326008)(3280700002)(229853002)(5250100002)(8936002)(9686003)(8676002)(2900100001)(25786009)(305945005)(5890100001)(93886004)(86362001)(575784001)(3660700001)(6436002)(81166006)(2201001)(2501003)(53546010)(969003)(989001)(999001)(1009001)(1019001);
-	DIR:OUT; SFP:1101; SCL:1; SRVR:HE1PR0401MB2554;
-	H:HE1PR0401MB2556.eurprd04.prod.outlook.com; FPR:; SPF:None;
-	MLV:ovrnspm; PTR:InfoNoRecords; LANG:en; 
-spamdiagnosticoutput: 1:99
-spamdiagnosticmetadata: NSPM
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+	<HE1PR0401MB25560018AA040A0B6A97BF599AAF0@HE1PR0401MB2556.eurprd04.prod.outlook.com>
+From: Jean-Philippe Brucker <jean-philippe.brucker@arm.com>
+Message-ID: <8eba46e3-996f-9eb9-5414-75cfc3fdc45d@arm.com>
+Date: Wed, 12 Jul 2017 11:58:00 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.1.1
 MIME-Version: 1.0
-X-OriginatorOrg: nxp.com
-X-MS-Exchange-CrossTenant-originalarrivaltime: 12 Jul 2017 10:27:31.4465 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 686ea1d3-bc2b-4c6f-a92c-d99c5c301635
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: HE1PR0401MB2554
-X-detected-operating-system: by eggs.gnu.org: Windows 7 or 8 [fuzzy]
-X-Received-From: 104.47.0.85
-Subject: Re: [Qemu-arm] [Qemu-devel] [RFC v2 0/8] VIRTIO-IOMMU device
-X-BeenThere: qemu-arm@nongnu.org
+In-Reply-To: <HE1PR0401MB25560018AA040A0B6A97BF599AAF0@HE1PR0401MB2556.eurprd04.prod.outlook.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 217.140.101.70
+Subject: Re: [Qemu-devel] [RFC v2 0/8] VIRTIO-IOMMU device
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: "kevin.tian@intel.com" <kevin.tian@intel.com>,
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: "wei@redhat.com" <wei@redhat.com>,
+	"kevin.tian@intel.com" <kevin.tian@intel.com>,
 	"marc.zyngier@arm.com" <marc.zyngier@arm.com>,
 	"tn@semihalf.com" <tn@semihalf.com>,
 	"will.deacon@arm.com" <will.deacon@arm.com>,
 	"drjones@redhat.com" <drjones@redhat.com>,
 	"robin.murphy@arm.com" <robin.murphy@arm.com>,
 	"christoffer.dall@linaro.org" <christoffer.dall@linaro.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: BYGzlKi6Fuyd
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: DgVQAcYagFeo
 
-DQoNCj4gLS0tLS1PcmlnaW5hbCBNZXNzYWdlLS0tLS0NCj4gRnJvbTogSmVhbi1QaGlsaXBwZSBC
-cnVja2VyIFttYWlsdG86amVhbi1waGlsaXBwZS5icnVja2VyQGFybS5jb21dDQo+IFNlbnQ6IFdl
-ZG5lc2RheSwgSnVseSAxMiwgMjAxNyAzOjQ4IFBNDQo+IFRvOiBCaGFyYXQgQmh1c2hhbiA8Ymhh
-cmF0LmJodXNoYW5AbnhwLmNvbT47IEF1Z2VyIEVyaWMNCj4gPGVyaWMuYXVnZXJAcmVkaGF0LmNv
-bT47IGVyaWMuYXVnZXIucHJvQGdtYWlsLmNvbTsNCj4gcGV0ZXIubWF5ZGVsbEBsaW5hcm8ub3Jn
-OyBhbGV4LndpbGxpYW1zb25AcmVkaGF0LmNvbTsgbXN0QHJlZGhhdC5jb207DQo+IHFlbXUtYXJt
-QG5vbmdudS5vcmc7IHFlbXUtZGV2ZWxAbm9uZ251Lm9yZw0KPiBDYzogd2VpQHJlZGhhdC5jb207
-IGtldmluLnRpYW5AaW50ZWwuY29tOyBtYXJjLnp5bmdpZXJAYXJtLmNvbTsNCj4gdG5Ac2VtaWhh
-bGYuY29tOyB3aWxsLmRlYWNvbkBhcm0uY29tOyBkcmpvbmVzQHJlZGhhdC5jb207DQo+IHJvYmlu
-Lm11cnBoeUBhcm0uY29tOyBjaHJpc3RvZmZlci5kYWxsQGxpbmFyby5vcmcNCj4gU3ViamVjdDog
-UmU6IFtRZW11LWRldmVsXSBbUkZDIHYyIDAvOF0gVklSVElPLUlPTU1VIGRldmljZQ0KPiANCj4g
-T24gMTIvMDcvMTcgMDQ6NTAsIEJoYXJhdCBCaHVzaGFuIHdyb3RlOg0KPiBbLi4uXQ0KPiA+PiBU
-aGUgc2l6ZSBvZiB0aGUgdmlydGlvX2lvbW11X3JlcV9wcm9iZSBzdHJ1Y3R1cmUgaXMgdmFyaWFi
-bGUsIGFuZA0KPiBkZXBlbmRzDQo+ID4+IHdoYXQgZmllbGRzIHRoZSBkZXZpY2UgaW1wbGVtZW50
-cy4gU28gdGhlIGRldmljZSBpbml0aWFsbHkgY29tcHV0ZXMgdGhlDQo+IHNpemUgaXQNCj4gPj4g
-bmVlZHMgdG8gZmlsbCB2aXJ0aW9faW9tbXVfcmVxX3Byb2JlLCBkZXNjcmliZXMgaXQgaW4gcHJv
-YmVfc2l6ZSwgYW5kIHRoZQ0KPiA+PiBkcml2ZXIgYWxsb2NhdGVzIHRoYXQgbWFueSBieXRlcyBm
-b3IgdmlydGlvX2lvbW11X3JlcV9wcm9iZS5jb250ZW50W10NCj4gPj4NCj4gPj4+PiAqIFdoZW4g
-ZGV2aWNlIG9mZmVycyBWSVJUSU9fSU9NTVVfRl9QUk9CRSwgdGhlIGRyaXZlciBzaG91bGQNCj4g
-c2VuZA0KPiA+PiBhbg0KPiA+Pj4+IFZJUlRJT19JT01NVV9UX1BST0JFIHJlcXVlc3QgZm9yIGVh
-Y2ggbmV3IGVuZHBvaW50Lg0KPiA+Pj4+ICogVGhlIGRyaXZlciBhbGxvY2F0ZXMgYSBkZXZpY2Ut
-d3JpdGVhYmxlIGJ1ZmZlciBvZiBwcm9iZV9zaXplIChwbHVzDQo+ID4+Pj4gZnJhbWluZykgYW5k
-IHNlbmRzIGl0IGFzIGEgVklSVElPX0lPTU1VX1RfUFJPQkUgcmVxdWVzdC4NCj4gPj4+PiAqIFRo
-ZSBkZXZpY2UgZmlsbHMgdGhlIGJ1ZmZlciB3aXRoIHZhcmlvdXMgaW5mb3JtYXRpb24uDQo+ID4+
-Pj4NCj4gPj4+PiBzdHJ1Y3QgdmlydGlvX2lvbW11X3JlcV9wcm9iZSB7DQo+ID4+Pj4gCS8qIGRl
-dmljZS1yZWFkYWJsZSAqLw0KPiA+Pj4+IAlzdHJ1Y3QgdmlydGlvX2lvbW11X3JlcV9oZWFkIGhl
-YWQ7DQo+ID4+Pj4gCWxlMzIgZGV2aWNlOw0KPiA+Pj4+IAlsZTMyIGZsYWdzOw0KPiA+Pj4+DQo+
-ID4+Pj4gCS8qIG1heWJlIGFsc28gbGUzMiBjb250ZW50X3NpemUsIGJ1dCBpdCBtdXN0IGJlIGVx
-dWFsIHRvDQo+ID4+Pj4gCSAgIHByb2JlX3NpemUgKi8NCj4gPj4+DQo+ID4+PiBDYW4geW91IHBs
-ZWFzZSBkZXNjcmliZSB3aHkgd2UgbmVlZCB0byBwYXNzIHNpemUgb2YgInByb2JlX3NpemUiIGlu
-DQo+IHByb2JlDQo+ID4+IHJlcXVlc3Q/DQo+ID4+DQo+ID4+IFdlIGRvbid0LiBJIGRvbid0IHRo
-aW5rIHdlIHNob3VsZCBhZGQgdGhpcyAnY29udGVudF9zaXplJyBmaWVsZCB1bmxlc3MgdGhlcmUN
-Cj4gaXMNCj4gPj4gYSBjb21wZWxsaW5nIHJlYXNvbiB0byBkbyBzby4NCj4gPj4NCj4gPj4+Pg0K
-PiA+Pj4+IAkvKiBkZXZpY2Utd3JpdGVhYmxlICovDQo+ID4+Pj4gCXU4IGNvbnRlbnRbXTsNCj4g
-Pj4+DQo+ID4+PiBJIGFzc3VtZSBjb250ZW50X3NpemUgYWJvdmUgaXMgdGhlIHNpemUgb2YgYXJy
-YXkgImNvbnRlbnRbXSIgYW5kIG1heA0KPiB2YWx1ZQ0KPiA+PiBjYW4gYmUgZXF1YWwgdG8gcHJv
-YmVfc2l6ZSBhZHZlcnRpc2VkIGJ5IGRldmljZT8NCj4gPj4NCj4gPj4gcHJvYmVfc2l6ZSBpcyBl
-eGFjdGx5IHRoZSBzaXplIG9mIGFycmF5IGNvbnRlbnRbXS4gVGhlIGRyaXZlciBtdXN0IGFsbG9j
-YXRlIGENCj4gPj4gYnVmZmVyIG9mIHRoaXMgc2l6ZSAocGx1cyB0aGUgc3BhY2UgbmVlZGVkIGZv
-ciBoZWFkLCBkZXZpY2UsIGZsYWdzIGFuZCB0YWlsKS4NCj4gPj4NCj4gPj4gVGhlbiB0aGUgZGV2
-aWNlIGlzIGZyZWUgdG8gbGVhdmUgcGFydHMgb2YgY29udGVudFtdIGVtcHR5LiBGaWVsZCAndHlw
-ZScgMCB3aWxsDQo+IGJlDQo+ID4+IHJlc2VydmVkIGFuZCBtYXJrIHRoZSBlbmQgb2YgdGhlIGFy
-cmF5Lg0KPiA+Pg0KPiA+Pj4+IAlzdHJ1Y3QgdmlydGlvX2lvbW11X3JlcV90YWlsIHRhaWw7DQo+
-ID4+Pj4gfTsNCj4gPj4+Pg0KPiA+Pj4+IEknbSBzdGlsbCBzdHJ1Z2dsaW5nIHdpdGggdGhlIGNv
-bnRlbnQgYW5kIGxheW91dCBvZiB0aGUgcHJvYmUNCj4gPj4+PiByZXF1ZXN0LCBhbmQgd291bGQg
-YXBwcmVjaWF0ZSBhbnkgZmVlZGJhY2suIFRvIGJlIGVhc2lseSBleHRlbmRlZCwgSQ0KPiA+Pj4+
-IHRoaW5rIGl0IHNob3VsZCBjb250YWluIGEgbGlzdCBvZiBmaWVsZHMgb2YgdmFyaWFibGUgc2l6
-ZToNCj4gPj4+Pg0KPiA+Pj4+IAl8MCAgICAgICAgICAgMTV8MTYgICAgICAgICAgIDMxfDMyICAg
-ICAgICAgICAgICAgTnwNCj4gPj4+PiAJfCAgICAgdHlwZSAgICAgfCAgICBsZW5ndGggICAgIHwg
-ICAgICB2YWx1ZXMgICAgICB8DQo+ID4+Pj4NCj4gPj4+PiAnbGVuZ3RoJyBtaWdodCBiZSBtYWRl
-IG9wdGlvbmFsIGlmIGl0IGNhbiBiZSBkZWR1Y2VkIGZyb20gdHlwZSwgYnV0DQo+ID4+Pj4gbWln
-aHQgbWFrZSBkcml2ZXItc2lkZSBwYXJzaW5nIG1vcmUgcm9idXN0Lg0KPiA+Pj4+DQo+ID4+Pj4g
-VGhlIHByb2JlIGNvdWxkIGVpdGhlciBiZSBkb25lIGZvciBlYWNoIGVuZHBvaW50LCBvciBmb3Ig
-ZWFjaCBhZGRyZXNzDQo+ID4+Pj4gc3BhY2UuIEkgbXVjaCBwcmVmZXIgZW5kcG9pbnQgYmVjYXVz
-ZSBpdCBpcyB0aGUgc21hbGxlc3QgZ3JhbnVsYXJpdHkuDQo+ID4+Pj4gVGhlIGRyaXZlciBjYW4g
-dGhlbiBkZWNpZGUgd2hhdCBlbmRwb2ludHMgdG8gcHV0IHRvZ2V0aGVyIGluIHRoZSBzYW1lDQo+
-ID4+Pj4gYWRkcmVzcyBzcGFjZSBiYXNlZCBvbiB0aGVpciBpbmRpdmlkdWFsIGNhcGFiaWxpdGll
-cy4gVGhlDQo+ID4+Pj4gc3BlY2lmaWNhdGlvbiB3b3VsZCBkZXNjcmliZWQgaG93IGVhY2ggZW5k
-cG9pbnQgcHJvcGVydHkgaXMgY29tYmluZWQNCj4gPj4+PiB3aGVuIGVuZHBvaW50cyBhcmUgcHV0
-IGluIHRoZSBzYW1lIGFkZHJlc3Mgc3BhY2UuIEZvciBleGFtcGxlLCB0YWtlDQo+ID4+Pj4gdGhl
-IG1pbmltdW0gb2YgYWxsIFBBU0lEIHNpemUsIHRoZSBtYXhpbXVtIG9mIGFsbCBwYWdlIGdyYW51
-bGFyaXRpZXMsDQo+ID4+Pj4gY29tYmluZSBkb29yYmVsbCBhZGRyZXNzZXMsIGV0Yy4NCj4gPj4+
-Pg0KPiA+Pj4+IElmIHdlIGRpZCB0aGUgcHJvYmUgb24gYWRkcmVzcyBzcGFjZXMgaW5zdGVhZCwg
-dGhlIGRyaXZlciB3b3VsZCBoYXZlDQo+ID4+Pj4gdG8gcmUtc2VuZCBhIHByb2JlIHJlcXVlc3Qg
-ZWFjaCB0aW1lIGEgbmV3IGVuZHBvaW50IGlzIGF0dGFjaGVkIHRvIGFuDQo+ID4+Pj4gZXhpc3Rp
-bmcgYWRkcmVzcyBzcGFjZSwgdG8gc2VlIGlmIGl0IGlzIHN0aWxsIGNhcGFibGUgb2YgcGFnZSB0
-YWJsZQ0KPiA+Pj4+IGhhbmRvdmVyIG9yIGlmIHRoZSBkcml2ZXIganVzdCBjb21iaW5lZCBhIFZG
-SU8gYW5kIGFuIGVtdWxhdGVkDQo+ID4+Pj4gZW5kcG9pbnQgYnkgYWNjaWRlbnQuDQo+ID4+Pj4N
-Cj4gPj4+PiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAqKioNCj4gPj4+Pg0KPiA+
-Pj4+IFVzaW5nIHRoaXMgZnJhbWV3b3JrLCB0aGUgZGV2aWNlIGNhbiBkZWNsYXJlIGRvb3JiZWxs
-IHJlZ2lvbnMgYnkNCj4gPj4+PiBhZGRpbmcgb25lIG9yIG1vcmUgUkVTViBmaWVsZHMgaW50byB0
-aGUgcHJvYmUgYnVmZmVyOg0KPiA+Pj4+DQo+ID4+Pj4gLyogJ3R5cGUnICovDQo+ID4+Pj4gI2Rl
-ZmluZSBWSVJUSU9fSU9NTVVfUFJPQkVfVF9SRVNWIAkweDENCj4gPj4+Pg0KPiA+Pj4+IC8qICd2
-YWx1ZXMnLiAnbGVuZ3RoJyBpcyBzaXplb2Yoc3RydWN0IHZpcnRpb19pb21tdV9wcm9iZV9yZXN2
-KSAqLw0KPiA+Pj4+IHN0cnVjdCB2aXJ0aW9faW9tbXVfcHJvYmVfcmVzdiB7DQo+ID4+Pj4gCWxl
-NjQgZ3BhOw0KPiA+Pj4+IAlsZTY0IHNpemU7DQo+ID4+Pj4NCj4gPj4+PiAjZGVmaW5lIFZJUlRJ
-T19JT01NVV9QUk9CRV9SRVNWX01TSQkweDENCj4gPj4+PiAJdTggdHlwZTsNCj4gPg0KPiA+IFRv
-IGJlIHN1cmUgSSBhbSB1bmRlcnN0YW5kaW5nIGl0IGNvcnJlY3RseSwgSXMgdGhpcyAidHlwZSIg
-aW4gc3RydWN0DQo+IHZpcnRpb19pb21tdV9yZXFfaGVhZD8NCj4gDQo+IE5vLCB2aXJ0aW9faW9t
-bXVfcmVxX2hlYWQ6OnR5cGUgaXMgdGhlIHJlcXVlc3QgdHlwZQ0KPiAoQVRUQUNIL0RFVEFDSC9N
-QVAvVU5NQVAvUFJPQkUpLg0KPiANCj4gVGhlbiB2aXJ0aW9faW9tbXVfcHJvYmVfcHJvcGVydHk6
-OnR5cGUgaXMgdGhlIHByb3BlcnR5IHR5cGUgKG9ubHkgUkVTVg0KPiBmb3INCj4gdGhlIG1vbWVu
-dCkuDQo+IA0KPiBBbmQgdGhpcyBpcyB2aXJ0aW9faW9tbXVfcHJvYmVfcmVzdjo6dHlwZSwgd2hp
-Y2ggaXMgdGhlIHR5cGUgb2YgdGhlIHJlc3YNCj4gcmVnaW9uIChNU0kpLiBJIHJlbmFtZWQgaXQg
-dG8gJ3N1YnR5cGUnIGJlbG93LCBidXQgSSB0aGluayBpdCBzdGlsbCBpcw0KPiBwcmV0dHkgY29u
-ZnVzaW5nLg0KPiANCj4gDQo+IEkgZGlkIGEgbnVtYmVyIG9mIGNoYW5nZXMgdG8gc3RydWN0dXJl
-cyBhbmQgbmFtaW5nIHdoZW4gdHJ5aW5nIHRvDQo+IGludGVncmF0ZSBpdCB0byB0aGUgc3BlY2lm
-aWNhdGlvbjoNCj4gDQo+ICogQWRkZWQgNjQgYnl0ZXMgb2YgcGFkZGluZyBpbiB2aXJ0aW9faW9t
-bXVfcmVxX3Byb2JlLCBzbyB0aGF0IGZ1dHVyZQ0KPiBleHRlbnNpb25zIGNhbiBhZGQgZmllbGRz
-IGluIHRoZSBkZXZpY2UtcmVhZGFibGUgcGFydC4NCj4gKiByZW5hbWVkICJSRVNWIiB0byAiUkVT
-Vl9NRU0iLg0KPiAqIFRoZSByZXN2X21lbSBwcm9wZXJ0eSBub3cgbG9va3MgbGlrZSB0aGlzOg0K
-PiAgIHN0cnVjdCB2aXJ0aW9faW9tbXVfcHJvYmVfcmVzdl9tZW0gew0KPiAgICAgICAgIHU4ICAg
-ICAgc3VidHlwZTsNCj4gICAgICAgICB1OCAgICAgIHBhZGRpbmdbM107DQo+ICAgICAgICAgbGUz
-MiAgICBmbGFnczsNCj4gICAgICAgICBsZTY0ICAgIGFkZHI7DQo+ICAgICAgICAgbGU2NCAgICBz
-aXplOw0KPiAgIH07DQo+ICogc3VidHlwZSBmb3IgTVNJIGRvb3JiZWxscyBpcyBub3cNCj4gVklS
-VElPX0lPTU1VX1BST0JFX1JFU1ZfTUVNX1RfQllQQVNTDQo+IChiZWNhdXNlIHRyYW5zYWN0aW9u
-cyB0byB0aGlzIHJlZ2lvbiBieXBhc3MgdGhlIElPTU1VKS4gJ2ZsYWdzJyBjb250YWluIGENCj4g
-aGludCBWSVJUSU9fSU9NTVVfUFJPQkVfUkVTVl9NRU1fRl9NU0ksIHRlbGxpbmcgdGhlIGRyaXZl
-ciB0aGF0IHRoaXMNCj4gcmVnaW9uIGlzIHVzZWQgZm9yIE1TSXMuDQo+IA0KPiBIZXJlIGlzIGFu
-IGV4YW1wbGUgb2YgYSBwcm9iZSByZXF1ZXN0IHJldHVybmluZyBhbiBNU0kgZG9vcmJlbGwgcHJv
-cGVydHkuDQo+IA0KPiAgICAgIDMxICAgICAgICAgICAgICAgICAgICAgICA3ICAgICAgMA0KPiAg
-ICAgKy0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLSsNCj4gICAgIHwgICAgICAgICAg
-IDAgICAgICAgICAgICB8ICB0eXBlICB8IDwtIHJlcXVlc3QgdHlwZSA9IFBST0JFICg1KQ0KPiAg
-ICAgKy0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLSsNCj4gICAgIHwgICAgICAgICAg
-ICAgZGV2aWNlICAgICAgICAgICAgICB8DQo+ICAgICArLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
-LS0tLS0tLS0tKw0KPiAgICAgOiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIDoNCj4g
-ICAgIDogICAgICAgICAgKDY0QiBwYWRkaW5nKSAgICAgICAgICA6DQo+ICAgICA6ICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgOg0KPiAgICAgKy0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
-LS0tLS0tLS0tLSsNCj4gICBeIHwgIGxlbmd0aCA9IDI0ICAgfCAgICB0eXBlID0gMSAgICB8IDwt
-IHByb3BlcnR5IHR5cGUgPSBSRVNWX01FTSAoMSkNCj4gICB8ICstLS0tLS0tLS0tLS0tLS0tLS0t
-LS0tLS0tLS0tLS0tLS0rDQo+ICAgfCB8ICAgICAgICAgICAwICAgICAgICAgICAgfHN1YnR5cGUg
-fCA8LSBSRVNWX01FTSBzdWJ0eXBlID0gQllQQVNTICgxKQ0KPiAgcHwgKy0tLS0tLS0tLS0tLS0t
-LS0tLS0tLS0tLS0tLS0tLS0tLSsNCj4gIHJ8IHwgICAgICAgICAgIGZsYWdzID0gTVNJICAgICAg
-ICAgICB8DQo+ICBvfCArLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tKw0KPiAgYnwg
-fCAgICAgICAgIGFkZHIgPSAweGZlZTAwMDAwICAgICAgIHwNCj4gIGV8IHwgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICB8DQo+ICBffCArLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
-LS0tLS0tKw0KPiAgc3wgfCAgICAgICAgIHNpemUgPSAweDAwMTAwMDAwICAgICAgIHwNCj4gIGl8
-IHwgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB8DQo+ICB6fCArLS0tLS0tLS0tLS0t
-LS0tLS0tLS0tLS0tLS0tLS0tLS0tKw0KPiAgZXwgfCAgICBsZW5ndGggICAgICB8ICAgICAgdHlw
-ZSAgICAgIHwgPC0gYW5vdGhlciBwcm9wZXJ0eSBtYXkgc3RhcnQNCj4gICB8IDogICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICA6ICAgIGhlcmUNCj4gICB2IDogICAgICAgICAgICAgICAu
-Li4gICAgICAgICAgICAgICA6DQo+ICAgICArLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
-LS0tKw0KPiAgICAgfCAgICAgICAgICAgMCAgICAgICAgICAgIHwgc3RhdHVzIHwgPC0gcmVxdWVz
-dCB0YWlsDQo+ICAgICArLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tKw0KDQpTbyB3
-ZSB3YW50IGEgc2luZ2xlIHByb2JlIHdpbGwgcmV0dXJuIGluZm8gb2YgYWxsICJ0eXBlcyIgYW5k
-IGVhY2ggInN1YnR5cGUiIG9mIGdpdmVuICJ0eXBlIj8gSSB3YXMgb2YgaW1wcmVzc2lvbiB0aGF0
-IGJhc2VkIG9uIGZsYWdzIHRoZXJlIHdpbGwgYmUgc2VwYXJhdGUgcHJvYmUgcmVxdWVzdCBmb3Ig
-YSB0eXBlLg0KDQpUaGFua3MNCi1CaGFyYXQNCg0KPiANCj4gDQo+IEknbGwgdHJ5IHRvIHNlbmQg
-dGhlIG5leHQgdmVyc2lvbiBvZiB0aGUgc3BlYyBvdXQgYXMgc29vbiBhcyBwb3NzaWJsZS4NCj4g
-DQo+IFRoYW5rcywNCj4gSmVhbg0KPiANCj4gDQo+ID4gVGhhbmtzDQo+ID4gLUJoYXJhdA0KPiA+
-DQo+ID4+Pg0KPiA+Pj4gdHlwZSBpcyAxNiBiaXQgYWJvdmU/DQo+ID4+DQo+ID4+IEFoLCB0aGUg
-bmFtaW5nIGlzbid0IGdyZWF0LiBUaGlzIGlzIG5vdCB0aGUgc2FtZSBhcyBhYm92ZSwgYW5kIGNv
-dWxkIGJlDQo+IGNhbGxlZA0KPiA+PiAnc3VidHlwZScgdG8gYXZvaWQgY29uZnVzaW9uLiBUaGUg
-YWJvdmUgMTYtYml0IHR5cGUgZGVzY3JpYmVzIHRoZSBmaWVsZA0KPiB0eXBlLA0KPiA+PiBlLmcu
-IHN0cnVjdCB2aXJ0aW9faW9tbXVfcHJvYmVfcmVzdi4gSSBwcm9wb3NlZCAxNi1iaXQgYmVjYXVz
-ZSBpdCBzZWVtcw0KPiA+PiBlYXN5IHRvIHJlYWNoIG1vcmUgdGhhbiAyNTUga2luZHMgb2YgZW5k
-cG9pbnQgcHJvcGVydGllcywgYnV0DQo+ID4+IDY1NTM1IHNob3VsZCBkby4NCj4gPj4NCj4gPj4g
-VGhpcyBzdWJ0eXBlIGRlc2NyaWJlcyB3aGljaCBraW5kIG9mIHJlc3YgcmVnaW9uIGlzIGRlc2Ny
-aWJlZCBpbiB0aGUNCj4gc3RydWN0dXJlLg0KPiA+PiBGb3IgdGhlIG1vbWVudCB0aGVyZSBvbmx5
-IGlzIFZJUlRJT19JT01NVV9QUk9CRV9SRVNWX01TSSwgYnV0IHdlDQo+ID4+IGNvdWxkIGZvciBl
-eGFtcGxlIGFkZCByZXN2IHJlZ2lvbnMgdGhhdCB0aGUgZHJpdmVyIHNob3VsZCBuZXZlciB1c2Ug
-b3INCj4gdGhhdCBpdA0KPiA+PiBzaG91bGQgaWRlbnRpdHktbWFwIChlcXVpdmFsZW50IHRvIElP
-TU1VX1JFU1ZfUkVTRVJWRUQvRElSRUNUIGluDQo+ID4+IExpbnV4KS4gSSB0aGluayA4IGJpdHMg
-c2hvdWxkIGJlIGVub3VnaCB0byBjb250YWluIGFueSBmdXR1cmUgdHlwZXMsIHVubGVzcw0KPiB3
-ZQ0KPiA+PiBtYWtlIHRoaXMgYSBiaXRmaWVsZC4gRm9yIGlkZW50aXR5LW1hcCwgdGhlcmUgbWF5
-IGJlIGFuIGFkZGl0aW9uYWwgZmxhZ3MNCj4gZmllbGQNCj4gPj4gZGVzY3JpYmluZyB0aGUgcHJv
-dGVjdGlvbi4NCj4gPj4NCj4gPj4+PiB9Ow0KPiA+Pj4+DQo+ID4+Pj4gU3VjaCBhIHJlZ2lvbiB3
-b3VsZCBiZSBzdWJqZWN0IHRvIHRoZSBmb2xsb3dpbmcgcnVsZXM6DQo+ID4+Pj4NCj4gPj4+PiAq
-IERyaXZlciBzaG91bGQgbm90IHVzZSBhbnkgSU9WQSBkZWNsYXJlZCBhcyBSRVNWX01TSSBpbiBh
-IG1hcHBpbmcuDQo+ID4+Pj4gKiBEZXZpY2Ugc2hvdWxkIGxlYXZlIGFueSB0cmFuc2FjdGlvbiBt
-YXRjaGluZyBhIFJFU1ZfTVNJIHJlZ2lvbiBwYXNzDQo+ID4+Pj4gdGhyb3VnaCB1bnRyYW5zbGF0
-ZWQuDQo+ID4+Pj4gKiBJZiB0aGUgZGV2aWNlIGRvZXMgbm90IGFkdmVydGlzZSBhbnkgUkVTViBy
-ZWdpb24sIHRoZW4gdGhlIGRyaXZlcg0KPiA+Pj4+IHNob3VsZCBhc3N1bWUgdGhhdCBNU0kgZG9v
-cmJlbGxzLCBsaWtlIGFueSBvdGhlciBHUEEsIG11c3QgYmUNCj4gbWFwcGVkDQo+ID4+Pj4gd2l0
-aCBhbiBhcmJpdHJhcnkgSU9WQSBpbiBvcmRlciBmb3IgdGhlIGVuZHBvaW50IHRvIGFjY2VzcyB0
-aGVtLg0KPiA+Pj4+ICogR2l2ZW4gdGhhdCB0aGUgZHJpdmVyICpzaG91bGQqIHBlcmZvcm0gYSBw
-cm9iZSByZXF1ZXN0IGlmDQo+ID4+Pj4gYXZhaWxhYmxlLCBhbmQgaXQgKnNob3VsZCogdW5kZXJz
-dGFuZCB0aGUNCj4gPj4gVklSVElPX0lPTU1VX1BST0JFX1RfUkVTVg0KPiA+Pj4+IGZpZWxkLCB0
-aGVuIHRoaXMgZmllbGQgdGVsbHMgdGhlIGd1ZXN0IGhvdyBpdCBzaG91bGQgaGFuZGxlIE1TSQ0K
-PiA+Pj4+IGRvb3JiZWxscywgYW5kIHdoZXRoZXIgaXQgc2hvdWxkIG1hcCB0aGUgYWRkcmVzcyB2
-aWEgTUFQIHJlcXVlc3RzIG9yDQo+ID4+IG5vdC4NCj4gPj4+Pg0KPiA+Pj4+IERvZXMgdGhpcyBt
-YWtlIHNlbnNlIGFuZCBkaWQgSSBvdmVybG9vayBzb21ldGhpbmc/DQo+ID4+Pg0KPiA+Pj4gT3Zl
-cmFsbCBpdCBsb29rcyBnb29kIHRvIG1lLiBEbyB5b3UgaGF2ZSBwbGFucyB0byBpbXBsZW1lbnRz
-IHRoaXMgaW4NCj4gdmlydGlvLQ0KPiA+PiBpb21tdSBkcml2ZXIgYW5kIGt2bXRvb2w/DQo+ID4+
-DQo+ID4+IFllcywgaWYgdGhlcmUgaXMgbm8gb2JqZWN0aW9uIEknbGwgdHJ5IHRvIGZvcm1hbGl6
-ZSBpdCBhbmQgaW1wbGVtZW50IGl0IHJpZ2h0DQo+IGF3YXkuDQo+ID4+DQo+ID4+IFRoYW5rcywN
-Cj4gPj4gSmVhbg0KDQo=
+On 12/07/17 11:27, Bharat Bhushan wrote:
+> 
+> 
+>> -----Original Message-----
+>> From: Jean-Philippe Brucker [mailto:jean-philippe.brucker@arm.com]
+>> Sent: Wednesday, July 12, 2017 3:48 PM
+>> To: Bharat Bhushan <bharat.bhushan@nxp.com>; Auger Eric
+>> <eric.auger@redhat.com>; eric.auger.pro@gmail.com;
+>> peter.maydell@linaro.org; alex.williamson@redhat.com; mst@redhat.com;
+>> qemu-arm@nongnu.org; qemu-devel@nongnu.org
+>> Cc: wei@redhat.com; kevin.tian@intel.com; marc.zyngier@arm.com;
+>> tn@semihalf.com; will.deacon@arm.com; drjones@redhat.com;
+>> robin.murphy@arm.com; christoffer.dall@linaro.org
+>> Subject: Re: [Qemu-devel] [RFC v2 0/8] VIRTIO-IOMMU device
+>>
+>> On 12/07/17 04:50, Bharat Bhushan wrote:
+>> [...]
+>>>> The size of the virtio_iommu_req_probe structure is variable, and
+>> depends
+>>>> what fields the device implements. So the device initially computes the
+>> size it
+>>>> needs to fill virtio_iommu_req_probe, describes it in probe_size, and the
+>>>> driver allocates that many bytes for virtio_iommu_req_probe.content[]
+>>>>
+>>>>>> * When device offers VIRTIO_IOMMU_F_PROBE, the driver should
+>> send
+>>>> an
+>>>>>> VIRTIO_IOMMU_T_PROBE request for each new endpoint.
+>>>>>> * The driver allocates a device-writeable buffer of probe_size (plus
+>>>>>> framing) and sends it as a VIRTIO_IOMMU_T_PROBE request.
+>>>>>> * The device fills the buffer with various information.
+>>>>>>
+>>>>>> struct virtio_iommu_req_probe {
+>>>>>> 	/* device-readable */
+>>>>>> 	struct virtio_iommu_req_head head;
+>>>>>> 	le32 device;
+>>>>>> 	le32 flags;
+>>>>>>
+>>>>>> 	/* maybe also le32 content_size, but it must be equal to
+>>>>>> 	   probe_size */
+>>>>>
+>>>>> Can you please describe why we need to pass size of "probe_size" in
+>> probe
+>>>> request?
+>>>>
+>>>> We don't. I don't think we should add this 'content_size' field unless there
+>> is
+>>>> a compelling reason to do so.
+>>>>
+>>>>>>
+>>>>>> 	/* device-writeable */
+>>>>>> 	u8 content[];
+>>>>>
+>>>>> I assume content_size above is the size of array "content[]" and max
+>> value
+>>>> can be equal to probe_size advertised by device?
+>>>>
+>>>> probe_size is exactly the size of array content[]. The driver must allocate a
+>>>> buffer of this size (plus the space needed for head, device, flags and tail).
+>>>>
+>>>> Then the device is free to leave parts of content[] empty. Field 'type' 0 will
+>> be
+>>>> reserved and mark the end of the array.
+>>>>
+>>>>>> 	struct virtio_iommu_req_tail tail;
+>>>>>> };
+>>>>>>
+>>>>>> I'm still struggling with the content and layout of the probe
+>>>>>> request, and would appreciate any feedback. To be easily extended, I
+>>>>>> think it should contain a list of fields of variable size:
+>>>>>>
+>>>>>> 	|0           15|16           31|32               N|
+>>>>>> 	|     type     |    length     |      values      |
+>>>>>>
+>>>>>> 'length' might be made optional if it can be deduced from type, but
+>>>>>> might make driver-side parsing more robust.
+>>>>>>
+>>>>>> The probe could either be done for each endpoint, or for each address
+>>>>>> space. I much prefer endpoint because it is the smallest granularity.
+>>>>>> The driver can then decide what endpoints to put together in the same
+>>>>>> address space based on their individual capabilities. The
+>>>>>> specification would described how each endpoint property is combined
+>>>>>> when endpoints are put in the same address space. For example, take
+>>>>>> the minimum of all PASID size, the maximum of all page granularities,
+>>>>>> combine doorbell addresses, etc.
+>>>>>>
+>>>>>> If we did the probe on address spaces instead, the driver would have
+>>>>>> to re-send a probe request each time a new endpoint is attached to an
+>>>>>> existing address space, to see if it is still capable of page table
+>>>>>> handover or if the driver just combined a VFIO and an emulated
+>>>>>> endpoint by accident.
+>>>>>>
+>>>>>>                                  ***
+>>>>>>
+>>>>>> Using this framework, the device can declare doorbell regions by
+>>>>>> adding one or more RESV fields into the probe buffer:
+>>>>>>
+>>>>>> /* 'type' */
+>>>>>> #define VIRTIO_IOMMU_PROBE_T_RESV 	0x1
+>>>>>>
+>>>>>> /* 'values'. 'length' is sizeof(struct virtio_iommu_probe_resv) */
+>>>>>> struct virtio_iommu_probe_resv {
+>>>>>> 	le64 gpa;
+>>>>>> 	le64 size;
+>>>>>>
+>>>>>> #define VIRTIO_IOMMU_PROBE_RESV_MSI	0x1
+>>>>>> 	u8 type;
+>>>
+>>> To be sure I am understanding it correctly, Is this "type" in struct
+>> virtio_iommu_req_head?
+>>
+>> No, virtio_iommu_req_head::type is the request type
+>> (ATTACH/DETACH/MAP/UNMAP/PROBE).
+>>
+>> Then virtio_iommu_probe_property::type is the property type (only RESV
+>> for
+>> the moment).
+>>
+>> And this is virtio_iommu_probe_resv::type, which is the type of the resv
+>> region (MSI). I renamed it to 'subtype' below, but I think it still is
+>> pretty confusing.
+>>
+>>
+>> I did a number of changes to structures and naming when trying to
+>> integrate it to the specification:
+>>
+>> * Added 64 bytes of padding in virtio_iommu_req_probe, so that future
+>> extensions can add fields in the device-readable part.
+>> * renamed "RESV" to "RESV_MEM".
+>> * The resv_mem property now looks like this:
+>>   struct virtio_iommu_probe_resv_mem {
+>>         u8      subtype;
+>>         u8      padding[3];
+>>         le32    flags;
+>>         le64    addr;
+>>         le64    size;
+>>   };
+>> * subtype for MSI doorbells is now
+>> VIRTIO_IOMMU_PROBE_RESV_MEM_T_BYPASS
+>> (because transactions to this region bypass the IOMMU). 'flags' contain a
+>> hint VIRTIO_IOMMU_PROBE_RESV_MEM_F_MSI, telling the driver that this
+>> region is used for MSIs.
+>>
+>> Here is an example of a probe request returning an MSI doorbell property.
+>>
+>>      31                       7      0
+>>     +---------------------------------+
+>>     |           0            |  type  | <- request type = PROBE (5)
+>>     +---------------------------------+
+>>     |             device              |
+>>     +---------------------------------+
+>>     :                                 :
+>>     :          (64B padding)          :
+>>     :                                 :
+>>     +---------------------------------+
+>>   ^ |  length = 24   |    type = 1    | <- property type = RESV_MEM (1)
+>>   | +---------------------------------+
+>>   | |           0            |subtype | <- RESV_MEM subtype = BYPASS (1)
+>>  p| +---------------------------------+
+>>  r| |           flags = MSI           |
+>>  o| +---------------------------------+
+>>  b| |         addr = 0xfee00000       |
+>>  e| |                                 |
+>>  _| +---------------------------------+
+>>  s| |         size = 0x00100000       |
+>>  i| |                                 |
+>>  z| +---------------------------------+
+>>  e| |    length      |      type      | <- another property may start
+>>   | :                                 :    here
+>>   v :               ...               :
+>>     +---------------------------------+
+>>     |           0            | status | <- request tail
+>>     +---------------------------------+
+> 
+> So we want a single probe will return info of all "types" and each "subtype" of given "type"? I was of impression that based on flags there will be separate probe request for a type.
+
+Argh, now I'm lost :)
+
+The virtio-iommu driver sends a single PROBE request for each endpoint.
+The virtio-iommu device fills the 'properties' field with a list of
+properties.
+
+And endpoint may have one or more reserved virtual addresses. Each such
+region is described by the virtio-iommu device with a RESV_MEM property in
+the properties list.
+
+There will be other types of properties in the future, for other
+information than RESV_MEM. So the PROBE request is a generic channel for
+different types of properties, all aggregated into a single list. The
+virtio-iommu device chooses which property it needs to communicate to the
+driver.
+
+The list does not have a fixed layout, and the driver knows what
+properties it contains by reading the 'type' header of each property.
+
+The virtio-iommu driver parses the 'properties' list filled by the device.
+If it encounters one or more RESV_MEM properties, the driver should take
+note of them. Thereafter, the driver should never create a mapping
+overlapping RESV_MEM regions for this endpoint.
+
+If, in addition, the RESV_MEM property is of subtype BYPASS and has flag
+MSI, then the driver knows that it is an MSI doorbell and it doesn't need
+to create a mapping (using a MAP request) for this MSI doorbell.
+
+Maybe my prototype implementation will be more clear.
+
+Thanks,
+Jean
+
+
+>>
+>>
+>> I'll try to send the next version of the spec out as soon as possible.
+>>
+>> Thanks,
+>> Jean
+>>
+>>
+>>> Thanks
+>>> -Bharat
+>>>
+>>>>>
+>>>>> type is 16 bit above?
+>>>>
+>>>> Ah, the naming isn't great. This is not the same as above, and could be
+>> called
+>>>> 'subtype' to avoid confusion. The above 16-bit type describes the field
+>> type,
+>>>> e.g. struct virtio_iommu_probe_resv. I proposed 16-bit because it seems
+>>>> easy to reach more than 255 kinds of endpoint properties, but
+>>>> 65535 should do.
+>>>>
+>>>> This subtype describes which kind of resv region is described in the
+>> structure.
+>>>> For the moment there only is VIRTIO_IOMMU_PROBE_RESV_MSI, but we
+>>>> could for example add resv regions that the driver should never use or
+>> that it
+>>>> should identity-map (equivalent to IOMMU_RESV_RESERVED/DIRECT in
+>>>> Linux). I think 8 bits should be enough to contain any future types, unless
+>> we
+>>>> make this a bitfield. For identity-map, there may be an additional flags
+>> field
+>>>> describing the protection.
+>>>>
+>>>>>> };
+>>>>>>
+>>>>>> Such a region would be subject to the following rules:
+>>>>>>
+>>>>>> * Driver should not use any IOVA declared as RESV_MSI in a mapping.
+>>>>>> * Device should leave any transaction matching a RESV_MSI region pass
+>>>>>> through untranslated.
+>>>>>> * If the device does not advertise any RESV region, then the driver
+>>>>>> should assume that MSI doorbells, like any other GPA, must be
+>> mapped
+>>>>>> with an arbitrary IOVA in order for the endpoint to access them.
+>>>>>> * Given that the driver *should* perform a probe request if
+>>>>>> available, and it *should* understand the
+>>>> VIRTIO_IOMMU_PROBE_T_RESV
+>>>>>> field, then this field tells the guest how it should handle MSI
+>>>>>> doorbells, and whether it should map the address via MAP requests or
+>>>> not.
+>>>>>>
+>>>>>> Does this make sense and did I overlook something?
+>>>>>
+>>>>> Overall it looks good to me. Do you have plans to implements this in
+>> virtio-
+>>>> iommu driver and kvmtool?
+>>>>
+>>>> Yes, if there is no objection I'll try to formalize it and implement it right
+>> away.
+>>>>
+>>>> Thanks,
+>>>> Jean
+> 
+

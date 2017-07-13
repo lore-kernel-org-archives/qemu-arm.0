@@ -1,98 +1,99 @@
-Received: by 10.25.44.15 with SMTP id s15csp1819128lfs;
-        Thu, 13 Jul 2017 00:38:16 -0700 (PDT)
-X-Received: by 10.237.32.70 with SMTP id 64mr3124302qta.218.1499931496537;
-        Thu, 13 Jul 2017 00:38:16 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1499931496; cv=none;
+Received: by 10.25.44.15 with SMTP id s15csp1977754lfs;
+        Thu, 13 Jul 2017 03:34:15 -0700 (PDT)
+X-Received: by 10.200.48.237 with SMTP id w42mr4054530qta.54.1499942055745;
+        Thu, 13 Jul 2017 03:34:15 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1499942055; cv=none;
         d=google.com; s=arc-20160816;
-        b=y4iynQmZNk39i48BfLUlI/ETcuX+dRjsS7DaY9AQz89PrE4cCZiBfZhoRgMc/dpib4
-         Werzcgd0Gu/5PIbE4k0Eh8a0l8Ee3Y+R2QHOyJpnkB5shOu3mTkIPB2Y+n8JrCxa/ndh
-         LH8RCVhJdlb1c2y6v9aJtO4Q/SFVsnv9FsSlqbjVZEELzKpsSpAYeL/wP+N8Iy6i8+r0
-         s7/GQcMcy750PJlRlpVNHf2Eii1oh1fLbFHMxeR78y5oHRwFLykDU8izH0RnQ4Xr7YHc
-         CpOn36/z0DJBcCPOg0nrkh2BUzbadyJ5BmO283Q//qRribzcC8s7f9ChcXmdTR/k0gMj
-         cmSA==
+        b=yQIBN6pshd5XCQFgOv8NDVAOmfhF4krHPmS5Yiwqda7XeoxVyafre6R82qF7qMRYOJ
+         SdkhgSz0L3spjzrtYIzqtohErI0B6a/iBeLFe2PMbf1/8P378OOZdFOz4d/ySRpLFvDg
+         Pjdxw6YyWuE7/3dMczY+rAaSIPnqZ0gCnYzJdrhufFN57pjxFPhS8hmuaWba1KwlUTRa
+         /RNu0qNQHKdMZHImk9wXe7xiLnspuy7P1CAwG6i5DmJHrJWugSfSWhrlZM4VwKDbLhMY
+         qvA/59YdvEwQn8/RVVxLUIAl+3RWnbhc+3uP/jDwIrwXCch0NXmH2/2HPYc/9mPp1vgk
+         g0WQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
-         :references:in-reply-to:mime-version:dkim-signature
-         :arc-authentication-results;
-        bh=aaTPGWeHipuORiPMErdwp/8Psg6cWxCMOvW4pcguXvU=;
-        b=lPwzhFNJ5o4US3vUU1+KU/MVHRIb6x4IBQcnCzK+s8C3GS6ZIN0ZbWF7fdDhCAZZao
-         uwS2mAQda3MtBTGfKWHYzoJ9G2r36ieeWPQAoQRuYHN5nEHjtyQ/va4p576qJoXL6A/F
-         fA58WUzkb4uvPTxhrT09lVbSBVqv9AINqI0wDHs4Dk6K7aAuT+XETBcZYnbQDIzQZLmc
-         MGhpvQOFp6hG+bD+SSam2EurQ4FnfKOkald7ASU6oosRNReVI+CEk1jraeKJ6J+VXbNW
-         JD3KsMfQyVqvzlJLGQjNGilKlK0R311yMzGKrcGPSO92I5vRzojVO2ZdV6wChOdL1O25
-         AleA==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:to:dkim-filter
+         :dmarc-filter:arc-authentication-results;
+        bh=mFw7xGUtwnsoi8xiV8307ZSlkCY1qSw6eMeflHElW9Y=;
+        b=KdlLDdO7kZqBGPAwSAPWXEpUDFOGgV2v4zVigwguuRC78FvWTAALm1vrN2zvlpwus1
+         FEaZC9WPtgj/jKdfi6wQcRxa9T0CqIHRRuoANwwoe68O5l0dgAdc3i05XnqAdlfq4PYE
+         A81+h+tViPVz+hmLKrf1GQ2twbx4w/+bdl71nct4AWVs9YHVubepwBvL8yJQ/r4UrplC
+         +SDUnYbkGILxFPtMJ+FLLV2Qj08Mp1HiyWFrm8lzelL+bhFk0SA9ScH3fbeIgtlGsfJo
+         vvbAY3iFQueOLaOQuuDTpqO/m75xjuatnzB3v3X0ywzZFEz8K1QWxd58EyY/y8hgxFQM
+         A7xA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.b=vO5RTGDi;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [208.118.235.17])
-        by mx.google.com with ESMTPS id v123si4487325qkc.115.2017.07.13.00.38.15
+        by mx.google.com with ESMTPS id l17si4852467qtb.239.2017.07.13.03.34.14
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 13 Jul 2017 00:38:16 -0700 (PDT)
+        Thu, 13 Jul 2017 03:34:15 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) client-ip=208.118.235.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.b=vO5RTGDi;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:57727 helo=lists.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:58590 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1dVYhR-0004ii-Ti
-	for alex.bennee@linaro.org; Thu, 13 Jul 2017 03:38:13 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:46641)
+	id 1dVbRa-0002d9-6B
+	for alex.bennee@linaro.org; Thu, 13 Jul 2017 06:34:02 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:34058)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alistair23@gmail.com>) id 1dVYhL-0004ib-9c
-	for qemu-arm@nongnu.org; Thu, 13 Jul 2017 03:38:08 -0400
+	(envelope-from <lersek@redhat.com>) id 1dVbRG-0002Sq-Cx
+	for qemu-arm@nongnu.org; Thu, 13 Jul 2017 06:33:44 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <alistair23@gmail.com>) id 1dVYhK-0007sh-8L
-	for qemu-arm@nongnu.org; Thu, 13 Jul 2017 03:38:07 -0400
-Received: from mail-wm0-x242.google.com ([2a00:1450:400c:c09::242]:35227)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <alistair23@gmail.com>)
-	id 1dVYhJ-0007sS-Ts; Thu, 13 Jul 2017 03:38:06 -0400
-Received: by mail-wm0-x242.google.com with SMTP id u23so3289380wma.2;
-	Thu, 13 Jul 2017 00:38:05 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=aaTPGWeHipuORiPMErdwp/8Psg6cWxCMOvW4pcguXvU=;
-	b=vO5RTGDiTAf1G9Rwl6Vl4oZdEtv12o3hJcfuzqpuwRRwL027SoteomH7HT0tcl10N+
-	bxmGfwX623Zrr8cOqT5FLFV0kULk52hl7lE0Eyla8UQ9vxOnzOakGvxhq2FGqqSIrpl3
-	Xq9v/wm36dX5IoWZDVQgNHgB+z0ZoXrwTHJkV5EMjJbTnPhPxRqp19Yn3OQcSdPnjTn0
-	pJBSIcVstv/G0c1dR+gUVLMvNmOKa8Cc33a6WYNmmXg3jzg/gYQ4NnBRWeXfMhXXg4ZF
-	m7kuH7ruO8BzAR/S6VwJAuDt1YyQwi+cc685xEjlGz38BoKqtAk09u1UMIQjfZ9y1hIE
-	qXIA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=aaTPGWeHipuORiPMErdwp/8Psg6cWxCMOvW4pcguXvU=;
-	b=p7amx+z6grLVfWQoVeNuGXRlL3aM9n1KowZh/BuvO6lzHYwJ+ITIB2ESdzVkS10uhp
-	3AJ4hkMG+WBTr/8bSFGWSUzd6NAKkhWsPXCIZyqaEdxax5JCzwg24gp4xTOEruUkAT7t
-	EoahidbGwEtv3x9CNhT7kl5mH1SyQAatyapZCdMw5ap1Be88XckosUnodXohPzEjobaK
-	ZcwSKT9QP2KuItx5K06ZzROKrNuIk+hmnlvEqw4p11Es8URSYKYmwEEBqhWxIe9mvAiD
-	hHuXzjfdLyGbh8jtv1FtLf+H/uTX++dqlPvrCzKEFXOQu9SL3Bp4/sydNoXUq4c+VnKf
-	HboQ==
-X-Gm-Message-State: AIVw113JZAULoXLT2MNlb6Gl9iACBILOhXrGAiqSyAAnhcKWZx4njMyp
-	uL3V5Q1glmVQmcJD3iuIrnKnQcTmnw==
-X-Received: by 10.28.51.11 with SMTP id z11mr967741wmz.115.1499931484718; Thu,
-	13 Jul 2017 00:38:04 -0700 (PDT)
+	(envelope-from <lersek@redhat.com>) id 1dVbRC-0007D4-Ux
+	for qemu-arm@nongnu.org; Thu, 13 Jul 2017 06:33:42 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:47612)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <lersek@redhat.com>)
+	id 1dVbRC-0007CJ-LY; Thu, 13 Jul 2017 06:33:38 -0400
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
+	[10.5.11.15])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 9265B4E4CB;
+	Thu, 13 Jul 2017 10:33:37 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 9265B4E4CB
+Authentication-Results: ext-mx09.extmail.prod.ext.phx2.redhat.com;
+	dmarc=none (p=none dis=none) header.from=redhat.com
+Authentication-Results: ext-mx09.extmail.prod.ext.phx2.redhat.com;
+	spf=pass smtp.mailfrom=lersek@redhat.com
+DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com 9265B4E4CB
+Received: from lacos-laptop-7.usersys.redhat.com (ovpn-116-47.phx2.redhat.com
+	[10.3.116.47])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 4555F61F31;
+	Thu, 13 Jul 2017 10:33:30 +0000 (UTC)
+To: Dongjiu Geng <gengdongjiu@huawei.com>, mst@redhat.com,
+	imammedo@redhat.com, famz@redhat.com, qemu-devel@nongnu.org,
+	zhaoshenglong@huawei.com, peter.maydell@linaro.org, qemu-arm@nongnu.org,
+	james.morse@arm.com, zhengqiang10@huawei.com, huangshaoyu@huawei.com,
+	wuquanming@huawei.com
+References: <1499825297-20335-1-git-send-email-gengdongjiu@huawei.com>
+	<1499825297-20335-2-git-send-email-gengdongjiu@huawei.com>
+From: Laszlo Ersek <lersek@redhat.com>
+Message-ID: <74ac9b79-0225-0cab-559f-6204754de5f0@redhat.com>
+Date: Thu, 13 Jul 2017 12:33:29 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.2.1
 MIME-Version: 1.0
-Received: by 10.28.191.88 with HTTP; Thu, 13 Jul 2017 00:37:34 -0700 (PDT)
-In-Reply-To: <1499771839-32518-4-git-send-email-peter.maydell@linaro.org>
-References: <1499771839-32518-1-git-send-email-peter.maydell@linaro.org>
-	<1499771839-32518-4-git-send-email-peter.maydell@linaro.org>
-From: Alistair Francis <alistair23@gmail.com>
-Date: Thu, 13 Jul 2017 09:37:34 +0200
-Message-ID: <CAKmqyKMAuB9KbogvjzZtxWeFcHpb2O1T6dH1v4MrDtbm41CtiQ@mail.gmail.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2a00:1450:400c:c09::242
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH 3/7] hw/arm/mps2: Add UARTs
+In-Reply-To: <1499825297-20335-2-git-send-email-gengdongjiu@huawei.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.38]);
+	Thu, 13 Jul 2017 10:33:37 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v5 1/3] ACPI: Add new ACPI
+ structures and macros
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -104,141 +105,421 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>,
-	"qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
-	Patch Tracking <patches@linaro.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: gFmoNJIp0TTQ
+X-TUID: 6DLM3tFWwb2o
 
-On Tue, Jul 11, 2017 at 1:17 PM, Peter Maydell <peter.maydell@linaro.org> wrote:
-> Add the UARTs to the MPS2 board models.
->
-> Unfortunately the details of the wiring of the interrupts through
-> various OR gates differ between AN511 and AN385 so this can't
-> be purely a data-driven difference.
->
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+On 07/12/17 04:08, Dongjiu Geng wrote:
+> (1) Add related APEI/HEST table structures and  macros, these
+>     definition refer to ACPI 6.1 and UEFI 2.6 spec.
+> (2) Add generic error status block and CPER memory section
+>     definition, user space only handle memory section errors.
+> 
+> Signed-off-by: Dongjiu Geng <gengdongjiu@huawei.com>
 
-Reviewed-by: Alistair Francis <alistair.francis@xilinx.com>
+This patch looks generally good to me; let me comment on the code
+organization:
 
-Woo! I'm glad the OR IRQ stuff is useful.
+(a) Please make the subject less generic. For example,
 
-Thanks,
-Alistair
+  ACPI: add APEI/HEST/CPER structures and macros
 
 > ---
->  hw/arm/mps2.c | 86 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
->  1 file changed, 86 insertions(+)
->
-> diff --git a/hw/arm/mps2.c b/hw/arm/mps2.c
-> index 28838bc..1b60b12 100644
-> --- a/hw/arm/mps2.c
-> +++ b/hw/arm/mps2.c
-> @@ -27,9 +27,12 @@
->  #include "qemu/error-report.h"
->  #include "hw/arm/arm.h"
->  #include "hw/arm/armv7m.h"
-> +#include "hw/or-irq.h"
->  #include "hw/boards.h"
->  #include "exec/address-spaces.h"
-> +#include "sysemu/sysemu.h"
->  #include "hw/misc/unimp.h"
-> +#include "hw/char/cmsdk-apb-uart.h"
->
->  typedef enum MPS2FPGAType {
->      FPGA_AN385,
-> @@ -208,6 +211,89 @@ static void mps2_common_init(MachineState *machine)
->      create_unimplemented_device("Ethernet", 0x40200000, 0x00100000);
->      create_unimplemented_device("VGA", 0x41000000, 0x0200000);
->
-> +    switch (mmc->fpga_type) {
-> +    case FPGA_AN385:
-> +    {
-> +        /* The overflow IRQs for UARTs 0, 1 and 2 are ORed together.
-> +         * Overflow for UARTs 4 and 5 doesn't trigger any interrupt.
-> +         */
-> +        Object *orgate;
-> +        DeviceState *orgate_dev;
-> +        int i;
+> thanks Laszlo and Michael's review:
+> 
+> chnage since v4:
+> (1) fix email threading in this series is incorrect issue
+> 
+> change since v3:
+> (1) separate the original one patch into three patches: one is new
+>     ACPI structures and macros, another is C source file to generate ACPI HEST
+>     table and dynamically record CPER ,final patch is the change about Makefile
+>     and configuration
+> (2) add comments about where the ACPI structures and macros come from, for example,
+>     they come from the UEFI Spec 2.6, "xxxxxxxxxxxx"; ACPI 6.1 spec, 
+>     "xxxxxxxxxxxxxx".
+> (3) correct the macros name, for emaple, prefix some macro names with
+>     "UEFI_".
+> (4) remove the uuid_le struct and use the QemuUUID in the include/qemu/uuid.h"
+> (5) remove the duplicate ACPI address space, because it already defined in 
+>     the "include/hw/acpi/aml-build.h"
+> (6) remove the acpi_generic_address structure because same definition exists in the 
+>     AcpiGenericAddress.
+> (7) rename the struct acpi_hest_notify to AcpiHestNotifyType
+> (8) rename the struct acpi_hest_types to AcpiHestSourceType
+> (9) rename enum constants AcpiHestSourceType to ACPI_HEST_SOURCE_xxx from
+>      ACPI_HEST_TYPE_xxx
+> (10) remove the NOT_USED{3,4,5} enum constants in the AcpiHestSourceType.
+> (11) add missed QEMU_PACKED for the struct definition.
+> (12) remove the defnition of AcpiGenericErrorData, and rename the
+>      AcpiGenericErrorDataV300 to AcpiGenericErrorData.
+> (13) use the QemuUUID type for the "section_type" field AcpiGenericErrorData, and rename it
+>      to section_type_le.
+> (14) moving type AcpiGenericErrorSeverity above AcpiGenericErrorData and
+>      AcpiGenericErrorDataV300, and remarking on the "error_severity" fields
+>      that they take their values from AcpiGenericErrorSeverity
+> (15) remove the wrongly call to BERT(Boot Error Record Table)
+> (16) add comments for the struction member, for example, pint out that
+>      the block_status member in the AcpiGenericErrorStatus is a bitmask
+>      composed of ACPI_GEBS_xxx macros
+> (17) remove the hardware error source notification type list, and rename
+>      the MAX_ERROR_SOURCE_COUNT_V6 to ACPI_HEST_NOTIFY_RESERVED.
+> (18) remove the physical_addr member of GhesErrorState
+> (19) change the "uint64_t ghes_addr_le[8]" in GhesErrorState to uint64_t ghes_addr_le
+> (20) change the second parameter to "error_physical_addr" in the ghes_update_guest
+>      API statement
+> ---
+>  include/hw/acpi/acpi-defs.h | 194 ++++++++++++++++++++++++++++++++++++++++++++
+>  include/hw/acpi/aml-build.h |   1 +
+>  include/hw/acpi/hest_ghes.h |  47 +++++++++++
+>  include/qemu/uuid.h         |  11 +++
+>  4 files changed, 253 insertions(+)
+>  create mode 100644 include/hw/acpi/hest_ghes.h
+> 
+> diff --git a/include/hw/acpi/acpi-defs.h b/include/hw/acpi/acpi-defs.h
+> index 4cc3630..0756339 100644
+> --- a/include/hw/acpi/acpi-defs.h
+> +++ b/include/hw/acpi/acpi-defs.h
+> @@ -15,6 +15,7 @@
+>  #ifndef QEMU_ACPI_DEFS_H
+>  #define QEMU_ACPI_DEFS_H
+>  
+> +#include "qemu/uuid.h"
+
+(b) This is what I first thought upon seeing this:
+
+'I don't think this should be included here. You don't use UUID_BE or
+UEFI_CPER_SEC_PLATFORM_MEM anywhere in this patch. So whatever uses
+those macros can include "qemu/uuid.h" directly.'
+
+However, after all, I think this #include is OK here, with a
+modification lower down.
+
+>  enum {
+>      ACPI_FADT_F_WBINVD,
+>      ACPI_FADT_F_WBINVD_FLUSH,
+> @@ -295,6 +296,44 @@ typedef struct AcpiMultipleApicTable AcpiMultipleApicTable;
+>  #define ACPI_APIC_GENERIC_TRANSLATOR    15
+>  #define ACPI_APIC_RESERVED              16   /* 16 and greater are reserved */
+>  
+> +/* UEFI Spec 2.6, "N.2.5 Memory Error Section */
+> +#define UEFI_CPER_MEM_VALID_ERROR_STATUS     0x0001
+> +#define UEFI_CPER_MEM_VALID_PA               0x0002
+> +#define UEFI_CPER_MEM_VALID_PA_MASK          0x0004
+> +#define UEFI_CPER_MEM_VALID_NODE             0x0008
+> +#define UEFI_CPER_MEM_VALID_CARD             0x0010
+> +#define UEFI_CPER_MEM_VALID_MODULE           0x0020
+> +#define UEFI_CPER_MEM_VALID_BANK             0x0040
+> +#define UEFI_CPER_MEM_VALID_DEVICE           0x0080
+> +#define UEFI_CPER_MEM_VALID_ROW              0x0100
+> +#define UEFI_CPER_MEM_VALID_COLUMN           0x0200
+> +#define UEFI_CPER_MEM_VALID_BIT_POSITION     0x0400
+> +#define UEFI_CPER_MEM_VALID_REQUESTOR        0x0800
+> +#define UEFI_CPER_MEM_VALID_RESPONDER        0x1000
+> +#define UEFI_CPER_MEM_VALID_TARGET           0x2000
+> +#define UEFI_CPER_MEM_VALID_ERROR_TYPE       0x4000
+> +#define UEFI_CPER_MEM_VALID_RANK_NUMBER      0x8000
+> +#define UEFI_CPER_MEM_VALID_CARD_HANDLE      0x10000
+> +#define UEFI_CPER_MEM_VALID_MODULE_HANDLE    0x20000
+> +#define UEFI_CPER_MEM_ERROR_TYPE_MULTI_ECC   3
 > +
-> +        orgate = object_new(TYPE_OR_IRQ);
-> +        object_property_set_int(orgate, 6, "num-lines", &error_fatal);
-> +        object_property_set_bool(orgate, true, "realized", &error_fatal);
-> +        orgate_dev = DEVICE(orgate);
-> +        qdev_connect_gpio_out(orgate_dev, 0, qdev_get_gpio_in(armv7m, 12));
+> +/* This is from the ACPI 6.1 spec, "18.3.2.9 Hardware Error Notification" */
 > +
-> +        for (i = 0; i < 5; i++) {
-> +            hwaddr uartbase[] = {0x40004000, 0x40005000, 0x40006000,
-> +                                 0x40007000, 0x40009000};
-> +            Chardev *uartchr = i < MAX_SERIAL_PORTS ? serial_hds[i] : NULL;
-> +            /* RX irq number; TX irq is always one greater */
-> +            int uartirq[] = {0, 2, 4, 18, 20};
-> +            qemu_irq txovrint = NULL, rxovrint = NULL;
+> +enum AcpiHestNotifyType {
+> +    ACPI_HEST_NOTIFY_POLLED = 0,
+> +    ACPI_HEST_NOTIFY_EXTERNAL = 1,
+> +    ACPI_HEST_NOTIFY_LOCAL = 2,
+> +    ACPI_HEST_NOTIFY_SCI = 3,
+> +    ACPI_HEST_NOTIFY_NMI = 4,
+> +    ACPI_HEST_NOTIFY_CMCI = 5,  /* ACPI 5.0 */
+> +    ACPI_HEST_NOTIFY_MCE = 6,   /* ACPI 5.0 */
+> +    ACPI_HEST_NOTIFY_GPIO = 7,  /* ACPI 6.0 */
+> +    ACPI_HEST_NOTIFY_SEA = 8,   /* ACPI 6.1 */
+> +    ACPI_HEST_NOTIFY_SEI = 9,   /* ACPI 6.1 */
+> +    ACPI_HEST_NOTIFY_GSIV = 10, /* ACPI 6.1 */
+> +    ACPI_HEST_NOTIFY_RESERVED = 11  /* 11 and greater are reserved */
+> +};
 > +
-> +            if (i < 3) {
-> +                txovrint = qdev_get_gpio_in(orgate_dev, i * 2);
-> +                rxovrint = qdev_get_gpio_in(orgate_dev, i * 2 + 1);
-> +            }
+>  /*
+>   * MADT sub-structures (Follow MULTIPLE_APIC_DESCRIPTION_TABLE)
+>   */
+> @@ -475,6 +514,161 @@ struct AcpiSystemResourceAffinityTable
+>  } QEMU_PACKED;
+>  typedef struct AcpiSystemResourceAffinityTable AcpiSystemResourceAffinityTable;
+>  
+> +/* Hardware Error Notification, this is from the ACPI 6.1
+> + * spec, "18.3.2.9 Hardware Error Notification"
+> + */
+> +struct AcpiHestNotify {
+> +    uint8_t type;
+> +    uint8_t length;
+> +    uint16_t config_write_enable;
+> +    uint32_t poll_interval;
+> +    uint32_t vector;
+> +    uint32_t polling_threshold_value;
+> +    uint32_t polling_threshold_window;
+> +    uint32_t error_threshold_value;
+> +    uint32_t error_threshold_window;
+> +} QEMU_PACKED;
+> +typedef struct AcpiHestNotify AcpiHestNotify;
 > +
-> +            cmsdk_apb_uart_create(uartbase[i],
-> +                                  qdev_get_gpio_in(armv7m, uartirq[i] + 1),
-> +                                  qdev_get_gpio_in(armv7m, uartirq[i]),
-> +                                  txovrint, rxovrint,
-> +                                  NULL,
-> +                                  uartchr, SYSCLK_FRQ);
-> +        }
-> +        break;
-> +    }
-> +    case FPGA_AN511:
-> +    {
-> +        /* The overflow IRQs for all UARTs are ORed together.
-> +         * Tx and Rx IRQs for each UART are ORed together.
-> +         */
-> +        Object *orgate;
-> +        DeviceState *orgate_dev;
-> +        int i;
+> +/* These are from ACPI 6.1, sections "18.3.2.1 IA-32 Architecture Machine
+> + * Check Exception" through "18.3.2.8 Generic Hardware Error Source version 2".
+> + */
+> +enum AcpiHestSourceType {
+> +    ACPI_HEST_SOURCE_IA32_CHECK = 0,
+> +    ACPI_HEST_SOURCE_IA32_CORRECTED_CHECK = 1,
+> +    ACPI_HEST_SOURCE_IA32_NMI = 2,
+> +    ACPI_HEST_SOURCE_AER_ROOT_PORT = 6,
+> +    ACPI_HEST_SOURCE_AER_ENDPOINT = 7,
+> +    ACPI_HEST_SOURCE_AER_BRIDGE = 8,
+> +    ACPI_HEST_SOURCE_GENERIC_ERROR = 9,
+> +    ACPI_HEST_SOURCE_GENERIC_ERROR_V2 = 10,
+> +    ACPI_HEST_SOURCE_RESERVED = 11    /* 11 and greater are reserved */
+> +};
 > +
-> +        orgate = object_new(TYPE_OR_IRQ);
-> +        object_property_set_int(orgate, 10, "num-lines", &error_fatal);
-> +        object_property_set_bool(orgate, true, "realized", &error_fatal);
-> +        orgate_dev = DEVICE(orgate);
-> +        qdev_connect_gpio_out(orgate_dev, 0, qdev_get_gpio_in(armv7m, 12));
+> +/* Block Status bitmasks from ACPI 6.1, "18.3.2.7.1 Generic Error Data" */
+> +#define ACPI_GEBS_UNCORRECTABLE             (1)
+> +#define ACPI_GEBS_CORRECTABLE               (1 << 1)
+> +#define ACPI_GEBS_MULTIPLE_UNCORRECTABLE    (1 << 2)
+> +#define ACPI_GEBS_MULTIPLE_CORRECTABLE      (1 << 3)
+> +/* 10 bits, error count */
+> +#define ACPI_GEBS_ERROR_ENTRY_COUNT         (0x3FF << 4)
 > +
-> +        for (i = 0; i < 5; i++) {
-> +            /* system irq numbers for the combined tx/rx for each UART */
-> +            const int uart_txrx_irqno[] = {0, 2, 45, 46, 56};
-> +            hwaddr uartbase[] = {0x40004000, 0x40005000, 0x4002c000,
-> +                                 0x4002d000, 0x4002e000};
-> +            Chardev *uartchr = i < MAX_SERIAL_PORTS ? serial_hds[i] : NULL;
-> +            Object *txrx_orgate;
-> +            DeviceState *txrx_orgate_dev;
+> +/* Generic Hardware Error Source Structure, refer to ACPI 6.1
+> + * "18.3.2.7 Generic Hardware Error Source". in this struct the
+> + * "type" field has to be ACPI_HEST_SOURCE_GENERIC_ERROR
+> + */
 > +
-> +            txrx_orgate = object_new(TYPE_OR_IRQ);
-> +            object_property_set_int(txrx_orgate, 2, "num-lines", &error_fatal);
-> +            object_property_set_bool(txrx_orgate, true, "realized",
-> +                                     &error_fatal);
-> +            txrx_orgate_dev = DEVICE(txrx_orgate);
-> +            qdev_connect_gpio_out(txrx_orgate_dev, 0,
-> +                                  qdev_get_gpio_in(armv7m, uart_txrx_irqno[i]));
-> +            cmsdk_apb_uart_create(uartbase[i],
-> +                                  qdev_get_gpio_in(txrx_orgate_dev, 0),
-> +                                  qdev_get_gpio_in(txrx_orgate_dev, 1),
-> +                                  qdev_get_gpio_in(orgate_dev, 0),
-> +                                  qdev_get_gpio_in(orgate_dev, 1),
-> +                                  NULL,
-> +                                  uartchr, SYSCLK_FRQ);
-> +        }
-> +        break;
-> +    }
-> +    default:
-> +        g_assert_not_reached();
-> +    }
+> +struct AcpiGenericHardwareErrorSource {
+> +    uint16_t type;
+> +    uint16_t source_id;
+> +    uint16_t related_source_id;
+> +    uint8_t flags;
+> +    uint8_t enabled;
+> +    uint32_t number_of_records;
+> +    uint32_t max_sections_per_record;
+> +    uint32_t max_raw_data_length;
+> +    struct AcpiGenericAddress error_status_address;
+> +    struct AcpiHestNotify notify;
+> +    uint32_t error_status_block_length;
+> +} QEMU_PACKED;
+> +typedef struct AcpiGenericHardwareErrorSource AcpiGenericHardwareErrorSource;
 > +
->      system_clock_scale = NANOSECONDS_PER_SECOND / SYSCLK_FRQ;
->
->      armv7m_load_kernel(ARM_CPU(first_cpu), machine->kernel_filename,
-> --
-> 2.7.4
->
->
+> +/* Generic Hardware Error Source, version 2, ACPI 6.1, "18.3.2.8 Generic
+> + * Hardware Error Source version 2", in this struct the "type" field has to
+> + * be ACPI_HEST_SOURCE_GENERIC_ERROR_V2
+> + */
+> +struct AcpiGenericHardwareErrorSourceV2 {
+> +    uint16_t type;
+> +    uint16_t source_id;
+> +    uint16_t related_source_id;
+> +    uint8_t flags;
+> +    uint8_t enabled;
+> +    uint32_t number_of_records;
+> +    uint32_t max_sections_per_record;
+> +    uint32_t max_raw_data_length;
+> +    struct AcpiGenericAddress error_status_address;
+> +    struct AcpiHestNotify notify;
+> +    uint32_t error_status_block_length;
+> +    struct AcpiGenericAddress read_ack_register;
+> +    uint64_t read_ack_preserve;
+> +    uint64_t read_ack_write;
+> +} QEMU_PACKED;
+> +typedef struct AcpiGenericHardwareErrorSourceV2
+> +            AcpiGenericHardwareErrorSourceV2;
+> +
+> +/* Generic Error Status block, this is from ACPI 6.1,
+> + * "18.3.2.7.1 Generic Error Data"
+> + */
+> +struct AcpiGenericErrorStatus {
+> +    /* It is a bitmask composed of ACPI_GEBS_xxx macros */
+> +    uint32_t block_status;
+> +    uint32_t raw_data_offset;
+> +    uint32_t raw_data_length;
+> +    uint32_t data_length;
+> +    uint32_t error_severity;
+> +} QEMU_PACKED;
+> +typedef struct AcpiGenericErrorStatus AcpiGenericErrorStatus;
+> +
+> +enum AcpiGenericErrorSeverity {
+> +    ACPI_CPER_SEV_RECOVERABLE,
+> +    ACPI_CPER_SEV_FATAL,
+> +    ACPI_CPER_SEV_CORRECTED,
+> +    ACPI_CPER_SEV_NONE,
+> +};
+> +
+> +/* Generic Error Data entry, revision number is 0x0300,
+> + * ACPI 6.1, "18.3.2.7.1 Generic Error Data"
+> + */
+> +struct AcpiGenericErrorData {
+> +    QemuUUID section_type_le;
+> +    /* The "error_severity" fields that they take their
+> +     * values from AcpiGenericErrorSeverity
+> +     */
+> +    uint32_t error_severity;
+> +    uint16_t revision;
+> +    uint8_t validation_bits;
+> +    uint8_t flags;
+> +    uint32_t error_data_length;
+> +    uint8_t fru_id[16];
+> +    uint8_t fru_text[20];
+> +    uint64_t time_stamp;
+> +} QEMU_PACKED;
+> +typedef struct AcpiGenericErrorData AcpiGenericErrorData;
+> +
+> +/* This is from UEFI 2.6, "N.2.5 Memory Error Section" */
+> +struct UefiCperSecMemErr {
+> +    uint64_t    validation_bits;
+> +    uint64_t    error_status;
+> +    uint64_t    physical_addr;
+> +    uint64_t    physical_addr_mask;
+> +    uint16_t    node;
+> +    uint16_t    card;
+> +    uint16_t    module;
+> +    uint16_t    bank;
+> +    uint16_t    device;
+> +    uint16_t    row;
+> +    uint16_t    column;
+> +    uint16_t    bit_pos;
+> +    uint64_t    requestor_id;
+> +    uint64_t    responder_id;
+> +    uint64_t    target_id;
+> +    uint8_t     error_type;
+> +    uint8_t     reserved;
+> +    uint16_t    rank;
+> +    uint16_t    mem_array_handle;   /* card handle in UEFI 2.4 */
+> +    uint16_t    mem_dev_handle;     /* module handle in UEFI 2.4 */
+> +} QEMU_PACKED;
+> +typedef struct UefiCperSecMemErr UefiCperSecMemErr;
+> +
+> +/*
+> + * HEST Description Table
+> + */
+> +struct AcpiHardwareErrorSourceTable {
+> +    ACPI_TABLE_HEADER_DEF                    /* ACPI common table header */
+> +    uint32_t           error_source_count;
+> +} QEMU_PACKED;
+> +typedef struct AcpiHardwareErrorSourceTable AcpiHardwareErrorSourceTable;
+> +
+>  #define ACPI_SRAT_PROCESSOR_APIC     0
+>  #define ACPI_SRAT_MEMORY             1
+>  #define ACPI_SRAT_PROCESSOR_x2APIC   2
+> diff --git a/include/hw/acpi/aml-build.h b/include/hw/acpi/aml-build.h
+> index 00c21f1..c1d15b3 100644
+> --- a/include/hw/acpi/aml-build.h
+> +++ b/include/hw/acpi/aml-build.h
+> @@ -211,6 +211,7 @@ struct AcpiBuildTables {
+>      GArray *rsdp;
+>      GArray *tcpalog;
+>      GArray *vmgenid;
+> +    GArray *hardware_errors;
+>      BIOSLinker *linker;
+>  } AcpiBuildTables;
+>  
+
+(c) I think that this hunk belongs with the implementation (patch #2),
+not with the ACPI struct / macro introduction patch.
+
+> diff --git a/include/hw/acpi/hest_ghes.h b/include/hw/acpi/hest_ghes.h
+> new file mode 100644
+> index 0000000..0772756
+> --- /dev/null
+> +++ b/include/hw/acpi/hest_ghes.h
+> @@ -0,0 +1,47 @@
+> +/*
+> + * This program is free software; you can redistribute it and/or modify
+> + * it under the terms of the GNU General Public License as published by
+> + * the Free Software Foundation; either version 2 of the License, or
+> + * (at your option) any later version.
+> +
+> + * This program is distributed in the hope that it will be useful,
+> + * but WITHOUT ANY WARRANTY; without even the implied warranty of
+> + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+> + * GNU General Public License for more details.
+> + *
+> + * Authors:
+> + *   Dongjiu Geng <gengdongjiu@huawei.com>
+> + *
+> + * You should have received a copy of the GNU General Public License along
+> + * with this program; if not, see <http://www.gnu.org/licenses/>.
+> + */
+> +
+> +#ifndef ACPI_GHES_H
+> +#define ACPI_GHES_H
+> +
+> +#include "hw/acpi/bios-linker-loader.h"
+> +
+> +#define GHES_ERRORS_FW_CFG_FILE      "etc/hardware_errors"
+> +#define GHES_DATA_ADDR_FW_CFG_FILE      "etc/hardware_errors_addr"
+> +
+> +#define GHES_GAS_ADDRESS_OFFSET              4
+> +#define GHES_ERROR_STATUS_ADDRESS_OFFSET     20
+> +#define GHES_NOTIFICATION_STRUCTURE          32
+> +
+> +#define GHES_CPER_OK   1
+> +#define GHES_CPER_FAIL 0
+> +
+> +#define GHES_ACPI_HEST_NOTIFY_RESERVED           11
+> +/* The max size in Bytes for one error block */
+> +#define GHES_MAX_RAW_DATA_LENGTH                 0x1000
+> +
+> +
+> +typedef struct GhesState {
+> +    uint64_t ghes_addr_le;
+> +} GhesState;
+> +
+> +void ghes_build_acpi(GArray *table_data, GArray *hardware_error,
+> +                            BIOSLinker *linker);
+> +void ghes_add_fw_cfg(FWCfgState *s, GArray *hardware_errors);
+> +bool ghes_update_guest(uint32_t notify, uint64_t error_physical_addr);
+> +#endif
+
+(d) same comment as (c)
+
+> diff --git a/include/qemu/uuid.h b/include/qemu/uuid.h
+> index afe4840..99c4041 100644
+> --- a/include/qemu/uuid.h
+> +++ b/include/qemu/uuid.h
+> @@ -44,6 +44,17 @@ typedef struct {
+>  
+>  #define UUID_NONE "00000000-0000-0000-0000-000000000000"
+>  
+> +#define UUID_BE(a, b, c, d0, d1, d2, d3, d4, d5, d6, d7)        \
+> +{{{ ((a) >> 24) & 0xff, ((a) >> 16) & 0xff, ((a) >> 8) & 0xff, (a) & 0xff, \
+> +   ((b) >> 8) & 0xff, (b) & 0xff,                   \
+> +    ((c) >> 8) & 0xff, (c) & 0xff,                    \
+> +    (d0), (d1), (d2), (d3), (d4), (d5), (d6), (d7) } } }
+> +
+> +/* Platform Memory, this is from UEFI 2.6 N.2.2 Section Descriptor */
+> +#define UEFI_CPER_SEC_PLATFORM_MEM                   \
+> +    UUID_BE(0xA5BC1114, 0x6F64, 0x4EDE, 0xB8, 0x63, 0x3E, 0x83, \
+> +    0xED, 0x7C, 0x83, 0xB1)
+> +
+>  void qemu_uuid_generate(QemuUUID *out);
+>  
+>  int qemu_uuid_is_null(const QemuUUID *uu);
+> 
+
+(e) I think the addition of UUID_BE should be split out to a separate
+patch; it adds a general facility. It should likely be the very first
+patch in the series.
+
+(f) While I think it is justified to have UUID_BE() in "qemu/uuid.h", I
+think UEFI_CPER_SEC_PLATFORM_MEM is too specific to have here.
+
+If UEFI_CPER_SEC_PLATFORM_MEM were *not* a standardized UUID, I would
+suggest moving it to the implementation ("include/hw/acpi/hest_ghes.h"
+-- which in turn should be moved to patch #2, see my remark (d)), *plus*
+I would suggest eliminating the new #include from "acpi-defs.h", see my
+remark (b).
+
+However, given that this UUID *is* standard, I suggest keeping the (b)
+#include as you currently propose, and to move the definition of
+UEFI_CPER_SEC_PLATFORM_MEM to "acpi-defs.h".
+
+I vaguely recall that Michael commented on this previously, but I don't
+remember what he said. Michael, are you OK with my suggestion?
+
+Thanks
+Laszlo

@@ -1,89 +1,98 @@
-Received: by 10.25.44.15 with SMTP id s15csp2464578lfs;
-        Thu, 13 Jul 2017 10:37:16 -0700 (PDT)
-X-Received: by 10.55.126.69 with SMTP id z66mr6012848qkc.48.1499967436182;
-        Thu, 13 Jul 2017 10:37:16 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1499967436; cv=none;
+Received: by 10.25.44.15 with SMTP id s15csp2515227lfs;
+        Thu, 13 Jul 2017 11:25:35 -0700 (PDT)
+X-Received: by 10.55.99.85 with SMTP id x82mr6785386qkb.62.1499970335374;
+        Thu, 13 Jul 2017 11:25:35 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1499970335; cv=none;
         d=google.com; s=arc-20160816;
-        b=e8sZvhfb/fLUhAW/ve7pieu2Rr0bCAy85aOeWeeBN4i+JdN7K8PiRy3KtUJzXA/VDr
-         w8K0VcxCkajkble9fJe8In24xv3FzRyM89FpcwBjQTnZv7IMKdkAuIMdihneRL6z0JnJ
-         G9d5NcQloUEdt2bRUvtwsbp1a1W7Gd9Cr8FaFJ7QHCFCASahZbSg7n+lz8kxhV0ihsH0
-         MU4W+3cct4iJZoJWSGzaPXUruB6OsYlllwRiajbIVUxfUd/AsSIWpIaOfa5BBRwEhlSh
-         igWXqYAHbSDCgefDjtvjhoEB1s3VoeI8Gx+caJsdbN27zMeyAs1Pv9jZY2P0R8HTcRYF
-         h/Ag==
+        b=Hdk2AabAot4CwmO9xUvfuXUbubo2UXwCbUL3PP+FaMA3RbgUz1++XA0iLqoCbMev0h
+         dFklfsQMoBHs3NjCBdk1IEACZ8pasiQ24iY7KYuyy5SefpnJVekDAcfnRfwEgATePPbv
+         DZLnzEedszv5jCYhxv9s6ptUC8ZCsgJvyddsaBhyPa3wWWDE5G8q8/ATWic/0HCLMEBB
+         VvigjUWWTPvSDSqtwgjlBB+ff7R/edFbuQqMQkSHhLbL/eUzbKKk7OoCJlrKL+5Eu1Wz
+         FIvLONlF0H8SFXaqtwVUqWmTa95RCyQux2TZoFJzQxvGq65tU/IobMfhP+LHEs3RpKeh
+         /nHg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:in-reply-to
-         :content-disposition:mime-version:references:message-id:to:from:date
-         :dkim-filter:dmarc-filter:arc-authentication-results;
-        bh=leTvRF+XY+ddCu/u9iVkl5DQmj/q0QfWJsZIuY8eTJI=;
-        b=aJMIkJ/R1WuC5nwkAY9BxJaWLXzCulboBSHB/Ll0yIlZTLgUoDyi5y5RKeDfizOoAn
-         ljALNW+3XWNIJiJRY/RjOUT45Ahf7UYZNddSDmZeyT4kEXjGvYv1EFLfdMQegWcwhNDg
-         7cb4FEcfN43X29IjHZvk3JDGg028c6qKy1K3X2PAOiCIlse5X77azVORo7QBj+QM5BPi
-         H2lyqJNUIUJqJ7E4FyJpgxVpTNYnRClm2iIThJDhA/1XE7X02eOVRxqJN9ahGrDeP1/c
-         BFpS8Qg3nFPY6rmKilWzU2RwraKXMm3OMGxQXsMIJNmeAAOOm231yxW/dp2w4DPOZPpp
-         l1hQ==
+         :list-unsubscribe:list-id:precedence:subject:mime-version:user-agent
+         :message-id:in-reply-to:date:references:to:from:dkim-filter
+         :dmarc-filter:arc-authentication-results;
+        bh=evXFvOqm1uNyvotsKp8m9aZ9hedDG2Dr5Jkx5Mnj+eM=;
+        b=q098ejFMPFtGolMZ0boOKylG0K1Sgq/UmhHwrgxXxz0/rTq4b9/9p47ZKc08e0b+zl
+         01mGi9QZp8Bc9uRrUKdhu2GVvYr/MQl3tTTwL+PsdZ4r4unOL8WwIZ5U+WT0mgMN/y9m
+         6q8tl2GHUbztjDjsxNKRAM2rvtkWeBh2KUgGU+sZNPVEpqEdkYLN6ISEXhphL3xhreKq
+         2gLfrweazR/bCs5TZWJ8EK68ZTvNYfND2+AhucZSKIP3i8orO6oPTjZysS1eubKzvZ5/
+         mc9aeqVqRII+BFBHUk2azU34841ak2qcNYIET7vOrPRIh7KDpPv9SJ0P/MGiwPaPhzY+
+         L9kA==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id i69si5633295qke.182.2017.07.13.10.37.15
+        by mx.google.com with ESMTPS id n83si6088039qkh.270.2017.07.13.11.25.34
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 13 Jul 2017 10:37:16 -0700 (PDT)
+        Thu, 13 Jul 2017 11:25:35 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:33276 helo=lists.gnu.org)
+Received: from localhost ([::1]:33454 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1dVi37-0000Cq-I2
-	for alex.bennee@linaro.org; Thu, 13 Jul 2017 13:37:13 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:34469)
+	id 1dVins-0003kN-OA
+	for alex.bennee@linaro.org; Thu, 13 Jul 2017 14:25:32 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:47687)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mst@redhat.com>) id 1dVi33-0000CU-7U
-	for qemu-arm@nongnu.org; Thu, 13 Jul 2017 13:37:10 -0400
+	(envelope-from <armbru@redhat.com>) id 1dVinf-0003Yd-Vi
+	for qemu-arm@nongnu.org; Thu, 13 Jul 2017 14:25:20 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mst@redhat.com>) id 1dVi2y-00075A-AJ
-	for qemu-arm@nongnu.org; Thu, 13 Jul 2017 13:37:09 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:57574)
+	(envelope-from <armbru@redhat.com>) id 1dVinb-0005oh-7L
+	for qemu-arm@nongnu.org; Thu, 13 Jul 2017 14:25:19 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:59880)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <mst@redhat.com>)
-	id 1dVi2y-00074k-0x; Thu, 13 Jul 2017 13:37:04 -0400
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
-	[10.5.11.11])
+	(Exim 4.71) (envelope-from <armbru@redhat.com>)
+	id 1dVina-0005nu-Mq; Thu, 13 Jul 2017 14:25:14 -0400
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+	[10.5.11.14])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id DF1C1267CF;
-	Thu, 13 Jul 2017 17:37:02 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com DF1C1267CF
-Authentication-Results: ext-mx06.extmail.prod.ext.phx2.redhat.com;
+	by mx1.redhat.com (Postfix) with ESMTPS id 7721A7EBD7;
+	Thu, 13 Jul 2017 18:25:13 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 7721A7EBD7
+Authentication-Results: ext-mx03.extmail.prod.ext.phx2.redhat.com;
 	dmarc=none (p=none dis=none) header.from=redhat.com
-Authentication-Results: ext-mx06.extmail.prod.ext.phx2.redhat.com;
-	spf=pass smtp.mailfrom=mst@redhat.com
-DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com DF1C1267CF
-Received: from redhat.com (ovpn-121-70.rdu2.redhat.com [10.10.121.70])
-	by smtp.corp.redhat.com (Postfix) with SMTP id 27337702E6;
-	Thu, 13 Jul 2017 17:36:57 +0000 (UTC)
-Date: Thu, 13 Jul 2017 20:36:56 +0300
-From: "Michael S. Tsirkin" <mst@redhat.com>
-To: Dongjiu Geng <gengdongjiu@huawei.com>
-Message-ID: <20170713203512-mutt-send-email-mst@kernel.org>
-References: <1499825297-20335-1-git-send-email-gengdongjiu@huawei.com>
+Authentication-Results: ext-mx03.extmail.prod.ext.phx2.redhat.com;
+	spf=pass smtp.mailfrom=armbru@redhat.com
+DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com 7721A7EBD7
+Received: from blackfin.pond.sub.org (ovpn-116-60.ams2.redhat.com
+	[10.36.116.60])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id A5B1817AE6;
+	Thu, 13 Jul 2017 18:25:11 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+	id 0FBFE1138645; Thu, 13 Jul 2017 20:25:10 +0200 (CEST)
+From: Markus Armbruster <armbru@redhat.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+References: <1499788408-10096-1-git-send-email-peter.maydell@linaro.org>
+	<1499788408-10096-3-git-send-email-peter.maydell@linaro.org>
+	<87lgnt99xz.fsf@dusky.pond.sub.org>
+	<CAFEAcA-oEZZgPDOayLpZ1_aC0hEeOcYBL3+XejtJXnt4wDyqow@mail.gmail.com>
+	<87d194xnyp.fsf@dusky.pond.sub.org>
+	<CAFEAcA-XrYnnzH58LkyObyJH-eGuEHK-BuQkRjwFbZmMr1oeXQ@mail.gmail.com>
+Date: Thu, 13 Jul 2017 20:25:10 +0200
+In-Reply-To: <CAFEAcA-XrYnnzH58LkyObyJH-eGuEHK-BuQkRjwFbZmMr1oeXQ@mail.gmail.com>
+	(Peter Maydell's message of "Thu, 13 Jul 2017 18:18:06 +0100")
+Message-ID: <87bmootcs9.fsf@dusky.pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/25.2 (gnu/linux)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <1499825297-20335-1-git-send-email-gengdongjiu@huawei.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
+Content-Type: text/plain
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.30]);
-	Thu, 13 Jul 2017 17:37:03 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.27]);
+	Thu, 13 Jul 2017 18:25:13 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [PATCH v5 0/3] Generate APEI GHES table and
- dynamically record CPER
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH 2/3] qdev: support properties
+ which don't set a default value
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -95,125 +104,54 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, wuquanming@huawei.com, famz@redhat.com,
-	zhengqiang10@huawei.com, qemu-devel@nongnu.org,
-	qemu-arm@nongnu.org, james.morse@arm.com, huangshaoyu@huawei.com,
-	zhaoshenglong@huawei.com, imammedo@redhat.com, lersek@redhat.com
+Cc: =?utf-8?Q?Marc-Andr=C3=A9?= Lureau <marcandre.lureau@redhat.com>,
+	qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
+	"patches@linaro.org" <patches@linaro.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: idqdyhexo+YK
+X-TUID: NPfev7+Q/b13
 
-On Wed, Jul 12, 2017 at 10:08:14AM +0800, Dongjiu Geng wrote:
-> In the armv8 platform, the mainly hardware error source are ARMv8
-> SEA/SEI/GSIV. For the ARMv8 SEA/SEI, the KVM or host kernel will signal SIGBUS
-> or use other interface to notify user space, such as Qemu. After Qemu gets
-> the notification, it will record the CPER and inject the SEA/SEI to KVM. this
-> series of patches will generate APEI table when guest OS boot up, and dynamically
-> record CPER for the guest OS about the generic hardware errors, currently the
-> userspace only handle the memory section hardware errors
+Peter Maydell <peter.maydell@linaro.org> writes:
 
-This is in a decent shape. I would prefer some cod cleanups
-before this goes in. Mostly I would like the amount of
-pointer math trickery to go down, drop a bunch of
-unused code and fix up comments that point to ACPI spec.
+> On 13 July 2017 at 18:10, Markus Armbruster <armbru@redhat.com> wrote:
+>> Peter Maydell <peter.maydell@linaro.org> writes:
+>>
+>>> On 12 July 2017 at 12:22, Markus Armbruster <armbru@redhat.com> wrote:
+>>>> Peter Maydell <peter.maydell@linaro.org> writes:
+>>>>
+>>>>> In some situations it's useful to have a qdev property which doesn't
+>>>>> automatically set its default value when qdev_property_add_static is
+>>>>> called (for instance when the default value is not constant).
+>>>>>
+>>>>> Support this by adding a flag to the Property struct indicating
+>>>>> whether to set the default value.  This replaces the existing test
+>>>>> for whether the PorpertyInfo set_default_value function pointer is
+>>>>
+>>>> PropertyInfo
+>>>>
+>>>>> NULL, and we set the .set_default field to true for all those cases
+>>>>> of struct Property which use a PropertyInfo with a non-NULL
+>>>>> set_default_value, so behaviour remains the same as before.
+>>>>>
+>>>>> We define two new macros DEFINE_PROP_SIGNED_NODEFAULT and
+>>>>> DEFINE_PROP_UNSIGNED_NODEFAULT, to cover the most plausible use cases
+>>>>> of wanting to set an integer property with no default value.
+>>>>
+>>>> Your text makes me wonder what is supposed to set the default value
+>>>> then.  Glancing ahead to PATCH 3, it looks like method instance_init()
+>>>> is.  Can you think of a scenario where something else sets it?
+>>>
+>>> OK, proposed extra paragraph for commit message:
+>>>
+>>> This gives us the semantics of:
+>>>  * if .set_default is true and .info->set_default_value is not NULL,
+>>>    then .defval is used as the the default value of the property
+>>
+>> If I read your patch correctly, then this should be "if .set_default is
+>> true, then .info->set_default_value() must not be null, and .defval is
+>> used ..."
+>
+> Yes.
 
-I pointed out some instances but pls find all instances and try
-to clean up some more.
-
-Thanks!
-
-> how to test:
-> 1. In the guest OS, use this command to dump the APEI table: 
-> 	"iasl -p ./HEST -d /sys/firmware/acpi/tables/HEST"
-> 2. And find the address for the generic error status block
->    according to the notification type
-> 3. then find the CPER record through the generic error status block.
-> 
-> For example(notification type is SEA):
-> 
-> (1) root@genericarmv8:~# iasl -p ./HEST -d /sys/firmware/acpi/tables/HEST
-> (2) root@genericarmv8:~# cat HEST.dsl
-> 	/*
-> 	 * Intel ACPI Component Architecture
-> 	 * AML/ASL+ Disassembler version 20170303 (64-bit version)
-> 	 * Copyright (c) 2000 - 2017 Intel Corporation
-> 	 *
-> 	 * Disassembly of /sys/firmware/acpi/tables/HEST, Mon Dec 12 07:19:43 2016
-> 	 *
-> 	 * ACPI Data Table [HEST]
-> 	 *
-> 	 * Format: [HexOffset DecimalOffset ByteLength]  FieldName : FieldValue
-> 	 */
->     ..................................................................................
->     [228h 0552   2]                Subtable Type : 0009 [Generic Hardware Error Source]
-> 	[22Ah 0554   2]                    Source Id : 0008
-> 	[22Ch 0556   2]            Related Source Id : FFFF
-> 	[22Eh 0558   1]                     Reserved : 00
-> 	[22Fh 0559   1]                      Enabled : 01
-> 	[230h 0560   4]       Records To Preallocate : 00000001
-> 	[234h 0564   4]      Max Sections Per Record : 00000001
-> 	[238h 0568   4]          Max Raw Data Length : 00001000
-> 
-> 	[23Ch 0572  12]         Error Status Address : [Generic Address Structure]
-> 	[23Ch 0572   1]                     Space ID : 00 [SystemMemory]
-> 	[23Dh 0573   1]                    Bit Width : 40
-> 	[23Eh 0574   1]                   Bit Offset : 00
-> 	[23Fh 0575   1]         Encoded Access Width : 04 [QWord Access:64]
-> 	[240h 0576   8]                      Address : 00000000785D0040
-> 
-> 	[248h 0584  28]                       Notify : [Hardware Error Notification Structure]
-> 	[248h 0584   1]                  Notify Type : 08 [SEA]
-> 	[249h 0585   1]                Notify Length : 1C
-> 	[24Ah 0586   2]   Configuration Write Enable : 0000
-> 	[24Ch 0588   4]                 PollInterval : 00000000
-> 	[250h 0592   4]                       Vector : 00000000
-> 	[254h 0596   4]      Polling Threshold Value : 00000000
-> 	[258h 0600   4]     Polling Threshold Window : 00000000
-> 	[25Ch 0604   4]        Error Threshold Value : 00000000
-> 	[260h 0608   4]       Error Threshold Window : 00000000
-> 
-> 	[264h 0612   4]    Error Status Block Length : 00001000
->     .....................................................................................
-> (3) according to above table, the address that contains the physical address of a block
->     of memory that holds the error status data for SEA notification error source is 0x00000000785D0040
-> (4) the address for SEA notification error source is 0x785d8058
-> 	(qemu) xp /2x 0x00000000785D0040
-> 	00000000785d0040: 0x785d8058 0x00000000
-> (5) check the content of generic error status block and generic error data entry
->     (qemu) xp /100x 0x785d8058
->     00000000785d8058: 0x00000001 0x00000000 0x00000000 0x00000098
->     00000000785d8068: 0x00000001 0xa5bc1114 0x4ede6f64 0x833e63b8
-> 	00000000785d8078: 0xb1837ced 0x00000000 0x00000000 0x00000050
-> 	00000000785d8088: 0x00000000 0x00000000 0x00000000 0x00000000
-> 	00000000785d8098: 0x00000000 0x00000000 0x00000000 0x00000000
-> 	00000000785d80a8: 0x00000000 0x00000000 0x00000000 0x00004002
-> 	00000000785d80b8: 0x00000000 0x00000000 0x00000000 0x00001111
-> 	00000000785d80c8: 0x00000000 0x00000000 0x00000000 0x00000000
-> 	00000000785d80d8: 0x00000000 0x00000000 0x00000000 0x00000000
-> 	00000000785d80e8: 0x00000000 0x00000000 0x00000000 0x00000000
-> 	00000000785d80f8: 0x00000000 0x00000003 0x00000000 0x00000000
-> 	00000000785d8108: 0x00000000 0x00000000 0x00000000 0x00000000
-> 	00000000785d8118: 0x00000000 0x00000000 0x00000000 0x00000000
-> 	00000000785d8128: 0x00000000 0x00000000 0x00000000 0x00000000
-> 	00000000785d8138: 0x00000000 0x00000000 0x00000000 0x00000000
-> 
-> Dongjiu Geng (3):
->   ACPI: Add new ACPI structures and macros
->   ACPI: Add APEI GHES Table Generation support
->   ACPI: build and enable APEI GHES in the Makefile and configuration
-> 
->  default-configs/arm-softmmu.mak |   1 +
->  hw/acpi/Makefile.objs           |   1 +
->  hw/acpi/aml-build.c             |   2 +
->  hw/acpi/hest_ghes.c             | 219 ++++++++++++++++++++++++++++++++++++++++
->  hw/arm/virt-acpi-build.c        |   6 ++
->  include/hw/acpi/acpi-defs.h     | 194 +++++++++++++++++++++++++++++++++++
->  include/hw/acpi/aml-build.h     |   1 +
->  include/hw/acpi/hest_ghes.h     |  47 +++++++++
->  include/qemu/uuid.h             |  11 ++
->  9 files changed, 482 insertions(+)
->  create mode 100644 hw/acpi/hest_ghes.c
->  create mode 100644 include/hw/acpi/hest_ghes.h
-> 
-> -- 
-> 2.10.1
+Update your comment and commit message accordingly, and you may add
+Reviewed-by: Markus Armbruster <armbru@redhat.com>

@@ -1,101 +1,103 @@
-Received: by 10.25.44.15 with SMTP id s15csp1811036lfs;
-        Thu, 13 Jul 2017 00:28:11 -0700 (PDT)
-X-Received: by 10.237.45.3 with SMTP id h3mr3070736qtd.110.1499930890980;
-        Thu, 13 Jul 2017 00:28:10 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1499930890; cv=none;
+Received: by 10.25.44.15 with SMTP id s15csp1815616lfs;
+        Thu, 13 Jul 2017 00:33:51 -0700 (PDT)
+X-Received: by 10.237.48.65 with SMTP id 59mr3368814qte.10.1499931231429;
+        Thu, 13 Jul 2017 00:33:51 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1499931231; cv=none;
         d=google.com; s=arc-20160816;
-        b=bSUXydRxXRNOMSb9ad/RwUTSdU1hVPwKw/wYXKU3uKCLeiqBYC3WKSKFdsbDPBYHAS
-         PteOS7LjYG4nc3TIcQz1CbbPxzpz7kXRARqn3datJUqDR8N7616Xk2zvbhLtMQex3xgP
-         SloSK9/l0maHn9UPM61877DB+CGxQ2uQtP3D8ny40Jr5mvqMEI4YTntG/9EG9RqerFPW
-         LVVosmMQJkxeN8se5y6JFFWLDMbFZJDw+0/jSl27V4FHoTBfkWT2BLuMF2Q8xyXeXFW1
-         18tfIgdWV/IH2Iejr5yxeK6VF9oxgwz0VbU/IRXMKiGEb3OXRCsoCT3Raq9FjTLYdp7I
-         2A5A==
+        b=DpYMNiE87FEVXohf3+OTkg+P0W1iQrrYZvMNQBAf8TpJYXFL54sXU2Kjbe+pYWU/OL
+         XlQnpINrRXCRtoUMGiCy2cAxEiT0/x7oG+kW7oOprx/+82bLyDtaD1F52N++8hRQoc+R
+         +0NtaO6MLnxh7fH1WS5OzyPk/1x9xBzIWOdfN1sQ1YNUeeKkkOKP8iSARx76eTiiKrKN
+         3CiNEETjPhAL30BDCdQsnd1HXmjRpXFoUzMqtsnMJSuVDplqRYwANLEWrthhtfVIhEbw
+         fy32ptsQQtD86WRM+SGFOwZbncmppjCUzOJE1jH2SlZEv1HSjhLWZFVgbCRnx7JasqXn
+         apBg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
          :references:in-reply-to:mime-version:dkim-signature
          :arc-authentication-results;
-        bh=y/cIoNeTdm5XL3E98tGaSw59jnXqOGh1ZHx6m8SQAxU=;
-        b=eWLvbLxKEXmcNDk5wgZpLtkPuxPc7Uf/CADIfddLTDo6pwczC6Z/8Z3Vu2qiRxdTpL
-         4fZ8NFOoO9Ypb51u3DtjAiqmVVE0SoDKtSD1e8GkcfG7RpfL3DOF6TJ2oe2FMbUNpcD+
-         4+FhmLPNGbIVNxO5giqXdNjoLhfXx+j9vOW8bImlFdhzjiohFf8nTtVst1bfQPs6PjoT
-         Ul6o463Aa/Wdpp8/Zl80sn3eljGVdvIZp159SjZlemalFnaLp5gQslXE2iPqZiYKB8vd
-         qmQXHuxJgVhw6NoL//cF6rd9OUb/ZFfiZqx1xYjPYgvvC55r+UgZGFm96Zkz3Vr/uFhW
-         PR4w==
+        bh=Q+R7qPgIFCLLLlIrEohv9RzTl1D9Kk/3c3jmjPZTTLo=;
+        b=IiO0X8ZUJ7ZQ1G4wFFNh0vViBBZaDmhEbOr8r+N4Lxzu5PU28ui+JcDU+qP4kbf/Dh
+         B1uH1i7/gLoCMDkouUifvh5CCkfQCgBefTV675Ib7zkMfG7Yz8RQWCj6C5KhVRmxY+Xw
+         3v56FqxSBYvD+SE/2faoOBUWENp2kfd5HHpOfvpvjld1dHrp3soaqwk6JB2+63S/S8Vj
+         Sz59rmeyDs6hJCvuziMST9N22Z19dlqoLeWRrFtKHeKepGdGGgx9roy0TpmjsfvGHVc1
+         Wzr2gDReJ/fY9jgTwMYMwD6tk9ilyasFHWtbMoS8xP15PtTJY7U2HYg/GL6FWst7sOxH
+         Xk3g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.b=cTXnXeSc;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dkim=fail header.i=@gmail.com header.b=Z68DJSyK;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id o31si4501961qko.202.2017.07.13.00.28.10
+Received: from lists.gnu.org (lists.gnu.org. [208.118.235.17])
+        by mx.google.com with ESMTPS id h73si4608754qka.69.2017.07.13.00.33.50
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 13 Jul 2017 00:28:10 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Thu, 13 Jul 2017 00:33:51 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) client-ip=208.118.235.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.b=cTXnXeSc;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dkim=fail header.i=@gmail.com header.b=Z68DJSyK;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:57680 helo=lists.gnu.org)
+Received: from localhost ([::1]:57709 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1dVYXg-0007zF-5y
-	for alex.bennee@linaro.org; Thu, 13 Jul 2017 03:28:08 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:44085)
+	id 1dVYdA-0002SY-I5
+	for alex.bennee@linaro.org; Thu, 13 Jul 2017 03:33:48 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:45727)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alistair23@gmail.com>) id 1dVYXV-0007z8-7Y
-	for qemu-arm@nongnu.org; Thu, 13 Jul 2017 03:27:58 -0400
+	(envelope-from <alistair23@gmail.com>) id 1dVYcz-0002M3-K0
+	for qemu-arm@nongnu.org; Thu, 13 Jul 2017 03:33:38 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <alistair23@gmail.com>) id 1dVYXU-0001JF-0j
-	for qemu-arm@nongnu.org; Thu, 13 Jul 2017 03:27:57 -0400
-Received: from mail-wm0-x22e.google.com ([2a00:1450:400c:c09::22e]:36105)
+	(envelope-from <alistair23@gmail.com>) id 1dVYcw-00051s-Dz
+	for qemu-arm@nongnu.org; Thu, 13 Jul 2017 03:33:37 -0400
+Received: from mail-wm0-f50.google.com ([74.125.82.50]:35720)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <alistair23@gmail.com>)
-	id 1dVYXT-0001J9-Nb; Thu, 13 Jul 2017 03:27:55 -0400
-Received: by mail-wm0-x22e.google.com with SMTP id 62so14678520wmw.1;
-	Thu, 13 Jul 2017 00:27:55 -0700 (PDT)
+	id 1dVYcw-00050X-4B; Thu, 13 Jul 2017 03:33:34 -0400
+Received: by mail-wm0-f50.google.com with SMTP id w126so14736695wme.0;
+	Thu, 13 Jul 2017 00:33:33 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
 	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=y/cIoNeTdm5XL3E98tGaSw59jnXqOGh1ZHx6m8SQAxU=;
-	b=cTXnXeScu7LxzrJcgREJf3bm+lVXPiMwFCz20fiOGm2CNTeGiucReAjAAUfYoPos6p
-	UbywtQUVuVsqnCyFwx/qZdVHlMRNKVRYYVng4jI67dRFKyUvgAEWGnA510VZb8l/u/ko
-	s8L3J2sue0ZWKBKBN6PCbFeqWjL6H12KxSxhedbA0nuQpbML7Nyt++uuGAqWbxY7XW8n
-	XvpdYnpTwzkXaOpPDX3v/d+Felwlpc/LVk3iLj5Pq8Mi6HyoppVSCjAn6K2XkkscYrBa
-	IRsogTTglq4weo0XlkLIpFY9RUYwdm3CdVh+IKCDHHsjAcHg6L2cl2+DzuA3Pfh5oNtx
-	OLzQ==
+	:cc; bh=Q+R7qPgIFCLLLlIrEohv9RzTl1D9Kk/3c3jmjPZTTLo=;
+	b=Z68DJSyK2aLm3VUjoQYh4ESxvNCfLgFi/JhLk9FKm9Yjf4DnBIiGEi2NSfExgByRl2
+	JfC6tLn3IgLvs92hHhJHxa7t8lXzUqyIoBieiHBkrABUwv+R2GVf9Pnb1EXtlCO+ZrKz
+	zI17YydUMWeeMDMB5WBE9hhdzjsyAGnBaFxvz58YYJNv3DcU1O6kLNWfFL9tp7+KwCXK
+	QI4hVGPjBpkg0S4ajGqt/n+onuhU3WcUTfafI8+74FgDX8EMuUGJVuia4kuYb6kyhvdE
+	0z1iRe/tOAF7hQcITb9ifmayQm4j69esMrFilvrvdywI/Jc5WjT5Nfjt/tnYVOdIcGes
+	D9BQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
 	:message-id:subject:to:cc;
-	bh=y/cIoNeTdm5XL3E98tGaSw59jnXqOGh1ZHx6m8SQAxU=;
-	b=Yv7DSU8IPDR+0obW9FYxLPFor3i5USzQsTbp+RnTfJl0tU7v90ZkdDOxFUMXmX1zBM
-	ez0ly1IrH5qPPFiyX5BDvpbucO8wSx+ZiJh31jDqIQnMufBhBRRb65KzdyJOCpkoT8hA
-	ve3UrQA776pd9HzulgVmWXVSliJrGdc7ABHvcMsBILY/ZHNLJVqF8HZt3A77MVZtKWkG
-	/GcLMxURDrFRa3YSiFkYSmd2a62/+EbOeH/UxY4nNq/xV/kDnqe7jN2Frr9KWR9JqS+B
-	7L6aSrelqWEqpdH+/u4ACJ2/jYIcCVhj/swXBM3HCA09io8KQFe8di99rQS2azdsLA4l
-	y7KA==
-X-Gm-Message-State: AIVw110yOYEcRofaIjkUM+zT62k+DtF1+6Ozx8iDXbtRF4FjB6ueIzwa
-	W9wEj1ZVybN29d4LLj1ZUbH+Ic8V4Q==
-X-Received: by 10.28.217.3 with SMTP id q3mr967875wmg.115.1499930874392; Thu,
-	13 Jul 2017 00:27:54 -0700 (PDT)
+	bh=Q+R7qPgIFCLLLlIrEohv9RzTl1D9Kk/3c3jmjPZTTLo=;
+	b=nDhvasG6rj//M7E0jpIap9Q3CFwTnxLutH6H4aXvkHkzxseQ0ApaJ/ewkWtg7veKru
+	FBRBVvmQUROUljp/NI7T0FCNLtKL4Z0wCPMbcCSKOdO2xhp3JHnF8DXXi2FYftfWKAYh
+	eXGWFLsedK9uTOAdKAiSzuJ4ugfRckZiVHdI807WzIwFIF1osbwXtPkjeJN/mVjj7yqf
+	OJCKNUznfItExQKcMa8OpRrRgwPX0Fh1nwGlFLveoGNvbN4yIba43RY3O9RuxHd0mS/F
+	P4XyiQ4vSFhEh88BYrsqRKupPjkdWlJFxdMKkVIWZBFujbHd3D1KfiTLpEYMPIK1trM6
+	RD3Q==
+X-Gm-Message-State: AIVw110YdYFfaOj/iIAC9BTOjRIkxrGB1hC0I0av0z79XS49BxtN9eO9
+	LNejsvQ+0W/09bo6ubFAtk1jTddBKrV+yUo=
+X-Received: by 10.28.140.143 with SMTP id o137mr964076wmd.47.1499931152837;
+	Thu, 13 Jul 2017 00:32:32 -0700 (PDT)
 MIME-Version: 1.0
-Received: by 10.28.191.88 with HTTP; Thu, 13 Jul 2017 00:27:23 -0700 (PDT)
-In-Reply-To: <CAFEAcA9xOEX3p0H2=GfYbGXwJkfYYXkVfZH=h0GbM_-bZ4auSA@mail.gmail.com>
+Received: by 10.28.191.88 with HTTP; Thu, 13 Jul 2017 00:32:02 -0700 (PDT)
+In-Reply-To: <CAFEAcA8s+WJH+3Xt41WC7JMYG5Lqwj_d4Kg-zW7cXgwiw-5muw@mail.gmail.com>
 References: <1499771839-32518-1-git-send-email-peter.maydell@linaro.org>
-	<1499771839-32518-2-git-send-email-peter.maydell@linaro.org>
-	<CAKmqyKMO4GQB1Cgy5rZw8pJawO_kWFZ7PiLGzWPch5CqkOKp=Q@mail.gmail.com>
-	<CAFEAcA9xOEX3p0H2=GfYbGXwJkfYYXkVfZH=h0GbM_-bZ4auSA@mail.gmail.com>
+	<1499771839-32518-3-git-send-email-peter.maydell@linaro.org>
+	<CAKmqyKPn+JEVWmpzypZt=8kH80aNa+aNAZLhPSWvHy+h5gyd=Q@mail.gmail.com>
+	<CAFEAcA_DyoTE+idUtiWOB4ptA-TMcmU2WRYWjo2Lwt7+RD8xEQ@mail.gmail.com>
+	<CAKmqyKOW1s7zbLFD2E+X+5--Gk0sBmK_mdbEaPDVD-C4JUxrKA@mail.gmail.com>
+	<CAFEAcA8s+WJH+3Xt41WC7JMYG5Lqwj_d4Kg-zW7cXgwiw-5muw@mail.gmail.com>
 From: Alistair Francis <alistair23@gmail.com>
-Date: Thu, 13 Jul 2017 09:27:23 +0200
-Message-ID: <CAKmqyKNR269fZpVz5zqyMbkU7JDKGswnyq10+zud0FxA5_m4Qg@mail.gmail.com>
+Date: Thu, 13 Jul 2017 09:32:02 +0200
+Message-ID: <CAKmqyKM7rR6n55Y+Fysomhjq26cQhJLj62oFYMDGdetmkwZVew@mail.gmail.com>
 To: Peter Maydell <peter.maydell@linaro.org>
 Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2a00:1450:400c:c09::22e
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH 1/7] hw/arm/mps2: Implement
- skeleton mps2-an385 and mps2-an511 board models
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 74.125.82.50
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH 2/7] hw/char/cmsdk-apb-uart.c:
+ Implement CMSDK APB UART
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -112,119 +114,112 @@ Cc: qemu-arm <qemu-arm@nongnu.org>,
 	Patch Tracking <patches@linaro.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 46mlnldIlVWO
+X-TUID: nnJxv1EMV7lH
 
-On Tue, Jul 11, 2017 at 6:35 PM, Peter Maydell <peter.maydell@linaro.org> wrote:
-> On 11 July 2017 at 15:33, Alistair Francis <alistair23@gmail.com> wrote:
->> On Tue, Jul 11, 2017 at 1:17 PM, Peter Maydell <peter.maydell@linaro.org> wrote:
->>> Model the ARM MPS2/MPS2+ FPGA based development board.
+On Tue, Jul 11, 2017 at 6:45 PM, Peter Maydell <peter.maydell@linaro.org> wrote:
+> On 11 July 2017 at 16:40, Alistair Francis <alistair23@gmail.com> wrote:
+>> On Tue, Jul 11, 2017 at 5:33 PM, Peter Maydell <peter.maydell@linaro.org> wrote:
+>>> On 11 July 2017 at 16:12, Alistair Francis <alistair23@gmail.com> wrote:
+>>>> On Tue, Jul 11, 2017 at 1:17 PM, Peter Maydell <peter.maydell@linaro.org> wrote:
+>>>>> Implement a model of the simple "APB UART" provided in
+>>>>> the Cortex-M System Design Kit (CMSDK).
+>>>>>
+>>>>> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 >>>
->>> The MPS2 and MPS2+ dev boards are FPGA based (the 2+ has a bigger
->>> FPGA but is otherwise the same as the 2). Since the CPU itself
->>> and most of the devices are in the FPGA, the details of the board
->>> as seen by the guest depend significantly on the FPGA image.
+>>>>> +} CMSDKAPBUART;
+>>>>
+>>>> This should be CamelCase.
 >>>
->>> We model the following FPGA images:
->>>  "mps2_an385" -- Cortex-M3 as documented in ARM Application Note AN385
->>>  "mps2_an511" -- Cortex-M3 'DesignStart' as documented in AN511
->>>
->>> They are fairly similar but differ in the details for some
->>> peripherals.
->>>
->>> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
->>> ---
->>>  hw/arm/Makefile.objs            |   1 +
->>>  hw/arm/mps2.c                   | 273 ++++++++++++++++++++++++++++++++++++++++
->>>  default-configs/arm-softmmu.mak |   1 +
->>>  3 files changed, 275 insertions(+)
->>>  create mode 100644 hw/arm/mps2.c
->>>
->>> diff --git a/hw/arm/Makefile.objs b/hw/arm/Makefile.objs
->>> index 4c5c4ee..a2e56ec 100644
->>> --- a/hw/arm/Makefile.objs
->>> +++ b/hw/arm/Makefile.objs
->>> @@ -18,3 +18,4 @@ obj-$(CONFIG_FSL_IMX25) += fsl-imx25.o imx25_pdk.o
->>>  obj-$(CONFIG_FSL_IMX31) += fsl-imx31.o kzm.o
->>>  obj-$(CONFIG_FSL_IMX6) += fsl-imx6.o sabrelite.o
->>>  obj-$(CONFIG_ASPEED_SOC) += aspeed_soc.o aspeed.o
->>> +obj-$(CONFIG_MPS2) += mps2.o
+>>> Yes, but CamelCase where all the words are all-uppercase
+>>> (as with CMSDK, APB and UART) is indistinguishable from
+>>> all-uppercase. (Compare the way we say "PCIIORegion" rather
+>>> than "PciIoRegion".)
 >>
->> Is this file name possibly too generic? Should it be arm-mps2 instead.
+>> Good point, I feel like it just looks strange being all caps though.
 >
-> It's already in hw/arm/, and we don't ever do anything that
-> confuses foo.o in one directory with foo.o in another.
-> (Also none of the other board or SoCs have 'arm' prepended.)
+> Me too, but I didn't have any better naming ideas.
 >
->> I don't see any other boards with the same name from a Google search,
->> but it just seems a bit vague having a three letter acronym.
->
->>> +#define TYPE_MPS2_MACHINE "mps2"
+>>>>> +static void uart_update_parameters(CMSDKAPBUART *s)
+>>>>> +{
+>>>>> +    QEMUSerialSetParams ssp;
+>>>>> +
+>>>>> +    /* This UART is always 8N1 but the baud rate is programmable.
+>>>>> +     * The minimum permitted bauddiv setting is 16, so we just ignore
+>>>>> +     * settings below that (usually this means the device has just
+>>>>> +     * been reset and not yet programmed).
+>>>>> +     */
+>>>>> +    if (s->bauddiv < 16 || s->bauddiv > s->pclk_frq) {
+>>>>> +        return;
+>>>>> +    }
+>>>>
+>>>> This seems like it should deserve a guest error print.
+>>>
+>>> As the comment says, that would cause us to print a spurious
+>>> warning every time the device was reset.
 >>
->> This public name seems too common as well. I am just worried it'll
->> conflict with something one day.
->
-> I can see the issue, but on the other hand the type name is not
-> external ABI, so we can always rename it later if we have to.
-
-That's true, but it's still not ideal to be changing device names willy nilly.
-
-> The board names themselves (mps2-an385 and mps2-an511) on the
-> other hand we have to get right from the start. I'm not sure
-> tacking an arm- on the front of those helps; they're already
-> pretty ungainly.
-
-I think the boards are already long enough to be unique and probably
-don't need an 'arm-'. Although I think having the vendor name does
-clarify what the board is. Imagine a user is querying QEMU for what
-boards it supports and sees a board name they don't recognise. It will
-be a lot easier to figure out what board this is is you search "ARM
-MPS2" instead of just MPS2.
-
->
-> The other possible name floating around here is "v2m-mps",
-> which at least some of the docs refer to as the name of
-> the motherboard. There's a lot of just of just plain "MPS2", though.
-
-I guess what we generally do is copy the spec/datasheet. So if it is
-in there then the name is fine.
-
->
-> (I note that we've had 'kzm' and 'z2' since forever and they
-> haven't ever conflicted with anything despite being pretty short.)
-
-Good point.
-
->
-> I dunno; I'll have a think about it. Naming is hard...
->
->>> +
->>> +    MemoryRegion *system_memory = get_system_memory();
->>> +
->>> +    DeviceState *armv7m;
+>> I just see this being hard to debug. What about if not printing if
+>> baud rate is 0 but guest error otherwise?
 >>
->> These should be at the top of the function.
+>> Or can this not be called from reset?
 >
-> Fixed (along with the 'sccdev' added to the DeviceState
-> line in a later patch).
+> The thing is that the guest error really here is "enabled TX
+> but didn't program the baud rate". So if you want to flag it
+> up you'd want to do it in uart_write() at the point where
+> CTRL.TX_EN is written to 1, not in this function. I decided I
+> didn't really care enough to check and report that (we often
+> don't bother to track every possible guest mistake). It won't
+> make any difference to QEMU anyway except in the vanishingly
+> rare case that the user connects QEMU up to a real serial port.
+> I very nearly didn't bother to implement the set-params logic
+> at all (we don't have it on the pl011 and nobody's ever complained).
 >
->>> +    create_unimplemented_device("CMSDK APB peripheral region @0x40000000",
->>> +                                0x40000000, 0x00010000);
->>> +    create_unimplemented_device("CMSDK peripheral region @0x40010000",
->>> +                                0x40010000, 0x00010000);
->>> +    create_unimplemented_device("Extra peripheral region @0x40020000",
->>> +                                0x40020000, 0x00010000);
->>> +    create_unimplemented_device("RESERVED 4", 0x40030000, 0x001D0000);
->>> +    create_unimplemented_device("Ethernet", 0x40200000, 0x00100000);
->>> +    create_unimplemented_device("VGA", 0x41000000, 0x0200000);
->>
->> I did not know this was an option, this is pretty cool.
->
-> Yeah. It's really nice for bringing up a board model because
-> you can just add -d unimp to your command line and get the
-> info about what devices the guest is prodding that you need
-> to implement next.
+> I can add the qemu_log on "TX_EN written as 1 and baud_div out
+> of range" if you think it's helpful though.
 
-Yeah, this is great!
+I think it makes sense to add. It's one line of code and can possibly
+be very helpful for debugging.
+
+>
+>>>>> +static int uart_can_receive(void *opaque)
+>>>>> +{
+>>>>> +    CMSDKAPBUART *s = CMSDK_APB_UART(opaque);
+>>>>> +
+>>>>> +    /* We can take a char if RX is enabled and the buffer is empty */
+>>>>> +    if (s->ctrl & R_CTRL_RX_EN_MASK && !(s->state & R_STATE_RXFULL_MASK)) {
+>>>>> +        return 1;
+>>>>> +    }
+>>>>> +    return 0;
+>>>>> +}
+>>>>> +
+>>>>> +static void uart_receive(void *opaque, const uint8_t *buf, int size)
+>>>>> +{
+>>>>> +    CMSDKAPBUART *s = CMSDK_APB_UART(opaque);
+>>>>> +
+>>>>> +    trace_cmsdk_apb_uart_receive(*buf);
+>>>>> +
+>>>>> +    if (!(s->ctrl & R_CTRL_RX_EN_MASK)) {
+>>>>> +        /* Just drop the character on the floor */
+>>>>> +        return;
+>>>>
+>>>> Doesn't this also deserve a guest error print.
+>>>
+>>> It's a can't-happen case because uart_can_receive() won't
+>>> return 1 if the EN bit is clear. Checking again here is
+>>> perhaps unnecessary paranoia, but it's not a guest error.
+>>
+>> Ah good point. Maybe that is worth stating?
+>
+> Mmm, something like:
+>     /* In fact uart_can_receive() ensures that we can't be
+>      * called unless RX is enabled and the buffer is empty,
+>      * but we include this logic as documentation of what the
+>      * hardware does if a character arrives in these circumstances.
+>      */
+>
+> (Or we could delete this and the RXFULL check below it
+> entirely.)
+
+I like the comment, it makes sure it is really clear.
 
 Thanks,
 Alistair

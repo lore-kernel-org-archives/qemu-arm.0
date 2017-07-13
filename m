@@ -1,90 +1,111 @@
-Received: by 10.25.44.15 with SMTP id s15csp2375725lfs;
-        Thu, 13 Jul 2017 09:19:33 -0700 (PDT)
-X-Received: by 10.55.39.5 with SMTP id n5mr2891227qkn.60.1499962773857;
-        Thu, 13 Jul 2017 09:19:33 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1499962773; cv=none;
+Received: by 10.25.44.15 with SMTP id s15csp2378298lfs;
+        Thu, 13 Jul 2017 09:21:34 -0700 (PDT)
+X-Received: by 10.55.166.2 with SMTP id p2mr5976669qke.179.1499962894340;
+        Thu, 13 Jul 2017 09:21:34 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1499962894; cv=none;
         d=google.com; s=arc-20160816;
-        b=tWwd+i0vrq48YK1LISkdO03yffAxTmVUluXTC4vhK+lwu8oEoVpnDypfPacKlBs0AB
-         ubugDhyyDtilWtaoj336waQup1yeOH070W6ZJUnJkBoG4zz/Rp/jC+X7OV/cnoXNuhA0
-         9NmwylePj6P2uRCsTKy6HqKX6I9iQs0IzsQdMyi7MlcDOEjqedhKs9VLZ3sfDx6lXTi7
-         d4vTRTNoE8pWz6LD6cchJgntUvXc2V03F+UusXVtO6tQHiwvwxMQexc7afV8Z73D/qwK
-         GP2Pf9mxfSLdNKsi6J5jOrFRs+NWbXKF+rPAkafqDGXwbcShbqD0Zw19jp+tD7KRxKuP
-         cyjQ==
+        b=yaIxZh2KUp8WOaV9nptAT/x7dzw6AzHtlb8BQe0re9HXQys0zHlryBFvEVzYzqnmxs
+         AZjUljV/i7RGTAjHutXDplNYO+ebPjFfaJA55NNPewoaC51qDSdumh+oJPmeO7xx+fKj
+         51NNo81zOwC7GadHyhccOxWtYCubu9RbaH7GBvnvK7QqCyySfWRJ2QKRk/9KOZO6xr3S
+         0vv95ox0HuLGSFML1VwgcxSp6akLkXrYLeiSnMU2cfJ70OqmvPIupFlwAliY/0JytzU8
+         yNiaFUtGm05Qh2HggBBAasqaLAzYX2hNk7bIKHXrVU2gwMOK5l52J9xiwq6fwcODIuYa
+         NLKg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:in-reply-to
-         :content-disposition:mime-version:references:message-id:to:from:date
-         :dkim-filter:dmarc-filter:arc-authentication-results;
-        bh=TfbuAK8f1PZ7W1doGPd3JRGxn3z6lIb45Q7wh0nmCNI=;
-        b=W5PegD3JSlitNCiRKkEWrF2YUwaUevHq6Z2KXriKH+QKwReDPt9EQMmh8DcQFGICd3
-         XHIX7lzqTmnWVE4tb1+LLO0q3PCvH4RHs0MmD5WDLiN9bdeBiKSx+21gGXH47ihhzZMy
-         u89YmoHM+JMsZQRn8Okhw82n6WUM9Hf1Fzte11ji6SwGlKI0mFKiKQuqWoMB5JDE/yQC
-         LLw7Bg6gaGkLN+O0mRSim+bONzQ8lnB0WKXO/1JYHdcnqXPXyS7/86UQ7TjvVBOffmQk
-         IOtYaSV/kaXPjOX26GBG3ZY87o/UJ+uHFCJlDi8ZnNr78EkAA18I3joc5xaRKZEZUbyV
-         gBWg==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:to:dkim-signature
+         :arc-authentication-results;
+        bh=dvSnADPYjRF5HgvXS3m+m0C92EHXuHBchYj4M5JhihQ=;
+        b=wtf+aUQuIi2aIdxAntv6UWGYKymeH2aWJcPi4lJtALetLi+SQpwWAfPv9IKLOK6CVm
+         YAHTxO55u+i/MjNPtYcDXkbFz+YQOfK3dCNofq6QYMoCUTVq2EK2AJb5qN4ClbrzsCSD
+         XnJtt02uy7/uARhLAaBNr+R/UxxzmEF5F8/DpVgiRW9AX5WA7IxlHWeVv+Avpg0Zd7eG
+         CnK9XB7ma7qjkqxSLOzD3ndeTWLHgZf0cnh8mEjg/SiQvGFqh1jr+73E28WMGOE3Cz1M
+         bmjhD6wb3DdpNvB+cPwiXH5tezFA1PnrOERksjNeYxxtntiEaCCvC7Olbg1iNaPy1B+e
+         O2ZA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dkim=fail header.i=@semihalf-com.20150623.gappssmtp.com header.b=aBZEtNO/;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [208.118.235.17])
-        by mx.google.com with ESMTPS id 19si5659115qkk.176.2017.07.13.09.19.33
+        by mx.google.com with ESMTPS id i20si5512696qtf.145.2017.07.13.09.21.33
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 13 Jul 2017 09:19:33 -0700 (PDT)
+        Thu, 13 Jul 2017 09:21:34 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) client-ip=208.118.235.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:32841 helo=lists.gnu.org)
+       dkim=fail header.i=@semihalf-com.20150623.gappssmtp.com header.b=aBZEtNO/;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:32856 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1dVgpv-00047x-2F
-	for alex.bennee@linaro.org; Thu, 13 Jul 2017 12:19:31 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:34077)
+	id 1dVgrr-0005qy-JV
+	for alex.bennee@linaro.org; Thu, 13 Jul 2017 12:21:31 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:55524)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mst@redhat.com>) id 1dVghX-0002jL-3a
-	for qemu-arm@nongnu.org; Thu, 13 Jul 2017 12:10:52 -0400
+	(envelope-from <tn@semihalf.com>) id 1dVcoF-0001IY-Nx
+	for qemu-arm@nongnu.org; Thu, 13 Jul 2017 08:01:41 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mst@redhat.com>) id 1dVghS-00016Z-B6
-	for qemu-arm@nongnu.org; Thu, 13 Jul 2017 12:10:51 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:56656)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <mst@redhat.com>)
-	id 1dVghS-00016D-39; Thu, 13 Jul 2017 12:10:46 -0400
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
-	[10.5.11.16])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id C2CA5267C0;
-	Thu, 13 Jul 2017 16:10:44 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com C2CA5267C0
-Authentication-Results: ext-mx06.extmail.prod.ext.phx2.redhat.com;
-	dmarc=none (p=none dis=none) header.from=redhat.com
-Authentication-Results: ext-mx06.extmail.prod.ext.phx2.redhat.com;
-	spf=pass smtp.mailfrom=mst@redhat.com
-DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com C2CA5267C0
-Received: from redhat.com (ovpn-121-70.rdu2.redhat.com [10.10.121.70])
-	by smtp.corp.redhat.com (Postfix) with SMTP id 2557567CD2;
-	Thu, 13 Jul 2017 16:10:39 +0000 (UTC)
-Date: Thu, 13 Jul 2017 19:10:38 +0300
-From: "Michael S. Tsirkin" <mst@redhat.com>
-To: Bharat Bhushan <Bharat.Bhushan@nxp.com>
-Message-ID: <20170713190931-mutt-send-email-mst@kernel.org>
-References: <1499927922-32303-1-git-send-email-Bharat.Bhushan@nxp.com>
-	<1499927922-32303-2-git-send-email-Bharat.Bhushan@nxp.com>
+	(envelope-from <tn@semihalf.com>) id 1dVco9-0002mD-Ti
+	for qemu-arm@nongnu.org; Thu, 13 Jul 2017 08:01:31 -0400
+Received: from mail-lf0-f48.google.com ([209.85.215.48]:34935)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <tn@semihalf.com>) id 1dVco9-0002jo-Mp
+	for qemu-arm@nongnu.org; Thu, 13 Jul 2017 08:01:25 -0400
+Received: by mail-lf0-f48.google.com with SMTP id b207so35281031lfg.2
+	for <qemu-arm@nongnu.org>; Thu, 13 Jul 2017 05:01:25 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=semihalf-com.20150623.gappssmtp.com; s=20150623;
+	h=subject:to:cc:references:from:message-id:date:user-agent
+	:mime-version:in-reply-to:content-language:content-transfer-encoding;
+	bh=dvSnADPYjRF5HgvXS3m+m0C92EHXuHBchYj4M5JhihQ=;
+	b=aBZEtNO/ZJNx85K9uaAcV2UMonx4ZyyuLs2tVnnRyfyyRfNOLgaNQl0Q+HsMBNUBE8
+	M0x3Eut98CYyhj2UK4iZ5rjtAsEILmiev8wZo+SsGzU6XdF6apdOfTcGkPaq4OsJwWg+
+	IrnFPnDpUvgdEsViZHZXXx/i0jhR5MCOZMudCS5A1Cc6Ds5oS4WevXwmEqFfZNY0T3Jg
+	jO0OdtnX2sJZPvr1UdlMkWW8JcQW1iEmebvvgH5pBWlec1ERYtRxQox3nCeW49BqdRzV
+	y3bYFPBuhLvDlztdRawqPCyRKDUz8xu//v+Lm/u3Yonw3E5jf/6d/W5RhJk8zooQbsKh
+	dZqg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+	:user-agent:mime-version:in-reply-to:content-language
+	:content-transfer-encoding;
+	bh=dvSnADPYjRF5HgvXS3m+m0C92EHXuHBchYj4M5JhihQ=;
+	b=ZHn+srlgP7ro6hv2stS38qVnqi6tuCNwf6AMuk2XuieYZwpiA2pQ0lDf1uTHvEnzjp
+	SVB9wY3Z/klbDa5PYWyYam33zFxWB5kfH0cX7WnBDoBLMJ0r6CO9TrRjPqqPEc4zvv62
+	S4q+g80QObJ56rrgHb7MVuUExTSKOZzuOjQ0AZ+V86w7kcOUsJ5JEyoMOOwlDliJ8MxR
+	uX3qvOkPWLIdv9B8BCYcSWl+0XzGO33ZyTWdt7pbsQxTr/Pt513sw9R+0jLhGzws4Hus
+	MMDaXT9d/SfoZwtiFh5sy0pl/R/tZuWPGldTI1z/sZBVDoNausZd0h9vATayHPUyuwUJ
+	F93g==
+X-Gm-Message-State: AIVw110ty35DM0V6S6WwgF7aFrWE5I47pKipRP543G5TXr4gsw8rmebS
+	ium0QuTi+Jsds0Nt
+X-Received: by 10.25.115.85 with SMTP id o82mr1238919lfc.96.1499947224224;
+	Thu, 13 Jul 2017 05:00:24 -0700 (PDT)
+Received: from [10.0.0.85] (31-172-191-173.noc.fibertech.net.pl.
+	[31.172.191.173]) by smtp.googlemail.com with ESMTPSA id
+	w9sm1244659lff.45.2017.07.13.05.00.22
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Thu, 13 Jul 2017 05:00:23 -0700 (PDT)
+To: Eric Auger <eric.auger@redhat.com>, eric.auger.pro@gmail.com,
+	peter.maydell@linaro.org, qemu-arm@nongnu.org, qemu-devel@nongnu.org,
+	alex.williamson@redhat.com, prem.mallappa@gmail.com
+References: <1499633493-19865-1-git-send-email-eric.auger@redhat.com>
+	<1499633493-19865-3-git-send-email-eric.auger@redhat.com>
+From: Tomasz Nowicki <tn@semihalf.com>
+Message-ID: <04b06baa-75d8-291b-ef6e-89bbb89b3fd1@semihalf.com>
+Date: Thu, 13 Jul 2017 14:00:22 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Firefox/52.0 Thunderbird/52.1.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <1499927922-32303-2-git-send-email-Bharat.Bhushan@nxp.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.30]);
-	Thu, 13 Jul 2017 16:10:45 +0000 (UTC)
+In-Reply-To: <1499633493-19865-3-git-send-email-eric.auger@redhat.com>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-GB
+Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [RFC PATCH 1/2] target/arm/kvm: Translate the MSI
- doorbell in kvm_arch_fixup_msi_route
+X-Received-From: 209.85.215.48
+X-Mailman-Approved-At: Thu, 13 Jul 2017 12:19:38 -0400
+Subject: Re: [Qemu-arm] [RFC v5 2/8] hw/arm/smmuv3: smmuv3 emulation model
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -96,67 +117,69 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, kevin.tian@intel.com, drjones@redhat.com,
-	marc.zyngier@arm.com, tn@semihalf.com, will.deacon@arm.com,
-	qemu-devel@nongnu.org, eric.auger@redhat.com,
-	alex.williamson@redhat.com, qemu-arm@nongnu.org,
-	robin.murphy@arm.com, christoffer.dall@linaro.org, eric.auger.pro@gmail.com
+Cc: mohun106@gmail.com, drjones@redhat.com, tcain@qti.qualcomm.com,
+	Radha.Chintakuntla@cavium.com, Sunil.Goutham@cavium.com,
+	mst@redhat.com, jean-philippe.brucker@arm.com,
+	robin.murphy@arm.com, will.deacon@arm.com, peterx@redhat.com,
+	bharat.bhushan@nxp.com, christoffer.dall@linaro.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: LQucCcfjJ75u
+X-TUID: SmNU9NXhjeE+
 
-On Thu, Jul 13, 2017 at 12:08:41PM +0530, Bharat Bhushan wrote:
-> Fix-up MSI address if it translate via virtual iommu.
-> This code is based on http://patchwork.ozlabs.org/patch/785951/
+Hi Eric,
+
+On 09.07.2017 22:51, Eric Auger wrote:
+> From: Prem Mallappa <prem.mallappa@broadcom.com>
 > 
-> Signed-off-by: Bharat Bhushan <Bharat.Bhushan@nxp.com>
-
-Links go dead with time. And following links
-is hard on reviewers. Please copy the full description
-tweaking as appropriate and attribute in commit log.
-
+> Introduces the SMMUv3 derived model. This is based on
+> System MMUv3 specification (v17).
+> 
+> Signed-off-by: Prem Mallappa <prem.mallappa@broadcom.com>
+> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+> 
 > ---
->  target/arm/kvm.c | 21 +++++++++++++++++++++
->  1 file changed, 21 insertions(+)
+> v4 -> v5:
+> - change smmuv3_translate proto (IOMMUAccessFlags flag)
+> - has_stagex replaced by is_ste_stagex
+> - smmu_cfg_populate removed
+> - added smmuv3_decode_config and reworked error management
+> - remwork the naming of IOMMU mrs
+> - fix SMMU_CMDQ_CONS offset
 > 
-> diff --git a/target/arm/kvm.c b/target/arm/kvm.c
-> index 4555468..eff7e8f 100644
-> --- a/target/arm/kvm.c
-> +++ b/target/arm/kvm.c
-> @@ -22,6 +22,9 @@
->  #include "cpu.h"
->  #include "internals.h"
->  #include "hw/arm/arm.h"
-> +#include "hw/pci/pci.h"
-> +#include "hw/pci/msi.h"
-> +#include "hw/virtio/virtio-iommu.h"
->  #include "exec/memattrs.h"
->  #include "exec/address-spaces.h"
->  #include "hw/boards.h"
-> @@ -611,6 +614,24 @@ int kvm_arm_vgic_probe(void)
->  int kvm_arch_fixup_msi_route(struct kvm_irq_routing_entry *route,
->                               uint64_t address, uint32_t data, PCIDevice *dev)
->  {
-> +    AddressSpace *as = pci_device_iommu_address_space(dev);
-> +    IOMMUTLBEntry entry;
-> +    IOMMUDevice *sdev;
-> +    VirtIOIOMMU *s;
+
+[...]
+
 > +
-> +    if (as == &address_space_memory) {
-> +        return 0;
-> +    }
+> +/*****************************
+> + *  Register Access Primitives
+> + *****************************/
 > +
-> +    /* MSI doorbell address is translated by an IOMMU */
-> +    sdev = container_of(as, IOMMUDevice, as);
-> +    s = sdev->viommu;
+> +static inline void smmu_write64_reg(SMMUV3State *s, uint32_t addr, uint64_t val)
+> +{
+> +    addr >>= 2;
+> +    s->regs[addr] = val & 0xFFFFFFFFULL;
+> +    s->regs[addr + 1] = val & ~0xFFFFFFFFULL;
+> +}
 > +
-> +    entry = s->iommu_ops.translate(&sdev->iommu_mr, address, IOMMU_WO);
+> +static inline void smmu_write_reg(SMMUV3State *s, uint32_t addr, uint64_t val)
+> +{
+> +    s->regs[addr >> 2] = val;
+> +}
 > +
-> +    route->u.msi.address_lo = entry.translated_addr;
-> +    route->u.msi.address_hi = entry.translated_addr >> 32;
+> +static inline uint32_t smmu_read_reg(SMMUV3State *s, uint32_t addr)
+> +{
+> +    return s->regs[addr >> 2];
+> +}
 > +
->      return 0;
->  }
->  
-> -- 
-> 1.9.3
+> +static inline uint64_t smmu_read64_reg(SMMUV3State *s, uint32_t addr)
+> +{
+> +    addr >>= 2;
+> +    return s->regs[addr] | (s->regs[addr + 1] << 32);
+
+To be consistent with smmu_write64_reg() we should not shift here second 
+half of register, instead simply:
+
+return s->regs[addr] | s->regs[addr + 1];
+
+Thanks,
+Tomasz

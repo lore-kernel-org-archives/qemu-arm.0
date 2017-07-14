@@ -1,111 +1,81 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaro.local ([81.128.185.34])
-        by smtp.gmail.com with ESMTPSA id u187sm3066295wmd.26.2017.07.14.09.11.41
+        by smtp.gmail.com with ESMTPSA id l1sm3572935wmb.18.2017.07.14.09.17.56
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 14 Jul 2017 09:11:42 -0700 (PDT)
+        Fri, 14 Jul 2017 09:17:56 -0700 (PDT)
 Received: from zen (localhost [127.0.0.1])
-	by zen.linaro.local (Postfix) with ESMTPS id 92A7F3E00CD;
-	Fri, 14 Jul 2017 17:11:41 +0100 (BST)
-References: <1500029487-14822-1-git-send-email-peter.maydell@linaro.org> <1500029487-14822-3-git-send-email-peter.maydell@linaro.org> <87mv87uj9r.fsf@linaro.org> <CAFEAcA_NJpj_vigDCr8dy_OH5J4T50caAGFHZPC5a+nhdTH2Uw@mail.gmail.com>
+	by zen.linaro.local (Postfix) with ESMTPS id DA6413E00CD;
+	Fri, 14 Jul 2017 17:17:55 +0100 (BST)
+References: <1500029487-14822-1-git-send-email-peter.maydell@linaro.org> <1500029487-14822-9-git-send-email-peter.maydell@linaro.org>
 User-agent: mu4e 0.9.19; emacs 25.2.50.3
 From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
- Alistair Francis <alistair.francis@xilinx.com>, Philippe =?utf-8?Q?Mathie?=
- =?utf-8?Q?u-Daud=C3=A9?= <f4bug@amsat.org>, "patches\@linaro.org"
- <patches@linaro.org>
-Subject: Re: [Qemu-arm] [PATCH v2 2/9] hw/char/cmsdk-apb-uart.c: Implement CMSDK APB UART
-In-reply-to: <CAFEAcA_NJpj_vigDCr8dy_OH5J4T50caAGFHZPC5a+nhdTH2Uw@mail.gmail.com>
-Date: Fri, 14 Jul 2017 17:11:41 +0100
-Message-ID: <87k23buhfm.fsf@linaro.org>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, Alistair Francis
+ <alistair.francis@xilinx.com>, Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?=
+ <f4bug@amsat.org>, patches@linaro.org
+Subject: Re: [Qemu-arm] [PATCH v2 8/9] hw/arm/mps2: Add ethernet
+In-reply-to: <1500029487-14822-9-git-send-email-peter.maydell@linaro.org>
+Date: Fri, 14 Jul 2017 17:17:55 +0100
+Message-ID: <87inivuh58.fsf@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 8bit
-X-TUID: aH9WG3wPmnnS
+X-TUID: wD8VHTYtIN11
 
 
 Peter Maydell <peter.maydell@linaro.org> writes:
 
-> On 14 July 2017 at 16:32, Alex Bennée <alex.bennee@linaro.org> wrote:
->>
->> Peter Maydell <peter.maydell@linaro.org> writes:
->>
->>> Implement a model of the simple "APB UART" provided in
->>> the Cortex-M System Design Kit (CMSDK).
->>>
->>> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
->>
->> This fails to compile, I think since
->> 81517ba37a6cec59f92396b4722861868eb0a500 change the API for
->> qemu_chr_fe_set_handlers.
+> The MPS2 FPGA images support ethernet via a LAN9220. We use
+> QEMU's LAN9118 model, which is software compatible except
+> that it is missing the checksum-offload feature.
 >
->>> +static void cmsdk_apb_uart_update(CMSDKAPBUART *s)
->>> +{
->>> +    /* update outbound irqs, including handling the way the rxo and txo
->>> +     * interrupt status bits are just logical AND of the overrun bit in
->>> +     * STATE and the overrun interrupt enable bit in CTRL.
->>> +     */
->>> +    uint32_t omask = (R_INTSTATUS_RXO_MASK | R_INTSTATUS_TXO_MASK);
->>> +    s->intstatus &= ~omask;
->>> +    s->intstatus |= (s->state & (s->ctrl >> 2) & omask);
->>> +
->>> +    qemu_set_irq(s->txint, !!(s->intstatus & R_INTSTATUS_TX_MASK));
->>> +    qemu_set_irq(s->rxint, !!(s->intstatus & R_INTSTATUS_RX_MASK));
->>> +    qemu_set_irq(s->txovrint, !!(s->intstatus & R_INTSTATUS_TXO_MASK));
->>> +    qemu_set_irq(s->rxovrint, !!(s->intstatus & R_INTSTATUS_RXO_MASK));
->>> +    qemu_set_irq(s->uartint, !!(s->intstatus));
->>
->> If we updated qemu_set_irq to take a bool instead of int would the !!
->> hack no longer be needed?
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> ---
+>  hw/arm/mps2.c | 10 +++++++++-
+>  1 file changed, 9 insertions(+), 1 deletion(-)
 >
-> I am fairly sure we have a few places that utilize the ability
-> to send an integer down the qemu_irq channel.
+> diff --git a/hw/arm/mps2.c b/hw/arm/mps2.c
+> index bdc631a..6adfb22 100644
+> --- a/hw/arm/mps2.c
+> +++ b/hw/arm/mps2.c
+> @@ -35,6 +35,8 @@
+>  #include "hw/char/cmsdk-apb-uart.h"
+>  #include "hw/timer/cmsdk-apb-timer.h"
+>  #include "hw/misc/mps2-scc.h"
+> +#include "hw/devices.h"
+> +#include "net/net.h"
 >
->>> +    case A_STATE:
->>> +        /* Bits 0 and 1 are read only; bits 2 and 3 are W1C */
->>> +        s->state &= ~(value & 0xc);
->>
->> I guess:
->>           s->state &= ~(value & (R_STATE_TXOVERRUN_MASK | R_STATE_RXOVERRUN_MASK));
->>
->> maybe a little too verbose.
+>  typedef enum MPS2FPGAType {
+>      FPGA_AN385,
+> @@ -210,7 +212,6 @@ static void mps2_common_init(MachineState *machine)
+>      create_unimplemented_device("Extra peripheral region @0x40020000",
+>                                  0x40020000, 0x00010000);
+>      create_unimplemented_device("RESERVED 4", 0x40030000, 0x001D0000);
+> -    create_unimplemented_device("Ethernet", 0x40200000, 0x00100000);
+>      create_unimplemented_device("VGA", 0x41000000, 0x0200000);
 >
-> Well, it probably ought to use the bit mask names, yes.
+>      switch (mmc->fpga_type) {
+> @@ -309,6 +310,13 @@ static void mps2_common_init(MachineState *machine)
+>                               &error_fatal);
+>      sysbus_mmio_map(SYS_BUS_DEVICE(sccdev), 0, 0x4002f000);
 >
->>> +static void cmsdk_apb_uart_realize(DeviceState *dev, Error **errp)
->>> +{
->>> +    CMSDKAPBUART *s = CMSDK_APB_UART(dev);
->>> +
->>> +    if (s->pclk_frq == 0) {
->>> +        error_setg(errp, "CMSDK APB UART: pclk-frq property must be set");
->>> +        return;
->>> +    }
->>> +
->>> +    /* This UART has no flow control, so we do not need to register
->>> +     * an event handler to deal with CHR_EVENT_BREAK.
->>> +     */
->>> +    qemu_chr_fe_set_handlers(&s->chr, uart_can_receive, uart_receive,
->>> +                             NULL, s, NULL, true);
->>
->> I think this is now:
->>
->>     qemu_chr_fe_set_handlers(&s->chr, uart_can_receive, uart_receive,
->>                              NULL, NULL, s, NULL, true);
->
-> Yes. It looks like we don't have to support backend swaps
-> (only hw/char/serial.c and virtio-console have support for that),
-> so just the extra NULL argument will do fine.
->
-> I propose to just fix both these nits in target-arm rather
-> than resend.
+> +    /* In hardware this is a LAN9220; the LAN9118 is software compatible
+> +     * except that it doesn't support the checksum-offload feature.
+> +     */
+> +    lan9118_init(&nd_table[0], 0x40200000,
+> +                 qdev_get_gpio_in(armv7m,
+> +                                  mmc->fpga_type == FPGA_AN385 ? 13 : 47));
+> +
 
-Sure.
+As the lan9118 model will log guest errors if the software tries to
+access the csum feature I guess thats OK.
 
 Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
 
+
+>      system_clock_scale = NANOSECONDS_PER_SECOND / SYSCLK_FRQ;
 >
-> thanks
-> -- PMM
+>      armv7m_load_kernel(ARM_CPU(first_cpu), machine->kernel_filename,
 
 
 --

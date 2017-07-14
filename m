@@ -1,110 +1,86 @@
-Received: by 10.25.44.15 with SMTP id s15csp453525lfs;
-        Thu, 13 Jul 2017 22:13:48 -0700 (PDT)
-X-Received: by 10.55.132.135 with SMTP id g129mr9703167qkd.36.1500009228166;
-        Thu, 13 Jul 2017 22:13:48 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1500009228; cv=none;
+Received: by 10.25.44.15 with SMTP id s15csp485356lfs;
+        Thu, 13 Jul 2017 22:52:32 -0700 (PDT)
+X-Received: by 10.55.113.197 with SMTP id m188mr8862163qkc.227.1500011552306;
+        Thu, 13 Jul 2017 22:52:32 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1500011552; cv=none;
         d=google.com; s=arc-20160816;
-        b=E6uuiUQonAwBUlZUzev8Dxdgo27A+o0C7AkL3GfFuhGU235b8rXpKyKsgiqwJzSxEY
-         3Qpc5zTs1nHANbdVvn+uN6+x5nKePcXYKypOJ/uou9rR/tb0xN6xH8KjvfYRMs5pzDZ/
-         I4FxEnqaB79qAs7TOYbslk08D+kVBNyf8BKCvqRA3mGfhq0TxU3wByMPzD9+e+DzmcN7
-         Wzl2bj5vaeD30o89RpNrFHo+BulmKG4KAOvMmq0nujYzxBzqkmn6Xlr3e3qkWJEfUWiD
-         n33eGrHbAbXLg1ltSUKK0Y1pBAt65yS5ZX4cXnMqfwv3TBCGco047OK8XKrnrbeTvnxg
-         6ehA==
+        b=ymOJu8s0FlEqqXUnPz/z/fetHhqmXA+TfJlxUvIv5ANvojMrvOMvknXFM5EoLzmyti
+         +9koCi2aq7VNaYlnPaKFOLLWdLVyAoRDetuTM+hw7eR1La+qGmZJHWqpk/YzlR5Pg40U
+         8OpgsdLY9gRLsQGxLguUMDCsuNCgm8wGJF0bNX4iyZLtnq9rqgO8dTTad/Mjcy1TQSDz
+         +QoGSy5J8PRqsILu8Rhey/VzDiBUMtsTD72NaEibySYwIekG8OQAmQOa5wGB4Mp2VXzR
+         7lXTtihymf+jzKkP4vH+XehDblgd6WAZh0wu+hTQgPL1SMDJEmbzCptpRbnbhxEca7fI
+         g4iw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:to:dkim-signature
-         :arc-authentication-results;
-        bh=NQi2MP4T/FnNv85eZHHwW0+1L8JVz0LyWGrFZIzCksg=;
-        b=NjZy2A/wB3YT5cuOJ/01hhu/cV6UznIWHIPLRX9z+xP5BZ6FG3vFmRvXGgKb2QPqA0
-         CMIN3sIYtExmYKvG8FPXfm2wz+GelOz6v7JibmcX1oShqkdx3g5R9RwkgmdyUZ2qUEuC
-         EyQhDOMbDf81zQK/hoc+vR2A1a+RVOF0QWfs9MsQVHa+y9k6TGIQgm2kJWrA9iAQ5wrZ
-         8dVCRcR95wR4wpQUPgYdsC8Mj82GhzQuUzopA0cpYz+aV3n0G+bP8Xu5ESKZtT4T8Hab
-         wMW6h2qoscHVaPw330mQZSuQUBZVfAReTgrbeS2+l/bUqFhFcUn7m5ybWEk3IfdNutRU
-         v96A==
+         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:arc-authentication-results;
+        bh=52TF0QfwefGUpA5ZZ4g/u/HP9V/uX4njgW9cj1oDMq8=;
+        b=gKgpq4PO1NUo3mw1pKOgX6fRDX+loiGHkvBChHddh2myK8B3GTkMWEVed1a0oA/xYD
+         0Ct7N3222/11gVEm/AWN0kWxiRThRldpjs2EKOkDwlvx8zbAmc6EJQ28OPi/aQQcFT6h
+         LnYF+SWv3GsA1HnKXYCORmwXvPOI0RvAWOwnXFTsuUksQIywOTjlgBhjxRjeK0bSHmqb
+         zYnR5/cJchCWzI0Lamn0ro7SuVV8V1pgIhdgUx/4zkUfI2cQBuziCiOZWBzsPabC1Dmp
+         jks7R4i9oLRM/xOc2ly5yAzfQidRKYZMNuUSfk8ocQHC9LArRCaRd+utk4a5IlqzwNGO
+         nc1Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.b=K/QQ0zHm;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id f28si7042900qte.360.2017.07.13.22.13.47
+        by mx.google.com with ESMTPS id c77si6720297qkb.328.2017.07.13.22.52.31
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 13 Jul 2017 22:13:48 -0700 (PDT)
+        Thu, 13 Jul 2017 22:52:32 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.b=K/QQ0zHm;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:35456 helo=lists.gnu.org)
+Received: from localhost ([::1]:35622 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1dVsvB-0001IH-Ie
-	for alex.bennee@linaro.org; Fri, 14 Jul 2017 01:13:45 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:60107)
+	id 1dVtWf-0002ZE-NO
+	for alex.bennee@linaro.org; Fri, 14 Jul 2017 01:52:29 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:38127)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1dVsv5-0001Aa-SX
-	for qemu-arm@nongnu.org; Fri, 14 Jul 2017 01:13:40 -0400
+	(envelope-from <gengdongjiu@huawei.com>) id 1dVtWc-0002Z7-E5
+	for qemu-arm@nongnu.org; Fri, 14 Jul 2017 01:52:27 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1dVsv4-0007UB-TE
-	for qemu-arm@nongnu.org; Fri, 14 Jul 2017 01:13:39 -0400
-Received: from mail-qk0-x243.google.com ([2607:f8b0:400d:c09::243]:36083)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1dVsv0-0007JR-F8; Fri, 14 Jul 2017 01:13:34 -0400
-Received: by mail-qk0-x243.google.com with SMTP id v17so8569350qka.3;
-	Thu, 13 Jul 2017 22:13:34 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=sender:subject:to:cc:references:from:message-id:date:user-agent
-	:mime-version:in-reply-to:content-language:content-transfer-encoding;
-	bh=NQi2MP4T/FnNv85eZHHwW0+1L8JVz0LyWGrFZIzCksg=;
-	b=K/QQ0zHmNvYzHVIQpt8HEP0EANPgtQlPxydshjJuh+6iHuh58I7Pq47urVb7Uv2dC2
-	8psdCxzJ/wjrmOJviGzeiz0R29XLhHijdG4Ugu+kdZBQT0HgAATKBLYLrJkA8O+1c3uR
-	DtI04LPSUQnf9LL5hTg8T0eOq3BeUClq6zoy0x5evha2pZs3c+cmMHQbQwF9WxVT+LLI
-	asyorxiI8QpgS7fBamm5tZwaI01CNhdwJti0jxGfaCliJeLotNYpLMK9/Jtxh/IC7ONp
-	Tshi5ZPVY732QBIidShg+6yTHV20+ntpFhLxRRo/abqPpFzPub8Tgi23zvpMfYs3ldej
-	vMkA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
-	:date:user-agent:mime-version:in-reply-to:content-language
-	:content-transfer-encoding;
-	bh=NQi2MP4T/FnNv85eZHHwW0+1L8JVz0LyWGrFZIzCksg=;
-	b=TSHyMG7DDntcu5TIl0LI61A3eY55D19wI74V6sTqmHPKHCoX9YoWWkmoxB65RaCBXI
-	xxkXkoDg8eUSI36zgn2pbOyH78P2eNgWK9rT0gibH90R0uStp2JrfeeRyQ6HYWUsQokR
-	VCXc4waoV6izrhA4m/8bmvKaKPpvF8E68kByF2u5A8HvxcF1IEUpw/fGQQzr7rHe6Cm6
-	KeGtFSp3mh74t1VnamKKxDKY8DW3FX5H5ZBKlTuJlHCu4xznbqwgkEvTTemJUNdK9mU6
-	9JeH+HucYsn2KbX15/OpDfJvoAimyni/BplfgMIPWKxrbAuxP9EJmnVFypGywyNJrHqg
-	UmuQ==
-X-Gm-Message-State: AIVw111tgPQt41Usl7cC5135M3dKQkpKXMCEuqBKO8de/UlHxetYRd+A
-	gVTG9UcfT/yycYKwnHY=
-X-Received: by 10.55.81.198 with SMTP id f189mr9796437qkb.82.1500009213922;
-	Thu, 13 Jul 2017 22:13:33 -0700 (PDT)
-Received: from [192.168.1.240] ([138.117.48.223])
-	by smtp.gmail.com with ESMTPSA id
-	q40sm6173029qtf.42.2017.07.13.22.13.31
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Thu, 13 Jul 2017 22:13:33 -0700 (PDT)
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-References: <1499771839-32518-1-git-send-email-peter.maydell@linaro.org>
-	<1499771839-32518-6-git-send-email-peter.maydell@linaro.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <866ceb13-0f82-4bc7-b45d-4a48578f6919@amsat.org>
-Date: Fri, 14 Jul 2017 02:13:30 -0300
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.2.1
+	(envelope-from <gengdongjiu@huawei.com>) id 1dVtWZ-0007ue-D6
+	for qemu-arm@nongnu.org; Fri, 14 Jul 2017 01:52:26 -0400
+Received: from szxga01-in.huawei.com ([45.249.212.187]:4467)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_ARCFOUR_SHA1:16) (Exim 4.71)
+	(envelope-from <gengdongjiu@huawei.com>)
+	id 1dVtWY-0007su-O6; Fri, 14 Jul 2017 01:52:23 -0400
+Received: from 172.30.72.54 (EHLO DGGEML402-HUB.china.huawei.com)
+	([172.30.72.54])
+	by dggrg01-dlp.huawei.com (MOS 4.4.6-GA FastPath queued)
+	with ESMTP id ASB62646; Fri, 14 Jul 2017 13:52:04 +0800 (CST)
+Received: from [127.0.0.1] (10.142.68.147) by DGGEML402-HUB.china.huawei.com
+	(10.3.17.38) with Microsoft SMTP Server id 14.3.301.0; Fri, 14 Jul 2017
+	13:51:54 +0800
+To: "Michael S. Tsirkin" <mst@redhat.com>
+References: <1499825297-20335-1-git-send-email-gengdongjiu@huawei.com>
+	<1499825297-20335-2-git-send-email-gengdongjiu@huawei.com>
+	<20170713195930-mutt-send-email-mst@kernel.org>
+From: gengdongjiu <gengdongjiu@huawei.com>
+Message-ID: <af366144-7508-98dc-d603-153de8de2e8c@huawei.com>
+Date: Fri, 14 Jul 2017 13:51:53 +0800
+User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64; rv:45.0) Gecko/20100101
+	Thunderbird/45.7.1
 MIME-Version: 1.0
-In-Reply-To: <1499771839-32518-6-git-send-email-peter.maydell@linaro.org>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:400d:c09::243
-Subject: Re: [Qemu-arm] [PATCH 5/7] hw/arm/mps2: Add timers
+In-Reply-To: <20170713195930-mutt-send-email-mst@kernel.org>
+Content-Type: text/plain; charset="windows-1252"
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.142.68.147]
+X-CFilter-Loop: Reflected
+X-Mirapoint-Virus-RAPID-Raw: score=unknown(0),
+	refid=str=0001.0A020201.59685C05.007E, ss=1, re=0.000, recu=0.000,
+	reip=0.000, cl=1, cld=1, fgs=0, ip=0.0.0.0,
+	so=2014-11-16 11:51:01, dmn=2013-03-21 17:37:32
+X-Mirapoint-Loop-Id: 15d87c96703b443fd63e8520368b93c7
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
+	[fuzzy]
+X-Received-From: 45.249.212.187
+Subject: Re: [Qemu-arm] [PATCH v5 1/3] ACPI: Add new ACPI structures and
+ macros
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -116,42 +92,58 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: patches@linaro.org
+Cc: peter.maydell@linaro.org, wuquanming@huawei.com, famz@redhat.com,
+	zhengqiang10@huawei.com, qemu-devel@nongnu.org,
+	qemu-arm@nongnu.org, james.morse@arm.com, huangshaoyu@huawei.com,
+	zhaoshenglong@huawei.com, imammedo@redhat.com, lersek@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 56VRR8UkIBPv
+X-TUID: dR7eexNQC+UM
 
-On 07/11/2017 08:17 AM, Peter Maydell wrote:
-> Add the CMSDK APB timers to the MPS2 board.
-> 
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+Michael,
+  Thanks for your review.
 
-Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 
-> ---
->   hw/arm/mps2.c | 4 ++++
->   1 file changed, 4 insertions(+)
+On 2017/7/14 1:01, Michael S. Tsirkin wrote:
+>> +typedef struct GhesState {
+>> +    uint64_t ghes_addr_le;
+>> +} GhesState;
+>> +
+>> +void ghes_build_acpi(GArray *table_data, GArray *hardware_error,
+>> +                            BIOSLinker *linker);
+>> +void ghes_add_fw_cfg(FWCfgState *s, GArray *hardware_errors);
+>> +bool ghes_update_guest(uint32_t notify, uint64_t error_physical_addr);
+>> +#endif
+> It's pretty unusual to add the function declaration but not the
+> definition.
+  you are right. I will move this declaration file to another patch.
+  thanks. Laszlo also ever mentioned that.
+
 > 
-> diff --git a/hw/arm/mps2.c b/hw/arm/mps2.c
-> index 1b60b12..b1a0df9 100644
-> --- a/hw/arm/mps2.c
-> +++ b/hw/arm/mps2.c
-> @@ -33,6 +33,7 @@
->   #include "sysemu/sysemu.h"
->   #include "hw/misc/unimp.h"
->   #include "hw/char/cmsdk-apb-uart.h"
-> +#include "hw/timer/cmsdk-apb-timer.h"
->   
->   typedef enum MPS2FPGAType {
->       FPGA_AN385,
-> @@ -294,6 +295,9 @@ static void mps2_common_init(MachineState *machine)
->           g_assert_not_reached();
->       }
->   
-> +    cmsdk_apb_timer_create(0x40000000, qdev_get_gpio_in(armv7m, 8), SYSCLK_FRQ);
-> +    cmsdk_apb_timer_create(0x40001000, qdev_get_gpio_in(armv7m, 9), SYSCLK_FRQ);
-> +
->       system_clock_scale = NANOSECONDS_PER_SECOND / SYSCLK_FRQ;
->   
->       armv7m_load_kernel(ARM_CPU(first_cpu), machine->kernel_filename,
+>> diff --git a/include/qemu/uuid.h b/include/qemu/uuid.h
+>> index afe4840..99c4041 100644
+>> --- a/include/qemu/uuid.h
+>> +++ b/include/qemu/uuid.h
+>> @@ -44,6 +44,17 @@ typedef struct {
+>>  
+>>  #define UUID_NONE "00000000-0000-0000-0000-000000000000"
+>>  
+>> +#define UUID_BE(a, b, c, d0, d1, d2, d3, d4, d5, d6, d7)        \
+>> +{{{ ((a) >> 24) & 0xff, ((a) >> 16) & 0xff, ((a) >> 8) & 0xff, (a) & 0xff, \
+>> +   ((b) >> 8) & 0xff, (b) & 0xff,                   \
+>> +    ((c) >> 8) & 0xff, (c) & 0xff,                    \
+>> +    (d0), (d1), (d2), (d3), (d4), (d5), (d6), (d7) } } }
+>> +
+>> +/* Platform Memory, this is from UEFI 2.6 N.2.2 Section Descriptor */
+> Drop "this is" from the sentence.
+  OK.
+
 > 
+>> +#define UEFI_CPER_SEC_PLATFORM_MEM                   \
+>> +    UUID_BE(0xA5BC1114, 0x6F64, 0x4EDE, 0xB8, 0x63, 0x3E, 0x83, \
+>> +    0xED, 0x7C, 0x83, 0xB1)
+>> +
+>>  void qemu_uuid_generate(QemuUUID *out);
+>>  
+>>  int qemu_uuid_is_null(const QemuUUID *uu);
+

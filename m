@@ -1,74 +1,69 @@
-Received: by 10.25.44.15 with SMTP id s15csp760969lfs;
-        Fri, 14 Jul 2017 03:52:46 -0700 (PDT)
-X-Received: by 10.237.56.232 with SMTP id k95mr10326632qte.241.1500029566565;
-        Fri, 14 Jul 2017 03:52:46 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1500029566; cv=none;
+Received: by 10.25.44.15 with SMTP id s15csp761158lfs;
+        Fri, 14 Jul 2017 03:52:58 -0700 (PDT)
+X-Received: by 10.200.9.55 with SMTP id t52mr10403541qth.107.1500029578454;
+        Fri, 14 Jul 2017 03:52:58 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1500029578; cv=none;
         d=google.com; s=arc-20160816;
-        b=DN6d2jTPEDCaR4qexS6bHQ86YZO5uO+IGxOVvcZJaR6+Yfz6RMlwJJwzIO1TEPjvqn
-         TlLVuRfXgiWyhmbAwA22dpozMT4xtBS8ODvtL5a0oM6/mO6il9VQw6TvGQKshff0zYaL
-         Bfezx6mxa7RPFJSAvX7n1mj/IF7y8FxtMOxg15TLtnKBqJRfX6q2+F/eVw56yYtSM3N6
-         /AcLUNEhh7k0h65CjYqMlwW2TIMXpiavp6ZxmFk5vq4yEt/mCKakCCf7tFVQK6fjifRS
-         EpoW/nQKmBB2SLyyeK6jjUYw7Ltba5SVhBVMXcLyPx1DIqQFYiDiI+hSd4Lw7hz0YiMA
-         uF8A==
+        b=qZABlIy9h/QlQuX/D8P8ANU97AJ8NQcnzgQHu12ulTHpuW1aKIRt//3nvp9r+It9ab
+         n+9ddMO5BqhfMeXiuXlTGbRZ3fcK/yaxmMTQ5zSzk80qyNWMjI894H19M5l3k5nB6DPi
+         EhdVt46BFeZz5HF5F0ZyaD2947PMf5sC0ZVeGi8p6atKPnWaFJEKqEy+2f/dIv3HuID2
+         V4OIgHiDWY46odaf6C1V4LAbfkIYMRNIrDGP5IBKGc/XbMtCxd0GAMJYPeJFMxG7hUHy
+         RbqiyAfeAKRkKy8XR1RZth46x1u2Kbb2Dge+gqMVmxuNm4Ic15glOuLTsjxEmGMYwSv+
+         9FzA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:references:in-reply-to
+         :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
          :message-id:date:to:from:arc-authentication-results;
-        bh=yHeCpQBduc+vXqFGhsq6+e9qt12urpRFb/sgxn6BrNk=;
-        b=Lli6JsZ89zfJwV20AOOiJUeKk8RT+LtFtIOJmlYpJ9KS8JTvmYCcdoL51FZhL5AjAR
-         330GcDKd9bk8eg9MEdYEQ66oGBqyeA1mw/IWq/Km44yDosql40MfiqC+FDnScPMucV0G
-         EbXszgXxIriATtZPrlnPkc+KVwithf7T9HACiXOEElt7QMx/ZJQgUTPIRI5N5kLVoQ2M
-         plXK7QyJ0SKhTgwni3zDzKAxf9ca3wINqII4QNRXOMZ+VmobiAOsYbZmVodz/lBbVrDa
-         UTOiDYIlhkBxQQ4DYp8zeca3wBUOwC0nwBceBzmqA/LdBv/QM0z4o7OTmmVTOhbZm17F
-         ZcRQ==
+        bh=z4/fTT/pmsnXzSM0zFLnDUTgAAkWScl5TL+n/1hgCjQ=;
+        b=PxWwbdZoSMaQCHCCL27Pw0yTmUeMJFVEaQ8qQQ9VYISdqdBqvOXPnTm/csDaHSGoU2
+         5pzdb2O37TkVPEmfvZWFjLX+gYp7Y/qhTlyy42iHIUyzJlH1j1BtWGXxOukc6oZvVhPK
+         /AgITlfpuL05f4oZlByepyWIXF9eQRSBB9+pHI/GJR7BcA5Drq39g8yx+OF4OYn8drX2
+         QIP67X/m970LelZfOhwGxLQ9LI+TueH6sbQMDkHTnVJGdTPsLXy1sf+AGKnG8Finitcm
+         3epcHSpVLw715SN4uzOz3sN1A5vioR4L+iNZYKjevyEflQjSMvHvMzp91mEWXzTsOZxk
+         xalQ==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id l126si7624792qkf.355.2017.07.14.03.52.45
+        by mx.google.com with ESMTPS id n72si7757368qka.180.2017.07.14.03.52.57
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 14 Jul 2017 03:52:46 -0700 (PDT)
+        Fri, 14 Jul 2017 03:52:58 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:36930 helo=lists.gnu.org)
+Received: from localhost ([::1]:36932 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1dVyDD-0005dx-L0
-	for alex.bennee@linaro.org; Fri, 14 Jul 2017 06:52:43 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:53477)
+	id 1dVyDP-0005oN-ND
+	for alex.bennee@linaro.org; Fri, 14 Jul 2017 06:52:55 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:53521)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1dVyCO-0004ua-Oa
-	for qemu-arm@nongnu.org; Fri, 14 Jul 2017 06:51:56 -0400
+	(envelope-from <pm215@archaic.org.uk>) id 1dVyCR-0004xD-Te
+	for qemu-arm@nongnu.org; Fri, 14 Jul 2017 06:51:57 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1dVyCM-0007Dm-Rc
-	for qemu-arm@nongnu.org; Fri, 14 Jul 2017 06:51:52 -0400
+	(envelope-from <pm215@archaic.org.uk>) id 1dVyCN-0007F6-Ky
+	for qemu-arm@nongnu.org; Fri, 14 Jul 2017 06:51:55 -0400
 Received: from [2001:8b0:1d0::2] (port=37583 helo=orth.archaic.org.uk)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <pm215@archaic.org.uk>)
-	id 1dVyCM-00072e-Hv; Fri, 14 Jul 2017 06:51:50 -0400
+	id 1dVyCN-00072e-E4; Fri, 14 Jul 2017 06:51:51 -0400
 Received: from pm215 by orth.archaic.org.uk with local (Exim 4.84_2)
 	(envelope-from <pm215@archaic.org.uk>)
-	id 1dVyC1-0007kP-Gb; Fri, 14 Jul 2017 11:51:29 +0100
+	id 1dVyC0-0007kA-Sl; Fri, 14 Jul 2017 11:51:28 +0100
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Date: Fri, 14 Jul 2017 11:51:22 +0100
-Message-Id: <1500029487-14822-5-git-send-email-peter.maydell@linaro.org>
+Date: Fri, 14 Jul 2017 11:51:21 +0100
+Message-Id: <1500029487-14822-4-git-send-email-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.7.4
 In-Reply-To: <1500029487-14822-1-git-send-email-peter.maydell@linaro.org>
 References: <1500029487-14822-1-git-send-email-peter.maydell@linaro.org>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 2001:8b0:1d0::2
-Subject: [Qemu-arm] [PATCH v2 4/9] hw/char/cmsdk-apb-timer: Implement CMSDK
- APB timer device
+Subject: [Qemu-arm] [PATCH v2 3/9] hw/arm/mps2: Add UARTs
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -85,380 +80,127 @@ Cc: Alistair Francis <alistair.francis@xilinx.com>,
 	patches@linaro.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: mtZoP072+e+H
+X-TUID: JzRkJDvLXWI/
 
-Implement a model of the simple timer device found in the CMSDK.
+Add the UARTs to the MPS2 board models.
+
+Unfortunately the details of the wiring of the interrupts through
+various OR gates differ between AN511 and AN385 so this can't
+be purely a data-driven difference.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+Reviewed-by: Alistair Francis <alistair.francis@xilinx.com>
 ---
- hw/timer/Makefile.objs             |   1 +
- include/hw/timer/cmsdk-apb-timer.h |  59 +++++++++
- hw/timer/cmsdk-apb-timer.c         | 253 +++++++++++++++++++++++++++++++++++++
- default-configs/arm-softmmu.mak    |   1 +
- hw/timer/trace-events              |   5 +
- 5 files changed, 319 insertions(+)
- create mode 100644 include/hw/timer/cmsdk-apb-timer.h
- create mode 100644 hw/timer/cmsdk-apb-timer.c
+ hw/arm/mps2.c | 86 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 86 insertions(+)
 
-diff --git a/hw/timer/Makefile.objs b/hw/timer/Makefile.objs
-index dd6f27e..15cce1c 100644
---- a/hw/timer/Makefile.objs
-+++ b/hw/timer/Makefile.objs
-@@ -41,3 +41,4 @@ common-obj-$(CONFIG_STM32F2XX_TIMER) += stm32f2xx_timer.o
- common-obj-$(CONFIG_ASPEED_SOC) += aspeed_timer.o
+diff --git a/hw/arm/mps2.c b/hw/arm/mps2.c
+index 3dad02d..180c5d2 100644
+--- a/hw/arm/mps2.c
++++ b/hw/arm/mps2.c
+@@ -27,9 +27,12 @@
+ #include "qemu/error-report.h"
+ #include "hw/arm/arm.h"
+ #include "hw/arm/armv7m.h"
++#include "hw/or-irq.h"
+ #include "hw/boards.h"
+ #include "exec/address-spaces.h"
++#include "sysemu/sysemu.h"
+ #include "hw/misc/unimp.h"
++#include "hw/char/cmsdk-apb-uart.h"
  
- common-obj-$(CONFIG_SUN4V_RTC) += sun4v-rtc.o
-+common-obj-$(CONFIG_CMSDK_APB_TIMER) += cmsdk-apb-timer.o
-diff --git a/include/hw/timer/cmsdk-apb-timer.h b/include/hw/timer/cmsdk-apb-timer.h
-new file mode 100644
-index 0000000..f21686d
---- /dev/null
-+++ b/include/hw/timer/cmsdk-apb-timer.h
-@@ -0,0 +1,59 @@
-+/*
-+ * ARM CMSDK APB timer emulation
-+ *
-+ * Copyright (c) 2017 Linaro Limited
-+ * Written by Peter Maydell
-+ *
-+ *  This program is free software; you can redistribute it and/or modify
-+ *  it under the terms of the GNU General Public License version 2 or
-+ *  (at your option) any later version.
-+ */
+ typedef enum MPS2FPGAType {
+     FPGA_AN385,
+@@ -206,6 +209,89 @@ static void mps2_common_init(MachineState *machine)
+     create_unimplemented_device("Ethernet", 0x40200000, 0x00100000);
+     create_unimplemented_device("VGA", 0x41000000, 0x0200000);
+ 
++    switch (mmc->fpga_type) {
++    case FPGA_AN385:
++    {
++        /* The overflow IRQs for UARTs 0, 1 and 2 are ORed together.
++         * Overflow for UARTs 4 and 5 doesn't trigger any interrupt.
++         */
++        Object *orgate;
++        DeviceState *orgate_dev;
++        int i;
 +
-+#ifndef CMSDK_APB_TIMER_H
-+#define CMSDK_APB_TIMER_H
++        orgate = object_new(TYPE_OR_IRQ);
++        object_property_set_int(orgate, 6, "num-lines", &error_fatal);
++        object_property_set_bool(orgate, true, "realized", &error_fatal);
++        orgate_dev = DEVICE(orgate);
++        qdev_connect_gpio_out(orgate_dev, 0, qdev_get_gpio_in(armv7m, 12));
 +
-+#include "hw/sysbus.h"
-+#include "hw/ptimer.h"
++        for (i = 0; i < 5; i++) {
++            hwaddr uartbase[] = {0x40004000, 0x40005000, 0x40006000,
++                                 0x40007000, 0x40009000};
++            Chardev *uartchr = i < MAX_SERIAL_PORTS ? serial_hds[i] : NULL;
++            /* RX irq number; TX irq is always one greater */
++            int uartirq[] = {0, 2, 4, 18, 20};
++            qemu_irq txovrint = NULL, rxovrint = NULL;
 +
-+#define TYPE_CMSDK_APB_TIMER "cmsdk-apb-timer"
-+#define CMSDK_APB_TIMER(obj) OBJECT_CHECK(CMSDKAPBTIMER, (obj), \
-+                                         TYPE_CMSDK_APB_TIMER)
++            if (i < 3) {
++                txovrint = qdev_get_gpio_in(orgate_dev, i * 2);
++                rxovrint = qdev_get_gpio_in(orgate_dev, i * 2 + 1);
++            }
 +
-+typedef struct {
-+    /*< private >*/
-+    SysBusDevice parent_obj;
-+
-+    /*< public >*/
-+    MemoryRegion iomem;
-+    qemu_irq timerint;
-+    uint32_t pclk_frq;
-+    struct ptimer_state *timer;
-+
-+    uint32_t ctrl;
-+    uint32_t value;
-+    uint32_t reload;
-+    uint32_t intstatus;
-+} CMSDKAPBTIMER;
-+
-+/**
-+ * cmsdk_apb_timer_create - convenience function to create TYPE_CMSDK_APB_TIMER
-+ * @addr: location in system memory to map registers
-+ * @pclk_frq: frequency in Hz of the PCLK clock (used for calculating baud rate)
-+ */
-+static inline DeviceState *cmsdk_apb_timer_create(hwaddr addr,
-+                                                 qemu_irq timerint,
-+                                                 uint32_t pclk_frq)
-+{
-+    DeviceState *dev;
-+    SysBusDevice *s;
-+
-+    dev = qdev_create(NULL, TYPE_CMSDK_APB_TIMER);
-+    s = SYS_BUS_DEVICE(dev);
-+    qdev_prop_set_uint32(dev, "pclk-frq", pclk_frq);
-+    qdev_init_nofail(dev);
-+    sysbus_mmio_map(s, 0, addr);
-+    sysbus_connect_irq(s, 0, timerint);
-+    return dev;
-+}
-+
-+#endif
-diff --git a/hw/timer/cmsdk-apb-timer.c b/hw/timer/cmsdk-apb-timer.c
-new file mode 100644
-index 0000000..9878746
---- /dev/null
-+++ b/hw/timer/cmsdk-apb-timer.c
-@@ -0,0 +1,253 @@
-+/*
-+ * ARM CMSDK APB timer emulation
-+ *
-+ * Copyright (c) 2017 Linaro Limited
-+ * Written by Peter Maydell
-+ *
-+ *  This program is free software; you can redistribute it and/or modify
-+ *  it under the terms of the GNU General Public License version 2 or
-+ *  (at your option) any later version.
-+ */
-+
-+/* This is a model of the "APB timer" which is part of the Cortex-M
-+ * System Design Kit (CMSDK) and documented in the Cortex-M System
-+ * Design Kit Technical Reference Manual (ARM DDI0479C):
-+ * https://developer.arm.com/products/system-design/system-design-kits/cortex-m-system-design-kit
-+ *
-+ * The hardware has an EXTIN input wire, which can be configured
-+ * by the guest to act either as a 'timer enable' (timer does not run
-+ * when EXTIN is low), or as a 'timer clock' (timer runs at frequency
-+ * of EXTIN clock, not PCLK frequency). We don't model this.
-+ *
-+ * The documentation is not very clear about the exact behaviour;
-+ * we choose to implement that the interrupt is triggered when
-+ * the counter goes from 1 to 0, that the counter then holds at 0
-+ * for one clock cycle before reloading from the RELOAD register,
-+ * and that if the RELOAD register is 0 this does not cause an
-+ * interrupt (as there is no further 1->0 transition).
-+ */
-+
-+#include "qemu/osdep.h"
-+#include "qemu/log.h"
-+#include "qemu/main-loop.h"
-+#include "qapi/error.h"
-+#include "trace.h"
-+#include "hw/sysbus.h"
-+#include "hw/registerfields.h"
-+#include "hw/timer/cmsdk-apb-timer.h"
-+
-+REG32(CTRL, 0)
-+    FIELD(CTRL, EN, 0, 1)
-+    FIELD(CTRL, SELEXTEN, 1, 1)
-+    FIELD(CTRL, SELEXTCLK, 2, 1)
-+    FIELD(CTRL, IRQEN, 3, 1)
-+REG32(VALUE, 4)
-+REG32(RELOAD, 8)
-+REG32(INTSTATUS, 0xc)
-+    FIELD(INTSTATUS, IRQ, 0, 1)
-+REG32(PID4, 0xFD0)
-+REG32(PID5, 0xFD4)
-+REG32(PID6, 0xFD8)
-+REG32(PID7, 0xFDC)
-+REG32(PID0, 0xFE0)
-+REG32(PID1, 0xFE4)
-+REG32(PID2, 0xFE8)
-+REG32(PID3, 0xFEC)
-+REG32(CID0, 0xFF0)
-+REG32(CID1, 0xFF4)
-+REG32(CID2, 0xFF8)
-+REG32(CID3, 0xFFC)
-+
-+/* PID/CID values */
-+static const int timer_id[] = {
-+    0x04, 0x00, 0x00, 0x00, /* PID4..PID7 */
-+    0x22, 0xb8, 0x1b, 0x00, /* PID0..PID3 */
-+    0x0d, 0xf0, 0x05, 0xb1, /* CID0..CID3 */
-+};
-+
-+static void cmsdk_apb_timer_update(CMSDKAPBTIMER *s)
-+{
-+    qemu_set_irq(s->timerint, !!(s->intstatus & R_INTSTATUS_IRQ_MASK));
-+}
-+
-+static uint64_t cmsdk_apb_timer_read(void *opaque, hwaddr offset, unsigned size)
-+{
-+    CMSDKAPBTIMER *s = CMSDK_APB_TIMER(opaque);
-+    uint64_t r;
-+
-+    switch (offset) {
-+    case A_CTRL:
-+        r = s->ctrl;
-+        break;
-+    case A_VALUE:
-+        r = ptimer_get_count(s->timer);
-+        break;
-+    case A_RELOAD:
-+        r = ptimer_get_limit(s->timer);
-+        break;
-+    case A_INTSTATUS:
-+        r = s->intstatus;
-+        break;
-+    case A_PID4 ... A_CID3:
-+        r = timer_id[(offset - A_PID4) / 4];
-+        break;
-+    default:
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+                      "CMSDK APB timer read: bad offset %x\n", (int) offset);
-+        r = 0;
-+        break;
-+    }
-+    trace_cmsdk_apb_timer_read(offset, r, size);
-+    return r;
-+}
-+
-+static void cmsdk_apb_timer_write(void *opaque, hwaddr offset, uint64_t value,
-+                                  unsigned size)
-+{
-+    CMSDKAPBTIMER *s = CMSDK_APB_TIMER(opaque);
-+
-+    trace_cmsdk_apb_timer_write(offset, value, size);
-+
-+    switch (offset) {
-+    case A_CTRL:
-+        if (value & 6) {
-+            /* Bits [1] and [2] enable using EXTIN as either clock or
-+             * an enable line. We don't model this.
-+             */
-+            qemu_log_mask(LOG_UNIMP,
-+                          "CMSDK APB timer: EXTIN input not supported\n");
-+        }
-+        s->ctrl = value & 0xf;
-+        if (s->ctrl & R_CTRL_EN_MASK) {
-+            ptimer_run(s->timer, 0);
-+        } else {
-+            ptimer_stop(s->timer);
++            cmsdk_apb_uart_create(uartbase[i],
++                                  qdev_get_gpio_in(armv7m, uartirq[i] + 1),
++                                  qdev_get_gpio_in(armv7m, uartirq[i]),
++                                  txovrint, rxovrint,
++                                  NULL,
++                                  uartchr, SYSCLK_FRQ);
 +        }
 +        break;
-+    case A_RELOAD:
-+        /* Writing to reload also sets the current timer value */
-+        ptimer_set_limit(s->timer, value, 1);
++    }
++    case FPGA_AN511:
++    {
++        /* The overflow IRQs for all UARTs are ORed together.
++         * Tx and Rx IRQs for each UART are ORed together.
++         */
++        Object *orgate;
++        DeviceState *orgate_dev;
++        int i;
++
++        orgate = object_new(TYPE_OR_IRQ);
++        object_property_set_int(orgate, 10, "num-lines", &error_fatal);
++        object_property_set_bool(orgate, true, "realized", &error_fatal);
++        orgate_dev = DEVICE(orgate);
++        qdev_connect_gpio_out(orgate_dev, 0, qdev_get_gpio_in(armv7m, 12));
++
++        for (i = 0; i < 5; i++) {
++            /* system irq numbers for the combined tx/rx for each UART */
++            const int uart_txrx_irqno[] = {0, 2, 45, 46, 56};
++            hwaddr uartbase[] = {0x40004000, 0x40005000, 0x4002c000,
++                                 0x4002d000, 0x4002e000};
++            Chardev *uartchr = i < MAX_SERIAL_PORTS ? serial_hds[i] : NULL;
++            Object *txrx_orgate;
++            DeviceState *txrx_orgate_dev;
++
++            txrx_orgate = object_new(TYPE_OR_IRQ);
++            object_property_set_int(txrx_orgate, 2, "num-lines", &error_fatal);
++            object_property_set_bool(txrx_orgate, true, "realized",
++                                     &error_fatal);
++            txrx_orgate_dev = DEVICE(txrx_orgate);
++            qdev_connect_gpio_out(txrx_orgate_dev, 0,
++                                  qdev_get_gpio_in(armv7m, uart_txrx_irqno[i]));
++            cmsdk_apb_uart_create(uartbase[i],
++                                  qdev_get_gpio_in(txrx_orgate_dev, 0),
++                                  qdev_get_gpio_in(txrx_orgate_dev, 1),
++                                  qdev_get_gpio_in(orgate_dev, 0),
++                                  qdev_get_gpio_in(orgate_dev, 1),
++                                  NULL,
++                                  uartchr, SYSCLK_FRQ);
++        }
 +        break;
-+    case A_VALUE:
-+        ptimer_set_count(s->timer, value);
-+        break;
-+    case A_INTSTATUS:
-+        /* Just one bit, which is W1C. */
-+        value &= 1;
-+        s->intstatus &= ~value;
-+        cmsdk_apb_timer_update(s);
-+        break;
-+    case A_PID4 ... A_CID3:
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+                      "CMSDK APB timer write: write to RO offset 0x%x\n",
-+                      (int)offset);
-+        break;
++    }
 +    default:
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+                      "CMSDK APB timer write: bad offset 0x%x\n", (int) offset);
-+        break;
-+    }
-+}
-+
-+static const MemoryRegionOps cmsdk_apb_timer_ops = {
-+    .read = cmsdk_apb_timer_read,
-+    .write = cmsdk_apb_timer_write,
-+    .endianness = DEVICE_LITTLE_ENDIAN,
-+};
-+
-+static void cmsdk_apb_timer_tick(void *opaque)
-+{
-+    CMSDKAPBTIMER *s = CMSDK_APB_TIMER(opaque);
-+
-+    if (s->ctrl & R_CTRL_IRQEN_MASK) {
-+        s->intstatus |= R_INTSTATUS_IRQ_MASK;
-+        cmsdk_apb_timer_update(s);
-+    }
-+}
-+
-+static void cmsdk_apb_timer_reset(DeviceState *dev)
-+{
-+    CMSDKAPBTIMER *s = CMSDK_APB_TIMER(dev);
-+
-+    trace_cmsdk_apb_timer_reset();
-+    s->ctrl = 0;
-+    s->intstatus = 0;
-+    ptimer_stop(s->timer);
-+    /* Set the limit and the count */
-+    ptimer_set_limit(s->timer, 0, 1);
-+}
-+
-+static void cmsdk_apb_timer_init(Object *obj)
-+{
-+    SysBusDevice *sbd = SYS_BUS_DEVICE(obj);
-+    CMSDKAPBTIMER *s = CMSDK_APB_TIMER(obj);
-+
-+    memory_region_init_io(&s->iomem, obj, &cmsdk_apb_timer_ops,
-+                          s, "cmsdk-apb-timer", 0x1000);
-+    sysbus_init_mmio(sbd, &s->iomem);
-+    sysbus_init_irq(sbd, &s->timerint);
-+}
-+
-+static void cmsdk_apb_timer_realize(DeviceState *dev, Error **errp)
-+{
-+    CMSDKAPBTIMER *s = CMSDK_APB_TIMER(dev);
-+    QEMUBH *bh;
-+
-+    if (s->pclk_frq == 0) {
-+        error_setg(errp, "CMSDK APB timer: pclk-frq property must be set");
-+        return;
++        g_assert_not_reached();
 +    }
 +
-+    bh = qemu_bh_new(cmsdk_apb_timer_tick, s);
-+    s->timer = ptimer_init(bh,
-+                           PTIMER_POLICY_WRAP_AFTER_ONE_PERIOD |
-+                           PTIMER_POLICY_NO_IMMEDIATE_TRIGGER |
-+                           PTIMER_POLICY_NO_IMMEDIATE_RELOAD |
-+                           PTIMER_POLICY_NO_COUNTER_ROUND_DOWN);
-+
-+    ptimer_set_freq(s->timer, s->pclk_frq);
-+}
-+
-+static const VMStateDescription cmsdk_apb_timer_vmstate = {
-+    .name = "cmsdk-apb-timer",
-+    .version_id = 1,
-+    .minimum_version_id = 1,
-+    .fields = (VMStateField[]) {
-+        VMSTATE_PTIMER(timer, CMSDKAPBTIMER),
-+        VMSTATE_UINT32(ctrl, CMSDKAPBTIMER),
-+        VMSTATE_UINT32(value, CMSDKAPBTIMER),
-+        VMSTATE_UINT32(reload, CMSDKAPBTIMER),
-+        VMSTATE_UINT32(intstatus, CMSDKAPBTIMER),
-+        VMSTATE_END_OF_LIST()
-+    }
-+};
-+
-+static Property cmsdk_apb_timer_properties[] = {
-+    DEFINE_PROP_UINT32("pclk-frq", CMSDKAPBTIMER, pclk_frq, 0),
-+    DEFINE_PROP_END_OF_LIST(),
-+};
-+
-+static void cmsdk_apb_timer_class_init(ObjectClass *klass, void *data)
-+{
-+    DeviceClass *dc = DEVICE_CLASS(klass);
-+
-+    dc->realize = cmsdk_apb_timer_realize;
-+    dc->vmsd = &cmsdk_apb_timer_vmstate;
-+    dc->reset = cmsdk_apb_timer_reset;
-+    dc->props = cmsdk_apb_timer_properties;
-+}
-+
-+static const TypeInfo cmsdk_apb_timer_info = {
-+    .name = TYPE_CMSDK_APB_TIMER,
-+    .parent = TYPE_SYS_BUS_DEVICE,
-+    .instance_size = sizeof(CMSDKAPBTIMER),
-+    .instance_init = cmsdk_apb_timer_init,
-+    .class_init = cmsdk_apb_timer_class_init,
-+};
-+
-+static void cmsdk_apb_timer_register_types(void)
-+{
-+    type_register_static(&cmsdk_apb_timer_info);
-+}
-+
-+type_init(cmsdk_apb_timer_register_types);
-diff --git a/default-configs/arm-softmmu.mak b/default-configs/arm-softmmu.mak
-index d128e9d..c75f52c 100644
---- a/default-configs/arm-softmmu.mak
-+++ b/default-configs/arm-softmmu.mak
-@@ -96,6 +96,7 @@ CONFIG_STM32F2XX_ADC=y
- CONFIG_STM32F2XX_SPI=y
- CONFIG_STM32F205_SOC=y
+     system_clock_scale = NANOSECONDS_PER_SECOND / SYSCLK_FRQ;
  
-+CONFIG_CMSDK_APB_TIMER=y
- CONFIG_CMSDK_APB_UART=y
- 
- CONFIG_VERSATILE_PCI=y
-diff --git a/hw/timer/trace-events b/hw/timer/trace-events
-index d17cfe6..fd8196b 100644
---- a/hw/timer/trace-events
-+++ b/hw/timer/trace-events
-@@ -55,3 +55,8 @@ systick_reload(void) "systick reload"
- systick_timer_tick(void) "systick reload"
- systick_read(uint64_t addr, uint32_t value, unsigned size) "systick read addr 0x%" PRIx64 " data 0x%" PRIx32 " size %u"
- systick_write(uint64_t addr, uint32_t value, unsigned size) "systick write addr 0x%" PRIx64 " data 0x%" PRIx32 " size %u"
-+
-+# hw/char/cmsdk_apb_timer.c
-+cmsdk_apb_timer_read(uint64_t offset, uint64_t data, unsigned size) "CMSDK APB timer read: offset 0x%" PRIx64 " data 0x%" PRIx64 " size %u"
-+cmsdk_apb_timer_write(uint64_t offset, uint64_t data, unsigned size) "CMSDK APB timer write: offset 0x%" PRIx64 " data 0x%" PRIx64 " size %u"
-+cmsdk_apb_timer_reset(void) "CMSDK APB timer: reset"
+     armv7m_load_kernel(ARM_CPU(first_cpu), machine->kernel_filename,
 -- 
 2.7.4
 

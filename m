@@ -1,93 +1,92 @@
-Received: by 10.25.44.15 with SMTP id s15csp993998lfs;
-        Fri, 14 Jul 2017 07:21:00 -0700 (PDT)
-X-Received: by 10.28.87.205 with SMTP id l196mr3161293wmb.121.1500042060587;
-        Fri, 14 Jul 2017 07:21:00 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1500042060; cv=none;
+Received: by 10.25.44.15 with SMTP id s15csp996925lfs;
+        Fri, 14 Jul 2017 07:23:38 -0700 (PDT)
+X-Received: by 10.223.164.23 with SMTP id d23mr4695912wra.58.1500042218257;
+        Fri, 14 Jul 2017 07:23:38 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1500042218; cv=none;
         d=google.com; s=arc-20160816;
-        b=ygjt6n8c076u7FqvxVRNEGFdpr96SljM+FazEAjIXRspfnptP/pyBWXevjSzQC8qUv
-         FCGFZqBJDEPtJrt//AO+1RHnzOpvp5rZXl6UYYIdld4jDJioQHC1Mi3yxa2AtATzvubJ
-         HrsbmAt/DVVoFzm7D7kM8iHt8L4n+u+SY2+EDZKQxgwDSvhOzbFSUvpvcznvCdyv/REJ
-         Nu5u3ChUBNFxq4OBOTNry00qEZShMUHmdLNK0kS5Gfz0qYkcgwcp5GuLJFNTjf7CZoPy
-         aPyBcA5g6uky2GmQoWNnTm1E1MYjlppnKqxMbGJLDcYnCL1iumAU8eKMYX4Ybi1xseb0
-         v/0g==
+        b=auAx2bUiY0BMDYielCBnRsZiRteopRoXDsb42GcR2fjqMPxDXu8R5q3kb3mEnXTSBg
+         5r3bCFDo4IBj1/tTNlWWtq4zFRLFXB9gsTWis4so1IXXFNMNfBwwxYLWQqNx3ND53NCE
+         WAgigKFiABccE0sHTGY7e/T8VDcQAyvUvVHeVEFNb9Hc18042XBTofnapoEQsF+IGIYz
+         at6I7wPiweeEvgto6dRvY2f8wxqVTo5NPbXSZWRdBXmmpSIZvdI7XHeTEIea1iubQNyY
+         QhgmyUslf11UL93pKEaljbgakTGFbAF/5mys8qF9APmO/k7dutQVLd6ni+LcgJ6LxK+c
+         SKHw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :references:in-reply-to:mime-version:dkim-signature
          :arc-authentication-results;
-        bh=vEVHGI7dVdjkSo7oJzclV1RNS4OpQgIWpSUVacySoXQ=;
-        b=S5VRCBNw+b4tujRgatf/3AIq0vkHEXjsI/n3z4lEF7ZjyVOPWgA7aKOTf7FIR8+MjW
-         PaicwP33nf2QVxR7MNQeZeRt/ewajszGOJHbUO60YOvKOQjPdVqT+MB3aCEkjC8aUEk4
-         AYm3WR+drvdkImNrnh/aHSW0NpFUweNaREprKr5lHg12ZP+toKrCx/jOe4257Any5Mt1
-         XuMVU+tltqq/lENMgkeiK8z2bJqOZG5dmoPcOo+z5P7cHrCd3EBACOX8r9auj9Qgg50m
-         N/HdX7NehjWAFwS+WY88Xb8HwgYe9Y3n95fDBrF6pEfGUe1TtVB8tul+xkREAoIHjLFd
-         YOkQ==
+        bh=wYDdYozdViDDsosDOkEmVw/dw44VrJD+0kIVGAoQ6s4=;
+        b=aMVAKB/f+rLuza+erzEAUfPUliz6rlBWYIwLeTiZvdh7fcIh7rxG+0p7eDCfAZaP+V
+         KV8VXm6jufwQ5mDqnRE0Dfov0NsOwb97jKCronCzIDRgE6FwLdkNxoqAFSq6DW8u7wQT
+         cmYDzJWqN9JEx41T3UpTqRNLON48v2eRLUY/eLnFX+83Q+0fNHqD9zp/ojOAQ6ghSC+m
+         5BrZtXAL6csp0ANm47hvJuRx7xywCJgHgn7wV9Yv6IoLVs70irgDqYwyciQxiBeP+wps
+         PpE0iwHAPxNv12MRlr2s7xiu47BnRWE7LxWfaQxJUqhUZ+WPzfIiuaoM4i3fBr/qjDfj
+         LvcQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.b=NC1ychGC;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 2a00:1450:400c:c0c::230 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dkim=pass header.i=@linaro.org header.b=XauwzqNx;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 2a00:1450:400c:c09::235 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <peter.maydell@linaro.org>
-Received: from mail-wr0-x230.google.com (mail-wr0-x230.google.com. [2a00:1450:400c:c0c::230])
-        by mx.google.com with ESMTPS id e128si4409168wmd.3.2017.07.14.07.21.00
+Received: from mail-wm0-x235.google.com (mail-wm0-x235.google.com. [2a00:1450:400c:c09::235])
+        by mx.google.com with ESMTPS id 123si2452331wmn.71.2017.07.14.07.23.38
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 14 Jul 2017 07:21:00 -0700 (PDT)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 2a00:1450:400c:c0c::230 as permitted sender) client-ip=2a00:1450:400c:c0c::230;
+        Fri, 14 Jul 2017 07:23:38 -0700 (PDT)
+Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 2a00:1450:400c:c09::235 as permitted sender) client-ip=2a00:1450:400c:c09::235;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.b=NC1ychGC;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 2a00:1450:400c:c0c::230 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dkim=pass header.i=@linaro.org header.b=XauwzqNx;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 2a00:1450:400c:c09::235 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: by mail-wr0-x230.google.com with SMTP id k67so67961665wrc.2
-        for <alex.bennee@linaro.org>; Fri, 14 Jul 2017 07:21:00 -0700 (PDT)
+Received: by mail-wm0-x235.google.com with SMTP id 62so21990272wmw.1
+        for <alex.bennee@linaro.org>; Fri, 14 Jul 2017 07:23:38 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
         h=mime-version:in-reply-to:references:from:date:message-id:subject:to
          :cc:content-transfer-encoding;
-        bh=vEVHGI7dVdjkSo7oJzclV1RNS4OpQgIWpSUVacySoXQ=;
-        b=NC1ychGCsr8qNDOKjYtF7DblmcYl1F1YmRKuql6PcVVwThZrz+Eo7trL+T4FR4HP70
-         amsNFP7Dr0RqP5XlH9OFsPx//ZHzgKO7rUC2ZO7w2n6JgmBRbJNHXibXTsN90yTK6XIF
-         71SguTIgIPnbpGhcs4Q1krc2XQJVi5+UxMV/E=
+        bh=wYDdYozdViDDsosDOkEmVw/dw44VrJD+0kIVGAoQ6s4=;
+        b=XauwzqNxbbQ4Cm4SYW2nQDxF4UJAkSEnfyK6RlJycoFGlV0ehH498n/WFo7hBG5/87
+         RfZ4jLLFWW6Nw2KErPI6JISlzetB70gr28gc12p/BLChYZDWCs78YVZFMvVf40VTxRqF
+         kz/2wL0okkw9NBfOF5/Jr+Ltfq9KtQ6LICxwA=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:mime-version:in-reply-to:references:from:date
          :message-id:subject:to:cc:content-transfer-encoding;
-        bh=vEVHGI7dVdjkSo7oJzclV1RNS4OpQgIWpSUVacySoXQ=;
-        b=MBa5fcIJL5PEX3IWV6r4eiJQobX1B4fGU/mxovp866mHYRl5V/05zFYlGIMvjl4T6s
-         naVrbxuM93MaG5A3fNgr5Db84ADLfVtpLd1WXFLnG60FftZIwHOmyT47Wv+tJC3Yvcbi
-         iQavusYll1clKQhcDngkZ8KINQGaaU7/fGpbYZ3o+U94D2q8Yo+spux8psBbiwyietMS
-         MWB4it0maf99kyY2EQgxlKo46X6qm+OCyy2P/m6TqWmlJ+/7JW3oaGGSFbdUwUnElqHj
-         4DUieuGm0Xg8DZcUL87s6XXLfXSDYQrGZSeKsycRz9G0AwxFTve/3RlPnWYVhoe+meAZ
-         XdOA==
-X-Gm-Message-State: AIVw112zVhctA2tL3HuQY/weqbXHkpgciFYzeYP1rCZKjtwUnBM/nllg
-	2mg/PM2sww006nX0+SNRaAW3MhB4U3F8eZJOIA==
-X-Received: by 10.223.172.86 with SMTP id v80mr5525590wrc.112.1500042059934;
- Fri, 14 Jul 2017 07:20:59 -0700 (PDT)
+        bh=wYDdYozdViDDsosDOkEmVw/dw44VrJD+0kIVGAoQ6s4=;
+        b=d4PlbmPg4vHqnAdZ/ocF8ToSZ4TbXcDxE7bu/LGlAkjzYhIi/PzFlO9p0eQSIdGptl
+         EgYlpzBrLBvVZYckUehL635AI6xTgZOBk6RQ05mLm6QqSW59NrlfUsC6HzMEQ3CMqCTf
+         DnKKUeCg17T582IX7SRsHoFM7AAZrZw1xxdHbgYvOHmVYg6kGpjSkTnGZyjaaPdeN0By
+         7X0k2BD5g991MBTcVzP26yl4r7Ln1Xw73fFb8ZEuKc9KfDurz5aeeUG/7MB5XSRHlo73
+         D2/GGjQU0vU9d/7byVqOyDLHD0XPSHlvRQ3uLl2RgmKIIcWH+bzrYrYT9fdzRJb2kYQx
+         ZJwQ==
+X-Gm-Message-State: AIVw110qWMVGbJmansQrnZZOhxePy56kNZseQZztS7FzCbjfEs+CVvqy
+	uBNXDotl8pufuYM0Si0KA8QrU1mizL1w3bEygw==
+X-Received: by 10.28.228.85 with SMTP id b82mr2831220wmh.65.1500042217767;
+ Fri, 14 Jul 2017 07:23:37 -0700 (PDT)
 MIME-Version: 1.0
-Received: by 10.223.134.2 with HTTP; Fri, 14 Jul 2017 07:20:39 -0700 (PDT)
-In-Reply-To: <87pod3umy6.fsf@linaro.org>
+Received: by 10.223.134.2 with HTTP; Fri, 14 Jul 2017 07:23:17 -0700 (PDT)
+In-Reply-To: <20170713141928.25419-1-alex.bennee@linaro.org>
 References: <20170713141928.25419-1-alex.bennee@linaro.org>
- <20170713141928.25419-6-alex.bennee@linaro.org> <CAFEAcA8o4rU7BXR_+VEQhAXBSzJ7usAnkYXDb=CEqQ=duuirqA@mail.gmail.com>
- <87pod3umy6.fsf@linaro.org>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 14 Jul 2017 15:20:39 +0100
-Message-ID: <CAFEAcA8s5Xm8AO8L2=Rs_CQNYqzgArq7ahmjK0sNjy_bGCObHA@mail.gmail.com>
-Subject: Re: [PATCH v4 5/6] target/arm: use gen_goto_tb for ISB handling
+Date: Fri, 14 Jul 2017 15:23:17 +0100
+Message-ID: <CAFEAcA_CCDU+7N8dqL5mRjAKNVQYa4m9j_mkhv1jHZMVKSSk5g@mail.gmail.com>
+Subject: Re: [PATCH v4 0/6] arm: fixes for eret, isb and DISAS_UPDATE handling
 To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
 Cc: QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-X-TUID: N83g04lVzaqm
+X-TUID: VEKuvccoUefw
 
-On 14 July 2017 at 15:12, Alex Benn=C3=A9e <alex.bennee@linaro.org> wrote:
-> Peter Maydell <peter.maydell@linaro.org> writes:
->> Why do we need to clear the low bit of s->pc for ISB?
->> s->pc is the actual PC, not the "PC and low bit indicates
->> Thumb mode" form that jump addresses have.
+On 13 July 2017 at 15:19, Alex Benn=C3=A9e <alex.bennee@linaro.org> wrote:
+> Hi Peter,
 >
-> It's what gen_lookup_tb does to it's PC before the calculated jump. If
-> it can never happen I can get rid of it.
+> All reviews are now in and I've tested against AArch64 OPTEE xtest
+> suite and it fixes the hang. Apart from review tags there was one
+> minor tweak to gen_goto_tb so it always sets s->is_jmp =3D
+> DISAS_TB_JUMP;
+>
+> I reckon these are ready to be taken into the ARM tree now.
+>
 
-Hmm, I think that it's unnecessary, but since we were doing this before
-I guess better to make cleaning it up be a separate patch.
+Applied to target-arm.next, thanks. We can fix up the long
+standing oddity of masking bit 0 of s->pc in a different patch.
 
-thanks
 -- PMM

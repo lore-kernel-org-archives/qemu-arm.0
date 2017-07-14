@@ -1,601 +1,158 @@
-Return-Path: <alex.bennee@linaro.org>
-Received: from zen.linaro.local ([81.128.185.34])
-        by smtp.gmail.com with ESMTPSA id 33sm6417000wrr.58.2017.07.14.08.32.01
+Received: by 10.25.44.15 with SMTP id s15csp1094533lfs;
+        Fri, 14 Jul 2017 08:46:05 -0700 (PDT)
+X-Received: by 10.223.153.70 with SMTP id x64mr4956663wrb.18.1500047165008;
+        Fri, 14 Jul 2017 08:46:05 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1500047165; cv=none;
+        d=google.com; s=arc-20160816;
+        b=j572QaojKjs5n7Rgu5KVLPocA3cVu9JQ6weDlC6inVQI+i6r5FIWWu9GaZcIW/Yinc
+         EXfqVwroZ87ufHmU9CnuHvfCeE75+FKl2txiiiqNfEfQ/Uf0e2WWftjy9XpnqYWcs6FA
+         Mey5MyYFptpEaOW4rTMk+OPsWQMFSju/pbrfPsMCrBjiiOaKLlpHjSitKpXyA1nw/14O
+         4vZ8l3mGAb/961Ll2pPjHSdTZR/kmQrFhoekvyA+49SSjt1NBGASQmcXM5bjocKMHpfD
+         wnFB4y54VJ+Bp8IT8FdmwdaSAoPAy8neDl413MPu9HBgndmKwRK/pUUFafwJULAd8eyJ
+         gSMA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :references:in-reply-to:mime-version:dkim-signature
+         :arc-authentication-results;
+        bh=whNGorIBylaubCJ+wDUJFjoGp/x8Nsi2so9KTSB2LXQ=;
+        b=uem/ZtOB8lNyLRtSH/Q2gdnCjjLCIAxjhsvQJmJV+vr49AmEuJZ6I4KWHRl790rhnm
+         UMGVneCc8ZwdnEAe9MeYdD5H4sILiono2wvtKzTy6mABNL02YuC3rU3ga4bCtqgj7gPq
+         Fs882wi831y1jUkzN2gEMHVdb5BX3h6U5/2wzYIT4jZxG8hA2G5mdmSEdXiw0j0jhQK8
+         XnXozW9ah4b1sM/17ssh5dWDa8wDdIOV4YRi3SEptEZbndkPjE2Tx+ayvYhCcwhU45Da
+         HPhTeYUmMuZuJy9EmsI7EVZXyqgZAL5elIWK00i1C84VPvwwADjJxx8PFBqdejb2jdaQ
+         r7sQ==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@linaro.org header.b=Wc6hoeea;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 2a00:1450:400c:c0c::22b as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <peter.maydell@linaro.org>
+Received: from mail-wr0-x22b.google.com (mail-wr0-x22b.google.com. [2a00:1450:400c:c0c::22b])
+        by mx.google.com with ESMTPS id y192si2602773wmy.130.2017.07.14.08.46.04
+        for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 14 Jul 2017 08:32:01 -0700 (PDT)
-Received: from zen (localhost [127.0.0.1])
-	by zen.linaro.local (Postfix) with ESMTPS id ED4AA3E00CD;
-	Fri, 14 Jul 2017 16:32:00 +0100 (BST)
-References: <1500029487-14822-1-git-send-email-peter.maydell@linaro.org> <1500029487-14822-3-git-send-email-peter.maydell@linaro.org>
-User-agent: mu4e 0.9.19; emacs 25.2.50.3
-From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, Alistair Francis
- <alistair.francis@xilinx.com>, Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?=
- <f4bug@amsat.org>, patches@linaro.org
-Subject: Re: [Qemu-arm] [PATCH v2 2/9] hw/char/cmsdk-apb-uart.c: Implement CMSDK APB UART
-In-reply-to: <1500029487-14822-3-git-send-email-peter.maydell@linaro.org>
-Date: Fri, 14 Jul 2017 16:32:00 +0100
-Message-ID: <87mv87uj9r.fsf@linaro.org>
+        Fri, 14 Jul 2017 08:46:04 -0700 (PDT)
+Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 2a00:1450:400c:c0c::22b as permitted sender) client-ip=2a00:1450:400c:c0c::22b;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@linaro.org header.b=Wc6hoeea;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 2a00:1450:400c:c0c::22b as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: by mail-wr0-x22b.google.com with SMTP id k67so69078296wrc.2
+        for <alex.bennee@linaro.org>; Fri, 14 Jul 2017 08:46:04 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+         :cc:content-transfer-encoding;
+        bh=whNGorIBylaubCJ+wDUJFjoGp/x8Nsi2so9KTSB2LXQ=;
+        b=Wc6hoeeakBY/j9hYaaW9TMvb8dooCzFMSrGVNhZZ+skotceQ/VqRoNxMFz2ojB6EAE
+         wbjHjKfDqV7SkxtMvkCY4hjde9Kopl6plfafC429C2MGfZYpMBQ+k3h9ArR3r/Powy70
+         ys0/orOAJLQDSTolzPvTxsN0188/IgdIf7dgM=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+         :message-id:subject:to:cc:content-transfer-encoding;
+        bh=whNGorIBylaubCJ+wDUJFjoGp/x8Nsi2so9KTSB2LXQ=;
+        b=A5DxRPHeLxkzIuFrocmmycKG4VWNYsNBePzAVFJZ4Gwez1UH4AFI9zGNOxHnfZaKJt
+         xnkbjq4uJ7LhTPEb7p6doNI6WO7Bqo68hyZB+/vnfVy/9jMiU3yJqRQjfHe/TM0bWkx3
+         Bv5WTRvqbV/HhK0aJqmaHBtnMdHFBcNsnmqYV5ynawDAGdnXefdaqZpgP5FnC1C6+TMw
+         k/bUTWHQLv5813YFW1773QSFkgW8+dxRsV8L7Si6V8CTE0FEaf3dZseU6r7HrNpE6v0O
+         uDWYW+X5ULCAt5rsqP5/u3MnFCacpmQ+I2aeuLi+1mngmZvMTM/pF4Tl63gyQicBOx55
+         yMIQ==
+X-Gm-Message-State: AIVw113FlAOsPuuAjZaPKmhHF+aZno8yrILP81ciXZZ1dR5YuspwB1BC
+	LXKQyewb65t5lDLd1oxFXRUgtEUFf2NVgd/+eA==
+X-Received: by 10.223.133.239 with SMTP id 44mr4886434wru.177.1500047164400;
+ Fri, 14 Jul 2017 08:46:04 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8bit
-X-TUID: 1bsYSSlgvrca
+Received: by 10.223.134.2 with HTTP; Fri, 14 Jul 2017 08:45:43 -0700 (PDT)
+In-Reply-To: <87mv87uj9r.fsf@linaro.org>
+References: <1500029487-14822-1-git-send-email-peter.maydell@linaro.org>
+ <1500029487-14822-3-git-send-email-peter.maydell@linaro.org> <87mv87uj9r.fsf@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 14 Jul 2017 16:45:43 +0100
+Message-ID: <CAFEAcA_NJpj_vigDCr8dy_OH5J4T50caAGFHZPC5a+nhdTH2Uw@mail.gmail.com>
+Subject: Re: [Qemu-arm] [PATCH v2 2/9] hw/char/cmsdk-apb-uart.c: Implement
+ CMSDK APB UART
+To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>, 
+	Alistair Francis <alistair.francis@xilinx.com>, =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>, 
+	"patches@linaro.org" <patches@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-TUID: dDO+Qp10M05d
 
-
-Peter Maydell <peter.maydell@linaro.org> writes:
-
-> Implement a model of the simple "APB UART" provided in
-> the Cortex-M System Design Kit (CMSDK).
+On 14 July 2017 at 16:32, Alex Benn=C3=A9e <alex.bennee@linaro.org> wrote:
 >
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-
-This fails to compile, I think since
-81517ba37a6cec59f92396b4722861868eb0a500 change the API for
-qemu_chr_fe_set_handlers.
-
-> ---
->  hw/char/Makefile.objs            |   1 +
->  include/hw/char/cmsdk-apb-uart.h |  78 ++++++++
->  hw/char/cmsdk-apb-uart.c         | 402 +++++++++++++++++++++++++++++++++++++++
->  default-configs/arm-softmmu.mak  |   2 +
->  hw/char/trace-events             |   9 +
->  5 files changed, 492 insertions(+)
->  create mode 100644 include/hw/char/cmsdk-apb-uart.h
->  create mode 100644 hw/char/cmsdk-apb-uart.c
+> Peter Maydell <peter.maydell@linaro.org> writes:
 >
-> diff --git a/hw/char/Makefile.objs b/hw/char/Makefile.objs
-> index 55fcb68..1bcd37e 100644
-> --- a/hw/char/Makefile.objs
-> +++ b/hw/char/Makefile.objs
-> @@ -19,6 +19,7 @@ obj-$(CONFIG_DIGIC) += digic-uart.o
->  obj-$(CONFIG_STM32F2XX_USART) += stm32f2xx_usart.o
->  obj-$(CONFIG_RASPI) += bcm2835_aux.o
+>> Implement a model of the simple "APB UART" provided in
+>> the Cortex-M System Design Kit (CMSDK).
+>>
+>> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 >
-> +common-obj-$(CONFIG_CMSDK_APB_UART) += cmsdk-apb-uart.o
->  common-obj-$(CONFIG_ETRAXFS) += etraxfs_ser.o
->  common-obj-$(CONFIG_ISA_DEBUG) += debugcon.o
->  common-obj-$(CONFIG_GRLIB) += grlib_apbuart.o
-> diff --git a/include/hw/char/cmsdk-apb-uart.h b/include/hw/char/cmsdk-apb-uart.h
-> new file mode 100644
-> index 0000000..c41fba9
-> --- /dev/null
-> +++ b/include/hw/char/cmsdk-apb-uart.h
-> @@ -0,0 +1,78 @@
-> +/*
-> + * ARM CMSDK APB UART emulation
-> + *
-> + * Copyright (c) 2017 Linaro Limited
-> + * Written by Peter Maydell
-> + *
-> + *  This program is free software; you can redistribute it and/or modify
-> + *  it under the terms of the GNU General Public License version 2 or
-> + *  (at your option) any later version.
-> + */
-> +
-> +#ifndef CMSDK_APB_UART_H
-> +#define CMSDK_APB_UART_H
-> +
-> +#include "hw/sysbus.h"
-> +#include "chardev/char-fe.h"
-> +
-> +#define TYPE_CMSDK_APB_UART "cmsdk-apb-uart"
-> +#define CMSDK_APB_UART(obj) OBJECT_CHECK(CMSDKAPBUART, (obj), \
-> +                                         TYPE_CMSDK_APB_UART)
-> +
-> +typedef struct {
-> +    /*< private >*/
-> +    SysBusDevice parent_obj;
-> +
-> +    /*< public >*/
-> +    MemoryRegion iomem;
-> +    CharBackend chr;
-> +    qemu_irq txint;
-> +    qemu_irq rxint;
-> +    qemu_irq txovrint;
-> +    qemu_irq rxovrint;
-> +    qemu_irq uartint;
-> +    guint watch_tag;
-> +    uint32_t pclk_frq;
-> +
-> +    uint32_t state;
-> +    uint32_t ctrl;
-> +    uint32_t intstatus;
-> +    uint32_t bauddiv;
-> +    /* This UART has no FIFO, only a 1-character buffer for each of Tx and Rx */
-> +    uint8_t txbuf;
-> +    uint8_t rxbuf;
-> +} CMSDKAPBUART;
-> +
-> +/**
-> + * cmsdk_apb_uart_create - convenience function to create TYPE_CMSDK_APB_UART
-> + * @addr: location in system memory to map registers
-> + * @chr: Chardev backend to connect UART to, or NULL if no backend
-> + * @pclk_frq: frequency in Hz of the PCLK clock (used for calculating baud rate)
-> + */
-> +static inline DeviceState *cmsdk_apb_uart_create(hwaddr addr,
-> +                                                 qemu_irq txint,
-> +                                                 qemu_irq rxint,
-> +                                                 qemu_irq txovrint,
-> +                                                 qemu_irq rxovrint,
-> +                                                 qemu_irq uartint,
-> +                                                 Chardev *chr,
-> +                                                 uint32_t pclk_frq)
-> +{
-> +    DeviceState *dev;
-> +    SysBusDevice *s;
-> +
-> +    dev = qdev_create(NULL, TYPE_CMSDK_APB_UART);
-> +    s = SYS_BUS_DEVICE(dev);
-> +    qdev_prop_set_chr(dev, "chardev", chr);
-> +    qdev_prop_set_uint32(dev, "pclk-frq", pclk_frq);
-> +    qdev_init_nofail(dev);
-> +    sysbus_mmio_map(s, 0, addr);
-> +    sysbus_connect_irq(s, 0, txint);
-> +    sysbus_connect_irq(s, 1, rxint);
-> +    sysbus_connect_irq(s, 2, txovrint);
-> +    sysbus_connect_irq(s, 3, rxovrint);
-> +    sysbus_connect_irq(s, 4, uartint);
-> +    return dev;
-> +}
-> +
-> +#endif
-> diff --git a/hw/char/cmsdk-apb-uart.c b/hw/char/cmsdk-apb-uart.c
-> new file mode 100644
-> index 0000000..82d2bea
-> --- /dev/null
-> +++ b/hw/char/cmsdk-apb-uart.c
-> @@ -0,0 +1,402 @@
-> +/*
-> + * ARM CMSDK APB UART emulation
-> + *
-> + * Copyright (c) 2017 Linaro Limited
-> + * Written by Peter Maydell
-> + *
-> + *  This program is free software; you can redistribute it and/or modify
-> + *  it under the terms of the GNU General Public License version 2 or
-> + *  (at your option) any later version.
-> + */
-> +
-> +/* This is a model of the "APB UART" which is part of the Cortex-M
-> + * System Design Kit (CMSDK) and documented in the Cortex-M System
-> + * Design Kit Technical Reference Manual (ARM DDI0479C):
-> + * https://developer.arm.com/products/system-design/system-design-kits/cortex-m-system-design-kit
-> + */
-> +
-> +#include "qemu/osdep.h"
-> +#include "qemu/log.h"
-> +#include "qapi/error.h"
-> +#include "trace.h"
-> +#include "hw/sysbus.h"
-> +#include "hw/registerfields.h"
-> +#include "chardev/char-fe.h"
-> +#include "chardev/char-serial.h"
-> +#include "hw/char/cmsdk-apb-uart.h"
-> +
-> +REG32(DATA, 0)
-> +REG32(STATE, 4)
-> +    FIELD(STATE, TXFULL, 0, 1)
-> +    FIELD(STATE, RXFULL, 1, 1)
-> +    FIELD(STATE, TXOVERRUN, 2, 1)
-> +    FIELD(STATE, RXOVERRUN, 3, 1)
-> +REG32(CTRL, 8)
-> +    FIELD(CTRL, TX_EN, 0, 1)
-> +    FIELD(CTRL, RX_EN, 1, 1)
-> +    FIELD(CTRL, TX_INTEN, 2, 1)
-> +    FIELD(CTRL, RX_INTEN, 3, 1)
-> +    FIELD(CTRL, TXO_INTEN, 4, 1)
-> +    FIELD(CTRL, RXO_INTEN, 5, 1)
-> +    FIELD(CTRL, HSTEST, 6, 1)
-> +REG32(INTSTATUS, 0xc)
-> +    FIELD(INTSTATUS, TX, 0, 1)
-> +    FIELD(INTSTATUS, RX, 1, 1)
-> +    FIELD(INTSTATUS, TXO, 2, 1)
-> +    FIELD(INTSTATUS, RXO, 3, 1)
-> +REG32(BAUDDIV, 0x10)
-> +REG32(PID4, 0xFD0)
-> +REG32(PID5, 0xFD4)
-> +REG32(PID6, 0xFD8)
-> +REG32(PID7, 0xFDC)
-> +REG32(PID0, 0xFE0)
-> +REG32(PID1, 0xFE4)
-> +REG32(PID2, 0xFE8)
-> +REG32(PID3, 0xFEC)
-> +REG32(CID0, 0xFF0)
-> +REG32(CID1, 0xFF4)
-> +REG32(CID2, 0xFF8)
-> +REG32(CID3, 0xFFC)
-> +
-> +/* PID/CID values */
-> +static const int uart_id[] = {
-> +    0x04, 0x00, 0x00, 0x00, /* PID4..PID7 */
-> +    0x21, 0xb8, 0x1b, 0x00, /* PID0..PID3 */
-> +    0x0d, 0xf0, 0x05, 0xb1, /* CID0..CID3 */
-> +};
-> +
-> +static bool uart_baudrate_ok(CMSDKAPBUART *s)
-> +{
-> +    /* The minimum permitted bauddiv setting is 16, so we just ignore
-> +     * settings below that (usually this means the device has just
-> +     * been reset and not yet programmed).
-> +     */
-> +    return s->bauddiv >= 16 && s->bauddiv <= s->pclk_frq;
-> +}
-> +
-> +static void uart_update_parameters(CMSDKAPBUART *s)
-> +{
-> +    QEMUSerialSetParams ssp;
-> +
-> +    /* This UART is always 8N1 but the baud rate is programmable. */
-> +    if (!uart_baudrate_ok(s)) {
-> +        return;
-> +    }
-> +
-> +    ssp.data_bits = 8;
-> +    ssp.parity = 'N';
-> +    ssp.stop_bits = 1;
-> +    ssp.speed = s->pclk_frq / s->bauddiv;
-> +    qemu_chr_fe_ioctl(&s->chr, CHR_IOCTL_SERIAL_SET_PARAMS, &ssp);
-> +    trace_cmsdk_apb_uart_set_params(ssp.speed);
-> +}
-> +
-> +static void cmsdk_apb_uart_update(CMSDKAPBUART *s)
-> +{
-> +    /* update outbound irqs, including handling the way the rxo and txo
-> +     * interrupt status bits are just logical AND of the overrun bit in
-> +     * STATE and the overrun interrupt enable bit in CTRL.
-> +     */
-> +    uint32_t omask = (R_INTSTATUS_RXO_MASK | R_INTSTATUS_TXO_MASK);
-> +    s->intstatus &= ~omask;
-> +    s->intstatus |= (s->state & (s->ctrl >> 2) & omask);
-> +
-> +    qemu_set_irq(s->txint, !!(s->intstatus & R_INTSTATUS_TX_MASK));
-> +    qemu_set_irq(s->rxint, !!(s->intstatus & R_INTSTATUS_RX_MASK));
-> +    qemu_set_irq(s->txovrint, !!(s->intstatus & R_INTSTATUS_TXO_MASK));
-> +    qemu_set_irq(s->rxovrint, !!(s->intstatus & R_INTSTATUS_RXO_MASK));
-> +    qemu_set_irq(s->uartint, !!(s->intstatus));
+> This fails to compile, I think since
+> 81517ba37a6cec59f92396b4722861868eb0a500 change the API for
+> qemu_chr_fe_set_handlers.
 
-If we updated qemu_set_irq to take a bool instead of int would the !!
-hack no longer be needed?
-
-> +}
-> +
-> +static int uart_can_receive(void *opaque)
-> +{
-> +    CMSDKAPBUART *s = CMSDK_APB_UART(opaque);
-> +
-> +    /* We can take a char if RX is enabled and the buffer is empty */
-> +    if (s->ctrl & R_CTRL_RX_EN_MASK && !(s->state & R_STATE_RXFULL_MASK)) {
-> +        return 1;
-> +    }
-> +    return 0;
-> +}
-> +
-> +static void uart_receive(void *opaque, const uint8_t *buf, int size)
-> +{
-> +    CMSDKAPBUART *s = CMSDK_APB_UART(opaque);
-> +
-> +    trace_cmsdk_apb_uart_receive(*buf);
-> +
-> +    /* In fact uart_can_receive() ensures that we can't be
-> +     * called unless RX is enabled and the buffer is empty,
-> +     * but we include this logic as documentation of what the
-> +     * hardware does if a character arrives in these circumstances.
-> +     */
-> +    if (!(s->ctrl & R_CTRL_RX_EN_MASK)) {
-> +        /* Just drop the character on the floor */
-> +        return;
-> +    }
-> +
-> +    if (s->state & R_STATE_RXFULL_MASK) {
-> +        s->state |= R_STATE_RXOVERRUN_MASK;
-> +    }
-> +
-> +    s->rxbuf = *buf;
-> +    s->state |= R_STATE_RXFULL_MASK;
-> +    if (s->ctrl & R_CTRL_RX_INTEN_MASK) {
-> +        s->intstatus |= R_INTSTATUS_RX_MASK;
-> +    }
-> +    cmsdk_apb_uart_update(s);
-> +}
-> +
-> +static uint64_t uart_read(void *opaque, hwaddr offset, unsigned size)
-> +{
-> +    CMSDKAPBUART *s = CMSDK_APB_UART(opaque);
-> +    uint64_t r;
-> +
-> +    switch (offset) {
-> +    case A_DATA:
-> +        r = s->rxbuf;
-> +        s->state &= ~R_STATE_RXFULL_MASK;
-> +        cmsdk_apb_uart_update(s);
-> +        break;
-> +    case A_STATE:
-> +        r = s->state;
-> +        break;
-> +    case A_CTRL:
-> +        r = s->ctrl;
-> +        break;
-> +    case A_INTSTATUS:
-> +        r = s->intstatus;
-> +        break;
-> +    case A_BAUDDIV:
-> +        r = s->bauddiv;
-> +        break;
-> +    case A_PID4 ... A_CID3:
-> +        r = uart_id[(offset - A_PID4) / 4];
-> +        break;
-> +    default:
-> +        qemu_log_mask(LOG_GUEST_ERROR,
-> +                      "CMSDK APB UART read: bad offset %x\n", (int) offset);
-> +        r = 0;
-> +        break;
-> +    }
-> +    trace_cmsdk_apb_uart_read(offset, r, size);
-> +    return r;
-> +}
-> +
-> +/* Try to send tx data, and arrange to be called back later if
-> + * we can't (ie the char backend is busy/blocking).
-> + */
-> +static gboolean uart_transmit(GIOChannel *chan, GIOCondition cond, void *opaque)
-> +{
-> +    CMSDKAPBUART *s = CMSDK_APB_UART(opaque);
-> +    int ret;
-> +
-> +    s->watch_tag = 0;
-> +
-> +    if (!(s->ctrl & R_CTRL_TX_EN_MASK) || !(s->state & R_STATE_TXFULL_MASK)) {
-> +        return FALSE;
-> +    }
-> +
-> +    ret = qemu_chr_fe_write(&s->chr, &s->txbuf, 1);
-> +    if (ret <= 0) {
-> +        s->watch_tag = qemu_chr_fe_add_watch(&s->chr, G_IO_OUT | G_IO_HUP,
-> +                                             uart_transmit, s);
-> +        if (!s->watch_tag) {
-> +            /* Most common reason to be here is "no chardev backend":
-> +             * just insta-drain the buffer, so the serial output
-> +             * goes into a void, rather than blocking the guest.
-> +             */
-> +            goto buffer_drained;
-> +        }
-> +        /* Transmit pending */
-> +        trace_cmsdk_apb_uart_tx_pending();
-> +        return FALSE;
-> +    }
-> +
-> +buffer_drained:
-> +    /* Character successfully sent */
-> +    trace_cmsdk_apb_uart_tx(s->txbuf);
-> +    s->state &= ~R_STATE_TXFULL_MASK;
-> +    /* Going from TXFULL set to clear triggers the tx interrupt */
-> +    if (s->ctrl & R_CTRL_TX_INTEN_MASK) {
-> +        s->intstatus |= R_INTSTATUS_TX_MASK;
-> +    }
-> +    cmsdk_apb_uart_update(s);
-> +    return FALSE;
-> +}
-> +
-> +static void uart_cancel_transmit(CMSDKAPBUART *s)
-> +{
-> +    if (s->watch_tag) {
-> +        g_source_remove(s->watch_tag);
-> +        s->watch_tag = 0;
-> +    }
-> +}
-> +
-> +static void uart_write(void *opaque, hwaddr offset, uint64_t value,
-> +                       unsigned size)
-> +{
-> +    CMSDKAPBUART *s = CMSDK_APB_UART(opaque);
-> +
-> +    trace_cmsdk_apb_uart_write(offset, value, size);
-> +
-> +    switch (offset) {
-> +    case A_DATA:
-> +        s->txbuf = value;
-> +        if (s->state & R_STATE_TXFULL_MASK) {
-> +            /* Buffer already full -- note the overrun and let the
-> +             * existing pending transmit callback handle the new char.
-> +             */
-> +            s->state |= R_STATE_TXOVERRUN_MASK;
-> +            cmsdk_apb_uart_update(s);
-> +        } else {
-> +            s->state |= R_STATE_TXFULL_MASK;
-> +            uart_transmit(NULL, G_IO_OUT, s);
-> +        }
-> +        break;
-> +    case A_STATE:
-> +        /* Bits 0 and 1 are read only; bits 2 and 3 are W1C */
-> +        s->state &= ~(value & 0xc);
-
-I guess:
-          s->state &= ~(value & (R_STATE_TXOVERRUN_MASK | R_STATE_RXOVERRUN_MASK));
-
-maybe a little too verbose.
-
-> +        cmsdk_apb_uart_update(s);
-> +        break;
-> +    case A_CTRL:
-> +        s->ctrl = value & 0x7f;
-> +        if ((s->ctrl & R_CTRL_TX_EN_MASK) && !uart_baudrate_ok(s)) {
-> +            qemu_log_mask(LOG_GUEST_ERROR,
-> +                          "CMSDK APB UART: Tx enabled with invalid baudrate\n");
-> +        }
-> +        cmsdk_apb_uart_update(s);
-> +        break;
-> +    case A_INTSTATUS:
-> +        /* All bits are W1C. Clearing the overrun interrupt bits really
-> +         * clears the overrun status bits in the STATE register (which
-> +         * is then reflected into the intstatus value by the update function).
-> +         */
-> +        s->state &= ~(value & 0xc);
-> +        cmsdk_apb_uart_update(s);
-> +        break;
-> +    case A_BAUDDIV:
-> +        s->bauddiv = value & 0xFFFFF;
-> +        uart_update_parameters(s);
-> +        break;
-> +    case A_PID4 ... A_CID3:
-> +        qemu_log_mask(LOG_GUEST_ERROR,
-> +                      "CMSDK APB UART write: write to RO offset 0x%x\n",
-> +                      (int)offset);
-> +        break;
-> +    default:
-> +        qemu_log_mask(LOG_GUEST_ERROR,
-> +                      "CMSDK APB UART write: bad offset 0x%x\n", (int) offset);
-> +        break;
-> +    }
-> +}
-> +
-> +static const MemoryRegionOps uart_ops = {
-> +    .read = uart_read,
-> +    .write = uart_write,
-> +    .endianness = DEVICE_LITTLE_ENDIAN,
-> +};
-> +
-> +static void cmsdk_apb_uart_reset(DeviceState *dev)
-> +{
-> +    CMSDKAPBUART *s = CMSDK_APB_UART(dev);
-> +
-> +    trace_cmsdk_apb_uart_reset();
-> +    uart_cancel_transmit(s);
-> +    s->state = 0;
-> +    s->ctrl = 0;
-> +    s->intstatus = 0;
-> +    s->bauddiv = 0;
-> +    s->txbuf = 0;
-> +    s->rxbuf = 0;
-> +}
-> +
-> +static void cmsdk_apb_uart_init(Object *obj)
-> +{
-> +    SysBusDevice *sbd = SYS_BUS_DEVICE(obj);
-> +    CMSDKAPBUART *s = CMSDK_APB_UART(obj);
-> +
-> +    memory_region_init_io(&s->iomem, obj, &uart_ops, s, "uart", 0x1000);
-> +    sysbus_init_mmio(sbd, &s->iomem);
-> +    sysbus_init_irq(sbd, &s->txint);
-> +    sysbus_init_irq(sbd, &s->rxint);
-> +    sysbus_init_irq(sbd, &s->txovrint);
-> +    sysbus_init_irq(sbd, &s->rxovrint);
-> +    sysbus_init_irq(sbd, &s->uartint);
-> +}
-> +
-> +static void cmsdk_apb_uart_realize(DeviceState *dev, Error **errp)
-> +{
-> +    CMSDKAPBUART *s = CMSDK_APB_UART(dev);
-> +
-> +    if (s->pclk_frq == 0) {
-> +        error_setg(errp, "CMSDK APB UART: pclk-frq property must be set");
-> +        return;
-> +    }
-> +
-> +    /* This UART has no flow control, so we do not need to register
-> +     * an event handler to deal with CHR_EVENT_BREAK.
-> +     */
-> +    qemu_chr_fe_set_handlers(&s->chr, uart_can_receive, uart_receive,
-> +                             NULL, s, NULL, true);
-
-I think this is now:
-
-    qemu_chr_fe_set_handlers(&s->chr, uart_can_receive, uart_receive,
-                             NULL, NULL, s, NULL, true);
-
-
-> +}
-> +
-> +static int cmsdk_apb_uart_post_load(void *opaque, int version_id)
-> +{
-> +    CMSDKAPBUART *s = CMSDK_APB_UART(opaque);
-> +
-> +    /* If we have a pending character, arrange to resend it. */
-> +    if (s->state & R_STATE_TXFULL_MASK) {
-> +        s->watch_tag = qemu_chr_fe_add_watch(&s->chr, G_IO_OUT | G_IO_HUP,
-> +                                             uart_transmit, s);
-> +    }
-> +    uart_update_parameters(s);
-> +    return 0;
-> +}
-> +
-> +static const VMStateDescription cmsdk_apb_uart_vmstate = {
-> +    .name = "cmsdk-apb-uart",
-> +    .version_id = 1,
-> +    .minimum_version_id = 1,
-> +    .post_load = cmsdk_apb_uart_post_load,
-> +    .fields = (VMStateField[]) {
-> +        VMSTATE_UINT32(state, CMSDKAPBUART),
-> +        VMSTATE_UINT32(ctrl, CMSDKAPBUART),
-> +        VMSTATE_UINT32(intstatus, CMSDKAPBUART),
-> +        VMSTATE_UINT32(bauddiv, CMSDKAPBUART),
-> +        VMSTATE_UINT8(txbuf, CMSDKAPBUART),
-> +        VMSTATE_UINT8(rxbuf, CMSDKAPBUART),
-> +        VMSTATE_END_OF_LIST()
-> +    }
-> +};
-> +
-> +static Property cmsdk_apb_uart_properties[] = {
-> +    DEFINE_PROP_CHR("chardev", CMSDKAPBUART, chr),
-> +    DEFINE_PROP_UINT32("pclk-frq", CMSDKAPBUART, pclk_frq, 0),
-> +    DEFINE_PROP_END_OF_LIST(),
-> +};
-> +
-> +static void cmsdk_apb_uart_class_init(ObjectClass *klass, void *data)
-> +{
-> +    DeviceClass *dc = DEVICE_CLASS(klass);
-> +
-> +    dc->realize = cmsdk_apb_uart_realize;
-> +    dc->vmsd = &cmsdk_apb_uart_vmstate;
-> +    dc->reset = cmsdk_apb_uart_reset;
-> +    dc->props = cmsdk_apb_uart_properties;
-> +}
-> +
-> +static const TypeInfo cmsdk_apb_uart_info = {
-> +    .name = TYPE_CMSDK_APB_UART,
-> +    .parent = TYPE_SYS_BUS_DEVICE,
-> +    .instance_size = sizeof(CMSDKAPBUART),
-> +    .instance_init = cmsdk_apb_uart_init,
-> +    .class_init = cmsdk_apb_uart_class_init,
-> +};
-> +
-> +static void cmsdk_apb_uart_register_types(void)
-> +{
-> +    type_register_static(&cmsdk_apb_uart_info);
-> +}
-> +
-> +type_init(cmsdk_apb_uart_register_types);
-> diff --git a/default-configs/arm-softmmu.mak b/default-configs/arm-softmmu.mak
-> index bfd2a88..d128e9d 100644
-> --- a/default-configs/arm-softmmu.mak
-> +++ b/default-configs/arm-softmmu.mak
-> @@ -96,6 +96,8 @@ CONFIG_STM32F2XX_ADC=y
->  CONFIG_STM32F2XX_SPI=y
->  CONFIG_STM32F205_SOC=y
+>> +static void cmsdk_apb_uart_update(CMSDKAPBUART *s)
+>> +{
+>> +    /* update outbound irqs, including handling the way the rxo and txo
+>> +     * interrupt status bits are just logical AND of the overrun bit in
+>> +     * STATE and the overrun interrupt enable bit in CTRL.
+>> +     */
+>> +    uint32_t omask =3D (R_INTSTATUS_RXO_MASK | R_INTSTATUS_TXO_MASK);
+>> +    s->intstatus &=3D ~omask;
+>> +    s->intstatus |=3D (s->state & (s->ctrl >> 2) & omask);
+>> +
+>> +    qemu_set_irq(s->txint, !!(s->intstatus & R_INTSTATUS_TX_MASK));
+>> +    qemu_set_irq(s->rxint, !!(s->intstatus & R_INTSTATUS_RX_MASK));
+>> +    qemu_set_irq(s->txovrint, !!(s->intstatus & R_INTSTATUS_TXO_MASK));
+>> +    qemu_set_irq(s->rxovrint, !!(s->intstatus & R_INTSTATUS_RXO_MASK));
+>> +    qemu_set_irq(s->uartint, !!(s->intstatus));
 >
-> +CONFIG_CMSDK_APB_UART=y
-> +
->  CONFIG_VERSATILE_PCI=y
->  CONFIG_VERSATILE_I2C=y
+> If we updated qemu_set_irq to take a bool instead of int would the !!
+> hack no longer be needed?
+
+I am fairly sure we have a few places that utilize the ability
+to send an integer down the qemu_irq channel.
+
+>> +    case A_STATE:
+>> +        /* Bits 0 and 1 are read only; bits 2 and 3 are W1C */
+>> +        s->state &=3D ~(value & 0xc);
 >
-> diff --git a/hw/char/trace-events b/hw/char/trace-events
-> index 7fd48bb..daf4ee4 100644
-> --- a/hw/char/trace-events
-> +++ b/hw/char/trace-events
-> @@ -56,3 +56,12 @@ pl011_write(uint32_t addr, uint32_t value) "addr 0x%08x value 0x%08x"
->  pl011_can_receive(uint32_t lcr, int read_count, int r) "LCR %08x read_count %d returning %d"
->  pl011_put_fifo(uint32_t c, int read_count) "new char 0x%x read_count now %d"
->  pl011_put_fifo_full(void) "FIFO now full, RXFF set"
-> +
-> +# hw/char/cmsdk_apb_uart.c
-> +cmsdk_apb_uart_read(uint64_t offset, uint64_t data, unsigned size) "CMSDK APB UART read: offset 0x%" PRIx64 " data 0x%" PRIx64 " size %u"
-> +cmsdk_apb_uart_write(uint64_t offset, uint64_t data, unsigned size) "CMSDK APB UART write: offset 0x%" PRIx64 " data 0x%" PRIx64 " size %u"
-> +cmsdk_apb_uart_reset(void) "CMSDK APB UART: reset"
-> +cmsdk_apb_uart_receive(uint8_t c) "CMSDK APB UART: got character 0x%x from backend"
-> +cmsdk_apb_uart_tx_pending(void) "CMSDK APB UART: character send to backend pending"
-> +cmsdk_apb_uart_tx(uint8_t c) "CMSDK APB UART: character 0x%x sent to backend"
-> +cmsdk_apb_uart_set_params(int speed) "CMSDK APB UART: params set to %d 8N1"
+> I guess:
+>           s->state &=3D ~(value & (R_STATE_TXOVERRUN_MASK | R_STATE_RXOVE=
+RRUN_MASK));
+>
+> maybe a little too verbose.
 
+Well, it probably ought to use the bit mask names, yes.
 
---
-Alex Bennée
+>> +static void cmsdk_apb_uart_realize(DeviceState *dev, Error **errp)
+>> +{
+>> +    CMSDKAPBUART *s =3D CMSDK_APB_UART(dev);
+>> +
+>> +    if (s->pclk_frq =3D=3D 0) {
+>> +        error_setg(errp, "CMSDK APB UART: pclk-frq property must be set=
+");
+>> +        return;
+>> +    }
+>> +
+>> +    /* This UART has no flow control, so we do not need to register
+>> +     * an event handler to deal with CHR_EVENT_BREAK.
+>> +     */
+>> +    qemu_chr_fe_set_handlers(&s->chr, uart_can_receive, uart_receive,
+>> +                             NULL, s, NULL, true);
+>
+> I think this is now:
+>
+>     qemu_chr_fe_set_handlers(&s->chr, uart_can_receive, uart_receive,
+>                              NULL, NULL, s, NULL, true);
+
+Yes. It looks like we don't have to support backend swaps
+(only hw/char/serial.c and virtio-console have support for that),
+so just the extra NULL argument will do fine.
+
+I propose to just fix both these nits in target-arm rather
+than resend.
+
+thanks
+-- PMM

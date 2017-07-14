@@ -1,95 +1,80 @@
-Received: by 10.25.44.15 with SMTP id s15csp794943lfs;
-        Fri, 14 Jul 2017 04:22:47 -0700 (PDT)
-X-Received: by 10.55.156.193 with SMTP id f184mr10849024qke.102.1500031367830;
-        Fri, 14 Jul 2017 04:22:47 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1500031367; cv=none;
+Received: by 10.25.44.15 with SMTP id s15csp796631lfs;
+        Fri, 14 Jul 2017 04:24:27 -0700 (PDT)
+X-Received: by 10.55.180.197 with SMTP id d188mr11020043qkf.181.1500031466933;
+        Fri, 14 Jul 2017 04:24:26 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1500031466; cv=none;
         d=google.com; s=arc-20160816;
-        b=vV6WxJ2VzstdCflxMTo6EVigEQmjaVnFF3nmRuOYZbkq54G0X44HoLpyeP51Ga+oc4
-         vkGNxWh0vy8yazErvvEvbUNHZa+/HzY45FaWg0G5RmFoMvHjawl9HK/xGj51B33UB4UH
-         dIDU4vlPj2qhoQpFaXvG8xRlaoI0R/X2I9GEZ8YMPo3h0AZTSC1qD3kHnC+c32tomv7Q
-         Zuc7eQPHRPyECYF1wuZJT3nGVwUivhNGd+A6ZarRhnJOn34N88sBmEiEdVBceKWL+8Dm
-         O4x2uKcOPxFulGmCMAXZf68iaThA56juRDpl5VgS2dFYwoffubkRdvS/dTMYFCsp6DX5
-         eFcQ==
+        b=SWkxf7O9cpulq77Wp04frhUrbCEizdap5VvARTUJFG/5Qwh150IOmVrVn90YgnTy9r
+         +ua9AvRyiisAzp9l3/mBxBjmPxnsGvJtBMPwTMXNhQYJBupizpUF1bJcYespJONg/6tm
+         GZGwE72RRrfyPMlQQgy5F60p2OZkwBNZoHtcB4l7pG2dwh5vKLEy94aHGJJLcV3WSDfo
+         pRg9wZ0xWXDNJSYaP+joMd/OYi1WSX5Y6MkUx5h3v5vsoMp74bpeC0v6NMoroQ2r2hli
+         sJRsqhCPyi863nJ5d04xOhfYW/6lhenblhNaiEAMGK4RfmK3TTIZQE/i8xjryGEhja4w
+         9AKw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:content-language:in-reply-to:mime-version
          :user-agent:date:message-id:from:references:to
          :arc-authentication-results;
-        bh=7x4usoydScsxy9uHDokc1L4i/4/XfaKa2bMTt4JzUC4=;
-        b=cjst0uf4BO5dzxc5a9nPdzK7cuyBbyf0+Yb3ymPaS8ahna3Ej/pQAJb/8PerIk4R//
-         8gt7gK1nL/cYadQ6ngY3QMCALPmho2viI7QTXot3+fttzQzWi9gtm6kN7mv0udNi5jtD
-         I68sMgENUFjvf6catWJHjaq/UI9fk0DLQNo4gJ+UXNZUU5JsXfZWxyPS5dYYza9LG9NR
-         7nLIzlcQffULD+H9ANqxibcFHVkMYHM0YQZi2NlFK1am3L1iR6V1LawWEK8w1bMP/y2L
-         Kp4QL8dHAoptBYd9MZ3Y+xBdVmf8GykMJpqduxKvQ5t93iGFsbeko8VI6DsJeZ030Exo
-         ShOw==
+        bh=/g11oQV15Fhf/QsZn+CAIbzJFHMszK9GXpd3r8XJHGI=;
+        b=pIZCsnKU0gfhu72QSUkAhq0cq3CcqyScvTZFLPg9x/hf5sAAxWuaoQOEuF+k0Kt/uY
+         GD3QYXavAdWi6IV2ch/HZcZQgqiE+X2vsZKqxZ1MKzcMZMXuqZ+/uGMTxWiIkLVYFUJ4
+         6vYD2GhfJa4k1vOlKiM0PNAXUIznKKSY5DtITEdqr0SxkI7E5zYuod+QBV85Z7l13Yz4
+         4PXiyAhIYkIc968LnciRYXQjvC3HGfxYj71o1QaclocvFbV8kCrsWNkgyLilpwDdpcZ1
+         kqV5hqSfD6rA/nGiW/EbjoSkhe0CFwOyKoHTLFyF7Fo5zKHSc5qRGWt4JuyUq0u2zRHv
+         n3pw==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id j31si7352458qtb.341.2017.07.14.04.22.47
+        by mx.google.com with ESMTPS id m23si7580363qtb.270.2017.07.14.04.24.26
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 14 Jul 2017 04:22:47 -0700 (PDT)
+        Fri, 14 Jul 2017 04:24:26 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:37091 helo=lists.gnu.org)
+Received: from localhost ([::1]:37098 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1dVygH-0007xH-1I
-	for alex.bennee@linaro.org; Fri, 14 Jul 2017 07:22:45 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:60603)
+	id 1dVyhs-0001JX-6T
+	for alex.bennee@linaro.org; Fri, 14 Jul 2017 07:24:24 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:60517)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <jean-philippe.brucker@arm.com>) id 1dVygA-0007tx-F7
-	for qemu-arm@nongnu.org; Fri, 14 Jul 2017 07:22:39 -0400
+	(envelope-from <jean-philippe.brucker@arm.com>) id 1dVyfp-0007cT-Nb
+	for qemu-arm@nongnu.org; Fri, 14 Jul 2017 07:22:18 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <jean-philippe.brucker@arm.com>) id 1dVyg7-0004tQ-99
-	for qemu-arm@nongnu.org; Fri, 14 Jul 2017 07:22:38 -0400
-Received: from foss.arm.com ([217.140.101.70]:54652)
+	(envelope-from <jean-philippe.brucker@arm.com>) id 1dVyfm-0004dA-Iu
+	for qemu-arm@nongnu.org; Fri, 14 Jul 2017 07:22:17 -0400
+Received: from foss.arm.com ([217.140.101.70]:54650)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <jean-philippe.brucker@arm.com>)
-	id 1dVyg7-0004sP-0M; Fri, 14 Jul 2017 07:22:35 -0400
+	id 1dVyfm-0004b5-A9; Fri, 14 Jul 2017 07:22:14 -0400
 Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.72.51.249])
-	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 573F480D;
-	Fri, 14 Jul 2017 04:22:34 -0700 (PDT)
+	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 9448680D;
+	Fri, 14 Jul 2017 04:22:10 -0700 (PDT)
 Received: from [10.1.211.12] (e106794-lin.cambridge.arm.com [10.1.211.12])
-	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id DA5433F578;
-	Fri, 14 Jul 2017 04:22:31 -0700 (PDT)
-To: "Tian, Kevin" <kevin.tian@intel.com>,
-	Bharat Bhushan <bharat.bhushan@nxp.com>,
-	Auger Eric <eric.auger@redhat.com>, 
-	"eric.auger.pro@gmail.com" <eric.auger.pro@gmail.com>,
-	"peter.maydell@linaro.org" <peter.maydell@linaro.org>,
-	"alex.williamson@redhat.com" <alex.williamson@redhat.com>,
-	"mst@redhat.com" <mst@redhat.com>, "qemu-arm@nongnu.org"
-	<qemu-arm@nongnu.org>, "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
+	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id EDC643F578;
+	Fri, 14 Jul 2017 04:22:07 -0700 (PDT)
+To: Peter Xu <peterx@redhat.com>, Eric Auger <eric.auger@redhat.com>
 References: <1496851287-9428-1-git-send-email-eric.auger@redhat.com>
-	<AM5PR0401MB2545AFD256A96420ACC44CD89ACE0@AM5PR0401MB2545.eurprd04.prod.outlook.com>
-	<14c83c14-1e7e-f142-77b0-fa8c873e2d41@redhat.com>
-	<AM5PR0401MB2545C0E76C4BE6F82FE376D09ACE0@AM5PR0401MB2545.eurprd04.prod.outlook.com>
-	<6f22079e-4b4b-6476-77be-51ec83104c0d@redhat.com>
-	<AM5PR0401MB25459FDAA8C9AFA52503AAE99AC40@AM5PR0401MB2545.eurprd04.prod.outlook.com>
-	<589f1642-775c-4805-74ac-bf67eb504733@arm.com>
-	<AADFC41AFE54684AB9EE6CBC0274A5D190D25AEB@SHSMSX101.ccr.corp.intel.com>
-	<19a85866-1e72-58b9-d120-8b5e5b809e90@arm.com>
-	<AADFC41AFE54684AB9EE6CBC0274A5D190D2B865@SHSMSX101.ccr.corp.intel.com>
-	<1c78deea-a1c9-2ef7-113a-f6be93888560@arm.com>
-	<AADFC41AFE54684AB9EE6CBC0274A5D190D3834F@SHSMSX101.ccr.corp.intel.com>
+	<1496851287-9428-7-git-send-email-eric.auger@redhat.com>
+	<20170714021733.GA27284@pxdev.xzpeter.org>
 From: Jean-Philippe Brucker <jean-philippe.brucker@arm.com>
-Message-ID: <bc006783-3667-07ec-995a-6a7e9000daaa@arm.com>
-Date: Fri, 14 Jul 2017 12:25:37 +0100
+Message-ID: <0c33beca-1d6d-e8e6-c880-8807ad77ae0b@arm.com>
+Date: Fri, 14 Jul 2017 12:25:13 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
 	Thunderbird/52.1.1
 MIME-Version: 1.0
-In-Reply-To: <AADFC41AFE54684AB9EE6CBC0274A5D190D3834F@SHSMSX101.ccr.corp.intel.com>
+In-Reply-To: <20170714021733.GA27284@pxdev.xzpeter.org>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 217.140.101.70
-Subject: Re: [Qemu-arm] [Qemu-devel] [RFC v2 0/8] VIRTIO-IOMMU device
+Subject: Re: [Qemu-arm] [Qemu-devel] [RFC v2 6/8] virtio-iommu: Implement
+ the translation and commands
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -101,121 +86,143 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: "drjones@redhat.com" <drjones@redhat.com>,
-	"marc.zyngier@arm.com" <marc.zyngier@arm.com>,
-	"tn@semihalf.com" <tn@semihalf.com>,
-	"will.deacon@arm.com" <will.deacon@arm.com>,
-	"robin.murphy@arm.com" <robin.murphy@arm.com>,
-	"christoffer.dall@linaro.org" <christoffer.dall@linaro.org>
+Cc: peter.maydell@linaro.org, kevin.tian@intel.com, drjones@redhat.com,
+	mst@redhat.com, marc.zyngier@arm.com, tn@semihalf.com,
+	will.deacon@arm.com, qemu-devel@nongnu.org,
+	alex.williamson@redhat.com, qemu-arm@nongnu.org,
+	robin.murphy@arm.com, bharat.bhushan@nxp.com,
+	christoffer.dall@linaro.org, eric.auger.pro@gmail.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: xokoTVj70AI7
+X-TUID: mSli9R+MHts8
 
-On 14/07/17 08:20, Tian, Kevin wrote:
->> From: Jean-Philippe Brucker [mailto:jean-philippe.brucker@arm.com]
->> Sent: Friday, July 7, 2017 11:15 PM
->>
->> On 07/07/17 07:21, Tian, Kevin wrote:
->>> sorry I didn't quite get this part, and here is my understanding:
->>>
->>> Guest programs vIOMMU to map a gIOVA (used by MSI to a GPA
->>> of doorbell register of virtual irqchip. vIOMMU then
->>> triggers VFIO map/unmap to update physical IOMMU page
->>> table for gIOVA -> HPA of real doorbell of physical irqchip
->>
->> At the moment (non-SVM), physical and virtual MSI doorbell are completely
->> dissociated. VFIO itself maps the doorbell GPA->HPA during container
->> initialization. The GPA, chosen arbitrarily by the host, is then removed
->> from the guest GPA space.
-> 
-> got you. I also got some basic understanding from below link. :-)
-> 
-> https://www.linaro.org/blog/core-dump/kvm-pciemsi-passthrough-armarm64/
-> 
->>
->> When the guest programs the vIOMMU to map a gIOVA to the virtual irqchip
->> doorbell, I suppose Qemu will notice that the GPA doesn't correspond to
->> RAM and will withhold sending a VFIO_IOMMU_MAP_DMA request.
->>
->> (For SVM I don't want to go into the details just now, but we will
->> probably need a separate VFIO mechanism to update the physical MSI-X
->> tables with whatever gIOVA the guest mapped in its private stage-1 page
->> tables.)
-> 
-> I guess there may be either a terminology difference or a hardware
-> difference here, since I noted you mentioned IOVA with stage-1
-> multiple times.
-> 
-> For Intel VT-d:
-> 
-> - stage-1 is only for VA translation, tagged with PASID
-> - stage-2 can be used for IOVA translation on bare metal or GPA/gIOVA
-> translation in virtualization, w/o PASID tagged
+Hi Peter,
 
-The terminology is indeed a bit confusing, and the hardware slightly
-different. For me IOVA is the address used as input of the pIOMMU, PA is
-the output address, and GPA only exists if there is stage-1 + stage-2. So
-I think what I meant by gIOVA above was VA in your description.
+On 14/07/17 03:17, Peter Xu wrote:
+>
+> [...]
+> 
+>>  static int virtio_iommu_unmap(VirtIOIOMMU *s,
+>> @@ -133,10 +227,64 @@ static int virtio_iommu_unmap(VirtIOIOMMU *s,
+>>      uint64_t virt_addr = le64_to_cpu(req->virt_addr);
+>>      uint64_t size = le64_to_cpu(req->size);
+>>      uint32_t flags = le32_to_cpu(req->flags);
+>> +    viommu_mapping *mapping;
+>> +    viommu_interval interval;
+>> +    viommu_as *as;
+>>  
+>>      trace_virtio_iommu_unmap(asid, virt_addr, size, flags);
+>>  
+>> -    return VIRTIO_IOMMU_S_UNSUPP;
+>> +    as = g_tree_lookup(s->address_spaces, GUINT_TO_POINTER(asid));
+>> +    if (!as) {
+>> +        error_report("%s: no as", __func__);
+>> +        return VIRTIO_IOMMU_S_INVAL;
+>> +    }
+>> +    interval.low = virt_addr;
+>> +    interval.high = virt_addr + size - 1;
+>> +
+>> +    mapping = g_tree_lookup(as->mappings, (gpointer)&interval);
+>> +
+>> +    while (mapping) {
+>> +        viommu_interval current;
+>> +        uint64_t low  = mapping->virt_addr;
+>> +        uint64_t high = mapping->virt_addr + mapping->size - 1;
+>> +
+>> +        current.low = low;
+>> +        current.high = high;
+>> +
+>> +        if (low == interval.low && size >= mapping->size) {
+>> +            g_tree_remove(as->mappings, (gpointer)&current);
+>> +            interval.low = high + 1;
+>> +            trace_virtio_iommu_unmap_left_interval(current.low, current.high,
+>> +                interval.low, interval.high);
+>> +        } else if (high == interval.high && size >= mapping->size) {
+>> +            trace_virtio_iommu_unmap_right_interval(current.low, current.high,
+>> +                interval.low, interval.high);
+>> +            g_tree_remove(as->mappings, (gpointer)&current);
+>> +            interval.high = low - 1;
+>> +        } else if (low > interval.low && high < interval.high) {
+>> +            trace_virtio_iommu_unmap_inc_interval(current.low, current.high);
+>> +            g_tree_remove(as->mappings, (gpointer)&current);
+>> +        } else {
+>> +            break;
+>> +        }
+>> +        if (interval.low >= interval.high) {
+>> +            return VIRTIO_IOMMU_S_OK;
+>> +        } else {
+>> +            mapping = g_tree_lookup(as->mappings, (gpointer)&interval);
+>> +        }
+>> +    }
+> 
+> IIUC for unmap here we are very strict - a extreme case is that when
+> an address space is just created (so no mapping inside), if we send
+> one UNMAP to a range, it'll fail currently, right? Should we loosen
+> it?
 
-I understand your "stage-1" and "stage-2" are named "first-level" and
-"second level" in the VT-d spec?
+In the next specification version I'd like to slightly redefine unmap
+semantics (to make them more deterministic). Unmapping a range that is
+only partially mapped or not mapped at all would not return an error, and
+would unmap everything that is covered by the range.
 
-If I read the VT-d spec correctly, I think the main difference on ARM SMMU
-is that stage-2 always follows stage-1 translation, but either stage may
-be disabled (or both, for bypass mode). There is no mode like in VT-d,
-where non-PASID transactions go only through stage-2 and PASID
-transactions go only through stage-1. I believe this is (NESTE=0,
-T=000b/001b) in the Extended-Context-Entry.
+Note that unmapping a partial range (splitting a single mapping) is still
+forbidden. The following pseudocode sequences attempt to illustrate the
+rules I'd like to set. There are no mappings in the address space prior to
+each sequence.
 
-Something equivalent in SMMU is disabling stage-2 and using the entry 0 in
-the PASID table for non-PASID traffic. In this mode, traffic that uses
-PASID#0 would be aborted. So using your terms, the SMMU can have VAs and
-IOVAs be translated by stage-1 and then, if enabled, be translated by
-stage-2 as well.
+(1) unmap(addr=0, size=5)        -> succeeds, doesn't unmap anything
+
+(2) a = map(addr=0, size=10);
+    unmap(0, 10)                 -> succeeds, unmaps a
+
+(3) a = map(0, 5);
+    b = map(5, 5);
+    unmap(0, 10)                 -> succeeds, unmaps a and b
+
+(4) a = map(0, 10);
+    unmap(0, 5)                  -> faults, doesn't unmap anything
+
+(5) a = map(0, 5);
+    b = map(5, 5);
+    unmap(0, 5)                  -> succeeds, unmaps a
+
+(6) a = map(0, 5);
+    unmap(0, 10)                 -> succeeds, unmaps a
+
+(7) a = map(0, 5);
+    b = map(10, 5);
+    unmap(0, 15)                 -> succeeds, unmaps a and b
+
+Previously I left (1), (6) and (7) as an implementation choice. The device
+could either succeed and unmap, or fail and not unmap. This means that if
+a driver wanted guarantees, it had to issue strict map/unmap sequences.
+
+I believe that VFIO type1 v2 has these semantics, but "v1" allowed (4) to
+succeed and unmap a.
 
 Thanks,
 Jean
 
-> Does ARM SMMU allow stage-1 used for both VA and IOVA? IIRC
-> you said PASID#0 reserved for traffic w/o PASID in some mail...>
->>> (assume your irqchip will provide multiple doorbells so each
->>> device can have its own channel).
->>
->> In existing irqchips the doorbell is shared by endpoints, which are
->> differentiated by their device ID (generally the BDF). I'm not sure why
->> this matters here?
+
+> IMHO as long as we make sure all the mappings in the range of an UNMAP
+> request are destroyed, then we are good. I think at least both vfio
+> api and vt-d emuation have this assumption. But maybe I am wrong.
+> Please correct me if so.
 > 
-> Not matter now with device ID
+>> +
+>> +    if (mapping) {
+>> +        error_report("****** %s: Unmap 0x%"PRIx64" size=0x%"PRIx64
+>> +                     " from 0x%"PRIx64" size=0x%"PRIx64" is not supported",
+>> +                     __func__, interval.low, size,
+>> +                     mapping->virt_addr, mapping->size);
+>> +    } else {
+>> +        error_report("****** %s: no mapping for [0x%"PRIx64",0x%"PRIx64"]",
+>> +                     __func__, interval.low, interval.high);
+>> +    }
+>> +
+>> +    return VIRTIO_IOMMU_S_INVAL;
+>>  }
 > 
->>
->>> then once this update is
->>> done, later MSI interrupts from assigned device will go
->>> through physical IOMMU (gIOVA->HPA) then reach irqchip
->>> for irq remapping. vIOMMU is involved only in configuration
->>> path instead of actual interrupt path.
->>
->> Yes the vIOMMU is used to correlate the IOVA written by the guest in its
->> virtual MSI-X table with the MAP request received by the vIOMMU. That is
->> probably used to setup IRQFD routes with KVM. But the vIOMMU is not
->> involved further than that in MSIs.
->>
->>> If my understanding is correct, above will be the natural flow then
->>> why is additional virtio-iommu change required? :-)
->>
->> The change is not *required* for ARM systems, I only proposed removing the
->> doorbell address translation stage to make host implementation simpler
->> (and since virtio-iommu on x86 won't translate the doorbell anyway, we
->> have to add support for this to virtio-iommu). But for Qemu, since vSMMU
->> needs to implement the natural flow anyway, it might not be a lot of
->> effort to also do it for virtio-iommu. Other implementations (e.g.
->> kvmtool) might piggy-back on the x86 way and declare the irqchip doorbell
->> as untranslated.
->>
->> My proposal also breaks when confronted to virtual SVM in a physical ARM
->> system, where the guest owns stage-1 page tables and *has* to map the
->> doorbell if it wants MSIs to work, so you can disregard it :)
->>
-> 
-> It is a good learning. thanks.
+> Thanks,
 > 
 

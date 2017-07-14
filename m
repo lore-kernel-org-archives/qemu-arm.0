@@ -1,117 +1,109 @@
-Received: by 10.25.44.15 with SMTP id s15csp542388lfs;
-        Thu, 13 Jul 2017 23:58:20 -0700 (PDT)
-X-Received: by 10.237.54.225 with SMTP id f88mr9474103qtb.240.1500015500554;
-        Thu, 13 Jul 2017 23:58:20 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1500015500; cv=none;
+Received: by 10.25.44.15 with SMTP id s15csp562251lfs;
+        Fri, 14 Jul 2017 00:19:27 -0700 (PDT)
+X-Received: by 10.55.157.135 with SMTP id g129mr8968789qke.241.1500016766993;
+        Fri, 14 Jul 2017 00:19:26 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1500016766; cv=none;
         d=google.com; s=arc-20160816;
-        b=t54xtbAO11pW2nL2XNspAstDATtGEkEZuIt2cIX/7nsIwT87ztQ9fEX5FXm6wpETR+
-         RATQyRKxpefGLl1W0qODE/ZicLhtRNqWyDQpORYgUuQwoZjFyRDjasjp2q2GqGdoRzxt
-         tu9leWgegYPtMEDgCMlShkRKvRjf21gH8n6uHLnZ16VDq25pWzRMMf09cFl3dlrlohBt
-         XM7Q5qPDYv450M4O9bQWSsCN0a+DLB17lAW67buJmpduuRoV7piYHv9YrdI36AsR8Exv
-         QVceolDAbMPcaEq2Qz9XSX8tIP/3wgnx+uYjibm9TTOoRKR0YrmW+kiw+kgQH79K0WIP
-         51EQ==
+        b=uuFC24Tn6E1COTVcOaQhKCpD76Ls70bInLc/90Dm19TlCd+NG4sSP8dElj8fXFBu85
+         YeXOs6W16byGTTr2Ygr5iyy1RSsN30NRWwv6uZDJHnjfQiCktbwZt9Zd/MY7vWWMD7Pl
+         OCbb9BCZG268ld84mFXycZkdLzGJuj1t9pXBpDXBRHThtCawupJcmKuGCjbTLmEXMF9P
+         bsV1U4piQDKxTD16Xb3+HQmp3wvrk4ioj/iivwdKEqxNi3fC39fj7LTpfoBMtVm1A9t8
+         EF8G1J1/tEfNlqdAmxGPGe842p4mBRmbO0wrcy+HMr0KFjs7FKh1IntTeAxL34WE22CC
+         SS9Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:mime-version
-         :content-transfer-encoding:dlp-reaction:dlp-version:dlp-product
-         :content-language:accept-language:in-reply-to:references:message-id
-         :date:thread-index:thread-topic:to:from:arc-authentication-results;
-        bh=Gj6U0WzJZW0xeirYH9sauSf4kPcYQ+Q+iXGg1e6G8pk=;
-        b=GvIiLO8KYu24ucGdBGtcfl3TY0bVC0ENxeQCBPoE8Zeov1Emkv4vVDXnusxNavY1Jp
-         rx391jy6n3v01w9x6T8SxLfKx/dZaz/RFXSQY/AEhF7XoGWM1JJ0VTQT94xne0h57i+j
-         KToRXsaucaZU4Sgr8xCCjNRxYZNvLTIQZwXVG0ahLNhR1cyhlC6eayT47vmSd72sPFVY
-         3+ebkOA40zG3ZdquaN8VB+PfijSQStTXN6MMYpGQvK25oMJIdOOrWaLpqPQ823MoCZbd
-         ghGOKgQh71MzAqcm1TpDHOxMZswrPUoqG5+nf7kf5iGL1CLcECg7++GicJ0TNzn00lGG
-         9toQ==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:to:dkim-signature
+         :arc-authentication-results;
+        bh=HlTJ2B/h0IpbQKT4XHJo32XH+rhbyfOjm+aVZ9+/DiE=;
+        b=YzhZ1VVZRtuONHYmFND+epCS/3wUQsAHrFZcTk19whSKOAjuHqB7vB3+lzZaP4MksT
+         Ro8Ap25nC+ZtZER3eMTrpXrXqvVMUcClXC0hZHYv/6zvYb1h4IydcpQHdynAoMJw45+3
+         OtyGdEH2Gqzw3a2Ymfrd1yEUQd9Tu76SNNBn74WOPZMul+X3f93BZES4PPFOgtkTjR10
+         PTZqSqGsv2TB/Ha3Zue80HBsr2seEqmmwV37hP7ptJoq5ezPHIYOgXcuTrqUIARUSUy8
+         Pu94IqAdRXRD5jX4tpjsMyExDgs3iteVkdkpL+KDHcwSyOSjyHaGJ+XiXCsKnsQ+Wjow
+         17Bg==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@semihalf-com.20150623.gappssmtp.com header.b=TMaBNXIx;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id r26si7355458qta.312.2017.07.13.23.58.19
+        by mx.google.com with ESMTPS id h94si7041132qtd.295.2017.07.14.00.19.26
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 13 Jul 2017 23:58:20 -0700 (PDT)
+        Fri, 14 Jul 2017 00:19:26 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
+       dkim=fail header.i=@semihalf-com.20150623.gappssmtp.com header.b=TMaBNXIx;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:35861 helo=lists.gnu.org)
+Received: from localhost ([::1]:35915 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1dVuYL-0001HP-Sn
-	for alex.bennee@linaro.org; Fri, 14 Jul 2017 02:58:17 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:53256)
+	id 1dVusm-0008Fh-8P
+	for alex.bennee@linaro.org; Fri, 14 Jul 2017 03:19:24 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:57436)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <kevin.tian@intel.com>) id 1dVuYH-0001H2-9F
-	for qemu-arm@nongnu.org; Fri, 14 Jul 2017 02:58:14 -0400
+	(envelope-from <tn@semihalf.com>) id 1dVush-0008FX-Fi
+	for qemu-arm@nongnu.org; Fri, 14 Jul 2017 03:19:20 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <kevin.tian@intel.com>) id 1dVuYD-0005Lq-Ch
-	for qemu-arm@nongnu.org; Fri, 14 Jul 2017 02:58:13 -0400
-Received: from mga11.intel.com ([192.55.52.93]:52529)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <kevin.tian@intel.com>)
-	id 1dVuYD-0005L3-1w; Fri, 14 Jul 2017 02:58:09 -0400
-Received: from orsmga002.jf.intel.com ([10.7.209.21])
-	by fmsmga102.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
-	13 Jul 2017 23:58:06 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.40,357,1496127600"; d="scan'208";a="111217914"
-Received: from fmsmsx103.amr.corp.intel.com ([10.18.124.201])
-	by orsmga002.jf.intel.com with ESMTP; 13 Jul 2017 23:58:06 -0700
-Received: from fmsmsx113.amr.corp.intel.com (10.18.116.7) by
-	FMSMSX103.amr.corp.intel.com (10.18.124.201) with Microsoft SMTP Server
-	(TLS) id 14.3.319.2; Thu, 13 Jul 2017 23:58:06 -0700
-Received: from shsmsx104.ccr.corp.intel.com (10.239.4.70) by
-	FMSMSX113.amr.corp.intel.com (10.18.116.7) with Microsoft SMTP Server
-	(TLS) id 14.3.319.2; Thu, 13 Jul 2017 23:58:05 -0700
-Received: from shsmsx101.ccr.corp.intel.com ([169.254.1.197]) by
-	SHSMSX104.ccr.corp.intel.com ([10.239.4.70]) with mapi id
-	14.03.0319.002; Fri, 14 Jul 2017 14:58:03 +0800
-From: "Tian, Kevin" <kevin.tian@intel.com>
-To: Jean-Philippe Brucker <jean-philippe.brucker@arm.com>, "Kalra, Ashish"
-	<Ashish.Kalra@cavium.com>, Auger Eric <eric.auger@redhat.com>,
-	Bharat Bhushan <bharat.bhushan@nxp.com>, "eric.auger.pro@gmail.com"
-	<eric.auger.pro@gmail.com>, "peter.maydell@linaro.org"
-	<peter.maydell@linaro.org>, "alex.williamson@redhat.com"
-	<alex.williamson@redhat.com>, "mst@redhat.com" <mst@redhat.com>,
-	"qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, "qemu-devel@nongnu.org"
-	<qemu-devel@nongnu.org>
-Thread-Topic: [Qemu-arm] [Qemu-devel] [RFC v2 0/8] VIRTIO-IOMMU device
-Thread-Index: AQHS36do183zMA3/M0Kso3taEJsBQaIbilEAgAAHrwCAAFArAIAABoaAgA90XgCACwBtgIAOLRaAgAAFuwCAAAGSgIABpsiAgAAWqYCAAKWXgIAAI3yAgACHM5CAAIJ6gIAK+oaA
-Date: Fri, 14 Jul 2017 06:58:03 +0000
-Message-ID: <AADFC41AFE54684AB9EE6CBC0274A5D190D38304@SHSMSX101.ccr.corp.intel.com>
-References: <1496851287-9428-1-git-send-email-eric.auger@redhat.com>
-	<14c83c14-1e7e-f142-77b0-fa8c873e2d41@redhat.com>
-	<AM5PR0401MB2545C0E76C4BE6F82FE376D09ACE0@AM5PR0401MB2545.eurprd04.prod.outlook.com>
-	<6f22079e-4b4b-6476-77be-51ec83104c0d@redhat.com>
-	<AM5PR0401MB25459FDAA8C9AFA52503AAE99AC40@AM5PR0401MB2545.eurprd04.prod.outlook.com>
-	<c80977c4-1955-4e9d-3fc8-4d884562fd28@redhat.com>
-	<HE1PR0401MB2556D19D91F25DCE96FE7B199AD40@HE1PR0401MB2556.eurprd04.prod.outlook.com>
-	<8a7fb667-e6c0-2412-6dca-a8233dd27836@redhat.com>
-	<HE1PR0401MB255696A487DFEB2B8972980F9AD40@HE1PR0401MB2556.eurprd04.prod.outlook.com>
-	<e9ea564a-f02b-0ed5-e700-b7b1dfd89722@arm.com>
-	<AM5PR0401MB25459345E9533FFC3BBE00289AD50@AM5PR0401MB2545.eurprd04.prod.outlook.com>
-	<15b631c8-5708-1426-90a2-9be51a796614@redhat.com>
-	<BN4PR07MB2161B5CCE84496804B848326E3D50@BN4PR07MB2161.namprd07.prod.outlook.com>
-	<AADFC41AFE54684AB9EE6CBC0274A5D190D28807@SHSMSX101.ccr.corp.intel.com>
-	<67cb3a84-9aa7-2b4f-43b6-be6dea15b66f@arm.com>
-In-Reply-To: <67cb3a84-9aa7-2b4f-43b6-be6dea15b66f@arm.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-ctpclassification: CTP_IC
-x-titus-metadata-40: eyJDYXRlZ29yeUxhYmVscyI6IiIsIk1ldGFkYXRhIjp7Im5zIjoiaHR0cDpcL1wvd3d3LnRpdHVzLmNvbVwvbnNcL0ludGVsMyIsImlkIjoiNDM4NDE3YmEtZThkOS00ZDQzLTkxODItMzU0NzFhYTMxYWNiIiwicHJvcHMiOlt7Im4iOiJDVFBDbGFzc2lmaWNhdGlvbiIsInZhbHMiOlt7InZhbHVlIjoiQ1RQX0lDIn1dfV19LCJTdWJqZWN0TGFiZWxzIjpbXSwiVE1DVmVyc2lvbiI6IjE2LjUuOS4zIiwiVHJ1c3RlZExhYmVsSGFzaCI6ImlKbHE5N0lPMzJlZzRlXC85QXdKTjhwSlFudTA2UjZNSEdVdW40YUt2ZVowPSJ9
-dlp-product: dlpe-windows
-dlp-version: 10.0.102.7
-dlp-reaction: no-action
-x-originating-ip: [10.239.127.40]
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+	(envelope-from <tn@semihalf.com>) id 1dVuse-0006LN-B3
+	for qemu-arm@nongnu.org; Fri, 14 Jul 2017 03:19:19 -0400
+Received: from mail-lf0-x22f.google.com ([2a00:1450:4010:c07::22f]:36207)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <tn@semihalf.com>) id 1dVuse-0006L1-04
+	for qemu-arm@nongnu.org; Fri, 14 Jul 2017 03:19:16 -0400
+Received: by mail-lf0-x22f.google.com with SMTP id h22so48805139lfk.3
+	for <qemu-arm@nongnu.org>; Fri, 14 Jul 2017 00:19:15 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=semihalf-com.20150623.gappssmtp.com; s=20150623;
+	h=subject:to:cc:references:from:message-id:date:user-agent
+	:mime-version:in-reply-to:content-language:content-transfer-encoding;
+	bh=HlTJ2B/h0IpbQKT4XHJo32XH+rhbyfOjm+aVZ9+/DiE=;
+	b=TMaBNXIxnLlztnqNRCIqYT1PGSIrue+hc9ab6zXUf7ap4pGdxV4zAZFWDoI78NS4if
+	EyQJmEv5ZEXDW570xWzDzvQoSoFxhkr2IR1wF4vHBb5YdhhfT//YxH+f7f5dxxPKw+4r
+	JFzqOxm5xoKpqaiEbCAwvV6w+w1L3hasWpiQsWB23rVaVo//GKwxU3XnB7St+ZWY8Wax
+	WniCYyXuFhufTfOhnLnQgt8ue2n8jJiWeCWuPAW8pyIJYNpmZ++epEWpeyldJCEbL+cV
+	ey5LK+PXKES8IUC43haSM9S8LpAj/CPoMFki8/rxVix09mpAKbG9r+ZCnbmTvWhGTvFg
+	wqEg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+	:user-agent:mime-version:in-reply-to:content-language
+	:content-transfer-encoding;
+	bh=HlTJ2B/h0IpbQKT4XHJo32XH+rhbyfOjm+aVZ9+/DiE=;
+	b=DNt4HnyDCvgPAIq9f4Co5rQr44a8vLnthFeumkDjdjbCYSA66rT+weI912ahly62Jm
+	lrHXByJ8vSNmxLJnGG1pIJxlAi31gi3SNxCkehwQm407XjFmJpB/9zSzIgw8ZuhRlXX0
+	1XTgOEvcZmcPk+3H9c93xpcSycXlxBpZO5h7bpKDpgGOzb3pehhqAxqXBRsx56W9k66T
+	8qu1n59Dg5HbkFuxZK997fB5pVzTIqQe2U45mQnM2xPuWJMBvLfT/a286EzkCLL88muO
+	zvcXn0CTI/LflAJ8+GvhrU3YFJoPRsEex/BaUtz0L1uL2+ArmfR1UC+n25dsUXTwHHuk
+	IQBg==
+X-Gm-Message-State: AIVw113euCD2XvssAVrjmo/sQ49aGSy5qd1k8X3V5s5UdpWkumTjYfDi
+	rdAYyQsOPWa0uXNu
+X-Received: by 10.46.14.18 with SMTP id 18mr370358ljo.41.1500016754549;
+	Fri, 14 Jul 2017 00:19:14 -0700 (PDT)
+Received: from [192.168.2.100] (user-94-254-147-63.play-internet.pl.
+	[94.254.147.63]) by smtp.googlemail.com with ESMTPSA id
+	99sm1826632lfp.46.2017.07.14.00.19.08
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Fri, 14 Jul 2017 00:19:13 -0700 (PDT)
+To: Eric Auger <eric.auger@redhat.com>, eric.auger.pro@gmail.com,
+	peter.maydell@linaro.org, qemu-arm@nongnu.org, qemu-devel@nongnu.org,
+	alex.williamson@redhat.com, prem.mallappa@gmail.com
+References: <1499633493-19865-1-git-send-email-eric.auger@redhat.com>
+From: Tomasz Nowicki <tn@semihalf.com>
+Message-ID: <0686a7f3-1ca5-f63e-01a1-a7982073b517@semihalf.com>
+Date: Fri, 14 Jul 2017 09:19:05 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.2.1
 MIME-Version: 1.0
+In-Reply-To: <1499633493-19865-1-git-send-email-eric.auger@redhat.com>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-GB
+Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 192.55.52.93
-Subject: Re: [Qemu-arm] [Qemu-devel] [RFC v2 0/8] VIRTIO-IOMMU device
+X-Received-From: 2a00:1450:4010:c07::22f
+Subject: Re: [Qemu-arm] [RFC v5 0/8] ARM SMMUv3 Emulation Support
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -123,46 +115,180 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: "drjones@redhat.com" <drjones@redhat.com>,
-	"marc.zyngier@arm.com" <marc.zyngier@arm.com>,
-	"tn@semihalf.com" <tn@semihalf.com>,
-	"will.deacon@arm.com" <will.deacon@arm.com>,
-	"robin.murphy@arm.com" <robin.murphy@arm.com>,
-	"christoffer.dall@linaro.org" <christoffer.dall@linaro.org>
+Cc: mohun106@gmail.com, drjones@redhat.com, tcain@qti.qualcomm.com,
+	Radha.Chintakuntla@cavium.com, Sunil.Goutham@cavium.com,
+	mst@redhat.com, jean-philippe.brucker@arm.com,
+	robin.murphy@arm.com, will.deacon@arm.com, peterx@redhat.com,
+	bharat.bhushan@nxp.com, christoffer.dall@linaro.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: +EZ/BYUKArMN
+X-TUID: Trt5IyHg8Ile
 
-PiBGcm9tOiBKZWFuLVBoaWxpcHBlIEJydWNrZXIgW21haWx0bzpqZWFuLXBoaWxpcHBlLmJydWNr
-ZXJAYXJtLmNvbV0NCj4gU2VudDogRnJpZGF5LCBKdWx5IDcsIDIwMTcgMTE6MTUgUE0NCj4gDQo+
-IEhpIEFzaGlzaCwNCj4gDQo+IE9uIDA3LzA3LzE3IDAwOjMzLCBUaWFuLCBLZXZpbiB3cm90ZToN
-Cj4gPj4gRnJvbTogS2FscmEsIEFzaGlzaCBbbWFpbHRvOkFzaGlzaC5LYWxyYUBjYXZpdW0uY29t
-XQ0KPiA+PiBTZW50OiBGcmlkYXksIEp1bHkgNywgMjAxNyA3OjI0IEFNDQo+ID4+DQo+ID4+IEkg
-aGF2ZSBhIGdlbmVyaWMgcXVlc3Rpb24gb24gdklPTU1VIHN1cHBvcnQsIGlzIHRoZXJlIGFueSBw
-cm9wb3NhbC9wbGFuDQo+IHRvDQo+ID4+IGFkZCBBVFMvUFJJIGV4dGVuc2lvbiBzdXBwb3J0IHRv
-IHZJT01NVXMgYW5kIGFsbG93DQo+ID4+IGhhbmRsaW5nIGZvciBlbmQgdG8gZW5kICh2KUlPTU1V
-IFBhZ2UgZmF1bHRzICh3L3QgdGhlIGRldmljZSBzaWRlDQo+ID4+IGltcGxlbWVudGF0aW9uIG9u
-IFZob3N0KSA/DQo+ID4+DQo+ID4+IEFnYWluLCB0aGUgbW90aXZhdGlvbiB3aWxsIGJlIHRvIGRv
-IERNQSBvbiBwYWdlZCBndWVzdCBtZW1vcnkgYW5kDQo+ID4+IHBvdGVudGlhbGx5IGF2b2lkaW5n
-IHRoZSByZXF1aXJlbWVudCBvZiBwaW5uZWQvbG9ja2VkDQo+ID4+IGd1ZXN0IHBoeXNpY2FsIG1l
-bW9yeSBmb3IgRE1BLg0KPiA+DQo+ID4geWVzLCB0aGF0J3MgYSBuZWNlc3NhcnkgcGFydCB0byBz
-dXBwb3J0IFNWTSBpbiBib3RoIHZpcnRpby1pb21tdQ0KPiA+IGFwcHJvYWNoIGFuZCBmdWxseSBl
-bXVsYXRlZCBhcHByb2FjaCAoZS5nLiBmb3IgSW50ZWwgVlRkKS4gVGhlcmUNCj4gPiBhcmUgYWxy
-ZWFkeSBwYXRjaGVzIGFuZCBkaXNjdXNzaW9ucyBpbiBvdGhlciB0aHJlYWQgYWJvdXQgaG93IHRv
-DQo+ID4gcHJvcGFnYXRlIElPTU1VIHBhZ2UgZmF1bHQgdG8gdklPTU1VLiBUaGVuIGFmdGVyIGl0
-IGlzIGRvbmUNCj4gPiB2SU9NTVUgcGFnZSBmYXVsdCBlbXVsYXRpb24gd2lsbCBiZSBmdXJ0aGVy
-IGFkZGVkLg0KPiA+DQo+ID4gaHR0cHM6Ly9sa21sLm9yZy9sa21sLzIwMTcvNi8yNy85NjQNCj4g
-DQo+IEZvciB2aXJ0aW8taW9tbXUsIEknZCBsaWtlIHRvIGFkZCBhbiBldmVudCB2aXJ0cXVldWUg
-Zm9yIHRoZSBkZXZpY2UgdG8NCj4gc2VuZCBwYWdlIGZhdWx0cyB0byB0aGUgZHJpdmVyLCBpbiBh
-IGZvcm1hdCBzaW1pbGFyIHRvIGEgUFJJIFBhZ2UgUmVxdWVzdC4NCj4gVGhlIGRyaXZlciB3b3Vs
-ZCB0aGVuIHNlbmQgYSByZXBseSB2aWEgdGhlIHJlcXVlc3QgdmlydHF1ZXVlIGluIGEgZm9ybWF0
-DQo+IHNpbWlsYXIgdG8gYSBQUkcgUmVzcG9uc2UuDQo+IA0KPiBJbiBRZW11IHRoZSBkZXZpY2Ug
-aW1wbGVtZW50YXRpb24gd291bGQgaG9wZWZ1bGx5IGJlIGJhc2VkIG9uIHRoZSBzYW1lDQo+IG1l
-Y2hhbmlzbSBhcyBWVGQuIFRoZSB2aG9zdCBpbXBsZW1lbnRhdGlvbiB3b3VsZCByZWNlaXZlIElP
-IFBhZ2UgRmF1bHRzDQo+IGZyb20gVkZJTyBhbmQgZm9yd2FyZCB0aGVtIG9uIHRoZSBldmVudCB2
-aXJ0cXVldWUgc2ltaWxhcmx5IHRvIHRoZQ0KPiB1c2Vyc3BhY2UgaW1wbGVtZW50YXRpb24uDQo+
-IA0KDQpBZ3JlZS4gSSBleHBlY3QgdGhlIHBhdGggYmV0d2VlbiBRZW11IGFuZCBWRklPIGFyZSBn
-ZW5lcmFsIGVub3VnaA0KZm9yIGJvdGggZW11bGF0ZWQgSU9NTVUgYW5kIHZpcnRpby1JT01NVS4g
-RGlmZmVyZW5jZSBpcyBvbiB0aGUgDQpwcm9wYWdhdGlvbiBwYXRoIHRvIGd1ZXN0IGJhc2VkIG9u
-IHRoZSBkZWZpbml0aW9uIG9mIGRpZmZlcmVudCB2aXJ0dWFsIA0KaW50ZXJmYWNlcy4NCg0KVGhh
-bmtzDQpLZXZpbg0K
+Hi Eric,
+
+With fixes in comments that I made, I was able to run VM with 
+virtio-blk-pci and virtio-net-pci devices.
+
+I have tried vhost-net as well but I am seeing outgoing packets payload 
+corrupted from host perspective, tcpdump on host tun i/f shows zeroes in 
+packet payload. However, tcpdump in VM shows that packets are fine. Have 
+you seen anything like that? Packets incoming to VM are fine though. I 
+will keep debugging on my side too.
+
+Thanks,
+Tomasz
+
+On 09.07.2017 22:51, Eric Auger wrote:
+> This series implements the emulation code for ARM SMMUv3.
+> This is the continuation of Prem's work [1].
+> 
+> This v5 mainly brings VFIO integration in DT mode. On guest kernel
+> side, this requires a quirk [1] to force TLB invalidation on map.
+> 
+> The following changes also are noticeable:
+> - fix SMMU_CMDQ_CONS offset
+> - adds dma-coherent dt property which fixes the unhandled command
+>    opcode bug.
+> - implements block PTE
+> 
+> The smmu is instantiated when passing the smmu option to machvirt:
+> "-M virt-2.10,smmu"
+> 
+> As I haven't split the code yet so that it can be easily reviewable
+> I don't expect deep reviews at this stage. Also the implementation may
+> be largely sub-optimal.
+> 
+> Tested Use Cases:
+> - booted a guest in dt and acpi mode with an iommu_platform
+>    virtio-net-pci device (using dma ops). Tested with the following
+>    guest combinations: 4K page - 39 bit VA, 4K - 48b, 64K - 39b,
+>    64K - 48b.
+> - booted a guest (featuring [1]) with PCIe passthrough'ed PCIe devices:
+>    - AMD Overdrive and igbvf passthrough (using gsi direct mapping)
+>    - Cavium ThunderX and ixgbevf passthrough (using KVM MSI routing)
+> 
+> Unfortunately I have not been able to run DPDK testpmd yet on guest side.
+> The problem I see is the user space driver dma-maps a huge area
+> and this causes plenty of CMDQ_OP_TLBI_NH_VA commands to be sent
+> (tlbi-on-map) which are sent for each page whereas the dma-map covers a
+> huge page. I will work on this issue for next version.
+> 
+> Known limitations:
+> - no VMSAv8-32 suport
+> - no nested stage support (S1 + S2)
+> - no support for HYP mappings
+> - register fine emulation, commands, interrupts and errors were
+>    not accurately tested. Handling is sufficient to run use cases
+>    described hereafter though.
+> 
+> Best Regards
+> 
+> Eric
+> 
+> This series can be found at:
+> v5: https://github.com/eauger/qemu/tree/v2.9-SMMU-v5
+> v4: https://github.com/eauger/qemu/tree/v2.9-SMMU-v4
+> 
+> References:
+> [1] [RFC 0/2] arm-smmu-v3 tlbi-on-map option
+> [2] Prem's last iteration:
+> - https://lists.gnu.org/archive/html/qemu-devel/2016-08/msg03531.html
+> 
+> History:
+> v4 -> v5:
+> - initial_level now part of SMMUTransCfg
+> - smmu_page_walk_64 takes into account the max input size
+> - implement sys->iommu_ops.replay and sys->iommu_ops.notify_flag_changed
+> - smmuv3_translate: bug fix: don't walk on bypass
+> - smmu_update_qreg: fix PROD index update
+> - I did not yet address Peter's comments as the code is not mature enough
+>    to be split into sub patches.
+> 
+> v3 -> v4 [Eric]:
+> - page table walk rewritten to allow scan of the page table within a
+>    range of IOVA. This prepares for VFIO integration and replay.
+> - configuration parsing partially reworked.
+> - do not advertise unsupported/untested features: S2, S1 + S2, HYP,
+>    PRI, ATS, ..
+> - added ACPI table generation
+> - migrated to dynamic traces
+> - mingw compilation fix
+> 
+> v2 -> v3 [Eric]:
+> - rebased on 2.9
+> - mostly code and patch reorganization to ease the review process
+> - optional patches removed. They may be handled separately. I am currently
+>    working on ACPI enablement.
+> - optional instantiation of the smmu in mach-virt
+> - removed [2/9] (fdt functions) since not mandated
+> - start splitting main patch into base and derived object
+> - no new function feature added
+> 
+> v1 -> v2 [Prem]:
+> - Adopted review comments from Eric Auger
+>          - Make SMMU_DPRINTF to internally call qemu_log
+>              (since translation requests are too many, we need control
+>               on the type of log we want)
+>          - SMMUTransCfg modified to suite simplicity
+>          - Change RegInfo to uint64 register array
+>          - Code cleanup
+>          - Test cleanups
+> - Reshuffled patches
+> 
+> v0 -> v1 [Prem]:
+> - As per SMMUv3 spec 16.0 (only is_ste_consistant() is noticeable)
+> - Reworked register access/update logic
+> - Factored out translation code for
+>          - single point bug fix
+>          - sharing/removal in future
+> - (optional) Unit tests added, with PCI test device
+>          - S1 with 4k/64k, S1+S2 with 4k/64k
+>          - (S1 or S2) only can be verified by Linux 4.7 driver
+>          - (optional) Priliminary ACPI support
+> 
+> v0 [Prem]:
+> - Implements SMMUv3 spec 11.0
+> - Supported for PCIe devices,
+> - Command Queue and Event Queue supported
+> - LPAE only, S1 is supported and Tested, S2 not tested
+> - BE mode Translation not supported
+> - IRQ support (legacy, no MSI)
+> - Tested with DPDK and e1000
+> 
+> 
+> Eric Auger (5):
+>    hw/arm/smmu-common: smmu base class
+>    hw/arm/virt: Add 2.10 machine type
+>    hw/arm/virt: Add tlbi-on-map property to the smmuv3 node
+>    target/arm/kvm: Translate the MSI doorbell in kvm_arch_fixup_msi_route
+>    hw/arm/smmuv3: VFIO integration
+> 
+> Prem Mallappa (3):
+>    hw/arm/smmuv3: smmuv3 emulation model
+>    hw/arm/virt: Add SMMUv3 to the virt board
+>    hw/arm/virt-acpi-build: Add smmuv3 node in IORT table
+> 
+>   default-configs/aarch64-softmmu.mak |    1 +
+>   hw/arm/Makefile.objs                |    1 +
+>   hw/arm/smmu-common.c                |  474 +++++++++++++
+>   hw/arm/smmu-internal.h              |   89 +++
+>   hw/arm/smmuv3-internal.h            |  651 ++++++++++++++++++
+>   hw/arm/smmuv3.c                     | 1256 +++++++++++++++++++++++++++++++++++
+>   hw/arm/trace-events                 |   54 ++
+>   hw/arm/virt-acpi-build.c            |   56 +-
+>   hw/arm/virt.c                       |  111 +++-
+>   include/hw/acpi/acpi-defs.h         |   15 +
+>   include/hw/arm/smmu-common.h        |  127 ++++
+>   include/hw/arm/smmuv3.h             |   87 +++
+>   include/hw/arm/virt.h               |    5 +
+>   target/arm/kvm.c                    |   28 +
+>   target/arm/trace-events             |    3 +
+>   15 files changed, 2949 insertions(+), 9 deletions(-)
+>   create mode 100644 hw/arm/smmu-common.c
+>   create mode 100644 hw/arm/smmu-internal.h
+>   create mode 100644 hw/arm/smmuv3-internal.h
+>   create mode 100644 hw/arm/smmuv3.c
+>   create mode 100644 include/hw/arm/smmu-common.h
+>   create mode 100644 include/hw/arm/smmuv3.h
+> 
+

@@ -1,353 +1,519 @@
-Received: by 10.25.44.15 with SMTP id s15csp706641lfs;
-        Fri, 14 Jul 2017 02:58:47 -0700 (PDT)
-X-Received: by 10.223.179.8 with SMTP id j8mr1411731wrd.190.1500026327653;
-        Fri, 14 Jul 2017 02:58:47 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1500026327; cv=none;
+Received: by 10.25.44.15 with SMTP id s15csp761405lfs;
+        Fri, 14 Jul 2017 03:53:15 -0700 (PDT)
+X-Received: by 10.55.118.66 with SMTP id r63mr9847196qkc.234.1500029595690;
+        Fri, 14 Jul 2017 03:53:15 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1500029595; cv=none;
         d=google.com; s=arc-20160816;
-        b=AYDoKqfjcz1Y6fRU7T+KSZUCJN1dtYvrsEs1adSVgk1kO5Lw9iBkxML1vKXCBPH9yj
-         1FhBa8KMiIWW8jTAHLMEJyI7xipIxuT7cg20NcJ+XwKclAb0IBsNpzpLnwnvQ7I2kGaA
-         cLvInmAFFFXgwtbE/UZPK1gxnESCU8rhxBt4kuIQk8H/e7mFJVPVNZYF0EAzykOroNY6
-         9i2VuS/J10sps6ev90SNPsT9sb11nPAMS2kd/UyK/jR6rdAW7IGJTbM3fgU0zo8X5lPm
-         /++uADPyuTubTalthVvuO5RSc5sQS2UFf7DlwqN84uywwxWgmPU35GveE/EvghJ2Z7Tr
-         CFkw==
+        b=aMPlZo4VQ2vQDrryjmKjGVL1Hq2zTdRQhpF/DAEcybO2b0XG3GNZfGDEd7xRQ6namh
+         GZwftjVEHJP4CeVBMYt0TniwP1v0+IG6NZtBxvOSnoT2P1jDPEvknXY/nIwu9AZZjRl5
+         MXTESVnvAPZEKNNzGleb47OEnSdgQGx0lNYO6vm6853c29JDQEbNP4WXitcUi6nE8yB4
+         Y0M+IPALjiK0wel+QpEbuEBWjRH5qXJPcWsYxZeHh8CmIgg68Lcx6LBP6F0YMOT4gluw
+         v0JODjaG0hAjsae7EmPDnk1abpTE0iTPkOSernObMo4o9T82St2EEEbu1jVOysImUONR
+         kQpQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:user-agent:references
-         :in-reply-to:message-id:date:subject:cc:to:from
-         :arc-authentication-results;
-        bh=2tz178rp8V2WNIk6+iYUMd+NGkBVqR9y4plWnPvv8hg=;
-        b=O5kusgHendXU74jOuJj3TGgVnseB4QEEtQC9MLQrCYJjPrsbczrtvb6e1+HrFrXLXJ
-         fG3nBQKTazQuA2LxT7eVcDDaiLki6gs3bO7aTbxKwuKD2Kj8PXjowCQWGHibN2FCyxCJ
-         7MdMCYPXOY1PXe3POyV9+4d2loewVmSy/bZVmkM7UEJXi4Gp7ojvT2lhLzGwhboWIUkH
-         QrAEJDFJZ2eYZ+GAv9eD84iL3gH+h63LlcopFDomGj08OFtIJoAd+oG2zRNcepOmBEK3
-         25XvARIi12S/iImCLnYKzRsQ5vVm7tTAQ0AcSnLBiRowbYUo79vwUIQFJu19huUumL9d
-         08Kw==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:to:from:arc-authentication-results;
+        bh=M6bNHQCaJK9v0RCNPPSM4r2HURkUNWXGEhdmqi8Z5zs=;
+        b=XQOrp+81/3kDF4D5soCkNi5Eu/7pk/thIqLetHgE1RU5CqNEVMXRfyzl3N6/IQJ5ty
+         Zypm7I3ONmAwtY565/JM8rJRFpcCKxF3vVVHBgA8cZPBsIAEc16ZTzmLSUMqbrEAyEmH
+         8QktvNR0CUFFXj14WrAs9Sa7azHudXDGy9Z2ue1+K51HXM9gK6yh5RpVxzuoJm9+ABnF
+         4RQnHm2j3n8jCmQCumiTxWNpu5OJDNYQ14GRjdAbfxCXtvMZl3QGjkjAVPfJNJRCcmzt
+         nEhJbMnjt0mkwRSPgbnIcuKTMrHcxqhQ6ENbN2mSVBNiv7YWGwZkiPNmIOQbxeQVTLbI
+         ccdg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of vilanova@ac.upc.edu designates 147.83.33.10 as permitted sender) smtp.mailfrom=vilanova@ac.upc.edu
-Return-Path: <vilanova@ac.upc.edu>
-Received: from roura.ac.upc.es (roura.ac.upc.es. [147.83.33.10])
-        by mx.google.com with ESMTP id p195si1929444wmb.9.2017.07.14.02.58.47;
-        Fri, 14 Jul 2017 02:58:47 -0700 (PDT)
-Received-SPF: pass (google.com: domain of vilanova@ac.upc.edu designates 147.83.33.10 as permitted sender) client-ip=147.83.33.10;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
+        by mx.google.com with ESMTPS id p65si7673916qkp.165.2017.07.14.03.53.14
+        for <alex.bennee@linaro.org>
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Fri, 14 Jul 2017 03:53:15 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of vilanova@ac.upc.edu designates 147.83.33.10 as permitted sender) smtp.mailfrom=vilanova@ac.upc.edu
-Received: from correu-2.ac.upc.es (correu-2.ac.upc.es [147.83.30.92])
-	by roura.ac.upc.es (8.13.8/8.13.8) with ESMTP id v6E9whHE010554;
-	Fri, 14 Jul 2017 11:58:44 +0200
-Received: from localhost (unknown [31.210.188.120])
-	by correu-2.ac.upc.es (Postfix) with ESMTPSA id 003B03A9;
-	Fri, 14 Jul 2017 11:58:36 +0200 (CEST)
-From: =?utf-8?b?TGx1w61z?= Vilanova <vilanova@ac.upc.edu>
-To: qemu-devel@nongnu.org
-Cc: "Emilio G. Cota" <cota@braap.org>,
-        =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-        Richard Henderson <rth@twiddle.net>,
-        Peter Crosthwaite <crosthwaite.peter@gmail.com>,
-        Paolo Bonzini <pbonzini@redhat.com>,
-        Peter Maydell <peter.maydell@linaro.org>,
-        qemu-arm@nongnu.org (open list:ARM)
-Subject: [PATCH v13 26/26] target/arm: [tcg] Port to generic translation framework
-Date: Fri, 14 Jul 2017 12:58:33 +0300
-Message-Id: <150002631325.22386.10348327185029496649.stgit@frigg.lan>
-X-Mailer: git-send-email 2.13.2
-In-Reply-To: <150002001195.22386.4679134058536830996.stgit@frigg.lan>
-References: <150002001195.22386.4679134058536830996.stgit@frigg.lan>
-User-Agent: StGit/0.17.1-dirty
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:36935 helo=lists.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1dVyDg-0005yq-PR
+	for alex.bennee@linaro.org; Fri, 14 Jul 2017 06:53:12 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:53442)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <pm215@archaic.org.uk>) id 1dVyCN-0004tc-P4
+	for qemu-arm@nongnu.org; Fri, 14 Jul 2017 06:51:57 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+	(envelope-from <pm215@archaic.org.uk>) id 1dVyCL-0007BP-3B
+	for qemu-arm@nongnu.org; Fri, 14 Jul 2017 06:51:51 -0400
+Received: from [2001:8b0:1d0::2] (port=37583 helo=orth.archaic.org.uk)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <pm215@archaic.org.uk>)
+	id 1dVyCK-00072e-OA; Fri, 14 Jul 2017 06:51:49 -0400
+Received: from pm215 by orth.archaic.org.uk with local (Exim 4.84_2)
+	(envelope-from <pm215@archaic.org.uk>)
+	id 1dVyC2-0007kt-Hp; Fri, 14 Jul 2017 11:51:30 +0100
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Date: Fri, 14 Jul 2017 11:51:24 +0100
+Message-Id: <1500029487-14822-7-git-send-email-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.7.4
+In-Reply-To: <1500029487-14822-1-git-send-email-peter.maydell@linaro.org>
+References: <1500029487-14822-1-git-send-email-peter.maydell@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: pLza0BZKhBQu
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 2001:8b0:1d0::2
+Subject: [Qemu-arm] [PATCH v2 6/9] hw/misc/mps2_scc: Implement MPS2 Serial
+ Communication Controller
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.21
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Alistair Francis <alistair.francis@xilinx.com>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+	patches@linaro.org
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: b3XCLWBxDjd3
 
-Signed-off-by: Lluís Vilanova <vilanova@ac.upc.edu>
+Implement a model of the Serial Communication Controller (SCC) found
+in MPS2 FPGA images.
+
+The primary purpose of this device is to communicate with the
+Motherboard Configuration Controller (MCC) which is located on
+the MPS board itself, outside the FPGA image. This is used
+for programming the MPS clock generators. The SCC also has
+some basic ID registers and an output for the board LEDs.
+
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- target/arm/translate-a64.c |  106 +++++++------------------------------------
- target/arm/translate.c     |  108 ++++++++------------------------------------
- target/arm/translate.h     |    8 ---
- 3 files changed, 38 insertions(+), 184 deletions(-)
+ hw/misc/Makefile.objs           |   1 +
+ include/hw/misc/mps2-scc.h      |  43 ++++++
+ hw/misc/mps2-scc.c              | 310 ++++++++++++++++++++++++++++++++++++++++
+ default-configs/arm-softmmu.mak |   2 +
+ hw/misc/trace-events            |   8 ++
+ 5 files changed, 364 insertions(+)
+ create mode 100644 include/hw/misc/mps2-scc.h
+ create mode 100644 hw/misc/mps2-scc.c
 
-diff --git a/target/arm/translate-a64.c b/target/arm/translate-a64.c
-index 5de7fbde29..963e0c3433 100644
---- a/target/arm/translate-a64.c
-+++ b/target/arm/translate-a64.c
-@@ -11250,6 +11250,11 @@ static void aarch64_tr_init_disas_context(DisasContextBase *dcbase,
-     init_tmp_a64_array(dc);
- }
+diff --git a/hw/misc/Makefile.objs b/hw/misc/Makefile.objs
+index 7e373db..3b91d32 100644
+--- a/hw/misc/Makefile.objs
++++ b/hw/misc/Makefile.objs
+@@ -52,6 +52,7 @@ obj-$(CONFIG_STM32F2XX_SYSCFG) += stm32f2xx_syscfg.o
+ obj-$(CONFIG_MIPS_CPS) += mips_cmgcr.o
+ obj-$(CONFIG_MIPS_CPS) += mips_cpc.o
+ obj-$(CONFIG_MIPS_ITU) += mips_itu.o
++obj-$(CONFIG_MPS2_SCC) += mps2-scc.o
  
-+static void aarch64_tr_tb_start(DisasContextBase *db, CPUState *cpu,
-+                                int *max_insns)
+ obj-$(CONFIG_PVPANIC) += pvpanic.o
+ obj-$(CONFIG_HYPERV_TESTDEV) += hyperv_testdev.o
+diff --git a/include/hw/misc/mps2-scc.h b/include/hw/misc/mps2-scc.h
+new file mode 100644
+index 0000000..7045473
+--- /dev/null
++++ b/include/hw/misc/mps2-scc.h
+@@ -0,0 +1,43 @@
++/*
++ * ARM MPS2 SCC emulation
++ *
++ * Copyright (c) 2017 Linaro Limited
++ * Written by Peter Maydell
++ *
++ *  This program is free software; you can redistribute it and/or modify
++ *  it under the terms of the GNU General Public License version 2 or
++ *  (at your option) any later version.
++ */
++
++#ifndef MPS2_SCC_H
++#define MPS2_SCC_H
++
++#include "hw/sysbus.h"
++
++#define TYPE_MPS2_SCC "mps2-scc"
++#define MPS2_SCC(obj) OBJECT_CHECK(MPS2SCC, (obj), TYPE_MPS2_SCC)
++
++#define NUM_OSCCLK 3
++
++typedef struct {
++    /*< private >*/
++    SysBusDevice parent_obj;
++
++    /*< public >*/
++    MemoryRegion iomem;
++
++    uint32_t cfg0;
++    uint32_t cfg1;
++    uint32_t cfg4;
++    uint32_t cfgdata_rtn;
++    uint32_t cfgdata_out;
++    uint32_t cfgctrl;
++    uint32_t cfgstat;
++    uint32_t dll;
++    uint32_t aid;
++    uint32_t id;
++    uint32_t oscclk[NUM_OSCCLK];
++    uint32_t oscclk_reset[NUM_OSCCLK];
++} MPS2SCC;
++
++#endif
+diff --git a/hw/misc/mps2-scc.c b/hw/misc/mps2-scc.c
+new file mode 100644
+index 0000000..cc58d26
+--- /dev/null
++++ b/hw/misc/mps2-scc.c
+@@ -0,0 +1,310 @@
++/*
++ * ARM MPS2 SCC emulation
++ *
++ * Copyright (c) 2017 Linaro Limited
++ * Written by Peter Maydell
++ *
++ *  This program is free software; you can redistribute it and/or modify
++ *  it under the terms of the GNU General Public License version 2 or
++ *  (at your option) any later version.
++ */
++
++/* This is a model of the SCC (Serial Communication Controller)
++ * found in the FPGA images of MPS2 development boards.
++ *
++ * Documentation of it can be found in the MPS2 TRM:
++ * http://infocenter.arm.com/help/index.jsp?topic=/com.arm.doc.100112_0100_03_en/index.html
++ * and also in the Application Notes documenting individual FPGA images.
++ */
++
++#include "qemu/osdep.h"
++#include "qemu/log.h"
++#include "qapi/error.h"
++#include "trace.h"
++#include "hw/sysbus.h"
++#include "hw/registerfields.h"
++#include "hw/misc/mps2-scc.h"
++
++REG32(CFG0, 0)
++REG32(CFG1, 4)
++REG32(CFG3, 0xc)
++REG32(CFG4, 0x10)
++REG32(CFGDATA_RTN, 0xa0)
++REG32(CFGDATA_OUT, 0xa4)
++REG32(CFGCTRL, 0xa8)
++    FIELD(CFGCTRL, DEVICE, 0, 12)
++    FIELD(CFGCTRL, RES1, 12, 8)
++    FIELD(CFGCTRL, FUNCTION, 20, 6)
++    FIELD(CFGCTRL, RES2, 26, 4)
++    FIELD(CFGCTRL, WRITE, 30, 1)
++    FIELD(CFGCTRL, START, 31, 1)
++REG32(CFGSTAT, 0xac)
++    FIELD(CFGSTAT, DONE, 0, 1)
++    FIELD(CFGSTAT, ERROR, 1, 1)
++REG32(DLL, 0x100)
++REG32(AID, 0xFF8)
++REG32(ID, 0xFFC)
++
++/* Handle a write via the SYS_CFG channel to the specified function/device.
++ * Return false on error (reported to guest via SYS_CFGCTRL ERROR bit).
++ */
++static bool scc_cfg_write(MPS2SCC *s, unsigned function,
++                          unsigned device, uint32_t value)
++{
++    trace_mps2_scc_cfg_write(function, device, value);
++
++    if (function != 1 || device >= NUM_OSCCLK) {
++        qemu_log_mask(LOG_GUEST_ERROR,
++                      "MPS2 SCC config write: bad function %d device %d\n",
++                      function, device);
++        return false;
++    }
++
++    s->oscclk[device] = value;
++    return true;
++}
++
++/* Handle a read via the SYS_CFG channel to the specified function/device.
++ * Return false on error (reported to guest via SYS_CFGCTRL ERROR bit),
++ * or set *value on success.
++ */
++static bool scc_cfg_read(MPS2SCC *s, unsigned function,
++                         unsigned device, uint32_t *value)
++{
++    if (function != 1 || device >= NUM_OSCCLK) {
++        qemu_log_mask(LOG_GUEST_ERROR,
++                      "MPS2 SCC config read: bad function %d device %d\n",
++                      function, device);
++        return false;
++    }
++
++    *value = s->oscclk[device];
++
++    trace_mps2_scc_cfg_read(function, device, *value);
++    return true;
++}
++
++static uint64_t mps2_scc_read(void *opaque, hwaddr offset, unsigned size)
++{
++    MPS2SCC *s = MPS2_SCC(opaque);
++    uint64_t r;
++
++    switch (offset) {
++    case A_CFG0:
++        r = s->cfg0;
++        break;
++    case A_CFG1:
++        r = s->cfg1;
++        break;
++    case A_CFG3:
++        /* These are user-settable DIP switches on the board. We don't
++         * model that, so just return zeroes.
++         */
++        r = 0;
++        break;
++    case A_CFG4:
++        r = s->cfg4;
++        break;
++    case A_CFGDATA_RTN:
++        r = s->cfgdata_rtn;
++        break;
++    case A_CFGDATA_OUT:
++        r = s->cfgdata_out;
++        break;
++    case A_CFGCTRL:
++        r = s->cfgctrl;
++        break;
++    case A_CFGSTAT:
++        r = s->cfgstat;
++        break;
++    case A_DLL:
++        r = s->dll;
++        break;
++    case A_AID:
++        r = s->aid;
++        break;
++    case A_ID:
++        r = s->id;
++        break;
++    default:
++        qemu_log_mask(LOG_GUEST_ERROR,
++                      "MPS2 SCC read: bad offset %x\n", (int) offset);
++        r = 0;
++        break;
++    }
++
++    trace_mps2_scc_read(offset, r, size);
++    return r;
++}
++
++static void mps2_scc_write(void *opaque, hwaddr offset, uint64_t value,
++                           unsigned size)
++{
++    MPS2SCC *s = MPS2_SCC(opaque);
++
++    trace_mps2_scc_write(offset, value, size);
++
++    switch (offset) {
++    case A_CFG0:
++        /* TODO on some boards bit 0 controls RAM remapping */
++        s->cfg0 = value;
++        break;
++    case A_CFG1:
++        /* CFG1 bits [7:0] control the board LEDs. We don't currently have
++         * a mechanism for displaying this graphically, so use a trace event.
++         */
++        trace_mps2_scc_leds(value & 0x80 ? '*' : '.',
++                            value & 0x40 ? '*' : '.',
++                            value & 0x20 ? '*' : '.',
++                            value & 0x10 ? '*' : '.',
++                            value & 0x08 ? '*' : '.',
++                            value & 0x04 ? '*' : '.',
++                            value & 0x02 ? '*' : '.',
++                            value & 0x01 ? '*' : '.');
++        s->cfg1 = value;
++        break;
++    case A_CFGDATA_OUT:
++        s->cfgdata_out = value;
++        break;
++    case A_CFGCTRL:
++        /* Writing to CFGCTRL clears SYS_CFGSTAT */
++        s->cfgstat = 0;
++        s->cfgctrl = value & ~(R_CFGCTRL_RES1_MASK |
++                               R_CFGCTRL_RES2_MASK |
++                               R_CFGCTRL_START_MASK);
++
++        if (value & R_CFGCTRL_START_MASK) {
++            /* Start bit set -- do a read or write (instantaneously) */
++            int device = extract32(s->cfgctrl, R_CFGCTRL_DEVICE_SHIFT,
++                                   R_CFGCTRL_DEVICE_LENGTH);
++            int function = extract32(s->cfgctrl, R_CFGCTRL_FUNCTION_SHIFT,
++                                     R_CFGCTRL_FUNCTION_LENGTH);
++
++            s->cfgstat = R_CFGSTAT_DONE_MASK;
++            if (s->cfgctrl & R_CFGCTRL_WRITE_MASK) {
++                if (!scc_cfg_write(s, function, device, s->cfgdata_out)) {
++                    s->cfgstat |= R_CFGSTAT_ERROR_MASK;
++                }
++            } else {
++                uint32_t result;
++                if (!scc_cfg_read(s, function, device, &result)) {
++                    s->cfgstat |= R_CFGSTAT_ERROR_MASK;
++                } else {
++                    s->cfgdata_rtn = result;
++                }
++            }
++        }
++        break;
++    case A_DLL:
++        /* DLL stands for Digital Locked Loop.
++         * Bits [31:24] (DLL_LOCK_MASK) are writable, and indicate a
++         * mask of which of the DLL_LOCKED bits [16:23] should be ORed
++         * together to determine the ALL_UNMASKED_DLLS_LOCKED bit [0].
++         * For QEMU, our DLLs are always locked, so we can leave bit 0
++         * as 1 always and don't need to recalculate it.
++         */
++        s->dll = deposit32(s->dll, 24, 8, extract32(value, 24, 8));
++        break;
++    default:
++        qemu_log_mask(LOG_GUEST_ERROR,
++                      "MPS2 SCC write: bad offset 0x%x\n", (int) offset);
++        break;
++    }
++}
++
++static const MemoryRegionOps mps2_scc_ops = {
++    .read = mps2_scc_read,
++    .write = mps2_scc_write,
++    .endianness = DEVICE_LITTLE_ENDIAN,
++};
++
++static void mps2_scc_reset(DeviceState *dev)
++{
++    MPS2SCC *s = MPS2_SCC(dev);
++    int i;
++
++    trace_mps2_scc_reset();
++    s->cfg0 = 0;
++    s->cfg1 = 0;
++    s->cfgdata_rtn = 0;
++    s->cfgdata_out = 0;
++    s->cfgctrl = 0x100000;
++    s->cfgstat = 0;
++    s->dll = 0xffff0001;
++    for (i = 0; i < NUM_OSCCLK; i++) {
++        s->oscclk[i] = s->oscclk_reset[i];
++    }
++}
++
++static void mps2_scc_init(Object *obj)
++{
++    SysBusDevice *sbd = SYS_BUS_DEVICE(obj);
++    MPS2SCC *s = MPS2_SCC(obj);
++
++    memory_region_init_io(&s->iomem, obj, &mps2_scc_ops, s, "mps2-scc", 0x1000);
++    sysbus_init_mmio(sbd, &s->iomem);
++}
++
++static void mps2_scc_realize(DeviceState *dev, Error **errp)
 +{
 +}
 +
- static void aarch64_tr_insn_start(DisasContextBase *dcbase, CPUState *cpu)
- {
-     DisasContext *dc = container_of(dcbase, DisasContext, base);
-@@ -11378,6 +11383,9 @@ static void aarch64_tr_tb_stop(DisasContextBase *dcbase, CPUState *cpu)
-             break;
-         }
-     }
-+
-+    /* Functions above can change dc->pc, so re-align db->pc_next */
-+    dc->base.pc_next = dc->pc;
- }
- 
- static void aarch64_tr_disas_log(const DisasContextBase *dcbase,
-@@ -11390,92 +11398,12 @@ static void aarch64_tr_disas_log(const DisasContextBase *dcbase,
-                      4 | (bswap_code(dc->sctlr_b) ? 2 : 0));
- }
- 
--void gen_intermediate_code_a64(DisasContextBase *dcbase, CPUState *cs,
--                               TranslationBlock *tb)
--{
--    DisasContext *dc = container_of(dcbase, DisasContext, base);
--    int max_insns;
--
--    dc->base.tb = tb;
--    dc->base.pc_first = dc->base.tb->pc;
--    dc->base.pc_next = dc->base.pc_first;
--    dc->base.is_jmp = DISAS_NEXT;
--    dc->base.num_insns = 0;
--    dc->base.singlestep_enabled = cs->singlestep_enabled;
--    aarch64_tr_init_disas_context(&dc->base, cs);
--
--    max_insns = dc->base.tb->cflags & CF_COUNT_MASK;
--    if (max_insns == 0) {
--        max_insns = CF_COUNT_MASK;
--    }
--    if (max_insns > TCG_MAX_INSNS) {
--        max_insns = TCG_MAX_INSNS;
--    }
--
--    gen_tb_start(tb);
--
--    tcg_clear_temp_count();
--
--    do {
--        dc->base.num_insns++;
--        aarch64_tr_insn_start(&dc->base, cs);
--
--        if (unlikely(!QTAILQ_EMPTY(&cs->breakpoints))) {
--            CPUBreakpoint *bp;
--            QTAILQ_FOREACH(bp, &cs->breakpoints, entry) {
--                if (bp->pc == dc->base.pc_next) {
--                    if (aarch64_tr_breakpoint_check(&dc->base, cs, bp)) {
--                        break;
--                    }
--                }
--            }
--
--            if (dc->base.is_jmp == DISAS_NORETURN) {
--                break;
--            }
--        }
--
--        if (dc->base.num_insns == max_insns && (dc->base.tb->cflags & CF_LAST_IO)) {
--            gen_io_start();
--        }
--
--        dc->base.pc_next = aarch64_tr_translate_insn(&dc->base, cs);
--
--        if (tcg_check_temp_count()) {
--            fprintf(stderr, "TCG temporary leak before "TARGET_FMT_lx"\n",
--                    dc->pc);
--        }
--
--        if (!dc->base.is_jmp && (tcg_op_buf_full() || cs->singlestep_enabled ||
--                            singlestep || dc->base.num_insns >= max_insns)) {
--            dc->base.is_jmp = DISAS_TOO_MANY;
--        }
--
--        /* Translation stops when a conditional branch is encountered.
--         * Otherwise the subsequent code could get translated several times.
--         * Also stop translation when a page boundary is reached.  This
--         * ensures prefetch aborts occur at the right place.
--         */
--    } while (!dc->base.is_jmp);
--
--    aarch64_tr_tb_stop(&dc->base, cs);
--
--    if (dc->base.tb->cflags & CF_LAST_IO) {
--        gen_io_end();
--    }
--
--    gen_tb_end(tb, dc->base.num_insns);
--
--#ifdef DEBUG_DISAS
--    if (qemu_loglevel_mask(CPU_LOG_TB_IN_ASM) &&
--        qemu_log_in_addr_range(dc->base.pc_first)) {
--        qemu_log_lock();
--        qemu_log("----------------\n");
--        aarch64_tr_disas_log(&dc->base, cs);
--        qemu_log("\n");
--        qemu_log_unlock();
--    }
--#endif
--    dc->base.tb->size = dc->pc - dc->base.pc_first;
--    dc->base.tb->icount = dc->base.num_insns;
--}
-+const TranslatorOps aarch64_translator_ops = {
-+    .init_disas_context = aarch64_tr_init_disas_context,
-+    .tb_start           = aarch64_tr_tb_start,
-+    .insn_start         = aarch64_tr_insn_start,
-+    .breakpoint_check   = aarch64_tr_breakpoint_check,
-+    .translate_insn     = aarch64_tr_translate_insn,
-+    .tb_stop            = aarch64_tr_tb_stop,
-+    .disas_log          = aarch64_tr_disas_log,
-+};
-diff --git a/target/arm/translate.c b/target/arm/translate.c
-index 507f51d001..ea27a7f70b 100644
---- a/target/arm/translate.c
-+++ b/target/arm/translate.c
-@@ -12133,6 +12133,9 @@ static void arm_tr_tb_stop(DisasContextBase *dcbase, CPUState *cpu)
-             gen_goto_tb(dc, 1, dc->pc);
-         }
-     }
-+
-+    /* Functions above can change dc->pc, so re-align db->pc_next */
-+    dc->base.pc_next = dc->pc;
- }
- 
- static void arm_tr_disas_log(const DisasContextBase *dcbase, CPUState *cpu)
-@@ -12144,100 +12147,29 @@ static void arm_tr_disas_log(const DisasContextBase *dcbase, CPUState *cpu)
-                      dc->thumb | (dc->sctlr_b << 1));
- }
- 
-+static const TranslatorOps arm_translator_ops = {
-+    .init_disas_context = arm_tr_init_disas_context,
-+    .tb_start           = arm_tr_tb_start,
-+    .insn_start         = arm_tr_insn_start,
-+    .breakpoint_check   = arm_tr_breakpoint_check,
-+    .translate_insn     = arm_tr_translate_insn,
-+    .tb_stop            = arm_tr_tb_stop,
-+    .disas_log          = arm_tr_disas_log,
++static const VMStateDescription mps2_scc_vmstate = {
++    .name = "mps2-scc",
++    .version_id = 1,
++    .minimum_version_id = 1,
++    .fields = (VMStateField[]) {
++        VMSTATE_UINT32(cfg0, MPS2SCC),
++        VMSTATE_UINT32(cfg1, MPS2SCC),
++        VMSTATE_UINT32(cfgdata_rtn, MPS2SCC),
++        VMSTATE_UINT32(cfgdata_out, MPS2SCC),
++        VMSTATE_UINT32(cfgctrl, MPS2SCC),
++        VMSTATE_UINT32(cfgstat, MPS2SCC),
++        VMSTATE_UINT32(dll, MPS2SCC),
++        VMSTATE_UINT32_ARRAY(oscclk, MPS2SCC, NUM_OSCCLK),
++        VMSTATE_END_OF_LIST()
++    }
 +};
 +
- /* generate intermediate code for basic block 'tb'.  */
--void gen_intermediate_code(CPUState *cs, TranslationBlock *tb)
-+void gen_intermediate_code(CPUState *cpu, TranslationBlock *tb)
- {
--    DisasContext dc1, *dc = &dc1;
--    int max_insns;
-+    DisasContext dc;
-+    const TranslatorOps *ops = &arm_translator_ops;
- 
--    /* generate intermediate code */
--
--    /* The A64 decoder has its own top level loop, because it doesn't need
--     * the A32/T32 complexity to do with conditional execution/IT blocks/etc.
--     */
-+#ifdef TARGET_AARCH64
-     if (ARM_TBFLAG_AARCH64_STATE(tb->flags)) {
--        gen_intermediate_code_a64(&dc->base, cs, tb);
--        return;
--    }
--
--    dc->base.tb = tb;
--    dc->base.pc_first = dc->base.tb->pc;
--    dc->base.pc_next = dc->base.pc_first;
--    dc->base.is_jmp = DISAS_NEXT;
--    dc->base.num_insns = 0;
--    dc->base.singlestep_enabled = cs->singlestep_enabled;
--    arm_tr_init_disas_context(&dc->base, cs);
--
--
--    max_insns = tb->cflags & CF_COUNT_MASK;
--    if (max_insns == 0) {
--        max_insns = CF_COUNT_MASK;
--    }
--    if (max_insns > TCG_MAX_INSNS) {
--        max_insns = TCG_MAX_INSNS;
--    }
--
--    gen_tb_start(tb);
--
--    tcg_clear_temp_count();
--    arm_tr_tb_start(&dc->base, cs, &max_insns);
--
--    do {
--        dc->base.num_insns++;
--        arm_tr_insn_start(&dc->base, cs);
--
--        if (unlikely(!QTAILQ_EMPTY(&cs->breakpoints))) {
--            CPUBreakpoint *bp;
--            QTAILQ_FOREACH(bp, &cs->breakpoints, entry) {
--                if (bp->pc == dc->base.pc_next) {
--                    if (arm_tr_breakpoint_check(&dc->base, cs, bp)) {
--                        break;
--                    }
--                }
--            }
--
--            if (dc->base.is_jmp == DISAS_NORETURN) {
--                break;
--            }
--        }
--
--        if (dc->base.num_insns == max_insns && (tb->cflags & CF_LAST_IO)) {
--            gen_io_start();
--        }
--
--        dc->base.pc_next = arm_tr_translate_insn(&dc->base, cs);
--
--        if (tcg_check_temp_count()) {
--            fprintf(stderr, "TCG temporary leak before "TARGET_FMT_lx"\n",
--                    dc->pc);
--        }
--
--        if (!dc->base.is_jmp && (tcg_op_buf_full() || singlestep ||
--                            dc->base.num_insns >= max_insns)) {
--            dc->base.is_jmp = DISAS_TOO_MANY;
--        }
--    } while (!dc->base.is_jmp);
--
--    arm_tr_tb_stop(&dc->base, cs);
--
--    if (dc->base.tb->cflags & CF_LAST_IO) {
--        gen_io_end();
--    }
--
--    gen_tb_end(tb, dc->base.num_insns);
--
--#ifdef DEBUG_DISAS
--    if (qemu_loglevel_mask(CPU_LOG_TB_IN_ASM) &&
--        qemu_log_in_addr_range(dc->base.pc_first)) {
--        qemu_log_lock();
--        qemu_log("----------------\n");
--        arm_tr_disas_log(&dc->base, cs);
--        qemu_log("\n");
--        qemu_log_unlock();
-+        ops = &aarch64_translator_ops;
-     }
- #endif
--    tb->size = dc->pc - dc->base.pc_first;
--    tb->icount = dc->base.num_insns;
++static Property mps2_scc_properties[] = {
++    /* Values for various read-only ID registers (which are specific
++     * to the board model or FPGA image)
++     */
++    DEFINE_PROP_UINT32("scc-cfg4", MPS2SCC, aid, 0),
++    DEFINE_PROP_UINT32("scc-aid", MPS2SCC, aid, 0),
++    DEFINE_PROP_UINT32("scc-id", MPS2SCC, aid, 0),
++    /* These are the initial settings for the source clocks on the board.
++     * In hardware they can be configured via a config file read by the
++     * motherboard configuration controller to suit the FPGA image.
++     * These default values are used by most of the standard FPGA images.
++     */
++    DEFINE_PROP_UINT32("oscclk0", MPS2SCC, oscclk_reset[0], 50000000),
++    DEFINE_PROP_UINT32("oscclk1", MPS2SCC, oscclk_reset[1], 24576000),
++    DEFINE_PROP_UINT32("oscclk2", MPS2SCC, oscclk_reset[2], 25000000),
++    DEFINE_PROP_END_OF_LIST(),
++};
 +
-+    translator_loop(ops, &dc.base, cpu, tb);
- }
++static void mps2_scc_class_init(ObjectClass *klass, void *data)
++{
++    DeviceClass *dc = DEVICE_CLASS(klass);
++
++    dc->realize = mps2_scc_realize;
++    dc->vmsd = &mps2_scc_vmstate;
++    dc->reset = mps2_scc_reset;
++    dc->props = mps2_scc_properties;
++}
++
++static const TypeInfo mps2_scc_info = {
++    .name = TYPE_MPS2_SCC,
++    .parent = TYPE_SYS_BUS_DEVICE,
++    .instance_size = sizeof(MPS2SCC),
++    .instance_init = mps2_scc_init,
++    .class_init = mps2_scc_class_init,
++};
++
++static void mps2_scc_register_types(void)
++{
++    type_register_static(&mps2_scc_info);
++}
++
++type_init(mps2_scc_register_types);
+diff --git a/default-configs/arm-softmmu.mak b/default-configs/arm-softmmu.mak
+index c75f52c..bbdd3c1 100644
+--- a/default-configs/arm-softmmu.mak
++++ b/default-configs/arm-softmmu.mak
+@@ -99,6 +99,8 @@ CONFIG_STM32F205_SOC=y
+ CONFIG_CMSDK_APB_TIMER=y
+ CONFIG_CMSDK_APB_UART=y
  
- static const char *cpu_mode_names[16] = {
-diff --git a/target/arm/translate.h b/target/arm/translate.h
-index 720cb102e3..0337cec52b 100644
---- a/target/arm/translate.h
-+++ b/target/arm/translate.h
-@@ -152,21 +152,15 @@ static void disas_set_insn_syndrome(DisasContext *s, uint32_t syn)
++CONFIG_MPS2_SCC=y
++
+ CONFIG_VERSATILE_PCI=y
+ CONFIG_VERSATILE_I2C=y
  
- #ifdef TARGET_AARCH64
- void a64_translate_init(void);
--void gen_intermediate_code_a64(DisasContextBase *db, CPUState *cpu,
--                               TranslationBlock *tb);
- void gen_a64_set_pc_im(uint64_t val);
- void aarch64_cpu_dump_state(CPUState *cs, FILE *f,
-                             fprintf_function cpu_fprintf, int flags);
-+extern const TranslatorOps aarch64_translator_ops;
- #else
- static inline void a64_translate_init(void)
- {
- }
+diff --git a/hw/misc/trace-events b/hw/misc/trace-events
+index 0cc556c..28b8cd1 100644
+--- a/hw/misc/trace-events
++++ b/hw/misc/trace-events
+@@ -53,3 +53,11 @@ milkymist_pfpu_pulse_irq(void) "Pulse IRQ"
  
--static inline void gen_intermediate_code_a64(DisasContextBase *db, CPUState *cpu,
--                                             TranslationBlock *tb)
--{
--}
--
- static inline void gen_a64_set_pc_im(uint64_t val)
- {
- }
+ # hw/misc/aspeed_scu.c
+ aspeed_scu_write(uint64_t offset, unsigned size, uint32_t data) "To 0x%" PRIx64 " of size %u: 0x%" PRIx32
++
++# hw/misc/mps2_scc.c
++mps2_scc_read(uint64_t offset, uint64_t data, unsigned size) "MPS2 SCC read: offset 0x%" PRIx64 " data 0x%" PRIx64 " size %u"
++mps2_scc_write(uint64_t offset, uint64_t data, unsigned size) "MPS2 SCC write: offset 0x%" PRIx64 " data 0x%" PRIx64 " size %u"
++mps2_scc_reset(void) "MPS2 SCC: reset"
++mps2_scc_leds(char led7, char led6, char led5, char led4, char led3, char led2, char led1, char led0) "MPS2 SCC LEDs: %c%c%c%c%c%c%c%c"
++mps2_scc_cfg_write(unsigned function, unsigned device, uint32_t value) "MPS2 SCC config write: function %d device %d data 0x%" PRIx32
++mps2_scc_cfg_read(unsigned function, unsigned device, uint32_t value) "MPS2 SCC config read: function %d device %d data 0x%" PRIx32
+-- 
+2.7.4
+

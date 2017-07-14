@@ -1,70 +1,73 @@
-Received: by 10.25.44.15 with SMTP id s15csp765271lfs;
-        Fri, 14 Jul 2017 03:57:14 -0700 (PDT)
-X-Received: by 10.55.169.134 with SMTP id s128mr287064qke.69.1500029834644;
-        Fri, 14 Jul 2017 03:57:14 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1500029834; cv=none;
+Received: by 10.25.44.15 with SMTP id s15csp868929lfs;
+        Fri, 14 Jul 2017 05:30:42 -0700 (PDT)
+X-Received: by 10.237.34.109 with SMTP id o42mr11801477qtc.217.1500035442775;
+        Fri, 14 Jul 2017 05:30:42 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1500035442; cv=none;
         d=google.com; s=arc-20160816;
-        b=bKyUdncBPwqKXNMRztYLN/00Ke4CbaIC9rgZ6IXw1NXvD8aFr00/6LU5/nT4kJ6IOR
-         Vdb8ezRwsin4F/oboGVPmY4/3N/uDyAL3K2gMmLLwEWMKx78t5X25VfGEErT3igDDkVv
-         YGRaHbNi+Tt5PzNHPo3SGNKKJEN9XW2j1ObiQOq8AYtqcb4mNjdmXerxDhvyqwnmFue+
-         DNTmcuzt6z6o4EFRiDQZo4Keyt5x2qHJ1dGiJ7bGgsQKIQStaOIFVylxTYHyllIiWUQe
-         bMEuKdu4GEQ+Nig+VxsBj9FsQhXQYjWON93N9dPkJ3R3sQi+zZMsntQ7FF0G27/2eq8j
-         i0iQ==
+        b=FYU/cC5qXJFFPhmxjTj9EUgvq+VkfQ8CIAhqm6zQcSHUV2+lEUdUs5MKy8GVdeQdmr
+         /EBshR/SNeK6vAzJv4wybg1HL5UuQoSQrgol34gS5eSq2hb4pnd/4ePS0qebEB8lqGji
+         tvZOpHPO1QbzwVnH8AodpnhxR9JXG8rwOqw6xiQstnLDHukMwTBeVu3U/zrkSrSKJxsz
+         2ZmiuBU8+ukGBvd0rwmJ8bcU3oGXdUJdqV62YAtAzkXXtCBFxxF/bFrK2Y4hMJaL7+v4
+         vbPEdQXXr3z1CVDbyrI1nrkh7bN1GnQWVjfAJ09Pnrc0Mx3aCQkFZNAsVo/7HCCjboNs
+         ZWbg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
-         :message-id:date:to:from:arc-authentication-results;
-        bh=d5ZpoJrU5RVoVqAlHmHw1zXekfunG1ND8m8LSxqVVEE=;
-        b=BK5f09dBBg89Nbw3BnKn9mpdM3V2/8jztpk37pQAeUozkLQgzD8mU+jhz1SHacbHF/
-         N6x5D1Tm6DY3V9g8qqfDuU5mXXZBsz1ORARv5gd23/U8XjLZjIfGNCUGeoqkVGcnRHrW
-         q+AEyIvw/xAgqnd2aBr9teAdMeSKvf/h4hPXbq/IHmXCr9jj3eQHUZKnNcC35jAzI5v3
-         AI3a4A0tSvDNUA42bEj1FQnlIXEQ5xrQSsS9Vr2Pv9WDI4lhzGM0V8u0/nLWVFrXoInM
-         /rG3CPpjsU8oBbAVpm9laBM8RjgirsV+L/isfDG8Ny+G3qJ85orCsqWj59AQY22oNXyf
-         ZFtQ==
+        h=sender:errors-to:cc:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence:subject:date:to
+         :from:resent-from:content-transfer-encoding:mime-version:in-reply-to
+         :message-id:resent-message-id:resent-date:arc-authentication-results;
+        bh=B0ZzfTknFhxNK4XJVnOOp0iUZmgqK91ZIAbEq8ggZ3s=;
+        b=T/Vc/HKMAtFoJXlTC352Wiqms/1ObYUJMDBVDhFUTPU+snLRQN7Z2y8gu/ivt0odGJ
+         RuKRMOMaJs6IcD7mtIcAdscgipB4mIZRnvAduKXNb3O+b+nKWi9bpZs4N5xVQxeq6EUs
+         EDrJUbGAnHpVMbvnf98PnlI5zW1QpmzZY9wpgAbvpijgWGtHkQZllualo7tlmavPxwZ6
+         5KkbrXeHwTb4Ucp2xSQQbQ7yhy+cdvCOku15/0HJmP6o5gORclWpuI3SJMPbBBlralZx
+         4csPg5QpBmWACRYwfQLs7aS9SqqPpgWxJweYuJuGhCyQlzUgz0pw+QEyIArYDUQmQ5Ve
+         21/Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id z41si7263285qtg.278.2017.07.14.03.57.13
+        by mx.google.com with ESMTPS id q7si7678573qkl.241.2017.07.14.05.30.42
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 14 Jul 2017 03:57:14 -0700 (PDT)
+        Fri, 14 Jul 2017 05:30:42 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:36963 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:37779 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1dVyHX-0001yB-PH
-	for alex.bennee@linaro.org; Fri, 14 Jul 2017 06:57:11 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:53543)
+	id 1dVzk0-0002tb-2J
+	for alex.bennee@linaro.org; Fri, 14 Jul 2017 08:30:40 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:47258)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1dVyCS-0004y0-QI
-	for qemu-arm@nongnu.org; Fri, 14 Jul 2017 06:52:01 -0400
+	(envelope-from <no-reply@patchew.org>) id 1dVzWZ-0005Fj-57
+	for qemu-arm@nongnu.org; Fri, 14 Jul 2017 08:16:48 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1dVyCO-0007HX-Ke
-	for qemu-arm@nongnu.org; Fri, 14 Jul 2017 06:51:56 -0400
-Received: from [2001:8b0:1d0::2] (port=37583 helo=orth.archaic.org.uk)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <pm215@archaic.org.uk>)
-	id 1dVyCO-00072e-8j; Fri, 14 Jul 2017 06:51:52 -0400
-Received: from pm215 by orth.archaic.org.uk with local (Exim 4.84_2)
-	(envelope-from <pm215@archaic.org.uk>)
-	id 1dVyC0-0007jt-Cm; Fri, 14 Jul 2017 11:51:28 +0100
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Date: Fri, 14 Jul 2017 11:51:20 +0100
-Message-Id: <1500029487-14822-3-git-send-email-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.7.4
+	(envelope-from <no-reply@patchew.org>) id 1dVzWX-0004xE-Mb
+	for qemu-arm@nongnu.org; Fri, 14 Jul 2017 08:16:47 -0400
+Resent-Date: Fri, 14 Jul 2017 08:16:47 -0400
+Resent-Message-Id: <E1dVzWX-0004xE-Mb@eggs.gnu.org>
+Received: from sender-of-o53.zoho.com ([135.84.80.218]:21754)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <no-reply@patchew.org>)
+	id 1dVzWR-0004rT-UC; Fri, 14 Jul 2017 08:16:40 -0400
+Received: from [172.17.0.2] (23.253.156.214 [23.253.156.214]) by
+	mx.zohomail.com with SMTPS id 1500034587649300.78739727616846;
+	Fri, 14 Jul 2017 05:16:27 -0700 (PDT)
+Message-ID: <150003458708.75.17469343830014450222@5d477a5b5989>
 In-Reply-To: <1500029487-14822-1-git-send-email-peter.maydell@linaro.org>
-References: <1500029487-14822-1-git-send-email-peter.maydell@linaro.org>
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2001:8b0:1d0::2
-Subject: [Qemu-arm] [PATCH v2 2/9] hw/char/cmsdk-apb-uart.c: Implement CMSDK
- APB UART
+MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Resent-From: 
+From: no-reply@patchew.org
+To: peter.maydell@linaro.org
+Date: Fri, 14 Jul 2017 05:16:27 -0700 (PDT)
+X-ZohoMailClient: External
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
+X-Received-From: 135.84.80.218
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v2 0/9] ARM: implement MPS2
+ board (with 2 FPGA flavours)
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -76,561 +79,77 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Alistair Francis <alistair.francis@xilinx.com>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
-	patches@linaro.org
+Reply-To: qemu-devel@nongnu.org
+Cc: famz@redhat.com, patches@linaro.org, f4bug@amsat.org, qemu-devel@nongnu.org,
+	qemu-arm@nongnu.org, alistair.francis@xilinx.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: RcaLMlnaC9Zb
+X-TUID: jX5jai8xF+JW
 
-Implement a model of the simple "APB UART" provided in
-the Cortex-M System Design Kit (CMSDK).
-
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
- hw/char/Makefile.objs            |   1 +
- include/hw/char/cmsdk-apb-uart.h |  78 ++++++++
- hw/char/cmsdk-apb-uart.c         | 402 +++++++++++++++++++++++++++++++++++++++
- default-configs/arm-softmmu.mak  |   2 +
- hw/char/trace-events             |   9 +
- 5 files changed, 492 insertions(+)
- create mode 100644 include/hw/char/cmsdk-apb-uart.h
- create mode 100644 hw/char/cmsdk-apb-uart.c
-
-diff --git a/hw/char/Makefile.objs b/hw/char/Makefile.objs
-index 55fcb68..1bcd37e 100644
---- a/hw/char/Makefile.objs
-+++ b/hw/char/Makefile.objs
-@@ -19,6 +19,7 @@ obj-$(CONFIG_DIGIC) += digic-uart.o
- obj-$(CONFIG_STM32F2XX_USART) += stm32f2xx_usart.o
- obj-$(CONFIG_RASPI) += bcm2835_aux.o
- 
-+common-obj-$(CONFIG_CMSDK_APB_UART) += cmsdk-apb-uart.o
- common-obj-$(CONFIG_ETRAXFS) += etraxfs_ser.o
- common-obj-$(CONFIG_ISA_DEBUG) += debugcon.o
- common-obj-$(CONFIG_GRLIB) += grlib_apbuart.o
-diff --git a/include/hw/char/cmsdk-apb-uart.h b/include/hw/char/cmsdk-apb-uart.h
-new file mode 100644
-index 0000000..c41fba9
---- /dev/null
-+++ b/include/hw/char/cmsdk-apb-uart.h
-@@ -0,0 +1,78 @@
-+/*
-+ * ARM CMSDK APB UART emulation
-+ *
-+ * Copyright (c) 2017 Linaro Limited
-+ * Written by Peter Maydell
-+ *
-+ *  This program is free software; you can redistribute it and/or modify
-+ *  it under the terms of the GNU General Public License version 2 or
-+ *  (at your option) any later version.
-+ */
-+
-+#ifndef CMSDK_APB_UART_H
-+#define CMSDK_APB_UART_H
-+
-+#include "hw/sysbus.h"
-+#include "chardev/char-fe.h"
-+
-+#define TYPE_CMSDK_APB_UART "cmsdk-apb-uart"
-+#define CMSDK_APB_UART(obj) OBJECT_CHECK(CMSDKAPBUART, (obj), \
-+                                         TYPE_CMSDK_APB_UART)
-+
-+typedef struct {
-+    /*< private >*/
-+    SysBusDevice parent_obj;
-+
-+    /*< public >*/
-+    MemoryRegion iomem;
-+    CharBackend chr;
-+    qemu_irq txint;
-+    qemu_irq rxint;
-+    qemu_irq txovrint;
-+    qemu_irq rxovrint;
-+    qemu_irq uartint;
-+    guint watch_tag;
-+    uint32_t pclk_frq;
-+
-+    uint32_t state;
-+    uint32_t ctrl;
-+    uint32_t intstatus;
-+    uint32_t bauddiv;
-+    /* This UART has no FIFO, only a 1-character buffer for each of Tx and Rx */
-+    uint8_t txbuf;
-+    uint8_t rxbuf;
-+} CMSDKAPBUART;
-+
-+/**
-+ * cmsdk_apb_uart_create - convenience function to create TYPE_CMSDK_APB_UART
-+ * @addr: location in system memory to map registers
-+ * @chr: Chardev backend to connect UART to, or NULL if no backend
-+ * @pclk_frq: frequency in Hz of the PCLK clock (used for calculating baud rate)
-+ */
-+static inline DeviceState *cmsdk_apb_uart_create(hwaddr addr,
-+                                                 qemu_irq txint,
-+                                                 qemu_irq rxint,
-+                                                 qemu_irq txovrint,
-+                                                 qemu_irq rxovrint,
-+                                                 qemu_irq uartint,
-+                                                 Chardev *chr,
-+                                                 uint32_t pclk_frq)
-+{
-+    DeviceState *dev;
-+    SysBusDevice *s;
-+
-+    dev = qdev_create(NULL, TYPE_CMSDK_APB_UART);
-+    s = SYS_BUS_DEVICE(dev);
-+    qdev_prop_set_chr(dev, "chardev", chr);
-+    qdev_prop_set_uint32(dev, "pclk-frq", pclk_frq);
-+    qdev_init_nofail(dev);
-+    sysbus_mmio_map(s, 0, addr);
-+    sysbus_connect_irq(s, 0, txint);
-+    sysbus_connect_irq(s, 1, rxint);
-+    sysbus_connect_irq(s, 2, txovrint);
-+    sysbus_connect_irq(s, 3, rxovrint);
-+    sysbus_connect_irq(s, 4, uartint);
-+    return dev;
-+}
-+
-+#endif
-diff --git a/hw/char/cmsdk-apb-uart.c b/hw/char/cmsdk-apb-uart.c
-new file mode 100644
-index 0000000..82d2bea
---- /dev/null
-+++ b/hw/char/cmsdk-apb-uart.c
-@@ -0,0 +1,402 @@
-+/*
-+ * ARM CMSDK APB UART emulation
-+ *
-+ * Copyright (c) 2017 Linaro Limited
-+ * Written by Peter Maydell
-+ *
-+ *  This program is free software; you can redistribute it and/or modify
-+ *  it under the terms of the GNU General Public License version 2 or
-+ *  (at your option) any later version.
-+ */
-+
-+/* This is a model of the "APB UART" which is part of the Cortex-M
-+ * System Design Kit (CMSDK) and documented in the Cortex-M System
-+ * Design Kit Technical Reference Manual (ARM DDI0479C):
-+ * https://developer.arm.com/products/system-design/system-design-kits/cortex-m-system-design-kit
-+ */
-+
-+#include "qemu/osdep.h"
-+#include "qemu/log.h"
-+#include "qapi/error.h"
-+#include "trace.h"
-+#include "hw/sysbus.h"
-+#include "hw/registerfields.h"
-+#include "chardev/char-fe.h"
-+#include "chardev/char-serial.h"
-+#include "hw/char/cmsdk-apb-uart.h"
-+
-+REG32(DATA, 0)
-+REG32(STATE, 4)
-+    FIELD(STATE, TXFULL, 0, 1)
-+    FIELD(STATE, RXFULL, 1, 1)
-+    FIELD(STATE, TXOVERRUN, 2, 1)
-+    FIELD(STATE, RXOVERRUN, 3, 1)
-+REG32(CTRL, 8)
-+    FIELD(CTRL, TX_EN, 0, 1)
-+    FIELD(CTRL, RX_EN, 1, 1)
-+    FIELD(CTRL, TX_INTEN, 2, 1)
-+    FIELD(CTRL, RX_INTEN, 3, 1)
-+    FIELD(CTRL, TXO_INTEN, 4, 1)
-+    FIELD(CTRL, RXO_INTEN, 5, 1)
-+    FIELD(CTRL, HSTEST, 6, 1)
-+REG32(INTSTATUS, 0xc)
-+    FIELD(INTSTATUS, TX, 0, 1)
-+    FIELD(INTSTATUS, RX, 1, 1)
-+    FIELD(INTSTATUS, TXO, 2, 1)
-+    FIELD(INTSTATUS, RXO, 3, 1)
-+REG32(BAUDDIV, 0x10)
-+REG32(PID4, 0xFD0)
-+REG32(PID5, 0xFD4)
-+REG32(PID6, 0xFD8)
-+REG32(PID7, 0xFDC)
-+REG32(PID0, 0xFE0)
-+REG32(PID1, 0xFE4)
-+REG32(PID2, 0xFE8)
-+REG32(PID3, 0xFEC)
-+REG32(CID0, 0xFF0)
-+REG32(CID1, 0xFF4)
-+REG32(CID2, 0xFF8)
-+REG32(CID3, 0xFFC)
-+
-+/* PID/CID values */
-+static const int uart_id[] = {
-+    0x04, 0x00, 0x00, 0x00, /* PID4..PID7 */
-+    0x21, 0xb8, 0x1b, 0x00, /* PID0..PID3 */
-+    0x0d, 0xf0, 0x05, 0xb1, /* CID0..CID3 */
-+};
-+
-+static bool uart_baudrate_ok(CMSDKAPBUART *s)
-+{
-+    /* The minimum permitted bauddiv setting is 16, so we just ignore
-+     * settings below that (usually this means the device has just
-+     * been reset and not yet programmed).
-+     */
-+    return s->bauddiv >= 16 && s->bauddiv <= s->pclk_frq;
-+}
-+
-+static void uart_update_parameters(CMSDKAPBUART *s)
-+{
-+    QEMUSerialSetParams ssp;
-+
-+    /* This UART is always 8N1 but the baud rate is programmable. */
-+    if (!uart_baudrate_ok(s)) {
-+        return;
-+    }
-+
-+    ssp.data_bits = 8;
-+    ssp.parity = 'N';
-+    ssp.stop_bits = 1;
-+    ssp.speed = s->pclk_frq / s->bauddiv;
-+    qemu_chr_fe_ioctl(&s->chr, CHR_IOCTL_SERIAL_SET_PARAMS, &ssp);
-+    trace_cmsdk_apb_uart_set_params(ssp.speed);
-+}
-+
-+static void cmsdk_apb_uart_update(CMSDKAPBUART *s)
-+{
-+    /* update outbound irqs, including handling the way the rxo and txo
-+     * interrupt status bits are just logical AND of the overrun bit in
-+     * STATE and the overrun interrupt enable bit in CTRL.
-+     */
-+    uint32_t omask = (R_INTSTATUS_RXO_MASK | R_INTSTATUS_TXO_MASK);
-+    s->intstatus &= ~omask;
-+    s->intstatus |= (s->state & (s->ctrl >> 2) & omask);
-+
-+    qemu_set_irq(s->txint, !!(s->intstatus & R_INTSTATUS_TX_MASK));
-+    qemu_set_irq(s->rxint, !!(s->intstatus & R_INTSTATUS_RX_MASK));
-+    qemu_set_irq(s->txovrint, !!(s->intstatus & R_INTSTATUS_TXO_MASK));
-+    qemu_set_irq(s->rxovrint, !!(s->intstatus & R_INTSTATUS_RXO_MASK));
-+    qemu_set_irq(s->uartint, !!(s->intstatus));
-+}
-+
-+static int uart_can_receive(void *opaque)
-+{
-+    CMSDKAPBUART *s = CMSDK_APB_UART(opaque);
-+
-+    /* We can take a char if RX is enabled and the buffer is empty */
-+    if (s->ctrl & R_CTRL_RX_EN_MASK && !(s->state & R_STATE_RXFULL_MASK)) {
-+        return 1;
-+    }
-+    return 0;
-+}
-+
-+static void uart_receive(void *opaque, const uint8_t *buf, int size)
-+{
-+    CMSDKAPBUART *s = CMSDK_APB_UART(opaque);
-+
-+    trace_cmsdk_apb_uart_receive(*buf);
-+
-+    /* In fact uart_can_receive() ensures that we can't be
-+     * called unless RX is enabled and the buffer is empty,
-+     * but we include this logic as documentation of what the
-+     * hardware does if a character arrives in these circumstances.
-+     */
-+    if (!(s->ctrl & R_CTRL_RX_EN_MASK)) {
-+        /* Just drop the character on the floor */
-+        return;
-+    }
-+
-+    if (s->state & R_STATE_RXFULL_MASK) {
-+        s->state |= R_STATE_RXOVERRUN_MASK;
-+    }
-+
-+    s->rxbuf = *buf;
-+    s->state |= R_STATE_RXFULL_MASK;
-+    if (s->ctrl & R_CTRL_RX_INTEN_MASK) {
-+        s->intstatus |= R_INTSTATUS_RX_MASK;
-+    }
-+    cmsdk_apb_uart_update(s);
-+}
-+
-+static uint64_t uart_read(void *opaque, hwaddr offset, unsigned size)
-+{
-+    CMSDKAPBUART *s = CMSDK_APB_UART(opaque);
-+    uint64_t r;
-+
-+    switch (offset) {
-+    case A_DATA:
-+        r = s->rxbuf;
-+        s->state &= ~R_STATE_RXFULL_MASK;
-+        cmsdk_apb_uart_update(s);
-+        break;
-+    case A_STATE:
-+        r = s->state;
-+        break;
-+    case A_CTRL:
-+        r = s->ctrl;
-+        break;
-+    case A_INTSTATUS:
-+        r = s->intstatus;
-+        break;
-+    case A_BAUDDIV:
-+        r = s->bauddiv;
-+        break;
-+    case A_PID4 ... A_CID3:
-+        r = uart_id[(offset - A_PID4) / 4];
-+        break;
-+    default:
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+                      "CMSDK APB UART read: bad offset %x\n", (int) offset);
-+        r = 0;
-+        break;
-+    }
-+    trace_cmsdk_apb_uart_read(offset, r, size);
-+    return r;
-+}
-+
-+/* Try to send tx data, and arrange to be called back later if
-+ * we can't (ie the char backend is busy/blocking).
-+ */
-+static gboolean uart_transmit(GIOChannel *chan, GIOCondition cond, void *opaque)
-+{
-+    CMSDKAPBUART *s = CMSDK_APB_UART(opaque);
-+    int ret;
-+
-+    s->watch_tag = 0;
-+
-+    if (!(s->ctrl & R_CTRL_TX_EN_MASK) || !(s->state & R_STATE_TXFULL_MASK)) {
-+        return FALSE;
-+    }
-+
-+    ret = qemu_chr_fe_write(&s->chr, &s->txbuf, 1);
-+    if (ret <= 0) {
-+        s->watch_tag = qemu_chr_fe_add_watch(&s->chr, G_IO_OUT | G_IO_HUP,
-+                                             uart_transmit, s);
-+        if (!s->watch_tag) {
-+            /* Most common reason to be here is "no chardev backend":
-+             * just insta-drain the buffer, so the serial output
-+             * goes into a void, rather than blocking the guest.
-+             */
-+            goto buffer_drained;
-+        }
-+        /* Transmit pending */
-+        trace_cmsdk_apb_uart_tx_pending();
-+        return FALSE;
-+    }
-+
-+buffer_drained:
-+    /* Character successfully sent */
-+    trace_cmsdk_apb_uart_tx(s->txbuf);
-+    s->state &= ~R_STATE_TXFULL_MASK;
-+    /* Going from TXFULL set to clear triggers the tx interrupt */
-+    if (s->ctrl & R_CTRL_TX_INTEN_MASK) {
-+        s->intstatus |= R_INTSTATUS_TX_MASK;
-+    }
-+    cmsdk_apb_uart_update(s);
-+    return FALSE;
-+}
-+
-+static void uart_cancel_transmit(CMSDKAPBUART *s)
-+{
-+    if (s->watch_tag) {
-+        g_source_remove(s->watch_tag);
-+        s->watch_tag = 0;
-+    }
-+}
-+
-+static void uart_write(void *opaque, hwaddr offset, uint64_t value,
-+                       unsigned size)
-+{
-+    CMSDKAPBUART *s = CMSDK_APB_UART(opaque);
-+
-+    trace_cmsdk_apb_uart_write(offset, value, size);
-+
-+    switch (offset) {
-+    case A_DATA:
-+        s->txbuf = value;
-+        if (s->state & R_STATE_TXFULL_MASK) {
-+            /* Buffer already full -- note the overrun and let the
-+             * existing pending transmit callback handle the new char.
-+             */
-+            s->state |= R_STATE_TXOVERRUN_MASK;
-+            cmsdk_apb_uart_update(s);
-+        } else {
-+            s->state |= R_STATE_TXFULL_MASK;
-+            uart_transmit(NULL, G_IO_OUT, s);
-+        }
-+        break;
-+    case A_STATE:
-+        /* Bits 0 and 1 are read only; bits 2 and 3 are W1C */
-+        s->state &= ~(value & 0xc);
-+        cmsdk_apb_uart_update(s);
-+        break;
-+    case A_CTRL:
-+        s->ctrl = value & 0x7f;
-+        if ((s->ctrl & R_CTRL_TX_EN_MASK) && !uart_baudrate_ok(s)) {
-+            qemu_log_mask(LOG_GUEST_ERROR,
-+                          "CMSDK APB UART: Tx enabled with invalid baudrate\n");
-+        }
-+        cmsdk_apb_uart_update(s);
-+        break;
-+    case A_INTSTATUS:
-+        /* All bits are W1C. Clearing the overrun interrupt bits really
-+         * clears the overrun status bits in the STATE register (which
-+         * is then reflected into the intstatus value by the update function).
-+         */
-+        s->state &= ~(value & 0xc);
-+        cmsdk_apb_uart_update(s);
-+        break;
-+    case A_BAUDDIV:
-+        s->bauddiv = value & 0xFFFFF;
-+        uart_update_parameters(s);
-+        break;
-+    case A_PID4 ... A_CID3:
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+                      "CMSDK APB UART write: write to RO offset 0x%x\n",
-+                      (int)offset);
-+        break;
-+    default:
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+                      "CMSDK APB UART write: bad offset 0x%x\n", (int) offset);
-+        break;
-+    }
-+}
-+
-+static const MemoryRegionOps uart_ops = {
-+    .read = uart_read,
-+    .write = uart_write,
-+    .endianness = DEVICE_LITTLE_ENDIAN,
-+};
-+
-+static void cmsdk_apb_uart_reset(DeviceState *dev)
-+{
-+    CMSDKAPBUART *s = CMSDK_APB_UART(dev);
-+
-+    trace_cmsdk_apb_uart_reset();
-+    uart_cancel_transmit(s);
-+    s->state = 0;
-+    s->ctrl = 0;
-+    s->intstatus = 0;
-+    s->bauddiv = 0;
-+    s->txbuf = 0;
-+    s->rxbuf = 0;
-+}
-+
-+static void cmsdk_apb_uart_init(Object *obj)
-+{
-+    SysBusDevice *sbd = SYS_BUS_DEVICE(obj);
-+    CMSDKAPBUART *s = CMSDK_APB_UART(obj);
-+
-+    memory_region_init_io(&s->iomem, obj, &uart_ops, s, "uart", 0x1000);
-+    sysbus_init_mmio(sbd, &s->iomem);
-+    sysbus_init_irq(sbd, &s->txint);
-+    sysbus_init_irq(sbd, &s->rxint);
-+    sysbus_init_irq(sbd, &s->txovrint);
-+    sysbus_init_irq(sbd, &s->rxovrint);
-+    sysbus_init_irq(sbd, &s->uartint);
-+}
-+
-+static void cmsdk_apb_uart_realize(DeviceState *dev, Error **errp)
-+{
-+    CMSDKAPBUART *s = CMSDK_APB_UART(dev);
-+
-+    if (s->pclk_frq == 0) {
-+        error_setg(errp, "CMSDK APB UART: pclk-frq property must be set");
-+        return;
-+    }
-+
-+    /* This UART has no flow control, so we do not need to register
-+     * an event handler to deal with CHR_EVENT_BREAK.
-+     */
-+    qemu_chr_fe_set_handlers(&s->chr, uart_can_receive, uart_receive,
-+                             NULL, s, NULL, true);
-+}
-+
-+static int cmsdk_apb_uart_post_load(void *opaque, int version_id)
-+{
-+    CMSDKAPBUART *s = CMSDK_APB_UART(opaque);
-+
-+    /* If we have a pending character, arrange to resend it. */
-+    if (s->state & R_STATE_TXFULL_MASK) {
-+        s->watch_tag = qemu_chr_fe_add_watch(&s->chr, G_IO_OUT | G_IO_HUP,
-+                                             uart_transmit, s);
-+    }
-+    uart_update_parameters(s);
-+    return 0;
-+}
-+
-+static const VMStateDescription cmsdk_apb_uart_vmstate = {
-+    .name = "cmsdk-apb-uart",
-+    .version_id = 1,
-+    .minimum_version_id = 1,
-+    .post_load = cmsdk_apb_uart_post_load,
-+    .fields = (VMStateField[]) {
-+        VMSTATE_UINT32(state, CMSDKAPBUART),
-+        VMSTATE_UINT32(ctrl, CMSDKAPBUART),
-+        VMSTATE_UINT32(intstatus, CMSDKAPBUART),
-+        VMSTATE_UINT32(bauddiv, CMSDKAPBUART),
-+        VMSTATE_UINT8(txbuf, CMSDKAPBUART),
-+        VMSTATE_UINT8(rxbuf, CMSDKAPBUART),
-+        VMSTATE_END_OF_LIST()
-+    }
-+};
-+
-+static Property cmsdk_apb_uart_properties[] = {
-+    DEFINE_PROP_CHR("chardev", CMSDKAPBUART, chr),
-+    DEFINE_PROP_UINT32("pclk-frq", CMSDKAPBUART, pclk_frq, 0),
-+    DEFINE_PROP_END_OF_LIST(),
-+};
-+
-+static void cmsdk_apb_uart_class_init(ObjectClass *klass, void *data)
-+{
-+    DeviceClass *dc = DEVICE_CLASS(klass);
-+
-+    dc->realize = cmsdk_apb_uart_realize;
-+    dc->vmsd = &cmsdk_apb_uart_vmstate;
-+    dc->reset = cmsdk_apb_uart_reset;
-+    dc->props = cmsdk_apb_uart_properties;
-+}
-+
-+static const TypeInfo cmsdk_apb_uart_info = {
-+    .name = TYPE_CMSDK_APB_UART,
-+    .parent = TYPE_SYS_BUS_DEVICE,
-+    .instance_size = sizeof(CMSDKAPBUART),
-+    .instance_init = cmsdk_apb_uart_init,
-+    .class_init = cmsdk_apb_uart_class_init,
-+};
-+
-+static void cmsdk_apb_uart_register_types(void)
-+{
-+    type_register_static(&cmsdk_apb_uart_info);
-+}
-+
-+type_init(cmsdk_apb_uart_register_types);
-diff --git a/default-configs/arm-softmmu.mak b/default-configs/arm-softmmu.mak
-index bfd2a88..d128e9d 100644
---- a/default-configs/arm-softmmu.mak
-+++ b/default-configs/arm-softmmu.mak
-@@ -96,6 +96,8 @@ CONFIG_STM32F2XX_ADC=y
- CONFIG_STM32F2XX_SPI=y
- CONFIG_STM32F205_SOC=y
- 
-+CONFIG_CMSDK_APB_UART=y
-+
- CONFIG_VERSATILE_PCI=y
- CONFIG_VERSATILE_I2C=y
- 
-diff --git a/hw/char/trace-events b/hw/char/trace-events
-index 7fd48bb..daf4ee4 100644
---- a/hw/char/trace-events
-+++ b/hw/char/trace-events
-@@ -56,3 +56,12 @@ pl011_write(uint32_t addr, uint32_t value) "addr 0x%08x value 0x%08x"
- pl011_can_receive(uint32_t lcr, int read_count, int r) "LCR %08x read_count %d returning %d"
- pl011_put_fifo(uint32_t c, int read_count) "new char 0x%x read_count now %d"
- pl011_put_fifo_full(void) "FIFO now full, RXFF set"
-+
-+# hw/char/cmsdk_apb_uart.c
-+cmsdk_apb_uart_read(uint64_t offset, uint64_t data, unsigned size) "CMSDK APB UART read: offset 0x%" PRIx64 " data 0x%" PRIx64 " size %u"
-+cmsdk_apb_uart_write(uint64_t offset, uint64_t data, unsigned size) "CMSDK APB UART write: offset 0x%" PRIx64 " data 0x%" PRIx64 " size %u"
-+cmsdk_apb_uart_reset(void) "CMSDK APB UART: reset"
-+cmsdk_apb_uart_receive(uint8_t c) "CMSDK APB UART: got character 0x%x from backend"
-+cmsdk_apb_uart_tx_pending(void) "CMSDK APB UART: character send to backend pending"
-+cmsdk_apb_uart_tx(uint8_t c) "CMSDK APB UART: character 0x%x sent to backend"
-+cmsdk_apb_uart_set_params(int speed) "CMSDK APB UART: params set to %d 8N1"
--- 
-2.7.4
+SGksCgpUaGlzIHNlcmllcyBzZWVtcyB0byBoYXZlIHNvbWUgY29kaW5nIHN0eWxlIHByb2JsZW1z
+LiBTZWUgb3V0cHV0IGJlbG93IGZvcgptb3JlIGluZm9ybWF0aW9uOgoKVHlwZTogc2VyaWVzCk1l
+c3NhZ2UtaWQ6IDE1MDAwMjk0ODctMTQ4MjItMS1naXQtc2VuZC1lbWFpbC1wZXRlci5tYXlkZWxs
+QGxpbmFyby5vcmcKU3ViamVjdDogW1FlbXUtZGV2ZWxdIFtQQVRDSCB2MiAwLzldIEFSTTogaW1w
+bGVtZW50IE1QUzIgYm9hcmQgKHdpdGggMiBGUEdBIGZsYXZvdXJzKQoKPT09IFRFU1QgU0NSSVBU
+IEJFR0lOID09PQojIS9iaW4vYmFzaAoKQkFTRT1iYXNlCm49MQp0b3RhbD0kKGdpdCBsb2cgLS1v
+bmVsaW5lICRCQVNFLi4gfCB3YyAtbCkKZmFpbGVkPTAKCmdpdCBjb25maWcgLS1sb2NhbCBkaWZm
+LnJlbmFtZWxpbWl0IDAKZ2l0IGNvbmZpZyAtLWxvY2FsIGRpZmYucmVuYW1lcyBUcnVlCgpjb21t
+aXRzPSIkKGdpdCBsb2cgLS1mb3JtYXQ9JUggLS1yZXZlcnNlICRCQVNFLi4pIgpmb3IgYyBpbiAk
+Y29tbWl0czsgZG8KICAgIGVjaG8gIkNoZWNraW5nIFBBVENIICRuLyR0b3RhbDogJChnaXQgbG9n
+IC1uIDEgLS1mb3JtYXQ9JXMgJGMpLi4uIgogICAgaWYgISBnaXQgc2hvdyAkYyAtLWZvcm1hdD1l
+bWFpbCB8IC4vc2NyaXB0cy9jaGVja3BhdGNoLnBsIC0tbWFpbGJhY2sgLTsgdGhlbgogICAgICAg
+IGZhaWxlZD0xCiAgICAgICAgZWNobwogICAgZmkKICAgIG49JCgobisxKSkKZG9uZQoKZXhpdCAk
+ZmFpbGVkCj09PSBURVNUIFNDUklQVCBFTkQgPT09CgpVcGRhdGluZyAzYzhjZjVhOWMyMWZmODc4
+MjE2NGQxZGVmN2Y0NGJkODg4NzEzMzg0ClN3aXRjaGVkIHRvIGEgbmV3IGJyYW5jaCAndGVzdCcK
+ZjNiNzUxMSBNQUlOVEFJTkVSUzogQWRkIGVudHJpZXMgZm9yIE1QUzIgYm9hcmQKN2IyNjU4ZiBo
+dy9hcm0vbXBzMjogQWRkIGV0aGVybmV0CjYyYzIyOTAgaHcvYXJtL21wczI6IEFkZCBTQ0MKZWY1
+MzFmZSBody9taXNjL21wczJfc2NjOiBJbXBsZW1lbnQgTVBTMiBTZXJpYWwgQ29tbXVuaWNhdGlv
+biBDb250cm9sbGVyCjE0MTBjMjUgaHcvYXJtL21wczI6IEFkZCB0aW1lcnMKYmU3MzM4NSBody9j
+aGFyL2Ntc2RrLWFwYi10aW1lcjogSW1wbGVtZW50IENNU0RLIEFQQiB0aW1lciBkZXZpY2UKZmU3
+ZDVhZiBody9hcm0vbXBzMjogQWRkIFVBUlRzCmQ5ZjYyMmEgaHcvY2hhci9jbXNkay1hcGItdWFy
+dC5jOiBJbXBsZW1lbnQgQ01TREsgQVBCIFVBUlQKMWQ2ZjNjNiBody9hcm0vbXBzMjogSW1wbGVt
+ZW50IHNrZWxldG9uIG1wczItYW4zODUgYW5kIG1wczItYW41MTEgYm9hcmQgbW9kZWxzCgo9PT0g
+T1VUUFVUIEJFR0lOID09PQpDaGVja2luZyBQQVRDSCAxLzk6IGh3L2FybS9tcHMyOiBJbXBsZW1l
+bnQgc2tlbGV0b24gbXBzMi1hbjM4NSBhbmQgbXBzMi1hbjUxMSBib2FyZCBtb2RlbHMuLi4KRVJS
+T1I6IGxpbmUgb3ZlciA5MCBjaGFyYWN0ZXJzCiM3MjogRklMRTogaHcvYXJtL21wczIuYzoyMjoK
+KyAqICAgaHR0cHM6Ly9kZXZlbG9wZXIuYXJtLmNvbS9wcm9kdWN0cy9zeXN0ZW0tZGVzaWduL2Rl
+dmVsb3BtZW50LWJvYXJkcy9jb3J0ZXgtbS1wcm90b3R5cGluZy1zeXN0ZW0KCnRvdGFsOiAxIGVy
+cm9ycywgMCB3YXJuaW5ncywgMjgyIGxpbmVzIGNoZWNrZWQKCllvdXIgcGF0Y2ggaGFzIHN0eWxl
+IHByb2JsZW1zLCBwbGVhc2UgcmV2aWV3LiAgSWYgYW55IG9mIHRoZXNlIGVycm9ycwphcmUgZmFs
+c2UgcG9zaXRpdmVzIHJlcG9ydCB0aGVtIHRvIHRoZSBtYWludGFpbmVyLCBzZWUKQ0hFQ0tQQVRD
+SCBpbiBNQUlOVEFJTkVSUy4KCkNoZWNraW5nIFBBVENIIDIvOTogaHcvY2hhci9jbXNkay1hcGIt
+dWFydC5jOiBJbXBsZW1lbnQgQ01TREsgQVBCIFVBUlQuLi4KRVJST1I6IGxpbmUgb3ZlciA5MCBj
+aGFyYWN0ZXJzCiM1NzogRklMRTogaHcvY2hhci9jbXNkay1hcGItdWFydC5jOjE1OgorICogaHR0
+cHM6Ly9kZXZlbG9wZXIuYXJtLmNvbS9wcm9kdWN0cy9zeXN0ZW0tZGVzaWduL3N5c3RlbS1kZXNp
+Z24ta2l0cy9jb3J0ZXgtbS1zeXN0ZW0tZGVzaWduLWtpdAoKdG90YWw6IDEgZXJyb3JzLCAwIHdh
+cm5pbmdzLCA1MDcgbGluZXMgY2hlY2tlZAoKWW91ciBwYXRjaCBoYXMgc3R5bGUgcHJvYmxlbXMs
+IHBsZWFzZSByZXZpZXcuICBJZiBhbnkgb2YgdGhlc2UgZXJyb3JzCmFyZSBmYWxzZSBwb3NpdGl2
+ZXMgcmVwb3J0IHRoZW0gdG8gdGhlIG1haW50YWluZXIsIHNlZQpDSEVDS1BBVENIIGluIE1BSU5U
+QUlORVJTLgoKQ2hlY2tpbmcgUEFUQ0ggMy85OiBody9hcm0vbXBzMjogQWRkIFVBUlRzLi4uCkNo
+ZWNraW5nIFBBVENIIDQvOTogaHcvY2hhci9jbXNkay1hcGItdGltZXI6IEltcGxlbWVudCBDTVNE
+SyBBUEIgdGltZXIgZGV2aWNlLi4uCkVSUk9SOiBsaW5lIG92ZXIgOTAgY2hhcmFjdGVycwojNTY6
+IEZJTEU6IGh3L3RpbWVyL2Ntc2RrLWFwYi10aW1lci5jOjE1OgorICogaHR0cHM6Ly9kZXZlbG9w
+ZXIuYXJtLmNvbS9wcm9kdWN0cy9zeXN0ZW0tZGVzaWduL3N5c3RlbS1kZXNpZ24ta2l0cy9jb3J0
+ZXgtbS1zeXN0ZW0tZGVzaWduLWtpdAoKdG90YWw6IDEgZXJyb3JzLCAwIHdhcm5pbmdzLCAzMzEg
+bGluZXMgY2hlY2tlZAoKWW91ciBwYXRjaCBoYXMgc3R5bGUgcHJvYmxlbXMsIHBsZWFzZSByZXZp
+ZXcuICBJZiBhbnkgb2YgdGhlc2UgZXJyb3JzCmFyZSBmYWxzZSBwb3NpdGl2ZXMgcmVwb3J0IHRo
+ZW0gdG8gdGhlIG1haW50YWluZXIsIHNlZQpDSEVDS1BBVENIIGluIE1BSU5UQUlORVJTLgoKQ2hl
+Y2tpbmcgUEFUQ0ggNS85OiBody9hcm0vbXBzMjogQWRkIHRpbWVycy4uLgpDaGVja2luZyBQQVRD
+SCA2Lzk6IGh3L21pc2MvbXBzMl9zY2M6IEltcGxlbWVudCBNUFMyIFNlcmlhbCBDb21tdW5pY2F0
+aW9uIENvbnRyb2xsZXIuLi4KRVJST1I6IGxpbmUgb3ZlciA5MCBjaGFyYWN0ZXJzCiM2OTogRklM
+RTogaHcvbWlzYy9tcHMyLXNjYy5jOjE2OgorICogaHR0cDovL2luZm9jZW50ZXIuYXJtLmNvbS9o
+ZWxwL2luZGV4LmpzcD90b3BpYz0vY29tLmFybS5kb2MuMTAwMTEyXzAxMDBfMDNfZW4vaW5kZXgu
+aHRtbAoKRVJST1I6IHNwYWNlcyByZXF1aXJlZCBhcm91bmQgdGhhdCAnKicgKGN0eDpXeFYpCiMx
+MDQ6IEZJTEU6IGh3L21pc2MvbXBzMi1zY2MuYzo1MToKK3N0YXRpYyBib29sIHNjY19jZmdfd3Jp
+dGUoTVBTMlNDQyAqcywgdW5zaWduZWQgZnVuY3Rpb24sCiAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgXgoKdG90YWw6IDIgZXJyb3JzLCAwIHdhcm5pbmdzLCAzNzkgbGluZXMgY2hl
+Y2tlZAoKWW91ciBwYXRjaCBoYXMgc3R5bGUgcHJvYmxlbXMsIHBsZWFzZSByZXZpZXcuICBJZiBh
+bnkgb2YgdGhlc2UgZXJyb3JzCmFyZSBmYWxzZSBwb3NpdGl2ZXMgcmVwb3J0IHRoZW0gdG8gdGhl
+IG1haW50YWluZXIsIHNlZQpDSEVDS1BBVENIIGluIE1BSU5UQUlORVJTLgoKQ2hlY2tpbmcgUEFU
+Q0ggNy85OiBody9hcm0vbXBzMjogQWRkIFNDQy4uLgpDaGVja2luZyBQQVRDSCA4Lzk6IGh3L2Fy
+bS9tcHMyOiBBZGQgZXRoZXJuZXQuLi4KQ2hlY2tpbmcgUEFUQ0ggOS85OiBNQUlOVEFJTkVSUzog
+QWRkIGVudHJpZXMgZm9yIE1QUzIgYm9hcmQuLi4KPT09IE9VVFBVVCBFTkQgPT09CgpUZXN0IGNv
+bW1hbmQgZXhpdGVkIHdpdGggY29kZTogMQoKCi0tLQpFbWFpbCBnZW5lcmF0ZWQgYXV0b21hdGlj
+YWxseSBieSBQYXRjaGV3IFtodHRwOi8vcGF0Y2hldy5vcmcvXS4KUGxlYXNlIHNlbmQgeW91ciBm
+ZWVkYmFjayB0byBwYXRjaGV3LWRldmVsQGZyZWVsaXN0cy5vcmc=
 

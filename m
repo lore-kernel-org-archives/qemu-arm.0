@@ -1,109 +1,87 @@
-Received: by 10.25.44.15 with SMTP id s15csp4114284lfs;
-        Sun, 16 Jul 2017 21:12:06 -0700 (PDT)
-X-Received: by 10.55.101.139 with SMTP id z133mr21165147qkb.259.1500264725966;
-        Sun, 16 Jul 2017 21:12:05 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1500264725; cv=none;
+Received: by 10.25.44.15 with SMTP id s15csp4137127lfs;
+        Sun, 16 Jul 2017 21:43:46 -0700 (PDT)
+X-Received: by 10.55.166.207 with SMTP id p198mr24433881qke.132.1500266626782;
+        Sun, 16 Jul 2017 21:43:46 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1500266626; cv=none;
         d=google.com; s=arc-20160816;
-        b=o0Spiea3o790d5VqZvdNdwMiyRiUQns/foZqLk4hyOxafpBHgtNJu9eS0WTp4Yx/1A
-         oEJCpVHLCw4xBXR0d7TJAcbJiBRnGHjCZIujnkzWfvAxSxyGi2pm/hTE4uliF1Wh9SH7
-         P5ELC/O2wSUmJCyslnSU693Aig98wTZ2jw3B+aSWJEa/YqFxkF34HhUdTsuwkIjwTpQH
-         gnJ3BmH23+ciRG7VOYLUAoupX/SjJsfThb5y2Vwx7tyzjVg8G2goGvL0f0Iu21fM2Mcl
-         3hmgXV0/1U4XpUmKoznu0bxNyRz+4PvmzRpgzxll0GRto+/NrkOEWHKqFodBtjbSYvDn
-         a2wg==
+        b=KSTklNyn2UGtGz+Tbz1YHwgBbslV9tl70lHdKvyf6w9/P9s5iM1bzL5jLlc9jGyx30
+         wZcqYnRo+zjjdzp19mN7piKEB/dXATc0hCamUDZfJJH8cH+2IvNeTIjNoR19ajAqXOCN
+         w4Gn9wfmIyEediYMnUvw3AtbQ/5HRVQuwz1C+bYS9ywMf16Vrlrj4Ek84xbYlXtw10et
+         DHwkx7R5jG31KN9XbV2eA53ahG9beVr3guwaDqf2VELLXtVK6k9zlHFeql2Man8FLw6M
+         IwcCCA5SXSZKyQkaECZHVdSKTzyghUYSPjTC/HCSZGwmOnQfN8NBZROxfMisRNRQln9E
+         UBKw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:to:dkim-signature
-         :arc-authentication-results;
-        bh=ZjjjUT7vuL2jwpbCpLPPSzTjjs19aTBQiWyb2qInBLk=;
-        b=anZ8ZzVMEIzFEuP0hObEp4MZDkRS0mUbuEP/iem+9RCpEo5KstUZfC1ucKbtegpdI9
-         e0iFA8zRdlQiSll6MRUcg5oYs5ScZL1Q5yrwhNVV2iUdZlnm3lO/5p5yHISbcGNsM+Nc
-         7dFlZ+bHKSviUkAcKGtcdpYLSXcXQU0NUz3YZTG+GNhIA3yhyZQgwUNTutaCQw+NgPYF
-         0dG4w4kbrKo6ifDrJYtUn+WBWo9pNR/y4IrUwkJG5xE+e23DioZZTIqQlbyO7PbDvEwl
-         6E6UZwnn8SKHi3FMLARt4dGDW2FAIpfHSal3t9j4yrwC8CChQof8y9qC4nzWtm3+7rR9
-         9Wqw==
+         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:arc-authentication-results;
+        bh=5aMkNaqKlVx3LrCatm4kO8sPNYJGqyh0AuJeTgaUwcQ=;
+        b=Dim83YlnkTfDOnuia3seu+jSx2i/Z39j08NVBn3L/80x1hfpDEe8bWHtEIDYhrpIZL
+         GZDaVaeTocjFvt/yLzX9EBGulR5x0r552dwzeSW03jeytHYyco1EZ0ZXsUVhxwRK0Chl
+         N5BGpECFhPRDyr+SYHcxLihjwMCpfnbfmpY51D5TuOka4hMg2me9n36GV+p4CU42Ia7+
+         IjTlCGjM8i9NlQTWbJ9o93JVGKKHRNRc/hby+7YgK1hXU0Bp21YragN/Fc9GuxGkGwrh
+         oqSvzWb1vsUHMdAVegyl49ir7yHZsxESGnArlC7m56/XMQ30B6vZh+t6YAS8/9fEWXj1
+         dPjw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.b=S7YrI7aX;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id j93si14896162qkh.131.2017.07.16.21.12.05
+        by mx.google.com with ESMTPS id y10si5244330qtb.138.2017.07.16.21.43.46
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sun, 16 Jul 2017 21:12:05 -0700 (PDT)
+        Sun, 16 Jul 2017 21:43:46 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.b=S7YrI7aX;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:47847 helo=lists.gnu.org)
+Received: from localhost ([::1]:47910 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1dWxO7-0004sF-80
-	for alex.bennee@linaro.org; Mon, 17 Jul 2017 00:12:03 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:46421)
+	id 1dWxsm-0003U7-3X
+	for alex.bennee@linaro.org; Mon, 17 Jul 2017 00:43:44 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:49408)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1dWxO2-0004qp-VS
-	for qemu-arm@nongnu.org; Mon, 17 Jul 2017 00:11:59 -0400
+	(envelope-from <gengdongjiu@huawei.com>) id 1dWxsh-0003TV-Ib
+	for qemu-arm@nongnu.org; Mon, 17 Jul 2017 00:43:40 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1dWxNy-0001fE-2m
-	for qemu-arm@nongnu.org; Mon, 17 Jul 2017 00:11:58 -0400
-Received: from mail-qt0-x244.google.com ([2607:f8b0:400d:c0d::244]:32829)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1dWxNx-0001f4-Ud; Mon, 17 Jul 2017 00:11:53 -0400
-Received: by mail-qt0-x244.google.com with SMTP id j25so3257381qtf.0;
-	Sun, 16 Jul 2017 21:11:53 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=sender:subject:to:cc:references:from:message-id:date:user-agent
-	:mime-version:in-reply-to:content-language:content-transfer-encoding;
-	bh=ZjjjUT7vuL2jwpbCpLPPSzTjjs19aTBQiWyb2qInBLk=;
-	b=S7YrI7aXc8g5b6PBy0YVSPGSEIWYJbprdHg+1yt7JPjTtXuQC4U/PFB5Pxh5ImsBF4
-	6FM4GYAKFbg6M7dfd7mmSmYHh6z26ZKD6VCI6GY8mo6f4t/yX5LJZNKRHHahgwxCFTrn
-	1ogcrUshHP+fyLH3HmpzNatp6dkKLFUZBmII9dyHcxqis10DE75KAU2OYQdWLXdreptt
-	3Z4I5OVkKaVoAEVh75SaeAON4m9CaQVPwLHU1Kl5FA5SstGIIN/7joO+9QatZm7mm9JW
-	TFgnIXh+XDYL+Di4e85k23e6Db9+b0R3m+XCTjdxx8+C7I6aiTfuSI2rOKE0EauuZxnz
-	k2Xg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
-	:date:user-agent:mime-version:in-reply-to:content-language
-	:content-transfer-encoding;
-	bh=ZjjjUT7vuL2jwpbCpLPPSzTjjs19aTBQiWyb2qInBLk=;
-	b=CL6uYmcn/zDJK+6wyGKZSLdK7/g/qvENgBTt/wIvGcSEB0qo/f6S08z6GUUUk9C05s
-	ca8V2eDHpqoMNhXu1YgZmtMI23RzJKy4z9VBY51O64n0HC3kgX21ZEe8+Mwvl/lob5XU
-	kH3oyZ4czwSg7mTuJIWOvhz+6Rk15dIDTYNITU55SgRORiusFnm2rIgTAfCrDOnnI5IW
-	9NoVsNfSEPqteBTBbS0dePI4JlzI9ZFJeyCiQssSWlYrn+LZAKWqjSz2rZH1n2JqG4ra
-	bDc9c7tQkDHzlCaimZJhrpC+cAT+QZyPFGpvpBGc2WyDbR7RCyVUhOTti5EsjPif7byi
-	gX6A==
-X-Gm-Message-State: AIVw1125f5PMcAtvopdAVZS7UDsTWBJxwoFfHD7WncJW1icn5Kh1TDLz
-	y9vFxo5idTdiW6C01tY=
-X-Received: by 10.237.47.230 with SMTP id m93mr26645898qtd.103.1500264713382; 
-	Sun, 16 Jul 2017 21:11:53 -0700 (PDT)
-Received: from [192.168.1.11] ([138.117.48.223])
-	by smtp.gmail.com with ESMTPSA id 131sm426296qki.23.2017.07.16.21.11.51
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Sun, 16 Jul 2017 21:11:52 -0700 (PDT)
-To: Fam Zheng <famz@redhat.com>, qemu-devel@nongnu.org
-References: <20170717023824.18796-1-famz@redhat.com>
-	<20170717023824.18796-3-famz@redhat.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <266263f5-22c5-1b91-937a-9c08d5034ea5@amsat.org>
-Date: Mon, 17 Jul 2017 01:11:50 -0300
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.2.1
+	(envelope-from <gengdongjiu@huawei.com>) id 1dWxse-0001H3-ER
+	for qemu-arm@nongnu.org; Mon, 17 Jul 2017 00:43:39 -0400
+Received: from szxga02-in.huawei.com ([45.249.212.188]:3967)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_ARCFOUR_SHA1:16) (Exim 4.71)
+	(envelope-from <gengdongjiu@huawei.com>)
+	id 1dWxsd-0001CC-Qz; Mon, 17 Jul 2017 00:43:36 -0400
+Received: from 172.30.72.57 (EHLO DGGEML401-HUB.china.huawei.com)
+	([172.30.72.57])
+	by dggrg02-dlp.huawei.com (MOS 4.4.6-GA FastPath queued)
+	with ESMTP id ARF23964; Mon, 17 Jul 2017 12:43:18 +0800 (CST)
+Received: from [127.0.0.1] (10.142.68.147) by DGGEML401-HUB.china.huawei.com
+	(10.3.17.32) with Microsoft SMTP Server id 14.3.301.0; Mon, 17 Jul 2017
+	12:43:08 +0800
+To: Laszlo Ersek <lersek@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>
+References: <1499825297-20335-1-git-send-email-gengdongjiu@huawei.com>
+	<1499825297-20335-3-git-send-email-gengdongjiu@huawei.com>
+	<20170713201407-mutt-send-email-mst@kernel.org>
+	<660d600a-107c-e44a-7322-ae4a74bc5565@redhat.com>
+From: gengdongjiu <gengdongjiu@huawei.com>
+Message-ID: <eb1be690-8ce7-1cbd-069d-36116eeeff93@huawei.com>
+Date: Mon, 17 Jul 2017 12:43:05 +0800
+User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64; rv:45.0) Gecko/20100101
+	Thunderbird/45.7.1
 MIME-Version: 1.0
-In-Reply-To: <20170717023824.18796-3-famz@redhat.com>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:400d:c0d::244
-Subject: Re: [Qemu-arm] [PATCH v5 2/6] armv7m: Convert armv7m.memory to
- DEFINE_PROP_LINK
+In-Reply-To: <660d600a-107c-e44a-7322-ae4a74bc5565@redhat.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.142.68.147]
+X-CFilter-Loop: Reflected
+X-Mirapoint-Virus-RAPID-Raw: score=unknown(0),
+	refid=str=0001.0A010203.596C4068.000A, ss=1, re=0.000, recu=0.000,
+	reip=0.000, cl=1, cld=1, fgs=0, ip=0.0.0.0,
+	so=2014-11-16 11:51:01, dmn=2013-03-21 17:37:32
+X-Mirapoint-Loop-Id: b76b266d036b88ede6224c5a9b484599
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
+	[fuzzy]
+X-Received-From: 45.249.212.188
+Subject: Re: [Qemu-arm] [PATCH v5 2/3] ACPI: Add APEI GHES Table Generation
+ support
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -115,44 +93,113 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org
+Cc: peter.maydell@linaro.org, wuquanming@huawei.com, famz@redhat.com,
+	qemu-devel@nongnu.org, qemu-arm@nongnu.org, james.morse@arm.com,
+	huangshaoyu@huawei.com, zhaoshenglong@huawei.com,
+	imammedo@redhat.com, zhengqiang10@huawei.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: g9Soec8oWAJ9
+X-TUID: +C7WY+xXnzwL
 
-On 07/16/2017 11:38 PM, Fam Zheng wrote:
-> Signed-off-by: Fam Zheng <famz@redhat.com>
+Laszlo,
+  Thanks for the comments.
 
-Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+On 2017/7/14 3:41, Laszlo Ersek wrote:
+snip
 
-> ---
->   hw/arm/armv7m.c | 8 ++------
->   1 file changed, 2 insertions(+), 6 deletions(-)
 > 
-> diff --git a/hw/arm/armv7m.c b/hw/arm/armv7m.c
-> index 8efc4e8..1c837da 100644
-> --- a/hw/arm/armv7m.c
-> +++ b/hw/arm/armv7m.c
-> @@ -132,12 +132,6 @@ static void armv7m_instance_init(Object *obj)
->   
->       /* Can't init the cpu here, we don't yet know which model to use */
->   
-> -    object_property_add_link(obj, "memory",
-> -                             TYPE_MEMORY_REGION,
-> -                             (Object **)&s->board_memory,
-> -                             qdev_prop_allow_set_link_before_realize,
-> -                             OBJ_PROP_LINK_UNREF_ON_RELEASE,
-> -                             &error_abort);
->       memory_region_init(&s->container, obj, "armv7m-container", UINT64_MAX);
->   
->       object_initialize(&s->nvic, sizeof(s->nvic), "armv7m_nvic");
-> @@ -248,6 +242,8 @@ static void armv7m_realize(DeviceState *dev, Error **errp)
->   
->   static Property armv7m_properties[] = {
->       DEFINE_PROP_STRING("cpu-model", ARMv7MState, cpu_model),
-> +    DEFINE_PROP_LINK("memory", ARMv7MState, board_memory, TYPE_MEMORY_REGION,
-> +                     MemoryRegion *),
->       DEFINE_PROP_END_OF_LIST(),
->   };
->   
+> snip
 > 
+>>> +
+>>> +    error_source_table = (AcpiHardwareErrorSourceTable *)(table_data->data
+>>> +                        + table_data->len - buffer->len);
+>>> +    error_source_table->error_source_count = GHES_ACPI_HEST_NOTIFY_RESERVED;
+>>> +    error_source = (AcpiGenericHardwareErrorSource *)
+>>> +        ((AcpiHardwareErrorSourceTable *)error_source_table + 1);
+>>
+>> Concern with all these casts and pointer math is that it is barely readable.
+>> We can easily overflow the array and get hard to debug heap corruption
+>> errors.
+>>
+>> What can I suggest?  Just add this to the array in steps. Then you will
+>> not need all the math.
+>>
+>> Or again, you can just add things as you init them using build_append_int_noprefix.
+>>
+>>
+>>> +
+>>> +    bios_linker_loader_write_pointer(linker, GHES_DATA_ADDR_FW_CFG_FILE,
+>>> +        0, sizeof(uint64_t), GHES_ERRORS_FW_CFG_FILE,
+>>> +        GHES_ACPI_HEST_NOTIFY_RESERVED * sizeof(uint64_t));
+>>
+>> What does this uint64_t refer to? It's repeated everywhere.
+>>
+>>> +
+>>> +    for (i = 0; i < GHES_ACPI_HEST_NOTIFY_RESERVED; i++) {
+>>> +        error_source->type = ACPI_HEST_SOURCE_GENERIC_ERROR;
+>>> +        error_source->source_id = cpu_to_le16(i);
+>>> +        error_source->related_source_id = 0xffff;
+>>> +        error_source->flags = 0;
+>>> +        error_source->enabled = 1;
+>>> +        /* The number of error status block per Generic Hardware Error Source */
+>>
+>> number of ... blocks ?
+>>
+>>> +        error_source->number_of_records = 1;
+>>> +        error_source->max_sections_per_record = 1;
+>>> +        error_source->max_raw_data_length = GHES_MAX_RAW_DATA_LENGTH;
+>>> +        error_source->error_status_address.space_id =
+>>> +                                    AML_SYSTEM_MEMORY;
+>>> +        error_source->error_status_address.bit_width = 64;
+>>> +        error_source->error_status_address.bit_offset = 0;
+>>> +        error_source->error_status_address.access_width = 4;
+>>> +        error_source->notify.type = i;
+>>> +        error_source->notify.length = sizeof(AcpiHestNotify);
+>>> +
+>>> +        error_source->error_status_block_length = GHES_MAX_RAW_DATA_LENGTH;
+>>> +
+>>> +        bios_linker_loader_add_pointer(linker,
+>>> +            ACPI_BUILD_TABLE_FILE, address_registers_offset + i *
+>>> +            sizeof(AcpiGenericHardwareErrorSource), sizeof(uint64_t),
+>>> +            GHES_ERRORS_FW_CFG_FILE, i * sizeof(uint64_t));
+>>
+>> and what's this math for?
+>>
+>>> +
+>>> +        error_source++;
+>>> +    }
+>>> +
+>>> +    for (i = 0; i < GHES_ACPI_HEST_NOTIFY_RESERVED; i++) {
+>>> +        bios_linker_loader_add_pointer(linker,
+>>> +            GHES_ERRORS_FW_CFG_FILE, sizeof(uint64_t) * i, sizeof(uint64_t),
+>>> +            GHES_ERRORS_FW_CFG_FILE, GHES_ACPI_HEST_NOTIFY_RESERVED *
+>>> +            sizeof(uint64_t) + i * GHES_MAX_RAW_DATA_LENGTH);
+>>> +    }
+> 
+> So basically all this math exists to set up the pointers that are shown
+> in the diagram in the commit message. It is a bit tricky because most of
+> those pointer fields (all 8-bytes wide) are individually embedded into
+> their own containing structures. In the previous version of this patch
+> set, I painstakingly verified the math, and pointed out wherever I
+> thought updates were necessary.
+Laszlo, you are right. it is indeed a bit tricky. Michael also has a concern
+about it. I am changing to make it clear
+
+> 
+> I agree the math is hard to read, the code is very "dense". My
+> suggestion (supporting yours) would be to calculate the fw_cfg blob
+> offsets that should be patched in more fine-grained steps, possibly with
+> multiple separate increments, using:
+> - structure type names,
+> - sizeof operators,
+> - offsetof macros,
+> - and possibly a separate comment for each offset increment.
+good suggestion. I will follow that.
+
+> 
+> Thanks,
+> Laszlo
+> 
+> .
+> 
+

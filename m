@@ -1,112 +1,160 @@
-Received: by 10.25.44.15 with SMTP id s15csp5248327lfs;
-        Mon, 17 Jul 2017 17:15:00 -0700 (PDT)
-X-Received: by 10.200.47.93 with SMTP id k29mr231808qta.18.1500336900064;
-        Mon, 17 Jul 2017 17:15:00 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1500336900; cv=none;
+Received: by 10.25.44.15 with SMTP id s15csp5483657lfs;
+        Mon, 17 Jul 2017 21:58:25 -0700 (PDT)
+X-Received: by 10.55.74.78 with SMTP id x75mr1086128qka.254.1500353905863;
+        Mon, 17 Jul 2017 21:58:25 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1500353905; cv=none;
         d=google.com; s=arc-20160816;
-        b=UGh29oG04DflJWR5TVu42ZUahLITkqQ5nE4H3ft7yscGQRVX5Kzzn3oPyyYmxl3ReL
-         fzbo7qU8iOxK99Kb2yR43V8YMWx9mdmEPlxaKtb6valfB7Y44Ura4tycaxlMf4J+iBC2
-         MOcXtYpTbGgGpYZKEV+1zs6eO4WGmGa28CQY+EIpyKZIFWII8k1wOpSMSAYYIKnFQ7YQ
-         3Ne5Entjs6QHZMiKGVJx7dpyo7rWPutOVv2aTEgu10X9dTT1C/EIcEGyBBVFzlPVIBKC
-         MPbesHNBSHko2OC8gdPXzav3WkV5NpK51Hyl0SV2JgqoQl3ZbMHunvSw/M5jUq0DKJTT
-         IBtQ==
+        b=liKqMzKN13V/CX4b24qPoBCQafjyvCbRvNjm28V9N54/RLtJT+g3YteelEaGKbpvKs
+         xutQ9wF7lA23GWXNbo+T8pVGJh5QBgltiiHJX3OgQqkMgixH0pWfTBZL0fxs+1TVCW5P
+         dmZr/YEiAPOEZK4pwJyiMM6kW3vW8dS6eIlfTNmkmBrqqC4PGnSiIa0ss1BQGCzKIRjS
+         CuTTWphRV3k4zIQ3eaDODXLR5JeSDm+NP+47drZeQcyAa3j6etpBsnmH3QL/ofmLotnR
+         EZLVrjJ5/MEdoOzNhY97NVWztCdg7uLMqBnH+yJT1G6C9lbdB0m7FdiEdGwx7IClaVOw
+         OUCw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:in-reply-to:content-transfer-encoding
-         :content-disposition:mime-version:references:message-id:subject:cc
-         :to:from:date:dkim-signature:dkim-signature
-         :arc-authentication-results;
-        bh=V+84l84UETLziB3E5Jo7/trb/v2d0qBfyWQTOLCe19w=;
-        b=NRZOYg70YFgPauxI3gpjqNoNuEFhb9KLJ5Twmkl8MjLjruwr67U1cXYxNiFryQ9Qql
-         pKN2rUqNFTyFk523vwTxWMSFosVtc0qmWo8MHjTwVi63vdbsVgeGKh770rTLxT6Zftkj
-         JlfeRfaqZ4YvQ0a9rng89yufXOvW5uzzM0V4TlOJtVJseaTwPPTYnWHoD55NOJolZeNe
-         9LIPtjPRatSr/lo4BRqiUpjRGbJYePI9z+qgMerKFr/ybhDiC2F56NAk/BXV0XgeTK3J
-         UY1tY0Y0/Cjdn0hYO3/Ro/ljAmd4z9i1I/D02VxK3G/Zmbx4CAaAjQXt4dlbwHpOwK/s
-         OQSQ==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:to:from:dkim-signature:arc-authentication-results;
+        bh=jADw3En3egwY8rm7+Ysl4mFgnXpGilTku4AAI0IBduk=;
+        b=jJceCiKzv+NXEJ4xBS0V7KPPZnyj4RWXDFa+aMi/03uuQU/RHC4HgrHYo81BLPEVgp
+         uluaNij2cUQwsa8oGryJnwWRFcvhDnWScvsy9qTIJQz2PnjkUtr8d6ApbXx8Q4Ju1QYa
+         a0mq/w3Ig22BsZtKrzJ9es1kEL2/pfFi3qID0m4wv7y+vcftdtfOUtVxnp7KUcaKF/Jh
+         3Yl1Fgo9hzP5JmtzZYjd0FQXbKhNXZdD5lxEN6TkbYzOEKbM8iXaJo2BSXQMQFMGoTFc
+         mcrHEkyFRHgmjPraxxlL1bpCE8ggVo8T+zJ5+5mB7XCItA4O4ggL4OP6foa8mFlncrpY
+         BJTw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@braap.org header.b=UdkerirG;
-       dkim=pass header.i=@messagingengine.com header.b=K3ZDAAzD;
-       spf=pass (google.com: domain of cota@braap.org designates 66.111.4.25 as permitted sender) smtp.mailfrom=cota@braap.org
-Return-Path: <cota@braap.org>
-Received: from out1-smtp.messagingengine.com (out1-smtp.messagingengine.com. [66.111.4.25])
-        by mx.google.com with ESMTPS id 21si599608qkd.262.2017.07.17.17.14.59
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 17 Jul 2017 17:15:00 -0700 (PDT)
-Received-SPF: pass (google.com: domain of cota@braap.org designates 66.111.4.25 as permitted sender) client-ip=66.111.4.25;
+       dkim=fail header.i=@gmail.com header.b=nf0v9yK5;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
+        by mx.google.com with ESMTPS id n7si1175539qtb.189.2017.07.17.21.58.25
+        for <alex.bennee@linaro.org>
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Mon, 17 Jul 2017 21:58:25 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@braap.org header.b=UdkerirG;
-       dkim=pass header.i=@messagingengine.com header.b=K3ZDAAzD;
-       spf=pass (google.com: domain of cota@braap.org designates 66.111.4.25 as permitted sender) smtp.mailfrom=cota@braap.org
-Received: from compute4.internal (compute4.nyi.internal [10.202.2.44])
-	by mailout.nyi.internal (Postfix) with ESMTP id 5D51B207ED;
-	Mon, 17 Jul 2017 20:14:59 -0400 (EDT)
-Received: from frontend2 ([10.202.2.161])
-  by compute4.internal (MEProxy); Mon, 17 Jul 2017 20:14:59 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=braap.org; h=cc
-	:content-transfer-encoding:content-type:date:from:in-reply-to
-	:message-id:mime-version:references:subject:to:x-me-sender
-	:x-me-sender:x-sasl-enc:x-sasl-enc; s=mesmtp; bh=V+84l84UETLziB3
-	E5Jo7/trb/v2d0qBfyWQTOLCe19w=; b=UdkerirGoZg9baJBN5gFzZx268IvT7c
-	JGanijpUGfePGNh0KZj8y5b0UDqWQt4WGbOT4tvxy8yN245GhxifEHYbOLGo+qIv
-	dKhzSjOOmumHBD9yP07D7fdb9ggDljJQh0TV6WjdhVrlNnx2EnxDDhV/jOk/B2Kb
-	QMSsutlgJUPk=
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
-	messagingengine.com; h=cc:content-transfer-encoding:content-type
-	:date:from:in-reply-to:message-id:mime-version:references
-	:subject:to:x-me-sender:x-me-sender:x-sasl-enc:x-sasl-enc; s=
-	fm1; bh=V+84l84UETLziB3E5Jo7/trb/v2d0qBfyWQTOLCe19w=; b=K3ZDAAzD
-	fP3KE2+Gu+79whqEBBRdSFIfAvhsISREcToQI0OSHqLdTNmv+c/dw8sN/NwvvFR9
-	cFTOpnuHsX0wAHOBUZVFEvCIu438gq/GhZAMHb7zWswQGvQFHexcNLkVO5bzzco5
-	7JnLyfKXcaO4qFhS/m7ni+1hXn/MaYchOL+NoQ4oXJUjsrjfJ3RjqBdaNEagRbLb
-	zOatQ+Hy3TOwljw/kOX0pSRvnL/hAM2WHBkoToVyQykruAUSyyd9ScCr3d9XbXCs
-	0oe0+jbPwsgXhgwSiu9sd0RSCLGc8qKZIpNRsP6pKyV8ItXdZ4xJCq7aC5xya+ab
-	HXimsD3A468DCQ==
-X-ME-Sender: <xms:A1NtWaT-JqvbmH9KnedabaQ6ymqZdSLe2I5kQUin0XBR-R75mZ3VAw>
-X-Sasl-enc: aot96DnfKgyuMDp//30aOXmJ1/1bvE6McnV+TarcoJXy 1500336899
-Received: from localhost (flamenco.cs.columbia.edu [128.59.20.216])
-	by mail.messagingengine.com (Postfix) with ESMTPA id 1777224771;
-	Mon, 17 Jul 2017 20:14:59 -0400 (EDT)
-Date: Mon, 17 Jul 2017 20:14:58 -0400
-From: "Emilio G. Cota" <cota@braap.org>
-To: Alex =?iso-8859-1?Q?Benn=E9e?= <alex.bennee@linaro.org>
-Cc: peter.maydell@linaro.org, rth@twiddle.net, qemu-devel@nongnu.org,
-	Etienne Carriere <etienne.carriere@linaro.org>,
-	Joakim Bech <joakim.bech@linaro.org>,
-	"open list:ARM" <qemu-arm@nongnu.org>
-Subject: Re: [PATCH v3 6/6] target/arm: use DISAS_EXIT for eret handling
-Message-ID: <20170718001458.GF30851@flamenco>
-References: <20170711175937.23140-1-alex.bennee@linaro.org>
- <20170711175937.23140-7-alex.bennee@linaro.org>
+       dkim=fail header.i=@gmail.com header.b=nf0v9yK5;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:53939 helo=lists.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1dXKaV-0006CV-6l
+	for alex.bennee@linaro.org; Tue, 18 Jul 2017 00:58:23 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:43209)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1dXKYF-0004dJ-EY
+	for qemu-devel@nongnu.org; Tue, 18 Jul 2017 00:56:04 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1dXKYC-0004DB-DK
+	for qemu-devel@nongnu.org; Tue, 18 Jul 2017 00:56:03 -0400
+Received: from mail-qk0-x243.google.com ([2607:f8b0:400d:c09::243]:33098)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1dXKYC-0004Cz-8r; Tue, 18 Jul 2017 00:56:00 -0400
+Received: by mail-qk0-x243.google.com with SMTP id u126so310134qka.0;
+	Mon, 17 Jul 2017 21:56:00 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
+	:mime-version:content-transfer-encoding;
+	bh=jADw3En3egwY8rm7+Ysl4mFgnXpGilTku4AAI0IBduk=;
+	b=nf0v9yK5oJP40LltdNJUpmvBR6A++UTp4bm7LJNlYsjUYxYmYiaMZAmvfxtytt0oiN
+	erD+YQ8G//rIEL1EKHJo58mNphw5odC+kXn6g2JsRIQeGbfTMJa3kV0S4aqdK5/sCdfe
+	ytYnS8vgJFzFQbay/jLYcLabVU4ZH11V8y+aJWgrqEsdnFGWeFHz+86uSQueZd6IGdMs
+	2Ufrn1Z9RQXkw9NdxFtJRqEBcXEusYjbwPBNzyAM6kz4TzoFY5aVDUtpkRYLdF+f8y6G
+	hXgRCo8KSz/LvGQiuHKHFFiAQ3xtm0NsEPvEwuu5eNTnZzMAlQmxBzs/WkTDovFLUXKu
+	uabg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
+	:in-reply-to:references:mime-version:content-transfer-encoding;
+	bh=jADw3En3egwY8rm7+Ysl4mFgnXpGilTku4AAI0IBduk=;
+	b=K30KpPLTm1rGL7VuP4bYP+7YHoByJMvg+vCetigYE3ekMTxOqgBErUEai+pumo2BuG
+	tXkbVXd8wkgkRseWOzWw8iFCtdPY3BrbKFgf2rhx2LGZOu7gC/pOhHP/MK+l/jKCUdj8
+	VnLMzL/6CzulBu1y7TCYgoDLUV75hDCQv9GVuTn+rWfJTptpdBbpjmUKMuLuz9JLKoUs
+	ff/GWLi0KIPDll8PY/MxediRyWxIYzrbzdc7ubzKppXYIgBxs4xCsPJXDIBv3DZUlSI8
+	kEir5oMcN4fOnfzXFGJR8J6bGBIlqDikquPQXMANLuGPGaPqAfrdle/9AhCQRDZ9wg10
+	xyMw==
+X-Gm-Message-State: AIVw110V8iNXvswWscSGHL1sq6JyO0paSnG14y+Zd5kLCS5zGhZuLPnm
+	Y0bsA0mqZ1vATw==
+X-Received: by 10.55.19.138 with SMTP id 10mr1017189qkt.34.1500353759742;
+	Mon, 17 Jul 2017 21:55:59 -0700 (PDT)
+Received: from yoga.offpageads.com ([138.117.48.223])
+	by smtp.gmail.com with ESMTPSA id a62sm863698qkd.14.2017.07.17.21.55.56
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Mon, 17 Jul 2017 21:55:59 -0700 (PDT)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+To: Richard Henderson <rth@twiddle.net>,
+	Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 18 Jul 2017 01:55:33 -0300
+Message-Id: <20170718045540.16322-4-f4bug@amsat.org>
+X-Mailer: git-send-email 2.13.2
+In-Reply-To: <20170718045540.16322-1-f4bug@amsat.org>
+References: <20170718045540.16322-1-f4bug@amsat.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <20170711175937.23140-7-alex.bennee@linaro.org>
-User-Agent: Mutt/1.5.24 (2015-08-30)
-X-TUID: E8wWbL+NW9Bf
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:400d:c09::243
+Subject: [Qemu-devel] [PATCH v5 03/10] target/arm: optimize aarch64 rev16()
+ using extract op
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.21
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Nikunj A Dadhania <nikunj@linux.vnet.ibm.com>, qemu-devel@nongnu.org,
+	Laurent Vivier <laurent@vivier.eu>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+	qemu-arm@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
+	Aurelien Jarno <aurelien@aurel32.net>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: IiHbBD63O1DT
 
-On Tue, Jul 11, 2017 at 18:59:37 +0100, Alex Bennée wrote:
-> Previously DISAS_JUMP did ensure this but with the optimisation of
-> 8a6b28c7 (optimize indirect branches) we might not leave the loop.
-> This means if any pending interrupts are cleared by changing IRQ flags
-> we might never get around to servicing them. You usually notice this
-> by seeing the lookup_tb_ptr() helper gainfully chaining TBs together
-> while cpu->interrupt_request remains high and the exit_request has not
-> been set.
-> 
-> This breaks amongst other things the OPTEE test suite which executes
-> an eret from the secure world after a non-secure world IRQ has gone
-> pending which then never gets serviced.
-> 
-> Instead of using the previously implied semantics of DISAS_JUMP we use
-> DISAS_EXIT which will always exit the run-loop.
-> 
-> CC: Etienne Carriere <etienne.carriere@linaro.org>
-> CC: Joakim Bech <joakim.bech@linaro.org>
-> CC: Peter Maydell <peter.maydell@linaro.org>
-> CC: Emilio G. Cota <cota@braap.org>
-> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-> Reviewed-by: Richard Henderson <rth@twiddle.net>
+Aurelien Jarno denoted this function could be implemented more effectively using
+the aarch32 rev16() pattern.
+  [http://lists.nongnu.org/archive/html/qemu-devel/2017-05/msg03180.html]
 
-Reviewed-by: Emilio G. Cota <cota@braap.org>
+Done with the Coccinelle semantic patch from commit 58daf05d07dd
+    (see scripts/coccinelle/tcg_gen_extract.cocci)
 
-		E.
+Signed-off-by: Philippe Mathieu-DaudÃ© <f4bug@amsat.org>
+---
+Richard: maybe you need to update 58daf05d07dd to your commit...
+
+ target/arm/translate-a64.c | 6 ++----
+ 1 file changed, 2 insertions(+), 4 deletions(-)
+
+diff --git a/target/arm/translate-a64.c b/target/arm/translate-a64.c
+index e55547d95d..8ade865481 100644
+--- a/target/arm/translate-a64.c
++++ b/target/arm/translate-a64.c
+@@ -4046,14 +4046,12 @@ static void handle_rev16(DisasContext *s, unsigned int sf,
+     tcg_gen_andi_i64(tcg_tmp, tcg_rn, 0xffff);
+     tcg_gen_bswap16_i64(tcg_rd, tcg_tmp);
+ 
+-    tcg_gen_shri_i64(tcg_tmp, tcg_rn, 16);
+-    tcg_gen_andi_i64(tcg_tmp, tcg_tmp, 0xffff);
++    tcg_gen_extract_i64(tcg_tmp, tcg_rn, 16, 16);
+     tcg_gen_bswap16_i64(tcg_tmp, tcg_tmp);
+     tcg_gen_deposit_i64(tcg_rd, tcg_rd, tcg_tmp, 16, 16);
+ 
+     if (sf) {
+-        tcg_gen_shri_i64(tcg_tmp, tcg_rn, 32);
+-        tcg_gen_andi_i64(tcg_tmp, tcg_tmp, 0xffff);
++        tcg_gen_extract_i64(tcg_tmp, tcg_rn, 32, 16);
+         tcg_gen_bswap16_i64(tcg_tmp, tcg_tmp);
+         tcg_gen_deposit_i64(tcg_rd, tcg_rd, tcg_tmp, 32, 16);
+ 
+-- 
+2.13.2
+

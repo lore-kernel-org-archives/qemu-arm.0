@@ -1,107 +1,103 @@
-Received: by 10.25.44.15 with SMTP id s15csp2487851lfs;
-        Sat, 15 Jul 2017 10:54:47 -0700 (PDT)
-X-Received: by 10.84.128.76 with SMTP id 70mr22450532pla.229.1500141287686;
-        Sat, 15 Jul 2017 10:54:47 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1500141287; cv=none;
+Received: by 10.25.44.15 with SMTP id s15csp5241546lfs;
+        Mon, 17 Jul 2017 17:07:39 -0700 (PDT)
+X-Received: by 10.55.50.208 with SMTP id y199mr151914qky.174.1500336459809;
+        Mon, 17 Jul 2017 17:07:39 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1500336459; cv=none;
         d=google.com; s=arc-20160816;
-        b=RO/QEWL4/GfRav9BC0Z91PEVQ+1p+9gGTeWuOqD5qVoWCv3GEU5pOgTA/5CfYol1Wu
-         KvH8UiVuQER61i2+mM5akSf75s+IG8LPDVwXqFgwIIIgC8cqoQM0AjYodTbX7ny+aSk3
-         sivIH6vV1LuamAm6S+S4mlR91Nom6LojW8Q8jyNMYN5jX5l5OuoVYzNjzi7JcF3tyhVz
-         GqFTgpVVtYyOcjXohprOkkfSca/DehUk8X8A7rvzzRSomGePc8qqYZElDej704OwrpZZ
-         L/G3aiF62twFn21z1q0AsYqBTjn/v1maS4605xgJiR9D/fxr4BtzlXyTr68YG9KJp03e
-         ZwbA==
+        b=0R9XSNCnSxh+l+28yZGFRRGOaIEXL/kwsavS19VY9rlMHZaEjsJfUhJNcxqKtvXI9T
+         4o++ip9ZKOpuKeTKN5AIxwU+LpBXAos7Jgr/Lx5i8kTa3ds894Wb+vscKWOqxocHoIK6
+         rrryir3dOvH+P1indjq0vfht+6WF02JjvoPfoCG8bn9zQ2d/xAmM2udxKOZY9RKvX4eU
+         4App3I7Cf2nWYaAlv/fCXfx1bVp9Fpc4xOYIeaptxXSbzES5GukFylyamvZT1nlLNmi1
+         Sh4rQ0DGwMkn1byfrOnUIIFdIQY0o18FQ10gNTiRiTNB407txFeHjLS4Bpz6nQPfQhHR
+         Y+/Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:to:subject:sender
-         :dkim-signature:arc-authentication-results;
-        bh=zgJQaM3C3VeXFGaz9auMLIhG2wPdI0+ADXJ15Uwy5nU=;
-        b=Bm/E2g+yT8AUqisAhl18Cp+ciWqgt1lYMmS6XoxSZI7i9bYvKTq+SBaTU4t4cEeqpN
-         z5+rbSlQGoyORK3DomStuH3rFo+3DBS+xQO9V0p1BAGi14ShWtokd5McUhgctBI7JlTF
-         zZUAilheLjgNfGLs1urxRdjA303QaD1yk+P8I0/9uWybVbgDTHkasRYcqI7PhP2Hgtgy
-         wOwfVVNkMBwbAdc8h/UXUrXjd+SvkAV4grqeV6B8lgMLBkQGZ+ch+rb/ESzOs3q+WiZG
-         cru7zSzAkfhuRc9HN/FM2dQ6+p20R8pFZ8068yXKxR2HFITPDE6P5+7cGxFHdCwpYa9H
-         /Wrw==
+        h=user-agent:in-reply-to:content-transfer-encoding
+         :content-disposition:mime-version:references:message-id:subject:cc
+         :to:from:date:dkim-signature:dkim-signature
+         :arc-authentication-results;
+        bh=SUN0CnYBqGwwfXaglaYqP9qILM04ISGkorhIO0yv3eQ=;
+        b=G2rrl4XFcex/kAaYR8PHLfLr4R10EGgIvoRNH3LlycH38HOD4XwXCOzFtBx85Fy3aw
+         Kib/OpbdDuB9LOAKV2+q4wH90LbIyGo+36dvf0ot8S6mJLCfEngeANhY9tBsTgvv/69f
+         dG/VOICYpPSEPNuVOoOn6pTzN+4nfrB4hMnewWAlt8Zt7yyUIWg0AI5jOmSqFp1O5DMP
+         561beyOuaTzpZWNZXrZ2KPRF/p8Gws3iR+U4pFBcm7bZVbXpcQHGgl8M5a3Ps1bzxK1O
+         7l9XxPXd3vcKjPMKNKnGbKjfggWhc+tv4IRi+1h2T9GR/Ke9FD7ztBVHTVIUE4VWr1PG
+         N2Ww==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.b=E91qZEC4;
-       spf=pass (google.com: domain of rth7680@gmail.com designates 2607:f8b0:400e:c05::230 as permitted sender) smtp.mailfrom=rth7680@gmail.com
-Return-Path: <rth7680@gmail.com>
-Received: from mail-pg0-x230.google.com (mail-pg0-x230.google.com. [2607:f8b0:400e:c05::230])
-        by mx.google.com with ESMTPS id k70si3688129pgc.518.2017.07.15.10.54.47
+       dkim=pass header.i=@braap.org header.b=HjpMwZna;
+       dkim=pass header.i=@messagingengine.com header.b=rbExidzO;
+       spf=pass (google.com: domain of cota@braap.org designates 66.111.4.25 as permitted sender) smtp.mailfrom=cota@braap.org
+Return-Path: <cota@braap.org>
+Received: from out1-smtp.messagingengine.com (out1-smtp.messagingengine.com. [66.111.4.25])
+        by mx.google.com with ESMTPS id s189si571490qkf.201.2017.07.17.17.07.39
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 15 Jul 2017 10:54:47 -0700 (PDT)
-Received-SPF: pass (google.com: domain of rth7680@gmail.com designates 2607:f8b0:400e:c05::230 as permitted sender) client-ip=2607:f8b0:400e:c05::230;
+        Mon, 17 Jul 2017 17:07:39 -0700 (PDT)
+Received-SPF: pass (google.com: domain of cota@braap.org designates 66.111.4.25 as permitted sender) client-ip=66.111.4.25;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.b=E91qZEC4;
-       spf=pass (google.com: domain of rth7680@gmail.com designates 2607:f8b0:400e:c05::230 as permitted sender) smtp.mailfrom=rth7680@gmail.com
-Received: by mail-pg0-x230.google.com with SMTP id v190so1880013pgv.2;
-        Sat, 15 Jul 2017 10:54:47 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=sender:subject:to:references:from:message-id:date:user-agent
-         :mime-version:in-reply-to:content-language:content-transfer-encoding;
-        bh=zgJQaM3C3VeXFGaz9auMLIhG2wPdI0+ADXJ15Uwy5nU=;
-        b=E91qZEC42XqMTIxT0qJljX7IOTOFX6miV4z5piisxdLUcXOa6eiymjN953T7QyIeOH
-         gtoAFr92Mqu/lUvijIhysGavraqI13eZ1pVo4wdUnXo8eE9P0Rv6mnoTcwrRnd2IKhU7
-         jHomhk6EhyDod5csl4Yz5lC8DmQWEVbAinUGMZ0b6WPYthPp9n/wfHeQLGEbrKKu/L43
-         eGcKnX7KicLJI1beJuUkO8RuedvAyTwi/AvuBC3VsKbjVjaavmgfMx4b6PnPPuHCogxQ
-         YWpGnooM5y633ID50Vw8t1JDxGq7oZIUdVgN+ffYhBC+LUg2xmUh2Ptw53lMY82kAzfz
-         UbjA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:sender:subject:to:references:from:message-id
-         :date:user-agent:mime-version:in-reply-to:content-language
-         :content-transfer-encoding;
-        bh=zgJQaM3C3VeXFGaz9auMLIhG2wPdI0+ADXJ15Uwy5nU=;
-        b=aIIo6Zb8bE6iFhaXM5SRHtpyI1HOw7N774FiMLr98xJBj2El7vtTrTAOFi4zk1OpQU
-         Asec4IhoftajGbS/Jzoy6vfeNweRmN2wMwLearfxUBfv/lst5Rxk9zA2bfq1TxjoA8V2
-         YmlPshyE2I9x7SQaRzTmjKgEw2vZdbZkZ/A/BuMJAbqGgSoaH5qCOSbGJFDEHexgX6qg
-         6qs2ACFkc5+v3r0/qYGh1n+LSBI4lFw1BJr7O6o+7fxySxgitidKJPXBF8hLoFBMf3rO
-         ciq/3Ehl4uD0WGKMsrO0Fi4P+o2eXGdEUFKGRqY7OiO4dv+CSQ1tEsP8CUgzv7vFx/X0
-         o3zA==
-X-Gm-Message-State: AIVw1112CqtXaLXVK0A2fabzTrvef7wk0RSQ3yPHEZw0FbXdmZdJoo+L
-	feKlHkU1H2ctfqAYnqw=
-X-Received: by 10.98.64.7 with SMTP id n7mr11108799pfa.76.1500141287275;
-        Sat, 15 Jul 2017 10:54:47 -0700 (PDT)
-Return-Path: <rth7680@gmail.com>
-Received: from bigtime.twiddle.net (rrcs-173-197-98-123.west.biz.rr.com. [173.197.98.123])
-        by smtp.googlemail.com with ESMTPSA id z69sm4900018pgz.42.2017.07.15.10.54.45
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 15 Jul 2017 10:54:46 -0700 (PDT)
-Sender: Richard Henderson <rth7680@gmail.com>
-Subject: Re: [Qemu-devel] [PATCH v13 22/26] target/arm: [tcg] Port to tb_stop
-To: qemu-devel@nongnu.org, "Emilio G. Cota" <cota@braap.org>,
- =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
- Peter Crosthwaite <crosthwaite.peter@gmail.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Peter Maydell
- <peter.maydell@linaro.org>, "open list:ARM" <qemu-arm@nongnu.org>
-References: <150002001195.22386.4679134058536830996.stgit@frigg.lan>
- <150002534291.22386.13499916738708680298.stgit@frigg.lan>
- <28a48f7c-930a-389b-b39d-64c43654cd04@twiddle.net> <87a846b0al.fsf@frigg.lan>
-From: Richard Henderson <rth@twiddle.net>
-Message-ID: <f2e2da5e-0790-4c30-d398-8937c43c1ec4@twiddle.net>
-Date: Sat, 15 Jul 2017 07:54:43 -1000
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
- Thunderbird/52.2.1
+       dkim=pass header.i=@braap.org header.b=HjpMwZna;
+       dkim=pass header.i=@messagingengine.com header.b=rbExidzO;
+       spf=pass (google.com: domain of cota@braap.org designates 66.111.4.25 as permitted sender) smtp.mailfrom=cota@braap.org
+Received: from compute4.internal (compute4.nyi.internal [10.202.2.44])
+	by mailout.nyi.internal (Postfix) with ESMTP id 6B9DB20892;
+	Mon, 17 Jul 2017 20:07:39 -0400 (EDT)
+Received: from frontend1 ([10.202.2.160])
+  by compute4.internal (MEProxy); Mon, 17 Jul 2017 20:07:39 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=braap.org; h=cc
+	:content-transfer-encoding:content-type:date:from:in-reply-to
+	:message-id:mime-version:references:subject:to:x-me-sender
+	:x-me-sender:x-sasl-enc:x-sasl-enc; s=mesmtp; bh=SUN0CnYBqGwwfXa
+	glaYqP9qILM04ISGkorhIO0yv3eQ=; b=HjpMwZnaLg+Gyv4CrP4q/ro5yhvwd6Z
+	/XTBpZ67FhBFUb2iv0TydpqbUL5aIQEdNU2LqfhS4h33eGoAhWAx75TVovlIqWGH
+	Bx3pOjTeXpl5HeU9XoRL60VZIe8lFCMmPMPo6Lm5b2Q229EnuPDTNdToCWPehcKZ
+	AVib8agYvSWQ=
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+	messagingengine.com; h=cc:content-transfer-encoding:content-type
+	:date:from:in-reply-to:message-id:mime-version:references
+	:subject:to:x-me-sender:x-me-sender:x-sasl-enc:x-sasl-enc; s=
+	fm1; bh=SUN0CnYBqGwwfXaglaYqP9qILM04ISGkorhIO0yv3eQ=; b=rbExidzO
+	S+6YbLxfBaX2K+kqxX3UGmCzqiE0rQ5TtWCDWpeqFY6tW5ozpMpwiCgjcx/ryxgA
+	zZLSATeR9UXfIslfMeAHbn5p+SZZGxL+/YNDoLdDvTVlqYgKkW9vdPGIbFkGflZd
+	dEj0t5mb0Gkfr1ogh6IY7aHV+TcUGqKac7Qvg2z4RpOYSpIlZELl5F1Y1QjJ12zT
+	TLXmVEy+6s+ud8uZC4vpMMl0BxK/Z6qJ4ip6+Sku8IeAwovVv79LBS+SUFX++csw
+	Mk/xO8sX43F92sZJ47+ObU9rppoEmATPVQddXN4cLJ+4ngOQOixJrcgwPkwB6se+
+	MWU5BGJzBBs8Ow==
+X-ME-Sender: <xms:S1FtWZwu_9GsH4aap8t_mtMAko5BzZY26iZI-AzhKfpxLAHtHuhKSw>
+X-Sasl-enc: aNSUkuYrYu9PzKREgWJpCZ2ZHcAL7+lDLYVlRsNTu/Uv 1500336459
+Received: from localhost (flamenco.cs.columbia.edu [128.59.20.216])
+	by mail.messagingengine.com (Postfix) with ESMTPA id 249527E21B;
+	Mon, 17 Jul 2017 20:07:39 -0400 (EDT)
+Date: Mon, 17 Jul 2017 20:07:38 -0400
+From: "Emilio G. Cota" <cota@braap.org>
+To: Alex =?iso-8859-1?Q?Benn=E9e?= <alex.bennee@linaro.org>
+Cc: peter.maydell@linaro.org, rth@twiddle.net, qemu-devel@nongnu.org,
+	"open list:ARM" <qemu-arm@nongnu.org>
+Subject: Re: [PATCH v3 2/6] target/arm/translate: make DISAS_UPDATE match
+ declared semantics
+Message-ID: <20170718000738.GC30851@flamenco>
+References: <20170711175937.23140-1-alex.bennee@linaro.org>
+ <20170711175937.23140-3-alex.bennee@linaro.org>
 MIME-Version: 1.0
-In-Reply-To: <87a846b0al.fsf@frigg.lan>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-X-TUID: uJNfysrnRivC
+In-Reply-To: <20170711175937.23140-3-alex.bennee@linaro.org>
+User-Agent: Mutt/1.5.24 (2015-08-30)
+X-TUID: aqdC4mPF9JqT
 
-On 07/14/2017 09:56 PM, LluÃ­s Vilanova wrote:
-> Richard Henderson writes:
+On Tue, Jul 11, 2017 at 18:59:33 +0100, Alex Bennée wrote:
+> DISAS_UPDATE should be used when the wider CPU state other than just
+> the PC has been updated and we should therefor exit the TCG runtime
+
+s/therefor/therefore/
+
+> and return to the main execution loop rather assuming DISAS_JUMP would
+
+Rather *than* assuming ?
+
+> do that.
 > 
->> On 07/13/2017 11:42 PM, LluÃ­s Vilanova wrote:
->>> -        dc->base.is_jmp = DISAS_SKIP;
->>> +        dc->base.is_jmp = DISAS_NORETURN;
-> 
->> Really should fold this back into the patch that introduced SKIP temporarily.
-> 
-> Sorry, I don't understand what you mean.
+> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+> Reviewed-by: Richard Henderson <rth@twiddle.net>
 
-DISAS_SKIP should never exist in the patch set.  You should simply use NORETURN 
-in the places that you first used SKIP.
+Reviewed-by: Emilio G. Cota <cota@braap.org>
 
-
-r~
+		E.

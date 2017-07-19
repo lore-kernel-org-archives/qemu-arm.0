@@ -1,94 +1,88 @@
-Received: by 10.25.44.15 with SMTP id s15csp5953761lfs;
-        Tue, 18 Jul 2017 05:58:38 -0700 (PDT)
-X-Received: by 10.200.47.152 with SMTP id l24mr1837692qta.153.1500382717967;
-        Tue, 18 Jul 2017 05:58:37 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1500382717; cv=none;
+Received: by 10.25.44.15 with SMTP id s15csp852612lfs;
+        Wed, 19 Jul 2017 06:47:34 -0700 (PDT)
+X-Received: by 10.237.34.245 with SMTP id q50mr147095qtc.307.1500472054414;
+        Wed, 19 Jul 2017 06:47:34 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1500472054; cv=none;
         d=google.com; s=arc-20160816;
-        b=nLDiEVbkptEOzf9ngUosWBrOcDG4nQ2fQWNX51Hh4HlrHP233QX4b65QCyNyxpdcyq
-         Jr7r8gjYvnV/PzsVLzy6m2KtjsCQbOJ3yYoe+BcoQgvkw6ZubSptkyKqe67QsJoT510m
-         4XykfMegbTtmgsFt/IMxUjXbX/oiTRMn9r/CEg+4mrseOwJuUKCoaIY0/hs/UNx/lOie
-         PSr2ehpM0MkpWDn97imfa6h5LzsUQ5G7iL6HaWg4+HP+wPDEide/DzB2fdzNhtVRCoId
-         RrS4TpErPMVyPnQFZNIKpQ7geYhjiiqsoKdeXah8r5RIfy9CsRQRcNRsXcGdb3GkYK0H
-         IuhQ==
+        b=kQyjl/bDAQ9wKA3B4twKuNdqutIDyYWr84l11rKrUaeSGAXXy0MS8BwG8zoIjWjCnZ
+         uze5igJzpFa41SYJfIS6J/DsR1FXV5b3gwAa8cmvMIVczQIVcuegWB7SJ0b2nYfF+yak
+         s7FUoqASNICVfn2p2nXjPed/HbTuM7cjrUBCRN36FFQJi6Md004hwGd6828xePAdbKOP
+         24ECi4KWb28Xq82Epe1yKpu689Y7a0R/hckpgK6dQaJfTqpgqMEeZTI2wrCrzOq5rsg1
+         0Q24Zpx/BtsYoSgHQzauR6c70PxiBQd0jDTJLi9h2sZcwC3kEvT27R0Zk3HjA5nlUjke
+         2avw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
-         :content-disposition:mime-version:references:message-id:to:from:date
-         :dkim-filter:dmarc-filter:arc-authentication-results;
-        bh=FfbvjiOplma/XLUx/Hq+fe33Fhym3nAN0/IoIfdoNgQ=;
-        b=vRIYasP8y8JfhTXFWFkdSjp/hhFLNiafd2xrKwwkDHOMejl2DxIFmXLxSaS3bRYgFR
-         LUB9jzE4oYtdWzMaf9PEIx0BD4hBq5U/QVgWXRJnTPqOHSVL8rd1wuAHzqxl/b7NQ5ee
-         Pl41HK5ab/PZUF2/mxu8L7gOKb6uUPqBwjA726QZAd5siuaZn3jMZL0cWqnAMmlj1irt
-         xwmOM0ZOB/E4D4dUiil3sjNYfayrsM/TI4vLOtd9M2eiOY4h881U7y2vvaxU8Cl/jvHF
-         ipGwUmxD8t+FVoxwo4LYO0DJhrQkIrpIyWBzY1AnFx9ACK7jdDm/CioBdMOO/Aa1f7Oi
-         0itg==
+         :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
+         :message-id:date:to:from:dkim-filter:dmarc-filter
+         :arc-authentication-results;
+        bh=6EklqSYASEDYkkVeJc7oG/DiYpRSy6pQnGupDITI+88=;
+        b=toKGKrmNWpaeq8MMEAjlsbYX9XdVEi4KsT7wG3SJXHcjf/kyl0EOxIuKG/KydasVSh
+         GJ1s4BRV0dX9qG64xCwxXssiEsGOUZwC8Rm6hhJYJUL/C6WWY4SdJ7BiEEzRKeSO6VFw
+         EXlBn9DxuJr/FGf5RG7rwWNwYbreX3tA2SJ747T6ZMRIskdVjlE4CZc5UDCgEY+et7Cj
+         SNSMO6BNAzcCGMINrc8+AzdWpQei4VG86xnsTw8/HcxWRC+iskniYNPFZRn4ndk6a9v/
+         ZSEt/52plzfVNwZqHS7SWFLyBT8PXZ/HEksKdPEOpZr582NsYP5IHWSsLGVf790dxuq5
+         62KQ==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id k5si1934906qtd.309.2017.07.18.05.58.37
+        by mx.google.com with ESMTPS id n60si46655qte.464.2017.07.19.06.47.33
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 18 Jul 2017 05:58:37 -0700 (PDT)
+        Wed, 19 Jul 2017 06:47:34 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:56378 helo=lists.gnu.org)
+Received: from localhost ([::1]:33523 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1dXS5D-0004sG-72
-	for alex.bennee@linaro.org; Tue, 18 Jul 2017 08:58:35 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:47549)
+	id 1dXpK7-0001Hv-Qo
+	for alex.bennee@linaro.org; Wed, 19 Jul 2017 09:47:31 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:44625)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <drjones@redhat.com>) id 1dXS55-0004rx-Ga
-	for qemu-arm@nongnu.org; Tue, 18 Jul 2017 08:58:28 -0400
+	(envelope-from <drjones@redhat.com>) id 1dXpK4-0001Hp-Lr
+	for qemu-arm@nongnu.org; Wed, 19 Jul 2017 09:47:29 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <drjones@redhat.com>) id 1dXS50-00040d-Lr
-	for qemu-arm@nongnu.org; Tue, 18 Jul 2017 08:58:27 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:40830)
+	(envelope-from <drjones@redhat.com>) id 1dXpK0-00080Y-M4
+	for qemu-arm@nongnu.org; Wed, 19 Jul 2017 09:47:28 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:52050)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <drjones@redhat.com>)
-	id 1dXS50-00040V-Cd; Tue, 18 Jul 2017 08:58:22 -0400
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
-	[10.5.11.12])
+	id 1dXpK0-000804-Cx; Wed, 19 Jul 2017 09:47:24 -0400
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+	[10.5.11.13])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 21A01C04B939;
-	Tue, 18 Jul 2017 12:58:21 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 21A01C04B939
+	by mx1.redhat.com (Postfix) with ESMTPS id 72419C04B938;
+	Wed, 19 Jul 2017 13:40:00 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 72419C04B938
 Authentication-Results: ext-mx07.extmail.prod.ext.phx2.redhat.com;
 	dmarc=none (p=none dis=none) header.from=redhat.com
 Authentication-Results: ext-mx07.extmail.prod.ext.phx2.redhat.com;
 	spf=pass smtp.mailfrom=drjones@redhat.com
-DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com 21A01C04B939
-Received: from kamzik.brq.redhat.com (unknown [10.43.2.160])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 15A127F7F2;
-	Tue, 18 Jul 2017 12:58:19 +0000 (UTC)
-Date: Tue, 18 Jul 2017 14:58:17 +0200
+DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com 72419C04B938
+Received: from cav-thunderx1s-cn88xx-03.khw.lab.eng.bos.redhat.com
+	(cav-thunderx1s-cn88xx-03.khw.lab.eng.bos.redhat.com [10.16.185.204])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id BF58553CE3;
+	Wed, 19 Jul 2017 13:39:59 +0000 (UTC)
 From: Andrew Jones <drjones@redhat.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Message-ID: <20170718125817.bf4u5ml7idjftlw3@kamzik.brq.redhat.com>
-References: <1498927637-14496-1-git-send-email-drjones@redhat.com>
-	<1498927637-14496-3-git-send-email-drjones@redhat.com>
-	<CAFEAcA-CQm1FuF7eyveSbSchRD1PkB-PDVNyMQhVny+bmWWAvg@mail.gmail.com>
-	<20170718123845.c2g3t4m4pyqofk2l@kamzik.brq.redhat.com>
-	<CAFEAcA_6XronVOOCbWgJXctx6bp+nYys+cCsjUmtCiuaBjUb-g@mail.gmail.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <CAFEAcA_6XronVOOCbWgJXctx6bp+nYys+cCsjUmtCiuaBjUb-g@mail.gmail.com>
-User-Agent: Mutt/1.6.0.1 (2016-04-01)
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
+To: qemu-devel@nongnu.org,
+	qemu-arm@nongnu.org
+Date: Wed, 19 Jul 2017 09:39:55 -0400
+Message-Id: <1500471597-2517-3-git-send-email-drjones@redhat.com>
+In-Reply-To: <1500471597-2517-1-git-send-email-drjones@redhat.com>
+References: <1500471597-2517-1-git-send-email-drjones@redhat.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
 	(mx1.redhat.com [10.5.110.31]);
-	Tue, 18 Jul 2017 12:58:21 +0000 (UTC)
+	Wed, 19 Jul 2017 13:40:00 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH 2/3] target/arm/kvm: split pmu
- init from creation
+Subject: [Qemu-arm] [PATCH v2 2/4] target/arm/kvm: pmu: split init and
+ set-irq stages
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -100,74 +94,170 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
-	Alexander Graf <agraf@suse.de>
+Cc: peter.maydell@linaro.org, agraf@suse.de, cdall@linaro.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: on4oiWfcfiFL
+X-TUID: /WVlZI+wy/S5
 
-On Tue, Jul 18, 2017 at 01:44:34PM +0100, Peter Maydell wrote:
-> On 18 July 2017 at 13:38, Andrew Jones <drjones@redhat.com> wrote:
-> > On Mon, Jul 10, 2017 at 04:27:35PM +0100, Peter Maydell wrote:
-> >> On 1 July 2017 at 17:47, Andrew Jones <drjones@redhat.com> wrote:
-> >> > When adding a PMU with a userspace irqchip we only do the INIT
-> >> > stage of the device creation.
-> >>
-> >> Can you explain why? My assumption would be that either
-> >> (a) we don't need the kernel's PMU, in which case don't
-> >> create it at all, or
-> >> (b) we do need the kernel's PMU, so we should both create
-> >> and INIT it.
-> >>
-> >> If we do one but not the other then we've left a half
-> >> created and unusable PMU device in the kernel, haven't we?
-> >>
-> >
-> > I should have renamed the 'create' function to 'set_irq', then
-> > it would make sense, because after the split done by this patch
-> > 'create' only sets the irq, which can only be done with an
-> > in-kernel irqchip. Both irqchip types still require INIT though,
-> > see kernel doc Documentation/virtual/kvm/devices/vcpu.txt.
-> 
-> Oh, I see, I read the commit message as "we only do the
-> INIT stage when adding a PMU with a userspace irqchip",
-> which isn't the same meaning as what you actually wrote.
-> (perhaps "When adding a PMU with a userspace irqchip we
-> skip the set-irq stage of device creation" would be clearer?)
-> 
-> > I'll send a v2 that renames the create function. But, before I do,
-> > assuming the rename, do you have another comments on this or the
-> > next patch? We might as well batch all the changes :-)
-> 
-> I think they looked mostly OK. A minor nit:
-> 
-> +        if (kvm_enabled() &&
-> +            !kvm_arm_pmu_create(cpu, PPI(VIRTUAL_PMU_IRQ))) {
-> +            return;
-> +        }
-> +        if (kvm_enabled() && !kvm_arm_pmu_init(cpu)) {
->              return;
->          }
-> 
-> might be better as
->        if (kvm_enabled()) {
->            if (!kvm_arm_pmu_create(...)) {
->                /* error handling */
->            }
->            if (!kvm_arm_pmu_init(...)) {
->                /* error handling */
->            }
->        }
+When adding a PMU with a userspace irqchip we skip the set-irq
+stage of device creation. Split the 'create' function into two
+functions 'init' and 'set-irq' so they may be called separately.
 
-With the top version I was setting things up for a one-liner
-change in the next patch, as only the first condition needs
-to have s/kvm_enabled/kvm_irqchip_in_kernel/ done to it.
+Signed-off-by: Andrew Jones <drjones@redhat.com>
+---
+ hw/arm/virt.c        | 11 +++++++++--
+ target/arm/kvm32.c   |  8 +++++++-
+ target/arm/kvm64.c   | 52 +++++++++++++++++++++++++---------------------------
+ target/arm/kvm_arm.h | 10 ++++++++--
+ 4 files changed, 49 insertions(+), 32 deletions(-)
 
-> 
-> (and I'm not sure "silently return" is really the right error
-> handling, but that is what we do currently, so whatever.)
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index ea26f0c473c2..7157a028adce 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -492,10 +492,17 @@ static void fdt_add_pmu_nodes(const VirtMachineState *vms)
+ 
+     CPU_FOREACH(cpu) {
+         armcpu = ARM_CPU(cpu);
+-        if (!arm_feature(&armcpu->env, ARM_FEATURE_PMU) ||
+-            (kvm_enabled() && !kvm_arm_pmu_create(cpu, PPI(VIRTUAL_PMU_IRQ)))) {
++        if (!arm_feature(&armcpu->env, ARM_FEATURE_PMU)) {
+             return;
+         }
++        if (kvm_enabled()) {
++            if (!kvm_arm_pmu_set_irq(cpu, PPI(VIRTUAL_PMU_IRQ))) {
++                return;
++            }
++            if (!kvm_arm_pmu_init(cpu)) {
++                return;
++            }
++        }
+     }
+ 
+     if (vms->gic_version == 2) {
+diff --git a/target/arm/kvm32.c b/target/arm/kvm32.c
+index 069da0c5fd10..e3aab89a1a94 100644
+--- a/target/arm/kvm32.c
++++ b/target/arm/kvm32.c
+@@ -522,7 +522,13 @@ bool kvm_arm_hw_debug_active(CPUState *cs)
+     return false;
+ }
+ 
+-int kvm_arm_pmu_create(CPUState *cs, int irq)
++int kvm_arm_pmu_set_irq(CPUState *cs, int irq)
++{
++    qemu_log_mask(LOG_UNIMP, "%s: not implemented\n", __func__);
++    return 0;
++}
++
++int kvm_arm_pmu_init(CPUState *cs)
+ {
+     qemu_log_mask(LOG_UNIMP, "%s: not implemented\n", __func__);
+     return 0;
+diff --git a/target/arm/kvm64.c b/target/arm/kvm64.c
+index a16abc8d129e..e26638a6fac1 100644
+--- a/target/arm/kvm64.c
++++ b/target/arm/kvm64.c
+@@ -381,46 +381,44 @@ static CPUWatchpoint *find_hw_watchpoint(CPUState *cpu, target_ulong addr)
+     return NULL;
+ }
+ 
+-static bool kvm_arm_pmu_support_ctrl(CPUState *cs, struct kvm_device_attr *attr)
+-{
+-    return kvm_vcpu_ioctl(cs, KVM_HAS_DEVICE_ATTR, attr) == 0;
+-}
+-
+-int kvm_arm_pmu_create(CPUState *cs, int irq)
++static bool kvm_arm_pmu_set_attr(CPUState *cs, struct kvm_device_attr *attr)
+ {
+     int err;
+ 
+-    struct kvm_device_attr attr = {
+-        .group = KVM_ARM_VCPU_PMU_V3_CTRL,
+-        .addr = (intptr_t)&irq,
+-        .attr = KVM_ARM_VCPU_PMU_V3_IRQ,
+-        .flags = 0,
+-    };
+-
+-    if (!kvm_arm_pmu_support_ctrl(cs, &attr)) {
+-        return 0;
++    err = kvm_vcpu_ioctl(cs, KVM_HAS_DEVICE_ATTR, attr);
++    if (err != 0) {
++        return false;
+     }
+ 
+-    err = kvm_vcpu_ioctl(cs, KVM_SET_DEVICE_ATTR, &attr);
++    err = kvm_vcpu_ioctl(cs, KVM_SET_DEVICE_ATTR, attr);
+     if (err < 0) {
+         fprintf(stderr, "KVM_SET_DEVICE_ATTR failed: %s\n",
+                 strerror(-err));
+         abort();
+     }
+ 
+-    attr.group = KVM_ARM_VCPU_PMU_V3_CTRL;
+-    attr.attr = KVM_ARM_VCPU_PMU_V3_INIT;
+-    attr.addr = 0;
+-    attr.flags = 0;
++    return true;
++}
+ 
+-    err = kvm_vcpu_ioctl(cs, KVM_SET_DEVICE_ATTR, &attr);
+-    if (err < 0) {
+-        fprintf(stderr, "KVM_SET_DEVICE_ATTR failed: %s\n",
+-                strerror(-err));
+-        abort();
+-    }
++int kvm_arm_pmu_init(CPUState *cs)
++{
++    struct kvm_device_attr attr = {
++        .group = KVM_ARM_VCPU_PMU_V3_CTRL,
++        .attr = KVM_ARM_VCPU_PMU_V3_INIT,
++    };
++
++    return kvm_arm_pmu_set_attr(cs, &attr);
++}
++
++int kvm_arm_pmu_set_irq(CPUState *cs, int irq)
++{
++    struct kvm_device_attr attr = {
++        .group = KVM_ARM_VCPU_PMU_V3_CTRL,
++        .addr = (intptr_t)&irq,
++        .attr = KVM_ARM_VCPU_PMU_V3_IRQ,
++    };
+ 
+-    return 1;
++    return kvm_arm_pmu_set_attr(cs, &attr);
+ }
+ 
+ static inline void set_feature(uint64_t *features, int feature)
+diff --git a/target/arm/kvm_arm.h b/target/arm/kvm_arm.h
+index 633d08828a5d..cab5ea9be55c 100644
+--- a/target/arm/kvm_arm.h
++++ b/target/arm/kvm_arm.h
+@@ -195,7 +195,8 @@ int kvm_arm_sync_mpstate_to_qemu(ARMCPU *cpu);
+ 
+ int kvm_arm_vgic_probe(void);
+ 
+-int kvm_arm_pmu_create(CPUState *cs, int irq);
++int kvm_arm_pmu_set_irq(CPUState *cs, int irq);
++int kvm_arm_pmu_init(CPUState *cs);
+ 
+ #else
+ 
+@@ -204,7 +205,12 @@ static inline int kvm_arm_vgic_probe(void)
+     return 0;
+ }
+ 
+-static inline int kvm_arm_pmu_create(CPUState *cs, int irq)
++static inline int kvm_arm_pmu_set_irq(CPUState *cs, int irq)
++{
++    return 0;
++}
++
++static inline int kvm_arm_pmu_init(CPUState *cs)
+ {
+     return 0;
+ }
+-- 
+1.8.3.1
 
-I'll give the error handling a bit of thought before respinning.
-
-Thanks,
-drew

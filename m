@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaro.local ([81.128.185.34])
-        by smtp.gmail.com with ESMTPSA id r30sm3361234wrc.95.2017.07.20.08.12.32
+        by smtp.gmail.com with ESMTPSA id c55sm7472686wrc.7.2017.07.20.08.12.35
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 20 Jul 2017 08:12:32 -0700 (PDT)
+        Thu, 20 Jul 2017 08:12:38 -0700 (PDT)
 Received: from zen.linaroharston (localhost [127.0.0.1])
-	by zen.linaro.local (Postfix) with ESMTP id DBA4F3E0BB3;
+	by zen.linaro.local (Postfix) with ESMTP id 95BA53E0AF9;
 	Thu, 20 Jul 2017 16:04:33 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: peter.maydell@linaro.org
@@ -12,70 +12,55 @@ Cc: rth@twiddle.net,
 	qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Aurelien Jarno <aurelien@aurel32.net>
-Subject: [RFC PATCH for 2.11 20/23] fpu/softfloat2a: add half-precision expansions for MINMAX fns
-Date: Thu, 20 Jul 2017 16:04:23 +0100
-Message-Id: <20170720150426.12393-21-alex.bennee@linaro.org>
+	Paolo Bonzini <pbonzini@redhat.com>,
+	Peter Crosthwaite <crosthwaite.peter@gmail.com>
+Subject: [RFC PATCH for 2.11 16/23] include/exec/helper-head.h: support f16 in helper calls
+Date: Thu, 20 Jul 2017 16:04:19 +0100
+Message-Id: <20170720150426.12393-17-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.13.0
 In-Reply-To: <20170720150426.12393-1-alex.bennee@linaro.org>
 References: <20170720150426.12393-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: r/RpJjNLXbBY
+X-TUID: J43UR5VqwN4h
 
-As SoftFloat3c doesn't have helpers for min/max and we already
-implemented it in 2a lets just expand the current helpers to include
-half-precision functions. The includes having f16 version of the
-compare functions.
+This allows us to explicitly pass float16 to helpers rather than
+assuming uint32_t and dealing with the result. Of course they will be
+passed in i32 sized registers by default.
 
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- fpu/softfloat2a/softfloat.c         |  2 ++
- include/fpu/softfloat2a/softfloat.h | 11 +++++++++++
- 2 files changed, 13 insertions(+)
+ include/exec/helper-head.h | 3 +++
+ 1 file changed, 3 insertions(+)
 
-diff --git a/fpu/softfloat2a/softfloat.c b/fpu/softfloat2a/softfloat.c
-index 4f1abbe08f..67115298bd 100644
---- a/fpu/softfloat2a/softfloat.c
-+++ b/fpu/softfloat2a/softfloat.c
-@@ -7579,6 +7579,7 @@ int float ## s ## _compare_quiet(float ## s a, float ## s b,                 \
-     return float ## s ## _compare_internal(a, b, 1, status);                 \
- }
- 
-+COMPARE(16, 0x1f)
- COMPARE(32, 0xff)
- COMPARE(64, 0x7ff)
- 
-@@ -7779,6 +7780,7 @@ float ## s float ## s ## _maxnummag(float ## s a, float ## s b,         \
-     return float ## s ## _minmax(a, b, 0, 1, 1, status);                \
- }
- 
-+MINMAX(16)
- MINMAX(32)
- MINMAX(64)
- 
-diff --git a/include/fpu/softfloat2a/softfloat.h b/include/fpu/softfloat2a/softfloat.h
-index 3cb41977d8..dd1293d802 100644
---- a/include/fpu/softfloat2a/softfloat.h
-+++ b/include/fpu/softfloat2a/softfloat.h
-@@ -386,6 +386,17 @@ static inline float16 float16_abs(float16 a)
-      */
-     return make_float16(float16_val(a) & 0x7fff);
- }
-+
-+/* Expanded by the MINMAX macro in softfloat.c */
-+int float16_compare(float16, float16, float_status *status);
-+int float16_compare_quiet(float16, float16, float_status *status);
-+float16 float16_min(float16, float16, float_status *status);
-+float16 float16_max(float16, float16, float_status *status);
-+float16 float16_minnum(float16, float16, float_status *status);
-+float16 float16_maxnum(float16, float16, float_status *status);
-+float16 float16_minnummag(float16, float16, float_status *status);
-+float16 float16_maxnummag(float16, float16, float_status *status);
-+
- /*----------------------------------------------------------------------------
- | The pattern for a default generated half-precision NaN.
- *----------------------------------------------------------------------------*/
+diff --git a/include/exec/helper-head.h b/include/exec/helper-head.h
+index 1cfc43b9ff..fdb82151d3 100644
+--- a/include/exec/helper-head.h
++++ b/include/exec/helper-head.h
+@@ -30,6 +30,7 @@
+ #define dh_alias_int i32
+ #define dh_alias_i64 i64
+ #define dh_alias_s64 i64
++#define dh_alias_f16 i32
+ #define dh_alias_f32 i32
+ #define dh_alias_f64 i64
+ #define dh_alias_ptr ptr
+@@ -42,6 +43,7 @@
+ #define dh_ctype_int int
+ #define dh_ctype_i64 uint64_t
+ #define dh_ctype_s64 int64_t
++#define dh_ctype_f16 float16
+ #define dh_ctype_f32 float32
+ #define dh_ctype_f64 float64
+ #define dh_ctype_ptr void *
+@@ -98,6 +100,7 @@
+ #define dh_is_signed_s32 1
+ #define dh_is_signed_i64 0
+ #define dh_is_signed_s64 1
++#define dh_is_signed_f16 0
+ #define dh_is_signed_f32 0
+ #define dh_is_signed_f64 0
+ #define dh_is_signed_tl  0
 -- 
 2.13.0

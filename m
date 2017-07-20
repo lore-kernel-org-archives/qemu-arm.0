@@ -1,105 +1,102 @@
-Received: by 10.25.44.15 with SMTP id s15csp2284964lfs;
-        Thu, 20 Jul 2017 08:18:08 -0700 (PDT)
-X-Received: by 10.28.228.84 with SMTP id b81mr2747266wmh.133.1500563888732;
-        Thu, 20 Jul 2017 08:18:08 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1500563888; cv=none;
+Received: by 10.25.44.15 with SMTP id s15csp2508276lfs;
+        Thu, 20 Jul 2017 12:00:03 -0700 (PDT)
+X-Received: by 10.237.55.105 with SMTP id i96mr5945592qtb.139.1500577203261;
+        Thu, 20 Jul 2017 12:00:03 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1500577203; cv=none;
         d=google.com; s=arc-20160816;
-        b=S04WIQ8L4Z1kkRI3EV2j7qVuDRUzH5r7nJRd28QzJC7Kwsp8LbeRWf4NlTHssg8eGz
-         eqnw6w/sB+c1KLtI6Xm5jCL/PS7lZNlhDfE1mOUqc20/fzUrLkkOECC0tMmRy/pah0Ss
-         PJVnmjYb6l2kfoa1ZbhAnA1A5aZ8d6A44x9k+1etUG8M5+dLnXgO0AZmSfTgRLC+gZ+S
-         L5Ex910tFTlXXLhAOGMI/ImgN92rnDzZAKDZyZmaXbECtSGD8tvSbMexu3m5x/xMnGGu
-         XNEGMli9ebnfphiTjxn8vup6XYnFScjI9eogrAetbOp81Bj/UW+lfTG66iOYxx0bkpC8
-         TGxA==
+        b=VFS6tmUfftg4tJIwomIbTel3M5SX5uTjs8BL6zY3mQZ/a10Yjmqwl1lRv1UHAUEswO
+         O0TnXQ9Z5ZrBR9HAKXqzYO5asHPp5KP0ENUWYJeXUrOUuxWRqYFAostSh9AnvzZOgTrh
+         ODXOlJTJpQJlXI0MnbTjjsxO6askGvbjxIQupguJlchi+MaqNj8B+A2FDDiKNPNZtTKz
+         qEqnkNGOagc1CQooPsrlU0F9ihY9+R77wX9eN1xfnd30+6i6mTi7xoQZJTLbUhxslkSg
+         qvN4m2xBo8WmdmcBBs/gGXCHgx2VY6upHrFroFAgaGM69h/tHAt4dURqgUQ2XNVJ1SvK
+         8RTA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :references:in-reply-to:mime-version:dkim-signature
-         :arc-authentication-results;
-        bh=YOZiS0fT32l6cp9cPFG3duMCkjEqvoAUgPkSgVExF0s=;
-        b=xuysq/COWgQHCLbe/P4O5AzgwAFqasB1bzu46wghMiBa6kUSg0H4318/aLllZsfyOr
-         KxH2CU6TeNLS6JxcxaYAPJZkpfIP0WuFRsWIDikQqNlpAK39XIRTEQLkt06Vn7ycAeNr
-         5TGeAIXZDd7rZ83OoaofENOnfyphaHX0YQmgaWesPiiwYPfE2OoO3NBFpWF2v7dw3CYq
-         ySj2uOnUDY9FkYiDUWw2RLFp5ojd4yXQoyQX/HoJBByJZn1FLWP3T+U+ew6dLkqXeSHY
-         4ISWxgRGnCSNxvPJCMpmlEs/qhiDyXHP4zadQklvJCcJd5o7Vsd5B7jNPpgoVdX0f79P
-         FRUw==
+        h=content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:cc:to:subject:sender
+         :dkim-signature:arc-authentication-results;
+        bh=h1OqAfp4yeU8babCzQG9IKwe4LcihLmon39e0X54Nmk=;
+        b=FGyuW3OD0Q/I4dj8/KA9b82ucVrnrENeA7k6a8KCR/c5aglAlY95SvADOcaUmeqDs/
+         90rfn+IoK/Q6dM7QU7OSShSUyM1HBXCqhmQ92ok/vVC4tnLYIlPZE1OlRizQQIV/tWvZ
+         TNnvp/INlrqmg+mIpaV8YNOiAEzrugyqbS6WKJJcqknp4q2JL3+uBhBxIF+xvAs9H8TH
+         KWmp8XgOUe3iqP1iEYn0Nc6Dd9jlWQprsgZDd0jKAD2isXhTe36y7fkHA/nH6R+XPfCT
+         5hP4st2oPhUw2L0iHstqx2WxrjtlFmuvvNbaKLGCCIpXM1lPktFzvNMo0SI3AQZrrY2h
+         1e5A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.b=NJu4NXbN;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 2a00:1450:400c:c09::22a as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <peter.maydell@linaro.org>
-Received: from mail-wm0-x22a.google.com (mail-wm0-x22a.google.com. [2a00:1450:400c:c09::22a])
-        by mx.google.com with ESMTPS id l77si525237wmi.128.2017.07.20.08.18.08
-        for <alex.bennee@linaro.org>
+       dkim=pass header.i=@gmail.com header.b=ZqbxmqS6;
+       spf=pass (google.com: domain of rth7680@gmail.com designates 2607:f8b0:400d:c0d::242 as permitted sender) smtp.mailfrom=rth7680@gmail.com
+Return-Path: <rth7680@gmail.com>
+Received: from mail-qt0-x242.google.com (mail-qt0-x242.google.com. [2607:f8b0:400d:c0d::242])
+        by mx.google.com with ESMTPS id m8si2390306qtg.273.2017.07.20.12.00.03
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 20 Jul 2017 08:18:08 -0700 (PDT)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 2a00:1450:400c:c09::22a as permitted sender) client-ip=2a00:1450:400c:c09::22a;
+        Thu, 20 Jul 2017 12:00:03 -0700 (PDT)
+Received-SPF: pass (google.com: domain of rth7680@gmail.com designates 2607:f8b0:400d:c0d::242 as permitted sender) client-ip=2607:f8b0:400d:c0d::242;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.b=NJu4NXbN;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 2a00:1450:400c:c09::22a as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: by mail-wm0-x22a.google.com with SMTP id w191so30052323wmw.1
-        for <alex.bennee@linaro.org>; Thu, 20 Jul 2017 08:18:08 -0700 (PDT)
+       dkim=pass header.i=@gmail.com header.b=ZqbxmqS6;
+       spf=pass (google.com: domain of rth7680@gmail.com designates 2607:f8b0:400d:c0d::242 as permitted sender) smtp.mailfrom=rth7680@gmail.com
+Received: by mail-qt0-x242.google.com with SMTP id l55so4540824qtl.3;
+        Thu, 20 Jul 2017 12:00:03 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-         :cc:content-transfer-encoding;
-        bh=YOZiS0fT32l6cp9cPFG3duMCkjEqvoAUgPkSgVExF0s=;
-        b=NJu4NXbNodjETIKXgCaY3i1X9EcNw8OD3O5ITCPBmD/vY1DxkfIcdGfeSQK2eqXubJ
-         vOxxMB1NzocyzOkNfVhDMwhdA2OYthm43p1XCAaYg5Y4iqnUIDRwv+6HvnVRi+ezAaDq
-         Qe9v9Du1Nl8FQNFACZ+6jAx7y2f3Crsof3UoA=
+        d=gmail.com; s=20161025;
+        h=sender:subject:to:cc:references:from:message-id:date:user-agent
+         :mime-version:in-reply-to:content-language:content-transfer-encoding;
+        bh=h1OqAfp4yeU8babCzQG9IKwe4LcihLmon39e0X54Nmk=;
+        b=ZqbxmqS60ihSb05OiCMoFlOlVch+u9zIlJ3KC90N1Jz4Lzd5CGxY3rWQg9ygHnAO3s
+         EjLsPJ6qQ1X4X7ajiTtCOsyN5on5QU9D3oAhIoM29/NCMOd/xuzQWmQXxpuA0xtnDTSi
+         0XimTELdR0HbHHMlUQmfbVw0kEviciVqUK2Hk8Cc7ld3EjNAZCxZ3rjrMxl0ti3/k41v
+         T4OwmE/s3nhaY2SKWGkpKZALK1o/2JRaMrp5Ly/59sA0u+K0SEF3hg61ByPPzIINfYdQ
+         2Fu61tOP2+/QFsCADt655mbitiFpy9Qs6leeDn98UzBdtmdDLByY4sGA/EHCBm7wRY/K
+         dBjQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-         :message-id:subject:to:cc:content-transfer-encoding;
-        bh=YOZiS0fT32l6cp9cPFG3duMCkjEqvoAUgPkSgVExF0s=;
-        b=pN67/GGXKnpjGu365nPXavrLyJHjz63wgPyrL+ljAHJ0jYps/sk5HpKEUqeNU2QHLm
-         Z2pWb6LzPQlUHW9NPkvE/c8QUiPqxsonjZR18NwC1TMOCYZBa7qTfiIsOO8vFfjtCof9
-         67gVFSWdBBii9n3v2w5eWmHjznZ9u1VF8BbloP0vpH3+6u1R3Nw2VwLLSMc/AtbKKIyR
-         aXClS/CSNlDn7Bs+nSBsxvelFgrNvX9S57q/Z00L1QxrrgsJ9V0LXCWwfwGbxu0mGPxi
-         Ltof5DSi++Qrha8iNw3zmPfzvuzH5MOaHhQZu7JcEIUARZADucQB9qXhhqFRjqniZAy9
-         8XeA==
-X-Gm-Message-State: AIVw112qKjWY4zG2IMpiEfEuVJcFHo39ZiIBsEcoMeYGaswKdYFvijvs
-	lQqLhyhYdGl5jz3hM9QLXqlR7dk7yqEkaJW9WA==
-X-Received: by 10.28.40.215 with SMTP id o206mr2688860wmo.74.1500563887597;
- Thu, 20 Jul 2017 08:18:07 -0700 (PDT)
-MIME-Version: 1.0
-Received: by 10.223.134.2 with HTTP; Thu, 20 Jul 2017 08:17:46 -0700 (PDT)
-In-Reply-To: <20170720150426.12393-1-alex.bennee@linaro.org>
+        h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+         :date:user-agent:mime-version:in-reply-to:content-language
+         :content-transfer-encoding;
+        bh=h1OqAfp4yeU8babCzQG9IKwe4LcihLmon39e0X54Nmk=;
+        b=sRoSHX0NFCOgim/srKkTe7CsPMn+PQmbrdhWnT9oUusIRpFXNOiK59deQ4AtLV8shV
+         SjmmDWhbYN3to29+/iEgjJZpwu51pldrBeeu0mn7dTpD3fGVi62JKfpPrZtVl2nZ1l5V
+         tcgwxrr2ZksVFxJAWZVV1SPbtBEWSgJpHCWWkuJEN2QeCEMCSQYKfpkCwfQJKCftgqBk
+         ZlBQ2asolUu5ES6dEvwD2qaea1//y+L4NfDsApm/5PuPMbLxd12OUOzDP994UviNvZqi
+         5q6NGMMcfdYRmq02A9JP9xRdchFluMZVVPFsM1zlWk8aA2BVdqbvFP32M5nPfOcu9eF1
+         MbJg==
+X-Gm-Message-State: AIVw111EXWH22wlrHDextn93KXFARc+4TQf+milY6gk4J2kChR2539dQ
+	gHplcZwLr+RwYA==
+X-Received: by 10.237.32.41 with SMTP id 38mr6628444qta.68.1500577202761;
+        Thu, 20 Jul 2017 12:00:02 -0700 (PDT)
+Return-Path: <rth7680@gmail.com>
+Received: from bigtime.twiddle.net (14-203-206-9.tpgi.com.au. [14.203.206.9])
+        by smtp.googlemail.com with ESMTPSA id n85sm2293008qkh.39.2017.07.20.11.59.59
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 20 Jul 2017 12:00:02 -0700 (PDT)
+Sender: Richard Henderson <rth7680@gmail.com>
+Subject: Re: [RFC PATCH for 2.11 03/23] softfloat3c: dos2unix all files
+To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
+ peter.maydell@linaro.org
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org,
+ Aurelien Jarno <aurelien@aurel32.net>
 References: <20170720150426.12393-1-alex.bennee@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 20 Jul 2017 16:17:46 +0100
-Message-ID: <CAFEAcA-EkJq0Gx98+xhvK9_ssFXhYiA80SKF8_us=Of4+OsT5g@mail.gmail.com>
-Subject: Re: [RFC PATCH for 2.11 00/23] Implementing FP16 for ARMv8.2 using
- SoftFloat2a and 3c
-To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
-Cc: Richard Henderson <rth@twiddle.net>, qemu-arm <qemu-arm@nongnu.org>, 
-	QEMU Developers <qemu-devel@nongnu.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-TUID: 51w8TjGeRJ9h
+ <20170720150426.12393-4-alex.bennee@linaro.org>
+From: Richard Henderson <rth@twiddle.net>
+Message-ID: <d58f694c-cc8a-fb0f-f01c-ba1e2eebc6e1@twiddle.net>
+Date: Thu, 20 Jul 2017 08:59:55 -1000
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+ Thunderbird/52.2.1
+MIME-Version: 1.0
+In-Reply-To: <20170720150426.12393-4-alex.bennee@linaro.org>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+X-TUID: ltaUd0mBhDmQ
 
-On 20 July 2017 at 16:04, Alex Benn=C3=A9e <alex.bennee@linaro.org> wrote:
-> So while any review is gratefully accepted my main interest is if this
-> sort of duel approach is worth it?
->
-> I think the long term aim would be to move fully over to the newer
-> library if we can but I appreciate a not inconsiderable amount of work
-> has gone into the existing 2a code. Having said that as long as the
-> testing is good we are likely to pick up bugs in both implementations.
-> While its nice to have a more modern SoftFloat library it still lags
-> somewhat on QEMUs general requirements claiming only direct support
-> for IEEE754 1985 whereas most modern CPUs are closer to the 2008
-> revision of the specification.
+On 07/20/2017 05:04 AM, Alex Bennée wrote:
+> This is a massive but mechanical patch, the result of:
+> 
+>    (cd fpu/softfloat3c; and find . | xargs dos2unix)
+>    (cd include/fpu/softfloat3c; and dos2unix *)
+> 
+> Signed-off-by: Alex Bennée<alex.bennee@linaro.org>
+> ---
 
-I'm definitely not a fan of having two different implementations
-of softfloat in the codebase, except perhaps for some well defined
-*short* transition period. Otherwise we'll end up carrying both
-of them around forever, given our past history at success in
-transitioning things to new APIs.
+Really shouldn't this have been part of the import?
 
-I don't have a strong view about whether we're better off
-moving to softfloat3c and forward porting any bugfixes and
-improvements, or backporting 16-bit fp code from 3c to our
-current codebase.
 
-thanks
--- PMM
+r~

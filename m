@@ -1,120 +1,74 @@
-Received: by 10.25.44.15 with SMTP id s15csp427275lfs;
-        Fri, 21 Jul 2017 02:28:05 -0700 (PDT)
-X-Received: by 10.200.46.140 with SMTP id h12mr9111562qta.305.1500629285514;
-        Fri, 21 Jul 2017 02:28:05 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1500629285; cv=none;
-        d=google.com; s=arc-20160816;
-        b=gdQPQnZ4gIOLsViXcjarkc36q2tlnRjhuOlDRn2GJx4BnBd77I3cltjYBej+TyuXV9
-         Iqx6iFbneJoK6dmgMdRvSgqDnYaopGzLyWeNnRTeMiXI1GjdzVQMMVJkefFskL5wy3ig
-         HKpy8bInG5+8AR2RVLhQtRrRE4jVcLstQva79hEIMQno23sV40OoOEbO0XLFBpcZ9FoL
-         i11VCWacYrVN0689kvWg4O4GuFYSUGjaNlc5x/FI2PMljuho+9gBuHxZYrQkPMIBGqV8
-         pW23cnanGhmUYxFYl+LWvWc6Fxa3MH6Mc8kQS3GucQEgsEah8Rlq/Ki2Xk4GPy1pB9yR
-         JXzw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:in-reply-to:content-transfer-encoding
-         :content-disposition:mime-version:references:reply-to:message-id
-         :subject:cc:to:from:date:dkim-filter:dmarc-filter
-         :arc-authentication-results;
-        bh=T+Mqqs4xajjMG/kMyNh5QGt4Ms+Z+d4ATPeUXrdXn8c=;
-        b=0AR/nzaxvBkPHcCqhZB8W26Z81dWH+qszKCdJyleAZbMb5cJqxwdgjvBkwOqtwgqYG
-         D+YQxH68kpbWjN4BaRhPCbDs9K6at3DQv0tLG/3WhkN9oEzegSCTdwEAUr+2Z1F36lGc
-         hxQB1vx9vT2kOb98aE+pDM56Tptrrl7blEXml2Ts1C1j/mw4x7OaZsLt8EVW5/Vqyj2L
-         2FlXMpl104dopMQ8waQCVqbGCWY/jyxgyv/wfO0gZAT+AWeRwxSgNHV+SxhXQ3wtxnVW
-         n1DwKwtSEYYWAFwAKhox9U3R71Ydotwtbo3f+J+WNGtmXA23NXO7Iwzo+B7LR3IdU82y
-         Jb4A==
-ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of berrange@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=berrange@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <berrange@redhat.com>
-Received: from mx1.redhat.com (mx1.redhat.com. [209.132.183.28])
-        by mx.google.com with ESMTPS id d41si3774219qkh.107.2017.07.21.02.28.05
+Return-Path: <alex.bennee@linaro.org>
+Received: from zen.linaro.local ([81.128.185.34])
+        by smtp.gmail.com with ESMTPSA id j28sm7990576wrb.9.2017.07.21.02.32.49
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 21 Jul 2017 02:28:05 -0700 (PDT)
-Received-SPF: pass (google.com: domain of berrange@redhat.com designates 209.132.183.28 as permitted sender) client-ip=209.132.183.28;
-Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of berrange@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=berrange@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com [10.5.11.12])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 3A8E22C1539;
-	Fri, 21 Jul 2017 09:28:04 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 3A8E22C1539
-Authentication-Results: ext-mx10.extmail.prod.ext.phx2.redhat.com; dmarc=none (p=none dis=none) header.from=redhat.com
-Authentication-Results: ext-mx10.extmail.prod.ext.phx2.redhat.com; spf=pass smtp.mailfrom=berrange@redhat.com
-DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com 3A8E22C1539
-Received: from redhat.com (ovpn-117-176.ams2.redhat.com [10.36.117.176])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 9462A80E0F;
-	Fri, 21 Jul 2017 09:28:01 +0000 (UTC)
-Date: Fri, 21 Jul 2017 10:27:58 +0100
-From: "Daniel P. Berrange" <berrange@redhat.com>
-To: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
-Cc: Thomas Huth <thuth@redhat.com>, peter.maydell@linaro.org,
-	qemu-arm@nongnu.org, qemu-devel@nongnu.org,
-	Aurelien Jarno <aurelien@aurel32.net>,
-	Richard Henderson <rth@twiddle.net>
-Subject: Re: [Qemu-devel] [RFC PATCH for 2.11 03/23] softfloat3c: dos2unix
- all files
-Message-ID: <20170721092758.GF17693@redhat.com>
-Reply-To: "Daniel P. Berrange" <berrange@redhat.com>
-References: <20170720150426.12393-1-alex.bennee@linaro.org>
- <20170720150426.12393-4-alex.bennee@linaro.org>
- <d58f694c-cc8a-fb0f-f01c-ba1e2eebc6e1@twiddle.net>
- <1ff55ec6-b8e5-8696-7472-0ac22073ddf4@redhat.com>
- <87ziby6udk.fsf@linaro.org>
+        Fri, 21 Jul 2017 02:32:49 -0700 (PDT)
+Received: from zen (localhost [127.0.0.1])
+	by zen.linaro.local (Postfix) with ESMTPS id 13B3C3E0127;
+	Fri, 21 Jul 2017 10:32:49 +0100 (BST)
+References: <20170720150426.12393-1-alex.bennee@linaro.org> <20170720150426.12393-6-alex.bennee@linaro.org> <71a11f23-39e7-d89a-36d5-2870ed76d940@twiddle.net>
+User-agent: mu4e 0.9.19; emacs 25.2.50.3
+From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: Richard Henderson <rth@twiddle.net>
+Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org, qemu-devel@nongnu.org, Aurelien Jarno <aurelien@aurel32.net>
+Subject: Re: [RFC PATCH for 2.11 05/23] softfloat3c: initial build machinery
+In-reply-to: <71a11f23-39e7-d89a-36d5-2870ed76d940@twiddle.net>
+Date: Fri, 21 Jul 2017 10:32:49 +0100
+Message-ID: <87y3ri6sou.fsf@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <87ziby6udk.fsf@linaro.org>
-User-Agent: Mutt/1.8.3 (2017-05-23)
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.5.110.39]); Fri, 21 Jul 2017 09:28:04 +0000 (UTC)
-X-TUID: wcIq82Qc0WL0
+X-TUID: uu7wdYzx+98c
 
-On Fri, Jul 21, 2017 at 09:56:23AM +0100, Alex Bennée wrote:
-> 
-> Thomas Huth <thuth@redhat.com> writes:
-> 
-> > On 20.07.2017 20:59, Richard Henderson wrote:
-> >> On 07/20/2017 05:04 AM, Alex Bennée wrote:
-> >>> This is a massive but mechanical patch, the result of:
-> >>>
-> >>>    (cd fpu/softfloat3c; and find . | xargs dos2unix)
-> >>>    (cd include/fpu/softfloat3c; and dos2unix *)
-> >>>
-> >>> Signed-off-by: Alex Bennée<alex.bennee@linaro.org>
-> >>> ---
-> >>
-> >> Really shouldn't this have been part of the import?
-> >
-> > +1
-> > It's only a whitespace change, so please squash it in the previous patch
-> > instead. (You could mention this in the patch description that line
-> > endings have been changed to unix mode)
-> 
-> Sure - I just wanted to be clear of the steps I took should I want to do
-> it from scratch again.
-> 
-> One thing playing in my mind against moving to SoftFloat3c is the
-> inscrutability of the upstream. It's nice there has been a new release
-> with new features but there isn't a source repository or as far as I can
-> tell a development list. It is basically as far as I can tell a one man
-> project albeit backed by academic funding.
 
-This is no worse than the situation we already have with SoftFloat 2
-though is it. IOW, as long as we fully move from v2 -> v3 eventually
-(to avoid maintaining both indefinitely) we're no worse off from the
-community POV. At least v3 has the possibility to be become more
-community driven in future, where as v2 is essentially now a obsolete
-version.
+Richard Henderson <rth@twiddle.net> writes:
 
-> That said the license change in 3 does mean it would be a lot easier to
-> incorporate fixes and updates if and when upstream release new versions.
+> On 07/20/2017 05:04 AM, Alex Bennée wrote:
+>> +# so they can still be linked when needed. We build these files surpressing so of the normal CFLAGS.
+>
+> "surpressing so" -> "suppressing some"
+>
+> Do we gain any confidence for our still supported but less tested
+> 32-bit hosts (all of which do support a 64-bit type) by dropping the
+> FAST_INT64 distinction?
 
-Regards,
-Daniel
--- 
-|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
-|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
-|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|
+I guess so. Certainly I can cross-compile aarch64-softmmu on armhf
+defining all the:
+
+  softfloat3_fastint64="yes"
+  softfloat3_fastdiv32to16="yes"
+  softfloat3_fastdiv64to32="yes"
+
+without any issue. I guess it might mean our 32 bit guests might run
+slightly slower but none of our FP is fast anyway.
+
+There is also a slight intermingling in the build setup between the
+FASTINT64 and the specialisation even though there are for different
+things.
+
+The 8086 code basically makes NaN propagation match old x86 whereas SSE
+is the more recent and more IEEE like SSE behaviour. See section 5 of:
+
+  http://www.jhauser.us/arithmetic/SoftFloat-3c/doc/SoftFloat-source.html
+
+I suspect what we should have here are specialisation for each of our
+guests. We do something similar in the softfloat2a code in it's
+specialise header. Maybe we should rename 8086-SSE to default and then
+create a specialisation for each guest that needs it?
+
+>
+>> -#ifdef __GNUC_STDC_INLINE__
+>> -#define INLINE inline
+>> -#else
+>> -#define INLINE extern inline
+>
+> Why are you removing this?
+
+I was having compile issues I think because it was defaulting to extern
+inline which was breaking given all the inline functions are defined in
+the header. Having re-read the docs for __GNUC_STDC_INLINE__ though it
+must have been for one of the more esoteric compile targets as that
+should be defined for our default C99 compile?
+
+--
+Alex Bennée

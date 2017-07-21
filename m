@@ -1,33 +1,33 @@
-Received: by 10.25.44.15 with SMTP id s15csp659070lfs;
-        Fri, 21 Jul 2017 06:21:42 -0700 (PDT)
-X-Received: by 10.223.128.177 with SMTP id 46mr9969852wrl.150.1500643302052;
-        Fri, 21 Jul 2017 06:21:42 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1500643302; cv=none;
+Received: by 10.25.44.15 with SMTP id s15csp663227lfs;
+        Fri, 21 Jul 2017 06:25:35 -0700 (PDT)
+X-Received: by 10.223.128.177 with SMTP id 46mr9978952wrl.150.1500643535350;
+        Fri, 21 Jul 2017 06:25:35 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1500643535; cv=none;
         d=google.com; s=arc-20160816;
-        b=z1sTifmwd9pdqLq/CBg/dQxQX5YRToxLNTMvl+8oPlIjNoA97ud832OOd9SvheZfMW
-         Bgv1d8TIhsTqDvdk+aYj6EPnTrT1P+3MyND0DK6rd0ACNhr5asgH4M3Onb1FTslARrSB
-         gExbPh4yZck6rGimgjDx9SJ0XJ1IsmaqLIFTimvImYknQLJfyMWRxEb/l+Im93InHamr
-         cuhuopPowL2tThaP/j+LNzQAODzlR5VAqHT7cO57u30iaPCJn/ayUt+7/RkcywMY8OXM
-         z4ScspYRn8cbaRI6muS1lNSFwstWLfOSxvUalYN2rqhDtGLfp+P3J1xM4kg3I8wBH/oR
-         ly1Q==
+        b=BtV1+q88o+rzIu0rZvbcf5Oo6R6HVSy9rVnNUjHSpijoS8u5w5UvuUT2nGNZz3n/Sv
+         volT/Ns+sxjzdHOmDxjKjDuqOxPlfvmViwzWZdUJifVjO/ydaS2mrsPDcTnIhvwnhy9r
+         RIGoZHRa2UK6Oy48uRg+nCUc+d8ycfpYDe4WBEjfKDuaWMfWZPHekSWOxw0+NEUAUiG8
+         +qT28Uq/xQtDaxEnJO4sbpIQM15h9rj4ZYs1oqFi5dAQgK7ZdAGL5q8ec3nRmW4PWKNx
+         sHsRloyIs9csT60nFXekTAqbR3ncK6mkF3oM4atokZZDCK3OEk1LZE56awqCjPpZBzWt
+         Cn8w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=user-agent:in-reply-to:content-transfer-encoding
          :content-disposition:mime-version:references:message-id:subject:cc
          :to:from:date:arc-authentication-results;
-        bh=nLTTK/OPtG3C7w+1eTYHZs/iltHYMu+3/h9EKv5kp1M=;
-        b=zo0I1921Pj0VjnmjnooY1nCOIj5tMaJeG0rmD6XLabA9ZeEV47LOd9SyjOgZShY8Ry
-         2c9t2gtca2xnYnl49O8sTa3N/eNW73bFm8gty2TvbqQD33oERpHagKbRNTAvl0yYYcyq
-         Q9HUyHuytJENaPb6ZWlaWs6z3NjQibFzNOm7XWCYMKOqcgy4wh3bahozpwBpayyl4tbM
-         Ffdd806DH7dc+YLxcEafcGB1LaUIvJPEORLsDOe7nL+yuFpPndytbcO/pgbDkhxVzEq+
-         tzwVmwfcgVFRJ6pQkdZ5tGoID+w0+t6LlVpoCMabOQqG24WxREXXRxwbPFcLwQQbwmpF
-         9SXA==
+        bh=9dcCKCpwfzSGk7yMi9tMTVEnScerJDWz+CaBF79tNEI=;
+        b=u76jDpX0Cw3+j5+i5sZVZ0K1vi8G30FQIBD2jVDMvxsiZ7YPEv+t5+K/i5AvRwa+Iq
+         PJQHSvowVRDRKEWfPvMHqOz1C914Y0DxhrhEF3+uIB/KwqnK8jLl6Q9joyZNnZLwgbMW
+         Iaby+n/Y4/kOLw9doP6asbOA/K9iDlEB2EKgZFWzhtB9frtVON7U/tnVz4hkwvSgdmK/
+         crHp8th4LVikbH7HcDUQewNKQ73i3ma+F+OyFPLFm9+hCW0E+n3Mfy8CLOKwv3MxsQdo
+         /+8ccpwkUWR4cNygWKgRwkBIocYxy59ZIVdt3rUfDDrZKfkPK0uo/k1h8Hrrrub/w38E
+         IWFg==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: best guess record for domain of aurelien@aurel32.net designates 2001:bc8:30d7:100::1 as permitted sender) smtp.mailfrom=aurelien@aurel32.net
 Return-Path: <aurelien@aurel32.net>
 Received: from hall.aurel32.net (hall.aurel32.net. [2001:bc8:30d7:100::1])
-        by mx.google.com with ESMTPS id m9si5206726wrb.367.2017.07.21.06.21.41
+        by mx.google.com with ESMTPS id 60si4454833wrq.87.2017.07.21.06.25.35
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 21 Jul 2017 06:21:41 -0700 (PDT)
+        Fri, 21 Jul 2017 06:25:35 -0700 (PDT)
 Received-SPF: pass (google.com: best guess record for domain of aurelien@aurel32.net designates 2001:bc8:30d7:100::1 as permitted sender) client-ip=2001:bc8:30d7:100::1;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: best guess record for domain of aurelien@aurel32.net designates 2001:bc8:30d7:100::1 as permitted sender) smtp.mailfrom=aurelien@aurel32.net
@@ -35,80 +35,71 @@ Received: from ohm.aurel32.net ([2001:bc8:30d7:111::1000])
 	by hall.aurel32.net with esmtpsa (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
 	(Exim 4.89)
 	(envelope-from <aurelien@aurel32.net>)
-	id 1dYXsC-0002CO-Sj; Fri, 21 Jul 2017 15:21:40 +0200
+	id 1dYXvz-0002Ip-1P; Fri, 21 Jul 2017 15:25:35 +0200
 Received: from aurel32 by ohm.aurel32.net with local (Exim 4.89)
 	(envelope-from <aurelien@aurel32.net>)
-	id 1dYXsC-0001FI-7w; Fri, 21 Jul 2017 15:21:40 +0200
-Date: Fri, 21 Jul 2017 15:21:40 +0200
+	id 1dYXvy-0001GO-KJ; Fri, 21 Jul 2017 15:25:34 +0200
+Date: Fri, 21 Jul 2017 15:25:34 +0200
 From: Aurelien Jarno <aurelien@aurel32.net>
 To: Alex =?iso-8859-15?Q?Benn=E9e?= <alex.bennee@linaro.org>
 Cc: Richard Henderson <rth@twiddle.net>, peter.maydell@linaro.org,
 	qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Subject: Re: [Qemu-devel] [RFC PATCH for 2.11 12/23]
- target/arm/translate-a64.c: add FP16 FAGCT to AdvSIMD 3 Same
-Message-ID: <20170721132140.xy2uqronprhzjiga@aurel32.net>
+Subject: Re: [Qemu-devel] [RFC PATCH for 2.11 05/23] softfloat3c: initial
+ build machinery
+Message-ID: <20170721132534.s3zjgwbdn7y6oknv@aurel32.net>
 References: <20170720150426.12393-1-alex.bennee@linaro.org>
- <20170720150426.12393-13-alex.bennee@linaro.org>
- <4d6ac494-d606-ebaf-6498-7c526467ac62@twiddle.net>
- <87tw266rm3.fsf@linaro.org>
+ <20170720150426.12393-6-alex.bennee@linaro.org>
+ <71a11f23-39e7-d89a-36d5-2870ed76d940@twiddle.net>
+ <87y3ri6sou.fsf@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=iso-8859-15
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
-In-Reply-To: <87tw266rm3.fsf@linaro.org>
+In-Reply-To: <87y3ri6sou.fsf@linaro.org>
 User-Agent: NeoMutt/20170113 (1.7.2)
-X-TUID: DMucN+1XKG3D
+X-TUID: FoARbJZbF21b
 
-On 2017-07-21 10:56, Alex Benn=E9e wrote:
+On 2017-07-21 10:32, Alex Benn=E9e wrote:
 >=20
 > Richard Henderson <rth@twiddle.net> writes:
 >=20
 > > On 07/20/2017 05:04 AM, Alex Benn=E9e wrote:
-> >> +static softfloat_flags softfloat_mapping_table[] =3D {
-> >> +    { float_flag_inexact  , softfloat_flag_inexact },
-> >> +    { float_flag_underflow, softfloat_flag_underflow },
-> >> +    { float_flag_overflow , softfloat_flag_overflow },
-> >> +    { float_flag_invalid  , softfloat_flag_invalid },
-> >> +};
-> >> +/* FIXME: 2a has no infinite flag */
-> >> +
-> >> +static uint8_t sync_softfloat_flags_from_2a(float_status *flags2a)
-> >> +{
-> >> +    uint8_t flags =3D flags2a->float_exception_flags;
-> >> +    int i;
-> >> +    if (flags) {
-> >> +        for (i =3D 0; i < ARRAY_SIZE(softfloat_mapping_table); i++) {
-> >> +            struct softfloat_flags *map =3D &softfloat_mapping_table[=
-i];
-> >> +            if (flags & map->float2a_flag) {
-> >> +                softfloat_raiseFlags(map->float3c_flag);
-> >> +            }
-> >> +        }
-> >> +    } else {
-> >> +        softfloat_exceptionFlags =3D 0;
-> >> +    }
-> >> +
-> >> +    return softfloat_exceptionFlags;
-> >> +}
-> >> +
+> >> +# so they can still be linked when needed. We build these files surpr=
+essing so of the normal CFLAGS.
 > >
-> > For conversions like this IMO it's better to make the compiler do the
-> > work. C.f. target/alpha/fpu_helper.c and CONVERT_BIT.
+> > "surpressing so" -> "suppressing some"
+> >
+> > Do we gain any confidence for our still supported but less tested
+> > 32-bit hosts (all of which do support a 64-bit type) by dropping the
+> > FAST_INT64 distinction?
 >=20
-> Cool, I'll look at that.
+> I guess so. Certainly I can cross-compile aarch64-softmmu on armhf
+> defining all the:
 >=20
-> > BTW, I think these TLS variables that softfloat3a are using are going
-> > to be a real problem.  It's one thing to do it temporarily like you
-> > are here, coordinating between 2a and 3c, but later, when the front
-> > end is fully converted?  That's just nonsense.
+>   softfloat3_fastint64=3D"yes"
+>   softfloat3_fastdiv32to16=3D"yes"
+>   softfloat3_fastdiv64to32=3D"yes"
 >=20
-> Wouldn't the other option to be to drop float_status out of the guests
-> CPUEnv and grab it from the TLS variable instead? Of course all guests
-> would need to be MTTCG enabled for that to work.
+> without any issue. I guess it might mean our 32 bit guests might run
+> slightly slower but none of our FP is fast anyway.
+>=20
+> There is also a slight intermingling in the build setup between the
+> FASTINT64 and the specialisation even though there are for different
+> things.
+>=20
+> The 8086 code basically makes NaN propagation match old x86 whereas SSE
+> is the more recent and more IEEE like SSE behaviour. See section 5 of:
+>=20
+>   http://www.jhauser.us/arithmetic/SoftFloat-3c/doc/SoftFloat-source.html
+>=20
+> I suspect what we should have here are specialisation for each of our
+> guests. We do something similar in the softfloat2a code in it's
+> specialise header. Maybe we should rename 8086-SSE to default and then
+> create a specialisation for each guest that needs it?
 
-As said in another email, some architectures actually use more than one
-float_status. We therefore need to implement a solution like the one
-proposed by Richard.
+For the sNaN is 0 or 1 specialisation we actually need to be able to
+select this at runtime, as we have implemented it in the QEMU softfloat
+version.
 
 Aurelien
 

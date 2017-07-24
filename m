@@ -1,162 +1,167 @@
-Received: by 10.25.44.15 with SMTP id s15csp4195879lfs;
-        Mon, 24 Jul 2017 11:47:40 -0700 (PDT)
-X-Received: by 10.200.3.80 with SMTP id w16mr22499322qtg.325.1500922060136;
-        Mon, 24 Jul 2017 11:47:40 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1500922060; cv=none;
+Received: by 10.25.44.15 with SMTP id s15csp4316547lfs;
+        Mon, 24 Jul 2017 14:09:33 -0700 (PDT)
+X-Received: by 10.200.47.146 with SMTP id l18mr17158729qta.176.1500930573779;
+        Mon, 24 Jul 2017 14:09:33 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1500930573; cv=none;
         d=google.com; s=arc-20160816;
-        b=inoFcfiMCHGM8dGvVQtklD2ov/J/8mDQDQo8Vvbtt/4CczZX9/YKlWqo36kD0N9GQA
-         TG6aZ+DXIxihcou58mxK7vptHI39ipx0faRibM706O8lSGY22tW9BwI0bjbamZQG4Kz5
-         WNt6Tdznvd12Cstoa1p7/vqK/G/OxOVx321I0+syq0E/On7GBno1/Ha7LG+LEJFjkBo+
-         vY/xeeLCz+ysF8h3MfGFlHfN4mfdTTuJZq2qoLC76Ah0XVgA1EFCRwYMF3zDz8fyyRK7
-         D+6r8uD7z8qPuQReC8oB5jo2Npl46iv+yHsfS5p00OVDXShcGgSdtlI8nJ2CjKcNdDyN
-         YKMQ==
+        b=YCjWmlpHQpEAH6AppsO84AGWV9CpvyQpmBRzqmIMnjfciwiLncPt59cZ3J4Spe/0im
+         AAtd8PmBBPhRPH0pAypotb4F6Ig+C94BBZ5KR3SZCFoeh3Z5if3EUMWDfpiMmzPpuuLw
+         /snssCWStVn51w73kUkl9cxX0yS+bcZRhcafkK7lvkYdjOOV+pjdblSiodhiFWLndfwy
+         hEo0LFkFtJ28zajZNRdk27DQF7Wq96DhbFXZpFJo3oygpQ+HLs+ZFAvt7kflcnSG+NG2
+         H1uE2NsqNGHAS0p+4INcILfYnk5yPep5M1yt7mm40MaMlLmRi5ZyqmyzxmETwaiwexUF
+         I/iQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:to:from:dkim-signature:arc-authentication-results;
-        bh=NTAK9W79+iqAA6Kr5BAWdSwRBWdgv2jcG1b/j7mz1M0=;
-        b=E2kS2znYYez221yi87XKQ6Kuy5BgsKRpZJ1ijmRRD8TcKE4EkgqBW9uOI50SYfAK/l
-         Tkv7dB0hYwR+gjvgGFmcmEU6ezaoeISvXLR30QDtIiSG0/xPTrTwF3bPKK+6xKSXdgS+
-         f+znVU3VNeUJWomPagzL6KL2x7Q8A62sfjxyd6DW2YzuZv/eM2APMy/foH06t9g85kUv
-         3kdw3EbDOLDzsy2Z6mk4GlHa3M2vwcomf+0r5F1qPEwXGFjg/5bJSgRSUK3bDKxkQ/b+
-         NsSnEH7fWjFj13BJwRw9jusgBuwYouJkBQkwjCRcCardYUQ7qRKSAPchQTfJOZLisuK3
-         x/Vg==
+         :content-transfer-encoding:to:message-id:date:from:references
+         :in-reply-to:mime-version:dkim-signature:arc-authentication-results;
+        bh=FCGgIPNxRSKch94vKex9Myp7fLOl642uZARVTKOhMec=;
+        b=wGR/kEZR4vF7ULGXEYtan1WD/tRWevuQyL0ZQVOI8+LjnO7pQ4g0Px1B60gbyJ+slj
+         f8/2ePt1psxtP8lplbDO+8kA8tVb0BMe4T0uCdscoawDZOKMy5Yq/MZRPheXH4XtIekO
+         UVami3mc0TnfmgjpaXtttY0b/FoZMkl6u3KFej73UQ42m2BXPn3AevxrUby1zvw/4LqW
+         b4KVuPagpDkj5cbNAUezuRhmdjZj6oSrVYNZGMUjG2ouuuzSBLnAvsk0J1uZpXk2z5Ah
+         a8dEVFSnrUSSqS3zMD4yNkGHXSkXpKNmN4vEa4zTfYaXbga4y0DTuNTaRVTkPc3GWYc6
+         js3w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.b=DfZttV65;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@linaro.org header.b=cR3dIdPC;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id o68si9297363qkf.482.2017.07.24.11.47.39
+        by mx.google.com with ESMTPS id c13si9523525qta.534.2017.07.24.14.09.33
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 24 Jul 2017 11:47:40 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Mon, 24 Jul 2017 14:09:33 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.b=DfZttV65;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:56420 helo=lists.gnu.org)
+       dkim=fail header.i=@linaro.org header.b=cR3dIdPC;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:57045 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1dZiOH-0007bR-Aw
-	for alex.bennee@linaro.org; Mon, 24 Jul 2017 14:47:37 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:50582)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1dZkbb-00085z-33
+	for alex.bennee@linaro.org; Mon, 24 Jul 2017 17:09:31 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:59898)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1dZi6S-0000jL-6R
-	for qemu-devel@nongnu.org; Mon, 24 Jul 2017 14:29:12 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1dZkbX-00085g-DL
+	for qemu-arm@nongnu.org; Mon, 24 Jul 2017 17:09:28 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1dZi6Q-0005Mz-0V
-	for qemu-devel@nongnu.org; Mon, 24 Jul 2017 14:29:12 -0400
-Received: from mail-qk0-x242.google.com ([2607:f8b0:400d:c09::242]:32996)
+	(envelope-from <peter.maydell@linaro.org>) id 1dZkbW-0006Go-Bk
+	for qemu-arm@nongnu.org; Mon, 24 Jul 2017 17:09:27 -0400
+Received: from mail-wm0-x230.google.com ([2a00:1450:400c:c09::230]:38223)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1dZi6P-0005MH-T8; Mon, 24 Jul 2017 14:29:09 -0400
-Received: by mail-qk0-x242.google.com with SMTP id d145so8120924qkc.0;
-	Mon, 24 Jul 2017 11:29:09 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
-	:mime-version:content-transfer-encoding;
-	bh=NTAK9W79+iqAA6Kr5BAWdSwRBWdgv2jcG1b/j7mz1M0=;
-	b=DfZttV65RcmZnlymw4wDiv1zGJN2DVCkmngR/gThJOl7l0CM2jnMgW7mfYhIn73/Bp
-	b8XXVxvgK8LQCtio7bo0QdAJpP5aVvGH7QWmg0e0eFsFG9jtP9oEgQY/Q2Srct8XD8W5
-	6MKxqOm9pCm6n6NrUm/J2qpprKuK/cmSvK8jNItLtf/dAV/QrYu5dnMtzx3gdR+zx9CF
-	m8+Cql+gCSVWfZyvuAUzhNfJgEHoqliZ4v/gwUVpAazgEA/i6Hy5kv5ReEWvF9xgLng0
-	w0Sy5R3CE79mNxHcWUidXMvXI34zVFcTB1VsGuavuyV5zOmuDyoCC7Ck291UkdBX/Ydo
-	tmtA==
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1dZkbW-0006G2-6I
+	for qemu-arm@nongnu.org; Mon, 24 Jul 2017 17:09:26 -0400
+Received: by mail-wm0-x230.google.com with SMTP id m85so27323134wma.1
+	for <qemu-arm@nongnu.org>; Mon, 24 Jul 2017 14:09:26 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc:content-transfer-encoding;
+	bh=FCGgIPNxRSKch94vKex9Myp7fLOl642uZARVTKOhMec=;
+	b=cR3dIdPCHKlGQZ25uyGJ9ZBI5ffdC5zLQuvZSFWM1caaWYNqIHUe/9HKwjyjT8BABA
+	JmWd+iNVP8P2WlBRlIvysnALhVYJLNuM8BkvFOtTJYPFG9WlK7q6X3Qh/udldiDoOZED
+	p0+/oNE1qLIwScFi+MZOox9Fv8Qe5kTWws+F4=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
-	:in-reply-to:references:mime-version:content-transfer-encoding;
-	bh=NTAK9W79+iqAA6Kr5BAWdSwRBWdgv2jcG1b/j7mz1M0=;
-	b=ptNfdWPAl5/bea5SNgzp5OnNVquJlmZDtYmiPVCO6O4EtWEll16XLyBId3raOcGBlt
-	0jkEElnnV05lHcLTKfTdX6hvo8lc7FojKqrSYamcaJAphuoDNdhrikcxZp4BJZFT/T1C
-	2lfXBiDdWmR8MVI16MtN/ND2lm8Sjc4LSt5/ADWCjd5Nq6Zf1qyr8CMKmZfhZlCwYRgO
-	HfPexxGqSQQspweVqTSk4/fOqz0rLtScv8ZsWniBlhynbYGMAmtS1xbMFDjlJf4wMyl7
-	HDZ4OD4/kKqlAiDCteOWuWj6OwEjpTpHPeRbv7HTeZPQ/eEF4UgOgtmHYUGMBognSnzI
-	j/4g==
-X-Gm-Message-State: AIVw112MyLFLHYr4+V2AhplFMPxNEAy/DRAvrrRiXDQGGhkoZ9yDkEKz
-	urGlsuUtuQiH9A==
-X-Received: by 10.55.183.65 with SMTP id h62mr1113412qkf.35.1500920949426;
-	Mon, 24 Jul 2017 11:29:09 -0700 (PDT)
-Received: from yoga.offpageads.com ([138.117.48.223])
-	by smtp.gmail.com with ESMTPSA id
-	t57sm9033799qtt.18.2017.07.24.11.29.06
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Mon, 24 Jul 2017 11:29:08 -0700 (PDT)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-To: Eric Blake <eblake@redhat.com>,
-	=?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
-	Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 24 Jul 2017 15:27:37 -0300
-Message-Id: <20170724182751.18261-22-f4bug@amsat.org>
-X-Mailer: git-send-email 2.13.3
-In-Reply-To: <20170724182751.18261-1-f4bug@amsat.org>
-References: <20170724182751.18261-1-f4bug@amsat.org>
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc:content-transfer-encoding;
+	bh=FCGgIPNxRSKch94vKex9Myp7fLOl642uZARVTKOhMec=;
+	b=HEM7Byosd7OKNUfXJ/yxJNa+N2mhQgaQTeUrCgU57i9T7KOPo2hSDA9SSkPbnGKDk9
+	7Uip4hflJ2ItHmqnAplCUTx8HRMDw1axgO3N/WSIRLJY615htnzxqQZfPxxIRIhkXFBm
+	XVHZ02qKozsM1oTgQpLz+iYe3LwBPIpx3Pmz3p4nC/Qb54pguzNiJKYHJziBn/fpEict
+	J9cJpMBCcHEpabO1uE4uGHZ4UXyqguHAiBKBEKv9oY07SK/mg0fqGnCQ+jjci97l3FLa
+	5rRgXbf9SxTAq8PfGHVk1VwCmuIru7GiTwdoCM53NksBTehnnI7Hkcr+6ysT6uO7Cwl5
+	bx2A==
+X-Gm-Message-State: AIVw111bs+sFjdZ1hRrs2L98KA4dkZSFkUiO/16tFJ9jbtP2gGhsyO5R
+	YNy1YMT6KATYoesxaMd6NhnMWJWVAaWV
+X-Received: by 10.28.95.69 with SMTP id t66mr2069702wmb.74.1500930565128; Mon,
+	24 Jul 2017 14:09:25 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
+Received: by 10.223.134.54 with HTTP; Mon, 24 Jul 2017 14:09:04 -0700 (PDT)
+In-Reply-To: <20170724182751.18261-22-f4bug@amsat.org>
+References: <20170724182751.18261-1-f4bug@amsat.org>
+	<20170724182751.18261-22-f4bug@amsat.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 24 Jul 2017 22:09:04 +0100
+Message-ID: <CAFEAcA_PRH_BuUOTtC=cvRFT7Gtiwt50T6C3avm+Sy13aDS4tg@mail.gmail.com>
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400d:c09::242
-Subject: [Qemu-devel] [PATCH for 2.10 21/35] arm/sysbus-fdt: fix null
+X-Received-From: 2a00:1450:400c:c09::230
+Subject: Re: [Qemu-arm] [PATCH for 2.10 21/35] arm/sysbus-fdt: fix null
  pointer dereference
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm@nongnu.org,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
-	qemu-devel@nongnu.org
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: X9arhmuHFJhc
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>,
+	qemu-arm <qemu-arm@nongnu.org>, Eric Blake <eblake@redhat.com>,
+	QEMU Developers <qemu-devel@nongnu.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 6et3MEk4jwWD
 
-Use error_report() + exit() instead of error_setg(&error_fatal).
+On 24 July 2017 at 19:27, Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> wro=
+te:
+> Use error_report() + exit() instead of error_setg(&error_fatal).
+>
+> hw/arm/sysbus-fdt.c:322:9: warning: Array access (from variable 'node_pat=
+h') results in a null pointer dereference
+>     if (node_path[1]) {
+>         ^~~~~~~~~~~~
 
-hw/arm/sysbus-fdt.c:322:9: warning: Array access (from variable 'node_path') results in a null pointer dereference
-    if (node_path[1]) {
-        ^~~~~~~~~~~~
+I don't understand what this warning is trying to say.
+We can't get to this point with a NULL node_path,
+because of the previous conditional, which is using
+error_setg(&error_fatal).
 
-Reported-by: Clang Static Analyzer
-Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
----
- hw/arm/sysbus-fdt.c | 11 +++++------
- 1 file changed, 5 insertions(+), 6 deletions(-)
+> Reported-by: Clang Static Analyzer
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+> ---
+>  hw/arm/sysbus-fdt.c | 11 +++++------
+>  1 file changed, 5 insertions(+), 6 deletions(-)
+>
+> diff --git a/hw/arm/sysbus-fdt.c b/hw/arm/sysbus-fdt.c
+> index d68e3dcdbd..ad0cc49b19 100644
+> --- a/hw/arm/sysbus-fdt.c
+> +++ b/hw/arm/sysbus-fdt.c
+> @@ -315,15 +315,14 @@ static int add_amd_xgbe_fdt_node(SysBusDevice *sbde=
+v, void *opaque)
+>      node_path =3D qemu_fdt_node_path(host_fdt, dt_name, vdev->compat,
+>                                     &error_fatal);
+>      if (!node_path || !node_path[0]) {
+> -        error_setg(&error_fatal, "%s unable to retrieve node path for %s=
+/%s",
+> +        error_report("%s unable to retrieve node path for %s/%s",
+>                     __func__, dt_name, vdev->compat);
+> -    }
+> -
+> -    if (node_path[1]) {
+> -        error_setg(&error_fatal, "%s more than one node matching %s/%s!"=
+,
+> +        exit(1);
+> +    } else if (node_path[1]) {
+> +        error_report("%s more than one node matching %s/%s!",
+>                     __func__, dt_name, vdev->compat);
+> +        exit(1);
+>      }
+> -
+>      g_free(dt_name);
 
-diff --git a/hw/arm/sysbus-fdt.c b/hw/arm/sysbus-fdt.c
-index d68e3dcdbd..ad0cc49b19 100644
---- a/hw/arm/sysbus-fdt.c
-+++ b/hw/arm/sysbus-fdt.c
-@@ -315,15 +315,14 @@ static int add_amd_xgbe_fdt_node(SysBusDevice *sbdev, void *opaque)
-     node_path = qemu_fdt_node_path(host_fdt, dt_name, vdev->compat,
-                                    &error_fatal);
-     if (!node_path || !node_path[0]) {
--        error_setg(&error_fatal, "%s unable to retrieve node path for %s/%s",
-+        error_report("%s unable to retrieve node path for %s/%s",
-                    __func__, dt_name, vdev->compat);
--    }
--
--    if (node_path[1]) {
--        error_setg(&error_fatal, "%s more than one node matching %s/%s!",
-+        exit(1);
-+    } else if (node_path[1]) {
-+        error_report("%s more than one node matching %s/%s!",
-                    __func__, dt_name, vdev->compat);
-+        exit(1);
-     }
--
-     g_free(dt_name);
- 
-     if (vbasedev->num_regions != 5) {
--- 
-2.13.3
+This doesn't seem like an improvement. Now the
+error handling in the function is an inconsistent
+mix of error_report()+exit() and error_setg(&error_fatal).
 
+thanks
+-- PMM

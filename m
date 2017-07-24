@@ -1,130 +1,158 @@
-Received: by 2002:adf:b64b:0:0:0:0:0 with SMTP id i11-v6csp1752007wre;
-        Sat, 2 Jun 2018 07:15:09 -0700 (PDT)
-X-Google-Smtp-Source: ADUXVKLJx78BoWh1nBmdfLAx6CG+OxftqDJnfVhIOEluklfjgsqGJud2z62srn+fJS2VOwfLd7GI
-X-Received: by 2002:aed:3ce8:: with SMTP id e37-v6mr14666788qtf.295.1527948909516;
-        Sat, 02 Jun 2018 07:15:09 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1527948909; cv=none;
+Received: by 10.25.44.15 with SMTP id s15csp4183182lfs;
+        Mon, 24 Jul 2017 11:31:53 -0700 (PDT)
+X-Received: by 10.55.187.134 with SMTP id l128mr20449920qkf.90.1500921112971;
+        Mon, 24 Jul 2017 11:31:52 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1500921112; cv=none;
         d=google.com; s=arc-20160816;
-        b=My4mcyMWTROyEbbqJRvVLQfcV0mwGEhhyf5JuUljRWnyvoYYm9FhQL8yT4qlxzJFUR
-         BFvCZO2Af66mTXvymnhu5u8c7k/Ie3ml8s5n52h5xNPXTpbZWtvDa6qX71HnjAZVah1g
-         A/B9HPhV5yfUqRXQoxrkQuMzpmQtkb38xuc7g2EpdcCGB3BqdqTymiFDy1bszTSzSSJ/
-         +hI0bUIaIwQWJrHNX0oCe8lc/IkPYa1ULUT1j8MVFHfpbGaL4Ll6HM3DEU0D8TgF91ob
-         CngeTlqb77R4fZT2i2WS7l0djtEN+Qb+0DqMxtYZp3/TKDHG/QlHGOwZ5ztezfwUPLqo
-         Y9xQ==
+        b=PWxb3QgogmeHJCRj9pwOLI+dk0Y+UVOaIU5JdoEUCJ2p6UyzFFEEUKfiWVxkqzZjYm
+         rkLoA9oACHnRzWuFYSUO/1ZhzKazAmtVMAM5wuJuusGUOc1jAs/8Q6DUsm1GlnK4avYL
+         9K8hodXzvBvSNL7XB51iCsSv8uM3Hoh2RIBCxgttehnWDseq1Q+0AYUXrwMJWhlCBqRg
+         J0N9NlNcEfqGEJBWW7xGLppuQAj/ix7Nh2ArNzwfjOWHfFLQqk5lTClSeulk7okC1iny
+         5f5IMtdIwSo6XMCaH2bu9pya1Ln1LC2O2LE1oI4YdDMyveiw7tdmH3pYEJAmXeRPnkHP
+         H5dg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:message-id:date:to:from
-         :arc-authentication-results;
-        bh=6jTV5JqYRIy5b4ASbhS4Ups6Q+sSrUehWHPG3QTJsI4=;
-        b=0glGIjLwKv8PPOj+u3ws8+jJp4jrrUAlqMnb080qhd5SolQNzlw/1PVo4W/XfAnCUQ
-         1tw0DSVBbUgzxiPh0oKOS9IpTCmgCVpwShh4lkiFNlO97RmdOBIUDXww02keBbN1QOMB
-         UqpL6MFeJYJ62W9FJPenCVDkFBANJKEqYG4wtpaQDBzHhKXrjvECxuoa9Mf2Qlhg14pw
-         EVwb2ghyzEEfdurc7q/z8UjZ453ZGkiVgvu+0Kbp1z6bDzzzBxWZVFJFlwy6SwUZTK01
-         Vs29skvDc1UhxrwR8RwlfPZ73rAJi6X9iSbKmmFIl/XQ0k/jpE7ovbC7Q3Cn9gOH6oF7
-         fcJQ==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:to:from:dkim-signature:arc-authentication-results;
+        bh=DJN8oVzpVUYcYtkQuxilHKkP87gLKQFAVwc7SRaL0pI=;
+        b=xbR/tu0yDjPqQTlYd2UdwYb2fGGapzX2a4hYQmaVF4ygPSY73b+oPb7jBFj4WYt7cU
+         1FMbuAefKe1PzNTVoipU76x5idh6ToAjjQJ12TZx3XASNHCO03cDjTBzJzu5KX6PL6B7
+         x7L/nhvOLW3UgNfRnNWl8GbWbzc8X7o05SmdiDwOKVZp+w7thNP9HMUfllsLflvNPcox
+         LfX2FPHIGEO0y37K0yQhTO5TpLVwc00KdAC8DGm5mwo5sWFOQmxulgOEn/qThB4yEvw4
+         Ln+bzlHn7PIYA/Pvk8AkM4VYFwhnNbDqSddNVwPe2Mpysl/w/hGQUK2Ht2VIeiteFdnQ
+         y1aQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.b=cJGKwlC+;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id t16-v6si3987175qtg.94.2018.06.02.07.15.09
+        by mx.google.com with ESMTPS id 137si9211142qkf.66.2017.07.24.11.31.52
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sat, 02 Jun 2018 07:15:09 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Mon, 24 Jul 2017 11:31:52 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:59980 helo=lists.gnu.org)
+       dkim=fail header.i=@gmail.com header.b=cJGKwlC+;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:56328 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fP7JE-0001HO-Tw
-	for alex.bennee@linaro.org; Sat, 02 Jun 2018 10:15:08 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:42833)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1dZi90-0002k3-4M
+	for alex.bennee@linaro.org; Mon, 24 Jul 2017 14:31:50 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:50303)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@redhat.com>) id 1fP7J4-0001Fw-7c
-	for qemu-arm@nongnu.org; Sat, 02 Jun 2018 10:14:59 -0400
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1dZi60-0000A8-KO
+	for qemu-devel@nongnu.org; Mon, 24 Jul 2017 14:28:45 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanha@redhat.com>) id 1fP7J0-00073K-Ul
-	for qemu-arm@nongnu.org; Sat, 02 Jun 2018 10:14:58 -0400
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:53184 helo=mx1.redhat.com)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <stefanha@redhat.com>)
-	id 1fP7J0-0006zk-Px; Sat, 02 Jun 2018 10:14:54 -0400
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.rdu2.redhat.com
-	[10.11.54.3])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 0678A406E966;
-	Sat,  2 Jun 2018 14:14:52 +0000 (UTC)
-Received: from localhost (ovpn-116-55.ams2.redhat.com [10.36.116.55])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 49E84111763D;
-	Sat,  2 Jun 2018 14:14:47 +0000 (UTC)
-From: Stefan Hajnoczi <stefanha@redhat.com>
-To: <qemu-devel@nongnu.org>
-Date: Sat,  2 Jun 2018 15:14:44 +0100
-Message-Id: <20180602141446.29982-1-stefanha@redhat.com>
-X-Scanned-By: MIMEDefang 2.78 on 10.11.54.3
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.11.55.7]);
-	Sat, 02 Jun 2018 14:14:52 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.7]);
-	Sat, 02 Jun 2018 14:14:52 +0000 (UTC) for IP:'10.11.54.3'
-	DOMAIN:'int-mx03.intmail.prod.int.rdu2.redhat.com'
-	HELO:'smtp.corp.redhat.com' FROM:'stefanha@redhat.com' RCPT:''
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 66.187.233.73
-Subject: [Qemu-arm] [RFC 0/2] arm: add skeleton Cortex M0 CPU model
-X-BeenThere: qemu-arm@nongnu.org
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1dZi5z-0004rL-Dg
+	for qemu-devel@nongnu.org; Mon, 24 Jul 2017 14:28:44 -0400
+Received: from mail-qk0-x241.google.com ([2607:f8b0:400d:c09::241]:34302)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1dZi5z-0004rA-9Z; Mon, 24 Jul 2017 14:28:43 -0400
+Received: by mail-qk0-x241.google.com with SMTP id q66so10661855qki.1;
+	Mon, 24 Jul 2017 11:28:43 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
+	:mime-version:content-transfer-encoding;
+	bh=DJN8oVzpVUYcYtkQuxilHKkP87gLKQFAVwc7SRaL0pI=;
+	b=cJGKwlC+mMBkGvKcoZVR2OCV95oel7GvNcwTaVXI9inW9UC/hLe8BwGogCV4fjhX8l
+	c3EJmp80lnn6K/uFRG6EaY6Im6JYLut7+q5oP234ka3oOR5+Vx+nJtbinbDx6dHZdV3f
+	xGdaLc0RssKrss1D3Q33l+guwk3waNVM2Y1j+nAHjSLeUUgkK8uPncBoDZ5Uw1knBikM
+	ITXfks6r5dN4AmqVnvj4JjNhDsDaT3gmJNAgBE0OxiftzbpJZj5p3pQZXVPuFYEzdgQO
+	mXpxf4ejoFRf7ncgXePrIGJLnRthR0dvJS4QAZIyq0R60aCTE4Gp4WxZdRhFvG+27KTT
+	6eVg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
+	:in-reply-to:references:mime-version:content-transfer-encoding;
+	bh=DJN8oVzpVUYcYtkQuxilHKkP87gLKQFAVwc7SRaL0pI=;
+	b=WqPKrCU+NozPHa8rZklf9568B9bwQ9zBWDMpnfXOlMfh1jprz649BlXqyPAl8s2Xi3
+	VPOkisyVM5bTAb3jmdS/7NaUDKlhnPUP3U+7MQlw6mbF/LxKZj1Ze6q8QpkB0FWweFtE
+	hubhx6AYww/yEBoldasa3gbVlB1F9X4YjbJPIGrHIpUxak13OLDkwA4ukYGGT9gBEc3m
+	1ihsYdu0DUH9QtAcNjz5C6wVsrBLn4EPuROUXTwA31K5hp7D4Un0Uxbs0pNv1GhyGeWV
+	TQ/fEPEoYvShIE+qrMjq7ZspXSTCGFxVEnZ8ymcmnbu4S3URx+qrou28lNKYVpMLblZW
+	9ADQ==
+X-Gm-Message-State: AIVw113WzllN8jOq9E2XwlERWGB7/g8dze9QpEXMvzTlmHswiAxsNNxB
+	MsVRFK/OeoLFsWF2t4M=
+X-Received: by 10.55.40.194 with SMTP id o63mr19675839qko.310.1500920922864;
+	Mon, 24 Jul 2017 11:28:42 -0700 (PDT)
+Received: from yoga.offpageads.com ([138.117.48.223])
+	by smtp.gmail.com with ESMTPSA id
+	t57sm9033799qtt.18.2017.07.24.11.28.40
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Mon, 24 Jul 2017 11:28:41 -0700 (PDT)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+To: Eric Blake <eblake@redhat.com>,
+	=?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
+	Igor Mitsyanko <i.mitsyanko@gmail.com>
+Date: Mon, 24 Jul 2017 15:27:27 -0300
+Message-Id: <20170724182751.18261-12-f4bug@amsat.org>
+X-Mailer: git-send-email 2.13.3
+In-Reply-To: <20170724182751.18261-1-f4bug@amsat.org>
+References: <20170724182751.18261-1-f4bug@amsat.org>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:400d:c09::241
+Subject: [Qemu-devel] [PATCH for 2.10 11/35] i2c/exynos4210: correctly check
+ i2c_recv() return value
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, jim@groklearning.com,
-	mail@steffen-goertz.de, qemu-arm@nongnu.org, joel@jms.id.au,
-	Stefan Hajnoczi <stefanha@redhat.com>, jusual@mail.ru
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: eg+3CF5HN0d0
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: qemu-arm@nongnu.org,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+	qemu-devel@nongnu.org
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: i1uIGCT+GkZE
 
-This patch series adds a skeleton ARM Cortex M3 CPU model and updates the
-"microbit" machine type to use it.
+i2c_recv() returns -1 on error, if the I2CCON_ACK_GEN bit was not set this code
+was setting i2cds = -1.
 
-The Cortex M0 emulation is not complete.  This just lays the groundwork so we
-can implement the missing ARMv6-M feature tests in target/arm/.
+i2c/exynos4210_i2c.c:117:20: warning: Loss of sign in implicit conversion
+        s->i2cds = ret;
+                   ^~~
 
-These patches cannot be merged until ARMv6-M feature tests have been fully
-implemented.
+Reported-by: Clang Static Analyzer
+Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+---
+ hw/i2c/exynos4210_i2c.c | 8 +++++---
+ 1 file changed, 5 insertions(+), 3 deletions(-)
 
-Julia: it should now be possible for you to tackle the Cortex M0 emulation
-tasks that have been discussed on the mailing list.
-
-Based-on: http://github.com/stefanha/qemu/commits/microbit
-
-Stefan Hajnoczi (2):
-  target/arm: add "cortex-m0" CPU model
-  arm: add ARMv6-M device container
-
- hw/arm/Makefile.objs            |   1 +
- hw/intc/Makefile.objs           |   2 +-
- hw/timer/Makefile.objs          |   2 +-
- include/hw/arm/arm.h            |  16 +++
- include/hw/arm/armv6m.h         |  49 ++++++++
- hw/arm/armv6m.c                 | 190 ++++++++++++++++++++++++++++++++
- hw/arm/nrf51_soc.c              |   5 +-
- target/arm/cpu.c                |  12 ++
- default-configs/arm-softmmu.mak |   2 +
- 9 files changed, 274 insertions(+), 5 deletions(-)
- create mode 100644 include/hw/arm/armv6m.h
- create mode 100644 hw/arm/armv6m.c
-
+diff --git a/hw/i2c/exynos4210_i2c.c b/hw/i2c/exynos4210_i2c.c
+index c96fa7d7be..4424dbd233 100644
+--- a/hw/i2c/exynos4210_i2c.c
++++ b/hw/i2c/exynos4210_i2c.c
+@@ -111,10 +111,12 @@ static void exynos4210_i2c_data_receive(void *opaque)
+     s->i2cstat &= ~I2CSTAT_LAST_BIT;
+     s->scl_free = false;
+     ret = i2c_recv(s->bus);
+-    if (ret < 0 && (s->i2ccon & I2CCON_ACK_GEN)) {
+-        s->i2cstat |= I2CSTAT_LAST_BIT;  /* Data is not acknowledged */
+-    } else {
++    if (ret >= 0) {
+         s->i2cds = ret;
++    } else {
++        if (s->i2ccon & I2CCON_ACK_GEN) {
++            s->i2cstat |= I2CSTAT_LAST_BIT;  /* Data is not acknowledged */
++        }
+     }
+     exynos4210_i2c_raise_interrupt(s);
+ }
 -- 
-2.17.0
+2.13.3
 

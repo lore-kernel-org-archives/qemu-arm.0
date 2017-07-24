@@ -1,97 +1,109 @@
-Received: by 10.25.44.15 with SMTP id s15csp4316547lfs;
-        Mon, 24 Jul 2017 14:09:33 -0700 (PDT)
-X-Received: by 10.200.47.146 with SMTP id l18mr17158729qta.176.1500930573779;
-        Mon, 24 Jul 2017 14:09:33 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1500930573; cv=none;
+Received: by 10.25.44.15 with SMTP id s15csp4345077lfs;
+        Mon, 24 Jul 2017 14:49:01 -0700 (PDT)
+X-Received: by 10.200.11.67 with SMTP id m3mr25125925qti.265.1500932941660;
+        Mon, 24 Jul 2017 14:49:01 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1500932941; cv=none;
         d=google.com; s=arc-20160816;
-        b=YCjWmlpHQpEAH6AppsO84AGWV9CpvyQpmBRzqmIMnjfciwiLncPt59cZ3J4Spe/0im
-         AAtd8PmBBPhRPH0pAypotb4F6Ig+C94BBZ5KR3SZCFoeh3Z5if3EUMWDfpiMmzPpuuLw
-         /snssCWStVn51w73kUkl9cxX0yS+bcZRhcafkK7lvkYdjOOV+pjdblSiodhiFWLndfwy
-         hEo0LFkFtJ28zajZNRdk27DQF7Wq96DhbFXZpFJo3oygpQ+HLs+ZFAvt7kflcnSG+NG2
-         H1uE2NsqNGHAS0p+4INcILfYnk5yPep5M1yt7mm40MaMlLmRi5ZyqmyzxmETwaiwexUF
-         I/iQ==
+        b=PLbLc/wPuU8Jl0LFeV3xuUfFu9vp8IcQ+TvwPD4hyfR6egXDa0S9J7v2GPMjopCune
+         /WOUn6BtZqE+23iG8eMIfigrGx/SegfGk9fUyEXVk73y0XfVadok1DKd/qvmwBD/scrq
+         Xl8jBqXEY608+mrxMeHL4WomqYzZbg3XNiDXDy7H6YhXAXTIrmnvDa2yl9BGjg6JqS2l
+         pHYrj5orbdCpfd1NWjFJ+LU6ktFp5fPTHGDCk19UtxgsArG1W68WSCio/dDWBVCDPeod
+         7sFXMrx9bBrtJjN+URyFCnHp+MjI3pECG0Mt+HSzUdnOcOguIGojSBhZKRYyIIJdDtSE
+         AOyA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:to:message-id:date:from:references
-         :in-reply-to:mime-version:dkim-signature:arc-authentication-results;
-        bh=FCGgIPNxRSKch94vKex9Myp7fLOl642uZARVTKOhMec=;
-        b=wGR/kEZR4vF7ULGXEYtan1WD/tRWevuQyL0ZQVOI8+LjnO7pQ4g0Px1B60gbyJ+slj
-         f8/2ePt1psxtP8lplbDO+8kA8tVb0BMe4T0uCdscoawDZOKMy5Yq/MZRPheXH4XtIekO
-         UVami3mc0TnfmgjpaXtttY0b/FoZMkl6u3KFej73UQ42m2BXPn3AevxrUby1zvw/4LqW
-         b4KVuPagpDkj5cbNAUezuRhmdjZj6oSrVYNZGMUjG2ouuuzSBLnAvsk0J1uZpXk2z5Ah
-         a8dEVFSnrUSSqS3zMD4yNkGHXSkXpKNmN4vEa4zTfYaXbga4y0DTuNTaRVTkPc3GWYc6
-         js3w==
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:to:dkim-signature
+         :arc-authentication-results;
+        bh=P5ns4JHRArsx3wEtKJftJwfUmCef7QjqGRGai5FEHFk=;
+        b=ixP+J4J6/OTsqJQYBUr6TAEqN9JkfqSxKfYKqbTU2MeL3CpvvB+gFyQTytUcz9Bke+
+         +XGvhi81qMaVgm5H75FwrgDVeaUoIIEI8+ww0UAU/eGqqCGb7wVT1rKCnAuKwgCKYIYe
+         NaUwPrrZMQ23aoqBtlVFzHMGeRWtlDh33wrB4orWA6aCvZNCVXjateRb8MDsS5Bb9V0J
+         o/0mzxPmU7+svXML6dGMX8ZytVqjuUvPq+eQhwgVF+whGF1DbQviHXLaOhqh7B1PF5MK
+         8H8fxFL5mrTBYE3hdr/iLH8v+YLyRtZ9XgFJo6uWigVWYiMuukXmy6M7SIUaMMbmapTo
+         w9Ng==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.b=cR3dIdPC;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dkim=fail header.i=@gmail.com header.b=JiRSKLkm;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id c13si9523525qta.534.2017.07.24.14.09.33
+        by mx.google.com with ESMTPS id a47si9703568qtc.370.2017.07.24.14.49.01
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 24 Jul 2017 14:09:33 -0700 (PDT)
+        Mon, 24 Jul 2017 14:49:01 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.b=cR3dIdPC;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:57045 helo=lists.gnu.org)
+       dkim=fail header.i=@gmail.com header.b=JiRSKLkm;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:57276 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1dZkbb-00085z-33
-	for alex.bennee@linaro.org; Mon, 24 Jul 2017 17:09:31 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:59898)
+	id 1dZlDm-0006yy-VN
+	for alex.bennee@linaro.org; Mon, 24 Jul 2017 17:48:58 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:41588)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1dZkbX-00085g-DL
-	for qemu-arm@nongnu.org; Mon, 24 Jul 2017 17:09:28 -0400
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1dZlDi-0006yk-RL
+	for qemu-arm@nongnu.org; Mon, 24 Jul 2017 17:48:55 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1dZkbW-0006Go-Bk
-	for qemu-arm@nongnu.org; Mon, 24 Jul 2017 17:09:27 -0400
-Received: from mail-wm0-x230.google.com ([2a00:1450:400c:c09::230]:38223)
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1dZlDd-0007FE-Uz
+	for qemu-arm@nongnu.org; Mon, 24 Jul 2017 17:48:54 -0400
+Received: from mail-qt0-x233.google.com ([2607:f8b0:400d:c0d::233]:37735)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1dZkbW-0006G2-6I
-	for qemu-arm@nongnu.org; Mon, 24 Jul 2017 17:09:26 -0400
-Received: by mail-wm0-x230.google.com with SMTP id m85so27323134wma.1
-	for <qemu-arm@nongnu.org>; Mon, 24 Jul 2017 14:09:26 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc:content-transfer-encoding;
-	bh=FCGgIPNxRSKch94vKex9Myp7fLOl642uZARVTKOhMec=;
-	b=cR3dIdPCHKlGQZ25uyGJ9ZBI5ffdC5zLQuvZSFWM1caaWYNqIHUe/9HKwjyjT8BABA
-	JmWd+iNVP8P2WlBRlIvysnALhVYJLNuM8BkvFOtTJYPFG9WlK7q6X3Qh/udldiDoOZED
-	p0+/oNE1qLIwScFi+MZOox9Fv8Qe5kTWws+F4=
+	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1dZlDd-0007F2-QT; Mon, 24 Jul 2017 17:48:49 -0400
+Received: by mail-qt0-x233.google.com with SMTP id r14so44385907qte.4;
+	Mon, 24 Jul 2017 14:48:49 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=sender:subject:to:cc:references:from:message-id:date:user-agent
+	:mime-version:in-reply-to:content-language:content-transfer-encoding;
+	bh=P5ns4JHRArsx3wEtKJftJwfUmCef7QjqGRGai5FEHFk=;
+	b=JiRSKLkmSVGyudjY5wOGby3sLWkXwsEPG4ueR4/fuVYez7bg1N23tYCCSyAuPwKW/Q
+	tHInLkqHnteaLaCDm8FquAU0q0Nf1rgrvsdRrW19h9LfHDMv8E2F5x1idi9N5KmPE/da
+	8uLisZMdnEiUqHuxs1kKSnPmBo6NmhrQcNhwL8r95uiqougbty4M6UoSsXgzpfE9BBiq
+	B3G+5b5qGZxM5S8bsxK2dKUgvHn7aP2mhy7iWpqnO3s4pmjgR7Ox1AlOIUliSB676E1b
+	mn5NYo5Ls5760mslv13p66CChb3TceEHuavVb5dl12kSx53JVO5qwMxt7oj3TEhndcVA
+	6W0A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc:content-transfer-encoding;
-	bh=FCGgIPNxRSKch94vKex9Myp7fLOl642uZARVTKOhMec=;
-	b=HEM7Byosd7OKNUfXJ/yxJNa+N2mhQgaQTeUrCgU57i9T7KOPo2hSDA9SSkPbnGKDk9
-	7Uip4hflJ2ItHmqnAplCUTx8HRMDw1axgO3N/WSIRLJY615htnzxqQZfPxxIRIhkXFBm
-	XVHZ02qKozsM1oTgQpLz+iYe3LwBPIpx3Pmz3p4nC/Qb54pguzNiJKYHJziBn/fpEict
-	J9cJpMBCcHEpabO1uE4uGHZ4UXyqguHAiBKBEKv9oY07SK/mg0fqGnCQ+jjci97l3FLa
-	5rRgXbf9SxTAq8PfGHVk1VwCmuIru7GiTwdoCM53NksBTehnnI7Hkcr+6ysT6uO7Cwl5
-	bx2A==
-X-Gm-Message-State: AIVw111bs+sFjdZ1hRrs2L98KA4dkZSFkUiO/16tFJ9jbtP2gGhsyO5R
-	YNy1YMT6KATYoesxaMd6NhnMWJWVAaWV
-X-Received: by 10.28.95.69 with SMTP id t66mr2069702wmb.74.1500930565128; Mon,
-	24 Jul 2017 14:09:25 -0700 (PDT)
-MIME-Version: 1.0
-Received: by 10.223.134.54 with HTTP; Mon, 24 Jul 2017 14:09:04 -0700 (PDT)
-In-Reply-To: <20170724182751.18261-22-f4bug@amsat.org>
+	h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+	:date:user-agent:mime-version:in-reply-to:content-language
+	:content-transfer-encoding;
+	bh=P5ns4JHRArsx3wEtKJftJwfUmCef7QjqGRGai5FEHFk=;
+	b=r1p4qUH4DAZbUNaV1F7aBD5gZ2jtVFuvmnMBDm3LpHPmPFuaI6McMloXR6hCIH7bsJ
+	CK7jk6H3KvtjA896LXTJnV15FdIdsyPowrgy8wQjVUBFIvR52ijkqJwAUFbRIWTk6pIp
+	lcaOWtT+GiLzxOUrQRRsdoSUiHk3/xUS3YHY3LAN8F2vX0Sxvsw51nJLbcxIo+XzbgRI
+	lWv6agfKD9naHovWUWJlkHBJJHUzFmXvK6w2121IfxhbMA2UVs1W8XJzfJy9Z/SZgQG4
+	q4em2MQW5g9WgAXfh/XbIsvaXFNwQb95+tx9NCbR12avYQ45Bcy/HXNcLiVF3jjE36Y6
+	9zGg==
+X-Gm-Message-State: AIVw111sGPosHcxeL5KGPq6XVbYRsGc7Z1HUiqzQwCGedcooU4lS8NRz
+	WVwAKPQem7Al0o7aq6llPw==
+X-Received: by 10.237.51.199 with SMTP id v65mr8719509qtd.31.1500932928961;
+	Mon, 24 Jul 2017 14:48:48 -0700 (PDT)
+Received: from [192.168.1.10] ([138.117.48.223])
+	by smtp.gmail.com with ESMTPSA id
+	p12sm9390435qtp.20.2017.07.24.14.48.46
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Mon, 24 Jul 2017 14:48:48 -0700 (PDT)
+To: Peter Maydell <peter.maydell@linaro.org>
 References: <20170724182751.18261-1-f4bug@amsat.org>
 	<20170724182751.18261-22-f4bug@amsat.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 24 Jul 2017 22:09:04 +0100
-Message-ID: <CAFEAcA_PRH_BuUOTtC=cvRFT7Gtiwt50T6C3avm+Sy13aDS4tg@mail.gmail.com>
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+	<CAFEAcA_PRH_BuUOTtC=cvRFT7Gtiwt50T6C3avm+Sy13aDS4tg@mail.gmail.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Message-ID: <ae090923-3523-3e56-fbc1-65b270680939@amsat.org>
+Date: Mon, 24 Jul 2017 18:48:45 -0300
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.2.1
+MIME-Version: 1.0
+In-Reply-To: <CAFEAcA_PRH_BuUOTtC=cvRFT7Gtiwt50T6C3avm+Sy13aDS4tg@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2a00:1450:400c:c09::230
+X-Received-From: 2607:f8b0:400d:c0d::233
 Subject: Re: [Qemu-arm] [PATCH for 2.10 21/35] arm/sysbus-fdt: fix null
  pointer dereference
 X-BeenThere: qemu-arm@nongnu.org
@@ -105,63 +117,30 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>,
+Cc: =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
 	qemu-arm <qemu-arm@nongnu.org>, Eric Blake <eblake@redhat.com>,
 	QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 6et3MEk4jwWD
+X-TUID: iDgzNHsXF/RV
 
-On 24 July 2017 at 19:27, Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> wro=
-te:
-> Use error_report() + exit() instead of error_setg(&error_fatal).
->
-> hw/arm/sysbus-fdt.c:322:9: warning: Array access (from variable 'node_pat=
-h') results in a null pointer dereference
->     if (node_path[1]) {
->         ^~~~~~~~~~~~
+On 07/24/2017 06:09 PM, Peter Maydell wrote:
+> On 24 July 2017 at 19:27, Philippe Mathieu-Daudé <f4bug@amsat.org> wrote:
+>> Use error_report() + exit() instead of error_setg(&error_fatal).
+>>
+>> hw/arm/sysbus-fdt.c:322:9: warning: Array access (from variable 'node_path') results in a null pointer dereference
+>>      if (node_path[1]) {
+>>          ^~~~~~~~~~~~
+> 
+> I don't understand what this warning is trying to say.
+> We can't get to this point with a NULL node_path,
+> because of the previous conditional, which is using
+> error_setg(&error_fatal).
 
-I don't understand what this warning is trying to say.
-We can't get to this point with a NULL node_path,
-because of the previous conditional, which is using
-error_setg(&error_fatal).
+Ok I see, Clang is unaware than error_setg(&error_fatal) is a noreturn.
 
-> Reported-by: Clang Static Analyzer
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
-> ---
->  hw/arm/sysbus-fdt.c | 11 +++++------
->  1 file changed, 5 insertions(+), 6 deletions(-)
->
-> diff --git a/hw/arm/sysbus-fdt.c b/hw/arm/sysbus-fdt.c
-> index d68e3dcdbd..ad0cc49b19 100644
-> --- a/hw/arm/sysbus-fdt.c
-> +++ b/hw/arm/sysbus-fdt.c
-> @@ -315,15 +315,14 @@ static int add_amd_xgbe_fdt_node(SysBusDevice *sbde=
-v, void *opaque)
->      node_path =3D qemu_fdt_node_path(host_fdt, dt_name, vdev->compat,
->                                     &error_fatal);
->      if (!node_path || !node_path[0]) {
-> -        error_setg(&error_fatal, "%s unable to retrieve node path for %s=
-/%s",
-> +        error_report("%s unable to retrieve node path for %s/%s",
->                     __func__, dt_name, vdev->compat);
-> -    }
-> -
-> -    if (node_path[1]) {
-> -        error_setg(&error_fatal, "%s more than one node matching %s/%s!"=
-,
-> +        exit(1);
-> +    } else if (node_path[1]) {
-> +        error_report("%s more than one node matching %s/%s!",
->                     __func__, dt_name, vdev->compat);
-> +        exit(1);
->      }
-> -
->      g_free(dt_name);
+Patch dropped.
 
-This doesn't seem like an improvement. Now the
-error handling in the function is an inconsistent
-mix of error_report()+exit() and error_setg(&error_fatal).
+Thanks,
 
-thanks
--- PMM
+Phil.

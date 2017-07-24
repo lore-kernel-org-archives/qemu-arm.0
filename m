@@ -1,111 +1,111 @@
-Received: by 10.25.44.15 with SMTP id s15csp4343021lfs;
-        Mon, 24 Jul 2017 14:45:59 -0700 (PDT)
-X-Received: by 10.237.63.163 with SMTP id s32mr23381036qth.61.1500932759064;
-        Mon, 24 Jul 2017 14:45:59 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1500932759; cv=none;
+Received: by 10.25.44.15 with SMTP id s15csp4347372lfs;
+        Mon, 24 Jul 2017 14:52:14 -0700 (PDT)
+X-Received: by 10.233.232.130 with SMTP id a124mr20413753qkg.179.1500933134622;
+        Mon, 24 Jul 2017 14:52:14 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1500933134; cv=none;
         d=google.com; s=arc-20160816;
-        b=zC27x+n1W8/WtgF6HzrfN8FIdD9S4e+ULI1Om3INsJXT+vVIbeu7GAw7CqQjNOG6JP
-         um00YHM5oKywAOC9wVHKuvg5ox7KobhvtW48kL0kVMXQFlfPixYuFfwcmJYLiXLnujNv
-         QptnvyBQmg+C9wGw+vPZvCk+2HmlDZXXCHy2hAdNuuBAtFj71QCBR7Xm7kh3EFmFOHkq
-         lRxf63GMDg+ygEnGEtZyx5ZvgIn0FTJSOb6w5GZO/K3vb0WtA70eTGJtf4J5ZD6ChJPB
-         hZ6TsekHkwYD3hGDsIPxUn0MQfmEUayp3OJFT/HzDhltaPcPZCc3e+nT5OUMNTp7S1Zb
-         t1Ng==
+        b=cJDUiCzBCC9cKz4wnwBGKgO3MSqC5cv1j78hIh1c+CSXmAQ+lcDFOi/AQ6FH5nWKKU
+         Q60yZA2wMDo1b+3Oli1iF4RA4Db30PDYu2BVhMj9YR5/hg0JA5YNlF9Uz9uVAdTm/yEh
+         PwNierJ22zd4kKy8UYm7pwK1ITQphdPXmSLj816JM50nvWRVizTLutbfaD5Dvhl60vXj
+         dxz3ZZHpNAW2N1XGsbrCokYGDZNoWwr24N8pMzaAlGXe8s9Rtj/9z74wH4OVMWo5Fw1t
+         mv5zJ+HqZ45qtNs3lyShlzKkH9dEXMuFWc9gfupzjn8nWs8aGItaAdJzKWnnHXf6HptF
+         sLTQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:content-language:in-reply-to:mime-version
          :user-agent:date:message-id:from:references:to:dkim-signature
          :arc-authentication-results;
-        bh=S6Wu+dyvrbMyoUrlWli4uVYhs73JhK5iAhS4lZXXDrU=;
-        b=Gd3I2RihIGWFAGiw8IL7o8z8r4rfvR4mlbzjJYj2MabsnzTfRuLsfo2nrrmf39RhIw
-         nQzOBUpAkUwNV16N02xdpZMn70e2XB1kktm390ThJWbDL/K1vRV7GGEAjgua4EtwybT9
-         tPLhCstZZyHj3q4KpSOcqNmej1Mgf9Mt/SLDTYQluwYIjmR5BBJ5nhm4Ad97+Jw+H6BL
-         FCQIRVqKlvMzm01ayv/stUGLnBzxqPtKRXorcn3aqcvZBSSayCZn1b8s9q/nOmQ2MUyP
-         Ec+NSH/pJ0BPHmyX7VeqPO78TAxI4MV1PHjHp3MyORayZ2rqgXwXgUBbgIObfa94ZVhS
-         +ZcQ==
+        bh=8e0pCFaD9iatH53lWgNwxJ0rDth9XBQ3UVDTp9MUY6g=;
+        b=KQsJRWPlNYvHnfuLmChabNpNbW8vEoH+e+stoZN47CdbAz4HsBObY+Rsx4aDtMJvfw
+         /0goBQ+P8nZUGpyan8gf1Yrd847nvkBKsnvfwIZrBv1l6T71TKezzeBWPCrWCkM5oQjV
+         EXq+OoyDAFU5qr0avSa9pX97XTU9Ifz25x9F2ryWLBHYSAjRugZ27tkRYHsVFHmH269t
+         FNypEq09tPQh8tKxZ8w/GnKIQW9XiNuNx+RWJhAYSYiayjwUJCld4ZpSZcp8jnG9Dt0k
+         2SJ/HimQgNfKhqDU19tjX/mrqM/RJWYbVvW4uFjkg4FSU7BIvXOFHZiQsrt6B67DpX33
+         Q9VQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.b=bj1s+92O;
+       dkim=fail header.i=@gmail.com header.b=S1VMWxDJ;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id n66si9488063qkd.76.2017.07.24.14.45.58
+        by mx.google.com with ESMTPS id p5si10488682qkp.56.2017.07.24.14.52.13
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 24 Jul 2017 14:45:59 -0700 (PDT)
+        Mon, 24 Jul 2017 14:52:14 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.b=bj1s+92O;
+       dkim=fail header.i=@gmail.com header.b=S1VMWxDJ;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:57266 helo=lists.gnu.org)
+Received: from localhost ([::1]:57290 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1dZlAq-00059w-HP
-	for alex.bennee@linaro.org; Mon, 24 Jul 2017 17:45:56 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:41126)
+	id 1dZlGt-0008Ny-Ve
+	for alex.bennee@linaro.org; Mon, 24 Jul 2017 17:52:11 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:42012)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1dZlAn-00059n-9y
-	for qemu-arm@nongnu.org; Mon, 24 Jul 2017 17:45:54 -0400
+	id 1dZlGp-0008Mm-SO
+	for qemu-arm@nongnu.org; Mon, 24 Jul 2017 17:52:08 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1dZlAi-0006KK-E7
-	for qemu-arm@nongnu.org; Mon, 24 Jul 2017 17:45:53 -0400
-Received: from mail-qk0-x244.google.com ([2607:f8b0:400d:c09::244]:36099)
+	id 1dZlGo-0000tg-TY
+	for qemu-arm@nongnu.org; Mon, 24 Jul 2017 17:52:07 -0400
+Received: from mail-qk0-x241.google.com ([2607:f8b0:400d:c09::241]:37266)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1dZlAi-0006KA-9c; Mon, 24 Jul 2017 17:45:48 -0400
-Received: by mail-qk0-x244.google.com with SMTP id d136so11124460qkg.3;
-	Mon, 24 Jul 2017 14:45:48 -0700 (PDT)
+	id 1dZlGj-0000oa-EX; Mon, 24 Jul 2017 17:52:01 -0400
+Received: by mail-qk0-x241.google.com with SMTP id q130so11133781qka.4;
+	Mon, 24 Jul 2017 14:52:01 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
 	h=sender:subject:to:cc:references:from:message-id:date:user-agent
 	:mime-version:in-reply-to:content-language:content-transfer-encoding;
-	bh=S6Wu+dyvrbMyoUrlWli4uVYhs73JhK5iAhS4lZXXDrU=;
-	b=bj1s+92O8oeTfdWZHdbLwXtgKlFLWSxckzleN9ttuD1OVs/LWjNAQeg1nzfY1pEQRM
-	q4HnbKclJZvZN90Hw15FtPqQR/YRXgzYkRYwn0rsfUpTMDZSQ48rV5Q4ZGsAYjL4TDBE
-	wzGWpUK73fjqF+UkjtTFXKgWbfRYUXz5wTYHMqyD1Fjwqv8jrFILYtuUP7HpzseOPDEq
-	9XOciY0KMxUrOQhbEt0ZGqDDZZ4oxMRRHR4uZH+yIAq/+d1m1Rm2MusECWkRqT+wD6lP
-	9k2gFKHfDQnB4alH+Oh+ks10bqT07CP4rZqDyiezc2uSOeQUZ0l4u3jj7gu8kkCOYVGC
-	Kt1g==
+	bh=8e0pCFaD9iatH53lWgNwxJ0rDth9XBQ3UVDTp9MUY6g=;
+	b=S1VMWxDJ457v/mHlDS3pN6J1Zd0k2FOGfcxL3/9ugDwkkjD3wIQlpOrNLabKYlGH0+
+	xqOrGoK9kjhCdX+6UmD1J4yvAEVkfwFJr4cFFh51Kdf6kBVRpqU8rHMWBFPb/KCQKBAX
+	7gQH9EhfbNLL+o42HR511/BWLNqsDBsPVJcddBnqxpqW72qUTxsGsapccaqjGwpTEYuG
+	DXMLOSvmJNIC7zp2sFQaH/etjUdkU7Opdu/+xy9xVpKS4v03IO54i1SYKcIGNm8GVjst
+	CE0FZXc/3kT99SLGXITG0fBuaOTQVrTZZu5dXSFk9xo26gon8UbC4rqSFmBVRZjamdIQ
+	lUkA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
 	:date:user-agent:mime-version:in-reply-to:content-language
 	:content-transfer-encoding;
-	bh=S6Wu+dyvrbMyoUrlWli4uVYhs73JhK5iAhS4lZXXDrU=;
-	b=pNoawa4Usmrn4Kv56AjVH8Gngs8HxGgXuDbgoL+nvWLy8HDS3bYExtkkqDyphpbtOC
-	mxCArromWHFiiLX9DtuBcDiu90C94RorU/BlLRwg6PDHDWqhfo4zZLYJP9rtmI/Adwmz
-	hw7MO7sqbLA0H03RqH7twjuyTZ/Gej3zuVB/lR7cfXhz5sqxX9bH92DPVtWImjThZatX
-	gzMrq5/q+wyEWp2kcj05ufBxwhxb7zJSuD01FbW/DXbX52gImo9Hgxjyh+oBTmVCYjy6
-	Ohnw6pJc31Pj+lqaS5sSG7wi0LLV2p247ERwph3xcf9m2oswx0iZwH5K2MWnkN1UOH8u
-	s1ww==
-X-Gm-Message-State: AIVw113jZ92iKxvAvXPshwom3QSDhmwssZkv/+3tl6VnzP6Zhq+Y+FvE
-	TIJQW3oRk2FfkPHIxmzAYQ==
-X-Received: by 10.55.76.200 with SMTP id z191mr21012465qka.8.1500932747314;
-	Mon, 24 Jul 2017 14:45:47 -0700 (PDT)
+	bh=8e0pCFaD9iatH53lWgNwxJ0rDth9XBQ3UVDTp9MUY6g=;
+	b=SJqYnBAxlTeKhjPwIUPQcaLHkpCFcc6gFeluki3MQRHVkkwa4ge85P9MhhI97LOkrd
+	us4rm4OTW3tU6vdTbZeC6X+els7VKyTHkXEV9CYiFo4cA46lAh2YsyJGtedEwHtvIBRh
+	1WPnggtqutbz6naGsZRB7prf/ZOCC42qhCS3EMBY0Vu9z7Zmw707oPu5VuCVWDjJ0AkV
+	DdMwwi/9o1Y57JfYNuw9731hI6ULLZO/5eI5b2TAenqw/JgTN5Eh4ZKPEp47Dn7dQCtH
+	592f++zV/soxg/RdsbZNMkEJhDIlvLBtmdNGstTJ4Td7vHWj+2Pcah9SXNJAlmSn2uUi
+	iXgA==
+X-Gm-Message-State: AIVw113K4foSTKP56jbkeX4BW/qo5pVpPSAs32SuSWMaO6yDRk8PYnxP
+	+axrJXCK9sxHIZMvRGyb6Q==
+X-Received: by 10.55.170.205 with SMTP id t196mr20621148qke.106.1500933120672; 
+	Mon, 24 Jul 2017 14:52:00 -0700 (PDT)
 Received: from [192.168.1.10] ([138.117.48.223])
 	by smtp.gmail.com with ESMTPSA id
-	t57sm9311788qtt.18.2017.07.24.14.45.44
+	t21sm9162703qte.97.2017.07.24.14.51.57
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Mon, 24 Jul 2017 14:45:46 -0700 (PDT)
+	Mon, 24 Jul 2017 14:51:59 -0700 (PDT)
 To: Peter Maydell <peter.maydell@linaro.org>
 References: <20170724182751.18261-1-f4bug@amsat.org>
-	<20170724182751.18261-23-f4bug@amsat.org>
-	<CAFEAcA9dciLWNYce7+4HjW1Cu4pEJ1V9gHQ2pokBECCj0mp1QA@mail.gmail.com>
+	<20170724182751.18261-33-f4bug@amsat.org>
+	<CAFEAcA9d5SE-+=YxJ_dwjvkpxs2R0QJszESExGoG2y+Bnyk2aA@mail.gmail.com>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <1c5022a5-8036-36b7-d167-4c187ea7dbc2@amsat.org>
-Date: Mon, 24 Jul 2017 18:45:43 -0300
+Message-ID: <30a8ec15-315a-9bb4-5d7e-5c6b8da4e129@amsat.org>
+Date: Mon, 24 Jul 2017 18:51:56 -0300
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
 	Thunderbird/52.2.1
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA9dciLWNYce7+4HjW1Cu4pEJ1V9gHQ2pokBECCj0mp1QA@mail.gmail.com>
+In-Reply-To: <CAFEAcA9d5SE-+=YxJ_dwjvkpxs2R0QJszESExGoG2y+Bnyk2aA@mail.gmail.com>
 Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400d:c09::244
-Subject: Re: [Qemu-arm] [PATCH for 2.10 22/35] arm/vexpress: fix potential
- memory leak
+X-Received-From: 2607:f8b0:400d:c09::241
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH for 2.10 32/35] timer/pxa2xx:
+ silent warning about out-of-bound memory access
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -118,67 +118,56 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
+	Andrzej Zaborowski <balrogg@gmail.com>,
+	QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
 	=?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
-	qemu-arm <qemu-arm@nongnu.org>, Eric Blake <eblake@redhat.com>,
-	QEMU Developers <qemu-devel@nongnu.org>
+	Eric Blake <eblake@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: omLwpAAjbBdl
+X-TUID: DFmUo16Z65iL
 
-On 07/24/2017 06:11 PM, Peter Maydell wrote:
+On 07/24/2017 06:01 PM, Peter Maydell wrote:
 > On 24 July 2017 at 19:27, Philippe Mathieu-Daudé <f4bug@amsat.org> wrote:
->> Reorder to only allocate if required.
+>> Unlikely to happen.
 >>
->> hw/arm/vexpress.c:667:13: warning: Potential leak of memory pointed to by 'flashalias'
+>> hw/timer/pxa2xx_timer.c:145:19: warning: Out of bound memory access (accessed memory precedes memory block)
+>>          counter = counters[n];
+>>                    ^~~~~~~~~~~
 >>
 >> Reported-by: Clang Static Analyzer
 >> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 >> ---
->>   hw/arm/vexpress.c | 5 +++--
->>   1 file changed, 3 insertions(+), 2 deletions(-)
+>>   hw/timer/pxa2xx_timer.c | 2 +-
+>>   1 file changed, 1 insertion(+), 1 deletion(-)
 >>
->> diff --git a/hw/arm/vexpress.c b/hw/arm/vexpress.c
->> index 528c65ddb6..76c4d84482 100644
->> --- a/hw/arm/vexpress.c
->> +++ b/hw/arm/vexpress.c
->> @@ -553,8 +553,6 @@ static void vexpress_common_init(MachineState *machine)
->>       MemoryRegion *sysmem = get_system_memory();
->>       MemoryRegion *vram = g_new(MemoryRegion, 1);
->>       MemoryRegion *sram = g_new(MemoryRegion, 1);
->> -    MemoryRegion *flashalias = g_new(MemoryRegion, 1);
->> -    MemoryRegion *flash0mem;
->>       const hwaddr *map = daughterboard->motherboard_map;
->>       int i;
+>> diff --git a/hw/timer/pxa2xx_timer.c b/hw/timer/pxa2xx_timer.c
+>> index 68ba5a70b3..d47f463636 100644
+>> --- a/hw/timer/pxa2xx_timer.c
+>> +++ b/hw/timer/pxa2xx_timer.c
+>> @@ -139,7 +139,7 @@ static void pxa2xx_timer_update4(void *opaque, uint64_t now_qemu, int n)
+>>       if (s->tm4[n].control & (1 << 7))
+>>           counter = n;
+>>       else
+>> -        counter = counters[n];
+>> +        counter = counters[n & 7];
 >>
->> @@ -657,6 +655,9 @@ static void vexpress_common_init(MachineState *machine)
->>       }
->>
->>       if (map[VE_NORFLASHALIAS] != -1) {
->> +        MemoryRegion *flashalias = g_new(MemoryRegion, 1);
->> +        MemoryRegion *flash0mem;
->> +
->>           /* Map flash 0 as an alias into low memory */
->>           flash0mem = sysbus_mmio_get_region(SYS_BUS_DEVICE(pflash0), 0);
->>           memory_region_init_alias(flashalias, NULL, "vexpress.flashalias",
+>>       if (!s->tm4[counter].freq) {
+>>           timer_del(s->tm4[n].tm.qtimer);
 >> --
->> 2.13.3
 > 
-> flashalias is no different from any of the other MemoryRegion*
-> variables we allocate here with g_new() -- they all
-> leak, and it doesn't matter because the function
-> runs once and we want the MemoryRegions to survive
-> until the end of the simulation.
+> This looks rather odd, because we use a mask to guard
+> the counters[] array index, but we do an access into
+> another 8-element array with n both immediately
+> above and immediately below that.
 > 
-> These days we could in theory clean this up by
-> switching from doing g_new() to having a set of
-> MemoryRegion fields in the VexpressMachineState
-> struct (compare hw/arm/mps2.c).
+> It's not actually possible to call this function
+> with n not between 0 and 7 -- if the static
+> analyser can't figure that out does adding an
+> assert at the top of the function help it out?
 
-I agree with the analyzer here, why allocate something you'll never use?
-However this is not the case here since in your commit 6ec1588e097 both 
-legacy/a9 and aseries/a15 use NORFLASHALIAS to remap their flash at 0.
-
-Anyway patch dropped.
+Yep, I'm keeping patches with "static analyzer hints" for 2.11 unless 
+there is interest in having them in 2.10 (this patch now included in 
+that 2.11 series).
 
 Thanks,
 

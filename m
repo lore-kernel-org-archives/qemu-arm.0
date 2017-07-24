@@ -1,232 +1,162 @@
-Received: by 10.223.172.38 with SMTP id v35csp3888043wrc;
-        Mon, 18 Sep 2017 08:32:50 -0700 (PDT)
-X-Received: by 10.25.225.135 with SMTP id l7mr3049858lfk.81.1505748769981;
-        Mon, 18 Sep 2017 08:32:49 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1505748769; cv=none;
+Received: by 10.25.44.15 with SMTP id s15csp4195879lfs;
+        Mon, 24 Jul 2017 11:47:40 -0700 (PDT)
+X-Received: by 10.200.3.80 with SMTP id w16mr22499322qtg.325.1500922060136;
+        Mon, 24 Jul 2017 11:47:40 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1500922060; cv=none;
         d=google.com; s=arc-20160816;
-        b=RuNO5cW2EERPkg1Hf4X48WHyrEIrFMPwEdfU8VHQS6DlEJF+zRGgpwROgLPgLDHMy9
-         em6jEkci6iLrQaSbfbewh2gtWeaPFlOG8DeAHZxy6UpPZuvZrpj1/snaA7vd1uFRYciB
-         QG77pNEheIRawwJv8Mf2P73WDQRAxvu/kB5imuBn//fmOA8GHNknoR6MwuUikbyrlzGG
-         coc0rEQ+i7Su7pRn8PoTJAJbI8igFZj0frq7XDdkMtXhkhAj8cdjXdynB4TrVzOCUvzG
-         4NwOqEUTkcbw+g1RXvAISWofcEalK3/2wI3mpF409F8pIfiMCwBzDonnsKsCMdirX4q0
-         GN4A==
+        b=inoFcfiMCHGM8dGvVQtklD2ov/J/8mDQDQo8Vvbtt/4CczZX9/YKlWqo36kD0N9GQA
+         TG6aZ+DXIxihcou58mxK7vptHI39ipx0faRibM706O8lSGY22tW9BwI0bjbamZQG4Kz5
+         WNt6Tdznvd12Cstoa1p7/vqK/G/OxOVx321I0+syq0E/On7GBno1/Ha7LG+LEJFjkBo+
+         vY/xeeLCz+ysF8h3MfGFlHfN4mfdTTuJZq2qoLC76Ah0XVgA1EFCRwYMF3zDz8fyyRK7
+         D+6r8uD7z8qPuQReC8oB5jo2Npl46iv+yHsfS5p00OVDXShcGgSdtlI8nJ2CjKcNdDyN
+         YKMQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:cc:to:subject
-         :dkim-signature:arc-authentication-results;
-        bh=2fRJSWuIfsF/XtEgwjj/BMC6HTtEj+FzevgwnaiWnCc=;
-        b=HJhXncAv+FGO5FK2trMwzZXTVvC4F3bId8cHKzncevD7TXa3IBAixGTZY53k+96pT3
-         z4YFHcIGeJvwTMwTbNqmNLnlG3eHBEE7A/CIN72FOSWQ74Wx9cES91fdfpfQTiyAfK14
-         K0vV/IScEL8YTvBax+I1viGwF+7vWHOgzoTydh4P1i36DxSFUd44g3i7HPiCe4+s2Tm0
-         Ze+k/MMaMf43QKhIoFtT+7Hes68/jz324KA3FReS6RMvF7iAx/iWlFw5/j3QKjYrz3lz
-         YWaOJuHdChPisps5EZ6yRWA0TBRMunHQ+CeXYa66rewWW8xMNK/5Sw1vUnTt19gOX4nd
-         FJsQ==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:to:from:dkim-signature:arc-authentication-results;
+        bh=NTAK9W79+iqAA6Kr5BAWdSwRBWdgv2jcG1b/j7mz1M0=;
+        b=E2kS2znYYez221yi87XKQ6Kuy5BgsKRpZJ1ijmRRD8TcKE4EkgqBW9uOI50SYfAK/l
+         Tkv7dB0hYwR+gjvgGFmcmEU6ezaoeISvXLR30QDtIiSG0/xPTrTwF3bPKK+6xKSXdgS+
+         f+znVU3VNeUJWomPagzL6KL2x7Q8A62sfjxyd6DW2YzuZv/eM2APMy/foH06t9g85kUv
+         3kdw3EbDOLDzsy2Z6mk4GlHa3M2vwcomf+0r5F1qPEwXGFjg/5bJSgRSUK3bDKxkQ/b+
+         NsSnEH7fWjFj13BJwRw9jusgBuwYouJkBQkwjCRcCardYUQ7qRKSAPchQTfJOZLisuK3
+         x/Vg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=C6GHPEwH;
-       spf=pass (google.com: domain of digetx@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=digetx@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Return-Path: <digetx@gmail.com>
-Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id b68sor1590716lfb.109.2017.09.18.08.32.49
-        (Google Transport Security);
-        Mon, 18 Sep 2017 08:32:49 -0700 (PDT)
-Received-SPF: pass (google.com: domain of digetx@gmail.com designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
+       dkim=fail header.i=@gmail.com header.b=DfZttV65;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
+        by mx.google.com with ESMTPS id o68si9297363qkf.482.2017.07.24.11.47.39
+        for <alex.bennee@linaro.org>
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Mon, 24 Jul 2017 11:47:40 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=C6GHPEwH;
-       spf=pass (google.com: domain of digetx@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=digetx@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=subject:to:cc:references:from:message-id:date:user-agent
-         :mime-version:in-reply-to:content-language:content-transfer-encoding;
-        bh=2fRJSWuIfsF/XtEgwjj/BMC6HTtEj+FzevgwnaiWnCc=;
-        b=C6GHPEwHQMV0MblkEFDp7F/J0wSFvRlrvJZzrWC0axYbSTxAmV3nFsvmhTAN0rNtnj
-         VT5GNTKOv0I8GCC+y3zMeQsxfh5UzgBrQ1K0dD9zJ/OCWGX7Zn5mWd2nAikjs8QQRFn1
-         sTgyy1IB7c4boEV9hRkTgs/FgskjrF56w1AdouD+pNF4lr5aQ+bSCSNZtmDy+ENnEEvN
-         mhB2i891q3DI+tCo08+cJh4bZvL/HUTj4RaRGV/81AOFql6Zfg8iPX5bknn9BHKpIsGK
-         5Fe67HT/Cj7MymiWUQtkaftOjOdNFgEt0m0RBvEHBCvlobms9CX+LCFPBlZHuULEKeiu
-         WiQA==
+       dkim=fail header.i=@gmail.com header.b=DfZttV65;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:56420 helo=lists.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1dZiOH-0007bR-Aw
+	for alex.bennee@linaro.org; Mon, 24 Jul 2017 14:47:37 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:50582)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1dZi6S-0000jL-6R
+	for qemu-devel@nongnu.org; Mon, 24 Jul 2017 14:29:12 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1dZi6Q-0005Mz-0V
+	for qemu-devel@nongnu.org; Mon, 24 Jul 2017 14:29:12 -0400
+Received: from mail-qk0-x242.google.com ([2607:f8b0:400d:c09::242]:32996)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1dZi6P-0005MH-T8; Mon, 24 Jul 2017 14:29:09 -0400
+Received: by mail-qk0-x242.google.com with SMTP id d145so8120924qkc.0;
+	Mon, 24 Jul 2017 11:29:09 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
+	:mime-version:content-transfer-encoding;
+	bh=NTAK9W79+iqAA6Kr5BAWdSwRBWdgv2jcG1b/j7mz1M0=;
+	b=DfZttV65RcmZnlymw4wDiv1zGJN2DVCkmngR/gThJOl7l0CM2jnMgW7mfYhIn73/Bp
+	b8XXVxvgK8LQCtio7bo0QdAJpP5aVvGH7QWmg0e0eFsFG9jtP9oEgQY/Q2Srct8XD8W5
+	6MKxqOm9pCm6n6NrUm/J2qpprKuK/cmSvK8jNItLtf/dAV/QrYu5dnMtzx3gdR+zx9CF
+	m8+Cql+gCSVWfZyvuAUzhNfJgEHoqliZ4v/gwUVpAazgEA/i6Hy5kv5ReEWvF9xgLng0
+	w0Sy5R3CE79mNxHcWUidXMvXI34zVFcTB1VsGuavuyV5zOmuDyoCC7Ck291UkdBX/Ydo
+	tmtA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:subject:to:cc:references:from:message-id:date
-         :user-agent:mime-version:in-reply-to:content-language
-         :content-transfer-encoding;
-        bh=2fRJSWuIfsF/XtEgwjj/BMC6HTtEj+FzevgwnaiWnCc=;
-        b=NNXNVs0LF1aujeBMkFaT3vy08EB/sd6SF9EaTs9drNyDOF1GRidvNBGThrGAT+wR5/
-         X9ltK7Pip68QmOzt8fPHB18h877axIfvp0p/e6uvKXP5gYRlmBNr4bFhm6nrRSCdOI90
-         nukN8INNHc8txlilb3aSzcW1G12r0aMuS2eW/2fGJ1QIIrzCzcGol3s47fXj/88cFCsS
-         3a6wDGjLiQH0asfvepge2si1BQgpPN5KSxTG9RgeP/0N5APkbbLxFSEk6Qr12k19ILyM
-         Pswbbhwv0DjjWSdSYacb8xvT9BmcS23bnn9KW0fF1ekcsPW4fxcSPKnG2uXZJBXuRl9R
-         Ua4Q==
-X-Gm-Message-State: AHPjjUirBYiBEAgLRG83yfJwR+vCAGDv8AYBiY8TKpvC0AINJfB/bqz+
-	cwlBZFNDCuVBuV2A6r4=
-X-Google-Smtp-Source: AOwi7QABJJNcI6886/2zMoLo/vz3O4IcPdeG8tkOWhmqUVPBQIlmJJ0aIXiXOyYVGJDN1uIM9Rxjzg==
-X-Received: by 10.25.41.67 with SMTP id p64mr3821454lfp.200.1505748769348;
-        Mon, 18 Sep 2017 08:32:49 -0700 (PDT)
-Return-Path: <digetx@gmail.com>
-Received: from [192.168.1.145] (ppp109-252-91-7.pppoe.spdop.ru. [109.252.91.7])
-        by smtp.googlemail.com with ESMTPSA id t84sm1499795lfi.21.2017.09.18.08.32.47
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 18 Sep 2017 08:32:48 -0700 (PDT)
-Subject: Re: [PULL 22/24] target-arm: ensure all cross vCPUs TLB flushes
- complete
-To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>
-Cc: peter.maydell@linaro.org, "open list:ARM" <qemu-arm@nongnu.org>,
- qemu-devel@nongnu.org
-References: <20170224112109.3147-1-alex.bennee@linaro.org>
- <20170224112109.3147-23-alex.bennee@linaro.org>
- <7468f944-914c-de89-66fb-f8ad49eb59c1@gmail.com> <87poapbgt0.fsf@linaro.org>
- <e511a895-b1e3-150f-6555-12ba1fa16273@gmail.com> <87a81sjp15.fsf@linaro.org>
- <70057789-ab76-1150-ab2e-b5a3239a0209@gmail.com> <87d16ods3s.fsf@linaro.org>
-From: Dmitry Osipenko <digetx@gmail.com>
-Message-ID: <17f6550a-cb60-e15b-1723-b3a5ce7a43a1@gmail.com>
-Date: Mon, 18 Sep 2017 18:32:46 +0300
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
- Thunderbird/52.3.0
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
+	:in-reply-to:references:mime-version:content-transfer-encoding;
+	bh=NTAK9W79+iqAA6Kr5BAWdSwRBWdgv2jcG1b/j7mz1M0=;
+	b=ptNfdWPAl5/bea5SNgzp5OnNVquJlmZDtYmiPVCO6O4EtWEll16XLyBId3raOcGBlt
+	0jkEElnnV05lHcLTKfTdX6hvo8lc7FojKqrSYamcaJAphuoDNdhrikcxZp4BJZFT/T1C
+	2lfXBiDdWmR8MVI16MtN/ND2lm8Sjc4LSt5/ADWCjd5Nq6Zf1qyr8CMKmZfhZlCwYRgO
+	HfPexxGqSQQspweVqTSk4/fOqz0rLtScv8ZsWniBlhynbYGMAmtS1xbMFDjlJf4wMyl7
+	HDZ4OD4/kKqlAiDCteOWuWj6OwEjpTpHPeRbv7HTeZPQ/eEF4UgOgtmHYUGMBognSnzI
+	j/4g==
+X-Gm-Message-State: AIVw112MyLFLHYr4+V2AhplFMPxNEAy/DRAvrrRiXDQGGhkoZ9yDkEKz
+	urGlsuUtuQiH9A==
+X-Received: by 10.55.183.65 with SMTP id h62mr1113412qkf.35.1500920949426;
+	Mon, 24 Jul 2017 11:29:09 -0700 (PDT)
+Received: from yoga.offpageads.com ([138.117.48.223])
+	by smtp.gmail.com with ESMTPSA id
+	t57sm9033799qtt.18.2017.07.24.11.29.06
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Mon, 24 Jul 2017 11:29:08 -0700 (PDT)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+To: Eric Blake <eblake@redhat.com>,
+	=?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
+	Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 24 Jul 2017 15:27:37 -0300
+Message-Id: <20170724182751.18261-22-f4bug@amsat.org>
+X-Mailer: git-send-email 2.13.3
+In-Reply-To: <20170724182751.18261-1-f4bug@amsat.org>
+References: <20170724182751.18261-1-f4bug@amsat.org>
 MIME-Version: 1.0
-In-Reply-To: <87d16ods3s.fsf@linaro.org>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: 8PCg23t28l99
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:400d:c09::242
+Subject: [Qemu-devel] [PATCH for 2.10 21/35] arm/sysbus-fdt: fix null
+ pointer dereference
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.21
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: qemu-arm@nongnu.org,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+	qemu-devel@nongnu.org
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: X9arhmuHFJhc
 
-On 18.09.2017 17:00, Alex Bennée wrote:
-> 
-> Dmitry Osipenko <digetx@gmail.com> writes:
-> 
->> On 18.09.2017 13:10, Alex Bennée wrote:
->>>
->>> Dmitry Osipenko <digetx@gmail.com> writes:
->>>
->>>> On 17.09.2017 16:22, Alex Bennée wrote:
->>>>>
->>>>> Dmitry Osipenko <digetx@gmail.com> writes:
->>>>>
->>>>>> On 24.02.2017 14:21, Alex Bennée wrote:
->>>>>>> Previously flushes on other vCPUs would only get serviced when they
->>>>>>> exited their TranslationBlocks. While this isn't overly problematic it
->>>>>>> violates the semantics of TLB flush from the point of view of source
->>>>>>> vCPU.
->>>>>>>
->>>>>>> To solve this we call the cputlb *_all_cpus_synced() functions to do
->>>>>>> the flushes which ensures all flushes are completed by the time the
->>>>>>> vCPU next schedules its own work. As the TLB instructions are modelled
->>>>>>> as CP writes the TB ends at this point meaning cpu->exit_request will
->>>>>>> be checked before the next instruction is executed.
->>>>>>>
->>>>>>> Deferring the work until the architectural sync point is a possible
->>>>>>> future optimisation.
->>>>>>>
->>>>>>> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
->>>>>>> Reviewed-by: Richard Henderson <rth@twiddle.net>
->>>>>>> Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
->>>>>>> ---
->>>>>>>  target/arm/helper.c | 165 ++++++++++++++++++++++------------------------------
->>>>>>>  1 file changed, 69 insertions(+), 96 deletions(-)
->>>>>>>
->>>>>>
->>>>>> Hello,
->>>>>>
->>>>>> I have an issue with Linux kernel stopping to boot on a SMP 32bit ARM (haven't
->>>>>> checked 64bit) in a single-threaded TCG mode. Kernel reaches point where it
->>>>>> should mount rootfs over NFS and vCPUs stop. This issue is reproducible with any
->>>>>> 32bit ARM machine type. Kernel boots fine with a MTTCG accel, only
->>>>>> single-threaded TCG is affected. Git bisection lead to this patch, any
->>>>>> ideas?
->>>>>
->>>>> It shouldn't cause a problem but can you obtain a backtrace of the
->>>>> system when hung?
->>>>>
->>>>
->>>> Actually, it looks like TCG enters infinite loop. Do you mean backtrace of QEMU
->>>> by 'backtrace of the system'? If so, here it is:
->>>>
->>>> Thread 4 (Thread 0x7ffa37f10700 (LWP 20716)):
->>>>
->>>> #0  0x00007ffa601888bd in poll () at ../sysdeps/unix/syscall-template.S:84
->>>>
->>>> #1  0x00007ffa5e3aa561 in poll (__timeout=-1, __nfds=2, __fds=0x7ffa30006dc0) at
->>>> /usr/include/bits/poll2.h:46
->>>> #2  poll_func (ufds=0x7ffa30006dc0, nfds=2, timeout=-1, userdata=0x557bd603eae0)
->>>> at
->>>> /var/tmp/portage/media-sound/pulseaudio-10.0/work/pulseaudio-10.0/src/pulse/thread-mainloop.c:69
->>>> #3  0x00007ffa5e39bbb1 in pa_mainloop_poll (m=m@entry=0x557bd60401f0) at
->>>> /var/tmp/portage/media-sound/pulseaudio-10.0/work/pulseaudio-10.0/src/pulse/mainloop.c:844
->>>> #4  0x00007ffa5e39c24e in pa_mainloop_iterate (m=0x557bd60401f0,
->>>> block=<optimized out>, retval=0x0) at
->>>> /var/tmp/portage/media-sound/pulseaudio-10.0/work/pulseaudio-10.0/src/pulse/mainloop.c:926
->>>> #5  0x00007ffa5e39c300 in pa_mainloop_run (m=0x557bd60401f0,
->>>> retval=retval@entry=0x0) at
->>>> /var/tmp/portage/media-sound/pulseaudio-10.0/work/pulseaudio-10.0/src/pulse/mainloop.c:944
->>>>
->>>> #6  0x00007ffa5e3aa4a9 in thread (userdata=0x557bd60400f0) at
->>>> /var/tmp/portage/media-sound/pulseaudio-10.0/work/pulseaudio-10.0/src/pulse/thread-mainloop.c:100
->>>>
->>>> #7  0x00007ffa599eea38 in internal_thread_func (userdata=0x557bd603e090) at
->>>> /var/tmp/portage/media-sound/pulseaudio-10.0/work/pulseaudio-10.0/src/pulsecore/thread-posix.c:81
->>>>
->>>> #8  0x00007ffa60453657 in start_thread (arg=0x7ffa37f10700) at
->>>> pthread_create.c:456
->>>>
->>>> #9  0x00007ffa60193c5f in clone () at
->>>> ../sysdeps/unix/sysv/linux/x86_64/clone.S:97
->>>>
->>>>
->>>>
->>>>
->>>>
->>>> Thread 3 (Thread 0x7ffa4adff700 (LWP 20715)):
->>>>
->>>>
->>>> #0  0x00007ffa53e51caf in code_gen_buffer ()
->>>>
->>>
->>> Well it's not locked up in servicing any flush tasks as it's executing
->>> code. Maybe the guest code is spinning on something?
->>>
->>
->> Indeed, I should have used 'exec' instead of 'in_asm'.
->>
->>> In the monitor:
->>>
->>>   info registers
->>>
->>> Will show you where things are, see if the ip is moving each time. Also
->>> you can do a disassemble dump from there to see what code it is stuck
->>> on.
->>>
->>
->> I've attached with GDB to QEMU to see where it got stuck. Turned out it is
->> caused by CONFIG_STRICT_KERNEL_RWX=y of the Linux kernel. Upon boot completion
->> kernel changes memory permissions and that changing is executed on a dedicated
->> CPU, while other CPUs are 'stopped' in a busy loop.
->>
->> This patch just introduced a noticeable performance regression for a
->> single-threaded TCG, which is probably fine since MTTCG is the default now.
->> Thank you very much for the suggestions and all your work on MTTCG!
-> 
-> Hmm well it would be nice to know the exact mechanism for that failure.
-> If we just end up with a very long list of tasks in
-> cpu->queued_work_first then I guess that explains it but it would be
-> nice to quantify the problem.
-> 
-> I had trouble seeing where this loop is in the kernel code, got a pointer?
-> 
-The memory permissions changing starts here:
+Use error_report() + exit() instead of error_setg(&error_fatal).
 
-http://elixir.free-electrons.com/linux/v4.14-rc1/source/arch/arm/mm/init.c#L739
+hw/arm/sysbus-fdt.c:322:9: warning: Array access (from variable 'node_path') results in a null pointer dereference
+    if (node_path[1]) {
+        ^~~~~~~~~~~~
 
-The busy loop is here:
+Reported-by: Clang Static Analyzer
+Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+---
+ hw/arm/sysbus-fdt.c | 11 +++++------
+ 1 file changed, 5 insertions(+), 6 deletions(-)
 
-http://elixir.free-electrons.com/linux/v4.14-rc1/source/kernel/stop_machine.c#L195
-
-Interestingly, I tried to attach to a 'hanged' QEMU another time and got into
-other code. That code has the same pattern, one CPU flushes cache a lot in
-shmem_rename2()->need_update()->memchr_inv() and the other is executing something.
-
-So seems busy loop isn't the problem, it's just the TLB flushing is very-very
-expensive in TCG. On the other hand I don't see such a problem with MTTCG, so
-not sure what's going on with a single-threaded TCG.
-
+diff --git a/hw/arm/sysbus-fdt.c b/hw/arm/sysbus-fdt.c
+index d68e3dcdbd..ad0cc49b19 100644
+--- a/hw/arm/sysbus-fdt.c
++++ b/hw/arm/sysbus-fdt.c
+@@ -315,15 +315,14 @@ static int add_amd_xgbe_fdt_node(SysBusDevice *sbdev, void *opaque)
+     node_path = qemu_fdt_node_path(host_fdt, dt_name, vdev->compat,
+                                    &error_fatal);
+     if (!node_path || !node_path[0]) {
+-        error_setg(&error_fatal, "%s unable to retrieve node path for %s/%s",
++        error_report("%s unable to retrieve node path for %s/%s",
+                    __func__, dt_name, vdev->compat);
+-    }
+-
+-    if (node_path[1]) {
+-        error_setg(&error_fatal, "%s more than one node matching %s/%s!",
++        exit(1);
++    } else if (node_path[1]) {
++        error_report("%s more than one node matching %s/%s!",
+                    __func__, dt_name, vdev->compat);
++        exit(1);
+     }
+-
+     g_free(dt_name);
+ 
+     if (vbasedev->num_regions != 5) {
 -- 
-Dmitry
+2.13.3
+

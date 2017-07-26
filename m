@@ -1,93 +1,98 @@
-Received: by 10.25.44.15 with SMTP id s15csp734816lfs;
-        Wed, 26 Jul 2017 05:24:28 -0700 (PDT)
-X-Received: by 10.237.48.65 with SMTP id 59mr1052670qte.10.1501071868210;
-        Wed, 26 Jul 2017 05:24:28 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1501071868; cv=none;
+Received: by 10.25.44.15 with SMTP id s15csp1065922lfs;
+        Wed, 26 Jul 2017 10:40:16 -0700 (PDT)
+X-Received: by 10.200.41.220 with SMTP id 28mr2470894qtt.168.1501090816370;
+        Wed, 26 Jul 2017 10:40:16 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1501090816; cv=none;
         d=google.com; s=arc-20160816;
-        b=fXeCOWkWhVBwE1zRP1vA2jWkJWk5mEIC4x51rt63hw1N5T7APIkIgljza8a3yebFpz
-         GRJLLVvqjMyJBxDH7N/NtXRzXAtVx74BmJ2WZlUHcYRd91gCvhZu0qJiZgHXBgwwWStB
-         iXs9daXZ5aM4ejKpGGqEfB0jyIRC+D/e456dI/LAnjiZZfwD1UN4G8m61ph7yYLSEJAT
-         w08rKWrdujTrJmm3rPfy81DvO2PTwo5C3opyt1qQVCmgVsoHSV7TxyZw97AIs0nbkP+l
-         eHsvaJuU0IQbZcaq07MVVyQgFgjYhp6YYpi8bADH6kGY3krBRNa6GWiLS3WwxlLnSatL
-         rnaQ==
+        b=yiijQUB861HZ+stKpxj4curlAqdjZ46gYQZlCWQ2wiSSUBGATL8BVcNUeKQdzkUWyL
+         1wmIlbNRLoSQ4gkB5F5aLc9OTGye9+FbzvS7yKW9nC2sNoAB/Dy3rjl+1JBzdLPRk99r
+         sWL+gKgRJiO5A/ch6KOPiueivO2H0jmAyASHignFa5UxMMZHHTA57h91BmEtZhu7sRuR
+         Cn/CO2pWIEEq5kWRpoP/nHBg6PDrg1RFcqvOpw1JCwe4OMMQ9zb9la0lxeh8zINzMSkA
+         xd2vDcGmvKPrkhsnVnzBd5eOXCmBiLyGoct2CqxbgWG8ZwKo2Yer0X3BV2p3+w3dpHsD
+         l50Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:dmarc-filter
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
+         :references:in-reply-to:mime-version:dkim-signature
          :arc-authentication-results;
-        bh=N++3dbAmZRMuaS9KTC/NfvvfYAlG1r/9goBSaW7vOYA=;
-        b=Y5qYMrif+Gt+NKcBY7UlgQcRBJPfpygSTjKDpvQzvx/0v+cs7JrgPu/iMEJgCAfJO3
-         4AIAyBVyZXnzDSlo+1OrcqEWKdigG46BjZT4827FijFj7GPUrOHcbeRmWTohII3fN/Uf
-         Htz1YcYD65kCw3b7rm3HTq7pbdbctjDuxlvnOi0tMr//SJg4gT1E4l35KZPrgEgSNNJL
-         3ccQ8iZM5dOvvjdgjYgxGFzs+0J1HxUl4I61qHPQI/MhIT1x3Ol7E5lYiXsqYv+6SFlN
-         udrLAbUfiNwTg11A4YV2kz3QejB+JG/W/SO5ONMvchCn2N0oNUHBCFk4POd64fLWtpaE
-         vGNw==
+        bh=rGRQVmLHmgc/+dlFB2QrTBX5EDLcW0Xno6uFo4P7vWs=;
+        b=aQWZW9qoZ1asCiobFVgcSkYCSNOf42udKIgTrcqgmcyxJlKAW9JfNvGEO51cXzHIpG
+         l9AbOPingU/adQrQQryBXekx2dmQeNLisdvTyvXFM/57+TnOxkLvN7dJm8+XS88FU2jz
+         dNHL5cvLwKV7e1HTSbNCHX7mQINEZXDWGKQO8tME2Gymp9rSPoLIYtuwLGoGt47fLMV2
+         fadU5VpOgYKlhM3OuT6s3uFJl8QTQMFHIeO4DW5wYbfJgUSM10/W8AEyOfyFR9k5Zl5D
+         lLpa7wAk8O+YbbDoxjBCUeM1QqbnrSVNGsj3PSTXjgBbvNXqa19Ff5siDCFd/UmcHiL9
+         HG9Q==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@gmail.com header.b=YUO7AZNV;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id n206si8615528qkn.297.2017.07.26.05.24.27
+        by mx.google.com with ESMTPS id v4si13395968qtb.16.2017.07.26.10.40.15
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 26 Jul 2017 05:24:28 -0700 (PDT)
+        Wed, 26 Jul 2017 10:40:16 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
+       dkim=fail header.i=@gmail.com header.b=YUO7AZNV;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:37958 helo=lists.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:39401 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1daLMX-0007q4-FP
-	for alex.bennee@linaro.org; Wed, 26 Jul 2017 08:24:25 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:47020)
+	id 1daQI9-000182-ND
+	for alex.bennee@linaro.org; Wed, 26 Jul 2017 13:40:13 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:55760)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1daLLE-0006xX-Dr
-	for qemu-arm@nongnu.org; Wed, 26 Jul 2017 08:23:05 -0400
+	(envelope-from <ronald.dahlgren@gmail.com>) id 1daQI4-00013g-M3
+	for qemu-arm@nongnu.org; Wed, 26 Jul 2017 13:40:09 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1daLLA-00042S-41
-	for qemu-arm@nongnu.org; Wed, 26 Jul 2017 08:23:04 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:55366)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <eric.auger@redhat.com>)
-	id 1daLL9-000421-QM; Wed, 26 Jul 2017 08:23:00 -0400
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
-	[10.5.11.15])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id BC9AE552EA;
-	Wed, 26 Jul 2017 12:22:58 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com BC9AE552EA
-Authentication-Results: ext-mx05.extmail.prod.ext.phx2.redhat.com;
-	dmarc=none (p=none dis=none) header.from=redhat.com
-Authentication-Results: ext-mx05.extmail.prod.ext.phx2.redhat.com;
-	spf=pass smtp.mailfrom=eric.auger@redhat.com
-Received: from localhost.localdomain (ovpn-117-95.ams2.redhat.com
-	[10.36.117.95])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 580C877644;
-	Wed, 26 Jul 2017 12:22:52 +0000 (UTC)
-To: Diana Craciun <diana.craciun@nxp.com>, qemu-devel@nongnu.org
-References: <1495537965-4187-1-git-send-email-diana.craciun@nxp.com>
-	<1495537965-4187-2-git-send-email-diana.craciun@nxp.com>
-From: Auger Eric <eric.auger@redhat.com>
-Message-ID: <17ae81be-a86e-d0ab-de93-046846e0b7d2@redhat.com>
-Date: Wed, 26 Jul 2017 14:22:50 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
-	Thunderbird/45.4.0
+	(envelope-from <ronald.dahlgren@gmail.com>) id 1daQI3-0008IP-5l
+	for qemu-arm@nongnu.org; Wed, 26 Jul 2017 13:40:08 -0400
+Received: from mail-ua0-x234.google.com ([2607:f8b0:400c:c08::234]:33867)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <ronald.dahlgren@gmail.com>)
+	id 1daQI2-0008Hu-W8
+	for qemu-arm@nongnu.org; Wed, 26 Jul 2017 13:40:07 -0400
+Received: by mail-ua0-x234.google.com with SMTP id q25so103633956uah.1
+	for <qemu-arm@nongnu.org>; Wed, 26 Jul 2017 10:40:06 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to; 
+	bh=rGRQVmLHmgc/+dlFB2QrTBX5EDLcW0Xno6uFo4P7vWs=;
+	b=YUO7AZNV/foikb1+lr4eBakH5IiClXbU2e58Nlo700be8hywaBfghT/u7xMH9RXMR9
+	CccXwTUV+PEewy5OAhLInx2ZCBm7PKxu8r7VzK6u0Uyj4Gtpa1ai16m7SwW9gLciqF5L
+	/F8kP7cMIKibLX3O63NhlMK9CTerRBIkLegMiVDtjH/2EzEB9zm3ZgaTxiAPh+4kFU2S
+	eytcptn5juR8bbicrsitvG9g3B+/2/NrA+FLpbYYsU4SAFdU/Qr4455CGN8FXQ/c0JLQ
+	qzvktk5DAPRZxU10wiUCdYUOp4RK6shbpOPNk9CuAadIdBWJOM+EAezHRjJLJjMrQJiD
+	8DQg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to;
+	bh=rGRQVmLHmgc/+dlFB2QrTBX5EDLcW0Xno6uFo4P7vWs=;
+	b=RNceg4xpnB1Z995ii0YdAksrChU/ugWlljfofNPwyp0LkQjFA6COAW5we5TEG/Id6h
+	c41vIqBSXFOUUzmsDyDCoZk9bdAJuFjxb5DkdjB/tXqEDeKKzD5Uitvv8FTM06NdUA3g
+	W7k84dkc44Uublzg/q5H8kyHB9knumOl1I0IRldyoXfKld9k1K3NUHdX5mWAyrD9cOj8
+	edktLnGSkVqfz24sD6F7qR6VGaHnhBEWbJRpURyFSZEzPxiXC02/+rttk1VuP1tLxuB6
+	CCVbVZSwqq5OCvWuq+CRcYZ8VF8sZB3ucY00+lRjB7d3wublVtyhlhbLgpSWISFmuxPI
+	46JQ==
+X-Gm-Message-State: AIVw111BE0yxm37EyOX0qS8K2GV866kbzLNaz3CnECiC5Sjk5ppCShwQ
+	TzjpNqVewRL7Hv4AatwKnk6fNxjvoBwU
+X-Received: by 10.31.21.66 with SMTP id 63mr1043077vkv.61.1501090805969; Wed,
+	26 Jul 2017 10:40:05 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <1495537965-4187-2-git-send-email-diana.craciun@nxp.com>
-Content-Type: text/plain; charset=windows-1252
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.29]);
-	Wed, 26 Jul 2017 12:22:58 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v2 1/2] Increased the size of
- requester_id field from MemTxAttrs
+Received: by 10.159.32.134 with HTTP; Wed, 26 Jul 2017 10:40:05 -0700 (PDT)
+In-Reply-To: <CAMdPreoGpxfJgRScO_k2RiphH9QR=WuDC8QutF4Q+bPJJ2stOg@mail.gmail.com>
+References: <CAMdPreoGpxfJgRScO_k2RiphH9QR=WuDC8QutF4Q+bPJJ2stOg@mail.gmail.com>
+From: Ronald Dahlgren <ronald.dahlgren@gmail.com>
+Date: Wed, 26 Jul 2017 13:40:05 -0400
+Message-ID: <CAMdPrerRjTrkpBgN3vE9P+JQQW7oSPp66SXqEqF4Y8jzOJ2ydg@mail.gmail.com>
+To: qemu-arm@nongnu.org
+Content-Type: multipart/alternative; boundary="001a1143aed443f71f05553bf062"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:400c:c08::234
+Subject: Re: [Qemu-arm] raspi2 vs Linux
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -99,143 +104,110 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: mst@redhat.com, mike.caraman@nxp.com, qemu-arm@nongnu.org,
-	marcel@redhat.com, bharat.bhushan@nxp.com,
-	christoffer.dall@linaro.org, laurentiu.tudor@nxp.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ffDN0fJCrk7f
+X-TUID: ZXQIMRuKYxOS
 
-Hi Diana,
-On 23/05/2017 13:12, Diana Craciun wrote:
-> The PCI requester ID field is 16 bits. The requester_id field
-> from MemTxAttrs is used for MSIs to specify the device ID for
-> the platforms where this device ID is needed (e.g virt machine + GICv3
-> ITS). However, if more entities that uses MSIs in the system are used,
-> 16 bit is no longer enough to represent the device ID. Increased the size
-> of this field to 24 bits in order to accomodate 256 entities.
-> Also the name requester_id does no longer reflect the content, so
-> the name was changed to stream_id.
+--001a1143aed443f71f05553bf062
+Content-Type: text/plain; charset="UTF-8"
 
-I think both deviceid and streamid can be up to 32 bits in theory.
+I have copied the image I was using to an sd card and tried booting it on
+actual hardware. The actual hardware doesn't make it past the GPU test
+screen, indicating an unbootable kernel.
 
-With respect to the renaming, stream_id really is ARM specific and
-corresponds to the ID space before the SMMU while you mostly address
-device id problematics here (ie. space id input to the interrupt
-controller). Maybe a more generic terminology such as originator id
-could be used or source id (I think this is Intel terminology though).
+This tells me the problem is with my image and not with how I'm using qemu.
 
-Maybe the changes in semantics of the field should be
-associated/combined with its new computation found in next patch? see
-comments in subsequent patch.
+To be continued!
 
-Thanks
+Ron
 
-Eric
+On Tue, Jul 25, 2017 at 10:51 PM, Ronald Dahlgren <ronald.dahlgren@gmail.com
+> wrote:
 
-> 
-> Signed-off-by: Diana Craciun <diana.craciun@nxp.com>
-> ---
->  hw/i386/amd_iommu.c                    | 2 +-
->  hw/i386/intel_iommu.c                  | 2 +-
->  hw/intc/arm_gicv3_its_common.c         | 2 +-
->  hw/intc/arm_gicv3_its_kvm.c            | 2 +-
->  hw/pci/msi.c                           | 2 +-
->  include/exec/memattrs.h                | 4 ++--
->  include/hw/intc/arm_gicv3_its_common.h | 2 +-
->  7 files changed, 8 insertions(+), 8 deletions(-)
-> 
-> diff --git a/hw/i386/amd_iommu.c b/hw/i386/amd_iommu.c
-> index f86a40a..b61bdd5 100644
-> --- a/hw/i386/amd_iommu.c
-> +++ b/hw/i386/amd_iommu.c
-> @@ -145,7 +145,7 @@ static void amdvi_generate_msi_interrupt(AMDVIState *s)
->  {
->      MSIMessage msg = {};
->      MemTxAttrs attrs = {
-> -        .requester_id = pci_requester_id(&s->pci.dev)
-> +        .stream_id = pci_requester_id(&s->pci.dev)
->      };
->  
->      if (msi_enabled(&s->pci.dev)) {
-> diff --git a/hw/i386/intel_iommu.c b/hw/i386/intel_iommu.c
-> index 02f047c..9cdcc62 100644
-> --- a/hw/i386/intel_iommu.c
-> +++ b/hw/i386/intel_iommu.c
-> @@ -2597,7 +2597,7 @@ static MemTxResult vtd_mem_ir_write(void *opaque, hwaddr addr,
->  
->      if (!attrs.unspecified) {
->          /* We have explicit Source ID */
-> -        sid = attrs.requester_id;
-> +        sid = attrs.stream_id;
->      }
->  
->      ret = vtd_interrupt_remap_msi(opaque, &from, &to, sid);
-> diff --git a/hw/intc/arm_gicv3_its_common.c b/hw/intc/arm_gicv3_its_common.c
-> index 9d67c5c..efdb1b3 100644
-> --- a/hw/intc/arm_gicv3_its_common.c
-> +++ b/hw/intc/arm_gicv3_its_common.c
-> @@ -66,7 +66,7 @@ static MemTxResult gicv3_its_trans_write(void *opaque, hwaddr offset,
->      if (offset == 0x0040 && ((size == 2) || (size == 4))) {
->          GICv3ITSState *s = ARM_GICV3_ITS_COMMON(opaque);
->          GICv3ITSCommonClass *c = ARM_GICV3_ITS_COMMON_GET_CLASS(s);
-> -        int ret = c->send_msi(s, le64_to_cpu(value), attrs.requester_id);
-> +        int ret = c->send_msi(s, le64_to_cpu(value), attrs.stream_id);
->  
->          if (ret <= 0) {
->              qemu_log_mask(LOG_GUEST_ERROR,
-> diff --git a/hw/intc/arm_gicv3_its_kvm.c b/hw/intc/arm_gicv3_its_kvm.c
-> index bd4f3aa..9006907 100644
-> --- a/hw/intc/arm_gicv3_its_kvm.c
-> +++ b/hw/intc/arm_gicv3_its_kvm.c
-> @@ -29,7 +29,7 @@
->  #define TYPE_KVM_ARM_ITS "arm-its-kvm"
->  #define KVM_ARM_ITS(obj) OBJECT_CHECK(GICv3ITSState, (obj), TYPE_KVM_ARM_ITS)
->  
-> -static int kvm_its_send_msi(GICv3ITSState *s, uint32_t value, uint16_t devid)
-> +static int kvm_its_send_msi(GICv3ITSState *s, uint32_t value, uint32_t devid)
->  {
->      struct kvm_msi msi;
->  
-> diff --git a/hw/pci/msi.c b/hw/pci/msi.c
-> index a87b227..7925851 100644
-> --- a/hw/pci/msi.c
-> +++ b/hw/pci/msi.c
-> @@ -336,7 +336,7 @@ void msi_send_message(PCIDevice *dev, MSIMessage msg)
->  {
->      MemTxAttrs attrs = {};
->  
-> -    attrs.requester_id = pci_requester_id(dev);
-> +    attrs.stream_id = pci_requester_id(dev);
->      address_space_stl_le(&dev->bus_master_as, msg.address, msg.data,
->                           attrs, NULL);
->  }
-> diff --git a/include/exec/memattrs.h b/include/exec/memattrs.h
-> index e601061..b13e1b8 100644
-> --- a/include/exec/memattrs.h
-> +++ b/include/exec/memattrs.h
-> @@ -35,8 +35,8 @@ typedef struct MemTxAttrs {
->      unsigned int secure:1;
->      /* Memory access is usermode (unprivileged) */
->      unsigned int user:1;
-> -    /* Requester ID (for MSI for example) */
-> -    unsigned int requester_id:16;
-> +    /* Stream ID (for MSI for example) */
-> +    unsigned int stream_id:24;
->  } MemTxAttrs;
->  
->  /* Bus masters which don't specify any attributes will get this,
-> diff --git a/include/hw/intc/arm_gicv3_its_common.h b/include/hw/intc/arm_gicv3_its_common.h
-> index 1ba1894..6140fc6 100644
-> --- a/include/hw/intc/arm_gicv3_its_common.h
-> +++ b/include/hw/intc/arm_gicv3_its_common.h
-> @@ -68,7 +68,7 @@ struct GICv3ITSCommonClass {
->      SysBusDeviceClass parent_class;
->      /*< public >*/
->  
-> -    int (*send_msi)(GICv3ITSState *s, uint32_t data, uint16_t devid);
-> +    int (*send_msi)(GICv3ITSState *s, uint32_t data, uint32_t devid);
->      void (*pre_save)(GICv3ITSState *s);
->      void (*post_load)(GICv3ITSState *s);
->  };
-> 
+> I am trying to setup an emulation environment on my workstation for
+> development on a Linux environment destined to run on a Raspberry Pi. I'm
+> using Arch Linux Arm.
+>
+> I have done some fairly extensive searching and found:
+>
+> This raspbian specific post: http://blog.3mdeb.com/
+> 2015/12/30/emulate-rapberry-pi-2-in-qemu/
+> This qemu wiki page: http://wiki.qemu.org/Documentation/Platforms/ARM
+> This MSDN post: https://blogs.msdn.microsoft.com/iliast/2016/11/
+> 10/how-to-emulate-raspberry-pi/
+> and finally, this post (and several mailing list posts) from Andrew
+> Baumann: https://github.com/0xabu/qemu/wiki
+>
+> Trying several iterations of these instructions all wind up with the qemu
+> window appearing (initially in a "paused" state) with no output to any of
+> the tabs.
+>
+> My question is this: does anyone know of some other resources I may have
+> missed previously that cover running a Linux distro under a qemu raspi2
+> emulation?
+>
+> * Note: I have also tried included the Arch Linux Arm kernel params for
+> the '-append' line.
+>
+> Thanks in advance!
+>
+>
+> --
+> Ron Dahlgren
+>
+
+
+
+-- 
+Ron Dahlgren
+http://www.dahlgren.work
+
+--001a1143aed443f71f05553bf062
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr">I have copied the image I was using to an sd card and trie=
+d booting it on actual hardware. The actual hardware doesn&#39;t make it pa=
+st the GPU test screen, indicating an unbootable kernel.=C2=A0<div><br></di=
+v><div>This tells me the problem is with my image and not with how I&#39;m =
+using qemu.</div><div><br></div><div>To be continued!</div><div><br></div><=
+div>Ron</div><div class=3D"gmail_extra"><br><div class=3D"gmail_quote">On T=
+ue, Jul 25, 2017 at 10:51 PM, Ronald Dahlgren <span dir=3D"ltr">&lt;<a href=
+=3D"mailto:ronald.dahlgren@gmail.com" target=3D"_blank">ronald.dahlgren@gma=
+il.com</a>&gt;</span> wrote:<br><blockquote class=3D"gmail_quote" style=3D"=
+margin:0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex"><div dir=3D"=
+ltr"><div>I am trying to setup an emulation environment on my workstation f=
+or development on a Linux environment destined to run on a Raspberry Pi. I&=
+#39;m using Arch Linux Arm.</div><div><br></div><div>I have done some fairl=
+y extensive searching and found:</div><div><br></div><div>This raspbian spe=
+cific post:=C2=A0<a href=3D"http://blog.3mdeb.com/2015/12/30/emulate-rapber=
+ry-pi-2-in-qemu/" target=3D"_blank">http://blog.3mdeb.com/<wbr>2015/12/30/e=
+mulate-rapberry-<wbr>pi-2-in-qemu/</a></div><div>This qemu wiki page:=C2=A0=
+<a href=3D"http://wiki.qemu.org/Documentation/Platforms/ARM" target=3D"_bla=
+nk">http://wiki.qemu.org/<wbr>Documentation/Platforms/ARM</a></div><div>Thi=
+s MSDN post:=C2=A0<a href=3D"https://blogs.msdn.microsoft.com/iliast/2016/1=
+1/10/how-to-emulate-raspberry-pi/" target=3D"_blank">https://blogs.msdn.<wb=
+r>microsoft.com/iliast/2016/11/<wbr>10/how-to-emulate-raspberry-<wbr>pi/</a=
+></div><div>and finally, this post (and several mailing list posts) from An=
+drew Baumann:=C2=A0<a href=3D"https://github.com/0xabu/qemu/wiki" target=3D=
+"_blank">https://github.com/<wbr>0xabu/qemu/wiki</a></div><div><br></div><d=
+iv>Trying several iterations of these instructions all wind up with the qem=
+u window appearing (initially in a &quot;paused&quot; state) with no output=
+ to any of the tabs.</div><div><br></div><div>My question is this: does any=
+one know of some other resources I may have missed previously that cover ru=
+nning a Linux distro under a qemu raspi2 emulation?</div><div><br></div><di=
+v>* Note: I have also tried included the Arch Linux Arm kernel params for t=
+he &#39;-append&#39; line.</div><div><br></div><div>Thanks in advance!</div=
+><span class=3D"HOEnZb"><font color=3D"#888888"><div><br></div><div><br></d=
+iv>-- <br><div class=3D"m_768185556338087643gmail_signature"><div dir=3D"lt=
+r"><div><div dir=3D"ltr"><div><div dir=3D"ltr"><div>Ron Dahlgren</div></div=
+></div></div></div></div></div>
+</font></span></div>
+</blockquote></div><br><br clear=3D"all"><div><br></div>-- <br><div class=
+=3D"gmail_signature" data-smartmail=3D"gmail_signature"><div dir=3D"ltr"><d=
+iv><div dir=3D"ltr"><div><div dir=3D"ltr"><div>Ron Dahlgren</div><a href=3D=
+"http://www.dahlgren.work" target=3D"_blank">http://www.dahlgren.work</a>=
+=C2=A0</div></div></div></div></div></div>
+</div></div>
+
+--001a1143aed443f71f05553bf062--

@@ -1,70 +1,70 @@
-Received: by 10.25.44.15 with SMTP id s15csp1869009lfs;
-        Thu, 27 Jul 2017 03:59:38 -0700 (PDT)
-X-Received: by 10.200.0.208 with SMTP id d16mr4961804qtg.69.1501153178741;
-        Thu, 27 Jul 2017 03:59:38 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1501153178; cv=none;
+Received: by 10.25.44.15 with SMTP id s15csp1869054lfs;
+        Thu, 27 Jul 2017 03:59:42 -0700 (PDT)
+X-Received: by 10.237.32.41 with SMTP id 38mr5564284qta.68.1501153182867;
+        Thu, 27 Jul 2017 03:59:42 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1501153182; cv=none;
         d=google.com; s=arc-20160816;
-        b=CG2qQ07OvXADa9bVp33XOHAzxjASxVUOXZqVyhe1lut6EReFNbF7rHDcq/LrWvdChr
-         dPh6Gz3jOJ/RY8uYLyNFO1CAh4aqfJxTLhieH6Jhe6gvVcmoUbDl4mrTAIOYAWd11xve
-         foaWHjpYG5JxolynqJxCu+/M+C2kwYkEVrfPlriu/ulyf7+vxfj8qq9B6yW+OybGxdQR
-         YJyyaWo5wTNHt6e/fPbm333wjNeYju4KffCDLdlrDR2y1LUADMTsm8lcUSL9Cy5xari2
-         TJuTyM4nn170uxUi6+iiQWzc2ehIiybOTuWMOFs3OxQ4eJgtgRynsBC9XEbJQkl0X0uD
-         A+LA==
+        b=XHHIk6pw6tMl//h9m9UNTbWZ1dBh8nO3K8BqlOWBNpiqdfyj/rXOTxH9REo7g8GuAL
+         Q3zYonrpmSctXVQ09MBHzVTLnIad199B1WTiFdWyM47nPp5CigpJimfj7cIo3ZE5fxu6
+         ombAJMewkn/IrRN1iBj+HOWL7nt+n2OUFThJLRSe2MF1aY72cO7XbAQu9bpAoWwG5DvZ
+         hfCwYTUk4naWD4WlmezUXSU4WnsgbpNh9O+zi1ktnLKtf+sf+wgH7qSS3nPT7Vr4Fay+
+         0vq3Gu/q8oCJ6cP/JngEQa5NW7lapuhKlKxUag0iD17CG+Ae7Zlr5B1JrYC9VJC1NTKE
+         tVfQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
          :message-id:date:to:from:arc-authentication-results;
-        bh=m0l4wE04ryb5TzVznzuIMAzO7RqZ3m/yiYfaPXUCOOc=;
-        b=TC+UyDi2jeae+iCKw+a+RFXNP5GK4SXwJNR9FsEWWKoIfeJO2ME55hRumTGX6UJQCj
-         UygyDPc51nBNHBDdm0Uw8Vny2eIvLZ432OE4PQUbcCdUA/TSQeGtxvzWrX7jo2hkoESC
-         KkgFH/e9T43KUcMLQKOcHXBE1E9aDz1UN58PGe5enjJOvOJD5OiEbcxjso6yrjTp6jCr
-         VsE77yxEZwlZGJd7E2lLzc/sSzok5IWX5MJ/l4PbsNcSJxS7+kg+5sRcQL3bfUJkZXT1
-         y0NDlLKxGJG087sNSfF0uX3pKGujK3PYpaUQ2PI3JID9dzYI4jb0VxcZpe6cxXq7x4wf
-         pRaQ==
+        bh=0P1+p/ybu7yRPhxKGm8K2Ws7peRvbF3x0dxJfEYdif8=;
+        b=usklE7/rolYty1db2vuz9Lp0xbmQ0D2oYnzyTnMz/wMMqRg6HoB8SiKJ1X47D4iUg3
+         lGyJxK4TKqotwiDPx7g81sr27byw8/4gLTc+BWReF+mnaEqUlF2gWaezY/yJ31uylB13
+         d4SVyY4yR8rleKw8VOJWVBBf/zL4aOSSo++41+pDTYfRcYCCdDCzReB5uXYPujFn3/46
+         oi7dPw4+sTYpeJtDkCf+tywn0/PWHKrn06FBNDDoTVMaT72VXr81mfV6ZKyr4fd7dd1s
+         loWtwkkMjVVqeQM5uvHqp/9KSgp8e/s+6mTuhShuXZJqVAqOqMRsTLqCWNbvHFLL4urT
+         eBKQ==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id j62si6353753qkd.539.2017.07.27.03.59.38
+        by mx.google.com with ESMTPS id 10si17043335qkt.272.2017.07.27.03.59.42
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 27 Jul 2017 03:59:38 -0700 (PDT)
+        Thu, 27 Jul 2017 03:59:42 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:42240 helo=lists.gnu.org)
+Received: from localhost ([::1]:42241 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1dagVz-0006OD-Tt
-	for alex.bennee@linaro.org; Thu, 27 Jul 2017 06:59:35 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:40068)
+	id 1dagW4-0006Sw-7D
+	for alex.bennee@linaro.org; Thu, 27 Jul 2017 06:59:40 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:40012)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1dagVn-0006IC-53
-	for qemu-arm@nongnu.org; Thu, 27 Jul 2017 06:59:24 -0400
+	(envelope-from <pm215@archaic.org.uk>) id 1dagVl-0006HU-MY
+	for qemu-arm@nongnu.org; Thu, 27 Jul 2017 06:59:22 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1dagVm-0000JP-B2
-	for qemu-arm@nongnu.org; Thu, 27 Jul 2017 06:59:23 -0400
+	(envelope-from <pm215@archaic.org.uk>) id 1dagVk-0000EI-Oa
+	for qemu-arm@nongnu.org; Thu, 27 Jul 2017 06:59:21 -0400
 Received: from orth.archaic.org.uk ([2001:8b0:1d0::2]:37719)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <pm215@archaic.org.uk>)
-	id 1dagVm-0008P0-4e; Thu, 27 Jul 2017 06:59:22 -0400
+	id 1dagVk-0008P0-H2; Thu, 27 Jul 2017 06:59:20 -0400
 Received: from pm215 by orth.archaic.org.uk with local (Exim 4.84_2)
 	(envelope-from <pm215@archaic.org.uk>)
-	id 1dagVc-0003lk-9W; Thu, 27 Jul 2017 11:59:12 +0100
+	id 1dagVd-0003mN-9k; Thu, 27 Jul 2017 11:59:13 +0100
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Date: Thu, 27 Jul 2017 11:59:07 +0100
-Message-Id: <1501153150-19984-3-git-send-email-peter.maydell@linaro.org>
+Date: Thu, 27 Jul 2017 11:59:09 +0100
+Message-Id: <1501153150-19984-5-git-send-email-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.7.4
 In-Reply-To: <1501153150-19984-1-git-send-email-peter.maydell@linaro.org>
 References: <1501153150-19984-1-git-send-email-peter.maydell@linaro.org>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 2001:8b0:1d0::2
-Subject: [Qemu-arm] [PATCH for-2.10 2/5] target/arm: Don't allow guest to
- make System space executable for M profile
+Subject: [Qemu-arm] [PATCH for-2.10 4/5] target/arm: Move PMSAv7 reset into
+ arm_cpu_reset() so M profile MPUs get reset
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -79,58 +79,103 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: patches@linaro.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: yZADb5Yv3noi
+X-TUID: z6Ip4cI43yMg
 
-For an M profile v7PMSA, the system space (0xe0000000 - 0xffffffff) can
-never be executable, even if the guest tries to set the MPU registers
-up that way. Enforce this restriction.
+When the PMSAv7 implementation was originally added it was for R profile
+CPUs only, and reset was handled using the cpreg .resetfn hooks.
+Unfortunately for M profile cores this doesn't work, because they do
+not register any cpregs. Move the reset handling into arm_cpu_reset(),
+where it will work for both R profile and M profile cores.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- target/arm/helper.c | 16 +++++++++++++++-
- 1 file changed, 15 insertions(+), 1 deletion(-)
+ target/arm/cpu.c    | 14 ++++++++++++++
+ target/arm/helper.c | 28 ++++++++++++----------------
+ 2 files changed, 26 insertions(+), 16 deletions(-)
 
+diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+index 96d1f84..05c038b 100644
+--- a/target/arm/cpu.c
++++ b/target/arm/cpu.c
+@@ -232,6 +232,20 @@ static void arm_cpu_reset(CPUState *s)
+ 
+     env->vfp.xregs[ARM_VFP_FPEXC] = 0;
+ #endif
++
++    if (arm_feature(env, ARM_FEATURE_PMSA) &&
++        arm_feature(env, ARM_FEATURE_V7)) {
++        if (cpu->pmsav7_dregion > 0) {
++            memset(env->pmsav7.drbar, 0,
++                   sizeof(*env->pmsav7.drbar) * cpu->pmsav7_dregion);
++            memset(env->pmsav7.drsr, 0,
++                   sizeof(*env->pmsav7.drsr) * cpu->pmsav7_dregion);
++            memset(env->pmsav7.dracr, 0,
++                   sizeof(*env->pmsav7.dracr) * cpu->pmsav7_dregion);
++        }
++        env->pmsav7.rnr = 0;
++    }
++
+     set_flush_to_zero(1, &env->vfp.standard_fp_status);
+     set_flush_inputs_to_zero(1, &env->vfp.standard_fp_status);
+     set_default_nan_mode(1, &env->vfp.standard_fp_status);
 diff --git a/target/arm/helper.c b/target/arm/helper.c
-index ceef225..169c361 100644
+index 63187de..a9247e9 100644
 --- a/target/arm/helper.c
 +++ b/target/arm/helper.c
-@@ -8251,6 +8251,14 @@ static inline bool is_ppb_region(CPUARMState *env, uint32_t address)
-         extract32(address, 20, 12) == 0xe00;
+@@ -2404,18 +2404,6 @@ static void pmsav7_write(CPUARMState *env, const ARMCPRegInfo *ri,
+     *u32p = value;
  }
  
-+static inline bool is_system_region(CPUARMState *env, uint32_t address)
-+{
-+    /* True if address is in the M profile system region
-+     * 0xe0000000 - 0xffffffff
+-static void pmsav7_reset(CPUARMState *env, const ARMCPRegInfo *ri)
+-{
+-    ARMCPU *cpu = arm_env_get_cpu(env);
+-    uint32_t *u32p = *(uint32_t **)raw_ptr(env, ri);
+-
+-    if (!u32p) {
+-        return;
+-    }
+-
+-    memset(u32p, 0, sizeof(*u32p) * cpu->pmsav7_dregion);
+-}
+-
+ static void pmsav7_rgnr_write(CPUARMState *env, const ARMCPRegInfo *ri,
+                               uint64_t value)
+ {
+@@ -2433,22 +2421,30 @@ static void pmsav7_rgnr_write(CPUARMState *env, const ARMCPRegInfo *ri,
+ }
+ 
+ static const ARMCPRegInfo pmsav7_cp_reginfo[] = {
++    /* Reset for all these registers is handled in arm_cpu_reset(),
++     * because the PMSAv7 is also used by M-profile CPUs, which do
++     * not register cpregs but still need the state to be reset.
 +     */
-+    return arm_feature(env, ARM_FEATURE_M) && extract32(address, 29, 3) == 0x7;
-+}
-+
- static bool get_phys_addr_pmsav7(CPUARMState *env, uint32_t address,
-                                  int access_type, ARMMMUIdx mmu_idx,
-                                  hwaddr *phys_ptr, int *prot, uint32_t *fsr)
-@@ -8354,6 +8362,12 @@ static bool get_phys_addr_pmsav7(CPUARMState *env, uint32_t address,
-             get_phys_addr_pmsav7_default(env, mmu_idx, address, prot);
-         } else { /* a MPU hit! */
-             uint32_t ap = extract32(env->pmsav7.dracr[n], 8, 3);
-+            uint32_t xn = extract32(env->pmsav7.dracr[n], 12, 1);
-+
-+            if (is_system_region(env, address)) {
-+                /* System space is always execute never */
-+                xn = 1;
-+            }
+     { .name = "DRBAR", .cp = 15, .crn = 6, .opc1 = 0, .crm = 1, .opc2 = 0,
+       .access = PL1_RW, .type = ARM_CP_NO_RAW,
+       .fieldoffset = offsetof(CPUARMState, pmsav7.drbar),
+-      .readfn = pmsav7_read, .writefn = pmsav7_write, .resetfn = pmsav7_reset },
++      .readfn = pmsav7_read, .writefn = pmsav7_write,
++      .resetfn = arm_cp_reset_ignore },
+     { .name = "DRSR", .cp = 15, .crn = 6, .opc1 = 0, .crm = 1, .opc2 = 2,
+       .access = PL1_RW, .type = ARM_CP_NO_RAW,
+       .fieldoffset = offsetof(CPUARMState, pmsav7.drsr),
+-      .readfn = pmsav7_read, .writefn = pmsav7_write, .resetfn = pmsav7_reset },
++      .readfn = pmsav7_read, .writefn = pmsav7_write,
++      .resetfn = arm_cp_reset_ignore },
+     { .name = "DRACR", .cp = 15, .crn = 6, .opc1 = 0, .crm = 1, .opc2 = 4,
+       .access = PL1_RW, .type = ARM_CP_NO_RAW,
+       .fieldoffset = offsetof(CPUARMState, pmsav7.dracr),
+-      .readfn = pmsav7_read, .writefn = pmsav7_write, .resetfn = pmsav7_reset },
++      .readfn = pmsav7_read, .writefn = pmsav7_write,
++      .resetfn = arm_cp_reset_ignore },
+     { .name = "RGNR", .cp = 15, .crn = 6, .opc1 = 0, .crm = 2, .opc2 = 0,
+       .access = PL1_RW,
+       .fieldoffset = offsetof(CPUARMState, pmsav7.rnr),
+-      .writefn = pmsav7_rgnr_write },
++      .writefn = pmsav7_rgnr_write,
++      .resetfn = arm_cp_reset_ignore },
+     REGINFO_SENTINEL
+ };
  
-             if (is_user) { /* User mode AP bit decoding */
-                 switch (ap) {
-@@ -8394,7 +8408,7 @@ static bool get_phys_addr_pmsav7(CPUARMState *env, uint32_t address,
-             }
- 
-             /* execute never */
--            if (env->pmsav7.dracr[n] & (1 << 12)) {
-+            if (xn) {
-                 *prot &= ~PAGE_EXEC;
-             }
-         }
 -- 
 2.7.4
 

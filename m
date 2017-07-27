@@ -1,112 +1,110 @@
-Received: by 10.25.44.15 with SMTP id s15csp2552925lfs;
-        Thu, 27 Jul 2017 15:58:54 -0700 (PDT)
-X-Received: by 10.55.168.140 with SMTP id r134mr8268724qke.204.1501196333869;
-        Thu, 27 Jul 2017 15:58:53 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1501196333; cv=none;
+Received: by 10.25.44.15 with SMTP id s15csp2581212lfs;
+        Thu, 27 Jul 2017 16:32:29 -0700 (PDT)
+X-Received: by 10.200.40.210 with SMTP id j18mr8607188qtj.172.1501198349299;
+        Thu, 27 Jul 2017 16:32:29 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1501198349; cv=none;
         d=google.com; s=arc-20160816;
-        b=mQreTo+l4nW/NaQYJSsOpBpSqk1+bec6cUKxr1lGSea4NXv3YvXyeeNzGVT1Q4SqH8
-         om49K/NqUAc3ivRfAmQ0wt0Mm6XQEkoxTM23pop7biW+/2/103+4s/gUnyTdG/SPuVol
-         CYPoL0BG+jlDDCwPuwfSX5Ebv6RxfZXhd2YhRTfnnDzieUdgYxWR608IntjAyHm4bs96
-         J7hxKwbxJ8nVtp6TfSe6chd+xEYh3TYQoQWzf2fBw8Exe3EHhFICWVhEYLVLiIBl5PBW
-         RcCwSjZOi1FKeJ/YVDlHOJVpNZo5mqXOklqGCXyHPJYAK4vJb11+7OjHYBia9dO6hm61
-         WChQ==
+        b=j5mLzhKJ1AGkSDVS2PxMJHpRghdViCYHZ4WyGsRWmQ3hVvOpVo8f8QvSCMg70QyvGf
+         X0IciTjjU5r0qi28fldEg49vGmp5EBz9r6BGnriqZV7k8YGjGVs1/vKtkuYWz0f4p2yG
+         crR0W5PcBQWM0QSop79k+Sim1v7nfRYSESwCr+B1uBOXAgF1nkr5wtDdmW2UfqEq0UAX
+         S6mEpdz8Nrnmm8wg1OxfnoII60P4iGTewbxlT/m+ytWaSeldxYpMUIU5MXOWH0xdB++5
+         nkv09+3/sDULatsS+Snk5Etc6oGM/bhWZV9o5yVvChu8KKW3yDIStuIRsNbx/wUvfxZH
+         Mnog==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:references:to:from:dkim-signature
+         :user-agent:date:message-id:from:references:to:dkim-signature
          :arc-authentication-results;
-        bh=J4G5M1/5zauxDG+rU2EfbCER505xtK1ry4/OYE78sIs=;
-        b=qnxBNfrwqWsafAVzLfR0SpNhrzyjfdAmp+nNsovjfpQQQpVd6jOyPigbJmO8TSV5mR
-         nep6thurx3+FvdmBZl7jZ8qYA0iWsZBW8c2a3eqPS6FUnUE5jTEAdPGhZ9wiZwdFQJ/E
-         nerRoeXkppB5mGNTjRvxDhvr/TSkPdb5gcoG7oVcg+yhabO1JxnCnFJui1ie2b+GMUol
-         GmFkudXxm1opD7oxxwmAXMhEkTgQP3tc06f9ZyvGcygKsiimb5Np8UpPPTj8vOpnS1mk
-         3atD9a6a0M7+ge1Sy/c3tIQaGFK/0uFDzxAUBrnYPY/7I+LMJ+XWrEHulHPo/Sf1fehR
-         tcVQ==
+        bh=WPR/oIT9B78QdkPtBJKTyMX2yxP02/q9AduWKcAQoBk=;
+        b=M3X0e2Fsy5FlS+DlW7lIwYY/B4f4TdmC3lcCASihgXwE4LdXyto9c4HusjUkmt4Rhk
+         Yn7j6qiQ3o70V1KOiDxC/20O5sR47ikl79WjRuXoQq4UcbUVFRQ6WPmnT6rT8WUybSGi
+         Dz/L3FTgbzd/S7xRS2rvYc8WxRfdM2n9gbcY8jCK/YuxhyQCBtHjClqfpKShgkUIbx5h
+         yntVnAGbkQD0zOEBbb6FmiS4g3zOfk8s4uYNhaisgTjMRkz3c23FeXU5SAwaFzYoCe1K
+         ibnKHjb46YB8+VGyIlEvWUBKtRZQ/N0WYh3I9B+PuVDL5ZE+hStGIetwb+SvLa8dq+h0
+         3kyw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.b=lg1o1zhp;
+       dkim=fail header.i=@gmail.com header.b=sXGBZl54;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id d77si16473970qkj.125.2017.07.27.15.58.53
+        by mx.google.com with ESMTPS id d20si11697246qte.36.2017.07.27.16.32.28
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 27 Jul 2017 15:58:53 -0700 (PDT)
+        Thu, 27 Jul 2017 16:32:29 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.b=lg1o1zhp;
+       dkim=fail header.i=@gmail.com header.b=sXGBZl54;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:45043 helo=lists.gnu.org)
+Received: from localhost ([::1]:45125 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1dark3-0007d4-6E
-	for alex.bennee@linaro.org; Thu, 27 Jul 2017 18:58:51 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:49120)
+	id 1dasGY-0001Z8-MY
+	for alex.bennee@linaro.org; Thu, 27 Jul 2017 19:32:26 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:39579)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1darjy-0007Sr-9Z
-	for qemu-arm@nongnu.org; Thu, 27 Jul 2017 18:58:47 -0400
+	id 1dasGR-0001Xy-HO
+	for qemu-arm@nongnu.org; Thu, 27 Jul 2017 19:32:20 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1darjx-0002E2-Gf
-	for qemu-arm@nongnu.org; Thu, 27 Jul 2017 18:58:46 -0400
-Received: from mail-ua0-x242.google.com ([2607:f8b0:400c:c08::242]:35973)
+	id 1dasGQ-00085O-Li
+	for qemu-arm@nongnu.org; Thu, 27 Jul 2017 19:32:19 -0400
+Received: from mail-qk0-x241.google.com ([2607:f8b0:400d:c09::241]:36290)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1darjt-0002Bp-Bo; Thu, 27 Jul 2017 18:58:41 -0400
-Received: by mail-ua0-x242.google.com with SMTP id w45so18209642uac.3;
-	Thu, 27 Jul 2017 15:58:41 -0700 (PDT)
+	id 1dasGM-00081v-Nf; Thu, 27 Jul 2017 19:32:14 -0400
+Received: by mail-qk0-x241.google.com with SMTP id d136so19748205qkg.3;
+	Thu, 27 Jul 2017 16:32:14 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=sender:subject:from:to:cc:references:message-id:date:user-agent
+	h=sender:subject:to:cc:references:from:message-id:date:user-agent
 	:mime-version:in-reply-to:content-language:content-transfer-encoding;
-	bh=J4G5M1/5zauxDG+rU2EfbCER505xtK1ry4/OYE78sIs=;
-	b=lg1o1zhpCjCii0idqjm5j4orDSPdsdvc0mDuhgj27s/t8eTlA4TBk8dUgghxuqHSfH
-	1gaAlm76moYS2uzKT1AuNItKEpQ634lnPqgxbHiU7mA8B9rfxzMlpit39i2zG+1GeTdT
-	mIjN3tow3QcKJNoMAZAk5zdiUKWqcV/3xaEuhLOn8gIfsqZAf7INtOWr5eth0iEyGAAW
-	j0ODkFl1yencilXKv3k+gnTB54SxHWJQ5S0LQhi7GdOVq2KkftdrRw4vw6ZeF0jbDY4i
-	aUB0swHdeLJgYuKQozC8tZm0PVS1fBXKRkA6jfXO3ntCVCsIfPFCcPq9fmN0tZ/LMW7c
-	NgOg==
+	bh=WPR/oIT9B78QdkPtBJKTyMX2yxP02/q9AduWKcAQoBk=;
+	b=sXGBZl548fUpztt7kQA8wn14oDpIztcnfdJzcFStTdW0GoeWHlcuUY5KvKTehBEw6t
+	ZYueNr5iqC8oPl64OvSUiyEZs0rMJ+/YqYNBpDfmtF3jF8lJPfLwkX6NYIfwyvOumNKA
+	5Rnggm/B2T8o1bubdOkfSx0so5iwKr4ou+ffaSnrzdkH85jKmiAcMw8OBYn+T7PxRx/z
+	7pSrSOKFAL1509YgViMseBU0uNu33X7mV8Z98WLueVAuTxZSLHfH6TA0H3dYwWRrvWiw
+	7HMMls8BlzIUN/nxyYP3EYQr77BBg70E26O7rxfwS++qqS9ObrdW3hpHBPTbYPEVoCgy
+	ih/A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:sender:subject:from:to:cc:references:message-id
+	h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
 	:date:user-agent:mime-version:in-reply-to:content-language
 	:content-transfer-encoding;
-	bh=J4G5M1/5zauxDG+rU2EfbCER505xtK1ry4/OYE78sIs=;
-	b=Yh+hV4Xl0W/6IxQTpXGY0nfRIQhogYOcTXTBuIPU8JqwcFNXhV162KAIaWkXYOeWce
-	YktUt6vhk9X4Dq+YU7aYAVCOwrg1ivDD6oLyPSwsNUwWlY260aiIVB8aud16/ac/C13J
-	klwEqGZiDONCPBIV9y3mVYTKdfoDdWDOIHBpWpyVax6CMe4zokf5z0CzDWrYbfrQSLol
-	Xyj0IfB2B72fYSjbMKEsHWFyZTURyfg4NGO04bilLobhy98RCj/HFTPg4IYnekJ1nXt2
-	gdop3cfx7i6DiSk200K4L6dXCJ56wwrrZHK2fGj71lkpLCRUVbJJ+SG9l9JCZcLiVbsN
-	xsYg==
-X-Gm-Message-State: AIVw110u2aAKoHuCJwaIPG04zCEg3U+64gwXDEgUGrTQZruQ1THyXaPg
-	DrXvou4ZcKXWug==
-X-Received: by 10.31.199.130 with SMTP id x124mr3527095vkf.189.1501196320605; 
-	Thu, 27 Jul 2017 15:58:40 -0700 (PDT)
+	bh=WPR/oIT9B78QdkPtBJKTyMX2yxP02/q9AduWKcAQoBk=;
+	b=jdjztXI1LxdHIahlF11tBJEQ4jFGhyX389ybT+RkufGt81+fWrgSsZw1X846PWRUdn
+	9fRcKby4HWElsaeLlmNkEIfuUiMWPDjJLI7Y41623OLVg67MFq5onmBhRz4dCeHVugu2
+	iU4HUJ6WgNNbwxz8I3JH2pLg6dTJX9+bQ2zKUNZdhYyX74nq7/lqKXeSXvFmGWmcuc2j
+	LGPNTYcHnUMSkPODTTJKIJLtjbkJAtA8owAYX+qcG0A6XTrHsX3w+NP4p9pO/awQt1mB
+	jCEGWVSj1qWohu9Fexwxfu1+onBTi6Ku+FJvLz1uHe/jS0/cqM0T4fO2o1Cr/nQ9EMEF
+	Ol/w==
+X-Gm-Message-State: AIVw112CqmZEyv9OHpuIRb2j7I+YXZTZWJKmcxbMRKFtE7SLHw+kULcp
+	BVtw6iZwUjR59w==
+X-Received: by 10.55.82.3 with SMTP id g3mr7767003qkb.23.1501198333974;
+	Thu, 27 Jul 2017 16:32:13 -0700 (PDT)
 Received: from [192.168.1.10] ([138.117.48.223])
-	by smtp.gmail.com with ESMTPSA id
-	n133sm4503180vke.42.2017.07.27.15.58.38
+	by smtp.gmail.com with ESMTPSA id c19sm4532700qkg.6.2017.07.27.16.32.12
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Thu, 27 Jul 2017 15:58:39 -0700 (PDT)
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+	Thu, 27 Jul 2017 16:32:13 -0700 (PDT)
 To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
 References: <1501153150-19984-1-git-send-email-peter.maydell@linaro.org>
-	<1501153150-19984-4-git-send-email-peter.maydell@linaro.org>
-	<5aff6da7-4ad1-64af-6445-98b8d7520b4c@amsat.org>
-Message-ID: <122bfaa5-7192-056b-541c-b5f37f871bfc@amsat.org>
-Date: Thu, 27 Jul 2017 19:58:36 -0300
+	<1501153150-19984-2-git-send-email-peter.maydell@linaro.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Message-ID: <529d1ff6-e9d0-9c63-6d15-ed8f5263d47a@amsat.org>
+Date: Thu, 27 Jul 2017 20:32:10 -0300
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
 	Thunderbird/52.2.1
 MIME-Version: 1.0
-In-Reply-To: <5aff6da7-4ad1-64af-6445-98b8d7520b4c@amsat.org>
+In-Reply-To: <1501153150-19984-2-git-send-email-peter.maydell@linaro.org>
 Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400c:c08::242
-Subject: Re: [Qemu-arm] [PATCH for-2.10 3/5] target/arm: Rename cp15.c6_rgnr
- to pmsav7.rnr
+X-Received-From: 2607:f8b0:400d:c09::241
+Subject: Re: [Qemu-arm] [PATCH for-2.10 1/5] target/arm: Don't do MPU
+ lookups for addresses in M profile PPB region
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -121,57 +119,56 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: patches@linaro.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 8sWCLDi3QMml
+X-TUID: 3sTIBQ5JCYzY
 
-On 07/27/2017 07:43 PM, Philippe Mathieu-Daudé wrote:
-> On 07/27/2017 07:59 AM, Peter Maydell wrote:
-[...]
->> -    u32p += env->cp15.c6_rgnr;
->> +    u32p += env->pmsav7.rnr;
->>       tlb_flush(CPU(cpu)); /* Mappings may have changed - purge! */
->>       *u32p = value;
->>   }
->> @@ -2447,7 +2447,7 @@ static const ARMCPRegInfo pmsav7_cp_reginfo[] = {
->>         .readfn = pmsav7_read, .writefn = pmsav7_write, .resetfn = 
->> pmsav7_reset },
->>       { .name = "RGNR", .cp = 15, .crn = 6, .opc1 = 0, .crm = 2, .opc2 
->> = 0,
+On 07/27/2017 07:59 AM, Peter Maydell wrote:
+> The M profile PMSAv7 specification says that if the address being looked
+> up is in the PPB region (0xe0000000 - 0xe00fffff) then we do not use
+> the MPU regions but always use the default memory map. Implement this
+> (we were previously behaving like an R profile PMSAv7, which does not
+> special case this).
 > 
-> "RGNR" -> "RNR"
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> ---
+>   target/arm/helper.c | 17 ++++++++++++++++-
+>   1 file changed, 16 insertions(+), 1 deletion(-)
+> 
+> diff --git a/target/arm/helper.c b/target/arm/helper.c
+> index 4ed32c5..ceef225 100644
+> --- a/target/arm/helper.c
+> +++ b/target/arm/helper.c
+> @@ -8244,6 +8244,13 @@ static bool pmsav7_use_background_region(ARMCPU *cpu,
+>       }
+>   }
+>   
+> +static inline bool is_ppb_region(CPUARMState *env, uint32_t address)
+> +{
+> +    /* True if address is in the M profile PPB region 0xe0000000 - 0xe00fffff */
+> +    return arm_feature(env, ARM_FEATURE_M) &&
+> +        extract32(address, 20, 12) == 0xe00;
+> +}
+> +
+>   static bool get_phys_addr_pmsav7(CPUARMState *env, uint32_t address,
+>                                    int access_type, ARMMMUIdx mmu_idx,
+>                                    hwaddr *phys_ptr, int *prot, uint32_t *fsr)
+> @@ -8255,7 +8262,15 @@ static bool get_phys_addr_pmsav7(CPUARMState *env, uint32_t address,
+>       *phys_ptr = address;
+>       *prot = 0;
+>   
+> -    if (regime_translation_disabled(env, mmu_idx)) { /* MPU disabled */
+> +    if (regime_translation_disabled(env, mmu_idx) ||
+> +        is_ppb_region(env, address)) {
+> +        /* MPU disabled or M profile PPB access: use default memory map.
+> +         * The other case which uses the default memory map in the
+> +         * v7M ARM ARM pseudocode is exception vector reads from the vector
+> +         * table. In QEMU those accesses are done in arm_v7m_load_vector(),
+> +         * which always does a direct read using address_space_ldl(), rather
+> +         * than going via this function, so we don't need to check that here.
+> +         */
 
-Ah "RGNR" for -R and "RNR" for -M hmmm... still better keep the name 
-matching the field, "rnr".
+Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 
+>           get_phys_addr_pmsav7_default(env, mmu_idx, address, prot);
+>       } else { /* MPU enabled */
+>           for (n = (int)cpu->pmsav7_dregion - 1; n >= 0; n--) {
 > 
->>         .access = PL1_RW,
->> -      .fieldoffset = offsetof(CPUARMState, cp15.c6_rgnr),
->> +      .fieldoffset = offsetof(CPUARMState, pmsav7.rnr),
->>         .writefn = pmsav7_rgnr_write },
-> 
-> pmsav7_rnr_write
-> 
->>       REGINFO_SENTINEL
->>   };
->> diff --git a/target/arm/machine.c b/target/arm/machine.c
->> index 1a40469..93c1a78 100644
->> --- a/target/arm/machine.c
->> +++ b/target/arm/machine.c
->> @@ -151,7 +151,7 @@ static bool pmsav7_rgnr_vmstate_validate(void 
->> *opaque, int version_id)
-> 
-> pmsav7_rnr_vmstate_validate()
-> 
->>   {
->>       ARMCPU *cpu = opaque;
->> -    return cpu->env.cp15.c6_rgnr < cpu->pmsav7_dregion;
->> +    return cpu->env.pmsav7.rnr < cpu->pmsav7_dregion;
->>   }
->>   static const VMStateDescription vmstate_pmsav7 = {
->>
-> [...]
->          VMSTATE_VALIDATE("rgnr is valid", pmsav7_rgnr_vmstate_validate),
-> 
-> also this one "rnr is valid" ^^^
-> 
-> once fixed:
-> Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>

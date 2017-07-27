@@ -1,95 +1,111 @@
-Received: by 10.25.44.15 with SMTP id s15csp2429730lfs;
-        Thu, 27 Jul 2017 13:29:18 -0700 (PDT)
-X-Received: by 10.55.20.144 with SMTP id 16mr7003991qku.51.1501187357876;
-        Thu, 27 Jul 2017 13:29:17 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1501187357; cv=none;
+Received: by 10.25.44.15 with SMTP id s15csp2541131lfs;
+        Thu, 27 Jul 2017 15:44:06 -0700 (PDT)
+X-Received: by 10.55.19.13 with SMTP id d13mr7454183qkh.214.1501195446088;
+        Thu, 27 Jul 2017 15:44:06 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1501195446; cv=none;
         d=google.com; s=arc-20160816;
-        b=HXe0hUpRnp8O4dzBv6cmLrmufz34F7BiY0y55LC83Mya2aVFf4CSO+vXClWmaZ89BF
-         gm4+iJmKTHDck6cH5c0RM+lpefNb+V89Q2tGTgnfcJKTJkKA+MB72mWamNwdHMy7T5O5
-         rq1TSNoxteWhWRB4/irqW1POuN5wxJ3euMj2YM2zrQ5RyVus2eTqPD55ANk59G5V+HA7
-         CqmIbTHimR3EZszTGf5+N5mImjEcsmc5lx9riuVrIcJ5x0xrF+faNfgwFWFditNAuEj0
-         PobtPiXyhHXQw6IXkQRh89ZkCTBPFWSBbNwaSvzQ+3hLrA8NtLvUprev707uiLInOqyW
-         JdSA==
+        b=g7HCBtGs5rWTPNXPeK1s9MxtaxEss6ZfhZIbUAWUlvjnKLpk9Xek0sw3QgCEaHgoRZ
+         cnxV8cMYaiKI9zRQaA9LcW403HSWmniXexk4LwH00ySaeGBT/PNJZvYDL/8ScliVcb/m
+         yLvtDWxq5SeBwc1JgUqp3C6rfvC1uGk9XINlAvMSvhVIBj62WaZeJzwLTPSjtyiAD2WM
+         1UoaAjbmR+3eBtqPIz5tIo4k6OfoWyWyTAQF+tkCXuTv9miZUq2bnrIdv447OyShBaqB
+         Ecv+eiGzd9Ewgy+tLbr9g1XTTl1XZi1FzI5NxUfupebidX7vr5NYdNl8K7wS8Fqabx16
+         ol1Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:dmarc-filter
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:to:dkim-signature
          :arc-authentication-results;
-        bh=mZ8w+VYbM51uZukbNFZer/vlsYhLTO4RxObwBSVshYE=;
-        b=w0BB1BWTEFIac/YrSEXsnqnw5F7UfIIumlMgT/CgHPW03QX49Ne6MroVwyrzx2NP5l
-         3MTBJ8duPmUK7kRgNY4+yN1nOlRFj1RRa1g5MS4aYNK8HR4GWowKWm/F8pKyu75JA0t6
-         Rf0rs05SM+NpwfHk1fvlHq7y3J+xzvBREniNddkbWzpSgGW1hK2G0NdQQFJLp0vDqy5j
-         2xAQe/+UdVtwGZZoJtfG7nZPM5BhiWsp6wSGnIdbQVXAVkEuX2CuamPi8hHLhIb3Ew6P
-         u+cEagzzWkpkzakbXbMsTNJPjoSXaAuZm1hOmrzd1cfqIXU2OeLzW9yfrVoVeLHSIvuX
-         DPPw==
+        bh=tcitE3tZLRoQrszpvuGIuZ5/K2b1s+oR5oGDFlEuGNs=;
+        b=ipvp2z3eHot1z3RcRlR4IUSOZJEm7cg3e9Kas5Jpb5yopJ6m32MlB+oEJmy1AIwqnn
+         OSA6mgEYOk9YYIJ+nZc7LFTZS0c5Af9wbLjH6WPzav8jh7fiyPYl24nZhUBwY6hU3qMG
+         74J592j6mHT7shqspTOJrKojsevBOcm+Q/XXjI+z6enJSlWfRacGOnTg/ipf2LZ3nwq1
+         SfEcLQ9AQsZzQg0tGxoB2/WJ/M6X7sD3BTMfkZiwzVxcFaQrfhGlrSe688M+JOZAuOqJ
+         whLglPT07RQfSgExhADwCI+ilhDiw4muz36Cp7GykkQf/x7xfI/3/7jG1hi207nAxa24
+         wqRw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dkim=fail header.i=@gmail.com header.b=ArfMT0ef;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id p18si5186867qta.333.2017.07.27.13.29.17
+        by mx.google.com with ESMTPS id n188si8552029qkf.442.2017.07.27.15.44.05
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 27 Jul 2017 13:29:17 -0700 (PDT)
+        Thu, 27 Jul 2017 15:44:06 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:44663 helo=lists.gnu.org)
+       dkim=fail header.i=@gmail.com header.b=ArfMT0ef;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:44994 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1dapPH-0004WF-4R
-	for alex.bennee@linaro.org; Thu, 27 Jul 2017 16:29:15 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:50936)
+	id 1darVj-0000Ej-AQ
+	for alex.bennee@linaro.org; Thu, 27 Jul 2017 18:44:03 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:40835)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1dapP7-0004W8-Gf
-	for qemu-arm@nongnu.org; Thu, 27 Jul 2017 16:29:09 -0400
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1darVb-0000Cs-7F
+	for qemu-arm@nongnu.org; Thu, 27 Jul 2017 18:43:56 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1dapP2-0006ha-O0
-	for qemu-arm@nongnu.org; Thu, 27 Jul 2017 16:29:05 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:40222)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <eric.auger@redhat.com>)
-	id 1dapP2-0006fb-Et; Thu, 27 Jul 2017 16:29:00 -0400
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
-	[10.5.11.14])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 4E1142CD7F4;
-	Thu, 27 Jul 2017 20:28:59 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 4E1142CD7F4
-Authentication-Results: ext-mx04.extmail.prod.ext.phx2.redhat.com;
-	dmarc=none (p=none dis=none) header.from=redhat.com
-Authentication-Results: ext-mx04.extmail.prod.ext.phx2.redhat.com;
-	spf=fail smtp.mailfrom=eric.auger@redhat.com
-Received: from localhost.localdomain (ovpn-117-118.ams2.redhat.com
-	[10.36.117.118])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 3FAF75D9C9;
-	Thu, 27 Jul 2017 20:28:47 +0000 (UTC)
-To: Tomasz Nowicki <tn@semihalf.com>, eric.auger.pro@gmail.com,
-	peter.maydell@linaro.org, qemu-arm@nongnu.org, qemu-devel@nongnu.org,
-	alex.williamson@redhat.com, prem.mallappa@gmail.com
-References: <1499633493-19865-1-git-send-email-eric.auger@redhat.com>
-	<1499633493-19865-2-git-send-email-eric.auger@redhat.com>
-	<66fca1dd-b731-c97f-b21b-af4ea75dcb47@semihalf.com>
-From: Auger Eric <eric.auger@redhat.com>
-Message-ID: <b14389ac-c2c4-2185-8205-50a045e4e3ea@redhat.com>
-Date: Thu, 27 Jul 2017 22:28:45 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
-	Thunderbird/45.4.0
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1darVZ-0008Pe-TE
+	for qemu-arm@nongnu.org; Thu, 27 Jul 2017 18:43:55 -0400
+Received: from mail-qt0-x241.google.com ([2607:f8b0:400d:c0d::241]:37645)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1darVU-0008Lg-VW; Thu, 27 Jul 2017 18:43:49 -0400
+Received: by mail-qt0-x241.google.com with SMTP id d10so10048956qtb.4;
+	Thu, 27 Jul 2017 15:43:47 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=sender:subject:to:cc:references:from:message-id:date:user-agent
+	:mime-version:in-reply-to:content-language:content-transfer-encoding;
+	bh=tcitE3tZLRoQrszpvuGIuZ5/K2b1s+oR5oGDFlEuGNs=;
+	b=ArfMT0efFQ+OXqVbVC7xSLulN97/qMylbJPz4gSMZ4QugRbZ73AteMcZGhWgwKHcWE
+	VnWYrGIjF46HAXc4ZsfSHg3ncEXOL3QYIgQLQveJ2bD8VzunwuymG3qS2C0CK8+U0WBU
+	oxlWSdVtN0bsuUzD979GgB4KpzZcQ07y82jfd8qpguC3IMODMbAA2/LtJ+1rOg3LdwDT
+	WeyU0S2eLNt8hMWumPzsXe930/CBvYqLVHBEP7qfwTn2KwyYhMMYnJOmejbmSJrG3KID
+	ksSf3+nKixMuW2akOet1VRvqg3giYM85PRi0h19SJwwpC7ij+Pl9FN4xt3imEJJhzO8Q
+	xUgw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+	:date:user-agent:mime-version:in-reply-to:content-language
+	:content-transfer-encoding;
+	bh=tcitE3tZLRoQrszpvuGIuZ5/K2b1s+oR5oGDFlEuGNs=;
+	b=qPrjv7GfAFec9UzGKIhoiEdHVpmIJ8e1q7onw2yagTuSSffIHlT4NTUjXwEAAbzczq
+	/deCIGWHA9J2BkrAV1nipD0Ms6cdn9wARfw12DwNTOy+/YHhoaSZ2uIWwXRJId4bPpZp
+	PFlxVby0XD7xR+u7Lk0AVvvjvGP1Nzvm0eGzYjoRCn7/deWSXLBpJ7pA35EWbbMmmdNB
+	ujCxEgzlwyzKSTvKjKgK/N0dJ0Keh5Uwc3WkfunwNr9cLhBVbpRVGvAtrN+qnzRKFl5v
+	X4BgAWdi2gxe3rCMXypQAcih6lvrftO3Ts6HjzPttrWocymRcMekgclY05g3upfAz5+y
+	uUMg==
+X-Gm-Message-State: AIVw113by3xbsZxFN+V/OTkfQPgZgpphoqmnb7kq3VafukIupZJJZMfh
+	31n5JBH5RrBTyw==
+X-Received: by 10.200.37.206 with SMTP id f14mr7574779qtf.271.1501195426789;
+	Thu, 27 Jul 2017 15:43:46 -0700 (PDT)
+Received: from [192.168.1.10] ([138.117.48.223])
+	by smtp.gmail.com with ESMTPSA id
+	z192sm13953184qka.46.2017.07.27.15.43.42
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Thu, 27 Jul 2017 15:43:45 -0700 (PDT)
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+References: <1501153150-19984-1-git-send-email-peter.maydell@linaro.org>
+	<1501153150-19984-4-git-send-email-peter.maydell@linaro.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Message-ID: <5aff6da7-4ad1-64af-6445-98b8d7520b4c@amsat.org>
+Date: Thu, 27 Jul 2017 19:43:40 -0300
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.2.1
 MIME-Version: 1.0
-In-Reply-To: <66fca1dd-b731-c97f-b21b-af4ea75dcb47@semihalf.com>
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.28]);
-	Thu, 27 Jul 2017 20:28:59 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [RFC v5 1/8] hw/arm/smmu-common: smmu base class
+In-Reply-To: <1501153150-19984-4-git-send-email-peter.maydell@linaro.org>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:400d:c0d::241
+Subject: Re: [Qemu-arm] [PATCH for-2.10 3/5] target/arm: Rename cp15.c6_rgnr
+ to pmsav7.rnr
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -101,201 +117,170 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: mohun106@gmail.com, drjones@redhat.com, tcain@qti.qualcomm.com,
-	Radha.Chintakuntla@cavium.com, Sunil.Goutham@cavium.com,
-	mst@redhat.com, jean-philippe.brucker@arm.com,
-	robin.murphy@arm.com, will.deacon@arm.com, peterx@redhat.com,
-	bharat.bhushan@nxp.com, christoffer.dall@linaro.org
+Cc: patches@linaro.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 2tJH7nkZr/wI
+X-TUID: /H7XV9eWuCz2
 
-Hi Tomasz,
+Hi Peter,
 
-On 25/07/2017 14:12, Tomasz Nowicki wrote:
-> Hi Eric,
-> 
-> I found out what is going on regarding vhost-net outgoing packet's
-> payload corruption. My packets were corrupted because of inconsistent
-> IOVA to HVA translation in IOTLB. Please see below.
-> 
-> On 09.07.2017 22:51, Eric Auger wrote:
->> Introduces the base device and class for the ARM smmu.
->> Implements VMSAv8-64 table lookup and translation. VMSAv8-32
->> is not implemented.
->>
->> Signed-off-by: Eric Auger <eric.auger@redhat.com>
->> Signed-off-by: Prem Mallappa <prem.mallappa@broadcom.com>
->>
->> ---
-> 
-> [...]
-> 
->> +
->> +/**
->> + * smmu_page_walk_level_64 - Walk an IOVA range from a specific level
->> + * @baseaddr: table base address corresponding to @level
->> + * @level: level
->> + * @cfg: translation config
->> + * @start: end of the IOVA range
->> + * @end: end of the IOVA range
->> + * @hook_fn: the hook that to be called for each detected area
->> + * @private: private data for the hook function
->> + * @read: whether parent level has read permission
->> + * @write: whether parent level has write permission
->> + * @nofail: indicates whether each iova of the range
->> + *  must be translated or whether failure is allowed
->> + * @notify_unmap: whether we should notify invalid entries
->> + *
->> + * Return 0 on success, < 0 on errors not related to translation
->> + * process, > 1 on errors related to translation process (only
->> + * if nofail is set)
->> + */
->> +static int
->> +smmu_page_walk_level_64(dma_addr_t baseaddr, int level,
->> +                        SMMUTransCfg *cfg, uint64_t start, uint64_t end,
->> +                        smmu_page_walk_hook hook_fn, void *private,
->> +                        bool read, bool write, bool nofail,
->> +                        bool notify_unmap)
->> +{
->> +    uint64_t subpage_size, subpage_mask, pte, iova = start;
->> +    bool read_cur, write_cur, entry_valid;
->> +    int ret, granule_sz, stage;
->> +    IOMMUTLBEntry entry;
->> +
->> +    granule_sz = cfg->granule_sz;
->> +    stage = cfg->stage;
->> +    subpage_size = 1ULL << level_shift(level, granule_sz);
->> +    subpage_mask = level_page_mask(level, granule_sz);
->> +
->> +    trace_smmu_page_walk_level_in(level, baseaddr, granule_sz,
->> +                                  start, end, subpage_size);
->> +
->> +    while (iova < end) {
->> +        dma_addr_t next_table_baseaddr;
->> +        uint64_t iova_next, pte_addr;
->> +        uint32_t offset;
->> +
->> +        iova_next = (iova & subpage_mask) + subpage_size;
->> +        offset = iova_level_offset(iova, level, granule_sz);
->> +        pte_addr = baseaddr + offset * sizeof(pte);
->> +        pte = get_pte(baseaddr, offset);
->> +
->> +        trace_smmu_page_walk_level(level, iova, subpage_size,
->> +                                   baseaddr, offset, pte);
->> +
->> +        if (pte == (uint64_t)-1) {
->> +            if (nofail) {
->> +                return SMMU_TRANS_ERR_WALK_EXT_ABRT;
->> +            }
->> +            goto next;
->> +        }
->> +        if (is_invalid_pte(pte) || is_reserved_pte(pte, level)) {
->> +            trace_smmu_page_walk_level_res_invalid_pte(stage, level,
->> baseaddr,
->> +                                                       pte_addr,
->> offset, pte);
->> +            if (nofail) {
->> +                return SMMU_TRANS_ERR_WALK_EXT_ABRT;
->> +            }
->> +            goto next;
->> +        }
-> 
-> 
-> vhost maintains its IOTLB cache and when there is no IOVA->HVA
-> translation, it asks QEMU for help. However, IOTLB entries invalidations
-> are guest initiative so for any DMA unmap at guest side we trap to SMMU
-> emulation code and call:
-> smmu_notify_all -> smmuv3_replay_single -> smmu_page_walk_64 ->
-> smmu_page_walk_level_64 -> smmuv3_replay_hook -> vhost_iommu_unmap_notify
-> 
-> The thing is that smmuv3_replay_hook() is never called because guest
-> zeros PTE before we trap to QEMU so that smmu_page_walk_level_64() fails
-> on ^^^ is_invalid_pte(pte) check. This way we keep old IOTLB entry in
-> vhost and subsequent translations may be broken.
+you missed some rgnr -> rnr :|
 
-Thank you for the time you spent on this. I will work on this vhost use
-case asap and will let you know.
-
-Thanks
-
-Eric
+On 07/27/2017 07:59 AM, Peter Maydell wrote:
+> Almost all of the PMSAv7 state is in the pmsav7 substruct of
+> the ARM CPU state structure. The exception is the region
+> number register, which is in cp15.c6_rgnr. This exception
+> is a bit odd for M profile, which otherwise generally does
+> not store state in the cp15 substruct.
 > 
->> +
->> +        read_cur = read; /* TODO */
->> +        write_cur = write; /* TODO */
->> +        entry_valid = read_cur | write_cur; /* TODO */
->> +
->> +        if (is_page_pte(pte, level)) {
->> +            uint64_t gpa = get_page_pte_address(pte, granule_sz);
->> +            int perm = IOMMU_ACCESS_FLAG(read_cur, write_cur);
->> +
->> +            trace_smmu_page_walk_level_page_pte(stage, level,
->> entry.iova,
->> +                                                baseaddr, pte_addr,
->> pte, gpa);
->> +            if (!entry_valid && !notify_unmap) {
->> +                printf("%s entry_valid=%d notify_unmap=%d\n", __func__,
->> +                       entry_valid, notify_unmap);
->> +                goto next;
->> +            }
->> +            ret = call_entry_hook(iova, subpage_mask, gpa, perm,
->> +                                  hook_fn, private);
->> +            if (ret) {
->> +                return ret;
->> +            }
->> +            goto next;
->> +        }
->> +        if (is_block_pte(pte, level)) {
->> +            uint64_t block_size;
->> +            hwaddr gpa = get_block_pte_address(pte, level, granule_sz,
->> +                                               &block_size);
->> +            int perm = IOMMU_ACCESS_FLAG(read_cur, write_cur);
->> +
->> +            if (gpa == -1) {
->> +                if (nofail) {
->> +                    return SMMU_TRANS_ERR_WALK_EXT_ABRT;
->> +                } else {
->> +                    goto next;
->> +                }
->> +            }
->> +            trace_smmu_page_walk_level_block_pte(stage, level, baseaddr,
->> +                                                 pte_addr, pte, iova,
->> gpa,
->> +                                                 (int)(block_size >>
->> 20));
->> +
->> +            ret = call_entry_hook(iova, subpage_mask, gpa, perm,
->> +                                  hook_fn, private);
->> +            if (ret) {
->> +                return ret;
->> +            }
->> +            goto next;
->> +        }
->> +        if (level  == 3) {
->> +            goto next;
->> +        }
->> +        /* table pte */
->> +        next_table_baseaddr = get_table_pte_address(pte, granule_sz);
->> +        trace_smmu_page_walk_level_table_pte(stage, level, baseaddr,
->> pte_addr,
->> +                                             pte, next_table_baseaddr);
->> +        ret = smmu_page_walk_level_64(next_table_baseaddr, level + 1,
->> cfg,
->> +                                      iova, MIN(iova_next, end),
->> +                                      hook_fn, private, read_cur,
->> write_cur,
->> +                                      nofail, notify_unmap);
->> +        if (!ret) {
->> +            return ret;
->> +        }
->> +
->> +next:
->> +        iova = iova_next;
->> +    }
->> +
->> +    return SMMU_TRANS_ERR_NONE;
->> +}
+> Rename cp15.c6_rgnr to pmsav7.rnr accordingly.
 > 
-> Thanks,
-> Tomasz
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> ---
+>   hw/intc/armv7m_nvic.c | 14 +++++++-------
+>   target/arm/cpu.h      |  3 +--
+>   target/arm/helper.c   |  6 +++---
+>   target/arm/machine.c  |  2 +-
+>   4 files changed, 12 insertions(+), 13 deletions(-)
+> 
+> diff --git a/hw/intc/armv7m_nvic.c b/hw/intc/armv7m_nvic.c
+> index 26a4b2d..323e2d4 100644
+> --- a/hw/intc/armv7m_nvic.c
+> +++ b/hw/intc/armv7m_nvic.c
+> @@ -536,13 +536,13 @@ static uint32_t nvic_readl(NVICState *s, uint32_t offset)
+>       case 0xd94: /* MPU_CTRL */
+>           return cpu->env.v7m.mpu_ctrl;
+>       case 0xd98: /* MPU_RNR */
+> -        return cpu->env.cp15.c6_rgnr;
+> +        return cpu->env.pmsav7.rnr;
+>       case 0xd9c: /* MPU_RBAR */
+>       case 0xda4: /* MPU_RBAR_A1 */
+>       case 0xdac: /* MPU_RBAR_A2 */
+>       case 0xdb4: /* MPU_RBAR_A3 */
+>       {
+> -        int region = cpu->env.cp15.c6_rgnr;
+> +        int region = cpu->env.pmsav7.rnr;
+>   
+>           if (region >= cpu->pmsav7_dregion) {
+>               return 0;
+> @@ -554,7 +554,7 @@ static uint32_t nvic_readl(NVICState *s, uint32_t offset)
+>       case 0xdb0: /* MPU_RASR_A2 */
+>       case 0xdb8: /* MPU_RASR_A3 */
+>       {
+> -        int region = cpu->env.cp15.c6_rgnr;
+> +        int region = cpu->env.pmsav7.rnr;
+>   
+>           if (region >= cpu->pmsav7_dregion) {
+>               return 0;
+> @@ -681,7 +681,7 @@ static void nvic_writel(NVICState *s, uint32_t offset, uint32_t value)
+>                             PRIu32 "/%" PRIu32 "\n",
+>                             value, cpu->pmsav7_dregion);
+>           } else {
+> -            cpu->env.cp15.c6_rgnr = value;
+> +            cpu->env.pmsav7.rnr = value;
+>           }
+>           break;
+>       case 0xd9c: /* MPU_RBAR */
+> @@ -702,9 +702,9 @@ static void nvic_writel(NVICState *s, uint32_t offset, uint32_t value)
+>                                 region, cpu->pmsav7_dregion);
+>                   return;
+>               }
+> -            cpu->env.cp15.c6_rgnr = region;
+> +            cpu->env.pmsav7.rnr = region;
+>           } else {
+> -            region = cpu->env.cp15.c6_rgnr;
+> +            region = cpu->env.pmsav7.rnr;
+>           }
+>   
+>           if (region >= cpu->pmsav7_dregion) {
+> @@ -720,7 +720,7 @@ static void nvic_writel(NVICState *s, uint32_t offset, uint32_t value)
+>       case 0xdb0: /* MPU_RASR_A2 */
+>       case 0xdb8: /* MPU_RASR_A3 */
+>       {
+> -        int region = cpu->env.cp15.c6_rgnr;
+> +        int region = cpu->env.pmsav7.rnr;
+>   
+>           if (region >= cpu->pmsav7_dregion) {
+>               return;
+> diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+> index 102c58a..b39d64a 100644
+> --- a/target/arm/cpu.h
+> +++ b/target/arm/cpu.h
+> @@ -305,8 +305,6 @@ typedef struct CPUARMState {
+>               uint64_t par_el[4];
+>           };
+>   
+> -        uint32_t c6_rgnr;
+> -
+>           uint32_t c9_insn; /* Cache lockdown registers.  */
+>           uint32_t c9_data;
+>           uint64_t c9_pmcr; /* performance monitor control register */
+> @@ -519,6 +517,7 @@ typedef struct CPUARMState {
+>           uint32_t *drbar;
+>           uint32_t *drsr;
+>           uint32_t *dracr;
+> +        uint32_t rnr;
+>       } pmsav7;
+>   
+>       void *nvic;
+> diff --git a/target/arm/helper.c b/target/arm/helper.c
+> index 169c361..63187de 100644
+> --- a/target/arm/helper.c
+> +++ b/target/arm/helper.c
+> @@ -2385,7 +2385,7 @@ static uint64_t pmsav7_read(CPUARMState *env, const ARMCPRegInfo *ri)
+>           return 0;
+>       }
+>   
+> -    u32p += env->cp15.c6_rgnr;
+> +    u32p += env->pmsav7.rnr;
+>       return *u32p;
+>   }
+>   
+> @@ -2399,7 +2399,7 @@ static void pmsav7_write(CPUARMState *env, const ARMCPRegInfo *ri,
+>           return;
+>       }
+>   
+> -    u32p += env->cp15.c6_rgnr;
+> +    u32p += env->pmsav7.rnr;
+>       tlb_flush(CPU(cpu)); /* Mappings may have changed - purge! */
+>       *u32p = value;
+>   }
+> @@ -2447,7 +2447,7 @@ static const ARMCPRegInfo pmsav7_cp_reginfo[] = {
+>         .readfn = pmsav7_read, .writefn = pmsav7_write, .resetfn = pmsav7_reset },
+>       { .name = "RGNR", .cp = 15, .crn = 6, .opc1 = 0, .crm = 2, .opc2 = 0,
+
+"RGNR" -> "RNR"
+
+>         .access = PL1_RW,
+> -      .fieldoffset = offsetof(CPUARMState, cp15.c6_rgnr),
+> +      .fieldoffset = offsetof(CPUARMState, pmsav7.rnr),
+>         .writefn = pmsav7_rgnr_write },
+
+pmsav7_rnr_write
+
+>       REGINFO_SENTINEL
+>   };
+> diff --git a/target/arm/machine.c b/target/arm/machine.c
+> index 1a40469..93c1a78 100644
+> --- a/target/arm/machine.c
+> +++ b/target/arm/machine.c
+> @@ -151,7 +151,7 @@ static bool pmsav7_rgnr_vmstate_validate(void *opaque, int version_id)
+
+pmsav7_rnr_vmstate_validate()
+
+>   {
+>       ARMCPU *cpu = opaque;
+>   
+> -    return cpu->env.cp15.c6_rgnr < cpu->pmsav7_dregion;
+> +    return cpu->env.pmsav7.rnr < cpu->pmsav7_dregion;
+>   }
+>   
+>   static const VMStateDescription vmstate_pmsav7 = {
+> 
+[...]
+         VMSTATE_VALIDATE("rgnr is valid", pmsav7_rgnr_vmstate_validate),
+
+also this one "rnr is valid" ^^^
+
+once fixed:
+Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>

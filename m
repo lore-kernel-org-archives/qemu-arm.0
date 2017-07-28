@@ -1,88 +1,104 @@
-Received: by 10.25.44.15 with SMTP id s15csp2184759lfs;
-        Thu, 27 Jul 2017 09:08:30 -0700 (PDT)
-X-Received: by 10.55.146.133 with SMTP id u127mr6165820qkd.17.1501171709930;
-        Thu, 27 Jul 2017 09:08:29 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1501171709; cv=none;
+Received: by 10.25.44.15 with SMTP id s15csp29279lfs;
+        Thu, 27 Jul 2017 22:37:08 -0700 (PDT)
+X-Received: by 10.55.46.196 with SMTP id u187mr3205283qkh.156.1501220227805;
+        Thu, 27 Jul 2017 22:37:07 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1501220227; cv=none;
         d=google.com; s=arc-20160816;
-        b=spg40vg5IhQckwdxfJTUnDrXvdATFL1SsBi0/BjhVMS2bFlyEpcxtXHD3sHM/qekhy
-         cD2DzQqCUNeRQTe+vThu4iwfcObUlHUQFzV5AM+cbAmy12LSczl4FJtOTqdi685c7xG0
-         fQ69jSnNJFDYKlZ8qzc5H2humB8vW9Unta32BIlPrMwUGUnTPBY2VTg6hVwPCm+hdqpO
-         8uZfIwa6+OTvgtI/JLc5vvZ/BCo2ZDQgR3W3LHaJjwpkFtsAYLnMqeSSrxmHJMy4Up/F
-         eji4my+zkgmzAjb/qdTmsVXfe38s7m6s9m0xtiEeceoODhlRApUvRm9miIZLw4WkIxF3
-         zcIA==
+        b=N5+oriPQ0/orRePqtDSww+/SfTALoXJp0nnJJvsbzD02tFmVrTlQ9FOGxa/IHBg7J3
+         /gf+y3vJLjg0Q8lc9b4ozExXB0dTOvguLWXB+/RVFJw7ltEMZMgxz309JmG1SyMj7Kmo
+         NbLJgp1zsETxK+1ileCHkU/9JQmoVLmGQ32SwPHClyf99GY3/ous8Xa4OSvSGzaK8nke
+         TMj/v/QWAdMBH/HwG9ts+0Q28r+CZFAXXb2SMXjGsSlWJK4t2ZyKHEIpyjDmd4oZ078V
+         h2fK8vp6W/bma98+jgC/cM0PRWeKGtcYqNZVUQEvnw2I5kWQnWg7zeWGF5DdsA8LPgOD
+         FNGg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:to:from:dmarc-filter:arc-authentication-results;
-        bh=m0Vk9CGJENw08mIv2uv2ujCpXb7EdvDM2MVZx2o9kXw=;
-        b=ZISxXgqe8OAQ4sN6FDkrctfGleBm+i538pPL0MiinAg9TM3CiLwVUeXh/Je9gT6L0j
-         yEaCvw1dbfne+v9RdUcxrEQytaOpe+lvugo1S+PNQctTvPlSYO2WajhaKAvD59KK7l8O
-         /0KTsuXzU9cGAXSqs7DrR6qrITCuNUXNj/UX8xQ9Rut32TEbQjUhGMh+epp4hfDn1COW
-         uJmtSmDhTxarmKPN/5AK1elnz402ZTNwAUahVDHwigxyW3F9oc84BjwcAAoru2nZCc1D
-         imu/XHedwA2Oc10vR8ilD4KfEQ6DMp1m5BMyngZhIKzc52W3+ay3WV2npQa5kbeATHQp
-         n/Xw==
+         :message-id:date:to:from:dkim-signature:arc-authentication-results;
+        bh=5cmeS5eQ5lUiIR4OIGCUylj6OJg0ex+IV26QCYh2rnc=;
+        b=ERn1CLRBs9iggTYRmkodTc6KRfG1lkoALV6A1ysc4WQB8iskZ3KlSXvZ81WiajQWm2
+         RvhyuvXw5r99cZcdRcZZzahmQX3rvY0Mjal3hD239qE2yTdzK8CLTHSJheKygTaH15xf
+         LqBv44SZRWpcSLkThaDt1E4T8mzaJ25F8MitBqRGPRa6LvsNp3hryOq2/eXqFkm3nJ90
+         xs5ZpR0mPnf8G/b14p8WDMGgWjmKR9IHaaxdkmasZ5aDHLHKujVx4eqELTykh+PFx2jy
+         pxbzHxqaBeBegW4TwGD/hLT2roJRzJoSq1RTc7ArJurJDgNOzUs5S/Gy692x5LvxDHmh
+         7oNw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dkim=fail header.i=@gmail.com header.b=ZHhEojZb;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id b14si12011651qkg.470.2017.07.27.09.08.29
+        by mx.google.com with ESMTPS id 76si17962698qky.11.2017.07.27.22.37.07
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 27 Jul 2017 09:08:29 -0700 (PDT)
+        Thu, 27 Jul 2017 22:37:07 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:43772 helo=lists.gnu.org)
+       dkim=fail header.i=@gmail.com header.b=ZHhEojZb;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:45971 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1dalKt-0007JH-3h
-	for alex.bennee@linaro.org; Thu, 27 Jul 2017 12:08:27 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:32842)
+	id 1daxxR-0004KS-3W
+	for alex.bennee@linaro.org; Fri, 28 Jul 2017 01:37:05 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:47387)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <marcandre.lureau@redhat.com>) id 1dal4x-0000cr-KI
-	for qemu-arm@nongnu.org; Thu, 27 Jul 2017 11:52:01 -0400
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1daxwx-0003xv-TC
+	for qemu-arm@nongnu.org; Fri, 28 Jul 2017 01:36:36 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <marcandre.lureau@redhat.com>) id 1dal4v-0007Mr-D0
-	for qemu-arm@nongnu.org; Thu, 27 Jul 2017 11:51:59 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:43948)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <marcandre.lureau@redhat.com>)
-	id 1dal4v-0007Li-4Q; Thu, 27 Jul 2017 11:51:57 -0400
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
-	[10.5.11.12])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 7717864076;
-	Thu, 27 Jul 2017 15:42:50 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 7717864076
-Authentication-Results: ext-mx01.extmail.prod.ext.phx2.redhat.com;
-	dmarc=none (p=none dis=none) header.from=redhat.com
-Authentication-Results: ext-mx01.extmail.prod.ext.phx2.redhat.com;
-	spf=fail smtp.mailfrom=marcandre.lureau@redhat.com
-Received: from localhost (ovpn-112-42.ams2.redhat.com [10.36.112.42])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 0D6B06EC99;
-	Thu, 27 Jul 2017 15:42:46 +0000 (UTC)
-From: =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>
-To: qemu-devel@nongnu.org
-Date: Thu, 27 Jul 2017 17:41:26 +0200
-Message-Id: <20170727154126.11339-27-marcandre.lureau@redhat.com>
-In-Reply-To: <20170727154126.11339-1-marcandre.lureau@redhat.com>
-References: <20170727154126.11339-1-marcandre.lureau@redhat.com>
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1daxwv-0002wU-4k
+	for qemu-arm@nongnu.org; Fri, 28 Jul 2017 01:36:35 -0400
+Received: from mail-qt0-x242.google.com ([2607:f8b0:400d:c0d::242]:33868)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1daxwp-0002r5-RA; Fri, 28 Jul 2017 01:36:27 -0400
+Received: by mail-qt0-x242.google.com with SMTP id i19so11806972qte.1;
+	Thu, 27 Jul 2017 22:36:27 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
+	:mime-version:content-transfer-encoding;
+	bh=5cmeS5eQ5lUiIR4OIGCUylj6OJg0ex+IV26QCYh2rnc=;
+	b=ZHhEojZbYZfbrXUR658g+d7dKiO9FOrYD43U/ik2XHA0o5xFCShZJ/veFSw45D4E3r
+	QABLsou/qb9cgawQYFFj2NBBcFpSDlZ2Z48UDsBnpeH4TCumRWA7O1T9Rv/UB0JkdGZ/
+	6MkV2pXLdxpTZaTUSjW085CKE9TjhehZUbwhbJZsa1CCMuMPSK4lwsptm/EkP0eM+efo
+	9WMOOjk3dS5jXIrpFxhfQ1G+7P2ZR2i4Xs9k7+JPQMq07Og16/nNXtLB2FmnFY8gWvq0
+	7WjQS02GQv2b5CC+hzfeE0L28xFdtR7cIwfnUngSX/L4jBOAB8NMp187CHkX+IQudtkb
+	FDjg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
+	:in-reply-to:references:mime-version:content-transfer-encoding;
+	bh=5cmeS5eQ5lUiIR4OIGCUylj6OJg0ex+IV26QCYh2rnc=;
+	b=lYIR/8VqWioGj9+G+VLKJf48zWK+P/1tTqYA7XPBBsQFPaZz1cmOU3UFrH4JGsFgMK
+	MOfA2Q3tVAsXnrO0oWJqna3jhaW2P9jK2fLKijxq3QPyMRQbJSnTkt9n2jMLnmgTkBdc
+	ZIMph48tj6baXAx21WWpmpypeHiCa20u7g89tSG3xgRbZBlBedQA4mG+QPCqLhIfe1XG
+	RhapmdohkQ3dWDVOIXh0N+H6J8NBm0vzbqgbDPpiAk/7tz90c32yw8b6HOOlg1gNKw2Z
+	8Wyd1+dXegnyon9G6gC9xOxcHdH3gn/HNzmUtmeLcmpBkjP7kbTGpeM0D1egP0Dzk9mq
+	9F4Q==
+X-Gm-Message-State: AIVw111YGXWDKNdReYcNjMwRwxEhO9d3V9aGHV30gZvbJe/1ck9buZrh
+	e1IVB9Lkdaf8Gw==
+X-Received: by 10.200.4.4 with SMTP id v4mr9364624qtg.23.1501220187340;
+	Thu, 27 Jul 2017 22:36:27 -0700 (PDT)
+Received: from yoga.offpageads.com ([138.117.48.223])
+	by smtp.gmail.com with ESMTPSA id
+	h41sm12129560qta.45.2017.07.27.22.36.25
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Thu, 27 Jul 2017 22:36:26 -0700 (PDT)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+To: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 28 Jul 2017 02:35:25 -0300
+Message-Id: <20170728053610.15770-3-f4bug@amsat.org>
+X-Mailer: git-send-email 2.13.3
+In-Reply-To: <20170728053610.15770-1-f4bug@amsat.org>
+References: <20170728053610.15770-1-f4bug@amsat.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.25]);
-	Thu, 27 Jul 2017 15:42:50 +0000 (UTC)
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: [Qemu-arm] [PATCH 26/26] qapi: make query-cpu-definitions depend on
- specific targets
+Content-Transfer-Encoding: 8bit
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:400d:c0d::242
+Subject: [Qemu-arm] [PATCH 02/47] MAINTAINERS: add missing ARM entries
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -94,231 +110,59 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
-	Eduardo Habkost <ehabkost@redhat.com>,
-	Markus Armbruster <armbru@redhat.com>,
-	"Dr. David Alan Gilbert" <dgilbert@redhat.com>,
-	Alexander Graf <agraf@suse.de>, "open list:ARM" <qemu-arm@nongnu.org>,
-	"open list:PowerPC" <qemu-ppc@nongnu.org>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	=?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
-	David Gibson <david@gibson.dropbear.id.au>, Eric Blake <eblake@redhat.com>,
-	Richard Henderson <rth@twiddle.net>
+Cc: qemu-trivial@nongnu.org, qemu-arm@nongnu.org,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+	qemu-devel@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: S/gv5bZiOn7Z
+X-TUID: H+sRMdgZVXtp
 
-It depends on TARGET_PPC || TARGET_ARM || TARGET_I386 || TARGET_S390X.
-
-Signed-off-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
+Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- qapi-schema.json            |  4 +++-
- include/sysemu/arch_init.h  |  2 --
- monitor.c                   | 22 ----------------------
- qmp.c                       |  5 -----
- stubs/arch-query-cpu-def.c  | 10 ----------
- target/arm/helper.c         |  3 ++-
- target/i386/cpu.c           |  3 ++-
- target/ppc/translate_init.c |  3 ++-
- target/s390x/cpu_models.c   |  2 +-
- stubs/Makefile.objs         |  1 -
- 10 files changed, 10 insertions(+), 45 deletions(-)
- delete mode 100644 stubs/arch-query-cpu-def.c
+ MAINTAINERS | 8 ++++++++
+ 1 file changed, 8 insertions(+)
 
-diff --git a/qapi-schema.json b/qapi-schema.json
-index f5e1acff83..8e3949bca8 100644
---- a/qapi-schema.json
-+++ b/qapi-schema.json
-@@ -4433,7 +4433,9 @@
- #
- # Since: 1.2.0
- ##
--{ 'command': 'query-cpu-definitions', 'returns': ['CpuDefinitionInfo'] }
-+{ 'command': 'query-cpu-definitions', 'returns': ['CpuDefinitionInfo'],
-+  'if': ['defined(NEED_CPU_H)',
-+         'defined(TARGET_PPC) || defined(TARGET_ARM) || defined(TARGET_I=
-386) || defined(TARGET_S390X)'] }
-=20
- ##
- # @CpuModelInfo:
-diff --git a/include/sysemu/arch_init.h b/include/sysemu/arch_init.h
-index fb3d20a1b8..e9721b9ce8 100644
---- a/include/sysemu/arch_init.h
-+++ b/include/sysemu/arch_init.h
-@@ -31,6 +31,4 @@ extern const uint32_t arch_type;
- int kvm_available(void);
- int xen_available(void);
-=20
--CpuDefinitionInfoList *arch_query_cpu_definitions(Error **errp);
--
- #endif
-diff --git a/monitor.c b/monitor.c
-index b134c39144..6600819599 100644
---- a/monitor.c
-+++ b/monitor.c
-@@ -956,26 +956,6 @@ static void qmp_query_qmp_schema(QDict *qdict, QObje=
-ct **ret_data,
-     *ret_data =3D qobject_from_qlit(&qmp_schema_qlit);
- }
-=20
--/*
-- * We used to define commands in qmp-commands.hx in addition to the
-- * QAPI schema.  This permitted defining some of them only in certain
-- * configurations.  query-commands has always reflected that (good,
-- * because it lets QMP clients figure out what's actually available),
-- * while query-qmp-schema never did (not so good).  This function is a
-- * hack to keep the configuration-specific commands defined exactly as
-- * before, even though qmp-commands.hx is gone.
-- *
-- * FIXME Educate the QAPI schema on configuration-specific commands,
-- * and drop this hack.
-- */
--static void qmp_unregister_commands_hack(void)
--{
--#if !defined(TARGET_PPC) && !defined(TARGET_ARM) && !defined(TARGET_I386=
-) \
--    && !defined(TARGET_S390X)
--    qmp_unregister_command(&qmp_commands, "query-cpu-definitions");
--#endif
--}
--
- void monitor_init_qmp_commands(void)
- {
-     /*
-@@ -995,8 +975,6 @@ void monitor_init_qmp_commands(void)
-     qmp_register_command(&qmp_commands, "netdev_add", qmp_netdev_add,
-                          QCO_NO_OPTIONS);
-=20
--    qmp_unregister_commands_hack();
--
-     QTAILQ_INIT(&qmp_cap_negotiation_commands);
-     qmp_register_command(&qmp_cap_negotiation_commands, "qmp_capabilitie=
-s",
-                          qmp_marshal_qmp_capabilities, QCO_NO_OPTIONS);
-diff --git a/qmp.c b/qmp.c
-index afa266ec1e..d57ccf1251 100644
---- a/qmp.c
-+++ b/qmp.c
-@@ -541,11 +541,6 @@ DevicePropertyInfoList *qmp_device_list_properties(c=
-onst char *typename,
-     return prop_list;
- }
-=20
--CpuDefinitionInfoList *qmp_query_cpu_definitions(Error **errp)
--{
--    return arch_query_cpu_definitions(errp);
--}
--
- void qmp_add_client(const char *protocol, const char *fdname,
-                     bool has_skipauth, bool skipauth, bool has_tls, bool=
- tls,
-                     Error **errp)
-diff --git a/stubs/arch-query-cpu-def.c b/stubs/arch-query-cpu-def.c
-deleted file mode 100644
-index cefe4beb82..0000000000
---- a/stubs/arch-query-cpu-def.c
-+++ /dev/null
-@@ -1,10 +0,0 @@
--#include "qemu/osdep.h"
--#include "qemu-common.h"
--#include "sysemu/arch_init.h"
--#include "qapi/qmp/qerror.h"
--
--CpuDefinitionInfoList *arch_query_cpu_definitions(Error **errp)
--{
--    error_setg(errp, QERR_UNSUPPORTED);
--    return NULL;
--}
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index 4ed32c56b8..ec644f3930 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -15,6 +15,7 @@
- #include <zlib.h> /* For crc32 */
- #include "exec/semihost.h"
- #include "sysemu/kvm.h"
-+#include "qmp-commands.h"
-=20
- #define ARM_CPU_FREQ 1000000000 /* FIXME: 1 GHz, should be configurable =
-*/
-=20
-@@ -5336,7 +5337,7 @@ static void arm_cpu_add_definition(gpointer data, g=
-pointer user_data)
-     *cpu_list =3D entry;
- }
-=20
--CpuDefinitionInfoList *arch_query_cpu_definitions(Error **errp)
-+CpuDefinitionInfoList *qmp_query_cpu_definitions(Error **errp)
- {
-     CpuDefinitionInfoList *cpu_list =3D NULL;
-     GSList *list;
-diff --git a/target/i386/cpu.c b/target/i386/cpu.c
-index d683e70a13..e5f61f6bff 100644
---- a/target/i386/cpu.c
-+++ b/target/i386/cpu.c
-@@ -36,6 +36,7 @@
- #include "qapi/visitor.h"
- #include "qom/qom-qobject.h"
- #include "sysemu/arch_init.h"
-+#include "qmp-commands.h"
-=20
- #if defined(CONFIG_KVM)
- #include <linux/kvm_para.h>
-@@ -2318,7 +2319,7 @@ static void x86_cpu_definition_entry(gpointer data,=
- gpointer user_data)
-     *cpu_list =3D entry;
- }
-=20
--CpuDefinitionInfoList *arch_query_cpu_definitions(Error **errp)
-+CpuDefinitionInfoList *qmp_query_cpu_definitions(Error **errp)
- {
-     CpuDefinitionInfoList *cpu_list =3D NULL;
-     GSList *list =3D get_sorted_cpu_model_list();
-diff --git a/target/ppc/translate_init.c b/target/ppc/translate_init.c
-index 01723bdfec..2a2d62e5bb 100644
---- a/target/ppc/translate_init.c
-+++ b/target/ppc/translate_init.c
-@@ -34,6 +34,7 @@
- #include "hw/ppc/ppc.h"
- #include "mmu-book3s-v3.h"
- #include "sysemu/qtest.h"
-+#include "qmp-commands.h"
-=20
- //#define PPC_DUMP_CPU
- //#define PPC_DEBUG_SPR
-@@ -10391,7 +10392,7 @@ static void ppc_cpu_defs_entry(gpointer data, gpo=
-inter user_data)
-     *first =3D entry;
- }
-=20
--CpuDefinitionInfoList *arch_query_cpu_definitions(Error **errp)
-+CpuDefinitionInfoList *qmp_query_cpu_definitions(Error **errp)
- {
-     CpuDefinitionInfoList *cpu_list =3D NULL;
-     GSList *list;
-diff --git a/target/s390x/cpu_models.c b/target/s390x/cpu_models.c
-index 863dce064f..8021dda341 100644
---- a/target/s390x/cpu_models.c
-+++ b/target/s390x/cpu_models.c
-@@ -387,7 +387,7 @@ static void create_cpu_model_list(ObjectClass *klass,=
- void *opaque)
-     *cpu_list =3D entry;
- }
-=20
--CpuDefinitionInfoList *arch_query_cpu_definitions(Error **errp)
-+CpuDefinitionInfoList *qmp_query_cpu_definitions(Error **errp)
- {
-     struct CpuDefinitionInfoListData list_data =3D {
-         .list =3D NULL,
-diff --git a/stubs/Makefile.objs b/stubs/Makefile.objs
-index dcfe6f49f9..71af433f6b 100644
---- a/stubs/Makefile.objs
-+++ b/stubs/Makefile.objs
-@@ -1,4 +1,3 @@
--stub-obj-y +=3D arch-query-cpu-def.o
- stub-obj-y +=3D bdrv-next-monitor-owned.o
- stub-obj-y +=3D blk-commit-all.o
- stub-obj-y +=3D blockdev-close-all-bdrv-states.o
---=20
-2.14.0.rc0.1.g40ca67566
+diff --git a/MAINTAINERS b/MAINTAINERS
+index 972118e70b..795f89f709 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -120,6 +120,8 @@ F: include/hw/cpu/a*mpcore.h
+ F: disas/arm.c
+ F: disas/arm-a64.cc
+ F: disas/libvixl/
++F: default-configs/arm-softmmu.mak
++F: default-configs/aarch64-softmmu.mak
+ 
+ CRIS
+ M: Edgar E. Iglesias <edgar.iglesias@gmail.com>
+@@ -380,6 +382,7 @@ M: Peter Maydell <peter.maydell@linaro.org>
+ L: qemu-arm@nongnu.org
+ S: Maintained
+ F: hw/char/pl011.c
++F: include/hw/char/pl011.h
+ F: hw/display/pl110*
+ F: hw/dma/pl080.c
+ F: hw/dma/pl330.c
+@@ -402,14 +405,19 @@ F: hw/intc/arm*
+ F: hw/intc/gic_internal.h
+ F: hw/misc/a9scu.c
+ F: hw/misc/arm11scu.c
++F: hw/misc/arm_sysctl.c
+ F: hw/timer/a9gtimer*
+ F: hw/timer/arm_*
++F: hw/timer/armv7m_systick.c
+ F: include/hw/arm/arm.h
++F: include/hw/arm/armv7m*.h
+ F: include/hw/intc/arm*
+ F: include/hw/misc/a9scu.h
+ F: include/hw/misc/arm11scu.h
+ F: include/hw/timer/a9gtimer.h
+ F: include/hw/timer/arm_mptimer.h
++F: include/hw/timer/armv7m_systick.h
++F: tests/test-arm-mptimer.c
+ 
+ Exynos
+ M: Igor Mitsyanko <i.mitsyanko@gmail.com>
+-- 
+2.13.3
 

@@ -1,113 +1,101 @@
-Received: by 10.25.44.15 with SMTP id s15csp672606lfs;
-        Fri, 28 Jul 2017 10:05:36 -0700 (PDT)
-X-Received: by 10.55.53.2 with SMTP id c2mr11399019qka.41.1501261536401;
-        Fri, 28 Jul 2017 10:05:36 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1501261536; cv=none;
+Received: by 10.25.44.15 with SMTP id s15csp2049285lfs;
+        Sat, 29 Jul 2017 16:50:42 -0700 (PDT)
+X-Received: by 10.200.0.155 with SMTP id c27mr15697830qtg.322.1501372242053;
+        Sat, 29 Jul 2017 16:50:42 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1501372242; cv=none;
         d=google.com; s=arc-20160816;
-        b=t3vuQ0mA0DKBlcKIQKHgo0F0tB2CoJg2zGGKmRaa6U8yT/d2Y1bJEX3qKCRlw8NAgS
-         4kwGakKj247nJawmgNUJB7Dfo4UQGXL1pnHRjZs11sxKxV3pQ1WNd0rtz581o9F4u/zg
-         7Z9I8/V9BsDfIrsyvnBd7GtyStXuONgoXCumjhNuu5ELw7JMtEGjGZEbbFO7Lk6IEKp6
-         AZ73gWz19KnxYnuwoF1FroDDtRXjpX+HcUEv7JwNaq7jQQdWbcMfE/npMvgImr83wjjc
-         yQxB87/jIdirrRSS+IScFW9mCfoq0M80z4zDeKiD9I20wC7wulJ2Ye/zXHNUSRtTQYfS
-         bYAw==
+        b=LmJ5NJ1iUKzYap9hjl7VOBP82egMemE3y1UVtWr9MIBDNjnwO4b4VTVUEROHj2hO05
+         MgNb4ecbNtby5czVnFOyNDAxC3e8joSc+w31powiPI3xl09oiXWvoDK53UOsZ594WRzX
+         56jb7Cl3nhvZjZyxUFvLVl3Tb1TcsAzpQsEMFFp5gjCrHj3oKHKR7wCx1iU9TeR+aYcZ
+         Y/OGwFklTvZYKFaDJDFrifZ/KXPqSu/CLl9jOjjwTaEiky9SGFn0CTWr8+wW8WfhZwFF
+         IQMS0J78tQCeke6T7MJ2G4mAGtr+6WFlrDtyRZC3u25FMHmbLerCL/NwJz1fPIiTHy0B
+         YgZA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:to:dkim-signature
-         :arc-authentication-results;
-        bh=FwAdjZF3/9Sqh00xbikFewy81MP3nYtk5j6E5uIanAA=;
-        b=fyB/kDkaudCcP3C4GqmDUvYqeDHwX0OPqaH0l7e9ZQ47DyG6wpNPjplC3ZEUYSizSf
-         GaOxC6sElkLJTXP7PcnHluCpShUWdB/Y/x4RMY3FyqTi9aGZCUpoH0FnzPzvo2kWPwkL
-         YmN0gI/cLSEJ+zZjsABoxXucLxMdKbdYmnK2MuTaHpSYc8NuqWDlRO3fuY2Ld8RyswSt
-         0jW3E6Ikx4yKhRGdPpVlD2YXtAho3Oya9nDdy7f0KTjHCT2iwgZ82p0uzy4KoCzBSIUU
-         5xMfpDaRsE17G8MLqo2dQKj5AMHhoFF1M0t6rcJAqDvJOxBuhPSSIGFzPq1M6/T6hPVH
-         fpuA==
+         :content-transfer-encoding:mime-version:message-id:date:to:from
+         :dkim-signature:arc-authentication-results;
+        bh=+FhIYYUdNAEZeigKpfQZ3ADAgZ/E+zzp+OVK/FnfBxI=;
+        b=iTl+J401hBPRqTuvKhe1y/tnAPE9a0XPsIFhgbtycs5bTLtF7KMyD1ato6iL6ssDEy
+         wBkFDutBSTp+F5ZO3yyhkdXF4/OzQ/2FtpihLULm0dZEJ0oa3LkNoQR4kk9+Ugqseg1v
+         2FEqt4qmiosFWohdSQ4Ahu4mrDj29srkPxMEps2r7XKHsxtwJbgirkgZE5NBVUF7kvi4
+         nQs0EtjdZEBPe4LV0m8bViFPI+uFG1OZcBqft1/A5HBFhCtCfB7Ox2TZ4erSxiOI2ATk
+         E/LFcxMm2fPFiS4wiPDpPZ8nZ5IXgQnfB/ycK+irta0ymEx8wK+RbNjKs0Ve0ObKMsFE
+         B+nQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.b=hHCDwY8M;
+       dkim=fail header.i=@gmail.com header.b=rFsPp2nu;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id g128si17991465qkf.465.2017.07.28.10.05.35
+        by mx.google.com with ESMTPS id w9si9106252qta.296.2017.07.29.16.50.41
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 28 Jul 2017 10:05:36 -0700 (PDT)
+        Sat, 29 Jul 2017 16:50:42 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.b=hHCDwY8M;
+       dkim=fail header.i=@gmail.com header.b=rFsPp2nu;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:49273 helo=lists.gnu.org)
+Received: from localhost ([::1]:53751 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1db8hh-0003er-JS
-	for alex.bennee@linaro.org; Fri, 28 Jul 2017 13:05:33 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:33380)
+	id 1dbbVH-0006Xd-Db
+	for alex.bennee@linaro.org; Sat, 29 Jul 2017 19:50:39 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:50651)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1db8fR-0000it-De
-	for qemu-devel@nongnu.org; Fri, 28 Jul 2017 13:03:14 -0400
+	id 1dbbUN-0006Aq-Kg
+	for qemu-devel@nongnu.org; Sat, 29 Jul 2017 19:49:44 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1db8fN-0002R0-DP
-	for qemu-devel@nongnu.org; Fri, 28 Jul 2017 13:03:13 -0400
-Received: from mail-qt0-x231.google.com ([2607:f8b0:400d:c0d::231]:36697)
+	id 1dbbUK-0008Vj-JN
+	for qemu-devel@nongnu.org; Sat, 29 Jul 2017 19:49:43 -0400
+Received: from mail-qk0-x243.google.com ([2607:f8b0:400d:c09::243]:38538)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1db8fN-0002Qe-A6; Fri, 28 Jul 2017 13:03:09 -0400
-Received: by mail-qt0-x231.google.com with SMTP id v29so61866134qtv.3;
-	Fri, 28 Jul 2017 10:03:09 -0700 (PDT)
+	id 1dbbUK-0008VM-F1; Sat, 29 Jul 2017 19:49:40 -0400
+Received: by mail-qk0-x243.google.com with SMTP id v76so12385455qka.5;
+	Sat, 29 Jul 2017 16:49:38 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=sender:subject:to:cc:references:from:message-id:date:user-agent
-	:mime-version:in-reply-to:content-language:content-transfer-encoding;
-	bh=FwAdjZF3/9Sqh00xbikFewy81MP3nYtk5j6E5uIanAA=;
-	b=hHCDwY8MHAmWaVxG5I2gSkSBvGSmMvMrI4m4ioMeQOet8nGyJALwkm+4zUmkaJ3rNn
-	vni/PuB8rBPpDdr/sHHgtbvUWi+jb5PswpDr/cox3loOjojCr7gCQ+BlZks+jG8KLPdc
-	8fkarUGOVgvuHHcGm4XtmOquQV/RM+c1qDa+Cvr0OYVsm6A7bTGovvKxuX5ymwliRjKF
-	g3i1kzQKaNj6Ba00Q9nv84ib0h7Prth7RwgzrNSaxq+NvN8PNVXRWJww9Xx7TUQ7DD1L
-	zjPwULT248KGcq8ck1mBXye3Hut5u/UH20BroElB/EdDTsGItFntIUEKlDi+QOGHVwBu
-	sbbQ==
+	h=sender:from:to:cc:subject:date:message-id:mime-version
+	:content-transfer-encoding;
+	bh=+FhIYYUdNAEZeigKpfQZ3ADAgZ/E+zzp+OVK/FnfBxI=;
+	b=rFsPp2nuDvoSynq8ghfBOoAJnpOYpGoAzgPIF3+074+ASCGsxmvCqadaeFWApA+3P/
+	B6VcKiMlH3leDWjlF904NKk9X73GdoxjUfFqfRJB+mdUOI3tW+Yp63IgGraeY/MZ5pmB
+	B6ix9MM8GiWz6+KEqVlCIB6BwaziImxiAQJ+Noma2KA8+42EfxX2l4jczHkox3krb6Az
+	Hp5gfV9QDFsmjnLwXkqWIhJeUjR8hEqeWRbd9KCAOXppWn4InHgHnpfi4VSdhBikAFHr
+	9B2XpcBhko1kYGtHAMRB5NOeZDHLuLPz2sN7w3JXlSN1Bx2gUOkywohl2n4UNaE5n4UQ
+	fDSg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
-	:date:user-agent:mime-version:in-reply-to:content-language
-	:content-transfer-encoding;
-	bh=FwAdjZF3/9Sqh00xbikFewy81MP3nYtk5j6E5uIanAA=;
-	b=pJ+gK+XepJxRqOyILJFMPcQa2wO+84vXItJFY4ht/5XtgPdmww5+8LFPSVT1XTEUsv
-	pD0x/IYZGXmN29blZN/3aMK7hJ7GRigdxDKHzC4WU/UPCziWyHddzANZZH7uJhs2Qkka
-	UxLDXHc61tJJ54P6Dfn1DubqYcHXgVHb+0N6xOIvsbT89XiiR8aiAmlKHIsElTMMPXoX
-	e4TT40DcOpzGyfZGau9H51uTLrbEk5ZMcKirnO3ZK7hBpwea6fupXLAbuaV2DaBSGio8
-	ledBKJtkMZXqxe6ZVmY8RMoKcOUWKb0+y8w59yYFYu5cE0thu4KxwqfjPzdGAOj2BZtp
-	7MBA==
-X-Gm-Message-State: AIVw110qfvOFYuSspWEY9v1QhRf8xtFHsbUqu+Eci7EtlcE//rvjqQ38
-	CM4ltCVk41XGT1fRDJY8UQ==
-X-Received: by 10.200.41.247 with SMTP id 52mr1758877qtt.0.1501261388601;
-	Fri, 28 Jul 2017 10:03:08 -0700 (PDT)
-Received: from [192.168.1.10] ([138.117.48.223])
-	by smtp.gmail.com with ESMTPSA id
-	b42sm17472266qkb.17.2017.07.28.10.03.06
+	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
+	:mime-version:content-transfer-encoding;
+	bh=+FhIYYUdNAEZeigKpfQZ3ADAgZ/E+zzp+OVK/FnfBxI=;
+	b=Oi74KGBbbe8pz3E80Q9wVOvTM5TSsfBuY5K/dg7MRCDOVShgJSsFnUfD0ASdLEAigh
+	Ch8q1tsou2SIG/8A6xf2wvYoBN/ZIOAXLqOxQa+8ytjaBT0fLwWWzibDE12ViD7LwsLM
+	/pVCMYLnyaOJV+Mz06eSUg7t0IAIoujNUecCzL17OA8T3MCnV8DDcw5ulWxRPAN3DU9y
+	AVa2A5r9VdufxZVtdPNy9Q6pYcy/EVq0EP1qHorEUm2pD0yEkEI+U/pLGmCpxyZbsQac
+	0AkK1AKOGciT2KlKvlsRiqZkQcosoG3SUdjpiynOk6UM/srdVuAQqoxLxhyTWwNRYDna
+	INSA==
+X-Gm-Message-State: AIVw112LzA37qzZalUbvuCZzUd25Cdn2I2IezvIYx1hyJ8+w5aBd1O+j
+	uz+m+Xu56xiPZA==
+X-Received: by 10.55.123.131 with SMTP id w125mr14807642qkc.177.1501372178413; 
+	Sat, 29 Jul 2017 16:49:38 -0700 (PDT)
+Received: from yoga.offpageads.com ([138.117.48.223])
+	by smtp.gmail.com with ESMTPSA id d3sm2733521qka.79.2017.07.29.16.49.35
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Fri, 28 Jul 2017 10:03:07 -0700 (PDT)
+	Sat, 29 Jul 2017 16:49:37 -0700 (PDT)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: Peter Maydell <peter.maydell@linaro.org>
-References: <1501153150-19984-1-git-send-email-peter.maydell@linaro.org>
-	<1501153150-19984-4-git-send-email-peter.maydell@linaro.org>
-	<5aff6da7-4ad1-64af-6445-98b8d7520b4c@amsat.org>
-	<122bfaa5-7192-056b-541c-b5f37f871bfc@amsat.org>
-	<CAFEAcA-D4puOE5qPOGEd9mEdQFVqpA16997ZmHf4C5Nq_gEnAg@mail.gmail.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <22d5a43a-53fe-27df-656b-d17fc187e404@amsat.org>
-Date: Fri, 28 Jul 2017 14:03:05 -0300
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.2.1
+Date: Sat, 29 Jul 2017 20:49:30 -0300
+Message-Id: <20170729234930.725-1-f4bug@amsat.org>
+X-Mailer: git-send-email 2.13.3
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA-D4puOE5qPOGEd9mEdQFVqpA16997ZmHf4C5Nq_gEnAg@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400d:c0d::231
-Subject: Re: [Qemu-devel] [Qemu-arm] [PATCH for-2.10 3/5] target/arm: Rename
- cp15.c6_rgnr to pmsav7.rnr
+X-Received-From: 2607:f8b0:400d:c09::243
+Subject: [Qemu-devel] [PATCH for 2.10] hw/mps2_scc: fix incorrect properties
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -119,48 +107,36 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
 	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
-	"patches@linaro.org" <patches@linaro.org>
+Cc: qemu-arm@nongnu.org,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+	qemu-devel@nongnu.org
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: rIa/jnbR+IBr
+X-TUID: oWIK23j2C3E5
 
-On 07/28/2017 05:42 AM, Peter Maydell wrote:
-> On 27 July 2017 at 23:58, Philippe Mathieu-Daudé <f4bug@amsat.org> wrote:
->> On 07/27/2017 07:43 PM, Philippe Mathieu-Daudé wrote:
->>>
->>> On 07/27/2017 07:59 AM, Peter Maydell wrote:
->>
->> [...]
->>>>
->>>> -    u32p += env->cp15.c6_rgnr;
->>>> +    u32p += env->pmsav7.rnr;
->>>>        tlb_flush(CPU(cpu)); /* Mappings may have changed - purge! */
->>>>        *u32p = value;
->>>>    }
->>>> @@ -2447,7 +2447,7 @@ static const ARMCPRegInfo pmsav7_cp_reginfo[] = {
->>>>          .readfn = pmsav7_read, .writefn = pmsav7_write, .resetfn =
->>>> pmsav7_reset },
->>>>        { .name = "RGNR", .cp = 15, .crn = 6, .opc1 = 0, .crm = 2, .opc2 =
->>>> 0,
->>>
->>>
->>> "RGNR" -> "RNR"
->>
->>
->> Ah "RGNR" for -R and "RNR" for -M hmmm... still better keep the name
->> matching the field, "rnr".
-> 
-> It's a bit awkward, yes -- we're going to get a mismatch one way
-> or the other.
-> 
-> In this patch I wanted only to change the field name, not
-> anything else (it's already a bit borderline for 2.10).
+Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+---
+sorry, I missed them in my review :(
 
-Fine by me for what's worth. So either ways:
-Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+ hw/misc/mps2-scc.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-> 
-> thanks
-> -- PMM
-> 
+diff --git a/hw/misc/mps2-scc.c b/hw/misc/mps2-scc.c
+index cc58d26f29..32be2a9df1 100644
+--- a/hw/misc/mps2-scc.c
++++ b/hw/misc/mps2-scc.c
+@@ -270,9 +270,9 @@ static Property mps2_scc_properties[] = {
+     /* Values for various read-only ID registers (which are specific
+      * to the board model or FPGA image)
+      */
+-    DEFINE_PROP_UINT32("scc-cfg4", MPS2SCC, aid, 0),
++    DEFINE_PROP_UINT32("scc-cfg4", MPS2SCC, cfg4, 0),
+     DEFINE_PROP_UINT32("scc-aid", MPS2SCC, aid, 0),
+-    DEFINE_PROP_UINT32("scc-id", MPS2SCC, aid, 0),
++    DEFINE_PROP_UINT32("scc-id", MPS2SCC, id, 0),
+     /* These are the initial settings for the source clocks on the board.
+      * In hardware they can be configured via a config file read by the
+      * motherboard configuration controller to suit the FPGA image.
+-- 
+2.13.3
+

@@ -1,101 +1,96 @@
-Received: by 10.25.44.15 with SMTP id s15csp2049285lfs;
-        Sat, 29 Jul 2017 16:50:42 -0700 (PDT)
-X-Received: by 10.200.0.155 with SMTP id c27mr15697830qtg.322.1501372242053;
-        Sat, 29 Jul 2017 16:50:42 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1501372242; cv=none;
+Received: by 10.25.44.15 with SMTP id s15csp3542539lfs;
+        Mon, 31 Jul 2017 05:12:47 -0700 (PDT)
+X-Received: by 10.237.34.75 with SMTP id o11mr20784945qtc.299.1501503167588;
+        Mon, 31 Jul 2017 05:12:47 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1501503167; cv=none;
         d=google.com; s=arc-20160816;
-        b=LmJ5NJ1iUKzYap9hjl7VOBP82egMemE3y1UVtWr9MIBDNjnwO4b4VTVUEROHj2hO05
-         MgNb4ecbNtby5czVnFOyNDAxC3e8joSc+w31powiPI3xl09oiXWvoDK53UOsZ594WRzX
-         56jb7Cl3nhvZjZyxUFvLVl3Tb1TcsAzpQsEMFFp5gjCrHj3oKHKR7wCx1iU9TeR+aYcZ
-         Y/OGwFklTvZYKFaDJDFrifZ/KXPqSu/CLl9jOjjwTaEiky9SGFn0CTWr8+wW8WfhZwFF
-         IQMS0J78tQCeke6T7MJ2G4mAGtr+6WFlrDtyRZC3u25FMHmbLerCL/NwJz1fPIiTHy0B
-         YgZA==
+        b=vWG1eatVYkT0n2/MsouC3r+4gedZMXW8iuIpOEcyT12mkl3FY/DF2XYxUOqqRR/+lN
+         iM8QaQ2PaP8mToWV6PiJGVJOteYYPH7kI9n/Ig6avAZ4EK8TVvkLuypj54QA0i8gIAZJ
+         avK6o66A7zajlsp2vCCkFQDJYg1kolooN9P791XjQ0Cl8W+5S54qBAKKOYgIEi9OdHUB
+         s6He9QZ1J7hKxvn3p7GG6GD316g/nXem6rPnyBqGIIhf/az7BvomLFX03dOXw/927CWl
+         uA28cTwfYRRYZXZ8yPtzsXIqG7X3xHY7lrmG9Dopev9MaKLH5QJwolD41AC7zxsxcuI2
+         tybQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:message-id:date:to:from
-         :dkim-signature:arc-authentication-results;
-        bh=+FhIYYUdNAEZeigKpfQZ3ADAgZ/E+zzp+OVK/FnfBxI=;
-        b=iTl+J401hBPRqTuvKhe1y/tnAPE9a0XPsIFhgbtycs5bTLtF7KMyD1ato6iL6ssDEy
-         wBkFDutBSTp+F5ZO3yyhkdXF4/OzQ/2FtpihLULm0dZEJ0oa3LkNoQR4kk9+Ugqseg1v
-         2FEqt4qmiosFWohdSQ4Ahu4mrDj29srkPxMEps2r7XKHsxtwJbgirkgZE5NBVUF7kvi4
-         nQs0EtjdZEBPe4LV0m8bViFPI+uFG1OZcBqft1/A5HBFhCtCfB7Ox2TZ4erSxiOI2ATk
-         E/LFcxMm2fPFiS4wiPDpPZ8nZ5IXgQnfB/ycK+irta0ymEx8wK+RbNjKs0Ve0ObKMsFE
-         B+nQ==
+         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
+         :references:in-reply-to:mime-version:dkim-signature
+         :arc-authentication-results;
+        bh=jued0RB6HvNTgJ2FaLgYgQHlyrq8IKdosEfgmQqrSoc=;
+        b=BpFY4xQrWMTu5WHic8jGzWuxC2SSW2Wa4GA5Emj6eeaRlKJwk2JtcS0ZJ4odNaNNJs
+         9HtNXhbmt4noDQ6QeFkuTN04hupvkQ+T2I33AVfyVNhGjcaSu6jm7ruxJq4x8ioesHR9
+         0op4jhUp7MPs/FVMr1vNWnzLWiNvxN5sj/KZux8Mtr7NAKYgUaQbP2UgQ6nqP9eBi24e
+         hFNYK/L3aXsJp8Pk4Ju/PhOb46LMC84iKMzctk+2NxRT2+iMTkFMp6YkpO2kwyfgDDOW
+         pooj6kgcVEfvV7ox4iJTehu5TUsaAhiX6TM1jl8sJzUjxK8LkAEG/K3aBf+ibP+9Uqo+
+         p3YA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.b=rFsPp2nu;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+       dkim=fail header.i=@linaro.org header.b=MGAbr1FZ;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id w9si9106252qta.296.2017.07.29.16.50.41
+        by mx.google.com with ESMTPS id m123si2056269qkc.218.2017.07.31.05.12.46
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sat, 29 Jul 2017 16:50:42 -0700 (PDT)
+        Mon, 31 Jul 2017 05:12:47 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.b=rFsPp2nu;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:53751 helo=lists.gnu.org)
+       dkim=fail header.i=@linaro.org header.b=MGAbr1FZ;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:59251 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1dbbVH-0006Xd-Db
-	for alex.bennee@linaro.org; Sat, 29 Jul 2017 19:50:39 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:50651)
+	id 1dc9Yy-0006mW-Uu
+	for alex.bennee@linaro.org; Mon, 31 Jul 2017 08:12:44 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:53115)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1dbbUN-0006Aq-Kg
-	for qemu-devel@nongnu.org; Sat, 29 Jul 2017 19:49:44 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1dc9Y8-0006Tb-1x
+	for qemu-devel@nongnu.org; Mon, 31 Jul 2017 08:11:52 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1dbbUK-0008Vj-JN
-	for qemu-devel@nongnu.org; Sat, 29 Jul 2017 19:49:43 -0400
-Received: from mail-qk0-x243.google.com ([2607:f8b0:400d:c09::243]:38538)
+	(envelope-from <peter.maydell@linaro.org>) id 1dc9Y7-0004jd-8O
+	for qemu-devel@nongnu.org; Mon, 31 Jul 2017 08:11:52 -0400
+Received: from mail-wm0-x230.google.com ([2a00:1450:400c:c09::230]:35903)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1dbbUK-0008VM-F1; Sat, 29 Jul 2017 19:49:40 -0400
-Received: by mail-qk0-x243.google.com with SMTP id v76so12385455qka.5;
-	Sat, 29 Jul 2017 16:49:38 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=sender:from:to:cc:subject:date:message-id:mime-version
-	:content-transfer-encoding;
-	bh=+FhIYYUdNAEZeigKpfQZ3ADAgZ/E+zzp+OVK/FnfBxI=;
-	b=rFsPp2nuDvoSynq8ghfBOoAJnpOYpGoAzgPIF3+074+ASCGsxmvCqadaeFWApA+3P/
-	B6VcKiMlH3leDWjlF904NKk9X73GdoxjUfFqfRJB+mdUOI3tW+Yp63IgGraeY/MZ5pmB
-	B6ix9MM8GiWz6+KEqVlCIB6BwaziImxiAQJ+Noma2KA8+42EfxX2l4jczHkox3krb6Az
-	Hp5gfV9QDFsmjnLwXkqWIhJeUjR8hEqeWRbd9KCAOXppWn4InHgHnpfi4VSdhBikAFHr
-	9B2XpcBhko1kYGtHAMRB5NOeZDHLuLPz2sN7w3JXlSN1Bx2gUOkywohl2n4UNaE5n4UQ
-	fDSg==
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1dc9Y7-0004io-1x
+	for qemu-devel@nongnu.org; Mon, 31 Jul 2017 08:11:51 -0400
+Received: by mail-wm0-x230.google.com with SMTP id t201so177469193wmt.1
+	for <qemu-devel@nongnu.org>; Mon, 31 Jul 2017 05:11:51 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=jued0RB6HvNTgJ2FaLgYgQHlyrq8IKdosEfgmQqrSoc=;
+	b=MGAbr1FZ5GCkhYRAuASS/S6Qtse5T+wD9ZWsZ5bW1CXa9QxzyB88/lyARxNIhKEDCe
+	zDyi17J1I2fnsumiRjWuXTaYLAaYJv3nWDefw2RtCFyHEJTAYhWW+bVUqfYYZD2ZF5TC
+	wcXQmj264RskuSUH8aPAcyMbDtrhRupLtSPvI=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
-	:mime-version:content-transfer-encoding;
-	bh=+FhIYYUdNAEZeigKpfQZ3ADAgZ/E+zzp+OVK/FnfBxI=;
-	b=Oi74KGBbbe8pz3E80Q9wVOvTM5TSsfBuY5K/dg7MRCDOVShgJSsFnUfD0ASdLEAigh
-	Ch8q1tsou2SIG/8A6xf2wvYoBN/ZIOAXLqOxQa+8ytjaBT0fLwWWzibDE12ViD7LwsLM
-	/pVCMYLnyaOJV+Mz06eSUg7t0IAIoujNUecCzL17OA8T3MCnV8DDcw5ulWxRPAN3DU9y
-	AVa2A5r9VdufxZVtdPNy9Q6pYcy/EVq0EP1qHorEUm2pD0yEkEI+U/pLGmCpxyZbsQac
-	0AkK1AKOGciT2KlKvlsRiqZkQcosoG3SUdjpiynOk6UM/srdVuAQqoxLxhyTWwNRYDna
-	INSA==
-X-Gm-Message-State: AIVw112LzA37qzZalUbvuCZzUd25Cdn2I2IezvIYx1hyJ8+w5aBd1O+j
-	uz+m+Xu56xiPZA==
-X-Received: by 10.55.123.131 with SMTP id w125mr14807642qkc.177.1501372178413; 
-	Sat, 29 Jul 2017 16:49:38 -0700 (PDT)
-Received: from yoga.offpageads.com ([138.117.48.223])
-	by smtp.gmail.com with ESMTPSA id d3sm2733521qka.79.2017.07.29.16.49.35
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Sat, 29 Jul 2017 16:49:37 -0700 (PDT)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-To: Peter Maydell <peter.maydell@linaro.org>
-Date: Sat, 29 Jul 2017 20:49:30 -0300
-Message-Id: <20170729234930.725-1-f4bug@amsat.org>
-X-Mailer: git-send-email 2.13.3
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=jued0RB6HvNTgJ2FaLgYgQHlyrq8IKdosEfgmQqrSoc=;
+	b=bNtAO/+ZLJVAGNVQ1IB0rYkXzUbWnGi0/kBvmky0fYbbVCpA/ImHRwkkRFBdQf8X84
+	S0//KbONLlU7W57/TYeUR/pq0DAOvsOc6lByWOOIlFDnWuw2iSHNd6KA5HGQg364nhk2
+	tX4By6oSdUuVJCxpcjimLON5xi7QI4iQQGIQdvQ0M3kpVe8cyvlWX12P6PqOJ52L5r5v
+	GqerzNjEewawBE/3nNHUVvi+5ouQkzScxVZOX3xHU4WKQYwYTjtlum/05EQm8cpnZUnP
+	qtn/KRBT//pKHVi22AMCRkrQsy1UT4c//OSHW8+QuXEu3NUdP0rZtGmB2iwFlFL//NIM
+	jJNw==
+X-Gm-Message-State: AIVw110TdxO28ddG7zZU832EAoenK8yS//GaqZlmS2TQWxG4f4ARrtBi
+	fkuyrMiLpvu+CxUaejMRiM9MJ0mBUAKV
+X-Received: by 10.28.198.206 with SMTP id w197mr11714729wmf.86.1501503110092; 
+	Mon, 31 Jul 2017 05:11:50 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
+Received: by 10.223.134.54 with HTTP; Mon, 31 Jul 2017 05:11:29 -0700 (PDT)
+In-Reply-To: <1501153150-19984-1-git-send-email-peter.maydell@linaro.org>
+References: <1501153150-19984-1-git-send-email-peter.maydell@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 31 Jul 2017 13:11:29 +0100
+Message-ID: <CAFEAcA8yQ27yei8OMNwQGrVsp2_=mR4LPP5u2A6+LDFNtX++-Q@mail.gmail.com>
+To: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
+Content-Type: text/plain; charset="UTF-8"
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400d:c09::243
-Subject: [Qemu-devel] [PATCH for 2.10] hw/mps2_scc: fix incorrect properties
+X-Received-From: 2a00:1450:400c:c09::230
+Subject: Re: [Qemu-devel] [Qemu-arm] [PATCH for-2.10 0/5] M profile MPU
+ bugfixes
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -107,36 +102,26 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
 	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm@nongnu.org,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
-	qemu-devel@nongnu.org
+Cc: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>,
+	"patches@linaro.org" <patches@linaro.org>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: oWIK23j2C3E5
+X-TUID: mlxipdih2TCy
 
-Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
----
-sorry, I missed them in my review :(
+On 27 July 2017 at 11:59, Peter Maydell <peter.maydell@linaro.org> wrote:
+> This patchset fixes some bugs in the M profile MPU code:
+>  * the guest shouldn't be able to make system space executable
+>  * PPB region accesses should not be subject to MPU lookups
+>  * we were not resetting the PMSAv7 MPU state for M profile CPUs
+>  * we weren't migrating the MPU_RNR state
+>
+> The renaming from cp15.c6_rgnr to pmsav7.rnr is not strictly
+> necessary for 2.10, but it doesn't affect many places in the code
+> and it restores the invariant that no mutable M profile CPU
+> state is stored in env->cp15.something fields.
 
- hw/misc/mps2-scc.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+Applied to target-arm queue for 2.10, with the minor function
+renames (s/is_/m_is_/) suggested by Philippe.
 
-diff --git a/hw/misc/mps2-scc.c b/hw/misc/mps2-scc.c
-index cc58d26f29..32be2a9df1 100644
---- a/hw/misc/mps2-scc.c
-+++ b/hw/misc/mps2-scc.c
-@@ -270,9 +270,9 @@ static Property mps2_scc_properties[] = {
-     /* Values for various read-only ID registers (which are specific
-      * to the board model or FPGA image)
-      */
--    DEFINE_PROP_UINT32("scc-cfg4", MPS2SCC, aid, 0),
-+    DEFINE_PROP_UINT32("scc-cfg4", MPS2SCC, cfg4, 0),
-     DEFINE_PROP_UINT32("scc-aid", MPS2SCC, aid, 0),
--    DEFINE_PROP_UINT32("scc-id", MPS2SCC, aid, 0),
-+    DEFINE_PROP_UINT32("scc-id", MPS2SCC, id, 0),
-     /* These are the initial settings for the source clocks on the board.
-      * In hardware they can be configured via a config file read by the
-      * motherboard configuration controller to suit the FPGA image.
--- 
-2.13.3
-
+thanks
+-- PMM

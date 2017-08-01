@@ -1,81 +1,111 @@
-Received: by 10.25.44.15 with SMTP id s15csp4551037lfs;
-        Tue, 1 Aug 2017 00:21:37 -0700 (PDT)
-X-Received: by 10.237.33.204 with SMTP id m12mr26017034qtc.249.1501572097879;
-        Tue, 01 Aug 2017 00:21:37 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1501572097; cv=none;
+Received: by 10.25.44.15 with SMTP id s15csp4611477lfs;
+        Tue, 1 Aug 2017 01:30:48 -0700 (PDT)
+X-Received: by 10.237.53.44 with SMTP id a41mr24610607qte.231.1501576248672;
+        Tue, 01 Aug 2017 01:30:48 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1501576248; cv=none;
         d=google.com; s=arc-20160816;
-        b=TIiHw/w7WcN3Rku1lKf32lFOzuKes3RORBH4q9g3ZIuQM9ogUd9aIH0mZZ9aiKo1e8
-         XL7llPUxqizZPYKaFYeHHCAfRbZpD72+mPeptHQz0e5HY1kpfh5y7rr5oLcCiFkrE4EI
-         t/a+kOFRoDnemNt7QRwXsPwj+ebx2BHA/7evNE1ap/j97gTP7IfNUgPuUPW48/yr974j
-         B9yrLLCg6rCMLFRt+HJZuG7IYn95Bcb+8T8M1alrB2F/+Ox5r9aGNvzrhE1oFu1Ic2Ol
-         Zc/pDIXhSV2wkY3aQQG/7o5G3bj9f+z2fuKSxEgigDB9d7z/4eHM9U3ACgeAGOdBynPl
-         UKqw==
+        b=aqWEnNzAFRxSZQ5ALNbQaLLqdBLERfdOV/LyC7NXxqZG7AY53dytJEwJSW7yn/MpSs
+         YXPRijraUzawnU4kgHuYK0eDpSk1hxOgiElEH83OYeNMG3pq+M2cGKkfbiH9jFEn4q6d
+         qr+rfF8oRux7JRJnRgEDQN0O4oJv/DaeOD6vMBLHsstejjmPCKq4XWqa2rl+PYodKreS
+         ImYvXkQWbb4B8BIVslQFKW3iVOeizM1iVTzW2XNlB01Vs7JADutBR4YDi68vnKmUVWja
+         9/2YdmkrCJsg8UmlqCns1N14M3726lI+D61rbhAbEzYVvS/fltM9UBEB2uQ0qQpX/qAI
+         A48g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:arc-authentication-results;
-        bh=++QJroHR9U9xojUIrZlwgORgyc1Rv7IiY4pTya3Rvuo=;
-        b=LtY572RvJGdIuwQVx3DMuX+k4qmNKtRuKhlk+mrHCE3Sce4TK2lnPzqaPwQ6AGFTYo
-         JCpr1yEYKGWdUI7VRVmuNrR654ySQ8ElfVzbKPRg4mu3U43UMOHIJD2R3iCHjUGUqkLK
-         WIVtoQaesdWH9VQaaseUKABtjWlkCC/8Y48+AhSvfSiN9k/YwzlOt2jVHUdDTK9h1TOY
-         d5ku5jdU/j+hQobVXtwdHow1RLmB+hqmCXOhPrf0vA8VcxRS8+7UXep1NKLVOwuHeU+u
-         Ta8COblvEBJzEmsTH1B7njfj7l9bDhfcF8tSxyJOLKpGrK471JKwpa4kc4fNCUu6N36t
-         04mQ==
+         :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
+         :content-disposition:mime-version:references:message-id:to:from:date
+         :dkim-signature:arc-authentication-results;
+        bh=srABhKl2b+vD/Z4lU2FIaTJTeez07FbpMFAFLrWGT0o=;
+        b=wzRyCwMfi0Qu/0/xPUp+f1slHwHcC2G/jes0XDVhZuvO2rBolb8l2D88/byPNBitte
+         BHeK+Y+jURbgOFQRPwyzwwYlZ65BgZUqInJACnu6Zm3CMCoXFaxVlpmQBGHV/72YEPsh
+         5h/oCD0VkoItvO5+oSqIeOvMJ53jpXDCWTxwmcjdlj41N7XJCA4FvPK7Ex3sbLHnAPzB
+         qGtNh++o84DMB9ViATi0EbTPoJRSga445MyDehdAjKnIGUM41RkKkHniplRvvrRvq+Kp
+         75onjt6fDZwSQORC9olVNUacFQQnhnN6o7H16Vq4EymkOU/g+s3Vxnh8WKX4vTISuZyR
+         jA8g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+       dkim=fail header.i=@gmail.com header.b=K6xGOGp6;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id w202si19149424qkb.196.2017.08.01.00.21.37
+        by mx.google.com with ESMTPS id 13si14949298qkm.398.2017.08.01.01.30.48
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 01 Aug 2017 00:21:37 -0700 (PDT)
+        Tue, 01 Aug 2017 01:30:48 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:34849 helo=lists.gnu.org)
+       dkim=fail header.i=@gmail.com header.b=K6xGOGp6;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:35099 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1dcRUl-0003YV-BY
-	for alex.bennee@linaro.org; Tue, 01 Aug 2017 03:21:35 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:53595)
+	id 1dcSZi-00011a-3m
+	for alex.bennee@linaro.org; Tue, 01 Aug 2017 04:30:46 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:44351)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <clg@kaod.org>) id 1dcRUe-0003Y5-2L
-	for qemu-arm@nongnu.org; Tue, 01 Aug 2017 03:21:29 -0400
+	(envelope-from <edgar.iglesias@gmail.com>) id 1dcSZW-00010f-Ob
+	for qemu-arm@nongnu.org; Tue, 01 Aug 2017 04:30:37 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <clg@kaod.org>) id 1dcRUa-0000QK-QJ
-	for qemu-arm@nongnu.org; Tue, 01 Aug 2017 03:21:28 -0400
-Received: from 10.mo178.mail-out.ovh.net ([46.105.76.150]:38786)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <clg@kaod.org>) id 1dcRUa-0000Mz-Fr
-	for qemu-arm@nongnu.org; Tue, 01 Aug 2017 03:21:24 -0400
-Received: from player715.ha.ovh.net (b9.ovh.net [213.186.33.59])
-	by mo178.mail-out.ovh.net (Postfix) with ESMTP id CD2674AFDA
-	for <qemu-arm@nongnu.org>; Tue,  1 Aug 2017 09:21:14 +0200 (CEST)
-Received: from zorba.kaod.org (LFbn-1-10652-153.w90-89.abo.wanadoo.fr
-	[90.89.238.153]) (Authenticated sender: postmaster@kaod.org)
-	by player715.ha.ovh.net (Postfix) with ESMTPSA id 5FC581C008F;
-	Tue,  1 Aug 2017 09:21:07 +0200 (CEST)
-To: Andrew Jeffery <andrew@aj.id.au>, qemu-arm@nongnu.org
-References: <20170801010425.25778-1-andrew@aj.id.au>
-From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-Message-ID: <855a154a-4cdf-b29a-6440-5deadbeed12e@kaod.org>
-Date: Tue, 1 Aug 2017 09:21:07 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
-	Thunderbird/45.8.0
+	(envelope-from <edgar.iglesias@gmail.com>) id 1dcSZV-0008Af-LV
+	for qemu-arm@nongnu.org; Tue, 01 Aug 2017 04:30:34 -0400
+Received: from mail-lf0-x242.google.com ([2a00:1450:4010:c07::242]:36930)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <edgar.iglesias@gmail.com>)
+	id 1dcSZP-00082a-9U; Tue, 01 Aug 2017 04:30:27 -0400
+Received: by mail-lf0-x242.google.com with SMTP id x16so774377lfb.4;
+	Tue, 01 Aug 2017 01:30:27 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=date:from:to:cc:subject:message-id:references:mime-version
+	:content-disposition:in-reply-to:user-agent;
+	bh=srABhKl2b+vD/Z4lU2FIaTJTeez07FbpMFAFLrWGT0o=;
+	b=K6xGOGp67s4ql7ITCD9bmiPIqtMynfFokHj+3mydHzI0WTsGDjpb7reDzpuQ1EBbSq
+	j4scXuDn6JvZrtcf6XDj9hO700rsmLzOsOWDmAeXmZDHD9llgfc/7Jal4P9UsaRU6C2h
+	DdM6eZckVZBiXIi4MSbBR9WRI+NctSSQpIYgzUck2S8pW0fMFWNGltkECStHjvS7z2JT
+	b5DflBkz7IeEROQy08r8i7OCGZX2DuDs58umNV7uHli81Cb1Af7hCqhz2ijnDN7gb335
+	lv/8TFOGsmlxqM0vG9QWl/Sggrcp6Ir3yvzDtMnKaFL7hG2iRIeXNyE6BB3X8w6R3dBW
+	KWkg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+	:mime-version:content-disposition:in-reply-to:user-agent;
+	bh=srABhKl2b+vD/Z4lU2FIaTJTeez07FbpMFAFLrWGT0o=;
+	b=dEtdRWjYgZsfNDy5Gw0x2xbRlJh8wH491b35jwn34m8N8ZI5ALj9nUOzrw4P5UElqc
+	sVzDmftO+GGCAebdKVplwiDiQkSib2yuZkdf0Q8X5r2XTyWQgAeSY1+wFFqPqHJjldlA
+	4NTUvU9VTwfCcVYmZQUlA/YOWpXlkzdbAVuqIfpGYq8aIIHGfhAwCwkzeY0YwlCvpPKB
+	sE+xNPV3XIQNmKJE5XTfzB9bp01oT9BaYNsugs35zy02Vyl4ePI4Fn4mUeTgsm5KgDbn
+	jZM4r+yAiPUKodQ9g/5mjrib7CguCRa70NqbyO/h7GNHIjsSSl3UvWCaTfgFGPY/MKdB
+	TjjA==
+X-Gm-Message-State: AIVw113BuppAr+aXMWViyJlvYtCr/JF9/BPPGQ8QlmDLS4fq3uKKAFMr
+	uxE+9J6+FIbsIQ==
+X-Received: by 10.46.80.72 with SMTP id v8mr6410508ljd.192.1501576225816;
+	Tue, 01 Aug 2017 01:30:25 -0700 (PDT)
+Received: from gmail.com (81-231-233-234-no56.tbcn.telia.com. [81.231.233.234])
+	by smtp.gmail.com with ESMTPSA id
+	s203sm6009232lja.21.2017.08.01.01.30.24
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Tue, 01 Aug 2017 01:30:24 -0700 (PDT)
+Date: Tue, 1 Aug 2017 10:30:24 +0200
+From: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
+To: "Michael S. Tsirkin" <mst@redhat.com>
+Message-ID: <20170801083024.GZ4859@toto>
+References: <1495537965-4187-1-git-send-email-diana.craciun@nxp.com>
+	<20170525011034-mutt-send-email-mst@kernel.org>
+	<AM3PR04MB061619F6FDC53F7FD4C1DAE4FFF10@AM3PR04MB0616.eurprd04.prod.outlook.com>
+	<20170706023845-mutt-send-email-mst@kernel.org>
+	<AM3PR04MB0616507B6F0989360D582F37FFB20@AM3PR04MB0616.eurprd04.prod.outlook.com>
+	<20170731170217-mutt-send-email-mst@kernel.org>
+	<AM3PR04MB061656F255D688500AC8622BFFB20@AM3PR04MB0616.eurprd04.prod.outlook.com>
+	<20170801045857-mutt-send-email-mst@kernel.org>
 MIME-Version: 1.0
-In-Reply-To: <20170801010425.25778-1-andrew@aj.id.au>
-Content-Type: text/plain; charset=windows-1252
-Content-Transfer-Encoding: 7bit
-X-Ovh-Tracer-Id: 3164341688418077442
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrfeelkedrieekgdduvddvucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddm
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 46.105.76.150
-Subject: Re: [Qemu-arm] [PATCH] watchdog: wdt_aspeed: Add support for the
- reset width register
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20170801045857-mutt-send-email-mst@kernel.org>
+User-Agent: Mutt/1.5.24 (2015-08-30)
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2a00:1450:4010:c07::242
+Subject: Re: [Qemu-arm] [PATCH v2 0/2] Add global device ID in virt machine
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -87,128 +117,102 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, openbmc@lists.ozlabs.org, qemu-devel@nongnu.org,
-	joel@jms.id.au
+Cc: "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+	Diana Madalina Craciun <diana.craciun@nxp.com>,
+	"eric.auger@redhat.com" <eric.auger@redhat.com>,
+	Mike Caraman <mike.caraman@nxp.com>,
+	"qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+	"marcel@redhat.com" <marcel@redhat.com>,
+	Bharat Bhushan <bharat.bhushan@nxp.com>,
+	"christoffer.dall@linaro.org" <christoffer.dall@linaro.org>,
+	Laurentiu Tudor <laurentiu.tudor@nxp.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ac6kvAQu0jzC
+X-TUID: HCQiz1hlIIIh
 
-On 08/01/2017 03:04 AM, Andrew Jeffery wrote:
-> The reset width register controls how the pulse on the SoC's WDTRST{1,2}
-> pins behaves. A pulse is emitted if the external reset bit is set in
-> WDT_CTRL. WDT_RESET_WIDTH requires magic bit patterns to configure both
-> push-pull/open-drain and active-high/active-low behaviours and thus
-> needs some special handling in the write path.
+On Tue, Aug 01, 2017 at 05:05:42AM +0300, Michael S. Tsirkin wrote:
+> On Mon, Jul 31, 2017 at 03:13:09PM +0000, Diana Madalina Craciun wrote:
+> > On 07/31/2017 05:06 PM, Michael S. Tsirkin wrote:
+> > > On Mon, Jul 31, 2017 at 01:22:45PM +0000, Diana Madalina Craciun wrote:
+> > >>>> If we are to use a value of 0 for the constant in case of PCI devices,
+> > >>>> what happens if we have multiple PCI controllers?
+> > >>> I guess we'd use the PCI Segment number for that?
+> > >>>
+> > >>>
+> > >> Yes, we can use the PCI segment for this scenario. But this would mean
+> > >> different solutions for the same problem. The main problem is that we
+> > >> can have multiple entities in the system that are using MSIs (for now
+> > >> PCI and NXP non-PCI bus infrastructure
+> > >> (https://emea01.safelinks.protection.outlook.com/?url=https%3A%2F%2Flwn.net%2FArticles%2F635905%2F&data=01%7C01%7Cdiana.craciun%40nxp.com%7C6b0c6c879af64718a21908d4d81d534e%7C686ea1d3bc2b4c6fa92cd99c5c301635%7C0&sdata=bpYMMqajWzgzdbdQgy%2FUYR7y%2BswyvwE%2BqFzs7wdIkkA%3D&reserved=0). I guess that we may have other
+> > >> platform devices that are using MSIs in the future.
+> > >>
+> > >> Thanks,
+> > >> Diana
+> > >>
+> > >>
+> > > Don't have the time to explore NXP in depth, sorry - there's
+> > > a lot of complexity there.
+> > > Could you maybe stick some bits to specify bus type in there?
+> > > It just looks very wrong to push low level things like this
+> > > that users have no interest in up the stack.
+> > >
+> > Let's generalize the problem a little bit, the NXP details just does not
+> > matter much. The problem we have is the following:
+> > 
+> > The GIC-ITS, the ARM MSI controller is using deviceIDs in order to remap
+> > the interrupts. Each device which is expected to send MSIs has a
+> > deviceID associated with it. These deviceIDs are configured into devices
+> > by software/firmware. There is support in the device tree to specify the
+> > correlation between requesterID and deviceID:
+> > 
+> > "msi-map: Maps a Requester ID to an MSI controller and associated
+> >   msi-specifier data. The property is an arbitrary number of tuples of
+> >   (rid-base,msi-controller,msi-base,length)"
+> > (https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/Documentation/devicetree/bindings/pci/pci-msi.txt)
+> > 
+> > Our problem is that we have to allocate these deviceIDs in QEMU as well
+> > and we have to ensure that they are unique. Currently, for PCI, the
+> > assumption requesterID=deviceID is made which will no longer be true in
+> > case other devices are added. So we need a way (preferable a general
+> > one) to allocate these IDs to different devices in the system in a
+> > consistent way which will ensure that two devices do not share the same ID.
 > 
-> Signed-off-by: Andrew Jeffery <andrew@aj.id.au>
-> ---
-> I understand that we're in stabilisation mode, but I thought I'd send this out
-> to provoke any feedback. Happy to resend after the 2.10 release if required.
+> My question would be, do other types of devices that are there
+> right now have some kind of ID like the requester ID?
+> If so I would say just use that, and set high bits in the device ID
+> to specify the type (e.g. 00 for pci, etc).
 > 
->  hw/watchdog/wdt_aspeed.c | 47 +++++++++++++++++++++++++++++++++++++----------
->  1 file changed, 37 insertions(+), 10 deletions(-)
 > 
-> diff --git a/hw/watchdog/wdt_aspeed.c b/hw/watchdog/wdt_aspeed.c
-> index 8bbe579b6b66..4ef1412e99fc 100644
-> --- a/hw/watchdog/wdt_aspeed.c
-> +++ b/hw/watchdog/wdt_aspeed.c
-> @@ -14,10 +14,10 @@
->  #include "qemu/timer.h"
->  #include "hw/watchdog/wdt_aspeed.h"
->  
-> -#define WDT_STATUS              (0x00 / 4)
-> -#define WDT_RELOAD_VALUE        (0x04 / 4)
-> -#define WDT_RESTART             (0x08 / 4)
-> -#define WDT_CTRL                (0x0C / 4)
-> +#define WDT_STATUS                      (0x00 / 4)
-> +#define WDT_RELOAD_VALUE                (0x04 / 4)
-> +#define WDT_RESTART                     (0x08 / 4)
-> +#define WDT_CTRL                        (0x0C / 4)
->  #define   WDT_CTRL_RESET_MODE_SOC       (0x00 << 5)
->  #define   WDT_CTRL_RESET_MODE_FULL_CHIP (0x01 << 5)
->  #define   WDT_CTRL_1MHZ_CLK             BIT(4)
-> @@ -25,12 +25,21 @@
->  #define   WDT_CTRL_WDT_INTR             BIT(2)
->  #define   WDT_CTRL_RESET_SYSTEM         BIT(1)
->  #define   WDT_CTRL_ENABLE               BIT(0)
-> +#define WDT_RESET_WIDTH                 (0x18 / 4)
-> +#define   WDT_RESET_WIDTH_ACTIVE_HIGH   BIT(31)
-> +#define     WDT_POLARITY_MASK           (0xFF << 24)
-> +#define     WDT_ACTIVE_HIGH_MAGIC       (0xA5 << 24)
-> +#define     WDT_ACTIVE_LOW_MAGIC        (0x5A << 24)
-> +#define   WDT_RESET_WIDTH_PUSH_PULL     BIT(30)
-> +#define     WDT_DRIVE_TYPE_MASK         (0xFF << 24)
-> +#define     WDT_PUSH_PULL_MAGIC         (0xA8 << 24)
-> +#define     WDT_OPEN_DRAIN_MAGIC        (0x8A << 24)
-> +#define   WDT_RESET_WIDTH_DURATION      0xFFF;
-
-I would call this define WDT_RESET_WIDTH_DEFAULT (0xFF) and 
-use it also in the aspeed_wdt_reset()
-
-I have checked the specs and the bits definitions are correct.
-What else could we model ? Would the pulse be interesting ? 
-
-C.
-
-
->  
-> -#define WDT_TIMEOUT_STATUS      (0x10 / 4)
-> -#define WDT_TIMEOUT_CLEAR       (0x14 / 4)
-> -#define WDT_RESET_WDITH         (0x18 / 4)
-> +#define WDT_TIMEOUT_STATUS              (0x10 / 4)
-> +#define WDT_TIMEOUT_CLEAR               (0x14 / 4)
->  
-> -#define WDT_RESTART_MAGIC       0x4755
-> +#define WDT_RESTART_MAGIC               0x4755
->  
->  static bool aspeed_wdt_is_enabled(const AspeedWDTState *s)
->  {
-> @@ -55,9 +64,10 @@ static uint64_t aspeed_wdt_read(void *opaque, hwaddr offset, unsigned size)
->          return 0;
->      case WDT_CTRL:
->          return s->regs[WDT_CTRL];
-> +    case WDT_RESET_WIDTH:
-> +        return s->regs[WDT_RESET_WIDTH];
->      case WDT_TIMEOUT_STATUS:
->      case WDT_TIMEOUT_CLEAR:
-> -    case WDT_RESET_WDITH:
->          qemu_log_mask(LOG_UNIMP,
->                        "%s: uninmplemented read at offset 0x%" HWADDR_PRIx "\n",
->                        __func__, offset);
-> @@ -119,9 +129,25 @@ static void aspeed_wdt_write(void *opaque, hwaddr offset, uint64_t data,
->              timer_del(s->timer);
->          }
->          break;
-> +    case WDT_RESET_WIDTH:
-> +    {
-> +        uint32_t property = data & WDT_POLARITY_MASK;
-> +
-> +        if (property == WDT_ACTIVE_HIGH_MAGIC) {
-> +            s->regs[WDT_RESET_WIDTH] |= WDT_RESET_WIDTH_ACTIVE_HIGH;
-> +        } else if (property == WDT_ACTIVE_LOW_MAGIC) {
-> +            s->regs[WDT_RESET_WIDTH] &= ~WDT_RESET_WIDTH_ACTIVE_HIGH;
-> +        } else if (property == WDT_PUSH_PULL_MAGIC) {
-> +            s->regs[WDT_RESET_WIDTH] |= WDT_RESET_WIDTH_PUSH_PULL;
-> +        } else if (property == WDT_OPEN_DRAIN_MAGIC) {
-> +            s->regs[WDT_RESET_WIDTH] &= ~WDT_RESET_WIDTH_PUSH_PULL;
-> +        }
-> +        s->regs[WDT_RESET_WIDTH] &= ~WDT_RESET_WIDTH_DURATION;
-> +        s->regs[WDT_RESET_WIDTH] |= data & WDT_RESET_WIDTH_DURATION;
-> +        break;
-> +    }
->      case WDT_TIMEOUT_STATUS:
->      case WDT_TIMEOUT_CLEAR:
-> -    case WDT_RESET_WDITH:
->          qemu_log_mask(LOG_UNIMP,
->                        "%s: uninmplemented write at offset 0x%" HWADDR_PRIx "\n",
->                        __func__, offset);
-> @@ -167,6 +193,7 @@ static void aspeed_wdt_reset(DeviceState *dev)
->      s->regs[WDT_RELOAD_VALUE] = 0x03EF1480;
->      s->regs[WDT_RESTART] = 0;
->      s->regs[WDT_CTRL] = 0;
-> +    s->regs[WDT_RESET_WIDTH] = 0XFF;
->  
->      timer_del(s->timer);
->  }
+> IMHO if possible that is preferable to pushing this up to users.
+> 
+> 
+> > The reason I put this ID into the controller itself is because on real
+> > hardware is actually programmed into the controller. It is needed (for
+> > example) when the MSIs are sent.
+> > 
+> > Thanks,
+> > 
+> > Diana
+> > 
+> 
+> IIUC what happens on real hardware is controller maps each requester ID
+> (or presumably other source ID in the request) to the device ID,
+> and the mapping is internal to controller.
+> If you wanted a lot of flexibility then looks like you could pass this
+> mapping to controllers, but is it really necessary?
+> Why don't we build a mapping that's convenient for us?
 > 
 
+Hi,
+
+I agree with you for boards that are defined by QEMU (like the ARM virt board).
+We can pick a convenient scheme and avoid too much user interaction.
+
+But when we model real SoCs, the IDs and the way bridges convert these IDs
+needs to match real HW. Otherwise guest SW will not work unmodified.
+To make this work, users should not need to be involved though, it's
+the machine and SoC modules that should instantiate the necessary handling
+of it, IMO.
+
+Cheers,
+Edgar

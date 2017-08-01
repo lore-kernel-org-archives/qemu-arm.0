@@ -1,216 +1,221 @@
-Received: by 10.25.44.15 with SMTP id s15csp3725845lfs;
-        Mon, 31 Jul 2017 08:15:56 -0700 (PDT)
-X-Received: by 10.55.181.196 with SMTP id e187mr4677182qkf.314.1501514156578;
-        Mon, 31 Jul 2017 08:15:56 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1501514156; cv=none;
+Received: by 10.25.44.15 with SMTP id s15csp4248611lfs;
+        Mon, 31 Jul 2017 18:05:16 -0700 (PDT)
+X-Received: by 10.55.31.76 with SMTP id f73mr23437187qkf.85.1501549516252;
+        Mon, 31 Jul 2017 18:05:16 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1501549516; cv=none;
         d=google.com; s=arc-20160816;
-        b=UFc13PZ+Jjtd9Io69WfSxn+lkrKje1KvP2kC6WGGBIY5HWNl19SQtymS6hDHHG/x7R
-         gicTRuz2s4CHl1qe68MEB5MyC+OpB3dx27UHfBiNx+daDoQ4GN2YqEFIfRd96trNN6KU
-         NtviZpqHnsjutISfoSKOQ1GaXLQn2luoQKEdwctb3ovlvyZg4K2xq+D/Fe4E8YRPBRNW
-         MSHEbD0aXidTUisLnikXnWioPP1lMjSQltz75fElYD4qtISSewVeRIvhQzmISPnAK1EV
-         NHwlEyiYpa60ABZCK+bKQfcJDm8raFhWvXOG8Hbytac/oBZqThY6GsaUVeOZfmjn5Hk5
-         56sw==
+        b=lJIFGE3tip1BQXffJueX2JUsjDvRtt/psSpPa5yIbQTeEfb2L+ALBspslCrR1/6lNw
+         5WUFGJKcl2CpXf+s+s3hX3BP5sF0cJmn8eyua4l6qvlH5nUD4VKH5nby8LA3qrLqXifr
+         Cg+2NcdW8B5ExxUTZqgiPx8uNjroATxqpyhMtL3UHiIUB5XGnntIW61Lmw4MvaHNbOTP
+         pBE/gHozDfXP3RIWOcSTVKbPOzsho1GfSnMJzSJGO8mTR9UZktJR09/cLG/tcZwx+J/k
+         f0IqJIguzZ321eL10sRlR/XWCv3Zi49UCZjhhQ+FyqbuqVcoIgueN6zyuzSm/wI+dkCG
+         bHiw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:mime-version
-         :content-transfer-encoding:spamdiagnosticmetadata
-         :spamdiagnosticoutput:content-language:accept-language:references
-         :message-id:date:thread-index:thread-topic:to:from:dkim-signature
-         :arc-authentication-results;
-        bh=t2A/8iFnFGWxoSVTuwE2ujRp+ehq3U1PFaFGq9YwkdI=;
-        b=zydlCpIQZIvXgNP8troxVddRg3FOlqEVWAC3oBSdhzyJfn6/Rxp6j8cDtTJUAJU78T
-         vsoal44CYmFGABRT2X9FaA0vkwPfcjpIWYqt6UYgaIDZTJrkcjwUpt7P1EeMsOcFazRm
-         lfhyr8ButFvVBk/aCLXza3cLiWhc4V1LK4ssJilVYYLC6dZAE3/cux22vuPOO05Au9QV
-         oND+EdkdN7nmuZOXFwoCfkdcgbO+wN+Fi6fn8hp8v/YZpoalv2V5KaP5nafnDDE/XBYY
-         UJlJzpFTZF8xvTq3X0if2TdYLCa09cqD4Q4iuiSQYJJojzsa2RRyzASWxZxtVZpavJhM
-         4glg==
+         :list-unsubscribe:list-id:precedence:subject:message-id:date:to:from
+         :dkim-signature:dkim-signature:arc-authentication-results;
+        bh=I1691WBr92xTPpnV9ROVgEHnl2VH5epIO4BQtBbcP70=;
+        b=NJk1rCHyGRm+JPbloNit8iiLRshkGEmZfE9g+oV3Tr+jatbVTShEHuRoLWbQnyETk4
+         GM5sVXy06aSqbWfDJ66IW4295VeRQ+W5Fu74V5cEFoDcOPA0AFqmrdF8QadXD/Z/xBl2
+         9Ps2px5AAPkS0synjRBd0e471ojCn2eozUFbMc6oV36TorQXLTxVQ9kdhefUpjPRToCr
+         v/7lbv0Zic7MjglN7E0GUIP4XohQYK8dMjYD3NjXrhqaogDOfHhmsVmMBmwlH5i6Hnrs
+         TewGibJpUFEkLIDjNIhPZrwWTqXRLlBJuVCfs2cG5+B+fWvrt410WJ6hxENQh2btL8gk
+         qM9Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@nxp.com header.b=lNR5XYKS;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=nxp.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@aj.id.au header.b=NGbswFBk;
+       dkim=fail header.i=@messagingengine.com header.b=KOdZRttc;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id x36si15338432qtd.435.2017.07.31.08.15.55
+        by mx.google.com with ESMTPS id u6si12564931qkf.90.2017.07.31.18.05.15
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 31 Jul 2017 08:15:56 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Mon, 31 Jul 2017 18:05:16 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@nxp.com header.b=lNR5XYKS;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=nxp.com
-Received: from localhost ([::1]:60056 helo=lists.gnu.org)
+       dkim=fail header.i=@aj.id.au header.b=NGbswFBk;
+       dkim=fail header.i=@messagingengine.com header.b=KOdZRttc;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:33982 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1dcCQD-00007K-Rm
-	for alex.bennee@linaro.org; Mon, 31 Jul 2017 11:15:53 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:46217)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1dcLcX-0005Oj-KF
+	for alex.bennee@linaro.org; Mon, 31 Jul 2017 21:05:13 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:50674)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <diana.craciun@nxp.com>) id 1dcCNk-0006i1-1S
-	for qemu-devel@nongnu.org; Mon, 31 Jul 2017 11:13:21 -0400
+	(envelope-from <andrew@aj.id.au>) id 1dcLcQ-0005N7-52
+	for qemu-arm@nongnu.org; Mon, 31 Jul 2017 21:05:07 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <diana.craciun@nxp.com>) id 1dcCNd-0001Ce-RE
-	for qemu-devel@nongnu.org; Mon, 31 Jul 2017 11:13:20 -0400
-Received: from mail-he1eur01on0050.outbound.protection.outlook.com
-	([104.47.0.50]:57264
-	helo=EUR01-HE1-obe.outbound.protection.outlook.com)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <diana.craciun@nxp.com>)
-	id 1dcCNd-0001Bg-8j; Mon, 31 Jul 2017 11:13:13 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=nxp.com; s=selector1; 
-	h=From:Date:Subject:Message-ID:Content-Type:MIME-Version;
-	bh=t2A/8iFnFGWxoSVTuwE2ujRp+ehq3U1PFaFGq9YwkdI=;
-	b=lNR5XYKS7ToK6uIv6FzNS8EaDp3Bl2l2+f3b339LsapMP3b/1EsnVFpyiRStV0pE9k+CIl5PBlRU447PJpf0NkfHasuzvOkDX++utOd3DSuWKTAW3t0FMv0szPB5MgnfHWWJPT+qzucy20+FeHC3i43KTWxm8hg9PV8oNU9bZJs=
-Received: from AM3PR04MB0616.eurprd04.prod.outlook.com (10.255.133.15) by
-	AM3PR04MB0808.eurprd04.prod.outlook.com (10.242.253.146) with Microsoft
-	SMTP Server (version=TLS1_2,
-	cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384_P256) id
-	15.1.1304.22; Mon, 31 Jul 2017 15:13:10 +0000
-Received: from AM3PR04MB0616.eurprd04.prod.outlook.com
-	([fe80::840e:32fc:ecf4:2ffb]) by
-	AM3PR04MB0616.eurprd04.prod.outlook.com
-	([fe80::840e:32fc:ecf4:2ffb%14]) with mapi id 15.01.1304.023;
-	Mon, 31 Jul 2017 15:13:09 +0000
-From: Diana Madalina Craciun <diana.craciun@nxp.com>
-To: "Michael S. Tsirkin" <mst@redhat.com>
-Thread-Topic: [PATCH v2 0/2] Add global device ID in virt machine
-Thread-Index: AQHS07WHLIdRw36YjE2WVULSPv0RNA==
-Date: Mon, 31 Jul 2017 15:13:09 +0000
-Message-ID: <AM3PR04MB061656F255D688500AC8622BFFB20@AM3PR04MB0616.eurprd04.prod.outlook.com>
-References: <1495537965-4187-1-git-send-email-diana.craciun@nxp.com>
-	<20170525011034-mutt-send-email-mst@kernel.org>
-	<AM3PR04MB061619F6FDC53F7FD4C1DAE4FFF10@AM3PR04MB0616.eurprd04.prod.outlook.com>
-	<20170706023845-mutt-send-email-mst@kernel.org>
-	<AM3PR04MB0616507B6F0989360D582F37FFB20@AM3PR04MB0616.eurprd04.prod.outlook.com>
-	<20170731170217-mutt-send-email-mst@kernel.org>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: spf=none (sender IP is )
-	smtp.mailfrom=diana.craciun@nxp.com; 
-x-originating-ip: [192.88.146.1]
-x-ms-publictraffictype: Email
-x-microsoft-exchange-diagnostics: 1; AM3PR04MB0808;
-	7:Wu2Lg/KOcpEKdEGZKKYUJUoTrIOvRcvkAjBbhwd13VG/gCzQYblTgTEi8llbnfZ6zP1Z3LfbfRWKlzSNgEMjCmqIjv7EBEBr/n4r6Ru5pOpTy3uYkPjPsaxiO+7n0khbxpPmTYd3mD6/jQu9wFWThDujRjsa5b6O35G7IXxiWGZW8BF6yK4tZO1PbfIQ4lAOkUNpr6xXu+bYUODR1k7OB96KYloCe1y0llNxnJUUtr95IxpGjR7Fa1unrpQ2zNYpqiZrdLQ+eHxtu1NchvTkYIyb2Hk1i5o+HHNZ31DQRaIXwYr8dIacaA3bvKWJi6Boa1pArURHplJ9b8fMRLFc3XWp3Nvc0O4AyvFyb7ry+W9MLtBvHl9GaChnpt9SXLn013TMw/LFARYhx62aKk7EM0UFqYe46XdZfFT4LRACJB4Fhb5zlUr3CO7mePFG1oHqWKwoDjhZlU8Y4moQr38Uv44BXLqFO27PYpKHZQmmEAitLP1t+bSYenm7YaCV+d3x+tX3NlfLtqOX71Y5cjRidjeFym2KPM43rlUyZoGplWxLW9w0iXGFL+RudtIUTglaLvWB5Dyb5oxQmp2WiYRDCefHODeTh66i8ODfn49a21iVIUpe4Y+2kg5Th6fgtwzABmBaIHNjMbqE3J2765lPG9CzyngY6tqbNUwz31802shTgdLi7iOJrXpY1WMX5PCC5xdXyHmYW5tjvkuVukKkyqpg4ItcymVkCEJvzLWNzZDT2Vb/4BtHB+BlIoM1EsuK07zdSm9/tK3qKD2m0t8YYNHC/jFbJO+Fs2U/IuOIhHE=
-x-forefront-antispam-report: SFV:SKI; SCL:-1; SFV:NSPM;
-	SFS:(10009020)(6009001)(39400400002)(39410400002)(39850400002)(39840400002)(39450400003)(39860400002)(24454002)(377454003)(189002)(199003)(7736002)(93886004)(38730400002)(110136004)(305945005)(86362001)(3660700001)(189998001)(74316002)(4326008)(50986999)(14454004)(33656002)(2906002)(53546010)(5660300001)(54356999)(76176999)(3280700002)(575784001)(101416001)(7696004)(97736004)(9686003)(45080400002)(229853002)(478600001)(3846002)(102836003)(105586002)(54906002)(55016002)(68736007)(6306002)(106356001)(6506006)(6116002)(6246003)(53936002)(99286003)(6436002)(25786009)(81166006)(8676002)(8936002)(66066001)(2900100001)(6916009)(81156014)(5250100002);
-	DIR:OUT; SFP:1101; SCL:1; SRVR:AM3PR04MB0808;
-	H:AM3PR04MB0616.eurprd04.prod.outlook.com; FPR:; SPF:None;
-	PTR:InfoNoRecords; MX:1; A:1; LANG:en; 
-x-ms-office365-filtering-correlation-id: 98feede9-2aa8-41a2-ffff-08d4d826a76c
-x-ms-office365-filtering-ht: Tenant
-x-microsoft-antispam: UriScan:; BCL:0; PCL:0;
-	RULEID:(300000500095)(300135000095)(300000501095)(300135300095)(22001)(300000502095)(300135100095)(2017030254152)(48565401081)(300000503095)(300135400095)(2017052603031)(201703131423075)(201703031133081)(201702281549075)(300000504095)(300135200095)(300000505095)(300135600095)(300000506095)(300135500095);
-	SRVR:AM3PR04MB0808; 
-x-ms-traffictypediagnostic: AM3PR04MB0808:
-x-exchange-antispam-report-test: UriScan:(189930954265078)(84791874153150)(45079756050767); 
-x-microsoft-antispam-prvs: <AM3PR04MB0808A7CCD3749021A9DDEC8FFFB20@AM3PR04MB0808.eurprd04.prod.outlook.com>
-x-exchange-antispam-report-cfa-test: BCL:0; PCL:0;
-	RULEID:(100000700101)(100105000095)(100000701101)(100105300095)(100000702101)(100105100095)(6040450)(601004)(2401047)(5005006)(8121501046)(100000703101)(100105400095)(10201501046)(3002001)(93006095)(93001095)(6055026)(6041248)(20161123558100)(20161123555025)(20161123560025)(20161123562025)(20161123564025)(201703131423075)(201702281528075)(201703061421075)(201703061406153)(6072148)(100000704101)(100105200095)(100000705101)(100105500095);
-	SRVR:AM3PR04MB0808; BCL:0; PCL:0;
-	RULEID:(100000800101)(100110000095)(100000801101)(100110300095)(100000802101)(100110100095)(100000803101)(100110400095)(100000804101)(100110200095)(100000805101)(100110500095);
-	SRVR:AM3PR04MB0808; 
-x-forefront-prvs: 03853D523D
-received-spf: None (protection.outlook.com: nxp.com does not designate
-	permitted sender hosts)
-spamdiagnosticoutput: 1:99
-spamdiagnosticmetadata: NSPM
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: quoted-printable
-MIME-Version: 1.0
-X-OriginatorOrg: nxp.com
-X-MS-Exchange-CrossTenant-originalarrivaltime: 31 Jul 2017 15:13:09.3946 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 686ea1d3-bc2b-4c6f-a92c-d99c5c301635
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: AM3PR04MB0808
-X-detected-operating-system: by eggs.gnu.org: Windows 7 or 8 [fuzzy]
-X-Received-From: 104.47.0.50
-Subject: Re: [Qemu-devel] [PATCH v2 0/2] Add global device ID in virt machine
-X-BeenThere: qemu-devel@nongnu.org
+	(envelope-from <andrew@aj.id.au>) id 1dcLcL-0008SD-7C
+	for qemu-arm@nongnu.org; Mon, 31 Jul 2017 21:05:06 -0400
+Received: from out1-smtp.messagingengine.com ([66.111.4.25]:59981)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <andrew@aj.id.au>)
+	id 1dcLcK-0008Qn-Oz; Mon, 31 Jul 2017 21:05:01 -0400
+Received: from compute4.internal (compute4.nyi.internal [10.202.2.44])
+	by mailout.nyi.internal (Postfix) with ESMTP id EE88820774;
+	Mon, 31 Jul 2017 21:04:58 -0400 (EDT)
+Received: from frontend2 ([10.202.2.161])
+	by compute4.internal (MEProxy); Mon, 31 Jul 2017 21:04:58 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=aj.id.au; h=cc
+	:date:from:message-id:subject:to:x-me-sender:x-me-sender
+	:x-sasl-enc:x-sasl-enc; s=fm1; bh=I1691WBr92xTPpnV9ROVgEHnl2VH5e
+	pIO4BQtBbcP70=; b=NGbswFBkj4ktUx3msNwJAOb2SHNWiIIhPzF7026H1lQ1wx
+	3TnaoN7+iEQ7431sNjF1UPZpjV3ds5ZtClNxkdn2AlheE5uekZsYuySllJLMfIgy
+	NK1RCZUPB9TfV7s98RsorJcGQFQwOEwUqZsslXlKC+ojQ++UZHl6GVmjhnDq/dL0
+	EcDbsazIyWLdIdCiQMemXP0g29PSv7bLsp4RYIWAKXwbZ5O5AWqQZvGVX0Zt/z61
+	hfAiYQkUHzfvLtED29B2G59rwFOnqfAiMhcFwqhwUxbrDl2+TJ9jnlk1m8q9RN+f
+	6LRyp1P3FgJlLs1dvuWLB4LWWBudCAg34tShD6cQ==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+	messagingengine.com; h=cc:date:from:message-id:subject:to
+	:x-me-sender:x-me-sender:x-sasl-enc:x-sasl-enc; s=fm1; bh=I1691W
+	Br92xTPpnV9ROVgEHnl2VH5epIO4BQtBbcP70=; b=KOdZRttcgVuLi++CnMTJt4
+	J5VjZL6l74kwKrFwadivTSGhZHPoGO8N1ut5lHrTGJLBG2WTZQAO4NsU22u5WxU7
+	bfkY4zeUqbfzcSrpPCteOtZKtc5fdg078Mw9FwQLa/XM722TkRxCzE60zBFaRlsE
+	Kel/5Hgd5P2QWBKDtFTQhR8GKQ3mUcMso3Nrs2DUj3WjX85xvZUJZW6iDBJ7BcbV
+	Efltp2fwTPLy05yCv6OnwSCWnDkgrdgrMbCoYTh75MDh3r/hhhbg80X/3STWsJxK
+	PieDekpdjr91MXWpM7GcesegsjGA2kSpLpBvnNLX/madboG3Cit0DpIHuo7vG82A
+	==
+X-ME-Sender: <xms:utN_WdZoUuCYpZB2tvHDfmrvxUTNxhR_Szn6fSqltD3iYhEJ2WZdUg>
+X-Sasl-enc: 1Jk5tillm/lewo4YH0LXbJShF+dYi0nccB97rrsx6Ay5 1501549498
+Received: from keelia.au.ibm.com
+	(ppp118-210-176-216.bras2.adl6.internode.on.net [118.210.176.216])
+	by mail.messagingengine.com (Postfix) with ESMTPA id 18F4624604;
+	Mon, 31 Jul 2017 21:04:55 -0400 (EDT)
+From: Andrew Jeffery <andrew@aj.id.au>
+To: qemu-arm@nongnu.org
+Date: Tue,  1 Aug 2017 10:34:25 +0930
+Message-Id: <20170801010425.25778-1-andrew@aj.id.au>
+X-Mailer: git-send-email 2.11.0
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 66.111.4.25
+Subject: [Qemu-arm] [PATCH] watchdog: wdt_aspeed: Add support for the reset
+ width register
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
-	"eric.auger@redhat.com" <eric.auger@redhat.com>,
-	Mike Caraman <mike.caraman@nxp.com>,
-	"qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
-	"marcel@redhat.com" <marcel@redhat.com>,
-	Bharat Bhushan <bharat.bhushan@nxp.com>,
-	"christoffer.dall@linaro.org" <christoffer.dall@linaro.org>, Laurentiu
-	Tudor <laurentiu.tudor@nxp.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: wIYN1wnRHm2r
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: peter.maydell@linaro.org, Andrew Jeffery <andrew@aj.id.au>,
+	openbmc@lists.ozlabs.org, qemu-devel@nongnu.org, joel@jms.id.au,
+	clg@kaod.org
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: aqOM0bsnucxy
 
-On 07/31/2017 05:06 PM, Michael S. Tsirkin wrote:=0A=
-> On Mon, Jul 31, 2017 at 01:22:45PM +0000, Diana Madalina Craciun wrote:=
-=0A=
->>>> If we are to use a value of 0 for the constant in case of PCI devices,=
-=0A=
->>>> what happens if we have multiple PCI controllers?=0A=
->>> I guess we'd use the PCI Segment number for that?=0A=
->>>=0A=
->>>=0A=
->> Yes, we can use the PCI segment for this scenario. But this would mean=
-=0A=
->> different solutions for the same problem. The main problem is that we=0A=
->> can have multiple entities in the system that are using MSIs (for now=0A=
->> PCI and NXP non-PCI bus infrastructure=0A=
->> (https://emea01.safelinks.protection.outlook.com/?url=3Dhttps%3A%2F%2Flw=
-n.net%2FArticles%2F635905%2F&data=3D01%7C01%7Cdiana.craciun%40nxp.com%7C6b0=
-c6c879af64718a21908d4d81d534e%7C686ea1d3bc2b4c6fa92cd99c5c301635%7C0&sdata=
-=3DbpYMMqajWzgzdbdQgy%2FUYR7y%2BswyvwE%2BqFzs7wdIkkA%3D&reserved=3D0). I gu=
-ess that we may have other=0A=
->> platform devices that are using MSIs in the future.=0A=
->>=0A=
->> Thanks,=0A=
->> Diana=0A=
->>=0A=
->>=0A=
-> Don't have the time to explore NXP in depth, sorry - there's=0A=
-> a lot of complexity there.=0A=
-> Could you maybe stick some bits to specify bus type in there?=0A=
-> It just looks very wrong to push low level things like this=0A=
-> that users have no interest in up the stack.=0A=
->=0A=
-Let's generalize the problem a little bit, the NXP details just does not=0A=
-matter much. The problem we have is the following:=0A=
-=0A=
-The GIC-ITS, the ARM MSI controller is using deviceIDs in order to remap=0A=
-the interrupts. Each device which is expected to send MSIs has a=0A=
-deviceID associated with it. These deviceIDs are configured into devices=0A=
-by software/firmware. There is support in the device tree to specify the=0A=
-correlation between requesterID and deviceID:=0A=
-=0A=
-"msi-map: Maps a Requester ID to an MSI controller and associated=0A=
-  msi-specifier data. The property is an arbitrary number of tuples of=0A=
-  (rid-base,msi-controller,msi-base,length)"=0A=
-(https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/Do=
-cumentation/devicetree/bindings/pci/pci-msi.txt)=0A=
-=0A=
-Our problem is that we have to allocate these deviceIDs in QEMU as well=0A=
-and we have to ensure that they are unique. Currently, for PCI, the=0A=
-assumption requesterID=3DdeviceID is made which will no longer be true in=
-=0A=
-case other devices are added. So we need a way (preferable a general=0A=
-one) to allocate these IDs to different devices in the system in a=0A=
-consistent way which will ensure that two devices do not share the same ID.=
-=0A=
-=0A=
-The reason I put this ID into the controller itself is because on real=0A=
-hardware is actually programmed into the controller. It is needed (for=0A=
-example) when the MSIs are sent.=0A=
-=0A=
-Thanks,=0A=
-=0A=
-Diana=0A=
-=0A=
-=0A=
+The reset width register controls how the pulse on the SoC's WDTRST{1,2}
+pins behaves. A pulse is emitted if the external reset bit is set in
+WDT_CTRL. WDT_RESET_WIDTH requires magic bit patterns to configure both
+push-pull/open-drain and active-high/active-low behaviours and thus
+needs some special handling in the write path.
+
+Signed-off-by: Andrew Jeffery <andrew@aj.id.au>
+---
+I understand that we're in stabilisation mode, but I thought I'd send this out
+to provoke any feedback. Happy to resend after the 2.10 release if required.
+
+ hw/watchdog/wdt_aspeed.c | 47 +++++++++++++++++++++++++++++++++++++----------
+ 1 file changed, 37 insertions(+), 10 deletions(-)
+
+diff --git a/hw/watchdog/wdt_aspeed.c b/hw/watchdog/wdt_aspeed.c
+index 8bbe579b6b66..4ef1412e99fc 100644
+--- a/hw/watchdog/wdt_aspeed.c
++++ b/hw/watchdog/wdt_aspeed.c
+@@ -14,10 +14,10 @@
+ #include "qemu/timer.h"
+ #include "hw/watchdog/wdt_aspeed.h"
+ 
+-#define WDT_STATUS              (0x00 / 4)
+-#define WDT_RELOAD_VALUE        (0x04 / 4)
+-#define WDT_RESTART             (0x08 / 4)
+-#define WDT_CTRL                (0x0C / 4)
++#define WDT_STATUS                      (0x00 / 4)
++#define WDT_RELOAD_VALUE                (0x04 / 4)
++#define WDT_RESTART                     (0x08 / 4)
++#define WDT_CTRL                        (0x0C / 4)
+ #define   WDT_CTRL_RESET_MODE_SOC       (0x00 << 5)
+ #define   WDT_CTRL_RESET_MODE_FULL_CHIP (0x01 << 5)
+ #define   WDT_CTRL_1MHZ_CLK             BIT(4)
+@@ -25,12 +25,21 @@
+ #define   WDT_CTRL_WDT_INTR             BIT(2)
+ #define   WDT_CTRL_RESET_SYSTEM         BIT(1)
+ #define   WDT_CTRL_ENABLE               BIT(0)
++#define WDT_RESET_WIDTH                 (0x18 / 4)
++#define   WDT_RESET_WIDTH_ACTIVE_HIGH   BIT(31)
++#define     WDT_POLARITY_MASK           (0xFF << 24)
++#define     WDT_ACTIVE_HIGH_MAGIC       (0xA5 << 24)
++#define     WDT_ACTIVE_LOW_MAGIC        (0x5A << 24)
++#define   WDT_RESET_WIDTH_PUSH_PULL     BIT(30)
++#define     WDT_DRIVE_TYPE_MASK         (0xFF << 24)
++#define     WDT_PUSH_PULL_MAGIC         (0xA8 << 24)
++#define     WDT_OPEN_DRAIN_MAGIC        (0x8A << 24)
++#define   WDT_RESET_WIDTH_DURATION      0xFFF;
+ 
+-#define WDT_TIMEOUT_STATUS      (0x10 / 4)
+-#define WDT_TIMEOUT_CLEAR       (0x14 / 4)
+-#define WDT_RESET_WDITH         (0x18 / 4)
++#define WDT_TIMEOUT_STATUS              (0x10 / 4)
++#define WDT_TIMEOUT_CLEAR               (0x14 / 4)
+ 
+-#define WDT_RESTART_MAGIC       0x4755
++#define WDT_RESTART_MAGIC               0x4755
+ 
+ static bool aspeed_wdt_is_enabled(const AspeedWDTState *s)
+ {
+@@ -55,9 +64,10 @@ static uint64_t aspeed_wdt_read(void *opaque, hwaddr offset, unsigned size)
+         return 0;
+     case WDT_CTRL:
+         return s->regs[WDT_CTRL];
++    case WDT_RESET_WIDTH:
++        return s->regs[WDT_RESET_WIDTH];
+     case WDT_TIMEOUT_STATUS:
+     case WDT_TIMEOUT_CLEAR:
+-    case WDT_RESET_WDITH:
+         qemu_log_mask(LOG_UNIMP,
+                       "%s: uninmplemented read at offset 0x%" HWADDR_PRIx "\n",
+                       __func__, offset);
+@@ -119,9 +129,25 @@ static void aspeed_wdt_write(void *opaque, hwaddr offset, uint64_t data,
+             timer_del(s->timer);
+         }
+         break;
++    case WDT_RESET_WIDTH:
++    {
++        uint32_t property = data & WDT_POLARITY_MASK;
++
++        if (property == WDT_ACTIVE_HIGH_MAGIC) {
++            s->regs[WDT_RESET_WIDTH] |= WDT_RESET_WIDTH_ACTIVE_HIGH;
++        } else if (property == WDT_ACTIVE_LOW_MAGIC) {
++            s->regs[WDT_RESET_WIDTH] &= ~WDT_RESET_WIDTH_ACTIVE_HIGH;
++        } else if (property == WDT_PUSH_PULL_MAGIC) {
++            s->regs[WDT_RESET_WIDTH] |= WDT_RESET_WIDTH_PUSH_PULL;
++        } else if (property == WDT_OPEN_DRAIN_MAGIC) {
++            s->regs[WDT_RESET_WIDTH] &= ~WDT_RESET_WIDTH_PUSH_PULL;
++        }
++        s->regs[WDT_RESET_WIDTH] &= ~WDT_RESET_WIDTH_DURATION;
++        s->regs[WDT_RESET_WIDTH] |= data & WDT_RESET_WIDTH_DURATION;
++        break;
++    }
+     case WDT_TIMEOUT_STATUS:
+     case WDT_TIMEOUT_CLEAR:
+-    case WDT_RESET_WDITH:
+         qemu_log_mask(LOG_UNIMP,
+                       "%s: uninmplemented write at offset 0x%" HWADDR_PRIx "\n",
+                       __func__, offset);
+@@ -167,6 +193,7 @@ static void aspeed_wdt_reset(DeviceState *dev)
+     s->regs[WDT_RELOAD_VALUE] = 0x03EF1480;
+     s->regs[WDT_RESTART] = 0;
+     s->regs[WDT_CTRL] = 0;
++    s->regs[WDT_RESET_WIDTH] = 0XFF;
+ 
+     timer_del(s->timer);
+ }
+-- 
+2.11.0
+

@@ -1,100 +1,84 @@
-Received: by 10.25.44.15 with SMTP id s15csp3539177lfs;
-        Mon, 31 Jul 2017 05:09:35 -0700 (PDT)
-X-Received: by 10.55.95.194 with SMTP id t185mr6739991qkb.61.1501502974876;
-        Mon, 31 Jul 2017 05:09:34 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1501502974; cv=none;
+Received: by 10.25.44.15 with SMTP id s15csp4666944lfs;
+        Tue, 1 Aug 2017 02:34:28 -0700 (PDT)
+X-Received: by 10.55.67.136 with SMTP id q130mr7380880qka.185.1501580068202;
+        Tue, 01 Aug 2017 02:34:28 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1501580068; cv=none;
         d=google.com; s=arc-20160816;
-        b=d+qVyx+yeRX4UxCXLY3RJBH6blThTUlK29Eus7azH/ooMfP0IbsngHyVP6rLuzWs63
-         4+En/6aoX0bdDVZ3fZyWANGtS2bW2JRMLMruJWLKJ64CpW8z+uOkIYbBFp8mvsus/D51
-         xn8rjrp5nIQjc8gbXglFCpoUrkR3112p5i33UF+CVWUG5yoRixI2QR8DVyvlBj6Xpcsd
-         ixXmAjdMiosdVMes9bWnF6gVgdXYkGzm2mQvSHgJGdeiS8mUA1czJ4VJbnuz6aELfI/S
-         mWpKedGO9CcMXdVThuaEBSbHJFXRlpelWLNq8ptXQDBL7L22dM2lrO+xdqw58HPwo9A+
-         c4UA==
+        b=MxEvcGB/mVE/wR0LtBYwVzqdWKTjf5CCS2sN582QxIk832WNszCu8CqUySgAafkzwz
+         2qIWTjbSNtxgQKF6cgIv8oJMgeA/JnWXxNpfUypqIJ09yWtcFWIkjuzFUNYeOOYDhZdT
+         t8kl8y3ajYY+eWLQvj3SptPjx4tIPGF9i4lspieWpn9GGpVtbExsr+BBOFUFVGwjE9Xx
+         e4uTS6aBTdEcCz1WKPSJPbGxkZRPgt8Hqauw3e5P60tV6NeZ6K4uFu5JnJm9AR+Ls3km
+         8b7hn8mm4r/uY+5VfI/EJrC/jgdoKczKqaZDYPuAe9JGdie3afwIz3yaeO+lVLvf7QEi
+         SWtA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:to:message-id:date:from:references
-         :in-reply-to:mime-version:dkim-signature:arc-authentication-results;
-        bh=uR6DBlmnq2fiWDqbUjhcwVHmIy0IBOX7dDkwWzEOADI=;
-        b=HfANuNR32UsQgxj5U9Bfbf1kK4N2hH3+YXq2tTqhWzSRrLrRoUiILt/qs4RbTiRv0y
-         1uWOZ2yboqOXhYbxumz7tuOTUckO7E6qcus1AWYVw04nGynXIU9ChFL65bLacZaoxpif
-         tWOsPR/Tsm82zbZunJ08uOPlRtjjq6NFEdPaikc0/Zmc05CMvzRqmbfoSPdR0cxz3oku
-         HpSt37r4zDRA/UgT0bMM5M5S6ZYv8OAOTIucIbaso+6wmGiw77OYE9iS4x0IQ3aYbXTt
-         WVVxFgpoIP9u+GQqlqGU1lAkKBn0EG0ZQhSSZvZKOY8jkPDM3D2bpZE4pBx8L0AXaefk
-         8qcQ==
+         :list-unsubscribe:list-id:precedence:subject:message-id:date:to:from
+         :dmarc-filter:arc-authentication-results;
+        bh=NzfYLNsGwezawbIhQUhcFE1HL6o6alkEUPElVIlshHM=;
+        b=ZqK2JVC1YBM4v1hpilh9dyCdbfEBQ3zIW+ylut7ERwTfNRXwsLNtvXAJeGBfZcR/nl
+         zAG5O/vsZ2oCDhEUQZO4gYNGtB16j03IWSv4Pa6bI2e9wdEmp3z6T137rVIyVyIXh0lM
+         M/eYhbgRU18gOxkcPQLen8nSdddq3GYrBigVDKuKgHQ2J4E4wvv4FX7844TiWNvqB3AK
+         C7dBYsPg5RxVq/LJWNcA1cuQTTVM2DFvgWFRYm58TUy7e2zP9HqBzwFmbMJIXD01JhQF
+         ok5ltfrVDM6H1EvvehQ1dDX+V3Fgau5+88fMyapLP58/jkxsLz1aKWcAQacQqIjMPwMb
+         MNjA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.b=AKCSrPyb;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id p34si15552361qtg.235.2017.07.31.05.09.34
+        by mx.google.com with ESMTPS id i10si25710172qtg.340.2017.08.01.02.34.27
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 31 Jul 2017 05:09:34 -0700 (PDT)
+        Tue, 01 Aug 2017 02:34:28 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.b=AKCSrPyb;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:59236 helo=lists.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:41372 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1dc9Vs-0005mT-4V
-	for alex.bennee@linaro.org; Mon, 31 Jul 2017 08:09:32 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:52485)
+	id 1dcTZJ-0007G2-NM
+	for alex.bennee@linaro.org; Tue, 01 Aug 2017 05:34:25 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:38071)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1dc9Vl-0005mG-1o
-	for qemu-arm@nongnu.org; Mon, 31 Jul 2017 08:09:25 -0400
+	(envelope-from <eric.auger@redhat.com>) id 1dcTZG-0007Fq-92
+	for qemu-arm@nongnu.org; Tue, 01 Aug 2017 05:34:23 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1dc9Vk-00035F-4z
-	for qemu-arm@nongnu.org; Mon, 31 Jul 2017 08:09:25 -0400
-Received: from mail-wm0-x22c.google.com ([2a00:1450:400c:c09::22c]:38394)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1dc9Vj-000344-Ta
-	for qemu-arm@nongnu.org; Mon, 31 Jul 2017 08:09:24 -0400
-Received: by mail-wm0-x22c.google.com with SMTP id m85so168086303wma.1
-	for <qemu-arm@nongnu.org>; Mon, 31 Jul 2017 05:09:23 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc:content-transfer-encoding;
-	bh=uR6DBlmnq2fiWDqbUjhcwVHmIy0IBOX7dDkwWzEOADI=;
-	b=AKCSrPybdDMGRAiZ5plQ7zwWpCvEX+uPK6uMGu2AT6lZquVzSEAa9IdEMghTvq0Vrf
-	0dBHNh0qx78irWc6Spuh3ywGglNlAkt5OduddiUiJC7wwBEijrY6oasZ2GKmL/8IH6Zf
-	qvET3hd/K0h6dxEYkNx/Qs8nykRbjcYxTsmFA=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc:content-transfer-encoding;
-	bh=uR6DBlmnq2fiWDqbUjhcwVHmIy0IBOX7dDkwWzEOADI=;
-	b=YX7QtASo0H2qBVuh07QiA2Nv+x8+wCcoDl9JLinHAuPATzI7EPdHEESbzUG6dqkx7d
-	evBFUXiyC5Z/R2+aQx3w0GGU0YDQ9VelFBIXIKM+frsGEXyYon8mDCsFHZjMfMoDA9CE
-	mAVg7Pj4NmXIWdXCl3OJm2KGtGhyKjKrbIDucbxYhft2o3yUXWnv9rwrhqpSOkb4P778
-	B8s/c37s1JeIgacmw7Hq/rlHZISecad8qtOhUiEunjINlTPwQw+blgfiq1b3cbotFoeG
-	eIUU5iPnQp7wEvSr3UoBSbDqbGZhNqus+zMXCiEZUq6Js+mi6+iMX000hPr2t3Q5u3Vy
-	mrQA==
-X-Gm-Message-State: AIVw111rir5WC1mEwDiN6goEHA5GFyGGiCTnw8bFCpa5ke/JbRfWtP6u
-	S+5vIM6lYpgI0PZJGujc9HEfxRHrDnD3
-X-Received: by 10.28.95.69 with SMTP id t66mr11381460wmb.74.1501502962615;
-	Mon, 31 Jul 2017 05:09:22 -0700 (PDT)
-MIME-Version: 1.0
-Received: by 10.223.134.54 with HTTP; Mon, 31 Jul 2017 05:09:02 -0700 (PDT)
-In-Reply-To: <b48b8728-7cb3-3d6e-745f-1aee5c2038e6@amsat.org>
-References: <20170717133010.12784-1-f4bug@amsat.org>
-	<CAFEAcA_rhoCup57nYYW4HN6Qsz3sp-cxY-OwsK-x=fYtfJ31aQ@mail.gmail.com>
-	<b48b8728-7cb3-3d6e-745f-1aee5c2038e6@amsat.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 31 Jul 2017 13:09:02 +0100
-Message-ID: <CAFEAcA9bb3YTVQvK5qoN8jEqEpAsP-a7hoGjSoYeqwTGzs7jng@mail.gmail.com>
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2a00:1450:400c:c09::22c
-Subject: Re: [Qemu-arm] [PATCH] hw/arm: use defined type name instead of
- hard-coded string
+	(envelope-from <eric.auger@redhat.com>) id 1dcTZD-00017u-10
+	for qemu-arm@nongnu.org; Tue, 01 Aug 2017 05:34:22 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:49712)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <eric.auger@redhat.com>)
+	id 1dcTZC-00017H-OA; Tue, 01 Aug 2017 05:34:18 -0400
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
+	[10.5.11.11])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 7C7EF10794A;
+	Tue,  1 Aug 2017 09:34:17 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 7C7EF10794A
+Authentication-Results: ext-mx04.extmail.prod.ext.phx2.redhat.com;
+	dmarc=none (p=none dis=none) header.from=redhat.com
+Authentication-Results: ext-mx04.extmail.prod.ext.phx2.redhat.com;
+	spf=fail smtp.mailfrom=eric.auger@redhat.com
+Received: from localhost.localdomain.com (ovpn-116-181.ams2.redhat.com
+	[10.36.116.181])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 78D5C6047A;
+	Tue,  1 Aug 2017 09:34:03 +0000 (UTC)
+From: Eric Auger <eric.auger@redhat.com>
+To: eric.auger.pro@gmail.com, eric.auger@redhat.com, peter.maydell@linaro.org,
+	alex.williamson@redhat.com, mst@redhat.com, qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org, jean-philippe.brucker@arm.com
+Date: Tue,  1 Aug 2017 11:33:06 +0200
+Message-Id: <1501579994-3320-1-git-send-email-eric.auger@redhat.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.28]);
+	Tue, 01 Aug 2017 09:34:17 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.132.183.28
+Subject: [Qemu-arm] [RFC v3 0/8] VIRTIO-IOMMU device
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -106,48 +90,88 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Rob Herring <robh@kernel.org>, Igor Mitsyanko <i.mitsyanko@gmail.com>,
-	QEMU Developers <qemu-devel@nongnu.org>,
-	Alistair Francis <alistair.francis@xilinx.com>,
-	qemu-arm <qemu-arm@nongnu.org>
+Cc: kevin.tian@intel.com, marc.zyngier@arm.com, tn@semihalf.com,
+	will.deacon@arm.com, drjones@redhat.com, peterx@redhat.com,
+	bharat.bhushan@nxp.com, christoffer.dall@linaro.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: zhilHmCgq1RW
+X-TUID: +iibWBLuYn/9
 
-On 27 July 2017 at 14:48, Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> wro=
-te:
-> On 07/27/2017 09:36 AM, Peter Maydell wrote:
->>
->> On 17 July 2017 at 14:30, Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> =
-wrote:
->>>
->>> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
->>> ---
->>>
->>> Hi Peter, this patch is waiting the IDE queue to enters since it depend=
-s
->>> of
->>> commit de09efcc7b67ada3593354711b12a03dea23a9d0 to fix AHCI includes.
->>
->>
->> There's no commit with that hash in master -- do you have
->> a commit subject or something that I can use to find out
->> whether it's landed or not?
->
->
-> Oops I guess the IDE queue was rebased between this patch and the merge, =
-or
-> I messed my copy/paste :)
->
-> The dependent commit is 70e2337030f and has how entered /master, do you w=
-ant
-> me to send an v2 with fixed message? Anyway I delayed this patch for 2.11
-> since this is not a bugfix.
+This series implements the virtio-iommu device.
 
-You don't need to resend, I'll just keep it on my list of things
-to deal with after 2.11. (Anything below the '---' isn't really
-in the commit message anyway, it gets stripped out when the
-patch is applied.)
+This v3 mostly is a rebase on top of v2.10-rc0 that uses
+IOMMUMmeoryRegion plus some small fixes.
 
-thanks
--- PMM
+This is a proof of concept based on the virtio-iommu specification
+written by Jean-Philippe Brucker [1].
+
+The device gets instantiated using the "-device virtio-iommu-device"
+option. It currently works with ARM virt machine only, as the machine
+must handle the dt binding between the virtio-mmio "iommu" node and
+the PCI host bridge node.
+
+ACPI booting is not yet supported.
+
+Best Regards
+
+Eric
+
+This series can be found at:
+https://github.com/eauger/qemu/tree/v2.10.0-rc0-virtio-iommu-rfcv3
+
+References:
+[1] [RFC 0/3] virtio-iommu: a paravirtualized IOMMU,
+[2] [RFC PATCH linux] iommu: Add virtio-iommu driver
+[3] [RFC PATCH kvmtool 00/15] Add virtio-iommu
+
+Testing:
+- >= 4.12 guest kernel + virtio-iommu driver [2]
+- guest using a virtio-net-pci device:
+  ,vhost=off,iommu_platform,disable-modern=off,disable-legacy=on
+
+History:
+v2 -> v3:
+- rebase on top of 2.10-rc0 and especially
+  [PATCH qemu v9 0/2] memory/iommu: QOM'fy IOMMU MemoryRegion
+- add mutex init
+- fix as->mappings deletion using g_tree_ref/unref
+- when a dev is attached whereas it is already attached to
+  another address space, first detach it
+- fix some error values
+- page_sizes = TARGET_PAGE_MASK;
+- I haven't changed the unmap() semantics yet, waiting for the
+  next virtio-iommu spec revision.
+
+v1 -> v2:
+- fix redifinition of viommu_as typedef
+
+
+Eric Auger (8):
+  update-linux-headers: import virtio_iommu.h
+  linux-headers: Update for virtio-iommu
+  virtio_iommu: add skeleton
+  virtio-iommu: Decode the command payload
+  virtio_iommu: Add the iommu regions
+  virtio-iommu: Implement the translation and commands
+  hw/arm/virt: Add 2.10 machine type
+  hw/arm/virt: Add virtio-iommu the virt board
+
+ hw/arm/virt.c                                 | 116 ++++-
+ hw/virtio/Makefile.objs                       |   1 +
+ hw/virtio/trace-events                        |  14 +
+ hw/virtio/virtio-iommu.c                      | 670 ++++++++++++++++++++++++++
+ include/hw/arm/virt.h                         |   5 +
+ include/hw/virtio/virtio-iommu.h              |  61 +++
+ include/standard-headers/linux/virtio_ids.h   |   1 +
+ include/standard-headers/linux/virtio_iommu.h | 142 ++++++
+ linux-headers/linux/virtio_iommu.h            |   1 +
+ scripts/update-linux-headers.sh               |   3 +
+ 10 files changed, 1005 insertions(+), 9 deletions(-)
+ create mode 100644 hw/virtio/virtio-iommu.c
+ create mode 100644 include/hw/virtio/virtio-iommu.h
+ create mode 100644 include/standard-headers/linux/virtio_iommu.h
+ create mode 100644 linux-headers/linux/virtio_iommu.h
+
+-- 
+2.5.5
+

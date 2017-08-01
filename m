@@ -1,107 +1,104 @@
-Received: by 10.25.44.15 with SMTP id s15csp4358090lfs;
-        Mon, 31 Jul 2017 20:24:10 -0700 (PDT)
-X-Received: by 10.237.59.182 with SMTP id r51mr15712703qte.34.1501557849915;
-        Mon, 31 Jul 2017 20:24:09 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1501557849; cv=none;
+Received: by 10.25.44.15 with SMTP id s15csp4411251lfs;
+        Mon, 31 Jul 2017 21:32:50 -0700 (PDT)
+X-Received: by 10.200.55.237 with SMTP id e42mr5639560qtc.92.1501561970416;
+        Mon, 31 Jul 2017 21:32:50 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1501561970; cv=none;
         d=google.com; s=arc-20160816;
-        b=g4XnDQsVTBkSJPV7mESOAgo0zwGLbsVTMJrhmivp4UrSGMvEZWGhWe/vhoi7m0tm+8
-         qDm5dC3RQX4HDP5f1o8kXEoyYSLg1nqexEWQKb8QjqfA2vzfB/gjWkb+GiH0cx/AIBCt
-         UPunwix02zWhFOl6RoLxPioKeKoOxv5gbRc4f3aCVTBAEAQ17vY8VTJ5NzUGJ/oYYAyM
-         zscs4CO58nZ9VY/vkk2SJGE0zQ0glJLKBaSmxlKTTj5SaL6JzlZ/IAAW7zK7D1BIqIR0
-         aQZ72tOmdDdG/D/oPW+nCRn8jMZMjJthxEKIb9PAf6JfVjxK4yMY4KON6p/DV19feDZC
-         kfcA==
+        b=cZqi8PhOMCPCW2L9ec6thp4LMJKrh9aCwoDjCeWKmavDAcEO7EWG/zXUuuJlg7vQpX
+         3OUh6m3ckzZG/96GUQR5srbXCL+iuKo1WYH+Xw8hEk4vdeS9PQA6RZtf8B7wN7loBezp
+         7d6mqSOgBwsAVQWMg4rI+iad7nYSC4/WbkAKGPRZkESyE0y3HusO6ajJaRPIRByhb4zT
+         zWkb+E2lG8uqawOBjxi+fxET1cMIjneVUL0F0ZKodbGHnR3TmsX90knDyg+Badzo6fVT
+         euZmePBwas1cRbl5PTsIZXWX0bX6NRtcvpiUAwgHvJQZ/VWGbCNfpQVifpAbesiuIps+
+         jDpw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:to:dkim-signature
+         :list-unsubscribe:list-id:precedence:subject:mime-version:references
+         :in-reply-to:date:to:from:message-id:dkim-signature:dkim-signature
          :arc-authentication-results;
-        bh=hdnXKeyKGV3UWsA4ovp21eo8UduHzM8mF9hH20eHjf4=;
-        b=vsq2Xf8Go2AYAKj25YGylletDrMcYyfpqXMrCqe/Dg3E1kHvWlUtAAFmV7+PrMdfGl
-         mPOBK2H02XNxfdzhYUmAlVFRLuMf4TQiBu7b0uVQNzv7zweGpqRhaD6WyP76jje2Q/C+
-         flJhUVfVBDo33r27clYTvzwAivOKK/NPuQ00EvzBtNc5f3YYLUa22NRwwSIracRCuAmx
-         KvsfNlLlodWG1vTPk4X0wJfpQU7fJUgj+HrK7SLSj5w+s7Bel/e7srKnaSvO1DKNKBuL
-         0r+cQiMhG0ZijGGiN0rao+nN/7fS1vQyL8SNO8xuG98IX3k1Ja3AFQeBQkzbiPZkAyzI
-         GrfA==
+        bh=vVbHIfMce1OQFj3hTh0ONX+J4bBAVyxdoZ5bmgJE8h8=;
+        b=CyZUaisnNrGAhh4/fkmUMIbWnAyOiIOWgLPb3iY7GOhbF6GSwT2506UscqVtV7MHRy
+         LvERO8Jk18uc3snaZGCq/iT+ON5ZyVrcFsAJ1n5owx9WrYo8GLk09u9vVDLIyMHjVSO4
+         1JG0E853Ib78EDLr+Xu3R1QLcSEe++sGwUowNhvZy8aa5eP2Bodv5q0JPvlxVSnnXHR3
+         3+039ys5AhqB0tXHmxsaGmZDvDFhvnBhH4O3MVtGz9eRLbF15x5inuBYa7+YYV2B43+P
+         5+g0BLaBct++szDWy1JNILnFiklnAWcQh9k7jlCQU/vFn5+uGquO0nMc/6MgNFw9MJ5D
+         f5SQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.b=Q1iXiKE9;
+       dkim=fail header.i=@aj.id.au header.b=Mr0XaaAD;
+       dkim=fail header.i=@messagingengine.com header.b=gZhMoiPA;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id p185si24941556qkb.1.2017.07.31.20.24.09
+        by mx.google.com with ESMTPS id v32si18328552qtg.294.2017.07.31.21.32.49
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 31 Jul 2017 20:24:09 -0700 (PDT)
+        Mon, 31 Jul 2017 21:32:50 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.b=Q1iXiKE9;
+       dkim=fail header.i=@aj.id.au header.b=Mr0XaaAD;
+       dkim=fail header.i=@messagingengine.com header.b=gZhMoiPA;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:34244 helo=lists.gnu.org)
+Received: from localhost ([::1]:34371 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1dcNmx-0001jI-3V
-	for alex.bennee@linaro.org; Mon, 31 Jul 2017 23:24:07 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:50871)
+	id 1dcOrP-0000CN-S8
+	for alex.bennee@linaro.org; Tue, 01 Aug 2017 00:32:47 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:35737)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1dcNmh-0001hW-I5
-	for qemu-arm@nongnu.org; Mon, 31 Jul 2017 23:23:52 -0400
+	(envelope-from <andrew@aj.id.au>) id 1dcOrF-0000C1-Ly
+	for qemu-arm@nongnu.org; Tue, 01 Aug 2017 00:32:41 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1dcNmg-0007kc-2O
-	for qemu-arm@nongnu.org; Mon, 31 Jul 2017 23:23:51 -0400
-Received: from mail-qk0-x22c.google.com ([2607:f8b0:400d:c09::22c]:33429)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1dcNma-0007cn-3b; Mon, 31 Jul 2017 23:23:44 -0400
-Received: by mail-qk0-x22c.google.com with SMTP id a77so2403333qkb.0;
-	Mon, 31 Jul 2017 20:23:44 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=sender:subject:to:cc:references:from:message-id:date:user-agent
-	:mime-version:in-reply-to:content-language:content-transfer-encoding;
-	bh=hdnXKeyKGV3UWsA4ovp21eo8UduHzM8mF9hH20eHjf4=;
-	b=Q1iXiKE9J2AOPMPRZ6eo21Kqwg1E/HeBcv0qNiPh7oVJRJGXusUaNTf4obAW/3jcZf
-	EwyZmIzb4eynftIMpbVpEMh2OrA9++Jn1NbqJTeQIwE6235YC6u888PgHnviCoW1V+lv
-	jtAu83tT/wtgULFUfPSt/5XVcp8e+G4CrHjVGsFgRZ39JSUl/F4h1a2Sxea1e5jNiP9x
-	8pZNZbYTcKU1EPl+CxdddZzEo/rNEhqekpn8J89GMplAd+YHkgS/ZWlTf8axfgFl0t6G
-	VQsSJBjgdJWbeLO3ZWBGATsMihVvAAc3HsW+8+0sw2I+y3wNEnmRWDUq0nNP30Z0txC6
-	42qQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
-	:date:user-agent:mime-version:in-reply-to:content-language
-	:content-transfer-encoding;
-	bh=hdnXKeyKGV3UWsA4ovp21eo8UduHzM8mF9hH20eHjf4=;
-	b=bT3Tp803MoRMHxlMfMyHslxMcN650lT+QtcVOhM4/iFJcZK3jQQOFzuIam3dPgP8VR
-	HUIgQ0J/7WCnoXEd/F8q2DxxD1hnGUVtlSKfEtFAyp+g9EQj8zdHr0sciiaPyGUmxEmP
-	fcKgXQcW4ApmABfiX2C/ok/m/kgJDQmgMW/1GrXyAFpaBAF8KU7td0evdLbVfe0a/vI1
-	ONdawf0eYUPnIgTryKHtxJ5vcqLu27djZWZBaTPsZTo26dGaiccnnIa+aGAKkYyzxnKi
-	6duPZRQTeRTAlaauUTDgqOIAorpdL85/rYZPRTybayqHKzdNx5k92Y4OOqFYRMXu8QBW
-	PXTA==
-X-Gm-Message-State: AIVw113JS0YkJE8NK1/jU+G2IPS9Q+JxY1qLrZJhZhSLZmzz8jAWPoV7
-	Anb//nqK5ED6nA==
-X-Received: by 10.55.75.8 with SMTP id y8mr25167032qka.247.1501557823346;
-	Mon, 31 Jul 2017 20:23:43 -0700 (PDT)
-Received: from [192.168.1.10] ([138.117.48.223])
-	by smtp.gmail.com with ESMTPSA id
-	n60sm2396676qte.53.2017.07.31.20.23.40
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Mon, 31 Jul 2017 20:23:42 -0700 (PDT)
-To: Andrew Jeffery <andrew@aj.id.au>, qemu-arm@nongnu.org
+	(envelope-from <andrew@aj.id.au>) id 1dcOrA-0001mo-Fi
+	for qemu-arm@nongnu.org; Tue, 01 Aug 2017 00:32:37 -0400
+Received: from out1-smtp.messagingengine.com ([66.111.4.25]:56319)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <andrew@aj.id.au>)
+	id 1dcOr9-0001l8-PK; Tue, 01 Aug 2017 00:32:32 -0400
+Received: from compute4.internal (compute4.nyi.internal [10.202.2.44])
+	by mailout.nyi.internal (Postfix) with ESMTP id B78A8207CC;
+	Tue,  1 Aug 2017 00:32:30 -0400 (EDT)
+Received: from frontend2 ([10.202.2.161])
+	by compute4.internal (MEProxy); Tue, 01 Aug 2017 00:32:30 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=aj.id.au; h=cc
+	:content-type:date:from:in-reply-to:message-id:mime-version
+	:references:subject:to:x-me-sender:x-me-sender:x-sasl-enc
+	:x-sasl-enc; s=fm1; bh=vVbHIfMce1OQFj3hTh0ONX+J4bBAVyxdoZ5bmgJE8
+	h8=; b=Mr0XaaADXk/RUmHCQKXFVMthktgdu9VaXIXp7FBMuNHgbQsn42xNdHYXw
+	tg+e0zNDM5oTRdoNqfN+cMuH2koVLgzztj7xFpuffRXEDJXM88i7Sc5CvIZ4WNfz
+	GTyzWJcPrm/oFhg0OxcOdYg6tGO5GRL5sG6GXHmhE68Tzv8WPrsjzPoq/iwNaSQ2
+	lRXnDoPCkibby2WmafwYo163lceZGVIut36JhJfP2FBffcronHB1tB0TUOLkgZs3
+	PKSz4NlJmrtVTX+tRqphu8ujgaf6CUBwOLOI+0H+l6CL2pMO/xZVLSqeVk/Kagcl
+	8nXCK5LeGxBmS8QZVyKV5XxQmATrw==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+	messagingengine.com; h=cc:content-type:date:from:in-reply-to
+	:message-id:mime-version:references:subject:to:x-me-sender
+	:x-me-sender:x-sasl-enc:x-sasl-enc; s=fm1; bh=vVbHIfMce1OQFj3hTh
+	0ONX+J4bBAVyxdoZ5bmgJE8h8=; b=gZhMoiPAppK6iXcAvHo9wc9CpBTvWHfGvv
+	T9yiN8i507uLbVh7DGXqssqdVXUOWWDDvo77AysQP9+d6slKrTu1iwVfqpNYN+Nt
+	T5abYNiNSieSit1gW4EZDqy9ZsN46QWdmfcstp8UJlAUInUVBjAPOoOv5SG3A0qS
+	z9S1APe3wJRuefJLaQ9pIcWJBH1VkC1PldHYAzB36SlCYE0thCuid1dRiCXD+Wsu
+	1XWx7TP26jKn3w+bIXXJG2XQ6iGZT2+/gvzvsHhwi59MviA3vMLKPgPo4QKjZlIi
+	wpXceCSajvIg7rU225osUdGdq93vLL5j9cKEXMzh2aSZ0JaGoavA==
+X-ME-Sender: <xms:XgSAWVyiinfgtsMQvyBXBsg6FsekMsStAfWAylQU47wYMS_lL413Mg>
+X-Sasl-enc: hqCEd+BsptKOYX4w9/1Vkmy2vgeUHg2ykbKFly4OFpXn 1501561949
+Received: from keelia (ppp118-210-176-216.bras2.adl6.internode.on.net
+	[118.210.176.216])
+	by mail.messagingengine.com (Postfix) with ESMTPA id CB39D24604;
+	Tue,  1 Aug 2017 00:32:27 -0400 (EDT)
+Message-ID: <1501561942.5179.34.camel@aj.id.au>
+From: Andrew Jeffery <andrew@aj.id.au>
+To: Philippe =?ISO-8859-1?Q?Mathieu-Daud=E9?= <f4bug@amsat.org>, 
+	qemu-arm@nongnu.org
+Date: Tue, 01 Aug 2017 14:02:22 +0930
+In-Reply-To: <a2f01f69-13cb-dcb9-6dcb-e5ccc3bb504d@amsat.org>
 References: <20170801010425.25778-1-andrew@aj.id.au>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <a2f01f69-13cb-dcb9-6dcb-e5ccc3bb504d@amsat.org>
-Date: Tue, 1 Aug 2017 00:23:39 -0300
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.2.1
-MIME-Version: 1.0
-In-Reply-To: <20170801010425.25778-1-andrew@aj.id.au>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:400d:c09::22c
+	<a2f01f69-13cb-dcb9-6dcb-e5ccc3bb504d@amsat.org>
+Content-Type: multipart/signed; micalg="pgp-sha512";
+	protocol="application/pgp-signature"; boundary="=-mw8h11HAz22QEgQhmKe5"
+X-Mailer: Evolution 3.22.6-1ubuntu1 
+Mime-Version: 1.0
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 66.111.4.25
 Subject: Re: [Qemu-arm] [PATCH] watchdog: wdt_aspeed: Add support for the
  reset width register
 X-BeenThere: qemu-arm@nongnu.org
@@ -119,154 +116,353 @@ Cc: peter.maydell@linaro.org, openbmc@lists.ozlabs.org, qemu-devel@nongnu.org,
 	clg@kaod.org, joel@jms.id.au
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: bMkcqTBfd1qA
+X-TUID: txzXik0Gvy4i
 
-Hi Andrew,
 
-On 07/31/2017 10:04 PM, Andrew Jeffery wrote:
-> The reset width register controls how the pulse on the SoC's WDTRST{1,2}
-> pins behaves. A pulse is emitted if the external reset bit is set in
-> WDT_CTRL. WDT_RESET_WIDTH requires magic bit patterns to configure both
-> push-pull/open-drain and active-high/active-low behaviours and thus
-> needs some special handling in the write path.
+--=-mw8h11HAz22QEgQhmKe5
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-I wanted to verify the datashit but it seems to unavailable, looking there:
-https://www.verical.com/datasheet/aspeed-technology-inc-interface-misc-ast2050a3-gp-4078885.pdf
+Hi Phil,
 
-Can you point out which cpu model you are modeling and where to get this 
-watchdog datashit please? You might also add this to the header, for the 
-next one looking at this file :)
+On Tue, 2017-08-01 at 00:23 -0300, Philippe Mathieu-Daud=C3=A9 wrote:
+> Hi Andrew,
+>=20
+> On 07/31/2017 10:04 PM, Andrew Jeffery wrote:
+> > The reset width register controls how the pulse on the SoC's WDTRST{1,2=
+}
+> > pins behaves. A pulse is emitted if the external reset bit is set in
+> > WDT_CTRL. WDT_RESET_WIDTH requires magic bit patterns to configure both
+> > push-pull/open-drain and active-high/active-low behaviours and thus
+> > needs some special handling in the write path.
+>=20
+> I wanted to verify the datashit but it seems to unavailable, looking ther=
+e:
+> https://www.verical.com/datasheet/aspeed-technology-inc-interface-misc-as=
+t2050a3-gp-4078885.pdf
+>=20
+> Can you point out which cpu model you are modeling and where to get this=
+=C2=A0
+> watchdog datashit please? You might also add this to the header, for the=
+=C2=A0
+> next one looking at this file :)
 
-> 
-> Signed-off-by: Andrew Jeffery <andrew@aj.id.au>
-> ---
-> I understand that we're in stabilisation mode, but I thought I'd send this out
-> to provoke any feedback. Happy to resend after the 2.10 release if required.
+The watchdog model is common to at least the Aspeed AST2400- and
+AST2500- SoC families, which I have datasheets for. However, they are
+not available to the public and therefore (unfortunately) I can't point
+you to them. You may be able to access them if you have appropriate
+arrangements with Aspeed.
 
-you can subject it "PATCH for 2.11" so ppl testing/closing 2.10 can keep 
-focused but still queue your mail for when 2.10 release is out.
+Regarding the features exposed by the patch, configuration of the
+electrical properties of the  external reset signal is only provided in
+the AST2500's watchdog IP, but the bits used in the reset width
+register are marked as reserved on the AST2400. Therefore I thought it
+was reasonable not to guard them behind some kind of revision test.
 
-> 
->   hw/watchdog/wdt_aspeed.c | 47 +++++++++++++++++++++++++++++++++++++----------
->   1 file changed, 37 insertions(+), 10 deletions(-)
-> 
-> diff --git a/hw/watchdog/wdt_aspeed.c b/hw/watchdog/wdt_aspeed.c
-> index 8bbe579b6b66..4ef1412e99fc 100644
-> --- a/hw/watchdog/wdt_aspeed.c
-> +++ b/hw/watchdog/wdt_aspeed.c
-> @@ -14,10 +14,10 @@
->   #include "qemu/timer.h"
->   #include "hw/watchdog/wdt_aspeed.h"
->   
-> -#define WDT_STATUS              (0x00 / 4)
-> -#define WDT_RELOAD_VALUE        (0x04 / 4)
-> -#define WDT_RESTART             (0x08 / 4)
-> -#define WDT_CTRL                (0x0C / 4)
-> +#define WDT_STATUS                      (0x00 / 4)
-> +#define WDT_RELOAD_VALUE                (0x04 / 4)
-> +#define WDT_RESTART                     (0x08 / 4)
-> +#define WDT_CTRL                        (0x0C / 4)
->   #define   WDT_CTRL_RESET_MODE_SOC       (0x00 << 5)
->   #define   WDT_CTRL_RESET_MODE_FULL_CHIP (0x01 << 5)
->   #define   WDT_CTRL_1MHZ_CLK             BIT(4)
-> @@ -25,12 +25,21 @@
->   #define   WDT_CTRL_WDT_INTR             BIT(2)
->   #define   WDT_CTRL_RESET_SYSTEM         BIT(1)
->   #define   WDT_CTRL_ENABLE               BIT(0)
-> +#define WDT_RESET_WIDTH                 (0x18 / 4)
-> +#define   WDT_RESET_WIDTH_ACTIVE_HIGH   BIT(31)
-> +#define     WDT_POLARITY_MASK           (0xFF << 24)
-> +#define     WDT_ACTIVE_HIGH_MAGIC       (0xA5 << 24)
-> +#define     WDT_ACTIVE_LOW_MAGIC        (0x5A << 24)
-> +#define   WDT_RESET_WIDTH_PUSH_PULL     BIT(30)
-> +#define     WDT_DRIVE_TYPE_MASK         (0xFF << 24)
-> +#define     WDT_PUSH_PULL_MAGIC         (0xA8 << 24)
-> +#define     WDT_OPEN_DRAIN_MAGIC        (0x8A << 24)
-> +#define   WDT_RESET_WIDTH_DURATION      0xFFF;
+>=20
+> >=20
+> > > > Signed-off-by: Andrew Jeffery <andrew@aj.id.au>
+> > ---
+> > I understand that we're in stabilisation mode, but I thought I'd send t=
+his out
+> > to provoke any feedback. Happy to resend after the 2.10 release if requ=
+ired.
+>=20
+> you can subject it "PATCH for 2.11" so ppl testing/closing 2.10 can keep=
+=C2=A0
+> focused but still queue your mail for when 2.10 release is out.
 
-Which model? the AST2050 seems to be 0xff.
+Thanks for the tip.
 
->   
-> -#define WDT_TIMEOUT_STATUS      (0x10 / 4)
-> -#define WDT_TIMEOUT_CLEAR       (0x14 / 4)
-> -#define WDT_RESET_WDITH         (0x18 / 4)
-> +#define WDT_TIMEOUT_STATUS              (0x10 / 4)
-> +#define WDT_TIMEOUT_CLEAR               (0x14 / 4)
->   
-> -#define WDT_RESTART_MAGIC       0x4755
-> +#define WDT_RESTART_MAGIC               0x4755
->   
->   static bool aspeed_wdt_is_enabled(const AspeedWDTState *s)
->   {
-> @@ -55,9 +64,10 @@ static uint64_t aspeed_wdt_read(void *opaque, hwaddr offset, unsigned size)
->           return 0;
->       case WDT_CTRL:
->           return s->regs[WDT_CTRL];
-> +    case WDT_RESET_WIDTH:
-> +        return s->regs[WDT_RESET_WIDTH];
->       case WDT_TIMEOUT_STATUS:
->       case WDT_TIMEOUT_CLEAR:
-> -    case WDT_RESET_WDITH:
->           qemu_log_mask(LOG_UNIMP,
->                         "%s: uninmplemented read at offset 0x%" HWADDR_PRIx "\n",
->                         __func__, offset);
-> @@ -119,9 +129,25 @@ static void aspeed_wdt_write(void *opaque, hwaddr offset, uint64_t data,
->               timer_del(s->timer);
->           }
->           break;
-> +    case WDT_RESET_WIDTH:
-> +    {
-> +        uint32_t property = data & WDT_POLARITY_MASK;
-> +
-> +        if (property == WDT_ACTIVE_HIGH_MAGIC) {
-> +            s->regs[WDT_RESET_WIDTH] |= WDT_RESET_WIDTH_ACTIVE_HIGH;
-> +        } else if (property == WDT_ACTIVE_LOW_MAGIC) {
-> +            s->regs[WDT_RESET_WIDTH] &= ~WDT_RESET_WIDTH_ACTIVE_HIGH;
-> +        } else if (property == WDT_PUSH_PULL_MAGIC) {
-> +            s->regs[WDT_RESET_WIDTH] |= WDT_RESET_WIDTH_PUSH_PULL;
-> +        } else if (property == WDT_OPEN_DRAIN_MAGIC) {
-> +            s->regs[WDT_RESET_WIDTH] &= ~WDT_RESET_WIDTH_PUSH_PULL;
+>=20
+> >=20
+> > =C2=A0 hw/watchdog/wdt_aspeed.c | 47 ++++++++++++++++++++++++++++++++++=
++++----------
+> > =C2=A0 1 file changed, 37 insertions(+), 10 deletions(-)
+> >=20
+> > diff --git a/hw/watchdog/wdt_aspeed.c b/hw/watchdog/wdt_aspeed.c
+> > index 8bbe579b6b66..4ef1412e99fc 100644
+> > --- a/hw/watchdog/wdt_aspeed.c
+> > +++ b/hw/watchdog/wdt_aspeed.c
+> > @@ -14,10 +14,10 @@
+> > =C2=A0 #include "qemu/timer.h"
+> > =C2=A0 #include "hw/watchdog/wdt_aspeed.h"
+> > =C2=A0=C2=A0
+> > -#define WDT_STATUS=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0(0x00 / 4)
+> > -#define WDT_RELOAD_VALUE=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0(0x04 / 4)
+> > -#define WDT_RESTART=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0(0x08 / 4)
+> > -#define WDT_CTRL=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0(0x0C / 4)
+> > +#define WDT_STATUS=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0(0x00 / 4)
+> > +#define WDT_RELOAD_VALUE=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0(0x04 / 4)
+> > +#define WDT_RESTART=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+(0x08 / 4)
+> > +#define WDT_CTRL=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0(0x0C / 4)
+> > =C2=A0 #define=C2=A0=C2=A0=C2=A0WDT_CTRL_RESET_MODE_SOC=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0(0x00 << 5)
+> > =C2=A0 #define=C2=A0=C2=A0=C2=A0WDT_CTRL_RESET_MODE_FULL_CHIP (0x01 << =
+5)
+> > =C2=A0 #define=C2=A0=C2=A0=C2=A0WDT_CTRL_1MHZ_CLK=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0BIT(4)
+> > @@ -25,12 +25,21 @@
+> > =C2=A0 #define=C2=A0=C2=A0=C2=A0WDT_CTRL_WDT_INTR=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0BIT(2)
+> > =C2=A0 #define=C2=A0=C2=A0=C2=A0WDT_CTRL_RESET_SYSTEM=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0BIT(1)
+> > =C2=A0 #define=C2=A0=C2=A0=C2=A0WDT_CTRL_ENABLE=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0BIT(0)
+> > +#define WDT_RESET_WIDTH=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0(0x18 / 4)
+> > +#define=C2=A0=C2=A0=C2=A0WDT_RESET_WIDTH_ACTIVE_HIGH=C2=A0=C2=A0=C2=A0=
+BIT(31)
+> > +#define=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0WDT_POLARITY_MASK=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0(0xFF << 24)
+> > +#define=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0WDT_ACTIVE_HIGH_MAGIC=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0(0xA5 << 24)
+> > +#define=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0WDT_ACTIVE_LOW_MAGIC=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0(0x5A << 24)
+> > +#define=C2=A0=C2=A0=C2=A0WDT_RESET_WIDTH_PUSH_PULL=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0BIT(30)
+> > +#define=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0WDT_DRIVE_TYPE_MASK=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0(0xFF << 24)
+> > +#define=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0WDT_PUSH_PULL_MAGIC=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0(0xA8 << 24)
+> > +#define=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0WDT_OPEN_DRAIN_MAGIC=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0(0x8A << 24)
+> > +#define=C2=A0=C2=A0=C2=A0WDT_RESET_WIDTH_DURATION=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A00xFFF;
+>=20
+> Which model? the AST2050 seems to be 0xff.
 
-} else {
-     qemu_log_mask(LOG_GUEST_ERROR, ...
+Ah, good catch, this is also the case in the AST2400. The AST2500
+extends this field. Host code for the AST2400 and AST2050 *shouldn't*
+set any greater values; is it worth enforcing?
 
-> +        }
+>=20
+> > =C2=A0=C2=A0
+> > -#define WDT_TIMEOUT_STATUS=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0(0x10 / =
+4)
+> > -#define WDT_TIMEOUT_CLEAR=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0(0x=
+14 / 4)
+> > -#define WDT_RESET_WDITH=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0(0x18 / 4)
+> > +#define WDT_TIMEOUT_STATUS=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0(0x10 / 4)
+> > +#define WDT_TIMEOUT_CLEAR=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0(0x14 / 4)
+> > =C2=A0=C2=A0
+> > -#define WDT_RESTART_MAGIC=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A00x4=
+755
+> > +#define WDT_RESTART_MAGIC=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A00x4755
+> > =C2=A0=C2=A0
+> > =C2=A0 static bool aspeed_wdt_is_enabled(const AspeedWDTState *s)
+> > =C2=A0 {
+> > @@ -55,9 +64,10 @@ static uint64_t aspeed_wdt_read(void *opaque, hwaddr=
+ offset, unsigned size)
+> > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0return 0;
+> > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0case WDT_CTRL:
+> > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0return s->r=
+egs[WDT_CTRL];
+> > +=C2=A0=C2=A0=C2=A0=C2=A0case WDT_RESET_WIDTH:
+> > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0return s->regs[WDT_RES=
+ET_WIDTH];
+> > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0case WDT_TIMEOUT_STATUS:
+> > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0case WDT_TIMEOUT_CLEAR:
+> > -=C2=A0=C2=A0=C2=A0=C2=A0case WDT_RESET_WDITH:
+> > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0qemu_log_ma=
+sk(LOG_UNIMP,
+> > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+"%s: uninmplemented read at offset 0x%" HWADDR_PRIx "\n",
+> > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+__func__, offset);
+> > @@ -119,9 +129,25 @@ static void aspeed_wdt_write(void *opaque, hwaddr =
+offset, uint64_t data,
+> > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0timer_del(s->timer);
+> > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0}
+> > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0break;
+> > +=C2=A0=C2=A0=C2=A0=C2=A0case WDT_RESET_WIDTH:
+> > +=C2=A0=C2=A0=C2=A0=C2=A0{
+> > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0uint32_t property =3D =
+data & WDT_POLARITY_MASK;
+> > +
+> > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0if (property =3D=3D WD=
+T_ACTIVE_HIGH_MAGIC) {
+> > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0s->regs[WDT_RESET_WIDTH] |=3D WDT_RESET_WIDTH_ACTIVE_HIGH;
+> > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0} else if (property =
+=3D=3D WDT_ACTIVE_LOW_MAGIC) {
+> > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0s->regs[WDT_RESET_WIDTH] &=3D ~WDT_RESET_WIDTH_ACTIVE_HIGH;
+> > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0} else if (property =
+=3D=3D WDT_PUSH_PULL_MAGIC) {
+> > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0s->regs[WDT_RESET_WIDTH] |=3D WDT_RESET_WIDTH_PUSH_PULL;
+> > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0} else if (property =
+=3D=3D WDT_OPEN_DRAIN_MAGIC) {
+> > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0s->regs[WDT_RESET_WIDTH] &=3D ~WDT_RESET_WIDTH_PUSH_PULL;
+>=20
+> } else {
+> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0qemu_log_mask(LOG_GUEST_ERROR, ...
+>=20
+> > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0}
 
-Anyway I'm not sure about this if().
-Usually watchdogs have a state machine, if you don't do all unlock steps 
-ordered, the SM get reset. This is why magic is involved, else you could 
-use it as a regular register.
-I'd expect a guest writing ACTIVE_HIGH_MAGIC then PUSH_PULL_MAGIC to not 
-modify the RESET_WIDTH register, since the correct behavior would be to 
-write ordered RESTART_MAGIC, then HIGH_MAGIC, then LOW_MAGIC and finally 
-the PULL/DRAIN change, but I'm just trying to model this wdg in my head 
-without having study the DS so you can't rely on my comments :)
+=46rom the datasheet: "For others value, this bit will keep old value
+without change." So it is not a guest error to write a value not
+matching the cases above.
 
-Also it seems unsafe to modify that kind of property while the watchdog 
-is running, usually you disable it before modifying it, else while 
-running changes are automagically ignored.
+>=20
+> Anyway I'm not sure about this if().
+> Usually watchdogs have a state machine, if you don't do all unlock steps=
+=C2=A0
+> ordered, the SM get reset. This is why magic is involved, else you could=
+=C2=A0
+> use it as a regular register.
+> I'd expect a guest writing ACTIVE_HIGH_MAGIC then PUSH_PULL_MAGIC to not=
+=C2=A0
+> modify the RESET_WIDTH register, since the correct behavior would be to=
+=C2=A0
+> write ordered RESTART_MAGIC, then HIGH_MAGIC, then LOW_MAGIC and finally=
+=C2=A0
+> the PULL/DRAIN change, but I'm just trying to model this wdg in my head=
+=C2=A0
+> without having study the DS so you can't rely on my comments :)
 
-> +        s->regs[WDT_RESET_WIDTH] &= ~WDT_RESET_WIDTH_DURATION;
-> +        s->regs[WDT_RESET_WIDTH] |= data & WDT_RESET_WIDTH_DURATION;
-> +        break;
-> +    }
->       case WDT_TIMEOUT_STATUS:
->       case WDT_TIMEOUT_CLEAR:
-> -    case WDT_RESET_WDITH:
->           qemu_log_mask(LOG_UNIMP,
->                         "%s: uninmplemented write at offset 0x%" HWADDR_PRIx "\n",
->                         __func__, offset);
-> @@ -167,6 +193,7 @@ static void aspeed_wdt_reset(DeviceState *dev)
->       s->regs[WDT_RELOAD_VALUE] = 0x03EF1480;
->       s->regs[WDT_RESTART] = 0;
->       s->regs[WDT_CTRL] = 0;
-> +    s->regs[WDT_RESET_WIDTH] = 0XFF;
+Well, given I have it handy, I think the behaviour of the hardware
+resolves this query:
 
-why different than your define WDT_RESET_WIDTH_DURATION?
->   
->       timer_del(s->timer);
->   }
-> 
-Regards,
+root@romulus:~# devmem 0x1e785018
+0x000000FF
+root@romulus:~# devmem 0x1e785018 32 0xa80000ff
+root@romulus:~# devmem 0x1e785018
+0x400000FF
+root@romulus:~# devmem 0x1e785018 32 0x8a0000ff
+root@romulus:~# devmem 0x1e785018
+0x000000FF
+root@romulus:~# devmem 0x1e785018 32 0xa50000ff
+root@romulus:~# devmem 0x1e785018
+0x800000FF
+root@romulus:~# devmem 0x1e785018 32 0x5a0000ff
+root@romulus:~# devmem 0x1e785018
+0x000000FF
+root@romulus:~# devmem 0x1e785018 32 0xa80000ff
+root@romulus:~# devmem
+0x1e785018 32 0xa50000ff
+root@romulus:~# devmem 0x1e785018
+0xC00000FF
+root
+@romulus:~# devmem 0x1e785018 32 0x5a0000ff
+root@romulus:~# devmem
+0x1e785018 32 0x8a0000ff
+root@romulus:~# devmem 0x1e785018
+0x000000FF
+root@romulus:~# devmem 0x1e785018 32 0xa50000ff
+root@romulus:~# devmem 0x1e785018
+0x800000FF
+root@romulus:~# devmem 0x1e785018 32 0x000a5a5a
+root@romulus:~# devmem
+0x1e785018
+0x800A5A5A
+root@romulus:~# devmem 0x1e785018 32 0x5a0000ff
+root@romulus:~# devmem 0x1e785018
+0x000000FF
 
-Phil.
+Bear in mind the driver is loaded, so maybe it's messing with the test,
+but I haven't seen any indication to the contrary.
+
+>=20
+> Also it seems unsafe to modify that kind of property while the watchdog=
+=C2=A0
+> is running, usually you disable it before modifying it, else while=C2=A0
+> running changes are automagically ignored.
+
+But that's a host-code problem, right? I don't see any hardware
+restriction noted in the datasheet along these lines.
+
+>=20
+> > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0s->regs[WDT_RESET_WIDT=
+H] &=3D ~WDT_RESET_WIDTH_DURATION;
+> > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0s->regs[WDT_RESET_WIDT=
+H] |=3D data & WDT_RESET_WIDTH_DURATION;
+> > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0break;
+> > +=C2=A0=C2=A0=C2=A0=C2=A0}
+> > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0case WDT_TIMEOUT_STATUS:
+> > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0case WDT_TIMEOUT_CLEAR:
+> > -=C2=A0=C2=A0=C2=A0=C2=A0case WDT_RESET_WDITH:
+> > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0qemu_log_ma=
+sk(LOG_UNIMP,
+> > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+"%s: uninmplemented write at offset 0x%" HWADDR_PRIx "\n",
+> > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+__func__, offset);
+> > @@ -167,6 +193,7 @@ static void aspeed_wdt_reset(DeviceState *dev)
+> > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0s->regs[WDT_RELOAD_VALUE] =3D 0x03E=
+F1480;
+> > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0s->regs[WDT_RESTART] =3D 0;
+> > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0s->regs[WDT_CTRL] =3D 0;
+> > +=C2=A0=C2=A0=C2=A0=C2=A0s->regs[WDT_RESET_WIDTH] =3D 0XFF;
+>=20
+> why different than your define WDT_RESET_WIDTH_DURATION?
+
+Maybe WDT_RESET_WIDTH_DURATION is poorly named, but it's a mask, not a
+value. The 0xFF here (somehow I got an upper-case X in there) is the
+default value for the register as documented in both the AST2400 and
+AST2500 datasheets. However, this *has* lead me to discover that I've
+defined the WDT_RESET_WIDTH_DURATION mask too narrow for the AST2500,
+it should be 0xFFFFF (19:0). The AST2400 datasheet documents the field
+as 7:0 (0xFF).
+
+I'll respin, taking into account the 2.11 note above, unless you have
+any more comments.
+
+Thanks for taking a look!
+
+Andrew
+
+> > =C2=A0=C2=A0
+> > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0timer_del(s->timer);
+> > =C2=A0 }
+> >=20
+>=20
+> Regards,
+>=20
+> Phil.
+--=-mw8h11HAz22QEgQhmKe5
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: This is a digitally signed message part
+Content-Transfer-Encoding: 7bit
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIcBAABCgAGBQJZgARWAAoJEJ0dnzgO5LT5yzoP/A/dsr7O61gySJwGn3+TGSsF
+DmyLfDlDzPpG2vHpG+lE/ipgd0hnnkXF3JakEfpfDfR1Oj0fayrF1NfGVIHFpoTz
+kAlsztmg6mZssDHraPTmBON2cftPN1+rT4mX96XCWJRN072CNY/MTSAG9xVm7ph4
+yYi6hkX7cQA9hozTNOSJV0KIsBkH3vJBbxSN8NG/0/M24KghYOzLagOs3Od+63ES
+A2HDfAISniXpXeuvWWuNb46ZMSuMJTJoV8PBp8VT8SIkF5aKgT0vJQouJE7JkAAu
+DU3f+cbmBslXL6ZLlzS4uFK2K9XCD4FPCCbJi66UJiQnmIACa6NJZiKol4eXyy7P
+yQB1+bNPzsOxf2jI866Q5JsTxIclhWBYXTW0OQ4E0iPlJpVCFctEMiKwNn7/C+y6
+WdN54SbPJn/8TLpepd7lehg4yN3XLchWzowCgYUhyeOkGny7gYmWt2fl0ZXoCWhe
+j0w/+1zc9ZxRvak+X74pyFQ9AsyJqhRdtt7e8D0GVpBCLr/OJX0JNDRreyT+mpBp
+deAwgVEx4EJ6AQc7H76Y6nnqBOz6hm8UI0QK/X/3EXsUL9sx6h5FT5LD39u0U7r+
+W2HbduAEIM4Z22arM/Cqq+NgkYANhYd9KngSIbETLvDQMKJ0dnvWewrKjEH5URqb
+I4qzEZb+utZmwyyA64ky
+=AWxP
+-----END PGP SIGNATURE-----
+
+--=-mw8h11HAz22QEgQhmKe5--
+

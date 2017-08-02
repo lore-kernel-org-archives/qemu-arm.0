@@ -1,111 +1,109 @@
-Received: by 10.25.44.15 with SMTP id s15csp6357461lfs;
-        Wed, 2 Aug 2017 09:48:33 -0700 (PDT)
-X-Received: by 10.55.217.157 with SMTP id q29mr32456631qkl.152.1501692512989;
-        Wed, 02 Aug 2017 09:48:32 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1501692512; cv=none;
+Received: by 10.25.44.15 with SMTP id s15csp6358735lfs;
+        Wed, 2 Aug 2017 09:49:48 -0700 (PDT)
+X-Received: by 10.200.36.36 with SMTP id c33mr14341009qtc.298.1501692588540;
+        Wed, 02 Aug 2017 09:49:48 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1501692588; cv=none;
         d=google.com; s=arc-20160816;
-        b=imtU2jgMEeHSBP/mMYrgroNL59sw56Y1y6KUE0rFtMjs1+JPjS1dtJaESq8e/HBTQ5
-         SnRDEkawUe+NNxnYVKuPtKcaA8cRW2Jbq+9JzNe35dYAFmwGwvhyLzONy52ej5lzFQfK
-         LxL0ZrB/d+UftTTyLX9jRBwFiGVAVLOLeo8zHRrEcsXjFVSkDWyFjjkNcEHXhnrSMOFo
-         7f9urgZzk4CLOJT/0gujsNgOpuHNAXtjQe+pOeFn17UyRDzGfokRP+qkz3ZS0yxkT1GN
-         DGFJyHnDZT4BUbmU6m3spgVr7zHiU4pbTKVtXFg8mLyNHA3x5To6jJG2MRdQIiqqsu39
-         NelA==
+        b=wOoaDWS+s7xWO6fh7fI6OUaeccYT/dgxcefZGLD2JRum2D62+MjwEhRN7NFr1afANG
+         PJYo+n7fW5la3ZRLYw2N9zq5wmkrZM+jYeatjkJYTEsUtMkjSyN78a8EuP8qLvtQerg2
+         z2jKsZNi94Lsh47t4zuvIuptBF0EHXt4fgFT6tOBya6JtUANMzS9oyTYjRHqbxX0kOsc
+         uMez49PYtTHZivNVDsNA38FcnoxYWt0dMrInRqvFlgC3U5OJfAiPEp+uckn7aEMttr5V
+         aN8mbk2HmARadi45oTZI3EoDgAly1+y3+HPmIkkMw1AX9Ycx6w6TQXLch5t8BRjsDRSX
+         mmxA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
          :message-id:date:to:from:arc-authentication-results;
-        bh=NtaxEGKpc5UeLOSiIMNjB+coLoYkXUj/Nys4qeMJJb4=;
-        b=z82FqMNLEvKS4dBPJ61antJG55XQxaSzeU6UyO3RyOjwVFVOhIIAOrwy7i9BSggukX
-         EY4WzQd9543mkPQEw6a8ykmvlcDnihw5ku1Z1txbNWPNd+s6y8MggRF9a3cavge5Y7/n
-         UffN9T7I0dLUZKJMb5y5RPqqi3x923uxFFR2oJXXbM9Q3fTcepmYjvn/Q9BSM1G1/xeB
-         +UfqnSFiWNTthIJTC4qMUOT8smVrlBpuD5JehLKteFLWT3Ef47rIgpGZoBR6iOP/vjii
-         DpgbW1s7EmZL55IxaWCJPdQ4W31ZrYgLK3j97FG2QtrEYJz6b9LTv4Uv6V8usr4Ck5qu
-         CVlg==
+        bh=M/Ta+5+FLoCioBcaYj4TWwcHbecwb7lppqdwhp0Lp/4=;
+        b=u8v4fsLLc8sx9Hj/rcyb80a+Wi+mXScjS0jiyWqK4+t0KK5RuEP1XlevNgWW6rqCa+
+         a6uJD856YhLeh2XT+80aKX0aNSffL33lpyGRvwFm1SkNGdZzOUARYp0nxsIMpE7pZx/r
+         LaKW749K18p4DYOTLJtmUhJGfdlEp8BEcn+ttElutaTWcMtI9x3RDfwnAF+fmEHhaEzb
+         /IUWCv5cm9OSNzWmwM7A/Ftlsfzd/WE2el9P8VVhmHKKW1PHr+15Ritkz/yqJOpQDnx7
+         TR5XuIfWaZFdUwOfyvLYmErpDz2Ih1ESSQOzzQCYzjMWmWe2s9+G4F1MS94yIdMoXOi6
+         OrzQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id d187si28808319qkf.474.2017.08.02.09.48.32
+        by mx.google.com with ESMTPS id f7si14815772qkc.264.2017.08.02.09.49.47
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 02 Aug 2017 09:48:32 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Wed, 02 Aug 2017 09:49:48 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:48694 helo=lists.gnu.org)
+Received: from localhost ([::1]:48697 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1dcwow-0006nM-DB
-	for alex.bennee@linaro.org; Wed, 02 Aug 2017 12:48:30 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:49563)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1dcwq9-0007ZG-RO
+	for alex.bennee@linaro.org; Wed, 02 Aug 2017 12:49:45 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:49569)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1dcwlA-0003al-Ut
-	for qemu-arm@nongnu.org; Wed, 02 Aug 2017 12:44:37 -0400
+	(envelope-from <pm215@archaic.org.uk>) id 1dcwlB-0003ax-4U
+	for qemu-devel@nongnu.org; Wed, 02 Aug 2017 12:44:37 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1dcwlA-0004nJ-7Z
-	for qemu-arm@nongnu.org; Wed, 02 Aug 2017 12:44:36 -0400
+	(envelope-from <pm215@archaic.org.uk>) id 1dcwlA-0004na-Dv
+	for qemu-devel@nongnu.org; Wed, 02 Aug 2017 12:44:37 -0400
 Received: from orth.archaic.org.uk ([2001:8b0:1d0::2]:37764)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <pm215@archaic.org.uk>)
-	id 1dcwlA-0003zA-0F; Wed, 02 Aug 2017 12:44:36 -0400
+	id 1dcwl8-0003zA-CI; Wed, 02 Aug 2017 12:44:34 -0400
 Received: from pm215 by orth.archaic.org.uk with local (Exim 4.84_2)
 	(envelope-from <pm215@archaic.org.uk>)
-	id 1dcwkf-0003xR-14; Wed, 02 Aug 2017 17:44:05 +0100
+	id 1dcwkf-0003yE-Vq; Wed, 02 Aug 2017 17:44:05 +0100
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Date: Wed,  2 Aug 2017 17:43:51 +0100
-Message-Id: <1501692241-23310-6-git-send-email-peter.maydell@linaro.org>
+Date: Wed,  2 Aug 2017 17:43:53 +0100
+Message-Id: <1501692241-23310-8-git-send-email-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.7.4
 In-Reply-To: <1501692241-23310-1-git-send-email-peter.maydell@linaro.org>
 References: <1501692241-23310-1-git-send-email-peter.maydell@linaro.org>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 2001:8b0:1d0::2
-Subject: [Qemu-arm] [PATCH 05/15] hw/intc/armv7m_nvic.c: Remove out of date
- comment
-X-BeenThere: qemu-arm@nongnu.org
+Subject: [Qemu-devel] [PATCH 07/15] target/arm: Fix outdated comment about
+ exception exit
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: patches@linaro.org
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: /tawTdOfkzR/
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: bH1dOSDRXXbd
 
-Remove an out of date comment which says there's only one
-item in the NVIC container region -- we put systick into its
-own device object a while back and so now there are two
-things in the container.
+When we switched our handling of exception exit to detect
+the magic addresses at translate time rather than via
+a do_unassigned_access hook, we forgot to update a
+comment; correct the omission.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- hw/intc/armv7m_nvic.c | 4 ----
- 1 file changed, 4 deletions(-)
+ target/arm/helper.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/hw/intc/armv7m_nvic.c b/hw/intc/armv7m_nvic.c
-index 323e2d4..2e8166a 100644
---- a/hw/intc/armv7m_nvic.c
-+++ b/hw/intc/armv7m_nvic.c
-@@ -1036,10 +1036,6 @@ static void armv7m_nvic_realize(DeviceState *dev, Error **errp)
-      *  0xd00..0xd3c - SCS registers
-      *  0xd40..0xeff - Reserved or Not implemented
-      *  0xf00 - STIR
--     *
--     * At the moment there is only one thing in the container region,
--     * but we leave it in place to allow us to pull systick out into
--     * its own device object later.
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index fd83a21..cb88c66 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -6143,7 +6143,7 @@ static void do_v7m_exception_exit(ARMCPU *cpu)
+     bool rettobase = false;
+ 
+     /* We can only get here from an EXCP_EXCEPTION_EXIT, and
+-     * arm_v7m_do_unassigned_access() enforces the architectural rule
++     * gen_bx_excret() enforces the architectural rule
+      * that jumps to magic addresses don't have magic behaviour unless
+      * we're in Handler mode (compare pseudocode BXWritePC()).
       */
-     memory_region_init(&s->container, OBJECT(s), "nvic", 0x1000);
-     /* The system register region goes at the bottom of the priority
 -- 
 2.7.4
 

@@ -1,86 +1,70 @@
-Received: by 10.25.44.15 with SMTP id s15csp4672511lfs;
-        Tue, 1 Aug 2017 02:41:03 -0700 (PDT)
-X-Received: by 10.200.34.251 with SMTP id g56mr26784570qta.65.1501580463309;
-        Tue, 01 Aug 2017 02:41:03 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1501580463; cv=none;
+Received: by 10.25.44.15 with SMTP id s15csp6356996lfs;
+        Wed, 2 Aug 2017 09:48:02 -0700 (PDT)
+X-Received: by 10.55.137.71 with SMTP id l68mr17114311qkd.166.1501692482030;
+        Wed, 02 Aug 2017 09:48:02 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1501692482; cv=none;
         d=google.com; s=arc-20160816;
-        b=jkNa9XMbuOhVK8jRZKeoLkhE9uQA7YiKwoPd9jMMeAsc03mg2264hSEqjChzQanqnP
-         rtlpVpzIvsjciQqAUtEsqB9dEKaih8Gx/06RADlNoKDeXjww9X1tv/pO2S0SD2QihpBh
-         hvRs8pOOAJYhTk3WmgDBYWT4/gEhSpYWnius93hje+T2LTehCEjI/NJHlzaZLt+k0JcU
-         76mv4/SK3UvgatOJKmB7Sq44zJGDRuUUyC7GFb3laJenfbBgmgYWuOFChQ5s0zmN+qKI
-         PGxMBhsA8D9CIDrtNJxKhafAx9SVuoQZcwsU44AIgDm7eUq5ug0KqHq6fRvZmsVQt7Eg
-         R3ng==
+        b=NRYUIKTlUz+SnFfwcpnuI5ibizGhX+veR/pW/WwqEsy4uhIkqwCy21Meuco/B+ARt+
+         xoHGuwJ41V5fQSpYY2LuIDLRNaiNXgZLlZ2VfEb/O6giUKg9S3Z/rZ3ozJ4WOJO2MRYf
+         6gUHd7M65d8Rkd55sMykZryKJqafiwf5OEBJwACwT4zVkwFusrb2K6p/kLpSXlItZfRd
+         7wgS4W4W0xaGINA55asgVoiFeMOu3Y2v+NGpcbZXpRz3xY78XqHSKRx9bFdgLSIEBUI3
+         V4Z2BdpMyAvqd04bd1dcUkIitrj/hTU13uEpZVDAiVHnzE14dT0ze50p9pQSQbnFI04w
+         vrmQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
-         :message-id:date:to:from:dmarc-filter:arc-authentication-results;
-        bh=sFGfCNiNbKZOPrk1uJkZMSehsMI9kkV/Q1EcwFRJexU=;
-        b=kCTY2iOCaC3iORczs5Dybb1PT6hx7VykNGhmbLm+GDR3Xipl/cZ0QZXFX2kP33tF73
-         YLRLlWV0TnN62c23xkBYcweApXtf3K21q+EacrEn8fPprE+HnPQtnUtcRbV4tSBmd6Az
-         5PikwD+Hdco9WMT6VgEFvYjbuW73hiZhJ43FGgpAg/9VSu4mfsc2vCNROFP1tuI2Xl+h
-         vhgOUEqUVo13iAaN19hhSjmWGE9VjH+XJJM1qZ+ou2uMCFxzWLS8Vei77UpzYfRqyvFM
-         Ry9hJSpYG32V93k5qN5aG2R9A5K9+M2kCb5qNh8wWMMzupBm4jxTkWDk0R1xMxXapbt3
-         MNtQ==
+         :message-id:date:to:from:arc-authentication-results;
+        bh=+6Qar3r5X0EamItaEhpBe7+TPCOvZagGrw0SAlMkkRo=;
+        b=TJS3v9Jjh048HrZWYyhA10s5RRyv2bd8rsZ4FV9/Ur8ZB0wwMV9CFgUQSZfmK2M39F
+         gI9KRzmhaYXuoTNevrtN+1cdFS3wkJg2FYeRnpBg/wFJDYZc7Pebr5PvjAf1TC/0xG3f
+         qCpu9k4mIA5MveP+jVv/soUrF0G/F8GHxD435BgKcInn0cN4qw6FxM0Twvk2/varP9Nc
+         g31BZwopSMV86zYisKnDD59TTTDYkMjEMTe9mABP8pWTuLSmxNVZ8a7lzmRnVipOdSe0
+         MdW7cUR2vHeXQloqExZkzgDBCeYzyCuG3mP+k4gfhJZDwXPpr6LpOb3XLExWfJ0xFFhp
+         LR2A==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id v14si25348399qth.491.2017.08.01.02.41.02
+        by mx.google.com with ESMTPS id e27si29284954qtc.156.2017.08.02.09.48.01
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 01 Aug 2017 02:41:03 -0700 (PDT)
+        Wed, 02 Aug 2017 09:48:02 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:41417 helo=lists.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:48689 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1dcTfg-00041j-Fl
-	for alex.bennee@linaro.org; Tue, 01 Aug 2017 05:41:00 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:38533)
+	id 1dcwoR-0006KE-BV
+	for alex.bennee@linaro.org; Wed, 02 Aug 2017 12:47:59 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:49535)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1dcTaH-0008BA-I2
-	for qemu-arm@nongnu.org; Tue, 01 Aug 2017 05:35:26 -0400
+	(envelope-from <pm215@archaic.org.uk>) id 1dcwlA-0003ZU-4H
+	for qemu-arm@nongnu.org; Wed, 02 Aug 2017 12:44:36 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1dcTaF-0002cw-U3
-	for qemu-arm@nongnu.org; Tue, 01 Aug 2017 05:35:25 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:49012)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <eric.auger@redhat.com>)
-	id 1dcTaF-0002bV-Lg; Tue, 01 Aug 2017 05:35:23 -0400
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
-	[10.5.11.11])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 908B9169366;
-	Tue,  1 Aug 2017 09:35:22 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 908B9169366
-Authentication-Results: ext-mx03.extmail.prod.ext.phx2.redhat.com;
-	dmarc=none (p=none dis=none) header.from=redhat.com
-Authentication-Results: ext-mx03.extmail.prod.ext.phx2.redhat.com;
-	spf=fail smtp.mailfrom=eric.auger@redhat.com
-Received: from localhost.localdomain.com (ovpn-116-181.ams2.redhat.com
-	[10.36.116.181])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id C896D60176;
-	Tue,  1 Aug 2017 09:35:18 +0000 (UTC)
-From: Eric Auger <eric.auger@redhat.com>
-To: eric.auger.pro@gmail.com, eric.auger@redhat.com, peter.maydell@linaro.org,
-	alex.williamson@redhat.com, mst@redhat.com, qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org, jean-philippe.brucker@arm.com
-Date: Tue,  1 Aug 2017 11:33:14 +0200
-Message-Id: <1501579994-3320-9-git-send-email-eric.auger@redhat.com>
-In-Reply-To: <1501579994-3320-1-git-send-email-eric.auger@redhat.com>
-References: <1501579994-3320-1-git-send-email-eric.auger@redhat.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.27]);
-	Tue, 01 Aug 2017 09:35:22 +0000 (UTC)
+	(envelope-from <pm215@archaic.org.uk>) id 1dcwl9-0004mk-CU
+	for qemu-arm@nongnu.org; Wed, 02 Aug 2017 12:44:36 -0400
+Received: from orth.archaic.org.uk ([2001:8b0:1d0::2]:37764)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <pm215@archaic.org.uk>)
+	id 1dcwl9-0003zA-6b; Wed, 02 Aug 2017 12:44:35 -0400
+Received: from pm215 by orth.archaic.org.uk with local (Exim 4.84_2)
+	(envelope-from <pm215@archaic.org.uk>)
+	id 1dcwkf-0003xp-H1; Wed, 02 Aug 2017 17:44:05 +0100
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Date: Wed,  2 Aug 2017 17:43:52 +0100
+Message-Id: <1501692241-23310-7-git-send-email-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.7.4
+In-Reply-To: <1501692241-23310-1-git-send-email-peter.maydell@linaro.org>
+References: <1501692241-23310-1-git-send-email-peter.maydell@linaro.org>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: [Qemu-arm] [RFC v3 8/8] hw/arm/virt: Add virtio-iommu the virt board
+X-Received-From: 2001:8b0:1d0::2
+Subject: [Qemu-arm] [PATCH 06/15] target/arm: Remove incorrect comment about
+ MPU_CTRL
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -92,214 +76,35 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: kevin.tian@intel.com, marc.zyngier@arm.com, tn@semihalf.com,
-	will.deacon@arm.com, drjones@redhat.com, peterx@redhat.com,
-	bharat.bhushan@nxp.com, christoffer.dall@linaro.org
+Cc: patches@linaro.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: i0WB+nRW07Zi
+X-TUID: A8ksa1J3TnuT
 
-The specific virtio-mmio node is inconditionally added on
-machine init while the binding between this latter and the
-PCIe host bridge is done on machine init done notifier, only
-if -device virtio-iommu-device was added to the qemu command
-line.
+Remove the comment that claims that some MPU_CTRL bits are stored
+in sctlr_el[1]. This has never been true since MPU_CTRL was added
+in commit 29c483a50607 -- the comment is a leftover from
+Michael Davidsaver's original implementation, which I modified
+not to use sctlr_el[1]; I forgot to delete the comment then.
 
-Signed-off-by: Eric Auger <eric.auger@redhat.com>
-
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
----
- hw/arm/virt.c         | 92 +++++++++++++++++++++++++++++++++++++++++++++++----
- include/hw/arm/virt.h |  4 +++
- 2 files changed, 89 insertions(+), 7 deletions(-)
+ target/arm/cpu.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index 93c4ab2..9509399 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -52,6 +52,7 @@
- #include "hw/arm/fdt.h"
- #include "hw/intc/arm_gic.h"
- #include "hw/intc/arm_gicv3_common.h"
-+#include "hw/virtio/virtio-iommu.h"
- #include "kvm_arm.h"
- #include "hw/smbios/smbios.h"
- #include "qapi/visitor.h"
-@@ -139,6 +140,7 @@ static const MemMapEntry a15memmap[] = {
-     [VIRT_FW_CFG] =             { 0x09020000, 0x00000018 },
-     [VIRT_GPIO] =               { 0x09030000, 0x00001000 },
-     [VIRT_SECURE_UART] =        { 0x09040000, 0x00001000 },
-+    [VIRT_SMMU] =               { 0x09050000, 0x00000200 },
-     [VIRT_MMIO] =               { 0x0a000000, 0x00000200 },
-     /* ...repeating for a total of NUM_VIRTIO_TRANSPORTS, each of that size */
-     [VIRT_PLATFORM_BUS] =       { 0x0c000000, 0x02000000 },
-@@ -159,6 +161,7 @@ static const int a15irqmap[] = {
-     [VIRT_SECURE_UART] = 8,
-     [VIRT_MMIO] = 16, /* ...to 16 + NUM_VIRTIO_TRANSPORTS - 1 */
-     [VIRT_GIC_V2M] = 48, /* ...to 48 + NUM_GICV2M_SPIS - 1 */
-+    [VIRT_SMMU] = 74,
-     [VIRT_PLATFORM_BUS] = 112, /* ...to 112 + PLATFORM_BUS_NUM_IRQS -1 */
- };
- 
-@@ -991,7 +994,81 @@ static void create_pcie_irq_map(const VirtMachineState *vms,
-                            0x7           /* PCI irq */);
- }
- 
--static void create_pcie(const VirtMachineState *vms, qemu_irq *pic)
-+static int bind_virtio_iommu_device(Object *obj, void *opaque)
-+{
-+    VirtMachineState *vms = (VirtMachineState *)opaque;
-+    struct arm_boot_info *info = &vms->bootinfo;
-+    int dtb_size;
-+    void *fdt = info->get_dtb(info, &dtb_size);
-+    Object *dev;
-+
-+    dev = object_dynamic_cast(obj, TYPE_VIRTIO_IOMMU);
-+
-+    if (!dev) {
-+        /* Container, traverse it for children */
-+        return object_child_foreach(obj, bind_virtio_iommu_device, opaque);
-+    }
-+
-+    qemu_fdt_setprop_cells(fdt, vms->pcie_host_nodename, "iommu-map",
-+                           0x0, vms->smmu_phandle, 0x0, 0x10000);
-+
-+    return true;
-+}
-+
-+static
-+void virtio_iommu_notifier(Notifier *notifier, void *data)
-+{
-+    VirtMachineState *vms = container_of(notifier, VirtMachineState,
-+                                         virtio_iommu_done);
-+    VirtMachineClass *vmc = VIRT_MACHINE_GET_CLASS(vms);
-+    Object *container;
-+
-+
-+    if (vmc->no_iommu) {
-+        return;
-+    }
-+
-+    container = container_get(qdev_get_machine(), "/peripheral");
-+    bind_virtio_iommu_device(container, vms);
-+    container = container_get(qdev_get_machine(), "/peripheral-anon");
-+    bind_virtio_iommu_device(container, vms);
-+}
-+
-+static void create_virtio_iommu(VirtMachineState *vms, qemu_irq *pic)
-+{
-+    char *smmu;
-+    const char compat[] = "virtio,mmio";
-+    int irq =  vms->irqmap[VIRT_SMMU];
-+    hwaddr base = vms->memmap[VIRT_SMMU].base;
-+    hwaddr size = vms->memmap[VIRT_SMMU].size;
-+    VirtMachineClass *vmc = VIRT_MACHINE_GET_CLASS(vms);
-+
-+    if (vmc->no_iommu) {
-+        return;
-+    }
-+
-+    vms->smmu_phandle = qemu_fdt_alloc_phandle(vms->fdt);
-+
-+    sysbus_create_simple("virtio-mmio", base, pic[irq]);
-+
-+    smmu = g_strdup_printf("/virtio_mmio@%" PRIx64, base);
-+    qemu_fdt_add_subnode(vms->fdt, smmu);
-+    qemu_fdt_setprop(vms->fdt, smmu, "compatible", compat, sizeof(compat));
-+    qemu_fdt_setprop_sized_cells(vms->fdt, smmu, "reg", 2, base, 2, size);
-+
-+    qemu_fdt_setprop_cells(vms->fdt, smmu, "interrupts",
-+            GIC_FDT_IRQ_TYPE_SPI, irq, GIC_FDT_IRQ_FLAGS_EDGE_LO_HI);
-+
-+    qemu_fdt_setprop(vms->fdt, smmu, "dma-coherent", NULL, 0);
-+    qemu_fdt_setprop_cell(vms->fdt, smmu, "#iommu-cells", 1);
-+    qemu_fdt_setprop_cell(vms->fdt, smmu, "phandle", vms->smmu_phandle);
-+    g_free(smmu);
-+
-+    vms->virtio_iommu_done.notify = virtio_iommu_notifier;
-+    qemu_add_machine_init_done_notifier(&vms->virtio_iommu_done);
-+}
-+
-+static void create_pcie(VirtMachineState *vms, qemu_irq *pic)
- {
-     hwaddr base_mmio = vms->memmap[VIRT_PCIE_MMIO].base;
-     hwaddr size_mmio = vms->memmap[VIRT_PCIE_MMIO].size;
-@@ -1064,7 +1141,8 @@ static void create_pcie(const VirtMachineState *vms, qemu_irq *pic)
-         }
-     }
- 
--    nodename = g_strdup_printf("/pcie@%" PRIx64, base);
-+    vms->pcie_host_nodename = g_strdup_printf("/pcie@%" PRIx64, base);
-+    nodename = vms->pcie_host_nodename;
-     qemu_fdt_add_subnode(vms->fdt, nodename);
-     qemu_fdt_setprop_string(vms->fdt, nodename,
-                             "compatible", "pci-host-ecam-generic");
-@@ -1103,7 +1181,6 @@ static void create_pcie(const VirtMachineState *vms, qemu_irq *pic)
-     qemu_fdt_setprop_cell(vms->fdt, nodename, "#interrupt-cells", 1);
-     create_pcie_irq_map(vms, vms->gic_phandle, irq, nodename);
- 
--    g_free(nodename);
- }
- 
- static void create_platform_bus(VirtMachineState *vms, qemu_irq *pic)
-@@ -1448,16 +1525,16 @@ static void machvirt_init(MachineState *machine)
- 
-     create_rtc(vms, pic);
- 
--    create_pcie(vms, pic);
--
--    create_gpio(vms, pic);
--
-     /* Create mmio transports, so the user can create virtio backends
-      * (which will be automatically plugged in to the transports). If
-      * no backend is created the transport will just sit harmlessly idle.
-      */
-     create_virtio_devices(vms, pic);
- 
-+    create_pcie(vms, pic);
-+
-+    create_gpio(vms, pic);
-+
-     vms->fw_cfg = create_fw_cfg(vms, &address_space_memory);
-     rom_set_fw(vms->fw_cfg);
- 
-@@ -1482,6 +1559,7 @@ static void machvirt_init(MachineState *machine)
-      * Notifiers are executed in registration reverse order.
-      */
-     create_platform_bus(vms, pic);
-+    create_virtio_iommu(vms, pic);
- }
- 
- static bool virt_get_secure(Object *obj, Error **errp)
-diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
-index ff27551..070cb39 100644
---- a/include/hw/arm/virt.h
-+++ b/include/hw/arm/virt.h
-@@ -59,6 +59,7 @@ enum {
-     VIRT_GIC_V2M,
-     VIRT_GIC_ITS,
-     VIRT_GIC_REDIST,
-+    VIRT_SMMU,
-     VIRT_UART,
-     VIRT_MMIO,
-     VIRT_RTC,
-@@ -91,6 +92,7 @@ typedef struct {
- typedef struct {
-     MachineState parent;
-     Notifier machine_done;
-+    Notifier virtio_iommu_done;
-     FWCfgState *fw_cfg;
-     bool secure;
-     bool highmem;
-@@ -106,6 +108,8 @@ typedef struct {
-     uint32_t clock_phandle;
-     uint32_t gic_phandle;
-     uint32_t msi_phandle;
-+    uint32_t smmu_phandle;
-+    char *pcie_host_nodename;
-     int psci_conduit;
- } VirtMachineState;
+diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+index b39d64a..b64474c 100644
+--- a/target/arm/cpu.h
++++ b/target/arm/cpu.h
+@@ -416,7 +416,7 @@ typedef struct CPUARMState {
+         uint32_t dfsr; /* Debug Fault Status Register */
+         uint32_t mmfar; /* MemManage Fault Address */
+         uint32_t bfar; /* BusFault Address */
+-        unsigned mpu_ctrl; /* MPU_CTRL (some bits kept in sctlr_el[1]) */
++        unsigned mpu_ctrl; /* MPU_CTRL */
+         int exception;
+     } v7m;
  
 -- 
-2.5.5
+2.7.4
 

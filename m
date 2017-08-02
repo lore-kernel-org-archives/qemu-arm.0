@@ -1,70 +1,69 @@
-Received: by 10.25.44.15 with SMTP id s15csp6354128lfs;
-        Wed, 2 Aug 2017 09:44:47 -0700 (PDT)
-X-Received: by 10.55.111.4 with SMTP id k4mr30006553qkc.287.1501692287248;
-        Wed, 02 Aug 2017 09:44:47 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1501692287; cv=none;
+Received: by 10.25.44.15 with SMTP id s15csp6354211lfs;
+        Wed, 2 Aug 2017 09:44:52 -0700 (PDT)
+X-Received: by 10.55.167.211 with SMTP id q202mr30566700qke.77.1501692292234;
+        Wed, 02 Aug 2017 09:44:52 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1501692292; cv=none;
         d=google.com; s=arc-20160816;
-        b=jAG0fTwmu7Zo7jkQYgXQBh21W+f75BFMFZobHWpIwyc4mu2uVle6e3Vh1a2wELnWp9
-         iilatWBllsrzOBlAMprBiZ9z1hW5rrz/sHMbcrcL2XrLTVq3B1ymt/BQt8tf38yb3xsC
-         tjgs/ubiHCaQ7C4ANNULldy7SH4Ja2mhIpAA4mBgxrha+iusCuNuDZz8aiDAhETnmuBa
-         ODdVL30OMAHYs2WSVjE/2ce+IkqA4v6iiXafKOMciIMmy1JsyqYvoUM7qHcCxsa/211v
-         LF1CTh7LFxZvfM6GQ9h7FhT0Q+uwGdZBcSrIPwKeuEZfY6VHdOq3c4lqN6kbL++Eo+wH
-         jiNA==
+        b=mwiVquLuPtv3tGsm3u/RXFsAI5/14zK6XFCAloUX8G/Fy+EyanCazDlW29reXILvby
+         4sNVGHgNu2rDOkJ7BzawsucTR0lHxu4B0cTXJzQcv8H8aRrf+X4gO84ikF3iFan9wPwa
+         RBBnoNnWd4QCv5Hv1+SY6NSvarpZ0nMdRRCvn0yuxetgQ0/gZGYD9mZKZts2BAtcjmhj
+         3RobAYOrmxCny/hItQNufjAgDrm3Y1mJNIzsVp+zr9tTfUfEc3B6MLTLH+Jhetfk7pNb
+         xe7wdzngHRKLDiQ1GfijMtkN2cRjMHlrVna69bUVRuYwiwTBsYcBC6A9dbv/wq/2AXB5
+         OVDA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
          :message-id:date:to:from:arc-authentication-results;
-        bh=3ZTuLbp07JH9BmNpmUIy+gxCRsW5I5x6DtvxcxNVH8M=;
-        b=SWod6SBbTBWxaD64iFHeRklKrPbXVzAyiKV8QxJ0V+2gaORfJtHtee6qFUKrjeu7I2
-         QD6e9yAka+/zEylC822kGrQ6URUb75h5FQIg2coShKA95F9O5HUQALppoobEW9oZaao5
-         5DgsfgcTVsyJayVO/9VHo+8LNn0w+3n57oPGYLBCI51eS4hxCUzDQDil7SpE9WwgUc8f
-         Kpab9E9nag+EP9e1lr3H/W7VeyHQBz2TAXuvH4I/7zjJ7RP069oP/XmPKBPETJgcblra
-         fpw3hlVWcOwzO8LNTIJS4jJbBwsPL7uKHCyR/u4kvAwnP1WTFPdK1nwj1AJN02KDyYj/
-         2nPg==
+        bh=LC5PFc3t5fueI0T8ImT9lfMo7MFqOCvneVZqFLN5bE0=;
+        b=yO2m+W3s8Df7kFLNYeP2L22ikUNmHi51sEGXd1GB9x3ihrHHKLs10+TONxqFfFMzg2
+         eKlM6l7b/yN1WFNhmW08/vdQsLw8ZISeP2JrgU2nSr7dT26DJuAMoouqnPpEbJ90bibP
+         Xnjv9hzTbYoSkj5ApNRY7FVros92Oc0JtlYzbhws8krC7Ved0jfDfUDaUUyLFFQlmTOf
+         PLJlnroXFG1bUOilmULrx/O0XHUigOGNyJcsNs9qQkkhDORXmgK+flk5RG6FXVfEwOIP
+         4BCY0O24lY6nh/Q/7XgN3PW5GAOwaEC1UWl+NCmdExp9ZCEVdLNjXzi3BU3rYz1ijU/V
+         IIww==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id w69si23511132qkb.361.2017.08.02.09.44.46
+        by mx.google.com with ESMTPS id 32si8131264qta.401.2017.08.02.09.44.51
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 02 Aug 2017 09:44:47 -0700 (PDT)
+        Wed, 02 Aug 2017 09:44:52 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:48671 helo=lists.gnu.org)
+Received: from localhost ([::1]:48673 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1dcwlI-0003fB-KO
-	for alex.bennee@linaro.org; Wed, 02 Aug 2017 12:44:44 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:49381)
+	id 1dcwlN-0003mP-Gw
+	for alex.bennee@linaro.org; Wed, 02 Aug 2017 12:44:49 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:49504)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1dcwl4-0003Tu-J9
-	for qemu-arm@nongnu.org; Wed, 02 Aug 2017 12:44:31 -0400
+	(envelope-from <pm215@archaic.org.uk>) id 1dcwl9-0003YS-1N
+	for qemu-arm@nongnu.org; Wed, 02 Aug 2017 12:44:36 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1dcwl3-0004d1-Iy
-	for qemu-arm@nongnu.org; Wed, 02 Aug 2017 12:44:30 -0400
+	(envelope-from <pm215@archaic.org.uk>) id 1dcwl7-0004l4-Pe
+	for qemu-arm@nongnu.org; Wed, 02 Aug 2017 12:44:34 -0400
 Received: from orth.archaic.org.uk ([2001:8b0:1d0::2]:37764)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <pm215@archaic.org.uk>)
-	id 1dcwl3-0003zA-BQ; Wed, 02 Aug 2017 12:44:29 -0400
+	id 1dcwl7-0003zA-HB; Wed, 02 Aug 2017 12:44:33 -0400
 Received: from pm215 by orth.archaic.org.uk with local (Exim 4.84_2)
 	(envelope-from <pm215@archaic.org.uk>)
-	id 1dcwki-00040j-RZ; Wed, 02 Aug 2017 17:44:08 +0100
+	id 1dcwkg-0003yc-Do; Wed, 02 Aug 2017 17:44:06 +0100
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Date: Wed,  2 Aug 2017 17:43:59 +0100
-Message-Id: <1501692241-23310-14-git-send-email-peter.maydell@linaro.org>
+Date: Wed,  2 Aug 2017 17:43:54 +0100
+Message-Id: <1501692241-23310-9-git-send-email-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.7.4
 In-Reply-To: <1501692241-23310-1-git-send-email-peter.maydell@linaro.org>
 References: <1501692241-23310-1-git-send-email-peter.maydell@linaro.org>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 2001:8b0:1d0::2
-Subject: [Qemu-arm] [PATCH 13/15] target/arm: Create and use new function
- arm_v7m_is_handler_mode()
+Subject: [Qemu-arm] [PATCH 08/15] target/arm: Define and use XPSR bit masks
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -79,93 +78,137 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: patches@linaro.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: uG2KxN4lGs9e
+X-TUID: g/ZesWhpGRIc
 
-Add a utility function for testing whether the CPU is in Handler
-mode; this is just a check whether v7m.exception is non-zero, but
-we do it in several places and it makes the code a bit easier
-to read to not have to mentally figure out what the test is testing.
+The M profile XPSR is almost the same format as the A profile CPSR,
+but not quite. Define some XPSR_* macros and use them where we
+definitely dealing with an XPSR rather than reusing the CPSR ones.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- target/arm/cpu.h    | 10 ++++++++--
- target/arm/helper.c |  8 ++++----
- 2 files changed, 12 insertions(+), 6 deletions(-)
+ target/arm/cpu.h    | 38 ++++++++++++++++++++++++++++----------
+ target/arm/helper.c | 15 ++++++++-------
+ 2 files changed, 36 insertions(+), 17 deletions(-)
 
 diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index da90b7a..a3b4b78 100644
+index b64474c..1f06de0 100644
 --- a/target/arm/cpu.h
 +++ b/target/arm/cpu.h
-@@ -1630,13 +1630,19 @@ static inline int arm_highest_el(CPUARMState *env)
-     return 1;
+@@ -883,6 +883,22 @@ void pmccntr_sync(CPUARMState *env);
+ /* Mask of bits which may be set by exception return copying them from SPSR */
+ #define CPSR_ERET_MASK (~CPSR_RESERVED)
+ 
++/* Bit definitions for M profile XPSR. Most are the same as CPSR. */
++#define XPSR_EXCP 0x1ffU
++#define XPSR_SPREALIGN (1U << 9) /* Only set in exception stack frames */
++#define XPSR_IT_2_7 CPSR_IT_2_7
++#define XPSR_GE CPSR_GE
++#define XPSR_SFPA (1U << 20) /* Only set in exception stack frames */
++#define XPSR_T (1U << 24) /* Not the same as CPSR_T ! */
++#define XPSR_IT_0_1 CPSR_IT_0_1
++#define XPSR_Q CPSR_Q
++#define XPSR_V CPSR_V
++#define XPSR_C CPSR_C
++#define XPSR_Z CPSR_Z
++#define XPSR_N CPSR_N
++#define XPSR_NZCV CPSR_NZCV
++#define XPSR_IT CPSR_IT
++
+ #define TTBCR_N      (7U << 0) /* TTBCR.EAE==0 */
+ #define TTBCR_T0SZ   (7U << 0) /* TTBCR.EAE==1 */
+ #define TTBCR_PD0    (1U << 4)
+@@ -987,26 +1003,28 @@ static inline uint32_t xpsr_read(CPUARMState *env)
+ /* Set the xPSR.  Note that some bits of mask must be all-set or all-clear.  */
+ static inline void xpsr_write(CPUARMState *env, uint32_t val, uint32_t mask)
+ {
+-    if (mask & CPSR_NZCV) {
+-        env->ZF = (~val) & CPSR_Z;
++    if (mask & XPSR_NZCV) {
++        env->ZF = (~val) & XPSR_Z;
+         env->NF = val;
+         env->CF = (val >> 29) & 1;
+         env->VF = (val << 3) & 0x80000000;
+     }
+-    if (mask & CPSR_Q)
+-        env->QF = ((val & CPSR_Q) != 0);
+-    if (mask & (1 << 24))
+-        env->thumb = ((val & (1 << 24)) != 0);
+-    if (mask & CPSR_IT_0_1) {
++    if (mask & XPSR_Q) {
++        env->QF = ((val & XPSR_Q) != 0);
++    }
++    if (mask & XPSR_T) {
++        env->thumb = ((val & XPSR_T) != 0);
++    }
++    if (mask & XPSR_IT_0_1) {
+         env->condexec_bits &= ~3;
+         env->condexec_bits |= (val >> 25) & 3;
+     }
+-    if (mask & CPSR_IT_2_7) {
++    if (mask & XPSR_IT_2_7) {
+         env->condexec_bits &= 3;
+         env->condexec_bits |= (val >> 8) & 0xfc;
+     }
+-    if (mask & 0x1ff) {
+-        env->v7m.exception = val & 0x1ff;
++    if (mask & XPSR_EXCP) {
++        env->v7m.exception = val & XPSR_EXCP;
+     }
  }
  
-+/* Return true if a v7M CPU is in Handler mode */
-+static inline bool arm_v7m_is_handler_mode(CPUARMState *env)
-+{
-+    return env->v7m.exception != 0;
-+}
-+
- /* Return the current Exception Level (as per ARMv8; note that this differs
-  * from the ARMv7 Privilege Level).
-  */
- static inline int arm_current_el(CPUARMState *env)
- {
-     if (arm_feature(env, ARM_FEATURE_M)) {
--        return !((env->v7m.exception == 0) && (env->v7m.control & 1));
-+        return arm_v7m_is_handler_mode(env) || !(env->v7m.control & 1);
-     }
- 
-     if (is_a64(env)) {
-@@ -2636,7 +2642,7 @@ static inline void cpu_get_tb_cpu_state(CPUARMState *env, target_ulong *pc,
-     }
-     *flags |= fp_exception_el(env) << ARM_TBFLAG_FPEXC_EL_SHIFT;
- 
--    if (env->v7m.exception != 0) {
-+    if (arm_v7m_is_handler_mode(env)) {
-         *flags |= ARM_TBFLAG_HANDLER_MASK;
-     }
- 
 diff --git a/target/arm/helper.c b/target/arm/helper.c
-index 0ecc8f1..7920153 100644
+index cb88c66..f087d42 100644
 --- a/target/arm/helper.c
 +++ b/target/arm/helper.c
-@@ -6147,7 +6147,7 @@ static void do_v7m_exception_exit(ARMCPU *cpu)
-      * that jumps to magic addresses don't have magic behaviour unless
-      * we're in Handler mode (compare pseudocode BXWritePC()).
-      */
--    assert(env->v7m.exception != 0);
-+    assert(arm_v7m_is_handler_mode(env));
+@@ -6119,7 +6119,7 @@ static void v7m_push_stack(ARMCPU *cpu)
+     /* Align stack pointer if the guest wants that */
+     if ((env->regs[13] & 4) && (env->v7m.ccr & R_V7M_CCR_STKALIGN_MASK)) {
+         env->regs[13] -= 4;
+-        xpsr |= 0x200;
++        xpsr |= XPSR_SPREALIGN;
+     }
+     /* Switch to the handler mode.  */
+     v7m_push(env, xpsr);
+@@ -6244,10 +6244,11 @@ static void do_v7m_exception_exit(ARMCPU *cpu)
+         env->regs[15] &= ~1U;
+     }
+     xpsr = v7m_pop(env);
+-    xpsr_write(env, xpsr, 0xfffffdff);
++    xpsr_write(env, xpsr, ~XPSR_SPREALIGN);
+     /* Undo stack alignment.  */
+-    if (xpsr & 0x200)
++    if (xpsr & XPSR_SPREALIGN) {
+         env->regs[13] |= 4;
++    }
  
-     /* In the spec pseudocode ExceptionReturn() is called directly
-      * from BXWritePC() and gets the full target PC value including
-@@ -6254,7 +6254,7 @@ static void do_v7m_exception_exit(ARMCPU *cpu)
+     /* The restored xPSR exception field will be zero if we're
       * resuming in Thread mode. If that doesn't match what the
-      * exception return type specified then this is a UsageFault.
-      */
--    if (return_to_handler == (env->v7m.exception == 0)) {
-+    if (return_to_handler != arm_v7m_is_handler_mode(env)) {
-         /* Take an INVPC UsageFault by pushing the stack again. */
-         armv7m_nvic_set_pending(env->nvic, ARMV7M_EXCP_USAGE);
-         env->v7m.cfsr |= R_V7M_CFSR_INVPC_MASK;
-@@ -6405,7 +6405,7 @@ void arm_v7m_cpu_do_interrupt(CPUState *cs)
-     if (env->v7m.control & R_V7M_CONTROL_SPSEL_MASK) {
-         lr |= 4;
-     }
--    if (env->v7m.exception == 0) {
-+    if (!arm_v7m_is_handler_mode(env)) {
-         lr |= 8;
-     }
- 
-@@ -8798,7 +8798,7 @@ void HELPER(v7m_msr)(CPUARMState *env, uint32_t maskreg, uint32_t val)
-          * switch_v7m_sp() deals with updating the SPSEL bit in
-          * env->v7m.control, so we only need update the others.
-          */
--        if (env->v7m.exception == 0) {
-+        if (!arm_v7m_is_handler_mode(env)) {
-             switch_v7m_sp(env, (val & R_V7M_CONTROL_SPSEL_MASK) != 0);
+@@ -8693,10 +8694,10 @@ uint32_t HELPER(v7m_mrs)(CPUARMState *env, uint32_t reg)
+     case 0 ... 7: /* xPSR sub-fields */
+         mask = 0;
+         if ((reg & 1) && el) {
+-            mask |= 0x000001ff; /* IPSR (unpriv. reads as zero) */
++            mask |= XPSR_EXCP; /* IPSR (unpriv. reads as zero) */
          }
-         env->v7m.control &= ~R_V7M_CONTROL_NPRIV_MASK;
+         if (!(reg & 4)) {
+-            mask |= 0xf8000000; /* APSR */
++            mask |= XPSR_NZCV | XPSR_Q; /* APSR */
+         }
+         /* EPSR reads as zero */
+         return xpsr_read(env) & mask;
+@@ -8754,10 +8755,10 @@ void HELPER(v7m_msr)(CPUARMState *env, uint32_t maskreg, uint32_t val)
+             uint32_t apsrmask = 0;
+ 
+             if (mask & 8) {
+-                apsrmask |= 0xf8000000; /* APSR NZCVQ */
++                apsrmask |= XPSR_NZCV | XPSR_Q;
+             }
+             if ((mask & 4) && arm_feature(env, ARM_FEATURE_THUMB_DSP)) {
+-                apsrmask |= 0x000f0000; /* APSR GE[3:0] */
++                apsrmask |= XPSR_GE;
+             }
+             xpsr_write(env, val, apsrmask);
+         }
 -- 
 2.7.4
 

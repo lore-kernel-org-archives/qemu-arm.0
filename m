@@ -1,70 +1,70 @@
-Received: by 10.25.44.15 with SMTP id s15csp6354083lfs;
-        Wed, 2 Aug 2017 09:44:45 -0700 (PDT)
-X-Received: by 10.55.126.69 with SMTP id z66mr32838123qkc.48.1501692285011;
-        Wed, 02 Aug 2017 09:44:45 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1501692285; cv=none;
+Received: by 10.25.44.15 with SMTP id s15csp6354128lfs;
+        Wed, 2 Aug 2017 09:44:47 -0700 (PDT)
+X-Received: by 10.55.111.4 with SMTP id k4mr30006553qkc.287.1501692287248;
+        Wed, 02 Aug 2017 09:44:47 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1501692287; cv=none;
         d=google.com; s=arc-20160816;
-        b=P1Qv4+ZWy1DBxSNsMLNjJmMnaQxD1Knli8gKNjlnVXA4xANqnqK0aKG8IphUIzxx9B
-         hTBm1NQiSKLiwV+dekU/wBtBf7WO96tl7zEmNiDYvWRCCeLevan17R8UjhfiH9gu7mZJ
-         LWGZJB2tXauihFpZ+UYvnIKzwHEenn1MrkpRtKFT2TPpNyn4O87y7k/HJA6VIAcHMSkB
-         CR+/kK5ybK5gGoNm6RiHJfAPH/Bdvo2hpRU4zbTmc6ID2N6ZzU+y7+M3kKkGUqACcJqJ
-         9bPY/FvZDVuVZNV445pv8FDdYVDN3XdqYtojkWtQaTDoVpd1/n9mV4Q1YrTtyUCxWGAZ
-         QS1Q==
+        b=jAG0fTwmu7Zo7jkQYgXQBh21W+f75BFMFZobHWpIwyc4mu2uVle6e3Vh1a2wELnWp9
+         iilatWBllsrzOBlAMprBiZ9z1hW5rrz/sHMbcrcL2XrLTVq3B1ymt/BQt8tf38yb3xsC
+         tjgs/ubiHCaQ7C4ANNULldy7SH4Ja2mhIpAA4mBgxrha+iusCuNuDZz8aiDAhETnmuBa
+         ODdVL30OMAHYs2WSVjE/2ce+IkqA4v6iiXafKOMciIMmy1JsyqYvoUM7qHcCxsa/211v
+         LF1CTh7LFxZvfM6GQ9h7FhT0Q+uwGdZBcSrIPwKeuEZfY6VHdOq3c4lqN6kbL++Eo+wH
+         jiNA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
          :message-id:date:to:from:arc-authentication-results;
-        bh=qZSSs+hqqz022T2ZJ22GWesj3VpaTdtIyweROquVPrg=;
-        b=YA5UoiXV9O8PBONiVNmSJsVnPQ2l4JW68q0gMKZBz64WMt8h87AQRJ3narIPnkSylG
-         cv6so5hMWTyQlp5gEKG8lfBAAV4exp9HL+qmItKq9ZkQIh2LLApCxGriq0tEjzw7acrp
-         naOtS4/NgBACQz81SBypF0FXdYssXngUKViBvIx8UoEmErcxARhCmRGg+AxGYTA+7cUR
-         k4azej6Q6E9UzyqAU01Ls0CDGwcPcLEYFUkLUaE0+4wr2XgwCcpAa2VxOGz/Ev6YyrUh
-         AIsxDVi5chOb1u7RzFuyc8p1gkw52zmETWEd66HkJfQpXWBnENZ2TPRk714o8DDKTcFG
-         Pn9w==
+        bh=3ZTuLbp07JH9BmNpmUIy+gxCRsW5I5x6DtvxcxNVH8M=;
+        b=SWod6SBbTBWxaD64iFHeRklKrPbXVzAyiKV8QxJ0V+2gaORfJtHtee6qFUKrjeu7I2
+         QD6e9yAka+/zEylC822kGrQ6URUb75h5FQIg2coShKA95F9O5HUQALppoobEW9oZaao5
+         5DgsfgcTVsyJayVO/9VHo+8LNn0w+3n57oPGYLBCI51eS4hxCUzDQDil7SpE9WwgUc8f
+         Kpab9E9nag+EP9e1lr3H/W7VeyHQBz2TAXuvH4I/7zjJ7RP069oP/XmPKBPETJgcblra
+         fpw3hlVWcOwzO8LNTIJS4jJbBwsPL7uKHCyR/u4kvAwnP1WTFPdK1nwj1AJN02KDyYj/
+         2nPg==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id u2si19691808qkf.46.2017.08.02.09.44.44
+        by mx.google.com with ESMTPS id w69si23511132qkb.361.2017.08.02.09.44.46
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 02 Aug 2017 09:44:44 -0700 (PDT)
+        Wed, 02 Aug 2017 09:44:47 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:48669 helo=lists.gnu.org)
+Received: from localhost ([::1]:48671 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1dcwlG-0003Vg-29
-	for alex.bennee@linaro.org; Wed, 02 Aug 2017 12:44:42 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:49352)
+	id 1dcwlI-0003fB-KO
+	for alex.bennee@linaro.org; Wed, 02 Aug 2017 12:44:44 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:49381)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1dcwl3-0003Tc-DV
-	for qemu-arm@nongnu.org; Wed, 02 Aug 2017 12:44:30 -0400
+	(envelope-from <pm215@archaic.org.uk>) id 1dcwl4-0003Tu-J9
+	for qemu-arm@nongnu.org; Wed, 02 Aug 2017 12:44:31 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1dcwl1-0004a4-UA
-	for qemu-arm@nongnu.org; Wed, 02 Aug 2017 12:44:29 -0400
+	(envelope-from <pm215@archaic.org.uk>) id 1dcwl3-0004d1-Iy
+	for qemu-arm@nongnu.org; Wed, 02 Aug 2017 12:44:30 -0400
 Received: from orth.archaic.org.uk ([2001:8b0:1d0::2]:37764)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <pm215@archaic.org.uk>)
-	id 1dcwl1-0003zA-LF; Wed, 02 Aug 2017 12:44:27 -0400
+	id 1dcwl3-0003zA-BQ; Wed, 02 Aug 2017 12:44:29 -0400
 Received: from pm215 by orth.archaic.org.uk with local (Exim 4.84_2)
 	(envelope-from <pm215@archaic.org.uk>)
-	id 1dcwkj-00041K-Op; Wed, 02 Aug 2017 17:44:09 +0100
+	id 1dcwki-00040j-RZ; Wed, 02 Aug 2017 17:44:08 +0100
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Date: Wed,  2 Aug 2017 17:44:01 +0100
-Message-Id: <1501692241-23310-16-git-send-email-peter.maydell@linaro.org>
+Date: Wed,  2 Aug 2017 17:43:59 +0100
+Message-Id: <1501692241-23310-14-git-send-email-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.7.4
 In-Reply-To: <1501692241-23310-1-git-send-email-peter.maydell@linaro.org>
 References: <1501692241-23310-1-git-send-email-peter.maydell@linaro.org>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 2001:8b0:1d0::2
-Subject: [Qemu-arm] [PATCH 15/15] nvic: Implement "user accesses BusFault"
- SCS region behaviour
+Subject: [Qemu-arm] [PATCH 13/15] target/arm: Create and use new function
+ arm_v7m_is_handler_mode()
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -79,169 +79,93 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: patches@linaro.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: +rLNwziufN57
+X-TUID: uG2KxN4lGs9e
 
-The ARMv7M architecture specifies that most of the addresses in the
-PPB region (which includes the NVIC, systick and system registers)
-are not accessible to unprivileged accesses, which should
-BusFault with a few exceptions:
- * the STIR is configurably user-accessible
- * the ITM (which we don't implement at all) is always
-   user-accessible
-
-Implement this by switching the register access functions
-to the _with_attrs scheme that lets us distinguish user
-mode accesses.
-
-This allows us to pull the handling of the CCR.USERSETMPEND
-flag up to the level where we can make it generate a BusFault
-as it should for non-permitted accesses.
-
-Note that until the core ARM CPU code implements turning
-MEMTX_ERROR into a BusFault the registers will continue to
-act as RAZ/WI to user accesses.
+Add a utility function for testing whether the CPU is in Handler
+mode; this is just a check whether v7m.exception is non-zero, but
+we do it in several places and it makes the code a bit easier
+to read to not have to mentally figure out what the test is testing.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- hw/intc/armv7m_nvic.c | 58 ++++++++++++++++++++++++++++++++++++---------------
- 1 file changed, 41 insertions(+), 17 deletions(-)
+ target/arm/cpu.h    | 10 ++++++++--
+ target/arm/helper.c |  8 ++++----
+ 2 files changed, 12 insertions(+), 6 deletions(-)
 
-diff --git a/hw/intc/armv7m_nvic.c b/hw/intc/armv7m_nvic.c
-index 5a18025..bbfe2d5 100644
---- a/hw/intc/armv7m_nvic.c
-+++ b/hw/intc/armv7m_nvic.c
-@@ -733,11 +733,8 @@ static void nvic_writel(NVICState *s, uint32_t offset, uint32_t value)
-     }
-     case 0xf00: /* Software Triggered Interrupt Register */
-     {
--        /* user mode can only write to STIR if CCR.USERSETMPEND permits it */
-         int excnum = (value & 0x1ff) + NVIC_FIRST_IRQ;
--        if (excnum < s->num_irq &&
--            (arm_current_el(&cpu->env) ||
--             (cpu->env.v7m.ccr & R_V7M_CCR_USERSETMPEND_MASK))) {
-+        if (excnum < s->num_irq) {
-             armv7m_nvic_set_pending(s, excnum);
-         }
-         break;
-@@ -748,14 +745,32 @@ static void nvic_writel(NVICState *s, uint32_t offset, uint32_t value)
-     }
+diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+index da90b7a..a3b4b78 100644
+--- a/target/arm/cpu.h
++++ b/target/arm/cpu.h
+@@ -1630,13 +1630,19 @@ static inline int arm_highest_el(CPUARMState *env)
+     return 1;
  }
  
--static uint64_t nvic_sysreg_read(void *opaque, hwaddr addr,
--                                 unsigned size)
-+static bool nvic_user_access_ok(NVICState *s, hwaddr offset)
++/* Return true if a v7M CPU is in Handler mode */
++static inline bool arm_v7m_is_handler_mode(CPUARMState *env)
 +{
-+    /* Return true if unprivileged access to this register is permitted. */
-+    switch (offset) {
-+    case 0xf00: /* STIR: accessible only if CCR.USERSETMPEND permits */
-+        return s->cpu->env.v7m.ccr & R_V7M_CCR_USERSETMPEND_MASK;
-+    default:
-+        /* All other user accesses cause a BusFault unconditionally */
-+        return false;
-+    }
++    return env->v7m.exception != 0;
 +}
 +
-+static MemTxResult nvic_sysreg_read(void *opaque, hwaddr addr,
-+                                    uint64_t *data, unsigned size,
-+                                    MemTxAttrs attrs)
+ /* Return the current Exception Level (as per ARMv8; note that this differs
+  * from the ARMv7 Privilege Level).
+  */
+ static inline int arm_current_el(CPUARMState *env)
  {
-     NVICState *s = (NVICState *)opaque;
-     uint32_t offset = addr;
-     unsigned i, startvec, end;
-     uint32_t val;
- 
-+    if (attrs.user && !nvic_user_access_ok(s, addr)) {
-+        /* Generate BusFault for unprivileged accesses */
-+        return MEMTX_ERROR;
-+    }
-+
-     switch (offset) {
-     /* reads of set and clear both return the status */
-     case 0x100 ... 0x13f: /* NVIC Set enable */
-@@ -826,11 +841,13 @@ static uint64_t nvic_sysreg_read(void *opaque, hwaddr addr,
+     if (arm_feature(env, ARM_FEATURE_M)) {
+-        return !((env->v7m.exception == 0) && (env->v7m.control & 1));
++        return arm_v7m_is_handler_mode(env) || !(env->v7m.control & 1);
      }
  
-     trace_nvic_sysreg_read(addr, val, size);
--    return val;
-+    *data = val;
-+    return MEMTX_OK;
- }
- 
--static void nvic_sysreg_write(void *opaque, hwaddr addr,
--                              uint64_t value, unsigned size)
-+static MemTxResult nvic_sysreg_write(void *opaque, hwaddr addr,
-+                                     uint64_t value, unsigned size,
-+                                     MemTxAttrs attrs)
- {
-     NVICState *s = (NVICState *)opaque;
-     uint32_t offset = addr;
-@@ -839,6 +856,11 @@ static void nvic_sysreg_write(void *opaque, hwaddr addr,
- 
-     trace_nvic_sysreg_write(addr, value, size);
- 
-+    if (attrs.user && !nvic_user_access_ok(s, addr)) {
-+        /* Generate BusFault for unprivileged accesses */
-+        return MEMTX_ERROR;
-+    }
-+
-     switch (offset) {
-     case 0x100 ... 0x13f: /* NVIC Set enable */
-         offset += 0x80;
-@@ -853,7 +875,7 @@ static void nvic_sysreg_write(void *opaque, hwaddr addr,
-             }
-         }
-         nvic_irq_update(s);
--        return;
-+        return MEMTX_OK;
-     case 0x200 ... 0x23f: /* NVIC Set pend */
-         /* the special logic in armv7m_nvic_set_pending()
-          * is not needed since IRQs are never escalated
-@@ -870,9 +892,9 @@ static void nvic_sysreg_write(void *opaque, hwaddr addr,
-             }
-         }
-         nvic_irq_update(s);
--        return;
-+        return MEMTX_OK;
-     case 0x300 ... 0x33f: /* NVIC Active */
--        return; /* R/O */
-+        return MEMTX_OK; /* R/O */
-     case 0x400 ... 0x5ef: /* NVIC Priority */
-         startvec = 8 * (offset - 0x400) + NVIC_FIRST_IRQ; /* vector # */
- 
-@@ -880,26 +902,28 @@ static void nvic_sysreg_write(void *opaque, hwaddr addr,
-             set_prio(s, startvec + i, (value >> (i * 8)) & 0xff);
-         }
-         nvic_irq_update(s);
--        return;
-+        return MEMTX_OK;
-     case 0xd18 ... 0xd23: /* System Handler Priority.  */
-         for (i = 0; i < size; i++) {
-             unsigned hdlidx = (offset - 0xd14) + i;
-             set_prio(s, hdlidx, (value >> (i * 8)) & 0xff);
-         }
-         nvic_irq_update(s);
--        return;
-+        return MEMTX_OK;
+     if (is_a64(env)) {
+@@ -2636,7 +2642,7 @@ static inline void cpu_get_tb_cpu_state(CPUARMState *env, target_ulong *pc,
      }
-     if (size == 4) {
-         nvic_writel(s, offset, value);
--        return;
-+        return MEMTX_OK;
+     *flags |= fp_exception_el(env) << ARM_TBFLAG_FPEXC_EL_SHIFT;
+ 
+-    if (env->v7m.exception != 0) {
++    if (arm_v7m_is_handler_mode(env)) {
+         *flags |= ARM_TBFLAG_HANDLER_MASK;
      }
-     qemu_log_mask(LOG_GUEST_ERROR,
-                   "NVIC: Bad write of size %d at offset 0x%x\n", size, offset);
-+    /* This is UNPREDICTABLE; treat as RAZ/WI */
-+    return MEMTX_OK;
- }
  
- static const MemoryRegionOps nvic_sysreg_ops = {
--    .read = nvic_sysreg_read,
--    .write = nvic_sysreg_write,
-+    .read_with_attrs = nvic_sysreg_read,
-+    .write_with_attrs = nvic_sysreg_write,
-     .endianness = DEVICE_NATIVE_ENDIAN,
- };
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index 0ecc8f1..7920153 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -6147,7 +6147,7 @@ static void do_v7m_exception_exit(ARMCPU *cpu)
+      * that jumps to magic addresses don't have magic behaviour unless
+      * we're in Handler mode (compare pseudocode BXWritePC()).
+      */
+-    assert(env->v7m.exception != 0);
++    assert(arm_v7m_is_handler_mode(env));
  
+     /* In the spec pseudocode ExceptionReturn() is called directly
+      * from BXWritePC() and gets the full target PC value including
+@@ -6254,7 +6254,7 @@ static void do_v7m_exception_exit(ARMCPU *cpu)
+      * resuming in Thread mode. If that doesn't match what the
+      * exception return type specified then this is a UsageFault.
+      */
+-    if (return_to_handler == (env->v7m.exception == 0)) {
++    if (return_to_handler != arm_v7m_is_handler_mode(env)) {
+         /* Take an INVPC UsageFault by pushing the stack again. */
+         armv7m_nvic_set_pending(env->nvic, ARMV7M_EXCP_USAGE);
+         env->v7m.cfsr |= R_V7M_CFSR_INVPC_MASK;
+@@ -6405,7 +6405,7 @@ void arm_v7m_cpu_do_interrupt(CPUState *cs)
+     if (env->v7m.control & R_V7M_CONTROL_SPSEL_MASK) {
+         lr |= 4;
+     }
+-    if (env->v7m.exception == 0) {
++    if (!arm_v7m_is_handler_mode(env)) {
+         lr |= 8;
+     }
+ 
+@@ -8798,7 +8798,7 @@ void HELPER(v7m_msr)(CPUARMState *env, uint32_t maskreg, uint32_t val)
+          * switch_v7m_sp() deals with updating the SPSEL bit in
+          * env->v7m.control, so we only need update the others.
+          */
+-        if (env->v7m.exception == 0) {
++        if (!arm_v7m_is_handler_mode(env)) {
+             switch_v7m_sp(env, (val & R_V7M_CONTROL_SPSEL_MASK) != 0);
+         }
+         env->v7m.control &= ~R_V7M_CONTROL_NPRIV_MASK;
 -- 
 2.7.4
 

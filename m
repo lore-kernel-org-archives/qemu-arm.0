@@ -1,109 +1,110 @@
-Received: by 10.25.221.202 with SMTP id w71csp1217762lfi;
-        Thu, 3 Aug 2017 15:04:54 -0700 (PDT)
-X-Received: by 10.55.16.6 with SMTP id a6mr337873qkh.205.1501797894695;
-        Thu, 03 Aug 2017 15:04:54 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1501797894; cv=none;
+Received: by 10.25.221.202 with SMTP id w71csp1219301lfi;
+        Thu, 3 Aug 2017 15:06:20 -0700 (PDT)
+X-Received: by 10.237.41.230 with SMTP id o93mr441337qtd.27.1501797979854;
+        Thu, 03 Aug 2017 15:06:19 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1501797979; cv=none;
         d=google.com; s=arc-20160816;
-        b=RUY7J+t+mRQ992iATdyJ+Z/NgdAtFeSAPORtehqw5iT5zfHUUaDLhJ+ayet3++zKA+
-         ADeadabGT9LMg9opEnDwL2aG5Op0Fiik1lu0lNh7SfaZobyMERtYqFAogVrqZioyoZtO
-         2MXhkSgx6AsbQlFAy43zQT3+gEUol2+xjPn+jEfUtLkkG9lzhGWas89ueajuhht+UWTv
-         cVLtmQILRPfNrx8+YiB8Bob1jb0/PPblkEE+kDnWgfjAz8czyBbZ/XsaIZfQccQFGHHT
-         5a2aC+/2b6vCjrAWo3n3ocjEG9ps9fYoi5OGEHnZmeN1s5cIAmvur0SFH22UkMdmnnvx
-         97jg==
+        b=gm2wziBF4QgT6N3hLXvZnmVinIdBGtior0Ja42s7fGGPAGaiTsRZ7xbwzLnsa3GHoC
+         en7MrplV94VUiAXhcsxnoP7DC5hcpLN0pJlLeO84flJaO29AxIKjYAJhXnGianqTsW4n
+         IcvkTjzsH21hDQK56diP2CwaT47ORz0mJfQ0EHtGA+cWuB2V6MWhc27wNzS4ubLbFsW9
+         6rjG3wY62V1C+ltr2x0ximlAD9hZsb1sse+J3AwpIhofOj25pUeI5Je0VHNGQLttk5cy
+         Tp0w+CT9u7tv2XVAeuVyJxysur4mTXSRpexxbU73+qoT+0G+hg1F11u/XZ0OLvgujZlW
+         QJng==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:content-language:in-reply-to:mime-version
          :user-agent:date:message-id:from:references:to:dkim-signature
          :arc-authentication-results;
-        bh=ArZx5vsxiNY/zTM4RTLQBMbE7iETsTsPnsGuWQ/XuCs=;
-        b=nRGj1hVuCt36GtpLCKYiENdS+RyTc0EAEc4awIsHB/v0GmatlgfBBm9GFQJbfzJuB7
-         onC5JTXoVA/KSQPw/rC7o+x+0PbPAPBHHCCB0j2vo1MNCqkaFsSUfS9yhihm6XaFpbOC
-         cgEm/qjTFF/k+bDe6Wa1xGivr3mJv8egiu8WmbDJa93mThGGvZY1ZSz5EmwCnrQAr+5J
-         D4WItZNxxkU5zkyGGOB3ML3ndH9bLFfKdcVyh6PFuwZtv11WKxTS02nzVCxjcDrrsiTg
-         On6qOdYqzgvfBadKBqwe8W7WsWSIxrN1tu7KblOK+EpuXq94+aRoseK50IcashjKBQj3
-         zbuA==
+        bh=n8DMweNGGrDZxg7c8qIw7+GNC/NbvMc7onhDg0vXrM0=;
+        b=YQJGdSFzhwzVqC2z9RpKydMCjgp4IMydzfijjlTnjBC7DbLWNFgnvhf8/l6a9GO1cS
+         kfZjG5398ClIlXo+rx2142i/3Jl+m2v63U36pqkoEgcQaS/p/fq7HvW23YfR0tcfsj5o
+         0S3pWwhGWC/qWl4IakW6ruqPuvBSGpUhQkhKmso/X6XwQze73gN6kBLRnLUzwWNieqQp
+         oUUdgfw4FUbkPlVkTx0QweFBvkWpJyOuKJ6l6sRS9GL3DMODhJ2fVGewFz0+yHK5YWPq
+         uFN5SzXhmv8Nfckb45hsGd2xSyZbk4eDFIX3qZPg2Zf4pWhZ+b+uP53AIXgu6BPBmt4k
+         7eHw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.b=LppGENHt;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+       dkim=fail header.i=@gmail.com header.b=k+edCeVd;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id z7si27044qkd.12.2017.08.03.15.04.54
+Received: from lists.gnu.org (lists.gnu.org. [208.118.235.17])
+        by mx.google.com with ESMTPS id 128si31654079qkh.427.2017.08.03.15.06.19
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 03 Aug 2017 15:04:54 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Thu, 03 Aug 2017 15:06:19 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) client-ip=208.118.235.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.b=LppGENHt;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:56407 helo=lists.gnu.org)
+       dkim=fail header.i=@gmail.com header.b=k+edCeVd;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:56564 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ddOEe-0000kA-5H
-	for alex.bennee@linaro.org; Thu, 03 Aug 2017 18:04:52 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:56933)
+	id 1ddOG1-0001kM-Ex
+	for alex.bennee@linaro.org; Thu, 03 Aug 2017 18:06:17 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:60443)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <rth7680@gmail.com>) id 1ddODF-00083Y-Uw
-	for qemu-devel@nongnu.org; Thu, 03 Aug 2017 18:03:26 -0400
+	(envelope-from <rth7680@gmail.com>) id 1ddOFA-0001Pu-Q1
+	for qemu-devel@nongnu.org; Thu, 03 Aug 2017 18:05:25 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <rth7680@gmail.com>) id 1ddODB-0007pg-RT
-	for qemu-devel@nongnu.org; Thu, 03 Aug 2017 18:03:25 -0400
-Received: from mail-pf0-x241.google.com ([2607:f8b0:400e:c00::241]:35818)
+	(envelope-from <rth7680@gmail.com>) id 1ddOF7-00029a-1c
+	for qemu-devel@nongnu.org; Thu, 03 Aug 2017 18:05:24 -0400
+Received: from mail-pf0-x244.google.com ([2607:f8b0:400e:c00::244]:34931)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <rth7680@gmail.com>)
-	id 1ddODB-0007my-IL; Thu, 03 Aug 2017 18:03:21 -0400
-Received: by mail-pf0-x241.google.com with SMTP id j68so6334pfc.2;
-	Thu, 03 Aug 2017 15:03:21 -0700 (PDT)
+	id 1ddOF6-00027c-SS; Thu, 03 Aug 2017 18:05:20 -0400
+Received: by mail-pf0-x244.google.com with SMTP id j68so10511pfc.2;
+	Thu, 03 Aug 2017 15:05:20 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
 	h=sender:subject:to:cc:references:from:message-id:date:user-agent
 	:mime-version:in-reply-to:content-language:content-transfer-encoding;
-	bh=ArZx5vsxiNY/zTM4RTLQBMbE7iETsTsPnsGuWQ/XuCs=;
-	b=LppGENHtg1PDZ4vVi6e5rMrJrqrF4blCn/f8X1L+aCsU6EfbC2nZ20wBJEty1S8B33
-	W6zxK5g8UJEp9a5ZzMSpS6Nh5iyofWtRjuBrRvHXlAQPbu+4N72kuaMBcs7sSWLbwm1B
-	UQRdGbkYlD7fMbmzzy3skTQC1V5dNREuQ9H7w6uzB5Ls21HTK83A6IS054ylXkAsS/a7
-	3hB6H6bUzSLsx2HplkpNXL/dPv3YHuYahBSX9xHF86akiC5F8ukqcJcrC6h89lUp+Cts
-	INBjnph2wZvJnIH0Zs2pjtPi9dZYRtguljLilftEV47JM6sGlnyU6HxnS+82AjbBjTV6
-	ASbw==
+	bh=n8DMweNGGrDZxg7c8qIw7+GNC/NbvMc7onhDg0vXrM0=;
+	b=k+edCeVdN/cX9vzb5WQgfen/7nH+Oo6KkmOrfafZzQomga4uQgm2YoOggzqIeqO18o
+	VGI0GSYfbrNZ96ofajSvAfQgeQH6vtz4EF8z4JQ1Dx/hQs3QbfRcrFKhUp/eyfeBgbKc
+	0MihUQWSdVu0zJ8uG5Iz+jMehgIwXRcIpjOkmYWeFZf0lIGZRnvUzHBXqDE3VcsjJDQf
+	jEtB8xxR0K2CaFmg5GXW8+TmUpo5NE8nnTFhwHzIjieUz8aZ/7KkEVSwF6yObPt57dcW
+	qSi1saU1Qi3gk0UaavZ7Y7Wq0tkwAHXRzavsvazZZwTZ2n2wg0oFAJLyFRdEezezQZck
+	SE0g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
 	:date:user-agent:mime-version:in-reply-to:content-language
 	:content-transfer-encoding;
-	bh=ArZx5vsxiNY/zTM4RTLQBMbE7iETsTsPnsGuWQ/XuCs=;
-	b=B+n3uYNMLG7uNELUWqPYwjjOys97qQt/L4EmfXXMfvfkKa2s30o3+c1nDzq1yMr10/
-	y9X0CtCt3JlvfIMZ42B5dskDyooY6bigw4u+NMtJz96YVP9GfFMhcSn9Er8NABwgrjVh
-	lV7otF43wTSXvx/1UPVLUiB9GLXDiPZ2eAGyXPvyglqcVAO+DjgNiOdbC/h1I4VpyAIE
-	0IB25b4LylvU9eZZpB1T8VjjtqReSEoBlyBREvtQHi3rGcuDjG+TWwiLpwzT/tUiiMhM
-	My24pCUNa8gsU7z5wl9d1kzlNvW5g3WIZzEfw1b/bcySxe+THd1Pm89zQp+OL9rk+jAc
-	ZP9Q==
-X-Gm-Message-State: AIVw111WacQTuvd3bdOwz7DtScMLELwPk4+g9Ahf+clMWAAHL8FNJ/Jz
-	oFTudxb2KfT7IQ==
-X-Received: by 10.84.164.193 with SMTP id l1mr283660plg.279.1501797800515;
-	Thu, 03 Aug 2017 15:03:20 -0700 (PDT)
+	bh=n8DMweNGGrDZxg7c8qIw7+GNC/NbvMc7onhDg0vXrM0=;
+	b=DZ5UHUPLYTb1kMa+OwNzNzZocnwG5CQ0zWqmBq7tOe9dd33dCTBUSaHg9fNkYqsPHy
+	+LeV+CoNkuJPEazWvYGdnqVjjPdWg7i7DF+oqdB3wfO/ObHtabOK2YkPM/J3FfVMThTT
+	YJuKex11OQuCn/Y9wRP6Khamm0KsgmQeMiEQIrfVxdwmEUuxltqtumAoqD74oBkZdO65
+	+qRevbv1YTuz+cIwENMTefK5pQ4jmKTaju162bx/vhNopvaUplSOlwI5eAaxzK1gce0x
+	uU7X1zvMnvHpoDMoRxlh8IW4HcVoSd5wPF6rblj76A1tzwvv9uL2QCd1b445MSSZNIcR
+	16oQ==
+X-Gm-Message-State: AIVw113vqiQ8r9hYUSas1Uk9HJa5XoxN2iieBt8SVLqAwAd/VILoVJSI
+	5I7rcnHBN/nUGg==
+X-Received: by 10.99.107.193 with SMTP id g184mr227899pgc.167.1501797919661;
+	Thu, 03 Aug 2017 15:05:19 -0700 (PDT)
 Received: from bigtime.twiddle.net (97-126-108-236.tukw.qwest.net.
 	[97.126.108.236]) by smtp.googlemail.com with ESMTPSA id
-	z66sm29671728pfi.137.2017.08.03.15.03.19
+	o10sm65950229pgc.81.2017.08.03.15.05.18
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Thu, 03 Aug 2017 15:03:19 -0700 (PDT)
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
+	Thu, 03 Aug 2017 15:05:19 -0700 (PDT)
+To: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+	Peter Maydell <peter.maydell@linaro.org>
 References: <1501692241-23310-1-git-send-email-peter.maydell@linaro.org>
 	<1501692241-23310-10-git-send-email-peter.maydell@linaro.org>
+	<20170803153800.GR4859@toto>
 From: Richard Henderson <rth@twiddle.net>
-Message-ID: <20ef352d-38d3-90bb-27ef-a6a644240b9b@twiddle.net>
-Date: Thu, 3 Aug 2017 15:03:18 -0700
+Message-ID: <854126f3-84da-087c-f35b-480165871e7f@twiddle.net>
+Date: Thu, 3 Aug 2017 15:05:17 -0700
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
 	Thunderbird/52.2.1
 MIME-Version: 1.0
-In-Reply-To: <1501692241-23310-10-git-send-email-peter.maydell@linaro.org>
+In-Reply-To: <20170803153800.GR4859@toto>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400e:c00::241
-Subject: Re: [Qemu-devel] [PATCH 09/15] target/arm: Don't store M profile
- PRIMASK and FAULTMASK in daif
+X-Received-From: 2607:f8b0:400e:c00::244
+Subject: Re: [Qemu-devel] [Qemu-arm] [PATCH 09/15] target/arm: Don't store M
+ profile PRIMASK and FAULTMASK in daif
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -115,38 +116,18 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
 	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: patches@linaro.org
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, patches@linaro.org
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: XprkSUG3fdiC
+X-TUID: FHb1pP9a6lia
 
-On 08/02/2017 09:43 AM, Peter Maydell wrote:
-> We currently store the M profile CPU register state PRIMASK and
-> FAULTMASK in the daif field of the CPU state in its I and F
-> bits. This is a legacy from the original implementation, which
-> tried to share the cpu_exec_interrupt code between A profile
-> and M profile. We've since separated out the two cases because
-> they are significantly different, so now there is no common
-> code between M and A profile which looks at env->daif: all the
-> uses are either in A-only or M-only code paths. Sharing the state
-> fields now is just confusing, and will make things awkward
-> when we implement v8M, where the PRIMASK and FAULTMASK
-> registers are banked between security states.
-> 
-> Switch M profile over to using v7m.faultmask and v7m.primask
-> fields for these registers.
-> 
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> ---
->  hw/intc/armv7m_nvic.c |  4 ++--
->  target/arm/cpu.c      |  5 -----
->  target/arm/cpu.h      |  4 +++-
->  target/arm/helper.c   | 18 +++++-------------
->  target/arm/machine.c  | 33 +++++++++++++++++++++++++++++++++
->  5 files changed, 43 insertions(+), 21 deletions(-)
+On 08/03/2017 08:38 AM, Edgar E. Iglesias wrote:
+>> +        uint32_t primask;
+>> +        uint32_t faultmask;
+> It seems like these could be booleans?
 
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+I was thinking the same thing until I read the v8m description as a 32-bit
+register.  This makes qemu match the spec, which has value.
 
 
 r~
-

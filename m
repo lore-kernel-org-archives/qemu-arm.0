@@ -1,106 +1,106 @@
-Received: by 10.25.221.202 with SMTP id w71csp811730lfi;
-        Thu, 3 Aug 2017 08:49:20 -0700 (PDT)
-X-Received: by 10.55.104.148 with SMTP id d142mr3270182qkc.182.1501775360623;
-        Thu, 03 Aug 2017 08:49:20 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1501775360; cv=none;
+Received: by 10.25.221.202 with SMTP id w71csp819860lfi;
+        Thu, 3 Aug 2017 08:56:53 -0700 (PDT)
+X-Received: by 10.55.167.23 with SMTP id q23mr3216667qke.252.1501775813703;
+        Thu, 03 Aug 2017 08:56:53 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1501775813; cv=none;
         d=google.com; s=arc-20160816;
-        b=W0nsXCLgL1Ae4OXW7Eax65RtcY995Wwp+htfnY+POV+oYSur4ZMbNitwqdsYR837c2
-         ar0bOKK9OFFjfu6QTySJ1IquRL6dTC8qFBSdbv6Qx3K9urs3rrWB6IMPsUjAEikGEcBs
-         lNJ4QRP+UTBrSH+j9aUk88dX2sPXMLsGY20gN3ToQFlkNJhpQqOA63MSpBQbVqdsn1lh
-         qSXhipqFjKahO+p/t9rKZyfJKvLc7rUI8/XQqBQr8FCRsYuY4ccKD1z8arDCxjohNJjy
-         kQ7GCEEE2GU68g/idtqJ/0sVym8Liybbwd8xwB1qXzZAnT9BowzkOiMNHCQhRkZFtBFx
-         h+dQ==
+        b=sl0FWmpdZ6RTOSCZBlkRb2YOKuNN0m9oomR+oO5MQB+xLLfvZ+s9SY6ththBn6PNUy
+         OSQjkQ3NTXouATgElKRM1Ki7vbQcVFA1XBAUlQlS0S4HGai7Jog95xlK2tpOfLpFbgwU
+         I6ACg3A6ZxWoPAjzh7Zxpn5iuPTtpu8avheqCYLvIpS7BscwgybQerL8scgs2S4YkIwN
+         2pm9GruTmiU8xLVqRrTd6zyWaxWJJAWQok5Fs7wW+mS0/XbtIL3etYOxzGzdxsfZVfqK
+         X/gd65NewNlwZwzoLzeq69D+4Ag40Z4w1iQjnAQUjshY7HXGJy4uF84I9ZVtwx8pxKSu
+         jJCg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
          :content-disposition:mime-version:references:message-id:to:from:date
          :dkim-signature:arc-authentication-results;
-        bh=lnzWeSGhFIGDLgQWVShh3E1O91RmuECl7cVZu4TQu3w=;
-        b=la3qstJpqs9Q4cjCtgR0QP6NkRYSfP0p7z0iPFaxa2/EdChKJOa8Nx4AtXTFMcGaSR
-         8UkTrqp5KHCj92snwR5SL3f7KDEIizrIxOO3bsd77/vF/2Pj1BIsRgalzbrY88SzAvx9
-         G0N8yvB44c4b7w2362aRB0T+KUBnyEEOC8+gnu/p6xTNBX+s6sCBM+j87ow4q7IRj+z3
-         1OoTVdt1GM/27jFCBDA3XrJbJ/+8cUTZfPnofYM1OWhvvBlFo2uimq1SRusBW3Cy1n5S
-         mhnjuIHDi/Q0G98kfUQcUVI/3v30xKjfFOwmHLK+hSpaLk4FN9Td4LtSuuuOgB1F55LP
-         dZ1w==
+        bh=HzqPeTYjvSqjjI/8bbPL0otBJw3J+uHqOR5CI/MVyOU=;
+        b=IqwJUi0OxbXYsy1KCzf5DTdydMU4ll9Cdj1Ryjbkcqi9jbuoUvWj0Zqok0wQVdZPSp
+         tbc0oE83we/M0vOo61GlnM7awhWEe2osC5LajBHl7D5ZNitEOwNqWCXNB46u904ik/+m
+         XJ9sFopcR+3j8qRDYquPL81BnHqNHM8zanTKh3Bx68riFODdHOgm29lRHMB+Ob2q8RfE
+         +4GQrjWWinqFzcWGo4XhEWK6n0uROZ2t7/1w2BtKxVHhaC9gyC6tRyV9vXhwrjawwSew
+         mXlFhoJJv8/cYOm6KeFFp61HapQvF/mMPo3bDyelFEHQrg0UfkITvaeqnyCPwN2To2HD
+         hFuw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.b=O6p5GCJI;
+       dkim=pass header.i=@gmail.com header.b=BJAKJiFA;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id b24si34459548qkb.222.2017.08.03.08.49.19
+        by mx.google.com with ESMTPS id u80si14828525qki.15.2017.08.03.08.56.53
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 03 Aug 2017 08:49:20 -0700 (PDT)
+        Thu, 03 Aug 2017 08:56:53 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.b=O6p5GCJI;
+       dkim=pass header.i=@gmail.com header.b=BJAKJiFA;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:55200 helo=lists.gnu.org)
+Received: from localhost ([::1]:55969 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ddINB-0006Ed-Ti
-	for alex.bennee@linaro.org; Thu, 03 Aug 2017 11:49:17 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:39714)
+	id 1ddIUV-0002EM-1f
+	for alex.bennee@linaro.org; Thu, 03 Aug 2017 11:56:51 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:53514)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <edgar.iglesias@gmail.com>) id 1ddIMz-0006BQ-Us
-	for qemu-arm@nongnu.org; Thu, 03 Aug 2017 11:49:06 -0400
+	(envelope-from <edgar.iglesias@gmail.com>) id 1ddIUP-0002DY-VK
+	for qemu-arm@nongnu.org; Thu, 03 Aug 2017 11:56:47 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <edgar.iglesias@gmail.com>) id 1ddIMv-0003KT-W6
-	for qemu-arm@nongnu.org; Thu, 03 Aug 2017 11:49:05 -0400
-Received: from mail-lf0-x244.google.com ([2a00:1450:4010:c07::244]:34396)
+	(envelope-from <edgar.iglesias@gmail.com>) id 1ddIUM-0005xQ-SH
+	for qemu-arm@nongnu.org; Thu, 03 Aug 2017 11:56:46 -0400
+Received: from mail-lf0-x242.google.com ([2a00:1450:4010:c07::242]:36207)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <edgar.iglesias@gmail.com>)
-	id 1ddIMv-0003GP-ON; Thu, 03 Aug 2017 11:49:01 -0400
-Received: by mail-lf0-x244.google.com with SMTP id o85so1212817lff.1;
-	Thu, 03 Aug 2017 08:49:01 -0700 (PDT)
+	id 1ddIUM-0005vy-IT; Thu, 03 Aug 2017 11:56:42 -0400
+Received: by mail-lf0-x242.google.com with SMTP id t128so1222649lff.3;
+	Thu, 03 Aug 2017 08:56:42 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
 	h=date:from:to:cc:subject:message-id:references:mime-version
 	:content-disposition:in-reply-to:user-agent;
-	bh=lnzWeSGhFIGDLgQWVShh3E1O91RmuECl7cVZu4TQu3w=;
-	b=O6p5GCJIKuuD3lndo0zLEw/RqIPnvXj/jPe+Mn2Pb9DNIz43KixqIPPmWX2LWcVnBZ
-	hl/AKMC8eBLCOyCV21ptxHKQ6jtn27aO0cCsNdk+rbV7CnR9YtAccxoJ2nBNIL3O1ZSH
-	5khof5R1afcMsA84EKsn04oyPsDhvvFCP4G6HyuT7lFn+FPKFvLfef9wJSHVGpv28QJG
-	f6XO+iEJzLdzkyc793OeWL+z48rbWvaJ0ztdZmfrnWp3vAlgNkP3xYvcqi6fg+NjjoK8
-	XLLM651RCsxkmsronWAIlaFcU4zwL8eud9JNws9ApoUcb1Ls0BW7lDAPXe+2BMJPPluY
-	tb3w==
+	bh=HzqPeTYjvSqjjI/8bbPL0otBJw3J+uHqOR5CI/MVyOU=;
+	b=BJAKJiFAg1OGNy9DwEt0S0GqyrxbpYzABQ+sNQieqq5TNCCv7dbAg1TMsy4IaW9vud
+	KuEo04Tu0w9RwhRqvPviNhin6FsPWTXz9VdiAbb/omswqIKZwLbsi0vUV6TASOILtPf1
+	wbXhPa5+/FmLk1KLWHbMp850eqvjR11jY0shxUqPdTNZpJns+O9awIVuwQkGSJQjJG3O
+	Oh7x7H7GeQ+8Zqz8AYxY+9fgY8ABzzgXhq0mUTHssUH62oRyxINuVz0/2TXC4dWGnUmI
+	v629Z5r4jWQUs7E96n1zoLhJna1S15TQOf/fYNQlG/5lfMQ2bA1HLUWAkMWaH1UyNN7R
+	zINw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:date:from:to:cc:subject:message-id:references
 	:mime-version:content-disposition:in-reply-to:user-agent;
-	bh=lnzWeSGhFIGDLgQWVShh3E1O91RmuECl7cVZu4TQu3w=;
-	b=eURa4TxaN32TnWH8k6lV0GmpMFqhobR9F8od1xqWpm9ztgv+O1rI5iPB0rlcYUF7qj
-	fTE/OXWK36rCRF2x2mDZ/4rbLj2v3lgH+P0wlezFJmjK8tJwR723uNb0pgC+PPd5yDmr
-	roRyo2dHogrIKjnQYVtTQ6HtRYQReWXAuYMMpqZCCJ4NZ8ZzInL1eCyzwX9lANA+4s8L
-	abdtkft++9secoo2aRcV6xf9E0JGCNIVajY98X12sJBulOPfWIlUFULPu6z0+noOegpW
-	3l7yfvGNa62pqfnkCCepV/3tDhcwrAVXPmOtZKie0w30kbZJSkwGjjKgw5i8l2WRjrL9
-	Z/GA==
-X-Gm-Message-State: AHYfb5iYyCHkTnSiyLUcIQajL8bnYrT9fNI5KkVjPsPwwGXhK6h4ErED
-	Ux3ObjNOUQaI82Pn
-X-Received: by 10.25.233.143 with SMTP id j15mr854739lfk.64.1501775340371;
-	Thu, 03 Aug 2017 08:49:00 -0700 (PDT)
+	bh=HzqPeTYjvSqjjI/8bbPL0otBJw3J+uHqOR5CI/MVyOU=;
+	b=o3duFkvyL+qw3SwCO5MT/9nnPkxXGnH/GrTvzrm7Ir1RvjWzWmlItp17pI1QwkLl6K
+	8ePo6wS4h2+Zs48XQggMU0di4jVdyJ08wmz/Y4UawCR4/cIEcdpRbEWSr6uVyqz3L0jM
+	VVZoPEywXgbQSfJbDSFnYNj7QvTob6EXCIBda5j7IUwKmQD1qspRl72Qim0jCrrcSkVB
+	QQ0qgzDOmy9co71JV0M43UZm0oXT9BGueksw6ZwVKbFjvRQBkdbmjTjmyaqwAVvHkr1a
+	Ip87TWTlr3Cq1y1wRNh02ReclTuVB+jCH5DI/DeBtDYUIBEoEwpQ3k9SBUpFplL/hhQe
+	g3Tg==
+X-Gm-Message-State: AIVw112zoP4lKEIof2+Z/ajMO30YGVzUBahLYYFxenFXW05uMpArTwXn
+	1UTN/c58QMUTMQ==
+X-Received: by 10.46.69.9 with SMTP id s9mr899178lja.141.1501775800897;
+	Thu, 03 Aug 2017 08:56:40 -0700 (PDT)
 Received: from gmail.com (81-231-233-234-no56.tbcn.telia.com. [81.231.233.234])
 	by smtp.gmail.com with ESMTPSA id
-	m12sm6712109lfe.12.2017.08.03.08.48.59
+	q192sm667428lfe.85.2017.08.03.08.56.39
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Thu, 03 Aug 2017 08:48:59 -0700 (PDT)
-Date: Thu, 3 Aug 2017 17:48:59 +0200
+	Thu, 03 Aug 2017 08:56:40 -0700 (PDT)
+Date: Thu, 3 Aug 2017 17:56:39 +0200
 From: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
 To: Peter Maydell <peter.maydell@linaro.org>
-Message-ID: <20170803154859.GT4859@toto>
+Message-ID: <20170803155639.GU4859@toto>
 References: <1501692241-23310-1-git-send-email-peter.maydell@linaro.org>
-	<1501692241-23310-13-git-send-email-peter.maydell@linaro.org>
+	<1501692241-23310-14-git-send-email-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <1501692241-23310-13-git-send-email-peter.maydell@linaro.org>
+In-Reply-To: <1501692241-23310-14-git-send-email-peter.maydell@linaro.org>
 User-Agent: Mutt/1.5.24 (2015-08-30)
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2a00:1450:4010:c07::244
-Subject: Re: [Qemu-arm] [PATCH 12/15] target/arm: Don't calculate lr in
- arm_v7m_cpu_do_interrupt() until needed
+X-Received-From: 2a00:1450:4010:c07::242
+Subject: Re: [Qemu-arm] [PATCH 13/15] target/arm: Create and use new
+ function arm_v7m_is_handler_mode()
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -115,56 +115,103 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, patches@linaro.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: FrHmBzWz+lmG
+X-TUID: mH5zm0zuZLwK
 
-On Wed, Aug 02, 2017 at 05:43:58PM +0100, Peter Maydell wrote:
-> Move the code in arm_v7m_cpu_do_interrupt() that calculates the
-> magic LR value down to when we're actually going to use it.
-> Having the calculation and use so far apart makes the code
-> a little harder to understand than it needs to be.
+On Wed, Aug 02, 2017 at 05:43:59PM +0100, Peter Maydell wrote:
+> Add a utility function for testing whether the CPU is in Handler
+> mode; this is just a check whether v7m.exception is non-zero, but
+> we do it in several places and it makes the code a bit easier
+> to read to not have to mentally figure out what the test is testing.
 > 
 > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 
-Reviewed-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
 
 
 > ---
->  target/arm/helper.c | 15 ++++++++-------
->  1 file changed, 8 insertions(+), 7 deletions(-)
+>  target/arm/cpu.h    | 10 ++++++++--
+>  target/arm/helper.c |  8 ++++----
+>  2 files changed, 12 insertions(+), 6 deletions(-)
 > 
-> diff --git a/target/arm/helper.c b/target/arm/helper.c
-> index b64ddb1..0ecc8f1 100644
-> --- a/target/arm/helper.c
-> +++ b/target/arm/helper.c
-> @@ -6311,13 +6311,6 @@ void arm_v7m_cpu_do_interrupt(CPUState *cs)
+> diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+> index da90b7a..a3b4b78 100644
+> --- a/target/arm/cpu.h
+> +++ b/target/arm/cpu.h
+> @@ -1630,13 +1630,19 @@ static inline int arm_highest_el(CPUARMState *env)
+>      return 1;
+>  }
 >  
->      arm_log_exception(cs->exception_index);
->  
-> -    lr = 0xfffffff1;
-> -    if (env->v7m.control & R_V7M_CONTROL_SPSEL_MASK) {
-> -        lr |= 4;
-> -    }
-> -    if (env->v7m.exception == 0)
-> -        lr |= 8;
-> -
->      /* For exceptions we just mark as pending on the NVIC, and let that
->         handle it.  */
->      switch (cs->exception_index) {
-> @@ -6408,6 +6401,14 @@ void arm_v7m_cpu_do_interrupt(CPUState *cs)
->          return; /* Never happens.  Keep compiler happy.  */
+> +/* Return true if a v7M CPU is in Handler mode */
+> +static inline bool arm_v7m_is_handler_mode(CPUARMState *env)
+> +{
+> +    return env->v7m.exception != 0;
+
+The != 0 shouldn't be needed when you return a bool...
+Either way:
+Reviewed-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
+
+
+> +}
+> +
+>  /* Return the current Exception Level (as per ARMv8; note that this differs
+>   * from the ARMv7 Privilege Level).
+>   */
+>  static inline int arm_current_el(CPUARMState *env)
+>  {
+>      if (arm_feature(env, ARM_FEATURE_M)) {
+> -        return !((env->v7m.exception == 0) && (env->v7m.control & 1));
+> +        return arm_v7m_is_handler_mode(env) || !(env->v7m.control & 1);
 >      }
 >  
-> +    lr = 0xfffffff1;
-> +    if (env->v7m.control & R_V7M_CONTROL_SPSEL_MASK) {
-> +        lr |= 4;
-> +    }
-> +    if (env->v7m.exception == 0) {
-> +        lr |= 8;
-> +    }
-> +
->      v7m_push_stack(cpu);
->      v7m_exception_taken(cpu, lr);
->      qemu_log_mask(CPU_LOG_INT, "... as %d\n", env->v7m.exception);
+>      if (is_a64(env)) {
+> @@ -2636,7 +2642,7 @@ static inline void cpu_get_tb_cpu_state(CPUARMState *env, target_ulong *pc,
+>      }
+>      *flags |= fp_exception_el(env) << ARM_TBFLAG_FPEXC_EL_SHIFT;
+>  
+> -    if (env->v7m.exception != 0) {
+> +    if (arm_v7m_is_handler_mode(env)) {
+>          *flags |= ARM_TBFLAG_HANDLER_MASK;
+>      }
+>  
+> diff --git a/target/arm/helper.c b/target/arm/helper.c
+> index 0ecc8f1..7920153 100644
+> --- a/target/arm/helper.c
+> +++ b/target/arm/helper.c
+> @@ -6147,7 +6147,7 @@ static void do_v7m_exception_exit(ARMCPU *cpu)
+>       * that jumps to magic addresses don't have magic behaviour unless
+>       * we're in Handler mode (compare pseudocode BXWritePC()).
+>       */
+> -    assert(env->v7m.exception != 0);
+> +    assert(arm_v7m_is_handler_mode(env));
+>  
+>      /* In the spec pseudocode ExceptionReturn() is called directly
+>       * from BXWritePC() and gets the full target PC value including
+> @@ -6254,7 +6254,7 @@ static void do_v7m_exception_exit(ARMCPU *cpu)
+>       * resuming in Thread mode. If that doesn't match what the
+>       * exception return type specified then this is a UsageFault.
+>       */
+> -    if (return_to_handler == (env->v7m.exception == 0)) {
+> +    if (return_to_handler != arm_v7m_is_handler_mode(env)) {
+>          /* Take an INVPC UsageFault by pushing the stack again. */
+>          armv7m_nvic_set_pending(env->nvic, ARMV7M_EXCP_USAGE);
+>          env->v7m.cfsr |= R_V7M_CFSR_INVPC_MASK;
+> @@ -6405,7 +6405,7 @@ void arm_v7m_cpu_do_interrupt(CPUState *cs)
+>      if (env->v7m.control & R_V7M_CONTROL_SPSEL_MASK) {
+>          lr |= 4;
+>      }
+> -    if (env->v7m.exception == 0) {
+> +    if (!arm_v7m_is_handler_mode(env)) {
+>          lr |= 8;
+>      }
+>  
+> @@ -8798,7 +8798,7 @@ void HELPER(v7m_msr)(CPUARMState *env, uint32_t maskreg, uint32_t val)
+>           * switch_v7m_sp() deals with updating the SPSEL bit in
+>           * env->v7m.control, so we only need update the others.
+>           */
+> -        if (env->v7m.exception == 0) {
+> +        if (!arm_v7m_is_handler_mode(env)) {
+>              switch_v7m_sp(env, (val & R_V7M_CONTROL_SPSEL_MASK) != 0);
+>          }
+>          env->v7m.control &= ~R_V7M_CONTROL_NPRIV_MASK;
 > -- 
 > 2.7.4
 > 

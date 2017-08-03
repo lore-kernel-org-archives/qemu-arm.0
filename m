@@ -1,96 +1,108 @@
-Received: by 10.25.221.202 with SMTP id w71csp1135207lfi;
-        Thu, 3 Aug 2017 13:45:13 -0700 (PDT)
-X-Received: by 10.55.79.209 with SMTP id d200mr129442qkb.336.1501793113411;
-        Thu, 03 Aug 2017 13:45:13 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1501793113; cv=none;
+Received: by 10.25.221.202 with SMTP id w71csp1137154lfi;
+        Thu, 3 Aug 2017 13:47:14 -0700 (PDT)
+X-Received: by 10.237.35.81 with SMTP id i17mr133139qtc.19.1501793234203;
+        Thu, 03 Aug 2017 13:47:14 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1501793234; cv=none;
         d=google.com; s=arc-20160816;
-        b=OndZyDC5HMMqLmgowJI0OVpzffBYVjebTjrnpFcqo+aIsN+d7GsMrWWkxn9/gLWNgq
-         cfMJ7cS1UzZ7muA4p0LztKeoEm75koDwiHmD86qRlZOiXY76YxGaaabtBq9Vw9rimiSm
-         mUpyxRqnLZxyKpfnJX6ck79VQKDotqBrsy3OW3v5LxCd4N2+abO7gyKSSsApEK4s1n0G
-         StjROANko8hZHxeWE9o4tfhtmgqZd2RA6fWL7BjCmfFyg0BPKo8VAUgTQU+EGYlN/uz7
-         f/ew0gwN64tr2aFpV726Xd8eELyy7nD/X8oYBDh8RckQytWFjBRlfAoePkeqUs4u8iLk
-         Pz0w==
+        b=OCqy7X9CfZ4V6klo5rzR8rACOspTSaVyPbp6DFAUsHDPks8eEb0RYxp8OYz+mXXpvb
+         Nza9YwzUVQJ2uu7wR+rAVb5xWtMrEm8ksP3scd9bl3KV9DqsukGrZE9+XsOeAepySUmi
+         cM42vfDNUiNhbIT8PNb5bUCSxV7RQf5H+Q0YBVy4lXgL3T9D7obEkpIOuXHtSIQzdyyi
+         GwkKwIGsNk4rYNMW9DkHSGZdQpkne1lnXC+a5W5qYu+IZ4SKohBUutW59uQKqqzzU3Ol
+         ST4ntYk+Iy/yERVoATsw3t8j187CvWnmkMaD8MWDOQtdHQUlotFwiVlBPlWhKOmTmURL
+         Zc/Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
-         :references:in-reply-to:mime-version:dkim-signature
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:to:dkim-signature
          :arc-authentication-results;
-        bh=hDO236pVuqQR4aAUeWmB3boycnnstKAKdj0nAOfB4sg=;
-        b=0WX0ij93fEmRXSJ57NJZ0ESsWpVmS7ns9HUIUUxpIJtSRD7bDHGk1yCYtgjegxE+u/
-         rPpSvLv+JDBpd5/QunzDrNz8Yrrx9/Fvu6yzWtgno96bERJQLr6f7tVixQ7pYyt/FWqX
-         OkNMr58/HUTOKT3961du2JehYKggEhGL0gGOk3h7MlugAcY7IfCn6+/o3kiwDdvcTZg2
-         NU4ZaA191VUjpQ0AV+l66Wci4FwEbPeuJWXlwt2b2PL86CpF9HrdX1p8WIw9iaKPOHcd
-         vnwxW6nNte3cXcQ7tKt3GJtAmXqbH7YK2A64rVqrF9BOIkaxaXr1mVq1rs/5xhW5mSar
-         HHMQ==
+        bh=MyN/4gdpQJCvs7RFyf+EsvoiQk8U6pHEIKGUeTb+cpE=;
+        b=qV8x8extyHHre0XokxK2iuY+iCU964adtGBuZzG3hV0BTilCy7iF4/H+XAV+BWK3wb
+         bMuloyYBU93J+fDYJ3KShJ3hvn8ry6PJxb9ZbsGs7xGMO5yp3ACXRZe15TWQ2Faokjev
+         xLy+RtEWFwGtx+K79NMhxnK8JaTYBK/1ooBoSkJP8TS6YA82Y1EOV3W4mKTbBhJA7QCa
+         8xL5/T94XVAuW8Hf3lfUlo/+s7nJ0nlsyn1ohCrO72GI70Whzn/DIKOCCt3qi8VO5doJ
+         oYQDGilkod/LhFU6Tsi1XdA27b0HkiVBGYLiI0LDfMwtgsrwvmvBzrH9/FiEuT19kn0b
+         tDbQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.b=b640FU2x;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dkim=fail header.i=@gmail.com header.b=LAYqzva0;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id n28si32399654qkl.181.2017.08.03.13.45.12
+        by mx.google.com with ESMTPS id i59si1385036qtb.371.2017.08.03.13.47.13
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 03 Aug 2017 13:45:13 -0700 (PDT)
+        Thu, 03 Aug 2017 13:47:14 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.b=b640FU2x;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:50407 helo=lists.gnu.org)
+       dkim=fail header.i=@gmail.com header.b=LAYqzva0;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:50586 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ddMzW-0006dq-SJ
-	for alex.bennee@linaro.org; Thu, 03 Aug 2017 16:45:10 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:38291)
+	id 1ddN1T-00085K-JP
+	for alex.bennee@linaro.org; Thu, 03 Aug 2017 16:47:11 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:42264)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1ddMzP-0006cj-Vs
-	for qemu-arm@nongnu.org; Thu, 03 Aug 2017 16:45:04 -0400
+	(envelope-from <rth7680@gmail.com>) id 1ddN1M-00083n-Gg
+	for qemu-arm@nongnu.org; Thu, 03 Aug 2017 16:47:05 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1ddMzO-0001E5-VV
-	for qemu-arm@nongnu.org; Thu, 03 Aug 2017 16:45:03 -0400
-Received: from mail-wr0-x232.google.com ([2a00:1450:400c:c0c::232]:34360)
+	(envelope-from <rth7680@gmail.com>) id 1ddN1L-0004dx-Sf
+	for qemu-arm@nongnu.org; Thu, 03 Aug 2017 16:47:04 -0400
+Received: from mail-pg0-x241.google.com ([2607:f8b0:400e:c05::241]:36553)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1ddMzO-00018b-Mx
-	for qemu-arm@nongnu.org; Thu, 03 Aug 2017 16:45:02 -0400
-Received: by mail-wr0-x232.google.com with SMTP id 12so9899875wrb.1
-	for <qemu-arm@nongnu.org>; Thu, 03 Aug 2017 13:45:00 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=hDO236pVuqQR4aAUeWmB3boycnnstKAKdj0nAOfB4sg=;
-	b=b640FU2xd01bgwPH8vEgb377Yz2/plBZOU1HWkqBctZ2wvFfn7r/37v/spNyYVyiSk
-	tVsiIF9ZnWPczOIfwZGY7audSAYGsWs44reISF2DfCVswF1lVQxiKiHY8FXs1XONuKCc
-	DsSDbAUJZ3/sNN5MIGbmqyZRhV0wvjw9mh+X0=
+	(Exim 4.71) (envelope-from <rth7680@gmail.com>)
+	id 1ddN1H-0004VA-Qr; Thu, 03 Aug 2017 16:46:59 -0400
+Received: by mail-pg0-x241.google.com with SMTP id y129so2467898pgy.3;
+	Thu, 03 Aug 2017 13:46:59 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=sender:subject:to:cc:references:from:message-id:date:user-agent
+	:mime-version:in-reply-to:content-language:content-transfer-encoding;
+	bh=MyN/4gdpQJCvs7RFyf+EsvoiQk8U6pHEIKGUeTb+cpE=;
+	b=LAYqzva0JXpKhH9ifgUuQ0OcfwayEMYIvN9qcfvkqtS2qAR+RV0yoJ2sfp2h4030wH
+	aVdov7ksDiDPDJyfEh+3JSrsA8IrE87Sh6nZ16KZD5NM2el5fPBXTFFwrsn4evLfnnxi
+	6SkVbDnjJkPh/aXotvH4zHWwUBs+6Bq8GNIaGzoR6gpHD5aniDfY77lruA4NQBYFIrTa
+	C1fsXO4tcHa3XXVPMQFdKaas9hkCg4dPHM8hw4cF5ma+35c3JenUalOvGvEUpfjz7IH5
+	bcdyYH8N93I/Iw+bfdB4OZpQkYMJZ3YeHySNnhu+up/HTQojpbmDvEVaaFqWl+yG4nrH
+	Ns3w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=hDO236pVuqQR4aAUeWmB3boycnnstKAKdj0nAOfB4sg=;
-	b=LsR7sZknuCa577NTLXI1wv4cj9w6UH77txVpTnxY9t4vVqy1S+gro643q+AnzCJF4H
-	OHvU5b0ol3U8VZnAAoFGNA9HfYNM2FAyNNof+h5jKjmxQ3JgTHr1Bz3brjLbyTH66t41
-	Q7mHVzqemmEfbbKmXxPXNLL/8ghONGylYs/7B7sJ/Ydqg7yW4F2ACWGXWcre2MaIoDjg
-	Tx0fyc6yHyIvj6tLm7X8nFHJGmUmHKukJr1DAuFSux+YUHTXvpP8CvJFd+NdHWT5HG/T
-	vlSjco2i1Tbm7H3UwQ7r7VdsAYXRU/UKLT/ORLdOPbZfOxTwqoKGjON4ns0C8zZMb47v
-	faSA==
-X-Gm-Message-State: AIVw113uAJjk+rgjYzhzcxOy3e8mmEE0yH06MLsnlU+9kHZrvUOkW0ry
-	ETnatuRsX1cYrSa3f7yvXX8PpxVcf5EB
-X-Received: by 10.223.174.242 with SMTP id y105mr65162wrc.262.1501793099909;
-	Thu, 03 Aug 2017 13:44:59 -0700 (PDT)
-MIME-Version: 1.0
-Received: by 10.223.134.54 with HTTP; Thu, 3 Aug 2017 13:44:39 -0700 (PDT)
-In-Reply-To: <3f6ee028-b7f9-fbe0-1aea-eb1e6faab5a3@twiddle.net>
+	h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+	:date:user-agent:mime-version:in-reply-to:content-language
+	:content-transfer-encoding;
+	bh=MyN/4gdpQJCvs7RFyf+EsvoiQk8U6pHEIKGUeTb+cpE=;
+	b=XA2pKol06WMm+03aauJC4HuK74n6vsBZrr5F6Nsol30TKuQ2Oe6K+OAgoB2lUrv1g/
+	St0JCymFMcmwWRyL1taQeUaz1cRDWmdRRwKnP8TCB14ZbOXd9zTqxNmd+47RRIaKnQ1+
+	IyDzy5HKeTQLWwIXKM/vgqgLtJzEXzsRSDZH5VowFruVQXwd7p5sl7ULP+m0mX+LMCkt
+	DC7BySmrx4BRaazLWZMI/FYL53UOZSe3zk9CqZJoihSAyd6EKW9mIzrE2Ndd5hZVLSNl
+	pCzc1UOcxm/2opiJX4YTNGbl6s0wtk4s0TS5T5Xh5uqvyaJeZzw3zz1CrlHlRN2mqPzc
+	8cAw==
+X-Gm-Message-State: AIVw112+gZRCTr26hzgRLUzePUwU6IXXP6qkrZXuzsOZfLO801dvacd2
+	pgw58/FO/6jNlw==
+X-Received: by 10.84.205.70 with SMTP id o6mr91913plh.51.1501793218795;
+	Thu, 03 Aug 2017 13:46:58 -0700 (PDT)
+Received: from bigtime.twiddle.net (97-126-108-236.tukw.qwest.net.
+	[97.126.108.236]) by smtp.googlemail.com with ESMTPSA id
+	204sm17836858pfu.118.2017.08.03.13.46.57
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Thu, 03 Aug 2017 13:46:58 -0700 (PDT)
+To: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
 References: <1501692241-23310-1-git-send-email-peter.maydell@linaro.org>
 	<1501692241-23310-3-git-send-email-peter.maydell@linaro.org>
 	<3f6ee028-b7f9-fbe0-1aea-eb1e6faab5a3@twiddle.net>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 3 Aug 2017 21:44:39 +0100
-Message-ID: <CAFEAcA-n=72QB_mpJjOvk88o1brC_udhdBKZwgTtSDa+ZB2dhw@mail.gmail.com>
-To: Richard Henderson <rth@twiddle.net>
-Content-Type: text/plain; charset="UTF-8"
+	<20170803204001.GX4859@toto>
+From: Richard Henderson <rth@twiddle.net>
+Message-ID: <4e0cab0f-83ab-0742-988d-9b2615f6ef4b@twiddle.net>
+Date: Thu, 3 Aug 2017 13:46:56 -0700
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.2.1
+MIME-Version: 1.0
+In-Reply-To: <20170803204001.GX4859@toto>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2a00:1450:400c:c0c::232
+X-Received-From: 2607:f8b0:400e:c05::241
 Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH 02/15] target/arm: Don't trap
  WFI/WFE for M profile
 X-BeenThere: qemu-arm@nongnu.org
@@ -104,36 +116,34 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
-	"patches@linaro.org" <patches@linaro.org>
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org, patches@linaro.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: p/He5jV4k/+W
+X-TUID: duPxkduDieMx
 
-On 3 August 2017 at 21:28, Richard Henderson <rth@twiddle.net> wrote:
-> While looking at this, I think there's an error in helper_wfi.  The early exit
-> for cpu_has_work should happen after the exception check.
+On 08/03/2017 01:40 PM, Edgar E. Iglesias wrote:
+> I don't have the spec at hand but IIRC the trap should only happen
+> if the processor would have entered the low-power state (i.e if
+> there's no work).
 
-No, that's deliberate; as Edgar says, the trap only
-happens "if the instruction would otherwise have caused the
-PE to enter a low-power state".
-The rationale AIUI is that the traps to EL2 are there so
-that when an EL guest does a WFI in its idle loop the EL2
-hypervisor can gain control and give the CPU to
-something else. This obviously imposes overhead, so if
-the WFI wouldn't actually halt (because there's already
-a condition that will cause it to wake up) it's more
-efficient just to let the guest continue to execute.
-(It also means that NOP is a valid WFI implementation,
-though I think that's just a coincidental bonus.)
+  when SystemHintOp_WFE
+    if IsEventRegisterSet() then
+      ClearEventRegister();
+    else
+      if PSTATE.EL == EL0 then
+        AArch64.CheckForWFxTrap(EL1, TRUE);
+      if HaveEL(EL2) && !IsSecure()
+         && PSTATE.EL IN {EL0, EL1} && !IsInHost() then
+        AArch64.CheckForWFxTrap(EL2, TRUE);
+      if HaveEL(EL3) && PSTATE.EL != EL3 then
+        AArch64.CheckForWFxTrap(EL3, TRUE);
+      WaitForEvent();
 
-In fact the architecture gives even more flexibility
-in that it only requires the trap to be taken "if the
-instruction does not complete in finite time in the
-absence of a Wakeup event", so you can do more complicated
-things like "just pause for a short period of time to
-see if an interrupt might come in and wake us up,
-before giving up and taking the trap to EL2".
+Ah, I see what you mean, since WaitForEvent is also
+described as checking EventRegister.
 
-thanks
--- PMM
+Thanks.
+
+
+r~

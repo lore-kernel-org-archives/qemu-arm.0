@@ -1,316 +1,143 @@
-Received: by 10.25.221.202 with SMTP id w71csp1812337lfi;
-        Fri, 4 Aug 2017 02:52:42 -0700 (PDT)
-X-Received: by 10.55.40.13 with SMTP id o13mr2277743qkh.116.1501840362224;
-        Fri, 04 Aug 2017 02:52:42 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1501840362; cv=none;
+Received: by 10.25.221.202 with SMTP id w71csp1813225lfi;
+        Fri, 4 Aug 2017 02:53:54 -0700 (PDT)
+X-Received: by 10.55.26.14 with SMTP id a14mr2315469qka.4.1501840434096;
+        Fri, 04 Aug 2017 02:53:54 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1501840434; cv=none;
         d=google.com; s=arc-20160816;
-        b=n181Dq1iinCEnU3OrEbaH9JSF86p9pks5DVgUHxrCkXek0JxzwnbqU7sB1qUW97BVL
-         SmoLTwVnpyDF5EP2uySfMElCD3uwelQ7xAaxBdsJS5l7w2kx6xFnzAyRty4iF++WIBST
-         wakfhtE1MmIbJRCmCia5WhT5yRzdPZ5GDOFqa7qhg8A5mCwKcVPL/eKG0gtj+XJ03l5G
-         B8J64TfuAbUN1GW7Djjx8VS9n0V/NWUP3MP9VQLku5ya7hmkDhi58Pg41P4vDtZeLSoB
-         walegmGGqIPph+NneyA/Of/2E3rW5TSqRyQfEBUvqpYCzVJesrfnC1Gd1AT26zsng+Z2
-         BXjw==
+        b=BmFO06xnEdCn+BB2BZTVwtPK3ndeoALf87BJ4A/wBTsXcOhJwn/bCMyJS14Y/fBF8B
+         SZNPlKuti9a3sAg4e/rycZu1vhqyASxyCaFgJmLmbdzpCm8IvjutVm1AZtPdbM/bYfvv
+         amHglmvpTkh29mKlhUN2Iw4PKQY1aVbIIF8RNWSOf80r/eYwY+vGHGQQyS5ifDsSdYZk
+         Q7zl40QyUoBAMOh9C6X2kqqdLDPckgpjbTwq3tqxW85i32k6Q6wuwznn7X4PgDX7S+wb
+         ypqi0Zj7NbqG5EoEfBqxHyM/aay5GfMslIbyO/qwJggkF6wZ82pKdZwgbqkUIjHvKY6I
+         YMWw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:mime-version:message-id
-         :date:to:from:arc-authentication-results;
-        bh=vB60zt6jjyXFAk0BltqWo4n0ePySMsy49/H9UcryKVI=;
-        b=BwttdJWZZyDFZC3y8KH18dMeqTZd2CGbnl0cJ1nFZtk8tci45LVehRv8VVkJywKh5x
-         uPqQAVjojN8UPQYu/AljMZDW57vVQ65DxGaMYa0vL+2Ax6RukkTYaQG7GeG+e7hvHRYm
-         Uz5NnXdBlx+kqdfeM3Db7D+X5+whBGBZnsU9kFA5eP0FXxU4MLK9Zz79sux2S+GQDfT+
-         +sWplFc/pbw2R0EhlhP5VBxbg0Zu4GaJLBRV5hy/lXMUjcfgwH9ItUODyLqcr0fdmF82
-         EgrDePGW9sxE79akSHVPRLEuCX7KwrWuv1/Tk6p/okwmWzKn1Wy378VzrRS6/v+gVX76
-         HdKg==
+         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
+         :references:in-reply-to:mime-version:dkim-signature
+         :arc-authentication-results;
+        bh=3Kj1LLb0YQb03/w+zMdJmXB1I6ZYr2cM2kNuDiJGtBw=;
+        b=0I+Ju/a8aLIVVmU8fWTbCm8BMAcMrIJ5G7CkzlvPWEU56jkpJe46DryjKaihTYkqyx
+         lPTCiUMm61eIqxitNzWjLUTqbvpflV4uWbvmPmDAS6ZEMoSyGmzHoEjGj6wcISYbAfxb
+         P1135lXPqhD9lse/AKypSf4iBE0OB0z+cTj7BA0yy2WKipKaJFsATengqaJQr1Nce9x7
+         0c+DrEqggjEYiUQ0rze7iVUoRl+L/25twHYOMie4J5JZGU/E94fLFZmcEbnIhCeI+i+G
+         23obS9UpVmqI7GK0vefTDsheo5rh4YqIqJhrYTnFov2T1vxGMNm6PU/A6wcYeuqw5RDz
+         xK1A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@linaro.org header.b=T2JKQj4g;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id r67si1352521qkr.391.2017.08.04.02.52.41
+        by mx.google.com with ESMTPS id 4si1206229qtc.459.2017.08.04.02.53.53
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 04 Aug 2017 02:52:42 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Fri, 04 Aug 2017 02:53:54 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:52200 helo=lists.gnu.org)
+       dkim=pass header.i=@linaro.org header.b=T2JKQj4g;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:52255 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ddZHb-0000Jt-GD
-	for alex.bennee@linaro.org; Fri, 04 Aug 2017 05:52:39 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:38646)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1ddZIl-0000yx-8n
+	for alex.bennee@linaro.org; Fri, 04 Aug 2017 05:53:51 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:39340)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <gengdongjiu@huawei.com>) id 1ddZEu-0006UK-OX
-	for qemu-arm@nongnu.org; Fri, 04 Aug 2017 05:49:54 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1ddZGl-00089m-GN
+	for qemu-devel@nongnu.org; Fri, 04 Aug 2017 05:51:48 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <gengdongjiu@huawei.com>) id 1ddZEt-0004A7-0K
-	for qemu-arm@nongnu.org; Fri, 04 Aug 2017 05:49:52 -0400
-Received: from szxga02-in.huawei.com ([45.249.212.188]:4416)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_ARCFOUR_SHA1:16) (Exim 4.71)
-	(envelope-from <gengdongjiu@huawei.com>)
-	id 1ddZEn-00046B-BK; Fri, 04 Aug 2017 05:49:46 -0400
-Received: from 172.30.72.54 (EHLO DGGEML402-HUB.china.huawei.com)
-	([172.30.72.54])
-	by dggrg02-dlp.huawei.com (MOS 4.4.6-GA FastPath queued)
-	with ESMTP id ASW04680; Fri, 04 Aug 2017 17:49:40 +0800 (CST)
-Received: from linux.huawei.com (10.67.187.203) by
-	DGGEML402-HUB.china.huawei.com (10.3.17.38) with Microsoft SMTP Server
-	id 14.3.301.0; Fri, 4 Aug 2017 17:49:30 +0800
-From: Dongjiu Geng <gengdongjiu@huawei.com>
-To: <lersek@redhat.com>, <mst@redhat.com>, <imammedo@redhat.com>,
-	<zhaoshenglong@huawei.com>, <peter.maydell@linaro.org>,
-	<qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>
-Date: Fri, 4 Aug 2017 18:09:13 +0800
-Message-ID: <1501841356-6486-1-git-send-email-gengdongjiu@huawei.com>
-X-Mailer: git-send-email 1.7.7
+	(envelope-from <peter.maydell@linaro.org>) id 1ddZGk-0005bs-Fv
+	for qemu-devel@nongnu.org; Fri, 04 Aug 2017 05:51:47 -0400
+Received: from mail-wm0-x235.google.com ([2a00:1450:400c:c09::235]:35839)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1ddZGk-0005bC-6r
+	for qemu-devel@nongnu.org; Fri, 04 Aug 2017 05:51:46 -0400
+Received: by mail-wm0-x235.google.com with SMTP id m85so15385670wma.0
+	for <qemu-devel@nongnu.org>; Fri, 04 Aug 2017 02:51:46 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=3Kj1LLb0YQb03/w+zMdJmXB1I6ZYr2cM2kNuDiJGtBw=;
+	b=T2JKQj4gRCnj5BFMFu2BYhzyybd5N/CE+L6X49i7OvaMSVM11tq/asDc5cFiq9yDR/
+	DxFhZ7UO1ZruLHQ+DJbsKHOwYTffZ23jx/4PzFGHSfVrLV8yGslvK97mIHFMV80UXkHr
+	f0zCYmThCsZdgR3Hxh8fL5MqopRFlzDCzjvEA=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=3Kj1LLb0YQb03/w+zMdJmXB1I6ZYr2cM2kNuDiJGtBw=;
+	b=muo5FFmFvIalNinayYllmciHKhT+5kDO6wWRsWYIH6OsuH4Sum4RjIzNeTt2c42E9w
+	qRV4UvLUBMmr0S0Wi46Htt11obCHlWeVB+jcSzC6Cs811+2vn1Jcq+HhfUZhi2pOTKGA
+	Tg7+LtPLiJe6BdN1uFHpONeTribwAZca6c8tK80MtXm85gzbg02Pm/bani2Yi58L3UjY
+	Mn+P2P36WV5zx/F7tGbcpX2JG2MfG47LgO7bUAzquFmgkipZC1LzydONSmVs5FwV4vtd
+	ZdkzRGLYfwN+sY017lbHpMzYRaqW87Of6C75qFbj97TcdWSC4yyaqygqeHpqzgFr6giu
+	R5+g==
+X-Gm-Message-State: AHYfb5jc6lMYEPaW5KZ6pnfBI3isI1ts6kcnIbZDIGNTpDBLG2K8zXBO
+	JJQ79kpq8kMutmEns4qm1ej5aCuBWNHe
+X-Received: by 10.28.105.28 with SMTP id e28mr894891wmc.42.1501840304998; Fri,
+	04 Aug 2017 02:51:44 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Originating-IP: [10.67.187.203]
-X-CFilter-Loop: Reflected
-X-Mirapoint-Virus-RAPID-Raw: score=unknown(0),
-	refid=str=0001.0A090201.59844336.0162, ss=1, re=0.000, recu=0.000,
-	reip=0.000, cl=1, cld=1, fgs=0, ip=0.0.0.0,
-	so=2014-11-16 11:51:01, dmn=2013-03-21 17:37:32
-X-Mirapoint-Loop-Id: bd2467e7446401e5a3a8df08fc737ce7
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
-	[fuzzy]
-X-Received-From: 45.249.212.188
-Subject: [Qemu-arm] [PATCH v9 0/3] Generate APEI GHES table and dynamically
- record CPER
-X-BeenThere: qemu-arm@nongnu.org
+Received: by 10.223.134.54 with HTTP; Fri, 4 Aug 2017 02:51:24 -0700 (PDT)
+In-Reply-To: <91f1649d-ffcf-85c5-b83b-644ad1875fcd@twiddle.net>
+References: <1501692241-23310-1-git-send-email-peter.maydell@linaro.org>
+	<1501692241-23310-11-git-send-email-peter.maydell@linaro.org>
+	<91f1649d-ffcf-85c5-b83b-644ad1875fcd@twiddle.net>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 4 Aug 2017 10:51:24 +0100
+Message-ID: <CAFEAcA9PsNQHxm-wVwCEFJq_NuenkQhLp5SiwSQu02eJ=S9EWQ@mail.gmail.com>
+To: Richard Henderson <rth@twiddle.net>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2a00:1450:400c:c09::235
+Subject: Re: [Qemu-devel] [PATCH 10/15] target/arm: Don't use
+ cpsr_write/cpsr_read to transfer M profile XPSR
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: zhengqiang10@huawei.com, wuquanming@huawei.com, huangshaoyu@huawei.com,
-	gengdongjiu@huawei.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: WmjK7NeAYVBD
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
+	"patches@linaro.org" <patches@linaro.org>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: xtd+h7Fw4q5+
 
-In the armv8 platform, the mainly hardware error source are ARMv8
-SEA/SEI/GSIV. For the ARMv8 SEA/SEI, the KVM or host kernel will signal SIGBUS
-or use other interface to notify user space, such as Qemu. After Qemu gets
-the notification, it will record the CPER and inject the SEA/SEI to KVM. this
-series of patches will generate APEI table when guest OS boot up, and dynamically
-record CPER for the guest OS about the generic hardware errors, currently the
-userspace only handle the memory section hardware errors. Before Qemu record the
-CPER, it needs to check the ACK value written by the guest OS to avoid read-write
-race condition.
+On 3 August 2017 at 23:13, Richard Henderson <rth@twiddle.net> wrote:
+> On 08/02/2017 09:43 AM, Peter Maydell wrote:
+>> +        if (val & XPSR_EXCP) {
+>> +            /* This is a CPSR format value from an older QEMU. (We can tell
+>> +             * because values transferred in XPSR format always have zero
+>> +             * for the EXCP field, and CPSR format will always have bit 4
+>> +             * set in CPSR_M.) Rearrange it into XPSR format. The significant
+>> +             * differences are that the T bit is not in the same place, the
+>> +             * primask/faultmask info may be in the CPSR I and F bits, and
+>> +             * we do not want the mode bits.
+>> +             */
+>> +            uint32_t newval = val;
+>> +
+>> +            newval &= (CPSR_NZCV | CPSR_Q | CPSR_IT | CPSR_GE);
+>> +            if (val & CPSR_T) {
+>> +                newval |= XPSR_T;
+>> +            }
+>> +            /* If the I or F bits are set then this is a migration from
+>> +             * an old QEMU which still stored the M profile FAULTMASK
+>> +             * and PRIMASK in env->daif. For a new QEMU, the data is
+>> +             * transferred using the vmstate_m_faultmask_primask subsection.
+>> +             */
+>
+> The second comment seems sort of redundant with the first now.
 
-Below is the APEI/GHESV2/CPER table layout, the max number of error soure is 11,
-which is classified by notification type, now only enable the SEA/SEI notification type
-error source.
+I felt that the migration-compat stuff was sufficiently subtle
+that it was worth retaining the second detailed comment as well
+as the brief summary in the new first comment.
 
-     etc/acpi/tables                               etc/hardware_errors
-    ====================                    ==========================================
-+ +--------------------------+            +------------------+
-| | HEST                     |            |    address       |              +--------------+
-| +--------------------------+            |    registers     |              | Error Status |
-| | GHES0                    |            | +----------------+              | Data Block 0 |
-| +--------------------------+ +--------->| |status_address0 |------------->| +------------+
-| | .................        | |          | +----------------+              | |  CPER      |
-| | error_status_address-----+-+ +------->| |status_address1 |----------+   | |  CPER      |
-| | .................        |   |        | +----------------+          |   | |  ....      |
-| | read_ack_register--------+-+ |        |  .............   |          |   | |  CPER      |
-| | read_ack_preserve        | | |        +------------------+          |   | +-+------------+
-| | read_ack_write           | | | +----->| |status_address10|--------+ |   | Error Status |
-+ +--------------------------+ | | |      | +----------------+        | |   | Data Block 1 |
-| | GHES1                    | +-+-+----->| |ack_address0    |--+     | +-->| +------------+
-+ +--------------------------+   | |      | +----------------+  |     |     | |  CPER      |
-| | .................        |   | | +--->| |ack_address1    |--+-+   |     | |  CPER      |
-| | error_status_address-----+---+ | |    | +----------------+  | |   |     | |  ....      |
-| | .................        |     | |    | | .............  |  | |   |     | |  CPER      |
-| | read_ack_register--------+-----+-+    | +----------------+  | |   |     +-+------------+
-| | read_ack_preserve        |     |   +->| |ack_address10   |--+-+-+ |     | |..........  |
-| | read_ack_write           |     |   |  | +----------------+  | | | |     | +------------+
-+ +--------------------------|     |   |  | |      ack0      |<-+ | | |     | Error Status |
-| | ...............          |     |   |  | +----------------+    | | |     | Data Block 10|
-+ +--------------------------+     |   |  | |      ack1      |<---+ | +---->| +------------+
-| | GHES10                   |     |   |  | +----------------+      |       | |  CPER      |
-+ +--------------------------+     |   |  | |       ....     |      |       | |  CPER      |
-| | .................        |     |   |  | +--------------+ |      |       | |  ....      |
-| | error_status_address-----+-----+   |  | |      ack10     |<---- +       | |  CPER      |
-| | .................        |         |  | +----------------+              +-+------------+
-| | read_ack_register--------+---------+
-| | read_ack_preserve        |
-| | read_ack_write           |
-+ +--------------------------+
-
-After injecting a SEA/SEI ghes error, the gueset OS kernel log will be shown as below:
-
-[  142.911115] {1}[Hardware Error]: Hardware error from APEI Generic Hardware Error Source: 8
-[  142.913141] {1}[Hardware Error]: event severity: recoverable
-[  142.914498] {1}[Hardware Error]:  Error 0, type: recoverable
-[  142.915851] {1}[Hardware Error]:   section_type: memory error
-[  142.917163] {1}[Hardware Error]:   physical_address: 0x0000000000001111
-[  142.918792] {1}[Hardware Error]:   error_type: 3, multi-bit ECC
-
-how to test:
-1. In the guest OS, use this command to dump the APEI table: 
-	"iasl -p ./HEST -d /sys/firmware/acpi/tables/HEST"
-2. And find the address for the generic error status block
-   according to the notification type
-3. then find the CPER record through the generic error status block.
-
-For example(notification type is SEA):
-
-(1) root@genericarmv8:~# iasl -p ./HEST -d /sys/firmware/acpi/tables/HEST
-(2) root@genericarmv8:~# cat HEST.dsl
-    /*
-     * Intel ACPI Component Architecture
-     * AML/ASL+ Disassembler version 20170728 (64-bit version)
-     * Copyright (c) 2000 - 2017 Intel Corporation
-     *
-     * Disassembly of /sys/firmware/acpi/tables/HEST, Mon Sep  5 07:59:17 2016
-     *
-     * ACPI Data Table [HEST]
-     *
-     * Format: [HexOffset DecimalOffset ByteLength]  FieldName : FieldValue
-     */
-
-    ..................................................................................
-	[308h 0776   2]                Subtable Type : 000A [Generic Hardware Error Source V2]
-	[30Ah 0778   2]                    Source Id : 0008
-	[30Ch 0780   2]            Related Source Id : FFFF
-	[30Eh 0782   1]                     Reserved : 00
-	[30Fh 0783   1]                      Enabled : 01
-	[310h 0784   4]       Records To Preallocate : 00000001
-	[314h 0788   4]      Max Sections Per Record : 00000001
-	[318h 0792   4]          Max Raw Data Length : 00001000
-
-	[31Ch 0796  12]         Error Status Address : [Generic Address Structure]
-	[31Ch 0796   1]                     Space ID : 00 [SystemMemory]
-	[31Dh 0797   1]                    Bit Width : 40
-	[31Eh 0798   1]                   Bit Offset : 00
-	[31Fh 0799   1]         Encoded Access Width : 04 [QWord Access:64]
-	[320h 0800   8]                      Address : 00000000785D0040
-
-	[328h 0808  28]                       Notify : [Hardware Error Notification Structure]
-	[328h 0808   1]                  Notify Type : 08 [SEA]
-	[329h 0809   1]                Notify Length : 1C
-	[32Ah 0810   2]   Configuration Write Enable : 0000
-	[32Ch 0812   4]                 PollInterval : 00000000
-	[330h 0816   4]                       Vector : 00000000
-	[334h 0820   4]      Polling Threshold Value : 00000000
-	[338h 0824   4]     Polling Threshold Window : 00000000
-	[33Ch 0828   4]        Error Threshold Value : 00000000
-	[340h 0832   4]       Error Threshold Window : 00000000
-
-	[344h 0836   4]    Error Status Block Length : 00001000
-	[348h 0840  12]            Read Ack Register : [Generic Address Structure]
-	[348h 0840   1]                     Space ID : 00 [SystemMemory]
-	[349h 0841   1]                    Bit Width : 40
-	[34Ah 0842   1]                   Bit Offset : 00
-	[34Bh 0843   1]         Encoded Access Width : 04 [QWord Access:64]
-	[34Ch 0844   8]                      Address : 00000000785D0098
-
-	[354h 0852   8]            Read Ack Preserve : 00000000FFFFFFFE
-	[35Ch 0860   8]               Read Ack Write : 0000000000000001
-
-	[364h 0868   2]                Subtable Type : 000A [Generic Hardware Error Source V2]
-	[366h 0870   2]                    Source Id : 0009
-	[368h 0872   2]            Related Source Id : FFFF
-	[36Ah 0874   1]                     Reserved : 00
-	[36Bh 0875   1]                      Enabled : 01
-	[36Ch 0876   4]       Records To Preallocate : 00000001
-	[370h 0880   4]      Max Sections Per Record : 00000001
-	[374h 0884   4]          Max Raw Data Length : 00001000
-
-	[378h 0888  12]         Error Status Address : [Generic Address Structure]
-	[378h 0888   1]                     Space ID : 00 [SystemMemory]
-	[379h 0889   1]                    Bit Width : 40
-	[37Ah 0890   1]                   Bit Offset : 00
-	[37Bh 0891   1]         Encoded Access Width : 04 [QWord Access:64]
-	[37Ch 0892   8]                      Address : 00000000785D0048
-
-	[384h 0900  28]                       Notify : [Hardware Error Notification Structure]
-	[384h 0900   1]                  Notify Type : 09 [SEI]
-	[385h 0901   1]                Notify Length : 1C
-	[386h 0902   2]   Configuration Write Enable : 0000
-	[388h 0904   4]                 PollInterval : 00000000
-	[38Ch 0908   4]                       Vector : 00000000
-	[390h 0912   4]      Polling Threshold Value : 00000000
-	[394h 0916   4]     Polling Threshold Window : 00000000
-	[398h 0920   4]        Error Threshold Value : 00000000
-	[39Ch 0924   4]       Error Threshold Window : 00000000
-
-	[3A0h 0928   4]    Error Status Block Length : 00001000
-	[3A4h 0932  12]            Read Ack Register : [Generic Address Structure]
-	[3A4h 0932   1]                     Space ID : 00 [SystemMemory]
-	[3A5h 0933   1]                    Bit Width : 40
-	[3A6h 0934   1]                   Bit Offset : 00
-	[3A7h 0935   1]         Encoded Access Width : 04 [QWord Access:64]
-	[3A8h 0936   8]                      Address : 00000000785D00A0
-
-	[3B0h 0944   8]            Read Ack Preserve : 00000000FFFFFFFE
-	[3B8h 0952   8]               Read Ack Write : 0000000000000001
-	.....................................................................................
-(3) according to above table, the address that contains the physical address of a block
-    of memory that holds the error status data for SEA notification error source is 0x00000000785D0040
-(4) the address for SEA notification error source is 0x785d8108
-    (qemu) xp /1 0x00000000785D0040
-    00000000785d0040: 0x785d80b0
-
-(5) check the content of generic error status block and generic error data entry
-    (qemu) xp /100x 0x785d80b0
-	00000000785d80b0: 0x00000001 0x00000000 0x00000000 0x00000098
-	00000000785d80c0: 0x00000000 0xa5bc1114 0x4ede6f64 0x833e63b8
-	00000000785d80d0: 0xb1837ced 0x00000000 0x00000300 0x00000050
-	00000000785d80e0: 0x00000000 0x00000000 0x00000000 0x00000000
-	00000000785d80f0: 0x00000000 0x00000000 0x00000000 0x00000000
-	00000000785d8100: 0x00000000 0x00000000 0x00000000 0x00004002
-	00000000785d8110: 0x00000000 0x00000000 0x00000000 0x00001111
-	00000000785d8120: 0x00000000 0x00000000 0x00000000 0x00000000
-	00000000785d8130: 0x00000000 0x00000000 0x00000000 0x00000000
-	00000000785d8140: 0x00000000 0x00000000 0x00000000 0x00000000
-	00000000785d8150: 0x00000000 0x00000003 0x00000000 0x00000000
-	00000000785d8160: 0x00000000 0x00000000 0x00000000 0x00000000
-	00000000785d8170: 0x00000000 0x00000000 0x00000000 0x00000000
-	00000000785d8180: 0x00000000 0x00000000 0x00000000 0x00000000
-	00000000785d8190: 0x00000000 0x00000000 0x00000000 0x00000000
-	00000000785d81a0: 0x00000000 0x00000000 0x00000000 0x00000000
-	00000000785d81b0: 0x00000000 0x00000000 0x00000000 0x00000000
-	00000000785d81c0: 0x00000000 0x00000000 0x00000000 0x00000000
-	00000000785d81d0: 0x00000000 0x00000000 0x00000000 0x00000000
-	00000000785d81e0: 0x00000000 0x00000000 0x00000000 0x00000000
-	00000000785d81f0: 0x00000000 0x00000000 0x00000000 0x00000000
-	00000000785d8200: 0x00000000 0x00000000 0x00000000 0x00000000
-	00000000785d8210: 0x00000000 0x00000000 0x00000000 0x00000000
-	00000000785d8220: 0x00000000 0x00000000 0x00000000 0x00000000
-	00000000785d8230: 0x00000000 0x00000000 0x00000000 0x00000000
-(6) check the OSPM's ACK value(for example SEA)
-    /* Before OSPM acknowledges the error, check the ACK value */
-    (qemu) xp /1 0x00000000785D0098
-    00000000785d00f0: 0x00000000
-
-    /* After OSPM acknowledges the error, check the ACK value */
-    (qemu) xp /1 0x00000000785D0098
-    00000000785d00f0: 0x00000001
-
-
-Dongjiu Geng (3):
-  ACPI: add APEI/HEST/CPER structures and macros
-  ACPI: Add APEI GHES Table Generation support
-  ACPI: build and enable APEI GHES in the Makefile and configuration
-
- default-configs/arm-softmmu.mak |   1 +
- hw/acpi/Makefile.objs           |   1 +
- hw/acpi/aml-build.c             |   2 +
- hw/acpi/hest_ghes.c             | 344 ++++++++++++++++++++++++++++++++++++++++
- hw/arm/virt-acpi-build.c        |   6 +
- include/hw/acpi/acpi-defs.h     | 193 ++++++++++++++++++++++
- include/hw/acpi/aml-build.h     |   1 +
- include/hw/acpi/hest_ghes.h     |  47 ++++++
- 8 files changed, 595 insertions(+)
- create mode 100644 hw/acpi/hest_ghes.c
- create mode 100644 include/hw/acpi/hest_ghes.h
-
--- 
-1.8.3.1
-
+thanks
+-- PMM

@@ -1,231 +1,163 @@
-Received: by 10.25.221.202 with SMTP id w71csp2157206lfi;
-        Fri, 4 Aug 2017 07:38:31 -0700 (PDT)
-X-Received: by 10.55.144.130 with SMTP id s124mr3411587qkd.136.1501857511400;
-        Fri, 04 Aug 2017 07:38:31 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1501857511; cv=none;
+Received: by 10.25.221.202 with SMTP id w71csp2345691lfi;
+        Fri, 4 Aug 2017 10:21:09 -0700 (PDT)
+X-Received: by 10.200.42.181 with SMTP id b50mr4033324qta.224.1501867269580;
+        Fri, 04 Aug 2017 10:21:09 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1501867269; cv=none;
         d=google.com; s=arc-20160816;
-        b=faFRBRdQjCtyqWLFvNw6IDchy7VEzKGn2v1E2SQ9nFkYOQ5t0+mfQcZRw558LkOsvK
-         +mGA43i988s/0ksM8sqlCizm9HuKP8cpby89q8gs08yMTYQHKqpQuSf9IopqvgsCIGDP
-         1o2nC5VOaQc3yHnOj4gIagO9h3uBY59EUElyRAREu76jF6h6fFD58nxV83ckGoGLlEIC
-         B4y7IwmQJQbbBSuHdT/reKu09t0K1UsxxmAbODlY6DJyBL8abPmdvaHnoyFkulAZHYka
-         OhUg52X3l1xukr6sygr5QKBh3E4Qr5xMmbrPaC9umG57JgyFWW84Wou4oX4b7rlorrD+
-         4hqQ==
+        b=VQKoH1wyZAhhJvFMJ/+zUxWzaRDMZ9HEOt57bP5dBWRonb3WvbO+yhxUrVjKRc9UR0
+         jT9/HmWIJks1wCbt9WIy+KZSinIHwasbp8V6jOVXPrykKCs57Q/7pEmu3RoD5PqYAMTA
+         O8L18R4xmrzXRplDyYsIoDd3N9cWm3uAn7a4UueoZzsgeouuf1TSKZ6VtXAHCBk1xyAO
+         wyTJ3ms1/wnoQCDCwKmUA7QWkx6FJ9NwNp9RPAXInbSHcEKHcLZwQb2ImtLLAJxwUYe2
+         ass6XNOuG46QJU3BaVmt6xXPl0n+/XY2t+Vjcpz7tCXqWxDXaqCmrQC/ZRWZrKosmVqr
+         lF0Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:references
-         :message-id:content-transfer-encoding:date:in-reply-to:from
-         :mime-version:dkim-signature:arc-authentication-results;
-        bh=JhpQ0UkGfpG5nsytaphI+XNJO9zHKzVSD+eDsV/vxJg=;
-        b=FizpnueXZSZJmKCtujm/OIqVVCYQD6TD/SdEiWF5RRdKl5DXHiNeVpPmP1HriyjHil
-         9D5Sw/3ekpJbv6APr2b9zcv/aqhtba0uEtEYOPWc1Zau1pETijhOziCAXajdzwfSKBY0
-         uV+6vG8RIDAv0kVf+6lkRGqqkg2xtGltJxNNYNF2sCj21s4oInlruZBB64+KszQE2Z9d
-         FFZDB+c4I2No7oyi/fRqj0QY33WHrm5kwFvsumeABX4k+FA62XWqm3PFn+qNcA0SJpA/
-         Rijq5yu6pgtkrY8OmAWoZVp3SLFpFWJIbY2kYDHCL5Qfu9IsXjO2UntOMJJ9qc7SpQQF
-         xn7g==
+         :list-unsubscribe:list-id:precedence:subject:message-id:date:to:from
+         :arc-authentication-results;
+        bh=bcaP+Xp5Acnubea+RekwWNcffosiCSCBeRC13F6od2c=;
+        b=EpdGpJeWedRMU6i/QqhJihdC4Jnd4vnUd0tEixFAXnomyqWDdqip6LPrTLWm0+FngL
+         cWkf1w5j7WJwYAXwQvw64EbSrJhn2bYa7QqIAEkzLtQ60lSgM4M5EOrag+kX4sHlAGFS
+         kyasmBeN0wqyfE+oT7PIWdqf+XCd/JydL+af7WC7pyjOcNmlF0F2UNNHd695qBJBG8No
+         SnblzULQluPnsoBBPKQI3GU8QjOt0DRpF91HXmSw2RMReO9as0WcveQF16nPoT2AHZ9/
+         +90uPcNAtWstK89GzqMP3ff1iHUUwcy8akOs4oX8dGrCbt0zVKxne/RUpr2tJZ5ahbqS
+         7o7g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.b=GJs9H85p;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id i18si1778824qti.263.2017.08.04.07.38.30
+        by mx.google.com with ESMTPS id v36si2027830qtb.161.2017.08.04.10.21.08
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 04 Aug 2017 07:38:31 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Fri, 04 Aug 2017 10:21:09 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.b=GJs9H85p;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:34727 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:38506 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1dddkC-0005gL-OT
-	for alex.bennee@linaro.org; Fri, 04 Aug 2017 10:38:28 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:37989)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1ddgHa-0007Cp-Lu
+	for alex.bennee@linaro.org; Fri, 04 Aug 2017 13:21:06 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:39698)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <programmingkidx@gmail.com>) id 1dddhq-0003uD-8R
-	for qemu-devel@nongnu.org; Fri, 04 Aug 2017 10:36:15 -0400
+	(envelope-from <pm215@archaic.org.uk>) id 1ddgHU-0007C3-Sq
+	for qemu-arm@nongnu.org; Fri, 04 Aug 2017 13:21:01 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <programmingkidx@gmail.com>) id 1dddhd-0002y0-NU
-	for qemu-devel@nongnu.org; Fri, 04 Aug 2017 10:36:02 -0400
-Received: from mail-it0-x244.google.com ([2607:f8b0:4001:c0b::244]:38088)
+	(envelope-from <pm215@archaic.org.uk>) id 1ddgHT-0001QQ-No
+	for qemu-arm@nongnu.org; Fri, 04 Aug 2017 13:21:00 -0400
+Received: from orth.archaic.org.uk ([2001:8b0:1d0::2]:37794)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <programmingkidx@gmail.com>)
-	id 1dddgv-0002Fp-4L; Fri, 04 Aug 2017 10:35:05 -0400
-Received: by mail-it0-x244.google.com with SMTP id h199so1191764ith.5;
-	Fri, 04 Aug 2017 07:35:03 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=mime-version:subject:from:in-reply-to:date:cc
-	:content-transfer-encoding:message-id:references:to;
-	bh=JhpQ0UkGfpG5nsytaphI+XNJO9zHKzVSD+eDsV/vxJg=;
-	b=GJs9H85pUhzYMolosjTyXFFapTt3mZrHP93XyvmmbMYizq9ShjLsXPPnqvsrGB5pKM
-	jCHaiy4NZhTLc4N9NcJT4MxPOc5eg3GfBAaoiQHu9tHG5Gyt6Yn/KGqp8cP+uynWgGr1
-	QR+oZaa2mX9VnD2/EWVzAbrl1rOEUIDTHN2IAn5OfalW3vPFMEwwb9WNmAkjIuIUX0nn
-	PgrcgJNrTtwKOfWm3nfkz6M8fQR1EOsd3EEXQD6uStLLXNGqrAwZuojkOu/4+zfzmJiW
-	M2/6B/CurR3pUeeNkSOTX88rYSSD+p4XhJftGw+WKPcDcGoO0ZF2owrSheJQLlvz8lM4
-	0rVw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:subject:from:in-reply-to:date:cc
-	:content-transfer-encoding:message-id:references:to;
-	bh=JhpQ0UkGfpG5nsytaphI+XNJO9zHKzVSD+eDsV/vxJg=;
-	b=mg3g5+PGE98u31DjdvGKaGf+tSUOuUlbN1lpujvbHltwEKtFINIlxiFfDhyoifU/DJ
-	ryUButUN/ZxnDsFA3cw6CcS2MQs/cVJFMU0BexyYs+fnGCsudzYLjMykG/MWntU2ahec
-	1YpFwOKqv3ARJQ6Vrnz331KkywPdWuk0fJeYGHqFE8Hzzm6qrG5tJ651WGpYbtucL7hx
-	fIQ+1f+i4sNyMkTGc7EjVR7dZ2JXNXsbCV2/Mm+OaLREJdLAqS0wdZFOGJCtrRMLgyHI
-	p+qrYM9h2QGBoUfBoS2HFiGFmsDkosU+KStW/jt2WWDUYMaZkv57rraODkxgcuPTrDPM
-	uA9w==
-X-Gm-Message-State: AHYfb5jApGVL1N2T1StMvuqSf6vcVae3DCggplP1AQPvoLtMlWPt3CqY
-	Dtkz6RGd7VIQKA==
-X-Received: by 10.36.170.7 with SMTP id b7mr2410757itf.10.1501857302883;
-	Fri, 04 Aug 2017 07:35:02 -0700 (PDT)
-Received: from [192.168.0.7] (d199-74-164-53.col.wideopenwest.com.
-	[74.199.53.164])
-	by smtp.gmail.com with ESMTPSA id p95sm769782ioi.62.2017.08.04.07.35.01
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Fri, 04 Aug 2017 07:35:02 -0700 (PDT)
-Content-Type: text/plain; charset=us-ascii
-Mime-Version: 1.0 (Mac OS X Mail 10.3 \(3273\))
-From: Programmingkid <programmingkidx@gmail.com>
-In-Reply-To: <mailman.88458.1501824151.22737.qemu-devel@nongnu.org>
-Date: Fri, 4 Aug 2017 10:35:00 -0400
-Content-Transfer-Encoding: quoted-printable
-Message-Id: <FCC900B9-6498-46D1-92C7-800BEBDE9350@gmail.com>
-References: <mailman.88458.1501824151.22737.qemu-devel@nongnu.org>
-To: Dongjiu Geng <gengdongjiu@huawei.com>
-X-Mailer: Apple Mail (2.3273)
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:4001:c0b::244
-Subject: [Qemu-devel] [PATCH v6 0/3] Generate APEI GHES table and
- dynamically record CPER
-X-BeenThere: qemu-devel@nongnu.org
+	(Exim 4.71) (envelope-from <pm215@archaic.org.uk>)
+	id 1ddgHT-0001Dp-Bx; Fri, 04 Aug 2017 13:20:59 -0400
+Received: from pm215 by orth.archaic.org.uk with local (Exim 4.84_2)
+	(envelope-from <pm215@archaic.org.uk>)
+	id 1ddgHK-0006s5-BW; Fri, 04 Aug 2017 18:20:50 +0100
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Date: Fri,  4 Aug 2017 18:20:41 +0100
+Message-Id: <1501867249-1924-1-git-send-email-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.7.4
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 2001:8b0:1d0::2
+Subject: [Qemu-arm] [PATCH 0/8] Implement ARM external abort handling
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, wuquanming@huawei.com,
-	"Michael	S. Tsirkin" <mst@redhat.com>,
-	"qemu-devel@nongnu.org qemu-devel" <qemu-devel@nongnu.org>,
-	qemu-arm@nongnu.org, huangshaoyu@huawei.com,
-	zhaoshenglong@huawei.com, Igor Mammedov <imammedo@redhat.com>,
-	Laszlo Ersek <lersek@redhat.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: hVNz76KgWANU
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Richard Henderson <rth@twiddle.net>, patches@linaro.org
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: bGhQ8HYzCSGY
 
+Following recent list discussion
+https://lists.gnu.org/archive/html/qemu-devel/2017-08/msg00063.html
 
-> On Aug 4, 2017, at 1:22 AM, qemu-devel-request@nongnu.org wrote:
->=20
-> Date: Fri, 4 Aug 2017 12:37:52 +0800
-> From: Dongjiu Geng <gengdongjiu@huawei.com>
-> To: <lersek@redhat.com>, <mst@redhat.com>, <imammedo@redhat.com>,
-> 	<zhaoshenglong@huawei.com>, <peter.maydell@linaro.org>,
-> 	<qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>
-> Cc: <gengdongjiu@huawei.com>, <huangshaoyu@huawei.com>,
-> 	<wuquanming@huawei.com>
-> Subject: [Qemu-devel] [PATCH v6 0/3] Generate APEI GHES table and
-> 	dynamically record CPER
-> Message-ID: <1501821475-14647-1-git-send-email-gengdongjiu@huawei.com>
-> Content-Type: text/plain
->=20
-> In the armv8 platform, the mainly hardware error source are ARMv8
-> SEA/SEI/GSIV. For the ARMv8 SEA/SEI, the KVM or host kernel will =
-signal SIGBUS
-> or use other interface to notify user space, such as Qemu. After Qemu =
-gets
-> the notification, it will record the CPER and inject the SEA/SEI to =
-KVM. this
-> series of patches will generate APEI table when guest OS boot up, and =
-dynamically
-> record CPER for the guest OS about the generic hardware errors, =
-currently the
-> userspace only handle the memory section hardware errors. Before Qemu =
-record the
-> CPER, it needs to check the ACK value written by the guest OS to avoid =
-read-write
-> race condition.
->=20
-> Below is the APEI/GHESV2/CPER table layout, the max number of error =
-soure is 11,
-> which is classified by notification type, now only enable the SEA/SEI =
-notification type
-> error source.
->=20
->     etc/acpi/tables                               etc/hardware_errors
->    =3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D        =
-            =3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
-=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D
->                                          +------------------+
-> +----------------------------+            |    address       |         =
-     +--------------+
-> |    HEST                    +            |    registers     |         =
-     | Error Status |
-> + +--------------------------+            | +----------------+         =
-     | Data Block 0 |
-> | | GHES0                    | +--------->| |status_address0 =
-|------------->| +------------+
-> +--------------------------+ |          | +----------------+           =
-   | |  CPER      |
-> | | .................        | | +------->| |status_address1 =
-|----------+   | |  CPER      |
-> | | error_status_address     | | |        | +----------------+         =
- |   | |  ....      |
-> | | .................        | | |        |  .............   |         =
- |   | |  CPER      |
-> | | error_status_address-----+-+ |        +------------------+         =
- |   | +-+------------+
-> | | .................        |   | +----->| =
-|status_address10|--------+ |   | Error Status |
-> | | read_ack_register--------+-+ | |      | +----------------+        =
-| |   | Data Block 1 |
-> | | read_ack_preserve        | +-+-+----->| |ack_address0    |--+     =
-| +-->| +------------+
-> | | read_ack_write           |   | |      | +----------------+  |     =
-|     | |  CPER      |
-> + +--------------------------+   | | +--->| |ack_address1    |--+-+   =
-|     | |  CPER      |
-> | | GHES1                    |   | | |    | +----------------+  | |   =
-|     | |  ....      |
-> + +--------------------------+   | | |    | | .............  |  | |   =
-|     | |  CPER      |
-> | | .................        |   | | |    | +----------------+  | |   =
-|     +-+------------+
-> | | error_status_address-----+---+ | | +->| |ack_address10   |--+-+-+ =
-|     | |..........  |
-> | | .................        |     | | |  | +----------------+  | | | =
-|     | +------------+
-> | | read_ack_register--------+-----+-+ |  | |      ack0      |<-+ | | =
-|     | Error Status |
-> | | read_ack_preserve        |     |   |  | +----------------+    | | =
-|     | Data Block 10|
-> | | read_ack_write           |     |   |  | |      ack1      |<---+ | =
-+---->| +------------+
-> + +--------------------------+     |   |  | +----------------+      |  =
-     | |  CPER      |
-> | | ...............          |     |   |  | |       ....     |      |  =
-     | |  CPER      |
-> + +--------------------------+     |   |  | +--------------+ |      |  =
-     | |  ....      |
-> | | GHES10                   |     |   |  | |      ack10     |<---- +  =
-     | |  CPER      |
-> + +--------------------------+     |   |  | +----------------+         =
-     +-+------------+
-> | | .................        |     |   |
-> | | error_status_address-----+-----+   |
-> | | .................        |         |
-> | | read_ack_register--------+---------+
-> | | read_ack_preserve        |
-> | | read_ack_write           |
-> + +--------------------------+
+here's a patchseries which defines a new API for handling CPU memory
+transaction failures at the right level in the memory subsystem code,
+and implements it for ARM so that we can generate prefetch abort and
+data abort exceptions for external aborts.
 
+The first 3 patches here implement the core code support
+for the new cpu_transaction_failed_hook.
 
-Excellent job with the ASCII drawing.=20
+The next 2 patches add support for turning it off on
+a per-board basis, and use that to go back to RAZ/WI
+on the legacy ARM board models, because right now we rely
+on that so that guest code doesn't blow up when it touches
+a device we don't have a model for yet. (We leave the
+support enabled for 'virt' and 'mps2'.)
+
+Finally the last 3 patches do some cleanup and then
+implement the new hook for ARM.
+
+(I have not as yet audited the target/arm code to check that
+we correctly handle failed transactions in all the places
+that C code does physical address accesses; but since those
+lookups don't generate exceptions today, the series leaves
+behaviour there no worse off than they were before.)
+
+thanks
+-- PMM
+
+Peter Maydell (8):
+  memory.h: Move MemTxResult type to memattrs.h
+  cpu: Define new cpu_transaction_failed() hook
+  cputlb: Support generating CPU exceptions on memory transaction
+    failures
+  boards.h: Define new flag ignore_memory_transaction_failures
+  hw/arm: Set ignore_memory_transaction_failures for most ARM boards
+  target/arm: Factor out fault delivery code
+  target/arm: Allow deliver_fault() caller to specify EA bit
+  target/arm: Implement new do_transaction_failed hook
+
+ include/exec/memattrs.h |  10 ++++
+ include/exec/memory.h   |  10 ----
+ include/hw/boards.h     |  11 ++++
+ include/qom/cpu.h       |  26 ++++++++
+ softmmu_template.h      |   4 +-
+ target/arm/internals.h  |  12 ++++
+ accel/tcg/cputlb.c      |  32 +++++++++-
+ hw/arm/aspeed.c         |   3 +
+ hw/arm/collie.c         |   1 +
+ hw/arm/cubieboard.c     |   1 +
+ hw/arm/digic_boards.c   |   1 +
+ hw/arm/exynos4_boards.c |   2 +
+ hw/arm/gumstix.c        |   2 +
+ hw/arm/highbank.c       |   2 +
+ hw/arm/imx25_pdk.c      |   1 +
+ hw/arm/integratorcp.c   |   1 +
+ hw/arm/kzm.c            |   1 +
+ hw/arm/mainstone.c      |   1 +
+ hw/arm/musicpal.c       |   1 +
+ hw/arm/netduino2.c      |   1 +
+ hw/arm/nseries.c        |   2 +
+ hw/arm/omap_sx1.c       |   2 +
+ hw/arm/palm.c           |   1 +
+ hw/arm/raspi.c          |   1 +
+ hw/arm/realview.c       |   4 ++
+ hw/arm/sabrelite.c      |   1 +
+ hw/arm/spitz.c          |   4 ++
+ hw/arm/stellaris.c      |   2 +
+ hw/arm/tosa.c           |   1 +
+ hw/arm/versatilepb.c    |   2 +
+ hw/arm/vexpress.c       |   1 +
+ hw/arm/xilinx_zynq.c    |   1 +
+ hw/arm/xlnx-ep108.c     |   2 +
+ hw/arm/z2.c             |   1 +
+ qom/cpu.c               |   7 +++
+ target/arm/cpu.c        |   1 +
+ target/arm/op_helper.c  | 155 +++++++++++++++++++++++++++++++-----------------
+ 37 files changed, 243 insertions(+), 68 deletions(-)
+
+-- 
+2.7.4
 

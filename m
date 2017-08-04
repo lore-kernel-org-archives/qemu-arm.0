@@ -1,102 +1,70 @@
-Received: by 2002:adf:9061:0:0:0:0:0 with SMTP id h88csp527265wrh;
-        Fri, 26 Apr 2019 05:15:32 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzy4X4pX/YgCbAvYoY+YVJo4u51LET4IdDg+pw217i5JZ1ArAOON/dgK++oHuLZu760tiMr
-X-Received: by 2002:a5d:6987:: with SMTP id g7mr28767653wru.299.1556280932699;
-        Fri, 26 Apr 2019 05:15:32 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1556280932; cv=none;
+Received: by 10.25.221.202 with SMTP id w71csp2358378lfi;
+        Fri, 4 Aug 2017 10:33:15 -0700 (PDT)
+X-Received: by 10.55.69.73 with SMTP id s70mr4115458qka.291.1501867995524;
+        Fri, 04 Aug 2017 10:33:15 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1501867995; cv=none;
         d=google.com; s=arc-20160816;
-        b=u0drSc+2dUhpaaXks5tLz+oosgOGJm7yjcadFzC0HQY6ryhw+Mnsr0H7Bgbq4WFNDp
-         qxGc3ojD+AbURZvqkrAlnaqZIm5f47nao7aEf2rwEImAu2Mnr3zn3lghTH9Zq33akeZo
-         Cb57ogeqkSHeQSiFhE02Q3+uu0Rpd6ZezBF9b/haUaP43hzVYLFPvBiGQd2zse5z7JBr
-         /a59Xp11p8B+wP51uVfmHNEbzAv1qZg9a4C2SXjeWmE5XAawByGEZcbpXigRd2zD6epP
-         vk6PXi7tRGAhJLdBuL0miCo9w/A4ePYle9pCFTmDfNTKu0aulZ3f96lTrwWw2bdf4m5z
-         5hZQ==
+        b=oVViut3vdkMaW7BcGgvT4dLIC/0JmhOZ6fDCDuQKJdj13PO7iplaGJYU2ikQOl3CFL
+         MmFKQHaWQVT+N6cfzwBb5GERLOIACDM4H7LGZva0y4eLjRIp33pu3I5SpWOxgErEl9Ii
+         62DI2ooKamd0cmkdnJXLrU6Cp+Y09+v3a1o0fVVISAXpxOvpgjCKEatt2jfaSqBl0KYa
+         KPHyZ+7gUcvWo7zsoE+G4I4ERyPrvm5Nk1775Zl8KxU8Ic5USZfa/xwz5yK1FMQMLKmp
+         PADtu/p9odjvVoS1kOcY4QTbYGwfcK9WolS6VEi+QFi2RoBAc7A72VVL5v1iL5wM8KEn
+         6d4w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:to:message-id:date:from:in-reply-to
-         :references:mime-version:dkim-signature;
-        bh=JhNXNGh515Tl+jXLBPwVw4yVfmme7OaqVOPHASsKSTQ=;
-        b=LmfW7uPJABNlMkNBQwoxV9NWjaoNV4snhTn+r5p85SeQTYcwuoxVFhDovDEdJn+vsi
-         dNE6UwCj8qzeG9gtDMXiOkStPnVT3giemrTaa20RLKtHM0qIS58fbtB+IiaDyO7ncbdl
-         CZNI2i2P10QFVB543IaCW6vj1pTOAHcTCV6TqmaiEZCdWVknONlHjVZhUdQfcjBxVppI
-         AIpAD10/0xwsnNgqdivrYMIfky0U9VAmA1WjGb8UA2au8cOxuhk04nTEe8WX9XyVULBg
-         vrV8gAE3fZR8V/7/dfbUZCsCWL4qFLmLQvdF06s1swS47IghB8y6behD48bKyRySqSCp
-         gg5A==
+         :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
+         :message-id:date:to:from:arc-authentication-results;
+        bh=z3oFB170EXueAdyWVSsysPr05zdfm+glpwPS6I0jlAw=;
+        b=Z4PctR1cSn6FePELB46YiShNkN8Ra2k/Cttvyk6NFO2usElGywLL3aDI/UqZurA1/z
+         5Vo9vPjlE1WEkvHRhkix63gV3U7wgSiSGFSfKzDutVJd8/OiSL6lfnYf6WdgYZdgnARO
+         qJfkiHgSEu7+wY3+sThXmk3vFUDbeSxkqrERTiFHY5lFhu15NMXlfPmdjyD1GExqQi57
+         lO9Ob9GxwMRcwPBgA8Sj8kTQiyQw5VYRsol2JL6yZbklioJyDa2F/B2xWk3Flewyw322
+         fAc+9+ak73yMKlTyq+FuT7ArrpGne0ac0K+PGMBqaCYdeC4+M7ITnolwveE+/iTxDZTy
+         qy6A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=QGRx8uDq;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id n14si3339185wre.118.2019.04.26.05.15.32
+Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
+        by mx.google.com with ESMTPS id o78si1976796qki.275.2017.08.04.10.33.14
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 26 Apr 2019 05:15:32 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 04 Aug 2017 10:33:15 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=QGRx8uDq;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([127.0.0.1]:46297 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:40468 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hJzlJ-00029c-LU
-	for alex.bennee@linaro.org; Fri, 26 Apr 2019 08:15:29 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:39465)
+	id 1ddgTI-0007UH-Fs
+	for alex.bennee@linaro.org; Fri, 04 Aug 2017 13:33:12 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:46926)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1hJziI-0008PM-FX
-	for qemu-arm@nongnu.org; Fri, 26 Apr 2019 08:12:23 -0400
+	(envelope-from <pm215@archaic.org.uk>) id 1ddgTD-0007TM-S7
+	for qemu-arm@nongnu.org; Fri, 04 Aug 2017 13:33:09 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1hJziG-0005oy-IR
-	for qemu-arm@nongnu.org; Fri, 26 Apr 2019 08:12:22 -0400
-Received: from mail-oi1-x243.google.com ([2607:f8b0:4864:20::243]:40644)
+	(envelope-from <pm215@archaic.org.uk>) id 1ddgTC-0001iL-IX
+	for qemu-arm@nongnu.org; Fri, 04 Aug 2017 13:33:07 -0400
+Received: from orth.archaic.org.uk ([2001:8b0:1d0::2]:37805)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1hJziD-0005kH-5P
-	for qemu-arm@nongnu.org; Fri, 26 Apr 2019 08:12:18 -0400
-Received: by mail-oi1-x243.google.com with SMTP id k10so2725123oik.7
-	for <qemu-arm@nongnu.org>; Fri, 26 Apr 2019 05:12:15 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-	:cc:content-transfer-encoding;
-	bh=JhNXNGh515Tl+jXLBPwVw4yVfmme7OaqVOPHASsKSTQ=;
-	b=QGRx8uDq0v5FinbFwzNiSa96y/bkbnLt331BerJ9yEYOOa3HLA4LReVz6ZlRjSPbYg
-	nxTdytyAqHSYaRDFanfdMMm9eLuFIleWIHM+RbojnTMz+68Vhdd0TPjA+dXJNeWkNvhc
-	c+Ffi9nNROo6tUlseTMJUjU/INd5qn6AyR7jytXkWXOxqTqg+rLOSVTPlcbN/Ic9wbYk
-	T5DOvX81mM6wCI772kgM3zJnrAdjjt4HmtsNxsHOyvt4I3bytbyKvQIwPw8MvzzOglum
-	43SlnqDPphEMSJibMOUEd/AAcsmyJ5NQDyRZxoHNfzuq5MXMm9QdMvxoFx8OWp3uoJGP
-	5/Lw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-	:message-id:subject:to:cc:content-transfer-encoding;
-	bh=JhNXNGh515Tl+jXLBPwVw4yVfmme7OaqVOPHASsKSTQ=;
-	b=UDE5qI0pD7nGwww6Ma2A8aAeqH1T/OGqe4ymiqGcfoE0SJkWMHgjrfJJ9rvxAxSMYr
-	xmn664/9Z4qxmcvOifg9IAc/C5LQL2dpZJL6klkoN0jEdwXV13QLooIQ44xcxpslmx/z
-	QrFVUcZrIH52J4CuHljNyo2l8nLf5H85ZDuzVvFJhCqSk2oO/kx/2CaxHCbvSGwskMcy
-	rku5L6LL0Fn9hLEinvnhR/rxACVt7RsDTqStarqz/ljRw4CUtMtrZ0Ckh7h6V6QDRkAk
-	1haiqNu1NVmdveo/P6C+06E8qsc9hOF5uXkH72IWph6zdwaDHCSyHjNokn1uJLzLYfSA
-	GYlw==
-X-Gm-Message-State: APjAAAUk5P9SjfYyDMnvuDFfuCWxFPzDs2gV/WoKI3Xmp4l/JB1j1tj3
-	Gr+UcVfsf+Y1lkhXv0t4NC8L5O2fWfGY4goFl+DQPQ==
-X-Received: by 2002:a05:6808:301:: with SMTP id
-	i1mr3857642oie.163.1556280734491; 
-	Fri, 26 Apr 2019 05:12:14 -0700 (PDT)
-MIME-Version: 1.0
-References: <trinity-1f7e0bc4-e787-4b8e-9ba2-9e458d88c7ca-1556216041544@3c-app-webde-bs13>
-In-Reply-To: <trinity-1f7e0bc4-e787-4b8e-9ba2-9e458d88c7ca-1556216041544@3c-app-webde-bs13>
+	(Exim 4.71) (envelope-from <pm215@archaic.org.uk>)
+	id 1ddgTC-0001gy-Bg; Fri, 04 Aug 2017 13:33:06 -0400
+Received: from pm215 by orth.archaic.org.uk with local (Exim 4.84_2)
+	(envelope-from <pm215@archaic.org.uk>)
+	id 1ddgHM-0006sy-69; Fri, 04 Aug 2017 18:20:52 +0100
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 26 Apr 2019 13:12:02 +0100
-Message-ID: <CAFEAcA_bS_Oz+shCU1U5rN_DMP9_osQXXmh470OP1r-9GQ4=ag@mail.gmail.com>
-To: =?UTF-8?B?QmrDtnJuIEhhYXNl?= <Bjoern.M.Haase@web.de>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:4864:20::243
-Subject: Re: [Qemu-arm] Regression tests for Assembly libraries for
- Cortex-M: More recent qemu versions core-dump or fail with warnings
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Date: Fri,  4 Aug 2017 18:20:45 +0100
+Message-Id: <1501867249-1924-5-git-send-email-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.7.4
+In-Reply-To: <1501867249-1924-1-git-send-email-peter.maydell@linaro.org>
+References: <1501867249-1924-1-git-send-email-peter.maydell@linaro.org>
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 2001:8b0:1d0::2
+Subject: [Qemu-arm] [PATCH 4/8] boards.h: Define new flag
+ ignore_memory_transaction_failures
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -108,105 +76,121 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>
+Cc: Richard Henderson <rth@twiddle.net>, patches@linaro.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: cupudBtN6zYq
+X-TUID: Zbx+ZDh+TsaY
 
-On Thu, 25 Apr 2019 at 23:33, "Bj=C3=B6rn Haase" <Bjoern.M.Haase@web.de> wr=
-ote:
->
-> Hello to all,
->
-> I'd appreciate some advice on how to
-> - simulate a ARM Cortex-M4 system with large amount of RAM
-> - together with semihosting (stdin, stdout and files) on the host CPU.
->
-> The background of my question is a bit different from the conventional QE=
-MU use-case for full-system simulation:
->
-> I am working on CC0 crypto libraries for the Arm Cortex-M series (see e.g=
-. https://github.com/BjoernMHaase/fe25519). There is a lot of assembly opti=
-mization and assembly code-generators behind the scenes which need extensiv=
-e tests. I'd like to publish my code together with a regression test librar=
-y running on Qemu (specifically regarding the asm stuff). The regression te=
-sts best have access to files and need to be executed without the code-size=
--restriction and memory constraints of the tiny embedded targets (which mig=
-ht not even allow for stl containers, e.g.).
->
-> The problem is that the regression suite code is too big to fit onto any =
-embedded target. I.e. I'd need to simulate a cortex-m4 system with, e.g. 25=
-6 MByte RAM and with file access using the semihosting support. So just run=
-ning on the embedded target is not an option :-(. The use case is, thus, no=
-t to simulate real-world CPUs but to simulate CPUs that are not available i=
-n the real world.
+Define a new MachineClass field ignore_memory_transaction_failures.
+If this is flag is true then the CPU will ignore memory transaction
+failures which should cause the CPU to take an exception due to an
+access to an unassigned physical address; the transaction will
+instead return zero (for a read) or be ignored (for a write).  This
+should be set only by legacy board models which rely on the old
+RAZ/WI behaviour for handling devices that QEMU does not yet model.
+New board models should instead use "unimplemented-device" for all
+memory ranges where the guest will attempt to probe for a device that
+QEMU doesn't implement and a stub device is required.
 
-This is unfortunate, because one of the general principles
-we have with QEMU models is "emulate the real world hardware,
-don't make things up that don't exist". Heading down the
-"make stuff up" path has got us into awkward hard-to-maintain
-corners in the past.
+We need this for ARM boards, where we're about to implement support for
+generating external aborts on memory transaction failures. Too many
+of our legacy board models rely on the RAZ/WI behaviour and we
+would break currently working guests when their "probe for device"
+code provoked an external abort rather than a RAZ.
 
-> With the older versions of QEMU, I succeeded with using
->
-> qemu-system-arm -nographic -monitor null -serial null -semihosting -cpu c=
-ortex-m4 -m 256M -M integratorcp -kernel ./test_naclM4
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+ include/hw/boards.h | 11 +++++++++++
+ include/qom/cpu.h   |  7 ++++++-
+ qom/cpu.c           |  7 +++++++
+ 3 files changed, 24 insertions(+), 1 deletion(-)
 
-This only ever worked by pure fluke and because your test
-code never needed to interact with interrupts or access
-any memory-mapped system registers. The integratorcp board
-is an A-profile board which does not have an NVIC (which
-in QEMU's implementation means that none of the memory
-mapped system registers will be present and anything to
-do with interrupt handling is likely to crash).
-We tightened up our error-checking so that we no longer let
-users accidentally create some of these command line
-combinations which work only in very restricted cases.
+diff --git a/include/hw/boards.h b/include/hw/boards.h
+index 3363dd1..7f044d1 100644
+--- a/include/hw/boards.h
++++ b/include/hw/boards.h
+@@ -131,6 +131,16 @@ typedef struct {
+  *    size than the target architecture's minimum. (Attempting to create
+  *    such a CPU will fail.) Note that changing this is a migration
+  *    compatibility break for the machine.
++ * @ignore_memory_transaction_failures:
++ *    If this is flag is true then the CPU will ignore memory transaction
++ *    failures which should cause the CPU to take an exception due to an
++ *    access to an unassigned physical address; the transaction will instead
++ *    return zero (for a read) or be ignored (for a write). This should be
++ *    set only by legacy board models which rely on the old RAZ/WI behaviour
++ *    for handling devices that QEMU does not yet model. New board models
++ *    should instead use "unimplemented-device" for all memory ranges where
++ *    the guest will attempt to probe for a device that QEMU doesn't
++ *    implement and a stub device is required.
+  */
+ struct MachineClass {
+     /*< private >*/
+@@ -171,6 +181,7 @@ struct MachineClass {
+     bool rom_file_has_mr;
+     int minimum_page_bits;
+     bool has_hotpluggable_cpus;
++    bool ignore_memory_transaction_failures;
+     int numa_mem_align_shift;
+     void (*numa_auto_assign_ram)(MachineClass *mc, NodeInfo *nodes,
+                                  int nb_nodes, ram_addr_t size);
+diff --git a/include/qom/cpu.h b/include/qom/cpu.h
+index fc54d55..8cff86f 100644
+--- a/include/qom/cpu.h
++++ b/include/qom/cpu.h
+@@ -311,6 +311,9 @@ struct qemu_work_item;
+  * @trace_dstate_delayed: Delayed changes to trace_dstate (includes all changes
+  *                        to @trace_dstate).
+  * @trace_dstate: Dynamic tracing state of events for this vCPU (bitmask).
++ * @ignore_memory_transaction_failures: Cached copy of the MachineState
++ *    flag of the same name: allows the board to suppress calling of the
++ *    CPU do_transaction_failed hook function.
+  *
+  * State of one CPU core or thread.
+  */
+@@ -397,6 +400,8 @@ struct CPUState {
+      */
+     bool throttle_thread_scheduled;
+ 
++    bool ignore_memory_transaction_failures;
++
+     /* Note that this is accessed at the start of every TB via a negative
+        offset from AREG0.  Leave this field at the end so as to make the
+        (absolute value) offset as small as possible.  This reduces code
+@@ -853,7 +858,7 @@ static inline void cpu_transaction_failed(CPUState *cpu, hwaddr physaddr,
+ {
+     CPUClass *cc = CPU_GET_CLASS(cpu);
+ 
+-    if (cc->do_transaction_failed) {
++    if (!cpu->ignore_memory_transaction_failures && cc->do_transaction_failed) {
+         cc->do_transaction_failed(cpu, physaddr, addr, size, access_type,
+                                   mmu_idx, attrs, response, retaddr);
+     }
+diff --git a/qom/cpu.c b/qom/cpu.c
+index 4f38db0..d8dcf64 100644
+--- a/qom/cpu.c
++++ b/qom/cpu.c
+@@ -29,6 +29,7 @@
+ #include "exec/cpu-common.h"
+ #include "qemu/error-report.h"
+ #include "sysemu/sysemu.h"
++#include "hw/boards.h"
+ #include "hw/qdev-properties.h"
+ #include "trace-root.h"
+ 
+@@ -360,6 +361,12 @@ static void cpu_common_parse_features(const char *typename, char *features,
+ static void cpu_common_realizefn(DeviceState *dev, Error **errp)
+ {
+     CPUState *cpu = CPU(dev);
++    Object *machine = qdev_get_machine();
++    ObjectClass *oc = object_get_class(machine);
++    MachineClass *mc = MACHINE_CLASS(oc);
++
++    cpu->ignore_memory_transaction_failures =
++        mc->ignore_memory_transaction_failures;
+ 
+     if (dev->hotplugged) {
+         cpu_synchronize_post_init(cpu);
+-- 
+2.7.4
 
-> Unfortunately the more recent versions of QEMU either core-dump or give w=
-arnings.
-> On Qemo 4.0 I get the result "qemu-system-arm: This board cannot be used =
-with Cortex-M CPUs".
-> I did some attempts using e.g. the lm3s811evb targets. However, I constan=
-tly get failures such as
->
-> "qemu-system-arm: Trying to execute code outside RAM or ROM"
->
-> most surely since qemu checks for the limitations of this specific microc=
-ontroller memory sizes, which I want to exceed intentionally!
-
-Typically the thing that limits the RAM size is the
-physical address map of the board -- if the board
-doesn't provide lots of RAM then QEMU won't model it.
-The lm3s811evb boards are particularly small-ram setups.
-The various mps2 boards have 16MB (they are cortex-m3
-or cortex-m33, rather than -m4, but we don't have
-any -m4 boards at the moment.)
-
-> Also I believe that semihosting will not be supported on any of the nativ=
-e cortex-m machines? Any advice would be very appreciated.
-
-All the cortex-m systems support semihosting. (Note
-that the ABI for M-profile semihosting is not quite
-the same as the A-profile ABI -- it uses a breakpoint
-insn, rather than an SVC insn.) You need to enable
-it with the -semihosting option, and you can't use
-it from non-privileged code (this is the same as the
-A-profile semihosting).
-
-> - Is there some documentation on how to add a new machine to the qemu cod=
-e? I did not actually find the place where e.g. the lm3s811evb configuratio=
-n is stored within the source trees.
-
-There is no documentation -- the best thing to do
-is look at existing code (preferably a newer board
-model, as we have a lot of old legacy code that's
-not written to current best practice). Board models
-for Arm systems are in hw/arm/; the mps2 boards are
-fairly new and a good example. If you're going to
-hack QEMU for this you might be able to find a place
-in the MPS2's memory map to put a larger lump of RAM,
-rather than writing a whole new board model.
-
-thanks
--- PMM

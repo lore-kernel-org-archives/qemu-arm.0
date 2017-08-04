@@ -1,109 +1,83 @@
-Received: by 10.25.221.202 with SMTP id w71csp1236317lfi;
-        Thu, 3 Aug 2017 15:23:37 -0700 (PDT)
-X-Received: by 10.200.55.237 with SMTP id e42mr575002qtc.92.1501799017608;
-        Thu, 03 Aug 2017 15:23:37 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1501799017; cv=none;
+Received: by 10.25.221.202 with SMTP id w71csp1524256lfi;
+        Thu, 3 Aug 2017 21:18:47 -0700 (PDT)
+X-Received: by 10.237.35.81 with SMTP id i17mr1307213qtc.19.1501820327062;
+        Thu, 03 Aug 2017 21:18:47 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1501820327; cv=none;
         d=google.com; s=arc-20160816;
-        b=wtE0kWia10bwdhti3F08gxaIOuNm/Qav/PYJgiuB1lB+55+2ph7bg/3VGrbMeqBrTH
-         yqr1MqsDCNNwxZ4/9/odyz9kfOxrNtyVxlIV4jMmaJRoIAeCVUYeuXTak/17CRl8kloi
-         d5tkLutAMim2MaCv96vVf/T+FKAY+2WuaNxTg2QlN5lWo8Df+ggLw0q1s7VvOOqaQa21
-         ETgFaGWDg3RXsPRfYRThXizEM67MpRkuZ1WzAkoTgsdIEzjbesR8JV2j5M3Yy9Ypja5m
-         fDwA1T66vEJq8o2x/1kyiW2T2VItetr6S/njA4kzBu40PwjgIoVDfLMj/7xiyL+5m+nC
-         2NAw==
+        b=tjI2I2A3fc+cG7p7DNsLFpVwB5JhRRxlCHqYlXUNB0GpWTAXDfAxiGqu0ZfURGCyc8
+         +WHuVrz+Tr5cBgGd4AzZ1Znlf8v6GAqQvuDyw00GiXW4011dXu+OiFxwLjD2AVKpwnmq
+         /fpUOAUDZrceYl0IzilzQGNIZiMzh/X52rnuhd1tkHMy9F1rZg48qyMgGuRQ9EfgTMPR
+         iA+3x8IizD19HtJJuGhrx+jXfYzT6aXVT6XPRlMa0+mGQj8fnbV13IdhuO0Tv7NJuHbM
+         G+zFDQjUyAGGnb66W+uuG8PuKV2SWXmYuYpKkkrSR2ceNTPiZc12/VeTXFNRmjswT6Di
+         JorQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:to:dkim-signature
-         :arc-authentication-results;
-        bh=enTBqbNyKcW7OdA4JXMST5945WlM1ngbB153j3OJkrs=;
-        b=nBY1m5A6nBDMYgiwNq1+C2XJh7RaAd9fSCLqvfK21xQXgCLjwKh4D7hwgvm4QHEO8y
-         l508BCfkeqN31d5wTD5T4/vqQx/WYd1xaABwFHJzlpwYLtVEY4oHiO6x61zO5sqYSUDw
-         e5RBLbvxhzd4hGJG3WYiNJbnNJNKXo+8LhEZ9cemdKbK546ZkUZkkCaNCqeN9AuhZQ9r
-         CGVIqOFyePlAM6y60z/70soaV+uhn/YWGv74KeGKFYBcUy4oaWMkEsl28E5SaoGTZp5g
-         /8uCQPbe5Nro1/iEh8Y4kOl1X2CqEC2E7pJArd/PfhWgrx1Qzen+IfOcK4pzkf8WGs1h
-         ThYA==
+         :list-unsubscribe:list-id:precedence:subject:mime-version:references
+         :in-reply-to:message-id:date:to:from:arc-authentication-results;
+        bh=HyfIBbs3fVN5KhhuEO9+Ou1ckxs3GZqkgmV8bwv8UCM=;
+        b=q+nnSMDltC0k7mO1z0I9Io9wvq7ADVvm5GZkHOXz43xsG2fUn1xbfKuYzpl64elwrf
+         J5tqP+N1BAvudAnstd6V3Kfsj6g5Q5UYz53dncD5HnnrOCxhPDcnE8UjoqOYKDhjayNH
+         Oj/j6kSaxrNUWZlf7iCeEq2LvGjQkYI66YP0jYcbVf/lWCQorDKBmB5XEixQEDt4pe7m
+         F3MiZ/XmSccy+QQO2UApzGAyg5OGIz/XOU43J5iQ0UgiHD6liQ3qfIRJz8U+3NdbdMLt
+         GZg8FjSJOeQXLWCw+fg75CbkNIYUB3G87KZLUdgqJ/t2D6bCVKk6erRcIf9ug3dQ6pqe
+         N1iw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.b=YwWD9Nig;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id q77si27905qka.463.2017.08.03.15.23.36
+        by mx.google.com with ESMTPS id u17si731947qtf.79.2017.08.03.21.18.46
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 03 Aug 2017 15:23:37 -0700 (PDT)
+        Thu, 03 Aug 2017 21:18:47 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.b=YwWD9Nig;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:57904 helo=lists.gnu.org)
+Received: from localhost ([::1]:57926 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ddOWk-0003wD-Vm
-	for alex.bennee@linaro.org; Thu, 03 Aug 2017 18:23:35 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:59535)
+	id 1ddU4S-0006qH-97
+	for alex.bennee@linaro.org; Fri, 04 Aug 2017 00:18:44 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:51732)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <rth7680@gmail.com>) id 1ddOWd-0003uw-D3
-	for qemu-arm@nongnu.org; Thu, 03 Aug 2017 18:23:28 -0400
+	(envelope-from <gengdongjiu@huawei.com>) id 1ddU4G-0006ob-D4
+	for qemu-arm@nongnu.org; Fri, 04 Aug 2017 00:18:33 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <rth7680@gmail.com>) id 1ddOWc-000055-G4
-	for qemu-arm@nongnu.org; Thu, 03 Aug 2017 18:23:27 -0400
-Received: from mail-pg0-x241.google.com ([2607:f8b0:400e:c05::241]:37498)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <rth7680@gmail.com>)
-	id 1ddOWY-0008Qa-B0; Thu, 03 Aug 2017 18:23:22 -0400
-Received: by mail-pg0-x241.google.com with SMTP id 83so17112pgb.4;
-	Thu, 03 Aug 2017 15:23:22 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=sender:subject:to:cc:references:from:message-id:date:user-agent
-	:mime-version:in-reply-to:content-language:content-transfer-encoding;
-	bh=enTBqbNyKcW7OdA4JXMST5945WlM1ngbB153j3OJkrs=;
-	b=YwWD9NigjhSzu5+y+gaKc1raEfh/SrAfGjNs5GSwcxHF/e+k1B0Lktvy0vsMjkkT5a
-	wuqKHE1RJIdvldMRegbvzNY5qx5h2uETJR7KRBN4VjTDohOMxH3aEPBXjE7lzX6hA3bu
-	0UfEWfJ8E+coKizorTNiYwWPZ/tP0OVDm0sCRU3GAc7A1SRis9MVetgr/dLMsY0tHuMk
-	wSm/lTwgCjCpF4m4HXnnvHmgkxGhaevKNuv0VayWq+nsNtxmSIyaqFo9IoCU1Mc0updf
-	BIi0QH8LMA/KlgsRpF+ddMT8Po+PNR5jaHrVcqJyOkmAfn/xIlOIvF78Rhy1UKw93QMP
-	FmZQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
-	:date:user-agent:mime-version:in-reply-to:content-language
-	:content-transfer-encoding;
-	bh=enTBqbNyKcW7OdA4JXMST5945WlM1ngbB153j3OJkrs=;
-	b=ErVCUZpGn21TAJpHLDGEpWSYMY+ENOrfdONEIEpjIR1jzwRtwFIuLy/UhfL4oMqMCj
-	93b8Wkz6mg+z82NPljzLWGVx0oP6ioahQYC3AjX35tWyGCdHy4R6Sn7Qfxgfcq6aAhdo
-	F56Vq2ccrv+wPgHKTKPlZzICgx7pjdMsrH42TvauHs+1RRqdn70rQ5sVoZip35ubtEEn
-	wmJr27iM1DUcfGn0/vxayou6miNih7mrxg2XcEDBCX9RJu5K1BpcvTWHE5+smrCIlKjI
-	YC52Fe/7Bm/W93dlr/eMumahMcOzQpu49qSYhSm0ZhMR4FC/K/hPPsu70pLMaofplq3G
-	Kpiw==
-X-Gm-Message-State: AIVw1104kwB1uJNdGSff8zh8TVrtciMXbTiAKsdWEtWoC1YqW31Jga6I
-	7DX5Ecbh1SzPDQ==
-X-Received: by 10.84.213.137 with SMTP id g9mr320636pli.325.1501799001434;
-	Thu, 03 Aug 2017 15:23:21 -0700 (PDT)
-Received: from bigtime.twiddle.net (97-126-108-236.tukw.qwest.net.
-	[97.126.108.236]) by smtp.googlemail.com with ESMTPSA id
-	u37sm19844pgn.74.2017.08.03.15.23.20
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Thu, 03 Aug 2017 15:23:20 -0700 (PDT)
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-References: <1501692241-23310-1-git-send-email-peter.maydell@linaro.org>
-	<1501692241-23310-16-git-send-email-peter.maydell@linaro.org>
-From: Richard Henderson <rth@twiddle.net>
-Message-ID: <ead02a80-5ab5-9626-951f-efb6b85e59ea@twiddle.net>
-Date: Thu, 3 Aug 2017 15:23:19 -0700
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.2.1
+	(envelope-from <gengdongjiu@huawei.com>) id 1ddU4F-0006JF-Hk
+	for qemu-arm@nongnu.org; Fri, 04 Aug 2017 00:18:32 -0400
+Received: from szxga02-in.huawei.com ([45.249.212.188]:4409)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_ARCFOUR_SHA1:16) (Exim 4.71)
+	(envelope-from <gengdongjiu@huawei.com>)
+	id 1ddU4A-0006BQ-Mf; Fri, 04 Aug 2017 00:18:27 -0400
+Received: from 172.30.72.56 (EHLO DGGEML403-HUB.china.huawei.com)
+	([172.30.72.56])
+	by dggrg02-dlp.huawei.com (MOS 4.4.6-GA FastPath queued)
+	with ESMTP id ASU19231; Fri, 04 Aug 2017 12:18:19 +0800 (CST)
+Received: from linux.huawei.com (10.67.187.203) by
+	DGGEML403-HUB.china.huawei.com (10.3.17.33) with Microsoft SMTP Server
+	id 14.3.301.0; Fri, 4 Aug 2017 12:18:10 +0800
+From: Dongjiu Geng <gengdongjiu@huawei.com>
+To: <lersek@redhat.com>, <mst@redhat.com>, <imammedo@redhat.com>,
+	<zhaoshenglong@huawei.com>, <peter.maydell@linaro.org>,
+	<qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>
+Date: Fri, 4 Aug 2017 12:37:55 +0800
+Message-ID: <1501821475-14647-4-git-send-email-gengdongjiu@huawei.com>
+X-Mailer: git-send-email 1.7.7
+In-Reply-To: <1501821475-14647-1-git-send-email-gengdongjiu@huawei.com>
+References: <1501821475-14647-1-git-send-email-gengdongjiu@huawei.com>
 MIME-Version: 1.0
-In-Reply-To: <1501692241-23310-16-git-send-email-peter.maydell@linaro.org>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:400e:c05::241
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH 15/15] nvic: Implement "user
- accesses BusFault" SCS region behaviour
+Content-Type: text/plain
+X-Originating-IP: [10.67.187.203]
+X-CFilter-Loop: Reflected
+X-Mirapoint-Virus-RAPID-Raw: score=unknown(0),
+	refid=str=0001.0A020201.5983F58C.00DD, ss=1, re=0.000, recu=0.000,
+	reip=0.000, cl=1, cld=1, fgs=0, ip=0.0.0.0,
+	so=2014-11-16 11:51:01, dmn=2013-03-21 17:37:32
+X-Mirapoint-Loop-Id: ee31a131f885d8f484333c02c95efcd0
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
+	[fuzzy]
+X-Received-From: 45.249.212.188
+Subject: [Qemu-arm] [PATCH v6 3/3] ACPI: build and enable APEI GHES in the
+ Makefile and configuration
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -115,39 +89,52 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: patches@linaro.org
+Cc: wuquanming@huawei.com, huangshaoyu@huawei.com, gengdongjiu@huawei.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: s9816W+ZDBcL
+X-TUID: 4SnWjkAaw0c0
 
-On 08/02/2017 09:44 AM, Peter Maydell wrote:
-> The ARMv7M architecture specifies that most of the addresses in the
-> PPB region (which includes the NVIC, systick and system registers)
-> are not accessible to unprivileged accesses, which should
-> BusFault with a few exceptions:
->  * the STIR is configurably user-accessible
->  * the ITM (which we don't implement at all) is always
->    user-accessible
-> 
-> Implement this by switching the register access functions
-> to the _with_attrs scheme that lets us distinguish user
-> mode accesses.
-> 
-> This allows us to pull the handling of the CCR.USERSETMPEND
-> flag up to the level where we can make it generate a BusFault
-> as it should for non-permitted accesses.
-> 
-> Note that until the core ARM CPU code implements turning
-> MEMTX_ERROR into a BusFault the registers will continue to
-> act as RAZ/WI to user accesses.
-> 
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> ---
->  hw/intc/armv7m_nvic.c | 58 ++++++++++++++++++++++++++++++++++++---------------
->  1 file changed, 41 insertions(+), 17 deletions(-)
+Add CONFIG_ACPI_APEI configuration in the Makefile and
+enable it in the arm-softmmu.mak
 
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Signed-off-by: Dongjiu Geng <gengdongjiu@huawei.com>
+---
+thanks a lot Michael and Laszlo's review and comments: 
 
+change since v5:
+(1) no change
 
-r~
+change since v4:
+(1) fix email threading in this series is incorrect issue
+
+change since v3:
+(1) change name to "CONFIG_ACPI_APEI" from CONFIG_ACPI_APEI_GENERATION
+---
+ default-configs/arm-softmmu.mak | 1 +
+ hw/acpi/Makefile.objs           | 1 +
+ 2 files changed, 2 insertions(+)
+
+diff --git a/default-configs/arm-softmmu.mak b/default-configs/arm-softmmu.mak
+index 1e3bd2b..ee6f5fc 100644
+--- a/default-configs/arm-softmmu.mak
++++ b/default-configs/arm-softmmu.mak
+@@ -121,3 +121,4 @@ CONFIG_ACPI=y
+ CONFIG_SMBIOS=y
+ CONFIG_ASPEED_SOC=y
+ CONFIG_GPIO_KEY=y
++CONFIG_ACPI_APEI=y
+diff --git a/hw/acpi/Makefile.objs b/hw/acpi/Makefile.objs
+index 11c35bc..bafb148 100644
+--- a/hw/acpi/Makefile.objs
++++ b/hw/acpi/Makefile.objs
+@@ -6,6 +6,7 @@ common-obj-$(CONFIG_ACPI_MEMORY_HOTPLUG) += memory_hotplug.o
+ common-obj-$(CONFIG_ACPI_CPU_HOTPLUG) += cpu.o
+ common-obj-$(CONFIG_ACPI_NVDIMM) += nvdimm.o
+ common-obj-$(CONFIG_ACPI_VMGENID) += vmgenid.o
++common-obj-$(CONFIG_ACPI_APEI) += hest_ghes.o
+ common-obj-$(call lnot,$(CONFIG_ACPI_X86)) += acpi-stub.o
+ 
+ common-obj-y += acpi_interface.o
+-- 
+1.8.3.1
 

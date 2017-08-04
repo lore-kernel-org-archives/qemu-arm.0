@@ -1,69 +1,70 @@
-Received: by 10.25.221.202 with SMTP id w71csp2358470lfi;
-        Fri, 4 Aug 2017 10:33:20 -0700 (PDT)
-X-Received: by 10.55.95.194 with SMTP id t185mr3730832qkb.61.1501868000394;
-        Fri, 04 Aug 2017 10:33:20 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1501868000; cv=none;
+Received: by 10.25.221.202 with SMTP id w71csp2358820lfi;
+        Fri, 4 Aug 2017 10:33:39 -0700 (PDT)
+X-Received: by 10.237.35.81 with SMTP id i17mr3965981qtc.19.1501868019668;
+        Fri, 04 Aug 2017 10:33:39 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1501868019; cv=none;
         d=google.com; s=arc-20160816;
-        b=cCJ2+MRFjEtdXFsremjBh1zdKy7WKTiGJAOGXth/dvZ1iT3n9Opjkbok6JveVSoNLQ
-         2RRpVVTZSs92L5z2v3AZuJzkgFGxgtC5Dy/ZCpkKDleLRBhoTGp6qLY9XGw/59IZQwbP
-         F9KRk8NCDk9n+Kf1cPPX0p2EqXntOCX6PXihonJViX1rUC4+f2lxcJIy+H231JVKEHVW
-         r9tZyTcMWSbmthfB9Nv3/FEjuKq29zcgYx1CThABjgb2o4nbkdKecB/o8zzRYAfGo9SI
-         SfY0MaUuo20/zXnGmBqNIYL266F4ksc6O9lZjM39h/9xSXykOKzzIdWgqajaYC4VQq5v
-         OAqQ==
+        b=m8ogc7tqnHcKe1JFhgnKwj9v6YpMhBwlo6gs8ZlbHHqIyZAlWCu5DYqGcjWdD3Gln4
+         dsNxiCJo7/QIGgZ+Y73sutMKC4SvJrJnHaHONHE+SBjecGkGxgIEaK3uj4aa+WRU4Plg
+         V+DLgRuK+dLUsw9WvU2DudujRhVa3iU/ZwkED6Py+aIfk4XW37oY4hwjdUu9degAiqZ6
+         aVmEa2zf6qx2qHYsQX1n13xx9UpRrYQCT5ezObJOp861WlDrJzUR9Uf9fitQAMb580Vx
+         K20+k5ueENcj1Q6+V7CCQ7Fvy5s2yfDcBERJsO0ty8dXilRVUOUhJUB52r2QEi9euy6j
+         zLfw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
          :message-id:date:to:from:arc-authentication-results;
-        bh=21P/7GRc+QbbnGboiwSNmTbF/6iO5S9DKxlYFbSWIb4=;
-        b=AMHfQnVizVqYqTdb0/y01aHFRpytjdKS5x/1QlM+VfqZHcsAhQTkgkdN2LH8gvnKre
-         eix45itKXzktPF9wr9HkdLDb36plpNEmdplBFy9GyvHpN3MxoO48sD7P0iJUmHf8rqn7
-         zOBBUHL3yRDXY3WeV7ObobXeU8ni89IM9OQQhLlehLs0ijlBgrxGD3dPWnsxt6OsII0/
-         Yz6AMplcnd4bpmkog7iq1fXTCiEO25jHlwdGZOT+ubucQuDVfZTx4P003ogJ1CHmg3eG
-         7hIPv56M8b1t1wc0UzQfGI6nR/nAtjFaFLCwoR8w+2AT1ALHi1GhSbf7qWhsJ5SPGFho
-         +zFA==
+        bh=5VdTlYlBRRvSGYie19VYl+5jI4scl+4P5LWqWeEAcX8=;
+        b=O7Xu83Cj6MEhEvC+XfOBPOaHWh1UP7kSSxB5PVJjtoL41zCNQyNpPPv1uRUlKLOKFq
+         1y4j/U1cOsGePEiqY3T7jAWhCJym+4YUAskoGAfnt/zUXDpFmABN8zZ4WNbDCaKpZr4v
+         HE/6rN8n+87iCr5O4POlDOENIqFhjEnTjcClSn/tXHghn7dAnr911j9nOLD3q06ZmLXK
+         qAxGZUSWvhqJeH6+IHY56rwCW1uA0DXiGoL6tMGECrNgrBVJxCldEnF/pEaaQVcE3oLq
+         +gOVe+wJwFWPkY627LJkHFS9zI6iZWl9yCZxS9TaY2s+E5IZvs+YH5SLeoM26EBqwaUJ
+         c79A==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id c185si2352360qka.342.2017.08.04.10.33.19
+        by mx.google.com with ESMTPS id f25si1992396qtc.256.2017.08.04.10.33.39
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 04 Aug 2017 10:33:20 -0700 (PDT)
+        Fri, 04 Aug 2017 10:33:39 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:40465 helo=lists.gnu.org)
+Received: from localhost ([::1]:40504 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ddgTN-0007Ty-Kx
-	for alex.bennee@linaro.org; Fri, 04 Aug 2017 13:33:17 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:46901)
+	id 1ddgTg-0007iS-Ug
+	for alex.bennee@linaro.org; Fri, 04 Aug 2017 13:33:36 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:46962)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1ddgTC-0007TC-SR
-	for qemu-arm@nongnu.org; Fri, 04 Aug 2017 13:33:07 -0400
+	(envelope-from <pm215@archaic.org.uk>) id 1ddgTE-0007Tg-Vf
+	for qemu-arm@nongnu.org; Fri, 04 Aug 2017 13:33:10 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1ddgTB-0001ht-O1
-	for qemu-arm@nongnu.org; Fri, 04 Aug 2017 13:33:06 -0400
+	(envelope-from <pm215@archaic.org.uk>) id 1ddgTD-0001ix-DT
+	for qemu-arm@nongnu.org; Fri, 04 Aug 2017 13:33:08 -0400
 Received: from orth.archaic.org.uk ([2001:8b0:1d0::2]:37805)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <pm215@archaic.org.uk>)
-	id 1ddgTB-0001gy-H3; Fri, 04 Aug 2017 13:33:05 -0400
+	id 1ddgTD-0001gy-6T; Fri, 04 Aug 2017 13:33:07 -0400
 Received: from pm215 by orth.archaic.org.uk with local (Exim 4.84_2)
 	(envelope-from <pm215@archaic.org.uk>)
-	id 1ddgHL-0006sR-8c; Fri, 04 Aug 2017 18:20:51 +0100
+	id 1ddgHL-0006si-N7; Fri, 04 Aug 2017 18:20:51 +0100
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Date: Fri,  4 Aug 2017 18:20:43 +0100
-Message-Id: <1501867249-1924-3-git-send-email-peter.maydell@linaro.org>
+Date: Fri,  4 Aug 2017 18:20:44 +0100
+Message-Id: <1501867249-1924-4-git-send-email-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.7.4
 In-Reply-To: <1501867249-1924-1-git-send-email-peter.maydell@linaro.org>
 References: <1501867249-1924-1-git-send-email-peter.maydell@linaro.org>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 2001:8b0:1d0::2
-Subject: [Qemu-arm] [PATCH 2/8] cpu: Define new cpu_transaction_failed() hook
+Subject: [Qemu-arm] [PATCH 3/8] cputlb: Support generating CPU exceptions on
+ memory transaction failures
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -78,90 +79,147 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: Richard Henderson <rth@twiddle.net>, patches@linaro.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 2gZUvci3C6oW
+X-TUID: fQ2Sq3yqRhEn
 
-Currently we have a rather half-baked setup for allowing CPUs to
-generate exceptions on accesses to invalid memory: the CPU has a
-cpu_unassigned_access() hook which the memory system calls in
-unassigned_mem_write() and unassigned_mem_read() if the current_cpu
-pointer is non-NULL.  This was originally designed before we
-implemented the MemTxResult type that allows memory operations to
-report a success or failure code, which is why the hook is called
-right at the bottom of the memory system.  The major problem with
-this is that it means that the hook can be called even when the
-access was not actually done by the CPU: for instance if the CPU
-writes to a DMA engine register which causes the DMA engine to begin
-a transaction which has been set up by the guest to operate on
-invalid memory then this will casue the CPU to take an exception
-incorrectly.  Another minor problem is that currently if a device
-returns a transaction error then this won't turn into a CPU exception
-at all.
+Call the new cpu_transaction_failed() hook at the places where
+CPU generated code interacts with the memory system:
+ io_readx()
+ io_writex()
+ get_page_addr_code()
 
-The right way to do this is to have allow the CPU to respond
-to memory system transaction failures at the point where the
-CPU specific code calls into the memory system.
+Any access from C code (eg via cpu_physical_memory_rw(),
+address_space_rw(), ld/st_*_phys()) will *not* trigger CPU exceptions
+via cpu_transaction_failed().  Handling for transactions failures for
+this kind of call should be done by using a function which returns a
+MemTxResult and treating the failure case appropriately in the
+calling code.
 
-Define a new QOM CPU method and utility function
-cpu_transaction_failed() which is called in these cases.
-The functionality here overlaps with the existing
-cpu_unassigned_access() because individual target CPUs will
-need some work to convert them to the new system. When this
-transition is complete we can remove the old cpu_unassigned_access()
-code.
+In an ideal world we would not generate CPU exceptions for
+instruction fetch failures in get_page_addr_code() but instead wait
+until the code translation process tried a load and it failed;
+however that change would require too great a restructuring and
+redesign to attempt at this point.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- include/qom/cpu.h | 21 +++++++++++++++++++++
- 1 file changed, 21 insertions(+)
+ softmmu_template.h |  4 ++--
+ accel/tcg/cputlb.c | 32 ++++++++++++++++++++++++++++++--
+ 2 files changed, 32 insertions(+), 4 deletions(-)
 
-diff --git a/include/qom/cpu.h b/include/qom/cpu.h
-index 25eefea..fc54d55 100644
---- a/include/qom/cpu.h
-+++ b/include/qom/cpu.h
-@@ -85,8 +85,10 @@ struct TranslationBlock;
-  * @has_work: Callback for checking if there is work to do.
-  * @do_interrupt: Callback for interrupt handling.
-  * @do_unassigned_access: Callback for unassigned access handling.
-+ * (this is deprecated: new targets should use do_transaction_failed instead)
-  * @do_unaligned_access: Callback for unaligned access handling, if
-  * the target defines #ALIGNED_ONLY.
-+ * @do_transaction_failed: Callback for handling failed memory transactions
-  * @virtio_is_big_endian: Callback to return %true if a CPU which supports
-  * runtime configurable endianness is currently big-endian. Non-configurable
-  * CPUs can use the default implementation of this method. This method should
-@@ -153,6 +155,10 @@ typedef struct CPUClass {
-     void (*do_unaligned_access)(CPUState *cpu, vaddr addr,
-                                 MMUAccessType access_type,
-                                 int mmu_idx, uintptr_t retaddr);
-+    void (*do_transaction_failed)(CPUState *cpu, hwaddr physaddr, vaddr addr,
-+                                  unsigned size, MMUAccessType access_type,
-+                                  int mmu_idx, MemTxAttrs attrs,
-+                                  MemTxResult response, uintptr_t retaddr);
-     bool (*virtio_is_big_endian)(CPUState *cpu);
-     int (*memory_rw_debug)(CPUState *cpu, vaddr addr,
-                            uint8_t *buf, int len, bool is_write);
-@@ -837,6 +843,21 @@ static inline void cpu_unaligned_access(CPUState *cpu, vaddr addr,
- 
-     cc->do_unaligned_access(cpu, addr, access_type, mmu_idx, retaddr);
+diff --git a/softmmu_template.h b/softmmu_template.h
+index 4a2b665..d756329 100644
+--- a/softmmu_template.h
++++ b/softmmu_template.h
+@@ -101,7 +101,7 @@ static inline DATA_TYPE glue(io_read, SUFFIX)(CPUArchState *env,
+                                               uintptr_t retaddr)
+ {
+     CPUIOTLBEntry *iotlbentry = &env->iotlb[mmu_idx][index];
+-    return io_readx(env, iotlbentry, addr, retaddr, DATA_SIZE);
++    return io_readx(env, iotlbentry, mmu_idx, addr, retaddr, DATA_SIZE);
  }
-+
-+static inline void cpu_transaction_failed(CPUState *cpu, hwaddr physaddr,
-+                                          vaddr addr, unsigned size,
-+                                          MMUAccessType access_type,
-+                                          int mmu_idx, MemTxAttrs attrs,
-+                                          MemTxResult response,
-+                                          uintptr_t retaddr)
-+{
-+    CPUClass *cc = CPU_GET_CLASS(cpu);
-+
-+    if (cc->do_transaction_failed) {
-+        cc->do_transaction_failed(cpu, physaddr, addr, size, access_type,
-+                                  mmu_idx, attrs, response, retaddr);
-+    }
-+}
  #endif
  
- #endif /* NEED_CPU_H */
+@@ -262,7 +262,7 @@ static inline void glue(io_write, SUFFIX)(CPUArchState *env,
+                                           uintptr_t retaddr)
+ {
+     CPUIOTLBEntry *iotlbentry = &env->iotlb[mmu_idx][index];
+-    return io_writex(env, iotlbentry, val, addr, retaddr, DATA_SIZE);
++    return io_writex(env, iotlbentry, mmu_idx, val, addr, retaddr, DATA_SIZE);
+ }
+ 
+ void helper_le_st_name(CPUArchState *env, target_ulong addr, DATA_TYPE val,
+diff --git a/accel/tcg/cputlb.c b/accel/tcg/cputlb.c
+index 85635ae..e72415a 100644
+--- a/accel/tcg/cputlb.c
++++ b/accel/tcg/cputlb.c
+@@ -747,6 +747,7 @@ static inline ram_addr_t qemu_ram_addr_from_host_nofail(void *ptr)
+ }
+ 
+ static uint64_t io_readx(CPUArchState *env, CPUIOTLBEntry *iotlbentry,
++                         int mmu_idx,
+                          target_ulong addr, uintptr_t retaddr, int size)
+ {
+     CPUState *cpu = ENV_GET_CPU(env);
+@@ -754,6 +755,7 @@ static uint64_t io_readx(CPUArchState *env, CPUIOTLBEntry *iotlbentry,
+     MemoryRegion *mr = iotlb_to_region(cpu, physaddr, iotlbentry->attrs);
+     uint64_t val;
+     bool locked = false;
++    MemTxResult r;
+ 
+     physaddr = (physaddr & TARGET_PAGE_MASK) + addr;
+     cpu->mem_io_pc = retaddr;
+@@ -767,7 +769,12 @@ static uint64_t io_readx(CPUArchState *env, CPUIOTLBEntry *iotlbentry,
+         qemu_mutex_lock_iothread();
+         locked = true;
+     }
+-    memory_region_dispatch_read(mr, physaddr, &val, size, iotlbentry->attrs);
++    r = memory_region_dispatch_read(mr, physaddr,
++                                    &val, size, iotlbentry->attrs);
++    if (r != MEMTX_OK) {
++        cpu_transaction_failed(cpu, physaddr, addr, size, MMU_DATA_LOAD,
++                               mmu_idx, iotlbentry->attrs, r, retaddr);
++    }
+     if (locked) {
+         qemu_mutex_unlock_iothread();
+     }
+@@ -776,6 +783,7 @@ static uint64_t io_readx(CPUArchState *env, CPUIOTLBEntry *iotlbentry,
+ }
+ 
+ static void io_writex(CPUArchState *env, CPUIOTLBEntry *iotlbentry,
++                      int mmu_idx,
+                       uint64_t val, target_ulong addr,
+                       uintptr_t retaddr, int size)
+ {
+@@ -783,6 +791,7 @@ static void io_writex(CPUArchState *env, CPUIOTLBEntry *iotlbentry,
+     hwaddr physaddr = iotlbentry->addr;
+     MemoryRegion *mr = iotlb_to_region(cpu, physaddr, iotlbentry->attrs);
+     bool locked = false;
++    MemTxResult r;
+ 
+     physaddr = (physaddr & TARGET_PAGE_MASK) + addr;
+     if (mr != &io_mem_rom && mr != &io_mem_notdirty && !cpu->can_do_io) {
+@@ -795,7 +804,12 @@ static void io_writex(CPUArchState *env, CPUIOTLBEntry *iotlbentry,
+         qemu_mutex_lock_iothread();
+         locked = true;
+     }
+-    memory_region_dispatch_write(mr, physaddr, val, size, iotlbentry->attrs);
++    r = memory_region_dispatch_write(mr, physaddr,
++                                     val, size, iotlbentry->attrs);
++    if (r != MEMTX_OK) {
++        cpu_transaction_failed(cpu, physaddr, addr, size, MMU_DATA_STORE,
++                               mmu_idx, iotlbentry->attrs, r, retaddr);
++    }
+     if (locked) {
+         qemu_mutex_unlock_iothread();
+     }
+@@ -845,6 +859,7 @@ tb_page_addr_t get_page_addr_code(CPUArchState *env, target_ulong addr)
+     MemoryRegion *mr;
+     CPUState *cpu = ENV_GET_CPU(env);
+     CPUIOTLBEntry *iotlbentry;
++    hwaddr physaddr;
+ 
+     index = (addr >> TARGET_PAGE_BITS) & (CPU_TLB_SIZE - 1);
+     mmu_idx = cpu_mmu_index(env, true);
+@@ -868,6 +883,19 @@ tb_page_addr_t get_page_addr_code(CPUArchState *env, target_ulong addr)
+         }
+         qemu_mutex_unlock_iothread();
+ 
++        /* Give the new-style cpu_transaction_failed() hook first chance
++         * to handle this.
++         * This is not the ideal place to detect and generate CPU
++         * exceptions for instruction fetch failure (for instance
++         * we don't know the length of the access that the CPU would
++         * use, and it would be better to go ahead and try the access
++         * and use the MemTXResult it produced). However it is the
++         * simplest place we have currently available for the check.
++         */
++        physaddr = (iotlbentry->addr & TARGET_PAGE_MASK) + addr;
++        cpu_transaction_failed(cpu, physaddr, addr, 0, MMU_INST_FETCH, mmu_idx,
++                               iotlbentry->attrs, MEMTX_DECODE_ERROR, 0);
++
+         cpu_unassigned_access(cpu, addr, false, true, 0, 4);
+         /* The CPU's unassigned access hook might have longjumped out
+          * with an exception. If it didn't (or there was no hook) then
 -- 
 2.7.4
 

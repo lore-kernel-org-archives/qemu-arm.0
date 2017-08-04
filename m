@@ -1,57 +1,57 @@
-Received: by 10.25.221.202 with SMTP id w71csp1525603lfi;
-        Thu, 3 Aug 2017 21:20:26 -0700 (PDT)
-X-Received: by 10.237.63.9 with SMTP id p9mr1564184qtf.81.1501820426394;
-        Thu, 03 Aug 2017 21:20:26 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1501820426; cv=none;
+Received: by 10.25.221.202 with SMTP id w71csp1526294lfi;
+        Thu, 3 Aug 2017 21:21:19 -0700 (PDT)
+X-Received: by 10.200.48.49 with SMTP id f46mr1583584qte.88.1501820479121;
+        Thu, 03 Aug 2017 21:21:19 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1501820479; cv=none;
         d=google.com; s=arc-20160816;
-        b=xUzBBwxoikUiCo+vx1SxZ2fxgkoV+uMnFOM9cEeyFf4c7msFbtF5VN2kbUvqJmpH84
-         r2++P6+8LZJt8x9F4witKpZGsoq5/qDL4lE2PulGZa6C6ydOttw9HAQ6+Sg2KdsJX57J
-         8n992kon6IGBHpM6/jZPn+O+1VHMh9yaWutuX09Kimd1gjibTauShkh2w/xOWUnMn0Vc
-         iXCHC7384xcze61UELJ/PuQY3v+bacJWGvipH/L9F1x7zuRCQlzBuxq0/MqMyR0/guDW
-         pER+PvRAmw7xaRtADIJ9QPVwbm/8OfF1/w+K1sZUFKj5cZLepP0y88Chc9GtTQGbSaHx
-         bzSg==
+        b=SZ9EafbwDFt4upflBJZVP2nGQX5FdD6yz/YJTOTatS6vYNr4MikKrdxOutzbZKcYXt
+         ctPsSwgDfK5I9pmmswMyRfdrP3L6cJ64O8I561DmFKzdL7+lz7EaRAw6e2s/ybwqjrT3
+         eN6Zw6C7O7OzvE4Abk6jC59s0DjlZLCKWTeiYbwIvRh619/T/c3g6EgRvARbkDSCyGms
+         KrYsgHrdMcYksiFcangCaemEEs0e+2jPv+atfkMid5DUlUyon/O27974afcFeTKXNAqQ
+         Gi5yg9w56+YmWfEXl0dcAUMZ8yCC377an77XBPPnVslMjKAALgPzlWSmvkddc5j1IcK7
+         5NLw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:mime-version:references
          :in-reply-to:message-id:date:to:from:arc-authentication-results;
-        bh=wn072AXvySODn+09fDB+96KM9G/wvcir8c55bD9DRFE=;
-        b=lbJqWG7gviHHApm3HVuls3wRW4dx+vNPrJzDvRK1utTPdbkM+y223j49d+zay96PuL
-         GsyxhtUZ6y5bXVQq6t9FB8WgdFlp7ooSgKEhmUsU6MallgloyqIlDW5tv8KvExuiexeS
-         VJl6zSsuie2xEmsaEppXOGFb7n09pEUnwx2BX+ovSgvReUzTPMTEKxk63wFMxC73j2cu
-         i7vVP5Jxn3oxl6VolqC5jH+gUFSBm+wDAgWnTfOkm+gXCmLqnRLskw2XZuMa4IR+1fK7
-         gFF9fpkkwOfHhkwGWJvbX2oJwu7XH7rgXHrUIZm4PewbUM03EfjSKnSOXz9JapYezAsZ
-         oj1Q==
+        bh=hdiY6aTEaNpvkXVvpb8h9Mao1VY5fp9ltKJro/EMvPg=;
+        b=AvXh+LZNRmX4SSPzVe7t7PicMHpFc+ozyd2TpN/bU0bPqFsjutp1AspSK9zSgNBBI9
+         RHW8LVRHVhmPJPiPwU5TxcJz1pwoZOj6DbIiiEbnjDCPse54mgDo0UGsrGRNtO9Lvygz
+         8iCR5qUNJB0LO9VrIunn9Me3TcmtTzfYviApDWywkHTF8ZOT5rssgJyA9/vs/v63+1Jb
+         LAWgcXyH8j4bpxMoh1Rs+VAy9uSRwfFb7N9MPHmqyDTSDKYnkPKKQrwt6PD+iyOLVr6k
+         /xSd+R8D1p9953Kx4t6tLD4y9pVMEynXsi3dqW/D6JVx9tnLHAudoAf2phsqBZDDnXdt
+         g4xg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id x90si805691qtd.30.2017.08.03.21.20.25
+        by mx.google.com with ESMTPS id u80si771393qki.15.2017.08.03.21.21.18
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 03 Aug 2017 21:20:26 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Thu, 03 Aug 2017 21:21:19 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:57963 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:58008 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ddU63-0008Qp-G8
-	for alex.bennee@linaro.org; Fri, 04 Aug 2017 00:20:23 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:51663)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1ddU6u-00010P-2g
+	for alex.bennee@linaro.org; Fri, 04 Aug 2017 00:21:16 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:51810)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <gengdongjiu@huawei.com>) id 1ddU4E-0006oE-Fy
-	for qemu-devel@nongnu.org; Fri, 04 Aug 2017 00:18:32 -0400
+	(envelope-from <gengdongjiu@huawei.com>) id 1ddU4L-0006wl-CU
+	for qemu-arm@nongnu.org; Fri, 04 Aug 2017 00:18:40 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <gengdongjiu@huawei.com>) id 1ddU4B-0006Fr-Ut
-	for qemu-devel@nongnu.org; Fri, 04 Aug 2017 00:18:30 -0400
-Received: from szxga02-in.huawei.com ([45.249.212.188]:4412)
+	(envelope-from <gengdongjiu@huawei.com>) id 1ddU4I-0006MU-A9
+	for qemu-arm@nongnu.org; Fri, 04 Aug 2017 00:18:37 -0400
+Received: from szxga02-in.huawei.com ([45.249.212.188]:4411)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_ARCFOUR_SHA1:16) (Exim 4.71)
 	(envelope-from <gengdongjiu@huawei.com>)
-	id 1ddU4A-0006BN-S9; Fri, 04 Aug 2017 00:18:27 -0400
+	id 1ddU4A-0006BO-SB; Fri, 04 Aug 2017 00:18:28 -0400
 Received: from 172.30.72.56 (EHLO DGGEML403-HUB.china.huawei.com)
 	([172.30.72.56])
 	by dggrg02-dlp.huawei.com (MOS 4.4.6-GA FastPath queued)
-	with ESMTP id ASU19233; Fri, 04 Aug 2017 12:18:19 +0800 (CST)
+	with ESMTP id ASU19227; Fri, 04 Aug 2017 12:18:19 +0800 (CST)
 Received: from linux.huawei.com (10.67.187.203) by
 	DGGEML403-HUB.china.huawei.com (10.3.17.33) with Microsoft SMTP Server
 	id 14.3.301.0; Fri, 4 Aug 2017 12:18:09 +0800
@@ -59,8 +59,8 @@ From: Dongjiu Geng <gengdongjiu@huawei.com>
 To: <lersek@redhat.com>, <mst@redhat.com>, <imammedo@redhat.com>,
 	<zhaoshenglong@huawei.com>, <peter.maydell@linaro.org>,
 	<qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>
-Date: Fri, 4 Aug 2017 12:37:53 +0800
-Message-ID: <1501821475-14647-2-git-send-email-gengdongjiu@huawei.com>
+Date: Fri, 4 Aug 2017 12:37:54 +0800
+Message-ID: <1501821475-14647-3-git-send-email-gengdongjiu@huawei.com>
 X-Mailer: git-send-email 1.7.7
 In-Reply-To: <1501821475-14647-1-git-send-email-gengdongjiu@huawei.com>
 References: <1501821475-14647-1-git-send-email-gengdongjiu@huawei.com>
@@ -69,304 +69,629 @@ Content-Type: text/plain
 X-Originating-IP: [10.67.187.203]
 X-CFilter-Loop: Reflected
 X-Mirapoint-Virus-RAPID-Raw: score=unknown(0),
-	refid=str=0001.0A020206.5983F58C.0122, ss=1, re=0.000, recu=0.000,
+	refid=str=0001.0A020206.5983F58C.0148, ss=1, re=0.000, recu=0.000,
 	reip=0.000, cl=1, cld=1, fgs=0, ip=0.0.0.0,
 	so=2014-11-16 11:51:01, dmn=2013-03-21 17:37:32
-X-Mirapoint-Loop-Id: e242c920ac85dab15391efa2fccc8621
+X-Mirapoint-Loop-Id: c3c343456386e0c081d3558bb7e2f307
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
 	[fuzzy]
 X-Received-From: 45.249.212.188
-Subject: [Qemu-devel] [PATCH v6 1/3] ACPI: add APEI/HEST/CPER structures and
- macros
-X-BeenThere: qemu-devel@nongnu.org
+Subject: [Qemu-arm] [PATCH v6 2/3] ACPI: Add APEI GHES Table Generation
+ support
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: wuquanming@huawei.com, huangshaoyu@huawei.com, gengdongjiu@huawei.com
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: vqE6gTnv086U
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 3Fgo4tyahbcc
 
-(1) Add related APEI/HEST table structures and  macros, these
-    definition refer to ACPI 6.1 and UEFI 2.6 spec.
-(2) Add generic error status block and CPER memory section
-    definition, user space only handle memory section errors.
+This implements APEI GHES Table by passing the error CPER info
+to the guest via a fw_cfg_blob. After a CPER info is recorded, an
+SEA(Synchronous External Abort)/SEI(SError Interrupt) exception
+will be injected into the guest OS.
+
+Below is the table layout, the max number of error soure is 11,
+which is classified by notification type.
+
+     etc/acpi/tables                               etc/hardware_errors
+    ====================                    ==========================================
+                                          +------------------+
++----------------------------+            |    address       |              +--------------+
+|    HEST                    +            |    registers     |              | Error Status |
++ +--------------------------+            | +----------------+              | Data Block 0 |
+| | GHES0                    | +--------->| |status_address0 |------------->| +------------+
++--------------------------+ |          | +----------------+              | |  CPER      |
+| | .................        | | +------->| |status_address1 |----------+   | |  CPER      |
+| | error_status_address     | | |        | +----------------+          |   | |  ....      |
+| | .................        | | |        |  .............   |          |   | |  CPER      |
+| | error_status_address-----+-+ |        +------------------+          |   | +-+------------+
+| | .................        |   | +----->| |status_address10|--------+ |   | Error Status |
+| | read_ack_register--------+-+ | |      | +----------------+        | |   | Data Block 1 |
+| | read_ack_preserve        | +-+-+----->| |ack_address0    |--+     | +-->| +------------+
+| | read_ack_write           |   | |      | +----------------+  |     |     | |  CPER      |
++ +--------------------------+   | | +--->| |ack_address1    |--+-+   |     | |  CPER      |
+| | GHES1                    |   | | |    | +----------------+  | |   |     | |  ....      |
++ +--------------------------+   | | |    | | .............  |  | |   |     | |  CPER      |
+| | .................        |   | | |    | +----------------+  | |   |     +-+------------+
+| | error_status_address-----+---+ | | +->| |ack_address10   |--+-+-+ |     | |..........  |
+| | .................        |     | | |  | +----------------+  | | | |     | +------------+
+| | read_ack_register--------+-----+-+ |  | |      ack0      |<-+ | | |     | Error Status |
+| | read_ack_preserve        |     |   |  | +----------------+    | | |     | Data Block 10|
+| | read_ack_write           |     |   |  | |      ack1      |<---+ | +---->| +------------+
++ +--------------------------+     |   |  | +----------------+      |       | |  CPER      |
+| | ...............          |     |   |  | |       ....     |      |       | |  CPER      |
++ +--------------------------+     |   |  | +--------------+ |      |       | |  ....      |
+| | GHES10                   |     |   |  | |      ack10     |<---- +       | |  CPER      |
++ +--------------------------+     |   |  | +----------------+              +-+------------+
+| | .................        |     |   |
+| | error_status_address-----+-----+   |
+| | .................        |         |
+| | read_ack_register--------+---------+
+| | read_ack_preserve        |
+| | read_ack_write           |
++ +--------------------------+
+
+For GHESv2 error source, the OSPM must acknowledges the error via Read Ack register.
+so user space must check the ack value to avoid read-write race condition.
 
 Signed-off-by: Dongjiu Geng <gengdongjiu@huawei.com>
 ---
-thanks Michael and Laszlo's review:
+thanks a lot Michael and Laszlo's review and comments:
 
-change since V5:
-(1) update the commit message title
-(2) remove UUID_BE and UEFI_CPER_SEC_PLATFORM_MEM macros
-(3) remove including "qemu/uuid.h" file in this patch
-(4) remove including "hest_ghes.h" file in this patch
-(5) drop "this is" from the comment of structures and macros
-(6) replace the "QemuUUID section_type_le" to "uint8_t section_type_le[16]"
+change since v5:
+(1) move to GHESv2 error source from GHESv1, because we maily use the GHESv2
+(2) add the GHESv2 error source layout in the comments
+(2) add the logic to read the ack value from OSPM to avoid read-write race condition
+(3) including header files "aml-build.h" and "hest_ghes.h" in this patch to make it
+    reasonable
+(4) calculate the fw_cfg blob offsets that should be patched in more fine-grained steps,
+    with multiple separate increments, using:
+    - structure type names,
+    - sizeof operators,
+    - offsetof macros,
+    - and possibly a separate comment for each offset increment.
+(5) remove page boundary refers to 4096 in the "bios_linker_loader_alloc"
+(6) using build_append_int_noprefix to avoid use pointer math, so that the code is easily
+    readable
+(7) change memory section definition to array from QemuUUID
+(8) only enable SEA/SEI notification hardware error source to avoid guest OS ACPI driver
+    probe warning
 
-chnage since v4:
-(1) fix email threading in this series is incorrect issue
+change since v4:
+1. fix email threading in this series is incorrect issue
 
 change since v3:
-(1) separate the original one patch into three patches: one is new
-    ACPI structures and macros, another is C source file to generate ACPI HEST
-    table and dynamically record CPER ,final patch is the change about Makefile
-    and configuration
-(2) add comments about where the ACPI structures and macros come from, for example,
-    they come from the UEFI Spec 2.6, "xxxxxxxxxxxx"; ACPI 6.1 spec, 
-    "xxxxxxxxxxxxxx".
-(3) correct the macros name, for emaple, prefix some macro names with
-    "UEFI_".
-(4) remove the uuid_le struct and use the QemuUUID in the include/qemu/uuid.h"
-(5) remove the duplicate ACPI address space, because it already defined in 
-    the "include/hw/acpi/aml-build.h"
-(6) remove the acpi_generic_address structure because same definition exists in the 
-    AcpiGenericAddress.
-(7) rename the struct acpi_hest_notify to AcpiHestNotifyType
-(8) rename the struct acpi_hest_types to AcpiHestSourceType
-(9) rename enum constants AcpiHestSourceType to ACPI_HEST_SOURCE_xxx from
-     ACPI_HEST_TYPE_xxx
-(10) remove the NOT_USED{3,4,5} enum constants in the AcpiHestSourceType.
-(11) add missed QEMU_PACKED for the struct definition.
-(12) remove the defnition of AcpiGenericErrorData, and rename the
-     AcpiGenericErrorDataV300 to AcpiGenericErrorData.
-(13) use the QemuUUID type for the "section_type" field AcpiGenericErrorData, and rename it
-     to section_type_le.
-(14) moving type AcpiGenericErrorSeverity above AcpiGenericErrorData and
-     AcpiGenericErrorDataV300, and remarking on the "error_severity" fields
-     that they take their values from AcpiGenericErrorSeverity
-(15) remove the wrongly call to BERT(Boot Error Record Table)
-(16) add comments for the struction member, for example, pint out that
-     the block_status member in the AcpiGenericErrorStatus is a bitmask
-     composed of ACPI_GEBS_xxx macros
-(17) remove the hardware error source notification type list, and rename
-     the MAX_ERROR_SOURCE_COUNT_V6 to ACPI_HEST_NOTIFY_RESERVED.
-(18) remove the physical_addr member of GhesErrorState
-(19) change the "uint64_t ghes_addr_le[8]" in GhesErrorState to uint64_t ghes_addr_le
-(20) change the second parameter to "error_physical_addr" in the ghes_update_guest
-     API statement
+1. remove the unnecessary include for "hw/acpi/vmgenid.h" in 
+   hw/arm/virt-acpi-build.c
+2. add conversion between LE and host-endian for the CPER record
+3. handle the case that run out of the preallocated memory for the CPER record
+4. change to use g_malloc0 instead of g_malloc 
+5. change block_reqr_size name to block_rer_size
+6. change QEMU coding style, that is, the operator is at the end of the line.
+7. drop the ERROR_STATUS_ADDRESS_OFFSET and GAS_ADDRESS_OFFSET macros (from
+   the header file as well), and use the offsetof to replace it.
+8. remove the init_aml_allocator() / free_aml_allocator(), calculate the
+   needed size, and push that many bytes directly to "table_data".
+9. take an "OVMF header probe suppressor" into account
+10.corrct HEST and CPER value assigment, for example, correct the source_id
+   for every error source, this identifier of source_id should be unique among
+   all error sources; 
+11. create only one WRITE_POINTER command, for the base address of "etc/hardware_errors".
+   This should be done outside of the loop.The base addresses of the individual error
+   status data blocks should be calculated in ghes_update_guest(), based on the error
+   source / notification type
+12.correct the commit message lists error sources / notification types 0 through 10 (count=11 in total). 
+13.correct the size calculation for GHES_DATA_ADDR_FW_CFG_FILE 
+14.range-checked the value of "notify" before using it as an array subscript
 ---
- include/hw/acpi/acpi-defs.h | 193 ++++++++++++++++++++++++++++++++++++++++++++
- 1 file changed, 193 insertions(+)
+ hw/acpi/aml-build.c         |   2 +
+ hw/acpi/hest_ghes.c         | 368 ++++++++++++++++++++++++++++++++++++++++++++
+ hw/arm/virt-acpi-build.c    |   6 +
+ include/hw/acpi/aml-build.h |   1 +
+ include/hw/acpi/hest_ghes.h |  47 ++++++
+ 5 files changed, 424 insertions(+)
+ create mode 100644 hw/acpi/hest_ghes.c
+ create mode 100644 include/hw/acpi/hest_ghes.h
 
-diff --git a/include/hw/acpi/acpi-defs.h b/include/hw/acpi/acpi-defs.h
-index 4cc3630..ff9525e 100644
---- a/include/hw/acpi/acpi-defs.h
-+++ b/include/hw/acpi/acpi-defs.h
-@@ -295,6 +295,44 @@ typedef struct AcpiMultipleApicTable AcpiMultipleApicTable;
- #define ACPI_APIC_GENERIC_TRANSLATOR    15
- #define ACPI_APIC_RESERVED              16   /* 16 and greater are reserved */
+diff --git a/hw/acpi/aml-build.c b/hw/acpi/aml-build.c
+index c6f2032..802b98d 100644
+--- a/hw/acpi/aml-build.c
++++ b/hw/acpi/aml-build.c
+@@ -1560,6 +1560,7 @@ void acpi_build_tables_init(AcpiBuildTables *tables)
+     tables->table_data = g_array_new(false, true /* clear */, 1);
+     tables->tcpalog = g_array_new(false, true /* clear */, 1);
+     tables->vmgenid = g_array_new(false, true /* clear */, 1);
++    tables->hardware_errors = g_array_new(false, true /* clear */, 1);
+     tables->linker = bios_linker_loader_init();
+ }
  
-+/* UEFI Spec 2.6, "N.2.5 Memory Error Section */
-+#define UEFI_CPER_MEM_VALID_ERROR_STATUS     0x0001
-+#define UEFI_CPER_MEM_VALID_PA               0x0002
-+#define UEFI_CPER_MEM_VALID_PA_MASK          0x0004
-+#define UEFI_CPER_MEM_VALID_NODE             0x0008
-+#define UEFI_CPER_MEM_VALID_CARD             0x0010
-+#define UEFI_CPER_MEM_VALID_MODULE           0x0020
-+#define UEFI_CPER_MEM_VALID_BANK             0x0040
-+#define UEFI_CPER_MEM_VALID_DEVICE           0x0080
-+#define UEFI_CPER_MEM_VALID_ROW              0x0100
-+#define UEFI_CPER_MEM_VALID_COLUMN           0x0200
-+#define UEFI_CPER_MEM_VALID_BIT_POSITION     0x0400
-+#define UEFI_CPER_MEM_VALID_REQUESTOR        0x0800
-+#define UEFI_CPER_MEM_VALID_RESPONDER        0x1000
-+#define UEFI_CPER_MEM_VALID_TARGET           0x2000
-+#define UEFI_CPER_MEM_VALID_ERROR_TYPE       0x4000
-+#define UEFI_CPER_MEM_VALID_RANK_NUMBER      0x8000
-+#define UEFI_CPER_MEM_VALID_CARD_HANDLE      0x10000
-+#define UEFI_CPER_MEM_VALID_MODULE_HANDLE    0x20000
-+#define UEFI_CPER_MEM_ERROR_TYPE_MULTI_ECC   3
-+
-+/* From the ACPI 6.1 spec, "18.3.2.9 Hardware Error Notification" */
-+
-+enum AcpiHestNotifyType {
-+    ACPI_HEST_NOTIFY_POLLED = 0,
-+    ACPI_HEST_NOTIFY_EXTERNAL = 1,
-+    ACPI_HEST_NOTIFY_LOCAL = 2,
-+    ACPI_HEST_NOTIFY_SCI = 3,
-+    ACPI_HEST_NOTIFY_NMI = 4,
-+    ACPI_HEST_NOTIFY_CMCI = 5,  /* ACPI 5.0 */
-+    ACPI_HEST_NOTIFY_MCE = 6,   /* ACPI 5.0 */
-+    ACPI_HEST_NOTIFY_GPIO = 7,  /* ACPI 6.0 */
-+    ACPI_HEST_NOTIFY_SEA = 8,   /* ACPI 6.1 */
-+    ACPI_HEST_NOTIFY_SEI = 9,   /* ACPI 6.1 */
-+    ACPI_HEST_NOTIFY_GSIV = 10, /* ACPI 6.1 */
-+    ACPI_HEST_NOTIFY_RESERVED = 11  /* 11 and greater are reserved */
-+};
-+
- /*
-  * MADT sub-structures (Follow MULTIPLE_APIC_DESCRIPTION_TABLE)
-  */
-@@ -475,6 +513,161 @@ struct AcpiSystemResourceAffinityTable
- } QEMU_PACKED;
- typedef struct AcpiSystemResourceAffinityTable AcpiSystemResourceAffinityTable;
+@@ -1570,6 +1571,7 @@ void acpi_build_tables_cleanup(AcpiBuildTables *tables, bool mfre)
+     g_array_free(tables->table_data, true);
+     g_array_free(tables->tcpalog, mfre);
+     g_array_free(tables->vmgenid, mfre);
++    g_array_free(tables->hardware_errors, mfre);
+ }
  
-+/* Hardware Error Notification, from the ACPI 6.1
-+ * spec, "18.3.2.9 Hardware Error Notification"
-+ */
-+struct AcpiHestNotify {
-+    uint8_t type;
-+    uint8_t length;
-+    uint16_t config_write_enable;
-+    uint32_t poll_interval;
-+    uint32_t vector;
-+    uint32_t polling_threshold_value;
-+    uint32_t polling_threshold_window;
-+    uint32_t error_threshold_value;
-+    uint32_t error_threshold_window;
-+} QEMU_PACKED;
-+typedef struct AcpiHestNotify AcpiHestNotify;
-+
-+/* From ACPI 6.1, sections "18.3.2.1 IA-32 Architecture Machine
-+ * Check Exception" through "18.3.2.8 Generic Hardware Error Source version 2".
-+ */
-+enum AcpiHestSourceType {
-+    ACPI_HEST_SOURCE_IA32_CHECK = 0,
-+    ACPI_HEST_SOURCE_IA32_CORRECTED_CHECK = 1,
-+    ACPI_HEST_SOURCE_IA32_NMI = 2,
-+    ACPI_HEST_SOURCE_AER_ROOT_PORT = 6,
-+    ACPI_HEST_SOURCE_AER_ENDPOINT = 7,
-+    ACPI_HEST_SOURCE_AER_BRIDGE = 8,
-+    ACPI_HEST_SOURCE_GENERIC_ERROR = 9,
-+    ACPI_HEST_SOURCE_GENERIC_ERROR_V2 = 10,
-+    ACPI_HEST_SOURCE_RESERVED = 11    /* 11 and greater are reserved */
-+};
-+
-+/* Block status bitmasks from ACPI 6.1, "18.3.2.7.1 Generic Error Data" */
-+#define ACPI_GEBS_UNCORRECTABLE             (1)
-+#define ACPI_GEBS_CORRECTABLE               (1 << 1)
-+#define ACPI_GEBS_MULTIPLE_UNCORRECTABLE    (1 << 2)
-+#define ACPI_GEBS_MULTIPLE_CORRECTABLE      (1 << 3)
-+/* 10 bits, error data entry count */
-+#define ACPI_GEBS_ERROR_ENTRY_COUNT         (0x3FF << 4)
-+
-+/* Generic Hardware Error Source Structure, refer to ACPI 6.1
-+ * "18.3.2.7 Generic Hardware Error Source". in this struct the
-+ * "type" field has to be ACPI_HEST_SOURCE_GENERIC_ERROR
-+ */
-+
-+struct AcpiGenericHardwareErrorSource {
-+    uint16_t type;
-+    uint16_t source_id;
-+    uint16_t related_source_id;
-+    uint8_t flags;
-+    uint8_t enabled;
-+    uint32_t number_of_records;
-+    uint32_t max_sections_per_record;
-+    uint32_t max_raw_data_length;
-+    struct AcpiGenericAddress error_status_address;
-+    struct AcpiHestNotify notify;
-+    uint32_t error_status_block_length;
-+} QEMU_PACKED;
-+typedef struct AcpiGenericHardwareErrorSource AcpiGenericHardwareErrorSource;
-+
-+/* Generic Hardware Error Source, version 2, ACPI 6.1, "18.3.2.8 Generic
-+ * Hardware Error Source version 2", in this struct the "type" field has to
-+ * be ACPI_HEST_SOURCE_GENERIC_ERROR_V2
-+ */
-+struct AcpiGenericHardwareErrorSourceV2 {
-+    uint16_t type;
-+    uint16_t source_id;
-+    uint16_t related_source_id;
-+    uint8_t flags;
-+    uint8_t enabled;
-+    uint32_t number_of_records;
-+    uint32_t max_sections_per_record;
-+    uint32_t max_raw_data_length;
-+    struct AcpiGenericAddress error_status_address;
-+    struct AcpiHestNotify notify;
-+    uint32_t error_status_block_length;
-+    struct AcpiGenericAddress read_ack_register;
-+    uint64_t read_ack_preserve;
-+    uint64_t read_ack_write;
-+} QEMU_PACKED;
-+typedef struct AcpiGenericHardwareErrorSourceV2
-+            AcpiGenericHardwareErrorSourceV2;
-+
-+/* Generic Error Status block, from ACPI 6.1,
-+ * "18.3.2.7.1 Generic Error Data"
-+ */
-+struct AcpiGenericErrorStatus {
-+    /* It is a bitmask composed of ACPI_GEBS_xxx macros */
-+    uint32_t block_status;
-+    uint32_t raw_data_offset;
-+    uint32_t raw_data_length;
-+    uint32_t data_length;
-+    uint32_t error_severity;
-+} QEMU_PACKED;
-+typedef struct AcpiGenericErrorStatus AcpiGenericErrorStatus;
-+
-+enum AcpiGenericErrorSeverity {
-+    ACPI_CPER_SEV_RECOVERABLE,
-+    ACPI_CPER_SEV_FATAL,
-+    ACPI_CPER_SEV_CORRECTED,
-+    ACPI_CPER_SEV_NONE,
-+};
-+
-+/* Generic Error Data entry, revision number is 0x0300,
-+ * ACPI 6.1, "18.3.2.7.1 Generic Error Data"
-+ */
-+struct AcpiGenericErrorData {
-+    uint8_t section_type_le[16];
-+    /* The "error_severity" fields that they take their
-+     * values from AcpiGenericErrorSeverity
-+     */
-+    uint32_t error_severity;
-+    uint16_t revision;
-+    uint8_t validation_bits;
-+    uint8_t flags;
-+    uint32_t error_data_length;
-+    uint8_t fru_id[16];
-+    uint8_t fru_text[20];
-+    uint64_t time_stamp;
-+} QEMU_PACKED;
-+typedef struct AcpiGenericErrorData AcpiGenericErrorData;
-+
-+/* From UEFI 2.6, "N.2.5 Memory Error Section" */
-+struct UefiCperSecMemErr {
-+    uint64_t    validation_bits;
-+    uint64_t    error_status;
-+    uint64_t    physical_addr;
-+    uint64_t    physical_addr_mask;
-+    uint16_t    node;
-+    uint16_t    card;
-+    uint16_t    module;
-+    uint16_t    bank;
-+    uint16_t    device;
-+    uint16_t    row;
-+    uint16_t    column;
-+    uint16_t    bit_pos;
-+    uint64_t    requestor_id;
-+    uint64_t    responder_id;
-+    uint64_t    target_id;
-+    uint8_t     error_type;
-+    uint8_t     reserved;
-+    uint16_t    rank;
-+    uint16_t    mem_array_handle;   /* card handle in UEFI 2.4 */
-+    uint16_t    mem_dev_handle;     /* module handle in UEFI 2.4 */
-+} QEMU_PACKED;
-+typedef struct UefiCperSecMemErr UefiCperSecMemErr;
-+
+ /* Build rsdt table */
+diff --git a/hw/acpi/hest_ghes.c b/hw/acpi/hest_ghes.c
+new file mode 100644
+index 0000000..cc06662
+--- /dev/null
++++ b/hw/acpi/hest_ghes.c
+@@ -0,0 +1,368 @@
 +/*
-+ * HEST Description Table
++ *  APEI GHES table Generation
++ *
++ *  Copyright (C) 2017 huawei.
++ *
++ *  Author: Dongjiu Geng <gengdongjiu@huawei.com>
++ *
++ * This work is licensed under the terms of the GNU GPL, version 2 or later.
++ * See the COPYING file in the top-level directory.
++ *
 + */
-+struct AcpiHardwareErrorSourceTable {
-+    ACPI_TABLE_HEADER_DEF                    /* ACPI common table header */
-+    uint32_t           error_source_count;
-+} QEMU_PACKED;
-+typedef struct AcpiHardwareErrorSourceTable AcpiHardwareErrorSourceTable;
 +
- #define ACPI_SRAT_PROCESSOR_APIC     0
- #define ACPI_SRAT_MEMORY             1
- #define ACPI_SRAT_PROCESSOR_x2APIC   2
++#include "qemu/osdep.h"
++#include "qmp-commands.h"
++#include "hw/acpi/acpi.h"
++#include "hw/acpi/aml-build.h"
++#include "hw/acpi/hest_ghes.h"
++#include "hw/nvram/fw_cfg.h"
++#include "sysemu/sysemu.h"
++#include "qemu/error-report.h"
++
++/* The structure that stands for the layout
++ * GHES_ERRORS_FW_CFG_FILE fw_cfg blob
++ *
++ *           etc/hardware_errors
++ * ==========================================
++ * +------------------+
++ * |    address       |              +--------------+
++ * |    registers     |              | Error Status |
++ * | +----------------+              | Data Block 0 |
++ * | |status_address0 |------------->| +------------+
++ * | +----------------+              | |  CPER      |
++ * | |status_address1 |----------+   | |  CPER      |
++ * | +----------------+          |   | |  ....      |
++ * | |.............   |          |   | |  CPER      |
++ * | +----------------+          |   | +------------+
++ * | |status_address10|--------+ |   | Error Status |
++ * | +----------------+        | |   | Data Block 1 |
++ * | |ack_address0    |--+     | +-->| +------------+
++ * | +----------------+  |     |     | |  CPER      |
++ * | |ack_address1    |--+-+   |     | |  CPER      |
++ * | +----------------+  | |   |     | |  ....      |
++ * | | .............  |  | |   |     | |  CPER      |
++ * | +----------------+  | |   |     +-+------------+
++ * | |ack_address10   |--+-+-+ |     | |..........  |
++ * | +----------------+  | | | |     | +------------+
++ * | |      ack0      |<-+ | | |     | Error Status |
++ * | +----------------+    | | |     | Data Block10 |
++ * | |      ack1      |<---+ | +---->| +------------+
++ * | +----------------+      |       | |  CPER      |
++ * | |       ....     |      |       | |  CPER      |
++ * | +--------------+ |      |       | |  ....      |
++ * | |      ack10     |<---- +       | |  CPER      |
++ * | +----------------+              +-+------------+
++ */
++struct hardware_errors_buffer {
++    /* Generic Error Status Block register */
++    uint64_t gesb_register[GHES_ACPI_HEST_NOTIFY_RESERVED];
++    uint64_t ack_register[GHES_ACPI_HEST_NOTIFY_RESERVED];
++    uint64_t ack[GHES_ACPI_HEST_NOTIFY_RESERVED];
++    char gesb[GHES_MAX_RAW_DATA_LENGTH][GHES_ACPI_HEST_NOTIFY_RESERVED];
++};
++
++static int ghes_record_cper(uint64_t error_block_address,
++                                    uint64_t error_physical_addr)
++{
++    AcpiGenericErrorStatus block;
++    AcpiGenericErrorData *gdata;
++    UefiCperSecMemErr *mem_err;
++    uint64_t current_block_length;
++    unsigned char *buffer;
++    /* memory section */
++    char mem_section_id_le[] = {0x14, 0x11, 0xBC, 0xA5, 0x64, 0x6F, 0xDE,
++                              0x4E, 0xB8, 0x63, 0x3E, 0x83, 0xED, 0x7C,
++                              0x83, 0xB1};
++
++    cpu_physical_memory_read(error_block_address, &block,
++                                sizeof(AcpiGenericErrorStatus));
++
++    /* Get the current generic error status block length */
++    current_block_length = sizeof(AcpiGenericErrorStatus) +
++        le32_to_cpu(block.data_length);
++
++    /* If the Generic Error Status Block is NULL, update
++     * the block header
++     */
++    if (!block.block_status) {
++        block.block_status = ACPI_GEBS_UNCORRECTABLE;
++        block.error_severity = ACPI_CPER_SEV_RECOVERABLE;
++    }
++
++    block.data_length += cpu_to_le32(sizeof(AcpiGenericErrorData));
++    block.data_length += cpu_to_le32(sizeof(UefiCperSecMemErr));
++
++    /* check whether it runs out of the preallocated memory */
++    if ((le32_to_cpu(block.data_length) + sizeof(AcpiGenericErrorStatus)) >
++       GHES_MAX_RAW_DATA_LENGTH) {
++        error_report("Record CPER out of boundary!!!");
++        return GHES_CPER_FAIL;
++    }
++
++    /* Write back the Generic Error Status Block to guest memory */
++    cpu_physical_memory_write(error_block_address, &block,
++        sizeof(AcpiGenericErrorStatus));
++
++    /* Fill in Generic Error Data Entry */
++    buffer = g_malloc0(sizeof(AcpiGenericErrorData) +
++                       sizeof(UefiCperSecMemErr));
++
++
++    memset(buffer, 0, sizeof(AcpiGenericErrorData) + sizeof(UefiCperSecMemErr));
++    gdata = (AcpiGenericErrorData *)buffer;
++
++    /* Memory section */
++    memcpy(&(gdata->section_type_le), &mem_section_id_le,
++            sizeof(mem_section_id_le));
++
++    /* error severity is recoverable */
++    gdata->error_severity = ACPI_CPER_SEV_RECOVERABLE;
++    gdata->revision = 0x300; /* the revision number is 0x300 */
++    gdata->error_data_length = cpu_to_le32(sizeof(UefiCperSecMemErr));
++
++    mem_err = (UefiCperSecMemErr *) (gdata + 1);
++
++    /* User space only handle the memory section CPER */
++
++    /* Hard code to Multi-bit ECC error */
++    mem_err->validation_bits |= cpu_to_le32(UEFI_CPER_MEM_VALID_ERROR_TYPE);
++    mem_err->error_type = cpu_to_le32(UEFI_CPER_MEM_ERROR_TYPE_MULTI_ECC);
++
++    /* Record the physical address at which the memory error occurred */
++    mem_err->validation_bits |= cpu_to_le32(UEFI_CPER_MEM_VALID_PA);
++    mem_err->physical_addr = cpu_to_le32(error_physical_addr);
++
++    /* Write back the Generic Error Data Entry to guest memory */
++    cpu_physical_memory_write(error_block_address + current_block_length,
++        buffer, sizeof(AcpiGenericErrorData) + sizeof(UefiCperSecMemErr));
++
++    g_free(buffer);
++    return GHES_CPER_OK;
++}
++
++static void
++build_address(GArray *table_data, BIOSLinker *linker,
++    uint32_t dst_patched_offset, uint32_t src_offset,
++    uint8_t address_space_id , uint8_t  register_bit_width,
++    uint8_t register_bit_offset, uint8_t access_size)
++{
++    uint32_t address_size = sizeof(struct AcpiGenericAddress) -
++        offsetof(struct AcpiGenericAddress, address);
++
++    /* Address space */
++    build_append_int_noprefix(table_data, address_space_id, 1);
++    /* register bit width */
++    build_append_int_noprefix(table_data, register_bit_width, 1);
++    /* register bit offset */
++    build_append_int_noprefix(table_data, register_bit_offset, 1);
++    /* access size */
++    build_append_int_noprefix(table_data, access_size, 1);
++    acpi_data_push(table_data, address_size);
++
++    /* Patch address of ERRORS fw_cfg blob into the TABLE fw_cfg blob so OSPM
++     * can retrieve and read it. the address size is 64 bits.
++     */
++    bios_linker_loader_add_pointer(linker,
++        ACPI_BUILD_TABLE_FILE, dst_patched_offset, sizeof(uint64_t),
++        GHES_ERRORS_FW_CFG_FILE, src_offset);
++}
++
++void ghes_build_acpi(GArray *table_data, GArray *hardware_error,
++                                            BIOSLinker *linker)
++{
++    uint32_t ghes_start = table_data->len;
++    uint32_t address_size, ack_value_size, error_status_address_offset;
++    uint32_t read_ack_register_offset, i;
++    /*
++     * The block_req_size stands for two address and one
++     * generic error status block
++     * +---------+
++     * | address |-----------> +---------+
++     * +---------+             |  CPER   |
++     * |   ack   |             |  CPER   |
++     * | address |----+        |  CPER   |
++     * +---------+    |        |  CPER   |
++     * |  ack0   |<---+        |  ....   |
++     * +---------+             +---------+
++     */
++    address_size = sizeof(struct AcpiGenericAddress) -
++        offsetof(struct AcpiGenericAddress, address);
++    ack_value_size = (offsetof(struct hardware_errors_buffer, gesb) -
++                    offsetof(struct hardware_errors_buffer, ack)) /
++                    GHES_ACPI_HEST_NOTIFY_RESERVED;
++
++    error_status_address_offset = ghes_start +
++        sizeof(AcpiHardwareErrorSourceTable) +
++        offsetof(AcpiGenericHardwareErrorSourceV2, error_status_address) +
++        offsetof(struct AcpiGenericAddress, address);
++
++    read_ack_register_offset = ghes_start +
++        sizeof(AcpiHardwareErrorSourceTable) +
++        offsetof(AcpiGenericHardwareErrorSourceV2, read_ack_register) +
++        offsetof(struct AcpiGenericAddress, address);
++
++    acpi_data_push(hardware_error,
++        offsetof(struct hardware_errors_buffer, ack));
++    for (i = 0; i < GHES_ACPI_HEST_NOTIFY_RESERVED; i++)
++        /* Initialize read ack value */
++        build_append_int_noprefix((void *)hardware_error, 1, 8);
++
++    /* Reserved the total size for ERRORS fw_cfg blob
++     */
++    acpi_data_push(hardware_error, sizeof(struct hardware_errors_buffer));
++
++    /* Allocate guest memory for the Data fw_cfg blob */
++    bios_linker_loader_alloc(linker, GHES_ERRORS_FW_CFG_FILE, hardware_error,
++                            1, false);
++    /* Reserve table header size */
++    acpi_data_push(table_data, sizeof(AcpiTableHeader));
++
++    build_append_int_noprefix(table_data, GHES_ACPI_HEST_NOTIFY_RESERVED, 4);
++
++    for (i = 0; i < GHES_ACPI_HEST_NOTIFY_RESERVED; i++) {
++        build_append_int_noprefix(table_data,
++            ACPI_HEST_SOURCE_GENERIC_ERROR_V2, 2); /* type */
++        /* source id */
++        build_append_int_noprefix(table_data, cpu_to_le16(i), 2);
++        /* related source id */
++        build_append_int_noprefix(table_data, 0xffff, 2);
++        build_append_int_noprefix(table_data, 0, 1); /* flags */
++
++        /* Currently only enable SEA and SEI notification type to avoid the
++         * kernel warning, reserve the space for other notification error source
++         */
++        if (i == ACPI_HEST_NOTIFY_SEA || i == ACPI_HEST_NOTIFY_SEI) {
++            build_append_int_noprefix(table_data, 1, 1); /* enabled */
++        } else {
++            build_append_int_noprefix(table_data, 0, 1); /* enabled */
++        }
++
++        /* The number of error status block per generic hardware error source */
++        build_append_int_noprefix(table_data, 1, 4);
++        /* Max sections per record */
++        build_append_int_noprefix(table_data, 1, 4);
++        /* Max raw data length */
++        build_append_int_noprefix(table_data, GHES_MAX_RAW_DATA_LENGTH, 4);
++
++        /* Build error Status Address*/
++        build_address(table_data, linker, error_status_address_offset + i *
++            sizeof(AcpiGenericHardwareErrorSourceV2), i * address_size,
++            AML_SYSTEM_MEMORY, 0x40, 0, 4 /* QWord access */);
++
++        /* Hardware error notification structure */
++        build_append_int_noprefix(table_data, i, 1); /* type */
++        /* length */
++        build_append_int_noprefix(table_data, sizeof(AcpiHestNotify), 1);
++        build_append_int_noprefix(table_data, 0, 26);
++
++        /* Error Status Block Length */
++        build_append_int_noprefix(table_data,
++            cpu_to_le32(GHES_MAX_RAW_DATA_LENGTH), 4);
++
++        /* Build read ack register */
++        build_address(table_data, linker, read_ack_register_offset + i *
++            sizeof(AcpiGenericHardwareErrorSourceV2),
++            offsetof(struct hardware_errors_buffer, ack_register) +
++            i * address_size, AML_SYSTEM_MEMORY, 0x40, 0,
++            4 /* QWord access */);
++
++        /* Read ack preserve */
++        build_append_int_noprefix(table_data, cpu_to_le64(0xfffffffe), 8);
++
++        /* Read ack write */
++        build_append_int_noprefix(table_data, cpu_to_le64(0x1), 8);
++    }
++
++    for (i = 0; i < GHES_ACPI_HEST_NOTIFY_RESERVED; i++) {
++        /* Patch address of generic error status block into
++         * the address register so OSPM can retrieve and read it.
++         */
++        bios_linker_loader_add_pointer(linker,
++            GHES_ERRORS_FW_CFG_FILE, address_size * i, address_size,
++            GHES_ERRORS_FW_CFG_FILE,
++            offsetof(struct hardware_errors_buffer, gesb) +
++            i * GHES_MAX_RAW_DATA_LENGTH);
++
++        /* Patch address of read ack into the read ack register so
++         * OSPM can retrieve and read it.
++         */
++        bios_linker_loader_add_pointer(linker,
++            GHES_ERRORS_FW_CFG_FILE,
++            offsetof(struct hardware_errors_buffer, ack_register) +
++            address_size * i, address_size, GHES_ERRORS_FW_CFG_FILE,
++            offsetof(struct hardware_errors_buffer, ack) + i * ack_value_size);
++    }
++
++    /* Patch address of ERRORS fw_cfg blob into the ADDR fw_cfg blob
++     * so QEMU can write the ERRORS there. The address is expected to be
++     * < 4GB, but write 64 bits anyway.
++     */
++    bios_linker_loader_write_pointer(linker, GHES_DATA_ADDR_FW_CFG_FILE,
++        0, address_size, GHES_ERRORS_FW_CFG_FILE,
++        offsetof(struct hardware_errors_buffer, gesb));
++
++    build_header(linker, table_data,
++        (void *)(table_data->data + ghes_start), "HEST",
++        table_data->len - ghes_start, 1, NULL, "GHES");
++}
++
++static GhesState ges;
++void ghes_add_fw_cfg(FWCfgState *s, GArray *hardware_error)
++{
++
++    size_t request_block_size = sizeof(uint64_t) + GHES_MAX_RAW_DATA_LENGTH;
++    size_t size = GHES_ACPI_HEST_NOTIFY_RESERVED * request_block_size;
++
++    /* Create a read-only fw_cfg file for GHES */
++    fw_cfg_add_file(s, GHES_ERRORS_FW_CFG_FILE, hardware_error->data,
++                    size);
++    /* Create a read-write fw_cfg file for Address */
++    fw_cfg_add_file_callback(s, GHES_DATA_ADDR_FW_CFG_FILE, NULL, NULL,
++        &ges.ghes_addr_le, sizeof(ges.ghes_addr_le), false);
++}
++
++bool ghes_update_guest(uint32_t notify, uint64_t physical_address)
++{
++    uint64_t error_block_addr;
++    uint64_t ack_addr, ack_value = 0;
++    int loop = 0, ack_value_size;
++    bool ret = GHES_CPER_FAIL;
++
++    ack_value_size = (offsetof(struct hardware_errors_buffer, gesb) -
++        offsetof(struct hardware_errors_buffer, ack)) /
++            GHES_ACPI_HEST_NOTIFY_RESERVED;
++retry:
++    if (physical_address && notify < GHES_ACPI_HEST_NOTIFY_RESERVED) {
++        error_block_addr = ges.ghes_addr_le + notify * GHES_MAX_RAW_DATA_LENGTH;
++        error_block_addr = le32_to_cpu(error_block_addr);
++
++        ack_addr = ges.ghes_addr_le -
++            (GHES_ACPI_HEST_NOTIFY_RESERVED - notify) * ack_value_size;
++        cpu_physical_memory_read(ack_addr, &ack_value, ack_value_size);
++        if (!ack_value) {
++            if (loop < 3) {
++                usleep(100 * 1000);
++                loop++;
++                goto retry;
++            } else {
++                error_report("Last time OSPM does not acknowledge the error,"
++                    " record CPER failed this time, set the ack value to"
++                    " avoid blocking next time CPER record! exit");
++                ack_value = 1;
++                cpu_physical_memory_write(ack_addr, &ack_value, ack_value_size);
++                return ret;
++            }
++        } else {
++            /* A zero value in ghes_addr means that BIOS has not yet written
++             * the address
++             */
++            if (error_block_addr) {
++                ack_value = 0;
++                cpu_physical_memory_write(ack_addr, &ack_value, ack_value_size);
++                ret = ghes_record_cper(error_block_addr, physical_address);
++            }
++        }
++    }
++
++    return ret;
++}
+diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+index 0835e59..5c97016 100644
+--- a/hw/arm/virt-acpi-build.c
++++ b/hw/arm/virt-acpi-build.c
+@@ -45,6 +45,7 @@
+ #include "hw/arm/virt.h"
+ #include "sysemu/numa.h"
+ #include "kvm_arm.h"
++#include "hw/acpi/hest_ghes.h"
+ 
+ #define ARM_SPI_BASE 32
+ #define ACPI_POWER_BUTTON_DEVICE "PWRB"
+@@ -778,6 +779,9 @@ void virt_acpi_build(VirtMachineState *vms, AcpiBuildTables *tables)
+     acpi_add_table(table_offsets, tables_blob);
+     build_spcr(tables_blob, tables->linker, vms);
+ 
++    acpi_add_table(table_offsets, tables_blob);
++    ghes_build_acpi(tables_blob, tables->hardware_errors, tables->linker);
++
+     if (nb_numa_nodes > 0) {
+         acpi_add_table(table_offsets, tables_blob);
+         build_srat(tables_blob, tables->linker, vms);
+@@ -890,6 +894,8 @@ void virt_acpi_setup(VirtMachineState *vms)
+     fw_cfg_add_file(vms->fw_cfg, ACPI_BUILD_TPMLOG_FILE, tables.tcpalog->data,
+                     acpi_data_len(tables.tcpalog));
+ 
++    ghes_add_fw_cfg(vms->fw_cfg, tables.hardware_errors);
++
+     build_state->rsdp_mr = acpi_add_rom_blob(build_state, tables.rsdp,
+                                               ACPI_BUILD_RSDP_FILE, 0);
+ 
+diff --git a/include/hw/acpi/aml-build.h b/include/hw/acpi/aml-build.h
+index 00c21f1..c1d15b3 100644
+--- a/include/hw/acpi/aml-build.h
++++ b/include/hw/acpi/aml-build.h
+@@ -211,6 +211,7 @@ struct AcpiBuildTables {
+     GArray *rsdp;
+     GArray *tcpalog;
+     GArray *vmgenid;
++    GArray *hardware_errors;
+     BIOSLinker *linker;
+ } AcpiBuildTables;
+ 
+diff --git a/include/hw/acpi/hest_ghes.h b/include/hw/acpi/hest_ghes.h
+new file mode 100644
+index 0000000..0772756
+--- /dev/null
++++ b/include/hw/acpi/hest_ghes.h
+@@ -0,0 +1,47 @@
++/*
++ * This program is free software; you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License as published by
++ * the Free Software Foundation; either version 2 of the License, or
++ * (at your option) any later version.
++
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU General Public License for more details.
++ *
++ * Authors:
++ *   Dongjiu Geng <gengdongjiu@huawei.com>
++ *
++ * You should have received a copy of the GNU General Public License along
++ * with this program; if not, see <http://www.gnu.org/licenses/>.
++ */
++
++#ifndef ACPI_GHES_H
++#define ACPI_GHES_H
++
++#include "hw/acpi/bios-linker-loader.h"
++
++#define GHES_ERRORS_FW_CFG_FILE      "etc/hardware_errors"
++#define GHES_DATA_ADDR_FW_CFG_FILE      "etc/hardware_errors_addr"
++
++#define GHES_GAS_ADDRESS_OFFSET              4
++#define GHES_ERROR_STATUS_ADDRESS_OFFSET     20
++#define GHES_NOTIFICATION_STRUCTURE          32
++
++#define GHES_CPER_OK   1
++#define GHES_CPER_FAIL 0
++
++#define GHES_ACPI_HEST_NOTIFY_RESERVED           11
++/* The max size in Bytes for one error block */
++#define GHES_MAX_RAW_DATA_LENGTH                 0x1000
++
++
++typedef struct GhesState {
++    uint64_t ghes_addr_le;
++} GhesState;
++
++void ghes_build_acpi(GArray *table_data, GArray *hardware_error,
++                            BIOSLinker *linker);
++void ghes_add_fw_cfg(FWCfgState *s, GArray *hardware_errors);
++bool ghes_update_guest(uint32_t notify, uint64_t error_physical_addr);
++#endif
 -- 
 1.8.3.1
 

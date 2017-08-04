@@ -1,105 +1,69 @@
-Received: by 10.25.221.202 with SMTP id w71csp782520lfi;
-        Thu, 3 Aug 2017 08:24:23 -0700 (PDT)
-X-Received: by 10.55.150.133 with SMTP id y127mr3034458qkd.200.1501773863816;
-        Thu, 03 Aug 2017 08:24:23 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1501773863; cv=none;
+Received: by 10.25.221.202 with SMTP id w71csp2358470lfi;
+        Fri, 4 Aug 2017 10:33:20 -0700 (PDT)
+X-Received: by 10.55.95.194 with SMTP id t185mr3730832qkb.61.1501868000394;
+        Fri, 04 Aug 2017 10:33:20 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1501868000; cv=none;
         d=google.com; s=arc-20160816;
-        b=Ff23bC+kwmWYG6RgNtyfoC/FR2IO+6GxFYEz+EUzRhn4bjf4cjeltOL4eEQIWMcCz6
-         NkH/KF3rAFJm0ZyGD7wPPpIVN2xTK7si4xuOECybIT6oHLjbc140hbsU8ICKnzlDzeBb
-         6aEclF491nrUoh8bDF1xXh5vmngoYBogobmjdm/UkadoF0gRU/5LkidNsfPtq6ODvMmo
-         ofLrhdGc5FR5aKKtWp7WW89Nwm3Xzh1osQMQG0tmSCqM3/9tEJ6ZGOJVFZak0Bqz/Ebk
-         ky1exdnHR0nHWcJwJrN6ODTg8JdQOggVCZk5HmH2V8zKnGIGgIuasJBstBCbaMHUc5WL
-         guVA==
+        b=cCJ2+MRFjEtdXFsremjBh1zdKy7WKTiGJAOGXth/dvZ1iT3n9Opjkbok6JveVSoNLQ
+         2RRpVVTZSs92L5z2v3AZuJzkgFGxgtC5Dy/ZCpkKDleLRBhoTGp6qLY9XGw/59IZQwbP
+         F9KRk8NCDk9n+Kf1cPPX0p2EqXntOCX6PXihonJViX1rUC4+f2lxcJIy+H231JVKEHVW
+         r9tZyTcMWSbmthfB9Nv3/FEjuKq29zcgYx1CThABjgb2o4nbkdKecB/o8zzRYAfGo9SI
+         SfY0MaUuo20/zXnGmBqNIYL266F4ksc6O9lZjM39h/9xSXykOKzzIdWgqajaYC4VQq5v
+         OAqQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
-         :content-disposition:mime-version:references:message-id:to:from:date
-         :dkim-signature:arc-authentication-results;
-        bh=qRPVjyN+wcN6mr8C0GhPONlM0NM8dRkXv/0aM7mxvqA=;
-        b=lAmc3AUSaGJ595hEtkbley9kTQQ7WMeo01FGWAe2f7kzwYIPCOHdzVxNdRSfuWRl2l
-         ZJEDjbJi7kxCA2UDLhw1mt9sMGVOHZya3I/haVXr9Fb+mTD9S5VKi6KPaQcrWQjuNi7O
-         OYo6o0tkI87fp8uD7R6ufiuhSGn/Ug655v9xI+DLagOTfII7VguXKriY/O0wxdFGMXzT
-         y+duv1QPBdDUh5fLuLCYi+u+FFW+nPfOMC+5kQ9xZ7rU+tx4CX8OTlpvCnk0TUTDwOBP
-         R4gcWlTa8hvCBoenIBG3sfSTAfhuqL9SF9MEr0ErzAGhqLDKs1drxBgL+S8ILmPVXF96
-         855g==
+         :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
+         :message-id:date:to:from:arc-authentication-results;
+        bh=21P/7GRc+QbbnGboiwSNmTbF/6iO5S9DKxlYFbSWIb4=;
+        b=AMHfQnVizVqYqTdb0/y01aHFRpytjdKS5x/1QlM+VfqZHcsAhQTkgkdN2LH8gvnKre
+         eix45itKXzktPF9wr9HkdLDb36plpNEmdplBFy9GyvHpN3MxoO48sD7P0iJUmHf8rqn7
+         zOBBUHL3yRDXY3WeV7ObobXeU8ni89IM9OQQhLlehLs0ijlBgrxGD3dPWnsxt6OsII0/
+         Yz6AMplcnd4bpmkog7iq1fXTCiEO25jHlwdGZOT+ubucQuDVfZTx4P003ogJ1CHmg3eG
+         7hIPv56M8b1t1wc0UzQfGI6nR/nAtjFaFLCwoR8w+2AT1ALHi1GhSbf7qWhsJ5SPGFho
+         +zFA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.b=fdykiQho;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id k16si33160186qkk.171.2017.08.03.08.24.23
+        by mx.google.com with ESMTPS id c185si2352360qka.342.2017.08.04.10.33.19
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 03 Aug 2017 08:24:23 -0700 (PDT)
+        Fri, 04 Aug 2017 10:33:20 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.b=fdykiQho;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:53084 helo=lists.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:40465 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ddHz3-0000h3-9B
-	for alex.bennee@linaro.org; Thu, 03 Aug 2017 11:24:21 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:34598)
+	id 1ddgTN-0007Ty-Kx
+	for alex.bennee@linaro.org; Fri, 04 Aug 2017 13:33:17 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:46901)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <edgar.iglesias@gmail.com>) id 1ddHyz-0000gQ-In
-	for qemu-arm@nongnu.org; Thu, 03 Aug 2017 11:24:18 -0400
+	(envelope-from <pm215@archaic.org.uk>) id 1ddgTC-0007TC-SR
+	for qemu-arm@nongnu.org; Fri, 04 Aug 2017 13:33:07 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <edgar.iglesias@gmail.com>) id 1ddHyu-00080H-MJ
-	for qemu-arm@nongnu.org; Thu, 03 Aug 2017 11:24:17 -0400
-Received: from mail-lf0-x242.google.com ([2a00:1450:4010:c07::242]:33361)
+	(envelope-from <pm215@archaic.org.uk>) id 1ddgTB-0001ht-O1
+	for qemu-arm@nongnu.org; Fri, 04 Aug 2017 13:33:06 -0400
+Received: from orth.archaic.org.uk ([2001:8b0:1d0::2]:37805)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <edgar.iglesias@gmail.com>)
-	id 1ddHyu-0007xk-FU; Thu, 03 Aug 2017 11:24:12 -0400
-Received: by mail-lf0-x242.google.com with SMTP id 65so1177397lfa.0;
-	Thu, 03 Aug 2017 08:24:12 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=date:from:to:cc:subject:message-id:references:mime-version
-	:content-disposition:in-reply-to:user-agent;
-	bh=qRPVjyN+wcN6mr8C0GhPONlM0NM8dRkXv/0aM7mxvqA=;
-	b=fdykiQho85X4VdPjwgMllD0pTb/bvHfCq1YlJWwnZ62BfKkbr7VD04jrWgKP4G7zp6
-	yRhPtXdNzjOwdL1rvItgkYyVQ5C0RB4dBX5ZQ1t8jIxX+7axkuciMkMQ7yGTq7BHwZ1K
-	nXj6iJexphgYbAXXjkAcHLJOiEPsitBYr8FecPEOfcVNjiyc6NaIV/hvoHyitbSzBrzK
-	DQATsUbmb+X7EQj9pc8PWMQSl/fNbsfQzmEyZKCwYJy2lyeA8+MksVKiphQ7E1wwCRaU
-	wQWdeb/Fy3+26lSE1O+k+CGKDAFRJsmaaZXl1Pzq/RX/IEnemtklKrKgyrw0qt3mugUE
-	gtWw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:date:from:to:cc:subject:message-id:references
-	:mime-version:content-disposition:in-reply-to:user-agent;
-	bh=qRPVjyN+wcN6mr8C0GhPONlM0NM8dRkXv/0aM7mxvqA=;
-	b=gZaOTSWoLaLSPC73Xwrrsp2d4qhKnBCItgpvcouw8gVdCQ/tVyrddmYQogz8w4Rzpo
-	Wkbytm0GduIDkI6NnB/bQbQ7r1CmfPQegZ4Yfuj5nzY1Hq/1tRhpRyDHOaKay+RDkJv3
-	lI6j9bdbqDTfemOLIfyyOhgwJyNHspaTOasumn7mYiQ72DIWgy73ICdqdQRlK18CU8Tr
-	Axj8OFF8jWmrjcZhAoFv8k0UUQoDhf7dLy9C4ha2g+Z4KzCtapbcZ9HCRkaF0azVkjTT
-	qDi5DAMZbgDJOESao53HQDvjEK4Sok0nRTq0fuNrEz2g4NEblOdjMFS0lSP2x4OgK0kq
-	rDSw==
-X-Gm-Message-State: AIVw1122CZ1qsjw9QNHCygi2sNgzBviwK+IZKuAwkLdttJwsCMUBJ3AV
-	mRy7Wt733AfbYQ==
-X-Received: by 10.46.88.65 with SMTP id x1mr968208ljd.162.1501773850063;
-	Thu, 03 Aug 2017 08:24:10 -0700 (PDT)
-Received: from gmail.com (81-231-233-234-no56.tbcn.telia.com. [81.231.233.234])
-	by smtp.gmail.com with ESMTPSA id g41sm445234lji.94.2017.08.03.08.24.09
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Thu, 03 Aug 2017 08:24:09 -0700 (PDT)
-Date: Thu, 3 Aug 2017 17:24:08 +0200
-From: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Message-ID: <20170803152408.GO4859@toto>
-References: <1501692241-23310-1-git-send-email-peter.maydell@linaro.org>
-	<1501692241-23310-7-git-send-email-peter.maydell@linaro.org>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <1501692241-23310-7-git-send-email-peter.maydell@linaro.org>
-User-Agent: Mutt/1.5.24 (2015-08-30)
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2a00:1450:4010:c07::242
-Subject: Re: [Qemu-arm] [PATCH 06/15] target/arm: Remove incorrect comment
- about MPU_CTRL
+	(Exim 4.71) (envelope-from <pm215@archaic.org.uk>)
+	id 1ddgTB-0001gy-H3; Fri, 04 Aug 2017 13:33:05 -0400
+Received: from pm215 by orth.archaic.org.uk with local (Exim 4.84_2)
+	(envelope-from <pm215@archaic.org.uk>)
+	id 1ddgHL-0006sR-8c; Fri, 04 Aug 2017 18:20:51 +0100
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Date: Fri,  4 Aug 2017 18:20:43 +0100
+Message-Id: <1501867249-1924-3-git-send-email-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.7.4
+In-Reply-To: <1501867249-1924-1-git-send-email-peter.maydell@linaro.org>
+References: <1501867249-1924-1-git-send-email-peter.maydell@linaro.org>
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 2001:8b0:1d0::2
+Subject: [Qemu-arm] [PATCH 2/8] cpu: Define new cpu_transaction_failed() hook
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -111,41 +75,93 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, patches@linaro.org
+Cc: Richard Henderson <rth@twiddle.net>, patches@linaro.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: BUk0XgSvVI5s
+X-TUID: 2gZUvci3C6oW
 
-On Wed, Aug 02, 2017 at 05:43:52PM +0100, Peter Maydell wrote:
-> Remove the comment that claims that some MPU_CTRL bits are stored
-> in sctlr_el[1]. This has never been true since MPU_CTRL was added
-> in commit 29c483a50607 -- the comment is a leftover from
-> Michael Davidsaver's original implementation, which I modified
-> not to use sctlr_el[1]; I forgot to delete the comment then.
-> 
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+Currently we have a rather half-baked setup for allowing CPUs to
+generate exceptions on accesses to invalid memory: the CPU has a
+cpu_unassigned_access() hook which the memory system calls in
+unassigned_mem_write() and unassigned_mem_read() if the current_cpu
+pointer is non-NULL.  This was originally designed before we
+implemented the MemTxResult type that allows memory operations to
+report a success or failure code, which is why the hook is called
+right at the bottom of the memory system.  The major problem with
+this is that it means that the hook can be called even when the
+access was not actually done by the CPU: for instance if the CPU
+writes to a DMA engine register which causes the DMA engine to begin
+a transaction which has been set up by the guest to operate on
+invalid memory then this will casue the CPU to take an exception
+incorrectly.  Another minor problem is that currently if a device
+returns a transaction error then this won't turn into a CPU exception
+at all.
 
-Reviewed-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
+The right way to do this is to have allow the CPU to respond
+to memory system transaction failures at the point where the
+CPU specific code calls into the memory system.
 
+Define a new QOM CPU method and utility function
+cpu_transaction_failed() which is called in these cases.
+The functionality here overlaps with the existing
+cpu_unassigned_access() because individual target CPUs will
+need some work to convert them to the new system. When this
+transition is complete we can remove the old cpu_unassigned_access()
+code.
 
-> ---
->  target/arm/cpu.h | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-> index b39d64a..b64474c 100644
-> --- a/target/arm/cpu.h
-> +++ b/target/arm/cpu.h
-> @@ -416,7 +416,7 @@ typedef struct CPUARMState {
->          uint32_t dfsr; /* Debug Fault Status Register */
->          uint32_t mmfar; /* MemManage Fault Address */
->          uint32_t bfar; /* BusFault Address */
-> -        unsigned mpu_ctrl; /* MPU_CTRL (some bits kept in sctlr_el[1]) */
-> +        unsigned mpu_ctrl; /* MPU_CTRL */
->          int exception;
->      } v7m;
->  
-> -- 
-> 2.7.4
-> 
-> 
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+ include/qom/cpu.h | 21 +++++++++++++++++++++
+ 1 file changed, 21 insertions(+)
+
+diff --git a/include/qom/cpu.h b/include/qom/cpu.h
+index 25eefea..fc54d55 100644
+--- a/include/qom/cpu.h
++++ b/include/qom/cpu.h
+@@ -85,8 +85,10 @@ struct TranslationBlock;
+  * @has_work: Callback for checking if there is work to do.
+  * @do_interrupt: Callback for interrupt handling.
+  * @do_unassigned_access: Callback for unassigned access handling.
++ * (this is deprecated: new targets should use do_transaction_failed instead)
+  * @do_unaligned_access: Callback for unaligned access handling, if
+  * the target defines #ALIGNED_ONLY.
++ * @do_transaction_failed: Callback for handling failed memory transactions
+  * @virtio_is_big_endian: Callback to return %true if a CPU which supports
+  * runtime configurable endianness is currently big-endian. Non-configurable
+  * CPUs can use the default implementation of this method. This method should
+@@ -153,6 +155,10 @@ typedef struct CPUClass {
+     void (*do_unaligned_access)(CPUState *cpu, vaddr addr,
+                                 MMUAccessType access_type,
+                                 int mmu_idx, uintptr_t retaddr);
++    void (*do_transaction_failed)(CPUState *cpu, hwaddr physaddr, vaddr addr,
++                                  unsigned size, MMUAccessType access_type,
++                                  int mmu_idx, MemTxAttrs attrs,
++                                  MemTxResult response, uintptr_t retaddr);
+     bool (*virtio_is_big_endian)(CPUState *cpu);
+     int (*memory_rw_debug)(CPUState *cpu, vaddr addr,
+                            uint8_t *buf, int len, bool is_write);
+@@ -837,6 +843,21 @@ static inline void cpu_unaligned_access(CPUState *cpu, vaddr addr,
+ 
+     cc->do_unaligned_access(cpu, addr, access_type, mmu_idx, retaddr);
+ }
++
++static inline void cpu_transaction_failed(CPUState *cpu, hwaddr physaddr,
++                                          vaddr addr, unsigned size,
++                                          MMUAccessType access_type,
++                                          int mmu_idx, MemTxAttrs attrs,
++                                          MemTxResult response,
++                                          uintptr_t retaddr)
++{
++    CPUClass *cc = CPU_GET_CLASS(cpu);
++
++    if (cc->do_transaction_failed) {
++        cc->do_transaction_failed(cpu, physaddr, addr, size, access_type,
++                                  mmu_idx, attrs, response, retaddr);
++    }
++}
+ #endif
+ 
+ #endif /* NEED_CPU_H */
+-- 
+2.7.4
+

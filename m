@@ -1,109 +1,105 @@
-Received: by 10.25.221.202 with SMTP id w71csp2525383lfi;
-        Fri, 4 Aug 2017 13:27:13 -0700 (PDT)
-X-Received: by 10.200.33.188 with SMTP id 57mr4804488qty.101.1501878433708;
-        Fri, 04 Aug 2017 13:27:13 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1501878433; cv=none;
+Received: by 10.25.221.202 with SMTP id w71csp130703lfi;
+        Fri, 4 Aug 2017 18:00:14 -0700 (PDT)
+X-Received: by 10.55.108.131 with SMTP id h125mr5194034qkc.285.1501894814430;
+        Fri, 04 Aug 2017 18:00:14 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1501894814; cv=none;
         d=google.com; s=arc-20160816;
-        b=N4PqfyNyWrrT+fmqImVZj92FfGhGFNZ7S4p9XQhgtRIl374muTWO7UWC6DqTKFbEx8
-         bd76MSsZAWyywnQzwFK2RiPLaJfMAJiruh9uRdCsXcJteRRzg+NwaU+5FW9Eoa0iibzc
-         a2uC70DWy05DloelQWis9RdELue0f+UqzuBPoCS+6ynKbPYnjRdRY0ko29l+gG6LtlCG
-         kj6K9C5CZrYm5IUZpEx22TtqiqkOaR7d/VS3AXZvnD6CxVUsNmmixsYGmsi9VCmMwPtA
-         K1rAy9HAa5CvWp6iRjNY6FIb4NjwJYiQBgOIuDnszH9dR6n/saZN/Tw1w43wWCXZaWyy
-         gRGA==
+        b=ZyePslJr7BYI4e7wgD6owycd2mfg1vDnSKE3OzHkfl45NGAIObsNFNrg90e88I5j/K
+         ZFiwtUq6yLfCWHGonBnZvld5SGnaHa74IpjnRVsTAbY0yt3XF2L2tenGUo4lAeOhUXQ1
+         S/JlAkEQrlFP5X3lgF3s12hquNIG0x9QtYixmFXH8GnONVu2UdY3fQ+w8mDKC7k8b10R
+         9rHyUDn8VPxe+d+Qrh+JmQ6b88/XKWBMvLnzlUpqfO5bHcTlORYgnkOveHJcqqPQUrjP
+         t9/YwS2trUDlNLiS8FFmmZEAWsg+jfUYt/Ptq2PSnrRC5CO/1oOO2scfXjAYub68a3Qs
+         /8cg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:to:dkim-signature
-         :arc-authentication-results;
-        bh=G+LM330PIVd/Gi9p85VJa38/0wBXPz6uMD4eqrcYiuU=;
-        b=LfcB0l12bNmF19qAVi4m5NcCpnWE0X6mzS+0Xz6UYEjHh8zZQ0wi1dGKnwfKmKVUCV
-         iG/5nJQ+opLB5osW66dlDEvwxN19LseUyoytX0BuW0pyMbGpaRnCnYpO5c41xw9yfURS
-         nHBhT6Rio6KA30r+2h9l6ub6eR+yXDUFhSks92hFc6ofYHVSkeScrQIyqzPiGJxTJ2FR
-         UMrV8GR0NwfngQbot9GCsKI2Nd6u3GLWESEBZCgD5CQYCO5DFlO9y/vf48ARdSrXmlrF
-         ofXuaypZVNejSJIdsF+bWisZH2RH6CCqxns0J2k6h8Te+ZYbZBUFp3dYsprZQavXC+nq
-         A4Cw==
+         :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
+         :content-disposition:mime-version:references:message-id:to:from:date
+         :dkim-signature:arc-authentication-results;
+        bh=a4RooRKZtaeF8XrME918KGg1GUVvnZV/pJ168cpGpZ0=;
+        b=VnIVUeicNljvvtNHGk0kdTLaqfhGZ+A3ccN1UBW3qK1LHEFD43Qe1KinmDSDautyT+
+         6ZtaM3G7jJSngN9MJxVDI61xQmBlP4fAP+epAngSp/bW7/bpAyDe1kIVYFI493y/rRlR
+         n8waODFqTn9uIbw81AZnk+uGiXyX3Yua4+/KPr64Wq4trh97sEQBIGp1MbzNv39sTs4y
+         gvXf5nT+V9OCuDGKWROzAsYOmuHJL3lchOPedHqXAYN7nO9WM/jpSKxLb/6/tppCxsN3
+         UGR6cweyS0Hk4PC5Ip0qOHG21GrhSkQOJJ5eRbgJRvFZp0UfhD6AIgxJsP24XZWdcpks
+         Oc0g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.b=I/pv/GMz;
+       dkim=fail header.i=@gmail.com header.b=QjpdhzNC;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id i186si2089051qkf.465.2017.08.04.13.27.13
+        by mx.google.com with ESMTPS id f42si2899714qki.351.2017.08.04.18.00.13
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 04 Aug 2017 13:27:13 -0700 (PDT)
+        Fri, 04 Aug 2017 18:00:14 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.b=I/pv/GMz;
+       dkim=fail header.i=@gmail.com header.b=QjpdhzNC;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:54344 helo=lists.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:54903 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ddjBe-0000Zo-TQ
-	for alex.bennee@linaro.org; Fri, 04 Aug 2017 16:27:10 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:55471)
+	id 1ddnRr-0005Se-Ua
+	for alex.bennee@linaro.org; Fri, 04 Aug 2017 21:00:11 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:48919)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <richard.henderson@linaro.org>) id 1ddjBV-0000YU-3z
-	for qemu-arm@nongnu.org; Fri, 04 Aug 2017 16:27:01 -0400
+	(envelope-from <edgar.iglesias@gmail.com>) id 1ddnRh-00056Q-AW
+	for qemu-arm@nongnu.org; Fri, 04 Aug 2017 21:00:07 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <richard.henderson@linaro.org>) id 1ddjBR-000132-7l
-	for qemu-arm@nongnu.org; Fri, 04 Aug 2017 16:27:01 -0400
-Received: from mail-pg0-x232.google.com ([2607:f8b0:400e:c05::232]:34462)
+	(envelope-from <edgar.iglesias@gmail.com>) id 1ddnRb-0004AM-Jp
+	for qemu-arm@nongnu.org; Fri, 04 Aug 2017 21:00:01 -0400
+Received: from mail-lf0-x242.google.com ([2a00:1450:4010:c07::242]:33058)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
-	id 1ddjBR-00012c-1G
-	for qemu-arm@nongnu.org; Fri, 04 Aug 2017 16:26:57 -0400
-Received: by mail-pg0-x232.google.com with SMTP id u185so11976027pgb.1
-	for <qemu-arm@nongnu.org>; Fri, 04 Aug 2017 13:26:56 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=subject:to:cc:references:from:message-id:date:user-agent
-	:mime-version:in-reply-to:content-language:content-transfer-encoding;
-	bh=G+LM330PIVd/Gi9p85VJa38/0wBXPz6uMD4eqrcYiuU=;
-	b=I/pv/GMzhjixCbPNn3yxDpeFErmQZe4zsnuPyvGX+Yh3j4dlwBKjiwCumqk7G0gB7b
-	01+jP1/HcgqvJGNCfDb8BR453bzKOBr6O+AB4Aopb+5ogNMZm4Z7xxEQfJRfF52B6lIf
-	HyJ/Phqp4VXzc0eaeLon/kqyWsaWCbQU99ros=
+	(Exim 4.71) (envelope-from <edgar.iglesias@gmail.com>)
+	id 1ddnRb-00049g-Aj; Fri, 04 Aug 2017 20:59:55 -0400
+Received: by mail-lf0-x242.google.com with SMTP id 65so2016128lfa.0;
+	Fri, 04 Aug 2017 17:59:53 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=date:from:to:cc:subject:message-id:references:mime-version
+	:content-disposition:in-reply-to:user-agent;
+	bh=a4RooRKZtaeF8XrME918KGg1GUVvnZV/pJ168cpGpZ0=;
+	b=QjpdhzNChFIfwoaipifwqcmzaTgoLLnqSaVdCc5OjcVB5WeIKU4+ajTYMljDQh+dc5
+	YIKkSkFyqr66h+XuckHT02nmFAnGk/k6Q6cJaXveGsSWorqA/8xue00Pv6qgWgw62JJH
+	jlXUFF58Eo/AobqvjK7coko+3vE6R14RAXUyfTVQ1Cnbn7wsDg1gCtyTKwXO0USHCQx4
+	FQvBiR4JHXCzxCoRYgd6v7NeOcHwSDHfZQI9L06QTZB5Ol0tq0V4xCus8oLRNRqSeKXt
+	rGF5sOjEsGrp+UfDxqjTEo+1NAUGnfKiK5ZNQm4vcf0KKRULGkcTInIfX7ic2p0T7/hd
+	f2zA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:subject:to:cc:references:from:message-id:date
-	:user-agent:mime-version:in-reply-to:content-language
-	:content-transfer-encoding;
-	bh=G+LM330PIVd/Gi9p85VJa38/0wBXPz6uMD4eqrcYiuU=;
-	b=NDS2t0D3vr5cZ82oE0CdEHw7buNUFK+qVHNmiSZYpb9QVO/+3RPBe6wHYe48hjRE2J
-	qnfGTDGN3DivIV4kTAUQUsgMYpTFNwHH0rylNsuaGq0y/0hdYtAKHCbfMvwy+tswU1XY
-	82aboxTheB7h5LlUaTN2UuqxMVSt0qHruocCYN2/sACbIW70shFb6kn+xPXh/xrw0Oum
-	NzCWoJGyC2BnwwLpaz+kMkoLiNVvI5kdjpL0xVpaV06FY4WGsBu/EeOM03crqSzrsboZ
-	LY75kk4z9GSaoftjS5wLiR5SSQegTJA6kgxwfM5mZK7MtxA9ZEpK65eNHWdGOZ6nK+bE
-	puMw==
-X-Gm-Message-State: AIVw113DsG6nIAq+bnuAPCdki7Jfgtk4k0GkS7wsa8tA+smUEVQgUoXW
-	4NtenT/m6vsfcRKs
-X-Received: by 10.84.178.4 with SMTP id y4mr4163783plb.135.1501878416069;
-	Fri, 04 Aug 2017 13:26:56 -0700 (PDT)
-Received: from bigtime.twiddle.net (97-126-108-236.tukw.qwest.net.
-	[97.126.108.236]) by smtp.gmail.com with ESMTPSA id
-	c69sm4089805pfd.76.2017.08.04.13.26.54
+	h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+	:mime-version:content-disposition:in-reply-to:user-agent;
+	bh=a4RooRKZtaeF8XrME918KGg1GUVvnZV/pJ168cpGpZ0=;
+	b=GgzW1/zJETDRsvlxFbXRzUX8WAn9RAzT9YJtgZ7AFmdBN3hlQyZAD/Uf805kgwlfUn
+	wTLHvVa9xrsqUGbvYft5ESk4rxD2gTbB2grxelWw9B//wriJ4ztNfX708S81M3VpI7MR
+	HJPtyMeAdBDkRo0qa6rvyORtrOItaObHQvj2eErvIXJGaY4ZZXO5ZfHRwByW9lJfQDZD
+	DJSLoTdd7uJkqALdvj1vtVthwrtOmjelmrnQz1RrO3g3t7UueMbsX0VvLjWSPuaKzWsb
+	aUuKz7p9ihByDwYC/MlIyOJt1VPV90I42Fgnw4KSmSg9bUOzpuDZzDpTz+HUWCn8oOqG
+	P9Pg==
+X-Gm-Message-State: AIVw112enqY948vPavYEb8f9G0h2nVvGa42mD+QrN2Anhuwtf0HAHyCD
+	Cq337yjAV5QIyA==
+X-Received: by 10.46.5.80 with SMTP id 77mr1454269ljf.91.1501894792210;
+	Fri, 04 Aug 2017 17:59:52 -0700 (PDT)
+Received: from gmail.com (81-231-233-234-no56.tbcn.telia.com. [81.231.233.234])
+	by smtp.gmail.com with ESMTPSA id p76sm812394lfe.2.2017.08.04.17.59.50
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Fri, 04 Aug 2017 13:26:55 -0700 (PDT)
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
+	Fri, 04 Aug 2017 17:59:50 -0700 (PDT)
+Date: Sat, 5 Aug 2017 02:59:49 +0200
+From: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+Message-ID: <20170805005949.GY4859@toto>
 References: <1501867249-1924-1-git-send-email-peter.maydell@linaro.org>
-	<1501867249-1924-9-git-send-email-peter.maydell@linaro.org>
-From: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <17d709e6-7f71-1d5b-1bdd-57b0323d2bcb@linaro.org>
-Date: Fri, 4 Aug 2017 13:26:53 -0700
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.2.1
+	<1501867249-1924-2-git-send-email-peter.maydell@linaro.org>
 MIME-Version: 1.0
-In-Reply-To: <1501867249-1924-9-git-send-email-peter.maydell@linaro.org>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <1501867249-1924-2-git-send-email-peter.maydell@linaro.org>
+User-Agent: Mutt/1.5.24 (2015-08-30)
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400e:c05::232
-Subject: Re: [Qemu-arm] [PATCH 8/8] target/arm: Implement new
- do_transaction_failed hook
+X-Received-From: 2a00:1450:4010:c07::242
+Subject: Re: [Qemu-arm] [PATCH 1/8] memory.h: Move MemTxResult type to
+ memattrs.h
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -115,23 +111,72 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: patches@linaro.org
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, patches@linaro.org,
+	Richard Henderson <rth@twiddle.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: MSGuNB4G6ChW
+X-TUID: pATLH61xeCED
 
-On 08/04/2017 10:20 AM, Peter Maydell wrote:
-> Implement the new do_transaction_failed hook for ARM, which should
-> cause the CPU to take a prefetch abort or data abort.
+On Fri, Aug 04, 2017 at 06:20:42PM +0100, Peter Maydell wrote:
+> Move the MemTxResult type to memattrs.h. We're going to want to
+> use it in cpu/qom.h, which doesn't want to include all of
+> memory.h. In practice MemTxResult and MemTxAttrs are pretty
+> closely linked since both are used for the new-style
+> read_with_attrs and write_with_attrs callbacks, so memattrs.h
+> is a reasonable home for this rather than creating a whole
+> new header file for it.
 > 
 > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+
+Reviewed-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
+
+
 > ---
->  target/arm/internals.h | 10 ++++++++++
->  target/arm/cpu.c       |  1 +
->  target/arm/op_helper.c | 43 +++++++++++++++++++++++++++++++++++++++++++
->  3 files changed, 54 insertions(+)
-
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-
-
-r~
+>  include/exec/memattrs.h | 10 ++++++++++
+>  include/exec/memory.h   | 10 ----------
+>  2 files changed, 10 insertions(+), 10 deletions(-)
+> 
+> diff --git a/include/exec/memattrs.h b/include/exec/memattrs.h
+> index e601061..d4a1642 100644
+> --- a/include/exec/memattrs.h
+> +++ b/include/exec/memattrs.h
+> @@ -46,4 +46,14 @@ typedef struct MemTxAttrs {
+>   */
+>  #define MEMTXATTRS_UNSPECIFIED ((MemTxAttrs) { .unspecified = 1 })
+>  
+> +/* New-style MMIO accessors can indicate that the transaction failed.
+> + * A zero (MEMTX_OK) response means success; anything else is a failure
+> + * of some kind. The memory subsystem will bitwise-OR together results
+> + * if it is synthesizing an operation from multiple smaller accesses.
+> + */
+> +#define MEMTX_OK 0
+> +#define MEMTX_ERROR             (1U << 0) /* device returned an error */
+> +#define MEMTX_DECODE_ERROR      (1U << 1) /* nothing at that address */
+> +typedef uint32_t MemTxResult;
+> +
+>  #endif
+> diff --git a/include/exec/memory.h b/include/exec/memory.h
+> index 400dd44..1dcd312 100644
+> --- a/include/exec/memory.h
+> +++ b/include/exec/memory.h
+> @@ -112,16 +112,6 @@ static inline void iommu_notifier_init(IOMMUNotifier *n, IOMMUNotify fn,
+>      n->end = end;
+>  }
+>  
+> -/* New-style MMIO accessors can indicate that the transaction failed.
+> - * A zero (MEMTX_OK) response means success; anything else is a failure
+> - * of some kind. The memory subsystem will bitwise-OR together results
+> - * if it is synthesizing an operation from multiple smaller accesses.
+> - */
+> -#define MEMTX_OK 0
+> -#define MEMTX_ERROR             (1U << 0) /* device returned an error */
+> -#define MEMTX_DECODE_ERROR      (1U << 1) /* nothing at that address */
+> -typedef uint32_t MemTxResult;
+> -
+>  /*
+>   * Memory region callbacks
+>   */
+> -- 
+> 2.7.4
+> 
+> 

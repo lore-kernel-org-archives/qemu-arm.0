@@ -1,107 +1,82 @@
-Received: by 10.25.221.202 with SMTP id w71csp280863lfi;
-        Fri, 4 Aug 2017 21:47:44 -0700 (PDT)
-X-Received: by 10.237.53.83 with SMTP id b19mr5849837qte.312.1501908464594;
-        Fri, 04 Aug 2017 21:47:44 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1501908464; cv=none;
+Received: by 10.25.221.202 with SMTP id w71csp2761998lfi;
+        Mon, 7 Aug 2017 04:50:07 -0700 (PDT)
+X-Received: by 10.200.39.130 with SMTP id w2mr282961qtw.244.1502106607136;
+        Mon, 07 Aug 2017 04:50:07 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1502106607; cv=none;
         d=google.com; s=arc-20160816;
-        b=jdT2GZcI9stt51laIJA2C+w0RrwcsbKknToCNqNE3YjGXOFUN0i946HR2jvRWh33p3
-         w3zVCb1HoiifZAZrnPR5M0uizR8iiwI9DKna9MbZ8hDjhrDjqSJV6J/vYhrSr+5W7cKZ
-         tjV0LL/uPY0OfrfznOEvGi5u93vFN0QoowXwRF8Ok4dq7aLyrkCTtylbTdV+pmtt5QJA
-         NzHxik+9xW8JrNSN44h2bDVaUNrdrwqjW0t6x7I5LZiE5K7N686r5tmN7Kl2gfQxoRHe
-         8QTbVgTDY6lBaIAlscGaa73mKM8tWtSRvJEqlQA0LdmJShcREUAke7jT/q6BnDMhOEGc
-         PKJQ==
+        b=SbReD+PUHedJC862i0HZIE+XO3SgEhB851XcZSrIiekVexKE9Fb8FFrsmFc6xOlLIL
+         x6AHDhHHxyfrgCYp8FDAlo+MJv3ERYjGtmYWgX08SHL2zA4tuegojLuI9cBejvSUdqlF
+         QBxCGcGs/Y0wUoGdUwmpxBnJ+d+FX+rFk8zysaPecJwX7HZZ1G9lmOicRH6q2lEm+h+g
+         XneKf3T+q0HDPYj1xdorcb5CcUMXYNpPOyNDD5OJ5Asp/0mp8Bvwou27rhDX4Cn8Y2ns
+         qfrFIMwT2GO9/ouzWdizzxCetp8dgP7CryNZrhXtUUOi7V13oVTdTW3Kb6o7Z7RLzCxf
+         xKFA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
-         :content-disposition:mime-version:references:message-id:to:from:date
-         :dkim-signature:arc-authentication-results;
-        bh=tWDRJn1xzqJ2iiX7WaO5HK45MwkHVedTdss0s/17EKY=;
-        b=zNNwGernMrJMM3gwCVpVuoUd5yclF2vQA0ZGjFJH8Ro/oipPwqazxGxHKWUAwJ+f3j
-         jBdOgWSJCxnsfGCeDjp92RWUTJOUkspkB53QHaiLqHCZ2GA7YjrOl3MIHqozfuRsnFMT
-         rHkypY7/8ucWJ2aWQtTKw9znqD5lM/gMYi9zC4SpK6skypUKNIxzM4VtkfOfR9oqNbv8
-         tJFWsDVBLgGpUd+A+c/cc52e46QK+k2FNf3I3SrtzKSySm3vXKtbkKtf2UbpG7/HRGsq
-         +z3vPqUao6mA7Ug4LsBxTquzZGPmglk4BjIimXhcHG12yX6TDIXfombSKx/Ij8xL/VG7
-         ryZg==
+         :list-unsubscribe:list-id:precedence:subject:message-id:date:to:from
+         :dmarc-filter:arc-authentication-results;
+        bh=Oszs+YwnqFVuGL6+1g/IPeI/d5OqkYqyR17L1rRxewk=;
+        b=mNOpzwaOlUS7JthkwViGVkMbhF0LPTOIv4jwD+Dk98Mch56vfQZq2j6Q2fFZ+I/udE
+         XG0Wk2PhHBumMGxXMH5jYa1QixgB735hHz1BtRkHtbrHUN4EyzPwg7gGXQwERd6kyKBC
+         gC025blmHkNROF1IlXdXQdJjgiYNGQHU54kk7K03xocG1C2scqjIxz2SwU1FRwJYK7+Z
+         6SAWjIaiRKXy8buSBSBxnbOcb7WVytf7qeGwYRFaWVL5r5hzUhri/1y0g7NM+KPRTbUY
+         ibsY8ViomE0aW+i9Bq6ufrIsz7L3DvRRXOcRJY+4U4Rnvcn+aBw4e6iaO3kXMdC0ClF6
+         yiGw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.b=VxXbSShq;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id y4si2915748qkc.199.2017.08.04.21.47.43
+        by mx.google.com with ESMTPS id l129si7106746qkf.25.2017.08.07.04.50.06
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 04 Aug 2017 21:47:44 -0700 (PDT)
+        Mon, 07 Aug 2017 04:50:07 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.b=VxXbSShq;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:55354 helo=lists.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:36643 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ddr02-0003eV-01
-	for alex.bennee@linaro.org; Sat, 05 Aug 2017 00:47:42 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:39848)
+	id 1degXs-00023x-KY
+	for alex.bennee@linaro.org; Mon, 07 Aug 2017 07:50:04 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:39965)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <edgar.iglesias@gmail.com>) id 1ddqzr-0003eJ-P6
-	for qemu-arm@nongnu.org; Sat, 05 Aug 2017 00:47:32 -0400
+	(envelope-from <eric.auger@redhat.com>) id 1degXk-0001yJ-Gt
+	for qemu-arm@nongnu.org; Mon, 07 Aug 2017 07:50:01 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <edgar.iglesias@gmail.com>) id 1ddqzn-0007oQ-QC
-	for qemu-arm@nongnu.org; Sat, 05 Aug 2017 00:47:31 -0400
-Received: from mail-lf0-x244.google.com ([2a00:1450:4010:c07::244]:36819)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <edgar.iglesias@gmail.com>)
-	id 1ddqzn-0007nu-H9; Sat, 05 Aug 2017 00:47:27 -0400
-Received: by mail-lf0-x244.google.com with SMTP id t128so2168293lff.3;
-	Fri, 04 Aug 2017 21:47:27 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=date:from:to:cc:subject:message-id:references:mime-version
-	:content-disposition:in-reply-to:user-agent;
-	bh=tWDRJn1xzqJ2iiX7WaO5HK45MwkHVedTdss0s/17EKY=;
-	b=VxXbSShqCNwSxcM0sQcQXXZNBmPXryt6eaJEruEgmWf9nRKXPBcKo6QKmbf5M2oNyU
-	fAusOylaOeDv+ROUAPt0W86Azn7H5OAPUwatHKszfwW8xJ8KKRIlz80CBrwU3fWDf+4w
-	9EX21g0MdD7nr9xy6NjvhlcNdbqvxsekg6vVcYR9svuAftlFsBZF7NV/W11d3ORRpK+U
-	98VBeHihVkE1+grASCme1/cbGRDiSFbB8EFzyhLWtZONc31jPjyLjpbAB+f5drluCuVZ
-	TUFhdldXuQwCDfJSKH11BkJbDpal0wEyPqaHhlhMxIlNGiqvt9wOPaImsk9QTq0EHf6t
-	8LiQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:date:from:to:cc:subject:message-id:references
-	:mime-version:content-disposition:in-reply-to:user-agent;
-	bh=tWDRJn1xzqJ2iiX7WaO5HK45MwkHVedTdss0s/17EKY=;
-	b=V3CB7ORFl4/xMWLhzIquTWaAEOyg66kOG19GDlyFrC2xw1hF538DBRgJC2yv+hCLDR
-	IqjRsmgyp+bwtBKvbxO7ki75YbZzG8kIs5ANCEgpAdDpi3Poa17vdV65XS6MYuGC+LH4
-	iWBSwwRZdmRAU2Vgvk4BnrilxEq/nKH56Zmo9P9OHS1aX2h6Sns4iQcycS9uhdEP/5HY
-	zm0gcpgcES4CelTUpNQCq0xgQKMht0kFbZvkj9QAIhV0jIk1/hPhLLN5F1oaD135PzqU
-	JQqGZ4ITlYUl7HwV/vuopQGYSmqljpe4FN4CmA/PzBXRHXyVmZrgDL+YFjdepC5FHo42
-	dt6g==
-X-Gm-Message-State: AIVw111oJEBw4C89lxsSK0cMopfg2f1wz4UtAeSZdLFViyMXsNhTMosd
-	fIF86mUUUkb7YQ==
-X-Received: by 10.46.80.11 with SMTP id e11mr1600204ljb.123.1501908445927;
-	Fri, 04 Aug 2017 21:47:25 -0700 (PDT)
-Received: from gmail.com (81-231-233-234-no56.tbcn.telia.com. [81.231.233.234])
-	by smtp.gmail.com with ESMTPSA id z66sm888854lfd.3.2017.08.04.21.47.24
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Fri, 04 Aug 2017 21:47:25 -0700 (PDT)
-Date: Sat, 5 Aug 2017 06:47:24 +0200
-From: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
-To: Richard Henderson <rth@twiddle.net>
-Message-ID: <20170805044724.GH4859@toto>
-References: <1501692241-23310-1-git-send-email-peter.maydell@linaro.org>
-	<1501692241-23310-10-git-send-email-peter.maydell@linaro.org>
-	<20170803153800.GR4859@toto>
-	<854126f3-84da-087c-f35b-480165871e7f@twiddle.net>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <854126f3-84da-087c-f35b-480165871e7f@twiddle.net>
-User-Agent: Mutt/1.5.24 (2015-08-30)
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2a00:1450:4010:c07::244
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH 09/15] target/arm: Don't store M
- profile PRIMASK and FAULTMASK in daif
+	(envelope-from <eric.auger@redhat.com>) id 1degXf-0006gX-Ne
+	for qemu-arm@nongnu.org; Mon, 07 Aug 2017 07:49:56 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:55748)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <eric.auger@redhat.com>)
+	id 1degXf-0006gN-Hk; Mon, 07 Aug 2017 07:49:51 -0400
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
+	[10.5.11.15])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 76B2C80E6A;
+	Mon,  7 Aug 2017 11:49:50 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 76B2C80E6A
+Authentication-Results: ext-mx01.extmail.prod.ext.phx2.redhat.com;
+	dmarc=none (p=none dis=none) header.from=redhat.com
+Authentication-Results: ext-mx01.extmail.prod.ext.phx2.redhat.com;
+	spf=fail smtp.mailfrom=eric.auger@redhat.com
+Received: from AMD.redhat.com (ovpn-117-173.ams2.redhat.com [10.36.117.173])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 707F67E69D;
+	Mon,  7 Aug 2017 11:49:48 +0000 (UTC)
+From: Eric Auger <eric.auger@redhat.com>
+To: eric.auger@redhat.com, eric.auger.pro@gmail.com, qemu-devel@nongnu.org,
+	qemu-arm@nongnu.org, peter.maydell@linaro.org
+Date: Mon,  7 Aug 2017 11:49:41 +0000
+Message-Id: <1502106581-11714-1-git-send-email-eric.auger@redhat.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.25]);
+	Mon, 07 Aug 2017 11:49:50 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.132.183.28
+Subject: [Qemu-arm] [PATCH for-2.10] hw/arm/virt: Add 2.10 machine type
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -113,20 +88,60 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org, patches@linaro.org
+Cc: drjones@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: FeMH+/nBj+C5
+X-TUID: akXhxuxf4TNV
 
-On Thu, Aug 03, 2017 at 03:05:17PM -0700, Richard Henderson wrote:
-> On 08/03/2017 08:38 AM, Edgar E. Iglesias wrote:
-> >> +        uint32_t primask;
-> >> +        uint32_t faultmask;
-> > It seems like these could be booleans?
-> 
-> I was thinking the same thing until I read the v8m description as a 32-bit
-> register.  This makes qemu match the spec, which has value.
->
+Add virt-2.10 machine type.
 
-Ah, I didn't check the spec :-)
+Signed-off-by: Eric Auger <eric.auger@redhat.com>
+
+---
+---
+ hw/arm/virt.c | 19 +++++++++++++++++--
+ 1 file changed, 17 insertions(+), 2 deletions(-)
+
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index 31739d7..6b7a0fe 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -1639,7 +1639,7 @@ static void machvirt_machine_init(void)
+ }
+ type_init(machvirt_machine_init);
+ 
+-static void virt_2_9_instance_init(Object *obj)
++static void virt_2_10_instance_init(Object *obj)
+ {
+     VirtMachineState *vms = VIRT_MACHINE(obj);
+     VirtMachineClass *vmc = VIRT_MACHINE_GET_CLASS(vms);
+@@ -1699,10 +1699,25 @@ static void virt_2_9_instance_init(Object *obj)
+     vms->irqmap = a15irqmap;
+ }
+ 
++static void virt_machine_2_10_options(MachineClass *mc)
++{
++}
++DEFINE_VIRT_MACHINE_AS_LATEST(2, 10)
++
++#define VIRT_COMPAT_2_9 \
++    HW_COMPAT_2_9
++
++static void virt_2_9_instance_init(Object *obj)
++{
++    virt_2_10_instance_init(obj);
++}
++
+ static void virt_machine_2_9_options(MachineClass *mc)
+ {
++    virt_machine_2_10_options(mc);
++    SET_MACHINE_COMPAT(mc, VIRT_COMPAT_2_9);
+ }
+-DEFINE_VIRT_MACHINE_AS_LATEST(2, 9)
++DEFINE_VIRT_MACHINE(2, 9)
+ 
+ #define VIRT_COMPAT_2_8 \
+     HW_COMPAT_2_8
+-- 
+1.9.1
+

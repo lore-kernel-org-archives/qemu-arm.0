@@ -1,69 +1,110 @@
-Received: by 10.25.221.202 with SMTP id w71csp2956759lfi;
-        Mon, 7 Aug 2017 07:39:53 -0700 (PDT)
-X-Received: by 10.200.48.49 with SMTP id f46mr1192539qte.88.1502116793684;
-        Mon, 07 Aug 2017 07:39:53 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1502116793; cv=none;
+Received: by 10.25.221.202 with SMTP id w71csp3331711lfi;
+        Mon, 7 Aug 2017 13:59:23 -0700 (PDT)
+X-Received: by 10.55.79.77 with SMTP id d74mr2623604qkb.183.1502139563516;
+        Mon, 07 Aug 2017 13:59:23 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1502139563; cv=none;
         d=google.com; s=arc-20160816;
-        b=mEQnrvfexKZXtJDheXhx6JEIqdwPO6Mfrnl+TZXOYFelqsH014YlQxpLeagQHm3a4+
-         mg2Gm4qEL6xJ3o/9zY++VT6kEXjH2nioyIKWQeUPavt/derGPTjRb+tZJTVolp7dDAoa
-         /3YqbVFm5dZBG9ma0ZUuOYvbP3vxhVVGdY0XfsWtBbxVPcrkL7rdZDZFRebtqBrl7yKc
-         ttq/k6IeWvEBX4Qy/G2wZUDLP01oV7IYiFgdI7EpScUwAneRs90Ki2X0gJhWToPzEnYi
-         QqVIZZ9z+C8t7ha67Oolj6w30B8OdLcBvtXRPxR4HqPi9GXfVAyPzkZzVvKvA7xUUxcW
-         F19A==
+        b=Hb2pdvRQc86xtynYOTkmFNJz4iNBkhCGevqDtvCb9TRrblnH47snnHELpeMyoBKZwM
+         NRR0YzPwPvLDVQKtRb2tJwU7AM/w0sRiKcpe/S1bgPc3PkqlG99xR9E4u+WgjEczPhMQ
+         GFG4UldWs+oziZCpeMah2bFX6A9vbfk7S6slMiak0/iIVnsQ7nx1K5RI8Arj274yLLNx
+         iWyk8qJ+7GqghGRtJ9UWVeQNNKPxbcun5vLgmdcFAsnjZTPU0f5+Kraliz3jHIOQ6iWn
+         mq+JAyeuot0l8oeziK8hU29jhCJVJRIQhlB3gfZegcuRvEr2fFWtUQemeOO4iMW5MAkG
+         YEGw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:message-id:date:to:from
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:to:dkim-signature
          :arc-authentication-results;
-        bh=pcKyQxj0uJuNvGtxAFt9SiHbyAXI4abojkDZ2Jn95f0=;
-        b=EZqyeYwdpJIjecbbmqJoNrYFztKNHdaCbdE1rRhyqx16YMCwIplFI7CwqODNN2y1zy
-         WJAlJb3tJ/ESJDqu9H8Aj/ctEn0DA0N6c02zwTjZMHiD4D5jrmICS85Mi2Op+SB0ssbn
-         YSCcrL2H7gSAbag3ZlRkUZkS1q48n2g/gBMByMxI2hPSq2QYbGxV3FgbcvTKvdROahml
-         hjrwZJl1YmNxY7EI1spjYbGXCvXtuxXmCRFV8M4ASFrYH9o0fcf3fTotxE9EdYY/ZDcE
-         B4tEev1QcKx4klA3+U9fPpiPC1pdixgCjJAU8IZddywWMUwBfkJ8ObYXSs2IfcSagepa
-         a3GA==
+        bh=j/sUL0k2MWSH4SoGsDtT+wceoeOcecB2CSHMT4nDxaQ=;
+        b=VZfVdzyHT3lg9Ku1gr8OtEby1NWzs5GGWuLOJrUdsL6nUWEx+f38QdG3fVKvVu7tiM
+         Epc1T5eqp1v1y+W2NBGb6Eyd811yf1g4PA9pKDEnDYxbSNtQm7GO2HmxkCAKSoyvLdOJ
+         YAdnJAdSpaQhi9wrfNH65FGqn5pt6VMp1P0LvBeC1Zgmhm9kpVgckt2JiS4tjK5XCiqi
+         B00UfJ2cVnVcOoJsfqZ5wv2/WglV/H80LCleL/T/DAQmCwiNWAhUlkZBXsB+/hFwi/YD
+         2gSiwiz8B6NuY9zvbdlycOXlBTl+8bi9pBvoxAuj3k6QUslHIGBdMJKi/jnkt9mTUJTw
+         PhPw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dkim=fail header.i=@gmail.com header.b=OhL3UGF4;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id s35si7418982qtc.205.2017.08.07.07.39.53
+        by mx.google.com with ESMTPS id p41si558790qte.548.2017.08.07.13.59.22
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 07 Aug 2017 07:39:53 -0700 (PDT)
+        Mon, 07 Aug 2017 13:59:23 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:37614 helo=lists.gnu.org)
+       dkim=fail header.i=@gmail.com header.b=OhL3UGF4;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:39547 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1dejCB-00036u-4N
-	for alex.bennee@linaro.org; Mon, 07 Aug 2017 10:39:51 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:45074)
+	id 1dep7Q-0001y5-T8
+	for alex.bennee@linaro.org; Mon, 07 Aug 2017 16:59:20 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:58789)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1dejBv-0002hl-9C
-	for qemu-arm@nongnu.org; Mon, 07 Aug 2017 10:39:40 -0400
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1dep7I-0001uR-N2
+	for qemu-arm@nongnu.org; Mon, 07 Aug 2017 16:59:17 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1dejBq-0006T2-Br
-	for qemu-arm@nongnu.org; Mon, 07 Aug 2017 10:39:35 -0400
-Received: from orth.archaic.org.uk ([2001:8b0:1d0::2]:36782)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <pm215@archaic.org.uk>)
-	id 1dejBq-0006M3-5E; Mon, 07 Aug 2017 10:39:30 -0400
-Received: from pm215 by orth.archaic.org.uk with local (Exim 4.89)
-	(envelope-from <pm215@archaic.org.uk>)
-	id 1dejBb-0004Ol-He; Mon, 07 Aug 2017 15:39:15 +0100
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1dep7D-0006Oj-Se
+	for qemu-arm@nongnu.org; Mon, 07 Aug 2017 16:59:12 -0400
+Received: from mail-qt0-x244.google.com ([2607:f8b0:400d:c0d::244]:38894)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1dep73-0006GF-In; Mon, 07 Aug 2017 16:58:57 -0400
+Received: by mail-qt0-x244.google.com with SMTP id p3so1653805qtg.5;
+	Mon, 07 Aug 2017 13:58:57 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=sender:subject:to:cc:references:from:message-id:date:user-agent
+	:mime-version:in-reply-to:content-language:content-transfer-encoding;
+	bh=j/sUL0k2MWSH4SoGsDtT+wceoeOcecB2CSHMT4nDxaQ=;
+	b=OhL3UGF4v4986oCWcVdLz8o5X4Gp3ktbzJl8G9JAKfzqjtRQ2cLetpZIMJBDO4Z5EW
+	h2mJVXkaKfc4DY44DwL6nOLm+hGYLSYUIutZZVF+yyql5d+STgWAkUxzIigAO8hqPMcF
+	vyaOgkLdhmP28lOhGTOWf+rR+xsihLjBzUD2VLXU1BTfB/6cawHU1vMxBwfJMIqN0/dn
+	OhT9q3C0U9bf/jRWyEF9klYMSrlVwNngLUulyA1xLXccUUtlJGERveEbS/TGjheTSrom
+	gb7WMVkmHsUPZ3VMWiLYat0ZQ7wn/lip2+3EhX+tk+IL1ufnV0A/VMt9s7Sr61C9ycbZ
+	aiGA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+	:date:user-agent:mime-version:in-reply-to:content-language
+	:content-transfer-encoding;
+	bh=j/sUL0k2MWSH4SoGsDtT+wceoeOcecB2CSHMT4nDxaQ=;
+	b=V+2Sgth4mvv/fxgNzPL66/lkjOJdTpk46lNVZ2ztZMyKFMXd3BWJ4OacdAK9d5674Y
+	mD4HXxUEDtp3OTdic2HzkvEyj8U3w3C0bu+yktRpcgnQrSCmDsNbsNs1nbYbpvU4vDJD
+	BxM0fRvymOWTUexQcmI0FkHWp3m8PrMRcODCyIze1CutzqL2YzkG8tL22v4EA6/GIgYj
+	JoyMyitFMX10vU0QzITwEa5r39YtFOa+S1I6saylYGRCtuoTBxHnDPpA71peEm69AKzv
+	mh+JE8CUPFjYIQYIMr7dAGBZLz6Gie4SY/6uYsaxfS1dvVBQLEoO7nOurvrIYrTHIZP8
+	eeOQ==
+X-Gm-Message-State: AHYfb5iPT/HsaNfXEpcOuLO8Ae97CjXAWPk0bmQXDysciS7qGXE9U48U
+	2uKi9MbsSziEGQ==
+X-Received: by 10.200.3.195 with SMTP id z3mr2679325qtg.185.1502139536919;
+	Mon, 07 Aug 2017 13:58:56 -0700 (PDT)
+Received: from [192.168.1.10] ([138.117.48.223])
+	by smtp.gmail.com with ESMTPSA id
+	z30sm4175935qta.84.2017.08.07.13.58.54
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Mon, 07 Aug 2017 13:58:56 -0700 (PDT)
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Date: Mon,  7 Aug 2017 15:39:12 +0100
-Message-Id: <1502116754-18867-1-git-send-email-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.7.4
+References: <1502116754-18867-1-git-send-email-peter.maydell@linaro.org>
+	<1502116754-18867-3-git-send-email-peter.maydell@linaro.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Message-ID: <3913adf1-78be-e668-57d6-5f9ba2910962@amsat.org>
+Date: Mon, 7 Aug 2017 17:58:52 -0300
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.2.1
+MIME-Version: 1.0
+In-Reply-To: <1502116754-18867-3-git-send-email-peter.maydell@linaro.org>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2001:8b0:1d0::2
-Subject: [Qemu-arm] [PATCH 0/2] loader: Handle ELF files with overlapping
- zero-init data
+X-Received-From: 2607:f8b0:400d:c0d::244
+Subject: Re: [Qemu-arm] [PATCH 2/2] loader: Ignore zero-sized ELF segments
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -75,68 +116,60 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Hua Yanghao <huayanghao@gmail.com>, Richard Henderson <rth@twiddle.net>,
-	patches@linaro.org
+Cc: Hua Yanghao <huayanghao@gmail.com>, patches@linaro.org,
+	Richard Henderson <rth@twiddle.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: yskTSJPlPJNL
+X-TUID: +a2ieSTxdIGA
 
-For embedded systems, notably ARM, one common use of ELF file
-segments is that the 'physical addresses' represent load addresses
-and the 'virtual addresses' execution addresses, such that the load
-addresses are packed into ROM or flash, and the relocation and
-zero-initialization of data is done at runtime.  This means that the
-'memsz' in the segment header represents the runtime size of the
-segment, but the size that needs to be loaded is only the 'filesz'. 
-In particular, paddr+memsz may overlap with another segment to be
-loaded, as in this example:
+On 08/07/2017 11:39 AM, Peter Maydell wrote:
+> Some ELF files have program headers that specify segments that
+> are of zero size. Ignore them, rather than trying to create
+> zero-length ROM blobs for them, because the zero-length blob
+> can falsely trigger the overlapping-ROM-blobs check.
+> 
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 
-0x70000001 off    0x00007f68 vaddr 0x00008150 paddr 0x00008150 align 2**2
-         filesz 0x00000008 memsz 0x00000008 flags r--
-    LOAD off    0x000000f4 vaddr 0x00000000 paddr 0x00000000 align 2**2
-         filesz 0x00000124 memsz 0x00000124 flags r--
-    LOAD off    0x00000218 vaddr 0x00000400 paddr 0x00000400 align 2**3
-         filesz 0x00007d58 memsz 0x00007d58 flags r-x
-    LOAD off    0x00007f70 vaddr 0x20000140 paddr 0x00008158 align 2**3
-         filesz 0x00000a80 memsz 0x000022f8 flags rw-
-    LOAD off    0x000089f0 vaddr 0x20002438 paddr 0x00008bd8 align 2**0
-         filesz 0x00000000 memsz 0x00004000 flags rw-
-    LOAD off    0x000089f0 vaddr 0x20000000 paddr 0x20000000 align 2**0
-         filesz 0x00000000 memsz 0x00000140 flags rw-
+Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 
-where the segment at paddr 0x8158 has a memsz of 0x2258 and
-would overlap with the segment at paddr 0x8bd8 if QEMU's loader
-tried to honour it. (At runtime the segments will not overlap
-since their vaddrs are more widely spaced than their paddrs.)
-
-Currently if you try to load an ELF file like this with QEMU then
-it will fail with an error "rom: requested regions overlap",
-because we create a ROM image for each segment using the memsz
-as the size.
-
-This patchset adds support for ELF files using this scheme, by
-truncating the zero-initialized part of the segment if it would
-overlap another segment.  This will retain the existing loader
-behaviour for all ELF files we currently accept, and also accept ELF
-files which only need 'filesz' bytes to be loaded.
-
-Patch 2 deals with a vaguely related issue which is that if the ELF
-file specified a zero-length segment we would happily try to create
-a zero-length ROM blob, which could then falsely trigger the
-ROM-overlap check. (The zero-length case is more common after patch
-1 has done its truncation thing, but I have seen real-world ELF
-files with both filesz and memsz zero...)
-
-thanks
--- PMM
-
-Peter Maydell (2):
-  loader: Handle ELF files with overlapping zero-initialized data
-  loader: Ignore zero-sized ELF segments
-
- include/hw/elf_ops.h | 72 +++++++++++++++++++++++++++++++++++++++++++++++-----
- 1 file changed, 65 insertions(+), 7 deletions(-)
-
--- 
-2.7.4
-
+> ---
+>   include/hw/elf_ops.h | 24 +++++++++++++++++-------
+>   1 file changed, 17 insertions(+), 7 deletions(-)
+> 
+> diff --git a/include/hw/elf_ops.h b/include/hw/elf_ops.h
+> index 2e526d3..d192e7e 100644
+> --- a/include/hw/elf_ops.h
+> +++ b/include/hw/elf_ops.h
+> @@ -451,14 +451,24 @@ static int glue(load_elf, SZ)(const char *name, int fd,
+>                   *pentry = ehdr.e_entry - ph->p_vaddr + ph->p_paddr;
+>               }
+>   
+> -            if (load_rom) {
+> -                snprintf(label, sizeof(label), "phdr #%d: %s", i, name);
+> -
+> -                /* rom_add_elf_program() seize the ownership of 'data' */
+> -                rom_add_elf_program(label, data, file_size, mem_size, addr, as);
+> -            } else {
+> -                cpu_physical_memory_write(addr, data, file_size);
+> +            if (mem_size == 0) {
+> +                /* Some ELF files really do have segments of zero size;
+> +                 * just ignore them rather than trying to create empty
+> +                 * ROM blobs, because the zero-length blob can falsely
+> +                 * trigger the overlapping-ROM-blobs check.
+> +                 */
+>                   g_free(data);
+> +            } else {
+> +                if (load_rom) {
+> +                    snprintf(label, sizeof(label), "phdr #%d: %s", i, name);
+> +
+> +                    /* rom_add_elf_program() seize the ownership of 'data' */
+> +                    rom_add_elf_program(label, data, file_size, mem_size,
+> +                                        addr, as);
+> +                } else {
+> +                    cpu_physical_memory_write(addr, data, file_size);
+> +                    g_free(data);
+> +                }
+>               }
+>   
+>               total_size += mem_size;
+> 

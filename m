@@ -1,188 +1,164 @@
-Received: by 10.25.221.202 with SMTP id w71csp3452096lfi;
-        Mon, 7 Aug 2017 16:12:10 -0700 (PDT)
-X-Received: by 10.55.165.204 with SMTP id o195mr2860705qke.11.1502147529962;
-        Mon, 07 Aug 2017 16:12:09 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1502147529; cv=none;
+Received: by 10.25.221.202 with SMTP id w71csp3869367lfi;
+        Tue, 8 Aug 2017 01:19:47 -0700 (PDT)
+X-Received: by 10.159.62.147 with SMTP id x19mr1981777uai.179.1502180387894;
+        Tue, 08 Aug 2017 01:19:47 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1502180387; cv=none;
         d=google.com; s=arc-20160816;
-        b=CwoPGpnnDYB324JsWFkZenEauqSQNDntPs9xl4ASGXyZATCCRuPw4wU38fvbin3h5Z
-         Uo+G3ZjI1+e7cW7ZvpNXgwV64D+qkRT21UQlMw4syeGM7VNuXuL+R4QjYeE0n64ysD91
-         /exuM4Edts8f6+0TCRRYJKpp/ap8QslNJYa5ZpoVxfFBbB0EC21dNqfelj/sCJTUkYUL
-         Ju+0/6bQXNnFxMIMl1FB3+oo4YYvVuJzvstC6hOpb3iJlvLzgFIcNyM7q2AxLJ6frAt3
-         xl/vszS+GwY+zAyBM50SvZvvLkcFgWjkeGaHHdU5M9qVUEfR8TvF68nuuo0mGPmiPVEt
-         9HRw==
+        b=TRzP9n/xIwdU3Dl3TYHCNB3n8fb7opXZA085fFeGCHztZZ1SFrbbDnQY6L2d4Kthr5
+         3UYJdgRvdBWgn5zrfFApTugm7/7qf6+WuuQTn2Ibm4s4d/KpOR2h2dQ8x+fYZbXkiXU6
+         ydPL6sdrkI8fTpugUTKjRVTscNFI4IR4M2HfDaKGb90TFkKwoCG1j4VMQNd5ntRxrHyJ
+         Y+ziOcVPPAR70C2ZTPlbptHqofy5uWwtybN2c1H/8rcYy0Qer+CMSZfoHCM8fOnBPSXj
+         ovgS4AM6Ll3mvQG1iOk7A5ZCwY1NZt4geICpvT1X7Cw2FjlsJIMvySw++Xz8NXZJQZ7v
+         GtcQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
          :references:in-reply-to:mime-version:dkim-signature
          :arc-authentication-results;
-        bh=dfW3x2LbxjWtmPaAvRNvDNQzQkXnkpzc+CwRt6BGtQ4=;
-        b=W9l/yr3cb9bPsBFo9D6VZFHe+mc2ZDRY91NLGqfPH/a1zrk3HCBO19glay/zm3iTse
-         P+b30VOywcIn/wjBLM+mywJ4iBkNBK9iDWwIlFrPtTSAWRhVv8jUcy6FRr9uFb6qBs8y
-         dejJCIEA1yEU3p4CzOVOeDQ5cZ3N4vNdTaKt3pRV935NfFVxj+loKV/MdvAtGteZeU6p
-         YjLEejaosYo8k/S6ajs1n911/D4wAErFSEXXU37apfXbbhhTpGO2W7QZtLJ3DBA9XRjC
-         Fve8VpCyD88oqAuXju+WM/7NHPIADTS3dfyuozI3RWFkG8Lg7pIxRk1OJDYUU/yZZGWz
-         FeBg==
+        bh=lQt5pVMCUzGsSM2qvKfKeUJ5zvDnDWsRIMlNlidPyqw=;
+        b=TqjYAEyJ45mkZgj58skwePq+NnLxTpM3PwfVtCaF5auEtODTmACn31wD4L2sH/d03u
+         UI1tu+sOEQzNoD/fZHLvb/VMnOLASucBs8PJ09in4T44xvhKEIGiArjkbZkt3kxIvX3U
+         8vKhkD2VK1zPrPffW4irZKkEaR7d77N4vNw4QtC6ivA7d9QWOpDJ4OQ5uPDDdfo2dEzo
+         LDTEaEA4yalc0put9NeBtdvIZPD4E//sg3R1yNMHMUm+iNQn4VGJ85Pu4TpKR5flO6WI
+         IRghPXSkOYPXYgS/wd+zoLs4pEWltgO2webUk5a/ZLMeAicUpvqlrgPmSayAmsWXC3z2
+         5X2A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.b=Vog0d8rH;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=hlhTagLt;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id h1si8242658qtd.473.2017.08.07.16.12.09
+        by mx.google.com with ESMTPS id t207si435273vkb.227.2017.08.08.01.19.47
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 07 Aug 2017 16:12:09 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Tue, 08 Aug 2017 01:19:47 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.b=Vog0d8rH;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=hlhTagLt;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:39930 helo=lists.gnu.org)
+Received: from localhost ([::1]:41317 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1derBv-0002eY-6e
-	for alex.bennee@linaro.org; Mon, 07 Aug 2017 19:12:07 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:32966)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1dezjv-0000Hm-Br
+	for alex.bennee@linaro.org; Tue, 08 Aug 2017 04:19:47 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:58775)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alistair23@gmail.com>) id 1derBn-0002e4-6d
-	for qemu-arm@nongnu.org; Mon, 07 Aug 2017 19:12:04 -0400
+	(envelope-from <huayanghao@gmail.com>) id 1dezj3-0008Py-9R
+	for qemu-devel@nongnu.org; Tue, 08 Aug 2017 04:18:54 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <alistair23@gmail.com>) id 1derBi-0002zR-34
-	for qemu-arm@nongnu.org; Mon, 07 Aug 2017 19:11:59 -0400
-Received: from mail-wr0-x241.google.com ([2a00:1450:400c:c0c::241]:38862)
+	(envelope-from <huayanghao@gmail.com>) id 1dezj2-0003G5-4r
+	for qemu-devel@nongnu.org; Tue, 08 Aug 2017 04:18:53 -0400
+Received: from mail-yw0-x241.google.com ([2607:f8b0:4002:c05::241]:33914)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <alistair23@gmail.com>)
-	id 1derBh-0002y9-SE; Mon, 07 Aug 2017 19:11:54 -0400
-Received: by mail-wr0-x241.google.com with SMTP id g32so1262164wrd.5;
-	Mon, 07 Aug 2017 16:11:51 -0700 (PDT)
+	(Exim 4.71) (envelope-from <huayanghao@gmail.com>)
+	id 1deziz-0003Ct-Dr; Tue, 08 Aug 2017 04:18:49 -0400
+Received: by mail-yw0-x241.google.com with SMTP id t139so1896968ywg.1;
+	Tue, 08 Aug 2017 01:18:49 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
 	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=dfW3x2LbxjWtmPaAvRNvDNQzQkXnkpzc+CwRt6BGtQ4=;
-	b=Vog0d8rHm/R4Z2P8PaqEUCNqlpFaYmCAaUxUVEvxT+/ZYkwSLbs3JthmFJv4WZS9TE
-	hi54a74b/D7+D2aX+PKru8UaNiBiVG+bZHa6ZeMK6t4I7Yc8yNjaAztJIvxxWmPhwxa3
-	j1lzBoKcKLhYh6PUeR7CsNG73e+yhJQc1MeO6xicM8vCPUfu+/kpMXLHiYalNKADfB2+
-	mHMyUziCGHNHJmUAKX2NzAN1saySVKhRBMUsTuy+gOFPE6kug/8bZAl6/s7Z3tG54Nba
-	0HsvqE5huEq8ro/738F4/LiChiUMWaRtvr2RGlsLaHNCNq665lYHARUi8IwQC9AeKSkc
-	dNrw==
+	:cc; bh=lQt5pVMCUzGsSM2qvKfKeUJ5zvDnDWsRIMlNlidPyqw=;
+	b=hlhTagLtkHS4Nc59S2nZhyc8kMhp3kW2PWjF33+/PaSRCnsEQ/kQ9Rf00NX5HmMXmo
+	Nyq6y9E66KmeF3aEGMBpTyctbcDla7egQjQ9VUWmpWihnmvXxD7A0JiaBMZ9b4iTMbk4
+	tvGsY5THX2zd/YbeuI4dViG+gjcVSeTBftZAI+UJMAseqZ7zAiAGRBPPekjGPkQmz6oF
+	XboomWR2FtX1Ko7fKh4+AqCEUKRC7UUU98OIyiemgQIsfQFCyKg0cqVpYDRRnx7IRiSh
+	/acehTX08yIMdYnhN+9/zRln3pExR926Ts+r98eQ+cTTwKn6xJtQimf4OTkrD96q8LTA
+	hhVA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
 	:message-id:subject:to:cc;
-	bh=dfW3x2LbxjWtmPaAvRNvDNQzQkXnkpzc+CwRt6BGtQ4=;
-	b=j2hQxmIXAEHSkn2US2+Sg5n4NwP4CR34wc7E3VPRGHaorpqRz+9UZyCh+j74AwIJ4Q
-	c5ehXqaqH+uQoYjtzI0NRmHWtPHDjBY8eJukEcQGtQG9XVPG4GrrXQf+FMuXLwM7u85B
-	OEgAEvl7NkSUXwdJ3278hE6brQ0ZNJLC7OibAN1kGLnMWGI1KKn4HSeFquKFjfDAOqae
-	w9Q0O48qd6Pfx6F7ZRwHlPhnrS8UbNBRwiD0sugH2NiG4yJnaf4WzDsgm8IJEjcDQSkD
-	UPzjZuMwtmlDv3bU0/Oyx/NphVwO+bT9sCtdWDyNDscsEqiDb+pZljx0PgPpicYfZKyn
-	pZiQ==
-X-Gm-Message-State: AHYfb5g4cauRcoz37u/WM2lshWtqUabqKnjkXycx9G/u9AprLlZe7Myo
-	RRjsSPEbfi33lxfNgMnoi06e2EHU0w==
-X-Received: by 10.223.135.35 with SMTP id a32mr1460747wra.138.1502147510893;
-	Mon, 07 Aug 2017 16:11:50 -0700 (PDT)
+	bh=lQt5pVMCUzGsSM2qvKfKeUJ5zvDnDWsRIMlNlidPyqw=;
+	b=SCQ2rH+9qr/C6b7KUXn593hQODaNAjLjDU0KMXOCcaaVNyLol7Tkcb4J1Uo4GNdEEC
+	iK4KIxZ4+idsHu1hz4JbZ2zy/o/mcz4jONJn/kXhUq6FbFs8iXA6pN6KWEYKdAFmDk/m
+	HRxbloLS4o6vlwOkkqo00l6HnUZbFZF1MfqZPmGZSwUdAXkW+Jd9LsRRdC6dEkTscQCJ
+	EtaiOVj51TeUXqd911dD1iRQiM6zIjEVxjenOT59HgUmsxDfpMGJ2/nK0/jzVjCk04Nj
+	SYEYjrYD3A2qfGiaai8vEzsOagLeNoix3oRJ4iCxUIWh/e8c3JtSEOIMILc0uN0VuhSp
+	q5TA==
+X-Gm-Message-State: AHYfb5j7ssBSizMNnysG/SW8OKNvsY/w/WRNknbgkZvZCJyOh4Ac7rpy
+	29fE8pwRQWc0BDhRusNwa2A769Hleg==
+X-Received: by 10.129.74.7 with SMTP id x7mr2627395ywa.193.1502180328551; Tue,
+	08 Aug 2017 01:18:48 -0700 (PDT)
 MIME-Version: 1.0
-Received: by 10.28.191.130 with HTTP; Mon, 7 Aug 2017 16:11:20 -0700 (PDT)
-In-Reply-To: <20170805005949.GY4859@toto>
-References: <1501867249-1924-1-git-send-email-peter.maydell@linaro.org>
-	<1501867249-1924-2-git-send-email-peter.maydell@linaro.org>
-	<20170805005949.GY4859@toto>
-From: Alistair Francis <alistair23@gmail.com>
-Date: Mon, 7 Aug 2017 16:11:20 -0700
-Message-ID: <CAKmqyKNJO+f-=ca7RpdOEHaB322DJJA+XcCrTB43BNpO0LU9xA@mail.gmail.com>
-To: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
+Received: by 10.13.229.130 with HTTP; Tue, 8 Aug 2017 01:18:47 -0700 (PDT)
+In-Reply-To: <1502116754-18867-3-git-send-email-peter.maydell@linaro.org>
+References: <1502116754-18867-1-git-send-email-peter.maydell@linaro.org>
+	<1502116754-18867-3-git-send-email-peter.maydell@linaro.org>
+From: Hua Yanghao <huayanghao@gmail.com>
+Date: Tue, 8 Aug 2017 10:18:47 +0200
+Message-ID: <CAPTzt1DVmyLtvq6819Jmqm3p2AyXLV9F6rCRKCycBEYjQ1NYFg@mail.gmail.com>
+To: Peter Maydell <peter.maydell@linaro.org>
 Content-Type: text/plain; charset="UTF-8"
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2a00:1450:400c:c0c::241
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH 1/8] memory.h: Move MemTxResult
- type to memattrs.h
-X-BeenThere: qemu-arm@nongnu.org
+X-Received-From: 2607:f8b0:4002:c05::241
+Subject: Re: [Qemu-devel] [PATCH 2/2] loader: Ignore zero-sized ELF segments
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
-	Richard Henderson <rth@twiddle.net>, qemu-arm <qemu-arm@nongnu.org>,
-	"qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
-	Patch Tracking <patches@linaro.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: z9sXmeuP+U4X
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Richard Henderson <rth@twiddle.net>, qemu-arm@nongnu.org,
+	QEMU Developers <qemu-devel@nongnu.org>, patches@linaro.org
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: LfXRfU3nTcPh
 
-On Fri, Aug 4, 2017 at 5:59 PM, Edgar E. Iglesias
-<edgar.iglesias@gmail.com> wrote:
-> On Fri, Aug 04, 2017 at 06:20:42PM +0100, Peter Maydell wrote:
->> Move the MemTxResult type to memattrs.h. We're going to want to
->> use it in cpu/qom.h, which doesn't want to include all of
->> memory.h. In practice MemTxResult and MemTxAttrs are pretty
->> closely linked since both are used for the new-style
->> read_with_attrs and write_with_attrs callbacks, so memattrs.h
->> is a reasonable home for this rather than creating a whole
->> new header file for it.
->>
->> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+Tested-by: Hua Yanghao <huayanghao@gmail.com>
+
+On Mon, Aug 7, 2017 at 4:39 PM, Peter Maydell <peter.maydell@linaro.org> wrote:
+> Some ELF files have program headers that specify segments that
+> are of zero size. Ignore them, rather than trying to create
+> zero-length ROM blobs for them, because the zero-length blob
+> can falsely trigger the overlapping-ROM-blobs check.
 >
-> Reviewed-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
-
-Reviewed-by: Alistair Francis <alistair.francis@xilinx.com>
-
-Thanks,
-Alistair
-
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> ---
+>  include/hw/elf_ops.h | 24 +++++++++++++++++-------
+>  1 file changed, 17 insertions(+), 7 deletions(-)
 >
+> diff --git a/include/hw/elf_ops.h b/include/hw/elf_ops.h
+> index 2e526d3..d192e7e 100644
+> --- a/include/hw/elf_ops.h
+> +++ b/include/hw/elf_ops.h
+> @@ -451,14 +451,24 @@ static int glue(load_elf, SZ)(const char *name, int fd,
+>                  *pentry = ehdr.e_entry - ph->p_vaddr + ph->p_paddr;
+>              }
 >
->> ---
->>  include/exec/memattrs.h | 10 ++++++++++
->>  include/exec/memory.h   | 10 ----------
->>  2 files changed, 10 insertions(+), 10 deletions(-)
->>
->> diff --git a/include/exec/memattrs.h b/include/exec/memattrs.h
->> index e601061..d4a1642 100644
->> --- a/include/exec/memattrs.h
->> +++ b/include/exec/memattrs.h
->> @@ -46,4 +46,14 @@ typedef struct MemTxAttrs {
->>   */
->>  #define MEMTXATTRS_UNSPECIFIED ((MemTxAttrs) { .unspecified = 1 })
->>
->> +/* New-style MMIO accessors can indicate that the transaction failed.
->> + * A zero (MEMTX_OK) response means success; anything else is a failure
->> + * of some kind. The memory subsystem will bitwise-OR together results
->> + * if it is synthesizing an operation from multiple smaller accesses.
->> + */
->> +#define MEMTX_OK 0
->> +#define MEMTX_ERROR             (1U << 0) /* device returned an error */
->> +#define MEMTX_DECODE_ERROR      (1U << 1) /* nothing at that address */
->> +typedef uint32_t MemTxResult;
->> +
->>  #endif
->> diff --git a/include/exec/memory.h b/include/exec/memory.h
->> index 400dd44..1dcd312 100644
->> --- a/include/exec/memory.h
->> +++ b/include/exec/memory.h
->> @@ -112,16 +112,6 @@ static inline void iommu_notifier_init(IOMMUNotifier *n, IOMMUNotify fn,
->>      n->end = end;
->>  }
->>
->> -/* New-style MMIO accessors can indicate that the transaction failed.
->> - * A zero (MEMTX_OK) response means success; anything else is a failure
->> - * of some kind. The memory subsystem will bitwise-OR together results
->> - * if it is synthesizing an operation from multiple smaller accesses.
->> - */
->> -#define MEMTX_OK 0
->> -#define MEMTX_ERROR             (1U << 0) /* device returned an error */
->> -#define MEMTX_DECODE_ERROR      (1U << 1) /* nothing at that address */
->> -typedef uint32_t MemTxResult;
->> -
->>  /*
->>   * Memory region callbacks
->>   */
->> --
->> 2.7.4
->>
->>
+> -            if (load_rom) {
+> -                snprintf(label, sizeof(label), "phdr #%d: %s", i, name);
+> -
+> -                /* rom_add_elf_program() seize the ownership of 'data' */
+> -                rom_add_elf_program(label, data, file_size, mem_size, addr, as);
+> -            } else {
+> -                cpu_physical_memory_write(addr, data, file_size);
+> +            if (mem_size == 0) {
+> +                /* Some ELF files really do have segments of zero size;
+> +                 * just ignore them rather than trying to create empty
+> +                 * ROM blobs, because the zero-length blob can falsely
+> +                 * trigger the overlapping-ROM-blobs check.
+> +                 */
+>                  g_free(data);
+> +            } else {
+> +                if (load_rom) {
+> +                    snprintf(label, sizeof(label), "phdr #%d: %s", i, name);
+> +
+> +                    /* rom_add_elf_program() seize the ownership of 'data' */
+> +                    rom_add_elf_program(label, data, file_size, mem_size,
+> +                                        addr, as);
+> +                } else {
+> +                    cpu_physical_memory_write(addr, data, file_size);
+> +                    g_free(data);
+> +                }
+>              }
+>
+>              total_size += mem_size;
+> --
+> 2.7.4
 >

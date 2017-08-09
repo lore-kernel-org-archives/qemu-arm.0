@@ -1,89 +1,96 @@
-Received: by 10.25.221.202 with SMTP id w71csp4191289lfi;
-        Tue, 8 Aug 2017 06:23:21 -0700 (PDT)
-X-Received: by 10.159.57.201 with SMTP id p9mr2932501uag.209.1502198601159;
-        Tue, 08 Aug 2017 06:23:21 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1502198601; cv=none;
+Received: by 10.25.221.202 with SMTP id w71csp504102lfi;
+        Tue, 8 Aug 2017 23:29:20 -0700 (PDT)
+X-Received: by 10.55.165.137 with SMTP id o131mr8761206qke.226.1502260160446;
+        Tue, 08 Aug 2017 23:29:20 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1502260160; cv=none;
         d=google.com; s=arc-20160816;
-        b=QrzrAZjRa9gBq4oGl5WcGnOYmPR07KoPnpN+QERctw40xd69CDfOmhn7eFRkwgp2VQ
-         igxplto8mKn4fBB+Y9GbZF9IBfiQWrWvIJecA8cWgPCXVwV3fFlmWi7rHebwrZzrmRqy
-         X5Fidn3pyeqQOQj+dodDu04RFOIS4OlC9qmIp5RVOhST8UK/PBvg2oqq747kmdl/x/+z
-         D9NJ/4UXPgIQ/gRvDRl3M/6RdRhoov40QLzY0sypOL5ewtnX7JQl1Hu83OJMKGmLxYLO
-         szrGLvw9R/ucWjIg44/iVIkAH97MnS/WdTBFR1pc0vmqRTw7vlXNIzBINKONRd1MliD4
-         aXLw==
+        b=Z7Zgv3UMDBixw1G42TChiE5Z5GwX/X4rR39q4dNQxFW/Y144ME+2qakqngeRO0VrnQ
+         E7S71XtnUkESbmi1YVIHxrC1mXueHNaVVZ6ytLWrWy8XL6KDJXdOhHdVuEwlNmiZ+RWm
+         GGxaBQ+IeYHfpON679NxaDJeJy8HMdX4tXLXJuSGl5ykMxPZbN4H1oCJTe05Hc7D/AeC
+         F811uEb3gex4TRqi9JBWlR3vmlEan56OTvHVRE4yVNMUKtoMeba5Yhv9PYlzGz+a7VV8
+         69CzDP4CXHkPekmiEQZsZ6a02H1WNWDCg7P+osxhA6nxp0U67NRaOgPdyIAA09+hqsE6
+         Btng==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
-         :content-disposition:mime-version:references:message-id:to:from:date
-         :dmarc-filter:arc-authentication-results;
-        bh=nrOvrT0equAyLPMoyacP5cXqLxEcolLyeZyxJW/y8HE=;
-        b=odzs9BJLPa5Z6LP1Fq2wkIpft5XR/hK8DdLwEr3kFBOBmlEZukU1rSCIZvXJlu5ITx
-         VW09JCvg7g116RdLlkayJhnUpYXLKHYsYzUWpJJidYJ8pQBmrFj2q9ARNexIdg1LoHgL
-         YJQM4fOiH0K7LXdLtcjnXoWMthg+a7e6KIooXG3rYTK9qiciMTljUSnOumeWVPS4v/V2
-         2KGJUPSYJZocMwWLwQKKNVC/ze8sA49Bd6Cev8IoII+jIVMvORoUsWqHvC7WoeyqwYxv
-         ugcp+QN2i47PkDydLfFJMANrHEDThrQm0Yv/yH4qUl/KwlB3JfyTRPiAxkdwAk6D343U
-         HIgQ==
+         :list-unsubscribe:list-id:precedence:subject:message-id:date:to:from
+         :dkim-signature:dkim-signature:arc-authentication-results;
+        bh=nzpy4AFz5RRQ/dXQA1fozxAB2mDJVhhr2zzPzm7M/Xo=;
+        b=D8Mc8XlUZRcJWOUJFut9pWVd0o1lcX+ZCYYIpcN6MJf07PZKUz17sDm99efF4UHZp7
+         +h1c9MSoDDOX8dhPN0UQxJuWgXeeR7Yy/gBVeKNbXLwmWrmQ5O3RU013SvpB32ML6z7j
+         uQEcL7nb7WMFaqWyiPmGL7mk51LjLq3XxqsdLzeFYE74RlfeHyi5PJW9Yh/jPtpfchsG
+         GvWcVy3Z41jDCt3PJRLpQ1jqkVER7CzlmrSc6gM3gqjsXLGzElEo1J+ao0soJtHmY4EM
+         iIXw6IWFFRdrGTYIL2J+KoI2aDdQzFzj78PmLQYLx1TiNN3ISNX0wksZfTBEqb0xB1ib
+         o80g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dkim=fail header.i=@aj.id.au header.s=fm1 header.b=MPHAu8ds;
+       dkim=fail header.i=@messagingengine.com header.s=fm1 header.b=MZrnyTxC;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id 74si733980vke.166.2017.08.08.06.23.20
+        by mx.google.com with ESMTPS id u1si2445825qku.254.2017.08.08.23.29.19
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 08 Aug 2017 06:23:21 -0700 (PDT)
+        Tue, 08 Aug 2017 23:29:20 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:42584 helo=lists.gnu.org)
+       dkim=fail header.i=@aj.id.au header.s=fm1 header.b=MPHAu8ds;
+       dkim=fail header.i=@messagingengine.com header.s=fm1 header.b=MZrnyTxC;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:45872 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1df4Tg-00010p-Jw
-	for alex.bennee@linaro.org; Tue, 08 Aug 2017 09:23:20 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:55107)
+	id 1dfKUX-00063C-PI
+	for alex.bennee@linaro.org; Wed, 09 Aug 2017 02:29:17 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:37009)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <drjones@redhat.com>) id 1df4TY-00010J-Uf
-	for qemu-arm@nongnu.org; Tue, 08 Aug 2017 09:23:17 -0400
+	(envelope-from <andrew@aj.id.au>) id 1dfKUR-000630-N6
+	for qemu-arm@nongnu.org; Wed, 09 Aug 2017 02:29:13 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <drjones@redhat.com>) id 1df4TU-0000Fz-4M
-	for qemu-arm@nongnu.org; Tue, 08 Aug 2017 09:23:12 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:37026)
+	(envelope-from <andrew@aj.id.au>) id 1dfKUO-00070u-Jd
+	for qemu-arm@nongnu.org; Wed, 09 Aug 2017 02:29:11 -0400
+Received: from out1-smtp.messagingengine.com ([66.111.4.25]:46559)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <drjones@redhat.com>)
-	id 1df4TT-0000Ep-Lk; Tue, 08 Aug 2017 09:23:08 -0400
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
-	[10.5.11.12])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 3F476C057FA6;
-	Tue,  8 Aug 2017 13:23:04 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 3F476C057FA6
-Authentication-Results: ext-mx08.extmail.prod.ext.phx2.redhat.com;
-	dmarc=none (p=none dis=none) header.from=redhat.com
-Authentication-Results: ext-mx08.extmail.prod.ext.phx2.redhat.com;
-	spf=fail smtp.mailfrom=drjones@redhat.com
-Received: from kamzik.brq.redhat.com (unknown [10.43.2.160])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 07C6E95A6A;
-	Tue,  8 Aug 2017 13:23:02 +0000 (UTC)
-Date: Tue, 8 Aug 2017 15:23:00 +0200
-From: Andrew Jones <drjones@redhat.com>
-To: qemu-devel@nongnu.org, qemu-arm@nongnu.org
-Message-ID: <20170808132300.uyrrmgoij4qlwy52@kamzik.brq.redhat.com>
-References: <1500471597-2517-1-git-send-email-drjones@redhat.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <1500471597-2517-1-git-send-email-drjones@redhat.com>
-User-Agent: Mutt/1.6.0.1 (2016-04-01)
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.32]);
-	Tue, 08 Aug 2017 13:23:04 +0000 (UTC)
+	(Exim 4.71) (envelope-from <andrew@aj.id.au>)
+	id 1dfKUO-0006yy-6P; Wed, 09 Aug 2017 02:29:08 -0400
+Received: from compute4.internal (compute4.nyi.internal [10.202.2.44])
+	by mailout.nyi.internal (Postfix) with ESMTP id 593A421D8A;
+	Wed,  9 Aug 2017 02:29:04 -0400 (EDT)
+Received: from frontend1 ([10.202.2.160])
+	by compute4.internal (MEProxy); Wed, 09 Aug 2017 02:29:04 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=aj.id.au; h=cc
+	:date:from:message-id:subject:to:x-me-sender:x-me-sender
+	:x-sasl-enc:x-sasl-enc; s=fm1; bh=nzpy4AFz5RRQ/dXQA1fozxAB2mDJVh
+	hr2zzPzm7M/Xo=; b=MPHAu8dsYvjRXQ4uGHBbGcUMgqw17THOSP14TI9vt71/yP
+	bjZq/eA7WLNNvRq2lk3t5pf32bDnJrsL+U9IYGkX4GfYEENM1AGEtiwSxj5YZOEy
+	bvXZMAHkuzcURaxaDx7FBfVU5oK3haP7e3r7hQ6JOY8X+8KWcFAGP7dm8F5adxZE
+	43hBxM0msoOR3u+DGt0YAJNJViSk6eOUyo8XYxwv/plrVhi+bhoXY8BFVti/99bL
+	LCQL+wJhiWnICjrWhHqorih4PCJlRvIAbRxwSX8M1Sh7KKo/XgbkMn1FdPNueorh
+	t4+o3+rZyOw1T3l6DMRYZxWVdsg0ZDim4CMFf7fg==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+	messagingengine.com; h=cc:date:from:message-id:subject:to
+	:x-me-sender:x-me-sender:x-sasl-enc:x-sasl-enc; s=fm1; bh=nzpy4A
+	Fz5RRQ/dXQA1fozxAB2mDJVhhr2zzPzm7M/Xo=; b=MZrnyTxCMDs42zcBST8aUr
+	dxu0DhXV7oHZQc5wctzS5F+frdfLDDsnVgK47Oshe+em1zNVNu52RohmlUDxLGI7
+	dZXdgiY6p8jDzcHYI0bUuSwrMffZ6s8t1hpTikwar0oRnus7r2WgaC+WX8/HZlLU
+	YeV0K7TIWeKtyuDPJbIug2f1/cM0O+hEI185e8z9tfCpgYU8i0FGyH7rfmwYWeBc
+	rIOj2ZsUry9QX+Ka5xr1UM9QJgV0xCeUawYb8Dtf3Tu6Ex/WFp5l2iZKVt7PJ0+l
+	KrGXhMmfmWxxEFnmLURMyPmLoSaWjyZ4++Yacobev1Q1IFx21uzTSyafLrg1BDgA
+	==
+X-ME-Sender: <xms:sKuKWfWLSN2Yodx2hIbqNUuy0RX9w3eNA44oYD6KNPtBn3v8ZSfn_g>
+X-Sasl-enc: AkqOGMNDlu4TbWKUtakKVm0+GpfI7Nzz9d0jmpw2a3VG 1502260143
+Received: from keelia.au.ibm.com (unknown [203.0.153.9])
+	by mail.messagingengine.com (Postfix) with ESMTPA id 7A0DB7E73B;
+	Wed,  9 Aug 2017 02:29:00 -0400 (EDT)
+From: Andrew Jeffery <andrew@aj.id.au>
+To: qemu-arm@nongnu.org
+Date: Wed,  9 Aug 2017 15:58:25 +0930
+Message-Id: <20170809062828.3673-1-andrew@aj.id.au>
+X-Mailer: git-send-email 2.11.0
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v2 0/4] ARM: KVM: Enable
- in-kernel PMU with user space gic
+X-Received-From: 66.111.4.25
+Subject: [Qemu-arm] [PATCH for 2.11 v2 0/2] wdt_aspeed: Support reset width
+ patterns
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -95,43 +102,32 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, agraf@suse.de, cdall@linaro.org
+Cc: peter.maydell@linaro.org, ryan_chen@aspeedtech.com,
+	Andrew Jeffery <andrew@aj.id.au>, openbmc@lists.ozlabs.org,
+	f4bug@amsat.org, qemu-devel@nongnu.org, joel@jms.id.au, clg@kaod.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: t925tmjfukKU
+X-TUID: yEut5Vl1GFDr
 
+Hello,
 
-Peter,
+These two patches add support for the reset width configuration register in the
+Aspeed watchdog. Initially this was just one patch[1], but I've reworked it as
+two to explicitly support the varying capabilities between Aspeed SoC versions.
 
-ping?
+Andrew
 
-Thanks,
-drew
+[1] http://patchwork.ozlabs.org/patch/796039/
 
+Andrew Jeffery (2):
+  watchdog: wdt_aspeed: Add support for the reset width register
+  aspeed_soc: Propagate silicon-rev to watchdog
 
-On Wed, Jul 19, 2017 at 09:39:53AM -0400, Andrew Jones wrote:
-> v2:
->  - renamed the kvm pmu 'create' function to 'set_irq' after doing the
->    create/set-irq split
->  - added another patch that improves the error handling of the kvm pmu
->    init and set-irq calls
-> 
-> Andrew Jones (4):
->   hw/arm/virt: add pmu interrupt state
->   target/arm/kvm: pmu: split init and set-irq stages
->   hw/arm/virt: allow pmu instantiation with userspace irqchip
->   target/arm/kvm: pmu: improve error handling
-> 
->  hw/arm/virt.c        | 12 ++++++++--
->  target/arm/cpu.c     |  2 ++
->  target/arm/cpu.h     |  2 ++
->  target/arm/kvm.c     |  6 ++++-
->  target/arm/kvm32.c   |  7 +++++-
->  target/arm/kvm64.c   | 63 ++++++++++++++++++++++++++++++----------------------
->  target/arm/kvm_arm.h |  9 ++++----
->  7 files changed, 65 insertions(+), 36 deletions(-)
-> 
-> -- 
-> 1.8.3.1
-> 
-> 
+ hw/arm/aspeed_soc.c              |  2 +
+ hw/watchdog/wdt_aspeed.c         | 93 +++++++++++++++++++++++++++++++++++-----
+ include/hw/watchdog/wdt_aspeed.h |  2 +
+ 3 files changed, 86 insertions(+), 11 deletions(-)
+
+-- 
+2.11.0
+

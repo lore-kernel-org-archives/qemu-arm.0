@@ -1,96 +1,100 @@
-Received: by 10.25.221.202 with SMTP id w71csp504102lfi;
-        Tue, 8 Aug 2017 23:29:20 -0700 (PDT)
-X-Received: by 10.55.165.137 with SMTP id o131mr8761206qke.226.1502260160446;
-        Tue, 08 Aug 2017 23:29:20 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1502260160; cv=none;
+Received: by 10.25.221.202 with SMTP id w71csp504132lfi;
+        Tue, 8 Aug 2017 23:29:23 -0700 (PDT)
+X-Received: by 10.200.33.232 with SMTP id 37mr9770210qtz.11.1502260163698;
+        Tue, 08 Aug 2017 23:29:23 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1502260163; cv=none;
         d=google.com; s=arc-20160816;
-        b=Z7Zgv3UMDBixw1G42TChiE5Z5GwX/X4rR39q4dNQxFW/Y144ME+2qakqngeRO0VrnQ
-         E7S71XtnUkESbmi1YVIHxrC1mXueHNaVVZ6ytLWrWy8XL6KDJXdOhHdVuEwlNmiZ+RWm
-         GGxaBQ+IeYHfpON679NxaDJeJy8HMdX4tXLXJuSGl5ykMxPZbN4H1oCJTe05Hc7D/AeC
-         F811uEb3gex4TRqi9JBWlR3vmlEan56OTvHVRE4yVNMUKtoMeba5Yhv9PYlzGz+a7VV8
-         69CzDP4CXHkPekmiEQZsZ6a02H1WNWDCg7P+osxhA6nxp0U67NRaOgPdyIAA09+hqsE6
-         Btng==
+        b=p0gUK4aPnKw38i4UTCV4VWf3EjkA7F/RBysUKX93flGMdZRek7r7jzVtSMA4d/ALsu
+         cnpD0ZfT2SDRsEH+IVZ+skc01dnE2HpKEhBBT2ahAx7hV19Q8T/3cHYb/LttgsrADi3u
+         NjFHlriqaj2FsJE20HiL7F+Y+jLLKO3fvnlqwRqW1UvW/1/CgOpXOGN5J2Ue3RSHOovA
+         ZJo0UuOkBl2ddkTTqyl0E3ctP3YQmIa4QS4COPcTutOeOWtpwPVykNr03Hebf8Q3JGh5
+         +rATcGtw2I/r0+/RgCPQiqNcQ5fy6aHUTONGq/Y9ndWcQnh3hH0rf6BujpfrZ8Lpr3qW
+         iy4g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:message-id:date:to:from
-         :dkim-signature:dkim-signature:arc-authentication-results;
-        bh=nzpy4AFz5RRQ/dXQA1fozxAB2mDJVhhr2zzPzm7M/Xo=;
-        b=D8Mc8XlUZRcJWOUJFut9pWVd0o1lcX+ZCYYIpcN6MJf07PZKUz17sDm99efF4UHZp7
-         +h1c9MSoDDOX8dhPN0UQxJuWgXeeR7Yy/gBVeKNbXLwmWrmQ5O3RU013SvpB32ML6z7j
-         uQEcL7nb7WMFaqWyiPmGL7mk51LjLq3XxqsdLzeFYE74RlfeHyi5PJW9Yh/jPtpfchsG
-         GvWcVy3Z41jDCt3PJRLpQ1jqkVER7CzlmrSc6gM3gqjsXLGzElEo1J+ao0soJtHmY4EM
-         iIXw6IWFFRdrGTYIL2J+KoI2aDdQzFzj78PmLQYLx1TiNN3ISNX0wksZfTBEqb0xB1ib
-         o80g==
+         :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
+         :message-id:date:to:from:dkim-signature:dkim-signature
+         :arc-authentication-results;
+        bh=GNDR9vAWMtBkJSHNWfHfTP0dAWDNQ4A24GlGMzS/HTE=;
+        b=a77oi1qcjiw8JAgSxCKtYfYj4nOmrYmNm6qoBfulbxEWVs/C49x4BSlMORSrfIhrB7
+         8qCBWVAg2cbjLRJVRmiTHz4jmQixCtFfogJfH4nza9CKkHMyVEYZdZcHaoJ/w+SB73+U
+         NG6Aj4tVfD9adt4fl64CKTmE6yYmOqboxdgwqQL1YT1OWNOaIR7H+3otolgzSY4p9So0
+         +Kdk3gCKqQ0xnbXLaR4OdK/Wpt7n2xgquMcqWOgp/ybVUHK4ngtZ8nPP6oKdQ5jH3dQG
+         kg41rNlC9E5duTPAEZ0lHPTqe2VlewdV5Xz3tuNa/uPQyTW3ulibY5KUH7eiUiLEOBEx
+         OgOQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@aj.id.au header.s=fm1 header.b=MPHAu8ds;
-       dkim=fail header.i=@messagingengine.com header.s=fm1 header.b=MZrnyTxC;
+       dkim=fail header.i=@aj.id.au header.s=fm1 header.b=Jm6SYB99;
+       dkim=fail header.i=@messagingengine.com header.s=fm1 header.b=dqGLmE/3;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id u1si2445825qku.254.2017.08.08.23.29.19
+        by mx.google.com with ESMTPS id a1si2409332qkb.286.2017.08.08.23.29.23
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 08 Aug 2017 23:29:20 -0700 (PDT)
+        Tue, 08 Aug 2017 23:29:23 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@aj.id.au header.s=fm1 header.b=MPHAu8ds;
-       dkim=fail header.i=@messagingengine.com header.s=fm1 header.b=MZrnyTxC;
+       dkim=fail header.i=@aj.id.au header.s=fm1 header.b=Jm6SYB99;
+       dkim=fail header.i=@messagingengine.com header.s=fm1 header.b=dqGLmE/3;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:45872 helo=lists.gnu.org)
+Received: from localhost ([::1]:45873 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1dfKUX-00063C-PI
-	for alex.bennee@linaro.org; Wed, 09 Aug 2017 02:29:17 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:37009)
+	id 1dfKUb-00064Y-1g
+	for alex.bennee@linaro.org; Wed, 09 Aug 2017 02:29:21 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:37010)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <andrew@aj.id.au>) id 1dfKUR-000630-N6
+	(envelope-from <andrew@aj.id.au>) id 1dfKUR-000631-N5
 	for qemu-arm@nongnu.org; Wed, 09 Aug 2017 02:29:13 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <andrew@aj.id.au>) id 1dfKUO-00070u-Jd
+	(envelope-from <andrew@aj.id.au>) id 1dfKUO-00071P-KZ
 	for qemu-arm@nongnu.org; Wed, 09 Aug 2017 02:29:11 -0400
-Received: from out1-smtp.messagingengine.com ([66.111.4.25]:46559)
+Received: from out1-smtp.messagingengine.com ([66.111.4.25]:46323)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <andrew@aj.id.au>)
-	id 1dfKUO-0006yy-6P; Wed, 09 Aug 2017 02:29:08 -0400
+	id 1dfKUO-00070a-FG; Wed, 09 Aug 2017 02:29:08 -0400
 Received: from compute4.internal (compute4.nyi.internal [10.202.2.44])
-	by mailout.nyi.internal (Postfix) with ESMTP id 593A421D8A;
-	Wed,  9 Aug 2017 02:29:04 -0400 (EDT)
+	by mailout.nyi.internal (Postfix) with ESMTP id 2DBA921D8E;
+	Wed,  9 Aug 2017 02:29:08 -0400 (EDT)
 Received: from frontend1 ([10.202.2.160])
-	by compute4.internal (MEProxy); Wed, 09 Aug 2017 02:29:04 -0400
+	by compute4.internal (MEProxy); Wed, 09 Aug 2017 02:29:08 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=aj.id.au; h=cc
-	:date:from:message-id:subject:to:x-me-sender:x-me-sender
-	:x-sasl-enc:x-sasl-enc; s=fm1; bh=nzpy4AFz5RRQ/dXQA1fozxAB2mDJVh
-	hr2zzPzm7M/Xo=; b=MPHAu8dsYvjRXQ4uGHBbGcUMgqw17THOSP14TI9vt71/yP
-	bjZq/eA7WLNNvRq2lk3t5pf32bDnJrsL+U9IYGkX4GfYEENM1AGEtiwSxj5YZOEy
-	bvXZMAHkuzcURaxaDx7FBfVU5oK3haP7e3r7hQ6JOY8X+8KWcFAGP7dm8F5adxZE
-	43hBxM0msoOR3u+DGt0YAJNJViSk6eOUyo8XYxwv/plrVhi+bhoXY8BFVti/99bL
-	LCQL+wJhiWnICjrWhHqorih4PCJlRvIAbRxwSX8M1Sh7KKo/XgbkMn1FdPNueorh
-	t4+o3+rZyOw1T3l6DMRYZxWVdsg0ZDim4CMFf7fg==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
-	messagingengine.com; h=cc:date:from:message-id:subject:to
-	:x-me-sender:x-me-sender:x-sasl-enc:x-sasl-enc; s=fm1; bh=nzpy4A
-	Fz5RRQ/dXQA1fozxAB2mDJVhhr2zzPzm7M/Xo=; b=MZrnyTxCMDs42zcBST8aUr
-	dxu0DhXV7oHZQc5wctzS5F+frdfLDDsnVgK47Oshe+em1zNVNu52RohmlUDxLGI7
-	dZXdgiY6p8jDzcHYI0bUuSwrMffZ6s8t1hpTikwar0oRnus7r2WgaC+WX8/HZlLU
-	YeV0K7TIWeKtyuDPJbIug2f1/cM0O+hEI185e8z9tfCpgYU8i0FGyH7rfmwYWeBc
-	rIOj2ZsUry9QX+Ka5xr1UM9QJgV0xCeUawYb8Dtf3Tu6Ex/WFp5l2iZKVt7PJ0+l
-	KrGXhMmfmWxxEFnmLURMyPmLoSaWjyZ4++Yacobev1Q1IFx21uzTSyafLrg1BDgA
+	:date:from:in-reply-to:message-id:references:subject:to
+	:x-me-sender:x-me-sender:x-sasl-enc:x-sasl-enc; s=fm1; bh=GNDR9v
+	AWMtBkJSHNWfHfTP0dAWDNQ4A24GlGMzS/HTE=; b=Jm6SYB99QtOLhJTExMaFwj
+	YT+KsU5B9Rj+ZLf8lVrDvAPF59UNM4SnXYc2Fu60C2sohnT39D3iz7HiKWUVBnuZ
+	mpSP6uIGquIyNrWxpLdDI0uUTQvFisWhCJJGLoIwImGHuF1UjB62BAzAmsGhTF1g
+	Fth5MzzEVZUk3LecahNW2goX7kwvnLg7FK/EdGyJ0fR8SQ2Za7fQASp3TcjuFxYt
+	W/PGR8ThnkGelYxXaerc9Hs6G4mFMr30xVRAinEzLBwhTWgvkzVxNvtj+EomkqLv
+	nb2llqBEhiqRW+SdA88c0GsD8E0kmPPcQG+dLgn4z0OfwusEIuMMSJ6DCEcIRcAQ
 	==
-X-ME-Sender: <xms:sKuKWfWLSN2Yodx2hIbqNUuy0RX9w3eNA44oYD6KNPtBn3v8ZSfn_g>
-X-Sasl-enc: AkqOGMNDlu4TbWKUtakKVm0+GpfI7Nzz9d0jmpw2a3VG 1502260143
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+	messagingengine.com; h=cc:date:from:in-reply-to:message-id
+	:references:subject:to:x-me-sender:x-me-sender:x-sasl-enc
+	:x-sasl-enc; s=fm1; bh=GNDR9vAWMtBkJSHNWfHfTP0dAWDNQ4A24GlGMzS/H
+	TE=; b=dqGLmE/3WW2auXadagzWBkO+erkgutMijd9/oxliUv/kcURIggiTefLXJ
+	Xg9cOcJFCx8Iz7lGyEvvKeVC0vsmK+kQ7eAdD6Op8G+hL+LaaXAFekJuMmGQN/3+
+	UiinTm4nMfkKatxBxSkBtEaiEIZsttxm/d3/lwGnAyDAMQGxxqSLjkaUCGWOuu6p
+	kzBQjG003H/8nwsFOrAf3RZMjt74EQ+b54azneAfjTheZhWNEyq874v18Ocv8mlr
+	qYtxdJlDegN7W1jBE4mbU9zFlC9MQ2qasHEnIhJz9TA13I/RMJ8t4hz+2vtnPswl
+	h+cyc95W8e/jn8ivKMkm61s805WdQ==
+X-ME-Sender: <xms:tKuKWfyzKbRVjFHDzuH6DlSj9U_LwVgwSO-muUHYdEaKMrquw5W3PQ>
+X-Sasl-enc: ZU1C114svhnd1gywXlZDwGaDCqnAj4irrggN3aF2tm9D 1502260147
 Received: from keelia.au.ibm.com (unknown [203.0.153.9])
-	by mail.messagingengine.com (Postfix) with ESMTPA id 7A0DB7E73B;
-	Wed,  9 Aug 2017 02:29:00 -0400 (EDT)
+	by mail.messagingengine.com (Postfix) with ESMTPA id BE5147E4EA;
+	Wed,  9 Aug 2017 02:29:04 -0400 (EDT)
 From: Andrew Jeffery <andrew@aj.id.au>
 To: qemu-arm@nongnu.org
-Date: Wed,  9 Aug 2017 15:58:25 +0930
-Message-Id: <20170809062828.3673-1-andrew@aj.id.au>
+Date: Wed,  9 Aug 2017 15:58:26 +0930
+Message-Id: <20170809062828.3673-2-andrew@aj.id.au>
 X-Mailer: git-send-email 2.11.0
+In-Reply-To: <20170809062828.3673-1-andrew@aj.id.au>
+References: <20170809062828.3673-1-andrew@aj.id.au>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 66.111.4.25
-Subject: [Qemu-arm] [PATCH for 2.11 v2 0/2] wdt_aspeed: Support reset width
- patterns
+Subject: [Qemu-arm] [PATCH for 2.11 v2 1/2] watchdog: wdt_aspeed: Add
+ support for the reset width register
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -107,27 +111,207 @@ Cc: peter.maydell@linaro.org, ryan_chen@aspeedtech.com,
 	f4bug@amsat.org, qemu-devel@nongnu.org, joel@jms.id.au, clg@kaod.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: yEut5Vl1GFDr
+X-TUID: Zf2DPGK/lt57
 
-Hello,
+The reset width register controls how the pulse on the SoC's WDTRST{1,2}
+pins behaves. A pulse is emitted if the external reset bit is set in
+WDT_CTRL. On the AST2500 WDT_RESET_WIDTH can consume magic bit patterns
+to configure push-pull/open-drain and active-high/active-low
+behaviours and thus needs some special handling in the write path.
 
-These two patches add support for the reset width configuration register in the
-Aspeed watchdog. Initially this was just one patch[1], but I've reworked it as
-two to explicitly support the varying capabilities between Aspeed SoC versions.
+As some of the capabilities depend on the SoC version a silicon-rev
+property is introduced, which is used to guard version-specific
+behaviour.
 
-Andrew
-
-[1] http://patchwork.ozlabs.org/patch/796039/
-
-Andrew Jeffery (2):
-  watchdog: wdt_aspeed: Add support for the reset width register
-  aspeed_soc: Propagate silicon-rev to watchdog
-
- hw/arm/aspeed_soc.c              |  2 +
+Signed-off-by: Andrew Jeffery <andrew@aj.id.au>
+---
  hw/watchdog/wdt_aspeed.c         | 93 +++++++++++++++++++++++++++++++++++-----
  include/hw/watchdog/wdt_aspeed.h |  2 +
- 3 files changed, 86 insertions(+), 11 deletions(-)
+ 2 files changed, 84 insertions(+), 11 deletions(-)
 
+diff --git a/hw/watchdog/wdt_aspeed.c b/hw/watchdog/wdt_aspeed.c
+index 8bbe579b6b66..22bce364d7b5 100644
+--- a/hw/watchdog/wdt_aspeed.c
++++ b/hw/watchdog/wdt_aspeed.c
+@@ -8,16 +8,19 @@
+  */
+ 
+ #include "qemu/osdep.h"
++
++#include "qapi/error.h"
+ #include "qemu/log.h"
++#include "qemu/timer.h"
+ #include "sysemu/watchdog.h"
++#include "hw/misc/aspeed_scu.h"
+ #include "hw/sysbus.h"
+-#include "qemu/timer.h"
+ #include "hw/watchdog/wdt_aspeed.h"
+ 
+-#define WDT_STATUS              (0x00 / 4)
+-#define WDT_RELOAD_VALUE        (0x04 / 4)
+-#define WDT_RESTART             (0x08 / 4)
+-#define WDT_CTRL                (0x0C / 4)
++#define WDT_STATUS                      (0x00 / 4)
++#define WDT_RELOAD_VALUE                (0x04 / 4)
++#define WDT_RESTART                     (0x08 / 4)
++#define WDT_CTRL                        (0x0C / 4)
+ #define   WDT_CTRL_RESET_MODE_SOC       (0x00 << 5)
+ #define   WDT_CTRL_RESET_MODE_FULL_CHIP (0x01 << 5)
+ #define   WDT_CTRL_1MHZ_CLK             BIT(4)
+@@ -25,18 +28,41 @@
+ #define   WDT_CTRL_WDT_INTR             BIT(2)
+ #define   WDT_CTRL_RESET_SYSTEM         BIT(1)
+ #define   WDT_CTRL_ENABLE               BIT(0)
++#define WDT_RESET_WIDTH                 (0x18 / 4)
++#define   WDT_RESET_WIDTH_ACTIVE_HIGH   BIT(31)
++#define     WDT_POLARITY_MASK           (0xFF << 24)
++#define     WDT_ACTIVE_HIGH_MAGIC       (0xA5 << 24)
++#define     WDT_ACTIVE_LOW_MAGIC        (0x5A << 24)
++#define   WDT_RESET_WIDTH_PUSH_PULL     BIT(30)
++#define     WDT_DRIVE_TYPE_MASK         (0xFF << 24)
++#define     WDT_PUSH_PULL_MAGIC         (0xA8 << 24)
++#define     WDT_OPEN_DRAIN_MAGIC        (0x8A << 24)
+ 
+-#define WDT_TIMEOUT_STATUS      (0x10 / 4)
+-#define WDT_TIMEOUT_CLEAR       (0x14 / 4)
+-#define WDT_RESET_WDITH         (0x18 / 4)
++#define WDT_TIMEOUT_STATUS              (0x10 / 4)
++#define WDT_TIMEOUT_CLEAR               (0x14 / 4)
+ 
+-#define WDT_RESTART_MAGIC       0x4755
++#define WDT_RESTART_MAGIC               0x4755
+ 
+ static bool aspeed_wdt_is_enabled(const AspeedWDTState *s)
+ {
+     return s->regs[WDT_CTRL] & WDT_CTRL_ENABLE;
+ }
+ 
++static bool is_ast2500(const AspeedWDTState *s)
++{
++    switch (s->silicon_rev) {
++    case AST2500_A0_SILICON_REV:
++    case AST2500_A1_SILICON_REV:
++        return true;
++    case AST2400_A0_SILICON_REV:
++    case AST2400_A1_SILICON_REV:
++    default:
++        break;
++    }
++
++    return false;
++}
++
+ static uint64_t aspeed_wdt_read(void *opaque, hwaddr offset, unsigned size)
+ {
+     AspeedWDTState *s = ASPEED_WDT(opaque);
+@@ -55,9 +81,10 @@ static uint64_t aspeed_wdt_read(void *opaque, hwaddr offset, unsigned size)
+         return 0;
+     case WDT_CTRL:
+         return s->regs[WDT_CTRL];
++    case WDT_RESET_WIDTH:
++        return s->regs[WDT_RESET_WIDTH];
+     case WDT_TIMEOUT_STATUS:
+     case WDT_TIMEOUT_CLEAR:
+-    case WDT_RESET_WDITH:
+         qemu_log_mask(LOG_UNIMP,
+                       "%s: uninmplemented read at offset 0x%" HWADDR_PRIx "\n",
+                       __func__, offset);
+@@ -119,9 +146,27 @@ static void aspeed_wdt_write(void *opaque, hwaddr offset, uint64_t data,
+             timer_del(s->timer);
+         }
+         break;
++    case WDT_RESET_WIDTH:
++    {
++        uint32_t property = data & WDT_POLARITY_MASK;
++
++        if (property && is_ast2500(s)) {
++            if (property == WDT_ACTIVE_HIGH_MAGIC) {
++                s->regs[WDT_RESET_WIDTH] |= WDT_RESET_WIDTH_ACTIVE_HIGH;
++            } else if (property == WDT_ACTIVE_LOW_MAGIC) {
++                s->regs[WDT_RESET_WIDTH] &= ~WDT_RESET_WIDTH_ACTIVE_HIGH;
++            } else if (property == WDT_PUSH_PULL_MAGIC) {
++                s->regs[WDT_RESET_WIDTH] |= WDT_RESET_WIDTH_PUSH_PULL;
++            } else if (property == WDT_OPEN_DRAIN_MAGIC) {
++                s->regs[WDT_RESET_WIDTH] &= ~WDT_RESET_WIDTH_PUSH_PULL;
++            }
++        }
++        s->regs[WDT_RESET_WIDTH] &= ~s->ext_pulse_width_mask;
++        s->regs[WDT_RESET_WIDTH] |= data & s->ext_pulse_width_mask;
++        break;
++    }
+     case WDT_TIMEOUT_STATUS:
+     case WDT_TIMEOUT_CLEAR:
+-    case WDT_RESET_WDITH:
+         qemu_log_mask(LOG_UNIMP,
+                       "%s: uninmplemented write at offset 0x%" HWADDR_PRIx "\n",
+                       __func__, offset);
+@@ -167,6 +212,7 @@ static void aspeed_wdt_reset(DeviceState *dev)
+     s->regs[WDT_RELOAD_VALUE] = 0x03EF1480;
+     s->regs[WDT_RESTART] = 0;
+     s->regs[WDT_CTRL] = 0;
++    s->regs[WDT_RESET_WIDTH] = 0xFF;
+ 
+     timer_del(s->timer);
+ }
+@@ -187,6 +233,25 @@ static void aspeed_wdt_realize(DeviceState *dev, Error **errp)
+     SysBusDevice *sbd = SYS_BUS_DEVICE(dev);
+     AspeedWDTState *s = ASPEED_WDT(dev);
+ 
++    if (!is_supported_silicon_rev(s->silicon_rev)) {
++        error_setg(errp, "Unknown silicon revision: 0x%" PRIx32,
++                s->silicon_rev);
++        return;
++    }
++
++    switch (s->silicon_rev) {
++    case AST2400_A0_SILICON_REV:
++    case AST2400_A1_SILICON_REV:
++        s->ext_pulse_width_mask = 0xff;
++        break;
++    case AST2500_A0_SILICON_REV:
++    case AST2500_A1_SILICON_REV:
++        s->ext_pulse_width_mask = 0xfffff;
++        break;
++    default:
++        g_assert_not_reached();
++    }
++
+     s->timer = timer_new_ns(QEMU_CLOCK_VIRTUAL, aspeed_wdt_timer_expired, dev);
+ 
+     /* FIXME: This setting should be derived from the SCU hw strapping
+@@ -199,6 +264,11 @@ static void aspeed_wdt_realize(DeviceState *dev, Error **errp)
+     sysbus_init_mmio(sbd, &s->iomem);
+ }
+ 
++static Property aspeed_wdt_properties[] = {
++    DEFINE_PROP_UINT32("silicon-rev", AspeedWDTState, silicon_rev, 0),
++    DEFINE_PROP_END_OF_LIST(),
++};
++
+ static void aspeed_wdt_class_init(ObjectClass *klass, void *data)
+ {
+     DeviceClass *dc = DEVICE_CLASS(klass);
+@@ -207,6 +277,7 @@ static void aspeed_wdt_class_init(ObjectClass *klass, void *data)
+     dc->reset = aspeed_wdt_reset;
+     set_bit(DEVICE_CATEGORY_MISC, dc->categories);
+     dc->vmsd = &vmstate_aspeed_wdt;
++    dc->props = aspeed_wdt_properties;
+ }
+ 
+ static const TypeInfo aspeed_wdt_info = {
+diff --git a/include/hw/watchdog/wdt_aspeed.h b/include/hw/watchdog/wdt_aspeed.h
+index 080c2231222e..7de3e5c224fb 100644
+--- a/include/hw/watchdog/wdt_aspeed.h
++++ b/include/hw/watchdog/wdt_aspeed.h
+@@ -27,6 +27,8 @@ typedef struct AspeedWDTState {
+     uint32_t regs[ASPEED_WDT_REGS_MAX];
+ 
+     uint32_t pclk_freq;
++    uint32_t silicon_rev;
++    uint32_t ext_pulse_width_mask;
+ } AspeedWDTState;
+ 
+ #endif  /* ASPEED_WDT_H */
 -- 
 2.11.0
 

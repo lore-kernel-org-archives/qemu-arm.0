@@ -1,529 +1,503 @@
-Received: by 10.25.221.202 with SMTP id w71csp973703lfi;
-        Fri, 11 Aug 2017 07:41:32 -0700 (PDT)
-X-Received: by 10.200.45.82 with SMTP id o18mr20538633qta.303.1502462492643;
-        Fri, 11 Aug 2017 07:41:32 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1502462492; cv=none;
+Received: by 10.25.221.202 with SMTP id w71csp1058873lfi;
+        Fri, 11 Aug 2017 08:51:02 -0700 (PDT)
+X-Received: by 10.237.39.3 with SMTP id n3mr22390225qtd.149.1502466661912;
+        Fri, 11 Aug 2017 08:51:01 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1502466661; cv=none;
         d=google.com; s=arc-20160816;
-        b=U0dBk/ftvsmOHoApJvq229GRVNb6qTeV2Y5vB3c+NZun7KKo8iL8+psWb6BY+DR/fv
-         y9E0GIp+Ikp7yRm6t+72B0g52tLriDHVChEce3rWbL7UuTGhawu0F4aDOWfD9+dfeSk2
-         dndY7npo9yTs+eFXWEHuCC5q4xuBG7kiLGSqaVVxIiVBN7yZ5DEFVdG45lF+FXwvugtX
-         TZ49/CX2thQNkVaYiipyTHqS7dEtNpkamV3HHjrBZVoppg/PBSBEJObBNnyEVYYeZuD+
-         qeWfPARoxat6pvQJUREzVFE1LRYn82TIvnVOxFmtIgwBoaclUMSTZ5+8onkW1yc2Xt/v
-         4vEg==
+        b=txumS7FmYKAMHzqCtYEdMi9fjqmASJxPP+ZSdUtM/CKzl3ScafGQ13uuKvkN4GcBS9
+         L0W7DmZ9gseTNM/FkvDiGCcoTOrwna02VmuIu4jktcfWlCrktaQiW7K+SC0GQbqTN7e1
+         TfVzqU6KMUWbSKquxAgXt6oSbDq2OViFAuaTSzjbu8WYhgDJSbKrKXYRon7J0SOqH8Bo
+         +a8/NXyC418gkBAbKc7wQgFYKrjpd/zShfC3Bte8ZZ9NxwyJSuXcl2E8714B4SyNfoJn
+         WRy5HQXGXVPyGeq5/DhclfiDdpoO5acOPyv9O2I4ElNQv4esBRZuxQlZKhNOjqH1wqZt
+         +rZQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:mime-version
-         :content-transfer-encoding:spamdiagnosticmetadata
-         :spamdiagnosticoutput:content-language:accept-language:references
-         :message-id:date:thread-index:thread-topic:to:from:dkim-signature
-         :arc-authentication-results;
-        bh=f1i107R/g2ROdEHH/qkgxAIGheUtomq20qrRdYQ7pqk=;
-        b=PHtDxKvvfi6PpmwYWRBYNXJpkVeN0YIOVcMLp++1MXsI/lLRXojACLsQmsyTxTRVRX
-         PAJlbElFgRYKeNzdT55AiNXQTiKoxvq1x3Gq7L7HlBqNs+FStYA1im3+SApUgmUQ8Rmo
-         axEMjPUCpcCk2fn2iXNf/G5ykH0afOMu03hA75fk7XeLhE50HYeT5U+Ktjk4SlbOG3PN
-         pehaQ2iE+BkWKZdBXXOaOGlmpvcW4ZF5cW8wx2PT7gvdxvqdJKxcJ3RiQa5iXgUKMFGG
-         GVPd/qQLVxMIuBNeenQ5eestHEhc6D0T+3y6hKFMKbz08aXInCZ1rhxiEXdq8C9lht/i
-         EkbA==
+         :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
+         :content-disposition:mime-version:references:message-id:to:from:date
+         :dkim-signature:arc-authentication-results;
+        bh=6p31CwMiM5b3/3Kc+xuE0n2qdSCV2uX8Wr9ylM0v0xY=;
+        b=Jd3s6SrcSNaPQr4J19elxnMuvVYXJ2HSgdYjEfXLr45Cyh2Cv2q0wtv3a7k7a77zXh
+         H9iCsJKdjx6eQ0euWQhzDW6ttAhX9L/E8t7g4NEtZMJA4c+qOvw0BjPU7CjYVOWtlFP0
+         WWTy2aVAWUtTEGRg17EWgaIF3GEg+G7gGFUg5bJDRKVOjn8pOJ16wsHybnZlZ2crJHi4
+         2CrSLIAD492FJC0Cc2QV9KmwfWQj7i57cmay0SqoxArhDbeB0JRtMVRgC74K5wUcBekB
+         WXUHlkEoB+dkXOyIuZSw8Lw2gs+7+yLS2s+ZZy2g/0bXNv+ExU2lMzcuJwHQCTs+37ju
+         ptcA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@nxp.com header.s=selector1 header.b=DLxCP999;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nxp.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=lJDBzcba;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id m123si886602qkc.218.2017.08.11.07.41.31
+        by mx.google.com with ESMTPS id c33si1019417qtb.549.2017.08.11.08.51.01
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 11 Aug 2017 07:41:32 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Fri, 11 Aug 2017 08:51:01 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@nxp.com header.s=selector1 header.b=DLxCP999;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nxp.com
-Received: from localhost ([::1]:45098 helo=lists.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=lJDBzcba;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:51587 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1dgB7x-0006zL-Kz
-	for alex.bennee@linaro.org; Fri, 11 Aug 2017 10:41:29 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:37431)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1dgCDD-0006Rh-4b
+	for alex.bennee@linaro.org; Fri, 11 Aug 2017 11:50:59 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:60779)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <diana.craciun@nxp.com>) id 1dgB2G-0002RF-4e
-	for qemu-devel@nongnu.org; Fri, 11 Aug 2017 10:35:38 -0400
+	(envelope-from <edgar.iglesias@gmail.com>) id 1dgCD3-0006Nz-MN
+	for qemu-arm@nongnu.org; Fri, 11 Aug 2017 11:50:52 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <diana.craciun@nxp.com>) id 1dgB2C-0007DA-Nh
-	for qemu-devel@nongnu.org; Fri, 11 Aug 2017 10:35:36 -0400
-Received: from mail-db5eur01on0072.outbound.protection.outlook.com
-	([104.47.2.72]:1184
-	helo=EUR01-DB5-obe.outbound.protection.outlook.com)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <diana.craciun@nxp.com>)
-	id 1dgB2C-0007C3-7g; Fri, 11 Aug 2017 10:35:32 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=nxp.com; s=selector1; 
-	h=From:Date:Subject:Message-ID:Content-Type:MIME-Version;
-	bh=f1i107R/g2ROdEHH/qkgxAIGheUtomq20qrRdYQ7pqk=;
-	b=DLxCP999D/YqHSKr6cKt0akP3i+ZA03q5bZ609pdWma9JQ3rA1uE8ATH7Q1BWlMmrxX9ZsLenAeJ7pmeQj13AeUpoTGzyMrmt/k0zBcfc6cpno4Uin4eSWqdyEzfLPcsI5afTJqksgpgticJMs3PBLtYy5BhUTWtcwNO/j8OOeY=
-Received: from AM3PR04MB0616.eurprd04.prod.outlook.com (10.255.133.15) by
-	AM3PR04MB0806.eurprd04.prod.outlook.com (10.242.253.144) with Microsoft
-	SMTP Server (version=TLS1_2,
-	cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384_P256) id
-	15.1.1341.17; Fri, 11 Aug 2017 14:35:29 +0000
-Received: from AM3PR04MB0616.eurprd04.prod.outlook.com
-	([fe80::840e:32fc:ecf4:2ffb]) by
-	AM3PR04MB0616.eurprd04.prod.outlook.com
-	([fe80::840e:32fc:ecf4:2ffb%14]) with mapi id 15.01.1341.019;
-	Fri, 11 Aug 2017 14:35:28 +0000
-From: Diana Madalina Craciun <diana.craciun@nxp.com>
-To: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, Auger Eric
-	<eric.auger@redhat.com>
-Thread-Topic: [Qemu-devel] [PATCH v2 2/2] Add a unique ID in the virt machine
-	to be used as device ID
-Thread-Index: AQHS07WQhQaf1stp7kus9qldhP1WKg==
-Date: Fri, 11 Aug 2017 14:35:28 +0000
-Message-ID: <AM3PR04MB0616508E7E868475F181AC18FF890@AM3PR04MB0616.eurprd04.prod.outlook.com>
+	(envelope-from <edgar.iglesias@gmail.com>) id 1dgCCz-0007TR-94
+	for qemu-arm@nongnu.org; Fri, 11 Aug 2017 11:50:49 -0400
+Received: from mail-lf0-x241.google.com ([2a00:1450:4010:c07::241]:38575)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <edgar.iglesias@gmail.com>)
+	id 1dgCCl-0007PN-H8; Fri, 11 Aug 2017 11:50:31 -0400
+Received: by mail-lf0-x241.google.com with SMTP id y15so2554676lfd.5;
+	Fri, 11 Aug 2017 08:50:31 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=date:from:to:cc:subject:message-id:references:mime-version
+	:content-disposition:in-reply-to:user-agent;
+	bh=6p31CwMiM5b3/3Kc+xuE0n2qdSCV2uX8Wr9ylM0v0xY=;
+	b=lJDBzcba9W4DQ3Ke8paEo08gCW/r2J2/jy2wjqnAByDl+qSdCXycurQIQKPWWMUV7b
+	y0Pj7NKaEJYjCZ082AlfRq7mV7TTulYV8N7i5NpEyzdsWV4vCusYnYJb8wrp/XtinFPx
+	zObiZboSv+MMuqpqRGiq4F/EcHHiMDAUJTRWvqFU9f1h1hS8FFoBrOvAtuXjJA+HbZkb
+	fGCODHwsBQAqyp3TVAchVeq304zY9GijdcyRN8kqs6Yh7ahKbPxzAZIlcYO0yAF+30vu
+	O4lEK0uz4lhkukYL5aSns8OAghslcJo4+Ok3jToj4EoQEC5RS+oAr9PBfJrImPrwcaAE
+	A2vA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+	:mime-version:content-disposition:in-reply-to:user-agent;
+	bh=6p31CwMiM5b3/3Kc+xuE0n2qdSCV2uX8Wr9ylM0v0xY=;
+	b=snJw/SlFKsxSDnR8G5yze3V2QN+ViXTPBGk5fiRH6F0myF4psZxIFnsI6wgeMMixqf
+	ZJWmQH5Tch5umQEOfYuCm26L3RcpsiJegcropAjXrNycCfMRrQ4mDZpmHC+5RHNdhMDA
+	CVQAtIk135/bC5Gas05hcR+QhYC93cGYkuTct9ZvHL1MwL2z+imYhNdwlYBmkXvllAG1
+	+hv/CdIkLReWMrgEd/oPtITPSg+Tev45iKwOZjAnLVyLu4pN8PhulaWw5OZ8cwvllcOt
+	onNZVE7pd7LgLekvHbGMF8vxQGMIltJAXSi9e/foMyR8YT07UlH1a48Ying3obpHdc0z
+	MsBA==
+X-Gm-Message-State: AHYfb5gTgsNT5tu+9TAxD5VMbaNNapF+f3sHhMrjqX6WnVSGcXbrea7g
+	zDVxt24gqMBAXQ==
+X-Received: by 10.25.190.206 with SMTP id o197mr5859384lff.208.1502466629397; 
+	Fri, 11 Aug 2017 08:50:29 -0700 (PDT)
+Received: from gmail.com (81-231-233-234-no56.tbcn.telia.com. [81.231.233.234])
+	by smtp.gmail.com with ESMTPSA id g38sm196646lfi.79.2017.08.11.08.50.27
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Fri, 11 Aug 2017 08:50:28 -0700 (PDT)
+Date: Fri, 11 Aug 2017 17:50:27 +0200
+From: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
+To: Diana Madalina Craciun <diana.craciun@nxp.com>
+Message-ID: <20170811155027.GO4859@toto>
 References: <1495537965-4187-1-git-send-email-diana.craciun@nxp.com>
 	<1495537965-4187-3-git-send-email-diana.craciun@nxp.com>
 	<b58ccac8-06f0-d02d-5f65-c2a8d47c229b@redhat.com>
 	<20170731151602.GU4859@toto>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: spf=none (sender IP is )
-	smtp.mailfrom=diana.craciun@nxp.com; 
-x-originating-ip: [192.88.146.1]
-x-ms-publictraffictype: Email
-x-microsoft-exchange-diagnostics: 1; AM3PR04MB0806;
-	6:vaWM7WE7bZyXx8T/XEu1Fo1/4JnAcjsIUZbZeSSHIAFdWmn9cRgteqEkW9jTG7JjeUedoYZSx+G7orN2IcZzybtnM81K0DJ08VvUUO/x+ykDDT6IiHZv2H2JoGYAimEjCF+6/5rRIPkzjI42FLbt/XWJueGIdEJF1Sjgg0HiJuXwl5bTG39MHDj9IaDIuWqLUNhcihQRgRjPhGsJPwEvw5oB7qUgAaAgLnJ4g5/9BWgqmnm/HLYC1dkURTxpGJYROk96t4fhtdYCMCXe7x9m1FbncHhgvxQq7pyOjN6LXizN+S7A/YnecQIG8Mg4UCEHCH/2MWjP8kk1zLdVUw6IrA==;
-	5:SvXxMOU/R35bJ2qrBWXsUXQLIAmY+NOWDJO/kDDYSmwEXsdINQ9IngZFo+1ORx7wDzkKLbJ1n380dx7IQalZ+hK7eWEQOxwi5kckfuPOF4wEjKJ98IxZdYJwUWEGdY3PufBrCV5DZgR8zLDbyHwGEQ==;
-	24:/HuGbmej6wGx4TAs/ALuz7i2L1UXk1eau00NJVWHUsudnkNP5uNHi96HXCf7z31zT3/WDxJZ1BHOliIx04tVXq8rnSVx4H2kd3IG4BCDq7c=;
-	7:sciA9/bcFMwSWlu3RG9Z9ypc41OWJfkK5jkq3reeU1gU5NJgD3XH46PCaDKdgXNyJGoEXndcMbDWwp1kMg/5hiKdeyvrdWsXKVvVNCMczWnoCiRMD2aKdDi+D2qFgQ/6WMdVm7Zw5sCR4CTaF+YK4Oj5R9r0uNWk6uuUbue9wsojX7vjH7BPzHjogi5KC3YDKkARdEIuJxJiTGFtSid+TYAEpAEX0GCghur4pQLflyk=
-x-ms-exchange-antispam-srfa-diagnostics: SSOS;SSOR;
-x-forefront-antispam-report: SFV:SKI; SCL:-1; SFV:NSPM;
-	SFS:(10009020)(6009001)(39860400002)(199003)(51444003)(189002)(377454003)(24454002)(2900100001)(54906002)(14454004)(99286003)(105586002)(55016002)(101416001)(106356001)(6436002)(50986999)(76176999)(54356999)(9686003)(2906002)(5250100002)(93886004)(6506006)(7736002)(229853002)(189998001)(305945005)(66066001)(81156014)(8676002)(81166006)(8936002)(551934003)(7696004)(3660700001)(33656002)(39060400002)(478600001)(102836003)(3846002)(5660300001)(6116002)(4326008)(97736004)(53546010)(6246003)(25786009)(3280700002)(53936002)(68736007)(74316002)(86362001)(575784001);
-	DIR:OUT; SFP:1101; SCL:1; SRVR:AM3PR04MB0806;
-	H:AM3PR04MB0616.eurprd04.prod.outlook.com; FPR:; SPF:None;
-	PTR:InfoNoRecords; A:1; MX:1; LANG:en; 
-x-ms-office365-filtering-correlation-id: 2ca667f4-c91f-4056-e500-08d4e0c6366c
-x-ms-office365-filtering-ht: Tenant
-x-microsoft-antispam: UriScan:; BCL:0; PCL:0;
-	RULEID:(300000500095)(300135000095)(300000501095)(300135300095)(300000502095)(300135100095)(22001)(2017030254152)(300000503095)(300135400095)(48565401081)(2017052603031)(201703131423075)(201703031133081)(201702281549075)(300000504095)(300135200095)(300000505095)(300135600095)(300000506095)(300135500095);
-	SRVR:AM3PR04MB0806; 
-x-ms-traffictypediagnostic: AM3PR04MB0806:
-x-exchange-antispam-report-test: UriScan:(185117386973197);
-x-microsoft-antispam-prvs: <AM3PR04MB080699832D38EC290F9119ACFF890@AM3PR04MB0806.eurprd04.prod.outlook.com>
-x-exchange-antispam-report-cfa-test: BCL:0; PCL:0;
-	RULEID:(100000700101)(100105000095)(100000701101)(100105300095)(100000702101)(100105100095)(6040450)(601004)(2401047)(5005006)(8121501046)(3002001)(10201501046)(100000703101)(100105400095)(93006095)(93001095)(6055026)(6041248)(201703131423075)(201702281528075)(201703061421075)(201703061406153)(20161123555025)(20161123562025)(20161123564025)(20161123558100)(20161123560025)(6072148)(201708071742011)(100000704101)(100105200095)(100000705101)(100105500095);
-	SRVR:AM3PR04MB0806; BCL:0; PCL:0;
-	RULEID:(100000800101)(100110000095)(100000801101)(100110300095)(100000802101)(100110100095)(100000803101)(100110400095)(100000804101)(100110200095)(100000805101)(100110500095);
-	SRVR:AM3PR04MB0806; 
-x-forefront-prvs: 03965EFC76
-received-spf: None (protection.outlook.com: nxp.com does not designate
-	permitted sender hosts)
-spamdiagnosticoutput: 1:99
-spamdiagnosticmetadata: NSPM
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: quoted-printable
+	<AM3PR04MB0616508E7E868475F181AC18FF890@AM3PR04MB0616.eurprd04.prod.outlook.com>
 MIME-Version: 1.0
-X-OriginatorOrg: nxp.com
-X-MS-Exchange-CrossTenant-originalarrivaltime: 11 Aug 2017 14:35:28.5753 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 686ea1d3-bc2b-4c6f-a92c-d99c5c301635
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: AM3PR04MB0806
-X-detected-operating-system: by eggs.gnu.org: Windows 7 or 8 [fuzzy]
-X-Received-From: 104.47.2.72
-Subject: Re: [Qemu-devel] [PATCH v2 2/2] Add a unique ID in the virt machine
- to be used as device ID
-X-BeenThere: qemu-devel@nongnu.org
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <AM3PR04MB0616508E7E868475F181AC18FF890@AM3PR04MB0616.eurprd04.prod.outlook.com>
+User-Agent: Mutt/1.5.24 (2015-08-30)
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2a00:1450:4010:c07::241
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v2 2/2] Add a unique ID in the
+ virt machine to be used as device ID
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: "mst@redhat.com" <mst@redhat.com>,
 	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
-	Mike Caraman <mike.caraman@nxp.com>,
+	Auger Eric <eric.auger@redhat.com>, Mike Caraman <mike.caraman@nxp.com>,
 	"qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
-	"marcel@redhat.com" <marcel@redhat.com>, Bharat
-	Bhushan <bharat.bhushan@nxp.com>,
+	"marcel@redhat.com" <marcel@redhat.com>,
+	Bharat Bhushan <bharat.bhushan@nxp.com>,
 	"christoffer.dall@linaro.org" <christoffer.dall@linaro.org>,
 	Laurentiu Tudor <laurentiu.tudor@nxp.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: D+jnbBu+zycJ
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: yrxIWg8qeYYp
 
-Hi Edgar,=0A=
-=0A=
-On 07/31/2017 06:16 PM, Edgar E. Iglesias wrote:=0A=
-> On Wed, Jul 26, 2017 at 02:22:28PM +0200, Auger Eric wrote:=0A=
->> Hi Diana,=0A=
->> On 23/05/2017 13:12, Diana Craciun wrote:=0A=
->>> Device IDs are required by the ARM GICv3 ITS for IRQ remapping.=0A=
->>> Currently, for PCI devices, the requester ID was used as device=0A=
->>> ID in the virt machine. If the system has multiple masters that=0A=
->> if the system has multiple root complex?=0A=
->>> use MSIs a unique ID accross the platform is needed.=0A=
->> across=0A=
->>> A static scheme is used and each master is allocated a range of IDs=0A=
->>> with the formula:=0A=
->>> DeviceID =3D zero_extend( RequesterID[15:0] ) + 0x10000*Constant (as=0A=
->>> recommended by SBSA).=0A=
->>>=0A=
->>> This ID will be configured in the machine creation and if not configure=
-d=0A=
->>> the PCI requester ID will be used insteead.=0A=
->> instead=0A=
->>> Signed-off-by: Diana Craciun <diana.craciun@nxp.com>=0A=
->>> ---=0A=
->>>  hw/arm/virt.c              | 26 ++++++++++++++++++++++++++=0A=
->>>  hw/pci-host/gpex.c         |  6 ++++++=0A=
->>>  hw/pci/msi.c               |  2 +-=0A=
->>>  hw/pci/pci.c               | 25 +++++++++++++++++++++++++=0A=
->>>  include/hw/arm/virt.h      |  1 +=0A=
->>>  include/hw/pci-host/gpex.h |  2 ++=0A=
->>>  include/hw/pci/pci.h       |  8 ++++++++=0A=
->>>  kvm-all.c                  |  4 ++--=0A=
->>>  8 files changed, 71 insertions(+), 3 deletions(-)=0A=
->>>=0A=
->>> diff --git a/hw/arm/virt.c b/hw/arm/virt.c=0A=
->>> index 5f62a03..a969694 100644=0A=
->>> --- a/hw/arm/virt.c=0A=
->>> +++ b/hw/arm/virt.c=0A=
->>> @@ -110,6 +110,8 @@ static ARMPlatformBusSystemParams platform_bus_para=
-ms;=0A=
->>>  #define RAMLIMIT_GB 255=0A=
->>>  #define RAMLIMIT_BYTES (RAMLIMIT_GB * 1024ULL * 1024 * 1024)=0A=
->>>  =0A=
->>> +#define STREAM_ID_RANGE_SIZE 0x10000=0A=
->>> +=0A=
->>>  /* Addresses and sizes of our components.=0A=
->>>   * 0..128MB is space for a flash device so we can run bootrom code suc=
-h as UEFI.=0A=
->>>   * 128MB..256MB is used for miscellaneous device I/O.=0A=
->>> @@ -162,6 +164,22 @@ static const int a15irqmap[] =3D {=0A=
->>>      [VIRT_PLATFORM_BUS] =3D 112, /* ...to 112 + PLATFORM_BUS_NUM_IRQS =
--1 */=0A=
->>>  };=0A=
->>>  =0A=
->>> +/* Device IDs are required by the ARM GICV3 ITS for IRQ remapping. Cur=
-rently=0A=
->>> + * for PCI devices the requester ID was used as device ID. But if the =
-system has=0A=
->>> + * multiple masters that use MSIs, the requester ID may cause deviceID=
- clashes.=0A=
->>> + * So a unique number is  needed accross the system.=0A=
->>> + * We are using the following formula:=0A=
->>> + * DeviceID =3D zero_extend( RequesterID[15:0] ) + 0x10000*Constant=0A=
->>> + * (as recommanded by SBSA). Currently we do not have an SMMU emulatio=
-n, but the=0A=
->>> + * same formula can be used for the generation of the streamID as well=
-.=0A=
->>> + * For each master the device ID will be derrived from the requester I=
-D using=0A=
->>> + * the abovemntione formula.=0A=
->>> + */=0A=
->> I think most of this comment should only be in the commit message. typos=
-=0A=
->> in derived and above mentioned.=0A=
->>=0A=
->> stream id is the terminology for the id space at the input of the smmu.=
-=0A=
->> device id is the terminology for the id space at the input of the msi=0A=
->> controller I think.=0A=
->>=0A=
->> RID -> deviceID (no IOMMU)=0A=
->> RID -> streamID -> deviceID (IOMMU)=0A=
->>=0A=
->> I would personally get rid of all streamid uses as the smmu is not yet=
-=0A=
->> supported and stick to the=0A=
->> Documentation/devicetree/bindings/pci/pci-msi.txt terminology?=0A=
->>=0A=
->>> +=0A=
->>> +static const uint32_t streamidmap[] =3D {=0A=
->>> +    [VIRT_PCIE] =3D 0,         /* currently only one PCI controller */=
-=0A=
->>> +};=0A=
->>> +=0A=
->>>  static const char *valid_cpus[] =3D {=0A=
->>>      "cortex-a15",=0A=
->>>      "cortex-a53",=0A=
->>> @@ -980,6 +998,7 @@ static void create_pcie(const VirtMachineState *vms=
-, qemu_irq *pic)=0A=
->>>      hwaddr base_ecam =3D vms->memmap[VIRT_PCIE_ECAM].base;=0A=
->>>      hwaddr size_ecam =3D vms->memmap[VIRT_PCIE_ECAM].size;=0A=
->>>      hwaddr base =3D base_mmio;=0A=
->>> +    uint32_t stream_id =3D vms->streamidmap[VIRT_PCIE] * STREAM_ID_RAN=
-GE_SIZE;=0A=
->> msi-base?=0A=
->> STREAM_ID_RANGE_SIZE ~ MSI_MAP_LENGTH?=0A=
->>>      int nr_pcie_buses =3D size_ecam / PCIE_MMCFG_SIZE_MIN;=0A=
->>>      int irq =3D vms->irqmap[VIRT_PCIE];=0A=
->>>      MemoryRegion *mmio_alias;=0A=
->>> @@ -992,6 +1011,7 @@ static void create_pcie(const VirtMachineState *vm=
-s, qemu_irq *pic)=0A=
->>>      PCIHostState *pci;=0A=
->>>  =0A=
->>>      dev =3D qdev_create(NULL, TYPE_GPEX_HOST);=0A=
->>> +    qdev_prop_set_uint32(dev, "stream-id-base", stream_id);=0A=
->>>      qdev_init_nofail(dev);=0A=
->>>  =0A=
->>>      /* Map only the first size_ecam bytes of ECAM space */=0A=
->>> @@ -1056,6 +1076,11 @@ static void create_pcie(const VirtMachineState *=
-vms, qemu_irq *pic)=0A=
->>>      if (vms->msi_phandle) {=0A=
->>>          qemu_fdt_setprop_cells(vms->fdt, nodename, "msi-parent",=0A=
->>>                                 vms->msi_phandle);=0A=
->>> +        qemu_fdt_setprop_sized_cells(vms->fdt, nodename, "msi-map",=0A=
->>> +                                     1, 0,=0A=
->>> +                                     1, vms->msi_phandle,=0A=
->>> +                                     1, stream_id,=0A=
->>> +                                     1, STREAM_ID_RANGE_SIZE);=0A=
->>>      }=0A=
->>>  =0A=
->>>      qemu_fdt_setprop_sized_cells(vms->fdt, nodename, "reg",=0A=
->>> @@ -1609,6 +1634,7 @@ static void virt_2_9_instance_init(Object *obj)=
-=0A=
->>>  =0A=
->>>      vms->memmap =3D a15memmap;=0A=
->>>      vms->irqmap =3D a15irqmap;=0A=
->>> +    vms->streamidmap =3D streamidmap;=0A=
->>>  }=0A=
->>>  =0A=
->>>  static void virt_machine_2_9_options(MachineClass *mc)=0A=
->>> diff --git a/hw/pci-host/gpex.c b/hw/pci-host/gpex.c=0A=
->>> index 66055ee..de72408 100644=0A=
->>> --- a/hw/pci-host/gpex.c=0A=
->>> +++ b/hw/pci-host/gpex.c=0A=
->>> @@ -43,6 +43,11 @@ static void gpex_set_irq(void *opaque, int irq_num, =
-int level)=0A=
->>>      qemu_set_irq(s->irq[irq_num], level);=0A=
->>>  }=0A=
->>>  =0A=
->>> +static Property gpex_props[] =3D {=0A=
->>> +    DEFINE_PROP_UINT32("stream-id-base", GPEXHost, stream_id_base, 0),=
-=0A=
->> msi_base_base=0A=
->>> +    DEFINE_PROP_END_OF_LIST(),=0A=
->>> +};=0A=
->>> +=0A=
->>>  static void gpex_host_realize(DeviceState *dev, Error **errp)=0A=
->>>  {=0A=
->>>      PCIHostState *pci =3D PCI_HOST_BRIDGE(dev);=0A=
->>> @@ -83,6 +88,7 @@ static void gpex_host_class_init(ObjectClass *klass, =
-void *data)=0A=
->>>  =0A=
->>>      hc->root_bus_path =3D gpex_host_root_bus_path;=0A=
->>>      dc->realize =3D gpex_host_realize;=0A=
->>> +    dc->props =3D gpex_props;=0A=
->>>      set_bit(DEVICE_CATEGORY_BRIDGE, dc->categories);=0A=
->>>      dc->fw_name =3D "pci";=0A=
->>>  }=0A=
->>> diff --git a/hw/pci/msi.c b/hw/pci/msi.c=0A=
->>> index 7925851..b60a410 100644=0A=
->>> --- a/hw/pci/msi.c=0A=
->>> +++ b/hw/pci/msi.c=0A=
->>> @@ -336,7 +336,7 @@ void msi_send_message(PCIDevice *dev, MSIMessage ms=
-g)=0A=
->>>  {=0A=
->>>      MemTxAttrs attrs =3D {};=0A=
->>>  =0A=
->>> -    attrs.stream_id =3D pci_requester_id(dev);=0A=
->>> +    attrs.stream_id =3D pci_stream_id(dev);=0A=
->>>      address_space_stl_le(&dev->bus_master_as, msg.address, msg.data,=
-=0A=
->>>                           attrs, NULL);=0A=
->>>  }=0A=
->>> diff --git a/hw/pci/pci.c b/hw/pci/pci.c=0A=
->>> index 259483b..92e9a2b 100644=0A=
->>> --- a/hw/pci/pci.c=0A=
->>> +++ b/hw/pci/pci.c=0A=
->>> @@ -951,6 +951,30 @@ uint16_t pci_requester_id(PCIDevice *dev)=0A=
->>>      return pci_req_id_cache_extract(&dev->requester_id_cache);=0A=
->>>  }=0A=
->>>  =0A=
->>> +static uint32_t pci_get_stream_id_base(PCIDevice *dev)=0A=
->>> +{=0A=
->>> +    PCIBus *rootbus =3D pci_device_root_bus(dev);=0A=
->>> +    PCIHostState *host_bridge =3D PCI_HOST_BRIDGE(rootbus->qbus.parent=
-);=0A=
->>> +    Error *err =3D NULL;=0A=
->>> +    int64_t stream_id;=0A=
->>> +=0A=
->>> +    stream_id =3D object_property_get_int(OBJECT(host_bridge), "stream=
--id-base",=0A=
->>> +                                        &err);=0A=
->>> +    if (stream_id < 0) {=0A=
->>> +        stream_id =3D 0;=0A=
->>> +    }=0A=
->>> +=0A=
->>> +    return stream_id;=0A=
->>> +}=0A=
->>> +=0A=
->>> +uint32_t pci_stream_id(PCIDevice *dev)=0A=
->>> +{=0A=
->>> +    /* Stream ID =3D RequesterID[15:0] + stream_id_base. stream_id_bas=
-e may=0A=
->>> +     * be 0 for devices that are not using any translation between req=
-uester_id=0A=
->>> +     * and stream_id */=0A=
->>> +    return  (uint16_t)pci_requester_id(dev) + dev->stream_id_base;=0A=
->>> +}=0A=
->> I think you should split the changes in virt from pci/gpex generic chang=
-es.=0A=
->>=0A=
->>> +=0A=
->>>  /* -1 for devfn means auto assign */=0A=
->>>  static PCIDevice *do_pci_register_device(PCIDevice *pci_dev, PCIBus *b=
-us,=0A=
->>>                                           const char *name, int devfn,=
-=0A=
->>> @@ -1000,6 +1024,7 @@ static PCIDevice *do_pci_register_device(PCIDevic=
-e *pci_dev, PCIBus *bus,=0A=
->>>  =0A=
->>>      pci_dev->devfn =3D devfn;=0A=
->>>      pci_dev->requester_id_cache =3D pci_req_id_cache_get(pci_dev);=0A=
->>> +    pci_dev->stream_id_base =3D pci_get_stream_id_base(pci_dev);=0A=
->> looks strange to me to store the rid base in the end point as this is=0A=
->> rather a property of the PCI complex. I acknowledge this is much more=0A=
-> I agree.=0A=
-=0A=
-The reason I have changed was to avoid traversing the entire hierarchy=0A=
-each time the ID is needed (for example each time when a MSI is sent).=0A=
-=0A=
-> I think that what we need is to add support for allowing PCI RCs=0A=
-> to transform requesterIDs in transactions attributes according to the=0A=
-> implementation specifics.=0A=
-=0A=
-Do you mean that you need more than a linear offset between requesterID=0A=
-and whatever other ID?=0A=
-=0A=
->=0A=
-> The way we did it when modelling the ZynqMP is by adding support for=0A=
-> transaction attribute translation in QEMU's IOMMU interface.=0A=
-> In our PCI RC, we have an IOMMU covering the entire AS that PCI devs DMA =
-into.=0A=
-> This IOMMU doesn't do address-translation, only RequesterID -> StreamID=
-=0A=
-> transforms according to how the ZynqMP PCI RC derives StreamIDs from Requ=
-esterIDs.=0A=
-=0A=
-Are there any patches for this support in order for me to better understand=
-?=0A=
-=0A=
-Thanks,=0A=
-=0A=
-Diana=0A=
-=0A=
-=0A=
-> This is useful not only to model PCI RequesterID to AXI Master ID mapping=
-s but=0A=
-> also for modelling things like the ARM TZC (or the Xilinx ZynqMP XMPU/XPP=
-Us).=0A=
->=0A=
-> Cheers,=0A=
-> Edgar=0A=
->=0A=
->=0A=
->> simple than reworking pci_requester_id() though.=0A=
->>>  =0A=
->>>      memory_region_init(&pci_dev->bus_master_container_region, OBJECT(p=
-ci_dev),=0A=
->>>                         "bus master container", UINT64_MAX);=0A=
->>> diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h=0A=
->>> index 33b0ff3..94c007a 100644=0A=
->>> --- a/include/hw/arm/virt.h=0A=
->>> +++ b/include/hw/arm/virt.h=0A=
->>> @@ -99,6 +99,7 @@ typedef struct {=0A=
->>>      struct arm_boot_info bootinfo;=0A=
->>>      const MemMapEntry *memmap;=0A=
->>>      const int *irqmap;=0A=
->>> +    const uint32_t *streamidmap;=0A=
->>>      int smp_cpus;=0A=
->>>      void *fdt;=0A=
->>>      int fdt_size;=0A=
->>> diff --git a/include/hw/pci-host/gpex.h b/include/hw/pci-host/gpex.h=0A=
->>> index 68c9348..47df01a 100644=0A=
->>> --- a/include/hw/pci-host/gpex.h=0A=
->>> +++ b/include/hw/pci-host/gpex.h=0A=
->>> @@ -48,6 +48,8 @@ typedef struct GPEXHost {=0A=
->>>  =0A=
->>>      GPEXRootState gpex_root;=0A=
->>>  =0A=
->>> +    uint32_t stream_id_base;=0A=
->>> +=0A=
->>>      MemoryRegion io_ioport;=0A=
->>>      MemoryRegion io_mmio;=0A=
->>>      qemu_irq irq[GPEX_NUM_IRQS];=0A=
->>> diff --git a/include/hw/pci/pci.h b/include/hw/pci/pci.h=0A=
->>> index a37a2d5..e6e9334 100644=0A=
->>> --- a/include/hw/pci/pci.h=0A=
->>> +++ b/include/hw/pci/pci.h=0A=
->>> @@ -283,6 +283,12 @@ struct PCIDevice {=0A=
->>>       * MSI). For conventional PCI root complex, this field is=0A=
->>>       * meaningless. */=0A=
->>>      PCIReqIDCache requester_id_cache;=0A=
->>> +    /* Some platforms need a unique ID for IOMMU source identification=
-=0A=
->>> +     * or MSI source identification. QEMU implements a simple scheme:=
-=0A=
->>> +     * stream_id =3D  stream_id_base + requester_id. The stream_id_bas=
-e will=0A=
->>> +     * ensure that all the devices in the system have different stream=
- ID=0A=
->>> +     * domains */=0A=
->>> +    uint32_t stream_id_base;=0A=
->> get rid of IOMMU terminology?=0A=
->>=0A=
->> Note that when adding other sub-systems you will need to address the=0A=
->> ACPI side as the IORT table built by hw/arm/virt-acpi-build.c currently=
-=0A=
->> defines an RID mapping for the single root complex.=0A=
->>=0A=
->> Thanks=0A=
->>=0A=
->> Eric=0A=
->>>      char name[64];=0A=
->>>      PCIIORegion io_regions[PCI_NUM_REGIONS];=0A=
->>>      AddressSpace bus_master_as;=0A=
->>> @@ -737,6 +743,8 @@ static inline uint16_t pci_get_bdf(PCIDevice *dev)=
-=0A=
->>>  =0A=
->>>  uint16_t pci_requester_id(PCIDevice *dev);=0A=
->>>  =0A=
->>> +uint32_t pci_stream_id(PCIDevice *dev);=0A=
->>> +=0A=
->>>  /* DMA access functions */=0A=
->>>  static inline AddressSpace *pci_get_address_space(PCIDevice *dev)=0A=
->>>  {=0A=
->>> diff --git a/kvm-all.c b/kvm-all.c=0A=
->>> index 90b8573..5a508c3 100644=0A=
->>> --- a/kvm-all.c=0A=
->>> +++ b/kvm-all.c=0A=
->>> @@ -1280,7 +1280,7 @@ int kvm_irqchip_add_msi_route(KVMState *s, int ve=
-ctor, PCIDevice *dev)=0A=
->>>      kroute.u.msi.data =3D le32_to_cpu(msg.data);=0A=
->>>      if (kvm_msi_devid_required()) {=0A=
->>>          kroute.flags =3D KVM_MSI_VALID_DEVID;=0A=
->>> -        kroute.u.msi.devid =3D pci_requester_id(dev);=0A=
->>> +        kroute.u.msi.devid =3D pci_stream_id(dev);=0A=
->>>      }=0A=
->>>      if (kvm_arch_fixup_msi_route(&kroute, msg.address, msg.data, dev))=
- {=0A=
->>>          kvm_irqchip_release_virq(s, virq);=0A=
->>> @@ -1317,7 +1317,7 @@ int kvm_irqchip_update_msi_route(KVMState *s, int=
- virq, MSIMessage msg,=0A=
->>>      kroute.u.msi.data =3D le32_to_cpu(msg.data);=0A=
->>>      if (kvm_msi_devid_required()) {=0A=
->>>          kroute.flags =3D KVM_MSI_VALID_DEVID;=0A=
->>> -        kroute.u.msi.devid =3D pci_requester_id(dev);=0A=
->>> +        kroute.u.msi.devid =3D pci_stream_id(dev);=0A=
->>>      }=0A=
->>>      if (kvm_arch_fixup_msi_route(&kroute, msg.address, msg.data, dev))=
- {=0A=
->>>          return -EINVAL;=0A=
->>>=0A=
-=0A=
+On Fri, Aug 11, 2017 at 02:35:28PM +0000, Diana Madalina Craciun wrote:
+> Hi Edgar,
+> 
+> On 07/31/2017 06:16 PM, Edgar E. Iglesias wrote:
+> > On Wed, Jul 26, 2017 at 02:22:28PM +0200, Auger Eric wrote:
+> >> Hi Diana,
+> >> On 23/05/2017 13:12, Diana Craciun wrote:
+> >>> Device IDs are required by the ARM GICv3 ITS for IRQ remapping.
+> >>> Currently, for PCI devices, the requester ID was used as device
+> >>> ID in the virt machine. If the system has multiple masters that
+> >> if the system has multiple root complex?
+> >>> use MSIs a unique ID accross the platform is needed.
+> >> across
+> >>> A static scheme is used and each master is allocated a range of IDs
+> >>> with the formula:
+> >>> DeviceID = zero_extend( RequesterID[15:0] ) + 0x10000*Constant (as
+> >>> recommended by SBSA).
+> >>>
+> >>> This ID will be configured in the machine creation and if not configured
+> >>> the PCI requester ID will be used insteead.
+> >> instead
+> >>> Signed-off-by: Diana Craciun <diana.craciun@nxp.com>
+> >>> ---
+> >>>  hw/arm/virt.c              | 26 ++++++++++++++++++++++++++
+> >>>  hw/pci-host/gpex.c         |  6 ++++++
+> >>>  hw/pci/msi.c               |  2 +-
+> >>>  hw/pci/pci.c               | 25 +++++++++++++++++++++++++
+> >>>  include/hw/arm/virt.h      |  1 +
+> >>>  include/hw/pci-host/gpex.h |  2 ++
+> >>>  include/hw/pci/pci.h       |  8 ++++++++
+> >>>  kvm-all.c                  |  4 ++--
+> >>>  8 files changed, 71 insertions(+), 3 deletions(-)
+> >>>
+> >>> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+> >>> index 5f62a03..a969694 100644
+> >>> --- a/hw/arm/virt.c
+> >>> +++ b/hw/arm/virt.c
+> >>> @@ -110,6 +110,8 @@ static ARMPlatformBusSystemParams platform_bus_params;
+> >>>  #define RAMLIMIT_GB 255
+> >>>  #define RAMLIMIT_BYTES (RAMLIMIT_GB * 1024ULL * 1024 * 1024)
+> >>>  
+> >>> +#define STREAM_ID_RANGE_SIZE 0x10000
+> >>> +
+> >>>  /* Addresses and sizes of our components.
+> >>>   * 0..128MB is space for a flash device so we can run bootrom code such as UEFI.
+> >>>   * 128MB..256MB is used for miscellaneous device I/O.
+> >>> @@ -162,6 +164,22 @@ static const int a15irqmap[] = {
+> >>>      [VIRT_PLATFORM_BUS] = 112, /* ...to 112 + PLATFORM_BUS_NUM_IRQS -1 */
+> >>>  };
+> >>>  
+> >>> +/* Device IDs are required by the ARM GICV3 ITS for IRQ remapping. Currently
+> >>> + * for PCI devices the requester ID was used as device ID. But if the system has
+> >>> + * multiple masters that use MSIs, the requester ID may cause deviceID clashes.
+> >>> + * So a unique number is  needed accross the system.
+> >>> + * We are using the following formula:
+> >>> + * DeviceID = zero_extend( RequesterID[15:0] ) + 0x10000*Constant
+> >>> + * (as recommanded by SBSA). Currently we do not have an SMMU emulation, but the
+> >>> + * same formula can be used for the generation of the streamID as well.
+> >>> + * For each master the device ID will be derrived from the requester ID using
+> >>> + * the abovemntione formula.
+> >>> + */
+> >> I think most of this comment should only be in the commit message. typos
+> >> in derived and above mentioned.
+> >>
+> >> stream id is the terminology for the id space at the input of the smmu.
+> >> device id is the terminology for the id space at the input of the msi
+> >> controller I think.
+> >>
+> >> RID -> deviceID (no IOMMU)
+> >> RID -> streamID -> deviceID (IOMMU)
+> >>
+> >> I would personally get rid of all streamid uses as the smmu is not yet
+> >> supported and stick to the
+> >> Documentation/devicetree/bindings/pci/pci-msi.txt terminology?
+> >>
+> >>> +
+> >>> +static const uint32_t streamidmap[] = {
+> >>> +    [VIRT_PCIE] = 0,         /* currently only one PCI controller */
+> >>> +};
+> >>> +
+> >>>  static const char *valid_cpus[] = {
+> >>>      "cortex-a15",
+> >>>      "cortex-a53",
+> >>> @@ -980,6 +998,7 @@ static void create_pcie(const VirtMachineState *vms, qemu_irq *pic)
+> >>>      hwaddr base_ecam = vms->memmap[VIRT_PCIE_ECAM].base;
+> >>>      hwaddr size_ecam = vms->memmap[VIRT_PCIE_ECAM].size;
+> >>>      hwaddr base = base_mmio;
+> >>> +    uint32_t stream_id = vms->streamidmap[VIRT_PCIE] * STREAM_ID_RANGE_SIZE;
+> >> msi-base?
+> >> STREAM_ID_RANGE_SIZE ~ MSI_MAP_LENGTH?
+> >>>      int nr_pcie_buses = size_ecam / PCIE_MMCFG_SIZE_MIN;
+> >>>      int irq = vms->irqmap[VIRT_PCIE];
+> >>>      MemoryRegion *mmio_alias;
+> >>> @@ -992,6 +1011,7 @@ static void create_pcie(const VirtMachineState *vms, qemu_irq *pic)
+> >>>      PCIHostState *pci;
+> >>>  
+> >>>      dev = qdev_create(NULL, TYPE_GPEX_HOST);
+> >>> +    qdev_prop_set_uint32(dev, "stream-id-base", stream_id);
+> >>>      qdev_init_nofail(dev);
+> >>>  
+> >>>      /* Map only the first size_ecam bytes of ECAM space */
+> >>> @@ -1056,6 +1076,11 @@ static void create_pcie(const VirtMachineState *vms, qemu_irq *pic)
+> >>>      if (vms->msi_phandle) {
+> >>>          qemu_fdt_setprop_cells(vms->fdt, nodename, "msi-parent",
+> >>>                                 vms->msi_phandle);
+> >>> +        qemu_fdt_setprop_sized_cells(vms->fdt, nodename, "msi-map",
+> >>> +                                     1, 0,
+> >>> +                                     1, vms->msi_phandle,
+> >>> +                                     1, stream_id,
+> >>> +                                     1, STREAM_ID_RANGE_SIZE);
+> >>>      }
+> >>>  
+> >>>      qemu_fdt_setprop_sized_cells(vms->fdt, nodename, "reg",
+> >>> @@ -1609,6 +1634,7 @@ static void virt_2_9_instance_init(Object *obj)
+> >>>  
+> >>>      vms->memmap = a15memmap;
+> >>>      vms->irqmap = a15irqmap;
+> >>> +    vms->streamidmap = streamidmap;
+> >>>  }
+> >>>  
+> >>>  static void virt_machine_2_9_options(MachineClass *mc)
+> >>> diff --git a/hw/pci-host/gpex.c b/hw/pci-host/gpex.c
+> >>> index 66055ee..de72408 100644
+> >>> --- a/hw/pci-host/gpex.c
+> >>> +++ b/hw/pci-host/gpex.c
+> >>> @@ -43,6 +43,11 @@ static void gpex_set_irq(void *opaque, int irq_num, int level)
+> >>>      qemu_set_irq(s->irq[irq_num], level);
+> >>>  }
+> >>>  
+> >>> +static Property gpex_props[] = {
+> >>> +    DEFINE_PROP_UINT32("stream-id-base", GPEXHost, stream_id_base, 0),
+> >> msi_base_base
+> >>> +    DEFINE_PROP_END_OF_LIST(),
+> >>> +};
+> >>> +
+> >>>  static void gpex_host_realize(DeviceState *dev, Error **errp)
+> >>>  {
+> >>>      PCIHostState *pci = PCI_HOST_BRIDGE(dev);
+> >>> @@ -83,6 +88,7 @@ static void gpex_host_class_init(ObjectClass *klass, void *data)
+> >>>  
+> >>>      hc->root_bus_path = gpex_host_root_bus_path;
+> >>>      dc->realize = gpex_host_realize;
+> >>> +    dc->props = gpex_props;
+> >>>      set_bit(DEVICE_CATEGORY_BRIDGE, dc->categories);
+> >>>      dc->fw_name = "pci";
+> >>>  }
+> >>> diff --git a/hw/pci/msi.c b/hw/pci/msi.c
+> >>> index 7925851..b60a410 100644
+> >>> --- a/hw/pci/msi.c
+> >>> +++ b/hw/pci/msi.c
+> >>> @@ -336,7 +336,7 @@ void msi_send_message(PCIDevice *dev, MSIMessage msg)
+> >>>  {
+> >>>      MemTxAttrs attrs = {};
+> >>>  
+> >>> -    attrs.stream_id = pci_requester_id(dev);
+> >>> +    attrs.stream_id = pci_stream_id(dev);
+> >>>      address_space_stl_le(&dev->bus_master_as, msg.address, msg.data,
+> >>>                           attrs, NULL);
+> >>>  }
+> >>> diff --git a/hw/pci/pci.c b/hw/pci/pci.c
+> >>> index 259483b..92e9a2b 100644
+> >>> --- a/hw/pci/pci.c
+> >>> +++ b/hw/pci/pci.c
+> >>> @@ -951,6 +951,30 @@ uint16_t pci_requester_id(PCIDevice *dev)
+> >>>      return pci_req_id_cache_extract(&dev->requester_id_cache);
+> >>>  }
+> >>>  
+> >>> +static uint32_t pci_get_stream_id_base(PCIDevice *dev)
+> >>> +{
+> >>> +    PCIBus *rootbus = pci_device_root_bus(dev);
+> >>> +    PCIHostState *host_bridge = PCI_HOST_BRIDGE(rootbus->qbus.parent);
+> >>> +    Error *err = NULL;
+> >>> +    int64_t stream_id;
+> >>> +
+> >>> +    stream_id = object_property_get_int(OBJECT(host_bridge), "stream-id-base",
+> >>> +                                        &err);
+> >>> +    if (stream_id < 0) {
+> >>> +        stream_id = 0;
+> >>> +    }
+> >>> +
+> >>> +    return stream_id;
+> >>> +}
+> >>> +
+> >>> +uint32_t pci_stream_id(PCIDevice *dev)
+> >>> +{
+> >>> +    /* Stream ID = RequesterID[15:0] + stream_id_base. stream_id_base may
+> >>> +     * be 0 for devices that are not using any translation between requester_id
+> >>> +     * and stream_id */
+> >>> +    return  (uint16_t)pci_requester_id(dev) + dev->stream_id_base;
+> >>> +}
+> >> I think you should split the changes in virt from pci/gpex generic changes.
+> >>
+> >>> +
+> >>>  /* -1 for devfn means auto assign */
+> >>>  static PCIDevice *do_pci_register_device(PCIDevice *pci_dev, PCIBus *bus,
+> >>>                                           const char *name, int devfn,
+> >>> @@ -1000,6 +1024,7 @@ static PCIDevice *do_pci_register_device(PCIDevice *pci_dev, PCIBus *bus,
+> >>>  
+> >>>      pci_dev->devfn = devfn;
+> >>>      pci_dev->requester_id_cache = pci_req_id_cache_get(pci_dev);
+> >>> +    pci_dev->stream_id_base = pci_get_stream_id_base(pci_dev);
+> >> looks strange to me to store the rid base in the end point as this is
+> >> rather a property of the PCI complex. I acknowledge this is much more
+> > I agree.
+> 
+> The reason I have changed was to avoid traversing the entire hierarchy
+> each time the ID is needed (for example each time when a MSI is sent).
+> 
+> > I think that what we need is to add support for allowing PCI RCs
+> > to transform requesterIDs in transactions attributes according to the
+> > implementation specifics.
+> 
+> Do you mean that you need more than a linear offset between requesterID
+> and whatever other ID?
+
+
+Yes.
+
+This is my understanding for the ARM platforms I'm familiar with:
+
+Since AXI busses don't have a defined way to carry Master IDs, these
+are typically carried on the AXI user signals. I'll just refer to
+these signals as AXI Master IDs.
+
+1. An endpoint issues an MSI (or any) transaction on the PCI bus.
+   In QEMU, these trasactions carry the requester ID in their attributes.
+
+2. The transaction hits the PCI "host" bridge to the SoC internal
+   interconnect (typically AXI). This bridge needs to forward the
+   PCI transaction onto the AXI bus. Including mapping the PCI
+   RequesterID into an AXI MasterID.
+
+3. The AXI transaction hits the IOMMU and the MasterID is mapped
+   into a streamID to identify the origin of the transaction
+   and apply address translation accordingly. If the SMMU
+   allows the transaction to pass, the stream ID is mapped back
+   into the transactions MasterID.
+
+4. The AXI transaction continues down the interconnect and hits
+   the MSI doorbell and the MasterID is mapped into a DeviceID to
+   identify the origin of the MSI and apply possible interrupt translation.
+
+Adding streamID fields to a PCI endpoint doesn't make any sense to me.
+The requester ID is already there and is IMO enough.
+StreamIDs are a concept of ARM System MMUs, not of PCI endpoints.
+
+When modelling #2, hardcoding a specific linear mapping between
+PCI requester IDs and AXI Master IDs may work for one platform
+but it won't work for all platforms. There is no one mapping for all.
+It can even be run-time programmable in the bridge.
+
+IIRC, the SMMUv3 docs have a section that suggest how these ReqID to AXI Master ID mappings can be done.
+
+
+> > The way we did it when modelling the ZynqMP is by adding support for
+> > transaction attribute translation in QEMU's IOMMU interface.
+> > In our PCI RC, we have an IOMMU covering the entire AS that PCI devs DMA into.
+> > This IOMMU doesn't do address-translation, only RequesterID -> StreamID
+> > transforms according to how the ZynqMP PCI RC derives StreamIDs from RequesterIDs.
+> 
+> Are there any patches for this support in order for me to better understand?
+
+It's currently on the Xilinx QEMU fork on GitHub.
+https://github.com/Xilinx/qemu/blob/master/hw/pci-host/xlnx-nwl-pcie-main.c
+
+In the current ZynqMP, all RequesterIDs map to a single MasterID (it's a HW limitation).
+In future versions of the HW, another mapping will be used.
+I can't share code for the latter yet though....
+
+Best regards,
+Edgar
+
+ 
+
+> 
+> Thanks,
+> 
+> Diana
+> 
+> 
+> > This is useful not only to model PCI RequesterID to AXI Master ID mappings but
+> > also for modelling things like the ARM TZC (or the Xilinx ZynqMP XMPU/XPPUs).
+> >
+> > Cheers,
+> > Edgar
+> >
+> >
+> >> simple than reworking pci_requester_id() though.
+> >>>  
+> >>>      memory_region_init(&pci_dev->bus_master_container_region, OBJECT(pci_dev),
+> >>>                         "bus master container", UINT64_MAX);
+> >>> diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
+> >>> index 33b0ff3..94c007a 100644
+> >>> --- a/include/hw/arm/virt.h
+> >>> +++ b/include/hw/arm/virt.h
+> >>> @@ -99,6 +99,7 @@ typedef struct {
+> >>>      struct arm_boot_info bootinfo;
+> >>>      const MemMapEntry *memmap;
+> >>>      const int *irqmap;
+> >>> +    const uint32_t *streamidmap;
+> >>>      int smp_cpus;
+> >>>      void *fdt;
+> >>>      int fdt_size;
+> >>> diff --git a/include/hw/pci-host/gpex.h b/include/hw/pci-host/gpex.h
+> >>> index 68c9348..47df01a 100644
+> >>> --- a/include/hw/pci-host/gpex.h
+> >>> +++ b/include/hw/pci-host/gpex.h
+> >>> @@ -48,6 +48,8 @@ typedef struct GPEXHost {
+> >>>  
+> >>>      GPEXRootState gpex_root;
+> >>>  
+> >>> +    uint32_t stream_id_base;
+> >>> +
+> >>>      MemoryRegion io_ioport;
+> >>>      MemoryRegion io_mmio;
+> >>>      qemu_irq irq[GPEX_NUM_IRQS];
+> >>> diff --git a/include/hw/pci/pci.h b/include/hw/pci/pci.h
+> >>> index a37a2d5..e6e9334 100644
+> >>> --- a/include/hw/pci/pci.h
+> >>> +++ b/include/hw/pci/pci.h
+> >>> @@ -283,6 +283,12 @@ struct PCIDevice {
+> >>>       * MSI). For conventional PCI root complex, this field is
+> >>>       * meaningless. */
+> >>>      PCIReqIDCache requester_id_cache;
+> >>> +    /* Some platforms need a unique ID for IOMMU source identification
+> >>> +     * or MSI source identification. QEMU implements a simple scheme:
+> >>> +     * stream_id =  stream_id_base + requester_id. The stream_id_base will
+> >>> +     * ensure that all the devices in the system have different stream ID
+> >>> +     * domains */
+> >>> +    uint32_t stream_id_base;
+> >> get rid of IOMMU terminology?
+> >>
+> >> Note that when adding other sub-systems you will need to address the
+> >> ACPI side as the IORT table built by hw/arm/virt-acpi-build.c currently
+> >> defines an RID mapping for the single root complex.
+> >>
+> >> Thanks
+> >>
+> >> Eric
+> >>>      char name[64];
+> >>>      PCIIORegion io_regions[PCI_NUM_REGIONS];
+> >>>      AddressSpace bus_master_as;
+> >>> @@ -737,6 +743,8 @@ static inline uint16_t pci_get_bdf(PCIDevice *dev)
+> >>>  
+> >>>  uint16_t pci_requester_id(PCIDevice *dev);
+> >>>  
+> >>> +uint32_t pci_stream_id(PCIDevice *dev);
+> >>> +
+> >>>  /* DMA access functions */
+> >>>  static inline AddressSpace *pci_get_address_space(PCIDevice *dev)
+> >>>  {
+> >>> diff --git a/kvm-all.c b/kvm-all.c
+> >>> index 90b8573..5a508c3 100644
+> >>> --- a/kvm-all.c
+> >>> +++ b/kvm-all.c
+> >>> @@ -1280,7 +1280,7 @@ int kvm_irqchip_add_msi_route(KVMState *s, int vector, PCIDevice *dev)
+> >>>      kroute.u.msi.data = le32_to_cpu(msg.data);
+> >>>      if (kvm_msi_devid_required()) {
+> >>>          kroute.flags = KVM_MSI_VALID_DEVID;
+> >>> -        kroute.u.msi.devid = pci_requester_id(dev);
+> >>> +        kroute.u.msi.devid = pci_stream_id(dev);
+> >>>      }
+> >>>      if (kvm_arch_fixup_msi_route(&kroute, msg.address, msg.data, dev)) {
+> >>>          kvm_irqchip_release_virq(s, virq);
+> >>> @@ -1317,7 +1317,7 @@ int kvm_irqchip_update_msi_route(KVMState *s, int virq, MSIMessage msg,
+> >>>      kroute.u.msi.data = le32_to_cpu(msg.data);
+> >>>      if (kvm_msi_devid_required()) {
+> >>>          kroute.flags = KVM_MSI_VALID_DEVID;
+> >>> -        kroute.u.msi.devid = pci_requester_id(dev);
+> >>> +        kroute.u.msi.devid = pci_stream_id(dev);
+> >>>      }
+> >>>      if (kvm_arch_fixup_msi_route(&kroute, msg.address, msg.data, dev)) {
+> >>>          return -EINVAL;
+> >>>
+> 

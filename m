@@ -1,15 +1,15 @@
-Received: by 10.25.221.202 with SMTP id w71csp969372lfi;
-        Fri, 11 Aug 2017 07:37:40 -0700 (PDT)
-X-Received: by 10.55.79.209 with SMTP id d200mr20791350qkb.336.1502462259903;
-        Fri, 11 Aug 2017 07:37:39 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1502462259; cv=none;
+Received: by 10.25.221.202 with SMTP id w71csp970291lfi;
+        Fri, 11 Aug 2017 07:38:31 -0700 (PDT)
+X-Received: by 10.200.53.17 with SMTP id y17mr21741171qtb.207.1502462310967;
+        Fri, 11 Aug 2017 07:38:30 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1502462310; cv=none;
         d=google.com; s=arc-20160816;
-        b=psmTPd6sKhrnlqqAsl9gM7KytcIsq0GcamIqPXfNMDbc3UndO+K6BFm3QZGqqqxFHi
-         xQ256WnyLwojNOafqhn2q5b0bciybw5+5EtAiIa3VYMe5jVZ+GUGCTPtXA68IlGvvdRy
-         lT76FYVvy1b6Hhzdi9Asyravrc3GiEatAofgEsaXkg+VZjVbG2gUv3YXdvVyWqQP6jBe
-         VdH4EUrKX0ne/mWzpzP1QLlAVQDUWhkOp4sqKU0yYQxNDuDalURzQ/SNFG+5Ni0TDXOy
-         GmqrK6MvULNgVgYsrKq+ORlggcazsAv7dAXtWPQVkUx4Lt8UMm6A4yTjhs7WL2yi+6Mt
-         r14g==
+        b=GXfcFYqNf60FyqLoDclMc6WIuouui3tKt1fzvUcex+QzpKD93MTlou2rU9hBbqelkR
+         lOzBrxUBN54gptPj7sYBAGFVwBIrN6bIxCIIxaS8YBBax5D7Daqwz39Xl7bXlw2sEGpA
+         +3uuvtIH8Y2+zup3vhNBAHpVp+UkNlKjVbEMjsSyTovwUSuhJXuBgA5U4u7pXIaE6+fv
+         Db770XSQoVByNw73V9bzQQYqab2oWgz04psFQfQcZ/HvsT9wOYU2oNRhtsFEqvM3zgql
+         bwKkKlFETlzAiLy/Y5ohnS1NIhAz1xs7MXMDT9kHHiILP7QrsRMBBasyYgk4iZmtwexa
+         ENCA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:mime-version
@@ -17,74 +17,71 @@ ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc
          :spamdiagnosticoutput:content-language:accept-language:references
          :message-id:date:thread-index:thread-topic:to:from:dkim-signature
          :arc-authentication-results;
-        bh=QfJr2oegcqxKEg+E5CU2JHxQza1lWkf6JMa8Hx7RjJs=;
-        b=oQv9r1wGYaAP4jaoEyQSzER+++otGgsKnuk2+i9rC1SNKI0oQmzoJiWWskH2eFEA1Z
-         xsqxYauz4YZgHEUZbJRVU22+Efr+xzYMpZOePqhWHQ/pAz39BcV/4xO2TiEQWyJ3HWjc
-         jspuBTYWqYNfJU0W+rgSpOCXYhQr/9mE4YS2ckTAsX3R5Wx/tTpDecywbnr1F9RvIlmY
-         F1uqF9/tjOqv9sQpwtrTYWT1kjHbm/46T0mTxm1ORJnfWcAmDDB62nUYrHmtUUBdNBn/
-         V7bWYgmCzpaRgznbTkjy80BfAunmlyJdvvHS/NEXh6OzWuvsf2NYkKje55pVHWP3btoO
-         UaNA==
+        bh=9k8gUOJ4PWncFopyMkIh1e2SfUnh7lIBUEtHWHeQvuM=;
+        b=QJoCOiB1NaRSyCQQ5SV/nXMQbJvw7O8981tTRA3S6XuWDAILoqznuAn24fwTioDZLt
+         iZzMXeyuHuOwx7yyzy95zqDQOH4SZCVLhAek/7NKU+5QwTKYnZyco1Gu2trKQMOHiTG7
+         dL4V0j3k1hBdH63LiBE+mrBwBE/5Hd9ciTekjksOUeT53uYMSD+4CpEXKI0M8LkO1+gT
+         GFy7UwTO7k7U4K0UPDj6ZZ6pV3GPadBOlFzjHsEPG8D4AUgpUPJ2U06JD6RuRsCJWs/u
+         3trzOudSThmgKrDYQQJ3bBeotYPkOm8XqM09uuZchYLV3XU4aBEfYMkn0UIiesBR7TTl
+         89GQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@nxp.com header.s=selector1 header.b=Ho9I1L1+;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
+       dkim=fail header.i=@nxp.com header.s=selector1 header.b=v94TeFFt;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=nxp.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id w73si898480qka.350.2017.08.11.07.37.39
+        by mx.google.com with ESMTPS id 34si898915qtg.455.2017.08.11.07.38.30
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 11 Aug 2017 07:37:39 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Fri, 11 Aug 2017 07:38:30 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@nxp.com header.s=selector1 header.b=Ho9I1L1+;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
+       dkim=fail header.i=@nxp.com header.s=selector1 header.b=v94TeFFt;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=nxp.com
-Received: from localhost ([::1]:44828 helo=lists.gnu.org)
+Received: from localhost ([::1]:44842 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1dgB4D-0003XU-2p
-	for alex.bennee@linaro.org; Fri, 11 Aug 2017 10:37:37 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:36595)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1dgB52-0004hm-5f
+	for alex.bennee@linaro.org; Fri, 11 Aug 2017 10:38:28 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:36724)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <diana.craciun@nxp.com>) id 1dgAyp-00082Q-Cr
-	for qemu-devel@nongnu.org; Fri, 11 Aug 2017 10:32:05 -0400
+	(envelope-from <diana.craciun@nxp.com>) id 1dgAzH-0008LY-Jm
+	for qemu-arm@nongnu.org; Fri, 11 Aug 2017 10:32:33 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <diana.craciun@nxp.com>) id 1dgAyk-0006I2-UA
-	for qemu-devel@nongnu.org; Fri, 11 Aug 2017 10:32:03 -0400
-Received: from mail-db5eur01on0076.outbound.protection.outlook.com
-	([104.47.2.76]:23040
-	helo=EUR01-DB5-obe.outbound.protection.outlook.com)
+	(envelope-from <diana.craciun@nxp.com>) id 1dgAzG-0006OI-GB
+	for qemu-arm@nongnu.org; Fri, 11 Aug 2017 10:32:31 -0400
+Received: from mail-ve1eur01on0043.outbound.protection.outlook.com
+	([104.47.1.43]:11168
+	helo=EUR01-VE1-obe.outbound.protection.outlook.com)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <diana.craciun@nxp.com>)
-	id 1dgAyk-0006HQ-Cy; Fri, 11 Aug 2017 10:31:58 -0400
+	id 1dgAzA-0006Mw-M7; Fri, 11 Aug 2017 10:32:24 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=nxp.com; s=selector1; 
 	h=From:Date:Subject:Message-ID:Content-Type:MIME-Version;
-	bh=QfJr2oegcqxKEg+E5CU2JHxQza1lWkf6JMa8Hx7RjJs=;
-	b=Ho9I1L1+NBVbljhPKipDOVosOs50RZIoiOuI5ElAsmKZmlaTIfepOggia8J9aYNVxvWsuCFNk4kvu2krdDSmv89t0AcTzuCcxPbDt39HgzSXo4pvdMx5jolpUnUZU4sktF/jwQPlfdAEE1wDBleNqMulWACl2/w0XJFpGkOTch0=
+	bh=9k8gUOJ4PWncFopyMkIh1e2SfUnh7lIBUEtHWHeQvuM=;
+	b=v94TeFFtvBxWemt4IQRG8n5Whi5930AzdkKf+GIrzg6Q/9P3LHF8uR/Cj0qJXQs0BNZNrzdB+hZTeSGMnV6DsiA5Ld9HWtJAzetSHoEe13W2glbWkTvhKfCXmpcn7CUSJFKttW8JtpMz3sy91rSHrpX+/S7ePkQyWFbvjQ9zgRI=
 Received: from AM3PR04MB0616.eurprd04.prod.outlook.com (10.255.133.15) by
 	AM3PR04MB0806.eurprd04.prod.outlook.com (10.242.253.144) with Microsoft
 	SMTP Server (version=TLS1_2,
 	cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384_P256) id
-	15.1.1341.17; Fri, 11 Aug 2017 14:31:54 +0000
+	15.1.1341.17; Fri, 11 Aug 2017 14:32:22 +0000
 Received: from AM3PR04MB0616.eurprd04.prod.outlook.com
 	([fe80::840e:32fc:ecf4:2ffb]) by
 	AM3PR04MB0616.eurprd04.prod.outlook.com
 	([fe80::840e:32fc:ecf4:2ffb%14]) with mapi id 15.01.1341.019;
-	Fri, 11 Aug 2017 14:31:52 +0000
+	Fri, 11 Aug 2017 14:32:21 +0000
 From: Diana Madalina Craciun <diana.craciun@nxp.com>
-To: "Michael S. Tsirkin" <mst@redhat.com>
-Thread-Topic: [PATCH v2 0/2] Add global device ID in virt machine
-Thread-Index: AQHS07WHLIdRw36YjE2WVULSPv0RNA==
-Date: Fri, 11 Aug 2017 14:31:52 +0000
-Message-ID: <AM3PR04MB06161BD9424CFE152E88E3BDFF890@AM3PR04MB0616.eurprd04.prod.outlook.com>
+To: Auger Eric <eric.auger@redhat.com>, "qemu-devel@nongnu.org"
+	<qemu-devel@nongnu.org>
+Thread-Topic: [Qemu-devel] [PATCH v2 1/2] Increased the size of requester_id
+	field from MemTxAttrs
+Thread-Index: AQHS07WNuEqtEroxdEC9jZ/8jBjQOQ==
+Date: Fri, 11 Aug 2017 14:32:21 +0000
+Message-ID: <AM3PR04MB0616F921434F49926CA6213DFF890@AM3PR04MB0616.eurprd04.prod.outlook.com>
 References: <1495537965-4187-1-git-send-email-diana.craciun@nxp.com>
-	<20170525011034-mutt-send-email-mst@kernel.org>
-	<AM3PR04MB061619F6FDC53F7FD4C1DAE4FFF10@AM3PR04MB0616.eurprd04.prod.outlook.com>
-	<20170706023845-mutt-send-email-mst@kernel.org>
-	<AM3PR04MB0616507B6F0989360D582F37FFB20@AM3PR04MB0616.eurprd04.prod.outlook.com>
-	<20170731170217-mutt-send-email-mst@kernel.org>
-	<AM3PR04MB061656F255D688500AC8622BFFB20@AM3PR04MB0616.eurprd04.prod.outlook.com>
-	<20170801045857-mutt-send-email-mst@kernel.org>
+	<1495537965-4187-2-git-send-email-diana.craciun@nxp.com>
+	<17ae81be-a86e-d0ab-de93-046846e0b7d2@redhat.com>
 Accept-Language: en-US
 Content-Language: en-US
 X-MS-Has-Attach: 
@@ -94,24 +91,24 @@ authentication-results: spf=none (sender IP is )
 x-originating-ip: [192.88.146.1]
 x-ms-publictraffictype: Email
 x-microsoft-exchange-diagnostics: 1; AM3PR04MB0806;
-	6:MjwzuTgQnp9o8xBnkhXjXkS6eG67puzO5SUK5rZR0AVf9yDjYo+HCEBzRljKpxUE5Xt0lNmAdsvtg/OiaXzn32XSxLTpeFnh0DDapZSvG08U7l9HG1qGKaW4HP83DHYWbgquiGfr4cPIXMOZv5N0ukSyhENv/kdnAbftlB19FP6sIrJ6aUbdccUW9f0E2x7qkgYpFaPU9HzWjIpR2XPhzqsOSsKwIWUWwUTP9yHuObzMokVGcO4ne0ZHAhquU4j7QVTGDvsnE3FSE8OYPzrjB0HSGPgSskpP78umVnJnlDsfHtSoF6hijD9wgIqYNgBnEfmpfsYm9RgX3WPEXO9wQg==;
-	5:64HgJ2O2Ny6oTVTfhQ/OlnTopqMBK22HRIV7SP6fanNymLGmhtUtneDp27zYx46I0CzVqZa1mvfL+UN6n8imvHy4f1V0b52XTwVAPWf5rESgeTa/nU9KRyyjpAA8OYphZIZHb6FeMg+3ruYclRBIzw==;
-	24:/LMWLphE97/oRmOqXj0/EslDQQZMcf0wNLuAENRnyYYjopM0TkfRKmVjXc77a3rrnLDpdMob7PZ5OdaSphQzOrY2BUYQCbm5HBfB+mePI2s=;
-	7:wEa3rCTjXShg7muDwxlQDdV1+AJyGSCiwgAOF965gYd6miTzLYNeD9fZj2ZWAobE5qi8zO7HWxB7DBRLaxXaBCqyFv3f577r1le7JDFacjlvcSmmHvOSr4gxn4JfcS84pk4CgkxxEOd8U/6T9X4EBhp/G88+vI3C+WwRMXYG+v1m3NJhfr3xHoHUfYbN1vt5OkhxqyfskNP+Qb47DXHtdKx/TBUUjRVRSMTiYq4OIjI=
+	6:yYoV4+DYCyAz6h6OJXKjUTZhR2BSu+SpC6Q5XYqa9p8xjH0NYX3+079F6JI2KNeT4lqyFUUEvjEJo+KfJ/O1D5PmCtvt8ILYQhYsUcbHEV9r9Gz0vcklO0QOnzw1ZGtvp/8Tp1xKOPlIrKUFasxB7PaC6YCF7qqGYqZqG4RBOjT8FPnm31hlE1QKotKvxRL2YZ42+TuKQej0s13mcXrNtGIOg5uRElQ4/tWCwdq5Y49QADH/lDDcofaVwRmY/CJE+MsKTsBTSTz4kDxKgxePwKJzhSOvQ/UdaXmqDH9XG9xVPCv63IDRa5dq5GySXRXfugc+ktaszxugnGTRyYwiAA==;
+	5:w+fIjpMcbHxggzAcFY/11rd2QxkG9P++V5GGjQ3hHPSZuHwA91esnZt6YEQ6KuFBAyzo/I+NsvGv+0A0yjPPeR20EU27LfhRIwDhrd9eg91/X7PP5cPbjnVatTAV0IPCQjEfTDlbf8/EPYoljEYqZg==;
+	24:12o4gX0nmd8xn2o3TZjoUYf5Hz2y/rk+JhdjqdcUtpaTFPw2yc0B2Z34pKzOPueYG8pFIw//X4TnZSQ97xr4qGQkvo3Ey5FWKYT3fccPqzw=;
+	7:k+vqgn1isb4a/6AWhipJYJ8Al0+TVH83P48fh9gaI09KXIr4TA9KKYVp7W44h1cSKmvMuwdzW036m2DppFvrFAwanLyU78PBIGr/BakxkamRmGUFBFHKqwqhsJQDjg6Cp6foH+f2rVXrmVjVyo8LCo3xkT9X4e7QMBnXf8NIjAWqXQK9/lijYkAUIFaHPtBvgJQdOjEeICfzppDRnSlebvhsbiFoMEc8E2N5fIx+tIA=
 x-ms-exchange-antispam-srfa-diagnostics: SSOS;SSOR;
 x-forefront-antispam-report: SFV:SKI; SCL:-1; SFV:NSPM;
-	SFS:(10009020)(6009001)(39860400002)(199003)(189002)(377454003)(24454002)(2900100001)(54906002)(14454004)(99286003)(105586002)(55016002)(101416001)(106356001)(6436002)(50986999)(76176999)(54356999)(9686003)(2906002)(6306002)(5250100002)(93886004)(6506006)(7736002)(229853002)(189998001)(305945005)(66066001)(81156014)(8676002)(81166006)(8936002)(7696004)(3660700001)(33656002)(478600001)(102836003)(3846002)(5660300001)(6116002)(4326008)(6916009)(97736004)(53546010)(6246003)(110136004)(25786009)(3280700002)(45080400002)(53936002)(68736007)(74316002)(86362001)(575784001);
+	SFS:(10009020)(6029001)(6009001)(39860400002)(199003)(189002)(377454003)(24454002)(2900100001)(54906002)(14454004)(99286003)(105586002)(55016002)(101416001)(106356001)(6436002)(50986999)(76176999)(54356999)(9686003)(2906002)(5250100002)(6506006)(2501003)(7736002)(229853002)(189998001)(305945005)(66066001)(81156014)(8676002)(81166006)(8936002)(7696004)(3660700001)(33656002)(478600001)(102836003)(3846002)(5660300001)(6116002)(4326008)(97736004)(53546010)(6246003)(25786009)(3280700002)(53936002)(68736007)(74316002)(86362001);
 	DIR:OUT; SFP:1101; SCL:1; SRVR:AM3PR04MB0806;
 	H:AM3PR04MB0616.eurprd04.prod.outlook.com; FPR:; SPF:None;
 	PTR:InfoNoRecords; A:1; MX:1; LANG:en; 
-x-ms-office365-filtering-correlation-id: 3205f3b1-f5bb-469d-9392-08d4e0c5b581
+x-ms-office365-filtering-correlation-id: 813d7555-a7eb-4b8d-e133-08d4e0c5c6dc
 x-ms-office365-filtering-ht: Tenant
 x-microsoft-antispam: UriScan:; BCL:0; PCL:0;
 	RULEID:(300000500095)(300135000095)(300000501095)(300135300095)(300000502095)(300135100095)(22001)(2017030254152)(300000503095)(300135400095)(48565401081)(2017052603031)(201703131423075)(201703031133081)(201702281549075)(300000504095)(300135200095)(300000505095)(300135600095)(300000506095)(300135500095);
 	SRVR:AM3PR04MB0806; 
 x-ms-traffictypediagnostic: AM3PR04MB0806:
-x-exchange-antispam-report-test: UriScan:(189930954265078)(45079756050767);
-x-microsoft-antispam-prvs: <AM3PR04MB080666E356A1545CADE5C6C1FF890@AM3PR04MB0806.eurprd04.prod.outlook.com>
+x-exchange-antispam-report-test: UriScan:;
+x-microsoft-antispam-prvs: <AM3PR04MB080642256CA4353F52DCBA06FF890@AM3PR04MB0806.eurprd04.prod.outlook.com>
 x-exchange-antispam-report-cfa-test: BCL:0; PCL:0;
 	RULEID:(100000700101)(100105000095)(100000701101)(100105300095)(100000702101)(100105100095)(6040450)(601004)(2401047)(5005006)(8121501046)(3002001)(10201501046)(100000703101)(100105400095)(93006095)(93001095)(6055026)(6041248)(201703131423075)(201702281528075)(201703061421075)(201703061406153)(20161123555025)(20161123562025)(20161123564025)(20161123558100)(20161123560025)(6072148)(201708071742011)(100000704101)(100105200095)(100000705101)(100105500095);
 	SRVR:AM3PR04MB0806; BCL:0; PCL:0;
@@ -126,142 +123,74 @@ Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: quoted-printable
 MIME-Version: 1.0
 X-OriginatorOrg: nxp.com
-X-MS-Exchange-CrossTenant-originalarrivaltime: 11 Aug 2017 14:31:52.3188 (UTC)
+X-MS-Exchange-CrossTenant-originalarrivaltime: 11 Aug 2017 14:32:21.4245 (UTC)
 X-MS-Exchange-CrossTenant-fromentityheader: Hosted
 X-MS-Exchange-CrossTenant-id: 686ea1d3-bc2b-4c6f-a92c-d99c5c301635
 X-MS-Exchange-Transport-CrossTenantHeadersStamped: AM3PR04MB0806
 X-detected-operating-system: by eggs.gnu.org: Windows 7 or 8 [fuzzy]
-X-Received-From: 104.47.2.76
-Subject: Re: [Qemu-devel] [PATCH v2 0/2] Add global device ID in virt machine
-X-BeenThere: qemu-devel@nongnu.org
+X-Received-From: 104.47.1.43
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v2 1/2] Increased the size of
+ requester_id field from MemTxAttrs
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
-	"eric.auger@redhat.com" <eric.auger@redhat.com>,
-	Mike Caraman <mike.caraman@nxp.com>,
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: "mst@redhat.com" <mst@redhat.com>, Mike Caraman <mike.caraman@nxp.com>,
 	"qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
 	"marcel@redhat.com" <marcel@redhat.com>,
 	Bharat Bhushan <bharat.bhushan@nxp.com>,
-	"christoffer.dall@linaro.org" <christoffer.dall@linaro.org>, Laurentiu
-	Tudor <laurentiu.tudor@nxp.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: DdeKS4NKqVYK
+	"christoffer.dall@linaro.org" <christoffer.dall@linaro.org>,
+	Laurentiu Tudor <laurentiu.tudor@nxp.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: +E0GrA624xgw
 
-On 08/01/2017 05:05 AM, Michael S. Tsirkin wrote:=0A=
-> On Mon, Jul 31, 2017 at 03:13:09PM +0000, Diana Madalina Craciun wrote:=
+Hi Eric,=0A=
 =0A=
->> On 07/31/2017 05:06 PM, Michael S. Tsirkin wrote:=0A=
->>> On Mon, Jul 31, 2017 at 01:22:45PM +0000, Diana Madalina Craciun wrote:=
+On 07/26/2017 03:23 PM, Auger Eric wrote:=0A=
+> Hi Diana,=0A=
+> On 23/05/2017 13:12, Diana Craciun wrote:=0A=
+>> The PCI requester ID field is 16 bits. The requester_id field=0A=
+>> from MemTxAttrs is used for MSIs to specify the device ID for=0A=
+>> the platforms where this device ID is needed (e.g virt machine + GICv3=
 =0A=
->>>>>> If we are to use a value of 0 for the constant in case of PCI device=
-s,=0A=
->>>>>> what happens if we have multiple PCI controllers?=0A=
->>>>> I guess we'd use the PCI Segment number for that?=0A=
->>>>>=0A=
->>>>>=0A=
->>>> Yes, we can use the PCI segment for this scenario. But this would mean=
+>> ITS). However, if more entities that uses MSIs in the system are used,=
 =0A=
->>>> different solutions for the same problem. The main problem is that we=
+>> 16 bit is no longer enough to represent the device ID. Increased the siz=
+e=0A=
+>> of this field to 24 bits in order to accomodate 256 entities.=0A=
+>> Also the name requester_id does no longer reflect the content, so=0A=
+>> the name was changed to stream_id.=0A=
+> I think both deviceid and streamid can be up to 32 bits in theory.=0A=
 =0A=
->>>> can have multiple entities in the system that are using MSIs (for now=
-=0A=
->>>> PCI and NXP non-PCI bus infrastructure=0A=
->>>> (https://emea01.safelinks.protection.outlook.com/?url=3Dhttps%3A%2F%2F=
-lwn.net%2FArticles%2F635905%2F&data=3D01%7C01%7Cdiana.craciun%40nxp.com%7C6=
-b0c6c879af64718a21908d4d81d534e%7C686ea1d3bc2b4c6fa92cd99c5c301635%7C0&sdat=
-a=3DbpYMMqajWzgzdbdQgy%2FUYR7y%2BswyvwE%2BqFzs7wdIkkA%3D&reserved=3D0). I g=
-uess that we may have other=0A=
->>>> platform devices that are using MSIs in the future.=0A=
->>>>=0A=
->>>> Thanks,=0A=
->>>> Diana=0A=
->>>>=0A=
->>>>=0A=
->>> Don't have the time to explore NXP in depth, sorry - there's=0A=
->>> a lot of complexity there.=0A=
->>> Could you maybe stick some bits to specify bus type in there?=0A=
->>> It just looks very wrong to push low level things like this=0A=
->>> that users have no interest in up the stack.=0A=
->>>=0A=
->> Let's generalize the problem a little bit, the NXP details just does not=
-=0A=
->> matter much. The problem we have is the following:=0A=
->>=0A=
->> The GIC-ITS, the ARM MSI controller is using deviceIDs in order to remap=
-=0A=
->> the interrupts. Each device which is expected to send MSIs has a=0A=
->> deviceID associated with it. These deviceIDs are configured into devices=
-=0A=
->> by software/firmware. There is support in the device tree to specify the=
-=0A=
->> correlation between requesterID and deviceID:=0A=
->>=0A=
->> "msi-map: Maps a Requester ID to an MSI controller and associated=0A=
->>   msi-specifier data. The property is an arbitrary number of tuples of=
-=0A=
->>   (rid-base,msi-controller,msi-base,length)"=0A=
->> (https://emea01.safelinks.protection.outlook.com/?url=3Dhttps%3A%2F%2Fgi=
-t.kernel.org%2Fpub%2Fscm%2Flinux%2Fkernel%2Fgit%2Ftorvalds%2Flinux.git%2Ftr=
-ee%2FDocumentation%2Fdevicetree%2Fbindings%2Fpci%2Fpci-msi.txt&data=3D01%7C=
-01%7Cdiana.craciun%40nxp.com%7C259982f3a83b4160083708d4d881d48a%7C686ea1d3b=
-c2b4c6fa92cd99c5c301635%7C0&sdata=3DQSRwrYcsTk9%2FgekD0YBYKvpWv05%2BXKiH2ab=
-Pp%2FtHpes%3D&reserved=3D0)=0A=
->>=0A=
->> Our problem is that we have to allocate these deviceIDs in QEMU as well=
-=0A=
->> and we have to ensure that they are unique. Currently, for PCI, the=0A=
->> assumption requesterID=3DdeviceID is made which will no longer be true i=
-n=0A=
->> case other devices are added. So we need a way (preferable a general=0A=
->> one) to allocate these IDs to different devices in the system in a=0A=
->> consistent way which will ensure that two devices do not share the same =
-ID.=0A=
-> My question would be, do other types of devices that are there=0A=
-> right now have some kind of ID like the requester ID?=0A=
-> If so I would say just use that, and set high bits in the device ID=0A=
-> to specify the type (e.g. 00 for pci, etc).=0A=
-=0A=
-Would this mean extending the PCI requesterID usage as well? Or assume=0A=
-that it's 00 for PCI and no changes are needed? I understand that with=0A=
-this approach the allocation is  static: 00 for PCI, 01 for device type=0A=
-X, etc., so the situation when we have multiple controllers (PCI or=0A=
-whatever other devices) has to be solved differently. Wouldn't be this=0A=
-more complex?=0A=
+Yes, both of them can be up to 32 bit. I can extend the field to 32 bit.=0A=
 =0A=
 >=0A=
->=0A=
-> IMHO if possible that is preferable to pushing this up to users.=0A=
->=0A=
->=0A=
->> The reason I put this ID into the controller itself is because on real=
+> With respect to the renaming, stream_id really is ARM specific and=0A=
+> corresponds to the ID space before the SMMU while you mostly address=0A=
+> device id problematics here (ie. space id input to the interrupt=0A=
+> controller). Maybe a more generic terminology such as originator id=0A=
+> could be used or source id (I think this is Intel terminology though).=0A=
 =0A=
->> hardware is actually programmed into the controller. It is needed (for=
+I agree, originator id sounds good and so far it doesn't seem to overlap=0A=
+to other specific terminology.=0A=
 =0A=
->> example) when the MSIs are sent.=0A=
->>=0A=
->> Thanks,=0A=
->>=0A=
->> Diana=0A=
->>=0A=
-> IIUC what happens on real hardware is controller maps each requester ID=
+>=0A=
+> Maybe the changes in semantics of the field should be=0A=
+> associated/combined with its new computation found in next patch? see=0A=
+> comments in subsequent patch.=0A=
 =0A=
-> (or presumably other source ID in the request) to the device ID,=0A=
-> and the mapping is internal to controller.=0A=
-> If you wanted a lot of flexibility then looks like you could pass this=0A=
-> mapping to controllers, but is it really necessary?=0A=
-> Why don't we build a mapping that's convenient for us?=0A=
->=0A=
->=0A=
+I agree.=0A=
+=0A=
 Thanks,=0A=
 =0A=
 Diana=0A=
+=0A=
 =0A=

@@ -1,116 +1,100 @@
-Received: by 10.223.183.22 with SMTP id l22csp2506509wre;
-        Thu, 17 Aug 2017 11:32:44 -0700 (PDT)
-X-Received: by 10.202.76.148 with SMTP id z142mr9050947oia.271.1502994764843;
-        Thu, 17 Aug 2017 11:32:44 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1502994764; cv=none;
+Received: by 10.223.183.22 with SMTP id l22csp2591997wre;
+        Thu, 17 Aug 2017 13:05:16 -0700 (PDT)
+X-Received: by 10.99.97.131 with SMTP id v125mr4231507pgb.339.1503000316711;
+        Thu, 17 Aug 2017 13:05:16 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1503000316; cv=none;
         d=google.com; s=arc-20160816;
-        b=S1q6eUB7BXHEyfHJKy501rHcfu560wZWRPuJ01ivwqespBBe7jIic+o0dxJh0dWmFA
-         ebWXEvWcsZRJBg2GEC4j5/FX/e9fwTAyTfwpRAL/V3CKr5F78gfQlOetXwd2FK2D90oT
-         qahEMrE8kqdwwQeJOU8a156KBdOmRUcHstpvHOG1Q8TIduAnA+GIkWdjDeJm5Dntem2w
-         24W4m9k+9CfD/+uUTLi5oOOAW/MxFc919TvoVDEv2Z4IyceNLNjZ5N7y7zSgTpVplz10
-         NRI27eq21bF/SzwoCUK0QJH001FF+u6JEbhNevunucXotZau6W8SSPqS6KgBi77io4Fz
-         cklw==
+        b=nNs6jCdK+g8WoBZWg3hoeR7gLq5cA4KwBmKN11awMNx4YXICs4FzybORT7W+9j/dXA
+         XU0fA2LFMsN23FRTiqVl+DnOcX9S8xUSsgTWpwoqYt8vnB2grXkgMEwQf222FRVTK8/b
+         zVZwD2A/oO7w5hJ0uC0LdB/r56tLjLuNI7fxgMHhaXTPQpHGn/X3ihekmSyZwjHME8BG
+         hMrkWWrHRGiPKTIKxkRnbBwHuq+6+Z3qA0I+XHYaWsTPGPSBYlMtV19QwfBqn0ajv/xi
+         FMbjfyjhgW42ayoqyM9ZuV1KirHAV4DUQIqV1uj14QqynWTnhlrkrk65NhX+OkozfKFV
+         Yu1A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=date:cc:to:from:resent-from:content-transfer-encoding:mime-version
-         :in-reply-to:subject:reply-to:message-id:arc-authentication-results;
-        bh=AyG/vzFnl4CnxX5W1v/B1fPBNxkW+MKFmdET/QQS7U8=;
-        b=GuSyLwpn8K6+teNVD2GT2fVi6YX05qMPPahpsbaDqL1yYoP3BwXJI4Fx7N9I5MmzCE
-         666fHivyeLrkNzUbhsaKfR2Z0yLDiA5/ds4foRK+9wq4Ew8NH1JXhN9essnEgbqWWGfa
-         hnilLcYceOBfsB2C5eHpJbRmobAo2XEyUUQrtBJgjX6sYI9lc2gw71wR7lmtdZg913Zy
-         rTKzkzpMPjabsq4py2/jA4H0a+XyjtQL5k/XKGeXSwMV6Ba8hFiV949PcJJp2IEk2jtu
-         IDjGFocvgbcT0aOeYk09eo99CZ8sVvwRGpmsCNEhMZa+px3EPIuDkbzMIuEw+k4wLDfM
-         GC+w==
+        h=content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:cc:to:subject
+         :dkim-signature:arc-authentication-results;
+        bh=DPZSeqQv3K+AIxQ1eDE3tv8uAO+Lf5Y9wSOW9AqdbIM=;
+        b=G41I4o7PIy/gIN4WhY2SqQo5LNuZ6Mi6lEvSaOgytsCkHcFXyA4r5HNhz1zxjoanVu
+         tpi8vw/KyC/wSeVoZ6bfJCFax9tYMZvvZzbdVns44W5o0rywpf3EeaCxYQC8RX5+34zA
+         wCzpU3Sx9aBg/qXWgJsvsP0q7af74mntwEuvTyR/hAJr47/bI83UfMnTrl5nExsrQLnB
+         MsN5KqlVXczCGvp00vKUPoa0LjrZSzduEZ/OstmXd3FnxWCDr2PTaDlAi80JDSEClEoJ
+         7yvYQtrqRjMu84mnL1zOnq3e/njrAbc6QQMr1tF9gUTgHzyMVWDt5J3R2RDxu4QIN2Ma
+         Pl/g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=neutral (google.com: 135.84.80.217 is neither permitted nor denied by best guess record for domain of no-reply@patchew.org) smtp.mailfrom=no-reply@patchew.org
-Return-Path: <no-reply@patchew.org>
-Received: from sender-of-o52.zoho.com (sender-of-o52.zoho.com. [135.84.80.217])
-        by mx.google.com with ESMTPS id j62si2852037oif.268.2017.08.17.11.32.44
+       dkim=pass header.i=@linaro.org header.s=google header.b=fcJqZzNM;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 2607:f8b0:400e:c05::235 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <richard.henderson@linaro.org>
+Received: from mail-pg0-x235.google.com (mail-pg0-x235.google.com. [2607:f8b0:400e:c05::235])
+        by mx.google.com with ESMTPS id l14si1514198plk.441.2017.08.17.13.05.16
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 17 Aug 2017 11:32:44 -0700 (PDT)
-Received-SPF: neutral (google.com: 135.84.80.217 is neither permitted nor denied by best guess record for domain of no-reply@patchew.org) client-ip=135.84.80.217;
+        Thu, 17 Aug 2017 13:05:16 -0700 (PDT)
+Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 2607:f8b0:400e:c05::235 as permitted sender) client-ip=2607:f8b0:400e:c05::235;
 Authentication-Results: mx.google.com;
-       spf=neutral (google.com: 135.84.80.217 is neither permitted nor denied by best guess record for domain of no-reply@patchew.org) smtp.mailfrom=no-reply@patchew.org
-Received: from [172.17.0.2] (23.253.156.214 [23.253.156.214]) by mx.zohomail.com
-	with SMTPS id 1502994760334461.6627004021169; Thu, 17 Aug 2017 11:32:40 -0700 (PDT)
-Message-ID: <150299475927.27.5716239824585872477@205a2245145f>
-Reply-To: <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-devel] [RFC PATCH 0/9] TCG Vector types and example conversion
-In-Reply-To: <20170817180404.29334-1-alex.bennee@linaro.org>
+       dkim=pass header.i=@linaro.org header.s=google header.b=fcJqZzNM;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 2607:f8b0:400e:c05::235 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: by mail-pg0-x235.google.com with SMTP id t80so21965600pgb.5
+        for <alex.bennee@linaro.org>; Thu, 17 Aug 2017 13:05:16 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=subject:to:cc:references:from:message-id:date:user-agent
+         :mime-version:in-reply-to:content-language:content-transfer-encoding;
+        bh=DPZSeqQv3K+AIxQ1eDE3tv8uAO+Lf5Y9wSOW9AqdbIM=;
+        b=fcJqZzNMbd7+AmUmuCwbTcZh79dK1T5/9/Kmfq87FrrA5znocIG8ZV/znozfJ3dwGY
+         oeRkhWf5uDg8s/PypdFOOGnxxXI8eHLAZ/5U8WpRl5K2mB1UkXOrSl3gDWSOpjSD+Gzq
+         tjnJ7QvPLt8gHFzhERi0TSVinZQPMWTsOqE20=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+         :user-agent:mime-version:in-reply-to:content-language
+         :content-transfer-encoding;
+        bh=DPZSeqQv3K+AIxQ1eDE3tv8uAO+Lf5Y9wSOW9AqdbIM=;
+        b=o+RahtU0gVCGlDLsp1yQQ2eotlr4NStR/OBQ7/auAb9UIxsoq4izW/QLcKfgZ1PQpF
+         XiIecy1aHx5FyttndzAlKrOQ5XxzkHQTywdTdFXRzfUvA6dFU3heIICOTzuUut5fqp4f
+         vLt4TwlMPczcDVGDRzk3pPcsMnhJ4ihFIng+2nfKC1I2eVCdOjQvwewV6TrayZYkyjhe
+         fg4o0LlY0JAOVxmgPnAIKAGKfP/yLRak53owyBRvNPTCfgaSxmSTb+ZNFo/jPyh6gDxv
+         scMZ5p5rCSlz9qecYF1opCsoCjegzg4RZAXmj2tAPjdAiARxPqE0Qclgr74ZUKhwpMl4
+         DnDg==
+X-Gm-Message-State: AHYfb5jXxaLtmP17XVpRLMeGtmvWpPbwdU9ZUcP25foelEpaYiRD+fS0
+	VhsigrChGJiaGvpW3Gs1DihA
+X-Received: by 10.101.70.137 with SMTP id h9mr6088734pgr.50.1503000316147;
+        Thu, 17 Aug 2017 13:05:16 -0700 (PDT)
+Return-Path: <richard.henderson@linaro.org>
+Received: from bigtime.twiddle.net (97-126-108-236.tukw.qwest.net. [97.126.108.236])
+        by smtp.gmail.com with ESMTPSA id s11sm6717399pgr.53.2017.08.17.13.05.14
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 17 Aug 2017 13:05:14 -0700 (PDT)
+Subject: Re: [Qemu-devel] [RFC PATCH 1/9] tcg/README: listify the TCG types.
+To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>, rth@twiddle.net,
+ cota@braap.org, batuzovk@ispras.ru
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
+References: <20170817180404.29334-1-alex.bennee@linaro.org>
+ <20170817180404.29334-2-alex.bennee@linaro.org>
+From: Richard Henderson <richard.henderson@linaro.org>
+Message-ID: <6a15c518-1091-cac7-77b6-b833efd745c6@linaro.org>
+Date: Thu, 17 Aug 2017 13:05:12 -0700
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+ Thunderbird/52.2.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Resent-From: 
-From: no-reply@patchew.org
-To: alex.bennee@linaro.org
-Cc: famz@redhat.com, rth@twiddle.net, cota@braap.org, batuzovk@ispras.ru, qemu-arm@nongnu.org, alex.bennee@linaro.org, qemu-devel@nongnu.org
-Date: Thu, 17 Aug 2017 11:32:40 -0700 (PDT)
-X-ZohoMailClient: External
-X-TUID: cxZNud/1xSXe
+In-Reply-To: <20170817180404.29334-2-alex.bennee@linaro.org>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+X-TUID: HHqiokAgxQby
 
-SGksCgpUaGlzIHNlcmllcyBzZWVtcyB0byBoYXZlIHNvbWUgY29kaW5nIHN0eWxlIHByb2JsZW1z
-LiBTZWUgb3V0cHV0IGJlbG93IGZvcgptb3JlIGluZm9ybWF0aW9uOgoKVHlwZTogc2VyaWVzCk1l
-c3NhZ2UtaWQ6IDIwMTcwODE3MTgwNDA0LjI5MzM0LTEtYWxleC5iZW5uZWVAbGluYXJvLm9yZwpT
-dWJqZWN0OiBbUWVtdS1kZXZlbF0gW1JGQyBQQVRDSCAwLzldIFRDRyBWZWN0b3IgdHlwZXMgYW5k
-IGV4YW1wbGUgY29udmVyc2lvbgoKPT09IFRFU1QgU0NSSVBUIEJFR0lOID09PQojIS9iaW4vYmFz
-aAoKQkFTRT1iYXNlCm49MQp0b3RhbD0kKGdpdCBsb2cgLS1vbmVsaW5lICRCQVNFLi4gfCB3YyAt
-bCkKZmFpbGVkPTAKCmdpdCBjb25maWcgLS1sb2NhbCBkaWZmLnJlbmFtZWxpbWl0IDAKZ2l0IGNv
-bmZpZyAtLWxvY2FsIGRpZmYucmVuYW1lcyBUcnVlCgpjb21taXRzPSIkKGdpdCBsb2cgLS1mb3Jt
-YXQ9JUggLS1yZXZlcnNlICRCQVNFLi4pIgpmb3IgYyBpbiAkY29tbWl0czsgZG8KICAgIGVjaG8g
-IkNoZWNraW5nIFBBVENIICRuLyR0b3RhbDogJChnaXQgbG9nIC1uIDEgLS1mb3JtYXQ9JXMgJGMp
-Li4uIgogICAgaWYgISBnaXQgc2hvdyAkYyAtLWZvcm1hdD1lbWFpbCB8IC4vc2NyaXB0cy9jaGVj
-a3BhdGNoLnBsIC0tbWFpbGJhY2sgLTsgdGhlbgogICAgICAgIGZhaWxlZD0xCiAgICAgICAgZWNo
-bwogICAgZmkKICAgIG49JCgobisxKSkKZG9uZQoKZXhpdCAkZmFpbGVkCj09PSBURVNUIFNDUklQ
-VCBFTkQgPT09CgpVcGRhdGluZyAzYzhjZjVhOWMyMWZmODc4MjE2NGQxZGVmN2Y0NGJkODg4NzEz
-Mzg0ClN3aXRjaGVkIHRvIGEgbmV3IGJyYW5jaCAndGVzdCcKYmFiNjExOTJhNCB0YXJnZXQvYXJt
-L3RyYW5zbGF0ZS1hNjQ6IHZlY3RvcmlzZSBzbXVsbCB2RC40cywgdk4uWzQ4XXMsIHZNLmhbXQpj
-NWM3MzNhMWY5IHRhcmdldC9hcm0vaGVscGVyczogaW50cm9kdWNlIEFEVlNJTUQgZmxhZ3MKZTI3
-NjkxZjA3YSB0YXJnZXQvYXJtL3RyYW5zbGF0ZS1hNjQ6IHJlZ2lzdGVyIGdsb2JhbCB2ZWN0b3Jz
-CjZhNTVlNjA0NTQgdGFyZ2V0L2FybS90cmFuc2xhdGUtYTY0OiByZWduYW1lcyAtPiB4X3JlZ25h
-bWVzCmU3YTBlMjQ2NmIgYXJtL2NwdS5oOiBhbGlnbiBWRlAgcmVnaXN0ZXJzCmVmYTk0YzA0Y2Ug
-aGVscGVyLWhlYWQ6IGFkZCBzdXBwb3J0IGZvciB2ZWMgdHlwZQpkOGM5NmViZGQyIHRjZzogZ2Vu
-ZXJhdGUgcHRycyB0byB2ZWN0b3IgcmVnaXN0ZXJzCjI2ZWMwN2MzZDcgdGNnOiBpbnRyb2R1Y2Ug
-dGhlIGNvbmNlcHRzIG9mIGEgVENHdl92ZWMgcmVnaXN0ZXIgdHlwZQo5ZWMzYjQ3NTRkIHRjZy9S
-RUFETUU6IGxpc3RpZnkgdGhlIFRDRyB0eXBlcy4KCj09PSBPVVRQVVQgQkVHSU4gPT09CkNoZWNr
-aW5nIFBBVENIIDEvOTogdGNnL1JFQURNRTogbGlzdGlmeSB0aGUgVENHIHR5cGVzLi4uLgpDaGVj
-a2luZyBQQVRDSCAyLzk6IHRjZzogaW50cm9kdWNlIHRoZSBjb25jZXB0cyBvZiBhIFRDR3ZfdmVj
-IHJlZ2lzdGVyIHR5cGUuLi4KQ2hlY2tpbmcgUEFUQ0ggMy85OiB0Y2c6IGdlbmVyYXRlIHB0cnMg
-dG8gdmVjdG9yIHJlZ2lzdGVycy4uLgpDaGVja2luZyBQQVRDSCA0Lzk6IGhlbHBlci1oZWFkOiBh
-ZGQgc3VwcG9ydCBmb3IgdmVjIHR5cGUuLi4KQ2hlY2tpbmcgUEFUQ0ggNS85OiBhcm0vY3B1Lmg6
-IGFsaWduIFZGUCByZWdpc3RlcnMuLi4KQ2hlY2tpbmcgUEFUQ0ggNi85OiB0YXJnZXQvYXJtL3Ry
-YW5zbGF0ZS1hNjQ6IHJlZ25hbWVzIC0+IHhfcmVnbmFtZXMuLi4KQ2hlY2tpbmcgUEFUQ0ggNy85
-OiB0YXJnZXQvYXJtL3RyYW5zbGF0ZS1hNjQ6IHJlZ2lzdGVyIGdsb2JhbCB2ZWN0b3JzLi4uCkNo
-ZWNraW5nIFBBVENIIDgvOTogdGFyZ2V0L2FybS9oZWxwZXJzOiBpbnRyb2R1Y2UgQURWU0lNRCBm
-bGFncy4uLgpXQVJOSU5HOiBsaW5lIG92ZXIgODAgY2hhcmFjdGVycwojNTA6IEZJTEU6IHRhcmdl
-dC9hcm0vYWR2c2ltZF9oZWxwZXJfZmxhZ3MuaDozMDoKKyAqICAgQURWU0lNRF9BTExfRUxUICAt
-IHRoZSB0b3RhbCBjb3VudCBvZiBlbGVtZW50cyAoZS5nLiBjbGVhciBhbGwtb3ByIGVsZW1lbnRz
-KQoKdG90YWw6IDAgZXJyb3JzLCAxIHdhcm5pbmdzLCA2NSBsaW5lcyBjaGVja2VkCgpZb3VyIHBh
-dGNoIGhhcyBzdHlsZSBwcm9ibGVtcywgcGxlYXNlIHJldmlldy4gIElmIGFueSBvZiB0aGVzZSBl
-cnJvcnMKYXJlIGZhbHNlIHBvc2l0aXZlcyByZXBvcnQgdGhlbSB0byB0aGUgbWFpbnRhaW5lciwg
-c2VlCkNIRUNLUEFUQ0ggaW4gTUFJTlRBSU5FUlMuCkNoZWNraW5nIFBBVENIIDkvOTogdGFyZ2V0
-L2FybS90cmFuc2xhdGUtYTY0OiB2ZWN0b3Jpc2Ugc211bGwgdkQuNHMsIHZOLls0OF1zLCB2TS5o
-W10uLi4KV0FSTklORzogbGluZSBvdmVyIDgwIGNoYXJhY3RlcnMKIzY1OiBGSUxFOiB0YXJnZXQv
-YXJtL3RyYW5zbGF0ZS1hNjQuYzoxMDQ2OToKK3R5cGVkZWYgdm9pZCBBZHZTSU1ER2VuVHdvUGx1
-c09uZVZlY3RvckZuKFRDR3ZfdmVjLCBUQ0d2X3ZlYywgVENHdl9pMzIsIFRDR3ZfaTMyKTsKCkVS
-Uk9SOiBsaW5lIG92ZXIgOTAgY2hhcmFjdGVycwojNzE6IEZJTEU6IHRhcmdldC9hcm0vdHJhbnNs
-YXRlLWE2NC5jOjEwNDc1Ogorc3RhdGljIGJvb2wgaGFuZGxlX3ZlY19zaW1kX211bF9hZGRzdWIo
-RGlzYXNDb250ZXh0ICpzLCB1aW50MzJfdCBpbnNuLCBpbnQgb3Bjb2RlLCBpbnQgc2l6ZSwgYm9v
-bCBpc19xLCBib29sIHUsIGludCBybiwgaW50IHJtLCBpbnQgcmQpCgpFUlJPUjogdGhhdCBvcGVu
-IGJyYWNlIHsgc2hvdWxkIGJlIG9uIHRoZSBwcmV2aW91cyBsaW5lCiM4NjogRklMRTogdGFyZ2V0
-L2FybS90cmFuc2xhdGUtYTY0LmM6MTA0OTA6CisgICAgICAgICAgICBpZiAoIXUpCisgICAgICAg
-ICAgICB7CgpXQVJOSU5HOiBsaW5lIG92ZXIgODAgY2hhcmFjdGVycwojOTU6IEZJTEU6IHRhcmdl
-dC9hcm0vdHJhbnNsYXRlLWE2NC5jOjEwNDk5OgorICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICBBRFZTSU1EX09QUl9FTFRfU0hJRlQsIEFEVlNJTURfT1BSX0VMVF9CSVRTLCA0
-KTsKCkVSUk9SOiBsaW5lIG92ZXIgOTAgY2hhcmFjdGVycwojOTk6IEZJTEU6IHRhcmdldC9hcm0v
-dHJhbnNsYXRlLWE2NC5jOjEwNTAzOgorICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgQURWU0lNRF9ET0ZGX0VMVF9TSElGVCwgQURWU0lNRF9ET0ZGX0VMVF9CSVRTLCA0
-KTsKCldBUk5JTkc6IGxpbmUgb3ZlciA4MCBjaGFyYWN0ZXJzCiMxNDE6IEZJTEU6IHRhcmdldC9h
-cm0vdHJhbnNsYXRlLWE2NC5jOjEwNTkwOgorICAgICAgICBpZiAoaGFuZGxlX3ZlY19zaW1kX211
-bF9hZGRzdWIocywgaW5zbiwgb3Bjb2RlLCBzaXplLCBpc19xLCB1LCBybiwgcm0sIHJkKSkgewoK
-dG90YWw6IDMgZXJyb3JzLCAzIHdhcm5pbmdzLCAxMDkgbGluZXMgY2hlY2tlZAoKWW91ciBwYXRj
-aCBoYXMgc3R5bGUgcHJvYmxlbXMsIHBsZWFzZSByZXZpZXcuICBJZiBhbnkgb2YgdGhlc2UgZXJy
-b3JzCmFyZSBmYWxzZSBwb3NpdGl2ZXMgcmVwb3J0IHRoZW0gdG8gdGhlIG1haW50YWluZXIsIHNl
-ZQpDSEVDS1BBVENIIGluIE1BSU5UQUlORVJTLgoKPT09IE9VVFBVVCBFTkQgPT09CgpUZXN0IGNv
-bW1hbmQgZXhpdGVkIHdpdGggY29kZTogMQoKCi0tLQpFbWFpbCBnZW5lcmF0ZWQgYXV0b21hdGlj
-YWxseSBieSBQYXRjaGV3IFtodHRwOi8vcGF0Y2hldy5vcmcvXS4KUGxlYXNlIHNlbmQgeW91ciBm
-ZWVkYmFjayB0byBwYXRjaGV3LWRldmVsQGZyZWVsaXN0cy5vcmc=
+On 08/17/2017 11:03 AM, Alex Bennée wrote:
+> Although the other types are aliases lets make it clear what TCG types
+> are available.
+> 
+> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+> ---
+>  tcg/README | 9 ++++++---
+>  1 file changed, 6 insertions(+), 3 deletions(-)
+
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+
+
+r~

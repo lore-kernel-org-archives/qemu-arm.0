@@ -1,90 +1,97 @@
-Received: by 10.223.183.22 with SMTP id l22csp219339wre;
-        Mon, 14 Aug 2017 01:59:25 -0700 (PDT)
-X-Received: by 10.55.190.2 with SMTP id o2mr2061691qkf.132.1502701165783;
-        Mon, 14 Aug 2017 01:59:25 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1502701165; cv=none;
+Received: by 10.223.183.22 with SMTP id l22csp1974139wre;
+        Thu, 17 Aug 2017 03:42:24 -0700 (PDT)
+X-Received: by 10.237.63.92 with SMTP id q28mr7222602qtf.49.1502966543919;
+        Thu, 17 Aug 2017 03:42:23 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1502966543; cv=none;
         d=google.com; s=arc-20160816;
-        b=NtGz5rz6g9bIfHxdeLTKEFv21VoNodDXmX7b9PjdnipjDDFH9ljZV3RpFeaEiN4zyh
-         gaUqQofD3SRNuDDvEROnLmot4/faysPs6f9ZLCxyypsYqwramZXfZEPUhHy8a4V+ZY+e
-         UDYDF+QK9eY506OMYmWZ06v+J+TEwReG2KzmRo8QWSD8J2cyI7fwdcjKwxw7WVprut+p
-         C5HQuwC9X15ukv41CEK/3HvHLftUyzock8PDxIOELJp/mmWtseo3biGscB0Pdl74sj+m
-         W/KotYhvbep/B2aVfEHJXDsdKmWunjwVDd19Rw0uzJqocL4OXzPKTHA2XOQTp+/xrP0F
-         Vg6Q==
+        b=bLHVZAFRYMlchN12FPScx8/AZr0goSKsqPV51x7giiZDGohYE46F8xslk6XOnWK6Bh
+         CD13KbKgucQ9/Ivghc7I+tkXyNNQ57GOfTBdZ0iIV8iEgIAa8rWHStkqs0CVwNTyw0G6
+         jGpeK+EbKqaEdW/7smAQeZRw8Ogy9QR0AtmYdM9RT7b0M+SkSuj2dcdoYekvgtvH6QfN
+         IGmdhq4OAjxRpskeMtammgML/c0WUR4rW/gzeEsnPWrEYZ/0BOpZlMEOZcNSo79kBg8J
+         jV3DAeVosk1SrsjkLBURfumpO0nBZFK7rgIjgW7hTLhTB/khyxZlvJm/zEp3O/gb8YVu
+         OHzA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
-         :content-disposition:mime-version:references:message-id:to:from:date
-         :dmarc-filter:arc-authentication-results;
-        bh=ktYnxWV0/5KXHX9Jw9zuGEkNK2GfPAVrLd8uXn5zNn8=;
-        b=W06qyKwZkHwVqdh6rwWT8PM/k3kHw6fuqbPrmlbMvPsV9J59etdWNx2sav5n1GC6WF
-         RvlzrEbzjG/7Y2f17YnddK90X4yUF/8keb3D1kSdrYnXKII6dqyKVMZMrnAKtRgDR00L
-         ZvK8qtq6e/2fULiivYMn7hEjOLrUKUIFMnftyArhVVNef8uK32c4dtn5AzFA/H76Toz2
-         mGYbb/uUStUtANpW4isgnqvvHTX6qCZ/G7m++pODyDWtOzN9PYul4tMtA5ej7/B6RudJ
-         /fdE37tKVXOZltt+f7KEXY0N9zHZZuk/YiLedwVOec9mw4ACr13En+jlPEf47yMQmXa1
-         0e4g==
+         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
+         :references:in-reply-to:mime-version:dkim-signature
+         :arc-authentication-results;
+        bh=FDBEeYIp4H4wZANhr7GKuTVSa2NyjSNsSyypF+cQnqA=;
+        b=gf6IT7juHTO5KG0nwhV5f0RBnSvHkIXj9Vo6MDWeNveHqornk+IyOR2xAXMi3zS7YJ
+         tAl47gWjRWFsXt6Vz/Vzwprs6PN0cuP6NEC1AtYCVQhmX7Qv9qvbKmccDLmn8pZp/LV8
+         mEW1xkB0oWNkujYGogZc49peOKZbWMq7mJ3IMcDjR72xqmSUyb1mzBQNUPZ4StTPnIrb
+         COY2pXboTY/yFAwYaCfbfcSxIskzlE+MifHywgN2y7DTLQ7W18IAGbjL1VGcELOyX8vI
+         mycE+RjzzpL4d23iaCMBBlf9mA7FcA9KMu0PFe3TgDGVBUxX41PzkjMDWYREyspx4atL
+         ahKA==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b=R3RKYcZD;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id d41si3858784qkh.173.2017.08.14.01.59.25
+        by mx.google.com with ESMTPS id f2si2636243qkj.379.2017.08.17.03.42.23
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 14 Aug 2017 01:59:25 -0700 (PDT)
+        Thu, 17 Aug 2017 03:42:23 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b=R3RKYcZD;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:58951 helo=lists.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:44106 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1dhBDX-0001z6-6u
-	for alex.bennee@linaro.org; Mon, 14 Aug 2017 04:59:23 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:37665)
+	id 1diIFp-0003Ug-AT
+	for alex.bennee@linaro.org; Thu, 17 Aug 2017 06:42:21 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:37455)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <drjones@redhat.com>) id 1dhBDT-0001yv-IZ
-	for qemu-arm@nongnu.org; Mon, 14 Aug 2017 04:59:21 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1diIFm-0003TO-Hg
+	for qemu-arm@nongnu.org; Thu, 17 Aug 2017 06:42:19 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <drjones@redhat.com>) id 1dhBDQ-0005RZ-DR
-	for qemu-arm@nongnu.org; Mon, 14 Aug 2017 04:59:19 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:46834)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <drjones@redhat.com>)
-	id 1dhBDQ-0005Or-4B; Mon, 14 Aug 2017 04:59:16 -0400
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
-	[10.5.11.11])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id A1B7395F27;
-	Mon, 14 Aug 2017 08:53:27 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com A1B7395F27
-Authentication-Results: ext-mx04.extmail.prod.ext.phx2.redhat.com;
-	dmarc=none (p=none dis=none) header.from=redhat.com
-Authentication-Results: ext-mx04.extmail.prod.ext.phx2.redhat.com;
-	spf=fail smtp.mailfrom=drjones@redhat.com
-Received: from kamzik.brq.redhat.com (unknown [10.43.2.160])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id C69B26047B;
-	Mon, 14 Aug 2017 08:53:25 +0000 (UTC)
-Date: Mon, 14 Aug 2017 10:53:23 +0200
-From: Andrew Jones <drjones@redhat.com>
-To: Igor Mammedov <imammedo@redhat.com>
-Message-ID: <20170814085323.ethzsjtx3xse2muj@kamzik.brq.redhat.com>
-References: <1500040339-119465-1-git-send-email-imammedo@redhat.com>
-	<1500040339-119465-22-git-send-email-imammedo@redhat.com>
+	(envelope-from <peter.maydell@linaro.org>) id 1diIFl-0005CB-Qh
+	for qemu-arm@nongnu.org; Thu, 17 Aug 2017 06:42:18 -0400
+Received: from mail-wr0-x231.google.com ([2a00:1450:400c:c0c::231]:33492)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1diIFl-0005Bx-Ig
+	for qemu-arm@nongnu.org; Thu, 17 Aug 2017 06:42:17 -0400
+Received: by mail-wr0-x231.google.com with SMTP id b65so39824325wrd.0
+	for <qemu-arm@nongnu.org>; Thu, 17 Aug 2017 03:42:17 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=FDBEeYIp4H4wZANhr7GKuTVSa2NyjSNsSyypF+cQnqA=;
+	b=R3RKYcZD0NAr/Vvjrbjc3oZJb0Hz+5Pul/uaaj8QyxfFhuyt6RLWoob5tD8gFmp5dN
+	gdsE4kphj3IDEvv23ImKLIVMFXlKkcc8ErdI8hTjgiCfxsg9HLBJjvfx9kmVZhb5+z36
+	ifPblQhVNQ01u1umDPCpFGB9o3mIq3drZWXs4=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=FDBEeYIp4H4wZANhr7GKuTVSa2NyjSNsSyypF+cQnqA=;
+	b=V4eTb64e2QiRxfpKp6zruL6nsDnAyDPwmqtOO73mGvjnAbKeM0hjsdI918z07bv4Q5
+	Haq689gqCI4cCjMIIxNQ2h/5zGPeyHJLv4+/bi/DXUvsfZgtaeKcgTYqDE482f2wE403
+	OA/aMvl8b4TkC+ffwwekgepoQfV8x31NyuTFJyr2/4rQGxhcMO/JhEd+aOtdwE4slmuJ
+	vMYwgW6ymYo5ySWWKvPGI3YjdpQ3tcRpnBXMoir4uyiMGAqGYoFQjT+9pahIVMcMFBNc
+	fjWgj2wofOjIVrOfSa5NWTDlQ3RSsn5bdN/or34ismyB+V703DZLF7EKXhWEbzgjdYJX
+	lM+A==
+X-Gm-Message-State: AHYfb5h84mUgcpKz326W/AmRdyP5rJiySgeJK9tQ+rzSY/STyFRtb4b1
+	pEZKffa7EynW8nif2JyzK5CSu1pph7SB
+X-Received: by 10.223.163.20 with SMTP id c20mr3338372wrb.173.1502966536258;
+	Thu, 17 Aug 2017 03:42:16 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <1500040339-119465-22-git-send-email-imammedo@redhat.com>
-User-Agent: Mutt/1.6.0.1 (2016-04-01)
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.28]);
-	Mon, 14 Aug 2017 08:53:27 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH 21/28] arm: replace
- cpu_arm_init() with cpu_generic_init()
+Received: by 10.223.134.54 with HTTP; Thu, 17 Aug 2017 03:41:55 -0700 (PDT)
+In-Reply-To: <20170808132300.uyrrmgoij4qlwy52@kamzik.brq.redhat.com>
+References: <1500471597-2517-1-git-send-email-drjones@redhat.com>
+	<20170808132300.uyrrmgoij4qlwy52@kamzik.brq.redhat.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 17 Aug 2017 11:41:55 +0100
+Message-ID: <CAFEAcA8NLFVitFfMxKC3Tp7u_azFkOSnWBcddhUCF5Fx2dm+aw@mail.gmail.com>
+To: Andrew Jones <drjones@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2a00:1450:400c:c0c::231
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v2 0/4] ARM: KVM: Enable
+ in-kernel PMU with user space gic
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -96,150 +103,22 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
-	Eduardo Habkost <ehabkost@redhat.com>, qemu-devel@nongnu.org,
-	qemu-arm@nongnu.org, Jan Kiszka <jan.kiszka@web.de>,
-	Andreas =?iso-8859-1?Q?F=E4rber?= <afaerber@suse.de>
+Cc: Christoffer Dall <cdall@linaro.org>, qemu-arm <qemu-arm@nongnu.org>,
+	QEMU Developers <qemu-devel@nongnu.org>, Alexander Graf <agraf@suse.de>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: qEHuRIPVayqj
+X-TUID: Jwb+1QGEEw4g
 
-On Fri, Jul 14, 2017 at 03:52:12PM +0200, Igor Mammedov wrote:
-> it's just a wrapper, drop it and use cpu_generic_init() directly
-> 
-> Signed-off-by: Igor Mammedov <imammedo@redhat.com>
-> ---
-> CC: Jan Kiszka <jan.kiszka@web.de>
-> CC: Peter Maydell <peter.maydell@linaro.org>
-> CC: Andrzej Zaborowski <balrogg@gmail.com>
-> CC: qemu-arm@nongnu.org
-> ---
->  target/arm/cpu.h    | 3 +--
->  hw/arm/musicpal.c   | 2 +-
->  hw/arm/omap1.c      | 2 +-
->  hw/arm/omap2.c      | 2 +-
->  hw/arm/pxa2xx.c     | 4 ++--
->  hw/arm/strongarm.c  | 2 +-
->  target/arm/helper.c | 5 -----
->  7 files changed, 7 insertions(+), 13 deletions(-)
-> 
-> diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-> index 16a1e59..c9be0ac 100644
-> --- a/target/arm/cpu.h
-> +++ b/target/arm/cpu.h
-> @@ -746,7 +746,6 @@ int aarch64_cpu_gdb_read_register(CPUState *cpu, uint8_t *buf, int reg);
->  int aarch64_cpu_gdb_write_register(CPUState *cpu, uint8_t *buf, int reg);
->  #endif
->  
-> -ARMCPU *cpu_arm_init(const char *cpu_model);
->  target_ulong do_arm_semihosting(CPUARMState *env);
->  void aarch64_sync_32_to_64(CPUARMState *env);
->  void aarch64_sync_64_to_32(CPUARMState *env);
-> @@ -1999,7 +1998,7 @@ static inline bool arm_excp_unmasked(CPUState *cs, unsigned int excp_idx,
->      return unmasked || pstate_unmasked;
->  }
->  
-> -#define cpu_init(cpu_model) CPU(cpu_arm_init(cpu_model))
-> +#define cpu_init(cpu_model) cpu_generic_init(TYPE_ARM_CPU, cpu_model)
->  
->  #define cpu_signal_handler cpu_arm_signal_handler
->  #define cpu_list arm_cpu_list
-> diff --git a/hw/arm/musicpal.c b/hw/arm/musicpal.c
-> index 9c710f7..0d519f9 100644
-> --- a/hw/arm/musicpal.c
-> +++ b/hw/arm/musicpal.c
-> @@ -1593,7 +1593,7 @@ static void musicpal_init(MachineState *machine)
->      if (!cpu_model) {
->          cpu_model = "arm926";
->      }
-> -    cpu = cpu_arm_init(cpu_model);
-> +    cpu = ARM_CPU(cpu_generic_init(TYPE_ARM_CPU, cpu_model));
->      if (!cpu) {
->          fprintf(stderr, "Unable to find CPU definition\n");
->          exit(1);
-> diff --git a/hw/arm/omap1.c b/hw/arm/omap1.c
-> index 54582bd..391eb28 100644
-> --- a/hw/arm/omap1.c
-> +++ b/hw/arm/omap1.c
-> @@ -3863,7 +3863,7 @@ struct omap_mpu_state_s *omap310_mpu_init(MemoryRegion *system_memory,
->  
->      /* Core */
->      s->mpu_model = omap310;
-> -    s->cpu = cpu_arm_init(core);
-> +    s->cpu = ARM_CPU(cpu_generic_init(TYPE_ARM_CPU, core));
->      if (s->cpu == NULL) {
->          fprintf(stderr, "Unable to find CPU definition\n");
->          exit(1);
-> diff --git a/hw/arm/omap2.c b/hw/arm/omap2.c
-> index 91f5733..a20bb1f 100644
-> --- a/hw/arm/omap2.c
-> +++ b/hw/arm/omap2.c
-> @@ -2261,7 +2261,7 @@ struct omap_mpu_state_s *omap2420_mpu_init(MemoryRegion *sysmem,
->  
->      /* Core */
->      s->mpu_model = omap2420;
-> -    s->cpu = cpu_arm_init(core ?: "arm1136-r2");
-> +    s->cpu = ARM_CPU(cpu_generic_init(TYPE_ARM_CPU, core ?: "arm1136-r2"));
->      if (s->cpu == NULL) {
->          fprintf(stderr, "Unable to find CPU definition\n");
->          exit(1);
-> diff --git a/hw/arm/pxa2xx.c b/hw/arm/pxa2xx.c
-> index 629e6c6..2f1c141 100644
-> --- a/hw/arm/pxa2xx.c
-> +++ b/hw/arm/pxa2xx.c
-> @@ -2065,7 +2065,7 @@ PXA2xxState *pxa270_init(MemoryRegion *address_space,
->      if (!revision)
->          revision = "pxa270";
->  
-> -    s->cpu = cpu_arm_init(revision);
-> +    s->cpu = ARM_CPU(cpu_generic_init(TYPE_ARM_CPU, revision));
->      if (s->cpu == NULL) {
->          fprintf(stderr, "Unable to find CPU definition\n");
->          exit(1);
-> @@ -2197,7 +2197,7 @@ PXA2xxState *pxa255_init(MemoryRegion *address_space, unsigned int sdram_size)
->  
->      s = g_new0(PXA2xxState, 1);
->  
-> -    s->cpu = cpu_arm_init("pxa255");
-> +    s->cpu = ARM_CPU(cpu_generic_init(TYPE_ARM_CPU, "pxa255"));
->      if (s->cpu == NULL) {
->          fprintf(stderr, "Unable to find CPU definition\n");
->          exit(1);
-> diff --git a/hw/arm/strongarm.c b/hw/arm/strongarm.c
-> index 7683edc..a27d7c8 100644
-> --- a/hw/arm/strongarm.c
-> +++ b/hw/arm/strongarm.c
-> @@ -1597,7 +1597,7 @@ StrongARMState *sa1110_init(MemoryRegion *sysmem,
->          exit(1);
->      }
->  
-> -    s->cpu = cpu_arm_init(rev);
-> +    s->cpu = ARM_CPU(cpu_generic_init(TYPE_ARM_CPU, rev));
->  
->      if (!s->cpu) {
->          error_report("Unable to find CPU definition");
-> diff --git a/target/arm/helper.c b/target/arm/helper.c
-> index 2594faa..86e69a6 100644
-> --- a/target/arm/helper.c
-> +++ b/target/arm/helper.c
-> @@ -5237,11 +5237,6 @@ void register_cp_regs_for_features(ARMCPU *cpu)
->      }
->  }
->  
-> -ARMCPU *cpu_arm_init(const char *cpu_model)
-> -{
-> -    return ARM_CPU(cpu_generic_init(TYPE_ARM_CPU, cpu_model));
-> -}
-> -
->  void arm_cpu_register_gdb_regs_for_features(ARMCPU *cpu)
->  {
->      CPUState *cs = CPU(cpu);
-> -- 
-> 2.7.4
-> 
+On 8 August 2017 at 14:23, Andrew Jones <drjones@redhat.com> wrote:
 >
+> Peter,
+>
+> ping?
 
-I agree with the motivation described in the cover letter and the changes
-(which are even mostly verified by the compiler) look good to me.
+I've applied this to target-arm.next ready for the first 2.11
+ARM pullreq. Sorry for the delay, I'd put not-for-2.10 patch
+review onto the back burner since I knew nothing was going to
+go into master til after the release...
 
-Reviewed-by: Andrew Jones <drjones@redhat.com>
+thanks
+-- PMM

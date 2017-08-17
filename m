@@ -1,170 +1,288 @@
-Received: by 10.223.197.9 with SMTP id q9csp7225768wrf;
-        Thu, 19 Oct 2017 13:57:18 -0700 (PDT)
-X-Google-Smtp-Source: ABhQp+ROUQzzXTJ7VAde5ZNohbJA+wjSKK6nSoTjts576f7/551JGphAS+B3+QTdhaAJJ7IIsrq0
-X-Received: by 10.55.80.3 with SMTP id e3mr3579541qkb.254.1508446638355;
-        Thu, 19 Oct 2017 13:57:18 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1508446638; cv=none;
+Received: by 10.223.183.22 with SMTP id l22csp80797wre;
+        Thu, 17 Aug 2017 16:01:19 -0700 (PDT)
+X-Received: by 10.84.215.213 with SMTP id g21mr6322716plj.477.1503010879835;
+        Thu, 17 Aug 2017 16:01:19 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1503010879; cv=none;
         d=google.com; s=arc-20160816;
-        b=RHyAy/5flLDbX/THp6J4QxREqoBi4PCqvfOTOPtuZvnWA9YJYCQX1f0X1hp04lACJl
-         gdovYLrmrF6HjSCNTYyUYPMmt6A62wZftd54QI2pUt66gJ5+Ke/4XhwvBZ+a1O2K9CF0
-         SFrGJ/Sf7+FauM6VmRtk9wafGPKSIyfhutYLR2u6uc04d4CYy8MnEiG3XrgJGa+nDk3x
-         UIzIj/whWuM051gZ02HYQ5j7bRXb7+RcvijyNKRy7p6j81YR3SiiO5DZxxXVboJrr/IJ
-         79LbOJPDJ6Pdmw+ue2wwK8298M0RmKrLboeL8FlWFFeSA0L+Eb3LYm4GHOCRpFFIsvGt
-         PSYg==
+        b=ytx3EI8pEn+yPvPieTOdQCWmTd+bZ+pFKTmONYbzjAPE0wODERixjgejhBepvxMh/D
+         adCxWG+TxHgK4wZ8mCLhQY/cZrxqdCQo6AxBLrEvFPYA1pN4eROOtM8OeQ7b4mcocDbQ
+         4yPVBt1EZIPKHTK7gECTP2BTNBz6CeyeJY9nvW5Fach4Knk93FSWf/jaGTJch6sRfkcU
+         lxgyIJ8qrE0z4NuCI37loX7EM4U9t4ua0BjW4w66DwFG83BbI1eJzNd7FVqt+6tMqmAs
+         EvVrTqO8cJ29MTCjQlYzaVfTUypmxwtIMWh5BlhyewqOUAPebiYh0/H/lZSVbCWz2ChQ
+         IMrw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:mime-version:user-agent
-         :references:message-id:in-reply-to:to:from:date:dmarc-filter
-         :arc-authentication-results;
-        bh=lg+hl+Soza1Z7SbhbH0+/zyWAkJCeq80LQgX0zk7sIA=;
-        b=rsQuAXW2j5xkqptCXYh99bMVmGCiocYy5BI9yyJGNnTHCY/mjqo8B0As5abxVvHso/
-         id9BlR3Kszo0FzIPqb7xJg/D5UYJK8iI4/zTTb6aKeKTf0SJu5BdXT0AMQbVzF53z11K
-         W6C6xoYqGVGPq8iq9/ixWvs2B3ptXjRzbb+hFxNcxSToDhGT5C+XLco0q7m4UVqY1ENf
-         7F/7YvdldR/QILBN3gywi1zlPPbUHT0b1Uxy5e84OXDGRldHjmThkVQVgiZ6cuH4yI1p
-         2HM6aZVeF02Zx4qm1l+sWx1CFkY5mRVVTbisyuC5v1VKvZiAdd5DmhN/iB2QlM8FtKoU
-         FZzA==
+        h=references:in-reply-to:message-id:date:subject:cc:to:from
+         :dkim-signature:arc-authentication-results;
+        bh=aXDZ4Qr9mwfYKP1Hb4K6fjgDzUCvCw9IzsWpbOBP7G0=;
+        b=QxsOOdRZ2pFzMr53LcuK1Mqq6IRwtQPPhMsvIHC6bt/PkOkJZsIBOe5yw9uhXjC0jf
+         2rOUGWS4xC5WUy+Q6Yf+ZrnB1qJfPWY4ojkis0Kl4npZVsEvHSmH8WDZJMghMDOdcE02
+         ykRchplL02Me9fux7L86LskDaq0LpCgXVBnly4LhDbxUBTF/Pj2Szu77p1I1nmWxubZ9
+         wd0kemd6QhH9AcmeqxRphTVNyM9irv6I0qnIPkJjuoY2TksvXbCyOEL1aXw8llbfkhQf
+         y6ptfBusaycKplpeQFCFRiCDM40jVoMU0w0wqy0Hg6p1BTnJIz5O0yaP6Xpu8J0u31Hc
+         FCkQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id q49si7259512qtf.25.2017.10.19.13.57.17
+       dkim=pass header.i=@linaro.org header.s=google header.b=TXNcPQ8q;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 2607:f8b0:400e:c05::22a as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <richard.henderson@linaro.org>
+Received: from mail-pg0-x22a.google.com (mail-pg0-x22a.google.com. [2607:f8b0:400e:c05::22a])
+        by mx.google.com with ESMTPS id e9si2655690pfb.690.2017.08.17.16.01.19
         for <alex.bennee@linaro.org>
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 19 Oct 2017 13:57:18 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 17 Aug 2017 16:01:19 -0700 (PDT)
+Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 2607:f8b0:400e:c05::22a as permitted sender) client-ip=2607:f8b0:400e:c05::22a;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:51209 helo=lists.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1e5HsS-0000FX-36
-	for alex.bennee@linaro.org; Thu, 19 Oct 2017 16:57:16 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:45710)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <sstabellini@kernel.org>) id 1e5HsJ-0000F3-Kc
-	for qemu-arm@nongnu.org; Thu, 19 Oct 2017 16:57:08 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <sstabellini@kernel.org>) id 1e5HsG-0007xO-Ig
-	for qemu-arm@nongnu.org; Thu, 19 Oct 2017 16:57:07 -0400
-Received: from mail.kernel.org ([198.145.29.99]:40854)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <sstabellini@kernel.org>)
-	id 1e5HsG-0007va-9x; Thu, 19 Oct 2017 16:57:04 -0400
-Received: from [10.149.184.130] (162-198-228-33.lightspeed.wlfrct.sbcglobal.net
-	[162.198.228.33])
-	(using TLSv1 with cipher ECDHE-RSA-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPSA id 034402191C;
-	Thu, 19 Oct 2017 20:57:01 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 034402191C
-Authentication-Results: mail.kernel.org;
-	dmarc=none (p=none dis=none) header.from=kernel.org
-Authentication-Results: mail.kernel.org;
-	spf=none smtp.mailfrom=sstabellini@kernel.org
-Date: Thu, 19 Oct 2017 13:56:58 -0700 (PDT)
-From: Stefano Stabellini <sstabellini@kernel.org>
-X-X-Sender: sstabellini@sstabellini-ThinkPad-X260
-To: Peter Maydell <peter.maydell@linaro.org>
-In-Reply-To: <CAFEAcA_v=UsQ4hfn2oVLt3MPU3yJUnHLfzZHrdkstQ0VVgSDbw@mail.gmail.com>
-Message-ID: <alpine.DEB.2.10.1710191354020.27209@sstabellini-ThinkPad-X260>
-References: <alpine.DEB.2.10.1710181439060.27209@sstabellini-ThinkPad-X260>
-	<CAFEAcA_v=UsQ4hfn2oVLt3MPU3yJUnHLfzZHrdkstQ0VVgSDbw@mail.gmail.com>
-User-Agent: Alpine 2.10 (DEB 1266 2009-07-14)
-MIME-Version: 1.0
-Content-Type: TEXT/PLAIN; charset=US-ASCII
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 198.145.29.99
-Subject: Re: [Qemu-arm] [PATCH] fix WFI/WFE length in syndrome register
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.21
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Stefano Stabellini <sstabellini@kernel.org>,
-	Julien Grall <julien.grall@linaro.org>,
-	QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: meZVNdh8v7pZ
+       dkim=pass header.i=@linaro.org header.s=google header.b=TXNcPQ8q;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 2607:f8b0:400e:c05::22a as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: by mail-pg0-x22a.google.com with SMTP id t3so23902908pgt.0
+        for <alex.bennee@linaro.org>; Thu, 17 Aug 2017 16:01:19 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=from:to:cc:subject:date:message-id:in-reply-to:references;
+        bh=aXDZ4Qr9mwfYKP1Hb4K6fjgDzUCvCw9IzsWpbOBP7G0=;
+        b=TXNcPQ8qLiZ3cZen6iUEA4m0Jsfn/DYXvMtximn7ImIWf0YkK5RkHY5Z+lwX+gpuvm
+         k5c4PyN7e1pAPlEPAxkLgwaCpUKDkaljzxKAVNNrSYY9R9FE0k5S+IYD+LVZbqAR40vi
+         VJL9vyISIzfpC7MvYPE8nBnleg+IbgdwNGpIM=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+         :references;
+        bh=aXDZ4Qr9mwfYKP1Hb4K6fjgDzUCvCw9IzsWpbOBP7G0=;
+        b=a3SjPZSsmPHHPR6Ks8mNI+VmDD6cenVjhgGyoXNhcoi0gM+zYSkvKz6LsjjBHA3eIy
+         P7EMTqyM/ZKgFrfbhjeNWJO2B1XPZMUUqmrksaJ8OyjX1zD+tmFydOOdffwEAQpGT2cG
+         bBnLPcmgMTkIttPEReKqUU1/D+js+rwkgmydPKbZsKyZAhTNrKsS7FcRNVeOTJ9pClSr
+         1TFgvIvkRVX5wfqP15ay5LRwDEPsblFRY26EPcUMofetkWwu1gPxQ3798YGjJwej3T7S
+         6Jnfwl6G0fRS5YzBY0ZfvK2Ol6VKyYkm88CwJnJiZOXqOygiqf8uU3yS6U1oaYbAxmq5
+         h1Og==
+X-Gm-Message-State: AHYfb5gswXAqb9saGrCX4pyOC7wQ9B4fCOxmYSbxQb/+CHfFRWeopCs5
+	g0RMyXS1z0hUVeU0Y7gyjp2v
+X-Received: by 10.84.171.195 with SMTP id l61mr7755983plb.464.1503010879346;
+        Thu, 17 Aug 2017 16:01:19 -0700 (PDT)
+Return-Path: <richard.henderson@linaro.org>
+Received: from bigtime.twiddle.net (97-126-108-236.tukw.qwest.net. [97.126.108.236])
+        by smtp.gmail.com with ESMTPSA id c23sm5190043pfc.136.2017.08.17.16.01.18
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 17 Aug 2017 16:01:18 -0700 (PDT)
+From: Richard Henderson <richard.henderson@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org,
+	alex.bennee@linaro.org
+Subject: [PATCH 2/8] target/arm: Use generic vector infrastructure for aa64 add/sub/logic
+Date: Thu, 17 Aug 2017 16:01:08 -0700
+Message-Id: <20170817230114.3655-3-richard.henderson@linaro.org>
+X-Mailer: git-send-email 2.13.5
+In-Reply-To: <20170817230114.3655-1-richard.henderson@linaro.org>
+References: <20170817230114.3655-1-richard.henderson@linaro.org>
+X-TUID: oKTmiUutSLtJ
 
-On Thu, 19 Oct 2017, Peter Maydell wrote:
-> On 18 October 2017 at 23:03, Stefano Stabellini <sstabellini@kernel.org> wrote:
-> > WFI/E are 4 bytes long: set ARM_EL_IL_SHIFT in the syndrome.
-> >
-> > Signed-off-by: Stefano Stabellini <sstabellini@kernel.org>
-> >
-> > diff --git a/target/arm/internals.h b/target/arm/internals.h
-> > index 1f6efef..cf8c966 100644
-> > --- a/target/arm/internals.h
-> > +++ b/target/arm/internals.h
-> > @@ -398,6 +398,7 @@ static inline uint32_t syn_breakpoint(int same_el)
-> >  static inline uint32_t syn_wfx(int cv, int cond, int ti)
-> >  {
-> >      return (EC_WFX_TRAP << ARM_EL_EC_SHIFT) |
-> > +           (1 << ARM_EL_IL_SHIFT) |
-> >             (cv << 24) | (cond << 20) | ti;
-> >  }
-> 
-> Hmm. What we do now is definitely wrong, but WFI and WFE can be 2 bytes:
-> there is a T1 Thumb encoding that is 2 bytes.
-> 
-> HELPER(wfi) doesn't get that right, though:
->     if (target_el) {
->         env->pc -= 4;
->         raise_exception(env, EXCP_UDEF, syn_wfx(1, 0xe, 0), target_el);
->     }
-> 
-> So I think that HELPER(wfi) needs to be passed an extra
-> parameter is_16bit, which it can then use both in its adjustment
-> of env->pc and to pass as an extra parameter to syn_wfx(),
-> which is then syn_wfx(int cv, int cond, int ti, bool is_16bit).
-> 
-> (In theory HELPER(wfe) should also be passed is_16bit, but
-> since it doesn't currently ever raise an exception it
-> doesn't matter.)
+Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+---
+ target/arm/translate-a64.c | 137 ++++++++++++++++++++++++++++-----------------
+ 1 file changed, 87 insertions(+), 50 deletions(-)
 
-Wouldn't it be better to just check on env->thumb like
-HELPER(cpsr_write_eret) for example?
-
-diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
-index 670c07a..a451763 100644
---- a/target/arm/cpu64.c
-+++ b/target/arm/cpu64.c
-diff --git a/target/arm/internals.h b/target/arm/internals.h
-index 43106a2..55c70b4 100644
---- a/target/arm/internals.h
-+++ b/target/arm/internals.h
-@@ -428,9 +428,10 @@ static inline uint32_t syn_breakpoint(int same_el)
-         | ARM_EL_IL | 0x22;
+diff --git a/target/arm/translate-a64.c b/target/arm/translate-a64.c
+index 2200e25be0..025354f983 100644
+--- a/target/arm/translate-a64.c
++++ b/target/arm/translate-a64.c
+@@ -21,6 +21,7 @@
+ #include "cpu.h"
+ #include "exec/exec-all.h"
+ #include "tcg-op.h"
++#include "tcg-op-gvec.h"
+ #include "qemu/log.h"
+ #include "arm_ldst.h"
+ #include "translate.h"
+@@ -82,6 +83,7 @@ typedef void NeonGenTwoDoubleOPFn(TCGv_i64, TCGv_i64, TCGv_i64, TCGv_ptr);
+ typedef void NeonGenOneOpFn(TCGv_i64, TCGv_i64);
+ typedef void CryptoTwoOpEnvFn(TCGv_ptr, TCGv_i32, TCGv_i32);
+ typedef void CryptoThreeOpEnvFn(TCGv_ptr, TCGv_i32, TCGv_i32, TCGv_i32);
++typedef void GVecGenTwoFn(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
+ 
+ /* initialize TCG globals.  */
+ void a64_translate_init(void)
+@@ -537,6 +539,21 @@ static inline int vec_reg_offset(DisasContext *s, int regno,
+     return offs;
  }
  
--static inline uint32_t syn_wfx(int cv, int cond, int ti)
-+static inline uint32_t syn_wfx(int cv, int cond, int ti, bool is_16bit)
- {
-     return (EC_WFX_TRAP << ARM_EL_EC_SHIFT) |
-+           (is_16bit ? 0 : (1 << ARM_EL_IL_SHIFT)) |
-            (cv << 24) | (cond << 20) | ti;
- }
++/* Return the offset info CPUARMState of the "whole" vector register Qn.  */
++static inline int vec_full_reg_offset(DisasContext *s, int regno)
++{
++    assert_fp_access_checked(s);
++    return offsetof(CPUARMState, vfp.regs[regno * 2]);
++}
++
++/* Return the byte size of the "whole" vector register, VL / 8.  */
++static inline int vec_full_reg_size(DisasContext *s)
++{
++    /* FIXME SVE: We should put the composite ZCR_EL* value into tb->flags.
++       In the meantime this is just the AdvSIMD length of 128.  */
++    return 128 / 8;
++}
++
+ /* Return the offset into CPUARMState of a slice (from
+  * the least significant end) of FP register Qn (ie
+  * Dn, Sn, Hn or Bn).
+@@ -9042,11 +9059,38 @@ static void disas_simd_3same_logic(DisasContext *s, uint32_t insn)
+     bool is_q = extract32(insn, 30, 1);
+     TCGv_i64 tcg_op1, tcg_op2, tcg_res[2];
+     int pass;
++    GVecGenTwoFn *gvec_op;
  
-diff --git a/target/arm/op_helper.c b/target/arm/op_helper.c
-index 3914145..ea16c9a 100644
---- a/target/arm/op_helper.c
-+++ b/target/arm/op_helper.c
-@@ -476,8 +476,8 @@ void HELPER(wfi)(CPUARMState *env)
+     if (!fp_access_check(s)) {
+         return;
      }
  
-     if (target_el) {
--        env->pc -= 4;
--        raise_exception(env, EXCP_UDEF, syn_wfx(1, 0xe, 0), target_el);
-+        env->pc -= env->thumb ? 2 : 4;
-+        raise_exception(env, EXCP_UDEF, syn_wfx(1, 0xe, 0, env->thumb), target_el);
++    switch (size + 4 * is_u) {
++    case 0: /* AND */
++        gvec_op = tcg_gen_gvec_and8;
++        goto do_gvec;
++    case 1: /* BIC */
++        gvec_op = tcg_gen_gvec_andc8;
++        goto do_gvec;
++    case 2: /* ORR */
++        gvec_op = tcg_gen_gvec_or8;
++        goto do_gvec;
++    case 3: /* ORN */
++        gvec_op = tcg_gen_gvec_orc8;
++        goto do_gvec;
++    case 4: /* EOR */
++        gvec_op = tcg_gen_gvec_xor8;
++        goto do_gvec;
++    do_gvec:
++        gvec_op(vec_full_reg_offset(s, rd),
++                vec_full_reg_offset(s, rn),
++                vec_full_reg_offset(s, rm),
++                is_q ? 16 : 8, vec_full_reg_size(s));
++        return;
++    }
++
++    /* Note that we've now eliminated all !is_u.  */
++
+     tcg_op1 = tcg_temp_new_i64();
+     tcg_op2 = tcg_temp_new_i64();
+     tcg_res[0] = tcg_temp_new_i64();
+@@ -9056,47 +9100,27 @@ static void disas_simd_3same_logic(DisasContext *s, uint32_t insn)
+         read_vec_element(s, tcg_op1, rn, pass, MO_64);
+         read_vec_element(s, tcg_op2, rm, pass, MO_64);
+ 
+-        if (!is_u) {
+-            switch (size) {
+-            case 0: /* AND */
+-                tcg_gen_and_i64(tcg_res[pass], tcg_op1, tcg_op2);
+-                break;
+-            case 1: /* BIC */
+-                tcg_gen_andc_i64(tcg_res[pass], tcg_op1, tcg_op2);
+-                break;
+-            case 2: /* ORR */
+-                tcg_gen_or_i64(tcg_res[pass], tcg_op1, tcg_op2);
+-                break;
+-            case 3: /* ORN */
+-                tcg_gen_orc_i64(tcg_res[pass], tcg_op1, tcg_op2);
+-                break;
+-            }
+-        } else {
+-            if (size != 0) {
+-                /* B* ops need res loaded to operate on */
+-                read_vec_element(s, tcg_res[pass], rd, pass, MO_64);
+-            }
++        /* B* ops need res loaded to operate on */
++        read_vec_element(s, tcg_res[pass], rd, pass, MO_64);
+ 
+-            switch (size) {
+-            case 0: /* EOR */
+-                tcg_gen_xor_i64(tcg_res[pass], tcg_op1, tcg_op2);
+-                break;
+-            case 1: /* BSL bitwise select */
+-                tcg_gen_xor_i64(tcg_op1, tcg_op1, tcg_op2);
+-                tcg_gen_and_i64(tcg_op1, tcg_op1, tcg_res[pass]);
+-                tcg_gen_xor_i64(tcg_res[pass], tcg_op2, tcg_op1);
+-                break;
+-            case 2: /* BIT, bitwise insert if true */
+-                tcg_gen_xor_i64(tcg_op1, tcg_op1, tcg_res[pass]);
+-                tcg_gen_and_i64(tcg_op1, tcg_op1, tcg_op2);
+-                tcg_gen_xor_i64(tcg_res[pass], tcg_res[pass], tcg_op1);
+-                break;
+-            case 3: /* BIF, bitwise insert if false */
+-                tcg_gen_xor_i64(tcg_op1, tcg_op1, tcg_res[pass]);
+-                tcg_gen_andc_i64(tcg_op1, tcg_op1, tcg_op2);
+-                tcg_gen_xor_i64(tcg_res[pass], tcg_res[pass], tcg_op1);
+-                break;
+-            }
++        switch (size) {
++        case 1: /* BSL bitwise select */
++            tcg_gen_xor_i64(tcg_op1, tcg_op1, tcg_op2);
++            tcg_gen_and_i64(tcg_op1, tcg_op1, tcg_res[pass]);
++            tcg_gen_xor_i64(tcg_res[pass], tcg_op2, tcg_op1);
++            break;
++        case 2: /* BIT, bitwise insert if true */
++            tcg_gen_xor_i64(tcg_op1, tcg_op1, tcg_res[pass]);
++            tcg_gen_and_i64(tcg_op1, tcg_op1, tcg_op2);
++            tcg_gen_xor_i64(tcg_res[pass], tcg_res[pass], tcg_op1);
++            break;
++        case 3: /* BIF, bitwise insert if false */
++            tcg_gen_xor_i64(tcg_op1, tcg_op1, tcg_res[pass]);
++            tcg_gen_andc_i64(tcg_op1, tcg_op1, tcg_op2);
++            tcg_gen_xor_i64(tcg_res[pass], tcg_res[pass], tcg_op1);
++            break;
++        default:
++            g_assert_not_reached();
+         }
      }
  
-     cs->exception_index = EXCP_HLT;
+@@ -9370,6 +9394,7 @@ static void disas_simd_3same_int(DisasContext *s, uint32_t insn)
+     int rn = extract32(insn, 5, 5);
+     int rd = extract32(insn, 0, 5);
+     int pass;
++    GVecGenTwoFn *gvec_op;
+ 
+     switch (opcode) {
+     case 0x13: /* MUL, PMUL */
+@@ -9409,6 +9434,28 @@ static void disas_simd_3same_int(DisasContext *s, uint32_t insn)
+         return;
+     }
+ 
++    switch (opcode) {
++    case 0x10: /* ADD, SUB */
++        {
++            static GVecGenTwoFn * const fns[4][2] = {
++                { tcg_gen_gvec_add8, tcg_gen_gvec_sub8 },
++                { tcg_gen_gvec_add16, tcg_gen_gvec_sub16 },
++                { tcg_gen_gvec_add32, tcg_gen_gvec_sub32 },
++                { tcg_gen_gvec_add64, tcg_gen_gvec_sub64 },
++            };
++            gvec_op = fns[size][u];
++            goto do_gvec;
++        }
++        break;
++
++    do_gvec:
++        gvec_op(vec_full_reg_offset(s, rd),
++                vec_full_reg_offset(s, rn),
++                vec_full_reg_offset(s, rm),
++                is_q ? 16 : 8, vec_full_reg_size(s));
++        return;
++    }
++
+     if (size == 3) {
+         assert(is_q);
+         for (pass = 0; pass < 2; pass++) {
+@@ -9581,16 +9628,6 @@ static void disas_simd_3same_int(DisasContext *s, uint32_t insn)
+                 genfn = fns[size][u];
+                 break;
+             }
+-            case 0x10: /* ADD, SUB */
+-            {
+-                static NeonGenTwoOpFn * const fns[3][2] = {
+-                    { gen_helper_neon_add_u8, gen_helper_neon_sub_u8 },
+-                    { gen_helper_neon_add_u16, gen_helper_neon_sub_u16 },
+-                    { tcg_gen_add_i32, tcg_gen_sub_i32 },
+-                };
+-                genfn = fns[size][u];
+-                break;
+-            }
+             case 0x11: /* CMTST, CMEQ */
+             {
+                 static NeonGenTwoOpFn * const fns[3][2] = {
+-- 
+2.13.5

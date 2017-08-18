@@ -1,165 +1,119 @@
-Received: by 10.25.15.197 with SMTP id 66csp1220409lfp;
-        Sun, 25 Jun 2017 22:30:09 -0700 (PDT)
-X-Received: by 10.55.221.77 with SMTP id n74mr15643340qki.173.1498455008922;
-        Sun, 25 Jun 2017 22:30:08 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1498455008; cv=none;
+Received: by 10.223.188.70 with SMTP id a6csp408763wrh;
+        Fri, 18 Aug 2017 07:01:10 -0700 (PDT)
+X-Received: by 10.99.95.200 with SMTP id t191mr2716877pgb.366.1503064870092;
+        Fri, 18 Aug 2017 07:01:10 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1503064870; cv=none;
         d=google.com; s=arc-20160816;
-        b=hViGhmTud60PV26lQ1AfsqkuVbhLw4CQ42wEYwl6kadyWDUssT0ubM5TZ1a4bPfiGq
-         RG2XlN1ni64HF/azLEmdN4pw4oUhaED4Uqol//hpfgccv8xUkFgsfwYEP3x9fmqBbbPK
-         LUFwTAaXkrFihq08EANidykgs3NaEVDsFpnIoOevPxI6e1gYJsTrErR3pWNwz5OF5+cw
-         vdUNQF/zEGvilBeqx+pqLTAkwM6SH4zL9tOCm89YWGAWgQEcM0JMxfmZ9qbeKeEm8eRG
-         kdYJnBoU50L19FHMdCznQ3nlY3ocT6frvF4tBWVfH5AYc0PZVjDEoMkFnKe40NPWhYOk
-         5aWw==
+        b=QDndap6qFNmc8Gd5slEs8EZwWiySIveQxiULwNYYT0IGHHyn7s8k2LkbF9SEzJOU66
+         gcbTrF1OxURXYZ+GUBw7AJtB6fjdOe/CTZ3JmyUkQjd2TC1hNzqBuiBhjl74el6+8Rx6
+         kENjFzBt72ws+tCSY3Z52KAydwpH3ZA0/Lx340xTMtMU6v2fsEzuASXsiRtMkFYuGmbw
+         cDnw8nwSWOyFyzX7K3X1H9ufMY0gA0QMDRfH12kwYzZ4p8Y6NLQN5fr7T0Il/GwobpI1
+         /RvZYarVNiUzrgiZqvVZNKiHgVXt7f8IOopOjsfuTv8U8iMtvJ5n1whwr7bYvyuprPVG
+         KqMw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:arc-authentication-results;
-        bh=wnqruYCyIoLF7NxirOGZACCe2sgEZF8SG8hj+EWf8EM=;
-        b=AITttIKRruKmFJSF6WFFv3pCnfESVpEgB+G9rrlzejZbpH5+8x4Eg9PEDT/d7LYPFZ
-         bTPIZCz58P4ifoRE8teE/GgqMCQUeA6iDg/edsi6EVAXZPo7gjwg7K+vqVPdAPDjBtL9
-         j5OgW5br5UGvqO5r3SdSMKB8dcxtOiqjN/LTk7UZ8lP670Yf8L2okPRfgmDdtwS5iiIi
-         cgzdF8otyyYGDKG4riZV/Lbgq+z1prvG2GbPTwewp/BqoRI4nRb4Qe3SChPqFDG5AyWq
-         Ntn87jYmItyCvAzZZlooBJbPaSKw6ZWBS39oA+pSu/Hq1luNjS7taijvYeLjYUHiJQb+
-         csXw==
+        h=list-id:precedence:sender:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:arc-authentication-results;
+        bh=iO7AGXP+gMgNfvzVPlJGjJHT8R8LTg1Rz6/6bHrsjW4=;
+        b=X1k0pc5OGYUohf1MXBB48cZNVa90HGqYubdPx8QBWQ2SbsDpn9opxD8cLC1j7aJkwm
+         eAuvK7xxQpsTXaD2Z2cgT67W6g5zqJAf+PjrGgJi/gE3KrjElhWpBcNxiQkXJI2yP8E4
+         WeIZ6r1ziGCzHmUGxhnu1n7HsHDZHPxlLBBzoaJHHgLd9QQ0w0D3OTyKKyNZoFcB9QlU
+         z3lz8DbaY9sTQ6Xxx15Mb0a+axsm1CwuiHS7i2UbxLMRrcmojrTqRcnZ04nMMjeCD64U
+         dR2PzF8LHGkkVIbToscwQcdsYj6AbOKm0FR8EKAlSH6H03jQ6V3vkLbbxZGDdzom8sRf
+         qidA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id f30si10685118qta.14.2017.06.25.22.30.08
-        for <alex.bennee@linaro.org>
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sun, 25 Jun 2017 22:30:08 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+       spf=pass (google.com: best guess record for domain of linux-kernel-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=linux-kernel-owner@vger.kernel.org
+Return-Path: <linux-kernel-owner@vger.kernel.org>
+Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
+        by mx.google.com with ESMTP id d37si3984390plb.195.2017.08.18.07.01.09;
+        Fri, 18 Aug 2017 07:01:10 -0700 (PDT)
+Received-SPF: pass (google.com: best guess record for domain of linux-kernel-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:44763 helo=lists.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1dPMb8-00011U-Ag
-	for alex.bennee@linaro.org; Mon, 26 Jun 2017 01:30:06 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:36649)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <gengdongjiu@huawei.com>) id 1dPMb2-000111-Js
-	for qemu-arm@nongnu.org; Mon, 26 Jun 2017 01:30:01 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <gengdongjiu@huawei.com>) id 1dPMay-0000KM-Kl
-	for qemu-arm@nongnu.org; Mon, 26 Jun 2017 01:30:00 -0400
-Received: from szxga02-in.huawei.com ([45.249.212.188]:3952)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_ARCFOUR_SHA1:16) (Exim 4.71)
-	(envelope-from <gengdongjiu@huawei.com>)
-	id 1dPMay-0000Hv-15; Mon, 26 Jun 2017 01:29:56 -0400
-Received: from 172.30.72.54 (EHLO dggeml405-hub.china.huawei.com)
-	([172.30.72.54])
-	by dggrg02-dlp.huawei.com (MOS 4.4.6-GA FastPath queued)
-	with ESMTP id APZ86254; Mon, 26 Jun 2017 13:23:02 +0800 (CST)
-Received: from [127.0.0.1] (10.142.68.147) by dggeml405-hub.china.huawei.com
-	(10.3.17.49) with Microsoft SMTP Server id 14.3.301.0; Mon, 26 Jun 2017
-	13:22:52 +0800
-To: James Morse <james.morse@arm.com>
-References: <1493530677-4919-1-git-send-email-gengdongjiu@huawei.com>
-	<5908A5BC.1060202@arm.com>
-From: gengdongjiu <gengdongjiu@huawei.com>
-Message-ID: <9e94c06f-f438-7106-ac96-67e021dcf729@huawei.com>
-Date: Mon, 26 Jun 2017 13:22:27 +0800
-User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64; rv:45.0) Gecko/20100101
-	Thunderbird/45.7.1
+       spf=pass (google.com: best guess record for domain of linux-kernel-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=linux-kernel-owner@vger.kernel.org
+Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
+        id S1753554AbdHROBG (ORCPT <rfc822;daniel.diaz@linaro.org>
+        + 26 others); Fri, 18 Aug 2017 10:01:06 -0400
+Received: from szxga05-in.huawei.com ([45.249.212.191]:4074 "EHLO
+        szxga05-in.huawei.com" rhost-flags-OK-OK-OK-OK) by vger.kernel.org
+        with ESMTP id S1752202AbdHROBD (ORCPT
+        <rfc822;linux-kernel@vger.kernel.org>);
+        Fri, 18 Aug 2017 10:01:03 -0400
+Received: from 172.30.72.58 (EHLO DGGEMS411-HUB.china.huawei.com) ([172.30.72.58])
+        by dggrg05-dlp.huawei.com (MOS 4.4.6-GA FastPath queued)
+        with ESMTP id DFM74401;
+        Fri, 18 Aug 2017 22:00:47 +0800 (CST)
+Received: from linux.huawei.com (10.67.187.203) by
+ DGGEMS411-HUB.china.huawei.com (10.3.19.211) with Microsoft SMTP Server id
+ 14.3.301.0; Fri, 18 Aug 2017 22:00:13 +0800
+From:   Dongjiu Geng <gengdongjiu@huawei.com>
+To:     <mst@redhat.com>, <imammedo@redhat.com>,
+        <zhaoshenglong@huawei.com>, <peter.maydell@linaro.org>,
+        <pbonzini@redhat.com>, <qemu-devel@nongnu.org>,
+        <qemu-arm@nongnu.org>, <kvm@vger.kernel.org>,
+        <edk2-devel@lists.01.org>, <christoffer.dall@linaro.org>,
+        <marc.zyngier@arm.com>, <will.deacon@arm.com>,
+        <james.morse@arm.com>, <tbaicar@codeaurora.org>,
+        <ard.biesheuvel@linaro.org>, <mingo@kernel.org>, <bp@suse.de>,
+        <shiju.jose@huawei.com>, <zjzhang@codeaurora.org>,
+        <linux-arm-kernel@lists.infradead.org>,
+        <kvmarm@lists.cs.columbia.edu>, <linux-kernel@vger.kernel.org>,
+        <linux-acpi@vger.kernel.org>, <devel@acpica.org>,
+        <john.garry@huawei.com>, <jonathan.cameron@huawei.com>,
+        <shameerali.kolothum.thodi@huawei.com>, <huangdaode@hisilicon.com>,
+        <wangzhou1@hisilicon.com>
+CC:     <huangshaoyu@huawei.com>, <wuquanming@huawei.com>,
+        <linuxarm@huawei.com>, <gengdongjiu@huawei.com>,
+        <zhengqiang10@huawei.com>
+Subject: [PATCH v11 3/6] ACPI: build and enable APEI GHES in the Makefile and configuration
+Date:   Fri, 18 Aug 2017 22:23:44 +0800
+Message-ID: <1503066227-18251-4-git-send-email-gengdongjiu@huawei.com>
+X-Mailer: git-send-email 1.7.7
+In-Reply-To: <1503066227-18251-1-git-send-email-gengdongjiu@huawei.com>
+References: <1503066227-18251-1-git-send-email-gengdongjiu@huawei.com>
 MIME-Version: 1.0
-In-Reply-To: <5908A5BC.1060202@arm.com>
-Content-Type: text/plain; charset="windows-1252"
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.142.68.147]
+Content-Type: text/plain
+X-Originating-IP: [10.67.187.203]
 X-CFilter-Loop: Reflected
 X-Mirapoint-Virus-RAPID-Raw: score=unknown(0),
-	refid=str=0001.0A020206.59509A39.0108, ss=1, re=0.000, recu=0.000,
-	reip=0.000, cl=1, cld=1, fgs=0, ip=0.0.0.0,
-	so=2014-11-16 11:51:01, dmn=2013-03-21 17:37:32
-X-Mirapoint-Loop-Id: 29ff11dbc02fc2cfc505e5889d3955c1
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
-	[fuzzy]
-X-Received-From: 45.249.212.188
-Subject: Re: [Qemu-arm] [PATCH v3 1/3] arm64: kvm: support kvmtool to detect
- RAS extension feature
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.21
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, mtsirkin@redhat.com, kvm@vger.kernel.org,
-	rkrcmar@redhat.com, tbaicar@codeaurora.org,
-	qemu-devel@nongnu.org, wangxiongfeng2@huawei.com,
-	ben@skyportsystems.com, linux@armlinux.org.uk,
-	kvmarm@lists.cs.columbia.edu, huangshaoyu@huawei.com,
-	zhaoshenglong@huawei.com, lersek@redhat.com,
-	songwenjun@huawei.com, drjones@redhat.com, wuquanming@huawei.com,
-	xiexiuqi@huawei.com, marc.zyngier@arm.com, qemu-arm@nongnu.org,
-	imammedo@redhat.com, linux-arm-kernel@lists.infradead.org,
-	ard.biesheuvel@linaro.org, pbonzini@redhat.com, christoffer.dall@linaro.org
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: /cAXTjp3A/Fj
+        refid=str=0001.0A020201.5996F30F.0212,ss=1,re=0.000,recu=0.000,reip=0.000,cl=1,cld=1,fgs=0,
+        ip=0.0.0.0,
+        so=2014-11-16 11:51:01,
+        dmn=2013-03-21 17:37:32
+X-Mirapoint-Loop-Id: 42727865dfb62d32f4afad31125f8e15
+Sender: linux-kernel-owner@vger.kernel.org
+Precedence: bulk
+List-ID: <linux-kernel.vger.kernel.org>
+X-Mailing-List: linux-kernel@vger.kernel.org
+X-TUID: VETpfrEzCR80
 
-Hi James,
+Add CONFIG_ACPI_APEI configuration in the Makefile and
+enable it in the arm-softmmu.mak
 
-   I have changed the SEA/SEI injection method according you suggestion, but I think this patch may also be needed.
-Now for the  SEI, the virtual ESR value is specified by the userspace. only RAS extension support to set the virtual ESR value. so user space will check it to decide whether pass the virtual ESR value.
-At the same time, reserve this interface for other possible usage by user space. what do you think about this patch?
+Signed-off-by: Dongjiu Geng <gengdongjiu@huawei.com>
+---
+ default-configs/arm-softmmu.mak | 1 +
+ hw/acpi/Makefile.objs           | 1 +
+ 2 files changed, 2 insertions(+)
 
-
-
-On 2017/5/2 23:29, James Morse wrote:
-> Hi Dongjiu Geng,
-> 
-> On 30/04/17 06:37, Dongjiu Geng wrote:
->> Handle kvmtool's detection for RAS extension, because sometimes
->> the APP needs to know the CPU's capacity
-> 
->> diff --git a/arch/arm64/kvm/reset.c b/arch/arm64/kvm/reset.c
->> index d9e9697..1004039 100644
->> --- a/arch/arm64/kvm/reset.c
->> +++ b/arch/arm64/kvm/reset.c
->> @@ -64,6 +64,14 @@ static bool cpu_has_32bit_el1(void)
->>  	return !!(pfr0 & 0x20);
->>  }
->>  
->> +static bool kvm_arm_support_ras_extension(void)
->> +{
->> +	u64 pfr0;
->> +
->> +	pfr0 = read_system_reg(SYS_ID_AA64PFR0_EL1);
->> +	return !!(pfr0 & 0x10000000);
->> +}
-> 
-> Why are we telling user-space that the CPU has RAS extensions? EL0 can't do
-> anything with this and the guest EL1 can detect it from the id registers.
-> 
-> 
-> Are you using this to decide whether or not to generate a HEST for the guest?
-> 
-> If Qemu/kvmtool supports handling memory-failure notifications from signals you
-> should always generate a HEST. The GHES notification method could be anything
-> Qemu can deliver to the guest using the KVM APIs. Notifications from Qemu to the
-> guest don't depend on the RAS extensions. KVM has APIs for IRQ and SEA (you can
-> use KVM_SET_ONE_REG).
-> 
-> 
-> I think we need a new API for injecting SError for SEI from Qemu/kvmtool, but it
-> shouldn't be related to the RAS extensions. All v8.0 CPUs have HCR_EL2.VSE, so
-> we need to know KVM supports this API.
-> 
-> Your later patch adds code to set VSESR to make virtual RAS SErrors work, I
-> think we need to expose that to user-space.
-> 
-> 
-> Thanks,
-> 
-> James
-> .
-> 
-
+diff --git a/default-configs/arm-softmmu.mak b/default-configs/arm-softmmu.mak
+index bbdd3c1..c362113 100644
+--- a/default-configs/arm-softmmu.mak
++++ b/default-configs/arm-softmmu.mak
+@@ -129,3 +129,4 @@ CONFIG_ACPI=y
+ CONFIG_SMBIOS=y
+ CONFIG_ASPEED_SOC=y
+ CONFIG_GPIO_KEY=y
++CONFIG_ACPI_APEI=y
+diff --git a/hw/acpi/Makefile.objs b/hw/acpi/Makefile.objs
+index 11c35bc..bafb148 100644
+--- a/hw/acpi/Makefile.objs
++++ b/hw/acpi/Makefile.objs
+@@ -6,6 +6,7 @@ common-obj-$(CONFIG_ACPI_MEMORY_HOTPLUG) += memory_hotplug.o
+ common-obj-$(CONFIG_ACPI_CPU_HOTPLUG) += cpu.o
+ common-obj-$(CONFIG_ACPI_NVDIMM) += nvdimm.o
+ common-obj-$(CONFIG_ACPI_VMGENID) += vmgenid.o
++common-obj-$(CONFIG_ACPI_APEI) += hest_ghes.o
+ common-obj-$(call lnot,$(CONFIG_ACPI_X86)) += acpi-stub.o
+ 
+ common-obj-y += acpi_interface.o
+-- 
+1.8.3.1

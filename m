@@ -1,223 +1,142 @@
-Received: by 10.223.188.70 with SMTP id a6csp254787wrh;
-        Fri, 18 Aug 2017 04:33:42 -0700 (PDT)
-X-Received: by 10.25.37.14 with SMTP id l14mr3726456lfl.177.1503056022873;
-        Fri, 18 Aug 2017 04:33:42 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1503056022; cv=none;
+Received: by 10.223.188.70 with SMTP id a6csp391613wrh;
+        Fri, 18 Aug 2017 06:44:47 -0700 (PDT)
+X-Received: by 10.98.16.194 with SMTP id 63mr8875957pfq.172.1503063887230;
+        Fri, 18 Aug 2017 06:44:47 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1503063887; cv=none;
         d=google.com; s=arc-20160816;
-        b=MHdovLeLsvtgeH6/ZClUG2uF3KMugmy1LYGB2FvOp2jH8d4YUOlBzykGbyaHmy3D2U
-         U2D6PLxHZXzCECCkLbwLus9y6khi4e9iZjNYQCz5KnkLshzCIxO35iW0wktHNcXb5qii
-         jzYK4IKMyfhE5UrlTksvWQQndmqE21sKwI0XQ70OLRKEZu68rbyQYMj6Yf7HvbKFeHd/
-         cmuZYBLUz8V8Ym7Yd7d7VnmjQbPh1YiwbpHriS4Lyb8pS38B9LTthBsoGsfqxlgdVfcO
-         QVlAlMdfFMh+oEnB2H6HvP+qb1UZkPx4MT/8TElUFjEBLDvlGtjsHP6wXgbUSNi6awh5
-         XX0g==
+        b=KD8vjpGIRLd8yImcmOY03upqRPpvIGUXp8OflylNCMjGoycUOAjYZhbEQjPvovr2rR
+         DkfUsAQVI2YMe4IFjgFBt9FjCEjcoocR6gaQrsWcv78pzX5jx4QFqq3isl1HGQWxntn4
+         d3A2pTLka4Nb/F2gkbERecAO17s+uPjNalnwrT6fjVZlIc9+SD+MLCTrowyH4laK/QdM
+         hF5u8H5NgzM7ZUvAcjWNcJsjlk9RspYlw0sRAoe3pagRA486XtcyhoSDlx/ZG2m1B2O3
+         6KWvhzqlwlbaxcyrXwkN0bIGyBw6l+MDVIIB4yo56sNczpkPL2rpAB8gl+vJRSL2V82l
+         3y4A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:user-agent:references:message-id:in-reply-to:subject
-         :cc:to:from:date:arc-authentication-results;
-        bh=jMaKKNevR0mJCKhTDaUd7GNr7B5NE/h87AjAScnd46Y=;
-        b=BJRiGH/ysGmWNK91fgSWLw71jKbd9rJQQMewGKB54FsB7tBSzXYRGGRy0z9m0Hf6qj
-         6ecE9n6mbk3faZozm4vImcRG10aAukmvLicfNFgNO+s5SPfTQGrKjfc7KryqUZ373Yr7
-         EMIh3/P2MtO3DOKNsRVbISbvVLqn35Prf/K6Xm7gyu9fpysAOiKkuCbNpke+545lRn/v
-         PAMsMAiLovU1lYN3pfneqzxYh6l7b/kJpdAsdfl9t5el5iaz1++USsFwXw/VcDuILk5i
-         vnQjP8cZGFHSppbNao06OHprrpLKJgIUw94PNg2HPz7+RlOntRxbQ1HLWXIdM33i8LwT
-         9O0A==
+        h=content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:cc:to:subject
+         :dkim-signature:arc-authentication-results;
+        bh=LAXbl6vJrxKFg/WkSAAzUGQfM83DBWo4wPymsHvm8f8=;
+        b=qdv+P6AhdKCCi3VnFBimi4hn7CKLQ0ujgv5UsMX9IIg4lfc83doOFEpbwu7oX1YnL/
+         e7MhmSid8gmB2sQLVM5lYMnpHyNbPI9H25CCqdqI/D9OqR1mJqMOxmQyIabZAt7eippP
+         m16B5R6UtXXlLlHlIrhbHz6imi9F2iQYHBxzf2joETZseGV66KpMLMBSW4xuRBFaWXUg
+         Z4C5tK3MFR5nmB6OpZRDtiMLd4HwJawXn5PD7zJQjIepGMcW0ZB6IepPPlB62d1yg5iD
+         33P0UsCLRjku054c2fMZ3vFKcl0YcMc5fVM+4enLCsnajL/hJPQyyuq+IGIs9zJL9yMr
+         KijQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of batuzovk@ispras.ru designates 83.149.199.196 as permitted sender) smtp.mailfrom=batuzovk@ispras.ru
-Return-Path: <batuzovk@ispras.ru>
-Received: from smtp.ispras.ru (bran.ispras.ru. [83.149.199.196])
-        by mx.google.com with ESMTP id x25si264748lfb.15.2017.08.18.04.33.42
-        for <alex.bennee@linaro.org>;
-        Fri, 18 Aug 2017 04:33:42 -0700 (PDT)
-Received-SPF: pass (google.com: domain of batuzovk@ispras.ru designates 83.149.199.196 as permitted sender) client-ip=83.149.199.196;
+       dkim=pass header.i=@linaro.org header.s=google header.b=OkkAoClC;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 2607:f8b0:400e:c05::22f as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <richard.henderson@linaro.org>
+Received: from mail-pg0-x22f.google.com (mail-pg0-x22f.google.com. [2607:f8b0:400e:c05::22f])
+        by mx.google.com with ESMTPS id 32si3912080plh.537.2017.08.18.06.44.47
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 18 Aug 2017 06:44:47 -0700 (PDT)
+Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 2607:f8b0:400e:c05::22f as permitted sender) client-ip=2607:f8b0:400e:c05::22f;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of batuzovk@ispras.ru designates 83.149.199.196 as permitted sender) smtp.mailfrom=batuzovk@ispras.ru
-Received: from bulbul.intra.ispras.ru (bulbul.intra.ispras.ru [10.10.3.51])
-	by smtp.ispras.ru (Postfix) with ESMTP id 3F3BE5FB2D;
-	Fri, 18 Aug 2017 14:33:42 +0300 (MSK)
-Date: Fri, 18 Aug 2017 14:33:42 +0300 (MSK)
-From: Kirill Batuzov <batuzovk@ispras.ru>
-To: =?ISO-8859-15?Q?Alex_Benn=E9e?= <alex.bennee@linaro.org>
-cc: rth@twiddle.net, cota@braap.org, qemu-devel@nongnu.org, 
-    qemu-arm@nongnu.org
-Subject: Re: [RFC PATCH 0/9] TCG Vector types and example conversion
-In-Reply-To: <20170817180404.29334-1-alex.bennee@linaro.org>
-Message-ID: <alpine.DEB.2.20.1708181355080.2770@bulbul.intra.ispras.ru>
+       dkim=pass header.i=@linaro.org header.s=google header.b=OkkAoClC;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 2607:f8b0:400e:c05::22f as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: by mail-pg0-x22f.google.com with SMTP id v189so64651482pgd.2
+        for <alex.bennee@linaro.org>; Fri, 18 Aug 2017 06:44:47 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=subject:to:cc:references:from:message-id:date:user-agent
+         :mime-version:in-reply-to:content-language:content-transfer-encoding;
+        bh=LAXbl6vJrxKFg/WkSAAzUGQfM83DBWo4wPymsHvm8f8=;
+        b=OkkAoClCUcOMMz9ekIv2xfkAwDTzHm3boWFTltat5NXb+Z3zAc3PdvqYNTVred1Kb6
+         kLgYD1BL8v1y4OF9bnQh/aWj7qwvpZXb4hW8pNEPc6RaBzvZLz+3Xt9w8pjtBG6XIqok
+         k/VdYsYUprWulotWU4XEgcsgfsyLoUIpiMa6M=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+         :user-agent:mime-version:in-reply-to:content-language
+         :content-transfer-encoding;
+        bh=LAXbl6vJrxKFg/WkSAAzUGQfM83DBWo4wPymsHvm8f8=;
+        b=TtNLCzWMqN1ifQw5aUWFe81OqvN/TIj3GB4IhCRA5Lm2acN9sb4A9NcFbet3YXD6O+
+         BRsUpSyg6lsl1EFofbMlRap1wcmZd1/VE5PSGTUrcT8masc24eJv98f80cEA5j0PJGg1
+         d1pCJn0t9lQ0xLApjQw0bQG7F0gVXIOtJC3Ko21XnpUbW+PnucE0qLFTw0Lz/ic6CKl3
+         Ha4e/e3himYiukW4LjH2LYFfHqxNEbVtu2J8t9rCaEB9ucx4xEKfkuqRFnnqd1amZD/q
+         ShGqufaeOfsUiZvuYVit7HWqK0HNKogDDnjph75DZOle47bVlDNE4VY4SB2TSaoF8N1K
+         WOJw==
+X-Gm-Message-State: AHYfb5il5qr8hrRLAbmb3vm9XvaJjWG8jkMAxW84ziLkUrRmTGr5bjZL
+	ZwnzuJGDXgI29Ns8SH5bk6Lr
+X-Received: by 10.84.167.2 with SMTP id c2mr9714426plb.371.1503063886810;
+        Fri, 18 Aug 2017 06:44:46 -0700 (PDT)
+Return-Path: <richard.henderson@linaro.org>
+Received: from bigtime.twiddle.net (97-126-108-236.tukw.qwest.net. [97.126.108.236])
+        by smtp.gmail.com with ESMTPSA id 65sm9961340pgj.23.2017.08.18.06.44.45
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 18 Aug 2017 06:44:45 -0700 (PDT)
+Subject: Re: [Qemu-devel] [RFC PATCH 0/9] TCG Vector types and example
+ conversion
+To: Kirill Batuzov <batuzovk@ispras.ru>, =?UTF-8?Q?Alex_Benn=c3=a9e?=
+ <alex.bennee@linaro.org>
+Cc: cota@braap.org, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+ rth@twiddle.net
 References: <20170817180404.29334-1-alex.bennee@linaro.org>
-User-Agent: Alpine 2.20 (DEB 67 2015-01-07)
+ <alpine.DEB.2.20.1708181355080.2770@bulbul.intra.ispras.ru>
+From: Richard Henderson <richard.henderson@linaro.org>
+Message-ID: <64af762a-5d2b-5e33-fc8e-18244b0c6586@linaro.org>
+Date: Fri, 18 Aug 2017 06:44:44 -0700
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+ Thunderbird/52.2.1
 MIME-Version: 1.0
-Content-Type: multipart/mixed; BOUNDARY="8323329-1194898619-1503056022=:2770"
-X-TUID: THjKlp4denb1
+In-Reply-To: <alpine.DEB.2.20.1708181355080.2770@bulbul.intra.ispras.ru>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-TUID: DI8vURtnpln7
 
-  This message is in MIME format.  The first part should be readable text,
-  while the remaining parts are likely unreadable without MIME-aware tools.
-
---8323329-1194898619-1503056022=:2770
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8BIT
-
-
-
-On Thu, 17 Aug 2017, Alex Bennée wrote:
-
-> Hi,
+On 08/18/2017 04:33 AM, Kirill Batuzov wrote:
+> From my own experimentations some times ago,
 > 
-> With upcoming work on SVE I've been looking at the way we implement
-> vector registers in QEMU's TCG. The current orthodoxy is to decompose
-> the vector into a series of TCG registers, often calling a helper
-> function the calculation of each element. The result of the helper is
-> then is then stored back in the vector representation afterwards.
-> There are occasional outliers like simd_tbl which access elements
-> directly from a passed CPUFooState env pointer but these are rare.
+> (1) translating vector instructions to vector instructions in TCG is faster than
 > 
-> This series introduces the concept of TCGv_vec type. This is a pointer
-> to the start of the in memory representation of an arbitrarily long
-> vector register. This is passed to a helper function as a pointer
-> along with a normal TCG register containing information about the
-> actual vector length and any additional information the helper needs
-> to do the operation. The hope* is this saves on the churn of having
-> the TCG do things element by element and allows the compiler to use
-> native vector operations to streamline the helpers.
+> (2) translating vector instructions to series of scalar instructions in TCG,
+> which is faster than*
 > 
-> There are some downsides to this approach. The first is you have to be
-> careful about register aliasing. If you are doing a same reg to same
-> reg operation you need to make a copy of the vector so you don't
-> trample your input data as you go. The second is this involves
-> changing some of the assumptions the TCG makes about things. I've
-> managed to keep all the changes within the core TCG code for now but
-> so far it has only been tested for the tcg_call path which is the only
-> place where TCGv_vec's should turn up. It is possible to do the same
-> thing without touching the TCG code generation by using TCGv_ptrs and
-> manually emitting tcg_addi ops to pass the correct address. Richard
-> has been exploring this approach with his series. The downside of that
-> is you do miss the ability to have named global vector registers which
-> makes reading the TCG dumps a little easier.
+> (3) translating vector instructions to single helper calls, which is faster
+> than*
 > 
-> I've only patched one helper in this series which implements the
-> indexed smull. This is because it appears in the profiles for my test
-> case which was using an arm64 ffmpeg to transcode:
+> (4) translating vector instructions to helper calls for each vector element.
 > 
->   ./ffmpeg.arm64 -i big_buck_bunny_480p_surround-fix.avi \
->     -threads 1 -qscale:v 3 -f null -
+> (*) (2) and (3) may change their respective places in case of some
+> complicated instructions.
+
+This was my gut feeling as well.  With the caveat that for the ARM SVE case of
+2048-bit registers we cannot afford to expand inline due to generated code size.
+
+> ARM (at least ARM32, I have not checked aarch64 in this regard) uses the
+> last, the slowest scheme. As far as I understand, you are want to change
+> it to the third approach. This approach is used in SSE emulation, may be
+> you can use similar structure of helpers?
 > 
-> * hope. On an earlier revision (which included sqshrn conversions) I
->   had measured a minor saving but this had disappeared once I measured
->   the final code. However the profile is fairly dominated by
->   softfloat.
-> 
-> master:
->      8.05%  qemu-aarch64  qemu-aarch64             [.] roundAndPackFloat32
->      7.28%  qemu-aarch64  qemu-aarch64             [.] float32_mul
->      6.56%  qemu-aarch64  qemu-aarch64             [.] helper_lookup_tb_ptr
->      5.31%  qemu-aarch64  qemu-aarch64             [.] float32_muladd
->      4.09%  qemu-aarch64  qemu-aarch64             [.] helper_neon_mull_s16
->      4.00%  qemu-aarch64  qemu-aarch64             [.] addFloat32Sigs
->      3.86%  qemu-aarch64  qemu-aarch64             [.] subFloat32Sigs
->      2.26%  qemu-aarch64  qemu-aarch64             [.] helper_simd_tbl
->      2.00%  qemu-aarch64  qemu-aarch64             [.] float32_add
->      1.81%  qemu-aarch64  qemu-aarch64             [.] helper_neon_unarrow_sat8
->      1.64%  qemu-aarch64  qemu-aarch64             [.] float32_sub
->      1.43%  qemu-aarch64  qemu-aarch64             [.] helper_neon_subl_u32
->      0.98%  qemu-aarch64  qemu-aarch64             [.] helper_neon_widen_u8
-> 
-> tcg-native-vectors-rfc:
->      7.93%  qemu-aarch64  qemu-aarch64             [.] roundAndPackFloat32             
->      7.54%  qemu-aarch64  qemu-aarch64             [.] float32_mul                     
->      6.29%  qemu-aarch64  qemu-aarch64             [.] helper_lookup_tb_ptr
->      5.39%  qemu-aarch64  qemu-aarch64             [.] float32_muladd
->      3.92%  qemu-aarch64  qemu-aarch64             [.] addFloat32Sigs
->      3.86%  qemu-aarch64  qemu-aarch64             [.] subFloat32Sigs
->      3.62%  qemu-aarch64  qemu-aarch64             [.] helper_advsimd_smull_idx_s32
->      2.19%  qemu-aarch64  qemu-aarch64             [.] helper_simd_tbl
->      2.09%  qemu-aarch64  qemu-aarch64             [.] helper_neon_mull_s16
->      1.99%  qemu-aarch64  qemu-aarch64             [.] float32_add
->      1.79%  qemu-aarch64  qemu-aarch64             [.] helper_neon_unarrow_sat8
->      1.62%  qemu-aarch64  qemu-aarch64             [.] float32_sub
->      1.43%  qemu-aarch64  qemu-aarch64             [.] helper_neon_subl_u32
->      1.00%  qemu-aarch64  qemu-aarch64             [.] helper_neon_widen_u8
->      0.98%  qemu-aarch64  qemu-aarch64             [.] helper_neon_addl_u32
-> 
-> At the moment the default compiler settings don't actually vectorise
-> the helper. I could get it to once I added some alignment guarantees
-> but the casting I did broke the instruction emulation so I haven't
-> included that patch in this series.
-> 
-> Given the results why continue investigating this? Well for one thing
-> vector sizes are growing, SVE vectors are up to 2048 bits long. Those
-> longer vectors should offer more scope for the host compiler to
-> generate efficient code in the helper. Also vector operations tend to
-> be quite complex operations, being able to handle this in C code
-> instead of TCGOps might be more preferable from a code maintainability
-> point of view. Finally this noddy little experiment has at least shown
-> it doesn't worsen performance. It would be nice if I could find a
-> benchmark that made heavy use if non-floating point SIMD instructions
-> to better measure the effect of marshalling elements vs vectorised
-> helpers. If anyone has any suggestions I'm all ears ;-)
+> I still hope to finish my own series about implementation of the first
+> approach. I apologize for the long delay since last update and hope to
+> send next version somewhere next week. I do not think our series
+> contradict each other: you are trying to optimize existing general
+> purpose case while I'm trying to optimize case where both host and guest
+> support vector instructions. Since I'm experimenting on ARM32, we'll not
+> have much merge conflicts either.
 
-While doing my own vector register series I was using
+I posted my own, different, take on vectorization yesterday as well.
 
-1. Handwritten example (it's for ARM32 NEON, not aarch64)
+  http://lists.nongnu.org/archive/html/qemu-devel/2017-08/msg03272.html
 
-    .cpu cortex-a8
-    .fpu neon
-    .text
-    .global test
-test:
-    vld1.32     d0, [r0]!
-    vld1.32     d1, [r0]
-    vld1.32     d2, [r1]!
-    vld1.32     d3, [r1]
-	mov			r0, #0xb0000000
-loop:
-    vadd.i32    q0, q0, q1
-    vadd.i32    q0, q0, q1
-    vadd.i32    q0, q0, q1
-    vadd.i32    q0, q0, q1
-    subs        r0, r0, #1
-    bne         loop
-    vpadd.i32   d0, d0, d1
-    vpadd.i32   d0, d0, d1
-    vmov.i32    r0, d0[0]
-    bx          lr
+The primary difference between my version and your version is that I do not
+allow target/cpu/translate*.c to create vector types.  All of the host vector
+expansion is done within tcg/*.c.
 
-It can be adapted for aarch64 without much problems. This example shows
-what potential speed up you can expect, as it is nearly perfect for the
-optimization in question.
+We also would like to settle on a common style for out-of-line helpers, if that
+is possible.  One thing *not* to take from our current SSE emulation is that we
+do not yet support AVX, AVX2, or AVX512 extensions.  So the current
+construction of helpers within target/i386/ doesn't really take into account
+all that should be required.
 
-2. x264 video encoder. It has a lot of handwritten vector assembler for
-different architectures, including aarch64. You probably can access it
-as libx264 from within ffmpeg, if this library support was compiled.
+The thing that's common between AVX512 and SVE is that we have multiple vector
+lengths, and that elements beyond the operation length are zeroed.  Both Alex
+and I have packed operation length + full vector length into a descriptor given
+to the helper.  (Alex allows for some other bits too; I'm not sure about that.)
 
-> 
-> Anyway questions, comments?
-> 
 
-From my own experimentations some times ago,
-
-(1) translating vector instructions to vector instructions in TCG is faster than
-
-(2) translating vector instructions to series of scalar instructions in TCG,
-which is faster than*
-
-(3) translating vector instructions to single helper calls, which is faster
-than*
-
-(4) translating vector instructions to helper calls for each vector element.
-
-(*) (2) and (3) may change their respective places in case of some
-complicated instructions.
-
-ARM (at least ARM32, I have not checked aarch64 in this regard) uses the
-last, the slowest scheme. As far as I understand, you are want to change
-it to the third approach. This approach is used in SSE emulation, may be
-you can use similar structure of helpers?
-
-I still hope to finish my own series about implementation of the first
-approach. I apologize for the long delay since last update and hope to
-send next version somewhere next week. I do not think our series
-contradict each other: you are trying to optimize existing general
-purpose case while I'm trying to optimize case where both host and guest
-support vector instructions. Since I'm experimenting on ARM32, we'll not
-have much merge conflicts either.
-
--- 
-Kirill
---8323329-1194898619-1503056022=:2770--
+r~

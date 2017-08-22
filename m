@@ -1,104 +1,107 @@
-Received: by 10.223.188.70 with SMTP id a6csp2938347wrh;
-        Sun, 20 Aug 2017 18:21:53 -0700 (PDT)
-X-Received: by 10.55.184.71 with SMTP id i68mr20647098qkf.162.1503278513287;
-        Sun, 20 Aug 2017 18:21:53 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1503278513; cv=none;
+Received: by 10.223.188.70 with SMTP id a6csp4475087wrh;
+        Mon, 21 Aug 2017 23:08:49 -0700 (PDT)
+X-Received: by 10.237.48.193 with SMTP id 59mr20698227qtf.230.1503382129653;
+        Mon, 21 Aug 2017 23:08:49 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1503382129; cv=none;
         d=google.com; s=arc-20160816;
-        b=r2F5P142Th6qYiBtW146CCwSoB586XzCH4MdjT4BuG7vEmanL5amZUH09KEX+79Rhj
-         h4gLxKy21pzpKLYoiN/PskDrrjwmYUw+/BGgf8T7dAbdLPhdwFurs9My1rjqOUDvqRyX
-         1XDiZPvTVx2vhvbJPCx1Yl46QVGvbVXxnvMKgaOrzpyjOWE9X+CXzqtwYMWskPsYf56j
-         aWET8FCcdcAMicJDvfqxQhclptFDIgUpgxzmY6JYq+UEfFxM4nDDg5twQa4EISEeJ58e
-         VyTuuNhJS7ceQ2Uuvm/Ng+Y/+f28jrdQu8Suqnmw9oBSL06TKETg6aAWnQOyOXeU7k6t
-         IUOQ==
+        b=QSCV4gfxwaA0xg0jnoibF2Ww20T2gktnq/1088J8mv3s9J6x1UoMom666Rea2u8ctR
+         lEzKScMm8zf5ofqlqz07U/uFXllFANDhGuxQH5z0NsJtQc390dM0CsKhMT/vlsckI0d4
+         KiETP17VFfyXgT7kyGSYtWu0YnlpYvUxEsoM5YY9qQutoJ607cB3OoC8H5gEACE0eUWr
+         ai83R66KlO5p3XnlD6VvZn05jWMyHyNv6uz/8M5iobCIkcLH8D214mYpT9t04IF/kyCx
+         GGYzqoKSJPQy4p/Uv6wC5qlbqq5UGTcA8qBa3udkzCVynTYPsg8wJp4fgmV+5Kfnop9S
+         f90A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
-         :content-disposition:mime-version:references:message-id:to:from:date
-         :dkim-signature:arc-authentication-results;
-        bh=TtQBd1eF2MqyAKcFwBya+yhvvcb5qvzMBFTcTV5t7k0=;
-        b=aFs0n/rg6H1S99YjETgfC8aHRW9ivNXcXoIMQzRPOnV3QsMqUBhBcamxLS8b0723zf
-         bbHlHwm03JHGPtOnGydGQAZe+Ob7hoKbRzDrXiHN1O3VHZWYR9x+QodmO5G3N5dmO7xV
-         mMcMMj3Kfgaua+7ZVpCd8doEwQUNEwRLYTyAlRZToHdmb171j0eGkgog3OyFcIQIH9Pp
-         U2PUPTH/iWOkKNy+hdgTYwCgumrJCYiYQSBcsjy0u2QzEZQ1t1tDgJnkJHrECeZjr8Vg
-         1QVH3ozEc3zleVyD/pA7N07x4oaLOciG9no2+lVVQJYFqK0nVzqA1nwdixhR6PAgQ+7C
-         GgqQ==
+         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
+         :references:in-reply-to:mime-version:dkim-signature
+         :arc-authentication-results;
+        bh=QhSpCfjBqbvNhKB20XSWujLtUzSDsKV/TqNRdpBgDXo=;
+        b=Pltm1PNbMkw7eWutKkFM7Ve02IfoNgKKFfITeMblheZ3ogiyttmJBvt2GWNpfqKb6u
+         1IG1vRl4S1F+Xo05G8SitAwkP/WmD8rXAg8V6sasodelw9T8rQnoSBAiPCQW4ImGL2Fl
+         GZAwjfNkOknVjTJsv0HpSOO1khuWar1MHaHqBC+v8w+SvlJLoT8dtJiUxjpRKqp1gZAC
+         ga9NR9S3NUbaBz4VRFfQVhiSOX/gzSFVdb70oqM0mkJNpALRNDOVjqzNnVHWv53+Uory
+         fWBn2PIKQ47lwvsR9/wAUYWai4pqviY+YVnjaw1rUukVNjtl4wi5U383aYSkOCvF2afN
+         7IIQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Of6kqYcW;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=jVSyfLIF;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id 24si10394510qtp.137.2017.08.20.18.21.52
+        by mx.google.com with ESMTPS id l50si10456773qtb.379.2017.08.21.23.08.48
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sun, 20 Aug 2017 18:21:53 -0700 (PDT)
+        Mon, 21 Aug 2017 23:08:49 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Of6kqYcW;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=jVSyfLIF;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:52605 helo=lists.gnu.org)
+Received: from localhost ([::1]:44228 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1djbPa-0006Nj-Qn
-	for alex.bennee@linaro.org; Sun, 20 Aug 2017 21:21:50 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:36369)
+	id 1dk2Mp-0000s6-2X
+	for alex.bennee@linaro.org; Tue, 22 Aug 2017 02:08:47 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:42481)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <linuc.decode@gmail.com>) id 1djbPT-0006M7-Nx
-	for qemu-arm@nongnu.org; Sun, 20 Aug 2017 21:21:45 -0400
+	(envelope-from <sundeep.lkml@gmail.com>) id 1dk2Md-0000ot-W9
+	for qemu-arm@nongnu.org; Tue, 22 Aug 2017 02:08:38 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <linuc.decode@gmail.com>) id 1djbPL-0001kB-9R
-	for qemu-arm@nongnu.org; Sun, 20 Aug 2017 21:21:39 -0400
-Received: from mail-pg0-x241.google.com ([2607:f8b0:400e:c05::241]:32979)
+	(envelope-from <sundeep.lkml@gmail.com>) id 1dk2Mb-000266-So
+	for qemu-arm@nongnu.org; Tue, 22 Aug 2017 02:08:35 -0400
+Received: from mail-ua0-x242.google.com ([2607:f8b0:400c:c08::242]:38721)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <linuc.decode@gmail.com>)
-	id 1djbPK-0001fI-U2; Sun, 20 Aug 2017 21:21:35 -0400
-Received: by mail-pg0-x241.google.com with SMTP id n4so6460927pgn.0;
-	Sun, 20 Aug 2017 18:21:33 -0700 (PDT)
+	(Exim 4.71) (envelope-from <sundeep.lkml@gmail.com>)
+	id 1dk2MX-00024m-LU; Tue, 22 Aug 2017 02:08:29 -0400
+Received: by mail-ua0-x242.google.com with SMTP id d12so1427045uag.5;
+	Mon, 21 Aug 2017 23:08:28 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=date:from:to:cc:subject:message-id:references:mime-version
-	:content-disposition:in-reply-to:user-agent;
-	bh=TtQBd1eF2MqyAKcFwBya+yhvvcb5qvzMBFTcTV5t7k0=;
-	b=Of6kqYcWtph7JlGATZCSTVT9oV1YtOW8QhYtiv2pNRLrQ3GuqXh3QZWKnnAT1MYalH
-	BhYsY43tx/oIZzlUUafPXj+Ko560hGYphkVSVwGwQGT7r9uyYUEqqcY+mvepcl7BZEge
-	VfVy0AwVNCfbl145cKSB0L16jwQGB45nOv+gaII+sdKevoDfsW0Y7Uf2Q+JGNb552uN0
-	m/QcsBR+B1GPkHrT8wYrXnLjLEDpmSyDoluAzvFgayXyuMuX9WAIP9+HmL69NVZcRY3o
-	ib7Mawmg8Ps3n7lOkqjXn2vhAShyNnYOm6nx0H33uMJxF2VvWlypJZmrmrQrMOoe9Yfx
-	2WDg==
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=QhSpCfjBqbvNhKB20XSWujLtUzSDsKV/TqNRdpBgDXo=;
+	b=jVSyfLIFJHV3ChS7LeWeXYTmxxVPkXfMDOsPtYbcD0hMP9kKEaw1+H3hXRRk7dDuwL
+	e4kCehlF1u4X0Fl0veKTQ9y07+hhk1OMwaSzrEIEaRFquQHJl5XhsEvzQcMBoKqwSBJU
+	y1iOpMhXeHcZ5M8DBAmHFt6q3XsOhnbMd0BN7fIx8kYwVA2TDTyTaHMNITtEytLW/3PW
+	isOW1JLhIUSKUfqO6Ftc9r3hU6MAHrD9ebqPA1hAEodrUTfpm1Ww43aixtnAC8xatQJz
+	WbGJBJNcbpuDjZHODPhmTFFsirZCi20ydklxLOPm3+CdEtCTj/KdDDGrdKHGAQ2o9rFW
+	TB5A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:date:from:to:cc:subject:message-id:references
-	:mime-version:content-disposition:in-reply-to:user-agent;
-	bh=TtQBd1eF2MqyAKcFwBya+yhvvcb5qvzMBFTcTV5t7k0=;
-	b=XwIr5e+EphyVOTL/0kWrunxjtS9jI2P8uy1h/n2tPL983iAUevmd9gpvOOEycoOGrj
-	riNs4bSPazYzPtcMGj30YjwIMEbgIJugFN7c48wWecdgnPqzTxEWJzBzP24g5JtyZYJL
-	fVTpVC1JvdBEInvkjPUJIardeW+yUkAYGQwGjHM+AlcBsN9Opw3CBo4kuko69tZEOZWW
-	4n54HqH9dXvE/rmcGNwPU7p8l6Y7CHJu2+qMsvm6Kt401d9/akwqp8xrqXeZZBPTDGTZ
-	Z/Z2mW7GrZO7GV1VST7LH5zX67qzYl1BX2uek7S5wzBrgmDa5NQNZ6x6In5wKaIUoz6y
-	j8yQ==
-X-Gm-Message-State: AHYfb5gKdB44kMJ953jrS5gcVmyaT3MG4GGPqk2e3bI20NIs44CVCdbi
-	2tX2Je2aGnnQ9A==
-X-Received: by 10.84.172.1 with SMTP id m1mr17195131plb.174.1503278492354;
-	Sun, 20 Aug 2017 18:21:32 -0700 (PDT)
-Received: from virtx40 ([111.93.218.67]) by smtp.gmail.com with ESMTPSA id
-	p10sm20043380pfk.103.2017.08.20.18.21.26
-	(version=TLS1_2 cipher=AES128-SHA bits=128/128);
-	Sun, 20 Aug 2017 18:21:31 -0700 (PDT)
-Date: Mon, 21 Aug 2017 06:51:13 +0530
-From: Linu Cherian <linuc.decode@gmail.com>
-To: Eric Auger <eric.auger@redhat.com>
-Message-ID: <20170821012113.GA12220@virtx40>
-References: <1502461354-11327-1-git-send-email-eric.auger@redhat.com>
-	<1502461354-11327-9-git-send-email-eric.auger@redhat.com>
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=QhSpCfjBqbvNhKB20XSWujLtUzSDsKV/TqNRdpBgDXo=;
+	b=qQ/NMy6OPKYqHKXzmPzqaNMFfO8g6CI9w4O9Ify+R59EB7U+QCUb5ieWpqAp/dfv2H
+	ce4a6jEsEAkRgZC5JcoJ5u00iXwb7piUJWfoTsR4/b3QQrwe+6myMeBRW2EBYRY1x9LZ
+	n2LynaKalm1dSN7L/g2I1mP4EWX15GfSrvfUD0S0F6UrE+wfAZje4If+IT72WX0HrX4s
+	TUHOauD/0n19n+eHmAMTmzXK/u9awKpTNTLaBQbI5qAFsBnTMwwY6ZszSoCgzuSntaEO
+	pLvcsRDBYtFF11GDyNXpEAEG1IPs0Z1ephy2ZYlEj/IJqNzcy/QGA02B23zL2CgLK3G5
+	DV4g==
+X-Gm-Message-State: AHYfb5jOT1oz94if0yflDN2ufu+lQHy8MSVfAHrPyBdVD7LzGVXHSl3C
+	NaDI9OcqDmxvOPf5Vv9QwjtySU9suQ==
+X-Received: by 10.159.53.36 with SMTP id o33mr13325604uao.95.1503382107664;
+	Mon, 21 Aug 2017 23:08:27 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <1502461354-11327-9-git-send-email-eric.auger@redhat.com>
-User-Agent: Mutt/1.5.21 (2010-09-15)
+Received: by 10.176.75.196 with HTTP; Mon, 21 Aug 2017 23:08:27 -0700 (PDT)
+In-Reply-To: <CALHRZuovDOou9nR5U0BmEdp_qu9N_ym+UnsxmnBwF3=jWwmQEQ@mail.gmail.com>
+References: <1499057115-6773-1-git-send-email-sundeep.lkml@gmail.com>
+	<1499057115-6773-3-git-send-email-sundeep.lkml@gmail.com>
+	<CAKmqyKORKWWOUSAQ8_GtF6rOspE0mtJOEhJTvfuJ6h7JAru74A@mail.gmail.com>
+	<CALHRZuo7Y2RpS3EWnd55_Te_p2YSo03JcdTYB31MDz7p07bSGA@mail.gmail.com>
+	<CAKmqyKM7WGg30=TNtPotC-Vr7uYFxZmAuYXWRDjXHDxMM1vhbA@mail.gmail.com>
+	<CALHRZurJgf3r8_pA=vx0=N8L6oo_ZnaQO==yRxtCHhoFZ-pG7w@mail.gmail.com>
+	<CALHRZuo2WuZRWgDnfoE+cyi9ypPxdKQdH7XTrDuWK_SU1b=z2w@mail.gmail.com>
+	<CALHRZupSqy8Tu-Pb5nWPY8dz-qduwNt7exVGXBO45EEoU-mqww@mail.gmail.com>
+	<CALHRZuovDOou9nR5U0BmEdp_qu9N_ym+UnsxmnBwF3=jWwmQEQ@mail.gmail.com>
+From: sundeep subbaraya <sundeep.lkml@gmail.com>
+Date: Tue, 22 Aug 2017 11:38:27 +0530
+Message-ID: <CALHRZup_pn8UUPrcA7_gd-Ztt_9JZedoQJC=Rdi9DMxF7-0koQ@mail.gmail.com>
+To: Alistair Francis <alistair23@gmail.com>,
+	=?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
+Content-Type: multipart/alternative; boundary="94eb2c03ce807d372b0557516c88"
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400e:c05::241
-Subject: Re: [Qemu-arm] [RFC v6 8/9] hw/arm/smmuv3: VFIO integration
+X-Received-From: 2607:f8b0:400c:c08::242
+Subject: Re: [Qemu-arm] [Qemu devel v6 PATCH 2/5] msf2: Microsemi
+ Smartfusion2 System Register block.
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -110,437 +113,578 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, drjones@redhat.com, tcain@qti.qualcomm.com,
-	Radha.Chintakuntla@cavium.com, Sunil.Goutham@cavium.com,
-	mohun106@gmail.com, jean-philippe.brucker@arm.com,
-	tn@semihalf.com, bharat.bhushan@nxp.com, mst@redhat.com,
-	will.deacon@arm.com, qemu-devel@nongnu.org, peterx@redhat.com,
-	alex.williamson@redhat.com, qemu-arm@nongnu.org,
-	christoffer.dall@linaro.org, robin.murphy@arm.com,
-	prem.mallappa@gmail.com, eric.auger.pro@gmail.com
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm <qemu-arm@nongnu.org>,
+	"qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 019MQPSpOWOy
+X-TUID: Yq/Mr9oOMQml
 
-Hi Eric,
+--94eb2c03ce807d372b0557516c88
+Content-Type: text/plain; charset="UTF-8"
 
+Hi Alistair,
 
-On Fri Aug 11, 2017 at 04:22:33PM +0200, Eric Auger wrote:
-> This patch allows doing PCIe passthrough with a guest exposed
-> with a vSMMUv3. It implements the replay and notify_flag_changed
-> iommu ops. Also on TLB and data structure invalidation commands,
-> we replay the mappings so that the physical IOMMU implements
-> updated stage 1 settings (Guest IOVA -> Guest PA) + stage 2 settings.
-> 
-> This works only if the guest smmuv3 driver implements the
-> "tlbi-on-map" option.
-> 
-> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+I will remove the abort and send next iteration.
+
+Thanks,
+Sundeep
+
+On Tue, Aug 1, 2017 at 11:38 AM, sundeep subbaraya <sundeep.lkml@gmail.com>
+wrote:
+
+> Hi Philippe,
+>
+> Ping again :)
+>
+> Thanks,
+> Sundeep
+>
+> On Fri, Jul 21, 2017 at 2:50 PM, sundeep subbaraya <sundeep.lkml@gmail.com
+> > wrote:
+>
+>> Hi,
+>>
+>> Ping
+>>
+>> On Thu, Jul 13, 2017 at 7:51 AM, sundeep subbaraya <
+>> sundeep.lkml@gmail.com> wrote:
+>>
+>>> Hi Phiiippe,
+>>>
+>>> Gentle reminder.
+>>>
+>>> Thanks,
+>>> Sundeep
+>>>
+>>>
+>>> On Mon, Jul 10, 2017 at 1:55 PM, sundeep subbaraya <
+>>> sundeep.lkml@gmail.com> wrote:
+>>>
+>>>> Hi Alistair,
+>>>>
+>>>> On Fri, Jul 7, 2017 at 10:03 PM, Alistair Francis <alistair23@gmail.com
+>>>> > wrote:
+>>>>
+>>>>> On Fri, Jul 7, 2017 at 12:08 AM, sundeep subbaraya
+>>>>> <sundeep.lkml@gmail.com> wrote:
+>>>>> > Hi Alistair,
+>>>>> >
+>>>>> > On Wed, Jul 5, 2017 at 11:36 PM, Alistair Francis <
+>>>>> alistair23@gmail.com>
+>>>>> > wrote:
+>>>>> >>
+>>>>> >> On Sun, Jul 2, 2017 at 9:45 PM, Subbaraya Sundeep
+>>>>> >> <sundeep.lkml@gmail.com> wrote:
+>>>>> >> > Added Sytem register block of Smartfusion2.
+>>>>> >> > This block has PLL registers which are accessed by guest.
+>>>>> >> >
+>>>>> >> > Signed-off-by: Subbaraya Sundeep <sundeep.lkml@gmail.com>
+>>>>> >> > ---
+>>>>> >> >  hw/misc/Makefile.objs         |   1 +
+>>>>> >> >  hw/misc/msf2-sysreg.c         | 200
+>>>>> >> > ++++++++++++++++++++++++++++++++++++++++++
+>>>>> >> >  include/hw/misc/msf2-sysreg.h |  82 +++++++++++++++++
+>>>>> >> >  3 files changed, 283 insertions(+)
+>>>>> >> >  create mode 100644 hw/misc/msf2-sysreg.c
+>>>>> >> >  create mode 100644 include/hw/misc/msf2-sysreg.h
+>>>>> >> >
+>>>>> >> > diff --git a/hw/misc/Makefile.objs b/hw/misc/Makefile.objs
+>>>>> >> > index c8b4893..0f52354 100644
+>>>>> >> > --- a/hw/misc/Makefile.objs
+>>>>> >> > +++ b/hw/misc/Makefile.objs
+>>>>> >> > @@ -56,3 +56,4 @@ obj-$(CONFIG_EDU) += edu.o
+>>>>> >> >  obj-$(CONFIG_HYPERV_TESTDEV) += hyperv_testdev.o
+>>>>> >> >  obj-$(CONFIG_AUX) += auxbus.o
+>>>>> >> >  obj-$(CONFIG_ASPEED_SOC) += aspeed_scu.o aspeed_sdmc.o
+>>>>> >> > +obj-$(CONFIG_MSF2) += msf2-sysreg.o
+>>>>> >> > diff --git a/hw/misc/msf2-sysreg.c b/hw/misc/msf2-sysreg.c
+>>>>> >> > new file mode 100644
+>>>>> >> > index 0000000..64ee141
+>>>>> >> > --- /dev/null
+>>>>> >> > +++ b/hw/misc/msf2-sysreg.c
+>>>>> >> > @@ -0,0 +1,200 @@
+>>>>> >> > +/*
+>>>>> >> > + * System Register block model of Microsemi SmartFusion2.
+>>>>> >> > + *
+>>>>> >> > + * Copyright (c) 2017 Subbaraya Sundeep <sundeep.lkml@gmail.com>
+>>>>> >> > + *
+>>>>> >> > + * This program is free software; you can redistribute it and/or
+>>>>> >> > + * modify it under the terms of the GNU General Public License
+>>>>> >> > + * as published by the Free Software Foundation; either version
+>>>>> >> > + * 2 of the License, or (at your option) any later version.
+>>>>> >> > + *
+>>>>> >> > + * You should have received a copy of the GNU General Public
+>>>>> License
+>>>>> >> > along
+>>>>> >> > + * with this program; if not, see <http://www.gnu.org/licenses/>
+>>>>> .
+>>>>> >> > + */
+>>>>> >> > +
+>>>>> >> > +#include "hw/misc/msf2-sysreg.h"
+>>>>> >>
+>>>>> >> Same #include comment from patch 1.
+>>>>> >
+>>>>> >
+>>>>> > Ok will change.
+>>>>> >>
+>>>>> >>
+>>>>> >> > +
+>>>>> >> > +#ifndef MSF2_SYSREG_ERR_DEBUG
+>>>>> >> > +#define MSF2_SYSREG_ERR_DEBUG  0
+>>>>> >> > +#endif
+>>>>> >> > +
+>>>>> >> > +#define DB_PRINT_L(lvl, fmt, args...) do { \
+>>>>> >> > +    if (MSF2_SYSREG_ERR_DEBUG >= lvl) { \
+>>>>> >> > +        qemu_log("%s: " fmt "\n", __func__, ## args); \
+>>>>> >> > +    } \
+>>>>> >> > +} while (0);
+>>>>> >> > +
+>>>>> >> > +#define DB_PRINT(fmt, args...) DB_PRINT_L(1, fmt, ## args)
+>>>>> >> > +
+>>>>> >> > +static inline int msf2_divbits(uint32_t div)
+>>>>> >> > +{
+>>>>> >> > +    int ret = 0;
+>>>>> >> > +
+>>>>> >> > +    switch (div) {
+>>>>> >> > +    case 1:
+>>>>> >> > +        ret = 0;
+>>>>> >> > +        break;
+>>>>> >> > +    case 2:
+>>>>> >> > +        ret = 1;
+>>>>> >> > +        break;
+>>>>> >> > +    case 4:
+>>>>> >> > +        ret = 2;
+>>>>> >> > +        break;
+>>>>> >> > +    case 8:
+>>>>> >> > +        ret = 4;
+>>>>> >> > +        break;
+>>>>> >> > +    case 16:
+>>>>> >> > +        ret = 5;
+>>>>> >> > +        break;
+>>>>> >> > +    case 32:
+>>>>> >> > +        ret = 6;
+>>>>> >> > +        break;
+>>>>> >> > +    default:
+>>>>> >> > +        break;
+>>>>> >> > +    }
+>>>>> >> > +
+>>>>> >> > +    return ret;
+>>>>> >> > +}
+>>>>> >> > +
+>>>>> >> > +static void msf2_sysreg_reset(DeviceState *d)
+>>>>> >> > +{
+>>>>> >> > +    MSF2SysregState *s = MSF2_SYSREG(d);
+>>>>> >> > +
+>>>>> >> > +    DB_PRINT("RESET");
+>>>>> >> > +
+>>>>> >> > +    s->regs[MSSDDR_PLL_STATUS_LOW_CR] = 0x021A2358;
+>>>>> >> > +    s->regs[MSSDDR_PLL_STATUS] = 0x3;
+>>>>> >> > +    s->regs[MSSDDR_FACC1_CR] = msf2_divbits(s->apb0div) << 5 |
+>>>>> >> > +                               msf2_divbits(s->apb1div) << 2;
+>>>>> >> > +}
+>>>>> >> > +
+>>>>> >> > +static uint64_t msf2_sysreg_read(void *opaque, hwaddr offset,
+>>>>> >> > +    unsigned size)
+>>>>> >> > +{
+>>>>> >> > +    MSF2SysregState *s = opaque;
+>>>>> >> > +    offset /= 4;
+>>>>> >>
+>>>>> >> Probably best to use a bitshift.
+>>>>> >
+>>>>> >
+>>>>> > Ok will change.
+>>>>> >>
+>>>>> >>
+>>>>> >> > +    uint32_t ret = 0;
+>>>>> >> > +
+>>>>> >> > +    if (offset < ARRAY_SIZE(s->regs)) {
+>>>>> >> > +        ret = s->regs[offset];
+>>>>> >> > +        DB_PRINT("addr: 0x%08" HWADDR_PRIx " data: 0x%08" PRIx32,
+>>>>> >> > +                    offset * 4, ret);
+>>>>> >>
+>>>>> >> Bitshift here as well.
+>>>>> >
+>>>>> >
+>>>>> > Ok will change.
+>>>>> >>
+>>>>> >>
+>>>>> >> > +    } else {
+>>>>> >> > +        qemu_log_mask(LOG_GUEST_ERROR,
+>>>>> >> > +                    "%s: Bad offset 0x%08" HWADDR_PRIx "\n",
+>>>>> __func__,
+>>>>> >> > +                    offset * 4);
+>>>>> >> > +    }
+>>>>> >> > +
+>>>>> >> > +    return ret;
+>>>>> >> > +}
+>>>>> >> > +
+>>>>> >> > +static void msf2_sysreg_write(void *opaque, hwaddr offset,
+>>>>> >> > +                          uint64_t val, unsigned size)
+>>>>> >> > +{
+>>>>> >> > +    MSF2SysregState *s = (MSF2SysregState *)opaque;
+>>>>> >> > +    uint32_t newval = val;
+>>>>> >> > +    uint32_t oldval;
+>>>>> >> > +
+>>>>> >> > +    DB_PRINT("addr: 0x%08" HWADDR_PRIx " data: 0x%08" PRIx64,
+>>>>> >> > +            offset, val);
+>>>>> >> > +
+>>>>> >> > +    offset /= 4;
+>>>>> >>
+>>>>> >> Same here
+>>>>> >
+>>>>> >
+>>>>> > Ok will change
+>>>>> >>
+>>>>> >>
+>>>>> >> > +
+>>>>> >> > +    switch (offset) {
+>>>>> >> > +    case MSSDDR_PLL_STATUS:
+>>>>> >> > +        break;
+>>>>> >> > +
+>>>>> >> > +    case ESRAM_CR:
+>>>>> >> > +        oldval = s->regs[ESRAM_CR];
+>>>>> >> > +        if (oldval ^ newval) {
+>>>>> >> > +            qemu_log_mask(LOG_GUEST_ERROR,
+>>>>> >> > +                       TYPE_MSF2_SYSREG": eSRAM remapping not
+>>>>> >> > supported\n");
+>>>>> >> > +            abort();
+>>>>> >>
+>>>>> >> The guest should not be able to kill QEMU, a guest error should
+>>>>> never
+>>>>> >> result in an abort.
+>>>>> >
+>>>>> >
+>>>>> > Philippe suggested to abort because:
+>>>>> > If guest tries to remap since firmware do a remap, the code flow
+>>>>> will be
+>>>>> > completely wrong.
+>>>>> > Reporting a GUEST_ERROR here is not enough since code flow
+>>>>> continuing would
+>>>>> > be
+>>>>> > pretty hard to understand/debug.
+>>>>>
+>>>>> I don't see how it will be that hard to debug as QEMU will tell you
+>>>>> that the guest is doing something wrong.
+>>>>>
+>>>>> You can't allow the guest to abort or exit QEMU. It's a security
+>>>>> liability issue and specifically mentioned as not allowed:
+>>>>> https://github.com/qemu/qemu/blob/master/HACKING#L230
+>>>>>
+>>>>> Ok. Lets hear from Philippe. Philippe?
+>>>>
+>>>> Thanks,
+>>>> Sundeep
+>>>>
+>>>>
+>>>>> Thanks,
+>>>>> Alistair
+>>>>>
+>>>>> > We decided to abort for now.
+>>>>>
+>>>>
+>>>>
+>>>
+>>
 >
 
-Appreciate if you could point to some documentation that explains 
-the attach, detach, map,unmap flows for a passthrough device 
-with emulated IOMMU. 
-Thanks. 
-> ---
-> 
-> v5 -> v6:
-> - use IOMMUMemoryRegion
-> - handle implementation defined SMMU_CMD_TLBI_NH_VA_AM cmd
->   (goes along with TLBI_ON_MAP FW quirk)
-> - replay systematically unmap the whole range first
-> - smmuv3_map_hook does not unmap anymore and the unmap is done
->   before the replay
-> - add and use smmuv3_context_device_invalidate instead of
->   blindly replaying everything
-> ---
->  hw/arm/smmuv3-internal.h |   1 +
->  hw/arm/smmuv3.c          | 265 ++++++++++++++++++++++++++++++++++++++++++++++-
->  hw/arm/trace-events      |  14 +++
->  3 files changed, 277 insertions(+), 3 deletions(-)
-> 
-> diff --git a/hw/arm/smmuv3-internal.h b/hw/arm/smmuv3-internal.h
-> index e255df1..ac4628f 100644
-> --- a/hw/arm/smmuv3-internal.h
-> +++ b/hw/arm/smmuv3-internal.h
-> @@ -344,6 +344,7 @@ enum {
->      SMMU_CMD_RESUME          = 0x44,
->      SMMU_CMD_STALL_TERM,
->      SMMU_CMD_SYNC,          /* 0x46 */
-> +    SMMU_CMD_TLBI_NH_VA_AM   = 0x8F, /* VIOMMU Impl Defined */
->  };
->  
->  static const char *cmd_stringify[] = {
-> diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
-> index e195a0e..89fb116 100644
-> --- a/hw/arm/smmuv3.c
-> +++ b/hw/arm/smmuv3.c
-> @@ -25,6 +25,7 @@
->  #include "exec/address-spaces.h"
->  #include "trace.h"
->  #include "qemu/error-report.h"
-> +#include "exec/target_page.h"
->  
->  #include "hw/arm/smmuv3.h"
->  #include "smmuv3-internal.h"
-> @@ -143,6 +144,71 @@ static MemTxResult smmu_read_cmdq(SMMUV3State *s, Cmd *cmd)
->      return ret;
->  }
->  
-> +static void smmuv3_replay_all(SMMUState *s)
-> +{
-> +    SMMUNotifierNode *node;
-> +
-> +    QLIST_FOREACH(node, &s->notifiers_list, next) {
-> +        trace_smmuv3_replay_all(node->sdev->iommu.parent_obj.name);
-> +        memory_region_iommu_replay_all(&node->sdev->iommu);
-> +    }
-> +}
-> +
-> +/* Replay the mappings for a given streamid */
-> +static void smmuv3_context_device_invalidate(SMMUState *s, uint16_t sid)
-> +{
-> +    uint8_t bus_n, devfn;
-> +    SMMUPciBus *smmu_bus;
-> +    SMMUDevice *smmu;
-> +
-> +    trace_smmuv3_context_device_invalidate(sid);
-> +    bus_n = PCI_BUS_NUM(sid);
-> +    smmu_bus = smmu_find_as_from_bus_num(s, bus_n);
-> +    if (smmu_bus) {
-> +        devfn = PCI_FUNC(sid);
-> +        smmu = smmu_bus->pbdev[devfn];
-> +        if (smmu) {
-> +            memory_region_iommu_replay_all(&smmu->iommu);
-> +        }
-> +    }
-> +}
-> +
-> +static void smmuv3_replay_single(IOMMUMemoryRegion *mr, IOMMUNotifier *n,
-> +                                 uint64_t iova);
-> +
-> +static void smmuv3_replay_range(IOMMUMemoryRegion *mr, IOMMUNotifier *n,
-> +                                 uint64_t iova, size_t nb_pages);
-> +
-> +static void smmuv3_notify_single(SMMUState *s, uint64_t iova)
-> +{
-> +    SMMUNotifierNode *node;
-> +
-> +    QLIST_FOREACH(node, &s->notifiers_list, next) {
-> +        IOMMUMemoryRegion *mr = &node->sdev->iommu;
-> +        IOMMUNotifier *n;
-> +
-> +        trace_smmuv3_notify_all(node->sdev->iommu.parent_obj.name, iova);
-> +        IOMMU_NOTIFIER_FOREACH(n, mr) {
-> +            smmuv3_replay_single(mr, n, iova);
-> +        }
-> +    }
-> +}
-> +
-> +static void smmuv3_notify_range(SMMUState *s, uint64_t iova, size_t size)
-> +{
-> +    SMMUNotifierNode *node;
-> +
-> +    QLIST_FOREACH(node, &s->notifiers_list, next) {
-> +        IOMMUMemoryRegion *mr = &node->sdev->iommu;
-> +        IOMMUNotifier *n;
-> +
-> +        trace_smmuv3_notify_all(node->sdev->iommu.parent_obj.name, iova);
-> +        IOMMU_NOTIFIER_FOREACH(n, mr) {
-> +            smmuv3_replay_range(mr, n, iova, size);
-> +        }
-> +    }
-> +}
-> +
->  static int smmu_cmdq_consume(SMMUV3State *s)
->  {
->      uint32_t error = SMMU_CMD_ERR_NONE;
-> @@ -178,28 +244,38 @@ static int smmu_cmdq_consume(SMMUV3State *s)
->              break;
->          case SMMU_CMD_PREFETCH_CONFIG:
->          case SMMU_CMD_PREFETCH_ADDR:
-> +            break;
->          case SMMU_CMD_CFGI_STE:
->          {
->               uint32_t streamid = cmd.word[1];
->  
->               trace_smmuv3_cmdq_cfgi_ste(streamid);
-> -            break;
-> +             smmuv3_context_device_invalidate(&s->smmu_state, streamid);
-> +             break;
->          }
->          case SMMU_CMD_CFGI_STE_RANGE: /* same as SMMU_CMD_CFGI_ALL */
->          {
-> -            uint32_t start = cmd.word[1], range, end;
-> +            uint32_t start = cmd.word[1], range, end, i;
->  
->              range = extract32(cmd.word[2], 0, 5);
->              end = start + (1 << (range + 1)) - 1;
->              trace_smmuv3_cmdq_cfgi_ste_range(start, end);
-> +            for (i = start; i <= end; i++) {
-> +                smmuv3_context_device_invalidate(&s->smmu_state, i);
-> +            }
->              break;
->          }
->          case SMMU_CMD_CFGI_CD:
->          case SMMU_CMD_CFGI_CD_ALL:
-> +        {
-> +             uint32_t streamid = cmd.word[1];
-> +
-> +            smmuv3_context_device_invalidate(&s->smmu_state, streamid);
->              break;
-> +        }
->          case SMMU_CMD_TLBI_NH_ALL:
->          case SMMU_CMD_TLBI_NH_ASID:
-> -            printf("%s TLBI* replay\n", __func__);
-> +            smmuv3_replay_all(&s->smmu_state);
->              break;
->          case SMMU_CMD_TLBI_NH_VA:
->          {
-> @@ -210,6 +286,20 @@ static int smmu_cmdq_consume(SMMUV3State *s)
->              uint64_t addr = high << 32 | (low << 12);
->  
->              trace_smmuv3_cmdq_tlbi_nh_va(asid, vmid, addr);
-> +            smmuv3_notify_single(&s->smmu_state, addr);
-> +            break;
-> +        }
-> +        case SMMU_CMD_TLBI_NH_VA_AM:
-> +        {
-> +            int asid = extract32(cmd.word[1], 16, 16);
-> +            int am = extract32(cmd.word[1], 0, 16);
-> +            uint64_t low = extract32(cmd.word[2], 12, 20);
-> +            uint64_t high = cmd.word[3];
-> +            uint64_t addr = high << 32 | (low << 12);
-> +            size_t size = am << 12;
-> +
-> +            trace_smmuv3_cmdq_tlbi_nh_va_am(asid, am, addr, size);
-> +            smmuv3_notify_range(&s->smmu_state, addr, size);
->              break;
->          }
->          case SMMU_CMD_TLBI_NH_VAA:
-> @@ -222,6 +312,7 @@ static int smmu_cmdq_consume(SMMUV3State *s)
->          case SMMU_CMD_TLBI_S12_VMALL:
->          case SMMU_CMD_TLBI_S2_IPA:
->          case SMMU_CMD_TLBI_NSNH_ALL:
-> +            smmuv3_replay_all(&s->smmu_state);
->              break;
->          case SMMU_CMD_ATC_INV:
->          case SMMU_CMD_PRI_RESP:
-> @@ -804,6 +895,172 @@ out:
->      return entry;
->  }
->  
-> +static int smmuv3_replay_hook(IOMMUTLBEntry *entry, void *private)
-> +{
-> +    trace_smmuv3_replay_hook(entry->iova, entry->translated_addr,
-> +                             entry->addr_mask, entry->perm);
-> +    memory_region_notify_one((IOMMUNotifier *)private, entry);
-> +    return 0;
-> +}
-> +
-> +static int smmuv3_map_hook(IOMMUTLBEntry *entry, void *private)
-> +{
-> +    trace_smmuv3_map_hook(entry->iova, entry->translated_addr,
-> +                          entry->addr_mask, entry->perm);
-> +    memory_region_notify_one((IOMMUNotifier *)private, entry);
-> +    return 0;
-> +}
-> +
-> +/* Unmap the whole range in the notifier's scope. */
-> +static void smmuv3_unmap_notifier(SMMUDevice *sdev, IOMMUNotifier *n)
-> +{
-> +    IOMMUTLBEntry entry;
-> +    hwaddr size;
-> +    hwaddr start = n->start;
-> +    hwaddr end = n->end;
-> +
-> +    size = end - start + 1;
-> +
-> +    entry.target_as = &address_space_memory;
-> +    /* Adjust iova for the size */
-> +    entry.iova = n->start & ~(size - 1);
-> +    /* This field is meaningless for unmap */
-> +    entry.translated_addr = 0;
-> +    entry.perm = IOMMU_NONE;
-> +    entry.addr_mask = size - 1;
-> +
-> +    /* TODO: check start/end/size/mask */
-> +
-> +    trace_smmuv3_unmap_notifier(pci_bus_num(sdev->bus),
-> +                                PCI_SLOT(sdev->devfn),
-> +                                PCI_FUNC(sdev->devfn),
-> +                                entry.iova, size);
-> +
-> +    memory_region_notify_one(n, &entry);
-> +}
-> +
-> +static void smmuv3_replay(IOMMUMemoryRegion *mr, IOMMUNotifier *n)
-> +{
-> +    SMMUDevice *sdev = container_of(mr, SMMUDevice, iommu);
-> +    SMMUV3State *s = sdev->smmu;
-> +    SMMUBaseClass *sbc = SMMU_DEVICE_GET_CLASS(s);
-> +    SMMUTransCfg cfg = {};
-> +    int ret;
-> +
-> +    smmuv3_unmap_notifier(sdev, n);
-> +
-> +    ret = smmuv3_decode_config(mr, &cfg);
-> +    if (ret) {
-> +        error_report("%s error decoding the configuration for iommu mr=%s",
-> +                     __func__, mr->parent_obj.name);
-> +    }
-> +
-> +    if (cfg.disabled || cfg.bypassed) {
-> +        return;
-> +    }
-> +    /* is the smmu enabled */
-> +    sbc->page_walk_64(&cfg, 0, (1ULL << (64 - cfg.tsz)) - 1, false,
-> +                      smmuv3_replay_hook, n);
-> +}
-> +static void smmuv3_replay_range(IOMMUMemoryRegion *mr, IOMMUNotifier *n,
-> +                                 uint64_t iova, size_t size)
-> +{
-> +    SMMUDevice *sdev = container_of(mr, SMMUDevice, iommu);
-> +    SMMUV3State *s = sdev->smmu;
-> +    SMMUBaseClass *sbc = SMMU_DEVICE_GET_CLASS(s);
-> +    SMMUTransCfg cfg = {};
-> +    IOMMUTLBEntry entry;
-> +    int ret;
-> +
-> +    trace_smmuv3_replay_range(mr->parent_obj.name, iova, size, n);
-> +    ret = smmuv3_decode_config(mr, &cfg);
-> +    if (ret) {
-> +        error_report("%s error decoding the configuration for iommu mr=%s",
-> +                     __func__, mr->parent_obj.name);
-> +    }
-> +
-> +    if (cfg.disabled || cfg.bypassed) {
-> +        return;
-> +    }
-> +
-> +    /* first unmap */
-> +    entry.target_as = &address_space_memory;
-> +    entry.iova = iova & ~(size - 1);
-> +    entry.addr_mask = size - 1;
-> +    entry.perm = IOMMU_NONE;
-> +
-> +    memory_region_notify_one(n, &entry);
-> +
-> +    /* then figure out if a new mapping needs to be applied */
-> +    sbc->page_walk_64(&cfg, iova, iova + entry.addr_mask , false,
-> +                      smmuv3_map_hook, n);
-> +}
-> +
-> +static void smmuv3_replay_single(IOMMUMemoryRegion *mr, IOMMUNotifier *n,
-> +                                 uint64_t iova)
-> +{
-> +    SMMUDevice *sdev = container_of(mr, SMMUDevice, iommu);
-> +    SMMUV3State *s = sdev->smmu;
-> +    size_t target_page_size = qemu_target_page_size();
-> +    SMMUBaseClass *sbc = SMMU_DEVICE_GET_CLASS(s);
-> +    SMMUTransCfg cfg = {};
-> +    IOMMUTLBEntry entry;
-> +    int ret;
-> +
-> +    trace_smmuv3_replay_single(mr->parent_obj.name, iova, n);
-> +    ret = smmuv3_decode_config(mr, &cfg);
-> +    if (ret) {
-> +        error_report("%s error decoding the configuration for iommu mr=%s",
-> +                     __func__, mr->parent_obj.name);
-> +    }
-> +
-> +    if (cfg.disabled || cfg.bypassed) {
-> +        return;
-> +    }
-> +
-> +    /* first unmap */
-> +    entry.target_as = &address_space_memory;
-> +    entry.iova = iova & ~(target_page_size - 1);
-> +    entry.addr_mask = target_page_size - 1;
-> +    entry.perm = IOMMU_NONE;
-> +
-> +    memory_region_notify_one(n, &entry);
-> +
-> +    /* then figure out if a new mapping needs to be applied */
-> +    sbc->page_walk_64(&cfg, iova, iova + 1, false,
-> +                      smmuv3_map_hook, n);
-> +}
-> +
-> +static void smmuv3_notify_flag_changed(IOMMUMemoryRegion *iommu,
-> +                                       IOMMUNotifierFlag old,
-> +                                       IOMMUNotifierFlag new)
-> +{
-> +    SMMUDevice *sdev = container_of(iommu, SMMUDevice, iommu);
-> +    SMMUV3State *s3 = sdev->smmu;
-> +    SMMUState *s = &(s3->smmu_state);
-> +    SMMUNotifierNode *node = NULL;
-> +    SMMUNotifierNode *next_node = NULL;
-> +
-> +    if (old == IOMMU_NOTIFIER_NONE) {
-> +        trace_smmuv3_notify_flag_add(iommu->parent_obj.name);
-> +        node = g_malloc0(sizeof(*node));
-> +        node->sdev = sdev;
-> +        QLIST_INSERT_HEAD(&s->notifiers_list, node, next);
-> +        return;
-> +    }
-> +
-> +    /* update notifier node with new flags */
-> +    QLIST_FOREACH_SAFE(node, &s->notifiers_list, next, next_node) {
-> +        if (node->sdev == sdev) {
-> +            if (new == IOMMU_NOTIFIER_NONE) {
-> +                trace_smmuv3_notify_flag_del(iommu->parent_obj.name);
-> +                QLIST_REMOVE(node, next);
-> +                g_free(node);
-> +            }
-> +            return;
-> +        }
-> +    }
-> +}
->  
->  static inline void smmu_update_base_reg(SMMUV3State *s, uint64_t *base,
->                                          uint64_t val)
-> @@ -1125,6 +1382,8 @@ static void smmuv3_iommu_memory_region_class_init(ObjectClass *klass,
->      IOMMUMemoryRegionClass *imrc = IOMMU_MEMORY_REGION_CLASS(klass);
->  
->      imrc->translate = smmuv3_translate;
-> +    imrc->notify_flag_changed = smmuv3_notify_flag_changed;
-> +    imrc->replay = smmuv3_replay;
->  }
->  
->  static const TypeInfo smmuv3_type_info = {
-> diff --git a/hw/arm/trace-events b/hw/arm/trace-events
-> index f9b9cbe..8228e26 100644
-> --- a/hw/arm/trace-events
-> +++ b/hw/arm/trace-events
-> @@ -27,6 +27,7 @@ smmuv3_cmdq_opcode(const char *opcode) "<--- %s"
->  smmuv3_cmdq_cfgi_ste(int streamid) "     |_ streamid =%d"
->  smmuv3_cmdq_cfgi_ste_range(int start, int end) "     |_ start=0x%d - end=0x%d"
->  smmuv3_cmdq_tlbi_nh_va(int asid, int vmid, uint64_t addr) "     |_ asid =%d vmid =%d addr=0x%"PRIx64
-> +smmuv3_cmdq_tlbi_nh_va_am(int asid, int am, size_t size, uint64_t addr) "     |_ asid =%d am =%d size=0x%lx addr=0x%"PRIx64
->  smmuv3_cmdq_consume_sev(void) "CMD_SYNC CS=SEV not supported, ignoring"
->  smmuv3_cmdq_consume_out(uint8_t prod_wrap, uint32_t prod, uint8_t cons_wrap, uint32_t cons) "prod_wrap:%d, prod:0x%x cons_wrap:%d cons:0x%x"
->  smmuv3_update(bool is_empty, uint32_t prod, uint32_t cons, uint8_t prod_wrap, uint8_t cons_wrap) "q empty:%d prod:%d cons:%d p.wrap:%d p.cons:%d"
-> @@ -50,3 +51,16 @@ smmuv3_dump_ste(int i, uint32_t word0, int j,  uint32_t word1) "STE[%2d]: 0x%x\t
->  smmuv3_dump_cd(int i, uint32_t word0, int j,  uint32_t word1) "CD[%2d]: 0x%x\t CD[%2d]: 0x%x"
->  smmuv3_dump_cmd(int i, uint32_t word0, int j,  uint32_t word1) "CMD[%2d]: 0x%x\t CMD[%2d]: 0x%x"
->  smmuv3_cfg_stage(int s, uint32_t oas, uint32_t tsz, uint64_t ttbr, bool aa64, uint32_t granule_sz, int initial_level) "TransCFG stage:%d oas:%d tsz:%d ttbr:0x%"PRIx64"  aa64:%d granule_sz:%d, initial_level = %d"
-> +
-> +smmuv3_replay(uint16_t sid, bool enabled) "sid=%d, enabled=%d"
-> +smmuv3_replay_hook(hwaddr iova, hwaddr pa, hwaddr mask, int perm) "iova=0x%"PRIx64" pa=0x%" PRIx64" mask=0x%"PRIx64" perm=%d"
-> +smmuv3_map_hook(hwaddr iova, hwaddr pa, hwaddr mask, int perm) "iova=0x%"PRIx64" pa=0x%" PRIx64" mask=0x%"PRIx64" perm=%d"
-> +smmuv3_notify_flag_add(const char *iommu) "ADD SMMUNotifier node for iommu mr=%s"
-> +smmuv3_notify_flag_del(const char *iommu) "DEL SMMUNotifier node for iommu mr=%s"
-> +smmuv3_replay_single(const char *name, uint64_t iova, void *n) "iommu mr=%s iova=0x%"PRIx64" n=%p"
-> +smmuv3_replay_range(const char *name, uint64_t iova, size_t size, void *n) "iommu mr=%s iova=0x%"PRIx64" size=0x%lx n=%p"
-> +smmuv3_replay_all(const char *name) "iommu mr=%s"
-> +smmuv3_notify_all(const char *name, uint64_t iova) "iommu mr=%s iova=0x%"PRIx64
-> +smmuv3_unmap_notifier(uint8_t bus, uint8_t slot, uint8_t fn, uint64_t iova, uint64_t size) "Device %02x:%02x.%x start 0x%"PRIx64" size 0x%"PRIx64
-> +smmuv3_context_device_invalidate(uint32_t sid) "sid=%d"
-> +
-> -- 
-> 2.5.5
-> 
-> 
+--94eb2c03ce807d372b0557516c88
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
--- 
-Linu cherian
+<div dir=3D"ltr">Hi Alistair,<div><br></div><div>I will remove the abort an=
+d send next iteration.</div><div><br></div><div>Thanks,</div><div>Sundeep</=
+div></div><div class=3D"gmail_extra"><br><div class=3D"gmail_quote">On Tue,=
+ Aug 1, 2017 at 11:38 AM, sundeep subbaraya <span dir=3D"ltr">&lt;<a href=
+=3D"mailto:sundeep.lkml@gmail.com" target=3D"_blank">sundeep.lkml@gmail.com=
+</a>&gt;</span> wrote:<br><blockquote class=3D"gmail_quote" style=3D"margin=
+:0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex"><div dir=3D"ltr">H=
+i Philippe,<div><br></div><div>Ping again :)</div><div><br></div><div>Thank=
+s,</div><div>Sundeep</div></div><div class=3D"HOEnZb"><div class=3D"h5"><di=
+v class=3D"gmail_extra"><br><div class=3D"gmail_quote">On Fri, Jul 21, 2017=
+ at 2:50 PM, sundeep subbaraya <span dir=3D"ltr">&lt;<a href=3D"mailto:sund=
+eep.lkml@gmail.com" target=3D"_blank">sundeep.lkml@gmail.com</a>&gt;</span>=
+ wrote:<br><blockquote class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;bor=
+der-left:1px #ccc solid;padding-left:1ex"><div dir=3D"ltr">Hi,<div><br></di=
+v><div>Ping</div></div><div class=3D"m_-1495799968790969050HOEnZb"><div cla=
+ss=3D"m_-1495799968790969050h5"><div class=3D"gmail_extra"><br><div class=
+=3D"gmail_quote">On Thu, Jul 13, 2017 at 7:51 AM, sundeep subbaraya <span d=
+ir=3D"ltr">&lt;<a href=3D"mailto:sundeep.lkml@gmail.com" target=3D"_blank">=
+sundeep.lkml@gmail.com</a>&gt;</span> wrote:<br><blockquote class=3D"gmail_=
+quote" style=3D"margin:0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1=
+ex"><div dir=3D"ltr"><div><div><div>Hi Phiiippe,<br><br></div>Gentle remind=
+er.<br><br></div>Thanks,<br></div>Sundeep<div><div class=3D"m_-149579996879=
+0969050m_-6771600896789195029h5"><br><div><div><div><div class=3D"gmail_ext=
+ra"><br><div class=3D"gmail_quote">On Mon, Jul 10, 2017 at 1:55 PM, sundeep=
+ subbaraya <span dir=3D"ltr">&lt;<a href=3D"mailto:sundeep.lkml@gmail.com" =
+target=3D"_blank">sundeep.lkml@gmail.com</a>&gt;</span> wrote:<br><blockquo=
+te class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border-left:1px #ccc so=
+lid;padding-left:1ex"><div dir=3D"ltr">Hi Alistair,<br><div class=3D"gmail_=
+extra"><br><div class=3D"gmail_quote"><div><div class=3D"m_-149579996879096=
+9050m_-6771600896789195029m_-859708896791943715h5">On Fri, Jul 7, 2017 at 1=
+0:03 PM, Alistair Francis <span dir=3D"ltr">&lt;<a href=3D"mailto:alistair2=
+3@gmail.com" target=3D"_blank">alistair23@gmail.com</a>&gt;</span> wrote:<b=
+r><blockquote class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border-left:=
+1px #ccc solid;padding-left:1ex"><div class=3D"m_-1495799968790969050m_-677=
+1600896789195029m_-859708896791943715m_-933597064954736163HOEnZb"><div clas=
+s=3D"m_-1495799968790969050m_-6771600896789195029m_-859708896791943715m_-93=
+3597064954736163h5">On Fri, Jul 7, 2017 at 12:08 AM, sundeep subbaraya<br>
+&lt;<a href=3D"mailto:sundeep.lkml@gmail.com" target=3D"_blank">sundeep.lkm=
+l@gmail.com</a>&gt; wrote:<br>
+&gt; Hi Alistair,<br>
+&gt;<br>
+&gt; On Wed, Jul 5, 2017 at 11:36 PM, Alistair Francis &lt;<a href=3D"mailt=
+o:alistair23@gmail.com" target=3D"_blank">alistair23@gmail.com</a>&gt;<br>
+&gt; wrote:<br>
+&gt;&gt;<br>
+&gt;&gt; On Sun, Jul 2, 2017 at 9:45 PM, Subbaraya Sundeep<br>
+&gt;&gt; &lt;<a href=3D"mailto:sundeep.lkml@gmail.com" target=3D"_blank">su=
+ndeep.lkml@gmail.com</a>&gt; wrote:<br>
+&gt;&gt; &gt; Added Sytem register block of Smartfusion2.<br>
+&gt;&gt; &gt; This block has PLL registers which are accessed by guest.<br>
+&gt;&gt; &gt;<br>
+&gt;&gt; &gt; Signed-off-by: Subbaraya Sundeep &lt;<a href=3D"mailto:sundee=
+p.lkml@gmail.com" target=3D"_blank">sundeep.lkml@gmail.com</a>&gt;<br>
+&gt;&gt; &gt; ---<br>
+&gt;&gt; &gt;=C2=A0 hw/misc/Makefile.objs=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+|=C2=A0 =C2=A01 +<br>
+&gt;&gt; &gt;=C2=A0 hw/misc/msf2-sysreg.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+| 200<br>
+&gt;&gt; &gt; ++++++++++++++++++++++++++++++<wbr>++++++++++++<br>
+&gt;&gt; &gt;=C2=A0 include/hw/misc/msf2-sysreg.h |=C2=A0 82 ++++++++++++++=
++++<br>
+&gt;&gt; &gt;=C2=A0 3 files changed, 283 insertions(+)<br>
+&gt;&gt; &gt;=C2=A0 create mode 100644 hw/misc/msf2-sysreg.c<br>
+&gt;&gt; &gt;=C2=A0 create mode 100644 include/hw/misc/msf2-sysreg.h<br>
+&gt;&gt; &gt;<br>
+&gt;&gt; &gt; diff --git a/hw/misc/Makefile.objs b/hw/misc/Makefile.objs<br=
+>
+&gt;&gt; &gt; index c8b4893..0f52354 100644<br>
+&gt;&gt; &gt; --- a/hw/misc/Makefile.objs<br>
+&gt;&gt; &gt; +++ b/hw/misc/Makefile.objs<br>
+&gt;&gt; &gt; @@ -56,3 +56,4 @@ obj-$(CONFIG_EDU) +=3D edu.o<br>
+&gt;&gt; &gt;=C2=A0 obj-$(CONFIG_HYPERV_TESTDEV) +=3D hyperv_testdev.o<br>
+&gt;&gt; &gt;=C2=A0 obj-$(CONFIG_AUX) +=3D auxbus.o<br>
+&gt;&gt; &gt;=C2=A0 obj-$(CONFIG_ASPEED_SOC) +=3D aspeed_scu.o aspeed_sdmc.=
+o<br>
+&gt;&gt; &gt; +obj-$(CONFIG_MSF2) +=3D msf2-sysreg.o<br>
+&gt;&gt; &gt; diff --git a/hw/misc/msf2-sysreg.c b/hw/misc/msf2-sysreg.c<br=
+>
+&gt;&gt; &gt; new file mode 100644<br>
+&gt;&gt; &gt; index 0000000..64ee141<br>
+&gt;&gt; &gt; --- /dev/null<br>
+&gt;&gt; &gt; +++ b/hw/misc/msf2-sysreg.c<br>
+&gt;&gt; &gt; @@ -0,0 +1,200 @@<br>
+&gt;&gt; &gt; +/*<br>
+&gt;&gt; &gt; + * System Register block model of Microsemi SmartFusion2.<br=
+>
+&gt;&gt; &gt; + *<br>
+&gt;&gt; &gt; + * Copyright (c) 2017 Subbaraya Sundeep &lt;<a href=3D"mailt=
+o:sundeep.lkml@gmail.com" target=3D"_blank">sundeep.lkml@gmail.com</a>&gt;<=
+br>
+&gt;&gt; &gt; + *<br>
+&gt;&gt; &gt; + * This program is free software; you can redistribute it an=
+d/or<br>
+&gt;&gt; &gt; + * modify it under the terms of the GNU General Public Licen=
+se<br>
+&gt;&gt; &gt; + * as published by the Free Software Foundation; either vers=
+ion<br>
+&gt;&gt; &gt; + * 2 of the License, or (at your option) any later version.<=
+br>
+&gt;&gt; &gt; + *<br>
+&gt;&gt; &gt; + * You should have received a copy of the GNU General Public=
+ License<br>
+&gt;&gt; &gt; along<br>
+&gt;&gt; &gt; + * with this program; if not, see &lt;<a href=3D"http://www.=
+gnu.org/licenses/" rel=3D"noreferrer" target=3D"_blank">http://www.gnu.org/=
+licenses/</a>&gt;<wbr>.<br>
+&gt;&gt; &gt; + */<br>
+&gt;&gt; &gt; +<br>
+&gt;&gt; &gt; +#include &quot;hw/misc/msf2-sysreg.h&quot;<br>
+&gt;&gt;<br>
+&gt;&gt; Same #include comment from patch 1.<br>
+&gt;<br>
+&gt;<br>
+&gt; Ok will change.<br>
+&gt;&gt;<br>
+&gt;&gt;<br>
+&gt;&gt; &gt; +<br>
+&gt;&gt; &gt; +#ifndef MSF2_SYSREG_ERR_DEBUG<br>
+&gt;&gt; &gt; +#define MSF2_SYSREG_ERR_DEBUG=C2=A0 0<br>
+&gt;&gt; &gt; +#endif<br>
+&gt;&gt; &gt; +<br>
+&gt;&gt; &gt; +#define DB_PRINT_L(lvl, fmt, args...) do { \<br>
+&gt;&gt; &gt; +=C2=A0 =C2=A0 if (MSF2_SYSREG_ERR_DEBUG &gt;=3D lvl) { \<br>
+&gt;&gt; &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 qemu_log(&quot;%s: &quot; fmt &q=
+uot;\n&quot;, __func__, ## args); \<br>
+&gt;&gt; &gt; +=C2=A0 =C2=A0 } \<br>
+&gt;&gt; &gt; +} while (0);<br>
+&gt;&gt; &gt; +<br>
+&gt;&gt; &gt; +#define DB_PRINT(fmt, args...) DB_PRINT_L(1, fmt, ## args)<b=
+r>
+&gt;&gt; &gt; +<br>
+&gt;&gt; &gt; +static inline int msf2_divbits(uint32_t div)<br>
+&gt;&gt; &gt; +{<br>
+&gt;&gt; &gt; +=C2=A0 =C2=A0 int ret =3D 0;<br>
+&gt;&gt; &gt; +<br>
+&gt;&gt; &gt; +=C2=A0 =C2=A0 switch (div) {<br>
+&gt;&gt; &gt; +=C2=A0 =C2=A0 case 1:<br>
+&gt;&gt; &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 ret =3D 0;<br>
+&gt;&gt; &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 break;<br>
+&gt;&gt; &gt; +=C2=A0 =C2=A0 case 2:<br>
+&gt;&gt; &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 ret =3D 1;<br>
+&gt;&gt; &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 break;<br>
+&gt;&gt; &gt; +=C2=A0 =C2=A0 case 4:<br>
+&gt;&gt; &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 ret =3D 2;<br>
+&gt;&gt; &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 break;<br>
+&gt;&gt; &gt; +=C2=A0 =C2=A0 case 8:<br>
+&gt;&gt; &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 ret =3D 4;<br>
+&gt;&gt; &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 break;<br>
+&gt;&gt; &gt; +=C2=A0 =C2=A0 case 16:<br>
+&gt;&gt; &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 ret =3D 5;<br>
+&gt;&gt; &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 break;<br>
+&gt;&gt; &gt; +=C2=A0 =C2=A0 case 32:<br>
+&gt;&gt; &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 ret =3D 6;<br>
+&gt;&gt; &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 break;<br>
+&gt;&gt; &gt; +=C2=A0 =C2=A0 default:<br>
+&gt;&gt; &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 break;<br>
+&gt;&gt; &gt; +=C2=A0 =C2=A0 }<br>
+&gt;&gt; &gt; +<br>
+&gt;&gt; &gt; +=C2=A0 =C2=A0 return ret;<br>
+&gt;&gt; &gt; +}<br>
+&gt;&gt; &gt; +<br>
+&gt;&gt; &gt; +static void msf2_sysreg_reset(DeviceState *d)<br>
+&gt;&gt; &gt; +{<br>
+&gt;&gt; &gt; +=C2=A0 =C2=A0 MSF2SysregState *s =3D MSF2_SYSREG(d);<br>
+&gt;&gt; &gt; +<br>
+&gt;&gt; &gt; +=C2=A0 =C2=A0 DB_PRINT(&quot;RESET&quot;);<br>
+&gt;&gt; &gt; +<br>
+&gt;&gt; &gt; +=C2=A0 =C2=A0 s-&gt;regs[MSSDDR_PLL_STATUS_LOW_<wbr>CR] =3D =
+0x021A2358;<br>
+&gt;&gt; &gt; +=C2=A0 =C2=A0 s-&gt;regs[MSSDDR_PLL_STATUS] =3D 0x3;<br>
+&gt;&gt; &gt; +=C2=A0 =C2=A0 s-&gt;regs[MSSDDR_FACC1_CR] =3D msf2_divbits(s=
+-&gt;apb0div) &lt;&lt; 5 |<br>
+&gt;&gt; &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0msf2_divbits(s-&gt;apb1=
+div) &lt;&lt; 2;<br>
+&gt;&gt; &gt; +}<br>
+&gt;&gt; &gt; +<br>
+&gt;&gt; &gt; +static uint64_t msf2_sysreg_read(void *opaque, hwaddr offset=
+,<br>
+&gt;&gt; &gt; +=C2=A0 =C2=A0 unsigned size)<br>
+&gt;&gt; &gt; +{<br>
+&gt;&gt; &gt; +=C2=A0 =C2=A0 MSF2SysregState *s =3D opaque;<br>
+&gt;&gt; &gt; +=C2=A0 =C2=A0 offset /=3D 4;<br>
+&gt;&gt;<br>
+&gt;&gt; Probably best to use a bitshift.<br>
+&gt;<br>
+&gt;<br>
+&gt; Ok will change.<br>
+&gt;&gt;<br>
+&gt;&gt;<br>
+&gt;&gt; &gt; +=C2=A0 =C2=A0 uint32_t ret =3D 0;<br>
+&gt;&gt; &gt; +<br>
+&gt;&gt; &gt; +=C2=A0 =C2=A0 if (offset &lt; ARRAY_SIZE(s-&gt;regs)) {<br>
+&gt;&gt; &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 ret =3D s-&gt;regs[offset];<br>
+&gt;&gt; &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 DB_PRINT(&quot;addr: 0x%08&quot;=
+ HWADDR_PRIx &quot; data: 0x%08&quot; PRIx32,<br>
+&gt;&gt; &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 offset * 4, ret);<br>
+&gt;&gt;<br>
+&gt;&gt; Bitshift here as well.<br>
+&gt;<br>
+&gt;<br>
+&gt; Ok will change.<br>
+&gt;&gt;<br>
+&gt;&gt;<br>
+&gt;&gt; &gt; +=C2=A0 =C2=A0 } else {<br>
+&gt;&gt; &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 qemu_log_mask(LOG_GUEST_ERROR,<b=
+r>
+&gt;&gt; &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 &quot;%s: Bad offset 0x%08&quot; HWADDR_PRIx &quot;\n&quot;, __f=
+unc__,<br>
+&gt;&gt; &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 offset * 4);<br>
+&gt;&gt; &gt; +=C2=A0 =C2=A0 }<br>
+&gt;&gt; &gt; +<br>
+&gt;&gt; &gt; +=C2=A0 =C2=A0 return ret;<br>
+&gt;&gt; &gt; +}<br>
+&gt;&gt; &gt; +<br>
+&gt;&gt; &gt; +static void msf2_sysreg_write(void *opaque, hwaddr offset,<b=
+r>
+&gt;&gt; &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 uint64_t val, unsigned size)<br>
+&gt;&gt; &gt; +{<br>
+&gt;&gt; &gt; +=C2=A0 =C2=A0 MSF2SysregState *s =3D (MSF2SysregState *)opaq=
+ue;<br>
+&gt;&gt; &gt; +=C2=A0 =C2=A0 uint32_t newval =3D val;<br>
+&gt;&gt; &gt; +=C2=A0 =C2=A0 uint32_t oldval;<br>
+&gt;&gt; &gt; +<br>
+&gt;&gt; &gt; +=C2=A0 =C2=A0 DB_PRINT(&quot;addr: 0x%08&quot; HWADDR_PRIx &=
+quot; data: 0x%08&quot; PRIx64,<br>
+&gt;&gt; &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 offset, val);<br>
+&gt;&gt; &gt; +<br>
+&gt;&gt; &gt; +=C2=A0 =C2=A0 offset /=3D 4;<br>
+&gt;&gt;<br>
+&gt;&gt; Same here<br>
+&gt;<br>
+&gt;<br>
+&gt; Ok will change<br>
+&gt;&gt;<br>
+&gt;&gt;<br>
+&gt;&gt; &gt; +<br>
+&gt;&gt; &gt; +=C2=A0 =C2=A0 switch (offset) {<br>
+&gt;&gt; &gt; +=C2=A0 =C2=A0 case MSSDDR_PLL_STATUS:<br>
+&gt;&gt; &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 break;<br>
+&gt;&gt; &gt; +<br>
+&gt;&gt; &gt; +=C2=A0 =C2=A0 case ESRAM_CR:<br>
+&gt;&gt; &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 oldval =3D s-&gt;regs[ESRAM_CR];=
+<br>
+&gt;&gt; &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 if (oldval ^ newval) {<br>
+&gt;&gt; &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 qemu_log_mask(LOG_=
+GUEST_ERROR,<br>
+&gt;&gt; &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0TYPE_MSF2_SYSREG&quot;: eSRAM remapping not<br>
+&gt;&gt; &gt; supported\n&quot;);<br>
+&gt;&gt; &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 abort();<br>
+&gt;&gt;<br>
+&gt;&gt; The guest should not be able to kill QEMU, a guest error should ne=
+ver<br>
+&gt;&gt; result in an abort.<br>
+&gt;<br>
+&gt;<br>
+&gt; Philippe suggested to abort because:<br>
+&gt; If guest tries to remap since firmware do a remap, the code flow will =
+be<br>
+&gt; completely wrong.<br>
+&gt; Reporting a GUEST_ERROR here is not enough since code flow continuing =
+would<br>
+&gt; be<br>
+&gt; pretty hard to understand/debug.<br>
+<br>
+</div></div>I don&#39;t see how it will be that hard to debug as QEMU will =
+tell you<br>
+that the guest is doing something wrong.<br>
+<br>
+You can&#39;t allow the guest to abort or exit QEMU. It&#39;s a security<br=
+>
+liability issue and specifically mentioned as not allowed:<br>
+<a href=3D"https://github.com/qemu/qemu/blob/master/HACKING#L230" rel=3D"no=
+referrer" target=3D"_blank">https://github.com/qemu/qemu/b<wbr>lob/master/H=
+ACKING#L230</a><br>
+<br></blockquote></div></div><div>Ok. Lets hear from Philippe. Philippe?<br=
+><br></div><div>Thanks,<br></div><div>Sundeep<br>=C2=A0<br></div><span><blo=
+ckquote class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border-left:1px #c=
+cc solid;padding-left:1ex">
+Thanks,<br>
+Alistair<br>
+<div class=3D"m_-1495799968790969050m_-6771600896789195029m_-85970889679194=
+3715m_-933597064954736163HOEnZb"><div class=3D"m_-1495799968790969050m_-677=
+1600896789195029m_-859708896791943715m_-933597064954736163h5"><br>
+&gt; We decided to abort for now.<br>
+</div></div></blockquote></span></div><br></div></div>
+</blockquote></div><br></div></div></div></div></div></div></div>
+</blockquote></div><br></div>
+</div></div></blockquote></div><br></div>
+</div></div></blockquote></div><br></div>
+
+--94eb2c03ce807d372b0557516c88--

@@ -1,94 +1,93 @@
-Received: by 10.223.188.70 with SMTP id a6csp5036892wrh;
-        Tue, 22 Aug 2017 07:47:35 -0700 (PDT)
-X-Received: by 10.233.222.131 with SMTP id s125mr1393666qkf.91.1503413255493;
-        Tue, 22 Aug 2017 07:47:35 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1503413255; cv=none;
+Received: by 10.223.188.70 with SMTP id a6csp5038182wrh;
+        Tue, 22 Aug 2017 07:48:48 -0700 (PDT)
+X-Received: by 10.200.47.71 with SMTP id k7mr1320413qta.319.1503413328639;
+        Tue, 22 Aug 2017 07:48:48 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1503413328; cv=none;
         d=google.com; s=arc-20160816;
-        b=KEvoureVEe8+9pZ19jKyYlOPNblZsQJtofv0NKuAlNIG7Mb+Q6F7tiAfeM6zK/sCaT
-         SwG3yDj3ipIXTMMth4b49ZMVB9EAmKl6wFSifRTwPPs3lDtgoFaM04zAcLXIvwHIpODr
-         YJxojH7LvtDpH0cRKMF4OZbyhWslD8tFr9bxP9S/tRC7ol1paAcFryFbOGJd2ECJuY5c
-         4plVcKPup7G119ArwVuTSVjOQZgCy7mAqgjNmyp4CHs/rfnzYFKlvo8huKUlOYcV2/oH
-         1U0AUG/dxoSC2z9AbhGz73Y1B5onz7gvAh3GgHc0m+JACCPjyzYDkoEoSb2YEbZIKWB5
-         DUVw==
+        b=d1Z32aUsJrZUbA+6Q04nZta6YilaRq1QeNre/NPsOtyYG4lxhbmwhXrF21ht1CPhJY
+         GPf9Xj1jSxmIMlpEXHN6n7AOmD7rBIjOeqAZimVe+xORtncU586TNsGp2E9/RTGlaJOo
+         e1iZpn/Uw7xDN/05rFcMFapUkiEgehLCS17Uevyn+ao/JuleXTLObcD67mfxKJIxNpRV
+         cmzN55uckSY/OjejXUpDUW83quNOFt6d+/0KZI/h4whlCKtlwvBCY/Ac0anlwSevKanZ
+         sjbrDRhnvmXRLieLt1WnmlcpBogE1H1EIMnq/mt8ZJK8gHaw+zrUV6TOQx5R/qOsg/+g
+         13GQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
-         :references:in-reply-to:mime-version:dkim-signature
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:to:dmarc-filter
          :arc-authentication-results;
-        bh=66H6q/FJ32wxpI9GwfON7xel21gN3Xl1Nz2mY2RpWFA=;
-        b=r8HwvZxwHy1d4yhCGIrtxxrmvhsHm794vblAhbf0r4WWszyL16UParyPj3DCS+tfAN
-         6hnDScSGxf9qwfc8mHc3v6rBPJJTuvk3kOUsTumxxHeyEO5dUpkUrLOiHqm1+5/iRYbF
-         MC/fLvfkc06gA0l3dSOG47vtI8rIm38HJk0VBdVy/HKqWg4dFlRy9FrBrZr8LRcvBha1
-         R5wOGrmfukXDTvBLdLrpKd7w/giI5MAJkE9X0irU1vV+AjJtxxoA6VeGMUI69HHy4rb8
-         VncHZvLimnAEkP7pXNuDkXsl6G7v1SL0nykWXY5gkOeebLpD8AftT532b3q79Mec/CG3
-         yj8g==
+        bh=s45MihBsJ31bqzHSZq2yEfReVhv4Smr/YaUwdbsHk5s=;
+        b=Lsin8AQYwnXtbUcGvl+x6hfmvkE+pjz3r1pMEK2WXtZ3V84MEigsmxi7tle/iomvZF
+         Sum8A8m9yO0xuq+//nNj1VS0GaDn8nWyXyjMTgAE+3AUd5ObgSvJ1lSGIrxUv4gWLO8v
+         kk8u5M5xNzK3E7z+Z2pSXekKUPixNtv2NwyB3OBSs1yUyo3S7qhGNLv/I/Um9D8FrxHC
+         AHPXKHoOq8b4GTCHFQSRL97U3UdjBLIgKi1T+mYzn5AnCqxNXbTuCu00Jej0WcJ4p08W
+         IOwZSAHdqzB3hsDzIPjeZEZlIIPnGk+qHapJNHW+N9fYffPt7JLid0HDEk2KtpJWtdSF
+         5o8g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=VkmyxsAT;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id y184si9313119qkb.259.2017.08.22.07.47.34
+        by mx.google.com with ESMTPS id t65si13527086qkd.83.2017.08.22.07.48.48
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 22 Aug 2017 07:47:35 -0700 (PDT)
+        Tue, 22 Aug 2017 07:48:48 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=VkmyxsAT;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:49631 helo=lists.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:49761 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1dkASr-0002Zp-6D
-	for alex.bennee@linaro.org; Tue, 22 Aug 2017 10:47:33 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:60797)
+	id 1dkAU2-0003a4-Bu
+	for alex.bennee@linaro.org; Tue, 22 Aug 2017 10:48:46 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:39611)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1dk9cF-0008U8-2j
-	for qemu-devel@nongnu.org; Tue, 22 Aug 2017 09:53:13 -0400
+	(envelope-from <thuth@redhat.com>) id 1dkA0z-0003tS-BD
+	for qemu-devel@nongnu.org; Tue, 22 Aug 2017 10:18:46 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1dk9cB-0001i4-As
-	for qemu-devel@nongnu.org; Tue, 22 Aug 2017 09:53:11 -0400
-Received: from mail-wr0-x236.google.com ([2a00:1450:400c:c0c::236]:37563)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1dk9cB-0001ha-3D
-	for qemu-devel@nongnu.org; Tue, 22 Aug 2017 09:53:07 -0400
-Received: by mail-wr0-x236.google.com with SMTP id z91so124302413wrc.4
-	for <qemu-devel@nongnu.org>; Tue, 22 Aug 2017 06:53:06 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=66H6q/FJ32wxpI9GwfON7xel21gN3Xl1Nz2mY2RpWFA=;
-	b=VkmyxsATIhc5dm/+bGAp7IrvfYmoz12r2mWMdPlJCP2TFfIkvZykRo2prdNuALuhO0
-	xBLK4XD7IIMLGqpCJ5DaZ7jgbZUD9IOgi0ikpE19EfJSIPsGuoZfNz22P3ZOGJkfJnNh
-	5sWHJma2ltFCxWHhb2ppu0nXGWpHMK9RhSBFU=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=66H6q/FJ32wxpI9GwfON7xel21gN3Xl1Nz2mY2RpWFA=;
-	b=svUV3QvCvXyU4ZdoC3EcXXePFJ7y5VYcg0xCJ9RTEdNjpaYeUf7T2aDJY+kVx4KG/v
-	GaCfhwhpl8NXUg/5w6iVPbeKwbEQBL9brM0hRTXA92tjQ6r70a4lYbicufRnnVERogFk
-	GYJymDJOiBH/JYVD91nQmjKv019VtibK0c9n0xeCgiBcR2+z8LJqJCY/nd4CUcqONotF
-	K/4sCc+rhoqOT7TydA57jbJnrHo6sfmY4VeI7AH5S2Pd3iJj321yiAKb/W2lauT1futa
-	BrVF5Cz/g935KtYEb+8anYbURSXZbaz0aUbD0hTvjartoQyvcC5AY1SKIuOiqQThb3Rs
-	YMBA==
-X-Gm-Message-State: AHYfb5igytu0tlcsqlH97KUZALM2bwUzprWjg2DlnKKcz1ic7zMaHzoU
-	fCNiTZ9reTK5H3RfIHacTZN24QzHm1Q/
-X-Received: by 10.28.19.68 with SMTP id 65mr463918wmt.122.1503409985798; Tue,
-	22 Aug 2017 06:53:05 -0700 (PDT)
-MIME-Version: 1.0
-Received: by 10.223.134.54 with HTTP; Tue, 22 Aug 2017 06:52:45 -0700 (PDT)
-In-Reply-To: <1503407712-9894-1-git-send-email-thuth@redhat.com>
+	(envelope-from <thuth@redhat.com>) id 1dkA0y-0002xh-EF
+	for qemu-devel@nongnu.org; Tue, 22 Aug 2017 10:18:45 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:44772)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <thuth@redhat.com>)
+	id 1dkA0t-0002vw-3I; Tue, 22 Aug 2017 10:18:39 -0400
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
+	[10.5.11.12])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 2195AC047B71;
+	Tue, 22 Aug 2017 14:18:38 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 2195AC047B71
+Authentication-Results: ext-mx07.extmail.prod.ext.phx2.redhat.com;
+	dmarc=none (p=none dis=none) header.from=redhat.com
+Authentication-Results: ext-mx07.extmail.prod.ext.phx2.redhat.com;
+	spf=fail smtp.mailfrom=thuth@redhat.com
+Received: from [10.36.116.21] (ovpn-116-21.ams2.redhat.com [10.36.116.21])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 13C7381883;
+	Tue, 22 Aug 2017 14:18:36 +0000 (UTC)
+To: Peter Maydell <peter.maydell@linaro.org>
 References: <1503407712-9894-1-git-send-email-thuth@redhat.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 22 Aug 2017 14:52:45 +0100
-Message-ID: <CAFEAcA-V1igN7Sz3SusczcPadtZC-z4fyw-pvPggGT5VFFMvRA@mail.gmail.com>
-To: Thomas Huth <thuth@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2a00:1450:400c:c0c::236
+	<CAFEAcA-V1igN7Sz3SusczcPadtZC-z4fyw-pvPggGT5VFFMvRA@mail.gmail.com>
+	<8fb75274-09a6-dbd3-5dba-1069d790b689@redhat.com>
+	<CAFEAcA9PdXkh4t7gCT=3GNbD8V+_Abtqe31p2DV+=emyR1chcQ@mail.gmail.com>
+From: Thomas Huth <thuth@redhat.com>
+Message-ID: <6bdaf758-98d1-d99d-20ae-b0f25747d6b1@redhat.com>
+Date: Tue, 22 Aug 2017 16:18:35 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.2.0
+MIME-Version: 1.0
+In-Reply-To: <CAFEAcA9PdXkh4t7gCT=3GNbD8V+_Abtqe31p2DV+=emyR1chcQ@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.31]);
+	Tue, 22 Aug 2017 14:18:38 +0000 (UTC)
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.132.183.28
 Subject: Re: [Qemu-devel] [PATCH] hw/arm/digic: Mark device with
  user_creatable = false
 X-BeenThere: qemu-devel@nongnu.org
@@ -106,38 +105,78 @@ Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
 	Antony Pavlov <antonynpavlov@gmail.com>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: LJhhYYQzzLR3
+X-TUID: hSi3fKj+LqDc
 
-On 22 August 2017 at 14:15, Thomas Huth <thuth@redhat.com> wrote:
-> QEMU currently hangs completely when the user is trying to do a
-> "device_add digic" on an unrelated ARM machine like integratorcp.
-> Looks like this device is not meant to be hot-pluggable at all, so
-> let's simply mark it with "user_creatable = false" to avoid the hang.
->
-> Signed-off-by: Thomas Huth <thuth@redhat.com>
-> ---
->  hw/arm/digic.c | 2 ++
->  1 file changed, 2 insertions(+)
->
-> diff --git a/hw/arm/digic.c b/hw/arm/digic.c
-> index 94f3263..208dfb3 100644
-> --- a/hw/arm/digic.c
-> +++ b/hw/arm/digic.c
-> @@ -101,6 +101,8 @@ static void digic_class_init(ObjectClass *oc, void *data)
->      DeviceClass *dc = DEVICE_CLASS(oc);
->
->      dc->realize = digic_realize;
-> +    /* Reason: Hangs QEMU when trying to device_add this directly */
-> +    dc->user_creatable = false;
->  }
+On 22.08.2017 16:07, Peter Maydell wrote:
+> On 22 August 2017 at 15:05, Thomas Huth <thuth@redhat.com> wrote:
+>> On 22.08.2017 15:52, Peter Maydell wrote:
+>>> On 22 August 2017 at 14:15, Thomas Huth <thuth@redhat.com> wrote:
+>>>> QEMU currently hangs completely when the user is trying to do a
+>>>> "device_add digic" on an unrelated ARM machine like integratorcp.
+>>>> Looks like this device is not meant to be hot-pluggable at all, so
+>>>> let's simply mark it with "user_creatable =3D false" to avoid the ha=
+ng.
+>>>>
+>>>> Signed-off-by: Thomas Huth <thuth@redhat.com>
+>>>> ---
+>>>>  hw/arm/digic.c | 2 ++
+>>>>  1 file changed, 2 insertions(+)
+>>>>
+>>>> diff --git a/hw/arm/digic.c b/hw/arm/digic.c
+>>>> index 94f3263..208dfb3 100644
+>>>> --- a/hw/arm/digic.c
+>>>> +++ b/hw/arm/digic.c
+>>>> @@ -101,6 +101,8 @@ static void digic_class_init(ObjectClass *oc, vo=
+id *data)
+>>>>      DeviceClass *dc =3D DEVICE_CLASS(oc);
+>>>>
+>>>>      dc->realize =3D digic_realize;
+>>>> +    /* Reason: Hangs QEMU when trying to device_add this directly *=
+/
+>>>> +    dc->user_creatable =3D false;
+>>>>  }
+>>>
+>>> Maybe "uses serial_hds[]" is a better reason, or does it hang for
+>>> some other reason?
+>>
+>> When I kill the hanging QEMU, the stack trace looks like this:
+>>
+>> #0  0x00007ffff13afaff in ppoll () at /lib64/libc.so.6
+>> #1  0x0000555555bb3179 in qemu_poll_ns (__ss=3D0x0, __timeout=3D0x7fff=
+ffffda60, __nfds=3D<optimized out>, __fds=3D<optimized out>)
+>>     at /usr/include/bits/poll2.h:77
+>> #2  0x0000555555bb3179 in qemu_poll_ns (fds=3D<optimized out>, nfds=3D=
+<optimized out>, timeout=3Dtimeout@entry=3D1000000000)
+>>     at /home/thuth/devel/qemu/util/qemu-timer.c:334
+>> #3  0x0000555555bb3f88 in main_loop_wait (timeout=3D1000000000) at /ho=
+me/thuth/devel/qemu/util/main-loop.c:255
+>> #4  0x0000555555bb3f88 in main_loop_wait (nonblocking=3Dnonblocking@en=
+try=3D0) at /home/thuth/devel/qemu/util/main-loop.c:515
+>> #5  0x000055555578d927 in main () at /home/thuth/devel/qemu/vl.c:1917
+>> #6  0x000055555578d927 in main (argc=3D<optimized out>, argv=3D<optimi=
+zed out>, envp=3D<optimized out>) at /home/thuth/devel/qemu/vl.c:4791
+>>
+>> I haven't investigated any further, but the usage of serial_hds
+>> in the realize function could certainly be the reason. At least
+>> it certainly is a reason that this device should not be creatable
+>> by the user - so let me send a v2 with the comment changed
+>> accordingly.
+>=20
+> Has QEMU itself actually hung (no response to monitor etc), or is
+> that just the guest sitting doing nothing? "QEMU is sat in the main
+> loop waiting for something to happen" is what you'd expect in the
+> latter case. The backtraces for the other threads might be of
+> interest or might also be unhelpful.
 
-Maybe "uses serial_hds[]" is a better reason, or does it hang for
-some other reason? I think we should identify why we don't expect
-it to work and state that, rather than just the empirical "didn't
-work for me".
+I thought that QEMU would hang ... but now I checked again, and it's
+just that it does not return to the monitor prompt as expected. If I
+press CTRL-a c again, I can get to the monitor again.
+Anyway, QEMU then dies if I try to remove the device with device_del:
 
-Not that it really makes sense to have command line creation
-of SoC objects at all really.
+qemu/qdev-monitor.c:872:qdev_unplug: assertion failed: (hotplug_ctrl)
 
-thanks
--- PMM
+... so let's simply mark it with user_creatable =3D false and call it a
+day... ;-)
+
+ Thomas
+

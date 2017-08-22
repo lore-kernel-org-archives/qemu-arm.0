@@ -1,113 +1,102 @@
-Received: by 10.223.188.70 with SMTP id a6csp4350838wrh;
-        Mon, 21 Aug 2017 20:46:27 -0700 (PDT)
-X-Received: by 10.200.8.71 with SMTP id x7mr11383148qth.20.1503373586938;
-        Mon, 21 Aug 2017 20:46:26 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1503373586; cv=none;
+Received: by 10.223.188.70 with SMTP id a6csp4615252wrh;
+        Tue, 22 Aug 2017 01:37:32 -0700 (PDT)
+X-Received: by 10.55.138.69 with SMTP id m66mr27956067qkd.46.1503391052398;
+        Tue, 22 Aug 2017 01:37:32 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1503391052; cv=none;
         d=google.com; s=arc-20160816;
-        b=JDiDqETs15ppHCTQWMj4fcRczly1pYwItuIInP1USPXu684rov2IBwetjk7G4djJyI
-         QIevwV0jCDICUjpn09XCH+N/b31iu7MBmLf6rtcgVpEPojyHoWOJNHqcezCKpT2BWHld
-         KD2fByvE3H6snU6x0XQx31vLX+iNSZDdshX1abB6NFEIEEl6ztpRQTyWLZ+0fQk+3j9s
-         LXwME0C98yL2nudmvW5Z/St192XM+VRxZn3L3VNpxReoVQ5RvrZEv/H4mZ8aph7V4YSC
-         PL1Lh8yhC2NecbGF9mkTCJ8IrKziw0ARLul30gVOkv37aeP1ktEvwgP5ZBTxLEMRvf7Q
-         bJCg==
+        b=XWfvX6bDmp0AlyYclik1bIurTOb+GlH3vg7RYw3ifl1DqemycahB1g+cVLx3AmbOsT
+         DigS9ZRVUoDK8np/WBwxiVXv1nH1TagU0RPl5bXdMkx2dDxD2tjNgOJKMXufZBCLaa8J
+         rZYtry6J+N0eI6/4hhzsk22mJoN+v2ooZkzYViTSveTq/NQ5WR8hd9YDxoVO6NOs18i8
+         o0an8Ue57bKAipEPw1SFwmHvSkY2wyFdq5ZD/SS9t2SF+WrIUqAJ6WJdO53c+Juij5H5
+         kdZJvE4GVg2fA5cgY7NDdfJOEBHXKzYRuId3ZMjlGPKIK1MUClplAgXbNa8vdTstOrNI
+         xZsg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:to:dkim-signature
-         :arc-authentication-results;
-        bh=V7LBQ/qWMDQxHsAj/Keba9qDii5HAanJKMX6HnIQ/p0=;
-        b=LmhGfkjMiR3Myj0N1XwcLtPUp+PGwYgncuhC/pFCJ/mfQHZQ+ZxAUZH5vX32AMR0xo
-         Wm/5AyI0ThkNtm64bReHUkSHKjB8ugibuAYsIIdwqo6nYtAb7nmJ10JybBhKb8gZlR5y
-         8WzANNXC3Ye6tjOdApNsMI/eeajF5tVp5edlQYHlQA5ihJg0DLVYtp6jelx2a9lnoQua
-         T9jwEP3XbnBOyFXGXP9JxqC23mNu7KdbOu31rEVn3LO6rUBMR4gO6lsErK2MZYmxCmuH
-         POH3syizsxKalPY+zP9GCOwCmxUlU5Kit0np0jCwrUq2dYh7SvphzPOU4IIMLz3cjPnl
-         S4Jg==
+         :content-transfer-encoding:to:message-id:date:from:references
+         :in-reply-to:mime-version:dkim-signature:arc-authentication-results;
+        bh=CCc/iWJ2QXg6j/xykQjePhd6JVQ35U4HJYFOp0ZfzN0=;
+        b=rDp3WCB6EzBDPhy/OvovpWbdhwYQmoQ8gI3oJ0uExmzv8jRdc7wG2z5zEbTvA84dMT
+         h/xhzgPWfb1GTzK1/WSSRQmMM1PYzd5yQzJhKztc4fZBWx2w0v3+7rtusyTefyzfvMr7
+         BhNRH9sQtx0FOasL76fIX7hoaFHvd4XiCMt9ISF8A7qGTQT7WmWknTkWAhWSWlR65VTR
+         Y0U2oZZwcWw2un19dyRzRcyLgSxNYcCVFvfoetOeIE0BKDdmbhQ7IsTwSYXw6EIXNqi4
+         oVthz6PJWi406Whl2C5gnOqH3GA2ZOU51/FVqWfcy7Ue3f7yE/CdrIM+H47oIq5wTRIu
+         hKCw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=nb6LWv/G;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+       dkim=fail header.i=@linaro.org header.s=google header.b=JQ1HtqVJ;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id 62si12569115qth.97.2017.08.21.20.46.26
+        by mx.google.com with ESMTPS id g138si3539957qke.336.2017.08.22.01.37.31
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 21 Aug 2017 20:46:26 -0700 (PDT)
+        Tue, 22 Aug 2017 01:37:32 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=nb6LWv/G;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:60453 helo=lists.gnu.org)
+       dkim=fail header.i=@linaro.org header.s=google header.b=JQ1HtqVJ;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:51058 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1dk092-0003Of-Kd
-	for alex.bennee@linaro.org; Mon, 21 Aug 2017 23:46:24 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:50668)
+	id 1dk4gk-0003nR-27
+	for alex.bennee@linaro.org; Tue, 22 Aug 2017 04:37:30 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:41500)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1dk08q-0003Lx-8e
-	for qemu-arm@nongnu.org; Mon, 21 Aug 2017 23:46:13 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1dk4gb-0003mG-Pi
+	for qemu-arm@nongnu.org; Tue, 22 Aug 2017 04:37:22 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1dk08p-0003f9-4H
-	for qemu-arm@nongnu.org; Mon, 21 Aug 2017 23:46:12 -0400
-Received: from mail-qk0-x234.google.com ([2607:f8b0:400d:c09::234]:32876)
+	(envelope-from <peter.maydell@linaro.org>) id 1dk4ga-0006dg-UF
+	for qemu-arm@nongnu.org; Tue, 22 Aug 2017 04:37:21 -0400
+Received: from mail-wr0-x232.google.com ([2a00:1450:400c:c0c::232]:33806)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1dk08i-0003b0-To; Mon, 21 Aug 2017 23:46:04 -0400
-Received: by mail-qk0-x234.google.com with SMTP id a77so91789863qkb.0;
-	Mon, 21 Aug 2017 20:46:04 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=sender:subject:to:cc:references:from:message-id:date:user-agent
-	:mime-version:in-reply-to:content-language:content-transfer-encoding;
-	bh=V7LBQ/qWMDQxHsAj/Keba9qDii5HAanJKMX6HnIQ/p0=;
-	b=nb6LWv/GGth4gvpOK59UpRBfM3hDznhbQY6MsfAPf3aNLGAzn3MjKnEcp5zMVXKJiT
-	JxvWJk3khQOqKSzmzcxPTyJ3hVT46BlTw9rk5ibg9Zfx+d1rdeSGsgl2C0orCMpfyslh
-	pB9p1Rlj4nUJpEWdHphrcv70mvuwQrKWJXaegxHUFTqMZGxvzBSRk4lfnvcG/7S0HF20
-	4oh16dsZVXyi6x2Ljk/BbZle4TpTK7hrj3z2oKBpRLvLPh9gENwtEMrzwok8yYYOeANf
-	h2C9ZnJy/1tFirSFZjo4Hk92SkQ+GQ3tJR6BCVERCGRTN/AYqJjU/Ha2nVQ7XCw+WXHh
-	pJkw==
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1dk4ga-0006d0-Mb
+	for qemu-arm@nongnu.org; Tue, 22 Aug 2017 04:37:20 -0400
+Received: by mail-wr0-x232.google.com with SMTP id p14so50151932wrg.1
+	for <qemu-arm@nongnu.org>; Tue, 22 Aug 2017 01:37:20 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc:content-transfer-encoding;
+	bh=CCc/iWJ2QXg6j/xykQjePhd6JVQ35U4HJYFOp0ZfzN0=;
+	b=JQ1HtqVJUvZelvXcuk2v9fENhbwcFrogn+l8BIeZXomiUjVvgB8jFEuCb67CWCqJBz
+	8mIx6aH0oKJUsP04ksUu5yAtswsOMRMfYEkZIQupguJL0JXK5nipVBka2EnaGZXZl9oz
+	Xy4Y3xHYPnF2gz8V4WuqHRzELhnxsg9LkE5/k=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
-	:date:user-agent:mime-version:in-reply-to:content-language
-	:content-transfer-encoding;
-	bh=V7LBQ/qWMDQxHsAj/Keba9qDii5HAanJKMX6HnIQ/p0=;
-	b=Zoyvuw7mwZ1IL8+xcoOp9TW1SvdhTBDuUugkkguS8NCZ8CZXuAViqaG3gausQXuQbI
-	V5Ryy24Ezntett+tQTOXdO4wz1Ynj51J8VodQaSjeoIsng51yX9oVAZ4LjX0VpKgVQBC
-	m3jt6CKj7wqwVczrkEZBoaMXWxKmS75BJJJnwa39oqr0CQhogvpuxQOknUSNrOpNGGmL
-	rmqd4b1vGj1AXskOi+lAtyPrDIi9dT5UwLof0KiqgNtVslVeJwB47MvYaUqcJVAYv9hG
-	KYdbeafWwmHBLAFYwUVPK2niWuwFUs6KMb9diY5oTwJDnW4C+ye/3/g9cRKqhrqaHopz
-	W67Q==
-X-Gm-Message-State: AHYfb5iw7t6K5uvkJIpvLAmtWHwc8coaOfxVDqMB8FxwN1m/92pl3SgM
-	FgwcZGU8/mtll8VQFc0=
-X-Received: by 10.55.143.195 with SMTP id r186mr28612114qkd.276.1503373564125; 
-	Mon, 21 Aug 2017 20:46:04 -0700 (PDT)
-Received: from [192.168.1.240] ([181.93.89.178])
-	by smtp.gmail.com with ESMTPSA id
-	x33sm2524810qth.80.2017.08.21.20.46.01
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Mon, 21 Aug 2017 20:46:03 -0700 (PDT)
-To: Peter Maydell <peter.maydell@linaro.org>,
-	Richard Henderson <richard.henderson@linaro.org>
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc:content-transfer-encoding;
+	bh=CCc/iWJ2QXg6j/xykQjePhd6JVQ35U4HJYFOp0ZfzN0=;
+	b=N2S7vm/fGcqGVbHywiB4yMC8bk2A0IdthcQK3fTBdF2Sl6daNRCPGFrtbJeAoCfLT6
+	wj0dv/SBoeEN58sR5uXxR/N2557JVaLqu/rzytC/mDe5/DdDByTv44qQzuGsj3FkpS7t
+	19U0P74cfMgkGGbVo//Apicoer3kPC/mNj3os4gD8EtWgRRxkBUhuTYLaUCfbGGSjcyN
+	jEadbOj1DcvMrpmiYJpe6E26RFMuiqAeoFlp291dWvMIwkSW82NAqJpc9USYToQd6zKh
+	cXX2FdHfoimbyUqIL17cbV+3NRuH0q3yzZO8qBKL6HxaZ4mOIfAmdIEZTTjl0RRkJyAG
+	6krw==
+X-Gm-Message-State: AHYfb5hR5vgIqSqKCKRTT4NC0TIgfPvuy2jgDexZSNqUNUdZezvv+dH9
+	an2KVVC0l7RMf+AcOJrrYDcTvqrOrxtg
+X-Received: by 10.28.193.10 with SMTP id r10mr8834540wmf.157.1503391039586;
+	Tue, 22 Aug 2017 01:37:19 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.223.134.54 with HTTP; Tue, 22 Aug 2017 01:36:59 -0700 (PDT)
+In-Reply-To: <aa6caac1-e06c-9e1c-2aba-18d672fafb55@amsat.org>
 References: <1501867249-1924-1-git-send-email-peter.maydell@linaro.org>
 	<1501867249-1924-5-git-send-email-peter.maydell@linaro.org>
 	<50d6ba4d-cfa3-5b5f-5da1-dca2326d4f5d@amsat.org>
 	<c38728a0-da49-635e-2954-1030b223e3c9@linaro.org>
 	<CAFEAcA_nPya92Vatwt7RiZnhKTH4_GKypSrX_KgPj3GitxV0Tg@mail.gmail.com>
 	<CAFEAcA97eXYPABgaE8Y_+EkWscR7CCH2WUHoM7ttZ6gVWQrqxw@mail.gmail.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <aa6caac1-e06c-9e1c-2aba-18d672fafb55@amsat.org>
-Date: Tue, 22 Aug 2017 00:45:59 -0300
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.2.1
-MIME-Version: 1.0
-In-Reply-To: <CAFEAcA97eXYPABgaE8Y_+EkWscR7CCH2WUHoM7ttZ6gVWQrqxw@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
+	<aa6caac1-e06c-9e1c-2aba-18d672fafb55@amsat.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 22 Aug 2017 09:36:59 +0100
+Message-ID: <CAFEAcA9Ci+0cjFORmzL7-73Jj4pm4jST3iEbXmHjXuPyiyt03g@mail.gmail.com>
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400d:c09::234
+X-Received-From: 2a00:1450:400c:c0c::232
 Subject: Re: [Qemu-arm] [PATCH 4/8] boards.h: Define new flag
  ignore_memory_transaction_failures
 X-BeenThere: qemu-arm@nongnu.org
@@ -121,65 +110,62 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
+Cc: qemu-arm <qemu-arm@nongnu.org>,
+	Richard Henderson <richard.henderson@linaro.org>,
+	QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 6gmXjMDShUdS
+X-TUID: y5LvCUq2QCtb
 
-Hi Peter,
-
-On 08/17/2017 07:25 AM, Peter Maydell wrote:
-> On 5 August 2017 at 11:13, Peter Maydell <peter.maydell@linaro.org> wrote:
->> On 4 August 2017 at 20:23, Richard Henderson
->> <richard.henderson@linaro.org> wrote:
->>> On 08/04/2017 11:09 AM, Philippe Mathieu-Daudé wrote:
->>>> Since create_unimplemented_device() register overlapped with low priority, why
->>>> not register it as default device directly, over the whole address space?
->>>
->>> That's a good suggestion.  It makes more sense to me than adding a flag on the
->>> MachineClass.
+On 22 August 2017 at 04:45, Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> w=
+rote:
+> On 08/17/2017 07:25 AM, Peter Maydell wrote:
 >>
->> Yeah, I did think about implementing it that way, but...
->>
->> That wouldn't handle the case of a device model directly
->> returning a MEMTX_ERROR, or a transaction dispatched to
->> a memory region whose MemoryRegionOps valid settings
->> prohibit it (eg byte accesses to a word-access-only device),
->> or accesses to a MemoryRegion that was created by passing
->> a NULL MemoryRegionOps pointer to memory_region_init_io
->> (I dunno why you'd do that but some code does).
->>
->> In short, there are lots of ways the memory subsystem might
->> end up returning a transaction error -- this mechanism
->> ensures that none of them start generating exceptions
->> when they previously did not, and is (I hope) easy to
->> review in the sense of being sure that it does what it
->> intends to do without the need to audit a lot of corner
->> cases.
-> 
-> So, this question (should we have a board flag to disable reporting
-> of tx failures to the CPU hook, or use unimplemented_device as a
-> sort of background region) seems to be the main unanswered question
-> for this series. I think (as outlined above) that the board flag
-> is simpler and safer; are people happy for me to put this series
-> in target-arm.next with that approach, or should I rethink this bit?
-As remarked previously in this thread, the current QEMU behavior on 
-transaction error isn't always matching real hardware.
-Matching correctly throwing errors is likely to break various current users.
+>> On 5 August 2017 at 11:13, Peter Maydell <peter.maydell@linaro.org> wrot=
+e:
+>> So, this question (should we have a board flag to disable reporting
+>> of tx failures to the CPU hook, or use unimplemented_device as a
+>> sort of background region) seems to be the main unanswered question
+>> for this series. I think (as outlined above) that the board flag
+>> is simpler and safer; are people happy for me to put this series
+>> in target-arm.next with that approach, or should I rethink this bit?
+>
+> As remarked previously in this thread, the current QEMU behavior on
+> transaction error isn't always matching real hardware.
+> Matching correctly throwing errors is likely to break various
+> current users.
 
-If we are worried about being backward compatible, defaulting background 
-region to unimp() won't throw any transaction error.
+Yes, hence this patchseries keeping the wrong but back compatible
+behaviour...
 
-Since the default is no transaction error, users who expect hardware 
-error can implement the correct behavior, per region/bus transaction errors.
+> If we are worried about being backward compatible, defaulting background
+> region to unimp() won't throw any transaction error.
 
-I'm somehow afraid that "ignore_memory_transaction_failures" ends up 
-like the "cannot_instantiate_with_device_add_yet" flag - a hard to 
-remove kludge outliving his purpose.
+As I said, it will, for the cases of device model directly
+returning a MEMTX_ERROR, or a transaction dispatched to
+a memory region whose MemoryRegionOps valid settings
+prohibit it (eg byte accesses to a word-access-only device), etc.
+The only simple way to guarantee that we don't generate exceptions
+on transaction errors is to cause the hook not to be called
+(or to have the hook decide to do nothing, I suppose).
 
-Anyway I'm not unhappy with this approach, but I'd be very happy to have 
-unimp() covering the whole background region.
+> I'm somehow afraid that "ignore_memory_transaction_failures" ends up like
+> the "cannot_instantiate_with_device_add_yet" flag - a hard to remove klud=
+ge
+> outliving his purpose.
 
-Regards,
+I agree that it's going to be around for a long time, possibly
+forever, but that's life when we have so many old boards.
+Any approach we take is almost certainly going to be hanging
+around forever.
 
-Phil.
+> Anyway I'm not unhappy with this approach, but I'd be very happy to have
+> unimp() covering the whole background region.
+
+I think this would be a reasonable approach for converting
+boards away from this ignore_memory_transaction_failures hook
+on a board-by-board basis but you'd still want to test some
+common guest software for each conversion.
+
+thanks
+-- PMM

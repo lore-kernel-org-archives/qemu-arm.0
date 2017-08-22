@@ -1,112 +1,269 @@
-Received: by 10.182.158.201 with SMTP id ww9csp659512obb;
-        Thu, 7 Jan 2016 07:50:49 -0800 (PST)
-X-Received: by 10.194.203.137 with SMTP id kq9mr68770560wjc.129.1452181840749;
-        Thu, 07 Jan 2016 07:50:40 -0800 (PST)
-Return-Path: <eric.auger@linaro.org>
-Received: from mail-wm0-x22c.google.com (mail-wm0-x22c.google.com. [2a00:1450:400c:c09::22c])
-        by mx.google.com with ESMTPS id e78si20633582wmc.63.2016.01.07.07.50.40
+Received: by 10.223.188.70 with SMTP id a6csp5093176wrh;
+        Tue, 22 Aug 2017 08:35:23 -0700 (PDT)
+X-Received: by 10.237.32.68 with SMTP id 62mr1646512qta.164.1503416123895;
+        Tue, 22 Aug 2017 08:35:23 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1503416123; cv=none;
+        d=google.com; s=arc-20160816;
+        b=QfgbhhKEnrcPXqPYqG+J7YR3/pIih+8FkL3LoNcdIFGjGaposKzbmCeuUw21+jTmZX
+         d5Hn6j8ylCBqcFv5CaexpgwFYHKtagRNxNxVzZVa+kURmuoKSjUFYoyl/yYgkGC1OamN
+         nwwlKz/f3rKT+XcbE0X6eIPVwWtl4GQN+5h4ByJfY2VwHyulpnPWG7dbY7ec1fkpqYb8
+         OZaguLzqqsanypIAaOWMFUA4pZ3awNOxF/CptAaWKe3UNyZPcG/Asxh7i9hWU6lCSahy
+         bwvbd/VEQlxu9/Z9tlmL/dVsst24pGEnGqnKgsu3KvYiiXq8epE40Bf92hSzt8cBV6up
+         ozYw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
+         :message-id:date:to:from:arc-authentication-results;
+        bh=N/nwW7vSeZL2WgKVODgBVHZCQgOvw6DxnbDWYkbuprA=;
+        b=B2iodlCKUMsHY720ZFEUwQwS7OYvGbN2lXcBebmaHD9ecB7kCd1deDOlHC/aTUlgb0
+         r6lw04QyTOnYaJvS9MAN4y0IlO6QpugE1aMcLjFZtSpD1izjTnn3AR2OJq9r5xJInwzq
+         eGBbSlCDthjtDL9q5mPcudggy7XkZvR/h5DFDhfpBguMlX7EVyvkNYcyztNLJSGD86ml
+         HbrJ688SWGcm777zCKBY8fM1ntgysxSEVVtlAhaw9H+KrJEjPNL8AubN2Ppaqu2tiLq7
+         JxfKAj+yScLiKh79zNw2pm/AhbN9oNfZmleqWKeYxpHX3ectrmy4mrDlXowB8pg0rLUy
+         1j8Q==
+ARC-Authentication-Results: i=1; mx.google.com;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
+        by mx.google.com with ESMTPS id q32si13998490qtk.270.2017.08.22.08.35.23
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 07 Jan 2016 07:50:40 -0800 (PST)
-Received-SPF: pass (google.com: domain of eric.auger@linaro.org designates 2a00:1450:400c:c09::22c as permitted sender) client-ip=2a00:1450:400c:c09::22c;
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Tue, 22 Aug 2017 08:35:23 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of eric.auger@linaro.org designates 2a00:1450:400c:c09::22c as permitted sender) smtp.mailfrom=eric.auger@linaro.org;
-       dkim=pass header.i=@linaro.org
-Received: by mail-wm0-x22c.google.com with SMTP id f206so102505244wmf.0
-        for <alex.bennee@linaro.org>; Thu, 07 Jan 2016 07:50:40 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=from:to:cc:subject:date:message-id:in-reply-to:references;
-        bh=K4npePiVlp7IzNuisXe138R97OdL6p9BCocSVzFXEkU=;
-        b=VdojnZZ24MmUFXsjiibwhRqnPO0wtXkJlJ5PcOeI4fvBIXl8mnSYtvWPBuTebgnQtS
-         LmmQvNhracYjcC36s43EiFyXLOA747SgcfI4Ia3m0bbnkNbVpX9revezxNEZNOjnw5+t
-         QIicnylDouTt+qxuejCQ74YBA4zlM8lRWqpHo=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
-         :references;
-        bh=K4npePiVlp7IzNuisXe138R97OdL6p9BCocSVzFXEkU=;
-        b=IlKe4A/wjbxAQ7fIqeFke7T7+09t9LjC0Xyr44yJOnK4fkPxbEQnOT+eowOQuJwlgG
-         HQrJAnAYglzXj0odiCnlekbMcwBCQRPq21Ki82bpkdouMHGzE93InfsyB4aqCLAnnWWG
-         Fnnzhv6VIcL6DT/SEN7we/Y3Fj0VFY5HK3ZxXDAp9ZZE8pnD2r7MngZGjdRuyDUzfoXN
-         tyK5ayw4/Cnfi8UDtjKS+oHizq4C8xLRJ8bNnZSVRZnyhPkMKEP0lrlo/enLG96tQWbu
-         vx/57H96zgpnJ7n9Ck5V1tSD4SBADRASy5W7Mkw3BOkHbjrG2NtdSRw+lGhjyQ5oLXf9
-         hO/Q==
-X-Gm-Message-State: ALoCoQmS1Dd2SPIOGJFrIsSed/uWTPR/eEYO6ikHOZ+qol/XcSzmX5TjXw2Yb4AQFMEV6T3fH/Hax+TQ3vA2CYYyZcd2bJWFJg==
-X-Received: by 10.194.93.102 with SMTP id ct6mr102733815wjb.157.1452181840485;
-        Thu, 07 Jan 2016 07:50:40 -0800 (PST)
-Return-Path: <eric.auger@linaro.org>
-Received: from new-host-8.home (LMontsouris-657-1-37-90.w80-11.abo.wanadoo.fr. [80.11.198.90])
-        by smtp.gmail.com with ESMTPSA id e198sm14267576wmd.0.2016.01.07.07.50.38
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Thu, 07 Jan 2016 07:50:38 -0800 (PST)
-From: Eric Auger <eric.auger@linaro.org>
-To: eric.auger@st.com,
-	eric.auger@linaro.org,
-	qemu-devel@nongnu.org,
-	qemu-arm@nongnu.org,
-	peter.maydell@linaro.org,
-	david@gibson.dropbear.id.au,
-	alex.williamson@redhat.com
-Cc: alex.bennee@linaro.org,
-	thuth@redhat.com,
-	crosthwaitepeter@gmail.com,
-	patches@linaro.org,
-	christoffer.dall@linaro.org,
-	pbonzini@redhat.com,
-	b.reynal@virtualopensystems.com,
-	suravee.suthikulpanit@amd.com,
-	thomas.lendacky@amd.com
-Subject: [PATCH v3 8/8] hw/arm/sysbus-fdt: remove qemu_fdt_setprop returned value check
-Date: Thu,  7 Jan 2016 15:50:15 +0000
-Message-Id: <1452181815-1948-9-git-send-email-eric.auger@linaro.org>
-X-Mailer: git-send-email 1.9.1
-In-Reply-To: <1452181815-1948-1-git-send-email-eric.auger@linaro.org>
-References: <1452181815-1948-1-git-send-email-eric.auger@linaro.org>
-X-TUID: LYzMiJt4Skyi
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:54865 helo=lists.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1dkBD7-0003or-FR
+	for alex.bennee@linaro.org; Tue, 22 Aug 2017 11:35:21 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:53416)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <pm215@archaic.org.uk>) id 1dkAnq-0006Vd-Ch
+	for qemu-arm@nongnu.org; Tue, 22 Aug 2017 11:09:18 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+	(envelope-from <pm215@archaic.org.uk>) id 1dkAno-0003E1-0q
+	for qemu-arm@nongnu.org; Tue, 22 Aug 2017 11:09:14 -0400
+Received: from orth.archaic.org.uk ([2001:8b0:1d0::2]:36962)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <pm215@archaic.org.uk>)
+	id 1dkAnn-00037y-Mj; Tue, 22 Aug 2017 11:09:11 -0400
+Received: from pm215 by orth.archaic.org.uk with local (Exim 4.89)
+	(envelope-from <pm215@archaic.org.uk>)
+	id 1dkAnl-0004kK-Cw; Tue, 22 Aug 2017 16:09:09 +0100
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Date: Tue, 22 Aug 2017 16:08:55 +0100
+Message-Id: <1503414539-28762-17-git-send-email-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.7.4
+In-Reply-To: <1503414539-28762-1-git-send-email-peter.maydell@linaro.org>
+References: <1503414539-28762-1-git-send-email-peter.maydell@linaro.org>
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2001:8b0:1d0::2
+Subject: [Qemu-arm] [PATCH 16/20] target/arm: Make CCR register banked for
+ v8M
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.21
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: patches@linaro.org
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: e1+41SEVIUvI
 
-qemu_fdt_setprop self-exists in case of error hence no need to check
-the returned value.
+Make the CCR register banked if v8M security extensions are enabled.
 
-Signed-off-by: Eric Auger <eric.auger@linaro.org>
+This is slightly more complicated than the other "add banking"
+patches because there is one bit in the register which is not
+banked. We keep the live data in the NS copy of the register,
+and adjust it on register reads and writes. (Since we don't
+currently implement the behaviour that the bit controls, there
+is nowhere else that needs to care.)
+
+This patch includes the enforcement of the bits which are newly
+RES1 in ARMv8M.
+
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- hw/arm/sysbus-fdt.c | 15 +++------------
- 1 file changed, 3 insertions(+), 12 deletions(-)
+ target/arm/cpu.h      |  2 +-
+ hw/intc/armv7m_nvic.c | 36 ++++++++++++++++++++++++++++++------
+ target/arm/cpu.c      | 12 +++++++++---
+ target/arm/helper.c   |  5 +++--
+ target/arm/machine.c  |  3 ++-
+ 5 files changed, 45 insertions(+), 13 deletions(-)
 
-diff --git a/hw/arm/sysbus-fdt.c b/hw/arm/sysbus-fdt.c
-index 66fa766..68d7e53 100644
---- a/hw/arm/sysbus-fdt.c
-+++ b/hw/arm/sysbus-fdt.c
-@@ -241,12 +241,8 @@ static int add_calxeda_midway_xgmac_fdt_node(SysBusDevice *sbdev, void *opaque)
-         reg_attr[2 * i + 1] = cpu_to_be32(
-                                 memory_region_size(&vdev->regions[i]->mem));
-     }
--    ret = qemu_fdt_setprop(fdt, nodename, "reg", reg_attr,
--                           vbasedev->num_regions * 2 * sizeof(uint32_t));
--    if (ret) {
--        error_report("could not set reg property of node %s", nodename);
--        goto fail_reg;
--    }
-+    qemu_fdt_setprop(fdt, nodename, "reg", reg_attr,
-+                     vbasedev->num_regions * 2 * sizeof(uint32_t));
+diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+index 78cd3f0..25ebf9e 100644
+--- a/target/arm/cpu.h
++++ b/target/arm/cpu.h
+@@ -423,7 +423,7 @@ typedef struct CPUARMState {
+         uint32_t vecbase[2];
+         uint32_t basepri[2];
+         uint32_t control[2];
+-        uint32_t ccr; /* Configuration and Control */
++        uint32_t ccr[2]; /* Configuration and Control */
+         uint32_t cfsr; /* Configurable Fault Status */
+         uint32_t hfsr; /* HardFault Status */
+         uint32_t dfsr; /* Debug Fault Status Register */
+diff --git a/hw/intc/armv7m_nvic.c b/hw/intc/armv7m_nvic.c
+index a4c298f..f071649 100644
+--- a/hw/intc/armv7m_nvic.c
++++ b/hw/intc/armv7m_nvic.c
+@@ -448,7 +448,12 @@ static uint32_t nvic_readl(NVICState *s, uint32_t offset, MemTxAttrs attrs)
+         /* TODO: Implement SLEEPONEXIT.  */
+         return 0;
+     case 0xd14: /* Configuration Control.  */
+-        return cpu->env.v7m.ccr;
++        /* The BFHFNMIGN bit is the only non-banked bit; we
++         * keep it in the non-secure copy of the register.
++         */
++        val = cpu->env.v7m.ccr[attrs.secure];
++        val |= cpu->env.v7m.ccr[M_REG_NS] & R_V7M_CCR_BFHFNMIGN_MASK;
++        return val;
+     case 0xd24: /* System Handler Status.  */
+         val = 0;
+         if (s->vectors[ARMV7M_EXCP_MEM].active) {
+@@ -673,7 +678,23 @@ static void nvic_writel(NVICState *s, uint32_t offset, uint32_t value,
+                   R_V7M_CCR_USERSETMPEND_MASK |
+                   R_V7M_CCR_NONBASETHRDENA_MASK);
  
-     irq_attr = g_new(uint32_t, vbasedev->num_irqs * 3);
-     for (i = 0; i < vbasedev->num_irqs; i++) {
-@@ -256,14 +252,9 @@ static int add_calxeda_midway_xgmac_fdt_node(SysBusDevice *sbdev, void *opaque)
-         irq_attr[3 * i + 1] = cpu_to_be32(irq_number);
-         irq_attr[3 * i + 2] = cpu_to_be32(GIC_FDT_IRQ_FLAGS_LEVEL_HI);
+-        cpu->env.v7m.ccr = value;
++        if (arm_feature(&cpu->env, ARM_FEATURE_V8)) {
++            /* v8M makes NONBASETHRDENA and STKALIGN be RES1 */
++            value |= R_V7M_CCR_NONBASETHRDENA_MASK
++                | R_V7M_CCR_STKALIGN_MASK;
++        }
++        if (attrs.secure) {
++            /* the BFHFNMIGN bit is not banked; keep that in the NS copy */
++            int new_bfhnmign = !!(value & R_V7M_CCR_BFHFNMIGN_MASK);
++
++            cpu->env.v7m.ccr[M_REG_NS] = deposit32(cpu->env.v7m.ccr[M_REG_NS],
++                                                    R_V7M_CCR_BFHFNMIGN_SHIFT,
++                                                    R_V7M_CCR_BFHFNMIGN_LENGTH,
++                                                    new_bfhnmign);
++            value &= ~R_V7M_CCR_BFHFNMIGN_MASK;
++        }
++
++        cpu->env.v7m.ccr[attrs.secure] = value;
+         break;
+     case 0xd24: /* System Handler Control.  */
+         s->vectors[ARMV7M_EXCP_MEM].active = (value & (1 << 0)) != 0;
+@@ -860,12 +881,15 @@ static void nvic_writel(NVICState *s, uint32_t offset, uint32_t value,
      }
--    ret = qemu_fdt_setprop(fdt, nodename, "interrupts",
-+    qemu_fdt_setprop(fdt, nodename, "interrupts",
-                      irq_attr, vbasedev->num_irqs * 3 * sizeof(uint32_t));
--    if (ret) {
--        error_report("could not set interrupts property of node %s",
--                     nodename);
--    }
-     g_free(irq_attr);
--fail_reg:
-     g_free(reg_attr);
-     g_free(nodename);
-     return ret;
+ }
+ 
+-static bool nvic_user_access_ok(NVICState *s, hwaddr offset)
++static bool nvic_user_access_ok(NVICState *s, hwaddr offset, MemTxAttrs attrs)
+ {
+     /* Return true if unprivileged access to this register is permitted. */
+     switch (offset) {
+     case 0xf00: /* STIR: accessible only if CCR.USERSETMPEND permits */
+-        return s->cpu->env.v7m.ccr & R_V7M_CCR_USERSETMPEND_MASK;
++        /* For access via STIR_NS it is the NS CCR.USERSETMPEND that
++         * controls access even though the CPU is in Secure state (I_QDKX).
++         */
++        return s->cpu->env.v7m.ccr[attrs.secure] & R_V7M_CCR_USERSETMPEND_MASK;
+     default:
+         /* All other user accesses cause a BusFault unconditionally */
+         return false;
+@@ -881,7 +905,7 @@ static MemTxResult nvic_sysreg_read(void *opaque, hwaddr addr,
+     unsigned i, startvec, end;
+     uint32_t val;
+ 
+-    if (attrs.user && !nvic_user_access_ok(s, addr)) {
++    if (attrs.user && !nvic_user_access_ok(s, addr, attrs)) {
+         /* Generate BusFault for unprivileged accesses */
+         return MEMTX_ERROR;
+     }
+@@ -971,7 +995,7 @@ static MemTxResult nvic_sysreg_write(void *opaque, hwaddr addr,
+ 
+     trace_nvic_sysreg_write(addr, value, size);
+ 
+-    if (attrs.user && !nvic_user_access_ok(s, addr)) {
++    if (attrs.user && !nvic_user_access_ok(s, addr, attrs)) {
+         /* Generate BusFault for unprivileged accesses */
+         return MEMTX_ERROR;
+     }
+diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+index 11038b8..3c2ff11 100644
+--- a/target/arm/cpu.c
++++ b/target/arm/cpu.c
+@@ -189,11 +189,17 @@ static void arm_cpu_reset(CPUState *s)
+             env->v7m.secure = true;
+         }
+ 
+-        /* The reset value of this bit is IMPDEF, but ARM recommends
++        /* In v7M the reset value of this bit is IMPDEF, but ARM recommends
+          * that it resets to 1, so QEMU always does that rather than making
+-         * it dependent on CPU model.
++         * it dependent on CPU model. In v8M it is RES1.
+          */
+-        env->v7m.ccr = R_V7M_CCR_STKALIGN_MASK;
++        env->v7m.ccr[M_REG_NS] = R_V7M_CCR_STKALIGN_MASK;
++        env->v7m.ccr[M_REG_S] = R_V7M_CCR_STKALIGN_MASK;
++        if (arm_feature(env, ARM_FEATURE_V8)) {
++            /* in v8M the NONBASETHRDENA bit [0] is RES1 */
++            env->v7m.ccr[M_REG_NS] |= R_V7M_CCR_NONBASETHRDENA_MASK;
++            env->v7m.ccr[M_REG_S] |= R_V7M_CCR_NONBASETHRDENA_MASK;
++        }
+ 
+         /* Unlike A/R profile, M profile defines the reset LR value */
+         env->regs[14] = 0xffffffff;
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index 4a2148c..28b3d6c 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -6118,7 +6118,8 @@ static void v7m_push_stack(ARMCPU *cpu)
+     uint32_t xpsr = xpsr_read(env);
+ 
+     /* Align stack pointer if the guest wants that */
+-    if ((env->regs[13] & 4) && (env->v7m.ccr & R_V7M_CCR_STKALIGN_MASK)) {
++    if ((env->regs[13] & 4) &&
++        (env->v7m.ccr[env->v7m.secure] & R_V7M_CCR_STKALIGN_MASK)) {
+         env->regs[13] -= 4;
+         xpsr |= XPSR_SPREALIGN;
+     }
+@@ -6216,7 +6217,7 @@ static void do_v7m_exception_exit(ARMCPU *cpu)
+         /* fall through */
+     case 9: /* Return to Thread using Main stack */
+         if (!rettobase &&
+-            !(env->v7m.ccr & R_V7M_CCR_NONBASETHRDENA_MASK)) {
++            !(env->v7m.ccr[env->v7m.secure] & R_V7M_CCR_NONBASETHRDENA_MASK)) {
+             ufault = true;
+         }
+         break;
+diff --git a/target/arm/machine.c b/target/arm/machine.c
+index 5cc95e8..4457ec6 100644
+--- a/target/arm/machine.c
++++ b/target/arm/machine.c
+@@ -117,7 +117,7 @@ static const VMStateDescription vmstate_m = {
+         VMSTATE_UINT32(env.v7m.vecbase[M_REG_NS], ARMCPU),
+         VMSTATE_UINT32(env.v7m.basepri[M_REG_NS], ARMCPU),
+         VMSTATE_UINT32(env.v7m.control[M_REG_NS], ARMCPU),
+-        VMSTATE_UINT32(env.v7m.ccr, ARMCPU),
++        VMSTATE_UINT32(env.v7m.ccr[M_REG_NS], ARMCPU),
+         VMSTATE_UINT32(env.v7m.cfsr, ARMCPU),
+         VMSTATE_UINT32(env.v7m.hfsr, ARMCPU),
+         VMSTATE_UINT32(env.v7m.dfsr, ARMCPU),
+@@ -271,6 +271,7 @@ static const VMStateDescription vmstate_m_security = {
+         VMSTATE_UINT32(env.pmsav7.rnr[M_REG_S], ARMCPU),
+         VMSTATE_VALIDATE("secure MPU_RNR is valid", s_rnr_vmstate_validate),
+         VMSTATE_UINT32(env.v7m.mpu_ctrl[M_REG_S], ARMCPU),
++        VMSTATE_UINT32(env.v7m.ccr[M_REG_S], ARMCPU),
+         VMSTATE_END_OF_LIST()
+     }
+ };
 -- 
-1.9.1
+2.7.4
+

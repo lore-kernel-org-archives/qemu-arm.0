@@ -1,169 +1,157 @@
-Received: by 10.223.188.70 with SMTP id a6csp5106246wrh;
-        Tue, 22 Aug 2017 08:46:49 -0700 (PDT)
-X-Received: by 10.55.158.205 with SMTP id h196mr1729222qke.70.1503416809199;
-        Tue, 22 Aug 2017 08:46:49 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1503416809; cv=none;
+Received: by 10.223.188.70 with SMTP id a6csp5107851wrh;
+        Tue, 22 Aug 2017 08:48:18 -0700 (PDT)
+X-Received: by 10.55.182.6 with SMTP id g6mr1580822qkf.326.1503416898215;
+        Tue, 22 Aug 2017 08:48:18 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1503416898; cv=none;
         d=google.com; s=arc-20160816;
-        b=IVuuGvDc1phESx0P6EliyJZUOWqn2/4YVYQKVam231DvzhOwd2ZaroV/JckrOvLUOa
-         KFX+rMm+MBL6x2ou3oHtRBcABzDAMPu2+iJEjAfhgBIwPvVDtF4Jf0aqo2KwcY0UNnkS
-         UmgZ1Xgi3kWKw6u9YSgyDY4MzoiMlX3muyDKBWj2jR0TkXu6sVAsRe9xht+3zTkakax0
-         s0dz+X2zQ4QDMi2n24Os1Bg74bN7dAqjNk+c3++kSM+bQQmvnH4f4KopJdH03doOg84u
-         z2YOddoUxEl9scbTva7XhKKUZbG0uM2rVXX0TfSf+gQKVqpIjgEtL6B9GbPapzjXQM8r
-         U0qQ==
+        b=dgUASsfHPwqC6H2l52U888B9Dw96HbIdx0duqKhlH6fbr0pXE+YUTlrEJSsXj/7JEK
+         IjLiSFmEIe9nnxGuzG3KIFUVx4C2nHD2uLrtRUs0vJ4HQtFcM/PU++IqFDfzBN3b0fPT
+         5wbFOyP0IHlhtQjcZaaflBySvXaud9gDWXumjU/YTlHoxFqPENMyuvCxGjeqpZ0kK3M+
+         MvN67aPWauiPZbxAnKa6Aw/QjCyxs0OJ3FYDKZb4ENjK9q4vhBmEJGfsItfNZDk197+f
+         B2YRxSMHmYom/xx+AwrwNzJze+wVe18Y88eYzejMoYdAYJMMy7MA8iT/dTnKQVXi0GN/
+         aFig==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:to:dmarc-filter
+         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
+         :references:in-reply-to:mime-version:dkim-signature
          :arc-authentication-results;
-        bh=wGQ8SmiKrXEgtaDNtu403hq15hyYCyQRaMHHaTEAZBI=;
-        b=Se6qR0FZ3z/DEr/RLt25p8YG/D0jC1a7ft4NmvAAeeimz4bHBxYJSra7IN/FACXQUm
-         CSFI2Nvf11BJqS/4fZiENAuLTQZ7TuewnsgmtRPjLlfaC39MdS33R+xhbwXxOH8oIdld
-         usRURH/0ggX7upX/sx+KMfBai+XKEYMF366ZrkxflVyJtbcMRTLJGQxV6yt0m6NwqNdC
-         y//LSZMiyp8EeYc8h5E+l0eEywujdhqrD0QRKavGIZhWy6xfd15yJUQR23SMQHXHNj5b
-         FRhVuHJCcbRY88NoqMrNUD1DRvKE5EBBXAHrPsAmy02WD3ig3GRoXDf44sRQRKmHrkeJ
-         VhTQ==
+        bh=K689UJ20caYraXmMmfDxf9wN8+vASUJEbWGNufvR6Xw=;
+        b=Ujan2vHeXbVbyu/L25Xv8U4UwJk7CUwxmSe8wqQy9AFvYL2ZkAF3VoA+YkmgjOLslZ
+         gNBcdqVowbdkkFrh4poisbjmQ2LWA+4reyWXWaOolya98escHvvFu2MBhLKpdAL0az5L
+         Xq+AyV1Ok08UoP47JhXyn6dz5rWlWJs8iZwHo0Go0ZnjZJCcf7veFPcExkHeJeTlwe1A
+         hycx0hY7BYadMQ2rPwzXYMFy/R8iVBsoZXsDguRyzDd07dirZTe3z6+dWIwJNdj4Wqch
+         sBLXd2reZCUhihwkQLaY2qxg1unKLS7JHaQ+tQOZF6t6PsPPzljzvsUaPORugzFVC8re
+         Qvhg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@linaro.org header.s=google header.b=AHu+XPlT;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id f68si14137650qka.132.2017.08.22.08.46.48
+        by mx.google.com with ESMTPS id o68si6412762qki.153.2017.08.22.08.48.17
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 22 Aug 2017 08:46:49 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Tue, 22 Aug 2017 08:48:18 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:55995 helo=lists.gnu.org)
+       dkim=fail header.i=@linaro.org header.s=google header.b=AHu+XPlT;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:56197 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1dkBOA-0006o5-Pl
-	for alex.bennee@linaro.org; Tue, 22 Aug 2017 11:46:46 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:59070)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1dkBPb-00005w-P3
+	for alex.bennee@linaro.org; Tue, 22 Aug 2017 11:48:15 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:60167)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1dkB4T-0004j5-J2
-	for qemu-devel@nongnu.org; Tue, 22 Aug 2017 11:26:26 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1dkB8h-0008QY-Ur
+	for qemu-arm@nongnu.org; Tue, 22 Aug 2017 11:30:48 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1dkB4S-0000zC-J7
-	for qemu-devel@nongnu.org; Tue, 22 Aug 2017 11:26:25 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:45374)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <thuth@redhat.com>)
-	id 1dkB4K-0000tl-0t; Tue, 22 Aug 2017 11:26:16 -0400
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
-	[10.5.11.16])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id CE2697EA8D;
-	Tue, 22 Aug 2017 15:26:14 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com CE2697EA8D
-Authentication-Results: ext-mx04.extmail.prod.ext.phx2.redhat.com;
-	dmarc=none (p=none dis=none) header.from=redhat.com
-Authentication-Results: ext-mx04.extmail.prod.ext.phx2.redhat.com;
-	spf=fail smtp.mailfrom=thuth@redhat.com
-Received: from [10.36.116.21] (ovpn-116-21.ams2.redhat.com [10.36.116.21])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id BBAF61715B;
-	Tue, 22 Aug 2017 15:26:12 +0000 (UTC)
-To: Peter Maydell <peter.maydell@linaro.org>
+	(envelope-from <peter.maydell@linaro.org>) id 1dkB8g-0003TF-94
+	for qemu-arm@nongnu.org; Tue, 22 Aug 2017 11:30:47 -0400
+Received: from mail-wr0-x234.google.com ([2a00:1450:400c:c0c::234]:33364)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1dkB8g-0003Se-2V
+	for qemu-arm@nongnu.org; Tue, 22 Aug 2017 11:30:46 -0400
+Received: by mail-wr0-x234.google.com with SMTP id a47so14345764wra.0
+	for <qemu-arm@nongnu.org>; Tue, 22 Aug 2017 08:30:45 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=K689UJ20caYraXmMmfDxf9wN8+vASUJEbWGNufvR6Xw=;
+	b=AHu+XPlTpEUu+3CKIhB8x93ocMFtRZ1JRsO3eggImBkOdwyerUjRbVw3O4GJEVFsyN
+	YPf+t6nlzqrQeL5IpYOraQcjC2OLMzDiV7y1byjLc1ZYhTTtkT6RpccPe9W912wHBLLp
+	9vbCvFSBWGAR9Gjg59waxoG3amkEoCBjovTmg=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=K689UJ20caYraXmMmfDxf9wN8+vASUJEbWGNufvR6Xw=;
+	b=RLAQkEi9nGEkUOz44XUiNgbr1KBDj5/fraMySju7vkeGMlTkM1frfX/jffpp3vf5Rk
+	zF4jqn6+gAQX9nF7Ws/2oBEZ7yEidMp4fpflYEITptowiWEoZLlG0+BRndT7uepwIzLx
+	qAo/A87s7qrNqb5A7rjc7ywyl4m1cGjA4Wc7zyQQRnhos2RnxZzJ7QoI6B3TqZEv+DWg
+	Q2MFOKWPyBBEL7AS3Kv6eIxdusoK2LIcy7zlhHGUr93wc2vds6V2K+d7RD2lab5T//Ji
+	aSMxra7Dke3Czohy5jU/G6Qqu8FogFzfkvdnAntSnyBHaTJ8fllgdZkw13tP/OBrGjNS
+	7McA==
+X-Gm-Message-State: AHYfb5imsy1mXfrkF6HjQAprzilAbObg5C6RiZvS5BIutWbmmfwFGWuc
+	U1tBdQKh83qci1BWGn7k1kpkQfMP4D9l
+X-Received: by 10.223.167.138 with SMTP id j10mr682990wrc.97.1503415844860;
+	Tue, 22 Aug 2017 08:30:44 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.223.134.54 with HTTP; Tue, 22 Aug 2017 08:30:24 -0700 (PDT)
+In-Reply-To: <443135b4-4b36-bae6-b50a-12fb4a55a858@redhat.com>
 References: <1503414375-21009-1-git-send-email-thuth@redhat.com>
 	<CAFEAcA-92Jjz2uCC387oX2u0NWfijPwB_8zGaagC1m=sKD8zhQ@mail.gmail.com>
-From: Thomas Huth <thuth@redhat.com>
-Message-ID: <443135b4-4b36-bae6-b50a-12fb4a55a858@redhat.com>
-Date: Tue, 22 Aug 2017 17:26:11 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.2.0
-MIME-Version: 1.0
-In-Reply-To: <CAFEAcA-92Jjz2uCC387oX2u0NWfijPwB_8zGaagC1m=sKD8zhQ@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.28]);
-	Tue, 22 Aug 2017 15:26:15 +0000 (UTC)
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-devel] [PATCH] hw/misc/auxbus.c: Mark the
- aux-to-i2c-bridge device as non-hotpluggable
-X-BeenThere: qemu-devel@nongnu.org
+	<443135b4-4b36-bae6-b50a-12fb4a55a858@redhat.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 22 Aug 2017 16:30:24 +0100
+Message-ID: <CAFEAcA-AG5XoOJr3p_UU9dACjawp3OtKDy8GMRMpdFfE8foqTA@mail.gmail.com>
+To: Thomas Huth <thuth@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2a00:1450:400c:c0c::234
+Subject: Re: [Qemu-arm] [PATCH] hw/misc/auxbus.c: Mark the aux-to-i2c-bridge
+ device as non-hotpluggable
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Eduardo Habkost <ehabkost@redhat.com>,
 	QEMU Trivial <qemu-trivial@nongnu.org>,
 	Markus Armbruster <armbru@redhat.com>,
 	QEMU Developers <qemu-devel@nongnu.org>,
 	Alistair Francis <alistair.francis@xilinx.com>,
 	KONRAD Frederic <frederic.konrad@adacore.com>,
-	qemu-arm <qemu-arm@nongnu.org>,
-	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: EpvG1DzQq/Cn
+	qemu-arm <qemu-arm@nongnu.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: ltbutMc0IqaU
 
-On 22.08.2017 17:12, Peter Maydell wrote:
-> On 22 August 2017 at 16:06, Thomas Huth <thuth@redhat.com> wrote:
->> QEMU currently aborts if the user tries to do something like this:
->>
->> $ aarch64-softmmu/qemu-system-aarch64 -S -M integratorcp -nographic
->> QEMU 2.9.93 monitor - type 'help' for more information
->> (qemu) device_add aux-to-i2c-bridge,id=3Dx
->> (qemu) device_del x
->> **
->> ERROR:qemu/qdev-monitor.c:872:qdev_unplug: assertion failed: (hotplug_=
-ctrl)
->> Aborted (core dumped)
->>
->> Looks like the device is not hot-pluggable, so let's mark it
->> accordingly.
->>
->> Signed-off-by: Thomas Huth <thuth@redhat.com>
->> ---
->>  hw/misc/auxbus.c | 8 ++++++++
->>  1 file changed, 8 insertions(+)
->>
->> diff --git a/hw/misc/auxbus.c b/hw/misc/auxbus.c
->> index 8a90ddd..2c62515 100644
->> --- a/hw/misc/auxbus.c
->> +++ b/hw/misc/auxbus.c
->> @@ -222,9 +222,17 @@ static inline I2CBus *aux_bridge_get_i2c_bus(AUXT=
-OI2CState *bridge)
->>      return bridge->i2c_bus;
->>  }
->>
->> +static void aux_bridge_class_init(ObjectClass *oc, void *data)
->> +{
->> +    DeviceClass *dc =3D DEVICE_CLASS(oc);
->> +
->> +    dc->hotpluggable =3D false;
->> +}
->=20
-> Why is our default "hotpluggable" rather than "not hotpluggable" ?
-> We must have way more non-hotpluggable devices than hotpluggable
-> ones, and it takes active effort to make a hotpluggable device
-> model, so it seems like it would be much less bug-prone to
-> require hotpluggable devices to set dc->hotpluggable true
-> rather than all the non-hotpluggable ones to set it false...
+On 22 August 2017 at 16:26, Thomas Huth <thuth@redhat.com> wrote:
+> On 22.08.2017 17:12, Peter Maydell wrote:
+>> Why is our default "hotpluggable" rather than "not hotpluggable" ?
+>> We must have way more non-hotpluggable devices than hotpluggable
+>> ones, and it takes active effort to make a hotpluggable device
+>> model, so it seems like it would be much less bug-prone to
+>> require hotpluggable devices to set dc->hotpluggable true
+>> rather than all the non-hotpluggable ones to set it false...
+>
+> I think most devices are already non-hotpluggable automatically because
+> they sit on a bus that is not hot-pluggable (e.g. sysbus devices). The
+> problematic ones are the devices with .parent = TYPE_DEVICE. And for
+> these, I think it is quite hard to say whether they should be
+> hot-pluggable by default or not?
 
-I think most devices are already non-hotpluggable automatically because
-they sit on a bus that is not hot-pluggable (e.g. sysbus devices). The
-problematic ones are the devices with .parent =3D TYPE_DEVICE. And for
-these, I think it is quite hard to say whether they should be
-hot-pluggable by default or not?
-Anyway, according to my tests (I'm currently working on a test that
-automatically does device_add + device_del for all devices, as you might
-have guessed already), there are not that many devices that cause
-problems here, so I guess marking some few with hotpluggable =3D false
-should be OK?
+To implement hotplug you need to write extra code (notably some
+kind of unrealize method to undo whatever you did in realize),
+at which point also setting the hotpluggable flag is trivial.
 
- Thomas
+> Anyway, according to my tests (I'm currently working on a test that
+> automatically does device_add + device_del for all devices, as you might
+> have guessed already), there are not that many devices that cause
+> problems here, so I guess marking some few with hotpluggable = false
+> should be OK?
+
+The problem is not the devices we have today but the ones we're
+going to write tomorrow. Having hotpluggable default to false
+"fails safe" -- the worst that happens is that somebody writing
+a hotpluggable device finds in their testing that they need to
+set the flag to make it work. Having it default to true fails
+non-safely -- as you've found, people writing devices that
+were never expected to be hotplugged don't try to test the
+error case of attempting hotplug anyway, and in code review
+the absence of a line of code is very hard to reliably spot,
+so we get devices in tree that crash QEMU if you try to
+hotplug them. If we make the default be not-hotpluggable
+we fix this not just today but forever.
+
+thanks
+-- PMM

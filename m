@@ -1,87 +1,81 @@
-Received: by 10.223.188.70 with SMTP id a6csp1118785wrh;
-        Wed, 23 Aug 2017 12:26:39 -0700 (PDT)
-X-Received: by 10.55.99.215 with SMTP id x206mr5373908qkb.334.1503516399603;
-        Wed, 23 Aug 2017 12:26:39 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1503516399; cv=none;
+Received: by 10.223.188.70 with SMTP id a6csp1438141wrh;
+        Wed, 23 Aug 2017 18:09:46 -0700 (PDT)
+X-Received: by 10.55.170.195 with SMTP id t186mr6058103qke.201.1503536986309;
+        Wed, 23 Aug 2017 18:09:46 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1503536986; cv=none;
         d=google.com; s=arc-20160816;
-        b=jB/3IRdQyqMLJX2ibmdMoAlHPs3e0bEogmJQzAi496pp5+eB5f/ZkiOYJ8VoW9ay3y
-         n3IbC7+y1/6+uuJr562h8vcOqWfIstMkofFni1gnPyuMphqlZwhZ9XcfzP4HjUrof4+E
-         ZuU+y6kwRgzN/VcIj/7TEGk6cR92p2FH+VbjOf41q6xCn/O8WQ9Ii5/KhXEYJwzdMpT9
-         TsLKEzgpDdKqbYp8koy0t8PI0yFb/y2Kp15Fmat5kTDtvD+49IsXelHnNxVN1PqDTB5R
-         9NESMrql/ekTOy1K50kcEsxtSKTpRmHPtZBubKT3bMfrsDrr/BJRpQvZ8qJxwQDpeUZM
-         Oayg==
+        b=cak186eOl2fp96399uDq7Z9d9Hh9W6r6HUXRPaOaRUblmQ7QNRJcNosqqt99Pi1Uc2
+         apOwBkk3VM/7Bx9RaPptLpMNHAFTurG8bkZXneJDi18xLB+NxXia9lWNXpdnZMjLWs+o
+         jErMEcMEOy3+dp5HheMTJ6Bqe2alxln/Mou34LGnyTVUpeOGi1IX88qS4vB3VSGAEawk
+         jHsrKxer0HBy54CbC68Y8VYfExuF6AKzFcwQCt+jiCZ1+T43u1NvhgoPULvq/f0BhsmV
+         bO2Z9EBQ/8LRqPYNgKdMhXBR+iq+t3WQkXnLfPme2rb+cmvAELpJDUvyTINoH7xbYa5S
+         pScg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:to
-         :arc-authentication-results;
-        bh=X73KQKwRm1PRHViQKyouROxAxawyieELpwjyicvr/Eg=;
-        b=VCfA9mmuqmjs44arfzkmq2/VBxWxYg3sqC/oqhT0TgjqYC5e3NX2zRBjtjy0L0Ei+s
-         wpYxrEBgN87/q2hGiQeXa4frTlnoP55HUHTl7DnFDevK3+9q1ZPtfbhfmtBjwj/3+BRc
-         T2Y1ZdmdkpZPYdI+uJmeXOb1Z7D9KNtSKDsOYfnfCP7OSpHV8SQFoAvRzyMYKCmyCs8f
-         dwQ8lEMHuRvE7OlgtcWc0o3l+mnoVAFWc1+qGREn4u1KUGBhd3enpyL4Oh1McAHvU+6t
-         ZewfEhyxoXhAqgC7SXSYC57o9036KFP7IrYELqHMj/a2xvFZjOERbNinJ7PtNGqiqdvB
-         g+3g==
+         :list-unsubscribe:list-id:precedence:subject:mime-version:message-id
+         :date:to:from:arc-authentication-results;
+        bh=x0MRMSK5LMp0DP+4By2xWah6Pq/tp8y1V2HbHjHZsOY=;
+        b=U3cZI3Sc3zR72RgffT4ynkoRvMWkvUtWm9JoeiMICWuEJm5+xEeZFPAGi0wwkjBPdx
+         bQ1nJEfVQP3F9hk0WkzfE4E8CoeR0zXICm4s4nSgF35+sDqXW4Y/vcF4j81JsHAfwFIx
+         KLEGHlgb/IiggmLJ/lMBABVo/JKN+X4KqqeqppA1Rn2qAkJDhrUkxUxhIvzinkBDNVbV
+         5JtF+2uuEPKKBGnk5AjvN8se0ZlnI9evU6UbC0cgXhEO0zm14dv/Qbg3wUHwMJU5ilq7
+         YZ4atjE3uiKrv5PS4IvDzYlZFD+vVxvMmizhxBnm52A3eLoHj8euqLgR0PL+p45biXXG
+         ka6Q==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id w28si2022137qtw.517.2017.08.23.12.26.39
+        by mx.google.com with ESMTPS id 7si2722275qkh.134.2017.08.23.18.09.45
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 23 Aug 2017 12:26:39 -0700 (PDT)
+        Wed, 23 Aug 2017 18:09:46 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:45384 helo=lists.gnu.org)
+Received: from localhost ([::1]:46250 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1dkbIT-0003TW-AU
-	for alex.bennee@linaro.org; Wed, 23 Aug 2017 15:26:37 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:60252)
+	id 1dkgeV-0002qZ-UF
+	for alex.bennee@linaro.org; Wed, 23 Aug 2017 21:09:43 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:39536)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <frederic.konrad@adacore.com>) id 1dkbIL-0003SC-QW
-	for qemu-arm@nongnu.org; Wed, 23 Aug 2017 15:26:30 -0400
+	(envelope-from <wanghaibin.wang@huawei.com>) id 1dkSoh-0008A0-4G
+	for qemu-arm@nongnu.org; Wed, 23 Aug 2017 06:23:20 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <frederic.konrad@adacore.com>) id 1dkbII-0002Lh-Kr
-	for qemu-arm@nongnu.org; Wed, 23 Aug 2017 15:26:29 -0400
-Received: from mel.act-europe.fr ([194.98.77.210]:44199
-	helo=smtp.eu.adacore.com)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <frederic.konrad@adacore.com>)
-	id 1dkbII-0002LN-Dk; Wed, 23 Aug 2017 15:26:26 -0400
-Received: from localhost (localhost [127.0.0.1])
-	by filtered-smtp.eu.adacore.com (Postfix) with ESMTP id 9675A82439;
-	Wed, 23 Aug 2017 21:26:25 +0200 (CEST)
-X-Virus-Scanned: Debian amavisd-new at eu.adacore.com
-Received: from smtp.eu.adacore.com ([127.0.0.1])
-	by localhost (smtp.eu.adacore.com [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id uKLUyB8BwMyu; Wed, 23 Aug 2017 21:26:25 +0200 (CEST)
-Received: from localhost.localdomain (182667ea.cst.lightpath.net
-	[24.38.103.234])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
-	(No client certificate requested)
-	by smtp.eu.adacore.com (Postfix) with ESMTPSA id 4093A8137A;
-	Wed, 23 Aug 2017 21:26:24 +0200 (CEST)
-To: Thomas Huth <thuth@redhat.com>
-References: <1503414375-21009-1-git-send-email-thuth@redhat.com>
-	<27da1dae-1e2f-559a-d8f0-c7e15289363e@adacore.com>
-	<d5be8092-dc56-14aa-b950-d82e7f959ec1@redhat.com>
-From: KONRAD Frederic <frederic.konrad@adacore.com>
-Message-ID: <ee875a77-c10e-cb36-6932-2dc60bf08365@adacore.com>
-Date: Wed, 23 Aug 2017 21:26:23 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.2.1
+	(envelope-from <wanghaibin.wang@huawei.com>) id 1dkSoc-0007cT-Bl
+	for qemu-arm@nongnu.org; Wed, 23 Aug 2017 06:23:19 -0400
+Received: from szxga04-in.huawei.com ([45.249.212.190]:2297)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_ARCFOUR_SHA1:16) (Exim 4.71)
+	(envelope-from <wanghaibin.wang@huawei.com>) id 1dkSob-0007ay-OO
+	for qemu-arm@nongnu.org; Wed, 23 Aug 2017 06:23:14 -0400
+Received: from 172.30.72.59 (EHLO DGGEMS405-HUB.china.huawei.com)
+	([172.30.72.59])
+	by dggrg04-dlp.huawei.com (MOS 4.4.6-GA FastPath queued)
+	with ESMTP id DFS41564; Wed, 23 Aug 2017 18:23:02 +0800 (CST)
+Received: from localhost (10.177.27.144) by DGGEMS405-HUB.china.huawei.com
+	(10.3.19.205) with Microsoft SMTP Server id 14.3.301.0; Wed, 23 Aug 2017
+	18:22:55 +0800
+From: wanghaibin <wanghaibin.wang@huawei.com>
+To: <qemu-arm@nongnu.org>, <peter.maydell@linaro.org>, <cdall@linaro.org>,
+	<marc.zyngier@arm.com>
+Date: Wed, 23 Aug 2017 18:22:33 +0800
+Message-ID: <1503483753-12384-1-git-send-email-wanghaibin.wang@huawei.com>
+X-Mailer: git-send-email 2.7.2.windows.1
 MIME-Version: 1.0
-In-Reply-To: <d5be8092-dc56-14aa-b950-d82e7f959ec1@redhat.com>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
-X-Received-From: 194.98.77.210
-Subject: Re: [Qemu-arm] [PATCH] hw/misc/auxbus.c: Mark the aux-to-i2c-bridge
- device as non-hotpluggable
+Content-Type: text/plain
+X-Originating-IP: [10.177.27.144]
+X-CFilter-Loop: Reflected
+X-Mirapoint-Virus-RAPID-Raw: score=unknown(0),
+	refid=str=0001.0A090204.599D5787.00EB, ss=1, re=0.000, recu=0.000,
+	reip=0.000, cl=1, cld=1, fgs=0, ip=0.0.0.0,
+	so=2014-11-16 11:51:01, dmn=2013-03-21 17:37:32
+X-Mirapoint-Loop-Id: 58dfff39be03c63925f8a226ad986ecc
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
+	[fuzzy]
+X-Received-From: 45.249.212.190
+X-Mailman-Approved-At: Wed, 23 Aug 2017 21:09:13 -0400
+Subject: [Qemu-arm] [RFC PATCH] hw/intc/arm_gic_kvm.c: access the
+ implemented APRn
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -93,41 +87,141 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-trivial@nongnu.org,
-	qemu-devel@nongnu.org, Alistair Francis <alistair.francis@xilinx.com>,
-	qemu-arm@nongnu.org
+Cc: wanghaibin <wanghaibin.wang@huawei.com>, wu.wubin@huawei.com,
+	zhaoshenglong@huawei.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: QUafPbFZzGr/
+X-TUID: QqtZE4DuQYNC
+
+Whether the APRn is implemented depends on how many priority
+bits support. Compared with GICv3, There is no way to retrieve
+this information directly from the register, so GICD_IPRIORITYR
+access method is used here according to the SPEC:
+To determine the number of priority bits implemented for SPIs,
+software can write 0xFF to a writable
+GICD_IPRIORITYR<n> priority field and read back the value stored.
+
+Signed-off-by: wanghaibin <wanghaibin.wang@huawei.com>
+---
+ hw/intc/arm_gic_kvm.c | 56 ++++++++++++++++++++++++++++++++++++++++++---------
+ 1 file changed, 47 insertions(+), 9 deletions(-)
+
+diff --git a/hw/intc/arm_gic_kvm.c b/hw/intc/arm_gic_kvm.c
+index ae095d0..a2f3139 100644
+--- a/hw/intc/arm_gic_kvm.c
++++ b/hw/intc/arm_gic_kvm.c
+@@ -290,13 +290,30 @@ static void kvm_dist_put(GICState *s, uint32_t offset, int width,
+     }
+ }
+ 
++static int kvm_arm_gic_get_pri_bits(GICState *s)
++{
++    uint32_t reg = 0xff;
++
++    /* 
++     * To determine the number of priority bits implemented, Just wirte the 0xff to 
++     * the first SPI(32) GICD_IPRIORITYR priority field and read back the value 
++     * stored. 
++     * Note: Assume that implementations support the same number of priority 
++     * bits for each PE
++     */
++    kvm_gicd_access(s, 0x400 + 0x20, 0, &reg, true);
++    kvm_gicd_access(s, 0x400 + 0x20, 0, &reg, false);
++
++    return 8 - ctz32(reg);
++}
++
+ static void kvm_arm_gic_put(GICState *s)
+ {
+     uint32_t reg;
+-    int i;
+     int cpu;
+     int num_cpu;
+     int num_irq;
++    int num_pri_bits;
+ 
+     /* Note: We do the restore in a slightly different order than the save
+      * (where the order doesn't matter and is simply ordered according to the
+@@ -326,6 +343,8 @@ static void kvm_arm_gic_put(GICState *s)
+             abort();
+     }
+ 
++    num_pri_bits = kvm_arm_gic_get_pri_bits(s);
++
+     /* TODO: Consider checking compatibility with the IIDR ? */
+ 
+     /* irq_state[n].enabled -> GICD_ISENABLERn */
+@@ -353,7 +372,6 @@ static void kvm_arm_gic_put(GICState *s)
+     kvm_dist_put(s, 0x380, 1, s->num_irq, translate_clear);
+     kvm_dist_put(s, 0x300, 1, s->num_irq, translate_active);
+ 
+-
+     /* s->priorityX[irq] -> ICD_IPRIORITYRn */
+     kvm_dist_put(s, 0x400, 8, s->num_irq, translate_priority);
+ 
+@@ -384,9 +402,18 @@ static void kvm_arm_gic_put(GICState *s)
+         kvm_gicc_access(s, 0x1c, cpu, &reg, true);
+ 
+         /* s->apr[n][cpu] -> GICC_APRn */
+-        for (i = 0; i < 4; i++) {
+-            reg = s->apr[i][cpu];
+-            kvm_gicc_access(s, 0xd0 + i * 4, cpu, &reg, true);
++        switch (num_pri_bits) {
++        case 7:
++            reg = s->apr[3][cpu];
++            kvm_gicc_access(s, 0xd0 + 3 * 4, cpu, &reg, true);
++            reg = s->apr[2][cpu];
++            kvm_gicc_access(s, 0xd0 + 2 * 4, cpu, &reg, true);
++        case 6:
++            reg = s->apr[1][cpu];
++            kvm_gicc_access(s, 0xd0 + 1 * 4, cpu, &reg, true);
++        default:
++            reg = s->apr[0][cpu];
++            kvm_gicc_access(s, 0xd0, cpu, &reg, true);
+         }
+     }
+ }
+@@ -396,6 +423,7 @@ static void kvm_arm_gic_get(GICState *s)
+     uint32_t reg;
+     int i;
+     int cpu;
++    int num_pri_bits;
+ 
+     /*****************************************************************
+      * Distributor State
+@@ -448,6 +476,7 @@ static void kvm_arm_gic_get(GICState *s)
+     /* GICD_CPENDSGIRn -> s->sgi_pending */
+     kvm_dist_get(s, 0xf10, 8, GIC_NR_SGIS, translate_sgisource);
+ 
++    num_pri_bits = kvm_arm_gic_get_pri_bits(s);
+ 
+     /*****************************************************************
+      * CPU Interface(s) State
+@@ -470,10 +499,19 @@ static void kvm_arm_gic_get(GICState *s)
+         kvm_gicc_access(s, 0x1c, cpu, &reg, false);
+         s->abpr[cpu] = (reg & 0x7);
+ 
+-        /* GICC_APRn -> s->apr[n][cpu] */
+-        for (i = 0; i < 4; i++) {
+-            kvm_gicc_access(s, 0xd0 + i * 4, cpu, &reg, false);
+-            s->apr[i][cpu] = reg;
++        /* s->apr[n][cpu] -> GICC_APRn */
++        switch (num_pri_bits) {
++        case 7:
++            kvm_gicc_access(s, 0xd0 + 3 * 4, cpu, &reg, false);
++            s->apr[3][cpu] = reg;
++            kvm_gicc_access(s, 0xd0 + 2 * 4, cpu, &reg, false);
++            s->apr[2][cpu] = reg;
++        case 6:
++            kvm_gicc_access(s, 0xd0 + 1 * 4, cpu, &reg, false);
++            s->apr[1][cpu] = reg;
++        default:
++            kvm_gicc_access(s, 0xd0, cpu, &reg, false);
++            s->apr[0][cpu] = reg;
+         }
+     }
+ }
+-- 
+1.8.3.1
 
 
-
-On 08/23/2017 07:22 AM, Thomas Huth wrote:
-> On 22.08.2017 20:15, KONRAD Frederic wrote:
->> Hi Thomas,
->>
->> Looking to this seems there is a second issue:
->> The aux-to-i2c-bridge device should connect on a TYPE_AUX_BUS.
->>
->> I don't think there isn't any on integratorcp..
->>
->> Anyway the patch you sent fix this issue indirectly and as far as
->> I remember I wasn't able to make this I2C bridge an
->> TYPE_AUX_DEVICE as it's a special device and it is internal (only
->> instantiated at the bus creation).
-> 
-> If it is intended to be completely internal only (i.e. also not for use
-> with the "-device" parameter), then it should even be marked with
-> "user_creatable = false"! ... if you got some spare minutes, could you
-> maybe sent a patch for that? I'm not familiar with that code, so I'm
-> always having trouble to give the reasoning for setting a
-> "user_creatable = false" somewhere...
-> 
->   Thanks,
->    Thomas
-> 
-
-Ok will do!
-
-Thanks,
-Fred

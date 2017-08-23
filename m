@@ -1,262 +1,163 @@
-Received: by 10.28.173.206 with SMTP id w197csp29425wme;
-        Fri, 12 Jan 2018 15:56:33 -0800 (PST)
-X-Google-Smtp-Source: ACJfBou/Tbos0+IDhXJ+JDQ7d6eomx3+gEzPiJgZ4jqd3r1QUWc6PXt57WNN6DCLaAlxrTtWkQF2
-X-Received: by 10.129.85.3 with SMTP id j3mr17437693ywb.351.1515801393373;
-        Fri, 12 Jan 2018 15:56:33 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1515801393; cv=none;
+Received: by 10.223.188.70 with SMTP id a6csp984238wrh;
+        Wed, 23 Aug 2017 10:21:31 -0700 (PDT)
+X-Received: by 10.200.11.76 with SMTP id m12mr4400815qti.235.1503508891733;
+        Wed, 23 Aug 2017 10:21:31 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1503508891; cv=none;
         d=google.com; s=arc-20160816;
-        b=OkS66tywrm4VvEyamn+YlyFeb9h+0mqGCZlU5BvgFNM2pq4AhPOsdpFevHC/bepsye
-         tvvImh86YSlo1q3/v+ODoBnlbw0kR4EpRQAj3yzixL/Hd0d2w8KzENW9uby1FKkxw6kj
-         4fy8U9SFrN+7AO37wnwAZd6CXcjq+SGuzADhFlEiY8E89Ks8V/2OAYJGr2D9m9VM9bLK
-         KmnXsQchp05ySz9R8+tohiVRtrZL37yMSCAgvbg6CVOXroSEL1HJhqmJYPBKsrcpAs7q
-         MYX3qfdktV+sYwDuTTBnEQBfoMJ4Lc4eIGIOn20mnAwclyQfh5EHAjrm3cman7uVOT+U
-         /JBA==
+        b=mDr+mQS3ldV3YhxGRfd3VSYVTZcZyFA5yqkoouxEaQTIoBmj0HxlwakP8gG1wz3sHw
+         rkXtWH7U8NeOur0T+gEWUUqxGoBlXB3e8oNYTazessRZffTJ/gaV6OfwX/gb9mTx6eZ7
+         /tKbQfkQJ2T6NQwni7aLfmmxreyepOg7bRTSuFDpw35K1cQV+fQPwyFNQo6xXATCuGAf
+         MWkp34OuNWfi0EO4OFQ4/WjjFQwL5i39NHjSmZbJ4V0yRmohHyQ8JwwwoRTtbk7uepN/
+         82PHqS9p1BdjkVwchpr4IXMF/awrqNVauUqp+v+Qh1oWzruOTkYtRqezVyU21PV9q49s
+         mmwA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:to:message-id:date:from:references
-         :in-reply-to:mime-version:dkim-signature:arc-authentication-results;
-        bh=5z+O5MkXxY3uwA6T31XFygpa1LbmcKUXa2Dk9w22PwM=;
-        b=h9BDgbcDzrEPfXj/0y0iTFuF2kIdlK5PCj9zFdajoGcWx+1WFCRMQbfvCQ+lbRH7hD
-         932QXlzu23gmm7rSez2I4uXyJ6wWg6tz7G2qqzKVp0kZP546zTmSuVj8wxRtYc/e0eog
-         kmhsmMkZz2eQqpmbWpizxpmJKHPCHSjmIXIOFIG33kuT7rOMj5pL/NwO90aD/9+zx4Ky
-         lOl9zT+9VhCIxiKW5p5PiTE157X/qLRmHkQm589NVXEstEVzoCJIYuTHVvwISCpSm4r9
-         BcMVGxJkax4NcCkzcJXeyzypOuzKMvFN9l8SHPXvKt5/L/Y7/vklmIhHHO51K+AMyTcS
-         iXiQ==
+         :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
+         :content-disposition:mime-version:references:message-id:to:from:date
+         :dmarc-filter:arc-authentication-results;
+        bh=imFfqKZV/0pagWNqQ64Ju63E8Toc7rTTjQd4nTSoWKU=;
+        b=RhgXil/eXygxr6XZ7vj5YVMrX52iWqKt20CJtOWPMpprApu2zRU/i55DcHJPYTfcYP
+         suAhIdjFnpKQ6MBXJ9fHpF+8IucHNMGdpaBHlrrQt4p0wrohyb+vbw03O0lVnCBq+tRe
+         uM7bIDiTfqaqCCrL/+jL7QnWPYkKrRBxZwMUrikQQ+69MNCg8kCHCjZ6NfNJ2H0LsnaA
+         TsEJZUzJ2lNos7tqeHhrFuF9dRCd5me7NYIKmLdJ92HJr18jFgeskMc5c75ZkcoKyQXO
+         U7MEjJlCYs3lpaD5ipJni/Tc9ICL3YoYS1MQpCryW49fBNvRhYEIz1VwmwOTz8eazitj
+         VHmw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Y0lHzjcU;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id s189si2616975ywc.720.2018.01.12.15.56.33
+        by mx.google.com with ESMTPS id t54si1877518qtj.30.2017.08.23.10.21.31
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 12 Jan 2018 15:56:33 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Wed, 23 Aug 2017 10:21:31 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Y0lHzjcU;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:49075 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:44931 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ea9BY-0005d3-St
-	for alex.bennee@linaro.org; Fri, 12 Jan 2018 18:56:32 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:52734)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1dkZLN-0003IG-F1
+	for alex.bennee@linaro.org; Wed, 23 Aug 2017 13:21:29 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:59973)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alistair23@gmail.com>) id 1ea9BK-0005ch-3M
-	for qemu-devel@nongnu.org; Fri, 12 Jan 2018 18:56:19 -0500
+	(envelope-from <ehabkost@redhat.com>) id 1dkZLK-0003Hn-LP
+	for qemu-arm@nongnu.org; Wed, 23 Aug 2017 13:21:27 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <alistair23@gmail.com>) id 1ea9BJ-0005GV-18
-	for qemu-devel@nongnu.org; Fri, 12 Jan 2018 18:56:18 -0500
-Received: from mail-wr0-x241.google.com ([2a00:1450:400c:c0c::241]:35582)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <alistair23@gmail.com>)
-	id 1ea9BI-0005EV-N8; Fri, 12 Jan 2018 18:56:16 -0500
-Received: by mail-wr0-x241.google.com with SMTP id g38so3480194wrd.2;
-	Fri, 12 Jan 2018 15:56:16 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=mime-version:sender:in-reply-to:references:from:date:message-id
-	:subject:to:cc:content-transfer-encoding;
-	bh=5z+O5MkXxY3uwA6T31XFygpa1LbmcKUXa2Dk9w22PwM=;
-	b=Y0lHzjcUzsPREl9DPPYjYJNkBzrsFAb+wgauiB60XC2/Uu0ZDsCxcHMwXDcgrdkKTp
-	hacBw9xKwj7zcEs/W3Ja8frwXjzVd1N2VNTrrFe+TOQpMANJdPfVrmIn9XFR5y2VLsK/
-	RPBHV+xyc33iLfES2cFSRzlpjcMXdKNlAbwVrIb+1EC6JPeFiwZqWlqkktEf0ZENwo5N
-	t3htUw/yzbaOQurb+LQWKJGyxJVopx227QJQO5ahXh59TUKBy5wDEiaD0yMrjyB30nYX
-	Cr3uv9fX1sz/UdVWXVQbxtbK4ZeS/o9Qge8FTebMM5Lqu91C+zQeb2NeSBTrrWt26QCt
-	77Pg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:sender:in-reply-to:references:from
-	:date:message-id:subject:to:cc:content-transfer-encoding;
-	bh=5z+O5MkXxY3uwA6T31XFygpa1LbmcKUXa2Dk9w22PwM=;
-	b=Vjtlztggy8YhuvY0/wKCUws6Bn62TOh8NH6yQpDEO8fZaRI3rgk3CzFJz199VxOmAw
-	0vW+F1QrDe4W08KWUgDN/NDrg6JPhsetQK91u03EY3RT+vqowNnKxlzxuhHRAXG5D/r7
-	NzJQlLTpcSFqeqXAnErjguOmYUz2Nb1ZbsPHrgijucqeSKoBwawMbi+smxgQPb5ubMpW
-	ej4rPTENR0B3Sfjx8cQtDPCqWcOdPeybZj0cW+W1Cc5OB7OmjfoafxPfqw5P8rbmOEDL
-	03YD6i4/bHfY3cyBn1PBG0bnMp/p9ZwYmDd1/935LOeejJdq5dGChXFiIUIANbyRqXoa
-	N/rg==
-X-Gm-Message-State: AKwxytdEfKp3BBWr7H1tYHssjjJSIEhJ4NSD67URi9idOCihRU2IfKoD
-	W/hbmZt35d35hAoArIrXXV8Og8igXa3rjdGNVvg=
-X-Received: by 10.223.196.147 with SMTP id m19mr14581647wrf.56.1515801375426; 
-	Fri, 12 Jan 2018 15:56:15 -0800 (PST)
+	(envelope-from <ehabkost@redhat.com>) id 1dkZLF-00008p-Mu
+	for qemu-arm@nongnu.org; Wed, 23 Aug 2017 13:21:26 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:57642)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <ehabkost@redhat.com>)
+	id 1dkZLF-000089-GD; Wed, 23 Aug 2017 13:21:21 -0400
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
+	[10.5.11.11])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 7D91E806C0;
+	Wed, 23 Aug 2017 17:21:20 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 7D91E806C0
+Authentication-Results: ext-mx02.extmail.prod.ext.phx2.redhat.com;
+	dmarc=none (p=none dis=none) header.from=redhat.com
+Authentication-Results: ext-mx02.extmail.prod.ext.phx2.redhat.com;
+	spf=fail smtp.mailfrom=ehabkost@redhat.com
+Received: from localhost (ovpn-116-4.gru2.redhat.com [10.97.116.4])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 56E558260F;
+	Wed, 23 Aug 2017 17:21:19 +0000 (UTC)
+Date: Wed, 23 Aug 2017 14:21:18 -0300
+From: Eduardo Habkost <ehabkost@redhat.com>
+To: Thomas Huth <thuth@redhat.com>
+Message-ID: <20170823172118.GQ19998@localhost.localdomain>
+References: <1503416789-32080-1-git-send-email-thuth@redhat.com>
 MIME-Version: 1.0
-Received: by 10.28.164.69 with HTTP; Fri, 12 Jan 2018 15:55:44 -0800 (PST)
-In-Reply-To: <20180111205626.23291-5-f4bug@amsat.org>
-References: <20180111205626.23291-1-f4bug@amsat.org>
-	<20180111205626.23291-5-f4bug@amsat.org>
-From: Alistair Francis <alistair.francis@xilinx.com>
-Date: Fri, 12 Jan 2018 15:55:44 -0800
-X-Google-Sender-Auth: BTUp0tbMBEtivtVrWEt6iVB95nE
-Message-ID: <CAKmqyKOgVniY+v=GDkcmGD-e9BgasuD36wyKHKtMccJMC9+Ffg@mail.gmail.com>
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2a00:1450:400c:c0c::241
-Subject: Re: [Qemu-devel] [PATCH v6 04/21] sdhci: add clock capabilities
- (Spec v1)
-X-BeenThere: qemu-devel@nongnu.org
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <1503416789-32080-1-git-send-email-thuth@redhat.com>
+X-Fnord: you can see the fnord
+User-Agent: Mutt/1.8.0 (2017-02-23)
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.26]);
+	Wed, 23 Aug 2017 17:21:20 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-arm] [PATCH] hw/arm/allwinner-a10: Mark the allwinner-a10
+ device with user_creatable = false
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: "Edgar E . Iglesias" <edgar.iglesias@xilinx.com>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	Prasad J Pandit <pjp@fedoraproject.org>,
-	=?UTF-8?Q?Gr=C3=A9gory_Estrade?= <gregory.estrade@gmail.com>,
-	Andrey Smirnov <andrew.smirnov@gmail.com>,
-	Peter Crosthwaite <crosthwaite.peter@gmail.com>,
-	"qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
-	Krzysztof Kozlowski <krzk@kernel.org>,
-	Alistair Francis <alistair.francis@xilinx.com>,
-	Sai Pavan Boddu <saipava@xilinx.com>,
-	Igor Mitsyanko <i.mitsyanko@gmail.com>, qemu-arm <qemu-arm@nongnu.org>,
-	Clement Deschamps <clement.deschamps@antfield.fr>,
-	Andrew Baumann <Andrew.Baumann@microsoft.com>,
-	Jean-Christophe Dubois <jcd@tribudubois.net>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 8io2Q7Nr9HtZ
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Beniamino Galvani <b.galvani@gmail.com>,
+	Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: biO2CN0eO3o5
 
-On Thu, Jan 11, 2018 at 12:56 PM, Philippe Mathieu-Daud=C3=A9
-<f4bug@amsat.org> wrote:
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+On Tue, Aug 22, 2017 at 05:46:29PM +0200, Thomas Huth wrote:
+> QEMU currently exits unexpectedly when the user accidentially
+> tries to do something like this:
+> 
+> $ aarch64-softmmu/qemu-system-aarch64 -S -M integratorcp -nographic
+> QEMU 2.9.93 monitor - type 'help' for more information
+> (qemu) device_add allwinner-a10
+> Unsupported NIC model: smc91c111
+> 
+> Exiting just due to a "device_add" should not happen. Looking closer
+> at the the realize and instance_init function of this device also
+> reveals that it is using serial_hds and nd_table directly there, so
+> this device is clearly not creatable by the user and should be marked
+> accordingly.
+> 
+> Signed-off-by: Thomas Huth <thuth@redhat.com>
 > ---
->  include/hw/sd/sdhci.h |  2 ++
->  hw/sd/sdhci.c         | 53 ++++++++++++++++++++++++++++++++-------------=
-------
->  2 files changed, 35 insertions(+), 20 deletions(-)
->
-> diff --git a/include/hw/sd/sdhci.h b/include/hw/sd/sdhci.h
-> index b61953f7c5..b5b4e411ff 100644
-> --- a/include/hw/sd/sdhci.h
-> +++ b/include/hw/sd/sdhci.h
-> @@ -93,6 +93,8 @@ typedef struct SDHCIState {
->      bool pending_insert_quirk; /* Quirk for Raspberry Pi card insert int=
- */
->      uint8_t spec_version;
->      struct {
-> +        uint8_t timeout_clk_freq, base_clk_freq_mhz;
-> +        bool timeout_clk_in_mhz;
->          uint16_t max_blk_len;
->          bool suspend;
->          bool high_speed;
-> diff --git a/hw/sd/sdhci.c b/hw/sd/sdhci.c
-> index 54c1411d19..4c1fcf2c32 100644
-> --- a/hw/sd/sdhci.c
-> +++ b/hw/sd/sdhci.c
-> @@ -46,36 +46,32 @@
->  #define SDHC_CAPAB_64BITBUS       0ul        /* 64-bit System Bus Suppor=
-t */
->  #define SDHC_CAPAB_ADMA1          1ul        /* ADMA1 support */
->  #define SDHC_CAPAB_ADMA2          1ul        /* ADMA2 support */
-> -/* Maximum clock frequency for SDclock in MHz
-> - * value in range 10-63 MHz, 0 - not defined */
-> -#define SDHC_CAPAB_BASECLKFREQ    52ul
-> -#define SDHC_CAPAB_TOUNIT         1ul  /* Timeout clock unit 0 - kHz, 1 =
-- MHz */
-> -/* Timeout clock frequency 1-63, 0 - not defined */
-> -#define SDHC_CAPAB_TOCLKFREQ      52ul
->
->  /* Now check all parameters and calculate CAPABILITIES REGISTER value */
-> -#if SDHC_CAPAB_64BITBUS > 1 || SDHC_CAPAB_ADMA2 > 1 || SDHC_CAPAB_ADMA1 =
-> 1 || \
-> -    SDHC_CAPAB_TOUNIT > 1
-> +#if SDHC_CAPAB_64BITBUS > 1 || SDHC_CAPAB_ADMA2 > 1 || SDHC_CAPAB_ADMA1 =
-> 1
->  #error Capabilities features can have value 0 or 1 only!
->  #endif
->
-> -#if (SDHC_CAPAB_BASECLKFREQ > 0 && SDHC_CAPAB_BASECLKFREQ < 10) || \
-> -    SDHC_CAPAB_BASECLKFREQ > 63
-> -#error SDclock frequency can have value in range 0, 10-63 only!
-> -#endif
-> -
-> -#if SDHC_CAPAB_TOCLKFREQ > 63
-> -#error Timeout clock frequency can have value in range 0-63 only!
-> -#endif
-> -
->  #define SDHC_CAPAB_REG_DEFAULT                                 \
->     ((SDHC_CAPAB_64BITBUS << 28) | (SDHC_CAPAB_ADMA1 << 20) |   \
-> -    (SDHC_CAPAB_ADMA2 << 19) |                                 \
-> -    (SDHC_CAPAB_BASECLKFREQ << 8) | (SDHC_CAPAB_TOUNIT << 7) | \
-> -    (SDHC_CAPAB_TOCLKFREQ))
-> +    (SDHC_CAPAB_ADMA2 << 19))
->
->  #define MASKED_WRITE(reg, mask, val)  (reg =3D (reg & (mask)) | (val))
->
-> +static void sdhci_check_capab_freq_range(SDHCIState *s, const char *desc=
-,
-> +                                         uint8_t freq, Error **errp)
-> +{
-> +    switch (freq) {
-> +    case 0:
-> +    case 10 ... 63:
-> +        break;
-> +    default:
-> +        error_setg(errp, "SD %s clock frequency can have value"
-> +                   "in range 0-63 only", desc);
-> +        return;
-> +    }
-> +}
-> +
->  static void sdhci_init_capareg(SDHCIState *s, Error **errp)
->  {
->      uint64_t capareg =3D 0;
-> @@ -86,6 +82,16 @@ static void sdhci_init_capareg(SDHCIState *s, Error **=
-errp)
->
->      /* fallback */
->      case 1:
-> +        sdhci_check_capab_freq_range(s, "Timeout", s->cap.timeout_clk_fr=
-eq,
-> +                                     errp);
-> +        capareg =3D FIELD_DP64(capareg, SDHC_CAPAB, TOCLKFREQ,
-> +                             s->cap.timeout_clk_freq);
-> +        sdhci_check_capab_freq_range(s, "Base", s->cap.base_clk_freq_mhz=
-, errp);
-> +        capareg =3D FIELD_DP64(capareg, SDHC_CAPAB, BASECLKFREQ,
-> +                             s->cap.base_clk_freq_mhz);
-> +        capareg =3D FIELD_DP64(capareg, SDHC_CAPAB, TOUNIT,
-> +                             s->cap.timeout_clk_in_mhz);
-> +
->          val =3D ctz32(s->cap.max_blk_len >> 9);
->          if (val >=3D 0b11) {
->              error_setg(errp, "block size can be 512, 1024 or 2048 only")=
-;
-> @@ -1299,6 +1305,13 @@ const VMStateDescription sdhci_vmstate =3D {
->  static Property sdhci_properties[] =3D {
->      DEFINE_PROP_UINT8("sd-spec-version", SDHCIState, spec_version, 2),
->
-> +    /* Timeout clock frequency 1-63, 0 - not defined */
-> +    DEFINE_PROP_UINT8("timeout-freq", SDHCIState, cap.timeout_clk_freq, =
-0),
-> +    /* Timeout clock unit 0 - kHz, 1 - MHz */
-> +    DEFINE_PROP_BOOL("freq-in-mhz", SDHCIState, cap.timeout_clk_in_mhz, =
-true),
-> +    /* Maximum base clock frequency for SD clock in MHz (range 10-63 MHz=
-, 0) */
-> +    DEFINE_PROP_UINT8("max-frequency", SDHCIState, cap.base_clk_freq_mhz=
-, 0),
+>  hw/arm/allwinner-a10.c    | 2 ++
+>  scripts/device-crash-test | 1 -
+>  2 files changed, 2 insertions(+), 1 deletion(-)
+> 
+> diff --git a/hw/arm/allwinner-a10.c b/hw/arm/allwinner-a10.c
+> index f62a9a3..43a3f01 100644
+> --- a/hw/arm/allwinner-a10.c
+> +++ b/hw/arm/allwinner-a10.c
+> @@ -118,6 +118,8 @@ static void aw_a10_class_init(ObjectClass *oc, void *data)
+>      DeviceClass *dc = DEVICE_CLASS(oc);
+>  
+>      dc->realize = aw_a10_realize;
+> +    /* Reason: Uses serial_hds in realize and nd_table in instance_init */
+> +    dc->user_creatable = false;
 
-Haven't all the defaults changed? Needs to be mentioned in the commit
-message if that is on purpose.
+I assume this patch will be replaced by one changing TYPE_DEVICE
+to default to user_creatable=false, based on the replies to the
+hw/misc/auxbus.c patch?
 
-Alistair
 
-> +
->      /* Maximum host controller R/W buffers size
->       * Possible values: 512, 1024, 2048 bytes */
->      DEFINE_PROP_UINT16("max-block-length", SDHCIState, cap.max_blk_len, =
-512),
-> --
-> 2.15.1
->
->
+>  }
+>  
+>  static const TypeInfo aw_a10_type_info = {
+> diff --git a/scripts/device-crash-test b/scripts/device-crash-test
+> index 8eb2d02..74aee68 100755
+> --- a/scripts/device-crash-test
+> +++ b/scripts/device-crash-test
+> @@ -187,7 +187,6 @@ ERROR_WHITELIST = [
+>      {'log':r"Device [\w.,-]+ can not be dynamically instantiated"},
+>      {'log':r"Platform Bus: Can not fit MMIO region of size "},
+>      # other more specific errors we will ignore:
+> -    {'device':'allwinner-a10', 'log':"Unsupported NIC model:"},
+>      {'device':'.*-spapr-cpu-core', 'log':r"CPU core type should be"},
+>      {'log':r"MSI(-X)? is not supported by interrupt controller"},
+>      {'log':r"pxb-pcie? devices cannot reside on a PCIe? bus"},
+> -- 
+> 1.8.3.1
+> 
+
+-- 
+Eduardo

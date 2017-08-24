@@ -1,516 +1,331 @@
-Received: by 10.223.172.38 with SMTP id v35csp3592095wrc;
-        Mon, 18 Sep 2017 03:22:16 -0700 (PDT)
-X-Received: by 10.55.48.8 with SMTP id w8mr19750174qkw.139.1505730136723;
-        Mon, 18 Sep 2017 03:22:16 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1505730136; cv=none;
+Received: by 10.223.188.70 with SMTP id a6csp2063041wrh;
+        Thu, 24 Aug 2017 05:34:46 -0700 (PDT)
+X-Received: by 10.98.100.208 with SMTP id y199mr399986pfb.347.1503578085927;
+        Thu, 24 Aug 2017 05:34:45 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1503578085; cv=none;
         d=google.com; s=arc-20160816;
-        b=dwDUSXsMa5IPgLIfOGottBlReNzGOjkPbz899s/SJgrUJ+Y0IBQGrpSMNPpcP0Vlgx
-         Hr9lI9RlxolgowKvAQuMDHwn7LhqlFcsuU5HmmKRRh67jpVjEckYZ8xKpzizn2kF7l/5
-         c+qbIHM1U4xoT3DfNgdI1WrrNXNFNpApTOV+vOMJaiGQUpupZzBpF5WHj6gKbUvFKnm0
-         ZlDaRj8hmGX91AigvNDOV7lNx0w785kQ/NUd5tZWuSl4nK+HPA+V/jcM3/g6zyURf001
-         PGZRB8SD0zIM41GtyVOtQV/7uVOB30Y6q7c85z2UiMWP9FrpfSI6nR4kIb0xyrM6By2T
-         Tvkw==
+        b=zwS9UGg17cYL/YLUTH7qdGj91DWl3Y1aiPtUXSMaxayS9JB21jicJeW3j0AYVgKhAI
+         OYYVKAZOJ/I8855RpWHaG5el1DXV3VPVOdcfaynMZLN5KhMoyM2+bUbfMDey2MYvu6Bj
+         XTTuX1be01MEs6uAUKuezo6rb9MhauvU5QWPKSBWD8TcqoHbybZkwRDOgedMD9NWJjD0
+         YIwlD5Ky685SsGrWH+KiD9vTXpvV5ny1s1yF/xUPUr9bKOXEj9bf/o221tfXgPQb+tcs
+         40mqVoMPWqcHyB1WwyGR8UNuDeFOBglfpSUIRxxHn1XASVlMa2wpc1pZVYsg23TmubXd
+         xBTA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:to:message-id:date:from:references
-         :in-reply-to:mime-version:dkim-signature:arc-authentication-results;
-        bh=5Gzh2xHg4unIQLVBjxaEJElsvGyGpFCFWJeFbkxrUbI=;
-        b=vlWcAi36rD64yNgaOCZiFT3jbrGQvxOAmHIomAP4TeVtvwAdBVW/H6C+nrcjBPzHAF
-         63XuOd3MalviGaVo84LpPCirpU6ZaHMkkbSztW9PfCtpnE3EesNvFcODsrJ0cV1Ll73y
-         9Sr4UH+s43rlM0/jnsNFwe33o2wf4PK+oAHhtq2UFKLVOFva3yEoKdqzsPV9XC1qzqUB
-         yRPaoAvOn4NcuoGdIl4pbnN+awtf5kpIciLBj58FyJa8OPhL8bD0EOTPgRSiWd3HAtDc
-         0VULMkGXsJ29Jct5/I//jNiI3cS2hXBaWDsyNSYka2kxOx55ic6txIqwrz9nLBl0cDY/
-         YT7w==
+        h=list-id:precedence:sender:content-transfer-encoding:in-reply-to
+         :references:subject:cc:to:mime-version:user-agent:from:date
+         :message-id:arc-authentication-results;
+        bh=5jtKSQEH7VlO97pdBebVMGw1YeCcpgSXKtdJmaf4k9E=;
+        b=FlHFtJVCuo4Tby2bPujL4RN7RP/2jriCUcCzb49OnGR5UTtM+ho1KjQgkHjgwHfJdu
+         gyqIMqjnVjwBVfHiP2SuvvLC9XCrMiF4QziOWTv/P2F8QJUyjnaR6MWo49RgPEicAKTK
+         GEYfe+z61WxOkJM6z76nc+dXHbZrY6WJGd/wThz+ja0Up+PUCH4Suq+qq3By3Ley8Bza
+         6V5vPRHakft+v+eG4ufHO+JypZWQuWfvyye/ltTRCTtpdyiF92lUhq2shwma7RlffTMQ
+         oB/dnx/mioatMITi7DZvaqqqoyB7zdmsM0Va4w85qXvwKYK/RE+zxrXAD0rE8ZUjKvRd
+         PxLg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=neutral (body hash did not verify) header.i=@gmail.com header.s=20161025 header.b=qoSHx3rH;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id u42si6827109qtu.66.2017.09.18.03.22.16
-        for <alex.bennee@linaro.org>
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 18 Sep 2017 03:22:16 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+       spf=pass (google.com: best guess record for domain of linux-kernel-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=linux-kernel-owner@vger.kernel.org
+Return-Path: <linux-kernel-owner@vger.kernel.org>
+Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
+        by mx.google.com with ESMTP id w12si2802837pge.621.2017.08.24.05.34.45;
+        Thu, 24 Aug 2017 05:34:45 -0700 (PDT)
+Received-SPF: pass (google.com: best guess record for domain of linux-kernel-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
 Authentication-Results: mx.google.com;
-       dkim=neutral (body hash did not verify) header.i=@gmail.com header.s=20161025 header.b=qoSHx3rH;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:35607 helo=lists.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1dttBu-0000r1-93
-	for alex.bennee@linaro.org; Mon, 18 Sep 2017 06:22:14 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:42226)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <sundeep.lkml@gmail.com>) id 1dtt7l-00068b-8Y
-	for qemu-devel@nongnu.org; Mon, 18 Sep 2017 06:18:00 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <sundeep.lkml@gmail.com>) id 1dtt7i-0004NT-6H
-	for qemu-devel@nongnu.org; Mon, 18 Sep 2017 06:17:57 -0400
-Received: from mail-ua0-x233.google.com ([2607:f8b0:400c:c08::233]:50699)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <sundeep.lkml@gmail.com>)
-	id 1dtt7h-0004ND-Ts; Mon, 18 Sep 2017 06:17:54 -0400
-Received: by mail-ua0-x233.google.com with SMTP id g34so17076uah.7;
-	Mon, 18 Sep 2017 03:17:53 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=8EfOjb+yEtGyj5H4/WJa7ga0yrtCPlk8L1akeAOahdo=;
-	b=qoSHx3rH3IgqrEMEC1APxgr9h5wOtvQHuxaAU6o4zEYyDT9cxJAK0x/2BjLCwWthRl
-	F80vPQeJR52FKpK1w1EMQfZaUXBO3xgKn3QCV0ZJH+Y7bHXGMnIrHkLcnvmreXFwJNd6
-	+AWrAQu7qxz0IClrNb41vZOuk8W9y59CtQwwOPqB9uMKcWHRIMKVEpWC8QE5f4BDFhuO
-	0xtyVk6a1ZvG+Osrgc/SmCiEv6AQhk0m5mmAyp+d4++yFzxqPUP+LoW/az+upLbCjJOO
-	V0WRivJbNBkHVpk8lcmNhe6tN+OWPtZCEbPsGnX4o6w2MhUH1lFemWgFF8oxiwrwxvri
-	xykw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=8EfOjb+yEtGyj5H4/WJa7ga0yrtCPlk8L1akeAOahdo=;
-	b=TykW6/mfyiQCnZDvjkdo9sCuwRg10y0APafLzQjzjC072WbDRUdT3tgxXfbYkfKSRn
-	Grx0mbqoaotffBd/1ANmsgVskN5azqCphsjRtvuQ6jwWjrp5hxgeMCTdr+bN4aKdaqyb
-	gyN5PbiArrf4dzAoHR8c8O8huLQ1wE6SG2Mxx6nf3o0cIzwijJ5OnafL67fekqEPUXg7
-	QccpJHjYfS4Bi66bybUyJ5ISFa1V44JSHhaIhUiRMmxKrHlnm46etTt2dJTZa8rw9r/6
-	ARcQZNmtZhXuzO1O8OZ1W8whYgG2s6vS8Q4KW6lM5YuizYZ++r6qCep/zCpsSChchmZ0
-	VQ2Q==
-X-Gm-Message-State: AHPjjUiGR1wmSos2/+QfV9asJ8xKS+QBlf3pIr8cvkp9Xom79POPUbL9
-	4BlN9gFyWIdmVSHD+/GJbDd54f4/4WTLhRhK7DQ=
-X-Google-Smtp-Source: AOwi7QC2zkPnDeF2oX2ct17VrSGdjVh0zRP/dtwp5yS2sisOiyUx+Fb5O9+wXlCu5e+6RHQPh51bZPnysVx/mHlm6Co=
-X-Received: by 10.176.76.214 with SMTP id e22mr29293528uag.16.1505729873340;
-	Mon, 18 Sep 2017 03:17:53 -0700 (PDT)
+       spf=pass (google.com: best guess record for domain of linux-kernel-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=linux-kernel-owner@vger.kernel.org
+Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
+        id S1752846AbdHXMen (ORCPT <rfc822;daniel.diaz@linaro.org>
+        + 26 others); Thu, 24 Aug 2017 08:34:43 -0400
+Received: from szxga05-in.huawei.com ([45.249.212.191]:4565 "EHLO
+        szxga05-in.huawei.com" rhost-flags-OK-OK-OK-OK) by vger.kernel.org
+        with ESMTP id S1751285AbdHXMek (ORCPT
+        <rfc822;linux-kernel@vger.kernel.org>);
+        Thu, 24 Aug 2017 08:34:40 -0400
+Received: from 172.30.72.58 (EHLO DGGEMS409-HUB.china.huawei.com) ([172.30.72.58])
+        by dggrg05-dlp.huawei.com (MOS 4.4.6-GA FastPath queued)
+        with ESMTP id DFW36361;
+        Thu, 24 Aug 2017 20:34:10 +0800 (CST)
+Received: from [127.0.0.1] (10.177.16.142) by DGGEMS409-HUB.china.huawei.com
+ (10.3.19.209) with Microsoft SMTP Server id 14.3.301.0; Thu, 24 Aug 2017
+ 20:34:01 +0800
+Message-ID: <599EC7AB.3080604@huawei.com>
+Date:   Thu, 24 Aug 2017 20:33:47 +0800
+From:   Shannon Zhao <zhaoshenglong@huawei.com>
+User-Agent: Mozilla/5.0 (Windows NT 6.1; rv:24.0) Gecko/20100101 Thunderbird/24.4.0
 MIME-Version: 1.0
-Received: by 10.176.66.68 with HTTP; Mon, 18 Sep 2017 03:17:52 -0700 (PDT)
-In-Reply-To: <2c6a4136-fb80-2000-940c-1df5e718cbf1@amsat.org>
-References: <1505494753-10837-1-git-send-email-sundeep.lkml@gmail.com>
-	<1505494753-10837-3-git-send-email-sundeep.lkml@gmail.com>
-	<2c6a4136-fb80-2000-940c-1df5e718cbf1@amsat.org>
-From: sundeep subbaraya <sundeep.lkml@gmail.com>
-Date: Mon, 18 Sep 2017 15:47:52 +0530
-Message-ID: <CALHRZurRLysJCRwvm+SbJUn8YBAst_Q38RCzJkmT4z=mfnYuiQ@mail.gmail.com>
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:400c:c08::233
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-Content-Filtered-By: Mailman/MimeDel 2.1.21
-Subject: Re: [Qemu-devel] [Qemu devel v9 PATCH 2/5] msf2: Microsemi
- Smartfusion2 System Register block
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.21
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm <qemu-arm@nongnu.org>,
-	QEMU Developers <qemu-devel@nongnu.org>,
-	Alistair Francis <alistair23@gmail.com>,
-	Peter Crosthwaite <crosthwaite.peter@gmail.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 5aae675YwRW4
-
-Hi Philippe,
-
-On Mon, Sep 18, 2017 at 6:31 AM, Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.o=
-rg>
-wrote:
-
-> Hi Sundeep, Peter,
->
->
-> On 09/15/2017 01:59 PM, Subbaraya Sundeep wrote:
->
->> Added Sytem register block of Smartfusion2.
->> This block has PLL registers which are accessed by guest.
->>
->> Signed-off-by: Subbaraya Sundeep <sundeep.lkml@gmail.com>
->> Reviewed-by: Alistair Francis <alistair.francis@xilinx.com>
->> ---
->>   hw/misc/Makefile.objs         |   1 +
->>   hw/misc/msf2-sysreg.c         | 168 ++++++++++++++++++++++++++++++
->> ++++++++++++
->>   hw/misc/trace-events          |   5 ++
->>   include/hw/misc/msf2-sysreg.h |  77 +++++++++++++++++++
->>   4 files changed, 251 insertions(+)
->>   create mode 100644 hw/misc/msf2-sysreg.c
->>   create mode 100644 include/hw/misc/msf2-sysreg.h
->>
->> diff --git a/hw/misc/Makefile.objs b/hw/misc/Makefile.objs
->> index 29fb922..e8f0a02 100644
->> --- a/hw/misc/Makefile.objs
->> +++ b/hw/misc/Makefile.objs
->> @@ -59,3 +59,4 @@ obj-$(CONFIG_HYPERV_TESTDEV) +=3D hyperv_testdev.o
->>   obj-$(CONFIG_AUX) +=3D auxbus.o
->>   obj-$(CONFIG_ASPEED_SOC) +=3D aspeed_scu.o aspeed_sdmc.o
->>   obj-y +=3D mmio_interface.o
->> +obj-$(CONFIG_MSF2) +=3D msf2-sysreg.o
->> diff --git a/hw/misc/msf2-sysreg.c b/hw/misc/msf2-sysreg.c
->> new file mode 100644
->> index 0000000..dc3597b
->> --- /dev/null
->> +++ b/hw/misc/msf2-sysreg.c
->> @@ -0,0 +1,168 @@
->> +/*
->> + * System Register block model of Microsemi SmartFusion2.
->> + *
->> + * Copyright (c) 2017 Subbaraya Sundeep <sundeep.lkml@gmail.com>
->> + *
->> + * This program is free software; you can redistribute it and/or
->> + * modify it under the terms of the GNU General Public License
->> + * as published by the Free Software Foundation; either version
->> + * 2 of the License, or (at your option) any later version.
->> + *
->> + * You should have received a copy of the GNU General Public License
->> along
->> + * with this program; if not, see <http://www.gnu.org/licenses/>.
->> + */
->> +
->> +#include "qemu/osdep.h"
->> +#include "qemu/log.h"
->> +#include "hw/misc/msf2-sysreg.h"
->> +#include "trace.h"
->> +
->> +static inline int msf2_divbits(uint32_t div)
->> +{
->> +    int ret =3D 0;
->> +
->> +    switch (div) {
->> +    case 1:
->> +        ret =3D 0;
->> +        break;
->> +    case 2:
->> +        ret =3D 1;
->> +        break;
->> +    case 4:
->> +        ret =3D 2;
->> +        break;
->> +    case 8:
->> +        ret =3D 4;
->> +        break;
->> +    case 16:
->> +        ret =3D 5;
->> +        break;
->> +    case 32:
->> +        ret =3D 6;
->> +        break;
->> +    default:
->> +        break;
->>
->
-> eh?
->
-> +    }
->> +
->> +    return ret;
->> +}
->> +
->> +static void msf2_sysreg_reset(DeviceState *d)
->> +{
->> +    MSF2SysregState *s =3D MSF2_SYSREG(d);
->> +
->> +    s->regs[MSSDDR_PLL_STATUS_LOW_CR] =3D 0x021A2358;
->> +    s->regs[MSSDDR_PLL_STATUS] =3D 0x3;
->> +    s->regs[MSSDDR_FACC1_CR] =3D msf2_divbits(s->apb0div) << 5 |
->>
->
-> ctz32(s->apb0div) << 5 ...
+To:     Dongjiu Geng <gengdongjiu@huawei.com>, <mst@redhat.com>,
+        <imammedo@redhat.com>, <peter.maydell@linaro.org>,
+        <pbonzini@redhat.com>, <qemu-devel@nongnu.org>,
+        <qemu-arm@nongnu.org>, <kvm@vger.kernel.org>,
+        <edk2-devel@lists.01.org>, <christoffer.dall@linaro.org>,
+        <marc.zyngier@arm.com>, <will.deacon@arm.com>,
+        <james.morse@arm.com>, <tbaicar@codeaurora.org>,
+        <ard.biesheuvel@linaro.org>, <mingo@kernel.org>, <bp@suse.de>,
+        <shiju.jose@huawei.com>, <zjzhang@codeaurora.org>,
+        <linux-arm-kernel@lists.infradead.org>,
+        <kvmarm@lists.cs.columbia.edu>, <linux-kernel@vger.kernel.org>,
+        <linux-acpi@vger.kernel.org>, <devel@acpica.org>,
+        <john.garry@huawei.com>, <jonathan.cameron@huawei.com>,
+        <shameerali.kolothum.thodi@huawei.com>, <huangdaode@hisilicon.com>,
+        <wangzhou1@hisilicon.com>
+CC:     <huangshaoyu@huawei.com>, <wuquanming@huawei.com>,
+        <linuxarm@huawei.com>, <zhengqiang10@huawei.com>
+Subject: Re: [PATCH v11 1/6] ACPI: add APEI/HEST/CPER structures and macros
+References: <1503066227-18251-1-git-send-email-gengdongjiu@huawei.com> <1503066227-18251-2-git-send-email-gengdongjiu@huawei.com>
+In-Reply-To: <1503066227-18251-2-git-send-email-gengdongjiu@huawei.com>
+Content-Type: text/plain; charset="ISO-8859-1"
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.177.16.142]
+X-CFilter-Loop: Reflected
+X-Mirapoint-Virus-RAPID-Raw: score=unknown(0),
+        refid=str=0001.0A090206.599EC7C7.001B,ss=1,re=0.000,recu=0.000,reip=0.000,cl=1,cld=1,fgs=0,
+        ip=0.0.0.0,
+        so=2014-11-16 11:51:01,
+        dmn=2013-03-21 17:37:32
+X-Mirapoint-Loop-Id: c1335e206e8c45edacacb8cba8c0d529
+Sender: linux-kernel-owner@vger.kernel.org
+Precedence: bulk
+List-ID: <linux-kernel.vger.kernel.org>
+X-Mailing-List: linux-kernel@vger.kernel.org
+X-TUID: twNaTq7Tgwqk
 
 
-I will modify like below:
-div0 =3D s->apb0div < 8 ? ctz32(s->apb0div) : ctz32(s->apb0div) + 1;
-div1 =3D s->apb1div < 8 ? ctz32(s->apb1div) : ctz32(s->apb1div) + 1;
-s->regs[MSSDDR_FACC1_CR] =3D div0 << 5 | div1 << 2;
 
+On 2017/8/18 22:23, Dongjiu Geng wrote:
+> (1) Add related APEI/HEST table structures and  macros, these
+>     definition refer to ACPI 6.1 and UEFI 2.6 spec.
+> (2) Add generic error status block and CPER memory section
+>     definition, user space only handle memory section errors.
+> 
+> Signed-off-by: Dongjiu Geng <gengdongjiu@huawei.com>
+> ---
+>  include/hw/acpi/acpi-defs.h | 193 ++++++++++++++++++++++++++++++++++++++++++++
+>  1 file changed, 193 insertions(+)
+> 
+> diff --git a/include/hw/acpi/acpi-defs.h b/include/hw/acpi/acpi-defs.h
+> index 72be675..3b4bad7 100644
+> --- a/include/hw/acpi/acpi-defs.h
+> +++ b/include/hw/acpi/acpi-defs.h
+> @@ -297,6 +297,44 @@ typedef struct AcpiMultipleApicTable AcpiMultipleApicTable;
+>  #define ACPI_APIC_GENERIC_TRANSLATOR    15
+>  #define ACPI_APIC_RESERVED              16   /* 16 and greater are reserved */
+>  
+> +/* UEFI Spec 2.6, "N.2.5 Memory Error Section */
+missing "
 
->
-> +                               msf2_divbits(s->apb1div) << 2;
->> +}
->> +
->> +static uint64_t msf2_sysreg_read(void *opaque, hwaddr offset,
->> +    unsigned size)
->> +{
->> +    MSF2SysregState *s =3D opaque;
->> +    uint32_t ret =3D 0;
->> +
->> +    offset >>=3D 2;
->> +    if (offset < ARRAY_SIZE(s->regs)) {
->> +        ret =3D s->regs[offset];
->> +        trace_msf2_sysreg_read(offset << 2, ret);
->> +    } else {
->> +        qemu_log_mask(LOG_GUEST_ERROR,
->> +                    "%s: Bad offset 0x%08" HWADDR_PRIx "\n", __func__,
->> +                    offset << 2);
->> +    }
->> +
->> +    return ret;
->> +}
->> +
->> +static void msf2_sysreg_write(void *opaque, hwaddr offset,
->> +                          uint64_t val, unsigned size)
->> +{
->> +    MSF2SysregState *s =3D opaque;
->> +    uint32_t newval =3D val;
->> +
->> +    offset >>=3D 2;
->> +
->> +    switch (offset) {
->> +    case MSSDDR_PLL_STATUS:
->> +        trace_msf2_sysreg_write_pll_status();
->> +        break;
->> +
->> +    case ESRAM_CR:
->> +    case DDR_CR:
->> +    case ENVM_REMAP_BASE_CR:
->> +        if (newval !=3D s->regs[offset]) {
->> +            qemu_log_mask(LOG_UNIMP,
->> +                       TYPE_MSF2_SYSREG": remapping not supported\n");
->>
->
-> I'd rather exit here than continue with inconsistent cpu, Peter what do
-> you recommend?
->
->
-> +        }
->> +        break;
->> +
->> +    default:
->> +        if (offset < ARRAY_SIZE(s->regs)) {
->> +            trace_msf2_sysreg_write(offset << 2, newval,
->> s->regs[offset]);
->> +            s->regs[offset] =3D newval;
->> +        } else {
->> +            qemu_log_mask(LOG_GUEST_ERROR,
->> +                        "%s: Bad offset 0x%08" HWADDR_PRIx "\n",
->> __func__,
->> +                        offset << 2);
->> +        }
->> +        break;
->> +    }
->> +}
->> +
->> +static const MemoryRegionOps sysreg_ops =3D {
->> +    .read =3D msf2_sysreg_read,
->> +    .write =3D msf2_sysreg_write,
->> +    .endianness =3D DEVICE_NATIVE_ENDIAN,
->> +};
->> +
->> +static void msf2_sysreg_init(Object *obj)
->> +{
->> +    MSF2SysregState *s =3D MSF2_SYSREG(obj);
->> +
->> +    memory_region_init_io(&s->iomem, obj, &sysreg_ops, s,
->> TYPE_MSF2_SYSREG,
->> +                          MSF2_SYSREG_MMIO_SIZE);
->> +    sysbus_init_mmio(SYS_BUS_DEVICE(obj), &s->iomem);
->> +}
->> +
->> +static const VMStateDescription vmstate_msf2_sysreg =3D {
->> +    .name =3D TYPE_MSF2_SYSREG,
->> +    .version_id =3D 1,
->> +    .minimum_version_id =3D 1,
->> +    .fields =3D (VMStateField[]) {
->> +        VMSTATE_UINT32_ARRAY(regs, MSF2SysregState,
->> MSF2_SYSREG_MMIO_SIZE / 4),
->> +        VMSTATE_END_OF_LIST()
->> +    }
->> +};
->> +
->> +static Property msf2_sysreg_properties[] =3D {
->> +    /* default divisors in Libero GUI */
->> +    DEFINE_PROP_UINT32("apb0divisor", MSF2SysregState, apb0div, 2),
->> +    DEFINE_PROP_UINT32("apb1divisor", MSF2SysregState, apb1div, 2),
->>
->
-> DEFINE_PROP_UINT8() is enough for both.
->
-> Beware these divisors must be power of 2, and maximum 32.
-
-This can be checked in msf2_sysreg_realize() ...
-
-
-Ok
-
->
->
-> +    DEFINE_PROP_END_OF_LIST(),
->> +};
->> +
->> +static void msf2_sysreg_class_init(ObjectClass *klass, void *data)
->> +{
->> +    DeviceClass *dc =3D DEVICE_CLASS(klass);
->> +
->> +    dc->vmsd =3D &vmstate_msf2_sysreg;
->> +    dc->reset =3D msf2_sysreg_reset;
->>
->
-> ... which would go here:
->
->        dc->realize =3D msf2_sysreg_realize;
->
-> Ok.
-
->
-> +    dc->props =3D msf2_sysreg_properties;
->> +}
->> +
->> +static const TypeInfo msf2_sysreg_info =3D {
->> +    .name  =3D TYPE_MSF2_SYSREG,
->> +    .parent =3D TYPE_SYS_BUS_DEVICE,
->> +    .class_init =3D msf2_sysreg_class_init,
->> +    .instance_size  =3D sizeof(MSF2SysregState),
->> +    .instance_init =3D msf2_sysreg_init,
->> +};
->> +
->> +static void msf2_sysreg_register_types(void)
->> +{
->> +    type_register_static(&msf2_sysreg_info);
->> +}
->> +
->> +type_init(msf2_sysreg_register_types)
->> diff --git a/hw/misc/trace-events b/hw/misc/trace-events
->> index 3313585..616579a 100644
->> --- a/hw/misc/trace-events
->> +++ b/hw/misc/trace-events
->> @@ -61,3 +61,8 @@ mps2_scc_reset(void) "MPS2 SCC: reset"
->>   mps2_scc_leds(char led7, char led6, char led5, char led4, char led3,
->> char led2, char led1, char led0) "MPS2 SCC LEDs: %c%c%c%c%c%c%c%c"
->>   mps2_scc_cfg_write(unsigned function, unsigned device, uint32_t value)
->> "MPS2 SCC config write: function %d device %d data 0x%" PRIx32
->>   mps2_scc_cfg_read(unsigned function, unsigned device, uint32_t value)
->> "MPS2 SCC config read: function %d device %d data 0x%" PRIx32
->> +
->> +# hw/misc/msf2-sysreg.c
->> +msf2_sysreg_write(uint64_t offset, uint32_t val, uint32_t prev)
->> "msf2-sysreg write: addr 0x%08" HWADDR_PRIx " data 0x%" PRIx32 " prev 0x=
-%"
->> PRIx32
->> +msf2_sysreg_read(uint64_t offset, uint32_t val) "msf2-sysreg read: addr
->> 0x%08" HWADDR_PRIx " data 0x%08" PRIx32
->> +msf2_sysreg_write_pll_status(void) "Invalid write to read only PLL
->> status register"
->> diff --git a/include/hw/misc/msf2-sysreg.h b/include/hw/misc/msf2-sysreg=
-.
->> h
->> new file mode 100644
->> index 0000000..231f827
->> --- /dev/null
->> +++ b/include/hw/misc/msf2-sysreg.h
->> @@ -0,0 +1,77 @@
->> +/*
->> + * Microsemi SmartFusion2 SYSREG
->> + *
->> + * Copyright (c) 2017 Subbaraya Sundeep <sundeep.lkml@gmail.com>
->> + *
->> + * Permission is hereby granted, free of charge, to any person obtainin=
-g
->> a copy
->> + * of this software and associated documentation files (the "Software")=
-,
->> to deal
->> + * in the Software without restriction, including without limitation th=
-e
->> rights
->> + * to use, copy, modify, merge, publish, distribute, sublicense, and/or
->> sell
->> + * copies of the Software, and to permit persons to whom the Software i=
-s
->> + * furnished to do so, subject to the following conditions:
->> + *
->> + * The above copyright notice and this permission notice shall be
->> included in
->> + * all copies or substantial portions of the Software.
->> + *
->> + * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
->> EXPRESS OR
->> + * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
->> MERCHANTABILITY,
->> + * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT
->> SHALL
->> + * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR
->> OTHER
->> + * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
->> ARISING FROM,
->> + * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
->> DEALINGS IN
->> + * THE SOFTWARE.
->> + */
->> +
->> +#ifndef HW_MSF2_SYSREG_H
->> +#define HW_MSF2_SYSREG_H
->> +
->> +#include "hw/sysbus.h"
->> +
->> +enum {
->> +    ESRAM_CR        =3D 0x00 / 4,
->> +    ESRAM_MAX_LAT,
->> +    DDR_CR,
->> +    ENVM_CR,
->> +    ENVM_REMAP_BASE_CR,
->> +    ENVM_REMAP_FAB_CR,
->> +    CC_CR,
->> +    CC_REGION_CR,
->> +    CC_LOCK_BASE_ADDR_CR,
->> +    CC_FLUSH_INDX_CR,
->> +    DDRB_BUF_TIMER_CR,
->> +    DDRB_NB_ADDR_CR,
->> +    DDRB_NB_SIZE_CR,
->> +    DDRB_CR,
->> +
->> +    SOFT_RESET_CR  =3D 0x48 / 4,
->> +    M3_CR,
->> +
->> +    GPIO_SYSRESET_SEL_CR =3D 0x58 / 4,
->> +
->> +    MDDR_CR =3D 0x60 / 4,
->> +
->> +    MSSDDR_PLL_STATUS_LOW_CR =3D 0x90 / 4,
->> +    MSSDDR_PLL_STATUS_HIGH_CR,
->> +    MSSDDR_FACC1_CR,
->> +    MSSDDR_FACC2_CR,
->> +
->> +    MSSDDR_PLL_STATUS =3D 0x150 / 4,
->> +};
->> +
->> +#define MSF2_SYSREG_MMIO_SIZE     0x300
->> +
->> +#define TYPE_MSF2_SYSREG          "msf2-sysreg"
->> +#define MSF2_SYSREG(obj)  OBJECT_CHECK(MSF2SysregState, (obj),
->> TYPE_MSF2_SYSREG)
->> +
->> +typedef struct MSF2SysregState {
->> +    SysBusDevice parent_obj;
->> +
->> +    MemoryRegion iomem;
->> +
->> +    uint32_t apb0div;
->> +    uint32_t apb1div;
->>
->
-> uint8_t for both
-
-
-Ok.
-
->
->
+> +#define UEFI_CPER_MEM_VALID_ERROR_STATUS     0x0001
+> +#define UEFI_CPER_MEM_VALID_PA               0x0002
+> +#define UEFI_CPER_MEM_VALID_PA_MASK          0x0004
+> +#define UEFI_CPER_MEM_VALID_NODE             0x0008
+> +#define UEFI_CPER_MEM_VALID_CARD             0x0010
+> +#define UEFI_CPER_MEM_VALID_MODULE           0x0020
+> +#define UEFI_CPER_MEM_VALID_BANK             0x0040
+> +#define UEFI_CPER_MEM_VALID_DEVICE           0x0080
+> +#define UEFI_CPER_MEM_VALID_ROW              0x0100
+> +#define UEFI_CPER_MEM_VALID_COLUMN           0x0200
+> +#define UEFI_CPER_MEM_VALID_BIT_POSITION     0x0400
+> +#define UEFI_CPER_MEM_VALID_REQUESTOR        0x0800
+> +#define UEFI_CPER_MEM_VALID_RESPONDER        0x1000
+> +#define UEFI_CPER_MEM_VALID_TARGET           0x2000
+> +#define UEFI_CPER_MEM_VALID_ERROR_TYPE       0x4000
+> +#define UEFI_CPER_MEM_VALID_RANK_NUMBER      0x8000
+> +#define UEFI_CPER_MEM_VALID_CARD_HANDLE      0x10000
+> +#define UEFI_CPER_MEM_VALID_MODULE_HANDLE    0x20000
+> +#define UEFI_CPER_MEM_ERROR_TYPE_MULTI_ECC   3
 > +
->> +    uint32_t regs[MSF2_SYSREG_MMIO_SIZE / 4];
->> +} MSF2SysregState;
->> +
->> +#endif /* HW_MSF2_SYSREG_H */
->>
->>
-> Acked-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
-> Tested-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
->
+> +/* From the ACPI 6.1 spec, "18.3.2.9 Hardware Error Notification" */
+> +
+It's better to refer to the first spec version of this structure and
+same with others you define.
 
-Thank you,
-Sundeep
+> +enum AcpiHestNotifyType {
+> +    ACPI_HEST_NOTIFY_POLLED = 0,
+> +    ACPI_HEST_NOTIFY_EXTERNAL = 1,
+> +    ACPI_HEST_NOTIFY_LOCAL = 2,
+> +    ACPI_HEST_NOTIFY_SCI = 3,
+> +    ACPI_HEST_NOTIFY_NMI = 4,
+> +    ACPI_HEST_NOTIFY_CMCI = 5,  /* ACPI 5.0 */
+> +    ACPI_HEST_NOTIFY_MCE = 6,   /* ACPI 5.0 */
+> +    ACPI_HEST_NOTIFY_GPIO = 7,  /* ACPI 6.0 */
+> +    ACPI_HEST_NOTIFY_SEA = 8,   /* ACPI 6.1 */
+> +    ACPI_HEST_NOTIFY_SEI = 9,   /* ACPI 6.1 */
+> +    ACPI_HEST_NOTIFY_GSIV = 10, /* ACPI 6.1 */
+> +    ACPI_HEST_NOTIFY_RESERVED = 11  /* 11 and greater are reserved */
+In ACPI 6.2, 11 is for Software Delegated Exception, is this useful for
+your patchset?
+
+> +};
+> +
+>  /*
+>   * MADT sub-structures (Follow MULTIPLE_APIC_DESCRIPTION_TABLE)
+>   */
+> @@ -474,6 +512,161 @@ struct AcpiSystemResourceAffinityTable {
+>  } QEMU_PACKED;
+>  typedef struct AcpiSystemResourceAffinityTable AcpiSystemResourceAffinityTable;
+>  
+> +/* Hardware Error Notification, from the ACPI 6.1
+> + * spec, "18.3.2.9 Hardware Error Notification"
+> + */
+Use below style for multiple comment lines
+/*
+ * XXX
+ */
+
+> +struct AcpiHestNotify {
+> +    uint8_t type;
+> +    uint8_t length;
+> +    uint16_t config_write_enable;
+> +    uint32_t poll_interval;
+> +    uint32_t vector;
+> +    uint32_t polling_threshold_value;
+> +    uint32_t polling_threshold_window;
+> +    uint32_t error_threshold_value;
+> +    uint32_t error_threshold_window;
+> +} QEMU_PACKED;
+> +typedef struct AcpiHestNotify AcpiHestNotify;
+> +
+> +/* From ACPI 6.1, sections "18.3.2.1 IA-32 Architecture Machine
+> + * Check Exception" through "18.3.2.8 Generic Hardware Error Source version 2".
+> + */
+> +enum AcpiHestSourceType {
+> +    ACPI_HEST_SOURCE_IA32_CHECK = 0,
+> +    ACPI_HEST_SOURCE_IA32_CORRECTED_CHECK = 1,
+> +    ACPI_HEST_SOURCE_IA32_NMI = 2,
+What's 3, 4, 5 for?
+
+> +    ACPI_HEST_SOURCE_AER_ROOT_PORT = 6,
+> +    ACPI_HEST_SOURCE_AER_ENDPOINT = 7,
+> +    ACPI_HEST_SOURCE_AER_BRIDGE = 8,
+> +    ACPI_HEST_SOURCE_GENERIC_ERROR = 9,
+> +    ACPI_HEST_SOURCE_GENERIC_ERROR_V2 = 10,
+> +    ACPI_HEST_SOURCE_RESERVED = 11    /* 11 and greater are reserved */
+> +};
+> +
+> +/* Block status bitmasks from ACPI 6.1, "18.3.2.7.1 Generic Error Data" */
+> +#define ACPI_GEBS_UNCORRECTABLE             (1)
+> +#define ACPI_GEBS_CORRECTABLE               (1 << 1)
+> +#define ACPI_GEBS_MULTIPLE_UNCORRECTABLE    (1 << 2)
+> +#define ACPI_GEBS_MULTIPLE_CORRECTABLE      (1 << 3)
+> +/* 10 bits, error data entry count */
+> +#define ACPI_GEBS_ERROR_ENTRY_COUNT         (0x3FF << 4)
+> +
+> +/* Generic Hardware Error Source Structure, refer to ACPI 6.1
+> + * "18.3.2.7 Generic Hardware Error Source". in this struct the
+> + * "type" field has to be ACPI_HEST_SOURCE_GENERIC_ERROR
+> + */
+> +
+> +struct AcpiGenericHardwareErrorSource {
+> +    uint16_t type;
+> +    uint16_t source_id;
+> +    uint16_t related_source_id;
+> +    uint8_t flags;
+> +    uint8_t enabled;
+> +    uint32_t number_of_records;
+> +    uint32_t max_sections_per_record;
+> +    uint32_t max_raw_data_length;
+> +    struct AcpiGenericAddress error_status_address;
+> +    struct AcpiHestNotify notify;
+> +    uint32_t error_status_block_length;
+> +} QEMU_PACKED;
+> +typedef struct AcpiGenericHardwareErrorSource AcpiGenericHardwareErrorSource;
+> +
+> +/* Generic Hardware Error Source, version 2, ACPI 6.1, "18.3.2.8 Generic
+> + * Hardware Error Source version 2", in this struct the "type" field has to
+> + * be ACPI_HEST_SOURCE_GENERIC_ERROR_V2
+> + */
+> +struct AcpiGenericHardwareErrorSourceV2 {
+> +    uint16_t type;
+> +    uint16_t source_id;
+> +    uint16_t related_source_id;
+> +    uint8_t flags;
+> +    uint8_t enabled;
+> +    uint32_t number_of_records;
+> +    uint32_t max_sections_per_record;
+> +    uint32_t max_raw_data_length;
+> +    struct AcpiGenericAddress error_status_address;
+> +    struct AcpiHestNotify notify;
+> +    uint32_t error_status_block_length;
+> +    struct AcpiGenericAddress read_ack_register;
+> +    uint64_t read_ack_preserve;
+> +    uint64_t read_ack_write;
+> +} QEMU_PACKED;
+> +typedef struct AcpiGenericHardwareErrorSourceV2
+> +            AcpiGenericHardwareErrorSourceV2;
+> +
+> +/* Generic Error Status block, from ACPI 6.1,
+> + * "18.3.2.7.1 Generic Error Data"
+> + */
+> +struct AcpiGenericErrorStatus {
+> +    /* It is a bitmask composed of ACPI_GEBS_xxx macros */
+> +    uint32_t block_status;
+> +    uint32_t raw_data_offset;
+> +    uint32_t raw_data_length;
+> +    uint32_t data_length;
+> +    uint32_t error_severity;
+> +} QEMU_PACKED;
+> +typedef struct AcpiGenericErrorStatus AcpiGenericErrorStatus;
+> +
+> +enum AcpiGenericErrorSeverity {
+> +    ACPI_CPER_SEV_RECOVERABLE,
+> +    ACPI_CPER_SEV_FATAL,
+> +    ACPI_CPER_SEV_CORRECTED,
+> +    ACPI_CPER_SEV_NONE,
+> +};
+> +
+> +/* Generic Error Data entry, revision number is 0x0300,
+> + * ACPI 6.1, "18.3.2.7.1 Generic Error Data"
+> + */
+> +struct AcpiGenericErrorData {
+> +    uint8_t section_type_le[16];
+> +    /* The "error_severity" fields that they take their
+> +     * values from AcpiGenericErrorSeverity
+> +     */
+> +    uint32_t error_severity;
+> +    uint16_t revision;
+> +    uint8_t validation_bits;
+> +    uint8_t flags;
+> +    uint32_t error_data_length;
+> +    uint8_t fru_id[16];
+> +    uint8_t fru_text[20];
+> +    uint64_t time_stamp;
+> +} QEMU_PACKED;
+> +typedef struct AcpiGenericErrorData AcpiGenericErrorData;
+> +
+> +/* From UEFI 2.6, "N.2.5 Memory Error Section" */
+> +struct UefiCperSecMemErr {
+> +    uint64_t    validation_bits;
+> +    uint64_t    error_status;
+> +    uint64_t    physical_addr;
+> +    uint64_t    physical_addr_mask;
+> +    uint16_t    node;
+> +    uint16_t    card;
+> +    uint16_t    module;
+> +    uint16_t    bank;
+> +    uint16_t    device;
+> +    uint16_t    row;
+> +    uint16_t    column;
+> +    uint16_t    bit_pos;
+> +    uint64_t    requestor_id;
+> +    uint64_t    responder_id;
+> +    uint64_t    target_id;
+> +    uint8_t     error_type;
+> +    uint8_t     reserved;
+> +    uint16_t    rank;
+> +    uint16_t    mem_array_handle;   /* card handle in UEFI 2.4 */
+> +    uint16_t    mem_dev_handle;     /* module handle in UEFI 2.4 */
+> +} QEMU_PACKED;
+> +typedef struct UefiCperSecMemErr UefiCperSecMemErr;
+> +
+> +/*
+> + * HEST Description Table
+> + */
+> +struct AcpiHardwareErrorSourceTable {
+> +    ACPI_TABLE_HEADER_DEF                    /* ACPI common table header */
+> +    uint32_t           error_source_count;
+> +} QEMU_PACKED;
+> +typedef struct AcpiHardwareErrorSourceTable AcpiHardwareErrorSourceTable;
+> +
+>  #define ACPI_SRAT_PROCESSOR_APIC     0
+>  #define ACPI_SRAT_MEMORY             1
+>  #define ACPI_SRAT_PROCESSOR_x2APIC   2
+> 
+
+-- 
+Shannon

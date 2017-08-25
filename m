@@ -1,91 +1,91 @@
-Received: by 10.223.188.70 with SMTP id a6csp1108448wrh;
-        Fri, 25 Aug 2017 10:13:34 -0700 (PDT)
-X-Received: by 10.55.198.29 with SMTP id b29mr13691447qkj.239.1503681214861;
-        Fri, 25 Aug 2017 10:13:34 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1503681214; cv=none;
+Received: by 10.223.188.70 with SMTP id a6csp1266603wrh;
+        Fri, 25 Aug 2017 12:39:55 -0700 (PDT)
+X-Received: by 10.200.15.45 with SMTP id e42mr16331249qtk.145.1503689994972;
+        Fri, 25 Aug 2017 12:39:54 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1503689994; cv=none;
         d=google.com; s=arc-20160816;
-        b=PkYb/RAqR16b8vPL/+KwyQxmkX2gH9cDATZvel+O++8WHhuMt4q/T8TgLVa+tb6KMG
-         KuaDYdrHsDsGxqsRC3xQHHJsveB30NDw9Z2hoZjTViX2fd5wmyZvOxGv6ahFuP6UUBc6
-         jdKC7+M79vfiahHlWr/5bFtETnWMb3YzYsS2GZSzM0cLMEuqOnPpL1FmItejIwr4gcZC
-         SVkNHPxmU6yQHiiuepOaBn2CLEX9AFMFwClhRl4DNJhau7WDw2lo6bmPJ540igOmR1Yy
-         y1UwGq7vTFM+JI02JTsvjYbWoYVALsNLroU6ZcvlfyX4WUfdPgm8Zze8eX41vz89W3Db
-         vh9g==
+        b=A/PJl8lqtTE1yEqQlramcl9fBUlXAcu/FxihWwpqN8zvNJBdocrDH1NKitiBHmdpYJ
+         dVcXu7ItnvHWCesA/lGsl92lx4aT4bQ/vp3eJuL0Dt7EQkJ8uoOswZBTWOiVAR3ulWjv
+         tNxc1sSPhLkWySP0F6SyQoBDJ/WqdX02Ub1ko70KHetSnWf38YPrT0hsK1XomBr2I+aX
+         stTKkCv1GvidBf/xXjVgVd/uBADevvgfj7Ir/g5PiIEvb6XGCWKSkYTAoqyxyNcN8xI/
+         82b15LYicqXlOHoVqQ0uZ1VvRKanRS9e5YnPY607/uu+xwSSplPaeluDcgCgWXc5U2x+
+         X0ug==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:in-reply-to
+         :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
          :content-disposition:mime-version:references:message-id:to:from:date
          :dmarc-filter:arc-authentication-results;
-        bh=aNHnpRPtz6C2ZonQRuBO8mzp9kf8eWeWhysZgnv8sNA=;
-        b=GgFbr2BGLhQIYzn0j79t9PnPU30iLmJ7YE0BZtbViB4KuDNnbOy6oOtSq7KES4QfqP
-         ia7DbA+DVJlwKPSndXHIwm8sFQ76BXbmyMiOxfxz+K+Ag05e/MlhJYeQd6BTrV1V9Llv
-         KYcpvIVZUNLEIBouAXgRYZop64Ua3EnvixTYg1bVULuWfaR1MwBNJraT0T6UTG/R/1j1
-         oCEAJle5gm43EVEtw5FrTrU2LBRXtatriC8oKL7ySTlmDsqnZ8eXNVNbXySnb3z8M+Bf
-         KvNiSxfbxjnw2rjro23RTMJKKXa6ZfvaYU81dhAiDmx6xitUIH4Yi0/3quGXBmw+wESJ
-         tZhg==
+        bh=oUp1bXHZnojsEu+cA29enk6TT6lJ7LK54MqJ7i6r7lc=;
+        b=Y7kkp+nqrqv4TFDGlGOSiECiZO+htgUNKY+K2abRMSVsOLFDEM1SCbfbVRG04yjXCT
+         UtTpEdJ4jdCnLNw1FaaP3PiwrI9m9JuKHgH1fZHcbZ2XuKKmiLqR92dHq8nWgHR9oe+7
+         fByIn2Dwy1uWI65yN/oF4lRYhsd0CxClKAXj94FyRIu206bw0OWqG3q8RYph89hd0q1/
+         aR4oi6GYn0Sz5a8FJjUdkUYKHtFlvN+T4fQAKWzPfrs6KJbphmVH8sdbkYnYadGOWWWy
+         sCd3d9TvjmUIISx2/HCwuVLIRBNwRj7J+zyi1dvT9rEBiUrUrXdJ5zqjJxEwkH7MDg1L
+         7WtQ==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id a62si6543507qkd.471.2017.08.25.10.13.34
+        by mx.google.com with ESMTPS id y2si6805212qtk.69.2017.08.25.12.39.54
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 25 Aug 2017 10:13:34 -0700 (PDT)
+        Fri, 25 Aug 2017 12:39:54 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:54293 helo=lists.gnu.org)
+Received: from localhost ([::1]:54788 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1dlIAm-000105-DL
-	for alex.bennee@linaro.org; Fri, 25 Aug 2017 13:13:32 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:37336)
+	id 1dlKSO-0000mZ-9y
+	for alex.bennee@linaro.org; Fri, 25 Aug 2017 15:39:52 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:34983)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mst@redhat.com>) id 1dlIAh-0000zx-PH
-	for qemu-arm@nongnu.org; Fri, 25 Aug 2017 13:13:30 -0400
+	(envelope-from <ehabkost@redhat.com>) id 1dlKSH-0000ge-BL
+	for qemu-arm@nongnu.org; Fri, 25 Aug 2017 15:39:49 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mst@redhat.com>) id 1dlIAe-00056b-ES
-	for qemu-arm@nongnu.org; Fri, 25 Aug 2017 13:13:27 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:49768)
+	(envelope-from <ehabkost@redhat.com>) id 1dlKSD-0001Rn-FB
+	for qemu-arm@nongnu.org; Fri, 25 Aug 2017 15:39:45 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:53718)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <mst@redhat.com>)
-	id 1dlIAe-00055J-1e; Fri, 25 Aug 2017 13:13:24 -0400
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
-	[10.5.11.14])
+	(Exim 4.71) (envelope-from <ehabkost@redhat.com>)
+	id 1dlKSC-0001Rb-UM; Fri, 25 Aug 2017 15:39:41 -0400
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+	[10.5.11.13])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id EAB3780F79;
-	Fri, 25 Aug 2017 17:13:22 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com EAB3780F79
-Authentication-Results: ext-mx03.extmail.prod.ext.phx2.redhat.com;
+	by mx1.redhat.com (Postfix) with ESMTPS id 9742E404333;
+	Fri, 25 Aug 2017 19:39:39 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 9742E404333
+Authentication-Results: ext-mx09.extmail.prod.ext.phx2.redhat.com;
 	dmarc=none (p=none dis=none) header.from=redhat.com
-Authentication-Results: ext-mx03.extmail.prod.ext.phx2.redhat.com;
-	spf=fail smtp.mailfrom=mst@redhat.com
-Received: from redhat.com (ovpn-121-154.rdu2.redhat.com [10.10.121.154])
-	by smtp.corp.redhat.com (Postfix) with SMTP id 6980C61B60;
-	Fri, 25 Aug 2017 17:13:10 +0000 (UTC)
-Date: Fri, 25 Aug 2017 20:13:09 +0300
-From: "Michael S. Tsirkin" <mst@redhat.com>
-To: Auger Eric <eric.auger@redhat.com>
-Message-ID: <20170825201005-mutt-send-email-mst@kernel.org>
-References: <1502461354-11327-1-git-send-email-eric.auger@redhat.com>
-	<1502461354-11327-9-git-send-email-eric.auger@redhat.com>
-	<20170823042453.GA4682@virtx40>
-	<b534e125-98b3-1468-cdec-9bb36fff75a4@redhat.com>
+Authentication-Results: ext-mx09.extmail.prod.ext.phx2.redhat.com;
+	spf=fail smtp.mailfrom=ehabkost@redhat.com
+Received: from localhost (ovpn-116-18.gru2.redhat.com [10.97.116.18])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 481576E513;
+	Fri, 25 Aug 2017 19:39:24 +0000 (UTC)
+Date: Fri, 25 Aug 2017 16:39:22 -0300
+From: Eduardo Habkost <ehabkost@redhat.com>
+To: qemu-devel@nongnu.org
+Message-ID: <20170825193922.GN27715@localhost.localdomain>
+References: <20170823221445.15243-1-ehabkost@redhat.com>
+	<20170823221445.15243-5-ehabkost@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <b534e125-98b3-1468-cdec-9bb36fff75a4@redhat.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+In-Reply-To: <20170823221445.15243-5-ehabkost@redhat.com>
+X-Fnord: you can see the fnord
+User-Agent: Mutt/1.8.0 (2017-02-23)
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.27]);
-	Fri, 25 Aug 2017 17:13:23 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.38]);
+	Fri, 25 Aug 2017 19:39:40 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [Qemu-devel] [RFC v6 8/9] hw/arm/smmuv3: VFIO
- integration
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH 4/5] pci: Add
+ INTERFACE_LEGACY_PCI_DEVICE to legacy PCI devices
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -97,487 +97,1204 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, drjones@redhat.com, tcain@qti.qualcomm.com,
-	Radha.Chintakuntla@cavium.com, Sunil.Goutham@cavium.com,
-	mohun106@gmail.com, jean-philippe.brucker@arm.com,
-	tn@semihalf.com, will.deacon@arm.com, qemu-devel@nongnu.org,
-	peterx@redhat.com, alex.williamson@redhat.com,
-	qemu-arm@nongnu.org, prem.mallappa@gmail.com,
-	linu.cherian@cavium.com, Linu Cherian <linuc.decode@gmail.com>,
-	eric.auger.pro@gmail.com, bharat.bhushan@nxp.com,
-	christoffer.dall@linaro.org, robin.murphy@arm.com
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+	"Michael S. Tsirkin" <mst@redhat.com>, Jason Wang <jasowang@redhat.com>,
+	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+	Gerd Hoffmann <kraxel@redhat.com>, Jiri Slaby <jslaby@suse.cz>,
+	Stefano Stabellini <sstabellini@kernel.org>,
+	Alberto Garcia <berto@igalia.com>, qemu-block@nongnu.org,
+	Alexander Graf <agraf@suse.de>,
+	=?iso-8859-1?Q?Herv=E9?= Poussineau <hpoussin@reactos.org>,
+	Anthony Perard <anthony.perard@citrix.com>, xen-devel@lists.xenproject.org,
+	Richard Henderson <rth@twiddle.net>,
+	Artyom Tarasenko <atar4qemu@gmail.com>, Jiri Pirko <jiri@resnulli.us>,
+	Eduardo Habkost <ehabkost@redhat.com>,
+	Marcel Apfelbaum <marcel@redhat.com>,
+	Alex Williamson <alex.williamson@redhat.com>,
+	qemu-arm@nongnu.org, Hannes Reinecke <hare@suse.de>,
+	Laine Stump <laine@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
+	Yongbok Kim <yongbok.kim@imgtec.com>, John Snow <jsnow@redhat.com>,
+	David Gibson <david@gibson.dropbear.id.au>, qemu-ppc@nongnu.org,
+	Paolo Bonzini <pbonzini@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: YnfJ0kqK0cGK
+X-TUID: JgeSIAaVH6Rx
 
-On Wed, Aug 23, 2017 at 08:39:18AM +0200, Auger Eric wrote:
-> Hi Linu,
-> 
-> On 23/08/2017 06:24, Linu Cherian wrote:
-> > Hi Eric,
-> > 
-> > 
-> > On Fri Aug 11, 2017 at 04:22:33PM +0200, Eric Auger wrote:
-> >> This patch allows doing PCIe passthrough with a guest exposed
-> >> with a vSMMUv3. It implements the replay and notify_flag_changed
-> >> iommu ops. Also on TLB and data structure invalidation commands,
-> >> we replay the mappings so that the physical IOMMU implements
-> >> updated stage 1 settings (Guest IOVA -> Guest PA) + stage 2 settings.
-> >>
-> >> This works only if the guest smmuv3 driver implements the
-> >> "tlbi-on-map" option.
-> >>
-> >> Signed-off-by: Eric Auger <eric.auger@redhat.com>
-> > 
-> > Tried out launching a guest with Qemu option "-machine virt-2.10,smmu"
-> > and a 1G Ethernet controller as vfio-pci device. It works fine for me.
-> 
-> Hum sorry, I forgot to update the cover letter. You need to use -machine
-> virt-2.11,smmu for the instantiation as the 2.10 machine was released as
-> part of 2.10 and those changes only apply on 2.11 mach virt introduced
-> in this series. Please apologize for the pain.
-> 
-> I am going to release a new version this week fixing my last DPDK bug
-> (at least I am aware of ). In this new version, the instantiation method
-> will change to -device smmuv3 which is closer to what is done on Intel.
->
-> By the way I will also take time to provide some more info about the
-> VFIO integration as it is implemented in this series although this
-> latter may evolve due to NAK of kernel FW quirk.
+CCing maintainers of affected devices (sorry for not CCing you
+before).
 
-Yes I think changing compat string to avoid pretending this is smmuv3
-was a hard requirement. So you might need to do -device qemu-smmuv3
-if you want VFIO support with this PV quirk.
-
-For now, how about a subset of the functionality with VFIO disabled?
-People can use it with virtio for now.
-
-
-> Thank you for testing!
+On Wed, Aug 23, 2017 at 07:14:44PM -0300, Eduardo Habkost wrote:
+> Add INTERFACE_LEGACY_PCI_DEVICE to all direct subtypes of
+> TYPE_PCI_DEVICE, except:
 > 
-> Best Regards
+> 1) The ones that already have INTERFACE_PCIE_DEVICE set:
 > 
-> Eric
-> > 
-> > Qemu source: https://github.com/eauger/qemu.git Branch: v2.10.0-rc2-SMMU-v6  
-> > 
-> > But had to make this change, 
-> > 
-> > --- a/hw/arm/virt.c                                                                    
-> > +++ b/hw/arm/virt.c                                                                    
-> > @@ -1806,7 +1806,7 @@ static void virt_machine_2_10_options(MachineClass *mc)          
-> >      virt_machine_2_11_options(mc);                                                    
-> >      SET_MACHINE_COMPAT(mc, VIRT_COMPAT_2_10);                                         
-> >                                                                                        
-> > -    vmc->no_smmu = true;                                                              
-> > +    vmc->no_smmu = false;                                                             
-> >  }                                                                                     
-> >  DEFINE_VIRT_MACHINE(2, 10) 
-> > 
-> > so that qemu doesnt complain about "Property .smmu not found"
-> > 
-> > Will let you know if i have updates on further testing.
-> > 
-> > Thanks.
-> > 
-> >>
-> >> ---
-> >>
-> >> v5 -> v6:
-> >> - use IOMMUMemoryRegion
-> >> - handle implementation defined SMMU_CMD_TLBI_NH_VA_AM cmd
-> >>   (goes along with TLBI_ON_MAP FW quirk)
-> >> - replay systematically unmap the whole range first
-> >> - smmuv3_map_hook does not unmap anymore and the unmap is done
-> >>   before the replay
-> >> - add and use smmuv3_context_device_invalidate instead of
-> >>   blindly replaying everything
-> >> ---
-> >>  hw/arm/smmuv3-internal.h |   1 +
-> >>  hw/arm/smmuv3.c          | 265 ++++++++++++++++++++++++++++++++++++++++++++++-
-> >>  hw/arm/trace-events      |  14 +++
-> >>  3 files changed, 277 insertions(+), 3 deletions(-)
-> >>
-> >> diff --git a/hw/arm/smmuv3-internal.h b/hw/arm/smmuv3-internal.h
-> >> index e255df1..ac4628f 100644
-> >> --- a/hw/arm/smmuv3-internal.h
-> >> +++ b/hw/arm/smmuv3-internal.h
-> >> @@ -344,6 +344,7 @@ enum {
-> >>      SMMU_CMD_RESUME          = 0x44,
-> >>      SMMU_CMD_STALL_TERM,
-> >>      SMMU_CMD_SYNC,          /* 0x46 */
-> >> +    SMMU_CMD_TLBI_NH_VA_AM   = 0x8F, /* VIOMMU Impl Defined */
-> >>  };
-> >>  
-> >>  static const char *cmd_stringify[] = {
-> >> diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
-> >> index e195a0e..89fb116 100644
-> >> --- a/hw/arm/smmuv3.c
-> >> +++ b/hw/arm/smmuv3.c
-> >> @@ -25,6 +25,7 @@
-> >>  #include "exec/address-spaces.h"
-> >>  #include "trace.h"
-> >>  #include "qemu/error-report.h"
-> >> +#include "exec/target_page.h"
-> >>  
-> >>  #include "hw/arm/smmuv3.h"
-> >>  #include "smmuv3-internal.h"
-> >> @@ -143,6 +144,71 @@ static MemTxResult smmu_read_cmdq(SMMUV3State *s, Cmd *cmd)
-> >>      return ret;
-> >>  }
-> >>  
-> >> +static void smmuv3_replay_all(SMMUState *s)
-> >> +{
-> >> +    SMMUNotifierNode *node;
-> >> +
-> >> +    QLIST_FOREACH(node, &s->notifiers_list, next) {
-> >> +        trace_smmuv3_replay_all(node->sdev->iommu.parent_obj.name);
-> >> +        memory_region_iommu_replay_all(&node->sdev->iommu);
-> >> +    }
-> >> +}
-> >> +
-> >> +/* Replay the mappings for a given streamid */
-> >> +static void smmuv3_context_device_invalidate(SMMUState *s, uint16_t sid)
-> >> +{
-> >> +    uint8_t bus_n, devfn;
-> >> +    SMMUPciBus *smmu_bus;
-> >> +    SMMUDevice *smmu;
-> >> +
-> >> +    trace_smmuv3_context_device_invalidate(sid);
-> >> +    bus_n = PCI_BUS_NUM(sid);
-> >> +    smmu_bus = smmu_find_as_from_bus_num(s, bus_n);
-> >> +    if (smmu_bus) {
-> >> +        devfn = PCI_FUNC(sid);
-> >> +        smmu = smmu_bus->pbdev[devfn];
-> >> +        if (smmu) {
-> >> +            memory_region_iommu_replay_all(&smmu->iommu);
-> >> +        }
-> >> +    }
-> >> +}
-> >> +
-> >> +static void smmuv3_replay_single(IOMMUMemoryRegion *mr, IOMMUNotifier *n,
-> >> +                                 uint64_t iova);
-> >> +
-> >> +static void smmuv3_replay_range(IOMMUMemoryRegion *mr, IOMMUNotifier *n,
-> >> +                                 uint64_t iova, size_t nb_pages);
-> >> +
-> >> +static void smmuv3_notify_single(SMMUState *s, uint64_t iova)
-> >> +{
-> >> +    SMMUNotifierNode *node;
-> >> +
-> >> +    QLIST_FOREACH(node, &s->notifiers_list, next) {
-> >> +        IOMMUMemoryRegion *mr = &node->sdev->iommu;
-> >> +        IOMMUNotifier *n;
-> >> +
-> >> +        trace_smmuv3_notify_all(node->sdev->iommu.parent_obj.name, iova);
-> >> +        IOMMU_NOTIFIER_FOREACH(n, mr) {
-> >> +            smmuv3_replay_single(mr, n, iova);
-> >> +        }
-> >> +    }
-> >> +}
-> >> +
-> >> +static void smmuv3_notify_range(SMMUState *s, uint64_t iova, size_t size)
-> >> +{
-> >> +    SMMUNotifierNode *node;
-> >> +
-> >> +    QLIST_FOREACH(node, &s->notifiers_list, next) {
-> >> +        IOMMUMemoryRegion *mr = &node->sdev->iommu;
-> >> +        IOMMUNotifier *n;
-> >> +
-> >> +        trace_smmuv3_notify_all(node->sdev->iommu.parent_obj.name, iova);
-> >> +        IOMMU_NOTIFIER_FOREACH(n, mr) {
-> >> +            smmuv3_replay_range(mr, n, iova, size);
-> >> +        }
-> >> +    }
-> >> +}
-> >> +
-> >>  static int smmu_cmdq_consume(SMMUV3State *s)
-> >>  {
-> >>      uint32_t error = SMMU_CMD_ERR_NONE;
-> >> @@ -178,28 +244,38 @@ static int smmu_cmdq_consume(SMMUV3State *s)
-> >>              break;
-> >>          case SMMU_CMD_PREFETCH_CONFIG:
-> >>          case SMMU_CMD_PREFETCH_ADDR:
-> >> +            break;
-> >>          case SMMU_CMD_CFGI_STE:
-> >>          {
-> >>               uint32_t streamid = cmd.word[1];
-> >>  
-> >>               trace_smmuv3_cmdq_cfgi_ste(streamid);
-> >> -            break;
-> >> +             smmuv3_context_device_invalidate(&s->smmu_state, streamid);
-> >> +             break;
-> >>          }
-> >>          case SMMU_CMD_CFGI_STE_RANGE: /* same as SMMU_CMD_CFGI_ALL */
-> >>          {
-> >> -            uint32_t start = cmd.word[1], range, end;
-> >> +            uint32_t start = cmd.word[1], range, end, i;
-> >>  
-> >>              range = extract32(cmd.word[2], 0, 5);
-> >>              end = start + (1 << (range + 1)) - 1;
-> >>              trace_smmuv3_cmdq_cfgi_ste_range(start, end);
-> >> +            for (i = start; i <= end; i++) {
-> >> +                smmuv3_context_device_invalidate(&s->smmu_state, i);
-> >> +            }
-> >>              break;
-> >>          }
-> >>          case SMMU_CMD_CFGI_CD:
-> >>          case SMMU_CMD_CFGI_CD_ALL:
-> >> +        {
-> >> +             uint32_t streamid = cmd.word[1];
-> >> +
-> >> +            smmuv3_context_device_invalidate(&s->smmu_state, streamid);
-> >>              break;
-> >> +        }
-> >>          case SMMU_CMD_TLBI_NH_ALL:
-> >>          case SMMU_CMD_TLBI_NH_ASID:
-> >> -            printf("%s TLBI* replay\n", __func__);
-> >> +            smmuv3_replay_all(&s->smmu_state);
-> >>              break;
-> >>          case SMMU_CMD_TLBI_NH_VA:
-> >>          {
-> >> @@ -210,6 +286,20 @@ static int smmu_cmdq_consume(SMMUV3State *s)
-> >>              uint64_t addr = high << 32 | (low << 12);
-> >>  
-> >>              trace_smmuv3_cmdq_tlbi_nh_va(asid, vmid, addr);
-> >> +            smmuv3_notify_single(&s->smmu_state, addr);
-> >> +            break;
-> >> +        }
-> >> +        case SMMU_CMD_TLBI_NH_VA_AM:
-> >> +        {
-> >> +            int asid = extract32(cmd.word[1], 16, 16);
-> >> +            int am = extract32(cmd.word[1], 0, 16);
-> >> +            uint64_t low = extract32(cmd.word[2], 12, 20);
-> >> +            uint64_t high = cmd.word[3];
-> >> +            uint64_t addr = high << 32 | (low << 12);
-> >> +            size_t size = am << 12;
-> >> +
-> >> +            trace_smmuv3_cmdq_tlbi_nh_va_am(asid, am, addr, size);
-> >> +            smmuv3_notify_range(&s->smmu_state, addr, size);
-> >>              break;
-> >>          }
-> >>          case SMMU_CMD_TLBI_NH_VAA:
-> >> @@ -222,6 +312,7 @@ static int smmu_cmdq_consume(SMMUV3State *s)
-> >>          case SMMU_CMD_TLBI_S12_VMALL:
-> >>          case SMMU_CMD_TLBI_S2_IPA:
-> >>          case SMMU_CMD_TLBI_NSNH_ALL:
-> >> +            smmuv3_replay_all(&s->smmu_state);
-> >>              break;
-> >>          case SMMU_CMD_ATC_INV:
-> >>          case SMMU_CMD_PRI_RESP:
-> >> @@ -804,6 +895,172 @@ out:
-> >>      return entry;
-> >>  }
-> >>  
-> >> +static int smmuv3_replay_hook(IOMMUTLBEntry *entry, void *private)
-> >> +{
-> >> +    trace_smmuv3_replay_hook(entry->iova, entry->translated_addr,
-> >> +                             entry->addr_mask, entry->perm);
-> >> +    memory_region_notify_one((IOMMUNotifier *)private, entry);
-> >> +    return 0;
-> >> +}
-> >> +
-> >> +static int smmuv3_map_hook(IOMMUTLBEntry *entry, void *private)
-> >> +{
-> >> +    trace_smmuv3_map_hook(entry->iova, entry->translated_addr,
-> >> +                          entry->addr_mask, entry->perm);
-> >> +    memory_region_notify_one((IOMMUNotifier *)private, entry);
-> >> +    return 0;
-> >> +}
-> >> +
-> >> +/* Unmap the whole range in the notifier's scope. */
-> >> +static void smmuv3_unmap_notifier(SMMUDevice *sdev, IOMMUNotifier *n)
-> >> +{
-> >> +    IOMMUTLBEntry entry;
-> >> +    hwaddr size;
-> >> +    hwaddr start = n->start;
-> >> +    hwaddr end = n->end;
-> >> +
-> >> +    size = end - start + 1;
-> >> +
-> >> +    entry.target_as = &address_space_memory;
-> >> +    /* Adjust iova for the size */
-> >> +    entry.iova = n->start & ~(size - 1);
-> >> +    /* This field is meaningless for unmap */
-> >> +    entry.translated_addr = 0;
-> >> +    entry.perm = IOMMU_NONE;
-> >> +    entry.addr_mask = size - 1;
-> >> +
-> >> +    /* TODO: check start/end/size/mask */
-> >> +
-> >> +    trace_smmuv3_unmap_notifier(pci_bus_num(sdev->bus),
-> >> +                                PCI_SLOT(sdev->devfn),
-> >> +                                PCI_FUNC(sdev->devfn),
-> >> +                                entry.iova, size);
-> >> +
-> >> +    memory_region_notify_one(n, &entry);
-> >> +}
-> >> +
-> >> +static void smmuv3_replay(IOMMUMemoryRegion *mr, IOMMUNotifier *n)
-> >> +{
-> >> +    SMMUDevice *sdev = container_of(mr, SMMUDevice, iommu);
-> >> +    SMMUV3State *s = sdev->smmu;
-> >> +    SMMUBaseClass *sbc = SMMU_DEVICE_GET_CLASS(s);
-> >> +    SMMUTransCfg cfg = {};
-> >> +    int ret;
-> >> +
-> >> +    smmuv3_unmap_notifier(sdev, n);
-> >> +
-> >> +    ret = smmuv3_decode_config(mr, &cfg);
-> >> +    if (ret) {
-> >> +        error_report("%s error decoding the configuration for iommu mr=%s",
-> >> +                     __func__, mr->parent_obj.name);
-> >> +    }
-> >> +
-> >> +    if (cfg.disabled || cfg.bypassed) {
-> >> +        return;
-> >> +    }
-> >> +    /* is the smmu enabled */
-> >> +    sbc->page_walk_64(&cfg, 0, (1ULL << (64 - cfg.tsz)) - 1, false,
-> >> +                      smmuv3_replay_hook, n);
-> >> +}
-> >> +static void smmuv3_replay_range(IOMMUMemoryRegion *mr, IOMMUNotifier *n,
-> >> +                                 uint64_t iova, size_t size)
-> >> +{
-> >> +    SMMUDevice *sdev = container_of(mr, SMMUDevice, iommu);
-> >> +    SMMUV3State *s = sdev->smmu;
-> >> +    SMMUBaseClass *sbc = SMMU_DEVICE_GET_CLASS(s);
-> >> +    SMMUTransCfg cfg = {};
-> >> +    IOMMUTLBEntry entry;
-> >> +    int ret;
-> >> +
-> >> +    trace_smmuv3_replay_range(mr->parent_obj.name, iova, size, n);
-> >> +    ret = smmuv3_decode_config(mr, &cfg);
-> >> +    if (ret) {
-> >> +        error_report("%s error decoding the configuration for iommu mr=%s",
-> >> +                     __func__, mr->parent_obj.name);
-> >> +    }
-> >> +
-> >> +    if (cfg.disabled || cfg.bypassed) {
-> >> +        return;
-> >> +    }
-> >> +
-> >> +    /* first unmap */
-> >> +    entry.target_as = &address_space_memory;
-> >> +    entry.iova = iova & ~(size - 1);
-> >> +    entry.addr_mask = size - 1;
-> >> +    entry.perm = IOMMU_NONE;
-> >> +
-> >> +    memory_region_notify_one(n, &entry);
-> >> +
-> >> +    /* then figure out if a new mapping needs to be applied */
-> >> +    sbc->page_walk_64(&cfg, iova, iova + entry.addr_mask , false,
-> >> +                      smmuv3_map_hook, n);
-> >> +}
-> >> +
-> >> +static void smmuv3_replay_single(IOMMUMemoryRegion *mr, IOMMUNotifier *n,
-> >> +                                 uint64_t iova)
-> >> +{
-> >> +    SMMUDevice *sdev = container_of(mr, SMMUDevice, iommu);
-> >> +    SMMUV3State *s = sdev->smmu;
-> >> +    size_t target_page_size = qemu_target_page_size();
-> >> +    SMMUBaseClass *sbc = SMMU_DEVICE_GET_CLASS(s);
-> >> +    SMMUTransCfg cfg = {};
-> >> +    IOMMUTLBEntry entry;
-> >> +    int ret;
-> >> +
-> >> +    trace_smmuv3_replay_single(mr->parent_obj.name, iova, n);
-> >> +    ret = smmuv3_decode_config(mr, &cfg);
-> >> +    if (ret) {
-> >> +        error_report("%s error decoding the configuration for iommu mr=%s",
-> >> +                     __func__, mr->parent_obj.name);
-> >> +    }
-> >> +
-> >> +    if (cfg.disabled || cfg.bypassed) {
-> >> +        return;
-> >> +    }
-> >> +
-> >> +    /* first unmap */
-> >> +    entry.target_as = &address_space_memory;
-> >> +    entry.iova = iova & ~(target_page_size - 1);
-> >> +    entry.addr_mask = target_page_size - 1;
-> >> +    entry.perm = IOMMU_NONE;
-> >> +
-> >> +    memory_region_notify_one(n, &entry);
-> >> +
-> >> +    /* then figure out if a new mapping needs to be applied */
-> >> +    sbc->page_walk_64(&cfg, iova, iova + 1, false,
-> >> +                      smmuv3_map_hook, n);
-> >> +}
-> >> +
-> >> +static void smmuv3_notify_flag_changed(IOMMUMemoryRegion *iommu,
-> >> +                                       IOMMUNotifierFlag old,
-> >> +                                       IOMMUNotifierFlag new)
-> >> +{
-> >> +    SMMUDevice *sdev = container_of(iommu, SMMUDevice, iommu);
-> >> +    SMMUV3State *s3 = sdev->smmu;
-> >> +    SMMUState *s = &(s3->smmu_state);
-> >> +    SMMUNotifierNode *node = NULL;
-> >> +    SMMUNotifierNode *next_node = NULL;
-> >> +
-> >> +    if (old == IOMMU_NOTIFIER_NONE) {
-> >> +        trace_smmuv3_notify_flag_add(iommu->parent_obj.name);
-> >> +        node = g_malloc0(sizeof(*node));
-> >> +        node->sdev = sdev;
-> >> +        QLIST_INSERT_HEAD(&s->notifiers_list, node, next);
-> >> +        return;
-> >> +    }
-> >> +
-> >> +    /* update notifier node with new flags */
-> >> +    QLIST_FOREACH_SAFE(node, &s->notifiers_list, next, next_node) {
-> >> +        if (node->sdev == sdev) {
-> >> +            if (new == IOMMU_NOTIFIER_NONE) {
-> >> +                trace_smmuv3_notify_flag_del(iommu->parent_obj.name);
-> >> +                QLIST_REMOVE(node, next);
-> >> +                g_free(node);
-> >> +            }
-> >> +            return;
-> >> +        }
-> >> +    }
-> >> +}
-> >>  
-> >>  static inline void smmu_update_base_reg(SMMUV3State *s, uint64_t *base,
-> >>                                          uint64_t val)
-> >> @@ -1125,6 +1382,8 @@ static void smmuv3_iommu_memory_region_class_init(ObjectClass *klass,
-> >>      IOMMUMemoryRegionClass *imrc = IOMMU_MEMORY_REGION_CLASS(klass);
-> >>  
-> >>      imrc->translate = smmuv3_translate;
-> >> +    imrc->notify_flag_changed = smmuv3_notify_flag_changed;
-> >> +    imrc->replay = smmuv3_replay;
-> >>  }
-> >>  
-> >>  static const TypeInfo smmuv3_type_info = {
-> >> diff --git a/hw/arm/trace-events b/hw/arm/trace-events
-> >> index f9b9cbe..8228e26 100644
-> >> --- a/hw/arm/trace-events
-> >> +++ b/hw/arm/trace-events
-> >> @@ -27,6 +27,7 @@ smmuv3_cmdq_opcode(const char *opcode) "<--- %s"
-> >>  smmuv3_cmdq_cfgi_ste(int streamid) "     |_ streamid =%d"
-> >>  smmuv3_cmdq_cfgi_ste_range(int start, int end) "     |_ start=0x%d - end=0x%d"
-> >>  smmuv3_cmdq_tlbi_nh_va(int asid, int vmid, uint64_t addr) "     |_ asid =%d vmid =%d addr=0x%"PRIx64
-> >> +smmuv3_cmdq_tlbi_nh_va_am(int asid, int am, size_t size, uint64_t addr) "     |_ asid =%d am =%d size=0x%lx addr=0x%"PRIx64
-> >>  smmuv3_cmdq_consume_sev(void) "CMD_SYNC CS=SEV not supported, ignoring"
-> >>  smmuv3_cmdq_consume_out(uint8_t prod_wrap, uint32_t prod, uint8_t cons_wrap, uint32_t cons) "prod_wrap:%d, prod:0x%x cons_wrap:%d cons:0x%x"
-> >>  smmuv3_update(bool is_empty, uint32_t prod, uint32_t cons, uint8_t prod_wrap, uint8_t cons_wrap) "q empty:%d prod:%d cons:%d p.wrap:%d p.cons:%d"
-> >> @@ -50,3 +51,16 @@ smmuv3_dump_ste(int i, uint32_t word0, int j,  uint32_t word1) "STE[%2d]: 0x%x\t
-> >>  smmuv3_dump_cd(int i, uint32_t word0, int j,  uint32_t word1) "CD[%2d]: 0x%x\t CD[%2d]: 0x%x"
-> >>  smmuv3_dump_cmd(int i, uint32_t word0, int j,  uint32_t word1) "CMD[%2d]: 0x%x\t CMD[%2d]: 0x%x"
-> >>  smmuv3_cfg_stage(int s, uint32_t oas, uint32_t tsz, uint64_t ttbr, bool aa64, uint32_t granule_sz, int initial_level) "TransCFG stage:%d oas:%d tsz:%d ttbr:0x%"PRIx64"  aa64:%d granule_sz:%d, initial_level = %d"
-> >> +
-> >> +smmuv3_replay(uint16_t sid, bool enabled) "sid=%d, enabled=%d"
-> >> +smmuv3_replay_hook(hwaddr iova, hwaddr pa, hwaddr mask, int perm) "iova=0x%"PRIx64" pa=0x%" PRIx64" mask=0x%"PRIx64" perm=%d"
-> >> +smmuv3_map_hook(hwaddr iova, hwaddr pa, hwaddr mask, int perm) "iova=0x%"PRIx64" pa=0x%" PRIx64" mask=0x%"PRIx64" perm=%d"
-> >> +smmuv3_notify_flag_add(const char *iommu) "ADD SMMUNotifier node for iommu mr=%s"
-> >> +smmuv3_notify_flag_del(const char *iommu) "DEL SMMUNotifier node for iommu mr=%s"
-> >> +smmuv3_replay_single(const char *name, uint64_t iova, void *n) "iommu mr=%s iova=0x%"PRIx64" n=%p"
-> >> +smmuv3_replay_range(const char *name, uint64_t iova, size_t size, void *n) "iommu mr=%s iova=0x%"PRIx64" size=0x%lx n=%p"
-> >> +smmuv3_replay_all(const char *name) "iommu mr=%s"
-> >> +smmuv3_notify_all(const char *name, uint64_t iova) "iommu mr=%s iova=0x%"PRIx64
-> >> +smmuv3_unmap_notifier(uint8_t bus, uint8_t slot, uint8_t fn, uint64_t iova, uint64_t size) "Device %02x:%02x.%x start 0x%"PRIx64" size 0x%"PRIx64
-> >> +smmuv3_context_device_invalidate(uint32_t sid) "sid=%d"
-> >> +
-> >> -- 
-> >> 2.5.5
-> >>
-> >>
-> > 
+> * base-xhci
+> * e1000e
+> * nvme
+> * pvscsi
+> * vfio-pci
+> * virtio-pci
+> * vmxnet3
+> 
+> 2) base-pci-bridge
+> 
+> Not all PCI bridges are legacy PCI devices, so
+> INTERFACE_LEGACY_PCI_DEVICE is added only to the subtypes that
+> are actually legacy PCI devices:
+> 
+> * dec-21154-p2p-bridge
+> * i82801b11-bridge
+> * pbm-bridge
+> * pci-bridge
+> 
+> The direct subtypes of base-pci-bridge not touched by this patch
+> are:
+> 
+> * xilinx-pcie-root: Already marked as PCIe-only device.
+> * pcie-port: all non-abstract subtypes of pcie-port are already
+>   marked as PCIe-only devices.
+> 
+> 3) megasas-base
+> 
+> Not all megasas devices are legacy PCI devices, so the interface
+> names are added to the subclasses registered by
+> megasas_register_types(), according to information in the
+> megasas_devices[] array.
+> 
+> "megasas-gen2" already implements INTERFACE_PCIE_DEVICE, so add
+> INTERFACE_LEGACY_PCI_DEVICE only to "megasas".
+> 
+> Signed-off-by: Eduardo Habkost <ehabkost@redhat.com>
+> ---
+>  hw/acpi/piix4.c                     |  1 +
+>  hw/audio/ac97.c                     |  4 ++++
+>  hw/audio/es1370.c                   |  4 ++++
+>  hw/audio/intel-hda.c                |  4 ++++
+>  hw/char/serial-pci.c                | 12 ++++++++++++
+>  hw/display/cirrus_vga.c             |  4 ++++
+>  hw/display/qxl.c                    |  4 ++++
+>  hw/display/sm501.c                  |  4 ++++
+>  hw/display/vga-pci.c                |  4 ++++
+>  hw/display/vmware_vga.c             |  4 ++++
+>  hw/i2c/smbus_ich9.c                 |  4 ++++
+>  hw/i386/amd_iommu.c                 |  4 ++++
+>  hw/i386/kvm/pci-assign.c            |  4 ++++
+>  hw/i386/pc_piix.c                   |  4 ++++
+>  hw/i386/xen/xen_platform.c          |  4 ++++
+>  hw/i386/xen/xen_pvdevice.c          |  4 ++++
+>  hw/ide/ich.c                        |  4 ++++
+>  hw/ide/pci.c                        |  4 ++++
+>  hw/ipack/tpci200.c                  |  4 ++++
+>  hw/isa/i82378.c                     |  4 ++++
+>  hw/isa/lpc_ich9.c                   |  1 +
+>  hw/isa/piix4.c                      |  4 ++++
+>  hw/isa/vt82c686.c                   | 16 ++++++++++++++++
+>  hw/mips/gt64xxx_pci.c               |  4 ++++
+>  hw/misc/edu.c                       |  5 +++++
+>  hw/misc/ivshmem.c                   |  4 ++++
+>  hw/misc/macio/macio.c               |  4 ++++
+>  hw/misc/pci-testdev.c               |  4 ++++
+>  hw/net/e1000.c                      |  4 ++++
+>  hw/net/eepro100.c                   |  4 ++++
+>  hw/net/ne2000.c                     |  4 ++++
+>  hw/net/pcnet-pci.c                  |  4 ++++
+>  hw/net/rocker/rocker.c              |  4 ++++
+>  hw/net/rtl8139.c                    |  4 ++++
+>  hw/pci-bridge/dec.c                 |  8 ++++++++
+>  hw/pci-bridge/i82801b11.c           |  4 ++++
+>  hw/pci-bridge/pci_bridge_dev.c      |  1 +
+>  hw/pci-bridge/pci_expander_bridge.c |  8 ++++++++
+>  hw/pci-host/apb.c                   |  8 ++++++++
+>  hw/pci-host/bonito.c                |  4 ++++
+>  hw/pci-host/gpex.c                  |  4 ++++
+>  hw/pci-host/grackle.c               |  4 ++++
+>  hw/pci-host/piix.c                  |  8 ++++++++
+>  hw/pci-host/ppce500.c               |  4 ++++
+>  hw/pci-host/prep.c                  |  4 ++++
+>  hw/pci-host/q35.c                   |  4 ++++
+>  hw/pci-host/uninorth.c              | 16 ++++++++++++++++
+>  hw/pci-host/versatile.c             |  4 ++++
+>  hw/ppc/ppc4xx_pci.c                 |  4 ++++
+>  hw/scsi/esp-pci.c                   |  4 ++++
+>  hw/scsi/lsi53c895a.c                |  4 ++++
+>  hw/scsi/megasas.c                   |  4 ++++
+>  hw/scsi/mptsas.c                    |  4 ++++
+>  hw/sd/sdhci.c                       |  4 ++++
+>  hw/sh4/sh_pci.c                     |  4 ++++
+>  hw/sparc64/sun4u.c                  |  4 ++++
+>  hw/usb/hcd-ehci-pci.c               |  4 ++++
+>  hw/usb/hcd-ohci.c                   |  4 ++++
+>  hw/usb/hcd-uhci.c                   |  4 ++++
+>  hw/vfio/pci-quirks.c                |  4 ++++
+>  hw/watchdog/wdt_i6300esb.c          |  4 ++++
+>  hw/xen/xen_pt.c                     |  4 ++++
+>  62 files changed, 288 insertions(+)
+> 
+> diff --git a/hw/acpi/piix4.c b/hw/acpi/piix4.c
+> index f276967..defe98a 100644
+> --- a/hw/acpi/piix4.c
+> +++ b/hw/acpi/piix4.c
+> @@ -723,6 +723,7 @@ static const TypeInfo piix4_pm_info = {
+>      .interfaces = (InterfaceInfo[]) {
+>          { TYPE_HOTPLUG_HANDLER },
+>          { TYPE_ACPI_DEVICE_IF },
+> +        { INTERFACE_LEGACY_PCI_DEVICE },
+>          { }
+>      }
+>  };
+> diff --git a/hw/audio/ac97.c b/hw/audio/ac97.c
+> index 959c786..6027e15 100644
+> --- a/hw/audio/ac97.c
+> +++ b/hw/audio/ac97.c
+> @@ -1431,6 +1431,10 @@ static const TypeInfo ac97_info = {
+>      .parent        = TYPE_PCI_DEVICE,
+>      .instance_size = sizeof (AC97LinkState),
+>      .class_init    = ac97_class_init,
+> +    .interfaces = (InterfaceInfo[]) {
+> +        { INTERFACE_LEGACY_PCI_DEVICE },
+> +        { },
+> +    },
+>  };
+>  
+>  static void ac97_register_types (void)
+> diff --git a/hw/audio/es1370.c b/hw/audio/es1370.c
+> index dd7c23d..ed14ec3 100644
+> --- a/hw/audio/es1370.c
+> +++ b/hw/audio/es1370.c
+> @@ -1082,6 +1082,10 @@ static const TypeInfo es1370_info = {
+>      .parent        = TYPE_PCI_DEVICE,
+>      .instance_size = sizeof (ES1370State),
+>      .class_init    = es1370_class_init,
+> +    .interfaces = (InterfaceInfo[]) {
+> +        { INTERFACE_LEGACY_PCI_DEVICE },
+> +        { },
+> +    },
+>  };
+>  
+>  static void es1370_register_types (void)
+> diff --git a/hw/audio/intel-hda.c b/hw/audio/intel-hda.c
+> index 06acc98..e2b9bf5 100644
+> --- a/hw/audio/intel-hda.c
+> +++ b/hw/audio/intel-hda.c
+> @@ -1299,6 +1299,10 @@ static const TypeInfo intel_hda_info = {
+>      .instance_size = sizeof(IntelHDAState),
+>      .class_init    = intel_hda_class_init,
+>      .abstract      = true,
+> +    .interfaces = (InterfaceInfo[]) {
+> +        { INTERFACE_LEGACY_PCI_DEVICE },
+> +        { },
+> +    },
+>  };
+>  
+>  static const TypeInfo intel_hda_info_ich6 = {
+> diff --git a/hw/char/serial-pci.c b/hw/char/serial-pci.c
+> index 303104d..c2dbcc0 100644
+> --- a/hw/char/serial-pci.c
+> +++ b/hw/char/serial-pci.c
+> @@ -250,6 +250,10 @@ static const TypeInfo serial_pci_info = {
+>      .parent        = TYPE_PCI_DEVICE,
+>      .instance_size = sizeof(PCISerialState),
+>      .class_init    = serial_pci_class_initfn,
+> +    .interfaces = (InterfaceInfo[]) {
+> +        { INTERFACE_LEGACY_PCI_DEVICE },
+> +        { },
+> +    },
+>  };
+>  
+>  static const TypeInfo multi_2x_serial_pci_info = {
+> @@ -257,6 +261,10 @@ static const TypeInfo multi_2x_serial_pci_info = {
+>      .parent        = TYPE_PCI_DEVICE,
+>      .instance_size = sizeof(PCIMultiSerialState),
+>      .class_init    = multi_2x_serial_pci_class_initfn,
+> +    .interfaces = (InterfaceInfo[]) {
+> +        { INTERFACE_LEGACY_PCI_DEVICE },
+> +        { },
+> +    },
+>  };
+>  
+>  static const TypeInfo multi_4x_serial_pci_info = {
+> @@ -264,6 +272,10 @@ static const TypeInfo multi_4x_serial_pci_info = {
+>      .parent        = TYPE_PCI_DEVICE,
+>      .instance_size = sizeof(PCIMultiSerialState),
+>      .class_init    = multi_4x_serial_pci_class_initfn,
+> +    .interfaces = (InterfaceInfo[]) {
+> +        { INTERFACE_LEGACY_PCI_DEVICE },
+> +        { },
+> +    },
+>  };
+>  
+>  static void serial_pci_register_types(void)
+> diff --git a/hw/display/cirrus_vga.c b/hw/display/cirrus_vga.c
+> index afc290a..9a39fa0 100644
+> --- a/hw/display/cirrus_vga.c
+> +++ b/hw/display/cirrus_vga.c
+> @@ -3162,6 +3162,10 @@ static const TypeInfo cirrus_vga_info = {
+>      .parent        = TYPE_PCI_DEVICE,
+>      .instance_size = sizeof(PCICirrusVGAState),
+>      .class_init    = cirrus_vga_class_init,
+> +    .interfaces = (InterfaceInfo[]) {
+> +        { INTERFACE_LEGACY_PCI_DEVICE },
+> +        { },
+> +    },
+>  };
+>  
+>  static void cirrus_vga_register_types(void)
+> diff --git a/hw/display/qxl.c b/hw/display/qxl.c
+> index ae3677f..1a010e8 100644
+> --- a/hw/display/qxl.c
+> +++ b/hw/display/qxl.c
+> @@ -2430,6 +2430,10 @@ static const TypeInfo qxl_pci_type_info = {
+>      .instance_size = sizeof(PCIQXLDevice),
+>      .abstract = true,
+>      .class_init = qxl_pci_class_init,
+> +    .interfaces = (InterfaceInfo[]) {
+> +        { INTERFACE_LEGACY_PCI_DEVICE },
+> +        { },
+> +    },
+>  };
+>  
+>  static void qxl_primary_class_init(ObjectClass *klass, void *data)
+> diff --git a/hw/display/sm501.c b/hw/display/sm501.c
+> index 9aa515b..7538f0c 100644
+> --- a/hw/display/sm501.c
+> +++ b/hw/display/sm501.c
+> @@ -1843,6 +1843,10 @@ static const TypeInfo sm501_pci_info = {
+>      .parent        = TYPE_PCI_DEVICE,
+>      .instance_size = sizeof(SM501PCIState),
+>      .class_init    = sm501_pci_class_init,
+> +    .interfaces = (InterfaceInfo[]) {
+> +        { INTERFACE_LEGACY_PCI_DEVICE },
+> +        { },
+> +    },
+>  };
+>  
+>  static void sm501_register_types(void)
+> diff --git a/hw/display/vga-pci.c b/hw/display/vga-pci.c
+> index ac9a764..72477e4 100644
+> --- a/hw/display/vga-pci.c
+> +++ b/hw/display/vga-pci.c
+> @@ -338,6 +338,10 @@ static const TypeInfo vga_pci_type_info = {
+>      .instance_size = sizeof(PCIVGAState),
+>      .abstract = true,
+>      .class_init = vga_pci_class_init,
+> +    .interfaces = (InterfaceInfo[]) {
+> +        { INTERFACE_LEGACY_PCI_DEVICE },
+> +        { },
+> +    },
+>  };
+>  
+>  static void vga_class_init(ObjectClass *klass, void *data)
+> diff --git a/hw/display/vmware_vga.c b/hw/display/vmware_vga.c
+> index 4a64b41..9c2aa2d 100644
+> --- a/hw/display/vmware_vga.c
+> +++ b/hw/display/vmware_vga.c
+> @@ -1350,6 +1350,10 @@ static const TypeInfo vmsvga_info = {
+>      .parent        = TYPE_PCI_DEVICE,
+>      .instance_size = sizeof(struct pci_vmsvga_state_s),
+>      .class_init    = vmsvga_class_init,
+> +    .interfaces = (InterfaceInfo[]) {
+> +        { INTERFACE_LEGACY_PCI_DEVICE },
+> +        { },
+> +    },
+>  };
+>  
+>  static void vmsvga_register_types(void)
+> diff --git a/hw/i2c/smbus_ich9.c b/hw/i2c/smbus_ich9.c
+> index ea51e09..83b0512 100644
+> --- a/hw/i2c/smbus_ich9.c
+> +++ b/hw/i2c/smbus_ich9.c
+> @@ -119,6 +119,10 @@ static const TypeInfo ich9_smb_info = {
+>      .parent = TYPE_PCI_DEVICE,
+>      .instance_size = sizeof(ICH9SMBState),
+>      .class_init = ich9_smb_class_init,
+> +    .interfaces = (InterfaceInfo[]) {
+> +        { INTERFACE_LEGACY_PCI_DEVICE },
+> +        { },
+> +    },
+>  };
+>  
+>  static void ich9_smb_register(void)
+> diff --git a/hw/i386/amd_iommu.c b/hw/i386/amd_iommu.c
+> index 334938a..471c7a9 100644
+> --- a/hw/i386/amd_iommu.c
+> +++ b/hw/i386/amd_iommu.c
+> @@ -1227,6 +1227,10 @@ static const TypeInfo amdviPCI = {
+>      .name = "AMDVI-PCI",
+>      .parent = TYPE_PCI_DEVICE,
+>      .instance_size = sizeof(AMDVIPCIState),
+> +    .interfaces = (InterfaceInfo[]) {
+> +        { INTERFACE_LEGACY_PCI_DEVICE },
+> +        { },
+> +    },
+>  };
+>  
+>  static void amdvi_iommu_memory_region_class_init(ObjectClass *klass, void *data)
+> diff --git a/hw/i386/kvm/pci-assign.c b/hw/i386/kvm/pci-assign.c
+> index 33e20cb..57800d3 100644
+> --- a/hw/i386/kvm/pci-assign.c
+> +++ b/hw/i386/kvm/pci-assign.c
+> @@ -1864,6 +1864,10 @@ static const TypeInfo assign_info = {
+>      .instance_size      = sizeof(AssignedDevice),
+>      .class_init         = assign_class_init,
+>      .instance_init      = assigned_dev_instance_init,
+> +    .interfaces = (InterfaceInfo[]) {
+> +        { INTERFACE_LEGACY_PCI_DEVICE },
+> +        { },
+> +    },
+>  };
+>  
+>  static void assign_register_types(void)
+> diff --git a/hw/i386/pc_piix.c b/hw/i386/pc_piix.c
+> index 46dfd2c..eafc207 100644
+> --- a/hw/i386/pc_piix.c
+> +++ b/hw/i386/pc_piix.c
+> @@ -1049,6 +1049,10 @@ static TypeInfo isa_bridge_info = {
+>      .parent        = TYPE_PCI_DEVICE,
+>      .instance_size = sizeof(PCIDevice),
+>      .class_init = isa_bridge_class_init,
+> +    .interfaces = (InterfaceInfo[]) {
+> +        { INTERFACE_LEGACY_PCI_DEVICE },
+> +        { },
+> +    },
+>  };
+>  
+>  static void pt_graphics_register_types(void)
+> diff --git a/hw/i386/xen/xen_platform.c b/hw/i386/xen/xen_platform.c
+> index 9ba7474..2113bd0 100644
+> --- a/hw/i386/xen/xen_platform.c
+> +++ b/hw/i386/xen/xen_platform.c
+> @@ -517,6 +517,10 @@ static const TypeInfo xen_platform_info = {
+>      .parent        = TYPE_PCI_DEVICE,
+>      .instance_size = sizeof(PCIXenPlatformState),
+>      .class_init    = xen_platform_class_init,
+> +    .interfaces = (InterfaceInfo[]) {
+> +        { INTERFACE_LEGACY_PCI_DEVICE },
+> +        { },
+> +    },
+>  };
+>  
+>  static void xen_platform_register_types(void)
+> diff --git a/hw/i386/xen/xen_pvdevice.c b/hw/i386/xen/xen_pvdevice.c
+> index c093b34..e2ae81b 100644
+> --- a/hw/i386/xen/xen_pvdevice.c
+> +++ b/hw/i386/xen/xen_pvdevice.c
+> @@ -127,6 +127,10 @@ static const TypeInfo xen_pv_type_info = {
+>      .parent        = TYPE_PCI_DEVICE,
+>      .instance_size = sizeof(XenPVDevice),
+>      .class_init    = xen_pv_class_init,
+> +    .interfaces = (InterfaceInfo[]) {
+> +        { INTERFACE_LEGACY_PCI_DEVICE },
+> +        { },
+> +    },
+>  };
+>  
+>  static void xen_pv_register_types(void)
+> diff --git a/hw/ide/ich.c b/hw/ide/ich.c
+> index 9472a60..0c60aa3 100644
+> --- a/hw/ide/ich.c
+> +++ b/hw/ide/ich.c
+> @@ -184,6 +184,10 @@ static const TypeInfo ich_ahci_info = {
+>      .instance_size = sizeof(AHCIPCIState),
+>      .instance_init = pci_ich9_ahci_init,
+>      .class_init    = ich_ahci_class_init,
+> +    .interfaces = (InterfaceInfo[]) {
+> +        { INTERFACE_LEGACY_PCI_DEVICE },
+> +        { },
+> +    },
+>  };
+>  
+>  static void ich_ahci_register_types(void)
+> diff --git a/hw/ide/pci.c b/hw/ide/pci.c
+> index 3cfb510..f437298 100644
+> --- a/hw/ide/pci.c
+> +++ b/hw/ide/pci.c
+> @@ -458,6 +458,10 @@ static const TypeInfo pci_ide_type_info = {
+>      .parent = TYPE_PCI_DEVICE,
+>      .instance_size = sizeof(PCIIDEState),
+>      .abstract = true,
+> +    .interfaces = (InterfaceInfo[]) {
+> +        { INTERFACE_LEGACY_PCI_DEVICE },
+> +        { },
+> +    },
+>  };
+>  
+>  static void pci_ide_register_types(void)
+> diff --git a/hw/ipack/tpci200.c b/hw/ipack/tpci200.c
+> index 4dfa6b3..e380378 100644
+> --- a/hw/ipack/tpci200.c
+> +++ b/hw/ipack/tpci200.c
+> @@ -646,6 +646,10 @@ static const TypeInfo tpci200_info = {
+>      .parent        = TYPE_PCI_DEVICE,
+>      .instance_size = sizeof(TPCI200State),
+>      .class_init    = tpci200_class_init,
+> +    .interfaces = (InterfaceInfo[]) {
+> +        { INTERFACE_LEGACY_PCI_DEVICE },
+> +        { },
+> +    },
+>  };
+>  
+>  static void tpci200_register_types(void)
+> diff --git a/hw/isa/i82378.c b/hw/isa/i82378.c
+> index 4d29a99..13702b8 100644
+> --- a/hw/isa/i82378.c
+> +++ b/hw/isa/i82378.c
+> @@ -138,6 +138,10 @@ static const TypeInfo i82378_type_info = {
+>      .instance_size = sizeof(I82378State),
+>      .instance_init = i82378_init,
+>      .class_init = i82378_class_init,
+> +    .interfaces = (InterfaceInfo[]) {
+> +        { INTERFACE_LEGACY_PCI_DEVICE },
+> +        { },
+> +    },
+>  };
+>  
+>  static void i82378_register_types(void)
+> diff --git a/hw/isa/lpc_ich9.c b/hw/isa/lpc_ich9.c
+> index ac8416d..dcde152 100644
+> --- a/hw/isa/lpc_ich9.c
+> +++ b/hw/isa/lpc_ich9.c
+> @@ -823,6 +823,7 @@ static const TypeInfo ich9_lpc_info = {
+>      .interfaces = (InterfaceInfo[]) {
+>          { TYPE_HOTPLUG_HANDLER },
+>          { TYPE_ACPI_DEVICE_IF },
+> +        { INTERFACE_LEGACY_PCI_DEVICE },
+>          { }
+>      }
+>  };
+> diff --git a/hw/isa/piix4.c b/hw/isa/piix4.c
+> index f811eba..515e55d 100644
+> --- a/hw/isa/piix4.c
+> +++ b/hw/isa/piix4.c
+> @@ -132,6 +132,10 @@ static const TypeInfo piix4_info = {
+>      .parent        = TYPE_PCI_DEVICE,
+>      .instance_size = sizeof(PIIX4State),
+>      .class_init    = piix4_class_init,
+> +    .interfaces = (InterfaceInfo[]) {
+> +        { INTERFACE_LEGACY_PCI_DEVICE },
+> +        { },
+> +    },
+>  };
+>  
+>  static void piix4_register_types(void)
+> diff --git a/hw/isa/vt82c686.c b/hw/isa/vt82c686.c
+> index 50dc83d..319dc7f 100644
+> --- a/hw/isa/vt82c686.c
+> +++ b/hw/isa/vt82c686.c
+> @@ -301,6 +301,10 @@ static const TypeInfo via_ac97_info = {
+>      .parent        = TYPE_PCI_DEVICE,
+>      .instance_size = sizeof(VT686AC97State),
+>      .class_init    = via_ac97_class_init,
+> +    .interfaces = (InterfaceInfo[]) {
+> +        { INTERFACE_LEGACY_PCI_DEVICE },
+> +        { },
+> +    },
+>  };
+>  
+>  static void vt82c686b_mc97_realize(PCIDevice *dev, Error **errp)
+> @@ -341,6 +345,10 @@ static const TypeInfo via_mc97_info = {
+>      .parent        = TYPE_PCI_DEVICE,
+>      .instance_size = sizeof(VT686MC97State),
+>      .class_init    = via_mc97_class_init,
+> +    .interfaces = (InterfaceInfo[]) {
+> +        { INTERFACE_LEGACY_PCI_DEVICE },
+> +        { },
+> +    },
+>  };
+>  
+>  /* vt82c686 pm init */
+> @@ -419,6 +427,10 @@ static const TypeInfo via_pm_info = {
+>      .parent        = TYPE_PCI_DEVICE,
+>      .instance_size = sizeof(VT686PMState),
+>      .class_init    = via_pm_class_init,
+> +    .interfaces = (InterfaceInfo[]) {
+> +        { INTERFACE_LEGACY_PCI_DEVICE },
+> +        { },
+> +    },
+>  };
+>  
+>  static const VMStateDescription vmstate_via = {
+> @@ -502,6 +514,10 @@ static const TypeInfo via_info = {
+>      .parent        = TYPE_PCI_DEVICE,
+>      .instance_size = sizeof(VT82C686BState),
+>      .class_init    = via_class_init,
+> +    .interfaces = (InterfaceInfo[]) {
+> +        { INTERFACE_LEGACY_PCI_DEVICE },
+> +        { },
+> +    },
+>  };
+>  
+>  static void vt82c686b_register_types(void)
+> diff --git a/hw/mips/gt64xxx_pci.c b/hw/mips/gt64xxx_pci.c
+> index e8b2eef..96d8cd0 100644
+> --- a/hw/mips/gt64xxx_pci.c
+> +++ b/hw/mips/gt64xxx_pci.c
+> @@ -1232,6 +1232,10 @@ static const TypeInfo gt64120_pci_info = {
+>      .parent        = TYPE_PCI_DEVICE,
+>      .instance_size = sizeof(PCIDevice),
+>      .class_init    = gt64120_pci_class_init,
+> +    .interfaces = (InterfaceInfo[]) {
+> +        { INTERFACE_LEGACY_PCI_DEVICE },
+> +        { },
+> +    },
+>  };
+>  
+>  static void gt64120_class_init(ObjectClass *klass, void *data)
+> diff --git a/hw/misc/edu.c b/hw/misc/edu.c
+> index 01acacf..64b12b3 100644
+> --- a/hw/misc/edu.c
+> +++ b/hw/misc/edu.c
+> @@ -408,12 +408,17 @@ static void edu_class_init(ObjectClass *class, void *data)
+>  
+>  static void pci_edu_register_types(void)
+>  {
+> +    static InterfaceInfo interfaces[] = {
+> +        { INTERFACE_LEGACY_PCI_DEVICE },
+> +        { },
+> +    };
+>      static const TypeInfo edu_info = {
+>          .name          = "edu",
+>          .parent        = TYPE_PCI_DEVICE,
+>          .instance_size = sizeof(EduState),
+>          .instance_init = edu_instance_init,
+>          .class_init    = edu_class_init,
+> +        .interfaces = interfaces,
+>      };
+>  
+>      type_register_static(&edu_info);
+> diff --git a/hw/misc/ivshmem.c b/hw/misc/ivshmem.c
+> index 47a015f..da63c90 100644
+> --- a/hw/misc/ivshmem.c
+> +++ b/hw/misc/ivshmem.c
+> @@ -1010,6 +1010,10 @@ static const TypeInfo ivshmem_common_info = {
+>      .instance_size = sizeof(IVShmemState),
+>      .abstract      = true,
+>      .class_init    = ivshmem_common_class_init,
+> +    .interfaces = (InterfaceInfo[]) {
+> +        { INTERFACE_LEGACY_PCI_DEVICE },
+> +        { },
+> +    },
+>  };
+>  
+>  static const VMStateDescription ivshmem_plain_vmsd = {
+> diff --git a/hw/misc/macio/macio.c b/hw/misc/macio/macio.c
+> index 5d57f45..fa163e3 100644
+> --- a/hw/misc/macio/macio.c
+> +++ b/hw/misc/macio/macio.c
+> @@ -415,6 +415,10 @@ static const TypeInfo macio_type_info = {
+>      .instance_init = macio_instance_init,
+>      .abstract      = true,
+>      .class_init    = macio_class_init,
+> +    .interfaces = (InterfaceInfo[]) {
+> +        { INTERFACE_LEGACY_PCI_DEVICE },
+> +        { },
+> +    },
+>  };
+>  
+>  static void macio_register_types(void)
+> diff --git a/hw/misc/pci-testdev.c b/hw/misc/pci-testdev.c
+> index 7d59902..992157f 100644
+> --- a/hw/misc/pci-testdev.c
+> +++ b/hw/misc/pci-testdev.c
+> @@ -326,6 +326,10 @@ static const TypeInfo pci_testdev_info = {
+>      .parent        = TYPE_PCI_DEVICE,
+>      .instance_size = sizeof(PCITestDevState),
+>      .class_init    = pci_testdev_class_init,
+> +    .interfaces = (InterfaceInfo[]) {
+> +        { INTERFACE_LEGACY_PCI_DEVICE },
+> +        { },
+> +    },
+>  };
+>  
+>  static void pci_testdev_register_types(void)
+> diff --git a/hw/net/e1000.c b/hw/net/e1000.c
+> index f2e5072..51ab83d 100644
+> --- a/hw/net/e1000.c
+> +++ b/hw/net/e1000.c
+> @@ -1685,6 +1685,10 @@ static const TypeInfo e1000_base_info = {
+>      .instance_init = e1000_instance_init,
+>      .class_size    = sizeof(E1000BaseClass),
+>      .abstract      = true,
+> +    .interfaces = (InterfaceInfo[]) {
+> +        { INTERFACE_LEGACY_PCI_DEVICE },
+> +        { },
+> +    },
+>  };
+>  
+>  static const E1000Info e1000_devices[] = {
+> diff --git a/hw/net/eepro100.c b/hw/net/eepro100.c
+> index 5a4774a..8f5c567 100644
+> --- a/hw/net/eepro100.c
+> +++ b/hw/net/eepro100.c
+> @@ -2117,6 +2117,10 @@ static void eepro100_register_types(void)
+>          type_info.class_init = eepro100_class_init;
+>          type_info.instance_size = sizeof(EEPRO100State);
+>          type_info.instance_init = eepro100_instance_init;
+> +        type_info.interfaces = (InterfaceInfo[]) {
+> +            { INTERFACE_LEGACY_PCI_DEVICE },
+> +            { },
+> +        };
+>  
+>          type_register(&type_info);
+>      }
+> diff --git a/hw/net/ne2000.c b/hw/net/ne2000.c
+> index 798d681..fce3420 100644
+> --- a/hw/net/ne2000.c
+> +++ b/hw/net/ne2000.c
+> @@ -786,6 +786,10 @@ static const TypeInfo ne2000_info = {
+>      .instance_size = sizeof(PCINE2000State),
+>      .class_init    = ne2000_class_init,
+>      .instance_init = ne2000_instance_init,
+> +    .interfaces = (InterfaceInfo[]) {
+> +        { INTERFACE_LEGACY_PCI_DEVICE },
+> +        { },
+> +    },
+>  };
+>  
+>  static void ne2000_register_types(void)
+> diff --git a/hw/net/pcnet-pci.c b/hw/net/pcnet-pci.c
+> index 0acf8a4..cbe6e99 100644
+> --- a/hw/net/pcnet-pci.c
+> +++ b/hw/net/pcnet-pci.c
+> @@ -365,6 +365,10 @@ static const TypeInfo pcnet_info = {
+>      .instance_size = sizeof(PCIPCNetState),
+>      .class_init    = pcnet_class_init,
+>      .instance_init = pcnet_instance_init,
+> +    .interfaces = (InterfaceInfo[]) {
+> +        { INTERFACE_LEGACY_PCI_DEVICE },
+> +        { },
+> +    },
+>  };
+>  
+>  static void pci_pcnet_register_types(void)
+> diff --git a/hw/net/rocker/rocker.c b/hw/net/rocker/rocker.c
+> index 4f0f6d7..2eb53ad 100644
+> --- a/hw/net/rocker/rocker.c
+> +++ b/hw/net/rocker/rocker.c
+> @@ -1573,6 +1573,10 @@ static const TypeInfo rocker_info = {
+>      .parent        = TYPE_PCI_DEVICE,
+>      .instance_size = sizeof(Rocker),
+>      .class_init    = rocker_class_init,
+> +    .interfaces = (InterfaceInfo[]) {
+> +        { INTERFACE_LEGACY_PCI_DEVICE },
+> +        { },
+> +    },
+>  };
+>  
+>  static void rocker_register_types(void)
+> diff --git a/hw/net/rtl8139.c b/hw/net/rtl8139.c
+> index 671c7e4..3371318 100644
+> --- a/hw/net/rtl8139.c
+> +++ b/hw/net/rtl8139.c
+> @@ -3489,6 +3489,10 @@ static const TypeInfo rtl8139_info = {
+>      .instance_size = sizeof(RTL8139State),
+>      .class_init    = rtl8139_class_init,
+>      .instance_init = rtl8139_instance_init,
+> +    .interfaces = (InterfaceInfo[]) {
+> +        { INTERFACE_LEGACY_PCI_DEVICE },
+> +        { },
+> +    },
+>  };
+>  
+>  static void rtl8139_register_types(void)
+> diff --git a/hw/pci-bridge/dec.c b/hw/pci-bridge/dec.c
+> index eb275e1..77a07d0 100644
+> --- a/hw/pci-bridge/dec.c
+> +++ b/hw/pci-bridge/dec.c
+> @@ -79,6 +79,10 @@ static const TypeInfo dec_21154_pci_bridge_info = {
+>      .parent        = TYPE_PCI_BRIDGE,
+>      .instance_size = sizeof(PCIBridge),
+>      .class_init    = dec_21154_pci_bridge_class_init,
+> +    .interfaces = (InterfaceInfo[]) {
+> +        { INTERFACE_LEGACY_PCI_DEVICE },
+> +        { },
+> +    },
+>  };
+>  
+>  PCIBus *pci_dec_21154_init(PCIBus *parent_bus, int devfn)
+> @@ -138,6 +142,10 @@ static const TypeInfo dec_21154_pci_host_info = {
+>      .parent        = TYPE_PCI_DEVICE,
+>      .instance_size = sizeof(PCIDevice),
+>      .class_init    = dec_21154_pci_host_class_init,
+> +    .interfaces = (InterfaceInfo[]) {
+> +        { INTERFACE_LEGACY_PCI_DEVICE },
+> +        { },
+> +    },
+>  };
+>  
+>  static void pci_dec_21154_device_class_init(ObjectClass *klass, void *data)
+> diff --git a/hw/pci-bridge/i82801b11.c b/hw/pci-bridge/i82801b11.c
+> index 2c1b747..baac63b 100644
+> --- a/hw/pci-bridge/i82801b11.c
+> +++ b/hw/pci-bridge/i82801b11.c
+> @@ -106,6 +106,10 @@ static const TypeInfo i82801b11_bridge_info = {
+>      .parent        = TYPE_PCI_BRIDGE,
+>      .instance_size = sizeof(I82801b11Bridge),
+>      .class_init    = i82801b11_bridge_class_init,
+> +    .interfaces = (InterfaceInfo[]) {
+> +        { INTERFACE_LEGACY_PCI_DEVICE },
+> +        { },
+> +    },
+>  };
+>  
+>  static void d2pbr_register(void)
+> diff --git a/hw/pci-bridge/pci_bridge_dev.c b/hw/pci-bridge/pci_bridge_dev.c
+> index 4373f1d..d83824b 100644
+> --- a/hw/pci-bridge/pci_bridge_dev.c
+> +++ b/hw/pci-bridge/pci_bridge_dev.c
+> @@ -238,6 +238,7 @@ static const TypeInfo pci_bridge_dev_info = {
+>      .instance_finalize = pci_bridge_dev_instance_finalize,
+>      .interfaces = (InterfaceInfo[]) {
+>          { TYPE_HOTPLUG_HANDLER },
+> +        { INTERFACE_LEGACY_PCI_DEVICE },
+>          { }
+>      }
+>  };
+> diff --git a/hw/pci-bridge/pci_expander_bridge.c b/hw/pci-bridge/pci_expander_bridge.c
+> index ff59abf..cc9ec88 100644
+> --- a/hw/pci-bridge/pci_expander_bridge.c
+> +++ b/hw/pci-bridge/pci_expander_bridge.c
+> @@ -316,6 +316,10 @@ static const TypeInfo pxb_dev_info = {
+>      .parent        = TYPE_PCI_DEVICE,
+>      .instance_size = sizeof(PXBDev),
+>      .class_init    = pxb_dev_class_init,
+> +    .interfaces = (InterfaceInfo[]) {
+> +        { INTERFACE_LEGACY_PCI_DEVICE },
+> +        { },
+> +    },
+>  };
+>  
+>  static void pxb_pcie_dev_realize(PCIDevice *dev, Error **errp)
+> @@ -350,6 +354,10 @@ static const TypeInfo pxb_pcie_dev_info = {
+>      .parent        = TYPE_PCI_DEVICE,
+>      .instance_size = sizeof(PXBDev),
+>      .class_init    = pxb_pcie_dev_class_init,
+> +    .interfaces = (InterfaceInfo[]) {
+> +        { INTERFACE_LEGACY_PCI_DEVICE },
+> +        { },
+> +    },
+>  };
+>  
+>  static void pxb_register_types(void)
+> diff --git a/hw/pci-host/apb.c b/hw/pci-host/apb.c
+> index 96e5d0b..c2c8c6d 100644
+> --- a/hw/pci-host/apb.c
+> +++ b/hw/pci-host/apb.c
+> @@ -817,6 +817,10 @@ static const TypeInfo pbm_pci_host_info = {
+>      .parent        = TYPE_PCI_DEVICE,
+>      .instance_size = sizeof(PCIDevice),
+>      .class_init    = pbm_pci_host_class_init,
+> +    .interfaces = (InterfaceInfo[]) {
+> +        { INTERFACE_LEGACY_PCI_DEVICE },
+> +        { },
+> +    },
+>  };
+>  
+>  static void pbm_host_class_init(ObjectClass *klass, void *data)
+> @@ -857,6 +861,10 @@ static const TypeInfo pbm_pci_bridge_info = {
+>      .name          = "pbm-bridge",
+>      .parent        = TYPE_PCI_BRIDGE,
+>      .class_init    = pbm_pci_bridge_class_init,
+> +    .interfaces = (InterfaceInfo[]) {
+> +        { INTERFACE_LEGACY_PCI_DEVICE },
+> +        { },
+> +    },
+>  };
+>  
+>  static void pbm_iommu_memory_region_class_init(ObjectClass *klass, void *data)
+> diff --git a/hw/pci-host/bonito.c b/hw/pci-host/bonito.c
+> index 89133a9..f037378 100644
+> --- a/hw/pci-host/bonito.c
+> +++ b/hw/pci-host/bonito.c
+> @@ -833,6 +833,10 @@ static const TypeInfo bonito_info = {
+>      .parent        = TYPE_PCI_DEVICE,
+>      .instance_size = sizeof(PCIBonitoState),
+>      .class_init    = bonito_class_init,
+> +    .interfaces = (InterfaceInfo[]) {
+> +        { INTERFACE_LEGACY_PCI_DEVICE },
+> +        { },
+> +    },
+>  };
+>  
+>  static void bonito_pcihost_class_init(ObjectClass *klass, void *data)
+> diff --git a/hw/pci-host/gpex.c b/hw/pci-host/gpex.c
+> index 83084b9..c348e84 100644
+> --- a/hw/pci-host/gpex.c
+> +++ b/hw/pci-host/gpex.c
+> @@ -144,6 +144,10 @@ static const TypeInfo gpex_root_info = {
+>      .parent = TYPE_PCI_DEVICE,
+>      .instance_size = sizeof(GPEXRootState),
+>      .class_init = gpex_root_class_init,
+> +    .interfaces = (InterfaceInfo[]) {
+> +        { INTERFACE_LEGACY_PCI_DEVICE },
+> +        { },
+> +    },
+>  };
+>  
+>  static void gpex_register(void)
+> diff --git a/hw/pci-host/grackle.c b/hw/pci-host/grackle.c
+> index 2e281f6..01d3edc 100644
+> --- a/hw/pci-host/grackle.c
+> +++ b/hw/pci-host/grackle.c
+> @@ -142,6 +142,10 @@ static const TypeInfo grackle_pci_info = {
+>      .parent        = TYPE_PCI_DEVICE,
+>      .instance_size = sizeof(PCIDevice),
+>      .class_init = grackle_pci_class_init,
+> +    .interfaces = (InterfaceInfo[]) {
+> +        { INTERFACE_LEGACY_PCI_DEVICE },
+> +        { },
+> +    },
+>  };
+>  
+>  static void pci_grackle_class_init(ObjectClass *klass, void *data)
+> diff --git a/hw/pci-host/piix.c b/hw/pci-host/piix.c
+> index 072a04e..d35520e 100644
+> --- a/hw/pci-host/piix.c
+> +++ b/hw/pci-host/piix.c
+> @@ -694,6 +694,10 @@ static const TypeInfo piix3_pci_type_info = {
+>      .instance_size = sizeof(PIIX3State),
+>      .abstract = true,
+>      .class_init = pci_piix3_class_init,
+> +    .interfaces = (InterfaceInfo[]) {
+> +        { INTERFACE_LEGACY_PCI_DEVICE },
+> +        { },
+> +    },
+>  };
+>  
+>  static void piix3_class_init(ObjectClass *klass, void *data)
+> @@ -748,6 +752,10 @@ static const TypeInfo i440fx_info = {
+>      .parent        = TYPE_PCI_DEVICE,
+>      .instance_size = sizeof(PCII440FXState),
+>      .class_init    = i440fx_class_init,
+> +    .interfaces = (InterfaceInfo[]) {
+> +        { INTERFACE_LEGACY_PCI_DEVICE },
+> +        { },
+> +    },
+>  };
+>  
+>  /* IGD Passthrough Host Bridge. */
+> diff --git a/hw/pci-host/ppce500.c b/hw/pci-host/ppce500.c
+> index becc0ee..6dd66c4 100644
+> --- a/hw/pci-host/ppce500.c
+> +++ b/hw/pci-host/ppce500.c
+> @@ -516,6 +516,10 @@ static const TypeInfo e500_host_bridge_info = {
+>      .parent        = TYPE_PCI_DEVICE,
+>      .instance_size = sizeof(PPCE500PCIBridgeState),
+>      .class_init    = e500_host_bridge_class_init,
+> +    .interfaces = (InterfaceInfo[]) {
+> +        { INTERFACE_LEGACY_PCI_DEVICE },
+> +        { },
+> +    },
+>  };
+>  
+>  static Property pcihost_properties[] = {
+> diff --git a/hw/pci-host/prep.c b/hw/pci-host/prep.c
+> index 8b293ba..bb19b6d 100644
+> --- a/hw/pci-host/prep.c
+> +++ b/hw/pci-host/prep.c
+> @@ -372,6 +372,10 @@ static const TypeInfo raven_info = {
+>      .parent = TYPE_PCI_DEVICE,
+>      .instance_size = sizeof(RavenPCIState),
+>      .class_init = raven_class_init,
+> +    .interfaces = (InterfaceInfo[]) {
+> +        { INTERFACE_LEGACY_PCI_DEVICE },
+> +        { },
+> +    },
+>  };
+>  
+>  static Property raven_pcihost_properties[] = {
+> diff --git a/hw/pci-host/q35.c b/hw/pci-host/q35.c
+> index 0e472f2..a6f93f1 100644
+> --- a/hw/pci-host/q35.c
+> +++ b/hw/pci-host/q35.c
+> @@ -591,6 +591,10 @@ static const TypeInfo mch_info = {
+>      .parent = TYPE_PCI_DEVICE,
+>      .instance_size = sizeof(MCHPCIState),
+>      .class_init = mch_class_init,
+> +    .interfaces = (InterfaceInfo[]) {
+> +        { INTERFACE_LEGACY_PCI_DEVICE },
+> +        { },
+> +    },
+>  };
+>  
+>  static void q35_register(void)
+> diff --git a/hw/pci-host/uninorth.c b/hw/pci-host/uninorth.c
+> index 6cf5e59..3b40a9a 100644
+> --- a/hw/pci-host/uninorth.c
+> +++ b/hw/pci-host/uninorth.c
+> @@ -374,6 +374,10 @@ static const TypeInfo unin_main_pci_host_info = {
+>      .parent = TYPE_PCI_DEVICE,
+>      .instance_size = sizeof(PCIDevice),
+>      .class_init = unin_main_pci_host_class_init,
+> +    .interfaces = (InterfaceInfo[]) {
+> +        { INTERFACE_LEGACY_PCI_DEVICE },
+> +        { },
+> +    },
+>  };
+>  
+>  static void u3_agp_pci_host_class_init(ObjectClass *klass, void *data)
+> @@ -398,6 +402,10 @@ static const TypeInfo u3_agp_pci_host_info = {
+>      .parent = TYPE_PCI_DEVICE,
+>      .instance_size = sizeof(PCIDevice),
+>      .class_init = u3_agp_pci_host_class_init,
+> +    .interfaces = (InterfaceInfo[]) {
+> +        { INTERFACE_LEGACY_PCI_DEVICE },
+> +        { },
+> +    },
+>  };
+>  
+>  static void unin_agp_pci_host_class_init(ObjectClass *klass, void *data)
+> @@ -422,6 +430,10 @@ static const TypeInfo unin_agp_pci_host_info = {
+>      .parent = TYPE_PCI_DEVICE,
+>      .instance_size = sizeof(PCIDevice),
+>      .class_init = unin_agp_pci_host_class_init,
+> +    .interfaces = (InterfaceInfo[]) {
+> +        { INTERFACE_LEGACY_PCI_DEVICE },
+> +        { },
+> +    },
+>  };
+>  
+>  static void unin_internal_pci_host_class_init(ObjectClass *klass, void *data)
+> @@ -446,6 +458,10 @@ static const TypeInfo unin_internal_pci_host_info = {
+>      .parent = TYPE_PCI_DEVICE,
+>      .instance_size = sizeof(PCIDevice),
+>      .class_init = unin_internal_pci_host_class_init,
+> +    .interfaces = (InterfaceInfo[]) {
+> +        { INTERFACE_LEGACY_PCI_DEVICE },
+> +        { },
+> +    },
+>  };
+>  
+>  static void pci_unin_main_class_init(ObjectClass *klass, void *data)
+> diff --git a/hw/pci-host/versatile.c b/hw/pci-host/versatile.c
+> index aa1fdf7..e1ba6f4 100644
+> --- a/hw/pci-host/versatile.c
+> +++ b/hw/pci-host/versatile.c
+> @@ -487,6 +487,10 @@ static const TypeInfo versatile_pci_host_info = {
+>      .parent        = TYPE_PCI_DEVICE,
+>      .instance_size = sizeof(PCIDevice),
+>      .class_init    = versatile_pci_host_class_init,
+> +    .interfaces = (InterfaceInfo[]) {
+> +        { INTERFACE_LEGACY_PCI_DEVICE },
+> +        { },
+> +    },
+>  };
+>  
+>  static Property pci_vpb_properties[] = {
+> diff --git a/hw/ppc/ppc4xx_pci.c b/hw/ppc/ppc4xx_pci.c
+> index 6953f8b..92027c3 100644
+> --- a/hw/ppc/ppc4xx_pci.c
+> +++ b/hw/ppc/ppc4xx_pci.c
+> @@ -359,6 +359,10 @@ static const TypeInfo ppc4xx_host_bridge_info = {
+>      .parent        = TYPE_PCI_DEVICE,
+>      .instance_size = sizeof(PCIDevice),
+>      .class_init    = ppc4xx_host_bridge_class_init,
+> +    .interfaces = (InterfaceInfo[]) {
+> +        { INTERFACE_LEGACY_PCI_DEVICE },
+> +        { },
+> +    },
+>  };
+>  
+>  static void ppc4xx_pcihost_class_init(ObjectClass *klass, void *data)
+> diff --git a/hw/scsi/esp-pci.c b/hw/scsi/esp-pci.c
+> index e295d88..2f0c659 100644
+> --- a/hw/scsi/esp-pci.c
+> +++ b/hw/scsi/esp-pci.c
+> @@ -398,6 +398,10 @@ static const TypeInfo esp_pci_info = {
+>      .parent = TYPE_PCI_DEVICE,
+>      .instance_size = sizeof(PCIESPState),
+>      .class_init = esp_pci_class_init,
+> +    .interfaces = (InterfaceInfo[]) {
+> +        { INTERFACE_LEGACY_PCI_DEVICE },
+> +        { },
+> +    },
+>  };
+>  
+>  typedef struct {
+> diff --git a/hw/scsi/lsi53c895a.c b/hw/scsi/lsi53c895a.c
+> index 3e56ab2..788bfc3 100644
+> --- a/hw/scsi/lsi53c895a.c
+> +++ b/hw/scsi/lsi53c895a.c
+> @@ -2244,6 +2244,10 @@ static const TypeInfo lsi_info = {
+>      .parent        = TYPE_PCI_DEVICE,
+>      .instance_size = sizeof(LSIState),
+>      .class_init    = lsi_class_init,
+> +    .interfaces = (InterfaceInfo[]) {
+> +        { INTERFACE_LEGACY_PCI_DEVICE },
+> +        { },
+> +    },
+>  };
+>  
+>  static void lsi53c810_class_init(ObjectClass *klass, void *data)
+> diff --git a/hw/scsi/megasas.c b/hw/scsi/megasas.c
+> index 3641c30..cf69b56 100644
+> --- a/hw/scsi/megasas.c
+> +++ b/hw/scsi/megasas.c
+> @@ -2468,6 +2468,10 @@ static struct MegasasInfo megasas_devices[] = {
+>          .is_express = false,
+>          .vmsd = &vmstate_megasas_gen1,
+>          .props = megasas_properties_gen1,
+> +        .interfaces = (InterfaceInfo[]) {
+> +            { INTERFACE_LEGACY_PCI_DEVICE },
+> +            { },
+> +        },
+>      },{
+>          .name = TYPE_MEGASAS_GEN2,
+>          .desc = "LSI MegaRAID SAS 2108",
+> diff --git a/hw/scsi/mptsas.c b/hw/scsi/mptsas.c
+> index 765ab53..6ff773e 100644
+> --- a/hw/scsi/mptsas.c
+> +++ b/hw/scsi/mptsas.c
+> @@ -1441,6 +1441,10 @@ static const TypeInfo mptsas_info = {
+>      .parent = TYPE_PCI_DEVICE,
+>      .instance_size = sizeof(MPTSASState),
+>      .class_init = mptsas1068_class_init,
+> +    .interfaces = (InterfaceInfo[]) {
+> +        { INTERFACE_LEGACY_PCI_DEVICE },
+> +        { },
+> +    },
+>  };
+>  
+>  static void mptsas_register_types(void)
+> diff --git a/hw/sd/sdhci.c b/hw/sd/sdhci.c
+> index 6d6a791..f6b18d6 100644
+> --- a/hw/sd/sdhci.c
+> +++ b/hw/sd/sdhci.c
+> @@ -1315,6 +1315,10 @@ static const TypeInfo sdhci_pci_info = {
+>      .parent = TYPE_PCI_DEVICE,
+>      .instance_size = sizeof(SDHCIState),
+>      .class_init = sdhci_pci_class_init,
+> +    .interfaces = (InterfaceInfo[]) {
+> +        { INTERFACE_LEGACY_PCI_DEVICE },
+> +        { },
+> +    },
+>  };
+>  
+>  static Property sdhci_sysbus_properties[] = {
+> diff --git a/hw/sh4/sh_pci.c b/hw/sh4/sh_pci.c
+> index 38395c0..6cec225 100644
+> --- a/hw/sh4/sh_pci.c
+> +++ b/hw/sh4/sh_pci.c
+> @@ -179,6 +179,10 @@ static const TypeInfo sh_pci_host_info = {
+>      .parent        = TYPE_PCI_DEVICE,
+>      .instance_size = sizeof(PCIDevice),
+>      .class_init    = sh_pci_host_class_init,
+> +    .interfaces = (InterfaceInfo[]) {
+> +        { INTERFACE_LEGACY_PCI_DEVICE },
+> +        { },
+> +    },
+>  };
+>  
+>  static void sh_pci_device_class_init(ObjectClass *klass, void *data)
+> diff --git a/hw/sparc64/sun4u.c b/hw/sparc64/sun4u.c
+> index bbdb40c..b2b3bab 100644
+> --- a/hw/sparc64/sun4u.c
+> +++ b/hw/sparc64/sun4u.c
+> @@ -277,6 +277,10 @@ static const TypeInfo ebus_info = {
+>      .parent        = TYPE_PCI_DEVICE,
+>      .instance_size = sizeof(EbusState),
+>      .class_init    = ebus_class_init,
+> +    .interfaces = (InterfaceInfo[]) {
+> +        { INTERFACE_LEGACY_PCI_DEVICE },
+> +        { },
+> +    },
+>  };
+>  
+>  #define TYPE_OPENPROM "openprom"
+> diff --git a/hw/usb/hcd-ehci-pci.c b/hw/usb/hcd-ehci-pci.c
+> index 6dedcb8..464178d 100644
+> --- a/hw/usb/hcd-ehci-pci.c
+> +++ b/hw/usb/hcd-ehci-pci.c
+> @@ -170,6 +170,10 @@ static const TypeInfo ehci_pci_type_info = {
+>      .instance_finalize = usb_ehci_pci_finalize,
+>      .abstract = true,
+>      .class_init = ehci_class_init,
+> +    .interfaces = (InterfaceInfo[]) {
+> +        { INTERFACE_LEGACY_PCI_DEVICE },
+> +        { },
+> +    },
+>  };
+>  
+>  static void ehci_data_class_init(ObjectClass *klass, void *data)
+> diff --git a/hw/usb/hcd-ohci.c b/hw/usb/hcd-ohci.c
+> index 267982e..8b5e579 100644
+> --- a/hw/usb/hcd-ohci.c
+> +++ b/hw/usb/hcd-ohci.c
+> @@ -2139,6 +2139,10 @@ static const TypeInfo ohci_pci_info = {
+>      .parent        = TYPE_PCI_DEVICE,
+>      .instance_size = sizeof(OHCIPCIState),
+>      .class_init    = ohci_pci_class_init,
+> +    .interfaces = (InterfaceInfo[]) {
+> +        { INTERFACE_LEGACY_PCI_DEVICE },
+> +        { },
+> +    },
+>  };
+>  
+>  static Property ohci_sysbus_properties[] = {
+> diff --git a/hw/usb/hcd-uhci.c b/hw/usb/hcd-uhci.c
+> index e3562a4..8842ea6 100644
+> --- a/hw/usb/hcd-uhci.c
+> +++ b/hw/usb/hcd-uhci.c
+> @@ -1323,6 +1323,10 @@ static const TypeInfo uhci_pci_type_info = {
+>      .class_size    = sizeof(UHCIPCIDeviceClass),
+>      .abstract = true,
+>      .class_init = uhci_class_init,
+> +    .interfaces = (InterfaceInfo[]) {
+> +        { INTERFACE_LEGACY_PCI_DEVICE },
+> +        { },
+> +    },
+>  };
+>  
+>  static void uhci_data_class_init(ObjectClass *klass, void *data)
+> diff --git a/hw/vfio/pci-quirks.c b/hw/vfio/pci-quirks.c
+> index 349085e..83a820a 100644
+> --- a/hw/vfio/pci-quirks.c
+> +++ b/hw/vfio/pci-quirks.c
+> @@ -1197,6 +1197,10 @@ static TypeInfo vfio_pci_igd_lpc_bridge_info = {
+>      .name = "vfio-pci-igd-lpc-bridge",
+>      .parent = TYPE_PCI_DEVICE,
+>      .class_init = vfio_pci_igd_lpc_bridge_class_init,
+> +    .interfaces = (InterfaceInfo[]) {
+> +        { INTERFACE_LEGACY_PCI_DEVICE },
+> +        { },
+> +    },
+>  };
+>  
+>  static void vfio_pci_igd_register_types(void)
+> diff --git a/hw/watchdog/wdt_i6300esb.c b/hw/watchdog/wdt_i6300esb.c
+> index 49b3cd1..f8b7e0c 100644
+> --- a/hw/watchdog/wdt_i6300esb.c
+> +++ b/hw/watchdog/wdt_i6300esb.c
+> @@ -463,6 +463,10 @@ static const TypeInfo i6300esb_info = {
+>      .parent        = TYPE_PCI_DEVICE,
+>      .instance_size = sizeof(I6300State),
+>      .class_init    = i6300esb_class_init,
+> +    .interfaces = (InterfaceInfo[]) {
+> +        { INTERFACE_LEGACY_PCI_DEVICE },
+> +        { },
+> +    },
+>  };
+>  
+>  static void i6300esb_register_types(void)
+> diff --git a/hw/xen/xen_pt.c b/hw/xen/xen_pt.c
+> index 375efa6..66664fc 100644
+> --- a/hw/xen/xen_pt.c
+> +++ b/hw/xen/xen_pt.c
+> @@ -964,6 +964,10 @@ static const TypeInfo xen_pci_passthrough_info = {
+>      .instance_size = sizeof(XenPCIPassthroughState),
+>      .instance_finalize = xen_pci_passthrough_finalize,
+>      .class_init = xen_pci_passthrough_class_init,
+> +    .interfaces = (InterfaceInfo[]) {
+> +        { INTERFACE_LEGACY_PCI_DEVICE },
+> +        { },
+> +    },
+>  };
+>  
+>  static void xen_pci_passthrough_register_types(void)
+> -- 
+> 2.9.4
+> 
+> 
+
+-- 
+Eduardo

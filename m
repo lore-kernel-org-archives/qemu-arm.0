@@ -1,145 +1,173 @@
-Received: by 10.182.158.201 with SMTP id ww9csp1665910obb;
-        Mon, 14 Dec 2015 02:48:31 -0800 (PST)
-X-Received: by 10.140.43.135 with SMTP id e7mr40661753qga.11.1450090111586;
-        Mon, 14 Dec 2015 02:48:31 -0800 (PST)
+Received: by 10.223.188.70 with SMTP id a6csp1443871wrh;
+        Fri, 25 Aug 2017 15:48:46 -0700 (PDT)
+X-Received: by 10.55.78.6 with SMTP id c6mr28879qkb.286.1503701326424;
+        Fri, 25 Aug 2017 15:48:46 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1503701326; cv=none;
+        d=google.com; s=arc-20160816;
+        b=h2hEL1nXwMJAEWxgL4gdmDnwbyCqXl8BgX3qjPe3HSIPuclbTGPbqB1y+Cw+/H+LGJ
+         GgGvURnHkKn6y3KAu8kh2MJZKUtLXhEPC/2SyUfxs77ZO9BGrJ3pCrLHIf+UIEvXvss7
+         XWm81WS0b44MUk9lrLdCoe4EFREkXwjt0L0fQ/ZtDVvbJ+K6l1KB/8j+L2KSf2r8z4PO
+         VNz0ty7qH0ExMFd3Z/Rg7Bobx7zLseQmBKpKHsDnI4CYZ3yU90bN061HKZ6Rsb28wpu9
+         aLmjRpxmfxE/hV9XuywydCqk7PkY/9XT0/lHQHX/T84qGIt7DtV4X2IMliC4WPEZjrkX
+         3fAA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject:message-id:date:to:from
+         :dkim-signature:arc-authentication-results;
+        bh=oq+6LYUxUqGMzh3Jz8wl6Y896EmqkJ+9dBQMgVzDKFY=;
+        b=Y9UtcvJsZsKYtUCqQmfZqefgqg+0A940/QutYrOJhfTB8m9nDPeCfyawEnj4keG+yt
+         eruyqLohwKcw8N2kamDL7CqQZZiw/xvBDNUsHvf9wXiJOow2lPffrwOspQ8DzuaTftOy
+         tN2HNvS6q9BLg9uUa4JceMZHsrcSi7s/AWrmTrFUv1EVcLRm0WkgRdA2md2fuSzkQdTB
+         BSO2+PY1mhXjCeVkKC31nRNCL6Vu9sYs55LKf/95yDqn9UBRA69Rl1VwJ0bSzwPOjARd
+         QbAvq+TZqCVX8pQMh75P1gvibMDTzKEWW4VrOh3X6eWta6gI3YAemxpAY3qxyXB8VWyZ
+         g5Ww==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b=I/boU41n;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id t90si34383415qgd.108.2015.12.14.02.48.31
+        by mx.google.com with ESMTPS id x14si7152597qkb.243.2017.08.25.15.48.45
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 14 Dec 2015 02:48:31 -0800 (PST)
+        Fri, 25 Aug 2017 15:48:46 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:58955 helo=lists.gnu.org)
+       dkim=fail header.i=@linaro.org header.s=google header.b=I/boU41n;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:55343 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1a8QgB-00082o-BP
-	for alex.bennee@linaro.org; Mon, 14 Dec 2015 05:48:31 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:57854)
+	id 1dlNPA-0004X2-22
+	for alex.bennee@linaro.org; Fri, 25 Aug 2017 18:48:44 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:43910)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1a8Qg9-00082Q-0r
-	for qemu-arm@nongnu.org; Mon, 14 Dec 2015 05:48:30 -0500
+	(envelope-from <richard.henderson@linaro.org>) id 1dlNP6-0004Wa-GJ
+	for qemu-arm@nongnu.org; Fri, 25 Aug 2017 18:48:41 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1a8Qg5-0005r7-0f
-	for qemu-arm@nongnu.org; Mon, 14 Dec 2015 05:48:28 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:37959)
-	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@redhat.com>)
-	id 1a8Qg4-0005r3-PE; Mon, 14 Dec 2015 05:48:24 -0500
-Received: from int-mx09.intmail.prod.int.phx2.redhat.com
-	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
-	by mx1.redhat.com (Postfix) with ESMTPS id D40DEC0B9306;
-	Mon, 14 Dec 2015 10:48:23 +0000 (UTC)
-Received: from blackfin.pond.sub.org (ovpn-113-78.phx2.redhat.com
-	[10.3.113.78])
-	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id tBEAmLHD003349
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=NO); Mon, 14 Dec 2015 05:48:23 -0500
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
-	id CC87E303F81B; Mon, 14 Dec 2015 11:48:20 +0100 (CET)
-From: Markus Armbruster <armbru@redhat.com>
-To: Thomas Huth <thuth@redhat.com>
-References: <1449743372-17169-1-git-send-email-armbru@redhat.com>
-	<1449743372-17169-2-git-send-email-armbru@redhat.com>
-	<566E94CA.40202@redhat.com>
-Date: Mon, 14 Dec 2015 11:48:20 +0100
-In-Reply-To: <566E94CA.40202@redhat.com> (Thomas Huth's message of "Mon, 14
-	Dec 2015 11:07:06 +0100")
-Message-ID: <878u4xuwzv.fsf@blackfin.pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/24.5 (gnu/linux)
-MIME-Version: 1.0
-Content-Type: text/plain
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: Guan Xuetao <gxt@mprc.pku.edu.cn>, qemu-ppc@nongnu.org,
-	qemu-devel@nongnu.org, qemu-arm@nongnu.org,
-	Richard Henderson <rth@twiddle.net>
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH 01/12] hw: Don't use hw_error()
-	for machine initialization errors
+	(envelope-from <richard.henderson@linaro.org>) id 1dlNP5-0001wS-Bc
+	for qemu-arm@nongnu.org; Fri, 25 Aug 2017 18:48:40 -0400
+Received: from mail-pg0-x22d.google.com ([2607:f8b0:400e:c05::22d]:35507)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
+	id 1dlNP5-0001sX-4h
+	for qemu-arm@nongnu.org; Fri, 25 Aug 2017 18:48:39 -0400
+Received: by mail-pg0-x22d.google.com with SMTP id 63so5941856pgc.2
+	for <qemu-arm@nongnu.org>; Fri, 25 Aug 2017 15:48:37 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=from:to:cc:subject:date:message-id;
+	bh=oq+6LYUxUqGMzh3Jz8wl6Y896EmqkJ+9dBQMgVzDKFY=;
+	b=I/boU41neE99mV7vrUQHBoAn6jqo61/zOH7bfuYpy9toaK/LA5BYnZpV8V1S1XPZjK
+	H5ksYjyC0a3oWa80Rdd6pDbGglll09lgO2+qkYkPRNRveT1v6H1NZrMJdYZeAWqnTvI5
+	ULvIcv5I4aZPXZtJ4weJx/JAdUajsQkL2/NrA=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:from:to:cc:subject:date:message-id;
+	bh=oq+6LYUxUqGMzh3Jz8wl6Y896EmqkJ+9dBQMgVzDKFY=;
+	b=R3gX9+4RhYK/URoyFiifV6zDakqkWdoSMvA7iay8Ze9y//OLhljVfGPthZx4oW/zSc
+	oIPgiRn5qWYexrkcZeyPDTLQjjkbWDk0gtfKTdENu3LY/JS7imkYA2T+ZBeZiTnfdCep
+	pFucDGKnx1f/mLBiyy6sj5sXonk/ajYzRxCUTTvHnBYgi3XrI+VwVCanMwhYlN8NeqaM
+	HR9eQqVTdMaCBeAhbRFt+pXr2mmCI/z/NHkdb3mmD6RJHVVhAvakgARtRrPA/p1S7wLN
+	R/OR/xYCGRNAJId+14FjFX5sPbqJO+ZDTqa3N3OU5lDxqr6I/JDLXRV2TkuXzyGVnD5n
+	LuIg==
+X-Gm-Message-State: AHYfb5jUjb44imo8gB5qDwGheBopPdmAz9slG6opXY+OPBeJjC8Mkxlj
+	ItVzITZXp5O5LMJPn4Tr4Q==
+X-Received: by 10.84.212.137 with SMTP id e9mr28122pli.284.1503701316404;
+	Fri, 25 Aug 2017 15:48:36 -0700 (PDT)
+Received: from bigtime.twiddle.net.net ([2603:3004:4:2500::22fc])
+	by smtp.gmail.com with ESMTPSA id
+	o10sm14346641pgc.81.2017.08.25.15.48.35
+	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+	Fri, 25 Aug 2017 15:48:35 -0700 (PDT)
+From: Richard Henderson <richard.henderson@linaro.org>
+To: qemu-devel@nongnu.org
+Date: Fri, 25 Aug 2017 15:48:33 -0700
+Message-Id: <20170825224833.4463-1-richard.henderson@linaro.org>
+X-Mailer: git-send-email 2.13.5
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:400e:c05::22d
+Subject: [Qemu-arm] [PATCH] target/arm: Fix aa64 ldp register writeback
 X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.14
+X-Mailman-Version: 2.1.21
 Precedence: list
 List-Id: <qemu-arm.nongnu.org>
 List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
 List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: qemu-arm@nongnu.org, qemu-stable@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 895pzGXZtjcl
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: oSl8bexBXymY
 
-Thomas Huth <thuth@redhat.com> writes:
+For "ldp x0, x1, [x0]", if the second load is on a second page and
+the second page is unmapped, the exception would be raised with x0
+already modified.  This means the instruction couldn't be restarted.
 
-> On 10/12/15 11:29, Markus Armbruster wrote:
->> Printing CPU registers is not helpful during machine initialization.
->> Moreover, these are straightforward configuration or "can get
->> resources" errors, so dumping core isn't appropriate either.  Replace
->> hw_error() by error_report(); exit(1).  Matches how we report these
->> errors in other machine initializations.
->> 
->> Cc: Richard Henderson <rth@twiddle.net>
->> Cc: qemu-arm@nongnu.org
->> Cc: qemu-ppc@nongnu.org
->> Cc: Guan Xuetao <gxt@mprc.pku.edu.cn>
->> Signed-off-by: Markus Armbruster <armbru@redhat.com>
->> ---
->>  hw/alpha/dp264.c          | 11 ++++++-----
->>  hw/arm/highbank.c         |  6 ++++--
->>  hw/char/exynos4210_uart.c |  9 ++++++---
->>  hw/m68k/an5206.c          |  4 +++-
->>  hw/ppc/mac_newworld.c     | 11 ++++++-----
->>  hw/ppc/mac_oldworld.c     | 16 +++++++++-------
->>  hw/ppc/prep.c             | 10 ++++++----
->>  hw/unicore32/puv3.c       | 10 +++++++---
->>  8 files changed, 47 insertions(+), 30 deletions(-)
-> [...]
->> diff --git a/hw/ppc/prep.c b/hw/ppc/prep.c
->> index 5ad28f7..8f08f07 100644
->> --- a/hw/ppc/prep.c
->> +++ b/hw/ppc/prep.c
->> @@ -33,6 +33,7 @@
->>  #include "hw/pci/pci_host.h"
->>  #include "hw/ppc/ppc.h"
->>  #include "hw/boards.h"
->> +#include "qemu/error-report.h"
->>  #include "qemu/log.h"
->>  #include "hw/ide.h"
->>  #include "hw/loader.h"
->> @@ -532,7 +533,7 @@ static void ppc_prep_init(MachineState *machine)
->>          kernel_size = load_image_targphys(kernel_filename, kernel_base,
->>                                            ram_size - kernel_base);
->>          if (kernel_size < 0) {
->> -            hw_error("qemu: could not load kernel '%s'\n", kernel_filename);
->> +            error_report("could not load kernel '%s'", kernel_filename);
->>              exit(1);
->>          }
->>          /* load initrd */
->> @@ -541,8 +542,8 @@ static void ppc_prep_init(MachineState *machine)
->>              initrd_size = load_image_targphys(initrd_filename, initrd_base,
->>                                                ram_size - initrd_base);
->>              if (initrd_size < 0) {
->> -                hw_error("qemu: could not load initial ram disk '%s'\n",
->> -                          initrd_filename);
->> +                error_report("could not load initial ram disk '%s'",
->> +                             initrd_filename);
->
-> Shouldn't you add an "exit(1)" here, too?
+Cc: qemu-arm@nongnu.org
+Cc: qemu-stable@nongnu.org
+Reported-by: Andrew <andrew@fubar.geek.nz>
+Fixes: https://bugs.launchpad.net/qemu/+bug/1713066
+Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+---
+ target/arm/translate-a64.c | 28 ++++++++++++++++------------
+ 1 file changed, 16 insertions(+), 12 deletions(-)
 
-Yes.
+diff --git a/target/arm/translate-a64.c b/target/arm/translate-a64.c
+index c596025b04..bfba816a77 100644
+--- a/target/arm/translate-a64.c
++++ b/target/arm/translate-a64.c
+@@ -2217,29 +2217,33 @@ static void disas_ldst_pair(DisasContext *s, uint32_t insn)
+         } else {
+             do_fp_st(s, rt, tcg_addr, size);
+         }
+-    } else {
+-        TCGv_i64 tcg_rt = cpu_reg(s, rt);
+-        if (is_load) {
+-            do_gpr_ld(s, tcg_rt, tcg_addr, size, is_signed, false,
+-                      false, 0, false, false);
+-        } else {
+-            do_gpr_st(s, tcg_rt, tcg_addr, size,
+-                      false, 0, false, false);
+-        }
+-    }
+-    tcg_gen_addi_i64(tcg_addr, tcg_addr, 1 << size);
+-    if (is_vector) {
++        tcg_gen_addi_i64(tcg_addr, tcg_addr, 1 << size);
+         if (is_load) {
+             do_fp_ld(s, rt2, tcg_addr, size);
+         } else {
+             do_fp_st(s, rt2, tcg_addr, size);
+         }
+     } else {
++        TCGv_i64 tcg_rt = cpu_reg(s, rt);
+         TCGv_i64 tcg_rt2 = cpu_reg(s, rt2);
++
+         if (is_load) {
++            TCGv_i64 tmp = tcg_temp_new_i64();
++
++            /* Do not modify tcg_rt before recognizing any exception
++               from the second load.  */
++            do_gpr_ld(s, tmp, tcg_addr, size, is_signed, false,
++                      false, 0, false, false);
++            tcg_gen_addi_i64(tcg_addr, tcg_addr, 1 << size);
+             do_gpr_ld(s, tcg_rt2, tcg_addr, size, is_signed, false,
+                       false, 0, false, false);
++
++            tcg_gen_mov_i64(tcg_rt, tmp);
++            tcg_temp_free_i64(tmp);
+         } else {
++            do_gpr_st(s, tcg_rt, tcg_addr, size,
++                      false, 0, false, false);
++            tcg_gen_addi_i64(tcg_addr, tcg_addr, 1 << size);
+             do_gpr_st(s, tcg_rt2, tcg_addr, size,
+                       false, 0, false, false);
+         }
+-- 
+2.13.5
 
-I rechecked the complete series for additional instances of this
-mistake, and found none.
-
->>              }
->>          } else {
->>              initrd_base = 0;
->
-> Apart from the missing exit(), the patch looks like a good idea to me.
-
-Thanks!

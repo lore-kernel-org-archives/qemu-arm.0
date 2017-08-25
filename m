@@ -1,198 +1,133 @@
-Received: by 10.182.158.201 with SMTP id ww9csp907113obb;
-        Thu, 10 Dec 2015 19:30:12 -0800 (PST)
-X-Received: by 10.55.82.132 with SMTP id g126mr20158054qkb.63.1449804612099;
-        Thu, 10 Dec 2015 19:30:12 -0800 (PST)
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 10.223.188.70 with SMTP id a6csp563425wrh;
+        Fri, 25 Aug 2017 02:35:54 -0700 (PDT)
+X-Received: by 10.55.97.200 with SMTP id v191mr12917336qkb.169.1503653754349;
+        Fri, 25 Aug 2017 02:35:54 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1503653754; cv=none;
+        d=google.com; s=arc-20160816;
+        b=gtO23gwKMIBbixnTJuPC2dyvxl8r75+ww21ybm8NERTExFgh0LPh92tCkzaSIa5AhT
+         nSLf+y1mmTRhqzQmVguQ6jPapoWY60hLgGQvz1VLMK2eebHE5MQr+LT3gYRs+Zom8FhC
+         w4Yz0qY0kEBKwY9GYWpMxogW1bFvhS6S8N4xh/QfosCl3+GRVRfiaPAZ1yVqQM0HOYdG
+         9II5R9HMTvT0w+W0pu+f8aVdtOS4Gfibr3RsE6moRuCY34gvuQxQq4ZyHB99jvzoOorv
+         L+jrdaUTjxZjYODVCvdZ942j5Na/i9kRAtuYBz/6/iQT31J1aDcEG3D+0SAhsBK1QlKs
+         rSfA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
+         :references:in-reply-to:mime-version:dkim-signature
+         :arc-authentication-results;
+        bh=Q0ox92N4cjNhzJTdHkjnIMOois3yAbWo+/egkS4GKc0=;
+        b=uVwLVkERLstD+dBLZCfDK5vfXfqxoZzu9cuCWgiTQjvpG/3x0m+a4uvWf7rWjmpVR6
+         nO2biKemMXarkBNXKJB9rO9u/mS78/FqnYiBuWMjvQs41kELDI9EpI4HVykIjF4s0Gok
+         fzJmAvY78uKLqWa4i+WePcexbHg5gVta+nbyX89LwnsGwsRwrswZ7MNJQVoLAV//Aej4
+         i5YhZnrE2gtKfbIG7Wl7AJ74P7Kn+7IyABUVRuM92Yo8KysCc/o19cXH0nxJ/Mk23/qF
+         YqsXr8y50mmz6Yi26+J2EGMYnpVa6KJr7BkUtB0UPIITf65Cb7MzqohIhUx11q25S4Js
+         m2KA==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b=OeGUC0gz;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id c187si18213112qhd.24.2015.12.10.19.30.12
+        by mx.google.com with ESMTPS id g64si2240896qtd.528.2017.08.25.02.35.53
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 10 Dec 2015 19:30:12 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Fri, 25 Aug 2017 02:35:54 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:45685 helo=lists.gnu.org)
+       dkim=fail header.i=@linaro.org header.s=google header.b=OeGUC0gz;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:52265 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1a7EPL-0001kG-Ob
-	for alex.bennee@linaro.org; Thu, 10 Dec 2015 22:30:11 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:39032)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1dlB1s-0002Sh-2O
+	for alex.bennee@linaro.org; Fri, 25 Aug 2017 05:35:52 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:46669)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <zhaoshenglong@huawei.com>) id 1a7EOH-0008MY-9i
-	for qemu-arm@nongnu.org; Thu, 10 Dec 2015 22:29:06 -0500
+	(envelope-from <peter.maydell@linaro.org>) id 1dlB0Q-0001Lf-NC
+	for qemu-devel@nongnu.org; Fri, 25 Aug 2017 05:34:24 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <zhaoshenglong@huawei.com>) id 1a7EOD-0001RE-Uy
-	for qemu-arm@nongnu.org; Thu, 10 Dec 2015 22:29:05 -0500
-Received: from szxga01-in.huawei.com ([58.251.152.64]:58018)
-	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <zhaoshenglong@huawei.com>)
-	id 1a7EOD-0001R7-3c; Thu, 10 Dec 2015 22:29:01 -0500
-Received: from 172.24.1.48 (EHLO szxeml427-hub.china.huawei.com)
-	([172.24.1.48])
-	by szxrg01-dlp.huawei.com (MOS 4.3.7-GA FastPath queued)
-	with ESMTP id DAQ94307; Fri, 11 Dec 2015 11:22:00 +0800 (CST)
-Received: from HGHY1Z002260041.china.huawei.com (10.177.16.142) by
-	szxeml427-hub.china.huawei.com (10.82.67.182) with Microsoft SMTP
-	Server id 14.3.235.1; Fri, 11 Dec 2015 11:21:51 +0800
-From: Shannon Zhao <zhaoshenglong@huawei.com>
-To: <qemu-arm@nongnu.org>, <peter.maydell@linaro.org>, <imammedo@redhat.com>, 
-	<mst@redhat.com>, <wei@redhat.com>
-Date: Fri, 11 Dec 2015 11:21:22 +0800
-Message-ID: <1449804086-3464-7-git-send-email-zhaoshenglong@huawei.com>
-X-Mailer: git-send-email 1.9.0.msysgit.0
-In-Reply-To: <1449804086-3464-1-git-send-email-zhaoshenglong@huawei.com>
-References: <1449804086-3464-1-git-send-email-zhaoshenglong@huawei.com>
+	(envelope-from <peter.maydell@linaro.org>) id 1dlB0P-0001SM-T2
+	for qemu-devel@nongnu.org; Fri, 25 Aug 2017 05:34:22 -0400
+Received: from mail-wm0-x233.google.com ([2a00:1450:400c:c09::233]:37670)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1dlB0P-0001Rk-Lb
+	for qemu-devel@nongnu.org; Fri, 25 Aug 2017 05:34:21 -0400
+Received: by mail-wm0-x233.google.com with SMTP id b189so8146051wmd.0
+	for <qemu-devel@nongnu.org>; Fri, 25 Aug 2017 02:34:21 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=Q0ox92N4cjNhzJTdHkjnIMOois3yAbWo+/egkS4GKc0=;
+	b=OeGUC0gzmejDnlKd+7pfE9FVs2s2sTCMgRhfJ/FgftwdHEdrGYoTHAqh+UIjdubMTV
+	fTB6XWSaAWHQszvL9IZDUBtt8ww234mApxWDidUR4pwI2Fd8ypRSQksQD+t54UeFt9gC
+	pzlkkdnXDGEmAkzeoiRLnqmzyCSyfo0dMXcsc=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=Q0ox92N4cjNhzJTdHkjnIMOois3yAbWo+/egkS4GKc0=;
+	b=kvC6ZJR+aih5zzzp+pXt5FGewNNgKw3uaUGqRkaBkZB8TQwl7A/ZiOSRtFk0omDT9o
+	DBiup4Z/rDI1zL+o13oXuqjK6YMU5vXFl4NVSuDoSD7frAkhdwwEMgJeHcSjHr/IrdFF
+	yfDkvHIg0EeXbuyadyK6BWhcyg6PTykoF0mL/5ViA0TVvlMfUqYyGpNasZkpVFZ7ewco
+	8eKXB3ilxxs/uKiwtr339tGSbCjXG9P7kCzpsaXIyQYyDHouO5c9CWv6Pd3fQLYjtZmh
+	rtKkFeJD4ZZhuRiewjeKFl16JvyInNr7aLtPStZeH1oKpN+1FTphBKsE3TtaS/oF7Kak
+	bBcQ==
+X-Gm-Message-State: AHYfb5ilcrI25/oN3XyZ51MJSU6IDsvXx6x4KGtKSpJAVrEStNItxRHB
+	REfUe0EoDpP8DcNOhy9mm6CDXtMkpt1Z
+X-Received: by 10.28.152.87 with SMTP id a84mr845150wme.130.1503653660603;
+	Fri, 25 Aug 2017 02:34:20 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Originating-IP: [10.177.16.142]
-X-CFilter-Loop: Reflected
-X-Mirapoint-Virus-RAPID-Raw: score=unknown(0),
-	refid=str=0001.0A020204.566A4159.0127, ss=1, re=0.000, recu=0.000,
-	reip=0.000, cl=1, cld=1, fgs=0, ip=0.0.0.0,
-	so=2013-06-18 04:22:30, dmn=2013-03-21 17:37:32
-X-Mirapoint-Loop-Id: 73b89a3477712556fe8bc137b8b99342
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
-X-Received-From: 58.251.152.64
-Cc: peter.huangpeng@huawei.com, zhaoshenglong@huawei.com, qemu-devel@nongnu.org,
-	graeme.gregory@linaro.org, shannon.zhao@linaro.org
-Subject: [Qemu-arm] [PATCH v5 06/10] ACPI: Add GPIO Connection Descriptor
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.14
+Received: by 10.223.134.54 with HTTP; Fri, 25 Aug 2017 02:34:00 -0700 (PDT)
+In-Reply-To: <1503414539-28762-6-git-send-email-peter.maydell@linaro.org>
+References: <1503414539-28762-1-git-send-email-peter.maydell@linaro.org>
+	<1503414539-28762-6-git-send-email-peter.maydell@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 25 Aug 2017 10:34:00 +0100
+Message-ID: <CAFEAcA_+oy3ys_56j+QjDDrCabU_f5SamOCiPaMJ-z+3ZkdKVA@mail.gmail.com>
+To: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2a00:1450:400c:c09::233
+Subject: Re: [Qemu-devel] [Qemu-arm] [PATCH 05/20] target/arm: Add MMU
+ indexes for secure v8M
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: nsINHe8KaHNB
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: "patches@linaro.org" <patches@linaro.org>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: ufEdZ8m17AEr
 
-From: Shannon Zhao <shannon.zhao@linaro.org>
+On 22 August 2017 at 16:08, Peter Maydell <peter.maydell@linaro.org> wrote:
+> Now that MPU lookups can return different results for v8M
+> when the CPU is in secure vs non-secure state, we need to
+> have separate MMU indexes; add the secure counterparts
+> to the existing three M profile MMU indexes.
 
-Signed-off-by: Shannon Zhao <zhaoshenglong@huawei.com>
-Signed-off-by: Shannon Zhao <shannon.zhao@linaro.org>
-Tested-by: Wei Huang <wei@redhat.com>
-Reviewed-by: Igor Mammedov <imammedo@redhat.com>
----
- hw/acpi/aml-build.c         | 68 +++++++++++++++++++++++++++++++++++++++++++++
- include/hw/acpi/aml-build.h | 20 +++++++++++++
- 2 files changed, 88 insertions(+)
+> @@ -2206,7 +2217,11 @@ static inline int cpu_mmu_index(CPUARMState *env, bool ifetch)
+>           */
+>          if ((env->v7m.exception > 0 && env->v7m.exception <= 3)
+>              || env->v7m.faultmask) {
+> -            return arm_to_core_mmu_idx(ARMMMUIdx_MNegPri);
+> +            mmu_idx = ARMMMUIdx_MNegPri;
+> +        }
 
-diff --git a/hw/acpi/aml-build.c b/hw/acpi/aml-build.c
-index cd25d06..d8c33a2 100644
---- a/hw/acpi/aml-build.c
-+++ b/hw/acpi/aml-build.c
-@@ -565,6 +565,74 @@ Aml *aml_call4(const char *method, Aml *arg1, Aml *arg2, Aml *arg3, Aml *arg4)
- }
- 
- /*
-+ * ACPI 5.0: 6.4.3.8.1 GPIO Connection Descriptor
-+ * Type 1, Large Item Name 0xC
-+ */
-+
-+static Aml *aml_gpio_connection(AmlGpioConnectionType type,
-+                                AmlConsumerAndProducer con_and_pro,
-+                                uint8_t flags, AmlPinConfig pin_config,
-+                                uint16_t output_drive,
-+                                uint16_t debounce_timeout,
-+                                const uint32_t pin_list[], uint32_t pin_count,
-+                                const char *resource_source_name,
-+                                const uint8_t *vendor_data,
-+                                uint16_t vendor_data_len)
-+{
-+    Aml *var = aml_alloc();
-+    const uint16_t min_desc_len = 0x16;
-+    uint16_t resource_source_name_len, length;
-+    uint16_t pin_table_offset, resource_source_name_offset, vendor_data_offset;
-+    uint32_t i;
-+
-+    assert(resource_source_name);
-+    resource_source_name_len = strlen(resource_source_name) + 1;
-+    length = min_desc_len + resource_source_name_len + vendor_data_len;
-+    pin_table_offset = min_desc_len + 1;
-+    resource_source_name_offset = pin_table_offset + pin_count * 2;
-+    vendor_data_offset = resource_source_name_offset + resource_source_name_len;
-+
-+    build_append_byte(var->buf, 0x8C);  /* GPIO Connection Descriptor */
-+    build_append_int_noprefix(var->buf, length, 2); /* Length */
-+    build_append_byte(var->buf, 1);     /* Revision ID */
-+    build_append_byte(var->buf, type);  /* GPIO Connection Type */
-+    /* General Flags (2 bytes) */
-+    build_append_int_noprefix(var->buf, con_and_pro, 2);
-+    /* Interrupt and IO Flags (2 bytes) */
-+    build_append_int_noprefix(var->buf, flags, 2);
-+    /* Pin Configuration 0 = Default 1 = Pull-up 2 = Pull-down 3 = No Pull */
-+    build_append_byte(var->buf, pin_config);
-+    /* Output Drive Strength (2 bytes) */
-+    build_append_int_noprefix(var->buf, output_drive, 2);
-+    /* Debounce Timeout (2 bytes) */
-+    build_append_int_noprefix(var->buf, debounce_timeout, 2);
-+    /* Pin Table Offset (2 bytes) */
-+    build_append_int_noprefix(var->buf, pin_table_offset, 2);
-+    build_append_byte(var->buf, 0);     /* Resource Source Index */
-+    /* Resource Source Name Offset (2 bytes) */
-+    build_append_int_noprefix(var->buf, resource_source_name_offset, 2);
-+    /* Vendor Data Offset (2 bytes) */
-+    build_append_int_noprefix(var->buf, vendor_data_offset, 2);
-+    /* Vendor Data Length (2 bytes) */
-+    build_append_int_noprefix(var->buf, vendor_data_len, 2);
-+    /* Pin Number (2n bytes)*/
-+    for (i = 0; i < pin_count; i++) {
-+        build_append_int_noprefix(var->buf, pin_list[i], 2);
-+    }
-+
-+    /* Resource Source Name */
-+    build_append_namestring(var->buf, "%s", resource_source_name);
-+    build_append_byte(var->buf, '\0');
-+
-+    /* Vendor-defined Data */
-+    if (vendor_data != NULL) {
-+        g_array_append_vals(var->buf, vendor_data, vendor_data_len);
-+    }
-+
-+    return var;
-+}
-+
-+/*
-  * ACPI 1.0b: 6.4.3.4 32-Bit Fixed Location Memory Range Descriptor
-  * (Type 1, Large Item Name 0x6)
-  */
-diff --git a/include/hw/acpi/aml-build.h b/include/hw/acpi/aml-build.h
-index c2c0be3..f1817e4 100644
---- a/include/hw/acpi/aml-build.h
-+++ b/include/hw/acpi/aml-build.h
-@@ -154,6 +154,26 @@ typedef enum {
-     AML_SERIALIZED = 1,
- } AmlSerializeFlag;
- 
-+/*
-+ * ACPI 5.0: Table 6-189 GPIO Connection Descriptor Definition
-+ * GPIO Connection Type
-+ */
-+typedef enum {
-+    AML_INTERRUPT_CONNECTION = 0,
-+    AML_IO_CONNECTION = 1,
-+} AmlGpioConnectionType;
-+
-+/*
-+ * ACPI 5.0: Table 6-189 GPIO Connection Descriptor Definition
-+ * _PPI field definition
-+ */
-+typedef enum {
-+    AML_PULL_DEFAULT = 0,
-+    AML_PULL_UP = 1,
-+    AML_PULL_DOWN = 2,
-+    AML_PULL_NONE = 3,
-+} AmlPinConfig;
-+
- typedef
- struct AcpiBuildTables {
-     GArray *table_data;
--- 
-2.0.4
+Incidentally this is not exactly the right check to make when
+the security extension is present, but at this point in the
+series it's the best we can do (the right check requires us
+to have exception banking support in the NVIC so we can
+check secure HF and nonsecure HF separately); the patch to
+do it right will come after the NVIC patches.
 
-
+thanks
+-- PMM

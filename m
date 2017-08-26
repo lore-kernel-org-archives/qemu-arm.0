@@ -1,56 +1,52 @@
-Received: by 10.223.188.70 with SMTP id a6csp1558998wrh;
-        Fri, 25 Aug 2017 18:09:13 -0700 (PDT)
-X-Received: by 10.98.208.6 with SMTP id p6mr164160pfg.69.1503709752997;
-        Fri, 25 Aug 2017 18:09:12 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1503709752; cv=none;
+Received: by 10.223.188.70 with SMTP id a6csp1590062wrh;
+        Fri, 25 Aug 2017 18:49:13 -0700 (PDT)
+X-Received: by 10.84.236.1 with SMTP id q1mr453305plk.328.1503712153045;
+        Fri, 25 Aug 2017 18:49:13 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1503712153; cv=none;
         d=google.com; s=arc-20160816;
-        b=PK9ZCB81X8+HRf9BZEgPWFqewl4v9rJ88iM9toaF+SdxB9FwMwtp/ZQFLewdTLT5tq
-         zaCKMmxEuAGDzVEVgdBozSA77iEoC0naSplAJN4fGB240o6A5q0/6WB0sukoP3xQKZzw
-         KlhQtk6iC+wMpPJldmJF6ZZaPQD3Ow6rQzp2XlVkQTTWAUp+KE/S0uVWY2toeEvL+3wY
-         z0b1a2EQ1oFhJe+viyLEtQRznvGP0pizNyQlcvapz5NFvyRLuNrtt7YpOL5CUAJMgX5h
-         XxdKcQ5nws+s6zCinthqq9A5R9zmADJFQrtZN3RlDAWRR7Wr6GtsYlT9bvT3A/bNHo3G
-         HhPQ==
+        b=kiTrwTS+d2AQeL5wqfH2mhjvnCD52CUsSiMLGnGkx14EkN7mDMJ2e/5gqrsfJ3/HYR
+         BSaO5dFigSgeqAY9yk/2dyv3WXmMuW3TlGiSERaekNAw+Jb+cbTXo1EvBHfJNyobNU2Y
+         0GkVJfbyR6kd7AN9gsqh5W8ZFTi9IKkD73Loyx5Cmb3cuxKPdMsYkXKSn8J1za2XzuRQ
+         6kdLH068ATAWBi+hSqvhat1iIOVizz45i+IwW5nM6Tcdt6YCwvOfdN++kdHaO4V64SlS
+         safxeo6R6wbLT5jOHB/fVnv3KbuhdxVPvVPioID4aPhKUh0bPcVy/YmJMoZWB84X2hXe
+         NBaw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-id:precedence:sender:content-transfer-encoding:in-reply-to
-         :references:subject:cc:to:mime-version:user-agent:from:date
-         :message-id:arc-authentication-results;
-        bh=NcVtg4zsBFKFtWuy7MnEs74Py6AHI2HQ9tQbuIC6PTU=;
-        b=DniU+DaVhc3UBinx36aulbbVtuz8Jcj1xiLmE7uFRjlfThxQIlWrD4hfLFDgCGAEbf
-         zwz1vTNDDvhwiiNnt66N0ybrCke8Mfo1ooZeHxyrUkiskQb2nCAw3SBIMRacJ371NNBk
-         gCkmBnzHDfs1TsRCUyVPU50WbQbaNdQ7qUmWOBpJfZm1OP8zD9uMnk30mt5N4LjVxqgI
-         iMyTt5CH1uSdha+OIxyQpFmaR7yKvxA9aqkMYh6HakyaZS4rxXIQSpr+kN0KQH3+0+iQ
-         07u3hXgpynMacRlRDBTCztULq29t2RI8fRp5GYoF+yUpAanv/nJ2PGXsqA8rF9p2X5kL
-         rRYw==
+         :mime-version:user-agent:date:message-id:from:cc:references:to
+         :subject:arc-authentication-results;
+        bh=xqLET6kKYxECil6PHkV4NBjF4wGL1sc9VV2DJnCO5Yc=;
+        b=WI+zpntbUKTW77U8YLFETiGQ/EsHyxvADReLvDE8eLfWQrYTEuzgUzDT0MJky0jD8O
+         dmxtGdT5OO/LRZP4YOTLHHbO1RSE6gEIX2j3EQICTFEViOU/zlsXOYVfbsikQmd+KOhC
+         3LGj/EghbJXdfOdMAcvkq2oF6Ff7v4K0sF697RXayo84CZDyGJ8EKhrTGAnn2lhtDOnd
+         OAIODWvUymc6MxZ+kVkO0AfYeCuusQJ4Z7Im+KZGclVo+lyUrSDjsp+GXOLfYbIobXAG
+         1l7Qxl/jDFrqWagnPGSiFSkx61YawAWdy1A5bicijL4EugGX6DT+g3pn1f25B+TZIaka
+         iLzA==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: best guess record for domain of linux-kernel-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=linux-kernel-owner@vger.kernel.org
 Return-Path: <linux-kernel-owner@vger.kernel.org>
 Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
-        by mx.google.com with ESMTP id 7si5952582plc.425.2017.08.25.18.09.12;
-        Fri, 25 Aug 2017 18:09:12 -0700 (PDT)
+        by mx.google.com with ESMTP id h68si5566296pgc.456.2017.08.25.18.49.12;
+        Fri, 25 Aug 2017 18:49:13 -0700 (PDT)
 Received-SPF: pass (google.com: best guess record for domain of linux-kernel-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: best guess record for domain of linux-kernel-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=linux-kernel-owner@vger.kernel.org
 Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S1754211AbdHZBJI (ORCPT <rfc822;daniel.diaz@linaro.org>
-        + 26 others); Fri, 25 Aug 2017 21:09:08 -0400
-Received: from szxga04-in.huawei.com ([45.249.212.190]:5459 "EHLO
+        id S1752584AbdHZBtG (ORCPT <rfc822;daniel.diaz@linaro.org>
+        + 26 others); Fri, 25 Aug 2017 21:49:06 -0400
+Received: from szxga04-in.huawei.com ([45.249.212.190]:5464 "EHLO
         szxga04-in.huawei.com" rhost-flags-OK-OK-OK-OK) by vger.kernel.org
-        with ESMTP id S1751407AbdHZBJG (ORCPT
+        with ESMTP id S1751407AbdHZBtF (ORCPT
         <rfc822;linux-kernel@vger.kernel.org>);
-        Fri, 25 Aug 2017 21:09:06 -0400
-Received: from 172.30.72.60 (EHLO DGGEMS413-HUB.china.huawei.com) ([172.30.72.60])
+        Fri, 25 Aug 2017 21:49:05 -0400
+Received: from 172.30.72.58 (EHLO DGGEMS406-HUB.china.huawei.com) ([172.30.72.58])
         by dggrg04-dlp.huawei.com (MOS 4.4.6-GA FastPath queued)
-        with ESMTP id DFX10032;
-        Sat, 26 Aug 2017 09:08:29 +0800 (CST)
-Received: from [127.0.0.1] (10.177.16.142) by DGGEMS413-HUB.china.huawei.com
- (10.3.19.213) with Microsoft SMTP Server id 14.3.301.0; Sat, 26 Aug 2017
- 09:08:18 +0800
-Message-ID: <59A0C9FE.5010204@huawei.com>
-Date:   Sat, 26 Aug 2017 09:08:14 +0800
-From:   Shannon Zhao <zhaoshenglong@huawei.com>
-User-Agent: Mozilla/5.0 (Windows NT 6.1; rv:24.0) Gecko/20100101 Thunderbird/24.4.0
-MIME-Version: 1.0
-To:     gengdongjiu <gengdongjiu@huawei.com>, <lersek@redhat.com>,
+        with ESMTP id DFX14448;
+        Sat, 26 Aug 2017 09:45:28 +0800 (CST)
+Received: from [127.0.0.1] (10.142.68.147) by DGGEMS406-HUB.china.huawei.com
+ (10.3.19.206) with Microsoft SMTP Server id 14.3.301.0; Sat, 26 Aug 2017
+ 09:45:16 +0800
+Subject: Re: [PATCH v11 1/6] ACPI: add APEI/HEST/CPER structures and macros
+To:     Shannon Zhao <zhaoshenglong@huawei.com>, <lersek@redhat.com>,
         <mst@redhat.com>, <imammedo@redhat.com>,
         <peter.maydell@linaro.org>, <pbonzini@redhat.com>,
         <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>,
@@ -65,64 +61,80 @@ To:     gengdongjiu <gengdongjiu@huawei.com>, <lersek@redhat.com>,
         <john.garry@huawei.com>, <jonathan.cameron@huawei.com>,
         <shameerali.kolothum.thodi@huawei.com>, <huangdaode@hisilicon.com>,
         <wangzhou1@hisilicon.com>
+References: <1503066227-18251-1-git-send-email-gengdongjiu@huawei.com>
+ <1503066227-18251-2-git-send-email-gengdongjiu@huawei.com>
+ <599EC7AB.3080604@huawei.com>
+ <69090a96-ce90-4b2b-a419-c8d847d56093@huawei.com>
+ <59A0C813.2060201@huawei.com>
 CC:     <huangshaoyu@huawei.com>, <wuquanming@huawei.com>,
         <linuxarm@huawei.com>, <zhengqiang10@huawei.com>
-Subject: Re: [PATCH v11 2/6] ACPI: Add APEI GHES Table Generation support
-References: <1503066227-18251-1-git-send-email-gengdongjiu@huawei.com> <1503066227-18251-3-git-send-email-gengdongjiu@huawei.com> <599ECE95.10205@huawei.com> <9a878b42-c480-2c7b-0f04-202193d8c56b@huawei.com>
-In-Reply-To: <9a878b42-c480-2c7b-0f04-202193d8c56b@huawei.com>
+From:   gengdongjiu <gengdongjiu@huawei.com>
+Message-ID: <03f2f404-2718-75c7-d0eb-7bdeba146a2e@huawei.com>
+Date:   Sat, 26 Aug 2017 09:45:02 +0800
+User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64; rv:45.0) Gecko/20100101
+ Thunderbird/45.7.1
+MIME-Version: 1.0
+In-Reply-To: <59A0C813.2060201@huawei.com>
 Content-Type: text/plain; charset="windows-1252"
 Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.177.16.142]
+X-Originating-IP: [10.142.68.147]
 X-CFilter-Loop: Reflected
 X-Mirapoint-Virus-RAPID-Raw: score=unknown(0),
-        refid=str=0001.0A090204.59A0CA0D.0049,ss=1,re=0.000,recu=0.000,reip=0.000,cl=1,cld=1,fgs=0,
+        refid=str=0001.0A020205.59A0D2B8.00DE,ss=1,re=0.000,recu=0.000,reip=0.000,cl=1,cld=1,fgs=0,
         ip=0.0.0.0,
         so=2014-11-16 11:51:01,
         dmn=2013-03-21 17:37:32
-X-Mirapoint-Loop-Id: 72b1c22ab38c0022a5c2d9e53ed95867
+X-Mirapoint-Loop-Id: 3dc7720de09a1a930da2bd11f60d6ba9
 Sender: linux-kernel-owner@vger.kernel.org
 Precedence: bulk
 List-ID: <linux-kernel.vger.kernel.org>
 X-Mailing-List: linux-kernel@vger.kernel.org
-X-TUID: 3wgWGqTr/yDB
+X-TUID: hXJTW/wgsePH
 
 
 
-On 2017/8/25 19:20, gengdongjiu wrote:
->>> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
->>> >> index 3d78ff6..def1ec1 100644
->>> >> --- a/hw/arm/virt-acpi-build.c
->>> >> +++ b/hw/arm/virt-acpi-build.c
->>> >> @@ -45,6 +45,7 @@
->>> >>  #include "hw/arm/virt.h"
->>> >>  #include "sysemu/numa.h"
->>> >>  #include "kvm_arm.h"
->>> >> +#include "hw/acpi/hest_ghes.h"
->>> >>  
->>> >>  #define ARM_SPI_BASE 32
->>> >>  #define ACPI_POWER_BUTTON_DEVICE "PWRB"
->>> >> @@ -771,6 +772,9 @@ void virt_acpi_build(VirtMachineState *vms, AcpiBuildTables *tables)
->>> >>      acpi_add_table(table_offsets, tables_blob);
->>> >>      build_spcr(tables_blob, tables->linker, vms);
->>> >>  
->>> >> +    acpi_add_table(table_offsets, tables_blob);
->>> >> +    ghes_build_acpi(tables_blob, tables->hardware_errors, tables->linker);
->>> >> +
->> > So we add this table unconditionally. Is there any bad impact if QEMU
->> > runs on old kvm? Does it need to check whether KVM supports RAS?
-> this table is added before guest OS boot. so can not use KVM to check it.
-No, we can check the RAS capability when we create vcpus like you done
-in another patch ans can use that in table generation.
-
-> if the old kvm does not support RAS, it does not have bad impact. only waste table memory.
-> May be we can make it as device? if this device is enabled in the qemu
-> boot parameters, then we will add this table?
+On 2017/8/26 9:00, Shannon Zhao wrote:
 > 
+> 
+> On 2017/8/25 18:37, gengdongjiu wrote:
+>>>> +
+>>>>>> +/* From the ACPI 6.1 spec, "18.3.2.9 Hardware Error Notification" */
+>>>>>> +
+>>>> It's better to refer to the first spec version of this structure and
+>>>> same with others you define.
+>>  do you mean which spec version? the definition is aligned with the linux kernel.
+> What I mean here is that it's better to refer to the ACPI spec version
+> which introduces Hardware Error Notification first time.
+Ok, I basically understand your meaning. I will clear that. thanks.
 
-And you need to add a option to virt machine for (migration)
-compatibility. On new virt machine it's on by default while off for old
-ones.
+> 
+>>>>
+>>>>>> +enum AcpiHestNotifyType {
+>>>>>> +    ACPI_HEST_NOTIFY_POLLED = 0,
+>>>>>> +    ACPI_HEST_NOTIFY_EXTERNAL = 1,
+>>>>>> +    ACPI_HEST_NOTIFY_LOCAL = 2,
+>>>>>> +    ACPI_HEST_NOTIFY_SCI = 3,
+>>>>>> +    ACPI_HEST_NOTIFY_NMI = 4,
+>>>>>> +    ACPI_HEST_NOTIFY_CMCI = 5,  /* ACPI 5.0 */
+>>>>>> +    ACPI_HEST_NOTIFY_MCE = 6,   /* ACPI 5.0 */
+>>>>>> +    ACPI_HEST_NOTIFY_GPIO = 7,  /* ACPI 6.0 */
+>>>>>> +    ACPI_HEST_NOTIFY_SEA = 8,   /* ACPI 6.1 */
+>>>>>> +    ACPI_HEST_NOTIFY_SEI = 9,   /* ACPI 6.1 */
+>>>>>> +    ACPI_HEST_NOTIFY_GSIV = 10, /* ACPI 6.1 */
+>>>>>> +    ACPI_HEST_NOTIFY_RESERVED = 11  /* 11 and greater are reserved */
+>>>> In ACPI 6.2, 11 is for Software Delegated Exception, is this useful for
+>>>> your patchset?
+>>   it is usefull, for all the error source, I reserved the space for them.
+>> Because the space is allocated one time, is not dynamically allocated.
+>> so I use the ACPI_HEST_NOTIFY_RESERVED to specify that there is 11 error source.
+>>
+> I mean whether the new type Software Delegated Exception is useful for
+> RAS. If so, we could add this new type here.
+Just now I check the ACPI 6.2 spec, it indeed introduced the new type SDEI.
 
-Thanks,
--- 
-Shannon
+currently we do not use the type Software Delegated Exception which introduced by ACPI 6.2,
+so may not need to add a new type.
+
+> 
+> Thanks,
+> 

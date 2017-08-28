@@ -1,118 +1,119 @@
-Received: by 10.25.134.130 with SMTP id i124csp1101286lfd;
-        Sat, 9 Jan 2016 09:44:45 -0800 (PST)
-X-Received: by 10.140.38.73 with SMTP id s67mr143098767qgs.82.1452361484756;
-        Sat, 09 Jan 2016 09:44:44 -0800 (PST)
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 10.223.188.70 with SMTP id a6csp4192718wrh;
+        Mon, 28 Aug 2017 01:42:06 -0700 (PDT)
+X-Received: by 10.55.214.6 with SMTP id t6mr7670716qki.273.1503909726628;
+        Mon, 28 Aug 2017 01:42:06 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1503909726; cv=none;
+        d=google.com; s=arc-20160816;
+        b=iWSuvnSWDIpY6qbsiieZSQKuwh5YfBoZUi6eIahqKyB1ebPuGj+crbWaj7c/rcGT8r
+         7qTmrusGFOKnzEXgDyFTYcRKg1p/pvzF1/ORU1t8auSrCf6NL8FPTqTZa///9zV5qAIM
+         keuUONrq/bb5jy6rBvqPtLfuBMeodvSOtMsT3an/7sMeLcYe6//1xIp6S2qBYWH7rb4p
+         0l9GKAviMfAnwc1ODJP1cLVhUOjyVVFpHO7lMLweZYhi6WEGux4WgqZiX5A1oCg+F/Sc
+         HvHaTKIGNm6r947dtW37ipgs/DlulrBibn1rk2V4BK8jDgUn2H6IQZmCykh9KCFj45sL
+         KgpQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject:mime-version:message-id
+         :date:user-agent:references:in-reply-to:to:from:dkim-signature
+         :arc-authentication-results;
+        bh=MQM0k6tQuFVr+P19nPvulRPRjSnfAvTd/nalCOe9akM=;
+        b=M72DkKoJayVs4vDWhVChqEeU6IYvNpSvI4cAUQMTNa4i6fGWJWpNcYAw968VX4i0K+
+         egIb/AM2X39EG6yFkhEb4gfFc21fRkhPbtWEP4+RG/+TSteq1jJUogQIgwQeo6S21QHi
+         8Z+M6rg1mq8RF+Jj5DX1U7oh3ZUzZoIEPyHkT20se4btWc5yWM8xn0FxBdcPs9eXlqmv
+         upujlJvqbTMQvIFNVj//zqJeYm/qwp8BG2JdTtOsMJixQRfm92255BU7M2sX6qrp3byO
+         ijqLFxZBdqlgBxqrFwaKAjNq1j2HtMayZkBYLScfPoUAYHiUSK4Zs+ARdzlzdB2+BDgK
+         zl9g==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@igalia.com header.s=20170329 header.b=o6Ei9uua;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id i9si35636081qkh.31.2016.01.09.09.44.44
+        by mx.google.com with ESMTPS id 74si5387081qkt.392.2017.08.28.01.42.06
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sat, 09 Jan 2016 09:44:44 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Mon, 28 Aug 2017 01:42:06 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dkim=fail header.i=@gmail.com;
-       dmarc=fail (p=NONE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:41774 helo=lists.gnu.org)
+       dkim=fail header.i=@igalia.com header.s=20170329 header.b=o6Ei9uua;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:37519 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1aHxZE-0006wm-Au
-	for alex.bennee@linaro.org; Sat, 09 Jan 2016 12:44:44 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:53842)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1dmFcS-0003vI-Ib
+	for alex.bennee@linaro.org; Mon, 28 Aug 2017 04:42:04 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:35854)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <digetx@gmail.com>) id 1aHxXO-0003Ia-SM
-	for qemu-arm@nongnu.org; Sat, 09 Jan 2016 12:42:51 -0500
+	(envelope-from <berto@igalia.com>) id 1dmFbJ-0003Ip-Qc
+	for qemu-devel@nongnu.org; Mon, 28 Aug 2017 04:40:54 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <digetx@gmail.com>) id 1aHxXN-0000j7-Pq
-	for qemu-arm@nongnu.org; Sat, 09 Jan 2016 12:42:50 -0500
-Received: from mail-lf0-x243.google.com ([2a00:1450:4010:c07::243]:35813)
-	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <digetx@gmail.com>)
-	id 1aHxXK-0000gu-4Y; Sat, 09 Jan 2016 12:42:46 -0500
-Received: by mail-lf0-x243.google.com with SMTP id c134so2046175lfb.2;
-	Sat, 09 Jan 2016 09:42:45 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=from:to:cc:subject:date:message-id:in-reply-to:references
-	:in-reply-to:references;
-	bh=0sdxLU8sl+k3NjhfFtqghzVzfDM6VOEndkAIvlkexaE=;
-	b=k3sPmYrSSgGLt+xCmTDNnEjAR19VwYD18H9b2L8GS4bVnIKSyvAV9L8P/NxCniOcPa
-	EwzhIbbkNFQF5kVa6yQtdXd612ThOIzrhlNF7eIeCwKvX+HiosjNs33/0o5jNQyvnILQ
-	GY7qCIzWv+BPGZL8R5SR//mHEHKDyy7VvOO/FHrqfLfktg9n7zvmhzpYZpz4Mios+39Z
-	kgqtDHaEM1pbP4xxYHKaammGvnIDwFhejnMN8NQRiXg2hYPPaxyY9FKCio7Hsm1ldq6u
-	z0S13CRuKfALwsGUO+tOSy5gkF6PDCkfJ4g7ixN53IHFsqJMP+c7TnYJeBMhtI+AyM2I
-	FCtQ==
-X-Received: by 10.25.147.200 with SMTP id v191mr23265121lfd.167.1452361365463; 
-	Sat, 09 Jan 2016 09:42:45 -0800 (PST)
-Received: from localhost.localdomain (ppp46-138-151-163.pppoe.spdop.ru.
-	[46.138.151.163]) by smtp.gmail.com with ESMTPSA id
-	f186sm8406450lfd.26.2016.01.09.09.42.44
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-	Sat, 09 Jan 2016 09:42:45 -0800 (PST)
-From: Dmitry Osipenko <digetx@gmail.com>
-To: QEMU Developers <qemu-devel@nongnu.org>,
-	qemu-arm@nongnu.org
-Date: Sat,  9 Jan 2016 20:39:52 +0300
-Message-Id: <f515e61fa162411d0a75c3d0583780531fe8cc6e.1452359845.git.digetx@gmail.com>
-X-Mailer: git-send-email 2.6.4
-In-Reply-To: <cover.1452359845.git.digetx@gmail.com>
-References: <cover.1452359845.git.digetx@gmail.com>
-In-Reply-To: <cover.1452359845.git.digetx@gmail.com>
-References: <cover.1452359845.git.digetx@gmail.com>
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2a00:1450:4010:c07::243
-Cc: Peter Maydell <peter.maydell@linaro.org>,
-	Peter Crosthwaite <crosthwaitepeter@gmail.com>
-Subject: [Qemu-arm] [PATCH v10 4/7] hw/ptimer: Support "on the fly" timer
-	mode switch
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.14
+	(envelope-from <berto@igalia.com>) id 1dmFbE-0006bm-VU
+	for qemu-devel@nongnu.org; Mon, 28 Aug 2017 04:40:53 -0400
+Received: from fanzine.igalia.com ([91.117.99.155]:59388)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <berto@igalia.com>)
+	id 1dmFbE-0006QS-Gk; Mon, 28 Aug 2017 04:40:48 -0400
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=igalia.com;
+	s=20170329; 
+	h=Content-Type:MIME-Version:Message-ID:Date:References:In-Reply-To:Subject:Cc:To:From;
+	bh=MQM0k6tQuFVr+P19nPvulRPRjSnfAvTd/nalCOe9akM=; 
+	b=o6Ei9uuaayWoGQYIxznxbYphd9bBN1zc5nfr3S//a+1A7J1O0zbxdIpGvzLFVl6MjrLzK43AniwMkURSDquF4T9wx82qgKFmNZ5EYibGQ+K3C56iSvRmcefWS9GG7yy2Y1ESwYzSaivyICulA8EmJdzSyEMDn6/whi4xoNBp5C6gfizBEs5NHhVSR2zCidVPAhXH+9Yr4wkIkQmaWM5z6noiQlWpmITs4+XjbwOQMVeZLhhUjtZMP84FG+hYlZl25o3bdpr7DPsUl5//HjPcoCa4GgD04LTA7IUE9QsFDmK3zZihxVcxqSPBoCGGDSpgst+C68M3JFi3cyAg/Vkiyg==;
+Received: from maestria.local.igalia.com ([192.168.10.14] helo=mail.igalia.com)
+	by fanzine.igalia.com with esmtps 
+	(Cipher TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128) (Exim)
+	id 1dmFac-0004HA-7X; Mon, 28 Aug 2017 10:40:10 +0200
+Received: from berto by mail.igalia.com with local (Exim)
+	id 1dmFac-0005d1-53; Mon, 28 Aug 2017 10:40:10 +0200
+From: Alberto Garcia <berto@igalia.com>
+To: Eduardo Habkost <ehabkost@redhat.com>, qemu-devel@nongnu.org
+In-Reply-To: <20170825193922.GN27715@localhost.localdomain>
+References: <20170823221445.15243-1-ehabkost@redhat.com>
+	<20170823221445.15243-5-ehabkost@redhat.com>
+	<20170825193922.GN27715@localhost.localdomain>
+User-Agent: Notmuch/0.18.2 (http://notmuchmail.org) Emacs/24.4.1
+	(i586-pc-linux-gnu)
+Date: Mon, 28 Aug 2017 10:40:10 +0200
+Message-ID: <w51y3q4ulud.fsf@maestria.local.igalia.com>
+MIME-Version: 1.0
+Content-Type: text/plain
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x (no
+	timestamps) [generic] [fuzzy]
+X-Received-From: 91.117.99.155
+Subject: Re: [Qemu-devel] [PATCH 4/5] pci: Add INTERFACE_LEGACY_PCI_DEVICE
+ to legacy PCI devices
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: GyCPNa5AiDeq
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: xen-devel@lists.xenproject.org, qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
+	qemu-block@nongnu.org
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: RikTfQCsyYRR
 
-Allow to switch between periodic <-> oneshot modes while timer is running.
+On Fri 25 Aug 2017 09:39:22 PM CEST, Eduardo Habkost wrote:
+> CCing maintainers of affected devices (sorry for not CCing you
+> before).
 
-Signed-off-by: Dmitry Osipenko <digetx@gmail.com>
----
- hw/core/ptimer.c | 12 ++++++------
- 1 file changed, 6 insertions(+), 6 deletions(-)
+>> diff --git a/hw/ipack/tpci200.c b/hw/ipack/tpci200.c
+>> index 4dfa6b3..e380378 100644
+>> --- a/hw/ipack/tpci200.c
+>> +++ b/hw/ipack/tpci200.c
+>> @@ -646,6 +646,10 @@ static const TypeInfo tpci200_info = {
+>>      .parent        = TYPE_PCI_DEVICE,
+>>      .instance_size = sizeof(TPCI200State),
+>>      .class_init    = tpci200_class_init,
+>> +    .interfaces = (InterfaceInfo[]) {
+>> +        { INTERFACE_LEGACY_PCI_DEVICE },
+>> +        { },
+>> +    },
+>>  };
 
-diff --git a/hw/core/ptimer.c b/hw/core/ptimer.c
-index 0a54212..6960738 100644
---- a/hw/core/ptimer.c
-+++ b/hw/core/ptimer.c
-@@ -167,16 +167,16 @@ void ptimer_set_count(ptimer_state *s, uint64_t count)
- 
- void ptimer_run(ptimer_state *s, int oneshot)
- {
--    if (s->enabled) {
--        return;
--    }
--    if (s->period == 0) {
-+    int was_disabled = !s->enabled;
-+    if (was_disabled && s->period == 0) {
-         fprintf(stderr, "Timer with period zero, disabling\n");
-         return;
-     }
-     s->enabled = oneshot ? 2 : 1;
--    s->next_event = qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL);
--    ptimer_reload(s);
-+    if (was_disabled) {
-+        s->next_event = qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL);
-+        ptimer_reload(s);
-+    }
- }
- 
- /* Pause a timer.  Note that this may cause it to "lose" time, even if it
--- 
-2.6.4
+Acked-by: Alberto Garcia <berto@igalia.com>
 
+Berto

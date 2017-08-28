@@ -1,97 +1,171 @@
-Received: by 10.182.158.201 with SMTP id ww9csp601986obb;
-        Thu, 17 Dec 2015 11:37:14 -0800 (PST)
-X-Received: by 10.140.80.240 with SMTP id c103mr46688255qgd.61.1450381034711;
-        Thu, 17 Dec 2015 11:37:14 -0800 (PST)
+Received: by 10.223.188.70 with SMTP id a6csp5109492wrh;
+        Mon, 28 Aug 2017 15:58:51 -0700 (PDT)
+X-Received: by 10.55.169.195 with SMTP id s186mr2958614qke.130.1503961131548;
+        Mon, 28 Aug 2017 15:58:51 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1503961131; cv=none;
+        d=google.com; s=arc-20160816;
+        b=etTcan2pCa+UpxYpIsu8X+73iBhoD9BNkioginBW18MFxA5mLoKcIfcqrWZCtLvDAm
+         wczunYrcf1amRud51uZ3JLkDXAK3430SoHKWy6mnIHk+hA5RMJYus/HfReVpRD8Cjr/l
+         ZmrrHm+AbN0a8gdslKhQciBpBm3BlTKbtFd2P0yr7qi2ltmZLBozIUGB5kZhwA1t44KN
+         2xqcZKEuiMuNBug5LSBiOkav19wgHLPLLWy9ii05qRydd8Q1znpsugsVDNBHtAluPWb5
+         8BOEmDzH6ZiDVfC3txj1DILKG9H5BXmbuJTZbDLNVIxz4Sz63FTd1JFhUZWpGP8sBPz2
+         TwbQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:to:dmarc-filter
+         :arc-authentication-results;
+        bh=loElRw96/MwvSxvrbHO0YFaekLY9trhptBvEN/y1FkA=;
+        b=UrdBRDA4C7oTUR5Z2cuh5UGCIIkUyuoxco+LNtUFOg1yAoPtEGLYAs3RZUxsgwUE62
+         4ZG+2IuWk4gdDPNoxx0pKmoufDULex0B23KKKFGw7IWiNXOCt0864QO9HzY9SECTuyvV
+         JhedDTiWCRlUTwu5RHR+wRLYXSKkuTqinKqnRJ7yYZsy4bt01x0vBGlLPu35PCdktrrr
+         6oCkJYOH2h6fqfaBlK07ZqxZxHSzAp91dW/vsC285KR7wUnD85x0jQ2GubmOrZPjrs6J
+         BLKvjUjnHW3jH2x8Ljb7lai6WPbZyBeSs2TyupivHPE8qtaJM54WOuPw9GJPE5IWPJnm
+         DFCw==
+ARC-Authentication-Results: i=1; mx.google.com;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id x4si12659995qka.74.2015.12.17.11.37.14
+        by mx.google.com with ESMTPS id z21si1418829qth.115.2017.08.28.15.58.51
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 17 Dec 2015 11:37:14 -0800 (PST)
+        Mon, 28 Aug 2017 15:58:51 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dkim=fail header.i=@linaro.org
-Received: from localhost ([::1]:56632 helo=lists.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:41718 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1a9eMU-00071d-9J
-	for alex.bennee@linaro.org; Thu, 17 Dec 2015 14:37:14 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:57770)
+	id 1dmSzZ-0005dQ-9H
+	for alex.bennee@linaro.org; Mon, 28 Aug 2017 18:58:49 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:34172)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1a9eMR-0006yG-JQ
-	for qemu-arm@nongnu.org; Thu, 17 Dec 2015 14:37:12 -0500
+	(envelope-from <jsnow@redhat.com>) id 1dmSzT-0005dI-HD
+	for qemu-arm@nongnu.org; Mon, 28 Aug 2017 18:58:44 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1a9eMQ-0002VJ-Ra
-	for qemu-arm@nongnu.org; Thu, 17 Dec 2015 14:37:11 -0500
-Received: from mail-vk0-x22e.google.com ([2607:f8b0:400c:c05::22e]:35820)
-	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1a9eMQ-0002VB-O1
-	for qemu-arm@nongnu.org; Thu, 17 Dec 2015 14:37:10 -0500
-Received: by mail-vk0-x22e.google.com with SMTP id a189so52757718vkh.2
-	for <qemu-arm@nongnu.org>; Thu, 17 Dec 2015 11:37:10 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc:content-type;
-	bh=RMlUX5sTGbyLoSO0l8VBJSRbmL/wocJFU+uOQulAvLk=;
-	b=jfHIkm7nGe3s9sDICfa5KHavMPcRcSmmAXUEy5pGcFNrjQ6FdYxCdHAQXx5IGEokX6
-	sxpXElDpq8hi8ei+0OXOUmanJ6qt/epHJ0EkdCnkdlI14ULL++b3uk2480pC/enEM046
-	qxAU2apfYFQlrea/gX6HEdrV4THl5UdBn69jA=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc:content-type;
-	bh=RMlUX5sTGbyLoSO0l8VBJSRbmL/wocJFU+uOQulAvLk=;
-	b=iq8Bzjbjc7dHCYH8yC0FVrvYz5qf1jVr5vATVhF6RYKL0itZzTGo8ZODVNJAgb4T6g
-	Ew0c2FJNPQJsQzppA4w5bVhwby9vu4HVV05ztmPOFVFAGK7B9EjyQ7xoLsuEgs0sz3Jq
-	O5GFXBxGGBUJ7Djh60/bFRH9BtUBWZoEx/nO6msEAFxzC3jxn87LsaVlVStkMbxc6J1J
-	ERg09lw7B/DN5OpQCt4CTUeng9TbyqCbVi9advosHTuHtJ0jWLFHrpW49sol2yY7aOXB
-	iKxZieg9H2oMqn8IC/ZcraefElLWmDetcV2fHFgxQafp9D8+Yhdticfu0C9QOkm9swmM
-	InNg==
-X-Gm-Message-State: ALoCoQmB+EXrIwb1U8iTI2XO0+prLC/mQDkC9KktdzKYPlfsf3Sj0t12lGQWyUa+RFmKIZE1DVT9lTKev9SZP+BXBrB7yhX34oF5Fp38t/Q85N/zj7K2zkI=
-X-Received: by 10.31.194.21 with SMTP id s21mr37591118vkf.92.1450381030361;
-	Thu, 17 Dec 2015 11:37:10 -0800 (PST)
+	(envelope-from <jsnow@redhat.com>) id 1dmSzQ-0004ZB-FL
+	for qemu-arm@nongnu.org; Mon, 28 Aug 2017 18:58:43 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:40986)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <jsnow@redhat.com>)
+	id 1dmSzQ-0004Z0-8q; Mon, 28 Aug 2017 18:58:40 -0400
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
+	[10.5.11.12])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id F40C57EA89;
+	Mon, 28 Aug 2017 22:58:38 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com F40C57EA89
+Authentication-Results: ext-mx04.extmail.prod.ext.phx2.redhat.com;
+	dmarc=none (p=none dis=none) header.from=redhat.com
+Authentication-Results: ext-mx04.extmail.prod.ext.phx2.redhat.com;
+	spf=fail smtp.mailfrom=jsnow@redhat.com
+Received: from [10.18.17.231] (dhcp-17-231.bos.redhat.com [10.18.17.231])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 157B018A74;
+	Mon, 28 Aug 2017 22:58:37 +0000 (UTC)
+To: Eduardo Habkost <ehabkost@redhat.com>, qemu-devel@nongnu.org
+References: <20170823221445.15243-1-ehabkost@redhat.com>
+	<20170823221445.15243-5-ehabkost@redhat.com>
+	<20170825193922.GN27715@localhost.localdomain>
+From: John Snow <jsnow@redhat.com>
+Message-ID: <8ad06170-3409-f9aa-dbaf-380c2ca35fd9@redhat.com>
+Date: Mon, 28 Aug 2017 18:58:37 -0400
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.2.1
 MIME-Version: 1.0
-Received: by 10.31.153.15 with HTTP; Thu, 17 Dec 2015 11:36:50 -0800 (PST)
-In-Reply-To: <1447031505-12477-1-git-send-email-mdavidsaver@gmail.com>
-References: <1447031505-12477-1-git-send-email-mdavidsaver@gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 17 Dec 2015 19:36:50 +0000
-Message-ID: <CAFEAcA-muUVpTc_z=sUs07eSrWkxHmZw0FVdr8dasuOAOMUzuQ@mail.gmail.com>
-To: Michael Davidsaver <mdavidsaver@gmail.com>
-Content-Type: text/plain; charset=UTF-8
+In-Reply-To: <20170825193922.GN27715@localhost.localdomain>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.28]);
+	Mon, 28 Aug 2017 22:58:39 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:400c:c05::22e
-Cc: Peter Crosthwaite <crosthwaitepeter@gmail.com>,
-	qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-arm] [PATCH 00/18] Fix exception handling and msr/mrs
-	access
+	[fuzzy]
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH 4/5] pci: Add
+ INTERFACE_LEGACY_PCI_DEVICE to legacy PCI devices
 X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.14
+X-Mailman-Version: 2.1.21
 Precedence: list
 List-Id: <qemu-arm.nongnu.org>
 List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
 List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: xen-devel@lists.xenproject.org, qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
+	qemu-block@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: fzN3EHCCceJ1
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 3LiBjsiPw6fp
 
-On 9 November 2015 at 01:11, Michael Davidsaver <mdavidsaver@gmail.com> wrote:
-> This series grew from a previous incorrect patch attempting to fix some
-> incorrect behavior.  After spending some time going through the arch. ref.
-> manual for v7-M I think I understand better how this should work and have
-> made a number of changes which actually improve the situation.
 
-Thanks for sending out v2. I've now reviewed all the patches in the
-set up to the start of the MPU related ones. I think it's probably
-better if we work on getting the NVIC related patches into a mergeable
-state and then come back to the MPU as a second series -- the patchset
-is already quite large.
 
-thanks
--- PMM
+On 08/25/2017 03:39 PM, Eduardo Habkost wrote:
+> CCing maintainers of affected devices (sorry for not CCing you
+> before).
+> 
+> On Wed, Aug 23, 2017 at 07:14:44PM -0300, Eduardo Habkost wrote:
+>> Add INTERFACE_LEGACY_PCI_DEVICE to all direct subtypes of
+>> TYPE_PCI_DEVICE, except:
+>>
+>> 1) The ones that already have INTERFACE_PCIE_DEVICE set:
+>>
+>> * base-xhci
+>> * e1000e
+>> * nvme
+>> * pvscsi
+>> * vfio-pci
+>> * virtio-pci
+>> * vmxnet3
+>>
+>> 2) base-pci-bridge
+>>
+>> Not all PCI bridges are legacy PCI devices, so
+>> INTERFACE_LEGACY_PCI_DEVICE is added only to the subtypes that
+>> are actually legacy PCI devices:
+>>
+>> * dec-21154-p2p-bridge
+>> * i82801b11-bridge
+>> * pbm-bridge
+>> * pci-bridge
+>>
+>> The direct subtypes of base-pci-bridge not touched by this patch
+>> are:
+>>
+>> * xilinx-pcie-root: Already marked as PCIe-only device.
+>> * pcie-port: all non-abstract subtypes of pcie-port are already
+>>   marked as PCIe-only devices.
+>>
+>> 3) megasas-base
+>>
+>> Not all megasas devices are legacy PCI devices, so the interface
+>> names are added to the subclasses registered by
+>> megasas_register_types(), according to information in the
+>> megasas_devices[] array.
+>>
+>> "megasas-gen2" already implements INTERFACE_PCIE_DEVICE, so add
+>> INTERFACE_LEGACY_PCI_DEVICE only to "megasas".
+>>
+>> Signed-off-by: Eduardo Habkost <ehabkost@redhat.com>
+>> ---
+
+[...]
+
+>>  hw/ide/ich.c                        |  4 ++++
+>>  hw/ide/pci.c                        |  4 ++++
+
+Acked-by: John Snow <jsnow@redhat.com>
+
+
+(Random fly-by comment without looking at the other patches: I assume
+there are reasons it's not appropriate or good to add a legacy PCI
+device parent that we inherit from, and it's instead better to manually
+add the property to all children?)

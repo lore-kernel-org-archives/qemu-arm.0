@@ -1,223 +1,103 @@
-Received: by 10.223.183.22 with SMTP id l22csp80843wre;
-        Thu, 17 Aug 2017 16:01:22 -0700 (PDT)
-X-Received: by 10.84.232.198 with SMTP id x6mr7650969plm.364.1503010882630;
-        Thu, 17 Aug 2017 16:01:22 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1503010882; cv=none;
+Received: by 10.223.188.70 with SMTP id a6csp3964170wrh;
+        Sun, 27 Aug 2017 20:53:29 -0700 (PDT)
+X-Received: by 10.13.242.67 with SMTP id b64mr4778164ywf.383.1503892409389;
+        Sun, 27 Aug 2017 20:53:29 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1503892409; cv=none;
         d=google.com; s=arc-20160816;
-        b=EiXqDnNMfd5j54xoHYC4XoObBuHyVdU+G9KQoIQEAiH1/D4Lldd185Dv/Xr4FxYrKz
-         X5MKzs3gb5hMrwPPIeCn0NJEnAQ5Gn0uLjCxOEVY8FEsc2UrK1vf5vy876eDef0o6Ty0
-         26k2LPQ6J8LruQF9oB5UeRTrJbcNhotXpaYqdRR9VmoOgkwepzXdBIrN3xgpUZ1tX5Er
-         m/fsDh3Bd8pDbsKAGIZIFqP2SsvSoF118aSqETx8hi+Rop2/1xiYDZZbNwpSLJRfzy2G
-         OWfmyLThK7yImDDlgzHcHLKSRI7lw4gy3VZNygAPCdMyXLiovoJugJE/YRKvcJhHxlfA
-         +4VQ==
+        b=nsZDMYFJg9krA5QsjIt5NGCahufRewdv6b05t1Yl/fL/24KxElKzRoDfI0KXh+FpA7
+         0XQ3rAAnFOUo7/2LbA5HM7nHg1w0L7zwVz2vkTISLP0ySKY1qlWsFmD1//maRmhozEqD
+         7WSZ9m2xfVkFywnAIA7bRR1ad5SMu3H7aacJig1SdeOY/87u9rPj1SQS2S0AJGR+CprB
+         9p5fX4fARSWjbF2HplQLxxVgsGA9cjeylsUVENkd8+IMWb5QEi9iXnW6F8TCnB2MaNAT
+         A5LBQaThU38t7LjZiAwnfO2cEdVgDaeWfaK3hJNJKac604J8ZYVhn3ZG1X+9m/xECXJo
+         01XQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=references:in-reply-to:message-id:date:subject:cc:to:from
-         :dkim-signature:arc-authentication-results;
-        bh=Ve0DM43w5YrFDYvyz9+DQQvsPDp9TqP3iha+QC7CvrE=;
-        b=b0Ru984M8xmM/RpZI0z4tHcpD+71sLHBnOvPf2W0gR6XZUhSdNoe8jKv6u7ef9oOZC
-         +ZZYRarsum3NtfQZ0f1Uuou47zMdR8S9fxV++uOL3wM7paLuWF0nSMnHdHf5Yj7b40Za
-         TuuZNFB2bnUYJtA66xgbEgCMyTiENmYxCCus3Qrm8jpYrSLiaB6gjTGKP8J4BC8REKeE
-         949GFDvl565ADwY2zcl8fjnKCs9QXG1Q/TOQ8/1Nrc+5vgNLRZozxFiyBxJRy89Ig7qC
-         jTPEeuZD+ChpZSdC+XcXbqV82KVrM2hLyUA2wxcYhs2tKhUulO4w5kv0bbi/4RGwgpWo
-         ETaA==
+        h=message-id:date:subject:cc:to:from:dkim-signature
+         :arc-authentication-results;
+        bh=t8FBrkfB07s9pw9b9O6Qh9ZHCadicrTF8TnZ05hruSc=;
+        b=hWvuQT+W05mVlrzZBNpD9R9EY/bRlf58Eoiqi/53ibQHKq9axdPykbG6HeAg6mfS2e
+         iPQDAHDq1W53JxmT8TkB4UAtyswhsrHoB2YzFsugrP/m/1oSjCM7EVHPyf84YH9TsXpN
+         pQTMcqcSVdBWAXp4mCQuuEBFkZPyB0vftXGliJp/N3w7tqwNS6l8rYB+rhf/9mYTTcSR
+         vWq8QLxMt2V202NlLcRf5GAak0hoeLDyJPlf7f9dLxqyws//w8IIkJP8TLsaRqVWbLqV
+         w0aAfCMIVqalnQ9YHzsROGVGGPg2T/YLMF73UqzxljqDNvcGBT39La7mRKDnYbdtUOwa
+         Zk/g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=fL+HCOIa;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 2607:f8b0:400e:c05::22e as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <richard.henderson@linaro.org>
-Received: from mail-pg0-x22e.google.com (mail-pg0-x22e.google.com. [2607:f8b0:400e:c05::22e])
-        by mx.google.com with ESMTPS id j3si2840010pld.53.2017.08.17.16.01.22
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 17 Aug 2017 16:01:22 -0700 (PDT)
-Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 2607:f8b0:400e:c05::22e as permitted sender) client-ip=2607:f8b0:400e:c05::22e;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=LKGFub7d;
+       spf=pass (google.com: domain of bobby.prani@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=bobby.prani@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Return-Path: <bobby.prani@gmail.com>
+Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
+        by mx.google.com with SMTPS id r189sor1341943ywe.172.2017.08.27.20.53.28
+        (Google Transport Security);
+        Sun, 27 Aug 2017 20:53:29 -0700 (PDT)
+Received-SPF: pass (google.com: domain of bobby.prani@gmail.com designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=fL+HCOIa;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 2607:f8b0:400e:c05::22e as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: by mail-pg0-x22e.google.com with SMTP id t3so23903520pgt.0
-        for <alex.bennee@linaro.org>; Thu, 17 Aug 2017 16:01:22 -0700 (PDT)
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=LKGFub7d;
+       spf=pass (google.com: domain of bobby.prani@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=bobby.prani@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=from:to:cc:subject:date:message-id:in-reply-to:references;
-        bh=Ve0DM43w5YrFDYvyz9+DQQvsPDp9TqP3iha+QC7CvrE=;
-        b=fL+HCOIasLc1hBhR5VTNOSXl/yfHcdm8oT4BJkflQeu5Y3+ExC64p5Jsjtn6fwe+V/
-         FdugLl11X4yiNj16xp7SsDElgXfxuHSFSipnr0S+WXsXthNFuRxUWGBfu/QvLZJWBUJg
-         D6PKMj1NaPH+p7t7FPuauKAoQf4fVjD3+6laU=
+        d=gmail.com; s=20161025;
+        h=from:to:cc:subject:date:message-id;
+        bh=t8FBrkfB07s9pw9b9O6Qh9ZHCadicrTF8TnZ05hruSc=;
+        b=LKGFub7dnIPwx8uoYb1+mfGm2tg2I4Ql0Op0utRS1GLMKmBiO5VBNkWoK+1E6G3LYE
+         ND3iUr9ksJ5CdtQ8mKctCchdzNCpVmnYGIaG+Re6YTR0VQlrRsJw1D/IQkbeLvFiR4CZ
+         9h7msevX2u6sqlhSm37O3Up8VvTVQU7cBBn2cAigQOAGRGMUU5LqtH299W+f7HNUK918
+         vh7qt8ZbSzfiffsnLryUQ7/ORcj2rbI7g/LRmOB1/J2BXMo6TbgiYgSFY4scDeHBlMr0
+         9OwGmoelbaOwCXOCnOUBTKD59YnRgPhAfiA4kPCsHx7TwjSvmNT5o746SRhCY94brZU0
+         3+Jg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
-         :references;
-        bh=Ve0DM43w5YrFDYvyz9+DQQvsPDp9TqP3iha+QC7CvrE=;
-        b=c39+38VfE8e7bRAjKGATtGVPLZQLBHbuco4MPuNZtlLwKordEwyxQzsbY3Vb33t9eM
-         1OSypKsFe5h3syxcKJ4y+OxVAF9d4E48iqmxW52VR7Ka8Y4L8Z7EtwCUYDsBSU3OBM4o
-         KcU6kJviWhROOzwyoJ+Pcb887SBC55GjE1t8SkDOnC9qD05eShmSWOIFzUZeS8+PhzKN
-         Ya71ZyxYDLWDLUceJWN0xVuYFkCRYaCdVzIt/44bqxL6TPUX8uhO6Za109lqxgtHz3SV
-         7pbzVYuyMjhzQEC/bhYVXvD4zjt7T5CEUzWzQM//2o99vt08+cUA+NeZ/46o+7ld7r4O
-         JXgw==
-X-Gm-Message-State: AHYfb5ghg722uRxf85VqWtZTlOKc7Q0zdYFGvnUCR9lQqoifktEw0zWS
-	VNMBewUPdy+edR4Vyio=
-X-Received: by 10.98.193.68 with SMTP id i65mr6957117pfg.142.1503010882201;
-        Thu, 17 Aug 2017 16:01:22 -0700 (PDT)
-Return-Path: <richard.henderson@linaro.org>
-Received: from bigtime.twiddle.net (97-126-108-236.tukw.qwest.net. [97.126.108.236])
-        by smtp.gmail.com with ESMTPSA id c23sm5190043pfc.136.2017.08.17.16.01.20
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 17 Aug 2017 16:01:21 -0700 (PDT)
-From: Richard Henderson <richard.henderson@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org,
-	alex.bennee@linaro.org
-Subject: [PATCH 4/8] tcg: Add operations for host vectors
-Date: Thu, 17 Aug 2017 16:01:10 -0700
-Message-Id: <20170817230114.3655-5-richard.henderson@linaro.org>
-X-Mailer: git-send-email 2.13.5
-In-Reply-To: <20170817230114.3655-1-richard.henderson@linaro.org>
-References: <20170817230114.3655-1-richard.henderson@linaro.org>
-X-TUID: f0MvePuINYJK
+        h=x-gm-message-state:from:to:cc:subject:date:message-id;
+        bh=t8FBrkfB07s9pw9b9O6Qh9ZHCadicrTF8TnZ05hruSc=;
+        b=Y5IVseBdj47//45q3xn80F5v+AYjBBTDqnqh0rXgLbCjdSvLEXIJFo7z8w0UW52kxk
+         ygw+MejL1K7Xc0v6Vm7X0fcmWCdOw5ZPSV4NvejsfgHcTUrkeXYci7q5tRBJGOcmg636
+         cdwihre9ZL6QBuR5ickb0Tu0pF407C8PCOYEdiOSHRWWmjrtu6zWLL7CLTEF2AXSaeYV
+         rdkO3Rey2juUEsD2UDKjUNe9YUOWl0nxoBf7sKg6Bvik3xX42l9Vd/FGb+0B/M3weorg
+         gjAfbgPiie4y+Vw0AGePR49JOfFJaoqqok9BAuoUAaNLbu3pFEL0L6JrI4hYrHyp/3nj
+         DFqg==
+X-Gm-Message-State: AHYfb5jYiKgCBrlJxOHNthXhEd1luMV1qzndwEBaHHY7Ybr2/BwRYAcd
+	5qvtyE1jAhhYq+6TpTk=
+X-Received: by 10.37.183.196 with SMTP id u4mr5145423ybj.39.1503892408517;
+        Sun, 27 Aug 2017 20:53:28 -0700 (PDT)
+Return-Path: <bobby.prani@gmail.com>
+Received: from localhost.localdomain ([98.192.46.210])
+        by smtp.gmail.com with ESMTPSA id i64sm4820865ywi.64.2017.08.27.20.53.27
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Sun, 27 Aug 2017 20:53:27 -0700 (PDT)
+From: Pranith Kumar <bobby.prani@gmail.com>
+To: alex.bennee@linaro.org,
+	Peter Maydell <peter.maydell@linaro.org>,
+	qemu-arm@nongnu.org (open list:ARM),
+	qemu-devel@nongnu.org (open list:All patches CC here)
+Cc: qemu-devel@nongnu.org,
+	rth@twiddle.net,
+	pbonzini@redhat.com
+Subject: [PATCH 1/3] target/arm: Remove stale comment
+Date: Sun, 27 Aug 2017 23:53:24 -0400
+Message-Id: <20170828035327.17146-1-bobby.prani@gmail.com>
+X-Mailer: git-send-email 2.13.0
+X-TUID: 3EIauxp2qEZ8
 
-Nothing uses or implements them yet.
+Update the comment which is not true since MTTCG.
 
-Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+Signed-off-by: Pranith Kumar <bobby.prani@gmail.com>
 ---
- tcg/tcg-opc.h | 89 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
- tcg/tcg.h     | 24 ++++++++++++++++
- 2 files changed, 113 insertions(+)
+ target/arm/translate-a64.c | 4 ----
+ 1 file changed, 4 deletions(-)
 
-diff --git a/tcg/tcg-opc.h b/tcg/tcg-opc.h
-index 956fb1e9f3..9162125fac 100644
---- a/tcg/tcg-opc.h
-+++ b/tcg/tcg-opc.h
-@@ -206,6 +206,95 @@ DEF(qemu_st_i64, 0, TLADDR_ARGS + DATA64_ARGS, 1,
+diff --git a/target/arm/translate-a64.c b/target/arm/translate-a64.c
+index 2200e25be0..f42b155d7d 100644
+--- a/target/arm/translate-a64.c
++++ b/target/arm/translate-a64.c
+@@ -2012,10 +2012,6 @@ static void disas_ldst_excl(DisasContext *s, uint32_t insn)
+     }
+     tcg_addr = read_cpu_reg_sp(s, rn, 1);
  
- #undef TLADDR_ARGS
- #undef DATA64_ARGS
-+
-+/* Host integer vector operations.  */
-+/* These opcodes are required whenever the base vector size is enabled.  */
-+
-+DEF(mov_v64, 1, 1, 0, IMPL(TCG_TARGET_HAS_v64))
-+DEF(mov_v128, 1, 1, 0, IMPL(TCG_TARGET_HAS_v128))
-+DEF(mov_v256, 1, 1, 0, IMPL(TCG_TARGET_HAS_v256))
-+
-+DEF(movi_v64, 1, 0, 1, IMPL(TCG_TARGET_HAS_v64))
-+DEF(movi_v128, 1, 0, 1, IMPL(TCG_TARGET_HAS_v128))
-+DEF(movi_v256, 1, 0, 1, IMPL(TCG_TARGET_HAS_v256))
-+
-+DEF(ld_v64, 1, 1, 1, IMPL(TCG_TARGET_HAS_v64))
-+DEF(ld_v128, 1, 1, 1, IMPL(TCG_TARGET_HAS_v128))
-+DEF(ld_v256, 1, 1, 1, IMPL(TCG_TARGET_HAS_v256))
-+
-+DEF(st_v64, 0, 2, 1, IMPL(TCG_TARGET_HAS_v64))
-+DEF(st_v128, 0, 2, 1, IMPL(TCG_TARGET_HAS_v128))
-+DEF(st_v256, 0, 2, 1, IMPL(TCG_TARGET_HAS_v256))
-+
-+DEF(and_v64, 1, 2, 0, IMPL(TCG_TARGET_HAS_v64))
-+DEF(and_v128, 1, 2, 0, IMPL(TCG_TARGET_HAS_v128))
-+DEF(and_v256, 1, 2, 0, IMPL(TCG_TARGET_HAS_v256))
-+
-+DEF(or_v64, 1, 2, 0, IMPL(TCG_TARGET_HAS_v64))
-+DEF(or_v128, 1, 2, 0, IMPL(TCG_TARGET_HAS_v128))
-+DEF(or_v256, 1, 2, 0, IMPL(TCG_TARGET_HAS_v256))
-+
-+DEF(xor_v64, 1, 2, 0, IMPL(TCG_TARGET_HAS_v64))
-+DEF(xor_v128, 1, 2, 0, IMPL(TCG_TARGET_HAS_v128))
-+DEF(xor_v256, 1, 2, 0, IMPL(TCG_TARGET_HAS_v256))
-+
-+DEF(add8_v64, 1, 2, 0, IMPL(TCG_TARGET_HAS_v64))
-+DEF(add16_v64, 1, 2, 0, IMPL(TCG_TARGET_HAS_v64))
-+DEF(add32_v64, 1, 2, 0, IMPL(TCG_TARGET_HAS_v64))
-+
-+DEF(add8_v128, 1, 2, 0, IMPL(TCG_TARGET_HAS_v128))
-+DEF(add16_v128, 1, 2, 0, IMPL(TCG_TARGET_HAS_v128))
-+DEF(add32_v128, 1, 2, 0, IMPL(TCG_TARGET_HAS_v128))
-+DEF(add64_v128, 1, 2, 0, IMPL(TCG_TARGET_HAS_v128))
-+
-+DEF(add8_v256, 1, 2, 0, IMPL(TCG_TARGET_HAS_v256))
-+DEF(add16_v256, 1, 2, 0, IMPL(TCG_TARGET_HAS_v256))
-+DEF(add32_v256, 1, 2, 0, IMPL(TCG_TARGET_HAS_v256))
-+DEF(add64_v256, 1, 2, 0, IMPL(TCG_TARGET_HAS_v256))
-+
-+DEF(sub8_v64, 1, 2, 0, IMPL(TCG_TARGET_HAS_v64))
-+DEF(sub16_v64, 1, 2, 0, IMPL(TCG_TARGET_HAS_v64))
-+DEF(sub32_v64, 1, 2, 0, IMPL(TCG_TARGET_HAS_v64))
-+
-+DEF(sub8_v128, 1, 2, 0, IMPL(TCG_TARGET_HAS_v128))
-+DEF(sub16_v128, 1, 2, 0, IMPL(TCG_TARGET_HAS_v128))
-+DEF(sub32_v128, 1, 2, 0, IMPL(TCG_TARGET_HAS_v128))
-+DEF(sub64_v128, 1, 2, 0, IMPL(TCG_TARGET_HAS_v128))
-+
-+DEF(sub8_v256, 1, 2, 0, IMPL(TCG_TARGET_HAS_v256))
-+DEF(sub16_v256, 1, 2, 0, IMPL(TCG_TARGET_HAS_v256))
-+DEF(sub32_v256, 1, 2, 0, IMPL(TCG_TARGET_HAS_v256))
-+DEF(sub64_v256, 1, 2, 0, IMPL(TCG_TARGET_HAS_v256))
-+
-+/* These opcodes are optional.
-+   All element counts must be supported if any are.  */
-+
-+DEF(not_v64, 1, 1, 0, IMPL(TCG_TARGET_HAS_not_v64))
-+DEF(not_v128, 1, 1, 0, IMPL(TCG_TARGET_HAS_not_v128))
-+DEF(not_v256, 1, 1, 0, IMPL(TCG_TARGET_HAS_not_v256))
-+
-+DEF(andc_v64, 1, 2, 0, IMPL(TCG_TARGET_HAS_andc_v64))
-+DEF(andc_v128, 1, 2, 0, IMPL(TCG_TARGET_HAS_andc_v128))
-+DEF(andc_v256, 1, 2, 0, IMPL(TCG_TARGET_HAS_andc_v256))
-+
-+DEF(orc_v64, 1, 2, 0, IMPL(TCG_TARGET_HAS_orc_v64))
-+DEF(orc_v128, 1, 2, 0, IMPL(TCG_TARGET_HAS_orc_v128))
-+DEF(orc_v256, 1, 2, 0, IMPL(TCG_TARGET_HAS_orc_v256))
-+
-+DEF(neg8_v64, 1, 1, 0, IMPL(TCG_TARGET_HAS_neg_v64))
-+DEF(neg16_v64, 1, 1, 0, IMPL(TCG_TARGET_HAS_neg_v64))
-+DEF(neg32_v64, 1, 1, 0, IMPL(TCG_TARGET_HAS_neg_v64))
-+
-+DEF(neg8_v128, 1, 1, 0, IMPL(TCG_TARGET_HAS_neg_v128))
-+DEF(neg16_v128, 1, 1, 0, IMPL(TCG_TARGET_HAS_neg_v128))
-+DEF(neg32_v128, 1, 1, 0, IMPL(TCG_TARGET_HAS_neg_v128))
-+DEF(neg64_v128, 1, 1, 0, IMPL(TCG_TARGET_HAS_neg_v128))
-+
-+DEF(neg8_v256, 1, 1, 0, IMPL(TCG_TARGET_HAS_neg_v256))
-+DEF(neg16_v256, 1, 1, 0, IMPL(TCG_TARGET_HAS_neg_v256))
-+DEF(neg32_v256, 1, 1, 0, IMPL(TCG_TARGET_HAS_neg_v256))
-+DEF(neg64_v256, 1, 1, 0, IMPL(TCG_TARGET_HAS_neg_v256))
-+
- #undef IMPL
- #undef IMPL64
- #undef DEF
-diff --git a/tcg/tcg.h b/tcg/tcg.h
-index 1277caed3d..b9e15da13b 100644
---- a/tcg/tcg.h
-+++ b/tcg/tcg.h
-@@ -166,6 +166,30 @@ typedef uint64_t TCGRegSet;
- #define TCG_TARGET_HAS_rem_i64          0
- #endif
- 
-+#ifndef TCG_TARGET_HAS_v64
-+#define TCG_TARGET_HAS_v64              0
-+#define TCG_TARGET_HAS_andc_v64         0
-+#define TCG_TARGET_HAS_orc_v64          0
-+#define TCG_TARGET_HAS_not_v64          0
-+#define TCG_TARGET_HAS_neg_v64          0
-+#endif
-+
-+#ifndef TCG_TARGET_HAS_v128
-+#define TCG_TARGET_HAS_v128             0
-+#define TCG_TARGET_HAS_andc_v128        0
-+#define TCG_TARGET_HAS_orc_v128         0
-+#define TCG_TARGET_HAS_not_v128         0
-+#define TCG_TARGET_HAS_neg_v128         0
-+#endif
-+
-+#ifndef TCG_TARGET_HAS_v256
-+#define TCG_TARGET_HAS_v256             0
-+#define TCG_TARGET_HAS_andc_v256        0
-+#define TCG_TARGET_HAS_orc_v256         0
-+#define TCG_TARGET_HAS_not_v256         0
-+#define TCG_TARGET_HAS_neg_v256         0
-+#endif
-+
- /* For 32-bit targets, some sort of unsigned widening multiply is required.  */
- #if TCG_TARGET_REG_BITS == 32 \
-     && !(defined(TCG_TARGET_HAS_mulu2_i32) \
+-    /* Note that since TCG is single threaded load-acquire/store-release
+-     * semantics require no extra if (is_lasr) { ... } handling.
+-     */
+-
+     if (is_excl) {
+         if (!is_store) {
+             s->is_ldex = true;
 -- 
-2.13.5
+2.13.0

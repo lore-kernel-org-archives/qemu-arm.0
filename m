@@ -1,71 +1,109 @@
-Received: by 10.223.188.70 with SMTP id a6csp5106444wrh;
-        Tue, 22 Aug 2017 08:47:00 -0700 (PDT)
-X-Received: by 10.233.239.11 with SMTP id d11mr1521212qkg.266.1503416820580;
-        Tue, 22 Aug 2017 08:47:00 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1503416820; cv=none;
+Received: by 10.223.188.70 with SMTP id a6csp6111887wrh;
+        Tue, 29 Aug 2017 08:21:42 -0700 (PDT)
+X-Received: by 10.237.40.102 with SMTP id r93mr6352639qtd.207.1504020101953;
+        Tue, 29 Aug 2017 08:21:41 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1504020101; cv=none;
         d=google.com; s=arc-20160816;
-        b=fqVXMThVU+Y7faOm9xRpM5GcN9ruRzzHBEzHRh+b1M+pefy091viMTAhm9zQi8xn/M
-         MrS9/39rHLlG4dicj9A/Lw1nnVx/bsDAklNJNKTIW/x2Nu5y1R0xgV22sJSQPYpatbxD
-         nU7Q1rBUB6zHHtJlCV2qFdj0AtNY4Mr7djNBAMsAJdmwnBofBycmAvXm26YlKwg/KOvA
-         Jr93D0NsVEFSgEA2nnRUv7ZVK1QoFbTVY6zOTGjJDYHOfONPEbrLBufsTVWyHweT/izK
-         dxWwx2dKdQR+WRKo8a4IvELRQFl20lwbZnFYAeXTkrBk/YCaxmT2O31hLL968a3L17AY
-         JqWg==
+        b=WBWxbv04qI5lkvzZoOl+qQdsq8XCuoJgwx+DfdTZTrm6XP70+I46ZQco7lzH9SKeq2
+         YKK9XmmP6tGU4GnrJC6x6/tW7V7Lldz8pQgOnCgRJFkuRAhWyOSQysB1oW1JZYKEvVB6
+         Eo+vMVvH2PwTb6ECrfZFfjlxgbTdJnFWtaO8W/RoYsI7oTShH/A7sMlV1CHyrhQYnwqq
+         T8IzWk7Ikb/fv5nB01b3nRLdElTS8zU9YfYCLzaq32Zdw2+d4VxwKJIkZnyr2JbS9EL5
+         HbT6h/sB3/0gXfqab0iy5TNzukJW+COc42Kx7pncPNIDmQlnFVFhN9jHfcoUIUWiCcuX
+         kQOg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
-         :message-id:date:to:from:arc-authentication-results;
-        bh=sZxHIQ0uWucKo+x7Wygy7dwH0CR+l8l/OL+PUZTpbcs=;
-        b=theaPDa1RZ5a7zfYOXjdwvmT1CUZ4vmjvwZqnoY5K28DszKeMiDNMIEKt4DrZF9xC6
-         syKNtDCW62pbbmvAFNQhacI92JLZcrEQQtybhGXMd07B0pCdI0LjXknNsBUZfE3IqYZo
-         xh+6/FkU8JHzDCzABJ1J6jTzxX2l+NSPYxiwkAzPDLP9JbCatnswxFBq9bu8qETjSuFh
-         MGa2Cy0W01bVuf4HcpFBQ2HhFlpdpgp68xIGwgvxm1ZBZYDgbmX7v/e7bSdMytQjOZiF
-         q7V5nauWGeM6QPj9Ay4gZCoo5h0z4WZyhMh3GGUDv15i1aui9PB7uqxzzELnwsQP7nV/
-         M30Q==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:to:dkim-signature
+         :arc-authentication-results;
+        bh=UtM30ibO1gUisbAZUs4Adrd9tiargeZanA7vLL7Ykgg=;
+        b=XeDESFGwNJgLlv0wyHDhW4sqgAb3AJP82Y7XjdLn3DTnpQOYbqDy5W4pNZczD3uD7h
+         RdSMmEWJiITaxro/b8C+1sn2dTLeawqp+G8fsoLEBXFluy8z+rnz2LBuQUyRYjfxlntx
+         Avy9xLHcwAcpv9o1m+Neepu+41wrnEO9Ga0U6jL/ePWNgGGo9mGNKyh7REwX3W9WNrwL
+         TdJ6qRMLgUSPquQ5MkrNG9dPioaGorAxQmp+FmhogWlitC9e2YZtCKF8oYwuaq8hH2SW
+         41DqrcLZ+F20Zaw20lFoXQlFj5UW+TF+QNr0d2efd6Wy0fI9zC/uR8hBVFg00hLHJBpx
+         2nXw==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b=ea13pXv8;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id c21si14269407qka.450.2017.08.22.08.47.00
+        by mx.google.com with ESMTPS id 27si3303429qkw.199.2017.08.29.08.21.41
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 22 Aug 2017 08:47:00 -0700 (PDT)
+        Tue, 29 Aug 2017 08:21:41 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b=ea13pXv8;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:55998 helo=lists.gnu.org)
+Received: from localhost ([::1]:45476 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1dkBOM-0007TS-6m
-	for alex.bennee@linaro.org; Tue, 22 Aug 2017 11:46:58 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:53427)
+	id 1dmiKh-0004bP-KZ
+	for alex.bennee@linaro.org; Tue, 29 Aug 2017 11:21:39 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:44061)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1dkAnq-0006Vh-KE
-	for qemu-arm@nongnu.org; Tue, 22 Aug 2017 11:09:17 -0400
+	(envelope-from <richard.henderson@linaro.org>) id 1dmiKb-0004aF-Pq
+	for qemu-arm@nongnu.org; Tue, 29 Aug 2017 11:21:35 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1dkAno-0003F5-Vn
-	for qemu-arm@nongnu.org; Tue, 22 Aug 2017 11:09:14 -0400
-Received: from orth.archaic.org.uk ([2001:8b0:1d0::2]:36984)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <pm215@archaic.org.uk>)
-	id 1dkAno-0003E6-OL; Tue, 22 Aug 2017 11:09:12 -0400
-Received: from pm215 by orth.archaic.org.uk with local (Exim 4.89)
-	(envelope-from <pm215@archaic.org.uk>)
-	id 1dkAnn-0004m0-Pn; Tue, 22 Aug 2017 16:09:11 +0100
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
+	(envelope-from <richard.henderson@linaro.org>) id 1dmiKY-0007YJ-Lp
+	for qemu-arm@nongnu.org; Tue, 29 Aug 2017 11:21:33 -0400
+Received: from mail-pf0-x236.google.com ([2607:f8b0:400e:c00::236]:34494)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
+	id 1dmiKY-0007Xi-F5
+	for qemu-arm@nongnu.org; Tue, 29 Aug 2017 11:21:30 -0400
+Received: by mail-pf0-x236.google.com with SMTP id l87so1317589pfj.1
+	for <qemu-arm@nongnu.org>; Tue, 29 Aug 2017 08:21:30 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=subject:to:cc:references:from:message-id:date:user-agent
+	:mime-version:in-reply-to:content-language:content-transfer-encoding;
+	bh=UtM30ibO1gUisbAZUs4Adrd9tiargeZanA7vLL7Ykgg=;
+	b=ea13pXv83zRDkctMEwulWxU4cnOk9DjDLd8PoU9KvdQiwLnbnJtEjM48Jq6t4s0WK2
+	rtnXIobYmrKv/TAyDdTWzZanpSFlcI6a95hP2AjBWhnmxo0rY+axpTt75kgdCguAceI/
+	O3wiyi9gopsD1bEFELu/Oj6alFZv/RGko9dKA=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+	:user-agent:mime-version:in-reply-to:content-language
+	:content-transfer-encoding;
+	bh=UtM30ibO1gUisbAZUs4Adrd9tiargeZanA7vLL7Ykgg=;
+	b=priSMN03mg+koTY1MFGP7mJR1CJgBV3q4EmwMFHcorQf4UcErU22+xfSYMqiSgWyrN
+	QiRcnTqPF40+PRGLU1aGa7sTUOZZPlKusjLw32SsQMp40TVUIobmwuPJRATrnBWSJWB7
+	kXXiAoOi9lGxQ+HJO5Vru2Mld5uBDFJK0Ub8bPZ2a2u71b8ikv8cREI1v/jOZCB+3LS8
+	xTja+UVN0hRxWszQVf3a9x9OwF0Q9iBMUW8OyzhsPHsQ48aWQMoqp7CerkGbCe1KE6QU
+	IVcJqZbkAGHj2Hx5KcyVwFTScjWaHKuNO3ISMt0AraeqnbLRcyoMdGicJi0tun913Nic
+	ePbA==
+X-Gm-Message-State: AHYfb5go0b+Jo2d7d+zEcg9HQJSkmU0+xdY64CxBaw5b76NXD37mU7IT
+	/2yF7WnMLDDSyq2u
+X-Received: by 10.84.217.71 with SMTP id e7mr895959plj.103.1504020089451;
+	Tue, 29 Aug 2017 08:21:29 -0700 (PDT)
+Received: from bigtime.twiddle.net (97-126-108-236.tukw.qwest.net.
+	[97.126.108.236]) by smtp.gmail.com with ESMTPSA id
+	m10sm5332786pgs.70.2017.08.29.08.21.28
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Tue, 29 Aug 2017 08:21:28 -0700 (PDT)
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Date: Tue, 22 Aug 2017 16:08:58 +0100
-Message-Id: <1503414539-28762-20-git-send-email-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.7.4
-In-Reply-To: <1503414539-28762-1-git-send-email-peter.maydell@linaro.org>
 References: <1503414539-28762-1-git-send-email-peter.maydell@linaro.org>
+	<1503414539-28762-2-git-send-email-peter.maydell@linaro.org>
+From: Richard Henderson <richard.henderson@linaro.org>
+Message-ID: <54b68f0d-5ef2-7d1c-3c1a-5b114dfb4921@linaro.org>
+Date: Tue, 29 Aug 2017 08:21:26 -0700
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.2.1
+MIME-Version: 1.0
+In-Reply-To: <1503414539-28762-2-git-send-email-peter.maydell@linaro.org>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2001:8b0:1d0::2
-Subject: [Qemu-arm] [PATCH 19/20] target/arm: Move regime_is_secure() to
- target/arm/internals.h
+X-Received-From: 2607:f8b0:400e:c00::236
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH 01/20] target/arm: Implement
+ ARMv8M's PMSAv8 registers
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -80,89 +118,31 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: patches@linaro.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: jEP8gF0MOXrF
+X-TUID: Lsh/A7lU0hmG
 
-Move the regime_is_secure() utility function to internals.h;
-we are going to want to call it from translate.c.
+On 08/22/2017 08:08 AM, Peter Maydell wrote:
+> As part of ARMv8M, we need to add support for the PMSAv8 MPU
+> architecture.
+> 
+> PMSAv8 differs from PMSAv7 both in register/data layout (for instance
+> using base and limit registers rather than base and size) and also in
+> behaviour (for example it does not have subregions); rather than
+> trying to wedge it into the existing PMSAv7 code and data structures,
+> we define separate ones.
+> 
+> This commit adds the data structures which hold the state for a
+> PMSAv8 MPU and the register interface to it.  The implementation of
+> the MPU behaviour will be added in a subsequent commit.
+> 
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> ---
+>  target/arm/cpu.h      |  13 ++++++
+>  hw/intc/armv7m_nvic.c | 122 ++++++++++++++++++++++++++++++++++++++++++++++----
+>  target/arm/cpu.c      |  36 ++++++++++-----
+>  target/arm/machine.c  |  28 +++++++++++-
+>  4 files changed, 179 insertions(+), 20 deletions(-)
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
- target/arm/internals.h | 26 ++++++++++++++++++++++++++
- target/arm/helper.c    | 26 --------------------------
- 2 files changed, 26 insertions(+), 26 deletions(-)
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
-diff --git a/target/arm/internals.h b/target/arm/internals.h
-index bb06946..eb171b1 100644
---- a/target/arm/internals.h
-+++ b/target/arm/internals.h
-@@ -478,4 +478,30 @@ static inline void arm_call_el_change_hook(ARMCPU *cpu)
-     }
- }
- 
-+/* Return true if this address translation regime is secure */
-+static inline bool regime_is_secure(CPUARMState *env, ARMMMUIdx mmu_idx)
-+{
-+    switch (mmu_idx) {
-+    case ARMMMUIdx_S12NSE0:
-+    case ARMMMUIdx_S12NSE1:
-+    case ARMMMUIdx_S1NSE0:
-+    case ARMMMUIdx_S1NSE1:
-+    case ARMMMUIdx_S1E2:
-+    case ARMMMUIdx_S2NS:
-+    case ARMMMUIdx_MPriv:
-+    case ARMMMUIdx_MNegPri:
-+    case ARMMMUIdx_MUser:
-+        return false;
-+    case ARMMMUIdx_S1E3:
-+    case ARMMMUIdx_S1SE0:
-+    case ARMMMUIdx_S1SE1:
-+    case ARMMMUIdx_MSPriv:
-+    case ARMMMUIdx_MSNegPri:
-+    case ARMMMUIdx_MSUser:
-+        return true;
-+    default:
-+        g_assert_not_reached();
-+    }
-+}
-+
- #endif
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index 67b3874..b1ae73c 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -7060,32 +7060,6 @@ static inline uint32_t regime_el(CPUARMState *env, ARMMMUIdx mmu_idx)
-     }
- }
- 
--/* Return true if this address translation regime is secure */
--static inline bool regime_is_secure(CPUARMState *env, ARMMMUIdx mmu_idx)
--{
--    switch (mmu_idx) {
--    case ARMMMUIdx_S12NSE0:
--    case ARMMMUIdx_S12NSE1:
--    case ARMMMUIdx_S1NSE0:
--    case ARMMMUIdx_S1NSE1:
--    case ARMMMUIdx_S1E2:
--    case ARMMMUIdx_S2NS:
--    case ARMMMUIdx_MPriv:
--    case ARMMMUIdx_MNegPri:
--    case ARMMMUIdx_MUser:
--        return false;
--    case ARMMMUIdx_S1E3:
--    case ARMMMUIdx_S1SE0:
--    case ARMMMUIdx_S1SE1:
--    case ARMMMUIdx_MSPriv:
--    case ARMMMUIdx_MSNegPri:
--    case ARMMMUIdx_MSUser:
--        return true;
--    default:
--        g_assert_not_reached();
--    }
--}
--
- /* Return the SCTLR value which controls this address translation regime */
- static inline uint32_t regime_sctlr(CPUARMState *env, ARMMMUIdx mmu_idx)
- {
--- 
-2.7.4
 
+r~

@@ -1,639 +1,135 @@
-Received: by 10.223.172.38 with SMTP id v35csp1270738wrc;
-        Wed, 6 Sep 2017 13:32:12 -0700 (PDT)
-X-Received: by 10.55.122.7 with SMTP id v7mr591883qkc.86.1504729931926;
-        Wed, 06 Sep 2017 13:32:11 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1504729931; cv=none;
+Received: by 10.223.188.70 with SMTP id a6csp6116910wrh;
+        Tue, 29 Aug 2017 08:25:36 -0700 (PDT)
+X-Received: by 10.55.207.91 with SMTP id e88mr3156566qkj.38.1504020336146;
+        Tue, 29 Aug 2017 08:25:36 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1504020336; cv=none;
         d=google.com; s=arc-20160816;
-        b=vRVlC3Qh5uYADeHOtSCSHxg9falIX4UDa/JIqBvVRg906QH4eOr/pNO1A+S+F5xlab
-         Q78QMyep5MS/CJpr4szZfwRh08FD4aPeTsTigAzIzuKymcvHsQGl43hVXIcVHjRClpoL
-         hgcNoMCmuXFcu1RZl90QPk+qAjqowHRiysn13NxhQdkVYT/AbSMPr4bAlIkv9lej3T6t
-         ZwjKRtuR8tCmIFB+wNhsqDYhTHUhJLq/I3wfKrEn0w8MgfVAa/3VWfmUazOGY/xCEQ+j
-         RBrh9yZT325uxHX+sEvCbXZNn39EDikRyAm4OXiKPXdQ7qexcwd5fFMFaKP45XU2O4PN
-         h29A==
+        b=q7PYO+SS+gSwEtgfwRH5sNwCXXJo7SmmTIHyf8BR/duQdueji+Gc1IYtY2bxsqkDlL
+         N84s6d8+Lx2FgCQbJQMEqc3va/SHVqGHoUhPyeor3uBCDfYqmRjFnOGWmnlP5aE3hBLQ
+         njV58iN0ft4UBUxkg7UKh0Yj/3lIaAvKdUoZhu5m/qvRbxpYA+MD7tMJxWovrVgV27hS
+         4mLqv3mMFIDs7wOhNcp7uAGs8cJeENs+ABJxXFGdrUW8i8TSq0TM/HSRV+Dqid2YfMxf
+         gzwlEF8NhXhnwlLxIJkoiR9UYcqblN48P8FRE9tgNqtv3MvSQHCvTM4MBzGQD9pFq3rB
+         WQZQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
-         :references:in-reply-to:mime-version:dkim-signature
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:to:dkim-signature
          :arc-authentication-results;
-        bh=b/Z1V34gSQMKKM/z9qXCOuwQM/srwxYs9fEarPZksiY=;
-        b=V5oQO3U+XMRl+r8bPtTsFRIH/mD9Gz0L+blI1UH9b8M/FA6GW4wjb5UH1a4Svq4Maj
-         IoTtviVB0vG5Kl90MWpr5MBJSM4THE3giMq177KY3VdxZA1boMPv4Y9k1vmGPTVOqfxp
-         QhIDkyTOHUHWN36QeD6OuUYNcbfjJCgFk0fNV9aQV7Ugmmwr9zSyao2KRHtjGraQQmor
-         d1jk+s7VYlT0IXbG1zjqQp6R9EZ6dI3kdUBUry9LATambhRZLblYzWqAFMvogfvsTTe9
-         J/QmAtw1oql4GfwGDQbJApVTwFGd/thW0bBHqQjCXmYS9F8CaUGNOJYwOaf8TswEvxb6
-         VBtg==
+        bh=hJQ1Gy2Y8g7IAOVpsDlNACaufiG83gLiFi5RCc2hQ2w=;
+        b=meBnsYb3tRO9QXSnPmE+wuvLJAHZ+Of/Wzqrs0KxUhv/mA0Vr5sXJPA5EIRC7L3cJD
+         1RD0mFwcpaUfluDf1ulLe4gMRErHe5/usTVByEZH28kn586fIQOP5l3rN4W2MaWFvj3/
+         PUeOZS+3P4WhrPFSJzYkSoTAlztZBDWMqOUbNx9hZQu6ru0y+vQvSY8s+bHV0Yg2muGB
+         B4pXjDjw7YEGs/e+TmbalD6jMWKXFXdt86vXAZ1nD4Pk0AmGawnuoGeBUKF5eOuPhe1C
+         Ppj0tpwl2jJGjMXlEbyjaUVBJO645SR8OQSPZq/PCecddivO9uyxshOImJwjRNHX+fhI
+         BbLg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=rQMyeM5h;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@linaro.org header.s=google header.b=CTgyye/f;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id p73si825235qki.198.2017.09.06.13.32.11
+        by mx.google.com with ESMTPS id u144si2958152qka.541.2017.08.29.08.25.35
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 06 Sep 2017 13:32:11 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Tue, 29 Aug 2017 08:25:36 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=rQMyeM5h;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:37680 helo=lists.gnu.org)
+       dkim=fail header.i=@linaro.org header.s=google header.b=CTgyye/f;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:45486 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1dpgzZ-0003ht-6L
-	for alex.bennee@linaro.org; Wed, 06 Sep 2017 16:32:09 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:53429)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1dmiOT-0006Yp-Nu
+	for alex.bennee@linaro.org; Tue, 29 Aug 2017 11:25:33 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:45124)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alistair23@gmail.com>) id 1dpgxN-0002ZX-Hn
-	for qemu-devel@nongnu.org; Wed, 06 Sep 2017 16:29:59 -0400
+	(envelope-from <richard.henderson@linaro.org>) id 1dmiOQ-0006Yb-De
+	for qemu-arm@nongnu.org; Tue, 29 Aug 2017 11:25:31 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <alistair23@gmail.com>) id 1dpgxH-0000wF-MY
-	for qemu-devel@nongnu.org; Wed, 06 Sep 2017 16:29:53 -0400
-Received: from mail-wm0-x243.google.com ([2a00:1450:400c:c09::243]:34546)
+	(envelope-from <richard.henderson@linaro.org>) id 1dmiON-0000WU-Aw
+	for qemu-arm@nongnu.org; Tue, 29 Aug 2017 11:25:30 -0400
+Received: from mail-pg0-x231.google.com ([2607:f8b0:400e:c05::231]:34371)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <alistair23@gmail.com>)
-	id 1dpgxH-0000uY-Bo; Wed, 06 Sep 2017 16:29:47 -0400
-Received: by mail-wm0-x243.google.com with SMTP id l19so3063wmi.1;
-	Wed, 06 Sep 2017 13:29:45 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=b/Z1V34gSQMKKM/z9qXCOuwQM/srwxYs9fEarPZksiY=;
-	b=rQMyeM5hU4g5NIMQ85KcoerJ5g2CEeOU8AgEHnIOvxmCALbqKwTdIZ9JRUPIJP9GL8
-	evobooxp38W5Qhnfj9OVus7t16y9LHRx+wCpUqYeULl/mSK5mHIJeDJLKUCrxjfaK0Yr
-	ZZIi3lD1dFcuJncIduxe75Do5Kr/iN8b7Cg01tce/gX6beSRvhSq5uVq2SfVkVKVdVdv
-	TvlJpyo9I+NDOjQNDGWLGf1Ad82g11o+VJvGhAjSWxcEjBulA411T42enDIpBYOhA6mQ
-	gyhvT585xa1Z/gWH0Xe6YiuZPuB8AsyeWCvsyVDq/8Z/LQDczMznwLOz0PAm2j+ROm5F
-	G/VQ==
+	(Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
+	id 1dmiON-0000Vy-4F
+	for qemu-arm@nongnu.org; Tue, 29 Aug 2017 11:25:27 -0400
+Received: by mail-pg0-x231.google.com with SMTP id y15so11803509pgc.1
+	for <qemu-arm@nongnu.org>; Tue, 29 Aug 2017 08:25:27 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=subject:to:cc:references:from:message-id:date:user-agent
+	:mime-version:in-reply-to:content-language:content-transfer-encoding;
+	bh=hJQ1Gy2Y8g7IAOVpsDlNACaufiG83gLiFi5RCc2hQ2w=;
+	b=CTgyye/f7He9yMJf+oRTKsjt2RIkR2k/oCbgyr9EMrPmJEQJFdSfcspcC6dHyg7GCK
+	P4g+wVeblddXKWlFFvbQoaZBoOpf0BuMr2jIwYvbRKgzPfsVv2JVP3t3sSYsg4Ht5p45
+	1EG3NaU2pHLXUibAe4miu8CVEuwhCPqcR46K4=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=b/Z1V34gSQMKKM/z9qXCOuwQM/srwxYs9fEarPZksiY=;
-	b=gjWA/LvShEKGTXrwawrfjT1Mnl3c7658KiSlbgoVQu5mvZOspN4rXNx5AranSweuLJ
-	U8Pm6g2HHodHe+RtNMx+jwVEHFhxFoft3PnXWeeE9wUoziuZfQSa1k2e6A0lSMa1nAcO
-	2c2rWI1cIjwLKZ+ov5RXQFitR8PatRCkals5BGQxmVJINfpfjS4tD+gnxG1KAAk/YUgD
-	A/eN/GzUWeex0r9xWIwklElGyAJnTbPKE1odFav9zgL67N6sgR/FhBcIVSfFfXNeiEs6
-	HH57IHsY6a8Rd90ILeqht4qEeqZzb/UMSdddAtLPNN1O3TIsFSc1IVQsRcvEcZ5MpfCz
-	r5Xg==
-X-Gm-Message-State: AHPjjUhxUsR/BWEYMYpvEdOSW6S3fbuoCh/ptNG3BaexR/LvjMTEwzDq
-	mq9/eMHMt8qLD9Cv8NbmhmOg9V4k/g==
-X-Google-Smtp-Source: ADKCNb4cYJbJFmvMrW6iTcVUR/toreZe9r3IohpRCA16pvobttXAheBYiv8FIfWsHvLIgGe7sKuAgeYnIRMdBqIveIM=
-X-Received: by 10.28.125.205 with SMTP id y196mr662678wmc.128.1504729784267;
-	Wed, 06 Sep 2017 13:29:44 -0700 (PDT)
+	h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+	:user-agent:mime-version:in-reply-to:content-language
+	:content-transfer-encoding;
+	bh=hJQ1Gy2Y8g7IAOVpsDlNACaufiG83gLiFi5RCc2hQ2w=;
+	b=El4QcbATGhvIUjiqxsgeJ0K9FBIAmx3DvQriUhC5cRaIW/Z8RUuZNACtgYGHHRaMhc
+	3QUDjIyFfthVenDBfvupSUOY93yKEmWbFlR+4sEagesHlKVrsJtdmnzQmhhFuxlt0Vyz
+	mfJ64D5EET806mP1sIFFBEH42U4FBnhHALHFuywOY1/AQLznMpG0YEhIGsyn0AvxnanS
+	ARS1P999gpgWCQufSk4I2DRWOO+BeyE0cAemJajQT7V3iqsADKf5KIbjC+TxS0WQ138d
+	JOFaUEMqG2RKV3hXQ/3fkOad2dg5ld7Eaov8slGIxeKKwUl6nAexL21/PTGsQPpjP4eN
+	5j0A==
+X-Gm-Message-State: AHYfb5hv13c6q1BoiwIYTLSO/U/zhNZ0X945Ur2OHWCAC0YKmeMPdRHN
+	h5ehsflL0ISZ/Erh
+X-Received: by 10.99.126.91 with SMTP id o27mr636598pgn.297.1504020326240;
+	Tue, 29 Aug 2017 08:25:26 -0700 (PDT)
+Received: from bigtime.twiddle.net (97-126-108-236.tukw.qwest.net.
+	[97.126.108.236]) by smtp.gmail.com with ESMTPSA id
+	a13sm5172825pgd.71.2017.08.29.08.25.25
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Tue, 29 Aug 2017 08:25:25 -0700 (PDT)
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+References: <1503414539-28762-1-git-send-email-peter.maydell@linaro.org>
+	<1503414539-28762-3-git-send-email-peter.maydell@linaro.org>
+From: Richard Henderson <richard.henderson@linaro.org>
+Message-ID: <7eefa11e-5daa-1748-0a0f-ab99c8d1cdf0@linaro.org>
+Date: Tue, 29 Aug 2017 08:25:23 -0700
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.2.1
 MIME-Version: 1.0
-Received: by 10.28.191.130 with HTTP; Wed, 6 Sep 2017 13:29:13 -0700 (PDT)
-In-Reply-To: <1503938283-12404-4-git-send-email-sundeep.lkml@gmail.com>
-References: <1503938283-12404-1-git-send-email-sundeep.lkml@gmail.com>
-	<1503938283-12404-4-git-send-email-sundeep.lkml@gmail.com>
-From: Alistair Francis <alistair23@gmail.com>
-Date: Wed, 6 Sep 2017 13:29:13 -0700
-Message-ID: <CAKmqyKPTENTDXp=jEiaecC3RqnBb6jUHKCPkyXi6gnsVYoqrqA@mail.gmail.com>
-To: Subbaraya Sundeep <sundeep.lkml@gmail.com>
-Content-Type: text/plain; charset="UTF-8"
+In-Reply-To: <1503414539-28762-3-git-send-email-peter.maydell@linaro.org>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2a00:1450:400c:c09::243
-Subject: Re: [Qemu-devel] [Qemu devel v7 PATCH 3/5] msf2: Add Smartfusion2
- SPI controller
-X-BeenThere: qemu-devel@nongnu.org
+X-Received-From: 2607:f8b0:400e:c05::231
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH 02/20] target/arm: Implement new
+ PMSAv8 behaviour
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
-	=?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>,
-	qemu-arm <qemu-arm@nongnu.org>,
-	"qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
-	Peter Crosthwaite <crosthwaite.peter@gmail.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: rCYd5cKwNQ9f
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: patches@linaro.org
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: GMDST88svSuU
 
-On Mon, Aug 28, 2017 at 9:38 AM, Subbaraya Sundeep
-<sundeep.lkml@gmail.com> wrote:
-> Modelled Microsemi's Smartfusion2 SPI controller.
->
-> Signed-off-by: Subbaraya Sundeep <sundeep.lkml@gmail.com>
+On 08/22/2017 08:08 AM, Peter Maydell wrote:
+> Implement the behavioural side of the new PMSAv8 specification.
+> 
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 > ---
->  hw/ssi/Makefile.objs     |   1 +
->  hw/ssi/mss-spi.c         | 409 +++++++++++++++++++++++++++++++++++++++++++++++
->  include/hw/ssi/mss-spi.h |  58 +++++++
->  3 files changed, 468 insertions(+)
->  create mode 100644 hw/ssi/mss-spi.c
->  create mode 100644 include/hw/ssi/mss-spi.h
->
-> diff --git a/hw/ssi/Makefile.objs b/hw/ssi/Makefile.objs
-> index 487add2..f5bcc65 100644
-> --- a/hw/ssi/Makefile.objs
-> +++ b/hw/ssi/Makefile.objs
-> @@ -4,6 +4,7 @@ common-obj-$(CONFIG_XILINX_SPI) += xilinx_spi.o
->  common-obj-$(CONFIG_XILINX_SPIPS) += xilinx_spips.o
->  common-obj-$(CONFIG_ASPEED_SOC) += aspeed_smc.o
->  common-obj-$(CONFIG_STM32F2XX_SPI) += stm32f2xx_spi.o
-> +common-obj-$(CONFIG_MSF2) += mss-spi.o
->
->  obj-$(CONFIG_OMAP) += omap_spi.o
->  obj-$(CONFIG_IMX) += imx_spi.o
-> diff --git a/hw/ssi/mss-spi.c b/hw/ssi/mss-spi.c
-> new file mode 100644
-> index 0000000..7209363
-> --- /dev/null
-> +++ b/hw/ssi/mss-spi.c
-> @@ -0,0 +1,409 @@
-> +/*
-> + * Block model of SPI controller present in
-> + * Microsemi's SmartFusion2 and SmartFusion SoCs.
-> + *
-> + * Copyright (C) 2017 Subbaraya Sundeep <sundeep.lkml@gmail.com>
-> + *
-> + * Permission is hereby granted, free of charge, to any person obtaining a copy
-> + * of this software and associated documentation files (the "Software"), to deal
-> + * in the Software without restriction, including without limitation the rights
-> + * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-> + * copies of the Software, and to permit persons to whom the Software is
-> + * furnished to do so, subject to the following conditions:
-> + *
-> + * The above copyright notice and this permission notice shall be included in
-> + * all copies or substantial portions of the Software.
-> + *
-> + * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-> + * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-> + * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
-> + * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-> + * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-> + * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-> + * THE SOFTWARE.
-> + */
-> +
-> +#include "qemu/osdep.h"
-> +#include "hw/ssi/mss-spi.h"
-> +#include "qemu/log.h"
-> +
-> +#ifndef MSS_SPI_ERR_DEBUG
-> +#define MSS_SPI_ERR_DEBUG   0
-> +#endif
-> +
-> +#define DB_PRINT_L(lvl, fmt, args...) do { \
-> +    if (MSS_SPI_ERR_DEBUG >= lvl) { \
-> +        qemu_log("%s: " fmt "\n", __func__, ## args); \
-> +    } \
-> +} while (0);
-> +
-> +#define DB_PRINT(fmt, args...) DB_PRINT_L(1, fmt, ## args)
-> +
-> +#define FIFO_CAPACITY         32
-> +#define FIFO_CAPACITY         32
+>  target/arm/helper.c | 111 +++++++++++++++++++++++++++++++++++++++++++++++++++-
+>  1 file changed, 110 insertions(+), 1 deletion(-)
 
-Double define?
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
-> +
-> +#define R_SPI_CONTROL         0
-> +#define R_SPI_DFSIZE          1
-> +#define R_SPI_STATUS          2
-> +#define R_SPI_INTCLR          3
-> +#define R_SPI_RX              4
-> +#define R_SPI_TX              5
-> +#define R_SPI_CLKGEN          6
-> +#define R_SPI_SS              7
-> +#define R_SPI_MIS             8
-> +#define R_SPI_RIS             9
-> +
-> +#define S_TXDONE             (1 << 0)
-> +#define S_RXRDY              (1 << 1)
-> +#define S_RXCHOVRF           (1 << 2)
-> +#define S_RXFIFOFUL          (1 << 4)
-> +#define S_RXFIFOFULNXT       (1 << 5)
-> +#define S_RXFIFOEMP          (1 << 6)
-> +#define S_RXFIFOEMPNXT       (1 << 7)
-> +#define S_TXFIFOFUL          (1 << 8)
-> +#define S_TXFIFOFULNXT       (1 << 9)
-> +#define S_TXFIFOEMP          (1 << 10)
-> +#define S_TXFIFOEMPNXT       (1 << 11)
-> +#define S_FRAMESTART         (1 << 12)
-> +#define S_SSEL               (1 << 13)
-> +#define S_ACTIVE             (1 << 14)
-> +
-> +#define C_ENABLE             (1 << 0)
-> +#define C_MODE               (1 << 1)
-> +#define C_INTRXDATA          (1 << 4)
-> +#define C_INTTXDATA          (1 << 5)
-> +#define C_INTRXOVRFLO        (1 << 6)
-> +#define C_SPS                (1 << 26)
-> +#define C_BIGFIFO            (1 << 29)
-> +#define C_RESET              (1 << 31)
-> +
-> +#define FRAMESZ_MASK         0x1F
-> +#define FMCOUNT_MASK         0x00FFFF00
-> +#define FMCOUNT_SHIFT        8
-> +
-> +static void txfifo_reset(MSSSpiState *s)
-> +{
-> +    fifo32_reset(&s->tx_fifo);
-> +
-> +    s->regs[R_SPI_STATUS] &= ~S_TXFIFOFUL;
-> +    s->regs[R_SPI_STATUS] |= S_TXFIFOEMP;
-> +}
-> +
-> +static void rxfifo_reset(MSSSpiState *s)
-> +{
-> +    fifo32_reset(&s->rx_fifo);
-> +
-> +    s->regs[R_SPI_STATUS] &= ~S_RXFIFOFUL;
-> +    s->regs[R_SPI_STATUS] |= S_RXFIFOEMP;
-> +}
-> +
-> +static void set_fifodepth(MSSSpiState *s)
-> +{
-> +    unsigned int size = s->regs[R_SPI_DFSIZE] & FRAMESZ_MASK;
-> +
-> +    if (size <= 8) {
-> +        s->fifo_depth = 32;
-> +    } else if (size <= 16) {
-> +        s->fifo_depth = 16;
-> +    } else if (size <= 32) {
-> +        s->fifo_depth = 8;
-> +    } else {
-> +        s->fifo_depth = 4;
-> +    }
-> +}
-> +
-> +static void mss_spi_do_reset(MSSSpiState *s)
-> +{
-> +    memset(s->regs, 0, sizeof s->regs);
-> +    s->regs[R_SPI_CONTROL] = 0x80000102;
-> +    s->regs[R_SPI_DFSIZE] = 0x4;
-> +    s->regs[R_SPI_STATUS] = S_SSEL | S_TXFIFOEMP | S_RXFIFOEMP;
-> +    s->regs[R_SPI_CLKGEN] = 0x7;
-> +    s->regs[R_SPI_RIS] = 0x0;
-> +
-> +    s->fifo_depth = 4;
-> +    s->frame_count = 1;
-> +    s->enabled = false;
-> +
-> +    rxfifo_reset(s);
-> +    txfifo_reset(s);
-> +}
-> +
-> +static void update_mis(MSSSpiState *s)
-> +{
-> +    uint32_t reg = s->regs[R_SPI_CONTROL];
-> +    uint32_t tmp;
-> +
-> +    /*
-> +     * form the Control register interrupt enable bits
-> +     * same as RIS, MIS and Interrupt clear registers for simplicity
-> +     */
-> +    tmp = ((reg & C_INTRXOVRFLO) >> 4) | ((reg & C_INTRXDATA) >> 3) |
-> +           ((reg & C_INTTXDATA) >> 5);
-> +    s->regs[R_SPI_MIS] |= tmp & s->regs[R_SPI_RIS];
-> +}
-> +
-> +static void spi_update_irq(MSSSpiState *s)
-> +{
-> +    int irq;
-> +
-> +    update_mis(s);
-> +    irq = !!(s->regs[R_SPI_MIS]);
-> +
-> +    qemu_set_irq(s->irq, irq);
-> +}
-> +
-> +static void mss_spi_reset(DeviceState *d)
-> +{
-> +    mss_spi_do_reset(MSS_SPI(d));
-> +}
 
-Just combine these two together.
+r~
 
-> +
-> +static uint64_t
-> +spi_read(void *opaque, hwaddr addr, unsigned int size)
-> +{
-> +    MSSSpiState *s = opaque;
-> +    uint32_t ret = 0;
-> +
-> +    addr >>= 2;
-> +    switch (addr) {
-> +    case R_SPI_RX:
-> +        s->regs[R_SPI_STATUS] &= ~S_RXFIFOFUL;
-> +        s->regs[R_SPI_STATUS] &= ~S_RXCHOVRF;
-> +        ret = fifo32_pop(&s->rx_fifo);
-> +        if (fifo32_is_empty(&s->rx_fifo)) {
-> +            s->regs[R_SPI_STATUS] |= S_RXFIFOEMP;
-> +        }
-> +        break;
-> +
-> +    case R_SPI_MIS:
-> +        update_mis(s);
-> +        ret = s->regs[R_SPI_MIS];
-> +        break;
-> +
-> +    default:
-> +        if (addr < ARRAY_SIZE(s->regs)) {
-> +            ret = s->regs[addr];
-> +        } else {
-> +            qemu_log_mask(LOG_GUEST_ERROR,
-> +                         "%s: Bad offset 0x%" HWADDR_PRIx "\n", __func__,
-> +                         addr * 4);
-
-I'd return here do you don't hit the read print below.
-
-> +        }
-> +        break;
-> +    }
-> +
-> +    DB_PRINT("addr=0x%" HWADDR_PRIx " = 0x%" PRIx32, addr * 4, ret);
-> +    spi_update_irq(s);
-> +    return ret;
-> +}
-> +
-> +static void assert_cs(MSSSpiState *s)
-> +{
-> +    qemu_set_irq(s->cs_line, 0);
-> +}
-> +
-> +static void deassert_cs(MSSSpiState *s)
-> +{
-> +    qemu_set_irq(s->cs_line, 1);
-> +}
-> +
-> +static void spi_flush_txfifo(MSSSpiState *s)
-> +{
-> +    uint32_t tx;
-> +    uint32_t rx;
-> +    bool sps = !!(s->regs[R_SPI_CONTROL] & C_SPS);
-> +
-> +    /*
-> +     * Chip Select(CS) is automatically controlled by this controller.
-> +     * If SPS bit is set in Control register then CS is asserted
-> +     * until all the frames set in frame count of Control register are
-> +     * transferred. If SPS is not set then CS pulses between frames.
-> +     * Note that Slave Select register specifies which of the CS line
-> +     * has to be controlled automatically by controller. Bits SS[7:1] are for
-> +     * masters in FPGA fabric since we model only Microcontroller subsystem
-> +     * of Smartfusion2 we control only one CS(SS[0]) line.
-> +     */
-> +    while (!fifo32_is_empty(&s->tx_fifo) && s->frame_count) {
-> +        assert_cs(s);
-> +
-> +        s->regs[R_SPI_STATUS] &= ~(S_TXDONE | S_RXRDY);
-> +
-> +        tx = fifo32_pop(&s->tx_fifo);
-> +        DB_PRINT("data tx:0x%" PRIx32, tx);
-> +        rx = ssi_transfer(s->spi, tx);
-> +        DB_PRINT("data rx:0x%" PRIx32, rx);
-> +
-> +        if (fifo32_num_used(&s->rx_fifo) == s->fifo_depth) {
-> +            s->regs[R_SPI_STATUS] |= S_RXCHOVRF;
-> +            s->regs[R_SPI_RIS] |= S_RXCHOVRF;
-> +        } else {
-> +            fifo32_push(&s->rx_fifo, rx);
-> +            s->regs[R_SPI_STATUS] &= ~S_RXFIFOEMP;
-> +            if (fifo32_num_used(&s->rx_fifo) == (s->fifo_depth - 1)) {
-> +                s->regs[R_SPI_STATUS] |= S_RXFIFOFULNXT;
-> +            } else if (fifo32_num_used(&s->rx_fifo) == s->fifo_depth) {
-> +                s->regs[R_SPI_STATUS] |= S_RXFIFOFUL;
-> +            }
-> +        }
-> +        s->frame_count--;
-> +        if (!sps) {
-> +            deassert_cs(s);
-> +        }
-> +    }
-> +
-> +    if (!s->frame_count) {
-> +        s->frame_count = (s->regs[R_SPI_CONTROL] & FMCOUNT_MASK) >>
-> +                            FMCOUNT_SHIFT;
-> +        if (sps) {
-> +            deassert_cs(s);
-> +        }
-
-Shouldn't this be lowered no matter what?
-
-Thanks,
-Alistair
-
-> +        s->regs[R_SPI_RIS] |= S_TXDONE | S_RXRDY;
-> +        s->regs[R_SPI_STATUS] |= S_TXDONE | S_RXRDY;
-> +   }
-> +}
-> +
-> +static void spi_write(void *opaque, hwaddr addr,
-> +            uint64_t val64, unsigned int size)
-> +{
-> +    MSSSpiState *s = opaque;
-> +    uint32_t value = val64;
-> +
-> +    DB_PRINT("addr=0x%" HWADDR_PRIx " =0x%" PRIx32, addr, value);
-> +    addr >>= 2;
-> +
-> +    switch (addr) {
-> +    case R_SPI_TX:
-> +        /* adding to already full FIFO */
-> +        if (fifo32_num_used(&s->tx_fifo) == s->fifo_depth) {
-> +            break;
-> +        }
-> +        s->regs[R_SPI_STATUS] &= ~S_TXFIFOEMP;
-> +        fifo32_push(&s->tx_fifo, value);
-> +        if (fifo32_num_used(&s->tx_fifo) == (s->fifo_depth - 1)) {
-> +            s->regs[R_SPI_STATUS] |= S_TXFIFOFULNXT;
-> +        } else if (fifo32_num_used(&s->tx_fifo) == s->fifo_depth) {
-> +            s->regs[R_SPI_STATUS] |= S_TXFIFOFUL;
-> +        }
-> +        if (s->enabled) {
-> +            spi_flush_txfifo(s);
-> +        }
-> +        break;
-> +
-> +    case R_SPI_CONTROL:
-> +        s->regs[R_SPI_CONTROL] = value;
-> +        if (value & C_BIGFIFO) {
-> +            set_fifodepth(s);
-> +        } else {
-> +            s->fifo_depth = 4;
-> +        }
-> +        s->enabled = value & C_ENABLE;
-> +        s->frame_count = (value & FMCOUNT_MASK) >> FMCOUNT_SHIFT;
-> +        if (value & C_RESET) {
-> +            mss_spi_do_reset(s);
-> +        }
-> +        break;
-> +
-> +    case R_SPI_DFSIZE:
-> +        if (s->enabled) {
-> +            break;
-> +        }
-> +        s->regs[R_SPI_DFSIZE] = value;
-> +        break;
-> +
-> +    case R_SPI_INTCLR:
-> +        s->regs[R_SPI_INTCLR] = value;
-> +        if (value & S_TXDONE) {
-> +            s->regs[R_SPI_RIS] &= ~S_TXDONE;
-> +        }
-> +        if (value & S_RXRDY) {
-> +            s->regs[R_SPI_RIS] &= ~S_RXRDY;
-> +        }
-> +        if (value & S_RXCHOVRF) {
-> +            s->regs[R_SPI_RIS] &= ~S_RXCHOVRF;
-> +        }
-> +        break;
-> +
-> +    case R_SPI_MIS:
-> +    case R_SPI_STATUS:
-> +    case R_SPI_RIS:
-> +            qemu_log_mask(LOG_GUEST_ERROR,
-> +                         "%s: Write to read only register 0x%" HWADDR_PRIx "\n",
-> +                         __func__, addr * 4);
-> +        break;
-> +
-> +    default:
-> +        if (addr < ARRAY_SIZE(s->regs)) {
-> +            s->regs[addr] = value;
-> +        } else {
-> +            qemu_log_mask(LOG_GUEST_ERROR,
-> +                         "%s: Bad offset 0x%" HWADDR_PRIx "\n", __func__,
-> +                         addr * 4);
-> +        }
-> +        break;
-> +    }
-> +
-> +    spi_update_irq(s);
-> +}
-> +
-> +static const MemoryRegionOps spi_ops = {
-> +    .read = spi_read,
-> +    .write = spi_write,
-> +    .endianness = DEVICE_NATIVE_ENDIAN,
-> +    .valid = {
-> +        .min_access_size = 1,
-> +        .max_access_size = 4
-> +    }
-> +};
-> +
-> +static void mss_spi_realize(DeviceState *dev, Error **errp)
-> +{
-> +    MSSSpiState *s = MSS_SPI(dev);
-> +    SysBusDevice *sbd = SYS_BUS_DEVICE(dev);
-> +
-> +    s->spi = ssi_create_bus(dev, "spi");
-> +
-> +    sysbus_init_irq(sbd, &s->irq);
-> +    ssi_auto_connect_slaves(dev, &s->cs_line, s->spi);
-> +    sysbus_init_irq(sbd, &s->cs_line);
-> +
-> +    memory_region_init_io(&s->mmio, OBJECT(s), &spi_ops, s,
-> +                          TYPE_MSS_SPI, R_SPI_MAX * 4);
-> +    sysbus_init_mmio(sbd, &s->mmio);
-> +
-> +    fifo32_create(&s->tx_fifo, FIFO_CAPACITY);
-> +    fifo32_create(&s->rx_fifo, FIFO_CAPACITY);
-> +}
-> +
-> +static const VMStateDescription vmstate_mss_spi = {
-> +    .name = TYPE_MSS_SPI,
-> +    .version_id = 1,
-> +    .minimum_version_id = 1,
-> +    .fields = (VMStateField[]) {
-> +        VMSTATE_FIFO32(tx_fifo, MSSSpiState),
-> +        VMSTATE_FIFO32(rx_fifo, MSSSpiState),
-> +        VMSTATE_UINT32_ARRAY(regs, MSSSpiState, R_SPI_MAX),
-> +        VMSTATE_END_OF_LIST()
-> +    }
-> +};
-> +
-> +static void mss_spi_class_init(ObjectClass *klass, void *data)
-> +{
-> +    DeviceClass *dc = DEVICE_CLASS(klass);
-> +
-> +    dc->realize = mss_spi_realize;
-> +    dc->reset = mss_spi_reset;
-> +    dc->vmsd = &vmstate_mss_spi;
-> +}
-> +
-> +static const TypeInfo mss_spi_info = {
-> +    .name           = TYPE_MSS_SPI,
-> +    .parent         = TYPE_SYS_BUS_DEVICE,
-> +    .instance_size  = sizeof(MSSSpiState),
-> +    .class_init     = mss_spi_class_init,
-> +};
-> +
-> +static void mss_spi_register_types(void)
-> +{
-> +    type_register_static(&mss_spi_info);
-> +}
-> +
-> +type_init(mss_spi_register_types)
-> diff --git a/include/hw/ssi/mss-spi.h b/include/hw/ssi/mss-spi.h
-> new file mode 100644
-> index 0000000..f0cf324
-> --- /dev/null
-> +++ b/include/hw/ssi/mss-spi.h
-> @@ -0,0 +1,58 @@
-> +/*
-> + * Microsemi SmartFusion2 SPI
-> + *
-> + * Copyright (c) 2017 Subbaraya Sundeep <sundeep.lkml@gmail.com>
-> + *
-> + * Permission is hereby granted, free of charge, to any person obtaining a copy
-> + * of this software and associated documentation files (the "Software"), to deal
-> + * in the Software without restriction, including without limitation the rights
-> + * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-> + * copies of the Software, and to permit persons to whom the Software is
-> + * furnished to do so, subject to the following conditions:
-> + *
-> + * The above copyright notice and this permission notice shall be included in
-> + * all copies or substantial portions of the Software.
-> + *
-> + * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-> + * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-> + * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
-> + * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-> + * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-> + * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-> + * THE SOFTWARE.
-> + */
-> +
-> +#ifndef HW_MSS_SPI_H
-> +#define HW_MSS_SPI_H
-> +
-> +#include "hw/sysbus.h"
-> +#include "hw/ssi/ssi.h"
-> +#include "qemu/fifo32.h"
-> +
-> +#define TYPE_MSS_SPI   "mss-spi"
-> +#define MSS_SPI(obj)   OBJECT_CHECK(MSSSpiState, (obj), TYPE_MSS_SPI)
-> +
-> +#define R_SPI_MAX             16
-> +
-> +typedef struct MSSSpiState {
-> +    SysBusDevice parent_obj;
-> +
-> +    MemoryRegion mmio;
-> +
-> +    qemu_irq irq;
-> +
-> +    qemu_irq cs_line;
-> +
-> +    SSIBus *spi;
-> +
-> +    Fifo32 rx_fifo;
-> +    Fifo32 tx_fifo;
-> +
-> +    int fifo_depth;
-> +    uint32_t frame_count;
-> +    bool enabled;
-> +
-> +    uint32_t regs[R_SPI_MAX];
-> +} MSSSpiState;
-> +
-> +#endif /* HW_MSS_SPI_H */
-> --
-> 2.5.0
->

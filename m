@@ -1,359 +1,149 @@
-Received: by 10.25.159.19 with SMTP id i19csp744201lfe;
-        Thu, 28 Jan 2016 20:50:36 -0800 (PST)
-X-Received: by 10.140.133.146 with SMTP id 140mr8313980qhf.99.1454043036091;
-        Thu, 28 Jan 2016 20:50:36 -0800 (PST)
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 10.223.188.70 with SMTP id a6csp6202236wrh;
+        Tue, 29 Aug 2017 09:33:14 -0700 (PDT)
+X-Received: by 10.55.27.96 with SMTP id b93mr6333888qkb.282.1504024394437;
+        Tue, 29 Aug 2017 09:33:14 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1504024394; cv=none;
+        d=google.com; s=arc-20160816;
+        b=F0NWakUQ3z9lrnjMcamU4Rjy/xhswL3rMHsvoTad1z8/OIJEn4/vO2zYwkJaD/CEKP
+         fZPT9XTiLDA+mZ0bWjHuSpARFrJIQU9I3GjV2l7BdkRl0lf+S1U+PbKXgGt/Klg8wAyq
+         Q91XomyjDnoh3ZSQcleoES914XZvl39KSbZJ4iG6ylxAT4HLd3AiwMan5XYdo2s/Mvql
+         6fvLoIgma6Yder4fjaFUiJhp5i//lEuMoJJMeBl9l7+UcIZ7ldInxDfwQRwayNIDMZHP
+         BMiUDS2HK0b+3wR+Lx0gA1v4hrKO+iGDbLDia7ceEvX41mmiCfiH2GFRdxz0bnIyrfVd
+         oGUg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:to:dkim-signature
+         :arc-authentication-results;
+        bh=Fvqp4ys7VgciDinI6si6BGnKGD8DLWuR6r4pQSVpgnc=;
+        b=zaF/OQOLouM41fWL3KfyVJabyYRmSnHPHpnZAm7QoMe9jB/yjCRi1qepT6zrzWtENi
+         rwlwWvLiCnGR2Yl4PGgi7M0PRDcVCe8IYySOQEDW2DChAYRrxRwpIyVujBXK/6NwHVR1
+         7b7nzAsKRHLLowzfXZ05ooF18vTQGAWTne0CzGYQr5Re4HUhyq/QbxWxgO8VaRZc0XdC
+         xm68MQe8odcIXW4FK34sBjmRf7YzZZqxbm6GNE4ELa+52ji3jsE6FcbhXtIvmgxmdtP2
+         cG8VLj2izogh3CdaHGwIGeWcwZF3YSytQaxMoEHHQJufDhRkeHun9bhly5uMsYB1XTYA
+         +mjg==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=jknWT1g/;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id r16si15226890qhb.114.2016.01.28.20.50.35
+        by mx.google.com with ESMTPS id j188si3453739qka.366.2017.08.29.09.33.13
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 28 Jan 2016 20:50:36 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Tue, 29 Aug 2017 09:33:14 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dkim=fail header.i=@gmail.com;
-       dmarc=fail (p=NONE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:59718 helo=lists.gnu.org)
+       dkim=pass header.i=@linaro.org header.s=google header.b=jknWT1g/;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:46002 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1aP111-0001it-MN
-	for alex.bennee@linaro.org; Thu, 28 Jan 2016 23:50:35 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:35028)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1dmjRw-0000NA-06
+	for alex.bennee@linaro.org; Tue, 29 Aug 2017 12:33:12 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:40391)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <crosthwaitepeter@gmail.com>) id 1aP10y-0001f8-Fp
-	for qemu-arm@nongnu.org; Thu, 28 Jan 2016 23:50:34 -0500
+	(envelope-from <richard.henderson@linaro.org>) id 1dmjQV-000835-CG
+	for qemu-devel@nongnu.org; Tue, 29 Aug 2017 12:31:44 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <crosthwaitepeter@gmail.com>) id 1aP10w-0005eu-F5
-	for qemu-arm@nongnu.org; Thu, 28 Jan 2016 23:50:32 -0500
-Received: from mail-wm0-x231.google.com ([2a00:1450:400c:c09::231]:37529)
-	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <crosthwaitepeter@gmail.com>)
-	id 1aP10t-0005dC-1S; Thu, 28 Jan 2016 23:50:27 -0500
-Received: by mail-wm0-x231.google.com with SMTP id l66so38625689wml.0;
-	Thu, 28 Jan 2016 20:50:26 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=mime-version:in-reply-to:references:date:message-id:subject:from:to
-	:cc:content-type;
-	bh=vqlaiJtJCAVoR+r27GQVcxL44vkNChvyWUKogE6cB2Q=;
-	b=H6/TPwm3mbTVsMPQbTMzqDrF66I+Z4sLu4jOKaH5qZTVnZeuKwSOoaZDhKfdlXV0K9
-	1X83hPTJhzLurc3I1Q/WSylLUaNEzliRAw0MyKf67H2hBb3V797whB6215sEY0zhT5d+
-	POOrrichfyBEuP4ZYbIAUf61KhHGXCv4dTbnM8YdXK4bnrUFnfaPkSuiFd/NZC6zHgo9
-	IzKTPn7TFE71VH4UipOfyPEsy0JFBgZtXqoFp/apYuthQUNli4eZFio/2qQK6pBPJ4aV
-	fpeBnv/jkAsdT/k9a+zlnsUSBsqhVTK0mRvd4lb4nMkQpupAPi3mzuQYEzNHbutL4rh0
-	v7hQ==
+	(envelope-from <richard.henderson@linaro.org>) id 1dmjQQ-0008Ra-Co
+	for qemu-devel@nongnu.org; Tue, 29 Aug 2017 12:31:43 -0400
+Received: from mail-pg0-x231.google.com ([2607:f8b0:400e:c05::231]:34656)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
+	id 1dmjQQ-0008QR-5W
+	for qemu-devel@nongnu.org; Tue, 29 Aug 2017 12:31:38 -0400
+Received: by mail-pg0-x231.google.com with SMTP id y15so12309525pgc.1
+	for <qemu-devel@nongnu.org>; Tue, 29 Aug 2017 09:31:38 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=subject:to:cc:references:from:message-id:date:user-agent
+	:mime-version:in-reply-to:content-language:content-transfer-encoding;
+	bh=Fvqp4ys7VgciDinI6si6BGnKGD8DLWuR6r4pQSVpgnc=;
+	b=jknWT1g/P+joOrHAZqL9BGsEwZADRI/59AF8wGYWkL/6eRRYbW6YmMlQvZrN1xOdJP
+	B8mq/HWSTtIxPWP3UvJpomz7ARz4Kj8K5D1nLgoIypnLyvhMuJ1Kk4YQTzpAnn38K8Ar
+	Q6OqxmeeFl1C4glfkEvCFFfi83/XLvo/841r8=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:in-reply-to:references:date
-	:message-id:subject:from:to:cc:content-type;
-	bh=vqlaiJtJCAVoR+r27GQVcxL44vkNChvyWUKogE6cB2Q=;
-	b=D+fBeBIxzYamAckyyVczrgH/hr4vuIMHRt8mTzE5WHcrgPG3UIUW4XstMzLR63AYco
-	EbhRz2VDXfdHLUKyGduvYImayO20CVCXR5BPNGeRMrQTx7rEYpvH3NE7QP/W3US5no+T
-	IaR0kpfOc1Ehk04LLc34T01l/rAbcs+6K0CT1Htm2C3+p8LoPNMumf9IEefX7Es7w4yX
-	qCYbqiHXOT7SEmQRUPVoPjRqqrpQddGETixJKg6arjYCffOuDb+lOlvxeCHT7tz3+mZs
-	i//rgxLF2fAXxquVXTTUpvWZ9aVZgU4BXOrV3tZ7+HiyaeNV4JZpQH72J0LOsTcJQDZf
-	18lg==
-X-Gm-Message-State: AG10YOS/+WlNwo14idiubLREZwL2IrTRk5z10YLsjmPu0uJwESNwswJoB91lGCxIbhJav+qYMNMdc3vOsc/Igg==
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+	:user-agent:mime-version:in-reply-to:content-language
+	:content-transfer-encoding;
+	bh=Fvqp4ys7VgciDinI6si6BGnKGD8DLWuR6r4pQSVpgnc=;
+	b=dusNuT4dFaVwt6OqKnkMG1NybI/YsvnPSaaupReP5eGnsomudAtFgiH+p+DilyBdk8
+	mhZGT2IiVZs4++lTfhqMJnsRrcFpKQD28ZNjyOiN+8EyjNwwyXEqedF+VcGELvBU/s1v
+	fakdbOdFXCKMpStnCaTrZ+2AKsxhitbmjoDTTyGFYtyvbJETCM9QXb20x3DxRDDXmD6T
+	9YPBDIZByOdtODizFfETQXL38nihPOMd1ARGAzf/Wq6lFtTl7IbIWqmpp2OT5wH/hM7h
+	FYTNHPVyIM3eF07j+E27WMV6guiCScgsYeMLhuVFqg2Eq+A/ItViV+RDQeieuR5yjvkJ
+	bAXw==
+X-Gm-Message-State: AHYfb5i/RyGn7auENzMA66xV9BvcAnOg9R40BkTUyefOMa57gQ1hZBMu
+	BaCxQdGKARCRM6FF
+X-Received: by 10.84.232.6 with SMTP id h6mr1171900plk.70.1504024297042;
+	Tue, 29 Aug 2017 09:31:37 -0700 (PDT)
+Received: from bigtime.twiddle.net (97-126-108-236.tukw.qwest.net.
+	[97.126.108.236]) by smtp.gmail.com with ESMTPSA id
+	m68sm5891011pfk.15.2017.08.29.09.31.35
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Tue, 29 Aug 2017 09:31:36 -0700 (PDT)
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+References: <1503414539-28762-1-git-send-email-peter.maydell@linaro.org>
+	<1503414539-28762-21-git-send-email-peter.maydell@linaro.org>
+From: Richard Henderson <richard.henderson@linaro.org>
+Message-ID: <7cdc8025-089e-2a02-24cf-e8a02ae42bb6@linaro.org>
+Date: Tue, 29 Aug 2017 09:31:34 -0700
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.2.1
 MIME-Version: 1.0
-X-Received: by 10.194.22.132 with SMTP id d4mr6548643wjf.174.1454043026220;
-	Thu, 28 Jan 2016 20:50:26 -0800 (PST)
-Received: by 10.28.91.143 with HTTP; Thu, 28 Jan 2016 20:50:26 -0800 (PST)
-In-Reply-To: <1452902337-13844-7-git-send-email-Andrew.Baumann@microsoft.com>
-References: <1452902337-13844-1-git-send-email-Andrew.Baumann@microsoft.com>
-	<1452902337-13844-7-git-send-email-Andrew.Baumann@microsoft.com>
-Date: Thu, 28 Jan 2016 20:50:26 -0800
-Message-ID: <CAPokK=pH8c2tZKq8W=1ikETQp4qoHDOsz669PchzTR=kxprcNg@mail.gmail.com>
-From: Peter Crosthwaite <crosthwaitepeter@gmail.com>
-To: Andrew Baumann <Andrew.Baumann@microsoft.com>
-Content-Type: text/plain; charset=UTF-8
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2a00:1450:400c:c09::231
-Cc: Peter Maydell <peter.maydell@linaro.org>,
-	=?UTF-8?Q?Gr=C3=A9gory_ESTRADE?= <gregory.estrade@gmail.com>,
-	Stefan Weil <sw@weilnetz.de>,
-	"qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
-	qemu-arm <qemu-arm@nongnu.org>, Paolo Bonzini <pbonzini@redhat.com>,
-	Rob Herring <robh@kernel.org>
-Subject: Re: [Qemu-arm] [PATCH v4 6/8] bcm2836: add bcm2836 soc device
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.14
+In-Reply-To: <1503414539-28762-21-git-send-email-peter.maydell@linaro.org>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:400e:c05::231
+Subject: Re: [Qemu-devel] [PATCH 20/20] target/arm: Implement BXNS,
+ and banked stack pointers
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: XVaqYzTuwZ+m
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: patches@linaro.org
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: QWEmoyDN1pdY
 
-SoC in subject line.
-
-On Fri, Jan 15, 2016 at 3:58 PM, Andrew Baumann
-<Andrew.Baumann@microsoft.com> wrote:
-> This is the SoC for Raspberry Pi 2.
->
-> Signed-off-by: Andrew Baumann <Andrew.Baumann@microsoft.com>
+On 08/22/2017 08:08 AM, Peter Maydell wrote:
+> Implement the BXNS v8M instruction, which is like BX but will do a
+> jump-and-switch-to-NonSecure if the branch target address has bit 0
+> clear.
+> 
+> This is the first piece of code which implements "switch to the
+> other security state", so the commit also includes the code to
+> switch the stack pointers around, which is the only complicated
+> part of switching security state.
+> 
+> BLXNS is more complicated than just "BXNS but set the link register",
+> so we leave it for a separate commit.
+> 
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 > ---
->
-> Notes:
->     v4:
->     * s/ic/control/
->     * replace use of smp_cpus with enabled-cpus property
->     * propagate errors rather than exit(1)
->
->  hw/arm/Makefile.objs     |   2 +-
->  hw/arm/bcm2836.c         | 165 +++++++++++++++++++++++++++++++++++++++++++++++
->  include/hw/arm/bcm2836.h |  34 ++++++++++
->  3 files changed, 200 insertions(+), 1 deletion(-)
->  create mode 100644 hw/arm/bcm2836.c
->  create mode 100644 include/hw/arm/bcm2836.h
->
-> diff --git a/hw/arm/Makefile.objs b/hw/arm/Makefile.objs
-> index 82cc142..f55f8d2 100644
-> --- a/hw/arm/Makefile.objs
-> +++ b/hw/arm/Makefile.objs
-> @@ -11,7 +11,7 @@ obj-y += armv7m.o exynos4210.o pxa2xx.o pxa2xx_gpio.o pxa2xx_pic.o
->  obj-$(CONFIG_DIGIC) += digic.o
->  obj-y += omap1.o omap2.o strongarm.o
->  obj-$(CONFIG_ALLWINNER_A10) += allwinner-a10.o cubieboard.o
-> -obj-$(CONFIG_RASPI) += bcm2835_peripherals.o
-> +obj-$(CONFIG_RASPI) += bcm2835_peripherals.o bcm2836.o
->  obj-$(CONFIG_STM32F205_SOC) += stm32f205_soc.o
->  obj-$(CONFIG_XLNX_ZYNQMP) += xlnx-zynqmp.o xlnx-ep108.o
->  obj-$(CONFIG_FSL_IMX25) += fsl-imx25.o imx25_pdk.o
-> diff --git a/hw/arm/bcm2836.c b/hw/arm/bcm2836.c
-> new file mode 100644
-> index 0000000..0fd6118
-> --- /dev/null
-> +++ b/hw/arm/bcm2836.c
-> @@ -0,0 +1,165 @@
-> +/*
-> + * Raspberry Pi emulation (c) 2012 Gregory Estrade
-> + * Upstreaming code cleanup [including bcm2835_*] (c) 2013 Jan Petrous
-> + *
-> + * Rasperry Pi 2 emulation and refactoring Copyright (c) 2015, Microsoft
-> + * Written by Andrew Baumann
-> + *
-> + * This code is licensed under the GNU GPLv2 and later.
-> + */
-> +
-> +#include "hw/arm/bcm2836.h"
-> +#include "hw/arm/raspi_platform.h"
-> +#include "hw/sysbus.h"
-> +#include "exec/address-spaces.h"
-> +
-> +/* Peripheral base address seen by the CPU */
-> +#define BCM2836_PERI_BASE       0x3F000000
-> +
-> +/* "QA7" (Pi2) interrupt controller and mailboxes etc. */
-> +#define BCM2836_CONTROL_BASE    0x40000000
-> +
-> +static void bcm2836_init(Object *obj)
-> +{
-> +    BCM2836State *s = BCM2836(obj);
-> +    int n;
-> +
-> +    for (n = 0; n < BCM2836_NCPUS; n++) {
-> +        object_initialize(&s->cpus[n], sizeof(s->cpus[n]),
-> +                          "cortex-a15-" TYPE_ARM_CPU);
-> +        object_property_add_child(obj, "cpu[*]", OBJECT(&s->cpus[n]),
-> +                                  &error_abort);
-> +    }
-> +
-> +    object_initialize(&s->control, sizeof(s->control), TYPE_BCM2836_CONTROL);
-> +    object_property_add_child(obj, "control", OBJECT(&s->control), NULL);
-> +    qdev_set_parent_bus(DEVICE(&s->control), sysbus_get_default());
-> +
-> +    object_initialize(&s->peripherals, sizeof(s->peripherals),
-> +                      TYPE_BCM2835_PERIPHERALS);
-> +    object_property_add_child(obj, "peripherals", OBJECT(&s->peripherals),
-> +                              &error_abort);
-> +    qdev_set_parent_bus(DEVICE(&s->peripherals), sysbus_get_default());
-> +}
-> +
-> +static void bcm2836_realize(DeviceState *dev, Error **errp)
-> +{
-> +    BCM2836State *s = BCM2836(dev);
-> +    Object *obj;
-> +    Error *err = NULL;
-> +    int n;
-> +
-> +    /* common peripherals from bcm2835 */
-> +
-> +    obj = object_property_get_link(OBJECT(dev), "ram", &err);
-> +    if (obj == NULL) {
-> +        error_setg(errp, "%s: required ram link not found: %s",
-> +                   __func__, error_get_pretty(err));
-> +        return;
-> +    }
-> +
-> +    object_property_add_const_link(OBJECT(&s->peripherals), "ram", obj, &err);
-> +    if (err) {
-> +        error_propagate(errp, err);
-> +        return;
-> +    }
-> +
-> +    object_property_set_bool(OBJECT(&s->peripherals), true, "realized", &err);
-> +    if (err) {
-> +        error_propagate(errp, err);
-> +        return;
-> +    }
-> +
-> +    sysbus_mmio_map_overlap(SYS_BUS_DEVICE(&s->peripherals), 0,
-> +                            BCM2836_PERI_BASE, 1);
-> +
-> +    /* bcm2836 interrupt controller (and mailboxes, etc.) */
-> +    object_property_set_bool(OBJECT(&s->control), true, "realized", &err);
-> +    if (err) {
-> +        error_propagate(errp, err);
-> +        return;
-> +    }
-> +
-> +    sysbus_mmio_map(SYS_BUS_DEVICE(&s->control), 0, BCM2836_CONTROL_BASE);
-> +
-> +    sysbus_connect_irq(SYS_BUS_DEVICE(&s->peripherals), 0,
-> +        qdev_get_gpio_in_named(DEVICE(&s->control), "gpu-irq", 0));
-> +    sysbus_connect_irq(SYS_BUS_DEVICE(&s->peripherals), 1,
-> +        qdev_get_gpio_in_named(DEVICE(&s->control), "gpu-fiq", 0));
-> +
-> +    for (n = 0; n < BCM2836_NCPUS; n++) {
-> +        /* Mirror bcm2836, which has clusterid set to 0xf
-> +         * TODO: this should be converted to a property of ARM_CPU
-> +         */
-> +        s->cpus[n].mp_affinity = 0xF00 | n;
-> +
-> +        /* set periphbase/CBAR value for CPU-local registers */
-> +        object_property_set_int(OBJECT(&s->cpus[n]),
-> +                                BCM2836_PERI_BASE + MCORE_OFFSET,
-> +                                "reset-cbar", &err);
-> +        if (err) {
-> +            error_propagate(errp, err);
-> +            return;
-> +        }
-> +
-> +        /* start powered off if not enabled */
-> +        object_property_set_bool(OBJECT(&s->cpus[n]), n >= s->enabled_cpus,
-> +                                 "start-powered-off", &err);
-> +        if (err) {
-> +            error_propagate(errp, err);
-> +            return;
-> +        }
-> +
-> +        object_property_set_bool(OBJECT(&s->cpus[n]), true, "realized", &err);
-> +        if (err) {
-> +            error_propagate(errp, err);
-> +            return;
-> +        }
-> +
-> +        /* Connect irq/fiq outputs from the interrupt controller. */
-> +        qdev_connect_gpio_out_named(DEVICE(&s->control), "irq", n,
-> +                qdev_get_gpio_in(DEVICE(&s->cpus[n]), ARM_CPU_IRQ));
-> +        qdev_connect_gpio_out_named(DEVICE(&s->control), "fiq", n,
-> +                qdev_get_gpio_in(DEVICE(&s->cpus[n]), ARM_CPU_FIQ));
-> +
-> +        /* Connect timers from the CPU to the interrupt controller */
-> +        s->cpus[n].gt_timer_outputs[GTIMER_PHYS]
-> +            = qdev_get_gpio_in_named(DEVICE(&s->control), "cntpsirq", 0);
-> +        s->cpus[n].gt_timer_outputs[GTIMER_VIRT]
-> +            = qdev_get_gpio_in_named(DEVICE(&s->control), "cntvirq", 0);
+>  target/arm/cpu.h       | 13 +++++++++
+>  target/arm/helper.h    |  2 ++
+>  target/arm/translate.h |  1 +
+>  target/arm/helper.c    | 79 ++++++++++++++++++++++++++++++++++++++++++++++++++
+>  target/arm/machine.c   |  2 ++
+>  target/arm/translate.c | 42 ++++++++++++++++++++++++++-
+>  6 files changed, 138 insertions(+), 1 deletion(-)
 
-ARM CPU has
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
-    qdev_init_gpio_out(DEVICE(cpu), cpu->gt_timer_outputs,
-                       ARRAY_SIZE(cpu->gt_timer_outputs));
 
-So you should be able to use qdev_connect_gpio_out rather than direct
-assignment.
-
-> +    }
-> +}
-> +
-> +static Property bcm2836_props[] = {
-> +    DEFINE_PROP_UINT32("enabled-cpus", BCM2836State, enabled_cpus, BCM2836_NCPUS),
-> +    DEFINE_PROP_END_OF_LIST()
-> +};
-> +
-> +static void bcm2836_class_init(ObjectClass *oc, void *data)
-> +{
-> +    DeviceClass *dc = DEVICE_CLASS(oc);
-> +
-> +    dc->props = bcm2836_props;
-> +    dc->realize = bcm2836_realize;
-> +
-> +    /*
-> +     * Reason: creates an ARM CPU, thus use after free(), see
-> +     * arm_cpu_class_init()
-> +     */
-> +    dc->cannot_destroy_with_object_finalize_yet = true;
-> +}
-> +
-> +static const TypeInfo bcm2836_type_info = {
-> +    .name = TYPE_BCM2836,
-> +    .parent = TYPE_SYS_BUS_DEVICE,
-> +    .instance_size = sizeof(BCM2836State),
-> +    .instance_init = bcm2836_init,
-> +    .class_init = bcm2836_class_init,
-> +};
-> +
-> +static void bcm2836_register_types(void)
-> +{
-> +    type_register_static(&bcm2836_type_info);
-> +}
-> +
-> +type_init(bcm2836_register_types)
-> diff --git a/include/hw/arm/bcm2836.h b/include/hw/arm/bcm2836.h
-> new file mode 100644
-> index 0000000..cd0fd02
-> --- /dev/null
-> +++ b/include/hw/arm/bcm2836.h
-> @@ -0,0 +1,34 @@
-> +/*
-> + * Raspberry Pi emulation (c) 2012 Gregory Estrade
-> + * Upstreaming code cleanup [including bcm2835_*] (c) 2013 Jan Petrous
-> + *
-> + * Rasperry Pi 2 emulation and refactoring Copyright (c) 2015, Microsoft
-> + * Written by Andrew Baumann
-> + *
-> + * This code is licensed under the GNU GPLv2 and later.
-> + */
-> +
-> +#ifndef BCM2836_H
-> +#define BCM2836_H
-> +
-> +#include "hw/arm/arm.h"
-> +#include "hw/arm/bcm2835_peripherals.h"
-> +#include "hw/intc/bcm2836_control.h"
-> +
-> +#define TYPE_BCM2836 "bcm2836"
-> +#define BCM2836(obj) OBJECT_CHECK(BCM2836State, (obj), TYPE_BCM2836)
-> +
-> +#define BCM2836_NCPUS 4
-> +
-> +typedef struct BCM2836State {
-> +    /*< private >*/
-> +    DeviceState parent_obj;
-> +    /*< public >*/
-> +
-> +    uint32_t enabled_cpus;
-
-blank line here.
-
-Otherwise,
-
-Reviewed-by: Peter Crosthwaite <crosthwaite.peter@gmail.com>
-
-Regards,
-Peter
-
-> +    ARMCPU cpus[BCM2836_NCPUS];
-> +    BCM2836ControlState control;
-> +    BCM2835PeripheralState peripherals;
-> +} BCM2836State;
-> +
-> +#endif /* BCM2836_H */
-> --
-> 2.5.3
->
+r~

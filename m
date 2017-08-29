@@ -1,126 +1,104 @@
-Received: by 10.223.188.70 with SMTP id a6csp5092702wrh;
-        Mon, 28 Aug 2017 15:39:35 -0700 (PDT)
-X-Received: by 10.98.15.151 with SMTP id 23mr2053426pfp.64.1503959975138;
-        Mon, 28 Aug 2017 15:39:35 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1503959975; cv=none;
+Received: by 10.223.188.70 with SMTP id a6csp5526299wrh;
+        Mon, 28 Aug 2017 23:33:15 -0700 (PDT)
+X-Received: by 10.37.172.167 with SMTP id x39mr2471257ybi.254.1503988395896;
+        Mon, 28 Aug 2017 23:33:15 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1503988395; cv=none;
         d=google.com; s=arc-20160816;
-        b=jba1Zcmb0JeuETmuWXc1gQTaZ9dOv6m21lY1CSbM27CGUy3ECQ372Kv/SkUzDAxTgb
-         SjH5dv3s045C2awLvJAiRKTppK7SC+gg7ze/CQr5Cku9ZcUrxLWi6llHGCc1tULCE6/X
-         5ZovWNTnZII/JS/YHtp878NfEp+xYHty84T+h5hAYXn/yrkxNr2sSNm1taG0DdMCbLAj
-         WkH62MkEKcIVuX8Sv6gJZCCXDhgvAUIwAgLf+pDqW3yqDgy9tgxetalviWRJqzPVgaj5
-         L1D8nRONesf/8yyq6cUVl2mvrV9ohquTMNCtXlTTrHQwXT1HBldo98NKScVDtfS4rCVM
-         GPmQ==
+        b=Ea9IBMiHS7IVzEKzFi4Sk3ijOsoWnkhwADswG93rjV8pEG/NIZfwdoLWn1E3owepHm
+         8JQSKaO//XkXmsnyvJPZDvZw/fcD9dp4CIaJ3UdlrIqm1TRyscN5/Kh3ZK2ODSV+JXrT
+         lM7xjgKY16OejCAeygfU8noYVOIk77M+YbacKyRozH9qFRFD7gx5Hy23S0M7U1bLXWP8
+         p1Pu8lplXnQYasi/ONccnuai4lwPqzsI9u5FBbscHGrzh3cYuXiz7GtY07aagcw22I/g
+         +DFajhS+6r7MRFittWMIZ4Eg2pBN2bcoZeDeQ5zb7E3Xqv6Tnqt4gweqKx9s77xPpq7e
+         vVOw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:cc:to:subject:sender
-         :dkim-signature:arc-authentication-results;
-        bh=XLzMEP7Fz7DiRz+FpBx2maCBGvrQGrkE2p3b6IvgSoQ=;
-        b=DOWny2Vqq/pF1WKctZX/1SDks3HbjghyVXk9eIoUeWIt+AHjtdX9vw0OZMFttRHxZD
-         np9xHzV71fBhvTtz2lMG4f24sdPODzWfo3DCeAMBWM+Yz5L+VjXsgHNPUrvVp/XZauv6
-         OlJut62s6dldThED6vYlIrroe8IZu2wIokwy6mQIlRi7mkaKPVXyJSHMc5GlXI1Dl/uw
-         namo/hiFzzRY1J8Zkt6daaHO4oafOcH6mG7pQHWM87OaErm7WLlqVwFrGexxs2krDkw6
-         eDiL+LLtr513mpXTzOuEOKM0b0F/nuSZBgXWQaghEKiDfn8OKtxV6KnWzgI+2pSPp4/2
-         HGxw==
+        h=message-id:date:subject:cc:to:from:dkim-signature
+         :arc-authentication-results;
+        bh=EeJB1MzeDnxqmqJAMcJ2s+Y6u9V1bZlXzyvC5M7QcVw=;
+        b=NAlOc3xjew55RhaNVhkkkZdHSBsK1Xm4d5G2DRHIdbPBvHKnyMgK/kaFR//WAgtvWg
+         zjbSkI805Pe5h50UON+F2TDrZYzxS/u04mJkc7kmzbfXxtMSNzdwUKYJ7NCH7tmqMf3w
+         22ahumd2Jn9LqZe2kSF4+Ntf3uU/rAW6XtDfF9IbfFeG4sbvauBGdKOBbGSigJFBGzTl
+         8Fudt68CUxj/go/kHe+/yNqnLllbQwCHIDTGcl1LJ5RA6BZ8/Fb2eB9OSwlrrARer19c
+         tTpc7um3t6h+MEGrqBmJ9Lbs308I2PId3POik+T33KlVQ/VKaFNnozG5C+6HA33/mxvL
+         R9VQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=fMrtAJl3;
-       spf=pass (google.com: domain of rth7680@gmail.com designates 2607:f8b0:400e:c05::243 as permitted sender) smtp.mailfrom=rth7680@gmail.com
-Return-Path: <rth7680@gmail.com>
-Received: from mail-pg0-x243.google.com (mail-pg0-x243.google.com. [2607:f8b0:400e:c05::243])
-        by mx.google.com with ESMTPS id y3si129532pfd.614.2017.08.28.15.39.34
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 28 Aug 2017 15:39:35 -0700 (PDT)
-Received-SPF: pass (google.com: domain of rth7680@gmail.com designates 2607:f8b0:400e:c05::243 as permitted sender) client-ip=2607:f8b0:400e:c05::243;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=WyZahPOg;
+       spf=pass (google.com: domain of bobby.prani@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=bobby.prani@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Return-Path: <bobby.prani@gmail.com>
+Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
+        by mx.google.com with SMTPS id r18sor1377489ywc.175.2017.08.28.23.33.15
+        (Google Transport Security);
+        Mon, 28 Aug 2017 23:33:15 -0700 (PDT)
+Received-SPF: pass (google.com: domain of bobby.prani@gmail.com designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=fMrtAJl3;
-       spf=pass (google.com: domain of rth7680@gmail.com designates 2607:f8b0:400e:c05::243 as permitted sender) smtp.mailfrom=rth7680@gmail.com
-Received: by mail-pg0-x243.google.com with SMTP id m15so1335604pgc.0
-        for <alex.bennee@linaro.org>; Mon, 28 Aug 2017 15:39:34 -0700 (PDT)
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=WyZahPOg;
+       spf=pass (google.com: domain of bobby.prani@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=bobby.prani@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=sender:subject:to:cc:references:from:message-id:date:user-agent
-         :mime-version:in-reply-to:content-language:content-transfer-encoding;
-        bh=XLzMEP7Fz7DiRz+FpBx2maCBGvrQGrkE2p3b6IvgSoQ=;
-        b=fMrtAJl3MC3+lxrqyC4AwZjfEFZh3mjDR4Dzf6bY0nMmdxsEOQuN/DkWj004ylT3Nx
-         SJflr6Pbm31aJWzMufCnhrO8RusE8epVsT/wiTwJPNE70iyxMH8QGsSeeTNUQPMZkMx6
-         JV2ZYO8BQvbsA+cvXpP2ZJNQiXOLaedd2S6WHt5xpx6TXC5k4JKLpwDaHwIAlq8nzigC
-         lgWJbJ+lEKcBhNxsnF4M2+JNOIyDWNcod+E3LcySVgYQIhicFYCsFz5eu2JYqyQwXJJN
-         7jnizGG35jGBBnANpSrBpOGSLvC7mg5/cR4uhf3vY1jIA3CbtBrB2VvYMAnL2dO3GQrz
-         b0rA==
+        h=from:to:cc:subject:date:message-id;
+        bh=EeJB1MzeDnxqmqJAMcJ2s+Y6u9V1bZlXzyvC5M7QcVw=;
+        b=WyZahPOg51JBo5OT8Qi478vvJxn1nGwJHZbzFUznVj2iqDlfJYHGn9+MqjMXyrPrhw
+         tSqKPm6H2Gxxgkb6zIovIjlz36cTq0U/VwctF3DW8TLT0ONPtw+sRKx34Ov2DOT+/lFP
+         DPDZ5QF1YcBWgqXAax/gyA0osJZiT8rmF8w/Ngliyy/5JWC2O4Jp81+YNoaORbEztQem
+         O+4K1pc/CNxQt+4htjGT211uUl0MzmMOhfdmq17t6MolL03A8nhjzwNRLmHp28CWIlb3
+         EDbqJMCjgEXDBY2y+VT7l4ClElKpXBDOSdt4Li9j95gtfZr8z/paFWR5w9HI93IdHBQ9
+         iTag==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
-         :date:user-agent:mime-version:in-reply-to:content-language
-         :content-transfer-encoding;
-        bh=XLzMEP7Fz7DiRz+FpBx2maCBGvrQGrkE2p3b6IvgSoQ=;
-        b=blrYS0CjRV6ypbr1ynusyZqVEYYoW4fabIN+FqXNz+JAIEOnf7saygXExnUf8bYmFM
-         +VSGd2d4c/tYDguwOkNB+bwEV1c8EsDCPNqLa6j+FFwdFOk2dOPoMUFI6flu3pgvJ9LJ
-         +UFmYj4xnXO+RpUSgr0rcIKfKO/00BK/wn2HdK5X8GYGrSOa8cbfrZqcekMEA2/Az0O0
-         zjIcyvqZ4OkZ+oGSfNfkPeYsKoS9VAdFUsGQdnTHv4rygSxjYaeM8pnsV7TywODdETOt
-         rb4LIz8UT2dpKLWmfHod7vBoq3P4eSSRVH7I9pYiCDBob192RNSooSox/YMZ5DkfEuIC
-         9T0w==
-X-Gm-Message-State: AHYfb5g+iqLPL/sk92GfDuvbbigrdY5LsXniX3eHQWb1aFEFFbMDl4BJ
-	Ic0HvHyG4ZrHbA==
-X-Received: by 10.84.132.14 with SMTP id 14mr2572393ple.150.1503959974686;
-        Mon, 28 Aug 2017 15:39:34 -0700 (PDT)
-Return-Path: <rth7680@gmail.com>
-Received: from bigtime.twiddle.net (97-126-108-236.tukw.qwest.net. [97.126.108.236])
-        by smtp.googlemail.com with ESMTPSA id i72sm2210205pfi.124.2017.08.28.15.39.33
+        h=x-gm-message-state:from:to:cc:subject:date:message-id;
+        bh=EeJB1MzeDnxqmqJAMcJ2s+Y6u9V1bZlXzyvC5M7QcVw=;
+        b=kfTs4rW85Y84TklOd7wQwaMTuUHX8fu71CLu76Qut6Z8MWRCOu0+v9+IVtFw2UX/CG
+         /hnW1cbbjFPg/kEVAAKaXZzCvMUW8T3zEoeLX9qkFWJZKSaOyLN+tmTfeMJPHEus+Ssh
+         fG9F+CG+tAgu/9YqNLtF5X5TcwCVG48zAJh/yXOsPsD/XGbcYklHa7GKiFRW501dYyKu
+         /4wKiYE0JcsY7oklT+ZG0GKNDNo+qsmh3kAsVit69mrol+ax/zHEB/gybpQ50QWJ6JPU
+         HlPA2pYMuPwBcJ4GX99WWbn2TmyiG0nHGW0BiZKozHiS2z/6XxWGUFXCe+NwEpi8f1jz
+         TnIw==
+X-Gm-Message-State: AHYfb5hKoprEFztc4j3VgdHpLAl0Ds31gyzu+s7M+uX00zdxyyI50RJl
+	x4GvysYM1ar5OeJFqG4=
+X-Received: by 10.129.109.18 with SMTP id i18mr2557944ywc.271.1503988395299;
+        Mon, 28 Aug 2017 23:33:15 -0700 (PDT)
+Return-Path: <bobby.prani@gmail.com>
+Received: from localhost.localdomain ([98.192.46.210])
+        by smtp.gmail.com with ESMTPSA id x4sm817923ywa.44.2017.08.28.23.33.14
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 28 Aug 2017 15:39:33 -0700 (PDT)
-Sender: Richard Henderson <rth7680@gmail.com>
-Subject: Re: [RFC PATCH 3/3] mttcg: Implement implicit ordering semantics
-To: Pranith Kumar <bobby.prani@gmail.com>
-Cc: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
- Andrzej Zaborowski <balrogg@gmail.com>, Aurelien Jarno
- <aurelien@aurel32.net>, "open list:AArch64 target" <qemu-arm@nongnu.org>,
- "open list:All patches CC here" <qemu-devel@nongnu.org>,
- Paolo Bonzini <pbonzini@redhat.com>
-References: <20170828035327.17146-1-bobby.prani@gmail.com>
- <20170828035327.17146-3-bobby.prani@gmail.com>
- <03c05a60-d697-500b-c2fc-d99b24f3f64c@twiddle.net>
- <CAJhHMCC4Y0Zos+g4M6Rms+vO8cdZ+AOupciRFWTfnbFgpRs9jw@mail.gmail.com>
-From: Richard Henderson <rth@twiddle.net>
-Message-ID: <45959c2a-94c3-7899-eaba-bf13ca85d052@twiddle.net>
-Date: Mon, 28 Aug 2017 15:39:31 -0700
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
- Thunderbird/52.2.1
-MIME-Version: 1.0
-In-Reply-To: <CAJhHMCC4Y0Zos+g4M6Rms+vO8cdZ+AOupciRFWTfnbFgpRs9jw@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-TUID: dZ1ZEu5AYaM7
+        Mon, 28 Aug 2017 23:33:14 -0700 (PDT)
+From: Pranith Kumar <bobby.prani@gmail.com>
+To: alex.bennee@linaro.org,
+	Peter Maydell <peter.maydell@linaro.org>,
+	qemu-arm@nongnu.org (open list:ARM),
+	qemu-devel@nongnu.org (open list:All patches CC here)
+Cc: qemu-devel@nongnu.org,
+	rth@twiddle.net,
+	pbonzini@redhat.com
+Subject: [PATCH 1/5] target/arm: Remove stale comment
+Date: Tue, 29 Aug 2017 02:33:09 -0400
+Message-Id: <20170829063313.10237-1-bobby.prani@gmail.com>
+X-Mailer: git-send-email 2.13.0
+X-TUID: bJD9yAb15xTo
 
-On 08/28/2017 02:41 PM, Pranith Kumar wrote:
-> On Mon, Aug 28, 2017 at 1:57 PM, Richard Henderson <rth@twiddle.net> wrote:
->> On 08/27/2017 08:53 PM, Pranith Kumar wrote:
->>> diff --git a/tcg/aarch64/tcg-target.h b/tcg/aarch64/tcg-target.h
->>> index 55a46ac825..b41a248bee 100644
->>> --- a/tcg/aarch64/tcg-target.h
->>> +++ b/tcg/aarch64/tcg-target.h
->>> @@ -117,4 +117,6 @@ static inline void flush_icache_range(uintptr_t start, uintptr_t stop)
->>>      __builtin___clear_cache((char *)start, (char *)stop);
->>>  }
->>>
->>> +#define TCG_TARGET_DEFAULT_MO (0)
->>> +
->>>  #endif /* AARCH64_TCG_TARGET_H */
->>
->> Please add all of these in one patch, separate from the tcg-op.c changes.
->> We should also just make this mandatory and remove any related #ifdefs.
-> 
-> I tried looking up ordering semantics for architectures like ia64 and
-> s390. It is not really clear. I think every arch but for x86 can be
-> defined as weak, even though archs like sparc can also be configured
-> as TSO. Is this right?
+Update the comment which is not true since MTTCG.
 
-s390 has the same memory ordering as i386.
+Reviewed-by: Richard Henderson <rth@twiddle.net>
+Signed-off-by: Pranith Kumar <bobby.prani@gmail.com>
+---
+ target/arm/translate-a64.c | 4 ----
+ 1 file changed, 4 deletions(-)
 
-But you're right that the risc chips should generally be 0.
-
-I'll try and figure out when sparc can use PSO (loosest for sparc < 8, and
-modern niagara), but leave it 0 for now.
-
-
-r~
+diff --git a/target/arm/translate-a64.c b/target/arm/translate-a64.c
+index 2200e25be0..f42b155d7d 100644
+--- a/target/arm/translate-a64.c
++++ b/target/arm/translate-a64.c
+@@ -2012,10 +2012,6 @@ static void disas_ldst_excl(DisasContext *s, uint32_t insn)
+     }
+     tcg_addr = read_cpu_reg_sp(s, rn, 1);
+ 
+-    /* Note that since TCG is single threaded load-acquire/store-release
+-     * semantics require no extra if (is_lasr) { ... } handling.
+-     */
+-
+     if (is_excl) {
+         if (!is_store) {
+             s->is_ldex = true;
+-- 
+2.13.0

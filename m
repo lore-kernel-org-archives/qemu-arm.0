@@ -1,240 +1,902 @@
-Received: by 10.223.188.70 with SMTP id a6csp5075664wrh;
-        Mon, 28 Aug 2017 15:21:18 -0700 (PDT)
-X-Received: by 10.200.22.152 with SMTP id r24mr2909036qtj.252.1503958877970;
-        Mon, 28 Aug 2017 15:21:17 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1503958877; cv=none;
+Received: by 10.223.188.70 with SMTP id a6csp288787wrh;
+        Tue, 29 Aug 2017 20:49:15 -0700 (PDT)
+X-Received: by 10.55.24.161 with SMTP id 33mr1009401qky.220.1504064955073;
+        Tue, 29 Aug 2017 20:49:15 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1504064955; cv=none;
         d=google.com; s=arc-20160816;
-        b=q2jqMdelAZdWMERcI+5L+KbmoecMnaIEUU8Zjo17YJWztJjvm+r6+fRT6PLZWGa5jC
-         wbYrxlhivx3yHTd8xPkO7sBM+5tHzNjPQXD4w58+aJS6lRns+07ND9ETeHoQ7YNpawsk
-         8GNXD6IySyEnAzfyn5eoyHbLHD67w9IGrfqhlB3iZpu9seMZxp21O77KhfHNDoKj8a/N
-         0IxfquBqvFWcG5XU0TEiP7jLEAwGIh5pHKInjKtKXRnf15fIFcB6314sWs6go7FqVq2d
-         E5lBsKiJCQuRUD8RN1ITeO1HccgS8Yvk9MY48uUJWk6kWXrGyGO84NSO0/GmP9A4sg5o
-         6nXA==
+        b=p2hkszu4ThABVcI3mwM0GT+dgosD6oUVhSOxB52shK5C1CLcfftqIMYPj3Zz5vmGsC
+         u2W1NdlZlF9f06cFlkcNqETyuqb9/fVJlNpq83gAMehxNfLvUsgW8HAqKyNJ2jaXCaca
+         rIuvUQ9LNGyezgVEh/yOyShzpFN49FkY11k3e9WLDoamKvQcQQauzSAd94scP2qB7Jsa
+         Sn3fO0FRfuyvbgUZZO71s0f4Tjpg1rjjcsJB/BLd9RYMivlip8zawpUlTeQWy/oxrbBP
+         VdAwvvnEj9BWiiOX+0EjAkdJpK0+1UG7BLvTc/sMnyecNtEi8rUyEEoWRuucNg1QOvbZ
+         m+lg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:spamdiagnosticmetadata
-         :spamdiagnosticoutput:mime-version:message-id:date:to:from
+        h=content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:cc:to:subject:sender
          :dkim-signature:arc-authentication-results;
-        bh=FglklcdKvIbmxVqwhMSIegdRX2SB07Q8XUnAjoBNru8=;
-        b=QrUgcvyO6DU4Nt91v4IsCOKOR0hP46u9Iz5ZMRB1MJvW+R4bnVmdwnGhynkDgvWWrP
-         axMmoEryGeIEILqoqpw1HdeC/mkVVI4txRObMEUHezURk3t82lpmAUzdnoavDPJUgxYB
-         ohhhvPN7Kn/aHI0rNxVhBN7hKufESbosy6EKE6jqqALT4A6W5xFArIpxzjf+Sc8CaSfU
-         EaY3QYBysbCiHxQDSBfIFhYprGU5a9smN1XzXao8eJ3olY+Kv0VqA7BHqLzL4/HpqT0/
-         7fXbnFaM2hpOXuz077pTTWQpb7Lj4dWWGJmTo3x+sHJeIGisgJTMnc6e/33N4lmQeOqk
-         kHnQ==
+        bh=wK7jz7uf+bqSfXjQoobZnIBxxkzo76HysDvg4A1B8js=;
+        b=i9cEZZy8slF4f7iTLZNA3jfDAJMJcBLEOC/IvRdQpTZhlBXnkPMzKPXnLVktL8zBf2
+         Kyx1IwS8bl7qgWkp9vlYggiN9dKCjEYtaZG/frdfZEM4Xn1Cm9kWoBhp+XqlECFs7w4Z
+         paALVSDQRBsUtK8sC4oYssAbzXV0sGUJY2P0uwezALhwuFydmDEI68qpX3eRtgkaODL7
+         XvJNdJrgnJbNMAfcn/Zt5wRmMnT8B06Ep+32eTqn9BBEPIbAvqOP9GQLrsG1dYnncocb
+         ltYldocujO4RMw55RFWpA3qOviaHR0oGM5sTq2jzFBLROr5NnJmebVNFFc+Uv/jFyfpa
+         AECA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@xilinx.onmicrosoft.com header.s=selector1-xilinx-com header.b=0k9uvH1G;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id t1si1309825qtb.379.2017.08.28.15.21.17
-        for <alex.bennee@linaro.org>
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 28 Aug 2017 15:21:17 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=HohycolZ;
+       spf=pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 2607:f8b0:400d:c09::242 as permitted sender) smtp.mailfrom=philippe.mathieu.daude@gmail.com
+Return-Path: <philippe.mathieu.daude@gmail.com>
+Received: from mail-qk0-x242.google.com (mail-qk0-x242.google.com. [2607:f8b0:400d:c09::242])
+        by mx.google.com with ESMTPS id s13si4426075qtk.95.2017.08.29.20.49.14
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 29 Aug 2017 20:49:15 -0700 (PDT)
+Received-SPF: pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 2607:f8b0:400d:c09::242 as permitted sender) client-ip=2607:f8b0:400d:c09::242;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@xilinx.onmicrosoft.com header.s=selector1-xilinx-com header.b=0k9uvH1G;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:41647 helo=lists.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1dmSPD-0008Mz-Iw
-	for alex.bennee@linaro.org; Mon, 28 Aug 2017 18:21:15 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:57105)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <portias@xilinx.com>) id 1dmSP7-0008LU-Jr
-	for qemu-arm@nongnu.org; Mon, 28 Aug 2017 18:21:10 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <portias@xilinx.com>) id 1dmSP6-00040U-MR
-	for qemu-arm@nongnu.org; Mon, 28 Aug 2017 18:21:09 -0400
-Received: from mail-bn3nam01on0074.outbound.protection.outlook.com
-	([104.47.33.74]:43487
-	helo=NAM01-BN3-obe.outbound.protection.outlook.com)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <portias@xilinx.com>)
-	id 1dmSP0-0003wl-2a; Mon, 28 Aug 2017 18:21:02 -0400
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=HohycolZ;
+       spf=pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 2607:f8b0:400d:c09::242 as permitted sender) smtp.mailfrom=philippe.mathieu.daude@gmail.com
+Received: by mail-qk0-x242.google.com with SMTP id l65so4440014qkc.3;
+        Tue, 29 Aug 2017 20:49:14 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=xilinx.onmicrosoft.com; s=selector1-xilinx-com;
-	h=From:Date:Subject:Message-ID:Content-Type:MIME-Version;
-	bh=FglklcdKvIbmxVqwhMSIegdRX2SB07Q8XUnAjoBNru8=;
-	b=0k9uvH1GUDypVVazaE76rvoR3v29wG4zDepOfF5qbhOKdIvd9x3oH8fXMs8df7+B5AAieTXPD7y6aC+maC8dnzbOkAqYw4H7WDltJOvn60kCtVBzbvbe8uQG8r05+oJmIl/bdbgG0cTXuIwDxi4eNvd0iUmW3VzQ1BGZjxL/EX4=
-Received: from MWHPR02CA0010.namprd02.prod.outlook.com (10.168.209.148) by
-	BN3PR02MB1126.namprd02.prod.outlook.com (10.162.168.144) with Microsoft
-	SMTP Server (version=TLS1_2,
-	cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id
-	15.1.1385.9; Mon, 28 Aug 2017 22:20:59 +0000
-Received: from BL2NAM02FT029.eop-nam02.prod.protection.outlook.com
-	(2a01:111:f400:7e46::201) by MWHPR02CA0010.outlook.office365.com
-	(2603:10b6:300:4b::20) with Microsoft SMTP Server (version=TLS1_2,
-	cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.1362.18 via
-	Frontend Transport; Mon, 28 Aug 2017 22:20:58 +0000
-Authentication-Results: spf=pass (sender IP is 149.199.60.100)
-	smtp.mailfrom=xilinx.com; gmail.com; dkim=none (message not signed)
-	header.d=none;gmail.com; dmarc=bestguesspass action=none
-	header.from=xilinx.com;
-Received-SPF: Pass (protection.outlook.com: domain of xilinx.com designates
-	149.199.60.100 as permitted sender) receiver=protection.outlook.com;
-	client-ip=149.199.60.100; helo=xsj-pvapsmtpgw02;
-Received: from xsj-pvapsmtpgw02 (149.199.60.100) by
-	BL2NAM02FT029.mail.protection.outlook.com (10.152.77.100) with
-	Microsoft SMTP Server (version=TLS1_0,
-	cipher=TLS_RSA_WITH_AES_256_CBC_SHA) id 15.1.1341.15
-	via Frontend Transport; Mon, 28 Aug 2017 22:20:57 +0000
-Received: from unknown-38-66.xilinx.com ([149.199.38.66]:39483
-	helo=xsj-pvapsmtp01) by xsj-pvapsmtpgw02 with esmtp (Exim 4.63)
-	(envelope-from <portia.stephens@xilinx.com>)
-	id 1dmSOv-0002q9-20; Mon, 28 Aug 2017 15:20:57 -0700
-Received: from [127.0.0.1] (helo=localhost)
-	by xsj-pvapsmtp01 with smtp (Exim 4.63)
-	(envelope-from <portia.stephens@xilinx.com>)
-	id 1dmSOu-0001Ch-Ui; Mon, 28 Aug 2017 15:20:57 -0700
-Received: from xsj-pvapsmtp01 (xsj-smtp.xilinx.com [149.199.38.66])
-	by xsj-smtp-dlp2.xlnx.xilinx.com (8.13.8/8.13.1) with ESMTP id
-	v7SMKnOo006258; Mon, 28 Aug 2017 15:20:49 -0700
-Received: from [172.19.2.217] (helo=xsjportias50.xilinx.com)
-	by xsj-pvapsmtp01 with esmtp (Exim 4.63)
-	(envelope-from <portia.stephens@xilinx.com>)
-	id 1dmSOn-0001CN-9K; Mon, 28 Aug 2017 15:20:49 -0700
-From: Portia Stephens <portia.stephens@xilinx.com>
-To: <peter.maydell@linaro.org>, <qemu-arm@nongnu.org>
-Date: Mon, 28 Aug 2017 15:19:01 -0700
-Message-ID: <20170828221901.12827-1-portia.stephens@xilinx.com>
-X-Mailer: git-send-email 2.14.1
-X-RCIS-Action: ALLOW
-X-TM-AS-Product-Ver: IMSS-7.1.0.1224-8.1.0.1062-23286.005
-X-TM-AS-User-Approved-Sender: Yes;Yes
-X-EOPAttributedMessage: 0
-X-MS-Office365-Filtering-HT: Tenant
-X-Forefront-Antispam-Report: CIP:149.199.60.100; IPV:NLI; CTRY:US; EFV:NLI;
-	SFV:NSPM;
-	SFS:(10009020)(979002)(6009001)(39860400002)(2980300002)(438002)(189002)(199003)(77096006)(39060400002)(107886003)(478600001)(63266004)(50986999)(54906002)(626005)(575784001)(4326008)(6666003)(1076002)(106466001)(33646002)(5003940100001)(189998001)(305945005)(36386004)(5660300001)(50226002)(50466002)(48376002)(47776003)(9786002)(36756003)(2906002)(81156014)(81166006)(8676002)(356003)(8936002)(107986001)(5001870100001)(969003)(989001)(999001)(1009001)(1019001);
-	DIR:OUT; SFP:1101; SCL:1; SRVR:BN3PR02MB1126; H:xsj-pvapsmtpgw02;
-	FPR:; SPF:Pass; PTR:unknown-60-100.xilinx.com,xapps1.xilinx.com;
-	MX:1; A:1; LANG:en; 
-X-Microsoft-Exchange-Diagnostics: 1; BL2NAM02FT029;
-	1:pjM/LYiPj53PDDcqcAnrUVGAK8WoHNdgZuCRxVF6sfJoTOMnbHCkp0ejFqLjOjjjcic53wQ13Q8eNCT5liciyc8ins5hqWF2O/e3BpgbYr/nSLvRR8jhf0rltGVha1Ak
+        d=gmail.com; s=20161025;
+        h=sender:subject:to:cc:references:from:message-id:date:user-agent
+         :mime-version:in-reply-to:content-language:content-transfer-encoding;
+        bh=wK7jz7uf+bqSfXjQoobZnIBxxkzo76HysDvg4A1B8js=;
+        b=HohycolZlbaXcGdhk57M2hU+SgEH6NHW9vuyiQdSBdVeRN9xYlzu9AXTLHWhNMlkf0
+         ANpWhksIy7OneOMP6sx6M0kfTav7R0XteWF1Z8KNiKQT0Ri0RHZSYdumQaJVydLEQbLR
+         cuwGhIg0SgEMN2EVgU3aB8u7cS6YQlimmJTYFyVChc6yYXl4zvU5B2MPDJ14IWCBjGiP
+         +uQselExkJ/KYFS44SYKvjXIWbUFrvc6LIKoZA51nOgsXiFUe3dYWin+EQG8zrALdCoa
+         k6bxI2FNaA0ECx2Sbm8zAurszDEx52o5xFC0QGGmG1zY1MbN9S1CL4svV7iPjCDfXGmO
+         KISQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+         :date:user-agent:mime-version:in-reply-to:content-language
+         :content-transfer-encoding;
+        bh=wK7jz7uf+bqSfXjQoobZnIBxxkzo76HysDvg4A1B8js=;
+        b=c4jBlejaY9671KfD6mFVCxDPz3MG5enVu/49KALjZmz3kxbWGA7ldoANFfptElnkKK
+         1PoGiET5y4J6BZiY4iPPmkSBkSz0jgRhTaMJ1+d1rKq7EcOeMcRUtxq1neTGGgN1pPGg
+         ccHjaFMon/SHpZLFAazqfkohJuKZxn3J3N/h7A+Iw8Lu4JqtnC7sKaIB051Vf9vf2YEZ
+         ZGaQW5EpFMQ2JfoVuyA9ZeW1SB8VfUYV5n7gLHk3AgaTJ/zGAKZVGckSPjuZfNyrC8re
+         t2ZPDqbN94CLvRagwThEvv79au7xFYvPomiQDpkebDVnQZTsAbp9ivZETKeHXh1D68bE
+         7iBg==
+X-Gm-Message-State: AHYfb5jTz4qEVWxUa0qfb1zSL+8e4qygEmKrZP0zpqHsV3ZaKsKuf0T7
+	fpZX8UGmPVV3fT3e5fODAQ==
+X-Received: by 10.55.20.212 with SMTP id 81mr8211762qku.213.1504064954214;
+        Tue, 29 Aug 2017 20:49:14 -0700 (PDT)
+Return-Path: <philippe.mathieu.daude@gmail.com>
+Received: from [192.168.43.33] ([170.51.33.248])
+        by smtp.gmail.com with ESMTPSA id 20sm3062981qtu.52.2017.08.29.20.49.11
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 29 Aug 2017 20:49:13 -0700 (PDT)
+Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philippe.mathieu.daude@gmail.com>
+Subject: Re: [Qemu-devel] [PATCH 1/8] tcg: Add generic vector infrastructure
+ and ops for add/sub/logic
+To: Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org, alex.bennee@linaro.org
+References: <20170817230114.3655-1-richard.henderson@linaro.org>
+ <20170817230114.3655-2-richard.henderson@linaro.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Message-ID: <c53d1c21-c913-a60d-cdfa-524431c2cf28@amsat.org>
+Date: Tue, 29 Aug 2017 22:31:40 -0300
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+ Thunderbird/52.3.0
 MIME-Version: 1.0
-Content-Type: text/plain
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: 6dd08431-a024-4f0f-2a27-08d4ee630e93
-X-Microsoft-Antispam: UriScan:; BCL:0; PCL:0;
-	RULEID:(300000500095)(300135000095)(300000501095)(300135300095)(22001)(300000502095)(300135100095)(2017030254152)(8251501002)(300000503095)(300135400095)(2017052603199)(201703131423075)(201703031133081)(201702281549075)(300000504095)(300135200095)(300000505095)(300135600095)(300000506095)(300135500095);
-	SRVR:BN3PR02MB1126; 
-X-Microsoft-Exchange-Diagnostics: 1; BN3PR02MB1126;
-	3:oZ8MPWd1hKLIoqgdeiUQHibwqi6Hd2GBUOHurNMoS26/qxbV/fi1kwQf4SPXyA75Zh4sm1N8IsAnD2SnLEkwUlBQSRVfdf6VkVlgy3qib2gV3/19O4x+fNytlWMjf+L8XaNV4yFWs6+Sr64wZN9B+xO+pYA9stMDQUwJELWvcS1Q27p+/hBOzdh3zpZqHCRli/lzWEdXbw2gNXiID0mEAHS8k+Qw4ltW6KDl3lu8qh7tLJCqx0rspkyzjcFpSVkJvL+QQR1EV/UDOiciqIrjIZh2sSy3Vs/MgouJhQ6YYNpd6/jo4ndQvlWyO9eiQr8N9PEerGcV7IuAdCtVCse+tHseLG+rxNnWfs2Y3DMvrXY=;
-	25:N3Cf58X0Fr5lSyBmpmSHcRcW78JsTYiRIx7IBH7472jmGdgnkynLaaDU5yEpRUbm5Qkdf+axdZsMH+sAfk+WTpvOhgBv3di2j0P8FjEGA29h3789/b5n8E5sg6hx58g2CnOK9fxOp2kVZ+qlP9yDJlHsHh4fE9AHL9yaYSk8z+GfDetqPLtxiEefQxywXDaiE41t81lNm2khabQzqqMiZjYWdx7jSeym6yFfnbdSdEhkr9EvBW2kOV+4UNcICzZE6rBkA4rJqXKuLkZPsGIPQQGUUXtcRcRmxWcY9crI9J9mpXN0E4MbL8hqGrwjVxWVIa1YV8VsWGhRwHseGZ4MVw==
-X-MS-TrafficTypeDiagnostic: BN3PR02MB1126:
-X-Microsoft-Exchange-Diagnostics: 1; BN3PR02MB1126;
-	31:Wa2OSuCHqOKsWxDTdgJuwq0LOcIi7f+uDvlALiDcUABok7hCp+z6MkcFucaVMNcBGG1qdvJaCGLmNnAnSYd22S6jiWrWx5cnbN/90C6F3xlyP1IABxrNZr7/E3ktG9r7jDxwG4smvzefW56uTC4zzdRY+Ed73PiYGxnLMl7aNSJuAlhoAp+tG1cqlB92S0XycJ7QLJXXnBCDK+OL+XIkpgHEcmCyyKjuMaBoC/LfxKo=;
-	20:ujzmg+u2xztbEeFUagHNYBR+DCWysvQ41hUSAbYsk0PbRmyAP7JkWLTtXVnYCWc7k5HAofDcwYZyRogwjlfhM7UD/7uaJwq3I+7spM13dg896MTv3JRqMgxlo/L6UZx0IPuh3iuczrVQvBv0jTMXdhOnN6kf5vUZFJXUIvlsesr8QVRrdNk14Rhw7w5hfJ2yGnZ8usQwroXlIhORblabXHX8kKyCpM4WoTahbVHs4GjraD3vjlxeRrLafzHbQf1KYEp7MjS94jj6eImDgigyXGLGpOuHzmYwAW4wxlpXG9xW6lYg3etdl8N6sKK/2EJLZF2XxiyP7CJsOQgINHw9t7b/d2yuFf4Le0sywSGtk1FSUVAsOD70W9UqVPIVGW6hED6XyOXBgopn2bvfvBQMFtOnP0D+eR4l1k+vYFTaynqES8EZWpiBFxpoOli03mMKc2U0bfFKHWYz754LGfEi7VI64tf67wyEnCdhpdaPnRvfaSFKvUOVASbzfN3VFmDN
-X-Exchange-Antispam-Report-Test: UriScan:(192813158149592);
-X-Microsoft-Antispam-PRVS: <BN3PR02MB112656C28F604D05F1BC0CADD59E0@BN3PR02MB1126.namprd02.prod.outlook.com>
-X-Exchange-Antispam-Report-CFA-Test: BCL:0; PCL:0;
-	RULEID:(100000700101)(100105000095)(100000701101)(100105300095)(100000702101)(100105100095)(6040450)(601004)(2401047)(13016025)(5005006)(13018025)(8121501046)(93006095)(93004095)(100000703101)(100105400095)(3002001)(10201501046)(6055026)(6041248)(20161123558100)(20161123564025)(20161123562025)(201703131423075)(201702281528075)(201703061421075)(201703061406153)(20161123555025)(20161123560025)(6072148)(201708071742011)(100000704101)(100105200095)(100000705101)(100105500095);
-	SRVR:BN3PR02MB1126; BCL:0; PCL:0;
-	RULEID:(100000800101)(100110000095)(100000801101)(100110300095)(100000802101)(100110100095)(100000803101)(100110400095)(100000804101)(100110200095)(100000805101)(100110500095);
-	SRVR:BN3PR02MB1126; 
-X-Microsoft-Exchange-Diagnostics: 1; BN3PR02MB1126;
-	4:uOvJdZO65El16mMt4uvRq9Z8moLktJeCH3d4jDMniYi9CrcpeF40FhM9OO7EALk7lk9+D19NDJcNxt3h2ED+9RrLa90Qz2ZhQ10EUv42ad6pDrGl8gnr+12dqiGIYOPzKUQ8bZmJ8pC6n7Qnq6lzrYSZ1x7Sj2Xp/8Qwi65RTHezQUTeUtPno+oBikGGOyLU4KKmAhTegJ43f8WhFatYRpArBUjy7PA9WTYm5zpMKgixmtkukUCz5vUlExcKNHedB9DqHtF3M6J5mMim4QE3kBUuy4msAap/44UcH7A/vVw=
-X-Forefront-PRVS: 0413C9F1ED
-X-Microsoft-Exchange-Diagnostics: =?us-ascii?Q?1; BN3PR02MB1126;
-	23:Msohjfzc58Z8rl01uApPo+fWxwbWavaYUtu9UmW61?=
-	=?us-ascii?Q?NYjpkinwneAo7iEZzcb6ggTf9qV/2yB/Uxz0TPtjugEmsJS1Xwl4kDEWZRZG?=
-	=?us-ascii?Q?9BMGN4fY+OEbQUEQaKc4O68UMqWgjT+6BCKXFe0Hx0vb7Xg1OGXKoJxixNJI?=
-	=?us-ascii?Q?KJuGMp5u3hUkj2/fgi9rbBq5oTQ24edqCHfozM6zYa3gSrAt7FP9G1YCr1Rx?=
-	=?us-ascii?Q?Lts1csWQmZ9c0K/44kYp5H4aPbxTRjuNisdt1aNLelnKC2B5hsyS7V++U8vD?=
-	=?us-ascii?Q?O7/9pAOP42l96dFvdnHqzJVOhpXWbT1EJqIXB3al7isOsteD6S5PjCJQCwEE?=
-	=?us-ascii?Q?UQFkxk1ELqeWVBz2LHbpnzcLm1UzTQz2Zs7gSEt1LhV9lujG5xctv4o0tuhi?=
-	=?us-ascii?Q?gbxkK9HyoDCJgKKmaMxYrdCaTPfaoiVZvNm/8GPuXFKHiVaJL4ptj2MHtpZj?=
-	=?us-ascii?Q?LPvjhrrjLSjlc2mP/cZzSykNZw68aCR4y8Q2WrzUGLG1gQ7yJI3OhOVhAlBP?=
-	=?us-ascii?Q?JSGH1wGEDV9y/9xSxH58D74k7U/7U4jD7l4UYAQnsL9UUgtGve8+i73eph3C?=
-	=?us-ascii?Q?LCuLuJrUcOV9UMY7g88UVhfTtUpU+pyQcZRU/zEl6vcE7/Q0iOTBf9EFwy6w?=
-	=?us-ascii?Q?oPafZ13qh9bLn6g6kJpS2RqIlRZLMY8CFjVh0hK1rLDeADrO7Aon7iOtkud8?=
-	=?us-ascii?Q?DfnqJLieskEtCC/4loJxluICsDTEg0BME91MYjnWObANgtFmfeGFYznVVFaR?=
-	=?us-ascii?Q?Z9kWmJFm8CG4paIbRsWCS3zgCD4yeNMWIXIN845GJnve1ITU3Mo71SEZ155X?=
-	=?us-ascii?Q?rdaCF/EhDf6s0HfRGJEYNIZogw7+wb0Lcj2hLDp1RGQ5Er3MdsikyPlXu8qA?=
-	=?us-ascii?Q?N3L9uXuKFVNdRZGygUcp4gVAEx7ehqoHInbN0EhS/uSFJs8D+vOMBB8yliGO?=
-	=?us-ascii?Q?7bVf+8nWbKg1Y3v2vzzdPFXBTmZPtlog62Y6R4vex+S4zHFXl0eOCEunfnJa?=
-	=?us-ascii?Q?4F/iT5sEQxZ1IHCTa3AIBwd31pVR54+mw4+yBBf7+xBgcNSHQBa4OUBLSQYT?=
-	=?us-ascii?Q?+AIqA3tSmljux9h6sij4a7x/qGd?=
-X-Microsoft-Exchange-Diagnostics: 1; BN3PR02MB1126;
-	6:egle4tVt0rDhEUjZzKlS4d8xXGPXfgthRw/fZGZ2nNjHbp66WrpmdBlPROMrC195pCzmP9h+Ku5OMQKfuBzR1Q2sITq6bPPeW9qeBixrHrKRVd85c6jYA+WxN3Xp8tsS829J1z3xP6vkeWFwXBQ+WOpuAnpfM69Fas4lwmUge57psy65UyQQcgvlR/nrnHDqSpLaiAUkkkbQtLsEJE8FOKyng9VFOAoJ/Ha6vn15Z0N1E5BlOT5asNbdQHzzzHYRJnDrp4z0nJ436bkt19rRBeq3yXjraKsSR6RoDE0rEzKzSV0BTzn4q6Z0M/2ipKefmPo6aahGXYvBxtePaDNPJQ==;
-	5:66gwihJVvpLkodV5kXS9KvmOF30YULtdEIAn6RI9EoMXuPcuk5Kjs1N1VpJAfloAG5GOZdUUmK3yv4E9QSGSd+R+ibBfpU/QyJ1KKmYxFijX8DBvCDLQHEm7vDnaYa8wQK3G+TGmNcEmhHjnjmHvMA==;
-	24:phPIBu7mQtjFb40j8U5azyk1RQqERvMDiwcK8GCZDCZnSRXiAC3yvGfKKetiHgaPeDvyu7VQapfi/8ike9zXcyPpSb+xCuwkJagGMKfvV4k=;
-	7:mdX8MCT1a7y/n0ApCZGCEVcVue9Mfhpe6QEtdEgBKBkPoeGhxF4HqZaDNY8aCpq1QCM8jPHNBRoCHe9C8zsEBY9UPhYxEwKWpZOd2yGyYIDaEWlCix1yYalHIkAqjpZLvK/swE2o24aoQcoJeCPZv8RTV5zdShB/yIIzI1jfBIcq6bL7yBOhnKptLgPHD4EH0IOsiTg/EyPMe8UneQO5QtAVYHFYcuGceyRjJvMPQOw=
-SpamDiagnosticOutput: 1:99
-SpamDiagnosticMetadata: NSPM
-X-OriginatorOrg: xilinx.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 28 Aug 2017 22:20:57.7749 (UTC)
-X-MS-Exchange-CrossTenant-Id: 657af505-d5df-48d0-8300-c31994686c5c
-X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=657af505-d5df-48d0-8300-c31994686c5c;
-	Ip=[149.199.60.100]; Helo=[xsj-pvapsmtpgw02]
-X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: BN3PR02MB1126
-X-detected-operating-system: by eggs.gnu.org: Windows 7 or 8 [fuzzy]
-X-Received-From: 104.47.33.74
-Subject: [Qemu-arm] [PATCH] target/arm: Remove 5J architecture
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.21
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: portia.stephens@xilinx.com, qemu-devel@nongnu.org, stephensportia@gmail.com,
-	alistair.francis@xilinx.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: SysrYhzuq5X0
+In-Reply-To: <20170817230114.3655-2-richard.henderson@linaro.org>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+X-TUID: LGAALUIoi+aB
 
-This fixes the issue that any BXJ instruction will result in an illegal_op.
-This is because the 5J archiecture is always unsupported.
-5J architecture doesn't have a feature set and ENABLE_ARCH_5J is hardcoded
-to 0, causing any ARCH(5J) to result in an illegal_op. The only use of
-ARCH(5J) is in the BXJ instruction disassembly.
+Hi Richard,
 
-This patch replaces that ARCH(5J) with ARCH(6) and removes the 5J architecture,
-this isn't technically correct since the v5J ISA does support the BXJ
-instruction. This change means that running a BXJ instruction on any v5 will
-cause an illegal_op but it is better than the current state where any
-architecture running a BXJ would cause an illegal_op. The correct solution
-would be to create a feature set for v5J but that doesn't seem worth it as the
-v5J is so old.
+I can't find anything to say about this patch... Hardcore stuff.
+Some part could be more a bit more verbose but after a while focusing it 
+makes sens.
+I wonder how long it took you to write this :) "roughly 2h"
 
-Signed-off-by: Portia Stephens <portia.stephens@xilinx.com>
-Reviewed-by: Alistair Francis <alistair.francis@xilinx.com>
----
- target/arm/translate.c | 6 ++++--
- 1 file changed, 4 insertions(+), 2 deletions(-)
+On 08/17/2017 08:01 PM, Richard Henderson wrote:
+> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 
-diff --git a/target/arm/translate.c b/target/arm/translate.c
-index d1a5f56998..4a30c0d7e0 100644
---- a/target/arm/translate.c
-+++ b/target/arm/translate.c
-@@ -41,7 +41,6 @@
- #define ENABLE_ARCH_5     arm_dc_feature(s, ARM_FEATURE_V5)
- /* currently all emulated v5 cores are also v5TE, so don't bother */
- #define ENABLE_ARCH_5TE   arm_dc_feature(s, ARM_FEATURE_V5)
--#define ENABLE_ARCH_5J    0
- #define ENABLE_ARCH_6     arm_dc_feature(s, ARM_FEATURE_V6)
- #define ENABLE_ARCH_6K    arm_dc_feature(s, ARM_FEATURE_V6K)
- #define ENABLE_ARCH_6T2   arm_dc_feature(s, ARM_FEATURE_THUMB2)
-@@ -8389,7 +8388,10 @@ static void disas_arm_insn(DisasContext *s, unsigned int insn)
-             break;
-         case 0x2:
-             if (op1 == 1) {
--                ARCH(5J); /* bxj */
-+                /* This should actually be ARCH(5J) but there is currently no
-+                 * 5J architecture in QEMU.
-+                 */
-+                ARCH(6); /* bxj */
-                 /* Trivial implementation equivalent to bx.  */
-                 tmp = load_reg(s, rm);
-                 gen_bx(s, tmp);
--- 
-2.14.1
+Hoping I didn't miss anything:
 
+Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+
+> ---
+>   Makefile.target        |   5 +-
+>   tcg/tcg-op-gvec.h      |  88 ++++++++++
+>   tcg/tcg-runtime.h      |  16 ++
+>   tcg/tcg-op-gvec.c      | 443 +++++++++++++++++++++++++++++++++++++++++++++++++
+>   tcg/tcg-runtime-gvec.c | 199 ++++++++++++++++++++++
+>   5 files changed, 749 insertions(+), 2 deletions(-)
+>   create mode 100644 tcg/tcg-op-gvec.h
+>   create mode 100644 tcg/tcg-op-gvec.c
+>   create mode 100644 tcg/tcg-runtime-gvec.c
+> 
+> diff --git a/Makefile.target b/Makefile.target
+> index 7f42c45db8..9ae3e904f7 100644
+> --- a/Makefile.target
+> +++ b/Makefile.target
+> @@ -93,8 +93,9 @@ all: $(PROGS) stap
+>   # cpu emulator library
+>   obj-y += exec.o
+>   obj-y += accel/
+> -obj-$(CONFIG_TCG) += tcg/tcg.o tcg/tcg-op.o tcg/optimize.o
+> -obj-$(CONFIG_TCG) += tcg/tcg-common.o tcg/tcg-runtime.o
+> +obj-$(CONFIG_TCG) += tcg/tcg.o tcg/tcg-common.o tcg/optimize.o
+> +obj-$(CONFIG_TCG) += tcg/tcg-op.o tcg/tcg-op-gvec.o
+> +obj-$(CONFIG_TCG) += tcg/tcg-runtime.o tcg/tcg-runtime-gvec.o
+>   obj-$(CONFIG_TCG_INTERPRETER) += tcg/tci.o
+>   obj-$(CONFIG_TCG_INTERPRETER) += disas/tci.o
+>   obj-y += fpu/softfloat.o
+> diff --git a/tcg/tcg-op-gvec.h b/tcg/tcg-op-gvec.h
+> new file mode 100644
+> index 0000000000..10db3599a5
+> --- /dev/null
+> +++ b/tcg/tcg-op-gvec.h
+> @@ -0,0 +1,88 @@
+> +/*
+> + *  Generic vector operation expansion
+> + *
+> + *  Copyright (c) 2017 Linaro
+> + *
+> + * This library is free software; you can redistribute it and/or
+> + * modify it under the terms of the GNU Lesser General Public
+> + * License as published by the Free Software Foundation; either
+> + * version 2 of the License, or (at your option) any later version.
+> + *
+> + * This library is distributed in the hope that it will be useful,
+> + * but WITHOUT ANY WARRANTY; without even the implied warranty of
+> + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+> + * Lesser General Public License for more details.
+> + *
+> + * You should have received a copy of the GNU Lesser General Public
+> + * License along with this library; if not, see <http://www.gnu.org/licenses/>.
+> + */
+> +
+> +/*
+> + * "Generic" vectors.  All operands are given as offsets from ENV,
+> + * and therefore cannot also be allocated via tcg_global_mem_new_*.
+> + * OPSZ is the byte size of the vector upon which the operation is performed.
+> + * CLSZ is the byte size of the full vector; bytes beyond OPSZ are cleared.
+> + *
+> + * All sizes must be 8 or any multiple of 16.
+> + * When OPSZ is 8, the alignment may be 8, otherwise must be 16.
+> + * Operands may completely, but not partially, overlap.
+> + */
+> +
+> +/* Fundamental operation expanders.  These are exposed to the front ends
+> +   so that target-specific SIMD operations can be handled similarly to
+> +   the standard SIMD operations.  */
+> +
+> +typedef struct {
+> +    /* "Small" sizes: expand inline as a 64-bit or 32-bit lane.
+> +       Generally only one of these will be non-NULL.  */
+> +    void (*fni8)(TCGv_i64, TCGv_i64, TCGv_i64);
+> +    void (*fni4)(TCGv_i32, TCGv_i32, TCGv_i32);
+> +    /* Similarly, but load up a constant and re-use across lanes.  */
+> +    void (*fni8x)(TCGv_i64, TCGv_i64, TCGv_i64, TCGv_i64);
+> +    uint64_t extra_value;
+> +    /* Larger sizes: expand out-of-line helper w/size descriptor.  */
+> +    void (*fno)(TCGv_ptr, TCGv_ptr, TCGv_ptr, TCGv_i32);
+> +} GVecGen3;
+> +
+> +void tcg_gen_gvec_3(uint32_t dofs, uint32_t aofs, uint32_t bofs,
+> +                    uint32_t opsz, uint32_t clsz, const GVecGen3 *);
+> +
+> +#define DEF_GVEC_2(X) \
+> +    void tcg_gen_gvec_##X(uint32_t dofs, uint32_t aofs, uint32_t bofs, \
+> +                          uint32_t opsz, uint32_t clsz)
+> +
+> +DEF_GVEC_2(add8);
+> +DEF_GVEC_2(add16);
+> +DEF_GVEC_2(add32);
+> +DEF_GVEC_2(add64);
+> +
+> +DEF_GVEC_2(sub8);
+> +DEF_GVEC_2(sub16);
+> +DEF_GVEC_2(sub32);
+> +DEF_GVEC_2(sub64);
+> +
+> +DEF_GVEC_2(and8);
+> +DEF_GVEC_2(or8);
+> +DEF_GVEC_2(xor8);
+> +DEF_GVEC_2(andc8);
+> +DEF_GVEC_2(orc8);
+> +
+> +#undef DEF_GVEC_2
+> +
+> +/*
+> + * 64-bit vector operations.  Use these when the register has been
+> + * allocated with tcg_global_mem_new_i64.  OPSZ = CLSZ = 8.
+> + */
+> +
+> +#define DEF_VEC8_2(X) \
+> +    void tcg_gen_vec8_##X(TCGv_i64 d, TCGv_i64 a, TCGv_i64 b)
+> +
+> +DEF_VEC8_2(add8);
+> +DEF_VEC8_2(add16);
+> +DEF_VEC8_2(add32);
+> +
+> +DEF_VEC8_2(sub8);
+> +DEF_VEC8_2(sub16);
+> +DEF_VEC8_2(sub32);
+> +
+> +#undef DEF_VEC8_2
+> diff --git a/tcg/tcg-runtime.h b/tcg/tcg-runtime.h
+> index c41d38a557..f8d07090f8 100644
+> --- a/tcg/tcg-runtime.h
+> +++ b/tcg/tcg-runtime.h
+> @@ -134,3 +134,19 @@ GEN_ATOMIC_HELPERS(xor_fetch)
+>   GEN_ATOMIC_HELPERS(xchg)
+>   
+>   #undef GEN_ATOMIC_HELPERS
+> +
+> +DEF_HELPER_FLAGS_4(gvec_add8, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
+> +DEF_HELPER_FLAGS_4(gvec_add16, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
+> +DEF_HELPER_FLAGS_4(gvec_add32, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
+> +DEF_HELPER_FLAGS_4(gvec_add64, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
+> +
+> +DEF_HELPER_FLAGS_4(gvec_sub8, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
+> +DEF_HELPER_FLAGS_4(gvec_sub16, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
+> +DEF_HELPER_FLAGS_4(gvec_sub32, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
+> +DEF_HELPER_FLAGS_4(gvec_sub64, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
+> +
+> +DEF_HELPER_FLAGS_4(gvec_and8, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
+> +DEF_HELPER_FLAGS_4(gvec_or8, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
+> +DEF_HELPER_FLAGS_4(gvec_xor8, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
+> +DEF_HELPER_FLAGS_4(gvec_andc8, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
+> +DEF_HELPER_FLAGS_4(gvec_orc8, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
+> diff --git a/tcg/tcg-op-gvec.c b/tcg/tcg-op-gvec.c
+> new file mode 100644
+> index 0000000000..6de49dc07f
+> --- /dev/null
+> +++ b/tcg/tcg-op-gvec.c
+> @@ -0,0 +1,443 @@
+> +/*
+> + *  Generic vector operation expansion
+> + *
+> + *  Copyright (c) 2017 Linaro
+> + *
+> + * This library is free software; you can redistribute it and/or
+> + * modify it under the terms of the GNU Lesser General Public
+> + * License as published by the Free Software Foundation; either
+> + * version 2 of the License, or (at your option) any later version.
+> + *
+> + * This library is distributed in the hope that it will be useful,
+> + * but WITHOUT ANY WARRANTY; without even the implied warranty of
+> + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+> + * Lesser General Public License for more details.
+> + *
+> + * You should have received a copy of the GNU Lesser General Public
+> + * License along with this library; if not, see <http://www.gnu.org/licenses/>.
+> + */
+> +
+> +#include "qemu/osdep.h"
+> +#include "qemu-common.h"
+> +#include "cpu.h"
+> +#include "exec/exec-all.h"
+> +#include "tcg.h"
+> +#include "tcg-op.h"
+> +#include "tcg-op-gvec.h"
+> +#include "trace-tcg.h"
+> +#include "trace/mem.h"
+> +
+> +#define REP8(x)    ((x) * 0x0101010101010101ull)
+> +#define REP16(x)   ((x) * 0x0001000100010001ull)
+> +
+> +#define MAX_INLINE 16
+> +
+> +static inline void check_size_s(uint32_t opsz, uint32_t clsz)
+> +{
+> +    tcg_debug_assert(opsz % 8 == 0);
+> +    tcg_debug_assert(clsz % 8 == 0);
+> +    tcg_debug_assert(opsz <= clsz);
+> +}
+> +
+> +static inline void check_align_s_3(uint32_t dofs, uint32_t aofs, uint32_t bofs)
+> +{
+> +    tcg_debug_assert(dofs % 8 == 0);
+> +    tcg_debug_assert(aofs % 8 == 0);
+> +    tcg_debug_assert(bofs % 8 == 0);
+> +}
+> +
+> +static inline void check_size_l(uint32_t opsz, uint32_t clsz)
+> +{
+> +    tcg_debug_assert(opsz % 16 == 0);
+> +    tcg_debug_assert(clsz % 16 == 0);
+> +    tcg_debug_assert(opsz <= clsz);
+> +}
+> +
+> +static inline void check_align_l_3(uint32_t dofs, uint32_t aofs, uint32_t bofs)
+> +{
+> +    tcg_debug_assert(dofs % 16 == 0);
+> +    tcg_debug_assert(aofs % 16 == 0);
+> +    tcg_debug_assert(bofs % 16 == 0);
+> +}
+> +
+> +static inline void check_overlap_3(uint32_t d, uint32_t a,
+> +                                   uint32_t b, uint32_t s)
+> +{
+> +    tcg_debug_assert(d == a || d + s <= a || a + s <= d);
+> +    tcg_debug_assert(d == b || d + s <= b || b + s <= d);
+> +    tcg_debug_assert(a == b || a + s <= b || b + s <= a);
+> +}
+> +
+> +static void expand_clr(uint32_t dofs, uint32_t opsz, uint32_t clsz)
+> +{
+> +    if (clsz > opsz) {
+> +        TCGv_i64 zero = tcg_const_i64(0);
+> +        uint32_t i;
+> +
+> +        for (i = opsz; i < clsz; i += 8) {
+> +            tcg_gen_st_i64(zero, tcg_ctx.tcg_env, dofs + i);
+> +        }
+> +        tcg_temp_free_i64(zero);
+> +    }
+> +}
+> +
+> +static TCGv_i32 make_desc(uint32_t opsz, uint32_t clsz)
+> +{
+> +    tcg_debug_assert(opsz >= 16 && opsz <= 255 * 16 && opsz % 16 == 0);
+> +    tcg_debug_assert(clsz >= 16 && clsz <= 255 * 16 && clsz % 16 == 0);
+> +    opsz /= 16;
+> +    clsz /= 16;
+> +    opsz -= 1;
+> +    clsz -= 1;
+> +    return tcg_const_i32(deposit32(opsz, 8, 8, clsz));
+> +}
+> +
+> +static void expand_3_o(uint32_t dofs, uint32_t aofs, uint32_t bofs,
+> +                       uint32_t opsz, uint32_t clsz,
+> +                       void (*fno)(TCGv_ptr, TCGv_ptr, TCGv_ptr, TCGv_i32))
+> +{
+> +    TCGv_ptr d = tcg_temp_new_ptr();
+> +    TCGv_ptr a = tcg_temp_new_ptr();
+> +    TCGv_ptr b = tcg_temp_new_ptr();
+> +    TCGv_i32 desc = make_desc(opsz, clsz);
+> +
+> +    tcg_gen_addi_ptr(d, tcg_ctx.tcg_env, dofs);
+> +    tcg_gen_addi_ptr(a, tcg_ctx.tcg_env, aofs);
+> +    tcg_gen_addi_ptr(b, tcg_ctx.tcg_env, bofs);
+> +    fno(d, a, b, desc);
+> +
+> +    tcg_temp_free_ptr(d);
+> +    tcg_temp_free_ptr(a);
+> +    tcg_temp_free_ptr(b);
+> +    tcg_temp_free_i32(desc);
+> +}
+> +
+> +static void expand_3x4(uint32_t dofs, uint32_t aofs,
+> +                       uint32_t bofs, uint32_t opsz,
+> +                       void (*fni)(TCGv_i32, TCGv_i32, TCGv_i32))
+> +{
+> +    TCGv_i32 t0 = tcg_temp_new_i32();
+> +    uint32_t i;
+> +
+> +    if (aofs == bofs) {
+> +        for (i = 0; i < opsz; i += 4) {
+> +            tcg_gen_ld_i32(t0, tcg_ctx.tcg_env, aofs + i);
+> +            fni(t0, t0, t0);
+> +            tcg_gen_st_i32(t0, tcg_ctx.tcg_env, dofs + i);
+> +        }
+> +    } else {
+> +        TCGv_i32 t1 = tcg_temp_new_i32();
+> +        for (i = 0; i < opsz; i += 4) {
+> +            tcg_gen_ld_i32(t0, tcg_ctx.tcg_env, aofs + i);
+> +            tcg_gen_ld_i32(t1, tcg_ctx.tcg_env, bofs + i);
+> +            fni(t0, t0, t1);
+> +            tcg_gen_st_i32(t0, tcg_ctx.tcg_env, dofs + i);
+> +        }
+> +        tcg_temp_free_i32(t1);
+> +    }
+> +    tcg_temp_free_i32(t0);
+> +}
+> +
+> +static void expand_3x8(uint32_t dofs, uint32_t aofs,
+> +                       uint32_t bofs, uint32_t opsz,
+> +                       void (*fni)(TCGv_i64, TCGv_i64, TCGv_i64))
+> +{
+> +    TCGv_i64 t0 = tcg_temp_new_i64();
+> +    uint32_t i;
+> +
+> +    if (aofs == bofs) {
+> +        for (i = 0; i < opsz; i += 8) {
+> +            tcg_gen_ld_i64(t0, tcg_ctx.tcg_env, aofs + i);
+> +            fni(t0, t0, t0);
+> +            tcg_gen_st_i64(t0, tcg_ctx.tcg_env, dofs + i);
+> +        }
+> +    } else {
+> +        TCGv_i64 t1 = tcg_temp_new_i64();
+> +        for (i = 0; i < opsz; i += 8) {
+> +            tcg_gen_ld_i64(t0, tcg_ctx.tcg_env, aofs + i);
+> +            tcg_gen_ld_i64(t1, tcg_ctx.tcg_env, bofs + i);
+> +            fni(t0, t0, t1);
+> +            tcg_gen_st_i64(t0, tcg_ctx.tcg_env, dofs + i);
+> +        }
+> +        tcg_temp_free_i64(t1);
+> +    }
+> +    tcg_temp_free_i64(t0);
+> +}
+> +
+> +static void expand_3x8p1(uint32_t dofs, uint32_t aofs, uint32_t bofs,
+> +                         uint32_t opsz, uint64_t data,
+> +                         void (*fni)(TCGv_i64, TCGv_i64, TCGv_i64, TCGv_i64))
+> +{
+> +    TCGv_i64 t0 = tcg_temp_new_i64();
+> +    TCGv_i64 t2 = tcg_const_i64(data);
+> +    uint32_t i;
+> +
+> +    if (aofs == bofs) {
+> +        for (i = 0; i < opsz; i += 8) {
+> +            tcg_gen_ld_i64(t0, tcg_ctx.tcg_env, aofs + i);
+> +            fni(t0, t0, t0, t2);
+> +            tcg_gen_st_i64(t0, tcg_ctx.tcg_env, dofs + i);
+> +        }
+> +    } else {
+> +        TCGv_i64 t1 = tcg_temp_new_i64();
+> +        for (i = 0; i < opsz; i += 8) {
+> +            tcg_gen_ld_i64(t0, tcg_ctx.tcg_env, aofs + i);
+> +            tcg_gen_ld_i64(t1, tcg_ctx.tcg_env, bofs + i);
+> +            fni(t0, t0, t1, t2);
+> +            tcg_gen_st_i64(t0, tcg_ctx.tcg_env, dofs + i);
+> +        }
+> +        tcg_temp_free_i64(t1);
+> +    }
+> +    tcg_temp_free_i64(t0);
+> +    tcg_temp_free_i64(t2);
+> +}
+> +
+> +void tcg_gen_gvec_3(uint32_t dofs, uint32_t aofs, uint32_t bofs,
+> +                    uint32_t opsz, uint32_t clsz, const GVecGen3 *g)
+> +{
+> +    check_overlap_3(dofs, aofs, bofs, clsz);
+> +    if (opsz <= MAX_INLINE) {
+> +        check_size_s(opsz, clsz);
+> +        check_align_s_3(dofs, aofs, bofs);
+> +        if (g->fni8) {
+> +            expand_3x8(dofs, aofs, bofs, opsz, g->fni8);
+> +        } else if (g->fni4) {
+> +            expand_3x4(dofs, aofs, bofs, opsz, g->fni4);
+> +        } else if (g->fni8x) {
+> +            expand_3x8p1(dofs, aofs, bofs, opsz, g->extra_value, g->fni8x);
+> +        } else {
+> +            g_assert_not_reached();
+> +        }
+> +        expand_clr(dofs, opsz, clsz);
+> +    } else {
+> +        check_size_l(opsz, clsz);
+> +        check_align_l_3(dofs, aofs, bofs);
+> +        expand_3_o(dofs, aofs, bofs, opsz, clsz, g->fno);
+> +    }
+> +}
+> +
+> +static void gen_addv_mask(TCGv_i64 d, TCGv_i64 a, TCGv_i64 b, TCGv_i64 m)
+> +{
+> +    TCGv_i64 t1 = tcg_temp_new_i64();
+> +    TCGv_i64 t2 = tcg_temp_new_i64();
+> +    TCGv_i64 t3 = tcg_temp_new_i64();
+> +
+> +    tcg_gen_andc_i64(t1, a, m);
+> +    tcg_gen_andc_i64(t2, b, m);
+> +    tcg_gen_xor_i64(t3, a, b);
+> +    tcg_gen_add_i64(d, t1, t2);
+> +    tcg_gen_and_i64(t3, t3, m);
+> +    tcg_gen_xor_i64(d, d, t3);
+> +
+> +    tcg_temp_free_i64(t1);
+> +    tcg_temp_free_i64(t2);
+> +    tcg_temp_free_i64(t3);
+> +}
+> +
+> +void tcg_gen_gvec_add8(uint32_t dofs, uint32_t aofs, uint32_t bofs,
+> +                       uint32_t opsz, uint32_t clsz)
+> +{
+> +    static const GVecGen3 g = {
+> +        .extra_value = REP8(0x80),
+> +        .fni8x = gen_addv_mask,
+> +        .fno = gen_helper_gvec_add8,
+> +    };
+> +    tcg_gen_gvec_3(dofs, aofs, bofs, opsz, clsz, &g);
+> +}
+> +
+> +void tcg_gen_gvec_add16(uint32_t dofs, uint32_t aofs, uint32_t bofs,
+> +                        uint32_t opsz, uint32_t clsz)
+> +{
+> +    static const GVecGen3 g = {
+> +        .extra_value = REP16(0x8000),
+> +        .fni8x = gen_addv_mask,
+> +        .fno = gen_helper_gvec_add16,
+> +    };
+> +    tcg_gen_gvec_3(dofs, aofs, bofs, opsz, clsz, &g);
+> +}
+> +
+> +void tcg_gen_gvec_add32(uint32_t dofs, uint32_t aofs, uint32_t bofs,
+> +                        uint32_t opsz, uint32_t clsz)
+> +{
+> +    static const GVecGen3 g = {
+> +        .fni4 = tcg_gen_add_i32,
+> +        .fno = gen_helper_gvec_add32,
+> +    };
+> +    tcg_gen_gvec_3(dofs, aofs, bofs, opsz, clsz, &g);
+> +}
+> +
+> +void tcg_gen_gvec_add64(uint32_t dofs, uint32_t aofs, uint32_t bofs,
+> +                        uint32_t opsz, uint32_t clsz)
+> +{
+> +    static const GVecGen3 g = {
+> +        .fni8 = tcg_gen_add_i64,
+> +        .fno = gen_helper_gvec_add64,
+> +    };
+> +    tcg_gen_gvec_3(dofs, aofs, bofs, opsz, clsz, &g);
+> +}
+> +
+> +void tcg_gen_vec8_add8(TCGv_i64 d, TCGv_i64 a, TCGv_i64 b)
+> +{
+> +    TCGv_i64 m = tcg_const_i64(REP8(0x80));
+> +    gen_addv_mask(d, a, b, m);
+> +    tcg_temp_free_i64(m);
+> +}
+> +
+> +void tcg_gen_vec8_add16(TCGv_i64 d, TCGv_i64 a, TCGv_i64 b)
+> +{
+> +    TCGv_i64 m = tcg_const_i64(REP16(0x8000));
+> +    gen_addv_mask(d, a, b, m);
+> +    tcg_temp_free_i64(m);
+> +}
+> +
+> +void tcg_gen_vec8_add32(TCGv_i64 d, TCGv_i64 a, TCGv_i64 b)
+> +{
+> +    TCGv_i64 t1 = tcg_temp_new_i64();
+> +    TCGv_i64 t2 = tcg_temp_new_i64();
+> +
+> +    tcg_gen_andi_i64(t1, a, ~0xffffffffull);
+> +    tcg_gen_add_i64(t2, a, b);
+> +    tcg_gen_add_i64(t1, t1, b);
+> +    tcg_gen_deposit_i64(d, t1, t2, 0, 32);
+> +
+> +    tcg_temp_free_i64(t1);
+> +    tcg_temp_free_i64(t2);
+> +}
+> +
+> +static void gen_subv_mask(TCGv_i64 d, TCGv_i64 a, TCGv_i64 b, TCGv_i64 m)
+> +{
+> +    TCGv_i64 t1 = tcg_temp_new_i64();
+> +    TCGv_i64 t2 = tcg_temp_new_i64();
+> +    TCGv_i64 t3 = tcg_temp_new_i64();
+> +
+> +    tcg_gen_or_i64(t1, a, m);
+> +    tcg_gen_andc_i64(t2, b, m);
+> +    tcg_gen_eqv_i64(t3, a, b);
+> +    tcg_gen_sub_i64(d, t1, t2);
+> +    tcg_gen_and_i64(t3, t3, m);
+> +    tcg_gen_xor_i64(d, d, t3);
+> +
+> +    tcg_temp_free_i64(t1);
+> +    tcg_temp_free_i64(t2);
+> +    tcg_temp_free_i64(t3);
+> +}
+> +
+> +void tcg_gen_gvec_sub8(uint32_t dofs, uint32_t aofs, uint32_t bofs,
+> +                       uint32_t opsz, uint32_t clsz)
+> +{
+> +    static const GVecGen3 g = {
+> +        .extra_value = REP8(0x80),
+> +        .fni8x = gen_subv_mask,
+> +        .fno = gen_helper_gvec_sub8,
+> +    };
+> +    tcg_gen_gvec_3(dofs, aofs, bofs, opsz, clsz, &g);
+> +}
+> +
+> +void tcg_gen_gvec_sub16(uint32_t dofs, uint32_t aofs, uint32_t bofs,
+> +                        uint32_t opsz, uint32_t clsz)
+> +{
+> +    static const GVecGen3 g = {
+> +        .extra_value = REP16(0x8000),
+> +        .fni8x = gen_subv_mask,
+> +        .fno = gen_helper_gvec_sub16,
+> +    };
+> +    tcg_gen_gvec_3(dofs, aofs, bofs, opsz, clsz, &g);
+> +}
+> +
+> +void tcg_gen_gvec_sub32(uint32_t dofs, uint32_t aofs, uint32_t bofs,
+> +                        uint32_t opsz, uint32_t clsz)
+> +{
+> +    static const GVecGen3 g = {
+> +        .fni4 = tcg_gen_sub_i32,
+> +        .fno = gen_helper_gvec_sub32,
+> +    };
+> +    tcg_gen_gvec_3(dofs, aofs, bofs, opsz, clsz, &g);
+> +}
+> +
+> +void tcg_gen_gvec_sub64(uint32_t dofs, uint32_t aofs, uint32_t bofs,
+> +                        uint32_t opsz, uint32_t clsz)
+> +{
+> +    static const GVecGen3 g = {
+> +        .fni8 = tcg_gen_sub_i64,
+> +        .fno = gen_helper_gvec_sub64,
+> +    };
+> +    tcg_gen_gvec_3(dofs, aofs, bofs, opsz, clsz, &g);
+> +}
+> +
+> +void tcg_gen_vec8_sub8(TCGv_i64 d, TCGv_i64 a, TCGv_i64 b)
+> +{
+> +    TCGv_i64 m = tcg_const_i64(REP8(0x80));
+> +    gen_subv_mask(d, a, b, m);
+> +    tcg_temp_free_i64(m);
+> +}
+> +
+> +void tcg_gen_vec8_sub16(TCGv_i64 d, TCGv_i64 a, TCGv_i64 b)
+> +{
+> +    TCGv_i64 m = tcg_const_i64(REP16(0x8000));
+> +    gen_subv_mask(d, a, b, m);
+> +    tcg_temp_free_i64(m);
+> +}
+> +
+> +void tcg_gen_vec8_sub32(TCGv_i64 d, TCGv_i64 a, TCGv_i64 b)
+> +{
+> +    TCGv_i64 t1 = tcg_temp_new_i64();
+> +    TCGv_i64 t2 = tcg_temp_new_i64();
+> +
+> +    tcg_gen_andi_i64(t1, b, ~0xffffffffull);
+> +    tcg_gen_sub_i64(t2, a, b);
+> +    tcg_gen_sub_i64(t1, a, t1);
+> +    tcg_gen_deposit_i64(d, t1, t2, 0, 32);
+> +
+> +    tcg_temp_free_i64(t1);
+> +    tcg_temp_free_i64(t2);
+> +}
+> +
+> +void tcg_gen_gvec_and8(uint32_t dofs, uint32_t aofs, uint32_t bofs,
+> +                       uint32_t opsz, uint32_t clsz)
+> +{
+> +    static const GVecGen3 g = {
+> +        .fni8 = tcg_gen_and_i64,
+> +        .fno = gen_helper_gvec_and8,
+> +    };
+> +    tcg_gen_gvec_3(dofs, aofs, bofs, opsz, clsz, &g);
+> +}
+> +
+> +void tcg_gen_gvec_or8(uint32_t dofs, uint32_t aofs, uint32_t bofs,
+> +                      uint32_t opsz, uint32_t clsz)
+> +{
+> +    static const GVecGen3 g = {
+> +        .fni8 = tcg_gen_or_i64,
+> +        .fno = gen_helper_gvec_or8,
+> +    };
+> +    tcg_gen_gvec_3(dofs, aofs, bofs, opsz, clsz, &g);
+> +}
+> +
+> +void tcg_gen_gvec_xor8(uint32_t dofs, uint32_t aofs, uint32_t bofs,
+> +                       uint32_t opsz, uint32_t clsz)
+> +{
+> +    static const GVecGen3 g = {
+> +        .fni8 = tcg_gen_xor_i64,
+> +        .fno = gen_helper_gvec_xor8,
+> +    };
+> +    tcg_gen_gvec_3(dofs, aofs, bofs, opsz, clsz, &g);
+> +}
+> +
+> +void tcg_gen_gvec_andc8(uint32_t dofs, uint32_t aofs, uint32_t bofs,
+> +                        uint32_t opsz, uint32_t clsz)
+> +{
+> +    static const GVecGen3 g = {
+> +        .fni8 = tcg_gen_andc_i64,
+> +        .fno = gen_helper_gvec_andc8,
+> +    };
+> +    tcg_gen_gvec_3(dofs, aofs, bofs, opsz, clsz, &g);
+> +}
+> +
+> +void tcg_gen_gvec_orc8(uint32_t dofs, uint32_t aofs, uint32_t bofs,
+> +                       uint32_t opsz, uint32_t clsz)
+> +{
+> +    static const GVecGen3 g = {
+> +        .fni8 = tcg_gen_orc_i64,
+> +        .fno = gen_helper_gvec_orc8,
+> +    };
+> +    tcg_gen_gvec_3(dofs, aofs, bofs, opsz, clsz, &g);
+> +}
+> diff --git a/tcg/tcg-runtime-gvec.c b/tcg/tcg-runtime-gvec.c
+> new file mode 100644
+> index 0000000000..9a37ce07a2
+> --- /dev/null
+> +++ b/tcg/tcg-runtime-gvec.c
+> @@ -0,0 +1,199 @@
+> +/*
+> + *  Generic vectorized operation runtime
+> + *
+> + *  Copyright (c) 2017 Linaro
+> + *
+> + * This library is free software; you can redistribute it and/or
+> + * modify it under the terms of the GNU Lesser General Public
+> + * License as published by the Free Software Foundation; either
+> + * version 2 of the License, or (at your option) any later version.
+> + *
+> + * This library is distributed in the hope that it will be useful,
+> + * but WITHOUT ANY WARRANTY; without even the implied warranty of
+> + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+> + * Lesser General Public License for more details.
+> + *
+> + * You should have received a copy of the GNU Lesser General Public
+> + * License along with this library; if not, see <http://www.gnu.org/licenses/>.
+> + */
+> +
+> +#include "qemu/osdep.h"
+> +#include "qemu/host-utils.h"
+> +#include "cpu.h"
+> +#include "exec/helper-proto.h"
+> +
+> +/* Virtually all hosts support 16-byte vectors.  Those that don't
+> +   can emulate them via GCC's generic vector extension.
+> +
+> +   In tcg-op-gvec.c, we asserted that both the size and alignment
+> +   of the data are multiples of 16.  */
+> +
+> +typedef uint8_t vec8 __attribute__((vector_size(16)));
+> +typedef uint16_t vec16 __attribute__((vector_size(16)));
+> +typedef uint32_t vec32 __attribute__((vector_size(16)));
+> +typedef uint64_t vec64 __attribute__((vector_size(16)));
+> +
+> +static inline intptr_t extract_opsz(uint32_t desc)
+> +{
+> +    return ((desc & 0xff) + 1) * 16;
+> +}
+> +
+> +static inline intptr_t extract_clsz(uint32_t desc)
+> +{
+> +    return (((desc >> 8) & 0xff) + 1) * 16;
+> +}
+> +
+> +static inline void clear_high(void *d, intptr_t opsz, uint32_t desc)
+> +{
+> +    intptr_t clsz = extract_clsz(desc);
+> +    intptr_t i;
+> +
+> +    if (unlikely(clsz > opsz)) {
+> +        for (i = opsz; i < clsz; i += sizeof(vec64)) {
+> +            *(vec64 *)(d + i) = (vec64){ 0 };
+> +        }
+> +    }
+> +}
+> +
+> +void HELPER(gvec_add8)(void *d, void *a, void *b, uint32_t desc)
+> +{
+> +    intptr_t opsz = extract_opsz(desc);
+> +    intptr_t i;
+> +
+> +    for (i = 0; i < opsz; i += sizeof(vec8)) {
+> +        *(vec8 *)(d + i) = *(vec8 *)(a + i) + *(vec8 *)(b + i);
+> +    }
+> +    clear_high(d, opsz, desc);
+> +}
+> +
+> +void HELPER(gvec_add16)(void *d, void *a, void *b, uint32_t desc)
+> +{
+> +    intptr_t opsz = extract_opsz(desc);
+> +    intptr_t i;
+> +
+> +    for (i = 0; i < opsz; i += sizeof(vec16)) {
+> +        *(vec16 *)(d + i) = *(vec16 *)(a + i) + *(vec16 *)(b + i);
+> +    }
+> +    clear_high(d, opsz, desc);
+> +}
+> +
+> +void HELPER(gvec_add32)(void *d, void *a, void *b, uint32_t desc)
+> +{
+> +    intptr_t opsz = extract_opsz(desc);
+> +    intptr_t i;
+> +
+> +    for (i = 0; i < opsz; i += sizeof(vec32)) {
+> +        *(vec32 *)(d + i) = *(vec32 *)(a + i) + *(vec32 *)(b + i);
+> +    }
+> +    clear_high(d, opsz, desc);
+> +}
+> +
+> +void HELPER(gvec_add64)(void *d, void *a, void *b, uint32_t desc)
+> +{
+> +    intptr_t opsz = extract_opsz(desc);
+> +    intptr_t i;
+> +
+> +    for (i = 0; i < opsz; i += sizeof(vec64)) {
+> +        *(vec64 *)(d + i) = *(vec64 *)(a + i) + *(vec64 *)(b + i);
+> +    }
+> +    clear_high(d, opsz, desc);
+> +}
+> +
+> +void HELPER(gvec_sub8)(void *d, void *a, void *b, uint32_t desc)
+> +{
+> +    intptr_t opsz = extract_opsz(desc);
+> +    intptr_t i;
+> +
+> +    for (i = 0; i < opsz; i += sizeof(vec8)) {
+> +        *(vec8 *)(d + i) = *(vec8 *)(a + i) - *(vec8 *)(b + i);
+> +    }
+> +    clear_high(d, opsz, desc);
+> +}
+> +
+> +void HELPER(gvec_sub16)(void *d, void *a, void *b, uint32_t desc)
+> +{
+> +    intptr_t opsz = extract_opsz(desc);
+> +    intptr_t i;
+> +
+> +    for (i = 0; i < opsz; i += sizeof(vec16)) {
+> +        *(vec16 *)(d + i) = *(vec16 *)(a + i) - *(vec16 *)(b + i);
+> +    }
+> +    clear_high(d, opsz, desc);
+> +}
+> +
+> +void HELPER(gvec_sub32)(void *d, void *a, void *b, uint32_t desc)
+> +{
+> +    intptr_t opsz = extract_opsz(desc);
+> +    intptr_t i;
+> +
+> +    for (i = 0; i < opsz; i += sizeof(vec32)) {
+> +        *(vec32 *)(d + i) = *(vec32 *)(a + i) - *(vec32 *)(b + i);
+> +    }
+> +    clear_high(d, opsz, desc);
+> +}
+> +
+> +void HELPER(gvec_sub64)(void *d, void *a, void *b, uint32_t desc)
+> +{
+> +    intptr_t opsz = extract_opsz(desc);
+> +    intptr_t i;
+> +
+> +    for (i = 0; i < opsz; i += sizeof(vec64)) {
+> +        *(vec64 *)(d + i) = *(vec64 *)(a + i) - *(vec64 *)(b + i);
+> +    }
+> +    clear_high(d, opsz, desc);
+> +}
+> +
+> +void HELPER(gvec_and8)(void *d, void *a, void *b, uint32_t desc)
+> +{
+> +    intptr_t opsz = extract_opsz(desc);
+> +    intptr_t i;
+> +
+> +    for (i = 0; i < opsz; i += sizeof(vec64)) {
+> +        *(vec64 *)(d + i) = *(vec64 *)(a + i) & *(vec64 *)(b + i);
+> +    }
+> +    clear_high(d, opsz, desc);
+> +}
+> +
+> +void HELPER(gvec_or8)(void *d, void *a, void *b, uint32_t desc)
+> +{
+> +    intptr_t opsz = extract_opsz(desc);
+> +    intptr_t i;
+> +
+> +    for (i = 0; i < opsz; i += sizeof(vec64)) {
+> +        *(vec64 *)(d + i) = *(vec64 *)(a + i) | *(vec64 *)(b + i);
+> +    }
+> +    clear_high(d, opsz, desc);
+> +}
+> +
+> +void HELPER(gvec_xor8)(void *d, void *a, void *b, uint32_t desc)
+> +{
+> +    intptr_t opsz = extract_opsz(desc);
+> +    intptr_t i;
+> +
+> +    for (i = 0; i < opsz; i += sizeof(vec64)) {
+> +        *(vec64 *)(d + i) = *(vec64 *)(a + i) ^ *(vec64 *)(b + i);
+> +    }
+> +    clear_high(d, opsz, desc);
+> +}
+> +
+> +void HELPER(gvec_andc8)(void *d, void *a, void *b, uint32_t desc)
+> +{
+> +    intptr_t opsz = extract_opsz(desc);
+> +    intptr_t i;
+> +
+> +    for (i = 0; i < opsz; i += sizeof(vec64)) {
+> +        *(vec64 *)(d + i) = *(vec64 *)(a + i) &~ *(vec64 *)(b + i);
+> +    }
+> +    clear_high(d, opsz, desc);
+> +}
+> +
+> +void HELPER(gvec_orc8)(void *d, void *a, void *b, uint32_t desc)
+> +{
+> +    intptr_t opsz = extract_opsz(desc);
+> +    intptr_t i;
+> +
+> +    for (i = 0; i < opsz; i += sizeof(vec64)) {
+> +        *(vec64 *)(d + i) = *(vec64 *)(a + i) |~ *(vec64 *)(b + i);
+> +    }
+> +    clear_high(d, opsz, desc);
+> +}
+> 

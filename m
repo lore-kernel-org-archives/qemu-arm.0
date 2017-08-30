@@ -1,902 +1,235 @@
-Received: by 10.223.188.70 with SMTP id a6csp288787wrh;
-        Tue, 29 Aug 2017 20:49:15 -0700 (PDT)
-X-Received: by 10.55.24.161 with SMTP id 33mr1009401qky.220.1504064955073;
-        Tue, 29 Aug 2017 20:49:15 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1504064955; cv=none;
+Received: by 10.223.188.70 with SMTP id a6csp288852wrh;
+        Tue, 29 Aug 2017 20:49:20 -0700 (PDT)
+X-Received: by 10.55.204.91 with SMTP id r88mr196206qki.201.1504064960278;
+        Tue, 29 Aug 2017 20:49:20 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1504064960; cv=none;
         d=google.com; s=arc-20160816;
-        b=p2hkszu4ThABVcI3mwM0GT+dgosD6oUVhSOxB52shK5C1CLcfftqIMYPj3Zz5vmGsC
-         u2W1NdlZlF9f06cFlkcNqETyuqb9/fVJlNpq83gAMehxNfLvUsgW8HAqKyNJ2jaXCaca
-         rIuvUQ9LNGyezgVEh/yOyShzpFN49FkY11k3e9WLDoamKvQcQQauzSAd94scP2qB7Jsa
-         Sn3fO0FRfuyvbgUZZO71s0f4Tjpg1rjjcsJB/BLd9RYMivlip8zawpUlTeQWy/oxrbBP
-         VdAwvvnEj9BWiiOX+0EjAkdJpK0+1UG7BLvTc/sMnyecNtEi8rUyEEoWRuucNg1QOvbZ
-         m+lg==
+        b=f+ReHd+duR8c0RoH82JDGaEueHVKHVEjEUsHUApmh+AJ0N5Uo6kWst7RRXYg+F1nfM
+         E6vEXeodFQB6LC6BtGAlcSaGUyYzm9Thm0Bi2C9KqPCZXoBawBHKlGm29QAJ72+J46CL
+         ectIdGditraxMG+MzsBO0kqlY/Vh3YlV9g1yGmc6q/gdsbh3zMA2PLWdBKaQ1fpkjDtF
+         6hb47fK+l5tBSZrLRc/6e5mkzrSkNoIl49GJFEX3oMI+h14Ma6HnjPrv11L0ROsEBle1
+         aZfiwpZHrB1nwpHIHDR4Nt7ZKn9dSQUT5DXQdSRMJWb/vWEwI30D3a37IW3ATwuvb6yp
+         aXkA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:content-language:in-reply-to:mime-version
          :user-agent:date:message-id:from:references:cc:to:subject:sender
          :dkim-signature:arc-authentication-results;
-        bh=wK7jz7uf+bqSfXjQoobZnIBxxkzo76HysDvg4A1B8js=;
-        b=i9cEZZy8slF4f7iTLZNA3jfDAJMJcBLEOC/IvRdQpTZhlBXnkPMzKPXnLVktL8zBf2
-         Kyx1IwS8bl7qgWkp9vlYggiN9dKCjEYtaZG/frdfZEM4Xn1Cm9kWoBhp+XqlECFs7w4Z
-         paALVSDQRBsUtK8sC4oYssAbzXV0sGUJY2P0uwezALhwuFydmDEI68qpX3eRtgkaODL7
-         XvJNdJrgnJbNMAfcn/Zt5wRmMnT8B06Ep+32eTqn9BBEPIbAvqOP9GQLrsG1dYnncocb
-         ltYldocujO4RMw55RFWpA3qOviaHR0oGM5sTq2jzFBLROr5NnJmebVNFFc+Uv/jFyfpa
-         AECA==
+        bh=Tvswuukwn5v4XeW0lPrBjqmxq0OvzzVjjEcbEMbXXXk=;
+        b=nZemUti+L3k+pnR/KgJkcQSuab+rTS7Mpea6iAGgJx2uKGivS6qnOf1NxsfdmWLd1I
+         Zi8fNQFdFw37EPvIE2u+/nscsroq3zYpfA8x1XBI06VOs6A6JdzxgYZNF26GOPKbF1d+
+         XUY+yH3308w9OM2EZcemHaO1tvkj+AJu7Vebrtl6F0bsB/9lXmMB7HEhBngTdp6jCtab
+         Yql3jWyby56yC3GoNKQ9OaXFVymesk40dD1EnpjZJWehMBJHSKmak907LhrDmmfzmIer
+         MO31Vv6SZ4snrefHKwpQO6C9cqwhdFEixP4DRmNqMEAUgJfrLWRi83qLzObjmEtSTATR
+         5R7w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=HohycolZ;
-       spf=pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 2607:f8b0:400d:c09::242 as permitted sender) smtp.mailfrom=philippe.mathieu.daude@gmail.com
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=f4YGGEoz;
+       spf=pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 2607:f8b0:400d:c09::241 as permitted sender) smtp.mailfrom=philippe.mathieu.daude@gmail.com
 Return-Path: <philippe.mathieu.daude@gmail.com>
-Received: from mail-qk0-x242.google.com (mail-qk0-x242.google.com. [2607:f8b0:400d:c09::242])
-        by mx.google.com with ESMTPS id s13si4426075qtk.95.2017.08.29.20.49.14
+Received: from mail-qk0-x241.google.com (mail-qk0-x241.google.com. [2607:f8b0:400d:c09::241])
+        by mx.google.com with ESMTPS id z18si4380058qtb.134.2017.08.29.20.49.20
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 29 Aug 2017 20:49:15 -0700 (PDT)
-Received-SPF: pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 2607:f8b0:400d:c09::242 as permitted sender) client-ip=2607:f8b0:400d:c09::242;
+        Tue, 29 Aug 2017 20:49:20 -0700 (PDT)
+Received-SPF: pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 2607:f8b0:400d:c09::241 as permitted sender) client-ip=2607:f8b0:400d:c09::241;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=HohycolZ;
-       spf=pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 2607:f8b0:400d:c09::242 as permitted sender) smtp.mailfrom=philippe.mathieu.daude@gmail.com
-Received: by mail-qk0-x242.google.com with SMTP id l65so4440014qkc.3;
-        Tue, 29 Aug 2017 20:49:14 -0700 (PDT)
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=f4YGGEoz;
+       spf=pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 2607:f8b0:400d:c09::241 as permitted sender) smtp.mailfrom=philippe.mathieu.daude@gmail.com
+Received: by mail-qk0-x241.google.com with SMTP id o63so4424102qkb.5;
+        Tue, 29 Aug 2017 20:49:20 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=sender:subject:to:cc:references:from:message-id:date:user-agent
          :mime-version:in-reply-to:content-language:content-transfer-encoding;
-        bh=wK7jz7uf+bqSfXjQoobZnIBxxkzo76HysDvg4A1B8js=;
-        b=HohycolZlbaXcGdhk57M2hU+SgEH6NHW9vuyiQdSBdVeRN9xYlzu9AXTLHWhNMlkf0
-         ANpWhksIy7OneOMP6sx6M0kfTav7R0XteWF1Z8KNiKQT0Ri0RHZSYdumQaJVydLEQbLR
-         cuwGhIg0SgEMN2EVgU3aB8u7cS6YQlimmJTYFyVChc6yYXl4zvU5B2MPDJ14IWCBjGiP
-         +uQselExkJ/KYFS44SYKvjXIWbUFrvc6LIKoZA51nOgsXiFUe3dYWin+EQG8zrALdCoa
-         k6bxI2FNaA0ECx2Sbm8zAurszDEx52o5xFC0QGGmG1zY1MbN9S1CL4svV7iPjCDfXGmO
-         KISQ==
+        bh=Tvswuukwn5v4XeW0lPrBjqmxq0OvzzVjjEcbEMbXXXk=;
+        b=f4YGGEoz6voEqSntiewnzW+KFbAmO+/FvZoRX6m23Vqyow7m3X7fh7aDk6DA92SrMw
+         Mr8Gd+IjjnCgi3Yl/MfETtuZOJd9pZQHdQDqiJgTSpWojZP/vZN3EG+kdGDG07+tjS5G
+         VlA1bF99YGosK4XRG72qs9pebmFif7ntk3fggMXYWR07B8XU0HszlBr675X6UEi4Ctzl
+         FrNiCUpg+OxJi0mB+awn7lkNIE+d8fuGSPSRuNAOH4Gw2Ga9Uhr1E3vlG3o6199TmJ9f
+         vFwkECuQ5w1gbIR0WeaYxwxvxLbjF9/HLq47AHBN2IeMqFXGA9Vpcr2PnmXODXEftMg1
+         l/LQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
          :date:user-agent:mime-version:in-reply-to:content-language
          :content-transfer-encoding;
-        bh=wK7jz7uf+bqSfXjQoobZnIBxxkzo76HysDvg4A1B8js=;
-        b=c4jBlejaY9671KfD6mFVCxDPz3MG5enVu/49KALjZmz3kxbWGA7ldoANFfptElnkKK
-         1PoGiET5y4J6BZiY4iPPmkSBkSz0jgRhTaMJ1+d1rKq7EcOeMcRUtxq1neTGGgN1pPGg
-         ccHjaFMon/SHpZLFAazqfkohJuKZxn3J3N/h7A+Iw8Lu4JqtnC7sKaIB051Vf9vf2YEZ
-         ZGaQW5EpFMQ2JfoVuyA9ZeW1SB8VfUYV5n7gLHk3AgaTJ/zGAKZVGckSPjuZfNyrC8re
-         t2ZPDqbN94CLvRagwThEvv79au7xFYvPomiQDpkebDVnQZTsAbp9ivZETKeHXh1D68bE
-         7iBg==
-X-Gm-Message-State: AHYfb5jTz4qEVWxUa0qfb1zSL+8e4qygEmKrZP0zpqHsV3ZaKsKuf0T7
-	fpZX8UGmPVV3fT3e5fODAQ==
-X-Received: by 10.55.20.212 with SMTP id 81mr8211762qku.213.1504064954214;
-        Tue, 29 Aug 2017 20:49:14 -0700 (PDT)
+        bh=Tvswuukwn5v4XeW0lPrBjqmxq0OvzzVjjEcbEMbXXXk=;
+        b=QsDDTBqGLBjh9bJ9w+wwh/h6Jg452PynCoZVvC93Sv3hJqlFIRpTguWxjc7+JV7cnL
+         dkMbKo7r94cx9cwkrgv4MpWgXCStpbevNm3cGc+IMQXPMcQ2Xx8a4HPak6LBgk+9DgfC
+         yERpkugZBx3my0qW99tCClPdGDJ2FXe7MJh7KC2baHQoxqitWTOQ9mt+mb772eyOuFxF
+         ei4s1139P8gwcT5/uFGtdw68Ef4+8ivu0oEBnca7plk5tRVCt1CbK92w2H32RkqH9H/4
+         l9FewgsueDRuAbPsQEHAkFYFSwViuXc+yD5572oLvndw90T+AnH5Ga9aDMnUEYbYgyNa
+         vdgQ==
+X-Gm-Message-State: AHYfb5jbk+NFdmIx0Gq6OQrsKjvi4VDXZl5NTPPC5xxebnrd2DkyX7g1
+	s/n65C6/z86fMlTShrocRw==
+X-Received: by 10.55.70.75 with SMTP id t72mr8403093qka.138.1504064959776;
+        Tue, 29 Aug 2017 20:49:19 -0700 (PDT)
 Return-Path: <philippe.mathieu.daude@gmail.com>
 Received: from [192.168.43.33] ([170.51.33.248])
-        by smtp.gmail.com with ESMTPSA id 20sm3062981qtu.52.2017.08.29.20.49.11
+        by smtp.gmail.com with ESMTPSA id q14sm3125651qki.90.2017.08.29.20.49.17
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 29 Aug 2017 20:49:13 -0700 (PDT)
+        Tue, 29 Aug 2017 20:49:19 -0700 (PDT)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philippe.mathieu.daude@gmail.com>
-Subject: Re: [Qemu-devel] [PATCH 1/8] tcg: Add generic vector infrastructure
- and ops for add/sub/logic
+Subject: Re: [Qemu-devel] [PATCH 4/8] tcg: Add operations for host vectors
 To: Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, alex.bennee@linaro.org
 References: <20170817230114.3655-1-richard.henderson@linaro.org>
- <20170817230114.3655-2-richard.henderson@linaro.org>
+ <20170817230114.3655-5-richard.henderson@linaro.org>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <c53d1c21-c913-a60d-cdfa-524431c2cf28@amsat.org>
-Date: Tue, 29 Aug 2017 22:31:40 -0300
+Message-ID: <d2deee54-855c-0e28-aaae-4253e1f99a0f@amsat.org>
+Date: Tue, 29 Aug 2017 22:34:01 -0300
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
  Thunderbird/52.3.0
 MIME-Version: 1.0
-In-Reply-To: <20170817230114.3655-2-richard.henderson@linaro.org>
+In-Reply-To: <20170817230114.3655-5-richard.henderson@linaro.org>
 Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-X-TUID: LGAALUIoi+aB
-
-Hi Richard,
-
-I can't find anything to say about this patch... Hardcore stuff.
-Some part could be more a bit more verbose but after a while focusing it 
-makes sens.
-I wonder how long it took you to write this :) "roughly 2h"
+X-TUID: i8rJnPkA7x3H
 
 On 08/17/2017 08:01 PM, Richard Henderson wrote:
+> Nothing uses or implements them yet.
+> 
 > Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
-
-Hoping I didn't miss anything:
 
 Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 
 > ---
->   Makefile.target        |   5 +-
->   tcg/tcg-op-gvec.h      |  88 ++++++++++
->   tcg/tcg-runtime.h      |  16 ++
->   tcg/tcg-op-gvec.c      | 443 +++++++++++++++++++++++++++++++++++++++++++++++++
->   tcg/tcg-runtime-gvec.c | 199 ++++++++++++++++++++++
->   5 files changed, 749 insertions(+), 2 deletions(-)
->   create mode 100644 tcg/tcg-op-gvec.h
->   create mode 100644 tcg/tcg-op-gvec.c
->   create mode 100644 tcg/tcg-runtime-gvec.c
+>   tcg/tcg-opc.h | 89 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+>   tcg/tcg.h     | 24 ++++++++++++++++
+>   2 files changed, 113 insertions(+)
 > 
-> diff --git a/Makefile.target b/Makefile.target
-> index 7f42c45db8..9ae3e904f7 100644
-> --- a/Makefile.target
-> +++ b/Makefile.target
-> @@ -93,8 +93,9 @@ all: $(PROGS) stap
->   # cpu emulator library
->   obj-y += exec.o
->   obj-y += accel/
-> -obj-$(CONFIG_TCG) += tcg/tcg.o tcg/tcg-op.o tcg/optimize.o
-> -obj-$(CONFIG_TCG) += tcg/tcg-common.o tcg/tcg-runtime.o
-> +obj-$(CONFIG_TCG) += tcg/tcg.o tcg/tcg-common.o tcg/optimize.o
-> +obj-$(CONFIG_TCG) += tcg/tcg-op.o tcg/tcg-op-gvec.o
-> +obj-$(CONFIG_TCG) += tcg/tcg-runtime.o tcg/tcg-runtime-gvec.o
->   obj-$(CONFIG_TCG_INTERPRETER) += tcg/tci.o
->   obj-$(CONFIG_TCG_INTERPRETER) += disas/tci.o
->   obj-y += fpu/softfloat.o
-> diff --git a/tcg/tcg-op-gvec.h b/tcg/tcg-op-gvec.h
-> new file mode 100644
-> index 0000000000..10db3599a5
-> --- /dev/null
-> +++ b/tcg/tcg-op-gvec.h
-> @@ -0,0 +1,88 @@
-> +/*
-> + *  Generic vector operation expansion
-> + *
-> + *  Copyright (c) 2017 Linaro
-> + *
-> + * This library is free software; you can redistribute it and/or
-> + * modify it under the terms of the GNU Lesser General Public
-> + * License as published by the Free Software Foundation; either
-> + * version 2 of the License, or (at your option) any later version.
-> + *
-> + * This library is distributed in the hope that it will be useful,
-> + * but WITHOUT ANY WARRANTY; without even the implied warranty of
-> + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-> + * Lesser General Public License for more details.
-> + *
-> + * You should have received a copy of the GNU Lesser General Public
-> + * License along with this library; if not, see <http://www.gnu.org/licenses/>.
-> + */
-> +
-> +/*
-> + * "Generic" vectors.  All operands are given as offsets from ENV,
-> + * and therefore cannot also be allocated via tcg_global_mem_new_*.
-> + * OPSZ is the byte size of the vector upon which the operation is performed.
-> + * CLSZ is the byte size of the full vector; bytes beyond OPSZ are cleared.
-> + *
-> + * All sizes must be 8 or any multiple of 16.
-> + * When OPSZ is 8, the alignment may be 8, otherwise must be 16.
-> + * Operands may completely, but not partially, overlap.
-> + */
-> +
-> +/* Fundamental operation expanders.  These are exposed to the front ends
-> +   so that target-specific SIMD operations can be handled similarly to
-> +   the standard SIMD operations.  */
-> +
-> +typedef struct {
-> +    /* "Small" sizes: expand inline as a 64-bit or 32-bit lane.
-> +       Generally only one of these will be non-NULL.  */
-> +    void (*fni8)(TCGv_i64, TCGv_i64, TCGv_i64);
-> +    void (*fni4)(TCGv_i32, TCGv_i32, TCGv_i32);
-> +    /* Similarly, but load up a constant and re-use across lanes.  */
-> +    void (*fni8x)(TCGv_i64, TCGv_i64, TCGv_i64, TCGv_i64);
-> +    uint64_t extra_value;
-> +    /* Larger sizes: expand out-of-line helper w/size descriptor.  */
-> +    void (*fno)(TCGv_ptr, TCGv_ptr, TCGv_ptr, TCGv_i32);
-> +} GVecGen3;
-> +
-> +void tcg_gen_gvec_3(uint32_t dofs, uint32_t aofs, uint32_t bofs,
-> +                    uint32_t opsz, uint32_t clsz, const GVecGen3 *);
-> +
-> +#define DEF_GVEC_2(X) \
-> +    void tcg_gen_gvec_##X(uint32_t dofs, uint32_t aofs, uint32_t bofs, \
-> +                          uint32_t opsz, uint32_t clsz)
-> +
-> +DEF_GVEC_2(add8);
-> +DEF_GVEC_2(add16);
-> +DEF_GVEC_2(add32);
-> +DEF_GVEC_2(add64);
-> +
-> +DEF_GVEC_2(sub8);
-> +DEF_GVEC_2(sub16);
-> +DEF_GVEC_2(sub32);
-> +DEF_GVEC_2(sub64);
-> +
-> +DEF_GVEC_2(and8);
-> +DEF_GVEC_2(or8);
-> +DEF_GVEC_2(xor8);
-> +DEF_GVEC_2(andc8);
-> +DEF_GVEC_2(orc8);
-> +
-> +#undef DEF_GVEC_2
-> +
-> +/*
-> + * 64-bit vector operations.  Use these when the register has been
-> + * allocated with tcg_global_mem_new_i64.  OPSZ = CLSZ = 8.
-> + */
-> +
-> +#define DEF_VEC8_2(X) \
-> +    void tcg_gen_vec8_##X(TCGv_i64 d, TCGv_i64 a, TCGv_i64 b)
-> +
-> +DEF_VEC8_2(add8);
-> +DEF_VEC8_2(add16);
-> +DEF_VEC8_2(add32);
-> +
-> +DEF_VEC8_2(sub8);
-> +DEF_VEC8_2(sub16);
-> +DEF_VEC8_2(sub32);
-> +
-> +#undef DEF_VEC8_2
-> diff --git a/tcg/tcg-runtime.h b/tcg/tcg-runtime.h
-> index c41d38a557..f8d07090f8 100644
-> --- a/tcg/tcg-runtime.h
-> +++ b/tcg/tcg-runtime.h
-> @@ -134,3 +134,19 @@ GEN_ATOMIC_HELPERS(xor_fetch)
->   GEN_ATOMIC_HELPERS(xchg)
+> diff --git a/tcg/tcg-opc.h b/tcg/tcg-opc.h
+> index 956fb1e9f3..9162125fac 100644
+> --- a/tcg/tcg-opc.h
+> +++ b/tcg/tcg-opc.h
+> @@ -206,6 +206,95 @@ DEF(qemu_st_i64, 0, TLADDR_ARGS + DATA64_ARGS, 1,
 >   
->   #undef GEN_ATOMIC_HELPERS
-> +
-> +DEF_HELPER_FLAGS_4(gvec_add8, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
-> +DEF_HELPER_FLAGS_4(gvec_add16, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
-> +DEF_HELPER_FLAGS_4(gvec_add32, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
-> +DEF_HELPER_FLAGS_4(gvec_add64, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
-> +
-> +DEF_HELPER_FLAGS_4(gvec_sub8, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
-> +DEF_HELPER_FLAGS_4(gvec_sub16, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
-> +DEF_HELPER_FLAGS_4(gvec_sub32, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
-> +DEF_HELPER_FLAGS_4(gvec_sub64, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
-> +
-> +DEF_HELPER_FLAGS_4(gvec_and8, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
-> +DEF_HELPER_FLAGS_4(gvec_or8, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
-> +DEF_HELPER_FLAGS_4(gvec_xor8, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
-> +DEF_HELPER_FLAGS_4(gvec_andc8, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
-> +DEF_HELPER_FLAGS_4(gvec_orc8, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
-> diff --git a/tcg/tcg-op-gvec.c b/tcg/tcg-op-gvec.c
-> new file mode 100644
-> index 0000000000..6de49dc07f
-> --- /dev/null
-> +++ b/tcg/tcg-op-gvec.c
-> @@ -0,0 +1,443 @@
-> +/*
-> + *  Generic vector operation expansion
-> + *
-> + *  Copyright (c) 2017 Linaro
-> + *
-> + * This library is free software; you can redistribute it and/or
-> + * modify it under the terms of the GNU Lesser General Public
-> + * License as published by the Free Software Foundation; either
-> + * version 2 of the License, or (at your option) any later version.
-> + *
-> + * This library is distributed in the hope that it will be useful,
-> + * but WITHOUT ANY WARRANTY; without even the implied warranty of
-> + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-> + * Lesser General Public License for more details.
-> + *
-> + * You should have received a copy of the GNU Lesser General Public
-> + * License along with this library; if not, see <http://www.gnu.org/licenses/>.
-> + */
-> +
-> +#include "qemu/osdep.h"
-> +#include "qemu-common.h"
-> +#include "cpu.h"
-> +#include "exec/exec-all.h"
-> +#include "tcg.h"
-> +#include "tcg-op.h"
-> +#include "tcg-op-gvec.h"
-> +#include "trace-tcg.h"
-> +#include "trace/mem.h"
-> +
-> +#define REP8(x)    ((x) * 0x0101010101010101ull)
-> +#define REP16(x)   ((x) * 0x0001000100010001ull)
-> +
-> +#define MAX_INLINE 16
-> +
-> +static inline void check_size_s(uint32_t opsz, uint32_t clsz)
-> +{
-> +    tcg_debug_assert(opsz % 8 == 0);
-> +    tcg_debug_assert(clsz % 8 == 0);
-> +    tcg_debug_assert(opsz <= clsz);
-> +}
-> +
-> +static inline void check_align_s_3(uint32_t dofs, uint32_t aofs, uint32_t bofs)
-> +{
-> +    tcg_debug_assert(dofs % 8 == 0);
-> +    tcg_debug_assert(aofs % 8 == 0);
-> +    tcg_debug_assert(bofs % 8 == 0);
-> +}
-> +
-> +static inline void check_size_l(uint32_t opsz, uint32_t clsz)
-> +{
-> +    tcg_debug_assert(opsz % 16 == 0);
-> +    tcg_debug_assert(clsz % 16 == 0);
-> +    tcg_debug_assert(opsz <= clsz);
-> +}
-> +
-> +static inline void check_align_l_3(uint32_t dofs, uint32_t aofs, uint32_t bofs)
-> +{
-> +    tcg_debug_assert(dofs % 16 == 0);
-> +    tcg_debug_assert(aofs % 16 == 0);
-> +    tcg_debug_assert(bofs % 16 == 0);
-> +}
-> +
-> +static inline void check_overlap_3(uint32_t d, uint32_t a,
-> +                                   uint32_t b, uint32_t s)
-> +{
-> +    tcg_debug_assert(d == a || d + s <= a || a + s <= d);
-> +    tcg_debug_assert(d == b || d + s <= b || b + s <= d);
-> +    tcg_debug_assert(a == b || a + s <= b || b + s <= a);
-> +}
-> +
-> +static void expand_clr(uint32_t dofs, uint32_t opsz, uint32_t clsz)
-> +{
-> +    if (clsz > opsz) {
-> +        TCGv_i64 zero = tcg_const_i64(0);
-> +        uint32_t i;
-> +
-> +        for (i = opsz; i < clsz; i += 8) {
-> +            tcg_gen_st_i64(zero, tcg_ctx.tcg_env, dofs + i);
-> +        }
-> +        tcg_temp_free_i64(zero);
-> +    }
-> +}
-> +
-> +static TCGv_i32 make_desc(uint32_t opsz, uint32_t clsz)
-> +{
-> +    tcg_debug_assert(opsz >= 16 && opsz <= 255 * 16 && opsz % 16 == 0);
-> +    tcg_debug_assert(clsz >= 16 && clsz <= 255 * 16 && clsz % 16 == 0);
-> +    opsz /= 16;
-> +    clsz /= 16;
-> +    opsz -= 1;
-> +    clsz -= 1;
-> +    return tcg_const_i32(deposit32(opsz, 8, 8, clsz));
-> +}
-> +
-> +static void expand_3_o(uint32_t dofs, uint32_t aofs, uint32_t bofs,
-> +                       uint32_t opsz, uint32_t clsz,
-> +                       void (*fno)(TCGv_ptr, TCGv_ptr, TCGv_ptr, TCGv_i32))
-> +{
-> +    TCGv_ptr d = tcg_temp_new_ptr();
-> +    TCGv_ptr a = tcg_temp_new_ptr();
-> +    TCGv_ptr b = tcg_temp_new_ptr();
-> +    TCGv_i32 desc = make_desc(opsz, clsz);
-> +
-> +    tcg_gen_addi_ptr(d, tcg_ctx.tcg_env, dofs);
-> +    tcg_gen_addi_ptr(a, tcg_ctx.tcg_env, aofs);
-> +    tcg_gen_addi_ptr(b, tcg_ctx.tcg_env, bofs);
-> +    fno(d, a, b, desc);
-> +
-> +    tcg_temp_free_ptr(d);
-> +    tcg_temp_free_ptr(a);
-> +    tcg_temp_free_ptr(b);
-> +    tcg_temp_free_i32(desc);
-> +}
-> +
-> +static void expand_3x4(uint32_t dofs, uint32_t aofs,
-> +                       uint32_t bofs, uint32_t opsz,
-> +                       void (*fni)(TCGv_i32, TCGv_i32, TCGv_i32))
-> +{
-> +    TCGv_i32 t0 = tcg_temp_new_i32();
-> +    uint32_t i;
-> +
-> +    if (aofs == bofs) {
-> +        for (i = 0; i < opsz; i += 4) {
-> +            tcg_gen_ld_i32(t0, tcg_ctx.tcg_env, aofs + i);
-> +            fni(t0, t0, t0);
-> +            tcg_gen_st_i32(t0, tcg_ctx.tcg_env, dofs + i);
-> +        }
-> +    } else {
-> +        TCGv_i32 t1 = tcg_temp_new_i32();
-> +        for (i = 0; i < opsz; i += 4) {
-> +            tcg_gen_ld_i32(t0, tcg_ctx.tcg_env, aofs + i);
-> +            tcg_gen_ld_i32(t1, tcg_ctx.tcg_env, bofs + i);
-> +            fni(t0, t0, t1);
-> +            tcg_gen_st_i32(t0, tcg_ctx.tcg_env, dofs + i);
-> +        }
-> +        tcg_temp_free_i32(t1);
-> +    }
-> +    tcg_temp_free_i32(t0);
-> +}
-> +
-> +static void expand_3x8(uint32_t dofs, uint32_t aofs,
-> +                       uint32_t bofs, uint32_t opsz,
-> +                       void (*fni)(TCGv_i64, TCGv_i64, TCGv_i64))
-> +{
-> +    TCGv_i64 t0 = tcg_temp_new_i64();
-> +    uint32_t i;
-> +
-> +    if (aofs == bofs) {
-> +        for (i = 0; i < opsz; i += 8) {
-> +            tcg_gen_ld_i64(t0, tcg_ctx.tcg_env, aofs + i);
-> +            fni(t0, t0, t0);
-> +            tcg_gen_st_i64(t0, tcg_ctx.tcg_env, dofs + i);
-> +        }
-> +    } else {
-> +        TCGv_i64 t1 = tcg_temp_new_i64();
-> +        for (i = 0; i < opsz; i += 8) {
-> +            tcg_gen_ld_i64(t0, tcg_ctx.tcg_env, aofs + i);
-> +            tcg_gen_ld_i64(t1, tcg_ctx.tcg_env, bofs + i);
-> +            fni(t0, t0, t1);
-> +            tcg_gen_st_i64(t0, tcg_ctx.tcg_env, dofs + i);
-> +        }
-> +        tcg_temp_free_i64(t1);
-> +    }
-> +    tcg_temp_free_i64(t0);
-> +}
-> +
-> +static void expand_3x8p1(uint32_t dofs, uint32_t aofs, uint32_t bofs,
-> +                         uint32_t opsz, uint64_t data,
-> +                         void (*fni)(TCGv_i64, TCGv_i64, TCGv_i64, TCGv_i64))
-> +{
-> +    TCGv_i64 t0 = tcg_temp_new_i64();
-> +    TCGv_i64 t2 = tcg_const_i64(data);
-> +    uint32_t i;
-> +
-> +    if (aofs == bofs) {
-> +        for (i = 0; i < opsz; i += 8) {
-> +            tcg_gen_ld_i64(t0, tcg_ctx.tcg_env, aofs + i);
-> +            fni(t0, t0, t0, t2);
-> +            tcg_gen_st_i64(t0, tcg_ctx.tcg_env, dofs + i);
-> +        }
-> +    } else {
-> +        TCGv_i64 t1 = tcg_temp_new_i64();
-> +        for (i = 0; i < opsz; i += 8) {
-> +            tcg_gen_ld_i64(t0, tcg_ctx.tcg_env, aofs + i);
-> +            tcg_gen_ld_i64(t1, tcg_ctx.tcg_env, bofs + i);
-> +            fni(t0, t0, t1, t2);
-> +            tcg_gen_st_i64(t0, tcg_ctx.tcg_env, dofs + i);
-> +        }
-> +        tcg_temp_free_i64(t1);
-> +    }
-> +    tcg_temp_free_i64(t0);
-> +    tcg_temp_free_i64(t2);
-> +}
-> +
-> +void tcg_gen_gvec_3(uint32_t dofs, uint32_t aofs, uint32_t bofs,
-> +                    uint32_t opsz, uint32_t clsz, const GVecGen3 *g)
-> +{
-> +    check_overlap_3(dofs, aofs, bofs, clsz);
-> +    if (opsz <= MAX_INLINE) {
-> +        check_size_s(opsz, clsz);
-> +        check_align_s_3(dofs, aofs, bofs);
-> +        if (g->fni8) {
-> +            expand_3x8(dofs, aofs, bofs, opsz, g->fni8);
-> +        } else if (g->fni4) {
-> +            expand_3x4(dofs, aofs, bofs, opsz, g->fni4);
-> +        } else if (g->fni8x) {
-> +            expand_3x8p1(dofs, aofs, bofs, opsz, g->extra_value, g->fni8x);
-> +        } else {
-> +            g_assert_not_reached();
-> +        }
-> +        expand_clr(dofs, opsz, clsz);
-> +    } else {
-> +        check_size_l(opsz, clsz);
-> +        check_align_l_3(dofs, aofs, bofs);
-> +        expand_3_o(dofs, aofs, bofs, opsz, clsz, g->fno);
-> +    }
-> +}
-> +
-> +static void gen_addv_mask(TCGv_i64 d, TCGv_i64 a, TCGv_i64 b, TCGv_i64 m)
-> +{
-> +    TCGv_i64 t1 = tcg_temp_new_i64();
-> +    TCGv_i64 t2 = tcg_temp_new_i64();
-> +    TCGv_i64 t3 = tcg_temp_new_i64();
-> +
-> +    tcg_gen_andc_i64(t1, a, m);
-> +    tcg_gen_andc_i64(t2, b, m);
-> +    tcg_gen_xor_i64(t3, a, b);
-> +    tcg_gen_add_i64(d, t1, t2);
-> +    tcg_gen_and_i64(t3, t3, m);
-> +    tcg_gen_xor_i64(d, d, t3);
-> +
-> +    tcg_temp_free_i64(t1);
-> +    tcg_temp_free_i64(t2);
-> +    tcg_temp_free_i64(t3);
-> +}
-> +
-> +void tcg_gen_gvec_add8(uint32_t dofs, uint32_t aofs, uint32_t bofs,
-> +                       uint32_t opsz, uint32_t clsz)
-> +{
-> +    static const GVecGen3 g = {
-> +        .extra_value = REP8(0x80),
-> +        .fni8x = gen_addv_mask,
-> +        .fno = gen_helper_gvec_add8,
-> +    };
-> +    tcg_gen_gvec_3(dofs, aofs, bofs, opsz, clsz, &g);
-> +}
-> +
-> +void tcg_gen_gvec_add16(uint32_t dofs, uint32_t aofs, uint32_t bofs,
-> +                        uint32_t opsz, uint32_t clsz)
-> +{
-> +    static const GVecGen3 g = {
-> +        .extra_value = REP16(0x8000),
-> +        .fni8x = gen_addv_mask,
-> +        .fno = gen_helper_gvec_add16,
-> +    };
-> +    tcg_gen_gvec_3(dofs, aofs, bofs, opsz, clsz, &g);
-> +}
-> +
-> +void tcg_gen_gvec_add32(uint32_t dofs, uint32_t aofs, uint32_t bofs,
-> +                        uint32_t opsz, uint32_t clsz)
-> +{
-> +    static const GVecGen3 g = {
-> +        .fni4 = tcg_gen_add_i32,
-> +        .fno = gen_helper_gvec_add32,
-> +    };
-> +    tcg_gen_gvec_3(dofs, aofs, bofs, opsz, clsz, &g);
-> +}
-> +
-> +void tcg_gen_gvec_add64(uint32_t dofs, uint32_t aofs, uint32_t bofs,
-> +                        uint32_t opsz, uint32_t clsz)
-> +{
-> +    static const GVecGen3 g = {
-> +        .fni8 = tcg_gen_add_i64,
-> +        .fno = gen_helper_gvec_add64,
-> +    };
-> +    tcg_gen_gvec_3(dofs, aofs, bofs, opsz, clsz, &g);
-> +}
-> +
-> +void tcg_gen_vec8_add8(TCGv_i64 d, TCGv_i64 a, TCGv_i64 b)
-> +{
-> +    TCGv_i64 m = tcg_const_i64(REP8(0x80));
-> +    gen_addv_mask(d, a, b, m);
-> +    tcg_temp_free_i64(m);
-> +}
-> +
-> +void tcg_gen_vec8_add16(TCGv_i64 d, TCGv_i64 a, TCGv_i64 b)
-> +{
-> +    TCGv_i64 m = tcg_const_i64(REP16(0x8000));
-> +    gen_addv_mask(d, a, b, m);
-> +    tcg_temp_free_i64(m);
-> +}
-> +
-> +void tcg_gen_vec8_add32(TCGv_i64 d, TCGv_i64 a, TCGv_i64 b)
-> +{
-> +    TCGv_i64 t1 = tcg_temp_new_i64();
-> +    TCGv_i64 t2 = tcg_temp_new_i64();
-> +
-> +    tcg_gen_andi_i64(t1, a, ~0xffffffffull);
-> +    tcg_gen_add_i64(t2, a, b);
-> +    tcg_gen_add_i64(t1, t1, b);
-> +    tcg_gen_deposit_i64(d, t1, t2, 0, 32);
-> +
-> +    tcg_temp_free_i64(t1);
-> +    tcg_temp_free_i64(t2);
-> +}
-> +
-> +static void gen_subv_mask(TCGv_i64 d, TCGv_i64 a, TCGv_i64 b, TCGv_i64 m)
-> +{
-> +    TCGv_i64 t1 = tcg_temp_new_i64();
-> +    TCGv_i64 t2 = tcg_temp_new_i64();
-> +    TCGv_i64 t3 = tcg_temp_new_i64();
-> +
-> +    tcg_gen_or_i64(t1, a, m);
-> +    tcg_gen_andc_i64(t2, b, m);
-> +    tcg_gen_eqv_i64(t3, a, b);
-> +    tcg_gen_sub_i64(d, t1, t2);
-> +    tcg_gen_and_i64(t3, t3, m);
-> +    tcg_gen_xor_i64(d, d, t3);
-> +
-> +    tcg_temp_free_i64(t1);
-> +    tcg_temp_free_i64(t2);
-> +    tcg_temp_free_i64(t3);
-> +}
-> +
-> +void tcg_gen_gvec_sub8(uint32_t dofs, uint32_t aofs, uint32_t bofs,
-> +                       uint32_t opsz, uint32_t clsz)
-> +{
-> +    static const GVecGen3 g = {
-> +        .extra_value = REP8(0x80),
-> +        .fni8x = gen_subv_mask,
-> +        .fno = gen_helper_gvec_sub8,
-> +    };
-> +    tcg_gen_gvec_3(dofs, aofs, bofs, opsz, clsz, &g);
-> +}
-> +
-> +void tcg_gen_gvec_sub16(uint32_t dofs, uint32_t aofs, uint32_t bofs,
-> +                        uint32_t opsz, uint32_t clsz)
-> +{
-> +    static const GVecGen3 g = {
-> +        .extra_value = REP16(0x8000),
-> +        .fni8x = gen_subv_mask,
-> +        .fno = gen_helper_gvec_sub16,
-> +    };
-> +    tcg_gen_gvec_3(dofs, aofs, bofs, opsz, clsz, &g);
-> +}
-> +
-> +void tcg_gen_gvec_sub32(uint32_t dofs, uint32_t aofs, uint32_t bofs,
-> +                        uint32_t opsz, uint32_t clsz)
-> +{
-> +    static const GVecGen3 g = {
-> +        .fni4 = tcg_gen_sub_i32,
-> +        .fno = gen_helper_gvec_sub32,
-> +    };
-> +    tcg_gen_gvec_3(dofs, aofs, bofs, opsz, clsz, &g);
-> +}
-> +
-> +void tcg_gen_gvec_sub64(uint32_t dofs, uint32_t aofs, uint32_t bofs,
-> +                        uint32_t opsz, uint32_t clsz)
-> +{
-> +    static const GVecGen3 g = {
-> +        .fni8 = tcg_gen_sub_i64,
-> +        .fno = gen_helper_gvec_sub64,
-> +    };
-> +    tcg_gen_gvec_3(dofs, aofs, bofs, opsz, clsz, &g);
-> +}
-> +
-> +void tcg_gen_vec8_sub8(TCGv_i64 d, TCGv_i64 a, TCGv_i64 b)
-> +{
-> +    TCGv_i64 m = tcg_const_i64(REP8(0x80));
-> +    gen_subv_mask(d, a, b, m);
-> +    tcg_temp_free_i64(m);
-> +}
-> +
-> +void tcg_gen_vec8_sub16(TCGv_i64 d, TCGv_i64 a, TCGv_i64 b)
-> +{
-> +    TCGv_i64 m = tcg_const_i64(REP16(0x8000));
-> +    gen_subv_mask(d, a, b, m);
-> +    tcg_temp_free_i64(m);
-> +}
-> +
-> +void tcg_gen_vec8_sub32(TCGv_i64 d, TCGv_i64 a, TCGv_i64 b)
-> +{
-> +    TCGv_i64 t1 = tcg_temp_new_i64();
-> +    TCGv_i64 t2 = tcg_temp_new_i64();
-> +
-> +    tcg_gen_andi_i64(t1, b, ~0xffffffffull);
-> +    tcg_gen_sub_i64(t2, a, b);
-> +    tcg_gen_sub_i64(t1, a, t1);
-> +    tcg_gen_deposit_i64(d, t1, t2, 0, 32);
-> +
-> +    tcg_temp_free_i64(t1);
-> +    tcg_temp_free_i64(t2);
-> +}
-> +
-> +void tcg_gen_gvec_and8(uint32_t dofs, uint32_t aofs, uint32_t bofs,
-> +                       uint32_t opsz, uint32_t clsz)
-> +{
-> +    static const GVecGen3 g = {
-> +        .fni8 = tcg_gen_and_i64,
-> +        .fno = gen_helper_gvec_and8,
-> +    };
-> +    tcg_gen_gvec_3(dofs, aofs, bofs, opsz, clsz, &g);
-> +}
-> +
-> +void tcg_gen_gvec_or8(uint32_t dofs, uint32_t aofs, uint32_t bofs,
-> +                      uint32_t opsz, uint32_t clsz)
-> +{
-> +    static const GVecGen3 g = {
-> +        .fni8 = tcg_gen_or_i64,
-> +        .fno = gen_helper_gvec_or8,
-> +    };
-> +    tcg_gen_gvec_3(dofs, aofs, bofs, opsz, clsz, &g);
-> +}
-> +
-> +void tcg_gen_gvec_xor8(uint32_t dofs, uint32_t aofs, uint32_t bofs,
-> +                       uint32_t opsz, uint32_t clsz)
-> +{
-> +    static const GVecGen3 g = {
-> +        .fni8 = tcg_gen_xor_i64,
-> +        .fno = gen_helper_gvec_xor8,
-> +    };
-> +    tcg_gen_gvec_3(dofs, aofs, bofs, opsz, clsz, &g);
-> +}
-> +
-> +void tcg_gen_gvec_andc8(uint32_t dofs, uint32_t aofs, uint32_t bofs,
-> +                        uint32_t opsz, uint32_t clsz)
-> +{
-> +    static const GVecGen3 g = {
-> +        .fni8 = tcg_gen_andc_i64,
-> +        .fno = gen_helper_gvec_andc8,
-> +    };
-> +    tcg_gen_gvec_3(dofs, aofs, bofs, opsz, clsz, &g);
-> +}
-> +
-> +void tcg_gen_gvec_orc8(uint32_t dofs, uint32_t aofs, uint32_t bofs,
-> +                       uint32_t opsz, uint32_t clsz)
-> +{
-> +    static const GVecGen3 g = {
-> +        .fni8 = tcg_gen_orc_i64,
-> +        .fno = gen_helper_gvec_orc8,
-> +    };
-> +    tcg_gen_gvec_3(dofs, aofs, bofs, opsz, clsz, &g);
-> +}
-> diff --git a/tcg/tcg-runtime-gvec.c b/tcg/tcg-runtime-gvec.c
-> new file mode 100644
-> index 0000000000..9a37ce07a2
-> --- /dev/null
-> +++ b/tcg/tcg-runtime-gvec.c
-> @@ -0,0 +1,199 @@
-> +/*
-> + *  Generic vectorized operation runtime
-> + *
-> + *  Copyright (c) 2017 Linaro
-> + *
-> + * This library is free software; you can redistribute it and/or
-> + * modify it under the terms of the GNU Lesser General Public
-> + * License as published by the Free Software Foundation; either
-> + * version 2 of the License, or (at your option) any later version.
-> + *
-> + * This library is distributed in the hope that it will be useful,
-> + * but WITHOUT ANY WARRANTY; without even the implied warranty of
-> + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-> + * Lesser General Public License for more details.
-> + *
-> + * You should have received a copy of the GNU Lesser General Public
-> + * License along with this library; if not, see <http://www.gnu.org/licenses/>.
-> + */
-> +
-> +#include "qemu/osdep.h"
-> +#include "qemu/host-utils.h"
-> +#include "cpu.h"
-> +#include "exec/helper-proto.h"
-> +
-> +/* Virtually all hosts support 16-byte vectors.  Those that don't
-> +   can emulate them via GCC's generic vector extension.
-> +
-> +   In tcg-op-gvec.c, we asserted that both the size and alignment
-> +   of the data are multiples of 16.  */
-> +
-> +typedef uint8_t vec8 __attribute__((vector_size(16)));
-> +typedef uint16_t vec16 __attribute__((vector_size(16)));
-> +typedef uint32_t vec32 __attribute__((vector_size(16)));
-> +typedef uint64_t vec64 __attribute__((vector_size(16)));
-> +
-> +static inline intptr_t extract_opsz(uint32_t desc)
-> +{
-> +    return ((desc & 0xff) + 1) * 16;
-> +}
-> +
-> +static inline intptr_t extract_clsz(uint32_t desc)
-> +{
-> +    return (((desc >> 8) & 0xff) + 1) * 16;
-> +}
-> +
-> +static inline void clear_high(void *d, intptr_t opsz, uint32_t desc)
-> +{
-> +    intptr_t clsz = extract_clsz(desc);
-> +    intptr_t i;
-> +
-> +    if (unlikely(clsz > opsz)) {
-> +        for (i = opsz; i < clsz; i += sizeof(vec64)) {
-> +            *(vec64 *)(d + i) = (vec64){ 0 };
-> +        }
-> +    }
-> +}
-> +
-> +void HELPER(gvec_add8)(void *d, void *a, void *b, uint32_t desc)
-> +{
-> +    intptr_t opsz = extract_opsz(desc);
-> +    intptr_t i;
-> +
-> +    for (i = 0; i < opsz; i += sizeof(vec8)) {
-> +        *(vec8 *)(d + i) = *(vec8 *)(a + i) + *(vec8 *)(b + i);
-> +    }
-> +    clear_high(d, opsz, desc);
-> +}
-> +
-> +void HELPER(gvec_add16)(void *d, void *a, void *b, uint32_t desc)
-> +{
-> +    intptr_t opsz = extract_opsz(desc);
-> +    intptr_t i;
-> +
-> +    for (i = 0; i < opsz; i += sizeof(vec16)) {
-> +        *(vec16 *)(d + i) = *(vec16 *)(a + i) + *(vec16 *)(b + i);
-> +    }
-> +    clear_high(d, opsz, desc);
-> +}
-> +
-> +void HELPER(gvec_add32)(void *d, void *a, void *b, uint32_t desc)
-> +{
-> +    intptr_t opsz = extract_opsz(desc);
-> +    intptr_t i;
-> +
-> +    for (i = 0; i < opsz; i += sizeof(vec32)) {
-> +        *(vec32 *)(d + i) = *(vec32 *)(a + i) + *(vec32 *)(b + i);
-> +    }
-> +    clear_high(d, opsz, desc);
-> +}
-> +
-> +void HELPER(gvec_add64)(void *d, void *a, void *b, uint32_t desc)
-> +{
-> +    intptr_t opsz = extract_opsz(desc);
-> +    intptr_t i;
-> +
-> +    for (i = 0; i < opsz; i += sizeof(vec64)) {
-> +        *(vec64 *)(d + i) = *(vec64 *)(a + i) + *(vec64 *)(b + i);
-> +    }
-> +    clear_high(d, opsz, desc);
-> +}
-> +
-> +void HELPER(gvec_sub8)(void *d, void *a, void *b, uint32_t desc)
-> +{
-> +    intptr_t opsz = extract_opsz(desc);
-> +    intptr_t i;
-> +
-> +    for (i = 0; i < opsz; i += sizeof(vec8)) {
-> +        *(vec8 *)(d + i) = *(vec8 *)(a + i) - *(vec8 *)(b + i);
-> +    }
-> +    clear_high(d, opsz, desc);
-> +}
-> +
-> +void HELPER(gvec_sub16)(void *d, void *a, void *b, uint32_t desc)
-> +{
-> +    intptr_t opsz = extract_opsz(desc);
-> +    intptr_t i;
-> +
-> +    for (i = 0; i < opsz; i += sizeof(vec16)) {
-> +        *(vec16 *)(d + i) = *(vec16 *)(a + i) - *(vec16 *)(b + i);
-> +    }
-> +    clear_high(d, opsz, desc);
-> +}
-> +
-> +void HELPER(gvec_sub32)(void *d, void *a, void *b, uint32_t desc)
-> +{
-> +    intptr_t opsz = extract_opsz(desc);
-> +    intptr_t i;
-> +
-> +    for (i = 0; i < opsz; i += sizeof(vec32)) {
-> +        *(vec32 *)(d + i) = *(vec32 *)(a + i) - *(vec32 *)(b + i);
-> +    }
-> +    clear_high(d, opsz, desc);
-> +}
-> +
-> +void HELPER(gvec_sub64)(void *d, void *a, void *b, uint32_t desc)
-> +{
-> +    intptr_t opsz = extract_opsz(desc);
-> +    intptr_t i;
-> +
-> +    for (i = 0; i < opsz; i += sizeof(vec64)) {
-> +        *(vec64 *)(d + i) = *(vec64 *)(a + i) - *(vec64 *)(b + i);
-> +    }
-> +    clear_high(d, opsz, desc);
-> +}
-> +
-> +void HELPER(gvec_and8)(void *d, void *a, void *b, uint32_t desc)
-> +{
-> +    intptr_t opsz = extract_opsz(desc);
-> +    intptr_t i;
-> +
-> +    for (i = 0; i < opsz; i += sizeof(vec64)) {
-> +        *(vec64 *)(d + i) = *(vec64 *)(a + i) & *(vec64 *)(b + i);
-> +    }
-> +    clear_high(d, opsz, desc);
-> +}
-> +
-> +void HELPER(gvec_or8)(void *d, void *a, void *b, uint32_t desc)
-> +{
-> +    intptr_t opsz = extract_opsz(desc);
-> +    intptr_t i;
-> +
-> +    for (i = 0; i < opsz; i += sizeof(vec64)) {
-> +        *(vec64 *)(d + i) = *(vec64 *)(a + i) | *(vec64 *)(b + i);
-> +    }
-> +    clear_high(d, opsz, desc);
-> +}
-> +
-> +void HELPER(gvec_xor8)(void *d, void *a, void *b, uint32_t desc)
-> +{
-> +    intptr_t opsz = extract_opsz(desc);
-> +    intptr_t i;
-> +
-> +    for (i = 0; i < opsz; i += sizeof(vec64)) {
-> +        *(vec64 *)(d + i) = *(vec64 *)(a + i) ^ *(vec64 *)(b + i);
-> +    }
-> +    clear_high(d, opsz, desc);
-> +}
-> +
-> +void HELPER(gvec_andc8)(void *d, void *a, void *b, uint32_t desc)
-> +{
-> +    intptr_t opsz = extract_opsz(desc);
-> +    intptr_t i;
-> +
-> +    for (i = 0; i < opsz; i += sizeof(vec64)) {
-> +        *(vec64 *)(d + i) = *(vec64 *)(a + i) &~ *(vec64 *)(b + i);
-> +    }
-> +    clear_high(d, opsz, desc);
-> +}
-> +
-> +void HELPER(gvec_orc8)(void *d, void *a, void *b, uint32_t desc)
-> +{
-> +    intptr_t opsz = extract_opsz(desc);
-> +    intptr_t i;
-> +
-> +    for (i = 0; i < opsz; i += sizeof(vec64)) {
-> +        *(vec64 *)(d + i) = *(vec64 *)(a + i) |~ *(vec64 *)(b + i);
-> +    }
-> +    clear_high(d, opsz, desc);
-> +}
+>   #undef TLADDR_ARGS
+>   #undef DATA64_ARGS
+> +
+> +/* Host integer vector operations.  */
+> +/* These opcodes are required whenever the base vector size is enabled.  */
+> +
+> +DEF(mov_v64, 1, 1, 0, IMPL(TCG_TARGET_HAS_v64))
+> +DEF(mov_v128, 1, 1, 0, IMPL(TCG_TARGET_HAS_v128))
+> +DEF(mov_v256, 1, 1, 0, IMPL(TCG_TARGET_HAS_v256))
+> +
+> +DEF(movi_v64, 1, 0, 1, IMPL(TCG_TARGET_HAS_v64))
+> +DEF(movi_v128, 1, 0, 1, IMPL(TCG_TARGET_HAS_v128))
+> +DEF(movi_v256, 1, 0, 1, IMPL(TCG_TARGET_HAS_v256))
+> +
+> +DEF(ld_v64, 1, 1, 1, IMPL(TCG_TARGET_HAS_v64))
+> +DEF(ld_v128, 1, 1, 1, IMPL(TCG_TARGET_HAS_v128))
+> +DEF(ld_v256, 1, 1, 1, IMPL(TCG_TARGET_HAS_v256))
+> +
+> +DEF(st_v64, 0, 2, 1, IMPL(TCG_TARGET_HAS_v64))
+> +DEF(st_v128, 0, 2, 1, IMPL(TCG_TARGET_HAS_v128))
+> +DEF(st_v256, 0, 2, 1, IMPL(TCG_TARGET_HAS_v256))
+> +
+> +DEF(and_v64, 1, 2, 0, IMPL(TCG_TARGET_HAS_v64))
+> +DEF(and_v128, 1, 2, 0, IMPL(TCG_TARGET_HAS_v128))
+> +DEF(and_v256, 1, 2, 0, IMPL(TCG_TARGET_HAS_v256))
+> +
+> +DEF(or_v64, 1, 2, 0, IMPL(TCG_TARGET_HAS_v64))
+> +DEF(or_v128, 1, 2, 0, IMPL(TCG_TARGET_HAS_v128))
+> +DEF(or_v256, 1, 2, 0, IMPL(TCG_TARGET_HAS_v256))
+> +
+> +DEF(xor_v64, 1, 2, 0, IMPL(TCG_TARGET_HAS_v64))
+> +DEF(xor_v128, 1, 2, 0, IMPL(TCG_TARGET_HAS_v128))
+> +DEF(xor_v256, 1, 2, 0, IMPL(TCG_TARGET_HAS_v256))
+> +
+> +DEF(add8_v64, 1, 2, 0, IMPL(TCG_TARGET_HAS_v64))
+> +DEF(add16_v64, 1, 2, 0, IMPL(TCG_TARGET_HAS_v64))
+> +DEF(add32_v64, 1, 2, 0, IMPL(TCG_TARGET_HAS_v64))
+> +
+> +DEF(add8_v128, 1, 2, 0, IMPL(TCG_TARGET_HAS_v128))
+> +DEF(add16_v128, 1, 2, 0, IMPL(TCG_TARGET_HAS_v128))
+> +DEF(add32_v128, 1, 2, 0, IMPL(TCG_TARGET_HAS_v128))
+> +DEF(add64_v128, 1, 2, 0, IMPL(TCG_TARGET_HAS_v128))
+> +
+> +DEF(add8_v256, 1, 2, 0, IMPL(TCG_TARGET_HAS_v256))
+> +DEF(add16_v256, 1, 2, 0, IMPL(TCG_TARGET_HAS_v256))
+> +DEF(add32_v256, 1, 2, 0, IMPL(TCG_TARGET_HAS_v256))
+> +DEF(add64_v256, 1, 2, 0, IMPL(TCG_TARGET_HAS_v256))
+> +
+> +DEF(sub8_v64, 1, 2, 0, IMPL(TCG_TARGET_HAS_v64))
+> +DEF(sub16_v64, 1, 2, 0, IMPL(TCG_TARGET_HAS_v64))
+> +DEF(sub32_v64, 1, 2, 0, IMPL(TCG_TARGET_HAS_v64))
+> +
+> +DEF(sub8_v128, 1, 2, 0, IMPL(TCG_TARGET_HAS_v128))
+> +DEF(sub16_v128, 1, 2, 0, IMPL(TCG_TARGET_HAS_v128))
+> +DEF(sub32_v128, 1, 2, 0, IMPL(TCG_TARGET_HAS_v128))
+> +DEF(sub64_v128, 1, 2, 0, IMPL(TCG_TARGET_HAS_v128))
+> +
+> +DEF(sub8_v256, 1, 2, 0, IMPL(TCG_TARGET_HAS_v256))
+> +DEF(sub16_v256, 1, 2, 0, IMPL(TCG_TARGET_HAS_v256))
+> +DEF(sub32_v256, 1, 2, 0, IMPL(TCG_TARGET_HAS_v256))
+> +DEF(sub64_v256, 1, 2, 0, IMPL(TCG_TARGET_HAS_v256))
+> +
+> +/* These opcodes are optional.
+> +   All element counts must be supported if any are.  */
+> +
+> +DEF(not_v64, 1, 1, 0, IMPL(TCG_TARGET_HAS_not_v64))
+> +DEF(not_v128, 1, 1, 0, IMPL(TCG_TARGET_HAS_not_v128))
+> +DEF(not_v256, 1, 1, 0, IMPL(TCG_TARGET_HAS_not_v256))
+> +
+> +DEF(andc_v64, 1, 2, 0, IMPL(TCG_TARGET_HAS_andc_v64))
+> +DEF(andc_v128, 1, 2, 0, IMPL(TCG_TARGET_HAS_andc_v128))
+> +DEF(andc_v256, 1, 2, 0, IMPL(TCG_TARGET_HAS_andc_v256))
+> +
+> +DEF(orc_v64, 1, 2, 0, IMPL(TCG_TARGET_HAS_orc_v64))
+> +DEF(orc_v128, 1, 2, 0, IMPL(TCG_TARGET_HAS_orc_v128))
+> +DEF(orc_v256, 1, 2, 0, IMPL(TCG_TARGET_HAS_orc_v256))
+> +
+> +DEF(neg8_v64, 1, 1, 0, IMPL(TCG_TARGET_HAS_neg_v64))
+> +DEF(neg16_v64, 1, 1, 0, IMPL(TCG_TARGET_HAS_neg_v64))
+> +DEF(neg32_v64, 1, 1, 0, IMPL(TCG_TARGET_HAS_neg_v64))
+> +
+> +DEF(neg8_v128, 1, 1, 0, IMPL(TCG_TARGET_HAS_neg_v128))
+> +DEF(neg16_v128, 1, 1, 0, IMPL(TCG_TARGET_HAS_neg_v128))
+> +DEF(neg32_v128, 1, 1, 0, IMPL(TCG_TARGET_HAS_neg_v128))
+> +DEF(neg64_v128, 1, 1, 0, IMPL(TCG_TARGET_HAS_neg_v128))
+> +
+> +DEF(neg8_v256, 1, 1, 0, IMPL(TCG_TARGET_HAS_neg_v256))
+> +DEF(neg16_v256, 1, 1, 0, IMPL(TCG_TARGET_HAS_neg_v256))
+> +DEF(neg32_v256, 1, 1, 0, IMPL(TCG_TARGET_HAS_neg_v256))
+> +DEF(neg64_v256, 1, 1, 0, IMPL(TCG_TARGET_HAS_neg_v256))
+> +
+>   #undef IMPL
+>   #undef IMPL64
+>   #undef DEF
+> diff --git a/tcg/tcg.h b/tcg/tcg.h
+> index 1277caed3d..b9e15da13b 100644
+> --- a/tcg/tcg.h
+> +++ b/tcg/tcg.h
+> @@ -166,6 +166,30 @@ typedef uint64_t TCGRegSet;
+>   #define TCG_TARGET_HAS_rem_i64          0
+>   #endif
+>   
+> +#ifndef TCG_TARGET_HAS_v64
+> +#define TCG_TARGET_HAS_v64              0
+> +#define TCG_TARGET_HAS_andc_v64         0
+> +#define TCG_TARGET_HAS_orc_v64          0
+> +#define TCG_TARGET_HAS_not_v64          0
+> +#define TCG_TARGET_HAS_neg_v64          0
+> +#endif
+> +
+> +#ifndef TCG_TARGET_HAS_v128
+> +#define TCG_TARGET_HAS_v128             0
+> +#define TCG_TARGET_HAS_andc_v128        0
+> +#define TCG_TARGET_HAS_orc_v128         0
+> +#define TCG_TARGET_HAS_not_v128         0
+> +#define TCG_TARGET_HAS_neg_v128         0
+> +#endif
+> +
+> +#ifndef TCG_TARGET_HAS_v256
+> +#define TCG_TARGET_HAS_v256             0
+> +#define TCG_TARGET_HAS_andc_v256        0
+> +#define TCG_TARGET_HAS_orc_v256         0
+> +#define TCG_TARGET_HAS_not_v256         0
+> +#define TCG_TARGET_HAS_neg_v256         0
+> +#endif
+> +
+>   /* For 32-bit targets, some sort of unsigned widening multiply is required.  */
+>   #if TCG_TARGET_REG_BITS == 32 \
+>       && !(defined(TCG_TARGET_HAS_mulu2_i32) \
 > 

@@ -1,105 +1,94 @@
-Received: by 10.223.188.70 with SMTP id a6csp1834321wrh;
-        Wed, 30 Aug 2017 20:58:27 -0700 (PDT)
-X-Received: by 10.80.143.70 with SMTP id 64mr396205edy.264.1504151907045;
-        Wed, 30 Aug 2017 20:58:27 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1504151907; cv=none;
+Received: by 10.223.188.70 with SMTP id a6csp1904261wrh;
+        Wed, 30 Aug 2017 22:23:13 -0700 (PDT)
+X-Received: by 10.80.135.242 with SMTP id 47mr509260edz.224.1504156993029;
+        Wed, 30 Aug 2017 22:23:13 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1504156993; cv=none;
         d=google.com; s=arc-20160816;
-        b=bri5qq2poMNQiL93/NJ8A52a5/1Ao3u3zl1oQRwbRQJ+nhmvGdHl5O+6YlH0VkfUPo
-         ITTLM6ks4uYU9BNBiE4bvXeZtBuW99RQ+BWc7Z0T/0amXTanEsMYFB7sQa2+XCrLs5Ks
-         EM1GUnGsiOKIv9cxA8wE+d10g/yKMrxdPiQ+WZyCtuhgrAf1MEn26opu/PjmtWL9BcBN
-         pUUeC5AmQocB0oXIuyRKfy5Z2yMwYqumuEqsl9uwxmEvg5UGsCKP1KpoRWvf9KjQSSPa
-         LlKRUDbuCOFA6uXdjL0kj9pwy+4P883gbnGKKmueZ3JKRfl0izmHNZOins3qcDpAEkd4
-         eVhA==
+        b=mOtzn1Qth2C6rQwn7bfWNmGaT4ErfGSIqZm0RiNjphpSnrCNMQTJfalLzo9Bj4ekSz
+         jTZeF4Kow0uww0pyXX+miNnWmfEAiHphFPRxJfaN+7VKEHeqc+MVsD8vJ9t/rZ02njUh
+         xL7qXS2AK35ORjxLcZHdH7eqFFm9y8hY5Uz8BOx2XArk0BKGuNxtuJigv8IChxSqLBLC
+         jUwOQtnZ0Ah4c4kuuwBNag4ByU9rjlNM8E0kXBcYG/xti01GujmCR1n2E7pioLspQG68
+         uec8tQ0kaxgIHIzG14Df5ywKauX4YuINc1bkDbXyN/9O7eafp9NjYLAw/WG+zgRM2tUu
+         /vbg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:to:from:dkim-signature:arc-authentication-results;
-        bh=KIodJgPfyDNKVJDKXwpUl9qXpUSHSusQbEpLvuy+wCM=;
-        b=0ac/eH+L01DVqsi7se6k7nVWmG86ueONINWXDJ780s7FyyY7VKq+XMHstbAvY/S7Nf
-         GjpoQrBCgWQybHUeTERhTmcsS76JGiRCsMABfzOGaUnj1f8w9ytMp/pGPzsDxgLGGoCQ
-         c2rC1qZ3b63/cTqgDK2f3lRf8YZrd9dIj/RyTldZfC64fbP6tggfob8KYJb4HfQpX1CY
-         8xycgaS687Aee0irn5PPQfCnLsOM7koZKwE3CEvwDGGMLnc/fnhT1IWtfZWTfhP8mWr3
-         kRaqaQ/fHpUPFKSFGk41cEDY44VCPFvifmL8QYTIOggBsYQ0aGh7Hf4io46tDneNBxbX
-         Y4Nw==
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:to:dmarc-filter
+         :arc-authentication-results;
+        bh=hZRc4mtBHF/Hy9u4TDJR1yCj3zEp49FTw2CI9JKEwA4=;
+        b=U3iHug7UGS3JzTVUuPX8vcJNqfe+jjj1yLTiYd5Vozbm0T5O934651cZugVQjo+lY3
+         eZdopkw5NkJ2aM7f/wV7HAJz6d4psjxRW4jnNSjYlN0JfQgCWSdM+IqX4yMiTUR7ijPz
+         VNJ6qy5RFwdt8FG+2n3KrLSsHNGdObsAlkgvp2ENYdbHliQKiGdfQtQhyML7iP+dhXQj
+         5N2kelg0B+LBkGFxDCqShnI2seBw4OSG2gj8/HDZpJe/yh9uP2iLAM/k4vDpg0su4dEf
+         CsHBaFQrhhi+aK18wLINkDch1/cPM1KTgE22W23Kb0ra0yhu2APF1A3L83TuL+Q98pbJ
+         7WMA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=AUz8fd82;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id h35si6050506edc.443.2017.08.30.20.58.26
+        by mx.google.com with ESMTPS id p30si6071262edd.429.2017.08.30.22.23.12
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 30 Aug 2017 20:58:27 -0700 (PDT)
+        Wed, 30 Aug 2017 22:23:13 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=AUz8fd82;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:53806 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:53981 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1dnGcc-0004uo-0s
-	for alex.bennee@linaro.org; Wed, 30 Aug 2017 23:58:26 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:55625)
+	id 1dnHwe-0002Q7-00
+	for alex.bennee@linaro.org; Thu, 31 Aug 2017 01:23:12 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:40619)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1dnGXt-0000nD-Rv
-	for qemu-arm@nongnu.org; Wed, 30 Aug 2017 23:53:34 -0400
+	(envelope-from <thuth@redhat.com>) id 1dnHwX-0002Q0-73
+	for qemu-arm@nongnu.org; Thu, 31 Aug 2017 01:23:06 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1dnGXt-0006cQ-3z
-	for qemu-arm@nongnu.org; Wed, 30 Aug 2017 23:53:33 -0400
-Received: from mail-qk0-x242.google.com ([2607:f8b0:400d:c09::242]:33896)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1dnGXr-0006bf-3k; Wed, 30 Aug 2017 23:53:31 -0400
-Received: by mail-qk0-x242.google.com with SMTP id a77so6862452qkb.1;
-	Wed, 30 Aug 2017 20:53:30 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
-	:mime-version:content-transfer-encoding;
-	bh=KIodJgPfyDNKVJDKXwpUl9qXpUSHSusQbEpLvuy+wCM=;
-	b=AUz8fd82/Y7Bmt9Cs5c6V4dHbIBAtchd8VzAHpA46xMEeYOTMqstyjlwww1DPyHxS2
-	CC/oNb9z9PVJPb8HUBFj+b8QvBcW3/Toj9MjLd+/ofDyr9p5joLH/GNrZw1UCD5eJMak
-	9vtqS9kjd7YCJx2B2HNO4w7qXuN2jrSXHANJk99P930E7Ns0I1TLdMposb+ifK+X4s/3
-	fkQMGZjZzwH6MiK2sZylstHisdVhjBMc5okkpg0A2eWiqJLBGgJX0TVHAwJWsMudvS9W
-	VUZ5fQAaGL1lw5DksmJQqRPTGfdN9SKiO0g+lDggMQB4N2zn/3Kk1T7oytIbCdwKImeV
-	e2Dw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
-	:in-reply-to:references:mime-version:content-transfer-encoding;
-	bh=KIodJgPfyDNKVJDKXwpUl9qXpUSHSusQbEpLvuy+wCM=;
-	b=nHyX4g98meCY2XhrWUws/Pp+kIW+11YnstD9waf+6P5eA0u3FVD7JZYxxJq4H3FRGK
-	8DRkazZOSdIOD1upqSzknaKTTSbdmvzT57GBUiuY/bHhXE8ypZxRwvA6rVeVGSDH1KW9
-	Y6J/ZLOKOg0yYiLCzcR0vRZRmvtYhLIhgruVh0D4tDaR5IjBHaSeUEqJiBrW6mEm26QK
-	r+grfq/F2g0KfHAo4/iHZzHCXhvd/sbhFgH49bh/RgvNBzmrCcat/aRUGRNbCFGNIBVx
-	C68Pq2VPXVGXYs4+cM6eCLhzX2uI3UF73aP8Fc2Y4lqpeZupzOCTIQBsoT4RemKKh/72
-	k/XQ==
-X-Gm-Message-State: AHYfb5iE2nHsqyqkHKBRKLraeRtOPV2YWZPbAxOw7KIu2smahFy4ETwF
-	mzrYC7yY9Syog/nxqftG0w==
-X-Received: by 10.55.74.194 with SMTP id x185mr1965505qka.237.1504151610556;
-	Wed, 30 Aug 2017 20:53:30 -0700 (PDT)
-Received: from yoga.offpageads.com ([181.93.89.178])
-	by smtp.gmail.com with ESMTPSA id x20sm5072398qtb.5.2017.08.30.20.53.28
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Wed, 30 Aug 2017 20:53:30 -0700 (PDT)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-To: Paolo Bonzini <pbonzini@redhat.com>,
+	(envelope-from <thuth@redhat.com>) id 1dnHwS-0003gT-Vp
+	for qemu-arm@nongnu.org; Thu, 31 Aug 2017 01:23:05 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:50840)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <thuth@redhat.com>)
+	id 1dnHwS-0003fk-Pm; Thu, 31 Aug 2017 01:23:00 -0400
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
+	[10.5.11.16])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id BCC0481DEE;
+	Thu, 31 Aug 2017 05:22:59 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com BCC0481DEE
+Authentication-Results: ext-mx01.extmail.prod.ext.phx2.redhat.com;
+	dmarc=none (p=none dis=none) header.from=redhat.com
+Authentication-Results: ext-mx01.extmail.prod.ext.phx2.redhat.com;
+	spf=fail smtp.mailfrom=thuth@redhat.com
+Received: from [10.36.116.27] (ovpn-116-27.ams2.redhat.com [10.36.116.27])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 95A825C881;
+	Thu, 31 Aug 2017 05:22:57 +0000 (UTC)
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
 	Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 31 Aug 2017 00:53:05 -0300
-Message-Id: <20170831035306.29170-7-f4bug@amsat.org>
-X-Mailer: git-send-email 2.14.1
-In-Reply-To: <20170831035306.29170-1-f4bug@amsat.org>
-References: <20170831035306.29170-1-f4bug@amsat.org>
+References: <20170830215523.25278-1-f4bug@amsat.org>
+	<20170830215523.25278-3-f4bug@amsat.org>
+From: Thomas Huth <thuth@redhat.com>
+Message-ID: <3b185bc6-d5ea-85dc-8635-e9d21914d011@redhat.com>
+Date: Thu, 31 Aug 2017 07:22:56 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.3.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:400d:c09::242
-Subject: [Qemu-arm] [PATCH 6/7] hw/char/omap_uart: serial_mm_init() already
- check for null chr
+In-Reply-To: <20170830215523.25278-3-f4bug@amsat.org>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.25]);
+	Thu, 31 Aug 2017 05:22:59 +0000 (UTC)
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-arm] [PATCH v2 02/17] MAINTAINERS: add missing Versatile
+ PB entry
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -111,40 +100,27 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm@nongnu.org,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
-	qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, qemu-arm@nongnu.org, qemu-devel@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: /Q2PPJ/Ju4gc
+X-TUID: k73MK8v031pl
 
-Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
----
- hw/char/omap_uart.c | 6 ++----
- 1 file changed, 2 insertions(+), 4 deletions(-)
+On 30.08.2017 23:55, Philippe Mathieu-Daud=C3=A9 wrote:
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+> ---
+>  MAINTAINERS | 1 +
+>  1 file changed, 1 insertion(+)
+>=20
+> diff --git a/MAINTAINERS b/MAINTAINERS
+> index b363e1b9c9..5b7891addc 100644
+> --- a/MAINTAINERS
+> +++ b/MAINTAINERS
+> @@ -515,6 +515,7 @@ M: Peter Maydell <peter.maydell@linaro.org>
+>  L: qemu-arm@nongnu.org
+>  S: Maintained
+>  F: hw/*/versatile*
+> +F: hw/misc/arm_sysctl.c
 
-diff --git a/hw/char/omap_uart.c b/hw/char/omap_uart.c
-index 6fd1b9cf6b..1f0ac0a053 100644
---- a/hw/char/omap_uart.c
-+++ b/hw/char/omap_uart.c
-@@ -63,8 +63,7 @@ struct omap_uart_s *omap_uart_init(hwaddr base,
-     s->irq = irq;
-     s->serial = serial_mm_init(get_system_memory(), base, 2, irq,
-                                omap_clk_getrate(fclk)/16,
--                               chr ?: qemu_chr_new(label, "null"),
--                               DEVICE_NATIVE_ENDIAN);
-+                               chr, DEVICE_NATIVE_ENDIAN);
-     return s;
- }
- 
-@@ -183,6 +182,5 @@ void omap_uart_attach(struct omap_uart_s *s, Chardev *chr)
-     /* TODO: Should reuse or destroy current s->serial */
-     s->serial = serial_mm_init(get_system_memory(), s->base, 2, s->irq,
-                                omap_clk_getrate(s->fclk) / 16,
--                               chr ?: qemu_chr_new("null", "null"),
--                               DEVICE_NATIVE_ENDIAN);
-+                               chr, DEVICE_NATIVE_ENDIAN);
- }
--- 
-2.14.1
+I think you could also merge this into the previous patch. Anyway:
 
+Reviewed-by: Thomas Huth <thuth@redhat.com>

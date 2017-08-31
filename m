@@ -1,95 +1,94 @@
-Received: by 10.223.188.70 with SMTP id a6csp1833658wrh;
-        Wed, 30 Aug 2017 20:57:31 -0700 (PDT)
-X-Received: by 10.237.36.13 with SMTP id r13mr5060100qtc.15.1504151851906;
-        Wed, 30 Aug 2017 20:57:31 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1504151851; cv=none;
+Received: by 10.223.188.70 with SMTP id a6csp1834321wrh;
+        Wed, 30 Aug 2017 20:58:27 -0700 (PDT)
+X-Received: by 10.80.143.70 with SMTP id 64mr396205edy.264.1504151907045;
+        Wed, 30 Aug 2017 20:58:27 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1504151907; cv=none;
         d=google.com; s=arc-20160816;
-        b=i+ff9jPkRbQh9jNO+gQc/tktbgUgdQwbN53XZEAEjsjewhhuvw1ImbW7kRp0bGUvXx
-         +C+I646KidqUpDMufo6hvz8V4RuTMAw8/sxkO57SUNGt8DvnEvSQKe4z2xbg2Gh/zAtL
-         SPLs+RYBoI6y+2C+aTSdyU3rI7UL5AXkCrSWyXhOw1m7AV4Dm1dfYZZG4agB34iEajpZ
-         YyA8Pm85y1vZJi6wtKcIDc3EH4f7IrLs25AT1C3LExXrVlla03PR64jAN6tLx6f41jC/
-         vqMwNTY7ic1rs8bsSMWl4vm2wb9qtq0ydp0ce4GTeqP5PnPNq0pPIm1U8jgjlVcGvpRt
-         0HIg==
+        b=bri5qq2poMNQiL93/NJ8A52a5/1Ao3u3zl1oQRwbRQJ+nhmvGdHl5O+6YlH0VkfUPo
+         ITTLM6ks4uYU9BNBiE4bvXeZtBuW99RQ+BWc7Z0T/0amXTanEsMYFB7sQa2+XCrLs5Ks
+         EM1GUnGsiOKIv9cxA8wE+d10g/yKMrxdPiQ+WZyCtuhgrAf1MEn26opu/PjmtWL9BcBN
+         pUUeC5AmQocB0oXIuyRKfy5Z2yMwYqumuEqsl9uwxmEvg5UGsCKP1KpoRWvf9KjQSSPa
+         LlKRUDbuCOFA6uXdjL0kj9pwy+4P883gbnGKKmueZ3JKRfl0izmHNZOins3qcDpAEkd4
+         eVhA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:to:from:dkim-signature:arc-authentication-results;
-        bh=Ptbb2tioMzNVHjabPeB1RPen2CnJsOp8RPHysN7rXAc=;
-        b=kC01AoL7LECzxc3a517L9KfiA5Wv5PRtCSE4CkEaZ7cLxpajWieIo5CuiSG7xCZbDr
-         Ya0VJaQobilX+J8W7tq2+r0LbVGF0DnQPgggBQI5HfCfXsJeeQAyKmLVn3dD4gSFdY2s
-         9R1UnlylGhx4UvLNcnOoFgEor9e3EYPBGsoak5UcyJR3hr/MZ0leyHDiKMfHVQl4pAHk
-         n67ko+rCX2G9Ocv10cOTnAq5SgTR9jhPD9QHgcL5RB8RhGGEfRhw/sCojVq4LrIuLroB
-         XC/b6Wnp7HGNZuccMUzLoZOgWJnYjcAe/NugM2gcRVPYEfoU3Sb3OVReD8FXTZuKB/+r
-         DTsQ==
+        bh=KIodJgPfyDNKVJDKXwpUl9qXpUSHSusQbEpLvuy+wCM=;
+        b=0ac/eH+L01DVqsi7se6k7nVWmG86ueONINWXDJ780s7FyyY7VKq+XMHstbAvY/S7Nf
+         GjpoQrBCgWQybHUeTERhTmcsS76JGiRCsMABfzOGaUnj1f8w9ytMp/pGPzsDxgLGGoCQ
+         c2rC1qZ3b63/cTqgDK2f3lRf8YZrd9dIj/RyTldZfC64fbP6tggfob8KYJb4HfQpX1CY
+         8xycgaS687Aee0irn5PPQfCnLsOM7koZKwE3CEvwDGGMLnc/fnhT1IWtfZWTfhP8mWr3
+         kRaqaQ/fHpUPFKSFGk41cEDY44VCPFvifmL8QYTIOggBsYQ0aGh7Hf4io46tDneNBxbX
+         Y4Nw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=D/FvpPx4;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=AUz8fd82;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id 15si6668742qtw.78.2017.08.30.20.57.31
+        by mx.google.com with ESMTPS id h35si6050506edc.443.2017.08.30.20.58.26
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 30 Aug 2017 20:57:31 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Wed, 30 Aug 2017 20:58:27 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=D/FvpPx4;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:53799 helo=lists.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=AUz8fd82;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:53806 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1dnGbf-0003vS-Kw
-	for alex.bennee@linaro.org; Wed, 30 Aug 2017 23:57:27 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:55547)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1dnGcc-0004uo-0s
+	for alex.bennee@linaro.org; Wed, 30 Aug 2017 23:58:26 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:55625)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1dnGXk-0000gN-BW
-	for qemu-devel@nongnu.org; Wed, 30 Aug 2017 23:53:25 -0400
+	id 1dnGXt-0000nD-Rv
+	for qemu-arm@nongnu.org; Wed, 30 Aug 2017 23:53:34 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1dnGXj-0006ZR-EI
-	for qemu-devel@nongnu.org; Wed, 30 Aug 2017 23:53:24 -0400
-Received: from mail-qt0-x243.google.com ([2607:f8b0:400d:c0d::243]:37251)
+	id 1dnGXt-0006cQ-3z
+	for qemu-arm@nongnu.org; Wed, 30 Aug 2017 23:53:33 -0400
+Received: from mail-qk0-x242.google.com ([2607:f8b0:400d:c09::242]:33896)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1dnGXj-0006ZH-Ao; Wed, 30 Aug 2017 23:53:23 -0400
-Received: by mail-qt0-x243.google.com with SMTP id g13so6737605qta.4;
-	Wed, 30 Aug 2017 20:53:23 -0700 (PDT)
+	id 1dnGXr-0006bf-3k; Wed, 30 Aug 2017 23:53:31 -0400
+Received: by mail-qk0-x242.google.com with SMTP id a77so6862452qkb.1;
+	Wed, 30 Aug 2017 20:53:30 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
 	h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
 	:mime-version:content-transfer-encoding;
-	bh=Ptbb2tioMzNVHjabPeB1RPen2CnJsOp8RPHysN7rXAc=;
-	b=D/FvpPx4CfFnNugnyZi/97vBkjNc6rNSELPe5B3VhwIMQm6SyMVP4v/qzvK2oPM4K7
-	gIvtCQFYdiMzOFfidBr3BsVFWuDdLXekLUFLdAPCAhE1Zyv3Y4pNx36GRlOmk1puk+s5
-	gv4gBPanHoPzexehEVGv0mwqWjEv53np5gdARKanj4XVm205gC2fuA6tjTZn2vzyEK5r
-	GZs2UbABcmfStiM5vk/wYX+sKiFBWXyWroC5wPnhOSzGPCyePjjMtgyCithr1UMMJ7LI
-	44QXyjZxW5I284hMh8c9edn9MVisE1lG5iW2BVgWzrHRVSK7niggrYi482p/vOXYoeY4
-	8J6w==
+	bh=KIodJgPfyDNKVJDKXwpUl9qXpUSHSusQbEpLvuy+wCM=;
+	b=AUz8fd82/Y7Bmt9Cs5c6V4dHbIBAtchd8VzAHpA46xMEeYOTMqstyjlwww1DPyHxS2
+	CC/oNb9z9PVJPb8HUBFj+b8QvBcW3/Toj9MjLd+/ofDyr9p5joLH/GNrZw1UCD5eJMak
+	9vtqS9kjd7YCJx2B2HNO4w7qXuN2jrSXHANJk99P930E7Ns0I1TLdMposb+ifK+X4s/3
+	fkQMGZjZzwH6MiK2sZylstHisdVhjBMc5okkpg0A2eWiqJLBGgJX0TVHAwJWsMudvS9W
+	VUZ5fQAaGL1lw5DksmJQqRPTGfdN9SKiO0g+lDggMQB4N2zn/3Kk1T7oytIbCdwKImeV
+	e2Dw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
 	:in-reply-to:references:mime-version:content-transfer-encoding;
-	bh=Ptbb2tioMzNVHjabPeB1RPen2CnJsOp8RPHysN7rXAc=;
-	b=qXqmaUKBdPisXE0RJytBTpIGe4CrbWEukE/bfGlf3q2C/DpoUelIgWRnfe+DUi5Ov6
-	y20Hk3eA5KOplJX+YkD6NwyritBWC0Q5+0nrqAtkzaLUNXrYpVaROHE0ZDAzpU9Zt+Kl
-	0+g0ibz3R3z90CsQFqFRw7JC1WXecHnrs8qEfllJF2icUiVyn5Yi+pw3D8gfj7JZ6Tdo
-	Gr6w1q4p61F30rf6F/vVLCHpAJYmoIgMZmXsw8qDx7OWor2dGRnII3cM4hhN+2r7mEcQ
-	hfmnOdMdbwuJXcIOy01p8nyHXYJYkPCvpPGeQvxhqxhmY730Tlu/BNBbvDMIu8keKNPO
-	QpiA==
-X-Gm-Message-State: AHYfb5jSDvMZT9n1Db0+qlqn4lTWKM0+nPMFb+BUp8W23w4Iy6sMposU
-	W1A7E6FYb0BiEw==
-X-Received: by 10.200.45.243 with SMTP id q48mr5097763qta.133.1504151602740;
-	Wed, 30 Aug 2017 20:53:22 -0700 (PDT)
+	bh=KIodJgPfyDNKVJDKXwpUl9qXpUSHSusQbEpLvuy+wCM=;
+	b=nHyX4g98meCY2XhrWUws/Pp+kIW+11YnstD9waf+6P5eA0u3FVD7JZYxxJq4H3FRGK
+	8DRkazZOSdIOD1upqSzknaKTTSbdmvzT57GBUiuY/bHhXE8ypZxRwvA6rVeVGSDH1KW9
+	Y6J/ZLOKOg0yYiLCzcR0vRZRmvtYhLIhgruVh0D4tDaR5IjBHaSeUEqJiBrW6mEm26QK
+	r+grfq/F2g0KfHAo4/iHZzHCXhvd/sbhFgH49bh/RgvNBzmrCcat/aRUGRNbCFGNIBVx
+	C68Pq2VPXVGXYs4+cM6eCLhzX2uI3UF73aP8Fc2Y4lqpeZupzOCTIQBsoT4RemKKh/72
+	k/XQ==
+X-Gm-Message-State: AHYfb5iE2nHsqyqkHKBRKLraeRtOPV2YWZPbAxOw7KIu2smahFy4ETwF
+	mzrYC7yY9Syog/nxqftG0w==
+X-Received: by 10.55.74.194 with SMTP id x185mr1965505qka.237.1504151610556;
+	Wed, 30 Aug 2017 20:53:30 -0700 (PDT)
 Received: from yoga.offpageads.com ([181.93.89.178])
-	by smtp.gmail.com with ESMTPSA id x20sm5072398qtb.5.2017.08.30.20.53.20
+	by smtp.gmail.com with ESMTPSA id x20sm5072398qtb.5.2017.08.30.20.53.28
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Wed, 30 Aug 2017 20:53:22 -0700 (PDT)
+	Wed, 30 Aug 2017 20:53:30 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: Paolo Bonzini <pbonzini@redhat.com>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	Peter Chubb <peter.chubb@nicta.com.au>
-Date: Thu, 31 Aug 2017 00:53:02 -0300
-Message-Id: <20170831035306.29170-4-f4bug@amsat.org>
+	Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 31 Aug 2017 00:53:05 -0300
+Message-Id: <20170831035306.29170-7-f4bug@amsat.org>
 X-Mailer: git-send-email 2.14.1
 In-Reply-To: <20170831035306.29170-1-f4bug@amsat.org>
 References: <20170831035306.29170-1-f4bug@amsat.org>
@@ -98,107 +97,54 @@ Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400d:c0d::243
-Subject: [Qemu-devel] [PATCH 3/7] hw/arm/fsl_imx*: use serial_chr_nonnull()
-X-BeenThere: qemu-devel@nongnu.org
+X-Received-From: 2607:f8b0:400d:c09::242
+Subject: [Qemu-arm] [PATCH 6/7] hw/char/omap_uart: serial_mm_init() already
+ check for null chr
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: qemu-arm@nongnu.org,
 	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
 	qemu-devel@nongnu.org
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: NR3H66rPSZ62
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: /Q2PPJ/Ju4gc
 
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- include/hw/char/imx_serial.h |  1 +
- hw/arm/fsl-imx25.c           |  9 +--------
- hw/arm/fsl-imx31.c           |  9 +--------
- hw/arm/fsl-imx6.c            | 10 +---------
- 4 files changed, 4 insertions(+), 25 deletions(-)
+ hw/char/omap_uart.c | 6 ++----
+ 1 file changed, 2 insertions(+), 4 deletions(-)
 
-diff --git a/include/hw/char/imx_serial.h b/include/hw/char/imx_serial.h
-index baeec3183f..55139dc6ec 100644
---- a/include/hw/char/imx_serial.h
-+++ b/include/hw/char/imx_serial.h
-@@ -20,6 +20,7 @@
+diff --git a/hw/char/omap_uart.c b/hw/char/omap_uart.c
+index 6fd1b9cf6b..1f0ac0a053 100644
+--- a/hw/char/omap_uart.c
++++ b/hw/char/omap_uart.c
+@@ -63,8 +63,7 @@ struct omap_uart_s *omap_uart_init(hwaddr base,
+     s->irq = irq;
+     s->serial = serial_mm_init(get_system_memory(), base, 2, irq,
+                                omap_clk_getrate(fclk)/16,
+-                               chr ?: qemu_chr_new(label, "null"),
+-                               DEVICE_NATIVE_ENDIAN);
++                               chr, DEVICE_NATIVE_ENDIAN);
+     return s;
+ }
  
- #include "hw/sysbus.h"
- #include "chardev/char-fe.h"
-+#include "hw/char/serial.h"
- 
- #define TYPE_IMX_SERIAL "imx.serial"
- #define IMX_SERIAL(obj) OBJECT_CHECK(IMXSerialState, (obj), TYPE_IMX_SERIAL)
-diff --git a/hw/arm/fsl-imx25.c b/hw/arm/fsl-imx25.c
-index 3b97eceb3c..425a9edc36 100644
---- a/hw/arm/fsl-imx25.c
-+++ b/hw/arm/fsl-imx25.c
-@@ -120,14 +120,7 @@ static void fsl_imx25_realize(DeviceState *dev, Error **errp)
-         if (i < MAX_SERIAL_PORTS) {
-             Chardev *chr;
- 
--            chr = serial_hds[i];
--
--            if (!chr) {
--                char label[20];
--                snprintf(label, sizeof(label), "imx31.uart%d", i);
--                chr = qemu_chr_new(label, "null");
--            }
--
-+            chr = serial_chr_nonnull(serial_hds[i]);
-             qdev_prop_set_chr(DEVICE(&s->uart[i]), "chardev", chr);
-         }
- 
-diff --git a/hw/arm/fsl-imx31.c b/hw/arm/fsl-imx31.c
-index 0f2ebe8161..8d4535a536 100644
---- a/hw/arm/fsl-imx31.c
-+++ b/hw/arm/fsl-imx31.c
-@@ -109,14 +109,7 @@ static void fsl_imx31_realize(DeviceState *dev, Error **errp)
-         if (i < MAX_SERIAL_PORTS) {
-             Chardev *chr;
- 
--            chr = serial_hds[i];
--
--            if (!chr) {
--                char label[20];
--                snprintf(label, sizeof(label), "imx31.uart%d", i);
--                chr = qemu_chr_new(label, "null");
--            }
--
-+            chr = serial_chr_nonnull(serial_hds[i]);
-             qdev_prop_set_chr(DEVICE(&s->uart[i]), "chardev", chr);
-         }
- 
-diff --git a/hw/arm/fsl-imx6.c b/hw/arm/fsl-imx6.c
-index 26fd214004..7bc1aa1fbe 100644
---- a/hw/arm/fsl-imx6.c
-+++ b/hw/arm/fsl-imx6.c
-@@ -189,15 +189,7 @@ static void fsl_imx6_realize(DeviceState *dev, Error **errp)
-         if (i < MAX_SERIAL_PORTS) {
-             Chardev *chr;
- 
--            chr = serial_hds[i];
--
--            if (!chr) {
--                char *label = g_strdup_printf("imx6.uart%d", i + 1);
--                chr = qemu_chr_new(label, "null");
--                g_free(label);
--                serial_hds[i] = chr;
--            }
--
-+            chr = serial_chr_nonnull(serial_hds[i]);
-             qdev_prop_set_chr(DEVICE(&s->uart[i]), "chardev", chr);
-         }
- 
+@@ -183,6 +182,5 @@ void omap_uart_attach(struct omap_uart_s *s, Chardev *chr)
+     /* TODO: Should reuse or destroy current s->serial */
+     s->serial = serial_mm_init(get_system_memory(), s->base, 2, s->irq,
+                                omap_clk_getrate(s->fclk) / 16,
+-                               chr ?: qemu_chr_new("null", "null"),
+-                               DEVICE_NATIVE_ENDIAN);
++                               chr, DEVICE_NATIVE_ENDIAN);
+ }
 -- 
 2.14.1
 

@@ -1,88 +1,88 @@
-Received: by 10.223.188.70 with SMTP id a6csp1284759wrh;
-        Fri, 1 Sep 2017 10:22:06 -0700 (PDT)
-X-Google-Smtp-Source: ADKCNb6w7FHxhT4js3ksNkDfDu9USMfoXrfCHFIX8i/57uUKI8pbS9l3ELvzkXWRHgPIlZ0hpfII
-X-Received: by 10.200.23.74 with SMTP id u10mr4125447qtk.128.1504286526816;
-        Fri, 01 Sep 2017 10:22:06 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1504286526; cv=none;
+Received: by 10.223.188.70 with SMTP id a6csp1285298wrh;
+        Fri, 1 Sep 2017 10:22:39 -0700 (PDT)
+X-Google-Smtp-Source: ADKCNb4kvm1OoJG1AjRPBcLKnNRGojaI1B5zMnkO//co67fgjaccL6Cco/0T6lD+9r98Nx5ArOhy
+X-Received: by 10.55.164.82 with SMTP id n79mr3866785qke.45.1504286559337;
+        Fri, 01 Sep 2017 10:22:39 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1504286559; cv=none;
         d=google.com; s=arc-20160816;
-        b=MqXXfM0qZmlEJL0kDKU1am2fJWPh4VvSsu38pA0AL7U4zQf7Z6tFsXq+bp9VgUSPI8
-         KckKgcE7GHCTCyi5UObQwDt8WLHNMJ5J8WxdxTcAA+vFdcM09s6+vf81D2qGsc1gl9jT
-         IzM+qIiCUS1rKYLKBfQL5XArFyea5Tv7Zq4dRhHFpOmcSGY2XOeM7k+aIdMADWsH3EMB
-         olIuTPQdPeSReHf4qIGjl6Z9oXpL5HlUnj39C4pDs7flByZuKm/Cr2qF0z80YKGb2bgd
-         Up5NUfNh8xtvDT7eTpMg/qtotU+uja/AbnR3i9nLjc7J3DyQDqvMD6+vK2/MdCi513+K
-         nQvw==
+        b=FpUQig1Lge47BlMFiGjuW5wG1GSzf1r2EgYetK+ZEly82fck8kJcT0+gh41qmaqo/f
+         NR7EtpS5VjBFWV6uH9imaBnFGTBkoAedy62mK0xaWK/1Cy23pA1rFykXKbU/8EVRmjAk
+         3L1LaWbsbuF81d8t3+73G5jp2/NOLBL7NuTbk/0foL5fP8U1toKXIxk3xdHlbUQbfn/7
+         3/uitnE1bRgxoBs1yhu90D0SC3h8iNUa1WGatxIVmHqjc77mBLyKMAcmCWLZBmH7ZVID
+         P7b4dDg6jlzjjxZHN/A5LW7qgGdB0ATqUUtIhZF3wWbZ9K1NHFAaySgzDFgcHEdbQmjL
+         v6xQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
          :message-id:date:to:from:dmarc-filter:arc-authentication-results;
-        bh=qlJgXrJlkcptz8Te7fAN5WxZWwk0DVSd6Mj+yB9a3NM=;
-        b=bf3onbnjem2ymnUHwnvPOLCsql6rqNPMC9d78Jh4NSW1fOM3Qgi4hRlESjlITLA0S5
-         uGqvGRxuKfPrt6TYgPqyNbDx5ViN/41nvuQMNokCKzL5CXku+6pZ5sj7PMTiVOtftwbu
-         h3RBa9p9Wc7W8SEMSS0sCc5/FoSzo+wvZsV8JKXa3dgl99pMLXtMGS/Z3deQ8102/r7O
-         L//bIy64oNVvJOTU6ff/G9PiDohmaS01QTdYJC2x7qMsvzZ7nG5Z0y2nbIvM3iByAufL
-         zRVewYMOptM842B0nVgsb3PolrvUMRzE7/RFYktxTbEKMBbnb3jc9VGGvumO3mnmCYnO
-         6mHg==
+        bh=Ovq5YEoGmL/BOEA4xhyhu2LuIpsVQoz/3ppk1Q9jqYk=;
+        b=oMTX7ExnqlMdvTjxJheG6O+HWB4zdnU+aoq2tEO8hluqIBX7XfcWlCcBN/rDDbcdVB
+         gvIy79xl2RUg4/Csx1VoZRibluYzl/K1f7qfpNoqrF//3wX5TS2RBp7N0QPtW0u39jQs
+         s7eoaochF7WIH3s687Cjj0/2+tzkpFGq2pXsTR0Z5zxnC4JP8ukWHR6sF1qnIhuzAy4a
+         yweC4/vrPFfk1EyKlFIBjOVNyvQPiiBL9AXo8RVdcuU5i/of53MbeF9NJpGmhoxZhk7+
+         7cnVNd02PgTHjBO/ebUF0UU2vWWVjY1nJDwXOswJ8gs4ku5oh7awDSekw3x76oJ9bsrp
+         EsFA==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id d44si591857qtb.389.2017.09.01.10.22.06
+        by mx.google.com with ESMTPS id t27si10879336qkt.24.2017.09.01.10.22.38
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 01 Sep 2017 10:22:06 -0700 (PDT)
+        Fri, 01 Sep 2017 10:22:39 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:51217 helo=lists.gnu.org)
+Received: from localhost ([::1]:51225 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1dnpds-0004oW-Ht
-	for alex.bennee@linaro.org; Fri, 01 Sep 2017 13:22:04 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:36140)
+	id 1dnpeO-0005E3-Um
+	for alex.bennee@linaro.org; Fri, 01 Sep 2017 13:22:37 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:36479)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1dnpdm-0004mb-HD
-	for qemu-arm@nongnu.org; Fri, 01 Sep 2017 13:21:59 -0400
+	(envelope-from <eric.auger@redhat.com>) id 1dnpeI-0005CH-Sl
+	for qemu-arm@nongnu.org; Fri, 01 Sep 2017 13:22:32 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1dnpdl-000215-9R
-	for qemu-arm@nongnu.org; Fri, 01 Sep 2017 13:21:58 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:51300)
+	(envelope-from <eric.auger@redhat.com>) id 1dnpeH-0002YF-PH
+	for qemu-arm@nongnu.org; Fri, 01 Sep 2017 13:22:30 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:49608)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <eric.auger@redhat.com>)
-	id 1dnpdl-000209-0t; Fri, 01 Sep 2017 13:21:57 -0400
+	id 1dnpeH-0002XL-Gn; Fri, 01 Sep 2017 13:22:29 -0400
 Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
 	[10.5.11.15])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 051D07EA9F;
-	Fri,  1 Sep 2017 17:21:56 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 051D07EA9F
-Authentication-Results: ext-mx04.extmail.prod.ext.phx2.redhat.com;
+	by mx1.redhat.com (Postfix) with ESMTPS id 7BA7981DF5;
+	Fri,  1 Sep 2017 17:22:28 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 7BA7981DF5
+Authentication-Results: ext-mx01.extmail.prod.ext.phx2.redhat.com;
 	dmarc=none (p=none dis=none) header.from=redhat.com
-Authentication-Results: ext-mx04.extmail.prod.ext.phx2.redhat.com;
+Authentication-Results: ext-mx01.extmail.prod.ext.phx2.redhat.com;
 	spf=fail smtp.mailfrom=eric.auger@redhat.com
 Received: from localhost.localdomain.com (ovpn-117-241.ams2.redhat.com
 	[10.36.117.241])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 9300652FA0;
-	Fri,  1 Sep 2017 17:21:43 +0000 (UTC)
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 16A2617100;
+	Fri,  1 Sep 2017 17:22:22 +0000 (UTC)
 From: Eric Auger <eric.auger@redhat.com>
 To: eric.auger.pro@gmail.com, eric.auger@redhat.com, peter.maydell@linaro.org,
 	qemu-arm@nongnu.org, qemu-devel@nongnu.org, prem.mallappa@gmail.com,
 	alex.williamson@redhat.com
-Date: Fri,  1 Sep 2017 19:21:05 +0200
-Message-Id: <1504286483-23327-3-git-send-email-eric.auger@redhat.com>
+Date: Fri,  1 Sep 2017 19:21:09 +0200
+Message-Id: <1504286483-23327-7-git-send-email-eric.auger@redhat.com>
 In-Reply-To: <1504286483-23327-1-git-send-email-eric.auger@redhat.com>
 References: <1504286483-23327-1-git-send-email-eric.auger@redhat.com>
 X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.28]);
-	Fri, 01 Sep 2017 17:21:56 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.25]);
+	Fri, 01 Sep 2017 17:22:28 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 209.132.183.28
-Subject: [Qemu-arm] [PATCH v7 02/20] hw/arm/smmu-common: IOMMU memory region
- and address space setup
+Subject: [Qemu-arm] [PATCH v7 06/20] hw/arm/smmuv3: Wired IRQ and GERROR
+ helpers
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -101,140 +101,130 @@ Cc: mohun106@gmail.com, drjones@redhat.com, tcain@qti.qualcomm.com,
 	bharat.bhushan@nxp.com, christoffer.dall@linaro.org, wtownsen@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ZT60AKiDzjQm
+X-TUID: 92SfS5eBsTHG
 
-We enumerate all the PCI devices attached to the SMMU and
-initialize an associated IOMMU memory region and address space.
-This happens on SMMU base instance init.
+We introduce some helpers to handle wired IRQs and especially
+GERROR interrupt. SMMU writes GERROR register on GERROR event
+and SW acks GERROR interrupts by setting GERRORn.
 
-Those info are stored in SMMUDevice objects. The devices are
-grouped according to the PCIBus they belong to. A hash table
-indexed by the PCIBus poinet is used. Also an array indexed by
-the bus number allows to find the list of SMMUDevices.
+The Wired interrupts are edge sensitive.
 
 Signed-off-by: Eric Auger <eric.auger@redhat.com>
----
- hw/arm/smmu-common.c         | 89 ++++++++++++++++++++++++++++++++++++++++++++
- include/hw/arm/smmu-common.h |  6 +++
- 2 files changed, 95 insertions(+)
 
-diff --git a/hw/arm/smmu-common.c b/hw/arm/smmu-common.c
-index 56608f1..3e67992 100644
---- a/hw/arm/smmu-common.c
-+++ b/hw/arm/smmu-common.c
-@@ -30,8 +30,97 @@
- #include "qemu/error-report.h"
- #include "hw/arm/smmu-common.h"
- 
-+/******************/
-+/* Infrastructure */
-+/******************/
-+
-+static inline gboolean smmu_uint64_equal(gconstpointer v1, gconstpointer v2)
-+{
-+    return *((const uint64_t *)v1) == *((const uint64_t *)v2);
-+}
-+
-+static inline guint smmu_uint64_hash(gconstpointer v)
-+{
-+    return (guint)*(const uint64_t *)v;
-+}
-+
-+SMMUPciBus *smmu_find_as_from_bus_num(SMMUState *s, uint8_t bus_num)
-+{
-+    SMMUPciBus *smmu_pci_bus = s->smmu_as_by_bus_num[bus_num];
-+
-+    if (!smmu_pci_bus) {
-+        GHashTableIter iter;
-+
-+        g_hash_table_iter_init(&iter, s->smmu_as_by_busptr);
-+        while (g_hash_table_iter_next(&iter, NULL, (void **)&smmu_pci_bus)) {
-+            if (pci_bus_num(smmu_pci_bus->bus) == bus_num) {
-+                s->smmu_as_by_bus_num[bus_num] = smmu_pci_bus;
-+                return smmu_pci_bus;
-+            }
-+        }
-+    }
-+    return smmu_pci_bus;
-+}
-+
-+static AddressSpace *smmu_find_add_as(PCIBus *bus, void *opaque, int devfn)
-+{
-+    SMMUState *s = opaque;
-+    uintptr_t key = (uintptr_t)bus;
-+    SMMUPciBus *sbus = g_hash_table_lookup(s->smmu_as_by_busptr, &key);
-+    SMMUDevice *sdev;
-+
-+    if (!sbus) {
-+        uintptr_t *new_key = g_malloc(sizeof(*new_key));
-+
-+        *new_key = (uintptr_t)bus;
-+        sbus = g_malloc0(sizeof(SMMUPciBus) +
-+                         sizeof(SMMUDevice *) * SMMU_PCI_DEVFN_MAX);
-+        sbus->bus = bus;
-+        g_hash_table_insert(s->smmu_as_by_busptr, new_key, sbus);
-+    }
-+
-+    sdev = sbus->pbdev[devfn];
-+    if (!sdev) {
-+        char *name = g_strdup_printf("%s-%d-%d",
-+                                     s->mrtypename,
-+                                     pci_bus_num(bus), devfn);
-+        sdev = sbus->pbdev[devfn] = g_malloc0(sizeof(SMMUDevice));
-+
-+        sdev->smmu = s;
-+        sdev->bus = bus;
-+        sdev->devfn = devfn;
-+
-+        memory_region_init_iommu(&sdev->iommu, sizeof(sdev->iommu),
-+                                 s->mrtypename,
-+                                 OBJECT(s), name, 1ULL << 48);
-+        address_space_init(&sdev->as,
-+                           MEMORY_REGION(&sdev->iommu), name);
-+    }
-+
-+    return &sdev->as;
-+}
-+
-+static void smmu_init_iommu_as(SMMUState *s)
-+{
-+    PCIBus *pcibus = pci_find_primary_bus();
-+
-+    if (pcibus) {
-+        pci_setup_iommu(pcibus, smmu_find_add_as, s);
-+    } else {
-+        error_report("No PCI bus, SMMU is not registered");
-+    }
-+}
-+
- static void smmu_base_instance_init(Object *obj)
- {
-+    SMMUState *s = SMMU_SYS_DEV(obj);
-+
-+    memset(s->smmu_as_by_bus_num, 0, sizeof(s->smmu_as_by_bus_num));
-+
-+    s->smmu_as_by_busptr = g_hash_table_new_full(smmu_uint64_hash,
-+                                                 smmu_uint64_equal,
-+                                                 g_free, g_free);
-+    smmu_init_iommu_as(s);
+---
+
+Is CMD_SYNC interrupt enabled somewhere?
+---
+ hw/arm/smmuv3-internal.h | 20 ++++++++++++++++++
+ hw/arm/smmuv3.c          | 55 ++++++++++++++++++++++++++++++++++++++++++++++++
+ hw/arm/trace-events      |  2 ++
+ 3 files changed, 77 insertions(+)
+
+diff --git a/hw/arm/smmuv3-internal.h b/hw/arm/smmuv3-internal.h
+index 488acc8..2b44ee2 100644
+--- a/hw/arm/smmuv3-internal.h
++++ b/hw/arm/smmuv3-internal.h
+@@ -198,4 +198,24 @@ static inline int smmu_enabled(SMMUV3State *s)
+     return smmu_read32_reg(s, SMMU_REG_CR0) & SMMU_CR0_SMMU_ENABLE;
  }
  
- static void smmu_base_class_init(ObjectClass *klass, void *data)
-diff --git a/include/hw/arm/smmu-common.h b/include/hw/arm/smmu-common.h
-index 38cd18f..20f3fe6 100644
---- a/include/hw/arm/smmu-common.h
-+++ b/include/hw/arm/smmu-common.h
-@@ -105,4 +105,10 @@ typedef struct {
- #define SMMU_DEVICE_CLASS(klass)                                    \
-     OBJECT_CLASS_CHECK(SMMUBaseClass, (klass), TYPE_SMMU_DEV_BASE)
- 
-+SMMUPciBus *smmu_find_as_from_bus_num(SMMUState *s, uint8_t bus_num);
++/*****************************
++ * Interrupts
++ *****************************/
 +
-+static inline uint16_t smmu_get_sid(SMMUDevice *sdev)
++#define smmu_evt_irq_enabled(s)                   \
++    (smmu_read64_reg(s, SMMU_REG_IRQ_CTRL) & SMMU_IRQ_CTRL_EVENT_EN)
++#define smmu_gerror_irq_enabled(s)                  \
++    (smmu_read64_reg(s, SMMU_REG_IRQ_CTRL) & SMMU_IRQ_CTRL_GERROR_EN)
++#define smmu_pri_irq_enabled(s)                 \
++    (smmu_read64_reg(s, SMMU_REG_IRQ_CTRL) & SMMU_IRQ_CTRL_PRI_EN)
++
++#define SMMU_PENDING_GERRORS(s) \
++    (smmu_read32_reg(s, SMMU_REG_GERROR) ^ \
++     smmu_read32_reg(s, SMMU_REG_GERRORN))
++
++#define SMMU_CMDQ_ERR(s) (SMMU_PENDING_GERRORS(s) & SMMU_GERROR_CMDQ)
++
++void smmuv3_irq_trigger(SMMUV3State *s, SMMUIrq irq, uint32_t gerror_val);
++void smmuv3_write_gerrorn(SMMUV3State *s, uint32_t gerrorn);
++
+ #endif
+diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
+index 0a7cd1c..468134f 100644
+--- a/hw/arm/smmuv3.c
++++ b/hw/arm/smmuv3.c
+@@ -29,6 +29,61 @@
+ #include "hw/arm/smmuv3.h"
+ #include "smmuv3-internal.h"
+ 
++/**
++ * smmuv3_irq_trigger - pulse @irq if enabled and update
++ * GERROR register in case of GERROR interrupt
++ *
++ * @irq: irq type
++ * @gerror: gerror new value, only relevant if @irq is GERROR
++ */
++void smmuv3_irq_trigger(SMMUV3State *s, SMMUIrq irq, uint32_t gerror_val)
 +{
-+    return  ((pci_bus_num(sdev->bus) & 0xff) << 8) | sdev->devfn;
++    uint32_t pending_gerrors = SMMU_PENDING_GERRORS(s);
++    bool pulse = false;
++
++    switch (irq) {
++    case SMMU_IRQ_EVTQ:
++        pulse = smmu_evt_irq_enabled(s);
++        break;
++    case SMMU_IRQ_PRIQ:
++        pulse = smmu_pri_irq_enabled(s);
++        break;
++    case SMMU_IRQ_CMD_SYNC:
++        pulse = true;
++        break;
++    case SMMU_IRQ_GERROR:
++    {
++        /* don't toggle an already pending error */
++        bool new_gerrors = ~pending_gerrors & gerror_val;
++        uint32_t gerror = smmu_read32_reg(s, SMMU_REG_GERROR);
++
++        smmu_write32_reg(s, SMMU_REG_GERROR, gerror | new_gerrors);
++
++        /* pulse the GERROR irq only if all fields were acked */
++        pulse = smmu_gerror_irq_enabled(s) && !pending_gerrors;
++        break;
++    }
++    }
++    if (pulse) {
++            trace_smmuv3_irq_trigger(irq,
++                                     smmu_read32_reg(s, SMMU_REG_GERROR),
++                                     SMMU_PENDING_GERRORS(s));
++            qemu_irq_pulse(s->irq[irq]);
++    }
 +}
- #endif  /* HW_ARM_SMMU_COMMON */
++
++void smmuv3_write_gerrorn(SMMUV3State *s, uint32_t gerrorn)
++{
++    uint32_t pending_gerrors = SMMU_PENDING_GERRORS(s);
++    uint32_t sanitized;
++
++    /* Make sure SW does not toggle irqs that are not active */
++    sanitized = gerrorn & pending_gerrors;
++
++    smmu_write32_reg(s, SMMU_REG_GERRORN, sanitized);
++    trace_smmuv3_write_gerrorn(gerrorn, sanitized, SMMU_PENDING_GERRORS(s));
++}
++
+ static void smmuv3_init_regs(SMMUV3State *s)
+ {
+     uint32_t data =
+diff --git a/hw/arm/trace-events b/hw/arm/trace-events
+index 8affbf7..c1ce8eb 100644
+--- a/hw/arm/trace-events
++++ b/hw/arm/trace-events
+@@ -17,3 +17,5 @@ smmu_set_translated_address(hwaddr iova, hwaddr pa) "iova = 0x%"PRIx64" -> pa =
+ 
+ #hw/arm/smmuv3.c
+ smmuv3_read_mmio(hwaddr addr, uint64_t val, unsigned size) "addr: 0x%"PRIx64" val:0x%"PRIx64" size: 0x%x"
++smmuv3_irq_trigger(int irq, uint32_t gerror, uint32_t pending) "irq=%d gerror=0x%x pending gerrors=0x%x"
++smmuv3_write_gerrorn(uint32_t gerrorn, uint32_t sanitized, uint32_t pending) "gerrorn=0x%x sanitized=0x%x pending=0x%x"
 -- 
 2.5.5
 

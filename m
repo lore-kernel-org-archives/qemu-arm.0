@@ -1,85 +1,88 @@
-Received: by 10.223.188.70 with SMTP id a6csp1284486wrh;
-        Fri, 1 Sep 2017 10:21:50 -0700 (PDT)
-X-Google-Smtp-Source: ADKCNb542VB7JKLldRKfpB2fmN5viuaIXgRdfx4+XzsWPv4L9fZlviRV0xj2VIo/e/hGQqy+ek1C
-X-Received: by 10.200.52.252 with SMTP id x57mr4133251qtb.40.1504286510687;
-        Fri, 01 Sep 2017 10:21:50 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1504286510; cv=none;
+Received: by 10.223.188.70 with SMTP id a6csp1284555wrh;
+        Fri, 1 Sep 2017 10:21:55 -0700 (PDT)
+X-Google-Smtp-Source: ADKCNb5TjGfobLe799C70ETbBFD4xHUiYnVh1B+Ci+WQoR67SXj5N8ojXkuI0sVhSlWxOlA0mxsX
+X-Received: by 10.55.189.193 with SMTP id n184mr2361112qkf.90.1504286515584;
+        Fri, 01 Sep 2017 10:21:55 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1504286515; cv=none;
         d=google.com; s=arc-20160816;
-        b=wZgHx+vMhUsK52zxh6Gpz9/O7fUy2D/fdtihzgeyBb+CKMUcPWlcIxu1zl+RFhZZRY
-         6UsNpg8zdGootaLjoiyczUyz1FwM0yE8c1rNCLtDiotfImN7E0U63ptX1xb5Ofizk8HA
-         MWXy+Y4+KQpdh2P7ugGVgbrMeUVW27HvLjZluZ0VzQRZXbND43RhZ3raGnv9H9a4GSyl
-         9GBQMdEqMvFdudbO1aaEfPSxjOVkqBpMU2NsSM2ndaUpaDkrpo79vQ7roQXi0KuQ5clx
-         L1Rgg+HrB+IwKrFvrU/PV3Tvwl93e43zBt0D98lkrsQ70EbY+ebN56Du+nwq5BFtXJuA
-         n9ig==
+        b=V6YnF1VBZrPqAYbcrLGsWEcjWYFcXTi4Xf2w6UwD7+rKrpb4uPI3G0nl33DMsQVHcH
+         3EZJMBHbEnmfTLstW4Hj54qZw2xWxyOwbpfvtdMxIxUTyz1RIdbmMbw5AshdDCQ4FMc9
+         rutIwXQC09mnRLFLR/oL/WEzPmWT6J9Zi3yZ5LCSA+enpf8ESKvwufue7gMbq6m2itfa
+         oNr8g4y1YGxHyVJjdyGG3LojBE16qFv2BBY25TTdLWmxzLP8hPSYt+Vd4K07W4M9QVe5
+         c4vOF5waai3F0mQjli+hOXsdc4cZvXlrlG7f+Xd4PlaVAoRFFrUKV9Z8EIbnoynL7pPC
+         OYwg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:message-id:date:to:from
-         :dmarc-filter:arc-authentication-results;
-        bh=OShEdZ9s8A9F7A3Hsq9dnPP+AVlE0rg8sARWZ9KMNZo=;
-        b=CAtWt9J5VSb96Wr6fKtIwAUDxgmKd8NFr/pL79rupG6tq5aBdf95rtKAE36rNV8lrj
-         5/GfVnC4htDeTthagx7JoiVpydND2gQ8+67S1YI62tDpH1u3rbIgB51QRz1sMnKaeAU9
-         CUKO+49zc3zT1hVy33zy/T3oOAi4CPLv5yWxOllp3V7GyELWMLeYF7kP3YRrgfdjmsH2
-         xxJ88DSd9q9hXY6kguuGXtDVE1A2veaWkDIW5L34kd6Qn6m3cDykcajSPDjy5eMmI2rs
-         t8wUJo+IFgI4Jks/pVarAWAqF3KI8LujfUllZ+ocLX3DNQkIrRKNNWqUO9tuMMMCPP6D
-         uLsw==
+         :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
+         :message-id:date:to:from:dmarc-filter:arc-authentication-results;
+        bh=lYuEChMd26fEzSH53aIf8kE6iDidsAD9WjKtpncUBs8=;
+        b=HI9Si9fyycaD4yIC0TWf0PsjSyx6FkS5BwU2PO0qxHDHiTg45Bix88nOgDKUmZzriU
+         b7TWArFTDpLUs0HUcqvpgfa1Ms4UAXx9RygWQR16T1hozcA4ICDTETaEL+71T7hctRR9
+         5J6E4zhc/oA8THkd43bjYbIDy51qWnSxRIQ4HAfbt5fgwxs1xLi5si1FNSjAF/FXvZ3J
+         FZKgGi3N9OlJ/iq8dB7t67XQ3hdUBTG1mDp2gxJ2jUwbT63e3N+jLDmW3MGrolZ9XwYG
+         Hn/1k9DLfq68WRTZYRhNPNyLLVkOUjIHcP3RG1lQ6K3k+kQWkiPohowk0GqFlkzvA25l
+         0gbQ==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id c67si2062673qka.550.2017.09.01.10.21.50
+        by mx.google.com with ESMTPS id y23si580045qth.436.2017.09.01.10.21.55
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 01 Sep 2017 10:21:50 -0700 (PDT)
+        Fri, 01 Sep 2017 10:21:55 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:51211 helo=lists.gnu.org)
+Received: from localhost ([::1]:51213 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1dnpdc-0004aa-FU
-	for alex.bennee@linaro.org; Fri, 01 Sep 2017 13:21:48 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:35986)
+	id 1dnpdh-0004fM-Cj
+	for alex.bennee@linaro.org; Fri, 01 Sep 2017 13:21:53 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:36006)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1dnpdX-0004Z3-Qd
-	for qemu-arm@nongnu.org; Fri, 01 Sep 2017 13:21:45 -0400
+	(envelope-from <eric.auger@redhat.com>) id 1dnpda-0004aL-7R
+	for qemu-arm@nongnu.org; Fri, 01 Sep 2017 13:21:48 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1dnpdT-0001iy-Ob
-	for qemu-arm@nongnu.org; Fri, 01 Sep 2017 13:21:43 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:50614)
+	(envelope-from <eric.auger@redhat.com>) id 1dnpdY-0001n7-KZ
+	for qemu-arm@nongnu.org; Fri, 01 Sep 2017 13:21:46 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:53964)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <eric.auger@redhat.com>)
-	id 1dnpdT-0001i8-Gx; Fri, 01 Sep 2017 13:21:39 -0400
+	id 1dnpdY-0001mW-Bb; Fri, 01 Sep 2017 13:21:44 -0400
 Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
 	[10.5.11.15])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 1D9CA8B13F;
-	Fri,  1 Sep 2017 17:21:38 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 1D9CA8B13F
-Authentication-Results: ext-mx04.extmail.prod.ext.phx2.redhat.com;
+	by mx1.redhat.com (Postfix) with ESMTPS id 3BB83C057FA1;
+	Fri,  1 Sep 2017 17:21:43 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 3BB83C057FA1
+Authentication-Results: ext-mx08.extmail.prod.ext.phx2.redhat.com;
 	dmarc=none (p=none dis=none) header.from=redhat.com
-Authentication-Results: ext-mx04.extmail.prod.ext.phx2.redhat.com;
+Authentication-Results: ext-mx08.extmail.prod.ext.phx2.redhat.com;
 	spf=fail smtp.mailfrom=eric.auger@redhat.com
 Received: from localhost.localdomain.com (ovpn-117-241.ams2.redhat.com
 	[10.36.117.241])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id A7FB7627DE;
-	Fri,  1 Sep 2017 17:21:25 +0000 (UTC)
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 7494B62929;
+	Fri,  1 Sep 2017 17:21:38 +0000 (UTC)
 From: Eric Auger <eric.auger@redhat.com>
 To: eric.auger.pro@gmail.com, eric.auger@redhat.com, peter.maydell@linaro.org,
 	qemu-arm@nongnu.org, qemu-devel@nongnu.org, prem.mallappa@gmail.com,
 	alex.williamson@redhat.com
-Date: Fri,  1 Sep 2017 19:21:03 +0200
-Message-Id: <1504286483-23327-1-git-send-email-eric.auger@redhat.com>
+Date: Fri,  1 Sep 2017 19:21:04 +0200
+Message-Id: <1504286483-23327-2-git-send-email-eric.auger@redhat.com>
+In-Reply-To: <1504286483-23327-1-git-send-email-eric.auger@redhat.com>
+References: <1504286483-23327-1-git-send-email-eric.auger@redhat.com>
 X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.28]);
-	Fri, 01 Sep 2017 17:21:38 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.32]);
+	Fri, 01 Sep 2017 17:21:43 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 209.132.183.28
-Subject: [Qemu-arm] [PATCH v7 00/20] ARM SMMUv3 Emulation Support
+Subject: [Qemu-arm] [PATCH v7 01/20] hw/arm/smmu-common: smmu base device
+ and datatypes
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -98,189 +101,235 @@ Cc: mohun106@gmail.com, drjones@redhat.com, tcain@qti.qualcomm.com,
 	bharat.bhushan@nxp.com, christoffer.dall@linaro.org, wtownsen@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: cxGsI7/XZRsT
+X-TUID: M1wkXQYqwTYL
 
-This series implements the emulation code for ARM SMMUv3.
+The patch introduces the smmu base device and class for the ARM
+smmu. Devices for specific versions will be derived from this
+base device.
 
-Changes since v6:
-- DPDK testpmd now running on guest with 2 assigned VFs
-- Changed the instantiation method: add the following option to
-  the QEMU command line
-  -device smmuv3 # for virtio/vhost use cases
-  -device smmuv3,caching-mode # for vfio use cases (based on [1])
-- splitted the series into smaller patches to allow the review
-- the VFIO integration based on "tlbi-on-map" smmuv3 driver
-  is isolated from the rest: last 2 patches, not for upstream.
-  This is shipped for testing/bench until a better solution is found.
-- Reworked permission flag checks and event generation
+We also introduce some important datatypes.
 
-testing:
-- in dt and ACPI modes
-- virtio-net-pci and vhost-net devices using dma ops with various
-  guest page sizes [2]
-- assigned VFs using dma ops [3]:
-  - AMD Overdrive and igbvf passthrough (using gsi direct mapping)
-  - Cavium ThunderX and ixgbevf passthrough (using KVM MSI routing)
-- DPDK testpmd on guest running with VFIO user space drivers (2 igbvf) [3]
-  with guest and host page size equal (4kB)
+Signed-off-by: Eric Auger <eric.auger@redhat.com>
+Signed-off-by: Prem Mallappa <prem.mallappa@broadcom.com>
 
-Known limitations:
-- no VMSAv8-32 suport
-- no nested stage support (S1 + S2)
-- no support for HYP mappings
-- register fine emulation, commands, interrupts and errors were
-  not accurately tested. Handling is sufficient to run use cases
-  described above though.
-- interrupts and event generation not observed yet.
+---
 
-Best Regards
+v3 -> v4:
+- added smmu_find_as_from_bus_num
+- SMMU_PCI_BUS_MAX and SMMU_PCI_DEVFN_MAX in smmu-common header
+- new fields in SMMUState:
+  - iommu_ops, smmu_as_by_busptr, smmu_as_by_bus_num
+- add aa64[] field in SMMUTransCfg
 
-Eric
-
-This series can be found at:
-v7: https://github.com/eauger/qemu/tree/v2.10.0-SMMU-v7
-Previous version at:
-v6: https://github.com/eauger/qemu/tree/v2.10.0-rc2-SMMU-v6
-
-References:
-[1] [RFC v2 0/4] arm-smmu-v3 tlbi-on-map option
-    https://lkml.org/lkml/2017/8/11/426
-
-[2] qemu cmd line excerpt:
--device smmuv3 \
--netdev tap,id=tap0,script=no,downscript=no,ifname=tap0,vhost=off \
--device virtio-net-pci,netdev=tap0,mac=6a:f5:10:b1:3d:d2,iommu_platform,disable-modern=off,disable-legacy=on \
-[3] use -device smmuv3,caching-mode
-
-
-History:
-v6 -> v7:
-- see above
-
-v5 -> v6:
-- Rebase on 2.10 and IOMMUMemoryRegion
-- add ACPI TLBI_ON_MAP support (VFIO integration also works in
-  ACPI mode)
-- fix block replay
-- handle implementation defined SMMU_CMD_TLBI_NH_VA_AM cmd
-  (goes along with TLBI_ON_MAP FW quirk)
-- replay systematically unmap the whole range first
-- smmuv3_map_hook does not unmap anymore and the unmap is done
-  before the replay
-- add and use smmuv3_context_device_invalidate instead of
-  blindly replaying everything
-
-v4 -> v5:
-- initial_level now part of SMMUTransCfg
-- smmu_page_walk_64 takes into account the max input size
-- implement sys->iommu_ops.replay and sys->iommu_ops.notify_flag_changed
-- smmuv3_translate: bug fix: don't walk on bypass
-- smmu_update_qreg: fix PROD index update
-- I did not yet address Peter's comments as the code is not mature enough
-  to be split into sub patches.
-
-v3 -> v4 [Eric]:
-- page table walk rewritten to allow scan of the page table within a
-  range of IOVA. This prepares for VFIO integration and replay.
-- configuration parsing partially reworked.
-- do not advertise unsupported/untested features: S2, S1 + S2, HYP,
-  PRI, ATS, ..
-- added ACPI table generation
-- migrated to dynamic traces
-- mingw compilation fix
-
-v2 -> v3 [Eric]:
-- rebased on 2.9
-- mostly code and patch reorganization to ease the review process
-- optional patches removed. They may be handled separately. I am currently
-  working on ACPI enablement.
-- optional instantiation of the smmu in mach-virt
-- removed [2/9] (fdt functions) since not mandated
-- start splitting main patch into base and derived object
-- no new function feature added
-
-v1 -> v2 [Prem]:
-- Adopted review comments from Eric Auger
-        - Make SMMU_DPRINTF to internally call qemu_log
-            (since translation requests are too many, we need control
-             on the type of log we want)
-        - SMMUTransCfg modified to suite simplicity
-        - Change RegInfo to uint64 register array
-        - Code cleanup
-        - Test cleanups
-- Reshuffled patches
-
-v0 -> v1 [Prem]:
-- As per SMMUv3 spec 16.0 (only is_ste_consistant() is noticeable)
-- Reworked register access/update logic
-- Factored out translation code for
-        - single point bug fix
-        - sharing/removal in future
-- (optional) Unit tests added, with PCI test device
-        - S1 with 4k/64k, S1+S2 with 4k/64k
-        - (S1 or S2) only can be verified by Linux 4.7 driver
-        - (optional) Priliminary ACPI support
-
-v0 [Prem]:
-- Implements SMMUv3 spec 11.0
-- Supported for PCIe devices,
-- Command Queue and Event Queue supported
-- LPAE only, S1 is supported and Tested, S2 not tested
-- BE mode Translation not supported
-- IRQ support (legacy, no MSI)
-
-Eric Auger (18):
-  hw/arm/smmu-common: smmu base device and datatypes
-  hw/arm/smmu-common: IOMMU memory region and address space setup
-  hw/arm/smmu-common: smmu_read/write_sysmem
-  hw/arm/smmu-common: VMSAv8-64 page table walk
-  hw/arm/smmuv3: Wired IRQ and GERROR helpers
-  hw/arm/smmuv3: Queue helpers
-  hw/arm/smmuv3: Implement MMIO write operations
-  hw/arm/smmuv3: Event queue recording helper
-  hw/arm/smmuv3: Implement translate callback
-  target/arm/kvm: Translate the MSI doorbell in kvm_arch_fixup_msi_route
-  hw/arm/smmuv3: Implement data structure and TLB invalidation
-    notifications
-  hw/arm/smmuv3: Implement IOMMU memory region replay callback
-  hw/arm/virt: Store the PCI host controller dt phandle
-  hw/arm/sysbus-fdt: Pass the VirtMachineState to the node creation
-    functions
-  hw/arm/sysbus-fdt: Pass the platform bus base address in
-    PlatformBusFDTData
-  hw/arm/sysbus-fdt: Allow smmuv3 dynamic instantiation
-  hw/arm/smmuv3: [not for upstream] add SMMU_CMD_TLBI_NH_VA_AM handling
-  hw/arm/smmuv3: [not for upstream] Add caching-mode option
-
-Prem Mallappa (2):
-  hw/arm/smmuv3: Skeleton
-  hw/arm/virt-acpi-build: Add smmuv3 node in IORT table
-
- default-configs/aarch64-softmmu.mak |    1 +
- hw/arm/Makefile.objs                |    1 +
- hw/arm/smmu-common.c                |  527 ++++++++++++++++
- hw/arm/smmu-internal.h              |  105 ++++
- hw/arm/smmuv3-internal.h            |  584 +++++++++++++++++
- hw/arm/smmuv3.c                     | 1181 +++++++++++++++++++++++++++++++++++
- hw/arm/sysbus-fdt.c                 |  129 +++-
- hw/arm/trace-events                 |   48 ++
- hw/arm/virt-acpi-build.c            |   63 +-
- hw/arm/virt.c                       |    6 +-
- include/hw/acpi/acpi-defs.h         |   15 +
- include/hw/arm/smmu-common.h        |  123 ++++
- include/hw/arm/smmuv3.h             |   80 +++
- include/hw/arm/sysbus-fdt.h         |    2 +
- include/hw/arm/virt.h               |   15 +
- target/arm/kvm.c                    |   27 +
- target/arm/trace-events             |    3 +
- 17 files changed, 2886 insertions(+), 24 deletions(-)
+v3:
+- moved the base code in a separate patch to ease the review.
+- clearer separation between base class and smmuv3 class
+- translate_* only implemented as class methods
+---
+ default-configs/aarch64-softmmu.mak |   1 +
+ hw/arm/Makefile.objs                |   1 +
+ hw/arm/smmu-common.c                |  58 +++++++++++++++++++
+ include/hw/arm/smmu-common.h        | 108 ++++++++++++++++++++++++++++++++++++
+ 4 files changed, 168 insertions(+)
  create mode 100644 hw/arm/smmu-common.c
- create mode 100644 hw/arm/smmu-internal.h
- create mode 100644 hw/arm/smmuv3-internal.h
- create mode 100644 hw/arm/smmuv3.c
  create mode 100644 include/hw/arm/smmu-common.h
- create mode 100644 include/hw/arm/smmuv3.h
 
+diff --git a/default-configs/aarch64-softmmu.mak b/default-configs/aarch64-softmmu.mak
+index 2449483..83a2932 100644
+--- a/default-configs/aarch64-softmmu.mak
++++ b/default-configs/aarch64-softmmu.mak
+@@ -7,3 +7,4 @@ CONFIG_AUX=y
+ CONFIG_DDC=y
+ CONFIG_DPCD=y
+ CONFIG_XLNX_ZYNQMP=y
++CONFIG_ARM_SMMUV3=y
+diff --git a/hw/arm/Makefile.objs b/hw/arm/Makefile.objs
+index a2e56ec..5b2d38d 100644
+--- a/hw/arm/Makefile.objs
++++ b/hw/arm/Makefile.objs
+@@ -19,3 +19,4 @@ obj-$(CONFIG_FSL_IMX31) += fsl-imx31.o kzm.o
+ obj-$(CONFIG_FSL_IMX6) += fsl-imx6.o sabrelite.o
+ obj-$(CONFIG_ASPEED_SOC) += aspeed_soc.o aspeed.o
+ obj-$(CONFIG_MPS2) += mps2.o
++obj-$(CONFIG_ARM_SMMUV3) += smmu-common.o
+diff --git a/hw/arm/smmu-common.c b/hw/arm/smmu-common.c
+new file mode 100644
+index 0000000..56608f1
+--- /dev/null
++++ b/hw/arm/smmu-common.c
+@@ -0,0 +1,58 @@
++/*
++ * Copyright (C) 2014-2016 Broadcom Corporation
++ * Copyright (c) 2017 Red Hat, Inc.
++ * Written by Prem Mallappa, Eric Auger
++ *
++ * This program is free software; you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License version 2 as
++ * published by the Free Software Foundation.
++ *
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU General Public License for more details.
++ *
++ * You should have received a copy of the GNU General Public License
++ * along with this program; if not, write to the Free Software
++ * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
++ *
++ * Author: Prem Mallappa <pmallapp@broadcom.com>
++ *
++ */
++
++#include "qemu/osdep.h"
++#include "sysemu/sysemu.h"
++#include "exec/address-spaces.h"
++#include "trace.h"
++#include "exec/target_page.h"
++#include "qom/cpu.h"
++
++#include "qemu/error-report.h"
++#include "hw/arm/smmu-common.h"
++
++static void smmu_base_instance_init(Object *obj)
++{
++}
++
++static void smmu_base_class_init(ObjectClass *klass, void *data)
++{
++}
++
++static const TypeInfo smmu_base_info = {
++    .name          = TYPE_SMMU_DEV_BASE,
++    .parent        = TYPE_SYS_BUS_DEVICE,
++    .instance_size = sizeof(SMMUState),
++    .instance_init = smmu_base_instance_init,
++    .class_data    = NULL,
++    .class_size    = sizeof(SMMUBaseClass),
++    .class_init    = smmu_base_class_init,
++    .abstract      = true,
++};
++
++static void smmu_base_register_types(void)
++{
++    type_register_static(&smmu_base_info);
++}
++
++type_init(smmu_base_register_types)
++
+diff --git a/include/hw/arm/smmu-common.h b/include/hw/arm/smmu-common.h
+new file mode 100644
+index 0000000..38cd18f
+--- /dev/null
++++ b/include/hw/arm/smmu-common.h
+@@ -0,0 +1,108 @@
++/*
++ * ARM SMMU Support
++ *
++ * Copyright (C) 2015-2016 Broadcom Corporation
++ * Copyright (c) 2017 Red Hat, Inc.
++ * Written by Prem Mallappa, Eric Auger
++ *
++ * This program is free software; you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License as published by
++ * the Free Software Foundation, either version 2 of the License, or
++ * (at your option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU General Public License for more details.
++ *
++ * You should have received a copy of the GNU General Public License along
++ * with this program; if not, see <http://www.gnu.org/licenses/>.
++ */
++
++#ifndef HW_ARM_SMMU_COMMON_H
++#define HW_ARM_SMMU_COMMON_H
++
++#include <hw/sysbus.h>
++#include "hw/pci/pci.h"
++
++#define SMMU_PCI_BUS_MAX      256
++#define SMMU_PCI_DEVFN_MAX    256
++
++/*
++ * Page table walk generic errors
++ * At the moment values match SMMUv3 event numbers though
++ */
++typedef enum {
++    SMMU_TRANS_ERR_NONE          = 0x0,
++    SMMU_TRANS_ERR_WALK_EXT_ABRT = 0x1,  /* Translation walk external abort */
++    SMMU_TRANS_ERR_TRANS         = 0x10, /* Translation fault */
++    SMMU_TRANS_ERR_ADDR_SZ,              /* Address Size fault */
++    SMMU_TRANS_ERR_ACCESS,               /* Access fault */
++    SMMU_TRANS_ERR_PERM,                 /* Permission fault */
++    SMMU_TRANS_ERR_TLB_CONFLICT  = 0x20, /* TLB Conflict */
++} SMMUTransErr;
++
++/*
++ * Generic structure populated by derived SMMU devices
++ * after decoding the configuration information and used as
++ * input to the page table walk
++ */
++typedef struct SMMUTransCfg {
++    hwaddr   input;            /* input address */
++    hwaddr   output;           /* Output address */
++    int      stage;            /* translation stage */
++    uint32_t oas;              /* output address width */
++    uint32_t tsz;              /* input range, ie. 2^(64 -tnsz)*/
++    uint64_t ttbr;             /* TTBR address */
++    uint32_t granule_sz;       /* granule page shift */
++    bool     aa64;             /* arch64 or aarch32 translation table */
++    int      initial_level;    /* initial lookup level */
++    bool     disabled;         /* smmu is disabled */
++    bool     bypassed;         /* stage is bypassed */
++} SMMUTransCfg;
++
++typedef struct SMMUDevice {
++    void               *smmu;
++    PCIBus             *bus;
++    int                devfn;
++    IOMMUMemoryRegion  iommu;
++    AddressSpace       as;
++} SMMUDevice;
++
++typedef struct SMMUNotifierNode {
++    SMMUDevice *sdev;
++    QLIST_ENTRY(SMMUNotifierNode) next;
++} SMMUNotifierNode;
++
++typedef struct SMMUPciBus {
++    PCIBus       *bus;
++    SMMUDevice   *pbdev[0]; /* Parent array is sparse, so dynamically alloc */
++} SMMUPciBus;
++
++typedef struct SMMUState {
++    /* <private> */
++    SysBusDevice  dev;
++    char *mrtypename;
++    MemoryRegion iomem;
++
++    GHashTable *smmu_as_by_busptr;
++    SMMUPciBus *smmu_as_by_bus_num[SMMU_PCI_BUS_MAX];
++    QLIST_HEAD(, SMMUNotifierNode) notifiers_list;
++
++} SMMUState;
++
++typedef int (*smmu_page_walk_hook)(IOMMUTLBEntry *entry, void *private);
++
++typedef struct {
++    /* <private> */
++    SysBusDeviceClass parent_class;
++} SMMUBaseClass;
++
++#define TYPE_SMMU_DEV_BASE "smmu-base"
++#define SMMU_SYS_DEV(obj) OBJECT_CHECK(SMMUState, (obj), TYPE_SMMU_DEV_BASE)
++#define SMMU_DEVICE_GET_CLASS(obj)                              \
++    OBJECT_GET_CLASS(SMMUBaseClass, (obj), TYPE_SMMU_DEV_BASE)
++#define SMMU_DEVICE_CLASS(klass)                                    \
++    OBJECT_CLASS_CHECK(SMMUBaseClass, (klass), TYPE_SMMU_DEV_BASE)
++
++#endif  /* HW_ARM_SMMU_COMMON */
 -- 
 2.5.5
 

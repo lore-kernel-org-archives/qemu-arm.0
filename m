@@ -1,99 +1,96 @@
-Received: by 10.223.188.70 with SMTP id a6csp2679447wrh;
-        Thu, 31 Aug 2017 09:57:24 -0700 (PDT)
-X-Received: by 10.80.174.5 with SMTP id c5mr2052985edd.68.1504198644303;
-        Thu, 31 Aug 2017 09:57:24 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1504198644; cv=none;
+Received: by 10.223.172.38 with SMTP id v35csp21730wrc;
+        Mon, 4 Sep 2017 04:11:01 -0700 (PDT)
+X-Received: by 10.55.131.129 with SMTP id f123mr247055qkd.344.1504523461605;
+        Mon, 04 Sep 2017 04:11:01 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1504523461; cv=none;
         d=google.com; s=arc-20160816;
-        b=HzpTUXnEqD6S+qqpwCNh4lHftj9Ng8D7qKNp6KCOZiqhIlVmz0ST+mJehUL/7+240b
-         +wiCk6KUM5SUPXGeSgTVkR9WbX94WImRcyo4bBK/TJ9vmBawyOyNhBtyLjiwlIkcyCAv
-         jS8DHUK70DrwyOZcGh+DwzHeD/bD6Q5pNFPA3YGyACT2SQDsoHoEkvTFy2fXP66rIGPN
-         K6DZbk0mFGfptRaUB4hx/z0kaM8Bph9b6OxGZhnd2yqQZj7i4k3FG01sgFcmxzKwvq3A
-         QyjDruRsDZb6+rQVFWaDXFS4nwfRpOvjA5NYmKQEKbTo8Kv6dOWWzuKkmj5Cie4fMmwB
-         CUTw==
+        b=lTrCRIT963uJ0r4oCjzOt56N5T53Xl+L836yV3TdTiwbJQO7UvdmR6TrJ+kiT7tpJH
+         VwSWb6T5e5jMzhP6fTXk8gyascoJXPYgYoZRsjqijef+diPduoHER8oCpUEDGiT2q58C
+         LciKS/D5TaA6gqYhM+KAExEKPe29knkpAk9KWrMIZlDPY1EeFVaiPcyuwOAxFf8F83D0
+         Yj0zKtOyJ0R9o1fBSXYza/9E5uv4KN3Hj91URhALVDfpzqlHFkVNzgleQE+Au/mVAFIS
+         fORmBOOYaqAkVgFHanr+8UkUZuLRnu+MjQwUgfSoYKPmFPCdABJ0vBZQGJH7xFjn9MaN
+         ggTA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
          :references:in-reply-to:mime-version:dkim-signature
          :arc-authentication-results;
-        bh=bmm3AQfywmOOHoWfTukL1SCXKbIZfNJYwR7KWDUQr5M=;
-        b=YBOD/bRkeHWQRnIOMklWfk1TvqSVbr8WNKxOwVvK7VSuryJeFvYlN2xtaEnWhGUcko
-         fVz9Cc1CyhvgtQGsMY0GUGLONrEt0/+0OfEmh8MtpUYiD2M8YIJet02hfoHUpN4u0wbl
-         UkBokFLpSVg5wabzIScXYaJbZN5mPKhM1YlFN/oFYpZAU3SZQ0lqhXGQGgIXpoTdIehV
-         cn3YyD7BWIZPsnEEkmkBIv79C3Ge+jWm5s5qf5+ZEFe2V2UEjB9cMdXSYpqW29ay6/cB
-         A3i03SxMs1oDuWx4PziTrLuQ5gG7md079oUND9xWjQLxMaXMEErkBVq7X3DLgoQKkQ3F
-         zotg==
+        bh=keP/TfWPE4aXN6OrEv5cecBmdUWR0cCCkHFOwEOgeao=;
+        b=G+srwcVg0nohhM2R0G2xxW3jKAZDJfCQbzPxnkseQWul3Lg8sl7idT6o1o+CRpBheg
+         hzLbUEIHqjZqQ7VWVzQtQLEbnvLxp5hq1S7GsVDIsyDQxGNI/bOmDe1dSzPxHY8u0JWO
+         Mwx5o6Lo7BaudJe1RelaPtd06P+FoRpt7c4pvcpdivTVOFdcmx6h8ARWRVIKrP37T53C
+         EOopSxe19IMQ96vdsLH+KA63ufWDnGLvo07C06FP++0v3RHqG5gp424uSG7g55b/2cWy
+         sdJoInGicJLPPk2he3caiWpOP7jQasgnvdcj/QpdyS7zq6xatgVR6g7OsKS1qY7Yed4v
+         P/uA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=fPTnhIy/;
+       dkim=fail header.i=@linaro.org header.s=google header.b=TbrwX8dw;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id 6si518007edj.305.2017.08.31.09.57.24
+        by mx.google.com with ESMTPS id o94si5701855qkh.537.2017.09.04.04.11.01
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 31 Aug 2017 09:57:24 -0700 (PDT)
+        Mon, 04 Sep 2017 04:11:01 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=fPTnhIy/;
+       dkim=fail header.i=@linaro.org header.s=google header.b=TbrwX8dw;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:56753 helo=lists.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:53930 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1dnSmR-0001BZ-Bx
-	for alex.bennee@linaro.org; Thu, 31 Aug 2017 12:57:23 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:57944)
+	id 1dopHP-000860-3o
+	for alex.bennee@linaro.org; Mon, 04 Sep 2017 07:10:59 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:56287)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <bobby.prani@gmail.com>) id 1dnSmM-0001BS-E9
-	for qemu-arm@nongnu.org; Thu, 31 Aug 2017 12:57:19 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1dopHD-00082G-3g
+	for qemu-arm@nongnu.org; Mon, 04 Sep 2017 07:10:51 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <bobby.prani@gmail.com>) id 1dnSmL-0007Zb-HQ
-	for qemu-arm@nongnu.org; Thu, 31 Aug 2017 12:57:18 -0400
-Received: from mail-io0-x241.google.com ([2607:f8b0:4001:c06::241]:32977)
+	(envelope-from <peter.maydell@linaro.org>) id 1dopH8-0005v7-LD
+	for qemu-arm@nongnu.org; Mon, 04 Sep 2017 07:10:47 -0400
+Received: from mail-wm0-x22b.google.com ([2a00:1450:400c:c09::22b]:37674)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <bobby.prani@gmail.com>)
-	id 1dnSmL-0007Yz-CE; Thu, 31 Aug 2017 12:57:17 -0400
-Received: by mail-io0-x241.google.com with SMTP id f99so260299ioi.0;
-	Thu, 31 Aug 2017 09:57:16 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1dopH8-0005tc-Bq
+	for qemu-arm@nongnu.org; Mon, 04 Sep 2017 07:10:42 -0400
+Received: by mail-wm0-x22b.google.com with SMTP id u26so1365027wma.0
+	for <qemu-arm@nongnu.org>; Mon, 04 Sep 2017 04:10:42 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
 	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=bmm3AQfywmOOHoWfTukL1SCXKbIZfNJYwR7KWDUQr5M=;
-	b=fPTnhIy/SlgVvlobBN8LKCLVvUxZCIloSfV0dxxAHyMp85YRSj24DXOO6dRDXEoHbu
-	nOeWHNsCYolBSAlC5AOy4UIntSH0RV3akBmGIw0USWhtzSBXBEuxz7rsSdFhhhCBlXvT
-	z5uPpZqapek9AoKv0jGtNnwkOyHLSwDu0z8pWu8HuxkEO6wvGWmWH6RkScf75F/JoQpV
-	O2Z+5uADfjMNtd0RspM/d4uKanFET9eBo1nF98EPqTbGS7nwnjq0d6pDyWbcObCtliOQ
-	zaZf2OTXRvplwshReC6MTl97dauz1iWYog/LR8QP5PHbB4P1LUL5MFVERKegDtCSRqrQ
-	BULQ==
+	:cc; bh=keP/TfWPE4aXN6OrEv5cecBmdUWR0cCCkHFOwEOgeao=;
+	b=TbrwX8dwILK6E64lfIHcayo0BwU2jhpKgK98+jyAKOl6GXge8gD+dfOREE/Y1+VWGA
+	3diYkkZcX6zjOOJ0hjSlzCcpClGIOGy0SFAJcNKLWq1B1PIoi6gHIwUTp8Dll8KP7ly/
+	mcEeRCsYWLuWsBBFCnQuVrYGcF1sYJl0bxUFo=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
 	:message-id:subject:to:cc;
-	bh=bmm3AQfywmOOHoWfTukL1SCXKbIZfNJYwR7KWDUQr5M=;
-	b=EFodRmYF65gWi9zxp6aJe0cTndzc015eVPRG4sAZljYwTZNIQ/6sh3nfZ9f1zqmJH2
-	aaIwWuEhXdNXGduFbt/BruLyuIckXpzlDx7994RboVVN7D83LebEA1pUGAx1M0FIkGOp
-	WMrNvv8oNjWEFT/4/Um7xbf/FDa1RdmwktNjGyKQ5xzQ2PETmvIHvQlAmr8EWDTJ8RMB
-	fjyDQpsC8NrJrMkCdJmxKfKQUswDCqKw0fxXvcFYoERNOB61d9agxrnXVXubByCzzcQQ
-	6GanslMHP1fWmx1mkxVdYostmqb2+Zu2D5T9xIjeuXUF7/ElyvWTI1HlsumSv+Knfzxd
-	jYHA==
-X-Gm-Message-State: AHPjjUigsihl82iIEQEXPcxAL4BbJAzs/Z6Lw9sChoozLZ1TFYq49+5U
-	uxjxU9oxDlTY+Chva2JhXcaZ8QRztQ==
-X-Google-Smtp-Source: ADKCNb6z8qqhQm4twEl0Y9z2swWKPhPuge3ZSwqxdo28wdkAgnOWhKF8BY+mQyLZlo8bulRsnLAVEwAnnCmS15DMvR0=
-X-Received: by 10.107.129.85 with SMTP id c82mr5218968iod.17.1504198635773;
-	Thu, 31 Aug 2017 09:57:15 -0700 (PDT)
+	bh=keP/TfWPE4aXN6OrEv5cecBmdUWR0cCCkHFOwEOgeao=;
+	b=K8vpDKe46V0Zdf8pwrM3OvvK117th48Bj99bCEB/x4Q7R1rb44wJ4XDP6StaRUNOeO
+	0btAOHw8LIxEpN4ocVsXBYjSZJLNYaSrPE2AOYT3XxPe0Pk2NEil5/aITiRNdJAXiKdz
+	h5g6atIuSq+4ortdGrOCUNUF3ytUKSnBnhPdX0q2jsn6RYHAbgimLXaUG3yjKsto7zBc
+	rLOfEC8eNhL+7aQmy8rxm3ETWkSYuI7Dol2Bfn5qHBIDwF5Q3ZNAismoXGq+8WNnigRI
+	J2o+UckKPc2u1K0QUOQHjlYB9gbu9ViOfeESlJ/sQDiGWZSSBw7BA2xHyJObGXqj8cFJ
+	k/oQ==
+X-Gm-Message-State: AHPjjUitrwf66GbTakRI1MrmpDh+fXRVYlSERub+q7y1/2WurlqDX1SV
+	sr2Sawr8bI3Z43W1o0NMgIRxbzz34c+1
+X-Google-Smtp-Source: ADKCNb60zi1TygaxN57BgorQFLscRU6ntBOKC/ac63UrWI2cGu/P7HkdGiByM4aet+HehfNOv2faH1eLPHTlPQMt4n8=
+X-Received: by 10.28.146.66 with SMTP id u63mr27624wmd.95.1504523441238; Mon,
+	04 Sep 2017 04:10:41 -0700 (PDT)
 MIME-Version: 1.0
-Received: by 10.79.166.2 with HTTP; Thu, 31 Aug 2017 09:56:45 -0700 (PDT)
-In-Reply-To: <20170829173226.7625-1-bobby.prani@gmail.com>
+Received: by 10.223.159.68 with HTTP; Mon, 4 Sep 2017 04:10:20 -0700 (PDT)
+In-Reply-To: <CAJhHMCDgm8RRO42PXDOEYE8oZf5OLSBZo+akM1Kx8bOJLTSYCA@mail.gmail.com>
 References: <20170829173226.7625-1-bobby.prani@gmail.com>
-From: Pranith Kumar <bobby.prani@gmail.com>
-Date: Thu, 31 Aug 2017 12:56:45 -0400
-Message-ID: <CAJhHMCDgm8RRO42PXDOEYE8oZf5OLSBZo+akM1Kx8bOJLTSYCA@mail.gmail.com>
-To: Peter Maydell <peter.maydell@linaro.org>,
-	"open list:ARM cores" <qemu-arm@nongnu.org>, 
-	"open list:All patches CC here" <qemu-devel@nongnu.org>
+	<CAJhHMCDgm8RRO42PXDOEYE8oZf5OLSBZo+akM1Kx8bOJLTSYCA@mail.gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 4 Sep 2017 12:10:20 +0100
+Message-ID: <CAFEAcA822caMzc16XErE4-LO_sqLuiPBV+bR67sM+1_f9jx7fg@mail.gmail.com>
+To: Pranith Kumar <bobby.prani@gmail.com>
 Content-Type: text/plain; charset="UTF-8"
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:4001:c06::241
+X-Received-From: 2a00:1450:400c:c09::22b
 Subject: Re: [Qemu-arm] [PATCH] arm_gicv3_kvm: Fix compile warning
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
@@ -106,49 +103,16 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-stable@nongnu.org
+Cc: "open list:ARM cores" <qemu-arm@nongnu.org>,
+	"open list:All patches CC here" <qemu-devel@nongnu.org>,
+	qemu-stable <qemu-stable@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: pcDvvajsS++b
+X-TUID: A9SQnD0j72/w
 
-CC'ing stable for 2.10.
+On 31 August 2017 at 17:56, Pranith Kumar <bobby.prani@gmail.com> wrote:
+> CC'ing stable for 2.10.
 
-On Tue, Aug 29, 2017 at 1:32 PM, Pranith Kumar <bobby.prani@gmail.com> wrote:
-> Fix the following warning:
->
-> /home/pranith/qemu/hw/intc/arm_gicv3_kvm.c:296:17: warning: logical not is only applied to the left hand side of this bitwise operator [-Wlogical-not-parentheses]
->             if (!c->gicr_ctlr & GICR_CTLR_ENABLE_LPIS) {
->                 ^             ~
-> /home/pranith/qemu/hw/intc/arm_gicv3_kvm.c:296:17: note: add parentheses after the '!' to evaluate the bitwise operator first
->             if (!c->gicr_ctlr & GICR_CTLR_ENABLE_LPIS) {
->                 ^
-> /home/pranith/qemu/hw/intc/arm_gicv3_kvm.c:296:17: note: add parentheses around left hand side expression to silence this warning
->             if (!c->gicr_ctlr & GICR_CTLR_ENABLE_LPIS) {
->                 ^
->
-> Signed-off-by: Pranith Kumar <bobby.prani@gmail.com>
-> ---
->  hw/intc/arm_gicv3_kvm.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
->
-> diff --git a/hw/intc/arm_gicv3_kvm.c b/hw/intc/arm_gicv3_kvm.c
-> index 6051c77705..481fe5405a 100644
-> --- a/hw/intc/arm_gicv3_kvm.c
-> +++ b/hw/intc/arm_gicv3_kvm.c
-> @@ -293,7 +293,7 @@ static void kvm_arm_gicv3_put(GICv3State *s)
->              kvm_gicr_access(s, GICR_PROPBASER + 4, ncpu, &regh, true);
->
->              reg64 = c->gicr_pendbaser;
-> -            if (!c->gicr_ctlr & GICR_CTLR_ENABLE_LPIS) {
-> +            if (!(c->gicr_ctlr & GICR_CTLR_ENABLE_LPIS)) {
->                  /* Setting PTZ is advised if LPIs are disabled, to reduce
->                   * GIC initialization time.
->                   */
-> --
-> 2.11.0
->
+Thanks; applied to target-arm.next (with a tweaked commit message).
 
-
-
--- 
-Pranith
+-- PMM

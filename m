@@ -1,110 +1,99 @@
-Received: by 10.223.172.38 with SMTP id v35csp1358885wrc;
-        Tue, 5 Sep 2017 05:30:18 -0700 (PDT)
-X-Received: by 10.237.34.25 with SMTP id n25mr5192803qtc.144.1504614618536;
-        Tue, 05 Sep 2017 05:30:18 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1504614618; cv=none;
+Received: by 10.223.172.38 with SMTP id v35csp1368224wrc;
+        Tue, 5 Sep 2017 05:39:20 -0700 (PDT)
+X-Received: by 10.55.149.70 with SMTP id x67mr3055869qkd.149.1504615160001;
+        Tue, 05 Sep 2017 05:39:20 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1504615159; cv=none;
         d=google.com; s=arc-20160816;
-        b=nyui4rizc8wGA2C9zXTv0LIr4S1def3syrEjurZqzu9OSG0ajgQMO9IpKWxZ82mo7J
-         F3/LWCOl6w3oBoO0C1aSPxqhRjdIbNYT7klcqyAsy9LrYgUvy+vojzHdNT+CtsdUFSv0
-         6qlcu7W+ZJUlR3Gm/svc5dyMHLlJEYE1H9o8OcgbOiF7jPDAHxwbHUl3+qO1w6PVIpd3
-         yF9EqdaMHBnMMOYcPTwoxyZt1ktAFjPBtMrO0az77Vy5WeZ6IUgl+pCJDPZmrcQvCNzI
-         CZAILCxaD46kzEO0RemEbb15curRW/11Vpe3TOA9xo+gS2yx/MRd/YQd9k7ow629a6QZ
-         HyCg==
+        b=SEYkh7HzIW0tV3RRxwLF8uw0CAQshvbqohl1WpO8FHPoSb7h/mWlMC0ChQfNFyDkWg
+         3eJ95GPmB7nw6x9L7btbpHxk3Sdb3YNYdRWyBVHJ79zKdgQn3nKI+Jj6vxucKu9jHK03
+         LOhhNpQL0qcmpI1BapBA5pt7WK51DGPQoh3yYn2/kiGo+GjTARR0Wk8Gb1tUR5u2llA8
+         BfcaYNJS9alAbjf0i+hmN0FC8+0dcNuGE76zBm/6Eo8GWqyij456h5cHlnMsRhro5455
+         zAaUk9qKO1H7Pqdo7V/GE6OW+A3GHxwr/m3ZQPhtjWiA3P4Zh5Fh3i67iqYZGTqNHSrY
+         TvQQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:to:dkim-signature
+         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
+         :references:in-reply-to:mime-version:dkim-signature
          :arc-authentication-results;
-        bh=ITLMphbgY3E8XnywKx6CqfZGjwpq2MmCV5p9mHXrZoo=;
-        b=EYngRYduo0CAbPVV86IQP/zXjuoSL99X6g1qMXgkGHQ8HIVFAEFGxJfMgrwZVJuOcn
-         O4dcBFWGdspoeByZUIa8ySg/a0WjOE/ERVtGuHCAonimIJx7xvuXLXX0Ox2ifDnj4XoT
-         8A/zHeEvnF0tNjZHUjfywZk+Q/tsQyg8oQgvZZSf25YJtdzQXffmfIPcDuLZU/clL+1d
-         VHw5I6S9GWTw5WqnitZVwWHnnyCY3tJfQLm5HhJw2X14QXfLMcAut1vc9PgQupCvop+h
-         sdSTWexH6QqmaP30xJZtnBeMdvINgYVR4zdbLDqUBpVJD0yUCBpOYB8BHtJckRGmcyUE
-         Wb5w==
+        bh=4k6/cMj0I+y29sxZH+yEcFXnuq31L3KFr+JoPVglMV8=;
+        b=DB48th//wfsojEGajAXiipSzaK31hUD1pDK7Y6HuARL9sqJW9jucP7jBxsL8s2d13U
+         b+SH8orLlFGh1UgbTbG0RkXCjuNosq/oqwspsCYJdp1CbWibiH17UQZ1oK/KgT4i6Mlt
+         uq15JD4+oCzTEn1oyMn2tYemKjHiZUbkLbBNTm7n0E7hIWNfRZhoxaWsUq9f7PctYbSw
+         iAR2yLeOslk/rlTA1oH8H7KUlJyWrRsSu9E9KQj29g2XxDlJ0qhscU7eNDCKPtKu2ue3
+         LMQ8zimV2KNj6dMtRNgTpglXZdDh+QR0oFZY7YpIjd4y4dbAV0n6ItPY5uIkQ8N41X6M
+         LmwA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=ueNlCKKf;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+       dkim=fail header.i=@linaro.org header.s=google header.b=WwnKJUr6;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id o23si99000qtc.347.2017.09.05.05.30.18
+        by mx.google.com with ESMTPS id n25si135720qtb.277.2017.09.05.05.39.19
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 05 Sep 2017 05:30:18 -0700 (PDT)
+        Tue, 05 Sep 2017 05:39:19 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=ueNlCKKf;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:58663 helo=lists.gnu.org)
+       dkim=fail header.i=@linaro.org header.s=google header.b=WwnKJUr6;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:58705 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1dpCzg-0007Fz-8k
-	for alex.bennee@linaro.org; Tue, 05 Sep 2017 08:30:16 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:49146)
+	id 1dpD8P-00042K-JF
+	for alex.bennee@linaro.org; Tue, 05 Sep 2017 08:39:17 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:56029)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1dpCz7-0006eP-Ud
-	for qemu-arm@nongnu.org; Tue, 05 Sep 2017 08:30:12 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1dpD5S-000209-AO
+	for qemu-arm@nongnu.org; Tue, 05 Sep 2017 08:36:30 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1dpCz2-0005qW-Ih
-	for qemu-arm@nongnu.org; Tue, 05 Sep 2017 08:29:41 -0400
-Received: from mail-qk0-x242.google.com ([2607:f8b0:400d:c09::242]:38518)
+	(envelope-from <peter.maydell@linaro.org>) id 1dpD5E-0004MT-Ak
+	for qemu-arm@nongnu.org; Tue, 05 Sep 2017 08:36:14 -0400
+Received: from mail-wm0-x22e.google.com ([2a00:1450:400c:c09::22e]:35036)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1dpCys-0005k3-Kn; Tue, 05 Sep 2017 08:29:26 -0400
-Received: by mail-qk0-x242.google.com with SMTP id c69so2000589qke.5;
-	Tue, 05 Sep 2017 05:29:26 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=sender:subject:to:cc:references:from:message-id:date:user-agent
-	:mime-version:in-reply-to:content-language:content-transfer-encoding;
-	bh=ITLMphbgY3E8XnywKx6CqfZGjwpq2MmCV5p9mHXrZoo=;
-	b=ueNlCKKf6Q5VLHJLF+jbO8dLzm3kgWDq3q/gp/jXe/BUEtMcxCzXCMjs2XrOM/tL02
-	5gR1gNISwtqvqpZBFsuVpJjQBT+YIuYKYtQWa+mGZl+FiSKCLUsPBPZBO3//x26B4xNu
-	lClYL0r/dvOATOTHT68yGkSrPHfnv+xMKsNI9fkjrwm5adksgSTSHKIDtijNr/pCdukA
-	isR+Jv3nqd1tWSMWo05zIlM6+zaRdcAWCI73ro7r/JJXuSjiWcAFaapUEkGdcttV+U6K
-	D71kNvC9jYAKM3HkdaoIeOih223cCxN1w3CaHmzeTD0L1jmHTBFnYjSn04BfB8BLHlN3
-	P0gQ==
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1dpD5E-0004LK-2H
+	for qemu-arm@nongnu.org; Tue, 05 Sep 2017 08:36:00 -0400
+Received: by mail-wm0-x22e.google.com with SMTP id h144so4788718wme.0
+	for <qemu-arm@nongnu.org>; Tue, 05 Sep 2017 05:35:59 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=4k6/cMj0I+y29sxZH+yEcFXnuq31L3KFr+JoPVglMV8=;
+	b=WwnKJUr6jiltn07RWiEktH2hiKkekOe6gLGHiYbNvPy2HAfkvjJzGOSln7+1J30HPZ
+	MYT9Ifg9LOadBpxR8Og1HuDAZiNw7sYLsqxI/Gj4YsVzuBBzeQIFY12TP6HwK9lKrRkt
+	kMn1CB+djU5GDIqffLELrOsDW1v4Px8xNjjAc=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
-	:date:user-agent:mime-version:in-reply-to:content-language
-	:content-transfer-encoding;
-	bh=ITLMphbgY3E8XnywKx6CqfZGjwpq2MmCV5p9mHXrZoo=;
-	b=h+5Hhwmt8AkKon3VGC6xCyK3sPoqu7G8aI/Vuap3I4tUp0rPT5WSvK6oVaui03f347
-	tCOi+0kTD3G0JxFww5JY06/uRTLOouH7xI6/NZYBfpzVyYJ12imOBAVLJny9Wd1t7Yco
-	bJP/VDwNQXKMtQXBiK450rw3MUqUkgb2QHcix38eHvUdgLrPwec/PSozVxl0lZ/rCgZn
-	z7sSKDa0JW6PC9ZLNw8nqRALl1ezokgfa4XSRDtwQdSzIgjGfBkk7npqB48u1cv0mYiS
-	J9X/+9jXq0+0k3vsK8tVhWkDnyoONPGGMe8Okd+g+M8QMXGkEQ+fVWYqVqGLfDFYtXeE
-	1fPg==
-X-Gm-Message-State: AHPjjUjS3BUUjv8K4Hipn47qacgDCY1ljBOBkJhpggyzkgQT+SB4hmde
-	vvzrBXuJ/pStWg==
-X-Google-Smtp-Source: ADKCNb69olcKsAxszNXNy9wFbMJZHNwMYX3Q0oFZCtBImefoBY7v/AlXeX3s350Hix4SPvVkBiS5Sg==
-X-Received: by 10.55.39.193 with SMTP id n184mr4537108qkn.273.1504614565967;
-	Tue, 05 Sep 2017 05:29:25 -0700 (PDT)
-Received: from [192.168.1.10] ([181.93.89.178])
-	by smtp.gmail.com with ESMTPSA id q5sm306359qkh.43.2017.09.05.05.29.23
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Tue, 05 Sep 2017 05:29:25 -0700 (PDT)
-To: Peter Maydell <peter.maydell@linaro.org>,
-	Prasad J Pandit <ppandit@redhat.com>
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=4k6/cMj0I+y29sxZH+yEcFXnuq31L3KFr+JoPVglMV8=;
+	b=NY7DadNqkl4yl3hJJrKl1zDfAUq/GN+fV69VUsf2Ut7khSgHjVz/wqMxU3lK/ZU33X
+	6I+VVYLJz3cgU42ssBj1IljLSf3iJC8PRaAgiEcHLUrT9b4lImlOHbuOd8oiCC3MW764
+	/Y9ZpvyaEqqzUaTOVMCYwJ4Pba/upHBxphRLkwTVVIUshiI0mMg0DnODyFI18S1S9MRc
+	kmY7JRPb0YUJH/p1n2Hcls5B7RxwON1XMuhgHFfwRhRadIe+QxzqiZeBGqUZYjd3WNqj
+	SaKIIwLkzVxHPruA7crkdjPpcXC1NZIawZjLd5wAw6MlRBhD7nEWyXYTA7P5ZNT5wrjT
+	dpSA==
+X-Gm-Message-State: AHPjjUiQbidBwCekhNwRxGZu5Wh5nbkRaWMqs4oozm5SQOHMK7LFfo+4
+	NgVh+2HukM/k9TPvFPg537icW/X2548+
+X-Google-Smtp-Source: ADKCNb5OIo+QCRpjOo8Zd1Yq9U9uj4HG789kuGj3rvh9zAaomY0CaZQjmsIvvuj6+bs/ilBKvwR+QUCnrFU5gj0+WYo=
+X-Received: by 10.28.236.91 with SMTP id k88mr1590783wmh.95.1504614958879;
+	Tue, 05 Sep 2017 05:35:58 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.223.159.68 with HTTP; Tue, 5 Sep 2017 05:35:38 -0700 (PDT)
+In-Reply-To: <7FD21DDFE9A3784693E393AF276FE7D21F17E49E@DGGEMA501-MBX.china.huawei.com>
 References: <20170905112152.8851-1-ppandit@redhat.com>
 	<CAFEAcA8B4EwXCPSBsftt=QkAuH8jCBbK23-uU7NA7G3k6ADHLw@mail.gmail.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <38d7ca82-43ca-a98a-e727-8fb5968c7d1b@amsat.org>
-Date: Tue, 5 Sep 2017 09:29:22 -0300
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.3.0
-MIME-Version: 1.0
-In-Reply-To: <CAFEAcA8B4EwXCPSBsftt=QkAuH8jCBbK23-uU7NA7G3k6ADHLw@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
+	<7FD21DDFE9A3784693E393AF276FE7D21F17E49E@DGGEMA501-MBX.china.huawei.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 5 Sep 2017 13:35:38 +0100
+Message-ID: <CAFEAcA8JxuM-ddQVTBfgnSDD2fD+kz_RNShdNDqMqVH=zOKBfw@mail.gmail.com>
+To: niuguoxiang <niuguoxiang@huawei.com>
+Content-Type: text/plain; charset="UTF-8"
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400d:c09::242
-Subject: Re: [Qemu-arm] [PATCH] intc: arm_gicv3: limit GICR ipriority index
+X-Received-From: 2a00:1450:400c:c09::22e
+Subject: Re: [Qemu-arm] =?utf-8?b?562U5aSNOiBbUEFUQ0hdIGludGM6IGFybV9naWN2?=
+	=?utf-8?q?3=3A_limit_GICR_ipriority_index?=
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -116,57 +105,30 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
-	Guoxiang Niu <niuguoxiang@huawei.com>,
-	Prasad J Pandit <pjp@fedoraproject.org>
+Cc: Prasad J Pandit <pjp@fedoraproject.org>, qemu-arm <qemu-arm@nongnu.org>,
+	QEMU Developers <qemu-devel@nongnu.org>, P J P <ppandit@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Uko3Ft/Vyk8N
+X-TUID: 26VGFOvVMe3+
 
-On 09/05/2017 08:58 AM, Peter Maydell wrote:
-> On 5 September 2017 at 12:21, P J P <ppandit@redhat.com> wrote:
->> From: Prasad J Pandit <pjp@fedoraproject.org>
->>
->> When reading or writing to GICR ipriority array, index 'irq'
->> could go beyond its bounds; Restrict it within array limits.
->>
->> Reported-by: Guoxiang Niu <niuguoxiang@huawei.com>
->> Signed-off-by: Prasad J Pandit <pjp@fedoraproject.org>
->> ---
->>   hw/intc/arm_gicv3_redist.c | 4 ++--
->>   1 file changed, 2 insertions(+), 2 deletions(-)
->>
->> diff --git a/hw/intc/arm_gicv3_redist.c b/hw/intc/arm_gicv3_redist.c
->> index 77e5cfa327..7683c4cc7f 100644
->> --- a/hw/intc/arm_gicv3_redist.c
->> +++ b/hw/intc/arm_gicv3_redist.c
->> @@ -187,7 +187,7 @@ static MemTxResult gicr_readl(GICv3CPUState *cs, hwaddr offset,
->>       case GICR_ICACTIVER0:
->>           *data = gicr_read_bitmap_reg(cs, attrs, cs->gicr_iactiver0);
->>           return MEMTX_OK;
->> -    case GICR_IPRIORITYR ... GICR_IPRIORITYR + 0x1f:
+On 5 September 2017 at 13:30, niuguoxiang <niuguoxiang@huawei.com> wrote:
+> I think only assert is not enough, because assert() depends on NDEBUG
+> preprocessing
 
-0x1f are only the cpu (private) irqs, then the range is valid up-to:
-(extract64(cs->gicr_typer, 0, 5) + 1) * 32 - 1 supported irqs
+The code cannot be reached with a non-aligned value,
+because we register these functions via the gic_ops[]
+MemoryRegionops in hw/intc/arm_gicv3.c, and since we
+do not specify .valid.unaligned=true there, the memory.c
+code will throw out attempts at unaligned accesses.
 
->> +    case GICR_IPRIORITYR ... GICR_IPRIORITYR + 0x1c:
->>       {
->>           int i, irq = offset - GICR_IPRIORITYR;
->>           uint32_t value = 0;
->> @@ -310,7 +310,7 @@ static MemTxResult gicr_writel(GICv3CPUState *cs, hwaddr offset,
->>       case GICR_ICACTIVER0:
->>           gicr_write_clear_bitmap_reg(cs, attrs, &cs->gicr_iactiver0, value);
->>           return MEMTX_OK;
->> -    case GICR_IPRIORITYR ... GICR_IPRIORITYR + 0x1f:
->> +    case GICR_IPRIORITYR ... GICR_IPRIORITYR + 0x1c:
->>       {
->>           int i, irq = offset - GICR_IPRIORITYR;
-> 
-> Why do you think the buffer can be overrun? These functions
-> are the word (4 byte) access functions, and they cannot
-> be called with a non-4-aligned offset (see the asserts in
-> gicv3_redist_read() and gicv3_redist_write()).
-> 
-> thanks
-> -- PMM
-> 
+The assert is just checking at runtime that this never
+becomes false accidentally (and also for the benefit of
+people reading the code).
+
+Incidentally, QEMU can never be compiled with NDEBUG not
+set -- we will #error in the compilation if it is not set.
+(It's not good practice to depend on the assert() actually
+doing anything though, and indeed in this case we don't.)
+
+thanks
+-- PMM

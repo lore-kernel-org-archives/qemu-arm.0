@@ -1,102 +1,166 @@
-Received: by 10.223.188.70 with SMTP id a6csp1477567wrh;
-        Fri, 1 Sep 2017 13:38:42 -0700 (PDT)
-X-Received: by 10.84.209.161 with SMTP id y30mr3983781plh.246.1504298322357;
-        Fri, 01 Sep 2017 13:38:42 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1504298322; cv=none;
+Received: by 10.223.172.38 with SMTP id v35csp1357479wrc;
+        Tue, 5 Sep 2017 05:28:56 -0700 (PDT)
+X-Received: by 10.55.17.73 with SMTP id b70mr4912854qkh.270.1504614536685;
+        Tue, 05 Sep 2017 05:28:56 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1504614536; cv=none;
         d=google.com; s=arc-20160816;
-        b=rH3obLwrgmd6+CdQeYenjeNJ+JPwg1T3xONybQaOBNEerVGVF6KQsVVIyvCZuXSjxk
-         MRVUNtgUFP+ShJ6CG3eIpzGtSFujT7XmM+CrWiIthlDrdXQprJv4CZCSuXozuEy+GFu9
-         ibb/tdnRe8TjlDUDWS9GTFDrRjUwnXv+wH3aM/0/jZwx5mFJs8LzZcTW4b5uPCsLf0sT
-         V7Ltu1c7JXWfe//ujo7Jhv3km42opMzO2Y3YUHxaXx16YBivHSzDWdBkTF9zGz5uJBx9
-         ygksWW2smPQTRi405vPNqemFxT/ugVFZvaHHBwj3M0ZMK937/5G5HPoeo2WBFddZkGvy
-         0D8Q==
+        b=WRbsNsKzBNJR4qAqFJZvTCAFRadbv/PI3Demc5H7DSnjsgx6AuJMO1+Y9uZ+VmeA5o
+         J3HbWwRyG3MbfyremxS8BnZLrdjTuQv+jGtFzt9AdYUcbsdxhgZXWZt6YI5680/RxD6Z
+         WjquDZUjlb9+KASaGP0rMViNYjEZc0nsJgtf8HAg/aW8YPTIIJVh28SHUtmvsui62tHx
+         Vryyv1wQnuLWPjZBs6+e5ms3LWWp+hSBrCHCl6NXZhOdKN0qR0/f2stFLCT/TLji+uus
+         oSje9j34ab5z3ayZ7W5bvUyP9CfK/QcYpm3B1iRD5LZHW5ptbpYHPohU8JM3UQd9h5RC
+         O6GQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:cc:to:subject
-         :dkim-signature:arc-authentication-results;
-        bh=NfLbu9eQN1v/vwP9aK5uohj6LDyX3t1Wr5/tTbAEuBY=;
-        b=nlhOkB0DNFTp0mHq5LTW7/Leq4/3xROjQc7VACg7nni29nJSpgOtiY3fF5jNihkSPo
-         kJYQCs8HWiTypMsOIFi8HbG/wPVK4/c/U7cfG3dc+SNZMQfgPzoL35PGLR/tbeV/g5Ao
-         6HrwSLDuQlWo3nuv98fdkbRc+VgWhr0k6GrWTpZbeb5C1Sm5HhK/QcN7BPrcHZ3+Wd/9
-         E/EUoSXcL0dHrefKoRQJuKR0AY5xCWqiDrFJzbSlkIiLNx5tdWP/UZkciIflfFo9kPoo
-         UBQ6olp3HQIBc7JI3FB68oJ1uuJwH6Ek+fVXW4/pLZTa4t8Q2p3IAqWEB3KaGsRb4hJJ
-         v/XA==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
+         :references:in-reply-to:mime-version:dkim-signature
+         :arc-authentication-results;
+        bh=iCFiqilpgd9SOaebqJic1eUs196VDxeLEg/+i8wqcVk=;
+        b=qgo0OzHcx4zed+hgYyJqSy8Id1PPxNN16ed4B+kHMNxVcot69798eQYHFCeaOAIa+3
+         dD0dvbjHMdRYMr9mLKvc0NkHqV1ExMVGoygz7DnctAdSfYwRjBU/LqYIKZL0MYMhu+Iy
+         bKjZFvlQpV1qEw8qjl2EKwr/Ed0A0vuYKuBSRlac0OMawLkxGUWiXZeX2Shbn3rqJUpk
+         SQdTGOEKTztbjX7D9yO8xBaPJTzVMcXMllzv4zVeT400Iw/VpICtlw3M8qgvYgnZb7X4
+         caIqGo9eCgDPP4GGb+UrkHpfD11hb8NT3pvA27yYdq3sj3TvvMIWTkvXSZ2lSIcVKFFH
+         o+RA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=EDiTw/4X;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <richard.henderson@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id n7sor671113pfk.38.2017.09.01.13.38.42
+       dkim=fail header.i=@linaro.org header.s=google header.b=QFB4UxCu;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
+        by mx.google.com with ESMTPS id q82si311800qki.107.2017.09.05.05.28.56
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Fri, 01 Sep 2017 13:38:42 -0700 (PDT)
-Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Tue, 05 Sep 2017 05:28:56 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=EDiTw/4X;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=subject:to:cc:references:from:message-id:date:user-agent
-         :mime-version:in-reply-to:content-language:content-transfer-encoding;
-        bh=NfLbu9eQN1v/vwP9aK5uohj6LDyX3t1Wr5/tTbAEuBY=;
-        b=EDiTw/4XIlCq4KiM3EN4BVvkkUlWVJyoUI1GgdymbmFEsOS5fZ+7o+Mw2OrvESJgGd
-         UCgmIptb32FRRhxsS5Cwjus6Zw2mMPs1//SUbbBK6VxOSZ3yssoxypENEKsDHizEYpmZ
-         /J575nqjusvrnkzef7QGB7CIEayNTSDa9fuuE=
+       dkim=fail header.i=@linaro.org header.s=google header.b=QFB4UxCu;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:58653 helo=lists.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1dpCyM-00067A-G6
+	for alex.bennee@linaro.org; Tue, 05 Sep 2017 08:28:54 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:48754)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <peter.maydell@linaro.org>) id 1dpCyF-00066q-E7
+	for qemu-arm@nongnu.org; Tue, 05 Sep 2017 08:28:52 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+	(envelope-from <peter.maydell@linaro.org>) id 1dpCyA-0005UQ-MF
+	for qemu-arm@nongnu.org; Tue, 05 Sep 2017 08:28:47 -0400
+Received: from mail-wr0-x22d.google.com ([2a00:1450:400c:c0c::22d]:36035)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1dpCyA-0005TG-Fe
+	for qemu-arm@nongnu.org; Tue, 05 Sep 2017 08:28:42 -0400
+Received: by mail-wr0-x22d.google.com with SMTP id p14so6482673wrg.3
+	for <qemu-arm@nongnu.org>; Tue, 05 Sep 2017 05:28:42 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=iCFiqilpgd9SOaebqJic1eUs196VDxeLEg/+i8wqcVk=;
+	b=QFB4UxCuh8cXwXdTEypiuzV9p7wQPKYy3ACTKUJO2OwWN86ovtycyZCL1KyVFKnDmL
+	SYi4yopUGW6LFel1a+P0EpOL6YzxQwYTrae4UveHuY/HUJAtyGIR05gM8mr2gsutzW+S
+	29R4KHzMKVxUFZa6YtFx1JwtSikyybY9AuMbM=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:subject:to:cc:references:from:message-id:date
-         :user-agent:mime-version:in-reply-to:content-language
-         :content-transfer-encoding;
-        bh=NfLbu9eQN1v/vwP9aK5uohj6LDyX3t1Wr5/tTbAEuBY=;
-        b=oah7vzb9VQmPPWLUGJbXV6lVTPAf4R35ISGS8VXjxLIQchth2i8DCkf0eHlBXBwE/5
-         tc5Fy37wz9VhEeumV5YdT17U7WrL6qyPK/5uYZw8uLP98VOIV/u94XnPhc1pdyMkzie1
-         fRzTLUiqu97k5xHVGA9bq5lTQe6TtpvD4MGPYQ0RJxC6heTvy+mxgQWJ4TG/vEGqAJ9x
-         kvOyldV1aQqkMeNOQjTk8iA2e0nFz0euyW4GYqKovp1a6cEln2v3CpLIlHDVzvXXLSDH
-         Z9ns8Hv3aOlnWmGDPWChWMcKWlhBHC3qzET3bW5LX3dW6HdclZzhWrkVmZvfxe9TBJCA
-         0Dag==
-X-Gm-Message-State: AHPjjUgsU+tKCpKmqJkWPh4hcuEWtGmH/2LG8SZtfCFCv37kuz4nVHJH
-	veEGGXz8mVUaoyIwgnyEMBYf
-X-Google-Smtp-Source: ADKCNb4WaSyv/Tev7reJAmbvXk8QiPSJ/nVt3fy3VmCjppzPw+T4uzfUs0zwiQDQPOzJUZO7d/XWfg==
-X-Received: by 10.98.75.200 with SMTP id d69mr3592712pfj.271.1504298321325;
-        Fri, 01 Sep 2017 13:38:41 -0700 (PDT)
-Return-Path: <richard.henderson@linaro.org>
-Received: from bigtime.twiddle.net (97-126-108-236.tukw.qwest.net. [97.126.108.236])
-        by smtp.gmail.com with ESMTPSA id g68sm1302225pfj.33.2017.09.01.13.38.40
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 01 Sep 2017 13:38:40 -0700 (PDT)
-Subject: Re: [Qemu-devel] [PATCH 1/8] tcg: Add generic vector infrastructure
- and ops for add/sub/logic
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
- qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, alex.bennee@linaro.org
-References: <20170817230114.3655-1-richard.henderson@linaro.org>
- <20170817230114.3655-2-richard.henderson@linaro.org>
- <c53d1c21-c913-a60d-cdfa-524431c2cf28@amsat.org>
-From: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <d85197cf-d3c7-a42c-5a8b-98b5f486f191@linaro.org>
-Date: Fri, 1 Sep 2017 13:38:38 -0700
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
- Thunderbird/52.2.1
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=iCFiqilpgd9SOaebqJic1eUs196VDxeLEg/+i8wqcVk=;
+	b=t/vSL2Je2RhwkWHyHYSRXgVEcl5LsDKij+lQitEUZREeTDvGXNkrqp6D3ppKJIpmsX
+	4cX1mnxVmj7p2msVy/GLlQKKJLVHOUkfPt9koYrjHSqIFyaBjTfa3yiQ74LwFQkfcNfR
+	gQu2Q0dGwA21NDAlFSHYNt3XKxdoFUDgwKzN2is9aU9Kmpc2EyASTC0VfK+JWllIULPb
+	gYL/nJuoIZ66NLULT1t3D9ivsoogVwaPaAXnZ1a4pchVH1WmzFfAfN8+ZWW8ElZakC6c
+	djgltPUnrR5OJehTKWqhKJcumEnFZkFAZtWMHXrqG3LYCymrNbDGdB3frgb4hZ0h/bxM
+	3qvQ==
+X-Gm-Message-State: AHPjjUjp/t9ZhGm2BaYVqeJ9+RGBPJVguNih5dSWwPWE+esKE51plNiq
+	UzXqV2X6ojxy+F352VsiLjfx2w4L1DcH
+X-Google-Smtp-Source: ADKCNb5ZCABSRgSvmwwk4OWPuJxBjTGljhsVefeGUUNboRgMQEO37yPUZREsb4b6i3nD6w9USCmtNuB/HuP2/DWO1CM=
+X-Received: by 10.223.145.41 with SMTP id j38mr2162183wrj.314.1504614521390;
+	Tue, 05 Sep 2017 05:28:41 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <c53d1c21-c913-a60d-cdfa-524431c2cf28@amsat.org>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-TUID: rvoFIWQlyWNu
+Received: by 10.223.159.68 with HTTP; Tue, 5 Sep 2017 05:28:20 -0700 (PDT)
+In-Reply-To: <20170828221901.12827-1-portia.stephens@xilinx.com>
+References: <20170828221901.12827-1-portia.stephens@xilinx.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 5 Sep 2017 13:28:20 +0100
+Message-ID: <CAFEAcA-5tT6X=N7UOiYMecN-OnxOfDAfoGswa01QXCOt4JDWig@mail.gmail.com>
+To: Portia Stephens <portia.stephens@xilinx.com>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2a00:1450:400c:c0c::22d
+Subject: Re: [Qemu-arm] [PATCH] target/arm: Remove 5J architecture
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.21
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
+	stephensportia@gmail.com, Alistair Francis <alistair.francis@xilinx.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: NDs/ldzNozW2
 
-On 08/29/2017 06:31 PM, Philippe Mathieu-Daudé wrote:
-> Hi Richard,
-> 
-> I can't find anything to say about this patch... Hardcore stuff.
-> Some part could be more a bit more verbose but after a while focusing it makes
-> sens.
-> I wonder how long it took you to write this :) "roughly 2h"
+On 28 August 2017 at 23:19, Portia Stephens <portia.stephens@xilinx.com> wrote:
+> This fixes the issue that any BXJ instruction will result in an illegal_op.
+> This is because the 5J archiecture is always unsupported.
+> 5J architecture doesn't have a feature set and ENABLE_ARCH_5J is hardcoded
+> to 0, causing any ARCH(5J) to result in an illegal_op. The only use of
+> ARCH(5J) is in the BXJ instruction disassembly.
+>
+> This patch replaces that ARCH(5J) with ARCH(6) and removes the 5J architecture,
+> this isn't technically correct since the v5J ISA does support the BXJ
+> instruction. This change means that running a BXJ instruction on any v5 will
+> cause an illegal_op but it is better than the current state where any
+> architecture running a BXJ would cause an illegal_op. The correct solution
+> would be to create a feature set for v5J but that doesn't seem worth it as the
+> v5J is so old.
+>
+> Signed-off-by: Portia Stephens <portia.stephens@xilinx.com>
+> Reviewed-by: Alistair Francis <alistair.francis@xilinx.com>
+> ---
+>  target/arm/translate.c | 6 ++++--
+>  1 file changed, 4 insertions(+), 2 deletions(-)
+>
+> diff --git a/target/arm/translate.c b/target/arm/translate.c
+> index d1a5f56998..4a30c0d7e0 100644
+> --- a/target/arm/translate.c
+> +++ b/target/arm/translate.c
+> @@ -41,7 +41,6 @@
+>  #define ENABLE_ARCH_5     arm_dc_feature(s, ARM_FEATURE_V5)
+>  /* currently all emulated v5 cores are also v5TE, so don't bother */
+>  #define ENABLE_ARCH_5TE   arm_dc_feature(s, ARM_FEATURE_V5)
+> -#define ENABLE_ARCH_5J    0
+>  #define ENABLE_ARCH_6     arm_dc_feature(s, ARM_FEATURE_V6)
+>  #define ENABLE_ARCH_6K    arm_dc_feature(s, ARM_FEATURE_V6K)
+>  #define ENABLE_ARCH_6T2   arm_dc_feature(s, ARM_FEATURE_THUMB2)
+> @@ -8389,7 +8388,10 @@ static void disas_arm_insn(DisasContext *s, unsigned int insn)
+>              break;
+>          case 0x2:
+>              if (op1 == 1) {
+> -                ARCH(5J); /* bxj */
+> +                /* This should actually be ARCH(5J) but there is currently no
+> +                 * 5J architecture in QEMU.
+> +                 */
+> +                ARCH(6); /* bxj */
+>                  /* Trivial implementation equivalent to bx.  */
+>                  tmp = load_reg(s, rm);
+>                  gen_bx(s, tmp);
 
-Not quite that quickly.  ;-)
-You're absolutely right that it needs lots more documentation.
-I'll improve that when it comes to round 2.
+Thanks for this patch. However we do have both v5-no-J
+(arm946, all the pxa2xx cores) and v5-with-J CPUs (arm926, arm1026),
+so I think it would be better to fix this bug by adding an
+extra ARM_FEATURE_JAZELLE, which would be set in
+arm_cpu_realizefn() if ARM_FEATURE_V6 is set, and set in
+the per-core realize functions for arm926 and arm1026.
+It should be a fairly small patch overall I think.
 
-
-r~
+thanks
+-- PMM

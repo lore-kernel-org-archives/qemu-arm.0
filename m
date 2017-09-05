@@ -1,140 +1,194 @@
-Received: by 10.223.188.70 with SMTP id a6csp911593wrh;
-        Fri, 1 Sep 2017 04:51:39 -0700 (PDT)
-X-Google-Smtp-Source: ADKCNb4HnN1xuAI1MB4Ija+nKvtWtc4jvEJtVNZj2bW8R2t6DpZmrtZTkJ0EKAAar10AaSFTBxxg
-X-Received: by 10.99.121.66 with SMTP id u63mr2113183pgc.386.1504266698999;
-        Fri, 01 Sep 2017 04:51:38 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1504266698; cv=none;
+Received: by 10.223.172.38 with SMTP id v35csp1678238wrc;
+        Tue, 5 Sep 2017 10:27:07 -0700 (PDT)
+X-Received: by 10.99.99.197 with SMTP id x188mr4790958pgb.421.1504632427336;
+        Tue, 05 Sep 2017 10:27:07 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1504632427; cv=none;
         d=google.com; s=arc-20160816;
-        b=WVEPDaf8UXY2Y0Mdct9s1/QrU0NScJN1c7QTwnvH741QmwjT+I5rhFhQR+pbyGmr3r
-         oDRLGk7MGt74719RmtwPITIdQ4WZ0U7KteSzewE9e/VIujXMkc1M6tBHiMTbf0qxgjG7
-         ppkvkq+1SsKmbMQqKajKuG7xtVWciBETWi0UKyUea+qstdcpe1h8YtvysnoaSh5ypKHu
-         EudqQZF9UG7MUf8Q9msZBJoc1UCn6IRjP0PYL+3CsP31XN9Fj+/EMbMzp/kr5o3w1Hgx
-         9EBYvNlf+37gZqtgl1des+P+0HDrdll5axmDAMVMpIeXhLBELlAxUz3Zi5l6F47QDVw0
-         /fng==
+        b=dpdgDQmHxp+DznrOMEO10orc+uDsvJTXtrO43lBKU05ra8XpxXX9LgvtyZJmYEzVdT
+         KqqGCxYV1aOtLhZgtqgGgBnuA3Dh9XdGJOZDCqZzWHY0a66Gx/hkJuFcL7qfoUwt0aYL
+         Zhwl8JPWOxdKDkUkiNgbwTtorYkVaZ5OTqvYEjQgqGYizLztgdRUabeA8JRYImb8BtTC
+         bDlcRuB2Xf2Cyr4dVkdRYNrE2Jl6Udx7tBVXjvrni7HWj5DkTHULShpvELhprshD1Mfw
+         OxLj7knxQwSWYoVOxA5MlTbqKANYNE0vRCXHQGbbJ6Jpq/x3progTIFBYffqI7jWpP57
+         3/oQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-id:precedence:sender:content-transfer-encoding:mime-version
-         :references:in-reply-to:message-id:subject:cc:to:from:date
-         :dmarc-filter:arc-authentication-results;
-        bh=Twzty6IaNaj8RH1vudXy9B+0V6ErP7dBPp/yEMjsr8U=;
-        b=e0qjChlRubkAUMquh04F/l7/FEJ3OgBcuCrlqSCmPcb2hAJ/Ey6UKR9VpNiIwBlXfw
-         x//8safqMzEIo0gDsPzsImpyQgxs5dWWnkjVq1MLirnIK1E5E03p3q+LS39Ec7Mvwl69
-         44x008lh6quv/rpPBfCvbphqbrIYK1wx+6kyOBwjTT0Pose0mhnRLbpXjKDivVxHzu+5
-         sM1+cabLTL4jWU9EcJr1LSPbvpV+4auTG8QK3hrIzHjIHXaA6pOQpQi8ScFxSNOQLq5p
-         C+bETb3916/AhsXcrTtDgfbd3QHR+Yg6xDBO59bkD0CSTw5gyZ92NFCQhltScSV0C3gl
-         L1sA==
+        h=list-id:precedence:sender:cc:to:subject:message-id:date:from
+         :references:in-reply-to:mime-version:dkim-signature
+         :arc-authentication-results;
+        bh=XlYe0u9rUPY1LOR0TXN+N7mD++vIdJ2uNX8UVdr3ZUo=;
+        b=nSQ+PZKGJt+toqhi615u0KN4nSEzuQZbJQprQqLnujzMR2rkw6wa7vhNXaDFSg7yWd
+         l4dXQ/tiuH38jkLiLbWCTK7gTEWrdHGPvSm0K1QFruLWbZUvOdsLrEEjv9lD46+8mSxX
+         ndGxd2aimdkCm+EVssBd6w0fHaf2jxwQe55HeMhNQ2MJxzLRpBEdT9ZTcBjLeGRMT15u
+         N+pNiyNSep6/RyyyKMuQAicUo03xDdH0PY/yWOqMfe/6hjgMkqhmNIiVt5S6Spmlz6Jg
+         a+pfDfFPrhR0qeuvq40cn2ZW8b12/pvFBj+S57bwAsHrpbIV6AlPsPiUVjE5Ri/yJMtD
+         GCaw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: best guess record for domain of linux-kernel-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=linux-kernel-owner@vger.kernel.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <linux-kernel-owner@vger.kernel.org>
+       dkim=pass header.i=@linaro.org header.s=google header.b=RpfkdBG1;
+       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <kvm-owner@vger.kernel.org>
 Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
-        by mx.google.com with ESMTP id s2si1746919pge.639.2017.09.01.04.51.38;
-        Fri, 01 Sep 2017 04:51:38 -0700 (PDT)
-Received-SPF: pass (google.com: best guess record for domain of linux-kernel-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
+        by mx.google.com with ESMTP id s13si593231pgr.309.2017.09.05.10.27.07;
+        Tue, 05 Sep 2017 10:27:07 -0700 (PDT)
+Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: best guess record for domain of linux-kernel-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=linux-kernel-owner@vger.kernel.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dkim=pass header.i=@linaro.org header.s=google header.b=RpfkdBG1;
+       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S1751849AbdIALvd (ORCPT <rfc822;daniel.diaz@linaro.org>
-        + 26 others); Fri, 1 Sep 2017 07:51:33 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:46530 "EHLO mx1.redhat.com"
-        rhost-flags-OK-OK-OK-OK) by vger.kernel.org with ESMTP
-        id S1751499AbdIALvb (ORCPT <rfc822;linux-kernel@vger.kernel.org>);
-        Fri, 1 Sep 2017 07:51:31 -0400
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com [10.5.11.16])
-        (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-        (No client certificate requested)
-        by mx1.redhat.com (Postfix) with ESMTPS id DC939883D2;
-        Fri,  1 Sep 2017 11:51:30 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com DC939883D2
-Authentication-Results: ext-mx02.extmail.prod.ext.phx2.redhat.com; dmarc=none (p=none dis=none) header.from=redhat.com
-Authentication-Results: ext-mx02.extmail.prod.ext.phx2.redhat.com; spf=fail smtp.mailfrom=imammedo@redhat.com
-Received: from nial.brq.redhat.com (unknown [10.43.2.241])
-        by smtp.corp.redhat.com (Postfix) with ESMTP id 9766671C3B;
-        Fri,  1 Sep 2017 11:51:22 +0000 (UTC)
-Date:   Fri, 1 Sep 2017 13:51:21 +0200
-From:   Igor Mammedov <imammedo@redhat.com>
-To:     gengdongjiu <gengdongjiu@huawei.com>
-Cc:     <mst@redhat.com>, <zhaoshenglong@huawei.com>, <lersek@redhat.com>,
-        <peter.maydell@linaro.org>, <pbonzini@redhat.com>,
-        <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>,
-        <kvm@vger.kernel.org>, <edk2-devel@lists.01.org>,
-        <christoffer.dall@linaro.org>, <marc.zyngier@arm.com>,
-        <will.deacon@arm.com>, <james.morse@arm.com>,
-        <ard.biesheuvel@linaro.org>, <mingo@kernel.org>, <bp@suse.de>,
-        <shiju.jose@huawei.com>, <zjzhang@codeaurora.org>,
-        <linux-arm-kernel@lists.infradead.org>,
-        <kvmarm@lists.cs.columbia.edu>, <linux-kernel@vger.kernel.org>,
-        <linux-acpi@vger.kernel.org>, <devel@acpica.org>,
-        <john.garry@huawei.com>, <jonathan.cameron@huawei.com>,
-        <shameerali.kolothum.thodi@huawei.com>, <huangdaode@hisilicon.com>,
-        <wangzhou1@hisilicon.com>, <zhengqiang10@huawei.com>,
-        <wuquanming@huawei.com>, <huangshaoyu@huawei.com>,
-        <linuxarm@huawei.com>
-Subject: Re: [Qemu-devel] [PATCH v11 2/6] ACPI: Add APEI GHES Table
- Generation support
-Message-ID: <20170901135121.57ca6a04@nial.brq.redhat.com>
-In-Reply-To: <dfaeb539-8006-85d6-35b2-0af31f5a0675@huawei.com>
-References: <1503066227-18251-1-git-send-email-gengdongjiu@huawei.com>
-        <1503066227-18251-3-git-send-email-gengdongjiu@huawei.com>
-        <20170829122053.36cf550c@nial.brq.redhat.com>
-        <dfaeb539-8006-85d6-35b2-0af31f5a0675@huawei.com>
+        id S1752134AbdIER1F (ORCPT <rfc822;francois.ozog@linaro.org>
+        + 6 others); Tue, 5 Sep 2017 13:27:05 -0400
+Received: from mail-wm0-f44.google.com ([74.125.82.44]:34984 "EHLO
+        mail-wm0-f44.google.com" rhost-flags-OK-OK-OK-OK) by vger.kernel.org
+        with ESMTP id S1752089AbdIER1D (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Tue, 5 Sep 2017 13:27:03 -0400
+Received: by mail-wm0-f44.google.com with SMTP id f199so1899275wme.0
+        for <kvm@vger.kernel.org>; Tue, 05 Sep 2017 10:27:02 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+         :cc;
+        bh=XlYe0u9rUPY1LOR0TXN+N7mD++vIdJ2uNX8UVdr3ZUo=;
+        b=RpfkdBG1aqh28tKemWaHGlgEJwdL/FEMnJA+Przum1/H2OmZpUB+siCynrn20BTfVq
+         UPKuY23iBZI6u6+rSjxXVyf6wOOJyrDSgJMttsuPTvDo5A3dDsGb1Ptn24zcW8fit7zg
+         9wSEWCL3AKUPfgvvAfey1pMDN1dJPtKNWRKNY=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+         :message-id:subject:to:cc;
+        bh=XlYe0u9rUPY1LOR0TXN+N7mD++vIdJ2uNX8UVdr3ZUo=;
+        b=higC6nVMQtMkENsweov0KRw7BpPVGW78Y2AdY45Uhkoq1wd8BD69Ku3BkdgSxt2lCQ
+         RLR7+f68wOYII/dQj2v0fElfU1Aft4WCf7Dz1Wm3Ez0vRJAyALhAFhf2qgFR+76URPTT
+         z6WprG7blZbBwLdhGgw6a0uWY6LmCIkyyyljCHndqn7cJXzpo0sxdpY64o47iKk067t0
+         /LZNrp/6s7dfPt74GuZ/RVPPMdSP1cQ6DMUEw4RVKdso96wzDWpTH1M5o8BxEMNFiLXz
+         cn6059r9RsaUJEq+DGCmpiUp0xDZEJhDyNaZlM/ByP0TLFJXJ+acmbW3WwF50tR2foc9
+         oA9w==
+X-Gm-Message-State: AHPjjUgIQK/5DUQ3ascHDQXkbXGXDr2k9bPIsJpVEPOC9tcmpz0B4f0c
+        0ySLsoZUdEF1StnpKyJugPhTdfnLNbPh
+X-Google-Smtp-Source: ADKCNb4aops2Eq4i7iwgirvBaCLizSESyyX5emxEmxy1+9JdTZLN2S6a6SPOF8yFrsqEAqe8neArXXAEaMfxFVvKaDk=
+X-Received: by 10.28.185.202 with SMTP id j193mr2799540wmf.130.1504632422144;
+ Tue, 05 Sep 2017 10:27:02 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.5.110.26]); Fri, 01 Sep 2017 11:51:31 +0000 (UTC)
-Sender: linux-kernel-owner@vger.kernel.org
+Received: by 10.223.159.68 with HTTP; Tue, 5 Sep 2017 10:26:41 -0700 (PDT)
+In-Reply-To: <1503066227-18251-5-git-send-email-gengdongjiu@huawei.com>
+References: <1503066227-18251-1-git-send-email-gengdongjiu@huawei.com> <1503066227-18251-5-git-send-email-gengdongjiu@huawei.com>
+From:   Peter Maydell <peter.maydell@linaro.org>
+Date:   Tue, 5 Sep 2017 18:26:41 +0100
+Message-ID: <CAFEAcA9oecuzXXrdo3zZHxF3AgrDUh_NHxz-znto4GU+OoxVFw@mail.gmail.com>
+Subject: Re: [PATCH v11 4/6] target-arm: kvm64: detect guest RAS EXTENSION feature
+To:     Dongjiu Geng <gengdongjiu@huawei.com>
+Cc:     "Michael S. Tsirkin" <mst@redhat.com>,
+        Igor Mammedov <imammedo@redhat.com>,
+        Shannon Zhao <zhaoshenglong@huawei.com>,
+        Paolo Bonzini <pbonzini@redhat.com>,
+        QEMU Developers <qemu-devel@nongnu.org>,
+        qemu-arm <qemu-arm@nongnu.org>, kvm-devel <kvm@vger.kernel.org>,
+        "edk2-devel@lists.01.org" <edk2-devel@lists.01.org>,
+        Christoffer Dall <christoffer.dall@linaro.org>,
+        Marc Zyngier <marc.zyngier@arm.com>,
+        Will Deacon <will.deacon@arm.com>,
+        James Morse <james.morse@arm.com>,
+        Tyler Baicar <tbaicar@codeaurora.org>,
+        Ard Biesheuvel <ard.biesheuvel@linaro.org>,
+        Ingo Molnar <mingo@kernel.org>, bp@suse.de,
+        shiju.jose@huawei.com, zjzhang@codeaurora.org,
+        arm-mail-list <linux-arm-kernel@lists.infradead.org>,
+        "kvmarm@lists.cs.columbia.edu" <kvmarm@lists.cs.columbia.edu>,
+        lkml - Kernel Mailing List <linux-kernel@vger.kernel.org>,
+        linux-acpi@vger.kernel.org, devel@acpica.org,
+        john.garry@huawei.com, jonathan.cameron@huawei.com,
+        shameerali.kolothum.thodi@huawei.com, huangdaode@hisilicon.com,
+        wangzhou1@hisilicon.com, Huangshaoyu <huangshaoyu@huawei.com>,
+        wuquanming <wuquanming@huawei.com>,
+        Linuxarm <linuxarm@huawei.com>, zhengqiang10@huawei.com
+Content-Type: text/plain; charset="UTF-8"
+Sender: kvm-owner@vger.kernel.org
 Precedence: bulk
-List-ID: <linux-kernel.vger.kernel.org>
-X-Mailing-List: linux-kernel@vger.kernel.org
-X-TUID: 2Yg7O6GPGytO
+List-ID: <kvm.vger.kernel.org>
+X-Mailing-List: kvm@vger.kernel.org
+X-TUID: 4lA7y9KYidaH
 
-On Fri, 1 Sep 2017 17:58:55 +0800
-gengdongjiu <gengdongjiu@huawei.com> wrote:
+On 18 August 2017 at 15:23, Dongjiu Geng <gengdongjiu@huawei.com> wrote:
+> check if kvm supports guest RAS EXTENSION. if so, set
+> corresponding feature bit for vcpu.
+>
+> Signed-off-by: Dongjiu Geng <gengdongjiu@huawei.com>
+> ---
+>  linux-headers/linux/kvm.h | 1 +
+>  target/arm/cpu.h          | 3 +++
+>  target/arm/kvm64.c        | 8 ++++++++
+>  3 files changed, 12 insertions(+)
+>
+> diff --git a/linux-headers/linux/kvm.h b/linux-headers/linux/kvm.h
+> index 7971a4f..2aa176e 100644
+> --- a/linux-headers/linux/kvm.h
+> +++ b/linux-headers/linux/kvm.h
+> @@ -929,6 +929,7 @@ struct kvm_ppc_resize_hpt {
+>  #define KVM_CAP_PPC_SMT_POSSIBLE 147
+>  #define KVM_CAP_HYPERV_SYNIC2 148
+>  #define KVM_CAP_HYPERV_VP_INDEX 149
+> +#define KVM_CAP_ARM_RAS_EXTENSION 150
+>
+>  #ifdef KVM_CAP_IRQ_ROUTING
+>
 
-> Hi Igor,
-> 
-> On 2017/8/29 18:20, Igor Mammedov wrote:
-> > On Fri, 18 Aug 2017 22:23:43 +0800
-> > Dongjiu Geng <gengdongjiu@huawei.com> wrote:
-[...]
-> >   
-> >> +void ghes_build_acpi(GArray *table_data, GArray *hardware_error,
-> >> +                                            BIOSLinker *linker)
-> >> +{
-> >> +    uint32_t ghes_start = table_data->len;
-> >> +    uint32_t address_size, error_status_address_offset;
-> >> +    uint32_t read_ack_register_offset, i;
-> >> +
-> >> +    address_size = sizeof(struct AcpiGenericAddress) -
-> >> +        offsetof(struct AcpiGenericAddress, address);  
-> > it's confusing name for var,
-> > AcpiGenericAddress::address is fixed unsigned 64 bit integer per spec
-> > also, I'm not sure why it's needed at all.  
->  it is because other people have concern about where does the "unsigned 64 bit integer"
->  come from, they are confused about the "unsigned 64 bit integer"
->  so they suggested use sizeof. anyway I will directly use unsigned 64 bit integer.
-Maybe properly named macro instead of sizeof(foo) would do the job
+Hi. Changes to linux-headers need to be done as a patch of their
+own created using scripts/update-linux-headers.sh run against a
+mainline kernel tree (and with a commit message that quotes the
+kernel commit hash used). This ensures that we have a consistent
+set of headers that don't diverge from the kernel copy.
 
+> diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+> index b39d64a..6b0961b 100644
+> --- a/target/arm/cpu.h
+> +++ b/target/arm/cpu.h
+> @@ -611,6 +611,8 @@ struct ARMCPU {
+>
+>      /* CPU has memory protection unit */
+>      bool has_mpu;
+> +    /* CPU has ras extension unit */
+> +    bool has_ras_extension;
+>      /* PMSAv7 MPU number of supported regions */
+>      uint32_t pmsav7_dregion;
+>
+> @@ -1229,6 +1231,7 @@ enum arm_features {
+>      ARM_FEATURE_THUMB_DSP, /* DSP insns supported in the Thumb encodings */
+>      ARM_FEATURE_PMU, /* has PMU support */
+>      ARM_FEATURE_VBAR, /* has cp15 VBAR */
+> +    ARM_FEATURE_RAS_EXTENSION, /*has RAS extension support */
 
-[...]
-> >> +
-> >> +        /* Build error status address*/
-> >> +        build_address(table_data, linker, error_status_address_offset + i *
-> >> +            sizeof(AcpiGenericHardwareErrorSourceV2), i * address_size,
-> >> +            AML_SYSTEM_MEMORY, 0x40, 0, 4 /* QWord access */);  
-> > just do something like this instead of build_address():
-> > build_append_gas()
-> > bios_linker_loader_add_pointer()  
-> Thanks for the suggestion.
-> 
-> > 
-> > also register width 0x40 looks suspicious, where does it come from?
-> > While at it do you have a real hardware which has HEST table that you re trying to model after?
-> > I'd like to see HEST and other related tables from it.  
-> 
-> Igor, what is your suspicious point? The register width 0x40 come from our host BIOS record to the System Memory space.
+Missing space after '/*' ?
 
-maybe s/0x40/ERROR_STATUS_BLOCK_POINTER_SIZE/
+>  };
+>
+>  static inline int arm_feature(CPUARMState *env, int feature)
+> diff --git a/target/arm/kvm64.c b/target/arm/kvm64.c
+> index a16abc8..0781367 100644
+> --- a/target/arm/kvm64.c
+> +++ b/target/arm/kvm64.c
+> @@ -518,6 +518,14 @@ int kvm_arch_init_vcpu(CPUState *cs)
+>          unset_feature(&env->features, ARM_FEATURE_PMU);
+>      }
+>
+> +    if (kvm_check_extension(cs->kvm_state, KVM_CAP_ARM_RAS_EXTENSION)) {
+> +        cpu->has_ras_extension = true;
+> +        set_feature(&env->features, ARM_FEATURE_RAS_EXTENSION);
+> +    } else {
+> +        cpu->has_ras_extension = false;
+> +        unset_feature(&env->features, ARM_FEATURE_RAS_EXTENSION);
+> +    }
+> +
 
-[...]
+Shouldn't we need to also tell the kernel that we actually want
+it to expose RAS to the guest? Compare the PMU code in this
+function, where we set a kvm_init_features bit to do this.
+(This suggests that your ABI for the kernel part of this feature
+may not be correct?)
+
+You should also not be calling set_feature() here -- if the
+CPU features bit doesn't say "this CPU should have the RAS
+extensions" we shouldn't create a CPU with them. Instead
+you should set it in kvm_arm_get_host_cpu_features() (again,
+compare the PMU code).
+
+thanks
+-- PMM

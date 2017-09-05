@@ -1,99 +1,89 @@
-Received: by 10.223.172.38 with SMTP id v35csp1368224wrc;
-        Tue, 5 Sep 2017 05:39:20 -0700 (PDT)
-X-Received: by 10.55.149.70 with SMTP id x67mr3055869qkd.149.1504615160001;
-        Tue, 05 Sep 2017 05:39:20 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1504615159; cv=none;
+Received: by 10.223.172.38 with SMTP id v35csp1406016wrc;
+        Tue, 5 Sep 2017 06:12:12 -0700 (PDT)
+X-Google-Smtp-Source: ADKCNb6kqP3OsCmEjsK8M4PHGakc83RiXMr/fZ4D+rIsoLdPvl1WGdVMBKl71u2BCWeuEAp1cHzx
+X-Received: by 10.55.16.74 with SMTP id a71mr5687908qkh.170.1504617132655;
+        Tue, 05 Sep 2017 06:12:12 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1504617132; cv=none;
         d=google.com; s=arc-20160816;
-        b=SEYkh7HzIW0tV3RRxwLF8uw0CAQshvbqohl1WpO8FHPoSb7h/mWlMC0ChQfNFyDkWg
-         3eJ95GPmB7nw6x9L7btbpHxk3Sdb3YNYdRWyBVHJ79zKdgQn3nKI+Jj6vxucKu9jHK03
-         LOhhNpQL0qcmpI1BapBA5pt7WK51DGPQoh3yYn2/kiGo+GjTARR0Wk8Gb1tUR5u2llA8
-         BfcaYNJS9alAbjf0i+hmN0FC8+0dcNuGE76zBm/6Eo8GWqyij456h5cHlnMsRhro5455
-         zAaUk9qKO1H7Pqdo7V/GE6OW+A3GHxwr/m3ZQPhtjWiA3P4Zh5Fh3i67iqYZGTqNHSrY
-         TvQQ==
+        b=xLGJ4StU/b3ljNDJeQj5eO4X1ubLKqk+Ig0NlKfuGg7qtB4vM9sKjYBEZPEPS42U3G
+         SIKUUo5s0x6cgyVIGxQeJKm5Jjo3eOgkAMDDPwLv8D5gHmsLZ9qJE25k6qAu/af4OMSO
+         dpd2QDaT0szNQ1o7D0VPUrF9EDaJmU74YfxnzWuIvctaR+bkA64syqUwxxFr1OhqZGxl
+         wmimjAoSfDMDOYbxxuPC/CQTxzqRmcjMO7iwdkeQg57ADUGhX2y1X87GCLEL0F8W+80w
+         uCwwUaGDSCTpxjKBSnAYmMMUTkwPqo+nFEEy+ElwsjWEleBboJKeBqrfdaDJoYdmO3bQ
+         Ff7g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
-         :references:in-reply-to:mime-version:dkim-signature
-         :arc-authentication-results;
-        bh=4k6/cMj0I+y29sxZH+yEcFXnuq31L3KFr+JoPVglMV8=;
-        b=DB48th//wfsojEGajAXiipSzaK31hUD1pDK7Y6HuARL9sqJW9jucP7jBxsL8s2d13U
-         b+SH8orLlFGh1UgbTbG0RkXCjuNosq/oqwspsCYJdp1CbWibiH17UQZ1oK/KgT4i6Mlt
-         uq15JD4+oCzTEn1oyMn2tYemKjHiZUbkLbBNTm7n0E7hIWNfRZhoxaWsUq9f7PctYbSw
-         iAR2yLeOslk/rlTA1oH8H7KUlJyWrRsSu9E9KQj29g2XxDlJ0qhscU7eNDCKPtKu2ue3
-         LMQ8zimV2KNj6dMtRNgTpglXZdDh+QR0oFZY7YpIjd4y4dbAV0n6ItPY5uIkQ8N41X6M
-         LmwA==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:to:from:dmarc-filter:arc-authentication-results;
+        bh=QqoFoUIBlnOlKB9MoQQBtUKtMCAAmx840VB1sxDcwBo=;
+        b=bIMYaYq5H7bu1g8w1v+lDuWrwqdo0UbL0Hnc/N/lAq2lXr0TJy6hxLBUP2UPa4yz8z
+         lUzaiHYCKFyZwgXuHqdcza/TdqOwT0IF0O3mVCKmWeDAcp5EcBo7UennscbNxX8J60JQ
+         dexSdzbIaVHP5W7kJqLUpDv0E+u1XlJyGAnBI7tvbSlWNKV95v0XwM6DbDZZk24YlSlK
+         VSkHx4hlZe9OKBpkyoo3GQeusrOFDhBAz1nbeNO2O9ENNLbw4+gp4boffeD9nUeGt29i
+         o3tTvc2+fpteD843SdDPqTvpCSDkbuoZP6L79Nm8pMWTIKP0iuQnqZi8z0EC8bbiDKOf
+         JsuQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=WwnKJUr6;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id n25si135720qtb.277.2017.09.05.05.39.19
+        by mx.google.com with ESMTPS id d77si447980qkh.149.2017.09.05.06.12.12
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 05 Sep 2017 05:39:19 -0700 (PDT)
+        Tue, 05 Sep 2017 06:12:12 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=WwnKJUr6;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:58705 helo=lists.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:58849 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1dpD8P-00042K-JF
-	for alex.bennee@linaro.org; Tue, 05 Sep 2017 08:39:17 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:56029)
+	id 1dpDeE-0006Ti-BC
+	for alex.bennee@linaro.org; Tue, 05 Sep 2017 09:12:10 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:42754)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1dpD5S-000209-AO
-	for qemu-arm@nongnu.org; Tue, 05 Sep 2017 08:36:30 -0400
+	(envelope-from <famz@redhat.com>) id 1dpDe4-0006OZ-U6
+	for qemu-arm@nongnu.org; Tue, 05 Sep 2017 09:12:05 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1dpD5E-0004MT-Ak
-	for qemu-arm@nongnu.org; Tue, 05 Sep 2017 08:36:14 -0400
-Received: from mail-wm0-x22e.google.com ([2a00:1450:400c:c09::22e]:35036)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1dpD5E-0004LK-2H
-	for qemu-arm@nongnu.org; Tue, 05 Sep 2017 08:36:00 -0400
-Received: by mail-wm0-x22e.google.com with SMTP id h144so4788718wme.0
-	for <qemu-arm@nongnu.org>; Tue, 05 Sep 2017 05:35:59 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=4k6/cMj0I+y29sxZH+yEcFXnuq31L3KFr+JoPVglMV8=;
-	b=WwnKJUr6jiltn07RWiEktH2hiKkekOe6gLGHiYbNvPy2HAfkvjJzGOSln7+1J30HPZ
-	MYT9Ifg9LOadBpxR8Og1HuDAZiNw7sYLsqxI/Gj4YsVzuBBzeQIFY12TP6HwK9lKrRkt
-	kMn1CB+djU5GDIqffLELrOsDW1v4Px8xNjjAc=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=4k6/cMj0I+y29sxZH+yEcFXnuq31L3KFr+JoPVglMV8=;
-	b=NY7DadNqkl4yl3hJJrKl1zDfAUq/GN+fV69VUsf2Ut7khSgHjVz/wqMxU3lK/ZU33X
-	6I+VVYLJz3cgU42ssBj1IljLSf3iJC8PRaAgiEcHLUrT9b4lImlOHbuOd8oiCC3MW764
-	/Y9ZpvyaEqqzUaTOVMCYwJ4Pba/upHBxphRLkwTVVIUshiI0mMg0DnODyFI18S1S9MRc
-	kmY7JRPb0YUJH/p1n2Hcls5B7RxwON1XMuhgHFfwRhRadIe+QxzqiZeBGqUZYjd3WNqj
-	SaKIIwLkzVxHPruA7crkdjPpcXC1NZIawZjLd5wAw6MlRBhD7nEWyXYTA7P5ZNT5wrjT
-	dpSA==
-X-Gm-Message-State: AHPjjUiQbidBwCekhNwRxGZu5Wh5nbkRaWMqs4oozm5SQOHMK7LFfo+4
-	NgVh+2HukM/k9TPvFPg537icW/X2548+
-X-Google-Smtp-Source: ADKCNb5OIo+QCRpjOo8Zd1Yq9U9uj4HG789kuGj3rvh9zAaomY0CaZQjmsIvvuj6+bs/ilBKvwR+QUCnrFU5gj0+WYo=
-X-Received: by 10.28.236.91 with SMTP id k88mr1590783wmh.95.1504614958879;
-	Tue, 05 Sep 2017 05:35:58 -0700 (PDT)
+	(envelope-from <famz@redhat.com>) id 1dpDe0-0007kB-87
+	for qemu-arm@nongnu.org; Tue, 05 Sep 2017 09:12:00 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:64702)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <famz@redhat.com>)
+	id 1dpDe0-0007io-2X; Tue, 05 Sep 2017 09:11:56 -0400
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+	[10.5.11.13])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 1F51AAC2C3;
+	Tue,  5 Sep 2017 13:11:55 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 1F51AAC2C3
+Authentication-Results: ext-mx09.extmail.prod.ext.phx2.redhat.com;
+	dmarc=none (p=none dis=none) header.from=redhat.com
+Authentication-Results: ext-mx09.extmail.prod.ext.phx2.redhat.com;
+	spf=fail smtp.mailfrom=famz@redhat.com
+Received: from lemon.redhat.com (ovpn-12-97.pek2.redhat.com [10.72.12.97])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 37A4F7FB8D;
+	Tue,  5 Sep 2017 13:11:52 +0000 (UTC)
+From: Fam Zheng <famz@redhat.com>
+To: qemu-devel@nongnu.org
+Date: Tue,  5 Sep 2017 21:11:44 +0800
+Message-Id: <20170905131149.10669-2-famz@redhat.com>
+In-Reply-To: <20170905131149.10669-1-famz@redhat.com>
+References: <20170905131149.10669-1-famz@redhat.com>
 MIME-Version: 1.0
-Received: by 10.223.159.68 with HTTP; Tue, 5 Sep 2017 05:35:38 -0700 (PDT)
-In-Reply-To: <7FD21DDFE9A3784693E393AF276FE7D21F17E49E@DGGEMA501-MBX.china.huawei.com>
-References: <20170905112152.8851-1-ppandit@redhat.com>
-	<CAFEAcA8B4EwXCPSBsftt=QkAuH8jCBbK23-uU7NA7G3k6ADHLw@mail.gmail.com>
-	<7FD21DDFE9A3784693E393AF276FE7D21F17E49E@DGGEMA501-MBX.china.huawei.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 5 Sep 2017 13:35:38 +0100
-Message-ID: <CAFEAcA8JxuM-ddQVTBfgnSDD2fD+kz_RNShdNDqMqVH=zOKBfw@mail.gmail.com>
-To: niuguoxiang <niuguoxiang@huawei.com>
-Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2a00:1450:400c:c09::22e
-Subject: Re: [Qemu-arm] =?utf-8?b?562U5aSNOiBbUEFUQ0hdIGludGM6IGFybV9naWN2?=
-	=?utf-8?q?3=3A_limit_GICR_ipriority_index?=
+Content-Type: text/plain; charset=UTF-8
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.38]);
+	Tue, 05 Sep 2017 13:11:55 +0000 (UTC)
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.132.183.28
+Subject: [Qemu-arm] [PATCH v6 1/6] armv7m: Convert bitband.source-memory to
+ DEFINE_PROP_LINK
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -105,30 +95,45 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Prasad J Pandit <pjp@fedoraproject.org>, qemu-arm <qemu-arm@nongnu.org>,
-	QEMU Developers <qemu-devel@nongnu.org>, P J P <ppandit@redhat.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 26VGFOvVMe3+
+X-TUID: JoTDFLvoPls0
 
-On 5 September 2017 at 13:30, niuguoxiang <niuguoxiang@huawei.com> wrote:
-> I think only assert is not enough, because assert() depends on NDEBUG
-> preprocessing
+Signed-off-by: Fam Zheng <famz@redhat.com>
+Reviewed-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+---
+ hw/arm/armv7m.c | 8 ++------
+ 1 file changed, 2 insertions(+), 6 deletions(-)
 
-The code cannot be reached with a non-aligned value,
-because we register these functions via the gic_ops[]
-MemoryRegionops in hw/intc/arm_gicv3.c, and since we
-do not specify .valid.unaligned=true there, the memory.c
-code will throw out attempts at unaligned accesses.
+diff --git a/hw/arm/armv7m.c b/hw/arm/armv7m.c
+index d2477e84e4..4c560dde56 100644
+--- a/hw/arm/armv7m.c
++++ b/hw/arm/armv7m.c
+@@ -97,12 +97,6 @@ static void bitband_init(Object *obj)
+     BitBandState *s =3D BITBAND(obj);
+     SysBusDevice *dev =3D SYS_BUS_DEVICE(obj);
+=20
+-    object_property_add_link(obj, "source-memory",
+-                             TYPE_MEMORY_REGION,
+-                             (Object **)&s->source_memory,
+-                             qdev_prop_allow_set_link_before_realize,
+-                             OBJ_PROP_LINK_UNREF_ON_RELEASE,
+-                             &error_abort);
+     memory_region_init_io(&s->iomem, obj, &bitband_ops, s,
+                           "bitband", 0x02000000);
+     sysbus_init_mmio(dev, &s->iomem);
+@@ -349,6 +343,8 @@ void armv7m_load_kernel(ARMCPU *cpu, const char *kern=
+el_filename, int mem_size)
+=20
+ static Property bitband_properties[] =3D {
+     DEFINE_PROP_UINT32("base", BitBandState, base, 0),
++    DEFINE_PROP_LINK("source-memory", BitBandState, source_memory,
++                     TYPE_MEMORY_REGION, MemoryRegion *),
+     DEFINE_PROP_END_OF_LIST(),
+ };
+=20
+--=20
+2.13.5
 
-The assert is just checking at runtime that this never
-becomes false accidentally (and also for the benefit of
-people reading the code).
-
-Incidentally, QEMU can never be compiled with NDEBUG not
-set -- we will #error in the compilation if it is not set.
-(It's not good practice to depend on the assert() actually
-doing anything though, and indeed in this case we don't.)
-
-thanks
--- PMM

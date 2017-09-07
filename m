@@ -1,68 +1,175 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaro.local ([81.128.185.34])
-        by smtp.gmail.com with ESMTPSA id e34sm253520wre.15.2017.09.07.11.18.27
+        by smtp.gmail.com with ESMTPSA id e8sm65822wmf.12.2017.09.07.12.00.19
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 07 Sep 2017 11:18:27 -0700 (PDT)
+        Thu, 07 Sep 2017 12:00:19 -0700 (PDT)
 Received: from zen (localhost [127.0.0.1])
-	by zen.linaro.local (Postfix) with ESMTPS id 6875C3E019F;
-	Thu,  7 Sep 2017 19:18:26 +0100 (BST)
-References: <20170817230114.3655-1-richard.henderson@linaro.org> <20170817230114.3655-4-richard.henderson@linaro.org>
+	by zen.linaro.local (Postfix) with ESMTPS id E0FAF3E019F;
+	Thu,  7 Sep 2017 20:00:18 +0100 (BST)
+References: <20170817230114.3655-1-richard.henderson@linaro.org> <20170817230114.3655-5-richard.henderson@linaro.org>
 User-agent: mu4e 0.9.19; emacs 25.2.50.3
 From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: Richard Henderson <richard.henderson@linaro.org>
 Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
-Subject: Re: [PATCH 3/8] tcg: Add types for host vectors
-In-reply-to: <20170817230114.3655-4-richard.henderson@linaro.org>
-Date: Thu, 07 Sep 2017 19:18:26 +0100
-Message-ID: <8760cumky5.fsf@linaro.org>
+Subject: Re: [PATCH 4/8] tcg: Add operations for host vectors
+In-reply-to: <20170817230114.3655-5-richard.henderson@linaro.org>
+Date: Thu, 07 Sep 2017 20:00:18 +0100
+Message-ID: <874lsemj0d.fsf@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 8bit
-X-TUID: Ry2q8HqbVakC
+X-TUID: W+2sXrY6nysu
 
 
 Richard Henderson <richard.henderson@linaro.org> writes:
 
-> Nothing uses or enables them yet.
+> Nothing uses or implements them yet.
 >
 > Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
-
-Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
-
 > ---
->  tcg/tcg.h | 5 +++++
->  tcg/tcg.c | 2 +-
->  2 files changed, 6 insertions(+), 1 deletion(-)
+>  tcg/tcg-opc.h | 89 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+>  tcg/tcg.h     | 24 ++++++++++++++++
+>  2 files changed, 113 insertions(+)
 >
+> diff --git a/tcg/tcg-opc.h b/tcg/tcg-opc.h
+> index 956fb1e9f3..9162125fac 100644
+> --- a/tcg/tcg-opc.h
+> +++ b/tcg/tcg-opc.h
+> @@ -206,6 +206,95 @@ DEF(qemu_st_i64, 0, TLADDR_ARGS + DATA64_ARGS, 1,
+>
+>  #undef TLADDR_ARGS
+>  #undef DATA64_ARGS
+> +
+> +/* Host integer vector operations.  */
+> +/* These opcodes are required whenever the base vector size is enabled.  */
+> +
+> +DEF(mov_v64, 1, 1, 0, IMPL(TCG_TARGET_HAS_v64))
+> +DEF(mov_v128, 1, 1, 0, IMPL(TCG_TARGET_HAS_v128))
+> +DEF(mov_v256, 1, 1, 0, IMPL(TCG_TARGET_HAS_v256))
+> +
+> +DEF(movi_v64, 1, 0, 1, IMPL(TCG_TARGET_HAS_v64))
+> +DEF(movi_v128, 1, 0, 1, IMPL(TCG_TARGET_HAS_v128))
+> +DEF(movi_v256, 1, 0, 1, IMPL(TCG_TARGET_HAS_v256))
+> +
+> +DEF(ld_v64, 1, 1, 1, IMPL(TCG_TARGET_HAS_v64))
+> +DEF(ld_v128, 1, 1, 1, IMPL(TCG_TARGET_HAS_v128))
+> +DEF(ld_v256, 1, 1, 1, IMPL(TCG_TARGET_HAS_v256))
+> +
+> +DEF(st_v64, 0, 2, 1, IMPL(TCG_TARGET_HAS_v64))
+> +DEF(st_v128, 0, 2, 1, IMPL(TCG_TARGET_HAS_v128))
+> +DEF(st_v256, 0, 2, 1, IMPL(TCG_TARGET_HAS_v256))
+> +
+> +DEF(and_v64, 1, 2, 0, IMPL(TCG_TARGET_HAS_v64))
+> +DEF(and_v128, 1, 2, 0, IMPL(TCG_TARGET_HAS_v128))
+> +DEF(and_v256, 1, 2, 0, IMPL(TCG_TARGET_HAS_v256))
+> +
+> +DEF(or_v64, 1, 2, 0, IMPL(TCG_TARGET_HAS_v64))
+> +DEF(or_v128, 1, 2, 0, IMPL(TCG_TARGET_HAS_v128))
+> +DEF(or_v256, 1, 2, 0, IMPL(TCG_TARGET_HAS_v256))
+> +
+> +DEF(xor_v64, 1, 2, 0, IMPL(TCG_TARGET_HAS_v64))
+> +DEF(xor_v128, 1, 2, 0, IMPL(TCG_TARGET_HAS_v128))
+> +DEF(xor_v256, 1, 2, 0, IMPL(TCG_TARGET_HAS_v256))
+> +
+> +DEF(add8_v64, 1, 2, 0, IMPL(TCG_TARGET_HAS_v64))
+> +DEF(add16_v64, 1, 2, 0, IMPL(TCG_TARGET_HAS_v64))
+> +DEF(add32_v64, 1, 2, 0, IMPL(TCG_TARGET_HAS_v64))
+> +
+> +DEF(add8_v128, 1, 2, 0, IMPL(TCG_TARGET_HAS_v128))
+> +DEF(add16_v128, 1, 2, 0, IMPL(TCG_TARGET_HAS_v128))
+> +DEF(add32_v128, 1, 2, 0, IMPL(TCG_TARGET_HAS_v128))
+> +DEF(add64_v128, 1, 2, 0, IMPL(TCG_TARGET_HAS_v128))
+> +
+> +DEF(add8_v256, 1, 2, 0, IMPL(TCG_TARGET_HAS_v256))
+> +DEF(add16_v256, 1, 2, 0, IMPL(TCG_TARGET_HAS_v256))
+> +DEF(add32_v256, 1, 2, 0, IMPL(TCG_TARGET_HAS_v256))
+> +DEF(add64_v256, 1, 2, 0, IMPL(TCG_TARGET_HAS_v256))
+> +
+> +DEF(sub8_v64, 1, 2, 0, IMPL(TCG_TARGET_HAS_v64))
+> +DEF(sub16_v64, 1, 2, 0, IMPL(TCG_TARGET_HAS_v64))
+> +DEF(sub32_v64, 1, 2, 0, IMPL(TCG_TARGET_HAS_v64))
+> +
+> +DEF(sub8_v128, 1, 2, 0, IMPL(TCG_TARGET_HAS_v128))
+> +DEF(sub16_v128, 1, 2, 0, IMPL(TCG_TARGET_HAS_v128))
+> +DEF(sub32_v128, 1, 2, 0, IMPL(TCG_TARGET_HAS_v128))
+> +DEF(sub64_v128, 1, 2, 0, IMPL(TCG_TARGET_HAS_v128))
+> +
+> +DEF(sub8_v256, 1, 2, 0, IMPL(TCG_TARGET_HAS_v256))
+> +DEF(sub16_v256, 1, 2, 0, IMPL(TCG_TARGET_HAS_v256))
+> +DEF(sub32_v256, 1, 2, 0, IMPL(TCG_TARGET_HAS_v256))
+> +DEF(sub64_v256, 1, 2, 0, IMPL(TCG_TARGET_HAS_v256))
+> +
+> +/* These opcodes are optional.
+> +   All element counts must be supported if any are.  */
+> +
+> +DEF(not_v64, 1, 1, 0, IMPL(TCG_TARGET_HAS_not_v64))
+> +DEF(not_v128, 1, 1, 0, IMPL(TCG_TARGET_HAS_not_v128))
+> +DEF(not_v256, 1, 1, 0, IMPL(TCG_TARGET_HAS_not_v256))
+> +
+> +DEF(andc_v64, 1, 2, 0, IMPL(TCG_TARGET_HAS_andc_v64))
+> +DEF(andc_v128, 1, 2, 0, IMPL(TCG_TARGET_HAS_andc_v128))
+> +DEF(andc_v256, 1, 2, 0, IMPL(TCG_TARGET_HAS_andc_v256))
+> +
+> +DEF(orc_v64, 1, 2, 0, IMPL(TCG_TARGET_HAS_orc_v64))
+> +DEF(orc_v128, 1, 2, 0, IMPL(TCG_TARGET_HAS_orc_v128))
+> +DEF(orc_v256, 1, 2, 0, IMPL(TCG_TARGET_HAS_orc_v256))
+> +
+> +DEF(neg8_v64, 1, 1, 0, IMPL(TCG_TARGET_HAS_neg_v64))
+> +DEF(neg16_v64, 1, 1, 0, IMPL(TCG_TARGET_HAS_neg_v64))
+> +DEF(neg32_v64, 1, 1, 0, IMPL(TCG_TARGET_HAS_neg_v64))
+> +
+> +DEF(neg8_v128, 1, 1, 0, IMPL(TCG_TARGET_HAS_neg_v128))
+> +DEF(neg16_v128, 1, 1, 0, IMPL(TCG_TARGET_HAS_neg_v128))
+> +DEF(neg32_v128, 1, 1, 0, IMPL(TCG_TARGET_HAS_neg_v128))
+> +DEF(neg64_v128, 1, 1, 0, IMPL(TCG_TARGET_HAS_neg_v128))
+> +
+> +DEF(neg8_v256, 1, 1, 0, IMPL(TCG_TARGET_HAS_neg_v256))
+> +DEF(neg16_v256, 1, 1, 0, IMPL(TCG_TARGET_HAS_neg_v256))
+> +DEF(neg32_v256, 1, 1, 0, IMPL(TCG_TARGET_HAS_neg_v256))
+> +DEF(neg64_v256, 1, 1, 0, IMPL(TCG_TARGET_HAS_neg_v256))
+> +
+>  #undef IMPL
+>  #undef IMPL64
+>  #undef DEF
 > diff --git a/tcg/tcg.h b/tcg/tcg.h
-> index dd97095af5..1277caed3d 100644
+> index 1277caed3d..b9e15da13b 100644
 > --- a/tcg/tcg.h
 > +++ b/tcg/tcg.h
-> @@ -256,6 +256,11 @@ typedef struct TCGPool {
->  typedef enum TCGType {
->      TCG_TYPE_I32,
->      TCG_TYPE_I64,
-> +
-> +    TCG_TYPE_V64,
-> +    TCG_TYPE_V128,
-> +    TCG_TYPE_V256,
-> +
->      TCG_TYPE_COUNT, /* number of different types */
->
->      /* An alias for the size of the host register.  */
-> diff --git a/tcg/tcg.c b/tcg/tcg.c
-> index 787c8ba0f7..ea78d47fad 100644
-> --- a/tcg/tcg.c
-> +++ b/tcg/tcg.c
-> @@ -118,7 +118,7 @@ static TCGReg tcg_reg_alloc_new(TCGContext *s, TCGType t)
->  static bool tcg_out_ldst_finalize(TCGContext *s);
+> @@ -166,6 +166,30 @@ typedef uint64_t TCGRegSet;
+>  #define TCG_TARGET_HAS_rem_i64          0
 >  #endif
 >
-> -static TCGRegSet tcg_target_available_regs[2];
-> +static TCGRegSet tcg_target_available_regs[TCG_TYPE_COUNT];
->  static TCGRegSet tcg_target_call_clobber_regs;
->
->  #if TCG_TARGET_INSN_UNIT_SIZE == 1
+> +#ifndef TCG_TARGET_HAS_v64
+> +#define TCG_TARGET_HAS_v64              0
+> +#define TCG_TARGET_HAS_andc_v64         0
+> +#define TCG_TARGET_HAS_orc_v64          0
+> +#define TCG_TARGET_HAS_not_v64          0
+> +#define TCG_TARGET_HAS_neg_v64          0
+> +#endif
+> +
+> +#ifndef TCG_TARGET_HAS_v128
+> +#define TCG_TARGET_HAS_v128             0
+> +#define TCG_TARGET_HAS_andc_v128        0
+> +#define TCG_TARGET_HAS_orc_v128         0
+> +#define TCG_TARGET_HAS_not_v128         0
+> +#define TCG_TARGET_HAS_neg_v128         0
+> +#endif
+> +
+> +#ifndef TCG_TARGET_HAS_v256
+> +#define TCG_TARGET_HAS_v256             0
+> +#define TCG_TARGET_HAS_andc_v256        0
+> +#define TCG_TARGET_HAS_orc_v256         0
+> +#define TCG_TARGET_HAS_not_v256         0
+> +#define TCG_TARGET_HAS_neg_v256         0
+> +#endif
+
+Is it possible to use the DEF expanders to avoid manually defining all
+the TCG_TARGET_HAS_op for each vector size?
+
+> +
+>  /* For 32-bit targets, some sort of unsigned widening multiply is required.  */
+>  #if TCG_TARGET_REG_BITS == 32 \
+>      && !(defined(TCG_TARGET_HAS_mulu2_i32) \
 
 
 --

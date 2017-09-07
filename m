@@ -1,591 +1,887 @@
-Received: by 10.28.71.27 with SMTP id u27csp1680088wma;
-        Tue, 13 Feb 2018 11:08:43 -0800 (PST)
-X-Google-Smtp-Source: AH8x226SxZpyf4sXE8Nap8NFpWK7BMGVbdZcGbxuk1I5RWZjLtCo/yvqer2uhgrwlPpOIM5z8Q4v
-X-Received: by 10.37.70.67 with SMTP id t64mr1570480yba.100.1518548923150;
-        Tue, 13 Feb 2018 11:08:43 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1518548923; cv=none;
-        d=google.com; s=arc-20160816;
-        b=yfTVSeZio95oSkVkrLDOt7ir5EtdcqbbUrbFg5a7zlACIAKiJlfB8eH60XerRx+14O
-         P4gTx+Pu2ez0y7N4W72VmRUvAXBRHbr84wOKYwg5rjZFxIkk1gHR+rKS6VTYZqKVG0kY
-         RSVXw/RcwySlX+7VNSsTtN0c3X4BfWUGmZ46uEMBzdzexSSR2zAqVmQpCDYWTK6MSF7B
-         bLw3ogXkirA2KpYcC+4Ija9RkhqS5fQF4nJKK3eJoibHz21xc8ihwYncAMgmZ0ta8Jqh
-         6lsT/uYEt5aSkAMsQ7S1JN8wvJsFVGTvTxx/9UMCmec4kJ+L1h18XNWvAC2cSpLKfZlF
-         BNXw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
-         :references:in-reply-to:mime-version:dkim-signature
-         :arc-authentication-results;
-        bh=Nvw8hx0hryeDUQKfePvedUUcDIIG8RD3sGS3xUw5G24=;
-        b=r62EcXEJGHUwgf9Bu9m1Hn63l5Hz03zwqE38/nlYBzFWTMiXQXtLTObiaPLHZxzvzf
-         otgcBsBbiDwhYJRtWUKYmsjVtx4ljhAdcH+oTShywYGUwjj7UtKmXBn5ilkaiA4mbgsk
-         BvUSbLqXVEJgshVDUFHOFNC10IgWnIthcQMw0rENudzI9eC9/9n3Ym90UwehB0YxCxbD
-         vx9pg6fmevGLGfZcpH05mPUD9S4gf5j8xFff1kp7nhQORMRybl+038D1BHPigjYzee/Y
-         wedjmvFzu70zFaTNd6gIGZ/e3eFAnqbH/9hi49t9Vim9Btd4SMCBh04sum25qxhXcI+5
-         sXbg==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=fHGV2AMk;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id 4si98867ybk.605.2018.02.13.11.08.42
-        for <alex.bennee@linaro.org>
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 13 Feb 2018 11:08:43 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
-Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=fHGV2AMk;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:39745 helo=lists.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1elfwY-0002qo-Ip
-	for alex.bennee@linaro.org; Tue, 13 Feb 2018 14:08:42 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:35059)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1elfwM-0002pp-E7
-	for qemu-arm@nongnu.org; Tue, 13 Feb 2018 14:08:32 -0500
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1elfwJ-00036M-Gf
-	for qemu-arm@nongnu.org; Tue, 13 Feb 2018 14:08:30 -0500
-Received: from mail-oi0-x22f.google.com ([2607:f8b0:4003:c06::22f]:36488)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1elfwJ-000352-6L
-	for qemu-arm@nongnu.org; Tue, 13 Feb 2018 14:08:27 -0500
-Received: by mail-oi0-x22f.google.com with SMTP id 24so14677165oij.3
-	for <qemu-arm@nongnu.org>; Tue, 13 Feb 2018 11:08:27 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=Nvw8hx0hryeDUQKfePvedUUcDIIG8RD3sGS3xUw5G24=;
-	b=fHGV2AMk9x11tEIGPIZqr4o2Ep+48IF7VbWMyl+CZdUjIOVghxp+xU1ztR4hpm1p6j
-	XKWv/ZO2cvFBs2a5ihrVc4YdKxFJIprAuLxQ4RDaIj2v1qLZTGM/rRO+uk6QG44uzlHN
-	pO0eqmnD2Zbl18bzYwlGqsd4bBR2ej+eUUAIQ=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=Nvw8hx0hryeDUQKfePvedUUcDIIG8RD3sGS3xUw5G24=;
-	b=NgYtNGSXZ48aiTecru5Yy7IkiX1H7ATqjhgBeTj/WHJLkN9yZEURezmWgHY39fxlu7
-	lPd0IqWiFUT6e1AVO5P98Y8o1DeukczVY6u8tiiIFdyp2ruv4jrBPETr/9mdUAEES09C
-	T7Jfk2Zr6O9fFY7YpSs7X6QV0hz+drw4oMjrvUN0I41T+ZVVxtkOJta7fbxS5Y2mLs8I
-	2nYrFBhYXPHq06KUyZ9GJD01Dj3wB0ksD/dl36ZGiFVSgSVS6sUiKx1L3XO2fa71WeTn
-	FBPv1zyCZinbxC1mUg8SWK8KobbbgvQT7nEQF1UQ6mXA/qSNL7Xc8BWHDK2uYOTDQKr/
-	SJvQ==
-X-Gm-Message-State: APf1xPCwRpimjtyqkmnFxc3sUqsi5nTZ4+3EAZJYIUPgcuwmku5QJs7l
-	UhGrtsTAtCtqqRqO6fACZm1Ge7dnTMehhuFHSbfK7Q==
-X-Received: by 10.202.180.136 with SMTP id d130mr1601703oif.328.1518548906120; 
-	Tue, 13 Feb 2018 11:08:26 -0800 (PST)
+Return-Path: <alex.bennee@linaro.org>
+Received: from zen.linaro.local ([81.128.185.34])
+        by smtp.gmail.com with ESMTPSA id l131sm67906wmb.2.2017.09.07.09.34.28
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 07 Sep 2017 09:34:28 -0700 (PDT)
+Received: from zen (localhost [127.0.0.1])
+	by zen.linaro.local (Postfix) with ESMTPS id AEF8D3E019F;
+	Thu,  7 Sep 2017 17:34:27 +0100 (BST)
+References: <20170817230114.3655-1-richard.henderson@linaro.org> <20170817230114.3655-2-richard.henderson@linaro.org>
+User-agent: mu4e 0.9.19; emacs 25.2.50.3
+From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: Richard Henderson <richard.henderson@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
+Subject: Re: [PATCH 1/8] tcg: Add generic vector infrastructure and ops for add/sub/logic
+In-reply-to: <20170817230114.3655-2-richard.henderson@linaro.org>
+Date: Thu, 07 Sep 2017 17:34:27 +0100
+Message-ID: <878thqmprg.fsf@linaro.org>
 MIME-Version: 1.0
-Received: by 10.157.18.136 with HTTP; Tue, 13 Feb 2018 11:08:05 -0800 (PST)
-In-Reply-To: <1518542209-23286-1-git-send-email-abdallah.bouassida@gmail.com>
-References: <1518542209-23286-1-git-send-email-abdallah.bouassida@gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 13 Feb 2018 19:08:05 +0000
-Message-ID: <CAFEAcA9pU=Cxc8Ufo-t0CFK_yR80qv4YuJXsW_GFf-QJMstUDw@mail.gmail.com>
-To: Abdallah Bouassida <abdallah.bouassida@gmail.com>
-Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:4003:c06::22f
-Subject: Re: [Qemu-arm] [PATCH V2] target-arm:Add a dynamic XML-description
- of the cp-registers to GDB
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.21
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Khaled Jmal <khaled.jmal@lauterbach.com>, qemu-arm <qemu-arm@nongnu.org>,
-	QEMU Developers <qemu-devel@nongnu.org>,
-	Abdallah Bouassida <abdallah.bouassida@lauterbach.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: HBGuPP0DOYN8
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-TUID: Zfe9Q1Ebn29M
 
-On 13 February 2018 at 17:16, Abdallah Bouassida
-<abdallah.bouassida@gmail.com> wrote:
-> This patch offers to GDB the ability to read/write all the coprocessor
-> registers for ARM and ARM64 by generating dynamically an XML-description for
-> these registers.
->
-> Signed-off-by: Abdallah Bouassida <abdallah.bouassida@lauterbach.com>
+
+Richard Henderson <richard.henderson@linaro.org> writes:
+
+> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 > ---
-> Hi Peter,
+>  Makefile.target        |   5 +-
+>  tcg/tcg-op-gvec.h      |  88 ++++++++++
+>  tcg/tcg-runtime.h      |  16 ++
+>  tcg/tcg-op-gvec.c      | 443 +++++++++++++++++++++++++++++++++++++++++++++++++
+>  tcg/tcg-runtime-gvec.c | 199 ++++++++++++++++++++++
+>  5 files changed, 749 insertions(+), 2 deletions(-)
+>  create mode 100644 tcg/tcg-op-gvec.h
+>  create mode 100644 tcg/tcg-op-gvec.c
+>  create mode 100644 tcg/tcg-runtime-gvec.c
 >
-> http://patchwork.ozlabs.org/patch/867467/
-> My last patch was also mangled by Thunderbird even after changing the
-> settings to send a plain text..!
-> Anyway, here it is the patch using the git send-mail command.
-
-Thanks for the resend. I've had a look through and have some
-review comments below.
-
-> Best regards,
-> Abdallah
->
->  gdbstub.c              | 18 +++++++++++
->  include/qom/cpu.h      |  3 ++
->  target/arm/cpu.c       |  3 ++
->  target/arm/cpu.h       | 18 +++++++++++
->  target/arm/gdbstub.c   | 87 ++++++++++++++++++++++++++++++++++++++++++++++++++
->  target/arm/gdbstub64.c | 25 +++++++++++++++
->  target/arm/helper.c    |  3 +-
->  7 files changed, 155 insertions(+), 2 deletions(-)
->
-> diff --git a/gdbstub.c b/gdbstub.c
-> index f1d5148..f54053f 100644
-> --- a/gdbstub.c
-> +++ b/gdbstub.c
-> @@ -670,10 +670,20 @@ static const char *get_feature_xml(const char *p, const char **newp,
->                  pstrcat(target_xml, sizeof(target_xml), r->xml);
->                  pstrcat(target_xml, sizeof(target_xml), "\"/>");
->              }
-> +            if (cc->has_dynamic_xml) {
-> +                cc->gen_dynamic_xml(cpu);
-> +                pstrcat(target_xml, sizeof(target_xml), "<xi:include href=\"");
-> +                pstrcat(target_xml, sizeof(target_xml), "dynamic_desc.xml");
-> +                pstrcat(target_xml, sizeof(target_xml), "\"/>");
-> +            }
->              pstrcat(target_xml, sizeof(target_xml), "</target>");
->          }
->          return target_xml;
->      }
-> +    if (strncmp(p, "dynamic_desc.xml", len) == 0) {
-> +        CPUState *cpu = first_cpu;
-> +        return cc->get_dynamic_xml(cpu);
-> +    }
-
-Looking more closely at the gdbstub code I realized it already has
-a mechanism for the target cpu code to register extra registers: the
-gdb_register_coprocessor() function. If we use that for the system
-registers we can avoid most of the changes to gdbstub.c. All you need
-is a single change to get_feature_xml() so that it calls a CPU
-object method passing it the name of the xml file being looked for,
-something like:
-
-    /* The target CPU object has an opportunity to generate XML dynamically */
-    if (cc->gdb_get_xml) {
-        const char *xmlname = g_strndup(p, len);
-        const char *xml = cc->gdb_get_xml(xmlname);
-        g_free(xmlname);
-        if (xml) {
-            return xml;
-        }
-    }
-
-Then the arm code should call
-   gdb_register_coprocessor(cs, sysreg_gdb_get_reg, sysreg_gdb_set_reg,
-                                 n, "system-registers.xml", 0);
-   in arm_cpu_register_gdb_regs_for_features().
-You might as well generate the xml here too, I guess.
-
-The gdb_get_xml hook implementation can then just check for
-"is the filename system-registers.xml, if so return our cached xml".
-
-
->      for (i = 0; ; i++) {
->          name = xml_builtin[i][0];
->          if (!name || (strncmp(name, p, len) == 0 && strlen(name) == len))
-> @@ -697,6 +707,10 @@ static int gdb_read_register(CPUState *cpu, uint8_t *mem_buf, int reg)
->              return r->get_reg(env, mem_buf, reg - r->base_reg);
->          }
->      }
-> +
-> +    if (cc->has_dynamic_xml) {
-> +        return cc->gdb_read_register(cpu, mem_buf, reg);
-> +    }
->      return 0;
->  }
->
-> @@ -715,6 +729,10 @@ static int gdb_write_register(CPUState *cpu, uint8_t *mem_buf, int reg)
->              return r->set_reg(env, mem_buf, reg - r->base_reg);
->          }
->      }
-> +
-> +    if (cc->has_dynamic_xml) {
-> +        return cc->gdb_write_register(cpu, mem_buf, reg);
-> +    }
->      return 0;
->  }
-
-These changes won't be needed because the code for handling registers
-registered by gdb_register_coprocessor() can deal with them.
-
->
-> diff --git a/include/qom/cpu.h b/include/qom/cpu.h
-> index aff88fa..907d4dc 100644
-> --- a/include/qom/cpu.h
-> +++ b/include/qom/cpu.h
-> @@ -197,6 +197,9 @@ typedef struct CPUClass {
->      const struct VMStateDescription *vmsd;
->      const char *gdb_core_xml_file;
->      gchar * (*gdb_arch_name)(CPUState *cpu);
-> +    bool has_dynamic_xml;
-> +    void (*gen_dynamic_xml)(CPUState *cpu);
-> +    char *(*get_dynamic_xml)(CPUState *cpu);
-
-New members in this struct should have entries added to the
-documentation comment for the struct.
-
->      void (*cpu_exec_enter)(CPUState *cpu);
->      void (*cpu_exec_exit)(CPUState *cpu);
-> diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-> index 9da6ea5..9e060a6 100644
-> --- a/target/arm/cpu.c
-> +++ b/target/arm/cpu.c
-> @@ -1752,6 +1752,9 @@ static void arm_cpu_class_init(ObjectClass *oc, void *data)
->      cc->gdb_num_core_regs = 26;
->      cc->gdb_core_xml_file = "arm-core.xml";
->      cc->gdb_arch_name = arm_gdb_arch_name;
-> +    cc->has_dynamic_xml = true;
-> +    cc->gen_dynamic_xml = arm_gen_dynamic_xml;
-> +    cc->get_dynamic_xml = arm_get_dynamic_xml;
->      cc->gdb_stop_before_watchpoint = true;
->      cc->debug_excp_handler = arm_debug_excp_handler;
->      cc->debug_check_watchpoint = arm_debug_check_watchpoint;
-> diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-> index d2bb59e..707e2c3 100644
-> --- a/target/arm/cpu.h
-> +++ b/target/arm/cpu.h
-> @@ -135,6 +135,19 @@ enum {
->     s<2n+1> maps to the most significant half of d<n>
->   */
->
-> +/**
-> + * XMLDynamicDescription:
-> + * @desc: Contains the XML descriptions.
-> + * @num_cpregs: Number of the Coprocessor registers seen by GDB.
-> + * @cpregs_keys: Array that contains the corresponding Key of
-> + * a given cpreg with the same order of the cpreg in the XML description.
+> diff --git a/Makefile.target b/Makefile.target
+> index 7f42c45db8..9ae3e904f7 100644
+> --- a/Makefile.target
+> +++ b/Makefile.target
+> @@ -93,8 +93,9 @@ all: $(PROGS) stap
+>  # cpu emulator library
+>  obj-y += exec.o
+>  obj-y += accel/
+> -obj-$(CONFIG_TCG) += tcg/tcg.o tcg/tcg-op.o tcg/optimize.o
+> -obj-$(CONFIG_TCG) += tcg/tcg-common.o tcg/tcg-runtime.o
+> +obj-$(CONFIG_TCG) += tcg/tcg.o tcg/tcg-common.o tcg/optimize.o
+> +obj-$(CONFIG_TCG) += tcg/tcg-op.o tcg/tcg-op-gvec.o
+> +obj-$(CONFIG_TCG) += tcg/tcg-runtime.o tcg/tcg-runtime-gvec.o
+>  obj-$(CONFIG_TCG_INTERPRETER) += tcg/tci.o
+>  obj-$(CONFIG_TCG_INTERPRETER) += disas/tci.o
+>  obj-y += fpu/softfloat.o
+> diff --git a/tcg/tcg-op-gvec.h b/tcg/tcg-op-gvec.h
+> new file mode 100644
+> index 0000000000..10db3599a5
+> --- /dev/null
+> +++ b/tcg/tcg-op-gvec.h
+> @@ -0,0 +1,88 @@
+> +/*
+> + *  Generic vector operation expansion
+> + *
+> + *  Copyright (c) 2017 Linaro
+> + *
+> + * This library is free software; you can redistribute it and/or
+> + * modify it under the terms of the GNU Lesser General Public
+> + * License as published by the Free Software Foundation; either
+> + * version 2 of the License, or (at your option) any later version.
+> + *
+> + * This library is distributed in the hope that it will be useful,
+> + * but WITHOUT ANY WARRANTY; without even the implied warranty of
+> + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+> + * Lesser General Public License for more details.
+> + *
+> + * You should have received a copy of the GNU Lesser General Public
+> + * License along with this library; if not, see <http://www.gnu.org/licenses/>.
 > + */
-> +typedef struct XMLDynamicDescription {
-> +    char *desc;
-> +    int num_cpregs;
-> +    uint32_t *cpregs_keys;
-> +} XMLDynamicDescription;
-
-Let's call this DynamicGDBXMLInfo.
-
 > +
->  /* CPU state for each instance of a generic timer (in cp15 c14) */
->  typedef struct ARMGenericTimer {
->      uint64_t cval; /* Timer CompareValue register */
-> @@ -633,6 +646,8 @@ struct ARMCPU {
->      uint64_t *cpreg_vmstate_values;
->      int32_t cpreg_vmstate_array_len;
->
-> +    XMLDynamicDescription dyn_xml;
+> +/*
+> + * "Generic" vectors.  All operands are given as offsets from ENV,
+> + * and therefore cannot also be allocated via tcg_global_mem_new_*.
+> + * OPSZ is the byte size of the vector upon which the operation is performed.
+> + * CLSZ is the byte size of the full vector; bytes beyond OPSZ are cleared.
+> + *
+> + * All sizes must be 8 or any multiple of 16.
+> + * When OPSZ is 8, the alignment may be 8, otherwise must be 16.
+> + * Operands may completely, but not partially, overlap.
+
+Isn't this going to be a problem for narrow/widden Rn->Rn operations?
+Should we say so explicitly here?
+
+> + */
 > +
->      /* Timers used by the generic (architected) timer */
->      QEMUTimer *gt_timer[NUM_GTIMERS];
->      /* GPIO outputs for generic timer */
-> @@ -797,6 +812,8 @@ hwaddr arm_cpu_get_phys_page_attrs_debug(CPUState *cpu, vaddr addr,
->
->  int arm_cpu_gdb_read_register(CPUState *cpu, uint8_t *buf, int reg);
->  int arm_cpu_gdb_write_register(CPUState *cpu, uint8_t *buf, int reg);
-> +void arm_gen_dynamic_xml(CPUState *cpu);
-> +char *arm_get_dynamic_xml(CPUState *cpu);
->
->  int arm_cpu_write_elf64_note(WriteCoreDumpFunction f, CPUState *cs,
->                               int cpuid, void *opaque);
-> @@ -2006,6 +2023,7 @@ static inline bool cp_access_ok(int current_el,
->
->  /* Raw read of a coprocessor register (as needed for migration, etc) */
->  uint64_t read_raw_cp_reg(CPUARMState *env, const ARMCPRegInfo *ri);
-> +void write_raw_cp_reg(CPUARMState *env, const ARMCPRegInfo *ri, uint64_t v);
->
->  /**
->   * write_list_to_cpustate
-> diff --git a/target/arm/gdbstub.c b/target/arm/gdbstub.c
-> index 04c1208..7cffe87 100644
-> --- a/target/arm/gdbstub.c
-> +++ b/target/arm/gdbstub.c
-> @@ -56,6 +56,17 @@ int arm_cpu_gdb_read_register(CPUState *cs, uint8_t *mem_buf, int n)
->          /* CPSR */
->          return gdb_get_reg32(mem_buf, cpsr_read(env));
->      }
-> +    if (n >= cs->gdb_num_regs &&
-> +        n < cs->gdb_num_regs + cpu->dyn_xml.num_cpregs) {
-> +        const ARMCPRegInfo *ri;
-> +        uint32_t key;
+> +/* Fundamental operation expanders.  These are exposed to the front ends
+> +   so that target-specific SIMD operations can be handled similarly to
+> +   the standard SIMD operations.  */
 > +
-> +        key = cpu->dyn_xml.cpregs_keys[n - cs->gdb_num_regs];
-> +        ri = get_arm_cp_reginfo(arm_env_get_cpu(env)->cp_regs, key);
-> +        if (ri) {
-> +            return gdb_get_reg32(mem_buf, (uint32_t)read_raw_cp_reg(env, ri));
-> +        }
-> +    }
+> +typedef struct {
+> +    /* "Small" sizes: expand inline as a 64-bit or 32-bit lane.
+> +       Generally only one of these will be non-NULL.  */
 
-This code can go in the new sysreg_gdb_get_reg, sysreg_gdb_set_reg
-functions which we pass to gdb_register_coprocessor(). (You should
-no longer need the checks on "is the register number in range"
-or the "- cs->gdb_num_regs" adjustment.)
+Generally or always? We after all go through in a certain order and
+expand the first one defined.
 
->      /* Unknown register.  */
->      return 0;
->  }
-> @@ -98,6 +109,82 @@ int arm_cpu_gdb_write_register(CPUState *cs, uint8_t *mem_buf, int n)
->          cpsr_write(env, tmp, 0xffffffff, CPSRWriteByGDBStub);
->          return 4;
->      }
-> +    if (n >= cs->gdb_num_regs &&
-> +        n < cs->gdb_num_regs + cpu->dyn_xml.num_cpregs) {
-> +        const ARMCPRegInfo *ri;
-> +        uint32_t key;
+> +    void (*fni8)(TCGv_i64, TCGv_i64, TCGv_i64);
+> +    void (*fni4)(TCGv_i32, TCGv_i32, TCGv_i32);
+> +    /* Similarly, but load up a constant and re-use across lanes.  */
+> +    void (*fni8x)(TCGv_i64, TCGv_i64, TCGv_i64, TCGv_i64);
+> +    uint64_t extra_value;
+
+Probably personal preference but I'd leave extra_value and additional
+non-function pointers to the end of the structure for cleaner
+readability.
+
+> +    /* Larger sizes: expand out-of-line helper w/size descriptor.  */
+> +    void (*fno)(TCGv_ptr, TCGv_ptr, TCGv_ptr, TCGv_i32);
+> +} GVecGen3;
 > +
-> +        key = cpu->dyn_xml.cpregs_keys[n - cs->gdb_num_regs];
-> +        ri = get_arm_cp_reginfo(arm_env_get_cpu(env)->cp_regs, key);
-> +        if (ri) {
-> +            if (!(ri->type & ARM_CP_CONST)) {
-> +                write_raw_cp_reg(env, ri, tmp);
-> +                return 4;
-
-Not all coprocessor registers are 32 bit for a 32-bit CPU -- you need
-to handle the case where the ARMCPRegInfo type has ARM_CP_64BIT set,
-for instance TTBR0 on an LPAE CPU.
-
-
-I also still don't really like using write_raw_cp_reg() here --
-it will bypass some behaviour you want and in some cases will
-just break the emulation because invariants we assume will
-hold no longer hold. It would be a lot lot safer to not
-provide write access at all, only read access.
-
-> +            }
-> +        }
-> +    }
->      /* Unknown register.  */
->      return 0;
->  }
+> +void tcg_gen_gvec_3(uint32_t dofs, uint32_t aofs, uint32_t bofs,
+> +                    uint32_t opsz, uint32_t clsz, const GVecGen3 *);
 > +
-> +static void arm_gen_xml_reg(gpointer key, gpointer value, gpointer cs)
+
+Why GVecGen3 and tcg_gen_gvec_3? It seems a little arbitrary.
+
+> +#define DEF_GVEC_2(X) \
+> +    void tcg_gen_gvec_##X(uint32_t dofs, uint32_t aofs, uint32_t bofs, \
+> +                          uint32_t opsz, uint32_t clsz)
+> +
+> +DEF_GVEC_2(add8);
+> +DEF_GVEC_2(add16);
+> +DEF_GVEC_2(add32);
+> +DEF_GVEC_2(add64);
+> +
+> +DEF_GVEC_2(sub8);
+> +DEF_GVEC_2(sub16);
+> +DEF_GVEC_2(sub32);
+> +DEF_GVEC_2(sub64);
+> +
+> +DEF_GVEC_2(and8);
+> +DEF_GVEC_2(or8);
+> +DEF_GVEC_2(xor8);
+> +DEF_GVEC_2(andc8);
+> +DEF_GVEC_2(orc8);
+> +
+> +#undef DEF_GVEC_2
+> +
+> +/*
+> + * 64-bit vector operations.  Use these when the register has been
+> + * allocated with tcg_global_mem_new_i64.  OPSZ = CLSZ = 8.
+> + */
+> +
+> +#define DEF_VEC8_2(X) \
+> +    void tcg_gen_vec8_##X(TCGv_i64 d, TCGv_i64 a, TCGv_i64 b)
+> +
+> +DEF_VEC8_2(add8);
+> +DEF_VEC8_2(add16);
+> +DEF_VEC8_2(add32);
+> +
+> +DEF_VEC8_2(sub8);
+> +DEF_VEC8_2(sub16);
+> +DEF_VEC8_2(sub32);
+> +
+> +#undef DEF_VEC8_2
+
+Again GVEC_2 and VEC8_2 don't tell me much.
+
+> diff --git a/tcg/tcg-runtime.h b/tcg/tcg-runtime.h
+> index c41d38a557..f8d07090f8 100644
+> --- a/tcg/tcg-runtime.h
+> +++ b/tcg/tcg-runtime.h
+> @@ -134,3 +134,19 @@ GEN_ATOMIC_HELPERS(xor_fetch)
+>  GEN_ATOMIC_HELPERS(xchg)
+>
+>  #undef GEN_ATOMIC_HELPERS
+> +
+> +DEF_HELPER_FLAGS_4(gvec_add8, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
+> +DEF_HELPER_FLAGS_4(gvec_add16, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
+> +DEF_HELPER_FLAGS_4(gvec_add32, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
+> +DEF_HELPER_FLAGS_4(gvec_add64, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
+> +
+> +DEF_HELPER_FLAGS_4(gvec_sub8, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
+> +DEF_HELPER_FLAGS_4(gvec_sub16, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
+> +DEF_HELPER_FLAGS_4(gvec_sub32, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
+> +DEF_HELPER_FLAGS_4(gvec_sub64, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
+> +
+> +DEF_HELPER_FLAGS_4(gvec_and8, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
+> +DEF_HELPER_FLAGS_4(gvec_or8, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
+> +DEF_HELPER_FLAGS_4(gvec_xor8, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
+> +DEF_HELPER_FLAGS_4(gvec_andc8, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
+> +DEF_HELPER_FLAGS_4(gvec_orc8, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
+> diff --git a/tcg/tcg-op-gvec.c b/tcg/tcg-op-gvec.c
+> new file mode 100644
+> index 0000000000..6de49dc07f
+> --- /dev/null
+> +++ b/tcg/tcg-op-gvec.c
+> @@ -0,0 +1,443 @@
+> +/*
+> + *  Generic vector operation expansion
+> + *
+> + *  Copyright (c) 2017 Linaro
+> + *
+> + * This library is free software; you can redistribute it and/or
+> + * modify it under the terms of the GNU Lesser General Public
+> + * License as published by the Free Software Foundation; either
+> + * version 2 of the License, or (at your option) any later version.
+> + *
+> + * This library is distributed in the hope that it will be useful,
+> + * but WITHOUT ANY WARRANTY; without even the implied warranty of
+> + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+> + * Lesser General Public License for more details.
+> + *
+> + * You should have received a copy of the GNU Lesser General Public
+> + * License along with this library; if not, see <http://www.gnu.org/licenses/>.
+> + */
+> +
+> +#include "qemu/osdep.h"
+> +#include "qemu-common.h"
+> +#include "cpu.h"
+> +#include "exec/exec-all.h"
+> +#include "tcg.h"
+> +#include "tcg-op.h"
+> +#include "tcg-op-gvec.h"
+> +#include "trace-tcg.h"
+> +#include "trace/mem.h"
+> +
+> +#define REP8(x)    ((x) * 0x0101010101010101ull)
+> +#define REP16(x)   ((x) * 0x0001000100010001ull)
+> +
+> +#define MAX_INLINE 16
+> +
+> +static inline void check_size_s(uint32_t opsz, uint32_t clsz)
 > +{
-> +    ARMCPU *cpu = ARM_CPU(cs);
-> +    XMLDynamicDescription *dyn_xml = &cpu->dyn_xml;
-> +    ARMCPRegInfo *ri = value;
-> +    uint32_t ri_key = *(uint32_t *)key;
-> +    CPUARMState *env = &cpu->env;
-> +    char **target_xml = (char **)&(dyn_xml->desc);
-
-I think this code will be clearer if you work with a local
-char * variable, and just assign to cpu->dyn_xml.desc at the end,
-rather than trying to do everything via *target_xml.
-
-> +    char *tmp_xml = *target_xml;
+> +    tcg_debug_assert(opsz % 8 == 0);
+> +    tcg_debug_assert(clsz % 8 == 0);
+> +    tcg_debug_assert(opsz <= clsz);
+> +}
 > +
-> +    if (!(ri->type & (ARM_CP_NO_RAW | ARM_CP_ALIAS))) {
+> +static inline void check_align_s_3(uint32_t dofs, uint32_t aofs, uint32_t bofs)
+> +{
+> +    tcg_debug_assert(dofs % 8 == 0);
+> +    tcg_debug_assert(aofs % 8 == 0);
+> +    tcg_debug_assert(bofs % 8 == 0);
+> +}
+> +
+> +static inline void check_size_l(uint32_t opsz, uint32_t clsz)
+> +{
+> +    tcg_debug_assert(opsz % 16 == 0);
+> +    tcg_debug_assert(clsz % 16 == 0);
+> +    tcg_debug_assert(opsz <= clsz);
+> +}
+> +
+> +static inline void check_align_l_3(uint32_t dofs, uint32_t aofs, uint32_t bofs)
+> +{
+> +    tcg_debug_assert(dofs % 16 == 0);
+> +    tcg_debug_assert(aofs % 16 == 0);
+> +    tcg_debug_assert(bofs % 16 == 0);
+> +}
+> +
+> +static inline void check_overlap_3(uint32_t d, uint32_t a,
+> +                                   uint32_t b, uint32_t s)
+> +{
+> +    tcg_debug_assert(d == a || d + s <= a || a + s <= d);
+> +    tcg_debug_assert(d == b || d + s <= b || b + s <= d);
+> +    tcg_debug_assert(a == b || a + s <= b || b + s <= a);
+> +}
+> +
+> +static void expand_clr(uint32_t dofs, uint32_t opsz, uint32_t clsz)
+> +{
+> +    if (clsz > opsz) {
+> +        TCGv_i64 zero = tcg_const_i64(0);
+> +        uint32_t i;
+> +
+> +        for (i = opsz; i < clsz; i += 8) {
+> +            tcg_gen_st_i64(zero, tcg_ctx.tcg_env, dofs + i);
+> +        }
+> +        tcg_temp_free_i64(zero);
+> +    }
+> +}
+> +
+> +static TCGv_i32 make_desc(uint32_t opsz, uint32_t clsz)
 
-I've realised that not registering info for alias registers is
-awkward for the aarch32 case, because a common pattern is
-that we create an ARMCPRegInfo for the AArch64 register which
-has the 'master copy' of the state, and then an ARMCPRegInfo
-for the AArch32 register which is architecturally banked with
-the AArch64 register, and mark the AArch32 register as ARM_CP_ALIAS.
-So a lot of registers that ought to be visible won't be
-(example: CNTFRQ).
+A comment about the encoding of opdata into the constant probably
+wouldn't go amiss. Should we have some inline helpers to extract the
+data for the actual implementations?
 
-But some things marked 'ALIAS' we definitely don't want
-to report to gdb (for instance the "DACR" register in
-not_v8_cp_reginfo[] is CP_ANY wildcarded and if you let
-the aliases appear in gdb there are a huge number of them...
+> +{
+> +    tcg_debug_assert(opsz >= 16 && opsz <= 255 * 16 && opsz % 16 == 0);
+> +    tcg_debug_assert(clsz >= 16 && clsz <= 255 * 16 && clsz % 16 == 0);
+> +    opsz /= 16;
+> +    clsz /= 16;
+> +    opsz -= 1;
+> +    clsz -= 1;
+> +    return tcg_const_i32(deposit32(opsz, 8, 8, clsz));
+> +}
+> +
+> +static void expand_3_o(uint32_t dofs, uint32_t aofs, uint32_t bofs,
+> +                       uint32_t opsz, uint32_t clsz,
+> +                       void (*fno)(TCGv_ptr, TCGv_ptr, TCGv_ptr,
+> TCGv_i32))
 
-My suggestion would be that we do permit ARM_CP_ALIAS
-registers to appear, but that we define a new ARM_CP_NO_GDB
-which suppresses registration of the register with gdb, and
-then have add_cpreg_to_hashtable() set ARM_CP_NO_GDB
-as well as ARM_CP_ALIAS for r2->type when it's creating the
-CP_ANY wildcard aliases. We can also then use ARM_CP_NO_GDB
-to manually suppress registers in future if that seems necessary.
+Hmm copy of the function pointer definition, maybe they should be
+typedefs and declared with comments in tcg-op-gvec.h?
 
+> +{
+> +    TCGv_ptr d = tcg_temp_new_ptr();
+> +    TCGv_ptr a = tcg_temp_new_ptr();
+> +    TCGv_ptr b = tcg_temp_new_ptr();
+> +    TCGv_i32 desc = make_desc(opsz, clsz);
+> +
+> +    tcg_gen_addi_ptr(d, tcg_ctx.tcg_env, dofs);
+> +    tcg_gen_addi_ptr(a, tcg_ctx.tcg_env, aofs);
+> +    tcg_gen_addi_ptr(b, tcg_ctx.tcg_env, bofs);
+> +    fno(d, a, b, desc);
+> +
+> +    tcg_temp_free_ptr(d);
+> +    tcg_temp_free_ptr(a);
+> +    tcg_temp_free_ptr(b);
+> +    tcg_temp_free_i32(desc);
+> +}
+> +
+> +static void expand_3x4(uint32_t dofs, uint32_t aofs,
+> +                       uint32_t bofs, uint32_t opsz,
+> +                       void (*fni)(TCGv_i32, TCGv_i32, TCGv_i32))
 
-> +        if (env->aarch64) {
-> +            if (cpreg_field_is_64bit(ri)) {
-> +                *target_xml = g_strconcat(*target_xml,
-> +                                        "<reg name=\"", ri->name, "\" ",
-> +                                        "bitsize=\"64\" group=\"cp_regs\"/>",
-> +                                        NULL);
+Ditto typedef?
 
-This is going to get quite expensive, because every time we
-add another thing to the end of the string we will allocate
-new memory and copy all the existing data across.
+> +{
+> +    TCGv_i32 t0 = tcg_temp_new_i32();
+> +    uint32_t i;
+> +
+> +    if (aofs == bofs) {
+> +        for (i = 0; i < opsz; i += 4) {
+> +            tcg_gen_ld_i32(t0, tcg_ctx.tcg_env, aofs + i);
+> +            fni(t0, t0, t0);
+> +            tcg_gen_st_i32(t0, tcg_ctx.tcg_env, dofs + i);
+> +        }
+> +    } else {
+> +        TCGv_i32 t1 = tcg_temp_new_i32();
+> +        for (i = 0; i < opsz; i += 4) {
+> +            tcg_gen_ld_i32(t0, tcg_ctx.tcg_env, aofs + i);
+> +            tcg_gen_ld_i32(t1, tcg_ctx.tcg_env, bofs + i);
+> +            fni(t0, t0, t1);
+> +            tcg_gen_st_i32(t0, tcg_ctx.tcg_env, dofs + i);
+> +        }
+> +        tcg_temp_free_i32(t1);
+> +    }
+> +    tcg_temp_free_i32(t0);
+> +}
+> +
+> +static void expand_3x8(uint32_t dofs, uint32_t aofs,
+> +                       uint32_t bofs, uint32_t opsz,
+> +                       void (*fni)(TCGv_i64, TCGv_i64, TCGv_i64))
+> +{
+> +    TCGv_i64 t0 = tcg_temp_new_i64();
+> +    uint32_t i;
+> +
+> +    if (aofs == bofs) {
+> +        for (i = 0; i < opsz; i += 8) {
+> +            tcg_gen_ld_i64(t0, tcg_ctx.tcg_env, aofs + i);
+> +            fni(t0, t0, t0);
+> +            tcg_gen_st_i64(t0, tcg_ctx.tcg_env, dofs + i);
+> +        }
+> +    } else {
+> +        TCGv_i64 t1 = tcg_temp_new_i64();
+> +        for (i = 0; i < opsz; i += 8) {
+> +            tcg_gen_ld_i64(t0, tcg_ctx.tcg_env, aofs + i);
+> +            tcg_gen_ld_i64(t1, tcg_ctx.tcg_env, bofs + i);
+> +            fni(t0, t0, t1);
+> +            tcg_gen_st_i64(t0, tcg_ctx.tcg_env, dofs + i);
+> +        }
+> +        tcg_temp_free_i64(t1);
+> +    }
+> +    tcg_temp_free_i64(t0);
+> +}
+> +
+> +static void expand_3x8p1(uint32_t dofs, uint32_t aofs, uint32_t bofs,
+> +                         uint32_t opsz, uint64_t data,
+> +                         void (*fni)(TCGv_i64, TCGv_i64, TCGv_i64,
+> TCGv_i64))
 
-I would suggest using the glib GString APIs here:
-https://developer.gnome.org/glib/stable/glib-Strings.html
+Again typedef
 
-It's pretty simple, you start with
-  GString *s = g_string_new(NULL);
+I don't quite follow the suffix's of the expanders. I guess _o is for
+offset but p1? Either we need a mini comment for each expander or a more
+obvious suffix scheme...
 
-then each addition is
-  g_string_append_printf(s, "<reg name=\"%s\" bitsize=\"64\"/>", ri->name);
-
-and finally at the end when you've appended everything
-you need you do
-  cpu->dyn_xml.desc = g_string_free(s, false);
-
-which gets rid of the GString and hands you back the char*
-for the final data.
-
-(There is also a g_string_append() for a plain string append,
-but I think using the format-string function may be clearer.)
-
-> +            } else {
-> +                return;
-> +            }
+> +{
+> +    TCGv_i64 t0 = tcg_temp_new_i64();
+> +    TCGv_i64 t2 = tcg_const_i64(data);
+> +    uint32_t i;
+> +
+> +    if (aofs == bofs) {
+> +        for (i = 0; i < opsz; i += 8) {
+> +            tcg_gen_ld_i64(t0, tcg_ctx.tcg_env, aofs + i);
+> +            fni(t0, t0, t0, t2);
+> +            tcg_gen_st_i64(t0, tcg_ctx.tcg_env, dofs + i);
+> +        }
+> +    } else {
+> +        TCGv_i64 t1 = tcg_temp_new_i64();
+> +        for (i = 0; i < opsz; i += 8) {
+> +            tcg_gen_ld_i64(t0, tcg_ctx.tcg_env, aofs + i);
+> +            tcg_gen_ld_i64(t1, tcg_ctx.tcg_env, bofs + i);
+> +            fni(t0, t0, t1, t2);
+> +            tcg_gen_st_i64(t0, tcg_ctx.tcg_env, dofs + i);
+> +        }
+> +        tcg_temp_free_i64(t1);
+> +    }
+> +    tcg_temp_free_i64(t0);
+> +    tcg_temp_free_i64(t2);
+> +}
+> +
+> +void tcg_gen_gvec_3(uint32_t dofs, uint32_t aofs, uint32_t bofs,
+> +                    uint32_t opsz, uint32_t clsz, const GVecGen3 *g)
+> +{
+> +    check_overlap_3(dofs, aofs, bofs, clsz);
+> +    if (opsz <= MAX_INLINE) {
+> +        check_size_s(opsz, clsz);
+> +        check_align_s_3(dofs, aofs, bofs);
+> +        if (g->fni8) {
+> +            expand_3x8(dofs, aofs, bofs, opsz, g->fni8);
+> +        } else if (g->fni4) {
+> +            expand_3x4(dofs, aofs, bofs, opsz, g->fni4);
+> +        } else if (g->fni8x) {
+> +            expand_3x8p1(dofs, aofs, bofs, opsz, g->extra_value, g->fni8x);
 > +        } else {
-> +            if (ri->secure & ARM_CP_SECSTATE_S) {
-> +                *target_xml = g_strconcat(*target_xml,
-> +                                          "<reg name=\"", ri->name, "_S\" ",
-> +                                          "bitsize=\"32\" group=\"cp_regs\"/>",
-> +                                          NULL);
-
-This has some odd effects in places, for instance:
-
-FCSEIDR(S)_S   0x0      0
-CONTEXTIDR(S)_S0x0      0
-
-now have S in their name twice.
-
-We also seem to expose secure-bank registers even when the
-CPU doesn't implement EL3, eg:
-TPIDRURW_S     0x0      0
-TPIDRURO_S     0x0      0
-TPIDRPRW_S     0x0      0
-
-as well as
-
-TPIDRURW       0x0      0
-TPIDRURO       0x76ff26d0       1996433104
-TPIDRPRW       0x3f334000       1060323328
-
-I think the fix for this would be:
- * where define_one_arm_cp_reg_with_opaque() auto-creates both
-   secure and non-secure registers from one regdef, arrange for
-   it to add "_S" to the secure version
- * fix up places where we have manual secure and non-secure
-   regdef structs to follow this convention
- * when we loop through registers to create the xml for gdb,
-   don't include entries for the secure bank if the CPU doesn't
-   implement EL3
-
-Incidentally, gdb info all-registers mangles its display a bit
-for register names longer than 14 characters, but there's not
-much we can do about that.
-
-> +            } else {
-> +                *target_xml = g_strconcat(*target_xml,
-> +                                          "<reg name=\"", ri->name, "\" ",
-> +                                          "bitsize=\"32\" group=\"cp_regs\"/>",
-> +                                          NULL);
-> +            }
-
-This code needs to handle 64-bit AArch32 sysregs as well.
-
+> +            g_assert_not_reached();
 > +        }
-> +        g_free(tmp_xml);
-> +        dyn_xml->num_cpregs++;
-> +        dyn_xml->cpregs_keys = g_renew(uint32_t,
-> +                                       dyn_xml->cpregs_keys,
-> +                                       dyn_xml->num_cpregs);
-> +        dyn_xml->cpregs_keys[dyn_xml->num_cpregs - 1] = ri_key;
+> +        expand_clr(dofs, opsz, clsz);
+> +    } else {
+> +        check_size_l(opsz, clsz);
+> +        check_align_l_3(dofs, aofs, bofs);
+> +        expand_3_o(dofs, aofs, bofs, opsz, clsz, g->fno);
 > +    }
 > +}
 > +
-> +void arm_gen_dynamic_xml(CPUState *cs)
+> +static void gen_addv_mask(TCGv_i64 d, TCGv_i64 a, TCGv_i64 b, TCGv_i64 m)
 > +{
-> +    ARMCPU *cpu = ARM_CPU(cs);
+> +    TCGv_i64 t1 = tcg_temp_new_i64();
+> +    TCGv_i64 t2 = tcg_temp_new_i64();
+> +    TCGv_i64 t3 = tcg_temp_new_i64();
 > +
-> +    cpu->dyn_xml.num_cpregs = 0;
-> +    cpu->dyn_xml.desc = g_strconcat("<?xml version=\"1.0\"?>",
-> +                                 "<!DOCTYPE target SYSTEM \"gdb-target.dtd\">",
-> +                                   "<feature name=\"org.gnu.gdb.dynamic.cp\">",
-> +                                   NULL);
-> +    g_hash_table_foreach(cpu->cp_regs, arm_gen_xml_reg, cs);
-> +    cpu->dyn_xml.desc = g_strconcat(cpu->dyn_xml.desc, "</feature>", NULL);
-
-This would be the place to do the g_string_new() and g_string_free().
-
-(I note that here you've forgotten to do a g_free, demonstrating
-the awkwardness of the g_strconcat approach.)
-
+> +    tcg_gen_andc_i64(t1, a, m);
+> +    tcg_gen_andc_i64(t2, b, m);
+> +    tcg_gen_xor_i64(t3, a, b);
+> +    tcg_gen_add_i64(d, t1, t2);
+> +    tcg_gen_and_i64(t3, t3, m);
+> +    tcg_gen_xor_i64(d, d, t3);
+> +
+> +    tcg_temp_free_i64(t1);
+> +    tcg_temp_free_i64(t2);
+> +    tcg_temp_free_i64(t3);
 > +}
 > +
-> +char *arm_get_dynamic_xml(CPUState *cs)
+> +void tcg_gen_gvec_add8(uint32_t dofs, uint32_t aofs, uint32_t bofs,
+> +                       uint32_t opsz, uint32_t clsz)
 > +{
-> +    ARMCPU *cpu = ARM_CPU(cs);
-> +
-> +    return cpu->dyn_xml.desc;
+> +    static const GVecGen3 g = {
+> +        .extra_value = REP8(0x80),
+> +        .fni8x = gen_addv_mask,
+> +        .fno = gen_helper_gvec_add8,
+> +    };
+> +    tcg_gen_gvec_3(dofs, aofs, bofs, opsz, clsz, &g);
 > +}
-> diff --git a/target/arm/gdbstub64.c b/target/arm/gdbstub64.c
-> index 49bc3fc..6cf302f 100644
-> --- a/target/arm/gdbstub64.c
-> +++ b/target/arm/gdbstub64.c
-> @@ -38,6 +38,17 @@ int aarch64_cpu_gdb_read_register(CPUState *cs, uint8_t *mem_buf, int n)
->      case 33:
->          return gdb_get_reg32(mem_buf, pstate_read(env));
->      }
-> +    if (n >= cs->gdb_num_regs &&
-> +        n < cs->gdb_num_regs + cpu->dyn_xml.num_cpregs) {
-> +        const ARMCPRegInfo *ri;
-> +        uint32_t key;
 > +
-> +        key = cpu->dyn_xml.cpregs_keys[n - cs->gdb_num_regs];
-> +        ri = get_arm_cp_reginfo(arm_env_get_cpu(env)->cp_regs, key);
-> +        if (ri) {
-> +            return gdb_get_reg64(mem_buf, (uint64_t)read_raw_cp_reg(env, ri));
+> +void tcg_gen_gvec_add16(uint32_t dofs, uint32_t aofs, uint32_t bofs,
+
+> +                        uint32_t opsz, uint32_t clsz)
+> +{
+> +    static const GVecGen3 g = {
+> +        .extra_value = REP16(0x8000),
+> +        .fni8x = gen_addv_mask,
+> +        .fno = gen_helper_gvec_add16,
+
+OK now I'm confused - we have two functions here but tcg_gen_gvec_3
+expand one of them depending on the leg taken by opsz. One is a mask
+function and the other using adds?
+
+> +    };
+> +    tcg_gen_gvec_3(dofs, aofs, bofs, opsz, clsz, &g);
+> +}
+> +
+> +void tcg_gen_gvec_add32(uint32_t dofs, uint32_t aofs, uint32_t bofs,
+> +                        uint32_t opsz, uint32_t clsz)
+> +{
+> +    static const GVecGen3 g = {
+> +        .fni4 = tcg_gen_add_i32,
+> +        .fno = gen_helper_gvec_add32,
+
+Ahh ok I see here, use native add_i32 for small values, pass to the
+generic helper for larger vectors. Still confused about the previous
+expander though...
+
+> +    };
+> +    tcg_gen_gvec_3(dofs, aofs, bofs, opsz, clsz, &g);
+> +}
+> +
+> +void tcg_gen_gvec_add64(uint32_t dofs, uint32_t aofs, uint32_t bofs,
+> +                        uint32_t opsz, uint32_t clsz)
+> +{
+> +    static const GVecGen3 g = {
+> +        .fni8 = tcg_gen_add_i64,
+> +        .fno = gen_helper_gvec_add64,
+> +    };
+> +    tcg_gen_gvec_3(dofs, aofs, bofs, opsz, clsz, &g);
+> +}
+> +
+> +void tcg_gen_vec8_add8(TCGv_i64 d, TCGv_i64 a, TCGv_i64 b)
+> +{
+> +    TCGv_i64 m = tcg_const_i64(REP8(0x80));
+> +    gen_addv_mask(d, a, b, m);
+> +    tcg_temp_free_i64(m);
+> +}
+> +
+> +void tcg_gen_vec8_add16(TCGv_i64 d, TCGv_i64 a, TCGv_i64 b)
+> +{
+> +    TCGv_i64 m = tcg_const_i64(REP16(0x8000));
+> +    gen_addv_mask(d, a, b, m);
+> +    tcg_temp_free_i64(m);
+> +}
+> +
+> +void tcg_gen_vec8_add32(TCGv_i64 d, TCGv_i64 a, TCGv_i64 b)
+> +{
+> +    TCGv_i64 t1 = tcg_temp_new_i64();
+> +    TCGv_i64 t2 = tcg_temp_new_i64();
+> +
+> +    tcg_gen_andi_i64(t1, a, ~0xffffffffull);
+> +    tcg_gen_add_i64(t2, a, b);
+> +    tcg_gen_add_i64(t1, t1, b);
+> +    tcg_gen_deposit_i64(d, t1, t2, 0, 32);
+> +
+> +    tcg_temp_free_i64(t1);
+> +    tcg_temp_free_i64(t2);
+> +}
+> +
+> +static void gen_subv_mask(TCGv_i64 d, TCGv_i64 a, TCGv_i64 b, TCGv_i64 m)
+> +{
+> +    TCGv_i64 t1 = tcg_temp_new_i64();
+> +    TCGv_i64 t2 = tcg_temp_new_i64();
+> +    TCGv_i64 t3 = tcg_temp_new_i64();
+> +
+> +    tcg_gen_or_i64(t1, a, m);
+> +    tcg_gen_andc_i64(t2, b, m);
+> +    tcg_gen_eqv_i64(t3, a, b);
+> +    tcg_gen_sub_i64(d, t1, t2);
+> +    tcg_gen_and_i64(t3, t3, m);
+> +    tcg_gen_xor_i64(d, d, t3);
+> +
+> +    tcg_temp_free_i64(t1);
+> +    tcg_temp_free_i64(t2);
+> +    tcg_temp_free_i64(t3);
+> +}
+> +
+> +void tcg_gen_gvec_sub8(uint32_t dofs, uint32_t aofs, uint32_t bofs,
+> +                       uint32_t opsz, uint32_t clsz)
+> +{
+> +    static const GVecGen3 g = {
+> +        .extra_value = REP8(0x80),
+> +        .fni8x = gen_subv_mask,
+> +        .fno = gen_helper_gvec_sub8,
+> +    };
+> +    tcg_gen_gvec_3(dofs, aofs, bofs, opsz, clsz, &g);
+> +}
+> +
+> +void tcg_gen_gvec_sub16(uint32_t dofs, uint32_t aofs, uint32_t bofs,
+> +                        uint32_t opsz, uint32_t clsz)
+> +{
+> +    static const GVecGen3 g = {
+> +        .extra_value = REP16(0x8000),
+> +        .fni8x = gen_subv_mask,
+> +        .fno = gen_helper_gvec_sub16,
+> +    };
+> +    tcg_gen_gvec_3(dofs, aofs, bofs, opsz, clsz, &g);
+> +}
+> +
+> +void tcg_gen_gvec_sub32(uint32_t dofs, uint32_t aofs, uint32_t bofs,
+> +                        uint32_t opsz, uint32_t clsz)
+> +{
+> +    static const GVecGen3 g = {
+> +        .fni4 = tcg_gen_sub_i32,
+> +        .fno = gen_helper_gvec_sub32,
+> +    };
+> +    tcg_gen_gvec_3(dofs, aofs, bofs, opsz, clsz, &g);
+> +}
+> +
+> +void tcg_gen_gvec_sub64(uint32_t dofs, uint32_t aofs, uint32_t bofs,
+> +                        uint32_t opsz, uint32_t clsz)
+> +{
+> +    static const GVecGen3 g = {
+> +        .fni8 = tcg_gen_sub_i64,
+> +        .fno = gen_helper_gvec_sub64,
+> +    };
+> +    tcg_gen_gvec_3(dofs, aofs, bofs, opsz, clsz, &g);
+> +}
+> +
+> +void tcg_gen_vec8_sub8(TCGv_i64 d, TCGv_i64 a, TCGv_i64 b)
+> +{
+> +    TCGv_i64 m = tcg_const_i64(REP8(0x80));
+> +    gen_subv_mask(d, a, b, m);
+> +    tcg_temp_free_i64(m);
+> +}
+> +
+> +void tcg_gen_vec8_sub16(TCGv_i64 d, TCGv_i64 a, TCGv_i64 b)
+> +{
+> +    TCGv_i64 m = tcg_const_i64(REP16(0x8000));
+> +    gen_subv_mask(d, a, b, m);
+> +    tcg_temp_free_i64(m);
+> +}
+> +
+> +void tcg_gen_vec8_sub32(TCGv_i64 d, TCGv_i64 a, TCGv_i64 b)
+> +{
+> +    TCGv_i64 t1 = tcg_temp_new_i64();
+> +    TCGv_i64 t2 = tcg_temp_new_i64();
+> +
+> +    tcg_gen_andi_i64(t1, b, ~0xffffffffull);
+> +    tcg_gen_sub_i64(t2, a, b);
+> +    tcg_gen_sub_i64(t1, a, t1);
+> +    tcg_gen_deposit_i64(d, t1, t2, 0, 32);
+> +
+> +    tcg_temp_free_i64(t1);
+> +    tcg_temp_free_i64(t2);
+> +}
+> +
+> +void tcg_gen_gvec_and8(uint32_t dofs, uint32_t aofs, uint32_t bofs,
+> +                       uint32_t opsz, uint32_t clsz)
+> +{
+> +    static const GVecGen3 g = {
+> +        .fni8 = tcg_gen_and_i64,
+> +        .fno = gen_helper_gvec_and8,
+> +    };
+> +    tcg_gen_gvec_3(dofs, aofs, bofs, opsz, clsz, &g);
+> +}
+> +
+> +void tcg_gen_gvec_or8(uint32_t dofs, uint32_t aofs, uint32_t bofs,
+> +                      uint32_t opsz, uint32_t clsz)
+> +{
+> +    static const GVecGen3 g = {
+> +        .fni8 = tcg_gen_or_i64,
+> +        .fno = gen_helper_gvec_or8,
+> +    };
+> +    tcg_gen_gvec_3(dofs, aofs, bofs, opsz, clsz, &g);
+> +}
+> +
+> +void tcg_gen_gvec_xor8(uint32_t dofs, uint32_t aofs, uint32_t bofs,
+> +                       uint32_t opsz, uint32_t clsz)
+> +{
+> +    static const GVecGen3 g = {
+> +        .fni8 = tcg_gen_xor_i64,
+> +        .fno = gen_helper_gvec_xor8,
+> +    };
+> +    tcg_gen_gvec_3(dofs, aofs, bofs, opsz, clsz, &g);
+> +}
+> +
+> +void tcg_gen_gvec_andc8(uint32_t dofs, uint32_t aofs, uint32_t bofs,
+> +                        uint32_t opsz, uint32_t clsz)
+> +{
+> +    static const GVecGen3 g = {
+> +        .fni8 = tcg_gen_andc_i64,
+> +        .fno = gen_helper_gvec_andc8,
+> +    };
+> +    tcg_gen_gvec_3(dofs, aofs, bofs, opsz, clsz, &g);
+> +}
+> +
+> +void tcg_gen_gvec_orc8(uint32_t dofs, uint32_t aofs, uint32_t bofs,
+> +                       uint32_t opsz, uint32_t clsz)
+> +{
+> +    static const GVecGen3 g = {
+> +        .fni8 = tcg_gen_orc_i64,
+> +        .fno = gen_helper_gvec_orc8,
+> +    };
+> +    tcg_gen_gvec_3(dofs, aofs, bofs, opsz, clsz, &g);
+> +}
+> diff --git a/tcg/tcg-runtime-gvec.c b/tcg/tcg-runtime-gvec.c
+> new file mode 100644
+> index 0000000000..9a37ce07a2
+> --- /dev/null
+> +++ b/tcg/tcg-runtime-gvec.c
+> @@ -0,0 +1,199 @@
+> +/*
+> + *  Generic vectorized operation runtime
+> + *
+> + *  Copyright (c) 2017 Linaro
+> + *
+> + * This library is free software; you can redistribute it and/or
+> + * modify it under the terms of the GNU Lesser General Public
+> + * License as published by the Free Software Foundation; either
+> + * version 2 of the License, or (at your option) any later version.
+> + *
+> + * This library is distributed in the hope that it will be useful,
+> + * but WITHOUT ANY WARRANTY; without even the implied warranty of
+> + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+> + * Lesser General Public License for more details.
+> + *
+> + * You should have received a copy of the GNU Lesser General Public
+> + * License along with this library; if not, see <http://www.gnu.org/licenses/>.
+> + */
+> +
+> +#include "qemu/osdep.h"
+> +#include "qemu/host-utils.h"
+> +#include "cpu.h"
+> +#include "exec/helper-proto.h"
+> +
+> +/* Virtually all hosts support 16-byte vectors.  Those that don't
+> +   can emulate them via GCC's generic vector extension.
+> +
+> +   In tcg-op-gvec.c, we asserted that both the size and alignment
+> +   of the data are multiples of 16.  */
+> +
+> +typedef uint8_t vec8 __attribute__((vector_size(16)));
+> +typedef uint16_t vec16 __attribute__((vector_size(16)));
+> +typedef uint32_t vec32 __attribute__((vector_size(16)));
+> +typedef uint64_t vec64 __attribute__((vector_size(16)));
+> +
+> +static inline intptr_t extract_opsz(uint32_t desc)
+> +{
+> +    return ((desc & 0xff) + 1) * 16;
+> +}
+> +
+> +static inline intptr_t extract_clsz(uint32_t desc)
+> +{
+> +    return (((desc >> 8) & 0xff) + 1) * 16;
+> +}
+
+Ahh the data helpers. Any reason we don't use extract32() here where as
+we used deposit32 the other end? It should generate the most efficient
+code right?
+
+> +
+> +static inline void clear_high(void *d, intptr_t opsz, uint32_t desc)
+> +{
+> +    intptr_t clsz = extract_clsz(desc);
+> +    intptr_t i;
+> +
+> +    if (unlikely(clsz > opsz)) {
+> +        for (i = opsz; i < clsz; i += sizeof(vec64)) {
+> +            *(vec64 *)(d + i) = (vec64){ 0 };
 > +        }
 > +    }
->      /* Unknown register.  */
->      return 0;
->  }
-> @@ -67,6 +78,20 @@ int aarch64_cpu_gdb_write_register(CPUState *cs, uint8_t *mem_buf, int n)
->          pstate_write(env, tmp);
->          return 4;
->      }
-> +    if (n >= cs->gdb_num_regs &&
-> +        n < cs->gdb_num_regs + cpu->dyn_xml.num_cpregs) {
-> +        const ARMCPRegInfo *ri;
-> +        uint32_t key;
+> +}
 > +
-> +        key = cpu->dyn_xml.cpregs_keys[n - cs->gdb_num_regs];
-> +        ri = get_arm_cp_reginfo(arm_env_get_cpu(env)->cp_regs, key);
-> +        if (ri) {
-> +            if (!(ri->type & ARM_CP_CONST)) {
-> +                write_raw_cp_reg(env, ri, tmp);
-> +                return 8;
-> +            }
-> +        }
-
-I think you should be able to handle both aarch64 and aarch32
-with one set of sysreg_gdb_get_reg, sysreg_gdb_set_reg functions.
-
+> +void HELPER(gvec_add8)(void *d, void *a, void *b, uint32_t desc)
+> +{
+> +    intptr_t opsz = extract_opsz(desc);
+> +    intptr_t i;
+> +
+> +    for (i = 0; i < opsz; i += sizeof(vec8)) {
+> +        *(vec8 *)(d + i) = *(vec8 *)(a + i) + *(vec8 *)(b + i);
 > +    }
->      /* Unknown register.  */
->      return 0;
->  }
-> diff --git a/target/arm/helper.c b/target/arm/helper.c
-> index bfce096..e0e8339 100644
-> --- a/target/arm/helper.c
-> +++ b/target/arm/helper.c
-> @@ -199,8 +199,7 @@ uint64_t read_raw_cp_reg(CPUARMState *env, const ARMCPRegInfo *ri)
->      }
->  }
->
-> -static void write_raw_cp_reg(CPUARMState *env, const ARMCPRegInfo *ri,
-> -                             uint64_t v)
-> +void write_raw_cp_reg(CPUARMState *env, const ARMCPRegInfo *ri, uint64_t v)
->  {
->      /* Raw write of a coprocessor register (as needed for migration, etc).
->       * Note that constant registers are treated as write-ignored; the
-> --
-> 1.9.1
+> +    clear_high(d, opsz, desc);
+> +}
+> +
+> +void HELPER(gvec_add16)(void *d, void *a, void *b, uint32_t desc)
+> +{
+> +    intptr_t opsz = extract_opsz(desc);
+> +    intptr_t i;
+> +
+> +    for (i = 0; i < opsz; i += sizeof(vec16)) {
+> +        *(vec16 *)(d + i) = *(vec16 *)(a + i) + *(vec16 *)(b + i);
+> +    }
+> +    clear_high(d, opsz, desc);
+> +}
+> +
+> +void HELPER(gvec_add32)(void *d, void *a, void *b, uint32_t desc)
+> +{
+> +    intptr_t opsz = extract_opsz(desc);
+> +    intptr_t i;
+> +
+> +    for (i = 0; i < opsz; i += sizeof(vec32)) {
+> +        *(vec32 *)(d + i) = *(vec32 *)(a + i) + *(vec32 *)(b + i);
+> +    }
+> +    clear_high(d, opsz, desc);
+> +}
+> +
+> +void HELPER(gvec_add64)(void *d, void *a, void *b, uint32_t desc)
+> +{
+> +    intptr_t opsz = extract_opsz(desc);
+> +    intptr_t i;
+> +
+> +    for (i = 0; i < opsz; i += sizeof(vec64)) {
+> +        *(vec64 *)(d + i) = *(vec64 *)(a + i) + *(vec64 *)(b + i);
+> +    }
+> +    clear_high(d, opsz, desc);
+> +}
+> +
+> +void HELPER(gvec_sub8)(void *d, void *a, void *b, uint32_t desc)
+> +{
+> +    intptr_t opsz = extract_opsz(desc);
+> +    intptr_t i;
+> +
+> +    for (i = 0; i < opsz; i += sizeof(vec8)) {
+> +        *(vec8 *)(d + i) = *(vec8 *)(a + i) - *(vec8 *)(b + i);
+> +    }
+> +    clear_high(d, opsz, desc);
+> +}
+> +
+> +void HELPER(gvec_sub16)(void *d, void *a, void *b, uint32_t desc)
+> +{
+> +    intptr_t opsz = extract_opsz(desc);
+> +    intptr_t i;
+> +
+> +    for (i = 0; i < opsz; i += sizeof(vec16)) {
+> +        *(vec16 *)(d + i) = *(vec16 *)(a + i) - *(vec16 *)(b + i);
+> +    }
+> +    clear_high(d, opsz, desc);
+> +}
+> +
+> +void HELPER(gvec_sub32)(void *d, void *a, void *b, uint32_t desc)
+> +{
+> +    intptr_t opsz = extract_opsz(desc);
+> +    intptr_t i;
+> +
+> +    for (i = 0; i < opsz; i += sizeof(vec32)) {
+> +        *(vec32 *)(d + i) = *(vec32 *)(a + i) - *(vec32 *)(b + i);
+> +    }
+> +    clear_high(d, opsz, desc);
+> +}
+> +
+> +void HELPER(gvec_sub64)(void *d, void *a, void *b, uint32_t desc)
+> +{
+> +    intptr_t opsz = extract_opsz(desc);
+> +    intptr_t i;
+> +
+> +    for (i = 0; i < opsz; i += sizeof(vec64)) {
+> +        *(vec64 *)(d + i) = *(vec64 *)(a + i) - *(vec64 *)(b + i);
+> +    }
+> +    clear_high(d, opsz, desc);
+> +}
+> +
+> +void HELPER(gvec_and8)(void *d, void *a, void *b, uint32_t desc)
+> +{
+> +    intptr_t opsz = extract_opsz(desc);
+> +    intptr_t i;
+> +
+> +    for (i = 0; i < opsz; i += sizeof(vec64)) {
+> +        *(vec64 *)(d + i) = *(vec64 *)(a + i) & *(vec64 *)(b + i);
+> +    }
+> +    clear_high(d, opsz, desc);
+> +}
+> +
+> +void HELPER(gvec_or8)(void *d, void *a, void *b, uint32_t desc)
+> +{
+> +    intptr_t opsz = extract_opsz(desc);
+> +    intptr_t i;
+> +
+> +    for (i = 0; i < opsz; i += sizeof(vec64)) {
+> +        *(vec64 *)(d + i) = *(vec64 *)(a + i) | *(vec64 *)(b + i);
+> +    }
+> +    clear_high(d, opsz, desc);
+> +}
+> +
+> +void HELPER(gvec_xor8)(void *d, void *a, void *b, uint32_t desc)
+> +{
+> +    intptr_t opsz = extract_opsz(desc);
+> +    intptr_t i;
+> +
+> +    for (i = 0; i < opsz; i += sizeof(vec64)) {
+> +        *(vec64 *)(d + i) = *(vec64 *)(a + i) ^ *(vec64 *)(b + i);
+> +    }
+> +    clear_high(d, opsz, desc);
+> +}
+> +
+> +void HELPER(gvec_andc8)(void *d, void *a, void *b, uint32_t desc)
+> +{
+> +    intptr_t opsz = extract_opsz(desc);
+> +    intptr_t i;
+> +
+> +    for (i = 0; i < opsz; i += sizeof(vec64)) {
+> +        *(vec64 *)(d + i) = *(vec64 *)(a + i) &~ *(vec64 *)(b + i);
+> +    }
+> +    clear_high(d, opsz, desc);
+> +}
+> +
+> +void HELPER(gvec_orc8)(void *d, void *a, void *b, uint32_t desc)
+> +{
+> +    intptr_t opsz = extract_opsz(desc);
+> +    intptr_t i;
+> +
+> +    for (i = 0; i < opsz; i += sizeof(vec64)) {
+> +        *(vec64 *)(d + i) = *(vec64 *)(a + i) |~ *(vec64 *)(b + i);
+> +    }
+> +    clear_high(d, opsz, desc);
+> +}
 
-thanks
--- PMM
+OK I can follow the helpers easily enough. I think the generators just
+need to be a little clearer for non-authors to follow ;-)
+
+--
+Alex Bennée

@@ -1,89 +1,100 @@
-Received: by 10.223.159.82 with SMTP id f18csp2189451wrg;
-        Fri, 24 Nov 2017 06:44:58 -0800 (PST)
-X-Google-Smtp-Source: AGs4zMZnnIDx+2xQOV8VT1LtJnDprq+toFYpKbLpjMHSPtGp6GZhS992mYp8MCw6EXbqh7FmXIre
-X-Received: by 10.37.40.196 with SMTP id o187mr18173122ybo.244.1511534698283;
-        Fri, 24 Nov 2017 06:44:58 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1511534698; cv=none;
+Received: by 10.223.172.38 with SMTP id v35csp739472wrc;
+        Thu, 7 Sep 2017 14:45:01 -0700 (PDT)
+X-Received: by 10.55.104.140 with SMTP id d134mr1064092qkc.133.1504820701428;
+        Thu, 07 Sep 2017 14:45:01 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1504820701; cv=none;
         d=google.com; s=arc-20160816;
-        b=w9CHpm5IHoWy6yJ0u7sXVxTe7bCMI/TYohgBPk9SqjwR38wn8HFgrK6HJnUKj6J2xQ
-         MvlWcNtrtMc/bcxvM0S6bmHjUSyx57zgPHCWOcAL4ZiE6AWsxidHLQgrTOkX6NAy73DA
-         6yE/ku+5oMAEgXXKaX8mTLw9FfX9Ukm1aSscONLhD8Ig268RIw0X2F0vtCrxzYjUg3Hn
-         Rzi/y3hQgWZXZ6pSZuEjxbLRNG7XWm5WGCg2NNhFpfvardWktDzCnRedluqv2OjnjKfl
-         0O9S/0wfhzidDbM0RyNBTqlx+Fyy5yRGOB5ED7LZ6pEjQPPnYunSN3FU6JNBaTYBhBly
-         duHg==
+        b=vDgqSI/VesAMTnA0uWR946qnpgiDS1OLVAMhMrudi96bgbBeRSi/hZHfrLvadvcvtF
+         BQPpHcoLcKbzQymHOm4rFLTdklpxzt0oUg1EIhvyvqYKcwuKQ2DhLtDrXKzyt99rYNHD
+         WHZNYZPvNu7pa9hA0EaGGCIRGIv6zRYD2+RNgyOLbcSdGYpqh+Mi3DTPAhDq8vrCSIFi
+         NwwmowPLwrio5asM45fM4tiiVJmWtINIou1+m45ELxqkbV1RBNaFm5QU7H+vF9PItSk7
+         s1EWDxfBpLcjUhS/tmSUdBCX9coWabj2wVJoWOM2ahqEXk9YTu3tI1ibhnDtJalrpagW
+         z0Ig==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:arc-authentication-results;
-        bh=GSt7L6Hk6W2XYl3W+Jc6lTDZ8bSsqgiv83horfrbuWg=;
-        b=yqqho3a152HbX+j8UX/OOdtOWgyh6MbEvAAWb/MmwKmixWo9PugpbwcgHG8c2stmDh
-         tYi/+bMx/ZFM08/SoiZUV5rRe40/y7pYN0w0w0BsO524vc3m9qQXkySKJGI5dupbZpmQ
-         f+S7jivoGioAOE6xgmPv++blTQV8Q5ZH5MB3h00HrETQbG2/6KviaNgNBKMegCRXjGlv
-         uwIoqtp8oMSgiWv3y+/uz0e7kGF34J58Wy2E0QVGIwg/aIhK5kjtpRzWfN606Jyqu2l2
-         vvFuBLqipY6lk3oo7VIoo3st8F27kTAV9SkwFJDZB6YBrK9YoUlISuLjCR1ZkGBuXbgv
-         oJ9A==
+         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
+         :references:in-reply-to:mime-version:dkim-signature
+         :arc-authentication-results;
+        bh=xCJqrr6/1VaWM2NBC22dc5FghfhMh19anwrDY0Mgf9A=;
+        b=FNLo22z2FMRwebSI41aNhyrMoFmlI4AfdzFUFbUmoM465nsx7bbzYzJtt9ZOq+e4ys
+         6cGEQK7/AitPCK2fZ7v70yRRbVAiwkZXy1ESgkAhG8uOxc3L1k1fQKe5PoC5jKktIaOk
+         Mo1iHPJZwtFx52MoUOb9C/HE4VeaVEB4ravX9kIWacW/oAcmU2/+Sx/3YZB7+ZcBcBpn
+         F3646o6Pt7m0bKKCSGdmmPDjHoxsYOjuFemCX7sMIfcBLM+7g1xrb+HDp9G/e/qtF2KS
+         PHjvODNUEmy1vH6g0SgjXSvnjB3WI2TvN0MU+WjFirRfTW94NYcfR2GjzEbiNxxWm3xx
+         T6/g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=eplhcqyP;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id z143si4581914ywa.480.2017.11.24.06.44.58
+        by mx.google.com with ESMTPS id f38si367919qta.372.2017.09.07.14.45.01
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 24 Nov 2017 06:44:58 -0800 (PST)
+        Thu, 07 Sep 2017 14:45:01 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:49627 helo=lists.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=eplhcqyP;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:42378 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1eIFDt-0007u1-MS
-	for alex.bennee@linaro.org; Fri, 24 Nov 2017 09:44:57 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:36090)
+	id 1dq4bb-00067b-B5
+	for alex.bennee@linaro.org; Thu, 07 Sep 2017 17:44:59 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:55249)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1eIFDh-0007s4-Tc
-	for qemu-arm@nongnu.org; Fri, 24 Nov 2017 09:44:47 -0500
+	(envelope-from <alistair23@gmail.com>) id 1dq4bR-00061Y-Sv
+	for qemu-arm@nongnu.org; Thu, 07 Sep 2017 17:44:54 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1eIFDd-0008NK-0b
-	for qemu-arm@nongnu.org; Fri, 24 Nov 2017 09:44:45 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:38474)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <eric.auger@redhat.com>)
-	id 1eIFDc-0008N6-Pr; Fri, 24 Nov 2017 09:44:40 -0500
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
-	[10.5.11.11])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id A55B119D00F;
-	Fri, 24 Nov 2017 14:44:39 +0000 (UTC)
-Received: from localhost.localdomain (ovpn-117-138.ams2.redhat.com
-	[10.36.117.138])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id E350F600C8;
-	Fri, 24 Nov 2017 14:44:34 +0000 (UTC)
-To: Peter Maydell <peter.maydell@linaro.org>
-References: <1511533107-5315-1-git-send-email-eric.auger@redhat.com>
-	<CAFEAcA_K4f=mmuoEbyuFCHP2dor5p2UPyedteELQoxPYFzAcEg@mail.gmail.com>
-	<dd80f8f3-26da-5893-fa4b-cfa31790394d@redhat.com>
-	<CAFEAcA8mqRsOYPVOu=tPqDuXyHauKpoF3AQ-bQgiqv5514o+Xw@mail.gmail.com>
-From: Auger Eric <eric.auger@redhat.com>
-Message-ID: <15186366-0220-96ae-91ff-c10515fbe778@redhat.com>
-Date: Fri, 24 Nov 2017 15:44:33 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
-	Thunderbird/45.4.0
+	(envelope-from <alistair23@gmail.com>) id 1dq4bN-0000Ps-3b
+	for qemu-arm@nongnu.org; Thu, 07 Sep 2017 17:44:49 -0400
+Received: from mail-wr0-x241.google.com ([2a00:1450:400c:c0c::241]:34986)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <alistair23@gmail.com>)
+	id 1dq4bD-0000D3-5Z; Thu, 07 Sep 2017 17:44:35 -0400
+Received: by mail-wr0-x241.google.com with SMTP id n64so416494wrb.2;
+	Thu, 07 Sep 2017 14:44:33 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=mime-version:sender:in-reply-to:references:from:date:message-id
+	:subject:to:cc;
+	bh=xCJqrr6/1VaWM2NBC22dc5FghfhMh19anwrDY0Mgf9A=;
+	b=eplhcqyPFLd8DrKNrI4WoY3Erlg/1zZWiG/Jkq1z1RYRuTxu/kx9jc4BsazAeEXEqr
+	U2fY28q1UAMQlwt67oEcEFG/DiI7LxnaC3o3kND/NnY1mwsrmVJbV3r+BfKWDPNfnPG2
+	JzGALW1a3CTlcE3dqBbhf2p1M98qy97m5dsxnrdg/x9fLNr0mgCdMHDQwMidODSU170c
+	CaRlarqiImLRsDidF9i94ECev6s/lsvNJsOUxcvTkbiD7QyHYKMFVmjTFNjkrkFIU9h7
+	LFAZdwSK09aoRskptoio27l0lwjsabq8dobPQLJeAHugXSoORAkfWSODSyba2ZtsykuA
+	Wvvw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:sender:in-reply-to:references:from
+	:date:message-id:subject:to:cc;
+	bh=xCJqrr6/1VaWM2NBC22dc5FghfhMh19anwrDY0Mgf9A=;
+	b=SKV9frRKNYujPrEjfqDbTN2JJq7Cqi80kro6nvTY2jHqwpeqRfK2DB+7A7XIzG8K5Z
+	apXiiRRwZLSW7AQb1TZPujx1itGcLcoU0Jq9M8N1OsDjoGeA4hHCqvCjmn+hqsq6xJXB
+	nDOY3TWRo0QOD6mU4XlT9XiwA5Sf+jOxZQZqhRUVsmh3FhDYAb3YXG245VjAOUWa4vos
+	sXYyMXEDOscjdnZvtkKN2o7oy/wE1o3dkwTkcqm3gQojBhInm4dz4Z9z6DuIQl+9r9Tv
+	gXCe3lSloBj3yOECdPqq8jvJbXcG8p0yUUEQ2trgKYw0WUFuIbXWmmr5f17rG6GgZNco
+	XXBw==
+X-Gm-Message-State: AHPjjUhSZroI7ecg93DnZZ26N/e3hq8rszqIM4wBxEzrJzpcCpJ8xswf
+	x7VDZPqey4Xs7+O/If5JtdZ71qaD+g==
+X-Google-Smtp-Source: ADKCNb6VIfROp6SdlwCKZ7oV5bU3PW+Qb3ydKKQ8LuebaQWRBJK74wCk3U3RVN2vhZenxgVjHA+nktmGHXqFFow0zrE=
+X-Received: by 10.223.163.83 with SMTP id d19mr421921wrb.84.1504820672616;
+	Thu, 07 Sep 2017 14:44:32 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA8mqRsOYPVOu=tPqDuXyHauKpoF3AQ-bQgiqv5514o+Xw@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.29]);
-	Fri, 24 Nov 2017 14:44:39 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [PATCH v5 0/4] ITS Reset
+Received: by 10.28.191.130 with HTTP; Thu, 7 Sep 2017 14:44:01 -0700 (PDT)
+In-Reply-To: <20170907213525.GJ5763@toto>
+References: <cover.1504222314.git.alistair.francis@xilinx.com>
+	<20170907213525.GJ5763@toto>
+From: Alistair Francis <alistair.francis@xilinx.com>
+Date: Thu, 7 Sep 2017 14:44:01 -0700
+X-Google-Sender-Auth: njvul4M5fH2VhK_RCwiQ9vd9KXM
+Message-ID: <CAKmqyKNrbdGJ2n=HHeUfJOq-EUmwbY_330DGL+BD++BtrSwnxA@mail.gmail.com>
+To: "Edgar E. Iglesias" <edgar.iglesias@xilinx.com>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2a00:1450:400c:c0c::241
+Subject: Re: [Qemu-arm] [PATCH Resend v2 0/5] Expose the secure and virt
+ properties to the
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -95,44 +106,63 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jones <drjones@redhat.com>, Vijay Kilari <vijay.kilari@gmail.com>,
-	Juan Quintela <quintela@redhat.com>,
-	QEMU Developers <qemu-devel@nongnu.org>,
-	"Dr. David Alan Gilbert" <dgilbert@redhat.com>,
-	qemu-arm <qemu-arm@nongnu.org>, wu.wubin@huawei.com,
-	wanghaibin.wang@huawei.com, Christoffer Dall <christoffer.dall@linaro.org>,
-	eric.auger.pro@gmail.com
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm <qemu-arm@nongnu.org>,
+	"qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
+	Alistair Francis <alistair.francis@xilinx.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: FfX0uDskPHkP
+X-TUID: sRA7mBH8UOQJ
 
-Hi Peter,
-On 24/11/17 15:35, Peter Maydell wrote:
-> On 24 November 2017 at 14:32, Auger Eric <eric.auger@redhat.com> wrote:
->> On 24/11/17 15:20, Peter Maydell wrote:
->>> Thanks. My remaining question is: how important it is to
->>> put some of this into 2.11? We're getting quite close to
->>> the release now so I'm getting gradually more reluctant
->>> to put in changes.
+On Thu, Sep 7, 2017 at 2:35 PM, Edgar E. Iglesias
+<edgar.iglesias@xilinx.com> wrote:
+> On Thu, Sep 07, 2017 at 08:56:55AM -0700, Alistair Francis wrote:
 >>
->> I fully understand.
+>> The EL2 and EL3 work is working well now and interanlly we now have
+>> tests that expect to start in EL3 and transition through EL2 to EL1. To
+>> make this easy to run let's expose the secure property to the machine
+>> and also add a virt property that can enable EL2.
 >>
->> Anyway clean and comprehensive reset modality would require v4.15 + full
->> QEMU series (otherwise you get the scary error message even if full
->> reset can be achieved by individual register writes).
+>> This series also does some machine/name tidying up and makes the first
+>> move to deprecating the EP108 machine, which was just an early access
+>> development board.
 >>
->> This means the migration of guests while they are booting will not be
->> functional in 2.11. However it should not abort QEMU as it did before,
->> with a kernel >= v4.14.
-> 
-> ...so overall, what is your recommendation for what we should
-> or should not put into 2.11 ?
-I would queue the whole series for 2.12 or whatever.
+>> V2:
+>>  - Add a virt option for setting EL2
+>
+>
+> Thanks Alistair!
+> Reviewed-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
 
-Thanks
+Thanks Edgar.
 
-Eric
-> 
-> thanks
-> -- PMM
-> 
+@Peter I updated the patches on the git branch I pasted earlier to
+include Edgar's review.
+
+Thanks,
+Alistair
+
+>
+>
+>
+>>
+>>
+>>
+>> Alistair Francis (5):
+>>   xlnx-ep108: Rename to ZCU102
+>>   xlnx-zcu102: Manually create the machines
+>>   xlnx-zcu102: Add a machine level secure property
+>>   xlnx-zcu102: Add a machine level virtualization property
+>>   xlnx-zcu102: Mark the EP108 machine as deprecated
+>>
+>>  hw/arm/Makefile.objs         |   2 +-
+>>  hw/arm/xlnx-ep108.c          | 137 -----------------------
+>>  hw/arm/xlnx-zcu102.c         | 257 +++++++++++++++++++++++++++++++++++++++++++
+>>  hw/arm/xlnx-zynqmp.c         |   3 +-
+>>  include/hw/arm/xlnx-zynqmp.h |   2 +
+>>  5 files changed, 262 insertions(+), 139 deletions(-)
+>>  delete mode 100644 hw/arm/xlnx-ep108.c
+>>  create mode 100644 hw/arm/xlnx-zcu102.c
+>>
+>> --
+>> 2.11.0
+>>

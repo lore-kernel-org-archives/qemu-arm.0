@@ -1,780 +1,513 @@
-Received: by 10.223.172.38 with SMTP id v35csp1155666wrc;
-        Fri, 8 Sep 2017 00:25:04 -0700 (PDT)
-X-Received: by 10.55.138.7 with SMTP id m7mr2573968qkd.121.1504855504470;
-        Fri, 08 Sep 2017 00:25:04 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1504855504; cv=none;
+Received: by 10.223.172.38 with SMTP id v35csp1157234wrc;
+        Fri, 8 Sep 2017 00:27:14 -0700 (PDT)
+X-Received: by 10.55.24.22 with SMTP id j22mr2397330qkh.310.1504855634138;
+        Fri, 08 Sep 2017 00:27:14 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1504855634; cv=none;
         d=google.com; s=arc-20160816;
-        b=DCLPPHUJVyuslhs0/EBkNj3RV7pHYCGLg/vo9uOj77dnK8vEBLPnmPNKVX081tjfFp
-         gGzgQmAY1eOVCBkum/01tw3o0JVEAJf32cKaPbvSzeWMH51fOOCkdNPZXypIMjv13TM1
-         QrvXndwaFpanj/kPavDW0EDY0FEObl442J+oCaTHz4a/ki6XwRP/GnFi8+76Mh4asmNr
-         5QBwxobdJDH5vECZuOieh0mqOSifXem35FqvJZ3tXKw0wSbZz3n/wJPuFvOlWAxGpxnm
-         BANFLsYKHMv1VYl/y9QStcSte06eeesIQpowQCEPD/svd8NDuuwH3DCDfkAh5m0X7Ebh
-         aOVA==
+        b=hYEVXTmVViR87C0x+Gj9HaEuGJWzojnvkEd1zGzRyAhkzvtYZVT6dTWhRTcPa37fZg
+         bFyMkHmMU0OSCM74VgfQqOJZGjPF+neCaMKAYkLLnTNf0qzixFZhWJXGfjOTInVwsDpJ
+         Q8an7sYp296s1zpXBYAa/A3aSCEChxNc5cyBLIYSmQRlonFbgdHQ6BO0T4AOWctiUifM
+         baiJoaxQrRd8K83vaB7k1kNN+FxMOMp2O6v/XuFsiNGWsmpLy1v3a14krTB0+531Rqz+
+         nLcdNMIZyj0ui6DtDYPspjDh04wADF0dd5jIPlNAF0/f4wFjGZFQe0vHyuw7vFRXBfhk
+         ujqA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
-         :references:in-reply-to:mime-version:dkim-signature
-         :arc-authentication-results;
-        bh=pZ7afL/BzUtsS/pd5pnDIGkclJFJDCNWiTPw34CDfFM=;
-        b=F+42UTASTG3u0+WZg+yYbDXqWOO1B9UwzvKq2vGxuKfWxTxwwjfJGsf2LdaVZcrpbi
-         XAq5C2Rz6wODkp5JNBkSbyLvB828iwk/jIwWWFAZxjpSbA5fGP7M7sGzg0O2Zhv+zMWv
-         +UF9Z2iYXcflLhQuYhnQxvDqHZ770uGmu3coGZ0Wf7i65haQ+GKWWW1ihTMG+UFFNn4l
-         8dZ8AveMGC4KYEsxg2gVxoKRKYBFd/eZ/XZR1ySfxXAVmSgBhgDDowvjmegq6kMf3raH
-         F08h7sCThkj0r8mO7L4vuf1c4HuN8Q90faZStGl8mQISmoj7Hdl9QwVGpTwg8nwvgSvZ
-         nCNQ==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:to:message-id:date:from:references
+         :in-reply-to:mime-version:dkim-signature:arc-authentication-results;
+        bh=iRpCwW1So28fCFvWh8pJme61MNuM78wLZ2QTRINC0Ms=;
+        b=fQEMd/g+5U47vOF3NoFQz43LFtMUYTa41vm3ofc7AceRUx/NaXMs7l6k1PiZYMF85/
+         yPeNTrrukuJ4nJnkWZTN1E7yurdenRxvfBUfE/CKY/7fON3JBRfIpzR2h2y0rGGcc8zX
+         x8mR7CR+QlzxaQ83qbSvXUrHo4rOoDnh8W2t5145ueAjBla7zZajIcslDWfTQFKQqCxm
+         8WRFw5c9iBh+6FIEZB/N61elNMC3GCo3K3a1cOnHW884Ak/8t4aJTRC+hpHpuWFEMDzh
+         Jc2+epVI0UZm91p2d3n9m7H2k84SIT8jek/f1SuKFrMibGLYN2gmOQlV48oiXtiD4XKN
+         H5Bw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=H2zLN2h8;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dkim=neutral (body hash did not verify) header.i=@gmail.com header.s=20161025 header.b=Hx/nzkgT;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id x56si1444506qtx.533.2017.09.08.00.25.03
+        by mx.google.com with ESMTPS id s19si1415233qtg.508.2017.09.08.00.27.13
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 08 Sep 2017 00:25:04 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Fri, 08 Sep 2017 00:27:14 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=H2zLN2h8;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dkim=neutral (body hash did not verify) header.i=@gmail.com header.s=20161025 header.b=Hx/nzkgT;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:43672 helo=lists.gnu.org)
+Received: from localhost ([::1]:43690 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1dqDev-0005q2-T2
-	for alex.bennee@linaro.org; Fri, 08 Sep 2017 03:25:01 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:33362)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1dqDh1-0006p3-Q4
+	for alex.bennee@linaro.org; Fri, 08 Sep 2017 03:27:11 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:33896)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <sundeep.lkml@gmail.com>) id 1dqDek-0005nj-Fp
-	for qemu-arm@nongnu.org; Fri, 08 Sep 2017 03:24:56 -0400
+	(envelope-from <sundeep.lkml@gmail.com>) id 1dqDg2-0006UV-U2
+	for qemu-devel@nongnu.org; Fri, 08 Sep 2017 03:26:17 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <sundeep.lkml@gmail.com>) id 1dqDee-0005Bw-2X
-	for qemu-arm@nongnu.org; Fri, 08 Sep 2017 03:24:50 -0400
-Received: from mail-vk0-x236.google.com ([2607:f8b0:400c:c05::236]:36166)
+	(envelope-from <sundeep.lkml@gmail.com>) id 1dqDfv-0006Ho-Nh
+	for qemu-devel@nongnu.org; Fri, 08 Sep 2017 03:26:10 -0400
+Received: from mail-ua0-x244.google.com ([2607:f8b0:400c:c08::244]:35807)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <sundeep.lkml@gmail.com>)
-	id 1dqDeQ-0004zR-FQ; Fri, 08 Sep 2017 03:24:30 -0400
-Received: by mail-vk0-x236.google.com with SMTP id v203so2514245vkv.3;
-	Fri, 08 Sep 2017 00:24:30 -0700 (PDT)
+	id 1dqDfv-0006Hd-FT; Fri, 08 Sep 2017 03:26:03 -0400
+Received: by mail-ua0-x244.google.com with SMTP id g47so538661uad.2;
+	Fri, 08 Sep 2017 00:26:03 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
 	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=pZ7afL/BzUtsS/pd5pnDIGkclJFJDCNWiTPw34CDfFM=;
-	b=H2zLN2h89dmtYgp7qzZ8cH3+vfyNC0WXRT6JNMRcgM65QPNvKDuIwUfK6aT3/LxFOX
-	S0uw6z//OFprCEJ+G2ZDoNDVN2OsXrmBy4tx2RCof+JGyxkSyXhkU4OyhgYJz00GAGcI
-	zi9jBBahS8/3TLi38APf5xmH+ahW7ELdBDlvP01wvk/HrUXpqhcFOnWOZUJW4MMbgoli
-	gPZeIW5Gyd9HwcNXCM3xEbfV/fQ0b/yd1gowyPn0VgNgF0FxWnbzVUhyygMQMlbFpeWv
-	s0if6cOAr6RnkDt0cbwQvszUVvXo94880wbQsqXMf3baYYTN8NuZRA5/tCZ0NmePBrsG
-	XDWQ==
+	:cc; bh=LbqLFgHqW5HG36/O1uIrZGWO68t8H2mYs+WM6x9qKyM=;
+	b=Hx/nzkgTP//02XMmt+ndPYd/BZ5f6SDTmj1pbWnJOi95B9Loz6aHnklfB6Q210uojv
+	up95GjCfsj2OhZ9DWi4HPJ+o9uuovGIWGyGDk3O/kHK69T2z9GUk/4bW5SzBiX4Ja8OW
+	Evu3z4aTq3qQKCLk9dSTMLeTwXHo/B6KZ4YhoW/L8a4j1Qt0us5ATPHymiQkAvVyZzqm
+	ov0pMLghgWYy93SZi72Y7rNk7uFIkpzP0ja9fe4dxAhjljjpyvQ6g0m4LOum8OFdarXo
+	/9Xwb8BTP9VVm4+8n49n4Cd67Gvbeh+gc6xYWPg4/3rq8XSypEfmdukzm7g07k/Cz+4Y
+	eH3w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
 	:message-id:subject:to:cc;
-	bh=pZ7afL/BzUtsS/pd5pnDIGkclJFJDCNWiTPw34CDfFM=;
-	b=gWUtz0Xo/pjlce8TraOWvBYAh5Dsg62Iw4Q+a8eHdK88PTyHaLT9XauSTGzg4B/76M
-	qriGZbVeJkOgdqklz5lATa4vV+RUFi4Fm58GrHthVokpNLba2fGiJX2c2YLCElgVyNGV
-	+UDCmUt7Vl8/bsn0PdU0/mIb+rKOWZ+AgvNp9Of8rJSloxIpWTsSk3u+ZLiFwIXBiNKF
-	2+8TAO6MsrOaiUCr2lyHthe8xfBWC1uFuNZZfDC5yr+jChDchrs2v8Uxftt9PEyDVTqQ
-	xHNySq/63mFlpRUheFLwGTmJ98iJ2FwwGszymxvW+XmaGjycz9y5VJsXaMY4ctxIw0eL
-	aNCA==
-X-Gm-Message-State: AHPjjUjzNu0+VMr4SAp1hr1R2/im6DGIAbvyXctHNK21GYS/XVJqCSdo
-	COA6emhEXkCwo6ALG3orY7fcBJVplw==
-X-Google-Smtp-Source: AOwi7QDJEsWyhsz8kd5gCNifGR7tnzQMGDW55gQXSw6210tSxgNZknNq+r0mlJgl65/RlDy0lJ1bSXoFkCQkFncJ8yU=
-X-Received: by 10.31.185.209 with SMTP id j200mr1201550vkf.198.1504855469773; 
-	Fri, 08 Sep 2017 00:24:29 -0700 (PDT)
+	bh=LbqLFgHqW5HG36/O1uIrZGWO68t8H2mYs+WM6x9qKyM=;
+	b=qfmowqy+OEgxs6VTtNniaqOSvsCSu61WvK9ThViy3BIYHLWj8CyRTlFc+MgMjVupXY
+	FarveZWXQUBinAuQHAQbx/ohUJSPUjIksohiyITBFdVHID4v7pC6lNLQSM1XWbobTfsT
+	wOhZM2HHIkZ4e/evc3jcNR+/e2y5XOLrVW1qvupfVjot72aR53LuXtQIC09NrL9OXVtL
+	Hn6+3B4jXs8mGNeJHhmd8gYJUdYAGPtRah1g9ImF7L84V2ov3whLLdBVVo2taV9hsp+H
+	PuyKreUMpZcwqJ0v6+Sf+dkYlMf8r0Xh+bR4ROnZLcI+34batCM/IsWa3tWvCry8pB+U
+	tMmw==
+X-Gm-Message-State: AHPjjUhVwj8isZUJe+lA/pzY97Y8FF6ZNi7wCfRzN7wwYvJr+gEE63ql
+	XF1YQSSyznlvlP+0Oq71M97FkM1yEw==
+X-Google-Smtp-Source: AOwi7QDoxMQcaLcC4l7U2g8mOYQQkwgE7qV7mNF/R/FwB6qFS3sqyDN4qzWTzdQdBQCO50lj21CwVMeERY3TzgEKrCA=
+X-Received: by 10.176.1.180 with SMTP id 49mr1183999ual.159.1504855562879;
+	Fri, 08 Sep 2017 00:26:02 -0700 (PDT)
 MIME-Version: 1.0
-Received: by 10.176.75.196 with HTTP; Fri, 8 Sep 2017 00:24:29 -0700 (PDT)
-In-Reply-To: <2b183ac5-36d8-1da6-cbac-4c6366f23261@amsat.org>
+Received: by 10.176.75.196 with HTTP; Fri, 8 Sep 2017 00:26:02 -0700 (PDT)
+In-Reply-To: <26693abe-07a2-1744-1a8d-4d08941837c5@amsat.org>
 References: <1504812251-23438-1-git-send-email-sundeep.lkml@gmail.com>
-	<2b183ac5-36d8-1da6-cbac-4c6366f23261@amsat.org>
+	<1504812251-23438-5-git-send-email-sundeep.lkml@gmail.com>
+	<26693abe-07a2-1744-1a8d-4d08941837c5@amsat.org>
 From: sundeep subbaraya <sundeep.lkml@gmail.com>
-Date: Fri, 8 Sep 2017 12:54:29 +0530
-Message-ID: <CALHRZuoJjSkSYaM9xz8xo2R-=oQEx5a1bkhSirc=NmEpxeG2AQ@mail.gmail.com>
+Date: Fri, 8 Sep 2017 12:56:02 +0530
+Message-ID: <CALHRZurB_6GT+KccybDgWb8bPdU89Ey1si46HnbQgsLuHYCh_w@mail.gmail.com>
 To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
-Content-Type: multipart/alternative; boundary="001a1143a0bcb6d7f00558a87772"
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400c:c05::236
-Subject: Re: [Qemu-arm] [Qemu devel v8 PATCH 0/5] Add support for
- Smartfusion2 SoC
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.21
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm <qemu-arm@nongnu.org>,
-	QEMU Developers <qemu-devel@nongnu.org>,
-	Alistair Francis <alistair23@gmail.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: JlhbQ/N4g7aQ
-
---001a1143a0bcb6d7f00558a87772
+X-Received-From: 2607:f8b0:400c:c08::244
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
+X-Content-Filtered-By: Mailman/MimeDel 2.1.21
+Subject: Re: [Qemu-devel] [Qemu devel v8 PATCH 4/5] msf2: Add Smartfusion2
+ SoC
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.21
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm <qemu-arm@nongnu.org>,
+	QEMU Developers <qemu-devel@nongnu.org>,
+	Alistair Francis <alistair23@gmail.com>,
+	Peter Crosthwaite <crosthwaite.peter@gmail.com>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: ckz4Ew4JhlfO
 
-Hi Phillipe,
+Hi Philippe,
 
-On Fri, Sep 8, 2017 at 3:14 AM, Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.or=
+On Fri, Sep 8, 2017 at 3:08 AM, Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.or=
 g>
 wrote:
 
-> Hi Subbaraya,
->
-> very good work!
->
 > On 09/07/2017 04:24 PM, Subbaraya Sundeep wrote:
 >
->> Hi Qemu-devel,
+>> Smartfusion2 SoC has hardened Microcontroller subsystem
+>> and flash based FPGA fabric. This patch adds support for
+>> Microcontroller subsystem in the SoC.
 >>
->> I am trying to add Smartfusion2 SoC.
->> SoC is from Microsemi and System on Module(SOM)
->> board is from Emcraft systems. Smartfusion2 has hardened
->> Microcontroller(Cortex-M3)based Sub System and FPGA fabric.
->> At the moment only system timer, sysreg and SPI
->> controller are modelled.
+>> Signed-off-by: Subbaraya Sundeep <sundeep.lkml@gmail.com>
+>> Reviewed-by: Alistair Francis <alistair.francis@xilinx.com>
+>> ---
+>>   default-configs/arm-softmmu.mak |   1 +
+>>   hw/arm/Makefile.objs            |   1 +
+>>   hw/arm/msf2-soc.c               | 218 ++++++++++++++++++++++++++++++
+>> ++++++++++
+>>   include/hw/arm/msf2-soc.h       |  66 ++++++++++++
+>>   4 files changed, 286 insertions(+)
+>>   create mode 100644 hw/arm/msf2-soc.c
+>>   create mode 100644 include/hw/arm/msf2-soc.h
 >>
->> Testing:
->> ./arm-softmmu/qemu-system-arm -M smartfusion2-som -serial mon:stdio \
->> -kernel u-boot.bin -display none -drive file=3Dspi.bin,if=3Dmtd,format=
-=3Draw
+>> diff --git a/default-configs/arm-softmmu.mak
+>> b/default-configs/arm-softmmu.mak
+>> index bbdd3c1..5059d13 100644
+>> --- a/default-configs/arm-softmmu.mak
+>> +++ b/default-configs/arm-softmmu.mak
+>> @@ -129,3 +129,4 @@ CONFIG_ACPI=3Dy
+>>   CONFIG_SMBIOS=3Dy
+>>   CONFIG_ASPEED_SOC=3Dy
+>>   CONFIG_GPIO_KEY=3Dy
+>> +CONFIG_MSF2=3Dy
+>> diff --git a/hw/arm/Makefile.objs b/hw/arm/Makefile.objs
+>> index a2e56ec..df36a03 100644
+>> --- a/hw/arm/Makefile.objs
+>> +++ b/hw/arm/Makefile.objs
+>> @@ -19,3 +19,4 @@ obj-$(CONFIG_FSL_IMX31) +=3D fsl-imx31.o kzm.o
+>>   obj-$(CONFIG_FSL_IMX6) +=3D fsl-imx6.o sabrelite.o
+>>   obj-$(CONFIG_ASPEED_SOC) +=3D aspeed_soc.o aspeed.o
+>>   obj-$(CONFIG_MPS2) +=3D mps2.o
+>> +obj-$(CONFIG_MSF2) +=3D msf2-soc.o
+>> diff --git a/hw/arm/msf2-soc.c b/hw/arm/msf2-soc.c
+>> new file mode 100644
+>> index 0000000..47fffa4
+>> --- /dev/null
+>> +++ b/hw/arm/msf2-soc.c
+>> @@ -0,0 +1,218 @@
+>> +/*
+>> + * SmartFusion2 SoC emulation.
+>> + *
+>> + * Copyright (c) 2017 Subbaraya Sundeep <sundeep.lkml@gmail.com>
+>> + *
+>> + * Permission is hereby granted, free of charge, to any person obtainin=
+g
+>> a copy
+>> + * of this software and associated documentation files (the "Software")=
+,
+>> to deal
+>> + * in the Software without restriction, including without limitation th=
+e
+>> rights
+>> + * to use, copy, modify, merge, publish, distribute, sublicense, and/or
+>> sell
+>> + * copies of the Software, and to permit persons to whom the Software i=
+s
+>> + * furnished to do so, subject to the following conditions:
+>> + *
+>> + * The above copyright notice and this permission notice shall be
+>> included in
+>> + * all copies or substantial portions of the Software.
+>> + *
+>> + * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+>> EXPRESS OR
+>> + * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+>> MERCHANTABILITY,
+>> + * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT
+>> SHALL
+>> + * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR
+>> OTHER
+>> + * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
+>> ARISING FROM,
+>> + * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+>> DEALINGS IN
+>> + * THE SOFTWARE.
+>> + */
+>> +
+>> +#include "qemu/osdep.h"
+>> +#include "qapi/error.h"
+>> +#include "qemu-common.h"
+>> +#include "hw/arm/arm.h"
+>> +#include "exec/address-spaces.h"
+>> +#include "hw/char/serial.h"
+>> +#include "hw/boards.h"
+>> +#include "sysemu/block-backend.h"
+>> +#include "qemu/cutils.h"
+>> +#include "hw/arm/msf2-soc.h"
+>> +
+>> +#define MSF2_TIMER_BASE       0x40004000
+>> +#define MSF2_SYSREG_BASE      0x40038000
+>> +
+>> +#define ENVM_BASE_ADDRESS     0x60000000
+>> +
+>> +#define SRAM_BASE_ADDRESS     0x20000000
+>> +
+>> +#define MSF2_ENVM_MAX_SIZE        (512 * K_BYTE)
+>> +
+>> +/*
+>> + * eSRAM max size is 80k without SECDED(Single error correction and
+>> + * dual error detection) feature and 64k with SECDED.
+>> + * We do not support SECDED now.
+>> + */
+>> +#define MSF2_ESRAM_MAX_SIZE       (80 * K_BYTE)
+>> +
+>> +static const uint32_t spi_addr[MSF2_NUM_SPIS] =3D { 0x40001000 ,
+>> 0x40011000 };
+>> +static const uint32_t uart_addr[MSF2_NUM_UARTS] =3D { 0x40000000 ,
+>> 0x40010000 };
+>> +
+>> +static const int spi_irq[MSF2_NUM_SPIS] =3D { 2, 3 };
+>> +static const int uart_irq[MSF2_NUM_UARTS] =3D { 10, 11 };
+>> +static const int timer_irq[MSF2_NUM_TIMERS] =3D { 14, 15 };
+>> +
+>> +static void m2sxxx_soc_initfn(Object *obj)
+>> +{
+>> +    MSF2State *s =3D MSF2_SOC(obj);
+>> +    int i;
+>> +
+>> +    object_initialize(&s->armv7m, sizeof(s->armv7m), TYPE_ARMV7M);
+>> +    qdev_set_parent_bus(DEVICE(&s->armv7m), sysbus_get_default());
+>> +
+>> +    object_initialize(&s->sysreg, sizeof(s->sysreg), TYPE_MSF2_SYSREG);
+>> +    qdev_set_parent_bus(DEVICE(&s->sysreg), sysbus_get_default());
+>> +
+>> +    object_initialize(&s->timer, sizeof(s->timer), TYPE_MSS_TIMER);
+>> +    qdev_set_parent_bus(DEVICE(&s->timer), sysbus_get_default());
+>> +
+>> +    for (i =3D 0; i < MSF2_NUM_SPIS; i++) {
+>> +        object_initialize(&s->spi[i], sizeof(s->spi[i]),
+>> +                          TYPE_MSS_SPI);
+>> +        qdev_set_parent_bus(DEVICE(&s->spi[i]), sysbus_get_default());
+>> +    }
+>> +}
+>> +
+>> +static void m2sxxx_soc_realize(DeviceState *dev_soc, Error **errp)
+>> +{
+>> +    MSF2State *s =3D MSF2_SOC(dev_soc);
+>> +    DeviceState *dev, *armv7m;
+>> +    SysBusDevice *busdev;
+>> +    Error *err =3D NULL;
+>> +    int i;
+>> +
+>> +    MemoryRegion *system_memory =3D get_system_memory();
+>> +    MemoryRegion *nvm =3D g_new(MemoryRegion, 1);
+>> +    MemoryRegion *nvm_alias =3D g_new(MemoryRegion, 1);
+>> +    MemoryRegion *sram =3D g_new(MemoryRegion, 1);
+>> +
+>> +    memory_region_init_rom(nvm, NULL, "MSF2.eNVM", s->envm_size,
+>> +                           &error_fatal);
+>> +    /*
+>> +     * On power-on, the eNVM region 0x60000000 is automatically
+>> +     * remapped to the Cortex-M3 processor executable region
+>> +     * start address (0x0). We do not support remapping other eNVM,
+>> +     * eSRAM and DDR regions by guest(via Sysreg) currently.
+>> +     */
+>> +    memory_region_init_alias(nvm_alias, NULL, "MSF2.eNVM.alias",
 >>
 >
-> "-M emcraft-sf2" ;)
->
-
-copy/paste error :)
-
->
-> U-Boot 2010.03-00147-g7da5092 (Jul 03 2017 - 09:04:50)
->
-> CPU  : SmartFusion2 SoC (Cortex-M3 Hard IP)
-> Freqs: CORTEX-M3=3D142MHz,PCLK0=3D71MHz,PCLK1=3D71MHz
-> Board: M2S-FG484-SOM Rev 1A, www.emcraft.com
-> DRAM:  64 MB
-> *** Warning - bad CRC, using default environment
->
-> In:    serial
-> Out:   serial
-> Err:   serial
-> Net:   M2S_MAC
-> Hit any key to stop autoboot:  0
-> 16384 KiB S25FL128P_64K at 0:0 is now current device
-> ## Booting kernel from Legacy Image at a0007fc0 ...
->    Image Name:   dtskernel
->    Image Type:   ARM Linux Kernel Image (uncompressed)
->    Data Size:    2664224 Bytes =3D  2.5 MB
->    Load Address: a0008000
->    Entry Point:  a0008001
->    Verifying Checksum ... OK
->    Loading Kernel Image ... OK
-> OK
->
-> Starting kernel ...
->
-> NVIC: Bad read offset 0xd74
-> [    0.000000] Booting Linux on physical CPU 0x0
-> [    0.000000] Linux version 4.5.0-00001-g3aa90e8-dirty
-> (sundeep@sundeep-Vostro-3458) (gcc version 5.4.0 (GCC) ) #102 PREEMPT Tue
-> May 16 19:43:40 IST 2017
-> [    0.000000] CPU: ARMv7-M [410fc231] revision 1 (ARMv7M), cr=3D00000000
-> [    0.000000] CPU: unknown data cache, unknown instruction cache
-> [    0.000000] Machine model: Microsemi SmartFusion 2 development board
-> [    0.000000] Kernel command line: console=3DttyS0,115200n8 panic=3D10
-> mem=3D64M@0xa0000000 earlyprintk
-> [    0.000000] Memory: 62204K/65536K available (1472K kernel code, 73K
-> rwdata, 652K rodata, 400K init, 120K bss, 3332K reserved, 0K cma-reserved=
-)
-> [    0.000000] NR_IRQS:16 nr_irqs:16 16
-> [    0.001178] sched_clock: 32 bits at 83MHz, resolution 12ns, wraps ever=
-y
-> 25873297401ns
-> [    0.003085] clocksource: msf2_clocksource: mask: 0xffffffff max_cycles=
-:
-> 0xffffffff, max_idle_ns: 23027234290 ns
-> [    0.009732] timer at 40004000, irq=3D16
-> [    0.014475] Calibrating delay loop... 442.36 BogoMIPS (lpj=3D2211840)
-> [    0.653685] Serial: 8250/16550 driver, 1 ports, IRQ sharing disabled
-> [    0.690789] console [ttyS0] disabled
-> [    0.696659] 40000000.serial: ttyS0 at MMIO 0x40000000 (irq =3D 17,
-> base_baud =3D 5187500) is a 16550
-> [    0.702725] console [ttyS0] enabled
-> [    0.826251] Freeing unused kernel memory: 400K (a021c000 - a0280000)
-> init started: BusyBox v1.24.1 (2017-05-15 09:57:00 IST)
-> ~ #
->
-> (qemu) info mtree
-> address-space: cpu-memory
->   0000000000000000-ffffffffffffffff (prio 0, i/o): armv7m-container
->     0000000000000000-ffffffffffffffff (prio -1, i/o): system
->       0000000000000000-000000000003ffff (prio 0, i/o): alias
-> MSF2.eNVM.alias @MSF2.eNVM 0000000000000000-000000000003ffff
->       0000000020000000-000000002000ffff (prio 0, ram): MSF2.eSRAM
->       0000000040000000-000000004000001f (prio 0, i/o): serial
->       0000000040001000-000000004000103f (prio 0, i/o): mss-spi
->       0000000040004000-000000004000402f (prio 0, i/o): mss-timer
->       0000000040011000-000000004001103f (prio 0, i/o): mss-spi
->       0000000040038000-00000000400382ff (prio 0, i/o): msf2-sysreg
->       0000000060000000-000000006003ffff (prio 0, rom): MSF2.eNVM
->       00000000a0000000-00000000a3ffffff (prio 0, ram): ddr-ram
->     0000000022000000-0000000023ffffff (prio 0, i/o): bitband
->     0000000042000000-0000000043ffffff (prio 0, i/o): bitband
->     00000000e000e000-00000000e000efff (prio 0, i/o): nvic
->       00000000e000e000-00000000e000efff (prio 0, i/o): nvic_sysregs
->       00000000e000e010-00000000e000e0ef (prio 1, i/o): systick
->
-> (qemu) info qtree
-> bus: main-system-bus
->   type System
->   dev: msf2-soc, id ""
->     part-name =3D "M2S010"
->     eNVM-size =3D 262144 (0x40000)
->     eSRAM-size =3D 65536 (0x10000)
->     m3clk =3D 142000000 (0x876bf80)
->     apb0div =3D 2 (0x2)
->     apb1div =3D 2 (0x2)
->   dev: mss-spi, id ""
->     gpio-out "sysbus-irq" 2
->     mmio 0000000040011000/0000000000000040
->     bus: spi
->       type SSI
->   dev: mss-spi, id ""
->     gpio-out "sysbus-irq" 2
->     mmio 0000000040001000/0000000000000040
->     bus: spi
->       type SSI
->       dev: s25sl12801, id ""
->         gpio-in "ssi-gpio-cs" 1
->         nonvolatile-cfg =3D 36863 (0x8fff)
->         spansion-cr1nv =3D 0 (0x0)
->         spansion-cr2nv =3D 1 (0x1)
->         spansion-cr3nv =3D 2 (0x2)
->         spansion-cr4nv =3D 16 (0x10)
->         drive =3D "mtd0"
->   dev: mss-timer, id ""
->     gpio-out "sysbus-irq" 2
->     clock-frequency =3D 71000000 (0x43b5fc0)
->     mmio 0000000040004000/0000000000000030
->   dev: msf2-sysreg, id ""
->     apb0divisor =3D 2 (0x2)
->     apb1divisor =3D 2 (0x2)
->     mmio 0000000040038000/0000000000000300
->
-> So far:
-> Tested-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
->
-
-Thanks for testing.
+> you can drop the ".alias", this function already prepends "alias "
 
 
-> Just some comments (no need to fix):
->
-
-Thank you, I will look into these errors once the patchset gets into the
-tree.
-
->
-> M2S-FG484-SOM> reset
-> resetting ...
-> M2S-FG484-SOM>
->
-> Hmm no reset, I was expecting some unimp/guest-error warning.
->
-> M2S-FG484-SOM> tftpboot
-> m2s_eth_init: FIFO initialization timeout
-> *** m2s_mac_dump_regs FIFO init:
->  DMA TX CTRL=3D00000000;DESC=3D00000000;STAT=3D00000000
->  DMA RX CTRL=3D00000000;DESC=3D00000000;STAT=3D00000000
->  DMA IRQ 00000000/00000000
->  CFG1=3D00000000;CFG2=3D00000000;IFG=3D00000000;HD=3D00000000;MFL=3D00000=
-000
->  IFCTRL=3D00000000;IFSTAT=3D00000000;ADR1=3D00000000;ADR2=3D00000000
->  FIFO CFG 00000000/00000000/00000000/00000000/00000000/00000000/
->  FIFO ACC 00000000/00000000/00000000/00000000/00000000/00000000/000000
-> 00/00000000/
->
-> (same unimp/guest-error warning)
->
-
-If device is not implemented how do I print warning when guest access that
-device?
+.remap sounds good?
 
 Thanks,
 Sundeep
 
 >
-> M2S-FG484-SOM> sf erase 0 0x1000
-> UNHANDLED EXCEPTION: HARD FAULT
->   R0    =3D 00000072  R1  =3D 00000072
->   R2    =3D 09fa3af0  R3  =3D 004c8000
->   R12   =3D 00000004  LR  =3D 00000a27
->   PC    =3D 0000ec98  PSR =3D 01000000
-> [hang]
-> IN:
-> 0x0000029e:  e7fe       b.n     0x29e
-
-
 >
-
->
->
->> Binaries u-boot.bin and spi.bin are at:
->> https://github.com/Subbaraya-Sundeep/qemu-test-binaries.git
+> +                             nvm, 0, s->envm_size);
+>> +
+>> +    memory_region_add_subregion(system_memory, ENVM_BASE_ADDRESS, nvm);
+>> +    memory_region_add_subregion(system_memory, 0, nvm_alias);
+>> +
+>> +    memory_region_init_ram(sram, NULL, "MSF2.eSRAM", s->esram_size,
+>> +                           &error_fatal);
+>> +    memory_region_add_subregion(system_memory, SRAM_BASE_ADDRESS, sram)=
+;
+>> +
+>> +    armv7m =3D DEVICE(&s->armv7m);
+>> +    qdev_prop_set_uint32(armv7m, "num-irq", 81);
+>> +    qdev_prop_set_string(armv7m, "cpu-model", "cortex-m3");
+>> +    object_property_set_link(OBJECT(&s->armv7m),
+>> OBJECT(get_system_memory()),
+>> +                                     "memory", &error_abort);
+>> +    object_property_set_bool(OBJECT(&s->armv7m), true, "realized",
+>> &err);
+>> +    if (err !=3D NULL) {
+>> +        error_propagate(errp, err);
+>> +        return;
+>> +    }
+>> +
+>> +    system_clock_scale =3D NANOSECONDS_PER_SECOND / s->m3clk;
+>> +
+>> +    for (i =3D 0; i < MSF2_NUM_UARTS; i++) {
+>> +        if (serial_hds[i]) {
+>> +            serial_mm_init(get_system_memory(), uart_addr[i], 2,
+>> +                           qdev_get_gpio_in(armv7m, uart_irq[i]),
+>> +                           115200, serial_hds[i], DEVICE_NATIVE_ENDIAN)=
+;
+>> +        }
+>> +    }
+>> +
+>> +    dev =3D DEVICE(&s->timer);
+>> +    /* APB0 clock is the timer input clock */
+>> +    qdev_prop_set_uint32(dev, "clock-frequency", s->m3clk / s->apb0div)=
+;
+>> +    object_property_set_bool(OBJECT(&s->timer), true, "realized", &err)=
+;
+>> +    if (err !=3D NULL) {
+>> +        error_propagate(errp, err);
+>> +        return;
+>> +    }
+>> +    busdev =3D SYS_BUS_DEVICE(dev);
+>> +    sysbus_mmio_map(busdev, 0, MSF2_TIMER_BASE);
+>> +    sysbus_connect_irq(busdev, 0,
+>> +                           qdev_get_gpio_in(armv7m, timer_irq[0]));
+>> +    sysbus_connect_irq(busdev, 1,
+>> +                           qdev_get_gpio_in(armv7m, timer_irq[1]));
+>> +
+>> +    dev =3D DEVICE(&s->sysreg);
+>> +    qdev_prop_set_uint32(dev, "apb0divisor", s->apb0div);
+>> +    qdev_prop_set_uint32(dev, "apb1divisor", s->apb1div);
+>> +    object_property_set_bool(OBJECT(&s->sysreg), true, "realized",
+>> &err);
+>> +    if (err !=3D NULL) {
+>> +        error_propagate(errp, err);
+>> +        return;
+>> +    }
+>> +    busdev =3D SYS_BUS_DEVICE(dev);
+>> +    sysbus_mmio_map(busdev, 0, MSF2_SYSREG_BASE);
+>> +
+>> +    for (i =3D 0; i < MSF2_NUM_SPIS; i++) {
+>> +        gchar *bus_name;
+>> +
+>> +        object_property_set_bool(OBJECT(&s->spi[i]), true, "realized",
+>> &err);
+>> +        if (err !=3D NULL) {
+>> +            error_propagate(errp, err);
+>> +            return;
+>> +        }
+>> +
+>> +        sysbus_mmio_map(SYS_BUS_DEVICE(&s->spi[i]), 0, spi_addr[i]);
+>> +        sysbus_connect_irq(SYS_BUS_DEVICE(&s->spi[i]), 0,
+>> +                           qdev_get_gpio_in(armv7m, spi_irq[i]));
+>> +
+>> +        /* Alias controller SPI bus to the SoC itself */
+>> +        bus_name =3D g_strdup_printf("spi%d", i);
+>> +        object_property_add_alias(OBJECT(s), bus_name,
+>> +                                  OBJECT(&s->spi[i]), "spi",
+>> +                                  &error_abort);
+>> +        g_free(bus_name);
+>> +    }
+>> +}
+>> +
+>> +static Property m2sxxx_soc_properties[] =3D {
+>> +    /*
+>> +     * part name specifies the type of SmartFusion2 device variant(this
+>> +     * property is for information purpose only.
+>> +     */
+>> +    DEFINE_PROP_STRING("part-name", MSF2State, part_name),
+>> +    DEFINE_PROP_UINT64("eNVM-size", MSF2State, envm_size,
+>> MSF2_ENVM_MAX_SIZE),
+>> +    DEFINE_PROP_UINT64("eSRAM-size", MSF2State, esram_size,
+>> +                        MSF2_ESRAM_MAX_SIZE),
+>> +    /* Libero GUI shows 100Mhz as default for clocks */
+>> +    DEFINE_PROP_UINT32("m3clk", MSF2State, m3clk, 100 * 1000000),
+>> +    /* default divisors in Libero GUI */
+>> +    DEFINE_PROP_UINT32("apb0div", MSF2State, apb0div, 2),
+>> +    DEFINE_PROP_UINT32("apb1div", MSF2State, apb1div, 2),
+>> +    DEFINE_PROP_END_OF_LIST(),
+>> +};
+>> +
+>> +static void m2sxxx_soc_class_init(ObjectClass *klass, void *data)
+>> +{
+>> +    DeviceClass *dc =3D DEVICE_CLASS(klass);
+>> +
+>> +    dc->realize =3D m2sxxx_soc_realize;
+>> +    dc->props =3D m2sxxx_soc_properties;
+>> +}
+>> +
+>> +static const TypeInfo m2sxxx_soc_info =3D {
+>> +    .name          =3D TYPE_MSF2_SOC,
+>> +    .parent        =3D TYPE_SYS_BUS_DEVICE,
+>> +    .instance_size =3D sizeof(MSF2State),
+>> +    .instance_init =3D m2sxxx_soc_initfn,
+>> +    .class_init    =3D m2sxxx_soc_class_init,
+>> +};
+>> +
+>> +static void m2sxxx_soc_types(void)
+>> +{
+>> +    type_register_static(&m2sxxx_soc_info);
+>> +}
+>> +
+>> +type_init(m2sxxx_soc_types)
+>> diff --git a/include/hw/arm/msf2-soc.h b/include/hw/arm/msf2-soc.h
+>> new file mode 100644
+>> index 0000000..eb239fa
+>> --- /dev/null
+>> +++ b/include/hw/arm/msf2-soc.h
+>> @@ -0,0 +1,66 @@
+>> +/*
+>> + * Microsemi Smartfusion2 SoC
+>> + *
+>> + * Copyright (c) 2017 Subbaraya Sundeep <sundeep.lkml@gmail.com>
+>> + *
+>> + * Permission is hereby granted, free of charge, to any person obtainin=
+g
+>> a copy
+>> + * of this software and associated documentation files (the "Software")=
+,
+>> to deal
+>> + * in the Software without restriction, including without limitation th=
+e
+>> rights
+>> + * to use, copy, modify, merge, publish, distribute, sublicense, and/or
+>> sell
+>> + * copies of the Software, and to permit persons to whom the Software i=
+s
+>> + * furnished to do so, subject to the following conditions:
+>> + *
+>> + * The above copyright notice and this permission notice shall be
+>> included in
+>> + * all copies or substantial portions of the Software.
+>> + *
+>> + * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+>> EXPRESS OR
+>> + * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+>> MERCHANTABILITY,
+>> + * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT
+>> SHALL
+>> + * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR
+>> OTHER
+>> + * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
+>> ARISING FROM,
+>> + * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+>> DEALINGS IN
+>> + * THE SOFTWARE.
+>> + */
+>> +
+>> +#ifndef HW_ARM_MSF2_SOC_H
+>> +#define HW_ARM_MSF2_SOC_H
+>> +
+>> +#include "hw/arm/armv7m.h"
+>> +#include "hw/timer/mss-timer.h"
+>> +#include "hw/misc/msf2-sysreg.h"
+>> +#include "hw/ssi/mss-spi.h"
+>> +
+>> +#define TYPE_MSF2_SOC     "msf2-soc"
+>> +#define MSF2_SOC(obj)     OBJECT_CHECK(MSF2State, (obj), TYPE_MSF2_SOC)
+>> +
+>> +#define MSF2_NUM_SPIS         2
+>> +#define MSF2_NUM_UARTS        2
+>> +
+>> +/*
+>> + * System timer consists of two programmable 32-bit
+>> + * decrementing counters that generate individual interrupts to
+>> + * the Cortex-M3 processor
+>> + */
+>> +#define MSF2_NUM_TIMERS       2
+>> +
+>> +typedef struct MSF2State {
+>> +    /*< private >*/
+>> +    SysBusDevice parent_obj;
+>> +    /*< public >*/
+>> +
+>> +    ARMv7MState armv7m;
+>> +
+>> +    char *part_name;
+>> +    uint64_t envm_size;
+>> +    uint64_t esram_size;
+>> +
+>> +    uint32_t m3clk;
+>> +    uint32_t apb0div;
+>> +    uint32_t apb1div;
+>> +
+>> +    MSF2SysregState sysreg;
+>> +    MSSTimerState timer;
+>> +    MSSSpiState spi[MSF2_NUM_SPIS];
+>> +} MSF2State;
+>> +
+>> +#endif
 >>
->> U-boot is from Emcraft with modified
->>      - SPI driver not to use PDMA.
->>      - ugly hack to pass dtb to kernel in r1.
->> @
->> https://github.com/Subbaraya-Sundeep/emcraft-uboot-sf2.git
 >>
->> Linux is 4.5 linux with Smartfusion2 SoC dts and clocksource
->> driver added by myself @
->> https://github.com/Subbaraya-Sundeep/linux.git
->>
->> v8:
->>         memory_region_init_ram to memory_region_init_rom in soc
->>         %s/emcraft_sf2_init/emcraft_sf2_s2s010_init/g in som
->>         Added mc->ignore_memory_transaction_failures =3D true in som
->>                 as per latest commit.
->>         Code simplifications as suggested by Alistair in sysreg and ssi.
->>
->> v7:
->>         Removed vmstate_register_ram_global as per latest commit
->>         Moved header files to C which are local to C source files
->>         Removed abort() from msf2-sysreg.c
->>         Added VMStateDescription in mss-timer.c
->>
->> v6:
->>      Moved some defines from header files to source files
->>      Added properties m3clk, apb0div, apb0div1 properties
->>      to soc.
->>      Added properties apb0divisor, apb1divisor to sysreg
->>      Update system_clock_source in msf2-soc.c
->>      Changed machine name smartfusion2-som->emcraft-sf2
->>
->> v5
->>      As per Philippe comments:
->>          Added abort in Sysreg if guest tries to remap memory
->>          other than default mapping.
->>          Use of CONFIG_MSF2 in Makefile for soc.c
->>          Fixed incorrect logic in timer model.
->>          Renamed msf2-timer.c -> mss-timer.c
->>                  msf2-spi.c -> mss-spi.c also type names
->>          Renamed function msf2_init->emcraft_sf2_init in msf2-som.c
->>          Added part-name,eNVM-size,eSRAM-size,pclk0 and pclk1
->>              properties to soc.
->>          Pass soc part-name,memory size and clock rate properties from
->> som.
->> v4:
->>      Fixed build failure by using PRIx macros.
->> v3:
->>      Added SoC file and board file as per Alistair comments.
->> v2:
->>      Added SPI controller so that u-boot loads kernel from spi flash.
->> v1:
->>      Initial patch set with timer and sysreg
->>
->> Thanks,
->> Sundeep
->>
->>
->> Subbaraya Sundeep (5):
->>    msf2: Add Smartfusion2 System timer
->>    msf2: Microsemi Smartfusion2 System Register block
->>    msf2: Add Smartfusion2 SPI controller
->>    msf2: Add Smartfusion2 SoC
->>    msf2: Add Emcraft's Smartfusion2 SOM kit
->>
->>   default-configs/arm-softmmu.mak |   1 +
->>   hw/arm/Makefile.objs            |   1 +
->>   hw/arm/msf2-soc.c               | 218 ++++++++++++++++++++++
->>   hw/arm/msf2-som.c               |  95 ++++++++++
->>   hw/misc/Makefile.objs           |   1 +
->>   hw/misc/msf2-sysreg.c           | 195 +++++++++++++++++++
->>   hw/ssi/Makefile.objs            |   1 +
->>   hw/ssi/mss-spi.c                | 404 ++++++++++++++++++++++++++++++
->> ++++++++++
->>   hw/timer/Makefile.objs          |   1 +
->>   hw/timer/mss-timer.c            | 289 ++++++++++++++++++++++++++++
->>   include/hw/arm/msf2-soc.h       |  66 +++++++
->>   include/hw/misc/msf2-sysreg.h   |  78 ++++++++
->>   include/hw/ssi/mss-spi.h        |  58 ++++++
->>   include/hw/timer/mss-timer.h    |  64 +++++++
->>   14 files changed, 1472 insertions(+)
->>   create mode 100644 hw/arm/msf2-soc.c
->>   create mode 100644 hw/arm/msf2-som.c
->>   create mode 100644 hw/misc/msf2-sysreg.c
->>   create mode 100644 hw/ssi/mss-spi.c
->>   create mode 100644 hw/timer/mss-timer.c
->>   create mode 100644 include/hw/arm/msf2-soc.h
->>   create mode 100644 include/hw/misc/msf2-sysreg.h
->>   create mode 100644 include/hw/ssi/mss-spi.h
->>   create mode 100644 include/hw/timer/mss-timer.h
->>
->>
-
---001a1143a0bcb6d7f00558a87772
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr">Hi Phillipe,<div class=3D"gmail_extra"><br><div class=3D"g=
-mail_quote">On Fri, Sep 8, 2017 at 3:14 AM, Philippe Mathieu-Daud=C3=A9 <sp=
-an dir=3D"ltr">&lt;<a href=3D"mailto:f4bug@amsat.org" target=3D"_blank">f4b=
-ug@amsat.org</a>&gt;</span> wrote:<br><blockquote class=3D"gmail_quote" sty=
-le=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);paddi=
-ng-left:1ex">Hi Subbaraya,<br>
-<br>
-very good work!<span class=3D"gmail-"><br>
-<br>
-On 09/07/2017 04:24 PM, Subbaraya Sundeep wrote:<br>
-<blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-=
-left:1px solid rgb(204,204,204);padding-left:1ex">
-Hi Qemu-devel,<br>
-<br>
-I am trying to add Smartfusion2 SoC.<br>
-SoC is from Microsemi and System on Module(SOM)<br>
-board is from Emcraft systems. Smartfusion2 has hardened<br>
-Microcontroller(Cortex-M3)base<wbr>d Sub System and FPGA fabric.<br>
-At the moment only system timer, sysreg and SPI<br>
-controller are modelled.<br>
-<br>
-Testing:<br>
-./arm-softmmu/qemu-system-arm -M smartfusion2-som -serial mon:stdio \<br>
--kernel u-boot.bin -display none -drive file=3Dspi.bin,if=3Dmtd,format=3Dra=
-w<br>
-</blockquote>
-<br></span>
-&quot;-M emcraft-sf2&quot; ;)<br></blockquote><div><br></div><div>copy/past=
-e error :)=C2=A0</div><blockquote class=3D"gmail_quote" style=3D"margin:0px=
- 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex">
-<br>
-U-Boot 2010.03-00147-g7da5092 (Jul 03 2017 - 09:04:50)<br>
-<br>
-CPU=C2=A0 : SmartFusion2 SoC (Cortex-M3 Hard IP)<br>
-Freqs: CORTEX-M3=3D142MHz,PCLK0=3D71MHz,P<wbr>CLK1=3D71MHz<br>
-Board: M2S-FG484-SOM Rev 1A, <a href=3D"http://www.emcraft.com" rel=3D"nore=
-ferrer" target=3D"_blank">www.emcraft.com</a><br>
-DRAM:=C2=A0 64 MB<br>
-*** Warning - bad CRC, using default environment<br>
-<br>
-In:=C2=A0 =C2=A0 serial<br>
-Out:=C2=A0 =C2=A0serial<br>
-Err:=C2=A0 =C2=A0serial<br>
-Net:=C2=A0 =C2=A0M2S_MAC<br>
-Hit any key to stop autoboot:=C2=A0 0<br>
-16384 KiB S25FL128P_64K at 0:0 is now current device<br>
-## Booting kernel from Legacy Image at a0007fc0 ...<br>
-=C2=A0 =C2=A0Image Name:=C2=A0 =C2=A0dtskernel<br>
-=C2=A0 =C2=A0Image Type:=C2=A0 =C2=A0ARM Linux Kernel Image (uncompressed)<=
-br>
-=C2=A0 =C2=A0Data Size:=C2=A0 =C2=A0 2664224 Bytes =3D=C2=A0 2.5 MB<br>
-=C2=A0 =C2=A0Load Address: a0008000<br>
-=C2=A0 =C2=A0Entry Point:=C2=A0 a0008001<br>
-=C2=A0 =C2=A0Verifying Checksum ... OK<br>
-=C2=A0 =C2=A0Loading Kernel Image ... OK<br>
-OK<br>
-<br>
-Starting kernel ...<br>
-<br>
-NVIC: Bad read offset 0xd74<br>
-[=C2=A0 =C2=A0 0.000000] Booting Linux on physical CPU 0x0<br>
-[=C2=A0 =C2=A0 0.000000] Linux version 4.5.0-00001-g3aa90e8-dirty (sundeep@=
-sundeep-Vostro-3458) (gcc version 5.4.0 (GCC) ) #102 PREEMPT Tue May 16 19:=
-43:40 IST 2017<br>
-[=C2=A0 =C2=A0 0.000000] CPU: ARMv7-M [410fc231] revision 1 (ARMv7M), cr=3D=
-00000000<br>
-[=C2=A0 =C2=A0 0.000000] CPU: unknown data cache, unknown instruction cache=
-<br>
-[=C2=A0 =C2=A0 0.000000] Machine model: Microsemi SmartFusion 2 development=
- board<br>
-[=C2=A0 =C2=A0 0.000000] Kernel command line: console=3DttyS0,115200n8 pani=
-c=3D10 mem=3D64M@0xa0000000 earlyprintk<br>
-[=C2=A0 =C2=A0 0.000000] Memory: 62204K/65536K available (1472K kernel code=
-, 73K rwdata, 652K rodata, 400K init, 120K bss, 3332K reserved, 0K cma-rese=
-rved)<br>
-[=C2=A0 =C2=A0 0.000000] NR_IRQS:16 nr_irqs:16 16<br>
-[=C2=A0 =C2=A0 0.001178] sched_clock: 32 bits at 83MHz, resolution 12ns, wr=
-aps every 25873297401ns<br>
-[=C2=A0 =C2=A0 0.003085] clocksource: msf2_clocksource: mask: 0xffffffff ma=
-x_cycles: 0xffffffff, max_idle_ns: 23027234290 ns<br>
-[=C2=A0 =C2=A0 0.009732] timer at 40004000, irq=3D16<br>
-[=C2=A0 =C2=A0 0.014475] Calibrating delay loop... 442.36 BogoMIPS (lpj=3D2=
-211840)<br>
-[=C2=A0 =C2=A0 0.653685] Serial: 8250/16550 driver, 1 ports, IRQ sharing di=
-sabled<br>
-[=C2=A0 =C2=A0 0.690789] console [ttyS0] disabled<br>
-[=C2=A0 =C2=A0 0.696659] 40000000.serial: ttyS0 at MMIO 0x40000000 (irq =3D=
- 17, base_baud =3D 5187500) is a 16550<br>
-[=C2=A0 =C2=A0 0.702725] console [ttyS0] enabled<br>
-[=C2=A0 =C2=A0 0.826251] Freeing unused kernel memory: 400K (a021c000 - a02=
-80000)<br>
-init started: BusyBox v1.24.1 (2017-05-15 09:57:00 IST)<br>
-~ #<br>
-<br>
-(qemu) info mtree<br>
-address-space: cpu-memory<br>
-=C2=A0 0000000000000000-fffffffffffff<wbr>fff (prio 0, i/o): armv7m-contain=
-er<br>
-=C2=A0 =C2=A0 0000000000000000-fffffffffffff<wbr>fff (prio -1, i/o): system=
-<br>
-=C2=A0 =C2=A0 =C2=A0 0000000000000000-000000000003f<wbr>fff (prio 0, i/o): =
-alias MSF2.eNVM.alias @MSF2.eNVM 0000000000000000-000000000003f<wbr>fff<br>
-=C2=A0 =C2=A0 =C2=A0 0000000020000000-000000002000f<wbr>fff (prio 0, ram): =
-MSF2.eSRAM<br>
-=C2=A0 =C2=A0 =C2=A0 0000000040000000-0000000040000<wbr>01f (prio 0, i/o): =
-serial<br>
-=C2=A0 =C2=A0 =C2=A0 0000000040001000-0000000040001<wbr>03f (prio 0, i/o): =
-mss-spi<br>
-=C2=A0 =C2=A0 =C2=A0 0000000040004000-0000000040004<wbr>02f (prio 0, i/o): =
-mss-timer<br>
-=C2=A0 =C2=A0 =C2=A0 0000000040011000-0000000040011<wbr>03f (prio 0, i/o): =
-mss-spi<br>
-=C2=A0 =C2=A0 =C2=A0 0000000040038000-0000000040038<wbr>2ff (prio 0, i/o): =
-msf2-sysreg<br>
-=C2=A0 =C2=A0 =C2=A0 0000000060000000-000000006003f<wbr>fff (prio 0, rom): =
-MSF2.eNVM<br>
-=C2=A0 =C2=A0 =C2=A0 00000000a0000000-00000000a3fff<wbr>fff (prio 0, ram): =
-ddr-ram<br>
-=C2=A0 =C2=A0 0000000022000000-0000000023fff<wbr>fff (prio 0, i/o): bitband=
-<br>
-=C2=A0 =C2=A0 0000000042000000-0000000043fff<wbr>fff (prio 0, i/o): bitband=
-<br>
-=C2=A0 =C2=A0 00000000e000e000-00000000e000e<wbr>fff (prio 0, i/o): nvic<br=
->
-=C2=A0 =C2=A0 =C2=A0 00000000e000e000-00000000e000e<wbr>fff (prio 0, i/o): =
-nvic_sysregs<br>
-=C2=A0 =C2=A0 =C2=A0 00000000e000e010-00000000e000e<wbr>0ef (prio 1, i/o): =
-systick<br>
-<br>
-(qemu) info qtree<br>
-bus: main-system-bus<br>
-=C2=A0 type System<br>
-=C2=A0 dev: msf2-soc, id &quot;&quot;<br>
-=C2=A0 =C2=A0 part-name =3D &quot;M2S010&quot;<br>
-=C2=A0 =C2=A0 eNVM-size =3D 262144 (0x40000)<br>
-=C2=A0 =C2=A0 eSRAM-size =3D 65536 (0x10000)<br>
-=C2=A0 =C2=A0 m3clk =3D 142000000 (0x876bf80)<br>
-=C2=A0 =C2=A0 apb0div =3D 2 (0x2)<br>
-=C2=A0 =C2=A0 apb1div =3D 2 (0x2)<br>
-=C2=A0 dev: mss-spi, id &quot;&quot;<br>
-=C2=A0 =C2=A0 gpio-out &quot;sysbus-irq&quot; 2<br>
-=C2=A0 =C2=A0 mmio 0000000040011000/0000000000000<wbr>040<br>
-=C2=A0 =C2=A0 bus: spi<br>
-=C2=A0 =C2=A0 =C2=A0 type SSI<br>
-=C2=A0 dev: mss-spi, id &quot;&quot;<br>
-=C2=A0 =C2=A0 gpio-out &quot;sysbus-irq&quot; 2<br>
-=C2=A0 =C2=A0 mmio 0000000040001000/0000000000000<wbr>040<br>
-=C2=A0 =C2=A0 bus: spi<br>
-=C2=A0 =C2=A0 =C2=A0 type SSI<br>
-=C2=A0 =C2=A0 =C2=A0 dev: s25sl12801, id &quot;&quot;<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 gpio-in &quot;ssi-gpio-cs&quot; 1<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 nonvolatile-cfg =3D 36863 (0x8fff)<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 spansion-cr1nv =3D 0 (0x0)<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 spansion-cr2nv =3D 1 (0x1)<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 spansion-cr3nv =3D 2 (0x2)<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 spansion-cr4nv =3D 16 (0x10)<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 drive =3D &quot;mtd0&quot;<br>
-=C2=A0 dev: mss-timer, id &quot;&quot;<br>
-=C2=A0 =C2=A0 gpio-out &quot;sysbus-irq&quot; 2<br>
-=C2=A0 =C2=A0 clock-frequency =3D 71000000 (0x43b5fc0)<br>
-=C2=A0 =C2=A0 mmio 0000000040004000/0000000000000<wbr>030<br>
-=C2=A0 dev: msf2-sysreg, id &quot;&quot;<br>
-=C2=A0 =C2=A0 apb0divisor =3D 2 (0x2)<br>
-=C2=A0 =C2=A0 apb1divisor =3D 2 (0x2)<br>
-=C2=A0 =C2=A0 mmio 0000000040038000/0000000000000<wbr>300<br>
-<br>
-So far:<br>
-Tested-by: Philippe Mathieu-Daud=C3=A9 &lt;<a href=3D"mailto:f4bug@amsat.or=
-g" target=3D"_blank">f4bug@amsat.org</a>&gt;<br></blockquote><div><br></div=
-><div>Thanks for testing.</div><div><br></div><blockquote class=3D"gmail_qu=
-ote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,20=
-4);padding-left:1ex">
-<br>
-Just some comments (no need to fix):<br></blockquote><div><br></div><div>Th=
-ank you, I will look into these errors once the patchset gets into the tree=
-. =C2=A0</div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px=
- 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex">
-<br>
-M2S-FG484-SOM&gt; reset<br>
-resetting ...<br>
-M2S-FG484-SOM&gt;<br>
-<br>
-Hmm no reset, I was expecting some unimp/guest-error warning.<br>
-<br>
-M2S-FG484-SOM&gt; tftpboot<br>
-m2s_eth_init: FIFO initialization timeout<br>
-*** m2s_mac_dump_regs FIFO init:<br>
-=C2=A0DMA TX CTRL=3D00000000;DESC=3D00000000;ST<wbr>AT=3D00000000<br>
-=C2=A0DMA RX CTRL=3D00000000;DESC=3D00000000;ST<wbr>AT=3D00000000<br>
-=C2=A0DMA IRQ 00000000/00000000<br>
-=C2=A0CFG1=3D00000000;CFG2=3D00000000;I<wbr>FG=3D00000000;HD=3D00000000;MFL=
-=3D00<wbr>000000<br>
-=C2=A0IFCTRL=3D00000000;IFSTAT=3D000000<wbr>00;ADR1=3D00000000;ADR2=3D00000=
-000<br>
-=C2=A0FIFO CFG 00000000/00000000/00000000/000<wbr>00000/00000000/00000000/<=
-br>
-=C2=A0FIFO ACC 00000000/00000000/00000000/000<wbr>00000/00000000/00000000/0=
-00000<wbr>00/00000000/<br>
-<br>
-(same unimp/guest-error warning)<br></blockquote><div>=C2=A0</div><div>If d=
-evice is not implemented how do I print warning when guest access that devi=
-ce?=C2=A0</div><div><br></div><div><div>Thanks,</div><div>Sundeep</div></di=
-v><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;borde=
-r-left:1px solid rgb(204,204,204);padding-left:1ex">
-<br>
-M2S-FG484-SOM&gt; sf erase 0 0x1000<br>
-UNHANDLED EXCEPTION: HARD FAULT<br>
-=C2=A0 R0=C2=A0 =C2=A0 =3D 00000072=C2=A0 R1=C2=A0 =3D 00000072<br>
-=C2=A0 R2=C2=A0 =C2=A0 =3D 09fa3af0=C2=A0 R3=C2=A0 =3D 004c8000<br>
-=C2=A0 R12=C2=A0 =C2=A0=3D 00000004=C2=A0 LR=C2=A0 =3D 00000a27<br>
-=C2=A0 PC=C2=A0 =C2=A0 =3D 0000ec98=C2=A0 PSR =3D 01000000<br>
-[hang]<br>
-IN:<br>
-0x0000029e:=C2=A0 e7fe=C2=A0 =C2=A0 =C2=A0 =C2=A0b.n=C2=A0 =C2=A0 =C2=A00x2=
-9e</blockquote><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0p=
-x 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex"><div class=
-=3D"gmail-HOEnZb"><div class=3D"gmail-h5"><span style=3D"color:rgb(34,34,34=
-)">=C2=A0</span><br></div></div></blockquote><blockquote class=3D"gmail_quo=
-te" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204=
-);padding-left:1ex"><div class=3D"gmail-HOEnZb"><div class=3D"gmail-h5">
-<br>
-<br>
-<blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-=
-left:1px solid rgb(204,204,204);padding-left:1ex">
-<br>
-Binaries u-boot.bin and spi.bin are at:<br>
-<a href=3D"https://github.com/Subbaraya-Sundeep/qemu-test-binaries.git" rel=
-=3D"noreferrer" target=3D"_blank">https://github.com/Subbaraya-S<wbr>undeep=
-/qemu-test-binaries.git</a><br>
-<br>
-U-boot is from Emcraft with modified<br>
-=C2=A0 =C2=A0 =C2=A0- SPI driver not to use PDMA.<br>
-=C2=A0 =C2=A0 =C2=A0- ugly hack to pass dtb to kernel in r1.<br>
-@<br>
-<a href=3D"https://github.com/Subbaraya-Sundeep/emcraft-uboot-sf2.git" rel=
-=3D"noreferrer" target=3D"_blank">https://github.com/Subbaraya-S<wbr>undeep=
-/emcraft-uboot-sf2.git</a><br>
-<br>
-Linux is 4.5 linux with Smartfusion2 SoC dts and clocksource<br>
-driver added by myself @<br>
-<a href=3D"https://github.com/Subbaraya-Sundeep/linux.git" rel=3D"noreferre=
-r" target=3D"_blank">https://github.com/Subbaraya-S<wbr>undeep/linux.git</a=
-><br>
-<br>
-v8:<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 memory_region_init_ram to memory_region_init_ro=
-m in soc<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 %s/emcraft_sf2_init/emcraft_sf<wbr>2_s2s010_ini=
-t/g in som<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 Added mc-&gt;ignore_memory_transaction_<wbr>fai=
-lures =3D true in som<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 as per latest commi=
-t.<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 Code simplifications as suggested by Alistair i=
-n sysreg and ssi.<br>
-<br>
-v7:<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 Removed vmstate_register_ram_global as per late=
-st commit<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 Moved header files to C which are local to C so=
-urce files<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 Removed abort() from msf2-sysreg.c<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 Added VMStateDescription in mss-timer.c<br>
-<br>
-v6:<br>
-=C2=A0 =C2=A0 =C2=A0Moved some defines from header files to source files<br=
->
-=C2=A0 =C2=A0 =C2=A0Added properties m3clk, apb0div, apb0div1 properties<br=
->
-=C2=A0 =C2=A0 =C2=A0to soc.<br>
-=C2=A0 =C2=A0 =C2=A0Added properties apb0divisor, apb1divisor to sysreg<br>
-=C2=A0 =C2=A0 =C2=A0Update system_clock_source in msf2-soc.c<br>
-=C2=A0 =C2=A0 =C2=A0Changed machine name smartfusion2-som-&gt;emcraft-sf2<b=
-r>
-<br>
-v5<br>
-=C2=A0 =C2=A0 =C2=A0As per Philippe comments:<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0Added abort in Sysreg if guest tries to r=
-emap memory<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0other than default mapping.<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0Use of CONFIG_MSF2 in Makefile for soc.c<=
-br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0Fixed incorrect logic in timer model.<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0Renamed msf2-timer.c -&gt; mss-timer.c<br=
->
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0msf2-spi.c -&=
-gt; mss-spi.c also type names<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0Renamed function msf2_init-&gt;emcraft_sf=
-2_init in msf2-som.c<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0Added part-name,eNVM-size,eSRAM-size<wbr>=
-,pclk0 and pclk1<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0properties to soc.<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0Pass soc part-name,memory size and clock =
-rate properties from som.<br>
-v4:<br>
-=C2=A0 =C2=A0 =C2=A0Fixed build failure by using PRIx macros.<br>
-v3:<br>
-=C2=A0 =C2=A0 =C2=A0Added SoC file and board file as per Alistair comments.=
-<br>
-v2:<br>
-=C2=A0 =C2=A0 =C2=A0Added SPI controller so that u-boot loads kernel from s=
-pi flash.<br>
-v1:<br>
-=C2=A0 =C2=A0 =C2=A0Initial patch set with timer and sysreg<br>
-<br>
-Thanks,<br>
-Sundeep<br>
-<br>
-<br>
-Subbaraya Sundeep (5):<br>
-=C2=A0 =C2=A0msf2: Add Smartfusion2 System timer<br>
-=C2=A0 =C2=A0msf2: Microsemi Smartfusion2 System Register block<br>
-=C2=A0 =C2=A0msf2: Add Smartfusion2 SPI controller<br>
-=C2=A0 =C2=A0msf2: Add Smartfusion2 SoC<br>
-=C2=A0 =C2=A0msf2: Add Emcraft&#39;s Smartfusion2 SOM kit<br>
-<br>
-=C2=A0 default-configs/<a href=3D"http://arm-softmmu.ma">arm-softmmu.ma</a>=
-<wbr>k |=C2=A0 =C2=A01 +<br>
-=C2=A0 hw/arm/Makefile.objs=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 |=C2=
-=A0 =C2=A01 +<br>
-=C2=A0 hw/arm/msf2-soc.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0| 218 ++++++++++++++++++++++<br>
-=C2=A0 hw/arm/msf2-som.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0|=C2=A0 95 ++++++++++<br>
-=C2=A0 hw/misc/Makefile.objs=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0|=C2=
-=A0 =C2=A01 +<br>
-=C2=A0 hw/misc/msf2-sysreg.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0| 195 =
-+++++++++++++++++++<br>
-=C2=A0 hw/ssi/Makefile.objs=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 |=C2=
-=A0 =C2=A01 +<br>
-=C2=A0 hw/ssi/mss-spi.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 | 404 ++++++++++++++++++++++++++++++<wbr>++++++++++<br>
-=C2=A0 hw/timer/Makefile.objs=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 |=C2=A0 =C2=
-=A01 +<br>
-=C2=A0 hw/timer/mss-timer.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 | 289 =
-++++++++++++++++++++++++++++<br>
-=C2=A0 include/hw/arm/msf2-soc.h=C2=A0 =C2=A0 =C2=A0 =C2=A0|=C2=A0 66 +++++=
-++<br>
-=C2=A0 include/hw/misc/msf2-sysreg.h=C2=A0 =C2=A0|=C2=A0 78 ++++++++<br>
-=C2=A0 include/hw/ssi/mss-spi.h=C2=A0 =C2=A0 =C2=A0 =C2=A0 |=C2=A0 58 +++++=
-+<br>
-=C2=A0 include/hw/timer/mss-timer.h=C2=A0 =C2=A0 |=C2=A0 64 +++++++<br>
-=C2=A0 14 files changed, 1472 insertions(+)<br>
-=C2=A0 create mode 100644 hw/arm/msf2-soc.c<br>
-=C2=A0 create mode 100644 hw/arm/msf2-som.c<br>
-=C2=A0 create mode 100644 hw/misc/msf2-sysreg.c<br>
-=C2=A0 create mode 100644 hw/ssi/mss-spi.c<br>
-=C2=A0 create mode 100644 hw/timer/mss-timer.c<br>
-=C2=A0 create mode 100644 include/hw/arm/msf2-soc.h<br>
-=C2=A0 create mode 100644 include/hw/misc/msf2-sysreg.h<br>
-=C2=A0 create mode 100644 include/hw/ssi/mss-spi.h<br>
-=C2=A0 create mode 100644 include/hw/timer/mss-timer.h<br>
-<br>
-</blockquote>
-</div></div></blockquote></div><br></div></div>
-
---001a1143a0bcb6d7f00558a87772--

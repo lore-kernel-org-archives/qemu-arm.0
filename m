@@ -1,130 +1,167 @@
-Received: by 10.223.159.82 with SMTP id f18csp390125wrg;
-        Thu, 30 Nov 2017 00:53:31 -0800 (PST)
-X-Google-Smtp-Source: AGs4zMap6aS5GQiPCFt4dYs0v5z6cWKRRLhmS6BksamdZYBFPKLaUWizkfeUbnvs77tbneay0q47
-X-Received: by 10.129.193.65 with SMTP id e1mr945727ywl.371.1512032011145;
-        Thu, 30 Nov 2017 00:53:31 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1512032011; cv=none;
+Received: by 10.223.172.38 with SMTP id v35csp1911105wrc;
+        Fri, 8 Sep 2017 10:33:44 -0700 (PDT)
+X-Received: by 10.55.155.6 with SMTP id d6mr1157842qke.55.1504892024532;
+        Fri, 08 Sep 2017 10:33:44 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1504892024; cv=none;
         d=google.com; s=arc-20160816;
-        b=RjdrwTPSmXPBTQ1OGEM9BOmsFqsCKcK1zEqd9R987HpOZTCAKBgr4auNkyOstzdm0m
-         n8KfzZ6WRgtlS5C1BSe/o2tRUW2KXo7PQTDgSDmYNCOQq+RWcpKU4QRuQLnuBJQX6vOd
-         sZTJYEFz9uHu0Kl0Ki8fJZhOT6ql43l1wKAL2x/AdwnWvOTCmBEBYpUwPrQmVyA9iOMl
-         m7tAzDh7dW8u8VoHdXedvPgfjQMF0CIxllcfZ+U7Qfo5rfES9uGnYgGy1kmak0Z9Qgmc
-         EsJKgiJf4mkOhGsndX0aDHqt/9PUXfqBL4+Q1MSBXXdBImIGPcUVI3TPiCMivgT3656m
-         Unjw==
+        b=h9sJatEFwyo0lY2tCvBBwrkJsR1rOjYRuUCKS4c8xT3NAiSzhgVTWoGw8knw/ZizOT
+         OKhZ8GVNlmtsjT8BgxIX9QuIzyR7PCtYD/yPdjw+zXQ0BPHu0UYnbo9ARb5U/gJOriN0
+         R43+dnXvkvmqMdqIHeHJwTb/6qwQdm7RBWLoWBiLBP7sJeHp9Ql2tuer0hukPd8+wvaV
+         RekbqqUtNhloQ/PdKGAXAHdYSAXXPs7R0L5yMhynM8x/zx56BKGb+ewudwsPKLUJKtD3
+         Q97xQYsaEWRZU3qKyqIY3m+98O9iWGjfTLXuYCEjBiDlleLj9aEbUHoIWflXMPY3EJr9
+         Gytw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
-         :message-id:date:to:from:arc-authentication-results;
-        bh=hCCle3YUfpCzvi9bPn+euN/+PjJ+ZnRyc1RIRWNhq1o=;
-        b=cVGo6K8IY+LOfP1PX8i1l1m89FOuuL2jTuCR4S4XaSe8n/y7GqGrbRVlkRz4V8QGBj
-         +7eGRK1cqQZ85pzKRc3oDaKIYiiSsfpUX6U3qw5fJQywlUaNMVf3zeidnRDzVxQtvIqQ
-         dvjYdkeX7f5UG0vjO5ThOurN0wFovdJ2S3KczY35PZ3Uz5d2gEPE8XgQUwFyxX8/1B14
-         5IDSZ75MyAmp3oQO7okKZCieVwN+rPX+O8XzFDlKKD57OcCZglrrkBRe3/qcA5TlpkYk
-         OSx+4YLkkHiX79JkQMCKEF59HrbkgC67d0sfXyep3tXby5H9Ks0pK0ZciGrFlEoyhJLv
-         1D8Q==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:to:from:dkim-signature:arc-authentication-results;
+        bh=WQfU7A5lU/yJT+aaarfC0QUkD/YRvh20owQ164qo1Mw=;
+        b=q8rHV01lyLKbVkEmNQGea30xqmVeWXZyJ/HIx6qF2//RC5bVR79FyXKNmIxN5P+TLv
+         ACQodU5lDWdRyOhw7qPys/OerFLWYeNd5mwc13YmE7Dg0XCz10lqZ9D11ugpJTNkikds
+         2tndexyuEupcIBYBYduBQX/DiUNDNTYz23KN5gj754Ikt4QowrVi2xV3od+n6kgU7lJV
+         Va+LoNUiHoJwgUkadjmpLjFB2+Jbiiy0taGxaNdAxdT0TjOjCc1JyUN3sseNNSc6Ko8E
+         6Fa9zM1Wv0QK1QElH1466RyLvdDvlivYuwEmpQVYzDUfsrAihIq2ZK55O5pit7Wu01Wr
+         xrkQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=O6W+F6ii;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id e191si713259ybh.466.2017.11.30.00.53.30
+        by mx.google.com with ESMTPS id g62si1403463qtd.225.2017.09.08.10.33.44
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 30 Nov 2017 00:53:31 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Fri, 08 Sep 2017 10:33:44 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:46852 helo=lists.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=O6W+F6ii;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:46631 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1eKKb4-0005Am-IA
-	for alex.bennee@linaro.org; Thu, 30 Nov 2017 03:53:30 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:48929)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1dqN9y-0003v7-Cj
+	for alex.bennee@linaro.org; Fri, 08 Sep 2017 13:33:42 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:36247)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1eKKar-0005A2-DS
-	for qemu-arm@nongnu.org; Thu, 30 Nov 2017 03:53:18 -0500
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1dqN8M-0002j2-Oi
+	for qemu-devel@nongnu.org; Fri, 08 Sep 2017 13:32:03 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1eKKap-0006de-UD
-	for qemu-arm@nongnu.org; Thu, 30 Nov 2017 03:53:17 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:60156)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <thuth@redhat.com>)
-	id 1eKKap-0006dE-Ni; Thu, 30 Nov 2017 03:53:15 -0500
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
-	[10.5.11.15])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id BAABFC04AC41;
-	Thu, 30 Nov 2017 08:53:14 +0000 (UTC)
-Received: from thh440s.redhat.com (ovpn-116-158.ams2.redhat.com
-	[10.36.116.158])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id D239E5D6A5;
-	Thu, 30 Nov 2017 08:53:11 +0000 (UTC)
-From: Thomas Huth <thuth@redhat.com>
-To: qemu-devel@nongnu.org
-Date: Thu, 30 Nov 2017 09:53:02 +0100
-Message-Id: <1512031988-32490-2-git-send-email-thuth@redhat.com>
-In-Reply-To: <1512031988-32490-1-git-send-email-thuth@redhat.com>
-References: <1512031988-32490-1-git-send-email-thuth@redhat.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.31]);
-	Thu, 30 Nov 2017 08:53:14 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: [Qemu-arm] [PATCH for-2.12 1/7] tests/boot-serial-test: Make sure
- that we check the timeout regularly
-X-BeenThere: qemu-arm@nongnu.org
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1dqN8L-0004Jd-Vf
+	for qemu-devel@nongnu.org; Fri, 08 Sep 2017 13:32:02 -0400
+Received: from mail-qk0-x242.google.com ([2607:f8b0:400d:c09::242]:34866)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1dqN8J-0004II-Eo; Fri, 08 Sep 2017 13:31:59 -0400
+Received: by mail-qk0-x242.google.com with SMTP id o77so1907849qke.2;
+	Fri, 08 Sep 2017 10:31:59 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
+	:mime-version:content-transfer-encoding;
+	bh=WQfU7A5lU/yJT+aaarfC0QUkD/YRvh20owQ164qo1Mw=;
+	b=O6W+F6iivsG1h2+20+fGLVwa+GnaLQsqFnH5CblcZDSB/HEo3NNrsZovLDxnv1KTae
+	YIIAwZ8oEVknju6wEbiGtoUqETZyPSKEphcTYohyReZmFdDFav0xiV3p9aJ66BYdF7VA
+	WrP3svHxZ8rehuQacYZwPRr4Pn6JTeXMu3fuOJpxIaQWZ1TZCsOmd2l6I0hl0Mogr0ff
+	YF8jEztDkjkduH5seqPblP9Mdi80zwZh8tlGaLEMf995v4Z3WxR27VPKRKiL5SqQ9T3x
+	tweugGG5XdlOWoo64qFfxMmTxgJ5gJZd/x0XkGbt3JQLlHSu0Mtu4UyUiIjsRAGHmgDZ
+	i70A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
+	:in-reply-to:references:mime-version:content-transfer-encoding;
+	bh=WQfU7A5lU/yJT+aaarfC0QUkD/YRvh20owQ164qo1Mw=;
+	b=KbFatDXraVqnDBz2fUQ4TQdpgc8IVJ4/af4XFOTfqGSGcANaCYL9R0aXzfOE44RU6M
+	4/LEoou5gIx30eBVll1mPM8MW1NLazzZKNBCRu6Kr77vuj9+U/RF/+CdMxHIdS6GWHsh
+	J20BxluVOqGcuxHk8+W1Tcd6GvlPEa3Tf2NngEIVR8Mvl4bpOAMx++JgrqDrRctEQYeL
+	mXkqRq1Z3gUPnB8TxRlKxWUv2c8e1CwAc/BJbNiO5OLBLTLnZ7/sC8wzoZUwj+cdMJXN
+	Y+/1YLqQ/+AWk4CzEdy9RRog8nd6yaRdIRHKblCC9iEsNNT6dmhTqVzIQ6SK+fTzDaxC
+	LUxQ==
+X-Gm-Message-State: AHPjjUjj8GKGomWfc29Ivu0XwPdbV4bkD50YQfe3+sxrtd4LYN8u86Yh
+	l8wtfr6+lM3nc8zwnf5Q6g==
+X-Google-Smtp-Source: AOwi7QDMqq7c6a/oGFTgJWsbiPWU1kaglmIDyHbZ1oyyoZlE8o/AbuWexFbywEf/WsU/Kgvb0c1jcg==
+X-Received: by 10.55.81.134 with SMTP id f128mr1989855qkb.107.1504891918628;
+	Fri, 08 Sep 2017 10:31:58 -0700 (PDT)
+Received: from yoga.offpageads.com ([181.93.89.178])
+	by smtp.gmail.com with ESMTPSA id 13sm1671505qtp.74.2017.09.08.10.31.56
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Fri, 08 Sep 2017 10:31:58 -0700 (PDT)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+To: qemu-trivial@nongnu.org,
+	Peter Maydell <peter.maydell@linaro.org>
+Date: Fri,  8 Sep 2017 14:31:32 -0300
+Message-Id: <20170908173146.6446-2-f4bug@amsat.org>
+X-Mailer: git-send-email 2.14.1
+In-Reply-To: <20170908173146.6446-1-f4bug@amsat.org>
+References: <20170908173146.6446-1-f4bug@amsat.org>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:400d:c09::242
+Subject: [Qemu-devel] [PATCH v3 01/15] MAINTAINERS: add missing ARM entries
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Anthony Green <green@moxielogic.com>, Laurent Vivier <laurent@vivier.eu>,
-	qemu-arm@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
-	Richard Henderson <rth@twiddle.net>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: a2la9+jT1LHB
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Thomas Huth <thuth@redhat.com>, qemu-arm@nongnu.org,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+	qemu-devel@nongnu.org
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: ONPmbnBMypYG
 
-If the guest continuesly writes characters to the UART, we never leave
-the inner while loop and thus never check whether we've reached the
-timeout value. So if we fail to find the expected string in the UART
-output, the test just hangs and never finishs. Use a counter to regularly
-break out of the while loop to check the timeout.
-
-Signed-off-by: Thomas Huth <thuth@redhat.com>
+Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+Reviewed-by: Thomas Huth <thuth@redhat.com>
 ---
- tests/boot-serial-test.c | 5 +++--
- 1 file changed, 3 insertions(+), 2 deletions(-)
+ MAINTAINERS | 8 ++++++--
+ 1 file changed, 6 insertions(+), 2 deletions(-)
 
-diff --git a/tests/boot-serial-test.c b/tests/boot-serial-test.c
-index c935d69..fa4183d 100644
---- a/tests/boot-serial-test.c
-+++ b/tests/boot-serial-test.c
-@@ -43,12 +43,13 @@ static testdef_t tests[] = {
- static void check_guest_output(const testdef_t *test, int fd)
- {
-     bool output_ok = false;
--    int i, nbr, pos = 0;
-+    int i, nbr, pos = 0, ccnt;
-     char ch;
+diff --git a/MAINTAINERS b/MAINTAINERS
+index 36eeb42d19..35c8c9c752 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -380,6 +380,7 @@ M: Peter Maydell <peter.maydell@linaro.org>
+ L: qemu-arm@nongnu.org
+ S: Maintained
+ F: hw/char/pl011.c
++F: include/hw/char/pl011.h
+ F: hw/display/pl110*
+ F: hw/dma/pl080.c
+ F: hw/dma/pl330.c
+@@ -403,13 +404,15 @@ F: hw/intc/gic_internal.h
+ F: hw/misc/a9scu.c
+ F: hw/misc/arm11scu.c
+ F: hw/timer/a9gtimer*
+-F: hw/timer/arm_*
+-F: include/hw/arm/arm.h
++F: hw/timer/arm*
++F: include/hw/arm/arm*.h
+ F: include/hw/intc/arm*
+ F: include/hw/misc/a9scu.h
+ F: include/hw/misc/arm11scu.h
+ F: include/hw/timer/a9gtimer.h
+ F: include/hw/timer/arm_mptimer.h
++F: include/hw/timer/armv7m_systick.h
++F: tests/test-arm-mptimer.c
  
-     /* Poll serial output... Wait at most 60 seconds */
-     for (i = 0; i < 6000; ++i) {
--        while ((nbr = read(fd, &ch, 1)) == 1) {
-+        ccnt = 0;
-+        while ((nbr = read(fd, &ch, 1)) == 1 && ccnt++ < 512) {
-             if (ch == test->expect[pos]) {
-                 pos += 1;
-                 if (test->expect[pos] == '\0') {
+ Exynos
+ M: Igor Mitsyanko <i.mitsyanko@gmail.com>
+@@ -512,6 +515,7 @@ M: Peter Maydell <peter.maydell@linaro.org>
+ L: qemu-arm@nongnu.org
+ S: Maintained
+ F: hw/*/versatile*
++F: hw/misc/arm_sysctl.c
+ 
+ Xilinx Zynq
+ M: Edgar E. Iglesias <edgar.iglesias@gmail.com>
 -- 
-1.8.3.1
+2.14.1
 

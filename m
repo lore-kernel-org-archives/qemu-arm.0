@@ -1,222 +1,788 @@
-Received: by 10.223.183.22 with SMTP id l22csp80740wre;
-        Thu, 17 Aug 2017 16:01:17 -0700 (PDT)
-X-Received: by 10.98.43.213 with SMTP id r204mr6928135pfr.0.1503010877068;
-        Thu, 17 Aug 2017 16:01:17 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1503010877; cv=none;
-        d=google.com; s=arc-20160816;
-        b=Ufqda0TDJHHj97bSx6YtktQZi8wf0c7i00jx4fZ3lQ7xlrHVUfyRFYabobpjYjR1dq
-         ncnJzMvMRncAa1sgOOMOiOyew6JeRrbtRJRyThQpePC/Z/+BewAbbWoHI1nvS2crF3Z1
-         O5OKkVPpnzD0MYai6zWzf6uGORZ8/CpnM+Q7sxLpP4x2Grtvllw4/moyv0iVmDPF49eu
-         29bv8VyqTPl2qJwcFyvIhkSsh5aZIaAyM1PfucjoreaKMwpoj2KJSdcuVeRtXkSCH8n4
-         zRCL2BcMkTqyEPJ/24NbpKRpgsZzIZo+ZCl6d4LOBXfjbDCTIVEUQc/pkPKKFfQdi2Qp
-         83Yw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature
-         :arc-authentication-results;
-        bh=DJYRuRbwce5SiWkd5QvRqkLl3XKR5Il/AuG5f8zsnfw=;
-        b=RojWg0vH4hBR6uiW6cLanFIuIetwssJHh0oOfN56C/sM6m9LTTI0aSkz1oIuIYkre/
-         zKKE4edezHBUc1WkWyFCuf8EaYOiBmStT56LPO+dNGlzf+cqoINM+L1SFLDAm3O864W3
-         bS+le8f443xHNJ47i1K3E4Et3qaUzuXnhL32GB33U2Klbikgt73Q86mqHapKJU7wmSHh
-         5JUEWc9J5K89BVvURqb7p9PEE9zv0rhCcS67QHy+w8Pk46c8tLDpE4AznY8NYn7rvi9J
-         ZhEj52TY5Q6jnMpIjlgYgIPPjCfnDDAf3zgYmIOXeIKPvRUWrRVGa34r9Gm1cAwStTRx
-         AeoQ==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=f8t814X/;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 2607:f8b0:400e:c05::22b as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <richard.henderson@linaro.org>
-Received: from mail-pg0-x22b.google.com (mail-pg0-x22b.google.com. [2607:f8b0:400e:c05::22b])
-        by mx.google.com with ESMTPS id b2si2692020pfl.588.2017.08.17.16.01.16
-        for <alex.bennee@linaro.org>
+Return-Path: <alex.bennee@linaro.org>
+Received: from zen.linaro.local ([81.128.185.34])
+        by smtp.gmail.com with ESMTPSA id o21sm916571wrf.31.2017.09.08.03.13.55
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 17 Aug 2017 16:01:16 -0700 (PDT)
-Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 2607:f8b0:400e:c05::22b as permitted sender) client-ip=2607:f8b0:400e:c05::22b;
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=f8t814X/;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 2607:f8b0:400e:c05::22b as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: by mail-pg0-x22b.google.com with SMTP id i12so51985589pgr.3
-        for <alex.bennee@linaro.org>; Thu, 17 Aug 2017 16:01:16 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=from:to:cc:subject:date:message-id;
-        bh=DJYRuRbwce5SiWkd5QvRqkLl3XKR5Il/AuG5f8zsnfw=;
-        b=f8t814X/uGBzvocKjrIDMk32h1faVMNakUFQ1S3bW+0QGZcGB8kTF5g+zYTDk5M8uN
-         4eTH2ywRB0UviQ/w7fpBKyEHFd+9ML8MWeM3hSX3qNaP7fkW25WHp/u0hCXcLLVYOrVY
-         8L4cIBo+y2ZC6PgdTkCvpZuf8Css5iXn3ok+A=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=DJYRuRbwce5SiWkd5QvRqkLl3XKR5Il/AuG5f8zsnfw=;
-        b=M9dkqvl62YNJIsQoMjYtqpp26TJp+BPk3mpok0MXqjLEwAwlWUVXlf6xXfO22v1EkG
-         +RbvPO6fZkpIhbB6/D+EyUQwOhY/NxuVFmefUKx3GHAsNSNvPjR1MS/y2OkIFizmLEm5
-         oSA8l53inAeoGRL8/yjnkoOGCzKvjijmoeAi2JCI4oPbPYHku3etfk+hZq6kBbr8XJrk
-         Ja5JenxWA/+TqbWguZfCLtoo5Q1njJ7ev9Tdj8CbwmdOx55N65M8tLwz5jdPMp5M5KeS
-         x+icxkao22Po3teLIJJfMI/913n9v8sUozsDmyyW+0YS2bYJaSmfL+0Dv2fcQl4aJyHD
-         eF+Q==
-X-Gm-Message-State: AHYfb5hOxUMi8yxF6vrJN/WW1VXJk/31RA1Rntr98Zzb0mHdiM4wk0FN
-	AICaQ9a2uoCatDnzJYY=
-X-Received: by 10.99.123.80 with SMTP id k16mr4481213pgn.434.1503010876394;
-        Thu, 17 Aug 2017 16:01:16 -0700 (PDT)
-Return-Path: <richard.henderson@linaro.org>
-Received: from bigtime.twiddle.net (97-126-108-236.tukw.qwest.net. [97.126.108.236])
-        by smtp.gmail.com with ESMTPSA id c23sm5190043pfc.136.2017.08.17.16.01.15
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 17 Aug 2017 16:01:15 -0700 (PDT)
-From: Richard Henderson <richard.henderson@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org,
-	alex.bennee@linaro.org
-Subject: [PATCH 0/8] TCG vectorization and example conversion
-Date: Thu, 17 Aug 2017 16:01:06 -0700
-Message-Id: <20170817230114.3655-1-richard.henderson@linaro.org>
-X-Mailer: git-send-email 2.13.5
-X-TUID: FDHkp4C3oJix
-
-When Alex and I started talking about this topic, this is the direction
-I was thinking.  The primary difference from Alex's version is that the
-interface on the target/cpu/ side uses offsets and not a faux temp.  The
-secondary difference is that, for smaller vector sizes at least, I will
-expand to inline host vector operations.  The use of explicit offsets
-aids that.
-
-There are a number of things that are missing in the host vector support,
-including register spill/fill.  But in this example conversion we will
-never have more than 2 vector registers live at any point, and so we do
-not run across those issues.
-
-Some of this infrastructure cannot be exercised with existing front-ends.
-It will require support for ARM SVE to be written to get there.
-Or to add support for AVX2/AVX512 within target/i386.  ;-)
-
-Unfortunately, the built-in disassembler is too old to handle AVX.
-So for testing purposes I disabled the built-in disas so that I could
-run the output assembly through an external objdump.
-
-For a trivial test case via aarch64-linux-user:
-
-IN: 
-0x0000000000400078:  4e208400      add v0.16b, v0.16b, v0.16b
-0x000000000040007c:  4e648462      add v2.8h, v3.8h, v4.8h
-0x0000000000400080:  4ea48462      add v2.4s, v3.4s, v4.4s
-0x0000000000400084:  4ee48462      add v2.2d, v3.2d, v4.2d
-0x0000000000400088:  0ea28462      add v2.2s, v3.2s, v2.2s
-0x000000000040008c:  00000000      unallocated (Unallocated)
-
-OP after optimization and liveness analysis:
- ld_i32 tmp0,env,$0xffffffffffffffec              dead: 1
- movi_i32 tmp1,$0x0
- brcond_i32 tmp0,tmp1,lt,$L0                      dead: 0 1
-
- ---- 0000000000400078 0000000000000000 0000000000000000
- ld_v128 tmp2,env,$0x850
- add8_v128 tmp2,tmp2,tmp2                         dead: 1 2
- st_v128 tmp2,env,$0x850                          dead: 0
-
- ---- 000000000040007c 0000000000000000 0000000000000000
- ld_v128 tmp2,env,$0x880
- ld_v128 tmp3,env,$0x890
- add16_v128 tmp2,tmp2,tmp3                        dead: 1 2
- st_v128 tmp2,env,$0x870                          dead: 0
-
- ---- 0000000000400080 0000000000000000 0000000000000000
- ld_v128 tmp2,env,$0x880
- ld_v128 tmp3,env,$0x890
- add32_v128 tmp2,tmp2,tmp3                        dead: 1 2
- st_v128 tmp2,env,$0x870                          dead: 0
-
- ---- 0000000000400084 0000000000000000 0000000000000000
- ld_v128 tmp2,env,$0x880
- ld_v128 tmp3,env,$0x890
- add64_v128 tmp2,tmp2,tmp3                        dead: 1 2
- st_v128 tmp2,env,$0x870                          dead: 0
-
- ---- 0000000000400088 0000000000000000 0000000000000000
- ld_v64 tmp4,env,$0x880
- ld_v64 tmp5,env,$0x870
- add32_v64 tmp4,tmp4,tmp5                         dead: 1 2
- st_v64 tmp4,env,$0x870                           dead: 0
- movi_i64 tmp6,$0x0
- st_i64 tmp6,env,$0x878                           dead: 0
-
- ---- 000000000040008c 0000000000000000 0000000000000000
- movi_i64 pc,$0x40008c                            sync: 0  dead: 0
- movi_i32 tmp0,$0x1
- movi_i32 tmp1,$0x2000000
- movi_i32 tmp7,$0x1
- call exception_with_syndrome,$0x0,$0,env,tmp0,tmp1,tmp7  dead: 0 1 2 3
- set_label $L0
- exit_tb $0x521c86683
-
-OUT: [size=220]
-   521c86740:	41 8b 6e ec          		mov    -0x14(%r14),%ebp
-   521c86744:	85 ed                		test   %ebp,%ebp
-   521c86746:	0f 8c c4 00 00 00    		jl     0x521c86810
-   521c8674c:	c4 c1 7a 6f 86 50 08 00 00 	vmovdqu 0x850(%r14),%xmm0
-   521c86755:	c4 e1 79 fc c0       		vpaddb %xmm0,%xmm0,%xmm0
-   521c8675a:	c4 c1 7a 7f 86 50 08 00 00	vmovdqu %xmm0,0x850(%r14)
-   521c86763:	c4 c1 7a 6f 86 80 08 00 00 	vmovdqu 0x880(%r14),%xmm0
-   521c8676c:	c4 c1 7a 6f 8e 90 08 00 00 	vmovdqu 0x890(%r14),%xmm1
-   521c86775:	c4 e1 79 fd c1       		vpaddw %xmm1,%xmm0,%xmm0
-   521c8677a:	c4 c1 7a 7f 86 70 08 00 00 	vmovdqu %xmm0,0x870(%r14)
-   521c86783:	c4 c1 7a 6f 86 80 08 00 00 	vmovdqu 0x880(%r14),%xmm0
-   521c8678c:	c4 c1 7a 6f 8e 90 08 00 00 	vmovdqu 0x890(%r14),%xmm1
-   521c86795:	c4 e1 79 fe c1       		vpaddd %xmm1,%xmm0,%xmm0
-   521c8679a:	c4 c1 7a 7f 86 70 08 00 00 	vmovdqu %xmm0,0x870(%r14)
-   521c867a3:	c4 c1 7a 6f 86 80 08 00 00 	vmovdqu 0x880(%r14),%xmm0
-   521c867ac:	c4 c1 7a 6f 8e 90 08 00 00 	vmovdqu 0x890(%r14),%xmm1
-   521c867b5:	c4 e1 79 d4 c1       		vpaddq %xmm1,%xmm0,%xmm0
-   521c867ba:	c4 c1 7a 7f 86 70 08 00 00 	vmovdqu %xmm0,0x870(%r14)
-   521c867c3:	c4 c1 7a 7e 86 80 08 00 00 	vmovq  0x880(%r14),%xmm0
-   521c867cc:	c4 c1 7a 7e 8e 70 08 00 00 	vmovq  0x870(%r14),%xmm1
-   521c867d5:	c4 e1 79 fe c1       		vpaddd %xmm1,%xmm0,%xmm0
-   521c867da:	c4 c1 79 d6 86 70 08 00 00 	vmovq  %xmm0,0x870(%r14)
-   521c867e3:	49 c7 86 78 08 00 00 		movq   $0x0,0x878(%r14)
-   521c867ea:	00 00 00 00 
-   521c867ee:	49 c7 86 40 01 00 00 		movq   $0x40008c,0x140(%r14)
-   521c867f5:	8c 00 40 00 
-   521c867f9:	49 8b fe             		mov    %r14,%rdi
-   521c867fc:	be 01 00 00 00       		mov    $0x1,%esi
-   521c86801:	ba 00 00 00 02       		mov    $0x2000000,%edx
-   521c86806:	b9 01 00 00 00       		mov    $0x1,%ecx
-   521c8680b:	e8 90 40 c9 ff       		callq  0x52191a8a0
-   521c86810:	48 8d 05 6c fe ff ff 		lea    -0x194(%rip),%rax
-   521c86817:	e9 3c fe ff ff       		jmpq   0x521c86658
-
-Because I already had some pending fixes to tcg/i386/ wrt VEX encoding,
-I've based this on an existing tree.  The compete tree can be found at
-
-    git://github.com/rth7680/qemu.git native-vector-registers-2
+        Fri, 08 Sep 2017 03:13:55 -0700 (PDT)
+Received: from zen (localhost [127.0.0.1])
+	by zen.linaro.local (Postfix) with ESMTPS id AFF943E00A6;
+	Fri,  8 Sep 2017 11:13:54 +0100 (BST)
+References: <20170817230114.3655-1-richard.henderson@linaro.org> <20170817230114.3655-9-richard.henderson@linaro.org>
+User-agent: mu4e 0.9.19; emacs 25.2.50.3
+From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: Richard Henderson <richard.henderson@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
+Subject: Re: [PATCH 8/8] tcg/i386: Add vector operations
+In-reply-to: <20170817230114.3655-9-richard.henderson@linaro.org>
+Date: Fri, 08 Sep 2017 11:13:54 +0100
+Message-ID: <87377xijkt.fsf@linaro.org>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-TUID: qKudNOmZ0yor
 
 
-r~
+Richard Henderson <richard.henderson@linaro.org> writes:
+
+> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+> ---
+>  tcg/i386/tcg-target.h     |  46 +++++-
+>  tcg/tcg-opc.h             |  12 +-
+>  tcg/i386/tcg-target.inc.c | 382 ++++++++++++++++++++++++++++++++++++++++++----
+>  3 files changed, 399 insertions(+), 41 deletions(-)
+>
+> diff --git a/tcg/i386/tcg-target.h b/tcg/i386/tcg-target.h
+> index e512648c95..147f82062b 100644
+> --- a/tcg/i386/tcg-target.h
+> +++ b/tcg/i386/tcg-target.h
+> @@ -30,11 +30,10 @@
+>
+>  #ifdef __x86_64__
+>  # define TCG_TARGET_REG_BITS  64
+> -# define TCG_TARGET_NB_REGS   16
+>  #else
+>  # define TCG_TARGET_REG_BITS  32
+> -# define TCG_TARGET_NB_REGS    8
+>  #endif
+> +# define TCG_TARGET_NB_REGS   24
+>
+>  typedef enum {
+>      TCG_REG_EAX = 0,
+> @@ -56,6 +55,19 @@ typedef enum {
+>      TCG_REG_R13,
+>      TCG_REG_R14,
+>      TCG_REG_R15,
+> +
+> +    /* SSE registers; 64-bit has access to 8 more, but we won't
+> +       need more than a few and using only the first 8 minimizes
+> +       the need for a rex prefix on the sse instructions.  */
+> +    TCG_REG_XMM0,
+> +    TCG_REG_XMM1,
+> +    TCG_REG_XMM2,
+> +    TCG_REG_XMM3,
+> +    TCG_REG_XMM4,
+> +    TCG_REG_XMM5,
+> +    TCG_REG_XMM6,
+> +    TCG_REG_XMM7,
+> +
+>      TCG_REG_RAX = TCG_REG_EAX,
+>      TCG_REG_RCX = TCG_REG_ECX,
+>      TCG_REG_RDX = TCG_REG_EDX,
+> @@ -79,6 +91,17 @@ extern bool have_bmi1;
+>  extern bool have_bmi2;
+>  extern bool have_popcnt;
+>
+> +#ifdef __SSE2__
+> +#define have_sse2  true
+> +#else
+> +extern bool have_sse2;
+> +#endif
+> +#ifdef __AVX2__
+> +#define have_avx2  true
+> +#else
+> +extern bool have_avx2;
+> +#endif
+> +
+>  /* optional instructions */
+>  #define TCG_TARGET_HAS_div2_i32         1
+>  #define TCG_TARGET_HAS_rot_i32          1
+> @@ -147,6 +170,25 @@ extern bool have_popcnt;
+>  #define TCG_TARGET_HAS_mulsh_i64        0
+>  #endif
+>
+> +#define TCG_TARGET_HAS_v64              have_sse2
+> +#define TCG_TARGET_HAS_v128             have_sse2
+> +#define TCG_TARGET_HAS_v256             have_avx2
+> +
+> +#define TCG_TARGET_HAS_andc_v64         TCG_TARGET_HAS_v64
+> +#define TCG_TARGET_HAS_orc_v64          0
+> +#define TCG_TARGET_HAS_not_v64          0
+> +#define TCG_TARGET_HAS_neg_v64          0
+> +
+> +#define TCG_TARGET_HAS_andc_v128        TCG_TARGET_HAS_v128
+> +#define TCG_TARGET_HAS_orc_v128         0
+> +#define TCG_TARGET_HAS_not_v128         0
+> +#define TCG_TARGET_HAS_neg_v128         0
+> +
+> +#define TCG_TARGET_HAS_andc_v256        TCG_TARGET_HAS_v256
+> +#define TCG_TARGET_HAS_orc_v256         0
+> +#define TCG_TARGET_HAS_not_v256         0
+> +#define TCG_TARGET_HAS_neg_v256         0
+> +
+>  #define TCG_TARGET_deposit_i32_valid(ofs, len) \
+>      (have_bmi2 ||                              \
+>       ((ofs) == 0 && (len) == 8) ||             \
+> diff --git a/tcg/tcg-opc.h b/tcg/tcg-opc.h
+> index b1445a4c24..b84cd584fb 100644
+> --- a/tcg/tcg-opc.h
+> +++ b/tcg/tcg-opc.h
+> @@ -212,13 +212,13 @@ DEF(qemu_st_i64, 0, TLADDR_ARGS + DATA64_ARGS, 1,
+>  /* Host integer vector operations.  */
+>  /* These opcodes are required whenever the base vector size is enabled.  */
+>
+> -DEF(mov_v64, 1, 1, 0, IMPL(TCG_TARGET_HAS_v64))
+> -DEF(mov_v128, 1, 1, 0, IMPL(TCG_TARGET_HAS_v128))
+> -DEF(mov_v256, 1, 1, 0, IMPL(TCG_TARGET_HAS_v256))
+> +DEF(mov_v64, 1, 1, 0, TCG_OPF_NOT_PRESENT)
+> +DEF(mov_v128, 1, 1, 0, TCG_OPF_NOT_PRESENT)
+> +DEF(mov_v256, 1, 1, 0, TCG_OPF_NOT_PRESENT)
+>
+> -DEF(movi_v64, 1, 0, 1, IMPL(TCG_TARGET_HAS_v64))
+> -DEF(movi_v128, 1, 0, 1, IMPL(TCG_TARGET_HAS_v128))
+> -DEF(movi_v256, 1, 0, 1, IMPL(TCG_TARGET_HAS_v256))
+> +DEF(movi_v64, 1, 0, 1, TCG_OPF_NOT_PRESENT)
+> +DEF(movi_v128, 1, 0, 1, TCG_OPF_NOT_PRESENT)
+> +DEF(movi_v256, 1, 0, 1, TCG_OPF_NOT_PRESENT)
+
+I don't follow, isn't the point of IMPL(TCG_TARGET_HAS_foo) to allow the
+definition when the backend adds #define TCG_TARGET_HAS_foo 1?
+
+>
+>  DEF(ld_v64, 1, 1, 1, IMPL(TCG_TARGET_HAS_v64))
+>  DEF(ld_v128, 1, 1, 1, IMPL(TCG_TARGET_HAS_v128))
+> diff --git a/tcg/i386/tcg-target.inc.c b/tcg/i386/tcg-target.inc.c
+> index aeefb72aa0..0e01b54aa0 100644
+> --- a/tcg/i386/tcg-target.inc.c
+> +++ b/tcg/i386/tcg-target.inc.c
+> @@ -31,7 +31,9 @@ static const char * const tcg_target_reg_names[TCG_TARGET_NB_REGS] = {
+>      "%r8",  "%r9",  "%r10", "%r11", "%r12", "%r13", "%r14", "%r15",
+>  #else
+>      "%eax", "%ecx", "%edx", "%ebx", "%esp", "%ebp", "%esi", "%edi",
+> +    NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
+>  #endif
+> +    "%xmm0", "%xmm1", "%xmm2", "%xmm3", "%xmm4", "%xmm5", "%xmm6", "%xmm7",
+>  };
+>  #endif
+>
+> @@ -61,6 +63,14 @@ static const int tcg_target_reg_alloc_order[] = {
+>      TCG_REG_EDX,
+>      TCG_REG_EAX,
+>  #endif
+> +    TCG_REG_XMM0,
+> +    TCG_REG_XMM1,
+> +    TCG_REG_XMM2,
+> +    TCG_REG_XMM3,
+> +    TCG_REG_XMM4,
+> +    TCG_REG_XMM5,
+> +    TCG_REG_XMM6,
+> +    TCG_REG_XMM7,
+>  };
+>
+>  static const int tcg_target_call_iarg_regs[] = {
+> @@ -94,7 +104,7 @@ static const int tcg_target_call_oarg_regs[] = {
+>  #define TCG_CT_CONST_I32 0x400
+>  #define TCG_CT_CONST_WSZ 0x800
+>
+> -/* Registers used with L constraint, which are the first argument
+> +/* Registers used with L constraint, which are the first argument
+>     registers on x86_64, and two random call clobbered registers on
+>     i386. */
+>  #if TCG_TARGET_REG_BITS == 64
+> @@ -127,6 +137,16 @@ bool have_bmi1;
+>  bool have_bmi2;
+>  bool have_popcnt;
+>
+> +#ifndef have_sse2
+> +bool have_sse2;
+> +#endif
+> +#ifdef have_avx2
+> +#define have_avx1  have_avx2
+> +#else
+> +static bool have_avx1;
+> +bool have_avx2;
+> +#endif
+> +
+>  #ifdef CONFIG_CPUID_H
+>  static bool have_movbe;
+>  static bool have_lzcnt;
+> @@ -215,6 +235,10 @@ static const char *target_parse_constraint(TCGArgConstraint *ct,
+>          /* With TZCNT/LZCNT, we can have operand-size as an input.  */
+>          ct->ct |= TCG_CT_CONST_WSZ;
+>          break;
+> +    case 'x':
+> +        ct->ct |= TCG_CT_REG;
+> +        tcg_regset_set32(ct->u.regs, 0, 0xff0000);
+> +        break;
+
+The documentation on constraints in the README is fairly minimal and we
+keep adding target specific ones so perhaps a single line comment here
+for clarity?
+
+>
+>          /* qemu_ld/st address constraint */
+>      case 'L':
+> @@ -292,6 +316,7 @@ static inline int tcg_target_const_match(tcg_target_long val, TCGType type,
+>  #endif
+>  #define P_SIMDF3        0x20000         /* 0xf3 opcode prefix */
+>  #define P_SIMDF2        0x40000         /* 0xf2 opcode prefix */
+> +#define P_VEXL          0x80000         /* Set VEX.L = 1 */
+>
+>  #define OPC_ARITH_EvIz	(0x81)
+>  #define OPC_ARITH_EvIb	(0x83)
+> @@ -324,13 +349,31 @@ static inline int tcg_target_const_match(tcg_target_long val, TCGType type,
+>  #define OPC_MOVL_Iv     (0xb8)
+>  #define OPC_MOVBE_GyMy  (0xf0 | P_EXT38)
+>  #define OPC_MOVBE_MyGy  (0xf1 | P_EXT38)
+> +#define OPC_MOVDQA_GyMy (0x6f | P_EXT | P_DATA16)
+> +#define OPC_MOVDQA_MyGy (0x7f | P_EXT | P_DATA16)
+> +#define OPC_MOVDQU_GyMy (0x6f | P_EXT | P_SIMDF3)
+> +#define OPC_MOVDQU_MyGy (0x7f | P_EXT | P_SIMDF3)
+> +#define OPC_MOVQ_GyMy   (0x7e | P_EXT | P_SIMDF3)
+> +#define OPC_MOVQ_MyGy   (0xd6 | P_EXT | P_DATA16)
+>  #define OPC_MOVSBL	(0xbe | P_EXT)
+>  #define OPC_MOVSWL	(0xbf | P_EXT)
+>  #define OPC_MOVSLQ	(0x63 | P_REXW)
+>  #define OPC_MOVZBL	(0xb6 | P_EXT)
+>  #define OPC_MOVZWL	(0xb7 | P_EXT)
+> +#define OPC_PADDB       (0xfc | P_EXT | P_DATA16)
+> +#define OPC_PADDW       (0xfd | P_EXT | P_DATA16)
+> +#define OPC_PADDD       (0xfe | P_EXT | P_DATA16)
+> +#define OPC_PADDQ       (0xd4 | P_EXT | P_DATA16)
+> +#define OPC_PAND        (0xdb | P_EXT | P_DATA16)
+> +#define OPC_PANDN       (0xdf | P_EXT | P_DATA16)
+>  #define OPC_PDEP        (0xf5 | P_EXT38 | P_SIMDF2)
+>  #define OPC_PEXT        (0xf5 | P_EXT38 | P_SIMDF3)
+> +#define OPC_POR         (0xeb | P_EXT | P_DATA16)
+> +#define OPC_PSUBB       (0xf8 | P_EXT | P_DATA16)
+> +#define OPC_PSUBW       (0xf9 | P_EXT | P_DATA16)
+> +#define OPC_PSUBD       (0xfa | P_EXT | P_DATA16)
+> +#define OPC_PSUBQ       (0xfb | P_EXT | P_DATA16)
+> +#define OPC_PXOR        (0xef | P_EXT | P_DATA16)
+>  #define OPC_POP_r32	(0x58)
+>  #define OPC_POPCNT      (0xb8 | P_EXT | P_SIMDF3)
+>  #define OPC_PUSH_r32	(0x50)
+> @@ -500,7 +543,8 @@ static void tcg_out_modrm(TCGContext *s, int opc, int r, int rm)
+>      tcg_out8(s, 0xc0 | (LOWREGMASK(r) << 3) | LOWREGMASK(rm));
+>  }
+>
+> -static void tcg_out_vex_pfx_opc(TCGContext *s, int opc, int r, int v, int rm)
+> +static void tcg_out_vex_pfx_opc(TCGContext *s, int opc, int r, int v,
+> +                                int rm, int index)
+>  {
+>      int tmp;
+>
+> @@ -515,14 +559,16 @@ static void tcg_out_vex_pfx_opc(TCGContext *s, int opc, int r, int v, int rm)
+>      } else if (opc & P_EXT) {
+>          tmp = 1;
+>      } else {
+> -        tcg_abort();
+> +        g_assert_not_reached();
+>      }
+> -    tmp |= 0x40;                           /* VEX.X */
+>      tmp |= (r & 8 ? 0 : 0x80);             /* VEX.R */
+> +    tmp |= (index & 8 ? 0 : 0x40);         /* VEX.X */
+>      tmp |= (rm & 8 ? 0 : 0x20);            /* VEX.B */
+>      tcg_out8(s, tmp);
+>
+>      tmp = (opc & P_REXW ? 0x80 : 0);       /* VEX.W */
+> +    tmp |= (opc & P_VEXL ? 0x04 : 0);      /* VEX.L */
+> +
+>      /* VEX.pp */
+>      if (opc & P_DATA16) {
+>          tmp |= 1;                          /* 0x66 */
+> @@ -538,7 +584,7 @@ static void tcg_out_vex_pfx_opc(TCGContext *s, int opc, int r, int v, int rm)
+>
+>  static void tcg_out_vex_modrm(TCGContext *s, int opc, int r, int v, int rm)
+>  {
+> -    tcg_out_vex_pfx_opc(s, opc, r, v, rm);
+> +    tcg_out_vex_pfx_opc(s, opc, r, v, rm, 0);
+>      tcg_out8(s, 0xc0 | (LOWREGMASK(r) << 3) | LOWREGMASK(rm));
+>  }
+>
+> @@ -565,7 +611,7 @@ static void tcg_out_opc_pool_imm(TCGContext *s, int opc, int r,
+>  static void tcg_out_vex_pool_imm(TCGContext *s, int opc, int r, int v,
+>                                   tcg_target_ulong data)
+>  {
+> -    tcg_out_vex_pfx_opc(s, opc, r, v, 0);
+> +    tcg_out_vex_pfx_opc(s, opc, r, v, 0, 0);
+>      tcg_out_sfx_pool_imm(s, r, data);
+>  }
+>
+> @@ -574,8 +620,8 @@ static void tcg_out_vex_pool_imm(TCGContext *s, int opc, int r, int v,
+>     mode for absolute addresses, ~RM is the size of the immediate operand
+>     that will follow the instruction.  */
+>
+> -static void tcg_out_modrm_sib_offset(TCGContext *s, int opc, int r, int rm,
+> -                                     int index, int shift, intptr_t offset)
+> +static void tcg_out_sib_offset(TCGContext *s, int r, int rm, int index,
+> +                               int shift, intptr_t offset)
+>  {
+>      int mod, len;
+>
+> @@ -586,7 +632,6 @@ static void tcg_out_modrm_sib_offset(TCGContext *s, int opc, int r, int rm,
+>              intptr_t pc = (intptr_t)s->code_ptr + 5 + ~rm;
+>              intptr_t disp = offset - pc;
+>              if (disp == (int32_t)disp) {
+> -                tcg_out_opc(s, opc, r, 0, 0);
+>                  tcg_out8(s, (LOWREGMASK(r) << 3) | 5);
+>                  tcg_out32(s, disp);
+>                  return;
+> @@ -596,7 +641,6 @@ static void tcg_out_modrm_sib_offset(TCGContext *s, int opc, int r, int rm,
+>                 use of the MODRM+SIB encoding and is therefore larger than
+>                 rip-relative addressing.  */
+>              if (offset == (int32_t)offset) {
+> -                tcg_out_opc(s, opc, r, 0, 0);
+>                  tcg_out8(s, (LOWREGMASK(r) << 3) | 4);
+>                  tcg_out8(s, (4 << 3) | 5);
+>                  tcg_out32(s, offset);
+> @@ -604,10 +648,9 @@ static void tcg_out_modrm_sib_offset(TCGContext *s, int opc, int r, int rm,
+>              }
+>
+>              /* ??? The memory isn't directly addressable.  */
+> -            tcg_abort();
+> +            g_assert_not_reached();
+>          } else {
+>              /* Absolute address.  */
+> -            tcg_out_opc(s, opc, r, 0, 0);
+>              tcg_out8(s, (r << 3) | 5);
+>              tcg_out32(s, offset);
+>              return;
+> @@ -630,7 +673,6 @@ static void tcg_out_modrm_sib_offset(TCGContext *s, int opc, int r, int rm,
+>         that would be used for %esp is the escape to the two byte form.  */
+>      if (index < 0 && LOWREGMASK(rm) != TCG_REG_ESP) {
+>          /* Single byte MODRM format.  */
+> -        tcg_out_opc(s, opc, r, rm, 0);
+>          tcg_out8(s, mod | (LOWREGMASK(r) << 3) | LOWREGMASK(rm));
+>      } else {
+>          /* Two byte MODRM+SIB format.  */
+> @@ -644,7 +686,6 @@ static void tcg_out_modrm_sib_offset(TCGContext *s, int opc, int r, int rm,
+>              tcg_debug_assert(index != TCG_REG_ESP);
+>          }
+>
+> -        tcg_out_opc(s, opc, r, rm, index);
+>          tcg_out8(s, mod | (LOWREGMASK(r) << 3) | 4);
+>          tcg_out8(s, (shift << 6) | (LOWREGMASK(index) << 3) | LOWREGMASK(rm));
+>      }
+> @@ -656,6 +697,21 @@ static void tcg_out_modrm_sib_offset(TCGContext *s, int opc, int r, int rm,
+>      }
+>  }
+>
+> +static void tcg_out_modrm_sib_offset(TCGContext *s, int opc, int r, int rm,
+> +                                     int index, int shift, intptr_t offset)
+> +{
+> +    tcg_out_opc(s, opc, r, rm < 0 ? 0 : rm, index < 0 ? 0 : index);
+> +    tcg_out_sib_offset(s, r, rm, index, shift, offset);
+> +}
+> +
+> +static void tcg_out_vex_modrm_sib_offset(TCGContext *s, int opc, int r, int v,
+> +                                         int rm, int index, int shift,
+> +                                         intptr_t offset)
+> +{
+> +    tcg_out_vex_pfx_opc(s, opc, r, v, rm < 0 ? 0 : rm, index < 0 ? 0 : index);
+> +    tcg_out_sib_offset(s, r, rm, index, shift, offset);
+> +}
+> +
+>  /* A simplification of the above with no index or shift.  */
+>  static inline void tcg_out_modrm_offset(TCGContext *s, int opc, int r,
+>                                          int rm, intptr_t offset)
+> @@ -663,6 +719,31 @@ static inline void tcg_out_modrm_offset(TCGContext *s, int opc, int r,
+>      tcg_out_modrm_sib_offset(s, opc, r, rm, -1, 0, offset);
+>  }
+>
+> +static inline void tcg_out_vex_modrm_offset(TCGContext *s, int opc, int r,
+> +                                            int v, int rm, intptr_t offset)
+> +{
+> +    tcg_out_vex_modrm_sib_offset(s, opc, r, v, rm, -1, 0, offset);
+> +}
+> +
+> +static void tcg_out_maybe_vex_modrm(TCGContext *s, int opc, int r, int rm)
+> +{
+> +    if (have_avx1) {
+> +        tcg_out_vex_modrm(s, opc, r, 0, rm);
+> +    } else {
+> +        tcg_out_modrm(s, opc, r, rm);
+> +    }
+> +}
+> +
+> +static void tcg_out_maybe_vex_modrm_offset(TCGContext *s, int opc, int r,
+> +                                           int rm, intptr_t offset)
+> +{
+> +    if (have_avx1) {
+> +        tcg_out_vex_modrm_offset(s, opc, r, 0, rm, offset);
+> +    } else {
+> +        tcg_out_modrm_offset(s, opc, r, rm, offset);
+> +    }
+> +}
+> +
+>  /* Generate dest op= src.  Uses the same ARITH_* codes as tgen_arithi.  */
+>  static inline void tgen_arithr(TCGContext *s, int subop, int dest, int src)
+>  {
+> @@ -673,12 +754,32 @@ static inline void tgen_arithr(TCGContext *s, int subop, int dest, int src)
+>      tcg_out_modrm(s, OPC_ARITH_GvEv + (subop << 3) + ext, dest, src);
+>  }
+>
+> -static inline void tcg_out_mov(TCGContext *s, TCGType type,
+> -                               TCGReg ret, TCGReg arg)
+> +static void tcg_out_mov(TCGContext *s, TCGType type, TCGReg ret, TCGReg arg)
+>  {
+>      if (arg != ret) {
+> -        int opc = OPC_MOVL_GvEv + (type == TCG_TYPE_I64 ? P_REXW : 0);
+> -        tcg_out_modrm(s, opc, ret, arg);
+> +        int opc = 0;
+> +
+> +        switch (type) {
+> +        case TCG_TYPE_I64:
+> +            opc = P_REXW;
+> +            /* fallthru */
+> +        case TCG_TYPE_I32:
+> +            opc |= OPC_MOVL_GvEv;
+> +            tcg_out_modrm(s, opc, ret, arg);
+> +            break;
+> +
+> +        case TCG_TYPE_V256:
+> +            opc = P_VEXL;
+> +            /* fallthru */
+> +        case TCG_TYPE_V128:
+> +        case TCG_TYPE_V64:
+> +            opc |= OPC_MOVDQA_GyMy;
+> +            tcg_out_maybe_vex_modrm(s, opc, ret, arg);
+> +            break;
+> +
+> +        default:
+> +            g_assert_not_reached();
+> +        }
+>      }
+>  }
+>
+> @@ -687,6 +788,27 @@ static void tcg_out_movi(TCGContext *s, TCGType type,
+>  {
+>      tcg_target_long diff;
+>
+> +    switch (type) {
+> +    case TCG_TYPE_I32:
+> +    case TCG_TYPE_I64:
+> +        break;
+> +
+> +    case TCG_TYPE_V64:
+> +    case TCG_TYPE_V128:
+> +    case TCG_TYPE_V256:
+> +        /* ??? Revisit this as the implementation progresses.  */
+> +        tcg_debug_assert(arg == 0);
+> +        if (have_avx1) {
+> +            tcg_out_vex_modrm(s, OPC_PXOR, ret, ret, ret);
+> +        } else {
+> +            tcg_out_modrm(s, OPC_PXOR, ret, ret);
+> +        }
+> +        return;
+> +
+> +    default:
+> +        g_assert_not_reached();
+> +    }
+> +
+>      if (arg == 0) {
+>          tgen_arithr(s, ARITH_XOR, ret, ret);
+>          return;
+> @@ -750,18 +872,54 @@ static inline void tcg_out_pop(TCGContext *s, int reg)
+>      tcg_out_opc(s, OPC_POP_r32 + LOWREGMASK(reg), 0, reg, 0);
+>  }
+>
+> -static inline void tcg_out_ld(TCGContext *s, TCGType type, TCGReg ret,
+> -                              TCGReg arg1, intptr_t arg2)
+> +static void tcg_out_ld(TCGContext *s, TCGType type, TCGReg ret,
+> +                       TCGReg arg1, intptr_t arg2)
+>  {
+> -    int opc = OPC_MOVL_GvEv + (type == TCG_TYPE_I64 ? P_REXW : 0);
+> -    tcg_out_modrm_offset(s, opc, ret, arg1, arg2);
+> +    switch (type) {
+> +    case TCG_TYPE_I64:
+> +        tcg_out_modrm_offset(s, OPC_MOVL_GvEv | P_REXW, ret, arg1, arg2);
+> +        break;
+> +    case TCG_TYPE_I32:
+> +        tcg_out_modrm_offset(s, OPC_MOVL_GvEv, ret, arg1, arg2);
+> +        break;
+> +    case TCG_TYPE_V64:
+> +        tcg_out_maybe_vex_modrm_offset(s, OPC_MOVQ_GyMy, ret, arg1, arg2);
+> +        break;
+> +    case TCG_TYPE_V128:
+> +        tcg_out_maybe_vex_modrm_offset(s, OPC_MOVDQU_GyMy, ret, arg1, arg2);
+> +        break;
+> +    case TCG_TYPE_V256:
+> +        tcg_out_vex_modrm_offset(s, OPC_MOVDQU_GyMy | P_VEXL,
+> +                                 ret, 0, arg1, arg2);
+> +        break;
+> +    default:
+> +        g_assert_not_reached();
+> +    }
+>  }
+>
+> -static inline void tcg_out_st(TCGContext *s, TCGType type, TCGReg arg,
+> -                              TCGReg arg1, intptr_t arg2)
+> +static void tcg_out_st(TCGContext *s, TCGType type, TCGReg arg,
+> +                       TCGReg arg1, intptr_t arg2)
+>  {
+> -    int opc = OPC_MOVL_EvGv + (type == TCG_TYPE_I64 ? P_REXW : 0);
+> -    tcg_out_modrm_offset(s, opc, arg, arg1, arg2);
+> +    switch (type) {
+> +    case TCG_TYPE_I64:
+> +        tcg_out_modrm_offset(s, OPC_MOVL_EvGv | P_REXW, arg, arg1, arg2);
+> +        break;
+> +    case TCG_TYPE_I32:
+> +        tcg_out_modrm_offset(s, OPC_MOVL_EvGv, arg, arg1, arg2);
+> +        break;
+> +    case TCG_TYPE_V64:
+> +        tcg_out_maybe_vex_modrm_offset(s, OPC_MOVQ_MyGy, arg, arg1, arg2);
+> +        break;
+> +    case TCG_TYPE_V128:
+> +        tcg_out_maybe_vex_modrm_offset(s, OPC_MOVDQU_MyGy, arg, arg1, arg2);
+> +        break;
+> +    case TCG_TYPE_V256:
+> +        tcg_out_vex_modrm_offset(s, OPC_MOVDQU_MyGy | P_VEXL,
+> +                                 arg, 0, arg1, arg2);
+> +        break;
+> +    default:
+> +        g_assert_not_reached();
+> +    }
+>  }
+>
+>  static bool tcg_out_sti(TCGContext *s, TCGType type, TCGArg val,
+> @@ -773,6 +931,8 @@ static bool tcg_out_sti(TCGContext *s, TCGType type, TCGArg val,
+>              return false;
+>          }
+>          rexw = P_REXW;
+> +    } else if (type != TCG_TYPE_I32) {
+> +        return false;
+>      }
+>      tcg_out_modrm_offset(s, OPC_MOVL_EvIz | rexw, 0, base, ofs);
+>      tcg_out32(s, val);
+> @@ -1914,6 +2074,15 @@ static inline void tcg_out_op(TCGContext *s, TCGOpcode opc,
+>          case glue(glue(INDEX_op_, x), _i32)
+>  #endif
+>
+> +#define OP_128_256(x) \
+> +        case glue(glue(INDEX_op_, x), _v256): \
+> +            rexw = P_VEXL; /* FALLTHRU */     \
+> +        case glue(glue(INDEX_op_, x), _v128)
+> +
+> +#define OP_64_128_256(x) \
+> +        OP_128_256(x):   \
+> +        case glue(glue(INDEX_op_, x), _v64)
+> +
+>      /* Hoist the loads of the most common arguments.  */
+>      a0 = args[0];
+>      a1 = args[1];
+> @@ -2379,19 +2548,94 @@ static inline void tcg_out_op(TCGContext *s, TCGOpcode opc,
+>          }
+>          break;
+>
+> +    OP_64_128_256(add8):
+> +        c = OPC_PADDB;
+> +        goto gen_simd;
+> +    OP_64_128_256(add16):
+> +        c = OPC_PADDW;
+> +        goto gen_simd;
+> +    OP_64_128_256(add32):
+> +        c = OPC_PADDD;
+> +        goto gen_simd;
+> +    OP_128_256(add64):
+> +        c = OPC_PADDQ;
+> +        goto gen_simd;
+> +    OP_64_128_256(sub8):
+> +        c = OPC_PSUBB;
+> +        goto gen_simd;
+> +    OP_64_128_256(sub16):
+> +        c = OPC_PSUBW;
+> +        goto gen_simd;
+> +    OP_64_128_256(sub32):
+> +        c = OPC_PSUBD;
+> +        goto gen_simd;
+> +    OP_128_256(sub64):
+> +        c = OPC_PSUBQ;
+> +        goto gen_simd;
+> +    OP_64_128_256(and):
+> +        c = OPC_PAND;
+> +        goto gen_simd;
+> +    OP_64_128_256(andc):
+> +        c = OPC_PANDN;
+> +        goto gen_simd;
+> +    OP_64_128_256(or):
+> +        c = OPC_POR;
+> +        goto gen_simd;
+> +    OP_64_128_256(xor):
+> +        c = OPC_PXOR;
+> +    gen_simd:
+> +        if (have_avx1) {
+> +            tcg_out_vex_modrm(s, c, a0, a1, a2);
+> +        } else {
+> +            tcg_out_modrm(s, c, a0, a2);
+> +        }
+> +        break;
+> +
+> +    case INDEX_op_ld_v64:
+> +        c = TCG_TYPE_V64;
+> +        goto gen_simd_ld;
+> +    case INDEX_op_ld_v128:
+> +        c = TCG_TYPE_V128;
+> +        goto gen_simd_ld;
+> +    case INDEX_op_ld_v256:
+> +        c = TCG_TYPE_V256;
+> +    gen_simd_ld:
+> +        tcg_out_ld(s, c, a0, a1, a2);
+> +        break;
+> +
+> +    case INDEX_op_st_v64:
+> +        c = TCG_TYPE_V64;
+> +        goto gen_simd_st;
+> +    case INDEX_op_st_v128:
+> +        c = TCG_TYPE_V128;
+> +        goto gen_simd_st;
+> +    case INDEX_op_st_v256:
+> +        c = TCG_TYPE_V256;
+> +    gen_simd_st:
+> +        tcg_out_st(s, c, a0, a1, a2);
+> +        break;
+> +
+>      case INDEX_op_mb:
+>          tcg_out_mb(s, a0);
+>          break;
+>      case INDEX_op_mov_i32:  /* Always emitted via tcg_out_mov.  */
+>      case INDEX_op_mov_i64:
+> +    case INDEX_op_mov_v64:
+> +    case INDEX_op_mov_v128:
+> +    case INDEX_op_mov_v256:
+>      case INDEX_op_movi_i32: /* Always emitted via tcg_out_movi.  */
+>      case INDEX_op_movi_i64:
+> +    case INDEX_op_movi_v64:
+> +    case INDEX_op_movi_v128:
+> +    case INDEX_op_movi_v256:
+>      case INDEX_op_call:     /* Always emitted via tcg_out_call.  */
+>      default:
+>          tcg_abort();
+>      }
+>
+>  #undef OP_32_64
+> +#undef OP_128_256
+> +#undef OP_64_128_256
+>  }
+>
+>  static const TCGTargetOpDef *tcg_target_op_def(TCGOpcode op)
+> @@ -2417,6 +2661,9 @@ static const TCGTargetOpDef *tcg_target_op_def(TCGOpcode op)
+>          = { .args_ct_str = { "r", "r", "L", "L" } };
+>      static const TCGTargetOpDef L_L_L_L
+>          = { .args_ct_str = { "L", "L", "L", "L" } };
+> +    static const TCGTargetOpDef x_0_x = { .args_ct_str = { "x", "0", "x" } };
+> +    static const TCGTargetOpDef x_x_x = { .args_ct_str = { "x", "x", "x" } };
+> +    static const TCGTargetOpDef x_r = { .args_ct_str = { "x", "r" } };
+>
+>      switch (op) {
+>      case INDEX_op_goto_ptr:
+> @@ -2620,6 +2867,52 @@ static const TCGTargetOpDef *tcg_target_op_def(TCGOpcode op)
+>              return &s2;
+>          }
+>
+> +    case INDEX_op_ld_v64:
+> +    case INDEX_op_ld_v128:
+> +    case INDEX_op_ld_v256:
+> +    case INDEX_op_st_v64:
+> +    case INDEX_op_st_v128:
+> +    case INDEX_op_st_v256:
+> +        return &x_r;
+> +
+> +    case INDEX_op_add8_v64:
+> +    case INDEX_op_add8_v128:
+> +    case INDEX_op_add16_v64:
+> +    case INDEX_op_add16_v128:
+> +    case INDEX_op_add32_v64:
+> +    case INDEX_op_add32_v128:
+> +    case INDEX_op_add64_v128:
+> +    case INDEX_op_sub8_v64:
+> +    case INDEX_op_sub8_v128:
+> +    case INDEX_op_sub16_v64:
+> +    case INDEX_op_sub16_v128:
+> +    case INDEX_op_sub32_v64:
+> +    case INDEX_op_sub32_v128:
+> +    case INDEX_op_sub64_v128:
+> +    case INDEX_op_and_v64:
+> +    case INDEX_op_and_v128:
+> +    case INDEX_op_andc_v64:
+> +    case INDEX_op_andc_v128:
+> +    case INDEX_op_or_v64:
+> +    case INDEX_op_or_v128:
+> +    case INDEX_op_xor_v64:
+> +    case INDEX_op_xor_v128:
+> +        return have_avx1 ? &x_x_x : &x_0_x;
+> +
+> +    case INDEX_op_add8_v256:
+> +    case INDEX_op_add16_v256:
+> +    case INDEX_op_add32_v256:
+> +    case INDEX_op_add64_v256:
+> +    case INDEX_op_sub8_v256:
+> +    case INDEX_op_sub16_v256:
+> +    case INDEX_op_sub32_v256:
+> +    case INDEX_op_sub64_v256:
+> +    case INDEX_op_and_v256:
+> +    case INDEX_op_andc_v256:
+> +    case INDEX_op_or_v256:
+> +    case INDEX_op_xor_v256:
+> +        return &x_x_x;
+> +
+>      default:
+>          break;
+>      }
+> @@ -2725,9 +3018,16 @@ static void tcg_out_nop_fill(tcg_insn_unit *p, int count)
+>  static void tcg_target_init(TCGContext *s)
+>  {
+>  #ifdef CONFIG_CPUID_H
+> -    unsigned a, b, c, d;
+> +    unsigned a, b, c, d, b7 = 0;
+>      int max = __get_cpuid_max(0, 0);
+>
+> +    if (max >= 7) {
+> +        /* BMI1 is available on AMD Piledriver and Intel Haswell CPUs.  */
+> +        __cpuid_count(7, 0, a, b7, c, d);
+> +        have_bmi1 = (b7 & bit_BMI) != 0;
+> +        have_bmi2 = (b7 & bit_BMI2) != 0;
+> +    }
+> +
+>      if (max >= 1) {
+>          __cpuid(1, a, b, c, d);
+>  #ifndef have_cmov
+> @@ -2736,17 +3036,26 @@ static void tcg_target_init(TCGContext *s)
+>             available, we'll use a small forward branch.  */
+>          have_cmov = (d & bit_CMOV) != 0;
+>  #endif
+> +#ifndef have_sse2
+> +        have_sse2 = (d & bit_SSE2) != 0;
+> +#endif
+>          /* MOVBE is only available on Intel Atom and Haswell CPUs, so we
+>             need to probe for it.  */
+>          have_movbe = (c & bit_MOVBE) != 0;
+>          have_popcnt = (c & bit_POPCNT) != 0;
+> -    }
+>
+> -    if (max >= 7) {
+> -        /* BMI1 is available on AMD Piledriver and Intel Haswell CPUs.  */
+> -        __cpuid_count(7, 0, a, b, c, d);
+> -        have_bmi1 = (b & bit_BMI) != 0;
+> -        have_bmi2 = (b & bit_BMI2) != 0;
+> +#ifndef have_avx2
+> +        /* There are a number of things we must check before we can be
+> +           sure of not hitting invalid opcode.  */
+> +        if (c & bit_OSXSAVE) {
+> +            unsigned xcrl, xcrh;
+> +            asm ("xgetbv" : "=a" (xcrl), "=d" (xcrh) : "c" (0));
+> +            if (xcrl & 6 == 6) {
+> +                have_avx1 = (c & bit_AVX) != 0;
+> +                have_avx2 = (b7 & bit_AVX2) != 0;
+> +            }
+> +        }
+> +#endif
+>      }
+>
+>      max = __get_cpuid_max(0x8000000, 0);
+> @@ -2763,6 +3072,13 @@ static void tcg_target_init(TCGContext *s)
+>      } else {
+>          tcg_regset_set32(tcg_target_available_regs[TCG_TYPE_I32], 0, 0xff);
+>      }
+> +    if (have_sse2) {
+> +        tcg_regset_set32(tcg_target_available_regs[TCG_TYPE_V64], 0, 0xff0000);
+> +        tcg_regset_set32(tcg_target_available_regs[TCG_TYPE_V128], 0, 0xff0000);
+> +    }
+> +    if (have_avx2) {
+> +        tcg_regset_set32(tcg_target_available_regs[TCG_TYPE_V256], 0, 0xff0000);
+> +    }
+>
+>      tcg_regset_clear(tcg_target_call_clobber_regs);
+>      tcg_regset_set_reg(tcg_target_call_clobber_regs, TCG_REG_EAX);
 
 
-Richard Henderson (8):
-  tcg: Add generic vector infrastructure and ops for add/sub/logic
-  target/arm: Use generic vector infrastructure for aa64 add/sub/logic
-  tcg: Add types for host vectors
-  tcg: Add operations for host vectors
-  tcg: Add tcg_op_supported
-  tcg: Add INDEX_op_invalid
-  tcg: Expand target vector ops with host vector ops
-  tcg/i386: Add vector operations
-
- Makefile.target            |   5 +-
- tcg/i386/tcg-target.h      |  46 +++-
- tcg/tcg-op-gvec.h          |  92 +++++++
- tcg/tcg-opc.h              |  91 +++++++
- tcg/tcg-runtime.h          |  16 ++
- tcg/tcg.h                  |  37 ++-
- target/arm/translate-a64.c | 137 +++++++----
- tcg/i386/tcg-target.inc.c  | 382 ++++++++++++++++++++++++++---
- tcg/tcg-op-gvec.c          | 583 +++++++++++++++++++++++++++++++++++++++++++++
- tcg/tcg-runtime-gvec.c     | 199 ++++++++++++++++
- tcg/tcg.c                  | 323 ++++++++++++++++++++++++-
- 11 files changed, 1817 insertions(+), 94 deletions(-)
- create mode 100644 tcg/tcg-op-gvec.h
- create mode 100644 tcg/tcg-op-gvec.c
- create mode 100644 tcg/tcg-runtime-gvec.c
-
--- 
-2.13.5
+--
+Alex Bennée

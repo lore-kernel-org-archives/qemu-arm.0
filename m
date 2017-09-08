@@ -1,240 +1,182 @@
-Received: by 10.223.172.38 with SMTP id v35csp1700799wrc;
-        Tue, 5 Sep 2017 10:51:03 -0700 (PDT)
-X-Received: by 10.99.120.3 with SMTP id t3mr4777686pgc.388.1504633863061;
-        Tue, 05 Sep 2017 10:51:03 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1504633863; cv=none;
+Received: by 10.223.172.38 with SMTP id v35csp1683006wrc;
+        Fri, 8 Sep 2017 07:28:04 -0700 (PDT)
+X-Google-Smtp-Source: ADKCNb4XFljSxe9NLCr9ZDvbPPSpcXk1hVmNyOGT8+98uE9G665zX7gA91MOgOFoaFYgG5Pj2FPU
+X-Received: by 10.99.182.78 with SMTP id v14mr3398327pgt.325.1504880884133;
+        Fri, 08 Sep 2017 07:28:04 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1504880884; cv=none;
         d=google.com; s=arc-20160816;
-        b=ry3Nl9htcMEE7r8cUCjxlPZFZCTI3hDDXmzJKnJIARWnm0J1h/xxDkSqxkGAIHBLC5
-         0oPZ0egX+qiWChIfSHLGWWt+G52/7kSB+aM4gg61sFCXokAog9ZfFX4T6lW8UJtw4gh7
-         WiSdsfL/L+Y0FfkyXEug0Jqb3CpLIXFANsc4aV6USuTguDhyDnF18tv9M7SWUvYwLgKa
-         oPfekk/u6jWX0WkjaQbPig4HRdSERJfruMZNHl4wCILGWlHBdjgwpjvYqi7j6LAAc5qT
-         bzkL8EBH20FEt605h26sMByJ1S15EpJ37YLwsNZQroNJ5nDF557lBuP1MGPVuNVgtiKc
-         K+vQ==
+        b=auOzIxFNJay9zB19SBJUfK4t7AIfzHWfiq0/PT1miYrXlMk7XYB6gSJGSSCWLbKD6X
+         YxfjrhJyk35iOt3igs8/nEpwDTHoQk1pq5XCRb7sSV9A2kPgk1rfeAsSpHhQMK6lcVXw
+         0TN33SHZ5bc3n7C35qpzyrmyPX2QoDhjGVfQ5zvOyhxWxBFqePxDVcWsIQpWgKZlXmRB
+         uvyjjzJkHgH5bK83bTgFQnTgik8YteDoDAD1qkDPtjvh0A0w6F1vj9aHcIufnbFrc0QK
+         lbtNkNVgcTrutyAO7nIiVQ4Beed/dxA1HwxU8iKQK7wrnG/Fd5VRIP2yWjM4e0dWvgYl
+         TT5w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-id:precedence:sender:cc:to:subject:message-id:date:from
-         :references:in-reply-to:mime-version:dkim-signature
-         :arc-authentication-results;
-        bh=S8SoT3KyHvrkltcbP7bLsjQqvNv7p5/pDfkOQA2yjSE=;
-        b=dG4ea5SIcud5aTY5Fbtw2J4L9Ku8AGnSJ//LK8yRLFugKkTfSDOrNFLARrtbPawqQ9
-         IdjDNmTcnqD0lmO3kLzlxygNBlmV2jlVP8hEdRCi8CHzQe1m1OshlxGZjjkzSMHS7JwU
-         bTdIP344tQ5ahI395vYsJr0GqvlrHkn9kGsYGzd1ybM4S3iSrUTYeo7VKVSj9BJzwoGN
-         9GA2LQ6/RjP2qNfUkn2IHc74FTkbsp4OoaU2ncLRV0J0Wqz0Q2p/6Tcxm0/G6Xu6MqQ/
-         sLgzzbGl/KAxFeMwWimVtFw4waUzD7ZUYRSgN1saHiCPkPL0JmPwSWzqIanH2zsakh7i
-         i5aA==
+        h=list-id:precedence:sender:mime-version:content-transfer-encoding
+         :content-language:accept-language:message-id:date:thread-index
+         :thread-topic:subject:cc:to:from:arc-authentication-results;
+        bh=vL3HBI6hwD4v9C9nXOurI5rTUjG7xsp1RE/i7zMLYII=;
+        b=JrIYoHDPM987c0ha2amGPWUpsaIGQeerP+p+liXh9EUrRYcTYHm7GgmDENz1GtYXQ/
+         3l90i/XzVFl9N92sF9RW+GF5Sifu8UyPVS1qz4GUaXaBvP/Dd4PZ12b5r3zQbCxxQJIY
+         2P26wMppqCtDDzgoT/EMK7oH7RRFF+mrQnhpNnpf6zwfrKWrQOpytXj2yY/tqtL5X0Pi
+         pU/KW9yGC3IZ9/WGOUtAa9kPWxP4MVbkG+4RtkIOp/WGvmPp0A8KBNMi1GlCL/RVvCn6
+         Bq8ps9Vpv9AN27p6p3093iPFMUFBjx7jQfVghE1skVYbMcUW/ADYi8243qqyH3Q2XTJ0
+         MCdA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Gpa7GCQ+;
-       spf=pass (google.com: best guess record for domain of linux-kernel-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=linux-kernel-owner@vger.kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       spf=pass (google.com: best guess record for domain of linux-kernel-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=linux-kernel-owner@vger.kernel.org
 Return-Path: <linux-kernel-owner@vger.kernel.org>
 Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
-        by mx.google.com with ESMTP id w24si672451pfl.62.2017.09.05.10.51.02;
-        Tue, 05 Sep 2017 10:51:03 -0700 (PDT)
+        by mx.google.com with ESMTP id c1si1730366plk.408.2017.09.08.07.28.03;
+        Fri, 08 Sep 2017 07:28:04 -0700 (PDT)
 Received-SPF: pass (google.com: best guess record for domain of linux-kernel-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Gpa7GCQ+;
-       spf=pass (google.com: best guess record for domain of linux-kernel-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=linux-kernel-owner@vger.kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       spf=pass (google.com: best guess record for domain of linux-kernel-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=linux-kernel-owner@vger.kernel.org
 Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S1753215AbdIERvA (ORCPT <rfc822;daniel.diaz@linaro.org>
-        + 26 others); Tue, 5 Sep 2017 13:51:00 -0400
-Received: from mail-wr0-f169.google.com ([209.85.128.169]:33096 "EHLO
-        mail-wr0-f169.google.com" rhost-flags-OK-OK-OK-OK) by vger.kernel.org
-        with ESMTP id S1752058AbdIERu6 (ORCPT
+        id S1756161AbdIHO2B (ORCPT <rfc822;daniel.diaz@linaro.org>
+        + 26 others); Fri, 8 Sep 2017 10:28:01 -0400
+Received: from szxga01-in.huawei.com ([45.249.212.187]:11767 "EHLO
+        szxga01-in.huawei.com" rhost-flags-OK-OK-OK-OK) by vger.kernel.org
+        with ESMTP id S1755569AbdIHO1y (ORCPT
         <rfc822;linux-kernel@vger.kernel.org>);
-        Tue, 5 Sep 2017 13:50:58 -0400
-Received: by mail-wr0-f169.google.com with SMTP id a43so10209964wrc.0
-        for <linux-kernel@vger.kernel.org>; Tue, 05 Sep 2017 10:50:57 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-         :cc;
-        bh=S8SoT3KyHvrkltcbP7bLsjQqvNv7p5/pDfkOQA2yjSE=;
-        b=Gpa7GCQ+Fxb4Su/UXBW3jusSce0c9osJfRCMoDasZ8xJQpj5PU3ipvLMMM2s2E4dxv
-         jYod1f+gEsF+/Ldbnh4nDYztXvAcQarxgSGQUa+IrS5clHag7O3mNHzk+hfxkB2kSQ2O
-         RuqfTe29VvjDMj4QFFPXpcZ4iJx00U5zJHI98=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-         :message-id:subject:to:cc;
-        bh=S8SoT3KyHvrkltcbP7bLsjQqvNv7p5/pDfkOQA2yjSE=;
-        b=sB8JBC9+eMPFWQFyQyAuhNnJPVR4wc6iasVlIhSKVownAXRUlNTRmgqLMUb3aUq1Cq
-         rzBfysdOITCA2ykYphrgU70lql+SldFPwXkgCEi61W/dQp2TJO7p7BfPGmVuhOBl6IBi
-         F7LaUm4P4xUAlFGWaJRrzdr/YBVuPuCgX+0aUi/5u5Y39cka2V5myCIyR/NXlw0e6XYK
-         DgKkdxRqZV4tONfGbnHFnfpWWSSAAzc/aCRF3Ns/sdBizJtfuzCZwMETDalKSsABDv1W
-         Ps/WCar0vVEXfyxIkJ3lflOqW9AdpcKzlORRq72NdGW1XsSvFUb2CGqC915D3GHYpH8H
-         6hrg==
-X-Gm-Message-State: AHPjjUhWDMfhdBNhNev4BenKbvHHvOj+IVxWUfkxZ3PYoOwUXkp1b801
-        AUy3PHGhCUIAI95+/545fkv7ShqgeLg6
-X-Google-Smtp-Source: ADKCNb5eo9O6ibv6NIV1DZ8BK43hxOpTsVh8YXjLKCEsFiMgHhAIWekbGYPoejoOmrRZqOVtBNlwmOJIEHc7ROavBig=
-X-Received: by 10.223.135.250 with SMTP id c55mr2791424wrc.11.1504633856700;
- Tue, 05 Sep 2017 10:50:56 -0700 (PDT)
-MIME-Version: 1.0
-Received: by 10.223.159.68 with HTTP; Tue, 5 Sep 2017 10:50:36 -0700 (PDT)
-In-Reply-To: <1503066227-18251-7-git-send-email-gengdongjiu@huawei.com>
-References: <1503066227-18251-1-git-send-email-gengdongjiu@huawei.com> <1503066227-18251-7-git-send-email-gengdongjiu@huawei.com>
-From:   Peter Maydell <peter.maydell@linaro.org>
-Date:   Tue, 5 Sep 2017 18:50:36 +0100
-Message-ID: <CAFEAcA9TsQg4EXr4MAM2VbrzB9v5UA1F4o9tOCka=3e4wjbBGQ@mail.gmail.com>
-Subject: Re: [PATCH v11 6/6] target-arm: kvm64: Handle SError interrupt for
- the guest OS
-To:     Dongjiu Geng <gengdongjiu@huawei.com>
-Cc:     "Michael S. Tsirkin" <mst@redhat.com>,
+        Fri, 8 Sep 2017 10:27:54 -0400
+Received: from 172.30.72.57 (EHLO DGGEMA405-HUB.china.huawei.com) ([172.30.72.57])
+        by dggrg01-dlp.huawei.com (MOS 4.4.6-GA FastPath queued)
+        with ESMTP id AWA59147;
+        Fri, 08 Sep 2017 22:27:11 +0800 (CST)
+Received: from DGGEMA503-MBX.china.huawei.com ([169.254.1.143]) by
+ DGGEMA405-HUB.china.huawei.com ([10.3.20.46]) with mapi id 14.03.0301.000;
+ Fri, 8 Sep 2017 22:26:59 +0800
+From:   gengdongjiu <gengdongjiu@huawei.com>
+To:     Peter Maydell <peter.maydell@linaro.org>
+CC:     "Michael S. Tsirkin" <mst@redhat.com>,
         Igor Mammedov <imammedo@redhat.com>,
-        Shannon Zhao <zhaoshenglong@huawei.com>,
-        Paolo Bonzini <pbonzini@redhat.com>,
+        Zhaoshenglong <zhaoshenglong@huawei.com>,
+        "Paolo Bonzini" <pbonzini@redhat.com>,
         QEMU Developers <qemu-devel@nongnu.org>,
         qemu-arm <qemu-arm@nongnu.org>, kvm-devel <kvm@vger.kernel.org>,
         "edk2-devel@lists.01.org" <edk2-devel@lists.01.org>,
         Christoffer Dall <christoffer.dall@linaro.org>,
         Marc Zyngier <marc.zyngier@arm.com>,
-        Will Deacon <will.deacon@arm.com>,
+        "Will Deacon" <will.deacon@arm.com>,
         James Morse <james.morse@arm.com>,
         Tyler Baicar <tbaicar@codeaurora.org>,
         Ard Biesheuvel <ard.biesheuvel@linaro.org>,
-        Ingo Molnar <mingo@kernel.org>, bp@suse.de,
-        shiju.jose@huawei.com, zjzhang@codeaurora.org,
+        "Ingo Molnar" <mingo@kernel.org>, "bp@suse.de" <bp@suse.de>,
+        Shiju Jose <shiju.jose@huawei.com>,
+        "zjzhang@codeaurora.org" <zjzhang@codeaurora.org>,
         arm-mail-list <linux-arm-kernel@lists.infradead.org>,
         "kvmarm@lists.cs.columbia.edu" <kvmarm@lists.cs.columbia.edu>,
-        lkml - Kernel Mailing List <linux-kernel@vger.kernel.org>,
-        linux-acpi@vger.kernel.org, devel@acpica.org,
-        john.garry@huawei.com, jonathan.cameron@huawei.com,
-        shameerali.kolothum.thodi@huawei.com, huangdaode@hisilicon.com,
-        wangzhou1@hisilicon.com, Huangshaoyu <huangshaoyu@huawei.com>,
-        wuquanming <wuquanming@huawei.com>,
-        Linuxarm <linuxarm@huawei.com>, zhengqiang10@huawei.com
-Content-Type: text/plain; charset="UTF-8"
+        "lkml - Kernel Mailing List" <linux-kernel@vger.kernel.org>,
+        "linux-acpi@vger.kernel.org" <linux-acpi@vger.kernel.org>,
+        "devel@acpica.org" <devel@acpica.org>,
+        "John Garry" <john.garry@huawei.com>,
+        Jonathan Cameron <jonathan.cameron@huawei.com>,
+        Shameerali Kolothum Thodi 
+        <shameerali.kolothum.thodi@huawei.com>,
+        huangdaode <huangdaode@hisilicon.com>,
+        "Wangzhou (B)" <wangzhou1@hisilicon.com>,
+        Huangshaoyu <huangshaoyu@huawei.com>,
+        Wuquanming <wuquanming@huawei.com>,
+        Linuxarm <linuxarm@huawei.com>,
+        "Zhengqiang (turing)" <zhengqiang10@huawei.com>
+Subject: Re: [PATCH v11 4/6] target-arm: kvm64: detect guest RAS EXTENSION
+ feature
+Thread-Topic: [PATCH v11 4/6] target-arm: kvm64: detect guest RAS EXTENSION
+ feature
+Thread-Index: AdMop0zlouCLF3RfQKKP0rckbM+0Iw==
+Date:   Fri, 8 Sep 2017 14:26:59 +0000
+Message-ID: <0184EA26B2509940AA629AE1405DD7F2015F5973@DGGEMA503-MBX.china.huawei.com>
+Accept-Language: zh-CN, en-US
+Content-Language: zh-CN
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-originating-ip: [10.45.61.121]
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+MIME-Version: 1.0
+X-CFilter-Loop: Reflected
+X-Mirapoint-Virus-RAPID-Raw: score=unknown(0),
+        refid=str=0001.0A0B0201.59B2A8C0.0173,ss=1,re=0.000,recu=0.000,reip=0.000,cl=1,cld=1,fgs=0,
+        ip=169.254.1.143,
+        so=2014-11-16 11:51:01,
+        dmn=2013-03-21 17:37:32
+X-Mirapoint-Loop-Id: 9227055aee3b93ee7963f2038e4654c0
 Sender: linux-kernel-owner@vger.kernel.org
 Precedence: bulk
 List-ID: <linux-kernel.vger.kernel.org>
 X-Mailing-List: linux-kernel@vger.kernel.org
-X-TUID: VR0lzxUZDtec
+X-TUID: NExTHE0aK+mv
 
-On 18 August 2017 at 15:23, Dongjiu Geng <gengdongjiu@huawei.com> wrote:
-> When guest OS happens SError interrupt(SEI), it will trap to host.
-> Host firstly calls memory failure to deal with this error and decide
-> whether it needs to deliver SIGBUS signal to userspace. The advantage
-> that using signal to notify is that it can make the notification method
-> is general, non-KVM user can also use it. when userspace gets this
-> signal and knows this is SError interrupt, it will translate the
-> delivered host VA to PA and record this PA to GHES.
->
-> Because ARMv8.2 adds an extension to RAS to allow system software insert
-> implicit Error Synchronization Barrier operations to isolate the error and
-> allow passes specified syndrome to guest OS, so after record the CPER, user
-> space calls IOCTL to pass a specified syndrome to KVM, then switch to guest
-> OS, guest OS can use the recorded CPER record and syndrome information to
-> do the recovery.
->
-> The steps are shown below:
-> 1. translate the host VA to guest OS PA and record this error PA to HEST table.
-> 2. set specified virtual SError syndrome and pass the value to KVM.
->
-> Signed-off-by: Dongjiu Geng <gengdongjiu@huawei.com>
-> Signed-off-by: Quanming Wu <wuquanming@huawei.com>
-> ---
->  linux-headers/linux/kvm.h |  1 +
->  target/arm/internals.h    |  1 +
->  target/arm/kvm64.c        | 28 ++++++++++++++++++++++++++++
->  3 files changed, 30 insertions(+)
->
-> diff --git a/linux-headers/linux/kvm.h b/linux-headers/linux/kvm.h
-> index 2aa176e..10dfcab 100644
-> --- a/linux-headers/linux/kvm.h
-> +++ b/linux-headers/linux/kvm.h
-> @@ -1356,6 +1356,7 @@ struct kvm_s390_ucas_mapping {
->  /* Available with KVM_CAP_S390_CMMA_MIGRATION */
->  #define KVM_S390_GET_CMMA_BITS      _IOWR(KVMIO, 0xb8, struct kvm_s390_cmma_log)
->  #define KVM_S390_SET_CMMA_BITS      _IOW(KVMIO, 0xb9, struct kvm_s390_cmma_log)
-> +#define KVM_ARM_SEI                 _IO(KVMIO,   0xb10)
->
->  #define KVM_DEV_ASSIGN_ENABLE_IOMMU    (1 << 0)
->  #define KVM_DEV_ASSIGN_PCI_2_3         (1 << 1)
-> diff --git a/target/arm/internals.h b/target/arm/internals.h
-> index fc0ad6d..18b1cbc 100644
-> --- a/target/arm/internals.h
-> +++ b/target/arm/internals.h
-> @@ -237,6 +237,7 @@ enum arm_exception_class {
->  #define ARM_EL_ISV (1 << ARM_EL_ISV_SHIFT)
->  #define ARM_EL_EC_MASK  ((0x3F) << ARM_EL_EC_SHIFT)
->  #define ARM_EL_FSC_TYPE (0x3C)
-> +#define ARM_EL_ISS_MASK ((1 << ARM_EL_IL_SHIFT) - 1)
->
->  #define FSC_SEA         (0x10)
->  #define FSC_SEA_TTW0    (0x14)
-> diff --git a/target/arm/kvm64.c b/target/arm/kvm64.c
-> index d3bdab2..b84cb49 100644
-> --- a/target/arm/kvm64.c
-> +++ b/target/arm/kvm64.c
-> @@ -616,6 +616,22 @@ static int kvm_arm_cpreg_value(ARMCPU *cpu, ptrdiff_t fieldoffset)
->      return -EINVAL;
->  }
->
-> +static int kvm_inject_arm_sei(CPUState *cs)
-> +{
-> +    ARMCPU *cpu = ARM_CPU(cs);
-> +    CPUARMState *env = &cpu->env;
-> +
-> +    unsigned long syndrome = env->exception.vaddress;
-> +    /* set virtual SError syndrome */
-> +    if (arm_feature(env, ARM_FEATURE_RAS_EXTENSION)) {
-> +        syndrome = syndrome & ARM_EL_ISS_MASK;
-> +    } else {
-> +        syndrome = 0;
-> +    }
-> +
-> +    return  kvm_vcpu_ioctl(CPU(cpu), KVM_ARM_SEI, &syndrome);
-
-This looks odd. If we don't have the RAS extension why do
-we need to do anything at all here ?
-
-> +}
-> +
->  /* Inject synchronous external abort */
->  static int kvm_inject_arm_sea(CPUState *c)
->  {
-> @@ -1007,6 +1023,15 @@ static bool is_abort_sea(unsigned long syndrome)
->      }
->  }
->
-> +static bool is_abort_sei(unsigned long syndrome)
-> +{
-> +    uint8_t ec = ((syndrome & ARM_EL_EC_MASK) >> ARM_EL_EC_SHIFT);
-
-You don't need to bother masking here -- in other places in
-QEMU we assume that the EC field is at the top of the word,
-so just "syndrome >> ARM_EL_EC_SHIFT" is sufficient.
-
-> +    if ((ec != EC_SERROR))
-> +        return false;
-> +    else
-> +        return true;
-
-scripts/checkpatch.pl should tell you that this if needs braces
-(it's good to get in the habit of running it on all patches; it
-is not always correct, so judgement is required, but it will flag
-up some common mistakes).
-
-In this particular case, you should just
-   return ec == EC_SERROR;
-though.
-
-> +}
-> +
->  void kvm_arch_on_sigbus_vcpu(CPUState *c, int code, void *addr)
->  {
->      ram_addr_t ram_addr;
-> @@ -1024,6 +1049,9 @@ void kvm_arch_on_sigbus_vcpu(CPUState *c, int code, void *addr)
->              if (is_abort_sea(env->exception.syndrome)) {
->                  ghes_update_guest(ACPI_HEST_NOTIFY_SEA, paddr);
->                  kvm_inject_arm_sea(c);
-> +            } else if (is_abort_sei(env->exception.syndrome)) {
-> +                ghes_update_guest(ACPI_HEST_NOTIFY_SEI, paddr);
-> +                kvm_inject_arm_sei(c);
->              }
->              return;
->          }
-> --
-> 1.8.3.1
-
-thanks
--- PMM
+SGkgUGV0ZXIsDQogIFNvcnJ5IGZvciBteSBsYXRlIHJlc3BvbnNlLg0KDQo+IA0KPiBPbiAxOCBB
+dWd1c3QgMjAxNyBhdCAxNToyMywgRG9uZ2ppdSBHZW5nIDxnZW5nZG9uZ2ppdUBodWF3ZWkuY29t
+PiB3cm90ZToNCj4gPiBjaGVjayBpZiBrdm0gc3VwcG9ydHMgZ3Vlc3QgUkFTIEVYVEVOU0lPTi4g
+aWYgc28sIHNldCBjb3JyZXNwb25kaW5nDQo+ID4gZmVhdHVyZSBiaXQgZm9yIHZjcHUuDQo+ID4N
+Cj4gPiBTaWduZWQtb2ZmLWJ5OiBEb25naml1IEdlbmcgPGdlbmdkb25naml1QGh1YXdlaS5jb20+
+DQo+ID4gLS0tDQo+ID4gIGxpbnV4LWhlYWRlcnMvbGludXgva3ZtLmggfCAxICsNCj4gPiAgdGFy
+Z2V0L2FybS9jcHUuaCAgICAgICAgICB8IDMgKysrDQo+ID4gIHRhcmdldC9hcm0va3ZtNjQuYyAg
+ICAgICAgfCA4ICsrKysrKysrDQo+ID4gIDMgZmlsZXMgY2hhbmdlZCwgMTIgaW5zZXJ0aW9ucygr
+KQ0KPiA+DQo+ID4gZGlmZiAtLWdpdCBhL2xpbnV4LWhlYWRlcnMvbGludXgva3ZtLmggYi9saW51
+eC1oZWFkZXJzL2xpbnV4L2t2bS5oDQo+ID4gaW5kZXggNzk3MWE0Zi4uMmFhMTc2ZSAxMDA2NDQN
+Cj4gPiAtLS0gYS9saW51eC1oZWFkZXJzL2xpbnV4L2t2bS5oDQo+ID4gKysrIGIvbGludXgtaGVh
+ZGVycy9saW51eC9rdm0uaA0KPiA+IEBAIC05MjksNiArOTI5LDcgQEAgc3RydWN0IGt2bV9wcGNf
+cmVzaXplX2hwdCB7ICAjZGVmaW5lDQo+ID4gS1ZNX0NBUF9QUENfU01UX1BPU1NJQkxFIDE0NyAg
+I2RlZmluZSBLVk1fQ0FQX0hZUEVSVl9TWU5JQzIgMTQ4DQo+ID4gI2RlZmluZSBLVk1fQ0FQX0hZ
+UEVSVl9WUF9JTkRFWCAxNDkNCj4gPiArI2RlZmluZSBLVk1fQ0FQX0FSTV9SQVNfRVhURU5TSU9O
+IDE1MA0KPiA+DQo+ID4gICNpZmRlZiBLVk1fQ0FQX0lSUV9ST1VUSU5HDQo+ID4NCj4gDQo+IEhp
+LiBDaGFuZ2VzIHRvIGxpbnV4LWhlYWRlcnMgbmVlZCB0byBiZSBkb25lIGFzIGEgcGF0Y2ggb2Yg
+dGhlaXIgb3duIGNyZWF0ZWQgdXNpbmcgc2NyaXB0cy91cGRhdGUtbGludXgtaGVhZGVycy5zaCBy
+dW4gYWdhaW5zdCBhIG1haW5saW5lDQo+IGtlcm5lbCB0cmVlIChhbmQgd2l0aCBhIGNvbW1pdCBt
+ZXNzYWdlIHRoYXQgcXVvdGVzIHRoZSBrZXJuZWwgY29tbWl0IGhhc2ggdXNlZCkuIFRoaXMgZW5z
+dXJlcyB0aGF0IHdlIGhhdmUgYSBjb25zaXN0ZW50IHNldCBvZiBoZWFkZXJzDQo+IHRoYXQgZG9u
+J3QgZGl2ZXJnZSBmcm9tIHRoZSBrZXJuZWwgY29weS4NClN1cmUsIEkgd2lsbCwgdGhhbmtzIGEg
+bG90IGZvciB5b3VyIHJlbWluZGVyLg0KDQo+IA0KPiA+IGRpZmYgLS1naXQgYS90YXJnZXQvYXJt
+L2NwdS5oIGIvdGFyZ2V0L2FybS9jcHUuaCBpbmRleA0KPiA+IGIzOWQ2NGEuLjZiMDk2MWIgMTAw
+NjQ0DQo+ID4gLS0tIGEvdGFyZ2V0L2FybS9jcHUuaA0KPiA+ICsrKyBiL3RhcmdldC9hcm0vY3B1
+LmgNCj4gPiBAQCAtNjExLDYgKzYxMSw4IEBAIHN0cnVjdCBBUk1DUFUgew0KPiA+DQo+ID4gICAg
+ICAvKiBDUFUgaGFzIG1lbW9yeSBwcm90ZWN0aW9uIHVuaXQgKi8NCj4gPiAgICAgIGJvb2wgaGFz
+X21wdTsNCj4gPiArICAgIC8qIENQVSBoYXMgcmFzIGV4dGVuc2lvbiB1bml0ICovDQo+ID4gKyAg
+ICBib29sIGhhc19yYXNfZXh0ZW5zaW9uOw0KPiA+ICAgICAgLyogUE1TQXY3IE1QVSBudW1iZXIg
+b2Ygc3VwcG9ydGVkIHJlZ2lvbnMgKi8NCj4gPiAgICAgIHVpbnQzMl90IHBtc2F2N19kcmVnaW9u
+Ow0KPiA+DQo+ID4gQEAgLTEyMjksNiArMTIzMSw3IEBAIGVudW0gYXJtX2ZlYXR1cmVzIHsNCj4g
+PiAgICAgIEFSTV9GRUFUVVJFX1RIVU1CX0RTUCwgLyogRFNQIGluc25zIHN1cHBvcnRlZCBpbiB0
+aGUgVGh1bWIgZW5jb2RpbmdzICovDQo+ID4gICAgICBBUk1fRkVBVFVSRV9QTVUsIC8qIGhhcyBQ
+TVUgc3VwcG9ydCAqLw0KPiA+ICAgICAgQVJNX0ZFQVRVUkVfVkJBUiwgLyogaGFzIGNwMTUgVkJB
+UiAqLw0KPiA+ICsgICAgQVJNX0ZFQVRVUkVfUkFTX0VYVEVOU0lPTiwgLypoYXMgUkFTIGV4dGVu
+c2lvbiBzdXBwb3J0ICovDQo+IA0KPiBNaXNzaW5nIHNwYWNlIGFmdGVyICcvKicgPw0KWWVzLCB0
+aGFua3MgZm9yIHRoZSBwb2ludGluZyBvdXQuDQoNCj4gDQo+ID4gIH07DQo+ID4NCj4gPiAgc3Rh
+dGljIGlubGluZSBpbnQgYXJtX2ZlYXR1cmUoQ1BVQVJNU3RhdGUgKmVudiwgaW50IGZlYXR1cmUp
+IGRpZmYNCj4gPiAtLWdpdCBhL3RhcmdldC9hcm0va3ZtNjQuYyBiL3RhcmdldC9hcm0va3ZtNjQu
+YyBpbmRleCBhMTZhYmM4Li4wNzgxMzY3DQo+ID4gMTAwNjQ0DQo+ID4gLS0tIGEvdGFyZ2V0L2Fy
+bS9rdm02NC5jDQo+ID4gKysrIGIvdGFyZ2V0L2FybS9rdm02NC5jDQo+ID4gQEAgLTUxOCw2ICs1
+MTgsMTQgQEAgaW50IGt2bV9hcmNoX2luaXRfdmNwdShDUFVTdGF0ZSAqY3MpDQo+ID4gICAgICAg
+ICAgdW5zZXRfZmVhdHVyZSgmZW52LT5mZWF0dXJlcywgQVJNX0ZFQVRVUkVfUE1VKTsNCj4gPiAg
+ICAgIH0NCj4gPg0KPiA+ICsgICAgaWYgKGt2bV9jaGVja19leHRlbnNpb24oY3MtPmt2bV9zdGF0
+ZSwgS1ZNX0NBUF9BUk1fUkFTX0VYVEVOU0lPTikpIHsNCj4gPiArICAgICAgICBjcHUtPmhhc19y
+YXNfZXh0ZW5zaW9uID0gdHJ1ZTsNCj4gPiArICAgICAgICBzZXRfZmVhdHVyZSgmZW52LT5mZWF0
+dXJlcywgQVJNX0ZFQVRVUkVfUkFTX0VYVEVOU0lPTik7DQo+ID4gKyAgICB9IGVsc2Ugew0KPiA+
+ICsgICAgICAgIGNwdS0+aGFzX3Jhc19leHRlbnNpb24gPSBmYWxzZTsNCj4gPiArICAgICAgICB1
+bnNldF9mZWF0dXJlKCZlbnYtPmZlYXR1cmVzLCBBUk1fRkVBVFVSRV9SQVNfRVhURU5TSU9OKTsN
+Cj4gPiArICAgIH0NCj4gPiArDQo+IA0KPiBTaG91bGRuJ3Qgd2UgbmVlZCB0byBhbHNvIHRlbGwg
+dGhlIGtlcm5lbCB0aGF0IHdlIGFjdHVhbGx5IHdhbnQgaXQgdG8gZXhwb3NlIFJBUyB0byB0aGUg
+Z3Vlc3Q/IENvbXBhcmUgdGhlIFBNVSBjb2RlIGluIHRoaXMgZnVuY3Rpb24sDQo+IHdoZXJlIHdl
+IHNldCBhIGt2bV9pbml0X2ZlYXR1cmVzIGJpdCB0byBkbyB0aGlzLg0KPiAoVGhpcyBzdWdnZXN0
+cyB0aGF0IHlvdXIgQUJJIGZvciB0aGUga2VybmVsIHBhcnQgb2YgdGhpcyBmZWF0dXJlIG1heSBu
+b3QgYmUgY29ycmVjdD8pDQoNCkluIHRoZSBQTVUgY29kZSwgaXQgaW5kZWVkIHNldHMgYSBrdm1f
+aW5pdF9mZWF0dXJlcyBiaXQuIEhlcmUgQVJNIEphbWVzIGhhcyBhIGNvbmNlcm4gdGhhdCB3ZSBh
+cmUgZGVwZW5kIG9uIHRoZSBob3N0IENQVSBSQVMgZXh0ZW5zaW9uLA0KSGUgbWVhbnMgdGhhdCBp
+ZiB1c2Vyc3BhY2UgcmVjZWl2ZXMgdGhlIFNJR0JVUyBkZWxpdmVyZWQgYnkgaG9zdCBtZW1vcnlf
+ZmFpbHVyZSgpLCB1c2VyIHNwYWNlIHNob3VsZCByZWNvcmQgdGhlIENQRVIgZm9yIGd1ZXN0DQph
+bmQgaGFuZGxpbmcgdGhlIGVycm9yIHJlZ2FyZGxlc3Mgd2hldGhlciBob3N0IENQVSBzdXBwb3J0
+cyBSQVMgZXh0ZW5zaW9uLiBCdXQgSSB0aGluayBpZiB1c2VyIHNwYWNlIHJlY2VpdmVzIHRoZSBT
+SUdCVVMgc2lnbmFsLCB0aGF0IG1lYW5zDQpob3N0IENQVSBSQVMgbW9kdWxlIGRldGVjdHMgdGhl
+IGVycm9yIG9yIENQVSBjb25zdW1lcyB0aGUgcG9pc29uIGRhdGEsIHRodXMgd2Ugc2hvdWxkIGNo
+ZWNrIHdoZXRoZXIgcGh5c2ljYWwgQ1BVIHN1cHBvcnQgUkFTIGV4dGVuc2lvbi4gDQoNCj4gDQo+
+IFlvdSBzaG91bGQgYWxzbyBub3QgYmUgY2FsbGluZyBzZXRfZmVhdHVyZSgpIGhlcmUgLS0gaWYg
+dGhlIENQVSBmZWF0dXJlcyBiaXQgZG9lc24ndCBzYXkgInRoaXMgQ1BVIHNob3VsZCBoYXZlIHRo
+ZSBSQVMgZXh0ZW5zaW9ucyIgd2UNCj4gc2hvdWxkbid0IGNyZWF0ZSBhIENQVSB3aXRoIHRoZW0u
+IEluc3RlYWQgeW91IHNob3VsZCBzZXQgaXQgaW4ga3ZtX2FybV9nZXRfaG9zdF9jcHVfZmVhdHVy
+ZXMoKSAoYWdhaW4sIGNvbXBhcmUgdGhlIFBNVSBjb2RlKS4NCg0KVW5kZXJzdGFuZCwgSSB3aWxs
+IGxvb3AgeW91IHRvIGFub3RoZXIgbWFpbCB0aHJlYWQgdG8gY29uc3VsdCB3aXRoIHlvdSB0aGF0
+IHdoZXRoZXIgdXNlcnNwYWNlIHNob3VsZCBkZXRlY3QgQ1BVIFJBUyBleHRlbnNpb24uDQpJZiBh
+bGwgYWdyZWUgdG8gZGV0ZWN0IENQVSBSQVMgZmVhdHVyZSwgSSB3aWxsIGZpeCB0aGUgaXNzdWUg
+dGhhdCB5b3UgcG9pbnRpbmcgb3V0Lg0KDQo+IA0KPiB0aGFua3MNCj4gLS0gUE1NDQo=

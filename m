@@ -1,94 +1,101 @@
-Received: by 10.223.172.38 with SMTP id v35csp3338685wrc;
-        Sat, 9 Sep 2017 13:30:44 -0700 (PDT)
-X-Google-Smtp-Source: AOwi7QCqGFgVNyr7uM5cG4jsuxBSajvWnFk4c20C46YJC30KPII7etbbXphV1/8WUREolEGlnkAr
-X-Received: by 10.200.39.252 with SMTP id x57mr10692444qtx.22.1504989044294;
-        Sat, 09 Sep 2017 13:30:44 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1504989044; cv=none;
+Received: by 10.223.172.38 with SMTP id v35csp3429574wrc;
+        Sat, 9 Sep 2017 15:42:27 -0700 (PDT)
+X-Received: by 10.237.63.15 with SMTP id p15mr9670991qtf.113.1504996946998;
+        Sat, 09 Sep 2017 15:42:26 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1504996946; cv=none;
         d=google.com; s=arc-20160816;
-        b=uIcNbNoj61hJVq1sc6eRadMDZoEYgwEnrZz+uSrcQ/WI9cTCmlgz4ETyJVlG9FotAB
-         Zn9tBD/2O1+C4Wiq6HXg7YW0nOHp2ZGT4KpoUpfthIZHqyD3xH+wqqlsN4CN3WqJYlFg
-         8l/6wLjlaABioPE9z+pGuOeI2TiHbvDLaRIMdSTjuVuQTlR1JRW1gRMQFi3/5TBxj5dt
-         xj1wu4i8QfFqv2KKX8popf7WTSd2pGUAuokeBRDr4onNky7TF44037JIHaw+iB3Bht8p
-         oqVJ9juPLorfnXhqKxJb/XspGk+Q/TLXQW/3Pmn3C82I60SVW4wNkPlogjQjwSIoP1ol
-         a7hg==
+        b=qv868kansv/NNywtluTixv33M5+N5rSZ3jd+Lr/uVmPI/SY1Zt4cjTrrCNs3/bZASq
+         nQsk1v9VdSMZiUIAOEtdmpWOnh69w+lyn6UnNy5GouM6YVq2aY7v2t1rn3e6uMIYJR5Y
+         ioPL2W4YCy+Uaqu1Nn3usZRbkeojb+MAhjFYrkPT+DHwucrFa1EH/YnvBeDwLa0VR8Th
+         P3ywTL+KIyNVWKGhAJJDKniskTUgCsS3pSiLtxuUqtLfENoOqMYUaUPF3W5Sf7nzpBji
+         UuJ3QXVz7X95YJZcwc8Orbti+lJxyy0amZMsadN/7KGbLl0xyc7MLjEoriJXhLQz6+zO
+         O6lQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
-         :content-disposition:mime-version:references:message-id:to:from:date
-         :dmarc-filter:arc-authentication-results;
-        bh=ILA94OfXlwLPt/Vx8hnqIFgtW0IhNYbJ19eiJr4r39M=;
-        b=dTUGc0AUsyqn6KyhRvzveoUOrUXzcCzMw4Q0JwUrFZNpRrIozG//nm/JhJ6KoLkplu
-         0HceQATddafL+7JJi6tcybfXCamq29/ew2c+7DPr6hFwMdaTXpIaWUdG4j28VJkrGx29
-         IEMK2EhU5Loxi7xABPELlNcquJrwDFwPNiXMUnpcrEFppDjWsIuzgpE10d9YWsDZrGQg
-         BYeNocMENtNl6sn48sRtHPJlLj4nsueqQG8UAmsR2qwev0oSGXUGCTZvbmPbPqm7cs7K
-         CbqgnKWfKXJp9kkVCbfye/FpBFWzHDTatypDG5lbJaaKmaq3bg6e5HS6wi2zzA3toFsG
-         wn6g==
+         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
+         :references:in-reply-to:mime-version:dkim-signature
+         :arc-authentication-results;
+        bh=Em10Am+QWQYxdO5XUy2UgvoUiH2226A4ZMrbX00AocE=;
+        b=z5ZT4N77HaLlE/mOlzGFpWfR8FGQrzPSKpqLucLx/j6NravIDVQh9sRrH91ZMvZqoy
+         S4y1edtPLuIaG0+tuf84cSWCVYSMs0f34rjGkI9s38pVC1b8E6TxDPlkFvLZvTzJPVM3
+         DenV8oQJerxM/loN0td3CiBRH78xg91aSrsZm7RYOAh+gohFr+KOxuXnEZ4AyLLEKyVT
+         QVYhTYWfgbTUUdUgcDSj0G8QPWkWFaUKR9sQQFm5edbeM6HHwaibJFq1jvIrjI5b16v3
+         Fg1tZhGd7GZmbftpRsnTshBs0EJsHUkN3fbREjX0mntW7LSLmSZxecxrl4rR5OopnsCF
+         g2OA==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b=AZJwNha/;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id a81si6083852qkh.230.2017.09.09.13.30.43
+        by mx.google.com with ESMTPS id n34si3879118qtb.277.2017.09.09.15.42.26
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sat, 09 Sep 2017 13:30:44 -0700 (PDT)
+        Sat, 09 Sep 2017 15:42:26 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b=AZJwNha/;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:50801 helo=lists.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:51082 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1dqmOn-00011B-V7
-	for alex.bennee@linaro.org; Sat, 09 Sep 2017 16:30:42 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:44975)
+	id 1dqoSG-00025l-N2
+	for alex.bennee@linaro.org; Sat, 09 Sep 2017 18:42:24 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:37576)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <ehabkost@redhat.com>) id 1dqmOZ-0000zE-LW
-	for qemu-arm@nongnu.org; Sat, 09 Sep 2017 16:30:28 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1dqoSA-00025W-Pd
+	for qemu-arm@nongnu.org; Sat, 09 Sep 2017 18:42:19 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <ehabkost@redhat.com>) id 1dqmOW-0000rF-Gu
-	for qemu-arm@nongnu.org; Sat, 09 Sep 2017 16:30:27 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:42864)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <ehabkost@redhat.com>)
-	id 1dqmOW-0000pc-8O; Sat, 09 Sep 2017 16:30:24 -0400
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
-	[10.5.11.12])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id C18AD356D6;
-	Sat,  9 Sep 2017 20:30:17 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com C18AD356D6
-Authentication-Results: ext-mx06.extmail.prod.ext.phx2.redhat.com;
-	dmarc=none (p=none dis=none) header.from=redhat.com
-Authentication-Results: ext-mx06.extmail.prod.ext.phx2.redhat.com;
-	spf=fail smtp.mailfrom=ehabkost@redhat.com
-Received: from localhost (ovpn-116-45.gru2.redhat.com [10.97.116.45])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id C377960F8C;
-	Sat,  9 Sep 2017 20:30:15 +0000 (UTC)
-Date: Sat, 9 Sep 2017 17:30:14 -0300
-From: Eduardo Habkost <ehabkost@redhat.com>
-To: Alistair Francis <alistair23@gmail.com>
-Message-ID: <20170909203014.GG7570@localhost.localdomain>
+	(envelope-from <peter.maydell@linaro.org>) id 1dqoS9-0008W2-Vi
+	for qemu-arm@nongnu.org; Sat, 09 Sep 2017 18:42:18 -0400
+Received: from mail-wm0-x22f.google.com ([2a00:1450:400c:c09::22f]:44523)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1dqoS9-0008Vg-P4
+	for qemu-arm@nongnu.org; Sat, 09 Sep 2017 18:42:17 -0400
+Received: by mail-wm0-x22f.google.com with SMTP id 137so13487294wmj.1
+	for <qemu-arm@nongnu.org>; Sat, 09 Sep 2017 15:42:17 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=Em10Am+QWQYxdO5XUy2UgvoUiH2226A4ZMrbX00AocE=;
+	b=AZJwNha/OXI2+DG59z4+R/61ecemL2ioCjqsHLqtq9U9OB2Nyr9DaWSkjCB8ZdB7a7
+	EgpqTksoEZ5/BLaVQnrGYYVpBXst4RTaiXCNGeHPftat2oRIG/b6O8qe78Va+wygi2Ev
+	IWcJiHsjn1V38ptPMhZB10ngqYIe+H7Kj7PGk=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=Em10Am+QWQYxdO5XUy2UgvoUiH2226A4ZMrbX00AocE=;
+	b=Owk+6ezGrML730sulPcFghoO7ykEW+uwCxS9LUyUmwEdI6gCqXXuJ6BFs9jzCuI9a8
+	rOqcApZWLHUdaKKgiec/e3vHk4vOS7rFOInKbG0WKAqyNvcWZ9bvlVSiBvkECed3AeIy
+	Z9D9+lbuu7PualWJGUkWdNhaNLsfm5bacUG0jm3I725dHfxEBZt+CYwLCwdcSKLtUgAP
+	MTykLhfbd/4vFM35DDYn8kRZs41CD0lK1fksl7nAus5GYKBtiO74ukOoWKRfe/nlYSB2
+	pxf5QirCBAygas0R2ksXsYZNRGqLDzymJ5Oy5UukI3wm7HXQPfwwHC7Dbrr2z3q+9XTb
+	igDA==
+X-Gm-Message-State: AHPjjUiR+Opi2R6fTLlxIASUBQnk4kTFIl0EC8wtDFQbHn1PlfudvLb4
+	y7vdffyRxUpV3yq2GyBYf7srTYSBHrlpD03Imckatg==
+X-Google-Smtp-Source: AOwi7QCiu0DUqHbcA0Rt6QaEl7/bXGmZHCMD9zT4QUOTNTcfokgjCbSUrlZ7GSw31OWWH+UZrlqmA5m4H2jUuXTOkl0=
+X-Received: by 10.28.43.129 with SMTP id r123mr1428847wmr.101.1504996936609;
+	Sat, 09 Sep 2017 15:42:16 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.223.139.215 with HTTP; Sat, 9 Sep 2017 15:41:55 -0700 (PDT)
+In-Reply-To: <20170909203014.GG7570@localhost.localdomain>
 References: <1504533662-198084-1-git-send-email-imammedo@redhat.com>
 	<1504533662-198084-7-git-send-email-imammedo@redhat.com>
 	<20170905213152.GG17184@localhost.localdomain>
 	<CAKmqyKPWDmVYJceYao7NkD5svWqN_fYbDoUJ4uLNFdAhv+kFwg@mail.gmail.com>
 	<20170905221226.GZ7570@localhost.localdomain>
 	<CAKmqyKO4yRz3R0BJ+gz=UfLc0d_AoNtEAHn-SNFMzg3xo12D=Q@mail.gmail.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <CAKmqyKO4yRz3R0BJ+gz=UfLc0d_AoNtEAHn-SNFMzg3xo12D=Q@mail.gmail.com>
-X-Fnord: you can see the fnord
-User-Agent: Mutt/1.8.3 (2017-05-23)
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.30]);
-	Sat, 09 Sep 2017 20:30:23 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.132.183.28
+	<20170909203014.GG7570@localhost.localdomain>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Sat, 9 Sep 2017 23:41:55 +0100
+Message-ID: <CAFEAcA9iTepyGg17xPB_4XOnoOK6iAPsvOdJg_XLEbdk+dggGg@mail.gmail.com>
+To: Eduardo Habkost <ehabkost@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2a00:1450:400c:c09::22f
 Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH 6/6] arm: drop intermadiate
  cpu_model -> cpu type parsing and use cpu type directly
 X-BeenThere: qemu-arm@nongnu.org
@@ -103,115 +110,27 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Rob Herring <robh@kernel.org>, Andrew Jones <drjones@redhat.com>,
-	Peter Maydell <peter.maydell@linaro.org>,
 	Igor Mitsyanko <i.mitsyanko@gmail.com>,
 	Alistair Francis <alistair@alistair23.me>,
 	"qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
 	qemu-arm <qemu-arm@nongnu.org>, Jan Kiszka <jan.kiszka@web.de>,
-	Igor Mammedov <imammedo@redhat.com>, Richard Henderson <rth@twiddle.net>
+	Igor Mammedov <imammedo@redhat.com>,
+	Alistair Francis <alistair23@gmail.com>,
+	Richard Henderson <rth@twiddle.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: mIFBJSkTNsas
+X-TUID: UDhyaDieyXxk
 
-On Tue, Sep 05, 2017 at 03:46:07PM -0700, Alistair Francis wrote:
-> On Tue, Sep 5, 2017 at 3:12 PM, Eduardo Habkost <ehabkost@redhat.com> wrote:
-> > On Tue, Sep 05, 2017 at 02:47:52PM -0700, Alistair Francis wrote:
-> >> On Tue, Sep 5, 2017 at 2:31 PM, Eduardo Habkost <ehabkost@redhat.com> wrote:
-> > [...]
-> >> >> diff --git a/hw/arm/stm32f205_soc.c b/hw/arm/stm32f205_soc.c
-> >> >> index f61e735..1cd6374 100644
-> >> >> --- a/hw/arm/stm32f205_soc.c
-> >> >> +++ b/hw/arm/stm32f205_soc.c
-> >> >> @@ -112,7 +112,7 @@ static void stm32f205_soc_realize(DeviceState *dev_soc, Error **errp)
-> >> >>
-> >> >>      armv7m = DEVICE(&s->armv7m);
-> >> >>      qdev_prop_set_uint32(armv7m, "num-irq", 96);
-> >> >> -    qdev_prop_set_string(armv7m, "cpu-model", s->cpu_model);
-> >> >> +    qdev_prop_set_string(armv7m, "cpu-type", s->cpu_type);
-> >> >>      object_property_set_link(OBJECT(&s->armv7m), OBJECT(get_system_memory()),
-> >> >>                                       "memory", &error_abort);
-> >> >>      object_property_set_bool(OBJECT(&s->armv7m), true, "realized", &err);
-> >> >> @@ -200,7 +200,7 @@ static void stm32f205_soc_realize(DeviceState *dev_soc, Error **errp)
-> >> >>  }
-> >> >>
-> >> >>  static Property stm32f205_soc_properties[] = {
-> >> >> -    DEFINE_PROP_STRING("cpu-model", STM32F205State, cpu_model),
-> >> >> +    DEFINE_PROP_STRING("cpu-type", STM32F205State, cpu_type),
-> >> >
-> >> > Same as armv7m: are we 100% sure users are not setting this
-> >> > manually?
-> >>
-> >> In an embedded board like this it really doesn't make sense to let the
-> >> user overwrite the CPU. The SoC will take it as an option, but the
-> >> board (which creates the SoC) just blindly always uses the same CPU.
-> >> That feature is more for QOMificatoion then any real reason though.
-> >>
-> >
-> > I'm not talking about -cpu (no user-visible change in the
-> > handling of -cpu should result from this patch), but about
-> > possible cases where the user set the "cpu-model" property using
-> > another mechanism, like -global.  Probably it's impossible for an
-> > user to override the property successfully, but I would like to
-> > be sure.
-> 
-> Ah, that is trickier.
-> 
-> I guess that is possible to do, but the object setting logic should
-> handle the error gracefully and inform the user of the error.
+On 9 September 2017 at 21:30, Eduardo Habkost <ehabkost@redhat.com> wrote:
+> However, I have a suggestion for Igor: making a separate patch
+> that renames the existing property to "x-cpu-model", and using
+> "x-cpu-type" in this series.  This way we will explicitly
+> document the fact that the property is not a stable
+> user/management interface.
 
-After looking at the code more closely, I think we can be 100%
-sure the user doesn't rely on the property, because:
+We have lots and lots of properties on non-user-instantiated
+devices that aren't intended as user level configurable
+things...
 
-* TYPE_ARMV7M and TYPE_STM32F205_SOC are both sysbus devices
-  with user_creatable=false, so the user can't instantiate them
-  directly;
-* The only places where those objects are realized inside the
-  code are:
-  * mps2_common_init()
-  * netduino2_init()
-  * stm32f205_soc_realize()
-  * armv7m_init()
-  Those functions always set the "cpu-model" property immediately
-  before realize.
-
-This means any value set by the user (e.g. using -global) would
-be always overwritten before realize.
-
-However, I have a suggestion for Igor: making a separate patch
-that renames the existing property to "x-cpu-model", and using
-"x-cpu-type" in this series.  This way we will explicitly
-document the fact that the property is not a stable
-user/management interface.
-
-> 
-> >
-> >
-> >> In saying that I think a warning if the user tries to set the CPU
-> >> would make sense. I know that this issues comes up in other ARM boards
-> >> (Zynq-7000 has the same issue as well) so maybe a machine property
-> >> saying that the board doesn't accept custom CPUs would be a good idea.
-> >
-> > Yeah, there are multiple cases in this patch where boards are
-> > validating the CPU model, but not all boards do that.  A generic
-> > MachineClass::valid_cpu_types[] field would be useful.
-> >
-> >>
-> >> Overall I think this patch is moving in the right direction though and
-> >> this CPU option being ignored existed before this series.
-> >
-> > I agree this is going on the right direction.  However, I don't
-> > see any board that ignore the CPU option: all of them seem to use
-> > cpu_model when creating the CPUs, already.
-> 
-> The Netduino2 will ignore any CPU options and always use a Cortex-m3.
-> I was wrong about Zynq-7000 though, it does respect the -cpu option.
-> 
-> Thanks,
-> Alistair
-> 
-> >
-> > --
-> > Eduardo
-
--- 
-Eduardo
+thanks
+-- PMM

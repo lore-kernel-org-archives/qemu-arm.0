@@ -1,86 +1,75 @@
-Received: by 10.223.172.38 with SMTP id v35csp3429574wrc;
-        Sat, 9 Sep 2017 15:42:27 -0700 (PDT)
-X-Received: by 10.237.63.15 with SMTP id p15mr9670991qtf.113.1504996946998;
-        Sat, 09 Sep 2017 15:42:26 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1504996946; cv=none;
+Received: by 10.223.172.38 with SMTP id v35csp3458286wrc;
+        Sat, 9 Sep 2017 16:22:49 -0700 (PDT)
+X-Google-Smtp-Source: AOwi7QDqipzssugjus54xyucZryoOIq5x8vSHOYc12042tfiEPmJTqz7eqVI3c8ApxBD2zyiteAT
+X-Received: by 10.200.39.104 with SMTP id h37mr10575482qth.165.1504999369824;
+        Sat, 09 Sep 2017 16:22:49 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1504999369; cv=none;
         d=google.com; s=arc-20160816;
-        b=qv868kansv/NNywtluTixv33M5+N5rSZ3jd+Lr/uVmPI/SY1Zt4cjTrrCNs3/bZASq
-         nQsk1v9VdSMZiUIAOEtdmpWOnh69w+lyn6UnNy5GouM6YVq2aY7v2t1rn3e6uMIYJR5Y
-         ioPL2W4YCy+Uaqu1Nn3usZRbkeojb+MAhjFYrkPT+DHwucrFa1EH/YnvBeDwLa0VR8Th
-         P3ywTL+KIyNVWKGhAJJDKniskTUgCsS3pSiLtxuUqtLfENoOqMYUaUPF3W5Sf7nzpBji
-         UuJ3QXVz7X95YJZcwc8Orbti+lJxyy0amZMsadN/7KGbLl0xyc7MLjEoriJXhLQz6+zO
-         O6lQ==
+        b=aW9gCJCNH8iyP+ffhZdosvc4eOe3c3IFy755hPqkWIOTcQbmPz8xq7uxz+l8C3YZf8
+         U5jnflR7ImLbeK1KinWKH7Fvf/xROwpsGU4B2KJirMemCcxH1x9u/HHgNQREAvuUcZoR
+         U7UZzsKTRhwzTBvw/vGFBnN9juoWHsizlGbFkGYE8teFazFV4I34g/qXUQrxHR7I7GY3
+         mad9fwClbBrcxZfOJu1Zj4qfWjJC5lBLWfso4ZgVoSOhxVVLk++F+2QQJV0YN1Sf1MkV
+         e/mXsiM1O72TMp0ABJQrvi4sKszHkz3vrPZZlKNSGtNGd2625p25soFLdu14CruzAO9o
+         WJ4w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
-         :references:in-reply-to:mime-version:dkim-signature
-         :arc-authentication-results;
-        bh=Em10Am+QWQYxdO5XUy2UgvoUiH2226A4ZMrbX00AocE=;
-        b=z5ZT4N77HaLlE/mOlzGFpWfR8FGQrzPSKpqLucLx/j6NravIDVQh9sRrH91ZMvZqoy
-         S4y1edtPLuIaG0+tuf84cSWCVYSMs0f34rjGkI9s38pVC1b8E6TxDPlkFvLZvTzJPVM3
-         DenV8oQJerxM/loN0td3CiBRH78xg91aSrsZm7RYOAh+gohFr+KOxuXnEZ4AyLLEKyVT
-         QVYhTYWfgbTUUdUgcDSj0G8QPWkWFaUKR9sQQFm5edbeM6HHwaibJFq1jvIrjI5b16v3
-         Fg1tZhGd7GZmbftpRsnTshBs0EJsHUkN3fbREjX0mntW7LSLmSZxecxrl4rR5OopnsCF
-         g2OA==
+         :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
+         :content-disposition:mime-version:references:message-id:to:from:date
+         :dmarc-filter:arc-authentication-results;
+        bh=Ijnys2HwR3e89xYAEXdd0/L/CNA1UXrIRb9Ox/tWhAo=;
+        b=lLZa1gaJbAe44copCJ+6Ko1D/AGVErjlqwcqqltmQFhKLvFGee7NO1j4ZpF7Ut/paR
+         hDWoQCt5bhexU/WwrAZL1phqnIM4pY5nJzmZoJPbpS1GZYb9YeTlrZkiLLmVBE3mQApZ
+         owERwf1tgTAzyAUcfVEy7KjJYncdwMhQMgFMbut31zQPZ4XfF6VSytILa0YERPFfTTvk
+         oH7GjZ5ln3OFNlJ25VR7FyeWpMZ7GeotOyzBh08QX11pr3ifth7EefwAPcixx1dw9pYz
+         Y7mvd0ZYduqjiMOltnKnj/pDG4V3YtPZDZTjoW3Z5o2Sr94HNsEvEdbG+IpbjtbYQ+Xe
+         mM5Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=AZJwNha/;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id n34si3879118qtb.277.2017.09.09.15.42.26
+        by mx.google.com with ESMTPS id e40si5820825qta.498.2017.09.09.16.22.49
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sat, 09 Sep 2017 15:42:26 -0700 (PDT)
+        Sat, 09 Sep 2017 16:22:49 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=AZJwNha/;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:51082 helo=lists.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:51148 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1dqoSG-00025l-N2
-	for alex.bennee@linaro.org; Sat, 09 Sep 2017 18:42:24 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:37576)
+	id 1dqp5L-0000Oq-KI
+	for alex.bennee@linaro.org; Sat, 09 Sep 2017 19:22:47 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:45369)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1dqoSA-00025W-Pd
-	for qemu-arm@nongnu.org; Sat, 09 Sep 2017 18:42:19 -0400
+	(envelope-from <ehabkost@redhat.com>) id 1dqp5G-0000Og-03
+	for qemu-arm@nongnu.org; Sat, 09 Sep 2017 19:22:42 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1dqoS9-0008W2-Vi
-	for qemu-arm@nongnu.org; Sat, 09 Sep 2017 18:42:18 -0400
-Received: from mail-wm0-x22f.google.com ([2a00:1450:400c:c09::22f]:44523)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1dqoS9-0008Vg-P4
-	for qemu-arm@nongnu.org; Sat, 09 Sep 2017 18:42:17 -0400
-Received: by mail-wm0-x22f.google.com with SMTP id 137so13487294wmj.1
-	for <qemu-arm@nongnu.org>; Sat, 09 Sep 2017 15:42:17 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=Em10Am+QWQYxdO5XUy2UgvoUiH2226A4ZMrbX00AocE=;
-	b=AZJwNha/OXI2+DG59z4+R/61ecemL2ioCjqsHLqtq9U9OB2Nyr9DaWSkjCB8ZdB7a7
-	EgpqTksoEZ5/BLaVQnrGYYVpBXst4RTaiXCNGeHPftat2oRIG/b6O8qe78Va+wygi2Ev
-	IWcJiHsjn1V38ptPMhZB10ngqYIe+H7Kj7PGk=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=Em10Am+QWQYxdO5XUy2UgvoUiH2226A4ZMrbX00AocE=;
-	b=Owk+6ezGrML730sulPcFghoO7ykEW+uwCxS9LUyUmwEdI6gCqXXuJ6BFs9jzCuI9a8
-	rOqcApZWLHUdaKKgiec/e3vHk4vOS7rFOInKbG0WKAqyNvcWZ9bvlVSiBvkECed3AeIy
-	Z9D9+lbuu7PualWJGUkWdNhaNLsfm5bacUG0jm3I725dHfxEBZt+CYwLCwdcSKLtUgAP
-	MTykLhfbd/4vFM35DDYn8kRZs41CD0lK1fksl7nAus5GYKBtiO74ukOoWKRfe/nlYSB2
-	pxf5QirCBAygas0R2ksXsYZNRGqLDzymJ5Oy5UukI3wm7HXQPfwwHC7Dbrr2z3q+9XTb
-	igDA==
-X-Gm-Message-State: AHPjjUiR+Opi2R6fTLlxIASUBQnk4kTFIl0EC8wtDFQbHn1PlfudvLb4
-	y7vdffyRxUpV3yq2GyBYf7srTYSBHrlpD03Imckatg==
-X-Google-Smtp-Source: AOwi7QCiu0DUqHbcA0Rt6QaEl7/bXGmZHCMD9zT4QUOTNTcfokgjCbSUrlZ7GSw31OWWH+UZrlqmA5m4H2jUuXTOkl0=
-X-Received: by 10.28.43.129 with SMTP id r123mr1428847wmr.101.1504996936609;
-	Sat, 09 Sep 2017 15:42:16 -0700 (PDT)
-MIME-Version: 1.0
-Received: by 10.223.139.215 with HTTP; Sat, 9 Sep 2017 15:41:55 -0700 (PDT)
-In-Reply-To: <20170909203014.GG7570@localhost.localdomain>
+	(envelope-from <ehabkost@redhat.com>) id 1dqp5B-0008CI-Vo
+	for qemu-arm@nongnu.org; Sat, 09 Sep 2017 19:22:41 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:42694)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <ehabkost@redhat.com>)
+	id 1dqp5B-0008Bp-Op; Sat, 09 Sep 2017 19:22:37 -0400
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+	[10.5.11.14])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 30A1883F3D;
+	Sat,  9 Sep 2017 23:22:36 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 30A1883F3D
+Authentication-Results: ext-mx03.extmail.prod.ext.phx2.redhat.com;
+	dmarc=none (p=none dis=none) header.from=redhat.com
+Authentication-Results: ext-mx03.extmail.prod.ext.phx2.redhat.com;
+	spf=fail smtp.mailfrom=ehabkost@redhat.com
+Received: from localhost (ovpn-116-45.gru2.redhat.com [10.97.116.45])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 995F35D9C0;
+	Sat,  9 Sep 2017 23:22:34 +0000 (UTC)
+Date: Sat, 9 Sep 2017 20:22:33 -0300
+From: Eduardo Habkost <ehabkost@redhat.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+Message-ID: <20170909232232.GM7570@localhost.localdomain>
 References: <1504533662-198084-1-git-send-email-imammedo@redhat.com>
 	<1504533662-198084-7-git-send-email-imammedo@redhat.com>
 	<20170905213152.GG17184@localhost.localdomain>
@@ -88,14 +77,20 @@ References: <1504533662-198084-1-git-send-email-imammedo@redhat.com>
 	<20170905221226.GZ7570@localhost.localdomain>
 	<CAKmqyKO4yRz3R0BJ+gz=UfLc0d_AoNtEAHn-SNFMzg3xo12D=Q@mail.gmail.com>
 	<20170909203014.GG7570@localhost.localdomain>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Sat, 9 Sep 2017 23:41:55 +0100
-Message-ID: <CAFEAcA9iTepyGg17xPB_4XOnoOK6iAPsvOdJg_XLEbdk+dggGg@mail.gmail.com>
-To: Eduardo Habkost <ehabkost@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2a00:1450:400c:c09::22f
+	<CAFEAcA9iTepyGg17xPB_4XOnoOK6iAPsvOdJg_XLEbdk+dggGg@mail.gmail.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <CAFEAcA9iTepyGg17xPB_4XOnoOK6iAPsvOdJg_XLEbdk+dggGg@mail.gmail.com>
+X-Fnord: you can see the fnord
+User-Agent: Mutt/1.8.3 (2017-05-23)
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.27]);
+	Sat, 09 Sep 2017 23:22:36 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.132.183.28
 Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH 6/6] arm: drop intermadiate
  cpu_model -> cpu type parsing and use cpu type directly
 X-BeenThere: qemu-arm@nongnu.org
@@ -119,18 +114,23 @@ Cc: Rob Herring <robh@kernel.org>, Andrew Jones <drjones@redhat.com>,
 	Richard Henderson <rth@twiddle.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: UDhyaDieyXxk
+X-TUID: y9Oc9QT+wOpb
 
-On 9 September 2017 at 21:30, Eduardo Habkost <ehabkost@redhat.com> wrote:
-> However, I have a suggestion for Igor: making a separate patch
-> that renames the existing property to "x-cpu-model", and using
-> "x-cpu-type" in this series.  This way we will explicitly
-> document the fact that the property is not a stable
-> user/management interface.
+On Sat, Sep 09, 2017 at 11:41:55PM +0100, Peter Maydell wrote:
+> On 9 September 2017 at 21:30, Eduardo Habkost <ehabkost@redhat.com> wrote:
+> > However, I have a suggestion for Igor: making a separate patch
+> > that renames the existing property to "x-cpu-model", and using
+> > "x-cpu-type" in this series.  This way we will explicitly
+> > document the fact that the property is not a stable
+> > user/management interface.
+> 
+> We have lots and lots of properties on non-user-instantiated
+> devices that aren't intended as user level configurable
+> things...
 
-We have lots and lots of properties on non-user-instantiated
-devices that aren't intended as user level configurable
-things...
+Well, we need to deal with them somehow, otherwise we have no
+simple way to know if removing/renaming a property is really safe
+or not.
 
-thanks
--- PMM
+-- 
+Eduardo

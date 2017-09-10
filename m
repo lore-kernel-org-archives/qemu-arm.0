@@ -1,137 +1,125 @@
-Received: by 10.223.172.38 with SMTP id v35csp1871017wrc;
-        Fri, 8 Sep 2017 09:58:58 -0700 (PDT)
-X-Received: by 10.233.244.72 with SMTP id z8mr4814276qkl.186.1504889937987;
-        Fri, 08 Sep 2017 09:58:57 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1504889937; cv=none;
+Received: by 10.223.172.38 with SMTP id v35csp3552031wrc;
+        Sat, 9 Sep 2017 18:43:14 -0700 (PDT)
+X-Received: by 10.99.3.216 with SMTP id 207mr7342795pgd.15.1505007794152;
+        Sat, 09 Sep 2017 18:43:14 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1505007794; cv=none;
         d=google.com; s=arc-20160816;
-        b=Hs1Y3Y9E/ow8DQ2Qf232k35sNH81INM5awU0Dw7/dbiLRJgZZR8NXPlw5NI5P6/mpy
-         /lznsK8xLSDnqdj1uzslhDDFozefcN313QVFC7r9uaIhTkY2z/M/MvDYMsfWFVbfx5tN
-         sPKvrqfdAFKzZOTfZWmN2BPtaN7ZGyMGPXqZDpE+ESROiTJ14OFMG6apGU7PRwWApOxd
-         Kxao6ifDNsBZt7n1TTZtVKdTWA/zaYE+ZDP8ivAtdbZvRSLfab58eWzm8Qqaj22Xd1hM
-         yh3V0LacmeMuahPu8/MK0OuqCNGfdJCM8Y4Pme1NjLYBEoBz5dNDtduF+bc+QgEwTq4C
-         3cUg==
+        b=oCm9ZoZvi8pm2jjRAKEsJds8D19Doy3DOU3SFx8UFeHy3lxVKRGSo6m68XWFfcLObx
+         owAD3mUKbNJ+V8/gKf2YBPnYXCwwcky0tRmrsjsKghXTikvTHV5QMWQkvIGT66o+b4uq
+         FvnU9+Gkk5mJQGi/jiI30Lh2mtHfS9ecDyDPp+OrVdirwuRxHska0kp6Qx3TEvfEr+k/
+         gr9os/uV3AeJOAwP4mZVOd7jWs9qPrFl6anqJ9MrMfmVkiPMaSuMTqsmi7n3bm6I8jAm
+         CDatMTIyTkefA8J12nJves5vjai65mD3GsYDMT5vbVg6LbuzyIoG3mSlEJa4osiAIsvt
+         gafQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:to:dkim-signature
-         :arc-authentication-results;
-        bh=JuRrKduGsTrQ9nvEQO7m5T/MVsADGK7MYb5Gx1XVwjQ=;
-        b=uNWIX4gZDmLWYBW0z4DV7vVKuSaCKfx3AAp302vmDY/elt9zcs/6hlqX0s/JOUwGRY
-         kyQ98E9rdKmlAM4om2cLi+wk/ky48RqN/KqCyhSqZh6+4bXos2wJDxz5BNPFYw0kgqOP
-         wpsu8A0DI0yJdb4MTi6rAeIr8a7Oq4SMO00ImwSY6Ip8NMwNiNkWhVa8whyz0AT8iQ2h
-         xdqWvciFJXjvjctwzRERlyIwNMxWBBHH9K6rqlkejG16qvMrGgZaJNf5f2X1W20Dh9/N
-         9PRXscO7PHuel2z8caJNaxmQ6kJFWB5KMcIb0nAOcb+Fhb5YmuNJJjEq0QMYQKH/wOC0
-         tUBQ==
+        h=content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:cc:to:subject
+         :dkim-signature:arc-authentication-results;
+        bh=0NG7Y1PKt0qPmW6LwuYdQ1pDY02CnA7mfg5KVnSmC3M=;
+        b=Q0Y61xYos7LOmUrtPOI/AoloHWxftcmWEngUwbEzeMcFsQBW0MCztgwAHEZx6kyXPL
+         gHlCZucdDk2U6rPNwtP1+oHVqZyYPiHfV6QDnFqcnDDp4T4Lbk7CHGDfSA2A9/8cBTYU
+         MF9zq1f8Ra31WuAGBWoNLfULhHTvWQBeYvdZ97Oz1oqa18eJ2qlEXb+fzWDFgUkeREId
+         d89CnU8uN+lS3vkh15j4NXMso6j3eC4iRZaTTiVcgicHcdmnIoQIYFAZE4t8SM+kZJMP
+         yOtH2nkge0cwGqxl4X5UcZwYwBs5TGTLUaK8CHwy/sVSfRSzDf5XCMy8GgBxBAscag4f
+         FnNw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=G6uRquyg;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id u17si2427572qtf.108.2017.09.08.09.58.57
+       dkim=pass header.i=@linaro.org header.s=google header.b=hxpyKYr0;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <richard.henderson@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id x14sor404049pgc.375.2017.09.09.18.43.13
         for <alex.bennee@linaro.org>
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 08 Sep 2017 09:58:57 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        (Google Transport Security);
+        Sat, 09 Sep 2017 18:43:14 -0700 (PDT)
+Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=G6uRquyg;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:46500 helo=lists.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1dqMcJ-0007il-OD
-	for alex.bennee@linaro.org; Fri, 08 Sep 2017 12:58:55 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:52342)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <richard.henderson@linaro.org>) id 1dqMcE-0007i5-Nu
-	for qemu-arm@nongnu.org; Fri, 08 Sep 2017 12:58:51 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <richard.henderson@linaro.org>) id 1dqMcB-0006px-PP
-	for qemu-arm@nongnu.org; Fri, 08 Sep 2017 12:58:50 -0400
-Received: from mail-pg0-x229.google.com ([2607:f8b0:400e:c05::229]:37329)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
-	id 1dqMcB-0006pf-IR
-	for qemu-arm@nongnu.org; Fri, 08 Sep 2017 12:58:47 -0400
-Received: by mail-pg0-x229.google.com with SMTP id d8so5759172pgt.4
-	for <qemu-arm@nongnu.org>; Fri, 08 Sep 2017 09:58:47 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=subject:to:references:from:message-id:date:user-agent:mime-version
-	:in-reply-to:content-language:content-transfer-encoding;
-	bh=JuRrKduGsTrQ9nvEQO7m5T/MVsADGK7MYb5Gx1XVwjQ=;
-	b=G6uRquygYbIWdABWUwjVkAgxvW4nOoMuToE2tKnMhDwxxra8wms+QBNF3Wj9eAm3/A
-	rQAcaO71dcuW3rJPJf31pIvqLmaklV+3I4mVBDps3BbsUXGsCkWlerMsYjr1KNvhHeIU
-	WCfbZ+olBY97c2LgXNHYQuPDaaNJ3kesRpznk=
+       dkim=pass header.i=@linaro.org header.s=google header.b=hxpyKYr0;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=subject:to:cc:references:from:message-id:date:user-agent
+         :mime-version:in-reply-to:content-language:content-transfer-encoding;
+        bh=0NG7Y1PKt0qPmW6LwuYdQ1pDY02CnA7mfg5KVnSmC3M=;
+        b=hxpyKYr0IzvOPJlh4+tpFTUvZoK0WKr3nyRyV9s0v7uTt80bls8AQly5HhUHU7Nt4Q
+         JSckk6Vxdt00uW2DYsgftFT5JKO7z35za/b3ucQBIOLaxxb7ognzYhmcRXCLbsbTD+i2
+         1oCX341ojcpQMA3/jZ4ei6QFg+kHOV7NQ1Tc8=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:subject:to:references:from:message-id:date
-	:user-agent:mime-version:in-reply-to:content-language
-	:content-transfer-encoding;
-	bh=JuRrKduGsTrQ9nvEQO7m5T/MVsADGK7MYb5Gx1XVwjQ=;
-	b=XKHCmqT2LLvkUHN628tmoWdj4cU8nVJUIf2kt/S8SLznxkbHZIasvg9lUvY6MY/oXW
-	aIAmegwSzkbLmzQ45wnck2/yd5QaF/YNO/06Rb9emnwshzv4toakBLxgCyDLVrFapt/i
-	BlH/WVZ5u0BGSkT0QvK0lEJ93gN3yIwUBZKacYaIccsvP1xtJ2L2OhJZbEL0AShzr/oj
-	IhU+KavFscB+vBFAIfqUTfIynbaJDQX1PTG5EQOJTCxmTr7yHzttYi9X6avibuwACBPZ
-	B1LB5jYV/292ZpxXporlDVDSDRwRXKqHGF1mj1LkfptqZrWVuh1x+BhoHhvh/Hge32ny
-	jvvg==
-X-Gm-Message-State: AHPjjUjzT3a8YxWGG4+x2Pbv7jTfr11mlNSXlcrAbsQxXIAb7o/SrvD0
-	hmmCOd0a7kvhVGI26l1FWg==
-X-Google-Smtp-Source: ADKCNb5SHiaqc+TQPA0gI4ZimdigY9fQsG+dOl378ZDYDwydgg5qeMLfEHaW6v2k4VauHJ4GJes2nA==
-X-Received: by 10.99.5.204 with SMTP id 195mr3724982pgf.231.1504889926223;
-	Fri, 08 Sep 2017 09:58:46 -0700 (PDT)
-Received: from bigtime.twiddle.net (97-126-108-236.tukw.qwest.net.
-	[97.126.108.236])
-	by smtp.gmail.com with ESMTPSA id v8sm3719461pgs.9.2017.09.08.09.58.44
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Fri, 08 Sep 2017 09:58:45 -0700 (PDT)
-To: Jaroslaw Pelczar <j.pelczar@samsung.com>, qemu-devel@nongnu.org,
-	"open list:ARM" <qemu-arm@nongnu.org>
-References: <CGME20170908110212eucas1p27c5eecf44c5501d23b322d3679a4f12d@eucas1p2.samsung.com>
-	<001801d32891$ec40b930$c4c22b90$@samsung.com>
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+         :user-agent:mime-version:in-reply-to:content-language
+         :content-transfer-encoding;
+        bh=0NG7Y1PKt0qPmW6LwuYdQ1pDY02CnA7mfg5KVnSmC3M=;
+        b=K1mPxSOYOQfCJtZE56aIWsn3wl6fwIhngOwu9ZUWCtIfUB42GpoVqkbF1c4W8OBF5S
+         mDHQ3AZZEG5x29IqoaMN+l581TJj2p1AKUFHSmaC+wfkQQPEW9yFYrse4wuzfl7hdL6y
+         vPf92fTbs8dNmh8N7t+oceSCBxH2wYluseQh6YiRpgxlhD0se+Cv1O7bGq59l5oVPERe
+         5HbH7ZcReq8rMuxhN+qN0fMU9xWVy1nNPB9z4n042mVfK+aYyJc3+07GOGNbzubrpO9F
+         WVdM28kgd8Do+KcM8jYEfy75Mk0KVWw9O5751sZRfc22CwI0lZFSl6XXbYAvtc0o6Ach
+         z3ZQ==
+X-Gm-Message-State: AHPjjUgdsNrQwcukL35o0lpTOQPSgYgIhaE6yJOx0mlBCGEzlcOTU6lz
+	C4TwSOMGjOmuUiM3i183rWPH
+X-Google-Smtp-Source: ADKCNb63v0u69F/lMfOkvGjts0a0y/zHMA3BI0qpG41LJRNkwnw8krNjTSA2bep7VazQkxRX8lyLJg==
+X-Received: by 10.99.160.100 with SMTP id u36mr7573433pgn.22.1505007793676;
+        Sat, 09 Sep 2017 18:43:13 -0700 (PDT)
+Return-Path: <richard.henderson@linaro.org>
+Received: from bigtime.twiddle.net (97-126-103-167.tukw.qwest.net. [97.126.103.167])
+        by smtp.gmail.com with ESMTPSA id l85sm10613877pfb.176.2017.09.09.18.43.12
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Sat, 09 Sep 2017 18:43:12 -0700 (PDT)
+Subject: Re: [PATCH 2/8] target/arm: Use generic vector infrastructure for
+ aa64 add/sub/logic
+To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
+References: <20170817230114.3655-1-richard.henderson@linaro.org>
+ <20170817230114.3655-3-richard.henderson@linaro.org>
+ <877examon2.fsf@linaro.org>
 From: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <633f5a2d-a333-5c78-1e0c-3af2a4c896f9@linaro.org>
-Date: Fri, 8 Sep 2017 09:58:43 -0700
+Message-ID: <05363152-8a66-af3f-7c66-9627cbdc290b@linaro.org>
+Date: Sat, 9 Sep 2017 18:43:10 -0700
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.3.0
+ Thunderbird/52.3.0
 MIME-Version: 1.0
-In-Reply-To: <001801d32891$ec40b930$c4c22b90$@samsung.com>
+In-Reply-To: <877examon2.fsf@linaro.org>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:400e:c05::229
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH 1/1] AArch64: Fix single
- stepping of ERET instruction
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.21
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: lPj+TlSBotX7
+Content-Transfer-Encoding: 8bit
+X-TUID: LvGaZdVHWaWT
 
-On 09/08/2017 04:02 AM, Jaroslaw Pelczar wrote:
-> Previously when single stepping through ERET instruction via GDB
-> would result in debugger entering the "next" PC after ERET instruction.
-> When debugging in kernel mode, this will also cause unintended behavior,
-> because debugger will try to access memory from EL0 point of view.
+On 09/07/2017 09:58 AM, Alex Bennée wrote:
+>> +    switch (size + 4 * is_u) {
 > 
-> Signed-off-by: Jaroslaw Pelczar <j.pelczar@samsung.com>
-> ---
->  target/arm/translate-a64.c | 1 +
->  1 file changed, 1 insertion(+)
+> Hmm I find this switch a little too magical. I mean I can see that the
+> encoding abuses size for the final opcode when I look at the manual but
+> it reads badly.
+> 
+>> +    case 0: /* AND */
+>> +        gvec_op = tcg_gen_gvec_and8;
+>> +        goto do_gvec;
+>> +    case 1: /* BIC */
+>> +        gvec_op = tcg_gen_gvec_andc8;
+>> +        goto do_gvec;
+>> +    case 2: /* ORR */
+>> +        gvec_op = tcg_gen_gvec_or8;
+>> +        goto do_gvec;
+>> +    case 3: /* ORN */
+>> +        gvec_op = tcg_gen_gvec_orc8;
+>> +        goto do_gvec;
+>> +    case 4: /* EOR */
+>> +        gvec_op = tcg_gen_gvec_xor8;
+>> +        goto do_gvec;
+>> +    do_gvec:
+>> +        gvec_op(vec_full_reg_offset(s, rd),
+>> +                vec_full_reg_offset(s, rn),
+>> +                vec_full_reg_offset(s, rm),
+>> +                is_q ? 16 : 8, vec_full_reg_size(s));
+>> +        return;
+> 
+> No default case (although I guess we just fall through). What's wrong
+> with just having a !is_u test with gvec_op = tbl[size] and skipping all
+> the goto stuff?
 
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Because that would still leave EOR out in the woods.
+I do think this is the cleanest way to filter out these 5 operations.
 
 
 r~

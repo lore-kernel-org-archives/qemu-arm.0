@@ -1,72 +1,72 @@
-Received: by 10.223.172.38 with SMTP id v35csp5559696wrc;
-        Mon, 11 Sep 2017 06:52:02 -0700 (PDT)
-X-Google-Smtp-Source: AOwi7QDy2d3PHRwvQB4Hbd45gU5sIc2JaAHbPidF39atZawSI6PHayVSpjJcVVoSTD4FVJp2WYCl
-X-Received: by 10.237.42.35 with SMTP id c32mr16972038qtd.171.1505137922498;
-        Mon, 11 Sep 2017 06:52:02 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1505137922; cv=none;
+Received: by 10.223.172.38 with SMTP id v35csp5559760wrc;
+        Mon, 11 Sep 2017 06:52:05 -0700 (PDT)
+X-Google-Smtp-Source: ADKCNb4ohEH2Guyeb/HJ8fGv0vnlEiJJbKaMZy1uchYkuUOIse0MCoGdkdS6NHGCfzxrLJXuWG/E
+X-Received: by 10.55.78.144 with SMTP id c138mr5291383qkb.67.1505137925655;
+        Mon, 11 Sep 2017 06:52:05 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1505137925; cv=none;
         d=google.com; s=arc-20160816;
-        b=AhBcr+VR6uSvOnEiAIPCFhWd4rW4Gflr8MXEBCauU/KpfU07qUrtba1/iSCpNv0d6K
-         HSiN8tCAf492o/gqUKZzaf6yWMMT30rfRT4TYbV18IfvPZMLJeIxwcIjrAwXhhl3HElV
-         2zsah7FT8f+msQYR1K3/7yr9ZeTz3hv9Y3HJQVBO78S2C6wFbfM82iI+8W/qrZUmHrp8
-         5XCFDMjjeqQLuuG8QlM04zF8iotxQ/4zwPjo5BoOOWiVdDXYjqLMk4K1XJbPkFvaNpJP
-         eC81zpmQlo+PJYK46fzY7Y72/dWdIqyGgCJnFe/3UUwfBsfOgbtliKNFkW3clAVuN6jy
-         e0/A==
+        b=N3BxXR5UMnTJOM4IAvxseZ3JfoXIYv+0erenADzRZjlHslwpsUN+Od64ZpPVdcoryV
+         BDgSaMnxYqZu74OW8PXJPdYMDu3MvYAFDptg+wy3XQWXEBB3jXbOlYLT8FYCckozlRuo
+         fzR7md2a2jKWTnEHU9OMZ7bgqWOz7NXcfqLWV3sArEOMlZPUzyQcamCyxm42TwLc6lCq
+         2nXTjSH6dj1DeMUwvzT19bf/nKy5648B21fY2KkxiSEiegPr51WymGTKqCooMfQ0lw64
+         D2WqBj+z8LqxSglDtu2aYPkpwOLvqeghy7DmAUFfNe+g082EvXWWGgUBdW5zRzLg7TCP
+         Of+g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
          :message-id:date:to:from:arc-authentication-results;
-        bh=TEbPFvKwynEH4nFWQ+8A95zks8NameeaaLUNU2P4XeA=;
-        b=idfHdIx0P8IGxOPlmPD3669JkuzfAB4b0J22V9n2ENFA2Xxn9getkiDoTW2swD+a/g
-         t1E1KQO4Xvh+qIIh3A+LdHryrRj3ORw1YPxahQAnGvHi2iHHtyqHAnB/83GqUciHAhnw
-         Jyx4RwdYijTXxT67yu9ToJRdqmFH0LZKan4wzGGfFDHv4Xu24ZG8KhpRxDoUQifIFMmH
-         Gxo1vGFqeefcDN2x7Y9lFJnFK9a3T0TRJ+Qgm0b9ad/L3OAb6jYpp6MEX/OyOcm8HbrL
-         FLC3kmxtkkOq7UUFR/qhB9nY+9bIi3aXrmM4yCXYOLSqw3WWM8SYH5zd4aREhOI/H3xx
-         74jg==
+        bh=6k5j7bPh2UtJioHBiuqMq6WxLOlMKo58G366QlD0APk=;
+        b=hCfVSbSzz1CYY59jF/InQH4N8gzsC+CC08m6JBIakPtymDG0pLgtlcr5+SSaC3d2Wl
+         Xzj/Jl1DL5jzz91LLNylHgH8t45rJAwr8b2QP7D5SLAarBXJ4tRsowFqZESK8AMOz+/K
+         XtvAb9Tm8LvuHQSinD8P0Hm1H5Ltmbb59t+6Qq/fUOqUaTj+sVw8YMzaOHA+af677xeA
+         STbH6C1Ti79smyHcm2iLeaWOW8s1BgloK/N9Fj3ZF1jcUsSISDjDAEStCmwpeGTFNVLH
+         yhMe9tfCsQZ777o3hp25fgEZQwiFWMIZ/1x747EANKfYdhzTHghaMSv2rS3f09H5imKR
+         YLLQ==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id 17si2970512qkd.252.2017.09.11.06.52.02
+        by mx.google.com with ESMTPS id u11si9031626qka.403.2017.09.11.06.52.05
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 11 Sep 2017 06:52:02 -0700 (PDT)
+        Mon, 11 Sep 2017 06:52:05 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:57898 helo=lists.gnu.org)
+Received: from localhost ([::1]:57899 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1drP84-0001cv-CC
-	for alex.bennee@linaro.org; Mon, 11 Sep 2017 09:52:00 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:41599)
+	id 1drP87-0001e8-7n
+	for alex.bennee@linaro.org; Mon, 11 Sep 2017 09:52:03 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:41613)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1drP81-0001cb-0g
-	for qemu-arm@nongnu.org; Mon, 11 Sep 2017 09:51:57 -0400
+	(envelope-from <pm215@archaic.org.uk>) id 1drP82-0001ch-5N
+	for qemu-arm@nongnu.org; Mon, 11 Sep 2017 09:51:59 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1drP80-000293-9a
-	for qemu-arm@nongnu.org; Mon, 11 Sep 2017 09:51:57 -0400
+	(envelope-from <pm215@archaic.org.uk>) id 1drP81-00029y-8R
+	for qemu-arm@nongnu.org; Mon, 11 Sep 2017 09:51:58 -0400
 Received: from orth.archaic.org.uk ([2001:8b0:1d0::2]:37238)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <pm215@archaic.org.uk>)
-	id 1drP80-00023m-2W; Mon, 11 Sep 2017 09:51:56 -0400
+	id 1drP81-00023m-0r; Mon, 11 Sep 2017 09:51:57 -0400
 Received: from pm215 by orth.archaic.org.uk with local (Exim 4.89)
 	(envelope-from <pm215@archaic.org.uk>)
-	id 1drP7r-0007mR-ID; Mon, 11 Sep 2017 14:51:47 +0100
+	id 1drP7t-0007nI-Lz; Mon, 11 Sep 2017 14:51:49 +0100
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Date: Mon, 11 Sep 2017 14:52:07 +0100
-Message-Id: <1505137930-13255-5-git-send-email-peter.maydell@linaro.org>
+Date: Mon, 11 Sep 2017 14:52:10 +0100
+Message-Id: <1505137930-13255-8-git-send-email-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.7.4
 In-Reply-To: <1505137930-13255-1-git-send-email-peter.maydell@linaro.org>
 References: <1505137930-13255-1-git-send-email-peter.maydell@linaro.org>
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
 X-Received-From: 2001:8b0:1d0::2
-Subject: [Qemu-arm] [PATCH 4/7] nvic: Don't apply group priority mask to
- negative priorities
+Subject: [Qemu-arm] [PATCH 7/7] target/arm: Rename 'type' to 'excret' in
+ do_v7m_exception_exit()
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -81,52 +81,101 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: patches@linaro.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: cMdZWR2RXfjo
+X-TUID: t7wtOlYauk8U
 
-In several places we were unconditionally applying the
-nvic_gprio_mask() to a priority value. This is incorrect
-if the priority is one of the fixed negative priority
-values (for NMI and HardFault), so don't do it.
-
-This bug would have caused both NMI and HardFault to be
-considered as the same priority and so NMI wouldn't
-correctly preempt HardFault.
+In the v7M and v8M ARM ARM, the magic exception return values are
+referred to as EXC_RETURN values, and in QEMU we use V7M_EXCRET_*
+constants to define bits within them. Rename the 'type' variable
+which holds the exception return value in do_v7m_exception_exit()
+to excret, making it clearer that it does hold an EXC_RETURN value.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- hw/intc/armv7m_nvic.c | 11 +++++++++--
- 1 file changed, 9 insertions(+), 2 deletions(-)
+ target/arm/helper.c | 23 ++++++++++++-----------
+ 1 file changed, 12 insertions(+), 11 deletions(-)
 
-diff --git a/hw/intc/armv7m_nvic.c b/hw/intc/armv7m_nvic.c
-index 1fecfd6..d3e2056 100644
---- a/hw/intc/armv7m_nvic.c
-+++ b/hw/intc/armv7m_nvic.c
-@@ -152,8 +152,12 @@ static void nvic_recompute_state(NVICState *s)
-         }
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index a502e4e..4f41841 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -6212,7 +6212,7 @@ static void v7m_push_stack(ARMCPU *cpu)
+ static void do_v7m_exception_exit(ARMCPU *cpu)
+ {
+     CPUARMState *env = &cpu->env;
+-    uint32_t type;
++    uint32_t excret;
+     uint32_t xpsr;
+     bool ufault = false;
+     bool return_to_sp_process = false;
+@@ -6233,18 +6233,19 @@ static void do_v7m_exception_exit(ARMCPU *cpu)
+      * the target value up between env->regs[15] and env->thumb in
+      * gen_bx(). Reconstitute it.
+      */
+-    type = env->regs[15];
++    excret = env->regs[15];
+     if (env->thumb) {
+-        type |= 1;
++        excret |= 1;
      }
  
-+    if (active_prio > 0) {
-+        active_prio &= nvic_gprio_mask(s);
-+    }
-+
-     s->vectpending = pend_irq;
--    s->exception_prio = active_prio & nvic_gprio_mask(s);
-+    s->exception_prio = active_prio;
+     qemu_log_mask(CPU_LOG_INT, "Exception return: magic PC %" PRIx32
+                   " previous exception %d\n",
+-                  type, env->v7m.exception);
++                  excret, env->v7m.exception);
  
-     trace_nvic_recompute_state(s->vectpending, s->exception_prio);
- }
-@@ -329,7 +333,10 @@ void armv7m_nvic_acknowledge_irq(void *opaque)
-     assert(vec->enabled);
-     assert(vec->pending);
+-    if ((type & R_V7M_EXCRET_RES1_MASK) != R_V7M_EXCRET_RES1_MASK) {
++    if ((excret & R_V7M_EXCRET_RES1_MASK) != R_V7M_EXCRET_RES1_MASK) {
+         qemu_log_mask(LOG_GUEST_ERROR, "M profile: zero high bits in exception "
+-                      "exit PC value 0x%" PRIx32 " are UNPREDICTABLE\n", type);
++                      "exit PC value 0x%" PRIx32 " are UNPREDICTABLE\n",
++                      excret);
+     }
  
--    pendgroupprio = vec->prio & nvic_gprio_mask(s);
-+    pendgroupprio = vec->prio;
-+    if (pendgroupprio > 0) {
-+        pendgroupprio &= nvic_gprio_mask(s);
-+    }
-     assert(pendgroupprio < running);
+     if (env->v7m.exception != ARMV7M_EXCP_NMI) {
+@@ -6255,7 +6256,7 @@ static void do_v7m_exception_exit(ARMCPU *cpu)
+          * which security state's faultmask to clear. (v8M ARM ARM R_KBNF.)
+          */
+         if (arm_feature(env, ARM_FEATURE_M_SECURITY)) {
+-            int es = type & R_V7M_EXCRET_ES_MASK;
++            int es = excret & R_V7M_EXCRET_ES_MASK;
+             if (armv7m_nvic_raw_execution_priority(env->nvic) >= 0) {
+                 env->v7m.faultmask[es] = 0;
+             }
+@@ -6283,7 +6284,7 @@ static void do_v7m_exception_exit(ARMCPU *cpu)
+         g_assert_not_reached();
+     }
  
-     trace_nvic_acknowledge_irq(pending, vec->prio);
+-    switch (type & 0xf) {
++    switch (excret & 0xf) {
+     case 1: /* Return to Handler */
+         return_to_handler = true;
+         break;
+@@ -6306,7 +6307,7 @@ static void do_v7m_exception_exit(ARMCPU *cpu)
+          */
+         env->v7m.cfsr[env->v7m.secure] |= R_V7M_CFSR_INVPC_MASK;
+         armv7m_nvic_set_pending(env->nvic, ARMV7M_EXCP_USAGE);
+-        v7m_exception_taken(cpu, type);
++        v7m_exception_taken(cpu, excret);
+         qemu_log_mask(CPU_LOG_INT, "...taking UsageFault on existing "
+                       "stackframe: failed exception return integrity check\n");
+         return;
+@@ -6341,14 +6342,14 @@ static void do_v7m_exception_exit(ARMCPU *cpu)
+ 
+     /* The restored xPSR exception field will be zero if we're
+      * resuming in Thread mode. If that doesn't match what the
+-     * exception return type specified then this is a UsageFault.
++     * exception return excret specified then this is a UsageFault.
+      */
+     if (return_to_handler != arm_v7m_is_handler_mode(env)) {
+         /* Take an INVPC UsageFault by pushing the stack again. */
+         armv7m_nvic_set_pending(env->nvic, ARMV7M_EXCP_USAGE);
+         env->v7m.cfsr[env->v7m.secure] |= R_V7M_CFSR_INVPC_MASK;
+         v7m_push_stack(cpu);
+-        v7m_exception_taken(cpu, type);
++        v7m_exception_taken(cpu, excret);
+         qemu_log_mask(CPU_LOG_INT, "...taking UsageFault on new stackframe: "
+                       "failed exception return integrity check\n");
+         return;
 -- 
 2.7.4
 

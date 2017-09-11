@@ -1,95 +1,89 @@
-Received: by 10.223.188.70 with SMTP id a6csp1107275wrh;
-        Fri, 1 Sep 2017 07:46:07 -0700 (PDT)
-X-Received: by 10.200.51.230 with SMTP id d35mr3339422qtb.44.1504277167116;
-        Fri, 01 Sep 2017 07:46:07 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1504277167; cv=none;
+Received: by 10.223.172.38 with SMTP id v35csp5368399wrc;
+        Mon, 11 Sep 2017 04:31:17 -0700 (PDT)
+X-Google-Smtp-Source: AOwi7QC11kcjvT8lhoGmf9J9cMGnIxd72te36v8idIA/s5ayi8eFze667HREB2LNYMKaCJU4ugMt
+X-Received: by 10.55.66.22 with SMTP id p22mr4440837qka.78.1505129477122;
+        Mon, 11 Sep 2017 04:31:17 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1505129477; cv=none;
         d=google.com; s=arc-20160816;
-        b=Z+Vnxas1MmWGzdLVLTMlrqj832A3GuJ8EluGKsmtwqEQDxWTFLcpLOA5rcQ1W7eB4K
-         tk1YtkfEQY974adOCj8OA0EVF3sDCEN8wIGoXMjKJa1MwXPkJM15yt71qkleSvNIKC1A
-         HsfT+4NASIOARDZueYhwDRhCoX5wX02PwE1tTreHxvLd1f0lFYLzS+7+bKUJuHZMeu1A
-         Vm0iCdOPCBo3o4X93V2Oorm4a6s7+OtFUOEbnmminbbYcS2zrxIktkRM3XrjtkEaR4sK
-         rNVegVdFGrYwN/cVBzAdH3o9+atJBb//ATAcuG6RE5/iVN37vHSICWgzVQ85sJSy1sad
-         JE7w==
+        b=usXzYsr6JYzLwFD1FGcCNg57f3FlE43fdZVa2Yt9XTdDn1uH0sQQ5NUx+l2LyeLVn5
+         UGak7/vriULxe52PjrP/r80lXjy190LvBjoaRHv6RinfaeKO/DPyW9h95Qg7oPobm5XD
+         JCDquEqAgH7vmeFXqYjDvCLaNHM+fsu+lvY4rK4TmSR2zOs0b1Mgctno924fjrVUTPt+
+         1L5Gkq4jFOhlpTTQBCO7+WIRfdcumQDEAjmcyTFWE99iPQTuIT7ACttEJ4ZCC5uy04se
+         Zb5imL3OVmPfwnSt4I1XCUa+NVW1KZQayP5nztSaXcHl7oAmUxu9h/8t3YL5ypLtSH5b
+         kxrQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:reply-to:from:list-subscribe:list-help
-         :list-post:list-archive:list-unsubscribe:list-id:precedence:subject
-         :to:message-id:date:references:in-reply-to:mime-version
-         :dkim-signature:arc-authentication-results;
-        bh=GjvQQR2ZrVieKpWbJ9PpoJOfRL9NKN9jX2W9Rzx1jVc=;
-        b=0pe6C4Kx0j+Tkg5L2SoHCRbhbG/LXB7gYgL1WGX5QV926LuoMjDTK6Er6uXAbZ2XGR
-         HG4344GzfCCshhq7JKGK7JAxy2/+rUuLyMsO5+PebdrdBd1hPXK1Qgjb5TNJCd3Fj/OO
-         oXSFbKklgKhfd89Nq27bQ0GexKeHRAkhJf+mNzOyoOhKUX+4jbHSfEDXOikfgNy4LKt2
-         fLeahBpqD5dNKX1WBrgyx6bw/pi0XyybV1CxlapKdBzbfTzSRS5X4E0Nrr1QewKv9ecg
-         O1VO2ME/mZJvyI5mo3pwFf/BPnrvSzrrKa7Dh7wR1Zf2n3l5hj/Q3fSalW7aSv5TOAFB
-         6m/Q==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:to:from:dmarc-filter:arc-authentication-results;
+        bh=bPjqXmYGoHpl/VfbxlaYG4jhFw9H4PXUmOXf8rub7j4=;
+        b=INk7O3Micy5wKNVJXCHZsdU9NMGl4HuKUAYfzsFd+i01uk51cTYjfaOF/pgygqE6j4
+         ky77rq5wTJJDDNcnHAa2eZ8+Y4lebC9mDzm88TZ+PZHBhohci75U9/26QQpEkN3rnryw
+         iQJ24qA8953mXO8op/OT5XqrQSoGHMbPWB1RsrURKIlubeX2cEylHp6tyL+fntxkaj1a
+         NcXfT8Ee4c2DfIj+yHPNFWYY9HeRQ8vOU1Skpfv6Dd0vZVpp8rckvWGbcvEaqd8AiPLD
+         A4VYTXicivHAqinbjB7mARLb2T2I0xcwOnRiXJBd3upykdOkMp/E8Cxzd+DBh3HUL9l3
+         tHnA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=neutral (body hash did not verify) header.i=@apm.com header.s=apm header.b=so5GV7DX;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id f123si7598237qkd.60.2017.09.01.07.46.06
+        by mx.google.com with ESMTPS id c20si9406464qta.516.2017.09.11.04.31.16
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 01 Sep 2017 07:46:07 -0700 (PDT)
+        Mon, 11 Sep 2017 04:31:17 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=neutral (body hash did not verify) header.i=@apm.com header.s=apm header.b=so5GV7DX;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:44315 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:56849 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1dnnCu-0001rz-TZ
-	for alex.bennee@linaro.org; Fri, 01 Sep 2017 10:46:04 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:37454)
+	id 1drMvq-0001VX-P2
+	for alex.bennee@linaro.org; Mon, 11 Sep 2017 07:31:14 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:44008)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <fkan@apm.com>) id 1dnnC1-0001Ne-Gd
-	for qemu-devel@nongnu.org; Fri, 01 Sep 2017 10:45:10 -0400
+	(envelope-from <marcandre.lureau@redhat.com>) id 1drMaP-0007Au-5u
+	for qemu-devel@nongnu.org; Mon, 11 Sep 2017 07:09:07 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <fkan@apm.com>) id 1dnnBw-00088M-6M
-	for qemu-devel@nongnu.org; Fri, 01 Sep 2017 10:45:09 -0400
-Received: from mail-wr0-x22d.google.com ([2a00:1450:400c:c0c::22d]:33967)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <fkan@apm.com>) id 1dnnBv-00087E-S0
-	for qemu-devel@nongnu.org; Fri, 01 Sep 2017 10:45:04 -0400
-Received: by mail-wr0-x22d.google.com with SMTP id z91so1189477wrc.1
-	for <qemu-devel@nongnu.org>; Fri, 01 Sep 2017 07:45:02 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=apm.com; s=apm;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=pJOq8lzS7XfvOxCcpbKTxz0kMk/dqIzbuEfxnADOIaE=;
-	b=so5GV7DXQ9x1pCv7LKTZjj7ELkryPcJhLJrZVCI+PQlPn0+usJo/1+kfn9pgIOxDaR
-	rYV3Tg9spTrAYKjWP4mXqi3u8sWxPq0IifwEugw7k99dOxwF00ZGkHXxQlAldzt54s/i
-	zijtVxfdj77GVvFZzNk/2icThb9gx8kglg8iY=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=pJOq8lzS7XfvOxCcpbKTxz0kMk/dqIzbuEfxnADOIaE=;
-	b=Tm/6lEA6GzzDBKZF36gMmRNE78kC+1JfXeW3xaEozSNhIL5aLdLyV4GwaHv+m26emu
-	4hVmqjXw2zboSkhtzrAo+KSxCGURwQmBHHUVi3FhHrkcN76lJ5zaGL91AKEY23PCc7rY
-	/vpMBqoCdYeLnRGfTc9yXFoXEy6qxbktTjZoTnNKaFCLU0Y6PpCkJbxw5MMv7jySGVoh
-	ZVc6+gmsaSttzBb2L3Iw1r1ehvJemGnI1faIygBcYlQRZE0vMHrYQ+P24BCGsweWpxJS
-	UrQmY/W6/eZGjDrRojWz97+BUUpD/vfUC5Gois50qLhbYJ0OFwUl+KDhlpdQDnlng75n
-	8pcw==
-X-Gm-Message-State: AHPjjUhY8gIm848LFZWfQEkAW0HeyMRLDXPKOE6yLcENsBx7QykSt6VD
-	ZNIqVTaVseTbnlo6gPjefkvp0ARrKMgE
-X-Google-Smtp-Source: ADKCNb6MhoyPDQglIWruiWrkYNsIZLuceOyTLB/MHB1SWMHToXVlYFr4Z0IQpE7MrNYDqRAYDtDsnJMCqev8XB8Xo2M=
-X-Received: by 10.223.171.29 with SMTP id q29mr1276285wrc.30.1504277101266;
-	Fri, 01 Sep 2017 07:45:01 -0700 (PDT)
+	(envelope-from <marcandre.lureau@redhat.com>) id 1drMaN-0007hB-J6
+	for qemu-devel@nongnu.org; Mon, 11 Sep 2017 07:09:05 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:39238)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <marcandre.lureau@redhat.com>)
+	id 1drMaH-0007er-5z; Mon, 11 Sep 2017 07:08:57 -0400
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
+	[10.5.11.16])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 41E84CC096;
+	Mon, 11 Sep 2017 11:08:56 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 41E84CC096
+Authentication-Results: ext-mx01.extmail.prod.ext.phx2.redhat.com;
+	dmarc=none (p=none dis=none) header.from=redhat.com
+Authentication-Results: ext-mx01.extmail.prod.ext.phx2.redhat.com;
+	spf=fail smtp.mailfrom=marcandre.lureau@redhat.com
+Received: from localhost (ovpn-112-47.ams2.redhat.com [10.36.112.47])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id C66185C269;
+	Mon, 11 Sep 2017 11:08:53 +0000 (UTC)
+From: =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>
+To: qemu-devel@nongnu.org
+Date: Mon, 11 Sep 2017 13:06:23 +0200
+Message-Id: <20170911110623.24981-51-marcandre.lureau@redhat.com>
+In-Reply-To: <20170911110623.24981-1-marcandre.lureau@redhat.com>
+References: <20170911110623.24981-1-marcandre.lureau@redhat.com>
 MIME-Version: 1.0
-Received: by 10.28.236.210 with HTTP; Fri, 1 Sep 2017 07:45:00 -0700 (PDT)
-Received: by 10.28.236.210 with HTTP; Fri, 1 Sep 2017 07:45:00 -0700 (PDT)
-In-Reply-To: <1499634139-20399-1-git-send-email-eric.auger@redhat.com>
-References: <1499634139-20399-1-git-send-email-eric.auger@redhat.com>
-Date: Fri, 1 Sep 2017 07:45:00 -0700
-Message-ID: <CAL85gmARf+Mz5-PFHvPXV290umodKD8_6yFABSxc+ghm2iCsGQ@mail.gmail.com>
-To: Auger Eric <eric.auger@redhat.com>
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2a00:1450:400c:c0c::22d
-Content-Type: text/plain; charset="UTF-8"
-X-Content-Filtered-By: Mailman/MimeDel 2.1.21
-Subject: Re: [Qemu-devel] [PATCH RESEND v3 0/3] Generic PCIe host bridge
- INTx determination for INTx routing
+Content-Type: text/plain; charset=UTF-8
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.25]);
+	Mon, 11 Sep 2017 11:08:56 +0000 (UTC)
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.132.183.28
+Subject: [Qemu-devel] [PATCH v3 50/50] qapi: make query-cpu-definitions
+ depend on specific targets
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -101,60 +95,249 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
 	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-From: Feng Kan via Qemu-devel <qemu-devel@nongnu.org>
-Reply-To: Feng Kan <fkan@apm.com>
-Cc: wei@redhat.com, peter.maydell@linaro.org, drjones@redhat.com, agraf@suse.de,
-	qemu-devel@nongnu.org, Alex Williamson <alex.williamson@redhat.com>,
-	qemu-arm@nongnu.org, eric.auger.pro@gmail.com,
-	christoffer.dall@linaro.org, pranavkumar@linaro.org
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+	Eduardo Habkost <ehabkost@redhat.com>, armbru@redhat.com,
+	"Dr. David Alan Gilbert" <dgilbert@redhat.com>,
+	Alexander Graf <agraf@suse.de>, "open list:ARM" <qemu-arm@nongnu.org>,
+	"open list:PowerPC" <qemu-ppc@nongnu.org>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	=?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
+	David Gibson <david@gibson.dropbear.id.au>,
+	Richard Henderson <rth@twiddle.net>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: hldCxIj9lLBr
+X-TUID: IJgblyEkKnXa
 
-On Jul 9, 2017 2:04 PM, "Eric Auger" <eric.auger@redhat.com> wrote:
+It depends on TARGET_PPC || TARGET_ARM || TARGET_I386 || TARGET_S390X.
 
-This series implements INTx to gsi routing for ARM VIRT/Gpex. This is
-a respin of [1] which was lost in limbo.
+Signed-off-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
+---
+ qapi-schema.json            | 11 -----------
+ qapi/target.json            | 12 ++++++++++++
+ include/sysemu/arch_init.h  |  1 -
+ monitor.c                   | 22 ----------------------
+ qmp.c                       |  5 -----
+ stubs/arch-query-cpu-def.c  | 10 ----------
+ target/arm/helper.c         |  3 ++-
+ target/i386/cpu.c           |  2 +-
+ target/ppc/translate_init.c |  3 ++-
+ target/s390x/cpu_models.c   |  2 +-
+ stubs/Makefile.objs         |  1 -
+ 11 files changed, 18 insertions(+), 54 deletions(-)
+ delete mode 100644 stubs/arch-query-cpu-def.c
 
-ARM virt uses GPEX PCIe bridge. This latter does not implement INTx
-to GSI routing. PCIe/INTx assignment works but the consequence is
-irqfd is not used along with INTx interrupts and VFIO INTx handlers
-are executed on userspace leading to an important performance degradation.
+diff --git a/qapi-schema.json b/qapi-schema.json
+index 98525c7702..975f2fd30f 100644
+--- a/qapi-schema.json
++++ b/qapi-schema.json
+@@ -1945,17 +1945,6 @@
+   'data': { 'name': 'str', '*migration-safe': 'bool', 'static': 'bool',
+             '*unavailable-features': [ 'str' ], 'typename': 'str' } }
+=20
+-##
+-# @query-cpu-definitions:
+-#
+-# Return a list of supported virtual CPU definitions
+-#
+-# Returns: a list of CpuDefInfo
+-#
+-# Since: 1.2.0
+-##
+-{ 'command': 'query-cpu-definitions', 'returns': ['CpuDefinitionInfo'] }
+-
+ ##
+ # @CpuModelInfo:
+ #
+diff --git a/qapi/target.json b/qapi/target.json
+index d9f3bce22f..e06c9e3ed7 100644
+--- a/qapi/target.json
++++ b/qapi/target.json
+@@ -214,3 +214,15 @@
+             'model': 'CpuModelInfo' },
+   'returns': 'CpuModelExpansionInfo',
+   'if': 'defined(TARGET_S390X) || defined(TARGET_I386)' }
++
++##
++# @query-cpu-definitions:
++#
++# Return a list of supported virtual CPU definitions
++#
++# Returns: a list of CpuDefInfo
++#
++# Since: 1.2.0
++##
++{ 'command': 'query-cpu-definitions', 'returns': ['CpuDefinitionInfo'],
++  'if': 'defined(TARGET_PPC) || defined(TARGET_ARM) || defined(TARGET_I3=
+86) || defined(TARGET_S390X)' }
+diff --git a/include/sysemu/arch_init.h b/include/sysemu/arch_init.h
+index 08a607b89b..e9721b9ce8 100644
+--- a/include/sysemu/arch_init.h
++++ b/include/sysemu/arch_init.h
+@@ -31,5 +31,4 @@ extern const uint32_t arch_type;
+ int kvm_available(void);
+ int xen_available(void);
+=20
+-CpuDefinitionInfoList *arch_query_cpu_definitions(Error **errp);
+ #endif
+diff --git a/monitor.c b/monitor.c
+index 24680f37a6..00fb1bbf4e 100644
+--- a/monitor.c
++++ b/monitor.c
+@@ -957,26 +957,6 @@ static void qmp_query_qmp_schema(QDict *qdict, QObje=
+ct **ret_data,
+     *ret_data =3D qobject_from_qlit(&qmp_schema_qlit);
+ }
+=20
+-/*
+- * We used to define commands in qmp-commands.hx in addition to the
+- * QAPI schema.  This permitted defining some of them only in certain
+- * configurations.  query-commands has always reflected that (good,
+- * because it lets QMP clients figure out what's actually available),
+- * while query-qmp-schema never did (not so good).  This function is a
+- * hack to keep the configuration-specific commands defined exactly as
+- * before, even though qmp-commands.hx is gone.
+- *
+- * FIXME Educate the QAPI schema on configuration-specific commands,
+- * and drop this hack.
+- */
+-static void qmp_unregister_commands_hack(void)
+-{
+-#if !defined(TARGET_PPC) && !defined(TARGET_ARM) && !defined(TARGET_I386=
+) \
+-    && !defined(TARGET_S390X)
+-    qmp_unregister_command(&qmp_commands, "query-cpu-definitions");
+-#endif
+-}
+-
+ void monitor_init_qmp_commands(void)
+ {
+     /*
+@@ -998,8 +978,6 @@ void monitor_init_qmp_commands(void)
+     qmp_register_command(&qmp_commands, "netdev_add", qmp_netdev_add,
+                          QCO_NO_OPTIONS);
+=20
+-    qmp_unregister_commands_hack();
+-
+     QTAILQ_INIT(&qmp_cap_negotiation_commands);
+     qmp_register_command(&qmp_cap_negotiation_commands, "qmp_capabilitie=
+s",
+                          qmp_marshal_qmp_capabilities, QCO_NO_OPTIONS);
+diff --git a/qmp.c b/qmp.c
+index afa266ec1e..d57ccf1251 100644
+--- a/qmp.c
++++ b/qmp.c
+@@ -541,11 +541,6 @@ DevicePropertyInfoList *qmp_device_list_properties(c=
+onst char *typename,
+     return prop_list;
+ }
+=20
+-CpuDefinitionInfoList *qmp_query_cpu_definitions(Error **errp)
+-{
+-    return arch_query_cpu_definitions(errp);
+-}
+-
+ void qmp_add_client(const char *protocol, const char *fdname,
+                     bool has_skipauth, bool skipauth, bool has_tls, bool=
+ tls,
+                     Error **errp)
+diff --git a/stubs/arch-query-cpu-def.c b/stubs/arch-query-cpu-def.c
+deleted file mode 100644
+index cefe4beb82..0000000000
+--- a/stubs/arch-query-cpu-def.c
++++ /dev/null
+@@ -1,10 +0,0 @@
+-#include "qemu/osdep.h"
+-#include "qemu-common.h"
+-#include "sysemu/arch_init.h"
+-#include "qapi/qmp/qerror.h"
+-
+-CpuDefinitionInfoList *arch_query_cpu_definitions(Error **errp)
+-{
+-    error_setg(errp, QERR_UNSUPPORTED);
+-    return NULL;
+-}
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index 329e5178d8..b3ea771fcd 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -15,6 +15,7 @@
+ #include <zlib.h> /* For crc32 */
+ #include "exec/semihost.h"
+ #include "sysemu/kvm.h"
++#include "target-qmp-commands.h"
+=20
+ #define ARM_CPU_FREQ 1000000000 /* FIXME: 1 GHz, should be configurable =
+*/
+=20
+@@ -5327,7 +5328,7 @@ static void arm_cpu_add_definition(gpointer data, g=
+pointer user_data)
+     *cpu_list =3D entry;
+ }
+=20
+-CpuDefinitionInfoList *arch_query_cpu_definitions(Error **errp)
++CpuDefinitionInfoList *qmp_query_cpu_definitions(Error **errp)
+ {
+     CpuDefinitionInfoList *cpu_list =3D NULL;
+     GSList *list;
+diff --git a/target/i386/cpu.c b/target/i386/cpu.c
+index f8719cb2de..9cd1dee1a5 100644
+--- a/target/i386/cpu.c
++++ b/target/i386/cpu.c
+@@ -2363,7 +2363,7 @@ static void x86_cpu_definition_entry(gpointer data,=
+ gpointer user_data)
+     *cpu_list =3D entry;
+ }
+=20
+-CpuDefinitionInfoList *arch_query_cpu_definitions(Error **errp)
++CpuDefinitionInfoList *qmp_query_cpu_definitions(Error **errp)
+ {
+     CpuDefinitionInfoList *cpu_list =3D NULL;
+     GSList *list =3D get_sorted_cpu_model_list();
+diff --git a/target/ppc/translate_init.c b/target/ppc/translate_init.c
+index c827d1e388..680352f953 100644
+--- a/target/ppc/translate_init.c
++++ b/target/ppc/translate_init.c
+@@ -35,6 +35,7 @@
+ #include "mmu-book3s-v3.h"
+ #include "sysemu/qtest.h"
+ #include "qemu/cutils.h"
++#include "target-qmp-commands.h"
+=20
+ //#define PPC_DUMP_CPU
+ //#define PPC_DEBUG_SPR
+@@ -10415,7 +10416,7 @@ static void ppc_cpu_defs_entry(gpointer data, gpo=
+inter user_data)
+     *first =3D entry;
+ }
+=20
+-CpuDefinitionInfoList *arch_query_cpu_definitions(Error **errp)
++CpuDefinitionInfoList *qmp_query_cpu_definitions(Error **errp)
+ {
+     CpuDefinitionInfoList *cpu_list =3D NULL;
+     GSList *list;
+diff --git a/target/s390x/cpu_models.c b/target/s390x/cpu_models.c
+index 872dc78455..26c9fff79c 100644
+--- a/target/s390x/cpu_models.c
++++ b/target/s390x/cpu_models.c
+@@ -390,7 +390,7 @@ static void create_cpu_model_list(ObjectClass *klass,=
+ void *opaque)
+     *cpu_list =3D entry;
+ }
+=20
+-CpuDefinitionInfoList *arch_query_cpu_definitions(Error **errp)
++CpuDefinitionInfoList *qmp_query_cpu_definitions(Error **errp)
+ {
+     struct CpuDefinitionInfoListData list_data =3D {
+         .list =3D NULL,
+diff --git a/stubs/Makefile.objs b/stubs/Makefile.objs
+index 8d024a2b71..22e9197dcd 100644
+--- a/stubs/Makefile.objs
++++ b/stubs/Makefile.objs
+@@ -1,4 +1,3 @@
+-stub-obj-y +=3D arch-query-cpu-def.o
+ stub-obj-y +=3D bdrv-next-monitor-owned.o
+ stub-obj-y +=3D blk-commit-all.o
+ stub-obj-y +=3D blockdev-close-all-bdrv-states.o
+--=20
+2.14.1.146.gd35faa819
 
-This issue is witnessed by the following messages;
-
-qemu-system-aarch64: -device vfio-pci,host=0006:90:00.0: PCI: Bug -
-unimplemented PCI INTx routing (gpex-pcihost)
-qemu-system-aarch64: PCI: Bug - unimplemented PCI INTx routing
-(gpex-pcihost)
-qemu-system-aarch64: PCI: Bug - unimplemented PCI INTx routing
-(gpex-pcihost)
-
-So with this series, irqfd is set up for PCIe/INTx passthrough and we get
-the optimal performance. Also we get rid of the above messages.
-
-This series can be found at:
-https://github.com/eauger/qemu/tree/v2.9-gpex-intx-v3
-
-References:
-[1] Generic PCIe host bridge INTx determination for INTx routing
-   https://lists.gnu.org/archive/html/qemu-devel/2015-09/msg04975.html
-
-
-Pranavkumar Sawargaonkar (3):
-  hw/pci-host/gpex: Set INTx index/gsi mapping
-  hw/arm/virt: Set INTx/gsi mapping
-  hw/pci-host/gpex: Implement PCI INTx routing
-
- hw/arm/virt.c              |  4 ++++
- hw/pci-host/gpex.c         | 22 ++++++++++++++++++++++
- include/hw/pci-host/gpex.h |  3 +++
- 3 files changed, 29 insertions(+)
-
---
-2.5.5
-
-Tested-by: Feng Kan <fkan@apm.com>
-
-Works for APM XGene systems.
-Thanks!

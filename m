@@ -1,95 +1,95 @@
-Received: by 10.100.151.138 with SMTP id q10csp5998672pja;
-        Mon, 11 Sep 2017 08:30:58 -0700 (PDT)
-X-Google-Smtp-Source: AOwi7QCXXkF5ez3D+HFXGiOhUwwnTrZGcFpqBfG/Bu12hPCijcmzmZOCVvtO4s75Cl0E6odcqJtD
-X-Received: by 10.200.18.70 with SMTP id g6mr17158816qtj.87.1505143858828;
-        Mon, 11 Sep 2017 08:30:58 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1505143858; cv=none;
+Received: by 10.100.151.138 with SMTP id q10csp6005143pja;
+        Mon, 11 Sep 2017 08:35:50 -0700 (PDT)
+X-Google-Smtp-Source: AOwi7QAK074tPZ+58TqW8FYl82Bs8VeNEb3EDpQ3QMUEz9/UEq3Rf9s0Yg1XvlcOUs5fiA2SNrvO
+X-Received: by 10.55.76.205 with SMTP id z196mr16430590qka.252.1505144150244;
+        Mon, 11 Sep 2017 08:35:50 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1505144150; cv=none;
         d=google.com; s=arc-20160816;
-        b=qxMTk0Gt9bjBic7IFw+WJ+ZBjHFzWxyds/rwS+lAYcynIGkAx5Ji2XIh9vgwqeCDG2
-         d7e5Bf5kxcoP7nIZ/dnSlxKbIip1v6Cgc4fvTXIhug7/6OK6D/17OaX6zN+lq8XDN/K8
-         yQCAeCeDKnxI5siY+0QW6PKZg2TJfAbjUWVdPxW56bB9+0LvvY9IOS666BOczk34EpPA
-         FQ3jZl4CNTWn1InE1d3nTsYKSq6jspP9fxDqjTPQofjHdC5GCs8FIqO8KUo6w5vOb4Ok
-         umRGH9G56yB0xPC1FsDSoyUSz9Ca2kJcUy+dm9njasAajfDmK4dn2ATztY3fymiNdu/p
-         69pg==
+        b=0+YMpy+TDpEn5ySHvODoQIq/uVE73WjCXBI69LXjDZQwDcOxltw6lGpBhVRI3FDzS8
+         ImOBoeongE6YRyt0UI0Pgq0ElTzlDjkjcgGjOs8oXj6+7tGpeu3mo46NsFJ6LpXmRPXP
+         W4C7SzV513+VGqyepgdObn956k2gytU5bdkcS+ULAKK1dTh+m55vF6uXktPHcjybjXvu
+         P4mWiD//YVcJinQmyURmGVGXGO4VpljJwfkyYCpM8ypZmZhd90dN5qoqQT95cKHmcadD
+         536JcxtLdVI8xv7VIOwqGL6OGTlQmuTv5pVd/cyDlbUB3991idkuirm0dooa7+Mqv/ck
+         Ievw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:content-language:in-reply-to:mime-version
          :user-agent:date:message-id:from:references:to:dmarc-filter
          :arc-authentication-results;
-        bh=YZdKrn2h9rs6ZtD3lm2PNFbWNpdB1Rjz/p/4i+qRYIk=;
-        b=MlnYhE/u1QLMONAxi8cIE2bz0kk4EAQP5L0lfZ2r04bKiCjxmHRpe4KMdUm+YvsRYc
-         P+Qh4vbr5bVpkb9vhn4Di8/pn4D3+xsW8qz4MUjc2d2e6e+J/QdAzgACIxdMI+grhLkv
-         3g5P46DpxmlQQnmquK59D4DVs/2Ame/mep5QHCn8+sjfOQKJbIgsCmmTjTWGXPl8ddN1
-         PFPzu1ZDwK/6Rg9gnnKBwuTwpuIr8OtEj1ydzL6FZgjRIzTGwE4B3DR/psEhseue38LC
-         NUsSdpeQ35gxa0fj0nGbCCmY0bnkk2APgpbnGYtoLx5IEjUUUd/z82KjnYts2aPhWPMJ
-         HwDg==
+        bh=eLKNVPyizJX5owbZw+MxYn0IjXG5WOSfm1sGptnJUgQ=;
+        b=Ej1UAX8B1lwlS1FDyRqF0h1WfhquFTGRqU6wOBOGsxDgkG9v+Q27w72Fcq6QnAUQ9C
+         ccSwgelnmy20pvbjhk8c0KolHNiv4wgc3fzsqmk64FfgPdqo1bJxPfW6xpy8kakZVTLU
+         tk+Wwv09+zuP/JMF198JuWysGGRHb30T3Cfhali9t9eexZ3ADi+IS6sVxQlOlNVoXiAH
+         8G0kkm1/uOu5RY6M64nZAagTSz42n+O6qBn1b8xC18BOxSqoTCOhKNTlG51stFBkfru8
+         P74sz+HsCoiAtBVTjDAbh3BPnUE5BQWmCzb/ev59L1lR1865F3WsZuUC3ke793TYbVmt
+         Y2Og==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id e39si9541525qkh.77.2017.09.11.08.30.58
+        by mx.google.com with ESMTPS id n19si9989887qtc.340.2017.09.11.08.35.49
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 11 Sep 2017 08:30:58 -0700 (PDT)
+        Mon, 11 Sep 2017 08:35:50 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:58432 helo=lists.gnu.org)
+Received: from localhost ([::1]:58464 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1drQfo-0003iA-J5
-	for alex.bennee@linaro.org; Mon, 11 Sep 2017 11:30:56 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:50244)
+	id 1drQkW-0007la-4E
+	for alex.bennee@linaro.org; Mon, 11 Sep 2017 11:35:48 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:54296)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <lvivier@redhat.com>) id 1drQab-00079E-BT
-	for qemu-arm@nongnu.org; Mon, 11 Sep 2017 11:25:35 -0400
+	(envelope-from <lvivier@redhat.com>) id 1drQkQ-0007jX-JW
+	for qemu-arm@nongnu.org; Mon, 11 Sep 2017 11:35:43 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <lvivier@redhat.com>) id 1drQaW-0007LS-D6
-	for qemu-arm@nongnu.org; Mon, 11 Sep 2017 11:25:33 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:53566)
+	(envelope-from <lvivier@redhat.com>) id 1drQkN-00039S-IK
+	for qemu-arm@nongnu.org; Mon, 11 Sep 2017 11:35:42 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:46900)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <lvivier@redhat.com>)
-	id 1drQaW-0007Jv-4I; Mon, 11 Sep 2017 11:25:28 -0400
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
-	[10.5.11.13])
+	id 1drQkN-00038y-8n; Mon, 11 Sep 2017 11:35:39 -0400
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
+	[10.5.11.11])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 17F46C3FB2;
-	Mon, 11 Sep 2017 15:25:27 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 17F46C3FB2
-Authentication-Results: ext-mx01.extmail.prod.ext.phx2.redhat.com;
+	by mx1.redhat.com (Postfix) with ESMTPS id 398FD2F86FC;
+	Mon, 11 Sep 2017 15:35:38 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 398FD2F86FC
+Authentication-Results: ext-mx05.extmail.prod.ext.phx2.redhat.com;
 	dmarc=none (p=none dis=none) header.from=redhat.com
-Authentication-Results: ext-mx01.extmail.prod.ext.phx2.redhat.com;
+Authentication-Results: ext-mx05.extmail.prod.ext.phx2.redhat.com;
 	spf=fail smtp.mailfrom=lvivier@redhat.com
 Received: from [10.36.116.239] (ovpn-116-239.ams2.redhat.com [10.36.116.239])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id BD71660A98;
-	Mon, 11 Sep 2017 15:25:24 +0000 (UTC)
-To: Greg Kurz <groug@kaod.org>
+	by smtp.corp.redhat.com (Postfix) with ESMTP id D7EA419621;
+	Mon, 11 Sep 2017 15:35:35 +0000 (UTC)
+To: Peter Maydell <peter.maydell@linaro.org>
 References: <20170911142056.15643-1-lvivier@redhat.com>
 	<20170911142056.15643-3-lvivier@redhat.com>
-	<20170911170804.0ee06c00@bahia.lan>
+	<CAFEAcA_G8mEzB0Mox0TTz578LQKXgvhNHeZ8Bk7OwC4NbqiXPg@mail.gmail.com>
 From: Laurent Vivier <lvivier@redhat.com>
-Message-ID: <5b7621f0-072f-9bf0-c4bb-23f85a8faaec@redhat.com>
-Date: Mon, 11 Sep 2017 17:25:23 +0200
+Message-ID: <309f01b9-3066-60fd-47d5-5206ae6360ed@redhat.com>
+Date: Mon, 11 Sep 2017 17:35:34 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
 	Thunderbird/52.3.0
 MIME-Version: 1.0
-In-Reply-To: <20170911170804.0ee06c00@bahia.lan>
+In-Reply-To: <CAFEAcA_G8mEzB0Mox0TTz578LQKXgvhNHeZ8Bk7OwC4NbqiXPg@mail.gmail.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.25]);
-	Mon, 11 Sep 2017 15:25:27 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.29]);
+	Mon, 11 Sep 2017 15:35:38 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [Qemu-ppc] [PATCH v2 2/3] hmp: fix
- "dump-quest-memory" segfault (arm)
+Subject: Re: [Qemu-arm] [PATCH v2 2/3] hmp: fix "dump-quest-memory" segfault
+ (arm)
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -101,20 +101,18 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
-	"Daniel P . Berrange" <berrange@redhat.com>,
-	Cornelia Huck <cohuck@redhat.com>, qemu-devel@nongnu.org,
+Cc: Thomas Huth <thuth@redhat.com>, "Daniel P . Berrange" <berrange@redhat.com>,
+	Cornelia Huck <cohuck@redhat.com>, QEMU Developers <qemu-devel@nongnu.org>,
 	"Dr . David Alan Gilbert" <dgilbert@redhat.com>,
-	qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
+	Greg Kurz <groug@kaod.org>, qemu-arm <qemu-arm@nongnu.org>,
+	"qemu-ppc@nongnu.org" <qemu-ppc@nongnu.org>,
 	David Gibson <david@gibson.dropbear.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: chFYUd9qYU5T
+X-TUID: sOT02wRzCWHo
 
-On 11/09/2017 17:08, Greg Kurz wrote:
-> On Mon, 11 Sep 2017 16:20:55 +0200
-> Laurent Vivier <lvivier@redhat.com> wrote:
-> 
+On 11/09/2017 16:39, Peter Maydell wrote:
+> On 11 September 2017 at 15:20, Laurent Vivier <lvivier@redhat.com> wrote:
 >> Commit fd5d23babf (hmp: fix "dump-quest-memory" segfault)
 >> fixes the problem for i386, do the same for arm.
 >>
@@ -127,98 +125,17 @@ On 11/09/2017 17:08, Greg Kurz wrote:
 >> Fix by checking if we have CPU.
 >>
 >> Signed-off-by: Laurent Vivier <lvivier@redhat.com>
->> ---
->>  target/arm/arch_dump.c | 52 +++++++++++++++++++++++++++++++++-----------------
->>  1 file changed, 34 insertions(+), 18 deletions(-)
->>
->> diff --git a/target/arm/arch_dump.c b/target/arm/arch_dump.c
->> index 1a9861f69b..1f58cff256 100644
->> --- a/target/arm/arch_dump.c
->> +++ b/target/arm/arch_dump.c
->> @@ -273,8 +273,6 @@ int arm_cpu_write_elf32_note(WriteCoreDumpFunction f, CPUState *cs,
->>  int cpu_get_dump_info(ArchDumpInfo *info,
->>                        const GuestPhysBlockList *guest_phys_blocks)
->>  {
->> -    ARMCPU *cpu = ARM_CPU(first_cpu);
->> -    CPUARMState *env = &cpu->env;
->>      GuestPhysBlock *block;
->>      hwaddr lowest_addr = ULLONG_MAX;
->>  
->> @@ -290,13 +288,32 @@ int cpu_get_dump_info(ArchDumpInfo *info,
->>          }
->>      }
->>  
->> -    if (arm_feature(env, ARM_FEATURE_AARCH64)) {
->> -        info->d_machine = EM_AARCH64;
->> -        info->d_class = ELFCLASS64;
->> -        info->page_size = (1 << 16); /* aarch64 max pagesize */
->> -        if (lowest_addr != ULLONG_MAX) {
->> -            info->phys_base = lowest_addr;
->> +    if (first_cpu) {
->> +        ARMCPU *cpu = ARM_CPU(first_cpu);
->> +        CPUARMState *env = &cpu->env;
->> +        if (arm_feature(env, ARM_FEATURE_AARCH64)) {
->> +            info->d_machine = EM_AARCH64;
->> +            info->d_class = ELFCLASS64;
->> +            info->page_size = (1 << 16); /* aarch64 max pagesize */
->> +            if (lowest_addr != ULLONG_MAX) {
->> +                info->phys_base = lowest_addr;
->> +            }
->> +        } else {
->> +            info->d_machine = EM_ARM;
->> +            info->d_class = ELFCLASS32;
->> +            info->page_size = (1 << 12);
->> +            if (lowest_addr < UINT_MAX) {
->> +                info->phys_base = lowest_addr;
->> +            }
->>          }
->> +
->> +        /* We assume the relevant endianness is that of EL1; this is right
->> +         * for kernels, but might give the wrong answer if you're trying to
->> +         * dump a hypervisor that happens to be running an opposite-endian
->> +         * kernel.
->> +         */
->> +        info->d_endian = (env->cp15.sctlr_el[1] & SCTLR_EE) != 0
->> +                         ? ELFDATA2MSB : ELFDATA2LSB;
->>      } else {
->>          info->d_machine = EM_ARM;
->>          info->d_class = ELFCLASS32;
->> @@ -304,25 +321,24 @@ int cpu_get_dump_info(ArchDumpInfo *info,
->>          if (lowest_addr < UINT_MAX) {
->>              info->phys_base = lowest_addr;
->>          }
->> +        info->d_endian = ELFDATA2LSB;
->>      }
->>  
->> -    /* We assume the relevant endianness is that of EL1; this is right
->> -     * for kernels, but might give the wrong answer if you're trying to
->> -     * dump a hypervisor that happens to be running an opposite-endian
->> -     * kernel.
->> -     */
->> -    info->d_endian = (env->cp15.sctlr_el[1] & SCTLR_EE) != 0
->> -                     ? ELFDATA2MSB : ELFDATA2LSB;
->> -
->>      return 0;
->>  }
->>  
->>  ssize_t cpu_get_note_size(int class, int machine, int nr_cpus)
->>  {
->> -    ARMCPU *cpu = ARM_CPU(first_cpu);
->> -    CPUARMState *env = &cpu->env;
->> +    ARMCPU *cpu;
->> +    CPUARMState *env;
->>      size_t note_size;
->>  
->> +    if (first_cpu == NULL) {
->> +        return 0;
->> +    }
->> +
 > 
-> Looking at the function's code, it seems that env is only needed if
-> class != ELFCLASS64... I guess that all the code dealing with first_cpu
-> should go to the else block.
+> It seems a little arbitrary to assume that if there's no
+> CPU what you wanted was a 32-bit little-endian dump.
 
-if first_cpu is NULL, nr_cpus is 0 and the function always returns 0.
+We need a default value.  Is 64bit and/or big-endian better?
+
+> Why do we have a machine without a CPU anyway ?
+
+To hotplug it later?
+
+As we can, we should avoid the segfault.
 
 Thanks,
 Laurent

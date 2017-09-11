@@ -1,130 +1,140 @@
-Received: by 10.182.158.201 with SMTP id ww9csp118973obb;
-        Mon, 16 Nov 2015 06:05:27 -0800 (PST)
-X-Received: by 10.28.145.132 with SMTP id t126mr17916663wmd.31.1447682726319;
-        Mon, 16 Nov 2015 06:05:26 -0800 (PST)
-Return-Path: <pm215@archaic.org.uk>
-Received: from mnementh.archaic.org.uk (mnementh.archaic.org.uk. [2001:8b0:1d0::1])
-        by mx.google.com with ESMTPS id pl6si46157674wjb.64.2015.11.16.06.05.25
-        (version=TLS1_2 cipher=AES128-SHA bits=128/128);
-        Mon, 16 Nov 2015 06:05:26 -0800 (PST)
-Received-SPF: pass (google.com: best guess record for domain of pm215@archaic.org.uk designates 2001:8b0:1d0::1 as permitted sender) client-ip=2001:8b0:1d0::1;
+Received: by 10.223.172.38 with SMTP id v35csp5896754wrc;
+        Mon, 11 Sep 2017 11:09:58 -0700 (PDT)
+X-Received: by 10.98.166.137 with SMTP id r9mr12650657pfl.86.1505153398247;
+        Mon, 11 Sep 2017 11:09:58 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1505153398; cv=none;
+        d=google.com; s=arc-20160816;
+        b=CiGhRx6zN5IJ/DYbWWe+iDferPRh4iEFdw4Dft301fhrV4+6COGp+ivVohk5ciN0GH
+         SD+NGTOcs/pkXC3YQ/Q3wqfP+EcIA77nmfQDTEt5uZJKGhUi3UrEmrE9wXJ8eUshohr/
+         ZLgdQt4YDVsAAeObVcGyJTEVJOHSncGoHgI9UhmEMMpUVwmli99naG6ccPUlqA/vk3Li
+         cFhCzoftT3Q3FsgvZWKWbUxrJzpXIXn1ZlDPUr1Ax15ASIXSjSMH6IqgMw5/moi9Vx+P
+         Ct6bjkXyjp5VllDrzqpcR1z0YzD57MC3BwHQD7JWg164vfyNoI1BjSY5trTZzJNS1Dwx
+         H3vw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:cc:to:subject
+         :dkim-signature:arc-authentication-results;
+        bh=cZAm4ukSaFeubMedDtCI2IgxkI7upiExwYOsQb7NNjc=;
+        b=oQgruSfRqXU3u4JELeSLUmxjlytSw6QfIKQghm3d8UWdw7bvCl6n3CqfstWGcwWgOe
+         l/LFLa9vsgpYlWmE7xV4fNZtCPmWTy+mSmEsYdVxovWJcqfSrOUnN2J1H+9HCzXrXcGA
+         ksT9t8WdCU5Ua6Z2fIIO3lT7Cf2ToyYnlkDjvsGmmYlPvwop7yLYe9P1Ts5wubhCbCpr
+         Ol3cJ0+3f7C+/ugI81wMm5h1eKPZjHlOjd5NWYY2rB1MR3QliZAyaMOOrHaynpQnjZ+o
+         qYAM4fcRcDCFWmXEdVtPQA94n1uiIhpEKmsv430KI3wYh/P6YMAChx4RrWyH07NLI2HU
+         dEzQ==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=hSF+ltfI;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <richard.henderson@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id r9sor4202734pgd.420.2017.09.11.11.09.57
+        for <alex.bennee@linaro.org>
+        (Google Transport Security);
+        Mon, 11 Sep 2017 11:09:58 -0700 (PDT)
+Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: best guess record for domain of pm215@archaic.org.uk designates 2001:8b0:1d0::1 as permitted sender) smtp.mailfrom=pm215@archaic.org.uk
-Received: from pm215 by mnementh.archaic.org.uk with local (Exim 4.80)
-	(envelope-from <pm215@archaic.org.uk>)
-	id 1ZyKPL-00013S-Ro; Mon, 16 Nov 2015 14:05:23 +0000
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: patches@linaro.org,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	=?UTF-8?q?Andreas=20F=C3=A4rber?= <afaerber@suse.de>,
-	qemu-arm@nongnu.org
-Subject: [PATCH v2 13/19] target-arm: Add QOM property for Secure memory region
-Date: Mon, 16 Nov 2015 14:05:17 +0000
-Message-Id: <1447682723-3977-14-git-send-email-peter.maydell@linaro.org>
-X-Mailer: git-send-email 1.7.10.4
-In-Reply-To: <1447682723-3977-1-git-send-email-peter.maydell@linaro.org>
-References: <1447682723-3977-1-git-send-email-peter.maydell@linaro.org>
-X-TUID: mOXGQ87AQ3Rs
+       dkim=pass header.i=@linaro.org header.s=google header.b=hSF+ltfI;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=subject:to:cc:references:from:message-id:date:user-agent
+         :mime-version:in-reply-to:content-language:content-transfer-encoding;
+        bh=cZAm4ukSaFeubMedDtCI2IgxkI7upiExwYOsQb7NNjc=;
+        b=hSF+ltfI4CMIsvUOkTP8fYjcBihazG2WnWUA5SIAj3jpswM3CifZ2Q4fUzN4rPaak0
+         sAa6VqUPMnp1xQUuF/3dzb7qnwHXAfCEzKPZXtysAQmknTRULldZIR74ovUmoy74E0m9
+         5b0Ew8JTGHB2ESLSID8Nx+KbofmF+bsINekXo=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+         :user-agent:mime-version:in-reply-to:content-language
+         :content-transfer-encoding;
+        bh=cZAm4ukSaFeubMedDtCI2IgxkI7upiExwYOsQb7NNjc=;
+        b=KaJJgkKewxK1yW+XYPI89bv1jHncy5Hxl3siaiZ8ddKUssVQAS47fkuqygxd3r+MQe
+         IfquEmQ8Gu8o/QeqBtJdTasL1hwIzI6bPBEDAt8hd4Lih5SFVAmlYQiIBExfh76Xw5pa
+         EdU7/atDGA2HAWOxTDIgagXTftPF0UvmZkMuV/NLEKRUrPMTe29Jbc3LXMvwPpG4Ql3f
+         378i+xOczb792wuQI7eGvFn29HUrrePLdPgrdXvorMWIku+/8sJd7NxICZU7NwoMTyqy
+         lF+QavnOf4r0bDK51Zf9oaiECj2dT6GA+Nsq0XeK05uwigRnH/eSHTjCgx6+apThcm4s
+         CreA==
+X-Gm-Message-State: AHPjjUg1UK8i/cyPiKgA/wHZTI/XVtRQZB8drNfSYJEbDlk7b9b5wODY
+	XBQgua9n82kSZAJvykYlQZmE
+X-Google-Smtp-Source: ADKCNb6/XXMHShtM/8y5Atzoz5YlSXdIbsyhEy0V+uJiuUVAc7je5jtc0LAVKswmWfm+vi+9vWZWHg==
+X-Received: by 10.101.77.137 with SMTP id p9mr12268697pgq.88.1505153397696;
+        Mon, 11 Sep 2017 11:09:57 -0700 (PDT)
+Return-Path: <richard.henderson@linaro.org>
+Received: from bigtime.twiddle.net (97-126-103-167.tukw.qwest.net. [97.126.103.167])
+        by smtp.gmail.com with ESMTPSA id p88sm15104825pfi.174.2017.09.11.11.09.56
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 11 Sep 2017 11:09:56 -0700 (PDT)
+Subject: Re: [PATCH 2/8] target/arm: Use generic vector infrastructure for
+ aa64 add/sub/logic
+To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
+References: <20170817230114.3655-1-richard.henderson@linaro.org>
+ <20170817230114.3655-3-richard.henderson@linaro.org>
+ <877examon2.fsf@linaro.org> <05363152-8a66-af3f-7c66-9627cbdc290b@linaro.org>
+ <8760cpbnul.fsf@linaro.org>
+From: Richard Henderson <richard.henderson@linaro.org>
+Message-ID: <f7ea7bc2-29f0-e941-838e-b915f1cc1a5a@linaro.org>
+Date: Mon, 11 Sep 2017 11:09:54 -0700
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+ Thunderbird/52.3.0
+MIME-Version: 1.0
+In-Reply-To: <8760cpbnul.fsf@linaro.org>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+X-TUID: Z0mIYvbrsdB/
 
-Add QOM property to the ARM CPU which boards can use to tell us what
-memory region to use for secure accesses. Nonsecure accesses
-go via the memory region specified with the base CPU class 'memory'
-property.
+On 09/11/2017 02:12 AM, Alex Bennée wrote:
+> 
+> Richard Henderson <richard.henderson@linaro.org> writes:
+> 
+>> On 09/07/2017 09:58 AM, Alex Bennée wrote:
+>>>> +    switch (size + 4 * is_u) {
+>>>
+>>> Hmm I find this switch a little too magical. I mean I can see that the
+>>> encoding abuses size for the final opcode when I look at the manual but
+>>> it reads badly.
+>>>
+>>>> +    case 0: /* AND */
+>>>> +        gvec_op = tcg_gen_gvec_and8;
+>>>> +        goto do_gvec;
+>>>> +    case 1: /* BIC */
+>>>> +        gvec_op = tcg_gen_gvec_andc8;
+>>>> +        goto do_gvec;
+>>>> +    case 2: /* ORR */
+>>>> +        gvec_op = tcg_gen_gvec_or8;
+>>>> +        goto do_gvec;
+>>>> +    case 3: /* ORN */
+>>>> +        gvec_op = tcg_gen_gvec_orc8;
+>>>> +        goto do_gvec;
+>>>> +    case 4: /* EOR */
+>>>> +        gvec_op = tcg_gen_gvec_xor8;
+>>>> +        goto do_gvec;
+>>>> +    do_gvec:
+>>>> +        gvec_op(vec_full_reg_offset(s, rd),
+>>>> +                vec_full_reg_offset(s, rn),
+>>>> +                vec_full_reg_offset(s, rm),
+>>>> +                is_q ? 16 : 8, vec_full_reg_size(s));
+>>>> +        return;
+>>>
+>>> No default case (although I guess we just fall through). What's wrong
+>>> with just having a !is_u test with gvec_op = tbl[size] and skipping all
+>>> the goto stuff?
+>>
+>> Because that would still leave EOR out in the woods.
+>> I do think this is the cleanest way to filter out these 5 operations.
+> 
+> Is this going to look better if the other operations in this branch of
+> the decode are converted as well?
 
-By default, if no secure region is specified it is the same as the
-nonsecure region, and if no nonsecure region is specified we will use
-address_space_memory.
+It might do.  I'll have to think about those some more.
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
- target-arm/cpu-qom.h |  3 +++
- target-arm/cpu.c     | 32 ++++++++++++++++++++++++++++++++
- target-arm/cpu.h     |  6 ++++++
- 3 files changed, 41 insertions(+)
+Indeed, perhaps that's exactly what I ought to do.  Those are complex logical
+operations which certainly will not get their own opcodes, but are "simple" in
+that they can be implemented in terms of vector xor+and, so there's no reason
+we couldn't expand those inline for all vector supporting hosts.
 
-diff --git a/target-arm/cpu-qom.h b/target-arm/cpu-qom.h
-index 25fb1ce..8cb5bd5 100644
---- a/target-arm/cpu-qom.h
-+++ b/target-arm/cpu-qom.h
-@@ -87,6 +87,9 @@ typedef struct ARMCPU {
-     /* GPIO outputs for generic timer */
-     qemu_irq gt_timer_outputs[NUM_GTIMERS];
- 
-+    /* MemoryRegion to use for secure physical accesses */
-+    MemoryRegion *secure_memory;
-+
-     /* 'compatible' string for this CPU for Linux device trees */
-     const char *dtb_compatible;
- 
-diff --git a/target-arm/cpu.c b/target-arm/cpu.c
-index 30739fc..690d984 100644
---- a/target-arm/cpu.c
-+++ b/target-arm/cpu.c
-@@ -542,6 +542,15 @@ static void arm_cpu_post_init(Object *obj)
-          */
-         qdev_property_add_static(DEVICE(obj), &arm_cpu_has_el3_property,
-                                  &error_abort);
-+
-+#ifndef CONFIG_USER_ONLY
-+        object_property_add_link(obj, "secure-memory",
-+                                 TYPE_MEMORY_REGION,
-+                                 (Object **)&cpu->secure_memory,
-+                                 qdev_prop_allow_set_link_before_realize,
-+                                 OBJ_PROP_LINK_UNREF_ON_RELEASE,
-+                                 &error_abort);
-+#endif
-     }
- 
-     if (arm_feature(&cpu->env, ARM_FEATURE_MPU)) {
-@@ -665,6 +674,29 @@ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
- 
-     init_cpreg_list(cpu);
- 
-+#ifndef CONFIG_USER_ONLY
-+    if (cpu->has_el3) {
-+        cs->num_ases = 2;
-+    } else {
-+        cs->num_ases = 1;
-+    }
-+
-+    if (cpu->has_el3) {
-+        AddressSpace *as;
-+
-+        if (!cpu->secure_memory) {
-+            cpu->secure_memory = cs->memory;
-+        }
-+        as = address_space_init_shareable(cpu->secure_memory,
-+                                          "cpu-secure-memory");
-+        cpu_address_space_init(cs, as, ARMASIdx_S);
-+    }
-+    cpu_address_space_init(cs,
-+                           address_space_init_shareable(cs->memory,
-+                                                        "cpu-memory"),
-+                           ARMASIdx_NS);
-+#endif
-+
-     qemu_init_vcpu(cs);
-     cpu_reset(cs);
- 
-diff --git a/target-arm/cpu.h b/target-arm/cpu.h
-index 815fef8..9108b5b 100644
---- a/target-arm/cpu.h
-+++ b/target-arm/cpu.h
-@@ -1720,6 +1720,12 @@ static inline int cpu_mmu_index(CPUARMState *env, bool ifetch)
-     return el;
- }
- 
-+/* Indexes used when registering address spaces with cpu_address_space_init */
-+typedef enum ARMASIdx {
-+    ARMASIdx_NS = 0,
-+    ARMASIdx_S = 1,
-+} ARMASIdx;
-+
- /* Return the Exception Level targeted by debug exceptions;
-  * currently always EL1 since we don't implement EL2 or EL3.
-  */
--- 
-1.9.1
+
+r~

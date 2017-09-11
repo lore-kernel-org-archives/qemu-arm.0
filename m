@@ -1,94 +1,111 @@
-Received: by 10.223.172.38 with SMTP id v35csp5641533wrc;
-        Mon, 11 Sep 2017 07:52:11 -0700 (PDT)
-X-Google-Smtp-Source: AOwi7QDzKASjyteUTYiu9rKC5uTMJ4HP014i1N2SQj1ebl46ZYtAVl74qFPCaitXFAHUTCnTytWj
-X-Received: by 10.55.132.67 with SMTP id g64mr16581418qkd.268.1505141531770;
-        Mon, 11 Sep 2017 07:52:11 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1505141531; cv=none;
+Received: by 10.223.172.38 with SMTP id v35csp5650623wrc;
+        Mon, 11 Sep 2017 07:59:38 -0700 (PDT)
+X-Received: by 10.55.93.67 with SMTP id r64mr15035852qkb.358.1505141978595;
+        Mon, 11 Sep 2017 07:59:38 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1505141978; cv=none;
         d=google.com; s=arc-20160816;
-        b=CjH5HLV027Urb3Et6oaqxWC4xTfKYi0hcw6/ZnHB+/PMvQx7UcedFTmqHt23UuX1GA
-         MPhhkUdn0Luw1i+++B3oyKoOkNRp9PGIVOBH8DYJLFPAzNhTdUz69U+a86/YbTVreahH
-         S/H7j1hqeKzuFN8gbUYmjbE4wgxXauRu+xOl6UE9YHa5HfMmcSthzUyqNb18b4mV+KnX
-         EZUW5QyKEBStS7JcgFecPliPTA6vhEd7KaTs21b0LwihSZegtXYrzS4q0ZDDkT66ywRZ
-         m0D79fnwO4uTIHhtnOgrHG5L1vJfLrs4+iRll14g0wwL9yR0FnyTrKhE+f/OzMtutW2x
-         bs1g==
+        b=NJy0tJJMrIa4qouF/e0hpcWbd5V6PQ2ZW5OKPBkMSWaWVn8LZBEY8a0d5AmchSwMAc
+         ZZUr0YLNLpxgHl8cvmu+iZW5H3gzIvseuXHLUtRN5mOqlUXOOguwPR1nQqse9xWPAOwY
+         XQxgGB20IGqQ4hHGl42BCmOkr9D6uGS3ZubCtegaPKtA9QsAyYTxzf+giB6x6x2UWrjZ
+         e6N1JXMrBabEcUIVSDSX55zL0mZyxdSnwqLDSHKmsV6OyZbXtu5Y8nP82XrxfpCJMx14
+         8YmNQVfImAIAqU8mp4itKPlMKbQANKXoXBacCQc+LPKnEYBqg0akP88tCP6O5PUwOdUI
+         yh/Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:to:dmarc-filter
+         :user-agent:date:message-id:from:references:to:dkim-signature
          :arc-authentication-results;
-        bh=Sb1KuXIy2zFT/4/R7arfRqweZHSMI0j/MPViBgg4PvY=;
-        b=vOv0K4hdcBhlknMNDOAOX0dCEn2E3f0/lcUKNb+6bDP3tnz/gjJD5yGNvPMSlHokLA
-         EZiOJWrgglYTjgbqbeppYQ3CQfJeTdhhcJ5OFiUHDUDDvRsgEheigWzZY7no4y3ZJcwD
-         IWyXXA85XQ6YDQ2a0X67coK8DiSOLoYrt4hbqb6vW0F91pZn69fUjqIsZnkCDsGvnRjs
-         7if6FTyh9+fVWMav6iXLOd7AoamEQV72Zocg/c9rMErkW9aeXXTm5reHUFSTlnJUyTQT
-         wpaXPAK4cOPrS3cE69Si/+0WvVa3Zb4HdXnTVuIxNE5MAXZgs5qZBkxFHS5PpVkhFLSl
-         Z9UA==
+        bh=kU7DXbwbUABxy3hV1NUm8TYV8m5wxefOkBcN1QeQbMk=;
+        b=sv82FaNtCT8V8L2NImq0Rt/3NL+4c5Fz4aRKfIFQRJbiy6Y1nuEx64eu5IialF+0/V
+         Lci+OSl5vnbyRZKATIRFPu21N2surSKbGXfGJFBFtr2EU7StRcx4Xu/j2ifPSiSxKLkD
+         pvlA8s+BvsNtyb7+/aOclXqUjEhbLF1gw75AW8MzYTwqzbi8FRvQyZjVMv68wsh9WC4A
+         UpWURSit9rJCY7B6d4D4SPPPa7j51Soy1XJC9hhylQU1+xGJcM282EzXbTs4J73zbfbz
+         Gxb19ih2rsHA5nHkl4xtC0QlPYK+7Cwxm7hpmjemsUZ7vEjy9GGMrjcAT6TqyGvpZaMb
+         OXDA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=FssfEeKe;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id p66si9378014qka.85.2017.09.11.07.52.11
+        by mx.google.com with ESMTPS id f204si9416321qkb.324.2017.09.11.07.59.38
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 11 Sep 2017 07:52:11 -0700 (PDT)
+        Mon, 11 Sep 2017 07:59:38 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:58223 helo=lists.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=FssfEeKe;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:58252 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1drQ4H-0007SB-IR
-	for alex.bennee@linaro.org; Mon, 11 Sep 2017 10:52:09 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:34006)
+	id 1drQBU-0001V8-AO
+	for alex.bennee@linaro.org; Mon, 11 Sep 2017 10:59:36 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:36659)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1drQ4C-0007Pj-I9
-	for qemu-arm@nongnu.org; Mon, 11 Sep 2017 10:52:05 -0400
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1drQBP-0001T5-HS
+	for qemu-arm@nongnu.org; Mon, 11 Sep 2017 10:59:32 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1drQ47-0007He-0T
-	for qemu-arm@nongnu.org; Mon, 11 Sep 2017 10:52:04 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:57842)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <thuth@redhat.com>)
-	id 1drQ46-0007H8-RJ; Mon, 11 Sep 2017 10:51:58 -0400
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
-	[10.5.11.14])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 9613CC5488;
-	Mon, 11 Sep 2017 14:51:57 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 9613CC5488
-Authentication-Results: ext-mx06.extmail.prod.ext.phx2.redhat.com;
-	dmarc=none (p=none dis=none) header.from=redhat.com
-Authentication-Results: ext-mx06.extmail.prod.ext.phx2.redhat.com;
-	spf=fail smtp.mailfrom=thuth@redhat.com
-Received: from [10.36.116.113] (ovpn-116-113.ams2.redhat.com [10.36.116.113])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 63614612AA;
-	Mon, 11 Sep 2017 14:51:50 +0000 (UTC)
-To: Laurent Vivier <lvivier@redhat.com>, qemu-devel@nongnu.org
-References: <20170911142056.15643-1-lvivier@redhat.com>
-	<20170911142056.15643-4-lvivier@redhat.com>
-From: Thomas Huth <thuth@redhat.com>
-Message-ID: <1299bf0c-f887-bcfe-2e97-3c7103d407a1@redhat.com>
-Date: Mon, 11 Sep 2017 16:51:48 +0200
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1drQBO-0000ph-EJ
+	for qemu-arm@nongnu.org; Mon, 11 Sep 2017 10:59:31 -0400
+Received: from mail-qt0-x242.google.com ([2607:f8b0:400d:c0d::242]:33001)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1drQBJ-0000hT-SI; Mon, 11 Sep 2017 10:59:25 -0400
+Received: by mail-qt0-x242.google.com with SMTP id b1so3373913qtc.0;
+	Mon, 11 Sep 2017 07:59:25 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=sender:subject:to:cc:references:from:message-id:date:user-agent
+	:mime-version:in-reply-to:content-language:content-transfer-encoding;
+	bh=kU7DXbwbUABxy3hV1NUm8TYV8m5wxefOkBcN1QeQbMk=;
+	b=FssfEeKe9KWgLOH3svFHHyVKkBGjdwclso4WuTrSaSZbJcyF3I2sFulEv1DoekGeD5
+	LTm1rDOuQJcSp8JVH8nTW5+Cv44qo862bV6zzJ+pm5DR+kzttlNTURUN94OR/myiylLX
+	v42LOHaC+79rv0Qnw22wc4Mu7AYyelDauk8vx1GX7Kqy/SPtwMR/s9xACca4RavhiMJZ
+	WWmWay4FpKJ0dbJjymlow9hnlFcTTwDGjH8YVMlmlN5+Uw+aBlLTOKua55l1sFfiBsen
+	SwutpvSXo4TxCH5LOPAHQrz5o+Vqxitm67whrg0EmyngAqsAZTq5D+jqi+ZzGeLS8ffv
+	SJdA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+	:date:user-agent:mime-version:in-reply-to:content-language
+	:content-transfer-encoding;
+	bh=kU7DXbwbUABxy3hV1NUm8TYV8m5wxefOkBcN1QeQbMk=;
+	b=Yc0LOsbgQS7dnzwLtdzl5fayaEfhdFZohS1ZIBJGqPWau8TRPAW156EOZR4p9u8EIV
+	eLDyDWDsgk3UAEssay+5g4vN1Z+2+MdIgN+aMF/yBPWEqgKrNEkeVFhqbmL9Hh0LAyt2
+	PCn8XMqdo8XZTp91baSTRuhwhSMlt1GpZKKb3EAZdZ2IknJPxV8YZgaBxd8MNCRH+UEk
+	jvA2npKS58ECzXd9m0jvnsHaeX9JI/B3oTqNYyoI53DObOqM3ugw1TjArfIyL/PvwTeH
+	0QZE0rgHjY3s3ruJS6g0pv72kSvKjYn29qsOe7P8y2F8OMl3Zv9aoZkP0UAIHRcDpzz6
+	Hxyg==
+X-Gm-Message-State: AHPjjUj9bXKjQ4CkcKWBksQj/YzJLnm6aGcA2wf2klYsQ00FM114Bl/3
+	NmZwSetLew//9D28FmE=
+X-Google-Smtp-Source: AOwi7QD1YGQQ0oh2QWKuGtNuZwsEjaSd/d8TmB0gexfw4vAjFH5g6spPk1fiMVZR+dwR/rWNG4encQ==
+X-Received: by 10.237.59.177 with SMTP id r46mr16952632qte.253.1505141965099; 
+	Mon, 11 Sep 2017 07:59:25 -0700 (PDT)
+Received: from [192.168.1.10] ([181.93.89.178])
+	by smtp.gmail.com with ESMTPSA id 54sm6306040qts.39.2017.09.11.07.59.23
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Mon, 11 Sep 2017 07:59:24 -0700 (PDT)
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+References: <1505137930-13255-1-git-send-email-peter.maydell@linaro.org>
+	<1505137930-13255-2-git-send-email-peter.maydell@linaro.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Message-ID: <2a61ae5a-dd09-d782-8cc1-66afd7a31559@amsat.org>
+Date: Mon, 11 Sep 2017 11:59:21 -0300
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
 	Thunderbird/52.3.0
 MIME-Version: 1.0
-In-Reply-To: <20170911142056.15643-4-lvivier@redhat.com>
-Content-Type: text/plain; charset=utf-8
+In-Reply-To: <1505137930-13255-2-git-send-email-peter.maydell@linaro.org>
+Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.30]);
-	Mon, 11 Sep 2017 14:51:57 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [PATCH v2 3/3] tests/hmp: test "none" machine with
- memory
+Content-Transfer-Encoding: 8bit
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:400d:c0d::242
+Subject: Re: [Qemu-arm] [PATCH 1/7] target/arm: Use M_REG_NUM_BANKS rather
+ than hardcoding 2
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -100,50 +117,100 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
-	"Daniel P . Berrange" <berrange@redhat.com>,
-	Cornelia Huck <cohuck@redhat.com>,
-	"Dr . David Alan Gilbert" <dgilbert@redhat.com>,
-	Greg Kurz <groug@kaod.org>, qemu-arm@nongnu.org,
-	qemu-ppc@nongnu.org, David Gibson <david@gibson.dropbear.id.au>
+Cc: patches@linaro.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: TVEHntHYJfOZ
+X-TUID: j7p57/VIzMVf
 
-On 11.09.2017 16:20, Laurent Vivier wrote:
-> and add a test case of dump-guest-memory without
-> "[begin length]" parameters.
+On 09/11/2017 10:52 AM, Peter Maydell wrote:
+> Use a symbolic constant M_REG_NUM_BANKS for the array size for
+> registers which are banked by M profile security state, rather
+> than hardcoding lots of 2s.
 > 
-> Signed-off-by: Laurent Vivier <lvivier@redhat.com>
+> Suggested-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+
+Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+
 > ---
->  tests/test-hmp.c | 5 +++++
->  1 file changed, 5 insertions(+)
+> Philippe suggested this in review on the last round of
+> patches but I forgot about it :-(
+
+Thank you, it eases review and looks cleaner :)
+
+> ---
+>   target/arm/cpu.h | 35 +++++++++++++++++++----------------
+>   1 file changed, 19 insertions(+), 16 deletions(-)
 > 
-> diff --git a/tests/test-hmp.c b/tests/test-hmp.c
-> index 729c0339f7..90693c0ce2 100644
-> --- a/tests/test-hmp.c
-> +++ b/tests/test-hmp.c
-> @@ -35,6 +35,7 @@ static const char *hmp_cmds[] = {
->      "mouse_button 0",
->      "device_del mouse1",
->      "dump-guest-memory /dev/null 0 4096",
-> +    "dump-guest-memory /dev/null",
->      "gdbserver",
->      "host_net_add user id=net0",
->      "hostfwd_add tcp::43210-:43210",
-> @@ -159,5 +160,9 @@ int main(int argc, char **argv)
->  
->      qtest_cb_for_every_machine(add_machine_test_case);
->  
-> +    /* as none machine has no memory, add a test case with memory */
-> +
-
-Maybe remove the empty line after the comment?
-
-> +    qtest_add_data_func("hmp/none+2MB", g_strdup("none -m 2"), test_machine);
-> +
->      return g_test_run();
->  }
+> diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+> index 98b9b26..5a1f957 100644
+> --- a/target/arm/cpu.h
+> +++ b/target/arm/cpu.h
+> @@ -81,8 +81,11 @@
+>    * accessed via env->registerfield[env->v7m.secure] (whether the security
+>    * extension is implemented or not).
+>    */
+> -#define M_REG_NS 0
+> -#define M_REG_S 1
+> +enum {
+> +    M_REG_NS = 0,
+> +    M_REG_S = 1,
+> +    M_REG_NUM_BANKS = 2,
+> +};
+>   
+>   /* ARM-specific interrupt pending bits.  */
+>   #define CPU_INTERRUPT_FIQ   CPU_INTERRUPT_TGT_EXT_1
+> @@ -433,19 +436,19 @@ typedef struct CPUARMState {
+>           uint32_t other_sp;
+>           uint32_t other_ss_msp;
+>           uint32_t other_ss_psp;
+> -        uint32_t vecbase[2];
+> -        uint32_t basepri[2];
+> -        uint32_t control[2];
+> -        uint32_t ccr[2]; /* Configuration and Control */
+> -        uint32_t cfsr[2]; /* Configurable Fault Status */
+> +        uint32_t vecbase[M_REG_NUM_BANKS];
+> +        uint32_t basepri[M_REG_NUM_BANKS];
+> +        uint32_t control[M_REG_NUM_BANKS];
+> +        uint32_t ccr[M_REG_NUM_BANKS]; /* Configuration and Control */
+> +        uint32_t cfsr[M_REG_NUM_BANKS]; /* Configurable Fault Status */
+>           uint32_t hfsr; /* HardFault Status */
+>           uint32_t dfsr; /* Debug Fault Status Register */
+> -        uint32_t mmfar[2]; /* MemManage Fault Address */
+> +        uint32_t mmfar[M_REG_NUM_BANKS]; /* MemManage Fault Address */
+>           uint32_t bfar; /* BusFault Address */
+> -        unsigned mpu_ctrl[2]; /* MPU_CTRL */
+> +        unsigned mpu_ctrl[M_REG_NUM_BANKS]; /* MPU_CTRL */
+>           int exception;
+> -        uint32_t primask[2];
+> -        uint32_t faultmask[2];
+> +        uint32_t primask[M_REG_NUM_BANKS];
+> +        uint32_t faultmask[M_REG_NUM_BANKS];
+>           uint32_t secure; /* Is CPU in Secure state? (not guest visible) */
+>       } v7m;
+>   
+> @@ -546,7 +549,7 @@ typedef struct CPUARMState {
+>           uint32_t *drbar;
+>           uint32_t *drsr;
+>           uint32_t *dracr;
+> -        uint32_t rnr[2];
+> +        uint32_t rnr[M_REG_NUM_BANKS];
+>       } pmsav7;
+>   
+>       /* PMSAv8 MPU */
+> @@ -556,10 +559,10 @@ typedef struct CPUARMState {
+>            *  pmsav7.rnr (region number register)
+>            *  pmsav7_dregion (number of configured regions)
+>            */
+> -        uint32_t *rbar[2];
+> -        uint32_t *rlar[2];
+> -        uint32_t mair0[2];
+> -        uint32_t mair1[2];
+> +        uint32_t *rbar[M_REG_NUM_BANKS];
+> +        uint32_t *rlar[M_REG_NUM_BANKS];
+> +        uint32_t mair0[M_REG_NUM_BANKS];
+> +        uint32_t mair1[M_REG_NUM_BANKS];
+>       } pmsav8;
+>   
+>       void *nvic;
 > 
-
-Reviewed-by: Thomas Huth <thuth@redhat.com>

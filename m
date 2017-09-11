@@ -1,52 +1,66 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaro.local ([81.128.185.34])
-        by smtp.gmail.com with ESMTPSA id y94sm5405234wrc.41.2017.09.11.02.07.30
+        by smtp.gmail.com with ESMTPSA id l69sm7418981wmb.35.2017.09.11.02.12.35
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 11 Sep 2017 02:07:30 -0700 (PDT)
+        Mon, 11 Sep 2017 02:12:35 -0700 (PDT)
 Received: from zen (localhost [127.0.0.1])
-	by zen.linaro.local (Postfix) with ESMTPS id 4B6773E0142;
-	Mon, 11 Sep 2017 10:07:30 +0100 (BST)
-References: <20170817230114.3655-1-richard.henderson@linaro.org> <20170817230114.3655-9-richard.henderson@linaro.org> <87377xijkt.fsf@linaro.org> <871snhibdr.fsf@linaro.org> <889b3e05-64f6-8eb6-0c22-87b09b86b7b8@linaro.org>
+	by zen.linaro.local (Postfix) with ESMTPS id D0FB03E0142;
+	Mon, 11 Sep 2017 10:12:34 +0100 (BST)
+References: <20170817230114.3655-1-richard.henderson@linaro.org> <20170817230114.3655-3-richard.henderson@linaro.org> <877examon2.fsf@linaro.org> <05363152-8a66-af3f-7c66-9627cbdc290b@linaro.org>
 User-agent: mu4e 0.9.19; emacs 25.2.50.3
 From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: Richard Henderson <richard.henderson@linaro.org>
 Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
-Subject: Re: [PATCH 8/8] tcg/i386: Add vector operations
-In-reply-to: <889b3e05-64f6-8eb6-0c22-87b09b86b7b8@linaro.org>
-Date: Mon, 11 Sep 2017 10:07:30 +0100
-Message-ID: <877ex5bo31.fsf@linaro.org>
+Subject: Re: [PATCH 2/8] target/arm: Use generic vector infrastructure for aa64 add/sub/logic
+In-reply-to: <05363152-8a66-af3f-7c66-9627cbdc290b@linaro.org>
+Date: Mon, 11 Sep 2017 10:12:34 +0100
+Message-ID: <8760cpbnul.fsf@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 8bit
-X-TUID: vY80KNZ5XvBG
+X-TUID: 34KWFZaAr0SY
 
 
 Richard Henderson <richard.henderson@linaro.org> writes:
 
-> On 09/08/2017 06:10 AM, Alex Bennée wrote:
->> Also this commit breaks RISU:
+> On 09/07/2017 09:58 AM, Alex Bennée wrote:
+>>> +    switch (size + 4 * is_u) {
 >>
->>  qemu-aarch64 build/aarch64-linux-gnu/risu
->>     testcases.aarch64/insn_ANDSi_RES8_ANDS_RES_ANDv_ASRV__INC.risu.bin \
->>     -t testcases.aarch64/insn_ANDSi_RES8_ANDS_RES_ANDv_ASRV__INC.risu.bin.trace
+>> Hmm I find this switch a little too magical. I mean I can see that the
+>> encoding abuses size for the final opcode when I look at the manual but
+>> it reads badly.
 >>
->> Gives:
+>>> +    case 0: /* AND */
+>>> +        gvec_op = tcg_gen_gvec_and8;
+>>> +        goto do_gvec;
+>>> +    case 1: /* BIC */
+>>> +        gvec_op = tcg_gen_gvec_andc8;
+>>> +        goto do_gvec;
+>>> +    case 2: /* ORR */
+>>> +        gvec_op = tcg_gen_gvec_or8;
+>>> +        goto do_gvec;
+>>> +    case 3: /* ORN */
+>>> +        gvec_op = tcg_gen_gvec_orc8;
+>>> +        goto do_gvec;
+>>> +    case 4: /* EOR */
+>>> +        gvec_op = tcg_gen_gvec_xor8;
+>>> +        goto do_gvec;
+>>> +    do_gvec:
+>>> +        gvec_op(vec_full_reg_offset(s, rd),
+>>> +                vec_full_reg_offset(s, rn),
+>>> +                vec_full_reg_offset(s, rm),
+>>> +                is_q ? 16 : 8, vec_full_reg_size(s));
+>>> +        return;
 >>
->> mismatch detail (master : apprentice):
->>   V29   : 000000000000000005388083c1444242 vs 00000000000000002a000e0416a30018
->>
->> The insn is:
->>
->>   37c:       6f56a29d        umull2  v29.4s, v20.8h, v6.h[1]
->>
->> Which is odd because I didn't think we'd touched that.
+>> No default case (although I guess we just fall through). What's wrong
+>> with just having a !is_u test with gvec_op = tbl[size] and skipping all
+>> the goto stuff?
 >
-> Indeed we didn't.  Still, I'll check it out next week.
+> Because that would still leave EOR out in the woods.
+> I do think this is the cleanest way to filter out these 5 operations.
 
-OK it would help if I had objdumped the right file:
-
-     36c:       0e781fdd        bic     v29.8b, v30.8b, v24.8b
-     370:       00005af0        .inst   0x00005af0 ; undefined
+Is this going to look better if the other operations in this branch of
+the decode are converted as well?
 
 --
 Alex Bennée

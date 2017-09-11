@@ -1,80 +1,93 @@
-Received: by 10.223.172.38 with SMTP id v35csp5668019wrc;
-        Mon, 11 Sep 2017 08:11:11 -0700 (PDT)
-X-Google-Smtp-Source: AOwi7QBKFQ9UfRjqKnMYdcuhsVVwMYlucco3OB9Oal47p5zDyNQnfLn7xQdwaNObQvDHv/9NDCZV
-X-Received: by 10.55.4.20 with SMTP id 20mr10247707qke.281.1505142671741;
-        Mon, 11 Sep 2017 08:11:11 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1505142671; cv=none;
+Received: by 10.100.151.138 with SMTP id q10csp5998672pja;
+        Mon, 11 Sep 2017 08:30:58 -0700 (PDT)
+X-Google-Smtp-Source: AOwi7QCXXkF5ez3D+HFXGiOhUwwnTrZGcFpqBfG/Bu12hPCijcmzmZOCVvtO4s75Cl0E6odcqJtD
+X-Received: by 10.200.18.70 with SMTP id g6mr17158816qtj.87.1505143858828;
+        Mon, 11 Sep 2017 08:30:58 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1505143858; cv=none;
         d=google.com; s=arc-20160816;
-        b=J/AtLj4Ykw0KS9ICg4xv3anlMO6GUWmcOeA+d6ohu+3rvGVkFzhdwYmneSCx3OFw42
-         uGIWNv5/z7awxYk8YGGXgdg5WHTUawiM94Btq8QSZUCaUGmwDjl+k7P+3ubLQF2HNFfR
-         Aazh6UA4LVP6s7W0hlM1/qYwtpULQIC3Bx/PkgXVjB2IzSlbQrxd7udR7EbAuIG07QqR
-         YHsEg+6vfhw+LkRw35x88tsVy/DGncRIKch4ZEjV1ajdlGsEA9jssZ3gGROiXTniGKap
-         /eD6t2JXXR1ZX+5TSTGiK65LPfuMLd4eIz2NNaYxTNm7HNsK6Uoo5nPbrcLnAjZBa7VQ
-         JmZQ==
+        b=qxMTk0Gt9bjBic7IFw+WJ+ZBjHFzWxyds/rwS+lAYcynIGkAx5Ji2XIh9vgwqeCDG2
+         d7e5Bf5kxcoP7nIZ/dnSlxKbIip1v6Cgc4fvTXIhug7/6OK6D/17OaX6zN+lq8XDN/K8
+         yQCAeCeDKnxI5siY+0QW6PKZg2TJfAbjUWVdPxW56bB9+0LvvY9IOS666BOczk34EpPA
+         FQ3jZl4CNTWn1InE1d3nTsYKSq6jspP9fxDqjTPQofjHdC5GCs8FIqO8KUo6w5vOb4Ok
+         umRGH9G56yB0xPC1FsDSoyUSz9Ca2kJcUy+dm9njasAajfDmK4dn2ATztY3fymiNdu/p
+         69pg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:mime-version:references
-         :in-reply-to:message-id:to:from:date:arc-authentication-results;
-        bh=gJsSKOyJdwFpXkv/VttdosUnTQkRTLrGdCFsxPoA2U0=;
-        b=UZeXIelCrLSKZi6zWBFjiYGXmR/pqbcgvoDgUtEb5fwbSsxqzCrcIzvacrjBFWKTH4
-         XozZDI4P+eHqTygF8ZDdwSm7ZJVg0RlyJQHzwrhWQ+ZAF7+IBSdAwXY+XLZWzLzgxggO
-         +IE/RGvz/CTAR9Ns7ZEjFA4eJaprj1E52kIIJMi/7UoGgjxUL46eU7+c8roSw6dy4y1r
-         6mCJPgaMKBeXnYrCFcFQeWLlx+034vxgKT+APJl9iI2D+TPfo3ZW+pUz3kn57UM8wgAc
-         yJzazzd9WsoqIYTcwP/d9hYDX7cgPS1MzMIR26Q4TuhxukNB5COW6jvUz2jw0Z/VmM7H
-         Temw==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:to:dmarc-filter
+         :arc-authentication-results;
+        bh=YZdKrn2h9rs6ZtD3lm2PNFbWNpdB1Rjz/p/4i+qRYIk=;
+        b=MlnYhE/u1QLMONAxi8cIE2bz0kk4EAQP5L0lfZ2r04bKiCjxmHRpe4KMdUm+YvsRYc
+         P+Qh4vbr5bVpkb9vhn4Di8/pn4D3+xsW8qz4MUjc2d2e6e+J/QdAzgACIxdMI+grhLkv
+         3g5P46DpxmlQQnmquK59D4DVs/2Ame/mep5QHCn8+sjfOQKJbIgsCmmTjTWGXPl8ddN1
+         PFPzu1ZDwK/6Rg9gnnKBwuTwpuIr8OtEj1ydzL6FZgjRIzTGwE4B3DR/psEhseue38LC
+         NUsSdpeQ35gxa0fj0nGbCCmY0bnkk2APgpbnGYtoLx5IEjUUUd/z82KjnYts2aPhWPMJ
+         HwDg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id f58si9903982qtk.538.2017.09.11.08.11.11
+        by mx.google.com with ESMTPS id e39si9541525qkh.77.2017.09.11.08.30.58
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 11 Sep 2017 08:11:11 -0700 (PDT)
+        Mon, 11 Sep 2017 08:30:58 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:58338 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:58432 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1drQMf-0007Ff-9X
-	for alex.bennee@linaro.org; Mon, 11 Sep 2017 11:11:09 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:41433)
+	id 1drQfo-0003iA-J5
+	for alex.bennee@linaro.org; Mon, 11 Sep 2017 11:30:56 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:50244)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <groug@kaod.org>) id 1drQMZ-0007Ew-BH
-	for qemu-arm@nongnu.org; Mon, 11 Sep 2017 11:11:04 -0400
+	(envelope-from <lvivier@redhat.com>) id 1drQab-00079E-BT
+	for qemu-arm@nongnu.org; Mon, 11 Sep 2017 11:25:35 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <groug@kaod.org>) id 1drQMV-00030P-5G
-	for qemu-arm@nongnu.org; Mon, 11 Sep 2017 11:11:03 -0400
-Received: from 13.mo1.mail-out.ovh.net ([178.33.253.128]:43275)
+	(envelope-from <lvivier@redhat.com>) id 1drQaW-0007LS-D6
+	for qemu-arm@nongnu.org; Mon, 11 Sep 2017 11:25:33 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:53566)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <groug@kaod.org>) id 1drQMU-0002zf-SH
-	for qemu-arm@nongnu.org; Mon, 11 Sep 2017 11:10:59 -0400
-Received: from player169.ha.ovh.net (b9.ovh.net [213.186.33.59])
-	by mo1.mail-out.ovh.net (Postfix) with ESMTP id 1124393641
-	for <qemu-arm@nongnu.org>; Mon, 11 Sep 2017 17:10:57 +0200 (CEST)
-Received: from bahia.lan (gar31-1-82-66-74-139.fbx.proxad.net [82.66.74.139])
-	(Authenticated sender: groug@kaod.org)
-	by player169.ha.ovh.net (Postfix) with ESMTPSA id 3B19F5800A2;
-	Mon, 11 Sep 2017 17:10:45 +0200 (CEST)
-Date: Mon, 11 Sep 2017 17:08:04 +0200
-From: Greg Kurz <groug@kaod.org>
-To: Laurent Vivier <lvivier@redhat.com>
-Message-ID: <20170911170804.0ee06c00@bahia.lan>
-In-Reply-To: <20170911142056.15643-3-lvivier@redhat.com>
+	(Exim 4.71) (envelope-from <lvivier@redhat.com>)
+	id 1drQaW-0007Jv-4I; Mon, 11 Sep 2017 11:25:28 -0400
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+	[10.5.11.13])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 17F46C3FB2;
+	Mon, 11 Sep 2017 15:25:27 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 17F46C3FB2
+Authentication-Results: ext-mx01.extmail.prod.ext.phx2.redhat.com;
+	dmarc=none (p=none dis=none) header.from=redhat.com
+Authentication-Results: ext-mx01.extmail.prod.ext.phx2.redhat.com;
+	spf=fail smtp.mailfrom=lvivier@redhat.com
+Received: from [10.36.116.239] (ovpn-116-239.ams2.redhat.com [10.36.116.239])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id BD71660A98;
+	Mon, 11 Sep 2017 15:25:24 +0000 (UTC)
+To: Greg Kurz <groug@kaod.org>
 References: <20170911142056.15643-1-lvivier@redhat.com>
 	<20170911142056.15643-3-lvivier@redhat.com>
-X-Mailer: Claws Mail 3.14.1 (GTK+ 2.24.31; x86_64-redhat-linux-gnu)
+	<20170911170804.0ee06c00@bahia.lan>
+From: Laurent Vivier <lvivier@redhat.com>
+Message-ID: <5b7621f0-072f-9bf0-c4bb-23f85a8faaec@redhat.com>
+Date: Mon, 11 Sep 2017 17:25:23 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.3.0
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha1;
-	boundary="Sig_/x60EAfplRCPZUs_wUeQDKkr";
-	protocol="application/pgp-signature"
-X-Ovh-Tracer-Id: 12069647002008262950
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrfeelledrgedtgdeklecutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmd
+In-Reply-To: <20170911170804.0ee06c00@bahia.lan>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.25]);
+	Mon, 11 Sep 2017 15:25:27 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 178.33.253.128
+X-Received-From: 209.132.183.28
 Subject: Re: [Qemu-arm] [Qemu-ppc] [PATCH v2 2/3] hmp: fix
  "dump-quest-memory" segfault (arm)
 X-BeenThere: qemu-arm@nongnu.org
@@ -96,138 +109,116 @@ Cc: Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
 	David Gibson <david@gibson.dropbear.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: QnSOvMzkmgSW
+X-TUID: chFYUd9qYU5T
 
---Sig_/x60EAfplRCPZUs_wUeQDKkr
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: quoted-printable
+On 11/09/2017 17:08, Greg Kurz wrote:
+> On Mon, 11 Sep 2017 16:20:55 +0200
+> Laurent Vivier <lvivier@redhat.com> wrote:
+> 
+>> Commit fd5d23babf (hmp: fix "dump-quest-memory" segfault)
+>> fixes the problem for i386, do the same for arm.
+>>
+>> Running QEMU with
+>>     qemu-system-aarch64 -M none -nographic -m 256
+>> and executing
+>>     dump-guest-memory /dev/null 0 8192
+>> results in segfault
+>>
+>> Fix by checking if we have CPU.
+>>
+>> Signed-off-by: Laurent Vivier <lvivier@redhat.com>
+>> ---
+>>  target/arm/arch_dump.c | 52 +++++++++++++++++++++++++++++++++-----------------
+>>  1 file changed, 34 insertions(+), 18 deletions(-)
+>>
+>> diff --git a/target/arm/arch_dump.c b/target/arm/arch_dump.c
+>> index 1a9861f69b..1f58cff256 100644
+>> --- a/target/arm/arch_dump.c
+>> +++ b/target/arm/arch_dump.c
+>> @@ -273,8 +273,6 @@ int arm_cpu_write_elf32_note(WriteCoreDumpFunction f, CPUState *cs,
+>>  int cpu_get_dump_info(ArchDumpInfo *info,
+>>                        const GuestPhysBlockList *guest_phys_blocks)
+>>  {
+>> -    ARMCPU *cpu = ARM_CPU(first_cpu);
+>> -    CPUARMState *env = &cpu->env;
+>>      GuestPhysBlock *block;
+>>      hwaddr lowest_addr = ULLONG_MAX;
+>>  
+>> @@ -290,13 +288,32 @@ int cpu_get_dump_info(ArchDumpInfo *info,
+>>          }
+>>      }
+>>  
+>> -    if (arm_feature(env, ARM_FEATURE_AARCH64)) {
+>> -        info->d_machine = EM_AARCH64;
+>> -        info->d_class = ELFCLASS64;
+>> -        info->page_size = (1 << 16); /* aarch64 max pagesize */
+>> -        if (lowest_addr != ULLONG_MAX) {
+>> -            info->phys_base = lowest_addr;
+>> +    if (first_cpu) {
+>> +        ARMCPU *cpu = ARM_CPU(first_cpu);
+>> +        CPUARMState *env = &cpu->env;
+>> +        if (arm_feature(env, ARM_FEATURE_AARCH64)) {
+>> +            info->d_machine = EM_AARCH64;
+>> +            info->d_class = ELFCLASS64;
+>> +            info->page_size = (1 << 16); /* aarch64 max pagesize */
+>> +            if (lowest_addr != ULLONG_MAX) {
+>> +                info->phys_base = lowest_addr;
+>> +            }
+>> +        } else {
+>> +            info->d_machine = EM_ARM;
+>> +            info->d_class = ELFCLASS32;
+>> +            info->page_size = (1 << 12);
+>> +            if (lowest_addr < UINT_MAX) {
+>> +                info->phys_base = lowest_addr;
+>> +            }
+>>          }
+>> +
+>> +        /* We assume the relevant endianness is that of EL1; this is right
+>> +         * for kernels, but might give the wrong answer if you're trying to
+>> +         * dump a hypervisor that happens to be running an opposite-endian
+>> +         * kernel.
+>> +         */
+>> +        info->d_endian = (env->cp15.sctlr_el[1] & SCTLR_EE) != 0
+>> +                         ? ELFDATA2MSB : ELFDATA2LSB;
+>>      } else {
+>>          info->d_machine = EM_ARM;
+>>          info->d_class = ELFCLASS32;
+>> @@ -304,25 +321,24 @@ int cpu_get_dump_info(ArchDumpInfo *info,
+>>          if (lowest_addr < UINT_MAX) {
+>>              info->phys_base = lowest_addr;
+>>          }
+>> +        info->d_endian = ELFDATA2LSB;
+>>      }
+>>  
+>> -    /* We assume the relevant endianness is that of EL1; this is right
+>> -     * for kernels, but might give the wrong answer if you're trying to
+>> -     * dump a hypervisor that happens to be running an opposite-endian
+>> -     * kernel.
+>> -     */
+>> -    info->d_endian = (env->cp15.sctlr_el[1] & SCTLR_EE) != 0
+>> -                     ? ELFDATA2MSB : ELFDATA2LSB;
+>> -
+>>      return 0;
+>>  }
+>>  
+>>  ssize_t cpu_get_note_size(int class, int machine, int nr_cpus)
+>>  {
+>> -    ARMCPU *cpu = ARM_CPU(first_cpu);
+>> -    CPUARMState *env = &cpu->env;
+>> +    ARMCPU *cpu;
+>> +    CPUARMState *env;
+>>      size_t note_size;
+>>  
+>> +    if (first_cpu == NULL) {
+>> +        return 0;
+>> +    }
+>> +
+> 
+> Looking at the function's code, it seems that env is only needed if
+> class != ELFCLASS64... I guess that all the code dealing with first_cpu
+> should go to the else block.
 
-On Mon, 11 Sep 2017 16:20:55 +0200
-Laurent Vivier <lvivier@redhat.com> wrote:
+if first_cpu is NULL, nr_cpus is 0 and the function always returns 0.
 
-> Commit fd5d23babf (hmp: fix "dump-quest-memory" segfault)
-> fixes the problem for i386, do the same for arm.
->=20
-> Running QEMU with
->     qemu-system-aarch64 -M none -nographic -m 256
-> and executing
->     dump-guest-memory /dev/null 0 8192
-> results in segfault
->=20
-> Fix by checking if we have CPU.
->=20
-> Signed-off-by: Laurent Vivier <lvivier@redhat.com>
-> ---
->  target/arm/arch_dump.c | 52 +++++++++++++++++++++++++++++++++-----------=
-------
->  1 file changed, 34 insertions(+), 18 deletions(-)
->=20
-> diff --git a/target/arm/arch_dump.c b/target/arm/arch_dump.c
-> index 1a9861f69b..1f58cff256 100644
-> --- a/target/arm/arch_dump.c
-> +++ b/target/arm/arch_dump.c
-> @@ -273,8 +273,6 @@ int arm_cpu_write_elf32_note(WriteCoreDumpFunction f,=
- CPUState *cs,
->  int cpu_get_dump_info(ArchDumpInfo *info,
->                        const GuestPhysBlockList *guest_phys_blocks)
->  {
-> -    ARMCPU *cpu =3D ARM_CPU(first_cpu);
-> -    CPUARMState *env =3D &cpu->env;
->      GuestPhysBlock *block;
->      hwaddr lowest_addr =3D ULLONG_MAX;
-> =20
-> @@ -290,13 +288,32 @@ int cpu_get_dump_info(ArchDumpInfo *info,
->          }
->      }
-> =20
-> -    if (arm_feature(env, ARM_FEATURE_AARCH64)) {
-> -        info->d_machine =3D EM_AARCH64;
-> -        info->d_class =3D ELFCLASS64;
-> -        info->page_size =3D (1 << 16); /* aarch64 max pagesize */
-> -        if (lowest_addr !=3D ULLONG_MAX) {
-> -            info->phys_base =3D lowest_addr;
-> +    if (first_cpu) {
-> +        ARMCPU *cpu =3D ARM_CPU(first_cpu);
-> +        CPUARMState *env =3D &cpu->env;
-> +        if (arm_feature(env, ARM_FEATURE_AARCH64)) {
-> +            info->d_machine =3D EM_AARCH64;
-> +            info->d_class =3D ELFCLASS64;
-> +            info->page_size =3D (1 << 16); /* aarch64 max pagesize */
-> +            if (lowest_addr !=3D ULLONG_MAX) {
-> +                info->phys_base =3D lowest_addr;
-> +            }
-> +        } else {
-> +            info->d_machine =3D EM_ARM;
-> +            info->d_class =3D ELFCLASS32;
-> +            info->page_size =3D (1 << 12);
-> +            if (lowest_addr < UINT_MAX) {
-> +                info->phys_base =3D lowest_addr;
-> +            }
->          }
-> +
-> +        /* We assume the relevant endianness is that of EL1; this is rig=
-ht
-> +         * for kernels, but might give the wrong answer if you're trying=
- to
-> +         * dump a hypervisor that happens to be running an opposite-endi=
-an
-> +         * kernel.
-> +         */
-> +        info->d_endian =3D (env->cp15.sctlr_el[1] & SCTLR_EE) !=3D 0
-> +                         ? ELFDATA2MSB : ELFDATA2LSB;
->      } else {
->          info->d_machine =3D EM_ARM;
->          info->d_class =3D ELFCLASS32;
-> @@ -304,25 +321,24 @@ int cpu_get_dump_info(ArchDumpInfo *info,
->          if (lowest_addr < UINT_MAX) {
->              info->phys_base =3D lowest_addr;
->          }
-> +        info->d_endian =3D ELFDATA2LSB;
->      }
-> =20
-> -    /* We assume the relevant endianness is that of EL1; this is right
-> -     * for kernels, but might give the wrong answer if you're trying to
-> -     * dump a hypervisor that happens to be running an opposite-endian
-> -     * kernel.
-> -     */
-> -    info->d_endian =3D (env->cp15.sctlr_el[1] & SCTLR_EE) !=3D 0
-> -                     ? ELFDATA2MSB : ELFDATA2LSB;
-> -
->      return 0;
->  }
-> =20
->  ssize_t cpu_get_note_size(int class, int machine, int nr_cpus)
->  {
-> -    ARMCPU *cpu =3D ARM_CPU(first_cpu);
-> -    CPUARMState *env =3D &cpu->env;
-> +    ARMCPU *cpu;
-> +    CPUARMState *env;
->      size_t note_size;
-> =20
-> +    if (first_cpu =3D=3D NULL) {
-> +        return 0;
-> +    }
-> +
-
-Looking at the function's code, it seems that env is only needed if
-class !=3D ELFCLASS64... I guess that all the code dealing with first_cpu
-should go to the else block.
-
-> +    cpu =3D ARM_CPU(first_cpu);
-> +    env =3D &cpu->env;
->      if (class =3D=3D ELFCLASS64) {
->          note_size =3D AARCH64_PRSTATUS_NOTE_SIZE;
->          note_size +=3D AARCH64_PRFPREG_NOTE_SIZE;
-
---Sig_/x60EAfplRCPZUs_wUeQDKkr
-Content-Type: application/pgp-signature
-Content-Description: OpenPGP digital signature
-
------BEGIN PGP SIGNATURE-----
-
-iF0EARECAB0WIQQr1DtEU17Ap5iU26IC/DrrAQHbwgUCWbam1AAKCRAC/DrrAQHb
-wq51AKCUGYdv7AWaWJ5Fp5PFPoriMJSQcQCeJ+WJpvkZez/BY1LLYHgzDZUPwa0=
-=TXlL
------END PGP SIGNATURE-----
-
---Sig_/x60EAfplRCPZUs_wUeQDKkr--
+Thanks,
+Laurent

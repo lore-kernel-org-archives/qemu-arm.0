@@ -1,150 +1,209 @@
-Received: by 10.223.172.38 with SMTP id v35csp5826153wrc;
-        Mon, 11 Sep 2017 10:11:12 -0700 (PDT)
-X-Google-Smtp-Source: AOwi7QA1RS6iy80HeCUB9scspkor6PpA1iOi1JdX3JNSxlEfmQ96x/psK/N7vU6EWaCoX9bExCsk
-X-Received: by 10.200.28.123 with SMTP id j56mr16522819qtk.299.1505149872676;
-        Mon, 11 Sep 2017 10:11:12 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1505149872; cv=none;
+Received: by 10.223.172.38 with SMTP id v35csp5890643wrc;
+        Mon, 11 Sep 2017 11:05:03 -0700 (PDT)
+X-Received: by 10.55.21.5 with SMTP id f5mr12117084qkh.335.1505153103335;
+        Mon, 11 Sep 2017 11:05:03 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1505153103; cv=none;
         d=google.com; s=arc-20160816;
-        b=J1tHjxCPa5XLYoxDxzpEINiLmthGKJFZtE6DWoHmf2XnUT3ldSuctHz+A6NNCPEkqt
-         cWTuDBcm3Cr6lW9iuEBD7YUuHQDp8eAvAbmQyAysrLYvt/8wIdGbhFQXp9N2UdNecsLA
-         +9qyLAnbVRaLzcIKfGJgiHuGA5B7s5pONaKIDm5rQ88YR/+mnmnLJ4mDR/+Yfq9l0jpu
-         Zd2PYkLm6VHuseE0bUGfJmcMfqPixK0vSkTlwGIWNd+k0VHPoXpbw5U5yf5a+3iCRz54
-         MbjRVgUceO0abqYwANc6C3GupqQiwvEjXPYabu0+PVniKiqSOqEyhVWEyVnfh+H+AFjm
-         5z+g==
+        b=mBD59TIO07cq9wkNIEUC6YxipXnVjRHZcPxM8NDpZcFGovi2pnccCdYsEiSJDsbc7L
+         bMeq8fdTXxVNkAYWrnZq6rGXlbUpIL9mMZ8H4TehdhToOSswWe5aBfvPwSPiej1JFzCl
+         T28/1mNpH/RxfS4USD+UrdUmaKUzU/DuTpz9/0kmG+iM5I0ukCgD6yl1TVDEuD5WiXhv
+         WgeSq51sNEwDPVhXz+S8opZnnGuQAeYYfCENM7aPx/4Vf7OgStROewv2ag65MdxUFN1b
+         SFvdE/aGb755vYeZh6dZ2GafmGnouX5UM8HdE0G618CrHAdGWwH849wZ6UeD8gl70Mme
+         hU7g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:to:dmarc-filter
+         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
+         :references:in-reply-to:mime-version:dkim-signature
          :arc-authentication-results;
-        bh=75nXu35JFXG7vRpQ1BoKQBIIPYS2qTRBQmgPlOUQuIM=;
-        b=uXr15XlZf925SLQMFNRku2eeiNPFANkGixUvXJzaPFabUzA8dReFwbI7pxl7cIp6QU
-         q5ym0UI7SO0ke1yHqYhk+1IBl8IEKSHpWa+4/mk+LiKJDHTt4mQzFMwD8kLpNLTNBSoA
-         Mihc3zM0oBG9cF9Ioi75zowzNuJXRXvf6LSfIksIXnwncmGPfWIzqWmGP9AWHxqwa2Ob
-         +GuP/oiHVq3S/O9jaPZWnE4lj9JgwEND8AcmpONMR45nDW60EojBybQ4ZGjB3Q8qP18N
-         cOKl4CTz1RtQnvUvn8+ycWXmyWcsL8IVanCxbvzj8oHjgdu0RAON7k1XxR3VVvCvbKZG
-         vmuw==
+        bh=/EehFnzkTBjkhVlUxUr9imryRQUlcnU/YP0/xaq4VUI=;
+        b=hSc772d5BBVnN8542ZzdYDlfgWbFOHHggbeBiuAy9ExbMTAjuDSNmAXh+h632pUTz4
+         Kk8y/7KxpTB6pOhRN/MYhoSCRa0Y5yrX5xr95+olRxNMBgOjXy1HO8FUz+8PQKDS3Ojq
+         Vuy7iTBbzO4g5dfJJ8kHryqBvEvIOPAC1lzuMCYh5KXTq9wwmUEA3erD657yZ8j+O8gy
+         Y/c0nBBDpOO6hNddzKnTJNuJweVP+kHImyENpzvodiLImRtlic5LKLfL0BZCOeuKE94c
+         CuiEWgk+tKVC8FuRQ4GG/Wwjy9BEorHg7lCQo5LJ6ecltgVho24WftSbqETi9W0AM8fy
+         NC+g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=A5Es/U57;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id i1si10402430qtf.274.2017.09.11.10.11.11
+        by mx.google.com with ESMTPS id 10si9729751qkg.545.2017.09.11.11.05.02
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 11 Sep 2017 10:11:12 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Mon, 11 Sep 2017 11:05:03 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:59231 helo=lists.gnu.org)
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=A5Es/U57;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:59580 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1drSEo-0006v7-7D
-	for alex.bennee@linaro.org; Mon, 11 Sep 2017 13:11:10 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:60320)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1drT4v-0005rG-2B
+	for alex.bennee@linaro.org; Mon, 11 Sep 2017 14:05:01 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:43876)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1drSAe-0003nH-Ma
-	for qemu-arm@nongnu.org; Mon, 11 Sep 2017 13:06:55 -0400
+	(envelope-from <alistair23@gmail.com>) id 1drSbU-0003c0-Jx
+	for qemu-devel@nongnu.org; Mon, 11 Sep 2017 13:34:37 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1drSAY-0001Bx-Ju
-	for qemu-arm@nongnu.org; Mon, 11 Sep 2017 13:06:52 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:47906)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <thuth@redhat.com>)
-	id 1drSAY-0001Bf-Dn; Mon, 11 Sep 2017 13:06:46 -0400
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
-	[10.5.11.13])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 2DE6E1FE30E;
-	Mon, 11 Sep 2017 17:06:45 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 2DE6E1FE30E
-Authentication-Results: ext-mx09.extmail.prod.ext.phx2.redhat.com;
-	dmarc=none (p=none dis=none) header.from=redhat.com
-Authentication-Results: ext-mx09.extmail.prod.ext.phx2.redhat.com;
-	spf=fail smtp.mailfrom=thuth@redhat.com
-Received: from [10.36.116.113] (ovpn-116-113.ams2.redhat.com [10.36.116.113])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id C5C7F60842;
-	Mon, 11 Sep 2017 17:06:41 +0000 (UTC)
-To: Peter Maydell <peter.maydell@linaro.org>
-References: <20170911142056.15643-1-lvivier@redhat.com>
-	<20170911142056.15643-3-lvivier@redhat.com>
-	<CAFEAcA_G8mEzB0Mox0TTz578LQKXgvhNHeZ8Bk7OwC4NbqiXPg@mail.gmail.com>
-	<889d6ce7-073f-7860-e091-619c1202b1cd@redhat.com>
-	<CAFEAcA9Wmq+G6H78NdsVs5mKDrMcUkB30yY2d=3+KOnbT-pmAQ@mail.gmail.com>
-From: Thomas Huth <thuth@redhat.com>
-Message-ID: <01a0cb88-6a84-6413-682f-67eb2af34b7f@redhat.com>
-Date: Mon, 11 Sep 2017 19:06:40 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.3.0
+	(envelope-from <alistair23@gmail.com>) id 1drSbT-0001C9-IB
+	for qemu-devel@nongnu.org; Mon, 11 Sep 2017 13:34:36 -0400
+Received: from mail-wm0-x244.google.com ([2a00:1450:400c:c09::244]:37867)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <alistair23@gmail.com>)
+	id 1drSbM-00019L-E6; Mon, 11 Sep 2017 13:34:28 -0400
+Received: by mail-wm0-x244.google.com with SMTP id f4so7409066wmh.4;
+	Mon, 11 Sep 2017 10:34:28 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=/EehFnzkTBjkhVlUxUr9imryRQUlcnU/YP0/xaq4VUI=;
+	b=A5Es/U57xJky+iEls9wS965N1dyVtA3NBiNsMqXDjW677iU9Eh0Cwz7AQ24N7JVqpr
+	DCp/BzM4YJQCV//9xhoEx0uLI/nHXrSoao/qp/FzPUSwzeVUC/e0DIkfa8R2lSV70k0L
+	RlWGlauTrynqo/nApE6IaZsQ4LzUgfunT0cQiLswV3a36LcdyL8GkyChMLLy1CyC1KYU
+	VYNl869s7eJpFs3Dw3GGvp1n6jQpJWznrxg5sqUiHts+09YvWx8BYS10ZH2MjpuQJkyp
+	VXbUamY377w/tut2CaPLbYyO/3qB/cOlB5WGmQvLK94mFxAexb5IBzN9eqv2F43X+wwT
+	i6jg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=/EehFnzkTBjkhVlUxUr9imryRQUlcnU/YP0/xaq4VUI=;
+	b=ALzzvlC1NKm4ysCnKcvbcdtG8hLrEWqh2JIZZ4yXPPKbJFsOJIOoHXFjlIhJF5iHwY
+	EEKEeBtyKcbVca9vlKJnmJYKTDW7QTbyCWbaVWhS2WMCG4Vs1rzc/sA7pKDzWB6Nc4k5
+	CA6V0ptwXcrc259GmrZ7H7XS6F6hzslMnZxQTECr5R4NrrB144Xwl/kIdnzyfUGAZDGS
+	p1IM4fvYFt9yM8Fc/Ulz2KJp1Pmepwxw33Kik+O7awkmy9TGTC7CxglMj2rOeFiWkyi6
+	KcwmwciX8MQoZLkWb2j6d4V4Bfpwt+e26Q7oZk+1A+o8VoEBl/d+T5OLaOBLVkbBTE3G
+	rQeg==
+X-Gm-Message-State: AHPjjUiC1VLF9UhmT9uAlswcJmfyZWbooMoP6/61KR/2AHDLDtA9O/Gl
+	DYGtvdWOOMXziLS1iXbmGlBhqYY07q2Asosi2Em4Lw==
+X-Google-Smtp-Source: AOwi7QBGebM0TFOf/KNJsn5kcDK0tKwoNlku/07Dtuh1NZgA2I1HGdbSMLU0MBI5HniHNFtBYjcAmtG79j20hR8tSLI=
+X-Received: by 10.28.130.130 with SMTP id e124mr7918021wmd.75.1505151267276;
+	Mon, 11 Sep 2017 10:34:27 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA9Wmq+G6H78NdsVs5mKDrMcUkB30yY2d=3+KOnbT-pmAQ@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.38]);
-	Mon, 11 Sep 2017 17:06:45 +0000 (UTC)
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [PATCH v2 2/3] hmp: fix "dump-quest-memory" segfault
- (arm)
-X-BeenThere: qemu-arm@nongnu.org
+Received: by 10.28.191.130 with HTTP; Mon, 11 Sep 2017 10:33:56 -0700 (PDT)
+In-Reply-To: <1505137930-13255-3-git-send-email-peter.maydell@linaro.org>
+References: <1505137930-13255-1-git-send-email-peter.maydell@linaro.org>
+	<1505137930-13255-3-git-send-email-peter.maydell@linaro.org>
+From: Alistair Francis <alistair23@gmail.com>
+Date: Mon, 11 Sep 2017 10:33:56 -0700
+Message-ID: <CAKmqyKNr-tJg4uLny4QAT3oBSC_sC0dZjFBOzsG0HJ=b7cknHA@mail.gmail.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2a00:1450:400c:c09::244
+Subject: Re: [Qemu-devel] [PATCH 2/7] target/arm: Clear exclusive monitor on
+ v7M reset, exception entry/exit
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Laurent Vivier <lvivier@redhat.com>,
-	"Daniel P . Berrange" <berrange@redhat.com>,
-	Cornelia Huck <cohuck@redhat.com>, QEMU Developers <qemu-devel@nongnu.org>,
-	"Dr . David Alan Gilbert" <dgilbert@redhat.com>,
-	Greg Kurz <groug@kaod.org>, qemu-arm <qemu-arm@nongnu.org>,
-	"qemu-ppc@nongnu.org" <qemu-ppc@nongnu.org>,
-	David Gibson <david@gibson.dropbear.id.au>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: O22TU2IaGO2f
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: qemu-arm <qemu-arm@nongnu.org>,
+	"qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
+	Patch Tracking <patches@linaro.org>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: xKxPbNH0Ru1q
 
-On 11.09.2017 18:40, Peter Maydell wrote:
-> On 11 September 2017 at 15:45, Thomas Huth <thuth@redhat.com> wrote:
->> On 11.09.2017 16:39, Peter Maydell wrote:
->>> On 11 September 2017 at 15:20, Laurent Vivier <lvivier@redhat.com> wr=
-ote:
->>>> Commit fd5d23babf (hmp: fix "dump-quest-memory" segfault)
->>>> fixes the problem for i386, do the same for arm.
->>>>
->>>> Running QEMU with
->>>>     qemu-system-aarch64 -M none -nographic -m 256
->>>> and executing
->>>>     dump-guest-memory /dev/null 0 8192
->>>> results in segfault
->>>>
->>>> Fix by checking if we have CPU.
->>>>
->>>> Signed-off-by: Laurent Vivier <lvivier@redhat.com>
->>>
->>> It seems a little arbitrary to assume that if there's no
->>> CPU what you wanted was a 32-bit little-endian dump.
->>>
->>> Why do we have a machine without a CPU anyway ?
->>
->> The "none" machine is always started without a default CPU.
->=20
-> If it has no CPU then how can we create a core dump for it?
-> We don't (in theory) even know whether it's x86 or ARM.
-> (One day we may support multiple CPU architectures in
-> one QEMU binary...)
+On Mon, Sep 11, 2017 at 6:52 AM, Peter Maydell <peter.maydell@linaro.org> wrote:
+> For M profile we must clear the exclusive monitor on reset, exception
+> entry and exception exit.  We weren't doing any of these things; fix
+> this bug.
+>
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 
-True. Maybe it's better to return -1 if first_cpu is NULL to signal that
-a dump is not possible...?
+Reviewed-by: Alistair Francis <alistair.francis@xilinx.com>
 
- Thomas
+Thanks,
+Alistair
+
+> ---
+>  target/arm/internals.h | 10 ++++++++++
+>  target/arm/cpu.c       |  6 ++++++
+>  target/arm/helper.c    |  2 ++
+>  target/arm/op_helper.c |  2 +-
+>  4 files changed, 19 insertions(+), 1 deletion(-)
+>
+> diff --git a/target/arm/internals.h b/target/arm/internals.h
+> index 5d7f24c..a315354 100644
+> --- a/target/arm/internals.h
+> +++ b/target/arm/internals.h
+> @@ -444,6 +444,16 @@ void arm_handle_psci_call(ARMCPU *cpu);
+>  #endif
+>
+>  /**
+> + * arm_clear_exclusive: clear the exclusive monitor
+> + * @env: CPU env
+> + * Clear the CPU's exclusive monitor, like the guest CLREX instruction.
+> + */
+> +static inline void arm_clear_exclusive(CPUARMState *env)
+> +{
+> +    env->exclusive_addr = -1;
+> +}
+> +
+> +/**
+>   * ARMMMUFaultInfo: Information describing an ARM MMU Fault
+>   * @s2addr: Address that caused a fault at stage 2
+>   * @stage2: True if we faulted at stage 2
+> diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+> index a1acce3..412e94c 100644
+> --- a/target/arm/cpu.c
+> +++ b/target/arm/cpu.c
+> @@ -235,6 +235,12 @@ static void arm_cpu_reset(CPUState *s)
+>          env->regs[15] = 0xFFFF0000;
+>      }
+>
+> +    /* M profile requires that reset clears the exclusive monitor;
+> +     * A profile does not, but clearing it makes more sense than having it
+> +     * set with an exclusive access on address zero.
+> +     */
+> +    arm_clear_exclusive(env);
+> +
+>      env->vfp.xregs[ARM_VFP_FPEXC] = 0;
+>  #endif
+>
+> diff --git a/target/arm/helper.c b/target/arm/helper.c
+> index 329e517..668e367 100644
+> --- a/target/arm/helper.c
+> +++ b/target/arm/helper.c
+> @@ -6175,6 +6175,7 @@ static void v7m_exception_taken(ARMCPU *cpu, uint32_t lr)
+>
+>      armv7m_nvic_acknowledge_irq(env->nvic);
+>      switch_v7m_sp(env, 0);
+> +    arm_clear_exclusive(env);
+>      /* Clear IT bits */
+>      env->condexec_bits = 0;
+>      env->regs[14] = lr;
+> @@ -6354,6 +6355,7 @@ static void do_v7m_exception_exit(ARMCPU *cpu)
+>      }
+>
+>      /* Otherwise, we have a successful exception exit. */
+> +    arm_clear_exclusive(env);
+>      qemu_log_mask(CPU_LOG_INT, "...successful exception return\n");
+>  }
+>
+> diff --git a/target/arm/op_helper.c b/target/arm/op_helper.c
+> index d1bca46..6a60464 100644
+> --- a/target/arm/op_helper.c
+> +++ b/target/arm/op_helper.c
+> @@ -1022,7 +1022,7 @@ void HELPER(exception_return)(CPUARMState *env)
+>
+>      aarch64_save_sp(env, cur_el);
+>
+> -    env->exclusive_addr = -1;
+> +    arm_clear_exclusive(env);
+>
+>      /* We must squash the PSTATE.SS bit to zero unless both of the
+>       * following hold:
+> --
+> 2.7.4
+>
+>

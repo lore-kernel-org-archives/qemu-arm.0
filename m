@@ -1,270 +1,234 @@
-Received: by 10.223.172.38 with SMTP id v35csp7467077wrc;
-        Tue, 12 Sep 2017 11:16:27 -0700 (PDT)
-X-Google-Smtp-Source: AOwi7QClQtKWjVeAx9iH+YcYg6HOoe+PpN0B1b8u8+Zhg2HthWSxnU/5QBYj0IHQUbM0fCDMdjUJ
-X-Received: by 10.200.22.21 with SMTP id p21mr21766767qtj.104.1505240187285;
-        Tue, 12 Sep 2017 11:16:27 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1505240187; cv=none;
+Received: by 10.223.172.38 with SMTP id v35csp7468325wrc;
+        Tue, 12 Sep 2017 11:17:22 -0700 (PDT)
+X-Google-Smtp-Source: AOwi7QDPCYBMe+UBCA3fq4wq5mUjStiQilRjKIjI7CrQ2KGr1sQCHEJ8d/m9jvMgZxRFwqWRl6MO
+X-Received: by 10.55.31.80 with SMTP id f77mr19394500qkf.95.1505240242812;
+        Tue, 12 Sep 2017 11:17:22 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1505240242; cv=none;
         d=google.com; s=arc-20160816;
-        b=Inzy2dblxEduABnEIV4rh/0+zUFjIeXf+uZvIUa3OnZGHYkKJHi3iQD59HtvCgbNym
-         88Gq3Ix/Fz7vLQU1BBVHabOoaHCPgSYvmzuyPoczJxStF9JlBR2CGcDW6VKSwbBISaG6
-         j5naPzRwn3kRUhFp0CjIAuQRtGcnTyxFRtaa/YwOqGEyQdG81RNPAjqJ6q277TtfvodQ
-         Jh+/1Ht9t0OXqoC2ZpPErG9oTZslJqbSZAu3frIGyXFfMew+gORiNXTfdn8QB6HEN4te
-         pSK3VgEE3y6d2eRv13EO95CYHtowS/r3bYa51KqgTbUTZ7akEYJWoWd3qDQ0KBISj4gw
-         +wdw==
+        b=q3PpA1Xf74ug5bbHFrzE4WPP+hcDaBvfBoEkxkX1aSM4MKy8IFpVMNfsrqrGVdRrl7
+         vBZerN1u2ybQwPCGdQiD0ryhVqrh6+W66RjW/KP4ZQHy/gfKChbBlM576V10McUxIJ8Q
+         JpFDLLo8OmWkaww7QzuImFFmudN+RtxRnqDmLJ+nTzC/MBYqhyD8AYV3NDHBZkM6WWlC
+         iJu/WbxKp18O4b5IxHhrSDkaDRNDOA6Crdy4N3CEnESXLTWQVaK3F0i5oIY+3j1n+AHL
+         uEdDtm/hNrXY+FAWXyCzxrfXPX3aXbhFt557ljllk9KvyDvRYOzE51lnjVFNk6HZ751J
+         6yLw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
          :message-id:date:to:from:arc-authentication-results;
-        bh=TZqISnWS8crTyERgwclvfQOkiQpXDa7RbssLPTTV9vg=;
-        b=0TUsDv1XKFzIEqI9JtYuhYCvn5RF1X3fSzMn5kFig4KG7qeTfTNfhTfv1I1mR4B3UN
-         qaJbsQXneLlSs6mycxZXPgKW/lruUm9sCVEVKI7kF76lxy4VebkyDHxbCqTKVe4fmZ2D
-         1hSc4Hd+uq+T5ckUOJY60LDc8I8/3xDil6G/ztGAPGe02F+HlPjatazUh193WPfZ+5tb
-         sa/4PwYBb9zFyO5Qzp9bgwPNPMCI/Bf02H4FAHvfrDOn2iI1Q5fm6zzgZE8LWG7Lkrsi
-         9+BQqIZRbxdl072p7EFS6RgK1O1bNkN1u7hcD2axFelzdl/tpX2ErKfY4RG/Y02bW5kJ
-         +NOg==
+        bh=kQsJmKLqlo0zU/tVNsuqSlH51deGiBgTiRR53dwMu9M=;
+        b=rx01lJjcMWo7ptChnWl+UX2CgnLUUIMefmfSrniITJ77Q1P1H3MAUlwUZl2b6cTj0W
+         UQE1S0CHcT0fjuKy+xstqDranI37CEmPU5mRwB/xk8B5xK+h6g4xt6q7S3oTebV4jkD8
+         X/DEPGXlktlfuDEZpC9auMYTinO9c5vIydtYBH2Y1ZbqAvw8Oo7+m0TKZUZUmpPKHjOs
+         HtFOfBMku2CqSVH+D8gQOnNm0yhJtDsKFMKV+dbtSUuu+zZ4OZ+Nq/D35vZnPFxL40Zo
+         9IjtWVU2H9oLeAkOgivvHV5tPlgeAyKiSD590WLT7vk3m8YdxpaPELHXaRBuIrX1Hk7g
+         Pdig==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id l59si12730413qtd.510.2017.09.12.11.16.26
+        by mx.google.com with ESMTPS id d40si12743721qtc.94.2017.09.12.11.17.22
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 12 Sep 2017 11:16:27 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Tue, 12 Sep 2017 11:17:22 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:37956 helo=lists.gnu.org)
+Received: from localhost ([::1]:37961 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1drpjU-0005JX-W8
-	for alex.bennee@linaro.org; Tue, 12 Sep 2017 14:16:25 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:43418)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1drpkO-0006Wb-Fh
+	for alex.bennee@linaro.org; Tue, 12 Sep 2017 14:17:20 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:43297)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1drph2-0003Rj-I4
-	for qemu-devel@nongnu.org; Tue, 12 Sep 2017 14:13:54 -0400
+	(envelope-from <pm215@archaic.org.uk>) id 1drpgy-0003OE-Q6
+	for qemu-arm@nongnu.org; Tue, 12 Sep 2017 14:13:50 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1drph0-0006R9-Sp
-	for qemu-devel@nongnu.org; Tue, 12 Sep 2017 14:13:52 -0400
-Received: from orth.archaic.org.uk ([2001:8b0:1d0::2]:37292)
+	(envelope-from <pm215@archaic.org.uk>) id 1drpgx-0006Oo-Co
+	for qemu-arm@nongnu.org; Tue, 12 Sep 2017 14:13:48 -0400
+Received: from orth.archaic.org.uk ([2001:8b0:1d0::2]:37298)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <pm215@archaic.org.uk>)
-	id 1drpgw-0006Ln-Fp; Tue, 12 Sep 2017 14:13:46 -0400
+	id 1drpgx-0006Mo-3w; Tue, 12 Sep 2017 14:13:47 -0400
 Received: from pm215 by orth.archaic.org.uk with local (Exim 4.89)
 	(envelope-from <pm215@archaic.org.uk>)
-	id 1drpgu-00015X-8t; Tue, 12 Sep 2017 19:13:44 +0100
+	id 1drpgq-00012z-9z; Tue, 12 Sep 2017 19:13:40 +0100
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Date: Tue, 12 Sep 2017 19:13:54 +0100
-Message-Id: <1505240046-11454-8-git-send-email-peter.maydell@linaro.org>
+Date: Tue, 12 Sep 2017 19:13:48 +0100
+Message-Id: <1505240046-11454-2-git-send-email-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.7.4
 In-Reply-To: <1505240046-11454-1-git-send-email-peter.maydell@linaro.org>
 References: <1505240046-11454-1-git-send-email-peter.maydell@linaro.org>
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
 X-Received-From: 2001:8b0:1d0::2
-Subject: [Qemu-devel] [PATCH 07/19] nvic: Implement NVIC_ITNS<n> registers
-X-BeenThere: qemu-devel@nongnu.org
+Subject: [Qemu-arm] [PATCH 01/19] target/arm: Implement MSR/MRS access to NS
+ banked registers
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: patches@linaro.org
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 5hHb9cIVJYmf
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 3+XrqYWVklaT
 
-For v8M, the NVIC has a new set of registers per interrupt,
-NVIC_ITNS<n>. These determine whether the interrupt targets Secure
-or Non-secure state. Implement the register read/write code for
-these, and make them cause NVIC_IABR, NVIC_ICER, NVIC_ISER,
-NVIC_ICPR, NVIC_IPR and NVIC_ISPR to RAZ/WI for non-secure
-accesses to fields corresponding to interrupts which are
-configured to target secure state.
+In v8M the MSR and MRS instructions have extra register value
+encodings to allow secure code to access the non-secure banked
+version of various special registers.
+
+(We don't implement the MSPLIM_NS or PSPLIM_NS aliases, because
+we don't currently implement the stack limit registers at all.)
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- include/hw/intc/armv7m_nvic.h |  3 ++
- hw/intc/armv7m_nvic.c         | 74 +++++++++++++++++++++++++++++++++++++++----
- 2 files changed, 70 insertions(+), 7 deletions(-)
+ target/arm/helper.c | 110 ++++++++++++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 110 insertions(+)
 
-diff --git a/include/hw/intc/armv7m_nvic.h b/include/hw/intc/armv7m_nvic.h
-index e96e488..ac7997c 100644
---- a/include/hw/intc/armv7m_nvic.h
-+++ b/include/hw/intc/armv7m_nvic.h
-@@ -58,6 +58,9 @@ typedef struct NVICState {
-     /* The PRIGROUP field in AIRCR is banked */
-     uint32_t prigroup[M_REG_NUM_BANKS];
- 
-+    /* v8M NVIC_ITNS state (stored as a bool per bit) */
-+    bool itns[NVIC_MAX_VECTORS];
-+
-     /* The following fields are all cached state that can be recalculated
-      * from the vectors[] and sec_vectors[] arrays and the prigroup field:
-      *  - vectpending
-diff --git a/hw/intc/armv7m_nvic.c b/hw/intc/armv7m_nvic.c
-index edaf60c..b97dbe3 100644
---- a/hw/intc/armv7m_nvic.c
-+++ b/hw/intc/armv7m_nvic.c
-@@ -423,6 +423,25 @@ static uint32_t nvic_readl(NVICState *s, uint32_t offset, MemTxAttrs attrs)
-     switch (offset) {
-     case 4: /* Interrupt Control Type.  */
-         return ((s->num_irq - NVIC_FIRST_IRQ) / 32) - 1;
-+    case 0x380 ... 0x3bf: /* NVIC_ITNS<n> */
-+    {
-+        int startvec = 32 * (offset - 0x380) + NVIC_FIRST_IRQ;
-+        int i;
-+
-+        if (!arm_feature(&cpu->env, ARM_FEATURE_V8)) {
-+            goto bad_offset;
-+        }
-+        if (!attrs.secure) {
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index 4f41841..f4f2a87 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -8892,12 +8892,68 @@ uint32_t HELPER(v7m_mrs)(CPUARMState *env, uint32_t reg)
+         break;
+     case 20: /* CONTROL */
+         return env->v7m.control[env->v7m.secure];
++    case 0x94: /* CONTROL_NS */
++        /* We have to handle this here because unprivileged Secure code
++         * can read the NS CONTROL register.
++         */
++        if (!env->v7m.secure) {
 +            return 0;
 +        }
-+        val = 0;
-+        for (i = 0; i < 32 && startvec + i < s->num_irq; i++) {
-+            if (s->itns[startvec + i]) {
-+                val |= (1 << i);
++        return env->v7m.control[M_REG_NS];
+     }
+ 
+     if (el == 0) {
+         return 0; /* unprivileged reads others as zero */
+     }
+ 
++    if (arm_feature(env, ARM_FEATURE_M_SECURITY)) {
++        switch (reg) {
++        case 0x88: /* MSP_NS */
++            if (!env->v7m.secure) {
++                return 0;
++            }
++            return env->v7m.other_ss_msp;
++        case 0x89: /* PSP_NS */
++            if (!env->v7m.secure) {
++                return 0;
++            }
++            return env->v7m.other_ss_psp;
++        case 0x90: /* PRIMASK_NS */
++            if (!env->v7m.secure) {
++                return 0;
++            }
++            return env->v7m.primask[M_REG_NS];
++        case 0x91: /* BASEPRI_NS */
++            if (!env->v7m.secure) {
++                return 0;
++            }
++            return env->v7m.basepri[M_REG_NS];
++        case 0x93: /* FAULTMASK_NS */
++            if (!env->v7m.secure) {
++                return 0;
++            }
++            return env->v7m.faultmask[M_REG_NS];
++        case 0x98: /* SP_NS */
++        {
++            /* This gives the non-secure SP selected based on whether we're
++             * currently in handler mode or not, using the NS CONTROL.SPSEL.
++             */
++            bool spsel = env->v7m.control[M_REG_NS] & R_V7M_CONTROL_SPSEL_MASK;
++
++            if (!env->v7m.secure) {
++                return 0;
++            }
++            if (!arm_v7m_is_handler_mode(env) && spsel) {
++                return env->v7m.other_ss_psp;
++            } else {
++                return env->v7m.other_ss_msp;
 +            }
 +        }
-+        return val;
-+    }
-     case 0xd00: /* CPUID Base.  */
-         return cpu->midr;
-     case 0xd04: /* Interrupt Control State.  */
-@@ -658,6 +677,23 @@ static void nvic_writel(NVICState *s, uint32_t offset, uint32_t value,
-     ARMCPU *cpu = s->cpu;
- 
-     switch (offset) {
-+    case 0x380 ... 0x3bf: /* NVIC_ITNS<n> */
-+    {
-+        int startvec = 32 * (offset - 0x380) + NVIC_FIRST_IRQ;
-+        int i;
-+
-+        if (!arm_feature(&cpu->env, ARM_FEATURE_V8)) {
-+            goto bad_offset;
-+        }
-+        if (!attrs.secure) {
++        default:
 +            break;
 +        }
-+        for (i = 0; i < 32 && startvec + i < s->num_irq; i++) {
-+            s->itns[startvec + i] = value & (1 << i);
-+        }
-+        nvic_irq_update(s);
-+        break;
 +    }
-     case 0xd04: /* Interrupt Control State.  */
-         if (value & (1 << 31)) {
-             armv7m_nvic_set_pending(s, ARMV7M_EXCP_NMI);
-@@ -966,7 +1002,8 @@ static MemTxResult nvic_sysreg_read(void *opaque, hwaddr addr,
-         startvec = offset - 0x180 + NVIC_FIRST_IRQ; /* vector # */
- 
-         for (i = 0, end = size * 8; i < end && startvec + i < s->num_irq; i++) {
--            if (s->vectors[startvec + i].enabled) {
-+            if (s->vectors[startvec + i].enabled &&
-+                (attrs.secure || s->itns[startvec + i])) {
-                 val |= (1 << i);
-             }
-         }
-@@ -978,7 +1015,8 @@ static MemTxResult nvic_sysreg_read(void *opaque, hwaddr addr,
-         val = 0;
-         startvec = offset - 0x280 + NVIC_FIRST_IRQ; /* vector # */
-         for (i = 0, end = size * 8; i < end && startvec + i < s->num_irq; i++) {
--            if (s->vectors[startvec + i].pending) {
-+            if (s->vectors[startvec + i].pending &&
-+                (attrs.secure || s->itns[startvec + i])) {
-                 val |= (1 << i);
-             }
-         }
-@@ -988,7 +1026,8 @@ static MemTxResult nvic_sysreg_read(void *opaque, hwaddr addr,
-         startvec = offset - 0x300 + NVIC_FIRST_IRQ; /* vector # */
- 
-         for (i = 0, end = size * 8; i < end && startvec + i < s->num_irq; i++) {
--            if (s->vectors[startvec + i].active) {
-+            if (s->vectors[startvec + i].active &&
-+                (attrs.secure || s->itns[startvec + i])) {
-                 val |= (1 << i);
-             }
-         }
-@@ -998,7 +1037,9 @@ static MemTxResult nvic_sysreg_read(void *opaque, hwaddr addr,
-         startvec = offset - 0x400 + NVIC_FIRST_IRQ; /* vector # */
- 
-         for (i = 0; i < size && startvec + i < s->num_irq; i++) {
--            val |= s->vectors[startvec + i].prio << (8 * i);
-+            if (attrs.secure || s->itns[startvec + i]) {
-+                val |= s->vectors[startvec + i].prio << (8 * i);
-+            }
-         }
-         break;
-     case 0xd18 ... 0xd23: /* System Handler Priority.  */
-@@ -1055,7 +1096,8 @@ static MemTxResult nvic_sysreg_write(void *opaque, hwaddr addr,
-         startvec = 8 * (offset - 0x180) + NVIC_FIRST_IRQ;
- 
-         for (i = 0, end = size * 8; i < end && startvec + i < s->num_irq; i++) {
--            if (value & (1 << i)) {
-+            if (value & (1 << i) &&
-+                (attrs.secure || s->itns[startvec + i])) {
-                 s->vectors[startvec + i].enabled = setval;
-             }
-         }
-@@ -1072,7 +1114,8 @@ static MemTxResult nvic_sysreg_write(void *opaque, hwaddr addr,
-         startvec = 8 * (offset - 0x280) + NVIC_FIRST_IRQ; /* vector # */
- 
-         for (i = 0, end = size * 8; i < end && startvec + i < s->num_irq; i++) {
--            if (value & (1 << i)) {
-+            if (value & (1 << i) &&
-+                (attrs.secure || s->itns[startvec + i])) {
-                 s->vectors[startvec + i].pending = setval;
-             }
-         }
-@@ -1084,7 +1127,9 @@ static MemTxResult nvic_sysreg_write(void *opaque, hwaddr addr,
-         startvec = 8 * (offset - 0x400) + NVIC_FIRST_IRQ; /* vector # */
- 
-         for (i = 0; i < size && startvec + i < s->num_irq; i++) {
--            set_prio(s, startvec + i, (value >> (i * 8)) & 0xff);
-+            if (attrs.secure || s->itns[startvec + i]) {
-+                set_prio(s, startvec + i, (value >> (i * 8)) & 0xff);
-+            }
-         }
-         nvic_irq_update(s);
-         return MEMTX_OK;
-@@ -1223,6 +1268,7 @@ static const VMStateDescription vmstate_nvic_security = {
-         VMSTATE_STRUCT_ARRAY(sec_vectors, NVICState, NVIC_INTERNAL_VECTORS, 1,
-                              vmstate_VecInfo, VecInfo),
-         VMSTATE_UINT32(prigroup[M_REG_S], NVICState),
-+        VMSTATE_BOOL_ARRAY(itns, NVICState, NVIC_MAX_VECTORS),
-         VMSTATE_END_OF_LIST()
++
+     switch (reg) {
+     case 8: /* MSP */
+         return (env->v7m.control[env->v7m.secure] & R_V7M_CONTROL_SPSEL_MASK) ?
+@@ -8936,6 +8992,60 @@ void HELPER(v7m_msr)(CPUARMState *env, uint32_t maskreg, uint32_t val)
+         return;
      }
- };
-@@ -1284,6 +1330,20 @@ static void armv7m_nvic_reset(DeviceState *dev)
-     s->vectpending = 0;
-     s->vectpending_is_s_banked = false;
-     s->vectpending_prio = NVIC_NOEXC_PRIO;
+ 
++    if (arm_feature(env, ARM_FEATURE_M_SECURITY)) {
++        switch (reg) {
++        case 0x88: /* MSP_NS */
++            if (!env->v7m.secure) {
++                return;
++            }
++            env->v7m.other_ss_msp = val;
++            return;
++        case 0x89: /* PSP_NS */
++            if (!env->v7m.secure) {
++                return;
++            }
++            env->v7m.other_ss_psp = val;
++            return;
++        case 0x90: /* PRIMASK_NS */
++            if (!env->v7m.secure) {
++                return;
++            }
++            env->v7m.primask[M_REG_NS] = val & 1;
++            return;
++        case 0x91: /* BASEPRI_NS */
++            if (!env->v7m.secure) {
++                return;
++            }
++            env->v7m.basepri[M_REG_NS] = val & 0xff;
++            return;
++        case 0x93: /* FAULTMASK_NS */
++            if (!env->v7m.secure) {
++                return;
++            }
++            env->v7m.faultmask[M_REG_NS] = val & 1;
++            return;
++        case 0x98: /* SP_NS */
++        {
++            /* This gives the non-secure SP selected based on whether we're
++             * currently in handler mode or not, using the NS CONTROL.SPSEL.
++             */
++            bool spsel = env->v7m.control[M_REG_NS] & R_V7M_CONTROL_SPSEL_MASK;
 +
-+    if (arm_feature(&s->cpu->env, ARM_FEATURE_M_SECURITY)) {
-+        memset(s->itns, 0, sizeof(s->itns));
-+    } else {
-+        /* This state is constant and not guest accessible in a non-security
-+         * NVIC; we set the bits to true to avoid having to do a feature
-+         * bit check in the NVIC enable/pend/etc register accessors.
-+         */
-+        int i;
-+
-+        for (i = NVIC_FIRST_IRQ; i < ARRAY_SIZE(s->itns); i++) {
-+            s->itns[i] = true;
++            if (!env->v7m.secure) {
++                return;
++            }
++            if (!arm_v7m_is_handler_mode(env) && spsel) {
++                env->v7m.other_ss_psp = val;
++            } else {
++                env->v7m.other_ss_msp = val;
++            }
++            return;
++        }
++        default:
++            break;
 +        }
 +    }
- }
- 
- static void nvic_systick_trigger(void *opaque, int n, int level)
++
+     switch (reg) {
+     case 0 ... 7: /* xPSR sub-fields */
+         /* only APSR is actually writable */
 -- 
 2.7.4
 

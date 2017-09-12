@@ -1,72 +1,71 @@
-Received: by 10.223.172.38 with SMTP id v35csp7466229wrc;
-        Tue, 12 Sep 2017 11:15:50 -0700 (PDT)
-X-Google-Smtp-Source: AOwi7QAYUDLHvh5qCCFghOCFN87mn+7AY1BGftBesHFkP5YU29HH8YQ3YL/rfC8rUr3DQ3xzooEy
-X-Received: by 10.55.144.69 with SMTP id s66mr22128641qkd.111.1505240150469;
-        Tue, 12 Sep 2017 11:15:50 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1505240150; cv=none;
+Received: by 10.223.172.38 with SMTP id v35csp7467077wrc;
+        Tue, 12 Sep 2017 11:16:27 -0700 (PDT)
+X-Google-Smtp-Source: AOwi7QClQtKWjVeAx9iH+YcYg6HOoe+PpN0B1b8u8+Zhg2HthWSxnU/5QBYj0IHQUbM0fCDMdjUJ
+X-Received: by 10.200.22.21 with SMTP id p21mr21766767qtj.104.1505240187285;
+        Tue, 12 Sep 2017 11:16:27 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1505240187; cv=none;
         d=google.com; s=arc-20160816;
-        b=EQQfiuEukj7uxxR7UAQmNxM59s1a0JLvRinWZkfDohQ5PWD7q/6nWsYRaJ0VKKHyTW
-         swYf+f5A82bD3x15aJF8zBSBmWS+Ce5dijVlxcfr6zZJLu3ZawmBsJ/RY93P9ABhTTv2
-         aTaPIi/cqNkn6dx/4OOd2+hDYw0rqUJXuGIKjKO4ll0aOW9T3FVTzU7nqamIL+wWn9yk
-         4uP59TMf7F42/WeAhRSELV9bNMv/JTWMwDqHAHDQEjh9Ykz0xodIouQFmfq6ONuMrRUX
-         8IOuGK3SvEpWWzCu87MceqJpiiEQdjkSIc17Zu/wTX0kx2rtCOUkLt8RcxdCTgRaQRri
-         K/gg==
+        b=Inzy2dblxEduABnEIV4rh/0+zUFjIeXf+uZvIUa3OnZGHYkKJHi3iQD59HtvCgbNym
+         88Gq3Ix/Fz7vLQU1BBVHabOoaHCPgSYvmzuyPoczJxStF9JlBR2CGcDW6VKSwbBISaG6
+         j5naPzRwn3kRUhFp0CjIAuQRtGcnTyxFRtaa/YwOqGEyQdG81RNPAjqJ6q277TtfvodQ
+         Jh+/1Ht9t0OXqoC2ZpPErG9oTZslJqbSZAu3frIGyXFfMew+gORiNXTfdn8QB6HEN4te
+         pSK3VgEE3y6d2eRv13EO95CYHtowS/r3bYa51KqgTbUTZ7akEYJWoWd3qDQ0KBISj4gw
+         +wdw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
          :message-id:date:to:from:arc-authentication-results;
-        bh=stY5Ps6HXs3obf3PcYxE3USHO9aFc13HjVy0YFrAprw=;
-        b=jCUrei+V6zvM9cVCBYpdFuMt/E/nLYScWlXEHgeKU8I/eWF+nAxO/LvNao/M04Pgu2
-         M0SARZHX0O38s+R/O1PH1VJVrd+/P8U0f9s/xcZA3g8VUEDmsY+nS0349gaN3pcBM1I8
-         3+pPWqR9kxhL9HOxSva9cPP/liBvWwrTadTcxJ+Z/iKGYeaAm9LT35MGnMvb7nyz4GYD
-         mxBUVkb0ndFuj094nrwRxFivpfDus4V502fw9hcdkCqoS0qFCY7+464IJ5qZgco0plxW
-         5TncLcbqHSsQYMVpMtKX5Y17Q7/pVGiNYX9hHrbtcOFxT9FTHNuq5/Ss2lMJRFeYwRRd
-         zDkA==
+        bh=TZqISnWS8crTyERgwclvfQOkiQpXDa7RbssLPTTV9vg=;
+        b=0TUsDv1XKFzIEqI9JtYuhYCvn5RF1X3fSzMn5kFig4KG7qeTfTNfhTfv1I1mR4B3UN
+         qaJbsQXneLlSs6mycxZXPgKW/lruUm9sCVEVKI7kF76lxy4VebkyDHxbCqTKVe4fmZ2D
+         1hSc4Hd+uq+T5ckUOJY60LDc8I8/3xDil6G/ztGAPGe02F+HlPjatazUh193WPfZ+5tb
+         sa/4PwYBb9zFyO5Qzp9bgwPNPMCI/Bf02H4FAHvfrDOn2iI1Q5fm6zzgZE8LWG7Lkrsi
+         9+BQqIZRbxdl072p7EFS6RgK1O1bNkN1u7hcD2axFelzdl/tpX2ErKfY4RG/Y02bW5kJ
+         +NOg==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id n70si12670948qkl.107.2017.09.12.11.15.50
+        by mx.google.com with ESMTPS id l59si12730413qtd.510.2017.09.12.11.16.26
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 12 Sep 2017 11:15:50 -0700 (PDT)
+        Tue, 12 Sep 2017 11:16:27 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:37955 helo=lists.gnu.org)
+Received: from localhost ([::1]:37956 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1drpiu-0004nO-8R
-	for alex.bennee@linaro.org; Tue, 12 Sep 2017 14:15:48 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:43278)
+	id 1drpjU-0005JX-W8
+	for alex.bennee@linaro.org; Tue, 12 Sep 2017 14:16:25 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:43418)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1drpgy-0003Nb-8m
-	for qemu-devel@nongnu.org; Tue, 12 Sep 2017 14:13:49 -0400
+	(envelope-from <pm215@archaic.org.uk>) id 1drph2-0003Rj-I4
+	for qemu-devel@nongnu.org; Tue, 12 Sep 2017 14:13:54 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1drpgx-0006OM-3M
-	for qemu-devel@nongnu.org; Tue, 12 Sep 2017 14:13:48 -0400
+	(envelope-from <pm215@archaic.org.uk>) id 1drph0-0006R9-Sp
+	for qemu-devel@nongnu.org; Tue, 12 Sep 2017 14:13:52 -0400
 Received: from orth.archaic.org.uk ([2001:8b0:1d0::2]:37292)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <pm215@archaic.org.uk>)
-	id 1drpgu-0006Ln-FK; Tue, 12 Sep 2017 14:13:44 -0400
+	id 1drpgw-0006Ln-Fp; Tue, 12 Sep 2017 14:13:46 -0400
 Received: from pm215 by orth.archaic.org.uk with local (Exim 4.89)
 	(envelope-from <pm215@archaic.org.uk>)
-	id 1drpgt-00014o-Hz; Tue, 12 Sep 2017 19:13:43 +0100
+	id 1drpgu-00015X-8t; Tue, 12 Sep 2017 19:13:44 +0100
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Date: Tue, 12 Sep 2017 19:13:53 +0100
-Message-Id: <1505240046-11454-7-git-send-email-peter.maydell@linaro.org>
+Date: Tue, 12 Sep 2017 19:13:54 +0100
+Message-Id: <1505240046-11454-8-git-send-email-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.7.4
 In-Reply-To: <1505240046-11454-1-git-send-email-peter.maydell@linaro.org>
 References: <1505240046-11454-1-git-send-email-peter.maydell@linaro.org>
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
 X-Received-From: 2001:8b0:1d0::2
-Subject: [Qemu-devel] [PATCH 06/19] nvic: Make ICSR.RETTOBASE handle banked
- exceptions
+Subject: [Qemu-devel] [PATCH 07/19] nvic: Implement NVIC_ITNS<n> registers
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -81,34 +80,191 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
 Cc: patches@linaro.org
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ksuUq+QiQ95S
+X-TUID: 5hHb9cIVJYmf
 
-Update the code in nvic_rettobase() so that it checks the
-sec_vectors[] array as well as the vectors[] array if needed.
+For v8M, the NVIC has a new set of registers per interrupt,
+NVIC_ITNS<n>. These determine whether the interrupt targets Secure
+or Non-secure state. Implement the register read/write code for
+these, and make them cause NVIC_IABR, NVIC_ICER, NVIC_ISER,
+NVIC_ICPR, NVIC_IPR and NVIC_ISPR to RAZ/WI for non-secure
+accesses to fields corresponding to interrupts which are
+configured to target secure state.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- hw/intc/armv7m_nvic.c | 5 ++++-
- 1 file changed, 4 insertions(+), 1 deletion(-)
+ include/hw/intc/armv7m_nvic.h |  3 ++
+ hw/intc/armv7m_nvic.c         | 74 +++++++++++++++++++++++++++++++++++++++----
+ 2 files changed, 70 insertions(+), 7 deletions(-)
 
+diff --git a/include/hw/intc/armv7m_nvic.h b/include/hw/intc/armv7m_nvic.h
+index e96e488..ac7997c 100644
+--- a/include/hw/intc/armv7m_nvic.h
++++ b/include/hw/intc/armv7m_nvic.h
+@@ -58,6 +58,9 @@ typedef struct NVICState {
+     /* The PRIGROUP field in AIRCR is banked */
+     uint32_t prigroup[M_REG_NUM_BANKS];
+ 
++    /* v8M NVIC_ITNS state (stored as a bool per bit) */
++    bool itns[NVIC_MAX_VECTORS];
++
+     /* The following fields are all cached state that can be recalculated
+      * from the vectors[] and sec_vectors[] arrays and the prigroup field:
+      *  - vectpending
 diff --git a/hw/intc/armv7m_nvic.c b/hw/intc/armv7m_nvic.c
-index 585b1a7..edaf60c 100644
+index edaf60c..b97dbe3 100644
 --- a/hw/intc/armv7m_nvic.c
 +++ b/hw/intc/armv7m_nvic.c
-@@ -84,9 +84,12 @@ static int nvic_pending_prio(NVICState *s)
- static bool nvic_rettobase(NVICState *s)
- {
-     int irq, nhand = 0;
-+    bool check_sec = arm_feature(&s->cpu->env, ARM_FEATURE_M_SECURITY);
+@@ -423,6 +423,25 @@ static uint32_t nvic_readl(NVICState *s, uint32_t offset, MemTxAttrs attrs)
+     switch (offset) {
+     case 4: /* Interrupt Control Type.  */
+         return ((s->num_irq - NVIC_FIRST_IRQ) / 32) - 1;
++    case 0x380 ... 0x3bf: /* NVIC_ITNS<n> */
++    {
++        int startvec = 32 * (offset - 0x380) + NVIC_FIRST_IRQ;
++        int i;
++
++        if (!arm_feature(&cpu->env, ARM_FEATURE_V8)) {
++            goto bad_offset;
++        }
++        if (!attrs.secure) {
++            return 0;
++        }
++        val = 0;
++        for (i = 0; i < 32 && startvec + i < s->num_irq; i++) {
++            if (s->itns[startvec + i]) {
++                val |= (1 << i);
++            }
++        }
++        return val;
++    }
+     case 0xd00: /* CPUID Base.  */
+         return cpu->midr;
+     case 0xd04: /* Interrupt Control State.  */
+@@ -658,6 +677,23 @@ static void nvic_writel(NVICState *s, uint32_t offset, uint32_t value,
+     ARMCPU *cpu = s->cpu;
  
-     for (irq = ARMV7M_EXCP_RESET; irq < s->num_irq; irq++) {
--        if (s->vectors[irq].active) {
-+        if (s->vectors[irq].active ||
-+            (check_sec && irq < NVIC_INTERNAL_VECTORS &&
-+             s->sec_vectors[irq].active)) {
-             nhand++;
-             if (nhand == 2) {
-                 return 0;
+     switch (offset) {
++    case 0x380 ... 0x3bf: /* NVIC_ITNS<n> */
++    {
++        int startvec = 32 * (offset - 0x380) + NVIC_FIRST_IRQ;
++        int i;
++
++        if (!arm_feature(&cpu->env, ARM_FEATURE_V8)) {
++            goto bad_offset;
++        }
++        if (!attrs.secure) {
++            break;
++        }
++        for (i = 0; i < 32 && startvec + i < s->num_irq; i++) {
++            s->itns[startvec + i] = value & (1 << i);
++        }
++        nvic_irq_update(s);
++        break;
++    }
+     case 0xd04: /* Interrupt Control State.  */
+         if (value & (1 << 31)) {
+             armv7m_nvic_set_pending(s, ARMV7M_EXCP_NMI);
+@@ -966,7 +1002,8 @@ static MemTxResult nvic_sysreg_read(void *opaque, hwaddr addr,
+         startvec = offset - 0x180 + NVIC_FIRST_IRQ; /* vector # */
+ 
+         for (i = 0, end = size * 8; i < end && startvec + i < s->num_irq; i++) {
+-            if (s->vectors[startvec + i].enabled) {
++            if (s->vectors[startvec + i].enabled &&
++                (attrs.secure || s->itns[startvec + i])) {
+                 val |= (1 << i);
+             }
+         }
+@@ -978,7 +1015,8 @@ static MemTxResult nvic_sysreg_read(void *opaque, hwaddr addr,
+         val = 0;
+         startvec = offset - 0x280 + NVIC_FIRST_IRQ; /* vector # */
+         for (i = 0, end = size * 8; i < end && startvec + i < s->num_irq; i++) {
+-            if (s->vectors[startvec + i].pending) {
++            if (s->vectors[startvec + i].pending &&
++                (attrs.secure || s->itns[startvec + i])) {
+                 val |= (1 << i);
+             }
+         }
+@@ -988,7 +1026,8 @@ static MemTxResult nvic_sysreg_read(void *opaque, hwaddr addr,
+         startvec = offset - 0x300 + NVIC_FIRST_IRQ; /* vector # */
+ 
+         for (i = 0, end = size * 8; i < end && startvec + i < s->num_irq; i++) {
+-            if (s->vectors[startvec + i].active) {
++            if (s->vectors[startvec + i].active &&
++                (attrs.secure || s->itns[startvec + i])) {
+                 val |= (1 << i);
+             }
+         }
+@@ -998,7 +1037,9 @@ static MemTxResult nvic_sysreg_read(void *opaque, hwaddr addr,
+         startvec = offset - 0x400 + NVIC_FIRST_IRQ; /* vector # */
+ 
+         for (i = 0; i < size && startvec + i < s->num_irq; i++) {
+-            val |= s->vectors[startvec + i].prio << (8 * i);
++            if (attrs.secure || s->itns[startvec + i]) {
++                val |= s->vectors[startvec + i].prio << (8 * i);
++            }
+         }
+         break;
+     case 0xd18 ... 0xd23: /* System Handler Priority.  */
+@@ -1055,7 +1096,8 @@ static MemTxResult nvic_sysreg_write(void *opaque, hwaddr addr,
+         startvec = 8 * (offset - 0x180) + NVIC_FIRST_IRQ;
+ 
+         for (i = 0, end = size * 8; i < end && startvec + i < s->num_irq; i++) {
+-            if (value & (1 << i)) {
++            if (value & (1 << i) &&
++                (attrs.secure || s->itns[startvec + i])) {
+                 s->vectors[startvec + i].enabled = setval;
+             }
+         }
+@@ -1072,7 +1114,8 @@ static MemTxResult nvic_sysreg_write(void *opaque, hwaddr addr,
+         startvec = 8 * (offset - 0x280) + NVIC_FIRST_IRQ; /* vector # */
+ 
+         for (i = 0, end = size * 8; i < end && startvec + i < s->num_irq; i++) {
+-            if (value & (1 << i)) {
++            if (value & (1 << i) &&
++                (attrs.secure || s->itns[startvec + i])) {
+                 s->vectors[startvec + i].pending = setval;
+             }
+         }
+@@ -1084,7 +1127,9 @@ static MemTxResult nvic_sysreg_write(void *opaque, hwaddr addr,
+         startvec = 8 * (offset - 0x400) + NVIC_FIRST_IRQ; /* vector # */
+ 
+         for (i = 0; i < size && startvec + i < s->num_irq; i++) {
+-            set_prio(s, startvec + i, (value >> (i * 8)) & 0xff);
++            if (attrs.secure || s->itns[startvec + i]) {
++                set_prio(s, startvec + i, (value >> (i * 8)) & 0xff);
++            }
+         }
+         nvic_irq_update(s);
+         return MEMTX_OK;
+@@ -1223,6 +1268,7 @@ static const VMStateDescription vmstate_nvic_security = {
+         VMSTATE_STRUCT_ARRAY(sec_vectors, NVICState, NVIC_INTERNAL_VECTORS, 1,
+                              vmstate_VecInfo, VecInfo),
+         VMSTATE_UINT32(prigroup[M_REG_S], NVICState),
++        VMSTATE_BOOL_ARRAY(itns, NVICState, NVIC_MAX_VECTORS),
+         VMSTATE_END_OF_LIST()
+     }
+ };
+@@ -1284,6 +1330,20 @@ static void armv7m_nvic_reset(DeviceState *dev)
+     s->vectpending = 0;
+     s->vectpending_is_s_banked = false;
+     s->vectpending_prio = NVIC_NOEXC_PRIO;
++
++    if (arm_feature(&s->cpu->env, ARM_FEATURE_M_SECURITY)) {
++        memset(s->itns, 0, sizeof(s->itns));
++    } else {
++        /* This state is constant and not guest accessible in a non-security
++         * NVIC; we set the bits to true to avoid having to do a feature
++         * bit check in the NVIC enable/pend/etc register accessors.
++         */
++        int i;
++
++        for (i = NVIC_FIRST_IRQ; i < ARRAY_SIZE(s->itns); i++) {
++            s->itns[i] = true;
++        }
++    }
+ }
+ 
+ static void nvic_systick_trigger(void *opaque, int n, int level)
 -- 
 2.7.4
 

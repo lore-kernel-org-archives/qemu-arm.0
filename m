@@ -1,91 +1,110 @@
-Received: by 10.223.172.38 with SMTP id v35csp6942976wrc;
-        Tue, 12 Sep 2017 05:12:27 -0700 (PDT)
-X-Google-Smtp-Source: AOwi7QAIL7zSriIuPZzt/m59qz7VbXtWk8ZFLlzMH/Z2HWN/iQR7PeuoIXAPsKTkl/4PbcBDS/cb
-X-Received: by 10.55.81.215 with SMTP id f206mr17996290qkb.188.1505218347791;
-        Tue, 12 Sep 2017 05:12:27 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1505218347; cv=none;
+Received: by 10.223.172.38 with SMTP id v35csp6947545wrc;
+        Tue, 12 Sep 2017 05:15:44 -0700 (PDT)
+X-Received: by 10.200.24.65 with SMTP id n1mr17587790qtk.323.1505218544504;
+        Tue, 12 Sep 2017 05:15:44 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1505218544; cv=none;
         d=google.com; s=arc-20160816;
-        b=wP49OVMNcIjx5+R0ct7Hlonl3fRdKfLVoTs1zV58Q1f2p7OOVOok3sUSeVyLfKFhv9
-         TjZ0hnVxGICRs6YdbgbEO3L8CLeHIKOlMvsMfrhH+YZFulZ0ohyy4G48UMGLCttUQix0
-         zpz9X6+NeeF9uyB0LxTmc2qUTiDqYlXcyJJugN6ZgGcPZy0+Zt91RJuPzMXizJiBHeXv
-         NnnmrdZlhLhJ8bqRH4RBlI4yF+MQX9U6gmVKEYQuCJ66wplFJf4BgXrqVVdIenEZZr37
-         ISI5jZZrTyWAe+p92FK+QkZRJENYf5mLdnpqH8Ilf5S5bKZXwdW1ftdFibv3z9iWdvJY
-         iN5g==
+        b=AMVHF8L90wTY1ns4TmeqGLsHEO4A1kDZYBTaRp6UykgQ1zRlZq6pkY/t8Km6thW9yI
+         wSV7CLohcBgZHoFJehWcHvwYw7wwPeZ7VAkWvacKi0XHf7tSXNMNUtj5PDumd/4iG51d
+         8mPmaX7WQX2xuZBhzDZ5fV+PGiI1QojbUm+OtZTZ8fXzxwr1jMQnWSITkXqs/SdLAEOs
+         Oz+wRJinzEkzUXfkYe8JWzLevSJD2ofCxXskidEFWlohhfPoghoKamOMtGT4zVtWLNVE
+         jQLmObpGYkAx+BptKwjx11rLClWMNpQkvlMB+Nkybjw9Ua0c9EhbJkyzF0vZXDu/4Rt8
+         AeUQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:to:from:date:dmarc-filter:arc-authentication-results;
-        bh=ztzB0fZwcpUk/nWg75Cxb0oAiguLkZDVVEI012nrGEo=;
-        b=xVIwPr5jAZQl4DnVL26OL+/omOhILIjyEf7tkVdDh8iLVKjNcNsyR0lcQC+jL3Ohug
-         KIwZOOS8Mv8kQV/AMkpAZ9NAXJEa/9QJdtXhSoU1fkbS4CR7sKvKe9Aqm9vxN/0mqkWR
-         zoPt1gcDlfl4aojgVA8ubTdrd2o8amwTj2m3wMTtJRacSvJuIRdRxc/j+ZGi6mqEKGbs
-         tp4E2B3+W17p5Nnz88CDRI7xfM43yZ1Y5btRl9Y88FuEreouQ86ZMgUoR0l9sawukSci
-         SP7yu/bMXxH2JMXVMxIhNpJpVBS/j+7TZ1B8iWrm1XeClVNKa6gkY+6H5uCWEMKFeH2M
-         DwFA==
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:to:dkim-signature
+         :arc-authentication-results;
+        bh=WgxxTNFulw9Fw2oOFT9wjXPXnXqcOMH4k8pxR3Q9VTA=;
+        b=SPPfEUMk95lwjVA+nALfzK3Wl6MwoK8r/eHrygBdoA5INm7lzF4eRJmWVB26e9RbgB
+         wh1uCwVuPAwUm+jvfigWuje2zn3hhSmmF9Gt3cI3JGLPq9nu0ssNCFGG/eOFAtGRBI3d
+         BVqAJSSntRIgBvqzyB8ijs0bVU/A8Lv2gfvPGR8llLEczCRL/qFFrgr17serGSqxq4p6
+         Ereg/a4XhcZ7PE7ZsQMK78T0LPecTDl64qMJurM4cI7Wk+z3nR7FA2CtHhZdDSYNtMJK
+         4dM4WyaSHciiAPGTs0wVjkRDhX5Ci+k8j5yM8n3Fu9bvBLj/szHzu2ONxrdH6VGAaWMn
+         qzLg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=SOeqDKKV;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id a192si3818117qkb.471.2017.09.12.05.12.27
+        by mx.google.com with ESMTPS id c83si11984186qkb.39.2017.09.12.05.15.43
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 12 Sep 2017 05:12:27 -0700 (PDT)
+        Tue, 12 Sep 2017 05:15:44 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:35471 helo=lists.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=SOeqDKKV;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:35484 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1drk3F-000891-CA
-	for alex.bennee@linaro.org; Tue, 12 Sep 2017 08:12:25 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:39976)
+	id 1drk6Q-00014k-6t
+	for alex.bennee@linaro.org; Tue, 12 Sep 2017 08:15:42 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:41285)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <imammedo@redhat.com>) id 1drk31-00084n-U3
-	for qemu-arm@nongnu.org; Tue, 12 Sep 2017 08:12:18 -0400
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1drk6G-00011s-Gt
+	for qemu-arm@nongnu.org; Tue, 12 Sep 2017 08:15:33 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <imammedo@redhat.com>) id 1drk2v-0007RP-8M
-	for qemu-arm@nongnu.org; Tue, 12 Sep 2017 08:12:11 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:34332)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <imammedo@redhat.com>)
-	id 1drk2u-0007QW-VB; Tue, 12 Sep 2017 08:12:05 -0400
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
-	[10.5.11.15])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id ED24083F3D;
-	Tue, 12 Sep 2017 12:12:03 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com ED24083F3D
-Authentication-Results: ext-mx03.extmail.prod.ext.phx2.redhat.com;
-	dmarc=none (p=none dis=none) header.from=redhat.com
-Authentication-Results: ext-mx03.extmail.prod.ext.phx2.redhat.com;
-	spf=fail smtp.mailfrom=imammedo@redhat.com
-Received: from nial.brq.redhat.com (unknown [10.43.2.209])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id B84B66F9D3;
-	Tue, 12 Sep 2017 12:12:01 +0000 (UTC)
-Date: Tue, 12 Sep 2017 14:11:59 +0200
-From: Igor Mammedov <imammedo@redhat.com>
-To: Eduardo Habkost <ehabkost@redhat.com>
-Message-ID: <20170912141159.22c63bce@nial.brq.redhat.com>
-In-Reply-To: <20170905213152.GG17184@localhost.localdomain>
-References: <1504533662-198084-1-git-send-email-imammedo@redhat.com>
-	<1504533662-198084-7-git-send-email-imammedo@redhat.com>
-	<20170905213152.GG17184@localhost.localdomain>
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1drk6C-0002UJ-I6
+	for qemu-arm@nongnu.org; Tue, 12 Sep 2017 08:15:32 -0400
+Received: from mail-qt0-x232.google.com ([2607:f8b0:400d:c0d::232]:36867)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1drk60-0002IQ-Qg; Tue, 12 Sep 2017 08:15:16 -0400
+Received: by mail-qt0-x232.google.com with SMTP id b1so15311080qtc.4;
+	Tue, 12 Sep 2017 05:15:16 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=sender:subject:to:cc:references:from:message-id:date:user-agent
+	:mime-version:in-reply-to:content-language:content-transfer-encoding;
+	bh=WgxxTNFulw9Fw2oOFT9wjXPXnXqcOMH4k8pxR3Q9VTA=;
+	b=SOeqDKKVRKSrnAz+gPOWZ0Z5NhySz4Hh0HrAnFx8UQ7a0SUFqWAlOUnpAAHVxczuqv
+	45715KIqJWO8qcAPWO01iYNfjwfqijZ5FtToQnCyBYY1tcgsruWFdhH6bkpvv1mzZlAp
+	Pvky5VDGV67OjtmV7wjVU3jofq3slbh2Gr94t2h3Hzu0FKBDyYCoc4JEaBx9fUTOJ4Qq
+	b66+SCcmh+nSP8FxXOjVMmzLtlH6KYMjSnf5So4sJrXD6JjeO9WJULXgrqk17DQYpYRz
+	eVRe9fDSYHQnSGhAQ/9YmWDPtU4Br5cysDZ6Lgozw8INL5B41tZsGyl3BIBLRl7e6T/d
+	CT/A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+	:date:user-agent:mime-version:in-reply-to:content-language
+	:content-transfer-encoding;
+	bh=WgxxTNFulw9Fw2oOFT9wjXPXnXqcOMH4k8pxR3Q9VTA=;
+	b=mdjLRpxF8xSdXOnDdnhICKbjahxbrD8sPlreDDhUrC6LLTAgQe4ky31YoeyvzVA6jE
+	bXuPDg49UqM/B9mEa/U4OZwsOI7/paPmpe0sCe49pHGf1Rxjp4kbt6EBKu+iclAyTN7e
+	ygc10RTXaDV8N1Xltzqisok7jZC/LuRbsWIMvnrW/0CLDwUvQdaWIylBqpIS1SG6zhpQ
+	/Mei9DI0C26wVoVyHRf1mCUOlkko6LKAv4Zfhp4M3lCUxVJPpOQoHiBymevKoYy5ZYZF
+	sQPm4EbJZ/9n7UnMOxwqWlBqbh0+TA3L3oXjq64or+E4KobjRRYnmNpAdZVBm9mO58FG
+	OQ8A==
+X-Gm-Message-State: AHPjjUjSyCn/I92v6KG0ZBzO3ipGdUjKpoigzLmIA6zGZzYPsYiSfRaS
+	82QsaVH0LeJ/8A==
+X-Google-Smtp-Source: AOwi7QBMlNt1EhryqCALVfmioeOF66fugj4qjjCWuX7xyVVNmvVlHSHOGsMUqRi3tXpdWb93fPNNxQ==
+X-Received: by 10.237.42.85 with SMTP id k21mr20559973qtf.289.1505218516299;
+	Tue, 12 Sep 2017 05:15:16 -0700 (PDT)
+Received: from [192.168.1.10] ([181.93.89.178])
+	by smtp.gmail.com with ESMTPSA id 48sm7910487qty.29.2017.09.12.05.15.12
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Tue, 12 Sep 2017 05:15:15 -0700 (PDT)
+To: Laurent Vivier <lvivier@redhat.com>, qemu-devel@nongnu.org
+References: <20170911142056.15643-1-lvivier@redhat.com>
+	<20170911142056.15643-4-lvivier@redhat.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Message-ID: <bdb63706-f9b5-fcec-3508-1a0807e44f0a@amsat.org>
+Date: Tue, 12 Sep 2017 09:15:11 -0300
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.3.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+In-Reply-To: <20170911142056.15643-4-lvivier@redhat.com>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
 Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.27]);
-	Tue, 12 Sep 2017 12:12:04 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH 6/6] arm: drop intermadiate
- cpu_model -> cpu type parsing and use cpu type directly
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:400d:c0d::232
+Subject: Re: [Qemu-arm] [PATCH v2 3/3] tests/hmp: test "none" machine with
+ memory
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -97,296 +116,52 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jones <drjones@redhat.com>,
-	Rob Herring <robh@kernel.org>, Igor Mitsyanko <i.mitsyanko@gmail.com>,
-	Alistair Francis <alistair@alistair23.me>, qemu-devel@nongnu.org,
-	qemu-arm@nongnu.org, Jan Kiszka <jan.kiszka@web.de>,
-	Richard Henderson <rth@twiddle.net>
+Cc: Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
+	"Daniel P . Berrange" <berrange@redhat.com>,
+	Cornelia Huck <cohuck@redhat.com>,
+	"Dr . David Alan Gilbert" <dgilbert@redhat.com>,
+	Greg Kurz <groug@kaod.org>, qemu-arm@nongnu.org,
+	qemu-ppc@nongnu.org, David Gibson <david@gibson.dropbear.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Gu+fB+Ia2Aop
+X-TUID: NT03n9rLCix5
 
-On Tue, 5 Sep 2017 18:31:52 -0300
-Eduardo Habkost <ehabkost@redhat.com> wrote:
-
-> On Mon, Sep 04, 2017 at 04:01:02PM +0200, Igor Mammedov wrote:
-> > there are 2 use cases to deal with:
-> >   1: fixed CPU models per board/soc
-> >   2: boards with user configurable cpu_model and fallback to
-> >      default cpu_model if user hasn't specified one explicitly
-> > 
-> > For the 1st
-> >   drop intermediate cpu_model parsing and use const cpu type
-> >   directly, which replaces:
-> >      typename = object_class_get_name(
-> >            cpu_class_by_name(TYPE_ARM_CPU, cpu_model))
-> >      object_new(typename)
-> >   with
-> >      object_new(FOO_CPU_TYPE_NAME)
-> >   or
-> >      cpu_generic_init(BASE_CPU_TYPE, "my cpu model")
-> >   with
-> >      cpu_create(FOO_CPU_TYPE_NAME)
-> > 
-> > as result 1st use case doesn't have to invoke not necessary
-> > translation and not needed code is removed.
-> > 
-> > For the 2nd
-> >  1: set default cpu type with MachineClass::default_cpu_type and
-> >  2: use generic cpu_model parsing that done before machine_init()
-> >     is run and:
-> >     2.1: drop custom cpu_model parsing where pattern is:
-> >        typename = object_class_get_name(
-> >            cpu_class_by_name(TYPE_ARM_CPU, cpu_model))
-> >        [parse_features(typename, cpu_model, &err) ]
-> > 
-> >     2.2: or replace cpu_generic_init() which does what
-> >          2.1 does + create_cpu(typename) with just
-> >          create_cpu(machine->cpu_type)
-> > as result cpu_name -> cpu_type translation is done using
-> > generic machine code one including parsing optional features
-> > if supported/present (removes a bunch of duplicated cpu_model
-> > parsing code) and default cpu type is defined in an uniform way
-> > within machine_class_init callbacks instead of adhoc places
-> > in boadr's machine_init code.
-> > 
-> > Signed-off-by: Igor Mammedov <imammedo@redhat.com>
-> > ---
-[...]
-
-> > @@ -285,20 +259,16 @@ static void armv7m_reset(void *opaque)
-> >     Returns the ARMv7M device.  */
-> >  
-> >  DeviceState *armv7m_init(MemoryRegion *system_memory, int mem_size, int num_irq,
-> > -                      const char *kernel_filename, const char *cpu_model)
-> > +                      const char *kernel_filename, const char *cpu_type)
-> >  {
-> >      DeviceState *armv7m;
-> >  
-> > -    if (cpu_model == NULL) {
-> > -        cpu_model = "cortex-m3";
-> > -    }
-> > -  
+On 09/11/2017 11:20 AM, Laurent Vivier wrote:
+> and add a test case of dump-guest-memory without
+> "[begin length]" parameters.
 > 
-> I was going to suggest doing the default_cpu_type stuff in a
-> separate patch, but it might require touching those lines twice.
-> So I guess this is OK.
-I've have tried it, but yes it's more changes and there is also
-chicken/egg problem, cleanest way I've stopped at is to get rid of
-cpu_model fallback + cpu_generic_init() in one go.
-
- 
-> >      armv7m = qdev_create(NULL, "armv7m");
-> >      qdev_prop_set_uint32(armv7m, "num-irq", num_irq);
-> > -    qdev_prop_set_string(armv7m, "cpu-model", cpu_model);
-> > +    qdev_prop_set_string(armv7m, "cpu-type", cpu_type);
-> >      object_property_set_link(OBJECT(armv7m), OBJECT(get_system_memory()),
-> >                                       "memory", &error_abort);
-> > -    /* This will exit with an error if the user passed us a bad cpu_model */
-> > +    /* This will exit with an error if the user passed us a bad cpu_type */
-> >      qdev_init_nofail(armv7m);
-> >  
-> >      armv7m_load_kernel(ARM_CPU(first_cpu), kernel_filename, mem_size);
-[...]
-
-> > diff --git a/hw/arm/highbank.c b/hw/arm/highbank.c
-> > index 20e60f1..0d7190a 100644
-> > --- a/hw/arm/highbank.c
-> > +++ b/hw/arm/highbank.c
-> > @@ -219,7 +219,6 @@ enum cxmachines {
-> >  static void calxeda_init(MachineState *machine, enum cxmachines machine_id)
-> >  {
-> >      ram_addr_t ram_size = machine->ram_size;
-> > -    const char *cpu_model = machine->cpu_model;
-> >      const char *kernel_filename = machine->kernel_filename;
-> >      const char *kernel_cmdline = machine->kernel_cmdline;
-> >      const char *initrd_filename = machine->initrd_filename;
-> > @@ -236,19 +235,20 @@ static void calxeda_init(MachineState *machine, enum cxmachines machine_id)
-> >  
-> >      switch (machine_id) {
-> >      case CALXEDA_HIGHBANK:
-> > -        cpu_model = "cortex-a9";
-> > +        machine->cpu_type = ARM_CPU_TYPE_NAME("cortex-a9");
-> >          break;
-> >      case CALXEDA_MIDWAY:
-> > -        cpu_model = "cortex-a15";
-> > +        machine->cpu_type = ARM_CPU_TYPE_NAME("cortex-a15");
-> >          break;
-> > +    default:
-> > +        assert(0);
-> >      }  
+> Signed-off-by: Laurent Vivier <lvivier@redhat.com>
+> ---
+>   tests/test-hmp.c | 5 +++++
+>   1 file changed, 5 insertions(+)
 > 
-> Why not delete this switch statement completely and set
-> default_cpu_type at midway_class_init() and
-> highbank_class_init()?
-it would allow '-cpu foo' to take effect which isn't what current code does,
-as series doesn't add valid_cpus[] check at the same time.
+> diff --git a/tests/test-hmp.c b/tests/test-hmp.c
+> index 729c0339f7..90693c0ce2 100644
+> --- a/tests/test-hmp.c
+> +++ b/tests/test-hmp.c
+> @@ -35,6 +35,7 @@ static const char *hmp_cmds[] = {
+>       "mouse_button 0",
+>       "device_del mouse1",
+>       "dump-guest-memory /dev/null 0 4096",
+> +    "dump-guest-memory /dev/null",
+>       "gdbserver",
+>       "host_net_add user id=net0",
+>       "hostfwd_add tcp::43210-:43210",
+> @@ -159,5 +160,9 @@ int main(int argc, char **argv)
+>   
+>       qtest_cb_for_every_machine(add_machine_test_case);
+>   
+> +    /* as none machine has no memory, add a test case with memory */
+> +
+> +    qtest_add_data_func("hmp/none+2MB", g_strdup("none -m 2"), test_machine);
 
-So here we do pretty much strait-forward conversion from cpu_model
-to cpu_type and nothing else.
+TIL:
 
+"-m 0",
+"none" machine is implemented in "null-machine.c",
+"none" machine default maps memory at 0x0.
+
+> +
+>       return g_test_run();
+>   }
 > 
-> 
-> >  
-> >      for (n = 0; n < smp_cpus; n++) {
-> > -        ObjectClass *oc = cpu_class_by_name(TYPE_ARM_CPU, cpu_model);
-> >          Object *cpuobj;
-> >          ARMCPU *cpu;
-> >  
-> > -        cpuobj = object_new(object_class_get_name(oc));
-> > +        cpuobj = object_new(machine->cpu_type);
-> >          cpu = ARM_CPU(cpuobj);
-> >  
-> >          object_property_set_int(cpuobj, QEMU_PSCI_CONDUIT_SMC,
-[...]
-
-> > diff --git a/hw/arm/pxa2xx.c b/hw/arm/pxa2xx.c
-> > index c16657d..79b317a 100644
-> > --- a/hw/arm/pxa2xx.c
-> > +++ b/hw/arm/pxa2xx.c
-> > @@ -2052,21 +2052,19 @@ static void pxa2xx_reset(void *opaque, int line, int level)
-> >  
-> >  /* Initialise a PXA270 integrated chip (ARM based core).  */
-> >  PXA2xxState *pxa270_init(MemoryRegion *address_space,
-> > -                         unsigned int sdram_size, const char *revision)
-> > +                         unsigned int sdram_size, const char *cpu_type)
-> >  {
-> >      PXA2xxState *s;
-> >      int i;
-> >      DriveInfo *dinfo;
-> >      s = g_new0(PXA2xxState, 1);
-> >  
-> > -    if (revision && strncmp(revision, "pxa27", 5)) {
-> > +    if (strncmp(cpu_type, ARM_CPU_TYPE_NAME("pxa27"), 5)) {  
-> 
-> Why are you using ARM_CPU_TYPE_NAME here, if you are only
-> checking if cpu_type starts with "pxa27"?
-mainly to show that we are dealing with types here,
-I can leave plain "pxa27" if you prefer.
-
-
-> I suggest adding a TODO here noting that we implement this using
-> either a TYPE_ARM_PXA27 subclass (so we can use
-> object_class_dynamic_cast()), or a ARMCPUClass field to identify
-> if the CPU is pxa27.
-dynamic cast would be nice, but ("pxa27", 5) cover a range of cpu types
-starting with this prefix, to use cast class structure should be reorganized
-to make all pxa27 based cpus have a common pxa27 ancestor.
-Or just use more verbose complete list of valid_cpus[]
-
-It's out of scope of this patch including TODO comment,
-all boards should be audited anyways to make proper use of valid_cpus[]
-and adding not related TODO comments here doesn't seem right.
-
-
-> >          fprintf(stderr, "Machine requires a PXA27x processor.\n");
-> >          exit(1);
-> >      }  
-> 
-> This would be another use case for a generic CPU model validation
-> mechanism in MachineClass.
-yep, just applied to a range of cpus instead of typical leaf class.
-
-[...]
-
-> > diff --git a/hw/arm/strongarm.c b/hw/arm/strongarm.c
-> > index c1145dd..3d1a231 100644
-> > --- a/hw/arm/strongarm.c
-> > +++ b/hw/arm/strongarm.c
-> > @@ -1581,23 +1581,19 @@ static const TypeInfo strongarm_ssp_info = {
-> >  
-> >  /* Main CPU functions */
-> >  StrongARMState *sa1110_init(MemoryRegion *sysmem,
-> > -                            unsigned int sdram_size, const char *rev)
-> > +                            unsigned int sdram_size, const char *cpu_type)
-> >  {
-> >      StrongARMState *s;
-> >      int i;
-> >  
-> >      s = g_new0(StrongARMState, 1);
-> >  
-> > -    if (!rev) {
-> > -        rev = "sa1110-b5";
-> > -    }
-> > -
-> > -    if (strncmp(rev, "sa1110", 6)) {
-> > +    if (strncmp(cpu_type, "sa1110", 6)) {
-> >          error_report("Machine requires a SA1110 processor.");
-> >          exit(1);  
-> 
-> Same suggestion as on pxa270_init(): adding a TODO here noting
-> that we implement this using either object_class_dynamic_cast(),
-> or a ARMCPUClass field to identify if the CPU is sa1110.
-same as pxa27, it's a case of range of cpus,
-TODO is orthogonal to patch topic, so I'd prefer not to add it here.
-
-> 
-> 
-> >      }
-> >  
-> > -    s->cpu = ARM_CPU(cpu_generic_init(TYPE_ARM_CPU, rev));
-> > +    s->cpu = ARM_CPU(cpu_create(cpu_type));
-> >  
-> >      memory_region_allocate_system_memory(&s->sdram, NULL, "strongarm.sdram",
-> >                                           sdram_size);
-> > diff --git a/hw/arm/tosa.c b/hw/arm/tosa.c
-> > index 8b757ff..75631f6 100644
-> > --- a/hw/arm/tosa.c
-> > +++ b/hw/arm/tosa.c
-> > @@ -219,7 +219,6 @@ static struct arm_boot_info tosa_binfo = {
-> >  
-> >  static void tosa_init(MachineState *machine)
-> >  {
-> > -    const char *cpu_model = machine->cpu_model;
-> >      const char *kernel_filename = machine->kernel_filename;
-> >      const char *kernel_cmdline = machine->kernel_cmdline;
-> >      const char *initrd_filename = machine->initrd_filename;
-> > @@ -229,9 +228,6 @@ static void tosa_init(MachineState *machine)
-> >      TC6393xbState *tmio;
-> >      DeviceState *scp0, *scp1;
-> >  
-> > -    if (!cpu_model)
-> > -        cpu_model = "pxa255";
-> > -  
-> 
-> Don't we need to set mc->default_cpu_type at
-> tosapda_machine_init() to replace this?
-board doesn't actually take user input and above remove code does nothing,
-look into pxa255_init() where it uses hardcoded cpu model
-  cpu_generic_init(TYPE_ARM_CPU, "pxa255")
-
-another user connex_init() of pxa255_init() were already cleaned up
-or didn't have junk to begin with
-
-> >      mpu = pxa255_init(address_space_mem, tosa_binfo.ram_size);
-> >  
-> >      memory_region_init_ram(rom, NULL, "tosa.rom", TOSA_ROM, &error_fatal);
-[...]
-
-> > diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-> > index 05c038b..feeeeb2 100644
-> > --- a/target/arm/cpu.c
-> > +++ b/target/arm/cpu.c
-> > @@ -867,7 +867,7 @@ static ObjectClass *arm_cpu_class_by_name(const char *cpu_model)
-> >      }
-> >  
-> >      cpuname = g_strsplit(cpu_model, ",", 1);
-> > -    typename = g_strdup_printf("%s-" TYPE_ARM_CPU, cpuname[0]);
-> > +    typename = g_strdup_printf("%s" ARM_CPU_TYPE_SUFFIX, cpuname[0]);  
-> 
-> What about doing the same we do in x86 and s390:
-> 
->    g_strdup_printf(ARM_CPU_TYPE_NAME("%s"), cpuname[0]);
-sure
-
-> 
-> >      oc = object_class_by_name(typename);
-> >      g_strfreev(cpuname);
-> >      g_free(typename);
-> > -- 
-> > 2.7.4
-> > 
-> >   
-> 
-> 
-

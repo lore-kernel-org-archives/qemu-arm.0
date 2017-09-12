@@ -1,158 +1,122 @@
-Received: by 10.223.172.38 with SMTP id v35csp7337984wrc;
-        Tue, 12 Sep 2017 09:43:01 -0700 (PDT)
-X-Received: by 10.55.74.133 with SMTP id x127mr19556403qka.239.1505234581818;
-        Tue, 12 Sep 2017 09:43:01 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1505234581; cv=none;
+Received: by 10.223.172.38 with SMTP id v35csp7425060wrc;
+        Tue, 12 Sep 2017 10:46:08 -0700 (PDT)
+X-Google-Smtp-Source: AOwi7QC3yDGqUGZWpffZC4f0nomW/bzG8+9+N4bEkE021rFEOXU631DjlexE3R4E+d5ulapbaktd
+X-Received: by 10.200.52.117 with SMTP id v50mr23801330qtb.333.1505238367958;
+        Tue, 12 Sep 2017 10:46:07 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1505238367; cv=none;
         d=google.com; s=arc-20160816;
-        b=dKD4CAtJnSRX/LL8pXIMlbRvVyJEqZtLj5yVRb/6jAHC0ao6oyJ//inNaQkyYJoaNQ
-         amlmdtmeaRtwHMUQoM7XU1Ckjfp9ZETrP7R/Gqf56G2raZdcQ3RkCgo5unmF+0EU/m2n
-         +YpUEpIPA3nOH0JAUewD0JtnnpEC98d36HA2YjXOxfBmg34AuwJ3POsUejefvVVvvYOJ
-         wRZPd8W9RWY21RwjNmfL7WvxZ2cRTuXp1tCpIg7ByGS33h8hWy8VTNUz/+/HIDSQuH9/
-         584ZO4Rep82ZZ6EHNsoUGP08Iv1Ihb1K3O8RE5hb/JkeUf1OOUpiRG0FvZyUO1uW7dzp
-         7LeQ==
+        b=Wys948q1+UzVQv06TEnX9Eerf5AtZhFprnQV4zl9imFhmHOrmq7x6T4Rdc63DRPM9L
+         JIpB9JSRuzS+aIKTWYB441hKCA8Aj6mAg1zvs1jafgl34Aj8Os7UvRIp/qwHpEKKOcUd
+         w4CH5pud1schi0K/t7JD7zN63RICWeoycBwo5ajmqR8cr1iopASBD6dPUM+1JGg2faSC
+         a06v3KQkBF47fZac0WEDx/0utNOmPLD/z3SuNqMlI5IVsoXzzG+vUJ/xYzw0P+1hG/xv
+         cEjOSZBritcNvVQkuWVYj+frbiroUKCSi4B3GTqwmIdyD+S67R5Ec2s5RSYOypXskSBU
+         feDQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:to:message-id:date:from:references
-         :in-reply-to:mime-version:dkim-signature:arc-authentication-results;
-        bh=fy7cY8RnAYJVo+LmDRLpeb3p/TS8W8uePh1xK13w8Eo=;
-        b=WkwYKCen3ikZVSbuJ30Z1BH3UdZu6lHm1HKDaaVmCddDRkluGYZ742lM/ipJNULQDp
-         s+teMQQWgDCHg+6RdXOGqWCXngS/3ThK8oeUQDlpEL7dpJN26pJGube85VJsZJx5FkJB
-         n2yK47Gf68cav2k4e/yi6b57i+i3mm4CBaECQ6iwn4ItpniYTYk9RquVXxcC/Cg7newP
-         /elFjW115btyjIW5W7/cStfX1bj2xY/pf+047wREs/xhTlVtWqHfQqC4K2BHTbwbvitX
-         06K92I08clzB0pmHp/sWf6+rG5dw7aFZ6XBmor5KXcoj3FENLJd/joGn0YzmYKORzk8V
-         Vf7Q==
+         :content-transfer-encoding:user-agent:in-reply-to
+         :content-disposition:mime-version:references:message-id:to:from:date
+         :dmarc-filter:arc-authentication-results;
+        bh=dflh5RUL0T/aSLNM24cwPs17x0CSxRTBn6LD7E8rE0A=;
+        b=czKSLdl4w4o3hsfB2f6mhJRM36u+72mUe/MY8zUxxgVWqw3ThHGALE3iIZtW1BnOSz
+         moD69Pxzfz43xC95ZBLMx5VL6zrv1/fkIPgaEdWLVs8LD8SGnF4Hm0hsnvZnugqQzUhy
+         +HjPUtlUCHGJJfPHjorgYO8RDbAokIlDXXQwv7IMAQc32XzAR4njKYhPkgcqIBcCgYBz
+         ZUb5sULfdzEhhh6GPdMt5cMOXNzsXBmTtr5aF/d3vxPbl7F0o8n5TEed9FHSl3Tuwti4
+         9ZULyuxPP6biZnCWuGCds0UqUepSw8MQUaBlyT9N1uhwgfMTKl5H5eWCGBYB0efUphbm
+         AyUw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=RgYi+EDW;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id n94si12263324qte.174.2017.09.12.09.43.01
+        by mx.google.com with ESMTPS id 66si5261820qte.323.2017.09.12.10.46.07
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 12 Sep 2017 09:43:01 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Tue, 12 Sep 2017 10:46:07 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=RgYi+EDW;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:37252 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:37849 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1droH5-0001m6-Gd
-	for alex.bennee@linaro.org; Tue, 12 Sep 2017 12:42:59 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:51353)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1drpG9-0006mY-M3
+	for alex.bennee@linaro.org; Tue, 12 Sep 2017 13:46:05 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:59379)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1droF0-0000Gp-Ly
-	for qemu-devel@nongnu.org; Tue, 12 Sep 2017 12:40:51 -0400
+	(envelope-from <ehabkost@redhat.com>) id 1drpG1-0006mC-9L
+	for qemu-arm@nongnu.org; Tue, 12 Sep 2017 13:45:58 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1droEz-00082W-Aj
-	for qemu-devel@nongnu.org; Tue, 12 Sep 2017 12:40:50 -0400
-Received: from mail-wm0-x22e.google.com ([2a00:1450:400c:c09::22e]:45891)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1droEz-00081a-2c
-	for qemu-devel@nongnu.org; Tue, 12 Sep 2017 12:40:49 -0400
-Received: by mail-wm0-x22e.google.com with SMTP id f199so61777203wme.0
-	for <qemu-devel@nongnu.org>; Tue, 12 Sep 2017 09:40:48 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc:content-transfer-encoding;
-	bh=fy7cY8RnAYJVo+LmDRLpeb3p/TS8W8uePh1xK13w8Eo=;
-	b=RgYi+EDW8v8fClDVFEsQfsC6JJtjd9FpUvB1V4ULB8eTPiPmSk+SLMn7Gw4mU/cZUZ
-	cvAvbw7+fJw1LaYzFS7/0j2gT1WXQKSBUynaSIZlrXPoRL7f4fHRl02CxslgLUdzFvnC
-	iDIMSJMLofwh2XXNdjODi2eAJw+p8kDFnWoaM=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc:content-transfer-encoding;
-	bh=fy7cY8RnAYJVo+LmDRLpeb3p/TS8W8uePh1xK13w8Eo=;
-	b=LXcvUwEnEmXKih1CFgHygmT6YInbOojHduHTEpx5coG9GFXjDcFxwC2Ykptv5QelNg
-	siRQ+ScYEtnqKyoXnnViWe6Oe2KBtVKlsGhBezi+rx93CH4Aithx4n5w1DEtZD+iXZsx
-	0ogw5j6/00vsWSmkn5n+5lnkUDQH64RbRzAzZf8/d2WLjq5naR3tQxsSd+I4g4K+O3P/
-	IpGczlP2gSlc5A+gmZIIkUX4Iv0+Cl3VKR6U03i1sjzlKk2+kUdZO8UsS9OPFTALlILo
-	LzN9tuiOTV/Y8qOJTiA3y6M/qjU80XT1wzo7S08Hml6lsnZMyjAjgY5orID9ywK3uhcD
-	j/qA==
-X-Gm-Message-State: AHPjjUiNN/oyXVk1Q2WdDxYCaxYIS3SlYzMqR/5LK0ebuMsZeMMxihGh
-	YAowTHh0tTe3ZI/q/wyuszy8zyyXfqvvrIBJ58IgJA==
-X-Google-Smtp-Source: AOwi7QCShmkbJnswuTwu180xI1icPd9f2qE/MC2d3bW4U/J9S3jT41JMy+NhL3qgxVwIZMwu4RLiIMtsQ288zsde+mM=
-X-Received: by 10.28.102.213 with SMTP id a204mr103446wmc.151.1505234447817;
-	Tue, 12 Sep 2017 09:40:47 -0700 (PDT)
+	(envelope-from <ehabkost@redhat.com>) id 1drpFx-0001Y7-DD
+	for qemu-arm@nongnu.org; Tue, 12 Sep 2017 13:45:57 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:36676)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <ehabkost@redhat.com>)
+	id 1drpFx-0001Xl-7A; Tue, 12 Sep 2017 13:45:53 -0400
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+	[10.5.11.13])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id E2C857E422;
+	Tue, 12 Sep 2017 17:45:51 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com E2C857E422
+Authentication-Results: ext-mx03.extmail.prod.ext.phx2.redhat.com;
+	dmarc=none (p=none dis=none) header.from=redhat.com
+Authentication-Results: ext-mx03.extmail.prod.ext.phx2.redhat.com;
+	spf=fail smtp.mailfrom=ehabkost@redhat.com
+Received: from localhost (ovpn-116-15.gru2.redhat.com [10.97.116.15])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 2AD2777BE3;
+	Tue, 12 Sep 2017 17:45:48 +0000 (UTC)
+Date: Tue, 12 Sep 2017 14:45:47 -0300
+From: Eduardo Habkost <ehabkost@redhat.com>
+To: =?iso-8859-1?Q?Marc-Andr=E9?= Lureau <marcandre.lureau@redhat.com>
+Message-ID: <20170912174547.GC7570@localhost.localdomain>
+References: <20170911110623.24981-1-marcandre.lureau@redhat.com>
+	<20170911110623.24981-51-marcandre.lureau@redhat.com>
 MIME-Version: 1.0
-Received: by 10.223.139.215 with HTTP; Tue, 12 Sep 2017 09:40:27 -0700 (PDT)
-In-Reply-To: <ca218563-0789-f11d-fa7b-895998a1a84d@amsat.org>
-References: <1505232834-20890-1-git-send-email-peter.maydell@linaro.org>
-	<ca218563-0789-f11d-fa7b-895998a1a84d@amsat.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 12 Sep 2017 17:40:27 +0100
-Message-ID: <CAFEAcA8BgKzRpK8gQRUZ7qOJkpS-yQkYpxt=1pq-FuT7XXB5vQ@mail.gmail.com>
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+In-Reply-To: <20170911110623.24981-51-marcandre.lureau@redhat.com>
+X-Fnord: you can see the fnord
+User-Agent: Mutt/1.8.3 (2017-05-23)
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.27]);
+	Tue, 12 Sep 2017 17:45:52 +0000 (UTC)
 Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2a00:1450:400c:c09::22e
-Subject: Re: [Qemu-devel] [PATCH] mps2-an511: Fix wiring of UART overflow
- interrupt lines
-X-BeenThere: qemu-devel@nongnu.org
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-arm] [PATCH v3 50/50] qapi: make query-cpu-definitions
+ depend on specific targets
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: "patches@linaro.org" <patches@linaro.org>,
-	QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
-	qemu-stable <qemu-stable@nongnu.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ctu6bRaQd3gn
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>, armbru@redhat.com,
+	qemu-devel@nongnu.org, "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
+	Alexander Graf <agraf@suse.de>, "open list:ARM" <qemu-arm@nongnu.org>,
+	"open list:PowerPC" <qemu-ppc@nongnu.org>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	David Gibson <david@gibson.dropbear.id.au>, Eric Blake <eblake@redhat.com>,
+	Richard Henderson <rth@twiddle.net>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: pOUyqdtpWZbO
 
-On 12 September 2017 at 17:22, Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org=
-> wrote:
-> (CC'ed qemu-arm)
->
-> Hi Peter,
->
-> On 09/12/2017 01:13 PM, Peter Maydell wrote:
->>
->> Fix an error that meant we were wiring every UART's overflow
->> interrupts into the same inputs 0 and 1 of the OR gate,
->> rather than giving each its own input.
->
->
-> oops tricky to catch
->
->>
->> Cc: qemu-stable@nongnu.org
->> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
->> ---
->>   hw/arm/mps2.c | 4 ++--
->>   1 file changed, 2 insertions(+), 2 deletions(-)
->>
->> diff --git a/hw/arm/mps2.c b/hw/arm/mps2.c
->> index abb0ab6..769cff8 100644
->> --- a/hw/arm/mps2.c
->> +++ b/hw/arm/mps2.c
->
->
->         /* The overflow IRQs for all UARTs are ORed together.
->          * Tx and Rx IRQs for each UART are ORed together.
->          */
->
-> can you update this comment?
+On Mon, Sep 11, 2017 at 01:06:23PM +0200, Marc-Andr=E9 Lureau wrote:
+> It depends on TARGET_PPC || TARGET_ARM || TARGET_I386 || TARGET_S390X.
+>=20
+> Signed-off-by: Marc-Andr=E9 Lureau <marcandre.lureau@redhat.com>
 
-The comment is correct. "txrx_orgate_dev" is a 2-input OR gate,
-which we create one of per UART. It ORs together the TX IRQ
-and the RX IRQ. "orgate_dev" is a 10-input OR gate, which ORs
-together the TX overflow IRQ and the RX overflow IRQ from each
-UART. The bug here is just that we were using the wrong input
-pins on orgate_dev.
+Reviewed-by: Eduardo Habkost <ehabkost@redhat.com>
 
-thanks
--- PMM
+--=20
+Eduardo

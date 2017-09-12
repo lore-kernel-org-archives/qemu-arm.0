@@ -1,72 +1,71 @@
-Received: by 10.223.172.38 with SMTP id v35csp7464050wrc;
-        Tue, 12 Sep 2017 11:14:12 -0700 (PDT)
-X-Google-Smtp-Source: AOwi7QDKpM1NTqKYLUTi5LNgVQoV+Wm1nNnHhOFUklx5HYuqnblLKxlZC7/dlQzeCEBEFF0P4xpW
-X-Received: by 10.200.38.110 with SMTP id v43mr12334020qtv.296.1505240052307;
-        Tue, 12 Sep 2017 11:14:12 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1505240052; cv=none;
+Received: by 10.223.172.38 with SMTP id v35csp7464090wrc;
+        Tue, 12 Sep 2017 11:14:14 -0700 (PDT)
+X-Google-Smtp-Source: AOwi7QBD7SARpACqhj5/wNjbqHPchXW8KWSMNCxr9t+TP6ti3UtRLsc27g3gvSI6adh1AwxZ/Dez
+X-Received: by 10.55.74.133 with SMTP id x127mr19911979qka.239.1505240054295;
+        Tue, 12 Sep 2017 11:14:14 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1505240054; cv=none;
         d=google.com; s=arc-20160816;
-        b=a14AK5h7aTkuZKFi8uj29MlH0BmtwHgT0IHFvH827RNE6JQA7/wXW592ve7hm4Lh96
-         CIAelSpAzBKRlymjSwdcoWG/qzKorC83N74gv6lI+FWYWeIatQetYWcQM4uxqsShxq7J
-         nbOOQ8An9h1gDUVzEfas4S204hnm2ejMD3y5u9yHWiYia8T16PwJsUxt68XoFWExPySO
-         xeWxewZBZ9kBjcSC8M3JOVYxQ8SrzNFFEOZXIFYdJS27rl61qrMEwtc/xgn3/2oUlCtG
-         I1eK96+J5aO5TEa0HG19LWbdh94JI7f73gE8/cXQJzeKPYNJRGT5Mri7WcQFpM6VkEuh
-         xWHQ==
+        b=YlCVzGHXzMm/90rcAce6ZTZCer+6OClSdSMQ5rcv5tpW7l6Ls88I2Bxzx6xkmQjF3N
+         Pblky1nWdlinIOlBpTsKg8rFV644AYGOc+UrWv7gzuwBxICbD1QYesym6I3SiqUjNyvw
+         vQEkEgZSoCYaxsr84Tj5WIj7vwzzqQ/vfGWE1pt89cNq6/8MNAx2exgaSXoKf8Zl2hr7
+         2ZpTEhGNuQeXX4UWl2tDCXRkGrIqh18EN76+34quXStD3Zh6pbGC9N3vRkuDe2rmVxv3
+         i20kw6XfZUZGztYYA2gxOBftqoEDKLPGCILZRu+wTYvFctUK0gBPW5R1iLmxKzhwSXKh
+         OO8w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
          :message-id:date:to:from:arc-authentication-results;
-        bh=0RdA84HwaRVq1HY6y6uO6ARE7wTHWisiKDdMt0RMmtc=;
-        b=mu+hvApElKWlbTCwTYJT6io4QUQCj8sFWx0B1isw6TpQ9yb3oiLj03mbuhKZgKGloI
-         eEgZ54QqTFZtDm6jrPpvdP4CZBBQHYuG9cBYmdojRmG6jE70AxMIC9WTzhetMfwuruWP
-         GYvqKwsD8UCWANHfOvk6W1VjZKwT4HB0W3s2unDkqr0JDL+XF4ZrlO8VjOAhLZEST/yd
-         ckvtHVp8p+pazZFYX8hgO25CzgBHSL8/5cQXIr1RNioxYbY8sHpe7H+h4hhiK39cdehF
-         NlL1ebAqOiPSeq3oI09meZSorHmww9hu3tFaop4HqgNgZgP9nQUfsBUPxFcF2F5RXEB/
-         KSPA==
+        bh=SJLISZy0Y2yXJJx7XEJ/sXNFvSm2YfyZNNF2xFwHRMc=;
+        b=VAtCwgnT1FC6WEDGuDKLmWCbUCGYkc36jjaxEUMz8BHpY8UUMnblrJ0gScKt2ENOpB
+         K7Ll9Gps45v1mb0e9h/gP3wMvUXMmYo9uVrR+KFXQS5YS5nOmOP0gvUUNfHIpGNxEVfQ
+         2dLvE+7bBVqjQ9d0WCVRgJG8pQ6YVEsppjTil2BrJfXZRb7M0AmgUzwHYdSqQzDenRYb
+         Gs+deeWO2VDX35R5uZTI2G8gCiuasTFI2buTbJ9iS0M3tfx6A5f//nqmk1SQgjaALM0H
+         R1lxkZqsjr+UobQUd9O/2Ir3OfIA/A0kMx+0sRaCBAGZBZP+KsvsBodZkjbwRqjMRwfi
+         ijag==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id x33si10153743qtx.533.2017.09.12.11.14.11
+        by mx.google.com with ESMTPS id o42si13044184qta.496.2017.09.12.11.14.13
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 12 Sep 2017 11:14:12 -0700 (PDT)
+        Tue, 12 Sep 2017 11:14:14 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:37937 helo=lists.gnu.org)
+Received: from localhost ([::1]:37938 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1drphJ-0003ZE-W6
-	for alex.bennee@linaro.org; Tue, 12 Sep 2017 14:14:10 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:43169)
+	id 1drphM-0003eQ-44
+	for alex.bennee@linaro.org; Tue, 12 Sep 2017 14:14:12 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:43160)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1drpgv-0003KD-1g
+	(envelope-from <pm215@archaic.org.uk>) id 1drpgu-0003K6-RF
 	for qemu-arm@nongnu.org; Tue, 12 Sep 2017 14:13:46 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1drpgt-0006Lj-RS
+	(envelope-from <pm215@archaic.org.uk>) id 1drpgt-0006LP-Cj
 	for qemu-arm@nongnu.org; Tue, 12 Sep 2017 14:13:44 -0400
-Received: from orth.archaic.org.uk ([2001:8b0:1d0::2]:37276)
+Received: from orth.archaic.org.uk ([2001:8b0:1d0::2]:37288)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <pm215@archaic.org.uk>)
-	id 1drpgt-0006IX-Kg; Tue, 12 Sep 2017 14:13:43 -0400
+	id 1drpgt-0006Js-5P; Tue, 12 Sep 2017 14:13:43 -0400
 Received: from pm215 by orth.archaic.org.uk with local (Exim 4.89)
 	(envelope-from <pm215@archaic.org.uk>)
-	id 1drpgr-00013V-Hy; Tue, 12 Sep 2017 19:13:41 +0100
+	id 1drpgs-000141-6X; Tue, 12 Sep 2017 19:13:42 +0100
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Date: Tue, 12 Sep 2017 19:13:50 +0100
-Message-Id: <1505240046-11454-4-git-send-email-peter.maydell@linaro.org>
+Date: Tue, 12 Sep 2017 19:13:51 +0100
+Message-Id: <1505240046-11454-5-git-send-email-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.7.4
 In-Reply-To: <1505240046-11454-1-git-send-email-peter.maydell@linaro.org>
 References: <1505240046-11454-1-git-send-email-peter.maydell@linaro.org>
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
 X-Received-From: 2001:8b0:1d0::2
-Subject: [Qemu-arm] [PATCH 03/19] nvic: Add cached vectpending_is_s_banked
- state
+Subject: [Qemu-arm] [PATCH 04/19] nvic: Add cached vectpending_prio state
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -81,56 +80,138 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: patches@linaro.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: OXqStoRAnD72
+X-TUID: uUfh/ZqP6Svw
 
-With banked exceptions, just the exception number in
-s->vectpending is no longer sufficient to uniquely identify
-the pending exception. Add a vectpending_is_s_banked bool
-which is true if the exception is using the sec_vectors[]
-array.
+Instead of looking up the pending priority
+in nvic_pending_prio(), cache it in a new state struct
+field. The calculation of the pending priority given
+the interrupt number is more complicated in v8M with
+the security extension, so the caching will be worthwhile.
+
+This changes nvic_pending_prio() from returning a full
+(group + subpriority) priority value to returning a group
+priority. This doesn't require changes to its callsites
+because we use it only in comparisons of the form
+  execution_prio > nvic_pending_prio()
+and execution priority is always a group priority, so
+a test (exec prio > full prio) is true if and only if
+(execprio > group_prio).
+
+(Architecturally the expected comparison is with the
+group priority for this sort of "would we preempt" test;
+we were only doing a test with a full priority as an
+optimisation to avoid the mask, which is possible
+precisely because the two comparisons always give the
+same answer.)
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- include/hw/intc/armv7m_nvic.h | 11 +++++++++--
- hw/intc/armv7m_nvic.c         |  1 +
- 2 files changed, 10 insertions(+), 2 deletions(-)
+ include/hw/intc/armv7m_nvic.h |  2 ++
+ hw/intc/armv7m_nvic.c         | 23 +++++++++++++----------
+ hw/intc/trace-events          |  2 +-
+ 3 files changed, 16 insertions(+), 11 deletions(-)
 
 diff --git a/include/hw/intc/armv7m_nvic.h b/include/hw/intc/armv7m_nvic.h
-index 317601e..87c78b3 100644
+index 87c78b3..329774e 100644
 --- a/include/hw/intc/armv7m_nvic.h
 +++ b/include/hw/intc/armv7m_nvic.h
-@@ -57,10 +57,17 @@ typedef struct NVICState {
-     VecInfo sec_vectors[NVIC_INTERNAL_VECTORS];
-     uint32_t prigroup;
- 
--    /* vectpending and exception_prio are both cached state that can
--     * be recalculated from the vectors[] array and the prigroup field.
-+    /* The following fields are all cached state that can be recalculated
-+     * from the vectors[] and sec_vectors[] arrays and the prigroup field:
-+     *  - vectpending
-+     *  - vectpending_is_secure
-+     *  - exception_prio
+@@ -62,6 +62,7 @@ typedef struct NVICState {
+      *  - vectpending
+      *  - vectpending_is_secure
+      *  - exception_prio
++     *  - vectpending_prio
       */
      unsigned int vectpending; /* highest prio pending enabled exception */
-+    /* true if vectpending is a banked secure exception, ie it is in
-+     * sec_vectors[] rather than vectors[]
-+     */
-+    bool vectpending_is_s_banked;
+     /* true if vectpending is a banked secure exception, ie it is in
+@@ -69,6 +70,7 @@ typedef struct NVICState {
+      */
+     bool vectpending_is_s_banked;
      int exception_prio; /* group prio of the highest prio active exception */
++    int vectpending_prio; /* group prio of the exeception in vectpending */
  
      MemoryRegion sysregmem;
+     MemoryRegion sysreg_ns_mem;
 diff --git a/hw/intc/armv7m_nvic.c b/hw/intc/armv7m_nvic.c
-index 694b9e0..417a456 100644
+index 417a456..8388d64 100644
 --- a/hw/intc/armv7m_nvic.c
 +++ b/hw/intc/armv7m_nvic.c
-@@ -1250,6 +1250,7 @@ static void armv7m_nvic_reset(DeviceState *dev)
+@@ -61,10 +61,10 @@ static const uint8_t nvic_id[] = {
  
+ static int nvic_pending_prio(NVICState *s)
+ {
+-    /* return the priority of the current pending interrupt,
++    /* return the group priority of the current pending interrupt,
+      * or NVIC_NOEXC_PRIO if no interrupt is pending
+      */
+-    return s->vectpending ? s->vectors[s->vectpending].prio : NVIC_NOEXC_PRIO;
++    return s->vectpending_prio;
+ }
+ 
+ /* Return the value of the ISCR RETTOBASE bit:
+@@ -156,10 +156,17 @@ static void nvic_recompute_state(NVICState *s)
+         active_prio &= nvic_gprio_mask(s);
+     }
+ 
++    if (pend_prio > 0) {
++        pend_prio &= nvic_gprio_mask(s);
++    }
++
+     s->vectpending = pend_irq;
++    s->vectpending_prio = pend_prio;
+     s->exception_prio = active_prio;
+ 
+-    trace_nvic_recompute_state(s->vectpending, s->exception_prio);
++    trace_nvic_recompute_state(s->vectpending,
++                               s->vectpending_prio,
++                               s->exception_prio);
+ }
+ 
+ /* Return the current execution priority of the CPU
+@@ -323,7 +330,6 @@ void armv7m_nvic_acknowledge_irq(void *opaque)
+     CPUARMState *env = &s->cpu->env;
+     const int pending = s->vectpending;
+     const int running = nvic_exec_prio(s);
+-    int pendgroupprio;
+     VecInfo *vec;
+ 
+     assert(pending > ARMV7M_EXCP_RESET && pending < s->num_irq);
+@@ -333,13 +339,9 @@ void armv7m_nvic_acknowledge_irq(void *opaque)
+     assert(vec->enabled);
+     assert(vec->pending);
+ 
+-    pendgroupprio = vec->prio;
+-    if (pendgroupprio > 0) {
+-        pendgroupprio &= nvic_gprio_mask(s);
+-    }
+-    assert(pendgroupprio < running);
++    assert(s->vectpending_prio < running);
+ 
+-    trace_nvic_acknowledge_irq(pending, vec->prio);
++    trace_nvic_acknowledge_irq(pending, s->vectpending_prio);
+ 
+     vec->active = 1;
+     vec->pending = 0;
+@@ -1251,6 +1253,7 @@ static void armv7m_nvic_reset(DeviceState *dev)
      s->exception_prio = NVIC_NOEXC_PRIO;
      s->vectpending = 0;
-+    s->vectpending_is_s_banked = false;
+     s->vectpending_is_s_banked = false;
++    s->vectpending_prio = NVIC_NOEXC_PRIO;
  }
  
  static void nvic_systick_trigger(void *opaque, int n, int level)
+diff --git a/hw/intc/trace-events b/hw/intc/trace-events
+index 4762329..5635a5f 100644
+--- a/hw/intc/trace-events
++++ b/hw/intc/trace-events
+@@ -167,7 +167,7 @@ gicv3_redist_set_irq(uint32_t cpu, int irq, int level) "GICv3 redistributor 0x%x
+ gicv3_redist_send_sgi(uint32_t cpu, int irq) "GICv3 redistributor 0x%x pending SGI %d"
+ 
+ # hw/intc/armv7m_nvic.c
+-nvic_recompute_state(int vectpending, int exception_prio) "NVIC state recomputed: vectpending %d exception_prio %d"
++nvic_recompute_state(int vectpending, int vectpending_prio, int exception_prio) "NVIC state recomputed: vectpending %d vectpending_prio %d exception_prio %d"
+ nvic_set_prio(int irq, uint8_t prio) "NVIC set irq %d priority %d"
+ nvic_irq_update(int vectpending, int pendprio, int exception_prio, int level) "NVIC vectpending %d pending prio %d exception_prio %d: setting irq line to %d"
+ nvic_escalate_prio(int irq, int irqprio, int runprio) "NVIC escalating irq %d to HardFault: insufficient priority %d >= %d"
 -- 
 2.7.4
 

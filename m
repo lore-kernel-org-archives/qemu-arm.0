@@ -1,150 +1,143 @@
-Received: by 10.223.172.38 with SMTP id v35csp742452wrc;
-        Wed, 13 Sep 2017 00:55:14 -0700 (PDT)
-X-Google-Smtp-Source: AOwi7QDtCv62iekTB6iUE/Eboc+O9x5CJj7VPXOErBZGjlSWKh1ZDptEDKCXkE6SfCbv4viYSiFl
-X-Received: by 10.55.221.217 with SMTP id u86mr24522256qku.64.1505289314272;
-        Wed, 13 Sep 2017 00:55:14 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1505289314; cv=none;
+Received: by 10.223.172.38 with SMTP id v35csp833972wrc;
+        Wed, 13 Sep 2017 02:47:14 -0700 (PDT)
+X-Google-Smtp-Source: AOwi7QDQqtO4NpLnTyMVHL/cwzs+G3DtExNZKSAVhfSKmMRoZAveDXIVpUuqN6YvkAsoNwkiytQr
+X-Received: by 10.200.36.132 with SMTP id s4mr24202085qts.4.1505296034167;
+        Wed, 13 Sep 2017 02:47:14 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1505296034; cv=none;
         d=google.com; s=arc-20160816;
-        b=YVzYpzbvD9RuOkFD3pYh4zwFNVBf2h6ZCjtbRubC4UHuTqcIue1STAuqUbAay+XDsu
-         +u2zZcGhdwV+glShpW6HUQk8B6+W2O44O7c9FuQ4KfHuiSmTnpvLdaTRB4ZzJCBP05M8
-         ua3FM1FW0tNVPAN+Yt0uCWUrOjrZQSKe5qYZnY+TJB3j6JqCOmnZB0t527mH2jiSl2Op
-         aVskFGw3MSO4wvGxXY6Mz1GNOG2pIv8q4U8biXejJhdRvaaHCA4Hh7TfV2P9vBkN5hGj
-         Yb2V6aEKshUU01gOY15LkoUDiKcJXN5dMCpOhhP30r5iTFklKMSE6KdRGvInLTfRDRCf
-         mnpw==
+        b=V59a41Kri3PbPRWE8CXaSInlBBvZZ3KVOtYAeXttJNL4PBGKXNNEbZSfZOuVADa+Ug
+         feMCDgkYs0hEpiJdaisipZdQFshk4evSg6rJhGTPhmvmnvQfbgyw/pfiUvWUIIDUFri8
+         p635eRKZsRth01mVDZOhwCa5bastZX4+MZoCTGu6Kg3L0w6KR+6YFq52YN6oeFAlp88v
+         AWyYu/BkvyvO08xD6B6byLfFguEWAn3bZHWIGtDx3GBIJfRimUN88oqNfkl1d4+8ejVE
+         qoqgSbQtl5B85LjGtvKDYRMyqm4GzMQ6rW3sRvtTfqJ9UFapH0IaBSnl7Lvi9U49F3fr
+         94lQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:organization:references
-         :in-reply-to:message-id:to:from:date:dmarc-filter
-         :arc-authentication-results;
-        bh=C4kcO1lZabk1NHznW7DVZalNWoWzYOu4i/wZbCoiOns=;
-        b=vt/wo9FK+kQVhOOmR+4K3XAuVhLF556N9td22AMb52iUF8uXF3Jrg0OqFXwsYAfQV3
-         9YYSM/E88Jv+wl4ZveDvYxPFENoHcp7V9Ni+bKMhGIQhI7fK9j4Qj2V0UFpOFgYHkecC
-         c0joq6qTKSsfHtLp0y1fXhhZLOOwwTHdHGRNj5pEWnyIuIYN3nipyHHQfvH67Bp0vJCF
-         n0MjV6p6DKHgPxgCZQGx6xJIocBV7dnwmJ5QXeoqzQJtPLZf9nFkx5hzzNo7uz8miaV8
-         odN63OY8ZQHkZP0+ET4Z0hhcuNTpKch8wJw/hTce9RtR0ed8msstupwVNVlmI24PXFg8
-         rYQA==
+         :list-unsubscribe:list-id:precedence:subject:message-id:date:to:from
+         :dmarc-filter:arc-authentication-results;
+        bh=7Mdbnbw6t45AQZQkOSVg/uVykGj72U+p3q5TjYdk3fs=;
+        b=O68l++J8265NNXJ7uGNHOA3Ko74LLyK3B0+VR0ScbPjBig5VJEXIWR7mDXkpCsU+1d
+         iJb8IP8zga95QIdezSQ/+oHyqRSH4bCxMLMkyU/3bntuU3Lzp3nAJfTplmOe6oah/z79
+         MsuwM6+UAmnx+giamZPkzmdcojaBRzE5UwvX25zROz70RiIHl2pUmVwqu5UcJkMYfBBM
+         szSxOTpEm4YJZqQwIPVy7aQ8W+3bdzuy1blFVLxb9VN5mTwIksjGSHVLnfSU3h3M2CAB
+         cxQolgjsRfLKJjkkleMKLzqkZ7l5QCU/6IPWhtqC5kvmJD/29RBG/6cwhYVOucCI1r/X
+         lsTQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id b19si14214513qtb.319.2017.09.13.00.55.13
+        by mx.google.com with ESMTPS id e6si14687956qtc.341.2017.09.13.02.47.13
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 13 Sep 2017 00:55:14 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Wed, 13 Sep 2017 02:47:14 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:40700 helo=lists.gnu.org)
+Received: from localhost ([::1]:41240 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ds2Vs-0007lC-3r
-	for alex.bennee@linaro.org; Wed, 13 Sep 2017 03:55:12 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:44968)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1ds4GF-0008LB-Ue
+	for alex.bennee@linaro.org; Wed, 13 Sep 2017 05:47:11 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:56247)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <cohuck@redhat.com>) id 1ds2Ud-0006kN-L4
-	for qemu-devel@nongnu.org; Wed, 13 Sep 2017 03:53:56 -0400
+	(envelope-from <eric.auger@redhat.com>) id 1ds4G5-0008J3-Qs
+	for qemu-arm@nongnu.org; Wed, 13 Sep 2017 05:47:02 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <cohuck@redhat.com>) id 1ds2Uc-0002g8-Rc
-	for qemu-devel@nongnu.org; Wed, 13 Sep 2017 03:53:55 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:34420)
+	(envelope-from <eric.auger@redhat.com>) id 1ds4G1-0006J0-Op
+	for qemu-arm@nongnu.org; Wed, 13 Sep 2017 05:47:01 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:39362)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <cohuck@redhat.com>)
-	id 1ds2UX-0002Wv-3b; Wed, 13 Sep 2017 03:53:49 -0400
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
-	[10.5.11.11])
+	(Exim 4.71) (envelope-from <eric.auger@redhat.com>)
+	id 1ds4G1-0006I6-J9; Wed, 13 Sep 2017 05:46:57 -0400
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+	[10.5.11.13])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id CBAF0478A;
-	Wed, 13 Sep 2017 07:53:47 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com CBAF0478A
-Authentication-Results: ext-mx06.extmail.prod.ext.phx2.redhat.com;
+	by mx1.redhat.com (Postfix) with ESMTPS id C99675F73C;
+	Wed, 13 Sep 2017 09:46:55 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com C99675F73C
+Authentication-Results: ext-mx10.extmail.prod.ext.phx2.redhat.com;
 	dmarc=none (p=none dis=none) header.from=redhat.com
-Authentication-Results: ext-mx06.extmail.prod.ext.phx2.redhat.com;
-	spf=fail smtp.mailfrom=cohuck@redhat.com
-Received: from gondolin (dhcp-192-215.str.redhat.com [10.33.192.215])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 1A2555C6D7;
-	Wed, 13 Sep 2017 07:53:43 +0000 (UTC)
-Date: Wed, 13 Sep 2017 09:53:41 +0200
-From: Cornelia Huck <cohuck@redhat.com>
-To: Laurent Vivier <lvivier@redhat.com>
-Message-ID: <20170913095341.6505861c.cohuck@redhat.com>
-In-Reply-To: <20170912140149.7692-4-lvivier@redhat.com>
-References: <20170912140149.7692-1-lvivier@redhat.com>
-	<20170912140149.7692-4-lvivier@redhat.com>
-Organization: Red Hat GmbH
-MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
+Authentication-Results: ext-mx10.extmail.prod.ext.phx2.redhat.com;
+	spf=fail smtp.mailfrom=eric.auger@redhat.com
+Received: from localhost.localdomain.com (ovpn-117-228.ams2.redhat.com
+	[10.36.117.228])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 8BE2D60841;
+	Wed, 13 Sep 2017 09:46:49 +0000 (UTC)
+From: Eric Auger <eric.auger@redhat.com>
+To: eric.auger.pro@gmail.com, eric.auger@redhat.com, peter.maydell@linaro.org,
+	alex.williamson@redhat.com, qemu-arm@nongnu.org, qemu-devel@nongnu.org
+Date: Wed, 13 Sep 2017 11:46:41 +0200
+Message-Id: <1505296004-6798-1-git-send-email-eric.auger@redhat.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.30]);
-	Wed, 13 Sep 2017 07:53:48 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.39]);
+	Wed, 13 Sep 2017 09:46:55 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-devel] [PATCH v3 3/3] tests/hmp: test "none" machine with
- memory
-X-BeenThere: qemu-devel@nongnu.org
+Subject: [Qemu-arm] [PATCH v4 0/3] Generic PCIe host bridge INTx
+ determination for INTx routing
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
-	qemu-devel@nongnu.org, "Dr . David Alan Gilbert" <dgilbert@redhat.com>,
-	Greg Kurz <groug@kaod.org>, qemu-arm@nongnu.org,
-	qemu-ppc@nongnu.org, David Gibson <david@gibson.dropbear.id.au>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: t2NGPZry6COJ
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: drjones@redhat.com, agraf@suse.de, christoffer.dall@linaro.org,
+	pranavkumar@linaro.org
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: tUztmSIqchQN
 
-On Tue, 12 Sep 2017 16:01:49 +0200
-Laurent Vivier <lvivier@redhat.com> wrote:
+This series implements INTx to gsi routing for ARM VIRT/Gpex. This is
+a respin of [1] which was lost in limbo.
 
-> and add a test case of dump-guest-memory without
-> "[begin length]" parameters.
-> 
-> Signed-off-by: Laurent Vivier <lvivier@redhat.com>
-> Reviewed-by: Thomas Huth <thuth@redhat.com>
-> ---
->  tests/test-hmp.c | 4 ++++
->  1 file changed, 4 insertions(+)
-> 
-> diff --git a/tests/test-hmp.c b/tests/test-hmp.c
-> index 729c0339f7..6b2dd5f8b8 100644
-> --- a/tests/test-hmp.c
-> +++ b/tests/test-hmp.c
-> @@ -35,6 +35,7 @@ static const char *hmp_cmds[] = {
->      "mouse_button 0",
->      "device_del mouse1",
->      "dump-guest-memory /dev/null 0 4096",
-> +    "dump-guest-memory /dev/null",
->      "gdbserver",
->      "host_net_add user id=net0",
->      "hostfwd_add tcp::43210-:43210",
-> @@ -159,5 +160,8 @@ int main(int argc, char **argv)
->  
->      qtest_cb_for_every_machine(add_machine_test_case);
->  
-> +    /* as none machine has no memory, add a test case with memory */
+ARM virt uses GPEX PCIe bridge. This latter does not implement INTx
+to GSI routing. PCIe/INTx assignment works but the consequence is
+irqfd is not used along with INTx interrupts and VFIO INTx handlers
+are executed on userspace leading to an important performance degradation.
 
-s/no memory/no memory by default/
+This issue is witnessed by the following messages;
 
-?
+qemu-system-aarch64: -device vfio-pci,host=0006:90:00.0: PCI: Bug -
+unimplemented PCI INTx routing (gpex-pcihost)
+qemu-system-aarch64: PCI: Bug - unimplemented PCI INTx routing (gpex-pcihost)
+qemu-system-aarch64: PCI: Bug - unimplemented PCI INTx routing (gpex-pcihost)
 
-> +    qtest_add_data_func("hmp/none+2MB", g_strdup("none -m 2"), test_machine);
-> +
->      return g_test_run();
->  }
+So with this series, irqfd is set up for PCIe/INTx passthrough and we get
+the optimal performance. Also we get rid of the above messages.
 
-Regardless,
+This series can be found at:
+https://github.com/eauger/qemu/tree/v2.10.0-gpex-v4
 
-Reviewed-by: Cornelia Huck <cohuck@redhat.com>
+References:
+[1] Generic PCIe host bridge INTx determination for INTx routing
+   https://lists.gnu.org/archive/html/qemu-devel/2015-09/msg04975.html
+
+History:
+v3 -> v3:
+- use int instead of uint32_t for gsis
+- added Drew's R-b
+- Added Feng's T-b
+
+Pranavkumar Sawargaonkar (3):
+  hw/pci-host/gpex: Set INTx index/gsi mapping
+  hw/arm/virt: Set INTx/gsi mapping
+  hw/pci-host/gpex: Implement PCI INTx routing
+
+ hw/arm/virt.c              |  1 +
+ hw/pci-host/gpex.c         | 22 ++++++++++++++++++++++
+ include/hw/pci-host/gpex.h |  3 +++
+ 3 files changed, 26 insertions(+)
+
+-- 
+2.5.5
+

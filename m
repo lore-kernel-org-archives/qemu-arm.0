@@ -1,178 +1,133 @@
-Received: by 10.223.172.38 with SMTP id v35csp623373wrc;
-        Tue, 12 Sep 2017 22:36:12 -0700 (PDT)
-X-Google-Smtp-Source: AOwi7QBqGY6w06jLoEZt/YxuxSxwZZL/3EpD0XKkQe7/q+2cofP/4ITarnGjy6b4bA/q73843K+I
-X-Received: by 10.55.77.86 with SMTP id a83mr22041031qkb.172.1505280972628;
-        Tue, 12 Sep 2017 22:36:12 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1505280972; cv=none;
+Received: by 10.223.172.38 with SMTP id v35csp739570wrc;
+        Wed, 13 Sep 2017 00:51:14 -0700 (PDT)
+X-Google-Smtp-Source: AOwi7QAL9cDAGHRs3Gtn6S6Y23TXqA5Y7GAOq2ki1viCv6b2GA78uwDvNRI6xXOi+1iA6KDCstAx
+X-Received: by 10.200.53.168 with SMTP id k37mr23639571qtb.237.1505289074500;
+        Wed, 13 Sep 2017 00:51:14 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1505289074; cv=none;
         d=google.com; s=arc-20160816;
-        b=Dn+qDmRAOIuQVjpsGGIeBVVopVmtq4XQAzkOkeuz0J3raXfKQGDyJui3IUM/Gc1pGE
-         5IA/5/YY6xim2qPu63DN9Bt/g+XmxbfEM9cT8s+edzq/LydK1ESwR28LtMJdJDdGK7x7
-         ObyoYtgjw4gkWTbOSdsg3aHMrEgYYgNmexgsN6neGhyxkxxqDtWrgzmJeE9VHdLv0ghJ
-         nHhvTRvfELdv0Nl08Q+5VHyvcTht/h1mOGS9CQieBDlY1f9fKLbJXc6LgkxEzujykS6k
-         tFiopxwxgeiVQ2zo1TD6IU2jkjKlO9126XwTYifhfITKyCiqsngASagvbmpCJHCemuyU
-         gG2Q==
+        b=cnjYlttdDqRhSbzUyLqnQkdlvhJAtBvRcGa5wxTw+gkeZoHlfb1W5QstLKLo20tvwS
+         ifF5FhLdDb7rT2s4BwHLEOpSDoW69NgJ8Gw666Zd2w5hk0Py52H/N/c8Z84S1rHVJyTk
+         xHA3Yfs1+DA/4PJELQPa/wJRp1l28nSpjQtL4x8yzC2a5BDV6NVZoaWjd6NJIlPW42sS
+         UQIWDdKcGfKRhrdzfQEZUZtXSbCHI99m1HGyVTtOoUvs61c2F8zQFSoOtVYT/F3PDIoY
+         YZZUOIM4umm6NnkGkYU2W2Ss9c0AG7D1dF4w9GNjxnhPr8pLFraqUPQsx75RN2d1+dB4
+         FmBQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
-         :content-disposition:mime-version:references:message-id:to:from:date
-         :dkim-signature:arc-authentication-results;
-        bh=1zkDs7qSnJHcm9UFPkBSCnVv3q3zZQjsEQjq2VqF5FE=;
-        b=TT+KmrvZw2MocN/yDeD2+xgXy3vtfxUO/ALYDS62ywN6rWe+SovNnj4NPECWPWcsgC
-         1E+D1cJtDk2lOJGS2CFkRLUlyA/yR6luzb2DpCoD12MC+S5gTznsWCmwglnWSgrjSLGT
-         nLZl+k0PB9b3t6fRGAO0eEqBd1bFnBSP+2RE1bxyzPqkwW/Eqx+a21DI3yUeceK5hqGz
-         cVTtU3eJIYuG05WaYQQZLmlt4C/rWOLPPPeE4qwIwR9gmtfdMMSC9RMUp3Y0X0gqj84g
-         hkQ+i90RugMURXIs6PCVhn5O1fxHmBdFosJmyqx358SBtf4Opt2v62X+sgwdShTD1Vvr
-         LoYg==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:mime-version:organization:references
+         :in-reply-to:message-id:to:from:date:dmarc-filter
+         :arc-authentication-results;
+        bh=4+95ihrzqIyKkRRF7o68SdEi8PswLDoT+XB9yOwetHQ=;
+        b=KC29Uoc01VDu3ZhS9cpyMFCEuwCVcuzTMK41UH2WnY+nhbMlyQsrVW5+0lQLQdEI8S
+         OwtlMSQEoxyU3EJEKQcwVsmRiSf+GexJKUoC2WHd2yVH4fO+oSc8Lwwn3FW7zle0iHF2
+         t8Db5JSplGK1f+AP7gqjOrxNmGXpyI76DCZeypKsMtCdRUXXroYkBuR2yhClUG5IbbfB
+         aYCenHSnl6S2uJ8wHGbzkr2t0qvMy2sx77KN/j2O7Yxbod7yMuaDpj38bZu/RZuwF3vf
+         mOWVXh/VH2VENF2q621enTGehl/Om3g+bfZNnsaNwMVHCjYBWRtlAJ02ajDUNSQvcuGq
+         4jYQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gibson.dropbear.id.au header.s=201602 header.b=qNIK1r6w;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id q128si767942qkb.499.2017.09.12.22.36.12
+        by mx.google.com with ESMTPS id q46si1601960qtq.235.2017.09.13.00.51.13
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 12 Sep 2017 22:36:12 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Wed, 13 Sep 2017 00:51:14 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gibson.dropbear.id.au header.s=201602 header.b=qNIK1r6w;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:40217 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:40674 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ds0LK-0005kj-EF
-	for alex.bennee@linaro.org; Wed, 13 Sep 2017 01:36:10 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:57389)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1ds2S0-0004D6-8z
+	for alex.bennee@linaro.org; Wed, 13 Sep 2017 03:51:12 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:42247)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <dgibson@ozlabs.org>) id 1ds0L7-0005k4-CO
-	for qemu-arm@nongnu.org; Wed, 13 Sep 2017 01:35:58 -0400
+	(envelope-from <cohuck@redhat.com>) id 1ds2Q5-0002qk-Gg
+	for qemu-devel@nongnu.org; Wed, 13 Sep 2017 03:49:14 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <dgibson@ozlabs.org>) id 1ds0L3-0004IV-6d
-	for qemu-arm@nongnu.org; Wed, 13 Sep 2017 01:35:57 -0400
-Received: from ozlabs.org ([103.22.144.67]:33225)
+	(envelope-from <cohuck@redhat.com>) id 1ds2Q4-0005hC-MU
+	for qemu-devel@nongnu.org; Wed, 13 Sep 2017 03:49:13 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:46420)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <dgibson@ozlabs.org>)
-	id 1ds0L2-0004EV-47; Wed, 13 Sep 2017 01:35:53 -0400
-Received: by ozlabs.org (Postfix, from userid 1007)
-	id 3xsVkR2v09z9t1G; Wed, 13 Sep 2017 15:35:43 +1000 (AEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-	d=gibson.dropbear.id.au; s=201602; t=1505280943;
-	bh=iPqLdahyJx0rSwpUNNAyP8RDJx+fw/jNJ44vKr4qTek=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=qNIK1r6wGA/DL6r4ApqEZFNHLkw4nzRbczpyIiGYdK4fUdqZxsrVF59iaYYDMhItF
-	+Y6bk6rfvCdq4hyUhXweIDPbLtM3udODihZSt7qez6HZBHlZlsrd/jQNqDNsMiecJn
-	x13WTfSLGQ3zQ0ufVxL/BASKi/SvQHu2xz1kIrDE=
-Date: Wed, 13 Sep 2017 15:35:33 +1000
-From: David Gibson <david@gibson.dropbear.id.au>
-To: Laurent Vivier <lvivier@redhat.com>
-Message-ID: <20170913053533.GF7550@umbus.fritz.box>
-References: <20170912140149.7692-1-lvivier@redhat.com>
-	<20170912140149.7692-2-lvivier@redhat.com>
+	(Exim 4.71) (envelope-from <cohuck@redhat.com>)
+	id 1ds2Pz-0005Yy-Ji; Wed, 13 Sep 2017 03:49:07 -0400
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
+	[10.5.11.15])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 91B7580F7A;
+	Wed, 13 Sep 2017 07:49:06 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 91B7580F7A
+Authentication-Results: ext-mx03.extmail.prod.ext.phx2.redhat.com;
+	dmarc=none (p=none dis=none) header.from=redhat.com
+Authentication-Results: ext-mx03.extmail.prod.ext.phx2.redhat.com;
+	spf=fail smtp.mailfrom=cohuck@redhat.com
+Received: from gondolin (dhcp-192-215.str.redhat.com [10.33.192.215])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 350B517591;
+	Wed, 13 Sep 2017 07:49:01 +0000 (UTC)
+Date: Wed, 13 Sep 2017 09:48:59 +0200
+From: Cornelia Huck <cohuck@redhat.com>
+To: =?UTF-8?B?TWFyYy1BbmRyw6k=?= Lureau <marcandre.lureau@redhat.com>
+Message-ID: <20170913094859.55905d00.cohuck@redhat.com>
+In-Reply-To: <20170911110623.24981-51-marcandre.lureau@redhat.com>
+References: <20170911110623.24981-1-marcandre.lureau@redhat.com>
+	<20170911110623.24981-51-marcandre.lureau@redhat.com>
+Organization: Red Hat GmbH
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="s5/bjXLgkIwAv6Hi"
-Content-Disposition: inline
-In-Reply-To: <20170912140149.7692-2-lvivier@redhat.com>
-User-Agent: Mutt/1.8.3 (2017-05-23)
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.27]);
+	Wed, 13 Sep 2017 07:49:06 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 103.22.144.67
-Subject: Re: [Qemu-arm] [PATCH v3 1/3] hmp: fix "dump-quest-memory" segfault
- (ppc)
-X-BeenThere: qemu-arm@nongnu.org
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-devel] [PATCH v3 50/50] qapi: make query-cpu-definitions
+ depend on specific targets
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
-	"Daniel P . Berrange" <berrange@redhat.com>,
-	Cornelia Huck <cohuck@redhat.com>, qemu-devel@nongnu.org,
-	"Dr . David Alan Gilbert" <dgilbert@redhat.com>,
-	Greg Kurz <groug@kaod.org>, qemu-arm@nongnu.org, qemu-ppc@nongnu.org
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: vyZXmfKb6tpr
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+	Eduardo Habkost <ehabkost@redhat.com>, qemu-devel@nongnu.org,
+	armbru@redhat.com, "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
+	Alexander Graf <agraf@suse.de>, "open list:ARM" <qemu-arm@nongnu.org>,
+	"open list:PowerPC" <qemu-ppc@nongnu.org>,
+	Paolo Bonzini <pbonzini@redhat.com>, Richard Henderson <rth@twiddle.net>,
+	David Gibson <david@gibson.dropbear.id.au>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: kywQ+r7GM9N9
 
+On Mon, 11 Sep 2017 13:06:23 +0200
+Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com> wrote:
 
---s5/bjXLgkIwAv6Hi
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-On Tue, Sep 12, 2017 at 04:01:47PM +0200, Laurent Vivier wrote:
-> Running QEMU with
->     qemu-system-ppc64 -M none -nographic -m 256
-> and executing
->     dump-guest-memory /dev/null 0 8192
-> results in segfault
+> It depends on TARGET_PPC || TARGET_ARM || TARGET_I386 || TARGET_S390X.
 >=20
-> Fix by checking if we have CPU, and exit with
-> error if there is no CPU:
->=20
->     (qemu) dump-guest-memory /dev/null
->     this feature or command is not currently supported
->=20
-> Signed-off-by: Laurent Vivier <lvivier@redhat.com>
-
-Applied to ppc-for-2.11.  I'm not really sure what to do with the rest
-of the series though.
-
+> Signed-off-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
 > ---
->  target/ppc/arch_dump.c | 11 +++++++++--
->  1 file changed, 9 insertions(+), 2 deletions(-)
->=20
-> diff --git a/target/ppc/arch_dump.c b/target/ppc/arch_dump.c
-> index 8e9397aa58..95b9ab6f29 100644
-> --- a/target/ppc/arch_dump.c
-> +++ b/target/ppc/arch_dump.c
-> @@ -224,8 +224,15 @@ typedef struct NoteFuncDescStruct NoteFuncDesc;
->  int cpu_get_dump_info(ArchDumpInfo *info,
->                        const struct GuestPhysBlockList *guest_phys_blocks)
->  {
-> -    PowerPCCPU *cpu =3D POWERPC_CPU(first_cpu);
-> -    PowerPCCPUClass *pcc =3D POWERPC_CPU_GET_CLASS(cpu);
-> +    PowerPCCPU *cpu;
-> +    PowerPCCPUClass *pcc;
-> +
-> +    if (first_cpu =3D=3D NULL) {
-> +        return -1;
-> +    }
-> +
-> +    cpu =3D POWERPC_CPU(first_cpu);
-> +    pcc =3D POWERPC_CPU_GET_CLASS(cpu);
-> =20
->      info->d_machine =3D PPC_ELF_MACHINE;
->      info->d_class =3D ELFCLASS;
+>  qapi-schema.json            | 11 -----------
+>  qapi/target.json            | 12 ++++++++++++
+>  include/sysemu/arch_init.h  |  1 -
+>  monitor.c                   | 22 ----------------------
+>  qmp.c                       |  5 -----
+>  stubs/arch-query-cpu-def.c  | 10 ----------
+>  target/arm/helper.c         |  3 ++-
+>  target/i386/cpu.c           |  2 +-
+>  target/ppc/translate_init.c |  3 ++-
+>  target/s390x/cpu_models.c   |  2 +-
+>  stubs/Makefile.objs         |  1 -
+>  11 files changed, 18 insertions(+), 54 deletions(-)
+>  delete mode 100644 stubs/arch-query-cpu-def.c
 
---=20
-David Gibson			| I'll have my music baroque, and my code
-david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
-				| _way_ _around_!
-http://www.ozlabs.org/~dgibson
-
---s5/bjXLgkIwAv6Hi
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAEBCAAdFiEEdfRlhq5hpmzETofcbDjKyiDZs5IFAlm4w6UACgkQbDjKyiDZ
-s5I49A/8D8OoS1m+Hj9mqIIhNCXPCUoUu3JciF/6KaMDhsRf5iVHFh4f57S4JBV1
-kDY3KVMgHr3XDi0Ne8NuHoOxMCvso2qHl6EJzLdzL5DDLMDF8VbRwwph/ZZsg7we
-8lOEQJHGFRTc9Vm8IJ+JJO3w0gc04AHhm6cSgGXiIB1VQCwO2nJqjt4kqlinvg10
-teAIca6k/3/KBO1fmoLLBcBDnNWB11WFa5AUilY42zzsMB8ZMXDILB/kN6IxmfgE
-1DR/H7wHFeTr01bwlflLdY3usKthYhIypAz9+a4mZuzE4/zBc7z3elhwUeFDLZCR
-0y+Uw1HtmU9h3oM6ybkMYIxoN4NS7r4XKkFwL6tYeao4mM0WnshMe0gKIf9NS8dL
-XRIvbqRDyuu01JS6/fmocYcSNok1wUhzUrbqMiWrFAkc701aceBTWnPqiLm3z5xf
-81f5O76CKuC0XXDAkJegjxhE603FaZg+b03gHs6Fuojjs3OfgNIjGNG3+617BZyx
-EhQne7q3gvESA48oVcroDZk8jZeHKzr9JhWCWDTtvBHClxNDnJstvmqqQDjWI+D2
-IxA6NZBxoI7PLJ0XgsrxuUth1F+odLxF8ZwCupVIiDfCcS2O5rUhe6CzrlXgpacz
-BLDrsKXO9yaCmivQsYYqQUTNEszL2i2pPVTGyhNlJlzVB7gPJlw=
-=JniD
------END PGP SIGNATURE-----
-
---s5/bjXLgkIwAv6Hi--
+Acked-by: Cornelia Huck <cohuck@redhat.com>

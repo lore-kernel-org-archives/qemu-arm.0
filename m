@@ -1,95 +1,110 @@
-Received: by 10.223.172.38 with SMTP id v35csp1114127wrc;
-        Wed, 13 Sep 2017 07:30:52 -0700 (PDT)
-X-Google-Smtp-Source: AOwi7QAKj2aYOvB8LOJDlK8dRXnN+Qq5ae6w1zTGu2DqwrE5gSKD82b+Wtf1XiBOVmYth/sG9Gfp
-X-Received: by 10.55.201.155 with SMTP id m27mr25869011qkl.57.1505313052011;
-        Wed, 13 Sep 2017 07:30:52 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1505313052; cv=none;
+Received: by 10.223.172.38 with SMTP id v35csp1208526wrc;
+        Wed, 13 Sep 2017 08:57:20 -0700 (PDT)
+X-Received: by 10.55.217.198 with SMTP id q67mr24777237qkl.153.1505318240458;
+        Wed, 13 Sep 2017 08:57:20 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1505318240; cv=none;
         d=google.com; s=arc-20160816;
-        b=FWtnvKKyP3Jk5rNG7Ur2MuFcb9RvZU+ESvIS6VgM/kxQOvn94m/F2h/CNcK6ptxqw4
-         g4+czi6YMalJqVL/rr9vnCNrqe4nCCo8/SKE3BohC4WoUSCiTXZOavORxLMeszFFKW4r
-         uQsXubTF0W8KG5oHH017LxdWKBzBW5I9cxyKRv0VXBQQsi+h4Y4GM36dmQRFjo2bLuQK
-         JtHZQZ+ozbqiUP4jx60QrzZQxjtl9mvqDaHvWqAw00UoGtr/p88kRtrpcORGme1rUoGi
-         7xQjQ3U7aTGbwNJ9DPfK0itF/YK3Fk4f1ne+6yYvs/M1v9jKN/brAFDcDgTChl8f/2Xw
-         L7uQ==
+        b=Lvxh9mmLehEiDN9qYTgQANQFicdcRqZJunNFsQXhQqTHS8AQs2GMG9UBlh820BYTlL
+         +Sfo/kxhvHYzzUNSbZogJYmJsLmWjjOryplgijSXTa43Noehzw9Fc8CMUisWyT4YSHK2
+         lLnz6rH9Ff/nciJovtwJKzRt/MrF1+e1xajpo4Jq7bmIwvBqfS/KYkxGV641BRIYKdlO
+         iP4TZJxRUjrOmY0cnAp64OdDilQek60aKVPo+IOn2PkUVxxA/MLGkNwpIOHUA1uGznUd
+         eUlhQyPD/BlomQlRWGy5TwMa58qVNRaxpOkMDYium7O8GXJKU+K1n0ljOazDy/PIzksp
+         30aQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:to:dmarc-filter
+         :user-agent:date:message-id:from:references:to:dkim-signature
          :arc-authentication-results;
-        bh=xS89dB09gvC2RmZ/FVxz1x64xTQotdMWDKW/MSDpcmA=;
-        b=iRM5W9UJFPNKdJ7mpmIBHe1w2i9RsPki8pzAbrg5YPieYZqpOHQkiioJB4WUF4U0RD
-         FWfhl+Omzn/5O6AHT636Zha4VtbqfzXGnouLjjvblcv+v0mOoVlHQ6o3bQgPB+ZSDnz7
-         PUQAXbzmoOfxYCmzQVd6d1ZIeFe0j0aGEtxz5pqV7MmyXECyz4q5f6ax2V+ljD1dPdFa
-         aYaqE7Jzx5vqQWeuPoA/cNvkwKbcea7K6BX90RyJWGSqHR0TJ33aeUw6zSkWbgNC4Kid
-         axgzsd0sKoo5nqa8VTJZZk7Wqy7wb1mq+nJp6zFmir5wzskN3qXJ35NjkfFkCntKgs3l
-         jEtA==
+        bh=q2CGak+2uN5zTezhwVVB45OCwTmZqwPqhF8ZFJ0vfU8=;
+        b=e5/glLGB773NMVpuzsfkYcayq7SZjb5Xqx9RUhm42x3CgHE7A4mlypeE1+gP0uOXcQ
+         F+PuLBpEs59XrEYKmOkt1yhJVVltvXtB4QtAk31fFyHduanvCTK8Ibi204XJv3gYZ0gZ
+         p43jyUD+TdxiOLxQVzeGRFtXGhAfNN4jOUETeniZCEk325Hn9oBhlxIv/BdPm/4M25/V
+         sSfoG547te+RdedmwDC+xyGJIhR0dvdNUf2pJeyPOX76AXC9lkIoY8wenqV6wLJbH+O+
+         APVMj0g1xuYPm66ObFOzjpY69M+ug3qb45MwcH4t2RoCtkavyj3buB4MW7Q4yMq2FuRt
+         6P5Q==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b=LY1GdjZD;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id o132si13861690qka.488.2017.09.13.07.30.51
+        by mx.google.com with ESMTPS id m62si3551534qkh.303.2017.09.13.08.57.19
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 13 Sep 2017 07:30:51 -0700 (PDT)
+        Wed, 13 Sep 2017 08:57:20 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b=LY1GdjZD;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:42833 helo=lists.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:43180 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ds8gj-0004ml-MZ
-	for alex.bennee@linaro.org; Wed, 13 Sep 2017 10:30:49 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:39462)
+	id 1dsA2Q-0003gK-7y
+	for alex.bennee@linaro.org; Wed, 13 Sep 2017 11:57:18 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:42982)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <lvivier@redhat.com>) id 1ds8gS-0004gQ-AN
-	for qemu-arm@nongnu.org; Wed, 13 Sep 2017 10:30:38 -0400
+	(envelope-from <richard.henderson@linaro.org>) id 1dsA2H-0003er-VV
+	for qemu-arm@nongnu.org; Wed, 13 Sep 2017 11:57:10 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <lvivier@redhat.com>) id 1ds8gM-00031K-Nq
-	for qemu-arm@nongnu.org; Wed, 13 Sep 2017 10:30:32 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:27961)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <lvivier@redhat.com>)
-	id 1ds8gM-0002zY-Hz; Wed, 13 Sep 2017 10:30:26 -0400
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
-	[10.5.11.12])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 8E656A710;
-	Wed, 13 Sep 2017 14:30:25 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 8E656A710
-Authentication-Results: ext-mx05.extmail.prod.ext.phx2.redhat.com;
-	dmarc=none (p=none dis=none) header.from=redhat.com
-Authentication-Results: ext-mx05.extmail.prod.ext.phx2.redhat.com;
-	spf=fail smtp.mailfrom=lvivier@redhat.com
-Received: from [10.36.116.49] (ovpn-116-49.ams2.redhat.com [10.36.116.49])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 5F5D077D69;
-	Wed, 13 Sep 2017 14:30:21 +0000 (UTC)
-To: Cornelia Huck <cohuck@redhat.com>
-References: <20170913142036.2469-1-lvivier@redhat.com>
-	<20170913142036.2469-4-lvivier@redhat.com>
-	<20170913162709.3933352d.cohuck@redhat.com>
-From: Laurent Vivier <lvivier@redhat.com>
-Message-ID: <32c345ab-ce02-fe29-1587-db863fb21209@redhat.com>
-Date: Wed, 13 Sep 2017 16:30:20 +0200
+	(envelope-from <richard.henderson@linaro.org>) id 1dsA2E-0001NQ-TE
+	for qemu-arm@nongnu.org; Wed, 13 Sep 2017 11:57:10 -0400
+Received: from mail-pg0-x22a.google.com ([2607:f8b0:400e:c05::22a]:45755)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
+	id 1dsA2E-0001Mz-MT
+	for qemu-arm@nongnu.org; Wed, 13 Sep 2017 11:57:06 -0400
+Received: by mail-pg0-x22a.google.com with SMTP id 188so1163895pgb.2
+	for <qemu-arm@nongnu.org>; Wed, 13 Sep 2017 08:57:06 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=subject:to:cc:references:from:message-id:date:user-agent
+	:mime-version:in-reply-to:content-language:content-transfer-encoding;
+	bh=q2CGak+2uN5zTezhwVVB45OCwTmZqwPqhF8ZFJ0vfU8=;
+	b=LY1GdjZDRlTTDH+Jijs/dfFxtu6XxY/nHevZQVy4PUg+9DajxcLta8Xg4VsjPfkcNH
+	wvjaxwW3T+Ex2nBaxKH/KBnXmE7VVqp27DkcgnoXAycKWCfdlNd+mt9RLNZI9bHEXgE1
+	Md+OC2alyxM/hrArSkonxNxg1XuYoVROYzdFQ=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+	:user-agent:mime-version:in-reply-to:content-language
+	:content-transfer-encoding;
+	bh=q2CGak+2uN5zTezhwVVB45OCwTmZqwPqhF8ZFJ0vfU8=;
+	b=Y8Mt2Cf68/9XQ2qHlaZRFzlsD5iNHQoU87uSIlg86ehr1DRPUbEeFyUSs4txt0T0UP
+	5kH+Ji8GBNxIJRPOfOvzyTpdWK553feOV4NiTlbEWkdfL6lcSonlo4RhyOKu5VJWzaAk
+	2ith8kY+H7sB+omPOFu7en7EC9rIK+6Nzm5Ea5N5YLc3hGWMJ3vY+ijXI17V9D3jSTx7
+	WEccEEFCyYJq7/JrNq1yGMPgJXDejfGtD31gE66Zklb7Q3tcAwF8Gi8XS6l6DiCBtDsL
+	1P/zNwgo6h1yctWOC1b0DVKnc7mWPX7mftcq32K8NAFo57GEMcebzCNXmzHXNcEw8R7s
+	Rgdg==
+X-Gm-Message-State: AHPjjUirFlSb4Gm/iaBi8WQZ+EOuRXSletxw4P1fo9AJWq+UmO9swy78
+	QrlEfdnXJi1hhS5P
+X-Google-Smtp-Source: ADKCNb6uSNNseLLnBVaw3Ecq6hupYR5Y3LNP2+2Kl/hviA/vHXKRB8TpusGbLaRZxYa5X19+9aV4sw==
+X-Received: by 10.84.197.69 with SMTP id m63mr20812347pld.226.1505318225747;
+	Wed, 13 Sep 2017 08:57:05 -0700 (PDT)
+Received: from bigtime.twiddle.net (97-126-103-167.tukw.qwest.net.
+	[97.126.103.167]) by smtp.gmail.com with ESMTPSA id
+	64sm27672801pge.44.2017.09.13.08.57.04
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Wed, 13 Sep 2017 08:57:04 -0700 (PDT)
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+References: <1505137930-13255-1-git-send-email-peter.maydell@linaro.org>
+	<1505137930-13255-4-git-send-email-peter.maydell@linaro.org>
+From: Richard Henderson <richard.henderson@linaro.org>
+Message-ID: <6b345da1-e937-cb0f-ab9f-f2ef4ac01da8@linaro.org>
+Date: Wed, 13 Sep 2017 08:57:03 -0700
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
 	Thunderbird/52.3.0
 MIME-Version: 1.0
-In-Reply-To: <20170913162709.3933352d.cohuck@redhat.com>
+In-Reply-To: <1505137930-13255-4-git-send-email-peter.maydell@linaro.org>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.29]);
-	Wed, 13 Sep 2017 14:30:25 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [PATCH v4 3/4] dump: do not dump non-existent guest
- memory
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:400e:c05::22a
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH 3/7] target/arm: Get PRECISERR
+ and IBUSERR the right way round
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -101,49 +116,23 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
-	"Daniel P . Berrange" <berrange@redhat.com>,
-	"Dr . David Alan Gilbert" <dgilbert@redhat.com>,
-	qemu-devel@nongnu.org, Greg Kurz <groug@kaod.org>,
-	qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
-	David Gibson <david@gibson.dropbear.id.au>
+Cc: patches@linaro.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: dTioXNHIk8pu
+X-TUID: uA8vnLi550OD
 
-On 13/09/2017 16:27, Cornelia Huck wrote:
-> On Wed, 13 Sep 2017 16:20:35 +0200
-> Laurent Vivier <lvivier@redhat.com> wrote:
+On 09/11/2017 06:52 AM, Peter Maydell wrote:
+> For a bus fault, the M profile BFSR bit PRECISERR means a bus
+> fault on a data access, and IBUSERR means a bus fault on an
+> instruction access. We had these the wrong way around; fix this.
 > 
->> From: Cornelia Huck <cohuck@redhat.com>
->>
->> It does not really make sense to dump memory that is not there.
->>
->> Moreover, that fixes a segmentation fault when calling dump-guest-memory
->> with no filter for a machine with no memory defined.
->>
->> New behaviour is:
->>
->> (qemu) dump-guest-memory /dev/null
->> dump: no guest memory to dump
->> (qemu) dump-guest-memory /dev/null 0 4096
->> dump: no guest memory to dump
->>
->> Signed-off-by: Cornelia Huck <cohuck@redhat.com>
->> Tested-by: Laurent Vivier <lvivier@redhat.com>
->> Reviewed-by: Laurent Vivier <lvivier@redhat.com>
->> Reviewed-by: Greg Kurz <groug@kaod.org>
->> Reviewed-by: Peter Xu <peterx@redhat.com>
->> ---
->>  dump.c | 6 ++++++
->>  1 file changed, 6 insertions(+)
-> 
-> You need to supply your s-o-b as well, no?
-> 
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> ---
+>  target/arm/helper.c | 8 ++++----
+>  1 file changed, 4 insertions(+), 4 deletions(-)
 
-I was wondering... theoretically, yes, so:
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
-Signed-off-by: Laurent Vivier <lvivier@redhat.com>
 
-Thanks,
-Laurent
+r~
+

@@ -1,341 +1,174 @@
-Received: by 10.223.172.38 with SMTP id v35csp7481226wrc;
-        Tue, 12 Sep 2017 11:26:55 -0700 (PDT)
-X-Google-Smtp-Source: AOwi7QDOGdNQRpKQ4B26JWfBnXLgbjOfR8yIzrHLltLrTOHOTCVJMJcfFvbQ4qCtyutd7eqhx6bK
-X-Received: by 10.237.60.101 with SMTP id u34mr10968963qte.153.1505240815812;
-        Tue, 12 Sep 2017 11:26:55 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1505240815; cv=none;
+Received: by 10.223.172.38 with SMTP id v35csp623356wrc;
+        Tue, 12 Sep 2017 22:36:11 -0700 (PDT)
+X-Google-Smtp-Source: ADKCNb4D3RvzqWGHRnFiMeksHYW+cciXZIudwF3WUzwL8xx7mfeAzBmZbnq4Ie2gmVC6f3m98yzy
+X-Received: by 10.55.143.129 with SMTP id r123mr23893429qkd.9.1505280971829;
+        Tue, 12 Sep 2017 22:36:11 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1505280971; cv=none;
         d=google.com; s=arc-20160816;
-        b=piL4Y3MDqdF25k6G399MpXlNqZhqCANZRa8SZtKLiOiYUe53trRsr4VIJ0s8UXwU1n
-         F48/SeawUStu+Sn8lD1ScvwamP9rUnKtiTRk1vzlaJkTBbY0rX2JSxqJFOAqpiowsLsY
-         dxPKLg9o+Df3fgo5mQDHEaATIKfegeNhouX6oFSgkQZVluyo2yRKsHqnotg3NUjK+ud4
-         uKh5WoRC47mBLzVfpnEbObP45c0uRE/KOXwPikmDh9Qy5Yn6O3Tk588baj1D8k3rz7I3
-         X4Ge1qBTL84gO/OqQeHpIeiXuke2l65wi7NqKWqImIARckZcaRdQVAiAPLcEAcpgpkRl
-         4lgQ==
+        b=nOc3FlSi9J3jbPUMywYy930SZCW71Gk9/IA8m8u8+eBnFsrfpTuQcpHeumqZ8FHno4
+         QIgYUWeDDCiOKY/Qahoh/mXW/7VXwTYh3pcX20e2HEouxwUFzxgfDsWcsKWCU56ehwDm
+         WBAIiVBI8i35lN00M0ZxJKg932jArJUTh43wb5OlKS8PAht/p4mGsq6jLnROpCSgJ3CH
+         fXXhe/zYLoQgd/wqvrFNMcP2Tu4POK5kUu4GxJpsIWOrh45cQSvL548jg8v9soiipacC
+         uunJgY2g2ZDFmMj5U5P44rDEXrsyKyfU419en4wtyr6alKGvLqXDocy9UBI6WZk/5Hqn
+         ouKg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
-         :message-id:date:to:from:arc-authentication-results;
-        bh=nTbDyN9N2Yh0NEpf4+ZjdVOMY5X1S+o/w/lviJGfRoo=;
-        b=h4Umd/1C6cLkOAa6w9l4ZiJBe105T1fh4e0taLWtwWuhNLK/WuLACvPzNXAJEGMuca
-         MeN8LwlPJUBmuddEbN7NJImWPCwXFmXDb5SUaBU8tvCmjs723/fZ3av/uW68YFvbhIem
-         tg7dE5o1if0BqbZFrGnLKG6f3BG6CSRCgDNDKjJaDJ4b7IyoK2JtkFuP7y+RgMTFljH/
-         31SwJTUQSGDmQFR+rPZNGQniWtTNuWFwluvuqNZSNMFMspnEYI83ylGzgD9WgPUEZxqb
-         BCJ/K+gOrTz40U0hAphDsSTU6fX0n+GcAtpodqCgsOgDAnv0S4OeETze33VN3BvMl8IY
-         IK8g==
+         :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
+         :content-disposition:mime-version:references:message-id:to:from:date
+         :dkim-signature:arc-authentication-results;
+        bh=4YdtPcw8VbVZWuOPdKprTMyYeV3p0aaA9lm46Ybv5lU=;
+        b=mqeHczOpVZqutpYOd/aGwPeWKqFhJ4i1TLQL338jtWiEc+MTb0287kApad5V7PJgnR
+         R4+c3mcdMYctAheXEvMqkMLu2V+L+6ZD6r6+b9NwfG7RqpfeQZdflkuldn2o2Vd8lc22
+         QU9/b6QHa3373Kiyvb1XI717TFhmxylX0qRefDOd/7oHloGwszmbXJ8FkswFctf+FhYT
+         WkmhJ00Z+FgekBkNgPlF0g4oI0PwqCKqLS6AuAIYyLmqYBjPZXKG7mipI/GTnT+mg3Ks
+         7siGd7Mu0way0GnvlrkanN+ZbNfzrVe9D6bjur6E0wWp4GJY8jHVujgcQVo5cYCuEv5c
+         AJLg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gibson.dropbear.id.au header.s=201602 header.b=ZzMyPW9C;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id j67si310311qkd.395.2017.09.12.11.26.55
+        by mx.google.com with ESMTPS id x2si13488688qkl.98.2017.09.12.22.36.11
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 12 Sep 2017 11:26:55 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Tue, 12 Sep 2017 22:36:11 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:38015 helo=lists.gnu.org)
+       dkim=fail header.i=@gibson.dropbear.id.au header.s=201602 header.b=ZzMyPW9C;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:40216 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1drptd-0007Uz-DE
-	for alex.bennee@linaro.org; Tue, 12 Sep 2017 14:26:53 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:43658)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1ds0LJ-0005ki-Fz
+	for alex.bennee@linaro.org; Wed, 13 Sep 2017 01:36:09 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:57388)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1drph9-0003ba-H0
-	for qemu-devel@nongnu.org; Tue, 12 Sep 2017 14:14:01 -0400
+	(envelope-from <dgibson@ozlabs.org>) id 1ds0L7-0005k3-C3
+	for qemu-arm@nongnu.org; Wed, 13 Sep 2017 01:35:58 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1drph7-0006WS-Ky
-	for qemu-devel@nongnu.org; Tue, 12 Sep 2017 14:13:59 -0400
-Received: from orth.archaic.org.uk ([2001:8b0:1d0::2]:37328)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <pm215@archaic.org.uk>)
-	id 1drph2-0006SF-SW; Tue, 12 Sep 2017 14:13:53 -0400
-Received: from pm215 by orth.archaic.org.uk with local (Exim 4.89)
-	(envelope-from <pm215@archaic.org.uk>)
-	id 1drph1-0001B2-S7; Tue, 12 Sep 2017 19:13:51 +0100
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Date: Tue, 12 Sep 2017 19:14:05 +0100
-Message-Id: <1505240046-11454-19-git-send-email-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.7.4
-In-Reply-To: <1505240046-11454-1-git-send-email-peter.maydell@linaro.org>
-References: <1505240046-11454-1-git-send-email-peter.maydell@linaro.org>
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2001:8b0:1d0::2
-Subject: [Qemu-devel] [PATCH 18/19] nvic: Make SHCSR banked for v8M
-X-BeenThere: qemu-devel@nongnu.org
+	(envelope-from <dgibson@ozlabs.org>) id 1ds0L3-0004IP-5r
+	for qemu-arm@nongnu.org; Wed, 13 Sep 2017 01:35:57 -0400
+Received: from ozlabs.org ([103.22.144.67]:42297)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <dgibson@ozlabs.org>)
+	id 1ds0L2-0004EX-3v; Wed, 13 Sep 2017 01:35:53 -0400
+Received: by ozlabs.org (Postfix, from userid 1007)
+	id 3xsVkR1Qz1z9ryT; Wed, 13 Sep 2017 15:35:43 +1000 (AEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+	d=gibson.dropbear.id.au; s=201602; t=1505280943;
+	bh=BDayEiEvyk32qMtTUwo541ejnJzoGPyy6kJsdhTOPmg=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=ZzMyPW9CSXFBL5yOvKaoKzucFwR6Rg0hJTO/FCXn1GEfLVr1aMgAyOUsyVX36ISE1
+	lqN5LZrl6Oz+v8dWEQyefiukEc2YLnKH3OuJrvVQQsnBbqQdDCmX5rAX3uNGLA9SX2
+	kPEWxxAi0iS51BOw/aPZNPfDkbiMIfXAFUrh2JkI=
+Date: Wed, 13 Sep 2017 15:34:36 +1000
+From: David Gibson <david@gibson.dropbear.id.au>
+To: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
+Message-ID: <20170913053436.GE7550@umbus.fritz.box>
+References: <20170912140149.7692-1-lvivier@redhat.com>
+	<20170912164644.2a0b6977@bahia.lan>
+	<6198350f-a694-cf1b-ec00-4c42ccce39a6@redhat.com>
+	<20170912153630.GC2225@work-vm>
+MIME-Version: 1.0
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="phCU5ROyZO6kBE05"
+Content-Disposition: inline
+In-Reply-To: <20170912153630.GC2225@work-vm>
+User-Agent: Mutt/1.8.3 (2017-05-23)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 103.22.144.67
+Subject: Re: [Qemu-arm] [PATCH v3 0/3] hmp: fix "dump-quest-memory" segfault
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: patches@linaro.org
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: lndbu1FhPa5k
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Laurent Vivier <lvivier@redhat.com>,
+	Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
+	"Daniel P . Berrange" <berrange@redhat.com>, ehabkost@redhat.com,
+	Cornelia Huck <cohuck@redhat.com>, Greg Kurz <groug@kaod.org>,
+	qemu-devel@nongnu.org, qemu-arm@nongnu.org, qemu-ppc@nongnu.org
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 1TXLe15dEu1P
 
-Handle banking of SHCSR: some register bits are banked between
-Secure and Non-Secure, and some are only accessible to Secure.
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
- hw/intc/armv7m_nvic.c | 221 ++++++++++++++++++++++++++++++++++++++------------
- 1 file changed, 169 insertions(+), 52 deletions(-)
+--phCU5ROyZO6kBE05
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-diff --git a/hw/intc/armv7m_nvic.c b/hw/intc/armv7m_nvic.c
-index 21fd199..9613990 100644
---- a/hw/intc/armv7m_nvic.c
-+++ b/hw/intc/armv7m_nvic.c
-@@ -770,50 +770,117 @@ static uint32_t nvic_readl(NVICState *s, uint32_t offset, MemTxAttrs attrs)
-         val = cpu->env.v7m.ccr[attrs.secure];
-         val |= cpu->env.v7m.ccr[M_REG_NS] & R_V7M_CCR_BFHFNMIGN_MASK;
-         return val;
--    case 0xd24: /* System Handler Status.  */
-+    case 0xd24: /* System Handler Control and State (SHCSR) */
-         val = 0;
--        if (s->vectors[ARMV7M_EXCP_MEM].active) {
--            val |= (1 << 0);
--        }
--        if (s->vectors[ARMV7M_EXCP_BUS].active) {
--            val |= (1 << 1);
--        }
--        if (s->vectors[ARMV7M_EXCP_USAGE].active) {
--            val |= (1 << 3);
-+        if (attrs.secure) {
-+            if (s->sec_vectors[ARMV7M_EXCP_MEM].active) {
-+                val |= (1 << 0);
-+            }
-+            if (s->sec_vectors[ARMV7M_EXCP_HARD].active) {
-+                val |= (1 << 2);
-+            }
-+            if (s->sec_vectors[ARMV7M_EXCP_USAGE].active) {
-+                val |= (1 << 3);
-+            }
-+            if (s->sec_vectors[ARMV7M_EXCP_SVC].active) {
-+                val |= (1 << 7);
-+            }
-+            if (s->sec_vectors[ARMV7M_EXCP_PENDSV].active) {
-+                val |= (1 << 10);
-+            }
-+            if (s->sec_vectors[ARMV7M_EXCP_SYSTICK].active) {
-+                val |= (1 << 11);
-+            }
-+            if (s->sec_vectors[ARMV7M_EXCP_USAGE].pending) {
-+                val |= (1 << 12);
-+            }
-+            if (s->sec_vectors[ARMV7M_EXCP_MEM].pending) {
-+                val |= (1 << 13);
-+            }
-+            if (s->sec_vectors[ARMV7M_EXCP_SVC].pending) {
-+                val |= (1 << 15);
-+            }
-+            if (s->sec_vectors[ARMV7M_EXCP_MEM].enabled) {
-+                val |= (1 << 16);
-+            }
-+            if (s->sec_vectors[ARMV7M_EXCP_USAGE].enabled) {
-+                val |= (1 << 18);
-+            }
-+            if (s->sec_vectors[ARMV7M_EXCP_HARD].pending) {
-+                val |= (1 << 21);
-+            }
-+            /* SecureFault is not banked but is always RAZ/WI to NS */
-+            if (s->vectors[ARMV7M_EXCP_SECURE].active) {
-+                val |= (1 << 4);
-+            }
-+            if (s->vectors[ARMV7M_EXCP_SECURE].enabled) {
-+                val |= (1 << 19);
-+            }
-+            if (s->vectors[ARMV7M_EXCP_SECURE].pending) {
-+                val |= (1 << 20);
-+            }
-+        } else {
-+            if (s->vectors[ARMV7M_EXCP_MEM].active) {
-+                val |= (1 << 0);
-+            }
-+            if (arm_feature(&cpu->env, ARM_FEATURE_V8)) {
-+                /* HARDFAULTACT, HARDFAULTPENDED not present in v7M */
-+                if (s->vectors[ARMV7M_EXCP_HARD].active) {
-+                    val |= (1 << 2);
-+                }
-+                if (s->vectors[ARMV7M_EXCP_HARD].pending) {
-+                    val |= (1 << 21);
-+                }
-+            }
-+            if (s->vectors[ARMV7M_EXCP_USAGE].active) {
-+                val |= (1 << 3);
-+            }
-+            if (s->vectors[ARMV7M_EXCP_SVC].active) {
-+                val |= (1 << 7);
-+            }
-+            if (s->vectors[ARMV7M_EXCP_PENDSV].active) {
-+                val |= (1 << 10);
-+            }
-+            if (s->vectors[ARMV7M_EXCP_SYSTICK].active) {
-+                val |= (1 << 11);
-+            }
-+            if (s->vectors[ARMV7M_EXCP_USAGE].pending) {
-+                val |= (1 << 12);
-+            }
-+            if (s->vectors[ARMV7M_EXCP_MEM].pending) {
-+                val |= (1 << 13);
-+            }
-+            if (s->vectors[ARMV7M_EXCP_SVC].pending) {
-+                val |= (1 << 15);
-+            }
-+            if (s->vectors[ARMV7M_EXCP_MEM].enabled) {
-+                val |= (1 << 16);
-+            }
-+            if (s->vectors[ARMV7M_EXCP_USAGE].enabled) {
-+                val |= (1 << 18);
-+            }
-         }
--        if (s->vectors[ARMV7M_EXCP_SVC].active) {
--            val |= (1 << 7);
-+        if (attrs.secure || (cpu->env.v7m.aircr & R_V7M_AIRCR_BFHFNMINS_MASK)) {
-+            if (s->vectors[ARMV7M_EXCP_BUS].active) {
-+                val |= (1 << 1);
-+            }
-+            if (s->vectors[ARMV7M_EXCP_BUS].pending) {
-+                val |= (1 << 14);
-+            }
-+            if (s->vectors[ARMV7M_EXCP_BUS].enabled) {
-+                val |= (1 << 17);
-+            }
-+            if (arm_feature(&cpu->env, ARM_FEATURE_V8) &&
-+                s->vectors[ARMV7M_EXCP_NMI].active) {
-+                /* NMIACT is not present in v7M */
-+                val |= (1 << 5);
-+            }
-         }
-+
-+        /* TODO: this is RAZ/WI from NS if DEMCR.SDME is set */
-         if (s->vectors[ARMV7M_EXCP_DEBUG].active) {
-             val |= (1 << 8);
-         }
--        if (s->vectors[ARMV7M_EXCP_PENDSV].active) {
--            val |= (1 << 10);
--        }
--        if (s->vectors[ARMV7M_EXCP_SYSTICK].active) {
--            val |= (1 << 11);
--        }
--        if (s->vectors[ARMV7M_EXCP_USAGE].pending) {
--            val |= (1 << 12);
--        }
--        if (s->vectors[ARMV7M_EXCP_MEM].pending) {
--            val |= (1 << 13);
--        }
--        if (s->vectors[ARMV7M_EXCP_BUS].pending) {
--            val |= (1 << 14);
--        }
--        if (s->vectors[ARMV7M_EXCP_SVC].pending) {
--            val |= (1 << 15);
--        }
--        if (s->vectors[ARMV7M_EXCP_MEM].enabled) {
--            val |= (1 << 16);
--        }
--        if (s->vectors[ARMV7M_EXCP_BUS].enabled) {
--            val |= (1 << 17);
--        }
--        if (s->vectors[ARMV7M_EXCP_USAGE].enabled) {
--            val |= (1 << 18);
--        }
-         return val;
-     case 0xd28: /* Configurable Fault Status.  */
-         /* The BFSR bits [15:8] are shared between security states
-@@ -1061,21 +1128,71 @@ static void nvic_writel(NVICState *s, uint32_t offset, uint32_t value,
- 
-         cpu->env.v7m.ccr[attrs.secure] = value;
-         break;
--    case 0xd24: /* System Handler Control.  */
--        s->vectors[ARMV7M_EXCP_MEM].active = (value & (1 << 0)) != 0;
--        s->vectors[ARMV7M_EXCP_BUS].active = (value & (1 << 1)) != 0;
--        s->vectors[ARMV7M_EXCP_USAGE].active = (value & (1 << 3)) != 0;
--        s->vectors[ARMV7M_EXCP_SVC].active = (value & (1 << 7)) != 0;
-+    case 0xd24: /* System Handler Control and State (SHCSR) */
-+        if (attrs.secure) {
-+            s->sec_vectors[ARMV7M_EXCP_MEM].active = (value & (1 << 0)) != 0;
-+            /* Secure HardFault active bit cannot be written */
-+            s->sec_vectors[ARMV7M_EXCP_USAGE].active = (value & (1 << 3)) != 0;
-+            s->sec_vectors[ARMV7M_EXCP_SVC].active = (value & (1 << 7)) != 0;
-+            s->sec_vectors[ARMV7M_EXCP_PENDSV].active =
-+                (value & (1 << 10)) != 0;
-+            s->sec_vectors[ARMV7M_EXCP_SYSTICK].active =
-+                (value & (1 << 11)) != 0;
-+            s->sec_vectors[ARMV7M_EXCP_USAGE].pending =
-+                (value & (1 << 12)) != 0;
-+            s->sec_vectors[ARMV7M_EXCP_MEM].pending = (value & (1 << 13)) != 0;
-+            s->sec_vectors[ARMV7M_EXCP_SVC].pending = (value & (1 << 15)) != 0;
-+            s->sec_vectors[ARMV7M_EXCP_MEM].enabled = (value & (1 << 16)) != 0;
-+            s->sec_vectors[ARMV7M_EXCP_BUS].enabled = (value & (1 << 17)) != 0;
-+            s->sec_vectors[ARMV7M_EXCP_USAGE].enabled =
-+                (value & (1 << 18)) != 0;
-+            /* SecureFault not banked, but RAZ/WI to NS */
-+            s->vectors[ARMV7M_EXCP_SECURE].active = (value & (1 << 4)) != 0;
-+            s->vectors[ARMV7M_EXCP_SECURE].enabled = (value & (1 << 19)) != 0;
-+            s->vectors[ARMV7M_EXCP_SECURE].pending = (value & (1 << 20)) != 0;
-+        } else {
-+            s->vectors[ARMV7M_EXCP_MEM].active = (value & (1 << 0)) != 0;
-+            if (arm_feature(&cpu->env, ARM_FEATURE_V8)) {
-+                /* HARDFAULTPENDED is not present in v7M */
-+                s->vectors[ARMV7M_EXCP_HARD].pending = (value & (1 << 21)) != 0;
-+            }
-+            s->vectors[ARMV7M_EXCP_USAGE].active = (value & (1 << 3)) != 0;
-+            s->vectors[ARMV7M_EXCP_SVC].active = (value & (1 << 7)) != 0;
-+            s->vectors[ARMV7M_EXCP_PENDSV].active = (value & (1 << 10)) != 0;
-+            s->vectors[ARMV7M_EXCP_SYSTICK].active = (value & (1 << 11)) != 0;
-+            s->vectors[ARMV7M_EXCP_USAGE].pending = (value & (1 << 12)) != 0;
-+            s->vectors[ARMV7M_EXCP_MEM].pending = (value & (1 << 13)) != 0;
-+            s->vectors[ARMV7M_EXCP_SVC].pending = (value & (1 << 15)) != 0;
-+            s->vectors[ARMV7M_EXCP_MEM].enabled = (value & (1 << 16)) != 0;
-+            s->vectors[ARMV7M_EXCP_USAGE].enabled = (value & (1 << 18)) != 0;
-+        }
-+        if (attrs.secure || (cpu->env.v7m.aircr & R_V7M_AIRCR_BFHFNMINS_MASK)) {
-+            s->vectors[ARMV7M_EXCP_BUS].active = (value & (1 << 1)) != 0;
-+            s->vectors[ARMV7M_EXCP_BUS].pending = (value & (1 << 14)) != 0;
-+            s->vectors[ARMV7M_EXCP_BUS].enabled = (value & (1 << 17)) != 0;
-+        }
-+        /* NMIACT can only be written if the write is of a zero, with
-+         * BFHFNMINS 1, and by the CPU in secure state via the NS alias.
-+         */
-+        if (!attrs.secure && cpu->env.v7m.secure &&
-+            (cpu->env.v7m.aircr & R_V7M_AIRCR_BFHFNMINS_MASK) &&
-+            (value & (1 << 5)) == 0) {
-+            s->vectors[ARMV7M_EXCP_NMI].active = 0;
-+        }
-+        /* HARDFAULTACT can only be written if the write is of a zero
-+         * to the non-secure HardFault state by the CPU in secure state.
-+         * The only case where we can be targeting the non-secure HF state
-+         * when in secure state is if this is a write via the NS alias
-+         * and BFHFNMINS is 1.
-+         */
-+        if (!attrs.secure && cpu->env.v7m.secure &&
-+            (cpu->env.v7m.aircr & R_V7M_AIRCR_BFHFNMINS_MASK) &&
-+            (value & (1 << 2)) == 0) {
-+            s->vectors[ARMV7M_EXCP_HARD].active = 0;
-+        }
-+
-+        /* TODO: this is RAZ/WI from NS if DEMCR.SDME is set */
-         s->vectors[ARMV7M_EXCP_DEBUG].active = (value & (1 << 8)) != 0;
--        s->vectors[ARMV7M_EXCP_PENDSV].active = (value & (1 << 10)) != 0;
--        s->vectors[ARMV7M_EXCP_SYSTICK].active = (value & (1 << 11)) != 0;
--        s->vectors[ARMV7M_EXCP_USAGE].pending = (value & (1 << 12)) != 0;
--        s->vectors[ARMV7M_EXCP_MEM].pending = (value & (1 << 13)) != 0;
--        s->vectors[ARMV7M_EXCP_BUS].pending = (value & (1 << 14)) != 0;
--        s->vectors[ARMV7M_EXCP_SVC].pending = (value & (1 << 15)) != 0;
--        s->vectors[ARMV7M_EXCP_MEM].enabled = (value & (1 << 16)) != 0;
--        s->vectors[ARMV7M_EXCP_BUS].enabled = (value & (1 << 17)) != 0;
--        s->vectors[ARMV7M_EXCP_USAGE].enabled = (value & (1 << 18)) != 0;
-         nvic_irq_update(s);
-         break;
-     case 0xd28: /* Configurable Fault Status.  */
--- 
-2.7.4
+On Tue, Sep 12, 2017 at 04:36:30PM +0100, Dr. David Alan Gilbert wrote:
+> * Thomas Huth (thuth@redhat.com) wrote:
+> > On 12.09.2017 16:46, Greg Kurz wrote:
+> > > On Tue, 12 Sep 2017 16:01:46 +0200
+> > > Laurent Vivier <lvivier@redhat.com> wrote:
+> > >=20
+> > >> Fix aarch64 and ppc when dump-guest-memory is
+> > >> used with none machine type and no CPU.
+> > >>
+> > >> The other machine types don't have the problem.
+> > >>
+> > >> Update test-hmp, to test none machine type
+> > >> with (2 MB) and without memory, and add a test
+> > >> to test dump-quest-memory without filter parameters
+> > >> (it needs the fix from Cornelia Huck to work)
+> > >>
+> > >> v3:
+> > >>   - remove blank line after a comment
+> > >>   - forbid memory dump when there is no CPU
+> > >>
+> > >=20
+> > > So in the end, we would forbid dump on aarch64 and
+> > > ppc, while it is allowed on i386... I don't really
+> > > care about which behavior is more appropriate but
+> > > I guess they should be consistent at least.
+> >=20
+> > It's kind of consistent: Allow it on architectures with fixed endianess,
+> > but disallow it on architectures without fixed endianess ;-)
+>=20
+> Another way to put it is that you can dump unless you need
+> information about the CPU.
+>=20
+> It also makes me wonder what happens on those CPUs that can
+> change their endianness dynamically.
 
+We already have code for that on ppc, we actually look in on the CPU's
+mode register at dump time to decide which.  Theoretically that could
+still be tricked, but in the almost-always case of boot an OS which
+sets the endianness then leaves it there, it should be fine.
+
+--=20
+David Gibson			| I'll have my music baroque, and my code
+david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
+				| _way_ _around_!
+http://www.ozlabs.org/~dgibson
+
+--phCU5ROyZO6kBE05
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAEBCAAdFiEEdfRlhq5hpmzETofcbDjKyiDZs5IFAlm4w2kACgkQbDjKyiDZ
+s5IbOBAAu1WdgmLUwkUkOXwdzzpdBYR9AIUZmRe0DATQhPWiaEBbDJxA70EtKRj2
+4+1AdvVzhP1oIcmVUr1sEy/WQHscccGJOrOT74G0Y5wdKfrnMd/0LiIIPHo2tDhz
+4R1xjSwGBm2zbk4EZN641y5op+9Ihv2ejKkIc6DengXh5+yjKbN42W4Wxa65U9Xc
+qsHvrVSEMbjejlA/2RDa01Ifc5p8pZ0tRgNZj3Lt4W6tmKkw55AjpAuptL2ITf0O
+ldSRWuxIXv703lX41jtZOv6VT4Et5SO0UUmirt52psEOvz/xjFOwL/hA6GNqAOPL
+/Iy24c6k4USugyvyRy/z8Z4ngkXZdJkl3HV75OldnTtZCYDSW1PhxIdvowNGXRnE
+UoHfuGs+jjpkzyKRBItHcgyxR0A2QP0dEWABxpsVIKW5Xpmg4yUIMcCR81YBMhPx
+jP4T6IfFcqSS1fSxXHYfGY0Ab81MtDvt1Ob53FVm2TtzS/0uN76PLzMZGDUYbnjz
+G1/56aBGZHlZBl+XzQgiSYhCBTCHnjTEWUCMssnC7MQbO4L1DleFRBrV8MwNqmm7
+/BSmCxTHPz2yWue789dFAXL4Mxm9wUqSGkUaEcWTWDBpS1VM83LA5vkqpQEXNwjz
+vj4xngANVrfyvznseUwDk9uhXLyBmAyP/dsIvEjU+b2wr8UYh2g=
+=Vapc
+-----END PGP SIGNATURE-----
+
+--phCU5ROyZO6kBE05--

@@ -1,144 +1,161 @@
-Received: by 10.223.172.38 with SMTP id v35csp991736wrc;
-        Thu, 14 Sep 2017 08:13:53 -0700 (PDT)
-X-Received: by 10.237.36.146 with SMTP id t18mr4590644qtc.17.1505402033696;
-        Thu, 14 Sep 2017 08:13:53 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1505402033; cv=none;
+Received: by 10.223.172.38 with SMTP id v35csp1208948wrc;
+        Thu, 14 Sep 2017 11:45:17 -0700 (PDT)
+X-Received: by 10.200.6.8 with SMTP id d8mr8107393qth.142.1505414717037;
+        Thu, 14 Sep 2017 11:45:17 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1505414717; cv=none;
         d=google.com; s=arc-20160816;
-        b=XgcbtptJ5Mg4GBsV/e8w7RscYllMxFHo6AGVeR2Ire3YfXbfswAtnOA+vvvVKphMhm
-         WO6CbdDjGKV8FaIGjg07DrQDr/RfNiQz4W5btmJ2nb96aexkUwc/DSedzXhYU+l64FDi
-         r3KptHq0/ygQPLwh/SpeVDGTw1H71wuFSJn/RHlV5i8yHPjCEzccRLH4vEH9PIiXQ6Zo
-         2dla8AA2R3NwTW8Ch/+947mE8ynQD7/2sbP0gBUJRh9CFdcknRKGvFBiNGV6qdOHa24D
-         p5xbEnpwIf1pYvke37CndHJ9oXqDT735sed5xM//P17PvXwlXFjcEo6/BJddh6P0Z9mg
-         27kA==
+        b=wtPTKxmOqbK8CVAjZ3EHFbSpqxvJlY2+WScPbxHsW+a99CbDu36w0OtsoWgkroTdPu
+         KY/qjJWSZq0snSIVXf65JYR+QyFsF1YhmCpARpzASfcp9jL/g21bKdlk8O25zO93V4hU
+         8DR19MWfo2WwQepUf5bv4fodqCa6bgfJPryvXCcV8ZWJrmUGbV60WeFrNelDplvLpu/A
+         hOm9EfBRQE4bPmpltVgO4unOmHFMKNiGP5zI2CBQ7bgWbizLEUD+kX1S2gx0imaju92W
+         apckqWQcaFhZ0/IfU23DtMzQu0RK2jbr+4WOa4YEKN4mqTItsEVwuaAV6LMhkkdIScWH
+         7ksA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
-         :references:in-reply-to:mime-version:dkim-signature
-         :arc-authentication-results;
-        bh=MnBgq3dbvrhTaM3o+0EaLymk7Cx1qq06EqJiwTo02Lg=;
-        b=lr4E6hAj/oIcFjlgCU/N9zoF7JDxo/r7iQeeaIEEvu41B+KpB4ohbgcUklwzZ3ngA3
-         cnb8tVkAbNl7BGSlVN71wLcG+i4+erPIe4YA5A140N8qOXxCCUKVsLnqd1pCSoxudVj0
-         SkPCPOivfqe2RxWY45w+hHo2RyEbAt8cAlfLeLdFY0pj2yIziqtd6NRJPrbJnbnwaijZ
-         z1DHAa+GZa0TbMS82xGF00wo/DgeVtaV5JY5oZqBChYT6HZRXmztAIswT8m5Unklncj4
-         NZbOPxxS14a3Ml30/iYVkxYVbKhB5ZzuTIeW4PodpidbZ3VLBClqIIjCxpWprrKAWHj5
-         FDAQ==
+         :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
+         :message-id:date:to:from:dkim-signature:arc-authentication-results;
+        bh=BJqyeQ0M3M1yn5ApG5bni6x3B5PmYk58/MJIa3Ocjvs=;
+        b=ya/Ml2wvqmMKpQJbWkE72YlWhi0nN1n+sSzbNPgqoqJ44nNymh4Jvz6yKfVCg8gfdR
+         uzdgPAija5AgRwSxoahNvzSVA0F13hh99XwCNSUlEWyxTOU05gfp0bsYwUndYfprqyNy
+         Ex0xEXF/Gkx5Ubi7vGLSV0CwvXzcvHjP0dQrl45X6q04v4ss5AdJXfQ69PeTrEAtzQ0w
+         vNyui4RViVmvONQg9Ac+lGWnPn43zD7akUoR7ZEvb88HqGZedV6fETk+KFmUl/rhOSje
+         3WP75mYo1T5IvekXzWxXculL4Ps+IqX16wiT/x237E3fHXYUQZG9/TBkfFuH0zr+rqTc
+         zv6A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=Rn7sKuhL;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dkim=fail header.i=@linaro.org header.s=google header.b=kffYuaSY;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id o42si18195845qta.496.2017.09.14.08.13.53
+        by mx.google.com with ESMTPS id q128si4749921qkb.499.2017.09.14.11.45.16
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 14 Sep 2017 08:13:53 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Thu, 14 Sep 2017 11:45:17 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=Rn7sKuhL;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dkim=fail header.i=@linaro.org header.s=google header.b=kffYuaSY;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:48351 helo=lists.gnu.org)
+Received: from localhost ([::1]:49499 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1dsVpv-0006sN-E8
-	for alex.bennee@linaro.org; Thu, 14 Sep 2017 11:13:51 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:32777)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1dsZ8U-0000uE-UM
+	for alex.bennee@linaro.org; Thu, 14 Sep 2017 14:45:14 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:49673)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1dsVir-0007wB-Nb
-	for qemu-arm@nongnu.org; Thu, 14 Sep 2017 11:06:37 -0400
+	(envelope-from <richard.henderson@linaro.org>) id 1dsYz3-0000Qd-9I
+	for qemu-devel@nongnu.org; Thu, 14 Sep 2017 14:35:31 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1dsViq-0003Zl-Lr
-	for qemu-arm@nongnu.org; Thu, 14 Sep 2017 11:06:33 -0400
-Received: from mail-wr0-x22a.google.com ([2a00:1450:400c:c0c::22a]:56223)
+	(envelope-from <richard.henderson@linaro.org>) id 1dsYz2-0000XY-Ec
+	for qemu-devel@nongnu.org; Thu, 14 Sep 2017 14:35:29 -0400
+Received: from mail-pg0-x232.google.com ([2607:f8b0:400e:c05::232]:49374)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1dsViq-0003Ym-Fi
-	for qemu-arm@nongnu.org; Thu, 14 Sep 2017 11:06:32 -0400
-Received: by mail-wr0-x22a.google.com with SMTP id l39so586005wrl.12
-	for <qemu-arm@nongnu.org>; Thu, 14 Sep 2017 08:06:32 -0700 (PDT)
+	(Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
+	id 1dsYz2-0000WA-6l
+	for qemu-devel@nongnu.org; Thu, 14 Sep 2017 14:35:28 -0400
+Received: by mail-pg0-x232.google.com with SMTP id m30so118660pgn.6
+	for <qemu-devel@nongnu.org>; Thu, 14 Sep 2017 11:35:28 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=MnBgq3dbvrhTaM3o+0EaLymk7Cx1qq06EqJiwTo02Lg=;
-	b=Rn7sKuhLBsTTjIlN4V+uOQW9cf3LuFA1jtnVnqWhOBDAVeQTWQC5Pgk8s/4Vu1zpgb
-	XGNUEnuupVkNOT1gZCGy50g1+zH/u04QqLiiQ9KefMvkl+A8bAKzA036BYApwa+scwoZ
-	rg/ssHjLMi+QG4Wbcv8q6peBffFAg+XUExByc=
+	h=from:to:cc:subject:date:message-id:in-reply-to:references;
+	bh=BJqyeQ0M3M1yn5ApG5bni6x3B5PmYk58/MJIa3Ocjvs=;
+	b=kffYuaSYGsKFT6OHxWW+QVw5wCI4nuTtRdVy0a6pXitTnortrYJGuT4NLdjYSXtoko
+	vW1m698y5I33NJH8MLtZLulw/NUvY2pSXK9ezvTYLtxI32+dxo7MQz8lXerC/UVrjaTw
+	Z/yuJdZ/J23MoQowcYwzlnwcDyllArI6WT82g=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=MnBgq3dbvrhTaM3o+0EaLymk7Cx1qq06EqJiwTo02Lg=;
-	b=sBBXdeXRlUXO1wMKPlyXwTpAihGEWLItFXq8hVI7mljbuLQLeehLp1liYguWtA/ODs
-	WUui5HlTq1lELTSd5Bhilir3VBy5f6q1CmRSrK2UUH4wDZlDQX6ItpoMOCoY7s1EClbT
-	P3SWZf7zi6aROiX3/PawtS+3y+8yy7TcfF8GQ7P6DMaW4d+RmpT+BWm6WQg87WOubE2V
-	BD+t4of6DnbjXZ88tZ6bSnoc3y/+GnhI8TZ26owc9TmbvbDQU4NoxDrGw3t2E3Vp76Mx
-	8XQ3A7HWvLN5GsRlYZhoBGVqW2J64WB20Rs2mIHQ+1VRlV1yPcRRxxqGHsvhlTaKZail
-	YOkQ==
-X-Gm-Message-State: AHPjjUhfQvpSK8dOVCIxoeOqgbWUAWlA3hfHIIncHy4Zxs3/iFFVXotG
-	sB4eRe6oq6JDanLteoFviMpHE/YPgXXDo07TsRNM2g==
-X-Google-Smtp-Source: ADKCNb4Bo2+vR3tI/SjuM23abup5yB/yZ/wxvLWwtzj+eszFYNNzjHvF+d8cd0oJmtxrNzU1R/dqrRmtBJIToLJ7jic=
-X-Received: by 10.223.142.82 with SMTP id n76mr21008889wrb.272.1505401591343; 
-	Thu, 14 Sep 2017 08:06:31 -0700 (PDT)
-MIME-Version: 1.0
-Received: by 10.223.139.215 with HTTP; Thu, 14 Sep 2017 08:06:10 -0700 (PDT)
-In-Reply-To: <1505296004-6798-1-git-send-email-eric.auger@redhat.com>
-References: <1505296004-6798-1-git-send-email-eric.auger@redhat.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 14 Sep 2017 16:06:10 +0100
-Message-ID: <CAFEAcA-=VeQ=B0h0e9Qd2rnGLoeZ2jaXuARcPXMBppX8WHhnUQ@mail.gmail.com>
-To: Eric Auger <eric.auger@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
+	h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+	:references;
+	bh=BJqyeQ0M3M1yn5ApG5bni6x3B5PmYk58/MJIa3Ocjvs=;
+	b=dhkB4+CFtfs7bSkI9B8xFQ5bi4guSW+vjGsnxsXAx+ja6gEcngQ7KGK3z/tI1b4keQ
+	0xu0XYN1GuE4BFTd1X4EoHe5jYy1GKfZHpsetJM2lV0FHNUGUfh7n/+fCO2XXGFwVC9D
+	jBpknFh3LooAPM1Wo1P2q5wyg98v3sNZ1s5w6EBT82QWO+f3yr6idj3GkLSLrDQWcJgo
+	Dchbez/YP1egdZdPsjmSR2KZ9eIhft7ujbn8nEzHy2GZxJ2dgByQK2+hl/ahky6MyC+W
+	gXxJftO//Ebk5e+qwB4VjHGd1VSYJyS9kCWkadijq7fKqCgcAOqN0eRL6VN1Gq67gFgs
+	3xQQ==
+X-Gm-Message-State: AHPjjUhQQfVPbKSVCA4g7bmQh0fiwEu152tc0TqohbKohx7hScFGfDCo
+	ck+QVsyHAXJX6A3CoaFsMA==
+X-Google-Smtp-Source: ADKCNb4pdpBAgYs+bv/J0F7I78qJ03qTMZs+mbSKzjiN49v32hDDGulORBTdCBenCasA2MXeJvNP5A==
+X-Received: by 10.98.11.214 with SMTP id 83mr22371354pfl.326.1505414127081;
+	Thu, 14 Sep 2017 11:35:27 -0700 (PDT)
+Received: from bigtime.twiddle.net (97-126-103-167.tukw.qwest.net.
+	[97.126.103.167]) by smtp.gmail.com with ESMTPSA id
+	l85sm32473848pfb.176.2017.09.14.11.35.25
+	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+	Thu, 14 Sep 2017 11:35:26 -0700 (PDT)
+From: Richard Henderson <richard.henderson@linaro.org>
+To: qemu-devel@nongnu.org
+Date: Thu, 14 Sep 2017 11:35:12 -0700
+Message-Id: <20170914183516.19537-7-richard.henderson@linaro.org>
+X-Mailer: git-send-email 2.13.5
+In-Reply-To: <20170914183516.19537-1-richard.henderson@linaro.org>
+References: <20170914183516.19537-1-richard.henderson@linaro.org>
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2a00:1450:400c:c0c::22a
-Subject: Re: [Qemu-arm] [PATCH v4 0/3] Generic PCIe host bridge INTx
- determination for INTx routing
-X-BeenThere: qemu-arm@nongnu.org
+X-Received-From: 2607:f8b0:400e:c05::232
+Subject: [Qemu-devel] [PATCH 06/10] target/arm: Support Capstone in
+ disas_set_info
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jones <drjones@redhat.com>, Alexander Graf <agraf@suse.de>,
-	QEMU Developers <qemu-devel@nongnu.org>,
-	Alex Williamson <alex.williamson@redhat.com>,
-	qemu-arm <qemu-arm@nongnu.org>,
-	Pranavkumar Sawargaonkar <pranavkumar@linaro.org>,
-	Christoffer Dall <christoffer.dall@linaro.org>, eric.auger.pro@gmail.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: WrOsdFfRj2jO
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: qemu-arm@nongnu.org
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: Hm/nP0h2BBs3
 
-On 13 September 2017 at 10:46, Eric Auger <eric.auger@redhat.com> wrote:
-> This series implements INTx to gsi routing for ARM VIRT/Gpex. This is
-> a respin of [1] which was lost in limbo.
->
-> ARM virt uses GPEX PCIe bridge. This latter does not implement INTx
-> to GSI routing. PCIe/INTx assignment works but the consequence is
-> irqfd is not used along with INTx interrupts and VFIO INTx handlers
-> are executed on userspace leading to an important performance degradation.
->
-> This issue is witnessed by the following messages;
->
-> qemu-system-aarch64: -device vfio-pci,host=0006:90:00.0: PCI: Bug -
-> unimplemented PCI INTx routing (gpex-pcihost)
-> qemu-system-aarch64: PCI: Bug - unimplemented PCI INTx routing (gpex-pcihost)
-> qemu-system-aarch64: PCI: Bug - unimplemented PCI INTx routing (gpex-pcihost)
->
-> So with this series, irqfd is set up for PCIe/INTx passthrough and we get
-> the optimal performance. Also we get rid of the above messages.
->
-> This series can be found at:
-> https://github.com/eauger/qemu/tree/v2.10.0-gpex-v4
->
-> References:
-> [1] Generic PCIe host bridge INTx determination for INTx routing
->    https://lists.gnu.org/archive/html/qemu-devel/2015-09/msg04975.html
+Cc: qemu-arm@nongnu.org
+Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+---
+ target/arm/cpu.c | 21 ++++++++++++++++++---
+ 1 file changed, 18 insertions(+), 3 deletions(-)
 
-Applied to target-arm.next, thanks.
+diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+index a1acce3c7a..92159ca0b1 100644
+--- a/target/arm/cpu.c
++++ b/target/arm/cpu.c
+@@ -33,6 +33,7 @@
+ #include "sysemu/sysemu.h"
+ #include "sysemu/hw_accel.h"
+ #include "kvm_arm.h"
++#include "disas/capstone.h"
+ 
+ static void arm_cpu_set_pc(CPUState *cs, vaddr value)
+ {
+@@ -476,10 +477,24 @@ static void arm_disas_set_info(CPUState *cpu, disassemble_info *info)
+ #if defined(CONFIG_ARM_A64_DIS)
+         info->print_insn = print_insn_arm_a64;
+ #endif
+-    } else if (env->thumb) {
+-        info->print_insn = print_insn_thumb1;
++        info->cap_arch = CS_ARCH_ARM64;
+     } else {
+-        info->print_insn = print_insn_arm;
++        int cap_mode;
++        if (env->thumb) {
++            info->print_insn = print_insn_thumb1;
++            cap_mode = CS_MODE_THUMB;
++        } else {
++            info->print_insn = print_insn_arm;
++            cap_mode = CS_MODE_ARM;
++        }
++        if (arm_feature(env, ARM_FEATURE_V8)) {
++            cap_mode |= CS_MODE_V8;
++        }
++        if (arm_feature(env, ARM_FEATURE_M)) {
++            cap_mode |= CS_MODE_MCLASS;
++        }
++        info->cap_arch = CS_ARCH_ARM;
++        info->cap_mode = cap_mode;
+     }
+     if (bswap_code(arm_sctlr_b(env))) {
+ #ifdef TARGET_WORDS_BIGENDIAN
+-- 
+2.13.5
 
--- PMM

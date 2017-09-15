@@ -1,101 +1,95 @@
-Received: by 10.223.172.38 with SMTP id v35csp344994wrc;
-        Thu, 14 Sep 2017 23:31:51 -0700 (PDT)
-X-Received: by 10.55.75.11 with SMTP id y11mr6154510qka.96.1505457110993;
-        Thu, 14 Sep 2017 23:31:50 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1505457110; cv=none;
+Received: by 10.223.172.38 with SMTP id v35csp384467wrc;
+        Fri, 15 Sep 2017 00:24:24 -0700 (PDT)
+X-Google-Smtp-Source: AOwi7QAtFzGruqHBoB51HuOE+BxP9OYSzIY6y+N1odw/2r33GEwO+4uqN6Rdhqe5QC1qgqUk17NS
+X-Received: by 10.200.22.21 with SMTP id p21mr34042924qtj.104.1505460264813;
+        Fri, 15 Sep 2017 00:24:24 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1505460264; cv=none;
         d=google.com; s=arc-20160816;
-        b=WMZT2MlxtJQZMImk5gn8fMJ1YoJ45ZzZD1dteleML8+gWSswJ8B08qw8Werjw9xoFm
-         PHXfyfSnguOC6wriiaaMsbIcYMSMOdJPc8qqklZrXbXR/80jcY6U43wFCsIsraBprLWt
-         q5w/k+LWTz2u2ZgIzUbph5IPKMSTR7Rgr9MMXXqqRMO7mPGCdyhBmd1hEG1ixonfjcNM
-         JOGfyl/Ej3QyOwK2RoPmJ8uwwzLxTeeKbBECOa5RwWppFcKsXPbwajnP82p8h9NE/Ix5
-         DS+2Z7e9jgnr+bPJHVQ2PE7+FyR79Z6ji3uNeJIcfDqf/Zsn6naFXjKn/61HyiN/eOD4
-         KKNA==
+        b=Ue1C4RH5a+ONrQD9GHX5dOgRVhi1hUajb4C5aJfip8uQA2aOFY6reUHzevFHnNzxkf
+         QqTdPHEG6uQfvhd8qI1G/l9BRJcKlr7f483JZSovnxHlMu5Di83l6Gn+34tLKothHED6
+         1WyLujfcE+MtxTnvCfq1norL0tZUq2f2XYgY3BamKDRQ/dsZM0IxRBh1xeYMCuhtQAJ2
+         24rEQovrCid+MY2DEtLL/Nr/AL0GCVB8duXCPkIHszmKT+IMc+fYcjTImfT2vTzp/f57
+         xYwAiN2TImlJrEgmylvs0gg62ZzMh3NB6urtb6zQjTqMJCIAsivL7UO1HUj8VlqY6S06
+         J21w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
-         :references:in-reply-to:mime-version:dkim-signature
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:dmarc-filter
          :arc-authentication-results;
-        bh=sX0eqCHU1joHRIpmkEEodvvF2uJDIoMJkagmscqWRtw=;
-        b=huLXclCmaZnzOOvUSUDOnyhYRlUoXs0yqLfGJ63IGOEqhNzRn+PhqFjvhMsVt4S5gG
-         3yxsTpGFKm3yklVwIjmCzcAbkSV7X4OHbFBUxg/gur8kFAHRDlCCw79DtechmXUTwbaW
-         BaqixpXzOh9sNdIez/SRJ9TMceH7SlWlTR50K5X9v2sUKDnPbmG1h/nKG/7W0nofj9iM
-         iYYuO3EfPV6jirIwA4yVAfy1Ih5z6jhaBl09qBW8LCkf9Scz+GBGpWQ/ejD0HsaIohZv
-         JYtYRiJvzv3XNnV+KOs4MAf/ggo8bNcPtc9sYdTMSKBAwWSw2gil/glfpECFpl/i1CNB
-         rrdw==
+        bh=bM5ySdbS0/5ztm6CQZLoQlFKY+iCtelscOI37gsZeHA=;
+        b=r0JS0pqi7Hv/WSMPQYecWpIzOj3GxUpJUGJF5e3sGSkRNJjm5+9XTJSd7QzGd0zuRS
+         u1dY97p5r8HFl+IEd3JbSu1cglh53zPoxkY8PMdPWvVw+odWwVwri4gtO+NrnnNQ8W7b
+         lE9hrfbKe4iZuKDyJAVUIZrFzV5dMbj1RSZX7EdkbG8ZRaaKFsxUSkbokY/hyWru/uQ7
+         ZtvMhn6qOUjwq1D07oDK8CPV9waeZOeen3Vjg3IMgydkbMvl0JiLj+o4FqBIjNmiL1Sv
+         LoojYA5QtFGw11KMQ2iEXpYZc21a7QTi0J4+KDUHXzL3DCSX60fzIk0YHvtQEXhjxnMF
+         nMeA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=bksKvdBE;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id r200si222303qke.224.2017.09.14.23.31.50
+        by mx.google.com with ESMTPS id c9si325897qkh.398.2017.09.15.00.24.24
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 14 Sep 2017 23:31:50 -0700 (PDT)
+        Fri, 15 Sep 2017 00:24:24 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=bksKvdBE;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:51551 helo=lists.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:51720 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1dskAG-0007tW-Ln
-	for alex.bennee@linaro.org; Fri, 15 Sep 2017 02:31:48 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:59977)
+	id 1dskz8-0007hR-JD
+	for alex.bennee@linaro.org; Fri, 15 Sep 2017 03:24:22 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:45335)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <sundeep.lkml@gmail.com>) id 1dskA5-0007rP-TO
-	for qemu-arm@nongnu.org; Fri, 15 Sep 2017 02:31:38 -0400
+	(envelope-from <eric.auger@redhat.com>) id 1dskz1-0007f3-Np
+	for qemu-arm@nongnu.org; Fri, 15 Sep 2017 03:24:16 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <sundeep.lkml@gmail.com>) id 1dskA5-0003hu-0K
-	for qemu-arm@nongnu.org; Fri, 15 Sep 2017 02:31:37 -0400
-Received: from mail-vk0-x243.google.com ([2607:f8b0:400c:c05::243]:38138)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <sundeep.lkml@gmail.com>)
-	id 1dskA2-0003f6-7v; Fri, 15 Sep 2017 02:31:34 -0400
-Received: by mail-vk0-x243.google.com with SMTP id o22so359766vke.5;
-	Thu, 14 Sep 2017 23:31:34 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=sX0eqCHU1joHRIpmkEEodvvF2uJDIoMJkagmscqWRtw=;
-	b=bksKvdBEdkpcEgxzbpCVw/+SyjlndGrxjwQ4AiS2TCGSOVH1Sz8NmRiW6g62i2/VMc
-	/q3Z1+UbV3G5MLg1FDXiuzuIvmY5LcwHAX2o4nVRjTrnKRmF+mlam+8jRvffUh2eOs9m
-	pjZPHrePS95KEF1KAStDN/mD2usmpGyukSYHbJqb18ZUV0m1Nl4ZTcd6N3aDwQtdW/rw
-	QiYckF1dFSDOEkj6oChL7t3WsxPlh0ZBZ0Pq8t1rrAO4v0ZQgQ9quNOE+pbOAVVd6pIJ
-	VrscY7kbExjBhs2X5HEYNS03uoFjVSRlqIK1aqvh7h5TPMc2phAF9DXr2Vu6KVmykE6E
-	2+TA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=sX0eqCHU1joHRIpmkEEodvvF2uJDIoMJkagmscqWRtw=;
-	b=tkIgvaE8ZdKR+63un3Onb+eMNWYnwFbQ61Z+2UlQfUuisJ12f347S1iaA/KZQ382ng
-	n4UQFHufgA52yY3Ubrr+3Q4Ypxm3Ia/j4kxbT3ndEYhCpTOjv+N18zmUqOkCwO3M/4Ej
-	wIlFpCii0gkWXq//DveVqCPL2tYlfJSSiRdx6z++AqdlPuGSYQivyPbCnKmx84e7crf6
-	GAhcVAWAhkmXa2tHLUVMvSfTS3OKz3MiXPPkpQHG38hi9LcwMcOb9tGSKZyWnaE8qi2K
-	M2fQFCocccCyWOMb6IpaA7GsZSBH93Eg9FM2oNfOVi/7Ho3uS7T5Qrbt+VrQUjSn2C3U
-	anTQ==
-X-Gm-Message-State: AHPjjUgwIsbaIvwBbN7/FgZ0PsrXhJ64I4N2MO9F6zbyw4p85KHuX4Ro
-	8DiEwoYieQE0d61EmZwlACZrwjXuXTlk5kmrTzw=
-X-Google-Smtp-Source: AOwi7QBUsMg8PCDNrK/xBVKMIGr5KzyVpH6dZ7rRGFccF9Epgc3NFNyPz1l3DuzYyXoErAcYOnTMIp1lULUHPYZlgW4=
-X-Received: by 10.31.181.200 with SMTP id e191mr14981350vkf.55.1505457093508; 
-	Thu, 14 Sep 2017 23:31:33 -0700 (PDT)
+	(envelope-from <eric.auger@redhat.com>) id 1dskyy-0006QS-IA
+	for qemu-arm@nongnu.org; Fri, 15 Sep 2017 03:24:15 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:25780)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <eric.auger@redhat.com>)
+	id 1dskyy-0006Pu-7x; Fri, 15 Sep 2017 03:24:12 -0400
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+	[10.5.11.13])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 537F9C0587C7;
+	Fri, 15 Sep 2017 07:24:10 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 537F9C0587C7
+Authentication-Results: ext-mx08.extmail.prod.ext.phx2.redhat.com;
+	dmarc=none (p=none dis=none) header.from=redhat.com
+Authentication-Results: ext-mx08.extmail.prod.ext.phx2.redhat.com;
+	spf=fail smtp.mailfrom=eric.auger@redhat.com
+Received: from localhost.localdomain (ovpn-116-217.ams2.redhat.com
+	[10.36.116.217])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 5F9BE7AA71;
+	Fri, 15 Sep 2017 07:23:59 +0000 (UTC)
+To: Linu Cherian <linuc.decode@gmail.com>
+References: <1504286483-23327-1-git-send-email-eric.auger@redhat.com>
+	<1504286483-23327-14-git-send-email-eric.auger@redhat.com>
+	<20170914092751.GA3336@virtx40>
+From: Auger Eric <eric.auger@redhat.com>
+Message-ID: <403a9798-fed2-671f-fc6e-7cc0fd53c90c@redhat.com>
+Date: Fri, 15 Sep 2017 09:23:57 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
+	Thunderbird/45.4.0
 MIME-Version: 1.0
-Received: by 10.176.66.68 with HTTP; Thu, 14 Sep 2017 23:31:33 -0700 (PDT)
-In-Reply-To: <CAFEAcA_D=4M2vyo4m2xPi_hFDCmoKHk5kLY3s1ota602ywgHTQ@mail.gmail.com>
-References: <1504812251-23438-1-git-send-email-sundeep.lkml@gmail.com>
-	<1504812251-23438-6-git-send-email-sundeep.lkml@gmail.com>
-	<CAFEAcA_D=4M2vyo4m2xPi_hFDCmoKHk5kLY3s1ota602ywgHTQ@mail.gmail.com>
-From: sundeep subbaraya <sundeep.lkml@gmail.com>
-Date: Fri, 15 Sep 2017 12:01:33 +0530
-Message-ID: <CALHRZuoviT4xbYLVWPybVTkASZquxhcQU=h4+YC1KK=1SW=VWQ@mail.gmail.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Content-Type: multipart/alternative; boundary="001a114398c04882aa0559348bdd"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:400c:c05::243
-Subject: Re: [Qemu-arm] [Qemu devel v8 PATCH 5/5] msf2: Add Emcraft's
- Smartfusion2 SOM kit
+In-Reply-To: <20170914092751.GA3336@virtx40>
+Content-Type: text/plain; charset=windows-1252
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.32]);
+	Fri, 15 Sep 2017 07:24:10 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v7 13/20] hw/arm/smmuv3:
+ Implement IOMMU memory region replay callback
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -107,96 +101,119 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Alistair Francis <alistair23@gmail.com>,
-	=?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>,
-	qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
+Cc: peter.maydell@linaro.org, drjones@redhat.com, tcain@qti.qualcomm.com,
+	Radha.Chintakuntla@cavium.com, Sunil.Goutham@cavium.com,
+	mohun106@gmail.com, jean-philippe.brucker@arm.com,
+	tn@semihalf.com, mst@redhat.com, will.deacon@arm.com,
+	qemu-devel@nongnu.org, peterx@redhat.com,
+	alex.williamson@redhat.com, qemu-arm@nongnu.org,
+	prem.mallappa@gmail.com, linu.cherian@cavium.com,
+	robin.murphy@arm.com, eric.auger.pro@gmail.com,
+	bharat.bhushan@nxp.com, christoffer.dall@linaro.org, wtownsen@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: v86VC/A4oH66
+X-TUID: Me49ZSh31XiN
 
---001a114398c04882aa0559348bdd
-Content-Type: text/plain; charset="UTF-8"
+Hi Linu,
 
-Hi Peter,
+On 14/09/2017 11:27, Linu Cherian wrote:
+> Hi Eric,
+> 
+> On Fri Sep 01, 2017 at 07:21:16PM +0200, Eric Auger wrote:
+>> memory_region_iommu_replay() is used for VFIO integration.
+>>
+>> However its default implementation is not adapted to SMMUv3
+>> IOMMU memory region. Indeed the input address range is too
+>> huge and its execution is too slow as it calls the translate()
+>> callback on each granule.
+>>
+>> Let's implement the replay callback which hierarchically walk
+>> over the page table structure and notify only the segments
+>> that are populated with valid entries.
+>>
+>> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+>> ---
+>>  hw/arm/smmuv3.c     | 36 ++++++++++++++++++++++++++++++++++++
+>>  hw/arm/trace-events |  1 +
+>>  2 files changed, 37 insertions(+)
+>>
+>> diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
+>> index 8e7d10d..c43bd93 100644
+>> --- a/hw/arm/smmuv3.c
+>> +++ b/hw/arm/smmuv3.c
+>> @@ -657,6 +657,41 @@ static int smmuv3_notify_entry(IOMMUTLBEntry *entry, void *private)
+>>      return 0;
+>>  }
+>>  
+>> +/* Unmap the whole notifier's range */
+>> +static void smmuv3_unmap_notifier_range(IOMMUNotifier *n)
+>> +{
+>> +    IOMMUTLBEntry entry;
+>> +    hwaddr size = n->end - n->start + 1;
+>> +
+>> +    entry.target_as = &address_space_memory;
+>> +    entry.iova = n->start & ~(size - 1);
+>> +    entry.perm = IOMMU_NONE;
+>> +    entry.addr_mask = size - 1;
+>> +
+>> +    memory_region_notify_one(n, &entry);
+>> +}
+>> +
+>> +static void smmuv3_replay(IOMMUMemoryRegion *mr, IOMMUNotifier *n)
+>> +{
+>> +    SMMUTransCfg cfg = {};
+>> +    int ret;
+>> +
+>> +    trace_smmuv3_replay(mr->parent_obj.name, n, n->start, n->end);
+>> +    smmuv3_unmap_notifier_range(n);
+>> +
+>> +    ret = smmuv3_decode_config(mr, &cfg);
+>> +    if (ret) {
+>> +        error_report("%s error decoding the configuration for iommu mr=%s",
+>> +                     __func__, mr->parent_obj.name);
+>> +    }
+>>
+> 
+> On an invalid config being found, shouldnt we return rather than proceeding with
+> page table walk. For example on an invalid Stream table entry.
+Yes that's correct. I am going to fix that.
 
-On Thu, Sep 14, 2017 at 10:44 PM, Peter Maydell <peter.maydell@linaro.org>
-wrote:
+Thanks!
 
-> On 7 September 2017 at 20:24, Subbaraya Sundeep <sundeep.lkml@gmail.com>
-> wrote:
-> > Emulated Emcraft's Smartfusion2 System On Module starter
-> > kit.
-> > +static void emcraft_sf2_machine_init(MachineClass *mc)
-> > +{
-> > +    mc->desc = "SmartFusion2 SOM kit from Emcraft (M2S010)";
-> > +    mc->init = emcraft_sf2_s2s010_init;
-> > +    mc->ignore_memory_transaction_failures = true;
->
-> Please don't set ignore_memory_transaction_failures in new boards.
-> This is a legacy-old-code-only flag.
->
-> New boards should define enough devices, either properly
-> or using create_unimplemented_device(), to make whatever code
-> they're being tested against run.
->
-> This is a firm requirement for this code to go into master,
-> because once we let a board in with the flag set it's almost
-> impossible to clear it because we don't know what guest
-> code that previously worked on the board will now break.
->
-
-Ok. I am working on it and will send next spin with this fix.
-
-Thanks,
-Sundeep
-
-
-> thanks
-> -- PMM
->
-
---001a114398c04882aa0559348bdd
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr">Hi Peter,<div class=3D"gmail_extra"><br><div class=3D"gmai=
-l_quote">On Thu, Sep 14, 2017 at 10:44 PM, Peter Maydell <span dir=3D"ltr">=
-&lt;<a href=3D"mailto:peter.maydell@linaro.org" target=3D"_blank">peter.may=
-dell@linaro.org</a>&gt;</span> wrote:<br><blockquote class=3D"gmail_quote" =
-style=3D"margin:0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex"><sp=
-an class=3D"">On 7 September 2017 at 20:24, Subbaraya Sundeep &lt;<a href=
-=3D"mailto:sundeep.lkml@gmail.com">sundeep.lkml@gmail.com</a>&gt; wrote:<br=
->
-&gt; Emulated Emcraft&#39;s Smartfusion2 System On Module starter<br>
-&gt; kit.<br>
-</span><span class=3D"">&gt; +static void emcraft_sf2_machine_init(<wbr>Mac=
-hineClass *mc)<br>
-&gt; +{<br>
-&gt; +=C2=A0 =C2=A0 mc-&gt;desc =3D &quot;SmartFusion2 SOM kit from Emcraft=
- (M2S010)&quot;;<br>
-&gt; +=C2=A0 =C2=A0 mc-&gt;init =3D emcraft_sf2_s2s010_init;<br>
-&gt; +=C2=A0 =C2=A0 mc-&gt;ignore_memory_transaction_<wbr>failures =3D true=
-;<br>
-<br>
-</span>Please don&#39;t set ignore_memory_transaction_<wbr>failures in new =
-boards.<br>
-This is a legacy-old-code-only flag.<br>
-<br>
-New boards should define enough devices, either properly<br>
-or using create_unimplemented_device(), to make whatever code<br>
-they&#39;re being tested against run.<br>
-<br>
-This is a firm requirement for this code to go into master,<br>
-because once we let a board in with the flag set it&#39;s almost<br>
-impossible to clear it because we don&#39;t know what guest<br>
-code that previously worked on the board will now break.<br></blockquote><d=
-iv><br></div><div>Ok. I am working on it and will send next spin with this =
-fix.</div><div>=C2=A0</div><div>Thanks,</div><div>Sundeep</div><div><br></d=
-iv><blockquote class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border-left=
-:1px #ccc solid;padding-left:1ex">
-<br>
-thanks<br>
--- PMM<br>
-</blockquote></div><br></div></div>
-
---001a114398c04882aa0559348bdd--
+Eric
+> 
+> +
+>> +    if (cfg.disabled || cfg.bypassed) {
+>> +        return;
+>> +    }
+>> +    /* walk the page tables and replay valid entries */
+>> +    smmu_page_walk(&cfg, 0, (1ULL << (64 - cfg.tsz)) - 1, false,
+>> +                   smmuv3_notify_entry, n);
+>> +}
+>>  static void smmuv3_notify_iova_range(IOMMUMemoryRegion *mr, IOMMUNotifier *n,
+>>                                       uint64_t iova, size_t size)
+>>  {
+>> @@ -1095,6 +1130,7 @@ static void smmuv3_iommu_memory_region_class_init(ObjectClass *klass,
+>>  
+>>      imrc->translate = smmuv3_translate;
+>>      imrc->notify_flag_changed = smmuv3_notify_flag_changed;
+>> +    imrc->replay = smmuv3_replay;
+>>  }
+>>  
+>>  static const TypeInfo smmuv3_type_info = {
+>> diff --git a/hw/arm/trace-events b/hw/arm/trace-events
+>> index 4ac264d..15f84d6 100644
+>> --- a/hw/arm/trace-events
+>> +++ b/hw/arm/trace-events
+>> @@ -46,5 +46,6 @@ smmuv3_cfg_stage(int s, uint32_t oas, uint32_t tsz, uint64_t ttbr, bool aa64, ui
+>>  smmuv3_notify_flag_add(const char *iommu) "ADD SMMUNotifier node for iommu mr=%s"
+>>  smmuv3_notify_flag_del(const char *iommu) "DEL SMMUNotifier node for iommu mr=%s"
+>>  smmuv3_replay_mr(const char *name) "iommu mr=%s"
+>> +smmuv3_replay(const char *name, void *n, hwaddr start, hwaddr end) "iommu mr=%s notifier=%p [0x%"PRIx64",0x%"PRIx64"]"
+>>  smmuv3_notify_entry(hwaddr iova, hwaddr pa, hwaddr mask, int perm) "iova=0x%"PRIx64" pa=0x%" PRIx64" mask=0x%"PRIx64" perm=%d"
+>>  smmuv3_notify_iova_range(const char *name, uint64_t iova, size_t size, void *n) "iommu mr=%s iova=0x%"PRIx64" size=0x%lx n=%p"
+>> -- 
+>> 2.5.5
+>>
+>>
+> 

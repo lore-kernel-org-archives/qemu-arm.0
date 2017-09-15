@@ -1,101 +1,105 @@
-Received: by 10.223.172.38 with SMTP id v35csp804521wrc;
-        Fri, 15 Sep 2017 07:51:17 -0700 (PDT)
-X-Google-Smtp-Source: AOwi7QDFVBbdgJ5S3jZdfJtsxGYP7PmVRuhOjPb+MuIUw5IiTGLpFTmUuf1APm/0YrXunUwoAhfJ
-X-Received: by 10.55.113.67 with SMTP id m64mr5056435qkc.51.1505487077224;
-        Fri, 15 Sep 2017 07:51:17 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1505487077; cv=none;
+Received: by 10.223.172.38 with SMTP id v35csp945465wrc;
+        Fri, 15 Sep 2017 09:59:49 -0700 (PDT)
+X-Received: by 10.237.62.176 with SMTP id n45mr35760373qtf.302.1505494788858;
+        Fri, 15 Sep 2017 09:59:48 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1505494788; cv=none;
         d=google.com; s=arc-20160816;
-        b=bqmiSlpiIIM/kLzQaWJna4T4U9yoZbxOlIzAE9sAJpqATYYI1wMNaRWgRDLDxOGXXr
-         JauNrKyoFg3nkbBQmsn705bX3SCBmhNgOFwy4Z3yT5wB9U1fLpmYYXq1W0dkFQK5y3A+
-         rRlE2uKzfQZj4FaihqcOLlM/VpmdvkUK7ntMdfUmKwAWtdv7Z5e8/pRcM38TBaYTaUKF
-         S27ywVqreNVcdl4iGQJ00SDhhxdfvZpJkE1VKOfSw/nNX9B74RoLBgyuz6SJyeCuxhal
-         Qt3kl5JKLVTwFupJdct517hK0oPIOznZNZFvil7BYTqVgPlUd9v7sfr9mMpM1sPL5hSI
-         3agw==
+        b=hT0HLJDL0qs0gDZG2JEpS6UnsqEtMGqTdFxGAyxqBHs3gXk0+gl+hR6Wk03T2ptO2Y
+         N7wiuLtPlbsy1K9kBVg6XS0ih3rzy5MCjqSs5VbaiscjvKPRQd8wbD0K7p24LdRzlNev
+         92Ku+uhrNJ6PC7rqSywMxU6DPrefzLVyR26PVZJk7SWkvKLLJjG79+uOMbq/8SKBwD+F
+         gLI9sQs6MvqKyE5dxoM9jaa38+dXTO446uaoOkOXoNViQP/b/WGG4FKIAoC3DDrJ2Zrc
+         /Y42ei7Sj8dfsy0ZwXGd40ga0nyaWR6OZatPaPRzfvwmN6gnD/g2ROVZEjNaq/R56hj1
+         4aiQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:dmarc-filter
-         :arc-authentication-results;
-        bh=q+5OZX4jSRAdxE2xmsVEzE9VZ05UirrFs97J7tuyqMA=;
-        b=z5MkLHw4APf6402N5BshmpBirTMBfkVewQJk/+CfM/J3FWKgJHDSpulbasj5KmftBg
-         7OIQWpmriGQf5P6tyo/hjht+1UXJKEVp7xqbaHLFoP+2ZJ3OTmnVS3G0dHZaoGtbuUZZ
-         NK4m7Nszft3oUtoDtRj4XdJdsYlVFXwZhEH0r+z9sytSNW732WPWL9po7WbwJPVHuvzY
-         e6V3Mqu/1eNonJZdu0QkWspk9tbKyTlKWqigs6n0r3jajjLUrirw2XRp2d+ByXUpAZhj
-         vWOXt0hHl/LHYGefLcNxtFbFShsoSdk5H0sgTED4k+BiKUPxQElydKh9JyG6XpiXM/JW
-         Q9NA==
+         :content-transfer-encoding:mime-version:message-id:date:to:from
+         :dkim-signature:arc-authentication-results;
+        bh=Xi6Kr8c339VXNEMa+l7BMRn3pc3+reYk7v8xWJnIBp4=;
+        b=kh46FSDdpCmtztdpOI7BIpyeDgFAzPHm9IuSOjSnqeL+EJ+ivO+jh/JjXg7CfWX0q2
+         aYZDoiHp5jhKi0oWtP20Wgyssn6Sb8TVqH1UYRCdpDgO8IVa7zMDOEzcUzn6G4nUWdVn
+         0TVF76mNC3E8vMlvQMKUMOep7IU2zgPodwqapJYIOLM/rZF2acKpvumX8WaRJSApj1bV
+         bmW7q7I3VDwsu2oMZz9kXBy4fSRXlhWNLwRZjY4gczVnqv2C5lPcryVl75qDq7LWcE1T
+         O497AUoOoZcWNWtxA/xvdbl1uhKsG316cOXRP9rhKVcvvFMKxKhALsD5sLKqUKG+J9mN
+         Xg6w==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=EMM8TwPY;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id w36si1108343qtd.392.2017.09.15.07.51.16
+        by mx.google.com with ESMTPS id p51si1371266qtj.477.2017.09.15.09.59.48
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 15 Sep 2017 07:51:17 -0700 (PDT)
+        Fri, 15 Sep 2017 09:59:48 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=EMM8TwPY;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:53695 helo=lists.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:54269 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1dsrxb-0003Mp-14
-	for alex.bennee@linaro.org; Fri, 15 Sep 2017 10:51:15 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:39901)
+	id 1dstxy-0005NZ-Ih
+	for alex.bennee@linaro.org; Fri, 15 Sep 2017 12:59:46 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:49896)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1dsrxU-0003LU-3g
-	for qemu-arm@nongnu.org; Fri, 15 Sep 2017 10:51:09 -0400
+	(envelope-from <sundeep.lkml@gmail.com>) id 1dstxo-0005Ls-7I
+	for qemu-arm@nongnu.org; Fri, 15 Sep 2017 12:59:37 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1dsrxR-0002kN-0p
-	for qemu-arm@nongnu.org; Fri, 15 Sep 2017 10:51:08 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:52730)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <eric.auger@redhat.com>)
-	id 1dsrxQ-0002k2-Np; Fri, 15 Sep 2017 10:51:04 -0400
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
-	[10.5.11.16])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 38D5961472;
-	Fri, 15 Sep 2017 14:51:03 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 38D5961472
-Authentication-Results: ext-mx10.extmail.prod.ext.phx2.redhat.com;
-	dmarc=none (p=none dis=none) header.from=redhat.com
-Authentication-Results: ext-mx10.extmail.prod.ext.phx2.redhat.com;
-	spf=fail smtp.mailfrom=eric.auger@redhat.com
-Received: from localhost.localdomain (ovpn-116-197.ams2.redhat.com
-	[10.36.116.197])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 6F0D571C95;
-	Fri, 15 Sep 2017 14:50:49 +0000 (UTC)
-To: tn <Tomasz.Nowicki@caviumnetworks.com>,
-	Tomasz Nowicki <tnowicki@caviumnetworks.com>,
-	Linu Cherian <linuc.decode@gmail.com>
-References: <1504286483-23327-1-git-send-email-eric.auger@redhat.com>
-	<1504286483-23327-14-git-send-email-eric.auger@redhat.com>
-	<20170914092751.GA3336@virtx40>
-	<4dbbccae-64e1-f4ac-4dcc-3abd9766f324@caviumnetworks.com>
-	<795d99ba-e492-04ce-dda4-709682baf6cd@caviumnetworks.com>
-	<4f9fc697-9e6c-5dd7-65c7-92326135aa56@redhat.com>
-	<MWHPR0701MB3660656E62CF668F057621A7F36C0@MWHPR0701MB3660.namprd07.prod.outlook.com>
-From: Auger Eric <eric.auger@redhat.com>
-Message-ID: <64e946b3-8fb6-b918-e389-1a01c084fb47@redhat.com>
-Date: Fri, 15 Sep 2017 16:50:47 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
-	Thunderbird/45.4.0
+	(envelope-from <sundeep.lkml@gmail.com>) id 1dstxn-00041I-11
+	for qemu-arm@nongnu.org; Fri, 15 Sep 2017 12:59:36 -0400
+Received: from mail-pg0-x241.google.com ([2607:f8b0:400e:c05::241]:34730)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <sundeep.lkml@gmail.com>)
+	id 1dstxi-0003yH-2L; Fri, 15 Sep 2017 12:59:30 -0400
+Received: by mail-pg0-x241.google.com with SMTP id v82so1610107pgb.1;
+	Fri, 15 Sep 2017 09:59:28 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=from:to:cc:subject:date:message-id:mime-version
+	:content-transfer-encoding;
+	bh=Xi6Kr8c339VXNEMa+l7BMRn3pc3+reYk7v8xWJnIBp4=;
+	b=EMM8TwPYsSQ7Ns7SMnxQP+vHnxSH7ZNEwp3LlRzBpMWUffjob3rw7Lm+3REhrPxCS9
+	wmBkhGREympvHOXVbXjHC8j+1DrlOErOx6uyJJemoJVHFyVHqP1yyocY7EET6fuvTzNy
+	UBRIyuUBG8rxJ/DVFp+7m9QXA9moFt4/Ujcwyy/s18x46gDKhyGmpdfUlCTl1ch8DPsE
+	MY7oeIf8u6UBIFP2WjVJyD/j6ySf8o3qkyRyUPRu8z5cM60ATal35OjeQ3UKsqWg+uSb
+	FSKek5X+9uvbeR5CVyXioOrh2b+upcBzfU+QG+YeUoVvLMFWzWKvWSC8AUDvEP8cqUV3
+	+8cw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+	:content-transfer-encoding;
+	bh=Xi6Kr8c339VXNEMa+l7BMRn3pc3+reYk7v8xWJnIBp4=;
+	b=kPQGhMhSzHrx2NqP3UZDWUqyPrGUu4TshHVfjgThEtzcTldFcr90t/Waky/+Rs1Zd/
+	QD3AelQs0NgXPxqSxMAw/OP0tmKIHU4chyObfiplfeHTkunThrZFcKDC7VhcgY5sgZla
+	GgCrfj30itTqvIS/ilR0xUvi4DbAPT29WRLlxib9FbdKVp2ZdJptr0JacCRE4fuJKlSc
+	caE7VRWDGelH+Ng5REbvox+3AEY8YWxuoBcZ7sv68lj5Os9Z4iUviCa85euc1TGZi+Hl
+	Vx3FCIqkC5ULQXVBthKDknism0LDeoW81bC4l+MAhuYq2HgfYN3FqWim7Z5fp8/jRjJ3
+	Su0w==
+X-Gm-Message-State: AHPjjUhvXY2fIDwNDPal1jcU2CQef+5C8CHrVPpo9rCKDb2ZaNPm5fNM
+	+H1J1Ouz60jDEDAY
+X-Google-Smtp-Source: ADKCNb52LJffXfsjWTd7If+PUtHmbxjc6KAJFoQWLTyEwll4M0UUjCqwK7Ws5buxqBdEDdv8zyC41g==
+X-Received: by 10.98.62.131 with SMTP id y3mr24477661pfj.178.1505494767348;
+	Fri, 15 Sep 2017 09:59:27 -0700 (PDT)
+Received: from localhost.localdomain ([124.123.70.3])
+	by smtp.gmail.com with ESMTPSA id
+	s17sm3111350pgq.25.2017.09.15.09.59.24
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+	Fri, 15 Sep 2017 09:59:26 -0700 (PDT)
+From: Subbaraya Sundeep <sundeep.lkml@gmail.com>
+To: qemu-devel@nongnu.org,
+	qemu-arm@nongnu.org
+Date: Fri, 15 Sep 2017 22:29:08 +0530
+Message-Id: <1505494753-10837-1-git-send-email-sundeep.lkml@gmail.com>
+X-Mailer: git-send-email 2.5.0
 MIME-Version: 1.0
-In-Reply-To: <MWHPR0701MB3660656E62CF668F057621A7F36C0@MWHPR0701MB3660.namprd07.prod.outlook.com>
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.39]);
-	Fri, 15 Sep 2017 14:51:03 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [PATCH v7 13/20] hw/arm/smmuv3: Implement IOMMU
- memory region replay callback
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:400e:c05::241
+Subject: [Qemu-arm] [Qemu devel v9 PATCH 0/5] Add support for Smartfusion2
+ SoC
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -107,120 +111,125 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, drjones@redhat.com, tcain@qti.qualcomm.com,
-	Radha.Chintakuntla@cavium.com, Sunil.Goutham@cavium.com,
-	mohun106@gmail.com, jean-philippe.brucker@arm.com,
-	bharat.bhushan@nxp.com, mst@redhat.com, will.deacon@arm.com,
-	qemu-devel@nongnu.org, peterx@redhat.com,
-	alex.williamson@redhat.com, qemu-arm@nongnu.org,
-	christoffer.dall@linaro.org, linu.cherian@cavium.com,
-	wtownsen@redhat.com, robin.murphy@arm.com,
-	prem.mallappa@gmail.com, eric.auger.pro@gmail.com
+Cc: peter.maydell@linaro.org, Subbaraya Sundeep <sundeep.lkml@gmail.com>,
+	f4bug@amsat.org, alistair23@gmail.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: gmYIELyty8YB
+X-TUID: 09nUP9jd+znh
 
-Hi,
+Hi Qemu-devel,
 
-On 15/09/2017 12:42, tn wrote:
-> Hi Eric,
-> 
-> On 15.09.2017 09:30, Auger Eric wrote:
->> Hi Tomasz,
->>
->> On 14/09/2017 16:43, Tomasz Nowicki wrote:
->>> On 14.09.2017 16:31, Tomasz Nowicki wrote:
->>>> Hi Eric,
->>>>
->>>> On 14.09.2017 11:27, Linu Cherian wrote:
->>>>> Hi Eric,
->>>>>
->>>>> On Fri Sep 01, 2017 at 07:21:16PM +0200, Eric Auger wrote:
->>>>>> memory_region_iommu_replay() is used for VFIO integration.
->>>>>>
->>>>>> However its default implementation is not adapted to SMMUv3
->>>>>> IOMMU memory region. Indeed the input address range is too
->>>>>> huge and its execution is too slow as it calls the translate()
->>>>>> callback on each granule.
->>>>>>
->>>>>> Let's implement the replay callback which hierarchically walk
->>>>>> over the page table structure and notify only the segments
->>>>>> that are populated with valid entries.
->>>>>>
->>>>>> Signed-off-by: Eric Auger <eric.auger@redhat.com>
->>>>>> ---
->>>>>>    hw/arm/smmuv3.c     | 36 ++++++++++++++++++++++++++++++++++++
->>>>>>    hw/arm/trace-events |  1 +
->>>>>>    2 files changed, 37 insertions(+)
->>>>>>
->>>>>> diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
->>>>>> index 8e7d10d..c43bd93 100644
->>>>>> --- a/hw/arm/smmuv3.c
->>>>>> +++ b/hw/arm/smmuv3.c
->>>>>> @@ -657,6 +657,41 @@ static int smmuv3_notify_entry(IOMMUTLBEntry
->>>>>> *entry, void *private)
->>>>>>        return 0;
->>>>>>    }
->>>>>> +/* Unmap the whole notifier's range */
->>>>>> +static void smmuv3_unmap_notifier_range(IOMMUNotifier *n)
->>>>>> +{
->>>>>> +    IOMMUTLBEntry entry;
->>>>>> +    hwaddr size = n->end - n->start + 1;
->>>>>> +
->>>>>> +    entry.target_as = &address_space_memory;
->>>>>> +    entry.iova = n->start & ~(size - 1);
->>>>>> +    entry.perm = IOMMU_NONE;
->>>>>> +    entry.addr_mask = size - 1;
->>>>>> +
->>>>>> +    memory_region_notify_one(n, &entry);
->>>>>> +}
->>>>>> +
->>>>>> +static void smmuv3_replay(IOMMUMemoryRegion *mr, IOMMUNotifier *n)
->>>>>> +{
->>>>>> +    SMMUTransCfg cfg = {};
->>>>>> +    int ret;
->>>>>> +
->>>>>> +    trace_smmuv3_replay(mr->parent_obj.name, n, n->start, n->end);
->>>>>> +    smmuv3_unmap_notifier_range(n);
->>>>>> +
->>>>>> +    ret = smmuv3_decode_config(mr, &cfg);
->>>>>> +    if (ret) {
->>>>>> +        error_report("%s error decoding the configuration for iommu
->>>>>> mr=%s",
->>>>>> +                     __func__, mr->parent_obj.name);
->>>>>> +    }
->>>>>>
->>>>>
->>>>> On an invalid config being found, shouldnt we return rather than
->>>>> proceeding with
->>>>> page table walk. For example on an invalid Stream table entry.
->>>>
->>>> Indeed, without return here vhost case is not working for me.
->>>
->>> I was just lucky one time. return here has no influence. Vhost still not
->>> working. Sorry for noise.
->>
->> As far as I understand the replay() callback only is called in VFIO use
->> case. So this shouldn't impact vhost.
->>
->> I can't reproduce your vhost issue on my side. I will review the
->> invalidate code again and compare against the last version.
->>
->> What is the page size used by your guest?
-> 
-> 64K page size for guest as well as for host.
-> 
-> However, I've just checked 4K page size for guest and then vhost is
-> working fine.
-So the bug stems from the incorrect target page size used on
-SMMU_CMD_TLBI_NH_VA invalidation. This is now corrected by using the
-actual config granule size and this fixes the issue with vhost use case
-and 64KB page guest. I will release this fix early next week. Sorry for
-the inconvenience.
+I am trying to add Smartfusion2 SoC.
+SoC is from Microsemi and System on Module(SOM)
+board is from Emcraft systems. Smartfusion2 has hardened
+Microcontroller(Cortex-M3)based Sub System and FPGA fabric.
+At the moment only system timer, sysreg and SPI
+controller are modelled.
 
-Thanks
+Tested-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 
-Eric
-> 
-> Thanks,
-> Tomasz
+Testing:
+./arm-softmmu/qemu-system-arm -M emcraft-sf2 -serial mon:stdio \
+-kernel u-boot.bin -display none -drive file=spi.bin,if=mtd,format=raw
+
+Binaries u-boot.bin and spi.bin are at:
+https://github.com/Subbaraya-Sundeep/qemu-test-binaries.git
+
+U-boot is from Emcraft with modified
+    - SPI driver not to use PDMA.
+    - ugly hack to pass dtb to kernel in r1.
+@
+https://github.com/Subbaraya-Sundeep/emcraft-uboot-sf2.git
+
+Linux is 4.5 linux with Smartfusion2 SoC dts and clocksource
+driver added by myself @
+https://github.com/Subbaraya-Sundeep/linux.git
+
+v9:
+	used trace instead of DB_PRINT in msf2-sysreg.c
+	used LOG_UNIMP for non guest errors in msf2-sysreg.c
+	added unimplemented devices in msf2-soc.c
+	removed .alias suffix in alias memory region name for eNVM
+
+v8:
+	memory_region_init_ram to memory_region_init_rom in soc
+	%s/emcraft_sf2_init/emcraft_sf2_s2s010_init/g in som
+	Added mc->ignore_memory_transaction_failures = true in som
+		as per latest commit.
+	Code simplifications as suggested by Alistair in sysreg and ssi.
+
+v7:
+	Removed vmstate_register_ram_global as per latest commit
+	Moved header files to C which are local to C source files
+	Removed abort() from msf2-sysreg.c
+	Added VMStateDescription in mss-timer.c
+
+v6:
+    Moved some defines from header files to source files
+    Added properties m3clk, apb0div, apb0div1 properties
+    to soc.
+    Added properties apb0divisor, apb1divisor to sysreg
+    Update system_clock_source in msf2-soc.c
+    Changed machine name smartfusion2-som->emcraft-sf2
+
+v5
+    As per Philippe comments:
+        Added abort in Sysreg if guest tries to remap memory
+        other than default mapping.
+        Use of CONFIG_MSF2 in Makefile for soc.c
+        Fixed incorrect logic in timer model.
+        Renamed msf2-timer.c -> mss-timer.c
+                msf2-spi.c -> mss-spi.c also type names
+        Renamed function msf2_init->emcraft_sf2_init in msf2-som.c
+        Added part-name,eNVM-size,eSRAM-size,pclk0 and pclk1
+            properties to soc.
+        Pass soc part-name,memory size and clock rate properties from som.
+v4:
+    Fixed build failure by using PRIx macros.
+v3:
+    Added SoC file and board file as per Alistair comments.
+v2:
+    Added SPI controller so that u-boot loads kernel from spi flash.
+v1:
+    Initial patch set with timer and sysreg
+
+Thanks,
+Sundeep
+
+
+Subbaraya Sundeep (5):
+  msf2: Add Smartfusion2 System timer
+  msf2: Microsemi Smartfusion2 System Register block
+  msf2: Add Smartfusion2 SPI controller
+  msf2: Add Smartfusion2 SoC
+  msf2: Add Emcraft's Smartfusion2 SOM kit
+
+ default-configs/arm-softmmu.mak |   1 +
+ hw/arm/Makefile.objs            |   1 +
+ hw/arm/msf2-soc.c               | 232 +++++++++++++++++++++++
+ hw/arm/msf2-som.c               |  94 ++++++++++
+ hw/misc/Makefile.objs           |   1 +
+ hw/misc/msf2-sysreg.c           | 168 +++++++++++++++++
+ hw/misc/trace-events            |   5 +
+ hw/ssi/Makefile.objs            |   1 +
+ hw/ssi/mss-spi.c                | 404 ++++++++++++++++++++++++++++++++++++++++
+ hw/timer/Makefile.objs          |   1 +
+ hw/timer/mss-timer.c            | 289 ++++++++++++++++++++++++++++
+ include/hw/arm/msf2-soc.h       |  66 +++++++
+ include/hw/misc/msf2-sysreg.h   |  77 ++++++++
+ include/hw/ssi/mss-spi.h        |  58 ++++++
+ include/hw/timer/mss-timer.h    |  64 +++++++
+ 15 files changed, 1462 insertions(+)
+ create mode 100644 hw/arm/msf2-soc.c
+ create mode 100644 hw/arm/msf2-som.c
+ create mode 100644 hw/misc/msf2-sysreg.c
+ create mode 100644 hw/ssi/mss-spi.c
+ create mode 100644 hw/timer/mss-timer.c
+ create mode 100644 include/hw/arm/msf2-soc.h
+ create mode 100644 include/hw/misc/msf2-sysreg.h
+ create mode 100644 include/hw/ssi/mss-spi.h
+ create mode 100644 include/hw/timer/mss-timer.h
+
+-- 
+2.5.0
+

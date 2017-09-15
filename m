@@ -1,102 +1,101 @@
-Received: by 10.223.172.38 with SMTP id v35csp947923wrc;
-        Fri, 15 Sep 2017 10:01:44 -0700 (PDT)
-X-Received: by 10.200.47.24 with SMTP id j24mr38870567qta.147.1505494904723;
-        Fri, 15 Sep 2017 10:01:44 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1505494904; cv=none;
+Received: by 10.223.172.38 with SMTP id v35csp948134wrc;
+        Fri, 15 Sep 2017 10:01:54 -0700 (PDT)
+X-Received: by 10.200.26.52 with SMTP id v49mr5658099qtj.155.1505494914889;
+        Fri, 15 Sep 2017 10:01:54 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1505494914; cv=none;
         d=google.com; s=arc-20160816;
-        b=cGFEQpQl26qQWSJrqsViP2rSr72DeXbzD6t54KV02icAne95TI0E+ck/w8chIGL30Y
-         aS3oji7MEfw1HuhaBjUqarEtPKkqDKSpb/ADhrBertodSnt3EOYAVh0dCP1IBYKvvnTR
-         Uma5N7ADg7r7ewvOPQrPQ3MBDE654jahGT6tTxkaWy4ZPHMI7/9/R5LbD/AZtqsBlmoN
-         HoBhiCtxTK1++PYUSQcmiLReq4gUXMnCvR7pZFlghATKQ+1GN11QqHBcGrzPBLAQ2Kx0
-         9gJLbmwTD7DisGB0QizOGshTPhtIkpKrN2kthoGcJElzKbwd8F7Dc18Kf9vT6rE5EMFJ
-         XqfA==
+        b=VGDm5gZnczY0x1DZA03yzT4Mt/VtH6HxeVjVWVDFA+MZ4I8T4uEsdJ5Ir/1vNHICo3
+         XPm3ftiDzezc9MrKWQ8WyJ65i1ck31YKFrWNhETkxjR+nAx/mij8aosLv2RLakc2k2kv
+         bKHh5coGzKy+CBrBtfDh4IbGDhpHB2wVOWiolgKj2wgtcywrWfcZXCxNWawgGQNZinf9
+         IQx24rVbwRUIcN4Je7QWenSJKqAdWCy0cQrqMtfzIRbZgPMb9SEDhkfI35MoVqS45yz5
+         BTb6gkkIGdaaO7U3LxLLGQkHaVFvk9pYjKDeqmT4hxxm3vSIQz6TPp0foIjFdAfc6F3S
+         bIVw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
          :message-id:date:to:from:dkim-signature:arc-authentication-results;
-        bh=1WAwVPtpZXqZZ15+91n4L5JPOoERq2cMzHEIWB+S184=;
-        b=G/WyRxcEP7Aadg+iV/qkje1mJJe+cEK9B04cVsWjpL3ThXC8v4bRQA6Bsfcq+8dDmV
-         K4xiEu2d5F4QGmjlSPGwgWF3so8gwNi+dRGgtPnZJztC4WfoRA/LmbDOhygy3DZ+0uhw
-         Trd8eIHRpM1rx+LxpjYQuTD0zSmkgoZfTGeKbh2qGA0wnzwSzPb2NDa/MBZcn94FrKpY
-         rx1UZLXOmDsn6t/sR1r50D9rJqhIYA15ehUtp2NxoXS3RiZ7I1h2K2atlheJIr6vMSSs
-         mlYM93GDo3xAW10Np8iX9Ne/kZgz+1I6QipTRXch+CIQH9sCf7X7SFEQL7vR+ns0qS+/
-         3CTA==
+        bh=QnfvWQb7Y+qoa50NkS+jQ5bKjWMWACJ4NZZdW/wHPxU=;
+        b=pBt/xMABVXYAcOEa++Jd8BFnpMdvjGVfmdiyK5B5xs7DASBR3xktoktbmc6f0+k64s
+         qsk0ukmOB5cV+yewVlbR7iQqig2s6chu9CHPEe3qiDfYAW5cFiUUpGo4/n9jd3Ip42rx
+         xXMXS5LalrESJ4tHWcG1WFm04G3l4T8iSrt+kYLMvUGEd7NzvF49er0mjftQVOOjNRjm
+         tfotpmW1iy1UGpuU/fyTx2U8h36ZaaOhfM0EdcWnM92HOWztu9+KH8Vk/6Dn4FhH+IZG
+         gwC/V88g3cuXtE9pAmEnSn1W8mQdcWMXt/3avsB1NG6M6CXfGyOx5CNyrEnUo6rP+1f+
+         WT+A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=nC+yu+Rx;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=qFyN4oGZ;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id y15si1374696qtb.300.2017.09.15.10.01.44
+        by mx.google.com with ESMTPS id x190si1259347qkd.341.2017.09.15.10.01.54
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 15 Sep 2017 10:01:44 -0700 (PDT)
+        Fri, 15 Sep 2017 10:01:54 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=nC+yu+Rx;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=qFyN4oGZ;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:54285 helo=lists.gnu.org)
+Received: from localhost ([::1]:54288 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1dstzq-0006bS-Dj
-	for alex.bennee@linaro.org; Fri, 15 Sep 2017 13:01:42 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:49894)
+	id 1dsu00-0006ns-Eb
+	for alex.bennee@linaro.org; Fri, 15 Sep 2017 13:01:52 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:49982)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <sundeep.lkml@gmail.com>) id 1dstxo-0005Lh-0q
-	for qemu-devel@nongnu.org; Fri, 15 Sep 2017 12:59:37 -0400
+	(envelope-from <sundeep.lkml@gmail.com>) id 1dstxu-0005RP-AO
+	for qemu-devel@nongnu.org; Fri, 15 Sep 2017 12:59:44 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <sundeep.lkml@gmail.com>) id 1dstxm-00040o-AZ
-	for qemu-devel@nongnu.org; Fri, 15 Sep 2017 12:59:36 -0400
-Received: from mail-pg0-x241.google.com ([2607:f8b0:400e:c05::241]:37155)
+	(envelope-from <sundeep.lkml@gmail.com>) id 1dstxr-00044J-R1
+	for qemu-devel@nongnu.org; Fri, 15 Sep 2017 12:59:42 -0400
+Received: from mail-pg0-x241.google.com ([2607:f8b0:400e:c05::241]:38074)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <sundeep.lkml@gmail.com>)
-	id 1dstxm-00040S-1U; Fri, 15 Sep 2017 12:59:34 -0400
-Received: by mail-pg0-x241.google.com with SMTP id v5so1604506pgn.4;
-	Fri, 15 Sep 2017 09:59:33 -0700 (PDT)
+	id 1dstxr-00043j-Jx; Fri, 15 Sep 2017 12:59:39 -0400
+Received: by mail-pg0-x241.google.com with SMTP id m30so1601163pgn.5;
+	Fri, 15 Sep 2017 09:59:39 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
 	h=from:to:cc:subject:date:message-id:in-reply-to:references;
-	bh=1WAwVPtpZXqZZ15+91n4L5JPOoERq2cMzHEIWB+S184=;
-	b=nC+yu+Rxgd7iu72D674VzaJDwgdTdKuFK2oHgIW1XFKPvO1BHiFX4pCPIFmo8DDSb2
-	GWJm8BAwIbpXIhK0Pf2taGvh1VygGKj0smKw8riyPzKy9PoZHqAuSxiziKuhjHX/bRLC
-	4lwonNNWSh2Tsh0+mq7fkDMZPvWnyN9GCWkxObKpnDDXE6o83hIoB2iUTcp3NFaCpTgB
-	/G2OsoOVuqGT0YpikmXOjJQqmPqv6Irn/BE0l/r5l5zZOq8vZO3h5ljXKvxorxVJMoA1
-	mcXCr+/9QgVSWHTa0MeUqtdDRJF8Sd5cK2cgEtWednQBv8gLgzfFTqHlEd6Zeo+7aiKi
-	cJEQ==
+	bh=QnfvWQb7Y+qoa50NkS+jQ5bKjWMWACJ4NZZdW/wHPxU=;
+	b=qFyN4oGZYMY03x1MokyhZu4oBMPpQUJVgs5QzRjpSMRaaKJ1qj+tvwiauvIMvTjQMA
+	3U52mOdw8++KHn4931TD7plvAIP1n7dqee6AX9hQllBaMNguDG+nZWGWv2fGaXkTeu1F
+	i9ZG/V7Kzf9kcD1Rbd8PNHv1k/7IlEFi+F6po6BL2IElGfNOSyHWVEccQWUxvGsLXJcV
+	vdU1tVBbIgJND2tbyZSzQ6a/OD4e96LaMgyL/hGAWxQmg8A5yqo7nkDTs7PA91homr9C
+	NPh97rIWWy3S3DzJ225WYQjoaFPl41QHuUsoiJwFL86hnVOvk763m+hnSqMcsFOwZfHv
+	l51A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
 	:references;
-	bh=1WAwVPtpZXqZZ15+91n4L5JPOoERq2cMzHEIWB+S184=;
-	b=b3VChdt7z7K1Jvp6RX4PLUWoK+XFpZi6W/lQlyw9ZUfJ1rkAMtMsrPe7A84LJ2bXL0
-	UcJPBW1V3Eaqtk/lVQdwrrKa/QKXuPiVmy32OCBmW2vOUJzRHbPrDoNEfMSX6kYmwJB9
-	f3hS1j3RgQdecC2zO948POLANy/fNuqs3A/Ol/XFo1JQ2AtbLcGBFuign6BSbseo+Qy6
-	eRE1pFvk3o/4JFQ9WSEo6rO1+G/uXnsW/TMa4DSJ6Z9EN7uPBe2t8aqZttryKw+wjgGq
-	/wg0F6ZIZqjocoqzEBAxNQZ73lnTuMRRXwVuhd7A4zSevXqtiOSuIvTFzEGFJBamQC9H
-	MKNA==
-X-Gm-Message-State: AHPjjUhyFPcq+wYB28ZkKcLoncNWDpElqgzDCsEtP0rbiIkvPZyy2kCv
-	LSXkKjXu6py8PRWu
-X-Google-Smtp-Source: ADKCNb6Et92bB5Biv793pKprQSCacJ8Lb+kGr2tvAmDsiCxwLfq3j6RkWy/sF2bS+CYggJTiKbB2Gg==
-X-Received: by 10.98.62.93 with SMTP id l90mr25228765pfa.32.1505494772858;
-	Fri, 15 Sep 2017 09:59:32 -0700 (PDT)
+	bh=QnfvWQb7Y+qoa50NkS+jQ5bKjWMWACJ4NZZdW/wHPxU=;
+	b=cAo3lcYpr19AMIyl4mhX35iiBHnKAhSmOq6Vr1Jo5YjJEHSdGgjOzyB18/2iAjgFxj
+	/Ftvfse9Gi9P2B+JO2XOOWxi8+TIvSBkQOp4FNM/0gRLmlhqWylk6x8fvTiUj91hM2Hb
+	wjXcs/sNzzcSrcjN+IdQgXYuiJSrBrDJtkqqAp2w4w4yKJzs52gQTkL6MyAJVIG7BV1y
+	vtjfTk4ptByL+kTRIR1t5HjAqCG5bLatPzEV8xaHlxnb7LBwVhErc3l5kFR4j9vod8aM
+	iCKhAMCFOYy82Ia3S4+0cRnwW6DhSIFZcvq/alTwDd+H0hNL9jpi2kxy5Dez1W9WVuTx
+	wQOA==
+X-Gm-Message-State: AHPjjUj4K1p1aAE84v4a0AqIDMpE1/V9RUK1rJWVKm8EDW/3RqpUMcVs
+	d6+0/4G43OQHWSzc
+X-Google-Smtp-Source: AOwi7QBP8UEjCDZMfR/28lQaYQX2/nIYJMEgGR3BF222+23s4VLPE5dfdrWf/Xjy9zr6eMjAImqydA==
+X-Received: by 10.101.80.202 with SMTP id s10mr6172098pgp.34.1505494778366;
+	Fri, 15 Sep 2017 09:59:38 -0700 (PDT)
 Received: from localhost.localdomain ([124.123.70.3])
 	by smtp.gmail.com with ESMTPSA id
-	s17sm3111350pgq.25.2017.09.15.09.59.30
+	s17sm3111350pgq.25.2017.09.15.09.59.35
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-	Fri, 15 Sep 2017 09:59:32 -0700 (PDT)
+	Fri, 15 Sep 2017 09:59:37 -0700 (PDT)
 From: Subbaraya Sundeep <sundeep.lkml@gmail.com>
 To: qemu-devel@nongnu.org,
 	qemu-arm@nongnu.org
-Date: Fri, 15 Sep 2017 22:29:10 +0530
-Message-Id: <1505494753-10837-3-git-send-email-sundeep.lkml@gmail.com>
+Date: Fri, 15 Sep 2017 22:29:12 +0530
+Message-Id: <1505494753-10837-5-git-send-email-sundeep.lkml@gmail.com>
 X-Mailer: git-send-email 2.5.0
 In-Reply-To: <1505494753-10837-1-git-send-email-sundeep.lkml@gmail.com>
 References: <1505494753-10837-1-git-send-email-sundeep.lkml@gmail.com>
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
 X-Received-From: 2607:f8b0:400e:c05::241
-Subject: [Qemu-devel] [Qemu devel v9 PATCH 2/5] msf2: Microsemi Smartfusion2
- System Register block
+Subject: [Qemu-devel] [Qemu devel v9 PATCH 4/5] msf2: Add Smartfusion2 SoC
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -112,226 +111,49 @@ Cc: peter.maydell@linaro.org, Subbaraya Sundeep <sundeep.lkml@gmail.com>,
 	f4bug@amsat.org, alistair23@gmail.com, crosthwaite.peter@gmail.com
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: w3wSr0gswDzY
+X-TUID: /2TsNkSinHme
 
-Added Sytem register block of Smartfusion2.
-This block has PLL registers which are accessed by guest.
+Smartfusion2 SoC has hardened Microcontroller subsystem
+and flash based FPGA fabric. This patch adds support for
+Microcontroller subsystem in the SoC.
 
 Signed-off-by: Subbaraya Sundeep <sundeep.lkml@gmail.com>
 Reviewed-by: Alistair Francis <alistair.francis@xilinx.com>
 ---
- hw/misc/Makefile.objs         |   1 +
- hw/misc/msf2-sysreg.c         | 168 ++++++++++++++++++++++++++++++++++++++++++
- hw/misc/trace-events          |   5 ++
- include/hw/misc/msf2-sysreg.h |  77 +++++++++++++++++++
- 4 files changed, 251 insertions(+)
- create mode 100644 hw/misc/msf2-sysreg.c
- create mode 100644 include/hw/misc/msf2-sysreg.h
+ default-configs/arm-softmmu.mak |   1 +
+ hw/arm/Makefile.objs            |   1 +
+ hw/arm/msf2-soc.c               | 232 ++++++++++++++++++++++++++++++++++++++++
+ include/hw/arm/msf2-soc.h       |  66 ++++++++++++
+ 4 files changed, 300 insertions(+)
+ create mode 100644 hw/arm/msf2-soc.c
+ create mode 100644 include/hw/arm/msf2-soc.h
 
-diff --git a/hw/misc/Makefile.objs b/hw/misc/Makefile.objs
-index 29fb922..e8f0a02 100644
---- a/hw/misc/Makefile.objs
-+++ b/hw/misc/Makefile.objs
-@@ -59,3 +59,4 @@ obj-$(CONFIG_HYPERV_TESTDEV) += hyperv_testdev.o
- obj-$(CONFIG_AUX) += auxbus.o
- obj-$(CONFIG_ASPEED_SOC) += aspeed_scu.o aspeed_sdmc.o
- obj-y += mmio_interface.o
-+obj-$(CONFIG_MSF2) += msf2-sysreg.o
-diff --git a/hw/misc/msf2-sysreg.c b/hw/misc/msf2-sysreg.c
+diff --git a/default-configs/arm-softmmu.mak b/default-configs/arm-softmmu.mak
+index bbdd3c1..5059d13 100644
+--- a/default-configs/arm-softmmu.mak
++++ b/default-configs/arm-softmmu.mak
+@@ -129,3 +129,4 @@ CONFIG_ACPI=y
+ CONFIG_SMBIOS=y
+ CONFIG_ASPEED_SOC=y
+ CONFIG_GPIO_KEY=y
++CONFIG_MSF2=y
+diff --git a/hw/arm/Makefile.objs b/hw/arm/Makefile.objs
+index a2e56ec..df36a03 100644
+--- a/hw/arm/Makefile.objs
++++ b/hw/arm/Makefile.objs
+@@ -19,3 +19,4 @@ obj-$(CONFIG_FSL_IMX31) += fsl-imx31.o kzm.o
+ obj-$(CONFIG_FSL_IMX6) += fsl-imx6.o sabrelite.o
+ obj-$(CONFIG_ASPEED_SOC) += aspeed_soc.o aspeed.o
+ obj-$(CONFIG_MPS2) += mps2.o
++obj-$(CONFIG_MSF2) += msf2-soc.o
+diff --git a/hw/arm/msf2-soc.c b/hw/arm/msf2-soc.c
 new file mode 100644
-index 0000000..dc3597b
+index 0000000..5c0a2ea
 --- /dev/null
-+++ b/hw/misc/msf2-sysreg.c
-@@ -0,0 +1,168 @@
++++ b/hw/arm/msf2-soc.c
+@@ -0,0 +1,232 @@
 +/*
-+ * System Register block model of Microsemi SmartFusion2.
-+ *
-+ * Copyright (c) 2017 Subbaraya Sundeep <sundeep.lkml@gmail.com>
-+ *
-+ * This program is free software; you can redistribute it and/or
-+ * modify it under the terms of the GNU General Public License
-+ * as published by the Free Software Foundation; either version
-+ * 2 of the License, or (at your option) any later version.
-+ *
-+ * You should have received a copy of the GNU General Public License along
-+ * with this program; if not, see <http://www.gnu.org/licenses/>.
-+ */
-+
-+#include "qemu/osdep.h"
-+#include "qemu/log.h"
-+#include "hw/misc/msf2-sysreg.h"
-+#include "trace.h"
-+
-+static inline int msf2_divbits(uint32_t div)
-+{
-+    int ret = 0;
-+
-+    switch (div) {
-+    case 1:
-+        ret = 0;
-+        break;
-+    case 2:
-+        ret = 1;
-+        break;
-+    case 4:
-+        ret = 2;
-+        break;
-+    case 8:
-+        ret = 4;
-+        break;
-+    case 16:
-+        ret = 5;
-+        break;
-+    case 32:
-+        ret = 6;
-+        break;
-+    default:
-+        break;
-+    }
-+
-+    return ret;
-+}
-+
-+static void msf2_sysreg_reset(DeviceState *d)
-+{
-+    MSF2SysregState *s = MSF2_SYSREG(d);
-+
-+    s->regs[MSSDDR_PLL_STATUS_LOW_CR] = 0x021A2358;
-+    s->regs[MSSDDR_PLL_STATUS] = 0x3;
-+    s->regs[MSSDDR_FACC1_CR] = msf2_divbits(s->apb0div) << 5 |
-+                               msf2_divbits(s->apb1div) << 2;
-+}
-+
-+static uint64_t msf2_sysreg_read(void *opaque, hwaddr offset,
-+    unsigned size)
-+{
-+    MSF2SysregState *s = opaque;
-+    uint32_t ret = 0;
-+
-+    offset >>= 2;
-+    if (offset < ARRAY_SIZE(s->regs)) {
-+        ret = s->regs[offset];
-+        trace_msf2_sysreg_read(offset << 2, ret);
-+    } else {
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+                    "%s: Bad offset 0x%08" HWADDR_PRIx "\n", __func__,
-+                    offset << 2);
-+    }
-+
-+    return ret;
-+}
-+
-+static void msf2_sysreg_write(void *opaque, hwaddr offset,
-+                          uint64_t val, unsigned size)
-+{
-+    MSF2SysregState *s = opaque;
-+    uint32_t newval = val;
-+
-+    offset >>= 2;
-+
-+    switch (offset) {
-+    case MSSDDR_PLL_STATUS:
-+        trace_msf2_sysreg_write_pll_status();
-+        break;
-+
-+    case ESRAM_CR:
-+    case DDR_CR:
-+    case ENVM_REMAP_BASE_CR:
-+        if (newval != s->regs[offset]) {
-+            qemu_log_mask(LOG_UNIMP,
-+                       TYPE_MSF2_SYSREG": remapping not supported\n");
-+        }
-+        break;
-+
-+    default:
-+        if (offset < ARRAY_SIZE(s->regs)) {
-+            trace_msf2_sysreg_write(offset << 2, newval, s->regs[offset]);
-+            s->regs[offset] = newval;
-+        } else {
-+            qemu_log_mask(LOG_GUEST_ERROR,
-+                        "%s: Bad offset 0x%08" HWADDR_PRIx "\n", __func__,
-+                        offset << 2);
-+        }
-+        break;
-+    }
-+}
-+
-+static const MemoryRegionOps sysreg_ops = {
-+    .read = msf2_sysreg_read,
-+    .write = msf2_sysreg_write,
-+    .endianness = DEVICE_NATIVE_ENDIAN,
-+};
-+
-+static void msf2_sysreg_init(Object *obj)
-+{
-+    MSF2SysregState *s = MSF2_SYSREG(obj);
-+
-+    memory_region_init_io(&s->iomem, obj, &sysreg_ops, s, TYPE_MSF2_SYSREG,
-+                          MSF2_SYSREG_MMIO_SIZE);
-+    sysbus_init_mmio(SYS_BUS_DEVICE(obj), &s->iomem);
-+}
-+
-+static const VMStateDescription vmstate_msf2_sysreg = {
-+    .name = TYPE_MSF2_SYSREG,
-+    .version_id = 1,
-+    .minimum_version_id = 1,
-+    .fields = (VMStateField[]) {
-+        VMSTATE_UINT32_ARRAY(regs, MSF2SysregState, MSF2_SYSREG_MMIO_SIZE / 4),
-+        VMSTATE_END_OF_LIST()
-+    }
-+};
-+
-+static Property msf2_sysreg_properties[] = {
-+    /* default divisors in Libero GUI */
-+    DEFINE_PROP_UINT32("apb0divisor", MSF2SysregState, apb0div, 2),
-+    DEFINE_PROP_UINT32("apb1divisor", MSF2SysregState, apb1div, 2),
-+    DEFINE_PROP_END_OF_LIST(),
-+};
-+
-+static void msf2_sysreg_class_init(ObjectClass *klass, void *data)
-+{
-+    DeviceClass *dc = DEVICE_CLASS(klass);
-+
-+    dc->vmsd = &vmstate_msf2_sysreg;
-+    dc->reset = msf2_sysreg_reset;
-+    dc->props = msf2_sysreg_properties;
-+}
-+
-+static const TypeInfo msf2_sysreg_info = {
-+    .name  = TYPE_MSF2_SYSREG,
-+    .parent = TYPE_SYS_BUS_DEVICE,
-+    .class_init = msf2_sysreg_class_init,
-+    .instance_size  = sizeof(MSF2SysregState),
-+    .instance_init = msf2_sysreg_init,
-+};
-+
-+static void msf2_sysreg_register_types(void)
-+{
-+    type_register_static(&msf2_sysreg_info);
-+}
-+
-+type_init(msf2_sysreg_register_types)
-diff --git a/hw/misc/trace-events b/hw/misc/trace-events
-index 3313585..616579a 100644
---- a/hw/misc/trace-events
-+++ b/hw/misc/trace-events
-@@ -61,3 +61,8 @@ mps2_scc_reset(void) "MPS2 SCC: reset"
- mps2_scc_leds(char led7, char led6, char led5, char led4, char led3, char led2, char led1, char led0) "MPS2 SCC LEDs: %c%c%c%c%c%c%c%c"
- mps2_scc_cfg_write(unsigned function, unsigned device, uint32_t value) "MPS2 SCC config write: function %d device %d data 0x%" PRIx32
- mps2_scc_cfg_read(unsigned function, unsigned device, uint32_t value) "MPS2 SCC config read: function %d device %d data 0x%" PRIx32
-+
-+# hw/misc/msf2-sysreg.c
-+msf2_sysreg_write(uint64_t offset, uint32_t val, uint32_t prev) "msf2-sysreg write: addr 0x%08" HWADDR_PRIx " data 0x%" PRIx32 " prev 0x%" PRIx32
-+msf2_sysreg_read(uint64_t offset, uint32_t val) "msf2-sysreg read: addr 0x%08" HWADDR_PRIx " data 0x%08" PRIx32
-+msf2_sysreg_write_pll_status(void) "Invalid write to read only PLL status register"
-diff --git a/include/hw/misc/msf2-sysreg.h b/include/hw/misc/msf2-sysreg.h
-new file mode 100644
-index 0000000..231f827
---- /dev/null
-+++ b/include/hw/misc/msf2-sysreg.h
-@@ -0,0 +1,77 @@
-+/*
-+ * Microsemi SmartFusion2 SYSREG
++ * SmartFusion2 SoC emulation.
 + *
 + * Copyright (c) 2017 Subbaraya Sundeep <sundeep.lkml@gmail.com>
 + *
@@ -354,59 +176,286 @@ index 0000000..231f827
 + * THE SOFTWARE.
 + */
 +
-+#ifndef HW_MSF2_SYSREG_H
-+#define HW_MSF2_SYSREG_H
++#include "qemu/osdep.h"
++#include "qapi/error.h"
++#include "qemu-common.h"
++#include "hw/arm/arm.h"
++#include "exec/address-spaces.h"
++#include "hw/char/serial.h"
++#include "hw/boards.h"
++#include "sysemu/block-backend.h"
++#include "qemu/cutils.h"
++#include "hw/arm/msf2-soc.h"
++#include "hw/misc/unimp.h"
 +
-+#include "hw/sysbus.h"
++#define MSF2_TIMER_BASE       0x40004000
++#define MSF2_SYSREG_BASE      0x40038000
 +
-+enum {
-+    ESRAM_CR        = 0x00 / 4,
-+    ESRAM_MAX_LAT,
-+    DDR_CR,
-+    ENVM_CR,
-+    ENVM_REMAP_BASE_CR,
-+    ENVM_REMAP_FAB_CR,
-+    CC_CR,
-+    CC_REGION_CR,
-+    CC_LOCK_BASE_ADDR_CR,
-+    CC_FLUSH_INDX_CR,
-+    DDRB_BUF_TIMER_CR,
-+    DDRB_NB_ADDR_CR,
-+    DDRB_NB_SIZE_CR,
-+    DDRB_CR,
++#define ENVM_BASE_ADDRESS     0x60000000
 +
-+    SOFT_RESET_CR  = 0x48 / 4,
-+    M3_CR,
++#define SRAM_BASE_ADDRESS     0x20000000
 +
-+    GPIO_SYSRESET_SEL_CR = 0x58 / 4,
++#define MSF2_ENVM_MAX_SIZE    (512 * K_BYTE)
 +
-+    MDDR_CR = 0x60 / 4,
++/*
++ * eSRAM max size is 80k without SECDED(Single error correction and
++ * dual error detection) feature and 64k with SECDED.
++ * We do not support SECDED now.
++ */
++#define MSF2_ESRAM_MAX_SIZE       (80 * K_BYTE)
 +
-+    MSSDDR_PLL_STATUS_LOW_CR = 0x90 / 4,
-+    MSSDDR_PLL_STATUS_HIGH_CR,
-+    MSSDDR_FACC1_CR,
-+    MSSDDR_FACC2_CR,
++static const uint32_t spi_addr[MSF2_NUM_SPIS] = { 0x40001000 , 0x40011000 };
++static const uint32_t uart_addr[MSF2_NUM_UARTS] = { 0x40000000 , 0x40010000 };
 +
-+    MSSDDR_PLL_STATUS = 0x150 / 4,
++static const int spi_irq[MSF2_NUM_SPIS] = { 2, 3 };
++static const int uart_irq[MSF2_NUM_UARTS] = { 10, 11 };
++static const int timer_irq[MSF2_NUM_TIMERS] = { 14, 15 };
++
++static void m2sxxx_soc_initfn(Object *obj)
++{
++    MSF2State *s = MSF2_SOC(obj);
++    int i;
++
++    object_initialize(&s->armv7m, sizeof(s->armv7m), TYPE_ARMV7M);
++    qdev_set_parent_bus(DEVICE(&s->armv7m), sysbus_get_default());
++
++    object_initialize(&s->sysreg, sizeof(s->sysreg), TYPE_MSF2_SYSREG);
++    qdev_set_parent_bus(DEVICE(&s->sysreg), sysbus_get_default());
++
++    object_initialize(&s->timer, sizeof(s->timer), TYPE_MSS_TIMER);
++    qdev_set_parent_bus(DEVICE(&s->timer), sysbus_get_default());
++
++    for (i = 0; i < MSF2_NUM_SPIS; i++) {
++        object_initialize(&s->spi[i], sizeof(s->spi[i]),
++                          TYPE_MSS_SPI);
++        qdev_set_parent_bus(DEVICE(&s->spi[i]), sysbus_get_default());
++    }
++}
++
++static void m2sxxx_soc_realize(DeviceState *dev_soc, Error **errp)
++{
++    MSF2State *s = MSF2_SOC(dev_soc);
++    DeviceState *dev, *armv7m;
++    SysBusDevice *busdev;
++    Error *err = NULL;
++    int i;
++
++    MemoryRegion *system_memory = get_system_memory();
++    MemoryRegion *nvm = g_new(MemoryRegion, 1);
++    MemoryRegion *nvm_alias = g_new(MemoryRegion, 1);
++    MemoryRegion *sram = g_new(MemoryRegion, 1);
++
++    memory_region_init_rom(nvm, NULL, "MSF2.eNVM", s->envm_size,
++                           &error_fatal);
++    /*
++     * On power-on, the eNVM region 0x60000000 is automatically
++     * remapped to the Cortex-M3 processor executable region
++     * start address (0x0). We do not support remapping other eNVM,
++     * eSRAM and DDR regions by guest(via Sysreg) currently.
++     */
++    memory_region_init_alias(nvm_alias, NULL, "MSF2.eNVM",
++                             nvm, 0, s->envm_size);
++
++    memory_region_add_subregion(system_memory, ENVM_BASE_ADDRESS, nvm);
++    memory_region_add_subregion(system_memory, 0, nvm_alias);
++
++    memory_region_init_ram(sram, NULL, "MSF2.eSRAM", s->esram_size,
++                           &error_fatal);
++    memory_region_add_subregion(system_memory, SRAM_BASE_ADDRESS, sram);
++
++    armv7m = DEVICE(&s->armv7m);
++    qdev_prop_set_uint32(armv7m, "num-irq", 81);
++    qdev_prop_set_string(armv7m, "cpu-model", "cortex-m3");
++    object_property_set_link(OBJECT(&s->armv7m), OBJECT(get_system_memory()),
++                                     "memory", &error_abort);
++    object_property_set_bool(OBJECT(&s->armv7m), true, "realized", &err);
++    if (err != NULL) {
++        error_propagate(errp, err);
++        return;
++    }
++
++    system_clock_scale = NANOSECONDS_PER_SECOND / s->m3clk;
++
++    for (i = 0; i < MSF2_NUM_UARTS; i++) {
++        if (serial_hds[i]) {
++            serial_mm_init(get_system_memory(), uart_addr[i], 2,
++                           qdev_get_gpio_in(armv7m, uart_irq[i]),
++                           115200, serial_hds[i], DEVICE_NATIVE_ENDIAN);
++        }
++    }
++
++    dev = DEVICE(&s->timer);
++    /* APB0 clock is the timer input clock */
++    qdev_prop_set_uint32(dev, "clock-frequency", s->m3clk / s->apb0div);
++    object_property_set_bool(OBJECT(&s->timer), true, "realized", &err);
++    if (err != NULL) {
++        error_propagate(errp, err);
++        return;
++    }
++    busdev = SYS_BUS_DEVICE(dev);
++    sysbus_mmio_map(busdev, 0, MSF2_TIMER_BASE);
++    sysbus_connect_irq(busdev, 0,
++                           qdev_get_gpio_in(armv7m, timer_irq[0]));
++    sysbus_connect_irq(busdev, 1,
++                           qdev_get_gpio_in(armv7m, timer_irq[1]));
++
++    dev = DEVICE(&s->sysreg);
++    qdev_prop_set_uint32(dev, "apb0divisor", s->apb0div);
++    qdev_prop_set_uint32(dev, "apb1divisor", s->apb1div);
++    object_property_set_bool(OBJECT(&s->sysreg), true, "realized", &err);
++    if (err != NULL) {
++        error_propagate(errp, err);
++        return;
++    }
++    busdev = SYS_BUS_DEVICE(dev);
++    sysbus_mmio_map(busdev, 0, MSF2_SYSREG_BASE);
++
++    for (i = 0; i < MSF2_NUM_SPIS; i++) {
++        gchar *bus_name;
++
++        object_property_set_bool(OBJECT(&s->spi[i]), true, "realized", &err);
++        if (err != NULL) {
++            error_propagate(errp, err);
++            return;
++        }
++
++        sysbus_mmio_map(SYS_BUS_DEVICE(&s->spi[i]), 0, spi_addr[i]);
++        sysbus_connect_irq(SYS_BUS_DEVICE(&s->spi[i]), 0,
++                           qdev_get_gpio_in(armv7m, spi_irq[i]));
++
++        /* Alias controller SPI bus to the SoC itself */
++        bus_name = g_strdup_printf("spi%d", i);
++        object_property_add_alias(OBJECT(s), bus_name,
++                                  OBJECT(&s->spi[i]), "spi",
++                                  &error_abort);
++        g_free(bus_name);
++    }
++
++    /* Below devices are not modelled yet. */
++    create_unimplemented_device("i2c_0", 0x40002000, 0x1000);
++    create_unimplemented_device("pdma", 0x40003000, 0x1000);
++    create_unimplemented_device("watchdog", 0x40005000, 0x1000);
++    create_unimplemented_device("i2c_1", 0x40012000, 0x1000);
++    create_unimplemented_device("gpio", 0x40013000, 0x1000);
++    create_unimplemented_device("hpdma", 0x40014000, 0x1000);
++    create_unimplemented_device("can", 0x40015000, 0x1000);
++    create_unimplemented_device("rtc", 0x40017000, 0x1000);
++    create_unimplemented_device("apb_config", 0x40020000, 0x10000);
++    create_unimplemented_device("emac", 0x40041000, 0x1000);
++    create_unimplemented_device("usb", 0x40043000, 0x1000);
++}
++
++static Property m2sxxx_soc_properties[] = {
++    /*
++     * part name specifies the type of SmartFusion2 device variant(this
++     * property is for information purpose only.
++     */
++    DEFINE_PROP_STRING("part-name", MSF2State, part_name),
++    DEFINE_PROP_UINT64("eNVM-size", MSF2State, envm_size, MSF2_ENVM_MAX_SIZE),
++    DEFINE_PROP_UINT64("eSRAM-size", MSF2State, esram_size,
++                        MSF2_ESRAM_MAX_SIZE),
++    /* Libero GUI shows 100Mhz as default for clocks */
++    DEFINE_PROP_UINT32("m3clk", MSF2State, m3clk, 100 * 1000000),
++    /* default divisors in Libero GUI */
++    DEFINE_PROP_UINT32("apb0div", MSF2State, apb0div, 2),
++    DEFINE_PROP_UINT32("apb1div", MSF2State, apb1div, 2),
++    DEFINE_PROP_END_OF_LIST(),
 +};
 +
-+#define MSF2_SYSREG_MMIO_SIZE     0x300
++static void m2sxxx_soc_class_init(ObjectClass *klass, void *data)
++{
++    DeviceClass *dc = DEVICE_CLASS(klass);
 +
-+#define TYPE_MSF2_SYSREG          "msf2-sysreg"
-+#define MSF2_SYSREG(obj)  OBJECT_CHECK(MSF2SysregState, (obj), TYPE_MSF2_SYSREG)
++    dc->realize = m2sxxx_soc_realize;
++    dc->props = m2sxxx_soc_properties;
++}
 +
-+typedef struct MSF2SysregState {
++static const TypeInfo m2sxxx_soc_info = {
++    .name          = TYPE_MSF2_SOC,
++    .parent        = TYPE_SYS_BUS_DEVICE,
++    .instance_size = sizeof(MSF2State),
++    .instance_init = m2sxxx_soc_initfn,
++    .class_init    = m2sxxx_soc_class_init,
++};
++
++static void m2sxxx_soc_types(void)
++{
++    type_register_static(&m2sxxx_soc_info);
++}
++
++type_init(m2sxxx_soc_types)
+diff --git a/include/hw/arm/msf2-soc.h b/include/hw/arm/msf2-soc.h
+new file mode 100644
+index 0000000..eb239fa
+--- /dev/null
++++ b/include/hw/arm/msf2-soc.h
+@@ -0,0 +1,66 @@
++/*
++ * Microsemi Smartfusion2 SoC
++ *
++ * Copyright (c) 2017 Subbaraya Sundeep <sundeep.lkml@gmail.com>
++ *
++ * Permission is hereby granted, free of charge, to any person obtaining a copy
++ * of this software and associated documentation files (the "Software"), to deal
++ * in the Software without restriction, including without limitation the rights
++ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
++ * copies of the Software, and to permit persons to whom the Software is
++ * furnished to do so, subject to the following conditions:
++ *
++ * The above copyright notice and this permission notice shall be included in
++ * all copies or substantial portions of the Software.
++ *
++ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
++ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
++ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
++ * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
++ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
++ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
++ * THE SOFTWARE.
++ */
++
++#ifndef HW_ARM_MSF2_SOC_H
++#define HW_ARM_MSF2_SOC_H
++
++#include "hw/arm/armv7m.h"
++#include "hw/timer/mss-timer.h"
++#include "hw/misc/msf2-sysreg.h"
++#include "hw/ssi/mss-spi.h"
++
++#define TYPE_MSF2_SOC     "msf2-soc"
++#define MSF2_SOC(obj)     OBJECT_CHECK(MSF2State, (obj), TYPE_MSF2_SOC)
++
++#define MSF2_NUM_SPIS         2
++#define MSF2_NUM_UARTS        2
++
++/*
++ * System timer consists of two programmable 32-bit
++ * decrementing counters that generate individual interrupts to
++ * the Cortex-M3 processor
++ */
++#define MSF2_NUM_TIMERS       2
++
++typedef struct MSF2State {
++    /*< private >*/
 +    SysBusDevice parent_obj;
++    /*< public >*/
 +
-+    MemoryRegion iomem;
++    ARMv7MState armv7m;
 +
++    char *part_name;
++    uint64_t envm_size;
++    uint64_t esram_size;
++
++    uint32_t m3clk;
 +    uint32_t apb0div;
 +    uint32_t apb1div;
 +
-+    uint32_t regs[MSF2_SYSREG_MMIO_SIZE / 4];
-+} MSF2SysregState;
++    MSF2SysregState sysreg;
++    MSSTimerState timer;
++    MSSSpiState spi[MSF2_NUM_SPIS];
++} MSF2State;
 +
-+#endif /* HW_MSF2_SYSREG_H */
++#endif
 -- 
 2.5.0
 

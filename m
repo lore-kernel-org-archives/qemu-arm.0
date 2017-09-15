@@ -1,115 +1,101 @@
-Received: by 10.223.172.38 with SMTP id v35csp1173871wrc;
-        Thu, 14 Sep 2017 11:08:50 -0700 (PDT)
-X-Received: by 10.55.188.131 with SMTP id m125mr3444860qkf.12.1505412530472;
-        Thu, 14 Sep 2017 11:08:50 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1505412530; cv=none;
+Received: by 10.223.172.38 with SMTP id v35csp344994wrc;
+        Thu, 14 Sep 2017 23:31:51 -0700 (PDT)
+X-Received: by 10.55.75.11 with SMTP id y11mr6154510qka.96.1505457110993;
+        Thu, 14 Sep 2017 23:31:50 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1505457110; cv=none;
         d=google.com; s=arc-20160816;
-        b=BM6kgpr0T3jRAqBYyJfIFP/bmTcDaMg96SzleSGGR8cFQURwUXofyU9XqMzDo1aboT
-         lmaPCqu1D8iChKdw1USquvlQG8/FiKcUtvOUXq7QxOQ68t/o0mrXF0/O1ZmCwF/0xxPP
-         QYYij6BXTLtahTWufIRFnu3IpoCisigXDTlkF2/NzFknbl0yJxcr/IYBVYuaHZDDNn+O
-         2uyfPzlY+Z7gnt+uArmxwOkc1awAzHqaRa6NgeixEfkGuFPIkAeJ0P7Brjuofrp1b3yI
-         NA1Qtv0X53ZQkfnvRIlT0N++YtYdsl/PRDifmnoy/p11DT8PQklJmJ00CIkEyL/DelJS
-         CEww==
+        b=WMZT2MlxtJQZMImk5gn8fMJ1YoJ45ZzZD1dteleML8+gWSswJ8B08qw8Werjw9xoFm
+         PHXfyfSnguOC6wriiaaMsbIcYMSMOdJPc8qqklZrXbXR/80jcY6U43wFCsIsraBprLWt
+         q5w/k+LWTz2u2ZgIzUbph5IPKMSTR7Rgr9MMXXqqRMO7mPGCdyhBmd1hEG1ixonfjcNM
+         JOGfyl/Ej3QyOwK2RoPmJ8uwwzLxTeeKbBECOa5RwWppFcKsXPbwajnP82p8h9NE/Ix5
+         DS+2Z7e9jgnr+bPJHVQ2PE7+FyR79Z6ji3uNeJIcfDqf/Zsn6naFXjKn/61HyiN/eOD4
+         KKNA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:to:dkim-signature
+         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
+         :references:in-reply-to:mime-version:dkim-signature
          :arc-authentication-results;
-        bh=YlqhK39bUbf60GcRMRcIiguN4zjCFyjMV/kXsz9BJ2Q=;
-        b=wDX/GAiLLw5/sSp8xJEUDkQV2T/vz3n71ah2a/BCrlQEZ9fucNRAObcKHHXNGVqOUd
-         YOaul0ggKLi8EsI3O4E1mhisO5Tvqu89cWlUHg7rNOj8kCEF2mwTUi9rGwIguiTKkjQn
-         Pt/tdV3z2XKj0VnzYNa++fQcoeQ8NB2Iv1bCCo0jmfdk9aOI9PbzbjxsZ2ISZWx8geeI
-         UPEwT2NMzONj4hDPVaJ7MaOb26FhoQR2WCsZlkURDNzFWwdwzBRnyaN3F0Xn2KNAc4Rj
-         fgJcGiUCIlZaYk82/9v5gQgcUX/2Adp+zV+qk/BuWbi/PsR4wgcesqa2eEetDNlOGBaz
-         6m2w==
+        bh=sX0eqCHU1joHRIpmkEEodvvF2uJDIoMJkagmscqWRtw=;
+        b=huLXclCmaZnzOOvUSUDOnyhYRlUoXs0yqLfGJ63IGOEqhNzRn+PhqFjvhMsVt4S5gG
+         3yxsTpGFKm3yklVwIjmCzcAbkSV7X4OHbFBUxg/gur8kFAHRDlCCw79DtechmXUTwbaW
+         BaqixpXzOh9sNdIez/SRJ9TMceH7SlWlTR50K5X9v2sUKDnPbmG1h/nKG/7W0nofj9iM
+         iYYuO3EfPV6jirIwA4yVAfy1Ih5z6jhaBl09qBW8LCkf9Scz+GBGpWQ/ejD0HsaIohZv
+         JYtYRiJvzv3XNnV+KOs4MAf/ggo8bNcPtc9sYdTMSKBAwWSw2gil/glfpECFpl/i1CNB
+         rrdw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=eKSlhWpM;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=bksKvdBE;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id b11si1814010qte.509.2017.09.14.11.08.49
+        by mx.google.com with ESMTPS id r200si222303qke.224.2017.09.14.23.31.50
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 14 Sep 2017 11:08:50 -0700 (PDT)
+        Thu, 14 Sep 2017 23:31:50 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=eKSlhWpM;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:49277 helo=lists.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=bksKvdBE;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:51551 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1dsYZE-0002gP-3e
-	for alex.bennee@linaro.org; Thu, 14 Sep 2017 14:08:48 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:57745)
+	id 1dskAG-0007tW-Ln
+	for alex.bennee@linaro.org; Fri, 15 Sep 2017 02:31:48 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:59977)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1dsYW1-000051-Va
-	for qemu-arm@nongnu.org; Thu, 14 Sep 2017 14:05:31 -0400
+	(envelope-from <sundeep.lkml@gmail.com>) id 1dskA5-0007rP-TO
+	for qemu-arm@nongnu.org; Fri, 15 Sep 2017 02:31:38 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1dsYVx-0007w0-VU
-	for qemu-arm@nongnu.org; Thu, 14 Sep 2017 14:05:29 -0400
-Received: from mail-qt0-x231.google.com ([2607:f8b0:400d:c0d::231]:46150)
+	(envelope-from <sundeep.lkml@gmail.com>) id 1dskA5-0003hu-0K
+	for qemu-arm@nongnu.org; Fri, 15 Sep 2017 02:31:37 -0400
+Received: from mail-vk0-x243.google.com ([2607:f8b0:400c:c05::243]:38138)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1dsYVx-0007ve-Qb; Thu, 14 Sep 2017 14:05:25 -0400
-Received: by mail-qt0-x231.google.com with SMTP id s18so138989qta.3;
-	Thu, 14 Sep 2017 11:05:25 -0700 (PDT)
+	(Exim 4.71) (envelope-from <sundeep.lkml@gmail.com>)
+	id 1dskA2-0003f6-7v; Fri, 15 Sep 2017 02:31:34 -0400
+Received: by mail-vk0-x243.google.com with SMTP id o22so359766vke.5;
+	Thu, 14 Sep 2017 23:31:34 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=sender:subject:to:cc:references:from:message-id:date:user-agent
-	:mime-version:in-reply-to:content-language:content-transfer-encoding;
-	bh=YlqhK39bUbf60GcRMRcIiguN4zjCFyjMV/kXsz9BJ2Q=;
-	b=eKSlhWpMNhZMBxbPyLpkD0xyG5K0yGOOz/JoZFliwOU8KhwE11btoXfe6hrR1iGDgj
-	h3sPkKUuv2Cn6DTIZisHbTPOC7G/ODT+0A0/pWiuPc6jao/AYs8Rk9bLjSr/3t/xYAeU
-	3F+KInwRBUYWMQLMX8liosgcT1L5n/V36iz2lW2oCY5+TLg2uXlgYvJIpmrm1rOeIkoZ
-	k08ctJAK7JiuC0u1jQpz+MyMy6iDjWgdxIThBNWMyAxzfQv8XBA9/8lmvDEI60Y6m3AE
-	QlOFIH01Nzk7O0p0EbtEDZBtKT5svnQ75MyZtEpxr6ghD7EjEympth4V4J3ekhrU+HD0
-	DlJg==
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=sX0eqCHU1joHRIpmkEEodvvF2uJDIoMJkagmscqWRtw=;
+	b=bksKvdBEdkpcEgxzbpCVw/+SyjlndGrxjwQ4AiS2TCGSOVH1Sz8NmRiW6g62i2/VMc
+	/q3Z1+UbV3G5MLg1FDXiuzuIvmY5LcwHAX2o4nVRjTrnKRmF+mlam+8jRvffUh2eOs9m
+	pjZPHrePS95KEF1KAStDN/mD2usmpGyukSYHbJqb18ZUV0m1Nl4ZTcd6N3aDwQtdW/rw
+	QiYckF1dFSDOEkj6oChL7t3WsxPlh0ZBZ0Pq8t1rrAO4v0ZQgQ9quNOE+pbOAVVd6pIJ
+	VrscY7kbExjBhs2X5HEYNS03uoFjVSRlqIK1aqvh7h5TPMc2phAF9DXr2Vu6KVmykE6E
+	2+TA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
-	:date:user-agent:mime-version:in-reply-to:content-language
-	:content-transfer-encoding;
-	bh=YlqhK39bUbf60GcRMRcIiguN4zjCFyjMV/kXsz9BJ2Q=;
-	b=pwP3bjrQkMI0UbjShCwJI2F5IeqmmzlqzYPqwpDR1M1pSJ9n97k/tlN8QBETBEjU8f
-	0SWP5S2PP5BmP3bNOLL+Fn8aWMzEhkBm7gxe7zQ35HnRsoY5s7k2dPZJw6EwlssYpnvD
-	Jk69OLokSNoSqF51ompeP7tqM26vDuK/3YI9G5nW2hF6J68mi581sxW3xxusyLT8ZAs/
-	NQGMRv+oAzmZEY4xYGtBoLsX9kjpo1aq1bcROa/V7Lc2/0Zt/NuYuFU4gQ+vwdpkuLYL
-	ut4FWT07Qk5BeDZCq2OO9eGMLFlY6vg4MxV9s/rCNTV2d1GMKtQRp2f2gDx+IZ3bQfS6
-	n3dQ==
-X-Gm-Message-State: AHPjjUjNfjEyWORrFQBVg3m56uBuj4dTJPiieaQXfCmSHT2ORTU1XfdB
-	c9C0f2qnXeaJ0Q==
-X-Google-Smtp-Source: AOwi7QD2JwiDpuID3o3o40GgIqcwhNUk6IHayq6AIZiwqHiJLxoGRJLjKQmO6xyVj29QmzZMIkBt9w==
-X-Received: by 10.200.5.2 with SMTP id u2mr10561645qtg.131.1505412325220;
-	Thu, 14 Sep 2017 11:05:25 -0700 (PDT)
-Received: from [192.168.1.10] ([181.93.89.178])
-	by smtp.gmail.com with ESMTPSA id
-	x189sm11182829qkd.70.2017.09.14.11.05.22
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Thu, 14 Sep 2017 11:05:24 -0700 (PDT)
-To: sundeep subbaraya <sundeep.lkml@gmail.com>,
-	Peter Maydell <peter.maydell@linaro.org>
-References: <1504812251-23438-1-git-send-email-sundeep.lkml@gmail.com>
-	<1504812251-23438-3-git-send-email-sundeep.lkml@gmail.com>
-	<a9891f10-9643-96ee-7f99-7a384b9ea302@amsat.org>
-	<CAFEAcA8KUtG=2Cr_PndUqOxp5PN6bTJR_t=s+Ch+Y2WVfHVjQg@mail.gmail.com>
-	<CALHRZupPj2cJJAr57n+E6Q0xF1qpsewHsDzS03mQmoHfL98j6g@mail.gmail.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <99bf0b39-f889-7873-55cf-05ac3a55a55e@amsat.org>
-Date: Thu, 14 Sep 2017 15:05:21 -0300
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.3.0
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=sX0eqCHU1joHRIpmkEEodvvF2uJDIoMJkagmscqWRtw=;
+	b=tkIgvaE8ZdKR+63un3Onb+eMNWYnwFbQ61Z+2UlQfUuisJ12f347S1iaA/KZQ382ng
+	n4UQFHufgA52yY3Ubrr+3Q4Ypxm3Ia/j4kxbT3ndEYhCpTOjv+N18zmUqOkCwO3M/4Ej
+	wIlFpCii0gkWXq//DveVqCPL2tYlfJSSiRdx6z++AqdlPuGSYQivyPbCnKmx84e7crf6
+	GAhcVAWAhkmXa2tHLUVMvSfTS3OKz3MiXPPkpQHG38hi9LcwMcOb9tGSKZyWnaE8qi2K
+	M2fQFCocccCyWOMb6IpaA7GsZSBH93Eg9FM2oNfOVi/7Ho3uS7T5Qrbt+VrQUjSn2C3U
+	anTQ==
+X-Gm-Message-State: AHPjjUgwIsbaIvwBbN7/FgZ0PsrXhJ64I4N2MO9F6zbyw4p85KHuX4Ro
+	8DiEwoYieQE0d61EmZwlACZrwjXuXTlk5kmrTzw=
+X-Google-Smtp-Source: AOwi7QBUsMg8PCDNrK/xBVKMIGr5KzyVpH6dZ7rRGFccF9Epgc3NFNyPz1l3DuzYyXoErAcYOnTMIp1lULUHPYZlgW4=
+X-Received: by 10.31.181.200 with SMTP id e191mr14981350vkf.55.1505457093508; 
+	Thu, 14 Sep 2017 23:31:33 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <CALHRZupPj2cJJAr57n+E6Q0xF1qpsewHsDzS03mQmoHfL98j6g@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
+Received: by 10.176.66.68 with HTTP; Thu, 14 Sep 2017 23:31:33 -0700 (PDT)
+In-Reply-To: <CAFEAcA_D=4M2vyo4m2xPi_hFDCmoKHk5kLY3s1ota602ywgHTQ@mail.gmail.com>
+References: <1504812251-23438-1-git-send-email-sundeep.lkml@gmail.com>
+	<1504812251-23438-6-git-send-email-sundeep.lkml@gmail.com>
+	<CAFEAcA_D=4M2vyo4m2xPi_hFDCmoKHk5kLY3s1ota602ywgHTQ@mail.gmail.com>
+From: sundeep subbaraya <sundeep.lkml@gmail.com>
+Date: Fri, 15 Sep 2017 12:01:33 +0530
+Message-ID: <CALHRZuoviT4xbYLVWPybVTkASZquxhcQU=h4+YC1KK=1SW=VWQ@mail.gmail.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+Content-Type: multipart/alternative; boundary="001a114398c04882aa0559348bdd"
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400d:c0d::231
-Subject: Re: [Qemu-arm] [Qemu devel v8 PATCH 2/5] msf2: Microsemi
- Smartfusion2 System Register block
+X-Received-From: 2607:f8b0:400c:c05::243
+Subject: Re: [Qemu-arm] [Qemu devel v8 PATCH 5/5] msf2: Add Emcraft's
+ Smartfusion2 SOM kit
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -121,106 +107,96 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Alistair Francis <alistair23@gmail.com>, qemu-arm <qemu-arm@nongnu.org>,
-	QEMU Developers <qemu-devel@nongnu.org>
+Cc: Alistair Francis <alistair23@gmail.com>,
+	=?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>,
+	qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: o0DPbRxdIg3D
+X-TUID: v86VC/A4oH66
 
->>>> +static uint64_t msf2_sysreg_read(void *opaque, hwaddr offset,
->>>> +    unsigned size)
->>>> +{
->>>> +    MSF2SysregState *s = opaque;
->>>> +    uint32_t ret = 0;
->>>> +
->>>> +    offset >>= 2;
->>>> +    if (offset < ARRAY_SIZE(s->regs)) {
->>>
->>>
->>> This comment is controversial, I'll let Peter nod.
->>>
->>> The SYSREG behaves differently regarding which bus access it (CPU, AHB).
->>> You are implementing CPU access to the SYSREG, the registers have
->> different
->>> permissions when accessed by the CPU. (see the SmartFusion2 User Guide:
->>> Table 21-1 "Register Types" and Table 21-2 "Register Map").
->>
-> 
-> CPU is also one of the bus masters in AHB matrix (Fig 6.1 in page 248).
+--001a114398c04882aa0559348bdd
+Content-Type: text/plain; charset="UTF-8"
 
-I was worried about Fabric access but Peter remembered me QEMU doesn't 
-model it ;)
+Hi Peter,
 
->>> I'd think of this stub:
->>>
->>> switch(reg) {
->>> case register_supported1:
->>> case register_supported2:
->>> case register_supported3:
->>>             ret = s->regs[offset];
->>>             trace_msf2_sysreg_read(offset, ret);
->>>             break;
->>> case RO-U:
->>>             qemu_log_mask(LOG_GUEST_ERROR, "Illegal AHB access 0x%08"...
->>>             break;
->>> case W1P:
->>>             qemu_log_mask(LOG_GUEST_ERROR, "Illegal read access ...
->>>             break;
->>> case RW:
->>> case RW-P:
->>> case RO:
->>> case RO-P:
->>> default:
->>>             ret = s->regs[offset];
->>>             qemu_log_mask(LOG_UNIMP, "...
->>>             break;
->>> }
->>
-> 
-> This sounds good to me and will fix later by rearranging registers in enum
-> sorted
-> based on type (RO, RW, etc.,) and use those ranges in switch case.
+On Thu, Sep 14, 2017 at 10:44 PM, Peter Maydell <peter.maydell@linaro.org>
+wrote:
 
-The Register API (hw/register.h) is helpful to check such properties but 
-might turn your code harder to read.
+> On 7 September 2017 at 20:24, Subbaraya Sundeep <sundeep.lkml@gmail.com>
+> wrote:
+> > Emulated Emcraft's Smartfusion2 System On Module starter
+> > kit.
+> > +static void emcraft_sf2_machine_init(MachineClass *mc)
+> > +{
+> > +    mc->desc = "SmartFusion2 SOM kit from Emcraft (M2S010)";
+> > +    mc->init = emcraft_sf2_s2s010_init;
+> > +    mc->ignore_memory_transaction_failures = true;
+>
+> Please don't set ignore_memory_transaction_failures in new boards.
+> This is a legacy-old-code-only flag.
+>
+> New boards should define enough devices, either properly
+> or using create_unimplemented_device(), to make whatever code
+> they're being tested against run.
+>
+> This is a firm requirement for this code to go into master,
+> because once we let a board in with the flag set it's almost
+> impossible to clear it because we don't know what guest
+> code that previously worked on the board will now break.
+>
 
->>
->> This doesn't look entirely right, since this is the read interface.
->> Shouldn't we be allowing pretty much all of these register types
->> except maybe W1P to do a read?
->>
-> 
-> Peter, some of the registers are not allowed to access by CPU and are only
-> set during
-> device programming. For those registers Philippe is suggesting to log
-> "Illegal AHB access"
-> when guest is trying to read/write.
+Ok. I am working on it and will send next spin with this fix.
 
-I was worried about accessing those registers when the flash 
-WriteProtect bit is set, however the eNVM flash library is not Open 
-Source, it is unlikely a guest access those registers, and if it is the 
-library then MicroSemi already tried it on real hardware.
-There is probably no need to worry about "Illegal AHB access" :)
+Thanks,
+Sundeep
 
->> On the other hand, in the write function we should probably not allow
->> writes to registers documented as read only.
 
-Surely.
+> thanks
+> -- PMM
+>
 
-trace_msf2_sysreg_write(offset, s->regs[offset], ret);
+--001a114398c04882aa0559348bdd
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-switch(reg) {
-case register_supported1:
-case register_supported2:
-case register_supported3:
-            s->regs[offset] = ret;
-            break;
-case RO:
-case RO-P:
-case RO-U:
-            qemu_log_mask(LOG_GUEST_ERROR, "Illegal write access on RO...
-            break;
-default:
-            qemu_log_mask(LOG_UNIMP, "...
-            break;
-}
+<div dir=3D"ltr">Hi Peter,<div class=3D"gmail_extra"><br><div class=3D"gmai=
+l_quote">On Thu, Sep 14, 2017 at 10:44 PM, Peter Maydell <span dir=3D"ltr">=
+&lt;<a href=3D"mailto:peter.maydell@linaro.org" target=3D"_blank">peter.may=
+dell@linaro.org</a>&gt;</span> wrote:<br><blockquote class=3D"gmail_quote" =
+style=3D"margin:0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex"><sp=
+an class=3D"">On 7 September 2017 at 20:24, Subbaraya Sundeep &lt;<a href=
+=3D"mailto:sundeep.lkml@gmail.com">sundeep.lkml@gmail.com</a>&gt; wrote:<br=
+>
+&gt; Emulated Emcraft&#39;s Smartfusion2 System On Module starter<br>
+&gt; kit.<br>
+</span><span class=3D"">&gt; +static void emcraft_sf2_machine_init(<wbr>Mac=
+hineClass *mc)<br>
+&gt; +{<br>
+&gt; +=C2=A0 =C2=A0 mc-&gt;desc =3D &quot;SmartFusion2 SOM kit from Emcraft=
+ (M2S010)&quot;;<br>
+&gt; +=C2=A0 =C2=A0 mc-&gt;init =3D emcraft_sf2_s2s010_init;<br>
+&gt; +=C2=A0 =C2=A0 mc-&gt;ignore_memory_transaction_<wbr>failures =3D true=
+;<br>
+<br>
+</span>Please don&#39;t set ignore_memory_transaction_<wbr>failures in new =
+boards.<br>
+This is a legacy-old-code-only flag.<br>
+<br>
+New boards should define enough devices, either properly<br>
+or using create_unimplemented_device(), to make whatever code<br>
+they&#39;re being tested against run.<br>
+<br>
+This is a firm requirement for this code to go into master,<br>
+because once we let a board in with the flag set it&#39;s almost<br>
+impossible to clear it because we don&#39;t know what guest<br>
+code that previously worked on the board will now break.<br></blockquote><d=
+iv><br></div><div>Ok. I am working on it and will send next spin with this =
+fix.</div><div>=C2=A0</div><div>Thanks,</div><div>Sundeep</div><div><br></d=
+iv><blockquote class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border-left=
+:1px #ccc solid;padding-left:1ex">
+<br>
+thanks<br>
+-- PMM<br>
+</blockquote></div><br></div></div>
+
+--001a114398c04882aa0559348bdd--

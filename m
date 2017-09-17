@@ -1,289 +1,383 @@
-Received: by 10.223.172.38 with SMTP id v35csp2806948wrc;
-        Sun, 17 Sep 2017 06:46:44 -0700 (PDT)
-X-Received: by 10.46.20.21 with SMTP id u21mr8008998ljd.87.1505656004137;
-        Sun, 17 Sep 2017 06:46:44 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1505656004; cv=none;
+Received: by 10.223.172.38 with SMTP id v35csp3193844wrc;
+        Sun, 17 Sep 2017 16:30:04 -0700 (PDT)
+X-Received: by 10.200.25.124 with SMTP id g57mr9237304qtk.60.1505691004875;
+        Sun, 17 Sep 2017 16:30:04 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1505691004; cv=none;
         d=google.com; s=arc-20160816;
-        b=pHFA254CfpL2qJ7a19JlfApQlR8UzV4hF29BINUInVTsJ+a++ak6vd6wNMqYv2loAp
-         TUD0sNf43qkN4ChMffAjbSimCxiao23WtjN9bsDRZOGCY0Mpub52AHCmmqumhnmmt+xt
-         KHAEY4+Mx1NZ3kMmjt4wGmIyoMpz7xmZQu/N74oM5JVS0Ixsis1bj3xMH52yRGYvJ6ur
-         kLZ6kuMa0lgXnsc5SYKbuWxhWSTBqDUraB7gTRQbFAFn6zJfRe4bnOZNlNgSMOAAKvgU
-         io1V2THV2xre8Z2I541hGiVE4K0mXGpgPtlwrFfUqhFvKxLFi9pRWXQxdgLUjMfR0Ub6
-         2oVQ==
+        b=FPUDRchYzvYrAwmnaxsRH88okiwEfot1SoTP/OAiDC3+sFYAvirdeg2I375gKT+bcV
+         bvLJP+Hlmao4QR2xaciLZBkt+P0SWg7Nini+dp8geya0Wwhbhl/CFldOP5YCYnY4oLo9
+         q7sxAICm32Wp+jL1iJ+xiyX00hM6EyktQ1e09mOe1/1kYoT8AHUi2yq+U74/t6xL0ket
+         KRW8iuAKI1sxAO/N9uDPuI5mcuBbHJcSPtyH8PJfGyHAkhtxCsFev3bgip7T0PVM+m0f
+         BsbI8Ixkny5O+W6y3hUNrlwyN8b/KvLxo8B2Vo0qlNNfGH6udHEeNEYKEc3lUuw/VtRn
+         G9WQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:cc:to:subject
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:mime-version:message-id:date:to:from
          :dkim-signature:arc-authentication-results;
-        bh=yugkV6rg37xYJrr9yMFlYU7NQlre0qyZjIn+EnzVpcg=;
-        b=T67OxUbJ6O7tNm5Wc3PSsscuOwz07wFOJurVCoPPl6JfmmWnc/GmCSsqNkmtmEI2rH
-         SITKgwGkXQNrApjWIonW9EwdDFgFNvgOJw7ZHgBJcBVswpYLTlSpZsTIkbqv+2NLbedp
-         g5BJ0vSakVuq+cpLyEV9iRjG+wyI8LYnJ2YL4pD2LBPn6EY8vWEWagAfm5lE9czeq+7f
-         gIkYxDZC9gh3/jJFXisY2oViNMsIus+Dbd1x4UqEdszH8l2jPMMRBhhv5J9ifPxE58aj
-         eZbMbCIWzgkHCv8lp7NgLZEMr+Mf1/4ub1+ZRsdIu3aeRyI5DbcbgVgqu+wJDGN/PJFa
-         10nQ==
+        bh=zOroSb19kmoQU/bQT4aanpA9QRWKuBpUwRPCcWUTVfc=;
+        b=hi41wKCXln8UB66Z2m5XanUvPh8LTQZJ/4koIhY+iUvlbXzpNKzv92pHJKGG4i7/jq
+         aHz7h3mnaUUXdAAanMVj3BdIFvkK/IZ7gJKN+DTXfVTsySyuCezn5sN744dpgBOZ4txs
+         cbaHGD8HSsb2lhTZbwtvSrxGNeoD0BpUFNS5Uuz/RfYNZHwQ6R1vlgqt8JLqq6NLwJdd
+         8yEyDIZeSZF98Oo9cgW7lZmJG0p0nJUTlLTZPO4L/LDH9fTxSwGpM7yeg5AmRZCAtNwA
+         v/Fq0/M+LS/j33oUxXwirAx1EUov0igATyUHLJdS8PMH2ytpQc1iM8PjBsAaHNgj6bed
+         wjCA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=rOPpg1kT;
-       spf=pass (google.com: domain of digetx@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=digetx@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Return-Path: <digetx@gmail.com>
-Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id l12sor1079698lfl.64.2017.09.17.06.46.44
-        (Google Transport Security);
-        Sun, 17 Sep 2017 06:46:44 -0700 (PDT)
-Received-SPF: pass (google.com: domain of digetx@gmail.com designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=s1C6qcO9;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
+        by mx.google.com with ESMTPS id e92si5790917qtb.380.2017.09.17.16.30.04
+        for <alex.bennee@linaro.org>
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Sun, 17 Sep 2017 16:30:04 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=rOPpg1kT;
-       spf=pass (google.com: domain of digetx@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=digetx@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=subject:to:cc:references:from:message-id:date:user-agent
-         :mime-version:in-reply-to:content-language:content-transfer-encoding;
-        bh=yugkV6rg37xYJrr9yMFlYU7NQlre0qyZjIn+EnzVpcg=;
-        b=rOPpg1kTIe+55w3LCvOlICiqRiC3q0x/BSulL747H4K5x8ZBeu281YAFZUzgv+96RS
-         xMFbRUxOtcB1zBh8rFExPji7Id6qJyAZWheGr2SWeyl4Y9x7uq4oTkMnIvQHlc66fU0d
-         /m6Cef6U8pZcS1qU9trJ06Bu0+osIKMS6RgyYum5crN7/fPszSrBTiOBdlt7moT+RE2v
-         wXvJigaLiEoZ1xvJLgB7NxdxGlMHxKBb77bVjUG4/uhOlHjzEOBFn5p0SQ+6YOYJsi3M
-         z1CMWCPNNHQvvo47qG5X961ymNZNPZS+P2Tq+L94OcY5qtq4W/HXlHLzjoKbSa7Xsec5
-         z/Lg==
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=s1C6qcO9;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:33990 helo=lists.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1dtj0k-0000DH-L4
+	for alex.bennee@linaro.org; Sun, 17 Sep 2017 19:30:02 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:46258)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1dtizo-0008FU-TH
+	for qemu-devel@nongnu.org; Sun, 17 Sep 2017 19:29:07 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1dtizk-00056p-9c
+	for qemu-devel@nongnu.org; Sun, 17 Sep 2017 19:29:04 -0400
+Received: from mail-qt0-x244.google.com ([2607:f8b0:400d:c0d::244]:33285)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1dtizk-00056e-4v; Sun, 17 Sep 2017 19:29:00 -0400
+Received: by mail-qt0-x244.google.com with SMTP id b1so4720160qtc.0;
+	Sun, 17 Sep 2017 16:29:00 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=sender:from:to:cc:subject:date:message-id:mime-version
+	:content-transfer-encoding;
+	bh=zOroSb19kmoQU/bQT4aanpA9QRWKuBpUwRPCcWUTVfc=;
+	b=s1C6qcO9tVTLkcKtetF+YWa1XeM6BlXyliGf0dpaZyMIAGOmz27jtA8wmLSh4H1gk0
+	NZkWYqR3aVgDApsYhIV9Z2dzYiRF87rOz9nNlEIGqd9aFiPwTBRMon9W4ztLOzhoUpe3
+	4mU2kdKxqvl09SgQxbCUqMgjJLKyxPrHGCapXDN+GbS+E41go9n83ArMLc2/Q2seBl40
+	Lvus+Dxy3JmSMbYz+BZNWmKopc/SWUrIpBKKT+sWqGOC6bMXFJE5XgeCd3v+9ipco2kl
+	IA0ot0PdVE1oqzcYz8dmScHw8c9Sny9srmw3ANUlWek8SdNTkFWSvPAl/+k5SuaAamw1
+	i8Yg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:subject:to:cc:references:from:message-id:date
-         :user-agent:mime-version:in-reply-to:content-language
-         :content-transfer-encoding;
-        bh=yugkV6rg37xYJrr9yMFlYU7NQlre0qyZjIn+EnzVpcg=;
-        b=bPTpOH8ONq97kpEbHhbZyjCsbJmIey6A3rJlh+2CZFWX7q1eCKqtyLky/jHfyrKaay
-         NVTy6NgSfb9NaFbbkuMqa76jkhzSqF9lfNssLbN9QCrX5NpQEMisjCA5cqjZC6jed4F2
-         H8z+9+JXeMTidYAPwarcqOO7ZzW+kKOyoxAy+1go3D9GQue4m6EL25ogfJjRpwyF9Hkq
-         qVdBo360jUvNYMyoeMVsFdZXKUHpS0FEWJFFZN7hew2ThtR55HLRpg0bAk5dQQMLAY0i
-         pvi7P1A6F269PQi6ayWQi8AfNOY98PMQXslGZlJ5AA25S8EQqbCFMqPSmjXgI4RcezBk
-         MjyQ==
-X-Gm-Message-State: AHPjjUijjmaSM1IzfekZAutWXX3Oktup2fY97UFIECEv7DO//CUphyp2
-	09kUhpW/XihqLC4uQyU=
-X-Google-Smtp-Source: AOwi7QCXFmvtVtvOeOK3MGb6CrLgP+XhBd0lbgC4VK0WyaxSo0agHuejHxT3AzXTgR7gGCN8iUCWiA==
-X-Received: by 10.25.142.215 with SMTP id a84mr2832323lfl.25.1505656003788;
-        Sun, 17 Sep 2017 06:46:43 -0700 (PDT)
-Return-Path: <digetx@gmail.com>
-Received: from [192.168.1.145] (ppp109-252-91-7.pppoe.spdop.ru. [109.252.91.7])
-        by smtp.googlemail.com with ESMTPSA id x20sm1055306lfd.59.2017.09.17.06.46.42
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 17 Sep 2017 06:46:42 -0700 (PDT)
-Subject: Re: [PULL 22/24] target-arm: ensure all cross vCPUs TLB flushes
- complete
-To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>
-Cc: peter.maydell@linaro.org, "open list:ARM" <qemu-arm@nongnu.org>,
- qemu-devel@nongnu.org
-References: <20170224112109.3147-1-alex.bennee@linaro.org>
- <20170224112109.3147-23-alex.bennee@linaro.org>
- <7468f944-914c-de89-66fb-f8ad49eb59c1@gmail.com> <87poapbgt0.fsf@linaro.org>
-From: Dmitry Osipenko <digetx@gmail.com>
-Message-ID: <e511a895-b1e3-150f-6555-12ba1fa16273@gmail.com>
-Date: Sun, 17 Sep 2017 16:46:41 +0300
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
- Thunderbird/52.3.0
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
+	:mime-version:content-transfer-encoding;
+	bh=zOroSb19kmoQU/bQT4aanpA9QRWKuBpUwRPCcWUTVfc=;
+	b=A5U54aOTNLiymPqWu4CoVqYXzSUgA811vRNHUvK9MFlLrPPzYaTeS1eFQfBMgSugB1
+	57LEtwFuLuo409nWKND98Vgo6DDYksOUzJxAtaaaKRZB1OHb/YsqTLybXrHV7MSqoYiP
+	RMysanXVC+GrrqUTIL5sBOhMOJZYWvq0Sxg1wbWh35mfFntT0Ovf0EKrVbVGuwkPutn3
+	xRgmKWj3myJUedN7gNNujNoXlCYpoQ0h+rIZRWKCC4kdyh7ubY9X4bUdxC8EcGly9NTb
+	hZw1yzLOOICXgwVnWLb9sA5dFKNWDKbib9eONsnGIQHF5m9i/aIeiocvI6Qs8J1TUizC
+	gg5w==
+X-Gm-Message-State: AHPjjUgONJ2vrIsHXBYLl54jjDs4pT5Z1LevG4JXFrQP2+Ojf5dvWztX
+	jx5ii3wUVkMIww==
+X-Google-Smtp-Source: AOwi7QDTmJipiRIA7tpmUDAMhb1yLVao+rS5Bxi9BGL5MLBK+ydix95rDnM+nSrTrCF+qJM9A05p+Q==
+X-Received: by 10.200.15.132 with SMTP id b4mr49202021qtk.127.1505690939552;
+	Sun, 17 Sep 2017 16:28:59 -0700 (PDT)
+Received: from yoga.offpageads.com ([181.93.89.178])
+	by smtp.gmail.com with ESMTPSA id
+	u133sm4162279qka.92.2017.09.17.16.28.51
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Sun, 17 Sep 2017 16:28:58 -0700 (PDT)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+To: Igor Mammedov <imammedo@redhat.com>, Eduardo Habkost <ehabkost@redhat.com>,
+	Stefan Hajnoczi <stefanha@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+	=?UTF-8?q?Llu=C3=ADs=20Vilanova?= <vilanova@ac.upc.edu>,
+	Richard Henderson <rth@twiddle.net>, Alexander Graf <agraf@suse.de>,
+	Anthony Green <green@moxielogic.com>,
+	Artyom Tarasenko <atar4qemu@gmail.com>,
+	Aurelien Jarno <aurelien@aurel32.net>,
+	Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
+	Chris Wulff <crwulff@gmail.com>,
+	David Gibson <david@gibson.dropbear.id.au>,
+	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+	Guan Xuetao <gxt@mprc.pku.edu.cn>, Laurent Vivier <laurent@vivier.eu>,
+	Marek Vasut <marex@denx.de>,
+	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+	Max Filippov <jcmvbkbc@gmail.com>, Michael Walle <michael@walle.cc>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	Stafford Horne <shorne@gmail.com>, Yongbok Kim <yongbok.kim@imgtec.com>
+Date: Sun, 17 Sep 2017 20:28:42 -0300
+Message-Id: <20170917232842.14544-1-f4bug@amsat.org>
+X-Mailer: git-send-email 2.14.1
 MIME-Version: 1.0
-In-Reply-To: <87poapbgt0.fsf@linaro.org>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: PkTg51IRangU
-
-On 17.09.2017 16:22, Alex Bennée wrote:
-> 
-> Dmitry Osipenko <digetx@gmail.com> writes:
-> 
->> On 24.02.2017 14:21, Alex Bennée wrote:
->>> Previously flushes on other vCPUs would only get serviced when they
->>> exited their TranslationBlocks. While this isn't overly problematic it
->>> violates the semantics of TLB flush from the point of view of source
->>> vCPU.
->>>
->>> To solve this we call the cputlb *_all_cpus_synced() functions to do
->>> the flushes which ensures all flushes are completed by the time the
->>> vCPU next schedules its own work. As the TLB instructions are modelled
->>> as CP writes the TB ends at this point meaning cpu->exit_request will
->>> be checked before the next instruction is executed.
->>>
->>> Deferring the work until the architectural sync point is a possible
->>> future optimisation.
->>>
->>> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
->>> Reviewed-by: Richard Henderson <rth@twiddle.net>
->>> Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
->>> ---
->>>  target/arm/helper.c | 165 ++++++++++++++++++++++------------------------------
->>>  1 file changed, 69 insertions(+), 96 deletions(-)
->>>
->>
->> Hello,
->>
->> I have an issue with Linux kernel stopping to boot on a SMP 32bit ARM (haven't
->> checked 64bit) in a single-threaded TCG mode. Kernel reaches point where it
->> should mount rootfs over NFS and vCPUs stop. This issue is reproducible with any
->> 32bit ARM machine type. Kernel boots fine with a MTTCG accel, only
->> single-threaded TCG is affected. Git bisection lead to this patch, any
->> ideas?
-> 
-> It shouldn't cause a problem but can you obtain a backtrace of the
-> system when hung?
-> 
-
-Actually, it looks like TCG enters infinite loop. Do you mean backtrace of QEMU
-by 'backtrace of the system'? If so, here it is:
-
-Thread 4 (Thread 0x7ffa37f10700 (LWP 20716)):
-
-#0  0x00007ffa601888bd in poll () at ../sysdeps/unix/syscall-template.S:84
-
-#1  0x00007ffa5e3aa561 in poll (__timeout=-1, __nfds=2, __fds=0x7ffa30006dc0) at
-/usr/include/bits/poll2.h:46
-#2  poll_func (ufds=0x7ffa30006dc0, nfds=2, timeout=-1, userdata=0x557bd603eae0)
-at
-/var/tmp/portage/media-sound/pulseaudio-10.0/work/pulseaudio-10.0/src/pulse/thread-mainloop.c:69
-#3  0x00007ffa5e39bbb1 in pa_mainloop_poll (m=m@entry=0x557bd60401f0) at
-/var/tmp/portage/media-sound/pulseaudio-10.0/work/pulseaudio-10.0/src/pulse/mainloop.c:844
-#4  0x00007ffa5e39c24e in pa_mainloop_iterate (m=0x557bd60401f0,
-block=<optimized out>, retval=0x0) at
-/var/tmp/portage/media-sound/pulseaudio-10.0/work/pulseaudio-10.0/src/pulse/mainloop.c:926
-#5  0x00007ffa5e39c300 in pa_mainloop_run (m=0x557bd60401f0,
-retval=retval@entry=0x0) at
-/var/tmp/portage/media-sound/pulseaudio-10.0/work/pulseaudio-10.0/src/pulse/mainloop.c:944
-
-#6  0x00007ffa5e3aa4a9 in thread (userdata=0x557bd60400f0) at
-/var/tmp/portage/media-sound/pulseaudio-10.0/work/pulseaudio-10.0/src/pulse/thread-mainloop.c:100
-
-#7  0x00007ffa599eea38 in internal_thread_func (userdata=0x557bd603e090) at
-/var/tmp/portage/media-sound/pulseaudio-10.0/work/pulseaudio-10.0/src/pulsecore/thread-posix.c:81
-
-#8  0x00007ffa60453657 in start_thread (arg=0x7ffa37f10700) at
-pthread_create.c:456
-
-#9  0x00007ffa60193c5f in clone () at
-../sysdeps/unix/sysv/linux/x86_64/clone.S:97
-
-
-
-
-
-Thread 3 (Thread 0x7ffa4adff700 (LWP 20715)):
-
-
-#0  0x00007ffa53e51caf in code_gen_buffer ()
-
-
-#1  0x0000557bd2fa7f17 in cpu_tb_exec (cpu=0x557bd56160a0, itb=0x7ffa53e51b80
-<code_gen_buffer+15481686>) at /home/dima/vl/qemu-tests/accel/tcg/cpu-exec.c:166
-
-#2  0x0000557bd2fa8e0f in cpu_loop_exec_tb (cpu=0x557bd56160a0,
-tb=0x7ffa53e51b80 <code_gen_buffer+15481686>, last_tb=0x7ffa4adfea68,
-tb_exit=0x7ffa4adfea64) at /home/dima/vl/qemu-tests/accel/tcg/cpu-exec.c:613
-#3  0x0000557bd2fa90ff in cpu_exec (cpu=0x557bd56160a0) at
-/home/dima/vl/qemu-tests/accel/tcg/cpu-exec.c:711
-
-#4  0x0000557bd2f6dcba in tcg_cpu_exec (cpu=0x557bd56160a0) at
-/home/dima/vl/qemu-tests/cpus.c:1270
-
-#5  0x0000557bd2f6dee1 in qemu_tcg_rr_cpu_thread_fn (arg=0x557bd5598e20) at
-/home/dima/vl/qemu-tests/cpus.c:1365
-
-#6  0x00007ffa60453657 in start_thread (arg=0x7ffa4adff700) at
-pthread_create.c:456
-
-#7  0x00007ffa60193c5f in clone () at
-../sysdeps/unix/sysv/linux/x86_64/clone.S:97
-
-
-
-
-
-
-
-Thread 2 (Thread 0x7ffa561bf700 (LWP 20714)):
-
-
-
-#0  syscall () at ../sysdeps/unix/sysv/linux/x86_64/syscall.S:38
-
-
-
-#1  0x0000557bd34e1eaa in qemu_futex_wait (f=0x557bd4031798
-<rcu_call_ready_event>, val=4294967295) at
-/home/dima/vl/qemu-tests/include/qemu/futex.h:26
-
-
-#2  0x0000557bd34e2071 in qemu_event_wait (ev=0x557bd4031798
-<rcu_call_ready_event>) at util/qemu-thread-posix.c:442
-
-
-#3  0x0000557bd34f9b1f in call_rcu_thread (opaque=0x0) at util/rcu.c:249
-
-
-
-#4  0x00007ffa60453657 in start_thread (arg=0x7ffa561bf700) at
-pthread_create.c:456
-
-
-#5  0x00007ffa60193c5f in clone () at
-../sysdeps/unix/sysv/linux/x86_64/clone.S:97
-
-
-
-
-
-
-
-Thread 1 (Thread 0x7ffa67502600 (LWP 20713)):
-
-
-
-#0  0x00007ffa601889ab in __GI_ppoll (fds=0x557bd5bbf160, nfds=11,
-timeout=<optimized out>, sigmask=0x0) at ../sysdeps/unix/sysv/linux/ppoll.c:39
-
-
-#1  0x0000557bd34dc460 in qemu_poll_ns (fds=0x557bd5bbf160, nfds=11,
-timeout=29841115) at util/qemu-timer.c:334
-
-
-#2  0x0000557bd34dd488 in os_host_main_loop_wait (timeout=29841115) at
-util/main-loop.c:255
-
-
-#3  0x0000557bd34dd557 in main_loop_wait (nonblocking=0) at util/main-loop.c:515
-
-
-
-#4  0x0000557bd3120f0e in main_loop () at vl.c:1999
-
-
-
-#5  0x0000557bd3128d4a in main (argc=17, argv=0x7ffe7de2a248,
-envp=0x7ffe7de2a2d8) at vl.c:4877
-
->>
->> Example:
->>
->> qemu-system-arm -M vexpress-a9 -smp cpus=2 -accel accel=tcg,thread=single
->> -kernel arch/arm/boot/zImage -dtb arch/arm/boot/dts/vexpress-v2p-ca9.dtb -serial
->> stdio -net nic,model=lan9118 -net user -d in_asm,out_asm -D /tmp/qemulog
->>
->> Last TB from the log:
->> ----------------
->> IN:
->> 0xc011a450:  ee080f73      mcr	15, 0, r0, cr8, cr3, {3}
->>
->> OUT: [size=68]
->> 0x7f32d8b93f80:  mov    -0x18(%r14),%ebp
->> 0x7f32d8b93f84:  test   %ebp,%ebp
->> 0x7f32d8b93f86:  jne    0x7f32d8b93fb8
->> 0x7f32d8b93f8c:  mov    %r14,%rdi
->> 0x7f32d8b93f8f:  mov    $0x5620f2aea5d0,%rsi
->> 0x7f32d8b93f99:  mov    (%r14),%edx
->> 0x7f32d8b93f9c:  mov    $0x5620f18107ca,%r10
->> 0x7f32d8b93fa6:  callq  *%r10
->> 0x7f32d8b93fa9:  movl   $0xc011a454,0x3c(%r14)
->> 0x7f32d8b93fb1:  xor    %eax,%eax
->> 0x7f32d8b93fb3:  jmpq   0x7f32d7a4e016
->> 0x7f32d8b93fb8:  lea    -0x14aa07c(%rip),%rax        # 0x7f32d76e9f43
->> 0x7f32d8b93fbf:  jmpq   0x7f32d7a4e016
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:400d:c0d::244
+Subject: [Qemu-devel] [PATCH] qom/cpu: move cpu_model null check to
+ cpu_class_by_name()
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.21
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+	qemu-devel@nongnu.org, qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
+	Marcel Apfelbaum <marcel@redhat.com>,
+	=?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: SRVxo2eNdmFU
+
+and clean every implementation.
+
+Suggested-by: Eduardo Habkost <ehabkost@redhat.com>
+Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+---
+Based-on: 20170917232010.14183-7-f4bug@amsat.org
+
+ qom/cpu.c              | 7 ++++++-
+ target/alpha/cpu.c     | 6 +-----
+ target/arm/cpu.c       | 4 ----
+ target/cris/cpu.c      | 4 ----
+ target/lm32/cpu.c      | 4 ----
+ target/m68k/cpu.c      | 4 ----
+ target/mips/cpu.c      | 4 ----
+ target/moxie/cpu.c     | 8 +-------
+ target/openrisc/cpu.c  | 4 ----
+ target/sh4/cpu.c       | 3 ---
+ target/sparc/cpu.c     | 4 ----
+ target/tricore/cpu.c   | 4 ----
+ target/unicore32/cpu.c | 4 ----
+ target/xtensa/cpu.c    | 4 ----
+ 14 files changed, 8 insertions(+), 56 deletions(-)
+
+diff --git a/qom/cpu.c b/qom/cpu.c
+index dc5392dbeb..411d8cdd2b 100644
+--- a/qom/cpu.c
++++ b/qom/cpu.c
+@@ -311,7 +311,12 @@ static bool cpu_common_has_work(CPUState *cs)
+ 
+ ObjectClass *cpu_class_by_name(const char *typename, const char *cpu_model)
+ {
+-    CPUClass *cc = CPU_CLASS(object_class_by_name(typename));
++    CPUClass *cc;
++
++    if (!cpu_model) {
++        return NULL;
++    }
++    cc = CPU_CLASS(object_class_by_name(typename));
+ 
+     return cc->class_by_name(cpu_model);
+ }
+diff --git a/target/alpha/cpu.c b/target/alpha/cpu.c
+index e6c6aabdf0..b8a21f4e01 100644
+--- a/target/alpha/cpu.c
++++ b/target/alpha/cpu.c
+@@ -127,14 +127,10 @@ static const AlphaCPUAlias alpha_cpu_aliases[] = {
+ 
+ static ObjectClass *alpha_cpu_class_by_name(const char *cpu_model)
+ {
+-    ObjectClass *oc = NULL;
++    ObjectClass *oc;
+     char *typename;
+     int i;
+ 
+-    if (cpu_model == NULL) {
+-        return NULL;
+-    }
+-
+     oc = object_class_by_name(cpu_model);
+     if (oc != NULL && object_class_dynamic_cast(oc, TYPE_ALPHA_CPU) != NULL &&
+         !object_class_is_abstract(oc)) {
+diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+index 412e94c7ad..ea219c2dde 100644
+--- a/target/arm/cpu.c
++++ b/target/arm/cpu.c
+@@ -906,10 +906,6 @@ static ObjectClass *arm_cpu_class_by_name(const char *cpu_model)
+     char *typename;
+     char **cpuname;
+ 
+-    if (!cpu_model) {
+-        return NULL;
+-    }
+-
+     cpuname = g_strsplit(cpu_model, ",", 1);
+     typename = g_strdup_printf("%s-" TYPE_ARM_CPU, cpuname[0]);
+     oc = object_class_by_name(typename);
+diff --git a/target/cris/cpu.c b/target/cris/cpu.c
+index ceebfed79b..88d93f2d11 100644
+--- a/target/cris/cpu.c
++++ b/target/cris/cpu.c
+@@ -69,10 +69,6 @@ static ObjectClass *cris_cpu_class_by_name(const char *cpu_model)
+     ObjectClass *oc;
+     char *typename;
+ 
+-    if (cpu_model == NULL) {
+-        return NULL;
+-    }
+-
+ #if defined(CONFIG_USER_ONLY)
+     if (strcasecmp(cpu_model, "any") == 0) {
+         return object_class_by_name("crisv32-" TYPE_CRIS_CPU);
+diff --git a/target/lm32/cpu.c b/target/lm32/cpu.c
+index 2b8c36b6d0..bf081f56d2 100644
+--- a/target/lm32/cpu.c
++++ b/target/lm32/cpu.c
+@@ -246,10 +246,6 @@ static ObjectClass *lm32_cpu_class_by_name(const char *cpu_model)
+     ObjectClass *oc;
+     char *typename;
+ 
+-    if (cpu_model == NULL) {
+-        return NULL;
+-    }
+-
+     typename = g_strdup_printf("%s-" TYPE_LM32_CPU, cpu_model);
+     oc = object_class_by_name(typename);
+     g_free(typename);
+diff --git a/target/m68k/cpu.c b/target/m68k/cpu.c
+index 55bf24bae6..8c70e0805c 100644
+--- a/target/m68k/cpu.c
++++ b/target/m68k/cpu.c
+@@ -87,10 +87,6 @@ static ObjectClass *m68k_cpu_class_by_name(const char *cpu_model)
+     ObjectClass *oc;
+     char *typename;
+ 
+-    if (cpu_model == NULL) {
+-        return NULL;
+-    }
+-
+     typename = g_strdup_printf("%s-" TYPE_M68K_CPU, cpu_model);
+     oc = object_class_by_name(typename);
+     g_free(typename);
+diff --git a/target/mips/cpu.c b/target/mips/cpu.c
+index 1a9a3ed94d..c15b894362 100644
+--- a/target/mips/cpu.c
++++ b/target/mips/cpu.c
+@@ -166,10 +166,6 @@ static ObjectClass *mips_cpu_class_by_name(const char *cpu_model)
+     ObjectClass *oc;
+     char *typename;
+ 
+-    if (cpu_model == NULL) {
+-        return NULL;
+-    }
+-
+     typename = mips_cpu_type_name(cpu_model);
+     oc = object_class_by_name(typename);
+     g_free(typename);
+diff --git a/target/moxie/cpu.c b/target/moxie/cpu.c
+index 748d02f29e..30bd44fcad 100644
+--- a/target/moxie/cpu.c
++++ b/target/moxie/cpu.c
+@@ -89,13 +89,7 @@ static void moxie_cpu_initfn(Object *obj)
+ 
+ static ObjectClass *moxie_cpu_class_by_name(const char *cpu_model)
+ {
+-    ObjectClass *oc;
+-
+-    if (cpu_model == NULL) {
+-        return NULL;
+-    }
+-
+-    oc = object_class_by_name(cpu_model);
++    ObjectClass *oc = object_class_by_name(cpu_model);
+     if (oc != NULL && (!object_class_dynamic_cast(oc, TYPE_MOXIE_CPU) ||
+                        object_class_is_abstract(oc))) {
+         return NULL;
+diff --git a/target/openrisc/cpu.c b/target/openrisc/cpu.c
+index a979f0bf8b..af9cdcc102 100644
+--- a/target/openrisc/cpu.c
++++ b/target/openrisc/cpu.c
+@@ -108,10 +108,6 @@ static ObjectClass *openrisc_cpu_class_by_name(const char *cpu_model)
+     ObjectClass *oc;
+     char *typename;
+ 
+-    if (cpu_model == NULL) {
+-        return NULL;
+-    }
+-
+     typename = g_strdup_printf("%s-" TYPE_OPENRISC_CPU, cpu_model);
+     oc = object_class_by_name(typename);
+     g_free(typename);
+diff --git a/target/sh4/cpu.c b/target/sh4/cpu.c
+index 6ce7cba5a9..252440e019 100644
+--- a/target/sh4/cpu.c
++++ b/target/sh4/cpu.c
+@@ -133,9 +133,6 @@ static ObjectClass *superh_cpu_class_by_name(const char *cpu_model)
+     ObjectClass *oc;
+     GSList *list, *item;
+ 
+-    if (cpu_model == NULL) {
+-        return NULL;
+-    }
+     if (strcasecmp(cpu_model, "any") == 0) {
+         return object_class_by_name(TYPE_SH7750R_CPU);
+     }
+diff --git a/target/sparc/cpu.c b/target/sparc/cpu.c
+index 0806d699e6..beab90f3e6 100644
+--- a/target/sparc/cpu.c
++++ b/target/sparc/cpu.c
+@@ -730,10 +730,6 @@ static ObjectClass *sparc_cpu_class_by_name(const char *cpu_model)
+     ObjectClass *oc;
+     char *typename;
+ 
+-    if (cpu_model == NULL) {
+-        return NULL;
+-    }
+-
+     typename = sparc_cpu_type_name(cpu_model);
+     oc = object_class_by_name(typename);
+     g_free(typename);
+diff --git a/target/tricore/cpu.c b/target/tricore/cpu.c
+index 5ab5b56454..871eb35453 100644
+--- a/target/tricore/cpu.c
++++ b/target/tricore/cpu.c
+@@ -120,10 +120,6 @@ static ObjectClass *tricore_cpu_class_by_name(const char *cpu_model)
+     ObjectClass *oc;
+     char *typename;
+ 
+-    if (!cpu_model) {
+-        return NULL;
+-    }
+-
+     typename = g_strdup_printf("%s-" TYPE_TRICORE_CPU, cpu_model);
+     oc = object_class_by_name(typename);
+     g_free(typename);
+diff --git a/target/unicore32/cpu.c b/target/unicore32/cpu.c
+index c9b78ce68e..138acc9dd8 100644
+--- a/target/unicore32/cpu.c
++++ b/target/unicore32/cpu.c
+@@ -44,10 +44,6 @@ static ObjectClass *uc32_cpu_class_by_name(const char *cpu_model)
+     ObjectClass *oc;
+     char *typename;
+ 
+-    if (cpu_model == NULL) {
+-        return NULL;
+-    }
+-
+     typename = g_strdup_printf("%s-" TYPE_UNICORE32_CPU, cpu_model);
+     oc = object_class_by_name(typename);
+     g_free(typename);
+diff --git a/target/xtensa/cpu.c b/target/xtensa/cpu.c
+index 85897df0a8..dcdc765a86 100644
+--- a/target/xtensa/cpu.c
++++ b/target/xtensa/cpu.c
+@@ -83,10 +83,6 @@ static ObjectClass *xtensa_cpu_class_by_name(const char *cpu_model)
+     ObjectClass *oc;
+     char *typename;
+ 
+-    if (cpu_model == NULL) {
+-        return NULL;
+-    }
+-
+     typename = g_strdup_printf("%s-" TYPE_XTENSA_CPU, cpu_model);
+     oc = object_class_by_name(typename);
+     g_free(typename);
 -- 
-Dmitry
+2.14.1
+

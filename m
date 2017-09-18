@@ -1,200 +1,172 @@
-Received: by 10.25.159.19 with SMTP id i19csp1040141lfe;
-        Wed, 13 Jan 2016 02:49:00 -0800 (PST)
-X-Received: by 10.140.174.2 with SMTP id u2mr120475952qhu.62.1452682140849;
-        Wed, 13 Jan 2016 02:49:00 -0800 (PST)
+Received: by 10.223.172.38 with SMTP id v35csp3764154wrc;
+        Mon, 18 Sep 2017 06:37:44 -0700 (PDT)
+X-Received: by 10.55.39.22 with SMTP id n22mr21144535qkn.293.1505741864691;
+        Mon, 18 Sep 2017 06:37:44 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1505741864; cv=none;
+        d=google.com; s=arc-20160816;
+        b=J/YtLtECLnUfRvpS0T3ztXSRmGyWLzo6V3mXoti0n8KGC42BHaUzEgJpNH/4iHwjIP
+         bUQN+EOBAeyTyamVFBKt9/7KR7FifEvDae66kg8PQgoM9xCFV4KEGSs9tmkpmj+evN3a
+         CB1P1/vWKr46JJ9afv9AcZG7BDH4chHl8wubV43gikThec2yJRhJ0F7+WKbHELsf9w5q
+         /DdL1Ji79ggNzjX0DKnTDEbSt9R2bIEPk+tpRhq3xPhQtIkJsiphVhSSih0lfvz9JH9E
+         pVonvn5naeCgM9LpSxp94xUdMWYgeX3CvcfKUSOyF4KuVPyNdDYe/4JoB9EHRy+NWGrI
+         T17w==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:to:message-id:date:from:references
+         :in-reply-to:mime-version:dkim-signature:arc-authentication-results;
+        bh=Hf5RclMcj7iqc/1sK8lpa9wH+BLwvgtHjMmeFN3O6Qs=;
+        b=iCKkXNxw9G8mA4f/4gf/4T5iJH98uY8p496KF25UYb83aT/Dh9WHSjJazD7HVy3Blk
+         aaU2twO7G0FHR83adPwq7S9p23fZHwPpBezW/vAt6YBLtaObqLWd0G80Se+8gP6N0YYX
+         5/3KVbuPczhFt6rLelEmHGcE5rAVQFewUIou4FW0uaMZlhIpwoQUlAIKAwnrWG5Myps6
+         AE8sGH4LIF+1xZ8Iuh44N+A8HQAfiObPikHeN8z+ubQH4YOao98r9ZVsyWMiERaPOK7x
+         v0A4TcCS8cmObYrZLcrzIFvVTHp9+KAuCzp2GzQO4vly/8ba/sYSlO0feGJGnbRCC0iO
+         m9kA==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b=kukxe3bk;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id 97si755742qgt.89.2016.01.13.02.49.00
+        by mx.google.com with ESMTPS id u10si778384qtf.119.2017.09.18.06.37.44
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 13 Jan 2016 02:49:00 -0800 (PST)
+        Mon, 18 Sep 2017 06:37:44 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:36475 helo=lists.gnu.org)
+       dkim=fail header.i=@linaro.org header.s=google header.b=kukxe3bk;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:36694 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1aJIz6-00072L-Gi
-	for alex.bennee@linaro.org; Wed, 13 Jan 2016 05:49:00 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:53940)
+	id 1dtwF4-0001MN-FZ
+	for alex.bennee@linaro.org; Mon, 18 Sep 2017 09:37:42 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:57835)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <lersek@redhat.com>) id 1aJIyf-0006kV-JW
-	for qemu-devel@nongnu.org; Wed, 13 Jan 2016 05:48:36 -0500
+	(envelope-from <peter.maydell@linaro.org>) id 1dtwEA-00011h-36
+	for qemu-devel@nongnu.org; Mon, 18 Sep 2017 09:36:46 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <lersek@redhat.com>) id 1aJIye-0004BM-Ez
-	for qemu-devel@nongnu.org; Wed, 13 Jan 2016 05:48:33 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:35199)
-	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <lersek@redhat.com>)
-	id 1aJIyV-00049q-P1; Wed, 13 Jan 2016 05:48:23 -0500
-Received: from int-mx10.intmail.prod.int.phx2.redhat.com
-	(int-mx10.intmail.prod.int.phx2.redhat.com [10.5.11.23])
-	by mx1.redhat.com (Postfix) with ESMTPS id 70707C09FAA4;
-	Wed, 13 Jan 2016 10:48:22 +0000 (UTC)
-Received: from lacos-laptop-7.usersys.redhat.com ([10.3.113.3])
-	by int-mx10.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id u0DAmJ30024988; Wed, 13 Jan 2016 05:48:20 -0500
-To: Ard Biesheuvel <ard.biesheuvel@linaro.org>
-References: <1452612274-30218-1-git-send-email-shannon.zhao@linaro.org>
-	<5696246B.8080304@redhat.com>
-	<CAKv+Gu-EaQOAXmbiGp9k55_t1X6SNbtaMScF01qgPKW7SU4vug@mail.gmail.com>
-From: Laszlo Ersek <lersek@redhat.com>
-Message-ID: <56962B73.3080407@redhat.com>
-Date: Wed, 13 Jan 2016 11:48:19 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
-	Thunderbird/38.5.1
+	(envelope-from <peter.maydell@linaro.org>) id 1dtwE9-00059W-9R
+	for qemu-devel@nongnu.org; Mon, 18 Sep 2017 09:36:46 -0400
+Received: from mail-wm0-x22f.google.com ([2a00:1450:400c:c09::22f]:43707)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1dtwE9-00058d-35
+	for qemu-devel@nongnu.org; Mon, 18 Sep 2017 09:36:45 -0400
+Received: by mail-wm0-x22f.google.com with SMTP id a137so13238492wma.0
+	for <qemu-devel@nongnu.org>; Mon, 18 Sep 2017 06:36:44 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc:content-transfer-encoding;
+	bh=Hf5RclMcj7iqc/1sK8lpa9wH+BLwvgtHjMmeFN3O6Qs=;
+	b=kukxe3bk5yK6c+xOl/STufZRNShu5bx1zguLdlpLoEXPQFN35PgZKfFzSXQfd6aSSH
+	psAxVU97wLQW0sQkl1QsUbpDpYGmODpFQDC8Jrrc9zFwuPowIgwqgZeFFLSOW9mGZ5mb
+	d8woyrqVflN9JyOGOLPiwzXXWu3ypJX7bELro=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc:content-transfer-encoding;
+	bh=Hf5RclMcj7iqc/1sK8lpa9wH+BLwvgtHjMmeFN3O6Qs=;
+	b=pj1GwUk11GDBvcPT2IV2KGmk9HzrxgnwgOjgdJugec0Sz/SJielXQgIFq/ZekDZR9A
+	XV5V5IGk/0nCajQCzl8rvshpropx+vskVS4+TXbMr63qRTEY5dildeT5eTAIExvZS24e
+	kdQLZ5kqCAYKw9Pz4khzWWcs8kGZIkXYknXOAxb1wa7FX/VYYdeU2Nj8eeyZO8Zngt01
+	bXzIjkAOmD0/3z9YX5KXwVaQhmQXBdkXZqrrEJYWGFNO8xpsMt6mfTkvpj842g42hfal
+	tign1sbOlK2WGUxXpUSr2EjCoWWNbjbFOUvSb5eNJd+wNtLkt3OWCwQU1Lnaqn8p1JWc
+	BR1A==
+X-Gm-Message-State: AHPjjUi3trYYZh3UIwaWBgpbmOywV1p62QTNn/dIF6q7G6P7On8tQdBo
+	VIFk0kNusN+IzqcWskpzBIMavYzP/hgu2JZvwtgysA==
+X-Google-Smtp-Source: AOwi7QB+M46741AB33Cg3JIEK6nvYLnv+wUHsVxdnhTAt6Z0cP4/rQcDGtfiDGjmSMIanJ7hwi65uCDOs3kWUvv3Ckk=
+X-Received: by 10.28.43.129 with SMTP id r123mr8780796wmr.101.1505741804000;
+	Mon, 18 Sep 2017 06:36:44 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <CAKv+Gu-EaQOAXmbiGp9k55_t1X6SNbtaMScF01qgPKW7SU4vug@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.23
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: Peter Maydell <peter.maydell@linaro.org>,
-	"edk2-devel@lists.01.org" <edk2-devel@ml01.01.org>,
-	QEMU Developers <qemu-devel@nongnu.org>, qemu-arm@nongnu.org,
-	Shannon Zhao <shannon.zhao@linaro.org>,
-	Shannon Zhao <zhaoshenglong@huawei.com>
-Subject: Re: [Qemu-devel] [PATCH] ARM: Virt: Don't generate RTC ACPI node
-	when using UEFI
+Received: by 10.223.139.215 with HTTP; Mon, 18 Sep 2017 06:36:23 -0700 (PDT)
+In-Reply-To: <CALHRZurNLqH_6Xbh9SKtCA0fuk-CFEZeqBMwYXV=+UaZB4k1Bg@mail.gmail.com>
+References: <1505494753-10837-1-git-send-email-sundeep.lkml@gmail.com>
+	<1505494753-10837-3-git-send-email-sundeep.lkml@gmail.com>
+	<2c6a4136-fb80-2000-940c-1df5e718cbf1@amsat.org>
+	<CALHRZurRLysJCRwvm+SbJUn8YBAst_Q38RCzJkmT4z=mfnYuiQ@mail.gmail.com>
+	<CALHRZurNLqH_6Xbh9SKtCA0fuk-CFEZeqBMwYXV=+UaZB4k1Bg@mail.gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 18 Sep 2017 14:36:23 +0100
+Message-ID: <CAFEAcA-BQ=ognSsb3Kxx5ThJ5Q_GA_sFFFofpKY1=XnRS4-WTA@mail.gmail.com>
+To: sundeep subbaraya <sundeep.lkml@gmail.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2a00:1450:400c:c09::22f
+Subject: Re: [Qemu-devel] [Qemu devel v9 PATCH 2/5] msf2: Microsemi
+ Smartfusion2 System Register block
 X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.14
+X-Mailman-Version: 2.1.21
 Precedence: list
 List-Id: <qemu-devel.nongnu.org>
 List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
 	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
 List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
 	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Alistair Francis <alistair23@gmail.com>,
+	Peter Crosthwaite <crosthwaite.peter@gmail.com>,
+	qemu-arm <qemu-arm@nongnu.org>,
+	=?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>,
+	QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: zzi/SSe4kMVc
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 0BnjoQJ2lPPN
 
-On 01/13/16 11:20, Ard Biesheuvel wrote:
-> On 13 January 2016 at 11:18, Laszlo Ersek <lersek@redhat.com> wrote:
->> On 01/12/16 16:24, Shannon Zhao wrote:
->>> When booting VM through UEFI, UEFI takes ownership of the RTC hardware.
->>> To DTB UEFI could call libfdt api to disable the RTC device node, but to
->>> ACPI it couldn't do that. Therefore, we don't generate the RTC ACPI
->>> device in QEMU when using UEFI.
->>>
->>> Signed-off-by: Shannon Zhao <shannon.zhao@linaro.org>
->>> ---
->>>  hw/arm/virt-acpi-build.c         | 13 +++++++++++--
->>>  hw/arm/virt.c                    |  5 ++++-
->>>  include/hw/arm/virt-acpi-build.h |  1 +
->>>  3 files changed, 16 insertions(+), 3 deletions(-)
->>>
->>> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
->>> index 0caf5ce..cccec79 100644
->>> --- a/hw/arm/virt-acpi-build.c
->>> +++ b/hw/arm/virt-acpi-build.c
->>> @@ -575,8 +575,17 @@ build_dsdt(GArray *table_data, GArray *linker, VirtGuestInfo *guest_info)
->>>      acpi_dsdt_add_cpus(scope, guest_info->smp_cpus);
->>>      acpi_dsdt_add_uart(scope, &memmap[VIRT_UART],
->>>                         (irqmap[VIRT_UART] + ARM_SPI_BASE));
->>> -    acpi_dsdt_add_rtc(scope, &memmap[VIRT_RTC],
->>> -                      (irqmap[VIRT_RTC] + ARM_SPI_BASE));
->>> +
->>> +    /* When booting VM through UEFI, UEFI takes ownership of the RTC hardware.
->>> +     * To DTB UEFI could call libfdt api to disable the RTC device node, but to
->>> +     * ACPI it couldn't do that. Therefore, we don't generate the RTC ACPI
->>> +     * device here when using UEFI.
->>> +     */
->>> +    if (guest_info->acpi_rtc) {
->>> +        acpi_dsdt_add_rtc(scope, &memmap[VIRT_RTC],
->>> +                          (irqmap[VIRT_RTC] + ARM_SPI_BASE));
->>> +    }
->>> +
->>>      acpi_dsdt_add_flash(scope, &memmap[VIRT_FLASH]);
->>>      acpi_dsdt_add_virtio(scope, &memmap[VIRT_MMIO],
->>>                      (irqmap[VIRT_MMIO] + ARM_SPI_BASE), NUM_VIRTIO_TRANSPORTS);
->>> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
->>> index fd52b76..de12037 100644
->>> --- a/hw/arm/virt.c
->>> +++ b/hw/arm/virt.c
->>> @@ -1002,6 +1002,7 @@ static void machvirt_init(MachineState *machine)
->>>      VirtGuestInfoState *guest_info_state = g_malloc0(sizeof *guest_info_state);
->>>      VirtGuestInfo *guest_info = &guest_info_state->info;
->>>      char **cpustr;
->>> +    bool firmware_loaded;
->>>
->>>      if (!cpu_model) {
->>>          cpu_model = "cortex-a15";
->>> @@ -1124,12 +1125,14 @@ static void machvirt_init(MachineState *machine)
->>>      create_fw_cfg(vbi, &address_space_memory);
->>>      rom_set_fw(fw_cfg_find());
->>>
->>> +    firmware_loaded = bios_name || drive_get(IF_PFLASH, 0, 0);
->>>      guest_info->smp_cpus = smp_cpus;
->>>      guest_info->fw_cfg = fw_cfg_find();
->>>      guest_info->memmap = vbi->memmap;
->>>      guest_info->irqmap = vbi->irqmap;
->>>      guest_info->use_highmem = vms->highmem;
->>>      guest_info->gic_version = gic_version;
->>> +    guest_info->acpi_rtc = !firmware_loaded;
->>>      guest_info_state->machine_done.notify = virt_guest_info_machine_done;
->>>      qemu_add_machine_init_done_notifier(&guest_info_state->machine_done);
->>>
->>> @@ -1141,7 +1144,7 @@ static void machvirt_init(MachineState *machine)
->>>      vbi->bootinfo.board_id = -1;
->>>      vbi->bootinfo.loader_start = vbi->memmap[VIRT_MEM].base;
->>>      vbi->bootinfo.get_dtb = machvirt_dtb;
->>> -    vbi->bootinfo.firmware_loaded = bios_name || drive_get(IF_PFLASH, 0, 0);
->>> +    vbi->bootinfo.firmware_loaded = firmware_loaded;
->>>      arm_load_kernel(ARM_CPU(first_cpu), &vbi->bootinfo);
->>>
->>>      /*
->>> diff --git a/include/hw/arm/virt-acpi-build.h b/include/hw/arm/virt-acpi-build.h
->>> index 744b666..6f412a4 100644
->>> --- a/include/hw/arm/virt-acpi-build.h
->>> +++ b/include/hw/arm/virt-acpi-build.h
->>> @@ -33,6 +33,7 @@ typedef struct VirtGuestInfo {
->>>      const int *irqmap;
->>>      bool use_highmem;
->>>      int gic_version;
->>> +    bool acpi_rtc;
->>>  } VirtGuestInfo;
->>>
->>>
->>>
+On 18 September 2017 at 14:27, sundeep subbaraya <sundeep.lkml@gmail.com> w=
+rote:
+> Hi Peter,
+>
+> On Mon, Sep 18, 2017 at 3:47 PM, sundeep subbaraya <sundeep.lkml@gmail.co=
+m>
+> wrote:
 >>
->> I realize that Peter is not buying the argument just yet, but I'd like
->> to offer a review here nonetheless.
+>> Hi Philippe,
 >>
-> 
-> I am not buying it either, to be honest. In fact, I think it is
-> another reason why we should mandate UEFI when using ACPI (which is
-> already the case in practice). Then, we can simply omit the RTC ACPI
-> node entirely.
+>> On Mon, Sep 18, 2017 at 6:31 AM, Philippe Mathieu-Daud=C3=A9 <f4bug@amsa=
+t.org>
+>> wrote:
+>>>
+>>> Hi Sundeep, Peter,
+>>>
+>>>
+>>> On 09/15/2017 01:59 PM, Subbaraya Sundeep wrote:
+>>>>
+>>>> +static void msf2_sysreg_write(void *opaque, hwaddr offset,
+>>>> +                          uint64_t val, unsigned size)
+>>>> +{
+>>>> +    MSF2SysregState *s =3D opaque;
+>>>> +    uint32_t newval =3D val;
+>>>> +
+>>>> +    offset >>=3D 2;
+>>>> +
+>>>> +    switch (offset) {
+>>>> +    case MSSDDR_PLL_STATUS:
+>>>> +        trace_msf2_sysreg_write_pll_status();
+>>>> +        break;
+>>>> +
+>>>> +    case ESRAM_CR:
+>>>> +    case DDR_CR:
+>>>> +    case ENVM_REMAP_BASE_CR:
+>>>> +        if (newval !=3D s->regs[offset]) {
+>>>> +            qemu_log_mask(LOG_UNIMP,
+>>>> +                       TYPE_MSF2_SYSREG": remapping not supported\n")=
+;
+>>>
+>>>
+>>> I'd rather exit here than continue with inconsistent cpu, Peter what do
+>>> you recommend?
+>
+>
+> Could you please suggest.
 
-Good point.
+We shouldn't exit QEMU for something the guest can provoke. If
+the functionality isn't implemented then just LOG_UNIMP it.
 
-Laszlo
-
-> 
-> 
->> I think the patch is good, except the location and the wording of the
->> code comment.
->>
->> (1) The code comment should be located right above the
->>
->>     guest_info->acpi_rtc = !firmware_loaded;
->>
->> assignment.
->>
->> (2) I think the code comment should simply use indicative mood:
->>
->>     When booting the VM with UEFI, UEFI takes ownership of the RTC
->>     hardware. While UEFI can use libfdt to disable the RTC device node
->>     in the DTB that it passes to the OS, it cannot modify AML.
->>     Therefore, we won't generate the RTC ACPI device at all when using
->>     UEFI.
->>
->> With those changes, I'm willing to R-b.
->>
->> Thanks
->> Laszlo
-
+thanks
+-- PMM

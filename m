@@ -1,202 +1,145 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaro.local ([81.128.185.34])
-        by smtp.gmail.com with ESMTPSA id t18sm402273wmt.35.2019.01.28.14.03.10
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 28 Jan 2019 14:03:10 -0800 (PST)
+        by smtp.gmail.com with ESMTPSA id n48sm7272695wrb.0.2017.09.18.07.00.24
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 18 Sep 2017 07:00:24 -0700 (PDT)
 Received: from zen (localhost [127.0.0.1])
-	by zen.linaro.local (Postfix) with ESMTPS id 7DEA93E0489;
-	Mon, 28 Jan 2019 22:03:10 +0000 (GMT)
-References: <20190128173940.25813-1-alex.bennee@linaro.org> <20190128173940.25813-5-alex.bennee@linaro.org>
-User-agent: mu4e 1.1.0; emacs 26.1.91
+	by zen.linaro.local (Postfix) with ESMTPS id B11653E0268;
+	Mon, 18 Sep 2017 15:00:23 +0100 (BST)
+References: <20170224112109.3147-1-alex.bennee@linaro.org> <20170224112109.3147-23-alex.bennee@linaro.org> <7468f944-914c-de89-66fb-f8ad49eb59c1@gmail.com> <87poapbgt0.fsf@linaro.org> <e511a895-b1e3-150f-6555-12ba1fa16273@gmail.com> <87a81sjp15.fsf@linaro.org> <70057789-ab76-1150-ab2e-b5a3239a0209@gmail.com>
+User-agent: mu4e 0.9.19; emacs 25.3.50.1
 From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>
-Subject: Re: [PATCH  v1 4/4] tests/tcg/aarch64: userspace system register test
-In-reply-to: <20190128173940.25813-5-alex.bennee@linaro.org>
-Date: Mon, 28 Jan 2019 22:03:10 +0000
-Message-ID: <87womomodd.fsf@linaro.org>
+To: Dmitry Osipenko <digetx@gmail.com>
+Cc: peter.maydell@linaro.org, "open list\:ARM" <qemu-arm@nongnu.org>, qemu-devel@nongnu.org
+Subject: Re: [PULL 22/24] target-arm: ensure all cross vCPUs TLB flushes complete
+In-reply-to: <70057789-ab76-1150-ab2e-b5a3239a0209@gmail.com>
+Date: Mon, 18 Sep 2017 15:00:23 +0100
+Message-ID: <87d16ods3s.fsf@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-TUID: jevfsJarUyiU
+Content-Transfer-Encoding: 8bit
+X-TUID: 2LH7dYnPu8Ad
 
 
-Alex Benn=C3=A9e <alex.bennee@linaro.org> writes:
+Dmitry Osipenko <digetx@gmail.com> writes:
 
-> This tests a bunch of registers that the kernel allows userspace to
-> read including the CPUID registers.
+> On 18.09.2017 13:10, Alex Bennée wrote:
+>>
+>> Dmitry Osipenko <digetx@gmail.com> writes:
+>>
+>>> On 17.09.2017 16:22, Alex Bennée wrote:
+>>>>
+>>>> Dmitry Osipenko <digetx@gmail.com> writes:
+>>>>
+>>>>> On 24.02.2017 14:21, Alex Bennée wrote:
+>>>>>> Previously flushes on other vCPUs would only get serviced when they
+>>>>>> exited their TranslationBlocks. While this isn't overly problematic it
+>>>>>> violates the semantics of TLB flush from the point of view of source
+>>>>>> vCPU.
+>>>>>>
+>>>>>> To solve this we call the cputlb *_all_cpus_synced() functions to do
+>>>>>> the flushes which ensures all flushes are completed by the time the
+>>>>>> vCPU next schedules its own work. As the TLB instructions are modelled
+>>>>>> as CP writes the TB ends at this point meaning cpu->exit_request will
+>>>>>> be checked before the next instruction is executed.
+>>>>>>
+>>>>>> Deferring the work until the architectural sync point is a possible
+>>>>>> future optimisation.
+>>>>>>
+>>>>>> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+>>>>>> Reviewed-by: Richard Henderson <rth@twiddle.net>
+>>>>>> Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+>>>>>> ---
+>>>>>>  target/arm/helper.c | 165 ++++++++++++++++++++++------------------------------
+>>>>>>  1 file changed, 69 insertions(+), 96 deletions(-)
+>>>>>>
+>>>>>
+>>>>> Hello,
+>>>>>
+>>>>> I have an issue with Linux kernel stopping to boot on a SMP 32bit ARM (haven't
+>>>>> checked 64bit) in a single-threaded TCG mode. Kernel reaches point where it
+>>>>> should mount rootfs over NFS and vCPUs stop. This issue is reproducible with any
+>>>>> 32bit ARM machine type. Kernel boots fine with a MTTCG accel, only
+>>>>> single-threaded TCG is affected. Git bisection lead to this patch, any
+>>>>> ideas?
+>>>>
+>>>> It shouldn't cause a problem but can you obtain a backtrace of the
+>>>> system when hung?
+>>>>
+>>>
+>>> Actually, it looks like TCG enters infinite loop. Do you mean backtrace of QEMU
+>>> by 'backtrace of the system'? If so, here it is:
+>>>
+>>> Thread 4 (Thread 0x7ffa37f10700 (LWP 20716)):
+>>>
+>>> #0  0x00007ffa601888bd in poll () at ../sysdeps/unix/syscall-template.S:84
+>>>
+>>> #1  0x00007ffa5e3aa561 in poll (__timeout=-1, __nfds=2, __fds=0x7ffa30006dc0) at
+>>> /usr/include/bits/poll2.h:46
+>>> #2  poll_func (ufds=0x7ffa30006dc0, nfds=2, timeout=-1, userdata=0x557bd603eae0)
+>>> at
+>>> /var/tmp/portage/media-sound/pulseaudio-10.0/work/pulseaudio-10.0/src/pulse/thread-mainloop.c:69
+>>> #3  0x00007ffa5e39bbb1 in pa_mainloop_poll (m=m@entry=0x557bd60401f0) at
+>>> /var/tmp/portage/media-sound/pulseaudio-10.0/work/pulseaudio-10.0/src/pulse/mainloop.c:844
+>>> #4  0x00007ffa5e39c24e in pa_mainloop_iterate (m=0x557bd60401f0,
+>>> block=<optimized out>, retval=0x0) at
+>>> /var/tmp/portage/media-sound/pulseaudio-10.0/work/pulseaudio-10.0/src/pulse/mainloop.c:926
+>>> #5  0x00007ffa5e39c300 in pa_mainloop_run (m=0x557bd60401f0,
+>>> retval=retval@entry=0x0) at
+>>> /var/tmp/portage/media-sound/pulseaudio-10.0/work/pulseaudio-10.0/src/pulse/mainloop.c:944
+>>>
+>>> #6  0x00007ffa5e3aa4a9 in thread (userdata=0x557bd60400f0) at
+>>> /var/tmp/portage/media-sound/pulseaudio-10.0/work/pulseaudio-10.0/src/pulse/thread-mainloop.c:100
+>>>
+>>> #7  0x00007ffa599eea38 in internal_thread_func (userdata=0x557bd603e090) at
+>>> /var/tmp/portage/media-sound/pulseaudio-10.0/work/pulseaudio-10.0/src/pulsecore/thread-posix.c:81
+>>>
+>>> #8  0x00007ffa60453657 in start_thread (arg=0x7ffa37f10700) at
+>>> pthread_create.c:456
+>>>
+>>> #9  0x00007ffa60193c5f in clone () at
+>>> ../sysdeps/unix/sysv/linux/x86_64/clone.S:97
+>>>
+>>>
+>>>
+>>>
+>>>
+>>> Thread 3 (Thread 0x7ffa4adff700 (LWP 20715)):
+>>>
+>>>
+>>> #0  0x00007ffa53e51caf in code_gen_buffer ()
+>>>
+>>
+>> Well it's not locked up in servicing any flush tasks as it's executing
+>> code. Maybe the guest code is spinning on something?
+>>
 >
-> Signed-off-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
-
-I'll also merge the following fix:
-
-modified   tests/tcg/aarch64/sysregs.c
-@@ -11,6 +11,10 @@
- #include <string.h>
- #include <stdbool.h>
-
-+#ifndef HWCAP_CPUID
-+#define HWCAP_CPUID (1 << 11)
-+#endif
-+
- int failed_mask_count;
-
- #define get_cpu_reg(id) ({                                      \
-
-
+> Indeed, I should have used 'exec' instead of 'in_asm'.
 >
-> ---
-> v4
->   - also test for extra bits that shouldn't be exposed
-> ---
->  tests/tcg/aarch64/Makefile.target |   2 +-
->  tests/tcg/aarch64/sysregs.c       | 120 ++++++++++++++++++++++++++++++
->  2 files changed, 121 insertions(+), 1 deletion(-)
->  create mode 100644 tests/tcg/aarch64/sysregs.c
+>> In the monitor:
+>>
+>>   info registers
+>>
+>> Will show you where things are, see if the ip is moving each time. Also
+>> you can do a disassemble dump from there to see what code it is stuck
+>> on.
+>>
 >
-> diff --git a/tests/tcg/aarch64/Makefile.target b/tests/tcg/aarch64/Makefi=
-le.target
-> index 08c45b8470..cc1a7eb486 100644
-> --- a/tests/tcg/aarch64/Makefile.target
-> +++ b/tests/tcg/aarch64/Makefile.target
-> @@ -7,7 +7,7 @@ VPATH 		+=3D $(AARCH64_SRC)
+> I've attached with GDB to QEMU to see where it got stuck. Turned out it is
+> caused by CONFIG_STRICT_KERNEL_RWX=y of the Linux kernel. Upon boot completion
+> kernel changes memory permissions and that changing is executed on a dedicated
+> CPU, while other CPUs are 'stopped' in a busy loop.
 >
->  # we don't build any of the ARM tests
->  AARCH64_TESTS=3D$(filter-out $(ARM_TESTS), $(TESTS))
-> -AARCH64_TESTS+=3Dfcvt
-> +AARCH64_TESTS+=3Dfcvt sysregs
->  TESTS:=3D$(AARCH64_TESTS)
->
->  fcvt: LDFLAGS+=3D-lm
-> diff --git a/tests/tcg/aarch64/sysregs.c b/tests/tcg/aarch64/sysregs.c
-> new file mode 100644
-> index 0000000000..8e11288ee3
-> --- /dev/null
-> +++ b/tests/tcg/aarch64/sysregs.c
-> @@ -0,0 +1,120 @@
-> +/*
-> + * Check emulated system register access for linux-user mode.
-> + *
-> + * See: https://www.kernel.org/doc/Documentation/arm64/cpu-feature-regis=
-ters.txt
-> + */
-> +
-> +#include <asm/hwcap.h>
-> +#include <stdio.h>
-> +#include <sys/auxv.h>
-> +#include <signal.h>
-> +#include <string.h>
-> +#include <stdbool.h>
-> +
-> +int failed_mask_count;
-> +
-> +#define get_cpu_reg(id) ({                                      \
-> +            unsigned long __val =3D 0xdeadbeef;                   \
-> +            asm("mrs %0, "#id : "=3Dr" (__val));                  \
-> +            printf("%-20s: 0x%016lx\n", #id, __val);            \
-> +            __val;                                               \
-> +        })
-> +
-> +#define get_cpu_reg_check_mask(id, mask) ({                     \
-> +            unsigned long __cval =3D get_cpu_reg(id);             \
-> +            unsigned long __extra =3D __cval & ~mask;             \
-> +            if (__extra) {                                      \
-> +                printf("%-20s: 0x%016lx\n", "  !!extra bits!!", __extra)=
-;   \
-> +                failed_mask_count++;                            \
-> +            }                                                   \
-> +})
-> +
-> +bool should_fail;
-> +int should_fail_count;
-> +int should_not_fail_count;
-> +uintptr_t failed_pc[10];
-> +
-> +void sigill_handler(int signo, siginfo_t *si, void *data)
-> +{
-> +    ucontext_t *uc =3D (ucontext_t *)data;
-> +
-> +    if (should_fail) {
-> +        should_fail_count++;
-> +    } else {
-> +        uintptr_t pc =3D (uintptr_t) uc->uc_mcontext.pc;
-> +        failed_pc[should_not_fail_count++] =3D  pc;
-> +    }
-> +    uc->uc_mcontext.pc +=3D 4;
-> +}
-> +
-> +int main(void)
-> +{
-> +    struct sigaction sa;
-> +
-> +    /* Hook in a SIGILL handler */
-> +    memset(&sa, 0, sizeof(struct sigaction));
-> +    sa.sa_flags =3D SA_SIGINFO;
-> +    sa.sa_sigaction =3D &sigill_handler;
-> +    sigemptyset(&sa.sa_mask);
-> +
-> +    if (sigaction(SIGILL, &sa, 0) !=3D 0) {
-> +        perror("sigaction");
-> +        return 1;
-> +    }
-> +
-> +    /* since 4.12 */
-> +    printf("Checking CNT registers\n");
-> +
-> +    get_cpu_reg(ctr_el0);
-> +    get_cpu_reg(cntvct_el0);
-> +    get_cpu_reg(cntfrq_el0);
-> +
-> +    /* when (getauxval(AT_HWCAP) & HWCAP_CPUID), since 4.11*/
-> +    if (!(getauxval(AT_HWCAP) & HWCAP_CPUID)) {
-> +        printf("CPUID registers unavailable\n");
-> +        return 1;
-> +    } else {
-> +        printf("Checking CPUID registers\n");
-> +    }
-> +
-> +    /*
-> +     * Some registers only expose some bits to user-space. Anything
-> +     * that is IMDEF is exported as 0 to user-space.
-> +     */
-> +    get_cpu_reg_check_mask(id_aa64isar0_el1, 0x000fffffff0ffff0ULL);
-> +    get_cpu_reg_check_mask(id_aa64isar1_el1, 0x00000000ffffffffULL);
-> +    get_cpu_reg(id_aa64mmfr0_el1);
-> +    get_cpu_reg(id_aa64mmfr1_el1);
-> +    get_cpu_reg_check_mask(id_aa64pfr0_el1, 0x000f000f0ff0000ULL);
-> +    get_cpu_reg(id_aa64pfr1_el1);
-> +    get_cpu_reg(id_aa64dfr0_el1);
-> +    get_cpu_reg(id_aa64dfr1_el1);
-> +
-> +    get_cpu_reg_check_mask(midr_el1, 0x00000000ffffffffULL);
-> +    get_cpu_reg(mpidr_el1);
-> +    /* REVIDR is all IMPDEF so should be all zeros to user-space */
-> +    get_cpu_reg_check_mask(revidr_el1, 0x0);
-> +
-> +    printf("Remaining registers should fail\n");
-> +    should_fail =3D true;
-> +
-> +    /* Unexposed register access causes SIGILL */
-> +    get_cpu_reg(id_mmfr0_el1);
-> +
-> +    if (should_not_fail_count > 0) {
-> +        int i;
-> +        for (i =3D 0; i < should_not_fail_count; i++) {
-> +            uintptr_t pc =3D failed_pc[i];
-> +            uint32_t insn =3D *(uint32_t *) pc;
-> +            printf("insn %#x @ %#lx unexpected FAIL\n", insn, pc);
-> +        }
-> +        return 1;
-> +    }
-> +
-> +    if (failed_mask_count > 0) {
-> +        printf("Extra information leaked to user-space!\n");
-> +        return 1;
-> +    }
-> +
-> +    return should_fail_count =3D=3D 1 ? 0 : 1;
-> +}
+> This patch just introduced a noticeable performance regression for a
+> single-threaded TCG, which is probably fine since MTTCG is the default now.
+> Thank you very much for the suggestions and all your work on MTTCG!
 
+Hmm well it would be nice to know the exact mechanism for that failure.
+If we just end up with a very long list of tasks in
+cpu->queued_work_first then I guess that explains it but it would be
+nice to quantify the problem.
+
+I had trouble seeing where this loop is in the kernel code, got a pointer?
 
 --
-Alex Benn=C3=A9e
+Alex Bennée

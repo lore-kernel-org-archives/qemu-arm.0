@@ -1,104 +1,98 @@
-Received: by 10.223.172.38 with SMTP id v35csp1400151wrc;
-        Thu, 14 Sep 2017 15:10:19 -0700 (PDT)
-X-Received: by 10.55.160.140 with SMTP id j134mr4723982qke.274.1505427019779;
-        Thu, 14 Sep 2017 15:10:19 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1505427019; cv=none;
+Received: by 10.223.172.38 with SMTP id v35csp4112546wrc;
+        Mon, 18 Sep 2017 12:23:58 -0700 (PDT)
+X-Received: by 10.55.100.11 with SMTP id y11mr19935577qkb.54.1505762638273;
+        Mon, 18 Sep 2017 12:23:58 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1505762638; cv=none;
         d=google.com; s=arc-20160816;
-        b=y6e4l0eS20kqwjPlsPcF5A46ewHN2baOi8JUbL54W0G23thshB+j87O0b+dMdeosFm
-         Zv9Wexzo9UMmfJN3SSym5mNbjt+xk7SBnnvmS+tFnmJpzI6fYoY4/mMC5NwWnbsL6lH6
-         wvQlUJRIacS0nqIPEPXZXNQfznPSeLemMSx8MvzA03HAueBPe6fPqPfBFe8PM3q1UnT6
-         nsPhmWx+i6SYJoVRXGcCAkkXYCigXF5aY5h4jPrR4sVze0g1RTelYWHuhg6JlcsQ2r5B
-         jESYRxImVmJmp9vVc2mzh7scVNnaK25/ImpZVZKuKvAEmlyJBZwqyw61cRx+xdsBA2F4
-         JMwQ==
+        b=HbLmKMXhWtHExvhAEMP4FYpkKsF8Wb2dCAXU86Tr3OTP4EicQptNxZ+uSOIkVUEf6l
+         LH4g1yZkay7OHTYmuD5UqKEu0u6GbtEreplXhvvsI6SIP8jim91sTKO5jzYBjwSV2SoF
+         H2nZbm3xRNzYRVSytuIqA3jfYwXSneaLxBgZHqC++hxEQg/EE+hbCtOQ/Jv7CBhglLKy
+         VvSvH1frQrCDTXNP+Toh4pGmkbrHSm/BYao8mt4pIntGCIWWmv5pqPuXBEjariOejBZ+
+         MTSi2P/EXFJCSbzRJSFDLtnIcpnfymNHT7gwbXEmEZbRLbVqMN+ZdyYNzFuDvBlKMaMb
+         UIFw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:to:message-id:date:from:references
-         :in-reply-to:mime-version:dkim-signature:arc-authentication-results;
-        bh=I/4hKiIBHvIEdYybD6jEAJYcaX6mhyxBLkLPImoclzA=;
-        b=YmRH8t609q6iMV7eau8EUTF4/bpHRJqMKQMml28qFtiNXjVq5y8msaqQmt/c8P6u36
-         Den6bVkVQVMYJ6RCXPo+HwYg0j9w3/IrmQ//CY69KwdjZdRrzRdoIWFC4tYA5lQbfIVj
-         aOSqBVKO9yqUqLLXltfE7kyK685uhs3kSYmI70gU8AnpYDovdoogtJ6sQEYqJ+IdRFTd
-         7pMUVASCR11kpTRKdSKTgv+oXG9W/xLH1Lxt4Vhw5gmtcoN9lxk+x4aYy1VCCEBHUEa5
-         eJ6hotDvtS0LCPcrrVGaN0YP6KayOxTnWtyRnokn4DfMeX70S3jBTtO51XLGX+kQGarB
-         Dh/A==
+         :list-unsubscribe:list-id:precedence:subject:message-id:date:to:from
+         :dkim-signature:arc-authentication-results;
+        bh=nCTgyvYqB/u+xu6qca9t9ux5vSZFO7sI1NtvTW4OPc4=;
+        b=bsnlQUJhMl0U62j/KZ6z7WkUWFcraSeV+z+84WJZ8OkI4LPiXRC3luMWvv57IPu4MW
+         HewGbkYgF32PzygkSfa8yNGMzQVDvBNSCGBqlv1gRmSbgPMbtR0vbs8li+k2vhPNRyKi
+         A8MeVyIytYeNAvxcRv0hsSUsQt7epXSCgd2wrqpfTRCEUzWVgDn/6kX/H8b+kh4cJtCj
+         DwQUeLwTFdsvDK5BmYXe0TWtuQxK3kU07m2Okig806uBbEQAxPVF4Qr+sTSECcWA6ekJ
+         xY01WR+50iq5sytGJlQL4hD+mBS26+Ql0CHkyyY/zu+yp41SMrXKubIQF8NVkSe1IbFJ
+         CSEA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=V7gG3rsN;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=JP76xzMr;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id b7si13528731qtj.30.2017.09.14.15.10.19
+        by mx.google.com with ESMTPS id u11si1400165qka.403.2017.09.18.12.23.57
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 14 Sep 2017 15:10:19 -0700 (PDT)
+        Mon, 18 Sep 2017 12:23:58 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=V7gG3rsN;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=JP76xzMr;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:50206 helo=lists.gnu.org)
+Received: from localhost ([::1]:38498 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1dscKv-0003n9-HZ
-	for alex.bennee@linaro.org; Thu, 14 Sep 2017 18:10:17 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:46106)
+	id 1du1e7-0004XG-To
+	for alex.bennee@linaro.org; Mon, 18 Sep 2017 15:23:55 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:54632)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alistair23@gmail.com>) id 1dscKo-0003kS-Up
-	for qemu-arm@nongnu.org; Thu, 14 Sep 2017 18:10:12 -0400
+	(envelope-from <sundeep.lkml@gmail.com>) id 1du1dt-0004VA-Po
+	for qemu-arm@nongnu.org; Mon, 18 Sep 2017 15:23:43 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <alistair23@gmail.com>) id 1dscKn-0003h6-OK
-	for qemu-arm@nongnu.org; Thu, 14 Sep 2017 18:10:10 -0400
-Received: from mail-wr0-x241.google.com ([2a00:1450:400c:c0c::241]:35706)
+	(envelope-from <sundeep.lkml@gmail.com>) id 1du1ds-00026q-Hh
+	for qemu-arm@nongnu.org; Mon, 18 Sep 2017 15:23:41 -0400
+Received: from mail-pg0-x243.google.com ([2607:f8b0:400e:c05::243]:37448)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <alistair23@gmail.com>)
-	id 1dscKn-0003fD-E2; Thu, 14 Sep 2017 18:10:09 -0400
-Received: by mail-wr0-x241.google.com with SMTP id n64so333204wrb.2;
-	Thu, 14 Sep 2017 15:10:09 -0700 (PDT)
+	(Exim 4.71) (envelope-from <sundeep.lkml@gmail.com>)
+	id 1du1dm-00023O-2w; Mon, 18 Sep 2017 15:23:34 -0400
+Received: by mail-pg0-x243.google.com with SMTP id v5so728181pgn.4;
+	Mon, 18 Sep 2017 12:23:33 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc:content-transfer-encoding;
-	bh=I/4hKiIBHvIEdYybD6jEAJYcaX6mhyxBLkLPImoclzA=;
-	b=V7gG3rsNSOqIY2xFgGHN5GuL2Hhjwg2Fenvf+IQYKoWQ5sdKFjJgH4t0L2kOfwfDii
-	8WoSQZxOQn8rhmn6X5z9+EgyQUE54oM0W0bAfYdaXnuTzL0gUzNFFyuP6Ki5DoZjibQK
-	3wIxUlmlQRdXCFvf65C9iZHeHmQaEHZWT2ReMWroHZuz6CD7cAWFm2n434Ecn4eGobIT
-	B/5LJTi9aRQ10YSKUQMgR6ijfO0wju9XbTD7XKz4iJRlqCbJU0/ot8g2G399L/2AUoKh
-	WM5PTF8wWFcdcEiWYeOD18NOY7P7FUUE44Trl5d5xl+fxUwWzwIIRUCvx0RUiyBgr8UL
-	DyYA==
+	h=from:to:cc:subject:date:message-id;
+	bh=nCTgyvYqB/u+xu6qca9t9ux5vSZFO7sI1NtvTW4OPc4=;
+	b=JP76xzMrgW5l5emvRM2gY2Eh4OYJ+L+DNnW9tv21axt+0YIbsG+xrbMoNEnwZbgn37
+	nelj05c0SOXmm+v+USih7X9OoDPCSFp6IKwTGZreDW/XifiUNGJMx4uf37QTpSejtcR9
+	pBdgX3Kl4zejB9Lx3ag722yoYmBzTL4Kt5FQzvksQ53Vm9qUuOTVq+UmS+a+Kyqlnflv
+	EnwPV9ALG8Cfvign24kCFLa+YVVBhYTx5dRZtRYCFTvOZ5GRJDiGehYuTTaO24UEkwY8
+	TSnq3kFhns8vpwgTUu7QH6yS0lKi64xkfbPVpt6N3mzMlyGNFASQVOLuYMXof7dNgpBU
+	OnTw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc:content-transfer-encoding;
-	bh=I/4hKiIBHvIEdYybD6jEAJYcaX6mhyxBLkLPImoclzA=;
-	b=VQG6z75xfJNf1S6zhLjcDI/1m4ZV0xCEmS4///Cdm9aK6rfmuiAYpBMk0xgbj5KvWB
-	//psqqjfWrKwNltmwcDaws+Vf1NjipFb/T66IoMgRPI8fxrMKjJl6Swe0oCoLqO1H0As
-	yJz6ZOSJbxO+K2iuxv6WX28ab7jTj7fQROU7lrpNsKJctrev7RVt57b9+QVNR14E+Xlh
-	A/KcBLaKsRCh5UC2GPipydw3Ri2iZ5Wf5IljQTLprRncxToWCGPgahgZx0v+RwMIie0G
-	j2/zT2vcPMVwFKmjsiwNZJwTIsJvJt5oHLUY/T4m2lD0zuogY7e++i5g0S56+2faOQNO
-	uE5Q==
-X-Gm-Message-State: AHPjjUhOXTuzZNGENjtaW4pQ6W4JYAaLxRaZBvf+hqapOIejnEyZ1ZRZ
-	O+5FRdgkkUpSypObuHprCRMV+CYimRdUUGnEksU=
-X-Google-Smtp-Source: ADKCNb659NuhMQhpJ5fl5jkZmo7REbfrqjEcSnfsJOgyqUZyD5bNj/4amB+eoK3Ot0TvRET5OkoNzcIE14sbfxsIfe0=
-X-Received: by 10.223.187.74 with SMTP id x10mr18649074wrg.66.1505427008359;
-	Thu, 14 Sep 2017 15:10:08 -0700 (PDT)
-MIME-Version: 1.0
-Received: by 10.28.191.130 with HTTP; Thu, 14 Sep 2017 15:09:37 -0700 (PDT)
-In-Reply-To: <20170914095011.2fba8aab@nial.brq.redhat.com>
-References: <1505318697-77161-1-git-send-email-imammedo@redhat.com>
-	<1505318697-77161-6-git-send-email-imammedo@redhat.com>
-	<af093dab-efb0-7fb7-b373-e9a547ca6da7@amsat.org>
-	<20170914095011.2fba8aab@nial.brq.redhat.com>
-From: Alistair Francis <alistair23@gmail.com>
-Date: Thu, 14 Sep 2017 15:09:37 -0700
-Message-ID: <CAKmqyKNENp+E+VFS8-GHL=WdgSwKQHh1xVDYDJ-D+_2mUi-cFw@mail.gmail.com>
-To: Igor Mammedov <imammedo@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+	h=x-gm-message-state:from:to:cc:subject:date:message-id;
+	bh=nCTgyvYqB/u+xu6qca9t9ux5vSZFO7sI1NtvTW4OPc4=;
+	b=qglnEYwNeMJf+Tu9nbH4Of/krHx051pGYWjapZXS8ueRr5SZqk/7dltweVpkBtzPgm
+	GfUvmewddTTrk1vNbGb88c7RNVWHLdaninyD5HuRwP08CJ0NicVQBinLUkbHh+o0d3Bz
+	CTptCcmHdzsQVswApkTibXfghzxux3IqyOp41s+919X16K1KYZrmyE2Jq2pThqXIHFtk
+	yar7YBsbWavk0ZWc2bhZsGA5hsi0TstTCEr1jpOa/s601Ry1vLRSwWMUw0VwjlYArjqC
+	G6cycFMW9EW73smrWNeqs1XlXpuDJGNgLvcQNt5gWshfdDV4KmFLu4Ia2KAuO4YbjIvU
+	SNgA==
+X-Gm-Message-State: AHPjjUghCd2i9hIX7UKq7f5hbFuTdmBnmdChuYnSeEdsyDrxBYUM0WGR
+	B1/B7K1nOOdH3QVr
+X-Google-Smtp-Source: AOwi7QBhNtnEgSiDOjvbMpvPSPgxSKOSoGR0oVVBb5weQYd9NIpuIhtCgsh1iFiIS/ZmRNGbEolZ0Q==
+X-Received: by 10.84.253.151 with SMTP id a23mr16176748plm.144.1505762612828; 
+	Mon, 18 Sep 2017 12:23:32 -0700 (PDT)
+Received: from localhost.localdomain ([124.123.70.3])
+	by smtp.gmail.com with ESMTPSA id w12sm169701pfk.83.2017.09.18.12.23.30
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+	Mon, 18 Sep 2017 12:23:32 -0700 (PDT)
+From: Subbaraya Sundeep <sundeep.lkml@gmail.com>
+To: qemu-devel@nongnu.org,
+	qemu-arm@nongnu.org
+Date: Tue, 19 Sep 2017 00:53:16 +0530
+Message-Id: <1505762601-27143-1-git-send-email-sundeep.lkml@gmail.com>
+X-Mailer: git-send-email 2.5.0
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2a00:1450:400c:c0c::241
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v2 5/5] arm: drop intermediate
- cpu_model -> cpu type parsing and use cpu type directly
+X-Received-From: 2607:f8b0:400e:c05::243
+Subject: [Qemu-arm] [Qemu devel v10 PATCH 0/5] Add support for Smartfusion2
+ SoC
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -110,143 +104,131 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>,
-	=?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>,
-	"qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>
+Cc: peter.maydell@linaro.org, Subbaraya Sundeep <sundeep.lkml@gmail.com>,
+	f4bug@amsat.org, alistair23@gmail.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 2+8bqilTVNFE
+X-TUID: a6eKPIe589hB
 
-On Thu, Sep 14, 2017 at 12:50 AM, Igor Mammedov <imammedo@redhat.com> wrote=
-:
-> On Thu, 14 Sep 2017 00:47:20 -0300
-> Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> wrote:
->
->> Hi Igor,
->>
->> awesome clean refactor!
-> Thanks,
->
-> there is more patches on this topic for other targets to post
-> but it's waiting on 1-3/5 to land in master so it would be
-> easier for maintainers to verify/test them without fishing out
-> dependencies from mail list.
->
-> hopefully everything will land in 2.11 so we won't have to deal
-> with cpu_model anywhere except of one place vl.c.
->
->> just 1 comment inlined.
->>
->> On 09/13/2017 01:04 PM, Igor Mammedov wrote:
->> > there are 2 use cases to deal with:
->> >    1: fixed CPU models per board/soc
->> >    2: boards with user configurable cpu_model and fallback to
->> >       default cpu_model if user hasn't specified one explicitly
->> >
->> > For the 1st
->> >    drop intermediate cpu_model parsing and use const cpu type
->> >    directly, which replaces:
->> >       typename =3D object_class_get_name(
->> >             cpu_class_by_name(TYPE_ARM_CPU, cpu_model))
->> >       object_new(typename)
->> >    with
->> >       object_new(FOO_CPU_TYPE_NAME)
->> >    or
->> >       cpu_generic_init(BASE_CPU_TYPE, "my cpu model")
->> >    with
->> >       cpu_create(FOO_CPU_TYPE_NAME)
->> >
->> > as result 1st use case doesn't have to invoke not necessary
->> > translation and not needed code is removed.
->> >
->> > For the 2nd
->> >   1: set default cpu type with MachineClass::default_cpu_type and
->> >   2: use generic cpu_model parsing that done before machine_init()
->> >      is run and:
->> >      2.1: drop custom cpu_model parsing where pattern is:
->> >         typename =3D object_class_get_name(
->> >             cpu_class_by_name(TYPE_ARM_CPU, cpu_model))
->> >         [parse_features(typename, cpu_model, &err) ]
->> >
->> >      2.2: or replace cpu_generic_init() which does what
->> >           2.1 does + create_cpu(typename) with just
->> >           create_cpu(machine->cpu_type)
->> > as result cpu_name -> cpu_type translation is done using
->> > generic machine code one including parsing optional features
->> > if supported/present (removes a bunch of duplicated cpu_model
->> > parsing code) and default cpu type is defined in an uniform way
->> > within machine_class_init callbacks instead of adhoc places
->> > in boadr's machine_init code.
->> >
->> > Signed-off-by: Igor Mammedov <imammedo@redhat.com>
->> > Reviewed-by: Eduardo Habkost <ehabkost@redhat.com>
->> > ---
->> > v2:
->> >   - fix merge conflicts with ignore_memory_transaction_failures
->> >   - fix couple merge conflicts where SoC type string where replaced by=
- type macro
->> >   - keep plain prefix string in: strncmp(cpu_type, "pxa27", 5)
->> >   - s/"%s" ARM_CPU_TYPE_SUFFIX/ARM_CPU_TYPE_NAME("%s")/
->> > ---
-> [...]
->
->> > diff --git a/hw/arm/virt.c b/hw/arm/virt.c
->> > index fe96557..fe26e99 100644
->> > --- a/hw/arm/virt.c
->> > +++ b/hw/arm/virt.c
->> > @@ -163,13 +163,13 @@ static const int a15irqmap[] =3D {
->> >   };
->> >
->> >   static const char *valid_cpus[] =3D {
->> > -    "cortex-a15",
->> > -    "cortex-a53",
->> > -    "cortex-a57",
->> > -    "host",
->> > +    ARM_CPU_TYPE_NAME("cortex-a15"),
->> > +    ARM_CPU_TYPE_NAME("cortex-a53"),
->> > +    ARM_CPU_TYPE_NAME("cortex-a57"),
->> > +    ARM_CPU_TYPE_NAME("host"),
->> >   };
->> >
->> > -static bool cpuname_valid(const char *cpu)
->> > +static bool cpu_type_valid(const char *cpu)
->> >   {
->> >       int i;
->>
->> I'd just change this by:
->>
->> static bool cpuname_valid(const char *cpu)
->> {
->>      static const char *valid_cpus[] =3D {
->>          ARM_CPU_TYPE_NAME("cortex-a15"),
->>          ARM_CPU_TYPE_NAME("cortex-a53"),
->>          ARM_CPU_TYPE_NAME("cortex-a57"),
->>      };
->>      int i;
->>
->>      for (i =3D 0; i < ARRAY_SIZE(valid_cpus); i++) {
->>          if (strcmp(cpu, valid_cpus[i]) =3D=3D 0) {
->>              return true;
->>          }
->>      }
->
->>      return kvm_enabled() && !strcmp(cpu, ARM_CPU_TYPE_NAME("host");
-> here is one more case to consider for valid_cpus refactoring,
-> CCing Alistair.
+Hi Qemu-devel,
 
-Thanks, I have a few comments I need to look at for this. I'm going to
-hold off until this series lands though.
+I am trying to add Smartfusion2 SoC.
+SoC is from Microsemi and System on Module(SOM)
+board is from Emcraft systems. Smartfusion2 has hardened
+Microcontroller(Cortex-M3)based Sub System and FPGA fabric.
+At the moment only system timer, sysreg and SPI
+controller are modelled.
+
+Testing:
+./arm-softmmu/qemu-system-arm -M emcraft-sf2 -serial mon:stdio \
+-kernel u-boot.bin -display none -drive file=spi.bin,if=mtd,format=raw
+
+Binaries u-boot.bin and spi.bin are at:
+https://github.com/Subbaraya-Sundeep/qemu-test-binaries.git
+
+U-boot is from Emcraft with modified
+    - SPI driver not to use PDMA.
+    - ugly hack to pass dtb to kernel in r1.
+@
+https://github.com/Subbaraya-Sundeep/emcraft-uboot-sf2.git
+
+Linux is 4.5 linux with Smartfusion2 SoC dts and clocksource
+driver added by myself @
+https://github.com/Subbaraya-Sundeep/linux.git
+
+v10:
+	Added msf2_sysreg_realize in msf2-sysreg.c
+	modified unimplemented devices names:
+		pdma->dma and hpdma->hs-dma
+	used uint8_t for apb divisors properties
+	simplified msf2_divbits() using ctz32()
+
+v9:
+	used trace instead of DB_PRINT in msf2-sysreg.c
+	used LOG_UNIMP for non guest errors in msf2-sysreg.c
+	added unimplemented devices in msf2-soc.c
+	removed .alias suffix in alias memory region name for eNVM
+	removed mc->ignore_memory_transaction_failures in msf2-som.c
+
+v8:
+	memory_region_init_ram to memory_region_init_rom in soc
+	%s/emcraft_sf2_init/emcraft_sf2_s2s010_init/g in som
+	Added mc->ignore_memory_transaction_failures = true in som
+		as per latest commit.
+	Code simplifications as suggested by Alistair in sysreg and ssi.
+
+v7:
+	Removed vmstate_register_ram_global as per latest commit
+	Moved header files to C which are local to C source files
+	Removed abort() from msf2-sysreg.c
+	Added VMStateDescription in mss-timer.c
+
+v6:
+    Moved some defines from header files to source files
+    Added properties m3clk, apb0div, apb0div1 properties
+    to soc.
+    Added properties apb0divisor, apb1divisor to sysreg
+    Update system_clock_source in msf2-soc.c
+    Changed machine name smartfusion2-som->emcraft-sf2
+
+v5
+    As per Philippe comments:
+        Added abort in Sysreg if guest tries to remap memory
+        other than default mapping.
+        Use of CONFIG_MSF2 in Makefile for soc.c
+        Fixed incorrect logic in timer model.
+        Renamed msf2-timer.c -> mss-timer.c
+                msf2-spi.c -> mss-spi.c also type names
+        Renamed function msf2_init->emcraft_sf2_init in msf2-som.c
+        Added part-name,eNVM-size,eSRAM-size,pclk0 and pclk1
+            properties to soc.
+        Pass soc part-name,memory size and clock rate properties from som.
+v4:
+    Fixed build failure by using PRIx macros.
+v3:
+    Added SoC file and board file as per Alistair comments.
+v2:
+    Added SPI controller so that u-boot loads kernel from spi flash.
+v1:
+    Initial patch set with timer and sysreg
 
 Thanks,
-Alistair
+Sundeep
 
->
->> }
->>
->> Anyway this can be a later patch.
-> this check might be removed or superseded by generic valid_cpus work
-> that Alistair is working on, anyways it should be part of that work
-> as change is not directly related to this series.
->
->
-> [...]
+
+Subbaraya Sundeep (5):
+  msf2: Add Smartfusion2 System timer
+  msf2: Microsemi Smartfusion2 System Register block
+  msf2: Add Smartfusion2 SPI controller
+  msf2: Add Smartfusion2 SoC
+  msf2: Add Emcraft's Smartfusion2 SOM kit
+
+ default-configs/arm-softmmu.mak |   1 +
+ hw/arm/Makefile.objs            |   1 +
+ hw/arm/msf2-soc.c               | 232 +++++++++++++++++++++++
+ hw/arm/msf2-som.c               |  94 ++++++++++
+ hw/misc/Makefile.objs           |   1 +
+ hw/misc/msf2-sysreg.c           | 160 ++++++++++++++++
+ hw/misc/trace-events            |   5 +
+ hw/ssi/Makefile.objs            |   1 +
+ hw/ssi/mss-spi.c                | 404 ++++++++++++++++++++++++++++++++++++++++
+ hw/timer/Makefile.objs          |   1 +
+ hw/timer/mss-timer.c            | 289 ++++++++++++++++++++++++++++
+ include/hw/arm/msf2-soc.h       |  66 +++++++
+ include/hw/misc/msf2-sysreg.h   |  77 ++++++++
+ include/hw/ssi/mss-spi.h        |  58 ++++++
+ include/hw/timer/mss-timer.h    |  64 +++++++
+ 15 files changed, 1454 insertions(+)
+ create mode 100644 hw/arm/msf2-soc.c
+ create mode 100644 hw/arm/msf2-som.c
+ create mode 100644 hw/misc/msf2-sysreg.c
+ create mode 100644 hw/ssi/mss-spi.c
+ create mode 100644 hw/timer/mss-timer.c
+ create mode 100644 include/hw/arm/msf2-soc.h
+ create mode 100644 include/hw/misc/msf2-sysreg.h
+ create mode 100644 include/hw/ssi/mss-spi.h
+ create mode 100644 include/hw/timer/mss-timer.h
+
+-- 
+2.5.0
+

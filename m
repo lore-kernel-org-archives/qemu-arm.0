@@ -1,102 +1,96 @@
-Received: by 10.223.172.38 with SMTP id v35csp3438754wrc;
-        Sun, 17 Sep 2017 23:30:05 -0700 (PDT)
-X-Received: by 10.200.17.23 with SMTP id c23mr29410751qtj.74.1505716205630;
-        Sun, 17 Sep 2017 23:30:05 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1505716205; cv=none;
+Received: by 10.223.172.38 with SMTP id v35csp3488105wrc;
+        Mon, 18 Sep 2017 00:48:41 -0700 (PDT)
+X-Google-Smtp-Source: AOwi7QBzEjELAphy7y+aLAMYoaOpSZNztd1+Z6pZmRMMWEX6MhSCdZr7Gw6FmjX7MnVcqd237oZM
+X-Received: by 10.55.154.2 with SMTP id c2mr19183509qke.4.1505720921416;
+        Mon, 18 Sep 2017 00:48:41 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1505720921; cv=none;
         d=google.com; s=arc-20160816;
-        b=y7sY7Y4nRkPSW8+khWiMPvs/SQesRp2/GdY1Oo+e+nkVl5MZnjcNTtq6JzFJwkUZZv
-         x55F9k+V9iLTUSs5UCa2l2nep8zZDmHVBLTNX2tBAQObyYHSW7wC36vmroxYAPWRzZbw
-         kw02TiRHEokSK54+baQiHAc46GwLo/XtB/IYk4fFUwWxn+N9DX5Wpxug61TaZHbmi9Wc
-         M4Kje3rAO2s4ve9xgk6mhzKMn3egCo4TjMSIxCuIfAIVsuhM0URLedGpCb5LBOQvzz34
-         EA66wmIuamUL4y0eL87hV4ZiqzFG21vp8au2nMTQ+Ps4mWx6Qg9l8GkR1+4PSzaJ6Q7I
-         9N4Q==
+        b=UTknQm+e55AD53kQ6o7sngU7xm3SiBj52EEvsFxgmfkY8SDa4pF3CY4fUUlrO2kbWM
+         Fzvwdui/1iTzo6G7Eqtp4gAS90L9asipzzS0x1jBlKS0oOGTAwDHs2Sn+fsF7qe1tDQx
+         sENIBlPgZxfyQKpyQCpHN+QbigfLsnAcftAeZcy1IJDD85PoUBzQqY7YQNgaFio6b6pP
+         TevtczcJBLruDrgi3tzH3a67xgNHVyrH892uwY8wkjaz1CN0G81hi+AF5l3l1AVwRZbJ
+         zbFET6qjk+qFYPiVTcCoxFlsrvvLaysZfw2CbASPWuJRlwwqZ39/UhDxl8/YFakD9g3M
+         lpZw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
-         :references:in-reply-to:mime-version:dkim-signature
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:dmarc-filter
          :arc-authentication-results;
-        bh=1v/N5lt5HdqtbkiuQ0E87DvEica8lI5ZK3THdVeUKv8=;
-        b=aO5GNB7uiiMd1Xc6/5IwdqT5sgVrmRBjHD8TpkIibZvVXrrMkSEUavcpKrQCoZMmtX
-         g7ZEcLx5sNVUwc6DijL7D8mO3ZfUifVXIDi5hmMDE/Kp1TggHimpoVZilW9mEg+vOaG3
-         fm1bG+fJ0WMKH9eS3SFQPG0dItwEpIYYxWkGorhzp7sdJV3JNoF6P1nI9tK0n7KmI5RX
-         t5lThEgRr8yJFLx/hEJ2HyjSFh/+N4eL1/12bJpb+f1MnVZKokh/u4YSoR/OfeFg/4th
-         qZvXBj3n6AEJ8EIJt+WMK18mjnExM4acj8BN6jKNMXxRULTbapRPi0EUzpNhTydXDqaM
-         Q3YQ==
+        bh=FOIix/GxTXTVOYj3vbd2ldj2EvBnPBtsW8W8HLLfHkE=;
+        b=yl+KXCkqKTqV14we2Foz7gDjFEoSjgPys3Cjn5OryRqA6W1TSBuFV6gTWyRcD14pDF
+         /IgCcVx6S4r3bDJG4/EI0vnL0eHVhkgr1S2y/4NpWJrEHLCm8MzS+72nWj9Vll3s1pj2
+         dD0wEmbxgW5l7zfx1Tqvewwex1RXTBEXocXm7DvQ7eSrGUBhuCGIxyda67HUgvo4/h1B
+         yRTquKdvjWmzJ5cU+GVIThiq9U0MxPFKzvFJfLv/CIXHigvjD0cC/kX6c17uAIDI+iQJ
+         Q/MHBenaYg1Ify3Dwdf5BSZtFa6HtaiaFj9YOt7SbodaxgUJoM+OSIzhxDjljXVbbHwE
+         RU2w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=XITxt/JO;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id p129si1612484qkb.278.2017.09.17.23.30.05
+        by mx.google.com with ESMTPS id q15si4396396qte.2.2017.09.18.00.48.40
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sun, 17 Sep 2017 23:30:05 -0700 (PDT)
+        Mon, 18 Sep 2017 00:48:41 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=XITxt/JO;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:34871 helo=lists.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:35105 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1dtpZD-0000Jj-Cj
-	for alex.bennee@linaro.org; Mon, 18 Sep 2017 02:30:03 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:45262)
+	id 1dtqnH-0002Uq-19
+	for alex.bennee@linaro.org; Mon, 18 Sep 2017 03:48:39 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:59193)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <sundeep.lkml@gmail.com>) id 1dtpZ2-0000IM-GN
-	for qemu-arm@nongnu.org; Mon, 18 Sep 2017 02:29:53 -0400
+	(envelope-from <eric.auger@redhat.com>) id 1dtqmc-00028k-5w
+	for qemu-arm@nongnu.org; Mon, 18 Sep 2017 03:48:00 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <sundeep.lkml@gmail.com>) id 1dtpZ1-0005zQ-JB
-	for qemu-arm@nongnu.org; Mon, 18 Sep 2017 02:29:52 -0400
-Received: from mail-ua0-x241.google.com ([2607:f8b0:400c:c08::241]:38376)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <sundeep.lkml@gmail.com>)
-	id 1dtpYz-0005yO-14; Mon, 18 Sep 2017 02:29:49 -0400
-Received: by mail-ua0-x241.google.com with SMTP id l24so2302749uaa.5;
-	Sun, 17 Sep 2017 23:29:47 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=1v/N5lt5HdqtbkiuQ0E87DvEica8lI5ZK3THdVeUKv8=;
-	b=XITxt/JOymtX71OegrwQP5k9PJujw7pVOkj/FogNBZWgDApgFrRpZD82CO3ncKn5K2
-	c/Jw9Kcz+kjvWuA8Bv9raPCBqtsI7XZr3kHNqoCCE2f3ZmpNNZb6P7EqFaOdyxGugN9B
-	N1t6doFSCUju83HvU9LVT+v3tcSmNrOMbwwyzQ3mrR1LLSkBF0PKBaTB0YPFqxT5jHKK
-	KkFYWrYE569/9QHcCm5rUcPaKKcWMFttVSREMGZXeyEwHfQ7ld/Iu1U5EJDCCfL6cowO
-	wuNq7tJEU+aMzAW9cnOwiC0h+5SEe8UTVfOqkDhbkQxWKrHvmy4ggyD2JWQ6OtNytPpT
-	Au1g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=1v/N5lt5HdqtbkiuQ0E87DvEica8lI5ZK3THdVeUKv8=;
-	b=t2VyzfeEGwWvGJhyydNqDTo8+0EQIrJkPSM8BQlb6yFFxzwbpi1HAlu3purRK9CJLg
-	qamcZFg2rU69YPJ+fSSodrvW5iKPDBd4kKkSlSfPJgOkoMe0E973xfuDI+AkTkv+XRGJ
-	uJyYvAIr/yU0J7PxjydAf0Ff7VcFyhLfzITtGbpfmnTpjrUxZLWp3c4QPrxoDmBfv4N0
-	ABkSDF3Amt3cT/OVn2WvWxuYk+QUKXcnZK3msT4wWeLvstApIaqWalnpglFsF3i5s0d7
-	Blfnc4Y8UVAI6PDAHiDEkiqKba1wvuc0n05EnC7YBRKatRTzloih8rbWJuvWtSnW9vBO
-	/AaQ==
-X-Gm-Message-State: AHPjjUhOvu91AqtTOuWIWrAqLcgcBbdmVTivOypGLwro5O2b4T6JBgOW
-	dmUHAcukgTm0SyNMe06F7KW3z/MCvCz7WTkkTIM=
-X-Google-Smtp-Source: ADKCNb7h1xaYY0Tak09PalhzmK50aQ8WaSC2nBNetZ/iZbCZhqJ6cIPsAwx+KwbeVe9WCQ40BQZDKjR8sx7PNH2Y2z0=
-X-Received: by 10.176.3.51 with SMTP id 48mr29336642uat.67.1505716187202; Sun,
-	17 Sep 2017 23:29:47 -0700 (PDT)
+	(envelope-from <eric.auger@redhat.com>) id 1dtqmY-0001Ss-Vr
+	for qemu-arm@nongnu.org; Mon, 18 Sep 2017 03:47:58 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:65041)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <eric.auger@redhat.com>)
+	id 1dtqmY-0001Qu-MP; Mon, 18 Sep 2017 03:47:54 -0400
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+	[10.5.11.13])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id D74FA8046F;
+	Mon, 18 Sep 2017 07:47:52 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com D74FA8046F
+Authentication-Results: ext-mx04.extmail.prod.ext.phx2.redhat.com;
+	dmarc=none (p=none dis=none) header.from=redhat.com
+Authentication-Results: ext-mx04.extmail.prod.ext.phx2.redhat.com;
+	spf=fail smtp.mailfrom=eric.auger@redhat.com
+Received: from localhost.localdomain (ovpn-116-197.ams2.redhat.com
+	[10.36.116.197])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id C19E3183C8;
+	Mon, 18 Sep 2017 07:47:41 +0000 (UTC)
+To: Bharat Bhushan <Bharat.Bhushan@nxp.com>, eric.auger.pro@gmail.com,
+	peter.maydell@linaro.org, alex.williamson@redhat.com, mst@redhat.com,
+	qemu-arm@nongnu.org, qemu-devel@nongnu.org
+References: <1503312534-6642-1-git-send-email-Bharat.Bhushan@nxp.com>
+	<1503312534-6642-3-git-send-email-Bharat.Bhushan@nxp.com>
+From: Auger Eric <eric.auger@redhat.com>
+Message-ID: <98b80288-9c4f-874a-9604-aa1a71525a59@redhat.com>
+Date: Mon, 18 Sep 2017 09:47:40 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
+	Thunderbird/45.4.0
 MIME-Version: 1.0
-Received: by 10.176.66.68 with HTTP; Sun, 17 Sep 2017 23:29:46 -0700 (PDT)
-In-Reply-To: <3618281c-b4f9-3a1a-8b6f-f87dfeb54e45@amsat.org>
-References: <1504812251-23438-1-git-send-email-sundeep.lkml@gmail.com>
-	<1504812251-23438-3-git-send-email-sundeep.lkml@gmail.com>
-	<a9891f10-9643-96ee-7f99-7a384b9ea302@amsat.org>
-	<3618281c-b4f9-3a1a-8b6f-f87dfeb54e45@amsat.org>
-From: sundeep subbaraya <sundeep.lkml@gmail.com>
-Date: Mon, 18 Sep 2017 11:59:46 +0530
-Message-ID: <CALHRZuoba-57L-95NrCHBn-+_DUcg9PQTbaOz4ENwPyX+Ysa3w@mail.gmail.com>
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
-Content-Type: multipart/alternative; boundary="001a11351888788a2b055970de2f"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:400c:c08::241
-Subject: Re: [Qemu-arm] [Qemu devel v8 PATCH 2/5] msf2: Microsemi
- Smartfusion2 System Register block
+In-Reply-To: <1503312534-6642-3-git-send-email-Bharat.Bhushan@nxp.com>
+Content-Type: text/plain; charset=windows-1252
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.28]);
+	Mon, 18 Sep 2017 07:47:53 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v3 2/2] virtio-iommu: vfio
+ integration with virtio-iommu
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -108,158 +102,387 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm <qemu-arm@nongnu.org>,
-	QEMU Developers <qemu-devel@nongnu.org>,
-	Alistair Francis <alistair23@gmail.com>
+Cc: kevin.tian@intel.com, marc.zyngier@arm.com, tn@semihalf.com,
+	will.deacon@arm.com, drjones@redhat.com, robin.murphy@arm.com,
+	christoffer.dall@linaro.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: we73MZIoPwde
+X-TUID: GuaNfXyYMbOg
 
---001a11351888788a2b055970de2f
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Hi Bharat,
 
-Hi Philippe,
+On 21/08/2017 12:48, Bharat Bhushan wrote:
+> This RFC patch allows virtio-iommu protection for PCI
+> device-passthrough.
+> 
+> MSI region is mapped by current version of virtio-iommu driver.
+> This uses VFIO extension of map/unmap notification when an area
+> of memory is mappedi/unmapped in emulated iommu device.
+> 
+> This series is tested with 2 PCI devices to virtual machine using
+> dma-ops and DPDK in VM is not yet tested.
+> 
+> Also with this series we observe below prints for MSI region mapping
+> 
+>    "qemu-system-aarch64: iommu map to non memory area 0"
+> 
+>    This print comes when vfio/map-notifier is called for MSI region.
+> 
+> vfio map/unmap notification is called for given device
+>    This assumes that devid passed in virtio_iommu_attach is same as devfn
+>    This assumption is based on 1:1 mapping of requested-id with device-id
+>    in QEMU.
+> 
+> Signed-off-by: Bharat Bhushan <Bharat.Bhushan@nxp.com>
+> ---
+> v2->v3:
+>  - Addressed review comments:
+>     - virtio-iommu_map_region function is split in two functions
+>       virtio_iommu_notify_map/virtio_iommu_notify_unmap
+>     - use size received from driver and do not split in 4K pages
+>  
+>  - map/unmap notification is called for given device/as
+>    This relies on devid passed in virtio_iommu_attach is same as devfn
+>    This is assumed as iommu-map maps 1:1 requested-id to device-id in QEMU
+>    Looking for comment about this assumtion.
+> 
+>  - Keeping track devices in address-space
+> 
+>  - Verified with 2 PCI endpoints
+>  - some code cleanup
+> 
+>  hw/virtio/trace-events           |   5 ++
+>  hw/virtio/virtio-iommu.c         | 163 +++++++++++++++++++++++++++++++++++++++
+>  include/hw/virtio/virtio-iommu.h |   6 ++
+>  3 files changed, 174 insertions(+)
+> 
+> diff --git a/hw/virtio/trace-events b/hw/virtio/trace-events
+> index 8db3d91..7e9663f 100644
+> --- a/hw/virtio/trace-events
+> +++ b/hw/virtio/trace-events
+> @@ -39,3 +39,8 @@ virtio_iommu_unmap_left_interval(uint64_t low, uint64_t high, uint64_t next_low,
+>  virtio_iommu_unmap_right_interval(uint64_t low, uint64_t high, uint64_t next_low, uint64_t next_high) "Unmap right [0x%"PRIx64",0x%"PRIx64"], new interval=[0x%"PRIx64",0x%"PRIx64"]"
+>  virtio_iommu_unmap_inc_interval(uint64_t low, uint64_t high) "Unmap inc [0x%"PRIx64",0x%"PRIx64"]"
+>  virtio_iommu_translate_result(uint64_t virt_addr, uint64_t phys_addr, uint32_t sid) "0x%"PRIx64" -> 0x%"PRIx64 " for sid=%d"
+> +virtio_iommu_notify_flag_add(const char *iommu) "Add virtio-iommu notifier node for memory region %s"
+> +virtio_iommu_notify_flag_del(const char *iommu) "Del virtio-iommu notifier node for memory region %s"
+> +virtio_iommu_remap(hwaddr iova, hwaddr pa, hwaddr size) "iova=0x%"PRIx64" pa=0x%" PRIx64" size=0x%"PRIx64""
+> +virtio_iommu_notify_map(hwaddr iova, hwaddr paddr, hwaddr map_size) "iova=0x%"PRIx64" pa=0x%" PRIx64" size=0x%"PRIx64""
+> +virtio_iommu_notify_unmap(hwaddr iova, hwaddr paddr, hwaddr map_size) "iova=0x%"PRIx64" pa=0x%" PRIx64" size=0x%"PRIx64""
+useless paddr
+> diff --git a/hw/virtio/virtio-iommu.c b/hw/virtio/virtio-iommu.c
+> index 9217587..9eae050 100644
+> --- a/hw/virtio/virtio-iommu.c
+> +++ b/hw/virtio/virtio-iommu.c
+> @@ -55,11 +55,13 @@ typedef struct viommu_interval {
+>  typedef struct viommu_dev {
+>      uint32_t id;
+>      viommu_as *as;
+> +    QLIST_ENTRY(viommu_dev) next;
+>  } viommu_dev;
+>  
+>  struct viommu_as {
+>      uint32_t id;
+>      GTree *mappings;
+> +    QLIST_HEAD(, viommu_dev) device_list;
+>  };
+>  
+>  static inline uint16_t virtio_iommu_get_sid(IOMMUDevice *dev)
+> @@ -133,12 +135,70 @@ static gint interval_cmp(gconstpointer a, gconstpointer b, gpointer user_data)
+>      }
+>  }
+>  
+> +static void virtio_iommu_notify_map(IOMMUMemoryRegion *mr, hwaddr iova,
+> +                                    hwaddr paddr, hwaddr size)
+> +{
+> +    IOMMUTLBEntry entry;
+> +
+> +    entry.target_as = &address_space_memory;
+> +    entry.addr_mask = size - 1;
+> +
+> +    entry.iova = iova;
+> +    trace_virtio_iommu_notify_map(iova, paddr, size);
+> +    entry.perm = IOMMU_RW;
+> +    entry.translated_addr = paddr;
+> +
+> +    memory_region_notify_iommu(mr, entry);
+> +}
+> +
+> +static void virtio_iommu_notify_unmap(IOMMUMemoryRegion *mr, hwaddr iova,
+> +                                      hwaddr paddr, hwaddr size)
+unmap() doesn't need to have paddr arg.
+> +{
+> +    IOMMUTLBEntry entry;
+> +
+> +    entry.target_as = &address_space_memory;
+> +    entry.addr_mask = size - 1;
+> +
+> +    entry.iova = iova;
+> +    trace_virtio_iommu_notify_unmap(iova, paddr, size);
+ditto
+> +    entry.perm = IOMMU_NONE;
+> +    entry.translated_addr = 0;
+> +
+> +    memory_region_notify_iommu(mr, entry);
+> +}
+> +
+> +static gboolean virtio_iommu_maping_unmap(gpointer key, gpointer value,
+> +                                          gpointer data)
+s/virtio_iommu_maping_unmap/virtio_iommu_mapping_unmap
+> +{
+> +    viommu_mapping *mapping = (viommu_mapping *) value;
+> +    IOMMUMemoryRegion *mr = (IOMMUMemoryRegion *) data;
+> +
+> +    virtio_iommu_notify_unmap(mr, mapping->virt_addr, 0, mapping->size);
+> +
+> +    return true;
+> +}
+> +
+>  static void virtio_iommu_detach_dev(VirtIOIOMMU *s, viommu_dev *dev)
+>  {
+> +    VirtioIOMMUNotifierNode *node;
+>      viommu_as *as = dev->as;
+> +    int devid = dev->id;
+>  
+>      trace_virtio_iommu_detach(dev->id);
+>  
+> +    /* Remove device from address-space list */
+> +    QLIST_REMOVE(dev, next);
+> +    /* unmap all if no devices attached to address-spaceRemove */
+comment to be reworked
+> +    if (QLIST_EMPTY(&as->device_list)) {
+I don't get why you execute the code below only if the device_list is
+empty. Each time a device is detached don't you need to notify its
+associated iommu_mr?
+> +        QLIST_FOREACH(node, &s->notifiers_list, next) {
+> +            if (devid == node->iommu_dev->devfn) {
+> +                g_tree_foreach(as->mappings, virtio_iommu_maping_unmap,
+> +                               &node->iommu_dev->iommu_mr);
+> +            }
+> +        }
+> +    }
+> +
+> +    /* Remove device from global list */
+>      g_tree_remove(s->devices, GUINT_TO_POINTER(dev->id));
+>      g_tree_unref(as->mappings);
+>  }
+> @@ -171,6 +231,7 @@ static int virtio_iommu_attach(VirtIOIOMMU *s,
+>      if (!as) {
+>          as = g_malloc0(sizeof(*as));
+>          as->id = asid;
+> +        QLIST_INIT(&as->device_list);
+>          as->mappings = g_tree_new_full((GCompareDataFunc)interval_cmp,
+>                                           NULL, NULL, (GDestroyNotify)g_free);
+>          g_tree_insert(s->address_spaces, GUINT_TO_POINTER(asid), as);
+> @@ -182,6 +243,7 @@ static int virtio_iommu_attach(VirtIOIOMMU *s,
+>      dev->id = devid;
+>      trace_virtio_iommu_new_devid(devid);
+>      g_tree_insert(s->devices, GUINT_TO_POINTER(devid), dev);
+> +    QLIST_INSERT_HEAD(&as->device_list, dev, next);
+>      g_tree_ref(as->mappings);
+>  
+>      return VIRTIO_IOMMU_S_OK;
+> @@ -219,6 +281,8 @@ static int virtio_iommu_map(VirtIOIOMMU *s,
+>      viommu_as *as;
+>      viommu_interval *interval;
+>      viommu_mapping *mapping;
+> +    VirtioIOMMUNotifierNode *node;
+> +    viommu_dev *dev;
+>  
+>      interval = g_malloc0(sizeof(*interval));
+>  
+> @@ -230,6 +294,11 @@ static int virtio_iommu_map(VirtIOIOMMU *s,
+>          return VIRTIO_IOMMU_S_NOENT;
+>      }
+>  
+> +    dev = QLIST_FIRST(&as->device_list);
+> +    if (!dev) {
+> +        return VIRTIO_IOMMU_S_NOENT;
+> +    }
+> +
+>      mapping = g_tree_lookup(as->mappings, (gpointer)interval);
+>      if (mapping) {
+>          g_free(interval);
+> @@ -246,6 +315,14 @@ static int virtio_iommu_map(VirtIOIOMMU *s,
+>  
+>      g_tree_insert(as->mappings, interval, mapping);
+>  
+> +    /* All devices in an address-space share mapping */
+> +    QLIST_FOREACH(node, &s->notifiers_list, next) {
+> +        if (dev->id == node->iommu_dev->devfn) {
+> +            virtio_iommu_notify_map(&node->iommu_dev->iommu_mr, virt_addr,
+> +                                    phys_addr, size);
+> +        }
+> +    }
+> +
+>      return VIRTIO_IOMMU_S_OK;
+>  }
+>  
+> @@ -259,6 +336,8 @@ static int virtio_iommu_unmap(VirtIOIOMMU *s,
+>      viommu_mapping *mapping;
+>      viommu_interval interval;
+>      viommu_as *as;
+> +    VirtioIOMMUNotifierNode *node;
+> +    viommu_dev *dev;
+>  
+>      trace_virtio_iommu_unmap(asid, virt_addr, size, flags);
+>  
+> @@ -267,6 +346,12 @@ static int virtio_iommu_unmap(VirtIOIOMMU *s,
+>          error_report("%s: no as", __func__);
+>          return VIRTIO_IOMMU_S_NOENT;
+>      }
+> +
+> +    dev = QLIST_FIRST(&as->device_list);
+> +    if (!dev) {
+> +        return VIRTIO_IOMMU_S_NOENT;
+> +    }
+> +
+>      interval.low = virt_addr;
+>      interval.high = virt_addr + size - 1;
+>  
+> @@ -296,7 +381,15 @@ static int virtio_iommu_unmap(VirtIOIOMMU *s,
+>          } else {
+>              break;
+>          }
+> +
+extra line
+>          if (interval.low >= interval.high) {
+> +            /* All devices in an address-space share mapping */
+> +            QLIST_FOREACH(node, &s->notifiers_list, next) {
+> +                if (dev->id == node->iommu_dev->devfn) {
+> +                    virtio_iommu_notify_unmap(&node->iommu_dev->iommu_mr, virt_addr,
+> +                                              0, size);
+Why do you notify only a single mr? All devices belonging to the as are
+affected by this change. So don't you need to notify all as device's mr?
+> +                }
+> +            }
+>              return VIRTIO_IOMMU_S_OK;
+>          } else {
+>              mapping = g_tree_lookup(as->mappings, (gpointer)&interval);
+> @@ -439,6 +532,36 @@ static void virtio_iommu_handle_command(VirtIODevice *vdev, VirtQueue *vq)
+>      }
+>  }
+>  
+> +static void virtio_iommu_notify_flag_changed(IOMMUMemoryRegion *iommu_mr,
+> +                                          IOMMUNotifierFlag old,
+> +                                          IOMMUNotifierFlag new)
+> +{
+> +    IOMMUDevice *sdev = container_of(iommu_mr, IOMMUDevice, iommu_mr);
+> +    VirtIOIOMMU *s = sdev->viommu;
+> +    VirtioIOMMUNotifierNode *node = NULL;
+> +    VirtioIOMMUNotifierNode *next_node = NULL;
+> +
+> +    if (old == IOMMU_NOTIFIER_NONE) {
+> +        trace_virtio_iommu_notify_flag_add(iommu_mr->parent_obj.name);
+> +        node = g_malloc0(sizeof(*node));
+> +        node->iommu_dev = sdev;
+> +        QLIST_INSERT_HEAD(&s->notifiers_list, node, next);
+> +        return;
+> +    }
+> +
+> +    /* update notifier node with new flags */
+> +    QLIST_FOREACH_SAFE(node, &s->notifiers_list, next, next_node) {
+> +        if (node->iommu_dev == sdev) {
+> +            if (new == IOMMU_NOTIFIER_NONE) {
+> +                trace_virtio_iommu_notify_flag_del(iommu_mr->parent_obj.name);
+> +                QLIST_REMOVE(node, next);
+> +                g_free(node);
+> +            }
+> +            return;
+> +        }
+> +    }
+> +}
+> +
+>  static IOMMUTLBEntry virtio_iommu_translate(IOMMUMemoryRegion *mr, hwaddr addr,
+>                                              IOMMUAccessFlags flag)
+>  {
+> @@ -553,11 +676,49 @@ static gint int_cmp(gconstpointer a, gconstpointer b, gpointer user_data)
+>      return (ua > ub) - (ua < ub);
+>  }
+>  
+> +static gboolean virtio_iommu_remap(gpointer key, gpointer value, gpointer data)
+> +{
+> +    viommu_mapping *mapping = (viommu_mapping *) value;
+> +    IOMMUMemoryRegion *mr = (IOMMUMemoryRegion *) data;
+> +
+> +    trace_virtio_iommu_remap(mapping->virt_addr, mapping->phys_addr,
+> +                             mapping->size);
+> +    /* unmap previous entry and map again */
+> +    virtio_iommu_notify_unmap(mr, mapping->virt_addr, 0, mapping->size);
+> +
+> +    virtio_iommu_notify_map(mr, mapping->virt_addr, mapping->phys_addr,
+> +                            mapping->size);
+> +    return true;
+you need to return false here otherwise  g_tree_foreach will return on
+the first as mapping.
 
-On Mon, Sep 18, 2017 at 5:27 AM, Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.o=
-rg>
-wrote:
+Thanks
 
-> Hi Sundeep,
->
-> On 09/14/2017 01:36 AM, Philippe Mathieu-Daud=C3=A9 wrote:
->
->> On 09/07/2017 04:24 PM, Subbaraya Sundeep wrote:
->>
-> [...]
->
->> +static inline int msf2_divbits(uint32_t div)
->>>
->>
->> Please directly use ctz32() instead of msf2_divbits()
->>
->
-> It seems you missed this review comment in your v9.
-
-
-ctz32(1) =3D 0
-ctz32(2) =3D 1
-ctz32(4) =3D 2
-ctz32(8) =3D 3
-ctz32(16) =3D 4
-ctz32(32) =3D 5
-
-but for inputs 8,16,32 output should be 4,5,6 so didn't use ctz32().
-I replied to this comment in the same mail chain earlier. Please check.
-
-Thanks,
-Sundeep
-
->
->
->
->> +{
->>> +    int ret =3D 0;
->>> +
->>> +    switch (div) {
->>> +    case 1:
->>> +        ret =3D 0;
->>> +        break;
->>> +    case 2:
->>> +        ret =3D 1;
->>> +        break;
->>> +    case 4:
->>> +        ret =3D 2;
->>> +        break;
->>> +    case 8:
->>> +        ret =3D 4;
->>> +        break;
->>> +    case 16:
->>> +        ret =3D 5;
->>> +        break;
->>> +    case 32:
->>> +        ret =3D 6;
->>> +        break;
->>> +    default:
->>> +        break;
->>> +    }
->>> +
->>> +    return ret;
->>> +}
->>>
->>
-
---001a11351888788a2b055970de2f
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr">Hi Philippe,<div class=3D"gmail_extra"><br><div class=3D"g=
-mail_quote">On Mon, Sep 18, 2017 at 5:27 AM, Philippe Mathieu-Daud=C3=A9 <s=
-pan dir=3D"ltr">&lt;<a href=3D"mailto:f4bug@amsat.org" target=3D"_blank">f4=
-bug@amsat.org</a>&gt;</span> wrote:<br><blockquote class=3D"gmail_quote" st=
-yle=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padd=
-ing-left:1ex">Hi Sundeep,<span class=3D"gmail-"><br>
-<br>
-On 09/14/2017 01:36 AM, Philippe Mathieu-Daud=C3=A9 wrote:<br>
-<blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-=
-left:1px solid rgb(204,204,204);padding-left:1ex">
-On 09/07/2017 04:24 PM, Subbaraya Sundeep wrote:<br>
-</blockquote></span>
-[...]<span class=3D"gmail-"><br>
-<blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-=
-left:1px solid rgb(204,204,204);padding-left:1ex"><blockquote class=3D"gmai=
-l_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,20=
-4,204);padding-left:1ex">
-+static inline int msf2_divbits(uint32_t div)<br>
-</blockquote>
-<br>
-Please directly use ctz32() instead of msf2_divbits()<br>
-</blockquote>
-<br></span>
-It seems you missed this review comment in your v9.</blockquote><div><br></=
-div><div>ctz32(1) =3D 0</div><div>ctz32(2) =3D 1</div><div>ctz32(4) =3D 2</=
-div><div>ctz32(8) =3D 3</div><div>ctz32(16) =3D 4</div><div>ctz32(32) =3D 5=
-</div><div><br></div><div>but for inputs 8,16,32 output should be 4,5,6 so =
-didn&#39;t use ctz32().</div><div>I replied to this comment in the same mai=
-l chain earlier. Please check.</div><div><br></div><div>Thanks,</div><div>S=
-undeep</div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0=
-.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex"><div class=3D=
-"gmail-HOEnZb"><div class=3D"gmail-h5"><br>
-<br>
-<blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-=
-left:1px solid rgb(204,204,204);padding-left:1ex">
-<br>
-<blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-=
-left:1px solid rgb(204,204,204);padding-left:1ex">
-+{<br>
-+=C2=A0=C2=A0=C2=A0 int ret =3D 0;<br>
-+<br>
-+=C2=A0=C2=A0=C2=A0 switch (div) {<br>
-+=C2=A0=C2=A0=C2=A0 case 1:<br>
-+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 ret =3D 0;<br>
-+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 break;<br>
-+=C2=A0=C2=A0=C2=A0 case 2:<br>
-+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 ret =3D 1;<br>
-+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 break;<br>
-+=C2=A0=C2=A0=C2=A0 case 4:<br>
-+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 ret =3D 2;<br>
-+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 break;<br>
-+=C2=A0=C2=A0=C2=A0 case 8:<br>
-+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 ret =3D 4;<br>
-+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 break;<br>
-+=C2=A0=C2=A0=C2=A0 case 16:<br>
-+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 ret =3D 5;<br>
-+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 break;<br>
-+=C2=A0=C2=A0=C2=A0 case 32:<br>
-+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 ret =3D 6;<br>
-+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 break;<br>
-+=C2=A0=C2=A0=C2=A0 default:<br>
-+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 break;<br>
-+=C2=A0=C2=A0=C2=A0 }<br>
-+<br>
-+=C2=A0=C2=A0=C2=A0 return ret;<br>
-+}<br>
-</blockquote></blockquote>
-</div></div></blockquote></div><br></div></div>
-
---001a11351888788a2b055970de2f--
+Eric
+> +}
+> +
+> +static void virtio_iommu_replay(IOMMUMemoryRegion *mr, IOMMUNotifier *n)
+> +{
+> +    IOMMUDevice *sdev = container_of(mr, IOMMUDevice, iommu_mr);
+> +    VirtIOIOMMU *s = sdev->viommu;
+> +    uint32_t sid;
+> +    viommu_dev *dev;
+> +
+> +    sid = virtio_iommu_get_sid(sdev);
+> +
+> +    qemu_mutex_lock(&s->mutex);
+> +
+> +    dev = g_tree_lookup(s->devices, GUINT_TO_POINTER(sid));
+> +    if (!dev) {
+> +        goto unlock;
+> +    }
+> +
+> +    g_tree_foreach(dev->as->mappings, virtio_iommu_remap, mr);
+> +
+> +unlock:
+> +    qemu_mutex_unlock(&s->mutex);
+> +}
+> +
+>  static void virtio_iommu_device_realize(DeviceState *dev, Error **errp)
+>  {
+>      VirtIODevice *vdev = VIRTIO_DEVICE(dev);
+>      VirtIOIOMMU *s = VIRTIO_IOMMU(dev);
+>  
+> +    QLIST_INIT(&s->notifiers_list);
+>      virtio_init(vdev, "virtio-iommu", VIRTIO_ID_IOMMU,
+>                  sizeof(struct virtio_iommu_config));
+>  
+> @@ -644,6 +805,8 @@ static void virtio_iommu_memory_region_class_init(ObjectClass *klass,
+>      IOMMUMemoryRegionClass *imrc = IOMMU_MEMORY_REGION_CLASS(klass);
+>  
+>      imrc->translate = virtio_iommu_translate;
+> +    imrc->notify_flag_changed = virtio_iommu_notify_flag_changed;
+> +    imrc->replay = virtio_iommu_replay;
+>  }
+>  
+>  static const TypeInfo virtio_iommu_info = {
+> diff --git a/include/hw/virtio/virtio-iommu.h b/include/hw/virtio/virtio-iommu.h
+> index f9c988f..7e04184 100644
+> --- a/include/hw/virtio/virtio-iommu.h
+> +++ b/include/hw/virtio/virtio-iommu.h
+> @@ -46,6 +46,11 @@ typedef struct IOMMUPciBus {
+>      IOMMUDevice  *pbdev[0]; /* Parent array is sparse, so dynamically alloc */
+>  } IOMMUPciBus;
+>  
+> +typedef struct VirtioIOMMUNotifierNode {
+> +    IOMMUDevice *iommu_dev;
+> +    QLIST_ENTRY(VirtioIOMMUNotifierNode) next;
+> +} VirtioIOMMUNotifierNode;
+> +
+>  typedef struct VirtIOIOMMU {
+>      VirtIODevice parent_obj;
+>      VirtQueue *vq;
+> @@ -56,6 +61,7 @@ typedef struct VirtIOIOMMU {
+>      GTree *address_spaces;
+>      QemuMutex mutex;
+>      GTree *devices;
+> +    QLIST_HEAD(, VirtioIOMMUNotifierNode) notifiers_list;
+>  } VirtIOIOMMU;
+>  
+>  #endif
+> 

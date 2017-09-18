@@ -1,96 +1,89 @@
-Received: by 10.223.172.38 with SMTP id v35csp3488105wrc;
-        Mon, 18 Sep 2017 00:48:41 -0700 (PDT)
-X-Google-Smtp-Source: AOwi7QBzEjELAphy7y+aLAMYoaOpSZNztd1+Z6pZmRMMWEX6MhSCdZr7Gw6FmjX7MnVcqd237oZM
-X-Received: by 10.55.154.2 with SMTP id c2mr19183509qke.4.1505720921416;
-        Mon, 18 Sep 2017 00:48:41 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1505720921; cv=none;
+Received: by 10.223.172.38 with SMTP id v35csp3559185wrc;
+        Mon, 18 Sep 2017 02:37:22 -0700 (PDT)
+X-Google-Smtp-Source: AOwi7QDo5mpxu2aOqRR1jaiTYJDY/GFqeUXZW0DHVD3RekF2FfJo/oYS5j9mXoUpmmvgg/d0Dcn+
+X-Received: by 10.200.53.35 with SMTP id y32mr47636561qtb.276.1505727442218;
+        Mon, 18 Sep 2017 02:37:22 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1505727442; cv=none;
         d=google.com; s=arc-20160816;
-        b=UTknQm+e55AD53kQ6o7sngU7xm3SiBj52EEvsFxgmfkY8SDa4pF3CY4fUUlrO2kbWM
-         Fzvwdui/1iTzo6G7Eqtp4gAS90L9asipzzS0x1jBlKS0oOGTAwDHs2Sn+fsF7qe1tDQx
-         sENIBlPgZxfyQKpyQCpHN+QbigfLsnAcftAeZcy1IJDD85PoUBzQqY7YQNgaFio6b6pP
-         TevtczcJBLruDrgi3tzH3a67xgNHVyrH892uwY8wkjaz1CN0G81hi+AF5l3l1AVwRZbJ
-         zbFET6qjk+qFYPiVTcCoxFlsrvvLaysZfw2CbASPWuJRlwwqZ39/UhDxl8/YFakD9g3M
-         lpZw==
+        b=D8rzr/dYepwp2XUQbBjyWJNT3Iss36BBuZTihD7wIRslkKvnVC1TflEu+VyJfoIa9t
+         uBJGdcu3etiLyfd2XmDV7R+2ZSS0s0ueRS5uUDIo4XjAzuCibv/gi9cg3Tk6BTf9c5Ki
+         7ihcSz8xHO41jGmMOEhmQY8dnEtVViB3evzEz+s6tzaaO/dYnduMTvX6eK0ML/G/bPjT
+         2o4tVdg1E8dl0A1abw+zvhjxMzk/Oli3QTmKCboBtsPZ/2SVmR3lybcRPVBBV4R3kwb2
+         VtAoE43KClW82wSmlyho/Eh6YUmYGXBrSCB7w8mMUvFGY+cUwGsHgxqp8BfYtS7RiBbu
+         jw+A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:dmarc-filter
-         :arc-authentication-results;
-        bh=FOIix/GxTXTVOYj3vbd2ldj2EvBnPBtsW8W8HLLfHkE=;
-        b=yl+KXCkqKTqV14we2Foz7gDjFEoSjgPys3Cjn5OryRqA6W1TSBuFV6gTWyRcD14pDF
-         /IgCcVx6S4r3bDJG4/EI0vnL0eHVhkgr1S2y/4NpWJrEHLCm8MzS+72nWj9Vll3s1pj2
-         dD0wEmbxgW5l7zfx1Tqvewwex1RXTBEXocXm7DvQ7eSrGUBhuCGIxyda67HUgvo4/h1B
-         yRTquKdvjWmzJ5cU+GVIThiq9U0MxPFKzvFJfLv/CIXHigvjD0cC/kX6c17uAIDI+iQJ
-         Q/MHBenaYg1Ify3Dwdf5BSZtFa6HtaiaFj9YOt7SbodaxgUJoM+OSIzhxDjljXVbbHwE
-         RU2w==
+         :content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:to:from:date:dmarc-filter:arc-authentication-results;
+        bh=HHCwKIAvXXQukzzXMvv2m9UWtuXD1LffwGhfy3Orsv4=;
+        b=woO2CkcamZGAK4nkG8UelDbKyT8lE3ziSvIct4gDXiyAUXsiKSTnHZBYdzs1GRJ4Px
+         Kk1pkHIOpyIlsOWgpu1tll15+cjmUEzUlZahz5Whd4g7j/McI4I/SvAsjdZnnIjc6Yoc
+         E/wTGQErbT7UR0lzqef7U876IdSqHB6I5ooYLxfiM5xClp0wK179+nkpvFS3bucBFe7j
+         PQ+7bQp/AEuhxuAT4qsUJwAQPDCU/2MW6+P33DkDf3HJxZqp90L6OrIdQrfXN4YU0Iyx
+         o2u9P9QIwTFuO/nAStD8D9K8LjuIpCehmUwNMioRRIvipYV6/Oj8VEoc8++HcnZCwzdM
+         UMSA==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id q15si4396396qte.2.2017.09.18.00.48.40
+        by mx.google.com with ESMTPS id i36si6618240qtb.440.2017.09.18.02.37.21
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 18 Sep 2017 00:48:41 -0700 (PDT)
+        Mon, 18 Sep 2017 02:37:22 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:35105 helo=lists.gnu.org)
+Received: from localhost ([::1]:35433 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1dtqnH-0002Uq-19
-	for alex.bennee@linaro.org; Mon, 18 Sep 2017 03:48:39 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:59193)
+	id 1dtsUR-0003RJ-V8
+	for alex.bennee@linaro.org; Mon, 18 Sep 2017 05:37:20 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:57602)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1dtqmc-00028k-5w
-	for qemu-arm@nongnu.org; Mon, 18 Sep 2017 03:48:00 -0400
+	(envelope-from <imammedo@redhat.com>) id 1dtsUH-0003PQ-Cw
+	for qemu-arm@nongnu.org; Mon, 18 Sep 2017 05:37:11 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1dtqmY-0001Ss-Vr
-	for qemu-arm@nongnu.org; Mon, 18 Sep 2017 03:47:58 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:65041)
+	(envelope-from <imammedo@redhat.com>) id 1dtsUA-0002TF-Uj
+	for qemu-arm@nongnu.org; Mon, 18 Sep 2017 05:37:09 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:52718)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <eric.auger@redhat.com>)
-	id 1dtqmY-0001Qu-MP; Mon, 18 Sep 2017 03:47:54 -0400
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
-	[10.5.11.13])
+	(Exim 4.71) (envelope-from <imammedo@redhat.com>)
+	id 1dtsUA-0002Sy-M4; Mon, 18 Sep 2017 05:37:02 -0400
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
+	[10.5.11.16])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id D74FA8046F;
-	Mon, 18 Sep 2017 07:47:52 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com D74FA8046F
-Authentication-Results: ext-mx04.extmail.prod.ext.phx2.redhat.com;
+	by mx1.redhat.com (Postfix) with ESMTPS id 7F68F4E4C6;
+	Mon, 18 Sep 2017 09:37:00 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 7F68F4E4C6
+Authentication-Results: ext-mx09.extmail.prod.ext.phx2.redhat.com;
 	dmarc=none (p=none dis=none) header.from=redhat.com
-Authentication-Results: ext-mx04.extmail.prod.ext.phx2.redhat.com;
-	spf=fail smtp.mailfrom=eric.auger@redhat.com
-Received: from localhost.localdomain (ovpn-116-197.ams2.redhat.com
-	[10.36.116.197])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id C19E3183C8;
-	Mon, 18 Sep 2017 07:47:41 +0000 (UTC)
-To: Bharat Bhushan <Bharat.Bhushan@nxp.com>, eric.auger.pro@gmail.com,
-	peter.maydell@linaro.org, alex.williamson@redhat.com, mst@redhat.com,
-	qemu-arm@nongnu.org, qemu-devel@nongnu.org
-References: <1503312534-6642-1-git-send-email-Bharat.Bhushan@nxp.com>
-	<1503312534-6642-3-git-send-email-Bharat.Bhushan@nxp.com>
-From: Auger Eric <eric.auger@redhat.com>
-Message-ID: <98b80288-9c4f-874a-9604-aa1a71525a59@redhat.com>
-Date: Mon, 18 Sep 2017 09:47:40 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
-	Thunderbird/45.4.0
+Authentication-Results: ext-mx09.extmail.prod.ext.phx2.redhat.com;
+	spf=fail smtp.mailfrom=imammedo@redhat.com
+Received: from nial.brq.redhat.com (unknown [10.43.2.209])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 47D5B5C891;
+	Mon, 18 Sep 2017 09:36:41 +0000 (UTC)
+Date: Mon, 18 Sep 2017 11:36:39 +0200
+From: Igor Mammedov <imammedo@redhat.com>
+To: Philippe =?UTF-8?B?TWF0aGlldS1EYXVkw6k=?= <f4bug@amsat.org>
+Message-ID: <20170918113639.7deae179@nial.brq.redhat.com>
+In-Reply-To: <20170917232842.14544-1-f4bug@amsat.org>
+References: <20170917232842.14544-1-f4bug@amsat.org>
 MIME-Version: 1.0
-In-Reply-To: <1503312534-6642-3-git-send-email-Bharat.Bhushan@nxp.com>
-Content-Type: text/plain; charset=windows-1252
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.28]);
-	Mon, 18 Sep 2017 07:47:53 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.38]);
+	Mon, 18 Sep 2017 09:37:01 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v3 2/2] virtio-iommu: vfio
- integration with virtio-iommu
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH] qom/cpu: move cpu_model null
+ check to cpu_class_by_name()
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -102,387 +95,290 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: kevin.tian@intel.com, marc.zyngier@arm.com, tn@semihalf.com,
-	will.deacon@arm.com, drjones@redhat.com, robin.murphy@arm.com,
-	christoffer.dall@linaro.org
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+	Anthony Green <green@moxielogic.com>,
+	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+	qemu-devel@nongnu.org, Max Filippov <jcmvbkbc@gmail.com>,
+	Guan Xuetao <gxt@mprc.pku.edu.cn>,
+	=?UTF-8?B?TGx1w61z?= Vilanova <vilanova@ac.upc.edu>,
+	Marek Vasut <marex@denx.de>, Alexander Graf <agraf@suse.de>,
+	Marcel Apfelbaum <marcel@redhat.com>,
+	=?UTF-8?B?TWFyYy1BbmRyw6k=?= Lureau <marcandre.lureau@redhat.com>,
+	Richard Henderson <rth@twiddle.net>,
+	Artyom Tarasenko <atar4qemu@gmail.com>,
+	Eduardo Habkost <ehabkost@redhat.com>, qemu-arm@nongnu.org,
+	Stefan Hajnoczi <stefanha@redhat.com>,
+	Yongbok Kim <yongbok.kim@imgtec.com>, Stafford Horne <shorne@gmail.com>,
+	David Gibson <david@gibson.dropbear.id.au>,
+	Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
+	Chris Wulff <crwulff@gmail.com>, Laurent Vivier <laurent@vivier.eu>,
+	Michael Walle <michael@walle.cc>, qemu-ppc@nongnu.org,
+	Paolo Bonzini <pbonzini@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: GuaNfXyYMbOg
+X-TUID: DSHOYuNlU/N2
 
-Hi Bharat,
+On Sun, 17 Sep 2017 20:28:42 -0300
+Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> wrote:
 
-On 21/08/2017 12:48, Bharat Bhushan wrote:
-> This RFC patch allows virtio-iommu protection for PCI
-> device-passthrough.
-> 
-> MSI region is mapped by current version of virtio-iommu driver.
-> This uses VFIO extension of map/unmap notification when an area
-> of memory is mappedi/unmapped in emulated iommu device.
-> 
-> This series is tested with 2 PCI devices to virtual machine using
-> dma-ops and DPDK in VM is not yet tested.
-> 
-> Also with this series we observe below prints for MSI region mapping
-> 
->    "qemu-system-aarch64: iommu map to non memory area 0"
-> 
->    This print comes when vfio/map-notifier is called for MSI region.
-> 
-> vfio map/unmap notification is called for given device
->    This assumes that devid passed in virtio_iommu_attach is same as devfn
->    This assumption is based on 1:1 mapping of requested-id with device-id
->    in QEMU.
-> 
-> Signed-off-by: Bharat Bhushan <Bharat.Bhushan@nxp.com>
+> and clean every implementation.
+>=20
+> Suggested-by: Eduardo Habkost <ehabkost@redhat.com>
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+Reviewed-by: Igor Mammedov <imammedo@redhat.com>
+
 > ---
-> v2->v3:
->  - Addressed review comments:
->     - virtio-iommu_map_region function is split in two functions
->       virtio_iommu_notify_map/virtio_iommu_notify_unmap
->     - use size received from driver and do not split in 4K pages
->  
->  - map/unmap notification is called for given device/as
->    This relies on devid passed in virtio_iommu_attach is same as devfn
->    This is assumed as iommu-map maps 1:1 requested-id to device-id in QEMU
->    Looking for comment about this assumtion.
-> 
->  - Keeping track devices in address-space
-> 
->  - Verified with 2 PCI endpoints
->  - some code cleanup
-> 
->  hw/virtio/trace-events           |   5 ++
->  hw/virtio/virtio-iommu.c         | 163 +++++++++++++++++++++++++++++++++++++++
->  include/hw/virtio/virtio-iommu.h |   6 ++
->  3 files changed, 174 insertions(+)
-> 
-> diff --git a/hw/virtio/trace-events b/hw/virtio/trace-events
-> index 8db3d91..7e9663f 100644
-> --- a/hw/virtio/trace-events
-> +++ b/hw/virtio/trace-events
-> @@ -39,3 +39,8 @@ virtio_iommu_unmap_left_interval(uint64_t low, uint64_t high, uint64_t next_low,
->  virtio_iommu_unmap_right_interval(uint64_t low, uint64_t high, uint64_t next_low, uint64_t next_high) "Unmap right [0x%"PRIx64",0x%"PRIx64"], new interval=[0x%"PRIx64",0x%"PRIx64"]"
->  virtio_iommu_unmap_inc_interval(uint64_t low, uint64_t high) "Unmap inc [0x%"PRIx64",0x%"PRIx64"]"
->  virtio_iommu_translate_result(uint64_t virt_addr, uint64_t phys_addr, uint32_t sid) "0x%"PRIx64" -> 0x%"PRIx64 " for sid=%d"
-> +virtio_iommu_notify_flag_add(const char *iommu) "Add virtio-iommu notifier node for memory region %s"
-> +virtio_iommu_notify_flag_del(const char *iommu) "Del virtio-iommu notifier node for memory region %s"
-> +virtio_iommu_remap(hwaddr iova, hwaddr pa, hwaddr size) "iova=0x%"PRIx64" pa=0x%" PRIx64" size=0x%"PRIx64""
-> +virtio_iommu_notify_map(hwaddr iova, hwaddr paddr, hwaddr map_size) "iova=0x%"PRIx64" pa=0x%" PRIx64" size=0x%"PRIx64""
-> +virtio_iommu_notify_unmap(hwaddr iova, hwaddr paddr, hwaddr map_size) "iova=0x%"PRIx64" pa=0x%" PRIx64" size=0x%"PRIx64""
-useless paddr
-> diff --git a/hw/virtio/virtio-iommu.c b/hw/virtio/virtio-iommu.c
-> index 9217587..9eae050 100644
-> --- a/hw/virtio/virtio-iommu.c
-> +++ b/hw/virtio/virtio-iommu.c
-> @@ -55,11 +55,13 @@ typedef struct viommu_interval {
->  typedef struct viommu_dev {
->      uint32_t id;
->      viommu_as *as;
-> +    QLIST_ENTRY(viommu_dev) next;
->  } viommu_dev;
->  
->  struct viommu_as {
->      uint32_t id;
->      GTree *mappings;
-> +    QLIST_HEAD(, viommu_dev) device_list;
->  };
->  
->  static inline uint16_t virtio_iommu_get_sid(IOMMUDevice *dev)
-> @@ -133,12 +135,70 @@ static gint interval_cmp(gconstpointer a, gconstpointer b, gpointer user_data)
->      }
->  }
->  
-> +static void virtio_iommu_notify_map(IOMMUMemoryRegion *mr, hwaddr iova,
-> +                                    hwaddr paddr, hwaddr size)
-> +{
-> +    IOMMUTLBEntry entry;
-> +
-> +    entry.target_as = &address_space_memory;
-> +    entry.addr_mask = size - 1;
-> +
-> +    entry.iova = iova;
-> +    trace_virtio_iommu_notify_map(iova, paddr, size);
-> +    entry.perm = IOMMU_RW;
-> +    entry.translated_addr = paddr;
-> +
-> +    memory_region_notify_iommu(mr, entry);
-> +}
-> +
-> +static void virtio_iommu_notify_unmap(IOMMUMemoryRegion *mr, hwaddr iova,
-> +                                      hwaddr paddr, hwaddr size)
-unmap() doesn't need to have paddr arg.
-> +{
-> +    IOMMUTLBEntry entry;
-> +
-> +    entry.target_as = &address_space_memory;
-> +    entry.addr_mask = size - 1;
-> +
-> +    entry.iova = iova;
-> +    trace_virtio_iommu_notify_unmap(iova, paddr, size);
-ditto
-> +    entry.perm = IOMMU_NONE;
-> +    entry.translated_addr = 0;
-> +
-> +    memory_region_notify_iommu(mr, entry);
-> +}
-> +
-> +static gboolean virtio_iommu_maping_unmap(gpointer key, gpointer value,
-> +                                          gpointer data)
-s/virtio_iommu_maping_unmap/virtio_iommu_mapping_unmap
-> +{
-> +    viommu_mapping *mapping = (viommu_mapping *) value;
-> +    IOMMUMemoryRegion *mr = (IOMMUMemoryRegion *) data;
-> +
-> +    virtio_iommu_notify_unmap(mr, mapping->virt_addr, 0, mapping->size);
-> +
-> +    return true;
-> +}
-> +
->  static void virtio_iommu_detach_dev(VirtIOIOMMU *s, viommu_dev *dev)
+> Based-on: 20170917232010.14183-7-f4bug@amsat.org
+>=20
+>  qom/cpu.c              | 7 ++++++-
+>  target/alpha/cpu.c     | 6 +-----
+>  target/arm/cpu.c       | 4 ----
+>  target/cris/cpu.c      | 4 ----
+>  target/lm32/cpu.c      | 4 ----
+>  target/m68k/cpu.c      | 4 ----
+>  target/mips/cpu.c      | 4 ----
+>  target/moxie/cpu.c     | 8 +-------
+>  target/openrisc/cpu.c  | 4 ----
+>  target/sh4/cpu.c       | 3 ---
+>  target/sparc/cpu.c     | 4 ----
+>  target/tricore/cpu.c   | 4 ----
+>  target/unicore32/cpu.c | 4 ----
+>  target/xtensa/cpu.c    | 4 ----
+>  14 files changed, 8 insertions(+), 56 deletions(-)
+>=20
+> diff --git a/qom/cpu.c b/qom/cpu.c
+> index dc5392dbeb..411d8cdd2b 100644
+> --- a/qom/cpu.c
+> +++ b/qom/cpu.c
+> @@ -311,7 +311,12 @@ static bool cpu_common_has_work(CPUState *cs)
+> =20
+>  ObjectClass *cpu_class_by_name(const char *typename, const char *cpu_mod=
+el)
 >  {
-> +    VirtioIOMMUNotifierNode *node;
->      viommu_as *as = dev->as;
-> +    int devid = dev->id;
->  
->      trace_virtio_iommu_detach(dev->id);
->  
-> +    /* Remove device from address-space list */
-> +    QLIST_REMOVE(dev, next);
-> +    /* unmap all if no devices attached to address-spaceRemove */
-comment to be reworked
-> +    if (QLIST_EMPTY(&as->device_list)) {
-I don't get why you execute the code below only if the device_list is
-empty. Each time a device is detached don't you need to notify its
-associated iommu_mr?
-> +        QLIST_FOREACH(node, &s->notifiers_list, next) {
-> +            if (devid == node->iommu_dev->devfn) {
-> +                g_tree_foreach(as->mappings, virtio_iommu_maping_unmap,
-> +                               &node->iommu_dev->iommu_mr);
-> +            }
-> +        }
-> +    }
+> -    CPUClass *cc =3D CPU_CLASS(object_class_by_name(typename));
+> +    CPUClass *cc;
 > +
-> +    /* Remove device from global list */
->      g_tree_remove(s->devices, GUINT_TO_POINTER(dev->id));
->      g_tree_unref(as->mappings);
+> +    if (!cpu_model) {
+> +        return NULL;
+> +    }
+> +    cc =3D CPU_CLASS(object_class_by_name(typename));
+> =20
+>      return cc->class_by_name(cpu_model);
 >  }
-> @@ -171,6 +231,7 @@ static int virtio_iommu_attach(VirtIOIOMMU *s,
->      if (!as) {
->          as = g_malloc0(sizeof(*as));
->          as->id = asid;
-> +        QLIST_INIT(&as->device_list);
->          as->mappings = g_tree_new_full((GCompareDataFunc)interval_cmp,
->                                           NULL, NULL, (GDestroyNotify)g_free);
->          g_tree_insert(s->address_spaces, GUINT_TO_POINTER(asid), as);
-> @@ -182,6 +243,7 @@ static int virtio_iommu_attach(VirtIOIOMMU *s,
->      dev->id = devid;
->      trace_virtio_iommu_new_devid(devid);
->      g_tree_insert(s->devices, GUINT_TO_POINTER(devid), dev);
-> +    QLIST_INSERT_HEAD(&as->device_list, dev, next);
->      g_tree_ref(as->mappings);
->  
->      return VIRTIO_IOMMU_S_OK;
-> @@ -219,6 +281,8 @@ static int virtio_iommu_map(VirtIOIOMMU *s,
->      viommu_as *as;
->      viommu_interval *interval;
->      viommu_mapping *mapping;
-> +    VirtioIOMMUNotifierNode *node;
-> +    viommu_dev *dev;
->  
->      interval = g_malloc0(sizeof(*interval));
->  
-> @@ -230,6 +294,11 @@ static int virtio_iommu_map(VirtIOIOMMU *s,
->          return VIRTIO_IOMMU_S_NOENT;
->      }
->  
-> +    dev = QLIST_FIRST(&as->device_list);
-> +    if (!dev) {
-> +        return VIRTIO_IOMMU_S_NOENT;
-> +    }
-> +
->      mapping = g_tree_lookup(as->mappings, (gpointer)interval);
->      if (mapping) {
->          g_free(interval);
-> @@ -246,6 +315,14 @@ static int virtio_iommu_map(VirtIOIOMMU *s,
->  
->      g_tree_insert(as->mappings, interval, mapping);
->  
-> +    /* All devices in an address-space share mapping */
-> +    QLIST_FOREACH(node, &s->notifiers_list, next) {
-> +        if (dev->id == node->iommu_dev->devfn) {
-> +            virtio_iommu_notify_map(&node->iommu_dev->iommu_mr, virt_addr,
-> +                                    phys_addr, size);
-> +        }
-> +    }
-> +
->      return VIRTIO_IOMMU_S_OK;
->  }
->  
-> @@ -259,6 +336,8 @@ static int virtio_iommu_unmap(VirtIOIOMMU *s,
->      viommu_mapping *mapping;
->      viommu_interval interval;
->      viommu_as *as;
-> +    VirtioIOMMUNotifierNode *node;
-> +    viommu_dev *dev;
->  
->      trace_virtio_iommu_unmap(asid, virt_addr, size, flags);
->  
-> @@ -267,6 +346,12 @@ static int virtio_iommu_unmap(VirtIOIOMMU *s,
->          error_report("%s: no as", __func__);
->          return VIRTIO_IOMMU_S_NOENT;
->      }
-> +
-> +    dev = QLIST_FIRST(&as->device_list);
-> +    if (!dev) {
-> +        return VIRTIO_IOMMU_S_NOENT;
-> +    }
-> +
->      interval.low = virt_addr;
->      interval.high = virt_addr + size - 1;
->  
-> @@ -296,7 +381,15 @@ static int virtio_iommu_unmap(VirtIOIOMMU *s,
->          } else {
->              break;
->          }
-> +
-extra line
->          if (interval.low >= interval.high) {
-> +            /* All devices in an address-space share mapping */
-> +            QLIST_FOREACH(node, &s->notifiers_list, next) {
-> +                if (dev->id == node->iommu_dev->devfn) {
-> +                    virtio_iommu_notify_unmap(&node->iommu_dev->iommu_mr, virt_addr,
-> +                                              0, size);
-Why do you notify only a single mr? All devices belonging to the as are
-affected by this change. So don't you need to notify all as device's mr?
-> +                }
-> +            }
->              return VIRTIO_IOMMU_S_OK;
->          } else {
->              mapping = g_tree_lookup(as->mappings, (gpointer)&interval);
-> @@ -439,6 +532,36 @@ static void virtio_iommu_handle_command(VirtIODevice *vdev, VirtQueue *vq)
->      }
->  }
->  
-> +static void virtio_iommu_notify_flag_changed(IOMMUMemoryRegion *iommu_mr,
-> +                                          IOMMUNotifierFlag old,
-> +                                          IOMMUNotifierFlag new)
-> +{
-> +    IOMMUDevice *sdev = container_of(iommu_mr, IOMMUDevice, iommu_mr);
-> +    VirtIOIOMMU *s = sdev->viommu;
-> +    VirtioIOMMUNotifierNode *node = NULL;
-> +    VirtioIOMMUNotifierNode *next_node = NULL;
-> +
-> +    if (old == IOMMU_NOTIFIER_NONE) {
-> +        trace_virtio_iommu_notify_flag_add(iommu_mr->parent_obj.name);
-> +        node = g_malloc0(sizeof(*node));
-> +        node->iommu_dev = sdev;
-> +        QLIST_INSERT_HEAD(&s->notifiers_list, node, next);
-> +        return;
-> +    }
-> +
-> +    /* update notifier node with new flags */
-> +    QLIST_FOREACH_SAFE(node, &s->notifiers_list, next, next_node) {
-> +        if (node->iommu_dev == sdev) {
-> +            if (new == IOMMU_NOTIFIER_NONE) {
-> +                trace_virtio_iommu_notify_flag_del(iommu_mr->parent_obj.name);
-> +                QLIST_REMOVE(node, next);
-> +                g_free(node);
-> +            }
-> +            return;
-> +        }
-> +    }
-> +}
-> +
->  static IOMMUTLBEntry virtio_iommu_translate(IOMMUMemoryRegion *mr, hwaddr addr,
->                                              IOMMUAccessFlags flag)
+> diff --git a/target/alpha/cpu.c b/target/alpha/cpu.c
+> index e6c6aabdf0..b8a21f4e01 100644
+> --- a/target/alpha/cpu.c
+> +++ b/target/alpha/cpu.c
+> @@ -127,14 +127,10 @@ static const AlphaCPUAlias alpha_cpu_aliases[] =3D {
+> =20
+>  static ObjectClass *alpha_cpu_class_by_name(const char *cpu_model)
 >  {
-> @@ -553,11 +676,49 @@ static gint int_cmp(gconstpointer a, gconstpointer b, gpointer user_data)
->      return (ua > ub) - (ua < ub);
->  }
->  
-> +static gboolean virtio_iommu_remap(gpointer key, gpointer value, gpointer data)
-> +{
-> +    viommu_mapping *mapping = (viommu_mapping *) value;
-> +    IOMMUMemoryRegion *mr = (IOMMUMemoryRegion *) data;
-> +
-> +    trace_virtio_iommu_remap(mapping->virt_addr, mapping->phys_addr,
-> +                             mapping->size);
-> +    /* unmap previous entry and map again */
-> +    virtio_iommu_notify_unmap(mr, mapping->virt_addr, 0, mapping->size);
-> +
-> +    virtio_iommu_notify_map(mr, mapping->virt_addr, mapping->phys_addr,
-> +                            mapping->size);
-> +    return true;
-you need to return false here otherwise  g_tree_foreach will return on
-the first as mapping.
+> -    ObjectClass *oc =3D NULL;
+> +    ObjectClass *oc;
+>      char *typename;
+>      int i;
+> =20
+> -    if (cpu_model =3D=3D NULL) {
+> -        return NULL;
+> -    }
+> -
+>      oc =3D object_class_by_name(cpu_model);
+>      if (oc !=3D NULL && object_class_dynamic_cast(oc, TYPE_ALPHA_CPU) !=
+=3D NULL &&
+>          !object_class_is_abstract(oc)) {
+> diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+> index 412e94c7ad..ea219c2dde 100644
+> --- a/target/arm/cpu.c
+> +++ b/target/arm/cpu.c
+> @@ -906,10 +906,6 @@ static ObjectClass *arm_cpu_class_by_name(const char=
+ *cpu_model)
+>      char *typename;
+>      char **cpuname;
+> =20
+> -    if (!cpu_model) {
+> -        return NULL;
+> -    }
+> -
+>      cpuname =3D g_strsplit(cpu_model, ",", 1);
+>      typename =3D g_strdup_printf("%s-" TYPE_ARM_CPU, cpuname[0]);
+>      oc =3D object_class_by_name(typename);
+> diff --git a/target/cris/cpu.c b/target/cris/cpu.c
+> index ceebfed79b..88d93f2d11 100644
+> --- a/target/cris/cpu.c
+> +++ b/target/cris/cpu.c
+> @@ -69,10 +69,6 @@ static ObjectClass *cris_cpu_class_by_name(const char =
+*cpu_model)
+>      ObjectClass *oc;
+>      char *typename;
+> =20
+> -    if (cpu_model =3D=3D NULL) {
+> -        return NULL;
+> -    }
+> -
+>  #if defined(CONFIG_USER_ONLY)
+>      if (strcasecmp(cpu_model, "any") =3D=3D 0) {
+>          return object_class_by_name("crisv32-" TYPE_CRIS_CPU);
+> diff --git a/target/lm32/cpu.c b/target/lm32/cpu.c
+> index 2b8c36b6d0..bf081f56d2 100644
+> --- a/target/lm32/cpu.c
+> +++ b/target/lm32/cpu.c
+> @@ -246,10 +246,6 @@ static ObjectClass *lm32_cpu_class_by_name(const cha=
+r *cpu_model)
+>      ObjectClass *oc;
+>      char *typename;
+> =20
+> -    if (cpu_model =3D=3D NULL) {
+> -        return NULL;
+> -    }
+> -
+>      typename =3D g_strdup_printf("%s-" TYPE_LM32_CPU, cpu_model);
+>      oc =3D object_class_by_name(typename);
+>      g_free(typename);
+> diff --git a/target/m68k/cpu.c b/target/m68k/cpu.c
+> index 55bf24bae6..8c70e0805c 100644
+> --- a/target/m68k/cpu.c
+> +++ b/target/m68k/cpu.c
+> @@ -87,10 +87,6 @@ static ObjectClass *m68k_cpu_class_by_name(const char =
+*cpu_model)
+>      ObjectClass *oc;
+>      char *typename;
+> =20
+> -    if (cpu_model =3D=3D NULL) {
+> -        return NULL;
+> -    }
+> -
+>      typename =3D g_strdup_printf("%s-" TYPE_M68K_CPU, cpu_model);
+>      oc =3D object_class_by_name(typename);
+>      g_free(typename);
+> diff --git a/target/mips/cpu.c b/target/mips/cpu.c
+> index 1a9a3ed94d..c15b894362 100644
+> --- a/target/mips/cpu.c
+> +++ b/target/mips/cpu.c
+> @@ -166,10 +166,6 @@ static ObjectClass *mips_cpu_class_by_name(const cha=
+r *cpu_model)
+>      ObjectClass *oc;
+>      char *typename;
+> =20
+> -    if (cpu_model =3D=3D NULL) {
+> -        return NULL;
+> -    }
+> -
+>      typename =3D mips_cpu_type_name(cpu_model);
+>      oc =3D object_class_by_name(typename);
+>      g_free(typename);
+> diff --git a/target/moxie/cpu.c b/target/moxie/cpu.c
+> index 748d02f29e..30bd44fcad 100644
+> --- a/target/moxie/cpu.c
+> +++ b/target/moxie/cpu.c
+> @@ -89,13 +89,7 @@ static void moxie_cpu_initfn(Object *obj)
+> =20
+>  static ObjectClass *moxie_cpu_class_by_name(const char *cpu_model)
+>  {
+> -    ObjectClass *oc;
+> -
+> -    if (cpu_model =3D=3D NULL) {
+> -        return NULL;
+> -    }
+> -
+> -    oc =3D object_class_by_name(cpu_model);
+> +    ObjectClass *oc =3D object_class_by_name(cpu_model);
+>      if (oc !=3D NULL && (!object_class_dynamic_cast(oc, TYPE_MOXIE_CPU) =
+||
+>                         object_class_is_abstract(oc))) {
+>          return NULL;
+> diff --git a/target/openrisc/cpu.c b/target/openrisc/cpu.c
+> index a979f0bf8b..af9cdcc102 100644
+> --- a/target/openrisc/cpu.c
+> +++ b/target/openrisc/cpu.c
+> @@ -108,10 +108,6 @@ static ObjectClass *openrisc_cpu_class_by_name(const=
+ char *cpu_model)
+>      ObjectClass *oc;
+>      char *typename;
+> =20
+> -    if (cpu_model =3D=3D NULL) {
+> -        return NULL;
+> -    }
+> -
+>      typename =3D g_strdup_printf("%s-" TYPE_OPENRISC_CPU, cpu_model);
+>      oc =3D object_class_by_name(typename);
+>      g_free(typename);
+> diff --git a/target/sh4/cpu.c b/target/sh4/cpu.c
+> index 6ce7cba5a9..252440e019 100644
+> --- a/target/sh4/cpu.c
+> +++ b/target/sh4/cpu.c
+> @@ -133,9 +133,6 @@ static ObjectClass *superh_cpu_class_by_name(const ch=
+ar *cpu_model)
+>      ObjectClass *oc;
+>      GSList *list, *item;
+> =20
+> -    if (cpu_model =3D=3D NULL) {
+> -        return NULL;
+> -    }
+>      if (strcasecmp(cpu_model, "any") =3D=3D 0) {
+>          return object_class_by_name(TYPE_SH7750R_CPU);
+>      }
+> diff --git a/target/sparc/cpu.c b/target/sparc/cpu.c
+> index 0806d699e6..beab90f3e6 100644
+> --- a/target/sparc/cpu.c
+> +++ b/target/sparc/cpu.c
+> @@ -730,10 +730,6 @@ static ObjectClass *sparc_cpu_class_by_name(const ch=
+ar *cpu_model)
+>      ObjectClass *oc;
+>      char *typename;
+> =20
+> -    if (cpu_model =3D=3D NULL) {
+> -        return NULL;
+> -    }
+> -
+>      typename =3D sparc_cpu_type_name(cpu_model);
+>      oc =3D object_class_by_name(typename);
+>      g_free(typename);
+> diff --git a/target/tricore/cpu.c b/target/tricore/cpu.c
+> index 5ab5b56454..871eb35453 100644
+> --- a/target/tricore/cpu.c
+> +++ b/target/tricore/cpu.c
+> @@ -120,10 +120,6 @@ static ObjectClass *tricore_cpu_class_by_name(const =
+char *cpu_model)
+>      ObjectClass *oc;
+>      char *typename;
+> =20
+> -    if (!cpu_model) {
+> -        return NULL;
+> -    }
+> -
+>      typename =3D g_strdup_printf("%s-" TYPE_TRICORE_CPU, cpu_model);
+>      oc =3D object_class_by_name(typename);
+>      g_free(typename);
+> diff --git a/target/unicore32/cpu.c b/target/unicore32/cpu.c
+> index c9b78ce68e..138acc9dd8 100644
+> --- a/target/unicore32/cpu.c
+> +++ b/target/unicore32/cpu.c
+> @@ -44,10 +44,6 @@ static ObjectClass *uc32_cpu_class_by_name(const char =
+*cpu_model)
+>      ObjectClass *oc;
+>      char *typename;
+> =20
+> -    if (cpu_model =3D=3D NULL) {
+> -        return NULL;
+> -    }
+> -
+>      typename =3D g_strdup_printf("%s-" TYPE_UNICORE32_CPU, cpu_model);
+>      oc =3D object_class_by_name(typename);
+>      g_free(typename);
+> diff --git a/target/xtensa/cpu.c b/target/xtensa/cpu.c
+> index 85897df0a8..dcdc765a86 100644
+> --- a/target/xtensa/cpu.c
+> +++ b/target/xtensa/cpu.c
+> @@ -83,10 +83,6 @@ static ObjectClass *xtensa_cpu_class_by_name(const cha=
+r *cpu_model)
+>      ObjectClass *oc;
+>      char *typename;
+> =20
+> -    if (cpu_model =3D=3D NULL) {
+> -        return NULL;
+> -    }
+> -
+>      typename =3D g_strdup_printf("%s-" TYPE_XTENSA_CPU, cpu_model);
+>      oc =3D object_class_by_name(typename);
+>      g_free(typename);
 
-Thanks
-
-Eric
-> +}
-> +
-> +static void virtio_iommu_replay(IOMMUMemoryRegion *mr, IOMMUNotifier *n)
-> +{
-> +    IOMMUDevice *sdev = container_of(mr, IOMMUDevice, iommu_mr);
-> +    VirtIOIOMMU *s = sdev->viommu;
-> +    uint32_t sid;
-> +    viommu_dev *dev;
-> +
-> +    sid = virtio_iommu_get_sid(sdev);
-> +
-> +    qemu_mutex_lock(&s->mutex);
-> +
-> +    dev = g_tree_lookup(s->devices, GUINT_TO_POINTER(sid));
-> +    if (!dev) {
-> +        goto unlock;
-> +    }
-> +
-> +    g_tree_foreach(dev->as->mappings, virtio_iommu_remap, mr);
-> +
-> +unlock:
-> +    qemu_mutex_unlock(&s->mutex);
-> +}
-> +
->  static void virtio_iommu_device_realize(DeviceState *dev, Error **errp)
->  {
->      VirtIODevice *vdev = VIRTIO_DEVICE(dev);
->      VirtIOIOMMU *s = VIRTIO_IOMMU(dev);
->  
-> +    QLIST_INIT(&s->notifiers_list);
->      virtio_init(vdev, "virtio-iommu", VIRTIO_ID_IOMMU,
->                  sizeof(struct virtio_iommu_config));
->  
-> @@ -644,6 +805,8 @@ static void virtio_iommu_memory_region_class_init(ObjectClass *klass,
->      IOMMUMemoryRegionClass *imrc = IOMMU_MEMORY_REGION_CLASS(klass);
->  
->      imrc->translate = virtio_iommu_translate;
-> +    imrc->notify_flag_changed = virtio_iommu_notify_flag_changed;
-> +    imrc->replay = virtio_iommu_replay;
->  }
->  
->  static const TypeInfo virtio_iommu_info = {
-> diff --git a/include/hw/virtio/virtio-iommu.h b/include/hw/virtio/virtio-iommu.h
-> index f9c988f..7e04184 100644
-> --- a/include/hw/virtio/virtio-iommu.h
-> +++ b/include/hw/virtio/virtio-iommu.h
-> @@ -46,6 +46,11 @@ typedef struct IOMMUPciBus {
->      IOMMUDevice  *pbdev[0]; /* Parent array is sparse, so dynamically alloc */
->  } IOMMUPciBus;
->  
-> +typedef struct VirtioIOMMUNotifierNode {
-> +    IOMMUDevice *iommu_dev;
-> +    QLIST_ENTRY(VirtioIOMMUNotifierNode) next;
-> +} VirtioIOMMUNotifierNode;
-> +
->  typedef struct VirtIOIOMMU {
->      VirtIODevice parent_obj;
->      VirtQueue *vq;
-> @@ -56,6 +61,7 @@ typedef struct VirtIOIOMMU {
->      GTree *address_spaces;
->      QemuMutex mutex;
->      GTree *devices;
-> +    QLIST_HEAD(, VirtioIOMMUNotifierNode) notifiers_list;
->  } VirtIOIOMMU;
->  
->  #endif
-> 

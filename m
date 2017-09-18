@@ -1,947 +1,204 @@
-Received: by 10.223.172.38 with SMTP id v35csp827378wrc;
-        Fri, 15 Sep 2017 08:10:16 -0700 (PDT)
-X-Google-Smtp-Source: AOwi7QCXCN8JHnewgHJrx2YAnzX0jzvLVzHHscfYDW/JMBA37x19GYru4CupoHrqOZn3CtA2N65n
-X-Received: by 10.55.82.213 with SMTP id g204mr8184705qkb.191.1505488216504;
-        Fri, 15 Sep 2017 08:10:16 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1505488216; cv=none;
+Received: by 10.223.172.38 with SMTP id v35csp3690117wrc;
+        Mon, 18 Sep 2017 05:23:48 -0700 (PDT)
+X-Received: by 10.25.115.210 with SMTP id h79mr3410383lfk.203.1505737428225;
+        Mon, 18 Sep 2017 05:23:48 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1505737428; cv=none;
         d=google.com; s=arc-20160816;
-        b=a+W5d1i4v/APx98PFC5BJvy/iSCdwEvIznelN+L1HYW9gpP1ywrKlC/z3aA4ctvgpi
-         30bepAnKH3ylhbfVC6g0jGIHhrFrw3UXpNDVm94s/1/NzEo48/IL0xpoqvlOvvocMFl0
-         3FCoihoeA1xTII+qCbLj+1kan2DxRx/utMOBRvsGAmAZDNCG1R8eb1AB6qsoCVa9Nk+Y
-         Pk0klt7dcIPrxtLLCEmaBuQ4jXAkKu6yclYjvWeqkVeSLBxrkwV7+njmZchqrSxcPpdD
-         fMGtr3VhnaVOTnNxRsnNxW/v0EZ4jnn/N27koYAT1j9iwRRibkwhVioSGbJ+bytFRLXP
-         4lsg==
+        b=mJkTB0LhCorzizvGQ5dyzVIvAhqYEn3nCfkNbn/iPM6KyEr77GiHQAN6sO/jR64aRm
+         qg5AjvHNjPdW/kD3258iBOh8CR2PiHckC49gDfqm53OZ0aRXcw8T4RSAgIMbT5GkNeSE
+         LWl18X5d+uMnTH50aFlZ7xhMl8fSNCf/9pRvs2QS/B9h12sPbZgrZ9UXSGBKY5jXaTvD
+         13I5WwAd6LBnHrQXKs1MP6XSscIzGb6qN5mzsUp09yxDxWlbcUEQx19fkv3oZ1VEAccc
+         EGs+M2glqV46CmqnGu8qjIlzA7DvrHrtpwX+liKYs5bypV1iJw4QkIfRK/QyCF8fGWfi
+         rXNA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:message-id:date:to:from
-         :arc-authentication-results;
-        bh=FJWpGMi53Pb9zq3az/6kwPrtpdJWW1XhQgmqvHCAQd4=;
-        b=moTb9QTF4MhaCA0ezOhhgNSg8Ou/5Z6en8pmuWAdiXlMxZU+eaqxMTwSwp6Vqn1m+H
-         IGo1kEWND/Vl7keFQW0LB/WCZttGCOB6RJWhwMCmcWGAMHv9x0ThCK3gQ2SwYn2z4UxP
-         ot+ojlgja1QywHrRbdcMj5ZY2vpjxqbH4zxzK0tG/pseRzlPhWUCiJohdsYOKEFnmzYj
-         AP1bzudRrgM/ta53gGC4NfCS7pwYyq7EhHvD7C6Pzerw5LPDzgPRh/mSop/QeFzGhXRK
-         CBZgPGOvrQN4umJvOEPt0NGk4HYw8v1k0M9pdBi4eilsP2YXYKz9kIJj4duHU431i7Xv
-         WXGg==
+        h=content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:cc:to:subject
+         :dkim-signature:arc-authentication-results;
+        bh=7Om74lzAv8GucsQlIg0RZntauq4LPeW5n54mwFSfdFE=;
+        b=z4MB74amHFadNsr8PgRcWz5U9ML/5VHgxYR+sYUAYo6v1Ad+I9OVG0Y6brV6JmQP2l
+         jGZ6s0BLY8ldfxwXqVDYKUB7OEqfq71xVhBtcSXkbBJVJSihz4EVucDJ2fW5riJN72IG
+         NbHl79LFLA0VJxvozixFn5VBrZJWt2uT8OcOXBHVVhsedDpg8eWmI4p1xot7CS9iUGgo
+         aGGPuxSIS8mjN/fCrb1wghV2JkF5/k435qTSGg2lDyVEIzOPecCU4tObs4FmnMcApZQR
+         7NO2Dj8Vr2v3OunOst9DokHW4ov+ZhvLILVHwb4qisWM+kqcdbr7n4gcFqBVTQ52NrqH
+         7s3g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id g62si1103280qkc.217.2017.09.15.08.10.15
-        for <alex.bennee@linaro.org>
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 15 Sep 2017 08:10:16 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=o4ySbc4F;
+       spf=pass (google.com: domain of digetx@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=digetx@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Return-Path: <digetx@gmail.com>
+Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
+        by mx.google.com with SMTPS id o14sor1239299lja.28.2017.09.18.05.23.48
+        (Google Transport Security);
+        Mon, 18 Sep 2017 05:23:48 -0700 (PDT)
+Received-SPF: pass (google.com: domain of digetx@gmail.com designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:53750 helo=lists.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1dssFy-0000rb-0r
-	for alex.bennee@linaro.org; Fri, 15 Sep 2017 11:10:14 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:44590)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1dssEn-0000Js-MJ
-	for qemu-devel@nongnu.org; Fri, 15 Sep 2017 11:09:05 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1dssEf-0004AX-97
-	for qemu-devel@nongnu.org; Fri, 15 Sep 2017 11:09:01 -0400
-Received: from orth.archaic.org.uk ([2001:8b0:1d0::2]:37392)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <pm215@archaic.org.uk>)
-	id 1dssEe-00049q-Ml; Fri, 15 Sep 2017 11:08:53 -0400
-Received: from mnementh.archaic.org.uk ([81.2.115.146])
-	by orth.archaic.org.uk with esmtp (Exim 4.89)
-	(envelope-from <pm215@archaic.org.uk>)
-	id 1dssEb-0007Ts-7M; Fri, 15 Sep 2017 16:08:49 +0100
-Received: from pm215 by mnementh.archaic.org.uk with local (Exim 4.89)
-	(envelope-from <pm215@archaic.org.uk>)
-	id 1dssEb-00068c-69; Fri, 15 Sep 2017 16:08:49 +0100
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-devel@nongnu.org
-Date: Fri, 15 Sep 2017 16:08:49 +0100
-Message-Id: <20170915150849.23557-1-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.11.0
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2001:8b0:1d0::2
-Subject: [Qemu-devel] [PATCH] target/arm: Remove out of date ARM ARM section
- references in A64 decoder
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.21
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm@nongnu.org, patches@linaro.org
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: TreIU9aGzwih
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=o4ySbc4F;
+       spf=pass (google.com: domain of digetx@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=digetx@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=subject:to:cc:references:from:message-id:date:user-agent
+         :mime-version:in-reply-to:content-language:content-transfer-encoding;
+        bh=7Om74lzAv8GucsQlIg0RZntauq4LPeW5n54mwFSfdFE=;
+        b=o4ySbc4FN/kvPKnbYtUyFDjKuYQzhhrzrVu5YoBOrUNfvJnfEaV9R7/mR4PDJMJkA8
+         RMBrhEf4SlHvu97rpw/5nUQKb3yP9cFPInYpNtaHdM9dAG7FIP8ZHggI/3AsYlgq7Hw9
+         ON9hgXKNBrtUgxNLVaW+S9QrU7XMYLB8bi90/ZYZMV1GU9oUYxOadXRqM8R5kcKjgAvc
+         i43J0H6EEHWQoAc2ELMGklggApqet3ez8yAc01kFNTtArDIsupD+q/W6Ujoud+3lEblh
+         qQlkq76OXNtTpnlYLkxUPBS/nYIIKelY/hWN4RUOZH450sgOMwUEKwd+yFzk9u749VCl
+         brmw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+         :user-agent:mime-version:in-reply-to:content-language
+         :content-transfer-encoding;
+        bh=7Om74lzAv8GucsQlIg0RZntauq4LPeW5n54mwFSfdFE=;
+        b=Hc5EjlIA03S+vwit9sxszI01XpDlV253efM6e4G6AIV/A4XZkhHZFlk8v6U0k2b0UK
+         m7ZXd8sDaah9sR69bC+cDqOAZ2zAOHxj6y7WxVYr0KyR8fvAPLSLUiZ/bpS6gqzCubyg
+         OPP7AucY6EKUuTzPLB45mpaeWTwq5yOeSOIzQd/xBk16ZGeW4PaEjuL8/bVRly9cGLz6
+         ieFkmFq2aOeVdlI/DDPQrQa300cdOkEwEBtIjdF2J6b3e21QVxxA6R3BLIZgonO+CDRB
+         XMLkxs6Z1gyblJrv2YUGYsPrFI66HdN4SZ4M00tgCx35Z+EDz6gcwsKo3PWAEYBjxclD
+         Mlfw==
+X-Gm-Message-State: AHPjjUif1h0JQ+XR9wFVJH16xTl0Ing+h1nGbREpt59DtWISlu/Z8FjP
+	qiVls6g24zk0fhIMpOg=
+X-Google-Smtp-Source: AOwi7QDXUMvHY7ShoV3dH0FACK08CzM+1QVDEAmav73m2GHA2QI3V3heyEvJkp7F7rY39Tz4DH5sUw==
+X-Received: by 10.46.85.91 with SMTP id j88mr4616319ljb.109.1505737427884;
+        Mon, 18 Sep 2017 05:23:47 -0700 (PDT)
+Return-Path: <digetx@gmail.com>
+Received: from [192.168.1.145] (ppp109-252-91-7.pppoe.spdop.ru. [109.252.91.7])
+        by smtp.googlemail.com with ESMTPSA id 19sm1818170ljs.34.2017.09.18.05.23.46
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 18 Sep 2017 05:23:47 -0700 (PDT)
+Subject: Re: [PULL 22/24] target-arm: ensure all cross vCPUs TLB flushes
+ complete
+To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>
+Cc: peter.maydell@linaro.org, "open list:ARM" <qemu-arm@nongnu.org>,
+ qemu-devel@nongnu.org
+References: <20170224112109.3147-1-alex.bennee@linaro.org>
+ <20170224112109.3147-23-alex.bennee@linaro.org>
+ <7468f944-914c-de89-66fb-f8ad49eb59c1@gmail.com> <87poapbgt0.fsf@linaro.org>
+ <e511a895-b1e3-150f-6555-12ba1fa16273@gmail.com> <87a81sjp15.fsf@linaro.org>
+From: Dmitry Osipenko <digetx@gmail.com>
+Message-ID: <70057789-ab76-1150-ab2e-b5a3239a0209@gmail.com>
+Date: Mon, 18 Sep 2017 15:23:46 +0300
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+ Thunderbird/52.3.0
+MIME-Version: 1.0
+In-Reply-To: <87a81sjp15.fsf@linaro.org>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+X-TUID: EtB6SZC6w29q
 
-In the A64 decoder, we have a lot of references to section numbers
-from version A.a of the v8A ARM ARM (DDI0487). This version of the
-document is now long obsolete (we are currently on revision B.a),
-and various intervening versions renumbered all the sections.
+On 18.09.2017 13:10, Alex Bennée wrote:
+> 
+> Dmitry Osipenko <digetx@gmail.com> writes:
+> 
+>> On 17.09.2017 16:22, Alex Bennée wrote:
+>>>
+>>> Dmitry Osipenko <digetx@gmail.com> writes:
+>>>
+>>>> On 24.02.2017 14:21, Alex Bennée wrote:
+>>>>> Previously flushes on other vCPUs would only get serviced when they
+>>>>> exited their TranslationBlocks. While this isn't overly problematic it
+>>>>> violates the semantics of TLB flush from the point of view of source
+>>>>> vCPU.
+>>>>>
+>>>>> To solve this we call the cputlb *_all_cpus_synced() functions to do
+>>>>> the flushes which ensures all flushes are completed by the time the
+>>>>> vCPU next schedules its own work. As the TLB instructions are modelled
+>>>>> as CP writes the TB ends at this point meaning cpu->exit_request will
+>>>>> be checked before the next instruction is executed.
+>>>>>
+>>>>> Deferring the work until the architectural sync point is a possible
+>>>>> future optimisation.
+>>>>>
+>>>>> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+>>>>> Reviewed-by: Richard Henderson <rth@twiddle.net>
+>>>>> Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+>>>>> ---
+>>>>>  target/arm/helper.c | 165 ++++++++++++++++++++++------------------------------
+>>>>>  1 file changed, 69 insertions(+), 96 deletions(-)
+>>>>>
+>>>>
+>>>> Hello,
+>>>>
+>>>> I have an issue with Linux kernel stopping to boot on a SMP 32bit ARM (haven't
+>>>> checked 64bit) in a single-threaded TCG mode. Kernel reaches point where it
+>>>> should mount rootfs over NFS and vCPUs stop. This issue is reproducible with any
+>>>> 32bit ARM machine type. Kernel boots fine with a MTTCG accel, only
+>>>> single-threaded TCG is affected. Git bisection lead to this patch, any
+>>>> ideas?
+>>>
+>>> It shouldn't cause a problem but can you obtain a backtrace of the
+>>> system when hung?
+>>>
+>>
+>> Actually, it looks like TCG enters infinite loop. Do you mean backtrace of QEMU
+>> by 'backtrace of the system'? If so, here it is:
+>>
+>> Thread 4 (Thread 0x7ffa37f10700 (LWP 20716)):
+>>
+>> #0  0x00007ffa601888bd in poll () at ../sysdeps/unix/syscall-template.S:84
+>>
+>> #1  0x00007ffa5e3aa561 in poll (__timeout=-1, __nfds=2, __fds=0x7ffa30006dc0) at
+>> /usr/include/bits/poll2.h:46
+>> #2  poll_func (ufds=0x7ffa30006dc0, nfds=2, timeout=-1, userdata=0x557bd603eae0)
+>> at
+>> /var/tmp/portage/media-sound/pulseaudio-10.0/work/pulseaudio-10.0/src/pulse/thread-mainloop.c:69
+>> #3  0x00007ffa5e39bbb1 in pa_mainloop_poll (m=m@entry=0x557bd60401f0) at
+>> /var/tmp/portage/media-sound/pulseaudio-10.0/work/pulseaudio-10.0/src/pulse/mainloop.c:844
+>> #4  0x00007ffa5e39c24e in pa_mainloop_iterate (m=0x557bd60401f0,
+>> block=<optimized out>, retval=0x0) at
+>> /var/tmp/portage/media-sound/pulseaudio-10.0/work/pulseaudio-10.0/src/pulse/mainloop.c:926
+>> #5  0x00007ffa5e39c300 in pa_mainloop_run (m=0x557bd60401f0,
+>> retval=retval@entry=0x0) at
+>> /var/tmp/portage/media-sound/pulseaudio-10.0/work/pulseaudio-10.0/src/pulse/mainloop.c:944
+>>
+>> #6  0x00007ffa5e3aa4a9 in thread (userdata=0x557bd60400f0) at
+>> /var/tmp/portage/media-sound/pulseaudio-10.0/work/pulseaudio-10.0/src/pulse/thread-mainloop.c:100
+>>
+>> #7  0x00007ffa599eea38 in internal_thread_func (userdata=0x557bd603e090) at
+>> /var/tmp/portage/media-sound/pulseaudio-10.0/work/pulseaudio-10.0/src/pulsecore/thread-posix.c:81
+>>
+>> #8  0x00007ffa60453657 in start_thread (arg=0x7ffa37f10700) at
+>> pthread_create.c:456
+>>
+>> #9  0x00007ffa60193c5f in clone () at
+>> ../sysdeps/unix/sysv/linux/x86_64/clone.S:97
+>>
+>>
+>>
+>>
+>>
+>> Thread 3 (Thread 0x7ffa4adff700 (LWP 20715)):
+>>
+>>
+>> #0  0x00007ffa53e51caf in code_gen_buffer ()
+>>
+> 
+> Well it's not locked up in servicing any flush tasks as it's executing
+> code. Maybe the guest code is spinning on something?
+> 
 
-The most recent B.a version of the document doesn't assign
-section numbers at all to the individual instruction classes
-in the way that the various A.x versions did. The simplest thing
-to do is just to delete all the out of date C.x.x references.
+Indeed, I should have used 'exec' instead of 'in_asm'.
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
-Definitely a Friday afternoon kind of a patch...
+> In the monitor:
+> 
+>   info registers
+> 
+> Will show you where things are, see if the ip is moving each time. Also
+> you can do a disassemble dump from there to see what code it is stuck
+> on.
+> 
 
- target/arm/translate-a64.c | 227 +++++++++++++++++++++++----------------------
- 1 file changed, 114 insertions(+), 113 deletions(-)
+I've attached with GDB to QEMU to see where it got stuck. Turned out it is
+caused by CONFIG_STRICT_KERNEL_RWX=y of the Linux kernel. Upon boot completion
+kernel changes memory permissions and that changing is executed on a dedicated
+CPU, while other CPUs are 'stopped' in a busy loop.
 
-diff --git a/target/arm/translate-a64.c b/target/arm/translate-a64.c
-index 9017e30510..e04007376c 100644
---- a/target/arm/translate-a64.c
-+++ b/target/arm/translate-a64.c
-@@ -1203,12 +1203,14 @@ static inline AArch64DecodeFn *lookup_disas_fn(const AArch64DecodeTable *table,
- }
- 
- /*
-- * the instruction disassembly implemented here matches
-- * the instruction encoding classifications in chapter 3 (C3)
-- * of the ARM Architecture Reference Manual (DDI0487A_a)
-+ * The instruction disassembly implemented here matches
-+ * the instruction encoding classifications in chapter C4
-+ * of the ARM Architecture Reference Manual (DDI0487B_a);
-+ * classification names and decode diagrams here should generally
-+ * match up with those in the manual.
-  */
- 
--/* C3.2.7 Unconditional branch (immediate)
-+/* Unconditional branch (immediate)
-  *   31  30       26 25                                  0
-  * +----+-----------+-------------------------------------+
-  * | op | 0 0 1 0 1 |                 imm26               |
-@@ -1219,15 +1221,15 @@ static void disas_uncond_b_imm(DisasContext *s, uint32_t insn)
-     uint64_t addr = s->pc + sextract32(insn, 0, 26) * 4 - 4;
- 
-     if (insn & (1U << 31)) {
--        /* C5.6.26 BL Branch with link */
-+        /* BL Branch with link */
-         tcg_gen_movi_i64(cpu_reg(s, 30), s->pc);
-     }
- 
--    /* C5.6.20 B Branch / C5.6.26 BL Branch with link */
-+    /* B Branch / BL Branch with link */
-     gen_goto_tb(s, 0, addr);
- }
- 
--/* C3.2.1 Compare & branch (immediate)
-+/* Compare and branch (immediate)
-  *   31  30         25  24  23                  5 4      0
-  * +----+-------------+----+---------------------+--------+
-  * | sf | 0 1 1 0 1 0 | op |         imm19       |   Rt   |
-@@ -1256,7 +1258,7 @@ static void disas_comp_b_imm(DisasContext *s, uint32_t insn)
-     gen_goto_tb(s, 1, addr);
- }
- 
--/* C3.2.5 Test & branch (immediate)
-+/* Test and branch (immediate)
-  *   31  30         25  24  23   19 18          5 4    0
-  * +----+-------------+----+-------+-------------+------+
-  * | b5 | 0 1 1 0 1 1 | op |  b40  |    imm14    |  Rt  |
-@@ -1285,7 +1287,7 @@ static void disas_test_b_imm(DisasContext *s, uint32_t insn)
-     gen_goto_tb(s, 1, addr);
- }
- 
--/* C3.2.2 / C5.6.19 Conditional branch (immediate)
-+/* Conditional branch (immediate)
-  *  31           25  24  23                  5   4  3    0
-  * +---------------+----+---------------------+----+------+
-  * | 0 1 0 1 0 1 0 | o1 |         imm19       | o0 | cond |
-@@ -1316,7 +1318,7 @@ static void disas_cond_b_imm(DisasContext *s, uint32_t insn)
-     }
- }
- 
--/* C5.6.68 HINT */
-+/* HINT instruction group, including various allocated HINTs */
- static void handle_hint(DisasContext *s, uint32_t insn,
-                         unsigned int op1, unsigned int op2, unsigned int crm)
- {
-@@ -1401,7 +1403,7 @@ static void handle_sync(DisasContext *s, uint32_t insn,
-     }
- }
- 
--/* C5.6.130 MSR (immediate) - move immediate to processor state field */
-+/* MSR (immediate) - move immediate to processor state field */
- static void handle_msr_i(DisasContext *s, uint32_t insn,
-                          unsigned int op1, unsigned int op2, unsigned int crm)
- {
-@@ -1477,10 +1479,10 @@ static void gen_set_nzcv(TCGv_i64 tcg_rt)
-     tcg_temp_free_i32(nzcv);
- }
- 
--/* C5.6.129 MRS - move from system register
-- * C5.6.131 MSR (register) - move to system register
-- * C5.6.204 SYS
-- * C5.6.205 SYSL
-+/* MRS - move from system register
-+ * MSR (register) - move to system register
-+ * SYS
-+ * SYSL
-  * These are all essentially the same insn in 'read' and 'write'
-  * versions, with varying op0 fields.
-  */
-@@ -1603,7 +1605,7 @@ static void handle_sys(DisasContext *s, uint32_t insn, bool isread,
-     }
- }
- 
--/* C3.2.4 System
-+/* System
-  *  31                 22 21  20 19 18 16 15   12 11    8 7   5 4    0
-  * +---------------------+---+-----+-----+-------+-------+-----+------+
-  * | 1 1 0 1 0 1 0 1 0 0 | L | op0 | op1 |  CRn  |  CRm  | op2 |  Rt  |
-@@ -1626,13 +1628,13 @@ static void disas_system(DisasContext *s, uint32_t insn)
-             return;
-         }
-         switch (crn) {
--        case 2: /* C5.6.68 HINT */
-+        case 2: /* HINT (including allocated hints like NOP, YIELD, etc) */
-             handle_hint(s, insn, op1, op2, crm);
-             break;
-         case 3: /* CLREX, DSB, DMB, ISB */
-             handle_sync(s, insn, op1, op2, crm);
-             break;
--        case 4: /* C5.6.130 MSR (immediate) */
-+        case 4: /* MSR (immediate) */
-             handle_msr_i(s, insn, op1, op2, crm);
-             break;
-         default:
-@@ -1644,7 +1646,7 @@ static void disas_system(DisasContext *s, uint32_t insn)
-     handle_sys(s, insn, l, op0, op1, op2, crn, crm, rt);
- }
- 
--/* C3.2.3 Exception generation
-+/* Exception generation
-  *
-  *  31             24 23 21 20                     5 4   2 1  0
-  * +-----------------+-----+------------------------+-----+----+
-@@ -1751,7 +1753,7 @@ static void disas_exc(DisasContext *s, uint32_t insn)
-     }
- }
- 
--/* C3.2.7 Unconditional branch (register)
-+/* Unconditional branch (register)
-  *  31           25 24   21 20   16 15   10 9    5 4     0
-  * +---------------+-------+-------+-------+------+-------+
-  * | 1 1 0 1 0 1 1 |  opc  |  op2  |  op3  |  Rn  |  op4  |
-@@ -1806,7 +1808,7 @@ static void disas_uncond_b_reg(DisasContext *s, uint32_t insn)
-     s->base.is_jmp = DISAS_JUMP;
- }
- 
--/* C3.2 Branches, exception generating and system instructions */
-+/* Branches, exception generating and system instructions */
- static void disas_b_exc_sys(DisasContext *s, uint32_t insn)
- {
-     switch (extract32(insn, 25, 7)) {
-@@ -1974,7 +1976,7 @@ static bool disas_ldst_compute_iss_sf(int size, bool is_signed, int opc)
-     return regsize == 64;
- }
- 
--/* C3.3.6 Load/store exclusive
-+/* Load/store exclusive
-  *
-  *  31 30 29         24  23  22   21  20  16  15  14   10 9    5 4    0
-  * +-----+-------------+----+---+----+------+----+-------+------+------+
-@@ -2051,7 +2053,7 @@ static void disas_ldst_excl(DisasContext *s, uint32_t insn)
- }
- 
- /*
-- * C3.3.5 Load register (literal)
-+ * Load register (literal)
-  *
-  *  31 30 29   27  26 25 24 23                5 4     0
-  * +-----+-------+---+-----+-------------------+-------+
-@@ -2107,15 +2109,15 @@ static void disas_ld_lit(DisasContext *s, uint32_t insn)
- }
- 
- /*
-- * C5.6.80 LDNP (Load Pair - non-temporal hint)
-- * C5.6.81 LDP (Load Pair - non vector)
-- * C5.6.82 LDPSW (Load Pair Signed Word - non vector)
-- * C5.6.176 STNP (Store Pair - non-temporal hint)
-- * C5.6.177 STP (Store Pair - non vector)
-- * C6.3.165 LDNP (Load Pair of SIMD&FP - non-temporal hint)
-- * C6.3.165 LDP (Load Pair of SIMD&FP)
-- * C6.3.284 STNP (Store Pair of SIMD&FP - non-temporal hint)
-- * C6.3.284 STP (Store Pair of SIMD&FP)
-+ * LDNP (Load Pair - non-temporal hint)
-+ * LDP (Load Pair - non vector)
-+ * LDPSW (Load Pair Signed Word - non vector)
-+ * STNP (Store Pair - non-temporal hint)
-+ * STP (Store Pair - non vector)
-+ * LDNP (Load Pair of SIMD&FP - non-temporal hint)
-+ * LDP (Load Pair of SIMD&FP)
-+ * STNP (Store Pair of SIMD&FP - non-temporal hint)
-+ * STP (Store Pair of SIMD&FP)
-  *
-  *  31 30 29   27  26  25 24   23  22 21   15 14   10 9    5 4    0
-  * +-----+-------+---+---+-------+---+-----------------------------+
-@@ -2261,9 +2263,9 @@ static void disas_ldst_pair(DisasContext *s, uint32_t insn)
- }
- 
- /*
-- * C3.3.8 Load/store (immediate post-indexed)
-- * C3.3.9 Load/store (immediate pre-indexed)
-- * C3.3.12 Load/store (unscaled immediate)
-+ * Load/store (immediate post-indexed)
-+ * Load/store (immediate pre-indexed)
-+ * Load/store (unscaled immediate)
-  *
-  * 31 30 29   27  26 25 24 23 22 21  20    12 11 10 9    5 4    0
-  * +----+-------+---+-----+-----+---+--------+-----+------+------+
-@@ -2379,7 +2381,7 @@ static void disas_ldst_reg_imm9(DisasContext *s, uint32_t insn,
- }
- 
- /*
-- * C3.3.10 Load/store (register offset)
-+ * Load/store (register offset)
-  *
-  * 31 30 29   27  26 25 24 23 22 21  20  16 15 13 12 11 10 9  5 4  0
-  * +----+-------+---+-----+-----+---+------+-----+--+-----+----+----+
-@@ -2476,7 +2478,7 @@ static void disas_ldst_reg_roffset(DisasContext *s, uint32_t insn,
- }
- 
- /*
-- * C3.3.13 Load/store (unsigned immediate)
-+ * Load/store (unsigned immediate)
-  *
-  * 31 30 29   27  26 25 24 23 22 21        10 9     5
-  * +----+-------+---+-----+-----+------------+-------+------+
-@@ -2587,14 +2589,14 @@ static void disas_ldst_reg(DisasContext *s, uint32_t insn)
-     }
- }
- 
--/* C3.3.1 AdvSIMD load/store multiple structures
-+/* AdvSIMD load/store multiple structures
-  *
-  *  31  30  29           23 22  21         16 15    12 11  10 9    5 4    0
-  * +---+---+---------------+---+-------------+--------+------+------+------+
-  * | 0 | Q | 0 0 1 1 0 0 0 | L | 0 0 0 0 0 0 | opcode | size |  Rn  |  Rt  |
-  * +---+---+---------------+---+-------------+--------+------+------+------+
-  *
-- * C3.3.2 AdvSIMD load/store multiple structures (post-indexed)
-+ * AdvSIMD load/store multiple structures (post-indexed)
-  *
-  *  31  30  29           23 22  21  20     16 15    12 11  10 9    5 4    0
-  * +---+---+---------------+---+---+---------+--------+------+------+------+
-@@ -2719,14 +2721,14 @@ static void disas_ldst_multiple_struct(DisasContext *s, uint32_t insn)
-     tcg_temp_free_i64(tcg_addr);
- }
- 
--/* C3.3.3 AdvSIMD load/store single structure
-+/* AdvSIMD load/store single structure
-  *
-  *  31  30  29           23 22 21 20       16 15 13 12  11  10 9    5 4    0
-  * +---+---+---------------+-----+-----------+-----+---+------+------+------+
-  * | 0 | Q | 0 0 1 1 0 1 0 | L R | 0 0 0 0 0 | opc | S | size |  Rn  |  Rt  |
-  * +---+---+---------------+-----+-----------+-----+---+------+------+------+
-  *
-- * C3.3.4 AdvSIMD load/store single structure (post-indexed)
-+ * AdvSIMD load/store single structure (post-indexed)
-  *
-  *  31  30  29           23 22 21 20       16 15 13 12  11  10 9    5 4    0
-  * +---+---+---------------+-----+-----------+-----+---+------+------+------+
-@@ -2869,7 +2871,7 @@ static void disas_ldst_single_struct(DisasContext *s, uint32_t insn)
-     tcg_temp_free_i64(tcg_addr);
- }
- 
--/* C3.3 Loads and stores */
-+/* Loads and stores */
- static void disas_ldst(DisasContext *s, uint32_t insn)
- {
-     switch (extract32(insn, 24, 6)) {
-@@ -2899,7 +2901,7 @@ static void disas_ldst(DisasContext *s, uint32_t insn)
-     }
- }
- 
--/* C3.4.6 PC-rel. addressing
-+/* PC-rel. addressing
-  *   31  30   29 28       24 23                5 4    0
-  * +----+-------+-----------+-------------------+------+
-  * | op | immlo | 1 0 0 0 0 |       immhi       |  Rd  |
-@@ -2928,7 +2930,7 @@ static void disas_pc_rel_adr(DisasContext *s, uint32_t insn)
- }
- 
- /*
-- * C3.4.1 Add/subtract (immediate)
-+ * Add/subtract (immediate)
-  *
-  *  31 30 29 28       24 23 22 21         10 9   5 4   0
-  * +--+--+--+-----------+-----+-------------+-----+-----+
-@@ -3078,7 +3080,7 @@ static bool logic_imm_decode_wmask(uint64_t *result, unsigned int immn,
-     return true;
- }
- 
--/* C3.4.4 Logical (immediate)
-+/* Logical (immediate)
-  *   31  30 29 28         23 22  21  16 15  10 9    5 4    0
-  * +----+-----+-------------+---+------+------+------+------+
-  * | sf | opc | 1 0 0 1 0 0 | N | immr | imms |  Rn  |  Rd  |
-@@ -3151,7 +3153,7 @@ static void disas_logic_imm(DisasContext *s, uint32_t insn)
- }
- 
- /*
-- * C3.4.5 Move wide (immediate)
-+ * Move wide (immediate)
-  *
-  *  31 30 29 28         23 22 21 20             5 4    0
-  * +--+-----+-------------+-----+----------------+------+
-@@ -3203,7 +3205,7 @@ static void disas_movw_imm(DisasContext *s, uint32_t insn)
-     }
- }
- 
--/* C3.4.2 Bitfield
-+/* Bitfield
-  *   31  30 29 28         23 22  21  16 15  10 9    5 4    0
-  * +----+-----+-------------+---+------+------+------+------+
-  * | sf | opc | 1 0 0 1 1 0 | N | immr | imms |  Rn  |  Rd  |
-@@ -3281,7 +3283,7 @@ static void disas_bitfield(DisasContext *s, uint32_t insn)
-     }
- }
- 
--/* C3.4.3 Extract
-+/* Extract
-  *   31  30  29 28         23 22   21  20  16 15    10 9    5 4    0
-  * +----+------+-------------+---+----+------+--------+------+------+
-  * | sf | op21 | 1 0 0 1 1 1 | N | o0 |  Rm  |  imms  |  Rn  |  Rd  |
-@@ -3341,7 +3343,7 @@ static void disas_extract(DisasContext *s, uint32_t insn)
-     }
- }
- 
--/* C3.4 Data processing - immediate */
-+/* Data processing - immediate */
- static void disas_data_proc_imm(DisasContext *s, uint32_t insn)
- {
-     switch (extract32(insn, 23, 6)) {
-@@ -3435,7 +3437,7 @@ static void shift_reg_imm(TCGv_i64 dst, TCGv_i64 src, int sf,
-     }
- }
- 
--/* C3.5.10 Logical (shifted register)
-+/* Logical (shifted register)
-  *   31  30 29 28       24 23   22 21  20  16 15    10 9    5 4    0
-  * +----+-----+-----------+-------+---+------+--------+------+------+
-  * | sf | opc | 0 1 0 1 0 | shift | N |  Rm  |  imm6  |  Rn  |  Rd  |
-@@ -3526,7 +3528,7 @@ static void disas_logic_reg(DisasContext *s, uint32_t insn)
- }
- 
- /*
-- * C3.5.1 Add/subtract (extended register)
-+ * Add/subtract (extended register)
-  *
-  *  31|30|29|28       24|23 22|21|20   16|15  13|12  10|9  5|4  0|
-  * +--+--+--+-----------+-----+--+-------+------+------+----+----+
-@@ -3599,7 +3601,7 @@ static void disas_add_sub_ext_reg(DisasContext *s, uint32_t insn)
- }
- 
- /*
-- * C3.5.2 Add/subtract (shifted register)
-+ * Add/subtract (shifted register)
-  *
-  *  31 30 29 28       24 23 22 21 20   16 15     10 9    5 4    0
-  * +--+--+--+-----------+-----+--+-------+---------+------+------+
-@@ -3662,13 +3664,12 @@ static void disas_add_sub_reg(DisasContext *s, uint32_t insn)
-     tcg_temp_free_i64(tcg_result);
- }
- 
--/* C3.5.9 Data-processing (3 source)
--
--   31 30  29 28       24 23 21  20  16  15  14  10 9    5 4    0
--  +--+------+-----------+------+------+----+------+------+------+
--  |sf| op54 | 1 1 0 1 1 | op31 |  Rm  | o0 |  Ra  |  Rn  |  Rd  |
--  +--+------+-----------+------+------+----+------+------+------+
--
-+/* Data-processing (3 source)
-+ *
-+ *    31 30  29 28       24 23 21  20  16  15  14  10 9    5 4    0
-+ *  +--+------+-----------+------+------+----+------+------+------+
-+ *  |sf| op54 | 1 1 0 1 1 | op31 |  Rm  | o0 |  Ra  |  Rn  |  Rd  |
-+ *  +--+------+-----------+------+------+----+------+------+------+
-  */
- static void disas_data_proc_3src(DisasContext *s, uint32_t insn)
- {
-@@ -3761,7 +3762,7 @@ static void disas_data_proc_3src(DisasContext *s, uint32_t insn)
-     tcg_temp_free_i64(tcg_tmp);
- }
- 
--/* C3.5.3 - Add/subtract (with carry)
-+/* Add/subtract (with carry)
-  *  31 30 29 28 27 26 25 24 23 22 21  20  16  15   10  9    5 4   0
-  * +--+--+--+------------------------+------+---------+------+-----+
-  * |sf|op| S| 1  1  0  1  0  0  0  0 |  rm  | opcode2 |  Rn  |  Rd |
-@@ -3803,7 +3804,7 @@ static void disas_adc_sbc(DisasContext *s, uint32_t insn)
-     }
- }
- 
--/* C3.5.4 - C3.5.5 Conditional compare (immediate / register)
-+/* Conditional compare (immediate / register)
-  *  31 30 29 28 27 26 25 24 23 22 21  20    16 15  12  11  10  9   5  4 3   0
-  * +--+--+--+------------------------+--------+------+----+--+------+--+-----+
-  * |sf|op| S| 1  1  0  1  0  0  1  0 |imm5/rm | cond |i/r |o2|  Rn  |o3|nzcv |
-@@ -3908,7 +3909,7 @@ static void disas_cc(DisasContext *s, uint32_t insn)
-     tcg_temp_free_i32(tcg_t2);
- }
- 
--/* C3.5.6 Conditional select
-+/* Conditional select
-  *   31   30  29  28             21 20  16 15  12 11 10 9    5 4    0
-  * +----+----+---+-----------------+------+------+-----+------+------+
-  * | sf | op | S | 1 1 0 1 0 1 0 0 |  Rm  | cond | op2 |  Rn  |  Rd  |
-@@ -4019,7 +4020,7 @@ static void handle_rbit(DisasContext *s, unsigned int sf,
-     }
- }
- 
--/* C5.6.149 REV with sf==1, opcode==3 ("REV64") */
-+/* REV with sf==1, opcode==3 ("REV64") */
- static void handle_rev64(DisasContext *s, unsigned int sf,
-                          unsigned int rn, unsigned int rd)
- {
-@@ -4030,8 +4031,8 @@ static void handle_rev64(DisasContext *s, unsigned int sf,
-     tcg_gen_bswap64_i64(cpu_reg(s, rd), cpu_reg(s, rn));
- }
- 
--/* C5.6.149 REV with sf==0, opcode==2
-- * C5.6.151 REV32 (sf==1, opcode==2)
-+/* REV with sf==0, opcode==2
-+ * REV32 (sf==1, opcode==2)
-  */
- static void handle_rev32(DisasContext *s, unsigned int sf,
-                          unsigned int rn, unsigned int rd)
-@@ -4056,7 +4057,7 @@ static void handle_rev32(DisasContext *s, unsigned int sf,
-     }
- }
- 
--/* C5.6.150 REV16 (opcode==1) */
-+/* REV16 (opcode==1) */
- static void handle_rev16(DisasContext *s, unsigned int sf,
-                          unsigned int rn, unsigned int rd)
- {
-@@ -4075,7 +4076,7 @@ static void handle_rev16(DisasContext *s, unsigned int sf,
-     tcg_temp_free_i64(tcg_tmp);
- }
- 
--/* C3.5.7 Data-processing (1 source)
-+/* Data-processing (1 source)
-  *   31  30  29  28             21 20     16 15    10 9    5 4    0
-  * +----+---+---+-----------------+---------+--------+------+------+
-  * | sf | 1 | S | 1 1 0 1 0 1 1 0 | opcode2 | opcode |  Rn  |  Rd  |
-@@ -4144,7 +4145,7 @@ static void handle_div(DisasContext *s, bool is_signed, unsigned int sf,
-     }
- }
- 
--/* C5.6.115 LSLV, C5.6.118 LSRV, C5.6.17 ASRV, C5.6.154 RORV */
-+/* LSLV, LSRV, ASRV, RORV */
- static void handle_shift_reg(DisasContext *s,
-                              enum a64_shift_type shift_type, unsigned int sf,
-                              unsigned int rm, unsigned int rn, unsigned int rd)
-@@ -4206,7 +4207,7 @@ static void handle_crc32(DisasContext *s,
-     tcg_temp_free_i32(tcg_bytes);
- }
- 
--/* C3.5.8 Data-processing (2 source)
-+/* Data-processing (2 source)
-  *   31   30  29 28             21 20  16 15    10 9    5 4    0
-  * +----+---+---+-----------------+------+--------+------+------+
-  * | sf | 0 | S | 1 1 0 1 0 1 1 0 |  Rm  | opcode |  Rn  |  Rd  |
-@@ -4265,7 +4266,7 @@ static void disas_data_proc_2src(DisasContext *s, uint32_t insn)
-     }
- }
- 
--/* C3.5 Data processing - register */
-+/* Data processing - register */
- static void disas_data_proc_reg(DisasContext *s, uint32_t insn)
- {
-     switch (extract32(insn, 24, 5)) {
-@@ -4359,7 +4360,7 @@ static void handle_fp_compare(DisasContext *s, bool is_double,
-     tcg_temp_free_i64(tcg_flags);
- }
- 
--/* C3.6.22 Floating point compare
-+/* Floating point compare
-  *   31  30  29 28       24 23  22  21 20  16 15 14 13  10    9    5 4     0
-  * +---+---+---+-----------+------+---+------+-----+---------+------+-------+
-  * | M | 0 | S | 1 1 1 1 0 | type | 1 |  Rm  | op  | 1 0 0 0 |  Rn  |  op2  |
-@@ -4389,7 +4390,7 @@ static void disas_fp_compare(DisasContext *s, uint32_t insn)
-     handle_fp_compare(s, type, rn, rm, opc & 1, opc & 2);
- }
- 
--/* C3.6.23 Floating point conditional compare
-+/* Floating point conditional compare
-  *   31  30  29 28       24 23  22  21 20  16 15  12 11 10 9    5  4   3    0
-  * +---+---+---+-----------+------+---+------+------+-----+------+----+------+
-  * | M | 0 | S | 1 1 1 1 0 | type | 1 |  Rm  | cond | 0 1 |  Rn  | op | nzcv |
-@@ -4437,7 +4438,7 @@ static void disas_fp_ccomp(DisasContext *s, uint32_t insn)
-     }
- }
- 
--/* C3.6.24 Floating point conditional select
-+/* Floating point conditional select
-  *   31  30  29 28       24 23  22  21 20  16 15  12 11 10 9    5 4    0
-  * +---+---+---+-----------+------+---+------+------+-----+------+------+
-  * | M | 0 | S | 1 1 1 1 0 | type | 1 |  Rm  | cond | 1 1 |  Rn  |  Rd  |
-@@ -4484,7 +4485,7 @@ static void disas_fp_csel(DisasContext *s, uint32_t insn)
-     tcg_temp_free_i64(t_true);
- }
- 
--/* C3.6.25 Floating-point data-processing (1 source) - single precision */
-+/* Floating-point data-processing (1 source) - single precision */
- static void handle_fp_1src_single(DisasContext *s, int opcode, int rd, int rn)
- {
-     TCGv_ptr fpst;
-@@ -4540,7 +4541,7 @@ static void handle_fp_1src_single(DisasContext *s, int opcode, int rd, int rn)
-     tcg_temp_free_i32(tcg_res);
- }
- 
--/* C3.6.25 Floating-point data-processing (1 source) - double precision */
-+/* Floating-point data-processing (1 source) - double precision */
- static void handle_fp_1src_double(DisasContext *s, int opcode, int rd, int rn)
- {
-     TCGv_ptr fpst;
-@@ -4662,7 +4663,7 @@ static void handle_fp_fcvt(DisasContext *s, int opcode,
-     }
- }
- 
--/* C3.6.25 Floating point data-processing (1 source)
-+/* Floating point data-processing (1 source)
-  *   31  30  29 28       24 23  22  21 20    15 14       10 9    5 4    0
-  * +---+---+---+-----------+------+---+--------+-----------+------+------+
-  * | M | 0 | S | 1 1 1 1 0 | type | 1 | opcode | 1 0 0 0 0 |  Rn  |  Rd  |
-@@ -4720,7 +4721,7 @@ static void disas_fp_1src(DisasContext *s, uint32_t insn)
-     }
- }
- 
--/* C3.6.26 Floating-point data-processing (2 source) - single precision */
-+/* Floating-point data-processing (2 source) - single precision */
- static void handle_fp_2src_single(DisasContext *s, int opcode,
-                                   int rd, int rn, int rm)
- {
-@@ -4773,7 +4774,7 @@ static void handle_fp_2src_single(DisasContext *s, int opcode,
-     tcg_temp_free_i32(tcg_res);
- }
- 
--/* C3.6.26 Floating-point data-processing (2 source) - double precision */
-+/* Floating-point data-processing (2 source) - double precision */
- static void handle_fp_2src_double(DisasContext *s, int opcode,
-                                   int rd, int rn, int rm)
- {
-@@ -4826,7 +4827,7 @@ static void handle_fp_2src_double(DisasContext *s, int opcode,
-     tcg_temp_free_i64(tcg_res);
- }
- 
--/* C3.6.26 Floating point data-processing (2 source)
-+/* Floating point data-processing (2 source)
-  *   31  30  29 28       24 23  22  21 20  16 15    12 11 10 9    5 4    0
-  * +---+---+---+-----------+------+---+------+--------+-----+------+------+
-  * | M | 0 | S | 1 1 1 1 0 | type | 1 |  Rm  | opcode | 1 0 |  Rn  |  Rd  |
-@@ -4863,7 +4864,7 @@ static void disas_fp_2src(DisasContext *s, uint32_t insn)
-     }
- }
- 
--/* C3.6.27 Floating-point data-processing (3 source) - single precision */
-+/* Floating-point data-processing (3 source) - single precision */
- static void handle_fp_3src_single(DisasContext *s, bool o0, bool o1,
-                                   int rd, int rn, int rm, int ra)
- {
-@@ -4901,7 +4902,7 @@ static void handle_fp_3src_single(DisasContext *s, bool o0, bool o1,
-     tcg_temp_free_i32(tcg_res);
- }
- 
--/* C3.6.27 Floating-point data-processing (3 source) - double precision */
-+/* Floating-point data-processing (3 source) - double precision */
- static void handle_fp_3src_double(DisasContext *s, bool o0, bool o1,
-                                   int rd, int rn, int rm, int ra)
- {
-@@ -4939,7 +4940,7 @@ static void handle_fp_3src_double(DisasContext *s, bool o0, bool o1,
-     tcg_temp_free_i64(tcg_res);
- }
- 
--/* C3.6.27 Floating point data-processing (3 source)
-+/* Floating point data-processing (3 source)
-  *   31  30  29 28       24 23  22  21  20  16  15  14  10 9    5 4    0
-  * +---+---+---+-----------+------+----+------+----+------+------+------+
-  * | M | 0 | S | 1 1 1 1 1 | type | o1 |  Rm  | o0 |  Ra  |  Rn  |  Rd  |
-@@ -4973,7 +4974,7 @@ static void disas_fp_3src(DisasContext *s, uint32_t insn)
-     }
- }
- 
--/* C3.6.28 Floating point immediate
-+/* Floating point immediate
-  *   31  30  29 28       24 23  22  21 20        13 12   10 9    5 4    0
-  * +---+---+---+-----------+------+---+------------+-------+------+------+
-  * | M | 0 | S | 1 1 1 1 0 | type | 1 |    imm8    | 1 0 0 | imm5 |  Rd  |
-@@ -5144,7 +5145,7 @@ static void handle_fpfpcvt(DisasContext *s, int rd, int rn, int opcode,
-     tcg_temp_free_i32(tcg_shift);
- }
- 
--/* C3.6.29 Floating point <-> fixed point conversions
-+/* Floating point <-> fixed point conversions
-  *   31   30  29 28       24 23  22  21 20   19 18    16 15   10 9    5 4    0
-  * +----+---+---+-----------+------+---+-------+--------+-------+------+------+
-  * | sf | 0 | S | 1 1 1 1 0 | type | 0 | rmode | opcode | scale |  Rn  |  Rd  |
-@@ -5244,7 +5245,7 @@ static void handle_fmov(DisasContext *s, int rd, int rn, int type, bool itof)
-     }
- }
- 
--/* C3.6.30 Floating point <-> integer conversions
-+/* Floating point <-> integer conversions
-  *   31   30  29 28       24 23  22  21 20   19 18 16 15         10 9  5 4  0
-  * +----+---+---+-----------+------+---+-------+-----+-------------+----+----+
-  * | sf | 0 | S | 1 1 1 1 0 | type | 1 | rmode | opc | 0 0 0 0 0 0 | Rn | Rd |
-@@ -5379,7 +5380,7 @@ static void do_ext64(DisasContext *s, TCGv_i64 tcg_left, TCGv_i64 tcg_right,
-     tcg_temp_free_i64(tcg_tmp);
- }
- 
--/* C3.6.1 EXT
-+/* EXT
-  *   31  30 29         24 23 22  21 20  16 15  14  11 10  9    5 4    0
-  * +---+---+-------------+-----+---+------+---+------+---+------+------+
-  * | 0 | Q | 1 0 1 1 1 0 | op2 | 0 |  Rm  | 0 | imm4 | 0 |  Rn  |  Rd  |
-@@ -5452,7 +5453,7 @@ static void disas_simd_ext(DisasContext *s, uint32_t insn)
-     tcg_temp_free_i64(tcg_resh);
- }
- 
--/* C3.6.2 TBL/TBX
-+/* BL/TBX
-  *   31  30 29         24 23 22  21 20  16 15  14 13  12  11 10 9    5 4    0
-  * +---+---+-------------+-----+---+------+---+-----+----+-----+------+------+
-  * | 0 | Q | 0 0 1 1 1 0 | op2 | 0 |  Rm  | 0 | len | op | 0 0 |  Rn  |  Rd  |
-@@ -5520,7 +5521,7 @@ static void disas_simd_tb(DisasContext *s, uint32_t insn)
-     tcg_temp_free_i64(tcg_resh);
- }
- 
--/* C3.6.3 ZIP/UZP/TRN
-+/* ZIP/UZP/TRN
-  *   31  30 29         24 23  22  21 20   16 15 14 12 11 10 9    5 4    0
-  * +---+---+-------------+------+---+------+---+------------------+------+
-  * | 0 | Q | 0 0 1 1 1 0 | size | 0 |  Rm  | 0 | opc | 1 0 |  Rn  |  Rd  |
-@@ -5632,7 +5633,7 @@ static void do_minmaxop(DisasContext *s, TCGv_i32 tcg_elt1, TCGv_i32 tcg_elt2,
-     }
- }
- 
--/* C3.6.4 AdvSIMD across lanes
-+/* AdvSIMD across lanes
-  *   31  30  29 28       24 23  22 21       17 16    12 11 10 9    5 4    0
-  * +---+---+---+-----------+------+-----------+--------+-----+------+------+
-  * | 0 | Q | U | 0 1 1 1 0 | size | 1 1 0 0 0 | opcode | 1 0 |  Rn  |  Rd  |
-@@ -5799,7 +5800,7 @@ static void disas_simd_across_lanes(DisasContext *s, uint32_t insn)
-     tcg_temp_free_i64(tcg_res);
- }
- 
--/* C6.3.31 DUP (Element, Vector)
-+/* DUP (Element, Vector)
-  *
-  *  31  30   29              21 20    16 15        10  9    5 4    0
-  * +---+---+-------------------+--------+-------------+------+------+
-@@ -5842,7 +5843,7 @@ static void handle_simd_dupe(DisasContext *s, int is_q, int rd, int rn,
-     tcg_temp_free_i64(tmp);
- }
- 
--/* C6.3.31 DUP (element, scalar)
-+/* DUP (element, scalar)
-  *  31                   21 20    16 15        10  9    5 4    0
-  * +-----------------------+--------+-------------+------+------+
-  * | 0 1 0 1 1 1 1 0 0 0 0 |  imm5  | 0 0 0 0 0 1 |  Rn  |  Rd  |
-@@ -5875,7 +5876,7 @@ static void handle_simd_dupes(DisasContext *s, int rd, int rn,
-     tcg_temp_free_i64(tmp);
- }
- 
--/* C6.3.32 DUP (General)
-+/* DUP (General)
-  *
-  *  31  30   29              21 20    16 15        10  9    5 4    0
-  * +---+---+-------------------+--------+-------------+------+------+
-@@ -5909,7 +5910,7 @@ static void handle_simd_dupg(DisasContext *s, int is_q, int rd, int rn,
-     }
- }
- 
--/* C6.3.150 INS (Element)
-+/* INS (Element)
-  *
-  *  31                   21 20    16 15  14    11  10 9    5 4    0
-  * +-----------------------+--------+------------+---+------+------+
-@@ -5947,7 +5948,7 @@ static void handle_simd_inse(DisasContext *s, int rd, int rn,
- }
- 
- 
--/* C6.3.151 INS (General)
-+/* INS (General)
-  *
-  *  31                   21 20    16 15        10  9    5 4    0
-  * +-----------------------+--------+-------------+------+------+
-@@ -5976,8 +5977,8 @@ static void handle_simd_insg(DisasContext *s, int rd, int rn, int imm5)
- }
- 
- /*
-- * C6.3.321 UMOV (General)
-- * C6.3.237 SMOV (General)
-+ * UMOV (General)
-+ * SMOV (General)
-  *
-  *  31  30   29              21 20    16 15    12   10 9    5 4    0
-  * +---+---+-------------------+--------+-------------+------+------+
-@@ -6022,7 +6023,7 @@ static void handle_simd_umov_smov(DisasContext *s, int is_q, int is_signed,
-     }
- }
- 
--/* C3.6.5 AdvSIMD copy
-+/* AdvSIMD copy
-  *   31  30  29  28             21 20  16 15  14  11 10  9    5 4    0
-  * +---+---+----+-----------------+------+---+------+---+------+------+
-  * | 0 | Q | op | 0 1 1 1 0 0 0 0 | imm5 | 0 | imm4 | 1 |  Rn  |  Rd  |
-@@ -6074,7 +6075,7 @@ static void disas_simd_copy(DisasContext *s, uint32_t insn)
-     }
- }
- 
--/* C3.6.6 AdvSIMD modified immediate
-+/* AdvSIMD modified immediate
-  *  31  30   29  28                 19 18 16 15   12  11  10  9     5 4    0
-  * +---+---+----+---------------------+-----+-------+----+---+-------+------+
-  * | 0 | Q | op | 0 1 1 1 1 0 0 0 0 0 | abc | cmode | o2 | 1 | defgh |  Rd  |
-@@ -6207,7 +6208,7 @@ static void disas_simd_mod_imm(DisasContext *s, uint32_t insn)
-     tcg_temp_free_i64(tcg_imm);
- }
- 
--/* C3.6.7 AdvSIMD scalar copy
-+/* AdvSIMD scalar copy
-  *  31 30  29  28             21 20  16 15  14  11 10  9    5 4    0
-  * +-----+----+-----------------+------+---+------+---+------+------+
-  * | 0 1 | op | 1 1 1 1 0 0 0 0 | imm5 | 0 | imm4 | 1 |  Rn  |  Rd  |
-@@ -6230,7 +6231,7 @@ static void disas_simd_scalar_copy(DisasContext *s, uint32_t insn)
-     handle_simd_dupes(s, rd, rn, imm5);
- }
- 
--/* C3.6.8 AdvSIMD scalar pairwise
-+/* AdvSIMD scalar pairwise
-  *  31 30  29 28       24 23  22 21       17 16    12 11 10 9    5 4    0
-  * +-----+---+-----------+------+-----------+--------+-----+------+------+
-  * | 0 1 | U | 1 1 1 1 0 | size | 1 1 0 0 0 | opcode | 1 0 |  Rn  |  Rd  |
-@@ -6956,7 +6957,7 @@ static void handle_simd_shift_fpint_conv(DisasContext *s, bool is_scalar,
-     tcg_temp_free_i32(tcg_rmode);
- }
- 
--/* C3.6.9 AdvSIMD scalar shift by immediate
-+/* AdvSIMD scalar shift by immediate
-  *  31 30  29 28         23 22  19 18  16 15    11  10 9    5 4    0
-  * +-----+---+-------------+------+------+--------+---+------+------+
-  * | 0 1 | U | 1 1 1 1 1 0 | immh | immb | opcode | 1 |  Rn  |  Rd  |
-@@ -7031,7 +7032,7 @@ static void disas_simd_scalar_shift_imm(DisasContext *s, uint32_t insn)
-     }
- }
- 
--/* C3.6.10 AdvSIMD scalar three different
-+/* AdvSIMD scalar three different
-  *  31 30  29 28       24 23  22  21 20  16 15    12 11 10 9    5 4    0
-  * +-----+---+-----------+------+---+------+--------+-----+------+------+
-  * | 0 1 | U | 1 1 1 1 0 | size | 1 |  Rm  | opcode | 0 0 |  Rn  |  Rd  |
-@@ -7418,7 +7419,7 @@ static void handle_3same_float(DisasContext *s, int size, int elements,
-     }
- }
- 
--/* C3.6.11 AdvSIMD scalar three same
-+/* AdvSIMD scalar three same
-  *  31 30  29 28       24 23  22  21 20  16 15    11  10 9    5 4    0
-  * +-----+---+-----------+------+---+------+--------+---+------+------+
-  * | 0 1 | U | 1 1 1 1 0 | size | 1 |  Rm  | opcode | 1 |  Rn  |  Rd  |
-@@ -8087,7 +8088,7 @@ static void handle_2misc_satacc(DisasContext *s, bool is_scalar, bool is_u,
-     }
- }
- 
--/* C3.6.12 AdvSIMD scalar two reg misc
-+/* AdvSIMD scalar two reg misc
-  *  31 30  29 28       24 23  22 21       17 16    12 11 10 9    5 4    0
-  * +-----+---+-----------+------+-----------+--------+-----+------+------+
-  * | 0 1 | U | 1 1 1 1 0 | size | 1 0 0 0 0 | opcode | 1 0 |  Rn  |  Rd  |
-@@ -8515,7 +8516,7 @@ static void handle_vec_simd_shrn(DisasContext *s, bool is_q,
- }
- 
- 
--/* C3.6.14 AdvSIMD shift by immediate
-+/* AdvSIMD shift by immediate
-  *  31  30   29 28         23 22  19 18  16 15    11  10 9    5 4    0
-  * +---+---+---+-------------+------+------+--------+---+------+------+
-  * | 0 | Q | U | 0 1 1 1 1 0 | immh | immb | opcode | 1 |  Rn  |  Rd  |
-@@ -8934,7 +8935,7 @@ static void handle_pmull_64(DisasContext *s, int is_q, int rd, int rn, int rm)
-     tcg_temp_free_i64(tcg_res);
- }
- 
--/* C3.6.15 AdvSIMD three different
-+/* AdvSIMD three different
-  *   31  30  29 28       24 23  22  21 20  16 15    12 11 10 9    5 4    0
-  * +---+---+---+-----------+------+---+------+--------+-----+------+------+
-  * | 0 | Q | U | 0 1 1 1 0 | size | 1 |  Rm  | opcode | 0 0 |  Rn  |  Rd  |
-@@ -9671,7 +9672,7 @@ static void disas_simd_3same_int(DisasContext *s, uint32_t insn)
-     }
- }
- 
--/* C3.6.16 AdvSIMD three same
-+/* AdvSIMD three same
-  *  31  30  29  28       24 23  22  21 20  16 15    11  10 9    5 4    0
-  * +---+---+---+-----------+------+---+------+--------+---+------+------+
-  * | 0 | Q | U | 0 1 1 1 0 | size | 1 |  Rm  | opcode | 1 |  Rn  |  Rd  |
-@@ -9940,7 +9941,7 @@ static void handle_shll(DisasContext *s, bool is_q, int size, int rn, int rd)
-     }
- }
- 
--/* C3.6.17 AdvSIMD two reg misc
-+/* AdvSIMD two reg misc
-  *   31  30  29 28       24 23  22 21       17 16    12 11 10 9    5 4    0
-  * +---+---+---+-----------+------+-----------+--------+-----+------+------+
-  * | 0 | Q | U | 0 1 1 1 0 | size | 1 0 0 0 0 | opcode | 1 0 |  Rn  |  Rd  |
-@@ -10452,12 +10453,12 @@ static void disas_simd_two_reg_misc(DisasContext *s, uint32_t insn)
-     }
- }
- 
--/* C3.6.13 AdvSIMD scalar x indexed element
-+/* AdvSIMD scalar x indexed element
-  *  31 30  29 28       24 23  22 21  20  19  16 15 12  11  10 9    5 4    0
-  * +-----+---+-----------+------+---+---+------+-----+---+---+------+------+
-  * | 0 1 | U | 1 1 1 1 1 | size | L | M |  Rm  | opc | H | 0 |  Rn  |  Rd  |
-  * +-----+---+-----------+------+---+---+------+-----+---+---+------+------+
-- * C3.6.18 AdvSIMD vector x indexed element
-+ * AdvSIMD vector x indexed element
-  *   31  30  29 28       24 23  22 21  20  19  16 15 12  11  10 9    5 4    0
-  * +---+---+---+-----------+------+---+---+------+-----+---+---+------+------+
-  * | 0 | Q | U | 0 1 1 1 1 | size | L | M |  Rm  | opc | H | 0 |  Rn  |  Rd  |
-@@ -10907,7 +10908,7 @@ static void disas_simd_indexed(DisasContext *s, uint32_t insn)
-     }
- }
- 
--/* C3.6.19 Crypto AES
-+/* Crypto AES
-  *  31             24 23  22 21       17 16    12 11 10 9    5 4    0
-  * +-----------------+------+-----------+--------+-----+------+------+
-  * | 0 1 0 0 1 1 1 0 | size | 1 0 1 0 0 | opcode | 1 0 |  Rn  |  Rd  |
-@@ -10970,7 +10971,7 @@ static void disas_crypto_aes(DisasContext *s, uint32_t insn)
-     tcg_temp_free_i32(tcg_decrypt);
- }
- 
--/* C3.6.20 Crypto three-reg SHA
-+/* Crypto three-reg SHA
-  *  31             24 23  22  21 20  16  15 14    12 11 10 9    5 4    0
-  * +-----------------+------+---+------+---+--------+-----+------+------+
-  * | 0 1 0 1 1 1 1 0 | size | 0 |  Rm  | 0 | opcode | 0 0 |  Rn  |  Rd  |
-@@ -11042,7 +11043,7 @@ static void disas_crypto_three_reg_sha(DisasContext *s, uint32_t insn)
-     tcg_temp_free_i32(tcg_rm_regno);
- }
- 
--/* C3.6.21 Crypto two-reg SHA
-+/* Crypto two-reg SHA
-  *  31             24 23  22 21       17 16    12 11 10 9    5 4    0
-  * +-----------------+------+-----------+--------+-----+------+------+
-  * | 0 1 0 1 1 1 1 0 | size | 1 0 1 0 0 | opcode | 1 0 |  Rn  |  Rd  |
+This patch just introduced a noticeable performance regression for a
+single-threaded TCG, which is probably fine since MTTCG is the default now.
+Thank you very much for the suggestions and all your work on MTTCG!
+
 -- 
-2.11.0
-
+Dmitry

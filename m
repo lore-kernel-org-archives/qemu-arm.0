@@ -1,109 +1,102 @@
-Received: by 10.223.172.38 with SMTP id v35csp3265020wrc;
-        Sun, 17 Sep 2017 18:32:37 -0700 (PDT)
-X-Received: by 10.200.63.2 with SMTP id c2mr22588114qtk.194.1505698357496;
-        Sun, 17 Sep 2017 18:32:37 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1505698357; cv=none;
+Received: by 10.223.172.38 with SMTP id v35csp3438754wrc;
+        Sun, 17 Sep 2017 23:30:05 -0700 (PDT)
+X-Received: by 10.200.17.23 with SMTP id c23mr29410751qtj.74.1505716205630;
+        Sun, 17 Sep 2017 23:30:05 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1505716205; cv=none;
         d=google.com; s=arc-20160816;
-        b=XMTti1DfsCfsM3WzmCmFdk3i9VotwumX5E9XU87pfRDOMT7Qy1Dre4IXmKOnHXvIxk
-         1dDZl+3BHlmbgBzU54104i25qEM36W97tV3l1DCdDj+M+AIghKahttPSfvROYUmqU2kF
-         yCytpz0Ot5B3EqAFfCqBUSDZBXAGdoEy5jg15R6tuUlEh0jr/OGoTxw4Yds8kij1Whip
-         zZ2spWKVYJSwd/SzyJwfiVVddQXnO1nxNIT4ypCaF+4tIXWRzZTRit7YMJOSKN2D5RQZ
-         ZCxvylp+bc+CJur0csZSwd3rfLNT3U6apvZGLdJsfKAVWt7s0Y6KiWqEMx1r4y23W29Z
-         Vjhg==
+        b=y7sY7Y4nRkPSW8+khWiMPvs/SQesRp2/GdY1Oo+e+nkVl5MZnjcNTtq6JzFJwkUZZv
+         x55F9k+V9iLTUSs5UCa2l2nep8zZDmHVBLTNX2tBAQObyYHSW7wC36vmroxYAPWRzZbw
+         kw02TiRHEokSK54+baQiHAc46GwLo/XtB/IYk4fFUwWxn+N9DX5Wpxug61TaZHbmi9Wc
+         M4Kje3rAO2s4ve9xgk6mhzKMn3egCo4TjMSIxCuIfAIVsuhM0URLedGpCb5LBOQvzz34
+         EA66wmIuamUL4y0eL87hV4ZiqzFG21vp8au2nMTQ+Ps4mWx6Qg9l8GkR1+4PSzaJ6Q7I
+         9N4Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:to:dkim-signature
+         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
+         :references:in-reply-to:mime-version:dkim-signature
          :arc-authentication-results;
-        bh=vMpvWoDvHpVyY71M4TDiijjJB2uRVAS61z/kxwStXtE=;
-        b=GyNh5hux9WirfZ2kMDaH5JvnRgCH+rYCfsmzQP/+jmi7ojWkYGUgJyJCG8ter9WCPD
-         F9/Kh7aJ+DZC43mMb7Xob9vtOVkf7dv4GSskO/eWeVRgBXeQAHm6aOlqjBFqSRZal7vn
-         PtL6KpLuPDAOYsQuiEzXsM7fGyrIK3NcQnUJ52yj0gK4LGJaAdNjp/RAK2x/2LwpU8+n
-         1cE8NZtA8Zp+w2iZkhszChy/ap4g/HvctALZ+WubKc5Q8g6EdiYHtsGQwG3WPz+ZT9mx
-         ZTTtg+AhWIY9Ukm/D1qIF3X5rlo4KoMwIG8oaj0HpgXSSGuhEMhad2Bs/DK8e6gZ2qsr
-         TXTA==
+        bh=1v/N5lt5HdqtbkiuQ0E87DvEica8lI5ZK3THdVeUKv8=;
+        b=aO5GNB7uiiMd1Xc6/5IwdqT5sgVrmRBjHD8TpkIibZvVXrrMkSEUavcpKrQCoZMmtX
+         g7ZEcLx5sNVUwc6DijL7D8mO3ZfUifVXIDi5hmMDE/Kp1TggHimpoVZilW9mEg+vOaG3
+         fm1bG+fJ0WMKH9eS3SFQPG0dItwEpIYYxWkGorhzp7sdJV3JNoF6P1nI9tK0n7KmI5RX
+         t5lThEgRr8yJFLx/hEJ2HyjSFh/+N4eL1/12bJpb+f1MnVZKokh/u4YSoR/OfeFg/4th
+         qZvXBj3n6AEJ8EIJt+WMK18mjnExM4acj8BN6jKNMXxRULTbapRPi0EUzpNhTydXDqaM
+         Q3YQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=XRilH/6Y;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=XITxt/JO;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id i3si5821777qkf.274.2017.09.17.18.32.36
+        by mx.google.com with ESMTPS id p129si1612484qkb.278.2017.09.17.23.30.05
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sun, 17 Sep 2017 18:32:37 -0700 (PDT)
+        Sun, 17 Sep 2017 23:30:05 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=XRilH/6Y;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:34227 helo=lists.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=XITxt/JO;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:34871 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1dtkvL-0001LI-4A
-	for alex.bennee@linaro.org; Sun, 17 Sep 2017 21:32:35 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:41828)
+	id 1dtpZD-0000Jj-Cj
+	for alex.bennee@linaro.org; Mon, 18 Sep 2017 02:30:03 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:45262)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1dtkvB-0001HW-9i
-	for qemu-arm@nongnu.org; Sun, 17 Sep 2017 21:32:29 -0400
+	(envelope-from <sundeep.lkml@gmail.com>) id 1dtpZ2-0000IM-GN
+	for qemu-arm@nongnu.org; Mon, 18 Sep 2017 02:29:53 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1dtkv7-0007JB-Hg
-	for qemu-arm@nongnu.org; Sun, 17 Sep 2017 21:32:25 -0400
-Received: from mail-qk0-x22d.google.com ([2607:f8b0:400d:c09::22d]:51085)
+	(envelope-from <sundeep.lkml@gmail.com>) id 1dtpZ1-0005zQ-JB
+	for qemu-arm@nongnu.org; Mon, 18 Sep 2017 02:29:52 -0400
+Received: from mail-ua0-x241.google.com ([2607:f8b0:400c:c08::241]:38376)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1dtkv7-0007Iy-D0; Sun, 17 Sep 2017 21:32:21 -0400
-Received: by mail-qk0-x22d.google.com with SMTP id s132so6026036qke.7;
-	Sun, 17 Sep 2017 18:32:21 -0700 (PDT)
+	(Exim 4.71) (envelope-from <sundeep.lkml@gmail.com>)
+	id 1dtpYz-0005yO-14; Mon, 18 Sep 2017 02:29:49 -0400
+Received: by mail-ua0-x241.google.com with SMTP id l24so2302749uaa.5;
+	Sun, 17 Sep 2017 23:29:47 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=sender:subject:to:cc:references:from:message-id:date:user-agent
-	:mime-version:in-reply-to:content-language:content-transfer-encoding;
-	bh=vMpvWoDvHpVyY71M4TDiijjJB2uRVAS61z/kxwStXtE=;
-	b=XRilH/6YjsURIfXqbIItcz5MUzAtz/lje0zdceDEgnLK7TRJ0kQ7CdPyHHOyzTHKNG
-	rOQ2HVn8nCYFzjlNiFIg3jpyMkxKHh77JoGZIrfrQY1s6JVWa6eCtlAj3fOKDmRg8RaO
-	KJ/2WmhkMUe2Ozo8/umjVYAlOU7oEgv256NMZiw1vQb6REKpD6+LsLZCG6xNIiB0B6j4
-	5CUq2zNg3kvhM1Pf3hj2D84y3yTFzXm8zMgwGe8oCi3GIfxJN8YAVtiWrVtpp6xI334m
-	qrGNkhAetnHiK9Do0zPisUfNM1xHK16AezevprATvuHQk96cMkIfiio4xXB/OoWyZF2y
-	JQmg==
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=1v/N5lt5HdqtbkiuQ0E87DvEica8lI5ZK3THdVeUKv8=;
+	b=XITxt/JOymtX71OegrwQP5k9PJujw7pVOkj/FogNBZWgDApgFrRpZD82CO3ncKn5K2
+	c/Jw9Kcz+kjvWuA8Bv9raPCBqtsI7XZr3kHNqoCCE2f3ZmpNNZb6P7EqFaOdyxGugN9B
+	N1t6doFSCUju83HvU9LVT+v3tcSmNrOMbwwyzQ3mrR1LLSkBF0PKBaTB0YPFqxT5jHKK
+	KkFYWrYE569/9QHcCm5rUcPaKKcWMFttVSREMGZXeyEwHfQ7ld/Iu1U5EJDCCfL6cowO
+	wuNq7tJEU+aMzAW9cnOwiC0h+5SEe8UTVfOqkDhbkQxWKrHvmy4ggyD2JWQ6OtNytPpT
+	Au1g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
-	:date:user-agent:mime-version:in-reply-to:content-language
-	:content-transfer-encoding;
-	bh=vMpvWoDvHpVyY71M4TDiijjJB2uRVAS61z/kxwStXtE=;
-	b=nRaq9UwDXfaO/0kj0M78Q8C/gozulEnabVvxkxwmE+FwaCOj9+bPFR+3hLs2+4ScWy
-	FbHKDCpyrk1ovIunoFFNdlZNu1bxm7NT+AyhwA+lVYzj3LgYMChfBQSVLla3Dewm2DX9
-	0xR+7DnnSKcfreOVOTLGP7s9zfAO6EoYs5VNBV3trme+3jspQfZiRP8Zx7/z2D7ZdCq7
-	ll0g+F+/sbx70RzNToqTBSiri5zyKJtLD6yKk92kWLxEmEFjWq1RCkq+HvYzIcUt4MEc
-	3Z4vUcgJLCgehYYSwtA1Bp+KPtnpvRLmLpK4Zqws93gn52Yq4peFxOuHkXV1PCYgG9Pr
-	Mx0Q==
-X-Gm-Message-State: AHPjjUhtiQW+uEHWNNjXKti4XN59T9QlbcA/UMbK3va9tTkR0Jgw5bDb
-	YBrobB6R/R7k8Q==
-X-Google-Smtp-Source: AOwi7QBW3K0uu86vXMPiExdtzEOySdc6T1pKWBSiCRXHIwMwLjwyDOiEeGYfCoQRhnuD3azUJAbkpg==
-X-Received: by 10.55.17.156 with SMTP id 28mr18258626qkr.336.1505698340559;
-	Sun, 17 Sep 2017 18:32:20 -0700 (PDT)
-Received: from [192.168.1.10] ([181.93.89.178])
-	by smtp.gmail.com with ESMTPSA id k66sm360672qkb.4.2017.09.17.18.32.17
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Sun, 17 Sep 2017 18:32:20 -0700 (PDT)
-To: Subbaraya Sundeep <sundeep.lkml@gmail.com>, peter.maydell@linaro.org
-References: <1505494753-10837-1-git-send-email-sundeep.lkml@gmail.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <4c141996-c4ed-7156-d960-58ae2d9c4d1e@amsat.org>
-Date: Sun, 17 Sep 2017 22:32:15 -0300
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.3.0
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=1v/N5lt5HdqtbkiuQ0E87DvEica8lI5ZK3THdVeUKv8=;
+	b=t2VyzfeEGwWvGJhyydNqDTo8+0EQIrJkPSM8BQlb6yFFxzwbpi1HAlu3purRK9CJLg
+	qamcZFg2rU69YPJ+fSSodrvW5iKPDBd4kKkSlSfPJgOkoMe0E973xfuDI+AkTkv+XRGJ
+	uJyYvAIr/yU0J7PxjydAf0Ff7VcFyhLfzITtGbpfmnTpjrUxZLWp3c4QPrxoDmBfv4N0
+	ABkSDF3Amt3cT/OVn2WvWxuYk+QUKXcnZK3msT4wWeLvstApIaqWalnpglFsF3i5s0d7
+	Blfnc4Y8UVAI6PDAHiDEkiqKba1wvuc0n05EnC7YBRKatRTzloih8rbWJuvWtSnW9vBO
+	/AaQ==
+X-Gm-Message-State: AHPjjUhOvu91AqtTOuWIWrAqLcgcBbdmVTivOypGLwro5O2b4T6JBgOW
+	dmUHAcukgTm0SyNMe06F7KW3z/MCvCz7WTkkTIM=
+X-Google-Smtp-Source: ADKCNb7h1xaYY0Tak09PalhzmK50aQ8WaSC2nBNetZ/iZbCZhqJ6cIPsAwx+KwbeVe9WCQ40BQZDKjR8sx7PNH2Y2z0=
+X-Received: by 10.176.3.51 with SMTP id 48mr29336642uat.67.1505716187202; Sun,
+	17 Sep 2017 23:29:47 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <1505494753-10837-1-git-send-email-sundeep.lkml@gmail.com>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
+Received: by 10.176.66.68 with HTTP; Sun, 17 Sep 2017 23:29:46 -0700 (PDT)
+In-Reply-To: <3618281c-b4f9-3a1a-8b6f-f87dfeb54e45@amsat.org>
+References: <1504812251-23438-1-git-send-email-sundeep.lkml@gmail.com>
+	<1504812251-23438-3-git-send-email-sundeep.lkml@gmail.com>
+	<a9891f10-9643-96ee-7f99-7a384b9ea302@amsat.org>
+	<3618281c-b4f9-3a1a-8b6f-f87dfeb54e45@amsat.org>
+From: sundeep subbaraya <sundeep.lkml@gmail.com>
+Date: Mon, 18 Sep 2017 11:59:46 +0530
+Message-ID: <CALHRZuoba-57L-95NrCHBn-+_DUcg9PQTbaOz4ENwPyX+Ysa3w@mail.gmail.com>
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
+Content-Type: multipart/alternative; boundary="001a11351888788a2b055970de2f"
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400d:c09::22d
-Subject: Re: [Qemu-arm] [Qemu devel v9 PATCH 0/5] Add support for
- Smartfusion2 SoC
+X-Received-From: 2607:f8b0:400c:c08::241
+Subject: Re: [Qemu-arm] [Qemu devel v8 PATCH 2/5] msf2: Microsemi
+ Smartfusion2 System Register block
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -115,285 +108,158 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: alistair23@gmail.com, qemu-arm@nongnu.org, qemu-devel@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm <qemu-arm@nongnu.org>,
+	QEMU Developers <qemu-devel@nongnu.org>,
+	Alistair Francis <alistair23@gmail.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: szNMIWt7/0N3
+X-TUID: we73MZIoPwde
 
-Hi Sundeep,
+--001a11351888788a2b055970de2f
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-On 09/15/2017 01:59 PM, Subbaraya Sundeep wrote:
-> Hi Qemu-devel,
-> 
-> I am trying to add Smartfusion2 SoC.
-> SoC is from Microsemi and System on Module(SOM)
-> board is from Emcraft systems. Smartfusion2 has hardened
-> Microcontroller(Cortex-M3)based Sub System and FPGA fabric.
-> At the moment only system timer, sysreg and SPI
-> controller are modelled.
-> 
-> Tested-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+Hi Philippe,
 
-When a review tag is sent to the series cover, this means it can be 
-added to all the patches from the series.
+On Mon, Sep 18, 2017 at 5:27 AM, Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.o=
+rg>
+wrote:
 
-> 
-> Testing:
-> ./arm-softmmu/qemu-system-arm -M emcraft-sf2 -serial mon:stdio \
-> -kernel u-boot.bin -display none -drive file=spi.bin,if=mtd,format=raw
-> 
-> Binaries u-boot.bin and spi.bin are at:
-> https://github.com/Subbaraya-Sundeep/qemu-test-binaries.git
-> 
-> U-boot is from Emcraft with modified
->      - SPI driver not to use PDMA.
->      - ugly hack to pass dtb to kernel in r1.
-> @
-> https://github.com/Subbaraya-Sundeep/emcraft-uboot-sf2.git
-> 
-> Linux is 4.5 linux with Smartfusion2 SoC dts and clocksource
-> driver added by myself @
-> https://github.com/Subbaraya-Sundeep/linux.git
-> 
-> v9:
+> Hi Sundeep,
+>
+> On 09/14/2017 01:36 AM, Philippe Mathieu-Daud=C3=A9 wrote:
+>
+>> On 09/07/2017 04:24 PM, Subbaraya Sundeep wrote:
+>>
+> [...]
+>
+>> +static inline int msf2_divbits(uint32_t div)
+>>>
+>>
+>> Please directly use ctz32() instead of msf2_divbits()
+>>
+>
+> It seems you missed this review comment in your v9.
 
-However if you made significant changes to v9, please drop the R-b that 
-were left on v8 to make sure people re-review those changes. Functional 
-changes directly reset Tested-by tags.
 
-$ git backport-diff -r master..msf2_v9 -u msf2_v8
-Key:
-[----] : patches are identical
-[####] : number of functional differences between upstream/downstream patch
-[down] : patch is downstream-only
-The flags [FC] indicate (F)unctional and (C)ontextual differences, 
-respectively
+ctz32(1) =3D 0
+ctz32(2) =3D 1
+ctz32(4) =3D 2
+ctz32(8) =3D 3
+ctz32(16) =3D 4
+ctz32(32) =3D 5
 
-001/5:[----] [--] 'msf2: Add Smartfusion2 System timer'
-002/5:[0047] [FC] 'msf2: Microsemi Smartfusion2 System Register block'
-003/5:[----] [--] 'msf2: Add Smartfusion2 SPI controller'
-004/5:[0018] [FC] 'msf2: Add Smartfusion2 SoC'
-005/5:[0001] [FC] 'msf2: Add Emcraft's Smartfusion2 SOM kit'
+but for inputs 8,16,32 output should be 4,5,6 so didn't use ctz32().
+I replied to this comment in the same mail chain earlier. Please check.
 
-> 	used trace instead of DB_PRINT in msf2-sysreg.c
-> 	used LOG_UNIMP for non guest errors in msf2-sysreg.c
-> 	added unimplemented devices in msf2-soc.c
-> 	removed .alias suffix in alias memory region name for eNVM
+Thanks,
+Sundeep
 
-you also removed "mc->ignore_memory_transaction_failures" use.
+>
+>
+>
+>> +{
+>>> +    int ret =3D 0;
+>>> +
+>>> +    switch (div) {
+>>> +    case 1:
+>>> +        ret =3D 0;
+>>> +        break;
+>>> +    case 2:
+>>> +        ret =3D 1;
+>>> +        break;
+>>> +    case 4:
+>>> +        ret =3D 2;
+>>> +        break;
+>>> +    case 8:
+>>> +        ret =3D 4;
+>>> +        break;
+>>> +    case 16:
+>>> +        ret =3D 5;
+>>> +        break;
+>>> +    case 32:
+>>> +        ret =3D 6;
+>>> +        break;
+>>> +    default:
+>>> +        break;
+>>> +    }
+>>> +
+>>> +    return ret;
+>>> +}
+>>>
+>>
 
-> 
-> v8:
-> 	memory_region_init_ram to memory_region_init_rom in soc
-> 	%s/emcraft_sf2_init/emcraft_sf2_s2s010_init/g in som
-> 	Added mc->ignore_memory_transaction_failures = true in som
-> 		as per latest commit.
-> 	Code simplifications as suggested by Alistair in sysreg and ssi.
+--001a11351888788a2b055970de2f
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-FYI, testing outputs:
+<div dir=3D"ltr">Hi Philippe,<div class=3D"gmail_extra"><br><div class=3D"g=
+mail_quote">On Mon, Sep 18, 2017 at 5:27 AM, Philippe Mathieu-Daud=C3=A9 <s=
+pan dir=3D"ltr">&lt;<a href=3D"mailto:f4bug@amsat.org" target=3D"_blank">f4=
+bug@amsat.org</a>&gt;</span> wrote:<br><blockquote class=3D"gmail_quote" st=
+yle=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padd=
+ing-left:1ex">Hi Sundeep,<span class=3D"gmail-"><br>
+<br>
+On 09/14/2017 01:36 AM, Philippe Mathieu-Daud=C3=A9 wrote:<br>
+<blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-=
+left:1px solid rgb(204,204,204);padding-left:1ex">
+On 09/07/2017 04:24 PM, Subbaraya Sundeep wrote:<br>
+</blockquote></span>
+[...]<span class=3D"gmail-"><br>
+<blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-=
+left:1px solid rgb(204,204,204);padding-left:1ex"><blockquote class=3D"gmai=
+l_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,20=
+4,204);padding-left:1ex">
++static inline int msf2_divbits(uint32_t div)<br>
+</blockquote>
+<br>
+Please directly use ctz32() instead of msf2_divbits()<br>
+</blockquote>
+<br></span>
+It seems you missed this review comment in your v9.</blockquote><div><br></=
+div><div>ctz32(1) =3D 0</div><div>ctz32(2) =3D 1</div><div>ctz32(4) =3D 2</=
+div><div>ctz32(8) =3D 3</div><div>ctz32(16) =3D 4</div><div>ctz32(32) =3D 5=
+</div><div><br></div><div>but for inputs 8,16,32 output should be 4,5,6 so =
+didn&#39;t use ctz32().</div><div>I replied to this comment in the same mai=
+l chain earlier. Please check.</div><div><br></div><div>Thanks,</div><div>S=
+undeep</div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0=
+.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex"><div class=3D=
+"gmail-HOEnZb"><div class=3D"gmail-h5"><br>
+<br>
+<blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-=
+left:1px solid rgb(204,204,204);padding-left:1ex">
+<br>
+<blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-=
+left:1px solid rgb(204,204,204);padding-left:1ex">
++{<br>
++=C2=A0=C2=A0=C2=A0 int ret =3D 0;<br>
++<br>
++=C2=A0=C2=A0=C2=A0 switch (div) {<br>
++=C2=A0=C2=A0=C2=A0 case 1:<br>
++=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 ret =3D 0;<br>
++=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 break;<br>
++=C2=A0=C2=A0=C2=A0 case 2:<br>
++=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 ret =3D 1;<br>
++=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 break;<br>
++=C2=A0=C2=A0=C2=A0 case 4:<br>
++=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 ret =3D 2;<br>
++=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 break;<br>
++=C2=A0=C2=A0=C2=A0 case 8:<br>
++=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 ret =3D 4;<br>
++=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 break;<br>
++=C2=A0=C2=A0=C2=A0 case 16:<br>
++=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 ret =3D 5;<br>
++=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 break;<br>
++=C2=A0=C2=A0=C2=A0 case 32:<br>
++=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 ret =3D 6;<br>
++=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 break;<br>
++=C2=A0=C2=A0=C2=A0 default:<br>
++=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 break;<br>
++=C2=A0=C2=A0=C2=A0 }<br>
++<br>
++=C2=A0=C2=A0=C2=A0 return ret;<br>
++}<br>
+</blockquote></blockquote>
+</div></div></blockquote></div><br></div></div>
 
-- U-Boot
-
-CPU  : SmartFusion2 SoC (Cortex-M3 Hard IP)
-Freqs: CORTEX-M3=142MHz,PCLK0=71MHz,PCLK1=71MHz
-Board: M2S-FG484-SOM Rev 1A, www.emcraft.com
-apb_config: unimplemented device write (size 4, value 0x0, offset 0x10)
-apb_config: unimplemented device write (size 4, value 0x118, offset 0x84)
-apb_config: unimplemented device write (size 4, value 0xc1, offset 0x18)
-apb_config: unimplemented device write (size 4, value 0x99f, offset 0x1c)
-apb_config: unimplemented device write (size 4, value 0x3333, offset 0x24)
-apb_config: unimplemented device write (size 4, value 0xffff, offset 0x28)
-apb_config: unimplemented device write (size 4, value 0x3300, offset 0x78)
-apb_config: unimplemented device write (size 4, value 0x7777, offset 0x2c)
-apb_config: unimplemented device write (size 4, value 0xfff, offset 0x30)
-apb_config: unimplemented device write (size 4, value 0x580, offset 0x8)
-apb_config: unimplemented device write (size 4, value 0x110, offset 0xc)
-apb_config: unimplemented device write (size 4, value 0x1c00, offset 0x38)
-apb_config: unimplemented device write (size 4, value 0x8, offset 0x3c)
-apb_config: unimplemented device write (size 4, value 0xd23, offset 0x6c)
-apb_config: unimplemented device write (size 4, value 0x240, offset 0x50)
-apb_config: unimplemented device write (size 4, value 0x2, offset 0x5c)
-apb_config: unimplemented device write (size 4, value 0x126, offset 0x60)
-apb_config: unimplemented device write (size 4, value 0x3, offset 0xbc)
-apb_config: unimplemented device write (size 4, value 0x23, offset 0x54)
-apb_config: unimplemented device write (size 4, value 0x33, offset 0x40)
-apb_config: unimplemented device write (size 4, value 0x20, offset 0x44)
-apb_config: unimplemented device write (size 4, value 0x33, offset 0x80)
-apb_config: unimplemented device write (size 4, value 0x8, offset 0x7c)
-apb_config: unimplemented device write (size 4, value 0x4000, offset 0x9c)
-apb_config: unimplemented device write (size 4, value 0x0, offset 0xb4)
-apb_config: unimplemented device write (size 4, value 0x107, offset 0x64)
-apb_config: unimplemented device write (size 4, value 0x104, offset 0x58)
-apb_config: unimplemented device write (size 4, value 0x11, offset 0x68)
-apb_config: unimplemented device write (size 4, value 0x80f8, offset 0xa0)
-apb_config: unimplemented device write (size 4, value 0x7, offset 0xa4)
-apb_config: unimplemented device write (size 4, value 0x80f8, offset 0xa8)
-apb_config: unimplemented device write (size 4, value 0x7, offset 0xac)
-apb_config: unimplemented device write (size 4, value 0x200, offset 0xb0)
-apb_config: unimplemented device write (size 4, value 0x0, offset 0x21c)
-apb_config: unimplemented device write (size 4, value 0x80, offset 0x224)
-apb_config: unimplemented device write (size 4, value 0xf, offset 0x230)
-apb_config: unimplemented device write (size 4, value 0xb, offset 0x248)
-apb_config: unimplemented device write (size 4, value 0x0, offset 0x25c)
-apb_config: unimplemented device write (size 4, value 0x0, offset 0x260)
-apb_config: unimplemented device write (size 4, value 0x0, offset 0x264)
-apb_config: unimplemented device write (size 4, value 0x0, offset 0x268)
-apb_config: unimplemented device write (size 4, value 0x1, offset 0x280)
-apb_config: unimplemented device write (size 4, value 0x40, offset 0x298)
-apb_config: unimplemented device write (size 4, value 0x401, offset 0x29c)
-apb_config: unimplemented device write (size 4, value 0x4010, offset 0x2a0)
-apb_config: unimplemented device write (size 4, value 0x40, offset 0x2d8)
-apb_config: unimplemented device write (size 4, value 0x401, offset 0x2dc)
-apb_config: unimplemented device write (size 4, value 0x4010, offset 0x2e0)
-apb_config: unimplemented device write (size 4, value 0x0, offset 0x2fc)
-apb_config: unimplemented device write (size 4, value 0x3, offset 0x304)
-apb_config: unimplemented device write (size 4, value 0x1, offset 0x308)
-apb_config: unimplemented device write (size 4, value 0x1, offset 0x30c)
-apb_config: unimplemented device write (size 4, value 0x9, offset 0x314)
-apb_config: unimplemented device write (size 4, value 0x0, offset 0x238)
-apb_config: unimplemented device write (size 4, value 0x0, offset 0x23c)
-apb_config: unimplemented device write (size 4, value 0x1, offset 0x31c)
-apb_config: unimplemented device write (size 4, value 0x1, offset 0x0)
-DRAM:  64 MB
-pdma: unimplemented device write (size 4, value 0x1a0, offset 0x20)
-pdma: unimplemented device read (size 4, offset 0x20)
-pdma: unimplemented device write (size 4, value 0x3c000, offset 0x20)
-pdma: unimplemented device read (size 4, offset 0x20)
-pdma: unimplemented device write (size 4, value 0x2000001, offset 0x20)
-pdma: unimplemented device write (size 4, value 0x1a0, offset 0x40)
-pdma: unimplemented device read (size 4, offset 0x40)
-pdma: unimplemented device write (size 4, value 0x3c000, offset 0x40)
-pdma: unimplemented device read (size 4, offset 0x40)
-pdma: unimplemented device write (size 4, value 0x2800003, offset 0x40)
-pdma: unimplemented device write (size 4, value 0x20, offset 0x20)
-pdma: unimplemented device write (size 4, value 0x20, offset 0x40)
-*** Warning - bad CRC, using default environment
-
-In:    serial
-Out:   serial
-Err:   serial
-Net:   M2S_MAC
-Hit any key to stop autoboot:  0
-pdma: unimplemented device write (size 4, value 0x1a0, offset 0x20)
-pdma: unimplemented device read (size 4, offset 0x20)
-pdma: unimplemented device write (size 4, value 0x3c000, offset 0x20)
-pdma: unimplemented device read (size 4, offset 0x20)
-pdma: unimplemented device write (size 4, value 0x2000001, offset 0x20)
-pdma: unimplemented device write (size 4, value 0x1a0, offset 0x40)
-pdma: unimplemented device read (size 4, offset 0x40)
-pdma: unimplemented device write (size 4, value 0x3c000, offset 0x40)
-pdma: unimplemented device read (size 4, offset 0x40)
-pdma: unimplemented device write (size 4, value 0x2800003, offset 0x40)
-pdma: unimplemented device write (size 4, value 0x20, offset 0x20)
-pdma: unimplemented device write (size 4, value 0x20, offset 0x40)
-16384 KiB S25FL128P_64K at 0:0 is now current device
-pdma: unimplemented device write (size 4, value 0x1a0, offset 0x20)
-pdma: unimplemented device read (size 4, offset 0x20)
-pdma: unimplemented device write (size 4, value 0x3c000, offset 0x20)
-pdma: unimplemented device read (size 4, offset 0x20)
-pdma: unimplemented device write (size 4, value 0x2000001, offset 0x20)
-pdma: unimplemented device write (size 4, value 0x1a0, offset 0x40)
-pdma: unimplemented device read (size 4, offset 0x40)
-pdma: unimplemented device write (size 4, value 0x3c000, offset 0x40)
-pdma: unimplemented device read (size 4, offset 0x40)
-pdma: unimplemented device write (size 4, value 0x2800003, offset 0x40)
-pdma: unimplemented device write (size 4, value 0x20, offset 0x20)
-pdma: unimplemented device write (size 4, value 0x20, offset 0x40)
-
-- tftpboot
-
-M2S-FG484-SOM> tftpboot
-emac: unimplemented device write (size 4, value 0x7, offset 0x20)
-emac: unimplemented device read (size 4, offset 0x0)
-emac: unimplemented device write (size 4, value 0x80000000, offset 0x0)
-emac: unimplemented device read (size 4, offset 0x0)
-emac: unimplemented device write (size 4, value 0x0, offset 0x0)
-emac: unimplemented device read (size 4, offset 0x0)
-emac: unimplemented device write (size 4, value 0x0, offset 0x0)
-emac: unimplemented device read (size 4, offset 0x0)
-emac: unimplemented device write (size 4, value 0x0, offset 0x0)
-emac: unimplemented device read (size 4, offset 0x0)
-emac: unimplemented device write (size 4, value 0x0, offset 0x0)
-emac: unimplemented device read (size 4, offset 0x0)
-emac: unimplemented device write (size 4, value 0x0, offset 0x0)
-emac: unimplemented device read (size 4, offset 0x38)
-emac: unimplemented device write (size 4, value 0x0, offset 0x38)
-emac: unimplemented device read (size 4, offset 0x48)
-emac: unimplemented device write (size 4, value 0x0, offset 0x48)
-emac: unimplemented device write (size 4, value 0x0, offset 0x0)
-emac: unimplemented device read (size 4, offset 0x4)
-emac: unimplemented device write (size 4, value 0x0, offset 0x4)
-emac: unimplemented device read (size 4, offset 0x4)
-emac: unimplemented device write (size 4, value 0x105, offset 0x4)
-emac: unimplemented device write (size 4, value 0x600, offset 0x10)
-emac: unimplemented device write (size 4, value 0xc0b13c83, offset 0x40)
-emac: unimplemented device write (size 4, value 0x83830000, offset 0x44)
-emac: unimplemented device write (size 4, value 0x200032e4, offset 0x190)
-emac: unimplemented device write (size 4, value 0x1, offset 0x18c)
-emac: unimplemented device read (size 4, offset 0x48)
-emac: unimplemented device write (size 4, value 0x1f, offset 0x48)
-emac: unimplemented device read (size 4, offset 0x48)
-emac: unimplemented device write (size 4, value 0x0, offset 0x48)
-emac: unimplemented device write (size 4, value 0xff00, offset 0x48)
-emac: unimplemented device read (size 4, offset 0x48)
-[...]
-emac: unimplemented device read (size 4, offset 0x48)
-m2s_eth_init: FIFO initialization timeout
-*** m2s_mac_dump_regs FIFO init:
-emac: unimplemented device read (size 4, offset 0x180)
-emac: unimplemented device read (size 4, offset 0x184)
-emac: unimplemented device read (size 4, offset 0x188)
-  DMA TX CTRL=00000000;DESC=00000000;STAT=00000000
-emac: unimplemented device read (size 4, offset 0x18c)
-emac: unimplemented device read (size 4, offset 0x190)
-emac: unimplemented device read (size 4, offset 0x194)
-  DMA RX CTRL=00000000;DESC=00000000;STAT=00000000
-emac: unimplemented device read (size 4, offset 0x19c)
-emac: unimplemented device read (size 4, offset 0x198)
-  DMA IRQ 00000000/00000000
-emac: unimplemented device read (size 4, offset 0x0)
-emac: unimplemented device read (size 4, offset 0x4)
-emac: unimplemented device read (size 4, offset 0x8)
-emac: unimplemented device read (size 4, offset 0xc)
-emac: unimplemented device read (size 4, offset 0x10)
-  CFG1=00000000;CFG2=00000000;IFG=00000000;HD=00000000;MFL=00000000
-emac: unimplemented device read (size 4, offset 0x38)
-emac: unimplemented device read (size 4, offset 0x3c)
-emac: unimplemented device read (size 4, offset 0x40)
-emac: unimplemented device read (size 4, offset 0x44)
-  IFCTRL=00000000;IFSTAT=00000000;ADR1=00000000;ADR2=00000000
-  FIFO CFG emac: unimplemented device read (size 4, offset 0x48)
-00000000/emac: unimplemented device read (size 4, offset 0x4c)
-00000000/emac: unimplemented device read (size 4, offset 0x50)
-00000000/emac: unimplemented device read (size 4, offset 0x54)
-00000000/emac: unimplemented device read (size 4, offset 0x58)
-00000000/emac: unimplemented device read (size 4, offset 0x5c)
-00000000/
-  FIFO ACC emac: unimplemented device read (size 4, offset 0x60)
-00000000/emac: unimplemented device read (size 4, offset 0x64)
-00000000/emac: unimplemented device read (size 4, offset 0x68)
-00000000/emac: unimplemented device read (size 4, offset 0x6c)
-00000000/emac: unimplemented device read (size 4, offset 0x70)
-00000000/emac: unimplemented device read (size 4, offset 0x74)
-00000000/emac: unimplemented device read (size 4, offset 0x78)
-00000000/emac: unimplemented device read (size 4, offset 0x7c)
-00000000/
-M2S-FG484-SOM>
-
-- erase
-
-M2S-FG484-SOM> sf erase 0 0x1000
-Taking exception 4 [Data Abort]
-...with CFSR.PRECISERR and BFAR 0x10
-... as 3
-UNHANDLED EXCEPTION: HARD FAULT
-   R0	= 00848cea  R1	= 00000000
-   R2	= 00022ab0  R3	= 00000000
-   R12	= 00000004  LR	= 00000a27
-   PC	= 0000d418  PSR	= 01000000
-
-Good work :)
-
-Regards,
-
-Phil.
+--001a11351888788a2b055970de2f--

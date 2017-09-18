@@ -1,617 +1,308 @@
-Received: by 10.223.172.38 with SMTP id v35csp4149650wrc;
-        Mon, 18 Sep 2017 13:04:55 -0700 (PDT)
-X-Received: by 10.55.175.65 with SMTP id y62mr21805393qke.275.1505765095065;
-        Mon, 18 Sep 2017 13:04:55 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1505765095; cv=none;
+Received: by 10.223.172.38 with SMTP id v35csp4198756wrc;
+        Mon, 18 Sep 2017 14:01:16 -0700 (PDT)
+X-Google-Smtp-Source: AOwi7QAH9l8RIDG9hBDsSxbkQP5WxwofKiCSAZAVX3XY0E1HNBK8LIUjuSslvNwOrIR+0QACO/BC
+X-Received: by 10.237.36.205 with SMTP id u13mr54350377qtc.75.1505768476294;
+        Mon, 18 Sep 2017 14:01:16 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1505768476; cv=none;
         d=google.com; s=arc-20160816;
-        b=zQIdJbOhooreQaMk9XSYh3OhUEc9FfqKDhoQng9dzjsImqDc4mG98irGE7p4DA+bEv
-         O+eb1z0gKg0ZszZA7cDrzAmyg0h0Kp2/aa0rXUiWYPP4rlfBlqokhbJ+D9QFthkYI49y
-         rDZNa72gMUgBTePgcB+cRSriBj/FLPe+jt6aiszT2fykX/ei5KWdXGh2EuV4ea+HWHK1
-         3wI0suMoAY2kzHxA0rGMPAh6FkIRLwfyvNKC2yzcDop47UcPzxSzH0UqduGtDK1InsrL
-         27/wWhW8rQiuKRYmRsZsMwX6nP7DlhSsI8CL6OttpKYO1OvcaNYzwCOWYT3TGJo7XXMs
-         TLFA==
+        b=RsXRKsHA/SVPt91wrYRIofQwUdMB6NFD7mfeCFskNU7eOz5wQvYAxssOKWyWPK1tUU
+         wIFNlH+i8VsjeF4iFV2ctM3sMw7Lx+Bl2qspFNMbFkPehp7henHflzbCmRceYJGLJAO+
+         J024xbCvXCyPf4PIt9tXX25YdDbWXe6VKRLMtKNWCZF6nxUZE9J9jKBRRaYx6fU/A+X4
+         3nWxxOzJSY/QaUd3tJZ1nDDH7hRdmLixVV+msvViT7vOkfsZ0xUWZPSN0ck2dh1bUqeq
+         4i8M2pNYGmwVZTmcuCnBuwMRueu4x3F7kKbFnnNo/UVHv8sgkamxacgl9ZanpeJdYo4V
+         O/Kw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
-         :message-id:date:to:from:dkim-signature:arc-authentication-results;
-        bh=d7ZmNyxVCuZh9qKW4egBhcIdlnXITRB3gYiSDcl/+cI=;
-        b=QTTsJhF13BmuxJUafEVN1Im3Uu7yer4OH7pYYQgzvVs6ZxZPUsdEFIjECQcnbwoE6G
-         8DgGP2utkejNwnRMcx2+Rk9UU9JzM2niocn1qhZNQ0AnAYOJ2TfUlta8tbOUtGM2K3yl
-         iVV0ukv4Xnqwf3FtzfLPM31NkC6+t3XdV8avCr3UnX0KEu8nDoL69ZEL7jD1zWDBTfSG
-         /VZElaZYEnYzWKMysaka7uBjND2eICBts+l0rxjpDvLaF2/CaFbo9rN6W+/4t+Bdtss1
-         Ege+Qg2MCFqeFTHBZswHMPgscAEtLjQMTedMtSKtuFJ3P/XcPvVHHZLvbhKzUu4AWUkm
-         Oxew==
+        h=sender:errors-to:cc:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence:subject:date:to
+         :from:resent-from:content-transfer-encoding:mime-version:message-id
+         :in-reply-to:resent-message-id:resent-date
+         :arc-authentication-results;
+        bh=SeosUo3CO7fICWjl8DqoIFq2V7TRup17PQ0pNfivIbA=;
+        b=j9f1MEEQv/EK6AtOfanHxqaBFOaw1kPxVt7zxBxr4q1a2QXAMF1H77kat5iEtDvj0I
+         cnmq69X8ieGTd+DI5vnkkPXGXtXCXiNDBh++KMEZyc7hNPukNSHpMcopSvqQQgtfU2YS
+         gWrVhmjVl98Rd6IeqQreQLFsj8VW+iDId75z1FYmuh8+hHhyFXqFB5+BI4AdEpKLr9sT
+         ARrK7O95Nv7gH5Sibe+7y06rccxs/zclsfS+8M8M7qhIHB2K+ZuC9ISRzL3x6YtbnEjA
+         FjhzUhB1i91pNoLRWwosF5guJERr8rSeZFAXPWtd8ZEjzrOV0c0qdjepqmWqP9qUV/1o
+         jmvw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=gjGH0sHw;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id 4si200560qtx.60.2017.09.18.13.04.54
+        by mx.google.com with ESMTPS id f5si202004qkf.184.2017.09.18.14.01.15
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 18 Sep 2017 13:04:55 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Mon, 18 Sep 2017 14:01:16 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=gjGH0sHw;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:38688 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:38905 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1du2Hk-0000z5-M0
-	for alex.bennee@linaro.org; Mon, 18 Sep 2017 16:04:52 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:37640)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1du3AH-0003pL-V6
+	for alex.bennee@linaro.org; Mon, 18 Sep 2017 17:01:14 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:39908)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <andrew.smirnov@gmail.com>) id 1du256-0007Bj-Cw
-	for qemu-devel@nongnu.org; Mon, 18 Sep 2017 15:51:50 -0400
+	(envelope-from <no-reply@patchew.org>) id 1du3A1-0003lb-Ew
+	for qemu-arm@nongnu.org; Mon, 18 Sep 2017 17:01:02 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <andrew.smirnov@gmail.com>) id 1du254-0006SA-7K
-	for qemu-devel@nongnu.org; Mon, 18 Sep 2017 15:51:48 -0400
-Received: from mail-pg0-x241.google.com ([2607:f8b0:400e:c05::241]:33188)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <andrew.smirnov@gmail.com>)
-	id 1du24z-0006NX-GE; Mon, 18 Sep 2017 15:51:41 -0400
-Received: by mail-pg0-x241.google.com with SMTP id i130so782100pgc.0;
-	Mon, 18 Sep 2017 12:51:41 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=from:to:cc:subject:date:message-id:in-reply-to:references;
-	bh=d7ZmNyxVCuZh9qKW4egBhcIdlnXITRB3gYiSDcl/+cI=;
-	b=gjGH0sHwoshAhfF/JM4nMIiLh6cXvV10HYufA0IAf0ytVB+zK2lSxg0rDY3M9mqU4v
-	blAphxzlCXUbLwEWLctQ75Pwwo3uW/cheEkRFemOYBk1Vr0P7Bv2VExqjUvO2PB6O5Ce
-	z7JdaOOZtFAwlN4igiLvGaP82T0yYZAtSduZkESJJi29HABVQO6GckVkk21CpdOwAAqU
-	zfC4jKIGBCMLSXCQAp9Z0InFjZzIABPv6G+VN/cJ19cBptx2yKEQ1ed8xjt1JlX/kKby
-	75z5mssb0sXsEXMIHO5rk0HOa2iHc2n0WX+H9K+x9pH3QD8yyw62yVnyeDTzWA4WmyXc
-	F1oQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
-	:references;
-	bh=d7ZmNyxVCuZh9qKW4egBhcIdlnXITRB3gYiSDcl/+cI=;
-	b=qBneZm8lkKYkIJEQBq5eSO4dLQTL0SbDKKh2dGKboICqKSJLu7UIHikr8QHgNUTw3r
-	QQ/mUWqLzcphKzzXLe6GE3aTZCa2jgrJEPw6tjFdQafNv80ViMUFa5v+E0lad234X6A6
-	2FdyxBFYT+o6++cX2Mo/fq1UM9MIvq04KVXyVkk4OXb6uHpFqFahEh80IRINdmiQ9Wup
-	kf3mFR24cYzBHjoiEdBjL7sM9nSc1UkDSwmZyW2VFmaKUNi0Q9YQC+ynO2GqpWzioIQh
-	pdCkvbU/FzXDANix6AKCbLMZMexnt7Xfwm1rAEPu+urqjrFAdgip9ZUGz7yi0h5HLhmg
-	OH2w==
-X-Gm-Message-State: AHPjjUhtLtWx9xIndyGGhGSIvEbZVLs04lmJrRMXByfK/ES+gE0+pSq/
-	xV4o5iN0HoHkqXlr4V0=
-X-Google-Smtp-Source: ADKCNb4ljIo6sY+xVHK+SmiT3IyZTy1ISI8Q009gxjKy5eXJQ72CFaeleEckZFe1Im/2fcWI80GExg==
-X-Received: by 10.84.175.195 with SMTP id t61mr36029793plb.284.1505764300251; 
-	Mon, 18 Sep 2017 12:51:40 -0700 (PDT)
-Received: from squirtle.westlake.spaceflightindustries.com ([173.226.206.194])
-	by smtp.gmail.com with ESMTPSA id
-	d186sm200791pfd.117.2017.09.18.12.51.39
-	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-	Mon, 18 Sep 2017 12:51:39 -0700 (PDT)
-From: Andrey Smirnov <andrew.smirnov@gmail.com>
-To: qemu-arm@nongnu.org
-Date: Mon, 18 Sep 2017 12:50:59 -0700
-Message-Id: <20170918195100.17593-17-andrew.smirnov@gmail.com>
-X-Mailer: git-send-email 2.13.5
+	(envelope-from <no-reply@patchew.org>) id 1du39z-0002Qf-Fc
+	for qemu-arm@nongnu.org; Mon, 18 Sep 2017 17:00:57 -0400
+Resent-Date: Mon, 18 Sep 2017 17:00:57 -0400
+Resent-Message-Id: <E1du39z-0002Qf-Fc@eggs.gnu.org>
+Received: from sender-of-o52.zoho.com ([135.84.80.217]:21374)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <no-reply@patchew.org>)
+	id 1du39u-0002N1-6A; Mon, 18 Sep 2017 17:00:50 -0400
+Received: from [172.17.0.2] (23.253.156.214 [23.253.156.214]) by
+	mx.zohomail.com with SMTPS id 15057684429741014.4248281883235;
+	Mon, 18 Sep 2017 14:00:42 -0700 (PDT)
 In-Reply-To: <20170918195100.17593-1-andrew.smirnov@gmail.com>
-References: <20170918195100.17593-1-andrew.smirnov@gmail.com>
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:400e:c05::241
-Subject: [Qemu-devel] [PATCH 16/17] i.MX: Add i.MX7 SOC implementation.
-X-BeenThere: qemu-devel@nongnu.org
+Message-ID: <150576844234.39.2449778599722632995@69b6ddf88678>
+MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Resent-From: 
+From: no-reply@patchew.org
+To: andrew.smirnov@gmail.com
+Date: Mon, 18 Sep 2017 14:00:42 -0700 (PDT)
+X-ZohoMailClient: External
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
+X-Received-From: 135.84.80.217
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH 00/17] Initial i.MX7 support
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Andrey Smirnov <andrew.smirnov@gmail.com>,
-	Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org,
-	yurovsky@gmail.com
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: uMw86csi+Bj5
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: qemu-devel@nongnu.org
+Cc: peter.maydell@linaro.org, famz@redhat.com, andrew.smirnov@gmail.com,
+	qemu-devel@nongnu.org, qemu-arm@nongnu.org, yurovsky@gmail.com
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: wD2siLVuTys3
 
-For now we only support the following devices:
-    * up to 2 Cortex A9 cores (SMP works with PSCI)
-    * A7 MPCORE (identical to A15 MPCORE)
-    * 7 i.MX UARTs
-    * 1 CCM device
-    * 2 Ethernet controllers (FEC)
-    * 3 SD controllers (USDHC)
-    * 1 SNVS device
-    * 1 WDT device
-
-Cc: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org
-Cc: yurovsky@gmail.com
-Signed-off-by: Andrey Smirnov <andrew.smirnov@gmail.com>
----
- default-configs/arm-softmmu.mak |   1 +
- hw/arm/Makefile.objs            |   2 +
- hw/arm/fsl-imx7.c               | 327 ++++++++++++++++++++++++++++++++++++++++
- include/hw/arm/fsl-imx7.h       | 114 ++++++++++++++
- 4 files changed, 444 insertions(+)
- create mode 100644 hw/arm/fsl-imx7.c
- create mode 100644 include/hw/arm/fsl-imx7.h
-
-diff --git a/default-configs/arm-softmmu.mak b/default-configs/arm-softmmu.mak
-index bbdd3c1d8b..98396a3ad2 100644
---- a/default-configs/arm-softmmu.mak
-+++ b/default-configs/arm-softmmu.mak
-@@ -118,6 +118,7 @@ CONFIG_ALLWINNER_A10=y
- CONFIG_FSL_IMX6=y
- CONFIG_FSL_IMX31=y
- CONFIG_FSL_IMX25=y
-+CONFIG_FSL_IMX7=y
- 
- CONFIG_IMX_I2C=y
- 
-diff --git a/hw/arm/Makefile.objs b/hw/arm/Makefile.objs
-index a2e56ecaae..33f6051ae3 100644
---- a/hw/arm/Makefile.objs
-+++ b/hw/arm/Makefile.objs
-@@ -19,3 +19,5 @@ obj-$(CONFIG_FSL_IMX31) += fsl-imx31.o kzm.o
- obj-$(CONFIG_FSL_IMX6) += fsl-imx6.o sabrelite.o
- obj-$(CONFIG_ASPEED_SOC) += aspeed_soc.o aspeed.o
- obj-$(CONFIG_MPS2) += mps2.o
-+obj-$(CONFIG_FSL_IMX7) += fsl-imx7.o
-+
-diff --git a/hw/arm/fsl-imx7.c b/hw/arm/fsl-imx7.c
-new file mode 100644
-index 0000000000..bd01bb7f59
---- /dev/null
-+++ b/hw/arm/fsl-imx7.c
-@@ -0,0 +1,327 @@
-+/*
-+ * Copyright (c) 2017, Impinj, Inc.
-+ *
-+ * i.MX7 SoC definitions
-+ *
-+ * Author: Andrey Smirnov <andrew.smirnov@gmail.com>
-+ *
-+ * Based on hw/arm/fsl-imx6.c
-+ *
-+ * This program is free software; you can redistribute it and/or modify
-+ * it under the terms of the GNU General Public License as published by
-+ * the Free Software Foundation; version 2 of the License.
-+ *
-+ * This program is distributed in the hope that it will be useful,
-+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
-+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-+ * GNU General Public License for more details.
-+ */
-+
-+#include "qemu/osdep.h"
-+#include "qapi/error.h"
-+#include "qemu-common.h"
-+#include "hw/arm/fsl-imx7.h"
-+#include "sysemu/sysemu.h"
-+#include "qemu/error-report.h"
-+
-+#define NAME_SIZE 20
-+
-+#define for_each_cpu(i)     for (i = 0; i < smp_cpus; i++)
-+
-+static void fsl_imx7_init(Object *obj)
-+{
-+    BusState *sysbus = sysbus_get_default();
-+    FslIMX7State *s = FSL_IMX7(obj);
-+    char name[NAME_SIZE];
-+    int i;
-+
-+    if (smp_cpus > FSL_IMX7_NUM_CPUS) {
-+        error_report("%s: Only %d CPUs are supported (%d requested)",
-+                     TYPE_FSL_IMX7, FSL_IMX7_NUM_CPUS, smp_cpus);
-+        exit(1);
-+    }
-+
-+    for_each_cpu(i) {
-+        object_initialize(&s->cpu[i], sizeof(s->cpu[i]),
-+                          "cortex-a7-" TYPE_ARM_CPU);
-+        snprintf(name, NAME_SIZE, "cpu%d", i);
-+        object_property_add_child(obj, name, OBJECT(&s->cpu[i]),
-+                                  &error_fatal);
-+    }
-+
-+    /*
-+     * A7MPCORE
-+     */
-+    object_initialize(&s->a7mpcore, sizeof(s->a7mpcore), TYPE_A15MPCORE_PRIV);
-+    qdev_set_parent_bus(DEVICE(&s->a7mpcore), sysbus);
-+    object_property_add_child(obj, "a7mpcore",
-+                              OBJECT(&s->a7mpcore), &error_fatal);
-+
-+    /*
-+     * CCM
-+     */
-+    object_initialize(&s->ccm, sizeof(s->ccm), TYPE_IMX7_CCM);
-+    qdev_set_parent_bus(DEVICE(&s->ccm), sysbus);
-+    object_property_add_child(obj, "ccm", OBJECT(&s->ccm), &error_fatal);
-+
-+    /*
-+     * UART
-+     */
-+    for (i = 0; i < FSL_IMX7_NUM_UARTS; i++) {
-+            object_initialize(&s->uart[i], sizeof(s->uart[i]), TYPE_IMX_SERIAL);
-+            qdev_set_parent_bus(DEVICE(&s->uart[i]), sysbus);
-+            snprintf(name, NAME_SIZE, "uart%d", i);
-+            object_property_add_child(obj, name, OBJECT(&s->uart[i]),
-+                                      &error_fatal);
-+    }
-+
-+    /*
-+     * Ethernet
-+     */
-+    for (i = 0; i < FSL_IMX7_NUM_ETHS; i++) {
-+            object_initialize(&s->eth[i], sizeof(s->eth[i]), TYPE_IMX_ENET);
-+            qdev_set_parent_bus(DEVICE(&s->eth[i]), sysbus);
-+            snprintf(name, NAME_SIZE, "eth%d", i);
-+            object_property_add_child(obj, name, OBJECT(&s->eth[i]),
-+                                      &error_fatal);
-+    }
-+
-+    /*
-+     * SDHCI
-+     */
-+    for (i = 0; i < FSL_IMX7_NUM_USDHCS; i++) {
-+            object_initialize(&s->usdhc[i], sizeof(s->usdhc[i]),
-+                              TYPE_IMX_USDHC);
-+            qdev_set_parent_bus(DEVICE(&s->usdhc[i]), sysbus);
-+            snprintf(name, NAME_SIZE, "usdhc%d", i);
-+            object_property_add_child(obj, name, OBJECT(&s->usdhc[i]),
-+                                      &error_fatal);
-+    }
-+
-+    /*
-+     * SNVS
-+     */
-+    object_initialize(&s->snvs, sizeof(s->snvs), TYPE_IMX7_SNVS);
-+    qdev_set_parent_bus(DEVICE(&s->snvs), sysbus);
-+    object_property_add_child(obj, "snvs", OBJECT(&s->snvs), &error_fatal);
-+
-+    /*
-+     * Watchdog
-+     */
-+    for (i = 0; i < FSL_IMX7_NUM_WDTS; i++) {
-+            object_initialize(&s->wdt[i], sizeof(s->wdt[i]), TYPE_IMX2_WDT);
-+            qdev_set_parent_bus(DEVICE(&s->wdt[i]), sysbus);
-+            snprintf(name, NAME_SIZE, "wdt%d", i);
-+            object_property_add_child(obj, name, OBJECT(&s->wdt[i]),
-+                                      &error_fatal);
-+    }
-+}
-+
-+static void fsl_imx7_realize(DeviceState *dev, Error **errp)
-+{
-+    FslIMX7State *s = FSL_IMX7(dev);
-+    Object *o;
-+    int i;
-+    qemu_irq irq;
-+
-+    for_each_cpu(i) {
-+	o = OBJECT(&s->cpu[i]);
-+
-+        object_property_set_int(o, QEMU_PSCI_CONDUIT_SMC,
-+                                "psci-conduit", &error_abort);
-+
-+        object_property_set_bool(o, false, "has_el3", &error_abort);
-+
-+        /* On uniprocessor, the CBAR is set to 0 */
-+        if (smp_cpus > 1) {
-+            object_property_set_int(o, FSL_IMX7_A7MPCORE_ADDR,
-+                                    "reset-cbar", &error_abort);
-+        }
-+
-+        if (i) {
-+            /* Secondary CPUs start in PSCI powered-down state */
-+            object_property_set_bool(o, true,
-+                                     "start-powered-off", &error_abort);
-+        }
-+
-+        object_property_set_bool(o, true, "realized", &error_abort);
-+    }
-+
-+    /*
-+     * A7MPCORE
-+     */
-+    object_property_set_int(OBJECT(&s->a7mpcore), smp_cpus, "num-cpu",
-+                            &error_abort);
-+    object_property_set_int(OBJECT(&s->a7mpcore),
-+                            FSL_IMX7_MAX_IRQ + GIC_INTERNAL,
-+                            "num-irq", &error_abort);
-+
-+    object_property_set_bool(OBJECT(&s->a7mpcore), true, "realized",
-+                             &error_abort);
-+
-+    sysbus_mmio_map(SYS_BUS_DEVICE(&s->a7mpcore), 0, FSL_IMX7_A7MPCORE_ADDR);
-+
-+    for_each_cpu(i) {
-+        SysBusDevice *sbd = SYS_BUS_DEVICE(&s->a7mpcore);
-+        DeviceState  *d   = DEVICE(qemu_get_cpu(i));
-+
-+        irq = qdev_get_gpio_in(d, ARM_CPU_IRQ);
-+        sysbus_connect_irq(sbd, i, irq);
-+        irq = qdev_get_gpio_in(d, ARM_CPU_FIQ);
-+        sysbus_connect_irq(sbd, i + smp_cpus, irq);
-+    }
-+
-+    /*
-+     * CCM
-+     */
-+    object_property_set_bool(OBJECT(&s->ccm), true, "realized", &error_abort);
-+
-+    sysbus_mmio_map(SYS_BUS_DEVICE(&s->ccm), 0, FSL_IMX7_CCM_ADDR);
-+
-+    /*
-+     * UART
-+     */
-+    for (i = 0; i < FSL_IMX7_NUM_UARTS; i++) {
-+        static const hwaddr FSL_IMX7_UARTn_ADDR[FSL_IMX7_NUM_UARTS] = {
-+            FSL_IMX7_UART1_ADDR,
-+            FSL_IMX7_UART2_ADDR,
-+            FSL_IMX7_UART3_ADDR,
-+            FSL_IMX7_UART4_ADDR,
-+            FSL_IMX7_UART5_ADDR,
-+            FSL_IMX7_UART6_ADDR,
-+            FSL_IMX7_UART7_ADDR,
-+        };
-+
-+        static const int FSL_IMX7_UARTn_IRQ[FSL_IMX7_NUM_UARTS] = {
-+            FSL_IMX7_UART1_IRQ,
-+            FSL_IMX7_UART2_IRQ,
-+            FSL_IMX7_UART3_IRQ,
-+            FSL_IMX7_UART4_IRQ,
-+            FSL_IMX7_UART5_IRQ,
-+            FSL_IMX7_UART6_IRQ,
-+            FSL_IMX7_UART7_IRQ,
-+        };
-+
-+
-+        if (i < MAX_SERIAL_PORTS) {
-+            Chardev *chr;
-+            chr = serial_hds[i];
-+
-+            if (!chr) {
-+                char *label = g_strdup_printf("imx7.uart%d", i + 1);
-+                chr = qemu_chr_new(label, "null");
-+                g_free(label);
-+                serial_hds[i] = chr;
-+            }
-+
-+            qdev_prop_set_chr(DEVICE(&s->uart[i]), "chardev", chr);
-+        }
-+
-+        object_property_set_bool(OBJECT(&s->uart[i]), true, "realized",
-+                                 &error_abort);
-+
-+        sysbus_mmio_map(SYS_BUS_DEVICE(&s->uart[i]), 0, FSL_IMX7_UARTn_ADDR[i]);
-+
-+        irq = qdev_get_gpio_in(DEVICE(&s->a7mpcore), FSL_IMX7_UARTn_IRQ[i]);
-+        sysbus_connect_irq(SYS_BUS_DEVICE(&s->uart[i]), 0, irq);
-+    }
-+
-+    /*
-+     * Etherenet
-+     */
-+    for (i = 0; i < FSL_IMX7_NUM_ETHS; i++) {
-+        static const hwaddr FSL_IMX7_ENETn_ADDR[FSL_IMX7_NUM_ETHS] = {
-+            FSL_IMX7_ENET1_ADDR,
-+            FSL_IMX7_ENET2_ADDR,
-+        };
-+
-+        qdev_set_nic_properties(DEVICE(&s->eth[i]), &nd_table[i]);
-+        object_property_set_bool(OBJECT(&s->eth[i]), true, "realized",
-+                                 &error_abort);
-+
-+        sysbus_mmio_map(SYS_BUS_DEVICE(&s->eth[i]), 0, FSL_IMX7_ENETn_ADDR[i]);
-+
-+        irq = qdev_get_gpio_in(DEVICE(&s->a7mpcore), FSL_IMX7_ENET_IRQ(i, 0));
-+        sysbus_connect_irq(SYS_BUS_DEVICE(&s->eth[i]), 0, irq);
-+        irq = qdev_get_gpio_in(DEVICE(&s->a7mpcore), FSL_IMX7_ENET_IRQ(i, 3));
-+        sysbus_connect_irq(SYS_BUS_DEVICE(&s->eth[i]), 1, irq);
-+    }
-+
-+    /*
-+     * USDHC
-+     */
-+    for (i = 0; i < FSL_IMX7_NUM_USDHCS; i++) {
-+        static const hwaddr FSL_IMX7_USDHCn_ADDR[FSL_IMX7_NUM_USDHCS] = {
-+            FSL_IMX7_USDHC1_ADDR,
-+            FSL_IMX7_USDHC2_ADDR,
-+            FSL_IMX7_USDHC3_ADDR,
-+        };
-+
-+        static const int FSL_IMX7_USDHCn_IRQ[FSL_IMX7_NUM_USDHCS] = {
-+            FSL_IMX7_USDHC1_IRQ,
-+            FSL_IMX7_USDHC2_IRQ,
-+            FSL_IMX7_USDHC3_IRQ,
-+        };
-+
-+        object_property_set_bool(OBJECT(&s->usdhc[i]), true, "realized",
-+                                 &error_abort);
-+
-+        sysbus_mmio_map(SYS_BUS_DEVICE(&s->usdhc[i]), 0,
-+                        FSL_IMX7_USDHCn_ADDR[i]);
-+
-+        irq = qdev_get_gpio_in(DEVICE(&s->a7mpcore), FSL_IMX7_USDHCn_IRQ[i]);
-+        sysbus_connect_irq(SYS_BUS_DEVICE(&s->usdhc[i]), 0, irq);
-+    }
-+
-+    /*
-+     * SNVS
-+     */
-+    object_property_set_bool(OBJECT(&s->snvs), true, "realized", &error_abort);
-+
-+    sysbus_mmio_map(SYS_BUS_DEVICE(&s->snvs), 0, FSL_IMX7_SNVS_ADDR);
-+
-+    /*
-+     * Watchdog
-+     */
-+    for (i = 0; i < FSL_IMX7_NUM_WDTS; i++) {
-+        static const hwaddr FSL_IMX7_WDOGn_ADDR[FSL_IMX7_NUM_WDTS] = {
-+            FSL_IMX7_WDOG1_ADDR,
-+            FSL_IMX7_WDOG2_ADDR,
-+            FSL_IMX7_WDOG3_ADDR,
-+            FSL_IMX7_WDOG4_ADDR,
-+        };
-+
-+        object_property_set_bool(OBJECT(&s->wdt[i]), true, "realized",
-+                                 &error_abort);
-+
-+        sysbus_mmio_map(SYS_BUS_DEVICE(&s->wdt[i]), 0, FSL_IMX7_WDOGn_ADDR[i]);
-+    }
-+}
-+
-+static void fsl_imx7_class_init(ObjectClass *oc, void *data)
-+{
-+    DeviceClass *dc = DEVICE_CLASS(oc);
-+
-+    dc->realize = fsl_imx7_realize;
-+
-+    /*
-+     * Reason: creates an ARM CPU, thus use after free(), see
-+     * arm_cpu_class_init()
-+     */
-+    dc->user_creatable = false;
-+    dc->desc = "i.MX7 SOC";
-+}
-+
-+static const TypeInfo fsl_imx7_type_info = {
-+    .name = TYPE_FSL_IMX7,
-+    .parent = TYPE_DEVICE,
-+    .instance_size = sizeof(FslIMX7State),
-+    .instance_init = fsl_imx7_init,
-+    .class_init = fsl_imx7_class_init,
-+};
-+
-+static void fsl_imx7_register_types(void)
-+{
-+    type_register_static(&fsl_imx7_type_info);
-+}
-+type_init(fsl_imx7_register_types)
-diff --git a/include/hw/arm/fsl-imx7.h b/include/hw/arm/fsl-imx7.h
-new file mode 100644
-index 0000000000..0f3d43e379
---- /dev/null
-+++ b/include/hw/arm/fsl-imx7.h
-@@ -0,0 +1,114 @@
-+/*
-+ * Copyright (c) 2017, Impinj, Inc.
-+ *
-+ * i.MX7 SoC definitions
-+ *
-+ * Author: Andrey Smirnov <andrew.smirnov@gmail.com>
-+ *
-+ * This program is free software; you can redistribute it and/or modify
-+ * it under the terms of the GNU General Public License as published by
-+ * the Free Software Foundation; version 2 of the License.
-+ *
-+ * This program is distributed in the hope that it will be useful,
-+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
-+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-+ * GNU General Public License for more details.
-+ */
-+
-+#ifndef FSL_IMX7_H
-+#define FSL_IMX7_H
-+
-+#include "hw/arm/arm.h"
-+#include "hw/cpu/a15mpcore.h"
-+#include "hw/misc/imx7_ccm.h"
-+#include "hw/misc/imx7_snvs.h"
-+#include "hw/misc/imx6_src.h"
-+#include "hw/misc/imx2_wdt.h"
-+#include "hw/char/imx_serial.h"
-+#include "hw/timer/imx_gpt.h"
-+#include "hw/timer/imx_epit.h"
-+#include "hw/i2c/imx_i2c.h"
-+#include "hw/gpio/imx_gpio.h"
-+#include "hw/sd/sdhci.h"
-+#include "hw/ssi/imx_spi.h"
-+#include "hw/net/imx_fec.h"
-+#include "exec/memory.h"
-+#include "cpu.h"
-+#include "qemu/sizes.h"
-+
-+#define TYPE_FSL_IMX7 "fsl,imx7"
-+#define FSL_IMX7(obj) OBJECT_CHECK(FslIMX7State, (obj), TYPE_FSL_IMX7)
-+
-+enum FslIMX7Configuration {
-+    FSL_IMX7_NUM_CPUS  = 2,
-+    FSL_IMX7_NUM_UARTS = 7,
-+    FSL_IMX7_NUM_ETHS  = 2,
-+    FSL_IMX7_NUM_USDHCS = 3,
-+    FSL_IMX7_NUM_WDTS = 4,
-+};
-+
-+typedef struct FslIMX7State {
-+    /*< private >*/
-+    DeviceState    parent_obj;
-+
-+    /*< public >*/
-+    ARMCPU         cpu[FSL_IMX7_NUM_CPUS];
-+    A15MPPrivState a7mpcore;
-+    IMX7CCMState   ccm;
-+    IMX7SNVSState  snvs;
-+    IMXSerialState uart[FSL_IMX7_NUM_UARTS];
-+    IMXFECState    eth[FSL_IMX7_NUM_ETHS];
-+    SDHCIState     usdhc[FSL_IMX7_NUM_USDHCS];
-+    IMX2WdtState   wdt[FSL_IMX7_NUM_WDTS];
-+} FslIMX7State;
-+
-+enum FslIMX7MemoryMap {
-+    FSL_IMX7_MMDC_ADDR      = 0x80000000,
-+    FSL_IMX7_MMDC_SIZE      = SZ_2G,
-+
-+    FSL_IMX7_WDOG1_ADDR     = 0x30280000,
-+    FSL_IMX7_WDOG2_ADDR     = 0x30290000,
-+    FSL_IMX7_WDOG3_ADDR     = 0x302A0000,
-+    FSL_IMX7_WDOG4_ADDR     = 0x302B0000,
-+
-+    FSL_IMX7_CCM_ADDR       = 0x30360000,
-+    FSL_IMX7_SNVS_ADDR	    = 0x30370000,
-+
-+    FSL_IMX7_UART1_ADDR     = 0x30860000,
-+    FSL_IMX7_UART2_ADDR     = 0x30870000,
-+    FSL_IMX7_UART3_ADDR     = 0x30880000,
-+    FSL_IMX7_UART4_ADDR     = 0x30A60000,
-+    FSL_IMX7_UART5_ADDR     = 0x30A70000,
-+    FSL_IMX7_UART6_ADDR     = 0x30A80000,
-+    FSL_IMX7_UART7_ADDR     = 0x30A90000,
-+
-+    FSL_IMX7_ENET1_ADDR     = 0x30BE0000,
-+    FSL_IMX7_ENET2_ADDR     = 0x30BF0000,
-+
-+    FSL_IMX7_USDHC1_ADDR    = 0x30B40000,
-+    FSL_IMX7_USDHC2_ADDR    = 0x30B50000,
-+    FSL_IMX7_USDHC3_ADDR    = 0x30B60000,
-+
-+    FSL_IMX7_A7MPCORE_ADDR  = 0x31000000,
-+};
-+
-+enum FslIMX7IRQs {
-+
-+    FSL_IMX7_USDHC1_IRQ = 22,
-+    FSL_IMX7_USDHC2_IRQ = 23,
-+    FSL_IMX7_USDHC3_IRQ = 24,
-+
-+    FSL_IMX7_UART1_IRQ = 26,
-+    FSL_IMX7_UART2_IRQ = 27,
-+    FSL_IMX7_UART3_IRQ = 28,
-+    FSL_IMX7_UART4_IRQ = 29,
-+    FSL_IMX7_UART5_IRQ = 30,
-+    FSL_IMX7_UART6_IRQ = 16,
-+    FSL_IMX7_UART7_IRQ = 126,
-+
-+#define FSL_IMX7_ENET_IRQ(i, n)  ((n) + ((i) ? 100 : 118))
-+
-+    FSL_IMX7_MAX_IRQ   = 128,
-+};
-+
-+#endif /* FSL_IMX7_H */
--- 
-2.13.5
+SGksCgpUaGlzIHNlcmllcyBzZWVtcyB0byBoYXZlIHNvbWUgY29kaW5nIHN0eWxlIHByb2JsZW1z
+LiBTZWUgb3V0cHV0IGJlbG93IGZvcgptb3JlIGluZm9ybWF0aW9uOgoKU3ViamVjdDogW1FlbXUt
+ZGV2ZWxdIFtQQVRDSCAwMC8xN10gSW5pdGlhbCBpLk1YNyBzdXBwb3J0Ck1lc3NhZ2UtaWQ6IDIw
+MTcwOTE4MTk1MTAwLjE3NTkzLTEtYW5kcmV3LnNtaXJub3ZAZ21haWwuY29tClR5cGU6IHNlcmll
+cwoKPT09IFRFU1QgU0NSSVBUIEJFR0lOID09PQojIS9iaW4vYmFzaAoKQkFTRT1iYXNlCm49MQp0
+b3RhbD0kKGdpdCBsb2cgLS1vbmVsaW5lICRCQVNFLi4gfCB3YyAtbCkKZmFpbGVkPTAKCmdpdCBj
+b25maWcgLS1sb2NhbCBkaWZmLnJlbmFtZWxpbWl0IDAKZ2l0IGNvbmZpZyAtLWxvY2FsIGRpZmYu
+cmVuYW1lcyBUcnVlCgpjb21taXRzPSIkKGdpdCBsb2cgLS1mb3JtYXQ9JUggLS1yZXZlcnNlICRC
+QVNFLi4pIgpmb3IgYyBpbiAkY29tbWl0czsgZG8KICAgIGVjaG8gIkNoZWNraW5nIFBBVENIICRu
+LyR0b3RhbDogJChnaXQgbG9nIC1uIDEgLS1mb3JtYXQ9JXMgJGMpLi4uIgogICAgaWYgISBnaXQg
+c2hvdyAkYyAtLWZvcm1hdD1lbWFpbCB8IC4vc2NyaXB0cy9jaGVja3BhdGNoLnBsIC0tbWFpbGJh
+Y2sgLTsgdGhlbgogICAgICAgIGZhaWxlZD0xCiAgICAgICAgZWNobwogICAgZmkKICAgIG49JCgo
+bisxKSkKZG9uZQoKZXhpdCAkZmFpbGVkCj09PSBURVNUIFNDUklQVCBFTkQgPT09CgpVcGRhdGlu
+ZyAzYzhjZjVhOWMyMWZmODc4MjE2NGQxZGVmN2Y0NGJkODg4NzEzMzg0CkZyb20gaHR0cHM6Ly9n
+aXRodWIuY29tL3BhdGNoZXctcHJvamVjdC9xZW11CiB0IFt0YWcgdXBkYXRlXSAgICAgICAgICAg
+IHBhdGNoZXcvMjAxNzA5MTgyMDI1MjkuMjgzNzktMS1lbDEzNjM1QG1haWwubnR1YS5nciAtPiBw
+YXRjaGV3LzIwMTcwOTE4MjAyNTI5LjI4Mzc5LTEtZWwxMzYzNUBtYWlsLm50dWEuZ3IKU3dpdGNo
+ZWQgdG8gYSBuZXcgYnJhbmNoICd0ZXN0JwoyNzRkNzE2NWIxIEltcGxlbWVudCBzdXBwb3J0IGZv
+ciBpLk1YNyBTYWJyZSBib2FyZApkMjRlZjljMjUxIGkuTVg6IEFkZCBpLk1YNyBTT0MgaW1wbGVt
+ZW50YXRpb24uCjc0YTBiMmQ4OTYgaW5jbHVkZS9xZW11OiBBZGQgc2l6ZXMuaCBmcm9tIExpbnV4
+CjkyMGUzN2RhYzIgaS5NWDc6IEFkZCBjb2RlIHRvIGVtdWxhdGUgU05WUyBJUC1ibG9jawowZDg3
+NmNlMzU0IGkuTVg6IEFkZCBjb2RlIHRvIGVtdWxhdGUgaS5NWDIgd2F0Y2hkb2cgSVAgYmxvY2sK
+ZTIxZjMxMGNhMCBpLk1YOiBBZGQgaS5NWDcgQ0NNLCBQTVUgYW5kIEFOQUxPRyBkZXZpY2UKZTVk
+ODQ4NmQ4YyBzZGhjaTogSW1wbGVtZW50IHdyaXRlIG1ldGhvZCBvZiBBQ01EMTJFUlJTVFMgcmVn
+aXN0ZXIKYzAwMzMxYmJiNyBzZGhjaTogQWRkIGkuTVggc3BlY2lmaWMgc3VidHlwZSBvZiBTREhD
+SQo5YjAxZTM1MjMwIGlteF9mZWM6IFVzZSBjb3JyZWN0IGxlbmd0aCBmb3IgcGFja2V0IHNpemUK
+NDczNTFhZDczYyBpbXhfZmVjOiBBZGQgc3VwcG9ydCBmb3IgbXVsdGlwbGUgVHggRE1BIHJpbmdz
+CmYyM2U5NjU2ZjUgaW14X2ZlYzogRW11bGF0ZSBTSElGVDE2IGluIEVORVR4X1JBQ0MKYWJjMjll
+OTA0OCBpbXhfZmVjOiBVc2UgTUlOIGluc3RlYWQgb2YgZXhwbGljaXQgdGVybmFyeSBvcGVyYXRv
+cgo0NTZhMjY4MWVhIGlteF9mZWM6IFVzZSBFTkVUX0ZUUkwgdG8gZGV0ZXJtaW5lIHRydW5jYXRp
+b24gbGVuZ3RoCmY3NTZkMTk2MWIgaW14X2ZlYzogQ2hhbmdlIHF1ZXVlIGZsdXNoaW5nIGhldXJp
+c3RpY3MKZTNmNDAwZGU1MyBpbXhfZmVjOiBSZWZhY3RvciBpbXhfZXRoX2VuYWJsZV9yeCgpCjM4
+ZjRmNGE0NmMgaW14X2ZlYzogRG8gbm90IGNhbGN1bGF0ZSBGRUMKZTA3NTUyYzk3YiBpbXhfZmVj
+OiBEbyBub3QgbGluayB0byBuZXRkZXYKCj09PSBPVVRQVVQgQkVHSU4gPT09CkNoZWNraW5nIFBB
+VENIIDEvMTc6IGlteF9mZWM6IERvIG5vdCBsaW5rIHRvIG5ldGRldi4uLgpDaGVja2luZyBQQVRD
+SCAyLzE3OiBpbXhfZmVjOiBEbyBub3QgY2FsY3VsYXRlIEZFQy4uLgpDaGVja2luZyBQQVRDSCAz
+LzE3OiBpbXhfZmVjOiBSZWZhY3RvciBpbXhfZXRoX2VuYWJsZV9yeCgpLi4uCkNoZWNraW5nIFBB
+VENIIDQvMTc6IGlteF9mZWM6IENoYW5nZSBxdWV1ZSBmbHVzaGluZyBoZXVyaXN0aWNzLi4uCkNo
+ZWNraW5nIFBBVENIIDUvMTc6IGlteF9mZWM6IFVzZSBFTkVUX0ZUUkwgdG8gZGV0ZXJtaW5lIHRy
+dW5jYXRpb24gbGVuZ3RoLi4uCkNoZWNraW5nIFBBVENIIDYvMTc6IGlteF9mZWM6IFVzZSBNSU4g
+aW5zdGVhZCBvZiBleHBsaWNpdCB0ZXJuYXJ5IG9wZXJhdG9yLi4uCkNoZWNraW5nIFBBVENIIDcv
+MTc6IGlteF9mZWM6IEVtdWxhdGUgU0hJRlQxNiBpbiBFTkVUeF9SQUNDLi4uCkVSUk9SOiBjb2Rl
+IGluZGVudCBzaG91bGQgbmV2ZXIgdXNlIHRhYnMKIzczOiBGSUxFOiBpbmNsdWRlL2h3L25ldC9p
+bXhfZmVjLmg6MTcyOgorI2RlZmluZSBFTkVUX1JBQ0NfU0hJRlQxNl5JQklUKDcpJAoKdG90YWw6
+IDEgZXJyb3JzLCAwIHdhcm5pbmdzLCA0OSBsaW5lcyBjaGVja2VkCgpZb3VyIHBhdGNoIGhhcyBz
+dHlsZSBwcm9ibGVtcywgcGxlYXNlIHJldmlldy4gIElmIGFueSBvZiB0aGVzZSBlcnJvcnMKYXJl
+IGZhbHNlIHBvc2l0aXZlcyByZXBvcnQgdGhlbSB0byB0aGUgbWFpbnRhaW5lciwgc2VlCkNIRUNL
+UEFUQ0ggaW4gTUFJTlRBSU5FUlMuCgpDaGVja2luZyBQQVRDSCA4LzE3OiBpbXhfZmVjOiBBZGQg
+c3VwcG9ydCBmb3IgbXVsdGlwbGUgVHggRE1BIHJpbmdzLi4uCldBUk5JTkc6IGxpbmUgb3ZlciA4
+MCBjaGFyYWN0ZXJzCiMyNDk6IEZJTEU6IGluY2x1ZGUvaHcvbmV0L2lteF9mZWMuaDoxMjM6Cisg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIEVORVRfSU5UX1RTX0FWQUlMIHwgRU5FVF9J
+TlRfVFhGMSB8IEVORVRfSU5UX1RYQjEgfFwKCnRvdGFsOiAwIGVycm9ycywgMSB3YXJuaW5ncywg
+MjQxIGxpbmVzIGNoZWNrZWQKCllvdXIgcGF0Y2ggaGFzIHN0eWxlIHByb2JsZW1zLCBwbGVhc2Ug
+cmV2aWV3LiAgSWYgYW55IG9mIHRoZXNlIGVycm9ycwphcmUgZmFsc2UgcG9zaXRpdmVzIHJlcG9y
+dCB0aGVtIHRvIHRoZSBtYWludGFpbmVyLCBzZWUKQ0hFQ0tQQVRDSCBpbiBNQUlOVEFJTkVSUy4K
+Q2hlY2tpbmcgUEFUQ0ggOS8xNzogaW14X2ZlYzogVXNlIGNvcnJlY3QgbGVuZ3RoIGZvciBwYWNr
+ZXQgc2l6ZS4uLgpDaGVja2luZyBQQVRDSCAxMC8xNzogc2RoY2k6IEFkZCBpLk1YIHNwZWNpZmlj
+IHN1YnR5cGUgb2YgU0RIQ0kuLi4KRVJST1I6IGNvZGUgaW5kZW50IHNob3VsZCBuZXZlciB1c2Ug
+dGFicwojMzc6IEZJTEU6IGh3L3NkL3NkaGNpLWludGVybmFsLmg6MjM1OgorI2RlZmluZSBFU0RI
+Q19NSVhfQ1RSTF5JXkleSTB4NDgkCgpFUlJPUjogY29kZSBpbmRlbnQgc2hvdWxkIG5ldmVyIHVz
+ZSB0YWJzCiMzODogRklMRTogaHcvc2Qvc2RoY2ktaW50ZXJuYWwuaDoyMzY6CisjZGVmaW5lIEVT
+REhDX1ZFTkRPUl9TUEVDXkleSTB4YzAkCgpFUlJPUjogY29kZSBpbmRlbnQgc2hvdWxkIG5ldmVy
+IHVzZSB0YWJzCiMzOTogRklMRTogaHcvc2Qvc2RoY2ktaW50ZXJuYWwuaDoyMzc6CisjZGVmaW5l
+IEVTREhDX0RMTF9DVFJMXkleSV5JMHg2MCQKCkVSUk9SOiBjb2RlIGluZGVudCBzaG91bGQgbmV2
+ZXIgdXNlIHRhYnMKIzQxOiBGSUxFOiBody9zZC9zZGhjaS1pbnRlcm5hbC5oOjIzOToKKyNkZWZp
+bmUgRVNESENfVFVOSU5HX0NUUkxeSV5JMHhjYyQKCkVSUk9SOiBjb2RlIGluZGVudCBzaG91bGQg
+bmV2ZXIgdXNlIHRhYnMKIzQyOiBGSUxFOiBody9zZC9zZGhjaS1pbnRlcm5hbC5oOjI0MDoKKyNk
+ZWZpbmUgRVNESENfVFVORV9DVFJMX1NUQVRVU15JXkkweDY4JAoKRVJST1I6IGNvZGUgaW5kZW50
+IHNob3VsZCBuZXZlciB1c2UgdGFicwojNDM6IEZJTEU6IGh3L3NkL3NkaGNpLWludGVybmFsLmg6
+MjQxOgorI2RlZmluZSBFU0RIQ19XVE1LX0xWTF5JXkleSTB4NDQkCgpFUlJPUjogY29kZSBpbmRl
+bnQgc2hvdWxkIG5ldmVyIHVzZSB0YWJzCiM0NTogRklMRTogaHcvc2Qvc2RoY2ktaW50ZXJuYWwu
+aDoyNDM6CisjZGVmaW5lIEVTREhDX0NUUkxfNEJJVEJVU15JXkkoMHgxIDw8IDEpJAoKRVJST1I6
+IGNvZGUgaW5kZW50IHNob3VsZCBuZXZlciB1c2UgdGFicwojNDY6IEZJTEU6IGh3L3NkL3NkaGNp
+LWludGVybmFsLmg6MjQ0OgorI2RlZmluZSBFU0RIQ19DVFJMXzhCSVRCVVNeSV5JKDB4MiA8PCAx
+KSQKCkVSUk9SOiBicmFjZXMge30gYXJlIG5lY2Vzc2FyeSBmb3IgYWxsIGFybXMgb2YgdGhpcyBz
+dGF0ZW1lbnQKIzk5OiBGSUxFOiBody9zZC9zZGhjaS5jOjE0MDU6CisgICAgICAgIGlmIChzLT5o
+b3N0Y3RsICYgU0RIQ19DVFJMXzhCSVRCVVMpClsuLi5dCgpFUlJPUjogYnJhY2VzIHt9IGFyZSBu
+ZWNlc3NhcnkgZm9yIGFsbCBhcm1zIG9mIHRoaXMgc3RhdGVtZW50CiMxMDI6IEZJTEU6IGh3L3Nk
+L3NkaGNpLmM6MTQwODoKKyAgICAgICAgaWYgKHMtPmhvc3RjdGwgJiBTREhDX0NUUkxfNEJJVEJV
+UykKWy4uLl0KCkVSUk9SOiBicmFjZXMge30gYXJlIG5lY2Vzc2FyeSBmb3IgYWxsIGFybXMgb2Yg
+dGhpcyBzdGF0ZW1lbnQKIzE0MTogRklMRTogaHcvc2Qvc2RoY2kuYzoxNDQ3OgorICAgICAgICBp
+ZiAodmFsdWUgJiBFU0RIQ19DVFJMXzhCSVRCVVMpClsuLi5dCgpFUlJPUjogYnJhY2VzIHt9IGFy
+ZSBuZWNlc3NhcnkgZm9yIGFsbCBhcm1zIG9mIHRoaXMgc3RhdGVtZW50CiMxNDQ6IEZJTEU6IGh3
+L3NkL3NkaGNpLmM6MTQ1MDoKKyAgICAgICAgaWYgKHZhbHVlICYgRVNESENfQ1RSTF80QklUQlVT
+KQpbLi4uXQoKRVJST1I6IGNvZGUgaW5kZW50IHNob3VsZCBuZXZlciB1c2UgdGFicwojMjMxOiBG
+SUxFOiBpbmNsdWRlL2h3L3NkL3NkaGNpLmg6OTI6CisjZGVmaW5lIFNESENJX1FVSVJLX05PX0JV
+U1lfSVJRXkleSV5JXkkoMTw8MTQpJAoKRVJST1I6IHNwYWNlcyByZXF1aXJlZCBhcm91bmQgdGhh
+dCAnPDwnIChjdHg6VnhWKQojMjMxOiBGSUxFOiBpbmNsdWRlL2h3L3NkL3NkaGNpLmg6OTI6Cisj
+ZGVmaW5lIFNESENJX1FVSVJLX05PX0JVU1lfSVJRCQkJCSgxPDwxNCkKICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAJCQkJICBeCgp0b3RhbDogMTQgZXJyb3JzLCAwIHdhcm5pbmdzLCAy
+MDMgbGluZXMgY2hlY2tlZAoKWW91ciBwYXRjaCBoYXMgc3R5bGUgcHJvYmxlbXMsIHBsZWFzZSBy
+ZXZpZXcuICBJZiBhbnkgb2YgdGhlc2UgZXJyb3JzCmFyZSBmYWxzZSBwb3NpdGl2ZXMgcmVwb3J0
+IHRoZW0gdG8gdGhlIG1haW50YWluZXIsIHNlZQpDSEVDS1BBVENIIGluIE1BSU5UQUlORVJTLgoK
+Q2hlY2tpbmcgUEFUQ0ggMTEvMTc6IHNkaGNpOiBJbXBsZW1lbnQgd3JpdGUgbWV0aG9kIG9mIEFD
+TUQxMkVSUlNUUyByZWdpc3Rlci4uLgpDaGVja2luZyBQQVRDSCAxMi8xNzogaS5NWDogQWRkIGku
+TVg3IENDTSwgUE1VIGFuZCBBTkFMT0cgZGV2aWNlLi4uCkVSUk9SOiB0cmFpbGluZyB3aGl0ZXNw
+YWNlCiM3MTogRklMRTogaHcvbWlzYy9pbXg3X2NjbS5jOjQxOgorICAgIHMtPmFuYWxvZ1tDQ01f
+QU5BTE9HX1BMTF80ODBdICAgICAgICAgPSAweDAwMDAyMDAwOyAgICAkCgpFUlJPUjogY29kZSBp
+bmRlbnQgc2hvdWxkIG5ldmVyIHVzZSB0YWJzCiM5NzogRklMRTogaHcvbWlzYy9pbXg3X2NjbS5j
+OjY3OgorI2RlZmluZSBDQ01fSU5ERVgob2Zmc2V0KV5JKCgob2Zmc2V0KSAmIH4oaHdhZGRyKTB4
+RikgLyBzaXplb2YodWludDMyX3QpKSQKCkVSUk9SOiBjb2RlIGluZGVudCBzaG91bGQgbmV2ZXIg
+dXNlIHRhYnMKIzk4OiBGSUxFOiBody9taXNjL2lteDdfY2NtLmM6Njg6CisjZGVmaW5lIENDTV9C
+SVRPUChvZmZzZXQpXkkoKG9mZnNldCkgJiAoaHdhZGRyKTB4RikkCgpFUlJPUjogdHJhaWxpbmcg
+d2hpdGVzcGFjZQojMTgyOiBGSUxFOiBody9taXNjL2lteDdfY2NtLmM6MTUyOgorICAgICQKCkVS
+Uk9SOiBNYWNyb3Mgd2l0aCBjb21wbGV4IHZhbHVlcyBzaG91bGQgYmUgZW5jbG9zZWQgaW4gcGFy
+ZW50aGVzaXMKIzI1NTogRklMRTogaW5jbHVkZS9ody9taXNjL2lteDdfY2NtLmg6MTg6CisjZGVm
+aW5lIFJFR19TRVRfQ0xSX1RPRyhuYW1lKSAgbmFtZSwgbmFtZSMjX1NFVCwgbmFtZSMjX0NMUiwg
+bmFtZSMjX1RPRwoKdG90YWw6IDUgZXJyb3JzLCAwIHdhcm5pbmdzLCAyODQgbGluZXMgY2hlY2tl
+ZAoKWW91ciBwYXRjaCBoYXMgc3R5bGUgcHJvYmxlbXMsIHBsZWFzZSByZXZpZXcuICBJZiBhbnkg
+b2YgdGhlc2UgZXJyb3JzCmFyZSBmYWxzZSBwb3NpdGl2ZXMgcmVwb3J0IHRoZW0gdG8gdGhlIG1h
+aW50YWluZXIsIHNlZQpDSEVDS1BBVENIIGluIE1BSU5UQUlORVJTLgoKQ2hlY2tpbmcgUEFUQ0gg
+MTMvMTc6IGkuTVg6IEFkZCBjb2RlIHRvIGVtdWxhdGUgaS5NWDIgd2F0Y2hkb2cgSVAgYmxvY2su
+Li4KRVJST1I6IGNvZGUgaW5kZW50IHNob3VsZCBuZXZlciB1c2UgdGFicwojNjI6IEZJTEU6IGh3
+L21pc2MvaW14Ml93ZHQuYzoyOToKKyNkZWZpbmUgSU1YMl9XRFRfV0NSX1dEQV5JQklUKDUpXkle
+SS8qIC0+IEV4dGVybmFsIFJlc2V0IFdET0dfQiAqLyQKCkVSUk9SOiBjb2RlIGluZGVudCBzaG91
+bGQgbmV2ZXIgdXNlIHRhYnMKIzYzOiBGSUxFOiBody9taXNjL2lteDJfd2R0LmM6MzA6CisjZGVm
+aW5lIElNWDJfV0RUX1dDUl9TUlNeSUJJVCg0KV5JXkkvKiAtPiBTb2Z0d2FyZSBSZXNldCBTaWdu
+YWwgKi8kCgpFUlJPUjogYnJhY2VzIHt9IGFyZSBuZWNlc3NhcnkgZm9yIGFsbCBhcm1zIG9mIHRo
+aXMgc3RhdGVtZW50CiM3MTogRklMRTogaHcvbWlzYy9pbXgyX3dkdC5jOjM4OgorICAgIGlmIChp
+bmRleCA8IEFSUkFZX1NJWkUocy0+cmVnKSkKWy4uLl0KKyAgICBlbHNlClsuLi5dCgpFUlJPUjog
+YnJhY2VzIHt9IGFyZSBuZWNlc3NhcnkgZm9yIGFsbCBhcm1zIG9mIHRoaXMgc3RhdGVtZW50CiM4
+OTogRklMRTogaHcvbWlzYy9pbXgyX3dkdC5jOjU2OgorICAgICAgICBpZiAodmFsdWUgJiAoSU1Y
+Ml9XRFRfV0NSX1dEQSB8IElNWDJfV0RUX1dDUl9TUlMpKQpbLi4uXQoKdG90YWw6IDQgZXJyb3Jz
+LCAwIHdhcm5pbmdzLCAxNjAgbGluZXMgY2hlY2tlZAoKWW91ciBwYXRjaCBoYXMgc3R5bGUgcHJv
+YmxlbXMsIHBsZWFzZSByZXZpZXcuICBJZiBhbnkgb2YgdGhlc2UgZXJyb3JzCmFyZSBmYWxzZSBw
+b3NpdGl2ZXMgcmVwb3J0IHRoZW0gdG8gdGhlIG1haW50YWluZXIsIHNlZQpDSEVDS1BBVENIIGlu
+IE1BSU5UQUlORVJTLgoKQ2hlY2tpbmcgUEFUQ0ggMTQvMTc6IGkuTVg3OiBBZGQgY29kZSB0byBl
+bXVsYXRlIFNOVlMgSVAtYmxvY2suLi4KQ2hlY2tpbmcgUEFUQ0ggMTUvMTc6IGluY2x1ZGUvcWVt
+dTogQWRkIHNpemVzLmggZnJvbSBMaW51eC4uLgpFUlJPUjogY29kZSBpbmRlbnQgc2hvdWxkIG5l
+dmVyIHVzZSB0YWJzCiMzMjogRklMRTogaW5jbHVkZS9xZW11L3NpemVzLmg6MTE6CisjZGVmaW5l
+IFNaXzFeSV5JXkleSTB4MDAwMDAwMDEkCgpFUlJPUjogY29kZSBpbmRlbnQgc2hvdWxkIG5ldmVy
+IHVzZSB0YWJzCiMzMzogRklMRTogaW5jbHVkZS9xZW11L3NpemVzLmg6MTI6CisjZGVmaW5lIFNa
+XzJeSV5JXkleSTB4MDAwMDAwMDIkCgpFUlJPUjogY29kZSBpbmRlbnQgc2hvdWxkIG5ldmVyIHVz
+ZSB0YWJzCiMzNDogRklMRTogaW5jbHVkZS9xZW11L3NpemVzLmg6MTM6CisjZGVmaW5lIFNaXzRe
+SV5JXkleSTB4MDAwMDAwMDQkCgpFUlJPUjogY29kZSBpbmRlbnQgc2hvdWxkIG5ldmVyIHVzZSB0
+YWJzCiMzNTogRklMRTogaW5jbHVkZS9xZW11L3NpemVzLmg6MTQ6CisjZGVmaW5lIFNaXzheSV5J
+XkleSTB4MDAwMDAwMDgkCgpFUlJPUjogY29kZSBpbmRlbnQgc2hvdWxkIG5ldmVyIHVzZSB0YWJz
+CiMzNjogRklMRTogaW5jbHVkZS9xZW11L3NpemVzLmg6MTU6CisjZGVmaW5lIFNaXzE2XkleSV5J
+XkkweDAwMDAwMDEwJAoKRVJST1I6IGNvZGUgaW5kZW50IHNob3VsZCBuZXZlciB1c2UgdGFicwoj
+Mzc6IEZJTEU6IGluY2x1ZGUvcWVtdS9zaXplcy5oOjE2OgorI2RlZmluZSBTWl8zMl5JXkleSV5J
+MHgwMDAwMDAyMCQKCkVSUk9SOiBjb2RlIGluZGVudCBzaG91bGQgbmV2ZXIgdXNlIHRhYnMKIzM4
+OiBGSUxFOiBpbmNsdWRlL3FlbXUvc2l6ZXMuaDoxNzoKKyNkZWZpbmUgU1pfNjReSV5JXkleSTB4
+MDAwMDAwNDAkCgpFUlJPUjogY29kZSBpbmRlbnQgc2hvdWxkIG5ldmVyIHVzZSB0YWJzCiMzOTog
+RklMRTogaW5jbHVkZS9xZW11L3NpemVzLmg6MTg6CisjZGVmaW5lIFNaXzEyOF5JXkleSV5JMHgw
+MDAwMDA4MCQKCkVSUk9SOiBjb2RlIGluZGVudCBzaG91bGQgbmV2ZXIgdXNlIHRhYnMKIzQwOiBG
+SUxFOiBpbmNsdWRlL3FlbXUvc2l6ZXMuaDoxOToKKyNkZWZpbmUgU1pfMjU2XkleSV5JXkkweDAw
+MDAwMTAwJAoKRVJST1I6IGNvZGUgaW5kZW50IHNob3VsZCBuZXZlciB1c2UgdGFicwojNDE6IEZJ
+TEU6IGluY2x1ZGUvcWVtdS9zaXplcy5oOjIwOgorI2RlZmluZSBTWl81MTJeSV5JXkleSTB4MDAw
+MDAyMDAkCgpFUlJPUjogY29kZSBpbmRlbnQgc2hvdWxkIG5ldmVyIHVzZSB0YWJzCiM0MzogRklM
+RTogaW5jbHVkZS9xZW11L3NpemVzLmg6MjI6CisjZGVmaW5lIFNaXzFLXkleSV5JXkkweDAwMDAw
+NDAwJAoKRVJST1I6IGNvZGUgaW5kZW50IHNob3VsZCBuZXZlciB1c2UgdGFicwojNDQ6IEZJTEU6
+IGluY2x1ZGUvcWVtdS9zaXplcy5oOjIzOgorI2RlZmluZSBTWl8yS15JXkleSV5JMHgwMDAwMDgw
+MCQKCkVSUk9SOiBjb2RlIGluZGVudCBzaG91bGQgbmV2ZXIgdXNlIHRhYnMKIzQ1OiBGSUxFOiBp
+bmNsdWRlL3FlbXUvc2l6ZXMuaDoyNDoKKyNkZWZpbmUgU1pfNEteSV5JXkleSTB4MDAwMDEwMDAk
+CgpFUlJPUjogY29kZSBpbmRlbnQgc2hvdWxkIG5ldmVyIHVzZSB0YWJzCiM0NjogRklMRTogaW5j
+bHVkZS9xZW11L3NpemVzLmg6MjU6CisjZGVmaW5lIFNaXzhLXkleSV5JXkkweDAwMDAyMDAwJAoK
+RVJST1I6IGNvZGUgaW5kZW50IHNob3VsZCBuZXZlciB1c2UgdGFicwojNDc6IEZJTEU6IGluY2x1
+ZGUvcWVtdS9zaXplcy5oOjI2OgorI2RlZmluZSBTWl8xNkteSV5JXkleSTB4MDAwMDQwMDAkCgpF
+UlJPUjogY29kZSBpbmRlbnQgc2hvdWxkIG5ldmVyIHVzZSB0YWJzCiM0ODogRklMRTogaW5jbHVk
+ZS9xZW11L3NpemVzLmg6Mjc6CisjZGVmaW5lIFNaXzMyS15JXkleSV5JMHgwMDAwODAwMCQKCkVS
+Uk9SOiBjb2RlIGluZGVudCBzaG91bGQgbmV2ZXIgdXNlIHRhYnMKIzQ5OiBGSUxFOiBpbmNsdWRl
+L3FlbXUvc2l6ZXMuaDoyODoKKyNkZWZpbmUgU1pfNjRLXkleSV5JXkkweDAwMDEwMDAwJAoKRVJS
+T1I6IGNvZGUgaW5kZW50IHNob3VsZCBuZXZlciB1c2UgdGFicwojNTA6IEZJTEU6IGluY2x1ZGUv
+cWVtdS9zaXplcy5oOjI5OgorI2RlZmluZSBTWl8xMjhLXkleSV5JXkkweDAwMDIwMDAwJAoKRVJS
+T1I6IGNvZGUgaW5kZW50IHNob3VsZCBuZXZlciB1c2UgdGFicwojNTE6IEZJTEU6IGluY2x1ZGUv
+cWVtdS9zaXplcy5oOjMwOgorI2RlZmluZSBTWl8yNTZLXkleSV5JXkkweDAwMDQwMDAwJAoKRVJS
+T1I6IGNvZGUgaW5kZW50IHNob3VsZCBuZXZlciB1c2UgdGFicwojNTI6IEZJTEU6IGluY2x1ZGUv
+cWVtdS9zaXplcy5oOjMxOgorI2RlZmluZSBTWl81MTJLXkleSV5JXkkweDAwMDgwMDAwJAoKRVJS
+T1I6IGNvZGUgaW5kZW50IHNob3VsZCBuZXZlciB1c2UgdGFicwojNTQ6IEZJTEU6IGluY2x1ZGUv
+cWVtdS9zaXplcy5oOjMzOgorI2RlZmluZSBTWl8xTV5JXkleSV5JMHgwMDEwMDAwMCQKCkVSUk9S
+OiBjb2RlIGluZGVudCBzaG91bGQgbmV2ZXIgdXNlIHRhYnMKIzU1OiBGSUxFOiBpbmNsdWRlL3Fl
+bXUvc2l6ZXMuaDozNDoKKyNkZWZpbmUgU1pfMk1eSV5JXkleSTB4MDAyMDAwMDAkCgpFUlJPUjog
+Y29kZSBpbmRlbnQgc2hvdWxkIG5ldmVyIHVzZSB0YWJzCiM1NjogRklMRTogaW5jbHVkZS9xZW11
+L3NpemVzLmg6MzU6CisjZGVmaW5lIFNaXzRNXkleSV5JXkkweDAwNDAwMDAwJAoKRVJST1I6IGNv
+ZGUgaW5kZW50IHNob3VsZCBuZXZlciB1c2UgdGFicwojNTc6IEZJTEU6IGluY2x1ZGUvcWVtdS9z
+aXplcy5oOjM2OgorI2RlZmluZSBTWl84TV5JXkleSV5JMHgwMDgwMDAwMCQKCkVSUk9SOiBjb2Rl
+IGluZGVudCBzaG91bGQgbmV2ZXIgdXNlIHRhYnMKIzU4OiBGSUxFOiBpbmNsdWRlL3FlbXUvc2l6
+ZXMuaDozNzoKKyNkZWZpbmUgU1pfMTZNXkleSV5JXkkweDAxMDAwMDAwJAoKRVJST1I6IGNvZGUg
+aW5kZW50IHNob3VsZCBuZXZlciB1c2UgdGFicwojNTk6IEZJTEU6IGluY2x1ZGUvcWVtdS9zaXpl
+cy5oOjM4OgorI2RlZmluZSBTWl8zMk1eSV5JXkleSTB4MDIwMDAwMDAkCgpFUlJPUjogY29kZSBp
+bmRlbnQgc2hvdWxkIG5ldmVyIHVzZSB0YWJzCiM2MDogRklMRTogaW5jbHVkZS9xZW11L3NpemVz
+Lmg6Mzk6CisjZGVmaW5lIFNaXzY0TV5JXkleSV5JMHgwNDAwMDAwMCQKCkVSUk9SOiBjb2RlIGlu
+ZGVudCBzaG91bGQgbmV2ZXIgdXNlIHRhYnMKIzYxOiBGSUxFOiBpbmNsdWRlL3FlbXUvc2l6ZXMu
+aDo0MDoKKyNkZWZpbmUgU1pfMTI4TV5JXkleSV5JMHgwODAwMDAwMCQKCkVSUk9SOiBjb2RlIGlu
+ZGVudCBzaG91bGQgbmV2ZXIgdXNlIHRhYnMKIzYyOiBGSUxFOiBpbmNsdWRlL3FlbXUvc2l6ZXMu
+aDo0MToKKyNkZWZpbmUgU1pfMjU2TV5JXkleSV5JMHgxMDAwMDAwMCQKCkVSUk9SOiBjb2RlIGlu
+ZGVudCBzaG91bGQgbmV2ZXIgdXNlIHRhYnMKIzYzOiBGSUxFOiBpbmNsdWRlL3FlbXUvc2l6ZXMu
+aDo0MjoKKyNkZWZpbmUgU1pfNTEyTV5JXkleSV5JMHgyMDAwMDAwMCQKCkVSUk9SOiBjb2RlIGlu
+ZGVudCBzaG91bGQgbmV2ZXIgdXNlIHRhYnMKIzY1OiBGSUxFOiBpbmNsdWRlL3FlbXUvc2l6ZXMu
+aDo0NDoKKyNkZWZpbmUgU1pfMUdeSV5JXkleSTB4NDAwMDAwMDAkCgpFUlJPUjogY29kZSBpbmRl
+bnQgc2hvdWxkIG5ldmVyIHVzZSB0YWJzCiM2NjogRklMRTogaW5jbHVkZS9xZW11L3NpemVzLmg6
+NDU6CisjZGVmaW5lIFNaXzJHXkleSV5JXkkweDgwMDAwMDAwJAoKdG90YWw6IDMyIGVycm9ycywg
+MCB3YXJuaW5ncywgNDcgbGluZXMgY2hlY2tlZAoKWW91ciBwYXRjaCBoYXMgc3R5bGUgcHJvYmxl
+bXMsIHBsZWFzZSByZXZpZXcuICBJZiBhbnkgb2YgdGhlc2UgZXJyb3JzCmFyZSBmYWxzZSBwb3Np
+dGl2ZXMgcmVwb3J0IHRoZW0gdG8gdGhlIG1haW50YWluZXIsIHNlZQpDSEVDS1BBVENIIGluIE1B
+SU5UQUlORVJTLgoKQ2hlY2tpbmcgUEFUQ0ggMTYvMTc6IGkuTVg6IEFkZCBpLk1YNyBTT0MgaW1w
+bGVtZW50YXRpb24uLi4uCkVSUk9SOiBjb2RlIGluZGVudCBzaG91bGQgbmV2ZXIgdXNlIHRhYnMK
+IzE3ODogRklMRTogaHcvYXJtL2ZzbC1pbXg3LmM6MTI4OgorXklvID0gT0JKRUNUKCZzLT5jcHVb
+aV0pOyQKCkVSUk9SOiBjb2RlIGluZGVudCBzaG91bGQgbmV2ZXIgdXNlIHRhYnMKIzQ1ODogRklM
+RTogaW5jbHVkZS9ody9hcm0vZnNsLWlteDcuaDo3NToKKyAgICBGU0xfSU1YN19TTlZTX0FERFJe
+SSAgICA9IDB4MzAzNzAwMDAsJAoKdG90YWw6IDIgZXJyb3JzLCAwIHdhcm5pbmdzLCA0NTMgbGlu
+ZXMgY2hlY2tlZAoKWW91ciBwYXRjaCBoYXMgc3R5bGUgcHJvYmxlbXMsIHBsZWFzZSByZXZpZXcu
+ICBJZiBhbnkgb2YgdGhlc2UgZXJyb3JzCmFyZSBmYWxzZSBwb3NpdGl2ZXMgcmVwb3J0IHRoZW0g
+dG8gdGhlIG1haW50YWluZXIsIHNlZQpDSEVDS1BBVENIIGluIE1BSU5UQUlORVJTLgoKQ2hlY2tp
+bmcgUEFUQ0ggMTcvMTc6IEltcGxlbWVudCBzdXBwb3J0IGZvciBpLk1YNyBTYWJyZSBib2FyZC4u
+LgpXQVJOSU5HOiBsaW5lIG92ZXIgODAgY2hhcmFjdGVycwojNjA6IEZJTEU6IGh3L2FybS9tY2lt
+eDdkLXNhYnJlLmM6MzE6CitzdGF0aWMgdm9pZCBtY2lteDdkX2FkZF9wc2NpX25vZGUoY29uc3Qg
+c3RydWN0IGFybV9ib290X2luZm8gKmJvb3RfaW5mbywgdm9pZCAqZmR0KQoKV0FSTklORzogbGlu
+ZSBvdmVyIDgwIGNoYXJhY3RlcnMKIzExNDogRklMRTogaHcvYXJtL21jaW14N2Qtc2FicmUuYzo4
+NToKKyAgICAgICAgb2JqZWN0X3Byb3BlcnR5X3NldF9ib29sKE9CSkVDVChjYXJkZGV2KSwgdHJ1
+ZSwgInJlYWxpemVkIiwgJmVycm9yX2ZhdGFsKTsKCnRvdGFsOiAwIGVycm9ycywgMiB3YXJuaW5n
+cywgMTA2IGxpbmVzIGNoZWNrZWQKCllvdXIgcGF0Y2ggaGFzIHN0eWxlIHByb2JsZW1zLCBwbGVh
+c2UgcmV2aWV3LiAgSWYgYW55IG9mIHRoZXNlIGVycm9ycwphcmUgZmFsc2UgcG9zaXRpdmVzIHJl
+cG9ydCB0aGVtIHRvIHRoZSBtYWludGFpbmVyLCBzZWUKQ0hFQ0tQQVRDSCBpbiBNQUlOVEFJTkVS
+Uy4KPT09IE9VVFBVVCBFTkQgPT09CgpUZXN0IGNvbW1hbmQgZXhpdGVkIHdpdGggY29kZTogMQoK
+Ci0tLQpFbWFpbCBnZW5lcmF0ZWQgYXV0b21hdGljYWxseSBieSBQYXRjaGV3IFtodHRwOi8vcGF0
+Y2hldy5vcmcvXS4KUGxlYXNlIHNlbmQgeW91ciBmZWVkYmFjayB0byBwYXRjaGV3LWRldmVsQGZy
+ZWVsaXN0cy5vcmc=
 

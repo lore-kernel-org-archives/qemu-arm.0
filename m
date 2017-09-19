@@ -1,226 +1,131 @@
-Received: by 10.223.172.38 with SMTP id v35csp4253988wrc;
-        Mon, 18 Sep 2017 15:12:37 -0700 (PDT)
-X-Received: by 10.200.8.225 with SMTP id y30mr51400987qth.233.1505772757620;
-        Mon, 18 Sep 2017 15:12:37 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1505772757; cv=none;
+Received: by 10.223.172.38 with SMTP id v35csp4414856wrc;
+        Mon, 18 Sep 2017 19:09:05 -0700 (PDT)
+X-Google-Smtp-Source: AOwi7QCo8i9xJ6O1qJTnTQrXK9GV7HnOkkbmyKTV+u969hbQoFNY8LMqjLJ9uCQHYiSyWPVApSdz
+X-Received: by 10.200.22.188 with SMTP id r57mr41404788qtj.230.1505786945072;
+        Mon, 18 Sep 2017 19:09:05 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1505786945; cv=none;
         d=google.com; s=arc-20160816;
-        b=N8N4rCXa1Zzj3UtvCrmkf0lvOPZRPKiTVkv/TAGgFIu5o4DtmCbh7MPP3LdVWPikeo
-         DerdIPRq7cCfaa+TDCwHVF9T5/VdU4iJucoIxahVxXiCP0nXnlYGLm7iUahIFyWCjJo9
-         wtIUcDLYrtVrA5LkvrGQsf0x66Pc+7Xfhu+cH2UUMKvm75TgR8btHma5+XxhZldnKZta
-         S9KHajJ7tHKptQEhnUtQnCGfR/lvgqYjZCPU6EA0jexiqLq8G//foEjajFAC2o7zgl7O
-         DOIvsm1Lft+45vdX+m7bwONwRFiWayXDxK8ZCC2j96DA3/6Y1fzFanmNyrjjUAOcXecY
-         ZvzA==
+        b=P9/Xek1LUDCct1e/QRei4kNVKczePl2yJWWoEWkw1Ifz4BbMHJIFluXO9Ng1FSds24
+         3JB9Qts5dKe9sVFvBQR27b6an5Amw5r8nEYk9K7cQ7TxvRe3PZkSLs9UO5uwkcpTDDEA
+         +Ykl1AZ/b+pieg21pW1vfQvyIFOr5sgVS3zgFiGBqma3QSeh+FsbjQCLlHVSwNitMGBu
+         XkCcAe/2s4E3T8Z9B99n/4IxMOkbl5h+gE/+aIt62iprChjDKkSgMLkVHebofYqsNgln
+         kGOdQsLvpmYN7EpGg0GEMVXukb9K/uLKsP6oa4yzk65QHkub15JFLiWsVwqeC/zrP7E9
+         EYDQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:message-id:date:to:from
-         :dkim-signature:arc-authentication-results;
-        bh=j3SemFttz/fP/BSEkWT3MeAAWs3qR7tZGNKqEagS+/s=;
-        b=OTWav3TJWsrK/UP7UQAHz4kXGDfIYJPZ4HHb3SIlwHuBbXYZX7rzY7fTr15DZ0EU7R
-         4ObAsuppn5wNuPnp/ur09aDNxfr+O/0NQbn+iRWgNskEkhZFG6hQM8xuF2F0nlDsIoyw
-         g4FTp0Qlz8cAl1cA0wCu96iGneLq93x0g9N/Vk3QzzuL4g+9mt5rV2jblM+elIJYrAjC
-         AnphxYUOpWkeULH1ZUhAS9P2jA4zsS9beJB12YLRJXZYw/ne3ZwA305r5qc2k+A7cS8j
-         9JQcKtzVkOwZ35KXMtyXo/JsZDw8qcHwRYP1FcxdwG2DxiyQwePDdITS3Rj71rbz8NTd
-         2NRA==
+         :content-transfer-encoding:user-agent:in-reply-to
+         :content-disposition:mime-version:references:message-id:to:from:date
+         :dmarc-filter:arc-authentication-results;
+        bh=Fc/vDWzLfFxiLpgMImPEM6s3tNho2nhLfG6oS/g4Llw=;
+        b=uZsMUXOaz4Z2kD64dXbwQ3f2gPLf9LZIdssafYuC14VjrUUxorJ+K1b6ACMygRGWFg
+         vEgRjCh5CvUv57ki+Z1qfvXd92Rlx2boWl6NrSCRsaPCYqQ2atE3vCXpxU7WLKhV13ho
+         go8OGfkRnvo0O/qf67XAhWPZ6V6LOa4vw9GUO3PcRIpkUQts/kYp5D3zTG52TzFKR9WR
+         o/TAg3j5xOqFamfI02MWH8nAr+1+USYLeUZEFJjO/fqJNVlEnhVZhWHXkFnCn2tf+ykW
+         uQ4GlXGeDPgOH9ejPQtxnqGlu9VMyeUoNe0LwLje6ohIme7vDv+o3c4697mLx5ziT+eT
+         m3zQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=mPp1CORk;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id f192si7839876qke.177.2017.09.18.15.12.37
+        by mx.google.com with ESMTPS id 3si830644qtp.421.2017.09.18.19.09.04
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 18 Sep 2017 15:12:37 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Mon, 18 Sep 2017 19:09:05 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=mPp1CORk;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:39127 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:39690 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1du4HL-0007Ta-Co
-	for alex.bennee@linaro.org; Mon, 18 Sep 2017 18:12:35 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:58191)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1du7yA-0002wb-Kz
+	for alex.bennee@linaro.org; Mon, 18 Sep 2017 22:09:02 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:60550)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1du4GU-000711-8x
-	for qemu-devel@nongnu.org; Mon, 18 Sep 2017 18:11:43 -0400
+	(envelope-from <famz@redhat.com>) id 1du7xv-0002vE-93
+	for qemu-arm@nongnu.org; Mon, 18 Sep 2017 22:08:50 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1du4GQ-0006Wm-Pc
-	for qemu-devel@nongnu.org; Mon, 18 Sep 2017 18:11:42 -0400
-Received: from mail-qt0-x243.google.com ([2607:f8b0:400d:c0d::243]:33834)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1du4GQ-0006We-Jt; Mon, 18 Sep 2017 18:11:38 -0400
-Received: by mail-qt0-x243.google.com with SMTP id q8so1254271qtb.1;
-	Mon, 18 Sep 2017 15:11:38 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=sender:from:to:cc:subject:date:message-id:mime-version
-	:content-transfer-encoding;
-	bh=j3SemFttz/fP/BSEkWT3MeAAWs3qR7tZGNKqEagS+/s=;
-	b=mPp1CORk3fwOR8RFWuNjcvwGYjWDuNhZZFHbVR7aiBoiZ28pQOo/XDOvk3TropE4OE
-	WZykck/WCZjxmgjdBMFO50ns2HI8m+n4tw3Ed6z2Psnf/HDfsnz/6X4cKGFIKjwHRrN6
-	zNv6IsWIAZ5HWU5WuPogMF/2Q4Rm7zR9pFS95H1nH/ca0b5GskRCU8Pg897DlJ3UDwm1
-	gMA3ah1RhFYTuEAbZe7kfwxqRsivWmNyg2JtXR7jhfCsgZBuZImeRqMB+zldsloOzX23
-	Mq3gUWYhyYUAeorkZ5PxHRMI+Fw2DCdtdC1w/J186KYCOTyMep+1mcKr5RB+tg/1rqUi
-	+0nA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
-	:mime-version:content-transfer-encoding;
-	bh=j3SemFttz/fP/BSEkWT3MeAAWs3qR7tZGNKqEagS+/s=;
-	b=HCIoiXAZh/fd0xF5D8az+KeueiulUf7SwnxrC6EDyYFxgNTSDUFOnoOmuRB0MFnmVQ
-	0j9b+Yr7qxOi1fsQ3d90mzEC/VmVOEiLqzryCuTewXUOebZV4gnI3Qf7GN79vu41ojpK
-	OS52sMMxdC+5qeTw1Xp4oqo6IjgzIo3Ew+vX7CDAnJkEXYlUt/ohADoWqwh/knGkj8+R
-	G6AMYUTFGNbeY/pn6DiU02nUDdrnihTJH/D6qpsvy53cPxm3OJm977ChLtD/pUhEutVV
-	U2vG1qDRKc4grqKwMnaqBBENDtxvUdDxdWNb82DKTpTYO17/447Xii6dfmTlM99UOLO0
-	jGqw==
-X-Gm-Message-State: AHPjjUhddP/BZsZm+3C4s8r8JQEwikva7na/xi3AKJIfG/3sP+Xc0rcf
-	3YsX5urAsY9285K9pTiWXA==
-X-Google-Smtp-Source: AOwi7QAvV/hiqGe5FHMtPhrTclILL1bwR4UafOi98UvJ9CJFMfjb1zSF2Xov2hQaOH2u4/2dxurdfg==
-X-Received: by 10.200.6.141 with SMTP id f13mr15629440qth.328.1505772698129;
-	Mon, 18 Sep 2017 15:11:38 -0700 (PDT)
-Received: from yoga.offpageads.com ([181.93.89.178])
-	by smtp.gmail.com with ESMTPSA id
-	c185sm5707466qke.60.2017.09.18.15.11.34
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Mon, 18 Sep 2017 15:11:37 -0700 (PDT)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-To: Igor Mammedov <imammedo@redhat.com>, Eduardo Habkost <ehabkost@redhat.com>,
-	Subbaraya Sundeep <sundeep.lkml@gmail.com>,
-	Alistair Francis <alistair.francis@xilinx.com>,
-	Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 18 Sep 2017 19:11:24 -0300
-Message-Id: <20170918221124.17159-1-f4bug@amsat.org>
-X-Mailer: git-send-email 2.14.1
+	(envelope-from <famz@redhat.com>) id 1du7xq-0003Ql-Mx
+	for qemu-arm@nongnu.org; Mon, 18 Sep 2017 22:08:47 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:42054)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <famz@redhat.com>)
+	id 1du7xq-0003QA-GA; Mon, 18 Sep 2017 22:08:42 -0400
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
+	[10.5.11.15])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 641E7710B9;
+	Tue, 19 Sep 2017 02:08:41 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 641E7710B9
+Authentication-Results: ext-mx09.extmail.prod.ext.phx2.redhat.com;
+	dmarc=none (p=none dis=none) header.from=redhat.com
+Authentication-Results: ext-mx09.extmail.prod.ext.phx2.redhat.com;
+	spf=fail smtp.mailfrom=famz@redhat.com
+Received: from localhost (ovpn-12-98.pek2.redhat.com [10.72.12.98])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 2CD095D6A6;
+	Tue, 19 Sep 2017 02:08:38 +0000 (UTC)
+Date: Tue, 19 Sep 2017 10:08:37 +0800
+From: Fam Zheng <famz@redhat.com>
+To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <f4bug@amsat.org>
+Message-ID: <20170919020837.GA11534@lemon.lan>
+References: <20170918221124.17159-1-f4bug@amsat.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:400d:c0d::243
-Subject: [Qemu-devel] [PATCH] msf2: drop cpu_model to directly use cpu type
-X-BeenThere: qemu-devel@nongnu.org
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+In-Reply-To: <20170918221124.17159-1-f4bug@amsat.org>
+User-Agent: Mutt/1.8.3 (2017-05-23)
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.38]);
+	Tue, 19 Sep 2017 02:08:41 +0000 (UTC)
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-arm] [PATCH] msf2: drop cpu_model to directly use cpu type
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm@nongnu.org, Fam Zheng <famz@redhat.com>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
-	qemu-devel@nongnu.org
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 78OkNPYXwdAX
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+	Eduardo Habkost <ehabkost@redhat.com>, qemu-devel@nongnu.org,
+	Alistair Francis <alistair.francis@xilinx.com>,
+	qemu-arm@nongnu.org, Igor Mammedov <imammedo@redhat.com>,
+	Subbaraya Sundeep <sundeep.lkml@gmail.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 8mNYwK46ftrL
 
-Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
----
-after Igor comment:
-http://lists.nongnu.org/archive/html/qemu-devel/2017-09/msg04709.html
+On Mon, 09/18 19:11, Philippe Mathieu-Daud=E9 wrote:
+> Signed-off-by: Philippe Mathieu-Daud=E9 <f4bug@amsat.org>
+> ---
+> after Igor comment:
+> http://lists.nongnu.org/archive/html/qemu-devel/2017-09/msg04709.html
+>=20
+> Fam: I'm trying your patchew "apply over series" feature on these 2 ser=
+ies,
+>      hoping they get both applied before my patch:
+>=20
+> Based-on: 1505318697-77161-6-git-send-email-imammedo@redhat.com
+> Based-on: 1505762601-27143-6-git-send-email-sundeep.lkml@gmail.com
 
-Fam: I'm trying your patchew "apply over series" feature on these 2 series,
-     hoping they get both applied before my patch:
+Only one based-on will be picked up, so this doesn't work. Patchew basica=
+lly
+applies the series on top of something, where something is the result of =
+a
+previous applying. So it can be thought of a chain.
 
-Based-on: 1505318697-77161-6-git-send-email-imammedo@redhat.com
-Based-on: 1505762601-27143-6-git-send-email-sundeep.lkml@gmail.com
+To support multiple patches, a different approach needs to be implemented=
+.
 
- include/hw/arm/msf2-soc.h |  1 +
- hw/arm/msf2-soc.c         |  3 ++-
- hw/arm/msf2-som.c         | 11 +++++++++++
- 3 files changed, 14 insertions(+), 1 deletion(-)
-
-diff --git a/include/hw/arm/msf2-soc.h b/include/hw/arm/msf2-soc.h
-index afea23db38..3cfe5c76ee 100644
---- a/include/hw/arm/msf2-soc.h
-+++ b/include/hw/arm/msf2-soc.h
-@@ -50,6 +50,7 @@ typedef struct MSF2State {
- 
-     ARMv7MState armv7m;
- 
-+    char *cpu_type;
-     char *part_name;
-     uint64_t envm_size;
-     uint64_t esram_size;
-diff --git a/hw/arm/msf2-soc.c b/hw/arm/msf2-soc.c
-index abba3d888b..6f97fa9fe3 100644
---- a/hw/arm/msf2-soc.c
-+++ b/hw/arm/msf2-soc.c
-@@ -111,7 +111,7 @@ static void m2sxxx_soc_realize(DeviceState *dev_soc, Error **errp)
- 
-     armv7m = DEVICE(&s->armv7m);
-     qdev_prop_set_uint32(armv7m, "num-irq", 81);
--    qdev_prop_set_string(armv7m, "cpu-model", "cortex-m3");
-+    qdev_prop_set_string(armv7m, "cpu-type", s->cpu_type);
-     object_property_set_link(OBJECT(&s->armv7m), OBJECT(get_system_memory()),
-                                      "memory", &error_abort);
-     object_property_set_bool(OBJECT(&s->armv7m), true, "realized", &err);
-@@ -201,6 +201,7 @@ static Property m2sxxx_soc_properties[] = {
-      * part name specifies the type of SmartFusion2 device variant(this
-      * property is for information purpose only.
-      */
-+    DEFINE_PROP_STRING("cpu-type", MSF2State, cpu_type),
-     DEFINE_PROP_STRING("part-name", MSF2State, part_name),
-     DEFINE_PROP_UINT64("eNVM-size", MSF2State, envm_size, MSF2_ENVM_MAX_SIZE),
-     DEFINE_PROP_UINT64("eSRAM-size", MSF2State, esram_size,
-diff --git a/hw/arm/msf2-som.c b/hw/arm/msf2-som.c
-index d3956965ab..0795a3a3a1 100644
---- a/hw/arm/msf2-som.c
-+++ b/hw/arm/msf2-som.c
-@@ -24,11 +24,13 @@
- 
- #include "qemu/osdep.h"
- #include "qapi/error.h"
-+#include "qemu/error-report.h"
- #include "hw/boards.h"
- #include "hw/arm/arm.h"
- #include "exec/address-spaces.h"
- #include "qemu/cutils.h"
- #include "hw/arm/msf2-soc.h"
-+#include "cpu.h"
- 
- #define DDR_BASE_ADDRESS      0xA0000000
- #define DDR_SIZE              (64 * M_BYTE)
-@@ -41,18 +43,26 @@ static void emcraft_sf2_s2s010_init(MachineState *machine)
-     DeviceState *dev;
-     DeviceState *spi_flash;
-     MSF2State *soc;
-+    MachineClass *mc = MACHINE_GET_CLASS(machine);
-     DriveInfo *dinfo = drive_get_next(IF_MTD);
-     qemu_irq cs_line;
-     SSIBus *spi_bus;
-     MemoryRegion *sysmem = get_system_memory();
-     MemoryRegion *ddr = g_new(MemoryRegion, 1);
- 
-+    if (strcmp(machine->cpu_type, mc->default_cpu_type) != 0) {
-+        error_report("This board can only be used with CPU %s",
-+                     mc->default_cpu_type);
-+    }
-+
-     memory_region_init_ram(ddr, NULL, "ddr-ram", DDR_SIZE,
-                            &error_fatal);
-     memory_region_add_subregion(sysmem, DDR_BASE_ADDRESS, ddr);
- 
-     dev = qdev_create(NULL, TYPE_MSF2_SOC);
-     qdev_prop_set_string(dev, "part-name", "M2S010");
-+    qdev_prop_set_string(dev, "cpu-type", mc->default_cpu_type);
-+
-     qdev_prop_set_uint64(dev, "eNVM-size", M2S010_ENVM_SIZE);
-     qdev_prop_set_uint64(dev, "eSRAM-size", M2S010_ESRAM_SIZE);
- 
-@@ -89,6 +99,7 @@ static void emcraft_sf2_machine_init(MachineClass *mc)
- {
-     mc->desc = "SmartFusion2 SOM kit from Emcraft (M2S010)";
-     mc->init = emcraft_sf2_s2s010_init;
-+    mc->default_cpu_type = ARM_CPU_TYPE_NAME("cortex-m3");
- }
- 
- DEFINE_MACHINE("emcraft-sf2", emcraft_sf2_machine_init)
--- 
-2.14.1
-
+Fam

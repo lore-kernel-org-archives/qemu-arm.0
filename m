@@ -1,110 +1,110 @@
-Received: by 10.223.172.38 with SMTP id v35csp5264571wrc;
-        Tue, 19 Sep 2017 11:48:51 -0700 (PDT)
-X-Received: by 10.55.166.73 with SMTP id p70mr3414434qke.342.1505846931777;
-        Tue, 19 Sep 2017 11:48:51 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1505846931; cv=none;
+Received: by 10.223.172.38 with SMTP id v35csp5267387wrc;
+        Tue, 19 Sep 2017 11:51:45 -0700 (PDT)
+X-Received: by 10.55.18.207 with SMTP id 76mr3506858qks.245.1505847105641;
+        Tue, 19 Sep 2017 11:51:45 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1505847105; cv=none;
         d=google.com; s=arc-20160816;
-        b=UrZ/46pvYQEi6zrHaqF59vaIXfYLM3Ps5Lfmnlcczp75jKR5ZDTqvQVcNhz0VpDCXs
-         vGpddXV0cIDxjlMpNvD8YGq9KHOYw+RXEerWBXUKJ6tgIvQPJ4OLk11y+LDGNJouf6n2
-         4R/se2/fKPrH28VjF6YQ8KPI7Opwig0Qg1n6gD4Oz0VWxBhyyOYuYfdgaUdSt5X/ERHZ
-         p9F9jUXaQLSflSyht66u8RkbbWzTUz7Y72n264frtoCUMSKC5HO5BtbLhWMqiArgJyrw
-         pxtVIvJWejhq3CLb2t3i03Ptk8W1lDOX2rqb5y7KKJXko0cy1htx0nf97jL5EzAU/lSI
-         CYxA==
+        b=qJTZZjlczTdIAqTZ462cCVloxymhFedAAxh/zugLSxXkD024zVrH6p4frUXOFN4J75
+         O4+p1IZRYqj/vv9+0hFsS3gnSk6yjPIG3ptSdcrz2OAjcTvzJPh9pBdVgrStWJS2A+0z
+         9WuokXm32EWTxv4PRbXMpLkpJRRwS/108MTI2iU3WBbTN5C7buCpD53rD93FI7vou5mX
+         ank19bOQXqspWJqRrngchylQE4Sj9sWTqwtH/V4ab6PT4wL2v/OjqQ50wYxP4YFjYHyV
+         5tzuNsd6XLlNhYaJWk+WxTHEC8az21Sh9B5FfgF81GDPnhsN5dmpPR3Ge5r1SUzVOBg3
+         vYHg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:content-language:in-reply-to:mime-version
          :user-agent:date:message-id:from:references:to:dkim-signature
          :arc-authentication-results;
-        bh=O1j90dNY3tJbC2K2spNvPiospWeVguR32mP9i5A9vvM=;
-        b=wqV4YmyTrOXawNDUYmEOd16LupVHMbt/5acKrFC3y70Ga77Xf5Hcm3RhL7Ys/KsHP/
-         GoHleYs/ykdcluyXOi9B78dKHzC3VCd8UB91Enq0sEIrpe1vGdX1lvxXSpq121rjA54t
-         IZ9VGvdC2Hztpm+w3l/8xiyQOlJEyYaKkwQ7zib+KB9TbhnjJNffhsum5fWu9sD+7Rvq
-         9l3XBPVppub+Wa0aRwHIy3CAtGwVU4QAFz6T/RvacxQA13INusIYfbySxa13tV0u6x/+
-         vHGsXVUvTcy3tHkGdM07Fq0ACwNXO3NCM0x9K6lhqk+OPZcjWwkbLW/7XvmWfV0dstWC
-         akEA==
+        bh=jDABxhreQ09WdGq2wk7q292Rhr4gchgylH/mKoc1Wh8=;
+        b=JhmooOjHhJgoEuiAgyxZwdSYitjcZEnD2CQXHZ9uyt/Q0L5OaO0sHUb2FhDjHbTLZY
+         qu5lPaYaGIstl7VT5CX0Hhr351Y2I4lPP4AYkglRYpGH0+2iaIN86po7dLwr0GFubMff
+         0uuOXOHQmjurxCHWkDja7LAOGOGEBCrlRP+/9IGMTwJA1QCzR+BuAo87J9/DIf08H6qE
+         As/biRYNu6/YLJ9DhWpRDdbIm8BFD80D79pzSQYEVT6qIXfRrAnRiFet0roTvU29LOv5
+         wMlHLALhu2uua9vjRCcEA2ZVyO+wllcfnDXm9S4IEIppE9lhBWN0M6QzEm35n8pevIFV
+         7DUA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=a5iFy7us;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dkim=fail header.i=@linaro.org header.s=google header.b=Y4bA4pvC;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [208.118.235.17])
-        by mx.google.com with ESMTPS id 17si10447456qtd.441.2017.09.19.11.48.51
+Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
+        by mx.google.com with ESMTPS id 92si1324615qkx.463.2017.09.19.11.51.45
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 19 Sep 2017 11:48:51 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) client-ip=208.118.235.17;
+        Tue, 19 Sep 2017 11:51:45 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=a5iFy7us;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dkim=fail header.i=@linaro.org header.s=google header.b=Y4bA4pvC;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:44850 helo=lists.gnu.org)
+Received: from localhost ([::1]:44866 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1duNZh-0007Sa-Fz
-	for alex.bennee@linaro.org; Tue, 19 Sep 2017 14:48:49 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:37217)
+	id 1duNcV-00012Z-DQ
+	for alex.bennee@linaro.org; Tue, 19 Sep 2017 14:51:43 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:38856)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <richard.henderson@linaro.org>) id 1duNZW-0007RC-1Y
-	for qemu-arm@nongnu.org; Tue, 19 Sep 2017 14:48:39 -0400
+	(envelope-from <richard.henderson@linaro.org>) id 1duNbL-0000Og-PE
+	for qemu-arm@nongnu.org; Tue, 19 Sep 2017 14:50:32 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <richard.henderson@linaro.org>) id 1duNZT-0005ZU-4a
-	for qemu-arm@nongnu.org; Tue, 19 Sep 2017 14:48:38 -0400
-Received: from mail-io0-x231.google.com ([2607:f8b0:4001:c06::231]:55200)
+	(envelope-from <richard.henderson@linaro.org>) id 1duNbK-0006pn-Rt
+	for qemu-arm@nongnu.org; Tue, 19 Sep 2017 14:50:31 -0400
+Received: from mail-io0-x232.google.com ([2607:f8b0:4001:c06::232]:44916)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
-	id 1duNZT-0005YX-0M
-	for qemu-arm@nongnu.org; Tue, 19 Sep 2017 14:48:35 -0400
-Received: by mail-io0-x231.google.com with SMTP id h66so1297517ioh.11
-	for <qemu-arm@nongnu.org>; Tue, 19 Sep 2017 11:48:34 -0700 (PDT)
+	id 1duNbK-0006pM-OP
+	for qemu-arm@nongnu.org; Tue, 19 Sep 2017 14:50:30 -0400
+Received: by mail-io0-x232.google.com with SMTP id v36so1392504ioi.1
+	for <qemu-arm@nongnu.org>; Tue, 19 Sep 2017 11:50:30 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
 	h=subject:to:cc:references:from:message-id:date:user-agent
 	:mime-version:in-reply-to:content-language:content-transfer-encoding;
-	bh=O1j90dNY3tJbC2K2spNvPiospWeVguR32mP9i5A9vvM=;
-	b=a5iFy7usOWCVoy3yuudzy7F/sFDAbRzxFdYTEqqsWpob6aNId+0AABSaECJ4XFzODc
-	jvh8q9ElrgD1rdKuhXWqzh+Bt7YDfIROzltaIV2qEjH4wLab5TUshZ3EToCumDuGuEYD
-	VfbQArzGRz/ZqW7OUMDzKkgEFZvm8qpWVNKz8=
+	bh=jDABxhreQ09WdGq2wk7q292Rhr4gchgylH/mKoc1Wh8=;
+	b=Y4bA4pvCsh7U0OTz3O9ngIDDKfhXDTgLP5Dry5cJjpml9cXQM/wGRkyRbYanRJ5bc2
+	99tLg7ctfNsqhqdGAicLzmWsYLkTjpONkehhpB0foZgKSFaveRR8fQtXAPYpen/Lhi7H
+	x5d8+GeDmMKg8ebVQ307m8Z0VDHpG08ZCcXMw=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:subject:to:cc:references:from:message-id:date
 	:user-agent:mime-version:in-reply-to:content-language
 	:content-transfer-encoding;
-	bh=O1j90dNY3tJbC2K2spNvPiospWeVguR32mP9i5A9vvM=;
-	b=jGEGb+f9gjpZK15tV6wa6g1gdhTmRuTjXkYCJQyr0iLGlhhsGnE72raC/wH//7kIF0
-	/5uZnNejWf+KzhPMNwORQi3gICZ9FT8oWkNPrCeyAX7dDtPNKc2K3IdHjMHLOoIOu9U4
-	tCJj8EnslZwWRuT0OpOu99OKzTZ01qS+eeIYZKCUyX3F916v4cAy6pIIJVGorjgpuBHQ
-	32W/vTU6y0YTOTTkHJz2IBmRdlP/o7gMrRkFPo19kZTG2LVQtx93hy29Kt1uvBjPrpVj
-	zcIPkb6cC87ubdm/8DN+I7g1cvXGS+UupO51cjj3bPn4ZvPHcBVBNhrUn6RohgJ519CD
-	e43g==
-X-Gm-Message-State: AHPjjUgb0tT7g5uWPruso5hklqE2ozHlg/AvH5RkqWnU8sKtrbSojn4s
-	jqw+avEmF+sr1gfZe2nsXOIZFg==
-X-Google-Smtp-Source: AOwi7QDYEQntxIJEn1FgcCCMMGRIzG6pf0o3LF9cFVsytedVdL6T2HkLJTMBAH+IIHyDRg44FcXddw==
-X-Received: by 10.202.77.4 with SMTP id a4mr2448748oib.70.1505846913256;
-	Tue, 19 Sep 2017 11:48:33 -0700 (PDT)
+	bh=jDABxhreQ09WdGq2wk7q292Rhr4gchgylH/mKoc1Wh8=;
+	b=We0JnFktohhpjMvE66K5bwlFPOWTyzXziDMd1N8gE1zvI+bvPALSXg+b0GUrH8MfEo
+	jdGhlHMm46qej1c7WQeLRBOe//scuGSofukA1zyLw/7VyC55L4W14Og8uH2kaZgQD+Gp
+	IJMNmwhoYMY41b2Bu89huM9JC50sqgQPMswI0OLPVcf0ktzwc9MFKCb1qeO1y+Ft65gH
+	JJ9DdfBN6MZAQP6Ls2bllyNG3M8BrThtWyF39gPZVXIGA1Vz8Am1D3K+EX3EsTP1/YW2
+	EijWEQ70n1XFIMPUZvbywzit6wzWJj3UefBBn17QozdHNd2xh6KZzFSRLRnnIKi3URUH
+	phzQ==
+X-Gm-Message-State: AHPjjUgzfBRGhsjE9BIdIUpTlJCcwwrFaXp+V3RdRs6Okr+g5rGJwCNJ
+	9UxUM4rtGdyWog9tLq6mMuNMiw==
+X-Google-Smtp-Source: AOwi7QDivUvIWh2mrKhZ3f4foQBm4xBPw+3/rpSU+7Z9LO2fuAgyZhiSx+P70n5b9tTDYkM0CmI+bQ==
+X-Received: by 10.202.206.1 with SMTP id e1mr2520859oig.150.1505847029974;
+	Tue, 19 Sep 2017 11:50:29 -0700 (PDT)
 Received: from bigtime.twiddle.net (162.189-204-159.bestel.com.mx.
 	[189.204.159.162])
-	by smtp.gmail.com with ESMTPSA id e17sm642606otj.15.2017.09.19.11.48.31
+	by smtp.gmail.com with ESMTPSA id 105sm565957otc.39.2017.09.19.11.50.28
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Tue, 19 Sep 2017 11:48:32 -0700 (PDT)
+	Tue, 19 Sep 2017 11:50:29 -0700 (PDT)
 To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
 References: <1505240046-11454-1-git-send-email-peter.maydell@linaro.org>
-	<1505240046-11454-12-git-send-email-peter.maydell@linaro.org>
+	<1505240046-11454-13-git-send-email-peter.maydell@linaro.org>
 From: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <1e3a6dd4-9b8b-b2c6-723a-5867167b1272@linaro.org>
-Date: Tue, 19 Sep 2017 13:48:30 -0500
+Message-ID: <58618c0e-9336-2cf8-9db2-d11181c29ea7@linaro.org>
+Date: Tue, 19 Sep 2017 13:50:26 -0500
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
 	Thunderbird/52.3.0
 MIME-Version: 1.0
-In-Reply-To: <1505240046-11454-12-git-send-email-peter.maydell@linaro.org>
+In-Reply-To: <1505240046-11454-13-git-send-email-peter.maydell@linaro.org>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:4001:c06::231
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH 11/19] nvic: Compare group
- priority for escalation to HF
+X-Received-From: 2607:f8b0:4001:c06::232
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH 12/19] nvic: In escalation to
+ HardFault, support HF not being priority -1
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -119,25 +119,22 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: patches@linaro.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: QI+wldEOR+D0
+X-TUID: AmxSNsriIBib
 
 On 09/12/2017 01:13 PM, Peter Maydell wrote:
-> In armv7m_nvic_set_pending() we have to compare the
-> priority of an exception against the execution priority
-> to decide whether it needs to be escalated to HardFault.
-> In the specification this is a comparison against the
-> exception's group priority; for v7M we implemented it
-> as a comparison against the raw exception priority
-> because the two comparisons will always give the
-> same answer. For v8M the existence of AIRCR.PRIS and
-> the possibility of different PRIGROUP values for secure
-> and nonsecure exceptions means we need to explicitly
-> calculate the vector's group priority for this check.
+> When escalating to HardFault, we must go into Lockup if we
+> can't take the synchronous HardFault because the current
+> execution priority is already at or below the priority of
+> HardFault. In v7M HF is always priority -1 so a simple < 0
+> comparison sufficed; in v8M the priority of HardFault can
+> vary depending on whether it is a Secure or NonSecure
+> HardFault, so we must check against the priority of the
+> HardFault exception vector we're about to use.
 > 
 > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 > ---
->  hw/intc/armv7m_nvic.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
+>  hw/intc/armv7m_nvic.c | 23 ++++++++++++-----------
+>  1 file changed, 12 insertions(+), 11 deletions(-)
 
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 

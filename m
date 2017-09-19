@@ -1,219 +1,121 @@
-Received: by 10.223.172.38 with SMTP id v35csp4944513wrc;
-        Tue, 19 Sep 2017 06:33:53 -0700 (PDT)
-X-Received: by 10.200.56.252 with SMTP id g57mr1938436qtc.322.1505828033764;
-        Tue, 19 Sep 2017 06:33:53 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1505828033; cv=none;
+Received: by 10.223.172.38 with SMTP id v35csp4967917wrc;
+        Tue, 19 Sep 2017 06:58:07 -0700 (PDT)
+X-Google-Smtp-Source: AOwi7QBYg252eq77IIx93pSWRVZg225O+BoZTcocVyOZP3JTonvtrSqhWpgum1KIR3NkIIW2uNAQ
+X-Received: by 10.55.127.70 with SMTP id a67mr1965491qkd.90.1505829487383;
+        Tue, 19 Sep 2017 06:58:07 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1505829487; cv=none;
         d=google.com; s=arc-20160816;
-        b=pTm3VUl/j2fu+edsDP3VNqlP5KTuV0N2AgOPTkcosQCOhTnlyU+KC/986yzGMMRKwv
-         w/AP5tTADXtZevfdyDOdjJbmIIQOIq5QE6LR7MHbbbBwvnMJ/GV1S5359s0KIPTcUtAE
-         NAyuWHM3jruVwcjlbqwAbytfvmaR/crB/gEoELq68ir8kIbwOxgWrdnbxTzNhM2svdTt
-         FVogZkCCzqn5NIWXpbiC+kYnoeH1Nxzb17tQ7a99EWC3ruHRBDiZHrp2nN0JejoBa5Kc
-         CiPtPrP4fDAPst7bvcerXL0RxnIFKO8yC59Cw1BE4KoF+ErSvyqcXoSALjJ0b3Qb8Rb+
-         4tHw==
+        b=ra0C+LYTCVQ7r0+v6cSfM/lTUA3whd//CyQlYHC1POEQP89ooRkP+uBGRAIj8bAaUf
+         t2on59zu0j/5iaXt3vfFakjreug8b0OhWqY37l9/u6iVInqkDd+wIk6rMgsbs1RrRhC+
+         i87x+W3hGL8mZ+M4m3H/yvzWzSi/xJIT31rKsBu6oaiEXdLJnHO5LKLz6+bRX4RbgYAn
+         lVk5TTDRK/jZF1X7FyWfjhD8i0SiB3BC+JMU/ACNvqNpJjnyrWK8TkNy1wBB/s0HFcVn
+         zPN71xK9HWgmZTZ52u1mX2jXQ5a6pOhqJGTr/wYvTlmyMeWXEDOAxIb8ntz1PSXw8lsm
+         D1zA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:message-id:date:to:from
-         :dkim-signature:arc-authentication-results;
-        bh=o/f4HyXUDNxsrxMwn/7PbqNsdb0q3V/n3FdaipX2p2U=;
-        b=uQfcsv/4rHPbRt2hLDHhe5eBMD2Zff82jfvxdojx9i/XUZRYYX0CjRzQdZfBofWDX+
-         SdP5MVuq7/h8vxG+1nECLeRMwmZXyPj1uvlx7P7awr6igLF471kgnCIWpvgS8nsf2ESs
-         gGhztfzW8wt9Mk1pBNmZ0XbBhQV1N6eouvdNntIlWqsauswmNcHkGFLgfwFlgC5evlzX
-         M6an5FnB6Em+fN3gL5Qh5M7U9iEJdDtL2h/+eJO61ZG1XFW/Rf03TRpRWczn6L7Bf5fs
-         a9H4CbU8vjbjHGeyQRAsrqTVOUtmg6qY07x5lRKm4eA/akxin6e8I+PR0CL9liS+VTON
-         B8Ug==
+        h=sender:errors-to:cc:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence:subject:date:to
+         :from:resent-from:content-transfer-encoding:mime-version:message-id
+         :in-reply-to:resent-message-id:resent-date
+         :arc-authentication-results;
+        bh=ZbLvH0CLm3uJGFWmA4ZiB4TnKXaEKgT3MR499xkM9lE=;
+        b=GzOuNKxa3i8w7gfPA3unXkPOEAakhpzYbVnwHEa66LoXNQoZFLxZXG9YxPcDejPWhF
+         6g0RJGdsncTf2fQ33OSksPsZ5MKmm3FskpxpK+25GG72gAdEvGoaUT3tf4WsEGoJfk5+
+         5Ek5+TlfW/AcgCf0BlOrFdCdx8bEDHXSK5Ta/QvZ0xkbuzKXZXEGAE6AsNHgZ0tmJlKf
+         5RlN/+sRCNtKUgxyExxVZl2CRHL0TR4OOiAqrrYnsFO1RcDlCs1Ghxs8AMIQu3+H8vMq
+         D0rn0eXycgK3mm2dG4ESJgahsyDR9wJpUM3tgOdzeku6d+pfuMAm9VRKXsoyWr1oZzKc
+         BUWw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=EVoOaYOT;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id k4si8990464qkd.430.2017.09.19.06.33.53
+        by mx.google.com with ESMTPS id v64si9287571qkb.46.2017.09.19.06.58.06
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 19 Sep 2017 06:33:53 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Tue, 19 Sep 2017 06:58:07 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=EVoOaYOT;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:42907 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:43099 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1duIet-0006X1-B1
-	for alex.bennee@linaro.org; Tue, 19 Sep 2017 09:33:51 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:46068)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1duJ2L-00083V-3g
+	for alex.bennee@linaro.org; Tue, 19 Sep 2017 09:58:05 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:35628)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1duHzL-0004gc-LH
-	for qemu-devel@nongnu.org; Tue, 19 Sep 2017 08:50:57 -0400
+	(envelope-from <no-reply@patchew.org>) id 1duJ1X-0007Sa-0a
+	for qemu-arm@nongnu.org; Tue, 19 Sep 2017 09:57:20 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1duHzH-0003XD-6D
-	for qemu-devel@nongnu.org; Tue, 19 Sep 2017 08:50:55 -0400
-Received: from mail-qt0-x243.google.com ([2607:f8b0:400d:c0d::243]:35113)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1duHzG-0003WL-OH; Tue, 19 Sep 2017 08:50:51 -0400
-Received: by mail-qt0-x243.google.com with SMTP id l25so2248294qtf.2;
-	Tue, 19 Sep 2017 05:50:50 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=sender:from:to:cc:subject:date:message-id:mime-version
-	:content-transfer-encoding;
-	bh=o/f4HyXUDNxsrxMwn/7PbqNsdb0q3V/n3FdaipX2p2U=;
-	b=EVoOaYOTL/Sm6BOUpKiuU6nW939WvlOzAreJQm29hvKh1cANsZocuoFGsc6LCp/l/w
-	lYslRIrhv8kO94I0vPKrniBG+3vqqgx8Oj5BvY/TMTdIgylSb5oKOxViCXQ7DMzH3HaT
-	kSbwXTsIbCvcI++i13gFWerz0FJcYHMSpOqe5T7/qBOvHJqEnoJdwbvCSOawU3wvyMaT
-	up1oNaGkNa2IZTY9ubhkfbsZ00Vp8cIQCavU7zniI4G+/glwmjb69PWxUnZZ4ldl7eTb
-	WZbds3XNE21m/Rk3hlSDKaPb33pGeJ7beOWkavByvuqqAdE/1t9ey4AmAn8cGmO0ELR1
-	CdUg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
-	:mime-version:content-transfer-encoding;
-	bh=o/f4HyXUDNxsrxMwn/7PbqNsdb0q3V/n3FdaipX2p2U=;
-	b=Zk49Da6bHyucFlVfsD201fqwAT8pRLis/Pk8ISsoPvqcnBmDozREe/I3l2pGHweD5k
-	lLNT5l0PBxuQm0asMvxqE6l4jK1WKD8oAa8W950ZOnlTaJib5vpoLMgW6dD4HUtbTx4d
-	y5tkRFMLN5Fhr2utViQWp4gn5J2SfvErqfXyrg8FWVw0T/Np08TJ/xZdQLOBks41Yvj3
-	RpRMt2tUS9Dqni2AnNre0ccjsFSj66kefrQuK9y5SFq/rf97gyvOVsFSuAaE3r9Mqy7J
-	1+Ej8yovVGVn2BeRfjZHQmSNaczNyOUNHJdmd4GpHSPvPtbgOcOflZm+nvN4LIpcXw/R
-	oUgw==
-X-Gm-Message-State: AHPjjUjADK+n/2TuSW+3i4wIDlC3TD1UJBLmQxZUcKgimoVrbyQ2g+fp
-	R+xfDVBTMXuPfPvlZoUXBH0=
-X-Google-Smtp-Source: AOwi7QAPAF/qzjA3siv1u1CSR8KD8Tcplc43PCyHNWaTrT/QkmBm+Fnj5WUa2wEGuDiIVRjxEZ0fIg==
-X-Received: by 10.200.50.125 with SMTP id y58mr1688115qta.266.1505825450063;
-	Tue, 19 Sep 2017 05:50:50 -0700 (PDT)
-Received: from yoga.offpageads.com ([181.93.89.178])
-	by smtp.gmail.com with ESMTPSA id
-	a132sm6650591qkb.28.2017.09.19.05.50.47
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Tue, 19 Sep 2017 05:50:49 -0700 (PDT)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-To: Peter Maydell <peter.maydell@linaro.org>,
-	Andrzej Zaborowski <balrogg@gmail.com>
-Date: Tue, 19 Sep 2017 09:50:41 -0300
-Message-Id: <20170919125041.2153-1-f4bug@amsat.org>
-X-Mailer: git-send-email 2.14.1
+	(envelope-from <no-reply@patchew.org>) id 1duJ1S-0002pF-UL
+	for qemu-arm@nongnu.org; Tue, 19 Sep 2017 09:57:15 -0400
+Resent-Date: Tue, 19 Sep 2017 09:57:15 -0400
+Resent-Message-Id: <E1duJ1S-0002pF-UL@eggs.gnu.org>
+Received: from sender-of-o52.zoho.com ([135.84.80.217]:21495)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <no-reply@patchew.org>)
+	id 1duJ1I-0002iT-25; Tue, 19 Sep 2017 09:57:00 -0400
+Received: from [172.17.0.2] (23.253.156.214 [23.253.156.214]) by
+	mx.zohomail.com with SMTPS id 1505829408212714.5344483062594;
+	Tue, 19 Sep 2017 06:56:48 -0700 (PDT)
+In-Reply-To: <20170919125041.2153-1-f4bug@amsat.org>
+Message-ID: <150582940762.57.11503092763565098162@69b6ddf88678>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:400d:c0d::243
-Subject: [Qemu-devel] [PATCH] hw/input/lm832x: move LM8323 declarations to
- input/keypad.h
-X-BeenThere: qemu-devel@nongnu.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Resent-From: 
+From: no-reply@patchew.org
+To: f4bug@amsat.org
+Date: Tue, 19 Sep 2017 06:56:48 -0700 (PDT)
+X-ZohoMailClient: External
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
+X-Received-From: 135.84.80.217
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH] hw/input/lm832x: move LM8323
+ declarations to input/keypad.h
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm@nongnu.org,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
-	qemu-devel@nongnu.org
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: kDv1PG5WK+qZ
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: qemu-devel@nongnu.org
+Cc: peter.maydell@linaro.org, famz@redhat.com, qemu-devel@nongnu.org,
+	f4bug@amsat.org, qemu-arm@nongnu.org, balrogg@gmail.com
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: W4/z0wlOVcmO
 
-Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
----
-Based-on: 20170919123053.32675-1-f4bug@amsat.org
-
-$ ./scripts/get_maintainer.pl -f hw/input/lm832x.c
-get_maintainer.pl: No maintainers found, printing recent contributors.
-
- include/hw/i2c/i2c.h      |  3 ---
- include/hw/input/keypad.h | 23 +++++++++++++++++++++++
- hw/arm/nseries.c          |  3 ++-
- hw/input/lm832x.c         |  3 +--
- 4 files changed, 26 insertions(+), 6 deletions(-)
- create mode 100644 include/hw/input/keypad.h
-
-diff --git a/include/hw/i2c/i2c.h b/include/hw/i2c/i2c.h
-index 24e95d0155..8fdf3e47d6 100644
---- a/include/hw/i2c/i2c.h
-+++ b/include/hw/i2c/i2c.h
-@@ -70,9 +70,6 @@ int i2c_recv(I2CBus *bus);
- 
- DeviceState *i2c_create_slave(I2CBus *bus, const char *name, uint8_t addr);
- 
--/* lm832x.c */
--void lm832x_key_event(DeviceState *dev, int key, int state);
--
- extern const VMStateDescription vmstate_i2c_slave;
- 
- #define VMSTATE_I2C_SLAVE(_field, _state) {                          \
-diff --git a/include/hw/input/keypad.h b/include/hw/input/keypad.h
-new file mode 100644
-index 0000000000..efacef6458
---- /dev/null
-+++ b/include/hw/input/keypad.h
-@@ -0,0 +1,23 @@
-+/*
-+ * This program is free software; you can redistribute it and/or modify it
-+ * under the terms and conditions of the GNU General Public License,
-+ * version 2 or later, as published by the Free Software Foundation.
-+ *
-+ * This program is distributed in the hope it will be useful, but WITHOUT
-+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
-+ * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for
-+ * more details.
-+ *
-+ * You should have received a copy of the GNU General Public License along with
-+ * this program.  If not, see <http://www.gnu.org/licenses/>.
-+ */
-+#ifndef HW_KEYPAD_H
-+#define HW_KEYPAD_H
-+
-+#include "hw/hw.h"
-+
-+#define TYPE_LM8323 "lm8323"
-+
-+void lm832x_key_event(DeviceState *dev, int key, int state);
-+
-+#endif
-diff --git a/hw/arm/nseries.c b/hw/arm/nseries.c
-index a32ac82702..594b7e878c 100644
---- a/hw/arm/nseries.c
-+++ b/hw/arm/nseries.c
-@@ -30,6 +30,7 @@
- #include "ui/console.h"
- #include "hw/boards.h"
- #include "hw/i2c/i2c.h"
-+#include "hw/input/keypad.h"
- #include "hw/devices.h"
- #include "hw/block/flash.h"
- #include "hw/hw.h"
-@@ -412,7 +413,7 @@ static void n810_kbd_setup(struct n800_s *s)
-     /* Attach the LM8322 keyboard to the I2C bus,
-      * should happen in n8x0_i2c_setup and s->kbd be initialised here.  */
-     s->kbd = i2c_create_slave(omap_i2c_bus(s->mpu->i2c[0]),
--                           "lm8323", N810_LM8323_ADDR);
-+                              TYPE_LM8323, N810_LM8323_ADDR);
-     qdev_connect_gpio_out(s->kbd, 0, kbd_irq);
- }
- 
-diff --git a/hw/input/lm832x.c b/hw/input/lm832x.c
-index 2340523da0..868ddfe5ea 100644
---- a/hw/input/lm832x.c
-+++ b/hw/input/lm832x.c
-@@ -19,12 +19,11 @@
-  */
- 
- #include "qemu/osdep.h"
--#include "hw/hw.h"
- #include "hw/i2c/i2c.h"
-+#include "hw/input/keypad.h"
- #include "qemu/timer.h"
- #include "ui/console.h"
- 
--#define TYPE_LM8323 "lm8323"
- #define LM8323(obj) OBJECT_CHECK(LM823KbdState, (obj), TYPE_LM8323)
- 
- typedef struct {
--- 
-2.14.1
+SGksCgpUaGlzIHNlcmllcyBzZWVtcyB0byBoYXZlIHNvbWUgY29kaW5nIHN0eWxlIHByb2JsZW1z
+LiBTZWUgb3V0cHV0IGJlbG93IGZvcgptb3JlIGluZm9ybWF0aW9uOgoKU3ViamVjdDogW1FlbXUt
+ZGV2ZWxdIFtQQVRDSF0gaHcvaW5wdXQvbG04MzJ4OiBtb3ZlIExNODMyMyBkZWNsYXJhdGlvbnMg
+dG8gaW5wdXQva2V5cGFkLmgKTWVzc2FnZS1pZDogMjAxNzA5MTkxMjUwNDEuMjE1My0xLWY0YnVn
+QGFtc2F0Lm9yZwpUeXBlOiBzZXJpZXMKCj09PSBURVNUIFNDUklQVCBCRUdJTiA9PT0KIyEvYmlu
+L2Jhc2gKCkJBU0U9YmFzZQpuPTEKdG90YWw9JChnaXQgbG9nIC0tb25lbGluZSAkQkFTRS4uIHwg
+d2MgLWwpCmZhaWxlZD0wCgpnaXQgY29uZmlnIC0tbG9jYWwgZGlmZi5yZW5hbWVsaW1pdCAwCmdp
+dCBjb25maWcgLS1sb2NhbCBkaWZmLnJlbmFtZXMgVHJ1ZQoKY29tbWl0cz0iJChnaXQgbG9nIC0t
+Zm9ybWF0PSVIIC0tcmV2ZXJzZSAkQkFTRS4uKSIKZm9yIGMgaW4gJGNvbW1pdHM7IGRvCiAgICBl
+Y2hvICJDaGVja2luZyBQQVRDSCAkbi8kdG90YWw6ICQoZ2l0IGxvZyAtbiAxIC0tZm9ybWF0PSVz
+ICRjKS4uLiIKICAgIGlmICEgZ2l0IHNob3cgJGMgLS1mb3JtYXQ9ZW1haWwgfCAuL3NjcmlwdHMv
+Y2hlY2twYXRjaC5wbCAtLW1haWxiYWNrIC07IHRoZW4KICAgICAgICBmYWlsZWQ9MQogICAgICAg
+IGVjaG8KICAgIGZpCiAgICBuPSQoKG4rMSkpCmRvbmUKCmV4aXQgJGZhaWxlZAo9PT0gVEVTVCBT
+Q1JJUFQgRU5EID09PQoKVXBkYXRpbmcgM2M4Y2Y1YTljMjFmZjg3ODIxNjRkMWRlZjdmNDRiZDg4
+ODcxMzM4NAplcnJvcjogUlBDIGZhaWxlZDsgY3VybCAxOCB0cmFuc2ZlciBjbG9zZWQgd2l0aCBv
+dXRzdGFuZGluZyByZWFkIGRhdGEgcmVtYWluaW5nCmZhdGFsOiBUaGUgcmVtb3RlIGVuZCBodW5n
+IHVwIHVuZXhwZWN0ZWRseQplcnJvcjogQ291bGQgbm90IGZldGNoIDNjOGNmNWE5YzIxZmY4Nzgy
+MTY0ZDFkZWY3ZjQ0YmQ4ODg3MTMzODQKVHJhY2ViYWNrIChtb3N0IHJlY2VudCBjYWxsIGxhc3Qp
+OgogIEZpbGUgIi91c3IvYmluL3BhdGNoZXciLCBsaW5lIDQ0MiwgaW4gdGVzdF9vbmUKICAgIGdp
+dF9jbG9uZV9yZXBvKGNsb25lLCByWyJyZXBvIl0sIHJbImhlYWQiXSwgbG9nZikKICBGaWxlICIv
+dXNyL2Jpbi9wYXRjaGV3IiwgbGluZSA0OCwgaW4gZ2l0X2Nsb25lX3JlcG8KICAgIHN0ZG91dD1s
+b2dmLCBzdGRlcnI9bG9nZikKICBGaWxlICIvdXNyL2xpYjY0L3B5dGhvbjMuNi9zdWJwcm9jZXNz
+LnB5IiwgbGluZSAyOTEsIGluIGNoZWNrX2NhbGwKICAgIHJhaXNlIENhbGxlZFByb2Nlc3NFcnJv
+cihyZXRjb2RlLCBjbWQpCnN1YnByb2Nlc3MuQ2FsbGVkUHJvY2Vzc0Vycm9yOiBDb21tYW5kICdb
+J2dpdCcsICdyZW1vdGUnLCAnYWRkJywgJy1mJywgJy0tbWlycm9yPWZldGNoJywgJzNjOGNmNWE5
+YzIxZmY4NzgyMTY0ZDFkZWY3ZjQ0YmQ4ODg3MTMzODQnLCAnaHR0cHM6Ly9naXRodWIuY29tL3Bh
+dGNoZXctcHJvamVjdC9xZW11J10nIHJldHVybmVkIG5vbi16ZXJvIGV4aXQgc3RhdHVzIDEuCgoK
+Ci0tLQpFbWFpbCBnZW5lcmF0ZWQgYXV0b21hdGljYWxseSBieSBQYXRjaGV3IFtodHRwOi8vcGF0
+Y2hldy5vcmcvXS4KUGxlYXNlIHNlbmQgeW91ciBmZWVkYmFjayB0byBwYXRjaGV3LWRldmVsQGZy
+ZWVsaXN0cy5vcmc=
 

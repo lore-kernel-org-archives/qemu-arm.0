@@ -1,81 +1,110 @@
-Received: by 10.223.172.38 with SMTP id v35csp4817794wrc;
-        Tue, 19 Sep 2017 04:31:32 -0700 (PDT)
-X-Google-Smtp-Source: AOwi7QBw7AoA6t+zp3YeFFyhT+gpEDa7ay9ynnk8RcZghX+Z09huRWEKjb/+GSpdng860sMt79cy
-X-Received: by 10.200.39.13 with SMTP id g13mr1493484qtg.234.1505820692791;
-        Tue, 19 Sep 2017 04:31:32 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1505820692; cv=none;
+Received: by 10.223.172.38 with SMTP id v35csp4858879wrc;
+        Tue, 19 Sep 2017 05:13:21 -0700 (PDT)
+X-Received: by 10.200.24.214 with SMTP id o22mr1680079qtk.123.1505823201745;
+        Tue, 19 Sep 2017 05:13:21 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1505823201; cv=none;
         d=google.com; s=arc-20160816;
-        b=QpSdngakPWqj6WPj7Or1oserqDXAc2CIwP6T+6JMRnidmyew7s08Asuya7UuOI75GS
-         spg8cDGe7ck1ZsZ/qEI+9xfVCqA5Jl3KaZ3Uvkt3RPwE/g1AOUMHVGuksZU8m9b35YMP
-         w7N7ZSj0DdMg/JMnn6QtzAC4G7MGoQ8NPZX/ANNbM5MjDVfS8G9IMzy9/SjL2ztLrPJw
-         Jn9Su0AvT+a6cX42Q01DaXNnlzPifN/2xRMukKXBzsUELxsezqG6xlC+V0QMhCRfDrwp
-         lNh1cYEi/oIQmAobxvNwDopSmGf0/IgHS30q2Oo7W/5xGXt01jFtUTFuewoVK+TURewW
-         fG0Q==
+        b=CbX2dBk6pZgI82aZV/D01KO8j/S/cIAsWPNx90WUr+V4Iw6GnuHT9DJ3Lr8GZRQzsl
+         HDlOrk4nVWe5gO77X+ddbRRn310EVfXmrGQU+E+KMaySkXqQRFL7YJQWbylRLHSIHT6Q
+         D8rsT3bs3A/c5VhZJK7B2FS8CoiQnJqdgkicePCzmXffbfokk+tR2ZqS+RNEItgyY1Gf
+         94loqn6zd2Z+Uz208F7/71wFQOmpMy03D4LL7KP2xpfoTISKsd4MYNasfJ32BLC9vNIB
+         1qzJY6KqRIk8oYBhDZ1PHmxQ4xCvxD86FEPN6pGlvqF2zs0pFNbfarPfHFB5nx+OeldD
+         0i6w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:to:from:arc-authentication-results;
-        bh=1RriaIFfC3oE0aCU2bFChSVBxocIBMO+tMsyHWukmTQ=;
-        b=HfU1ojHoN7Dzh4VMcYPdCN6u9sy1RT2VdtnJ+S6zXb6eA6CDPRvF8Fwoilk4jwgpu5
-         /XSHOWUFBPPy9qGTxhaWtUylfM7PPTvp/GBee80vgc2A33L0dYco9qwZke/Uxg0yQmTg
-         Sv7Uuqwh7/6NRmIFydV0LFE4y+h2+eUwNnT0elDHk57XA+45bAAv/o/AXx7+4cNqL27E
-         GA4tGOxMPYpl/kn5XiSo1w+Xwe2q5a2PTKU2RYnT+7cQujEq469FywoDDufw2cZ1lG+7
-         s5TyyHQf56aCN1j3Prsj4FNETTsVDx3Eeif1dIvEKtwy+WjwpKU9fZxgG3b0ykEAFgOd
-         ymgw==
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:to:dkim-signature
+         :arc-authentication-results;
+        bh=LIfrsyEkEY/+b7Cs9rchpqdmj9VrMy3goK+JiL3LDW8=;
+        b=Ck1usGHgQ0MWrK3zFoBSXmMZPU7dk6lSslAAHUqdfpy6Q2vd13BPhg+cts/rDQwjqV
+         TxukWvsxYdm+Fdcq9OddL7K/tSguIuSb/kArhW7INeBak2353gIOcuPaMhv/hIXUsJSO
+         WClmDOmbzjHxrOfziwzbFzxgRICnQkm41W8lgKlbOkBJzp3pM8dJHv6bJ54EcVsnsWR1
+         QpZEEzvWGZ8jPYfEVCsCInYSVeNwRgmaHAbf4stukndRa0LOyOR9ymJCbhqSNf7QjYih
+         5oX+eHrIOozu45mTZgOy0Tu3Sua1wRwp4LF6dMe7GgoPssJfQorjIUNusBdbpI6T6k5g
+         LiTg==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Q3EjlWB4;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id a22si9308350qtc.268.2017.09.19.04.31.32
+        by mx.google.com with ESMTPS id p64si8827461qkd.73.2017.09.19.05.13.21
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 19 Sep 2017 04:31:32 -0700 (PDT)
+        Tue, 19 Sep 2017 05:13:21 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Q3EjlWB4;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:41708 helo=lists.gnu.org)
+Received: from localhost ([::1]:42505 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1duGkU-0005KT-Kw
-	for alex.bennee@linaro.org; Tue, 19 Sep 2017 07:31:30 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:49331)
+	id 1duHOx-0006ZM-JJ
+	for alex.bennee@linaro.org; Tue, 19 Sep 2017 08:13:19 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:50185)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <clg@kaod.org>) id 1duGgf-0002MK-OU
-	for qemu-arm@nongnu.org; Tue, 19 Sep 2017 07:27:34 -0400
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1duHOI-0006Bl-2T
+	for qemu-arm@nongnu.org; Tue, 19 Sep 2017 08:12:45 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <clg@kaod.org>) id 1duGgc-0006VT-LE
-	for qemu-arm@nongnu.org; Tue, 19 Sep 2017 07:27:33 -0400
-Received: from 8.mo179.mail-out.ovh.net ([46.105.75.26]:34218)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <clg@kaod.org>) id 1duGgc-0006Ur-Fo
-	for qemu-arm@nongnu.org; Tue, 19 Sep 2017 07:27:30 -0400
-Received: from player716.ha.ovh.net (b6.ovh.net [213.186.33.56])
-	by mo179.mail-out.ovh.net (Postfix) with ESMTP id 80F9563493
-	for <qemu-arm@nongnu.org>; Tue, 19 Sep 2017 13:27:29 +0200 (CEST)
-Received: from zorba.kaod.org.com (deibp9eh1--blueice1n2.emea.ibm.com
-	[195.212.29.164]) (Authenticated sender: clg@kaod.org)
-	by player716.ha.ovh.net (Postfix) with ESMTPSA id 0A61E56007F;
-	Tue, 19 Sep 2017 13:27:22 +0200 (CEST)
-From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
-To: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 19 Sep 2017 13:26:45 +0200
-Message-Id: <20170919112645.8574-6-clg@kaod.org>
-X-Mailer: git-send-email 2.13.5
-In-Reply-To: <20170919112645.8574-1-clg@kaod.org>
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1duHOD-0003B6-9z
+	for qemu-arm@nongnu.org; Tue, 19 Sep 2017 08:12:38 -0400
+Received: from mail-qk0-x241.google.com ([2607:f8b0:400d:c09::241]:35945)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1duHO4-0002xr-PZ; Tue, 19 Sep 2017 08:12:24 -0400
+Received: by mail-qk0-x241.google.com with SMTP id i14so2113569qke.3;
+	Tue, 19 Sep 2017 05:12:24 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=sender:subject:to:cc:references:from:message-id:date:user-agent
+	:mime-version:in-reply-to:content-language:content-transfer-encoding;
+	bh=LIfrsyEkEY/+b7Cs9rchpqdmj9VrMy3goK+JiL3LDW8=;
+	b=Q3EjlWB4vWnkMDkRP8sqxDgZZ2ubcokBiAG8xpLVyqEG1mGnKoeaA8p5TA7Fkzig6K
+	Ut5P7qk1ZWKFJ3zRK5e612+vmJvcqmTqdhMhOIotNZ/odotHkRcllMuwIFJHANDQqvnr
+	EN0UIWULmHiOLRevUSE+jaUznS2F1kajEki0Z10QxKL6iRNLfx0cpDzWsoN1D3BlZNkS
+	Xpu1fBUDQSyRKd8HELyubqq5FMT/+mKJ3K9elSR8CZCh9rYEvVSiX4WL0B6eeNAdhExf
+	w4Z5+U3MaMvrOjtNipoF72jyRnLTJEXY8bzlqGTp7gGA0gOtSk1LTp/DBrHbsaytS3jo
+	PRzA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+	:date:user-agent:mime-version:in-reply-to:content-language
+	:content-transfer-encoding;
+	bh=LIfrsyEkEY/+b7Cs9rchpqdmj9VrMy3goK+JiL3LDW8=;
+	b=slHXXDhSEIPNGJ65/1QuAfjpUwGDuDYkQefuyNl5z8tZIrjUog33SzeDMNQ/N9xRCx
+	NRfzeV+PHhTQ3aGw9n53hWNWd4aMwVY1uQutLpPeSuc/tbegyAr7+nxgyXVd3/gDM1Cc
+	07rqYm9rJciQkLPBGBbwiKIGK4Bmzd2Vy11xW/WJ4PxW5h0wJbpWpNtqhUykNEWbDlYR
+	IS1UtUEGGjUwA+NYjELu3/8pXvgMSq8+QQheOee2gYK9aixRXdRdlurtbW+ADzUAhZKj
+	xgS6P5tjuyNyfiR/2sTyLpHFSn6VKAjqdeqCybbVlVId7x9We6kWGksif4cke8j5DOR2
+	gvRA==
+X-Gm-Message-State: AHPjjUg9g9fOJtRHGSjkoljIX3je/+9LK/KInvl0yLcj6yI/eL75SA+g
+	40Gee9WGr3Xv6WJfZxWZO4s=
+X-Google-Smtp-Source: AOwi7QDeK8YXh7+k/+7G034GWbU3qIzz9k/AOpolC/KxMQKwCiuBydFb91BJtX0i89sVH8gmxx2xbQ==
+X-Received: by 10.55.137.66 with SMTP id l63mr1528647qkd.249.1505823144092;
+	Tue, 19 Sep 2017 05:12:24 -0700 (PDT)
+Received: from [192.168.1.10] ([181.93.89.178])
+	by smtp.gmail.com with ESMTPSA id r1sm6895516qtc.90.2017.09.19.05.12.21
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Tue, 19 Sep 2017 05:12:23 -0700 (PDT)
+To: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
 References: <20170919112645.8574-1-clg@kaod.org>
+	<20170919112645.8574-4-clg@kaod.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Message-ID: <472ff629-39bd-9fe2-c1f8-a08ba6997b53@amsat.org>
+Date: Tue, 19 Sep 2017 09:12:20 -0300
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.3.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-X-Ovh-Tracer-Id: 18383975157033896721
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrfeelledrheejgdegudcutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmd
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 46.105.75.26
-Subject: [Qemu-arm] [PATCH 5/5] aspeed: add the pc9552 chips to the
- witherspoon machine
+In-Reply-To: <20170919112645.8574-4-clg@kaod.org>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:400d:c09::241
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH 3/5] aspeed: Add EEPROM I2C
+ devices
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -87,50 +116,79 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jeffery <andrew@aj.id.au>,
-	=?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
+Cc: Andrew Jeffery <andrew@aj.id.au>, Peter Maydell <peter.maydell@linaro.org>,
 	qemu-arm@nongnu.org, qemu-devel@nongnu.org, Joel Stanley <joel@jms.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: U/4ex6W9WuH+
+X-TUID: Njt3C8gNSkvR
 
-The pca9552 LED blinkers on the Witherspoon machine are used for leds
-but also as GPIOs to control fans and GPUs.
+Hi Cédric,
 
-Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
----
- hw/arm/aspeed.c | 4 ++++
- 1 file changed, 4 insertions(+)
+On 09/19/2017 08:26 AM, Cédric Le Goater wrote:
+> The Aspeed boards have at least one EEPROM to hold the Vital Product
+> Data (VPD).
+> 
+> Signed-off-by: Cédric Le Goater <clg@kaod.org>
+> ---
+>   hw/arm/aspeed.c | 20 ++++++++++++++++++++
+>   1 file changed, 20 insertions(+)
+> 
+> diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
+> index 362b683e9021..3e74970d7ad2 100644
+> --- a/hw/arm/aspeed.c
+> +++ b/hw/arm/aspeed.c
+> @@ -251,6 +251,17 @@ static void aspeed_board_init(MachineState *machine,
+>       arm_load_kernel(ARM_CPU(first_cpu), &aspeed_board_binfo);
+>   }
+>   
+> +static void aspeed_i2c_add_eeprom(I2CBus *bus, uint8_t address, size_t size)
+> +{
+> +    uint8_t *eeprom_buf = g_malloc0(size);
+> +    DeviceState *dev;
+> +
+> +    dev = qdev_create((BusState *) bus, "smbus-eeprom");
+> +    qdev_prop_set_uint8(dev, "address", address);
+> +    qdev_prop_set_ptr(dev, "data", eeprom_buf);
+> +    qdev_init_nofail(dev);
 
-diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
-index 3e74970d7ad2..726cb438a52a 100644
---- a/hw/arm/aspeed.c
-+++ b/hw/arm/aspeed.c
-@@ -386,6 +386,8 @@ static void witherspoon_bmc_i2c_init(AspeedBoardState=
- *bmc)
- {
-     AspeedSoCState *soc =3D &bmc->soc;
-=20
-+    i2c_create_slave(aspeed_i2c_get_bus(DEVICE(&soc->i2c), 3), "pca9552"=
-, 0x60);
-+
-     i2c_create_slave(aspeed_i2c_get_bus(DEVICE(&soc->i2c), 4), "tmp423",=
- 0x4c);
-     i2c_create_slave(aspeed_i2c_get_bus(DEVICE(&soc->i2c), 5), "tmp423",=
- 0x4c);
-=20
-@@ -397,6 +399,8 @@ static void witherspoon_bmc_i2c_init(AspeedBoardState=
- *bmc)
-=20
-     aspeed_i2c_add_eeprom(aspeed_i2c_get_bus(DEVICE(&soc->i2c), 11), 0x5=
-1,
-                           8 * 1024);
-+    i2c_create_slave(aspeed_i2c_get_bus(DEVICE(&soc->i2c), 11), "pca9552=
-",
-+                     0x60);
- }
-=20
- static void witherspoon_bmc_init(MachineState *machine)
---=20
-2.13.5
+Can you merge this with smbus_eeprom_init() ?
+I think the cleaner way would be add "include/hw/i2c/eeprom.h" defining 
+SMB_EEPROM_TYPE "smbus-eeprom" and declare smbus_eeprom_init() there or 
+as inlined.
 
+> +}
+> +
+>   static void palmetto_bmc_i2c_init(AspeedBoardState *bmc)
+>   {
+>       AspeedSoCState *soc = &bmc->soc;
+> @@ -260,6 +271,9 @@ static void palmetto_bmc_i2c_init(AspeedBoardState *bmc)
+>        * enough to provide basic RTC features. Alarms will be missing */
+>       i2c_create_slave(aspeed_i2c_get_bus(DEVICE(&soc->i2c), 0), "ds1338", 0x68);
+>   
+> +    aspeed_i2c_add_eeprom(aspeed_i2c_get_bus(DEVICE(&soc->i2c), 0), 0x50,
+> +                          256 * 1024);
+> +
+>       /* add a TMP423 temperature sensor */
+>       dev = i2c_create_slave(aspeed_i2c_get_bus(DEVICE(&soc->i2c), 2),
+>                              "tmp423", 0x4c);
+> @@ -298,6 +312,9 @@ static void ast2500_evb_i2c_init(AspeedBoardState *bmc)
+>   {
+>       AspeedSoCState *soc = &bmc->soc;
+>   
+> +    aspeed_i2c_add_eeprom(aspeed_i2c_get_bus(DEVICE(&soc->i2c), 3), 0x50,
+> +                          8 * 1024);
+> +
+>       /* The AST2500 EVB expects a LM75 but a TMP105 is compatible */
+>       i2c_create_slave(aspeed_i2c_get_bus(DEVICE(&soc->i2c), 7), "tmp105", 0x4d);
+>   
+> @@ -377,6 +394,9 @@ static void witherspoon_bmc_i2c_init(AspeedBoardState *bmc)
+>       /* The witherspoon board expects Epson RX8900 I2C RTC but a ds1338 is
+>        * good enough */
+>       i2c_create_slave(aspeed_i2c_get_bus(DEVICE(&soc->i2c), 11), "ds1338", 0x32);
+> +
+> +    aspeed_i2c_add_eeprom(aspeed_i2c_get_bus(DEVICE(&soc->i2c), 11), 0x51,
+> +                          8 * 1024);
+>   }
+>   
+>   static void witherspoon_bmc_init(MachineState *machine)
+> 

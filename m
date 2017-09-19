@@ -1,400 +1,169 @@
-Received: by 10.223.172.38 with SMTP id v35csp4814329wrc;
-        Tue, 19 Sep 2017 04:27:45 -0700 (PDT)
-X-Google-Smtp-Source: AOwi7QAtrSNXV+6hyCwzVVw/b0o2yUDq6JG/cECBdgpMkxqg6p0fkycHfilaLH4C4iAEjbw9/YYp
-X-Received: by 10.55.49.9 with SMTP id x9mr1378276qkx.89.1505820465805;
-        Tue, 19 Sep 2017 04:27:45 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1505820465; cv=none;
+Received: by 10.223.172.38 with SMTP id v35csp4815407wrc;
+        Tue, 19 Sep 2017 04:29:04 -0700 (PDT)
+X-Google-Smtp-Source: AOwi7QCJX2kapMs59pr6hgeeI2AedUky3bFZAzfKGxdQFwjBVxzB3XVRYMIUDI9j6BHi9IFzj4s8
+X-Received: by 10.55.79.68 with SMTP id d65mr1451814qkb.110.1505820544550;
+        Tue, 19 Sep 2017 04:29:04 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1505820544; cv=none;
         d=google.com; s=arc-20160816;
-        b=VYN5X5VsDObfXCP0YVSN7FVDLgoAL/MVNC9zIWcgCiTx9GuJb0wpJivaWXavyYYvC2
-         oc1vxuJSywzBzVKYSQxNQmIZMn+ZtS4PBpvudk1URzPnDYDc5yABaES8riiYZm0w7WBP
-         7WKF7LtRH3ZWL32ZtFNNVyaT6kn1dsTWXrKJBV+ehQGCWFLQAGUgByb/w9xo/ntpf/un
-         Kw7Q39ozlbkwZLZL24Akx/ymP6xKhDWiZxwzcDdzLdyocjt66dmb1m2UsGEAv3ytELzP
-         60Ky49/2ZeL8o/HI92muDutzXBK/YHdtM5aSTFEwejPmUFw+MP6lHDvYtdmQ+4hJA1Tr
-         AeFQ==
+        b=VPEamRFvwhrHCP0+FCSch+y0DB2oe2rM3p7a1agjOfZrEa7rGiqu8rijb1JM7oYp6O
+         7BpXm7Z3vfqXnZWKFXxsH7+pTwlJGaseXMflLciCVvx8nYFycGqC2rUue3K3ESTiE1Cr
+         46XmbsSpBWjdFdzWw+9dfiYhJuXGQwSOIWgH5boo8juUlTni6L/pQwP50YSrAE73ETam
+         7okrnSva4fhdeORz6Re9GGwyXgg2jznDSi5VqY1/lM5Brhz7ehOp27HkM1+hbiFXPifh
+         fPBLrdvUYBbMUJzYkJ0pbj3GXdRVn0k2HxGWz7AquAhulQHJaqbh4w8g4jVzOOMNOq70
+         W16g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:to:from:arc-authentication-results;
-        bh=BSzrynuO1iOo2CK6rQHNQDqzEoc17vUODS/ojoG1m+c=;
-        b=vlMS8dsZzSnKygH7uHHtgW2WIbHS2kSVv75N3OQnQQfqhRdxjogQwo1O8mo0wb3oa7
-         EVI31xn6b0WqeSfp63VBkuiMauq/MHXqIsKnEidW5iXGxnEW2G0YKNxRRdx+WpUD2nxG
-         fQpCoqb8yFiJgxM+y19kEj4ge8OgdEsIz8k5pu6GnM0cm6lTZYp3RmanRQyqWA58BqpD
-         tQeB3XS/i+I2UM8QPcFonJmnuBuOjmn6X/gsF10g68Cs1Qy4cEI41QvfMIbCNIEJne5w
-         0940nSeJ2pTOxh3tHsdrHc8qY1twEiAn4ZaR8//6BeHScTW5XY9vkP1O9KndGSRoKNvd
-         tOGQ==
+        bh=hOblAI95huThItZI/Ugi4abzzRPMaIEhFE4TjKdKnCU=;
+        b=BS05iiz3mWOt71epV/0jzL/IOtaG4NfzBS6jQEHBaybUj12X7gH/QXdg0LGmBoTmQj
+         JtBxxCSVwk84ufeYeMCN9ufq+Oc4k2VROlmj0kPLrbb0BbER0JleLP8PqvWRQ29Dn6xE
+         YHLaLhbv+q4IkEI2zrQvJC8ll42EsRyhh+HAPHbVUGvi+1hlFoHtTdAs4pT0tn+vXj0M
+         gBfdK5WdWBLhrPzOtEPzgq8y7QQ2KMC4I70Qde9HqlzFQBQAvopLTapVxd8Ynz65tiZS
+         XNEI7e5Lac+d0dx0MoeLHLTgY85vbWx3XW30Za16ggEzIOQvVNlizyLRotNwoxim/VoX
+         HYpQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id q25si9282043qtj.171.2017.09.19.04.27.45
+        by mx.google.com with ESMTPS id v64si9025225qkb.46.2017.09.19.04.29.04
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 19 Sep 2017 04:27:45 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Tue, 19 Sep 2017 04:29:04 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:41682 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:41686 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1duGgp-0002LF-9h
-	for alex.bennee@linaro.org; Tue, 19 Sep 2017 07:27:43 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:49278)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1duGi6-0003AT-85
+	for alex.bennee@linaro.org; Tue, 19 Sep 2017 07:29:02 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:49233)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <clg@kaod.org>) id 1duGgZ-0002H2-DI
-	for qemu-arm@nongnu.org; Tue, 19 Sep 2017 07:27:30 -0400
+	(envelope-from <clg@kaod.org>) id 1duGgT-0002BN-1K
+	for qemu-devel@nongnu.org; Tue, 19 Sep 2017 07:27:22 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <clg@kaod.org>) id 1duGgW-0006RY-86
-	for qemu-arm@nongnu.org; Tue, 19 Sep 2017 07:27:27 -0400
-Received: from 3.mo179.mail-out.ovh.net ([178.33.251.175]:43235)
+	(envelope-from <clg@kaod.org>) id 1duGgP-0006Mk-Tu
+	for qemu-devel@nongnu.org; Tue, 19 Sep 2017 07:27:21 -0400
+Received: from 5.mo179.mail-out.ovh.net ([46.105.43.140]:46810)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <clg@kaod.org>) id 1duGgW-0006Qx-0A
-	for qemu-arm@nongnu.org; Tue, 19 Sep 2017 07:27:24 -0400
+	(Exim 4.71) (envelope-from <clg@kaod.org>) id 1duGgP-0006Lp-Mo
+	for qemu-devel@nongnu.org; Tue, 19 Sep 2017 07:27:17 -0400
 Received: from player716.ha.ovh.net (b6.ovh.net [213.186.33.56])
-	by mo179.mail-out.ovh.net (Postfix) with ESMTP id 00BE863797
-	for <qemu-arm@nongnu.org>; Tue, 19 Sep 2017 13:27:22 +0200 (CEST)
+	by mo179.mail-out.ovh.net (Postfix) with ESMTP id 6DF70632BF
+	for <qemu-devel@nongnu.org>; Tue, 19 Sep 2017 13:27:16 +0200 (CEST)
 Received: from zorba.kaod.org.com (deibp9eh1--blueice1n2.emea.ibm.com
 	[195.212.29.164]) (Authenticated sender: clg@kaod.org)
-	by player716.ha.ovh.net (Postfix) with ESMTPSA id 7B306560094;
-	Tue, 19 Sep 2017 13:27:16 +0200 (CEST)
+	by player716.ha.ovh.net (Postfix) with ESMTPSA id 0468C56009F;
+	Tue, 19 Sep 2017 13:27:09 +0200 (CEST)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
 To: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 19 Sep 2017 13:26:44 +0200
-Message-Id: <20170919112645.8574-5-clg@kaod.org>
+Date: Tue, 19 Sep 2017 13:26:43 +0200
+Message-Id: <20170919112645.8574-4-clg@kaod.org>
 X-Mailer: git-send-email 2.13.5
 In-Reply-To: <20170919112645.8574-1-clg@kaod.org>
 References: <20170919112645.8574-1-clg@kaod.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
-X-Ovh-Tracer-Id: 18382004831648123665
+X-Ovh-Tracer-Id: 18380315983409482513
 X-VR-SPAMSTATE: OK
 X-VR-SPAMSCORE: -100
 X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrfeelledrheejgdegudcutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmd
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 178.33.251.175
-Subject: [Qemu-arm] [PATCH 4/5] misc: add pca9552 LED blinker model
-X-BeenThere: qemu-arm@nongnu.org
+X-Received-From: 46.105.43.140
+Subject: [Qemu-devel] [PATCH 3/5] aspeed: Add EEPROM I2C devices
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Andrew Jeffery <andrew@aj.id.au>,
 	=?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
 	qemu-arm@nongnu.org, qemu-devel@nongnu.org, Joel Stanley <joel@jms.id.au>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: DLj2mFuYVRs9
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: PqQ01AYUBfeY
 
-Specs are available here :
-
-  https://www.nxp.com/docs/en/data-sheet/PCA9552.pdf
-
-This is a simple model supporting the basic registers for led and GPIO
-mode. The device also supports two blinking rates but not the model
-yet.
+The Aspeed boards have at least one EEPROM to hold the Vital Product
+Data (VPD).
 
 Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
 ---
- default-configs/arm-softmmu.mak |   1 +
- hw/misc/Makefile.objs           |   1 +
- hw/misc/pca9552.c               | 212 ++++++++++++++++++++++++++++++++++=
-++++++
- include/hw/misc/pca9552.h       |  32 ++++++
- 4 files changed, 246 insertions(+)
- create mode 100644 hw/misc/pca9552.c
- create mode 100644 include/hw/misc/pca9552.h
+ hw/arm/aspeed.c | 20 ++++++++++++++++++++
+ 1 file changed, 20 insertions(+)
 
-diff --git a/default-configs/arm-softmmu.mak b/default-configs/arm-softmm=
-u.mak
-index bbdd3c1d8b7f..17b8fc323f27 100644
---- a/default-configs/arm-softmmu.mak
-+++ b/default-configs/arm-softmmu.mak
-@@ -16,6 +16,7 @@ CONFIG_TSC2005=3Dy
- CONFIG_LM832X=3Dy
- CONFIG_TMP105=3Dy
- CONFIG_TMP421=3Dy
-+CONFIG_PCA9552=3Dy
- CONFIG_STELLARIS=3Dy
- CONFIG_STELLARIS_INPUT=3Dy
- CONFIG_STELLARIS_ENET=3Dy
-diff --git a/hw/misc/Makefile.objs b/hw/misc/Makefile.objs
-index 29fb922cefc6..33ba1d6642f9 100644
---- a/hw/misc/Makefile.objs
-+++ b/hw/misc/Makefile.objs
-@@ -7,6 +7,7 @@ common-obj-$(CONFIG_SGA) +=3D sga.o
- common-obj-$(CONFIG_ISA_TESTDEV) +=3D pc-testdev.o
- common-obj-$(CONFIG_PCI_TESTDEV) +=3D pci-testdev.o
- common-obj-$(CONFIG_EDU) +=3D edu.o
-+common-obj-$(CONFIG_PCA9552) +=3D pca9552.o
+diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
+index 362b683e9021..3e74970d7ad2 100644
+--- a/hw/arm/aspeed.c
++++ b/hw/arm/aspeed.c
+@@ -251,6 +251,17 @@ static void aspeed_board_init(MachineState *machine,
+     arm_load_kernel(ARM_CPU(first_cpu), &aspeed_board_binfo);
+ }
 =20
- common-obj-y +=3D unimp.o
++static void aspeed_i2c_add_eeprom(I2CBus *bus, uint8_t address, size_t s=
+ize)
++{
++    uint8_t *eeprom_buf =3D g_malloc0(size);
++    DeviceState *dev;
++
++    dev =3D qdev_create((BusState *) bus, "smbus-eeprom");
++    qdev_prop_set_uint8(dev, "address", address);
++    qdev_prop_set_ptr(dev, "data", eeprom_buf);
++    qdev_init_nofail(dev);
++}
++
+ static void palmetto_bmc_i2c_init(AspeedBoardState *bmc)
+ {
+     AspeedSoCState *soc =3D &bmc->soc;
+@@ -260,6 +271,9 @@ static void palmetto_bmc_i2c_init(AspeedBoardState *b=
+mc)
+      * enough to provide basic RTC features. Alarms will be missing */
+     i2c_create_slave(aspeed_i2c_get_bus(DEVICE(&soc->i2c), 0), "ds1338",=
+ 0x68);
 =20
-diff --git a/hw/misc/pca9552.c b/hw/misc/pca9552.c
-new file mode 100644
-index 000000000000..22460f4c14fe
---- /dev/null
-+++ b/hw/misc/pca9552.c
-@@ -0,0 +1,212 @@
-+/*
-+ * PCA9552 I2C LED blinker
-+ *
-+ * Copyright (c) 2017, IBM Corporation.
-+ *
-+ * This work is licensed under the terms of the GNU GPL, version 2 or
-+ * later. See the COPYING file in the top-level directory.
-+ */
++    aspeed_i2c_add_eeprom(aspeed_i2c_get_bus(DEVICE(&soc->i2c), 0), 0x50=
+,
++                          256 * 1024);
 +
-+#include "qemu/osdep.h"
-+#include "qemu/log.h"
-+#include "hw/hw.h"
-+#include "hw/misc/pca9552.h"
+     /* add a TMP423 temperature sensor */
+     dev =3D i2c_create_slave(aspeed_i2c_get_bus(DEVICE(&soc->i2c), 2),
+                            "tmp423", 0x4c);
+@@ -298,6 +312,9 @@ static void ast2500_evb_i2c_init(AspeedBoardState *bm=
+c)
+ {
+     AspeedSoCState *soc =3D &bmc->soc;
+=20
++    aspeed_i2c_add_eeprom(aspeed_i2c_get_bus(DEVICE(&soc->i2c), 3), 0x50=
+,
++                          8 * 1024);
 +
-+#define PCA9552_INPUT0   0 /* read only input register 0 */
-+#define PCA9552_INPUT1   1 /* read only input register 1  */
-+#define PCA9552_PSC0     2 /* read/write frequency prescaler 0 */
-+#define PCA9552_PWM0     3 /* read/write PWM register 0 */
-+#define PCA9552_PSC1     4 /* read/write frequency prescaler 1 */
-+#define PCA9552_PWM1     5 /* read/write PWM register 1 */
-+#define PCA9552_LS0      6 /* read/write LED0 to LED3 selector */
-+#define PCA9552_LS1      7 /* read/write LED4 to LED7 selector */
-+#define PCA9552_LS2      8 /* read/write LED8 to LED11 selector */
-+#define PCA9552_LS3      9 /* read/write LED12 to LED15 selector */
+     /* The AST2500 EVB expects a LM75 but a TMP105 is compatible */
+     i2c_create_slave(aspeed_i2c_get_bus(DEVICE(&soc->i2c), 7), "tmp105",=
+ 0x4d);
+=20
+@@ -377,6 +394,9 @@ static void witherspoon_bmc_i2c_init(AspeedBoardState=
+ *bmc)
+     /* The witherspoon board expects Epson RX8900 I2C RTC but a ds1338 i=
+s
+      * good enough */
+     i2c_create_slave(aspeed_i2c_get_bus(DEVICE(&soc->i2c), 11), "ds1338"=
+, 0x32);
 +
-+#define PCA9552_LED_ON   0x0
-+#define PCA9552_LED_OFF  0x1
-+#define PCA9552_LED_PWM0 0x2
-+#define PCA9552_LED_PWM1 0x3
-+
-+static uint8_t pca9552_pin_get_config(PCA9552State *s, int pin)
-+{
-+    uint8_t reg   =3D PCA9552_LS0 + (pin / 4);
-+    uint8_t shift =3D (pin % 4) << 1;
-+
-+    return (s->regs[reg] >> shift) & 0x3;
-+}
-+
-+static void pca9552_update_pin_input(PCA9552State *s)
-+{
-+    int i;
-+
-+    for (i =3D 0; i < 16; i++) {
-+        uint8_t input_reg =3D PCA9552_INPUT0 + (i / 8);
-+        uint8_t input_shift =3D (i % 8);
-+        uint8_t config =3D pca9552_pin_get_config(s, i);
-+
-+        switch (config) {
-+        case PCA9552_LED_ON:
-+            s->regs[input_reg] |=3D 1 << input_shift;
-+            break;
-+        case PCA9552_LED_OFF:
-+            s->regs[input_reg] &=3D ~(1 << input_shift);
-+            break;
-+        case PCA9552_LED_PWM0:
-+        case PCA9552_LED_PWM1:
-+            /* ??? */
-+        default:
-+            break;
-+        }
-+    }
-+}
-+
-+static void pca9552_read(PCA9552State *s)
-+{
-+    uint8_t reg =3D s->pointer & 0xf;
-+
-+    s->len =3D 0;
-+
-+    switch (reg) {
-+    case PCA9552_INPUT0:
-+    case PCA9552_INPUT1:
-+    case PCA9552_PSC0:
-+    case PCA9552_PWM0:
-+    case PCA9552_PSC1:
-+    case PCA9552_PWM1:
-+    case PCA9552_LS0:
-+    case PCA9552_LS1:
-+    case PCA9552_LS2:
-+    case PCA9552_LS3:
-+        s->buf[s->len++] =3D s->regs[reg];
-+        break;
-+    default:
-+        qemu_log_mask(LOG_GUEST_ERROR, "%s: unexpected read to register =
-%d\n",
-+                      __func__, reg);
-+    }
-+}
-+
-+static void pca9552_write(PCA9552State *s)
-+{
-+    uint8_t reg =3D s->pointer & 0xf;
-+
-+    switch (reg) {
-+    case PCA9552_PSC0:
-+    case PCA9552_PWM0:
-+    case PCA9552_PSC1:
-+    case PCA9552_PWM1:
-+        s->regs[reg] =3D s->buf[0];
-+        break;
-+
-+    case PCA9552_LS0:
-+    case PCA9552_LS1:
-+    case PCA9552_LS2:
-+    case PCA9552_LS3:
-+        s->regs[reg] =3D s->buf[0];
-+        pca9552_update_pin_input(s);
-+        break;
-+
-+    case PCA9552_INPUT0:
-+    case PCA9552_INPUT1:
-+    default:
-+        qemu_log_mask(LOG_GUEST_ERROR, "%s: unexpected write to register=
- %d\n",
-+                      __func__, reg);
-+    }
-+}
-+
-+static int pca9552_recv(I2CSlave *i2c)
-+{
-+    PCA9552State *s =3D PCA9552(i2c);
-+
-+    if (s->len < sizeof(s->buf)) {
-+        return s->buf[s->len++];
-+    } else {
-+        return 0xff;
-+    }
-+}
-+
-+static int pca9552_send(I2CSlave *i2c, uint8_t data)
-+{
-+    PCA9552State *s =3D PCA9552(i2c);
-+
-+    if (s->len =3D=3D 0) {
-+        s->pointer =3D data;
-+        s->len++;
-+    } else {
-+        if (s->len <=3D sizeof(s->buf)) {
-+            s->buf[s->len - 1] =3D data;
-+        }
-+        s->len++;
-+        pca9552_write(s);
-+    }
-+
-+    return 0;
-+}
-+
-+static int pca9552_event(I2CSlave *i2c, enum i2c_event event)
-+{
-+    PCA9552State *s =3D PCA9552(i2c);
-+
-+    if (event =3D=3D I2C_START_RECV) {
-+        pca9552_read(s);
-+    }
-+
-+    s->len =3D 0;
-+    return 0;
-+}
-+
-+static const VMStateDescription pca9552_vmstate =3D {
-+    .name =3D "PCA9552",
-+    .version_id =3D 0,
-+    .minimum_version_id =3D 0,
-+    .fields =3D (VMStateField[]) {
-+        VMSTATE_UINT8(len, PCA9552State),
-+        VMSTATE_UINT8(pointer, PCA9552State),
-+        VMSTATE_UINT8_ARRAY(buf, PCA9552State, 1),
-+        VMSTATE_UINT8_ARRAY(regs, PCA9552State, PCA9552_NR_REGS),
-+        VMSTATE_I2C_SLAVE(i2c, PCA9552State),
-+        VMSTATE_END_OF_LIST()
-+    }
-+};
-+
-+static void pca9552_reset(DeviceState *dev)
-+{
-+    PCA9552State *s =3D PCA9552(dev);
-+
-+    s->regs[PCA9552_PSC0] =3D 0xFF;
-+    s->regs[PCA9552_PWM0] =3D 0x80;
-+    s->regs[PCA9552_PSC1] =3D 0xFF;
-+    s->regs[PCA9552_PWM1] =3D 0x80;
-+    s->regs[PCA9552_LS0] =3D 0x55; /* all OFF */
-+    s->regs[PCA9552_LS1] =3D 0x55;
-+    s->regs[PCA9552_LS2] =3D 0x55;
-+    s->regs[PCA9552_LS3] =3D 0x55;
-+
-+    pca9552_update_pin_input(s);
-+}
-+
-+static void pca9552_class_init(ObjectClass *klass, void *data)
-+{
-+    DeviceClass *dc =3D DEVICE_CLASS(klass);
-+    I2CSlaveClass *k =3D I2C_SLAVE_CLASS(klass);
-+
-+    k->event =3D pca9552_event;
-+    k->recv =3D pca9552_recv;
-+    k->send =3D pca9552_send;
-+    dc->reset =3D pca9552_reset;
-+    dc->vmsd =3D &pca9552_vmstate;
-+}
-+
-+static const TypeInfo pca9552_info =3D {
-+    .name          =3D TYPE_PCA9552,
-+    .parent        =3D TYPE_I2C_SLAVE,
-+    .instance_size =3D sizeof(PCA9552State),
-+    .class_init    =3D pca9552_class_init,
-+};
-+
-+static void pca9552_register_types(void)
-+{
-+    type_register_static(&pca9552_info);
-+}
-+
-+type_init(pca9552_register_types)
-diff --git a/include/hw/misc/pca9552.h b/include/hw/misc/pca9552.h
-new file mode 100644
-index 000000000000..875467725526
---- /dev/null
-+++ b/include/hw/misc/pca9552.h
-@@ -0,0 +1,32 @@
-+/*
-+ * PCA9552 I2C LED blinker
-+ *
-+ * Copyright (c) 2017, IBM Corporation.
-+ *
-+ * This work is licensed under the terms of the GNU GPL, version 2 or
-+ * later. See the COPYING file in the top-level directory.
-+ */
-+#ifndef PCA9552_H
-+#define PCA9552_H
-+
-+#include "hw/i2c/i2c.h"
-+
-+#define TYPE_PCA9552 "pca9552"
-+#define PCA9552(obj) OBJECT_CHECK(PCA9552State, (obj), TYPE_PCA9552)
-+
-+
-+#define PCA9552_NR_REGS 10
-+
-+typedef struct PCA9552State {
-+    /*< private >*/
-+    I2CSlave i2c;
-+    /*< public >*/
-+
-+    uint8_t len;
-+    uint8_t pointer;
-+    uint8_t buf[1]; /* just to remember how to handle a larger buffer */
-+
-+    uint8_t regs[PCA9552_NR_REGS];
-+} PCA9552State;
-+
-+#endif
++    aspeed_i2c_add_eeprom(aspeed_i2c_get_bus(DEVICE(&soc->i2c), 11), 0x5=
+1,
++                          8 * 1024);
+ }
+=20
+ static void witherspoon_bmc_init(MachineState *machine)
 --=20
 2.13.5
 

@@ -1,201 +1,102 @@
-Received: by 10.223.172.38 with SMTP id v35csp4640953wrc;
-        Tue, 19 Sep 2017 00:47:36 -0700 (PDT)
-X-Google-Smtp-Source: AOwi7QAICqroN4sGES/3NFY4O0qsYd0OogVVBNMi9Cy87/6vQm1nxo3n8MrA5xCQESNSPfPRsTGJ
-X-Received: by 10.55.221.217 with SMTP id u86mr731797qku.64.1505807256036;
-        Tue, 19 Sep 2017 00:47:36 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1505807256; cv=none;
+Received: by 10.223.172.38 with SMTP id v35csp4697967wrc;
+        Tue, 19 Sep 2017 02:05:10 -0700 (PDT)
+X-Received: by 10.28.26.15 with SMTP id a15mr474785wma.16.1505811910458;
+        Tue, 19 Sep 2017 02:05:10 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1505811910; cv=none;
         d=google.com; s=arc-20160816;
-        b=HJuMIojg2ZFiPyduzkK3qzO/FJ4TkMeh2jJv85OSjWttvIkeip4cN61sRjBJYov33S
-         FsMyuIXWLFQlbVdbuuafAGXaD0952GVZHWjRq5FiUc2yxoybldv6NlvtcYEN/fptuElZ
-         9DaQ6k+AtdGicUM0ilizvxtdo/0OzZeSALCpR1iU23HOi0zOhGl9qY+Fd5PlJAIPJR5U
-         gztYGzlLJHWYDViAmmyIGMX6h8e+lxineQAIE8Bbg6enmbBv7Ju2aay6vyuwhjj2oTRr
-         kUn/K+O2HCty9i1txiiQfB1fZMDSnPAB7jr8kmBZvj3a1zrfyyhX4jTFzP2Hqru9hxav
-         kOdA==
+        b=KesXhlbeDXSuPvZY09WKy+7kKjqqEmQkvFRe/abRzHtqzFLqkW/s1mSiB1FmP+CPTS
+         yZ0E7ZUh5xlr9r8IHkFOsaaMAVx0KGqoOaXgxFNVTNx0W98mx4rlAFDjKm2QnZnDn1mx
+         15MaLPHV7EuQbnL9h00GnetbpnW1iN6DwipXU1n/nqK23BUwUOQh4wZzAPH11+Hqyjp2
+         oZcndFt7swakIMWBpqeHz/kIibtGCs80QEdqm5nn3NRUe9zlYxJXhKrzYEbvDDQAZumj
+         QrXdWLNp52xp2sMpb9NB34gNwKwhtHojCTO8LRT4UbZ4CvMWUFPQby3GZZj2BoymMH7C
+         /TBA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:message-id:date:to:from
-         :dmarc-filter:arc-authentication-results;
-        bh=5Ba9N3N8hht5C9xmMDS3bGfd6h2B8XzFoOZ9nfLhLZQ=;
-        b=HyYA6BsZ9hJWwuoCY33QiFsrE9dx845w2OGCGe+iGAXTiIuQqH0FEGt+NlZUaKTS1A
-         rldWxsgBrwXD5gFe9Gb02zFOfvfTcX9IKjYgpuIYgPmbsm2xfuZQB1jJTN6eaMiHkJZf
-         KeNIXHKJIQlAqsmgPsbQvBSwujM+MqsncT9qHA4x33hx4VZqF/hG20nncAly+n+gz2aX
-         OPopTA0OH53QHSc/ZzwUUqb25QxHpjGeLeBw8hbdO/3GXO3N/9ZXOw0Z/QKKuR+ESoq/
-         lKPE3fiXAvAH16HC9mGRaTEwgtPbsgW4muGEEZDeDEAga7pfc5T25TnzLm238EMTRe1t
-         j2Rw==
+        h=cc:to:subject:message-id:date:from:references:in-reply-to
+         :mime-version:dkim-signature:arc-authentication-results;
+        bh=y/Mo9RvjZxtfVf16LH4KUX9EYazASbuV985t9ef4fP0=;
+        b=M7R/DMoAG6Gr5LQrN4kAj5HgMF/4ssEIeHdY+2iL1tjA8vPem0i14h5tNIZkkUVgyJ
+         ci7NwFr+VEYSeLOgsJKAtmwT60OTDmBScwc/Ob6KFnYpkt2KsZW6Sk1SLvK1bIPipnGP
+         +p8bwxKdf8VnIdTAi6uKKO/mO89gDzXh7BfK6AT2FMwDwhGeQNJBoN8CZFe2/9Cr1h52
+         blXBFT6re94K48ceh1e6StXiTXFujv3msKoN7rYwFBwOB3z+OuIVZcTBhHsDLDsv/jHv
+         DORmRQPgFI9QI7i3YZLq6NAmVzw6XUhiflcxJfhC9c+IRu54Er95+x5Pl3n2DNUsF3Jd
+         Jl5g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id h9si201938qtc.28.2017.09.19.00.47.35
+       dkim=pass header.i=@linaro.org header.s=google header.b=QgxPyfGZ;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <peter.maydell@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id u140sor305552wmd.0.2017.09.19.02.05.10
         for <alex.bennee@linaro.org>
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 19 Sep 2017 00:47:36 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        (Google Transport Security);
+        Tue, 19 Sep 2017 02:05:10 -0700 (PDT)
+Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:40579 helo=lists.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1duDFl-0007dB-NV
-	for alex.bennee@linaro.org; Tue, 19 Sep 2017 03:47:33 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:47051)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1duDFY-0007bJ-9z
-	for qemu-arm@nongnu.org; Tue, 19 Sep 2017 03:47:21 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1duDFU-0000Qw-9S
-	for qemu-arm@nongnu.org; Tue, 19 Sep 2017 03:47:20 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:38302)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <eric.auger@redhat.com>)
-	id 1duDFU-0000QO-0i; Tue, 19 Sep 2017 03:47:16 -0400
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
-	[10.5.11.11])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id CA5B47E44D;
-	Tue, 19 Sep 2017 07:47:14 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com CA5B47E44D
-Authentication-Results: ext-mx03.extmail.prod.ext.phx2.redhat.com;
-	dmarc=none (p=none dis=none) header.from=redhat.com
-Authentication-Results: ext-mx03.extmail.prod.ext.phx2.redhat.com;
-	spf=fail smtp.mailfrom=eric.auger@redhat.com
-Received: from localhost.localdomain.com (ovpn-116-197.ams2.redhat.com
-	[10.36.116.197])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 2C4A761348;
-	Tue, 19 Sep 2017 07:46:58 +0000 (UTC)
-From: Eric Auger <eric.auger@redhat.com>
-To: eric.auger.pro@gmail.com, eric.auger@redhat.com, peter.maydell@linaro.org,
-	alex.williamson@redhat.com, mst@redhat.com, qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org, jean-philippe.brucker@arm.com
-Date: Tue, 19 Sep 2017 09:46:32 +0200
-Message-Id: <1505807208-9063-1-git-send-email-eric.auger@redhat.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.27]);
-	Tue, 19 Sep 2017 07:47:15 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: [Qemu-arm] [RFC v4 00/16] VIRTIO-IOMMU device
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.21
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: kevin.tian@intel.com, marc.zyngier@arm.com, tn@semihalf.com,
-	will.deacon@arm.com, drjones@redhat.com, peterx@redhat.com,
-	linuc.decode@gmail.com, bharat.bhushan@nxp.com, christoffer.dall@linaro.org
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: TAT4y8Xzajxm
+       dkim=pass header.i=@linaro.org header.s=google header.b=QgxPyfGZ;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+         :cc;
+        bh=y/Mo9RvjZxtfVf16LH4KUX9EYazASbuV985t9ef4fP0=;
+        b=QgxPyfGZmlMznCKQ7BVwV/5OD/8UTqhbuI9myqAVUWWy8VDhj3aM+K/UpXCrpskI0j
+         mCZ9+etLPpdgKZxmxkZ2R8EUFwHbTxL1gTL9HB2h5TZFsLsnZgFBil3GfT775ycXM27e
+         U/YEi8TR9ueFpsYJnHLRegkM3jk3ft+2OGvAw=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+         :message-id:subject:to:cc;
+        bh=y/Mo9RvjZxtfVf16LH4KUX9EYazASbuV985t9ef4fP0=;
+        b=aKxVzRR+sSMdxEa7c2xaXldYx0AGJImDGJTwq14kyFEbAvYkRdic78omvLpGXqheYV
+         Ipt8cTGVQrspzLeZbcNQaq++9GKd4Ke1JT9pgwBMabQ9PU/vj2+JMhm5mlf+Jd9B8su7
+         MMOW4ehuPwNMZLWOYtmf1sOxYHA1TmARCULTPrL5Jh/OVoS3iiQr7SJ0Ql/IH5STtSW3
+         p82XVklXckcdd6DKHHvOm4035mEtcmLFs/Oo1s5jDw4aoly0DZww7GArWi/noIPglLkk
+         SoWfv8MLvyv4Pva8TzJbNMHVowVDMn3mJf2COCUKmz25clYwbLX34iSQQqaH04k5dsye
+         J9HA==
+X-Gm-Message-State: AHPjjUhdgkXnsHb8oiiRtdAL6VCyThfO+JRr4x9vBJ0hL7gI3nh1TdKd
+	d5gTk+bEdP7eZfT2JYr/GJsC7GVNV1hEg3xOFGM3JvFy
+X-Google-Smtp-Source: AOwi7QDf/gAH+XQZslsE7HgkVE9rNEKGHciWU+JlEvsa/3xTFfK2qm8OVkqORf3ugn9nyD9wOP7nsT6rkKjALlrVNns=
+X-Received: by 10.28.22.66 with SMTP id 63mr426074wmw.11.1505811910212; Tue,
+ 19 Sep 2017 02:05:10 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.223.139.215 with HTTP; Tue, 19 Sep 2017 02:04:49 -0700 (PDT)
+In-Reply-To: <20170919044346.GA32572@toto>
+References: <1498830302-19274-1-git-send-email-edgar.iglesias@gmail.com>
+ <1498830302-19274-3-git-send-email-edgar.iglesias@gmail.com>
+ <CAFEAcA-dssYnbZjuWTjBta1aK3iL3pyRKh5Qs4hFh=bPONgnTA@mail.gmail.com>
+ <20170711100334.GA25504@toto> <CAFEAcA_XTrkAN1ATpp6DLZqGh4aL1gECzQGyubJmoGjtw_pPbA@mail.gmail.com>
+ <20170711103859.GC25504@toto> <CAFEAcA9wn_ozBCHBZqxqARB5eD4wX1snyGfM0JW1Yk103CTytQ@mail.gmail.com>
+ <20170919044346.GA32572@toto>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 19 Sep 2017 10:04:49 +0100
+Message-ID: <CAFEAcA-hNHaDkgAYtJFsSa7=eNAh+usUcEkOcf0rcdGRFV7UqQ@mail.gmail.com>
+Subject: Re: [PATCH v1 2/2] target-arm: Extend PAR format determination
+To: "Edgar E. Iglesias" <edgar.iglesias@xilinx.com>
+Cc: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, QEMU Developers <qemu-devel@nongnu.org>, 
+	=?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
+	qemu-arm <qemu-arm@nongnu.org>
+Content-Type: text/plain; charset="UTF-8"
+X-TUID: IDKUh1vjtyqx
 
-This series implements the virtio-iommu device.
+On 19 September 2017 at 05:43, Edgar E. Iglesias
+<edgar.iglesias@xilinx.com> wrote:
+> On Mon, Sep 18, 2017 at 04:50:23PM +0100, Peter Maydell wrote:
+>> I'm currently running into a similar issue with M profile,
+>> where at the moment we stuff the information about what
+>> kind of fault the MPU generates into a v7PMSA format
+>> FSR value and reinterpret it into M profile exception
+>> types and fault status register bits later. This works
+>> OK, but for v8M we want to start reporting kinds of fault
+>> (like SecureFault) that don't have equivalents in v7PMSA
+>> at all, and maybe it would be better to clean this up rather
+>> than assigning arbitrary bogus fsr values for internal use...
+>
+> I see, yes that sounds like a similar issue.
+> If you'd like to take over this, that'd be great :-)
 
-This v4 is an upgrade to v0.4 spec [1] and applies on QEMU v2.10.0.
-- probe request support although no reserved region is returned at
-  the moment
-- unmap semantics less strict, as specified in v0.4
-- device registration, attach/detach revisited
-- split into smaller patches to ease review
-- propose a way to inform the IOMMU mr about the page_size_mask
-  of underlying HW IOMMU, if any
-- remove warning associated with the translation of the MSI doorbell
+For the moment I've taken the easy approach of using dummy
+FSR values. We'll see if that gets through code review :-)
 
-The device gets instantiated using the "-device virtio-iommu-device"
-option. It currently works with ARM virt machine only, as the machine
-must handle the dt binding between the virtio-mmio "iommu" node and
-the PCI host bridge node.
-
-The associated VHOST/VFIO adaptation is available on the branch
-below but is not officially delivered as part of this series.
-
-Best Regards
-
-Eric
-
-This series can be found at:
-https://github.com/eauger/qemu/tree/v2.10.0-virtio-iommu-v4
-
-References:
-[1] [RFC] virtio-iommu version 0.4
-    git://linux-arm.org/virtio-iommu.git branch viommu/v0.4
-
-Testing:
-- guest kernel with v0.4 virtio-iommu driver (4kB page)
-- tested with guest using virtio-pci-net and vhost-net
-  (,vhost=on/off,iommu_platform,disable-modern=off,disable-legacy=on  )
-- tested with VFIO and guest assigned with 2 VFs
-- tested with DPDK on guest with 2 assigned VFs
-
-Not tested:
-- hot-plug/hot-unplug of EP: not implemented
-
-History:
-v2-> v4:
-- see above
-
-v2 -> v3:
-- rebase on top of 2.10-rc0 and especially
-  [PATCH qemu v9 0/2] memory/iommu: QOM'fy IOMMU MemoryRegion
-- add mutex init
-- fix as->mappings deletion using g_tree_ref/unref
-- when a dev is attached whereas it is already attached to
-  another address space, first detach it
-- fix some error values
-- page_sizes = TARGET_PAGE_MASK;
-- I haven't changed the unmap() semantics yet, waiting for the
-  next virtio-iommu spec revision.
-
-v1 -> v2:
-- fix redifinition of viommu_as typedef
-
-Eric Auger (16):
-  update-linux-headers: import virtio_iommu.h
-  linux-headers: Update for virtio-iommu
-  virtio-iommu: add skeleton
-  virtio-iommu: Decode the command payload
-  virtio-iommu: Add the iommu regions
-  virtio-iommu: Register attached devices
-  virtio-iommu: Implement attach/detach command
-  virtio-iommu: Implement map/unmap
-  virtio-iommu: Implement translate
-  virtio-iommu: Implement probe request
-  hw/arm/virt: Add 2.11 machine type
-  hw/arm/virt: Add virtio-iommu to the virt board
-  memory.h: Add set_page_size_mask IOMMUMemoryRegion callback
-  hw/vfio/common: Set the IOMMUMemoryRegion supported page sizes
-  virtio-iommu: Implement set_page_size_mask
-  hw/vfio/common: Do not print error when viommu translates into an mmio
-    region
-
- hw/arm/virt.c                                 | 115 +++-
- hw/vfio/common.c                              |   7 +-
- hw/virtio/Makefile.objs                       |   1 +
- hw/virtio/trace-events                        |  24 +
- hw/virtio/virtio-iommu.c                      | 923 ++++++++++++++++++++++++++
- include/exec/memory.h                         |   4 +
- include/hw/arm/virt.h                         |   5 +
- include/hw/vfio/vfio-common.h                 |   1 +
- include/hw/virtio/virtio-iommu.h              |  61 ++
- include/standard-headers/linux/virtio_ids.h   |   1 +
- include/standard-headers/linux/virtio_iommu.h | 177 +++++
- linux-headers/linux/virtio_iommu.h            |   1 +
- scripts/update-linux-headers.sh               |   3 +
- 13 files changed, 1312 insertions(+), 11 deletions(-)
- create mode 100644 hw/virtio/virtio-iommu.c
- create mode 100644 include/hw/virtio/virtio-iommu.h
- create mode 100644 include/standard-headers/linux/virtio_iommu.h
- create mode 100644 linux-headers/linux/virtio_iommu.h
-
--- 
-2.5.5
-
+thanks
+-- PMM

@@ -1,86 +1,99 @@
-Received: by 10.28.71.27 with SMTP id u27csp1239692wma;
-        Tue, 30 Jan 2018 03:17:11 -0800 (PST)
-X-Google-Smtp-Source: AH8x2267Y8fltOSJubnTZ2GxYOmFILgeYX0Sp07ps9SCVJLbhSKEIEI2VlzZ0yxDuD6vYnHDrtks
-X-Received: by 10.37.99.198 with SMTP id x189mr18556225ybb.232.1517311031637;
-        Tue, 30 Jan 2018 03:17:11 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1517311031; cv=none;
+Received: by 10.223.172.38 with SMTP id v35csp88923wrc;
+        Tue, 19 Sep 2017 17:04:25 -0700 (PDT)
+X-Received: by 10.55.64.136 with SMTP id n130mr4583196qka.38.1505865865635;
+        Tue, 19 Sep 2017 17:04:25 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1505865865; cv=none;
         d=google.com; s=arc-20160816;
-        b=0amHnt+ztyQjTGFnTCY4dO7on5dwv8ZHEKjB0HzQhAfy89SYJnxRQnAy+pdJ2Uh46Y
-         96WyNABSLGd3GqFbPjfx1zV+xNdvln6ja3FZl2QpCZSkj4r7OegJHjBTJ5KshqwqB97M
-         E1QEs9jSxkAW+QGctf0O8XycY3u5vqM3wdrWsnnbKXV3z6LGr4qrczLJuHSRbdlHpkTM
-         oLGqZdWAOnPaVkaPjdMB8VNpzT+oY2eN4pW0OLp/Vy6rjlSwZcKIxlXGQNVWduMl/bu+
-         g4ZqYUoFICk4d9lF+mW0cRI+IZC6vgQhWIUY77qI0504OdX1Y0p1pl+wtDVOgXyFiLEY
-         bpsA==
+        b=IRyHl9sbukVZxNHszHTePDhJUxRy+sjm+Uk1ydUiP/qNl1WN8v5CRCl0fKlKVYqhuD
+         fqiL9GhLI+/uSfE6kulmZWe9ev1ZUVmuFWJB6Zb3b+wBM7nUO5TKAxg/Q91gjwSVNdly
+         9SZMYVCEYeo1XppCsH+mvQwwFMobR0oNYW/2b0xWvfKZPl4BwBbKPCLt4/MY1wHiXVRa
+         P1sqXpMxyoKcOhE2vFRrZnRqbj1Rkdf9vhOI4utf5pAcy6LUn9g81hrdzqc0pXpItBYA
+         pUk1GO3j+r3pszgcNIKELdtqR28pePHtKx7kQaiynIsns+MUFUrdXJAPxHl2gEzIQNn7
+         QfHA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:content-language
-         :mime-version:user-agent:date:message-id:to:from
+         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
+         :references:in-reply-to:mime-version:dkim-signature
          :arc-authentication-results;
-        bh=lDq6J5Y3Cwq67QIHZLQADdnUyLHbYKlKhKLFU9gJRro=;
-        b=dtU8OEiynK/J1Ffx4g1udewA/LPBo8OW3vXg+uQ/WKHLLA5kGtJ1CDYgc1e9TJSmEM
-         8KbK8ThcIoPZ4KuqsQdgG6l1HMIETtIYcwGYwuUX7em1xXuDdz1B1HSjgflv6gp1y4J5
-         d6qmrbwgazUeTzSLn/mFwmpPwdKmiTiP/QoOExoUovjNL834V+K35pdWs4BoDIyltGNy
-         Z4BkuOHjvcCkAF13QhDhl0ibRIul3ambv1YL318REOZMmmeUrYRW/cTXUuQSrXTRnDyE
-         dVZ4+Uotj36XqLIxLj2UajMwV8GQTW9uasKxMhLJJD7uxJKwbWdhBhkn+ri8TSCijHkA
-         djww==
+        bh=yyJwhtSdSqC0RXNsIVhpgr5bOrMvjJJ+KMxmu/6ulPk=;
+        b=T1sztWNfuzVYsXQLZxWmkhCALQ3K4Hmd9oTy3rUWrt7jXGQIV9PranK/pako3Kkk4A
+         q/kJ5foSyQ5Pu1OULvyCZDdElBw1mLVPlLBGxKU7MQF9AMre6MVCWceE2s64WLbfoLEV
+         m8mON9TRHZtVxmLs7Ho8jrndYlSi1zDYbRTmMNwIUAiIeDeOUsWRqQzSjoenKQicxsIo
+         bfCtSn7asM1cpr3IemXI1eWnHcTvocc+HIXbXtQst9+J9C2mDQ35PtYxZIXAPi8sgos+
+         a0HhWnRRKwZrycx+Ch3pZXkiXJ7cr3wPfTXhJeJBdjfnTTDT5SmJAiutH7xD9WRkAyz8
+         HnAQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=no4KY1P6;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id l30si2562321ywk.785.2018.01.30.03.17.11
+        by mx.google.com with ESMTPS id p14si618582qkh.279.2017.09.19.17.04.24
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 30 Jan 2018 03:17:11 -0800 (PST)
+        Tue, 19 Sep 2017 17:04:25 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:58303 helo=lists.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=no4KY1P6;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:45945 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1egTuZ-0004ir-0A
-	for alex.bennee@linaro.org; Tue, 30 Jan 2018 06:17:11 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:44352)
+	id 1duSV5-0005w8-3C
+	for alex.bennee@linaro.org; Tue, 19 Sep 2017 20:04:23 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:43884)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <abdallah.bouassida@lauterbach.com>)
-	id 1egTu9-0004Xv-50
-	for qemu-arm@nongnu.org; Tue, 30 Jan 2018 06:16:49 -0500
+	(envelope-from <alistair23@gmail.com>) id 1duSUr-0005t0-U6
+	for qemu-arm@nongnu.org; Tue, 19 Sep 2017 20:04:13 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <abdallah.bouassida@lauterbach.com>)
-	id 1egTu1-0006rM-Ru
-	for qemu-arm@nongnu.org; Tue, 30 Jan 2018 06:16:45 -0500
-Received: from smtp1.lauterbach.com ([62.154.241.196]:57183)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <abdallah.bouassida@lauterbach.com>)
-	id 1egTu1-0006Ww-Bp
-	for qemu-arm@nongnu.org; Tue, 30 Jan 2018 06:16:37 -0500
-Received: (qmail 14319 invoked by uid 484); 30 Jan 2018 11:16:19 -0000
-X-Qmail-Scanner-Diagnostics: from 41.224.44.126 by smtp1.lauterbach.com
-	(envelope-from <abdallah.bouassida@lauterbach.com>,
-	uid 484) with qmail-scanner-2.11 
-	(mhr: 1.0. clamdscan: 0.99/21437. spamassassin: 3.4.0.  
-	Clear:RC:1(41.224.44.126):. 
-	Processed in 0.338676 secs); 30 Jan 2018 11:16:19 -0000
-Received: from unknown (HELO [192.168.187.23])
-	(Authenticated_SSL:abouassida@[41.224.44.126])
-	(envelope-sender <abdallah.bouassida@lauterbach.com>)
-	by smtp1.lauterbach.com (qmail-ldap-1.03) with
-	ECDHE-RSA-AES256-GCM-SHA384 encrypted SMTP
-	for <qemu-devel@nongnu.org>; 30 Jan 2018 11:16:18 -0000
-From: Abdallah Bouassida <abdallah.bouassida@lauterbach.com>
-To: qemu-arm <qemu-arm@nongnu.org>, Peter Maydell <peter.maydell@linaro.org>
-Message-ID: <d23a2730-a103-6336-0658-e12fa9b0193f@lauterbach.com>
-Date: Tue, 30 Jan 2018 12:16:16 +0100
-User-Agent: Mozilla/5.0 (Windows NT 6.3; WOW64; rv:52.0) Gecko/20100101
-	Thunderbird/52.5.2
+	(envelope-from <alistair23@gmail.com>) id 1duSUo-0002CO-SU
+	for qemu-arm@nongnu.org; Tue, 19 Sep 2017 20:04:09 -0400
+Received: from mail-wr0-x233.google.com ([2a00:1450:400c:c0c::233]:49042)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <alistair23@gmail.com>)
+	id 1duSUi-000285-0v; Tue, 19 Sep 2017 20:04:00 -0400
+Received: by mail-wr0-x233.google.com with SMTP id 108so853134wra.5;
+	Tue, 19 Sep 2017 17:03:59 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=yyJwhtSdSqC0RXNsIVhpgr5bOrMvjJJ+KMxmu/6ulPk=;
+	b=no4KY1P661XbIFDLvfO0VOJsxxEugyDLYqvEPmmjVMUTmn5Y5ehS6L1NNrAXdEBf0G
+	ASxlYbwAiXZ8YzvIqgfc4qLF5k56IT4KvbaX3ltEArh5VGvzNcQyVWgCS/jknOV6cUx5
+	+vXW5JO6avsysQIh6DbuPfqYixjgb9Yk6s1fpZu+5qfOElXMsM9zWG+Wh1YWGTk0tkVQ
+	EMuBtH9g1cR/8JxOQSgf92OOXke13V3Ln8njt0mFm2sqlbYHa4LVMelsLNeLbxWTx8dH
+	8RPek+C2MylJaoFVY7KkTRualIXBkv9yakQctq4JGozb3Qcc+ASeWol287Tlb26PydpZ
+	wmWw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=yyJwhtSdSqC0RXNsIVhpgr5bOrMvjJJ+KMxmu/6ulPk=;
+	b=Rd+NxUcEHUYDW/5lBEuWjNEVSInEnoCEnVYNaGUu2HXeQN81tzVYYFRBCRnhWGX57u
+	aiTF1+sfy1EY+aPb0XF7AevIZqv4qPVqE++W/mInlEga+RUGYiBzEd2lXP550Rl2H0Di
+	CdP2YMNKmoyunsir9IsyegdznLH8x6lE84qnfaRZilXxrf0kCNdpxz8wJdbH83yI8c9/
+	qH9Y8MZS8ltpWKNcVhIXlBJMZFvSRGqYExoa0o0ivHLmeLkvOXeoIZBwrGu0ouGABvUf
+	J8OND9chK6raZecFmmLDJhQL2FbZnIHmNyHwI414bIj6WKVn9OLrkYrc3mw1E4LvcIqK
+	dNqg==
+X-Gm-Message-State: AHPjjUiC/5hnpIG9tZpaKHgDPrctxacqIrjluF5V3YLu/0h8dSVy1pXO
+	Q07gzf7+tBw/67KY7P//cpSJy8fe3IQ34I6z+HY=
+X-Google-Smtp-Source: AOwi7QCqTd9wz/Xr+Mob8b7GF3eNW2pXOwAp+jB6NxakkfqmTaiWBbKnRgOOIsx1TejxQbBEZB9wf7X7hnxckkDXo4c=
+X-Received: by 10.223.144.71 with SMTP id h65mr2891534wrh.41.1505865838039;
+	Tue, 19 Sep 2017 17:03:58 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: multipart/alternative;
-	boundary="------------461F5E1BCDF203A2A1BB82F0"
-Content-Language: en-US
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 62.154.241.196
-Subject: [Qemu-arm] [PATCH V2] target-arm:Add a dynamic XML-description of
- the cp-registers to GDB
+Received: by 10.28.191.130 with HTTP; Tue, 19 Sep 2017 17:03:27 -0700 (PDT)
+In-Reply-To: <20170915150849.23557-1-peter.maydell@linaro.org>
+References: <20170915150849.23557-1-peter.maydell@linaro.org>
+From: Alistair Francis <alistair23@gmail.com>
+Date: Tue, 19 Sep 2017 17:03:27 -0700
+Message-ID: <CAKmqyKPEtdXp2Dn2a2FuL-f_WVaRDEaY_3_=h=2kVobFm4z4QA@mail.gmail.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2a00:1450:400c:c0c::233
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH] target/arm: Remove out of date
+ ARM ARM section references in A64 decoder
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -92,1045 +105,647 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Khaled Jmal <khaled.jmal@lauterbach.com>,
-	QEMU Developers <qemu-devel@nongnu.org>
+Cc: qemu-arm <qemu-arm@nongnu.org>,
+	"qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
+	Patch Tracking <patches@linaro.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 9WvjXKQjgR7U
+X-TUID: w5iphUK7Q2fY
 
-This is a multi-part message in MIME format.
---------------461F5E1BCDF203A2A1BB82F0
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 8bit
-
-[PATCH V2] target-arm:Add a dynamic XML-description of the cp-registers 
-to GDB
-
-This patch offers to GDB the ability to read/write all the coprocessor
-registers for ARM and ARM64 by generating dynamically an XML-description for
-these registers.
-
-Signed-off-by: Abdallah Bouassida <abdallah.bouassida@lauterbach.com>
----
-
-Hello Peter,
-
-Thanks for reviewing the previous version of this patch!
-     http://patchwork.ozlabs.org/patch/861374/
->> *For the ARM64, should I differentiate the registers that have two views (32
->> and 64)
->> Maybe by adding in the XML description a "32" tag for the registers name for
->> the
->> 32bit view and a "64" for the 64bit view.
->> *How to properly handle the secure and the non secure views?
-> I think it might be useful to approach it from the other end -- what
-> are we trying to achieve?
+On Fri, Sep 15, 2017 at 8:08 AM, Peter Maydell <peter.maydell@linaro.org> wrote:
+> In the A64 decoder, we have a lot of references to section numbers
+> from version A.a of the v8A ARM ARM (DDI0487). This version of the
+> document is now long obsolete (we are currently on revision B.a),
+> and various intervening versions renumbered all the sections.
 >
-> For 32 vs 64 bit, it depends on what interface we're showing to the
-> debugger. If we're saying "this is a 64 bit CPU" then we should just
-> present the 64-bit sysregs, in the same way we only present the 64-bit
-> GPRs. If a 32-bit CPU, present the coprocessor regs only. (It's not
-> currently possible to have gdb switch between 32 and 64 bit views
-> as a 64-bit CPU changes from aarch32 to aarch64, though upstream gdb
-> are working on it.)
+> The most recent B.a version of the document doesn't assign
+> section numbers at all to the individual instruction classes
+> in the way that the various A.x versions did. The simplest thing
+> to do is just to delete all the out of date C.x.x references.
 >
-> For secure vs non-secure, follow how the architecture does it:
->   * for a 64-bit CPU, there are no banked sysregs like this, so you
->     just expose 1 register
->   * for a 32-bit CPU, maybe banked registers should be exposed as 2 registers
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> ---
+> Definitely a Friday afternoon kind of a patch...
 >
-> ...but this depends on what you're trying to do, and whether there's
-> existing practice in for instance how JTAG debugging presents these
-> sysregs to gdb.
-So, in this new patch I have did the following:
-- If the CPU is on the AARCH64 state (when connecting to GDB stub), I 
-only take the 64bit
-view of cpregs.
-- If we are on the AARCH32, I only take the 32bit view of cpregs and in 
-the XML description
-I add the tag "_S" to the cpreg's name if it is the secure view of that 
-register.
-> I'm pretty hesitant about allowing the user to modify system registers
-> in the debugger, that is unlikely to work in quite a lot of cases.
-> I'd rather we just made these registers all readonly.
-Some of our customers need to connect to Qemu using our tool TRACE32® 
-via GDB,
-and for some use case they need to have write access to some particular 
-cpregs.
-So, it will be nice to have this capability!
-Usually, a user won't modify these registers unless he knows what he is 
-doing!
-
-> What does the UI in gdb look like? What gdb commands display
-> the list of and values of system registers now? (Are there any
-> commands that used to be useful and are now swamped by lists of
-> hundreds of system registers?)
-To read a given register:
-    (gdb)  print/x $<cpreg_name>
-To write on a given register
-    (gdb) set $<cpreg_name>=<value>
-To get the list of all registers:
-    (gdb) info registers all
-     with this command the user get all the registers including the 
-cpregs that has been
-     described dynamically.
-     This command shows the registers page by page (depending on the 
-terminal window size)
-     and the cpregs goes at the end of the list so if user is really 
-interested on these cpregs he
-     should continue to read the register list or he simply type "q" to 
-quit.
-
-In the previous patch, the command "info registers" (without the option 
-"all") was swamped
-by the new big list. So, I fixed that by assigning these registers (in 
-the XML ) to a special
-group (group="cp_regs") and with that the cpregs won't appear with this 
-command.
-
-Otherwise, I don't think that there is another GDB command that could be 
-affected by
-this patch.
-> Don't we run into problems where this XML exceeds our gdbstub
-> MAX_PACKET_LENGTH (which is only 4K) ?
+>  target/arm/translate-a64.c | 227 +++++++++++++++++++++++----------------------
+>  1 file changed, 114 insertions(+), 113 deletions(-)
 >
-> This is a pre-existing bug (https://bugs.launchpad.net/qemu/+bug/1703147)
-> but I would expect that if we start autogenerating xml for all the
-> coprocessor registers we're going to hit the packet limit pretty
-> quickly.
-No, indeed I don't think that (https://bugs.launchpad.net/qemu/+bug/1703147)
-is a bug!
-However, when the gdb request to get an XML description, it sends the 
-packet:
-qXfer:features:read:<xml_name>:<offset>,<length>
-for the first packet, the offset=0 and the length in our case is 0xFFB
-(= MAX_PACKET_LENGTH - 5)
+> diff --git a/target/arm/translate-a64.c b/target/arm/translate-a64.c
+> index 9017e30510..e04007376c 100644
+> --- a/target/arm/translate-a64.c
+> +++ b/target/arm/translate-a64.c
+> @@ -1203,12 +1203,14 @@ static inline AArch64DecodeFn *lookup_disas_fn(const AArch64DecodeTable *table,
+>  }
+>
+>  /*
+> - * the instruction disassembly implemented here matches
+> - * the instruction encoding classifications in chapter 3 (C3)
+> - * of the ARM Architecture Reference Manual (DDI0487A_a)
+> + * The instruction disassembly implemented here matches
+> + * the instruction encoding classifications in chapter C4
+> + * of the ARM Architecture Reference Manual (DDI0487B_a);
+> + * classification names and decode diagrams here should generally
+> + * match up with those in the manual.
+>   */
+>
+> -/* C3.2.7 Unconditional branch (immediate)
+> +/* Unconditional branch (immediate)
+>   *   31  30       26 25                                  0
+>   * +----+-----------+-------------------------------------+
+>   * | op | 0 0 1 0 1 |                 imm26               |
+> @@ -1219,15 +1221,15 @@ static void disas_uncond_b_imm(DisasContext *s, uint32_t insn)
+>      uint64_t addr = s->pc + sextract32(insn, 0, 26) * 4 - 4;
+>
+>      if (insn & (1U << 31)) {
+> -        /* C5.6.26 BL Branch with link */
+> +        /* BL Branch with link */
+>          tcg_gen_movi_i64(cpu_reg(s, 30), s->pc);
+>      }
+>
+> -    /* C5.6.20 B Branch / C5.6.26 BL Branch with link */
+> +    /* B Branch / BL Branch with link */
+>      gen_goto_tb(s, 0, addr);
+>  }
+>
+> -/* C3.2.1 Compare & branch (immediate)
+> +/* Compare and branch (immediate)
+>   *   31  30         25  24  23                  5 4      0
+>   * +----+-------------+----+---------------------+--------+
+>   * | sf | 0 1 1 0 1 0 | op |         imm19       |   Rt   |
+> @@ -1256,7 +1258,7 @@ static void disas_comp_b_imm(DisasContext *s, uint32_t insn)
+>      gen_goto_tb(s, 1, addr);
+>  }
+>
+> -/* C3.2.5 Test & branch (immediate)
+> +/* Test and branch (immediate)
+>   *   31  30         25  24  23   19 18          5 4    0
+>   * +----+-------------+----+-------+-------------+------+
+>   * | b5 | 0 1 1 0 1 1 | op |  b40  |    imm14    |  Rt  |
+> @@ -1285,7 +1287,7 @@ static void disas_test_b_imm(DisasContext *s, uint32_t insn)
+>      gen_goto_tb(s, 1, addr);
+>  }
+>
+> -/* C3.2.2 / C5.6.19 Conditional branch (immediate)
+> +/* Conditional branch (immediate)
+>   *  31           25  24  23                  5   4  3    0
+>   * +---------------+----+---------------------+----+------+
+>   * | 0 1 0 1 0 1 0 | o1 |         imm19       | o0 | cond |
+> @@ -1316,7 +1318,7 @@ static void disas_cond_b_imm(DisasContext *s, uint32_t insn)
+>      }
+>  }
+>
+> -/* C5.6.68 HINT */
+> +/* HINT instruction group, including various allocated HINTs */
+>  static void handle_hint(DisasContext *s, uint32_t insn,
+>                          unsigned int op1, unsigned int op2, unsigned int crm)
+>  {
+> @@ -1401,7 +1403,7 @@ static void handle_sync(DisasContext *s, uint32_t insn,
+>      }
+>  }
+>
+> -/* C5.6.130 MSR (immediate) - move immediate to processor state field */
+> +/* MSR (immediate) - move immediate to processor state field */
+>  static void handle_msr_i(DisasContext *s, uint32_t insn,
+>                           unsigned int op1, unsigned int op2, unsigned int crm)
+>  {
+> @@ -1477,10 +1479,10 @@ static void gen_set_nzcv(TCGv_i64 tcg_rt)
+>      tcg_temp_free_i32(nzcv);
+>  }
+>
+> -/* C5.6.129 MRS - move from system register
+> - * C5.6.131 MSR (register) - move to system register
+> - * C5.6.204 SYS
+> - * C5.6.205 SYSL
+> +/* MRS - move from system register
+> + * MSR (register) - move to system register
+> + * SYS
+> + * SYSL
+>   * These are all essentially the same insn in 'read' and 'write'
+>   * versions, with varying op0 fields.
+>   */
+> @@ -1603,7 +1605,7 @@ static void handle_sys(DisasContext *s, uint32_t insn, bool isread,
+>      }
+>  }
+>
+> -/* C3.2.4 System
+> +/* System
+>   *  31                 22 21  20 19 18 16 15   12 11    8 7   5 4    0
+>   * +---------------------+---+-----+-----+-------+-------+-----+------+
+>   * | 1 1 0 1 0 1 0 1 0 0 | L | op0 | op1 |  CRn  |  CRm  | op2 |  Rt  |
+> @@ -1626,13 +1628,13 @@ static void disas_system(DisasContext *s, uint32_t insn)
+>              return;
+>          }
+>          switch (crn) {
+> -        case 2: /* C5.6.68 HINT */
+> +        case 2: /* HINT (including allocated hints like NOP, YIELD, etc) */
+>              handle_hint(s, insn, op1, op2, crm);
+>              break;
+>          case 3: /* CLREX, DSB, DMB, ISB */
+>              handle_sync(s, insn, op1, op2, crm);
+>              break;
+> -        case 4: /* C5.6.130 MSR (immediate) */
+> +        case 4: /* MSR (immediate) */
+>              handle_msr_i(s, insn, op1, op2, crm);
+>              break;
+>          default:
+> @@ -1644,7 +1646,7 @@ static void disas_system(DisasContext *s, uint32_t insn)
+>      handle_sys(s, insn, l, op0, op1, op2, crn, crm, rt);
+>  }
+>
+> -/* C3.2.3 Exception generation
+> +/* Exception generation
+>   *
+>   *  31             24 23 21 20                     5 4   2 1  0
+>   * +-----------------+-----+------------------------+-----+----+
+> @@ -1751,7 +1753,7 @@ static void disas_exc(DisasContext *s, uint32_t insn)
+>      }
+>  }
+>
+> -/* C3.2.7 Unconditional branch (register)
+> +/* Unconditional branch (register)
+>   *  31           25 24   21 20   16 15   10 9    5 4     0
+>   * +---------------+-------+-------+-------+------+-------+
+>   * | 1 1 0 1 0 1 1 |  opc  |  op2  |  op3  |  Rn  |  op4  |
+> @@ -1806,7 +1808,7 @@ static void disas_uncond_b_reg(DisasContext *s, uint32_t insn)
+>      s->base.is_jmp = DISAS_JUMP;
+>  }
+>
+> -/* C3.2 Branches, exception generating and system instructions */
+> +/* Branches, exception generating and system instructions */
+>  static void disas_b_exc_sys(DisasContext *s, uint32_t insn)
+>  {
+>      switch (extract32(insn, 25, 7)) {
+> @@ -1974,7 +1976,7 @@ static bool disas_ldst_compute_iss_sf(int size, bool is_signed, int opc)
+>      return regsize == 64;
+>  }
+>
+> -/* C3.3.6 Load/store exclusive
+> +/* Load/store exclusive
+>   *
+>   *  31 30 29         24  23  22   21  20  16  15  14   10 9    5 4    0
+>   * +-----+-------------+----+---+----+------+----+-------+------+------+
+> @@ -2051,7 +2053,7 @@ static void disas_ldst_excl(DisasContext *s, uint32_t insn)
+>  }
+>
+>  /*
+> - * C3.3.5 Load register (literal)
+> + * Load register (literal)
+>   *
+>   *  31 30 29   27  26 25 24 23                5 4     0
+>   * +-----+-------+---+-----+-------------------+-------+
+> @@ -2107,15 +2109,15 @@ static void disas_ld_lit(DisasContext *s, uint32_t insn)
+>  }
+>
+>  /*
+> - * C5.6.80 LDNP (Load Pair - non-temporal hint)
+> - * C5.6.81 LDP (Load Pair - non vector)
+> - * C5.6.82 LDPSW (Load Pair Signed Word - non vector)
+> - * C5.6.176 STNP (Store Pair - non-temporal hint)
+> - * C5.6.177 STP (Store Pair - non vector)
+> - * C6.3.165 LDNP (Load Pair of SIMD&FP - non-temporal hint)
+> - * C6.3.165 LDP (Load Pair of SIMD&FP)
+> - * C6.3.284 STNP (Store Pair of SIMD&FP - non-temporal hint)
+> - * C6.3.284 STP (Store Pair of SIMD&FP)
+> + * LDNP (Load Pair - non-temporal hint)
+> + * LDP (Load Pair - non vector)
+> + * LDPSW (Load Pair Signed Word - non vector)
+> + * STNP (Store Pair - non-temporal hint)
+> + * STP (Store Pair - non vector)
+> + * LDNP (Load Pair of SIMD&FP - non-temporal hint)
+> + * LDP (Load Pair of SIMD&FP)
+> + * STNP (Store Pair of SIMD&FP - non-temporal hint)
+> + * STP (Store Pair of SIMD&FP)
+>   *
+>   *  31 30 29   27  26  25 24   23  22 21   15 14   10 9    5 4    0
+>   * +-----+-------+---+---+-------+---+-----------------------------+
+> @@ -2261,9 +2263,9 @@ static void disas_ldst_pair(DisasContext *s, uint32_t insn)
+>  }
+>
+>  /*
+> - * C3.3.8 Load/store (immediate post-indexed)
+> - * C3.3.9 Load/store (immediate pre-indexed)
+> - * C3.3.12 Load/store (unscaled immediate)
+> + * Load/store (immediate post-indexed)
+> + * Load/store (immediate pre-indexed)
+> + * Load/store (unscaled immediate)
+>   *
+>   * 31 30 29   27  26 25 24 23 22 21  20    12 11 10 9    5 4    0
+>   * +----+-------+---+-----+-----+---+--------+-----+------+------+
+> @@ -2379,7 +2381,7 @@ static void disas_ldst_reg_imm9(DisasContext *s, uint32_t insn,
+>  }
+>
+>  /*
+> - * C3.3.10 Load/store (register offset)
+> + * Load/store (register offset)
+>   *
+>   * 31 30 29   27  26 25 24 23 22 21  20  16 15 13 12 11 10 9  5 4  0
+>   * +----+-------+---+-----+-----+---+------+-----+--+-----+----+----+
+> @@ -2476,7 +2478,7 @@ static void disas_ldst_reg_roffset(DisasContext *s, uint32_t insn,
+>  }
+>
+>  /*
+> - * C3.3.13 Load/store (unsigned immediate)
+> + * Load/store (unsigned immediate)
+>   *
+>   * 31 30 29   27  26 25 24 23 22 21        10 9     5
+>   * +----+-------+---+-----+-----+------------+-------+------+
+> @@ -2587,14 +2589,14 @@ static void disas_ldst_reg(DisasContext *s, uint32_t insn)
+>      }
+>  }
+>
+> -/* C3.3.1 AdvSIMD load/store multiple structures
+> +/* AdvSIMD load/store multiple structures
+>   *
+>   *  31  30  29           23 22  21         16 15    12 11  10 9    5 4    0
+>   * +---+---+---------------+---+-------------+--------+------+------+------+
+>   * | 0 | Q | 0 0 1 1 0 0 0 | L | 0 0 0 0 0 0 | opcode | size |  Rn  |  Rt  |
+>   * +---+---+---------------+---+-------------+--------+------+------+------+
+>   *
+> - * C3.3.2 AdvSIMD load/store multiple structures (post-indexed)
+> + * AdvSIMD load/store multiple structures (post-indexed)
+>   *
+>   *  31  30  29           23 22  21  20     16 15    12 11  10 9    5 4    0
+>   * +---+---+---------------+---+---+---------+--------+------+------+------+
+> @@ -2719,14 +2721,14 @@ static void disas_ldst_multiple_struct(DisasContext *s, uint32_t insn)
+>      tcg_temp_free_i64(tcg_addr);
+>  }
+>
+> -/* C3.3.3 AdvSIMD load/store single structure
+> +/* AdvSIMD load/store single structure
+>   *
+>   *  31  30  29           23 22 21 20       16 15 13 12  11  10 9    5 4    0
+>   * +---+---+---------------+-----+-----------+-----+---+------+------+------+
+>   * | 0 | Q | 0 0 1 1 0 1 0 | L R | 0 0 0 0 0 | opc | S | size |  Rn  |  Rt  |
+>   * +---+---+---------------+-----+-----------+-----+---+------+------+------+
+>   *
+> - * C3.3.4 AdvSIMD load/store single structure (post-indexed)
+> + * AdvSIMD load/store single structure (post-indexed)
+>   *
+>   *  31  30  29           23 22 21 20       16 15 13 12  11  10 9    5 4    0
+>   * +---+---+---------------+-----+-----------+-----+---+------+------+------+
+> @@ -2869,7 +2871,7 @@ static void disas_ldst_single_struct(DisasContext *s, uint32_t insn)
+>      tcg_temp_free_i64(tcg_addr);
+>  }
+>
+> -/* C3.3 Loads and stores */
+> +/* Loads and stores */
+>  static void disas_ldst(DisasContext *s, uint32_t insn)
+>  {
+>      switch (extract32(insn, 24, 6)) {
+> @@ -2899,7 +2901,7 @@ static void disas_ldst(DisasContext *s, uint32_t insn)
+>      }
+>  }
+>
+> -/* C3.4.6 PC-rel. addressing
+> +/* PC-rel. addressing
+>   *   31  30   29 28       24 23                5 4    0
+>   * +----+-------+-----------+-------------------+------+
+>   * | op | immlo | 1 0 0 0 0 |       immhi       |  Rd  |
+> @@ -2928,7 +2930,7 @@ static void disas_pc_rel_adr(DisasContext *s, uint32_t insn)
+>  }
+>
+>  /*
+> - * C3.4.1 Add/subtract (immediate)
+> + * Add/subtract (immediate)
+>   *
+>   *  31 30 29 28       24 23 22 21         10 9   5 4   0
+>   * +--+--+--+-----------+-----+-------------+-----+-----+
+> @@ -3078,7 +3080,7 @@ static bool logic_imm_decode_wmask(uint64_t *result, unsigned int immn,
+>      return true;
+>  }
+>
+> -/* C3.4.4 Logical (immediate)
+> +/* Logical (immediate)
+>   *   31  30 29 28         23 22  21  16 15  10 9    5 4    0
+>   * +----+-----+-------------+---+------+------+------+------+
+>   * | sf | opc | 1 0 0 1 0 0 | N | immr | imms |  Rn  |  Rd  |
+> @@ -3151,7 +3153,7 @@ static void disas_logic_imm(DisasContext *s, uint32_t insn)
+>  }
+>
+>  /*
+> - * C3.4.5 Move wide (immediate)
+> + * Move wide (immediate)
+>   *
+>   *  31 30 29 28         23 22 21 20             5 4    0
+>   * +--+-----+-------------+-----+----------------+------+
+> @@ -3203,7 +3205,7 @@ static void disas_movw_imm(DisasContext *s, uint32_t insn)
+>      }
+>  }
+>
+> -/* C3.4.2 Bitfield
+> +/* Bitfield
+>   *   31  30 29 28         23 22  21  16 15  10 9    5 4    0
+>   * +----+-----+-------------+---+------+------+------+------+
+>   * | sf | opc | 1 0 0 1 1 0 | N | immr | imms |  Rn  |  Rd  |
+> @@ -3281,7 +3283,7 @@ static void disas_bitfield(DisasContext *s, uint32_t insn)
+>      }
+>  }
+>
+> -/* C3.4.3 Extract
+> +/* Extract
+>   *   31  30  29 28         23 22   21  20  16 15    10 9    5 4    0
+>   * +----+------+-------------+---+----+------+--------+------+------+
+>   * | sf | op21 | 1 0 0 1 1 1 | N | o0 |  Rm  |  imms  |  Rn  |  Rd  |
+> @@ -3341,7 +3343,7 @@ static void disas_extract(DisasContext *s, uint32_t insn)
+>      }
+>  }
+>
+> -/* C3.4 Data processing - immediate */
+> +/* Data processing - immediate */
+>  static void disas_data_proc_imm(DisasContext *s, uint32_t insn)
+>  {
+>      switch (extract32(insn, 23, 6)) {
+> @@ -3435,7 +3437,7 @@ static void shift_reg_imm(TCGv_i64 dst, TCGv_i64 src, int sf,
+>      }
+>  }
+>
+> -/* C3.5.10 Logical (shifted register)
+> +/* Logical (shifted register)
+>   *   31  30 29 28       24 23   22 21  20  16 15    10 9    5 4    0
+>   * +----+-----+-----------+-------+---+------+--------+------+------+
+>   * | sf | opc | 0 1 0 1 0 | shift | N |  Rm  |  imm6  |  Rn  |  Rd  |
+> @@ -3526,7 +3528,7 @@ static void disas_logic_reg(DisasContext *s, uint32_t insn)
+>  }
+>
+>  /*
+> - * C3.5.1 Add/subtract (extended register)
+> + * Add/subtract (extended register)
+>   *
+>   *  31|30|29|28       24|23 22|21|20   16|15  13|12  10|9  5|4  0|
+>   * +--+--+--+-----------+-----+--+-------+------+------+----+----+
+> @@ -3599,7 +3601,7 @@ static void disas_add_sub_ext_reg(DisasContext *s, uint32_t insn)
+>  }
+>
+>  /*
+> - * C3.5.2 Add/subtract (shifted register)
+> + * Add/subtract (shifted register)
+>   *
+>   *  31 30 29 28       24 23 22 21 20   16 15     10 9    5 4    0
+>   * +--+--+--+-----------+-----+--+-------+---------+------+------+
+> @@ -3662,13 +3664,12 @@ static void disas_add_sub_reg(DisasContext *s, uint32_t insn)
+>      tcg_temp_free_i64(tcg_result);
+>  }
+>
+> -/* C3.5.9 Data-processing (3 source)
+> -
+> -   31 30  29 28       24 23 21  20  16  15  14  10 9    5 4    0
+> -  +--+------+-----------+------+------+----+------+------+------+
+> -  |sf| op54 | 1 1 0 1 1 | op31 |  Rm  | o0 |  Ra  |  Rn  |  Rd  |
+> -  +--+------+-----------+------+------+----+------+------+------+
+> -
+> +/* Data-processing (3 source)
+> + *
+> + *    31 30  29 28       24 23 21  20  16  15  14  10 9    5 4    0
+> + *  +--+------+-----------+------+------+----+------+------+------+
+> + *  |sf| op54 | 1 1 0 1 1 | op31 |  Rm  | o0 |  Ra  |  Rn  |  Rd  |
+> + *  +--+------+-----------+------+------+----+------+------+------+
+>   */
+>  static void disas_data_proc_3src(DisasContext *s, uint32_t insn)
+>  {
+> @@ -3761,7 +3762,7 @@ static void disas_data_proc_3src(DisasContext *s, uint32_t insn)
+>      tcg_temp_free_i64(tcg_tmp);
+>  }
+>
+> -/* C3.5.3 - Add/subtract (with carry)
+> +/* Add/subtract (with carry)
+>   *  31 30 29 28 27 26 25 24 23 22 21  20  16  15   10  9    5 4   0
+>   * +--+--+--+------------------------+------+---------+------+-----+
+>   * |sf|op| S| 1  1  0  1  0  0  0  0 |  rm  | opcode2 |  Rn  |  Rd |
+> @@ -3803,7 +3804,7 @@ static void disas_adc_sbc(DisasContext *s, uint32_t insn)
+>      }
+>  }
+>
+> -/* C3.5.4 - C3.5.5 Conditional compare (immediate / register)
+> +/* Conditional compare (immediate / register)
+>   *  31 30 29 28 27 26 25 24 23 22 21  20    16 15  12  11  10  9   5  4 3   0
+>   * +--+--+--+------------------------+--------+------+----+--+------+--+-----+
+>   * |sf|op| S| 1  1  0  1  0  0  1  0 |imm5/rm | cond |i/r |o2|  Rn  |o3|nzcv |
+> @@ -3908,7 +3909,7 @@ static void disas_cc(DisasContext *s, uint32_t insn)
+>      tcg_temp_free_i32(tcg_t2);
+>  }
+>
+> -/* C3.5.6 Conditional select
+> +/* Conditional select
+>   *   31   30  29  28             21 20  16 15  12 11 10 9    5 4    0
+>   * +----+----+---+-----------------+------+------+-----+------+------+
+>   * | sf | op | S | 1 1 0 1 0 1 0 0 |  Rm  | cond | op2 |  Rn  |  Rd  |
+> @@ -4019,7 +4020,7 @@ static void handle_rbit(DisasContext *s, unsigned int sf,
+>      }
+>  }
+>
+> -/* C5.6.149 REV with sf==1, opcode==3 ("REV64") */
+> +/* REV with sf==1, opcode==3 ("REV64") */
+>  static void handle_rev64(DisasContext *s, unsigned int sf,
+>                           unsigned int rn, unsigned int rd)
+>  {
+> @@ -4030,8 +4031,8 @@ static void handle_rev64(DisasContext *s, unsigned int sf,
+>      tcg_gen_bswap64_i64(cpu_reg(s, rd), cpu_reg(s, rn));
+>  }
+>
+> -/* C5.6.149 REV with sf==0, opcode==2
+> - * C5.6.151 REV32 (sf==1, opcode==2)
+> +/* REV with sf==0, opcode==2
+> + * REV32 (sf==1, opcode==2)
+>   */
+>  static void handle_rev32(DisasContext *s, unsigned int sf,
+>                           unsigned int rn, unsigned int rd)
+> @@ -4056,7 +4057,7 @@ static void handle_rev32(DisasContext *s, unsigned int sf,
+>      }
+>  }
+>
+> -/* C5.6.150 REV16 (opcode==1) */
+> +/* REV16 (opcode==1) */
+>  static void handle_rev16(DisasContext *s, unsigned int sf,
+>                           unsigned int rn, unsigned int rd)
+>  {
+> @@ -4075,7 +4076,7 @@ static void handle_rev16(DisasContext *s, unsigned int sf,
+>      tcg_temp_free_i64(tcg_tmp);
+>  }
+>
+> -/* C3.5.7 Data-processing (1 source)
+> +/* Data-processing (1 source)
+>   *   31  30  29  28             21 20     16 15    10 9    5 4    0
+>   * +----+---+---+-----------------+---------+--------+------+------+
+>   * | sf | 1 | S | 1 1 0 1 0 1 1 0 | opcode2 | opcode |  Rn  |  Rd  |
+> @@ -4144,7 +4145,7 @@ static void handle_div(DisasContext *s, bool is_signed, unsigned int sf,
+>      }
+>  }
+>
+> -/* C5.6.115 LSLV, C5.6.118 LSRV, C5.6.17 ASRV, C5.6.154 RORV */
+> +/* LSLV, LSRV, ASRV, RORV */
+>  static void handle_shift_reg(DisasContext *s,
+>                               enum a64_shift_type shift_type, unsigned int sf,
+>                               unsigned int rm, unsigned int rn, unsigned int rd)
+> @@ -4206,7 +4207,7 @@ static void handle_crc32(DisasContext *s,
+>      tcg_temp_free_i32(tcg_bytes);
+>  }
+>
+> -/* C3.5.8 Data-processing (2 source)
+> +/* Data-processing (2 source)
+>   *   31   30  29 28             21 20  16 15    10 9    5 4    0
+>   * +----+---+---+-----------------+------+--------+------+------+
+>   * | sf | 0 | S | 1 1 0 1 0 1 1 0 |  Rm  | opcode |  Rn  |  Rd  |
+> @@ -4265,7 +4266,7 @@ static void disas_data_proc_2src(DisasContext *s, uint32_t insn)
+>      }
+>  }
+>
+> -/* C3.5 Data processing - register */
+> +/* Data processing - register */
+>  static void disas_data_proc_reg(DisasContext *s, uint32_t insn)
+>  {
+>      switch (extract32(insn, 24, 5)) {
+> @@ -4359,7 +4360,7 @@ static void handle_fp_compare(DisasContext *s, bool is_double,
+>      tcg_temp_free_i64(tcg_flags);
+>  }
+>
+> -/* C3.6.22 Floating point compare
+> +/* Floating point compare
+>   *   31  30  29 28       24 23  22  21 20  16 15 14 13  10    9    5 4     0
+>   * +---+---+---+-----------+------+---+------+-----+---------+------+-------+
+>   * | M | 0 | S | 1 1 1 1 0 | type | 1 |  Rm  | op  | 1 0 0 0 |  Rn  |  op2  |
+> @@ -4389,7 +4390,7 @@ static void disas_fp_compare(DisasContext *s, uint32_t insn)
+>      handle_fp_compare(s, type, rn, rm, opc & 1, opc & 2);
+>  }
+>
+> -/* C3.6.23 Floating point conditional compare
+> +/* Floating point conditional compare
+>   *   31  30  29 28       24 23  22  21 20  16 15  12 11 10 9    5  4   3    0
+>   * +---+---+---+-----------+------+---+------+------+-----+------+----+------+
+>   * | M | 0 | S | 1 1 1 1 0 | type | 1 |  Rm  | cond | 0 1 |  Rn  | op | nzcv |
+> @@ -4437,7 +4438,7 @@ static void disas_fp_ccomp(DisasContext *s, uint32_t insn)
+>      }
+>  }
+>
+> -/* C3.6.24 Floating point conditional select
+> +/* Floating point conditional select
+>   *   31  30  29 28       24 23  22  21 20  16 15  12 11 10 9    5 4    0
+>   * +---+---+---+-----------+------+---+------+------+-----+------+------+
+>   * | M | 0 | S | 1 1 1 1 0 | type | 1 |  Rm  | cond | 1 1 |  Rn  |  Rd  |
+> @@ -4484,7 +4485,7 @@ static void disas_fp_csel(DisasContext *s, uint32_t insn)
+>      tcg_temp_free_i64(t_true);
+>  }
+>
+> -/* C3.6.25 Floating-point data-processing (1 source) - single precision */
+> +/* Floating-point data-processing (1 source) - single precision */
+>  static void handle_fp_1src_single(DisasContext *s, int opcode, int rd, int rn)
+>  {
+>      TCGv_ptr fpst;
+> @@ -4540,7 +4541,7 @@ static void handle_fp_1src_single(DisasContext *s, int opcode, int rd, int rn)
+>      tcg_temp_free_i32(tcg_res);
+>  }
+>
+> -/* C3.6.25 Floating-point data-processing (1 source) - double precision */
+> +/* Floating-point data-processing (1 source) - double precision */
+>  static void handle_fp_1src_double(DisasContext *s, int opcode, int rd, int rn)
+>  {
+>      TCGv_ptr fpst;
+> @@ -4662,7 +4663,7 @@ static void handle_fp_fcvt(DisasContext *s, int opcode,
+>      }
+>  }
+>
+> -/* C3.6.25 Floating point data-processing (1 source)
+> +/* Floating point data-processing (1 source)
+>   *   31  30  29 28       24 23  22  21 20    15 14       10 9    5 4    0
+>   * +---+---+---+-----------+------+---+--------+-----------+------+------+
+>   * | M | 0 | S | 1 1 1 1 0 | type | 1 | opcode | 1 0 0 0 0 |  Rn  |  Rd  |
+> @@ -4720,7 +4721,7 @@ static void disas_fp_1src(DisasContext *s, uint32_t insn)
+>      }
+>  }
+>
+> -/* C3.6.26 Floating-point data-processing (2 source) - single precision */
+> +/* Floating-point data-processing (2 source) - single precision */
+>  static void handle_fp_2src_single(DisasContext *s, int opcode,
+>                                    int rd, int rn, int rm)
+>  {
+> @@ -4773,7 +4774,7 @@ static void handle_fp_2src_single(DisasContext *s, int opcode,
+>      tcg_temp_free_i32(tcg_res);
+>  }
+>
+> -/* C3.6.26 Floating-point data-processing (2 source) - double precision */
+> +/* Floating-point data-processing (2 source) - double precision */
+>  static void handle_fp_2src_double(DisasContext *s, int opcode,
+>                                    int rd, int rn, int rm)
+>  {
+> @@ -4826,7 +4827,7 @@ static void handle_fp_2src_double(DisasContext *s, int opcode,
+>      tcg_temp_free_i64(tcg_res);
+>  }
+>
+> -/* C3.6.26 Floating point data-processing (2 source)
+> +/* Floating point data-processing (2 source)
+>   *   31  30  29 28       24 23  22  21 20  16 15    12 11 10 9    5 4    0
+>   * +---+---+---+-----------+------+---+------+--------+-----+------+------+
+>   * | M | 0 | S | 1 1 1 1 0 | type | 1 |  Rm  | opcode | 1 0 |  Rn  |  Rd  |
+> @@ -4863,7 +4864,7 @@ static void disas_fp_2src(DisasContext *s, uint32_t insn)
+>      }
+>  }
+>
+> -/* C3.6.27 Floating-point data-processing (3 source) - single precision */
+> +/* Floating-point data-processing (3 source) - single precision */
+>  static void handle_fp_3src_single(DisasContext *s, bool o0, bool o1,
+>                                    int rd, int rn, int rm, int ra)
+>  {
+> @@ -4901,7 +4902,7 @@ static void handle_fp_3src_single(DisasContext *s, bool o0, bool o1,
+>      tcg_temp_free_i32(tcg_res);
+>  }
+>
+> -/* C3.6.27 Floating-point data-processing (3 source) - double precision */
+> +/* Floating-point data-processing (3 source) - double precision */
+>  static void handle_fp_3src_double(DisasContext *s, bool o0, bool o1,
+>                                    int rd, int rn, int rm, int ra)
+>  {
+> @@ -4939,7 +4940,7 @@ static void handle_fp_3src_double(DisasContext *s, bool o0, bool o1,
+>      tcg_temp_free_i64(tcg_res);
+>  }
+>
+> -/* C3.6.27 Floating point data-processing (3 source)
+> +/* Floating point data-processing (3 source)
+>   *   31  30  29 28       24 23  22  21  20  16  15  14  10 9    5 4    0
+>   * +---+---+---+-----------+------+----+------+----+------+------+------+
+>   * | M | 0 | S | 1 1 1 1 1 | type | o1 |  Rm  | o0 |  Ra  |  Rn  |  Rd  |
+> @@ -4973,7 +4974,7 @@ static void disas_fp_3src(DisasContext *s, uint32_t insn)
+>      }
+>  }
+>
+> -/* C3.6.28 Floating point immediate
+> +/* Floating point immediate
+>   *   31  30  29 28       24 23  22  21 20        13 12   10 9    5 4    0
+>   * +---+---+---+-----------+------+---+------------+-------+------+------+
+>   * | M | 0 | S | 1 1 1 1 0 | type | 1 |    imm8    | 1 0 0 | imm5 |  Rd  |
+> @@ -5144,7 +5145,7 @@ static void handle_fpfpcvt(DisasContext *s, int rd, int rn, int opcode,
+>      tcg_temp_free_i32(tcg_shift);
+>  }
+>
+> -/* C3.6.29 Floating point <-> fixed point conversions
+> +/* Floating point <-> fixed point conversions
+>   *   31   30  29 28       24 23  22  21 20   19 18    16 15   10 9    5 4    0
+>   * +----+---+---+-----------+------+---+-------+--------+-------+------+------+
+>   * | sf | 0 | S | 1 1 1 1 0 | type | 0 | rmode | opcode | scale |  Rn  |  Rd  |
+> @@ -5244,7 +5245,7 @@ static void handle_fmov(DisasContext *s, int rd, int rn, int type, bool itof)
+>      }
+>  }
+>
+> -/* C3.6.30 Floating point <-> integer conversions
+> +/* Floating point <-> integer conversions
+>   *   31   30  29 28       24 23  22  21 20   19 18 16 15         10 9  5 4  0
+>   * +----+---+---+-----------+------+---+-------+-----+-------------+----+----+
+>   * | sf | 0 | S | 1 1 1 1 0 | type | 1 | rmode | opc | 0 0 0 0 0 0 | Rn | Rd |
+> @@ -5379,7 +5380,7 @@ static void do_ext64(DisasContext *s, TCGv_i64 tcg_left, TCGv_i64 tcg_right,
+>      tcg_temp_free_i64(tcg_tmp);
+>  }
+>
+> -/* C3.6.1 EXT
+> +/* EXT
+>   *   31  30 29         24 23 22  21 20  16 15  14  11 10  9    5 4    0
+>   * +---+---+-------------+-----+---+------+---+------+---+------+------+
+>   * | 0 | Q | 1 0 1 1 1 0 | op2 | 0 |  Rm  | 0 | imm4 | 0 |  Rn  |  Rd  |
+> @@ -5452,7 +5453,7 @@ static void disas_simd_ext(DisasContext *s, uint32_t insn)
+>      tcg_temp_free_i64(tcg_resh);
+>  }
+>
+> -/* C3.6.2 TBL/TBX
+> +/* BL/TBX
 
-When the GDB stub gets this packet, it will send the corresponding XML 
-description and:
-- if the size of the XML is bigger than the length requested by qXfer, 
-GDB stub will
-add 'm' at the beginning of the response to inform GDB  that there is 
-still more data to be sent.
-- else, it will add 'l' which mean there is no more data.
+I don't know how I noticed this, but it looks like you are missing a T.
 
-     if (len < total_len - addr) {
-         buf[0] = 'm';
-         len = memtox(buf + 1, xml + addr, len);
-     } else {
-         buf[0] = 'l';
-         len = memtox(buf + 1, xml + addr, total_len - addr);
-     }
-
-When GBD gets an answer with the header "m" it will send another qXfer 
-and this time
-the <offset> will be equal to (old_offset + the size of the data read 
-previously)
-
-With this, the XML description won't be truncated even if it is longer 
-than 2045.
->>   /**
->> + * XMLDynamicDescription:
->> + * @desc: Contains the XML descriptions.
->> + * @num_cpregs: Number of the Coprocessor registers seen by GDB.
->> + * @xml_cpregs_ordred_keys: Array that contains the corresponding Key of
->> + * a given cpreg with the same order of the cpreg in the XML description.
->> + */
->> +typedef struct XMLDynamicDescription {
->> +    char * desc;
->> +    int num_cpregs;
->> +    uint32_t *xml_cpregs_ordred_keys;
->> +} XMLDynamicDescription;
-> cpregs are an arm-specific concept so this data structure doesn't
-> belong in the for-all-cpus header.
-I moved this to /target/arm/cpu.h .
->> +    char * (*get_feature_xml_dynamically)(CPUState *cpu);
->> +    int (*gdb_read_cpregister)(CPUState *cpu, uint8_t *buf, int reg);
->> +    int (*gdb_write_cpregister)(CPUState *cpu, uint8_t *buf, int reg);
-> Do we really need a new set of functions rather than just being
-> able to use the existing gdb_read_register/gdb_write_register ?
-> The API seems to be the same, so I was expecting to just have
-> the same functions be called, with the register number distinguishing
-> the existing regs from the new coprocessor ones.
-I'm using now the gdb_read_register/gdb_write_register instead.
-
-Best regards,
-Abdallah
-
-  gdbstub.c              | 18 +++++++++++
-  include/qom/cpu.h      |  3 ++
-  target/arm/cpu.c       |  3 ++
-  target/arm/cpu.h       | 18 +++++++++++
-  target/arm/gdbstub.c   | 87 
-++++++++++++++++++++++++++++++++++++++++++++++++++
-  target/arm/gdbstub64.c | 25 +++++++++++++++
-  target/arm/helper.c    |  3 +-
-  7 files changed, 155 insertions(+), 2 deletions(-)
-
-diff --git a/gdbstub.c b/gdbstub.c
-index f1d5148..f54053f 100644
---- a/gdbstub.c
-+++ b/gdbstub.c
-@@ -670,10 +670,20 @@ static const char *get_feature_xml(const char *p, 
-const char **newp,
-                  pstrcat(target_xml, sizeof(target_xml), r->xml);
-                  pstrcat(target_xml, sizeof(target_xml), "\"/>");
-              }
-+            if (cc->has_dynamic_xml) {
-+                cc->gen_dynamic_xml(cpu);
-+                pstrcat(target_xml, sizeof(target_xml), "<xi:include 
-href=\"");
-+                pstrcat(target_xml, sizeof(target_xml), 
-"dynamic_desc.xml");
-+                pstrcat(target_xml, sizeof(target_xml), "\"/>");
-+            }
-              pstrcat(target_xml, sizeof(target_xml), "</target>");
-          }
-          return target_xml;
-      }
-+    if (strncmp(p, "dynamic_desc.xml", len) == 0) {
-+        CPUState *cpu = first_cpu;
-+        return cc->get_dynamic_xml(cpu);
-+    }
-      for (i = 0; ; i++) {
-          name = xml_builtin[i][0];
-          if (!name || (strncmp(name, p, len) == 0 && strlen(name) == len))
-@@ -697,6 +707,10 @@ static int gdb_read_register(CPUState *cpu, uint8_t 
-*mem_buf, int reg)
-              return r->get_reg(env, mem_buf, reg - r->base_reg);
-          }
-      }
-+
-+    if (cc->has_dynamic_xml) {
-+        return cc->gdb_read_register(cpu, mem_buf, reg);
-+    }
-      return 0;
-  }
-
-@@ -715,6 +729,10 @@ static int gdb_write_register(CPUState *cpu, 
-uint8_t *mem_buf, int reg)
-              return r->set_reg(env, mem_buf, reg - r->base_reg);
-          }
-      }
-+
-+    if (cc->has_dynamic_xml) {
-+        return cc->gdb_write_register(cpu, mem_buf, reg);
-+    }
-      return 0;
-  }
-
-diff --git a/include/qom/cpu.h b/include/qom/cpu.h
-index 93bd546..a3105c0 100644
---- a/include/qom/cpu.h
-+++ b/include/qom/cpu.h
-@@ -197,6 +197,9 @@ typedef struct CPUClass {
-      const struct VMStateDescription *vmsd;
-      const char *gdb_core_xml_file;
-      gchar * (*gdb_arch_name)(CPUState *cpu);
-+    bool has_dynamic_xml;
-+    void (*gen_dynamic_xml)(CPUState *cpu);
-+    char *(*get_dynamic_xml)(CPUState *cpu);
-
-      void (*cpu_exec_enter)(CPUState *cpu);
-      void (*cpu_exec_exit)(CPUState *cpu);
-diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-index cc1856c..410e250 100644
---- a/target/arm/cpu.c
-+++ b/target/arm/cpu.c
-@@ -1752,6 +1752,9 @@ static void arm_cpu_class_init(ObjectClass *oc, 
-void *data)
-      cc->gdb_num_core_regs = 26;
-      cc->gdb_core_xml_file = "arm-core.xml";
-      cc->gdb_arch_name = arm_gdb_arch_name;
-+    cc->has_dynamic_xml = true;
-+    cc->gen_dynamic_xml = arm_gen_dynamic_xml;
-+    cc->get_dynamic_xml = arm_get_dynamic_xml;
-      cc->gdb_stop_before_watchpoint = true;
-      cc->debug_excp_handler = arm_debug_excp_handler;
-      cc->debug_check_watchpoint = arm_debug_check_watchpoint;
-diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index 9631670..bcb567b 100644
---- a/target/arm/cpu.h
-+++ b/target/arm/cpu.h
-@@ -135,6 +135,19 @@ enum {
-     s<2n+1> maps to the most significant half of d<n>
-   */
-
-+/**
-+ * XMLDynamicDescription:
-+ * @desc: Contains the XML descriptions.
-+ * @num_cpregs: Number of the Coprocessor registers seen by GDB.
-+ * @cpregs_keys: Array that contains the corresponding Key of
-+ * a given cpreg with the same order of the cpreg in the XML description.
-+ */
-+typedef struct XMLDynamicDescription {
-+    char *desc;
-+    int num_cpregs;
-+    uint32_t *cpregs_keys;
-+} XMLDynamicDescription;
-+
-  /* CPU state for each instance of a generic timer (in cp15 c14) */
-  typedef struct ARMGenericTimer {
-      uint64_t cval; /* Timer CompareValue register */
-@@ -633,6 +646,8 @@ struct ARMCPU {
-      uint64_t *cpreg_vmstate_values;
-      int32_t cpreg_vmstate_array_len;
-
-+    XMLDynamicDescription dyn_xml;
-+
-      /* Timers used by the generic (architected) timer */
-      QEMUTimer *gt_timer[NUM_GTIMERS];
-      /* GPIO outputs for generic timer */
-@@ -797,6 +812,8 @@ hwaddr arm_cpu_get_phys_page_attrs_debug(CPUState 
-*cpu, vaddr addr,
-
-  int arm_cpu_gdb_read_register(CPUState *cpu, uint8_t *buf, int reg);
-  int arm_cpu_gdb_write_register(CPUState *cpu, uint8_t *buf, int reg);
-+void arm_gen_dynamic_xml(CPUState *cpu);
-+char *arm_get_dynamic_xml(CPUState *cpu);
-
-  int arm_cpu_write_elf64_note(WriteCoreDumpFunction f, CPUState *cs,
-                               int cpuid, void *opaque);
-@@ -2005,6 +2022,7 @@ static inline bool cp_access_ok(int current_el,
-
-  /* Raw read of a coprocessor register (as needed for migration, etc) */
-  uint64_t read_raw_cp_reg(CPUARMState *env, const ARMCPRegInfo *ri);
-+void write_raw_cp_reg(CPUARMState *env, const ARMCPRegInfo *ri, 
-uint64_t v);
-
-  /**
-   * write_list_to_cpustate
-diff --git a/target/arm/gdbstub.c b/target/arm/gdbstub.c
-index 04c1208..7cffe87 100644
---- a/target/arm/gdbstub.c
-+++ b/target/arm/gdbstub.c
-@@ -56,6 +56,17 @@ int arm_cpu_gdb_read_register(CPUState *cs, uint8_t 
-*mem_buf, int n)
-          /* CPSR */
-          return gdb_get_reg32(mem_buf, cpsr_read(env));
-      }
-+    if (n >= cs->gdb_num_regs &&
-+        n < cs->gdb_num_regs + cpu->dyn_xml.num_cpregs) {
-+        const ARMCPRegInfo *ri;
-+        uint32_t key;
-+
-+        key = cpu->dyn_xml.cpregs_keys[n - cs->gdb_num_regs];
-+        ri = get_arm_cp_reginfo(arm_env_get_cpu(env)->cp_regs, key);
-+        if (ri) {
-+            return gdb_get_reg32(mem_buf, 
-(uint32_t)read_raw_cp_reg(env, ri));
-+        }
-+    }
-      /* Unknown register.  */
-      return 0;
-  }
-@@ -98,6 +109,82 @@ int arm_cpu_gdb_write_register(CPUState *cs, uint8_t 
-*mem_buf, int n)
-          cpsr_write(env, tmp, 0xffffffff, CPSRWriteByGDBStub);
-          return 4;
-      }
-+    if (n >= cs->gdb_num_regs &&
-+        n < cs->gdb_num_regs + cpu->dyn_xml.num_cpregs) {
-+        const ARMCPRegInfo *ri;
-+        uint32_t key;
-+
-+        key = cpu->dyn_xml.cpregs_keys[n - cs->gdb_num_regs];
-+        ri = get_arm_cp_reginfo(arm_env_get_cpu(env)->cp_regs, key);
-+        if (ri) {
-+            if (!(ri->type & ARM_CP_CONST)) {
-+                write_raw_cp_reg(env, ri, tmp);
-+                return 4;
-+            }
-+        }
-+    }
-      /* Unknown register.  */
-      return 0;
-  }
-+
-+static void arm_gen_xml_reg(gpointer key, gpointer value, gpointer cs)
-+{
-+    ARMCPU *cpu = ARM_CPU(cs);
-+    XMLDynamicDescription *dyn_xml = &cpu->dyn_xml;
-+    ARMCPRegInfo *ri = value;
-+    uint32_t ri_key = *(uint32_t *)key;
-+    CPUARMState *env = &cpu->env;
-+    char **target_xml = (char **)&(dyn_xml->desc);
-+    char *tmp_xml = *target_xml;
-+
-+    if (!(ri->type & (ARM_CP_NO_RAW | ARM_CP_ALIAS))) {
-+        if (env->aarch64) {
-+            if (cpreg_field_is_64bit(ri)) {
-+                *target_xml = g_strconcat(*target_xml,
-+                                        "<reg name=\"", ri->name, "\" ",
-+                                        "bitsize=\"64\" 
-group=\"cp_regs\"/>",
-+                                        NULL);
-+            } else {
-+                return;
-+            }
-+        } else {
-+            if (ri->secure & ARM_CP_SECSTATE_S) {
-+                *target_xml = g_strconcat(*target_xml,
-+                                          "<reg name=\"", ri->name, 
-"_S\" ",
-+                                          "bitsize=\"32\" 
-group=\"cp_regs\"/>",
-+                                          NULL);
-+            } else {
-+                *target_xml = g_strconcat(*target_xml,
-+                                          "<reg name=\"", ri->name, "\" ",
-+                                          "bitsize=\"32\" 
-group=\"cp_regs\"/>",
-+                                          NULL);
-+            }
-+        }
-+        g_free(tmp_xml);
-+        dyn_xml->num_cpregs++;
-+        dyn_xml->cpregs_keys = g_renew(uint32_t,
-+                                       dyn_xml->cpregs_keys,
-+                                       dyn_xml->num_cpregs);
-+        dyn_xml->cpregs_keys[dyn_xml->num_cpregs - 1] = ri_key;
-+    }
-+}
-+
-+void arm_gen_dynamic_xml(CPUState *cs)
-+{
-+    ARMCPU *cpu = ARM_CPU(cs);
-+
-+    cpu->dyn_xml.num_cpregs = 0;
-+    cpu->dyn_xml.desc = g_strconcat("<?xml version=\"1.0\"?>",
-+                                 "<!DOCTYPE target SYSTEM 
-\"gdb-target.dtd\">",
-+                                   "<feature 
-name=\"org.gnu.gdb.dynamic.cp\">",
-+                                   NULL);
-+    g_hash_table_foreach(cpu->cp_regs, arm_gen_xml_reg, cs);
-+    cpu->dyn_xml.desc = g_strconcat(cpu->dyn_xml.desc, "</feature>", NULL);
-+}
-+
-+char *arm_get_dynamic_xml(CPUState *cs)
-+{
-+    ARMCPU *cpu = ARM_CPU(cs);
-+
-+    return cpu->dyn_xml.desc;
-+}
-diff --git a/target/arm/gdbstub64.c b/target/arm/gdbstub64.c
-index 49bc3fc..6cf302f 100644
---- a/target/arm/gdbstub64.c
-+++ b/target/arm/gdbstub64.c
-@@ -38,6 +38,17 @@ int aarch64_cpu_gdb_read_register(CPUState *cs, 
-uint8_t *mem_buf, int n)
-      case 33:
-          return gdb_get_reg32(mem_buf, pstate_read(env));
-      }
-+    if (n >= cs->gdb_num_regs &&
-+        n < cs->gdb_num_regs + cpu->dyn_xml.num_cpregs) {
-+        const ARMCPRegInfo *ri;
-+        uint32_t key;
-+
-+        key = cpu->dyn_xml.cpregs_keys[n - cs->gdb_num_regs];
-+        ri = get_arm_cp_reginfo(arm_env_get_cpu(env)->cp_regs, key);
-+        if (ri) {
-+            return gdb_get_reg64(mem_buf, 
-(uint64_t)read_raw_cp_reg(env, ri));
-+        }
-+    }
-      /* Unknown register.  */
-      return 0;
-  }
-@@ -67,6 +78,20 @@ int aarch64_cpu_gdb_write_register(CPUState *cs, 
-uint8_t *mem_buf, int n)
-          pstate_write(env, tmp);
-          return 4;
-      }
-+    if (n >= cs->gdb_num_regs &&
-+        n < cs->gdb_num_regs + cpu->dyn_xml.num_cpregs) {
-+        const ARMCPRegInfo *ri;
-+        uint32_t key;
-+
-+        key = cpu->dyn_xml.cpregs_keys[n - cs->gdb_num_regs];
-+        ri = get_arm_cp_reginfo(arm_env_get_cpu(env)->cp_regs, key);
-+        if (ri) {
-+            if (!(ri->type & ARM_CP_CONST)) {
-+                write_raw_cp_reg(env, ri, tmp);
-+                return 8;
-+            }
-+        }
-+    }
-      /* Unknown register.  */
-      return 0;
-  }
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index c83c901..223372f 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -191,8 +191,7 @@ uint64_t read_raw_cp_reg(CPUARMState *env, const 
-ARMCPRegInfo *ri)
-      }
-  }
-
--static void write_raw_cp_reg(CPUARMState *env, const ARMCPRegInfo *ri,
--                             uint64_t v)
-+void write_raw_cp_reg(CPUARMState *env, const ARMCPRegInfo *ri, uint64_t v)
-  {
-      /* Raw write of a coprocessor register (as needed for migration, etc).
-       * Note that constant registers are treated as write-ignored; the
--- 
-1.9.1
-
---------------461F5E1BCDF203A2A1BB82F0
-Content-Type: text/html; charset=utf-8
-Content-Transfer-Encoding: 8bit
-
-<html>
-  <head>
-    <meta http-equiv="content-type" content="text/html; charset=utf-8">
-  </head>
-  <body text="#000000" bgcolor="#FFFFFF">
-    [PATCH V2] target-arm:Add a dynamic XML-description of the
-    cp-registers to GDB<br>
-    <br>
-    This patch offers to GDB the ability to read/write all the
-    coprocessor<br>
-    registers for ARM and ARM64 by generating dynamically an
-    XML-description for<br>
-    these registers.<br>
-    <br>
-    Signed-off-by: Abdallah Bouassida <a class="moz-txt-link-rfc2396E"
-      href="mailto:abdallah.bouassida@lauterbach.com">&lt;abdallah.bouassida@lauterbach.com&gt;</a><br>
-    ---<br>
-    <br>
-    Hello Peter,<br>
-    <br>
-    Thanks for reviewing the previous version of this patch!<br>
-        <a class="moz-txt-link-freetext" href="http://patchwork.ozlabs.org/patch/861374/">http://patchwork.ozlabs.org/patch/861374/</a><br>
-    <blockquote type="cite"
-cite="mid:CAFEAcA_LZYfsOKuq9e-uCQPRBsi5XGNyCWw4E_YhyebNJeyRLQ@mail.gmail.com">
-      <blockquote type="cite">
-        <pre wrap="">*For the ARM64, should I differentiate the registers that have two views (32
-and 64)
-Maybe by adding in the XML description a "32" tag for the registers name for
-the
-32bit view and a "64" for the 64bit view.
-*How to properly handle the secure and the non secure views?
-</pre>
-      </blockquote>
-      <pre wrap="">I think it might be useful to approach it from the other end -- what
-are we trying to achieve?
-
-For 32 vs 64 bit, it depends on what interface we're showing to the
-debugger. If we're saying "this is a 64 bit CPU" then we should just
-present the 64-bit sysregs, in the same way we only present the 64-bit
-GPRs. If a 32-bit CPU, present the coprocessor regs only. (It's not
-currently possible to have gdb switch between 32 and 64 bit views
-as a 64-bit CPU changes from aarch32 to aarch64, though upstream gdb
-are working on it.)
-
-For secure vs non-secure, follow how the architecture does it:
- * for a 64-bit CPU, there are no banked sysregs like this, so you
-   just expose 1 register
- * for a 32-bit CPU, maybe banked registers should be exposed as 2 registers
-
-...but this depends on what you're trying to do, and whether there's
-existing practice in for instance how JTAG debugging presents these
-sysregs to gdb.
-</pre>
-    </blockquote>
-    So, in this new patch I have did the following:<br>
-    - If the CPU is on the AARCH64 state (when connecting to GDB stub),
-    I only take the 64bit <br>
-    view of cpregs.<br>
-    - If we are on the AARCH32, I only take the 32bit view of cpregs and
-    in the XML description<br>
-    I add the tag "_S" to the cpreg's name if it is the secure view of
-    that register.<br>
-    <blockquote type="cite"
-cite="mid:CAFEAcA_LZYfsOKuq9e-uCQPRBsi5XGNyCWw4E_YhyebNJeyRLQ@mail.gmail.com">
-      <pre wrap="">I'm pretty hesitant about allowing the user to modify system registers
-in the debugger, that is unlikely to work in quite a lot of cases.
-I'd rather we just made these registers all readonly.</pre>
-    </blockquote>
-    Some of our customers need to connect to Qemu using our tool TRACE32<span
-      style="color: rgb(84, 84, 84); font-family: arial, sans-serif;
-      font-size: small; font-style: normal; font-variant-ligatures:
-      normal; font-variant-caps: normal; font-weight: 400;
-      letter-spacing: normal; orphans: 2; text-align: left; text-indent:
-      0px; text-transform: none; white-space: normal; widows: 2;
-      word-spacing: 0px; -webkit-text-stroke-width: 0px;
-      background-color: rgb(255, 255, 255); text-decoration-style:
-      initial; text-decoration-color: initial; display: inline
-      !important; float: none;"><font color="#000000">® via GDB, </font><br>
-    </span>and for some use case they need to have write access to some
-    particular cpregs.<br>
-    So, it will be nice to have this capability!<br>
-    Usually, a user won't modify these registers unless he knows what he
-    is doing!<br>
-    <br>
-    <blockquote type="cite"
-cite="mid:CAFEAcA_LZYfsOKuq9e-uCQPRBsi5XGNyCWw4E_YhyebNJeyRLQ@mail.gmail.com">
-      <pre wrap="">What does the UI in gdb look like? What gdb commands display
-the list of and values of system registers now? (Are there any
-commands that used to be useful and are now swamped by lists of
-hundreds of system registers?)
-</pre>
-    </blockquote>
-    To read a given register: <br>
-       (gdb)  print/x $&lt;cpreg_name&gt;<br>
-    To write on a given register<br>
-       (gdb) set $&lt;cpreg_name&gt;=&lt;value&gt;<br>
-    To get the list of all registers:<br>
-       (gdb) info registers all<br>
-        with this command the user get all the registers including the
-    cpregs that has been<br>
-        described dynamically.<br>
-        This command shows the registers page by page (depending on the
-    terminal window size)<br>
-        and the cpregs goes at the end of the list so if user is really
-    interested on these cpregs he<br>
-        should continue to read the register list or he simply type "q"
-    to quit.<br>
-    <br>
-    In the previous patch, the command "info registers" (without the
-    option "all") was swamped <br>
-    by the new big list. So, I fixed that by assigning these registers
-    (in the XML ) to a special <br>
-    group (group="cp_regs") and with that the cpregs won't appear with
-    this command.   <br>
-    <br>
-    Otherwise, I don't think that there is another GDB command that
-    could be affected by<br>
-    this patch.<br>
-    <blockquote type="cite"
-cite="mid:CAFEAcA_LZYfsOKuq9e-uCQPRBsi5XGNyCWw4E_YhyebNJeyRLQ@mail.gmail.com">
-      <pre wrap="">Don't we run into problems where this XML exceeds our gdbstub
-MAX_PACKET_LENGTH (which is only 4K) ?
-
-This is a pre-existing bug (<a class="moz-txt-link-freetext" href="https://bugs.launchpad.net/qemu/+bug/1703147">https://bugs.launchpad.net/qemu/+bug/1703147</a>)
-but I would expect that if we start autogenerating xml for all the
-coprocessor registers we're going to hit the packet limit pretty
-quickly.
-</pre>
-    </blockquote>
-    No, indeed I don't think that (<a class="moz-txt-link-freetext"
-      href="https://bugs.launchpad.net/qemu/+bug/1703147">https://bugs.launchpad.net/qemu/+bug/1703147</a>)<br>
-    is a bug!<br>
-    However, when the gdb request to get an XML description, it sends
-    the packet:<br>
-       
-    qXfer:features:read:&lt;xml_name&gt;:&lt;offset&gt;,&lt;length&gt;<br>
-    for the first packet, the offset=0 and the length in our case is
-    0xFFB<br>
-    (= MAX_PACKET_LENGTH - 5)<br>
-    <br>
-    When the GDB stub gets this packet, it will send the corresponding
-    XML description and:<br>
-    - if the size of the XML is bigger than the length requested by
-    qXfer, GDB stub will <br>
-    add 'm' at the beginning of the response to inform GDB  that there
-    is still more data to be sent.<br>
-    - else, it will add 'l' which mean there is no more data.<br>
-    <br>
-        if (len &lt; total_len - addr) {<br>
-            buf[0] = 'm';<br>
-            len = memtox(buf + 1, xml + addr, len);<br>
-        } else {<br>
-            buf[0] = 'l';<br>
-            len = memtox(buf + 1, xml + addr, total_len - addr);<br>
-        }<br>
-    <br>
-    When GBD gets an answer with the header "m" it will send another
-    qXfer and this time<br>
-    the &lt;offset&gt; will be equal to (old_offset + the size of the
-    data read previously) <br>
-    <br>
-    With this, the XML description won't be truncated even if it is
-    longer than 2045.<br>
-    <blockquote type="cite"
-cite="mid:CAFEAcA_LZYfsOKuq9e-uCQPRBsi5XGNyCWw4E_YhyebNJeyRLQ@mail.gmail.com">
-      <blockquote type="cite">
-        <pre wrap=""> /**
-+ * XMLDynamicDescription:
-+ * @desc: Contains the XML descriptions.
-+ * @num_cpregs: Number of the Coprocessor registers seen by GDB.
-+ * @xml_cpregs_ordred_keys: Array that contains the corresponding Key of
-+ * a given cpreg with the same order of the cpreg in the XML description.
-+ */
-+typedef struct XMLDynamicDescription {
-+    char * desc;
-+    int num_cpregs;
-+    uint32_t *xml_cpregs_ordred_keys;
-+} XMLDynamicDescription;
-</pre>
-      </blockquote>
-      <pre wrap="">cpregs are an arm-specific concept so this data structure doesn't
-belong in the for-all-cpus header.
-</pre>
-    </blockquote>
-    I moved this to /target/arm/cpu.h .<br>
-    <blockquote type="cite"
-cite="mid:CAFEAcA_LZYfsOKuq9e-uCQPRBsi5XGNyCWw4E_YhyebNJeyRLQ@mail.gmail.com">
-      <blockquote type="cite">
-        <pre wrap="">+    char * (*get_feature_xml_dynamically)(CPUState *cpu);
-+    int (*gdb_read_cpregister)(CPUState *cpu, uint8_t *buf, int reg);
-+    int (*gdb_write_cpregister)(CPUState *cpu, uint8_t *buf, int reg);
-</pre>
-      </blockquote>
-      <pre wrap="">Do we really need a new set of functions rather than just being
-able to use the existing gdb_read_register/gdb_write_register ?
-The API seems to be the same, so I was expecting to just have
-the same functions be called, with the register number distinguishing
-the existing regs from the new coprocessor ones.
-</pre>
-    </blockquote>
-    I'm using now the gdb_read_register/gdb_write_register instead.<br>
-    <br>
-    Best regards,<br>
-    Abdallah<br>
-    <br>
-     gdbstub.c              | 18 +++++++++++<br>
-     include/qom/cpu.h      |  3 ++<br>
-     target/arm/cpu.c       |  3 ++<br>
-     target/arm/cpu.h       | 18 +++++++++++<br>
-     target/arm/gdbstub.c   | 87
-    ++++++++++++++++++++++++++++++++++++++++++++++++++<br>
-     target/arm/gdbstub64.c | 25 +++++++++++++++<br>
-     target/arm/helper.c    |  3 +-<br>
-     7 files changed, 155 insertions(+), 2 deletions(-)<br>
-    <br>
-    diff --git a/gdbstub.c b/gdbstub.c<br>
-    index f1d5148..f54053f 100644<br>
-    --- a/gdbstub.c<br>
-    +++ b/gdbstub.c<br>
-    @@ -670,10 +670,20 @@ static const char *get_feature_xml(const char
-    *p, const char **newp,<br>
-                     pstrcat(target_xml, sizeof(target_xml), r-&gt;xml);<br>
-                     pstrcat(target_xml, sizeof(target_xml), "\"/&gt;");<br>
-                 }<br>
-    +            if (cc-&gt;has_dynamic_xml) {<br>
-    +                cc-&gt;gen_dynamic_xml(cpu);<br>
-    +                pstrcat(target_xml, sizeof(target_xml),
-    "&lt;xi:include href=\"");<br>
-    +                pstrcat(target_xml, sizeof(target_xml),
-    "dynamic_desc.xml");<br>
-    +                pstrcat(target_xml, sizeof(target_xml), "\"/&gt;");<br>
-    +            }<br>
-                 pstrcat(target_xml, sizeof(target_xml),
-    "&lt;/target&gt;");<br>
-             }<br>
-             return target_xml;<br>
-         }<br>
-    +    if (strncmp(p, "dynamic_desc.xml", len) == 0) {<br>
-    +        CPUState *cpu = first_cpu;<br>
-    +        return cc-&gt;get_dynamic_xml(cpu);<br>
-    +    }<br>
-         for (i = 0; ; i++) {<br>
-             name = xml_builtin[i][0];<br>
-             if (!name || (strncmp(name, p, len) == 0 &amp;&amp;
-    strlen(name) == len))<br>
-    @@ -697,6 +707,10 @@ static int gdb_read_register(CPUState *cpu,
-    uint8_t *mem_buf, int reg)<br>
-                 return r-&gt;get_reg(env, mem_buf, reg -
-    r-&gt;base_reg);<br>
-             }<br>
-         }<br>
-    +<br>
-    +    if (cc-&gt;has_dynamic_xml) {<br>
-    +        return cc-&gt;gdb_read_register(cpu, mem_buf, reg);<br>
-    +    }<br>
-         return 0;<br>
-     }<br>
-     <br>
-    @@ -715,6 +729,10 @@ static int gdb_write_register(CPUState *cpu,
-    uint8_t *mem_buf, int reg)<br>
-                 return r-&gt;set_reg(env, mem_buf, reg -
-    r-&gt;base_reg);<br>
-             }<br>
-         }<br>
-    +<br>
-    +    if (cc-&gt;has_dynamic_xml) {<br>
-    +        return cc-&gt;gdb_write_register(cpu, mem_buf, reg);<br>
-    +    }<br>
-         return 0;<br>
-     }<br>
-     <br>
-    diff --git a/include/qom/cpu.h b/include/qom/cpu.h<br>
-    index 93bd546..a3105c0 100644<br>
-    --- a/include/qom/cpu.h<br>
-    +++ b/include/qom/cpu.h<br>
-    @@ -197,6 +197,9 @@ typedef struct CPUClass {<br>
-         const struct VMStateDescription *vmsd;<br>
-         const char *gdb_core_xml_file;<br>
-         gchar * (*gdb_arch_name)(CPUState *cpu);<br>
-    +    bool has_dynamic_xml;<br>
-    +    void (*gen_dynamic_xml)(CPUState *cpu);<br>
-    +    char *(*get_dynamic_xml)(CPUState *cpu);<br>
-     <br>
-         void (*cpu_exec_enter)(CPUState *cpu);<br>
-         void (*cpu_exec_exit)(CPUState *cpu);<br>
-    diff --git a/target/arm/cpu.c b/target/arm/cpu.c<br>
-    index cc1856c..410e250 100644<br>
-    --- a/target/arm/cpu.c<br>
-    +++ b/target/arm/cpu.c<br>
-    @@ -1752,6 +1752,9 @@ static void arm_cpu_class_init(ObjectClass
-    *oc, void *data)<br>
-         cc-&gt;gdb_num_core_regs = 26;<br>
-         cc-&gt;gdb_core_xml_file = "arm-core.xml";<br>
-         cc-&gt;gdb_arch_name = arm_gdb_arch_name;<br>
-    +    cc-&gt;has_dynamic_xml = true;<br>
-    +    cc-&gt;gen_dynamic_xml = arm_gen_dynamic_xml;<br>
-    +    cc-&gt;get_dynamic_xml = arm_get_dynamic_xml;<br>
-         cc-&gt;gdb_stop_before_watchpoint = true;<br>
-         cc-&gt;debug_excp_handler = arm_debug_excp_handler;<br>
-         cc-&gt;debug_check_watchpoint = arm_debug_check_watchpoint;<br>
-    diff --git a/target/arm/cpu.h b/target/arm/cpu.h<br>
-    index 9631670..bcb567b 100644<br>
-    --- a/target/arm/cpu.h<br>
-    +++ b/target/arm/cpu.h<br>
-    @@ -135,6 +135,19 @@ enum {<br>
-        s&lt;2n+1&gt; maps to the most significant half of d&lt;n&gt;<br>
-      */<br>
-     <br>
-    +/**<br>
-    + * XMLDynamicDescription:<br>
-    + * @desc: Contains the XML descriptions.<br>
-    + * @num_cpregs: Number of the Coprocessor registers seen by GDB.<br>
-    + * @cpregs_keys: Array that contains the corresponding Key of<br>
-    + * a given cpreg with the same order of the cpreg in the XML
-    description.<br>
-    + */<br>
-    +typedef struct XMLDynamicDescription {<br>
-    +    char *desc;<br>
-    +    int num_cpregs;<br>
-    +    uint32_t *cpregs_keys;<br>
-    +} XMLDynamicDescription;<br>
-    +<br>
-     /* CPU state for each instance of a generic timer (in cp15 c14) */<br>
-     typedef struct ARMGenericTimer {<br>
-         uint64_t cval; /* Timer CompareValue register */<br>
-    @@ -633,6 +646,8 @@ struct ARMCPU {<br>
-         uint64_t *cpreg_vmstate_values;<br>
-         int32_t cpreg_vmstate_array_len;<br>
-     <br>
-    +    XMLDynamicDescription dyn_xml;<br>
-    +<br>
-         /* Timers used by the generic (architected) timer */<br>
-         QEMUTimer *gt_timer[NUM_GTIMERS];<br>
-         /* GPIO outputs for generic timer */<br>
-    @@ -797,6 +812,8 @@ hwaddr
-    arm_cpu_get_phys_page_attrs_debug(CPUState *cpu, vaddr addr,<br>
-     <br>
-     int arm_cpu_gdb_read_register(CPUState *cpu, uint8_t *buf, int
-    reg);<br>
-     int arm_cpu_gdb_write_register(CPUState *cpu, uint8_t *buf, int
-    reg);<br>
-    +void arm_gen_dynamic_xml(CPUState *cpu);<br>
-    +char *arm_get_dynamic_xml(CPUState *cpu);<br>
-     <br>
-     int arm_cpu_write_elf64_note(WriteCoreDumpFunction f, CPUState *cs,<br>
-                                  int cpuid, void *opaque);<br>
-    @@ -2005,6 +2022,7 @@ static inline bool cp_access_ok(int
-    current_el,<br>
-     <br>
-     /* Raw read of a coprocessor register (as needed for migration,
-    etc) */<br>
-     uint64_t read_raw_cp_reg(CPUARMState *env, const ARMCPRegInfo *ri);<br>
-    +void write_raw_cp_reg(CPUARMState *env, const ARMCPRegInfo *ri,
-    uint64_t v);<br>
-     <br>
-     /**<br>
-      * write_list_to_cpustate<br>
-    diff --git a/target/arm/gdbstub.c b/target/arm/gdbstub.c<br>
-    index 04c1208..7cffe87 100644<br>
-    --- a/target/arm/gdbstub.c<br>
-    +++ b/target/arm/gdbstub.c<br>
-    @@ -56,6 +56,17 @@ int arm_cpu_gdb_read_register(CPUState *cs,
-    uint8_t *mem_buf, int n)<br>
-             /* CPSR */<br>
-             return gdb_get_reg32(mem_buf, cpsr_read(env));<br>
-         }<br>
-    +    if (n &gt;= cs-&gt;gdb_num_regs &amp;&amp;<br>
-    +        n &lt; cs-&gt;gdb_num_regs + cpu-&gt;dyn_xml.num_cpregs) {<br>
-    +        const ARMCPRegInfo *ri;<br>
-    +        uint32_t key;<br>
-    +<br>
-    +        key = cpu-&gt;dyn_xml.cpregs_keys[n - cs-&gt;gdb_num_regs];<br>
-    +        ri = get_arm_cp_reginfo(arm_env_get_cpu(env)-&gt;cp_regs,
-    key);<br>
-    +        if (ri) {<br>
-    +            return gdb_get_reg32(mem_buf,
-    (uint32_t)read_raw_cp_reg(env, ri));<br>
-    +        }<br>
-    +    }<br>
-         /* Unknown register.  */<br>
-         return 0;<br>
-     }<br>
-    @@ -98,6 +109,82 @@ int arm_cpu_gdb_write_register(CPUState *cs,
-    uint8_t *mem_buf, int n)<br>
-             cpsr_write(env, tmp, 0xffffffff, CPSRWriteByGDBStub);<br>
-             return 4;<br>
-         }<br>
-    +    if (n &gt;= cs-&gt;gdb_num_regs &amp;&amp;<br>
-    +        n &lt; cs-&gt;gdb_num_regs + cpu-&gt;dyn_xml.num_cpregs) {<br>
-    +        const ARMCPRegInfo *ri;<br>
-    +        uint32_t key;<br>
-    +<br>
-    +        key = cpu-&gt;dyn_xml.cpregs_keys[n - cs-&gt;gdb_num_regs];<br>
-    +        ri = get_arm_cp_reginfo(arm_env_get_cpu(env)-&gt;cp_regs,
-    key);<br>
-    +        if (ri) {<br>
-    +            if (!(ri-&gt;type &amp; ARM_CP_CONST)) {<br>
-    +                write_raw_cp_reg(env, ri, tmp);<br>
-    +                return 4;<br>
-    +            }<br>
-    +        }<br>
-    +    }<br>
-         /* Unknown register.  */<br>
-         return 0;<br>
-     }<br>
-    +<br>
-    +static void arm_gen_xml_reg(gpointer key, gpointer value, gpointer
-    cs)<br>
-    +{<br>
-    +    ARMCPU *cpu = ARM_CPU(cs);<br>
-    +    XMLDynamicDescription *dyn_xml = &amp;cpu-&gt;dyn_xml;<br>
-    +    ARMCPRegInfo *ri = value;<br>
-    +    uint32_t ri_key = *(uint32_t *)key;<br>
-    +    CPUARMState *env = &amp;cpu-&gt;env;<br>
-    +    char **target_xml = (char **)&amp;(dyn_xml-&gt;desc);<br>
-    +    char *tmp_xml = *target_xml;<br>
-    +<br>
-    +    if (!(ri-&gt;type &amp; (ARM_CP_NO_RAW | ARM_CP_ALIAS))) {<br>
-    +        if (env-&gt;aarch64) {<br>
-    +            if (cpreg_field_is_64bit(ri)) {<br>
-    +                *target_xml = g_strconcat(*target_xml,<br>
-    +                                        "&lt;reg name=\"",
-    ri-&gt;name, "\" ",<br>
-    +                                        "bitsize=\"64\"
-    group=\"cp_regs\"/&gt;",<br>
-    +                                        NULL);<br>
-    +            } else {<br>
-    +                return;<br>
-    +            }<br>
-    +        } else {<br>
-    +            if (ri-&gt;secure &amp; ARM_CP_SECSTATE_S) {<br>
-    +                *target_xml = g_strconcat(*target_xml,<br>
-    +                                          "&lt;reg name=\"",
-    ri-&gt;name, "_S\" ",<br>
-    +                                          "bitsize=\"32\"
-    group=\"cp_regs\"/&gt;",<br>
-    +                                          NULL);<br>
-    +            } else {<br>
-    +                *target_xml = g_strconcat(*target_xml,<br>
-    +                                          "&lt;reg name=\"",
-    ri-&gt;name, "\" ",<br>
-    +                                          "bitsize=\"32\"
-    group=\"cp_regs\"/&gt;",<br>
-    +                                          NULL);<br>
-    +            }<br>
-    +        }<br>
-    +        g_free(tmp_xml);<br>
-    +        dyn_xml-&gt;num_cpregs++;<br>
-    +        dyn_xml-&gt;cpregs_keys = g_renew(uint32_t,<br>
-    +                                       dyn_xml-&gt;cpregs_keys,<br>
-    +                                       dyn_xml-&gt;num_cpregs);<br>
-    +        dyn_xml-&gt;cpregs_keys[dyn_xml-&gt;num_cpregs - 1] =
-    ri_key;<br>
-    +    }<br>
-    +}<br>
-    +<br>
-    +void arm_gen_dynamic_xml(CPUState *cs)<br>
-    +{<br>
-    +    ARMCPU *cpu = ARM_CPU(cs);<br>
-    +<br>
-    +    cpu-&gt;dyn_xml.num_cpregs = 0;<br>
-    +    cpu-&gt;dyn_xml.desc = g_strconcat("&lt;?xml
-    version=\"1.0\"?&gt;",<br>
-    +                                 "&lt;!DOCTYPE target SYSTEM
-    \"gdb-target.dtd\"&gt;",<br>
-    +                                   "&lt;feature
-    name=\"org.gnu.gdb.dynamic.cp\"&gt;",<br>
-    +                                   NULL);<br>
-    +    g_hash_table_foreach(cpu-&gt;cp_regs, arm_gen_xml_reg, cs);<br>
-    +    cpu-&gt;dyn_xml.desc = g_strconcat(cpu-&gt;dyn_xml.desc,
-    "&lt;/feature&gt;", NULL);<br>
-    +}<br>
-    +<br>
-    +char *arm_get_dynamic_xml(CPUState *cs)<br>
-    +{<br>
-    +    ARMCPU *cpu = ARM_CPU(cs);<br>
-    +<br>
-    +    return cpu-&gt;dyn_xml.desc;<br>
-    +}<br>
-    diff --git a/target/arm/gdbstub64.c b/target/arm/gdbstub64.c<br>
-    index 49bc3fc..6cf302f 100644<br>
-    --- a/target/arm/gdbstub64.c<br>
-    +++ b/target/arm/gdbstub64.c<br>
-    @@ -38,6 +38,17 @@ int aarch64_cpu_gdb_read_register(CPUState *cs,
-    uint8_t *mem_buf, int n)<br>
-         case 33:<br>
-             return gdb_get_reg32(mem_buf, pstate_read(env));<br>
-         }<br>
-    +    if (n &gt;= cs-&gt;gdb_num_regs &amp;&amp;<br>
-    +        n &lt; cs-&gt;gdb_num_regs + cpu-&gt;dyn_xml.num_cpregs) {<br>
-    +        const ARMCPRegInfo *ri;<br>
-    +        uint32_t key;<br>
-    +<br>
-    +        key = cpu-&gt;dyn_xml.cpregs_keys[n - cs-&gt;gdb_num_regs];<br>
-    +        ri = get_arm_cp_reginfo(arm_env_get_cpu(env)-&gt;cp_regs,
-    key);<br>
-    +        if (ri) {<br>
-    +            return gdb_get_reg64(mem_buf,
-    (uint64_t)read_raw_cp_reg(env, ri));<br>
-    +        }<br>
-    +    }<br>
-         /* Unknown register.  */<br>
-         return 0;<br>
-     }<br>
-    @@ -67,6 +78,20 @@ int aarch64_cpu_gdb_write_register(CPUState *cs,
-    uint8_t *mem_buf, int n)<br>
-             pstate_write(env, tmp);<br>
-             return 4;<br>
-         }<br>
-    +    if (n &gt;= cs-&gt;gdb_num_regs &amp;&amp;<br>
-    +        n &lt; cs-&gt;gdb_num_regs + cpu-&gt;dyn_xml.num_cpregs) {<br>
-    +        const ARMCPRegInfo *ri;<br>
-    +        uint32_t key;<br>
-    +<br>
-    +        key = cpu-&gt;dyn_xml.cpregs_keys[n - cs-&gt;gdb_num_regs];<br>
-    +        ri = get_arm_cp_reginfo(arm_env_get_cpu(env)-&gt;cp_regs,
-    key);<br>
-    +        if (ri) {<br>
-    +            if (!(ri-&gt;type &amp; ARM_CP_CONST)) {<br>
-    +                write_raw_cp_reg(env, ri, tmp);<br>
-    +                return 8;<br>
-    +            }<br>
-    +        }<br>
-    +    }<br>
-         /* Unknown register.  */<br>
-         return 0;<br>
-     }<br>
-    diff --git a/target/arm/helper.c b/target/arm/helper.c<br>
-    index c83c901..223372f 100644<br>
-    --- a/target/arm/helper.c<br>
-    +++ b/target/arm/helper.c<br>
-    @@ -191,8 +191,7 @@ uint64_t read_raw_cp_reg(CPUARMState *env, const
-    ARMCPRegInfo *ri)<br>
-         }<br>
-     }<br>
-     <br>
-    -static void write_raw_cp_reg(CPUARMState *env, const ARMCPRegInfo
-    *ri,<br>
-    -                             uint64_t v)<br>
-    +void write_raw_cp_reg(CPUARMState *env, const ARMCPRegInfo *ri,
-    uint64_t v)<br>
-     {<br>
-         /* Raw write of a coprocessor register (as needed for
-    migration, etc).<br>
-          * Note that constant registers are treated as write-ignored;
-    the<br>
-    -- <br>
-    1.9.1<br>
-  </body>
-</html>
-
---------------461F5E1BCDF203A2A1BB82F0--
+Thanks,
+Alistair

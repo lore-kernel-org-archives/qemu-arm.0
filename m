@@ -1,72 +1,72 @@
-Received: by 10.223.172.38 with SMTP id v35csp3209529wrc;
-        Fri, 22 Sep 2017 07:59:59 -0700 (PDT)
-X-Google-Smtp-Source: AOwi7QCjMdLHB+5khr675Lcw7NGZBuR+Zea5bSFHWhsDnnWgSD4qwKovjYcOGmfA5Oqsap7MTWyT
-X-Received: by 10.200.39.174 with SMTP id w43mr9230311qtw.154.1506092399453;
-        Fri, 22 Sep 2017 07:59:59 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1506092399; cv=none;
+Received: by 10.223.172.38 with SMTP id v35csp3209639wrc;
+        Fri, 22 Sep 2017 08:00:06 -0700 (PDT)
+X-Google-Smtp-Source: AOwi7QDmczZhc2Nhz1KMz/ElVczFZsczfU8/jli6YTUluOoDYyW2HoSUjpwArn2H1piDSGJXes7F
+X-Received: by 10.55.16.74 with SMTP id a71mr8597172qkh.170.1506092406831;
+        Fri, 22 Sep 2017 08:00:06 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1506092406; cv=none;
         d=google.com; s=arc-20160816;
-        b=M0c4txsTFkU6fEGhnBDckoXOqtnGiDTXqIxsz/+LzAQWQE/osbit4oN8oSYtKjUuWv
-         TZymQmykAoaL9mgr0Fy8kXuhuY1lnaty9WHqlF9dEouOS9iFcEIp5tGRBpXSj68oNFgg
-         rZ7ExkO5YvlFy2hy74KY7aoqfHjMd30j1oUuURX6uFrtDdc0JfklSFymDuoEtXub7ioJ
-         uUU7MBmuPoWkr2816EMXXtekOoTszXkwn5QALcp6N0k3YTqxzmTf8e5onmlpgRGgh7Xj
-         1OQfbdpw+JR0IjTgZpF770JHKxFHagoEZ91rCbJq8VttIsLggXGxRzv6skBvNnAnlT1n
-         cR1w==
+        b=NE5ra+d4k05ctS4UYzJOgUa58w3f4SkjD6FO7hrSka+W63w6ovILDSHDmR/nOyYmpx
+         /Xv5LTiGIM+BB72aGv/aBpMszh4jfPhb6zrGkAJ//YnrVbl1hXTVUpK63Rl5SZ+GNoJT
+         hPKUk3YeVFGp0eNXZJOzrANni1vBInaf5wUAy0Oh5gATSDAg3/ENno60l07Fblo9etl2
+         w5QqxGg0NZCs72U4Cq+7dUL4ejrlqMi3BAfw5C+yjzohj6xh6TeTfXSC1CZ6NP287PvC
+         aF9f8LYUwuo9BJHQXOcBexiGKj8xIg9iUnPQYj0Tutmw0sH9WcRpxITUwnpYT0K+ydqo
+         hpAg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
          :message-id:date:to:from:arc-authentication-results;
-        bh=5rjsnNt1/no6ImERMX7mheTxJaPJRmMoitVrFKz2qfc=;
-        b=OLDduTxjboedcd0GFndDYiWc6Z5R7dENQXu0gEGVI6dJ+glTv8G0Q9QwFxb0aEixHp
-         HOoREhkf4X5ZyWdi7mE4Pp51pNlyyH7MCd6RgnxMIil/GKEwKbkHCkDf/CTy3b4Jk9iW
-         Vjf7MeqiDgZbJOIkQMit4dM64Q9eyWTxMqTpAYUP0lh31TtzIS8BNKkHI9MAF3pbytZH
-         PPQ6X7sS4I5k3FtlneqQXpo1tVqWADm1BDjqH5wW2c0PV2vFiBz5nzoCvuMua93ipamA
-         o1d7S91jxFrklRKu8EpK6eBZvoVEU4Qbre7dPSpHzGF4lv6OkQcaa8nJSD/Rnv3K7xZw
-         3tlQ==
+        bh=eYjzFvsOeZ7TOJ9PjbfOpFu+JiyM+T227XmUcJoz6dk=;
+        b=bRXfEmvF6rKX/xxnqpLamUHKnoLQJz97RtVE8UoEuyoPyC2cKfv4zv3jjQHG/8n45q
+         ukdymVq5pA/aMo2rhMDqFSc8DqyObm4UlOTSZIRYcPlmzh1pQRuR7lP6LNu9qfol3Va1
+         qwC3ao2mu4ibHbWxYK/Kslvi2wZlUFK+AHTt8UySOaLM7XNmHB97DthlxDFdbzAMreK8
+         cyGJNy/EB6hqEiH5Ll5eWO2cbJzeuFBXBMI2Zrv7/YG7fwnnNPNekVvgzmcKpgJFaVGy
+         XHXMy/EGPcfAJKCe6HswqoMNgnJev+HF+E7Nx5TNCU/YQIBXXfyPN7hawXEppD2KEd4E
+         JhpA==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id q24si837qtg.56.2017.09.22.07.59.58
+        by mx.google.com with ESMTPS id w34si29528qtg.75.2017.09.22.08.00.06
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 22 Sep 2017 07:59:59 -0700 (PDT)
+        Fri, 22 Sep 2017 08:00:06 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:59303 helo=lists.gnu.org)
+Received: from localhost ([::1]:59304 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1dvPQr-0007zC-4L
-	for alex.bennee@linaro.org; Fri, 22 Sep 2017 10:59:57 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:46886)
+	id 1dvPQy-0008AO-KK
+	for alex.bennee@linaro.org; Fri, 22 Sep 2017 11:00:04 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:46808)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1dvPQW-0007u2-Kg
-	for qemu-arm@nongnu.org; Fri, 22 Sep 2017 10:59:37 -0400
+	(envelope-from <pm215@archaic.org.uk>) id 1dvPQU-0007rW-2F
+	for qemu-arm@nongnu.org; Fri, 22 Sep 2017 10:59:35 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1dvPQV-00042d-BU
-	for qemu-arm@nongnu.org; Fri, 22 Sep 2017 10:59:36 -0400
+	(envelope-from <pm215@archaic.org.uk>) id 1dvPQT-00040I-Bw
+	for qemu-arm@nongnu.org; Fri, 22 Sep 2017 10:59:34 -0400
 Received: from orth.archaic.org.uk ([2001:8b0:1d0::2]:37534)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <pm215@archaic.org.uk>)
-	id 1dvPQV-0003yz-4n; Fri, 22 Sep 2017 10:59:35 -0400
+	id 1dvPQT-0003yz-5l; Fri, 22 Sep 2017 10:59:33 -0400
 Received: from pm215 by orth.archaic.org.uk with local (Exim 4.89)
 	(envelope-from <pm215@archaic.org.uk>)
-	id 1dvPQT-00079V-6D; Fri, 22 Sep 2017 15:59:33 +0100
+	id 1dvPQQ-00077x-HY; Fri, 22 Sep 2017 15:59:30 +0100
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Date: Fri, 22 Sep 2017 15:59:52 +0100
-Message-Id: <1506092407-26985-6-git-send-email-peter.maydell@linaro.org>
+Date: Fri, 22 Sep 2017 15:59:48 +0100
+Message-Id: <1506092407-26985-2-git-send-email-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.7.4
 In-Reply-To: <1506092407-26985-1-git-send-email-peter.maydell@linaro.org>
 References: <1506092407-26985-1-git-send-email-peter.maydell@linaro.org>
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
 X-Received-From: 2001:8b0:1d0::2
-Subject: [Qemu-arm] [PATCH 05/20] target/arm: Restore SPSEL to correct
- CONTROL register on exception return
+Subject: [Qemu-arm] [PATCH 01/20] nvic: Clear the vector arrays and prigroup
+ on reset
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -81,90 +81,40 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: patches@linaro.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: jZKh+L4dZbdi
+X-TUID: 3q8lwZX4ddom
 
-On exception return for v8M, the SPSEL bit in the EXC_RETURN magic
-value should be restored to the SPSEL bit in the CONTROL register
-banked specified by the EXC_RETURN.ES bit.
+Reset for devices does not include an automatic clear of the
+device state (unlike CPU state, where most of the state
+structure is cleared to zero). Add some missing initialization
+of NVIC state that meant that the device was left in the wrong
+state if the guest did a warm reset.
 
-Add write_v7m_control_spsel_for_secstate() which behaves like
-write_v7m_control_spsel() but allows the caller to specify which
-CONTROL bank to use, reimplement write_v7m_control_spsel() in
-terms of it, and use it in exception return.
+(In particular, since we were resetting the computed state like
+s->exception_prio but not all the state it was computed
+from like s->vectors[x].active, the NVIC wound up in an
+inconsistent state that could later trigger assertion failures.)
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- target/arm/helper.c | 40 +++++++++++++++++++++++++++-------------
- 1 file changed, 27 insertions(+), 13 deletions(-)
+ hw/intc/armv7m_nvic.c | 5 +++++
+ 1 file changed, 5 insertions(+)
 
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index a3c63c3..4444d04 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -6052,28 +6052,42 @@ static bool v7m_using_psp(CPUARMState *env)
-         env->v7m.control[env->v7m.secure] & R_V7M_CONTROL_SPSEL_MASK;
- }
+diff --git a/hw/intc/armv7m_nvic.c b/hw/intc/armv7m_nvic.c
+index d90d8d0..bc7b66d 100644
+--- a/hw/intc/armv7m_nvic.c
++++ b/hw/intc/armv7m_nvic.c
+@@ -1782,6 +1782,11 @@ static void armv7m_nvic_reset(DeviceState *dev)
+     int resetprio;
+     NVICState *s = NVIC(dev);
  
--/* Write to v7M CONTROL.SPSEL bit. This may change the current
-- * stack pointer between Main and Process stack pointers.
-+/* Write to v7M CONTROL.SPSEL bit for the specified security bank.
-+ * This may change the current stack pointer between Main and Process
-+ * stack pointers if it is done for the CONTROL register for the current
-+ * security state.
-  */
--static void write_v7m_control_spsel(CPUARMState *env, bool new_spsel)
-+static void write_v7m_control_spsel_for_secstate(CPUARMState *env,
-+                                                 bool new_spsel,
-+                                                 bool secstate)
- {
--    uint32_t tmp;
--    bool new_is_psp, old_is_psp = v7m_using_psp(env);
-+    bool old_is_psp = v7m_using_psp(env);
- 
--    env->v7m.control[env->v7m.secure] =
--        deposit32(env->v7m.control[env->v7m.secure],
-+    env->v7m.control[secstate] =
-+        deposit32(env->v7m.control[secstate],
-                   R_V7M_CONTROL_SPSEL_SHIFT,
-                   R_V7M_CONTROL_SPSEL_LENGTH, new_spsel);
- 
--    new_is_psp = v7m_using_psp(env);
-+    if (secstate == env->v7m.secure) {
-+        bool new_is_psp = v7m_using_psp(env);
-+        uint32_t tmp;
- 
--    if (old_is_psp != new_is_psp) {
--        tmp = env->v7m.other_sp;
--        env->v7m.other_sp = env->regs[13];
--        env->regs[13] = tmp;
-+        if (old_is_psp != new_is_psp) {
-+            tmp = env->v7m.other_sp;
-+            env->v7m.other_sp = env->regs[13];
-+            env->regs[13] = tmp;
-+        }
-     }
- }
- 
-+/* Write to v7M CONTROL.SPSEL bit. This may change the current
-+ * stack pointer between Main and Process stack pointers.
-+ */
-+static void write_v7m_control_spsel(CPUARMState *env, bool new_spsel)
-+{
-+    write_v7m_control_spsel_for_secstate(env, new_spsel, env->v7m.secure);
-+}
++    memset(s->vectors, 0, sizeof(s->vectors));
++    memset(s->sec_vectors, 0, sizeof(s->sec_vectors));
++    s->prigroup[M_REG_NS] = 0;
++    s->prigroup[M_REG_S] = 0;
 +
- void write_v7m_exception(CPUARMState *env, uint32_t new_exc)
- {
-     /* Write a new value to v7m.exception, thus transitioning into or out
-@@ -6369,7 +6383,7 @@ static void do_v7m_exception_exit(ARMCPU *cpu)
-      * Handler mode (and will be until we write the new XPSR.Interrupt
-      * field) this does not switch around the current stack pointer.
-      */
--    write_v7m_control_spsel(env, return_to_sp_process);
-+    write_v7m_control_spsel_for_secstate(env, return_to_sp_process, exc_secure);
- 
-     switch_v7m_security_state(env, return_to_secure);
- 
+     s->vectors[ARMV7M_EXCP_NMI].enabled = 1;
+     /* MEM, BUS, and USAGE are enabled through
+      * the System Handler Control register
 -- 
 2.7.4
 

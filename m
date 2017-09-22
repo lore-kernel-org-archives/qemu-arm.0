@@ -1,200 +1,286 @@
-Received: by 10.223.172.38 with SMTP id v35csp3217407wrc;
-        Fri, 22 Sep 2017 08:07:42 -0700 (PDT)
-X-Google-Smtp-Source: AOwi7QAd/YLR9Ag0v8le8O/ovtpwlFqjXueZQ+CsZIpuzPxXHr2HGsYciA+G5gRLXjGtB0tYb3ZI
-X-Received: by 10.55.48.210 with SMTP id w201mr8198252qkw.117.1506092862322;
-        Fri, 22 Sep 2017 08:07:42 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1506092862; cv=none;
+Received: by 10.223.172.38 with SMTP id v35csp3218088wrc;
+        Fri, 22 Sep 2017 08:08:20 -0700 (PDT)
+X-Google-Smtp-Source: AOwi7QB0HYLMIozt5uhxSQ7yybYqgnRprGOQKtZx+W9OIhVDLtSxk7r7CWTFEEB641GdDIR1JewL
+X-Received: by 10.55.180.193 with SMTP id d184mr8268295qkf.87.1506092900234;
+        Fri, 22 Sep 2017 08:08:20 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1506092900; cv=none;
         d=google.com; s=arc-20160816;
-        b=W8b2PUhJxAIZdnxjgoSarA38X1L9sukjMPicgE6yne9r7skF9PIxcdYvpU+hytbTuz
-         4Bl6IRmYFlgSKceRMT5/xvUFx6qQc6j1+ltVpu9rFEp7e6MbWJyWQqSRoK4YGERMpc5e
-         YRihsabPyKrk/HpnbnQcV9LDQrA5LiFMnywOFIwpOYjplEsoDgfveKtBPDkZ97XhLQ8E
-         bzkLeAQFf3unPkdtRa/g4LT6lruwO5PjGbtUh7XC0vkqbYvEddROW0VEY+lGyqvt8kLR
-         Le83PMn7alm4niuzJazyz4wwLD8c47gWyv1guFlAi0VQkNBRDBGxIXVln99UJ9bHVWpC
-         SJXg==
+        b=vwcqb3ieCZFNAm9jJrhYBv0U4RqzwKQs42nxstwinaevDoztMrPz3/Li1tuoueVehH
+         6nIolPUjw97A8AVcUWsQTDKP4uPb1CtPIEUA+ARuLtpeKKRAgxRjWygoNktYexMx+ufY
+         MDGSB6KnAvqDxxKQFdnMmD1OdgoNEvdFnDX3Jrhfbo+qFPwTtOk+OthPFWwRJC3sEX4e
+         kykgIcu6FomQG6AkHQ7NPMlureEBOlZG/9wZgsA/NAVKouOZbnIWXKrYgsssIj4kCmzz
+         +2dHjD6NkFMhxm7J3sBx6nyEcnzxFgEIQg+DCG/DpRuzKIGQB4F/vS8YA0ZAAmiCRru9
+         qEjA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
          :message-id:date:to:from:arc-authentication-results;
-        bh=fa6mdZIut2A2NQf1izgJ1b4XVtoS/B4w08kdnPJjIP4=;
-        b=YJMiVnYjQNScBMGiLgUNLTQGDJQWF604xlimtK6RtdKLZIjl6/OkXI73xUuLdimtz2
-         xKNfIy3tHJxOl2WQQRadF6Yp/T0EcebrT4bvWh6xtbLnlp0C/tBF1BXOw5CY7+MEinoN
-         p26lvMldZx14CxKrmn7I0SDlQHcc0cGHIu8DFv8erteyVmL6rIfSYD/nH+2bOmZzZ738
-         j0EuvoUy7rEyZ4nsLXqUsA1FImTJ5t5uD4VVaCwLDoB9FvI/DqTm1tS1KnEi/hyHbWFA
-         HHxPjjfPbhhDnuV5eE5jPl9RHJCtP52g2RhcpUwYxuH5guQC5KlcFL+gWNS9pv5V98M7
-         93TA==
+        bh=Fx37YsEywhqylNENqWWTJEik+WvjkclDdFLnKW84MWA=;
+        b=GhqQn5dJSdNAFQ5M17LPaNZYHEOE04Ju14wtGj6kkEwdjOTFxm+I9orQSpcCUCKRik
+         keX6tO2DD0TOjXBpTH7bqFtq6lOLKJeB4tny7dno23SKqM022V2TosK372tyXibfRCxh
+         AqS6kRIILFjZKtmOnnW7WviFt4MvNoeU0MYVDresClNW/QGTcoIjLzb8YPCa5XbBMHm9
+         mFW20Za/cIDBkfEEztpuH0jzrgHMhlj+69CG/FadNVGMt29ekJwXeeLGmA4Ys6q04ZCQ
+         y3zmcI4TbA+0HgMgKmJ3EdxacYednZLPN4/DCtdVENNW9fjLF6+5MUBmJ4t1c7jlUDNV
+         EpCA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id b64si35152qka.109.2017.09.22.08.07.41
+        by mx.google.com with ESMTPS id n34si34285qtb.277.2017.09.22.08.08.19
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 22 Sep 2017 08:07:42 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Fri, 22 Sep 2017 08:08:20 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:59356 helo=lists.gnu.org)
+Received: from localhost ([::1]:59357 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1dvPYJ-0006hT-U9
-	for alex.bennee@linaro.org; Fri, 22 Sep 2017 11:07:39 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:46982)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1dvPYw-0006ry-0V
+	for alex.bennee@linaro.org; Fri, 22 Sep 2017 11:08:18 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:47185)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1dvPQY-0007wo-U4
-	for qemu-arm@nongnu.org; Fri, 22 Sep 2017 10:59:40 -0400
+	(envelope-from <pm215@archaic.org.uk>) id 1dvPQe-00083x-H0
+	for qemu-devel@nongnu.org; Fri, 22 Sep 2017 10:59:46 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1dvPQY-00045h-12
-	for qemu-arm@nongnu.org; Fri, 22 Sep 2017 10:59:39 -0400
+	(envelope-from <pm215@archaic.org.uk>) id 1dvPQc-0004DR-Sj
+	for qemu-devel@nongnu.org; Fri, 22 Sep 2017 10:59:44 -0400
 Received: from orth.archaic.org.uk ([2001:8b0:1d0::2]:37562)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <pm215@archaic.org.uk>)
-	id 1dvPQX-00044o-Pj; Fri, 22 Sep 2017 10:59:37 -0400
+	id 1dvPQY-00044o-RV; Fri, 22 Sep 2017 10:59:39 -0400
 Received: from pm215 by orth.archaic.org.uk with local (Exim 4.89)
 	(envelope-from <pm215@archaic.org.uk>)
-	id 1dvPQW-0007CA-L7; Fri, 22 Sep 2017 15:59:36 +0100
+	id 1dvPQR-00078E-6k; Fri, 22 Sep 2017 15:59:31 +0100
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Date: Fri, 22 Sep 2017 15:59:57 +0100
-Message-Id: <1506092407-26985-11-git-send-email-peter.maydell@linaro.org>
+Date: Fri, 22 Sep 2017 15:59:49 +0100
+Message-Id: <1506092407-26985-3-git-send-email-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.7.4
 In-Reply-To: <1506092407-26985-1-git-send-email-peter.maydell@linaro.org>
 References: <1506092407-26985-1-git-send-email-peter.maydell@linaro.org>
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
 X-Received-From: 2001:8b0:1d0::2
-Subject: [Qemu-arm] [PATCH 10/20] target/arm: Update excret sanity checks
- for v8M
-X-BeenThere: qemu-arm@nongnu.org
+Subject: [Qemu-devel] [PATCH 02/20] target/arm: Don't switch to target stack
+ early in v7M exception return
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: patches@linaro.org
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: vG+dGKVBptcV
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: EKnf67CTk1JF
 
-In v8M, more bits are defined in the exception-return magic
-values; update the code that checks these so we accept
-the v8M values when the CPU permits them.
+Currently our M profile exception return code switches to the
+target stack pointer relatively early in the process, before
+it tries to pop the exception frame off the stack. This is
+awkward for v8M for two reasons:
+ * in v8M the process vs main stack pointer is not selected
+   purely by the value of CONTROL.SPSEL, so updating SPSEL
+   and relying on that to switch to the right stack pointer
+   won't work
+ * the stack we should be reading the stack frame from and
+   the stack we will eventually switch to might not be the
+   same if the guest is doing strange things
+
+Change our exception return code to use a 'frame pointer'
+to read the exception frame rather than assuming that we
+can switch the live stack pointer this early.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- target/arm/helper.c | 73 ++++++++++++++++++++++++++++++++++++++++++-----------
- 1 file changed, 58 insertions(+), 15 deletions(-)
+ target/arm/helper.c | 127 +++++++++++++++++++++++++++++++++++++++-------------
+ 1 file changed, 95 insertions(+), 32 deletions(-)
 
 diff --git a/target/arm/helper.c b/target/arm/helper.c
-index 59a07d2..da3a36e 100644
+index 8be78ea..f13b99d 100644
 --- a/target/arm/helper.c
 +++ b/target/arm/helper.c
-@@ -6275,8 +6275,9 @@ static void do_v7m_exception_exit(ARMCPU *cpu)
+@@ -6040,16 +6040,6 @@ static void v7m_push(CPUARMState *env, uint32_t val)
+     stl_phys(cs->as, env->regs[13], val);
+ }
+ 
+-static uint32_t v7m_pop(CPUARMState *env)
+-{
+-    CPUState *cs = CPU(arm_env_get_cpu(env));
+-    uint32_t val;
+-
+-    val = ldl_phys(cs->as, env->regs[13]);
+-    env->regs[13] += 4;
+-    return val;
+-}
+-
+ /* Return true if we're using the process stack pointer (not the MSP) */
+ static bool v7m_using_psp(CPUARMState *env)
+ {
+@@ -6141,6 +6131,40 @@ void HELPER(v7m_bxns)(CPUARMState *env, uint32_t dest)
+     env->regs[15] = dest & ~1;
+ }
+ 
++static uint32_t *get_v7m_sp_ptr(CPUARMState *env, bool secure, bool threadmode,
++                                bool spsel)
++{
++    /* Return a pointer to the location where we currently store the
++     * stack pointer for the requested security state and thread mode.
++     * This pointer will become invalid if the CPU state is updated
++     * such that the stack pointers are switched around (eg changing
++     * the SPSEL control bit).
++     * Compare the v8M ARM ARM pseudocode LookUpSP_with_security_mode().
++     * Unlike that pseudocode, we require the caller to pass us in the
++     * SPSEL control bit value; this is because we also use this
++     * function in handling of pushing of the callee-saves registers
++     * part of the v8M stack frame, and in that case the SPSEL bit
++     * comes from the exception return magic LR value.
++     */
++    bool want_psp = threadmode && spsel;
++
++    if (secure == env->v7m.secure) {
++        /* Currently switch_v7m_sp switches SP as it updates SPSEL,
++         * so the SP we want is always in regs[13].
++         * When we decouple SPSEL from the actually selected SP
++         * we need to check want_psp against v7m_using_psp()
++         * to see whether we need regs[13] or v7m.other_sp.
++         */
++        return &env->regs[13];
++    } else {
++        if (want_psp) {
++            return &env->v7m.other_ss_psp;
++        } else {
++            return &env->v7m.other_ss_msp;
++        }
++    }
++}
++
+ static uint32_t arm_v7m_load_vector(ARMCPU *cpu)
+ {
+     CPUState *cs = CPU(cpu);
+@@ -6212,6 +6236,7 @@ static void v7m_push_stack(ARMCPU *cpu)
+ static void do_v7m_exception_exit(ARMCPU *cpu)
+ {
+     CPUARMState *env = &cpu->env;
++    CPUState *cs = CPU(cpu);
      uint32_t excret;
      uint32_t xpsr;
      bool ufault = false;
--    bool return_to_sp_process = false;
--    bool return_to_handler = false;
-+    bool sfault = false;
-+    bool return_to_sp_process;
-+    bool return_to_handler;
+@@ -6219,6 +6244,7 @@ static void do_v7m_exception_exit(ARMCPU *cpu)
+     bool return_to_handler = false;
      bool rettobase = false;
      bool exc_secure = false;
-     bool return_to_secure;
-@@ -6310,6 +6311,19 @@ static void do_v7m_exception_exit(ARMCPU *cpu)
-                       excret);
-     }
++    bool return_to_secure;
  
-+    if (arm_feature(env, ARM_FEATURE_M_SECURITY)) {
-+        /* EXC_RETURN.ES validation check (R_SMFL). We must do this before
-+         * we pick which FAULTMASK to clear.
-+         */
-+        if (!env->v7m.secure &&
-+            ((excret & R_V7M_EXCRET_ES_MASK) ||
-+             !(excret & R_V7M_EXCRET_DCRS_MASK))) {
-+            sfault = 1;
-+            /* For all other purposes, treat ES as 0 (R_HXSR) */
-+            excret &= ~R_V7M_EXCRET_ES_MASK;
-+        }
-+    }
-+
-     if (env->v7m.exception != ARMV7M_EXCP_NMI) {
-         /* Auto-clear FAULTMASK on return from other than NMI.
-          * If the security extension is implemented then this only
-@@ -6347,24 +6361,53 @@ static void do_v7m_exception_exit(ARMCPU *cpu)
+     /* We can only get here from an EXCP_EXCEPTION_EXIT, and
+      * gen_bx_excret() enforces the architectural rule
+@@ -6286,6 +6312,9 @@ static void do_v7m_exception_exit(ARMCPU *cpu)
          g_assert_not_reached();
      }
  
-+    return_to_handler = !(excret & R_V7M_EXCRET_MODE_MASK);
-+    return_to_sp_process = excret & R_V7M_EXCRET_SPSEL_MASK;
-     return_to_secure = arm_feature(env, ARM_FEATURE_M_SECURITY) &&
-         (excret & R_V7M_EXCRET_S_MASK);
- 
--    switch (excret & 0xf) {
--    case 1: /* Return to Handler */
--        return_to_handler = true;
--        break;
--    case 13: /* Return to Thread using Process stack */
--        return_to_sp_process = true;
--        /* fall through */
--    case 9: /* Return to Thread using Main stack */
--        if (!rettobase &&
--            !(env->v7m.ccr[env->v7m.secure] & R_V7M_CCR_NONBASETHRDENA_MASK)) {
-+    if (arm_feature(env, ARM_FEATURE_V8)) {
-+        if (!arm_feature(env, ARM_FEATURE_M_SECURITY)) {
-+            /* UNPREDICTABLE if S == 1 or DCRS == 0 or ES == 1 (R_XLCP);
-+             * we choose to take the UsageFault.
-+             */
-+            if ((excret & R_V7M_EXCRET_S_MASK) ||
-+                (excret & R_V7M_EXCRET_ES_MASK) ||
-+                !(excret & R_V7M_EXCRET_DCRS_MASK)) {
-+                ufault = true;
-+            }
-+        }
-+        if (excret & R_V7M_EXCRET_RES0_MASK) {
-             ufault = true;
-         }
--        break;
--    default:
--        ufault = true;
-+    } else {
-+        /* For v7M we only recognize certain combinations of the low bits */
-+        switch (excret & 0xf) {
-+        case 1: /* Return to Handler */
-+            break;
-+        case 13: /* Return to Thread using Process stack */
-+        case 9: /* Return to Thread using Main stack */
-+            /* We only need to check NONBASETHRDENA for v7M, because in
-+             * v8M this bit does not exist (it is RES1).
-+             */
-+            if (!rettobase &&
-+                !(env->v7m.ccr[env->v7m.secure] &
-+                  R_V7M_CCR_NONBASETHRDENA_MASK)) {
-+                ufault = true;
-+            }
-+            break;
-+        default:
-+            ufault = true;
-+        }
-+    }
++    return_to_secure = arm_feature(env, ARM_FEATURE_M_SECURITY) &&
++        (excret & R_V7M_EXCRET_S_MASK);
 +
-+    if (sfault) {
-+        env->v7m.sfsr |= R_V7M_SFSR_INVER_MASK;
-+        armv7m_nvic_set_pending(env->nvic, ARMV7M_EXCP_SECURE, false);
-+        v7m_exception_taken(cpu, excret);
-+        qemu_log_mask(CPU_LOG_INT, "...taking SecureFault on existing "
-+                      "stackframe: failed EXC_RETURN.ES validity check\n");
-+        return;
+     switch (excret & 0xf) {
+     case 1: /* Return to Handler */
+         return_to_handler = true;
+@@ -6315,32 +6344,66 @@ static void do_v7m_exception_exit(ARMCPU *cpu)
+         return;
      }
  
-     if (ufault) {
+-    /* Switch to the target stack.  */
++    /* Set CONTROL.SPSEL from excret.SPSEL. For QEMU this currently
++     * causes us to switch the active SP, but we will change this
++     * later to not do that so we can support v8M.
++     */
+     switch_v7m_sp(env, return_to_sp_process);
+-    /* Pop registers.  */
+-    env->regs[0] = v7m_pop(env);
+-    env->regs[1] = v7m_pop(env);
+-    env->regs[2] = v7m_pop(env);
+-    env->regs[3] = v7m_pop(env);
+-    env->regs[12] = v7m_pop(env);
+-    env->regs[14] = v7m_pop(env);
+-    env->regs[15] = v7m_pop(env);
+-    if (env->regs[15] & 1) {
+-        qemu_log_mask(LOG_GUEST_ERROR,
+-                      "M profile return from interrupt with misaligned "
+-                      "PC is UNPREDICTABLE\n");
+-        /* Actual hardware seems to ignore the lsbit, and there are several
+-         * RTOSes out there which incorrectly assume the r15 in the stack
+-         * frame should be a Thumb-style "lsbit indicates ARM/Thumb" value.
++
++    {
++        /* The stack pointer we should be reading the exception frame from
++         * depends on bits in the magic exception return type value (and
++         * for v8M isn't necessarily the stack pointer we will eventually
++         * end up resuming execution with). Get a pointer to the location
++         * in the CPU state struct where the SP we need is currently being
++         * stored; we will use and modify it in place.
++         * We use this limited C variable scope so we don't accidentally
++         * use 'frame_sp_p' after we do something that makes it invalid.
++         */
++        uint32_t *frame_sp_p = get_v7m_sp_ptr(env,
++                                              return_to_secure,
++                                              !return_to_handler,
++                                              return_to_sp_process);
++        uint32_t frameptr = *frame_sp_p;
++
++        /* Pop registers. TODO: make these accesses use the correct
++         * attributes and address space (S/NS, priv/unpriv) and handle
++         * memory transaction failures.
+          */
+-        env->regs[15] &= ~1U;
++        env->regs[0] = ldl_phys(cs->as, frameptr);
++        env->regs[1] = ldl_phys(cs->as, frameptr + 0x4);
++        env->regs[2] = ldl_phys(cs->as, frameptr + 0x8);
++        env->regs[3] = ldl_phys(cs->as, frameptr + 0xc);
++        env->regs[12] = ldl_phys(cs->as, frameptr + 0x10);
++        env->regs[14] = ldl_phys(cs->as, frameptr + 0x14);
++        env->regs[15] = ldl_phys(cs->as, frameptr + 0x18);
++        if (env->regs[15] & 1) {
++            qemu_log_mask(LOG_GUEST_ERROR,
++                          "M profile return from interrupt with misaligned "
++                          "PC is UNPREDICTABLE\n");
++            /* Actual hardware seems to ignore the lsbit, and there are several
++             * RTOSes out there which incorrectly assume the r15 in the stack
++             * frame should be a Thumb-style "lsbit indicates ARM/Thumb" value.
++             */
++            env->regs[15] &= ~1U;
++        }
++        xpsr = ldl_phys(cs->as, frameptr + 0x1c);
++
++        /* Commit to consuming the stack frame */
++        frameptr += 0x20;
++        /* Undo stack alignment (the SPREALIGN bit indicates that the original
++         * pre-exception SP was not 8-aligned and we added a padding word to
++         * align it, so we undo this by ORing in the bit that increases it
++         * from the current 8-aligned value to the 8-unaligned value. (Adding 4
++         * would work too but a logical OR is how the pseudocode specifies it.)
++         */
++        if (xpsr & XPSR_SPREALIGN) {
++            frameptr |= 4;
++        }
++        *frame_sp_p = frameptr;
+     }
+-    xpsr = v7m_pop(env);
++    /* This xpsr_write() will invalidate frame_sp_p as it may switch stack */
+     xpsr_write(env, xpsr, ~XPSR_SPREALIGN);
+-    /* Undo stack alignment.  */
+-    if (xpsr & XPSR_SPREALIGN) {
+-        env->regs[13] |= 4;
+-    }
+ 
+     /* The restored xPSR exception field will be zero if we're
+      * resuming in Thread mode. If that doesn't match what the
 -- 
 2.7.4
 

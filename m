@@ -1,72 +1,72 @@
-Received: by 10.223.172.38 with SMTP id v35csp3220327wrc;
-        Fri, 22 Sep 2017 08:10:37 -0700 (PDT)
-X-Google-Smtp-Source: AOwi7QBHOqrghWTxMjHUvD/+GVOnhyGv/ZuFms6STloEW2V4EJruWEL/Y7Goi6F7MEp/Y7xYgOui
-X-Received: by 10.55.209.140 with SMTP id o12mr8070696qkl.319.1506093037368;
-        Fri, 22 Sep 2017 08:10:37 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1506093037; cv=none;
+Received: by 10.223.172.38 with SMTP id v35csp3223045wrc;
+        Fri, 22 Sep 2017 08:13:30 -0700 (PDT)
+X-Google-Smtp-Source: AOwi7QAdEM8qVKSk1lX7PFFL3tdsu+OAU0fcR//JPKyGXr6/XbhLYVQX+xknBx0HKj/oWGBizJRu
+X-Received: by 10.55.102.77 with SMTP id a74mr8166864qkc.253.1506093209909;
+        Fri, 22 Sep 2017 08:13:29 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1506093209; cv=none;
         d=google.com; s=arc-20160816;
-        b=kNcsuqt3cTL35pEPrY3LmB6cA6VFQLHcccOQR4DhEWxIfK6kUmc3LN1tdZbS0RLEHy
-         WuT1X918hEoySWhebSlWodyeb09eS9sMlVwHpuMScsg98KgqhmLOqVp/ZHoNyTOMY1dS
-         aUJpTh5R12wchltXO259+2V1v1XfS5bzdlQifkM7GBEGcxFnGRlDAq4oGjjPbajElSmj
-         ISWaHnQCNF+4YUcQo5Lo3izPuUsw0hNBxtdPKgMVeYTzIISjgGWQ4shVQ4TSRWQ5QRM/
-         UbB6Ci1G4iGxT1qde+g418Dhy9EJVrMe4HCtuEWjhA7g445H7i8KZB7+ImoSwoXU5ITa
-         /xIA==
+        b=s4HrHOf7hJXfdpGl1vD736QZTExfhjgNftmxGlAiwV8bMqW1sjhPaY+JgqDtC8y8id
+         2t/Uz+TPx3PtyMys7sPNVbx01vNUXo9XYcUsaPBrlQXSSgtL6fFlOkLKiPuRymfwzee7
+         szLz3rniPkFFfRX/sFEsxjvL5uVAX6HmMMa5PesQYvpvLQD6ClqmA3mHVatkL7E1HtX8
+         a4QEjdZTjs0t6I4ByOFPy1g6AkTOLG+mpDlWGKWC4GJwf2foWflVNyXZNRVMAF9Hgc/6
+         MGGfhW0FAGRi8U8yBm4RqQfXNHZXeTHh0/8HBCjRPptTqboSLip33x/xi4LmLe9F4B4x
+         u84A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
          :message-id:date:to:from:arc-authentication-results;
-        bh=Sm6Bw8Y4XjNK/KZ8VohivUy7aPVbPvq/jdDIEFnyZts=;
-        b=eJawI36ret1FnD2dPloGw3I+mffghA9f8s1OmPQLTcyZoH611visVSNu9mU3kBpboA
-         7uFfDXueftSQyB077gQFFCKU4LPRPdbKhDhOEFcV0pL5zFXh+B5xV9zSQWvPMpQxowjZ
-         DW1ZA38ZGKjiypkAXYu/VvRhtkzvam7NSgzTllKPD+Wh9BFzESyY875gOVgCtgEvYCAs
-         ArvUkUwpPqmViyrfu/dRSqGubn/F14MP/aN5pFZYldRbuUP0+8qwv0Kd+wVfQtoqN2Qh
-         iIX/P8gwaeqq4CqcjzA9E7uDgWgPzxf1PKMPXeWDrH7v5rCZtsDsWFAwUJ8flNaSWxWs
-         LTGQ==
+        bh=1AJmFOH8KELGK1m3+QtL7eqLncqwhDjEiC98TIY0/NU=;
+        b=G8Cu1XKR3EPXb/txhj0aaTq4WHbGj241oYH3aBOvh8skTmEtkRQIWimXDBRMcitQ9U
+         Ql0pvCJ/vY7ql86vfvTParpQH72bn8F1lTrbmKw7Taya/wKzbzP153dxXgRiRYOv+R/X
+         hPVwjqEvFcJ1+3zQYHHZ0y2kCaGyk+9BkDUFPxX82VuY1z1DjGcZHiMeMUiygjQqYxCV
+         hnH0ZvxxqCeccNaJvJGprTcGDnS/9uITT6+uD1FHvk/wo/dZtxnK+wc87TrmRqFye0R5
+         GQD6Q+hlH52WN+EE71hu5fwhxX2CSfoYz+rDGQNh3tgk/sh7sgZyTZLFay9GS7pMBxv5
+         nPmg==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id j9si30419qtb.396.2017.09.22.08.10.36
+        by mx.google.com with ESMTPS id u129si31606qkc.368.2017.09.22.08.13.29
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 22 Sep 2017 08:10:37 -0700 (PDT)
+        Fri, 22 Sep 2017 08:13:29 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:59379 helo=lists.gnu.org)
+Received: from localhost ([::1]:59394 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1dvPb8-0000kp-VW
-	for alex.bennee@linaro.org; Fri, 22 Sep 2017 11:10:35 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:47077)
+	id 1dvPdv-0003JW-Gc
+	for alex.bennee@linaro.org; Fri, 22 Sep 2017 11:13:27 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:47114)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1dvPQb-00080D-Hw
-	for qemu-arm@nongnu.org; Fri, 22 Sep 2017 10:59:43 -0400
+	(envelope-from <pm215@archaic.org.uk>) id 1dvPQc-00081L-Js
+	for qemu-arm@nongnu.org; Fri, 22 Sep 2017 10:59:44 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1dvPQZ-00048R-JE
-	for qemu-arm@nongnu.org; Fri, 22 Sep 2017 10:59:41 -0400
+	(envelope-from <pm215@archaic.org.uk>) id 1dvPQa-00049z-L4
+	for qemu-arm@nongnu.org; Fri, 22 Sep 2017 10:59:42 -0400
 Received: from orth.archaic.org.uk ([2001:8b0:1d0::2]:37568)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <pm215@archaic.org.uk>)
-	id 1dvPQZ-00046S-59; Fri, 22 Sep 2017 10:59:39 -0400
+	id 1dvPQa-00046S-9l; Fri, 22 Sep 2017 10:59:40 -0400
 Received: from pm215 by orth.archaic.org.uk with local (Exim 4.89)
 	(envelope-from <pm215@archaic.org.uk>)
-	id 1dvPQY-0007Cx-1Y; Fri, 22 Sep 2017 15:59:38 +0100
+	id 1dvPQY-0007DU-Ln; Fri, 22 Sep 2017 15:59:38 +0100
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Date: Fri, 22 Sep 2017 15:59:59 +0100
-Message-Id: <1506092407-26985-13-git-send-email-peter.maydell@linaro.org>
+Date: Fri, 22 Sep 2017 16:00:00 +0100
+Message-Id: <1506092407-26985-14-git-send-email-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.7.4
 In-Reply-To: <1506092407-26985-1-git-send-email-peter.maydell@linaro.org>
 References: <1506092407-26985-1-git-send-email-peter.maydell@linaro.org>
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
 X-Received-From: 2001:8b0:1d0::2
-Subject: [Qemu-arm] [PATCH 12/20] target/arm: Add v8M support to exception
- entry code
+Subject: [Qemu-arm] [PATCH 13/20] nvic: Implement Security Attribution Unit
+ registers
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -81,274 +81,277 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: patches@linaro.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: DGrK65b05IsL
+X-TUID: 0uKQQC/Q3BO7
 
-Add support for v8M and in particular the security extension
-to the exception entry code. This requires changes to:
- * calculation of the exception-return magic LR value
- * push the callee-saves registers in certain cases
- * clear registers when taking non-secure exceptions to avoid
-   leaking information from the interrupted secure code
- * switch to the correct security state on entry
- * use the vector table for the security state we're targeting
+Implement the register interface for the SAU: SAU_CTRL,
+SAU_TYPE, SAU_RNR, SAU_RBAR and SAU_RLAR. None of the
+actual behaviour is implemented here; registers just
+read back as written.
+
+When the CPU definition for Cortex-M33 is eventually
+added, its initfn will set cpu->sau_sregion, in the same
+way that we currently set cpu->pmsav7_dregion for the
+M3 and M4.
+
+Number of SAU regions is typically a configurable
+CPU parameter, but this patch doesn't provide a
+QEMU CPU property for it. We can easily add one when
+we have a board that requires it.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- target/arm/helper.c | 165 +++++++++++++++++++++++++++++++++++++++++++++-------
- 1 file changed, 145 insertions(+), 20 deletions(-)
+ target/arm/cpu.h      |  10 +++++
+ hw/intc/armv7m_nvic.c | 116 ++++++++++++++++++++++++++++++++++++++++++++++++++
+ target/arm/cpu.c      |  27 ++++++++++++
+ target/arm/machine.c  |  14 ++++++
+ 4 files changed, 167 insertions(+)
 
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index 25f5675..7511566 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -6200,12 +6200,12 @@ static uint32_t *get_v7m_sp_ptr(CPUARMState *env, bool secure, bool threadmode,
-     }
- }
+diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+index 9e3a16d..441e584 100644
+--- a/target/arm/cpu.h
++++ b/target/arm/cpu.h
+@@ -568,6 +568,14 @@ typedef struct CPUARMState {
+         uint32_t mair1[M_REG_NUM_BANKS];
+     } pmsav8;
  
--static uint32_t arm_v7m_load_vector(ARMCPU *cpu)
-+static uint32_t arm_v7m_load_vector(ARMCPU *cpu, bool targets_secure)
- {
-     CPUState *cs = CPU(cpu);
-     CPUARMState *env = &cpu->env;
-     MemTxResult result;
--    hwaddr vec = env->v7m.vecbase[env->v7m.secure] + env->v7m.exception * 4;
-+    hwaddr vec = env->v7m.vecbase[targets_secure] + env->v7m.exception * 4;
-     uint32_t addr;
- 
-     addr = address_space_ldl(cs->as, vec,
-@@ -6217,13 +6217,48 @@ static uint32_t arm_v7m_load_vector(ARMCPU *cpu)
-          * Since we don't model Lockup, we just report this guest error
-          * via cpu_abort().
-          */
--        cpu_abort(cs, "Failed to read from exception vector table "
--                  "entry %08x\n", (unsigned)vec);
-+        cpu_abort(cs, "Failed to read from %s exception vector table "
-+                  "entry %08x\n", targets_secure ? "secure" : "nonsecure",
-+                  (unsigned)vec);
-     }
-     return addr;
- }
- 
--static void v7m_exception_taken(ARMCPU *cpu, uint32_t lr)
-+static void v7m_push_callee_stack(ARMCPU *cpu, uint32_t lr, bool dotailchain)
-+{
-+    /* For v8M, push the callee-saves register part of the stack frame.
-+     * Compare the v8M pseudocode PushCalleeStack().
-+     * In the tailchaining case this may not be the current stack.
-+     */
-+    CPUARMState *env = &cpu->env;
-+    CPUState *cs = CPU(cpu);
-+    uint32_t *frame_sp_p;
-+    uint32_t frameptr;
++    /* v8M SAU */
++    struct {
++        uint32_t *rbar;
++        uint32_t *rlar;
++        uint32_t rnr;
++        uint32_t ctrl;
++    } sau;
 +
-+    if (dotailchain) {
-+        frame_sp_p = get_v7m_sp_ptr(env, true,
-+                                    lr & R_V7M_EXCRET_MODE_MASK,
-+                                    lr & R_V7M_EXCRET_SPSEL_MASK);
-+    } else {
-+        frame_sp_p = &env->regs[13];
+     void *nvic;
+     const struct arm_boot_info *boot_info;
+     /* Store GICv3CPUState to access from this struct */
+@@ -663,6 +671,8 @@ struct ARMCPU {
+     bool has_mpu;
+     /* PMSAv7 MPU number of supported regions */
+     uint32_t pmsav7_dregion;
++    /* v8M SAU number of supported regions */
++    uint32_t sau_sregion;
+ 
+     /* PSCI conduit used to invoke PSCI methods
+      * 0 - disabled, 1 - smc, 2 - hvc
+diff --git a/hw/intc/armv7m_nvic.c b/hw/intc/armv7m_nvic.c
+index deea637..bd1d5d3 100644
+--- a/hw/intc/armv7m_nvic.c
++++ b/hw/intc/armv7m_nvic.c
+@@ -1017,6 +1017,60 @@ static uint32_t nvic_readl(NVICState *s, uint32_t offset, MemTxAttrs attrs)
+             goto bad_offset;
+         }
+         return cpu->env.pmsav8.mair1[attrs.secure];
++    case 0xdd0: /* SAU_CTRL */
++        if (!arm_feature(&cpu->env, ARM_FEATURE_V8)) {
++            goto bad_offset;
++        }
++        if (!attrs.secure) {
++            return 0;
++        }
++        return cpu->env.sau.ctrl;
++    case 0xdd4: /* SAU_TYPE */
++        if (!arm_feature(&cpu->env, ARM_FEATURE_V8)) {
++            goto bad_offset;
++        }
++        if (!attrs.secure) {
++            return 0;
++        }
++        return cpu->sau_sregion;
++    case 0xdd8: /* SAU_RNR */
++        if (!arm_feature(&cpu->env, ARM_FEATURE_V8)) {
++            goto bad_offset;
++        }
++        if (!attrs.secure) {
++            return 0;
++        }
++        return cpu->env.sau.rnr;
++    case 0xddc: /* SAU_RBAR */
++    {
++        int region = cpu->env.sau.rnr;
++
++        if (!arm_feature(&cpu->env, ARM_FEATURE_V8)) {
++            goto bad_offset;
++        }
++        if (!attrs.secure) {
++            return 0;
++        }
++        if (region >= cpu->sau_sregion) {
++            return 0;
++        }
++        return cpu->env.sau.rbar[region];
++    }
++    case 0xde0: /* SAU_RLAR */
++    {
++        int region = cpu->env.sau.rnr;
++
++        if (!arm_feature(&cpu->env, ARM_FEATURE_V8)) {
++            goto bad_offset;
++        }
++        if (!attrs.secure) {
++            return 0;
++        }
++        if (region >= cpu->sau_sregion) {
++            return 0;
++        }
++        return cpu->env.sau.rlar[region];
++    }
+     case 0xde4: /* SFSR */
+         if (!arm_feature(&cpu->env, ARM_FEATURE_V8)) {
+             goto bad_offset;
+@@ -1384,6 +1438,68 @@ static void nvic_writel(NVICState *s, uint32_t offset, uint32_t value,
+          * only affect cacheability, and we don't implement caching.
+          */
+         break;
++    case 0xdd0: /* SAU_CTRL */
++        if (!arm_feature(&cpu->env, ARM_FEATURE_V8)) {
++            goto bad_offset;
++        }
++        if (!attrs.secure) {
++            return;
++        }
++        cpu->env.sau.ctrl = value & 3;
++    case 0xdd4: /* SAU_TYPE */
++        if (!arm_feature(&cpu->env, ARM_FEATURE_V8)) {
++            goto bad_offset;
++        }
++        break;
++    case 0xdd8: /* SAU_RNR */
++        if (!arm_feature(&cpu->env, ARM_FEATURE_V8)) {
++            goto bad_offset;
++        }
++        if (!attrs.secure) {
++            return;
++        }
++        if (value >= cpu->sau_sregion) {
++            qemu_log_mask(LOG_GUEST_ERROR, "SAU region out of range %"
++                          PRIu32 "/%" PRIu32 "\n",
++                          value, cpu->sau_sregion);
++        } else {
++            cpu->env.sau.rnr = value;
++        }
++        break;
++    case 0xddc: /* SAU_RBAR */
++    {
++        int region = cpu->env.sau.rnr;
++
++        if (!arm_feature(&cpu->env, ARM_FEATURE_V8)) {
++            goto bad_offset;
++        }
++        if (!attrs.secure) {
++            return;
++        }
++        if (region >= cpu->sau_sregion) {
++            return;
++        }
++        cpu->env.sau.rbar[region] = value & ~0x1f;
++        tlb_flush(CPU(cpu));
++        break;
++    }
++    case 0xde0: /* SAU_RLAR */
++    {
++        int region = cpu->env.sau.rnr;
++
++        if (!arm_feature(&cpu->env, ARM_FEATURE_V8)) {
++            goto bad_offset;
++        }
++        if (!attrs.secure) {
++            return;
++        }
++        if (region >= cpu->sau_sregion) {
++            return;
++        }
++        cpu->env.sau.rlar[region] = value & ~0x1c;
++        tlb_flush(CPU(cpu));
++        break;
++    }
+     case 0xde4: /* SFSR */
+         if (!arm_feature(&cpu->env, ARM_FEATURE_V8)) {
+             goto bad_offset;
+diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+index 3344979..1627836 100644
+--- a/target/arm/cpu.c
++++ b/target/arm/cpu.c
+@@ -285,6 +285,18 @@ static void arm_cpu_reset(CPUState *s)
+         env->pmsav8.mair1[M_REG_S] = 0;
+     }
+ 
++    if (arm_feature(env, ARM_FEATURE_M_SECURITY)) {
++        if (cpu->sau_sregion > 0) {
++            memset(env->sau.rbar, 0, sizeof(*env->sau.rbar) * cpu->sau_sregion);
++            memset(env->sau.rlar, 0, sizeof(*env->sau.rlar) * cpu->sau_sregion);
++        }
++        env->sau.rnr = 0;
++        /* SAU_CTRL reset value is IMPDEF; we choose 0, which is what
++         * the Cortex-M33 does.
++         */
++        env->sau.ctrl = 0;
 +    }
 +
-+    frameptr = *frame_sp_p - 0x28;
+     set_flush_to_zero(1, &env->vfp.standard_fp_status);
+     set_flush_inputs_to_zero(1, &env->vfp.standard_fp_status);
+     set_default_nan_mode(1, &env->vfp.standard_fp_status);
+@@ -870,6 +882,20 @@ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
+         }
+     }
+ 
++    if (arm_feature(env, ARM_FEATURE_M_SECURITY)) {
++        uint32_t nr = cpu->sau_sregion;
 +
-+    stl_phys(cs->as, frameptr, 0xfefa125b);
-+    stl_phys(cs->as, frameptr + 0x8, env->regs[4]);
-+    stl_phys(cs->as, frameptr + 0xc, env->regs[5]);
-+    stl_phys(cs->as, frameptr + 0x10, env->regs[6]);
-+    stl_phys(cs->as, frameptr + 0x14, env->regs[7]);
-+    stl_phys(cs->as, frameptr + 0x18, env->regs[8]);
-+    stl_phys(cs->as, frameptr + 0x1c, env->regs[9]);
-+    stl_phys(cs->as, frameptr + 0x20, env->regs[10]);
-+    stl_phys(cs->as, frameptr + 0x24, env->regs[11]);
++        if (nr > 0xff) {
++            error_setg(errp, "v8M SAU #regions invalid %" PRIu32, nr);
++            return;
++        }
 +
-+    *frame_sp_p = frameptr;
++        if (nr) {
++            env->sau.rbar = g_new0(uint32_t, nr);
++            env->sau.rlar = g_new0(uint32_t, nr);
++        }
++    }
++
+     if (arm_feature(env, ARM_FEATURE_EL3)) {
+         set_feature(env, ARM_FEATURE_VBAR);
+     }
+@@ -1141,6 +1167,7 @@ static void cortex_m4_initfn(Object *obj)
+     cpu->midr = 0x410fc240; /* r0p0 */
+     cpu->pmsav7_dregion = 8;
+ }
++
+ static void arm_v7m_class_init(ObjectClass *oc, void *data)
+ {
+     CPUClass *cc = CPU_CLASS(oc);
+diff --git a/target/arm/machine.c b/target/arm/machine.c
+index d4b3baf..a52d0f9 100644
+--- a/target/arm/machine.c
++++ b/target/arm/machine.c
+@@ -242,6 +242,13 @@ static bool s_rnr_vmstate_validate(void *opaque, int version_id)
+     return cpu->env.pmsav7.rnr[M_REG_S] < cpu->pmsav7_dregion;
+ }
+ 
++static bool sau_rnr_vmstate_validate(void *opaque, int version_id)
++{
++    ARMCPU *cpu = opaque;
++
++    return cpu->env.sau.rnr < cpu->sau_sregion;
 +}
 +
-+static void v7m_exception_taken(ARMCPU *cpu, uint32_t lr, bool dotailchain)
+ static bool m_security_needed(void *opaque)
  {
-     /* Do the "take the exception" parts of exception entry,
-      * but not the pushing of state to the stack. This is
-@@ -6231,14 +6266,84 @@ static void v7m_exception_taken(ARMCPU *cpu, uint32_t lr)
-      */
-     CPUARMState *env = &cpu->env;
-     uint32_t addr;
-+    bool targets_secure;
-+
-+    targets_secure = armv7m_nvic_acknowledge_irq(env->nvic);
- 
--    armv7m_nvic_acknowledge_irq(env->nvic);
-+    if (arm_feature(env, ARM_FEATURE_V8)) {
-+        if (arm_feature(env, ARM_FEATURE_M_SECURITY) &&
-+            (lr & R_V7M_EXCRET_S_MASK)) {
-+            /* The background code (the owner of the registers in the
-+             * exception frame) is Secure. This means it may either already
-+             * have or now needs to push callee-saves registers.
-+             */
-+            if (targets_secure) {
-+                if (dotailchain && !(lr & R_V7M_EXCRET_ES_MASK)) {
-+                    /* We took an exception from Secure to NonSecure
-+                     * (which means the callee-saved registers got stacked)
-+                     * and are now tailchaining to a Secure exception.
-+                     * Clear DCRS so eventual return from this Secure
-+                     * exception unstacks the callee-saved registers.
-+                     */
-+                    lr &= ~R_V7M_EXCRET_DCRS_MASK;
-+                }
-+            } else {
-+                /* We're going to a non-secure exception; push the
-+                 * callee-saves registers to the stack now, if they're
-+                 * not already saved.
-+                 */
-+                if (lr & R_V7M_EXCRET_DCRS_MASK &&
-+                    !(dotailchain && (lr & R_V7M_EXCRET_ES_MASK))) {
-+                    v7m_push_callee_stack(cpu, lr, dotailchain);
-+                }
-+                lr |= R_V7M_EXCRET_DCRS_MASK;
-+            }
-+        }
-+
-+        lr &= ~R_V7M_EXCRET_ES_MASK;
-+        if (targets_secure || !arm_feature(env, ARM_FEATURE_M_SECURITY)) {
-+            lr |= R_V7M_EXCRET_ES_MASK;
-+        }
-+        lr &= ~R_V7M_EXCRET_SPSEL_MASK;
-+        if (env->v7m.control[targets_secure] & R_V7M_CONTROL_SPSEL_MASK) {
-+            lr |= R_V7M_EXCRET_SPSEL_MASK;
-+        }
-+
-+        /* Clear registers if necessary to prevent non-secure exception
-+         * code being able to see register values from secure code.
-+         * Where register values become architecturally UNKNOWN we leave
-+         * them with their previous values.
-+         */
-+        if (arm_feature(env, ARM_FEATURE_M_SECURITY)) {
-+            if (!targets_secure) {
-+                /* Always clear the caller-saved registers (they have been
-+                 * pushed to the stack earlier in v7m_push_stack()).
-+                 * Clear callee-saved registers if the background code is
-+                 * Secure (in which case these regs were saved in
-+                 * v7m_push_callee_stack()).
-+                 */
-+                int i;
-+
-+                for (i = 0; i < 13; i++) {
-+                    /* r4..r11 are callee-saves, zero only if EXCRET.S == 1 */
-+                    if (i < 4 || i > 11 || (lr & R_V7M_EXCRET_S_MASK)) {
-+                        env->regs[i] = 0;
-+                    }
-+                }
-+                /* Clear EAPSR */
-+                xpsr_write(env, 0, XPSR_NZCV | XPSR_Q | XPSR_GE | XPSR_IT);
-+            }
-+        }
-+    }
-+
-+    /* Switch to target security state -- must do this before writing SPSEL */
-+    switch_v7m_security_state(env, targets_secure);
-     write_v7m_control_spsel(env, 0);
-     arm_clear_exclusive(env);
-     /* Clear IT bits */
-     env->condexec_bits = 0;
-     env->regs[14] = lr;
--    addr = arm_v7m_load_vector(cpu);
-+    addr = arm_v7m_load_vector(cpu, targets_secure);
-     env->regs[15] = addr & 0xfffffffe;
-     env->thumb = addr & 1;
- }
-@@ -6404,7 +6509,7 @@ static void do_v7m_exception_exit(ARMCPU *cpu)
-     if (sfault) {
-         env->v7m.sfsr |= R_V7M_SFSR_INVER_MASK;
-         armv7m_nvic_set_pending(env->nvic, ARMV7M_EXCP_SECURE, false);
--        v7m_exception_taken(cpu, excret);
-+        v7m_exception_taken(cpu, excret, true);
-         qemu_log_mask(CPU_LOG_INT, "...taking SecureFault on existing "
-                       "stackframe: failed EXC_RETURN.ES validity check\n");
-         return;
-@@ -6416,7 +6521,7 @@ static void do_v7m_exception_exit(ARMCPU *cpu)
-          */
-         env->v7m.cfsr[env->v7m.secure] |= R_V7M_CFSR_INVPC_MASK;
-         armv7m_nvic_set_pending(env->nvic, ARMV7M_EXCP_USAGE, env->v7m.secure);
--        v7m_exception_taken(cpu, excret);
-+        v7m_exception_taken(cpu, excret, true);
-         qemu_log_mask(CPU_LOG_INT, "...taking UsageFault on existing "
-                       "stackframe: failed exception return integrity check\n");
-         return;
-@@ -6464,7 +6569,7 @@ static void do_v7m_exception_exit(ARMCPU *cpu)
-                 /* Take a SecureFault on the current stack */
-                 env->v7m.sfsr |= R_V7M_SFSR_INVIS_MASK;
-                 armv7m_nvic_set_pending(env->nvic, ARMV7M_EXCP_SECURE, false);
--                v7m_exception_taken(cpu, excret);
-+                v7m_exception_taken(cpu, excret, true);
-                 qemu_log_mask(CPU_LOG_INT, "...taking SecureFault on existing "
-                               "stackframe: failed exception return integrity "
-                               "signature check\n");
-@@ -6527,7 +6632,7 @@ static void do_v7m_exception_exit(ARMCPU *cpu)
-                 armv7m_nvic_set_pending(env->nvic, ARMV7M_EXCP_USAGE,
-                                         env->v7m.secure);
-                 env->v7m.cfsr[env->v7m.secure] |= R_V7M_CFSR_INVPC_MASK;
--                v7m_exception_taken(cpu, excret);
-+                v7m_exception_taken(cpu, excret, true);
-                 qemu_log_mask(CPU_LOG_INT, "...taking UsageFault on existing "
-                               "stackframe: failed exception return integrity "
-                               "check\n");
-@@ -6564,7 +6669,7 @@ static void do_v7m_exception_exit(ARMCPU *cpu)
-         armv7m_nvic_set_pending(env->nvic, ARMV7M_EXCP_USAGE, false);
-         env->v7m.cfsr[env->v7m.secure] |= R_V7M_CFSR_INVPC_MASK;
-         v7m_push_stack(cpu);
--        v7m_exception_taken(cpu, excret);
-+        v7m_exception_taken(cpu, excret, false);
-         qemu_log_mask(CPU_LOG_INT, "...taking UsageFault on new stackframe: "
-                       "failed exception return integrity check\n");
-         return;
-@@ -6708,20 +6813,40 @@ void arm_v7m_cpu_do_interrupt(CPUState *cs)
-         return; /* Never happens.  Keep compiler happy.  */
+     ARMCPU *cpu = opaque;
+@@ -278,6 +285,13 @@ static const VMStateDescription vmstate_m_security = {
+         VMSTATE_UINT32(env.v7m.cfsr[M_REG_S], ARMCPU),
+         VMSTATE_UINT32(env.v7m.sfsr, ARMCPU),
+         VMSTATE_UINT32(env.v7m.sfar, ARMCPU),
++        VMSTATE_VARRAY_UINT32(env.sau.rbar, ARMCPU, sau_sregion, 0,
++                              vmstate_info_uint32, uint32_t),
++        VMSTATE_VARRAY_UINT32(env.sau.rlar, ARMCPU, sau_sregion, 0,
++                              vmstate_info_uint32, uint32_t),
++        VMSTATE_UINT32(env.sau.rnr, ARMCPU),
++        VMSTATE_VALIDATE("SAU_RNR is valid", sau_rnr_vmstate_validate),
++        VMSTATE_UINT32(env.sau.ctrl, ARMCPU),
+         VMSTATE_END_OF_LIST()
      }
- 
--    lr = R_V7M_EXCRET_RES1_MASK |
--        R_V7M_EXCRET_S_MASK |
--        R_V7M_EXCRET_DCRS_MASK |
--        R_V7M_EXCRET_FTYPE_MASK |
--        R_V7M_EXCRET_ES_MASK;
--    if (env->v7m.control[env->v7m.secure] & R_V7M_CONTROL_SPSEL_MASK) {
--        lr |= R_V7M_EXCRET_SPSEL_MASK;
-+    if (arm_feature(env, ARM_FEATURE_V8)) {
-+        lr = R_V7M_EXCRET_RES1_MASK |
-+            R_V7M_EXCRET_DCRS_MASK |
-+            R_V7M_EXCRET_FTYPE_MASK;
-+        /* The S bit indicates whether we should return to Secure
-+         * or NonSecure (ie our current state).
-+         * The ES bit indicates whether we're taking this exception
-+         * to Secure or NonSecure (ie our target state). We set it
-+         * later, in v7m_exception_taken().
-+         * The SPSEL bit is also set in v7m_exception_taken() for v8M.
-+         * This corresponds to the ARM ARM pseudocode for v8M setting
-+         * some LR bits in PushStack() and some in ExceptionTaken();
-+         * the distinction matters for the tailchain cases where we
-+         * can take an exception without pushing the stack.
-+         */
-+        if (env->v7m.secure) {
-+            lr |= R_V7M_EXCRET_S_MASK;
-+        }
-+    } else {
-+        lr = R_V7M_EXCRET_RES1_MASK |
-+            R_V7M_EXCRET_S_MASK |
-+            R_V7M_EXCRET_DCRS_MASK |
-+            R_V7M_EXCRET_FTYPE_MASK |
-+            R_V7M_EXCRET_ES_MASK;
-+        if (env->v7m.control[M_REG_NS] & R_V7M_CONTROL_SPSEL_MASK) {
-+            lr |= R_V7M_EXCRET_SPSEL_MASK;
-+        }
-     }
-     if (!arm_v7m_is_handler_mode(env)) {
-         lr |= R_V7M_EXCRET_MODE_MASK;
-     }
- 
-     v7m_push_stack(cpu);
--    v7m_exception_taken(cpu, lr);
-+    v7m_exception_taken(cpu, lr, false);
-     qemu_log_mask(CPU_LOG_INT, "... as %d\n", env->v7m.exception);
- }
- 
+ };
 -- 
 2.7.4
 

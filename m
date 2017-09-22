@@ -1,110 +1,140 @@
-Received: by 10.223.172.38 with SMTP id v35csp1112447wrc;
-        Wed, 20 Sep 2017 13:21:49 -0700 (PDT)
-X-Received: by 10.233.221.3 with SMTP id r3mr8714318qkf.219.1505938909059;
-        Wed, 20 Sep 2017 13:21:49 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1505938909; cv=none;
+Received: by 10.223.172.38 with SMTP id v35csp2772181wrc;
+        Thu, 21 Sep 2017 23:52:43 -0700 (PDT)
+X-Google-Smtp-Source: AOwi7QBlAER0+ZUX6waiDCsr/omYpIpwlzoU5/6R2qBeCjC0pvrmnbZcabtf2H/CtmQj82cJJ5LQ
+X-Received: by 10.200.9.66 with SMTP id z2mr6889394qth.254.1506063163132;
+        Thu, 21 Sep 2017 23:52:43 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1506063163; cv=none;
         d=google.com; s=arc-20160816;
-        b=DOvKxI/Z5x8b5iA3QZ2mLlr/CTzKYdfDDvZlIiL9ESQI9dyPFeXefXQCcXkJZVmBnE
-         GznlTGFbV2RmaZhF9e0PRDgK0ta7uEoiL1Zb3DI++Yt0fzpLyKZo4UI3QXwvxZRZke8Q
-         /zPpJjdOCJGXLICL7NqdvvfmhtnMdpKfKLSO2kgyuiUYNHdN5LFyOy/ARabJqBHqg1F6
-         fe2EVmvLhpfBb2RrjdHoWNnodl11WzREDsOAxqKviEdLt1M+Xzzlkq/MYrzyfbbUqQRK
-         ICIhK6JsBs3oWRqyNaqiUAlnt2Izdx+C2N1HV80wx51TtGDiul85LkHLfIdrvXDaSU+h
-         +MsQ==
+        b=FwLXkv/buPBMJ9X/vF3prVnxgAJY8egX7JU1o2JhljncI7GdNyUhPFunsXsMDiOEuR
+         daab6WRCnRIJHSDkLB+o554URe+Zb8tjPVNTsXZSCUD1qKslrqoz68dPcMeu+fKNVH/h
+         Kp38KTDdiFopD8xT1dsHLwg3XemCSM2P1kmBlrMsMyslPXWfuLt0KEXyzv/4DmarRIQ8
+         tgtuh1xBz+hrXHRAuQHUB7C30kfxtRXN601IiyCYCtn4qqaKdB3pPOQS5EiYGp74CW5k
+         liR0mHLwbSRDscIWX+SI2C2i40lNUH8sLkkGRSfVv0gOuiOtw9oFaZN0Omq6jhT4TohC
+         tRhg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:to:from:dkim-signature:arc-authentication-results;
-        bh=NSB4Ej7TPqedakjNn6xhZSGLsjgJlGs65dFNfPJaMBs=;
-        b=qn9BZkVxDkPeBxO2CcwP+beASD25thf1JzDMnwQ08+kCJ9aK2I1rb7aMWvqAJxsNLG
-         iCX9OO36BW0b796Mzb3iNkWuMmjrP0D5QEVV3wldWmvCJUQyt/zNWBfMP4a1zJJL2qdj
-         nLblHZjMjYfJpB+X7uDZ/aek6uJt0aq3CsqJ+NG6TAUjtsqjfu1k1TUfjHqaOiN7iUOU
-         BKF4q0yPdiQlX1sf5+dfYv8PhdfKRFL17Tyvt5QxiggxNuZnA8hIW8riA+lR2fbbyPz4
-         b79kn/yxuaEoKZVs/KaeruS3Q2bz0OzYo1Gkgr88RN1Vd8FJC7z3PiaxOXDgN4KrYnEn
-         K9HQ==
+         :list-unsubscribe:list-id:precedence:subject:mime-version
+         :content-transfer-encoding:spamdiagnosticmetadata
+         :spamdiagnosticoutput:content-language:accept-language:in-reply-to
+         :references:message-id:date:thread-index:thread-topic:to:from
+         :dkim-signature:arc-authentication-results;
+        bh=TcqWwvyVpIkF7B0Ywik4aBRzcXxru9d3IKM54Q3XvFA=;
+        b=Xt/PwsuZP/9kxMePwuanXsilGwGlUPb6lXnmFb156cnnkd5imJN4ZPUZWYMqPyp4Sr
+         htHTRt8HbQjnAjnNNB044I6B5wcRcIniFK3mgccHVjx4nJZoPlcd1bZPtbeh07c1NG85
+         LUQcLqSGXj6MWkpyQJ6//XxCnHaSnJGItTbS+5hcqCLeqWh/u5QxlSkhkSxqTq22jRX7
+         VflRs/9hz1X8UXuAIK50dW2MxG/ceq7DaYMiSUTpvirq94lVQvgcrtZQJ/hcHoJeLoiw
+         9QRdWyMfIGMzFJtNdLlsDe0O07eoHhvdncTJbnF3TADRYao/Ex1uogZNC1hSp6oUq3+S
+         I5TQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=H/Zz7rji;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+       dkim=fail header.i=@nxp.com header.s=selector1 header.b=kNHz30gd;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=nxp.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id y10si2483898qkl.269.2017.09.20.13.21.48
+        by mx.google.com with ESMTPS id 31si708069qtn.534.2017.09.21.23.52.41
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 20 Sep 2017 13:21:49 -0700 (PDT)
+        Thu, 21 Sep 2017 23:52:43 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=H/Zz7rji;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:50502 helo=lists.gnu.org)
+       dkim=fail header.i=@nxp.com header.s=selector1 header.b=kNHz30gd;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=nxp.com
+Received: from localhost ([::1]:56961 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1dulVC-0002J9-Om
-	for alex.bennee@linaro.org; Wed, 20 Sep 2017 16:21:46 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:51488)
+	id 1dvHpH-0004gd-Vt
+	for alex.bennee@linaro.org; Fri, 22 Sep 2017 02:52:40 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:53989)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1dulRl-0007yl-6t
-	for qemu-arm@nongnu.org; Wed, 20 Sep 2017 16:18:14 -0400
+	(envelope-from <bharat.bhushan@nxp.com>) id 1dvHp5-0004fK-1r
+	for qemu-arm@nongnu.org; Fri, 22 Sep 2017 02:52:28 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1dulRj-0002kw-TX
-	for qemu-arm@nongnu.org; Wed, 20 Sep 2017 16:18:13 -0400
-Received: from mail-qk0-x22d.google.com ([2607:f8b0:400d:c09::22d]:50843)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1dulRe-0002gy-LZ; Wed, 20 Sep 2017 16:18:06 -0400
-Received: by mail-qk0-x22d.google.com with SMTP id s132so3891332qke.7;
-	Wed, 20 Sep 2017 13:18:06 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
-	:mime-version:content-transfer-encoding;
-	bh=NSB4Ej7TPqedakjNn6xhZSGLsjgJlGs65dFNfPJaMBs=;
-	b=H/Zz7rjik0274TkuoEdXLVgVF+dPNFojZPqTwsvqNs+vre48AQvZfKu0ZO/MIvItF1
-	f5hvHE0jCV3916/xcGiQok1FcvaJ/1N38TB20NZdOfJYNz0XeKXudEb6/Rv4R2yBwkOD
-	obWomnFcO8R5qGkwTwRCM96Okg454uXAierYtnXdvQv+dy1hQBoM29584uXzAkhtOHHb
-	fTepOkeS4ViN6RYnQgms38RZI94c24dAPwlT7twbzfavb1qCZIm4LJcil8m0hoc+sEEr
-	BCPhhy6R9kVDf6heL82LfFiCWJJLXrt0BDKAx6t8YNdXncLGrC9GxIcvKYzeYx5co683
-	24Yw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
-	:in-reply-to:references:mime-version:content-transfer-encoding;
-	bh=NSB4Ej7TPqedakjNn6xhZSGLsjgJlGs65dFNfPJaMBs=;
-	b=cQuY3eJX5sW3YWkVYgES8TbOPPlPkkIGdCM111IorBP/Vq1VxTnqzgXQUkwQ0ixXd2
-	qMI7wXAyHZHOB5bqRxlV/QYKqD0x2vJxkt47AZDLMwyS5kUFawL2HUYCLqunip4aBmSF
-	0IKosvX5+kWwUFIg7pAwWx59DmNfdW9LUTYXdiVT8HeW3dkvYLLRaFNX9U71P19xj7hw
-	TYLSthx2SH2N+dG03orfU9lVcReMRCJCWil1BB4rT7bQ+DwQGAopgpxMX1/uEU/lB3km
-	RC6xBSnhCYj6F/Pu8nD64pdkbXcU2cY+DL9cqDESJNaT9H5G8Xko9GgQcELlwmCstcYf
-	Y+Lw==
-X-Gm-Message-State: AHPjjUgZmyjbJqbmUrtJ6fqGjysH7KmGRhNrWOzT30DFr+hsnbyXNp9b
-	Z7O6/x9/Zij+2omsyv/a+7g=
-X-Google-Smtp-Source: AOwi7QCtwIs6MmcCb3Osgvdkw3jiXkwqxbfh+YX1WPNFVGW/8XjhDsfALlGT5wAEeUDk4Act7sFkLQ==
-X-Received: by 10.55.209.79 with SMTP id s76mr9290600qki.238.1505938686119;
-	Wed, 20 Sep 2017 13:18:06 -0700 (PDT)
-Received: from yoga.offpageads.com ([181.93.89.178])
-	by smtp.gmail.com with ESMTPSA id
-	u52sm1953092qtb.34.2017.09.20.13.18.02
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Wed, 20 Sep 2017 13:18:05 -0700 (PDT)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-To: Peter Maydell <peter.maydell@linaro.org>,
-	Subbaraya Sundeep <sundeep.lkml@gmail.com>,
-	Alistair Francis <alistair@alistair23.me>,
-	Peter Crosthwaite <crosthwaite.peter@gmail.com>,
-	Igor Mammedov <imammedo@redhat.com>, qemu-devel@nongnu.org,
-	qemu-arm@nongnu.org
-Date: Wed, 20 Sep 2017 17:17:37 -0300
-Message-Id: <20170920201737.25723-6-f4bug@amsat.org>
-X-Mailer: git-send-email 2.14.1
-In-Reply-To: <20170920201737.25723-1-f4bug@amsat.org>
-References: <20170920201737.25723-1-f4bug@amsat.org>
+	(envelope-from <bharat.bhushan@nxp.com>) id 1dvHp0-0000CH-PF
+	for qemu-arm@nongnu.org; Fri, 22 Sep 2017 02:52:27 -0400
+Received: from mail-he1eur01on0052.outbound.protection.outlook.com
+	([104.47.0.52]:63616
+	helo=EUR01-HE1-obe.outbound.protection.outlook.com)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <bharat.bhushan@nxp.com>)
+	id 1dvHp0-0000AR-6J; Fri, 22 Sep 2017 02:52:22 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=nxp.com; s=selector1; 
+	h=From:Date:Subject:Message-ID:Content-Type:MIME-Version;
+	bh=TcqWwvyVpIkF7B0Ywik4aBRzcXxru9d3IKM54Q3XvFA=;
+	b=kNHz30gdPezrSPWtA318m77lTXBRRfd2VmVvGRsp6HJMUmKYkiyCO1eVAdyGKkkyB9IyD1+NscpjYXF+5fGAgu86/rXyAmr43k/eVBQywaqEKkscpAvFVT7RU/Po0wuoGTburN31XKP+LeqRD1kDhzKPyY176M3f3Supms4xg7g=
+Received: from AM5PR0401MB2545.eurprd04.prod.outlook.com (10.169.245.8) by
+	AM5PR0401MB2545.eurprd04.prod.outlook.com (10.169.245.8) with Microsoft
+	SMTP Server (version=TLS1_2,
+	cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384_P256) id
+	15.20.77.7; Fri, 22 Sep 2017 06:52:18 +0000
+Received: from AM5PR0401MB2545.eurprd04.prod.outlook.com
+	([fe80::a470:3643:ce8f:6327]) by
+	AM5PR0401MB2545.eurprd04.prod.outlook.com
+	([fe80::a470:3643:ce8f:6327%18]) with mapi id 15.20.0077.011;
+	Fri, 22 Sep 2017 06:52:18 +0000
+From: Bharat Bhushan <bharat.bhushan@nxp.com>
+To: Eric Auger <eric.auger@redhat.com>, "eric.auger.pro@gmail.com"
+	<eric.auger.pro@gmail.com>, "peter.maydell@linaro.org"
+	<peter.maydell@linaro.org>, "alex.williamson@redhat.com"
+	<alex.williamson@redhat.com>, "mst@redhat.com" <mst@redhat.com>,
+	"qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, "qemu-devel@nongnu.org"
+	<qemu-devel@nongnu.org>, "jean-philippe.brucker@arm.com"
+	<jean-philippe.brucker@arm.com>
+Thread-Topic: [RFC v4 09/16] virtio-iommu: Implement translate
+Thread-Index: AQHTMRvAI7uJ8TEjsU68XPILEWpGzaLAfCXA
+Date: Fri, 22 Sep 2017 06:52:18 +0000
+Message-ID: <AM5PR0401MB254525F47824ADD5A73EF2DB9A670@AM5PR0401MB2545.eurprd04.prod.outlook.com>
+References: <1505807208-9063-1-git-send-email-eric.auger@redhat.com>
+	<1505807208-9063-10-git-send-email-eric.auger@redhat.com>
+In-Reply-To: <1505807208-9063-10-git-send-email-eric.auger@redhat.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: spf=none (sender IP is )
+	smtp.mailfrom=bharat.bhushan@nxp.com; 
+x-originating-ip: [192.88.169.1]
+x-ms-publictraffictype: Email
+x-microsoft-exchange-diagnostics: 1; AM5PR0401MB2545;
+	6:lkSDAk+F0loO/SEIZgXenBr1OUyUsvXR2Cpz6lqG/m5JEni2nBwnwvAU0NlRSMQtreynXy2OjT4nA0xXmXIzmflxxrfAdRQTCBhSdrh4W2ZFD82nN/Ktql4bOtv61pZemOsMg9d+meeKxI+Q5i90y/ini7Ktrvv269tTJ9+2WjFcIZowreX3E/OOMcx+EkY5baDRPus8E0qowrxJHbuQFzhvSKcmd7nOiZqCtBJeMBL4Py96PY49YGNTR4LfMV80/3S0VlSVx/J/U5yttQISmCjGv1cU9J0KweIYqRie+0jJbAkiDtQ+wBwJKRPRu0q5Dl9BkqbRrNIKlhsWOCpJQg==;
+	5:pjH3ljyJ1YukVnRvFDBY7tF5aZ6G639v0CUwPaWOfaqjDCgjpJDCMavDjAEPLLNPn/x8FpENWUQS5XEq/vFX2fXgyBqw2No36KFBz2/Z0WTPHbFASW6vq1VKyp+EaP59nH+QcOgIxeVCjbcG6xscQA==;
+	24:yZkQU2k7olvrOYNMCxSi6LxlDW1BAtZLId6s9W2ZTjasJbesyiGLOq5w17Z4l1Pw/UEaJ5KS3kCDsxLItFKPj7tKJ+zwNGeENCHr/RyHba8=;
+	7:pPlHoFZgdw6JrpSnEnDPhql1mfEJ2LXgFqArM+M05rdGXUGsSZKz5YJ/YBaCXfwgYOpgMGOgGdFChu7w252LdEImLcsoJicVCnjNaUZiMPYfyCTG1lmbyf8lXdQcHdIOAj7mFZcRx0r0N+pSjqK8siLprsCVAXla1ZWEF0erUkTHRRDdNcN42bJ4KE2axC+WeOP+K+lZ0D4z1bP9ydLnTrOq4/fWfhAZvljwPU6oAwY=
+x-ms-exchange-antispam-srfa-diagnostics: SSOS;
+x-ms-office365-filtering-correlation-id: 98d820a8-2428-460c-112d-08d5018677b9
+x-ms-office365-filtering-ht: Tenant
+x-microsoft-antispam: UriScan:; BCL:0; PCL:0;
+	RULEID:(300000500095)(300135000095)(300000501095)(300135300095)(22001)(300000502095)(300135100095)(2017030254152)(48565401081)(300000503095)(300135400095)(2017052603199)(201703131423075)(201703031133081)(201702281549075)(300000504095)(300135200095)(300000505095)(300135600095)(300000506095)(300135500095);
+	SRVR:AM5PR0401MB2545; 
+x-ms-traffictypediagnostic: AM5PR0401MB2545:
+x-exchange-antispam-report-test: UriScan:(180628864354917)(185117386973197)(228905959029699); 
+x-microsoft-antispam-prvs: <AM5PR0401MB254527C22CCBE506537987699A670@AM5PR0401MB2545.eurprd04.prod.outlook.com>
+x-exchange-antispam-report-cfa-test: BCL:0; PCL:0;
+	RULEID:(100000700101)(100105000095)(100000701101)(100105300095)(100000702101)(100105100095)(6040450)(2401047)(5005006)(8121501046)(100000703101)(100105400095)(93006095)(93001095)(3002001)(10201501046)(6055026)(6041248)(20161123558100)(20161123562025)(201703131423075)(201702281528075)(201703061421075)(201703061406153)(20161123555025)(20161123560025)(20161123564025)(6072148)(201708071742011)(100000704101)(100105200095)(100000705101)(100105500095);
+	SRVR:AM5PR0401MB2545; BCL:0; PCL:0;
+	RULEID:(100000800101)(100110000095)(100000801101)(100110300095)(100000802101)(100110100095)(100000803101)(100110400095)(100000804101)(100110200095)(100000805101)(100110500095);
+	SRVR:AM5PR0401MB2545; 
+x-forefront-prvs: 0438F90F17
+x-forefront-antispam-report: SFV:NSPM;
+	SFS:(10009020)(6009001)(376002)(346002)(39860400002)(189002)(199003)(13464003)(377454003)(7736002)(50986999)(5660300001)(6436002)(14454004)(68736007)(39060400002)(2950100002)(6506006)(5890100001)(5250100002)(74316002)(25786009)(316002)(101416001)(2900100001)(2201001)(76176999)(2906002)(189998001)(54356999)(7696004)(110136005)(2501003)(305945005)(54906003)(229853002)(33656002)(106356001)(3846002)(7416002)(53936002)(6246003)(66066001)(3660700001)(102836003)(4326008)(8676002)(6116002)(81166006)(53546010)(86362001)(97736004)(99286003)(478600001)(3280700002)(105586002)(55016002)(8936002)(9686003)(81156014);
+	DIR:OUT; SFP:1101; SCL:1; SRVR:AM5PR0401MB2545;
+	H:AM5PR0401MB2545.eurprd04.prod.outlook.com; FPR:; SPF:None;
+	PTR:InfoNoRecords; MX:1; A:1; LANG:en; 
+received-spf: None (protection.outlook.com: nxp.com does not designate
+	permitted sender hosts)
+spamdiagnosticoutput: 1:99
+spamdiagnosticmetadata: NSPM
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:400d:c09::22d
-Subject: [Qemu-arm] [PATCH v11 5/5] msf2: Add Emcraft's Smartfusion2 SOM kit
+X-OriginatorOrg: nxp.com
+X-MS-Exchange-CrossTenant-originalarrivaltime: 22 Sep 2017 06:52:18.7562 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 686ea1d3-bc2b-4c6f-a92c-d99c5c301635
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: AM5PR0401MB2545
+X-detected-operating-system: by eggs.gnu.org: Windows 7 or 8 [fuzzy]
+X-Received-From: 104.47.0.52
+Subject: Re: [Qemu-arm] [RFC v4 09/16] virtio-iommu: Implement translate
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -116,146 +146,128 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+Cc: "kevin.tian@intel.com" <kevin.tian@intel.com>,
+	"marc.zyngier@arm.com" <marc.zyngier@arm.com>,
+	"tn@semihalf.com" <tn@semihalf.com>,
+	"will.deacon@arm.com" <will.deacon@arm.com>,
+	"drjones@redhat.com" <drjones@redhat.com>,
+	"peterx@redhat.com" <peterx@redhat.com>,
+	"linuc.decode@gmail.com" <linuc.decode@gmail.com>,
+	"christoffer.dall@linaro.org" <christoffer.dall@linaro.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: r4EZE/EoUGA9
+X-TUID: CAaY0VoCS/jO
 
-From: Subbaraya Sundeep <sundeep.lkml@gmail.com>
 
-Emulated Emcraft's Smartfusion2 System On Module starter
-kit.
 
-Signed-off-by: Subbaraya Sundeep <sundeep.lkml@gmail.com>
-Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-[PMD: drop cpu_model to directly use cpu type]
----
- hw/arm/msf2-som.c    | 105 +++++++++++++++++++++++++++++++++++++++++++++++++++
- hw/arm/Makefile.objs |   2 +-
- 2 files changed, 106 insertions(+), 1 deletion(-)
- create mode 100644 hw/arm/msf2-som.c
+> -----Original Message-----
+> From: Eric Auger [mailto:eric.auger@redhat.com]
+> Sent: Tuesday, September 19, 2017 1:17 PM
+> To: eric.auger.pro@gmail.com; eric.auger@redhat.com;
+> peter.maydell@linaro.org; alex.williamson@redhat.com; mst@redhat.com;
+> qemu-arm@nongnu.org; qemu-devel@nongnu.org; jean-
+> philippe.brucker@arm.com
+> Cc: will.deacon@arm.com; kevin.tian@intel.com; marc.zyngier@arm.com;
+> christoffer.dall@linaro.org; drjones@redhat.com; wei@redhat.com;
+> tn@semihalf.com; Bharat Bhushan <bharat.bhushan@nxp.com>;
+> peterx@redhat.com; linuc.decode@gmail.com
+> Subject: [RFC v4 09/16] virtio-iommu: Implement translate
+>=20
+> This patch implements the translate callback
+>=20
+> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+> ---
+>  hw/virtio/trace-events   |  1 +
+>  hw/virtio/virtio-iommu.c | 39
+> +++++++++++++++++++++++++++++++++++++--
+>  2 files changed, 38 insertions(+), 2 deletions(-)
+>=20
+> diff --git a/hw/virtio/trace-events b/hw/virtio/trace-events index
+> da298c1..9010fbd 100644
+> --- a/hw/virtio/trace-events
+> +++ b/hw/virtio/trace-events
+> @@ -45,3 +45,4 @@ virtio_iommu_put_as(uint32_t asid) "Free asid=3D%d"
+>  virtio_iommu_unmap_left_interval(uint64_t low, uint64_t high, uint64_t
+> next_low, uint64_t next_high) "Unmap left [0x%"PRIx64",0x%"PRIx64"],
+> new interval=3D[0x%"PRIx64",0x%"PRIx64"]"
+>  virtio_iommu_unmap_right_interval(uint64_t low, uint64_t high, uint64_t
+> next_low, uint64_t next_high) "Unmap right [0x%"PRIx64",0x%"PRIx64"],
+> new interval=3D[0x%"PRIx64",0x%"PRIx64"]"
+>  virtio_iommu_unmap_inc_interval(uint64_t low, uint64_t high) "Unmap inc
+> [0x%"PRIx64",0x%"PRIx64"]"
+> +virtio_iommu_translate_out(uint64_t virt_addr, uint64_t phys_addr,
+> uint32_t sid) "0x%"PRIx64" -> 0x%"PRIx64 " for sid=3D%d"
+> diff --git a/hw/virtio/virtio-iommu.c b/hw/virtio/virtio-iommu.c index
+> 6f1a7d1..db46a91 100644
+> --- a/hw/virtio/virtio-iommu.c
+> +++ b/hw/virtio/virtio-iommu.c
+> @@ -496,19 +496,54 @@ static IOMMUTLBEntry
+> virtio_iommu_translate(IOMMUMemoryRegion *mr, hwaddr addr,
+>                                              IOMMUAccessFlags flag)  {
+>      IOMMUDevice *sdev =3D container_of(mr, IOMMUDevice, iommu_mr);
+> +    VirtIOIOMMU *s =3D sdev->viommu;
+>      uint32_t sid;
+> +    viommu_dev *dev;
+> +    viommu_mapping *mapping;
+> +    viommu_interval interval;
+> +
+> +    interval.low =3D addr;
+> +    interval.high =3D addr + 1;
+>=20
+>      IOMMUTLBEntry entry =3D {
+>          .target_as =3D &address_space_memory,
+>          .iova =3D addr,
+>          .translated_addr =3D addr,
+> -        .addr_mask =3D ~(hwaddr)0,
+> -        .perm =3D IOMMU_NONE,
+> +        .addr_mask =3D (1 << ctz32(s->config.page_size_mask)) - 1,
+> +        .perm =3D flag,
+>      };
+>=20
+>      sid =3D virtio_iommu_get_sid(sdev);
+>=20
+>      trace_virtio_iommu_translate(mr->parent_obj.name, sid, addr, flag);
+> +    qemu_mutex_lock(&s->mutex);
+> +
+> +    dev =3D g_tree_lookup(s->devices, GUINT_TO_POINTER(sid));
+> +    if (!dev) {
+> +        /* device cannot be attached to another as */
+> +        printf("%s sid=3D%d is not known!!\n", __func__, sid);
+> +        goto unlock;
+> +    }
+> +
+> +    mapping =3D g_tree_lookup(dev->as->mappings, (gpointer)(&interval));
 
-diff --git a/hw/arm/msf2-som.c b/hw/arm/msf2-som.c
-new file mode 100644
-index 0000000000..0795a3a3a1
---- /dev/null
-+++ b/hw/arm/msf2-som.c
-@@ -0,0 +1,105 @@
-+/*
-+ * SmartFusion2 SOM starter kit(from Emcraft) emulation.
-+ *
-+ * Copyright (c) 2017 Subbaraya Sundeep <sundeep.lkml@gmail.com>
-+ *
-+ * Permission is hereby granted, free of charge, to any person obtaining a copy
-+ * of this software and associated documentation files (the "Software"), to deal
-+ * in the Software without restriction, including without limitation the rights
-+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-+ * copies of the Software, and to permit persons to whom the Software is
-+ * furnished to do so, subject to the following conditions:
-+ *
-+ * The above copyright notice and this permission notice shall be included in
-+ * all copies or substantial portions of the Software.
-+ *
-+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
-+ * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-+ * THE SOFTWARE.
-+ */
-+
-+#include "qemu/osdep.h"
-+#include "qapi/error.h"
-+#include "qemu/error-report.h"
-+#include "hw/boards.h"
-+#include "hw/arm/arm.h"
-+#include "exec/address-spaces.h"
-+#include "qemu/cutils.h"
-+#include "hw/arm/msf2-soc.h"
-+#include "cpu.h"
-+
-+#define DDR_BASE_ADDRESS      0xA0000000
-+#define DDR_SIZE              (64 * M_BYTE)
-+
-+#define M2S010_ENVM_SIZE      (256 * K_BYTE)
-+#define M2S010_ESRAM_SIZE     (64 * K_BYTE)
-+
-+static void emcraft_sf2_s2s010_init(MachineState *machine)
-+{
-+    DeviceState *dev;
-+    DeviceState *spi_flash;
-+    MSF2State *soc;
-+    MachineClass *mc = MACHINE_GET_CLASS(machine);
-+    DriveInfo *dinfo = drive_get_next(IF_MTD);
-+    qemu_irq cs_line;
-+    SSIBus *spi_bus;
-+    MemoryRegion *sysmem = get_system_memory();
-+    MemoryRegion *ddr = g_new(MemoryRegion, 1);
-+
-+    if (strcmp(machine->cpu_type, mc->default_cpu_type) != 0) {
-+        error_report("This board can only be used with CPU %s",
-+                     mc->default_cpu_type);
-+    }
-+
-+    memory_region_init_ram(ddr, NULL, "ddr-ram", DDR_SIZE,
-+                           &error_fatal);
-+    memory_region_add_subregion(sysmem, DDR_BASE_ADDRESS, ddr);
-+
-+    dev = qdev_create(NULL, TYPE_MSF2_SOC);
-+    qdev_prop_set_string(dev, "part-name", "M2S010");
-+    qdev_prop_set_string(dev, "cpu-type", mc->default_cpu_type);
-+
-+    qdev_prop_set_uint64(dev, "eNVM-size", M2S010_ENVM_SIZE);
-+    qdev_prop_set_uint64(dev, "eSRAM-size", M2S010_ESRAM_SIZE);
-+
-+    /*
-+     * CPU clock and peripheral clocks(APB0, APB1)are configurable
-+     * in Libero. CPU clock is divided by APB0 and APB1 divisors for
-+     * peripherals. Emcraft's SoM kit comes with these settings by default.
-+     */
-+    qdev_prop_set_uint32(dev, "m3clk", 142 * 1000000);
-+    qdev_prop_set_uint32(dev, "apb0div", 2);
-+    qdev_prop_set_uint32(dev, "apb1div", 2);
-+
-+    object_property_set_bool(OBJECT(dev), true, "realized", &error_fatal);
-+
-+    soc = MSF2_SOC(dev);
-+
-+    /* Attach SPI flash to SPI0 controller */
-+    spi_bus = (SSIBus *)qdev_get_child_bus(dev, "spi0");
-+    spi_flash = ssi_create_slave_no_init(spi_bus, "s25sl12801");
-+    qdev_prop_set_uint8(spi_flash, "spansion-cr2nv", 1);
-+    if (dinfo) {
-+        qdev_prop_set_drive(spi_flash, "drive", blk_by_legacy_dinfo(dinfo),
-+                                    &error_fatal);
-+    }
-+    qdev_init_nofail(spi_flash);
-+    cs_line = qdev_get_gpio_in_named(spi_flash, SSI_GPIO_CS, 0);
-+    sysbus_connect_irq(SYS_BUS_DEVICE(&soc->spi[0]), 1, cs_line);
-+
-+    armv7m_load_kernel(ARM_CPU(first_cpu), machine->kernel_filename,
-+                       soc->envm_size);
-+}
-+
-+static void emcraft_sf2_machine_init(MachineClass *mc)
-+{
-+    mc->desc = "SmartFusion2 SOM kit from Emcraft (M2S010)";
-+    mc->init = emcraft_sf2_s2s010_init;
-+    mc->default_cpu_type = ARM_CPU_TYPE_NAME("cortex-m3");
-+}
-+
-+DEFINE_MACHINE("emcraft-sf2", emcraft_sf2_machine_init)
-diff --git a/hw/arm/Makefile.objs b/hw/arm/Makefile.objs
-index a6cf24f6ac..2794e086d6 100644
---- a/hw/arm/Makefile.objs
-+++ b/hw/arm/Makefile.objs
-@@ -19,4 +19,4 @@ obj-$(CONFIG_FSL_IMX31) += fsl-imx31.o kzm.o
- obj-$(CONFIG_FSL_IMX6) += fsl-imx6.o sabrelite.o
- obj-$(CONFIG_ASPEED_SOC) += aspeed_soc.o aspeed.o
- obj-$(CONFIG_MPS2) += mps2.o
--obj-$(CONFIG_MSF2) += msf2-soc.o
-+obj-$(CONFIG_MSF2) += msf2-soc.o msf2-som.o
--- 
-2.14.1
+Should check of !dev->as before accessing this.
+
+Thanks
+-Bharat=20
+
+> +    if (!mapping) {
+> +        printf("%s no mapping for 0x%"PRIx64" for sid=3D%d\n", __func__,
+> +               addr, sid);
+> +        goto unlock;
+> +    }
+> +
+> +    if (((flag & IOMMU_RO) && !(mapping->flags &
+> VIRTIO_IOMMU_MAP_F_READ)) ||
+> +        ((flag & IOMMU_WO) && !(mapping->flags &
+> VIRTIO_IOMMU_MAP_F_WRITE))) {
+> +        error_report("Permission error on 0x%"PRIx64"(%d): allowed=3D%d"=
+,
+> +                     addr, flag, mapping->flags);
+> +        entry.perm =3D IOMMU_NONE;
+> +        goto unlock;
+> +    }
+> +    entry.translated_addr =3D addr - mapping->virt_addr + mapping-
+> >phys_addr,
+> +    trace_virtio_iommu_translate_out(addr, entry.translated_addr, sid);
+> +
+> +unlock:
+> +    qemu_mutex_unlock(&s->mutex);
+>      return entry;
+>  }
+>=20
+> --
+> 2.5.5
 

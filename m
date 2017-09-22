@@ -1,71 +1,106 @@
-Received: by 10.223.172.38 with SMTP id v35csp3224052wrc;
-        Fri, 22 Sep 2017 08:14:28 -0700 (PDT)
-X-Google-Smtp-Source: AOwi7QBAx+0CG0k5eeE3Y1ajo97Fiihu324ezZ5NuipUrQyZclBBPSwYcTikrSXpdWxlZuGDGydg
-X-Received: by 10.200.51.237 with SMTP id d42mr9147572qtb.25.1506093268344;
-        Fri, 22 Sep 2017 08:14:28 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1506093268; cv=none;
+Received: by 10.223.172.38 with SMTP id v35csp3338264wrc;
+        Fri, 22 Sep 2017 10:14:05 -0700 (PDT)
+X-Received: by 10.237.62.59 with SMTP id l56mr8891649qtf.261.1506100445007;
+        Fri, 22 Sep 2017 10:14:05 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1506100445; cv=none;
         d=google.com; s=arc-20160816;
-        b=yRRoycyNLFH1PvWO2k2EAsAv+nyXunYwWr7N6DL70drnqoz0dVUDbHQNAd0ii8P4sg
-         L9l5KC/HEEiknGzs0+UpRhctAWr4ltMs6Bz2y1eOKoFHHNC5mRoTqtzD70ESob9j5OyE
-         D38SnF2qKE1fcSP6KuMrCBEc2LOsVM2Q0RvJR8PRnnD41ifJAHZdtAm0Gmyrc5Ou77us
-         vYUYG59FH4Opy1O4+WFvIM2ZuURlo9DtqzZhC/HvhmvHncP84486jews5uE4OEFOmfy6
-         oGA7Q1LA3wtP78oR9KaGRmhJv/zXGC76+g4dkKsuaycyrMGt0eymkOeF38BJoQyyC9V4
-         ZE6Q==
+        b=YCWjgfmXCyw5dahFWGSlwcyCFaIsq5U3dTD7DioVarYyZP631K9eLIUG6/fj19jNWJ
+         tD1qgPdm2nu8Voxur6NFS8n8j2sDU0WzNC0l68s/oon5IfNI8m1SGORHzIkFC/V2pv/G
+         39koa14XQdd55UNJNuRpxWAew8vHsUwnGtmcTZvqIlNggFIFtvv+xYS3+2zKXtxfxQyF
+         L7aXe8iVXjRyIWSus2+2WsmxlWBUvwD5Pi+5gBPF7je/+MreFYwMkyjg5EqH7Ojtnpv6
+         v6BSclwX5IaAzqdVhJ1QQHUFPwJfBorFKnZaFv29vsRiNG/ZY6GhYIT9pX5ALkEj/cpW
+         x0Uw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
-         :message-id:date:to:from:arc-authentication-results;
-        bh=JTSY1yCbKXv0l7tT7enzEnUly7oxJmImYn3jwCpbj98=;
-        b=Q6RtWU73PuPfT0uJ7YpbySZtfJXhhVmV91M4EB/RrciNANQF359mPl0NzSFj+bH4w7
-         1GHRivqn/yPtpZHIqBqSPQLoCXvm+QZr6h+IserPX6bqtvVb+5WuG0PcUDtX70maeYEW
-         2JToh6Xm05hNW6pPlINzlJPNIRjRQXeJ7NbCRBmhr3lz1Pnc9/ze/uXVQOmT3ZIGNIHg
-         7paKBrAzwROTgmcprvWmIILeEbVwiaJ+Kwc4P10RcD7Snz2/OnGgtviXTDBl477zKAUG
-         WdHqylRo84rILRzKc5jWuAG3sYjl8xf+0/g2h8Roov5VpqRaCl8HjKDwgpxzXRol6wRp
-         FS5A==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:mime-version:message-id:date:to:from
+         :dkim-signature:arc-authentication-results;
+        bh=HFwOjg6YR/R6xJ5Mu0xtDj0n4+kQctxlilxZAMp0zL0=;
+        b=WvmetW57W60H14qWczjltVZt6zD+laSRsziTwP6JjrMqg5EZbLWZoM84+UnDbeJz/+
+         w3G8F+H0ZMHAY+PukSYAR4oAQ2pItbF/f/Pz989gWzGe52UVB6PzTeRRbcFXglaSscah
+         IGERI2iouoBM8Ms0xMN/rxBwypcUAGLb5xYI2Bm3a8v8kIRbp66WHX+45q4utFNUXMu3
+         8qNKge70aWsMZDj/IFVBkfqL1/vAXJb9+KCxzN0ZPKQgFQ60WGKKDhasni0oyBTGa8tu
+         mEeIMpppk3iJkCNoqhqEebc3iQ4Z6DUPIJcZ70WgdToOKYckS8R6mqrbb+WT1PUB77C2
+         z6Ug==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=vY1Eilr5;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id m101si36380qkh.312.2017.09.22.08.14.27
+        by mx.google.com with ESMTPS id t2si227250qkf.128.2017.09.22.10.14.04
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 22 Sep 2017 08:14:28 -0700 (PDT)
+        Fri, 22 Sep 2017 10:14:04 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:59404 helo=lists.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=vY1Eilr5;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:60280 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1dvPer-0004AR-Vj
-	for alex.bennee@linaro.org; Fri, 22 Sep 2017 11:14:26 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:47286)
+	id 1dvRWc-0003Rq-IH
+	for alex.bennee@linaro.org; Fri, 22 Sep 2017 13:14:02 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:59355)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1dvPQh-00087E-Q1
-	for qemu-arm@nongnu.org; Fri, 22 Sep 2017 10:59:50 -0400
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1dvRWM-00039v-RD
+	for qemu-arm@nongnu.org; Fri, 22 Sep 2017 13:13:47 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1dvPQg-0004JN-N4
-	for qemu-arm@nongnu.org; Fri, 22 Sep 2017 10:59:47 -0400
-Received: from orth.archaic.org.uk ([2001:8b0:1d0::2]:37588)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <pm215@archaic.org.uk>)
-	id 1dvPQg-0004EW-Ek; Fri, 22 Sep 2017 10:59:46 -0400
-Received: from pm215 by orth.archaic.org.uk with local (Exim 4.89)
-	(envelope-from <pm215@archaic.org.uk>)
-	id 1dvPQc-0007G2-7Y; Fri, 22 Sep 2017 15:59:42 +0100
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Date: Fri, 22 Sep 2017 16:00:05 +0100
-Message-Id: <1506092407-26985-19-git-send-email-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.7.4
-In-Reply-To: <1506092407-26985-1-git-send-email-peter.maydell@linaro.org>
-References: <1506092407-26985-1-git-send-email-peter.maydell@linaro.org>
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1dvRWL-0003RF-U4
+	for qemu-arm@nongnu.org; Fri, 22 Sep 2017 13:13:46 -0400
+Received: from mail-qt0-x243.google.com ([2607:f8b0:400d:c0d::243]:37390)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1dvRWH-0003L5-IY; Fri, 22 Sep 2017 13:13:41 -0400
+Received: by mail-qt0-x243.google.com with SMTP id u48so1044838qtc.4;
+	Fri, 22 Sep 2017 10:13:41 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=sender:from:to:cc:subject:date:message-id:mime-version
+	:content-transfer-encoding;
+	bh=HFwOjg6YR/R6xJ5Mu0xtDj0n4+kQctxlilxZAMp0zL0=;
+	b=vY1Eilr5lguqaVdsXVKVfbX4s0k306AAlEhrJGYXtobOt0ZSsTdnJTJcO3zw5YlrDK
+	lv8a1OcUv0HQ4IbcfFLTvUrbWuSFSsboW4CTaaUlfj94PHBmrtH/X5uNENjbDq31RK7H
+	dqq2n81cHQ4fz+UfmWdq7pJkOFk4St8InSb107ys5TPO5EXX7HF3S/sJ2oAtKjnq8pqD
+	WXsnNRos5ph5SCwcgLICRUW4b3nYax6h7BDth7m2O3n3FCGK4Pxpcp57Rph1L+CUbCTf
+	0L9BhmBOCvlcjH/CU+aeviHBXKvttkRfIeY6FL3Xp4pGVFAgYXcSNlnb/5fCSXcSOA6s
+	7byQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
+	:mime-version:content-transfer-encoding;
+	bh=HFwOjg6YR/R6xJ5Mu0xtDj0n4+kQctxlilxZAMp0zL0=;
+	b=E2aW6elBmPyVpsPHyKhuyBBMGGXxeNorm4cVRY1Iw5SXwWrQ13z+In8cfRGvCr5Pl8
+	Gn079+yA4O5vX2Lz2/Ab4g58dXTwKg5/yi8skKHSUG1CetUdkRhUq9a2x0GWIUAxe1gK
+	RukHkLCwNx0HKWLypA4MVlw6OCCcD9Oz9+JiQbJlcEz23wZmkYlt0r/sCJ22prDOnnTB
+	RSAbSlLWMjamEVCb/Eu6xevykZ/WcdcLEUnxPopXTtWo3lkkPJ6bPgOr4bhXRDFicx+f
+	AvCghDWG4HjpgIxwkeTYrNBrbgNNprH1zPg1EeYZtEty5zgOdnOkEH0RPVCWzmgFJN5x
+	HArQ==
+X-Gm-Message-State: AHPjjUhJJizKv+Y4c8hXSjf4KWhBdB4/KVPliBD9+qRatB1CVr/vxPDt
+	Zrr4nqE6zACLGzZO1WfJ5jU=
+X-Google-Smtp-Source: AOwi7QBrTYCYJBMpbQDuhjPd59ZtaBZQVoKHtwR5NJIYfhqd3aQoG7z00sUEjJDEJwYoWxCMhXoSSg==
+X-Received: by 10.200.9.115 with SMTP id z48mr9357031qth.141.1506100418650;
+	Fri, 22 Sep 2017 10:13:38 -0700 (PDT)
+Received: from yoga.lan ([181.93.89.178])
+	by smtp.gmail.com with ESMTPSA id f69sm238468qke.27.2017.09.22.10.13.35
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Fri, 22 Sep 2017 10:13:38 -0700 (PDT)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+To: Peter Maydell <peter.maydell@linaro.org>,
+	Grant Likely <grant.likely@arm.com>, Jason Wang <jasowang@redhat.com>,
+	Stefan Hajnoczi <stefanha@redhat.com>,
+	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+	Alistair Francis <alistair.francis@xilinx.com>
+Date: Fri, 22 Sep 2017 14:13:16 -0300
+Message-Id: <20170922171323.10348-1-f4bug@amsat.org>
+X-Mailer: git-send-email 2.14.1
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2001:8b0:1d0::2
-Subject: [Qemu-arm] [PATCH 18/20] target/arm: Implement BLXNS
+X-Received-From: 2607:f8b0:400d:c0d::243
+Subject: [Qemu-arm] [PATCH v5 0/7] Generalize MDIO framework
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -77,158 +112,47 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: patches@linaro.org
+Cc: qemu-arm@nongnu.org,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+	qemu-devel@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: AMYyh3opydv6
+X-TUID: MGylT96mkfcT
 
-Implement the BLXNS instruction, which allows secure code to
-call non-secure code.
+Hi,
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
- target/arm/helper.h    |  1 +
- target/arm/internals.h |  1 +
- target/arm/helper.c    | 59 ++++++++++++++++++++++++++++++++++++++++++++++++++
- target/arm/translate.c | 17 +++++++++++++--
- 4 files changed, 76 insertions(+), 2 deletions(-)
+I have a follow up series using multiples PHY on the MDIO bus based on this
+series.
 
-diff --git a/target/arm/helper.h b/target/arm/helper.h
-index 64afbac..2cf6f74 100644
---- a/target/arm/helper.h
-+++ b/target/arm/helper.h
-@@ -64,6 +64,7 @@ DEF_HELPER_3(v7m_msr, void, env, i32, i32)
- DEF_HELPER_2(v7m_mrs, i32, env, i32)
- 
- DEF_HELPER_2(v7m_bxns, void, env, i32)
-+DEF_HELPER_2(v7m_blxns, void, env, i32)
- 
- DEF_HELPER_4(access_check_cp_reg, void, env, ptr, i32, i32)
- DEF_HELPER_3(set_cp_reg, void, env, ptr, i32)
-diff --git a/target/arm/internals.h b/target/arm/internals.h
-index fd9a7e8..1746737 100644
---- a/target/arm/internals.h
-+++ b/target/arm/internals.h
-@@ -60,6 +60,7 @@ static inline bool excp_is_internal(int excp)
- FIELD(V7M_CONTROL, NPRIV, 0, 1)
- FIELD(V7M_CONTROL, SPSEL, 1, 1)
- FIELD(V7M_CONTROL, FPCA, 2, 1)
-+FIELD(V7M_CONTROL, SFPA, 3, 1)
- 
- /* Bit definitions for v7M exception return payload */
- FIELD(V7M_EXCRET, ES, 0, 1)
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index 8df819d..30dc2a9 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -5890,6 +5890,12 @@ void HELPER(v7m_bxns)(CPUARMState *env, uint32_t dest)
-     g_assert_not_reached();
- }
- 
-+void HELPER(v7m_blxns)(CPUARMState *env, uint32_t dest)
-+{
-+    /* translate.c should never generate calls here in user-only mode */
-+    g_assert_not_reached();
-+}
-+
- void switch_mode(CPUARMState *env, int mode)
- {
-     ARMCPU *cpu = arm_env_get_cpu(env);
-@@ -6182,6 +6188,59 @@ void HELPER(v7m_bxns)(CPUARMState *env, uint32_t dest)
-     env->regs[15] = dest & ~1;
- }
- 
-+void HELPER(v7m_blxns)(CPUARMState *env, uint32_t dest)
-+{
-+    /* Handle v7M BLXNS:
-+     *  - bit 0 of the destination address is the target security state
-+     */
-+
-+    /* At this point regs[15] is the address just after the BLXNS */
-+    uint32_t nextinst = env->regs[15] | 1;
-+    uint32_t sp = env->regs[13] - 8;
-+    uint32_t saved_psr;
-+
-+    /* translate.c will have made BLXNS UNDEF unless we're secure */
-+    assert(env->v7m.secure);
-+
-+    if (dest & 1) {
-+        /* target is Secure, so this is just a normal BLX,
-+         * except that the low bit doesn't indicate Thumb/not.
-+         */
-+        env->regs[14] = nextinst;
-+        env->thumb = 1;
-+        env->regs[15] = dest & ~1;
-+        return;
-+    }
-+
-+    /* Target is non-secure: first push a stack frame */
-+    if (!QEMU_IS_ALIGNED(sp, 8)) {
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+                      "BLXNS with misaligned SP is UNPREDICTABLE\n");
-+    }
-+
-+    saved_psr = env->v7m.exception;
-+    if (env->v7m.control[M_REG_S] & R_V7M_CONTROL_SFPA_MASK) {
-+        saved_psr |= XPSR_SFPA;
-+    }
-+
-+    /* Note that these stores can throw exceptions on MPU faults */
-+    cpu_stl_data(env, sp, nextinst);
-+    cpu_stl_data(env, sp + 4, saved_psr);
-+
-+    env->regs[13] = sp;
-+    env->regs[14] = 0xfeffffff;
-+    if (arm_v7m_is_handler_mode(env)) {
-+        /* Write a dummy value to IPSR, to avoid leaking the current secure
-+         * exception number to non-secure code. This is guaranteed not
-+         * to cause write_v7m_exception() to actually change stacks.
-+         */
-+        write_v7m_exception(env, 1);
-+    }
-+    switch_v7m_security_state(env, dest & 1);
-+    env->thumb = 1;
-+    env->regs[15] = dest & ~1;
-+}
-+
- static uint32_t *get_v7m_sp_ptr(CPUARMState *env, bool secure, bool threadmode,
-                                 bool spsel)
- {
-diff --git a/target/arm/translate.c b/target/arm/translate.c
-index ab1a12a..53694bb 100644
---- a/target/arm/translate.c
-+++ b/target/arm/translate.c
-@@ -1013,6 +1013,20 @@ static inline void gen_bxns(DisasContext *s, int rm)
-     s->base.is_jmp = DISAS_EXIT;
- }
- 
-+static inline void gen_blxns(DisasContext *s, int rm)
-+{
-+    TCGv_i32 var = load_reg(s, rm);
-+
-+    /* We don't need to sync condexec state, for the same reason as blxns.
-+     * We do however need to set the PC, because the blxns helper reads it.
-+     * The blxns helper may throw an exception.
-+     */
-+    gen_set_pc_im(s, s->pc);
-+    gen_helper_v7m_blxns(cpu_env, var);
-+    tcg_temp_free_i32(var);
-+    s->base.is_jmp = DISAS_EXIT;
-+}
-+
- /* Variant of store_reg which uses branch&exchange logic when storing
-    to r15 in ARM architecture v7 and above. The source must be a temporary
-    and will be marked as dead. */
-@@ -11221,8 +11235,7 @@ static void disas_thumb_insn(CPUARMState *env, DisasContext *s)
-                         goto undef;
-                     }
-                     if (link) {
--                        /* BLXNS: not yet implemented */
--                        goto undef;
-+                        gen_blxns(s, rm);
-                     } else {
-                         gen_bxns(s, rm);
-                     }
+Regards,
+
+Phil.
+
+Grant's previous work:
+http://lists.nongnu.org/archive/html/qemu-devel/2013-02/msg00257.html
+
+"There is more work to be done, particularly in moving to the common GPIO api,
+ but that work can be done as a follow on patch series."
+
+Grant Likely (7):
+  hw/mdio: Generalize etraxfs MDIO bitbanging emulation
+  hw/mdio: Add PHY register definition
+  hw/mdio: Generalize phy initialization routine
+  hw/mdio: Mask out read-only bits.
+  hw/mdio: Refactor bitbanging state machine
+  hw/mdio: Add VMState support
+  hw/mdio: Use bitbang core for smc91c111 network device
+
+ include/hw/net/mdio.h   | 124 +++++++++++++++++++++
+ hw/net/etraxfs_eth.c    | 291 +-----------------------------------------------
+ hw/net/mdio.c           | 280 ++++++++++++++++++++++++++++++++++++++++++++++
+ hw/net/smc91c111.c      |  27 ++++-
+ hw/net/xilinx_axienet.c | 189 +------------------------------
+ hw/net/Makefile.objs    |   2 +
+ 6 files changed, 438 insertions(+), 475 deletions(-)
+ create mode 100644 include/hw/net/mdio.h
+ create mode 100644 hw/net/mdio.c
+
 -- 
-2.7.4
+2.14.1
 

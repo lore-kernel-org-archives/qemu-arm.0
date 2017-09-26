@@ -1,101 +1,97 @@
-Received: by 10.223.172.38 with SMTP id v35csp1895366wrc;
-        Sun, 24 Sep 2017 16:40:36 -0700 (PDT)
-X-Received: by 10.55.110.132 with SMTP id j126mr8276067qkc.104.1506296436542;
-        Sun, 24 Sep 2017 16:40:36 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1506296436; cv=none;
+Received: by 10.223.172.38 with SMTP id v35csp3147754wrc;
+        Mon, 25 Sep 2017 20:53:12 -0700 (PDT)
+X-Received: by 10.237.37.103 with SMTP id w36mr14158969qtc.325.1506397992842;
+        Mon, 25 Sep 2017 20:53:12 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1506397992; cv=none;
         d=google.com; s=arc-20160816;
-        b=nHFlihkMw9Imy5738eIE3D3+dt4CkJKvoLozJXBRGApVkn8hGFLRSYCJqoZYMwTxt9
-         qL2QLET1jXDHqN4wpULWClMUj2JoE4QtD6tsbsNvct7qAuBlnjFX9X8Xn9BrqPcR9A2t
-         bYw4RZJcaWVlOOyQ37TNNFMkMNYQhSfSB0e/8jCBFb7LnbE/hBk3JxuS5iSU/oRhjeYA
-         ccvSZShcubMPDx/1O8FkM2FUwu/FWguKUg+gA+wuEGCijn+VbTRbAPoNqS94TGyYlg9X
-         uwH5QfvxKBSa5Ztqjh1CiEYxriRukm31DFHFfPrKUhorTSnKi8Gai04P1XykWeaWY+np
-         pkXw==
+        b=I+cU1apsIFO8ysA92NgszSEH9OEnpEyXKr1b9Ra4pA866UM7oPy7PfHuHS6VOKKKJI
+         zIvJrQUnRhS3I229l0uzN3UBnU67CBefr/kvOH/MfLpjgC2WWvTL6nnVm36kgq26yu+q
+         ppWWKFwOrIkAhZl+ixjH2rK96FMMrepxQGw0TKBvBM5JMqRshkA3AxLaIufd/bgbBrwF
+         AT5DsOalEBSugZ4HgwfMO0WC+4D7J3xm+VGWUrXngS5HG97hpSF925dVXuTEL1OkZzBw
+         /lhLnQjF1/FddGvEA8j+CWbA7g2dhAhe53gWD3621PVSLVnQHKAgM3TCWoUe4Z0egW4E
+         5bdg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:to:message-id:date:from:references
-         :in-reply-to:mime-version:dkim-signature:arc-authentication-results;
-        bh=O1EE780WKec1fBMN0EC+zf/FTg5HbOW/S02Y6iYDqwY=;
-        b=PeDFKH6ydGMgl7GHlfuocbA1fpdmXdOncAyBFdIrvE5ZUzd/jIWq5dAkOMOAxPNfmS
-         VV64Mx1wm0hWJv8ZuEskZn2rjLzTHZA6nnyBJII6h6WhsoM/X2es5pNvOAZSp99kkJnM
-         bYQq+SMgtPXbcAlCNBq6VMVjL1OyePVirrnqk02thJ2O0ESy6UlXMw5ZbhMDN02AuKDF
-         KjcD7sSN0097mTGzwW+brJPvXlWjbu+gatT9hs21t3j26Q8GRhtEUO4uRaZTHynoojN6
-         3pNdw+m73/RdFF+yj+44XX8os+Cta1ai6Ycghg3QxG24v45orZ1utVD4/e1Moz7cpoH1
-         oZ3g==
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:to
+         :arc-authentication-results;
+        bh=AibOYXhziTL50phhDTFBkPpw+sO7cs2eBF8Sc1DT4Gg=;
+        b=DsbtXulRws4PChr/n9dbZZFcOqkAIZ3bTCssxXs6tQgHRefDTFNsL4txrzsLigJF4m
+         7QpvL3sFo/kIAxJHfvxoX38qj4aoIQKx6th5r54pmmi31MjO36dGY5bkp8aJchipn3OT
+         jYwxLtmtPfGX+DGSzjkCncrC7jhodFBJ2DwQ31i98yPQN2S15fivX2ezpbf3f7dp/mdu
+         yX+voD+G/Kl1KV3NGzzHRJP30aSqaXnTtonGHL4tPh6R2tUxyzTM/PSxhqMQryhwEgcu
+         8Axg7GAzYMs9COXWfKZ6rWWxzjyRr0OF0xkP0EccCk5dMK0xjXAvYS8sVpFZGPgnv0HR
+         FTnw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=neutral (body hash did not verify) header.i=@gmail.com header.s=20161025 header.b=IjyMVv0B;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id q85si713804qkh.186.2017.09.24.16.40.36
+        by mx.google.com with ESMTPS id v30si7675467qtj.524.2017.09.25.20.53.12
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sun, 24 Sep 2017 16:40:36 -0700 (PDT)
+        Mon, 25 Sep 2017 20:53:12 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=neutral (body hash did not verify) header.i=@gmail.com header.s=20161025 header.b=IjyMVv0B;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:39904 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:45470 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1dwGVm-0004Dq-BO
-	for alex.bennee@linaro.org; Sun, 24 Sep 2017 19:40:34 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:39466)
+	id 1dwgvm-00043X-Lc
+	for alex.bennee@linaro.org; Mon, 25 Sep 2017 23:53:10 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:38483)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <sundeep.lkml@gmail.com>) id 1dwGUm-0003o1-Pr
-	for qemu-devel@nongnu.org; Sun, 24 Sep 2017 19:39:33 -0400
+	(envelope-from <th.huth@gmail.com>) id 1dwgul-0003dz-GN
+	for qemu-devel@nongnu.org; Mon, 25 Sep 2017 23:52:09 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <sundeep.lkml@gmail.com>) id 1dwGUl-0003bd-El
-	for qemu-devel@nongnu.org; Sun, 24 Sep 2017 19:39:32 -0400
-Received: from mail-ua0-x232.google.com ([2607:f8b0:400c:c08::232]:43015)
+	(envelope-from <th.huth@gmail.com>) id 1dwguj-0001ZV-Rl
+	for qemu-devel@nongnu.org; Mon, 25 Sep 2017 23:52:07 -0400
+Received: from mail-wr0-f195.google.com ([209.85.128.195]:33275)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <sundeep.lkml@gmail.com>)
-	id 1dwGUl-0003b0-92; Sun, 24 Sep 2017 19:39:31 -0400
-Received: by mail-ua0-x232.google.com with SMTP id f44so3363104uaa.0;
-	Sun, 24 Sep 2017 16:39:29 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=h8F5qvbOXF6zfTSe4DYeglFkvw1xyONGNHPlpNy0SSU=;
-	b=IjyMVv0BhZG3t8AK3EdkwqajYQX62PbL11r6mR/HWufHhOzWOsq1SUSJGl0Bvq72L9
-	ZRgnpNrOE5hOljDfIC8DlsiyFl683bCsQYYOacPb476fkvks2FVnnJeyLUmPB347R1dT
-	Ia1teI8JGOrAOhKpvhPxNG5bd8vpwqtQwEpbgpDS88EuNg55wKK3JxdoHIYQw0lEI3CH
-	9HS+mvizfhjzN6x9MoVKSmO1l7Kg3sF3zKGKmKGTdcYDVxTACXHU+VL2WQjmkzmjhXtc
-	CqM91nGI30zQkDGxOu0e5gVOPWolwq+p5tRBa1Fur3FSKDtljRd2jj13RLcgw1sqrWu/
-	Zmnw==
+	(Exim 4.71) (envelope-from <th.huth@gmail.com>)
+	id 1dwguU-0001So-Du; Mon, 25 Sep 2017 23:51:50 -0400
+Received: by mail-wr0-f195.google.com with SMTP id b9so1315669wra.0;
+	Mon, 25 Sep 2017 20:51:50 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=h8F5qvbOXF6zfTSe4DYeglFkvw1xyONGNHPlpNy0SSU=;
-	b=L5KUgzAPghsCV5p0//rSO/R60d33dNSpwQEEEDY/W3uHa00joDab3+nlbRIpP8swCA
-	S0f+r5dJLlSqpMc4xhC4IhZa4LnjOl5DN0DMV5dHFkv/x50w/tolUziBz/RrerxaaNL8
-	4k+HDYD037LWFn7ZUQLokrxhoWbrwyyM2N+4Vctwx5Wx8q0um6yliPhPahNe3oiPjN8t
-	h2ODhhIJTUKNbh+B4m8WGBiooY88kCcukYmftI/BSREZnz41friWoWRz0/fkp9Uv+uH2
-	Fofp5lNLKE+9XRfBXk/S05T4FauLJuWOdD6D7upHPvmJVfy1VDLTWbamt8jkHKjY2UlF
-	wn4g==
-X-Gm-Message-State: AHPjjUia9JgxTCMsberiAZ6X5VFGrswXQmkJGmwO7VnSIi0Vj04kdfyS
-	94OKi2Vvwm5vkZUgifYUyactn2d8j4pPdx5wRnI=
-X-Google-Smtp-Source: AOwi7QAtojteFddrPI55OR3Qgbp7WXTgCVadKDzpHTJEsGss2U/+0K7WMX7xFpDukCiXCTEXjmO1dqUnsznb1/1w0Nc=
-X-Received: by 10.176.26.159 with SMTP id j31mr5675471uai.25.1506296369131;
-	Sun, 24 Sep 2017 16:39:29 -0700 (PDT)
+	h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+	:user-agent:mime-version:in-reply-to:content-language
+	:content-transfer-encoding;
+	bh=AibOYXhziTL50phhDTFBkPpw+sO7cs2eBF8Sc1DT4Gg=;
+	b=p85TI3AkT1t2mKELfyhjnfQfqtJQhep0fZ5wvGhFkVXoJY9I0JwV9bxcYxnttjIuMM
+	PUh4s5BgiKB32wYGq1cAhzFqLPTwHnkiTRrQzKqj1SH7kT6n35Yy/zzFQpI48nq8YBFl
+	+byH6axuUHgMpjTjW91GzPLcdNRy0I7rYw7q1dGFURIl/GUBPNfH1zACFWrBnX98IhBE
+	6D86AUlZg/z55EY7dSbp+HukqkrN1NjBoqAR7tmK1pmQsAjyIRq/I9izoi7IDrzJckNT
+	/kFbD/L+t0ORS4vYfUiIkiCmy7TfdjrkNjHsuaA9SurHxn1sJ9EKwRFSLVcI6EOmwMiB
+	MXhA==
+X-Gm-Message-State: AHPjjUhPi/V33rARrZkNA144c33DQMLMUrY+9IEN/eSc6UJyTx5qcfW+
+	gQoYMOL/tDOQO6qeUm25o6U=
+X-Google-Smtp-Source: AOwi7QAm0C942KMgADNF7Auhh0Vf9lwmG9A8WUrQafMJsW7SyJEoaZpoLGVeSNy9TNVYPagatFx6KQ==
+X-Received: by 10.223.143.14 with SMTP id p14mr6989900wrb.133.1506397908944;
+	Mon, 25 Sep 2017 20:51:48 -0700 (PDT)
+Received: from [192.168.178.23] (pD9E836CB.dip0.t-ipconnect.de.
+	[217.232.54.203])
+	by smtp.gmail.com with ESMTPSA id 137sm1276742wmp.7.2017.09.25.20.51.46
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Mon, 25 Sep 2017 20:51:47 -0700 (PDT)
+To: Alistair Francis <alistair.francis@xilinx.com>, qemu-devel@nongnu.org
+References: <cover.1506384414.git.alistair.francis@xilinx.com>
+	<bf3dd056ce55cbea81ca762c3c40d22683a542e7.1506384414.git.alistair.francis@xilinx.com>
+From: Thomas Huth <huth@tuxfamily.org>
+Message-ID: <1d317e5b-9de9-9186-1c00-573ca96f3d25@tuxfamily.org>
+Date: Tue, 26 Sep 2017 05:51:44 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.3.0
 MIME-Version: 1.0
-Received: by 10.176.66.68 with HTTP; Sun, 24 Sep 2017 16:39:28 -0700 (PDT)
-In-Reply-To: <CAFEAcA_0CHhQwA-zjsEseA8D==iz401G6CrwGoN33Nwp7GV+ew@mail.gmail.com>
-References: <20170920201737.25723-1-f4bug@amsat.org>
-	<CAFEAcA_0CHhQwA-zjsEseA8D==iz401G6CrwGoN33Nwp7GV+ew@mail.gmail.com>
-From: sundeep subbaraya <sundeep.lkml@gmail.com>
-Date: Mon, 25 Sep 2017 05:09:28 +0530
-Message-ID: <CALHRZupWabascx0jJ0wJyotcaK0_KHthEvu80kpzcPFSOK_iiA@mail.gmail.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:400c:c08::232
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-Content-Filtered-By: Mailman/MimeDel 2.1.21
-Subject: Re: [Qemu-devel] [PATCH v11 0/5] Add support for Smartfusion2 SoC
+In-Reply-To: <bf3dd056ce55cbea81ca762c3c40d22683a542e7.1506384414.git.alistair.francis@xilinx.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.85.128.195
+Subject: Re: [Qemu-devel] [PATCH v1 3/8] hw: Replace fprintf(stderr,
+ "*\n" with error_report()
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -107,44 +103,258 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
 	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Crosthwaite <crosthwaite.peter@gmail.com>,
-	Alistair Francis <alistair@alistair23.me>,
-	QEMU Developers <qemu-devel@nongnu.org>,
-	=?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>,
-	qemu-arm <qemu-arm@nongnu.org>, Igor Mammedov <imammedo@redhat.com>
+Cc: Cornelia Huck <cohuck@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>,
+	Anthony Green <green@moxielogic.com>,
+	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+	Alexander Graf <agraf@suse.de>,
+	Gerd Hoffmann <kraxel@redhat.com>, Marek Vasut <marex@denx.de>,
+	Stefano Stabellini <sstabellini@kernel.org>,
+	Jia Liu <proljc@gmail.com>, qemu-block@nongnu.org,
+	Magnus Damm <magnus.damm@gmail.com>, armbru@redhat.com,
+	Christian Borntraeger <borntraeger@de.ibm.com>,
+	=?UTF-8?Q?Herv=c3=a9_Poussineau?= <hpoussin@reactos.org>,
+	Marcel Apfelbaum <marcel@redhat.com>,
+	xen-devel@lists.xenproject.org, Jason Wang <jasowang@redhat.com>,
+	Artyom Tarasenko <atar4qemu@gmail.com>,
+	Eduardo Habkost <ehabkost@redhat.com>,
+	Fabien Chouteau <chouteau@adacore.com>,
+	Anthony Perard <anthony.perard@citrix.com>, qemu-arm@nongnu.org,
+	Jan Kiszka <jan.kiszka@web.de>, Stefan Hajnoczi <stefanha@redhat.com>,
+	Yongbok Kim <yongbok.kim@imgtec.com>, alistair23@gmail.com,
+	Stafford Horne <shorne@gmail.com>, John Snow <jsnow@redhat.com>,
+	Richard Henderson <rth@twiddle.net>, Paul Burton <paul.burton@imgtec.com>,
+	Thomas Huth <huth@tuxfamily.org>, Chris Wulff <crwulff@gmail.com>,
+	Michael Walle <michael@walle.cc>, qemu-ppc@nongnu.org,
+	Paolo Bonzini <pbonzini@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 30iAAUAKdY/y
+X-TUID: pYsDwZ4Nct0J
 
-Thanks Peter, Philippe and Alistair :)
-Sundeep
+On 26.09.2017 02:08, Alistair Francis wrote:
+> Replace a large number of the fprintf(stderr, "*\n" calls with
+> error_report(). The functions were renamed with these commands and then
+> compiler issues where manually fixed.
+> 
+> find ./* -type f -exec sed -i \
+>     'N;N;N;N;N;N;N;N;N;N;N;N; {s|fprintf(stderr, "\(.*\)\\n"\(.*\));|error_report("\1"\2);|Ig}' \
+>     {} +
+> find ./* -type f -exec sed -i \
+>     'N;N;N;N;N;N;N;N;N;N;N; {s|fprintf(stderr, "\(.*\)\\n"\(.*\));|error_report("\1"\2);|Ig}' \
+>     {} +
+> find ./* -type f -exec sed -i \
+>     'N;N;N;N;N;N;N;N;N; {s|fprintf(stderr, "\(.*\)\\n"\(.*\));|error_report("\1"\2);|Ig}' \
+>     {} +
+> find ./* -type f -exec sed -i \
+>     'N;N;N;N;N;N;N;N; {s|fprintf(stderr, "\(.*\)\\n"\(.*\));|error_report("\1"\2);|Ig}' \
+>     {} +
+> find ./* -type f -exec sed -i \
+>     'N;N;N;N;N;N;N; {s|fprintf(stderr, "\(.*\)\\n"\(.*\));|error_report("\1"\2);|Ig}' \
+>     {} +
+> find ./* -type f -exec sed -i \
+>     'N;N;N;N;N;N; {s|fprintf(stderr, "\(.*\)\\n"\(.*\));|error_report("\1"\2);|Ig}' \
+>     {} +
+> find ./* -type f -exec sed -i \
+>     'N;N;N;N;N; {s|fprintf(stderr, "\(.*\)\\n"\(.*\));|error_report("\1"\2);|Ig}' \
+>     {} +
+> find ./* -type f -exec sed -i \
+>     'N;N;N;N; {s|fprintf(stderr, "\(.*\)\\n"\(.*\));|error_report("\1"\2);|Ig}' \
+>     {} +
+> find ./* -type f -exec sed -i \
+>     'N;N;N; {s|fprintf(stderr, "\(.*\)\\n"\(.*\));|error_report("\1"\2);|Ig}' \
+>     {} +
+> find ./* -type f -exec sed -i \
+>     'N;N; {s|fprintf(stderr, "\(.*\)\\n"\(.*\));|error_report("\1"\2);|Ig}' \
+>     {} +
+> find ./* -type f -exec sed -i \
+>     'N; {s|fprintf(stderr, "\(.*\)\\n"\(.*\));|error_report("\1"\2);|Ig}' \
+>     {} +
+> 
+> Some lines where then manually tweaked to pass checkpatch.
+> 
+> Signed-off-by: Alistair Francis <alistair.francis@xilinx.com>
+> Cc: Andrzej Zaborowski <balrogg@gmail.com>
+> Cc: Jan Kiszka <jan.kiszka@web.de>
+> Cc: Stefan Hajnoczi <stefanha@redhat.com>
+> Cc: Paolo Bonzini <pbonzini@redhat.com>
+> Cc: Thomas Huth <huth@tuxfamily.org>
+> Cc: Gerd Hoffmann <kraxel@redhat.com>
+> Cc: "Michael S. Tsirkin" <mst@redhat.com>
+> Cc: Richard Henderson <rth@twiddle.net>
+> Cc: Eduardo Habkost <ehabkost@redhat.com>
+> Cc: Stefano Stabellini <sstabellini@kernel.org>
+> Cc: Anthony Perard <anthony.perard@citrix.com>
+> Cc: John Snow <jsnow@redhat.com>
+> Cc: Christian Borntraeger <borntraeger@de.ibm.com>
+> Cc: Cornelia Huck <cohuck@redhat.com>
+> Cc: Alexander Graf <agraf@suse.de>
+> Cc: Michael Walle <michael@walle.cc>
+> Cc: Paul Burton <paul.burton@imgtec.com>
+> Cc: Aurelien Jarno <aurelien@aurel32.net>
+> Cc: Yongbok Kim <yongbok.kim@imgtec.com>
+> Cc: "Hervé Poussineau" <hpoussin@reactos.org>
+> Cc: Anthony Green <green@moxielogic.com>
+> Cc: Jason Wang <jasowang@redhat.com>
+> Cc: Chris Wulff <crwulff@gmail.com>
+> Cc: Marek Vasut <marex@denx.de>
+> Cc: Jia Liu <proljc@gmail.com>
+> Cc: Stafford Horne <shorne@gmail.com>
+> Cc: Marcel Apfelbaum <marcel@redhat.com>
+> Cc: Magnus Damm <magnus.damm@gmail.com>
+> Cc: Fabien Chouteau <chouteau@adacore.com>
+> Cc: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
+> Cc: Artyom Tarasenko <atar4qemu@gmail.com>
+> Cc: qemu-arm@nongnu.org
+> Cc: qemu-block@nongnu.org
+> Cc: xen-devel@lists.xenproject.org
+> Cc: qemu-ppc@nongnu.org
+> ---
+> 
+>  hw/arm/armv7m.c                 |  2 +-
+>  hw/arm/boot.c                   | 34 +++++++++----------
+>  hw/arm/gumstix.c                | 13 ++++----
+>  hw/arm/mainstone.c              |  7 ++--
+>  hw/arm/musicpal.c               |  2 +-
+>  hw/arm/omap1.c                  |  5 +--
+>  hw/arm/omap2.c                  | 21 ++++++------
+>  hw/arm/omap_sx1.c               |  6 ++--
+>  hw/arm/palm.c                   | 10 +++---
+>  hw/arm/pxa2xx.c                 |  7 ++--
+>  hw/arm/stellaris.c              |  3 +-
+>  hw/arm/tosa.c                   | 17 +++++-----
+>  hw/arm/versatilepb.c            |  2 +-
+>  hw/arm/vexpress.c               |  8 ++---
+>  hw/arm/z2.c                     |  6 ++--
+>  hw/block/dataplane/virtio-blk.c |  6 ++--
+>  hw/block/onenand.c              |  8 ++---
+>  hw/block/tc58128.c              | 44 ++++++++++++-------------
+>  hw/bt/core.c                    | 15 +++++----
+>  hw/bt/hci-csr.c                 | 17 +++++-----
+>  hw/bt/hci.c                     | 30 ++++++++---------
+>  hw/bt/hid.c                     |  2 +-
+>  hw/bt/l2cap.c                   | 47 ++++++++++++++-------------
+>  hw/bt/sdp.c                     |  7 ++--
+>  hw/char/exynos4210_uart.c       |  6 ++--
+>  hw/char/mcf_uart.c              |  5 +--
+>  hw/char/sh_serial.c             |  9 +++---
+>  hw/core/loader.c                | 31 +++++++++---------
+>  hw/core/ptimer.c                |  7 ++--
+>  hw/cris/axis_dev88.c            |  3 +-
+>  hw/cris/boot.c                  |  5 +--
+>  hw/display/blizzard.c           | 20 ++++++------
+>  hw/display/omap_dss.c           | 14 ++++----
+>  hw/display/pl110.c              |  2 +-
+>  hw/display/pxa2xx_lcd.c         |  2 +-
+>  hw/display/qxl-render.c         |  7 ++--
+>  hw/display/qxl.c                | 10 +++---
+>  hw/display/tc6393xb.c           | 36 ++++++++++++---------
+>  hw/display/virtio-gpu-3d.c      |  4 +--
+>  hw/display/vmware_vga.c         | 22 ++++++-------
+>  hw/dma/omap_dma.c               | 26 ++++++++-------
+>  hw/dma/soc_dma.c                | 37 ++++++++++-----------
+>  hw/gpio/omap_gpio.c             |  2 +-
+>  hw/i2c/omap_i2c.c               | 10 +++---
+>  hw/i386/kvm/apic.c              |  9 +++---
+>  hw/i386/kvm/clock.c             |  7 ++--
+>  hw/i386/kvm/i8254.c             |  7 ++--
+>  hw/i386/kvm/i8259.c             |  5 +--
+>  hw/i386/kvm/ioapic.c            |  5 +--
+>  hw/i386/multiboot.c             | 21 ++++++------
+>  hw/i386/pc.c                    | 18 +++++------
+>  hw/i386/pc_piix.c               |  2 +-
+>  hw/i386/pc_sysfw.c              |  5 +--
+>  hw/i386/xen/xen-hvm.c           | 32 +++++++++---------
+>  hw/i386/xen/xen-mapcache.c      | 12 +++----
+>  hw/i386/xen/xen_apic.c          |  2 +-
+>  hw/ide/ahci.c                   |  6 ++--
+>  hw/ide/core.c                   |  2 +-
+>  hw/input/lm832x.c               |  6 ++--
+>  hw/input/pckbd.c                |  3 +-
+>  hw/input/pxa2xx_keypad.c        |  2 +-
+>  hw/input/tsc2005.c              | 17 +++++-----
+>  hw/input/tsc210x.c              | 72 ++++++++++++++++++++---------------------
+>  hw/input/virtio-input-hid.c     | 14 ++++----
+>  hw/input/virtio-input.c         |  5 +--
+>  hw/intc/arm_gic_kvm.c           | 12 +++----
+>  hw/intc/omap_intc.c             |  4 +--
+>  hw/intc/openpic.c               |  7 ++--
+>  hw/intc/openpic_kvm.c           |  8 ++---
+>  hw/intc/s390_flic_kvm.c         |  4 +--
+>  hw/ipmi/ipmi.c                  |  1 +
+>  hw/ipmi/ipmi_bmc_extern.c       |  5 +--
+>  hw/isa/isa-bus.c                |  7 ++--
+>  hw/lm32/lm32_boards.c           |  5 +--
+>  hw/lm32/milkymist.c             |  5 +--
+>  hw/m68k/an5206.c                |  4 +--
+>  hw/m68k/mcf5206.c               |  3 +-
+>  hw/m68k/mcf5208.c               |  7 ++--
+>  hw/microblaze/boot.c            |  2 +-
+>  hw/mips/boston.c                |  4 +--
+>  hw/mips/mips_fulong2e.c         |  4 +--
+>  hw/mips/mips_jazz.c             |  4 +--
+>  hw/mips/mips_malta.c            |  4 +--
+>  hw/mips/mips_mipssim.c          |  4 +--
+>  hw/mips/mips_r4k.c              |  6 ++--
+>  hw/misc/a9scu.c                 |  3 +-
+>  hw/misc/omap_gpmc.c             | 11 ++++---
+>  hw/misc/omap_l4.c               |  5 +--
+>  hw/misc/omap_sdrc.c             |  3 +-
+>  hw/misc/vmport.c                |  2 +-
+>  hw/moxie/moxiesim.c             |  7 ++--
+>  hw/net/fsl_etsec/etsec.c        |  2 +-
+>  hw/net/pcnet.c                  |  2 +-
+>  hw/net/smc91c111.c              |  5 +--
+>  hw/net/vhost_net.c              | 16 ++++-----
+>  hw/nios2/boot.c                 |  2 +-
+>  hw/nvram/eeprom93xx.c           |  5 +--
+>  hw/nvram/fw_cfg.c               |  4 +--
+>  hw/openrisc/openrisc_sim.c      |  3 +-
+>  hw/pci-host/bonito.c            |  6 ++--
+>  hw/pci/pci.c                    | 10 +++---
+>  hw/ppc/e500.c                   | 20 ++++++------
+>  hw/ppc/mac_newworld.c           |  2 +-
+>  hw/ppc/mac_oldworld.c           |  2 +-
+>  hw/ppc/mpc8544_guts.c           |  5 +--
+>  hw/ppc/ppc405_boards.c          |  8 ++---
+>  hw/ppc/ppc440_bamboo.c          | 19 +++++------
+>  hw/ppc/ppc4xx_pci.c             |  3 +-
+>  hw/ppc/prep.c                   |  4 +--
+>  hw/ppc/virtex_ml507.c           |  4 +--
+>  hw/s390x/virtio-ccw.c           |  2 +-
+>  hw/scsi/lsi53c895a.c            |  4 +--
+>  hw/scsi/spapr_vscsi.c           | 49 ++++++++++++++--------------
+>  hw/scsi/virtio-scsi-dataplane.c |  6 ++--
+>  hw/sd/pl181.c                   |  5 +--
+>  hw/sd/sd.c                      | 14 ++++----
+>  hw/sh4/r2d.c                    |  9 +++---
+>  hw/sh4/sh7750.c                 | 64 ++++++++++++++++++------------------
+>  hw/sparc/leon3.c                |  9 +++---
+>  hw/sparc/sun4m.c                |  8 ++---
+>  hw/sparc64/niagara.c            |  2 +-
+>  hw/sparc64/sun4u.c              |  9 +++---
+>  hw/ssi/omap_spi.c               |  5 +--
+>  hw/timer/omap_gptimer.c         | 11 ++++---
+>  hw/timer/twl92230.c             |  2 +-
+>  hw/timer/xilinx_timer.c         |  8 ++---
+>  hw/usb/core.c                   | 15 +++++----
+>  hw/usb/desc.c                   |  4 +--
+>  hw/usb/dev-audio.c              | 29 +++++++++--------
+>  hw/usb/dev-bluetooth.c          |  4 +--
+>  hw/usb/dev-mtp.c                |  9 +++---
+>  hw/usb/dev-network.c            | 20 ++++++------
+>  hw/usb/hcd-ehci.c               | 32 +++++++++---------
+>  hw/usb/hcd-musb.c               |  4 +--
+>  hw/usb/hcd-xhci.c               |  3 +-
+>  hw/usb/host-legacy.c            |  2 +-
+>  hw/watchdog/watchdog.c          |  9 +++---
+>  hw/watchdog/wdt_i6300esb.c      |  8 +++--
+>  hw/xen/xen-common.c             | 10 +++---
+>  hw/xen/xen_pt.c                 |  4 +--
+>  hw/xenpv/xen_domainbuild.c      | 24 +++++++-------
+>  hw/xenpv/xen_machine_pv.c       |  8 ++---
+>  142 files changed, 769 insertions(+), 705 deletions(-)
 
-On Thu, Sep 21, 2017 at 10:03 PM, Peter Maydell <peter.maydell@linaro.org>
-wrote:
+This patch is IMHO way to big! Can you please break this down into the
+individual hw/* subsystems, so that people who are familiar with a
+certain subsystem have a chance to review just their part? Thanks.
 
-> On 20 September 2017 at 21:17, Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.o=
-rg>
-> wrote:
-> > Hi Peter,
-> >
-> > Now than Igor's patch landed, I respin Sundeep's series updating it to
-> work
-> > after the "arm: drop intermediate cpu_model -> cpu type parsing and use
-> cpu
-> > type directly" patch.
-> >
-> > v11:
-> > - msf2-soc.c: add a check for null m3clk
-> > - msf2-soc.c, msf2-som.c: drop cpu_model to directly use cpu type
-> >
-> > --
->
-> Applied to target-arm.next.
->
-> Thanks to Sundeep for being so patient with our code review process,
-> and to Philippe and Alistair for doing the review and shepherding
-> the series through it.
->
-> thank
-> -- PMM
->
+ Thomas

@@ -1,75 +1,100 @@
-Received: by 10.223.197.9 with SMTP id q9csp9060052wrf;
-        Sat, 21 Oct 2017 11:13:59 -0700 (PDT)
-X-Google-Smtp-Source: ABhQp+ScDJycBE3KJb1kSMMM/lm6s4fPWdbwBBRzkiOC24UupeJolWmX7tbp3F32lemUqR0dKpk7
-X-Received: by 10.55.139.70 with SMTP id n67mr12311539qkd.275.1508609639126;
-        Sat, 21 Oct 2017 11:13:59 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1508609639; cv=none;
+Received: by 10.223.172.38 with SMTP id v35csp3816464wrc;
+        Tue, 26 Sep 2017 10:17:31 -0700 (PDT)
+X-Received: by 10.55.95.71 with SMTP id t68mr16041140qkb.233.1506446251275;
+        Tue, 26 Sep 2017 10:17:31 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1506446251; cv=none;
         d=google.com; s=arc-20160816;
-        b=sG9NwoVrg3Mov2dSiiHVo7bbRAOD7Cyz5V8+S375DxkK6GZRCUdiruG4aFY+Sbw4W7
-         L6jApMMYQoEBtkHWdqfZ2Rw0ar4FNFpVSts0rDP07pv30U0+GZMCzqKmDJyu4l6d0yPk
-         Ta0guufcj1HOk42bJDcElBMUQGL3XslnHdOkbWXheGg9BoKzlT98jCbN/K+6SEkdzFdP
-         CKx9Lr6/EZKdxQInc77JWnLdh4K/Ez/DHLKA7LRklRSixGnD1vAqhm6mZ18ZV3MTssYi
-         V+bqzxgItTQdTKTOuEDvztORtd2yKsQiGWfHNL4kacTmkOYXY42QJc7odoXWHYLzEEES
-         u/sw==
+        b=ff/GScdpk1j3tGZ+zhOBtAPv1vsbhuG4ddUJCs8mxSB5JOaBzd9l0++V1TneljU1BD
+         KLoZ/AcnwUKjarN7/AxXs4uqxA71me10gplWPRVfRx0pNmOslWim0L0w8vUl9vNoNU9z
+         HgBwEXNDPtV4AOiXoARM9rb6HdwDcJyOEr1TTqpV5iEiiyBnbuwZpiJwVjTOKVX5Tyrb
+         T1Ju2NVtwr6GK5nFv2c8UPwFkFJ21f09qpD8sjroFsArUB6fAh39vo9uWcZpHQwvl8IR
+         bKqyMQyKc55eFKMuTCgMfVvG9mMlH3rqW68hRMrKezCzoOn9CICqvqE0dMo87f/N104h
+         0WVA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence:subject:date:to
-         :from:resent-from:content-transfer-encoding:mime-version:in-reply-to
-         :message-id:resent-message-id:resent-date:arc-authentication-results;
-        bh=DqMrJ4H+csuEyzzGUwgca7Oftbwk/hCcsBDleHhzmRU=;
-        b=ApwWpAhydV2tykJ5QD9VSgyEYLaokLV4h3d0FLf4oKPxSz89nPYqUHJ5ooRLw+fJXC
-         Ft1VEvRRXzOD359p8SqZehWFU60GyKH0cX9gJvwxs211atsG3oBTaxaBxVwXsmsaGrLD
-         JT65y6lewHzP17yGQeiAqBVupVJ9tlv77YYX50C36vKTyD0sfiTXUvY3tCU7WaotggJT
-         aUghseZsNfY6zgD1aFB5qtlMkEENYJVowoBLstOhlTQzYOONXdZ6FLlAXzPnobsIacKP
-         6O8xUdUcy8TA9W3UCJLDTzlXO++FAbiFBNA+uiEm/dBCKYKEvsgtcpvR4gWAR1tHIzRF
-         R1vQ==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
+         :references:in-reply-to:mime-version:dkim-signature
+         :arc-authentication-results;
+        bh=BhQQ5tmzTmSxWQIiVB8o7ETFbibKeoVhqw45EQsHOPs=;
+        b=vzbiFfLbTXGHDBA7MTO+HgtfidnYkygtW7J0ayLb0X5oDTZjo331nX6qWY9FF8xkny
+         p4WT0HKBowDSoCc9LP3w9fZqQEfmCKasC2NvkTSvqzsEZRbSIoOL6cJaeJgU21MIxFgx
+         lYd/Sos4W2Hf4gOcHJqW6eQjsL6PMk7XUBjCytWki+xVrnJGLaDOwtmzAvsRzoPgn6GH
+         iieapUGRheMaRCVLnLmzA+tzRjWRhHjIL/oDjdHx63eHAjTFVMcQWrRW8TJyunoPh+ai
+         +MQvYwgDxprB5eOJAE5KRVtRJpHLxucJn+RFnRwFvy4U7/KHG5eaQ5ZxWhHh5/PSxG3p
+         YAMg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+       dkim=fail header.i=@linaro.org header.s=google header.b=izerihOa;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id e126si2938749qkd.77.2017.10.21.11.13.58
+        by mx.google.com with ESMTPS id 6si2825352qkk.104.2017.09.26.10.17.30
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sat, 21 Oct 2017 11:13:59 -0700 (PDT)
+        Tue, 26 Sep 2017 10:17:31 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:58710 helo=lists.gnu.org)
+       dkim=fail header.i=@linaro.org header.s=google header.b=izerihOa;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:50409 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1e5yHU-0001Ya-S1
-	for alex.bennee@linaro.org; Sat, 21 Oct 2017 14:13:56 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:46838)
+	id 1dwtU9-0003Du-2i
+	for alex.bennee@linaro.org; Tue, 26 Sep 2017 13:17:29 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:52851)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <no-reply@patchew.org>) id 1e5yHM-0001YP-C2
-	for qemu-arm@nongnu.org; Sat, 21 Oct 2017 14:13:49 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1dwtTz-0003D2-D9
+	for qemu-arm@nongnu.org; Tue, 26 Sep 2017 13:17:21 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <no-reply@patchew.org>) id 1e5yHJ-00071h-W4
-	for qemu-arm@nongnu.org; Sat, 21 Oct 2017 14:13:48 -0400
-Resent-Date: Sat, 21 Oct 2017 14:13:48 -0400
-Resent-Message-Id: <E1e5yHJ-00071h-W4@eggs.gnu.org>
-Received: from sender-of-o52.zoho.com ([135.84.80.217]:21401)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <no-reply@patchew.org>)
-	id 1e5yHJ-00071F-OB
-	for qemu-arm@nongnu.org; Sat, 21 Oct 2017 14:13:45 -0400
-Received: from [172.17.0.2] (23.253.156.214 [23.253.156.214]) by
-	mx.zohomail.com with SMTPS id 1508609606835887.5174873889397;
-	Sat, 21 Oct 2017 11:13:26 -0700 (PDT)
-Message-ID: <150860960587.476.13639554045849369874@b58463cdfd5f>
-In-Reply-To: <alpine.DEB.2.10.1710211105550.27209@sstabellini-ThinkPad-X260>
+	(envelope-from <peter.maydell@linaro.org>) id 1dwtTy-0006Ob-C6
+	for qemu-arm@nongnu.org; Tue, 26 Sep 2017 13:17:19 -0400
+Received: from mail-wm0-x236.google.com ([2a00:1450:400c:c09::236]:45289)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1dwtTy-0006O0-5y
+	for qemu-arm@nongnu.org; Tue, 26 Sep 2017 13:17:18 -0400
+Received: by mail-wm0-x236.google.com with SMTP id q124so10191261wmb.0
+	for <qemu-arm@nongnu.org>; Tue, 26 Sep 2017 10:17:18 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=BhQQ5tmzTmSxWQIiVB8o7ETFbibKeoVhqw45EQsHOPs=;
+	b=izerihOafiRRmHViAYkzhcsGPqs61uX1Ngx8DLHdBwTrRTW8xhuUabv8AIKIamqJlI
+	Xsz5KdtyJowxwVrIdXi1hT4jTeCOxYZeKBclRAb/ZopZ1J9RFCxiNlMdVArDDT4024zQ
+	i7jitygXIAP1Fn2ngfkff7d0IPDGPyE6iSEvo=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=BhQQ5tmzTmSxWQIiVB8o7ETFbibKeoVhqw45EQsHOPs=;
+	b=eS75nDPVv1dQEkUqNxabxD+DQU0nF0ReUq8e12A+VpvCZ0AzVOP8+oe5xX8066mog6
+	8jI1LJdG7bfDct0vvn8EAqL9Bds4Y0yprrqQL/JAg/4L3ddqCai4Kv4Io9qLW7Cn/O2m
+	fjHgJlN9K5QcsZ90LUw5aR9ZkwvJcLh01Eeh1xVf7w/iRUhxGKsfICJnIA3whCJi5RU/
+	tw8nAP2hHmy+thKc4HYsg2YwppmJkNcc/5rYgqOhzajapMpVb4ILyvYMe+GJANl0QWCL
+	9wVuMT2pEmVhUS68s8GHt8adEfMtLpDTd/EqAk4S05G90XBcDbkUbkLgNIoSL+0ngDXu
+	ua9A==
+X-Gm-Message-State: AHPjjUhNiLgrn6kGwethn4/W34SytYK4GSnkMk+rbYHyIWTDja9OxeWM
+	gD9GOlr+BAPSNvR9soXLkurbme5OnKo+ad79EQ5zuA==
+X-Google-Smtp-Source: AOwi7QAF3mWHRUfOloOAM5P9d2IzCkKCJDRdzkDFK7XMv8+WORCT/jNC9iVIpCoOer1Y9OeYg/ZDj5lLFaQwF0B07Z0=
+X-Received: by 10.28.103.195 with SMTP id b186mr3746718wmc.101.1506446237122; 
+	Tue, 26 Sep 2017 10:17:17 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Resent-From: 
-From: no-reply@patchew.org
-To: sstabellini@kernel.org
-Date: Sat, 21 Oct 2017 11:13:26 -0700 (PDT)
-X-ZohoMailClient: External
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
-X-Received-From: 135.84.80.217
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v2] fix WFI/WFE length in
- syndrome register
+Received: by 10.223.139.215 with HTTP; Tue, 26 Sep 2017 10:16:56 -0700 (PDT)
+In-Reply-To: <CAKmqyKO2jfVZ9d1epxVWKMy9FUfByCoVXMV4JQ-qGAV=vzKwnQ@mail.gmail.com>
+References: <1506441116-16627-1-git-send-email-thuth@redhat.com>
+	<CAKmqyKOCsyCHnaNzo_zrRQjZi30ENdPoSc+dFehHvevm-9nrZg@mail.gmail.com>
+	<cbcf25a4-db9c-910f-fdbc-b7620d013b14@redhat.com>
+	<CAKmqyKO2jfVZ9d1epxVWKMy9FUfByCoVXMV4JQ-qGAV=vzKwnQ@mail.gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 26 Sep 2017 18:16:56 +0100
+Message-ID: <CAFEAcA_Q4xqSekX4vRVNGCeD+iSvoe73pxaNB=vKpmc8u+AGMw@mail.gmail.com>
+To: Alistair Francis <alistair.francis@xilinx.com>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2a00:1450:400c:c09::236
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH] hw/arm/xlnx-zynqmp: Mark the
+ "xlnx, zynqmp" device with user_creatable = false
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -81,44 +106,38 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: qemu-devel@nongnu.org
-Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org, famz@redhat.com,
-	sstabellini@kernel.org, qemu-devel@nongnu.org
+Cc: QEMU Trivial <qemu-trivial@nongnu.org>, Thomas Huth <thuth@redhat.com>,
+	qemu-arm <qemu-arm@nongnu.org>,
+	"qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: vwe0BVUiUoNE
+X-TUID: eSt3+qMjB+Ss
 
-SGksCgpUaGlzIHNlcmllcyBmYWlsZWQgYXV0b21hdGljIGJ1aWxkIHRlc3QuIFBsZWFzZSBmaW5k
-IHRoZSB0ZXN0aW5nIGNvbW1hbmRzIGFuZAp0aGVpciBvdXRwdXQgYmVsb3cuIElmIHlvdSBoYXZl
-IGRvY2tlciBpbnN0YWxsZWQsIHlvdSBjYW4gcHJvYmFibHkgcmVwcm9kdWNlIGl0CmxvY2FsbHku
-CgpUeXBlOiBzZXJpZXMKTWVzc2FnZS1pZDogYWxwaW5lLkRFQi4yLjEwLjE3MTAyMTExMDU1NTAu
-MjcyMDlAc3N0YWJlbGxpbmktVGhpbmtQYWQtWDI2MApTdWJqZWN0OiBbUWVtdS1kZXZlbF0gW1BB
-VENIIHYyXSBmaXggV0ZJL1dGRSBsZW5ndGggaW4gc3luZHJvbWUgcmVnaXN0ZXIKCj09PSBURVNU
-IFNDUklQVCBCRUdJTiA9PT0KIyEvYmluL2Jhc2gKc2V0IC1lCmdpdCBzdWJtb2R1bGUgdXBkYXRl
-IC0taW5pdCBkdGMKIyBMZXQgZG9ja2VyIHRlc3RzIGR1bXAgZW52aXJvbm1lbnQgaW5mbwpleHBv
-cnQgU0hPV19FTlY9MQpleHBvcnQgSj04CnRpbWUgbWFrZSBkb2NrZXItdGVzdC1xdWlja0BjZW50
-b3M2CnRpbWUgbWFrZSBkb2NrZXItdGVzdC1idWlsZEBtaW4tZ2xpYgp0aW1lIG1ha2UgZG9ja2Vy
-LXRlc3QtbWluZ3dAZmVkb3JhCnRpbWUgbWFrZSBkb2NrZXItdGVzdC1ibG9ja0BmZWRvcmEKPT09
-IFRFU1QgU0NSSVBUIEVORCA9PT0KClVwZGF0aW5nIDNjOGNmNWE5YzIxZmY4NzgyMTY0ZDFkZWY3
-ZjQ0YmQ4ODg3MTMzODQKRnJvbSBodHRwczovL2dpdGh1Yi5jb20vcGF0Y2hldy1wcm9qZWN0L3Fl
-bXUKICogW25ldyB0YWddICAgICAgICAgICAgICAgcGF0Y2hldy9hbHBpbmUuREVCLjIuMTAuMTcx
-MDIxMTEwNTU1MC4yNzIwOUBzc3RhYmVsbGluaS1UaGlua1BhZC1YMjYwIC0+IHBhdGNoZXcvYWxw
-aW5lLkRFQi4yLjEwLjE3MTAyMTExMDU1NTAuMjcyMDlAc3N0YWJlbGxpbmktVGhpbmtQYWQtWDI2
-MApTd2l0Y2hlZCB0byBhIG5ldyBicmFuY2ggJ3Rlc3QnCmQ3MzA1ZjYzYWYgZml4IFdGSS9XRkUg
-bGVuZ3RoIGluIHN5bmRyb21lIHJlZ2lzdGVyCgo9PT0gT1VUUFVUIEJFR0lOID09PQpTdWJtb2R1
-bGUgJ2R0YycgKGdpdDovL2dpdC5xZW11LXByb2plY3Qub3JnL2R0Yy5naXQpIHJlZ2lzdGVyZWQg
-Zm9yIHBhdGggJ2R0YycKQ2xvbmluZyBpbnRvICcvdmFyL3RtcC9wYXRjaGV3LXRlc3Rlci10bXAt
-bWZpa3k3ZG8vc3JjL2R0YycuLi4KZmF0YWw6IHJlYWQgZXJyb3I6IENvbm5lY3Rpb24gcmVzZXQg
-YnkgcGVlcgpmYXRhbDogY2xvbmUgb2YgJ2dpdDovL2dpdC5xZW11LXByb2plY3Qub3JnL2R0Yy5n
-aXQnIGludG8gc3VibW9kdWxlIHBhdGggJy92YXIvdG1wL3BhdGNoZXctdGVzdGVyLXRtcC1tZmlr
-eTdkby9zcmMvZHRjJyBmYWlsZWQKRmFpbGVkIHRvIGNsb25lICdkdGMnLiBSZXRyeSBzY2hlZHVs
-ZWQKQ2xvbmluZyBpbnRvICcvdmFyL3RtcC9wYXRjaGV3LXRlc3Rlci10bXAtbWZpa3k3ZG8vc3Jj
-L2R0YycuLi4KZmF0YWw6IHJlYWQgZXJyb3I6IENvbm5lY3Rpb24gcmVzZXQgYnkgcGVlcgpmYXRh
-bDogY2xvbmUgb2YgJ2dpdDovL2dpdC5xZW11LXByb2plY3Qub3JnL2R0Yy5naXQnIGludG8gc3Vi
-bW9kdWxlIHBhdGggJy92YXIvdG1wL3BhdGNoZXctdGVzdGVyLXRtcC1tZmlreTdkby9zcmMvZHRj
-JyBmYWlsZWQKRmFpbGVkIHRvIGNsb25lICdkdGMnIGEgc2Vjb25kIHRpbWUsIGFib3J0aW5nCj09
-PSBPVVRQVVQgRU5EID09PQoKVGVzdCBjb21tYW5kIGV4aXRlZCB3aXRoIGNvZGU6IDEKCgotLS0K
-RW1haWwgZ2VuZXJhdGVkIGF1dG9tYXRpY2FsbHkgYnkgUGF0Y2hldyBbaHR0cDovL3BhdGNoZXcu
-b3JnL10uClBsZWFzZSBzZW5kIHlvdXIgZmVlZGJhY2sgdG8gcGF0Y2hldy1kZXZlbEBmcmVlbGlz
-dHMub3Jn
+On 26 September 2017 at 18:03, Alistair Francis
+<alistair.francis@xilinx.com> wrote:
+> On Tue, Sep 26, 2017 at 9:52 AM, Thomas Huth <thuth@redhat.com> wrote:
+>> On 26.09.2017 18:36, Alistair Francis wrote:
+>>> On Tue, Sep 26, 2017 at 8:51 AM, Thomas Huth <thuth@redhat.com> wrote:
+>>>> The device uses serial_hds in its realize function and thus can't be
+>>>> used twice. Apart from that, the comma in its name makes it quite hard
+>>>> to use for the user anyway, since a comma is normally used to separate
+>>>> the device name from its properties when using the "-device" parameter
+>>>> or the "device_add" HMP command.
+>>>
+>>> Is it worth changing the name now then as well?
+>>
+>> Not sure, was there a reason for this name? E.g. is it used in a device
+>> tree somewhere somehow? Anyway, with user_creatable = false, I think it
+>> is not so urgent anymore to change it.
+>
+> I don't think there was a specific reason. Maybe it was copied from a
+> device tree, but I'm not tied to keeping the comma. Maybe that's
+> something we can investigate in the future.
 
+I vaguely recall that the comma was part of an attempt to be consistent
+about device names by making them follow the device tree names for them
+rather than just making up our own. Some of the imx devices and boards
+follow the same convention.
+
+thanks
+-- PMM

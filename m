@@ -1,360 +1,154 @@
-Received: by 10.223.172.38 with SMTP id v35csp3147754wrc;
-        Mon, 25 Sep 2017 20:53:12 -0700 (PDT)
-X-Received: by 10.237.37.103 with SMTP id w36mr14158969qtc.325.1506397992842;
-        Mon, 25 Sep 2017 20:53:12 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1506397992; cv=none;
+Received: by 10.223.172.38 with SMTP id v35csp3157640wrc;
+        Mon, 25 Sep 2017 21:08:52 -0700 (PDT)
+X-Google-Smtp-Source: AOwi7QCx6FsKJD7i5bP++Vu+S6IW1HBNwSz/3R3oI9rWnKGBO733pnSKtDSV7NgJSDl1EjiOCBeD
+X-Received: by 10.237.33.162 with SMTP id l31mr15237748qtc.255.1506398932214;
+        Mon, 25 Sep 2017 21:08:52 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1506398932; cv=none;
         d=google.com; s=arc-20160816;
-        b=I+cU1apsIFO8ysA92NgszSEH9OEnpEyXKr1b9Ra4pA866UM7oPy7PfHuHS6VOKKKJI
-         zIvJrQUnRhS3I229l0uzN3UBnU67CBefr/kvOH/MfLpjgC2WWvTL6nnVm36kgq26yu+q
-         ppWWKFwOrIkAhZl+ixjH2rK96FMMrepxQGw0TKBvBM5JMqRshkA3AxLaIufd/bgbBrwF
-         AT5DsOalEBSugZ4HgwfMO0WC+4D7J3xm+VGWUrXngS5HG97hpSF925dVXuTEL1OkZzBw
-         /lhLnQjF1/FddGvEA8j+CWbA7g2dhAhe53gWD3621PVSLVnQHKAgM3TCWoUe4Z0egW4E
-         5bdg==
+        b=iF29aKcCfBpWALqnhtahLdEBoAUlBts7GLDP+VP2jDlaU1ikWzwHMRcGOHurgXV6mr
+         LTYV4P8y6f7UCmaCMSPvxqKpVJ4a8D18Qus2wiE8xtRvM/+Ew7PnRFx4MZ7lqoz8IWt+
+         LOVPgwwyS2cWh2zBo5xaDwI3yKV/DkzIFTaJNzbjoBby/errP2XQTg9rt2FAw+/TwW80
+         HHSZtwBlBfAv5bG7ay9riZ/x9s0r5Hcs7jReR/jmXfFinqp9igx8mFd29W2mZSzhfo7M
+         16EnlLTIecNdJgYm1/IUUWy6j9iNR+qDgIugV7bBpIosyXHHVpChrOsoGlOvT6JaRN2i
+         YFNw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:to
+         :user-agent:date:message-id:from:references:to:dmarc-filter
          :arc-authentication-results;
-        bh=AibOYXhziTL50phhDTFBkPpw+sO7cs2eBF8Sc1DT4Gg=;
-        b=DsbtXulRws4PChr/n9dbZZFcOqkAIZ3bTCssxXs6tQgHRefDTFNsL4txrzsLigJF4m
-         7QpvL3sFo/kIAxJHfvxoX38qj4aoIQKx6th5r54pmmi31MjO36dGY5bkp8aJchipn3OT
-         jYwxLtmtPfGX+DGSzjkCncrC7jhodFBJ2DwQ31i98yPQN2S15fivX2ezpbf3f7dp/mdu
-         yX+voD+G/Kl1KV3NGzzHRJP30aSqaXnTtonGHL4tPh6R2tUxyzTM/PSxhqMQryhwEgcu
-         8Axg7GAzYMs9COXWfKZ6rWWxzjyRr0OF0xkP0EccCk5dMK0xjXAvYS8sVpFZGPgnv0HR
-         FTnw==
+        bh=nnvizzr/UBP1/9cPi5w3jVOzrhOu8KJbbD3O3ETlnRQ=;
+        b=KAoGPI7VKOV8dRQHtaP3Ec9VqMigesMvvu4rkPK9zDjstQiHcYv1lqAHAkYwqhN/34
+         4Wnx63/vYFRfAX34+ST+0tqJCA8BKCnNLndlqQHvPWAdnlDpVdp3zkBSeO/WTcjy83H8
+         TwwTeoWGAs1459pUys6nl+ldXkJUvbQE2xapxPQbSWxjT3rQsNmWSdNC3V2VFkr1TPF5
+         Yf9NSH7Y6onjUE6biFML7ZzRM9s4bgdT5Xev/In4hF1ab62zCigUn1itqwP0y/Wfhhcn
+         uwman4g0ohUe5q5slO39ezwcZLvFDA/2zFSz5Pt4Gn0V2boBZpUFx0AOqISzwMKUE0AM
+         +nUw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id v30si7675467qtj.524.2017.09.25.20.53.12
+        by mx.google.com with ESMTPS id b18si2484038qkg.64.2017.09.25.21.08.51
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 25 Sep 2017 20:53:12 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Mon, 25 Sep 2017 21:08:52 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:45470 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:45502 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1dwgvm-00043X-Lc
-	for alex.bennee@linaro.org; Mon, 25 Sep 2017 23:53:10 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:38483)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1dwhAv-0007H3-Un
+	for alex.bennee@linaro.org; Tue, 26 Sep 2017 00:08:49 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:41972)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <th.huth@gmail.com>) id 1dwgul-0003dz-GN
-	for qemu-devel@nongnu.org; Mon, 25 Sep 2017 23:52:09 -0400
+	(envelope-from <thuth@redhat.com>) id 1dwhAo-0007Go-KF
+	for qemu-arm@nongnu.org; Tue, 26 Sep 2017 00:08:43 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <th.huth@gmail.com>) id 1dwguj-0001ZV-Rl
-	for qemu-devel@nongnu.org; Mon, 25 Sep 2017 23:52:07 -0400
-Received: from mail-wr0-f195.google.com ([209.85.128.195]:33275)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <th.huth@gmail.com>)
-	id 1dwguU-0001So-Du; Mon, 25 Sep 2017 23:51:50 -0400
-Received: by mail-wr0-f195.google.com with SMTP id b9so1315669wra.0;
-	Mon, 25 Sep 2017 20:51:50 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:subject:to:cc:references:from:message-id:date
-	:user-agent:mime-version:in-reply-to:content-language
-	:content-transfer-encoding;
-	bh=AibOYXhziTL50phhDTFBkPpw+sO7cs2eBF8Sc1DT4Gg=;
-	b=p85TI3AkT1t2mKELfyhjnfQfqtJQhep0fZ5wvGhFkVXoJY9I0JwV9bxcYxnttjIuMM
-	PUh4s5BgiKB32wYGq1cAhzFqLPTwHnkiTRrQzKqj1SH7kT6n35Yy/zzFQpI48nq8YBFl
-	+byH6axuUHgMpjTjW91GzPLcdNRy0I7rYw7q1dGFURIl/GUBPNfH1zACFWrBnX98IhBE
-	6D86AUlZg/z55EY7dSbp+HukqkrN1NjBoqAR7tmK1pmQsAjyIRq/I9izoi7IDrzJckNT
-	/kFbD/L+t0ORS4vYfUiIkiCmy7TfdjrkNjHsuaA9SurHxn1sJ9EKwRFSLVcI6EOmwMiB
-	MXhA==
-X-Gm-Message-State: AHPjjUhPi/V33rARrZkNA144c33DQMLMUrY+9IEN/eSc6UJyTx5qcfW+
-	gQoYMOL/tDOQO6qeUm25o6U=
-X-Google-Smtp-Source: AOwi7QAm0C942KMgADNF7Auhh0Vf9lwmG9A8WUrQafMJsW7SyJEoaZpoLGVeSNy9TNVYPagatFx6KQ==
-X-Received: by 10.223.143.14 with SMTP id p14mr6989900wrb.133.1506397908944;
-	Mon, 25 Sep 2017 20:51:48 -0700 (PDT)
-Received: from [192.168.178.23] (pD9E836CB.dip0.t-ipconnect.de.
-	[217.232.54.203])
-	by smtp.gmail.com with ESMTPSA id 137sm1276742wmp.7.2017.09.25.20.51.46
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Mon, 25 Sep 2017 20:51:47 -0700 (PDT)
+	(envelope-from <thuth@redhat.com>) id 1dwhAl-0002kU-Fo
+	for qemu-arm@nongnu.org; Tue, 26 Sep 2017 00:08:42 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:40912)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <thuth@redhat.com>)
+	id 1dwhAl-0002k5-6n; Tue, 26 Sep 2017 00:08:39 -0400
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
+	[10.5.11.11])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 9297781E06;
+	Tue, 26 Sep 2017 04:08:37 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 9297781E06
+Authentication-Results: ext-mx01.extmail.prod.ext.phx2.redhat.com;
+	dmarc=none (p=none dis=none) header.from=redhat.com
+Authentication-Results: ext-mx01.extmail.prod.ext.phx2.redhat.com;
+	spf=fail smtp.mailfrom=thuth@redhat.com
+Received: from [10.36.116.28] (ovpn-116-28.ams2.redhat.com [10.36.116.28])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 2E9F469FC3;
+	Tue, 26 Sep 2017 04:08:19 +0000 (UTC)
 To: Alistair Francis <alistair.francis@xilinx.com>, qemu-devel@nongnu.org
 References: <cover.1506384414.git.alistair.francis@xilinx.com>
-	<bf3dd056ce55cbea81ca762c3c40d22683a542e7.1506384414.git.alistair.francis@xilinx.com>
-From: Thomas Huth <huth@tuxfamily.org>
-Message-ID: <1d317e5b-9de9-9186-1c00-573ca96f3d25@tuxfamily.org>
-Date: Tue, 26 Sep 2017 05:51:44 +0200
+	<5ad72536402da2879d49b58753cc709a8ff22de9.1506384415.git.alistair.francis@xilinx.com>
+From: Thomas Huth <thuth@redhat.com>
+Message-ID: <adae1793-1a4a-7107-7676-f6dbaa26a9f4@redhat.com>
+Date: Tue, 26 Sep 2017 06:08:13 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
 	Thunderbird/52.3.0
 MIME-Version: 1.0
-In-Reply-To: <bf3dd056ce55cbea81ca762c3c40d22683a542e7.1506384414.git.alistair.francis@xilinx.com>
+In-Reply-To: <5ad72536402da2879d49b58753cc709a8ff22de9.1506384415.git.alistair.francis@xilinx.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.25]);
+	Tue, 26 Sep 2017 04:08:38 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 209.85.128.195
-Subject: Re: [Qemu-devel] [PATCH v1 3/8] hw: Replace fprintf(stderr,
- "*\n" with error_report()
-X-BeenThere: qemu-devel@nongnu.org
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v1 8/8] target: Replace
+ fprintf(stderr, "*\n" with error_report()
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Cornelia Huck <cohuck@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>,
-	Anthony Green <green@moxielogic.com>,
-	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
-	Alexander Graf <agraf@suse.de>,
-	Gerd Hoffmann <kraxel@redhat.com>, Marek Vasut <marex@denx.de>,
-	Stefano Stabellini <sstabellini@kernel.org>,
-	Jia Liu <proljc@gmail.com>, qemu-block@nongnu.org,
-	Magnus Damm <magnus.damm@gmail.com>, armbru@redhat.com,
-	Christian Borntraeger <borntraeger@de.ibm.com>,
-	=?UTF-8?Q?Herv=c3=a9_Poussineau?= <hpoussin@reactos.org>,
-	Marcel Apfelbaum <marcel@redhat.com>,
-	xen-devel@lists.xenproject.org, Jason Wang <jasowang@redhat.com>,
-	Artyom Tarasenko <atar4qemu@gmail.com>,
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Marcelo Tosatti <mtosatti@redhat.com>,
 	Eduardo Habkost <ehabkost@redhat.com>,
-	Fabien Chouteau <chouteau@adacore.com>,
-	Anthony Perard <anthony.perard@citrix.com>, qemu-arm@nongnu.org,
-	Jan Kiszka <jan.kiszka@web.de>, Stefan Hajnoczi <stefanha@redhat.com>,
-	Yongbok Kim <yongbok.kim@imgtec.com>, alistair23@gmail.com,
-	Stafford Horne <shorne@gmail.com>, John Snow <jsnow@redhat.com>,
-	Richard Henderson <rth@twiddle.net>, Paul Burton <paul.burton@imgtec.com>,
-	Thomas Huth <huth@tuxfamily.org>, Chris Wulff <crwulff@gmail.com>,
-	Michael Walle <michael@walle.cc>, qemu-ppc@nongnu.org,
-	Paolo Bonzini <pbonzini@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: pYsDwZ4Nct0J
+	Cornelia Huck <cohuck@redhat.com>, armbru@redhat.com, alistair23@gmail.com,
+	Christian Borntraeger <borntraeger@de.ibm.com>,
+	Michael Walle <michael@walle.cc>, qemu-arm@nongnu.org,
+	qemu-ppc@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
+	Yongbok Kim <yongbok.kim@imgtec.com>, Guan Xuetao <gxt@mprc.pku.edu.cn>,
+	Aurelien Jarno <aurelien@aurel32.net>, Richard Henderson <rth@twiddle.net>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 8SVK3BP9ij/i
 
-On 26.09.2017 02:08, Alistair Francis wrote:
+On 26.09.2017 02:09, Alistair Francis wrote:
 > Replace a large number of the fprintf(stderr, "*\n" calls with
 > error_report(). The functions were renamed with these commands and then
 > compiler issues where manually fixed.
-> 
-> find ./* -type f -exec sed -i \
->     'N;N;N;N;N;N;N;N;N;N;N;N; {s|fprintf(stderr, "\(.*\)\\n"\(.*\));|error_report("\1"\2);|Ig}' \
->     {} +
-> find ./* -type f -exec sed -i \
->     'N;N;N;N;N;N;N;N;N;N;N; {s|fprintf(stderr, "\(.*\)\\n"\(.*\));|error_report("\1"\2);|Ig}' \
->     {} +
-> find ./* -type f -exec sed -i \
->     'N;N;N;N;N;N;N;N;N; {s|fprintf(stderr, "\(.*\)\\n"\(.*\));|error_report("\1"\2);|Ig}' \
->     {} +
-> find ./* -type f -exec sed -i \
->     'N;N;N;N;N;N;N;N; {s|fprintf(stderr, "\(.*\)\\n"\(.*\));|error_report("\1"\2);|Ig}' \
->     {} +
-> find ./* -type f -exec sed -i \
->     'N;N;N;N;N;N;N; {s|fprintf(stderr, "\(.*\)\\n"\(.*\));|error_report("\1"\2);|Ig}' \
->     {} +
-> find ./* -type f -exec sed -i \
->     'N;N;N;N;N;N; {s|fprintf(stderr, "\(.*\)\\n"\(.*\));|error_report("\1"\2);|Ig}' \
->     {} +
-> find ./* -type f -exec sed -i \
->     'N;N;N;N;N; {s|fprintf(stderr, "\(.*\)\\n"\(.*\));|error_report("\1"\2);|Ig}' \
->     {} +
-> find ./* -type f -exec sed -i \
->     'N;N;N;N; {s|fprintf(stderr, "\(.*\)\\n"\(.*\));|error_report("\1"\2);|Ig}' \
->     {} +
-> find ./* -type f -exec sed -i \
->     'N;N;N; {s|fprintf(stderr, "\(.*\)\\n"\(.*\));|error_report("\1"\2);|Ig}' \
->     {} +
-> find ./* -type f -exec sed -i \
->     'N;N; {s|fprintf(stderr, "\(.*\)\\n"\(.*\));|error_report("\1"\2);|Ig}' \
->     {} +
-> find ./* -type f -exec sed -i \
->     'N; {s|fprintf(stderr, "\(.*\)\\n"\(.*\));|error_report("\1"\2);|Ig}' \
->     {} +
-> 
-> Some lines where then manually tweaked to pass checkpatch.
-> 
-> Signed-off-by: Alistair Francis <alistair.francis@xilinx.com>
-> Cc: Andrzej Zaborowski <balrogg@gmail.com>
-> Cc: Jan Kiszka <jan.kiszka@web.de>
-> Cc: Stefan Hajnoczi <stefanha@redhat.com>
-> Cc: Paolo Bonzini <pbonzini@redhat.com>
-> Cc: Thomas Huth <huth@tuxfamily.org>
-> Cc: Gerd Hoffmann <kraxel@redhat.com>
-> Cc: "Michael S. Tsirkin" <mst@redhat.com>
-> Cc: Richard Henderson <rth@twiddle.net>
-> Cc: Eduardo Habkost <ehabkost@redhat.com>
-> Cc: Stefano Stabellini <sstabellini@kernel.org>
-> Cc: Anthony Perard <anthony.perard@citrix.com>
-> Cc: John Snow <jsnow@redhat.com>
-> Cc: Christian Borntraeger <borntraeger@de.ibm.com>
-> Cc: Cornelia Huck <cohuck@redhat.com>
-> Cc: Alexander Graf <agraf@suse.de>
-> Cc: Michael Walle <michael@walle.cc>
-> Cc: Paul Burton <paul.burton@imgtec.com>
-> Cc: Aurelien Jarno <aurelien@aurel32.net>
-> Cc: Yongbok Kim <yongbok.kim@imgtec.com>
-> Cc: "Hervé Poussineau" <hpoussin@reactos.org>
-> Cc: Anthony Green <green@moxielogic.com>
-> Cc: Jason Wang <jasowang@redhat.com>
-> Cc: Chris Wulff <crwulff@gmail.com>
-> Cc: Marek Vasut <marex@denx.de>
-> Cc: Jia Liu <proljc@gmail.com>
-> Cc: Stafford Horne <shorne@gmail.com>
-> Cc: Marcel Apfelbaum <marcel@redhat.com>
-> Cc: Magnus Damm <magnus.damm@gmail.com>
-> Cc: Fabien Chouteau <chouteau@adacore.com>
-> Cc: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
-> Cc: Artyom Tarasenko <atar4qemu@gmail.com>
-> Cc: qemu-arm@nongnu.org
-> Cc: qemu-block@nongnu.org
-> Cc: xen-devel@lists.xenproject.org
-> Cc: qemu-ppc@nongnu.org
-> ---
-> 
->  hw/arm/armv7m.c                 |  2 +-
->  hw/arm/boot.c                   | 34 +++++++++----------
->  hw/arm/gumstix.c                | 13 ++++----
->  hw/arm/mainstone.c              |  7 ++--
->  hw/arm/musicpal.c               |  2 +-
->  hw/arm/omap1.c                  |  5 +--
->  hw/arm/omap2.c                  | 21 ++++++------
->  hw/arm/omap_sx1.c               |  6 ++--
->  hw/arm/palm.c                   | 10 +++---
->  hw/arm/pxa2xx.c                 |  7 ++--
->  hw/arm/stellaris.c              |  3 +-
->  hw/arm/tosa.c                   | 17 +++++-----
->  hw/arm/versatilepb.c            |  2 +-
->  hw/arm/vexpress.c               |  8 ++---
->  hw/arm/z2.c                     |  6 ++--
->  hw/block/dataplane/virtio-blk.c |  6 ++--
->  hw/block/onenand.c              |  8 ++---
->  hw/block/tc58128.c              | 44 ++++++++++++-------------
->  hw/bt/core.c                    | 15 +++++----
->  hw/bt/hci-csr.c                 | 17 +++++-----
->  hw/bt/hci.c                     | 30 ++++++++---------
->  hw/bt/hid.c                     |  2 +-
->  hw/bt/l2cap.c                   | 47 ++++++++++++++-------------
->  hw/bt/sdp.c                     |  7 ++--
->  hw/char/exynos4210_uart.c       |  6 ++--
->  hw/char/mcf_uart.c              |  5 +--
->  hw/char/sh_serial.c             |  9 +++---
->  hw/core/loader.c                | 31 +++++++++---------
->  hw/core/ptimer.c                |  7 ++--
->  hw/cris/axis_dev88.c            |  3 +-
->  hw/cris/boot.c                  |  5 +--
->  hw/display/blizzard.c           | 20 ++++++------
->  hw/display/omap_dss.c           | 14 ++++----
->  hw/display/pl110.c              |  2 +-
->  hw/display/pxa2xx_lcd.c         |  2 +-
->  hw/display/qxl-render.c         |  7 ++--
->  hw/display/qxl.c                | 10 +++---
->  hw/display/tc6393xb.c           | 36 ++++++++++++---------
->  hw/display/virtio-gpu-3d.c      |  4 +--
->  hw/display/vmware_vga.c         | 22 ++++++-------
->  hw/dma/omap_dma.c               | 26 ++++++++-------
->  hw/dma/soc_dma.c                | 37 ++++++++++-----------
->  hw/gpio/omap_gpio.c             |  2 +-
->  hw/i2c/omap_i2c.c               | 10 +++---
->  hw/i386/kvm/apic.c              |  9 +++---
->  hw/i386/kvm/clock.c             |  7 ++--
->  hw/i386/kvm/i8254.c             |  7 ++--
->  hw/i386/kvm/i8259.c             |  5 +--
->  hw/i386/kvm/ioapic.c            |  5 +--
->  hw/i386/multiboot.c             | 21 ++++++------
->  hw/i386/pc.c                    | 18 +++++------
->  hw/i386/pc_piix.c               |  2 +-
->  hw/i386/pc_sysfw.c              |  5 +--
->  hw/i386/xen/xen-hvm.c           | 32 +++++++++---------
->  hw/i386/xen/xen-mapcache.c      | 12 +++----
->  hw/i386/xen/xen_apic.c          |  2 +-
->  hw/ide/ahci.c                   |  6 ++--
->  hw/ide/core.c                   |  2 +-
->  hw/input/lm832x.c               |  6 ++--
->  hw/input/pckbd.c                |  3 +-
->  hw/input/pxa2xx_keypad.c        |  2 +-
->  hw/input/tsc2005.c              | 17 +++++-----
->  hw/input/tsc210x.c              | 72 ++++++++++++++++++++---------------------
->  hw/input/virtio-input-hid.c     | 14 ++++----
->  hw/input/virtio-input.c         |  5 +--
->  hw/intc/arm_gic_kvm.c           | 12 +++----
->  hw/intc/omap_intc.c             |  4 +--
->  hw/intc/openpic.c               |  7 ++--
->  hw/intc/openpic_kvm.c           |  8 ++---
->  hw/intc/s390_flic_kvm.c         |  4 +--
->  hw/ipmi/ipmi.c                  |  1 +
->  hw/ipmi/ipmi_bmc_extern.c       |  5 +--
->  hw/isa/isa-bus.c                |  7 ++--
->  hw/lm32/lm32_boards.c           |  5 +--
->  hw/lm32/milkymist.c             |  5 +--
->  hw/m68k/an5206.c                |  4 +--
->  hw/m68k/mcf5206.c               |  3 +-
->  hw/m68k/mcf5208.c               |  7 ++--
->  hw/microblaze/boot.c            |  2 +-
->  hw/mips/boston.c                |  4 +--
->  hw/mips/mips_fulong2e.c         |  4 +--
->  hw/mips/mips_jazz.c             |  4 +--
->  hw/mips/mips_malta.c            |  4 +--
->  hw/mips/mips_mipssim.c          |  4 +--
->  hw/mips/mips_r4k.c              |  6 ++--
->  hw/misc/a9scu.c                 |  3 +-
->  hw/misc/omap_gpmc.c             | 11 ++++---
->  hw/misc/omap_l4.c               |  5 +--
->  hw/misc/omap_sdrc.c             |  3 +-
->  hw/misc/vmport.c                |  2 +-
->  hw/moxie/moxiesim.c             |  7 ++--
->  hw/net/fsl_etsec/etsec.c        |  2 +-
->  hw/net/pcnet.c                  |  2 +-
->  hw/net/smc91c111.c              |  5 +--
->  hw/net/vhost_net.c              | 16 ++++-----
->  hw/nios2/boot.c                 |  2 +-
->  hw/nvram/eeprom93xx.c           |  5 +--
->  hw/nvram/fw_cfg.c               |  4 +--
->  hw/openrisc/openrisc_sim.c      |  3 +-
->  hw/pci-host/bonito.c            |  6 ++--
->  hw/pci/pci.c                    | 10 +++---
->  hw/ppc/e500.c                   | 20 ++++++------
->  hw/ppc/mac_newworld.c           |  2 +-
->  hw/ppc/mac_oldworld.c           |  2 +-
->  hw/ppc/mpc8544_guts.c           |  5 +--
->  hw/ppc/ppc405_boards.c          |  8 ++---
->  hw/ppc/ppc440_bamboo.c          | 19 +++++------
->  hw/ppc/ppc4xx_pci.c             |  3 +-
->  hw/ppc/prep.c                   |  4 +--
->  hw/ppc/virtex_ml507.c           |  4 +--
->  hw/s390x/virtio-ccw.c           |  2 +-
->  hw/scsi/lsi53c895a.c            |  4 +--
->  hw/scsi/spapr_vscsi.c           | 49 ++++++++++++++--------------
->  hw/scsi/virtio-scsi-dataplane.c |  6 ++--
->  hw/sd/pl181.c                   |  5 +--
->  hw/sd/sd.c                      | 14 ++++----
->  hw/sh4/r2d.c                    |  9 +++---
->  hw/sh4/sh7750.c                 | 64 ++++++++++++++++++------------------
->  hw/sparc/leon3.c                |  9 +++---
->  hw/sparc/sun4m.c                |  8 ++---
->  hw/sparc64/niagara.c            |  2 +-
->  hw/sparc64/sun4u.c              |  9 +++---
->  hw/ssi/omap_spi.c               |  5 +--
->  hw/timer/omap_gptimer.c         | 11 ++++---
->  hw/timer/twl92230.c             |  2 +-
->  hw/timer/xilinx_timer.c         |  8 ++---
->  hw/usb/core.c                   | 15 +++++----
->  hw/usb/desc.c                   |  4 +--
->  hw/usb/dev-audio.c              | 29 +++++++++--------
->  hw/usb/dev-bluetooth.c          |  4 +--
->  hw/usb/dev-mtp.c                |  9 +++---
->  hw/usb/dev-network.c            | 20 ++++++------
->  hw/usb/hcd-ehci.c               | 32 +++++++++---------
->  hw/usb/hcd-musb.c               |  4 +--
->  hw/usb/hcd-xhci.c               |  3 +-
->  hw/usb/host-legacy.c            |  2 +-
->  hw/watchdog/watchdog.c          |  9 +++---
->  hw/watchdog/wdt_i6300esb.c      |  8 +++--
->  hw/xen/xen-common.c             | 10 +++---
->  hw/xen/xen_pt.c                 |  4 +--
->  hw/xenpv/xen_domainbuild.c      | 24 +++++++-------
->  hw/xenpv/xen_machine_pv.c       |  8 ++---
->  142 files changed, 769 insertions(+), 705 deletions(-)
+[...]
+> @@ -9281,18 +9281,19 @@ static void init_ppc_proc(PowerPCCPU *cpu)
+>          case POWERPC_FLAG_PMM:
+>              break;
+>          default:
+> -            fprintf(stderr, "PowerPC MSR definition inconsistency\n"
+> -                    "Should define POWERPC_FLAG_PX or POWERPC_FLAG_PMM\n");
+> +            error_report("PowerPC MSR definition inconsistency");
+> +            error_printf("Should define POWERPC_FLAG_PX or POWERPC_FLAG_PMM");
+>              exit(1);
+>          }
+>      } else if (env->flags & (POWERPC_FLAG_PX | POWERPC_FLAG_PMM)) {
+> -        fprintf(stderr, "PowerPC MSR definition inconsistency\n"
+> -                "Should not define POWERPC_FLAG_PX nor POWERPC_FLAG_PMM\n");
+> +        error_report("PowerPC MSR definition inconsistency");
+> +        error_printf("Should not define POWERPC_FLAG_PX nor POWERPC_FLAG_PMM");
+>          exit(1);
+>      }
+>      if ((env->flags & (POWERPC_FLAG_RTC_CLK | POWERPC_FLAG_BUS_CLK)) == 0) {
+> -        fprintf(stderr, "PowerPC flags inconsistency\n"
+> -                "Should define the time-base and decrementer clock source\n");
+> +        error_report("PowerPC MSR definition inconsistency");
+> +        error_printf("Should define the time-base and decrementer clock"
+> +                     " source");
+>          exit(1);
+>      }
 
-This patch is IMHO way to big! Can you please break this down into the
-individual hw/* subsystems, so that people who are familiar with a
-certain subsystem have a chance to review just their part? Thanks.
+Replacing fprintf with error_report+error_printf is kind of very ugly.
+While error_report adds newline to the output, error_printf does not (as
+far as I can see) ... did you check how such a message looks like when
+it is generated during runtime?
+Also, the strings belong together, so printing them with two function
+calls sound wrong to me... maybe they should be joined without newline
+in the middle instead?
 
  Thomas

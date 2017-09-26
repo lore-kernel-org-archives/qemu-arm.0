@@ -1,105 +1,109 @@
-Received: by 10.223.150.237 with SMTP id u100csp2803228wrb;
-        Mon, 6 Nov 2017 08:08:24 -0800 (PST)
-X-Google-Smtp-Source: ABhQp+TSmSLyyz2VZxGHdu8KjKABWCh/Tf3fl9MxTySc0I6puwEDTfwaElIOmwM+K19EHVuPiqsx
-X-Received: by 10.129.26.208 with SMTP id a199mr9651199ywa.280.1509984504011;
-        Mon, 06 Nov 2017 08:08:24 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1509984504; cv=none;
+Received: by 10.223.172.38 with SMTP id v35csp3703751wrc;
+        Tue, 26 Sep 2017 08:22:00 -0700 (PDT)
+X-Received: by 10.200.34.28 with SMTP id o28mr17031060qto.184.1506439320849;
+        Tue, 26 Sep 2017 08:22:00 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1506439320; cv=none;
         d=google.com; s=arc-20160816;
-        b=Pvwy7/YNd4WpnXu6Dv8e+zImK/6Xbpl8gR26Zz0erRRF9QUTHpyxzSxd63N7qJzkiw
-         sfnwLdwEJQ4EIUZhDYL7xRCix6iECuEDTiefFlUXkKw2js8F4bdrj6bcY7TMNdkhFffK
-         Ljg2jRx2H63jVTH/ZRVDgLSbHDxu+htleCoOAa8fdS7gJ4M+VJ/QtaBYN2hbPVLnoiDh
-         bjyUthh+yUDvnY7ScGvbSzP+UmvarU3Ge4XAQRUDxkF2HvUfGxEDrT9M8CwcjzGebDn1
-         erLoin89ZqzIoXzgpXWdsfCFQD/qUBseSTGevWuiZhVSPMDO8i61tjC8RUddkE0zZruR
-         k3zQ==
+        b=aBm0symRpo4m76WvcRZ79k90h0sIjka3rjUF+02493zbJoeQkb3mtgU2tqUaz12qty
+         yTP5867AA6mDB+cJZi2yQrrcolDyOXmRjwQW86S7OO3ZGcJWLWGcqtOY7PyamV9F7Cfw
+         EixBXC0MGftkq+/DbUz5NMxIfdT3T4lehFEqQpRvm2Dd5nL7EByVdJrmCDWCrz55bopN
+         h5WcnyCwpWuxCs4jkbmAgLNkWDk0W3qtOqj1XNWJIDvjOlDBRnwcguj7BdfAjsTAWsvJ
+         vYGmcakNhRCAaQwx8ViUB58zicPRYtpf08dwgtuoSleIEmqcUyQXVVibjdi/8ML2M7jT
+         0suw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:to:from:dkim-signature:arc-authentication-results;
-        bh=CGPk7Ng1tIwV5S1MJFlEkA0gMhnET7XjfyWWWjY3dVQ=;
-        b=QPgKHDXJ/jBybmdlm+lrl3d65vyKBuS6JQ+dySfp+U0CpfLwl50c3185tWgfx5hG5D
-         FiW8NARruWmuG1LirTGVs1tvvl+Vl5vSHD/+CjkQCiG66EsoM0s9gP16xPnAt9jsN1H6
-         2Tosm8eyMM8xjr/5uYq/itaGs3KcYqRykaB1eKmEJKar702DVoVipN4FAcoHCUvT8Cg3
-         z+rBVNM33YoJ21s0ifb+mkkvvFukFBqHl396SWZ1N02z6Rwq6bizcUXkS53TsayXFBTb
-         RDRkR6QFizKTvldH+j/6wehWsy+mvvRyqoyDEzcTv7bh/hg+ymEjt13EEGCZLbAiSeda
-         ml4A==
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:to:dkim-signature
+         :arc-authentication-results;
+        bh=QhH+NzC7s7pyRpsaJKe6GJ4T1mGMun5EkDjTqGtW78Y=;
+        b=OiBuQwwXLO4hRyaUX7EzgomuT+LGF6aMeRZhBI7+8dcSXuJjm1uJl/D2uqxcza+Ulg
+         oZluyT4EYoJIqkdCz1s+G/snRsTozZ2UsxyFJNKPeLyzyAb3SE4qB2LlUrFWI2gGD0J5
+         blvU9a66YwQ01ZqYvZ800FADv/gMZY/pUvwFgaaCCxEgmKr0nekSQ6o9qlFv0iQTMWYs
+         lHziJmAjtCcMV3yCwPHbVmwILIJISuLqg+OSIIlRSyE8VHH7Ymnf6GOr2Xas5QsiSfOP
+         YiUyQ2l8Lmhu1thc7P1OmIBJ65mmjv7v7UgOMJWy4KInIzOMQjJeoaGgLWX7mtwNIohs
+         w0og==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=UA7S/cdc;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=dXBo0qb5;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id v64si2806405ywd.630.2017.11.06.08.08.23
+        by mx.google.com with ESMTPS id u69si6579566qki.554.2017.09.26.08.22.00
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 06 Nov 2017 08:08:23 -0800 (PST)
+        Tue, 26 Sep 2017 08:22:00 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=UA7S/cdc;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:48886 helo=lists.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=dXBo0qb5;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:48072 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1eBjwl-0007Gs-Cy
-	for alex.bennee@linaro.org; Mon, 06 Nov 2017 11:08:23 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:34046)
+	id 1dwrgM-00074e-I0
+	for alex.bennee@linaro.org; Tue, 26 Sep 2017 11:21:58 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:50525)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <andrew.smirnov@gmail.com>) id 1eBje6-0007Xn-2y
-	for qemu-arm@nongnu.org; Mon, 06 Nov 2017 10:49:10 -0500
+	(envelope-from <rth7680@gmail.com>) id 1dwrg9-00071P-FQ
+	for qemu-arm@nongnu.org; Tue, 26 Sep 2017 11:21:49 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <andrew.smirnov@gmail.com>) id 1eBje1-0000jl-JI
-	for qemu-arm@nongnu.org; Mon, 06 Nov 2017 10:49:06 -0500
-Received: from mail-pg0-x241.google.com ([2607:f8b0:400e:c05::241]:43188)
+	(envelope-from <rth7680@gmail.com>) id 1dwrg3-0000Dj-CI
+	for qemu-arm@nongnu.org; Tue, 26 Sep 2017 11:21:40 -0400
+Received: from mail-pf0-x242.google.com ([2607:f8b0:400e:c00::242]:33366)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <andrew.smirnov@gmail.com>)
-	id 1eBje1-0000ij-DW; Mon, 06 Nov 2017 10:49:01 -0500
-Received: by mail-pg0-x241.google.com with SMTP id s75so8527542pgs.0;
-	Mon, 06 Nov 2017 07:49:01 -0800 (PST)
+	(Exim 4.71) (envelope-from <rth7680@gmail.com>)
+	id 1dwrfw-0000Bu-0q; Tue, 26 Sep 2017 11:21:32 -0400
+Received: by mail-pf0-x242.google.com with SMTP id h4so5143984pfk.0;
+	Tue, 26 Sep 2017 08:21:30 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=from:to:cc:subject:date:message-id:in-reply-to:references
-	:mime-version:content-transfer-encoding;
-	bh=CGPk7Ng1tIwV5S1MJFlEkA0gMhnET7XjfyWWWjY3dVQ=;
-	b=UA7S/cdcLzOiLN16spc4qXDdlcmM4J6mjaQSEdqiTDm8JWPpSuvxFK9mFYWfkDMHLm
-	0Gty0T+0kK2cWx6PNbdMOkzwP/3BztNreN2CVXk/UATLdYPQyQ1iBo7DU02DmTqTJoGq
-	Aw87r3D+NE2BnfbrXgQFmF1Dk7WuYQ3VpGIK09dszyLPsUESyCbv/i9CPbpbdEDN+quf
-	UIR1POHUbZ31ucVNw3sJn5H41AtEV5aaSszFo2NUiCK3apaWhd/JfYV+fOdPH4EaQAA3
-	jMFqQUtwHLZbcXhItH7j08Br74FrXKBJZ0i/dEt7oEjk7Lrs0E1wloBgagyuYSyhTWsE
-	2+nQ==
+	h=sender:subject:to:cc:references:from:message-id:date:user-agent
+	:mime-version:in-reply-to:content-language:content-transfer-encoding;
+	bh=QhH+NzC7s7pyRpsaJKe6GJ4T1mGMun5EkDjTqGtW78Y=;
+	b=dXBo0qb5m03dXw49F3A2f9ovDUyUeJLHAnePlOCF/dhRWb7/8YUvgsJ5G7KzFLA+Uv
+	VuiDOoD2SBE0M5C/mGC6MtVHVNYoF/6cqKLQGU94y7Up32camSlxYwr4V5FJU6o+UlLR
+	H2GmiE5NfLrpYz134nWFcedXOv+/IHW9+NrCYbSFnbtZO0vcnp5Wn3by8VaHoM9a1e1N
+	XZRh5nEnOL1CGa5oSQcVoQZL3gQgiJotGtKiMxPkaw8JXrSeKIXzxUQz2CJbxcnG8KgJ
+	k/SGsNVUvrwYZLUauSxW6NjcLlDD3LoBcbCZuNWkf6C4BV4REQPJWdnyRRezXYn9xt6I
+	XTAg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
-	:references:mime-version:content-transfer-encoding;
-	bh=CGPk7Ng1tIwV5S1MJFlEkA0gMhnET7XjfyWWWjY3dVQ=;
-	b=oSDRhGgAKRtMzoJI7hCA1H04lxpVVK9xQNyFh0WnjG7xhn9GfBxwkYalHzYN5n3r8v
-	f6obSG1ir6FBZoEI/lnjgOHK0QcHxhPbsiX2pyC4eEGrbOtrRO87fzOpS4txGcztmhfU
-	Uhc6TQqZYKPOAtI3J40ZLwwc1GITMmJcLK0gMIl96yj9dR3Iwv/+3VDX4RHNeCx9pT7Z
-	62REXAnG8835EZ6JZ7OQrP1FpriAMsPcD1gGRUGEsDUCzAswXvNXonuka6zN48db8wFl
-	fd/EHoJ61R8yOPDB+lEKPVxARAG0UO6JT/FnX7XkF1MzPKxTVeU6I2KU7SgIDG2AQ+D5
-	7+/Q==
-X-Gm-Message-State: AMCzsaUgGDs2xbIjBZjqnyoLSX+QDSY1wrNDO+jsAW2DjCffjb5nKX+M
-	jeE/Zga+2Gapfmu/uzAQuWUvdgsjs2w=
-X-Received: by 10.84.128.72 with SMTP id 66mr14840683pla.250.1509983340156;
-	Mon, 06 Nov 2017 07:49:00 -0800 (PST)
-Received: from squirtle.lan (c-24-22-235-96.hsd1.wa.comcast.net.
-	[24.22.235.96]) by smtp.gmail.com with ESMTPSA id
-	x1sm22719590pfh.113.2017.11.06.07.48.59
-	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-	Mon, 06 Nov 2017 07:48:59 -0800 (PST)
-From: Andrey Smirnov <andrew.smirnov@gmail.com>
-To: qemu-arm@nongnu.org
-Date: Mon,  6 Nov 2017 07:48:11 -0800
-Message-Id: <20171106154813.19936-29-andrew.smirnov@gmail.com>
-X-Mailer: git-send-email 2.13.6
-In-Reply-To: <20171106154813.19936-1-andrew.smirnov@gmail.com>
-References: <20171106154813.19936-1-andrew.smirnov@gmail.com>
+	h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+	:date:user-agent:mime-version:in-reply-to:content-language
+	:content-transfer-encoding;
+	bh=QhH+NzC7s7pyRpsaJKe6GJ4T1mGMun5EkDjTqGtW78Y=;
+	b=PI8R9slFYvV5SErSjPWosVNfe03VRY/ZTNnuTVNg2UyaBMMvK+g3mI4eMEFF6vkcnA
+	BsKEk98Ni/JrGXbJLratXsVJgl4VwjunsZMLOzfZC5RMxdTN+ad7PjdiMlrkZwJwWo7Y
+	hnY8CurrRo5CfovK2391N1FuQrfGZvSOfZGtQKt0uP90VEoz8YXJl401VzAwdeAc3EyE
+	6UioXgVUqwKVa6UCjneICzCQzHS8VZw5/BMyL5qW9I+xPxerI+x+8xv2eCUCYC7/9O/R
+	p42t4ihPZuK4kK3Gv3dcCyWyFjBipS7jUBpFO0sKx0YIR6Jqy8oEEXr/J8jm0A4sHZnZ
+	F0eA==
+X-Gm-Message-State: AHPjjUho2zm619z1Gn0WXd0betFdPpNI2ViEi7yarbyUg1rTXakQ8jIk
+	cm3V46N9A2Dg9ZCdzf3qIrSJ/HKN
+X-Google-Smtp-Source: AOwi7QBP+iK2v9hDvQGTd+YXc9wzrcvJqsWTiCDrh6Qa69At28iwA86oG4d9+9XLW6QlVv6WwI/0iQ==
+X-Received: by 10.98.157.74 with SMTP id i71mr11366570pfd.168.1506439289242;
+	Tue, 26 Sep 2017 08:21:29 -0700 (PDT)
+Received: from bigtime.twiddle.net ([70.35.39.2])
+	by smtp.googlemail.com with ESMTPSA id
+	h90sm19110544pfj.32.2017.09.26.08.21.26
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Tue, 26 Sep 2017 08:21:27 -0700 (PDT)
+To: Alistair Francis <alistair.francis@xilinx.com>, qemu-devel@nongnu.org
+References: <cover.1506384414.git.alistair.francis@xilinx.com>
+	<5ad72536402da2879d49b58753cc709a8ff22de9.1506384415.git.alistair.francis@xilinx.com>
+From: Richard Henderson <rth@twiddle.net>
+Message-ID: <d591fe76-6305-e082-3dc3-b53178c0ee5d@twiddle.net>
+Date: Tue, 26 Sep 2017 08:21:24 -0700
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.3.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
+In-Reply-To: <5ad72536402da2879d49b58753cc709a8ff22de9.1506384415.git.alistair.francis@xilinx.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400e:c05::241
-Subject: [Qemu-arm] [PATCH v3 28/30] i.MX: Add code to emulate i.MX LCD block
+X-Received-From: 2607:f8b0:400e:c00::242
+Subject: Re: [Qemu-arm] [PATCH v1 8/8] target: Replace fprintf(stderr,
+ "*\n" with error_report()
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -111,141 +115,93 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
-	Andrey Smirnov <andrew.smirnov@gmail.com>,
-	Jason Wang <jasowang@redhat.com>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
-	qemu-devel@nongnu.org, yurovsky@gmail.com
+Cc: Cornelia Huck <cohuck@redhat.com>, Eduardo Habkost <ehabkost@redhat.com>,
+	Marcelo Tosatti <mtosatti@redhat.com>, armbru@redhat.com,
+	Christian Borntraeger <borntraeger@de.ibm.com>,
+	Michael Walle <michael@walle.cc>, qemu-arm@nongnu.org,
+	qemu-ppc@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
+	Yongbok Kim <yongbok.kim@imgtec.com>, alistair23@gmail.com,
+	Guan Xuetao <gxt@mprc.pku.edu.cn>, Aurelien Jarno <aurelien@aurel32.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: F4KhMFaeCPoI
+X-TUID: D84yCGvyInlk
 
-Add basic i.MX LCD block emulation code needed to boot Linux guest.
+On 09/25/2017 05:09 PM, Alistair Francis wrote:
+> diff --git a/target/cris/translate.c b/target/cris/translate.c
+> index 38a999e6f1..8847005984 100644
+> --- a/target/cris/translate.c
+> +++ b/target/cris/translate.c
+> @@ -138,7 +138,7 @@ typedef struct DisasContext {
+>  
+>  static void gen_BUG(DisasContext *dc, const char *file, int line)
+>  {
+> -    fprintf(stderr, "BUG: pc=%x %s %d\n", dc->pc, file, line);
+> +    error_report("BUG: pc=%x %s %d", dc->pc, file, line);
+>      if (qemu_log_separate()) {
+>          qemu_log("BUG: pc=%x %s %d\n", dc->pc, file, line);
+>      }
 
-Cc: Peter Maydell <peter.maydell@linaro.org>
-Cc: Jason Wang <jasowang@redhat.com>
-Cc: Philippe Mathieu-Daudé <f4bug@amsat.org>
-Cc: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org
-Cc: yurovsky@gmail.com
-Signed-off-by: Andrey Smirnov <andrew.smirnov@gmail.com>
----
- hw/display/Makefile.objs       |  2 ++
- hw/display/imx_lcdif.c         | 71 ++++++++++++++++++++++++++++++++++++++++++
- include/hw/display/imx_lcdif.h | 16 ++++++++++
- 3 files changed, 89 insertions(+)
- create mode 100644 hw/display/imx_lcdif.c
- create mode 100644 include/hw/display/imx_lcdif.h
+Eh, no, this should simply use qemu_log.
 
-diff --git a/hw/display/Makefile.objs b/hw/display/Makefile.objs
-index 551c050a6a..a7b34be231 100644
---- a/hw/display/Makefile.objs
-+++ b/hw/display/Makefile.objs
-@@ -41,3 +41,5 @@ virtio-gpu-3d.o-cflags := $(VIRGL_CFLAGS)
- virtio-gpu-3d.o-libs += $(VIRGL_LIBS)
- obj-$(CONFIG_DPCD) += dpcd.o
- obj-$(CONFIG_XLNX_ZYNQMP) += xlnx_dp.o
-+
-+obj-$(CONFIG_IMX) += imx_lcdif.o
-diff --git a/hw/display/imx_lcdif.c b/hw/display/imx_lcdif.c
-new file mode 100644
-index 0000000000..1d7ad4a77b
---- /dev/null
-+++ b/hw/display/imx_lcdif.c
-@@ -0,0 +1,71 @@
-+/*
-+ * Copyright (c) 2017, Impinj, Inc.
-+ *
-+ * i.MX LCD block emulation code
-+ *
-+ * Author: Andrey Smirnov <andrew.smirnov@gmail.com>
-+ *
-+ * This work is licensed under the terms of the GNU GPL, version 2 or later.
-+ * See the COPYING file in the top-level directory.
-+ */
-+
-+#include "qemu/osdep.h"
-+#include "hw/display/imx_lcdif.h"
-+#include "qemu/log.h"
-+
-+static uint64_t imx_lcdif_read(void *opaque, hwaddr offset,
-+                               unsigned size)
-+{
-+    return 0;
-+}
-+
-+static void imx_lcdif_write(void *opaque, hwaddr offset,
-+                            uint64_t value, unsigned size)
-+{
-+}
-+
-+static const struct MemoryRegionOps imx_lcdif_ops = {
-+    .read       = imx_lcdif_read,
-+    .write      = imx_lcdif_write,
-+    .endianness = DEVICE_NATIVE_ENDIAN,
-+    .impl = {
-+        .min_access_size = 4,
-+        .max_access_size = 4,
-+        .unaligned       = false,
-+    },
-+};
-+
-+static void imx_lcdif_init(Object *obj)
-+{
-+    SysBusDevice *sd = SYS_BUS_DEVICE(obj);
-+    IMXLCDState *s = IMX_LCDIF(obj);
-+
-+    memory_region_init_io(&s->iomem,
-+                          obj,
-+                          &imx_lcdif_ops,
-+                          s,
-+                          TYPE_IMX_LCDIF ".iomem",
-+                          0x10000);
-+    sysbus_init_mmio(sd, &s->iomem);
-+}
-+
-+static void imx_lcdif_class_init(ObjectClass *klass, void *data)
-+{
-+    DeviceClass *dc = DEVICE_CLASS(klass);
-+
-+    dc->desc  = "i.MX LCD Controller";
-+}
-+
-+static const TypeInfo imx_lcdif_info = {
-+    .name          = TYPE_IMX_LCDIF,
-+    .parent        = TYPE_SYS_BUS_DEVICE,
-+    .instance_size = sizeof(IMXLCDState),
-+    .instance_init = imx_lcdif_init,
-+    .class_init    = imx_lcdif_class_init,
-+};
-+
-+static void imx_lcdif_register_type(void)
-+{
-+    type_register_static(&imx_lcdif_info);
-+}
-+type_init(imx_lcdif_register_type)
-diff --git a/include/hw/display/imx_lcdif.h b/include/hw/display/imx_lcdif.h
-new file mode 100644
-index 0000000000..51985d3054
---- /dev/null
-+++ b/include/hw/display/imx_lcdif.h
-@@ -0,0 +1,16 @@
-+#ifndef IMX_LCDIF_H
-+#define IMX_LCDIF_H
-+
-+#include "hw/sysbus.h"
-+
-+typedef struct IMXLCDState {
-+    /*< private >*/
-+    SysBusDevice parent_obj;
-+
-+    MemoryRegion iomem;
-+} IMXLCDState;
-+
-+#define TYPE_IMX_LCDIF "imx:lcdif"
-+#define IMX_LCDIF(obj) OBJECT_CHECK(IMXLCDState, (obj), TYPE_IMX_LCDIF)
-+
-+#endif /* IMX_LCDIF_H */
--- 
-2.13.6
+> diff --git a/target/ppc/translate.c b/target/ppc/translate.c
+> index 606b605ba0..a3da22580e 100644
+> --- a/target/ppc/translate.c
+> +++ b/target/ppc/translate.c
+> @@ -3943,8 +3943,8 @@ static inline void gen_op_mfspr(DisasContext *ctx)
+>               * allowing userland application to read the PVR
+>               */
+>              if (sprn != SPR_PVR) {
+> -                fprintf(stderr, "Trying to read privileged spr %d (0x%03x) at "
+> -                        TARGET_FMT_lx "\n", sprn, sprn, ctx->nip - 4);
+> +                error_report("Trying to read privileged spr %d (0x%03x) at "
+> +                        TARGET_FMT_lx "", sprn, sprn, ctx->nip - 4);
+>                  if (qemu_log_separate()) {
+>                      qemu_log("Trying to read privileged spr %d (0x%03x) at "
+>                               TARGET_FMT_lx "\n", sprn, sprn, ctx->nip - 4);
 
+Likewise.  And all the others.
+Perhaps we should kill qemu_log_separate as a bad idea?
+
+> diff --git a/target/sh4/translate.c b/target/sh4/translate.c
+> index 10191073b2..9f95410e53 100644
+> --- a/target/sh4/translate.c
+> +++ b/target/sh4/translate.c
+> @@ -438,7 +438,7 @@ static void _decode_opc(DisasContext * ctx)
+>  	}
+>  
+>  #if 0
+> -    fprintf(stderr, "Translating opcode 0x%04x\n", ctx->opcode);
+> +    error_report("Translating opcode 0x%04x", ctx->opcode);
+>  #endif
+
+qemu_log.
+
+>  
+>      switch (ctx->opcode) {
+> @@ -1799,7 +1799,7 @@ static void _decode_opc(DisasContext * ctx)
+>          break;
+>      }
+>  #if 0
+> -    fprintf(stderr, "unknown instruction 0x%04x at pc 0x%08x\n",
+> +    error_report("unknown instruction 0x%04x at pc 0x%08x",
+>  	    ctx->opcode, ctx->pc);
+>      fflush(stderr);
+>  #endif
+
+qemu_log_mask(LOG_UNIMP, ...)
+
+> @@ -1940,7 +1940,7 @@ void gen_intermediate_code(CPUState *cs, TranslationBlock *tb)
+>          disas_uc32_insn(env, dc);
+>  
+>          if (num_temps) {
+> -            fprintf(stderr, "Internal resource leak before %08x\n", dc->pc);
+> +            error_report("Internal resource leak before %08x", dc->pc);
+>              num_temps = 0;
+>          }
+>  
+> 
+
+qemu_log.
+
+
+r~

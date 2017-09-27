@@ -1,165 +1,139 @@
-Received: by 10.223.172.38 with SMTP id v35csp4371437wrc;
-        Tue, 26 Sep 2017 23:39:43 -0700 (PDT)
-X-Google-Smtp-Source: AOwi7QBqlxEOHZbFeJtHgmnHBXl+lc0J+fa+nNPDk+Fb0eR1fwvD59j4yMEU87bS1TzgbvfLhTi1
-X-Received: by 10.55.47.6 with SMTP id v6mr975228qkh.181.1506494383203;
-        Tue, 26 Sep 2017 23:39:43 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1506494383; cv=none;
+Received: by 10.223.172.38 with SMTP id v35csp4376949wrc;
+        Tue, 26 Sep 2017 23:48:21 -0700 (PDT)
+X-Google-Smtp-Source: AOwi7QBpj6pSvKNENr5sv5gZ53sTzweyZXxzjhpymKD6USeApIoMJ9kn+o3IftzC7XP6+8PslT5D
+X-Received: by 10.55.160.4 with SMTP id j4mr922207qke.357.1506494901336;
+        Tue, 26 Sep 2017 23:48:21 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1506494901; cv=none;
         d=google.com; s=arc-20160816;
-        b=mCKyn43sjdaLfF+oBSV6USKGaKQ8fEzpmXRFjlo+f5psSYq8AYtlnvdoc6Odp+DOHF
-         chpco949zHnkazs0xWLuhvYWcYqvsiGmA3xST2eV6JZrzyZ7C9PLLdYTPBM8ku2pbuBJ
-         xi5lf/WE7p0CwcGKBwRI9BgqsgiAMfpI31JUZujUf0G5FH7ns+ZVeb25Xf2mYSStMzoX
-         c7mFyY/KrDRPrTDbbqfhxd/gaWTjD8MB6mRLbnljn32WN+WvnMRfARlQg5bvhY9GkVbI
-         TXDVnLDJyei9FEzNFejPcOT3JwgZcSSB/hUTsq/Zs5ZaIrc55F1lX5ZfLC0RbvAfVz8O
-         CiGg==
+        b=u4C/5BSM6IOO1sSPLXpVReL3dTiVgGXksjMCWhp3oJT4AL7vS1Vay3Zx8KIet5i8oc
+         4RxRtQKdPbJLEke5/bHYqYupwh3lHwXRCClnGO9UHhCK/8BA0XmskKk1MgHXdcv/ky8a
+         yGAimbxBGTvVs0n7TI+eLbgkAts1z1uPenbMiV1lkTfhafL6iWLAvEnYmcy8Wkhvv+Lc
+         wbh/0RYZVCBBRloaRA8RWS95yijWO3YqpOgT+q7StUU7lI8G8foII1gbiN4GMZdx1VOJ
+         2x7PxrK/+kQXv4Rbb9VfYKYU5PDICi6m+POidY5c2CLwdZAqMFxQBlAfPXP3/sGgY3l+
+         Y44Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:spamdiagnosticmetadata
-         :spamdiagnosticoutput:mime-version:references:in-reply-to:message-id
-         :date:to:from:arc-authentication-results;
-        bh=Gyx/1nA/IFamLExvIplmqgSLsGYvlSodCV0zjqcjVmQ=;
-        b=oF0rJfps82THurNOLW1nJGxUjauqZoppzCNJXa+EJyp+1MFSoaRw6uZo6oCn3A1OMb
-         uu9SXDRlKgTSpHPsQ/trCEhUWgeYnDCmlSXGELnuODggGdVvz4ZUE4q6JUeOqrsBEhk0
-         ZC06aGs4PgK4DsY3sk04Bl/+nH85nxnHLo/gsx4qUaMGDooY2S0KplpTqhSmE2iWeeel
-         gSyoGyrbP6VH/P1uCm9pbJ0CagPxS0dDZb6y4k/iqkLbbqSAwRPw4QvKno36PclRXdxy
-         NoJwaWeDVRhbn3BK98tSgpIHIYN9l7yP0MJwHXw5idnWvgnMfp1iEF72nRHNspOnFi5L
-         VjZg==
+         :list-unsubscribe:list-id:precedence:subject:mime-version
+         :content-transfer-encoding:spamdiagnosticmetadata
+         :spamdiagnosticoutput:content-language:accept-language:in-reply-to
+         :references:message-id:date:thread-index:thread-topic:to:from
+         :dkim-signature:arc-authentication-results;
+        bh=bkjcFu9+cHvjCxwZ8nVMFBZ51GXYG3J1CvVcVGIXIZA=;
+        b=GkmLgLEvLBRj+XeJh4a2zxqnda3W5NqFhGeJYDm1WW9j0im8Pyv0VU4SgvzVRTd0z0
+         eyXI/E7t+qKTMQ8qJS6c0DAtEsZfOpeEDz9zY1mkhztVaWj0AuhfVHS7b4WPviaM7Kwt
+         +pGDt/3Ydtu1gk8mm8wOdBSZ0BhyIpfv1s9WGesxGaSUn6Yuugw/Z/w1GWN1ctJz3zh/
+         Om/HXiMjA/2R4ZADkViSsHS5zALuCO3V/eG3LelR0rkqgOj81GlmSc1SBitt9FM1sp3z
+         nV3Bi6SYjWxg1GhKQsR5603G/qU//Wa8SrT08gjD+GNI3W/aBhwDyQIzSOxffnbUAx/7
+         2Ugw==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@nxp.com header.s=selector1 header.b=CxycgCKl;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=nxp.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id y2si5069579qkc.14.2017.09.26.23.39.42
+        by mx.google.com with ESMTPS id t72si8848540qkg.527.2017.09.26.23.48.20
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 26 Sep 2017 23:39:43 -0700 (PDT)
+        Tue, 26 Sep 2017 23:48:21 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
+       dkim=fail header.i=@nxp.com header.s=selector1 header.b=CxycgCKl;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=nxp.com
-Received: from localhost ([::1]:52425 helo=lists.gnu.org)
+Received: from localhost ([::1]:52470 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1dx60S-0003mU-PJ
-	for alex.bennee@linaro.org; Wed, 27 Sep 2017 02:39:40 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:35630)
+	id 1dx68p-0007j8-2r
+	for alex.bennee@linaro.org; Wed, 27 Sep 2017 02:48:19 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:38201)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <Bharat.Bhushan@nxp.com>) id 1dx5xZ-0001EX-Aj
-	for qemu-arm@nongnu.org; Wed, 27 Sep 2017 02:36:42 -0400
+	(envelope-from <bharat.bhushan@nxp.com>) id 1dx672-0006hs-2u
+	for qemu-arm@nongnu.org; Wed, 27 Sep 2017 02:46:29 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <Bharat.Bhushan@nxp.com>) id 1dx5xU-0008Gm-MD
-	for qemu-arm@nongnu.org; Wed, 27 Sep 2017 02:36:41 -0400
-Received: from mail-by2nam01on0056.outbound.protection.outlook.com
-	([104.47.34.56]:30835
-	helo=NAM01-BY2-obe.outbound.protection.outlook.com)
+	(envelope-from <bharat.bhushan@nxp.com>) id 1dx66y-0003Qv-5B
+	for qemu-arm@nongnu.org; Wed, 27 Sep 2017 02:46:28 -0400
+Received: from mail-ve1eur01on0084.outbound.protection.outlook.com
+	([104.47.1.84]:49568
+	helo=EUR01-VE1-obe.outbound.protection.outlook.com)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <Bharat.Bhushan@nxp.com>)
-	id 1dx5xU-0008GH-CF; Wed, 27 Sep 2017 02:36:36 -0400
-Received: from BN6PR03CA0009.namprd03.prod.outlook.com (10.168.230.147) by
-	MWHPR03MB2703.namprd03.prod.outlook.com (10.168.207.137) with Microsoft
-	SMTP Server (version=TLS1_2,
-	cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384_P256) id
-	15.20.77.7; Wed, 27 Sep 2017 06:36:34 +0000
-Received: from BY2FFO11FD036.protection.gbl (2a01:111:f400:7c0c::151) by
-	BN6PR03CA0009.outlook.office365.com (2603:10b6:404:23::19) with
+	(Exim 4.71) (envelope-from <bharat.bhushan@nxp.com>)
+	id 1dx66x-0003QW-Lk; Wed, 27 Sep 2017 02:46:24 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=nxp.com; s=selector1; 
+	h=From:Date:Subject:Message-ID:Content-Type:MIME-Version;
+	bh=bkjcFu9+cHvjCxwZ8nVMFBZ51GXYG3J1CvVcVGIXIZA=;
+	b=CxycgCKlDxhK9i1pHmXUW6DtTl4RkgOoqh8Bo0jhyP1NLym5DNW71hyhYa2hNGRiNCqzu5LzNPunO3zW1xF0pszbTHjS+nol4DdCa4K0394qF9AkeLO/1UEbYsqs4JahaxewFqGdU3HqrxzVrKpMWr71ZsVG0LctjGSt7fEZNlI=
+Received: from AM5PR0401MB2545.eurprd04.prod.outlook.com (10.169.245.8) by
+	AM5PR0401MB2548.eurprd04.prod.outlook.com (10.169.245.11) with
 	Microsoft SMTP Server (version=TLS1_2,
-	cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384_P256) id 15.20.56.9 via
-	Frontend Transport; Wed, 27 Sep 2017 06:36:34 +0000
-Authentication-Results: spf=fail (sender IP is 192.88.168.50)
-	smtp.mailfrom=nxp.com; nxp.com; dkim=none (message not signed)
-	header.d=none;nxp.com; dmarc=fail action=none header.from=nxp.com;
-Received-SPF: Fail (protection.outlook.com: domain of nxp.com does not
-	designate 192.88.168.50 as permitted sender)
-	receiver=protection.outlook.com; 
-	client-ip=192.88.168.50; helo=tx30smr01.am.freescale.net;
-Received: from tx30smr01.am.freescale.net (192.88.168.50) by
-	BY2FFO11FD036.mail.protection.outlook.com (10.1.14.221) with Microsoft
-	SMTP Server (version=TLS1_0,
-	cipher=TLS_RSA_WITH_AES_256_CBC_SHA) id 15.20.56.11
-	via Frontend Transport; Wed, 27 Sep 2017 06:36:33 +0000
-Received: from localhost.localdomain.ap.freescale.net ([10.232.14.21])
-	by tx30smr01.am.freescale.net (8.14.3/8.14.0) with ESMTP id
-	v8R6a2NC027330; Tue, 26 Sep 2017 23:36:27 -0700
-From: Bharat Bhushan <Bharat.Bhushan@nxp.com>
-To: <eric.auger@redhat.com>, <eric.auger.pro@gmail.com>,
-	<peter.maydell@linaro.org>, <alex.williamson@redhat.com>,
-	<mst@redhat.com>, <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>
-Date: Wed, 27 Sep 2017 12:03:19 +0530
-Message-ID: <1506494000-31982-5-git-send-email-Bharat.Bhushan@nxp.com>
-X-Mailer: git-send-email 1.9.3
-In-Reply-To: <1506494000-31982-1-git-send-email-Bharat.Bhushan@nxp.com>
+	cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384_P256) id
+	15.20.77.7; Wed, 27 Sep 2017 06:46:19 +0000
+Received: from AM5PR0401MB2545.eurprd04.prod.outlook.com
+	([fe80::a470:3643:ce8f:6327]) by
+	AM5PR0401MB2545.eurprd04.prod.outlook.com
+	([fe80::a470:3643:ce8f:6327%18]) with mapi id 15.20.0077.016;
+	Wed, 27 Sep 2017 06:46:18 +0000
+From: Bharat Bhushan <bharat.bhushan@nxp.com>
+To: Bharat Bhushan <bharat.bhushan@nxp.com>, "eric.auger@redhat.com"
+	<eric.auger@redhat.com>, "eric.auger.pro@gmail.com"
+	<eric.auger.pro@gmail.com>, "peter.maydell@linaro.org"
+	<peter.maydell@linaro.org>, "alex.williamson@redhat.com"
+	<alex.williamson@redhat.com>, "mst@redhat.com" <mst@redhat.com>,
+	"qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, "qemu-devel@nongnu.org"
+	<qemu-devel@nongnu.org>, "peterx@redhat.com" <peterx@redhat.com>
+Thread-Topic: [PATCH v4 0/5] virtio-iommu: VFIO integration
+Thread-Index: AQHTN1rqdMCSmFjsv0elJFTnh6rDzqLIR3Yg
+Date: Wed, 27 Sep 2017 06:46:18 +0000
+Message-ID: <AM5PR0401MB25458FFED2D7D405A71F954C9A780@AM5PR0401MB2545.eurprd04.prod.outlook.com>
 References: <1506494000-31982-1-git-send-email-Bharat.Bhushan@nxp.com>
-X-EOPAttributedMessage: 0
-X-Matching-Connectors: 131509677940022535;
-	(91ab9b29-cfa4-454e-5278-08d120cd25b8); ()
-X-Forefront-Antispam-Report: CIP:192.88.168.50; IPV:NLI; CTRY:US; EFV:NLI;
-	SFV:NSPM;
-	SFS:(10009020)(6009001)(336005)(39860400002)(346002)(39380400002)(376002)(2980300002)(1109001)(1110001)(339900001)(189002)(199003)(77096006)(6666003)(81166006)(68736007)(5660300001)(104016004)(85426001)(4326008)(2906002)(81156014)(189998001)(2201001)(8936002)(86362001)(8656003)(39060400002)(305945005)(97736004)(50986999)(50466002)(5003940100001)(106466001)(76176999)(47776003)(105606002)(316002)(53936002)(50226002)(8676002)(36756003)(110136005)(16586007)(498600001)(2950100002)(48376002)(54906003)(72206003)(356003)(7416002)(2101003);
-	DIR:OUT; SFP:1101; SCL:1; SRVR:MWHPR03MB2703;
-	H:tx30smr01.am.freescale.net; FPR:; SPF:Fail;
-	PTR:InfoDomainNonexistent; MX:1; A:1; LANG:en; 
-X-Microsoft-Exchange-Diagnostics: 1; BY2FFO11FD036;
-	1:QG8jFoOZ6J6LRM7hoxgC217e8iI2gDsJFIKMvIDfnpLQ9ltwYH3LSb3AQuNPhJBgWQa3NAnHbVLIXTyo6TLg4EceQgqPIKJhlKUq6d1DguIbRtCE4MZC2829ZGeectCZ
+In-Reply-To: <1506494000-31982-1-git-send-email-Bharat.Bhushan@nxp.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: spf=none (sender IP is )
+	smtp.mailfrom=bharat.bhushan@nxp.com; 
+x-originating-ip: [192.88.169.1]
+x-ms-publictraffictype: Email
+x-microsoft-exchange-diagnostics: 1; AM5PR0401MB2548;
+	6:gFys2/lOfDrhWyYCRCg0jE1D5tBbe4M/xpKpUhiV+JY4LlTn0XpFhaGcgZS/kZSYYMIgYMW7oTFndDT5Jmjm+Gvv5mVsIsxA+Ll25PHZTvvUWYP4fYB1exD23uIBZPgUDQrkgabHFy6A6o5wSsjamVfrRVMdTCJixP6f3gZ5R00y62m49G7AF6Us0MT5E1fyQAVxsLCCYanMwaFRDICQ/pcyATE9TBgH9478CM7sKusBoiavpbUpH533WwAgWh06c3J1YPJsQgxbppNNZvVoX9M2E+OF+fPw3AxNLmzJSz6n7ITF7mzZndwc7FQ44VW09UvF9mOZwhLap5dFhSWPPg==;
+	5:VrVHRR6NS9BQkaHuPgyKshDIQ4kQOoV18N2DgANowBhPQPNSCkLSDOby+WaCBjR0pB6fGyuSNTIzRpFTYR2PHmfavs7CCe1XwRni88YTNLS094wScIFtDB3/uOHIVhGQB5hNqvdZzCdTzxQwIJpJWg==;
+	24:R03RyknZas6oqGmLCQWcC1n0vwRWZOwLaT9erUS5hCIgDUDQC7thdCB3apD3hwiZHLNgFhZ/vwQ2Az+hlG0uC8i3JMv3ZYXsKs3PLBXEr9o=;
+	7:ud1EcA8efsSrJ3PS1gJKUkrOm01vrdGOvDaOrwae1DCQyWoHXjWPM6P/0LnGU0Bwj5jqmunuQD2sX12kN1J1EO1Wssuszl3Is59U6bnDM2sV9++vy/t3P5MGf6cRuEyCfC/HLtp0xLvbB+ddte9Zq2sVDSo4Hu+aNYhiqBMDjVvE60SGtNIOm95oN+2p+UnSz75PP9frvjI7T9HROS67LDKK0q7fOG4J3MR/uTmvqn4=
+x-ms-exchange-antispam-srfa-diagnostics: SSOS;SSOR;
+x-forefront-antispam-report: SFV:SKI; SCL:-1; SFV:NSPM;
+	SFS:(10009020)(6009001)(39860400002)(376002)(346002)(189002)(13464003)(199003)(377454003)(6246003)(305945005)(7416002)(53936002)(5890100001)(53546010)(97736004)(5250100002)(2501003)(39060400002)(2201001)(7736002)(2900100001)(966005)(81156014)(8676002)(8936002)(189998001)(99286003)(6306002)(55016002)(9686003)(81166006)(74316002)(5660300001)(2950100002)(14454004)(4326008)(7696004)(54906003)(106356001)(105586002)(110136005)(101416001)(6436002)(478600001)(86362001)(6506006)(76176999)(25786009)(3660700001)(33656002)(3280700002)(68736007)(316002)(229853002)(102836003)(2906002)(50986999)(54356999)(6116002)(3846002)(66066001);
+	DIR:OUT; SFP:1101; SCL:1; SRVR:AM5PR0401MB2548;
+	H:AM5PR0401MB2545.eurprd04.prod.outlook.com; FPR:; SPF:None;
+	PTR:InfoNoRecords; MX:1; A:1; LANG:en; 
+x-ms-office365-filtering-correlation-id: af013446-6d97-4c08-d311-08d50573751f
+x-ms-office365-filtering-ht: Tenant
+x-microsoft-antispam: UriScan:; BCL:0; PCL:0;
+	RULEID:(22001)(2017030254152)(48565401081)(2017052603199)(201703131423075)(201703031133081)(201702281549075);
+	SRVR:AM5PR0401MB2548; 
+x-ms-traffictypediagnostic: AM5PR0401MB2548:
+x-exchange-antispam-report-test: UriScan:(180628864354917)(166708455590820)(185117386973197)(228905959029699);
+x-microsoft-antispam-prvs: <AM5PR0401MB25485E817A24B439934E4E3D9A780@AM5PR0401MB2548.eurprd04.prod.outlook.com>
+x-exchange-antispam-report-cfa-test: BCL:0; PCL:0;
+	RULEID:(100000700101)(100105000095)(100000701101)(100105300095)(100000702101)(100105100095)(6040450)(2401047)(8121501046)(5005006)(100000703101)(100105400095)(10201501046)(3002001)(93006095)(93001095)(6055026)(6041248)(20161123560025)(201703131423075)(201702281528075)(201703061421075)(201703061406153)(20161123555025)(20161123558100)(20161123564025)(20161123562025)(6072148)(201708071742011)(100000704101)(100105200095)(100000705101)(100105500095);
+	SRVR:AM5PR0401MB2548; BCL:0; PCL:0;
+	RULEID:(100000800101)(100110000095)(100000801101)(100110300095)(100000802101)(100110100095)(100000803101)(100110400095)(100000804101)(100110200095)(100000805101)(100110500095);
+	SRVR:AM5PR0401MB2548; 
+x-forefront-prvs: 04433051BF
+received-spf: None (protection.outlook.com: nxp.com does not designate
+	permitted sender hosts)
+spamdiagnosticoutput: 1:99
+spamdiagnosticmetadata: NSPM
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
 MIME-Version: 1.0
-Content-Type: text/plain
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: 8dc7eddf-bd1e-4841-120f-08d505721888
-X-Microsoft-Antispam: UriScan:; BCL:0; PCL:0;
-	RULEID:(22001)(2017052603199)(201703131430075)(201703131517081);
-	SRVR:MWHPR03MB2703; 
-X-Microsoft-Exchange-Diagnostics: 1; MWHPR03MB2703;
-	3:vDAsXj/tWpTZg/jl+B0HqcTyRsN8VB2gkd8DLXScZzUjVslklyVMAMyZXLwbt/X49MFO27rfoDaof/fQwi8jWV3LkRgk0a7I8gmgIl1fG/9vWNMFXFqN/4CCuE943u9LYovpDX2r0W6t9UCUC0KCTNVZ5cZ0CAPAEFxiW2CmkQdmsIdVN5YweExnTXnKirpSjFF1kUIUMeLcqRQQ1kgou0ebWSaz910wfVVo2HLLKFfkfDnfxtF0y2xabAqP1g2dnEuL0l5Pp31DLCNY9M+8NdVLave+Lr8GnafPcHGX/Ahb51/MLIc1mZQF37AG05mWpN6RsOsV2+yiiZuyaDXfoJslLJ2myDwDwTnOeFF8HJI=;
-	25:jT5R2uqylQuUKqL+GBI8965EgH8xXPbpsUFH4As8i9dz24rV/WhyRHu4kUhfI70K4x4HzO1esIXSgvvU9DPPZYs3fS2L0QoKD3WowC4HVO50ElE6WnHkQeWcgvxBIVItbUbFH7y2h1Fq8Fafr4MgQkcd5O10c5R9vxe3Vm3EK5mPXyiNT9xZyJCk5p74R1d2My21fR2DBZt8qtw2oXKYmYqnbyT7OatNKKD6m67nygWnB2mj25pRiigCnGnVYtntNM+SaQM+PnK0jZtUox/SoHW8C/aZSWjhPN0ZGsNcScqFk1bDfKvQODd1uuReLzbgj2h9GOzQufzgF9R9u2X6jQ==
-X-MS-TrafficTypeDiagnostic: MWHPR03MB2703:
-X-Microsoft-Exchange-Diagnostics: 1; MWHPR03MB2703;
-	31:XQvDtbXpNB6ByzDXrWyQ8gjjP0HN4kCNQWs4Y3+ymaa15OoD20o87VVbhGsHab8vF941pJSkD2NuADRZr53pUv2a8/0rGRBhTFSSiJOF5KTXOIy4WwbGGJBJcby4KBNyIXbWT3pmDcZvpkGVnscjijPb8Xxeea27+SWQaNyEfq8NcyITXBWQ7HZaDA9pbDJFnFy86ICuOljeyqXio+M+1gCiXDB+nz9I1uz597bxlkc=;
-	4:50foa+R1vi5XW2xwv1qLIjkoNLEYrTOyzf2zfTIA1A8n9P9beniCR04l6d33POf/7mnaKCd2hS5Ih5uPACfEn7fAp/U61QFcv9wVxQB8ZrjFdnvbhVpWYfuzxhqZKekQW17GPJN47OiwaNTQMK6kTgF9VtjRBD9/HZzGPfwHX/oVKSCYvuAKdpf2UC84YGa2funi2YffJiOYkURVlN9OuSEvJphcMUcskSmYmezwRaEkIxrzCLaC/dCgmdtMWPdHdKefvI4q0OfALPstuxwdC6xMDnM/GfRyKVAkAw+T7tQ=
-X-Exchange-Antispam-Report-Test: UriScan:(185117386973197);
-X-Microsoft-Antispam-PRVS: <MWHPR03MB27032EE1D4B61125699CD2A69A780@MWHPR03MB2703.namprd03.prod.outlook.com>
-X-Exchange-Antispam-Report-CFA-Test: BCL:0; PCL:0;
-	RULEID:(100000700101)(100105000095)(100000701101)(100105300095)(100000702101)(100105100095)(6095135)(2401047)(5005006)(8121501046)(93006095)(93001095)(3002001)(100000703101)(100105400095)(10201501046)(6055026)(6096035)(20161123561025)(20161123559100)(20161123556025)(20161123565025)(201703131430075)(201703131448075)(201703131433075)(201703161259150)(201703151042153)(20161123563025)(201708071742011)(100000704101)(100105200095)(100000705101)(100105500095);
-	SRVR:MWHPR03MB2703; BCL:0; PCL:0;
-	RULEID:(100000800101)(100110000095)(100000801101)(100110300095)(100000802101)(100110100095)(100000803101)(100110400095)(400006)(100000804101)(100110200095)(100000805101)(100110500095);
-	SRVR:MWHPR03MB2703; 
-X-Forefront-PRVS: 04433051BF
-X-Microsoft-Exchange-Diagnostics: =?us-ascii?Q?1; MWHPR03MB2703;
-	23:M1VGQxEKcy4ndODc3FTDyeh2bsCIXGwVintJhMUbv?=
-	=?us-ascii?Q?MkeH4/J3A+xc8i4xML7rxj9tUz9UUnVzYop+71Do74WT9ODoxDt1NvRPRfgW?=
-	=?us-ascii?Q?NJ8AFwMqiCjgd2gLs6XK89vsOhIN9Xs81oSVS0idt1x4a37Jeuxemt4jxmXH?=
-	=?us-ascii?Q?O40nNQTJgKcjwQuxY9522RtDuDGo/GdtStJ6/GPsFbhGrXRmP2RNlapPEJVE?=
-	=?us-ascii?Q?/wDld67ttGwqYzJjKWH2w11TAqCSh75X8+XGuNyPytWlLOg8GShNGJeVWjmj?=
-	=?us-ascii?Q?HHGYYsNqZNAyvymxSu4Ynn7tDoYNNOivWF2gU+sArVwiKMzFrU2G5j7Yql2U?=
-	=?us-ascii?Q?9Ck/Yuvq2e3r1sd9dKLPlZ3Mtk2hb/VfAilKk6U+62BwqbVB7Whcfx3aEcBW?=
-	=?us-ascii?Q?Jun70MJewVIeeO68eiH0lGgQSy5LVm4+wLPHOeZTV+mwOb46pk2hxRBqccav?=
-	=?us-ascii?Q?1eCc48noHBUP83oXbq7qBpvYwe+InD52D630NnMxkO92blC6VaPcdskctmpd?=
-	=?us-ascii?Q?YchtX9PxJCGzewrckq5ALUpmpXwGj77yC8k2CpGqpc3GmB3WX0tieJ47tIBG?=
-	=?us-ascii?Q?zJLUuCxI83TjKD/uxJeABreGCqHeBXaFJ7kp6el+k2KUditJUgRA+hp5Lp45?=
-	=?us-ascii?Q?J6Qjk/bG0s+DZa59vBg5OsM4Bk2Ads8EvqVkRiXsJPE2fNnKChqSXzTqGNIR?=
-	=?us-ascii?Q?kvBiofczRHdlzWtueXo+8mUiqT6k/Q+UBk4q6FcGIM6lQZZ4Th+ZWQya0/nH?=
-	=?us-ascii?Q?Q4nwvqQsIij/HgS42qN0WuUlSR/tCmpXLow9KBBiGCPl4VWdvrJS6jGBnG7D?=
-	=?us-ascii?Q?FjLme/ZJ9n5/qfgPUWOAEQm7p/wCHX1LuMHxvhiWfKmK/+IFHp0QU9E6aRfP?=
-	=?us-ascii?Q?sWh8ziMMndhTfcnNQZ3C3w/5BSmRF1sRZrIFrKvCI49V1GTqGxqDWEg/tkwV?=
-	=?us-ascii?Q?0ZXNTg8UalVinWXWQ6Ol79VfSQePI9+lIS2hmEZMavS9eE+2pUnGEpfgDFaE?=
-	=?us-ascii?Q?jt7o3w2xD7IBLjcIuFrYhnh6VTOVKgEff50MPSWaMIPzfjGBCdYvr3K61W6U?=
-	=?us-ascii?Q?L/TNvij+XLzqFGNW0/7jrisaFu1GNC/Ba3AEY5y4pbEkQxNW38uy2DPosBiN?=
-	=?us-ascii?Q?icL1y2ewhFy6FzIH24gGoZwomuxeq+GaVRf/JsSHv1+/+w294puu8aqsdc6y?=
-	=?us-ascii?Q?/lbOpO7nW1PhSl10wLorfYOUfhez1rDOSM+HFj8JTFn/5DZ0WLwiSc6kw=3D?=
-	=?us-ascii?Q?=3D?=
-X-Microsoft-Exchange-Diagnostics: 1; MWHPR03MB2703;
-	6:IpPEfz6xv1G63aThzOH2R9dN0k9TN3HuNGN1wr6rUJm08bOpfuMcxAKJPziZPs3wLernljfD9Wm8iUW170oX1KaWdCf5/446xHMm83F73NNg04isRajvJ4RjqRRoJW4ke307LobKiZ9S5DgKKEGdxp/2xp/aeIba+NC0tUZ/5GzFjr1MRLuL43nILvrEhRJrKJu2NBcblpCR4zh4N7Q+rxmRB7EHx1qq1r54Ef5bww9+eI6KDyrdHHMNm6cSOlllvdPiLmAFB/PMA6RKuIGxTJud8ZDBGhUAJo5UQcmMjuXT8jtxMG1tG/VF7BlWWRxbLlyMPzgrkR06eBz2IHRCsA==;
-	5:oScIHEfvhwY8CGy7m8SUwoJZGeXgDBCh7zbTfBPdt1WzlPfSRys4ED05zAq9m6Twyc4rc/0m6V1eQbFojoqhSMtfJnicrUxP/BLK1ZdtvzNkdfLAxo3O68QfvtFKNlJoQVRLXDQ8bAeSlozD94MwcA==;
-	24:SmwLCiw28LM8fJik0QK7uMJyiDMnvzl8NWr05qe02/sit3HNsNFMmfYJW7f9khr+nnrZkGhMotHV0J6O+Q3gdrZvHA01FFrW1BxQCP4Hl7U=;
-	7:Bo7Eh+FetdVeT2Tgp1UuIUEtocoUwSIslVRAZk6yFjkp/Sg5j16BdGoYzuEU9iU5Sl6RrwLJ9l0FPJMqDUhQgsxx7x4Z1A1hztpvwWSy6Cky/No3w8RL097fT0xvmpL0B9Cq2ri2y+7VdUCv7pWgJpu8mcPg4FcKiVeao6RHgLuBOSh9GEy/0an6k3OteC5D/Wjvz4elx4xWh8pQp2P2cYJ/UDp+Z7RRfIMFTFwbMg8=
-SpamDiagnosticOutput: 1:99
-SpamDiagnosticMetadata: NSPM
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 27 Sep 2017 06:36:33.6902 (UTC)
-X-MS-Exchange-CrossTenant-Id: 5afe0b00-7697-4969-b663-5eab37d5f47e
-X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=5afe0b00-7697-4969-b663-5eab37d5f47e;
-	Ip=[192.88.168.50]; Helo=[tx30smr01.am.freescale.net]
-X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: MWHPR03MB2703
+X-OriginatorOrg: nxp.com
+X-MS-Exchange-CrossTenant-originalarrivaltime: 27 Sep 2017 06:46:18.5941 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 686ea1d3-bc2b-4c6f-a92c-d99c5c301635
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: AM5PR0401MB2548
 X-detected-operating-system: by eggs.gnu.org: Windows 7 or 8 [fuzzy]
-X-Received-From: 104.47.34.56
-Subject: [Qemu-arm] [PATCH v4 4/5] virtio-iommu: add iommu replay
+X-Received-From: 104.47.1.84
+Subject: Re: [Qemu-arm] [PATCH v4 0/5] virtio-iommu: VFIO integration
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -171,92 +145,94 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: kevin.tian@intel.com, Bharat Bhushan <Bharat.Bhushan@nxp.com>,
-	marc.zyngier@arm.com, tn@semihalf.com, will.deacon@arm.com,
-	drjones@redhat.com, robin.murphy@arm.com,
-	christoffer.dall@linaro.org, bharatb.yadav@gmail.com
+Cc: "kevin.tian@intel.com" <kevin.tian@intel.com>,
+	"marc.zyngier@arm.com" <marc.zyngier@arm.com>,
+	"tn@semihalf.com" <tn@semihalf.com>,
+	"will.deacon@arm.com" <will.deacon@arm.com>,
+	"drjones@redhat.com" <drjones@redhat.com>,
+	"robin.murphy@arm.com" <robin.murphy@arm.com>,
+	"christoffer.dall@linaro.org" <christoffer.dall@linaro.org>,
+	"bharatb.yadav@gmail.com" <bharatb.yadav@gmail.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: bxsW6ODxtd/Q
+X-TUID: Sv7UAUo+tAoC
 
-Default replay does not work with virtio-iommu,
-so this patch provide virtio-iommu replay functionality.
+Hi Peter,
 
-Signed-off-by: Bharat Bhushan <Bharat.Bhushan@nxp.com>
----
-v3->v4:
- - Replay functionality moved in separate patch
- - No other changes
+While vfio with virtio-iommu I observed one issue,  When virtio-iommu devic=
+e exists but guest kernel does not have virtio-iommu driver (not enabled in=
+ Config) then IOMMU faults are reported on host.
 
- hw/virtio/trace-events   |  1 +
- hw/virtio/virtio-iommu.c | 38 ++++++++++++++++++++++++++++++++++++++
- 2 files changed, 39 insertions(+)
+This is because no mapping is created in IOMMU, not even default guest-phys=
+ical to real-physical. While looking at vfio_listener_region_add(), it does=
+ not create initial mapping in IOMMU and relies on guest to create mapping.=
+ Is this something known or I am missing something?
 
-diff --git a/hw/virtio/trace-events b/hw/virtio/trace-events
-index 251b595..840d54f 100644
---- a/hw/virtio/trace-events
-+++ b/hw/virtio/trace-events
-@@ -51,3 +51,4 @@ virtio_iommu_fill_none_property(uint32_t devid) "devid=%d"
- virtio_iommu_set_page_size_mask(const char *iommu_mr, uint64_t mask) "mr=%s page_size_mask=0x%"PRIx64
- virtio_iommu_notify_map(const char *name, hwaddr iova, hwaddr paddr, hwaddr map_size) "mr=%s iova=0x%"PRIx64" pa=0x%" PRIx64" size=0x%"PRIx64""
- virtio_iommu_notify_unmap(const char *name, hwaddr iova, hwaddr map_size) "mr=%s iova=0x%"PRIx64" size=0x%"PRIx64""
-+virtio_iommu_remap(hwaddr iova, hwaddr pa, hwaddr size) "iova=0x%"PRIx64" pa=0x%" PRIx64" size=0x%"PRIx64""
-diff --git a/hw/virtio/virtio-iommu.c b/hw/virtio/virtio-iommu.c
-index ff91bce..d4d34cf 100644
---- a/hw/virtio/virtio-iommu.c
-+++ b/hw/virtio/virtio-iommu.c
-@@ -906,6 +906,43 @@ static gint int_cmp(gconstpointer a, gconstpointer b, gpointer user_data)
-     return (ua > ub) - (ua < ub);
- }
- 
-+static gboolean virtio_iommu_remap(gpointer key, gpointer value, gpointer data)
-+{
-+    viommu_mapping *mapping = (viommu_mapping *) value;
-+    IOMMUMemoryRegion *mr = (IOMMUMemoryRegion *) data;
-+
-+    trace_virtio_iommu_remap(mapping->virt_addr, mapping->phys_addr,
-+                             mapping->size);
-+    /* unmap previous entry and map again */
-+    virtio_iommu_notify_unmap(mr, mapping->virt_addr, mapping->size);
-+
-+    virtio_iommu_notify_map(mr, mapping->virt_addr, mapping->phys_addr,
-+                            mapping->size);
-+    return false;
-+}
-+
-+static void virtio_iommu_replay(IOMMUMemoryRegion *mr, IOMMUNotifier *n)
-+{
-+    IOMMUDevice *sdev = container_of(mr, IOMMUDevice, iommu_mr);
-+    VirtIOIOMMU *s = sdev->viommu;
-+    uint32_t sid;
-+    viommu_dev *dev;
-+
-+    sid = virtio_iommu_get_sid(sdev);
-+
-+    qemu_mutex_lock(&s->mutex);
-+
-+    dev = g_tree_lookup(s->devices, GUINT_TO_POINTER(sid));
-+    if (!dev || !dev->as) {
-+        goto unlock;
-+    }
-+
-+    g_tree_foreach(dev->as->mappings, virtio_iommu_remap, mr);
-+
-+unlock:
-+    qemu_mutex_unlock(&s->mutex);
-+}
-+
- static void virtio_iommu_device_realize(DeviceState *dev, Error **errp)
- {
-     VirtIODevice *vdev = VIRTIO_DEVICE(dev);
-@@ -1003,6 +1040,7 @@ static void virtio_iommu_memory_region_class_init(ObjectClass *klass,
- 
-     imrc->translate = virtio_iommu_translate;
-     imrc->set_page_size_mask = virtio_iommu_set_page_size_mask;
-+    imrc->replay = virtio_iommu_replay;
- }
- 
- static const TypeInfo virtio_iommu_info = {
--- 
-1.9.3
+Thanks
+-Bharat
+
+> -----Original Message-----
+> From: Bharat Bhushan [mailto:Bharat.Bhushan@nxp.com]
+> Sent: Wednesday, September 27, 2017 12:03 PM
+> To: eric.auger@redhat.com; eric.auger.pro@gmail.com;
+> peter.maydell@linaro.org; alex.williamson@redhat.com; mst@redhat.com;
+> qemu-arm@nongnu.org; qemu-devel@nongnu.org
+> Cc: wei@redhat.com; kevin.tian@intel.com; marc.zyngier@arm.com;
+> tn@semihalf.com; will.deacon@arm.com; drjones@redhat.com;
+> robin.murphy@arm.com; christoffer.dall@linaro.org;
+> bharatb.yadav@gmail.com; Bharat Bhushan <bharat.bhushan@nxp.com>
+> Subject: [PATCH v4 0/5] virtio-iommu: VFIO integration
+>=20
+> This patch series integrates VFIO/VHOST with virtio-iommu.
+>=20
+> This version is mainly about rebasing on v4 version on virtio-iommu devic=
+e
+> framework from Eric Augur and addresing review comments.
+>=20
+> This patch series allows PCI pass-through using virtio-iommu.
+>=20
+> This series is based on:
+>  - virtio-iommu kernel driver by Jean-Philippe Brucker
+>     [1] [RFC] virtio-iommu version 0.4
+>     git://linux-arm.org/virtio-iommu.git branch viommu/v0.4
+>=20
+>  - virtio-iommu device emulation by Eric Augur.
+>    [RFC v4 00/16] VIRTIO-IOMMU device
+>    https://github.com/eauger/qemu/tree/v2.10.0-virtio-iommu-v4
+>=20
+> Changes are available at : https://github.com/bharaty/qemu.git virtio-
+> iommu-vfio-integration-v4
+>=20
+> v3->v4:
+>  - Rebase to v4 version from Eric
+>  - Fixes from Eric with DPDK in VM
+>  - Logical division in multiple patches
+>=20
+> v2->v3:
+>  - This series is based on "[RFC v3 0/8] VIRTIO-IOMMU device"
+>    Which is based on top of v2.10-rc0 that
+>  - Fixed issue with two PCI devices
+>  - Addressed review comments
+>=20
+> v1->v2:
+>   - Added trace events
+>   - removed vSMMU3 link in patch description
+>=20
+> Bharat Bhushan (5):
+>   target/arm/kvm: Translate the MSI doorbell in kvm_arch_fixup_msi_route
+>   virtio-iommu: Add iommu notifier for map/unmap
+>   virtio-iommu: Call iommu notifier for attach/detach
+>   virtio-iommu: add iommu replay
+>   virtio-iommu: add iommu notifier memory-region
+>=20
+>  hw/virtio/trace-events           |   5 ++
+>  hw/virtio/virtio-iommu.c         | 181
+> ++++++++++++++++++++++++++++++++++++++-
+>  include/hw/virtio/virtio-iommu.h |   6 ++
+>  target/arm/kvm.c                 |  27 ++++++
+>  target/arm/trace-events          |   3 +
+>  5 files changed, 219 insertions(+), 3 deletions(-)
+>=20
+> --
+> 1.9.3
 

@@ -1,16 +1,16 @@
-Received: by 10.223.172.38 with SMTP id v35csp4449183wrc;
-        Wed, 27 Sep 2017 01:31:56 -0700 (PDT)
-X-Google-Smtp-Source: AOwi7QA+DlAdfAPPSYU5j8oAYD6bCHx5qp5O3q6vonWs33eFD338nqJunW1lRBlZRXH0qw3Il6wq
-X-Received: by 10.55.156.147 with SMTP id f141mr1346146qke.72.1506501116042;
-        Wed, 27 Sep 2017 01:31:56 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1506501116; cv=none;
+Received: by 10.223.172.38 with SMTP id v35csp4449531wrc;
+        Wed, 27 Sep 2017 01:32:24 -0700 (PDT)
+X-Google-Smtp-Source: AOwi7QCP75xEK+dD1AlYi4P/fuAf6FvZ2PM+L9uHjUsAqduxvYnSuxm7fZ02/lrzr976e1mYo3gB
+X-Received: by 10.55.65.139 with SMTP id o133mr1181559qka.349.1506501144454;
+        Wed, 27 Sep 2017 01:32:24 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1506501144; cv=none;
         d=google.com; s=arc-20160816;
-        b=PekBqZpizMZpNAlyK2Q/GiX81hISs7hrWjG4IyekwevWSDluLE/QLmenwWPbS1sscU
-         meqTBbliIy5c4c8rcNHNyCbNERnXERDLQXZJFiKEBYLbdtNdzpgEg/2E+Wz0if0F/w8Q
-         hvJ/qesjMNNh2me/ivBLf1ucSsj0PtRXQtAtVcs34y6iZo3VXT9HiSzRu6M6K/wNOku3
-         kDE5IAW8Gx/iqudRkY67rOxTUW79hHl2SM0QCTBjZG/LFmo3E3gU961aa2DkCtfmXsTm
-         DR2WVojvGIoGwWW7RGazMcxrB+NIdpaBkKVEjpaSaY11qt6QwBuRh7hErGSeaYZx0sUT
-         A0JA==
+        b=BRuDGNmJZjiNurElf+855MUjGaJRZU6NVCOap+7UJPtsVgr51YaxM0gEF3uXEFgxH4
+         gKFSLYGjm/LLDGrHx2wUaTKXVnGA8ffbyywA7GB7KlqRKlNiMe4Tel7Dl47D8wWcsB2H
+         Tz5ZL65cmlPDB08iRJYeJk50kgN6aezLU+qxJ6ozTXMXDUczS8iG9fCfg+Sie82jCWWv
+         v6iiJRlTxNbgg1PglZdonlfvCCqa6LnuiCgxjya8gAU3OLcK+3R0PXFr8oF1R0cC8+pk
+         6DUq8BVpwrlvuXB3mKjiMY5QMNCzi6yikg/YH4U88/zbFExcFBuySEY/PPzkmwt4XUIr
+         v/LQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:mime-version
@@ -18,69 +18,70 @@ ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc
          :spamdiagnosticoutput:content-language:accept-language:in-reply-to
          :references:message-id:date:thread-index:thread-topic:to:from
          :dkim-signature:arc-authentication-results;
-        bh=KRP+50oJS/8XKyuXrXl0vCiSHaGm/qtxLfz+G1Tf45w=;
-        b=lVR+FvPYWUGR79npChv/qdhRqWnoxIiCRZQ5BqqX3DVFjYKO9JkhW1YYKPYXZYuRXn
-         9u9f+KnqMlpmQoSaut+Pi4L9ZfzANiImeNdMfSq+/9MFyPEQMRMk3T7GDGEaE21yh8+R
-         mZvx+ihbPkERGuxqZ6hNmckuoiThrz+m1EfcGjRovpbRA+8AxpC+xF6rWOWLOxEheTdk
-         xj+CHY1YVU6wqq2bO8lEblVvSPWu1xVlZ1PRy1xHsCNeETtbw40NW0nEUxOagHbmewJ0
-         p1Otym2gbJNOw7j2klEpe581dLiuvNv73s9nC8Lf6LHyv923BtYjwFqEMF6wpaKXFTQo
-         VYxg==
+        bh=72BHgMzbdZPJQoj5nJKHq0yzavjxL5vupOF7napKojI=;
+        b=EUIvBF+fhqoNy24ypcSDKavZVks4p017AqTUszcx01lGvIktv05vIdIPZ6GGtCojtD
+         zJuwparQLXnMwZxzCIE5avquQ35x2vTXxahfz5RJeUcVoBP8U/VW6Z4NwMvCN8XrSAx8
+         p4rJvuCfddQMECyH89P7fb+3MgaVB3zInvL+XEGSzR69832v6enrpJUBzD3tv219qZ7p
+         piS5hcCx+BYgl0auExhlKr6HeE8zhyV6iZVikppn6tneScmm7AKepyY7CkB7pp9gP8f7
+         oXEt9boANaslZ6b+mRolGkn3LhZvW2Trc6zWiw2ODyjsetU0P9ZbsjwZFAYK9bw3ioPR
+         3VnA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@nxp.com header.s=selector1 header.b=k4jPQtH4;
+       dkim=fail header.i=@nxp.com header.s=selector1 header.b=uNObebqs;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=nxp.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id y196si8299535qky.425.2017.09.27.01.31.55
+        by mx.google.com with ESMTPS id h59si800136qtd.549.2017.09.27.01.32.23
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 27 Sep 2017 01:31:56 -0700 (PDT)
+        Wed, 27 Sep 2017 01:32:24 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@nxp.com header.s=selector1 header.b=k4jPQtH4;
+       dkim=fail header.i=@nxp.com header.s=selector1 header.b=uNObebqs;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=nxp.com
-Received: from localhost ([::1]:53394 helo=lists.gnu.org)
+Received: from localhost ([::1]:53399 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1dx7l3-0003FC-OE
-	for alex.bennee@linaro.org; Wed, 27 Sep 2017 04:31:53 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:42574)
+	id 1dx7lW-0003VP-4L
+	for alex.bennee@linaro.org; Wed, 27 Sep 2017 04:32:22 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:42882)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <bharat.bhushan@nxp.com>) id 1dx7kB-0002im-AC
-	for qemu-arm@nongnu.org; Wed, 27 Sep 2017 04:31:00 -0400
+	(envelope-from <bharat.bhushan@nxp.com>) id 1dx7lG-0003Ta-PI
+	for qemu-arm@nongnu.org; Wed, 27 Sep 2017 04:32:08 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <bharat.bhushan@nxp.com>) id 1dx7k7-0003vn-Ac
-	for qemu-arm@nongnu.org; Wed, 27 Sep 2017 04:30:59 -0400
-Received: from mail-db5eur01on0059.outbound.protection.outlook.com
-	([104.47.2.59]:44672
-	helo=EUR01-DB5-obe.outbound.protection.outlook.com)
+	(envelope-from <bharat.bhushan@nxp.com>) id 1dx7lC-0004aK-Qr
+	for qemu-arm@nongnu.org; Wed, 27 Sep 2017 04:32:06 -0400
+Received: from mail-eopbgr30057.outbound.protection.outlook.com
+	([40.107.3.57]:15232
+	helo=EUR03-AM5-obe.outbound.protection.outlook.com)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <bharat.bhushan@nxp.com>)
-	id 1dx7k6-0003ur-T0; Wed, 27 Sep 2017 04:30:55 -0400
+	id 1dx7lC-0004Zb-Ho; Wed, 27 Sep 2017 04:32:02 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=nxp.com; s=selector1; 
 	h=From:Date:Subject:Message-ID:Content-Type:MIME-Version;
-	bh=KRP+50oJS/8XKyuXrXl0vCiSHaGm/qtxLfz+G1Tf45w=;
-	b=k4jPQtH4mg/zm2BKesi2SImwf+hDPxmTSOfK7IFwMHuD1rmjDeD6h2MhaLfFfRm3ZpkKWFjWY0830hh7Kb/9IRZ6EDLoHaud+yaA6yl6zy/4CitSp5uSjDBex71viVHIBQL+6hTjn8MY3g1tktWuhQcA14MRusdAnfDhCW2LjpA=
+	bh=72BHgMzbdZPJQoj5nJKHq0yzavjxL5vupOF7napKojI=;
+	b=uNObebqsfsX/DKVOre/Q98bu75eEPiKsVOHRPnIJDqyy7nq8Y8NgohE+wvRdgL7cnqPIxv01/AyOq7/6iti8LtLisLpZehKrQ9eklQFBp3Xx4/DMRvR7sXnaHKXvfPDuBAc42LSGZTqmQrVfHnXIwCm5iNWghht4KshqwT2rObY=
 Received: from AM5PR0401MB2545.eurprd04.prod.outlook.com (10.169.245.8) by
-	AM5PR0401MB2545.eurprd04.prod.outlook.com (10.169.245.8) with Microsoft
-	SMTP Server (version=TLS1_2,
+	AM5PR0401MB2548.eurprd04.prod.outlook.com (10.169.245.11) with
+	Microsoft SMTP Server (version=TLS1_2,
 	cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384_P256) id
-	15.20.77.7; Wed, 27 Sep 2017 08:30:51 +0000
+	15.20.77.7; Wed, 27 Sep 2017 08:32:00 +0000
 Received: from AM5PR0401MB2545.eurprd04.prod.outlook.com
 	([fe80::a470:3643:ce8f:6327]) by
 	AM5PR0401MB2545.eurprd04.prod.outlook.com
 	([fe80::a470:3643:ce8f:6327%18]) with mapi id 15.20.0077.016;
-	Wed, 27 Sep 2017 08:30:51 +0000
+	Wed, 27 Sep 2017 08:32:00 +0000
 From: Bharat Bhushan <bharat.bhushan@nxp.com>
-To: Linu Cherian <linuc.decode@gmail.com>
-Thread-Topic: [Qemu-arm] [PATCH v4 0/5] virtio-iommu: VFIO integration
-Thread-Index: AQHTN1rqdMCSmFjsv0elJFTnh6rDzqLIWUMAgAANSjA=
-Date: Wed, 27 Sep 2017 08:30:51 +0000
-Message-ID: <AM5PR0401MB25450ACC804B20D93C4F2D9D9A780@AM5PR0401MB2545.eurprd04.prod.outlook.com>
+To: Peter Xu <peterx@redhat.com>
+Thread-Topic: [PATCH v4 0/5] virtio-iommu: VFIO integration
+Thread-Index: AQHTN1rqdMCSmFjsv0elJFTnh6rDzqLIR3YggAAGu4CAABj/UA==
+Date: Wed, 27 Sep 2017 08:32:00 +0000
+Message-ID: <AM5PR0401MB2545CCAEDA61222A171863F49A780@AM5PR0401MB2545.eurprd04.prod.outlook.com>
 References: <1506494000-31982-1-git-send-email-Bharat.Bhushan@nxp.com>
-	<20170927074109.GA31587@virtx40>
-In-Reply-To: <20170927074109.GA31587@virtx40>
+	<AM5PR0401MB25458FFED2D7D405A71F954C9A780@AM5PR0401MB2545.eurprd04.prod.outlook.com>
+	<20170927070133.GB25011@pxdev.xzpeter.org>
+In-Reply-To: <20170927070133.GB25011@pxdev.xzpeter.org>
 Accept-Language: en-US
 Content-Language: en-US
 X-MS-Has-Attach: 
@@ -89,45 +90,45 @@ authentication-results: spf=none (sender IP is )
 	smtp.mailfrom=bharat.bhushan@nxp.com; 
 x-originating-ip: [192.88.169.1]
 x-ms-publictraffictype: Email
-x-microsoft-exchange-diagnostics: 1; AM5PR0401MB2545;
-	6:Z9y531QBLGncwNJttwBKA6nETe1sDmLFdh658fWegiKucxDH78nTJHzHBd3ycPWMlbKwm1JSrBBxCu+/qBXikjKbY0TdsX6JkFdSGQhJ2veyy7vIziVy7w/pXtjmFPHj+jaQkJva+Kpbn932uOcTRUW+QDiPf+V7yC59LBjlTjOF9df1cvNFRyNpkiK4nseyxUvSjtnPG4ug9d0eXNxOVFT+RebYrBPPJ0Ebpfac2CpHozHABlQuE73DELKDgOPvNrIxoAC/SB0b6ESf0TKE4QSu9LjmWzxEgL/AvpprVVDwnqDJ/4NT7ZjvQi1oQhTPykwBItK6CC/TI2JNlCyvIw==;
-	5:aBVT9Uwl4O2nqRfAMe7OyOvFJY6m4VIEVwaX0oIdHkBAY4Tl8lY//lxOthx3+xjPpmrzAjrVHTNVyLPDkvotPMxmW6TQH9cnrXKmw8W8LgMIPa0152nyePRjfSOa2PQRS7c570wwZQaVJ2q97yHPjg==;
-	24:DIhp3QvSM/KnNBhE9kItgtqoeoEWHU8P2XTYjGnzK3ooCLAOX3dcmkOeu+MbwtppVA3cqMpkeVm/Fq/tUDKr2S9jh4rrQSOTC4CT6hqOG34=;
-	7:DrspO077wlYBb8BpxZ2gFSHURciEyHuIi3FBE45X6o13XPiEcGrSHvxrwA8R9jtEDMQj2JRfOahOH6t4lgVEb1WfYwf867W00eEyZ+aGOTKbOOYLBTEz6wbGb6VBrGI1sxMJJDj8YdygWngyisqiy/MYCruyPEncUsUrbKeRJpe3NDU85kdqZ52MD/e0Qyfptl5BnLlRvsjwAV23NjGxYYY7wpspg7fAr9hohTZZNJA=
+x-microsoft-exchange-diagnostics: 1; AM5PR0401MB2548;
+	6:7M0J8XQ0S7ix4vJtIjrh9wh3/pw4R6xrEH6QbM/AybvpNmHZCdZUOezvD7cVS6/xuskGNH+KzpR5v6QRefdqgsXQxg7hCpX0jJ+8kbUDdJJj1abu3Cz02xZBoo1lJnodbjDBHORwvbwKOOh2zwa3vL11q++qabn0OEPus7EF0D/RQ9WlvJF2VTnsUoLwk4HO5teHQqe8Mo8elDQ6f659Lfmw3zTv5bJombPoXllobSbzrppUdX5Ezb4zHFmBNMVlc6XaeOv0OgTMX339hqNNmwRt93DhEIt7fnXBdzHYYFQNWzglAokA5Vw/bY3Slyn6fA+g5dMFD8SsPPcHjI20Tw==;
+	5:L7TqLluqUUp4bNTMnGJIUw9WNZ0R+K/x7ujCu+Vv5qrJzmCP4tAw1yJg/BIetyDcpOZVfgfsq8TSl12tEMg0Z3QcOfia8718QsUxd/W5p8q2xtTYfYiv2eXqYusQ2qmpc3B61SuGXXQ8IYpzdunK7w==;
+	24:zsg9F89yTBM+dbDx7W8t8QUI6Tga/Jz3rjF5ua9p98S4AXUJb+H24Kf8UKihhykNPNI3tI2goJfGcVAqMEm/aReXeOAOAx0OcJ9EjltSoyE=;
+	7:ex5h6NhIGn+YRLA5L+41jx/8MUJZpkEREUECM1WhtMQ9OKtE4nwM+2iRjXwZRkaQmERLVs1bZoOoDzMA2IdteI8VuyD2Z998xk5LA6u3RL9a6QVmUpw6k6dHG1wKl+j7g/ANyOpBuZj7rfjU5aahTZnTyrv3stdX9GtMgOm/wkSr52fIw+tdRUwGPM8NWT0zLNnUgE4vchl1KlE4PTEaFm1hA3Tws4TEs+epaGyn1zo=
 x-ms-exchange-antispam-srfa-diagnostics: SSOS;
-x-ms-office365-filtering-correlation-id: f73c05ec-9a75-4446-6f01-08d505820ff1
+x-ms-office365-filtering-correlation-id: db8f812b-f7f8-459d-4a6e-08d50582394b
 x-ms-office365-filtering-ht: Tenant
 x-microsoft-antispam: UriScan:; BCL:0; PCL:0;
 	RULEID:(22001)(2017030254152)(48565401081)(2017052603199)(201703131423075)(201703031133081)(201702281549075);
-	SRVR:AM5PR0401MB2545; 
-x-ms-traffictypediagnostic: AM5PR0401MB2545:
-x-exchange-antispam-report-test: UriScan:(180628864354917)(166708455590820)(185117386973197)(228905959029699);
-x-microsoft-antispam-prvs: <AM5PR0401MB25459251D45F12BBC66BC73C9A780@AM5PR0401MB2545.eurprd04.prod.outlook.com>
+	SRVR:AM5PR0401MB2548; 
+x-ms-traffictypediagnostic: AM5PR0401MB2548:
+x-exchange-antispam-report-test: UriScan:(180628864354917)(185117386973197)(228905959029699); 
+x-microsoft-antispam-prvs: <AM5PR0401MB254889BF92279479F3C168B99A780@AM5PR0401MB2548.eurprd04.prod.outlook.com>
 x-exchange-antispam-report-cfa-test: BCL:0; PCL:0;
-	RULEID:(100000700101)(100105000095)(100000701101)(100105300095)(100000702101)(100105100095)(6040450)(2401047)(8121501046)(5005006)(100000703101)(100105400095)(10201501046)(3002001)(93006095)(93001095)(6055026)(6041248)(20161123558100)(20161123555025)(20161123564025)(20161123560025)(20161123562025)(201703131423075)(201702281528075)(201703061421075)(201703061406153)(6072148)(201708071742011)(100000704101)(100105200095)(100000705101)(100105500095);
-	SRVR:AM5PR0401MB2545; BCL:0; PCL:0;
+	RULEID:(100000700101)(100105000095)(100000701101)(100105300095)(100000702101)(100105100095)(6040450)(2401047)(8121501046)(5005006)(100000703101)(100105400095)(10201501046)(3002001)(93006095)(93001095)(6055026)(6041248)(20161123560025)(201703131423075)(201702281528075)(201703061421075)(201703061406153)(20161123555025)(20161123558100)(20161123564025)(20161123562025)(6072148)(201708071742011)(100000704101)(100105200095)(100000705101)(100105500095);
+	SRVR:AM5PR0401MB2548; BCL:0; PCL:0;
 	RULEID:(100000800101)(100110000095)(100000801101)(100110300095)(100000802101)(100110100095)(100000803101)(100110400095)(100000804101)(100110200095)(100000805101)(100110500095);
-	SRVR:AM5PR0401MB2545; 
+	SRVR:AM5PR0401MB2548; 
 x-forefront-prvs: 04433051BF
 x-forefront-antispam-report: SFV:NSPM;
-	SFS:(10009020)(6009001)(376002)(346002)(39860400002)(199003)(377454003)(13464003)(189002)(24454002)(101416001)(105586002)(5660300001)(3660700001)(54356999)(189998001)(3280700002)(76176999)(50986999)(81156014)(229853002)(25786009)(2950100002)(66066001)(7696004)(99286003)(9686003)(305945005)(55016002)(97736004)(316002)(6506006)(6306002)(53936002)(74316002)(6246003)(4326008)(6916009)(6436002)(39060400002)(7736002)(53546010)(3846002)(6116002)(102836003)(2906002)(54906003)(478600001)(2900100001)(86362001)(68736007)(5250100002)(7416002)(81166006)(14454004)(5890100001)(966005)(8676002)(8936002)(33656002)(106356001)(21314002);
-	DIR:OUT; SFP:1101; SCL:1; SRVR:AM5PR0401MB2545;
+	SFS:(10009020)(6009001)(376002)(346002)(39860400002)(199003)(377454003)(189002)(24454002)(13464003)(76176999)(86362001)(478600001)(6506006)(25786009)(105586002)(106356001)(54906003)(6436002)(101416001)(102836003)(229853002)(6116002)(50986999)(54356999)(3846002)(66066001)(68736007)(2906002)(33656002)(3660700001)(316002)(3280700002)(39060400002)(7736002)(53936002)(6246003)(305945005)(7416002)(5250100002)(53546010)(97736004)(14454004)(2950100002)(4326008)(74316002)(6916009)(5660300001)(7696004)(189998001)(2900100001)(8936002)(8676002)(81156014)(9686003)(81166006)(99286003)(55016002);
+	DIR:OUT; SFP:1101; SCL:1; SRVR:AM5PR0401MB2548;
 	H:AM5PR0401MB2545.eurprd04.prod.outlook.com; FPR:; SPF:None;
 	PTR:InfoNoRecords; A:1; MX:1; LANG:en; 
 received-spf: None (protection.outlook.com: nxp.com does not designate
 	permitted sender hosts)
 spamdiagnosticoutput: 1:99
 spamdiagnosticmetadata: NSPM
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 MIME-Version: 1.0
 X-OriginatorOrg: nxp.com
-X-MS-Exchange-CrossTenant-originalarrivaltime: 27 Sep 2017 08:30:51.3692 (UTC)
+X-MS-Exchange-CrossTenant-originalarrivaltime: 27 Sep 2017 08:32:00.7291 (UTC)
 X-MS-Exchange-CrossTenant-fromentityheader: Hosted
 X-MS-Exchange-CrossTenant-id: 686ea1d3-bc2b-4c6f-a92c-d99c5c301635
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: AM5PR0401MB2545
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: AM5PR0401MB2548
 X-detected-operating-system: by eggs.gnu.org: Windows 7 or 8 [fuzzy]
-X-Received-From: 104.47.2.59
+X-Received-From: 40.107.3.57
 Subject: Re: [Qemu-arm] [PATCH v4 0/5] virtio-iommu: VFIO integration
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
@@ -157,111 +158,39 @@ Cc: "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
 	"eric.auger.pro@gmail.com" <eric.auger.pro@gmail.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: DEb5BqhlCkxK
+X-TUID: jQJgAdXbjmST
 
-Hi,
-
-> -----Original Message-----
-> From: Linu Cherian [mailto:linuc.decode@gmail.com]
-> Sent: Wednesday, September 27, 2017 1:11 PM
-> To: Bharat Bhushan <bharat.bhushan@nxp.com>
-> Cc: eric.auger@redhat.com; eric.auger.pro@gmail.com;
-> peter.maydell@linaro.org; alex.williamson@redhat.com; mst@redhat.com;
-> qemu-arm@nongnu.org; qemu-devel@nongnu.org; kevin.tian@intel.com;
-> marc.zyngier@arm.com; tn@semihalf.com; will.deacon@arm.com;
-> drjones@redhat.com; robin.murphy@arm.com; christoffer.dall@linaro.org;
-> bharatb.yadav@gmail.com
-> Subject: Re: [Qemu-arm] [PATCH v4 0/5] virtio-iommu: VFIO integration
->=20
-> Hi,
->=20
-> On Wed Sep 27, 2017 at 12:03:15PM +0530, Bharat Bhushan wrote:
-> > This patch series integrates VFIO/VHOST with virtio-iommu.
-> >
-> > This version is mainly about rebasing on v4 version on virtio-iommu
-> > device framework from Eric Augur and addresing review comments.
-> >
-> > This patch series allows PCI pass-through using virtio-iommu.
-> >
-> > This series is based on:
-> >  - virtio-iommu kernel driver by Jean-Philippe Brucker
-> >     [1] [RFC] virtio-iommu version 0.4
-> >     git://linux-arm.org/virtio-iommu.git branch viommu/v0.4
-> >
-> >  - virtio-iommu device emulation by Eric Augur.
-> >    [RFC v4 00/16] VIRTIO-IOMMU device
-> >    https://github.com/eauger/qemu/tree/v2.10.0-virtio-iommu-v4
-> >
-> > Changes are available at : https://github.com/bharaty/qemu.git
-> > virtio-iommu-vfio-integration-v4
-> >
->=20
-> # With the above sources, was trying to test the vfio-pci device assigned=
- to
->   guest using Qemu.
-> # Both guest and host kernels are configured with 4k as page size.
-> # releavant qemu command snippet,
->   -device virtio-iommu-device -device virtio-blk-device,drive=3Dhd0 \
->   -net none -device vfio-pci,host=3Dxxx
->=20
->=20
-> On guest booting, observed mutliple messages as below,
->=20
-> qemu-system-aarch64: iommu has granularity incompatible with target AS
->=20
-> # On adding necessary prints, 0x5000 is len, 0x4fff is address mask
->   and the code expects the address mask to be 0xfff.
-
-I have not seen these errors, I am also using 4K page-size on both host and=
- guest. Can you share compete qemu command and log.=20
-
-Thanks
--Bharat
-
->=20
-> if (len & iotlb->addr_mask) {
->         error_report
->=20
-> # vfio_dma_map is failing due to this error.
->=20
-> Any pointers ?
->=20
->=20
-> > v3->v4:
-> >  - Rebase to v4 version from Eric
-> >  - Fixes from Eric with DPDK in VM
-> >  - Logical division in multiple patches
-> >
-> > v2->v3:
-> >  - This series is based on "[RFC v3 0/8] VIRTIO-IOMMU device"
-> >    Which is based on top of v2.10-rc0 that
-> >  - Fixed issue with two PCI devices
-> >  - Addressed review comments
-> >
-> > v1->v2:
-> >   - Added trace events
-> >   - removed vSMMU3 link in patch description
-> >
-> > Bharat Bhushan (5):
-> >   target/arm/kvm: Translate the MSI doorbell in
-> kvm_arch_fixup_msi_route
-> >   virtio-iommu: Add iommu notifier for map/unmap
-> >   virtio-iommu: Call iommu notifier for attach/detach
-> >   virtio-iommu: add iommu replay
-> >   virtio-iommu: add iommu notifier memory-region
-> >
-> >  hw/virtio/trace-events           |   5 ++
-> >  hw/virtio/virtio-iommu.c         | 181
-> ++++++++++++++++++++++++++++++++++++++-
-> >  include/hw/virtio/virtio-iommu.h |   6 ++
-> >  target/arm/kvm.c                 |  27 ++++++
-> >  target/arm/trace-events          |   3 +
-> >  5 files changed, 219 insertions(+), 3 deletions(-)
-> >
-> > --
-> > 1.9.3
-> >
-> >
->=20
-> --
-> Linu cherian
+SGkgUGV0ZXIsDQoNCj4gLS0tLS1PcmlnaW5hbCBNZXNzYWdlLS0tLS0NCj4gRnJvbTogUGV0ZXIg
+WHUgW21haWx0bzpwZXRlcnhAcmVkaGF0LmNvbV0NCj4gU2VudDogV2VkbmVzZGF5LCBTZXB0ZW1i
+ZXIgMjcsIDIwMTcgMTI6MzIgUE0NCj4gVG86IEJoYXJhdCBCaHVzaGFuIDxiaGFyYXQuYmh1c2hh
+bkBueHAuY29tPg0KPiBDYzogZXJpYy5hdWdlckByZWRoYXQuY29tOyBlcmljLmF1Z2VyLnByb0Bn
+bWFpbC5jb207DQo+IHBldGVyLm1heWRlbGxAbGluYXJvLm9yZzsgYWxleC53aWxsaWFtc29uQHJl
+ZGhhdC5jb207IG1zdEByZWRoYXQuY29tOw0KPiBxZW11LWFybUBub25nbnUub3JnOyBxZW11LWRl
+dmVsQG5vbmdudS5vcmc7IHdlaUByZWRoYXQuY29tOw0KPiBrZXZpbi50aWFuQGludGVsLmNvbTsg
+bWFyYy56eW5naWVyQGFybS5jb207IHRuQHNlbWloYWxmLmNvbTsNCj4gd2lsbC5kZWFjb25AYXJt
+LmNvbTsgZHJqb25lc0ByZWRoYXQuY29tOyByb2Jpbi5tdXJwaHlAYXJtLmNvbTsNCj4gY2hyaXN0
+b2ZmZXIuZGFsbEBsaW5hcm8ub3JnOyBiaGFyYXRiLnlhZGF2QGdtYWlsLmNvbQ0KPiBTdWJqZWN0
+OiBSZTogW1BBVENIIHY0IDAvNV0gdmlydGlvLWlvbW11OiBWRklPIGludGVncmF0aW9uDQo+IA0K
+PiBPbiBXZWQsIFNlcCAyNywgMjAxNyBhdCAwNjo0NjoxOEFNICswMDAwLCBCaGFyYXQgQmh1c2hh
+biB3cm90ZToNCj4gPiBIaSBQZXRlciwNCj4gDQo+IEhpLCBCaGFyYXQhDQo+IA0KPiA+DQo+ID4g
+V2hpbGUgdmZpbyB3aXRoIHZpcnRpby1pb21tdSBJIG9ic2VydmVkIG9uZSBpc3N1ZSwgIFdoZW4g
+dmlydGlvLWlvbW11DQo+IGRldmljZSBleGlzdHMgYnV0IGd1ZXN0IGtlcm5lbCBkb2VzIG5vdCBo
+YXZlIHZpcnRpby1pb21tdSBkcml2ZXIgKG5vdA0KPiBlbmFibGVkIGluIENvbmZpZykgdGhlbiBJ
+T01NVSBmYXVsdHMgYXJlIHJlcG9ydGVkIG9uIGhvc3QuDQo+ID4NCj4gPiBUaGlzIGlzIGJlY2F1
+c2Ugbm8gbWFwcGluZyBpcyBjcmVhdGVkIGluIElPTU1VLCBub3QgZXZlbiBkZWZhdWx0DQo+IGd1
+ZXN0LXBoeXNpY2FsIHRvIHJlYWwtcGh5c2ljYWwuIFdoaWxlIGxvb2tpbmcgYXQgdmZpb19saXN0
+ZW5lcl9yZWdpb25fYWRkKCksIGl0DQo+IGRvZXMgbm90IGNyZWF0ZSBpbml0aWFsIG1hcHBpbmcg
+aW4gSU9NTVUgYW5kIHJlbGllcyBvbiBndWVzdCB0byBjcmVhdGUNCj4gbWFwcGluZy4gSXMgdGhp
+cyBzb21ldGhpbmcga25vd24gb3IgSSBhbSBtaXNzaW5nIHNvbWV0aGluZz8NCj4gDQo+IEZvciBW
+VC1kLCB0aGUgdHJpY2sgaXMgcGxheWVkIHVzaW5nIGR5bmFtaWMgSU9NTVUgbWVtb3J5IHJlZ2lv
+bi4NCj4gUGxlYXNlIHJlZmVyIHRvIGNvbW1pdCA1NThlMDAyNGE0MjggKCJpbnRlbF9pb21tdTog
+YWxsb3cgZHluYW1pYyBzd2l0Y2ggb2YNCj4gSU9NTVUgcmVnaW9uIikgZm9yIG1vcmUgaW5mb3Jt
+YXRpb24uDQo+IA0KPiBUaGUgd2hvbGUgaWRlYSBpcyB0aGF0LCB0aGUgSU9NTVUgcmVnaW9uIHdp
+bGwgbm90IGJlIGVuYWJsZWQgb25seSBpZiB0aGUNCj4gZ3Vlc3QgZW5hYmxlcyB0aGF0IGV4cGxp
+Y2l0bHkgZm9yIHRoZSBkZXZpY2UuICBPdGhlcndpc2UgKGZvciB5b3VyIGNhc2UsIHdoZW4NCj4g
+Z3Vlc3QgZHJpdmVyIGlzIG5vdCBsb2FkZWQgYXQgYWxsKSwgdGhlIElPTU1VIHJlZ2lvbiBpcyBi
+eSBkZWZhdWx0IG9mZiwgdGhlbg0KPiB0aGUgZGVmYXVsdCBHUEEgcmVnaW9uIHdpbGwgYmUgdXNl
+ZCB0byBidWlsZCB1cCB0aGUgbWFwcGluZyAoanVzdCBsaWtlIHdoZW4NCj4gd2UgZG9uJ3QgaGF2
+ZSB2SU9NTVUgYXQgYWxsKS4gIFRoYW5rcywNCg0KVGhhbmtzLCBJIHdpbGwgYW5hbHl6ZSBhbmQg
+c2VlIGhvdyB3ZSBjYW4gdXNlIGZvciB2aXJ0aW8taW9tbXUuDQoNClJlZ2FyZHMNCi1CaGFyYXQN
+Cg0KPiANCj4gLS0NCj4gUGV0ZXIgWHUNCg==

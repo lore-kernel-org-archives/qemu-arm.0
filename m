@@ -1,95 +1,95 @@
-Received: by 10.223.173.107 with SMTP id p98csp384338wrc;
-        Thu, 28 Sep 2017 00:54:47 -0700 (PDT)
-X-Google-Smtp-Source: AOwi7QBZ0GqkogtBiGPky58+7ge22hoXxh869pTdOWjrGnwYlOl4MA0KEoGF4uU34wxKeMF2mdc4
-X-Received: by 10.55.104.150 with SMTP id d144mr5708739qkc.185.1506585287087;
-        Thu, 28 Sep 2017 00:54:47 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1506585287; cv=none;
+Received: by 10.223.173.107 with SMTP id p98csp386474wrc;
+        Thu, 28 Sep 2017 00:58:00 -0700 (PDT)
+X-Google-Smtp-Source: AOwi7QBcfrh1t9HjkOJaBjR0G6LAtQFsIFi45MJJ4wz28xe+ZR+UMztvsAZllKDgo/xmzNDAB4Oj
+X-Received: by 10.200.35.186 with SMTP id q55mr5785475qtq.193.1506585480729;
+        Thu, 28 Sep 2017 00:58:00 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1506585480; cv=none;
         d=google.com; s=arc-20160816;
-        b=KksPZNZHj0uZwKdOCuaSNsj2c0ConCtXihLH/ouD+m5gGhJnZNQat2gxx+1mBrDXrv
-         L/HQoVaXlYOQ+9Vhz+kF2ohud6QEsHmq+xR6LCm01jRJhBcKhODu6GmvvslBok56QENv
-         Eqc3oaHQYe0Dcl6bbIwKc2rjJ3Gr8n1moxx1hWT32oMS2RuawaiZ8+s1dmcLOeud69DY
-         2ess7UC/Y4cjEnaZ93QEV0mVFr16eRDZOhSU/8UsqpDQzGtfNjpvk9FYBnNyxD0wUQWu
-         5n7kMiEb1VFZ8FhHsGPxrC0scJEa/h92PZpjoRjl6oZNSIB+vix00QdwGwciDAi7kahB
-         biLw==
+        b=oIES/4zQ4w5no0DRTuy+Q9IcB0Eow8a5mifK9aevwvTeZeozX2IY/DTLzCRBcVxRcE
+         KcTFIsu8VuicSNNhF+JIOnkcxLQTMjzuf/ecWJflSp7f+AdWhzpEacKAY/jhq6KyxaHD
+         Pk/DUMbJ6T44oOweNLX91AYFzUgUePTechdCLPxFAQLDzgrayY7+GL1xDvcy5/O1o8qi
+         SSieWa4z4SzOEvYFGJKR8e/1MD5eEQqoOKmkMBT2AV1Lfut7pya6LZZds5tUf54zOoMr
+         0VPTXuCxxiFYTZ0Nky/q11XNo/LGRi8e7y4OTCiT6Idm64EO/JqPIrIrUK16FheEoZO6
+         aTZA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
          :message-id:from:references:to:dmarc-filter
          :arc-authentication-results;
-        bh=Np2Y8uvSlftToUs2pYNsyq5yCTwtUxzNc24ZJeCvOSQ=;
-        b=WwjP/TkLvYktYCUts7qplmwxINbl/7Jm5gbmBGimsn5Y5L11tLwgFsa7ygG6TQIm7R
-         B5SHkEkKVIKu+2Vtl/4WrpxynpvGJE+I14CF6lPWthpB/o9TOQdo0yawLYaa6yPVZaqu
-         Mmf2JvL5Xj8ErGOedKDzylZR4xXcvQoCrUmsRKju2ympVYnTIvsd7eQaTW+Uw4Gd7k8X
-         jak+7+Vll6HDXCFWpnVM3omH7AR3Res21QPJV5EuH4Qpu8GRolMvXNDmG1Ef5NjiPr54
-         NGOq/nErz+XDrvJ+AuJjnEusfisp4P5LXJCyCDLpk5oQVvfMfhrOajRuNFZxQWrSDNE4
-         B/8g==
+        bh=KGWYGIdPwTgwe1/4CnTKj4VKMK5iO3EkcKSIe6QLQvc=;
+        b=QyBd2FJuDy3HPi3F5MzKEe+YruPq4wf86vv4NJaeVGhtWhYItC/e504xTzYR+lSofh
+         pydA6u7PYT4wyncyIzURL6jAAJojwr5WUZDquaXxCGTT8alkbRIPw6Rm6s6vgZ5Fc65F
+         KZy3ZZh1JZY/YrmW4OfuMUAYI4Cuzud7nzcGkPeHsu0OAnV+Tl7mOAt0cX0gLo6FLPsu
+         AcFpIt3bB0cXINfqfRsR4YGLHZF3M6X7Ia6ib9QwL8OxMR0xq9Z+zc0GXjDRfcPXUubZ
+         68k3+uwNC53C8czIVmdiZRbJDeXCqvM3R2+HAWrxyqRGLfIm91OHrQVulkV1rreSamh6
+         e3Jw==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id c8si1038007qta.516.2017.09.28.00.54.46
+        by mx.google.com with ESMTPS id r30si988561qta.168.2017.09.28.00.58.00
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 28 Sep 2017 00:54:47 -0700 (PDT)
+        Thu, 28 Sep 2017 00:58:00 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:57826 helo=lists.gnu.org)
+Received: from localhost ([::1]:57841 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1dxTee-0006s8-TC
-	for alex.bennee@linaro.org; Thu, 28 Sep 2017 03:54:44 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:39106)
+	id 1dxThm-0008ER-IL
+	for alex.bennee@linaro.org; Thu, 28 Sep 2017 03:57:58 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:40418)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1dxTeV-0006rz-UZ
-	for qemu-arm@nongnu.org; Thu, 28 Sep 2017 03:54:36 -0400
+	(envelope-from <eric.auger@redhat.com>) id 1dxThd-0008E2-5P
+	for qemu-arm@nongnu.org; Thu, 28 Sep 2017 03:57:53 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1dxTeV-0003va-0t
-	for qemu-arm@nongnu.org; Thu, 28 Sep 2017 03:54:36 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:39334)
+	(envelope-from <eric.auger@redhat.com>) id 1dxThc-0005tc-BJ
+	for qemu-arm@nongnu.org; Thu, 28 Sep 2017 03:57:49 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:55990)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <eric.auger@redhat.com>)
-	id 1dxTeU-0003vA-Nw; Thu, 28 Sep 2017 03:54:34 -0400
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
-	[10.5.11.12])
+	id 1dxThc-0005tM-4W; Thu, 28 Sep 2017 03:57:48 -0400
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
+	[10.5.11.16])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 6DD2CC059B6C;
-	Thu, 28 Sep 2017 07:54:33 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 6DD2CC059B6C
-Authentication-Results: ext-mx08.extmail.prod.ext.phx2.redhat.com;
+	by mx1.redhat.com (Postfix) with ESMTPS id 02C7522D6E1;
+	Thu, 28 Sep 2017 07:57:47 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 02C7522D6E1
+Authentication-Results: ext-mx03.extmail.prod.ext.phx2.redhat.com;
 	dmarc=none (p=none dis=none) header.from=redhat.com
-Authentication-Results: ext-mx08.extmail.prod.ext.phx2.redhat.com;
+Authentication-Results: ext-mx03.extmail.prod.ext.phx2.redhat.com;
 	spf=fail smtp.mailfrom=eric.auger@redhat.com
 Received: from localhost.localdomain (ovpn-116-163.ams2.redhat.com
 	[10.36.116.163])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 7E41586E60;
-	Thu, 28 Sep 2017 07:54:22 +0000 (UTC)
-To: Peter Xu <peterx@redhat.com>, Linu Cherian <linuc.decode@gmail.com>
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id C65D917143;
+	Thu, 28 Sep 2017 07:57:36 +0000 (UTC)
+To: Peter Maydell <peter.maydell@linaro.org>
 References: <1504286483-23327-1-git-send-email-eric.auger@redhat.com>
-	<20170928064312.GA1544@virtx40>
-	<20170928071359.GG17044@pxdev.xzpeter.org>
+	<1504286483-23327-2-git-send-email-eric.auger@redhat.com>
+	<CAFEAcA8k4nAjqJ_Mu5ZZ8ygMMJikX17BCB3M0ZkbQBsKVLt5TQ@mail.gmail.com>
 From: Auger Eric <eric.auger@redhat.com>
-Message-ID: <42a551e1-ccc4-f162-51d8-c61ca5f86790@redhat.com>
-Date: Thu, 28 Sep 2017 09:54:20 +0200
+Message-ID: <18211c39-970f-1277-e2a8-a30bb30f9050@redhat.com>
+Date: Thu, 28 Sep 2017 09:57:35 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
 	Thunderbird/45.4.0
 MIME-Version: 1.0
-In-Reply-To: <20170928071359.GG17044@pxdev.xzpeter.org>
+In-Reply-To: <CAFEAcA8k4nAjqJ_Mu5ZZ8ygMMJikX17BCB3M0ZkbQBsKVLt5TQ@mail.gmail.com>
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.32]);
-	Thu, 28 Sep 2017 07:54:33 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.27]);
+	Thu, 28 Sep 2017 07:57:47 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v7 00/20] ARM SMMUv3 Emulation
- Support
+Subject: Re: [Qemu-arm] [PATCH v7 01/20] hw/arm/smmu-common: smmu base
+ device and datatypes
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -101,89 +101,55 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, drjones@redhat.com, tcain@qti.qualcomm.com,
+Cc: Radha Mohan <mohun106@gmail.com>, Andrew Jones <drjones@redhat.com>,
+	Trey Cain <tcain@qti.qualcomm.com>,
 	Radha.Chintakuntla@cavium.com, Sunil.Goutham@cavium.com,
-	mohun106@gmail.com, jean-philippe.brucker@arm.com,
-	tn@semihalf.com, mst@redhat.com, will.deacon@arm.com,
-	qemu-devel@nongnu.org, alex.williamson@redhat.com,
-	qemu-arm@nongnu.org, prem.mallappa@gmail.com,
-	robin.murphy@arm.com, eric.auger.pro@gmail.com,
-	bharat.bhushan@nxp.com, christoffer.dall@linaro.org, wtownsen@redhat.com
+	"Michael S. Tsirkin" <mst@redhat.com>,
+	jean-philippe.brucker@arm.com, Tomasz Nowicki <tn@semihalf.com>,
+	Will Deacon <will.deacon@arm.com>, QEMU Developers <qemu-devel@nongnu.org>,
+	Peter Xu <peterx@redhat.com>, Alex Williamson <alex.williamson@redhat.com>,
+	qemu-arm <qemu-arm@nongnu.org>,
+	Christoffer Dall <christoffer.dall@linaro.org>,
+	robin.murphy@arm.com, wtownsen@redhat.com,
+	Bharat Bhushan <bharat.bhushan@nxp.com>,
+	Prem Mallappa <prem.mallappa@gmail.com>, eric.auger.pro@gmail.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: rOwtgeCIpWuk
+X-TUID: XkXntiinIGIL
 
-Hi Linu, Peter,
-
-On 28/09/2017 09:13, Peter Xu wrote:
-> On Thu, Sep 28, 2017 at 12:13:12PM +0530, Linu Cherian wrote:
->> Hi Eric,
+Hi Peter,
+On 27/09/2017 19:38, Peter Maydell wrote:
+> On 1 September 2017 at 10:21, Eric Auger <eric.auger@redhat.com> wrote:
+>> The patch introduces the smmu base device and class for the ARM
+>> smmu. Devices for specific versions will be derived from this
+>> base device.
 >>
+>> We also introduce some important datatypes.
 >>
->> On Fri Sep 01, 2017 at 07:21:03PM +0200, Eric Auger wrote:
->>> This series implements the emulation code for ARM SMMUv3.
->>>
->>> Changes since v6:
->>> - DPDK testpmd now running on guest with 2 assigned VFs
->>> - Changed the instantiation method: add the following option to
->>>   the QEMU command line
->>>   -device smmuv3 # for virtio/vhost use cases
->>>   -device smmuv3,caching-mode # for vfio use cases (based on [1])
->>> - splitted the series into smaller patches to allow the review
->>> - the VFIO integration based on "tlbi-on-map" smmuv3 driver
->>>   is isolated from the rest: last 2 patches, not for upstream.
->>>   This is shipped for testing/bench until a better solution is found.
->>> - Reworked permission flag checks and event generation
->>> e testing:
->>> - in dt and ACPI modes
->>> - virtio-net-pci and vhost-net devices using dma ops with various
->>>   guest page sizes [2]
->>> - assigned VFs using dma ops [3]:
->>>   - AMD Overdrive and igbvf passthrough (using gsi direct mapping)
->>>   - Cavium ThunderX and ixgbevf passthrough (using KVM MSI routing)
->>> - DPDK testpmd on guest running with VFIO user space drivers (2 igbvf) [3]
->>>   with guest and host page size equal (4kB)
->>>
->>> Known limitations:
->>> - no VMSAv8-32 suport
->>> - no nested stage support (S1 + S2)
->>> - no support for HYP mappings
->>> - register fine emulation, commands, interrupts and errors were
->>>   not accurately tested. Handling is sufficient to run use cases
->>>   described above though.
->>> - interrupts and event generation not observed yet.
->>
->> While testing with vfio-pci, observed that the below two  Qemu command,
->> results in two different behaviour. Is this expected by design ?
->>
->> Case 1:
->> # -device vfio-pci,host=0002:01:00.3 -device smmuv3,caching-mode
->>  Here iommu is not attached to the pci bus in Qemu backend, since
->>  pci_setup_iommu is not called before vfio_realize.
->>
->> Case 2:
->> # -device smmuv3,caching-mode -device vfio-pci,host=0002:01:00.3
->> This works as expected, iommu is attached to the pci bus.
+>> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+>> Signed-off-by: Prem Mallappa <prem.mallappa@broadcom.com>
 > 
-> Not sure about SMMU, but VT-d should have similar issue - the vIOMMU
-> device needs to be created before the rest of the devices.
+>> +/*
+>> + * Copyright (C) 2014-2016 Broadcom Corporation
+>> + * Copyright (c) 2017 Red Hat, Inc.
+>> + * Written by Prem Mallappa, Eric Auger
+>> + *
+>> + * This program is free software; you can redistribute it and/or modify
+>> + * it under the terms of the GNU General Public License version 2 as
+>> + * published by the Free Software Foundation.
+> 
+> Really GPL-2-only ?
+> 
+> Unless there's a good reason, you should probably fix this (including
+> getting an ack from Prem/Broadcom where it applies to code that came
+> from him).
+OK, thanks for the notice,  I will investigate how/if we can change the
+license.
 
-Yes this is an expected limitation right now. I should have documented
-it though. As you noticed, the pci_set_iommu() is called on virtio-iommu
-realize and it relies on the fact the PCIe devices already are realized.
-
-Maybe we could relax this constraint by calling the pci_set_iommu in a
-machine init done notifier.
-
-Thanks
+Best Regards
 
 Eric
-
-
 > 
-> Now for VT-d the ordering of devices should be assured by Libvirt:
-> 
-> https://bugzilla.redhat.com/show_bug.cgi?id=1427005
-> 
-> For your reference only.  Thanks,
+> thanks
+> -- PMM
 > 

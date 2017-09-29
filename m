@@ -1,101 +1,93 @@
-Received: by 10.223.197.9 with SMTP id q9csp902261wrf;
-        Fri, 29 Sep 2017 11:13:41 -0700 (PDT)
-X-Received: by 10.200.45.91 with SMTP id o27mr7413980qta.319.1506708821188;
-        Fri, 29 Sep 2017 11:13:41 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1506708821; cv=none;
+Received: by 10.223.197.9 with SMTP id q9csp976210wrf;
+        Fri, 29 Sep 2017 12:47:46 -0700 (PDT)
+X-Google-Smtp-Source: AOwi7QC4HfZ6csx7N/V4Nbwry7/nXrklmcFjOocfV7EQdVZ7n7gvJ/+n7+0/ZghQiJwTJ4HgU7U+
+X-Received: by 10.55.5.65 with SMTP id 62mr4671843qkf.164.1506714466207;
+        Fri, 29 Sep 2017 12:47:46 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1506714466; cv=none;
         d=google.com; s=arc-20160816;
-        b=vgYOlE1qzOzAe62pKSDHxfKKJjxyIS/icCtkADAacPY43gdFzH8G4Df+DCkQIUd2sA
-         /l0zHRyw/nS2iNDuEzU9K3MckAzy83zqNTSwxCyvWULafcdeb0WP4gSlFwZpk3QG+tW6
-         nfQ868m9AZIQVTgo9k8w+1qYOLaimdQZe2UjIkpwpki8vtIS0bJkKMfMOLa8Ho1IYzQQ
-         28OuL60b41yk1wamsrC+BynJw7JupT0wseGkRopaE0x10MhJac4TC/IhlJv9iKsi2yOK
-         FVgFov1z5gjtl0FhBy8+YdyiZMhEGRoB/e84QxU8ziEG4bpyXS82Bkv5uiPdk+9zaZsw
-         v0fA==
+        b=zX077XNh9YBhoae0B2eRkUnEilPPG8bbb7Weny1Ep9MhQF/+Ij8ORefkPmRTJtv/wZ
+         e4d6creaRkpOJYocO2BqiJnFIzssd9oh23+hDZWPiaBiBy3lPEkmhtfD+jxMdE/GHXbe
+         MSj3THHN/nP7BaHMHANtowCxJgsR2o6Mgj864yWY/wwYt5y0pbmGPAUcFfo819ge2T07
+         SQEi6JeYOrEc5ChORnuYQl/6Co6LTawDzbqD8kDNKaaDmHVLi+WA6jqK6N0ihyarZNbe
+         PYkDbPlIkZOuvIHEYYvZiPeo7i/Ac6cF8mu6+PcEhn0PtqJzX6VQq1NY1q3EjMbxCZmH
+         4AHg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
-         :references:in-reply-to:mime-version:dkim-signature
-         :arc-authentication-results;
-        bh=CA8so48hupXpQdIN9bSRU/xW/fNRvYDwhtm7khA9S9w=;
-        b=aF5Blcb6ZEaH8fXunWhvKyHajBq7oHN2YP53NvNO8Kf/IbJndkGf9CZfafIjf/PaLJ
-         GobAvqS9MgMaPDZA/HMSYmZhzyNEfk/+UuWvydiXJ2I0ZwvJNoiKrk8nSs8YTXob5mlA
-         +YCRaDnsA+6z4/AICOMJajJWqTxbYsxZq5WydsP2mv1RtIAoElqdQN5Nb6HfkT4ocYQI
-         KqvjKTm3kF2CYRAnwTGJKBo7jp8pxHb1ksKNQGPl9WTySBZ77Nfy1brPCmNMrR5iOeAy
-         VqRNvbH2mPGQ7oBOWrFs0h5VFcTDeuXMfUgFH4grQkgZNumcj+wHWZJC4NO7Mz+xK2qU
-         eP3g==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:user-agent:in-reply-to
+         :content-disposition:mime-version:references:message-id:to:from:date
+         :dmarc-filter:arc-authentication-results;
+        bh=y/YTdmx4U1L/CgmwTzd2kof4mfdsNiXCYIWa+azp78Q=;
+        b=dBEohl155ygqjWg8OzqOUaURcDyFoqPZE1BWnDj1W9ug4VO7MLSEj2MmD9/q700o3L
+         ocwOA0t25N1IIBEf/qEgfzAASgObwPKuosNoljJoPYiZq+zl5SlYVXC8Kk5ANDoP3SEo
+         pEn1V0oJRbA5fd9bvVKtuVRuhkivaY6gj3XCB8OfOtGwDTeIiqV4nS29SxoOg7OrINH0
+         6xqz6ylO8X+52dUjhFoSEL4hIh/TJKuop+aqY6NfJYMNlMn9XXn3p99MWXshjPba6k3J
+         POTTKlgtk3dNQtgYJS17sbOHjN/YdiTEVQEMT9fTP6e0anH48RZi0Bn060InUAc6dnsA
+         6+ug==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=iPoD8wEK;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@gnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@gnu.org
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@gnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@gnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@gnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id 75si4259349qtg.467.2017.09.29.11.13.40
+        by mx.google.com with ESMTPS id b17si4463420qtb.246.2017.09.29.12.47.45
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 29 Sep 2017 11:13:41 -0700 (PDT)
+        Fri, 29 Sep 2017 12:47:46 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@gnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=iPoD8wEK;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@gnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@gnu.org
-Received: from localhost ([::1]:36533 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@gnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@gnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:36821 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@gnu.org>)
-	id 1dxzn8-0003ma-TE
-	for alex.bennee@linaro.org; Fri, 29 Sep 2017 14:13:38 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:41257)
+	id 1dy1GB-0008NF-W7
+	for alex.bennee@linaro.org; Fri, 29 Sep 2017 15:47:44 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:36457)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alistair23@gmail.com>) id 1dxzmz-0003l3-FT
-	for qemu-arm@nongnu.org; Fri, 29 Sep 2017 14:13:30 -0400
+	(envelope-from <ehabkost@redhat.com>) id 1dy1G1-0008Lf-OW
+	for qemu-arm@nongnu.org; Fri, 29 Sep 2017 15:47:34 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <alistair23@gmail.com>) id 1dxzmy-0003Rx-Kw
-	for qemu-arm@nongnu.org; Fri, 29 Sep 2017 14:13:29 -0400
-Received: from mail-wm0-x244.google.com ([2a00:1450:400c:c09::244]:47674)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <alistair23@gmail.com>)
-	id 1dxzmw-0003Px-DX; Fri, 29 Sep 2017 14:13:26 -0400
-Received: by mail-wm0-x244.google.com with SMTP id t69so999073wmt.2;
-	Fri, 29 Sep 2017 11:13:26 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=mime-version:sender:in-reply-to:references:from:date:message-id
-	:subject:to:cc;
-	bh=CA8so48hupXpQdIN9bSRU/xW/fNRvYDwhtm7khA9S9w=;
-	b=iPoD8wEKfRr9lT7A4QMEIgdUWDnBRIELoHnnR93/TqccRbRyUcdhh28unBeUyov0Th
-	EAsudIGsJdES8T8zWmB5H/kOtg63XrUx4JGWZ6KO7c6kZZ54UKIHpX4smql67lB6D42S
-	APalSt7QFTlkNBqLx8/XfxIUkjqqApP1Il1Knd+YAzm2qRx+nJuZg45WpcSdULRK4dWN
-	ncu4Xn5dQsZjnNB6+QGr4ZC1oHwtO+L7imo8I2YCJrxHxgfXcArtQeX6E4hlAWANlW2V
-	hcWLrPQiJxkq58JlhNv6YOe3fApV76dfNfbJxtTdDDo5gFWnKydalF+sTfgz9MiieNl5
-	2/wQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:sender:in-reply-to:references:from
-	:date:message-id:subject:to:cc;
-	bh=CA8so48hupXpQdIN9bSRU/xW/fNRvYDwhtm7khA9S9w=;
-	b=JxyWZgSw3J1N8mQTcrGVPXlMbT+Y6kIcnlYm+AoA7WieBdHeUIALgFb3X/6lwDzRNQ
-	E+1uGsA4pNuBOoYJz7lavnVQkDWfnV3kQe6AyW5plG99uvWDuRvCsCTMbZpbQB+qv/wD
-	jaepc3JOMR/ouKEQC9xDcbfPDKHDx7/ZlM4/NRgYTxMVbVFv/7/1BeZB3oyOi9UqJhRC
-	XllZ6AxV7hNR0sy+HkLhdN8hkvHju8dp2/0P1oDUT3CR8eYWcIKalVPr+v87nrd8JvBS
-	l/6EgkJF9g01gUm6+QLzfX0oIGCy2qT/NUiXMAohFc9eyGY21DJTdnbRcsbnBRyFSA7K
-	Y9oA==
-X-Gm-Message-State: AMCzsaW6PxvLzEyqFJZICBMaGG5Z9RjC6IEsAF9b5e1QIiZ3sAGwe7Vd
-	lGMmaLyqHaG4pOIuwueLkgbui89kIqc7QLXQCNs=
-X-Google-Smtp-Source: AOwi7QDvQLu6f2kM3rllwSmsfrqioCLSu4GPzxHNcxmX183CMAa5FnXJ63nmyvVbO4TfU4F+GOcMF2WXc9hPzWQTF+Y=
-X-Received: by 10.28.130.130 with SMTP id e124mr4324829wmd.75.1506708805188;
-	Fri, 29 Sep 2017 11:13:25 -0700 (PDT)
+	(envelope-from <ehabkost@redhat.com>) id 1dy1Fx-0006U0-RT
+	for qemu-arm@nongnu.org; Fri, 29 Sep 2017 15:47:33 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:48472)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <ehabkost@redhat.com>)
+	id 1dy1Fx-0006Ts-L9; Fri, 29 Sep 2017 15:47:29 -0400
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
+	[10.5.11.12])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id B73CCEA3A0;
+	Fri, 29 Sep 2017 19:47:27 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com B73CCEA3A0
+Authentication-Results: ext-mx02.extmail.prod.ext.phx2.redhat.com;
+	dmarc=none (p=none dis=none) header.from=redhat.com
+Authentication-Results: ext-mx02.extmail.prod.ext.phx2.redhat.com;
+	spf=fail smtp.mailfrom=ehabkost@redhat.com
+Received: from localhost (ovpn-116-86.gru2.redhat.com [10.97.116.86])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id E8FC817B8F;
+	Fri, 29 Sep 2017 19:47:18 +0000 (UTC)
+Date: Fri, 29 Sep 2017 16:47:14 -0300
+From: Eduardo Habkost <ehabkost@redhat.com>
+To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <f4bug@amsat.org>
+Message-ID: <20170929194714.GP21016@localhost.localdomain>
+References: <20170917232842.14544-1-f4bug@amsat.org>
 MIME-Version: 1.0
-Received: by 10.28.135.139 with HTTP; Fri, 29 Sep 2017 11:12:54 -0700 (PDT)
-In-Reply-To: <adae1793-1a4a-7107-7676-f6dbaa26a9f4@redhat.com>
-References: <cover.1506384414.git.alistair.francis@xilinx.com>
-	<5ad72536402da2879d49b58753cc709a8ff22de9.1506384415.git.alistair.francis@xilinx.com>
-	<adae1793-1a4a-7107-7676-f6dbaa26a9f4@redhat.com>
-From: Alistair Francis <alistair.francis@xilinx.com>
-Date: Fri, 29 Sep 2017 11:12:54 -0700
-X-Google-Sender-Auth: KJM2OHZHEq9SCRiS1TLcySuQlts
-Message-ID: <CAKmqyKN-kB964To18yv-ScHX98R61iUN5JUCyyv0JO2fqKEwxg@mail.gmail.com>
-To: Thomas Huth <thuth@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2a00:1450:400c:c09::244
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v1 8/8] target: Replace
- fprintf(stderr, "*\n" with error_report()
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+In-Reply-To: <20170917232842.14544-1-f4bug@amsat.org>
+X-Fnord: you can see the fnord
+User-Agent: Mutt/1.8.3 (2017-05-23)
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.26]);
+	Fri, 29 Sep 2017 19:47:28 +0000 (UTC)
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH] qom/cpu: move cpu_model null
+ check to cpu_class_by_name()
 X-BeenThere: qemu-arm@gnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -107,65 +99,35 @@ List-Post: <mailto:qemu-arm@gnu.org>
 List-Help: <mailto:qemu-arm-request@gnu.org?subject=help>
 List-Subscribe: <https://lists.gnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@gnu.org?subject=subscribe>
-Cc: Cornelia Huck <cohuck@redhat.com>, Eduardo Habkost <ehabkost@redhat.com>,
-	Markus Armbruster <armbru@redhat.com>,
-	Marcelo Tosatti <mtosatti@redhat.com>,
-	"qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
-	Alistair Francis <alistair.francis@xilinx.com>,
-	Christian Borntraeger <borntraeger@de.ibm.com>,
-	Michael Walle <michael@walle.cc>, qemu-arm <qemu-arm@nongnu.org>,
-	"open list:New World" <qemu-ppc@nongnu.org>,
-	Paolo Bonzini <pbonzini@redhat.com>, Yongbok Kim <yongbok.kim@imgtec.com>,
-	Guan Xuetao <gxt@mprc.pku.edu.cn>, Aurelien Jarno <aurelien@aurel32.net>,
-	Richard Henderson <rth@twiddle.net>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+	Anthony Green <green@moxielogic.com>,
+	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+	qemu-devel@nongnu.org, Max Filippov <jcmvbkbc@gmail.com>,
+	Guan Xuetao <gxt@mprc.pku.edu.cn>,
+	=?iso-8859-1?Q?Llu=EDs?= Vilanova <vilanova@ac.upc.edu>,
+	Marek Vasut <marex@denx.de>, Alexander Graf <agraf@suse.de>,
+	Marcel Apfelbaum <marcel@redhat.com>,
+	=?iso-8859-1?Q?Marc-Andr=E9?= Lureau <marcandre.lureau@redhat.com>,
+	Richard Henderson <rth@twiddle.net>,
+	Artyom Tarasenko <atar4qemu@gmail.com>, qemu-arm@nongnu.org,
+	Stefan Hajnoczi <stefanha@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
+	Yongbok Kim <yongbok.kim@imgtec.com>, Stafford Horne <shorne@gmail.com>,
+	David Gibson <david@gibson.dropbear.id.au>,
+	Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
+	Chris Wulff <crwulff@gmail.com>, Laurent Vivier <laurent@vivier.eu>,
+	Michael Walle <michael@walle.cc>, qemu-ppc@nongnu.org,
+	Paolo Bonzini <pbonzini@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@gnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@gnu.org>
-X-TUID: WAw2quztWCbd
+X-TUID: CLnSB1LBy0G0
 
-On Mon, Sep 25, 2017 at 9:08 PM, Thomas Huth <thuth@redhat.com> wrote:
-> On 26.09.2017 02:09, Alistair Francis wrote:
->> Replace a large number of the fprintf(stderr, "*\n" calls with
->> error_report(). The functions were renamed with these commands and then
->> compiler issues where manually fixed.
-> [...]
->> @@ -9281,18 +9281,19 @@ static void init_ppc_proc(PowerPCCPU *cpu)
->>          case POWERPC_FLAG_PMM:
->>              break;
->>          default:
->> -            fprintf(stderr, "PowerPC MSR definition inconsistency\n"
->> -                    "Should define POWERPC_FLAG_PX or POWERPC_FLAG_PMM\n");
->> +            error_report("PowerPC MSR definition inconsistency");
->> +            error_printf("Should define POWERPC_FLAG_PX or POWERPC_FLAG_PMM");
->>              exit(1);
->>          }
->>      } else if (env->flags & (POWERPC_FLAG_PX | POWERPC_FLAG_PMM)) {
->> -        fprintf(stderr, "PowerPC MSR definition inconsistency\n"
->> -                "Should not define POWERPC_FLAG_PX nor POWERPC_FLAG_PMM\n");
->> +        error_report("PowerPC MSR definition inconsistency");
->> +        error_printf("Should not define POWERPC_FLAG_PX nor POWERPC_FLAG_PMM");
->>          exit(1);
->>      }
->>      if ((env->flags & (POWERPC_FLAG_RTC_CLK | POWERPC_FLAG_BUS_CLK)) == 0) {
->> -        fprintf(stderr, "PowerPC flags inconsistency\n"
->> -                "Should define the time-base and decrementer clock source\n");
->> +        error_report("PowerPC MSR definition inconsistency");
->> +        error_printf("Should define the time-base and decrementer clock"
->> +                     " source");
->>          exit(1);
->>      }
->
-> Replacing fprintf with error_report+error_printf is kind of very ugly.
-> While error_report adds newline to the output, error_printf does not (as
-> far as I can see) ... did you check how such a message looks like when
-> it is generated during runtime?
-> Also, the strings belong together, so printing them with two function
-> calls sound wrong to me... maybe they should be joined without newline
-> in the middle instead?
+On Sun, Sep 17, 2017 at 08:28:42PM -0300, Philippe Mathieu-Daud=E9 wrote:
+> and clean every implementation.
+>=20
+> Suggested-by: Eduardo Habkost <ehabkost@redhat.com>
+> Signed-off-by: Philippe Mathieu-Daud=E9 <f4bug@amsat.org>
 
-Ok, that works for me, I'll do that.
+I'm queueing on machine-next.  Thanks!
 
-Thanks,
-Alistair
-
->
->  Thomas
+--=20
+Eduardo

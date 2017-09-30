@@ -1,83 +1,83 @@
-Received: by 10.223.197.9 with SMTP id q9csp1230544wrf;
-        Fri, 29 Sep 2017 19:14:42 -0700 (PDT)
-X-Google-Smtp-Source: AOwi7QA6YTbqJf/ziViHRgrX3IrVbuviXxkR4rgN5TbhDwmQP6xCQFmnLmzeDjUuxTXr4oWvimNx
-X-Received: by 10.55.198.152 with SMTP id s24mr6267243qkl.3.1506737682736;
-        Fri, 29 Sep 2017 19:14:42 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1506737682; cv=none;
+Received: by 10.223.197.9 with SMTP id q9csp1230973wrf;
+        Fri, 29 Sep 2017 19:15:23 -0700 (PDT)
+X-Google-Smtp-Source: AOwi7QA+hy3ZaotBma9MBQ9SESNFt3cpejIqPr5ACaUaBagHkycivMKO41lJI9KUDGyRzQnAi/Uw
+X-Received: by 10.55.20.205 with SMTP id 74mr5799926qku.66.1506737722934;
+        Fri, 29 Sep 2017 19:15:22 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1506737722; cv=none;
         d=google.com; s=arc-20160816;
-        b=apiT/27U6WQ0mitLpwra9T7aJCTei8BS3IXT930acEpeNdyl7JrLGcCT1ONK7pzP6v
-         50w4u3FR3AJo0/TTmaylYr0Z1PtPrbIfPDwJ7CJ12GT9lNpfmU2Q5FvIUqfBBD/EXOX1
-         OG2b+dc3ILf6j9JVcHFLLyrJ3TLGITVl4ut2uIiKxd1LVuqeLLvnBLGsPlBj0md6+uke
-         3uAOAGwh9h1gflzH52sibqjOCYjVvrbHPjjpkkg11DcYtbHBXiwZNocCROZ747opVSuZ
-         gniADfWgMH+qHAi1+ZX6hPM8Krunzg/HZntyEwNh3fjJspPJO6UZjQH2YsyT6FF9V31E
-         KRaA==
+        b=I1GF8HcHjJlYzWgXdJBE9PaaCWcJljyrXRKiDjjYGD/G2FnegL4F4rNrg3DT+YjEHR
+         V5KsR62ID0YLkY3LETbyDKsg3C1FIsRgUIOGiza/r4wcwNaxXhcOCHag3ZYox3ztZFsx
+         zUx6SO4bA/5IRIgNy8WAne7amlVWqNVnCGTrRp+l91lT48DkugVqfZ0+ZQjxWk9r5GqJ
+         hCFjkTUDjmxOEB1x6QIuYuKV2ugrrVeV1vJUJWsJbQXKc4WgiN+6SuFNvIRL8BjxMxXu
+         EPCZHUHXVSzkf9YE+NVqdLtFRAt397N38MGFTyAYk8mUrP6i05hje/aQqBKRtOYNfUX3
+         PIrw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
          :message-id:date:to:from:dmarc-filter:dkim-signature:dkim-signature
          :arc-authentication-results;
-        bh=h1jDMCO+M2jNRZouu/u4N8s+I4Y2AL7nBO4sHgkVe2Q=;
-        b=e5ZdV8qiY693v0lqOCgFBszQxD/dA8d7wkdLpX0Cl16l8jU876NZE+LPUcChQB9W0f
-         sO6/HS5PYn5YWHwFC+hLBbWjY8SXIHi5RE3hYsI4giC0jb7mRutsdOvPuDddvdYfXAzH
-         jtOU2OVfCaQdXlsjjNQa9pxz7fd/QGIRZzceQhJJLOgBK8xSbNNZCC4rE5JU84KuAdBm
-         QOj3xFxngERaVdy/P+ctqqbef1fuLFW7c4BiBOHygdyN2BYiMIqs3fE7Tz6mH+pffY43
-         PZa4I71NUNbFhtEtG2w7Q1gpKhA85R0HCFHU8uvoujvRYpdUmfaHQR6WY04o8N8CwBl6
-         7YpA==
+        bh=GzIwUUROtHb70nWhGIDbM+Otvtjh7YTLHDmRpO6IKiY=;
+        b=LNX0DBz0D7zSzEMb1juCFV+p00M49WhZ9et7cqkUo+3EO7tMwDcseLs1qsbS9eV/y/
+         DmAf0s5wQJ92EJc0vqrMb/SLi4AZmhEDa8NFXF6Jd+g8JaaNdOhjt+C2gIA3XBnPgric
+         2SfUevbWF0zi73dXOKFbIB61Vcc0S466P/kt5TCjB8LCBYIuVgnnOMLY8FVPaN+bqaFp
+         6b2ZaJ8MIZMIOElD/t5QCGQ5Qm1rCxhGXJVj3GYYj4oKEuAnypvEw3zlH7Wgtv2reujd
+         p395nOi/LBgC/Np3qjpePLqPlJlPXtivuUDLcaF6YhXK4tKdfCa94/MxmmF37i4oCbTZ
+         QeiQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@codeaurora.org header.s=default header.b=bwclLPmC;
-       dkim=fail header.i=@codeaurora.org header.s=default header.b=K2STphRn;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@gnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@gnu.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@gnu.org>
+       dkim=fail header.i=@codeaurora.org header.s=default header.b=m4JlOp5n;
+       dkim=fail header.i=@codeaurora.org header.s=default header.b=EJhiMZb7;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@gnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@gnu.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@gnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id q72si1528947qkq.26.2017.09.29.19.14.42
+        by mx.google.com with ESMTPS id z6si4811159qke.146.2017.09.29.19.15.22
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 29 Sep 2017 19:14:42 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@gnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Fri, 29 Sep 2017 19:15:22 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@gnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@codeaurora.org header.s=default header.b=bwclLPmC;
-       dkim=fail header.i=@codeaurora.org header.s=default header.b=K2STphRn;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@gnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@gnu.org
-Received: from localhost ([::1]:37812 helo=lists.gnu.org)
+       dkim=fail header.i=@codeaurora.org header.s=default header.b=m4JlOp5n;
+       dkim=fail header.i=@codeaurora.org header.s=default header.b=EJhiMZb7;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@gnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@gnu.org
+Received: from localhost ([::1]:37821 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@gnu.org>)
-	id 1dy7Ie-0006tm-8h
-	for alex.bennee@linaro.org; Fri, 29 Sep 2017 22:14:40 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:49662)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@gnu.org>)
+	id 1dy7JI-0007r8-LG
+	for alex.bennee@linaro.org; Fri, 29 Sep 2017 22:15:20 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:49581)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alindsay@codeaurora.org>) id 1dy7Dn-0002fS-33
-	for qemu-devel@nongnu.org; Fri, 29 Sep 2017 22:09:40 -0400
+	(envelope-from <alindsay@codeaurora.org>) id 1dy7Dh-0002YM-Cw
+	for qemu-arm@nongnu.org; Fri, 29 Sep 2017 22:09:36 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <alindsay@codeaurora.org>) id 1dy7Dl-0005NT-VH
-	for qemu-devel@nongnu.org; Fri, 29 Sep 2017 22:09:39 -0400
-Received: from smtp.codeaurora.org ([198.145.29.96]:35722)
+	(envelope-from <alindsay@codeaurora.org>) id 1dy7Df-0005HC-Rn
+	for qemu-arm@nongnu.org; Fri, 29 Sep 2017 22:09:33 -0400
+Received: from smtp.codeaurora.org ([198.145.29.96]:35502)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <alindsay@codeaurora.org>)
-	id 1dy7Dj-0005Jz-0Y; Fri, 29 Sep 2017 22:09:35 -0400
+	id 1dy7Df-0005G6-Ie; Fri, 29 Sep 2017 22:09:31 -0400
 Received: by smtp.codeaurora.org (Postfix, from userid 1000)
-	id 323FD60B69; Sat, 30 Sep 2017 02:09:34 +0000 (UTC)
+	id B6AA860D0B; Sat, 30 Sep 2017 02:09:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=codeaurora.org;
-	s=default; t=1506737374;
-	bh=YDaooyh54hAytdHBJkax82+neQwqdGsxyADv1QDKpCI=;
+	s=default; t=1506737370;
+	bh=f/YjatwAtgrnON/euUWH0HMg0bdNDa+ylaIGxcHtXDo=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=bwclLPmCTzkVEyolnveLEPCPx1RpbQTJCoitOMe2lOxBxN2tGdvVmxd34u/Dgeiud
-	kusPflEvckfWe5GV6kiExDFyQh9fHFlmcrMSXBfejf5bTzR0juzDFdWDyYGMopL//u
-	AVJKME91FVA9p5v+ObMo3L+hIKHjwsR9rpvEOFvY=
+	b=m4JlOp5n90z4dbWli82mCVURkw7Vnk3BLK5pjtzy48qOOxjWKQPQ6578ARdDPkGS0
+	HdRYwkVcqrCmn4tPk1WhUq48sEzHJgKdlq4FwaGf999yyR2IcbJjP/O+4bEswxkgGy
+	SAuIFZIVAUO+LFhePq9mx9NI0RxIXdCXXUVPoMHw=
 Received: from mossypile.qualcomm.com (global_nat1_iad_fw.qualcomm.com
 	[129.46.232.65])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-SHA256 (128/128 bits))
 	(No client certificate requested)
 	(Authenticated sender: alindsay@smtp.codeaurora.org)
-	by smtp.codeaurora.org (Postfix) with ESMTPSA id 877E460C16;
-	Sat, 30 Sep 2017 02:09:32 +0000 (UTC)
+	by smtp.codeaurora.org (Postfix) with ESMTPSA id C1ED360CC8;
+	Sat, 30 Sep 2017 02:09:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=codeaurora.org;
-	s=default; t=1506737373;
-	bh=YDaooyh54hAytdHBJkax82+neQwqdGsxyADv1QDKpCI=;
+	s=default; t=1506737369;
+	bh=f/YjatwAtgrnON/euUWH0HMg0bdNDa+ylaIGxcHtXDo=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=K2STphRnT8btSJKyMUFZvl7LrBX52GXI/BlLeYYSs1gbIVqg663wG/rFxGKiVSopZ
-	/bDLzNKDCg2P2wn/okKhXIKVGbI3dz0KnWH+0cdSIfh0CnrKOUjpPej6IqbtTFPlk6
-	ckEmnxIM6U6I7Pk2IU7EL639qunIgMmCvzEoWtvM=
-DMARC-Filter: OpenDMARC Filter v1.3.2 smtp.codeaurora.org 877E460C16
+	b=EJhiMZb7R5LrSIQWs7hiiHXBrlaUYdTI+7XzKtlJaBh5WdCoZUpRlYYAd2OICNarp
+	ZDO4rDYRKznQWyntjBTCLLd3ZOAKUHk94SPubgbTrnxHyH9ylbo7xU0K8zh9HjhvdL
+	hIsgwlnHIrn0UXErxkKTwwSAG6QI71JGx43fL+uI=
+DMARC-Filter: OpenDMARC Filter v1.3.2 smtp.codeaurora.org C1ED360CC8
 Authentication-Results: pdx-caf-mail.web.codeaurora.org;
 	dmarc=none (p=none dis=none) header.from=codeaurora.org
 Authentication-Results: pdx-caf-mail.web.codeaurora.org;
@@ -87,110 +87,335 @@ To: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
 	Alistair Francis <alistair.francis@xilinx.com>,
 	Peter Crosthwaite <peter.crosthwaite@xilinx.com>,
 	Wei Huang <wei@redhat.com>
-Date: Fri, 29 Sep 2017 22:08:30 -0400
-Message-Id: <1506737310-21880-14-git-send-email-alindsay@codeaurora.org>
+Date: Fri, 29 Sep 2017 22:08:27 -0400
+Message-Id: <1506737310-21880-11-git-send-email-alindsay@codeaurora.org>
 X-Mailer: git-send-email 1.9.1
 In-Reply-To: <1506737310-21880-1-git-send-email-alindsay@codeaurora.org>
 References: <1506737310-21880-1-git-send-email-alindsay@codeaurora.org>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 198.145.29.96
-Subject: [Qemu-devel] [PATCH 13/13] target/arm: Implement PMSWINC
-X-BeenThere: qemu-devel@gnu.org
+Subject: [Qemu-arm] [PATCH 10/13] target/arm: Finish implementation of
+ PM[X]EVCNTR and PM[X]EVTYPER
+X-BeenThere: qemu-arm@gnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.gnu.org>
-List-Unsubscribe: <https://lists.gnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@gnu.org?subject=unsubscribe>
-List-Archive: <http://lists.gnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@gnu.org>
-List-Help: <mailto:qemu-devel-request@gnu.org?subject=help>
-List-Subscribe: <https://lists.gnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@gnu.org?subject=subscribe>
-Cc: Michael Spradling <mspradli@codeaurora.org>, qemu-devel@nongnu.org,
-	Digant Desai <digantd@codeaurora.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@gnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@gnu.org>
-X-TUID: OHJNfpmXiuGz
+List-Id: <qemu-arm.gnu.org>
+List-Unsubscribe: <https://lists.gnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@gnu.org?subject=unsubscribe>
+List-Archive: <http://lists.gnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@gnu.org>
+List-Help: <mailto:qemu-arm-request@gnu.org?subject=help>
+List-Subscribe: <https://lists.gnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@gnu.org?subject=subscribe>
+Cc: Aaron Lindsay <alindsay@codeaurora.org>,
+	Michael Spradling <mspradli@codeaurora.org>,
+	qemu-devel@nongnu.org, Digant Desai <digantd@codeaurora.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@gnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@gnu.org>
+X-TUID: ThvxJMdeKQZO
+
+Add arrays to hold the registers, the definitions themselves, access
+functions, and add logic to reset counters when PMCR.P is set.
 
 Signed-off-by: Aaron Lindsay <alindsay@codeaurora.org>
 ---
- target/arm/helper.c | 40 ++++++++++++++++++++++++++++++++++++++--
- 1 file changed, 38 insertions(+), 2 deletions(-)
+ target/arm/cpu.h    |   7 +-
+ target/arm/helper.c | 187 ++++++++++++++++++++++++++++++++++++++++++++++++----
+ 2 files changed, 179 insertions(+), 15 deletions(-)
 
+diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+index 9feb45a..d816e0a 100644
+--- a/target/arm/cpu.h
++++ b/target/arm/cpu.h
+@@ -412,10 +412,13 @@ typedef struct CPUARMState {
+         uint64_t oslsr_el1; /* OS Lock Status */
+         uint64_t mdcr_el2;
+         uint64_t mdcr_el3;
+-        /* If the counter is enabled, this stores the last time the counter
+-         * was reset. Otherwise it stores the counter value
++        /* If the pmccntr and pmevcntr counters are enabled, they store the
++         * offset the last time the counter was reset. Otherwise they store the
++         * counter value.
+          */
+         uint64_t c15_ccnt;
++        uint64_t c14_pmevcntr[31];
++        uint64_t c14_pmevtyper[31];
+         uint64_t pmccfiltr_el0; /* Performance Monitor Filter Register */
+         uint64_t vpidr_el2; /* Virtualization Processor ID Register */
+         uint64_t vmpidr_el2; /* Virtualization Multiprocessor ID Register */
 diff --git a/target/arm/helper.c b/target/arm/helper.c
-index 659b2b8..c688e56 100644
+index a56e7b4..f183199 100644
 --- a/target/arm/helper.c
 +++ b/target/arm/helper.c
-@@ -907,6 +907,15 @@ static bool event_always_supported(CPUARMState *env)
+@@ -876,6 +876,7 @@ static const ARMCPRegInfo v6_cp_reginfo[] = {
+ #define PMCRN_SHIFT 11
+ #define PMCRD   0x8
+ #define PMCRC   0x4
++#define PMCRP   0x2
+ #define PMCRE   0x1
+ 
+ #define PMXEVTYPER_P          0x80000000
+@@ -1020,6 +1021,21 @@ static inline bool pmu_counter_enabled(CPUARMState *env, uint8_t counter)
+         return false;
+     }
+ 
++    if (counter != 31) {
++        /* If not checking PMCCNTR, ensure the counter is setup to an event we
++         * support */
++        uint16_t event = env->cp15.c14_pmevtyper[counter] & PMXEVTYPER_EVTCOUNT;
++        if (event > 0x3f) {
++            return false; /* We only support common architectural and
++                             microarchitectural events */
++        }
++
++        uint16_t event_idx = supported_event_map[event];
++        if (event_idx == SUPPORTED_EVENT_SENTINEL) {
++            return false;
++        }
++    }
++
      return true;
  }
  
-+static uint64_t swinc_get_count(CPUARMState *env)
-+{
-+    /*
-+     * SW_INCR events are written directly to the pmevcntr's by writes to
-+     * PMSWINC, so don't do anything here...
-+     */
-+    return 0;
-+}
-+
- #ifndef CONFIG_USER_ONLY
- static uint64_t cycles_get_count(CPUARMState *env)
- {
-@@ -943,6 +952,10 @@ static uint64_t instructions_get_count(CPUARMState *env)
- 
- #define SUPPORTED_EVENT_SENTINEL UINT16_MAX
- static const pm_event pm_events[] = {
-+    { .number = 0x000, /* SW_INCR */
-+      .supported = event_always_supported,
-+      .get_count = swinc_get_count
-+    },
- #ifndef CONFIG_USER_ONLY
-     { .number = 0x008, /* INST_RETIRED */
-       .supported = instructions_supported,
-@@ -1195,6 +1208,25 @@ static void pmcr_write(CPUARMState *env, const ARMCPRegInfo *ri,
-     pmu_sync(env);
+@@ -1083,8 +1099,26 @@ void pmccntr_sync(CPUARMState *env)
+     }
  }
  
-+static void pmswinc_write(CPUARMState *env, const ARMCPRegInfo *ri,
-+                          uint64_t value)
++static void pmu_sync_counter(CPUARMState *env, uint8_t counter)
 +{
-+    unsigned int i;
-+    for (i = 0; i < PMU_NUM_COUNTERS(env); i++) {
-+        /* Increment a counter's count iff: */
-+        if ((value & (1 << i)) && /* counter's bit is set */
-+                /* counter is enabled and not filtered */
-+                pmu_counter_enabled(env, i) &&
-+                !pmu_counter_filtered(env, env->cp15.c14_pmevtyper[i]) &&
-+                /* counter is SW_INCR */
-+                (env->cp15.c14_pmevtyper[i] & PMXEVTYPER_EVTCOUNT) == 0x0) {
-+            pmu_sync_counter(env, i);
-+            env->cp15.c14_pmevcntr[i]++;
-+            pmu_sync_counter(env, i);
-+        }
++    if (pmu_counter_enabled(env, counter) &&
++        !pmu_counter_filtered(env, env->cp15.c14_pmevtyper[counter])) {
++
++        uint16_t event = env->cp15.c14_pmevtyper[counter] & PMXEVTYPER_EVTCOUNT;
++        uint16_t event_idx = supported_event_map[event];
++
++        uint64_t count = pm_events[event_idx].get_count(env);
++        env->cp15.c14_pmevcntr[counter] =
++            count - env->cp15.c14_pmevcntr[counter];
 +    }
 +}
 +
- static uint64_t pmccntr_read(CPUARMState *env, const ARMCPRegInfo *ri)
+ void pmu_sync(CPUARMState *env)
  {
-     uint64_t ret;
-@@ -1551,9 +1583,13 @@ static const ARMCPRegInfo v7_cp_reginfo[] = {
-       .fieldoffset = offsetof(CPUARMState, cp15.c9_pmovsr),
-       .writefn = pmovsset_write,
-       .raw_writefn = raw_write },
--    /* Unimplemented so WI. */
-     { .name = "PMSWINC", .cp = 15, .crn = 9, .crm = 12, .opc1 = 0, .opc2 = 4,
--      .access = PL0_W, .accessfn = pmreg_access_swinc, .type = ARM_CP_NOP },
-+      .access = PL0_W, .accessfn = pmreg_access_swinc, .type = ARM_CP_NO_RAW,
-+      .writefn = pmswinc_write },
-+    { .name = "PMSWINC_EL0", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 3, .opc1 = 3, .crn = 9, .crm = 12, .opc2 = 4,
-+      .access = PL0_W, .accessfn = pmreg_access_swinc, .type = ARM_CP_NO_RAW,
-+      .writefn = pmswinc_write },
-     { .name = "PMSELR", .cp = 15, .crn = 9, .crm = 12, .opc1 = 0, .opc2 = 5,
-       .access = PL0_RW, .type = ARM_CP_ALIAS,
-       .fieldoffset = offsetoflow32(CPUARMState, cp15.c9_pmselr),
++    unsigned int i;
++    for (i = 0; i < PMU_NUM_COUNTERS(env); i++) {
++        pmu_sync_counter(env, i);
++    }
+     pmccntr_sync(env);
+ }
+ 
+@@ -1098,6 +1132,13 @@ static void pmcr_write(CPUARMState *env, const ARMCPRegInfo *ri,
+         env->cp15.c15_ccnt = 0;
+     }
+ 
++    if (value & PMCRP) {
++        unsigned int i;
++        for (i = 0; i < PMU_NUM_COUNTERS(env); i++) {
++            env->cp15.c14_pmevcntr[i] = 0;
++        }
++    }
++
+     /* only the DP, X, D and E bits are writable */
+     env->cp15.c9_pmcr &= ~0x39;
+     env->cp15.c9_pmcr |= (value & 0x39);
+@@ -1203,30 +1244,112 @@ static void pmovsset_write(CPUARMState *env, const ARMCPRegInfo *ri,
+     env->cp15.c9_pmovsr |= value;
+ }
+ 
+-static void pmxevtyper_write(CPUARMState *env, const ARMCPRegInfo *ri,
+-                             uint64_t value)
++static void pmevtyper_write(CPUARMState *env, const ARMCPRegInfo *ri,
++                             uint64_t value, const uint8_t counter)
+ {
++    if (counter == 0x1f) {
++        pmccfiltr_write(env, ri, value);
++    } else if (counter < PMU_NUM_COUNTERS(env)) {
++        pmu_sync_counter(env, counter);
++        env->cp15.c14_pmevtyper[counter] = value & 0xfe0003ff;
++        pmu_sync_counter(env, counter);
++    }
+     /* Attempts to access PMXEVTYPER are CONSTRAINED UNPREDICTABLE when
+      * PMSELR value is equal to or greater than the number of implemented
+      * counters, but not equal to 0x1f. We opt to behave as a RAZ/WI.
+      */
+-    if (env->cp15.c9_pmselr == 0x1f) {
+-        pmccfiltr_write(env, ri, value);
++}
++
++static uint64_t pmevtyper_read(CPUARMState *env, const ARMCPRegInfo *ri,
++                               const uint8_t counter)
++{
++    if (counter == 0x1f) {
++        return env->cp15.pmccfiltr_el0;
++    } else if (counter < PMU_NUM_COUNTERS(env)) {
++        return env->cp15.c14_pmevtyper[counter];
++    } else {
++      /* We opt to behave as a RAZ/WI when attempts to access PMXEVTYPER
++       * are CONSTRAINED UNPREDICTABLE. See comments in pmevtyper_write().
++       */
++        return 0;
+     }
+ }
+ 
++static void pmevtyper_writefn(CPUARMState *env, const ARMCPRegInfo *ri,
++                              uint64_t value)
++{
++    uint8_t counter = ((ri->crm & 3) << 3) | (ri->opc2 & 7);
++    pmevtyper_write(env, ri, value, counter);
++}
++
++static uint64_t pmevtyper_readfn(CPUARMState *env, const ARMCPRegInfo *ri)
++{
++    uint8_t counter = ((ri->crm & 3) << 3) | (ri->opc2 & 7);
++    return pmevtyper_read(env, ri, counter);
++}
++
++static void pmxevtyper_write(CPUARMState *env, const ARMCPRegInfo *ri,
++                             uint64_t value)
++{
++    pmevtyper_write(env, ri, value, env->cp15.c9_pmselr & 31);
++}
++
+ static uint64_t pmxevtyper_read(CPUARMState *env, const ARMCPRegInfo *ri)
+ {
+-    /* We opt to behave as a RAZ/WI when attempts to access PMXEVTYPER
+-     * are CONSTRAINED UNPREDICTABLE. See comments in pmxevtyper_write().
+-     */
+-    if (env->cp15.c9_pmselr == 0x1f) {
+-        return env->cp15.pmccfiltr_el0;
++    return pmevtyper_read(env, ri, env->cp15.c9_pmselr & 31);
++}
++
++static void pmevcntr_write(CPUARMState *env, const ARMCPRegInfo *ri,
++                             uint64_t value, uint8_t counter)
++{
++    if (counter < PMU_NUM_COUNTERS(env)) {
++        env->cp15.c14_pmevcntr[counter] = value;
++        pmu_sync_counter(env, counter);
++    }
++    /* We opt to behave as a RAZ/WI when attempts to access PM[X]EVCNTR
++     * are CONSTRAINED UNPREDICTABLE. */
++}
++
++static uint64_t pmevcntr_read(CPUARMState *env, const ARMCPRegInfo *ri,
++                              uint8_t counter)
++{
++    if (counter < PMU_NUM_COUNTERS(env)) {
++        uint64_t ret;
++        pmu_sync_counter(env, counter);
++        ret = env->cp15.c14_pmevcntr[counter];
++        pmu_sync_counter(env, counter);
++        return ret;
+     } else {
++      /* We opt to behave as a RAZ/WI when attempts to access PM[X]EVCNTR
++       * are CONSTRAINED UNPREDICTABLE. */
+         return 0;
+     }
+ }
+ 
++static void pmevcntr_writefn(CPUARMState *env, const ARMCPRegInfo *ri,
++                             uint64_t value)
++{
++    uint8_t counter = ((ri->crm & 3) << 3) | (ri->opc2 & 7);
++    pmevcntr_write(env, ri, value, counter);
++}
++
++static uint64_t pmevcntr_readfn(CPUARMState *env, const ARMCPRegInfo *ri)
++{
++    uint8_t counter = ((ri->crm & 3) << 3) | (ri->opc2 & 7);
++    return pmevcntr_read(env, ri, counter);
++}
++
++static void pmxevcntr_write(CPUARMState *env, const ARMCPRegInfo *ri,
++                             uint64_t value)
++{
++    pmevcntr_write(env, ri, value, env->cp15.c9_pmselr & 31);
++}
++
++static uint64_t pmxevcntr_read(CPUARMState *env, const ARMCPRegInfo *ri)
++{
++    return pmevcntr_read(env, ri, env->cp15.c9_pmselr & 31);
++}
++
+ static void pmuserenr_write(CPUARMState *env, const ARMCPRegInfo *ri,
+                             uint64_t value)
+ {
+@@ -1435,10 +1558,13 @@ static const ARMCPRegInfo v7_cp_reginfo[] = {
+       .opc0 = 3, .opc1 = 3, .crn = 9, .crm = 13, .opc2 = 1,
+       .access = PL0_RW, .type = ARM_CP_NO_RAW, .accessfn = pmreg_access,
+       .writefn = pmxevtyper_write, .readfn = pmxevtyper_read },
+-    /* Unimplemented, RAZ/WI. */
+     { .name = "PMXEVCNTR", .cp = 15, .crn = 9, .crm = 13, .opc1 = 0, .opc2 = 2,
+-      .access = PL0_RW, .type = ARM_CP_CONST, .resetvalue = 0,
+-      .accessfn = pmreg_access_xevcntr },
++      .access = PL0_RW, .type = ARM_CP_NO_RAW, .accessfn = pmreg_access_xevcntr,
++      .writefn = pmxevcntr_write, .readfn = pmxevcntr_read },
++    { .name = "PMXEVCNTR_EL0", .state = ARM_CP_STATE_AA64,
++      .opc0 = 3, .opc1 = 3, .crn = 9, .crm = 13, .opc2 = 2,
++      .access = PL0_RW, .type = ARM_CP_NO_RAW, .accessfn = pmreg_access_xevcntr,
++      .writefn = pmxevcntr_write, .readfn = pmxevcntr_read },
+     { .name = "PMUSERENR", .cp = 15, .crn = 9, .crm = 14, .opc1 = 0, .opc2 = 0,
+       .access = PL0_R | PL1_RW, .accessfn = access_tpm,
+       .fieldoffset = offsetof(CPUARMState, cp15.c9_pmuserenr),
+@@ -4073,7 +4199,7 @@ static const ARMCPRegInfo el2_cp_reginfo[] = {
+ #endif
+     /* The only field of MDCR_EL2 that has a defined architectural reset value
+      * is MDCR_EL2.HPMN which should reset to the value of PMCR_EL0.N; but we
+-     * don't impelment any PMU event counters, so using zero as a reset
++     * don't implement any PMU event counters, so using zero as a reset
+      * value for MDCR_EL2 is okay
+      */
+     { .name = "MDCR_EL2", .state = ARM_CP_STATE_BOTH,
+@@ -4746,6 +4872,7 @@ void register_cp_regs_for_features(ARMCPU *cpu)
+         define_arm_cp_regs(cpu, v7mp_cp_reginfo);
+     }
+     if (arm_feature(env, ARM_FEATURE_V7)) {
++        unsigned int i;
+         /* v7 performance monitor control register: same implementor
+          * field as main ID register, and we implement only the cycle
+          * count register.
+@@ -4770,6 +4897,40 @@ void register_cp_regs_for_features(ARMCPU *cpu)
+         };
+         define_one_arm_cp_reg(cpu, &pmcr);
+         define_one_arm_cp_reg(cpu, &pmcr64);
++        for (i = 0; i < 31; i++) {
++            char *pmevcntr_name = g_strdup_printf("PMEVCNTR%d", i);
++            char *pmevcntr_el0_name = g_strdup_printf("PMEVCNTR%d_EL0", i);
++            char *pmevtyper_name = g_strdup_printf("PMEVTYPER%d", i);
++            char *pmevtyper_el0_name = g_strdup_printf("PMEVTYPER%d_EL0", i);
++            ARMCPRegInfo pmev_regs[] = {
++                { .name = pmevcntr_name, .cp = 15, .crn = 15,
++                  .crm = 8 | (3 & (i >> 3)), .opc1 = 0, .opc2 = i & 7,
++                  .access = PL0_RW, .type = ARM_CP_NO_RAW,
++                  .readfn = pmevcntr_readfn, .writefn = pmevcntr_writefn,
++                  .accessfn = pmreg_access },
++                { .name = pmevcntr_el0_name, .state = ARM_CP_STATE_AA64,
++                  .opc0 = 3, .opc1 = 3, .crn = 15, .crm = 8 | (3 & (i >> 3)),
++                  .opc2 = i & 7, .access = PL0_RW, .accessfn = pmreg_access,
++                  .type = ARM_CP_NO_RAW,
++                  .readfn = pmevcntr_readfn, .writefn = pmevcntr_writefn },
++                { .name = pmevtyper_name, .cp = 15, .crn = 15,
++                  .crm = 12 | (3 & (i >> 3)), .opc1 = 0, .opc2 = i & 7,
++                  .access = PL0_RW, .type = ARM_CP_NO_RAW,
++                  .readfn = pmevtyper_readfn, .writefn = pmevtyper_writefn,
++                  .accessfn = pmreg_access },
++                { .name = pmevtyper_el0_name, .state = ARM_CP_STATE_AA64,
++                  .opc0 = 3, .opc1 = 3, .crn = 15, .crm = 12 | (3 & (i >> 3)),
++                  .opc2 = i & 7, .access = PL0_RW, .accessfn = pmreg_access,
++                  .type = ARM_CP_NO_RAW,
++                  .readfn = pmevtyper_readfn, .writefn = pmevtyper_writefn },
++                REGINFO_SENTINEL
++            };
++            define_arm_cp_regs(cpu, pmev_regs);
++            g_free(pmevcntr_name);
++            g_free(pmevcntr_el0_name);
++            g_free(pmevtyper_name);
++            g_free(pmevtyper_el0_name);
++        }
+ #endif
+         ARMCPRegInfo clidr = {
+             .name = "CLIDR", .state = ARM_CP_STATE_BOTH,
 -- 
 Qualcomm Datacenter Technologies as an affiliate of Qualcomm Technologies, Inc.\nQualcomm Technologies, Inc. is a member of the\nCode Aurora Forum, a Linux Foundation Collaborative Project.
 

@@ -1,105 +1,105 @@
-Received: by 10.223.197.9 with SMTP id q9csp1162918wrf;
-        Fri, 29 Sep 2017 17:20:00 -0700 (PDT)
-X-Google-Smtp-Source: AOwi7QDSxgV77BWCIQkm+NS9MptEPwSwOH3q/el9h03+8GScyKIlQz+LwVy5tHL1hHK39pLZLS/D
-X-Received: by 10.55.36.7 with SMTP id w7mr5806479qkg.1.1506730800546;
-        Fri, 29 Sep 2017 17:20:00 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1506730800; cv=none;
+Received: by 10.223.197.9 with SMTP id q9csp1174838wrf;
+        Fri, 29 Sep 2017 17:40:44 -0700 (PDT)
+X-Google-Smtp-Source: AOwi7QAWuvI2/Z43PpPMCkqQsCYH41DUmxW3AWCtE3FsK+PNbGf2XhJj3ZGzCySNBaoCOYx1lrrN
+X-Received: by 10.200.38.110 with SMTP id v43mr8881332qtv.296.1506732044782;
+        Fri, 29 Sep 2017 17:40:44 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1506732044; cv=none;
         d=google.com; s=arc-20160816;
-        b=BJ8D4jsCAkezdXHf0jRbdhg7qUyNRcNIOi4ca9jhoOBDfGKPlGPgA6nlEM3Cc8a88A
-         fF5sWcMbT/dYtF46NoxPUWUCQhOog+eF8+K8Ki8tZ/jgulxVw/byz/RvxmZwS3lapuT2
-         Wwb2QzBLmcTFXOAg8HyjSC3WeUmbj8VfyALB/axi51AyQMlnICKBi1HnJ/lhwKPmMrHd
-         XkMsHOzn/e60ieI1VgRstPZ/JpllTB3JDRXBw+zI4S1shYCfvrubsMDrUxKocm5xsmzz
-         XHyXsCYbDJcwLaQpbXQEiDSsAleK292pn6Y9/3Vq2D+x8+A5FMBux56rJ12w5WVO0NMv
-         mnIQ==
+        b=tW7HmiXFLDewtXNbCdQIBPU4zpkbd2rrNYkzr88GAEBvI1Nh9KLNmopZQxbjW40TgL
+         2Rmr2ByC0mIS5673BQopM7uRZHeCwqHzgz3pAr2oyv2eUmtPA+vtPHxNYllQO/vxYGxs
+         kNMlHoI7G3hboG9ZMrFo8yg9rQwC96sgb0NSTu2PBFuJh03bcg7xPAGnVuh1aLouHebL
+         rgqFr1ZyUsrFaP1Za+kQ3HiO1AbFeL3WRYU2mmDVGIHRJlNOufQCQSQzxnId8oKThJ81
+         ORyQhn5A1DhP4KWoJI3xYzQDm/WP/bUAgaW7QYPyEJizQJap4M8WriQX7OieGkJSWPrF
+         wPRQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:spamdiagnosticmetadata
          :spamdiagnosticoutput:mime-version:references:in-reply-to:message-id
          :date:to:from:dkim-signature:arc-authentication-results;
-        bh=QcKG4ls6YtBw1RmUCb42o4U/OdMjokx6LRuBXE39t1E=;
-        b=unPsk2yO+OnxmQ/YWPiy8OXREKfwdtUAZSwqNNZUFsM1w0QxWjbIwM74qBU4ZSgP2O
-         TfcAMqitZa1eX274yI5TXhC3E5QCICODsARQD1hnhBXuAacX+WXtIwKOQUSuW1vqr8Cd
-         ReyDE7mwKJqm9fjYGekuQDshw3zSJILkfv0/z9FD6vprk3QpJh0g17KXrwhWXNaKcZSS
-         7jlEOAC00V954C1v0EnooFKiSWGsDEsXFj+SgnazHrfIwWEjqFwFxGjYsVqQDzS83R9x
-         kWQt00Jq5OmZysJHASxor6PBN3e8cMbvegjhXUpYzDwx4dmRVch2MQ1SSk2EqBG0hJHy
-         coMQ==
+        bh=lNPs2xlLNW9dGz4aBHsxoCGoxN3wc14szOmpywSaQ40=;
+        b=crUqwzntmY5s31l4+qZewqRbuA+RpRncVRPq8HlBuyeOf/0pRPpR22shCMy+MDZysT
+         3NWv6LMGdeXbn+Jgrs9iuMATWI4951qI6qJKGz48Wm7LISwEZWudZLYmh8lbWVOYOj00
+         l+yyYieHpxGfCMLaCKmnF1O9mEM85xx0sZk1axAW86VbW+OTcjWCAJQ+nERYPpRwk1gO
+         C4/at/aSdG8bTStHUQWMakM20z+8hNN0VbxMKpqJEMNJnbqW12YeFM4JccJ6ilmrblCZ
+         9iDgl9Dul/YXyzjBInwyU/kl1Q8cQm5dHkP0DgRN01W5B99ro9Vfq4Ub8QhB9U2AaYRP
+         AWvw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@xilinx.onmicrosoft.com header.s=selector1-xilinx-com header.b=eXEkFXX4;
+       dkim=fail header.i=@xilinx.onmicrosoft.com header.s=selector1-xilinx-com header.b=1+cgMsF6;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@gnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@gnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@gnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id l2si3572632qkb.238.2017.09.29.17.19.59
+        by mx.google.com with ESMTPS id 82si1101083qkc.161.2017.09.29.17.40.43
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 29 Sep 2017 17:20:00 -0700 (PDT)
+        Fri, 29 Sep 2017 17:40:44 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@gnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@xilinx.onmicrosoft.com header.s=selector1-xilinx-com header.b=eXEkFXX4;
+       dkim=fail header.i=@xilinx.onmicrosoft.com header.s=selector1-xilinx-com header.b=1+cgMsF6;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@gnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@gnu.org
-Received: from localhost ([::1]:37476 helo=lists.gnu.org)
+Received: from localhost ([::1]:37586 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@gnu.org>)
-	id 1dy5Vd-00046j-FK
-	for alex.bennee@linaro.org; Fri, 29 Sep 2017 20:19:57 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:59972)
+	id 1dy5ph-0005Fm-Na
+	for alex.bennee@linaro.org; Fri, 29 Sep 2017 20:40:41 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:60880)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alistai@xilinx.com>) id 1dy5V1-0003lu-HY
-	for qemu-arm@nongnu.org; Fri, 29 Sep 2017 20:19:29 -0400
+	(envelope-from <alistai@xilinx.com>) id 1dy5XM-0005qs-Ac
+	for qemu-arm@nongnu.org; Fri, 29 Sep 2017 20:21:49 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <alistai@xilinx.com>) id 1dy5Us-0004E0-5E
-	for qemu-arm@nongnu.org; Fri, 29 Sep 2017 20:19:19 -0400
-Received: from mail-co1nam03on0068.outbound.protection.outlook.com
-	([104.47.40.68]:61525
-	helo=NAM03-CO1-obe.outbound.protection.outlook.com)
+	(envelope-from <alistai@xilinx.com>) id 1dy5XG-000708-Mz
+	for qemu-arm@nongnu.org; Fri, 29 Sep 2017 20:21:44 -0400
+Received: from mail-dm3nam03on0047.outbound.protection.outlook.com
+	([104.47.41.47]:30720
+	helo=NAM03-DM3-obe.outbound.protection.outlook.com)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <alistai@xilinx.com>)
-	id 1dy5Ur-0004DB-Er; Fri, 29 Sep 2017 20:19:10 -0400
+	id 1dy5X4-0006u6-Sn; Fri, 29 Sep 2017 20:21:27 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=xilinx.onmicrosoft.com; s=selector1-xilinx-com;
 	h=From:Date:Subject:Message-ID:Content-Type:MIME-Version;
-	bh=QcKG4ls6YtBw1RmUCb42o4U/OdMjokx6LRuBXE39t1E=;
-	b=eXEkFXX4b7Jphl10XEx0WLEiYaEt9CtHdOBU8X2hOLSm5fpdZgl6pYrPrORDNR+JofJpwLzdAwY71ObC9nuL1Jz++LvOrP2is01J2PlkqEBrwIg9GUqbvVVjTnFzl3pl9KlsrMg+UBxJXQmQg+V+314UjdjbY5R57l5bXBHhilg=
-Received: from CY4PR02CA0032.namprd02.prod.outlook.com (10.175.57.146) by
-	BY2PR0201MB1926.namprd02.prod.outlook.com (10.163.75.156) with
+	bh=lNPs2xlLNW9dGz4aBHsxoCGoxN3wc14szOmpywSaQ40=;
+	b=1+cgMsF6RZi3GOZBtN/pNyV2SQVo047lxBCYORTI89U/uAQDqPAMNcIVTD6GorXXTko2n7cAWLVa569WNcktGQ70E7LevcdFDLuj3ziIglX5zqSLwJ9c72tTIiZkxVitJ5qPlfyhzJlUygqUMlEGRYeuoDCm3l0XYwBftAtn9Z8=
+Received: from MWHPR0201CA0091.namprd02.prod.outlook.com (10.167.161.32) by
+	BY2PR0201MB1927.namprd02.prod.outlook.com (10.163.75.157) with
 	Microsoft SMTP Server (version=TLS1_2,
 	cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384_P256) id
-	15.20.77.7; Sat, 30 Sep 2017 00:19:03 +0000
-Received: from SN1NAM02FT050.eop-nam02.prod.protection.outlook.com
-	(2a01:111:f400:7e44::207) by CY4PR02CA0032.outlook.office365.com
-	(2603:10b6:903:117::18) with Microsoft SMTP Server (version=TLS1_2,
+	15.20.77.7; Sat, 30 Sep 2017 00:21:21 +0000
+Received: from CY1NAM02FT042.eop-nam02.prod.protection.outlook.com
+	(2a01:111:f400:7e45::204) by MWHPR0201CA0091.outlook.office365.com
+	(2603:10b6:301:75::32) with Microsoft SMTP Server (version=TLS1_2,
 	cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384_P256) id 15.20.56.9 via
-	Frontend Transport; Sat, 30 Sep 2017 00:19:02 +0000
+	Frontend Transport; Sat, 30 Sep 2017 00:21:21 +0000
 Authentication-Results: spf=pass (sender IP is 149.199.60.100)
-	smtp.mailfrom=xilinx.com; lists.xenproject.org; dkim=none (message not
-	signed) header.d=none; lists.xenproject.org;
-	dmarc=bestguesspass action=none header.from=xilinx.com;
+	smtp.mailfrom=xilinx.com; nongnu.org; dkim=none (message not signed)
+	header.d=none;nongnu.org; dmarc=bestguesspass action=none
+	header.from=xilinx.com;
 Received-SPF: Pass (protection.outlook.com: domain of xilinx.com designates
 	149.199.60.100 as permitted sender) receiver=protection.outlook.com;
 	client-ip=149.199.60.100; helo=xsj-pvapsmtpgw02;
 Received: from xsj-pvapsmtpgw02 (149.199.60.100) by
-	SN1NAM02FT050.mail.protection.outlook.com (10.152.72.128) with
+	CY1NAM02FT042.mail.protection.outlook.com (10.152.75.136) with
 	Microsoft SMTP Server (version=TLS1_0,
 	cipher=TLS_RSA_WITH_AES_256_CBC_SHA) id 15.20.56.11
-	via Frontend Transport; Sat, 30 Sep 2017 00:19:01 +0000
-Received: from unknown-38-66.xilinx.com ([149.199.38.66]:39760
+	via Frontend Transport; Sat, 30 Sep 2017 00:21:20 +0000
+Received: from unknown-38-66.xilinx.com ([149.199.38.66]:43552
 	helo=xsj-pvapsmtp01) by xsj-pvapsmtpgw02 with esmtp (Exim 4.63)
 	(envelope-from <alistair.francis@xilinx.com>)
-	id 1dy5Uj-0000D5-7F; Fri, 29 Sep 2017 17:19:01 -0700
+	id 1dy5Wx-0000GK-Ks; Fri, 29 Sep 2017 17:21:19 -0700
 Received: from [127.0.0.1] (helo=localhost)
 	by xsj-pvapsmtp01 with smtp (Exim 4.63)
 	(envelope-from <alistair.francis@xilinx.com>)
-	id 1dy5Uj-0006qz-3s; Fri, 29 Sep 2017 17:19:01 -0700
-Received: from xsj-pvapsmtp01 (smtp.xilinx.com [149.199.38.66])
+	id 1dy5Wx-0007cP-IQ; Fri, 29 Sep 2017 17:21:19 -0700
+Received: from xsj-pvapsmtp01 (mailman.xilinx.com [149.199.38.66])
 	by xsj-smtp-dlp2.xlnx.xilinx.com (8.13.8/8.13.1) with ESMTP id
-	v8U0Ijde032700; Fri, 29 Sep 2017 17:18:46 -0700
+	v8U0LE04001187; Fri, 29 Sep 2017 17:21:14 -0700
 Received: from [172.19.2.220] (helo=localhost.localdomain)
 	by xsj-pvapsmtp01 with esmtp (Exim 4.63)
 	(envelope-from <alistair.francis@xilinx.com>)
-	id 1dy5UT-0006oQ-NQ; Fri, 29 Sep 2017 17:18:45 -0700
+	id 1dy5Ws-0007bu-2W; Fri, 29 Sep 2017 17:21:14 -0700
 From: Alistair Francis <alistair.francis@xilinx.com>
 To: <qemu-devel@nongnu.org>
-Date: Fri, 29 Sep 2017 17:14:58 -0700
-Message-ID: <4ad78c1162706cd67654b2ad08daa1b5d5f8f9f1.1506730372.git.alistair.francis@xilinx.com>
+Date: Fri, 29 Sep 2017 17:17:26 -0700
+Message-ID: <d64ca97ec0058b24002c387264654b4b322ad7a1.1506730372.git.alistair.francis@xilinx.com>
 X-Mailer: git-send-email 2.11.0
 In-Reply-To: <cover.1506730372.git.alistair.francis@xilinx.com>
 References: <cover.1506730372.git.alistair.francis@xilinx.com>
@@ -110,79 +110,78 @@ X-EOPAttributedMessage: 0
 X-MS-Office365-Filtering-HT: Tenant
 X-Forefront-Antispam-Report: CIP:149.199.60.100; IPV:NLI; CTRY:US; EFV:NLI;
 	SFV:NSPM;
-	SFS:(10009020)(6009001)(39860400002)(346002)(376002)(2980300002)(438002)(189002)(199003)(9786002)(50226002)(6916009)(5003940100001)(2950100002)(39060400002)(6666003)(16200700003)(50986999)(4326008)(76176999)(47776003)(63266004)(8676002)(77096006)(106002)(551934003)(106466001)(81166006)(478600001)(8666007)(2351001)(33646002)(53946003)(5660300001)(81156014)(305945005)(8936002)(7416002)(118296001)(356003)(189998001)(36756003)(2906002)(36386004)(50466002)(54906003)(48376002)(5890100001)(16586007)(316002)(575784001)(107986001)(21314002)(5001870100001)(559001)(579004)(569006);
-	DIR:OUT; SFP:1101; SCL:1; SRVR:BY2PR0201MB1926;
+	SFS:(10009020)(6009001)(39860400002)(376002)(346002)(2980300002)(438002)(189002)(199003)(81156014)(8676002)(8936002)(478600001)(36756003)(54906003)(575784001)(76176999)(189998001)(551934003)(81166006)(16200700003)(50986999)(53946003)(106466001)(50226002)(316002)(2351001)(106002)(9786002)(33646002)(4326008)(16586007)(36386004)(118296001)(48376002)(63266004)(6916009)(6666003)(2950100002)(50466002)(77096006)(39060400002)(7416002)(2906002)(305945005)(47776003)(5003940100001)(5660300001)(356003)(107986001)(21314002)(5001870100001)(559001)(569006);
+	DIR:OUT; SFP:1101; SCL:1; SRVR:BY2PR0201MB1927;
 	H:xsj-pvapsmtpgw02; FPR:; SPF:Pass;
-	PTR:xapps1.xilinx.com,unknown-60-100.xilinx.com; MX:1; A:1;
+	PTR:unknown-60-100.xilinx.com,xapps1.xilinx.com; MX:1; A:1;
 	LANG:en; 
-X-Microsoft-Exchange-Diagnostics: 1; SN1NAM02FT050;
-	1:SkJE0e9HHm/HrDJeKli6DVUphajXd/e1DioJjH21kCwK0W9dv3TW6tOG8rjAJCp0HfkMeA0CIEwx3EYp0s0HALd5RWlej33N9q+uAEWwjKf10R+MOzzU9BfjgvKLu+WS
+X-Microsoft-Exchange-Diagnostics: 1; CY1NAM02FT042;
+	1:QHPuDiw5FTs3MPeky3BNusoc1s7Xb5N2k/7Bt9JQNcUIG5lrMFyqGagBUfZyJ8Fi0GLamhyGgEAlsbaFMSWV0yORyQgp6BqM0yO7i+33StrVjAUYraoNFTczOCZ52G7N
 MIME-Version: 1.0
 Content-Type: text/plain
 X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: e5c5fe27-4456-46fe-e227-08d50798da63
+X-MS-Office365-Filtering-Correlation-Id: 54a103b1-554f-4f8f-acd1-08d507992d51
 X-Microsoft-Antispam: UriScan:; BCL:0; PCL:0;
 	RULEID:(22001)(2017030254152)(8251501002)(2017052603199)(201703131423075)(201703031133081)(201702281549075);
-	SRVR:BY2PR0201MB1926; 
-X-Microsoft-Exchange-Diagnostics: 1; BY2PR0201MB1926;
-	3:l+AWM1YE+wisPrNinobVi0k0uTG5DzhuRMKiQTM7ou/pHk/OpYeecXVJVIZtKIV3+s4vnqlc6dAE0UN47xnrnkWbxDOV+16jCsbtfLTgo9/Ac1qIZiNTifrWYmGU9QSDr9YlzjH8HEbhFFS5fBoY2NsFKJ/+tkq3XD+BYbLpudbBfAvbotR5tIhQtVQLGaU9cq7U0uZ+4M2hDyCUkxaEgaixaHfiFjM+p04p21JJr4NqT8Jop+zwlv/0yVS5cHiHrUh+JEWxD3psn0EYG7MlU2wfsSahRRUqcKAowURSU9UK6IK8VhrHXvJYKKyPfHkarTiGigFAafXc4WHq4lDZwv6/HmpsY0syb9RRAyCot9Y=;
-	25:cXzjJbciqB0myyWsaUn742aRsxCHUphL8U1kJsxEOImE16H64blluBaWef7gQ0Mj0j8gMwm0O7b8/v21iGmOz5fRNkbQ7ehhViJfnUVE4+YucWJNDG0ooj0S++R0bJazzUwyp9fID8qp4/0chhtICyvHW+3rK7Ioa1OuVldc2UhhzfTf7+kKRK/ZwgH4OC33/beNZmTQ34YAEkcU4aGc6R6LgWc3R1m0A2oKp7xgID8PiPJ5B1V4y4PR9JZoFBurUR0nL8Ylm8eI+dcoLZ5euWmSu43qE5O2WFQcHArlcDQKkAqKksVVoDHJPmU/PclZ3vL02CokYlRszL2e6mD3PA==
-X-MS-TrafficTypeDiagnostic: BY2PR0201MB1926:
-X-Microsoft-Exchange-Diagnostics: 1; BY2PR0201MB1926;
-	31:U2YFQYYrLe+nfykFfe2M1ub7O3if44B958/JFYBiKRw8atJei3kTovcMZ/gKOvEb60kkWzS58T1GPnHeeYPZLHqv2INzAvyGe8WEcnyGBlq94fpCsJKhYO6O6CudLXe3rCU6AHentHXYI1SLV6nbwmwSqakLR+TDBzsSRjBiIC9fDjkf5502CrJM404GA/xE0BfwuNyZUyfl7dcPdjJv5+qSjXrzgredSPt06U+cP5U=;
-	20:mokFpdU0lGBJSS8Dxu4wEtwpiOmgFJxwBCvo5Ozs9FqscyTzVn4YqkbLT8kXAjuCyA9I3l2IW4DXJsJm176MsfWxoa24srcNb4PdvIHlRuleDz/ZMjxOLYKvP41vA5z1km0DnGqNvFma5eq1nmLTBq0submopwwLjZL0xOxlCtUr0RMvT0LaDiqngWcT+kl2MgX8sBVw1m/3ZKcdfnMpRWjXFKXyQIOOiuAaUaavjyAIbcWfbm8g5ur/ANDGXWDNRGwZU3JkPH10TIFS8GPfpS2gNbDtMhGVJPeW+ekHbX+dGk+1isx3EzVUWdtlLGpuSbyO+jKqRa2gQRYuLqiVrvd1m+soOcSNT1+E6NpPMPBiZWSYS9D8X0Xilfzr5YwYQqf8mK/cpDRHePtGsA0N5zfEVZGoj1R9/78e9/wiJDv0id3JMVZmgFQ+yYIC8O0MQOkGOEKriwuzJySCw1Gg5PZvqP3iZPjGmyI8ogyKrcQfcnVngo3oN7KUtbXYMksr
-X-Exchange-Antispam-Report-Test: UriScan:(131327999870524)(788757137089)(192813158149592)(70601490899591);
-X-Microsoft-Antispam-PRVS: <BY2PR0201MB1926D3C68066C72523FF7FC8DC7F0@BY2PR0201MB1926.namprd02.prod.outlook.com>
+	SRVR:BY2PR0201MB1927; 
+X-Microsoft-Exchange-Diagnostics: 1; BY2PR0201MB1927;
+	3:lH9OwQZxfY4GZR34yW2TvljJ/8IOKBwGNPncyMMwy8D159daqGIH7HJByFW7vpmKOyPMDWcD1cA9WHbTG806S1op/CJaGKqCfV3vUOHBYldsoaEYwIuWukH65noByMzc1eagnIKIFjakQgpa5GmdiflAzjGyzNsD8xZtHqqW5Lnwxs8vvxKrzOCbmbGPPRjrZY+LKPUdkOp0xZ7MG780bQk5WooMqrHwySvQ1VL4AAMPoBQ5hso/vAlzqng+Wvz7YjjACVuOVCh2TwHfatFzPVi00th7J1hk6aB4b5in3gvy/NpXlhvULu/TgiL2xetYgrL9r54cgvPNY0JNo7tidjimYIYGhK47hI9QCSZofJQ=;
+	25:G0b/irUv+l/w8eyQGM4E0aG6ePitLePOuoh0etYaJvNZfRfgVmXoLAI2OHl/XwePoZ2s4BGcGQlmGt4ef3ER7g+5HP1d8M5uMBcuaTOwpH+gQA+mP7QybcQfpsTEGPbzLUJVy7XccKmCFm09xcVgKQrqSn75zDUkHNzFipTPgVmPE5H66KGdvLq/Hlmus/n60nJE3mzgzaIBgOYXnVrJtjlH15ulAy9YLZl5YdWXwnpBwh9l08HHqTrNw94Jlp+SQ7H99M+LxCDonTqK6gBkkIAHSpyRpL3E6/rmbxX2j0gJyYYZbg374aOdK8hBg20G/1hfzFT6eyU/G2O7YThn6w==
+X-MS-TrafficTypeDiagnostic: BY2PR0201MB1927:
+X-Microsoft-Exchange-Diagnostics: 1; BY2PR0201MB1927;
+	31:f9thu377kX/wGFg4KgOLkP1sW7kGKa9x+UEV3TIYQGf5hehkMkN9TKBYYGSPfZZSMMFGVGA8DLyLOGoBexnUZdPsCOcz4Wfu9Vy4LnfDVUz5KynCXFvftkiqUCkaIau6xeLQkZ+K7ger0CGwCZvll1NCaWoIpcSajxhihFUxbJdU2T6Bq41JuYJCHOuIA0doFesEXssK8f8Ac9Qe95/CMtW0TQ+Mm4cE3+WPj3aP7/I=;
+	20:JDMerKs/Fc3gLpEvmH2/wiYUwsIgJNAgQLswZeG4gHGEtLoo5vBCYLBPzEnqca4HXO7NqyeHx2jBwdcS6W+xgrzpNfLyeSVWusyWYfyP8B8rbiwYdq3/ZHZAMoGEQFuMukrvbbgoDgotlB2b+MNvcul71mygqcQm+35glpLXHBj6lS5ARmpRagVzpwAEv+BlJzNZAze1Vz4IcCAfzZWcw8yAk2NWmU2gBup9YIxbrbYWjqv7pcLLeU22WkavNAttCKASMoSLG+DMFnwbcaEC0qFFIUmaqtae8UeEPvd2NruDQZKQmhaX0bUybGOQnhY8OetXDBgBPl8Ouh6r74E8ERooBTXiH6mxmIR2tOq13liqYvvXdfv9QxPZATs97JIgSC3jcVWBaa8jmtUtZzL1kpRDnoyXitQdBhRYpWwxo27Ao+vAsGT/Jm4YLKF+FsB1qGLFlgxMJPcvLz75b0F8eEFOuawxH/4NxxFpWGhG4XshNiIz6wlD1AVvq+C42IM7
+X-Exchange-Antispam-Report-Test: UriScan:(788757137089)(190383065149520)(192813158149592)(104084551191319)(21532816269658);
+X-Microsoft-Antispam-PRVS: <BY2PR0201MB19272B16DFA673DFF2DAD521DC7F0@BY2PR0201MB1927.namprd02.prod.outlook.com>
 X-Exchange-Antispam-Report-CFA-Test: BCL:0; PCL:0;
-	RULEID:(100000700101)(100105000095)(100000701101)(100105300095)(100000702101)(100105100095)(6040450)(2401047)(8121501046)(5005006)(100000703101)(100105400095)(93006095)(93004095)(3002001)(10201501046)(6055026)(6041248)(20161123562025)(20161123558100)(20161123564025)(20161123555025)(20161123560025)(201703131423075)(201702281528075)(201703061421075)(201703061406153)(6072148)(201708071742011)(100000704101)(100105200095)(100000705101)(100105500095);
-	SRVR:BY2PR0201MB1926; BCL:0; PCL:0;
+	RULEID:(100000700101)(100105000095)(100000701101)(100105300095)(100000702101)(100105100095)(6040450)(2401047)(8121501046)(5005006)(100000703101)(100105400095)(3002001)(10201501046)(93006095)(93004095)(6055026)(6041248)(20161123555025)(20161123564025)(20161123560025)(20161123562025)(201703131423075)(201702281528075)(201703061421075)(201703061406153)(20161123558100)(6072148)(201708071742011)(100000704101)(100105200095)(100000705101)(100105500095);
+	SRVR:BY2PR0201MB1927; BCL:0; PCL:0;
 	RULEID:(100000800101)(100110000095)(100000801101)(100110300095)(100000802101)(100110100095)(100000803101)(100110400095)(100000804101)(100110200095)(100000805101)(100110500095);
-	SRVR:BY2PR0201MB1926; 
-X-Microsoft-Exchange-Diagnostics: 1; BY2PR0201MB1926;
-	4:nfIBpO0iQZhFXOKrOAepAxN1XoUm0LrrFCkaqUdL+2uoamW0MNCdmrTYxaEeGaHPwaoTs/O7f2y9/YLFjW9NcysA8UfnfQEJRGt7cPiW1RZKwLj2iXSWZNMNYWQ9ABftrmCLsiz3N51VOjYAVIiCiFyr2vuTkv2M55xYY1TzQwL364ycqMr5WQ5+dI03WGDBbq4hSniaU/yeKeZh/pQaTfehOWmjevO0LrsnKnakHiy86RzydnUFGBp0IL6UnHiS7jR6h2MvZ1TGlg0LMMeQkSpBVX6ZVBNBKEeJJcVosCrRTcc5PR1jS0PI/htHy7GtG4ARu0FLTv2ZDtltqj/XmtLfp5DXQuN0veBqyC0pk9PyzgStxjFC9iHdv2h1g1gc3O7wMTHDmj9UuO+yGuDZZQ==
+	SRVR:BY2PR0201MB1927; 
+X-Microsoft-Exchange-Diagnostics: 1; BY2PR0201MB1927;
+	4:Go7/IoI4jHTDKLoEygDck2de7Z+nsBI4QJMZqdPS8TjuLcle2D0glOHmAMqCgaUuZIq3NuxVROoilOD8mgRCDZSFKs/OQrrIvJJv9RFNCihhBbllCydXHRMP5Y6V/aFHTatXJkBayNwYQT/wu6QjhJyMrBmIK6/E4/f11SZ4M5J+fBoiVoVZi5jjjSdZ47+DRBd5hxYSFaf5wGNZBNeeNmojMuUDn8NxNIPtkqi9+kXrrUHlcT+zK2MS83twcCUXCAkAW30b7LqZ7i2vXZHPY+J+PmDd7XPNSb7CTd1FIhXc8KlcLzm/ijUsD/genRaRyKROlWt9xQOAGKRiEpXY3Hv1XGpmC8zFHca0Za6Itra6II/0QZ3fV82kz2UID5OSw2cgI8S3+qCsEGOxSG0HcogzQLCAkn95DqnQKrHiTnap3gIRUE5zzCyPuq4RRQfr
 X-Forefront-PRVS: 0446F0FCE1
-X-Microsoft-Exchange-Diagnostics: =?us-ascii?Q?1; BY2PR0201MB1926;
-	23:W8IR8F2x+nrOgpcRL9vBEaWipC8c5l1zV5jhGGW?=
-	=?us-ascii?Q?fTbO2tMc/Rqb6BO6Z2f/raAR6hIYW7N4vAEnageXjkCmT+M2Ch43brRanY8G?=
-	=?us-ascii?Q?F//idhCMsu5K083QdnIUX3/HyXyTUxtCn5PfnDvfu5OnclAM2u6ylXK42M+x?=
-	=?us-ascii?Q?6CQx69qljy8ByvCKaPqgyXwlTl3PStn1wgERVohZEXslqKXTAlPmVBshaxQ3?=
-	=?us-ascii?Q?Jp3140yPfiyJVk8YO30dI9Nvi1iZT5J2hWKeCV/qUQ6Sq8bZe56a+dzOyhZV?=
-	=?us-ascii?Q?xo0HBnVZjCMa87A1jk4+sTf3uitPUMTUOK5n3dKAMR22dCqVCdlIT4HUFlE6?=
-	=?us-ascii?Q?mlEvncXlAnbxlYB9BBKXKtBOARBGIATcoZwnkiU31K/TqFtqyddxodNpnrn/?=
-	=?us-ascii?Q?0khvy4nBry9dmlvw4GVImplleYfFQpat0+vEJpvjqfowPc7JZMj3AZcSSO2s?=
-	=?us-ascii?Q?60gw0wGw1uO2KwjjxtENbSeOF8u0ZMpFLQrZgIicQxNuSHzrc3OfSGnredNS?=
-	=?us-ascii?Q?NCJjZJfGCoQ9g1+2bdk4Ho34eBqMjzQdbHexet6gG+3m4sz/6tsr+C0kcDss?=
-	=?us-ascii?Q?lGHdit3reEJFmVI5xNHT29dzzff5KXL3GTvTdHpkg4zO3vHrO2Qviu94e3mF?=
-	=?us-ascii?Q?2gTSf6Vd0deIZRhRh2xFiaPiI3xQC5Rp7F9i4ysnTimF7/naNKcwp7AcU8rM?=
-	=?us-ascii?Q?0dfFcXWmQMJ6Dsb7SGqsjdXzDRcRs+H7EO8l4xaP+Aua5gkExhx4j4E+NPNY?=
-	=?us-ascii?Q?qLVZkv25y1DrDs/n+17jTmot0zSgRT4NyxHj1e/WeQ6YSsQWx5+bvDAB9Emj?=
-	=?us-ascii?Q?SPHoJlW6H9dUS/IBnQoeitulJlglw6XRKNW7LA+Qrpl+b/B8u2nm9mFGEEIv?=
-	=?us-ascii?Q?Ex90ibUSyomOM0DUBh0XLg0T0OtAz/kfAudii1JIsk8NFLWM5bD4Fh+bv5VQ?=
-	=?us-ascii?Q?99/nVRAttrdtBdP28hnQ5MrzxcG1J2E4Z5vZa5MDf1tfp4UcGaW5SDTy0LQd?=
-	=?us-ascii?Q?O18XqlUyxZ36un9vZhcKxOoMX+5p5vD+beO43QIvYY6eXqmkUnS2dsosP18b?=
-	=?us-ascii?Q?RY/f6e1xU1gTOPEy1wbkM/I2tcM4FbWg3WV/EEq1umvDWafxm7HapWT2QNXB?=
-	=?us-ascii?Q?P6Nh46Y2q41TB5DcSvq1rvIdETWznyD5G5MPZ0xrVwXWrPfjRrQRenUfybd1?=
-	=?us-ascii?Q?lH45cS0Lu1AAK/zqOHvmmtXg9h/DTdk4rWEYO3oX0d16CME12JMTye/nNh7F?=
-	=?us-ascii?Q?UgNsg2+zQ1l8jcq8Isu1mmLL1qontm7NkwNPMo/EDR8IU8WT+D1VSp3C3nsb?=
-	=?us-ascii?Q?iD8Hsry70Q6AcXI0BsH0Tuoc=3D?=
-X-Microsoft-Exchange-Diagnostics: 1; BY2PR0201MB1926;
-	6:Lnhb+F8KU1JVy1Yx9WpU5qkEjd4o4Ib3EY364PoRBTzDLOtXyHjlbhibFzCQqY2PZi9GapMh1qhzq6CXGrZ7un3Wr5RhAh5I4EKg9F7eh8iiyrZICWKEe7jkB6uCYgpOKnJTVGkinmD1kN3qCLb88U+AL7mLW+yVCMV8HwfPQtC3LFxWQht0oGMsa1OgEpNg5f8GCrJFQOhs28o2B66Tpe40ELK/3s/kNmLve5IP/XIeCvARHeves+wN/Hbw5LFBcLr8gg32v1GIK/s5DCFJNvfHsBEoCWahdb5Q/z6WeDd3hXGPmdKL3paRwzRTSLC4uFST2DKDNLKwXtUVafs9Mw==;
-	5:HWqqWb9f+TKBNMtb9vD87vEcEW7AfrCP67wnDNg1dBGnalP8IMovZxOkNysRlCeBfpBnKW7UJvuyzaZhh4jZmRhABk+j3kDvpLbTos27vi2fdk8wTZhCu3/968oQv49cLOz2lwEYlU962q8wyAiBz3VSa1WllI/xGtusenlqWRY=;
-	24:CZYcL5Zw4yhSk6VX/PNzdtYaRWw+n7QR61x7aO3XKD5Yp+K5JHjlxhau+xnadLk4U0KpGlx72uAxhrAajDgtKn+TT+2052/gWOH9JBAy21c=;
-	7:6PlRl+O4tnoqNg6WOBvolyGFbmiR+KHsBe0yndEtlgmIBE0lLITrRkIdFXpO0ejVptd/bSzGyLj62uqltCnbhO2+6CcY5aaiPq6KdygxJO/n9Tog+L/o04YZCnlNbZrp88wcDVrkx13a9EhAj9rFECZkGYSYo+UaaPhYGmZA1maJDfUo/KrvEfdHuNT2C1FL07em9GfpeW56qE6qDp4DswhK0NwIJcbwOQvCjSH2h+Y=
+X-Microsoft-Exchange-Diagnostics: =?us-ascii?Q?1; BY2PR0201MB1927;
+	23:dvA+oa0OVJ9kHqcFZ+ybBMnwQ044lGIWRYHlyx2?=
+	=?us-ascii?Q?04Wh1r6Wi+dpBCdAly8mGICLXhseUpuPTdQ4cvEuKdorA7cTMv5Pyw2lShkg?=
+	=?us-ascii?Q?PQhC8Wwxdobr2hL3tHrR7Al7/E7+fSZio/jlj6Am19hqNJzmTXW07dvpk9Ts?=
+	=?us-ascii?Q?tfjnxRcl4A6+FxcK4ETXYyRYjg4v1paZouiB0u70IkBT9HIrFXrQ8sgpPZBh?=
+	=?us-ascii?Q?9sWYNpGA2JKWiIPylrgpX3mIT2XQ1ilqBiX0KrIvtT1B9hYA8ef2j+vWgpSt?=
+	=?us-ascii?Q?3n2dDYaKMvVOJuvaJ0mSt/y4VCwTkmtv5IzGpfgf5sLnKCwEQr9BS6bhqOtS?=
+	=?us-ascii?Q?eFLGM7Pk165Ki5OCQd9Qgrl6/d36lgceK8Nh7PYFeZtmcavp99RJVidlTqcd?=
+	=?us-ascii?Q?AItVbbJplslY3FB6AW2DfM/D4zIaCXvoSmB7X+cqgo5ajJJ/U6/UlKFwTUJl?=
+	=?us-ascii?Q?hkWLNWQyAOdWkMk55MyN8DNae7SKbyKJet169qW9uMZ0iTGhia6sP6cvF8Fe?=
+	=?us-ascii?Q?Snw9ofQJlhrjjdmf8wj966BeI1YrL7vLpc7L2O5SWe3MHw8fn1m3Suy0yDMB?=
+	=?us-ascii?Q?Y0r0qKKHV4BxiZqvPFzFX8qQaOalKMlta1iDp+W+/xiDBVslv7/PeInDHsSw?=
+	=?us-ascii?Q?wKtIbeyZk+3rdOHz4WDBXjPQDN5lX1MBmgoEGjVgv5C5gZA4dfzdi+uLOkRU?=
+	=?us-ascii?Q?HohDgaJpyxhKsyWK3GpLcu9npd0tDgdZApdVvpGI9Yk59I/ruNV8re7PJtOJ?=
+	=?us-ascii?Q?G+HmErzVuJKNYx9oNpNjf8NoARdDrD5rjDEhJefne8IYuAoY+8PTapsM3jQ5?=
+	=?us-ascii?Q?YD2B0BO/2B7x4i8lVQc3Sc1IQjfBJTssaWjnpTDchtaQUCYJgKpd/WhR5Dlf?=
+	=?us-ascii?Q?+2N4EsgsV2XyGzoLDfgDskRRL3O+ayt3vIa2EOi24TI5JwS7Q6zrflDs1SXN?=
+	=?us-ascii?Q?sVwuksplRvw41OUS7U/NO5Rnta5cAgJ34jLFv74dI2tNzVkKaPUNkAZY9yiE?=
+	=?us-ascii?Q?jpyOz4FO316n7tc8qOV1VbX1lOR2FtUlqv1niDDo/EvxRZi1U4z6jowJkBfj?=
+	=?us-ascii?Q?i8z4M3mx7YlTX5WhShAur7xGjZZ4kskUOvu+hsoyH/dgYv5BTMT4neEzpr0x?=
+	=?us-ascii?Q?2OR5qmhEJaUjFYGbsAwj7K0qS7sHDvtBXSmQkNi4qM1fibEcLHPP4SoJWM/h?=
+	=?us-ascii?Q?nLsq+yMODrDbNXWTq9d5JTKtn2H6wTGCbeB+KMBbeQQoPCubXQRpaAOfQDdb?=
+	=?us-ascii?Q?feCUqvm3AMUFM7Q+VC2U=3D?=
+X-Microsoft-Exchange-Diagnostics: 1; BY2PR0201MB1927;
+	6:q2pUDTgWPUdxkTkXGsW7PY7SDacC9fw4GOjY0AL4e55kMgHNigy10K92cGJqWbsvIFrbH1Z5JAUWphQaRwSes2xYmb2jw89X7fRvL7dbXdhI9UfkjtPDepVfrjHVU8NA5V4Ia4su6QLLeuqLloc7TSJdGiEiKJhzQDcGby6NUXSUeJxPAgsh+QcqC5w4Mj4Q+C003ps2iNgZsTtGEIJdjm1sUawBWiKhtdVrBa8G+i9853TIkbkRDypLDYK18fbP4RSamwPi1AM7H3JYwM8kVMR+sIhg55rzK3saWhNjluY1JSekT3BRmtjn9jmlULecj5GuuPEcC9Hs1wsjiNEwig==;
+	5:eaZx+8zfJp6qxLP8bIHb3T7NIdTlqcu85wy3VMMrtKkK5cZcfXMmza4xyyjkcGlZQuz5q9EWLmT7Y+wNXUA2Kq2MN0+gpG1XE3oJ1qMd2cji1lL+ONKiPgBbTHqCjusy7MwPYNtiiDduwoKqAv+3mOFDGmyEp28NuPU/T/wycuk=;
+	24:MM9Kn5vRHVDmrZaKBgn52PRmwexM7QPCZwskBH0shVzPHy1n1lBoBkt1n7MwXBTU4B9GtJWa5lcMy1yzDVmNO6Q/RWxVyEHUSlXkYktQ5eQ=;
+	7:/zOcJ3W/BzBNW8W06gD5EMl6NfSgn8/smGm7yPodOGDPrFBWiZXaT+IN2DNQptZ1qBN8ls3BYFHHkmWDJpOMgxiRMilWhht1m5WLbeESfk9o7WQAUMwIMYBqxQ7S7CSycu5l7xq7kvimAAg0yLegH2ufqRIbUeUcAZd3jp82Xu6HVu9y5zlk7wz5r6IUW597TfR4pyo+OKj65ClosrsPTUitxzABUP2Ly271L+Yx3V8=
 SpamDiagnosticOutput: 1:99
 SpamDiagnosticMetadata: NSPM
 X-OriginatorOrg: xilinx.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 30 Sep 2017 00:19:01.6007 (UTC)
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 30 Sep 2017 00:21:20.4176 (UTC)
 X-MS-Exchange-CrossTenant-Id: 657af505-d5df-48d0-8300-c31994686c5c
 X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=657af505-d5df-48d0-8300-c31994686c5c;
 	Ip=[149.199.60.100]; Helo=[xsj-pvapsmtpgw02]
 X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: BY2PR0201MB1926
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: BY2PR0201MB1927
 X-detected-operating-system: by eggs.gnu.org: Windows 7 or 8 [fuzzy]
-X-Received-From: 104.47.40.68
-Subject: [Qemu-arm] [PATCH v2 01/47] Replace all occurances of __FUNCTION__
- with __func__
+X-Received-From: 104.47.41.47
+Subject: [Qemu-arm] [PATCH v2 47/47] target: Replace fprintf(stderr,
+ "*\n" with error_report()
 X-BeenThere: qemu-arm@gnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -194,2698 +193,1515 @@ List-Post: <mailto:qemu-arm@gnu.org>
 List-Help: <mailto:qemu-arm-request@gnu.org?subject=help>
 List-Subscribe: <https://lists.gnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@gnu.org?subject=subscribe>
-Cc: "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
-	Stefano Stabellini <sstabellini@kernel.org>,
-	Fam Zheng <famz@redhat.com>, qemu-block@nongnu.org,
-	John Snow <jsnow@redhat.com>,
-	Juan Quintela <quintela@redhat.com>, armbru@redhat.com,
+Cc: Cornelia Huck <cohuck@redhat.com>, Eduardo Habkost <ehabkost@redhat.com>,
+	Marcelo Tosatti <mtosatti@redhat.com>, armbru@redhat.com,
 	alistair.francis@xilinx.com,
-	Yongbok Kim <yongbok.kim@imgtec.com>, qemu-arm@nongnu.org,
-	Gerd Hoffmann <kraxel@redhat.com>, Stefan Hajnoczi <stefanha@redhat.com>,
-	xen-devel@lists.xenproject.org,
-	Anthony Perard <anthony.perard@citrix.com>, alistair23@gmail.com,
-	Andrzej Zaborowski <balrogg@gmail.com>,
-	Aurelien Jarno <aurelien@aurel32.net>
+	Christian Borntraeger <borntraeger@de.ibm.com>,
+	Michael Walle <michael@walle.cc>, qemu-arm@nongnu.org,
+	qemu-ppc@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
+	Yongbok Kim <yongbok.kim@imgtec.com>, alistair23@gmail.com,
+	Guan Xuetao <gxt@mprc.pku.edu.cn>, Aurelien Jarno <aurelien@aurel32.net>,
+	Richard Henderson <rth@twiddle.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@gnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@gnu.org>
-X-TUID: BNZcloyeOcf8
+X-TUID: nISt79Dnmk/e
 
-Replace all occurs of __FUNCTION__ except for the check in checkpatch
-with the non GCC specific __func__.
+Replace a large number of the fprintf(stderr, "*\n" calls with
+error_report(). The functions were renamed with these commands and then
+compiler issues where manually fixed.
 
-One line in hcd-musb.c was manually tweaked to pass checkpatch.
+find ./* -type f -exec sed -i \
+    'N;N;N;N;N;N;N;N;N;N;N;N; {s|fprintf(stderr, "\(.*\)\\n"\(.*\));|error_report("\1"\2);|Ig}' \
+    {} +
+find ./* -type f -exec sed -i \
+    'N;N;N;N;N;N;N;N;N;N;N; {s|fprintf(stderr, "\(.*\)\\n"\(.*\));|error_report("\1"\2);|Ig}' \
+    {} +
+find ./* -type f -exec sed -i \
+    'N;N;N;N;N;N;N;N;N; {s|fprintf(stderr, "\(.*\)\\n"\(.*\));|error_report("\1"\2);|Ig}' \
+    {} +
+find ./* -type f -exec sed -i \
+    'N;N;N;N;N;N;N;N; {s|fprintf(stderr, "\(.*\)\\n"\(.*\));|error_report("\1"\2);|Ig}' \
+    {} +
+find ./* -type f -exec sed -i \
+    'N;N;N;N;N;N;N; {s|fprintf(stderr, "\(.*\)\\n"\(.*\));|error_report("\1"\2);|Ig}' \
+    {} +
+find ./* -type f -exec sed -i \
+    'N;N;N;N;N;N; {s|fprintf(stderr, "\(.*\)\\n"\(.*\));|error_report("\1"\2);|Ig}' \
+    {} +
+find ./* -type f -exec sed -i \
+    'N;N;N;N;N; {s|fprintf(stderr, "\(.*\)\\n"\(.*\));|error_report("\1"\2);|Ig}' \
+    {} +
+find ./* -type f -exec sed -i \
+    'N;N;N;N; {s|fprintf(stderr, "\(.*\)\\n"\(.*\));|error_report("\1"\2);|Ig}' \
+    {} +
+find ./* -type f -exec sed -i \
+    'N;N;N; {s|fprintf(stderr, "\(.*\)\\n"\(.*\));|error_report("\1"\2);|Ig}' \
+    {} +
+find ./* -type f -exec sed -i \
+    'N;N; {s|fprintf(stderr, "\(.*\)\\n"\(.*\));|error_report("\1"\2);|Ig}' \
+    {} +
+find ./* -type f -exec sed -i \
+    'N; {s|fprintf(stderr, "\(.*\)\\n"\(.*\));|error_report("\1"\2);|Ig}' \
+    {} +
+
+Some lines where then manually tweaked to pass checkpatch.
 
 Signed-off-by: Alistair Francis <alistair.francis@xilinx.com>
-Cc: Gerd Hoffmann <kraxel@redhat.com>
-Cc: Andrzej Zaborowski <balrogg@gmail.com>
-Cc: Stefano Stabellini <sstabellini@kernel.org>
-Cc: Anthony Perard <anthony.perard@citrix.com>
-Cc: John Snow <jsnow@redhat.com>
+Cc: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
+Cc: Paolo Bonzini <pbonzini@redhat.com>
+Cc: Richard Henderson <rth@twiddle.net>
+Cc: Eduardo Habkost <ehabkost@redhat.com>
+Cc: Marcelo Tosatti <mtosatti@redhat.com>
+Cc: Michael Walle <michael@walle.cc>
 Cc: Aurelien Jarno <aurelien@aurel32.net>
 Cc: Yongbok Kim <yongbok.kim@imgtec.com>
-Cc: Peter Crosthwaite <crosthwaite.peter@gmail.com>
-Cc: Stefan Hajnoczi <stefanha@redhat.com>
-Cc: Fam Zheng <famz@redhat.com>
-Cc: Juan Quintela <quintela@redhat.com>
-Cc: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
+Cc: Christian Borntraeger <borntraeger@de.ibm.com>
+Cc: Cornelia Huck <cohuck@redhat.com>
+Cc: Guan Xuetao <gxt@mprc.pku.edu.cn>
 Cc: qemu-arm@nongnu.org
-Cc: qemu-block@nongnu.org
-Cc: xen-devel@lists.xenproject.org
-Reviewed-by: Eric Blake <eblake@redhat.com>
+Cc: qemu-ppc@nongnu.org
 ---
 
- audio/audio_int.h          |  2 +-
- hw/arm/nseries.c           |  2 +-
- hw/arm/omap1.c             | 42 +++++++++++++++++++++---------------------
- hw/arm/omap2.c             | 12 ++++++------
- hw/arm/palm.c              | 14 +++++++-------
- hw/arm/pxa2xx.c            | 46 +++++++++++++++++++++++-----------------------
- hw/arm/pxa2xx_gpio.c       |  6 +++---
- hw/arm/pxa2xx_pic.c        |  4 ++--
- hw/arm/tosa.c              | 10 +++++-----
- hw/audio/hda-codec.c       | 10 +++++-----
- hw/audio/intel-hda.c       | 28 ++++++++++++++--------------
- hw/audio/wm8750.c          |  4 ++--
- hw/block/nand.c            |  4 ++--
- hw/block/onenand.c         |  8 ++++----
- hw/bt/core.c               | 10 +++++-----
- hw/bt/hci-csr.c            | 14 +++++++-------
- hw/bt/hci.c                | 26 +++++++++++++-------------
- hw/bt/hid.c                |  2 +-
- hw/bt/l2cap.c              | 22 +++++++++++-----------
- hw/bt/sdp.c                |  6 +++---
- hw/display/blizzard.c      | 18 +++++++++---------
- hw/display/omap_dss.c      |  6 +++---
- hw/display/pxa2xx_lcd.c    | 14 +++++++-------
- hw/display/qxl-render.c    |  6 +++---
- hw/display/qxl.h           |  2 +-
- hw/display/tc6393xb.c      |  2 +-
- hw/display/xenfb.c         |  2 +-
- hw/dma/omap_dma.c          | 26 +++++++++++++-------------
- hw/dma/pxa2xx_dma.c        | 14 +++++++-------
- hw/gpio/max7310.c          |  8 ++++----
- hw/gpio/omap_gpio.c        |  2 +-
- hw/i2c/omap_i2c.c          |  6 +++---
- hw/ide/ahci.c              |  2 +-
- hw/ide/microdrive.c        |  4 ++--
- hw/input/lm832x.c          |  6 +++---
- hw/input/pxa2xx_keypad.c   |  6 +++---
- hw/input/tsc2005.c         |  8 ++++----
- hw/input/tsc210x.c         |  4 ++--
- hw/intc/omap_intc.c        |  2 +-
- hw/isa/vt82c686.c          |  2 +-
- hw/mips/gt64xxx_pci.c      |  2 +-
- hw/misc/cbus.c             | 12 ++++++------
- hw/misc/omap_clk.c         |  4 ++--
- hw/misc/omap_gpmc.c        |  6 +++---
- hw/misc/omap_l4.c          |  4 ++--
- hw/misc/omap_sdrc.c        |  2 +-
- hw/misc/omap_tap.c         |  6 +++---
- hw/misc/tmp105.c           |  2 +-
- hw/pci-host/bonito.c       |  2 +-
- hw/sd/pxa2xx_mmci.c        |  6 +++---
- hw/ssi/omap_spi.c          |  6 +++---
- hw/timer/omap_gptimer.c    |  6 +++---
- hw/timer/twl92230.c        |  6 +++---
- hw/usb/desc.c              |  2 +-
- hw/usb/dev-bluetooth.c     |  4 ++--
- hw/usb/hcd-musb.c          |  4 ++--
- hw/usb/tusb6010.c          | 14 +++++++-------
- hw/xenpv/xen_domainbuild.c | 16 ++++++++--------
- hw/xenpv/xen_machine_pv.c  |  2 +-
- include/hw/arm/omap.h      | 10 +++++-----
- include/hw/arm/sharpsl.h   |  2 +-
- memory_mapping.c           |  2 +-
- migration/block.c          |  4 ++--
- ui/cursor.c                |  6 +++---
- ui/spice-display.c         |  4 ++--
- 65 files changed, 273 insertions(+), 273 deletions(-)
+ target/arm/arm-powerctl.c    |  5 +++--
+ target/arm/arm-semi.c        |  3 ++-
+ target/arm/helper.c          |  4 ++--
+ target/arm/kvm.c             | 16 ++++++-------
+ target/arm/kvm32.c           |  2 +-
+ target/arm/kvm64.c           |  2 +-
+ target/arm/translate-a64.c   |  4 ++--
+ target/arm/translate.c       |  2 +-
+ target/cris/helper.c         |  2 +-
+ target/i386/hax-all.c        | 52 +++++++++++++++++++++----------------------
+ target/i386/hax-darwin.c     | 26 +++++++++++-----------
+ target/i386/hax-mem.c        |  4 ++--
+ target/i386/hax-windows.c    | 42 +++++++++++++++++------------------
+ target/i386/kvm.c            | 38 +++++++++++++++----------------
+ target/i386/misc_helper.c    | 12 +++++-----
+ target/lm32/op_helper.c      |  4 ++--
+ target/mips/mips-semi.c      |  3 ++-
+ target/mips/translate.c      |  2 +-
+ target/ppc/excp_helper.c     |  4 ++--
+ target/ppc/kvm.c             | 34 ++++++++++++++--------------
+ target/ppc/mmu-hash64.c      |  2 +-
+ target/ppc/mmu_helper.c      |  2 +-
+ target/ppc/translate_init.c  | 53 ++++++++++++++++++++++----------------------
+ target/s390x/kvm.c           | 20 ++++++++---------
+ target/s390x/misc_helper.c   |  2 +-
+ target/unicore32/translate.c |  2 +-
+ 26 files changed, 173 insertions(+), 169 deletions(-)
 
-diff --git a/audio/audio_int.h b/audio/audio_int.h
-index 5bcb1c60e1..543b1bd8d5 100644
---- a/audio/audio_int.h
-+++ b/audio/audio_int.h
-@@ -253,7 +253,7 @@ static inline int audio_ring_dist (int dst, int src, int len)
- #define AUDIO_STRINGIFY(n) AUDIO_STRINGIFY_(n)
+diff --git a/target/arm/arm-powerctl.c b/target/arm/arm-powerctl.c
+index 25207cb850..2d56d5d579 100644
+--- a/target/arm/arm-powerctl.c
++++ b/target/arm/arm-powerctl.c
+@@ -9,6 +9,7 @@
+  */
  
- #if defined _MSC_VER || defined __GNUC__
--#define AUDIO_FUNC __FUNCTION__
-+#define AUDIO_FUNC __func__
- #else
- #define AUDIO_FUNC __FILE__ ":" AUDIO_STRINGIFY (__LINE__)
- #endif
-diff --git a/hw/arm/nseries.c b/hw/arm/nseries.c
-index 58005b6619..32687afced 100644
---- a/hw/arm/nseries.c
-+++ b/hw/arm/nseries.c
-@@ -463,7 +463,7 @@ static uint32_t mipid_txrx(void *opaque, uint32_t cmd, int len)
-     uint8_t ret;
+ #include "qemu/osdep.h"
++#include "qemu/error-report.h"
+ #include "cpu.h"
+ #include "cpu-qom.h"
+ #include "internals.h"
+@@ -24,7 +25,7 @@
+ #define DPRINTF(fmt, args...) \
+     do { \
+         if (DEBUG_ARM_POWERCTL) { \
+-            fprintf(stderr, "[ARM]%s: " fmt , __func__, ##args); \
++            error_report("[ARM]%s: " fmt , __func__, ##args); \
+         } \
+     } while (0)
  
-     if (len > 9) {
--        hw_error("%s: FIXME: bad SPI word width %i\n", __FUNCTION__, len);
-+        hw_error("%s: FIXME: bad SPI word width %i\n", __func__, len);
+@@ -32,7 +33,7 @@ CPUState *arm_get_cpu_by_id(uint64_t id)
+ {
+     CPUState *cpu;
+ 
+-    DPRINTF("cpu %" PRId64 "\n", id);
++    DPRINTF("cpu %" PRId64 "", id);
+ 
+     CPU_FOREACH(cpu) {
+         ARMCPU *armcpu = ARM_CPU(cpu);
+diff --git a/target/arm/arm-semi.c b/target/arm/arm-semi.c
+index 7cac8734c7..f8f12102f1 100644
+--- a/target/arm/arm-semi.c
++++ b/target/arm/arm-semi.c
+@@ -19,6 +19,7 @@
+  */
+ 
+ #include "qemu/osdep.h"
++#include "qemu/error-report.h"
+ 
+ #include "cpu.h"
+ #include "exec/semihost.h"
+@@ -649,7 +650,7 @@ target_ulong do_arm_semihosting(CPUARMState *env)
+         }
+         /* fall through -- invalid for A32/T32 */
+     default:
+-        fprintf(stderr, "qemu: Unsupported SemiHosting SWI 0x%02x\n", nr);
++        error_report("qemu: Unsupported SemiHosting SWI 0x%02x", nr);
+         cpu_dump_state(cs, stderr, fprintf, 0);
+         abort();
+     }
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index 8be78ea2f8..881afc3382 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -5460,9 +5460,9 @@ static void add_cpreg_to_hashtable(ARMCPU *cpu, const ARMCPRegInfo *r,
+         ARMCPRegInfo *oldreg;
+         oldreg = g_hash_table_lookup(cpu->cp_regs, key);
+         if (oldreg && !(oldreg->type & ARM_CP_OVERRIDE)) {
+-            fprintf(stderr, "Register redefined: cp=%d %d bit "
++            error_report("Register redefined: cp=%d %d bit "
+                     "crn=%d crm=%d opc1=%d opc2=%d, "
+-                    "was %s, now %s\n", r2->cp, 32 + 32 * is64,
++                    "was %s, now %s", r2->cp, 32 + 32 * is64,
+                     r2->crn, r2->crm, r2->opc1, r2->opc2,
+                     oldreg->name, r2->name);
+             g_assert_not_reached();
+diff --git a/target/arm/kvm.c b/target/arm/kvm.c
+index 211a7bf7be..0165960405 100644
+--- a/target/arm/kvm.c
++++ b/target/arm/kvm.c
+@@ -139,7 +139,7 @@ static void kvm_arm_host_cpu_class_init(ObjectClass *oc, void *data)
+      * TCG CPUs.
+      */
+     if (!kvm_arm_get_host_cpu_features(ahcc)) {
+-        fprintf(stderr, "Failed to retrieve host CPU features!\n");
++        error_report("Failed to retrieve host CPU features!");
+         abort();
+     }
+ }
+@@ -256,7 +256,7 @@ static void kvm_arm_set_device_addr(KVMDevice *kd)
      }
  
-     if (s->p >= ARRAY_SIZE(s->resp)) {
-diff --git a/hw/arm/omap1.c b/hw/arm/omap1.c
-index b3e7625130..1388200191 100644
---- a/hw/arm/omap1.c
-+++ b/hw/arm/omap1.c
-@@ -999,7 +999,7 @@ static uint64_t omap_id_read(void *opaque, hwaddr addr,
-         case omap1510:
-             return 0x03310115;
+     if (ret < 0) {
+-        fprintf(stderr, "Failed to set device address: %s\n",
++        error_report("Failed to set device address: %s",
+                 strerror(-ret));
+         abort();
+     }
+@@ -352,7 +352,7 @@ int kvm_arm_init_cpreg_list(ARMCPU *cpu)
+         case KVM_REG_SIZE_U64:
+             break;
          default:
--            hw_error("%s: bad mpu model\n", __FUNCTION__);
-+            hw_error("%s: bad mpu model\n", __func__);
+-            fprintf(stderr, "Can't handle size of register in kernel list\n");
++            error_report("Can't handle size of register in kernel list");
+             ret = -EINVAL;
+             goto out;
          }
-         break;
- 
-@@ -1010,7 +1010,7 @@ static uint64_t omap_id_read(void *opaque, hwaddr addr,
-         case omap1510:
-             return 0xfb47002f;
-         default:
--            hw_error("%s: bad mpu model\n", __FUNCTION__);
-+            hw_error("%s: bad mpu model\n", __func__);
-         }
-         break;
+@@ -383,7 +383,7 @@ int kvm_arm_init_cpreg_list(ARMCPU *cpu)
+         /* Shouldn't happen unless kernel is inconsistent about
+          * what registers exist.
+          */
+-        fprintf(stderr, "Initial read of kernel register state failed\n");
++        error_report("Initial read of kernel register state failed");
+         ret = -EINVAL;
+         goto out;
      }
-@@ -1716,7 +1716,7 @@ static void omap_clkm_write(void *opaque, hwaddr addr,
-     case 0x18:	/* ARM_SYSST */
-         if ((s->clkm.clocking_scheme ^ (value >> 11)) & 7) {
-             s->clkm.clocking_scheme = (value >> 11) & 7;
--            printf("%s: clocking scheme set to %s\n", __FUNCTION__,
-+            printf("%s: clocking scheme set to %s\n", __func__,
-                             clkschemename[s->clkm.clocking_scheme]);
-         }
-         s->clkm.cold_start &= value & 0x3f;
-@@ -2129,14 +2129,14 @@ qemu_irq *omap_mpuio_in_get(struct omap_mpuio_s *s)
- void omap_mpuio_out_set(struct omap_mpuio_s *s, int line, qemu_irq handler)
- {
-     if (line >= 16 || line < 0)
--        hw_error("%s: No GPIO line %i\n", __FUNCTION__, line);
-+        hw_error("%s: No GPIO line %i\n", __func__, line);
-     s->handler[line] = handler;
- }
- 
- void omap_mpuio_key(struct omap_mpuio_s *s, int row, int col, int down)
- {
-     if (row >= 5 || row < 0)
--        hw_error("%s: No key %i-%i\n", __FUNCTION__, col, row);
-+        hw_error("%s: No key %i-%i\n", __func__, col, row);
- 
-     if (down)
-         s->buttons[row] |= 1 << col;
-@@ -2313,7 +2313,7 @@ void omap_uwire_attach(struct omap_uwire_s *s,
-                 uWireSlave *slave, int chipselect)
- {
-     if (chipselect < 0 || chipselect > 3) {
--        fprintf(stderr, "%s: Bad chipselect %i\n", __FUNCTION__, chipselect);
-+        fprintf(stderr, "%s: Bad chipselect %i\n", __func__, chipselect);
-         exit(-1);
+@@ -478,11 +478,11 @@ void kvm_arm_reset_vcpu(ARMCPU *cpu)
+      */
+     ret = kvm_arm_vcpu_init(CPU(cpu));
+     if (ret < 0) {
+-        fprintf(stderr, "kvm_arm_vcpu_init failed: %s\n", strerror(-ret));
++        error_report("kvm_arm_vcpu_init failed: %s", strerror(-ret));
+         abort();
      }
- 
-@@ -2335,7 +2335,7 @@ static void omap_pwl_update(struct omap_pwl_s *s)
- 
-     if (output != s->output) {
-         s->output = output;
--        printf("%s: Backlight now at %i/256\n", __FUNCTION__, output);
-+        printf("%s: Backlight now at %i/256\n", __func__, output);
+     if (!write_kvmstate_to_list(cpu)) {
+-        fprintf(stderr, "write_kvmstate_to_list failed\n");
++        error_report("write_kvmstate_to_list failed");
+         abort();
      }
  }
- 
-@@ -2473,7 +2473,7 @@ static void omap_pwt_write(void *opaque, hwaddr addr,
-     case 0x04:	/* VRC */
-         if ((value ^ s->vrc) & 1) {
-             if (value & 1)
--                printf("%s: %iHz buzz on\n", __FUNCTION__, (int)
-+                printf("%s: %iHz buzz on\n", __func__, (int)
-                                 /* 1.5 MHz from a 12-MHz or 13-MHz PWT_CLK */
-                                 ((omap_clk_getrate(s->clk) >> 3) /
-                                  /* Pre-multiplexer divider */
-@@ -2490,7 +2490,7 @@ static void omap_pwt_write(void *opaque, hwaddr addr,
-                                  ((value & (1 << 5)) ?  80 : 127) /
-                                  (107 * 55 * 63 * 127)));
-             else
--                printf("%s: silence!\n", __FUNCTION__);
-+                printf("%s: silence!\n", __func__);
-         }
-         s->vrc = value & 0x7f;
-         break;
-@@ -2562,7 +2562,7 @@ static void omap_rtc_alarm_update(struct omap_rtc_s *s)
- {
-     s->alarm_ti = mktimegm(&s->alarm_tm);
-     if (s->alarm_ti == -1)
--        printf("%s: conversion failed\n", __FUNCTION__);
-+        printf("%s: conversion failed\n", __func__);
- }
- 
- static uint64_t omap_rtc_read(void *opaque, hwaddr addr,
-@@ -3028,7 +3028,7 @@ static void omap_mcbsp_source_tick(void *opaque)
-     if (!s->rx_rate)
-         return;
-     if (s->rx_req)
--        printf("%s: Rx FIFO overrun\n", __FUNCTION__);
-+        printf("%s: Rx FIFO overrun\n", __func__);
- 
-     s->rx_req = s->rx_rate << bps[(s->rcr[0] >> 5) & 7];
- 
-@@ -3074,7 +3074,7 @@ static void omap_mcbsp_sink_tick(void *opaque)
-     if (!s->tx_rate)
-         return;
-     if (s->tx_req)
--        printf("%s: Tx FIFO underrun\n", __FUNCTION__);
-+        printf("%s: Tx FIFO underrun\n", __func__);
- 
-     s->tx_req = s->tx_rate << bps[(s->xcr[0] >> 5) & 7];
- 
-@@ -3176,7 +3176,7 @@ static uint64_t omap_mcbsp_read(void *opaque, hwaddr addr,
-         /* Fall through.  */
-     case 0x02:	/* DRR1 */
-         if (s->rx_req < 2) {
--            printf("%s: Rx FIFO underrun\n", __FUNCTION__);
-+            printf("%s: Rx FIFO underrun\n", __func__);
-             omap_mcbsp_rx_done(s);
-         } else {
-             s->tx_req -= 2;
-@@ -3282,7 +3282,7 @@ static void omap_mcbsp_writeh(void *opaque, hwaddr addr,
-             if (s->tx_req < 2)
-                 omap_mcbsp_tx_done(s);
-         } else
--            printf("%s: Tx FIFO overrun\n", __FUNCTION__);
-+            printf("%s: Tx FIFO overrun\n", __func__);
-         return;
- 
-     case 0x08:	/* SPCR2 */
-@@ -3297,7 +3297,7 @@ static void omap_mcbsp_writeh(void *opaque, hwaddr addr,
-         s->spcr[0] &= 0x0006;
-         s->spcr[0] |= 0xf8f9 & value;
-         if (value & (1 << 15))				/* DLB */
--            printf("%s: Digital Loopback mode enable attempt\n", __FUNCTION__);
-+            printf("%s: Digital Loopback mode enable attempt\n", __func__);
-         if (~value & 1) {				/* RRST */
-             s->spcr[0] &= ~6;
-             s->rx_req = 0;
-@@ -3330,13 +3330,13 @@ static void omap_mcbsp_writeh(void *opaque, hwaddr addr,
-         s->mcr[1] = value & 0x03e3;
-         if (value & 3)					/* XMCM */
-             printf("%s: Tx channel selection mode enable attempt\n",
--                            __FUNCTION__);
-+                            __func__);
-         return;
-     case 0x1a:	/* MCR1 */
-         s->mcr[0] = value & 0x03e1;
-         if (value & 1)					/* RMCM */
-             printf("%s: Rx channel selection mode enable attempt\n",
--                            __FUNCTION__);
-+                            __func__);
-         return;
-     case 0x1c:	/* RCERA */
-         s->rcer[0] = value & 0xffff;
-@@ -3418,7 +3418,7 @@ static void omap_mcbsp_writew(void *opaque, hwaddr addr,
-             if (s->tx_req < 4)
-                 omap_mcbsp_tx_done(s);
-         } else
--            printf("%s: Tx FIFO overrun\n", __FUNCTION__);
-+            printf("%s: Tx FIFO overrun\n", __func__);
-         return;
-     }
- 
-@@ -3536,7 +3536,7 @@ static void omap_lpg_tick(void *opaque)
-         timer_mod(s->tm, qemu_clock_get_ms(QEMU_CLOCK_VIRTUAL) + s->on);
- 
-     s->cycle = !s->cycle;
--    printf("%s: LED is %s\n", __FUNCTION__, s->cycle ? "on" : "off");
-+    printf("%s: LED is %s\n", __func__, s->cycle ? "on" : "off");
- }
- 
- static void omap_lpg_update(struct omap_lpg_s *s)
-@@ -3557,9 +3557,9 @@ static void omap_lpg_update(struct omap_lpg_s *s)
- 
-     timer_del(s->tm);
-     if (on == period && s->on < s->period)
--        printf("%s: LED is on\n", __FUNCTION__);
-+        printf("%s: LED is on\n", __func__);
-     else if (on == 0 && s->on)
--        printf("%s: LED is off\n", __FUNCTION__);
-+        printf("%s: LED is off\n", __func__);
-     else if (on && (on != s->on || period != s->period)) {
-         s->cycle = 0;
-         s->on = on;
-diff --git a/hw/arm/omap2.c b/hw/arm/omap2.c
-index f5b148881c..b53878b8b9 100644
---- a/hw/arm/omap2.c
-+++ b/hw/arm/omap2.c
-@@ -1312,7 +1312,7 @@ static void omap_prcm_apll_update(struct omap_prcm_s *s)
- 
-     if (mode[0] == 1 || mode[0] == 2 || mode[1] == 1 || mode[1] == 2)
-         fprintf(stderr, "%s: bad EN_54M_PLL or bad EN_96M_PLL\n",
--                        __FUNCTION__);
-+                        __func__);
- }
- 
- static void omap_prcm_dpll_update(struct omap_prcm_s *s)
-@@ -1331,7 +1331,7 @@ static void omap_prcm_dpll_update(struct omap_prcm_s *s)
-     s->dpll_lock = 0;
-     switch (mode) {
-     case 0:
--        fprintf(stderr, "%s: bad EN_DPLL\n", __FUNCTION__);
-+        fprintf(stderr, "%s: bad EN_DPLL\n", __func__);
-         break;
-     case 1:	/* Low-power bypass mode (Default) */
-     case 2:	/* Fast-relock bypass mode */
-@@ -1358,7 +1358,7 @@ static void omap_prcm_dpll_update(struct omap_prcm_s *s)
-         omap_clk_reparent(core, dpll_x2);
-         break;
-     case 3:
--        fprintf(stderr, "%s: bad CORE_CLK_SRC\n", __FUNCTION__);
-+        fprintf(stderr, "%s: bad CORE_CLK_SRC\n", __func__);
-         break;
-     }
- }
-@@ -1628,7 +1628,7 @@ static void omap_prcm_write(void *opaque, hwaddr addr,
-     case 0x500:	/* CM_CLKEN_PLL */
-         if (value & 0xffffff30)
-             fprintf(stderr, "%s: write 0s in CM_CLKEN_PLL for "
--                            "future compatibility\n", __FUNCTION__);
-+                            "future compatibility\n", __func__);
-         if ((s->clken[9] ^ value) & 0xcc) {
-             s->clken[9] &= ~0xcc;
-             s->clken[9] |= value & 0xcc;
-@@ -1647,7 +1647,7 @@ static void omap_prcm_write(void *opaque, hwaddr addr,
-     case 0x540:	/* CM_CLKSEL1_PLL */
-         if (value & 0xfc4000d7)
-             fprintf(stderr, "%s: write 0s in CM_CLKSEL1_PLL for "
--                            "future compatibility\n", __FUNCTION__);
-+                            "future compatibility\n", __func__);
-         if ((s->clksel[5] ^ value) & 0x003fff00) {
-             s->clksel[5] = value & 0x03bfff28;
-             omap_prcm_dpll_update(s);
-@@ -1659,7 +1659,7 @@ static void omap_prcm_write(void *opaque, hwaddr addr,
-     case 0x544:	/* CM_CLKSEL2_PLL */
-         if (value & ~3)
-             fprintf(stderr, "%s: write 0s in CM_CLKSEL2_PLL[31:2] for "
--                            "future compatibility\n", __FUNCTION__);
-+                            "future compatibility\n", __func__);
-         if (s->clksel[6] != (value & 3)) {
-             s->clksel[6] = value & 3;
-             omap_prcm_dpll_update(s);
-diff --git a/hw/arm/palm.c b/hw/arm/palm.c
-index a1f55d79b4..285f43709d 100644
---- a/hw/arm/palm.c
-+++ b/hw/arm/palm.c
-@@ -44,7 +44,7 @@ static void static_write(void *opaque, hwaddr offset, uint64_t value,
- {
- #ifdef SPY
-     printf("%s: value %08lx written at " PA_FMT "\n",
--                    __FUNCTION__, value, offset);
-+                    __func__, value, offset);
- #endif
- }
- 
-@@ -127,11 +127,11 @@ static void palmte_onoff_gpios(void *opaque, int line, int level)
-     switch (line) {
-     case 0:
-         printf("%s: current to MMC/SD card %sabled.\n",
--                        __FUNCTION__, level ? "dis" : "en");
-+                        __func__, level ? "dis" : "en");
-         break;
-     case 1:
-         printf("%s: internal speaker amplifier %s.\n",
--                        __FUNCTION__, level ? "down" : "on");
-+                        __func__, level ? "down" : "on");
-         break;
- 
-     /* These LCD & Audio output signals have not been identified yet.  */
-@@ -139,12 +139,12 @@ static void palmte_onoff_gpios(void *opaque, int line, int level)
-     case 3:
-     case 4:
-         printf("%s: LCD GPIO%i %s.\n",
--                        __FUNCTION__, line - 1, level ? "high" : "low");
-+                        __func__, line - 1, level ? "high" : "low");
-         break;
-     case 5:
-     case 6:
-         printf("%s: Audio GPIO%i %s.\n",
--                        __FUNCTION__, line - 4, level ? "high" : "low");
-+                        __func__, line - 4, level ? "high" : "low");
-         break;
-     }
- }
-@@ -234,7 +234,7 @@ static void palmte_init(MachineState *machine)
-         rom_size = get_image_size(option_rom[0].name);
-         if (rom_size > flash_size) {
-             fprintf(stderr, "%s: ROM image too big (%x > %x)\n",
--                            __FUNCTION__, rom_size, flash_size);
-+                            __func__, rom_size, flash_size);
-             rom_size = 0;
-         }
-         if (rom_size > 0) {
-@@ -244,7 +244,7 @@ static void palmte_init(MachineState *machine)
-         }
-         if (rom_size < 0) {
-             fprintf(stderr, "%s: error loading '%s'\n",
--                            __FUNCTION__, option_rom[0].name);
-+                            __func__, option_rom[0].name);
-         }
-     }
- 
-diff --git a/hw/arm/pxa2xx.c b/hw/arm/pxa2xx.c
-index ab691a7985..db860c238e 100644
---- a/hw/arm/pxa2xx.c
-+++ b/hw/arm/pxa2xx.c
-@@ -107,7 +107,7 @@ static uint64_t pxa2xx_pm_read(void *opaque, hwaddr addr,
-         return s->pm_regs[addr >> 2];
-     default:
-     fail:
--        printf("%s: Bad register " REG_FMT "\n", __FUNCTION__, addr);
-+        printf("%s: Bad register " REG_FMT "\n", __func__, addr);
-         break;
-     }
-     return 0;
-@@ -139,7 +139,7 @@ static void pxa2xx_pm_write(void *opaque, hwaddr addr,
-             break;
-         }
- 
--        printf("%s: Bad register " REG_FMT "\n", __FUNCTION__, addr);
-+        printf("%s: Bad register " REG_FMT "\n", __func__, addr);
-         break;
-     }
- }
-@@ -180,7 +180,7 @@ static uint64_t pxa2xx_cm_read(void *opaque, hwaddr addr,
-         return s->cm_regs[CCCR >> 2] | (3 << 28);
- 
-     default:
--        printf("%s: Bad register " REG_FMT "\n", __FUNCTION__, addr);
-+        printf("%s: Bad register " REG_FMT "\n", __func__, addr);
-         break;
-     }
-     return 0;
-@@ -205,7 +205,7 @@ static void pxa2xx_cm_write(void *opaque, hwaddr addr,
-         break;
- 
-     default:
--        printf("%s: Bad register " REG_FMT "\n", __FUNCTION__, addr);
-+        printf("%s: Bad register " REG_FMT "\n", __func__, addr);
-         break;
-     }
- }
-@@ -410,7 +410,7 @@ static uint64_t pxa2xx_mm_read(void *opaque, hwaddr addr,
-             return s->mm_regs[addr >> 2];
- 
-     default:
--        printf("%s: Bad register " REG_FMT "\n", __FUNCTION__, addr);
-+        printf("%s: Bad register " REG_FMT "\n", __func__, addr);
-         break;
-     }
-     return 0;
-@@ -429,7 +429,7 @@ static void pxa2xx_mm_write(void *opaque, hwaddr addr,
-         }
- 
-     default:
--        printf("%s: Bad register " REG_FMT "\n", __FUNCTION__, addr);
-+        printf("%s: Bad register " REG_FMT "\n", __func__, addr);
-         break;
-     }
- }
-@@ -619,7 +619,7 @@ static uint64_t pxa2xx_ssp_read(void *opaque, hwaddr addr,
-         if (!s->enable)
-             return 0xffffffff;
-         if (s->rx_level < 1) {
--            printf("%s: SSP Rx Underrun\n", __FUNCTION__);
-+            printf("%s: SSP Rx Underrun\n", __func__);
-             return 0xffffffff;
-         }
-         s->rx_level --;
-@@ -636,7 +636,7 @@ static uint64_t pxa2xx_ssp_read(void *opaque, hwaddr addr,
-     case SSACD:
-         return s->ssacd;
-     default:
--        printf("%s: Bad register " REG_FMT "\n", __FUNCTION__, addr);
-+        printf("%s: Bad register " REG_FMT "\n", __func__, addr);
-         break;
-     }
-     return 0;
-@@ -653,9 +653,9 @@ static void pxa2xx_ssp_write(void *opaque, hwaddr addr,
-         s->sscr[0] = value & 0xc7ffffff;
-         s->enable = value & SSCR0_SSE;
-         if (value & SSCR0_MOD)
--            printf("%s: Attempt to use network mode\n", __FUNCTION__);
-+            printf("%s: Attempt to use network mode\n", __func__);
-         if (s->enable && SSCR0_DSS(value) < 4)
--            printf("%s: Wrong data size: %i bits\n", __FUNCTION__,
-+            printf("%s: Wrong data size: %i bits\n", __func__,
-                             SSCR0_DSS(value));
-         if (!(value & SSCR0_SSE)) {
-             s->sssr = 0;
-@@ -668,7 +668,7 @@ static void pxa2xx_ssp_write(void *opaque, hwaddr addr,
-     case SSCR1:
-         s->sscr[1] = value;
-         if (value & (SSCR1_LBM | SSCR1_EFWR))
--            printf("%s: Attempt to use SSP test mode\n", __FUNCTION__);
-+            printf("%s: Attempt to use SSP test mode\n", __func__);
-         pxa2xx_ssp_fifo_update(s);
-         break;
- 
-@@ -728,7 +728,7 @@ static void pxa2xx_ssp_write(void *opaque, hwaddr addr,
-         break;
- 
-     default:
--        printf("%s: Bad register " REG_FMT "\n", __FUNCTION__, addr);
-+        printf("%s: Bad register " REG_FMT "\n", __func__, addr);
-         break;
-     }
- }
-@@ -990,7 +990,7 @@ static uint64_t pxa2xx_rtc_read(void *opaque, hwaddr addr,
-         else
-             return s->last_swcr;
-     default:
--        printf("%s: Bad register " REG_FMT "\n", __FUNCTION__, addr);
-+        printf("%s: Bad register " REG_FMT "\n", __func__, addr);
-         break;
-     }
-     return 0;
-@@ -1096,7 +1096,7 @@ static void pxa2xx_rtc_write(void *opaque, hwaddr addr,
-         break;
- 
-     default:
--        printf("%s: Bad register " REG_FMT "\n", __FUNCTION__, addr);
-+        printf("%s: Bad register " REG_FMT "\n", __func__, addr);
-     }
- }
- 
-@@ -1344,7 +1344,7 @@ static uint64_t pxa2xx_i2c_read(void *opaque, hwaddr addr,
-             s->ibmr = 0;
-         return s->ibmr;
-     default:
--        printf("%s: Bad register " REG_FMT "\n", __FUNCTION__, addr);
-+        printf("%s: Bad register " REG_FMT "\n", __func__, addr);
-         break;
-     }
-     return 0;
-@@ -1417,7 +1417,7 @@ static void pxa2xx_i2c_write(void *opaque, hwaddr addr,
-         break;
- 
-     default:
--        printf("%s: Bad register " REG_FMT "\n", __FUNCTION__, addr);
-+        printf("%s: Bad register " REG_FMT "\n", __func__, addr);
-     }
- }
- 
-@@ -1618,7 +1618,7 @@ static uint64_t pxa2xx_i2s_read(void *opaque, hwaddr addr,
-         }
-         return 0;
-     default:
--        printf("%s: Bad register " REG_FMT "\n", __FUNCTION__, addr);
-+        printf("%s: Bad register " REG_FMT "\n", __func__, addr);
-         break;
-     }
-     return 0;
-@@ -1641,14 +1641,14 @@ static void pxa2xx_i2s_write(void *opaque, hwaddr addr,
-             s->status &= ~(1 << 7);			/* I2SOFF */
-         }
-         if (value & (1 << 4))				/* EFWR */
--            printf("%s: Attempt to use special function\n", __FUNCTION__);
-+            printf("%s: Attempt to use special function\n", __func__);
-         s->enable = (value & 9) == 1;			/* ENB && !RST*/
-         pxa2xx_i2s_update(s);
-         break;
-     case SACR1:
-         s->control[1] = value & 0x0039;
-         if (value & (1 << 5))				/* ENLBF */
--            printf("%s: Attempt to use loopback function\n", __FUNCTION__);
-+            printf("%s: Attempt to use loopback function\n", __func__);
-         if (value & (1 << 4))				/* DPRL */
-             s->fifo_len = 0;
-         pxa2xx_i2s_update(s);
-@@ -1675,7 +1675,7 @@ static void pxa2xx_i2s_write(void *opaque, hwaddr addr,
-         }
-         break;
-     default:
--        printf("%s: Bad register " REG_FMT "\n", __FUNCTION__, addr);
-+        printf("%s: Bad register " REG_FMT "\n", __func__, addr);
-     }
- }
- 
-@@ -1851,7 +1851,7 @@ static uint64_t pxa2xx_fir_read(void *opaque, hwaddr addr,
-             pxa2xx_fir_update(s);
-             return ret;
-         }
--        printf("%s: Rx FIFO underrun.\n", __FUNCTION__);
-+        printf("%s: Rx FIFO underrun.\n", __func__);
-         break;
-     case ICSR0:
-         return s->status[0];
-@@ -1860,7 +1860,7 @@ static uint64_t pxa2xx_fir_read(void *opaque, hwaddr addr,
-     case ICFOR:
-         return s->rx_len;
-     default:
--        printf("%s: Bad register " REG_FMT "\n", __FUNCTION__, addr);
-+        printf("%s: Bad register " REG_FMT "\n", __func__, addr);
-         break;
-     }
-     return 0;
-@@ -1912,7 +1912,7 @@ static void pxa2xx_fir_write(void *opaque, hwaddr addr,
-     case ICFOR:
-         break;
-     default:
--        printf("%s: Bad register " REG_FMT "\n", __FUNCTION__, addr);
-+        printf("%s: Bad register " REG_FMT "\n", __func__, addr);
-     }
- }
- 
-diff --git a/hw/arm/pxa2xx_gpio.c b/hw/arm/pxa2xx_gpio.c
-index 521dbad039..e15070188e 100644
---- a/hw/arm/pxa2xx_gpio.c
-+++ b/hw/arm/pxa2xx_gpio.c
-@@ -107,7 +107,7 @@ static void pxa2xx_gpio_set(void *opaque, int line, int level)
-     uint32_t mask;
- 
-     if (line >= s->lines) {
--        printf("%s: No GPIO pin %i\n", __FUNCTION__, line);
-+        printf("%s: No GPIO pin %i\n", __func__, line);
-         return;
-     }
- 
-@@ -195,7 +195,7 @@ static uint64_t pxa2xx_gpio_read(void *opaque, hwaddr offset,
-         return s->status[bank];
- 
-     default:
--        hw_error("%s: Bad offset " REG_FMT "\n", __FUNCTION__, offset);
-+        hw_error("%s: Bad offset " REG_FMT "\n", __func__, offset);
-     }
- 
-     return 0;
-@@ -248,7 +248,7 @@ static void pxa2xx_gpio_write(void *opaque, hwaddr offset,
-         break;
- 
-     default:
--        hw_error("%s: Bad offset " REG_FMT "\n", __FUNCTION__, offset);
-+        hw_error("%s: Bad offset " REG_FMT "\n", __func__, offset);
-     }
- }
- 
-diff --git a/hw/arm/pxa2xx_pic.c b/hw/arm/pxa2xx_pic.c
-index b516ced8c0..61275fa040 100644
---- a/hw/arm/pxa2xx_pic.c
-+++ b/hw/arm/pxa2xx_pic.c
-@@ -165,7 +165,7 @@ static uint64_t pxa2xx_pic_mem_read(void *opaque, hwaddr offset,
-     case ICHP:	/* Highest Priority register */
-         return pxa2xx_pic_highest(s);
-     default:
--        printf("%s: Bad register offset " REG_FMT "\n", __FUNCTION__, offset);
-+        printf("%s: Bad register offset " REG_FMT "\n", __func__, offset);
-         return 0;
-     }
- }
-@@ -198,7 +198,7 @@ static void pxa2xx_pic_mem_write(void *opaque, hwaddr offset,
-         s->priority[32 + ((offset - IPR32) >> 2)] = value & 0x8000003f;
-         break;
-     default:
--        printf("%s: Bad register offset " REG_FMT "\n", __FUNCTION__, offset);
-+        printf("%s: Bad register offset " REG_FMT "\n", __func__, offset);
-         return;
-     }
-     pxa2xx_pic_update(opaque);
-diff --git a/hw/arm/tosa.c b/hw/arm/tosa.c
-index 044796350a..a55b1a369c 100644
---- a/hw/arm/tosa.c
-+++ b/hw/arm/tosa.c
-@@ -159,7 +159,7 @@ static int tosa_dac_send(I2CSlave *i2c, uint8_t data)
-     s->buf[s->len] = data;
-     if (s->len ++ > 2) {
- #ifdef VERBOSE
--        fprintf(stderr, "%s: message too long (%i bytes)\n", __FUNCTION__, s->len);
-+        fprintf(stderr, "%s: message too long (%i bytes)\n", __func__, s->len);
- #endif
-         return 1;
-     }
-@@ -181,14 +181,14 @@ static int tosa_dac_event(I2CSlave *i2c, enum i2c_event event)
-     case I2C_START_SEND:
-         break;
-     case I2C_START_RECV:
--        printf("%s: recv not supported!!!\n", __FUNCTION__);
-+        printf("%s: recv not supported!!!\n", __func__);
-         break;
-     case I2C_FINISH:
- #ifdef VERBOSE
-         if (s->len < 2)
--            printf("%s: message too short (%i bytes)\n", __FUNCTION__, s->len);
-+            printf("%s: message too short (%i bytes)\n", __func__, s->len);
-         if (s->len > 2)
--            printf("%s: message too long\n", __FUNCTION__);
-+            printf("%s: message too long\n", __func__);
- #endif
-         break;
-     default:
-@@ -200,7 +200,7 @@ static int tosa_dac_event(I2CSlave *i2c, enum i2c_event event)
- 
- static int tosa_dac_recv(I2CSlave *s)
- {
--    printf("%s: recv not supported!!!\n", __FUNCTION__);
-+    printf("%s: recv not supported!!!\n", __func__);
-     return -1;
- }
- 
-diff --git a/hw/audio/hda-codec.c b/hw/audio/hda-codec.c
-index 5402cd196c..e8aa7842e6 100644
---- a/hw/audio/hda-codec.c
-+++ b/hw/audio/hda-codec.c
-@@ -316,7 +316,7 @@ static void hda_audio_command(HDACodecDevice *hda, uint32_t nid, uint32_t data)
-         goto fail;
-     }
-     dprint(a, 2, "%s: nid %d (%s), verb 0x%x, payload 0x%x\n",
--           __FUNCTION__, nid, node->name, verb, payload);
-+           __func__, nid, node->name, verb, payload);
- 
-     switch (verb) {
-     /* all nodes */
-@@ -449,7 +449,7 @@ static void hda_audio_command(HDACodecDevice *hda, uint32_t nid, uint32_t data)
- 
- fail:
-     dprint(a, 1, "%s: not handled: nid %d (%s), verb 0x%x, payload 0x%x\n",
--           __FUNCTION__, nid, node ? node->name : "?", verb, payload);
-+           __func__, nid, node ? node->name : "?", verb, payload);
-     hda_codec_response(hda, true, 0);
- }
- 
-@@ -484,7 +484,7 @@ static int hda_audio_init(HDACodecDevice *hda, const struct desc_codec *desc)
- 
-     a->desc = desc;
-     a->name = object_get_typename(OBJECT(a));
--    dprint(a, 1, "%s: cad %d\n", __FUNCTION__, a->hda.cad);
-+    dprint(a, 1, "%s: cad %d\n", __func__, a->hda.cad);
- 
-     AUD_register_card("hda", &a->card);
-     for (i = 0; i < a->desc->nnodes; i++) {
-@@ -526,7 +526,7 @@ static void hda_audio_exit(HDACodecDevice *hda)
-     HDAAudioStream *st;
-     int i;
- 
--    dprint(a, 1, "%s\n", __FUNCTION__);
-+    dprint(a, 1, "%s\n", __func__);
-     for (i = 0; i < ARRAY_SIZE(a->st); i++) {
-         st = a->st + i;
-         if (st->node == NULL) {
-@@ -547,7 +547,7 @@ static int hda_audio_post_load(void *opaque, int version)
-     HDAAudioStream *st;
-     int i;
- 
--    dprint(a, 1, "%s\n", __FUNCTION__);
-+    dprint(a, 1, "%s\n", __func__);
-     if (version == 1) {
-         /* assume running_compat[] is for output streams */
-         for (i = 0; i < ARRAY_SIZE(a->running_compat); i++)
-diff --git a/hw/audio/intel-hda.c b/hw/audio/intel-hda.c
-index 18a50a8f83..ed51177b15 100644
---- a/hw/audio/intel-hda.c
-+++ b/hw/audio/intel-hda.c
-@@ -265,7 +265,7 @@ static void intel_hda_update_irq(IntelHDAState *d)
-     } else {
-         level = 0;
-     }
--    dprint(d, 2, "%s: level %d [%s]\n", __FUNCTION__,
-+    dprint(d, 2, "%s: level %d [%s]\n", __func__,
-            level, msi ? "msi" : "intx");
-     if (msi) {
-         if (level) {
-@@ -285,7 +285,7 @@ static int intel_hda_send_command(IntelHDAState *d, uint32_t verb)
-     cad = (verb >> 28) & 0x0f;
-     if (verb & (1 << 27)) {
-         /* indirect node addressing, not specified in HDA 1.0 */
--        dprint(d, 1, "%s: indirect node addressing (guest bug?)\n", __FUNCTION__);
-+        dprint(d, 1, "%s: indirect node addressing (guest bug?)\n", __func__);
-         return -1;
-     }
-     nid = (verb >> 20) & 0x7f;
-@@ -293,7 +293,7 @@ static int intel_hda_send_command(IntelHDAState *d, uint32_t verb)
- 
-     codec = hda_codec_find(&d->codecs, cad);
-     if (codec == NULL) {
--        dprint(d, 1, "%s: addressed non-existing codec\n", __FUNCTION__);
-+        dprint(d, 1, "%s: addressed non-existing codec\n", __func__);
-         return -1;
-     }
-     cdc = HDA_CODEC_DEVICE_GET_CLASS(codec);
-@@ -307,22 +307,22 @@ static void intel_hda_corb_run(IntelHDAState *d)
-     uint32_t rp, verb;
- 
-     if (d->ics & ICH6_IRS_BUSY) {
--        dprint(d, 2, "%s: [icw] verb 0x%08x\n", __FUNCTION__, d->icw);
-+        dprint(d, 2, "%s: [icw] verb 0x%08x\n", __func__, d->icw);
-         intel_hda_send_command(d, d->icw);
-         return;
-     }
- 
-     for (;;) {
-         if (!(d->corb_ctl & ICH6_CORBCTL_RUN)) {
--            dprint(d, 2, "%s: !run\n", __FUNCTION__);
-+            dprint(d, 2, "%s: !run\n", __func__);
-             return;
-         }
-         if ((d->corb_rp & 0xff) == d->corb_wp) {
--            dprint(d, 2, "%s: corb ring empty\n", __FUNCTION__);
-+            dprint(d, 2, "%s: corb ring empty\n", __func__);
-             return;
-         }
-         if (d->rirb_count == d->rirb_cnt) {
--            dprint(d, 2, "%s: rirb count reached\n", __FUNCTION__);
-+            dprint(d, 2, "%s: rirb count reached\n", __func__);
-             return;
-         }
- 
-@@ -331,7 +331,7 @@ static void intel_hda_corb_run(IntelHDAState *d)
-         verb = ldl_le_pci_dma(&d->pci, addr + 4*rp);
-         d->corb_rp = rp;
- 
--        dprint(d, 2, "%s: [rp 0x%x] verb 0x%08x\n", __FUNCTION__, rp, verb);
-+        dprint(d, 2, "%s: [rp 0x%x] verb 0x%08x\n", __func__, rp, verb);
-         intel_hda_send_command(d, verb);
-     }
- }
-@@ -345,7 +345,7 @@ static void intel_hda_response(HDACodecDevice *dev, bool solicited, uint32_t res
- 
-     if (d->ics & ICH6_IRS_BUSY) {
-         dprint(d, 2, "%s: [irr] response 0x%x, cad 0x%x\n",
--               __FUNCTION__, response, dev->cad);
-+               __func__, response, dev->cad);
-         d->irr = response;
-         d->ics &= ~(ICH6_IRS_BUSY | 0xf0);
-         d->ics |= (ICH6_IRS_VALID | (dev->cad << 4));
-@@ -353,7 +353,7 @@ static void intel_hda_response(HDACodecDevice *dev, bool solicited, uint32_t res
-     }
- 
-     if (!(d->rirb_ctl & ICH6_RBCTL_DMA_EN)) {
--        dprint(d, 1, "%s: rirb dma disabled, drop codec response\n", __FUNCTION__);
-+        dprint(d, 1, "%s: rirb dma disabled, drop codec response\n", __func__);
-         return;
-     }
- 
-@@ -365,17 +365,17 @@ static void intel_hda_response(HDACodecDevice *dev, bool solicited, uint32_t res
-     d->rirb_wp = wp;
- 
-     dprint(d, 2, "%s: [wp 0x%x] response 0x%x, extra 0x%x\n",
--           __FUNCTION__, wp, response, ex);
-+           __func__, wp, response, ex);
- 
-     d->rirb_count++;
-     if (d->rirb_count == d->rirb_cnt) {
--        dprint(d, 2, "%s: rirb count reached (%d)\n", __FUNCTION__, d->rirb_count);
-+        dprint(d, 2, "%s: rirb count reached (%d)\n", __func__, d->rirb_count);
-         if (d->rirb_ctl & ICH6_RBCTL_IRQ_EN) {
-             d->rirb_sts |= ICH6_RBSTS_IRQ;
-             intel_hda_update_irq(d);
-         }
-     } else if ((d->corb_rp & 0xff) == d->corb_wp) {
--        dprint(d, 2, "%s: corb ring empty (%d/%d)\n", __FUNCTION__,
-+        dprint(d, 2, "%s: corb ring empty (%d/%d)\n", __func__,
-                d->rirb_count, d->rirb_cnt);
-         if (d->rirb_ctl & ICH6_RBCTL_IRQ_EN) {
-             d->rirb_sts |= ICH6_RBSTS_IRQ;
-@@ -1144,7 +1144,7 @@ static int intel_hda_post_load(void *opaque, int version)
-     IntelHDAState* d = opaque;
-     int i;
- 
--    dprint(d, 1, "%s\n", __FUNCTION__);
-+    dprint(d, 1, "%s\n", __func__);
-     for (i = 0; i < ARRAY_SIZE(d->st); i++) {
-         if (d->st[i].ctl & 0x02) {
-             intel_hda_parse_bdl(d, &d->st[i]);
-diff --git a/hw/audio/wm8750.c b/hw/audio/wm8750.c
-index 8bb44a7cc1..6d8b728923 100644
---- a/hw/audio/wm8750.c
-+++ b/hw/audio/wm8750.c
-@@ -315,7 +315,7 @@ static int wm8750_event(I2CSlave *i2c, enum i2c_event event)
- #ifdef VERBOSE
-         if (s->i2c_len < 2)
-             printf("%s: message too short (%i bytes)\n",
--                            __FUNCTION__, s->i2c_len);
-+                            __func__, s->i2c_len);
- #endif
-         break;
-     default:
-@@ -555,7 +555,7 @@ static int wm8750_tx(I2CSlave *i2c, uint8_t data)
- 
- #ifdef VERBOSE
-     default:
--        printf("%s: unknown register %02x\n", __FUNCTION__, cmd);
-+        printf("%s: unknown register %02x\n", __func__, cmd);
- #endif
-     }
- 
-diff --git a/hw/block/nand.c b/hw/block/nand.c
-index 76dcd3f76e..919cb9b803 100644
---- a/hw/block/nand.c
-+++ b/hw/block/nand.c
-@@ -321,7 +321,7 @@ static void nand_command(NANDFlashState *s)
-         break;
- 
-     default:
--        printf("%s: Unknown NAND command 0x%02x\n", __FUNCTION__, s->cmd);
-+        printf("%s: Unknown NAND command 0x%02x\n", __func__, s->cmd);
-     }
- }
- 
-@@ -640,7 +640,7 @@ DeviceState *nand_init(BlockBackend *blk, int manf_id, int chip_id)
-     DeviceState *dev;
- 
-     if (nand_flash_ids[chip_id].size == 0) {
--        hw_error("%s: Unsupported NAND chip ID.\n", __FUNCTION__);
-+        hw_error("%s: Unsupported NAND chip ID.\n", __func__);
-     }
-     dev = DEVICE(object_new(TYPE_NAND));
-     qdev_prop_set_uint8(dev, "manufacturer_id", manf_id);
-diff --git a/hw/block/onenand.c b/hw/block/onenand.c
-index 30e40f3914..7542ef9634 100644
---- a/hw/block/onenand.c
-+++ b/hw/block/onenand.c
-@@ -663,12 +663,12 @@ static uint64_t onenand_read(void *opaque, hwaddr addr,
-     case 0xff02:	/* ECC Result of spare area data */
-     case 0xff03:	/* ECC Result of main area data */
-     case 0xff04:	/* ECC Result of spare area data */
--        hw_error("%s: imeplement ECC\n", __FUNCTION__);
-+        hw_error("%s: imeplement ECC\n", __func__);
-         return 0x0000;
-     }
- 
-     fprintf(stderr, "%s: unknown OneNAND register %x\n",
--                    __FUNCTION__, offset);
-+                    __func__, offset);
-     return 0;
- }
- 
-@@ -713,7 +713,7 @@ static void onenand_write(void *opaque, hwaddr addr,
- 
-         default:
-             fprintf(stderr, "%s: unknown OneNAND boot command %"PRIx64"\n",
--                            __FUNCTION__, value);
-+                            __func__, value);
-         }
-         break;
- 
-@@ -764,7 +764,7 @@ static void onenand_write(void *opaque, hwaddr addr,
- 
-     default:
-         fprintf(stderr, "%s: unknown OneNAND register %x\n",
--                        __FUNCTION__, offset);
-+                        __func__, offset);
-     }
- }
- 
-diff --git a/hw/bt/core.c b/hw/bt/core.c
-index 615f0af073..c1806b71a3 100644
---- a/hw/bt/core.c
-+++ b/hw/bt/core.c
-@@ -32,23 +32,23 @@ static void bt_dummy_lmp_connection_complete(struct bt_link_s *link)
- {
-     if (link->slave->reject_reason)
-         fprintf(stderr, "%s: stray LMP_not_accepted received, fixme\n",
--                        __FUNCTION__);
-+                        __func__);
-     else
-         fprintf(stderr, "%s: stray LMP_accepted received, fixme\n",
--                        __FUNCTION__);
-+                        __func__);
-     exit(-1);
- }
- 
- static void bt_dummy_lmp_disconnect_master(struct bt_link_s *link)
- {
--    fprintf(stderr, "%s: stray LMP_detach received, fixme\n", __FUNCTION__);
-+    fprintf(stderr, "%s: stray LMP_detach received, fixme\n", __func__);
-     exit(-1);
- }
- 
- static void bt_dummy_lmp_acl_resp(struct bt_link_s *link,
-                 const uint8_t *data, int start, int len)
- {
--    fprintf(stderr, "%s: stray ACL response PDU, fixme\n", __FUNCTION__);
-+    fprintf(stderr, "%s: stray ACL response PDU, fixme\n", __func__);
-     exit(-1);
- }
- 
-@@ -113,7 +113,7 @@ void bt_device_done(struct bt_device_s *dev)
-     while (*p && *p != dev)
-         p = &(*p)->next;
-     if (*p != dev) {
--        fprintf(stderr, "%s: bad bt device \"%s\"\n", __FUNCTION__,
-+        fprintf(stderr, "%s: bad bt device \"%s\"\n", __func__,
-                         dev->lmp_name ?: "(null)");
-         exit(-1);
-     }
-diff --git a/hw/bt/hci-csr.c b/hw/bt/hci-csr.c
-index d13192b9b5..ac067b81f6 100644
---- a/hw/bt/hci-csr.c
-+++ b/hw/bt/hci-csr.c
-@@ -111,14 +111,14 @@ static uint8_t *csrhci_out_packet(struct csrhci_s *s, int len)
- 
-     if (off < FIFO_LEN) {
-         if (off + len > FIFO_LEN && (s->out_size = off + len) > FIFO_LEN * 2) {
--            fprintf(stderr, "%s: can't alloc %i bytes\n", __FUNCTION__, len);
-+            fprintf(stderr, "%s: can't alloc %i bytes\n", __func__, len);
-             exit(-1);
-         }
-         return s->outfifo + off;
-     }
- 
-     if (s->out_len > s->out_size) {
--        fprintf(stderr, "%s: can't alloc %i bytes\n", __FUNCTION__, len);
-+        fprintf(stderr, "%s: can't alloc %i bytes\n", __func__, len);
-         exit(-1);
-     }
- 
-@@ -169,7 +169,7 @@ static void csrhci_in_packet_vendor(struct csrhci_s *s, int ocf,
- 
-             s->hci->bdaddr_set(s->hci, s->bd_addr.b);
-             fprintf(stderr, "%s: bd_address loaded from firmware: "
--                            "%02x:%02x:%02x:%02x:%02x:%02x\n", __FUNCTION__,
-+                            "%02x:%02x:%02x:%02x:%02x:%02x\n", __func__,
-                             s->bd_addr.b[0], s->bd_addr.b[1], s->bd_addr.b[2],
-                             s->bd_addr.b[3], s->bd_addr.b[4], s->bd_addr.b[5]);
-         }
-@@ -181,7 +181,7 @@ static void csrhci_in_packet_vendor(struct csrhci_s *s, int ocf,
-         break;
- 
-     default:
--        fprintf(stderr, "%s: got a bad CMD packet\n", __FUNCTION__);
-+        fprintf(stderr, "%s: got a bad CMD packet\n", __func__);
-         return;
-     }
- 
-@@ -226,7 +226,7 @@ static void csrhci_in_packet(struct csrhci_s *s, uint8_t *pkt)
-     case H4_NEG_PKT:
-         if (s->in_hdr != sizeof(csrhci_neg_packet) ||
-                         memcmp(pkt - 1, csrhci_neg_packet, s->in_hdr)) {
--            fprintf(stderr, "%s: got a bad NEG packet\n", __FUNCTION__);
-+            fprintf(stderr, "%s: got a bad NEG packet\n", __func__);
-             return;
-         }
-         pkt += 2;
-@@ -241,7 +241,7 @@ static void csrhci_in_packet(struct csrhci_s *s, uint8_t *pkt)
- 
-     case H4_ALIVE_PKT:
-         if (s->in_hdr != 4 || pkt[1] != 0x55 || pkt[2] != 0x00) {
--            fprintf(stderr, "%s: got a bad ALIVE packet\n", __FUNCTION__);
-+            fprintf(stderr, "%s: got a bad ALIVE packet\n", __func__);
-             return;
-         }
- 
-@@ -254,7 +254,7 @@ static void csrhci_in_packet(struct csrhci_s *s, uint8_t *pkt)
-     default:
-     bad_pkt:
-         /* TODO: error out */
--        fprintf(stderr, "%s: got a bad packet\n", __FUNCTION__);
-+        fprintf(stderr, "%s: got a bad packet\n", __func__);
-         break;
-     }
- 
-diff --git a/hw/bt/hci.c b/hw/bt/hci.c
-index 476ebec0ab..df05f07887 100644
---- a/hw/bt/hci.c
-+++ b/hw/bt/hci.c
-@@ -458,7 +458,7 @@ static inline uint8_t *bt_hci_event_start(struct bt_hci_s *hci,
- 
-     if (len > 255) {
-         fprintf(stderr, "%s: HCI event params too long (%ib)\n",
--                        __FUNCTION__, len);
-+                        __func__, len);
-         exit(-1);
-     }
- 
-@@ -589,7 +589,7 @@ static void bt_hci_inquiry_result(struct bt_hci_s *hci,
-         bt_hci_inquiry_result_with_rssi(hci, slave);
-         return;
-     default:
--        fprintf(stderr, "%s: bad inquiry mode %02x\n", __FUNCTION__,
-+        fprintf(stderr, "%s: bad inquiry mode %02x\n", __func__,
-                         hci->lm.inquiry_mode);
-         exit(-1);
-     }
-@@ -1528,7 +1528,7 @@ static void bt_submit_hci(struct HCIInfo *info,
-                             "the Inquiry command has been issued, a Command "
-                             "Status event has been received for the Inquiry "
-                             "command, and before the Inquiry Complete event "
--                            "occurs", __FUNCTION__);
-+                            "occurs", __func__);
-             bt_hci_event_complete_status(hci, HCI_COMMAND_DISALLOWED);
-             break;
-         }
-@@ -1567,7 +1567,7 @@ static void bt_submit_hci(struct HCIInfo *info,
-                             "the Inquiry command has been issued, a Command "
-                             "Status event has been received for the Inquiry "
-                             "command, and before the Inquiry Complete event "
--                            "occurs", __FUNCTION__);
-+                            "occurs", __func__);
-             bt_hci_event_complete_status(hci, HCI_COMMAND_DISALLOWED);
-             break;
-         }
-@@ -1972,7 +1972,7 @@ static void bt_submit_hci(struct HCIInfo *info,
- 
-     short_hci:
-         fprintf(stderr, "%s: HCI packet too short (%iB)\n",
--                        __FUNCTION__, length);
-+                        __func__, length);
-         bt_hci_event_status(hci, HCI_INVALID_PARAMETERS);
-         break;
-     }
-@@ -1992,7 +1992,7 @@ static inline void bt_hci_lmp_acl_data(struct bt_hci_s *hci, uint16_t handle,
- 
-     if (len + HCI_ACL_HDR_SIZE > sizeof(hci->acl_buf)) {
-         fprintf(stderr, "%s: can't take ACL packets %i bytes long\n",
--                        __FUNCTION__, len);
-+                        __func__, len);
-         return;
-     }
-     memcpy(hci->acl_buf + HCI_ACL_HDR_SIZE, data, len);
-@@ -2030,7 +2030,7 @@ static void bt_submit_acl(struct HCIInfo *info,
- 
-     if (length < HCI_ACL_HDR_SIZE) {
-         fprintf(stderr, "%s: ACL packet too short (%iB)\n",
--                        __FUNCTION__, length);
-+                        __func__, length);
-         return;
-     }
- 
-@@ -2042,7 +2042,7 @@ static void bt_submit_acl(struct HCIInfo *info,
- 
-     if (bt_hci_handle_bad(hci, handle)) {
-         fprintf(stderr, "%s: invalid ACL handle %03x\n",
--                        __FUNCTION__, handle);
-+                        __func__, handle);
-         /* TODO: signal an error */
-         return;
-     }
-@@ -2050,7 +2050,7 @@ static void bt_submit_acl(struct HCIInfo *info,
- 
-     if (datalen > length) {
-         fprintf(stderr, "%s: ACL packet too short (%iB < %iB)\n",
--                        __FUNCTION__, length, datalen);
-+                        __func__, length, datalen);
-         return;
-     }
- 
-@@ -2061,7 +2061,7 @@ static void bt_submit_acl(struct HCIInfo *info,
-             hci->asb_handle = handle;
-         else if (handle != hci->asb_handle) {
-             fprintf(stderr, "%s: Bad handle %03x in Active Slave Broadcast\n",
--                            __FUNCTION__, handle);
-+                            __func__, handle);
-             /* TODO: signal an error */
-             return;
-         }
-@@ -2074,7 +2074,7 @@ static void bt_submit_acl(struct HCIInfo *info,
-             hci->psb_handle = handle;
-         else if (handle != hci->psb_handle) {
-             fprintf(stderr, "%s: Bad handle %03x in Parked Slave Broadcast\n",
--                            __FUNCTION__, handle);
-+                            __func__, handle);
-             /* TODO: signal an error */
-             return;
-         }
-@@ -2106,13 +2106,13 @@ static void bt_submit_sco(struct HCIInfo *info,
- 
-     if (bt_hci_handle_bad(hci, handle)) {
-         fprintf(stderr, "%s: invalid SCO handle %03x\n",
--                        __FUNCTION__, handle);
-+                        __func__, handle);
-         return;
-     }
- 
-     if (datalen > length) {
-         fprintf(stderr, "%s: SCO packet too short (%iB < %iB)\n",
--                        __FUNCTION__, length, datalen);
-+                        __func__, length, datalen);
-         return;
-     }
- 
-diff --git a/hw/bt/hid.c b/hw/bt/hid.c
-index f6affbbb44..09d17322e4 100644
---- a/hw/bt/hid.c
-+++ b/hw/bt/hid.c
-@@ -420,7 +420,7 @@ static void bt_hid_interrupt_sdu(void *opaque, const uint8_t *data, int len)
-     return;
- bad:
-     fprintf(stderr, "%s: bad transaction on Interrupt channel.\n",
--                    __FUNCTION__);
-+                    __func__);
- }
- 
- /* "Virtual cable" plug/unplug event.  */
-diff --git a/hw/bt/l2cap.c b/hw/bt/l2cap.c
-index e342045140..3e53dd082d 100644
---- a/hw/bt/l2cap.c
-+++ b/hw/bt/l2cap.c
-@@ -468,7 +468,7 @@ static void l2cap_channel_close(struct l2cap_instance_s *l2cap,
-     if (likely(ch)) {
-         if (ch->remote_cid != source_cid) {
-             fprintf(stderr, "%s: Ignoring a Disconnection Request with the "
--                            "invalid SCID %04x.\n", __FUNCTION__, source_cid);
-+                            "invalid SCID %04x.\n", __func__, source_cid);
-             return;
-         }
- 
-@@ -791,7 +791,7 @@ static void l2cap_command(struct l2cap_instance_s *l2cap, int code, int id,
-     /* TODO: do the IDs really have to be in sequence?  */
-     if (!id || (id != l2cap->last_id && id != l2cap->next_id)) {
-         fprintf(stderr, "%s: out of sequence command packet ignored.\n",
--                        __FUNCTION__);
-+                        __func__);
-         return;
-     }
- #else
-@@ -814,7 +814,7 @@ static void l2cap_command(struct l2cap_instance_s *l2cap, int code, int id,
- 
-         /* We never issue commands other than Command Reject currently.  */
-         fprintf(stderr, "%s: stray Command Reject (%02x, %04x) "
--                        "packet, ignoring.\n", __FUNCTION__, id,
-+                        "packet, ignoring.\n", __func__, id,
-                         le16_to_cpu(((l2cap_cmd_rej *) params)->reason));
-         break;
- 
-@@ -837,7 +837,7 @@ static void l2cap_command(struct l2cap_instance_s *l2cap, int code, int id,
- 
-         /* We never issue Connection Requests currently. TODO  */
-         fprintf(stderr, "%s: unexpected Connection Response (%02x) "
--                        "packet, ignoring.\n", __FUNCTION__, id);
-+                        "packet, ignoring.\n", __func__, id);
-         break;
- 
-     case L2CAP_CONF_REQ:
-@@ -866,7 +866,7 @@ static void l2cap_command(struct l2cap_instance_s *l2cap, int code, int id,
-                         ((l2cap_conf_rsp *) params)->data,
-                         len - L2CAP_CONF_RSP_SIZE(0)))
-             fprintf(stderr, "%s: unexpected Configure Response (%02x) "
--                            "packet, ignoring.\n", __FUNCTION__, id);
-+                            "packet, ignoring.\n", __func__, id);
-         break;
- 
-     case L2CAP_DISCONN_REQ:
-@@ -888,7 +888,7 @@ static void l2cap_command(struct l2cap_instance_s *l2cap, int code, int id,
- 
-         /* We never issue Disconnection Requests currently. TODO  */
-         fprintf(stderr, "%s: unexpected Disconnection Response (%02x) "
--                        "packet, ignoring.\n", __FUNCTION__, id);
-+                        "packet, ignoring.\n", __func__, id);
-         break;
- 
-     case L2CAP_ECHO_REQ:
-@@ -898,7 +898,7 @@ static void l2cap_command(struct l2cap_instance_s *l2cap, int code, int id,
-     case L2CAP_ECHO_RSP:
-         /* We never issue Echo Requests currently. TODO  */
-         fprintf(stderr, "%s: unexpected Echo Response (%02x) "
--                        "packet, ignoring.\n", __FUNCTION__, id);
-+                        "packet, ignoring.\n", __func__, id);
-         break;
- 
-     case L2CAP_INFO_REQ:
-@@ -918,7 +918,7 @@ static void l2cap_command(struct l2cap_instance_s *l2cap, int code, int id,
- 
-         /* We never issue Information Requests currently. TODO  */
-         fprintf(stderr, "%s: unexpected Information Response (%02x) "
--                        "packet, ignoring.\n", __FUNCTION__, id);
-+                        "packet, ignoring.\n", __func__, id);
-         break;
- 
-     default:
-@@ -1067,7 +1067,7 @@ static void l2cap_frame_in(struct l2cap_instance_s *l2cap,
- 
-     if (unlikely(cid >= L2CAP_CID_MAX || !l2cap->cid[cid])) {
-         fprintf(stderr, "%s: frame addressed to a non-existent L2CAP "
--                        "channel %04x received.\n", __FUNCTION__, cid);
-+                        "channel %04x received.\n", __func__, cid);
-         return;
-     }
- 
-@@ -1129,7 +1129,7 @@ static uint8_t *l2cap_bframe_out(struct bt_l2cap_conn_params_s *parm, int len)
- 
-     if (len > chan->params.remote_mtu) {
-         fprintf(stderr, "%s: B-Frame for CID %04x longer than %i octets.\n",
--                        __FUNCTION__,
-+                        __func__,
-                         chan->remote_cid, chan->params.remote_mtu);
-         exit(-1);
-     }
-@@ -1354,7 +1354,7 @@ void bt_l2cap_psm_register(struct bt_l2cap_device_s *dev, int psm, int min_mtu,
- 
-     if (new_psm) {
-         fprintf(stderr, "%s: PSM %04x already registered for device `%s'.\n",
--                        __FUNCTION__, psm, dev->device.lmp_name);
-+                        __func__, psm, dev->device.lmp_name);
-         exit(-1);
-     }
- 
-diff --git a/hw/bt/sdp.c b/hw/bt/sdp.c
-index 3cb60b9495..7c0d38b504 100644
---- a/hw/bt/sdp.c
-+++ b/hw/bt/sdp.c
-@@ -506,7 +506,7 @@ static void bt_l2cap_sdp_sdu_in(void *opaque, const uint8_t *data, int len)
-     int rsp_len = 0;
- 
-     if (len < 5) {
--        fprintf(stderr, "%s: short SDP PDU (%iB).\n", __FUNCTION__, len);
-+        fprintf(stderr, "%s: short SDP PDU (%iB).\n", __func__, len);
-         return;
-     }
- 
-@@ -518,7 +518,7 @@ static void bt_l2cap_sdp_sdu_in(void *opaque, const uint8_t *data, int len)
- 
-     if (len != plen) {
-         fprintf(stderr, "%s: wrong SDP PDU length (%iB != %iB).\n",
--                        __FUNCTION__, plen, len);
-+                        __func__, plen, len);
-         err = SDP_INVALID_PDU_SIZE;
-         goto respond;
-     }
-@@ -545,7 +545,7 @@ static void bt_l2cap_sdp_sdu_in(void *opaque, const uint8_t *data, int len)
-     case SDP_SVC_SEARCH_ATTR_RSP:
-     default:
-         fprintf(stderr, "%s: unexpected SDP PDU ID %02x.\n",
--                        __FUNCTION__, pdu_id);
-+                        __func__, pdu_id);
-         err = SDP_INVALID_SYNTAX;
-         break;
-     }
-diff --git a/hw/display/blizzard.c b/hw/display/blizzard.c
-index cbf07d14d9..291abe6fca 100644
---- a/hw/display/blizzard.c
-+++ b/hw/display/blizzard.c
-@@ -474,7 +474,7 @@ static uint16_t blizzard_reg_read(void *opaque, uint8_t reg)
-         return s->gpio_pdown;
- 
-     default:
--        fprintf(stderr, "%s: unknown register %02x\n", __FUNCTION__, reg);
-+        fprintf(stderr, "%s: unknown register %02x\n", __func__, reg);
-         return 0;
-     }
- }
-@@ -502,7 +502,7 @@ static void blizzard_reg_write(void *opaque, uint8_t reg, uint16_t value)
-         s->pll_mode = value & 0x77;
-         if ((value & 3) == 0 || (value & 3) == 3)
-             fprintf(stderr, "%s: wrong PLL Control bits (%i)\n",
--                    __FUNCTION__, value & 3);
-+                    __func__, value & 3);
-         break;
- 
-     case 0x0e:	/* Clock-Source Select */
-@@ -541,7 +541,7 @@ static void blizzard_reg_write(void *opaque, uint8_t reg, uint16_t value)
-     case 0x28:	/* LCD Panel Configuration */
-         s->lcd_config = value & 0xff;
-         if (value & (1 << 7))
--            fprintf(stderr, "%s: data swap not supported!\n", __FUNCTION__);
-+            fprintf(stderr, "%s: data swap not supported!\n", __func__);
-         break;
- 
-     case 0x2a:	/* LCD Horizontal Display Width */
-@@ -586,7 +586,7 @@ static void blizzard_reg_write(void *opaque, uint8_t reg, uint16_t value)
-         s->hssi_config[1] = value;
-         if (((value >> 4) & 3) == 3)
-             fprintf(stderr, "%s: Illegal active-data-links value\n",
--                            __FUNCTION__);
-+                            __func__);
-         break;
-     case 0x42:	/* High-speed Serial Interface Tx Mode */
-         s->hssi_config[2] = value & 0xbd;
-@@ -641,7 +641,7 @@ static void blizzard_reg_write(void *opaque, uint8_t reg, uint16_t value)
-         s->enable = value & 1;
-         s->blank = (value >> 1) & 1;
-         if (value & (1 << 4))
--            fprintf(stderr, "%s: Macrovision enable attempt!\n", __FUNCTION__);
-+            fprintf(stderr, "%s: Macrovision enable attempt!\n", __func__);
-         break;
- 
-     case 0x6a:	/* Special Effects */
-@@ -718,7 +718,7 @@ static void blizzard_reg_write(void *opaque, uint8_t reg, uint16_t value)
-         s->bpp = blizzard_iformat_bpp[s->iformat];
-         if (!s->bpp)
-             fprintf(stderr, "%s: Illegal or unsupported input format %x\n",
--                            __FUNCTION__, s->iformat);
-+                            __func__, s->iformat);
-         break;
-     case 0x8e:	/* Data Source Select */
-         s->source = value & 7;
-@@ -730,7 +730,7 @@ static void blizzard_reg_write(void *opaque, uint8_t reg, uint16_t value)
-                         !((s->ix[1] - s->ix[0]) & (s->iy[1] - s->iy[0]) &
-                           (s->ox[1] - s->ox[0]) & (s->oy[1] - s->oy[0]) & 1))
-             fprintf(stderr, "%s: Illegal input/output window positions\n",
--                            __FUNCTION__);
-+                            __func__);
- 
-         blizzard_transfer_setup(s);
-         break;
-@@ -784,7 +784,7 @@ static void blizzard_reg_write(void *opaque, uint8_t reg, uint16_t value)
-         s->pm = value & 0x83;
-         if (value & s->mode & 1)
-             fprintf(stderr, "%s: The display must be disabled before entering "
--                            "Standby Mode\n", __FUNCTION__);
-+                            "Standby Mode\n", __func__);
-         break;
-     case 0xe8:	/* Non-display Period Control / Status */
-         s->status = value & 0x1b;
-@@ -815,7 +815,7 @@ static void blizzard_reg_write(void *opaque, uint8_t reg, uint16_t value)
-         break;
- 
-     default:
--        fprintf(stderr, "%s: unknown register %02x\n", __FUNCTION__, reg);
-+        fprintf(stderr, "%s: unknown register %02x\n", __func__, reg);
-         break;
-     }
- }
-diff --git a/hw/display/omap_dss.c b/hw/display/omap_dss.c
-index 783e9e1318..601f178fdd 100644
---- a/hw/display/omap_dss.c
-+++ b/hw/display/omap_dss.c
-@@ -526,7 +526,7 @@ static void omap_disc_write(void *opaque, hwaddr addr,
-         s->dispc.l[0].attr = value & 0x7ff;
-         if (value & (3 << 9))
-             fprintf(stderr, "%s: Big-endian pixel format not supported\n",
--                            __FUNCTION__);
-+                            __func__);
-         s->dispc.l[0].enable = value & 1;
-         s->dispc.l[0].bpp = (value >> 1) & 0xf;
-         s->dispc.invalidate = 1;
-@@ -617,7 +617,7 @@ static void omap_rfbi_transfer_start(struct omap_dss_s *s)
-     if (s->rfbi.control & (1 << 1)) {				/* BYPASS */
-         /* TODO: in non-Bypass mode we probably need to just assert the
-          * DRQ and wait for DMA to write the pixels.  */
--        fprintf(stderr, "%s: Bypass mode unimplemented\n", __FUNCTION__);
-+        fprintf(stderr, "%s: Bypass mode unimplemented\n", __func__);
-         return;
-     }
- 
-@@ -1086,6 +1086,6 @@ struct omap_dss_s *omap_dss_init(struct omap_target_agent_s *ta,
- void omap_rfbi_attach(struct omap_dss_s *s, int cs, struct rfbi_chip_s *chip)
- {
-     if (cs < 0 || cs > 1)
--        hw_error("%s: wrong CS %i\n", __FUNCTION__, cs);
-+        hw_error("%s: wrong CS %i\n", __func__, cs);
-     s->rfbi.chip[cs] = chip;
- }
-diff --git a/hw/display/pxa2xx_lcd.c b/hw/display/pxa2xx_lcd.c
-index 845521c5b2..b83f80753a 100644
---- a/hw/display/pxa2xx_lcd.c
-+++ b/hw/display/pxa2xx_lcd.c
-@@ -405,7 +405,7 @@ static uint64_t pxa2xx_lcdc_read(void *opaque, hwaddr offset,
- 
-     default:
-     fail:
--        hw_error("%s: Bad offset " REG_FMT "\n", __FUNCTION__, offset);
-+        hw_error("%s: Bad offset " REG_FMT "\n", __func__, offset);
-     }
- 
-     return 0;
-@@ -424,7 +424,7 @@ static void pxa2xx_lcdc_write(void *opaque, hwaddr offset,
-             s->status[0] |= LCSR0_QD;
- 
-         if (!(s->control[0] & LCCR0_LCDT) && (value & LCCR0_LCDT))
--            printf("%s: internal frame buffer unsupported\n", __FUNCTION__);
-+            printf("%s: internal frame buffer unsupported\n", __func__);
- 
-         if ((s->control[3] & LCCR3_API) &&
-                 (value & LCCR0_ENB) && !(value & LCCR0_LCDT))
-@@ -460,7 +460,7 @@ static void pxa2xx_lcdc_write(void *opaque, hwaddr offset,
- 
-     case OVL1C1:
-         if (!(s->ovl1c[0] & OVLC1_EN) && (value & OVLC1_EN))
--            printf("%s: Overlay 1 not supported\n", __FUNCTION__);
-+            printf("%s: Overlay 1 not supported\n", __func__);
- 
-         s->ovl1c[0] = value & 0x80ffffff;
-         s->dma_ch[1].up = (value & OVLC1_EN) || (s->control[0] & LCCR0_SDS);
-@@ -472,7 +472,7 @@ static void pxa2xx_lcdc_write(void *opaque, hwaddr offset,
- 
-     case OVL2C1:
-         if (!(s->ovl2c[0] & OVLC1_EN) && (value & OVLC1_EN))
--            printf("%s: Overlay 2 not supported\n", __FUNCTION__);
-+            printf("%s: Overlay 2 not supported\n", __func__);
- 
-         s->ovl2c[0] = value & 0x80ffffff;
-         s->dma_ch[2].up = !!(value & OVLC1_EN);
-@@ -486,7 +486,7 @@ static void pxa2xx_lcdc_write(void *opaque, hwaddr offset,
- 
-     case CCR:
-         if (!(s->ccr & CCR_CEN) && (value & CCR_CEN))
--            printf("%s: Hardware cursor unimplemented\n", __FUNCTION__);
-+            printf("%s: Hardware cursor unimplemented\n", __func__);
- 
-         s->ccr = value & 0x81ffffe7;
-         s->dma_ch[5].up = !!(value & CCR_CEN);
-@@ -560,7 +560,7 @@ static void pxa2xx_lcdc_write(void *opaque, hwaddr offset,
- 
-     default:
-     fail:
--        hw_error("%s: Bad offset " REG_FMT "\n", __FUNCTION__, offset);
-+        hw_error("%s: Bad offset " REG_FMT "\n", __func__, offset);
-     }
- }
- 
-@@ -1050,7 +1050,7 @@ PXA2xxLCDState *pxa2xx_lcdc_init(MemoryRegion *sysmem,
-         s->dest_width = 4;
-         break;
-     default:
--        fprintf(stderr, "%s: Bad color depth\n", __FUNCTION__);
-+        fprintf(stderr, "%s: Bad color depth\n", __func__);
-         exit(1);
-     }
- 
-diff --git a/hw/display/qxl-render.c b/hw/display/qxl-render.c
-index 90e0865618..e7ac4f8789 100644
---- a/hw/display/qxl-render.c
-+++ b/hw/display/qxl-render.c
-@@ -78,7 +78,7 @@ void qxl_render_resize(PCIQXLDevice *qxl)
-         qxl->guest_primary.bits_pp = 32;
-         break;
-     default:
--        fprintf(stderr, "%s: unhandled format: %x\n", __FUNCTION__,
-+        fprintf(stderr, "%s: unhandled format: %x\n", __func__,
-                 qxl->guest_primary.surface.format);
-         qxl->guest_primary.bytes_pp = 4;
-         qxl->guest_primary.bits_pp = 32;
-@@ -248,7 +248,7 @@ static QEMUCursor *qxl_cursor(PCIQXLDevice *qxl, QXLCursor *cursor,
-         break;
-     default:
-         fprintf(stderr, "%s: not implemented: type %d\n",
--                __FUNCTION__, cursor->header.type);
-+                __func__, cursor->header.type);
-         goto fail;
-     }
-     return c;
-@@ -275,7 +275,7 @@ int qxl_render_cursor(PCIQXLDevice *qxl, QXLCommandExt *ext)
-     }
- 
-     if (qxl->debug > 1 && cmd->type != QXL_CURSOR_MOVE) {
--        fprintf(stderr, "%s", __FUNCTION__);
-+        fprintf(stderr, "%s", __func__);
-         qxl_log_cmd_cursor(qxl, cmd, ext->group_id);
-         fprintf(stderr, "\n");
-     }
-diff --git a/hw/display/qxl.h b/hw/display/qxl.h
-index f6556adb73..7d1b60014a 100644
---- a/hw/display/qxl.h
-+++ b/hw/display/qxl.h
-@@ -133,7 +133,7 @@ typedef struct PCIQXLDevice {
- #define PCI_QXL(obj) OBJECT_CHECK(PCIQXLDevice, (obj), TYPE_PCI_QXL)
- 
- #define PANIC_ON(x) if ((x)) {                         \
--    printf("%s: PANIC %s failed\n", __FUNCTION__, #x); \
-+    printf("%s: PANIC %s failed\n", __func__, #x); \
-     abort();                                           \
- }
- 
-diff --git a/hw/display/tc6393xb.c b/hw/display/tc6393xb.c
-index 74d10af3d4..79f161740a 100644
---- a/hw/display/tc6393xb.c
-+++ b/hw/display/tc6393xb.c
-@@ -148,7 +148,7 @@ static void tc6393xb_gpio_set(void *opaque, int line, int level)
- //    TC6393xbState *s = opaque;
- 
-     if (line > TC6393XB_GPIOS) {
--        printf("%s: No GPIO pin %i\n", __FUNCTION__, line);
-+        printf("%s: No GPIO pin %i\n", __func__, line);
-         return;
-     }
- 
-diff --git a/hw/display/xenfb.c b/hw/display/xenfb.c
-index 8e2547ac05..30cd415330 100644
---- a/hw/display/xenfb.c
-+++ b/hw/display/xenfb.c
-@@ -644,7 +644,7 @@ static void xenfb_guest_copy(struct XenFB *xenfb, int x, int y, int w, int h)
-     }
-     if (oops) /* should not happen */
-         xen_pv_printf(&xenfb->c.xendev, 0, "%s: oops: convert %d -> %d bpp?\n",
--                      __FUNCTION__, xenfb->depth, bpp);
-+                      __func__, xenfb->depth, bpp);
- 
-     dpy_gfx_update(xenfb->con, x, y, w, h);
- }
-diff --git a/hw/dma/omap_dma.c b/hw/dma/omap_dma.c
-index 45dfe7aadd..abd18c67ea 100644
---- a/hw/dma/omap_dma.c
-+++ b/hw/dma/omap_dma.c
-@@ -161,7 +161,7 @@ static void omap_dma_channel_load(struct omap_dma_channel_s *ch)
-     a->pck_element = 0;
- 
-     if (unlikely(!ch->elements || !ch->frames)) {
--        printf("%s: bad DMA request\n", __FUNCTION__);
-+        printf("%s: bad DMA request\n", __func__);
-         return;
-     }
- 
-@@ -519,7 +519,7 @@ static void omap_dma_transfer_setup(struct soc_dma_ch_s *dma)
-         continue;
- #endif
-         printf("%s: Bus time-out in DMA%i operation\n",
--                        __FUNCTION__, dma->num);
-+                        __func__, dma->num);
-     }
- 
-     min_elems = INT_MAX;
-@@ -879,14 +879,14 @@ static int omap_dma_ch_reg_write(struct omap_dma_s *s,
-         ch->pack[0] = (value & 0x0040) >> 6;
-         ch->port[0] = (enum omap_dma_port) ((value & 0x003c) >> 2);
-         if (ch->port[0] >= __omap_dma_port_last)
--            printf("%s: invalid DMA port %i\n", __FUNCTION__,
-+            printf("%s: invalid DMA port %i\n", __func__,
-                             ch->port[0]);
-         if (ch->port[1] >= __omap_dma_port_last)
--            printf("%s: invalid DMA port %i\n", __FUNCTION__,
-+            printf("%s: invalid DMA port %i\n", __func__,
-                             ch->port[1]);
-         ch->data_type = 1 << (value & 3);
-         if ((value & 3) == 3) {
--            printf("%s: bad data_type for DMA channel\n", __FUNCTION__);
-+            printf("%s: bad data_type for DMA channel\n", __func__);
-             ch->data_type >>= 1;
-         }
-         break;
-@@ -1440,7 +1440,7 @@ static int omap_dma_sys_read(struct omap_dma_s *s, int offset,
-     case 0x482:	/* DMA_PCh1_SR */
-     case 0x4c0:	/* DMA_PChD_SR_0 */
-         printf("%s: Physical Channel Status Registers not implemented.\n",
--               __FUNCTION__);
-+               __func__);
-         *ret = 0xff;
-         break;
- 
-@@ -1898,13 +1898,13 @@ static void omap_dma4_write(void *opaque, hwaddr addr,
-             omap_dma_reset(s->dma);
-         s->ocp = value & 0x3321;
-         if (((s->ocp >> 12) & 3) == 3)				/* MIDLEMODE */
--            fprintf(stderr, "%s: invalid DMA power mode\n", __FUNCTION__);
-+            fprintf(stderr, "%s: invalid DMA power mode\n", __func__);
-         return;
- 
-     case 0x78:	/* DMA4_GCR */
-         s->gcr = value & 0x00ff00ff;
- 	if ((value & 0xff) == 0x00)		/* MAX_CHANNEL_FIFO_DEPTH */
--            fprintf(stderr, "%s: wrong FIFO depth in GCR\n", __FUNCTION__);
-+            fprintf(stderr, "%s: wrong FIFO depth in GCR\n", __func__);
-         return;
- 
-     case 0x80 ... 0xfff:
-@@ -1935,7 +1935,7 @@ static void omap_dma4_write(void *opaque, hwaddr addr,
-         ch->src_sync = (value >> 24) & 1;	/* XXX For CamDMA must be 1 */
-         if (ch->buf_disable && !ch->src_sync)
-             fprintf(stderr, "%s: Buffering disable is not allowed in "
--                            "destination synchronised mode\n", __FUNCTION__);
-+                            "destination synchronised mode\n", __func__);
-         ch->prefetch = (value >> 23) & 1;
-         ch->bs = (value >> 18) & 1;
-         ch->transparent_copy = (value >> 17) & 1;
-@@ -1947,7 +1947,7 @@ static void omap_dma4_write(void *opaque, hwaddr addr,
-         ch->fs = (value & 0x0020) >> 5;
-         if (ch->fs && ch->bs && ch->mode[0] && ch->mode[1])
-             fprintf(stderr, "%s: For a packet transfer at least one port "
--                            "must be constant-addressed\n", __FUNCTION__);
-+                            "must be constant-addressed\n", __func__);
-         ch->sync = (value & 0x001f) | ((value >> 14) & 0x0060);
-         /* XXX must be 0x01 for CamDMA */
- 
-@@ -1978,7 +1978,7 @@ static void omap_dma4_write(void *opaque, hwaddr addr,
-         ch->endian_lock[1] =(value >> 18) & 1;
-         if (ch->endian[0] != ch->endian[1])
-             fprintf(stderr, "%s: DMA endianness conversion enable attempt\n",
--                            __FUNCTION__);
-+                            __func__);
-         ch->write_mode = (value >> 16) & 3;
-         ch->burst[1] = (value & 0xc000) >> 14;
-         ch->pack[1] = (value & 0x2000) >> 13;
-@@ -1988,10 +1988,10 @@ static void omap_dma4_write(void *opaque, hwaddr addr,
-         ch->translate[0] = (value & 0x003c) >> 2;
-         if (ch->translate[0] | ch->translate[1])
-             fprintf(stderr, "%s: bad MReqAddressTranslate sideband signal\n",
--                            __FUNCTION__);
-+                            __func__);
-         ch->data_type = 1 << (value & 3);
-         if ((value & 3) == 3) {
--            printf("%s: bad data_type for DMA channel\n", __FUNCTION__);
-+            printf("%s: bad data_type for DMA channel\n", __func__);
-             ch->data_type >>= 1;
-         }
-         break;
-diff --git a/hw/dma/pxa2xx_dma.c b/hw/dma/pxa2xx_dma.c
-index 634a4328f0..f4eb26cf17 100644
---- a/hw/dma/pxa2xx_dma.c
-+++ b/hw/dma/pxa2xx_dma.c
-@@ -169,7 +169,7 @@ static inline void pxa2xx_dma_descriptor_fetch(
-         s->chan[ch].dest &= ~3;
- 
-     if (s->chan[ch].cmd & (DCMD_CMPEN | DCMD_FLYBYS | DCMD_FLYBYT))
--        printf("%s: unsupported mode in channel %i\n", __FUNCTION__, ch);
-+        printf("%s: unsupported mode in channel %i\n", __func__, ch);
- 
-     if (s->chan[ch].cmd & DCMD_STARTIRQEN)
-         s->chan[ch].state |= DCSR_STARTINTR;
-@@ -264,7 +264,7 @@ static uint64_t pxa2xx_dma_read(void *opaque, hwaddr offset,
-     unsigned int channel;
- 
-     if (size != 4) {
--        hw_error("%s: Bad access width\n", __FUNCTION__);
-+        hw_error("%s: Bad access width\n", __func__);
-         return 5;
-     }
- 
-@@ -312,7 +312,7 @@ static uint64_t pxa2xx_dma_read(void *opaque, hwaddr offset,
-         }
-     }
- 
--    hw_error("%s: Bad offset 0x" TARGET_FMT_plx "\n", __FUNCTION__, offset);
-+    hw_error("%s: Bad offset 0x" TARGET_FMT_plx "\n", __func__, offset);
-     return 7;
- }
- 
-@@ -323,7 +323,7 @@ static void pxa2xx_dma_write(void *opaque, hwaddr offset,
-     unsigned int channel;
- 
-     if (size != 4) {
--        hw_error("%s: Bad access width\n", __FUNCTION__);
-+        hw_error("%s: Bad access width\n", __func__);
-         return;
-     }
- 
-@@ -337,7 +337,7 @@ static void pxa2xx_dma_write(void *opaque, hwaddr offset,
-         if (value & DRCMR_MAPVLD)
-             if ((value & DRCMR_CHLNUM) > s->channels)
-                 hw_error("%s: Bad DMA channel %i\n",
--                         __FUNCTION__, (unsigned)value & DRCMR_CHLNUM);
-+                         __func__, (unsigned)value & DRCMR_CHLNUM);
- 
-         s->req[channel] = value;
-         break;
-@@ -416,7 +416,7 @@ static void pxa2xx_dma_write(void *opaque, hwaddr offset,
-             break;
-         }
-     fail:
--        hw_error("%s: Bad offset " TARGET_FMT_plx "\n", __FUNCTION__, offset);
-+        hw_error("%s: Bad offset " TARGET_FMT_plx "\n", __func__, offset);
-     }
- }
- 
-@@ -431,7 +431,7 @@ static void pxa2xx_dma_request(void *opaque, int req_num, int on)
-     PXA2xxDMAState *s = opaque;
-     int ch;
-     if (req_num < 0 || req_num >= PXA2XX_DMA_NUM_REQUESTS)
--        hw_error("%s: Bad DMA request %i\n", __FUNCTION__, req_num);
-+        hw_error("%s: Bad DMA request %i\n", __func__, req_num);
- 
-     if (!(s->req[req_num] & DRCMR_MAPVLD))
-         return;
-diff --git a/hw/gpio/max7310.c b/hw/gpio/max7310.c
-index f82e3e6555..4c203ef5c6 100644
---- a/hw/gpio/max7310.c
-+++ b/hw/gpio/max7310.c
-@@ -67,7 +67,7 @@ static int max7310_rx(I2CSlave *i2c)
- 
-     default:
- #ifdef VERBOSE
--        printf("%s: unknown register %02x\n", __FUNCTION__, s->command);
-+        printf("%s: unknown register %02x\n", __func__, s->command);
- #endif
-         break;
-     }
-@@ -82,7 +82,7 @@ static int max7310_tx(I2CSlave *i2c, uint8_t data)
- 
-     if (s->len ++ > 1) {
- #ifdef VERBOSE
--        printf("%s: message too long (%i bytes)\n", __FUNCTION__, s->len);
-+        printf("%s: message too long (%i bytes)\n", __func__, s->len);
- #endif
-         return 1;
-     }
-@@ -121,7 +121,7 @@ static int max7310_tx(I2CSlave *i2c, uint8_t data)
- 	break;
-     default:
- #ifdef VERBOSE
--        printf("%s: unknown register %02x\n", __FUNCTION__, s->command);
-+        printf("%s: unknown register %02x\n", __func__, s->command);
- #endif
-         return 1;
-     }
-@@ -141,7 +141,7 @@ static int max7310_event(I2CSlave *i2c, enum i2c_event event)
-     case I2C_FINISH:
- #ifdef VERBOSE
-         if (s->len == 1)
--            printf("%s: message too short (%i bytes)\n", __FUNCTION__, s->len);
-+            printf("%s: message too short (%i bytes)\n", __func__, s->len);
- #endif
-         break;
-     default:
-diff --git a/hw/gpio/omap_gpio.c b/hw/gpio/omap_gpio.c
-index 17891e2d0f..08472193b5 100644
---- a/hw/gpio/omap_gpio.c
-+++ b/hw/gpio/omap_gpio.c
-@@ -399,7 +399,7 @@ static void omap2_gpio_module_write(void *opaque, hwaddr addr,
- 
-     case 0x10:	/* GPIO_SYSCONFIG */
-         if (((value >> 3) & 3) == 3)
--            fprintf(stderr, "%s: bad IDLEMODE value\n", __FUNCTION__);
-+            fprintf(stderr, "%s: bad IDLEMODE value\n", __func__);
-         if (value & 2)
-             omap2_gpio_module_reset(s);
-         s->config[0] = value & 0x1d;
-diff --git a/hw/i2c/omap_i2c.c b/hw/i2c/omap_i2c.c
-index 12264ee0f5..26e3e5ebf6 100644
---- a/hw/i2c/omap_i2c.c
-+++ b/hw/i2c/omap_i2c.c
-@@ -341,12 +341,12 @@ static void omap_i2c_write(void *opaque, hwaddr addr,
-         }
-         if ((value & (1 << 15)) && !(value & (1 << 10))) {	/* MST */
-             fprintf(stderr, "%s: I^2C slave mode not supported\n",
--                            __FUNCTION__);
-+                            __func__);
-             break;
-         }
-         if ((value & (1 << 15)) && value & (1 << 8)) {		/* XA */
-             fprintf(stderr, "%s: 10-bit addressing mode not supported\n",
--                            __FUNCTION__);
-+                            __func__);
-             break;
-         }
-         if ((value & (1 << 15)) && value & (1 << 0)) {		/* STT */
-@@ -393,7 +393,7 @@ static void omap_i2c_write(void *opaque, hwaddr addr,
-                 omap_i2c_interrupts_update(s);
-             }
-         if (value & (1 << 15))					/* ST_EN */
--            fprintf(stderr, "%s: System Test not supported\n", __FUNCTION__);
-+            fprintf(stderr, "%s: System Test not supported\n", __func__);
-         break;
- 
-     default:
-diff --git a/hw/ide/ahci.c b/hw/ide/ahci.c
-index 32d1296a64..c25e293d88 100644
---- a/hw/ide/ahci.c
-+++ b/hw/ide/ahci.c
-@@ -1053,7 +1053,7 @@ static void process_ncq_command(AHCIState *s, int port, uint8_t *cmd_fis,
-     g_assert(is_ncq(ncq_fis->command));
-     if (ncq_tfs->used) {
-         /* error - already in use */
--        fprintf(stderr, "%s: tag %d already used\n", __FUNCTION__, tag);
-+        fprintf(stderr, "%s: tag %d already used\n", __func__, tag);
-         return;
-     }
- 
-diff --git a/hw/ide/microdrive.c b/hw/ide/microdrive.c
-index 17917c0b30..3090254783 100644
---- a/hw/ide/microdrive.c
-+++ b/hw/ide/microdrive.c
-@@ -156,7 +156,7 @@ static uint8_t md_attr_read(PCMCIACardState *card, uint32_t at)
-         return 0x00;
- #ifdef VERBOSE
-     default:
--        printf("%s: Bad attribute space register %02x\n", __FUNCTION__, at);
-+        printf("%s: Bad attribute space register %02x\n", __func__, at);
- #endif
-     }
- 
-@@ -193,7 +193,7 @@ static void md_attr_write(PCMCIACardState *card, uint32_t at, uint8_t value)
-     case 0x06:	/* Socket and Copy Register */
-         break;
-     default:
--        printf("%s: Bad attribute space register %02x\n", __FUNCTION__, at);
-+        printf("%s: Bad attribute space register %02x\n", __func__, at);
-     }
- }
- 
-diff --git a/hw/input/lm832x.c b/hw/input/lm832x.c
-index 2340523da0..d39953126b 100644
---- a/hw/input/lm832x.c
-+++ b/hw/input/lm832x.c
-@@ -239,7 +239,7 @@ static uint8_t lm_kbd_read(LM823KbdState *s, int reg, int byte)
- 
-     default:
-         lm_kbd_error(s, ERR_CMDUNK);
--        fprintf(stderr, "%s: unknown command %02x\n", __FUNCTION__, reg);
-+        fprintf(stderr, "%s: unknown command %02x\n", __func__, reg);
-         return 0x00;
-     }
- 
-@@ -331,7 +331,7 @@ static void lm_kbd_write(LM823KbdState *s, int reg, int byte, uint8_t value)
-         if ((value & 3) && (value & 3) != 3) {
-             lm_kbd_error(s, ERR_BADPAR);
-             fprintf(stderr, "%s: invalid clock setting in RCPWM\n",
--                            __FUNCTION__);
-+                            __func__);
-         }
-         /* TODO: Validate that the command is only issued once */
-         break;
-@@ -378,7 +378,7 @@ static void lm_kbd_write(LM823KbdState *s, int reg, int byte, uint8_t value)
-         break;
-     default:
-         lm_kbd_error(s, ERR_CMDUNK);
--        fprintf(stderr, "%s: unknown command %02x\n", __FUNCTION__, reg);
-+        fprintf(stderr, "%s: unknown command %02x\n", __func__, reg);
-         break;
-     }
- }
-diff --git a/hw/input/pxa2xx_keypad.c b/hw/input/pxa2xx_keypad.c
-index 2b70bbb95c..93db9ed25b 100644
---- a/hw/input/pxa2xx_keypad.c
-+++ b/hw/input/pxa2xx_keypad.c
-@@ -231,7 +231,7 @@ static uint64_t pxa2xx_keypad_read(void *opaque, hwaddr offset,
-         return s->kpkdi;
-         break;
-     default:
--        hw_error("%s: Bad offset " REG_FMT "\n", __FUNCTION__, offset);
-+        hw_error("%s: Bad offset " REG_FMT "\n", __func__, offset);
-     }
- 
-     return 0;
-@@ -278,7 +278,7 @@ static void pxa2xx_keypad_write(void *opaque, hwaddr offset,
-         break;
- 
-     default:
--        hw_error("%s: Bad offset " REG_FMT "\n", __FUNCTION__, offset);
-+        hw_error("%s: Bad offset " REG_FMT "\n", __func__, offset);
-     }
- }
- 
-@@ -326,7 +326,7 @@ void pxa27x_register_keypad(PXA2xxKeyPadState *kp,
-                             const struct keymap *map, int size)
- {
-     if(!map || size < 0x80) {
--        fprintf(stderr, "%s - No PXA keypad map defined\n", __FUNCTION__);
-+        fprintf(stderr, "%s - No PXA keypad map defined\n", __func__);
-         exit(-1);
-     }
- 
-diff --git a/hw/input/tsc2005.c b/hw/input/tsc2005.c
-index eb5320af40..7990954b6c 100644
---- a/hw/input/tsc2005.c
-+++ b/hw/input/tsc2005.c
-@@ -201,7 +201,7 @@ static void tsc2005_write(TSC2005State *s, int reg, uint16_t data)
-         if (s->enabled != !(data & 0x4000)) {
-             s->enabled = !(data & 0x4000);
-             fprintf(stderr, "%s: touchscreen sense %sabled\n",
--                            __FUNCTION__, s->enabled ? "en" : "dis");
-+                            __func__, s->enabled ? "en" : "dis");
-             if (s->busy && !s->enabled)
-                 timer_del(s->timer);
-             s->busy = s->busy && s->enabled;
-@@ -210,7 +210,7 @@ static void tsc2005_write(TSC2005State *s, int reg, uint16_t data)
-         s->timing[0] = data & 0x1fff;
-         if ((s->timing[0] >> 11) == 3)
-             fprintf(stderr, "%s: illegal conversion clock setting\n",
--                            __FUNCTION__);
-+                            __func__);
-         break;
-     case 0xd:	/* CFR1 */
-         s->timing[1] = data & 0xf07;
-@@ -222,7 +222,7 @@ static void tsc2005_write(TSC2005State *s, int reg, uint16_t data)
- 
-     default:
-         fprintf(stderr, "%s: write into read-only register %x\n",
--                        __FUNCTION__, reg);
-+                        __func__, reg);
-     }
- }
- 
-@@ -338,7 +338,7 @@ static uint8_t tsc2005_txrx_word(void *opaque, uint8_t value)
-                 if (s->enabled != !(value & 1)) {
-                     s->enabled = !(value & 1);
-                     fprintf(stderr, "%s: touchscreen sense %sabled\n",
--                                    __FUNCTION__, s->enabled ? "en" : "dis");
-+                                    __func__, s->enabled ? "en" : "dis");
-                     if (s->busy && !s->enabled)
-                         timer_del(s->timer);
-                     s->busy = s->busy && s->enabled;
-diff --git a/hw/input/tsc210x.c b/hw/input/tsc210x.c
-index 75ac8c2ab5..1cad57f644 100644
---- a/hw/input/tsc210x.c
-+++ b/hw/input/tsc210x.c
-@@ -287,7 +287,7 @@ static void tsc2102_audio_rate_update(TSC210xState *s)
-                         rate->fsref == ((s->audio_ctrl3 >> 13) & 1))/* REFFS */
-             break;
-     if (!rate->rate) {
--        printf("%s: unknown sampling rate configured\n", __FUNCTION__);
-+        printf("%s: unknown sampling rate configured\n", __func__);
-         return;
-     }
- 
-@@ -913,7 +913,7 @@ uint32_t tsc210x_txrx(void *opaque, uint32_t value, int len)
-     uint32_t ret = 0;
- 
-     if (len != 16)
--        hw_error("%s: FIXME: bad SPI word width %i\n", __FUNCTION__, len);
-+        hw_error("%s: FIXME: bad SPI word width %i\n", __func__, len);
- 
-     /* TODO: sequential reads etc - how do we make sure the host doesn't
-      * unintentionally read out a conversion result from a register while
-diff --git a/hw/intc/omap_intc.c b/hw/intc/omap_intc.c
-index ccdda89dab..6844c1aa83 100644
---- a/hw/intc/omap_intc.c
-+++ b/hw/intc/omap_intc.c
-@@ -540,7 +540,7 @@ static void omap2_inth_write(void *opaque, hwaddr addr,
-          * for every register, see Chapter 3 and 4 for privileged mode.  */
-         if (value & 1)
-             fprintf(stderr, "%s: protection mode enable attempt\n",
--                            __FUNCTION__);
-+                            __func__);
-         return;
- 
-     case 0x50:	/* INTC_IDLE */
-diff --git a/hw/isa/vt82c686.c b/hw/isa/vt82c686.c
-index 50dc83df77..72bf674403 100644
---- a/hw/isa/vt82c686.c
-+++ b/hw/isa/vt82c686.c
-@@ -30,7 +30,7 @@
- //#define DEBUG_VT82C686B
- 
- #ifdef DEBUG_VT82C686B
--#define DPRINTF(fmt, ...) fprintf(stderr, "%s: " fmt, __FUNCTION__, ##__VA_ARGS__)
-+#define DPRINTF(fmt, ...) fprintf(stderr, "%s: " fmt, __func__, ##__VA_ARGS__)
- #else
- #define DPRINTF(fmt, ...)
- #endif
-diff --git a/hw/mips/gt64xxx_pci.c b/hw/mips/gt64xxx_pci.c
-index e8b2eef688..41a7690560 100644
---- a/hw/mips/gt64xxx_pci.c
-+++ b/hw/mips/gt64xxx_pci.c
-@@ -33,7 +33,7 @@
- //#define DEBUG
- 
- #ifdef DEBUG
--#define DPRINTF(fmt, ...) fprintf(stderr, "%s: " fmt, __FUNCTION__, ##__VA_ARGS__)
-+#define DPRINTF(fmt, ...) fprintf(stderr, "%s: " fmt, __func__, ##__VA_ARGS__)
- #else
- #define DPRINTF(fmt, ...)
- #endif
-diff --git a/hw/misc/cbus.c b/hw/misc/cbus.c
-index 677274ce3e..25e337ea77 100644
---- a/hw/misc/cbus.c
-+++ b/hw/misc/cbus.c
-@@ -62,7 +62,7 @@ static void cbus_io(CBusPriv *s)
-         s->slave[s->addr]->io(s->slave[s->addr]->opaque,
-                         s->rw, s->reg, &s->val);
-     else
--        hw_error("%s: bad slave address %i\n", __FUNCTION__, s->addr);
-+        hw_error("%s: bad slave address %i\n", __func__, s->addr);
- }
- 
- static void cbus_cycle(CBusPriv *s)
-@@ -299,7 +299,7 @@ static inline uint16_t retu_read(CBusRetu *s, int reg)
-         return 0x0000;
- 
-     default:
--        hw_error("%s: bad register %02x\n", __FUNCTION__, reg);
-+        hw_error("%s: bad register %02x\n", __func__, reg);
-     }
- }
- 
-@@ -372,7 +372,7 @@ static inline void retu_write(CBusRetu *s, int reg, uint16_t val)
-         break;
- 
-     default:
--        hw_error("%s: bad register %02x\n", __FUNCTION__, reg);
-+        hw_error("%s: bad register %02x\n", __func__, reg);
-     }
- }
- 
-@@ -538,7 +538,7 @@ static inline uint16_t tahvo_read(CBusTahvo *s, int reg)
-         return 0x0000;
- 
-     default:
--        hw_error("%s: bad register %02x\n", __FUNCTION__, reg);
-+        hw_error("%s: bad register %02x\n", __func__, reg);
-     }
- }
- 
-@@ -567,7 +567,7 @@ static inline void tahvo_write(CBusTahvo *s, int reg, uint16_t val)
-         if (s->backlight != (val & 0x7f)) {
-             s->backlight = val & 0x7f;
-             printf("%s: LCD backlight now at %i / 127\n",
--                            __FUNCTION__, s->backlight);
-+                            __func__, s->backlight);
-         }
-         break;
- 
-@@ -588,7 +588,7 @@ static inline void tahvo_write(CBusTahvo *s, int reg, uint16_t val)
-         break;
- 
-     default:
--        hw_error("%s: bad register %02x\n", __FUNCTION__, reg);
-+        hw_error("%s: bad register %02x\n", __func__, reg);
-     }
- }
- 
-diff --git a/hw/misc/omap_clk.c b/hw/misc/omap_clk.c
-index 19151d07d6..9ea14186d4 100644
---- a/hw/misc/omap_clk.c
-+++ b/hw/misc/omap_clk.c
-@@ -1109,7 +1109,7 @@ struct clk *omap_findclk(struct omap_mpu_state_s *mpu, const char *name)
-     for (i = mpu->clks; i->name; i ++)
-         if (!strcmp(i->name, name) || (i->alias && !strcmp(i->alias, name)))
-             return i;
--    hw_error("%s: %s not found\n", __FUNCTION__, name);
-+    hw_error("%s: %s not found\n", __func__, name);
- }
- 
- void omap_clk_get(struct clk *clk)
-@@ -1120,7 +1120,7 @@ void omap_clk_get(struct clk *clk)
- void omap_clk_put(struct clk *clk)
- {
-     if (!(clk->usecount --))
--        hw_error("%s: %s is not in use\n", __FUNCTION__, clk->name);
-+        hw_error("%s: %s is not in use\n", __func__, clk->name);
- }
- 
- static void omap_clk_update(struct clk *clk)
-diff --git a/hw/misc/omap_gpmc.c b/hw/misc/omap_gpmc.c
-index 67d8e2f023..84f9e4c612 100644
---- a/hw/misc/omap_gpmc.c
-+++ b/hw/misc/omap_gpmc.c
-@@ -643,7 +643,7 @@ static void omap_gpmc_write(void *opaque, hwaddr addr,
-     case 0x010:	/* GPMC_SYSCONFIG */
-         if ((value >> 3) == 0x3)
-             fprintf(stderr, "%s: bad SDRAM idle mode %"PRIi64"\n",
--                            __FUNCTION__, value >> 3);
-+                            __func__, value >> 3);
-         if (value & 2)
-             omap_gpmc_reset(s);
-         s->sysconfig = value & 0x19;
-@@ -806,7 +806,7 @@ static void omap_gpmc_write(void *opaque, hwaddr addr,
-         break;
-     case 0x230:	/* GPMC_TESTMODE_CTRL */
-         if (value & 7)
--            fprintf(stderr, "%s: test mode enable attempt\n", __FUNCTION__);
-+            fprintf(stderr, "%s: test mode enable attempt\n", __func__);
-         break;
- 
-     default:
-@@ -864,7 +864,7 @@ void omap_gpmc_attach(struct omap_gpmc_s *s, int cs, MemoryRegion *iomem)
-     assert(iomem);
- 
-     if (cs < 0 || cs >= 8) {
--        fprintf(stderr, "%s: bad chip-select %i\n", __FUNCTION__, cs);
-+        fprintf(stderr, "%s: bad chip-select %i\n", __func__, cs);
-         exit(-1);
-     }
-     f = &s->cs_file[cs];
-diff --git a/hw/misc/omap_l4.c b/hw/misc/omap_l4.c
-index 88c533a0fe..96fc057b4e 100644
---- a/hw/misc/omap_l4.c
-+++ b/hw/misc/omap_l4.c
-@@ -126,7 +126,7 @@ struct omap_target_agent_s *omap_l4ta_get(struct omap_l4_s *bus,
-             break;
-         }
-     if (!ta) {
--        fprintf(stderr, "%s: bad target agent (%i)\n", __FUNCTION__, cs);
-+        fprintf(stderr, "%s: bad target agent (%i)\n", __func__, cs);
-         exit(-1);
-     }
- 
-@@ -151,7 +151,7 @@ hwaddr omap_l4_attach(struct omap_target_agent_s *ta,
-     hwaddr base;
- 
-     if (region < 0 || region >= ta->regions) {
--        fprintf(stderr, "%s: bad io region (%i)\n", __FUNCTION__, region);
-+        fprintf(stderr, "%s: bad io region (%i)\n", __func__, region);
-         exit(-1);
-     }
- 
-diff --git a/hw/misc/omap_sdrc.c b/hw/misc/omap_sdrc.c
-index dff37ecaf9..7b38c5568c 100644
---- a/hw/misc/omap_sdrc.c
-+++ b/hw/misc/omap_sdrc.c
-@@ -109,7 +109,7 @@ static void omap_sdrc_write(void *opaque, hwaddr addr,
-     case 0x10:	/* SDRC_SYSCONFIG */
-         if ((value >> 3) != 0x2)
-             fprintf(stderr, "%s: bad SDRAM idle mode %i\n",
--                    __FUNCTION__, (unsigned)value >> 3);
-+                    __func__, (unsigned)value >> 3);
-         if (value & 2)
-             omap_sdrc_reset(s);
-         s->config = value & 0x18;
-diff --git a/hw/misc/omap_tap.c b/hw/misc/omap_tap.c
-index e6ea8ee235..3f595e8df7 100644
---- a/hw/misc/omap_tap.c
-+++ b/hw/misc/omap_tap.c
-@@ -44,7 +44,7 @@ static uint64_t omap_tap_read(void *opaque, hwaddr addr,
-         case omap3430:
-             return 0x1b7ae02f;	/* ES 2 */
-         default:
--            hw_error("%s: Bad mpu model\n", __FUNCTION__);
-+            hw_error("%s: Bad mpu model\n", __func__);
-         }
- 
-     case 0x208:	/* PRODUCTION_ID_reg for OMAP2 */
-@@ -61,7 +61,7 @@ static uint64_t omap_tap_read(void *opaque, hwaddr addr,
-         case omap3430:
-             return 0x000000f0;
-         default:
--            hw_error("%s: Bad mpu model\n", __FUNCTION__);
-+            hw_error("%s: Bad mpu model\n", __func__);
-         }
- 
-     case 0x20c:
-@@ -75,7 +75,7 @@ static uint64_t omap_tap_read(void *opaque, hwaddr addr,
-         case omap3430:
-             return 0xcafeb7ae;	/* ES 2 */
-         default:
--            hw_error("%s: Bad mpu model\n", __FUNCTION__);
-+            hw_error("%s: Bad mpu model\n", __func__);
-         }
- 
-     case 0x218:	/* DIE_ID_reg */
-diff --git a/hw/misc/tmp105.c b/hw/misc/tmp105.c
-index 04e83787d4..9e22d64e36 100644
---- a/hw/misc/tmp105.c
-+++ b/hw/misc/tmp105.c
-@@ -131,7 +131,7 @@ static void tmp105_write(TMP105State *s)
- 
-     case TMP105_REG_CONFIG:
-         if (s->buf[0] & ~s->config & (1 << 0))			/* SD */
--            printf("%s: TMP105 shutdown\n", __FUNCTION__);
-+            printf("%s: TMP105 shutdown\n", __func__);
-         s->config = s->buf[0];
-         s->faults = tmp105_faultq[(s->config >> 3) & 3];	/* F */
-         tmp105_alarm_update(s);
-diff --git a/hw/pci-host/bonito.c b/hw/pci-host/bonito.c
-index 89133a9dd3..1767d2af61 100644
---- a/hw/pci-host/bonito.c
-+++ b/hw/pci-host/bonito.c
-@@ -50,7 +50,7 @@
- //#define DEBUG_BONITO
- 
- #ifdef DEBUG_BONITO
--#define DPRINTF(fmt, ...) fprintf(stderr, "%s: " fmt, __FUNCTION__, ##__VA_ARGS__)
-+#define DPRINTF(fmt, ...) fprintf(stderr, "%s: " fmt, __func__, ##__VA_ARGS__)
- #else
- #define DPRINTF(fmt, ...)
- #endif
-diff --git a/hw/sd/pxa2xx_mmci.c b/hw/sd/pxa2xx_mmci.c
-index 3deccf02c9..0d4b88c609 100644
---- a/hw/sd/pxa2xx_mmci.c
-+++ b/hw/sd/pxa2xx_mmci.c
-@@ -330,7 +330,7 @@ static uint64_t pxa2xx_mmci_read(void *opaque, hwaddr offset, unsigned size)
-     case MMC_BLKS_REM:
-         return s->numblk;
-     default:
--        hw_error("%s: Bad offset " REG_FMT "\n", __FUNCTION__, offset);
-+        hw_error("%s: Bad offset " REG_FMT "\n", __func__, offset);
-     }
- 
-     return 0;
-@@ -369,7 +369,7 @@ static void pxa2xx_mmci_write(void *opaque,
-     case MMC_SPI:
-         s->spi = value & 0xf;
-         if (value & SPI_SPI_MODE)
--            printf("%s: attempted to use card in SPI mode\n", __FUNCTION__);
-+            printf("%s: attempted to use card in SPI mode\n", __func__);
-         break;
- 
-     case MMC_CMDAT:
-@@ -442,7 +442,7 @@ static void pxa2xx_mmci_write(void *opaque,
-         break;
- 
-     default:
--        hw_error("%s: Bad offset " REG_FMT "\n", __FUNCTION__, offset);
-+        hw_error("%s: Bad offset " REG_FMT "\n", __func__, offset);
-     }
- }
- 
-diff --git a/hw/ssi/omap_spi.c b/hw/ssi/omap_spi.c
-index 22034656b8..34163e5646 100644
---- a/hw/ssi/omap_spi.c
-+++ b/hw/ssi/omap_spi.c
-@@ -295,10 +295,10 @@ static void omap_mcspi_write(void *opaque, hwaddr addr,
-         if ((value ^ s->ch[ch].config) & (3 << 14))	/* DMAR | DMAW */
-             omap_mcspi_dmarequest_update(s->ch + ch);
-         if (((value >> 12) & 3) == 3)			/* TRM */
--            fprintf(stderr, "%s: invalid TRM value (3)\n", __FUNCTION__);
-+            fprintf(stderr, "%s: invalid TRM value (3)\n", __func__);
-         if (((value >> 7) & 0x1f) < 3)			/* WL */
-             fprintf(stderr, "%s: invalid WL value (%" PRIx64 ")\n",
--                            __FUNCTION__, (value >> 7) & 0x1f);
-+                            __func__, (value >> 7) & 0x1f);
-         s->ch[ch].config = value & 0x7fffff;
-         break;
- 
-@@ -367,7 +367,7 @@ void omap_mcspi_attach(struct omap_mcspi_s *s,
-                 int chipselect)
- {
-     if (chipselect < 0 || chipselect >= s->chnum)
--        hw_error("%s: Bad chipselect %i\n", __FUNCTION__, chipselect);
-+        hw_error("%s: Bad chipselect %i\n", __func__, chipselect);
- 
-     s->ch[chipselect].txrx = txrx;
-     s->ch[chipselect].opaque = opaque;
-diff --git a/hw/timer/omap_gptimer.c b/hw/timer/omap_gptimer.c
-index 6d7c8a396f..ae2dc99832 100644
---- a/hw/timer/omap_gptimer.c
-+++ b/hw/timer/omap_gptimer.c
-@@ -357,7 +357,7 @@ static void omap_gp_timer_write(void *opaque, hwaddr addr,
-         s->config = value & 0x33d;
-         if (((value >> 3) & 3) == 3)				/* IDLEMODE */
-             fprintf(stderr, "%s: illegal IDLEMODE value in TIOCP_CFG\n",
--                            __FUNCTION__);
-+                            __func__);
-         if (value & 2)						/* SOFTRESET */
-             omap_gp_timer_reset(s);
-         break;
-@@ -395,10 +395,10 @@ static void omap_gp_timer_write(void *opaque, hwaddr addr,
-         s->st = (value >> 0) & 1;
-         if (s->inout && s->trigger != gpt_trigger_none)
-             fprintf(stderr, "%s: GP timer pin must be an output "
--                            "for this trigger mode\n", __FUNCTION__);
-+                            "for this trigger mode\n", __func__);
-         if (!s->inout && s->capture != gpt_capture_none)
-             fprintf(stderr, "%s: GP timer pin must be an input "
--                            "for this capture mode\n", __FUNCTION__);
-+                            "for this capture mode\n", __func__);
-         if (s->trigger == gpt_trigger_none)
-             omap_gp_timer_out(s, s->scpwm);
-         /* TODO: make sure this doesn't overflow 32-bits */
-diff --git a/hw/timer/twl92230.c b/hw/timer/twl92230.c
-index eb58c378e0..ef116c636c 100644
---- a/hw/timer/twl92230.c
-+++ b/hw/timer/twl92230.c
-@@ -403,7 +403,7 @@ static uint8_t menelaus_read(void *opaque, uint8_t addr)
- 
-     default:
- #ifdef VERBOSE
--        printf("%s: unknown register %02x\n", __FUNCTION__, addr);
-+        printf("%s: unknown register %02x\n", __func__, addr);
- #endif
-         break;
-     }
-@@ -615,7 +615,7 @@ static void menelaus_write(void *opaque, uint8_t addr, uint8_t value)
-         rtc_badness:
-         default:
-             fprintf(stderr, "%s: bad RTC_UPDATE value %02x\n",
--                            __FUNCTION__, value);
-+                            __func__, value);
-             s->status |= 1 << 10;				/* RTCERR */
-             menelaus_update(s);
-         }
-@@ -708,7 +708,7 @@ static void menelaus_write(void *opaque, uint8_t addr, uint8_t value)
- 
-     default:
- #ifdef VERBOSE
--        printf("%s: unknown register %02x\n", __FUNCTION__, addr);
-+        printf("%s: unknown register %02x\n", __func__, addr);
- #endif
-     }
- }
-diff --git a/hw/usb/desc.c b/hw/usb/desc.c
-index c36bf30e4f..85c15addc5 100644
---- a/hw/usb/desc.c
-+++ b/hw/usb/desc.c
-@@ -688,7 +688,7 @@ int usb_desc_get_descriptor(USBDevice *dev, USBPacket *p,
-         break;
- 
-     default:
--        fprintf(stderr, "%s: %d unknown type %d (len %zd)\n", __FUNCTION__,
-+        fprintf(stderr, "%s: %d unknown type %d (len %zd)\n", __func__,
-                 dev->addr, type, len);
-         break;
-     }
-diff --git a/hw/usb/dev-bluetooth.c b/hw/usb/dev-bluetooth.c
-index 443e3c301d..0bbceaea0b 100644
---- a/hw/usb/dev-bluetooth.c
-+++ b/hw/usb/dev-bluetooth.c
-@@ -274,13 +274,13 @@ static void usb_bt_fifo_enqueue(struct usb_hci_in_fifo_s *fifo,
-     if (off <= DFIFO_LEN_MASK) {
-         if (off + len > DFIFO_LEN_MASK + 1 &&
-                         (fifo->dsize = off + len) > (DFIFO_LEN_MASK + 1) * 2) {
--            fprintf(stderr, "%s: can't alloc %i bytes\n", __FUNCTION__, len);
-+            fprintf(stderr, "%s: can't alloc %i bytes\n", __func__, len);
-             exit(-1);
-         }
-         buf = fifo->data + off;
-     } else {
-         if (fifo->dlen > fifo->dsize) {
--            fprintf(stderr, "%s: can't alloc %i bytes\n", __FUNCTION__, len);
-+            fprintf(stderr, "%s: can't alloc %i bytes\n", __func__, len);
-             exit(-1);
-         }
-         buf = fifo->data + off - fifo->dsize;
-diff --git a/hw/usb/hcd-musb.c b/hw/usb/hcd-musb.c
-index 27d9d0bd82..d70a91a58c 100644
---- a/hw/usb/hcd-musb.c
-+++ b/hw/usb/hcd-musb.c
-@@ -253,8 +253,8 @@
- /* #define MUSB_DEBUG */
- 
- #ifdef MUSB_DEBUG
--#define TRACE(fmt,...) fprintf(stderr, "%s@%d: " fmt "\n", __FUNCTION__, \
--                               __LINE__, ##__VA_ARGS__)
-+#define TRACE(fmt, ...) fprintf(stderr, "%s@%d: " fmt "\n", __func__, \
-+                                __LINE__, ##__VA_ARGS__)
- #else
- #define TRACE(...)
- #endif
-diff --git a/hw/usb/tusb6010.c b/hw/usb/tusb6010.c
-index 8f593a6fdb..2662c060ed 100644
---- a/hw/usb/tusb6010.c
-+++ b/hw/usb/tusb6010.c
-@@ -296,7 +296,7 @@ static uint32_t tusb_async_readb(void *opaque, hwaddr addr)
-     }
- 
-     printf("%s: unknown register at %03x\n",
--                    __FUNCTION__, (int) (addr & 0xfff));
-+                    __func__, (int) (addr & 0xfff));
-     return 0;
- }
- 
-@@ -313,7 +313,7 @@ static uint32_t tusb_async_readh(void *opaque, hwaddr addr)
-     }
- 
-     printf("%s: unknown register at %03x\n",
--                    __FUNCTION__, (int) (addr & 0xfff));
-+                    __func__, (int) (addr & 0xfff));
-     return 0;
- }
- 
-@@ -436,7 +436,7 @@ static uint32_t tusb_async_readw(void *opaque, hwaddr addr)
-         return 0x54059adf;
-     }
- 
--    printf("%s: unknown register at %03x\n", __FUNCTION__, offset);
-+    printf("%s: unknown register at %03x\n", __func__, offset);
-     return 0;
- }
- 
-@@ -456,7 +456,7 @@ static void tusb_async_writeb(void *opaque, hwaddr addr,
- 
-     default:
-         printf("%s: unknown register at %03x\n",
--                        __FUNCTION__, (int) (addr & 0xfff));
-+                        __func__, (int) (addr & 0xfff));
-         return;
-     }
- }
-@@ -477,7 +477,7 @@ static void tusb_async_writeh(void *opaque, hwaddr addr,
- 
-     default:
-         printf("%s: unknown register at %03x\n",
--                        __FUNCTION__, (int) (addr & 0xfff));
-+                        __func__, (int) (addr & 0xfff));
-         return;
-     }
- }
-@@ -505,7 +505,7 @@ static void tusb_async_writew(void *opaque, hwaddr addr,
-         s->dev_config = value;
-         s->host_mode = (value & TUSB_DEV_CONF_USB_HOST_MODE);
-         if (value & TUSB_DEV_CONF_PROD_TEST_MODE)
--            hw_error("%s: Product Test mode not allowed\n", __FUNCTION__);
-+            hw_error("%s: Product Test mode not allowed\n", __func__);
-         break;
- 
-     case TUSB_PHY_OTG_CTRL_ENABLE:
-@@ -636,7 +636,7 @@ static void tusb_async_writew(void *opaque, hwaddr addr,
-         break;
- 
-     default:
--        printf("%s: unknown register at %03x\n", __FUNCTION__, offset);
-+        printf("%s: unknown register at %03x\n", __func__, offset);
-         return;
-     }
- }
-diff --git a/hw/xenpv/xen_domainbuild.c b/hw/xenpv/xen_domainbuild.c
-index c89ced2e88..027f76fad1 100644
---- a/hw/xenpv/xen_domainbuild.c
-+++ b/hw/xenpv/xen_domainbuild.c
-@@ -25,22 +25,22 @@ static int xenstore_domain_mkdir(char *path)
-     int i;
- 
-     if (!xs_mkdir(xenstore, 0, path)) {
--        fprintf(stderr, "%s: xs_mkdir %s: failed\n", __FUNCTION__, path);
-+        fprintf(stderr, "%s: xs_mkdir %s: failed\n", __func__, path);
- 	return -1;
-     }
-     if (!xs_set_permissions(xenstore, 0, path, perms_ro, 2)) {
--        fprintf(stderr, "%s: xs_set_permissions failed\n", __FUNCTION__);
-+        fprintf(stderr, "%s: xs_set_permissions failed\n", __func__);
- 	return -1;
-     }
- 
-     for (i = 0; writable[i]; i++) {
-         snprintf(subpath, sizeof(subpath), "%s/%s", path, writable[i]);
-         if (!xs_mkdir(xenstore, 0, subpath)) {
--            fprintf(stderr, "%s: xs_mkdir %s: failed\n", __FUNCTION__, subpath);
-+            fprintf(stderr, "%s: xs_mkdir %s: failed\n", __func__, subpath);
+@@ -499,7 +499,7 @@ int kvm_arm_sync_mpstate_to_kvm(ARMCPU *cpu)
+         };
+         int ret = kvm_vcpu_ioctl(CPU(cpu), KVM_SET_MP_STATE, &mp_state);
+         if (ret) {
+-            fprintf(stderr, "%s: failed to set MP_STATE %d/%s\n",
++            error_report("%s: failed to set MP_STATE %d/%s",
+                     __func__, ret, strerror(-ret));
              return -1;
          }
-         if (!xs_set_permissions(xenstore, 0, subpath, perms_rw, 2)) {
--            fprintf(stderr, "%s: xs_set_permissions failed\n", __FUNCTION__);
-+            fprintf(stderr, "%s: xs_set_permissions failed\n", __func__);
-             return -1;
+@@ -517,7 +517,7 @@ int kvm_arm_sync_mpstate_to_qemu(ARMCPU *cpu)
+         struct kvm_mp_state mp_state;
+         int ret = kvm_vcpu_ioctl(CPU(cpu), KVM_GET_MP_STATE, &mp_state);
+         if (ret) {
+-            fprintf(stderr, "%s: failed to get MP_STATE %d/%s\n",
++            error_report("%s: failed to get MP_STATE %d/%s",
+                     __func__, ret, strerror(-ret));
+             abort();
+         }
+diff --git a/target/arm/kvm32.c b/target/arm/kvm32.c
+index f925a21481..97d36a174d 100644
+--- a/target/arm/kvm32.c
++++ b/target/arm/kvm32.c
+@@ -191,7 +191,7 @@ int kvm_arch_init_vcpu(CPUState *cs)
+     ARMCPU *cpu = ARM_CPU(cs);
+ 
+     if (cpu->kvm_target == QEMU_KVM_ARM_TARGET_NONE) {
+-        fprintf(stderr, "KVM is not supported for this guest CPU type\n");
++        error_report("KVM is not supported for this guest CPU type");
+         return -EINVAL;
+     }
+ 
+diff --git a/target/arm/kvm64.c b/target/arm/kvm64.c
+index 6554c30007..b3e1484069 100644
+--- a/target/arm/kvm64.c
++++ b/target/arm/kvm64.c
+@@ -502,7 +502,7 @@ int kvm_arch_init_vcpu(CPUState *cs)
+ 
+     if (cpu->kvm_target == QEMU_KVM_ARM_TARGET_NONE ||
+         !object_dynamic_cast(OBJECT(cpu), TYPE_AARCH64_CPU)) {
+-        fprintf(stderr, "KVM is not supported for this guest CPU type\n");
++        error_report("KVM is not supported for this guest CPU type");
+         return -EINVAL;
+     }
+ 
+diff --git a/target/arm/translate-a64.c b/target/arm/translate-a64.c
+index 899ffb96fc..eac76a0747 100644
+--- a/target/arm/translate-a64.c
++++ b/target/arm/translate-a64.c
+@@ -505,8 +505,8 @@ static inline void assert_fp_access_checked(DisasContext *s)
+ {
+ #ifdef CONFIG_DEBUG_TCG
+     if (unlikely(!s->fp_access_checked || s->fp_excp_el)) {
+-        fprintf(stderr, "target-arm: FP access check missing for "
+-                "instruction 0x%08x\n", s->insn);
++        error_report("target-arm: FP access check missing for "
++                "instruction 0x%08x", s->insn);
+         abort();
+     }
+ #endif
+diff --git a/target/arm/translate.c b/target/arm/translate.c
+index ab1a12a1b8..d484381aef 100644
+--- a/target/arm/translate.c
++++ b/target/arm/translate.c
+@@ -857,7 +857,7 @@ void arm_test_cc(DisasCompare *cmp, int cc)
+         goto no_invert;
+ 
+     default:
+-        fprintf(stderr, "Bad condition code 0x%x\n", cc);
++        error_report("Bad condition code 0x%x", cc);
+         abort();
+     }
+ 
+diff --git a/target/cris/helper.c b/target/cris/helper.c
+index af78cca8b9..ba9ce538c3 100644
+--- a/target/cris/helper.c
++++ b/target/cris/helper.c
+@@ -282,7 +282,7 @@ hwaddr cris_cpu_get_phys_page_debug(CPUState *cs, vaddr addr)
+     if (!miss) {
+         phy = res.phy;
+     }
+-    D(fprintf(stderr, "%s %x -> %x\n", __func__, addr, phy));
++    D(error_report("%s %x -> %x", __func__, addr, phy));
+     return phy;
+ }
+ #endif
+diff --git a/target/i386/hax-all.c b/target/i386/hax-all.c
+index 3ce6950296..b0462c8b4c 100644
+--- a/target/i386/hax-all.c
++++ b/target/i386/hax-all.c
+@@ -100,13 +100,13 @@ static int hax_get_capability(struct hax_state *hax)
+     }
+ 
+     if (!(cap->winfo & HAX_CAP_UG)) {
+-        fprintf(stderr, "UG mode is not supported by the hardware.\n");
++        error_report("UG mode is not supported by the hardware.");
+         return -ENOTSUP;
+     }
+ 
+     if (cap->wstatus & HAX_CAP_MEMQUOTA) {
+         if (cap->mem_quota < hax->mem_quota) {
+-            fprintf(stderr, "The VM memory needed exceeds the driver limit.\n");
++            error_report("The VM memory needed exceeds the driver limit.");
+             return -ENOSPC;
          }
      }
-@@ -158,7 +158,7 @@ static int xen_domain_watcher(void)
-     char byte;
+@@ -126,13 +126,13 @@ static int hax_version_support(struct hax_state *hax)
+     if (hax_min_version > version.cur_version) {
+         fprintf(stderr, "Incompatible HAX module version %d,",
+                 version.cur_version);
+-        fprintf(stderr, "requires minimum version %d\n", hax_min_version);
++        error_report("requires minimum version %d", hax_min_version);
+         return 0;
+     }
+     if (hax_cur_version < version.compat_version) {
+         fprintf(stderr, "Incompatible QEMU HAX API version %x,",
+                 hax_cur_version);
+-        fprintf(stderr, "requires minimum HAX API version %x\n",
++        error_report("requires minimum HAX API version %x",
+                 version.compat_version);
+         return 0;
+     }
+@@ -146,18 +146,18 @@ int hax_vcpu_create(int id)
+     int ret;
  
-     if (pipe(fd) != 0) {
--        qemu_log("%s: Huh? pipe error: %s\n", __FUNCTION__, strerror(errno));
-+        qemu_log("%s: Huh? pipe error: %s\n", __func__, strerror(errno));
+     if (!hax_global.vm) {
+-        fprintf(stderr, "vcpu %x created failed, vm is null\n", id);
++        error_report("vcpu %x created failed, vm is null", id);
          return -1;
      }
-     if (fork() != 0)
-@@ -190,7 +190,7 @@ static int xen_domain_watcher(void)
-         case -1:
-             if (errno == EINTR)
-                 continue;
--            qemu_log("%s: Huh? read error: %s\n", __FUNCTION__, strerror(errno));
-+            qemu_log("%s: Huh? read error: %s\n", __func__, strerror(errno));
-             qemu_running = 0;
+ 
+     if (hax_global.vm->vcpus[id]) {
+-        fprintf(stderr, "vcpu %x allocated already\n", id);
++        error_report("vcpu %x allocated already", id);
+         return 0;
+     }
+ 
+     vcpu = g_malloc(sizeof(struct hax_vcpu_state));
+     if (!vcpu) {
+-        fprintf(stderr, "Failed to alloc vcpu state\n");
++        error_report("Failed to alloc vcpu state");
+         return -ENOMEM;
+     }
+ 
+@@ -165,14 +165,14 @@ int hax_vcpu_create(int id)
+ 
+     ret = hax_host_create_vcpu(hax_global.vm->fd, id);
+     if (ret) {
+-        fprintf(stderr, "Failed to create vcpu %x\n", id);
++        error_report("Failed to create vcpu %x", id);
+         goto error;
+     }
+ 
+     vcpu->vcpu_id = id;
+     vcpu->fd = hax_host_open_vcpu(hax_global.vm->id, id);
+     if (hax_invalid_fd(vcpu->fd)) {
+-        fprintf(stderr, "Failed to open the vcpu\n");
++        error_report("Failed to open the vcpu");
+         ret = -ENODEV;
+         goto error;
+     }
+@@ -181,7 +181,7 @@ int hax_vcpu_create(int id)
+ 
+     ret = hax_host_setup_vcpu_channel(vcpu);
+     if (ret) {
+-        fprintf(stderr, "Invalid hax tunnel size\n");
++        error_report("Invalid hax tunnel size");
+         ret = -EINVAL;
+         goto error;
+     }
+@@ -203,7 +203,7 @@ int hax_vcpu_destroy(CPUState *cpu)
+     struct hax_vcpu_state *vcpu = cpu->hax_vcpu;
+ 
+     if (!hax_global.vm) {
+-        fprintf(stderr, "vcpu %x destroy failed, vm is null\n", vcpu->vcpu_id);
++        error_report("vcpu %x destroy failed, vm is null", vcpu->vcpu_id);
+         return -1;
+     }
+ 
+@@ -227,7 +227,7 @@ int hax_init_vcpu(CPUState *cpu)
+ 
+     ret = hax_vcpu_create(cpu->cpu_index);
+     if (ret < 0) {
+-        fprintf(stderr, "Failed to create HAX vcpu\n");
++        error_report("Failed to create HAX vcpu");
+         exit(-1);
+     }
+ 
+@@ -258,13 +258,13 @@ struct hax_vm *hax_vm_create(struct hax_state *hax)
+     memset(vm, 0, sizeof(struct hax_vm));
+     ret = hax_host_create_vm(hax, &vm_id);
+     if (ret) {
+-        fprintf(stderr, "Failed to create vm %x\n", ret);
++        error_report("Failed to create vm %x", ret);
+         goto error;
+     }
+     vm->id = vm_id;
+     vm->fd = hax_host_open_vm(hax, vm_id);
+     if (hax_invalid_fd(vm->fd)) {
+-        fprintf(stderr, "Failed to open vm %d\n", vm_id);
++        error_report("Failed to open vm %d", vm_id);
+         goto error;
+     }
+ 
+@@ -283,7 +283,7 @@ int hax_vm_destroy(struct hax_vm *vm)
+ 
+     for (i = 0; i < HAX_MAX_VCPU; i++)
+         if (vm->vcpus[i]) {
+-            fprintf(stderr, "VCPU should be cleaned before vm clean\n");
++            error_report("VCPU should be cleaned before vm clean");
+             return -1;
+         }
+     hax_close_fd(vm->fd);
+@@ -335,7 +335,7 @@ static int hax_init(ram_addr_t ram_size)
+ 
+     hax->vm = hax_vm_create(hax);
+     if (!hax->vm) {
+-        fprintf(stderr, "Failed to create HAX VM\n");
++        error_report("Failed to create HAX VM");
+         ret = -EINVAL;
+         goto error;
+     }
+@@ -364,7 +364,7 @@ static int hax_accel_init(MachineState *ms)
+     int ret = hax_init(ms->ram_size);
+ 
+     if (ret && (ret != -ENOSPC)) {
+-        fprintf(stderr, "No accelerator found.\n");
++        error_report("No accelerator found.");
+     } else {
+         fprintf(stdout, "HAX is %s and emulator runs in %s mode.\n",
+                 !ret ? "working" : "not working",
+@@ -526,7 +526,7 @@ static int hax_vcpu_hax_exec(CPUArchState *env)
+         }
+ 
+         if (hax_ret < 0) {
+-            fprintf(stderr, "vcpu run failed for vcpu  %x\n", vcpu->vcpu_id);
++            error_report("vcpu run failed for vcpu  %x", vcpu->vcpu_id);
+             abort();
+         }
+         switch (ht->_exit_status) {
+@@ -546,7 +546,7 @@ static int hax_vcpu_hax_exec(CPUArchState *env)
+             ret = 1;
              break;
-         case 0:
-@@ -198,13 +198,13 @@ static int xen_domain_watcher(void)
-             qemu_running = 0;
+         case HAX_EXIT_UNKNOWN_VMEXIT:
+-            fprintf(stderr, "Unknown VMX exit %x from guest\n",
++            error_report("Unknown VMX exit %x from guest",
+                     ht->_exit_reason);
+             qemu_system_reset_request(SHUTDOWN_CAUSE_GUEST_RESET);
+             hax_vcpu_sync_state(env, 0);
+@@ -569,16 +569,16 @@ static int hax_vcpu_hax_exec(CPUArchState *env)
+             break;
+         case HAX_EXIT_MMIO:
+             /* Should not happen on UG system */
+-            fprintf(stderr, "HAX: unsupported MMIO emulation\n");
++            error_report("HAX: unsupported MMIO emulation");
+             ret = -1;
+             break;
+         case HAX_EXIT_REAL:
+             /* Should not happen on UG system */
+-            fprintf(stderr, "HAX: unimplemented real mode emulation\n");
++            error_report("HAX: unimplemented real mode emulation");
+             ret = -1;
              break;
          default:
--            qemu_log("%s: Huh? data on the watch pipe?\n", __FUNCTION__);
-+            qemu_log("%s: Huh? data on the watch pipe?\n", __func__);
-             break;
+-            fprintf(stderr, "Unknown exit %x from HAX\n", ht->_exit_status);
++            error_report("Unknown exit %x from HAX", ht->_exit_status);
+             qemu_system_reset_request(SHUTDOWN_CAUSE_GUEST_RESET);
+             hax_vcpu_sync_state(env, 0);
+             cpu_dump_state(cpu, stderr, fprintf, 0);
+@@ -662,7 +662,7 @@ int hax_smp_cpu_exec(CPUState *cpu)
+         fatal = hax_vcpu_hax_exec(env);
+ 
+         if (fatal) {
+-            fprintf(stderr, "Unsupported HAX vcpu return\n");
++            error_report("Unsupported HAX vcpu return");
+             abort();
          }
      }
+@@ -1079,17 +1079,17 @@ static int hax_arch_set_registers(CPUArchState *env)
+     ret = hax_sync_vcpu_register(env, 1);
  
-     /* cleanup */
--    qemu_log("%s: destroy domain %d\n", __FUNCTION__, xen_domid);
-+    qemu_log("%s: destroy domain %d\n", __func__, xen_domid);
-     xc_domain_destroy(xen_xc, xen_domid);
-     _exit(0);
- }
-diff --git a/hw/xenpv/xen_machine_pv.c b/hw/xenpv/xen_machine_pv.c
-index 31d2f25627..69a52a9f93 100644
---- a/hw/xenpv/xen_machine_pv.c
-+++ b/hw/xenpv/xen_machine_pv.c
-@@ -36,7 +36,7 @@ static void xen_init_pv(MachineState *machine)
- 
-     /* Initialize backend core & drivers */
-     if (xen_be_init() != 0) {
--        fprintf(stderr, "%s: xen backend core setup failed\n", __FUNCTION__);
-+        fprintf(stderr, "%s: xen backend core setup failed\n", __func__);
-         exit(1);
+     if (ret < 0) {
+-        fprintf(stderr, "Failed to sync vcpu reg\n");
++        error_report("Failed to sync vcpu reg");
+         return ret;
+     }
+     ret = hax_set_fpu(env);
+     if (ret < 0) {
+-        fprintf(stderr, "FPU failed\n");
++        error_report("FPU failed");
+         return ret;
+     }
+     ret = hax_set_msrs(env);
+     if (ret < 0) {
+-        fprintf(stderr, "MSR failed\n");
++        error_report("MSR failed");
+         return ret;
      }
  
-diff --git a/include/hw/arm/omap.h b/include/hw/arm/omap.h
-index cac1b2ba43..b398607b06 100644
---- a/include/hw/arm/omap.h
-+++ b/include/hw/arm/omap.h
-@@ -960,10 +960,10 @@ void omap_mpu_wakeup(void *opaque, int irq, int req);
- 
- # define OMAP_BAD_REG(paddr)		\
-         fprintf(stderr, "%s: Bad register " OMAP_FMT_plx "\n",	\
--                        __FUNCTION__, paddr)
-+                        __func__, paddr)
- # define OMAP_RO_REG(paddr)		\
-         fprintf(stderr, "%s: Read-only register " OMAP_FMT_plx "\n",	\
--                        __FUNCTION__, paddr)
-+                        __func__, paddr)
- 
- /* OMAP-specific Linux bootloader tags for the ATAG_BOARD area
-    (Board-specifc tags are not here)  */
-@@ -998,13 +998,13 @@ enum {
- # ifdef TCMI_VERBOSE
- #  define OMAP_8B_REG(paddr)		\
-         fprintf(stderr, "%s: 8-bit register " OMAP_FMT_plx "\n",	\
--                        __FUNCTION__, paddr)
-+                        __func__, paddr)
- #  define OMAP_16B_REG(paddr)		\
-         fprintf(stderr, "%s: 16-bit register " OMAP_FMT_plx "\n",	\
--                        __FUNCTION__, paddr)
-+                        __func__, paddr)
- #  define OMAP_32B_REG(paddr)		\
-         fprintf(stderr, "%s: 32-bit register " OMAP_FMT_plx "\n",	\
--                        __FUNCTION__, paddr)
-+                        __func__, paddr)
- # else
- #  define OMAP_8B_REG(paddr)
- #  define OMAP_16B_REG(paddr)
-diff --git a/include/hw/arm/sharpsl.h b/include/hw/arm/sharpsl.h
-index 13981a6d03..5bf6db1fa2 100644
---- a/include/hw/arm/sharpsl.h
-+++ b/include/hw/arm/sharpsl.h
-@@ -7,7 +7,7 @@
- #define QEMU_SHARPSL_H
- 
- #define zaurus_printf(format, ...)	\
--    fprintf(stderr, "%s: " format, __FUNCTION__, ##__VA_ARGS__)
-+    fprintf(stderr, "%s: " format, __func__, ##__VA_ARGS__)
- 
- /* zaurus.c */
- 
-diff --git a/memory_mapping.c b/memory_mapping.c
-index a5d38552a6..775466f3a8 100644
---- a/memory_mapping.c
-+++ b/memory_mapping.c
-@@ -256,7 +256,7 @@ static void guest_phys_blocks_region_add(MemoryListener *listener,
- 
- #ifdef DEBUG_GUEST_PHYS_REGION_ADD
-     fprintf(stderr, "%s: target_start=" TARGET_FMT_plx " target_end="
--            TARGET_FMT_plx ": %s (count: %u)\n", __FUNCTION__, target_start,
-+            TARGET_FMT_plx ": %s (count: %u)\n", __func__, target_start,
-             target_end, predecessor ? "joined" : "added", g->list->num);
- #endif
- }
-diff --git a/migration/block.c b/migration/block.c
-index 606ad4db92..418d313fbf 100644
---- a/migration/block.c
-+++ b/migration/block.c
-@@ -626,7 +626,7 @@ static int flush_blks(QEMUFile *f)
-     int ret = 0;
- 
-     DPRINTF("%s Enter submitted %d read_done %d transferred %d\n",
--            __FUNCTION__, block_mig_state.submitted, block_mig_state.read_done,
-+            __func__, block_mig_state.submitted, block_mig_state.read_done,
-             block_mig_state.transferred);
- 
-     blk_mig_lock();
-@@ -653,7 +653,7 @@ static int flush_blks(QEMUFile *f)
+diff --git a/target/i386/hax-darwin.c b/target/i386/hax-darwin.c
+index 1c5bbd0a2d..768521b6d0 100644
+--- a/target/i386/hax-darwin.c
++++ b/target/i386/hax-darwin.c
+@@ -24,7 +24,7 @@ hax_fd hax_mod_open(void)
+ {
+     int fd = open("/dev/HAX", O_RDWR);
+     if (fd == -1) {
+-        fprintf(stderr, "Failed to open the hax module\n");
++        error_report("Failed to open the hax module");
      }
-     blk_mig_unlock();
  
--    DPRINTF("%s Exit submitted %d read_done %d transferred %d\n", __FUNCTION__,
-+    DPRINTF("%s Exit submitted %d read_done %d transferred %d\n", __func__,
-             block_mig_state.submitted, block_mig_state.read_done,
-             block_mig_state.transferred);
+     fcntl(fd, F_SETFD, FD_CLOEXEC);
+@@ -38,7 +38,7 @@ int hax_populate_ram(uint64_t va, uint32_t size)
+     struct hax_alloc_ram_info info;
+ 
+     if (!hax_global.vm || !hax_global.vm->fd) {
+-        fprintf(stderr, "Allocate memory before vm create?\n");
++        error_report("Allocate memory before vm create?");
+         return -EINVAL;
+     }
+ 
+@@ -46,7 +46,7 @@ int hax_populate_ram(uint64_t va, uint32_t size)
+     info.va = va;
+     ret = ioctl(hax_global.vm->fd, HAX_VM_IOCTL_ALLOC_RAM, &info);
+     if (ret < 0) {
+-        fprintf(stderr, "Failed to allocate %x memory\n", size);
++        error_report("Failed to allocate %x memory", size);
+         return ret;
+     }
+     return 0;
+@@ -75,7 +75,7 @@ int hax_capability(struct hax_state *hax, struct hax_capabilityinfo *cap)
+ 
+     ret = ioctl(hax->fd, HAX_IOCTL_CAPABILITY, cap);
+     if (ret == -1) {
+-        fprintf(stderr, "Failed to get HAX capability\n");
++        error_report("Failed to get HAX capability");
+         return -errno;
+     }
+ 
+@@ -88,7 +88,7 @@ int hax_mod_version(struct hax_state *hax, struct hax_module_version *version)
+ 
+     ret = ioctl(hax->fd, HAX_IOCTL_VERSION, version);
+     if (ret == -1) {
+-        fprintf(stderr, "Failed to get HAX version\n");
++        error_report("Failed to get HAX version");
+         return -errno;
+     }
+ 
+@@ -100,7 +100,7 @@ static char *hax_vm_devfs_string(int vm_id)
+     char *name;
+ 
+     if (vm_id > MAX_VM_ID) {
+-        fprintf(stderr, "Too big VM id\n");
++        error_report("Too big VM id");
+         return NULL;
+     }
+ 
+@@ -119,7 +119,7 @@ static char *hax_vcpu_devfs_string(int vm_id, int vcpu_id)
+     char *name;
+ 
+     if (vm_id > MAX_VM_ID || vcpu_id > MAX_VCPU_ID) {
+-        fprintf(stderr, "Too big vm id %x or vcpu id %x\n", vm_id, vcpu_id);
++        error_report("Too big vm id %x or vcpu id %x", vm_id, vcpu_id);
+         return NULL;
+     }
+ 
+@@ -181,7 +181,7 @@ int hax_notify_qemu_version(hax_fd vm_fd, struct hax_qemu_version *qversion)
+     ret = ioctl(vm_fd, HAX_VM_IOCTL_NOTIFY_QEMU_VERSION, qversion);
+ 
+     if (ret < 0) {
+-        fprintf(stderr, "Failed to notify qemu API version\n");
++        error_report("Failed to notify qemu API version");
+         return ret;
+     }
+     return 0;
+@@ -196,7 +196,7 @@ int hax_host_create_vcpu(hax_fd vm_fd, int vcpuid)
+ 
+     ret = ioctl(vm_fd, HAX_VM_IOCTL_VCPU_CREATE, &vcpuid);
+     if (ret < 0) {
+-        fprintf(stderr, "Failed to create vcpu %x\n", vcpuid);
++        error_report("Failed to create vcpu %x", vcpuid);
+     }
+ 
      return ret;
-diff --git a/ui/cursor.c b/ui/cursor.c
-index 2e2fe13fa6..f3da0cee79 100644
---- a/ui/cursor.c
-+++ b/ui/cursor.c
-@@ -19,11 +19,11 @@ static QEMUCursor *cursor_parse_xpm(const char *xpm[])
-     if (sscanf(xpm[line], "%u %u %u %u",
-                &width, &height, &colors, &chars) != 4) {
-         fprintf(stderr, "%s: header parse error: \"%s\"\n",
--                __FUNCTION__, xpm[line]);
-+                __func__, xpm[line]);
+@@ -209,14 +209,14 @@ hax_fd hax_host_open_vcpu(int vmid, int vcpuid)
+ 
+     devfs_path = hax_vcpu_devfs_string(vmid, vcpuid);
+     if (!devfs_path) {
+-        fprintf(stderr, "Failed to get the devfs\n");
++        error_report("Failed to get the devfs");
+         return -EINVAL;
+     }
+ 
+     fd = open(devfs_path, O_RDWR);
+     g_free(devfs_path);
+     if (fd < 0) {
+-        fprintf(stderr, "Failed to open the vcpu devfs\n");
++        error_report("Failed to open the vcpu devfs");
+     }
+     fcntl(fd, F_SETFD, FD_CLOEXEC);
+     return fd;
+@@ -229,12 +229,12 @@ int hax_host_setup_vcpu_channel(struct hax_vcpu_state *vcpu)
+ 
+     ret = ioctl(vcpu->fd, HAX_VCPU_IOCTL_SETUP_TUNNEL, &info);
+     if (ret) {
+-        fprintf(stderr, "Failed to setup the hax tunnel\n");
++        error_report("Failed to setup the hax tunnel");
+         return ret;
+     }
+ 
+     if (!valid_hax_tunnel_size(info.size)) {
+-        fprintf(stderr, "Invalid hax tunnel size %x\n", info.size);
++        error_report("Invalid hax tunnel size %x", info.size);
+         ret = -EINVAL;
+         return ret;
+     }
+diff --git a/target/i386/hax-mem.c b/target/i386/hax-mem.c
+index 27a0d214f2..e1388bb003 100644
+--- a/target/i386/hax-mem.c
++++ b/target/i386/hax-mem.c
+@@ -247,8 +247,8 @@ static void hax_transaction_commit(MemoryListener *listener)
+             }
+             if (hax_set_ram(entry->start_pa, entry->size,
+                             entry->host_va, entry->flags)) {
+-                fprintf(stderr, "%s: Failed mapping @0x%016" PRIx64 "+0x%"
+-                        PRIx32 " flags %02x\n", __func__, entry->start_pa,
++                error_report("%s: Failed mapping @0x%016" PRIx64 "+0x%"
++                        PRIx32 " flags %02x", __func__, entry->start_pa,
+                         entry->size, entry->flags);
+             }
+             QTAILQ_REMOVE(&mappings, entry, entry);
+diff --git a/target/i386/hax-windows.c b/target/i386/hax-windows.c
+index 15a180b646..8d724d21ad 100644
+--- a/target/i386/hax-windows.c
++++ b/target/i386/hax-windows.c
+@@ -33,7 +33,7 @@ static int hax_open_device(hax_fd *fd)
+                          0, NULL, CREATE_ALWAYS, FILE_ATTRIBUTE_NORMAL, NULL);
+ 
+     if (hDevice == INVALID_HANDLE_VALUE) {
+-        fprintf(stderr, "Failed to open the HAX device!\n");
++        error_report("Failed to open the HAX device!");
+         errNum = GetLastError();
+         if (errNum == ERROR_FILE_NOT_FOUND) {
+             return -1;
+@@ -52,7 +52,7 @@ static int hax_open_device(hax_fd *fd)
+ 
+     ret = hax_open_device(&fd);
+     if (ret != 0) {
+-        fprintf(stderr, "Open HAX device failed\n");
++        error_report("Open HAX device failed");
+     }
+ 
+     return fd;
+@@ -66,7 +66,7 @@ int hax_populate_ram(uint64_t va, uint32_t size)
+     DWORD dSize = 0;
+ 
+     if (!hax_global.vm || !hax_global.vm->fd) {
+-        fprintf(stderr, "Allocate memory before vm create?\n");
++        error_report("Allocate memory before vm create?");
+         return -EINVAL;
+     }
+ 
+@@ -81,7 +81,7 @@ int hax_populate_ram(uint64_t va, uint32_t size)
+                           (LPOVERLAPPED) NULL);
+ 
+     if (!ret) {
+-        fprintf(stderr, "Failed to allocate %x memory\n", size);
++        error_report("Failed to allocate %x memory", size);
+         return ret;
+     }
+ 
+@@ -119,7 +119,7 @@ int hax_capability(struct hax_state *hax, struct hax_capabilityinfo *cap)
+     DWORD err = 0;
+ 
+     if (hax_invalid_fd(hDevice)) {
+-        fprintf(stderr, "Invalid fd for hax device!\n");
++        error_report("Invalid fd for hax device!");
+         return -ENODEV;
+     }
+ 
+@@ -129,9 +129,9 @@ int hax_capability(struct hax_state *hax, struct hax_capabilityinfo *cap)
+     if (!ret) {
+         err = GetLastError();
+         if (err == ERROR_INSUFFICIENT_BUFFER || err == ERROR_MORE_DATA) {
+-            fprintf(stderr, "hax capability is too long to hold.\n");
++            error_report("hax capability is too long to hold.");
+         }
+-        fprintf(stderr, "Failed to get Hax capability:%luu\n", err);
++        error_report("Failed to get Hax capability:%luu", err);
+         return -EFAULT;
+     } else {
+         return 0;
+@@ -146,7 +146,7 @@ int hax_mod_version(struct hax_state *hax, struct hax_module_version *version)
+     DWORD err = 0;
+ 
+     if (hax_invalid_fd(hDevice)) {
+-        fprintf(stderr, "Invalid fd for hax device!\n");
++        error_report("Invalid fd for hax device!");
+         return -ENODEV;
+     }
+ 
+@@ -159,9 +159,9 @@ int hax_mod_version(struct hax_state *hax, struct hax_module_version *version)
+     if (!ret) {
+         err = GetLastError();
+         if (err == ERROR_INSUFFICIENT_BUFFER || err == ERROR_MORE_DATA) {
+-            fprintf(stderr, "hax module verion is too long to hold.\n");
++            error_report("hax module verion is too long to hold.");
+         }
+-        fprintf(stderr, "Failed to get Hax module version:%lu\n", err);
++        error_report("Failed to get Hax module version:%lu", err);
+         return -EFAULT;
+     } else {
+         return 0;
+@@ -173,7 +173,7 @@ static char *hax_vm_devfs_string(int vm_id)
+     char *name;
+ 
+     if (vm_id > MAX_VM_ID) {
+-        fprintf(stderr, "Too big VM id\n");
++        error_report("Too big VM id");
          return NULL;
      }
-     if (chars != 1) {
--        fprintf(stderr, "%s: chars != 1 not supported\n", __FUNCTION__);
-+        fprintf(stderr, "%s: chars != 1 not supported\n", __func__);
+ 
+@@ -192,7 +192,7 @@ static char *hax_vcpu_devfs_string(int vm_id, int vcpu_id)
+     char *name;
+ 
+     if (vm_id > MAX_VM_ID || vcpu_id > MAX_VCPU_ID) {
+-        fprintf(stderr, "Too big vm id %x or vcpu id %x\n", vm_id, vcpu_id);
++        error_report("Too big vm id %x or vcpu id %x", vm_id, vcpu_id);
          return NULL;
      }
-     line++;
-@@ -41,7 +41,7 @@ static QEMUCursor *cursor_parse_xpm(const char *xpm[])
+ 
+@@ -226,7 +226,7 @@ int hax_host_create_vm(struct hax_state *hax, int *vmid)
+                           NULL, 0, &vm_id, sizeof(vm_id), &dSize,
+                           (LPOVERLAPPED) NULL);
+     if (!ret) {
+-        fprintf(stderr, "Failed to create VM. Error code: %lu\n",
++        error_report("Failed to create VM. Error code: %lu",
+                 GetLastError());
+         return -1;
+     }
+@@ -241,7 +241,7 @@ hax_fd hax_host_open_vm(struct hax_state *hax, int vm_id)
+ 
+     vm_name = hax_vm_devfs_string(vm_id);
+     if (!vm_name) {
+-        fprintf(stderr, "Failed to open VM. VM name is null\n");
++        error_report("Failed to open VM. VM name is null");
+         return INVALID_HANDLE_VALUE;
+     }
+ 
+@@ -249,7 +249,7 @@ hax_fd hax_host_open_vm(struct hax_state *hax, int vm_id)
+                            GENERIC_READ | GENERIC_WRITE,
+                            0, NULL, CREATE_ALWAYS, FILE_ATTRIBUTE_NORMAL, NULL);
+     if (hDeviceVM == INVALID_HANDLE_VALUE) {
+-        fprintf(stderr, "Open the vm device error:%s, ec:%lu\n",
++        error_report("Open the vm device error:%s, ec:%lu",
+                 vm_name, GetLastError());
+     }
+ 
+@@ -269,7 +269,7 @@ int hax_notify_qemu_version(hax_fd vm_fd, struct hax_qemu_version *qversion)
+                           qversion, sizeof(struct hax_qemu_version),
+                           NULL, 0, &dSize, (LPOVERLAPPED) NULL);
+     if (!ret) {
+-        fprintf(stderr, "Failed to notify qemu API version\n");
++        error_report("Failed to notify qemu API version");
+         return -1;
+     }
+     return 0;
+@@ -285,7 +285,7 @@ int hax_host_create_vcpu(hax_fd vm_fd, int vcpuid)
+                           &vcpuid, sizeof(vcpuid), NULL, 0, &dSize,
+                           (LPOVERLAPPED) NULL);
+     if (!ret) {
+-        fprintf(stderr, "Failed to create vcpu %x\n", vcpuid);
++        error_report("Failed to create vcpu %x", vcpuid);
+         return -1;
+     }
+ 
+@@ -299,7 +299,7 @@ hax_fd hax_host_open_vcpu(int vmid, int vcpuid)
+ 
+     devfs_path = hax_vcpu_devfs_string(vmid, vcpuid);
+     if (!devfs_path) {
+-        fprintf(stderr, "Failed to get the devfs\n");
++        error_report("Failed to get the devfs");
+         return INVALID_HANDLE_VALUE;
+     }
+ 
+@@ -309,7 +309,7 @@ hax_fd hax_host_open_vcpu(int vmid, int vcpuid)
+                              NULL);
+ 
+     if (hDeviceVCPU == INVALID_HANDLE_VALUE) {
+-        fprintf(stderr, "Failed to open the vcpu devfs\n");
++        error_report("Failed to open the vcpu devfs");
+     }
+     g_free(devfs_path);
+     return hDeviceVCPU;
+@@ -327,12 +327,12 @@ int hax_host_setup_vcpu_channel(struct hax_vcpu_state *vcpu)
+                           NULL, 0, &info, sizeof(info), &dSize,
+                           (LPOVERLAPPED) NULL);
+     if (!ret) {
+-        fprintf(stderr, "Failed to setup the hax tunnel\n");
++        error_report("Failed to setup the hax tunnel");
+         return -1;
+     }
+ 
+     if (!valid_hax_tunnel_size(info.size)) {
+-        fprintf(stderr, "Invalid hax tunnel size %x\n", info.size);
++        error_report("Invalid hax tunnel size %x", info.size);
+         ret = -EINVAL;
+         return ret;
+     }
+diff --git a/target/i386/kvm.c b/target/i386/kvm.c
+index b1e32e95d3..d7cf10ae11 100644
+--- a/target/i386/kvm.c
++++ b/target/i386/kvm.c
+@@ -219,7 +219,7 @@ static struct kvm_cpuid2 *try_get_cpuid(KVMState *s, int max)
+             g_free(cpuid);
+             return NULL;
+         } else {
+-            fprintf(stderr, "KVM_GET_SUPPORTED_CPUID failed: %s\n",
++            error_report("KVM_GET_SUPPORTED_CPUID failed: %s",
+                     strerror(-r));
+             exit(1);
+         }
+@@ -470,7 +470,7 @@ static void kvm_mce_inject(X86CPU *cpu, hwaddr paddr, int code)
+ 
+ static void hardware_memory_error(void)
+ {
+-    fprintf(stderr, "Hardware memory error!\n");
++    error_report("Hardware memory error!");
+     exit(1);
+ }
+ 
+@@ -497,8 +497,8 @@ void kvm_arch_on_sigbus_vcpu(CPUState *c, int code, void *addr)
+             return;
+         }
+ 
+-        fprintf(stderr, "Hardware memory error for memory used by "
+-                "QEMU itself instead of guest system!\n");
++        error_report("Hardware memory error for memory used by "
++                "QEMU itself instead of guest system!");
+     }
+ 
+     if (code == BUS_MCEERR_AR) {
+@@ -666,7 +666,7 @@ static int hyperv_handle_properties(CPUState *cs)
+ 
+         if (!has_msr_hv_synic ||
+             kvm_vcpu_enable_cap(cs, KVM_CAP_HYPERV_SYNIC, 0)) {
+-            fprintf(stderr, "Hyper-V SynIC is not supported by kernel\n");
++            error_report("Hyper-V SynIC is not supported by kernel");
+             return -ENOSYS;
+         }
+ 
+@@ -678,7 +678,7 @@ static int hyperv_handle_properties(CPUState *cs)
+     }
+     if (cpu->hyperv_stimer) {
+         if (!has_msr_hv_stimer) {
+-            fprintf(stderr, "Hyper-V timers aren't supported by kernel\n");
++            error_report("Hyper-V timers aren't supported by kernel");
+             return -ENOSYS;
+         }
+         env->features[FEAT_HYPERV_EAX] |= HV_SYNTIMERS_AVAILABLE;
+@@ -811,7 +811,7 @@ int kvm_arch_init_vcpu(CPUState *cs)
+ 
+     for (i = 0; i <= limit; i++) {
+         if (cpuid_i == KVM_MAX_CPUID_ENTRIES) {
+-            fprintf(stderr, "unsupported level value: 0x%x\n", limit);
++            error_report("unsupported level value: 0x%x", limit);
+             abort();
+         }
+         c = &cpuid_data.entries[cpuid_i++];
+@@ -829,8 +829,8 @@ int kvm_arch_init_vcpu(CPUState *cs)
+ 
+             for (j = 1; j < times; ++j) {
+                 if (cpuid_i == KVM_MAX_CPUID_ENTRIES) {
+-                    fprintf(stderr, "cpuid_data is full, no space for "
+-                            "cpuid(eax:2):eax & 0xf = 0x%x\n", times);
++                    error_report("cpuid_data is full, no space for "
++                            "cpuid(eax:2):eax & 0xf = 0x%x", times);
+                     abort();
+                 }
+                 c = &cpuid_data.entries[cpuid_i++];
+@@ -862,8 +862,8 @@ int kvm_arch_init_vcpu(CPUState *cs)
+                     continue;
+                 }
+                 if (cpuid_i == KVM_MAX_CPUID_ENTRIES) {
+-                    fprintf(stderr, "cpuid_data is full, no space for "
+-                            "cpuid(eax:0x%x,ecx:0x%x)\n", i, j);
++                    error_report("cpuid_data is full, no space for "
++                            "cpuid(eax:0x%x,ecx:0x%x)", i, j);
+                     abort();
+                 }
+                 c = &cpuid_data.entries[cpuid_i++];
+@@ -899,7 +899,7 @@ int kvm_arch_init_vcpu(CPUState *cs)
+ 
+     for (i = 0x80000000; i <= limit; i++) {
+         if (cpuid_i == KVM_MAX_CPUID_ENTRIES) {
+-            fprintf(stderr, "unsupported xlevel value: 0x%x\n", limit);
++            error_report("unsupported xlevel value: 0x%x", limit);
+             abort();
+         }
+         c = &cpuid_data.entries[cpuid_i++];
+@@ -915,7 +915,7 @@ int kvm_arch_init_vcpu(CPUState *cs)
+ 
+         for (i = 0xC0000000; i <= limit; i++) {
+             if (cpuid_i == KVM_MAX_CPUID_ENTRIES) {
+-                fprintf(stderr, "unsupported xlevel2 value: 0x%x\n", limit);
++                error_report("unsupported xlevel2 value: 0x%x", limit);
+                 abort();
+             }
+             c = &cpuid_data.entries[cpuid_i++];
+@@ -1245,7 +1245,7 @@ int kvm_arch_init(MachineState *ms, KVMState *s)
+     /* Tell fw_cfg to notify the BIOS to reserve the range. */
+     ret = e820_add_entry(identity_base, 0x4000, E820_RESERVED);
+     if (ret < 0) {
+-        fprintf(stderr, "e820_add_entry() table is full\n");
++        error_report("e820_add_entry() table is full");
+         return ret;
+     }
+     qemu_register_reset(kvm_unpoison_all, NULL);
+@@ -2733,7 +2733,7 @@ void kvm_arch_pre_run(CPUState *cpu, struct kvm_run *run)
+             DPRINTF("injected NMI\n");
+             ret = kvm_vcpu_ioctl(cpu, KVM_NMI);
+             if (ret < 0) {
+-                fprintf(stderr, "KVM: injection failed, NMI lost (%s)\n",
++                error_report("KVM: injection failed, NMI lost (%s)",
+                         strerror(-ret));
              }
          }
-         fprintf(stderr, "%s: color parse error: \"%s\"\n",
--                __FUNCTION__, xpm[line]);
-+                __func__, xpm[line]);
-         return NULL;
+@@ -2744,7 +2744,7 @@ void kvm_arch_pre_run(CPUState *cpu, struct kvm_run *run)
+             DPRINTF("injected SMI\n");
+             ret = kvm_vcpu_ioctl(cpu, KVM_SMI);
+             if (ret < 0) {
+-                fprintf(stderr, "KVM: injection failed, SMI lost (%s)\n",
++                error_report("KVM: injection failed, SMI lost (%s)",
+                         strerror(-ret));
+             }
+         }
+@@ -3141,7 +3141,7 @@ int kvm_arch_handle_exit(CPUState *cs, struct kvm_run *run)
+         break;
+     case KVM_EXIT_FAIL_ENTRY:
+         code = run->fail_entry.hardware_entry_failure_reason;
+-        fprintf(stderr, "KVM: entry failed, hardware error 0x%" PRIx64 "\n",
++        error_report("KVM: entry failed, hardware error 0x%" PRIx64 "",
+                 code);
+         if (host_supports_vmx() && code == VMX_INVALID_GUEST_STATE) {
+             fprintf(stderr,
+@@ -3157,7 +3157,7 @@ int kvm_arch_handle_exit(CPUState *cs, struct kvm_run *run)
+         ret = -1;
+         break;
+     case KVM_EXIT_EXCEPTION:
+-        fprintf(stderr, "KVM: exception %d exit (error code 0x%x)\n",
++        error_report("KVM: exception %d exit (error code 0x%x)",
+                 run->ex.exception, run->ex.error_code);
+         ret = -1;
+         break;
+@@ -3175,7 +3175,7 @@ int kvm_arch_handle_exit(CPUState *cs, struct kvm_run *run)
+         ret = 0;
+         break;
+     default:
+-        fprintf(stderr, "KVM: unknown exit reason %d\n", run->exit_reason);
++        error_report("KVM: unknown exit reason %d", run->exit_reason);
+         ret = -1;
+         break;
+     }
+diff --git a/target/i386/misc_helper.c b/target/i386/misc_helper.c
+index 628f64aad5..115e80217e 100644
+--- a/target/i386/misc_helper.c
++++ b/target/i386/misc_helper.c
+@@ -28,7 +28,7 @@
+ void helper_outb(CPUX86State *env, uint32_t port, uint32_t data)
+ {
+ #ifdef CONFIG_USER_ONLY
+-    fprintf(stderr, "outb: port=0x%04x, data=%02x\n", port, data);
++    error_report("outb: port=0x%04x, data=%02x", port, data);
+ #else
+     address_space_stb(&address_space_io, port, data,
+                       cpu_get_mem_attrs(env), NULL);
+@@ -38,7 +38,7 @@ void helper_outb(CPUX86State *env, uint32_t port, uint32_t data)
+ target_ulong helper_inb(CPUX86State *env, uint32_t port)
+ {
+ #ifdef CONFIG_USER_ONLY
+-    fprintf(stderr, "inb: port=0x%04x\n", port);
++    error_report("inb: port=0x%04x", port);
+     return 0;
+ #else
+     return address_space_ldub(&address_space_io, port,
+@@ -49,7 +49,7 @@ target_ulong helper_inb(CPUX86State *env, uint32_t port)
+ void helper_outw(CPUX86State *env, uint32_t port, uint32_t data)
+ {
+ #ifdef CONFIG_USER_ONLY
+-    fprintf(stderr, "outw: port=0x%04x, data=%04x\n", port, data);
++    error_report("outw: port=0x%04x, data=%04x", port, data);
+ #else
+     address_space_stw(&address_space_io, port, data,
+                       cpu_get_mem_attrs(env), NULL);
+@@ -59,7 +59,7 @@ void helper_outw(CPUX86State *env, uint32_t port, uint32_t data)
+ target_ulong helper_inw(CPUX86State *env, uint32_t port)
+ {
+ #ifdef CONFIG_USER_ONLY
+-    fprintf(stderr, "inw: port=0x%04x\n", port);
++    error_report("inw: port=0x%04x", port);
+     return 0;
+ #else
+     return address_space_lduw(&address_space_io, port,
+@@ -70,7 +70,7 @@ target_ulong helper_inw(CPUX86State *env, uint32_t port)
+ void helper_outl(CPUX86State *env, uint32_t port, uint32_t data)
+ {
+ #ifdef CONFIG_USER_ONLY
+-    fprintf(stderr, "outw: port=0x%04x, data=%08x\n", port, data);
++    error_report("outw: port=0x%04x, data=%08x", port, data);
+ #else
+     address_space_stl(&address_space_io, port, data,
+                       cpu_get_mem_attrs(env), NULL);
+@@ -80,7 +80,7 @@ void helper_outl(CPUX86State *env, uint32_t port, uint32_t data)
+ target_ulong helper_inl(CPUX86State *env, uint32_t port)
+ {
+ #ifdef CONFIG_USER_ONLY
+-    fprintf(stderr, "inl: port=0x%04x\n", port);
++    error_report("inl: port=0x%04x", port);
+     return 0;
+ #else
+     return address_space_ldl(&address_space_io, port,
+diff --git a/target/lm32/op_helper.c b/target/lm32/op_helper.c
+index 2177c8ad12..34bfc3fb3b 100644
+--- a/target/lm32/op_helper.c
++++ b/target/lm32/op_helper.c
+@@ -40,9 +40,9 @@ void HELPER(ill)(CPULM32State *env)
+ {
+ #ifndef CONFIG_USER_ONLY
+     CPUState *cs = CPU(lm32_env_get_cpu(env));
+-    fprintf(stderr, "VM paused due to illegal instruction. "
++    error_report("VM paused due to illegal instruction. "
+             "Connect a debugger or switch to the monitor console "
+-            "to find out more.\n");
++            "to find out more.");
+     vm_stop(RUN_STATE_PAUSED);
+     cs->halted = 1;
+     raise_exception(env, EXCP_HALTED);
+diff --git a/target/mips/mips-semi.c b/target/mips/mips-semi.c
+index a7aefbaefc..c1f35f8f5a 100644
+--- a/target/mips/mips-semi.c
++++ b/target/mips/mips-semi.c
+@@ -18,6 +18,7 @@
+  */
+ 
+ #include "qemu/osdep.h"
++#include "qemu/error-report.h"
+ #include "cpu.h"
+ #include "qemu/log.h"
+ #include "exec/helper-proto.h"
+@@ -366,7 +367,7 @@ void helper_do_semihosting(CPUMIPSState *env)
+         break;
+ #endif
+     default:
+-        fprintf(stderr, "Unknown UHI operation %d\n", op);
++        error_report("Unknown UHI operation %d", op);
+         abort();
+     }
+ uhi_done:
+diff --git a/target/mips/translate.c b/target/mips/translate.c
+index d16d879df7..32a5920259 100644
+--- a/target/mips/translate.c
++++ b/target/mips/translate.c
+@@ -10886,7 +10886,7 @@ static void gen_branch(DisasContext *ctx, int insn_bytes)
+             tcg_gen_lookup_and_goto_ptr(cpu_PC);
+             break;
+         default:
+-            fprintf(stderr, "unknown branch 0x%x\n", proc_hflags);
++            error_report("unknown branch 0x%x", proc_hflags);
+             abort();
+         }
+     }
+diff --git a/target/ppc/excp_helper.c b/target/ppc/excp_helper.c
+index e6009e70e5..a142e81a0f 100644
+--- a/target/ppc/excp_helper.c
++++ b/target/ppc/excp_helper.c
+@@ -200,8 +200,8 @@ static inline void powerpc_excp(PowerPCCPU *cpu, int excp_model, int excp)
+             /* Machine check exception is not enabled.
+              * Enter checkstop state.
+              */
+-            fprintf(stderr, "Machine check while not allowed. "
+-                    "Entering checkstop state\n");
++            error_report("Machine check while not allowed. "
++                    "Entering checkstop state");
+             if (qemu_log_separate()) {
+                 qemu_log("Machine check while not allowed. "
+                         "Entering checkstop state\n");
+diff --git a/target/ppc/kvm.c b/target/ppc/kvm.c
+index 171d3d8040..33c49fe54c 100644
+--- a/target/ppc/kvm.c
++++ b/target/ppc/kvm.c
+@@ -159,8 +159,8 @@ int kvm_arch_init(MachineState *ms, KVMState *s)
+     cap_ppc_pvr_compat = false;
+ 
+     if (!cap_interrupt_level) {
+-        fprintf(stderr, "KVM: Couldn't find level irq capability. Expect the "
+-                        "VM to stall at times!\n");
++        error_report("KVM: Couldn't find level irq capability. Expect the "
++                        "VM to stall at times!");
      }
  
-diff --git a/ui/spice-display.c b/ui/spice-display.c
-index 0963c7825f..346fff44f4 100644
---- a/ui/spice-display.c
-+++ b/ui/spice-display.c
-@@ -630,13 +630,13 @@ static int interface_req_cursor_notification(QXLInstance *sin)
+     kvm_ppc_register_host_cpu_type();
+@@ -188,7 +188,7 @@ static int kvm_arch_sync_sregs(PowerPCCPU *cpu)
+         return 0;
+     } else {
+         if (!cap_segstate) {
+-            fprintf(stderr, "kvm error: missing PVR setting capability\n");
++            error_report("kvm error: missing PVR setting capability");
+             return -ENOSYS;
+         }
+     }
+@@ -237,7 +237,7 @@ static int kvm_booke206_tlb_init(PowerPCCPU *cpu)
  
- static void interface_notify_update(QXLInstance *sin, uint32_t update_id)
- {
--    fprintf(stderr, "%s: abort()\n", __FUNCTION__);
-+    fprintf(stderr, "%s: abort()\n", __func__);
-     abort();
+     ret = kvm_vcpu_enable_cap(cs, KVM_CAP_SW_TLB, 0, (uintptr_t)&cfg);
+     if (ret < 0) {
+-        fprintf(stderr, "%s: couldn't enable KVM_CAP_SW_TLB: %s\n",
++        error_report("%s: couldn't enable KVM_CAP_SW_TLB: %s",
+                 __func__, strerror(-ret));
+         return ret;
+     }
+@@ -552,7 +552,7 @@ static void kvmppc_hw_debug_points_init(CPUPPCState *cenv)
+     }
+ 
+     if ((max_hw_breakpoint + max_hw_watchpoint) > MAX_HW_BKPTS) {
+-        fprintf(stderr, "Error initializing h/w breakpoints\n");
++        error_report("Error initializing h/w breakpoints");
+         return;
+     }
  }
+@@ -623,7 +623,7 @@ static void kvm_sw_tlb_put(PowerPCCPU *cpu)
  
- static int interface_flush_resources(QXLInstance *sin)
+     ret = kvm_vcpu_ioctl(cs, KVM_DIRTY_TLB, &dirty_tlb);
+     if (ret) {
+-        fprintf(stderr, "%s: KVM_DIRTY_TLB: %s\n",
++        error_report("%s: KVM_DIRTY_TLB: %s",
+                 __func__, strerror(-ret));
+     }
+ 
+@@ -1480,7 +1480,7 @@ static int kvmppc_handle_halt(PowerPCCPU *cpu)
+ static int kvmppc_handle_dcr_read(CPUPPCState *env, uint32_t dcrn, uint32_t *data)
  {
--    fprintf(stderr, "%s: abort()\n", __FUNCTION__);
-+    fprintf(stderr, "%s: abort()\n", __func__);
-     abort();
+     if (ppc_dcr_read(env->dcr_env, dcrn, data) < 0)
+-        fprintf(stderr, "Read to unhandled DCR (0x%x)\n", dcrn);
++        error_report("Read to unhandled DCR (0x%x)", dcrn);
+ 
      return 0;
  }
+@@ -1488,7 +1488,7 @@ static int kvmppc_handle_dcr_read(CPUPPCState *env, uint32_t dcrn, uint32_t *dat
+ static int kvmppc_handle_dcr_write(CPUPPCState *env, uint32_t dcrn, uint32_t data)
+ {
+     if (ppc_dcr_write(env->dcr_env, dcrn, data) < 0)
+-        fprintf(stderr, "Write to unhandled DCR (0x%x)\n", dcrn);
++        error_report("Write to unhandled DCR (0x%x)", dcrn);
+ 
+     return 0;
+ }
+@@ -1799,7 +1799,7 @@ int kvm_arch_handle_exit(CPUState *cs, struct kvm_run *run)
+         break;
+ 
+     default:
+-        fprintf(stderr, "KVM: unknown exit reason %d\n", run->exit_reason);
++        error_report("KVM: unknown exit reason %d", run->exit_reason);
+         ret = -1;
+         break;
+     }
+@@ -1863,7 +1863,7 @@ int kvmppc_booke_watchdog_enable(PowerPCCPU *cpu)
+ 
+     ret = kvm_vcpu_enable_cap(cs, KVM_CAP_PPC_BOOKE_WATCHDOG, 0);
+     if (ret < 0) {
+-        fprintf(stderr, "%s: couldn't enable KVM_CAP_PPC_BOOKE_WATCHDOG: %s\n",
++        error_report("%s: couldn't enable KVM_CAP_PPC_BOOKE_WATCHDOG: %s",
+                 __func__, strerror(-ret));
+         return ret;
+     }
+@@ -2198,7 +2198,7 @@ off_t kvmppc_alloc_rma(void **rma)
+ 
+     fd = kvm_vm_ioctl(kvm_state, KVM_ALLOCATE_RMA, &ret);
+     if (fd < 0) {
+-        fprintf(stderr, "KVM: Error on KVM_ALLOCATE_RMA: %s\n",
++        error_report("KVM: Error on KVM_ALLOCATE_RMA: %s",
+                 strerror(errno));
+         return -1;
+     }
+@@ -2207,7 +2207,7 @@ off_t kvmppc_alloc_rma(void **rma)
+ 
+     *rma = mmap(NULL, size, PROT_READ|PROT_WRITE, MAP_SHARED, fd, 0);
+     if (*rma == MAP_FAILED) {
+-        fprintf(stderr, "KVM: Error mapping RMA: %s\n", strerror(errno));
++        error_report("KVM: Error mapping RMA: %s", strerror(errno));
+         return -1;
+     };
+ 
+@@ -2309,7 +2309,7 @@ void *kvmppc_create_spapr_tce(uint32_t liobn, uint32_t page_shift,
+         }
+         fd = kvm_vm_ioctl(kvm_state, KVM_CREATE_SPAPR_TCE, &args);
+         if (fd < 0) {
+-            fprintf(stderr, "KVM: Failed to create TCE table for liobn 0x%x\n",
++            error_report("KVM: Failed to create TCE table for liobn 0x%x",
+                     liobn);
+             return NULL;
+         }
+@@ -2322,7 +2322,7 @@ void *kvmppc_create_spapr_tce(uint32_t liobn, uint32_t page_shift,
+ 
+     table = mmap(NULL, len, PROT_READ|PROT_WRITE, MAP_SHARED, fd, 0);
+     if (table == MAP_FAILED) {
+-        fprintf(stderr, "KVM: Failed to map TCE table for liobn 0x%x\n",
++        error_report("KVM: Failed to map TCE table for liobn 0x%x",
+                 liobn);
+         close(fd);
+         return NULL;
+@@ -2590,7 +2590,7 @@ int kvmppc_save_htab(QEMUFile *f, int fd, size_t bufsize, int64_t max_ns)
+     do {
+         rc = read(fd, buf, bufsize);
+         if (rc < 0) {
+-            fprintf(stderr, "Error reading data from KVM HTAB fd: %s\n",
++            error_report("Error reading data from KVM HTAB fd: %s",
+                     strerror(errno));
+             return rc;
+         } else if (rc) {
+@@ -2635,13 +2635,13 @@ int kvmppc_load_htab_chunk(QEMUFile *f, int fd, uint32_t index,
+ 
+     rc = write(fd, buf, chunksize);
+     if (rc < 0) {
+-        fprintf(stderr, "Error writing KVM hash table: %s\n",
++        error_report("Error writing KVM hash table: %s",
+                 strerror(errno));
+         return rc;
+     }
+     if (rc != chunksize) {
+         /* We should never get a short write on a single chunk */
+-        fprintf(stderr, "Short write, restoring KVM hash table\n");
++        error_report("Short write, restoring KVM hash table");
+         return -1;
+     }
+     return 0;
+diff --git a/target/ppc/mmu-hash64.c b/target/ppc/mmu-hash64.c
+index 14d34e512f..8713ed6682 100644
+--- a/target/ppc/mmu-hash64.c
++++ b/target/ppc/mmu-hash64.c
+@@ -377,7 +377,7 @@ static int ppc_hash64_amr_prot(PowerPCCPU *cpu, ppc_hash_pte64_t pte)
+     key = HPTE64_R_KEY(pte.pte1);
+     amrbits = (env->spr[SPR_AMR] >> 2*(31 - key)) & 0x3;
+ 
+-    /* fprintf(stderr, "AMR protection: key=%d AMR=0x%" PRIx64 "\n", key, */
++    /* error_report("AMR protection: key=%d AMR=0x%" PRIx64 "", key, */
+     /*         env->spr[SPR_AMR]); */
+ 
+     /*
+diff --git a/target/ppc/mmu_helper.c b/target/ppc/mmu_helper.c
+index 2a1f9902c9..cbf5187ff8 100644
+--- a/target/ppc/mmu_helper.c
++++ b/target/ppc/mmu_helper.c
+@@ -2600,7 +2600,7 @@ void helper_booke206_tlbwe(CPUPPCState *env)
+     if (((env->spr[SPR_BOOKE_MAS0] & MAS0_ATSEL) == MAS0_ATSEL_LRAT) &&
+         !msr_gs) {
+         /* XXX we don't support direct LRAT setting yet */
+-        fprintf(stderr, "cpu: don't support LRAT setting yet\n");
++        error_report("cpu: don't support LRAT setting yet");
+         return;
+     }
+ 
+diff --git a/target/ppc/translate_init.c b/target/ppc/translate_init.c
+index c6399a3a0d..e3e839a75e 100644
+--- a/target/ppc/translate_init.c
++++ b/target/ppc/translate_init.c
+@@ -1778,7 +1778,7 @@ static void gen_spr_BookE(CPUPPCState *env, uint64_t ivor_mask)
+     for (i = 0; i < 64; i++) {
+         if (ivor_mask & (1ULL << i)) {
+             if (ivor_sprn[i] == SPR_BOOKE_IVORxx) {
+-                fprintf(stderr, "ERROR: IVOR %d SPR is not defined\n", i);
++                error_report("ERROR: IVOR %d SPR is not defined", i);
+                 exit(1);
+             }
+             spr_register(env, ivor_sprn[i], ivor_names[i],
+@@ -9254,13 +9254,13 @@ static void init_ppc_proc(PowerPCCPU *cpu)
+         case POWERPC_FLAG_VRE:
+             break;
+         default:
+-            fprintf(stderr, "PowerPC MSR definition inconsistency\n"
+-                    "Should define POWERPC_FLAG_SPE or POWERPC_FLAG_VRE\n");
++            error_report("PowerPC MSR definition inconsistency "
++                         "Should define POWERPC_FLAG_SPE or POWERPC_FLAG_VRE");
+             exit(1);
+         }
+     } else if (env->flags & (POWERPC_FLAG_SPE | POWERPC_FLAG_VRE)) {
+-        fprintf(stderr, "PowerPC MSR definition inconsistency\n"
+-                "Should not define POWERPC_FLAG_SPE nor POWERPC_FLAG_VRE\n");
++        error_report("PowerPC MSR definition inconsistency "
++                     "Should not define POWERPC_FLAG_SPE nor POWERPC_FLAG_VRE");
+         exit(1);
+     }
+     if (env->msr_mask & (1 << 17)) {
+@@ -9269,13 +9269,13 @@ static void init_ppc_proc(PowerPCCPU *cpu)
+         case POWERPC_FLAG_CE:
+             break;
+         default:
+-            fprintf(stderr, "PowerPC MSR definition inconsistency\n"
+-                    "Should define POWERPC_FLAG_TGPR or POWERPC_FLAG_CE\n");
++            error_report("PowerPC MSR definition inconsistency "
++                         "Should define POWERPC_FLAG_TGPR or POWERPC_FLAG_CE");
+             exit(1);
+         }
+     } else if (env->flags & (POWERPC_FLAG_TGPR | POWERPC_FLAG_CE)) {
+-        fprintf(stderr, "PowerPC MSR definition inconsistency\n"
+-                "Should not define POWERPC_FLAG_TGPR nor POWERPC_FLAG_CE\n");
++        error_report("PowerPC MSR definition inconsistency "
++                     "Should not define POWERPC_FLAG_TGPR nor POWERPC_FLAG_CE");
+         exit(1);
+     }
+     if (env->msr_mask & (1 << 10)) {
+@@ -9286,16 +9286,16 @@ static void init_ppc_proc(PowerPCCPU *cpu)
+         case POWERPC_FLAG_UBLE:
+             break;
+         default:
+-            fprintf(stderr, "PowerPC MSR definition inconsistency\n"
+-                    "Should define POWERPC_FLAG_SE or POWERPC_FLAG_DWE or "
+-                    "POWERPC_FLAG_UBLE\n");
++            error_report("PowerPC MSR definition inconsistency "
++                         "Should define POWERPC_FLAG_SE or POWERPC_FLAG_DWE or "
++                         "POWERPC_FLAG_UBLE");
+             exit(1);
+         }
+     } else if (env->flags & (POWERPC_FLAG_SE | POWERPC_FLAG_DWE |
+                              POWERPC_FLAG_UBLE)) {
+-        fprintf(stderr, "PowerPC MSR definition inconsistency\n"
+-                "Should not define POWERPC_FLAG_SE nor POWERPC_FLAG_DWE nor "
+-                "POWERPC_FLAG_UBLE\n");
++        error_report("PowerPC MSR definition inconsistency "
++                     "Should not define POWERPC_FLAG_SE nor POWERPC_FLAG_DWE"
++                     " nor POWERPC_FLAG_UBLE");
+             exit(1);
+     }
+     if (env->msr_mask & (1 << 9)) {
+@@ -9304,13 +9304,13 @@ static void init_ppc_proc(PowerPCCPU *cpu)
+         case POWERPC_FLAG_DE:
+             break;
+         default:
+-            fprintf(stderr, "PowerPC MSR definition inconsistency\n"
+-                    "Should define POWERPC_FLAG_BE or POWERPC_FLAG_DE\n");
++            error_report("PowerPC MSR definition inconsistency "
++                         "Should define POWERPC_FLAG_BE or POWERPC_FLAG_DE");
+             exit(1);
+         }
+     } else if (env->flags & (POWERPC_FLAG_BE | POWERPC_FLAG_DE)) {
+-        fprintf(stderr, "PowerPC MSR definition inconsistency\n"
+-                "Should not define POWERPC_FLAG_BE nor POWERPC_FLAG_DE\n");
++        error_report("PowerPC MSR definition inconsistency "
++                     "Should not define POWERPC_FLAG_BE nor POWERPC_FLAG_DE");
+         exit(1);
+     }
+     if (env->msr_mask & (1 << 2)) {
+@@ -9319,18 +9319,19 @@ static void init_ppc_proc(PowerPCCPU *cpu)
+         case POWERPC_FLAG_PMM:
+             break;
+         default:
+-            fprintf(stderr, "PowerPC MSR definition inconsistency\n"
+-                    "Should define POWERPC_FLAG_PX or POWERPC_FLAG_PMM\n");
++            error_report("PowerPC MSR definition inconsistency "
++                         "Should define POWERPC_FLAG_PX or POWERPC_FLAG_PMM");
+             exit(1);
+         }
+     } else if (env->flags & (POWERPC_FLAG_PX | POWERPC_FLAG_PMM)) {
+-        fprintf(stderr, "PowerPC MSR definition inconsistency\n"
+-                "Should not define POWERPC_FLAG_PX nor POWERPC_FLAG_PMM\n");
++        error_report("PowerPC MSR definition inconsistency "
++                     "Should not define POWERPC_FLAG_PX nor POWERPC_FLAG_PMM");
+         exit(1);
+     }
+     if ((env->flags & (POWERPC_FLAG_RTC_CLK | POWERPC_FLAG_BUS_CLK)) == 0) {
+-        fprintf(stderr, "PowerPC flags inconsistency\n"
+-                "Should define the time-base and decrementer clock source\n");
++        error_report("PowerPC MSR definition inconsistency "
++                     "Should define the time-base and decrementer clock"
++                     " source");
+         exit(1);
+     }
+     /* Allocate TLBs buffer when needed */
+@@ -10534,7 +10535,7 @@ static void ppc_cpu_reset(CPUState *s)
+ #if !defined(TARGET_WORDS_BIGENDIAN)
+     msr |= (target_ulong)1 << MSR_LE; /* Little-endian user mode */
+     if (!((env->msr_mask >> MSR_LE) & 1)) {
+-        fprintf(stderr, "Selected CPU does not support little-endian.\n");
++        error_report("Selected CPU does not support little-endian.");
+         exit(1);
+     }
+ #endif
+diff --git a/target/s390x/kvm.c b/target/s390x/kvm.c
+index ebb75cafaa..6f7ebd1c98 100644
+--- a/target/s390x/kvm.c
++++ b/target/s390x/kvm.c
+@@ -967,13 +967,13 @@ static void inject_vcpu_irq_legacy(CPUState *cs, struct kvm_s390_irq *irq)
+ 
+     r = s390_kvm_irq_to_interrupt(irq, &kvmint);
+     if (r < 0) {
+-        fprintf(stderr, "%s called with bogus interrupt\n", __func__);
++        error_report("%s called with bogus interrupt", __func__);
+         exit(1);
+     }
+ 
+     r = kvm_vcpu_ioctl(cs, KVM_S390_INTERRUPT, &kvmint);
+     if (r < 0) {
+-        fprintf(stderr, "KVM failed to inject interrupt\n");
++        error_report("KVM failed to inject interrupt");
+         exit(1);
+     }
+ }
+@@ -1002,13 +1002,13 @@ static void __kvm_s390_floating_interrupt(struct kvm_s390_irq *irq)
+ 
+     r = s390_kvm_irq_to_interrupt(irq, &kvmint);
+     if (r < 0) {
+-        fprintf(stderr, "%s called with bogus interrupt\n", __func__);
++        error_report("%s called with bogus interrupt", __func__);
+         exit(1);
+     }
+ 
+     r = kvm_vm_ioctl(kvm_state, KVM_S390_INTERRUPT, &kvmint);
+     if (r < 0) {
+-        fprintf(stderr, "KVM failed to inject interrupt\n");
++        error_report("KVM failed to inject interrupt");
+         exit(1);
+     }
+ }
+@@ -1116,14 +1116,14 @@ static int handle_b2(S390CPU *cpu, struct kvm_run *run, uint8_t ipa1)
+         break;
+     case PRIV_B2_TSCH:
+         /* We should only get tsch via KVM_EXIT_S390_TSCH. */
+-        fprintf(stderr, "Spurious tsch intercept\n");
++        error_report("Spurious tsch intercept");
+         break;
+     case PRIV_B2_CHSC:
+         ioinst_handle_chsc(cpu, run->s390_sieic.ipb);
+         break;
+     case PRIV_B2_TPI:
+         /* This should have been handled by kvm already. */
+-        fprintf(stderr, "Spurious tpi intercept\n");
++        error_report("Spurious tpi intercept");
+         break;
+     case PRIV_B2_SCHM:
+         ioinst_handle_schm(cpu, env->regs[1], env->regs[2],
+@@ -2050,15 +2050,15 @@ static int handle_intercept(S390CPU *cpu)
+             }
+             break;
+         case ICPT_SOFT_INTERCEPT:
+-            fprintf(stderr, "KVM unimplemented icpt SOFT\n");
++            error_report("KVM unimplemented icpt SOFT");
+             exit(1);
+             break;
+         case ICPT_IO:
+-            fprintf(stderr, "KVM unimplemented icpt IO\n");
++            error_report("KVM unimplemented icpt IO");
+             exit(1);
+             break;
+         default:
+-            fprintf(stderr, "Unknown intercept code: %d\n", icpt_code);
++            error_report("Unknown intercept code: %d", icpt_code);
+             exit(1);
+             break;
+     }
+@@ -2215,7 +2215,7 @@ int kvm_arch_handle_exit(CPUState *cs, struct kvm_run *run)
+             ret = kvm_arch_handle_debug_exit(cpu);
+             break;
+         default:
+-            fprintf(stderr, "Unknown KVM exit: %d\n", run->exit_reason);
++            error_report("Unknown KVM exit: %d", run->exit_reason);
+             break;
+     }
+     qemu_mutex_unlock_iothread();
+diff --git a/target/s390x/misc_helper.c b/target/s390x/misc_helper.c
+index 293fc8428a..395872af45 100644
+--- a/target/s390x/misc_helper.c
++++ b/target/s390x/misc_helper.c
+@@ -354,7 +354,7 @@ uint32_t HELPER(sigp)(CPUS390XState *env, uint64_t order_code, uint32_t r1,
+ #endif
+     default:
+         /* unknown sigp */
+-        fprintf(stderr, "XXX unknown sigp: 0x%" PRIx64 "\n", order_code);
++        error_report("XXX unknown sigp: 0x%" PRIx64 "", order_code);
+         cc = SIGP_CC_NOT_OPERATIONAL;
+     }
+ 
+diff --git a/target/unicore32/translate.c b/target/unicore32/translate.c
+index 1bd7827ee8..5b8a3b0094 100644
+--- a/target/unicore32/translate.c
++++ b/target/unicore32/translate.c
+@@ -515,7 +515,7 @@ static void gen_test_cc(int cc, TCGLabel *label)
+         tcg_gen_brcondi_i32(TCG_COND_LT, tmp, 0, label);
+         break;
+     default:
+-        fprintf(stderr, "Bad condition code 0x%x\n", cc);
++        error_report("Bad condition code 0x%x", cc);
+         abort();
+     }
+     dead_tmp(tmp);
 -- 
 2.11.0
 

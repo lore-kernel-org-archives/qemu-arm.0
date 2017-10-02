@@ -1,100 +1,95 @@
-Received: by 10.223.197.9 with SMTP id q9csp1624042wrf;
-        Sat, 30 Sep 2017 06:15:51 -0700 (PDT)
-X-Received: by 10.55.33.203 with SMTP id f72mr7722541qki.176.1506777351161;
-        Sat, 30 Sep 2017 06:15:51 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1506777351; cv=none;
+Received: by 10.223.197.9 with SMTP id q9csp3101411wrf;
+        Mon, 2 Oct 2017 00:43:57 -0700 (PDT)
+X-Google-Smtp-Source: AOwi7QB7NldgOIPBB4ahHONXKcorc1h7/jpc1VciyVXOe5LO6AuPDoZNhLK0CRJ+M+4OAxRf5Vlk
+X-Received: by 10.237.60.50 with SMTP id t47mr18444529qte.49.1506930237823;
+        Mon, 02 Oct 2017 00:43:57 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1506930237; cv=none;
         d=google.com; s=arc-20160816;
-        b=zKB8DJv8Fsj4oYQwTcvVva0d+S7c9uWoLaTQd3js6DCiDorIl9P2Y+DwlYsxVzPfyB
-         3+IdppH2tkkCgaoD4ztm9ef/ATs7QSaLBbL42Qm+AmkYyvcOlaIeZu08oy6HhsRofDoe
-         Y5DbFsOMZFZlpTkGRj/l+GHeDy0MX8LiAsp+/5Z6Y3JjZbQjEM43s2SIcCBfgbzb0qcm
-         zssDIG7CDKuWF23yA2XPH9quKAjpRh2w5Dr0ZZ6v+M3exNeGiU5V/mEHtJrZYYG6mIkv
-         WG/NFvLBzK+uVIJFEVysmLrxjbLNN/cAm/2b3xSw3lIW44UFMN7cl5pH97Qk2BI+QS9R
-         g1KQ==
+        b=VP2GVVhCZ7Y3VLAOJIpjene8pmfhuE+cXbCa4axIW42jYrRynB/MwyV+R0/JsEE97q
+         gLTaGNQJ3wUGvM/BzcDzrL/eUCg8G4e1jAi/j/rGX+rrqaThZcI2srjZPZbHteGkFqkY
+         VvQAAWEKpxuS446HqEHhBY8iURFiLsg7T3FWnmSu0w2/DIwgPGxRgOLX+EIFW69tm48x
+         NLUReYRKxcIuyqAVNemg+8BFMPO33QXdyZAO0/hG/PpUrCHRQuWq2NlSXkftE87WGTKV
+         qAdTXN7aDq6baT2JRlt7PIBcL7Gh9ubVqKAZe+x/lNuiewxg0kLlQnGR19ThCZ4n5WLX
+         OhEw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
-         :references:in-reply-to:mime-version:dkim-signature
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:dmarc-filter
          :arc-authentication-results;
-        bh=oPZbicbgu4N2SvEKpfb5VJHPnb2yFInK01vsv7jjzAE=;
-        b=tsK5eK6mbTq3QnIp4ur5VrrnB6YYS730rYG6AT8FZysmRRCmaXd3xapYuhJ8z6a+kf
-         FFviSoBUQIa4dW/KVN3QbnYyQRuME7erMy8o5odaFjgtrqVOJrV/Le1BPOE6d16a9Oqt
-         Cu53Er9p/yrpdbPX1E/W+gAWeDSKlX8ZLOKTYfkn6p0sN9nfb7FYRpAjA4Ji55CI9c2Y
-         0+U5ohYJoqapS637/TsR24kOejFVb83EB/IYUnUoPd/CMOKdkWoBzGqqG9RQMaLR2DLx
-         DZcfi8/xrx1lhqjfVX/X2/SiqhsAORT8/vEINDEoJXTfA8d2E581z4SCh9JtWiu1Py3Y
-         i4zw==
+        bh=59Ro3o27RY0PIvBkrdSQLHCkvAYrbekM+3Pu6UX1UzY=;
+        b=yjO030zRCHCV75cE4Jd6ibxeNG4ri4TvY05q5fEoqoNOYBVJimEZ2v88wzKnfrFykC
+         iK8qHdJjkDKocxJc+5+f71mbhhZbK0dL3fO+xKu6lsvxbExJwi4D2qyVwr329PuR6/Gc
+         UIulWAqIhVSOGJR3FpfGvsO6574FxHsC4UldrsDMHlCMx3JK4FozOXyN1om3MIa04LV/
+         aZi63kIOS/F7E/WeXQ+iPVHn6ror1Z0sjNC2bjq0g8OtoqzsS7J0p0tCYibiSbEcOx2H
+         aN1/1QTl/dSZQvQjPOqnThpgo7CXCcr0/2QAqQwA6PpQke07M7ZqVpKLYfC+2Xy+0M4P
+         QM6A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=kOTpa13u;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@gnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@gnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@gnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id n34si5888333qtb.277.2017.09.30.06.15.50
+        by mx.google.com with ESMTPS id q16si1977108qkl.258.2017.10.02.00.43.57
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sat, 30 Sep 2017 06:15:51 -0700 (PDT)
+        Mon, 02 Oct 2017 00:43:57 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@gnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=kOTpa13u;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@gnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@gnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:39302 helo=lists.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:51033 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@gnu.org>)
-	id 1dyHcS-0007tj-Td
-	for alex.bennee@linaro.org; Sat, 30 Sep 2017 09:15:48 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:44107)
+	id 1dyvON-0008Eg-Kh
+	for alex.bennee@linaro.org; Mon, 02 Oct 2017 03:43:55 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:56226)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <prem.mallappa@gmail.com>) id 1dyD8b-00073Y-9h
-	for qemu-arm@nongnu.org; Sat, 30 Sep 2017 04:28:42 -0400
+	(envelope-from <eric.auger@redhat.com>) id 1dyvO9-0008EQ-2k
+	for qemu-arm@nongnu.org; Mon, 02 Oct 2017 03:43:47 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <prem.mallappa@gmail.com>) id 1dyD8a-0003qU-6o
-	for qemu-arm@nongnu.org; Sat, 30 Sep 2017 04:28:41 -0400
-Received: from mail-yw0-x22a.google.com ([2607:f8b0:4002:c05::22a]:57161)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <prem.mallappa@gmail.com>)
-	id 1dyD8a-0003pe-12; Sat, 30 Sep 2017 04:28:40 -0400
-Received: by mail-yw0-x22a.google.com with SMTP id w22so1102647ywa.13;
-	Sat, 30 Sep 2017 01:28:38 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=oPZbicbgu4N2SvEKpfb5VJHPnb2yFInK01vsv7jjzAE=;
-	b=kOTpa13ulj/K5pXBvu7sZCDGQnoR7qeboIJsLHD8bnjwjyM+XgPNBD/bo85oGBn7Qb
-	mZIDKOZJErtcJHE4Zth0xuc1X/3NGjuI6ecR4biq0J7k8NvjNkoLVWd/2hzkiMG90NrM
-	v+VT8rS2h8HIDu3QFLFTJmA6IKa3apOeRudZEDSOMYNfKpdWr0EUJcxWlyMpr7ihwrXR
-	gPT2Lnd/9E1wfhngo32GdKpasFCxSScZVxrINTTgXPVW4TAXh0QW/RFkA4pOQqrPKpaq
-	8HBiGxBqEkXMJGNrxiYgEaZwtMzJ314D6V/Z6IU0LM8Yadxb2/srno79Y0ToNELGkdH2
-	CGYw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=oPZbicbgu4N2SvEKpfb5VJHPnb2yFInK01vsv7jjzAE=;
-	b=s57sOKJliKNn7qKYjiy8dbqHszRy3aDodwO9ctM3luVtrsuTGfl1Kgqxrb2aoUTmld
-	C1iC0cdgcC/m21jX8JHpeH8K2Xz+aAoaGEmubiWgZjuWKObMvgkgZ4xy4ozRWaIHKsZc
-	zQEA+tGtVHwj02HbSIanD0ZHa4+cR1UNRUilz1hpsNZITSKmeXtrAk4ahks56pGQGl0G
-	bwY+iiDUkOHnUshJ35pgjC9khdqKrSAkQ8bMvxFeYUAX9t+SruRUSTaf3Z067rn0HZ8n
-	ynFD2yHoj2+nOJj0xN3MgrKylc7prlvCBAc9jqOD0PkTcoItGY1y0aaDmPxfWnkSU6zb
-	N5Ug==
-X-Gm-Message-State: AHPjjUiGl6mTLHMM8/8yApYNu876ttFtwYAo74XZ8P6JyAXD5jmKyQlC
-	Kq6IT2JELcrhlKouJ2E63xm6J6nZSIQaTipXsKk=
-X-Google-Smtp-Source: AOwi7QAmJeG3n2EmDPKGZ6apS9nWvhSrHKwN2oLVSaPAzo90BkXBh2Lkb7JmbK/8d+Iigl+Ym26EqaJNRyq8WufJEBg=
-X-Received: by 10.37.91.69 with SMTP id p66mr8001379ybb.423.1506760117883;
-	Sat, 30 Sep 2017 01:28:37 -0700 (PDT)
-MIME-Version: 1.0
-Received: by 10.37.193.194 with HTTP; Sat, 30 Sep 2017 01:28:17 -0700 (PDT)
-In-Reply-To: <CAFEAcA8k4nAjqJ_Mu5ZZ8ygMMJikX17BCB3M0ZkbQBsKVLt5TQ@mail.gmail.com>
+	(envelope-from <eric.auger@redhat.com>) id 1dyvO6-0001Tv-1A
+	for qemu-arm@nongnu.org; Mon, 02 Oct 2017 03:43:41 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:34434)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <eric.auger@redhat.com>)
+	id 1dyvO5-0001T4-OX; Mon, 02 Oct 2017 03:43:37 -0400
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
+	[10.5.11.15])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 7B82B6146F;
+	Mon,  2 Oct 2017 07:43:33 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 7B82B6146F
+Authentication-Results: ext-mx10.extmail.prod.ext.phx2.redhat.com;
+	dmarc=none (p=none dis=none) header.from=redhat.com
+Authentication-Results: ext-mx10.extmail.prod.ext.phx2.redhat.com;
+	spf=fail smtp.mailfrom=eric.auger@redhat.com
+Received: from localhost.localdomain (ovpn-116-233.ams2.redhat.com
+	[10.36.116.233])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 28DC55D6A6;
+	Mon,  2 Oct 2017 07:43:21 +0000 (UTC)
+To: Prem Mallappa <prem.mallappa@gmail.com>,
+	Peter Maydell <peter.maydell@linaro.org>
 References: <1504286483-23327-1-git-send-email-eric.auger@redhat.com>
 	<1504286483-23327-2-git-send-email-eric.auger@redhat.com>
 	<CAFEAcA8k4nAjqJ_Mu5ZZ8ygMMJikX17BCB3M0ZkbQBsKVLt5TQ@mail.gmail.com>
-From: Prem Mallappa <prem.mallappa@gmail.com>
-Date: Sat, 30 Sep 2017 13:58:17 +0530
-Message-ID: <CADD6c-iohAZO7DLsYfh+sRz0SWyxWW0ja_tdFhdemgWJafHJjg@mail.gmail.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Content-Type: multipart/alternative; boundary="001a1140f452969a22055a63ed23"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:4002:c05::22a
-X-Mailman-Approved-At: Sat, 30 Sep 2017 09:15:43 -0400
+	<CADD6c-iohAZO7DLsYfh+sRz0SWyxWW0ja_tdFhdemgWJafHJjg@mail.gmail.com>
+From: Auger Eric <eric.auger@redhat.com>
+Message-ID: <6af2c711-5f6b-d8e1-d0e3-21bfb3e5c98c@redhat.com>
+Date: Mon, 2 Oct 2017 09:43:20 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
+	Thunderbird/45.4.0
+MIME-Version: 1.0
+In-Reply-To: <CADD6c-iohAZO7DLsYfh+sRz0SWyxWW0ja_tdFhdemgWJafHJjg@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.39]);
+	Mon, 02 Oct 2017 07:43:34 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.132.183.28
 Subject: Re: [Qemu-arm] [PATCH v7 01/20] hw/arm/smmu-common: smmu base
  device and datatypes
 X-BeenThere: qemu-arm@gnu.org
@@ -114,112 +109,68 @@ Cc: Radha Mohan <mohun106@gmail.com>, Andrew Jones <drjones@redhat.com>,
 	"Michael S. Tsirkin" <mst@redhat.com>,
 	jean-philippe.brucker@arm.com, Tomasz Nowicki <tn@semihalf.com>,
 	Will Deacon <will.deacon@arm.com>, QEMU Developers <qemu-devel@nongnu.org>,
-	Peter Xu <peterx@redhat.com>, Eric Auger <eric.auger@redhat.com>,
-	Alex Williamson <alex.williamson@redhat.com>,
+	Peter Xu <peterx@redhat.com>, Alex Williamson <alex.williamson@redhat.com>,
 	qemu-arm <qemu-arm@nongnu.org>, robin.murphy@arm.com,
 	wtownsen@redhat.com, Bharat Bhushan <bharat.bhushan@nxp.com>,
 	Christoffer Dall <christoffer.dall@linaro.org>, eric.auger.pro@gmail.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@gnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@gnu.org>
-X-TUID: YxGN6GAfh9Jp
+X-TUID: mxUhS2+6tPKx
 
---001a1140f452969a22055a63ed23
-Content-Type: text/plain; charset="UTF-8"
+Hi Prem,
 
-All,
+On 30/09/2017 10:28, Prem Mallappa wrote:
+> All,
+> 
+> I am no longer associated with Broadcom, so can't help much here I guess.
+> 
+> If there is anything else I can do; please let me know.
 
-I am no longer associated with Broadcom, so can't help much here I guess.
+Thank you very much for your reply. We are going to ask Broadcom's
+representatives.
 
-If there is anything else I can do; please let me know.
+Thanks
 
-Cheers,
-/Prem
-
-
-
---
-Prem
-
-On Wed, Sep 27, 2017 at 11:08 PM, Peter Maydell <peter.maydell@linaro.org>
-wrote:
-
-> On 1 September 2017 at 10:21, Eric Auger <eric.auger@redhat.com> wrote:
-> > The patch introduces the smmu base device and class for the ARM
-> > smmu. Devices for specific versions will be derived from this
-> > base device.
-> >
-> > We also introduce some important datatypes.
-> >
-> > Signed-off-by: Eric Auger <eric.auger@redhat.com>
-> > Signed-off-by: Prem Mallappa <prem.mallappa@broadcom.com>
->
-> > +/*
-> > + * Copyright (C) 2014-2016 Broadcom Corporation
-> > + * Copyright (c) 2017 Red Hat, Inc.
-> > + * Written by Prem Mallappa, Eric Auger
-> > + *
-> > + * This program is free software; you can redistribute it and/or modify
-> > + * it under the terms of the GNU General Public License version 2 as
-> > + * published by the Free Software Foundation.
->
-> Really GPL-2-only ?
->
-> Unless there's a good reason, you should probably fix this (including
-> getting an ack from Prem/Broadcom where it applies to code that came
-> from him).
->
-> thanks
-> -- PMM
->
-
---001a1140f452969a22055a63ed23
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr">All,<div><br><div>I am no longer associated with Broadcom,=
- so can&#39;t help much here I guess.</div><div><br></div><div>If there is =
-anything else I can do; please let me know.</div><div><br></div><div>Cheers=
-,</div><div>/Prem</div><div><br></div><div><br></div></div></div><div class=
-=3D"gmail_extra"><br clear=3D"all"><div><div class=3D"gmail_signature" data=
--smartmail=3D"gmail_signature">--<br>Prem</div></div>
-<br><div class=3D"gmail_quote">On Wed, Sep 27, 2017 at 11:08 PM, Peter Mayd=
-ell <span dir=3D"ltr">&lt;<a href=3D"mailto:peter.maydell@linaro.org" targe=
-t=3D"_blank">peter.maydell@linaro.org</a>&gt;</span> wrote:<br><blockquote =
-class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border-left:1px #ccc solid=
-;padding-left:1ex"><span class=3D"">On 1 September 2017 at 10:21, Eric Auge=
-r &lt;<a href=3D"mailto:eric.auger@redhat.com">eric.auger@redhat.com</a>&gt=
-; wrote:<br>
-&gt; The patch introduces the smmu base device and class for the ARM<br>
-&gt; smmu. Devices for specific versions will be derived from this<br>
-&gt; base device.<br>
-&gt;<br>
-&gt; We also introduce some important datatypes.<br>
-&gt;<br>
-&gt; Signed-off-by: Eric Auger &lt;<a href=3D"mailto:eric.auger@redhat.com"=
->eric.auger@redhat.com</a>&gt;<br>
-&gt; Signed-off-by: Prem Mallappa &lt;<a href=3D"mailto:prem.mallappa@broad=
-com.com">prem.mallappa@broadcom.com</a>&gt;<br>
-<br>
-</span><span class=3D"">&gt; +/*<br>
-&gt; + * Copyright (C) 2014-2016 Broadcom Corporation<br>
-&gt; + * Copyright (c) 2017 Red Hat, Inc.<br>
-&gt; + * Written by Prem Mallappa, Eric Auger<br>
-&gt; + *<br>
-&gt; + * This program is free software; you can redistribute it and/or modi=
-fy<br>
-&gt; + * it under the terms of the GNU General Public License version 2 as<=
-br>
-&gt; + * published by the Free Software Foundation.<br>
-<br>
-</span>Really GPL-2-only ?<br>
-<br>
-Unless there&#39;s a good reason, you should probably fix this (including<b=
-r>
-getting an ack from Prem/Broadcom where it applies to code that came<br>
-from him).<br>
-<br>
-thanks<br>
--- PMM<br>
-</blockquote></div><br></div>
-
---001a1140f452969a22055a63ed23--
+Eric
+> 
+> Cheers,
+> /Prem
+> 
+> 
+> 
+> --
+> Prem
+> 
+> On Wed, Sep 27, 2017 at 11:08 PM, Peter Maydell
+> <peter.maydell@linaro.org <mailto:peter.maydell@linaro.org>> wrote:
+> 
+>     On 1 September 2017 at 10:21, Eric Auger <eric.auger@redhat.com
+>     <mailto:eric.auger@redhat.com>> wrote:
+>     > The patch introduces the smmu base device and class for the ARM
+>     > smmu. Devices for specific versions will be derived from this
+>     > base device.
+>     >
+>     > We also introduce some important datatypes.
+>     >
+>     > Signed-off-by: Eric Auger <eric.auger@redhat.com <mailto:eric.auger@redhat.com>>
+>     > Signed-off-by: Prem Mallappa <prem.mallappa@broadcom.com <mailto:prem.mallappa@broadcom.com>>
+> 
+>     > +/*
+>     > + * Copyright (C) 2014-2016 Broadcom Corporation
+>     > + * Copyright (c) 2017 Red Hat, Inc.
+>     > + * Written by Prem Mallappa, Eric Auger
+>     > + *
+>     > + * This program is free software; you can redistribute it and/or modify
+>     > + * it under the terms of the GNU General Public License version 2 as
+>     > + * published by the Free Software Foundation.
+> 
+>     Really GPL-2-only ?
+> 
+>     Unless there's a good reason, you should probably fix this (including
+>     getting an ack from Prem/Broadcom where it applies to code that came
+>     from him).
+> 
+>     thanks
+>     -- PMM
+> 
+> 

@@ -1,160 +1,161 @@
-Received: by 10.223.197.9 with SMTP id q9csp4662589wrf;
-        Tue, 3 Oct 2017 09:25:15 -0700 (PDT)
-X-Received: by 10.55.137.199 with SMTP id l190mr13037893qkd.156.1507047915183;
-        Tue, 03 Oct 2017 09:25:15 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1507047915; cv=none;
+Received: by 10.223.197.9 with SMTP id q9csp4711874wrf;
+        Tue, 3 Oct 2017 10:13:18 -0700 (PDT)
+X-Google-Smtp-Source: AOwi7QBrOYP7NuxLrXUCln38biYbvNY9tbIFBLQrHSGLb1oLIAHooeR3b0WXr2BqpcNlUG7GNB9n
+X-Received: by 10.55.145.199 with SMTP id t190mr21238131qkd.147.1507050798766;
+        Tue, 03 Oct 2017 10:13:18 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1507050798; cv=none;
         d=google.com; s=arc-20160816;
-        b=hSWJrlA0JLDLCknPCT2rEkt2pGkDp2NQta5Cw8Us5rqYjwqSjiqWdsoAYf/eM6IeTb
-         NwQPwWJK/UHyRXPkIJ6A5tVwaYw59/PoW26xY7JCc6mec5Ie2ObEhGs3+zfaKx+QkKSp
-         oAnW7Jw+3Sihnsuzfcy9x82mmI2An9Ea5hpWhhjKWE/3H8LumYIn/OdoZj8bmzW6pPwL
-         GGGvi9a1O0FrgX76HrdKfoV8sQsCZYmgmgdLHyekoUzXaf0SnBzg+H7VLmD1KUutIVEp
-         +9lkDmA4muZ5V0BraXNxvX3QQdGGJnhz9YLW4PeQiQZJSYaNi8BCgn8CcRes9CKaZGPI
-         R6/g==
+        b=FHRVfJBZirqAHFrLGyCPlH/CHUVLB0EKzvZ5s2MtsqY923LH34pDw2uKCAnv2rmeUA
+         uOdXav8OAqBfKpDcrGpRZvlq4cIc6gXR1+/Giqof7cFHvz/BEyReyNfjJ77JmycFu7lp
+         HN9w9gS1Pronhhqg8pLGNyCkZ2rDpfad373pocDy1xxXfS/yvX00eDg++4lpziM9xPLO
+         BUnMUu8fwG2snBfM9YimG4PMqNqXCRrOn3kqLuxhSjcDisa4WbNChpS1wPMv9SWFSIBl
+         nss9ItA5UR03lxFdcBMA37dzcN5o++qe8Kal/WsGO5lrFc8d7j22Yx7jliRRKnhyiFtF
+         N7HQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
-         :references:in-reply-to:mime-version:dkim-signature
+         :list-unsubscribe:list-id:precedence:subject:mime-version:user-agent
+         :references:message-id:in-reply-to:to:from:date:dmarc-filter
          :arc-authentication-results;
-        bh=ZTFyFjfO8lpbSBWQg33ZnxiZldPp4gpNOdEkG+0e3/g=;
-        b=04JjWxfD7D/7jEfC8y85pLvcSRHJfjuibRNDhk0/XPPNM4J73l/ShMKW6+ULwIWj7C
-         znrQa2RzK0sJAQGDv9oGwRuP0nNcIB6Dvy+LC7apPmOejfRN+aAMRTHIJUfcYrAAXvNh
-         rqzsjdt+YvnH2VWy6XRUCdgfW/bwHp36Y/nyH75yYiP6DGpGDzm/4jNoG+zlba7P38r+
-         Nq8ioSQva1kXmax+8Dgn4opzDULfQ4a74Y02iiAc7iRvRMdl+54TqUEZeYFSKMwy/ajn
-         G8plqZSGbW4yHz/ckalYN8MLCtcuu8r+qxZYoYMnaIJpwlbAQrgUoifaQjcHymybkbWl
-         BbvQ==
+        bh=MlIr8L5I7OfiyrrydrVMBnJRLuJvFAfwcCzdvfkE1Y4=;
+        b=isWVAa2Ea86a/W7VpGPond4sDVHP4Ik3aKneECPyOWVyTy+c8OMe8Y5nDN/Hjb2F88
+         LJrICoSIRa+9ID/AV/CEtu3yts1o20CUiz30XWu+OZSV+w4JqdRu/PgWqhEOktf5FWLk
+         KlSW3UEB8qkI4vhJVH4GT5XO4226JXZq4N6J5fI4bsG3oQ3KhcOv+WNY1eCrH4l3eThr
+         SUK1vJM3HPgdqoa1LtlE8sbIb/Ei6LCTIP0paQbVtD/ct06yPQ1PzJeTNCVNWMxhFBgx
+         18h5jkIv+ePJB81j6dUc8knW7/3DDuE1GdmwtjwOH4vGZdKYn7Z7D9dwIr53ZdivJM3g
+         F71w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=CvAXzVBC;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id j189si267155qkd.350.2017.10.03.09.25.15
+        by mx.google.com with ESMTPS id j3si2887703qtf.175.2017.10.03.10.13.18
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 03 Oct 2017 09:25:15 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Tue, 03 Oct 2017 10:13:18 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=CvAXzVBC;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:59434 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:59588 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1dzQ0Q-00031a-LV
-	for alex.bennee@linaro.org; Tue, 03 Oct 2017 12:25:14 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:38119)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1dzQkw-0006ly-7d
+	for alex.bennee@linaro.org; Tue, 03 Oct 2017 13:13:18 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:55565)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1dzQ0J-00031Q-86
-	for qemu-arm@nongnu.org; Tue, 03 Oct 2017 12:25:08 -0400
+	(envelope-from <sstabellini@kernel.org>) id 1dzQk4-0006Qq-PG
+	for qemu-devel@nongnu.org; Tue, 03 Oct 2017 13:12:25 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1dzQ0I-0003li-6a
-	for qemu-arm@nongnu.org; Tue, 03 Oct 2017 12:25:07 -0400
-Received: from mail-wr0-x233.google.com ([2a00:1450:400c:c0c::233]:53118)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1dzQ0H-0003kx-Uu
-	for qemu-arm@nongnu.org; Tue, 03 Oct 2017 12:25:06 -0400
-Received: by mail-wr0-x233.google.com with SMTP id k62so6757113wrc.9
-	for <qemu-arm@nongnu.org>; Tue, 03 Oct 2017 09:25:05 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=ZTFyFjfO8lpbSBWQg33ZnxiZldPp4gpNOdEkG+0e3/g=;
-	b=CvAXzVBCcp2D71vGmH7+TZVIBfjmvkSnddqmASuaTnAgoobkhVIhMhvwQkMdy3tpyC
-	aDL3mAw0cL23G7nE+VND3SUWWKede20qzUrj0ywsvb/xqVCa7uilbbzcW2QDfmeEPtuc
-	y++CWOkxhC0YvkCJ/p4OuRAm6e2/1pJkmDLf8=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=ZTFyFjfO8lpbSBWQg33ZnxiZldPp4gpNOdEkG+0e3/g=;
-	b=bmPkV+YxoSsVjmk0rF2jbKPTUhcKBYMoNLE+9P/yc1x4/Fy9+4OITBGp/bkWgAWyoC
-	Xa3d8JXkjcIP9AjtqvDINtockO6OkZ7zGdskJ6d3pX4cv5GK/ViocLA7jPQvui8oE4qe
-	8SZpPtoWZsL+/2cEgEPi+ua04qM8KvYzbKRal34DDBqUVbHF8/4wEj2prWEbzO/5FsyI
-	OSNiyRRrQrtW8JXyPKCokYAgsfchOXXlRC1vXxeiav4wdqzhqa8S/ZGK+LNKrE2pB4L7
-	TaEbbrDVrpSRsCTy5JwA5okhgDbzufrXnoahuqlv/E73X6hBpu/M+97WNMmKdw2XgYkU
-	FMlw==
-X-Gm-Message-State: AMCzsaWapD3vCdk+QGjYRyCGYNsE+yjooZTDnBzq/auV37pJpfQfSCf/
-	ojYHCcwU1ynU8cdpSTaxqBZNfLiwkS/vj3liXDz1Fw==
-X-Google-Smtp-Source: AOwi7QBrp/QcMUAFwQh09y7qIpo27C04d6OqfxBWhTzoim19FuA5RMD0kELEaKn5TCXuCwAybSNkgKAyiUFDUfOQPJM=
-X-Received: by 10.223.195.194 with SMTP id d2mr966018wrg.173.1507047904778;
-	Tue, 03 Oct 2017 09:25:04 -0700 (PDT)
+	(envelope-from <sstabellini@kernel.org>) id 1dzQk3-0006Gy-LL
+	for qemu-devel@nongnu.org; Tue, 03 Oct 2017 13:12:24 -0400
+Received: from mail.kernel.org ([198.145.29.99]:34648)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <sstabellini@kernel.org>)
+	id 1dzQju-000604-Ve; Tue, 03 Oct 2017 13:12:15 -0400
+Received: from [10.149.184.130] (162-198-228-33.lightspeed.wlfrct.sbcglobal.net
+	[162.198.228.33])
+	(using TLSv1 with cipher ECDHE-RSA-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mail.kernel.org (Postfix) with ESMTPSA id E027B2188D;
+	Tue,  3 Oct 2017 17:12:11 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E027B2188D
+Authentication-Results: mail.kernel.org;
+	dmarc=none (p=none dis=none) header.from=kernel.org
+Authentication-Results: mail.kernel.org;
+	spf=none smtp.mailfrom=sstabellini@kernel.org
+Date: Tue, 3 Oct 2017 10:12:11 -0700 (PDT)
+From: Stefano Stabellini <sstabellini@kernel.org>
+X-X-Sender: sstabellini@sstabellini-ThinkPad-X260
+To: Eduardo Habkost <ehabkost@redhat.com>
+In-Reply-To: <20171003001257.GA7087@localhost.localdomain>
+Message-ID: <alpine.DEB.2.10.1710031003331.17914@sstabellini-ThinkPad-X260>
+References: <20170927195635.16014-1-ehabkost@redhat.com>
+	<20170927195635.16014-5-ehabkost@redhat.com>
+	<59CCD0150200007800180507@prv-mh.provo.novell.com>
+	<20170928131234.GP4115@localhost.localdomain>
+	<20171003001257.GA7087@localhost.localdomain>
+User-Agent: Alpine 2.10 (DEB 1266 2009-07-14)
 MIME-Version: 1.0
-Received: by 10.223.128.207 with HTTP; Tue, 3 Oct 2017 09:24:44 -0700 (PDT)
-In-Reply-To: <20170708025030.15845-3-rth@twiddle.net>
-References: <20170708025030.15845-1-rth@twiddle.net>
-	<20170708025030.15845-3-rth@twiddle.net>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 3 Oct 2017 17:24:44 +0100
-Message-ID: <CAFEAcA9mSQnJCDzPOvf4PsBHx0kPB7CFCLC3AdDv9G0EHrEXXg@mail.gmail.com>
-To: Richard Henderson <rth@twiddle.net>
-Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2a00:1450:400c:c0c::233
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH 2/3] linux-user: Tidy and
- enforce reserved_va initialization
-X-BeenThere: qemu-arm@nongnu.org
+Content-Type: TEXT/PLAIN; charset=US-ASCII
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 198.145.29.99
+Subject: Re: [Qemu-devel] xen-pci-passthrough PCI Express support? (Re:
+ [Xen-devel] [PATCH v2 4/5] pci: Add INTERFACE_CONVENTIONAL_PCI_DEVICE to
+ Conventional PCI devices)
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Riku Voipio <riku.voipio@iki.fi>, qemu-arm <qemu-arm@nongnu.org>,
-	QEMU Developers <qemu-devel@nongnu.org>,
-	Aurelien Jarno <aurelien@aurel32.net>, Laurent Vivier <laurent@vivier.eu>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: vtWHdo3QVzEY
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+	"Michael S. Tsirkin" <mst@redhat.com>, Jason Wang <jasowang@redhat.com>,
+	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+	qemu-devel@nongnu.org, Gerd Hoffmann <kraxel@redhat.com>,
+	Jan Beulich <JBeulich@suse.com>,
+	David Gibson <dgibson@redhat.com>, Jiri Slaby <jslaby@suse.cz>,
+	Hannes Reinecke <hare@suse.com>,
+	Stefano Stabellini <sstabellini@kernel.org>,
+	Alberto Garcia <berto@igalia.com>, qemu-block@nongnu.org,
+	Alexander Graf <agraf@suse.de>,
+	=?UTF-8?Q?Herv=C3=A9_Poussineau?= <hpoussin@reactos.org>,
+	Marcel Apfelbaum <marcel@redhat.com>, xen-devel@lists.xenproject.org,
+	David Gibson <david@gibson.dropbear.id.au>,
+	Artyom Tarasenko <atar4qemu@gmail.com>, Jiri Pirko <jiri@resnulli.us>,
+	Anthony Perard <anthony.perard@citrix.com>,
+	Alex Williamson <alex.williamson@redhat.com>,
+	qemu-arm@nongnu.org, Laine Stump <laine@redhat.com>,
+	Igor Mammedov <imammedo@redhat.com>, Yongbok Kim <yongbok.kim@imgtec.com>,
+	Alistair Francis <alistair23@gmail.com>, John Snow <jsnow@redhat.com>,
+	Richard Henderson <rth@twiddle.net>, qemu-ppc@nongnu.org,
+	Paolo Bonzini <pbonzini@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: k3XYps5b/LeK
 
-On 8 July 2017 at 03:50, Richard Henderson <rth@twiddle.net> wrote:
-> We had a check using TARGET_VIRT_ADDR_SPACE_BITS to make sure
-> that the allocation coming in from the command-line option was
-> not too large, but that didn't include target-specific knowledge
-> about other restrictions on user-space.
->
-> Remove several target-specific hacks in linux-user/main.c.
->
-> For MIPS and Nios, we can replace them with proper adjustments
-> to the respective target's TARGET_VIRT_ADDR_SPACE_BITS definition.
->
-> For ARM, we had no existing ifdef but I suspect that the current
-> default value of 0xf7000000 was chosen with this in mind.  Define
-> a workable value in linux-user/arm/, and also document why the
-> special case is required.
->
-> Signed-off-by: Richard Henderson <rth@twiddle.net>
-> ---
->  linux-user/arm/target_cpu.h |  4 ++++
->  target/mips/mips-defs.h     |  6 +++++-
->  target/nios2/cpu.h          |  6 +++++-
->  linux-user/main.c           | 38 +++++++++++++++++++++++++-------------
->  4 files changed, 39 insertions(+), 15 deletions(-)
->
-> diff --git a/linux-user/arm/target_cpu.h b/linux-user/arm/target_cpu.h
-> index d888219..c4f79eb 100644
-> --- a/linux-user/arm/target_cpu.h
-> +++ b/linux-user/arm/target_cpu.h
-> @@ -19,6 +19,10 @@
->  #ifndef ARM_TARGET_CPU_H
->  #define ARM_TARGET_CPU_H
->
-> +/* We need to be able to map the commpage.
-> +   See validate_guest_space in linux-user/elfload.c.  */
-> +#define MAX_RESERVED_VA  0xfff00000ul
-> +
+On Mon, 2 Oct 2017, Eduardo Habkost wrote:
+> On Thu, Sep 28, 2017 at 10:12:34AM -0300, Eduardo Habkost wrote:
+> > On Thu, Sep 28, 2017 at 02:33:57AM -0600, Jan Beulich wrote:
+> > > >>> On 27.09.17 at 21:56, <ehabkost@redhat.com> wrote:
+> > > > --- a/hw/xen/xen_pt.c
+> > > > +++ b/hw/xen/xen_pt.c
+> > > > @@ -964,6 +964,10 @@ static const TypeInfo xen_pci_passthrough_info = {
+> > > >      .instance_size = sizeof(XenPCIPassthroughState),
+> > > >      .instance_finalize = xen_pci_passthrough_finalize,
+> > > >      .class_init = xen_pci_passthrough_class_init,
+> > > > +    .interfaces = (InterfaceInfo[]) {
+> > > > +        { INTERFACE_CONVENTIONAL_PCI_DEVICE },
+> > > > +        { },
+> > > > +    },
+> > > >  };
+> > > 
+> > > Passed through devices can be both PCI and PCIe, so following
+> > > the description of the patch I don't think these can be statically
+> > > given either property. Granted quite a bit of PCIe specific
+> > > functionality may be missing in the Xen code ...
+> > 
+> > This is just static data about what the device type supports, not
+> > about what a given device instance really is.  Deciding if the
+> > device is PCIe or Conventional at runtime is out of the scope of
+> > this series.
+> > 
+> > That said, if passed through PCI Express devices are really
+> > supported, it looks like this should be marked as hybrid.
+> 
+> Can anybody confirm if PCI Express devices are really supported
+> by xen-pci-passthrough?
+> 
+> I suggest we add only INTERFACE_CONVENTIONAL_PCI_DEVICE to the
+> class info until we confirm that.
+> 
+> (In other words, apply this patch as-is, and add
+> INTERFACE_PCIE_DEVICE later as a follow-up patch if appropriate.)
 
-This should be 0xffff0000, but you'll need the bugfix patch I just sent
-out first.
-
-(Why "UL" ? That's usually a wrong choice compared to either U or ULL.)
-
-Otherwise
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
-
-thanks
--- PMM
+Yes, xen-pci-passthrough can expose PCI Express devices to the guest.  I
+don't think the old xen-pci-passthrough code does anything special to
+mark it as such internally in QEMU, but it can deal with the PCI Express
+Capabilities and expose/emulate them for the guest's benefit.

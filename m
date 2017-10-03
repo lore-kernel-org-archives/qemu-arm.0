@@ -1,95 +1,97 @@
-Received: by 10.223.197.9 with SMTP id q9csp3891558wrf;
-        Mon, 2 Oct 2017 17:15:09 -0700 (PDT)
-X-Google-Smtp-Source: AOwi7QAaLRBOCL9oagzzbnB2oEpYREl45CWPeL7UmjUXmLGuNAyW9RWRiUPWc6fpoCCK53m9z5Ld
-X-Received: by 10.55.20.151 with SMTP id 23mr18059698qku.78.1506989709592;
-        Mon, 02 Oct 2017 17:15:09 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1506989709; cv=none;
+Received: by 10.223.197.9 with SMTP id q9csp4491603wrf;
+        Tue, 3 Oct 2017 06:55:15 -0700 (PDT)
+X-Received: by 10.200.56.215 with SMTP id g23mr14737218qtc.251.1507038915844;
+        Tue, 03 Oct 2017 06:55:15 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1507038915; cv=none;
         d=google.com; s=arc-20160816;
-        b=nMmSPJpbC6tF2htPpsVauXXOZa67MBqPBPLKx0/goxQ20IZKoWJoDry0AwfcN1O/rT
-         kVWySJF+rpPBERFVig1sPNvhukzOJOdjsPzzpmTrdbUnfHAqhM+HeGrWPekVrWdcMVek
-         mBFq4L7rY9+iN8jMBgo4g+UIRr8ZrwRgrGOVZEoZgWIesJRY8jr7lRFBuOfJ5fmcxIuR
-         LquNktRdJas2pDWgYspd5fVnGywFZPPRppJS3RaZO0crMrVg8AF4gDlskJ5XBRuUJuw5
-         zmy6hndj07JexiaK3/ZB02Ujw5QXl+7EUH3fyEsUQdUtcTGNmNmXvSTDVgDNyYGLfR1f
-         2oDw==
+        b=Kw+oymN5lTrvcAn5Esvp0Mg7IYP3vPAESP1mSA8jnw/Uo/Hga6ZuAztZIbVEjA3pU1
+         hcDxEx7bq4XoTkaOIkyNZYq/oirVa9MUNk1B8UzH/pCi+WgZ0qCrrlaVuBNEUOf7PGlq
+         BDEaFexep4r3vuC7hkb2BalvPj2dFfF8yFIYqcNIrg6tSihFhgxqQiI9/kTJEWTdO3Ud
+         080ZXS4SEiI82L3tZsXY5NGggD7HQU1nu8aHnLkofPgQpdHXZuaHpx6bpyOPojyUtivc
+         hNfrT3EtOfhjMbyx2cnXaxyVSYM5vu7Te6JhVja/UlVonXg49tS0FpG9N4imrk1m09Or
+         T5HQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
-         :content-disposition:mime-version:references:message-id:to:from:date
-         :dmarc-filter:arc-authentication-results;
-        bh=QzIj8K7uZtbzeuwDKFdAFwixLzVVeeZ+FMk1OZxb178=;
-        b=c5d4DxZZFmyrwtgFWrNDifjEItkj32ERhnl270LkNX8DMH8HlCYusFrsT7EcPO/aL7
-         djAQUmJbySnRS8NX4sPFoRwNLnTXTrmaLYKon+vJeL1l1uZumjQBvVTkyGVzkVv7/7LY
-         zBy7Cm8g44DoERFPkqNSs3oXr3MCi9MSwBgrvUUDOpu/K5UvcIv1d2MjMp2lW9/3BS7x
-         fsd6cWDZem2p/6EIIYwKqSAojd9iZN6L3AYC/k7lV4BsWQqmbUJNJxEVzHtQJUtY5n2T
-         B2kBe8Fncah3redquaMg2d+cktAQ16L65vXKgMcd4PBWbMS0AjhrbK6WBXpfzeKXeLHS
-         hmMg==
+         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
+         :references:in-reply-to:mime-version:dkim-signature
+         :arc-authentication-results;
+        bh=Ub+VX+r1TiJwDC2KEX8g3NxCD9LY8EylwOwS0KBdOE8=;
+        b=bx12yfOAu+u/drQ/uTNofbEFMy4S6ZZyQom883Pg8Gsqr1r/jv/yRufb4MU4oHYbOo
+         ODnWUD6PuCQdkvn+7r6XvjGOHrKGSNogQJKLcnkVaFS36alcSLpM4HGLCsPcb0z4WCt0
+         0Wx08wx+I/us4o08kF9UEDUHYTfJpBmTLO56ZBA7U9UnvGXLo5cYEig9pjHkBvYghZMm
+         DMyQlxSFzuTtY78/PqfkinytO6PnNsXSmdkHlWrbQRqhgxejAVY/JP7lZVlNkp76XoEm
+         fnffJSKQEuxomPL27LhVQfUMtlBV6Fj5+OgOscMdjbdOQ8PbtG4adOiwE8p1RmBguA7o
+         XctA==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b=JFEcvh0k;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id z123si1690954qke.308.2017.10.02.17.15.09
+        by mx.google.com with ESMTPS id y128si10780687qka.241.2017.10.03.06.55.15
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 02 Oct 2017 17:15:09 -0700 (PDT)
+        Tue, 03 Oct 2017 06:55:15 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b=JFEcvh0k;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:55298 helo=lists.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:58685 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1dzArb-0006RZ-Hp
-	for alex.bennee@linaro.org; Mon, 02 Oct 2017 20:15:07 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:34427)
+	id 1dzNfH-0000dL-9v
+	for alex.bennee@linaro.org; Tue, 03 Oct 2017 09:55:15 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:41374)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <ehabkost@redhat.com>) id 1dzApz-0005Wh-6W
-	for qemu-devel@nongnu.org; Mon, 02 Oct 2017 20:13:32 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1dzNaN-0005Wx-F8
+	for qemu-devel@nongnu.org; Tue, 03 Oct 2017 09:50:12 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <ehabkost@redhat.com>) id 1dzApy-0001Py-45
-	for qemu-devel@nongnu.org; Mon, 02 Oct 2017 20:13:27 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:45686)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <ehabkost@redhat.com>)
-	id 1dzApo-00014p-Mz; Mon, 02 Oct 2017 20:13:16 -0400
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
-	[10.5.11.13])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id ED7D64ACA7;
-	Tue,  3 Oct 2017 00:13:12 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com ED7D64ACA7
-Authentication-Results: ext-mx09.extmail.prod.ext.phx2.redhat.com;
-	dmarc=none (p=none dis=none) header.from=redhat.com
-Authentication-Results: ext-mx09.extmail.prod.ext.phx2.redhat.com;
-	spf=fail smtp.mailfrom=ehabkost@redhat.com
-Received: from localhost (ovpn-116-6.gru2.redhat.com [10.97.116.6])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id A98AD6FDB0;
-	Tue,  3 Oct 2017 00:12:58 +0000 (UTC)
-Date: Mon, 2 Oct 2017 21:12:57 -0300
-From: Eduardo Habkost <ehabkost@redhat.com>
-To: Jan Beulich <JBeulich@suse.com>
-Message-ID: <20171003001257.GA7087@localhost.localdomain>
-References: <20170927195635.16014-1-ehabkost@redhat.com>
-	<20170927195635.16014-5-ehabkost@redhat.com>
-	<59CCD0150200007800180507@prv-mh.provo.novell.com>
-	<20170928131234.GP4115@localhost.localdomain>
+	(envelope-from <peter.maydell@linaro.org>) id 1dzNaH-0006ad-W7
+	for qemu-devel@nongnu.org; Tue, 03 Oct 2017 09:50:11 -0400
+Received: from mail-wr0-x236.google.com ([2a00:1450:400c:c0c::236]:44785)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1dzNaH-0006aE-Og
+	for qemu-devel@nongnu.org; Tue, 03 Oct 2017 09:50:05 -0400
+Received: by mail-wr0-x236.google.com with SMTP id l24so3448665wre.1
+	for <qemu-devel@nongnu.org>; Tue, 03 Oct 2017 06:50:05 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=Ub+VX+r1TiJwDC2KEX8g3NxCD9LY8EylwOwS0KBdOE8=;
+	b=JFEcvh0kn8l2jrTL0qyaQak+1MnjzcN6iNk64urol1gf/yptEkiRziCpMMnQVaFT4S
+	ziCh2sSJGTlctkVr4WpQZcGVUMH56tcoxwbszxrczsC16wi2RYf0uXfv8QYSdnV+dCze
+	v5GOt3cZC4WTJcV63lF7xWZ0bDt9IHKiuqm+k=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=Ub+VX+r1TiJwDC2KEX8g3NxCD9LY8EylwOwS0KBdOE8=;
+	b=PNesdOtYeub23I4nZAjgGhbyi1bTQ4NYa2TRDx+s7BOmJS5cj7JRg4n3EsLdd78txa
+	O7MCsfzXhUfunQp/ARMBHnYT+jJ5eVIImfuHu/HJLMcghfcRkU8IV3XvzdETvrxf3Sx0
+	aKqmr90ND22ywWi6Xsfh1te9svieMB7xWc+ekvQrAnuXFOBwrjNJOCiHjw9Y4bR5qXR5
+	6XgEdfutcbT9qURY4xfoLp7VwBevn5LP7yewH6Bek2nn/BJJyOXtmr84BGqP3y6SdjDq
+	rkJBvrEinwvNji0VAfg6WITUIBGmsNUQKIy+Kie/hcKrOzPg+AXyhwcBMaBRS428VCyk
+	swaA==
+X-Gm-Message-State: AMCzsaWWcoBQJxLHz7doNs5dBSshTqMWT9cgwelQgoTuNqUzNhSIrYLo
+	JJGaJl+XKp+Vo1yaDFIcCkxPiDt+AUw8eWCAa130BA==
+X-Google-Smtp-Source: AOwi7QBL1xMS0yyZKdyR1II6SN5j592c1lg33CL0KxRC3qap66IFos7SnJ+3Qpo88UU9n8DSykTARnZ21HgitrGCW3U=
+X-Received: by 10.223.195.194 with SMTP id d2mr498838wrg.173.1507038604650;
+	Tue, 03 Oct 2017 06:50:04 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20170928131234.GP4115@localhost.localdomain>
-X-Fnord: you can see the fnord
-User-Agent: Mutt/1.8.3 (2017-05-23)
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.38]);
-	Tue, 03 Oct 2017 00:13:13 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: [Qemu-devel] xen-pci-passthrough PCI Express support? (Re:
- [Xen-devel] [PATCH v2 4/5] pci: Add INTERFACE_CONVENTIONAL_PCI_DEVICE to
- Conventional PCI devices)
+Received: by 10.223.128.207 with HTTP; Tue, 3 Oct 2017 06:49:16 -0700 (PDT)
+In-Reply-To: <1506441116-16627-1-git-send-email-thuth@redhat.com>
+References: <1506441116-16627-1-git-send-email-thuth@redhat.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 3 Oct 2017 14:49:16 +0100
+Message-ID: <CAFEAcA-V5QRwBCCEvekUvTcVtt58y=1McU41LY0z3XP-JyQsXA@mail.gmail.com>
+To: Thomas Huth <thuth@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2a00:1450:400c:c0c::236
+Subject: Re: [Qemu-devel] [PATCH] hw/arm/xlnx-zynqmp: Mark the "xlnx,
+ zynqmp" device with user_creatable = false
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -101,67 +103,42 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
 	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
-	"Michael S. Tsirkin" <mst@redhat.com>, Jason Wang <jasowang@redhat.com>,
-	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
-	qemu-devel@nongnu.org, Gerd Hoffmann <kraxel@redhat.com>,
-	David Gibson <dgibson@redhat.com>, Jiri Slaby <jslaby@suse.cz>,
-	Hannes Reinecke <hare@suse.com>,
-	Stefano Stabellini <sstabellini@kernel.org>,
-	Alberto Garcia <berto@igalia.com>, qemu-block@nongnu.org,
-	Alexander Graf <agraf@suse.de>,
-	=?iso-8859-1?Q?Herv=E9?= Poussineau <hpoussin@reactos.org>,
-	Marcel Apfelbaum <marcel@redhat.com>, xen-devel@lists.xenproject.org,
-	David Gibson <david@gibson.dropbear.id.au>,
-	Artyom Tarasenko <atar4qemu@gmail.com>, Jiri Pirko <jiri@resnulli.us>,
-	Anthony Perard <anthony.perard@citrix.com>,
-	Alex Williamson <alex.williamson@redhat.com>,
-	qemu-arm@nongnu.org, Laine Stump <laine@redhat.com>,
-	Igor Mammedov <imammedo@redhat.com>, Yongbok Kim <yongbok.kim@imgtec.com>,
-	Alistair Francis <alistair23@gmail.com>, John Snow <jsnow@redhat.com>,
-	Richard Henderson <rth@twiddle.net>, qemu-ppc@nongnu.org,
-	Paolo Bonzini <pbonzini@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
+Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
+	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+	qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
+	Alistair Francis <alistair.francis@xilinx.com>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: RIfPATPKBDj2
-Message-ID: <20171003001257.wvPipRf1XPQjuFeO68kpEXJBlU_gbjkCOdbXnmUghXc@z>
+X-TUID: NtviNjXLM53D
 
-On Thu, Sep 28, 2017 at 10:12:34AM -0300, Eduardo Habkost wrote:
-> On Thu, Sep 28, 2017 at 02:33:57AM -0600, Jan Beulich wrote:
-> > >>> On 27.09.17 at 21:56, <ehabkost@redhat.com> wrote:
-> > > --- a/hw/xen/xen_pt.c
-> > > +++ b/hw/xen/xen_pt.c
-> > > @@ -964,6 +964,10 @@ static const TypeInfo xen_pci_passthrough_info = {
-> > >      .instance_size = sizeof(XenPCIPassthroughState),
-> > >      .instance_finalize = xen_pci_passthrough_finalize,
-> > >      .class_init = xen_pci_passthrough_class_init,
-> > > +    .interfaces = (InterfaceInfo[]) {
-> > > +        { INTERFACE_CONVENTIONAL_PCI_DEVICE },
-> > > +        { },
-> > > +    },
-> > >  };
-> > 
-> > Passed through devices can be both PCI and PCIe, so following
-> > the description of the patch I don't think these can be statically
-> > given either property. Granted quite a bit of PCIe specific
-> > functionality may be missing in the Xen code ...
-> 
-> This is just static data about what the device type supports, not
-> about what a given device instance really is.  Deciding if the
-> device is PCIe or Conventional at runtime is out of the scope of
-> this series.
-> 
-> That said, if passed through PCI Express devices are really
-> supported, it looks like this should be marked as hybrid.
+On 26 September 2017 at 16:51, Thomas Huth <thuth@redhat.com> wrote:
+> The device uses serial_hds in its realize function and thus can't be
+> used twice. Apart from that, the comma in its name makes it quite hard
+> to use for the user anyway, since a comma is normally used to separate
+> the device name from its properties when using the "-device" parameter
+> or the "device_add" HMP command.
+>
+> Signed-off-by: Thomas Huth <thuth@redhat.com>
+> ---
+>  hw/arm/xlnx-zynqmp.c | 2 ++
+>  1 file changed, 2 insertions(+)
+>
+> diff --git a/hw/arm/xlnx-zynqmp.c b/hw/arm/xlnx-zynqmp.c
+> index 2b27daf..d4b6560 100644
+> --- a/hw/arm/xlnx-zynqmp.c
+> +++ b/hw/arm/xlnx-zynqmp.c
+> @@ -440,6 +440,8 @@ static void xlnx_zynqmp_class_init(ObjectClass *oc, void *data)
+>
+>      dc->props = xlnx_zynqmp_props;
+>      dc->realize = xlnx_zynqmp_realize;
+> +    /* Reason: Uses serial_hds in realize function, thus can't be used twice */
+> +    dc->user_creatable = false;
+>  }
+>
+>  static const TypeInfo xlnx_zynqmp_type_info = {
 
-Can anybody confirm if PCI Express devices are really supported
-by xen-pci-passthrough?
 
-I suggest we add only INTERFACE_CONVENTIONAL_PCI_DEVICE to the
-class info until we confirm that.
 
-(In other words, apply this patch as-is, and add
-INTERFACE_PCIE_DEVICE later as a follow-up patch if appropriate.)
+Applied to target-arm.next, thanks.
 
--- 
-Eduardo
+-- PMM

@@ -1,58 +1,58 @@
-Received: by 10.223.197.9 with SMTP id q9csp5435608wrf;
-        Wed, 4 Oct 2017 02:08:39 -0700 (PDT)
-X-Google-Smtp-Source: AOwi7QDFGU9mI9acjvtQ5BrD5PW4DFUXBoAF8N7xTcTziWc19rGtfhYJy6Bop45v9z8GsME8IS/+
-X-Received: by 10.55.20.29 with SMTP id e29mr11269174qkh.253.1507108119061;
-        Wed, 04 Oct 2017 02:08:39 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1507108119; cv=none;
+Received: by 10.223.197.9 with SMTP id q9csp5436362wrf;
+        Wed, 4 Oct 2017 02:09:37 -0700 (PDT)
+X-Google-Smtp-Source: AOwi7QDa/bXzwGT7zBWfPXHf0j80iX41mg0gCEwyA/Ljs/M0xQp3xsPIJkGxixpcjV1mX7lNzAWu
+X-Received: by 10.200.40.11 with SMTP id 11mr12028704qtq.6.1507108177811;
+        Wed, 04 Oct 2017 02:09:37 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1507108177; cv=none;
         d=google.com; s=arc-20160816;
-        b=cp+cZgNVoUEy/edyBiK0W0ZGt/yLwKfvCU4RekzNK/angXoTVhti9twJHji2O7IYSN
-         Z5EH+ZC1tJGCyuSg4o+MQOHJYAeTJlfgEnW9jVAs7gS2jxByBXavrfeHrhH8b5hF7o98
-         uNHSV8d7e37H7RAx2orrvL61suxd2FK+Xz7teV6/dUmCRWvvWn/cvHw9tSWcPBVFX0jm
-         jdo8X5bNaSf373rvOjlMR8A3qHo4fK9cPv1PxuRvygBxBz+OLbdYyigww/DKfHEZiOKY
-         HaRe31A1X9+dkoCfNIWMR6dbB0VjCCzxC+gmFPy35yvTIoq6tPubRmd92eaKkuVxxx+q
-         IOuA==
+        b=owM8s2patWk8dK1lBxy+2j+D3Wlvo+HOK2o8ATWK+VAvpP4PIRNjQYh0mpcFFuFNZp
+         2KCyrGsti/DwJdDRwir2Nct5qz4mUJPD+0D3vzg5BhQ6qGUllmO5iw9Nv5y9lQkGiElg
+         rxQwYqMeL0OdqiQLAslmmx3MWhHVLsnNwnt1xNm3dOd2Qbx9fCd+QSHTXI9c3ROQzwGk
+         3tw5g/bnF/0JJB0ud7TyrOVp4hfp13iH3cmLrAWAIqU9E9+Hz6g9CUdOHedz2Mbu++ZK
+         FIbZYy3ryP6N3D63M8ro6Qn9C2spP42iAhfaH4p+LnZCeKmari+fqPfid7tz+hiP/+py
+         83ng==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:content-disposition
          :content-transfer-encoding:mime-version:in-reply-to:references:to
          :from:date:message-id:arc-authentication-results;
         bh=HdL0D+SjTQ4mvueVqn+Q3mEOgkSVK8r4RcRIp5Jj57Q=;
-        b=oOgwx0NXjWrLaCkvuXy+t1L7GnqexyToujGVMWTaZYAegtUb6hyQKYzUeAiXrKDQkh
-         Ru5Oy925Ql+c4lKUuVQvvl3tFPvt/EquTiV5WXHO9CwLdJMhVPF7o/rv/f9iSB/+VoiN
-         VEOZE8xD+nKZeHWp1GpmmBPda+kK8VBW9lms/B9fyMy7W8FqiIgMx1y4W5atmP/P0eMy
-         N8mB9bjkm6Y5GIaW54rOq73f23Ep3E0m5dq6COYFockSSNMP78Kimgi0StJlE6NPXoOp
-         02GC5ybLRI6w4/FFREsix7o0bCA8DMw3OBR5Gji+BVHfPBBkqQ8cTmb7/0BCX/3trrhV
-         O9qw==
+        b=GLt2mdrChfOhq/hZNmLjyo98i+UAVSp42yb0OgMjwgIOL4Lw3R6VZp63HxdetJ9DOa
+         owoUSLyAJfbwM5RlNVptbNLP4tEMY8gEeyQvvHiYei1kYJJtc5TC4AVux43pftnHp5yJ
+         KEcpU0fjvOS820TtAKBiwkvuG5iAhiJQBG58ePSqo5z2Pm3GB90SBTqcD0rl1t57cYMq
+         HRyFoUI35pKyyYNTWciTUVGDO02oiDqGDfG9ve2DjFbtwlSl74fFmzRWMpr4ZUFpMIJC
+         +qOfvkfRdA5Ff1h4rC+Az38uQ0OuFGDEUdK2SwWsyl98ntMdC8dZ2NpziHb3twzj9Z98
+         +r8Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id z56si3287604qtj.203.2017.10.04.02.08.38
+        by mx.google.com with ESMTPS id w34si5349436qtg.75.2017.10.04.02.09.37
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 04 Oct 2017 02:08:39 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Wed, 04 Oct 2017 02:09:37 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:33826 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:33830 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1dzffS-0007lw-Js
-	for alex.bennee@linaro.org; Wed, 04 Oct 2017 05:08:38 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:55396)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1dzfgP-0008DQ-Bz
+	for alex.bennee@linaro.org; Wed, 04 Oct 2017 05:09:37 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:55427)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <JBeulich@suse.com>) id 1dzffJ-0007ln-6l
-	for qemu-arm@nongnu.org; Wed, 04 Oct 2017 05:08:33 -0400
+	(envelope-from <JBeulich@suse.com>) id 1dzffU-0007pG-7q
+	for qemu-devel@nongnu.org; Wed, 04 Oct 2017 05:08:41 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <JBeulich@suse.com>) id 1dzffD-0002bV-Hv
-	for qemu-arm@nongnu.org; Wed, 04 Oct 2017 05:08:29 -0400
+	(envelope-from <JBeulich@suse.com>) id 1dzffT-0002sF-B7
+	for qemu-devel@nongnu.org; Wed, 04 Oct 2017 05:08:40 -0400
 Received: from prv-mh.provo.novell.com ([137.65.248.74]:59934)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <JBeulich@suse.com>)
 	id 1dzffD-0002XU-7g; Wed, 04 Oct 2017 05:08:23 -0400
 Received: from INET-PRV-MTA by prv-mh.provo.novell.com
 	with Novell_GroupWise; Wed, 04 Oct 2017 03:08:18 -0600
-Message-Id: <59D4C11F0200007800181F48@prv-mh.provo.novell.com>
+Message-ID: <59D4C11F0200007800181F48@prv-mh.provo.novell.com>
 X-Mailer: Novell GroupWise Internet Agent 14.2.2 
 Date: Wed, 04 Oct 2017 03:08:15 -0600
 From: "Jan Beulich" <JBeulich@suse.com>
@@ -69,20 +69,20 @@ Content-Transfer-Encoding: quoted-printable
 Content-Disposition: inline
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
 X-Received-From: 137.65.248.74
-Subject: [Qemu-arm] xen-pci-passthrough PCI Express support? (Re:
- [Qemu-devel] [Xen-devel] [PATCH v2 4/5] pci: Add
- INTERFACE_CONVENTIONAL_PCI_DEVICE to Conventional PCI devices)
-X-BeenThere: qemu-arm@nongnu.org
+Subject: [Qemu-devel] xen-pci-passthrough PCI Express support? (Re:
+ [Xen-devel] [PATCH v2 4/5] pci: Add INTERFACE_CONVENTIONAL_PCI_DEVICE to
+ Conventional PCI devices)
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>,
 	"Michael S. Tsirkin" <mst@redhat.com>, Jason Wang <jasowang@redhat.com>,
 	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
@@ -103,9 +103,10 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
 	Alistair Francis <alistair23@gmail.com>, John Snow <jsnow@redhat.com>,
 	David Gibson <david@gibson.dropbear.id.au>, qemu-ppc@nongnu.org,
 	Igor Mammedov <imammedo@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: NmtCwALRKSiX
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: /rWgabjOZZ3y
+Message-ID: <20171004090815.x-ByKCoNc95eEevgCa0XraUqn7wzlLEQL_f0BMbT30Y@z>
 
 >>> On 03.10.17 at 02:12, <ehabkost@redhat.com> wrote:
 > On Thu, Sep 28, 2017 at 10:12:34AM -0300, Eduardo Habkost wrote:

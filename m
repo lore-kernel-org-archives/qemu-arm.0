@@ -1,110 +1,110 @@
-Received: by 10.223.197.9 with SMTP id q9csp712110wrf;
-        Thu, 5 Oct 2017 09:09:38 -0700 (PDT)
-X-Received: by 10.55.24.170 with SMTP id 42mr20716888qky.220.1507219778372;
-        Thu, 05 Oct 2017 09:09:38 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1507219778; cv=none;
+Received: by 10.223.197.9 with SMTP id q9csp716348wrf;
+        Thu, 5 Oct 2017 09:14:24 -0700 (PDT)
+X-Received: by 10.237.55.228 with SMTP id j91mr35634011qtb.28.1507220063930;
+        Thu, 05 Oct 2017 09:14:23 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1507220063; cv=none;
         d=google.com; s=arc-20160816;
-        b=JBU+ydVLNQnUsg57WS9qUjSGeO6hoCSl7OHreh/K3zGtW9ZztlVvt+zumE42FpUgi3
-         KxdBmT0Uco8iXxIjDHbbzhVlqrkpxm9Mgw/zscPdw1ZgEtyzjUcMBbfyuTRDLjJIXqYF
-         tSV56pG0QEykST0qqUQGQn3ndszMpZZ2c6oEo7Xyu6sBlHsEioYdzZ41p8/PohyYsC0w
-         qwGrfU5IIw1x5H2MjxqHaPO5TM9bNskpkWdAJMLUcW5FOSwYJyA8xA3LwLm3hnFEwTuL
-         XRsOY3wPQUGcX835R6ry0pqMFMcR6mJkDvyMbVmUY/ZUzrpGKiNms9Z2IwLFNlOGKc5R
-         EgGw==
+        b=r/ahdOsTFpIkogU5L7Hr87XRHN/QC0m7W6LsVoINoSFEpkuGBjE/++ToMDWaoN/gIH
+         tEbR1RkGKVMBdsHbJU7cvXbj/7CRYcuM42hY+p5tOrdmIxm82jUeCA1ZdWTb8EnOpioi
+         0IxwX55g+B2tDmO6gWe1T6YFWLj9Qi4Jbq3m8KrE3bi5v2KxNOT4clhkwAWtLzxlkbTn
+         PXmcc4upxa3oGkrodWeOCEKl1C6DFWlsUZLXgm71Hv59KuXvDtiREYAGLTcTTFc1zicG
+         oM0EQK38WCaJHNhyQmNwEf0C/O6kfVxLF2H9qrnHX/JxOtOTZkJ8Zk2M5s0jTTRLX+SX
+         PlEA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:content-language:in-reply-to:mime-version
          :user-agent:date:message-id:from:references:to:dkim-signature
          :arc-authentication-results;
-        bh=71jISXS0iP2jq8iOwS4I4qBExCWRVaYoEuvJN0V0czo=;
-        b=IlFtwMPwKIs5qKkyBu9eozU2T+7R7S/Ol7DYZMTiYwzwVPA285X2UKDgKtf+rCCfhq
-         Qng5v+SuzGODK5h1cDjf3XgmzyG+IW4jZwyV1C5K24IEGoBJMcZosjbJ2BMDpUAS1t6M
-         wbUa3pNJicGGdN+5RnghJmB3eIgzoZZlsNedyibRhqYRhYpqrNcOJxqpX2jgGSQLxOUn
-         9EvlHrApG7zmBawq6HC3Cfv4/zehpR9d2eX0DX7beJdUnpziwpRi8XDpQGLaFkdy2Azq
-         3iceKiaz2uzDL4DwFsR1O1nh44x4Akh/3mgW05AKRaAx03MLWas8Pb17ViJ7Y4udpGR9
-         8gXg==
+        bh=AGtYHy4Qh5Pb9MEQ4J/gjCFKK6eJNZtO9DvgObvn+zw=;
+        b=u2mcJf7l9jY2uAc7wdmosOS8rCFo9Ae0ohtwailyEhvWsXyEf4EOTfJS+VPoq4ufpV
+         7SayGSNZfJA8i17WXI0gjiBG8jXUEDpWVqnGI/yvWtEVnTPEXSoUXwPG7woDiVM4yttF
+         9sRFGE3sMl32aMtWePk+Nh+yxeXKopl19//Xp9LttfuM0+r/2cYgm/CH/Bd3h1VotWnH
+         h9+OsEKyNLxXOv7o63yTc7aSG3AZd5Du10fetKpbVGa3OW/5LOhvAcNvYWN49v1h0xYe
+         xYO/22a96HQT+pLTCEn3yVRtaCHSZoLyPMQiWGcaeyQs+1m+Cs/yhILRLoL9Yz/+hnvq
+         J81Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=eC0IX1b2;
+       dkim=fail header.i=@linaro.org header.s=google header.b=L1J6X0lW;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id c64si7803862qkd.468.2017.10.05.09.09.38
+        by mx.google.com with ESMTPS id x128si6706182qkc.462.2017.10.05.09.14.23
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 05 Oct 2017 09:09:38 -0700 (PDT)
+        Thu, 05 Oct 2017 09:14:23 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=eC0IX1b2;
+       dkim=fail header.i=@linaro.org header.s=google header.b=L1J6X0lW;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:40704 helo=lists.gnu.org)
+Received: from localhost ([::1]:40722 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1e08iP-0006HK-TH
-	for alex.bennee@linaro.org; Thu, 05 Oct 2017 12:09:37 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:40177)
+	id 1e08n1-00087G-G0
+	for alex.bennee@linaro.org; Thu, 05 Oct 2017 12:14:23 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:41356)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <richard.henderson@linaro.org>) id 1e08iG-0006Gw-2O
-	for qemu-arm@nongnu.org; Thu, 05 Oct 2017 12:09:32 -0400
+	(envelope-from <richard.henderson@linaro.org>) id 1e08mv-00086m-5L
+	for qemu-arm@nongnu.org; Thu, 05 Oct 2017 12:14:18 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <richard.henderson@linaro.org>) id 1e08iF-0004x3-6H
-	for qemu-arm@nongnu.org; Thu, 05 Oct 2017 12:09:28 -0400
-Received: from mail-qt0-x22b.google.com ([2607:f8b0:400d:c0d::22b]:50275)
+	(envelope-from <richard.henderson@linaro.org>) id 1e08mu-0000gP-8P
+	for qemu-arm@nongnu.org; Thu, 05 Oct 2017 12:14:17 -0400
+Received: from mail-qt0-x231.google.com ([2607:f8b0:400d:c0d::231]:45691)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
-	id 1e08iF-0004wU-1p
-	for qemu-arm@nongnu.org; Thu, 05 Oct 2017 12:09:27 -0400
-Received: by mail-qt0-x22b.google.com with SMTP id f15so26337220qtf.7
-	for <qemu-arm@nongnu.org>; Thu, 05 Oct 2017 09:09:27 -0700 (PDT)
+	id 1e08mu-0000fU-3N
+	for qemu-arm@nongnu.org; Thu, 05 Oct 2017 12:14:16 -0400
+Received: by mail-qt0-x231.google.com with SMTP id k1so15366148qti.2
+	for <qemu-arm@nongnu.org>; Thu, 05 Oct 2017 09:14:16 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
 	h=subject:to:cc:references:from:message-id:date:user-agent
 	:mime-version:in-reply-to:content-language:content-transfer-encoding;
-	bh=71jISXS0iP2jq8iOwS4I4qBExCWRVaYoEuvJN0V0czo=;
-	b=eC0IX1b2H+CgSs0qmQxUYsgag9fHGrnV5eM8v4z2/9G6+cs6UvrrkDacvbiQVlxPCU
-	YGJV41aV9C3yExYCDmNcmJutAvp6Fk7vFBWvinraFOW5Wy8Tv/lSnu7fnCOzBS7MQU+L
-	5dVIxFzymv3W3TZL8OmraG5dXNbbQ5z8xMGeQ=
+	bh=AGtYHy4Qh5Pb9MEQ4J/gjCFKK6eJNZtO9DvgObvn+zw=;
+	b=L1J6X0lWNxntTwm5+8IgnQ9L9o6mpn38bjTjldQiD4dqgKY4BZ5AOEI2QWFViCNIWM
+	r0k5AT9yBlcDfOYB4Fe6ifp5kLMUAgYhcdNvqOQ0BNapXdnyRRFyuYFazdeD1gEKdklY
+	HvRPbzs/iTrp+tb6cK9lGsopQ5b4UcUe4TmrA=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:subject:to:cc:references:from:message-id:date
 	:user-agent:mime-version:in-reply-to:content-language
 	:content-transfer-encoding;
-	bh=71jISXS0iP2jq8iOwS4I4qBExCWRVaYoEuvJN0V0czo=;
-	b=nEHi83WhkM6alS4kED9VEjXN++6Nl9VnXS5o4cRpvBgwaozkvjNwtaS4j1Nfzzj5T9
-	3++pQZE0TkeI/J8r3+y6Z2Zuodw5fQQevczEiT+ioUAASPk4Lv+lIHM13uJDA9cf/akv
-	ffjrNJVXMhKFEkovDxRHAx4x4ow63dV8xUcwUcSgJAIH30cJvc0W/q2sK2MgAsbVkxMH
-	ySPxfdw86K12l0HERem3na6cdYTnMqv4ts94f5ILUHpicMb1+mirZWGuLjZ9iYC9p2jW
-	K0Zq1ZBVo40/XkVC0ApUl6M4a4AYyy9gJcKf3GM9KY6jbjCr4Jmb8t5UZ3z9U3WPsIg8
-	UH9A==
-X-Gm-Message-State: AHPjjUhPQR1woJODsYnUy4J3QGxQIioyVRxxZZiPJ8dJJZHro77qnxbn
-	IUaWMHDcfb2xyJb4ID9MH6xwNA==
-X-Google-Smtp-Source: AOwi7QD+X1B0TYBv4uMgIVTllUenRWrhrZKsyfeXNE4HhFXfQ2UHPNF+aQr43Fdcs7ApTfmtqacfHw==
-X-Received: by 10.129.65.76 with SMTP id f12mr20346751ywk.274.1507219766479;
-	Thu, 05 Oct 2017 09:09:26 -0700 (PDT)
+	bh=AGtYHy4Qh5Pb9MEQ4J/gjCFKK6eJNZtO9DvgObvn+zw=;
+	b=mrSMzdxGr7otwOmCq4Hf3wuj5Nqsyl8mZv2j8T4wH91098dzHGYbF4k7d/aQLt2zaM
+	maqlJO600xiduHmBzsQe0isIBWAgKG2Nu51uUAv245Gxcby77PQLwshvMA5WVHzyfNiE
+	0JHclSo5HxuvhPkCbOtrBob2PtdbKyAax3042SoxnFFjFvSnqzp4Xiaft8eu8DAoiWLC
+	GZmx7UwvZHzVS/0NHmDxV4Geu8ZXPzjFhbWmOGsxX9BUw5xwXxcP4Uq/7LTydtkhpx4U
+	sUciEljVs2roOnOlAgpsRHj5FMUz5xIT4GImTaPcw+p/UZ6dsBZ/9nZVQErlQvuHXhhg
+	VmKQ==
+X-Gm-Message-State: AMCzsaUb4sL1i5TIhvu/Mpjnris7tXcteR19RDFT+9Y42LfEM5jZ4iHX
+	Y36lt2xjuyRztxPxkzLOxlCXNA==
+X-Google-Smtp-Source: AOwi7QAykNG2tgx7MZIHwEwEPkBZ5DCRhpnIbkRdihOONZ+414OJF8Ze2C6EEZ4E3cot1AVhXh4Lng==
+X-Received: by 10.37.239.6 with SMTP id g6mr7005040ybd.340.1507220055479;
+	Thu, 05 Oct 2017 09:14:15 -0700 (PDT)
 Received: from bigtime.twiddle.net ([2606:a000:7a4a:b100::1b])
 	by smtp.gmail.com with ESMTPSA id
-	x185sm6724958ywa.73.2017.10.05.09.09.25
+	s38sm4296862ywa.92.2017.10.05.09.14.14
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Thu, 05 Oct 2017 09:09:25 -0700 (PDT)
+	Thu, 05 Oct 2017 09:14:14 -0700 (PDT)
 To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
 References: <1506092407-26985-1-git-send-email-peter.maydell@linaro.org>
-	<1506092407-26985-4-git-send-email-peter.maydell@linaro.org>
+	<1506092407-26985-5-git-send-email-peter.maydell@linaro.org>
 From: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <f272860f-2822-34d7-2440-3aceb62f3149@linaro.org>
-Date: Thu, 5 Oct 2017 12:09:23 -0400
+Message-ID: <7b9b49a5-0397-14a4-01b6-c22435096684@linaro.org>
+Date: Thu, 5 Oct 2017 12:14:12 -0400
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
 	Thunderbird/52.3.0
 MIME-Version: 1.0
-In-Reply-To: <1506092407-26985-4-git-send-email-peter.maydell@linaro.org>
+In-Reply-To: <1506092407-26985-5-git-send-email-peter.maydell@linaro.org>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400d:c0d::22b
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH 03/20] target/arm: Prepare for
- CONTROL.SPSEL being nonzero in Handler mode
+X-Received-From: 2607:f8b0:400d:c0d::231
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH 04/20] target/arm: Restore
+ security state on exception return
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -119,32 +119,20 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: patches@linaro.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: oGJ5a89wgc83
+X-TUID: KAleeRzN4bcs
 
 On 09/22/2017 10:59 AM, Peter Maydell wrote:
-> In the v7M architecture, there is an invariant that if the CPU is
-> in Handler mode then the CONTROL.SPSEL bit cannot be nonzero.
-> This in turn means that the current stack pointer is always
-> indicated by CONTROL.SPSEL, even though Handler mode always uses
-> the Main stack pointer.
-> 
-> In v8M, this invariant is removed, and CONTROL.SPSEL may now
-> be nonzero in Handler mode (though Handler mode still always
-> uses the Main stack pointer). In preparation for this change,
-> change how we handle this bit: rename switch_v7m_sp() to
-> the now more accurate write_v7m_control_spsel(), and make it
-> check both the handler mode state and the SPSEL bit.
-> 
-> Note that this implicitly changes the point at which we switch
-> active SP on exception exit from before we pop the exception
-> frame to after it.
+> Now that we can handle the CONTROL.SPSEL bit not necessarily being
+> in sync with the current stack pointer, we can restore the correct
+> security state on exception return. This happens before we start
+> to read registers off the stack frame, but after we have taken
+> possible usage faults for bad exception return magic values and
+> updated CONTROL.SPSEL.
 > 
 > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 > ---
->  target/arm/cpu.h      |  8 ++++++-
->  hw/intc/armv7m_nvic.c |  2 +-
->  target/arm/helper.c   | 65 ++++++++++++++++++++++++++++++++++-----------------
->  3 files changed, 51 insertions(+), 24 deletions(-)
+>  target/arm/helper.c | 2 ++
+>  1 file changed, 2 insertions(+)
 
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
